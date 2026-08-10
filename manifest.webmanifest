@@ -1,0 +1,10 @@
+{
+  "name": "NEXTCLIP",
+  "short_name": "NEXTCLIP",
+  "description": "Official trailer highlights, reviews, endings explained. The clip feed that never stops.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#0a0a0a",
+  "orientation": "portrait"
+}
