@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-08-12T17:37:31.063Z",
-  "total": 227,
-  "valid": 173,
-  "unavailable": 54,
+  "generatedAt": "2026-08-12T17:47:41.035Z",
+  "total": 237,
+  "valid": 185,
+  "unavailable": 52,
   "records": [
     {
       "id": "the-holdovers",
@@ -112,13 +112,6 @@
     {
       "id": "brotherhood",
       "title": "Brotherhood",
-      "youtubeId": null,
-      "status": "unavailable",
-      "watchUrl": null
-    },
-    {
-      "id": "a-taxi-driver",
-      "title": "A Taxi Driver",
       "youtubeId": null,
       "status": "unavailable",
       "watchUrl": null
@@ -301,13 +294,6 @@
     {
       "id": "breaded-life",
       "title": "Breaded Life",
-      "youtubeId": null,
-      "status": "unavailable",
-      "watchUrl": null
-    },
-    {
-      "id": "the-host",
-      "title": "The Host",
       "youtubeId": null,
       "status": "unavailable",
       "watchUrl": null
@@ -1412,6 +1398,13 @@
       "watchUrl": "https://www.youtube.com/watch?v=0n_HQwQU8ls"
     },
     {
+      "id": "a-taxi-driver",
+      "title": "A Taxi Driver",
+      "youtubeId": "xdNowONyhjY",
+      "status": "valid-id",
+      "watchUrl": "https://www.youtube.com/watch?v=xdNowONyhjY"
+    },
+    {
       "id": "the-handmaiden",
       "title": "The Handmaiden",
       "youtubeId": "Q4Z5jfjxdvQ",
@@ -1573,6 +1566,13 @@
       "watchUrl": "https://www.youtube.com/watch?v=HB2oP52mBSI"
     },
     {
+      "id": "the-host",
+      "title": "The Host",
+      "youtubeId": "xrLY0wO06l4",
+      "status": "valid-id",
+      "watchUrl": "https://www.youtube.com/watch?v=xrLY0wO06l4"
+    },
+    {
       "id": "the-chaser",
       "title": "The Chaser",
       "youtubeId": "akiHkFxV24w",
@@ -1592,6 +1592,76 @@
       "youtubeId": "7mw6LyyoeGE",
       "status": "valid-id",
       "watchUrl": "https://www.youtube.com/watch?v=7mw6LyyoeGE"
+    },
+    {
+      "id": "guardians-of-the-galaxy-vol-3",
+      "title": "Guardians of the Galaxy Vol. 3",
+      "youtubeId": "u3V5KDHRQvk",
+      "status": "valid-id",
+      "watchUrl": "https://www.youtube.com/watch?v=u3V5KDHRQvk"
+    },
+    {
+      "id": "alien-romulus",
+      "title": "Alien: Romulus",
+      "youtubeId": "OzY2r2JXsDM",
+      "status": "valid-id",
+      "watchUrl": "https://www.youtube.com/watch?v=OzY2r2JXsDM"
+    },
+    {
+      "id": "gladiator-ii",
+      "title": "Gladiator II",
+      "youtubeId": "7S8ElnXTzm4",
+      "status": "valid-id",
+      "watchUrl": "https://www.youtube.com/watch?v=7S8ElnXTzm4"
+    },
+    {
+      "id": "challengers",
+      "title": "Challengers",
+      "youtubeId": "vAdxP5DmDrk",
+      "status": "valid-id",
+      "watchUrl": "https://www.youtube.com/watch?v=vAdxP5DmDrk"
+    },
+    {
+      "id": "civil-war",
+      "title": "Civil War",
+      "youtubeId": "c2G18nIVpNE",
+      "status": "valid-id",
+      "watchUrl": "https://www.youtube.com/watch?v=c2G18nIVpNE"
+    },
+    {
+      "id": "the-fall-guy",
+      "title": "The Fall Guy",
+      "youtubeId": "_UV1bD_v8Ys",
+      "status": "valid-id",
+      "watchUrl": "https://www.youtube.com/watch?v=_UV1bD_v8Ys"
+    },
+    {
+      "id": "wonka",
+      "title": "Wonka",
+      "youtubeId": "oACMU-w1RXw",
+      "status": "valid-id",
+      "watchUrl": "https://www.youtube.com/watch?v=oACMU-w1RXw"
+    },
+    {
+      "id": "twisters",
+      "title": "Twisters",
+      "youtubeId": "wdok0rZdmx4",
+      "status": "valid-id",
+      "watchUrl": "https://www.youtube.com/watch?v=wdok0rZdmx4"
+    },
+    {
+      "id": "longlegs",
+      "title": "Longlegs",
+      "youtubeId": "B_tDLs6u2E0",
+      "status": "valid-id",
+      "watchUrl": "https://www.youtube.com/watch?v=B_tDLs6u2E0"
+    },
+    {
+      "id": "the-substance",
+      "title": "The Substance",
+      "youtubeId": "CFZtIS9bceE",
+      "status": "valid-id",
+      "watchUrl": "https://www.youtube.com/watch?v=CFZtIS9bceE"
     }
   ]
 }
