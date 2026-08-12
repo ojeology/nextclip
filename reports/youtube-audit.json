@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-08-12T18:12:01.242Z",
-  "total": 257,
-  "valid": 210,
+  "generatedAt": "2026-08-12T18:15:11.162Z",
+  "total": 264,
+  "valid": 217,
   "unavailable": 47,
   "records": [
     {
@@ -1802,6 +1802,55 @@
       "youtubeId": "Xo4T56l74Mk",
       "status": "valid-id",
       "watchUrl": "https://www.youtube.com/watch?v=Xo4T56l74Mk"
+    },
+    {
+      "id": "jujutsu-kaisen",
+      "title": "Jujutsu Kaisen",
+      "youtubeId": "XeoQg5PVOLI",
+      "status": "valid-id",
+      "watchUrl": "https://www.youtube.com/watch?v=XeoQg5PVOLI"
+    },
+    {
+      "id": "andor",
+      "title": "Andor",
+      "youtubeId": "cKOegEuCcfw",
+      "status": "valid-id",
+      "watchUrl": "https://www.youtube.com/watch?v=cKOegEuCcfw"
+    },
+    {
+      "id": "the-brutalist",
+      "title": "The Brutalist",
+      "youtubeId": "GdRXPAHIEW4",
+      "status": "valid-id",
+      "watchUrl": "https://www.youtube.com/watch?v=GdRXPAHIEW4"
+    },
+    {
+      "id": "anora",
+      "title": "Anora",
+      "youtubeId": "vgrXTvL_l_c",
+      "status": "valid-id",
+      "watchUrl": "https://www.youtube.com/watch?v=vgrXTvL_l_c"
+    },
+    {
+      "id": "conclave",
+      "title": "Conclave",
+      "youtubeId": "YMA7gej-4Gw",
+      "status": "valid-id",
+      "watchUrl": "https://www.youtube.com/watch?v=YMA7gej-4Gw"
+    },
+    {
+      "id": "silo",
+      "title": "Silo",
+      "youtubeId": "8ZYhuvIv1pA",
+      "status": "valid-id",
+      "watchUrl": "https://www.youtube.com/watch?v=8ZYhuvIv1pA"
+    },
+    {
+      "id": "john-wick-4",
+      "title": "John Wick: Chapter 4",
+      "youtubeId": "vMoUO1I8G70",
+      "status": "valid-id",
+      "watchUrl": "https://www.youtube.com/watch?v=vMoUO1I8G70"
     }
   ]
 }
