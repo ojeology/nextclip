@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-08-12T15:22:20.771Z",
-  "total": 147,
+  "generatedAt": "2026-08-12T15:41:03.000Z",
+  "total": 167,
   "valid": 127,
-  "unavailable": 20,
+  "unavailable": 40,
   "records": [
     {
       "id": "everything-everywhere-all-at-once",
@@ -140,6 +140,146 @@
     {
       "id": "drive-my-car",
       "title": "Drive My Car",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "the-social-network",
+      "title": "The Social Network",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "whiplash",
+      "title": "Whiplash",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "the-nice-guys",
+      "title": "The Nice Guys",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "the-farewell",
+      "title": "The Farewell",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "past-lives",
+      "title": "Past Lives",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "lagaan",
+      "title": "Lagaan",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "gully-boy",
+      "title": "Gully Boy",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "tumbbad",
+      "title": "Tumbbad",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "super-deluxe",
+      "title": "Super Deluxe",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "kumbalangi-nights",
+      "title": "Kumbalangi Nights",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "october-1",
+      "title": "October 1",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "the-figurine",
+      "title": "The Figurine",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "93-days",
+      "title": "93 Days",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "merry-men",
+      "title": "Merry Men",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "brotherhood",
+      "title": "Brotherhood",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "memories-of-murder",
+      "title": "Memories of Murder",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "a-taxi-driver",
+      "title": "A Taxi Driver",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "the-handmaiden",
+      "title": "The Handmaiden",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "tokyo-story",
+      "title": "Tokyo Story",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "perfect-blue",
+      "title": "Perfect Blue",
       "youtubeId": null,
       "status": "unavailable",
       "watchUrl": null
