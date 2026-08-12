@@ -34,6 +34,7 @@
       }
     ],
     "relatedMovieSlugs": [],
+    "status": "published",
     "updatedAt": null,
     "createdAt": null
   },
@@ -80,6 +81,7 @@
       }
     ],
     "relatedMovieSlugs": [],
+    "status": "published",
     "updatedAt": null,
     "createdAt": null
   },
@@ -138,6 +140,7 @@
       }
     ],
     "relatedMovieSlugs": [],
+    "status": "published",
     "updatedAt": null,
     "createdAt": null
   },
@@ -196,6 +199,7 @@
       }
     ],
     "relatedMovieSlugs": [],
+    "status": "published",
     "updatedAt": null,
     "createdAt": null
   },
@@ -234,6 +238,7 @@
       }
     ],
     "relatedMovieSlugs": [],
+    "status": "published",
     "updatedAt": null,
     "createdAt": null
   },
@@ -279,6 +284,7 @@
       "tenet",
       "dune-part-two"
     ],
+    "status": "published",
     "author": null,
     "createdAt": null,
     "updatedAt": null
@@ -319,6 +325,7 @@
       "arrival",
       "blade-runner-2049"
     ],
+    "status": "published",
     "author": null,
     "createdAt": null,
     "updatedAt": null
@@ -363,6 +370,7 @@
       "the-handmaiden",
       "burning"
     ],
+    "status": "published",
     "author": null,
     "createdAt": null,
     "updatedAt": null
@@ -408,6 +416,7 @@
       "the-menu",
       "nope"
     ],
+    "status": "published",
     "author": null,
     "createdAt": null,
     "updatedAt": null
@@ -453,6 +462,7 @@
       "parasite",
       "spirited-away"
     ],
+    "status": "published",
     "author": null,
     "createdAt": null,
     "updatedAt": null

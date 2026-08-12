@@ -1,0 +1,41 @@
+[
+  {
+    "id": "marvel-movies",
+    "slug": "marvel-movies",
+    "title": "Marvel Movies",
+    "description": "A focused route through the Marvel titles already available in the NEXTCLIP catalogue, from team-up events to character-led stories.",
+    "status": "published",
+    "movieSlugs": [
+      "the-avengers",
+      "avengers-infinity-war",
+      "avengers-endgame",
+      "black-panther",
+      "thor-ragnarok",
+      "guardians-of-the-galaxy",
+      "spider-man-no-way-home",
+      "deadpool-wolverine"
+    ],
+    "articleSlugs": [
+      "how-to-pick-a-movie-tonight"
+    ]
+  },
+  {
+    "id": "space-and-big-ideas",
+    "slug": "space-and-big-ideas",
+    "title": "Space and Big Ideas",
+    "description": "Science-fiction films from the catalogue for viewers who want cosmic scale, survival stories and questions worth discussing after the credits.",
+    "status": "published",
+    "movieSlugs": [
+      "interstellar",
+      "arrival",
+      "the-martian",
+      "gravity",
+      "dune-part-two",
+      "blade-runner-2049"
+    ],
+    "articleSlugs": [
+      "movies-like-interstellar",
+      "why-dune-part-two-feels-large"
+    ]
+  }
+]
