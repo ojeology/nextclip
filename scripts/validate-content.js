@@ -13,6 +13,6 @@ const articles = read('data/articles.json');
 const topics = read('data/topics.json');
 unique(movies, 'movie'); unique(articles, 'article'); unique(topics, 'topic');
 movies.forEach(m => { if (m.status !== 'published' || !m.title || !m.description || !m.year || !m.genre) fail(`movie ${m.id} is incomplete or not published`); });
-articles.forEach(a => { if (a.status !== 'published' || !a.title || !a.description || !a.category || !Array.isArray(a.items) || !a.items.length) fail(`article ${a.id} is incomplete or not published`); });
+articles.forEach(a => { const hasItems = Array.isArray(a.items) && a.items.length; const hasBlocks = Array.isArray(a.blocks) && a.blocks.length; if (a.status !== 'published' || !a.title || !a.description || !a.category || (!hasItems && !hasBlocks)) fail(`article ${a.id} is incomplete or not published`); });
 topics.forEach(t => { if (t.status !== 'published' || !t.title || !t.description || !Array.isArray(t.movieSlugs) || !t.movieSlugs.length) fail(`topic ${t.id} is incomplete or not published`); });
 if (!process.exitCode) console.log(`Validated ${movies.length} published movies, ${articles.length} published articles and ${topics.length} published topics.`);
