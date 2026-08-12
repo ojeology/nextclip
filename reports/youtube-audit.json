@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-08-12T17:56:33.481Z",
-  "total": 244,
-  "valid": 197,
+  "generatedAt": "2026-08-12T18:02:00.969Z",
+  "total": 246,
+  "valid": 199,
   "unavailable": 47,
   "records": [
     {
@@ -1711,6 +1711,20 @@
       "youtubeId": "ECI3eCAxRGw",
       "status": "valid-id",
       "watchUrl": "https://www.youtube.com/watch?v=ECI3eCAxRGw"
+    },
+    {
+      "id": "attack-on-titan",
+      "title": "Attack on Titan",
+      "youtubeId": "8pEg8NrdL_Y",
+      "status": "valid-id",
+      "watchUrl": "https://www.youtube.com/watch?v=8pEg8NrdL_Y"
+    },
+    {
+      "id": "into-the-badlands",
+      "title": "Into the Badlands",
+      "youtubeId": "5KyHy4KRvIc",
+      "status": "valid-id",
+      "watchUrl": "https://www.youtube.com/watch?v=5KyHy4KRvIc"
     }
   ]
 }

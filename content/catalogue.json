@@ -2221,5 +2221,43 @@
   "runtime": null,
   "rating": null,
   "status": "published"
+ },
+ {
+  "id": "attack-on-titan",
+  "title": "Attack on Titan",
+  "slug": "attack-on-titan",
+  "description": "The dark fantasy masterpiece by Hajime Isayama. Eren Yeager joins the Survey Corps to fight man-eating Titans — and discovers the truth about his world is far darker than he ever imagined. The Rumbling changes everything.",
+  "year": 2013,
+  "genre": "Anime",
+  "country": null,
+  "language": null,
+  "poster": "https://i.ytimg.com/vi/8pEg8NrdL_Y/hqdefault.jpg",
+  "backdrop": null,
+  "trailer": "https://www.youtube.com/watch?v=8pEg8NrdL_Y",
+  "youtubeId": "8pEg8NrdL_Y",
+  "cast": [],
+  "director": null,
+  "runtime": null,
+  "rating": null,
+  "status": "published"
+ },
+ {
+  "id": "into-the-badlands",
+  "title": "Into the Badlands",
+  "slug": "into-the-badlands",
+  "description": "AMC's martial-arts epic starring Daniel Wu as Sunny, a skilled warrior in a feudal post-apocalyptic world ruled by Barons. Stunning fight choreography and a world unlike anything else on TV. Loosely inspired by Journey to the West.",
+  "year": 2015,
+  "genre": "Series",
+  "country": null,
+  "language": null,
+  "poster": "https://i.ytimg.com/vi/5KyHy4KRvIc/hqdefault.jpg",
+  "backdrop": null,
+  "trailer": "https://www.youtube.com/watch?v=5KyHy4KRvIc",
+  "youtubeId": "5KyHy4KRvIc",
+  "cast": [],
+  "director": null,
+  "runtime": null,
+  "rating": null,
+  "status": "published"
  }
 ]
