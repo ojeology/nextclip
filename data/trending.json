@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-12T21:12:30.937Z",
+  "generatedAt": "2026-08-12T21:25:39.541Z",
   "formula": {
     "popularity": "Editorial score x 10 (0-100)",
     "recency": "100 - (currentYear - releaseYear) x 8, minimum 0",

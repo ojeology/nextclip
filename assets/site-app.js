@@ -30,9 +30,14 @@
   });
 
   /* ---------- lazy trailer players (multi-candidate, failure-safe) ---------- */
+  var TRAILER_WATCHDOG_MS = (typeof window.NEXTCLIP_TRAILER_TIMEOUT !== 'undefined') ? window.NEXTCLIP_TRAILER_TIMEOUT : 30000;
   function frameHtml(id, title) {
     var iframe = document.createElement('iframe');
-    iframe.src = 'https://www.youtube-nocookie.com/embed/' + id + '?rel=0&modestbranding=1';
+    var src = 'https://www.youtube-nocookie.com/embed/' + id + '?rel=0&modestbranding=1&playsinline=1&enablejsapi=1';
+    // The origin parameter helps the IFrame API deliver events; only set it
+    // when the page has a real http(s) origin (sandboxed previews don't).
+    if (/^https?:\/\//i.test(window.location.origin || '')) src += '&origin=' + encodeURIComponent(window.location.origin);
+    iframe.src = src;
     iframe.title = title + ' trailer';
     iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
     iframe.setAttribute('allowfullscreen', '');
@@ -46,11 +51,13 @@
     var title = box.getAttribute('data-trailer-title') || 'Movie';
     var index = 0;
     var current = candidates[index];
-    var started = false;
     var failTimer = null;
+    var playerUp = false; // iframe finished loading (player page is up)
+
+    function clearWatchdog() { if (failTimer) { clearTimeout(failTimer); failTimer = null; } }
 
     function showError() {
-      if (failTimer) { clearTimeout(failTimer); failTimer = null; }
+      clearWatchdog();
       var frame = box.querySelector('[data-trailer-id]');
       if (frame && frame.parentNode) frame.parentNode.removeChild(frame);
       var err = box.querySelector('[data-trailer-error]');
@@ -69,11 +76,29 @@
       var err = box.querySelector('[data-trailer-error]');
       if (err) err.hidden = true;
       var frame = box.querySelector('[data-trailer-id]');
-      if (frame) { frame.innerHTML = ''; frame.appendChild(frameHtml(current.id, title)); }
-      started = false;
-      if (failTimer) clearTimeout(failTimer);
-      failTimer = setTimeout(function () { if (!started) showError(); }, 10000);
+      if (!frame) return;
+      playerUp = false;
+      frame.innerHTML = '';
+      var iframe = frameHtml(current.id, title);
+      // PRIMARY readiness signal: the iframe's own load event. It fires in
+      // every browser without needing the YouTube JS API, and once the
+      // player page has loaded the video is in the user's hands — the
+      // watchdog must NEVER fire after this, no matter how slow the stream.
+      iframe.addEventListener('load', function () { playerUp = true; clearWatchdog(); });
+      frame.appendChild(iframe);
+      clearWatchdog();
+      failTimer = setTimeout(function () { if (!playerUp) showError(); }, TRAILER_WATCHDOG_MS);
     }
+    // Secondary signal: YouTube IFrame API postMessages. With enablejsapi=1
+    // these report real errors (embedding blocked, video removed mid-play)
+    // and confirm the player is alive.
+    function onMessage(e) {
+      var d = e.data;
+      if (!d || typeof d !== 'object' || !d.event) return;
+      if (d.event === 'onError') { showError(); }
+      else if (d.event === 'onReady' || d.event === 'onStateChange' || d.event === 'infoDelivery') { playerUp = true; clearWatchdog(); }
+    }
+    window.addEventListener('message', onMessage);
     function render() {
       current = candidates[index];
       var frame = box.querySelector('[data-trailer-id]');
@@ -98,22 +123,35 @@
       if (meta) meta.textContent = current.channel ? 'YouTube · via ' + current.channel : 'YouTube';
       var disc = box.querySelector('.trailer-disclaimer');
       if (disc) disc.hidden = !isFan;
+      playerUp = false;
+      clearWatchdog();
       var playBtn = frame && frame.querySelector('.trailer-play');
       if (playBtn) playBtn.addEventListener('click', play);
     }
-    // failure detection: YouTube posts {event:'onError'} messages; also
-    // consider a 10s silent load a failure.
-    function onMessage(e) {
-      var d = e.data;
-      if (!d || typeof d !== 'object' || !d.event) return;
-      if (d.event === 'onError') { showError(); }
-      else if (d.event === 'onReady' || d.event === 'onStateChange' || d.event === 'infoDelivery') { started = true; if (failTimer) { clearTimeout(failTimer); failTimer = null; } }
-    }
-    window.addEventListener('message', onMessage);
     var playBtn = box.querySelector('.trailer-play');
     if (playBtn) playBtn.addEventListener('click', play);
     var altBtn = box.querySelector('[data-trailer-alt]');
     if (altBtn) altBtn.addEventListener('click', function () { index = (index + 1) % candidates.length; render(); });
+    var retryBtn = box.querySelector('[data-trailer-retry]');
+    if (retryBtn) retryBtn.addEventListener('click', function () {
+      var err = box.querySelector('[data-trailer-error]');
+      if (err) err.hidden = true;
+      var frame = box.querySelector('[data-trailer-id]');
+      if (!frame) {
+        // re-create the frame if the error card removed it
+        var head = box.querySelector('.trailer-head');
+        if (head && head.nextSibling) {
+          var fr = document.createElement('div');
+          fr.className = 'trailer-frame';
+          fr.setAttribute('data-trailer-id', current.id);
+          fr.innerHTML = '<img loading="lazy" src="https://i.ytimg.com/vi/' + current.id + '/hqdefault.jpg" alt="' + title + ' trailer thumbnail"><button type="button" class="trailer-play">Play trailer</button>';
+          box.insertBefore(fr, head.nextSibling);
+        }
+      }
+      var p2 = box.querySelector('.trailer-play');
+      if (p2) p2.addEventListener('click', play);
+      play();
+    });
   });
 
   /* ---------- trailer admin audit table (/trailers/) ---------- */
