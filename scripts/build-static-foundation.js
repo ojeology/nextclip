@@ -77,26 +77,37 @@ if (fs.existsSync(cataloguePath)) {
 const typeGenresPath = path.join(root, 'content', 'type-genres.json');
 let typeGenres = {};
 if (fs.existsSync(typeGenresPath)) typeGenres = JSON.parse(fs.readFileSync(typeGenresPath, 'utf8'));
-const featuredPath = path.join(root, 'content', 'featured.json');
-const featuredCfg = fs.existsSync(featuredPath) ? JSON.parse(fs.readFileSync(featuredPath, 'utf8')) : { hero:null, featured:[], boosts:[] };
-
+/* ================================================================
+   RANKINGS — three independent, editorially controlled concepts:
+     🔥 TRENDING NOW  (content/rankings.json -> trending, per type)
+     ⭐ POPULAR       (content/rankings.json -> popular, per type)
+     👑 EDITOR'S PICKS (content/rankings.json -> editorPicks)
+   Trending is NOT derived from scores/ratings/recency. Real traffic
+   analytics can replace it later without changing this file's shape.
+   ================================================================ */
+const rankingsPath = path.join(root, 'content', 'rankings.json');
+let rankings = {};
+if (fs.existsSync(rankingsPath)) { try { rankings = JSON.parse(fs.readFileSync(rankingsPath, 'utf8')); } catch (e) { warnings.push('rankings.json unreadable'); } }
 const slugIndex = new Map(movies.map(m => [m.slug, m]));
-const boosts = new Map();
-(featuredCfg.featured || []).forEach(f => {
-  const rec = slugIndex.get(f.slug);
-  if (!rec) { warnings.push(`featured.json: unknown slug "${f.slug}"`); return; }
-  if (rec.typeDir !== f.typeDir) warnings.push(`featured.json: type mismatch for "${f.slug}" (expected ${f.typeDir}, record is ${rec.typeDir})`);
-  boosts.set(f.slug, { boost: 20, reason: 'Editor\'s pick', label: f.label || null });
-});
-(featuredCfg.boosts || []).forEach(b => {
-  const rec = slugIndex.get(b.slug);
-  if (!rec) { warnings.push(`featured.json: unknown boost slug "${b.slug}"`); return; }
-  if (rec.typeDir !== b.typeDir) warnings.push(`featured.json: boost type mismatch for "${b.slug}"`);
-  const cur = boosts.get(b.slug);
-  if (cur) cur.boost += Number(b.boost) || 0; else boosts.set(b.slug, { boost: Number(b.boost) || 0, reason: b.reason || 'Editorially highlighted' });
-});
-const heroCfg = (featuredCfg.hero && slugIndex.has(featuredCfg.hero.slug)) ? featuredCfg.hero
-  : (featuredCfg.featured || []).map(f => ({ slug:f.slug, typeDir:f.typeDir })).find(f => slugIndex.has(f.slug)) || null;
+const TODAY = new Date().toISOString().slice(0, 10); // YYYY-MM-DD for trendingUntil expiry
+
+function resolveRankList(entries, kind, typeDir) {
+  const out = [];
+  (entries || []).forEach(e => {
+    if (!e || !e.slug) { warnings.push(`rankings.json: ${kind} entry missing slug`); return; }
+    const rec = slugIndex.get(e.slug);
+    if (!rec) { warnings.push(`rankings.json: ${kind} unknown slug "${e.slug}"`); return; }
+    if (typeDir && rec.typeDir !== typeDir) warnings.push(`rankings.json: ${kind} type mismatch for "${e.slug}" (expected ${typeDir}, record is ${rec.typeDir})`);
+    if (e.until && String(e.until) < TODAY) { warnings.push(`rankings.json: ${kind} "${e.slug}" expired (until ${e.until}) — excluded`); return; }
+    out.push({ slug: e.slug, rank: Number(e.rank) || out.length + 1, until: e.until || null, note: e.note || null });
+  });
+  out.sort((a, b) => a.rank - b.rank);
+  return out;
+}
+const heroCfg = (rankings.hero && slugIndex.has(rankings.hero.slug)) ? rankings.hero : null;
+const trendingCfg = { movie: resolveRankList(rankings.trending && rankings.trending.movie, 'trending', 'movie'), series: resolveRankList(rankings.trending && rankings.trending.series, 'trending', 'series'), anime: resolveRankList(rankings.trending && rankings.trending.anime, 'trending', 'anime') };
+const popularCfg = { movie: resolveRankList(rankings.popular && rankings.popular.movie, 'popular', 'movie'), series: resolveRankList(rankings.popular && rankings.popular.series, 'popular', 'series'), anime: resolveRankList(rankings.popular && rankings.popular.anime, 'popular', 'anime') };
+const editorCfg = resolveRankList(rankings.editorPicks, 'editorPicks', null);
 const animeFilms = new Set((typeGenres.anime || {}).films || []);
 
 const typeLabelOf = d => d === 'series' ? 'TV Series' : (d === 'anime' ? 'Anime' : 'Movie');
@@ -105,16 +116,23 @@ movies.forEach(m => {
   if (tgs && (!Array.isArray(tgs) || tgs.length === 0)) warnings.push(`type-genres.json: empty genres for ${m.slug}`);
   m.genres = Array.isArray(tgs) ? tgs.slice(0, 3) : [];
   m.typeLabel = typeLabelOf(m.typeDir);
-  m.popularity = m.rating && m.rating.value != null ? Math.round(m.rating.value * 10) : 0;
-  m.recency = m.year ? Math.max(0, 100 - (CURRENT_YEAR - m.year) * 8) : 0;
-  const boost = boosts.get(m.slug);
-  m.editorialBoost = boost ? boost.boost : 0;
-  m.boostReason = boost ? boost.reason : null;
-  m.trendingScore = m.popularity + m.recency + m.editorialBoost;
-  m.isFeatured = !!(boost && boost.reason === 'Editor\'s pick');
+  // Structured ranking fields (all editorial, deterministic)
+  const tr = trendingCfg[m.typeDir].find(x => x.slug === m.slug);
+  m.trending = !!tr;
+  m.trendingRank = tr ? tr.rank : null;
+  m.trendingUntil = tr ? tr.until : null;
+  const pr = popularCfg[m.typeDir].find(x => x.slug === m.slug);
+  m.popular = !!pr;
+  m.popularRank = pr ? pr.rank : null;
+  m.popularityScore = pr ? Math.max(1, 101 - pr.rank) : null;
+  const ep = editorCfg.find(x => x.slug === m.slug);
+  m.editorPick = !!ep;
+  m.editorPickRank = ep ? ep.rank : null;
+  m.editorPickNote = ep ? ep.note : null;
+  m.isFeatured = !!(heroCfg && heroCfg.slug === m.slug);
   m.isNewRelease = !!m.year && m.year >= CURRENT_YEAR - 2;
 });
-if (heroCfg && !movies.find(m => m.slug === heroCfg.slug)) warnings.push('featured.json: hero slug not found');
+if (heroCfg && !slugIndex.has(heroCfg.slug)) warnings.push('rankings.json: hero slug not found');
 
 /* ------------------------------------------------------------------ */
 /* Trailer system: multi-candidate verified trailers                   */
@@ -213,11 +231,28 @@ const trailerAdminRows = movies.map(m => {
     candidates: (m.trailers || []).map(t => ({ id: t.videoId, type: t.type, channel: t.channel || '', verified: !!t.verified, status: t.status || null }))
   };
 });
-const hero = heroCfg ? movies.find(m => m.slug === heroCfg.slug) : movies.filter(m => m.typeDir === 'movie').sort((a,b) => (b.rating?.value||0) - (a.rating?.value||0))[0];
-const featuredList = movies.filter(m => m.isFeatured).slice(0, 10);
-const trendingList = [...movies].sort((a,b) => (b.trendingScore - a.trendingScore) || ((b.year||0) - (a.year||0)) || a.title.localeCompare(b.title));
+const bySlug = slug => slugIndex.get(slug) || null;
+const resolveList = cfg => cfg.map(x => bySlug(x.slug)).filter(Boolean);
+const hero = heroCfg ? bySlug(heroCfg.slug) : movies.filter(m => m.typeDir === 'movie').sort((a,b) => (b.rating?.value||0) - (a.rating?.value||0))[0];
+// Trending: ONLY editorially flagged titles, ordered by trendingRank ASC.
+// No scores, no recency, no random selection. Deterministic.
+const trendingByType = {
+  movie: resolveList(trendingCfg.movie),
+  series: resolveList(trendingCfg.series),
+  anime: resolveList(trendingCfg.anime)
+};
+const trendingList = [...trendingByType.movie, ...trendingByType.series, ...trendingByType.anime];
+const popularByType = {
+  movie: resolveList(popularCfg.movie),
+  series: resolveList(popularCfg.series),
+  anime: resolveList(popularCfg.anime)
+};
+const popularList = [...popularByType.movie, ...popularByType.series, ...popularByType.anime];
+const editorPicksList = resolveList(editorCfg);
 const newReleases = [...movies].sort((a,b) => ((b.year||0) - (a.year||0)) || a.title.localeCompare(b.title)).filter(m => m.isNewRelease);
 const classics = movies.filter(m => m.year && m.year <= 2000).sort((a,b) => ((b.rating?.value||0) - (a.rating?.value||0)) || ((b.year||0) - (a.year||0)));
+// Browse rows on the homepage: plain editorial-score ordering, NOT labelled
+// as Trending/Popular — just a convenient way to keep exploring.
 const sortPopular = (a,b) => ((b.rating?.value||0) - (a.rating?.value||0)) || ((b.year||0) - (a.year||0)) || a.title.localeCompare(b.title);
 const sortNewest = (a,b) => ((b.year||0) - (a.year||0)) || a.title.localeCompare(b.title);
 const sortAZ = (a,b) => a.title.localeCompare(b.title);
@@ -247,7 +282,7 @@ const trailerReport = {
 fs.writeFileSync(path.join(root, 'reports', 'trailer-report.json'), JSON.stringify(trailerReport, null, 2) + '\n');
 fs.writeFileSync(path.join(root, 'data', 'trailer-report.json'), JSON.stringify(trailerReport, null, 2) + '\n');
 fs.writeFileSync(path.join(root, 'data', 'trailers.json'), JSON.stringify(trailerAdminRows, null, 2) + '\n');
-fs.writeFileSync(path.join(root, 'data', 'trending.json'), JSON.stringify({ generatedAt:new Date().toISOString(), formula:{ popularity:'Editorial score x 10 (0-100)', recency:'100 - (currentYear - releaseYear) x 8, minimum 0', editorialBoost:'Featured +20, configured boosts up to +30', note:'No viewer statistics are used. Real analytics can replace this layer later.' }, records:trendingList.map(m => ({ slug:m.slug, title:m.title, typeDir:m.typeDir, year:m.year, trendingScore:m.trendingScore, popularity:m.popularity, recency:m.recency, editorialBoost:m.editorialBoost, boostReason:m.boostReason })) }, null, 2)+'\n');
+fs.writeFileSync(path.join(root, 'data', 'trending.json'), JSON.stringify({ generatedAt:new Date().toISOString(), mode:'editorial-curation', note:'Trending Now is editorially curated (content/rankings.json). No live traffic data is claimed. When real analytics exist, Trending Score = recent engagement + growth rate + searches + clicks + recency can replace this list without changing the site architecture.', futureSignals:['pageViews','searches','cardClicks','trailerClicks','watchInteractions','favorites','shares','recentGrowth'], records:trendingList.map(m => ({ slug:m.slug, title:m.title, typeDir:m.typeDir, year:m.year, trendingRank:m.trendingRank, trendingUntil:m.trendingUntil })) }, null, 2)+'\n');
 
 const legacyArticleCategories = { 'broke-internet':'Movie Facts', 'never-end':'Movie Recommendations', 'agent-kim':'Movie Explainers', 'korean-movies':'Movie Recommendations', 'vampire-horror':'Movie Facts' };
 let articles = (ctx.ARTICLES || []).map(a => ({ id:a.id, slug:slugify(a.title), title:clean(a.title), description:clean(a.intro), category:legacyArticleCategories[a.id] || 'Editorial', tags:(a.tags||[]).map(clean), emoji:a.emoji || '', items:(a.items||[]).map(x=>({heading:clean(x.h), body:clean(x.p)})), relatedMovieSlugs:[], status:'archived', updatedAt:null, createdAt:null }));
@@ -286,8 +321,7 @@ function card(m, opts){
   const genre = m.genreLabel || m.genre || '';
   const rating = m.rating && m.rating.value != null ? `<p class="tile-rating" title="NEXTCLIP editorial score">★ ${esc(String(m.rating.value))}/10 · Editorial</p>` : '';
   const rank = opts.rank ? `<span class="rank${opts.rank <= 3 ? ' top' : ''}">${opts.rank}</span>` : '';
-  const reason = (opts.reason && m.boostReason) ? `<p class="boost-reason">${esc(m.boostReason)}</p>` : '';
-  return `<a class="tile" href="${url('/' + typeDir + '/' + m.slug + '/')}"><div class="poster">${rank}${poster(m) ? `<img loading="lazy" src="${esc(poster(m))}" alt="${esc(m.title)} trailer thumbnail">` : `<div class="placeholder">${esc(m.title)}</div>`}</div><h3>${esc(m.title)}</h3><div class="tile-meta"><span class="type-badge tb-${typeDir}">${label}</span><span>${esc(m.year || '')}</span>${genre ? `<span class="sep">·</span><span>${esc(genre)}</span>` : ''}</div>${rating}${reason}</a>`;
+  return `<a class="tile" href="${url('/' + typeDir + '/' + m.slug + '/')}"><div class="poster">${rank}${poster(m) ? `<img loading="lazy" src="${esc(poster(m))}" alt="${esc(m.title)} trailer thumbnail">` : `<div class="placeholder">${esc(m.title)}</div>`}</div><h3>${esc(m.title)}</h3><div class="tile-meta"><span class="type-badge tb-${typeDir}">${label}</span><span>${esc(m.year || '')}</span>${genre ? `<span class="sep">·</span><span>${esc(genre)}</span>` : ''}</div>${rating}</a>`;
 }
 function progressiveGrid(items, initial){
   const shown = items.slice(0, initial), hidden = items.slice(initial);
@@ -336,7 +370,7 @@ function layout(o){
   const socialImage = o.image ? `<meta property="og:image" content="${esc(o.image)}"><meta name="twitter:image" content="${esc(o.image)}">` : '';
   const schema = o.schema ? `<script type="application/ld+json">${JSON.stringify(o.schema).replace(/</g,'\\u003c')}<\/script>` : '';
   const active = o.activeNav || '';
-  return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${esc(o.title)} | ${site.name}</title><meta name="description" content="${esc(o.description)}">${o.noindex?'<meta name="robots" content="noindex,follow">':''}<link rel="canonical" href="${url(o.canonical || o.path)}"><meta property="og:type" content="website"><meta property="og:site_name" content="${site.name}"><meta property="og:title" content="${esc(o.title)}"><meta property="og:description" content="${esc(o.description)}"><meta property="og:url" content="${url(o.path)}">${socialImage}<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${esc(o.title)}"><meta name="twitter:description" content="${esc(o.description)}"><link rel="stylesheet" href="${url('/assets/site.css')}">${schema}</head><body><header class="top"><div class="shell"><a class="brand" href="${url('/')}">NEXT<b>CLIP</b></a><nav class="topnav"><a href="${url('/')}"${active==='home'?' class="active"':''}>Home</a><a href="${url('/movies/')}"${active==='movies'?' class="active"':''}>Movies</a><a href="${url('/series/')}"${active==='series'?' class="active"':''}>Series</a><a href="${url('/anime/')}"${active==='anime'?' class="active"':''}>Anime</a><a href="${url('/genres/')}"${active==='genres'?' class="active"':''}>Genres</a><a href="${url('/trending/')}"${active==='trending'?' class="active"':''}>Trending</a><a href="${url('/articles/')}"${active==='articles'?' class="active"':''}>Articles</a><a class="nav-search" href="${url('/search/')}">Search</a></nav></div></header>${o.body}<nav class="mobile-nav"><a href="${url('/')}"${active==='home'?' class="active"':''}><span class="mn-ico">🏠</span>Home</a><a href="${url('/movies/')}"${active==='movies'?' class="active"':''}><span class="mn-ico">🎬</span>Movies</a><a href="${url('/series/')}"${active==='series'?' class="active"':''}><span class="mn-ico">📺</span>Series</a><a href="${url('/anime/')}"${active==='anime'?' class="active"':''}><span class="mn-ico">🍥</span>Anime</a><a href="${url('/genres/')}"${active==='genres'?' class="active"':''}><span class="mn-ico">🎭</span>Genres</a><a href="${url('/search/')}"><span class="mn-ico">🔍</span>Search</a></nav><footer class="footer"><div class="shell"><nav class="foot-links"><a href="${url('/movies/')}">Movies</a><a href="${url('/series/')}">Series</a><a href="${url('/anime/')}">Anime</a><a href="${url('/genres/')}">Genres</a><a href="${url('/years/')}">Years</a><a href="${url('/topics/')}">Topics</a><a href="${url('/trending/')}">Trending</a><a href="${url('/articles/')}">Articles</a><a href="${url('/search/')}">Search</a></nav>NEXTCLIP · Movie, TV series and anime discovery with editorial guides. Trailer links lead to YouTube and viewing links lead to third parties.<small>Trending rankings use a transparent editorial score (editorial rating + release recency + editorial boost). No fake view counts.</small></div></footer>${pageScript()}</body></html>`;
+  return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${esc(o.title)} | ${site.name}</title><meta name="description" content="${esc(o.description)}">${o.noindex?'<meta name="robots" content="noindex,follow">':''}<link rel="canonical" href="${url(o.canonical || o.path)}"><meta property="og:type" content="website"><meta property="og:site_name" content="${site.name}"><meta property="og:title" content="${esc(o.title)}"><meta property="og:description" content="${esc(o.description)}"><meta property="og:url" content="${url(o.path)}">${socialImage}<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${esc(o.title)}"><meta name="twitter:description" content="${esc(o.description)}"><link rel="stylesheet" href="${url('/assets/site.css')}">${schema}</head><body><header class="top"><div class="shell"><a class="brand" href="${url('/')}">NEXT<b>CLIP</b></a><nav class="topnav"><a href="${url('/')}"${active==='home'?' class="active"':''}>Home</a><a href="${url('/movies/')}"${active==='movies'?' class="active"':''}>Movies</a><a href="${url('/series/')}"${active==='series'?' class="active"':''}>Series</a><a href="${url('/anime/')}"${active==='anime'?' class="active"':''}>Anime</a><a href="${url('/genres/')}"${active==='genres'?' class="active"':''}>Genres</a><a href="${url('/trending/')}"${active==='trending'?' class="active"':''}>Trending</a><a href="${url('/articles/')}"${active==='articles'?' class="active"':''}>Articles</a><a class="nav-search" href="${url('/search/')}">Search</a></nav></div></header>${o.body}<nav class="mobile-nav"><a href="${url('/')}"${active==='home'?' class="active"':''}><span class="mn-ico">🏠</span>Home</a><a href="${url('/movies/')}"${active==='movies'?' class="active"':''}><span class="mn-ico">🎬</span>Movies</a><a href="${url('/series/')}"${active==='series'?' class="active"':''}><span class="mn-ico">📺</span>Series</a><a href="${url('/anime/')}"${active==='anime'?' class="active"':''}><span class="mn-ico">🍥</span>Anime</a><a href="${url('/genres/')}"${active==='genres'?' class="active"':''}><span class="mn-ico">🎭</span>Genres</a><a href="${url('/search/')}"><span class="mn-ico">🔍</span>Search</a></nav><footer class="footer"><div class="shell"><nav class="foot-links"><a href="${url('/movies/')}">Movies</a><a href="${url('/series/')}">Series</a><a href="${url('/anime/')}">Anime</a><a href="${url('/genres/')}">Genres</a><a href="${url('/years/')}">Years</a><a href="${url('/topics/')}">Topics</a><a href="${url('/trending/')}">Trending</a><a href="${url('/articles/')}">Articles</a><a href="${url('/search/')}">Search</a></nav>NEXTCLIP · Movie, TV series and anime discovery with editorial guides. Trailer links lead to YouTube and viewing links lead to third parties.<small>Trending Now is editorially curated by NEXTCLIP — it is not live traffic data. Popular and Editor's Picks are independent rankings. Real user analytics will replace trending once the site has enough traffic.</small></div></footer>${pageScript()}</body></html>`;
 }
 
 /* ------------------------------------------------------------------ */
@@ -344,17 +378,19 @@ function layout(o){
 /* ------------------------------------------------------------------ */
 function write(dir, content){ const out = path.join(root, dir, 'index.html'); fs.mkdirSync(path.dirname(out), {recursive:true}); fs.writeFileSync(out, content); }
 function railSection(title, emoji, items, moreUrl, note, opts){
-  return `<section class="home-section"><div class="shell"><div class="section-head"><h2>${emoji ? emoji + ' ' : ''}${esc(title)}</h2>${moreUrl ? `<a href="${url(moreUrl)}">View all</a>` : ''}</div>${note ? `<p class="section-note">${esc(note)}</p>` : ''}<div class="rail">${items.map((m,i) => card(m, {rank: opts && opts.ranked ? i + 1 : null, reason: opts && opts.reasons})).join('')}</div></div></section>`;
+  return `<section class="home-section"><div class="shell"><div class="section-head"><h2>${emoji ? emoji + ' ' : ''}${esc(title)}</h2>${moreUrl ? `<a href="${url(moreUrl)}">View all</a>` : ''}</div>${note ? `<p class="section-note">${esc(note)}</p>` : ''}<div class="rail">${items.map((m,i) => card(m, {rank: opts && opts.ranked ? (opts.rankKey ? (m[opts.rankKey] || i + 1) : i + 1) : null})).join('')}</div></div></section>`;
 }
 
 /* ---------------- Homepage ---------------- */
-const featuredRail = featuredList.length ? featuredList : movies.filter(m => m.typeDir === 'movie').sort(sortPopular).slice(0, 8);
-const popularMovies = movies.filter(m => m.typeDir === 'movie').sort(sortPopular).slice(0, 12);
-const popularSeries = movies.filter(m => m.typeDir === 'series').sort(sortPopular).slice(0, 12);
-const popularAnime = movies.filter(m => m.typeDir === 'anime').sort(sortPopular).slice(0, 12);
-const trendNow = trendingList.slice(0, 12);
+const trendNow = trendingList.slice(0, 24); // the complete curated trending list
+const popularMovies = popularByType.movie.slice(0, 12);
+const popularSeries = popularByType.series.slice(0, 12);
+const popularAnime = popularByType.anime.slice(0, 12);
+const editorPicksNow = editorPicksList.slice(0, 8);
 const freshNow = (newReleases.length >= 8 ? newReleases : movies.filter(m => m.year).sort(sortNewest)).slice(0, 12);
-const classicNow = classics.slice(0, 10);
+const browseMovies = movies.filter(m => m.typeDir === 'movie').sort(sortPopular).slice(0, 12);
+const browseSeries = movies.filter(m => m.typeDir === 'series').sort(sortPopular).slice(0, 12);
+const browseAnime = movies.filter(m => m.typeDir === 'anime').sort(sortPopular).slice(0, 12);
 const latestArticles = articles.slice(-3).reverse();
 
 function genreChips(list, baseDir, max){
@@ -372,13 +408,15 @@ write('', layout({
   path: '/', image: poster(hero), activeNav: 'home',
   schema: [{ '@context':'https://schema.org', '@type':'WebSite', name:site.name, url:url('/'), description:site.description }, { '@context':'https://schema.org', '@type':'CollectionPage', name:'NEXTCLIP – Movies, TV Series & Anime', url:url('/') }],
   body: `<main><section class="home-hero" style="--hero-image:url('${esc(poster(hero))}')"><div class="shell home-hero-inner"><div class="eyebrow">Featured spotlight</div><h1>${esc(hero.title)}</h1><div class="hero-facts"><span class="type-badge tb-${hero.typeDir}">${hero.typeLabel.toUpperCase()}</span><span>${hero.year || ''}</span>${hero.genreLabel ? `<span>·</span><span>${esc(hero.genreLabel)}</span>` : ''}</div><p>${esc(hero.description || hero.teaser || 'Explore this title on NEXTCLIP.')}</p><div class="hero-actions"><a class="cta" href="${url('/' + hero.typeDir + '/' + hero.slug + '/')}">Explore ${hero.typeLabel.toLowerCase()}</a><a class="quiet-link" href="${url('/trending/')}">See what's trending</a></div></div></section><main class="shell home-main">
-  ${railSection('Editor\'s picks', '⭐', featuredRail, '/genres/', 'Hand-picked by the NEXTCLIP editorial desk — featured is a manual choice, not an algorithm claim.')}
-  ${railSection('Trending Now', '🔥', trendNow, '/trending/', 'Ranked by NEXTCLIP\'s transparent trending score: editorial rating + release recency + editorial boost. Not a claim of live viewership.', {ranked:true, reasons:true})}
-  ${railSection('Popular Movies', '🎬', popularMovies, '/movies/', 'Movies ranked by NEXTCLIP editorial score.')}
-  ${railSection('Popular Series', '📺', popularSeries, '/series/', 'TV series ranked by NEXTCLIP editorial score.')}
-  ${railSection('Popular Anime', '🍥', popularAnime, '/anime/', 'Anime ranked by NEXTCLIP editorial score.')}
+  ${railSection('Trending Now', '🔥', trendNow, '/trending/', 'Curated by the NEXTCLIP editorial team — not live traffic data. Ranked per content type.', {ranked:true, rankKey:'trendingRank'})}
+  ${railSection('Popular Movies', '⭐', popularMovies, '/movies/', 'Evergreen movie favourites, editorially ranked.')}
+  ${railSection('Popular Series', '⭐', popularSeries, '/series/', 'Evergreen TV series favourites, editorially ranked.')}
+  ${railSection('Popular Anime', '⭐', popularAnime, '/anime/', 'Evergreen anime favourites, editorially ranked.')}
+  ${railSection('Editor\'s Picks', '👑', editorPicksNow, '/trending/#editors-picks', 'Hand-picked by the NEXTCLIP editorial desk — separate from trending and popularity.')}
   ${railSection('New Releases', '🆕', freshNow, '/trending/#new-releases', 'Newest verified release years — old classics are never re-labelled as new.')}
-  ${railSection('Classics', '🎞️', classicNow, '/trending/#classics', 'Beloved older titles, kept separate from trending and new releases.')}
+  ${railSection('Movies', '🎬', browseMovies, '/movies/', 'Keep exploring the movie catalogue.')}
+  ${railSection('Series', '📺', browseSeries, '/series/', 'Keep exploring the series catalogue.')}
+  ${railSection('Anime', '🍥', browseAnime, '/anime/', 'Keep exploring the anime catalogue.')}
   <section class="home-section"><div class="shell"><div class="section-head"><h2>🎭 Browse by genre</h2><a href="${url('/genres/')}">All genres</a></div><div class="genre-trio"><div class="genre-panel"><h3>🎬 Movie genres <span class="gp-count">${movies.filter(m=>m.typeDir==='movie').length} films</span></h3><div class="genre-chips">${genreChips(movies.filter(m=>m.typeDir==='movie'), 'movies', 9)}</div></div><div class="genre-panel"><h3>📺 Series genres <span class="gp-count">${movies.filter(m=>m.typeDir==='series').length} shows</span></h3><div class="genre-chips">${genreChips(movies.filter(m=>m.typeDir==='series'), 'series', 9)}</div></div><div class="genre-panel"><h3>🍥 Anime genres <span class="gp-count">${movies.filter(m=>m.typeDir==='anime').length} titles</span></h3><div class="genre-chips">${genreChips(movies.filter(m=>m.typeDir==='anime'), 'anime', 9)}</div></div></div></div></section>
   <section class="home-section"><div class="shell"><div class="section-head"><div><div class="eyebrow">From the editorial desk</div><h2>📰 Latest articles</h2></div><a href="${url('/articles/')}">All stories</a></div><div class="story-grid">${latestArticles.map(a => `<a href="${url('/article/' + a.slug + '/')}"><span>${esc(a.category)}</span><h3>${esc(a.title)}</h3><p>${esc(a.description)}</p><b>Read story</b></a>`).join('')}</div></div></section>
   <section class="discover-cta"><div><div class="eyebrow">Full catalogue</div><h2>Pick a lane: Movies, Series or Anime.</h2><p>Each section is strictly filtered to its own content type. No mixed-up walls of posters.</p></div><a class="cta" href="${url('/search/')}">Search everything</a></div></section></main></main>`
@@ -498,21 +536,26 @@ for (const [year, list] of yearMap) write(`year/${year}`, layout({
   body: `<main class="shell"><div class="crumb"><a href="${url('/years/')}">Years</a> / ${year}</div><section class="hero"><div class="eyebrow">Year</div><h1>Movies from ${year}</h1></section><section class="section">${progressiveGrid(list, 36)}</section></main>`
 }));
 
-/* ---------------- Trending hub ---------------- */
-const trendTop = trendingList.slice(0, 24);
-const popularTop = [...movies].sort(sortPopular).slice(0, 24);
+/* ---------------- Rankings hub (/trending/) ---------------- */
+const trendTopMovie = trendingByType.movie.slice(0, 24);
+const trendTopSeries = trendingByType.series.slice(0, 24);
+const trendTopAnime = trendingByType.anime.slice(0, 24);
+const popularTop = [...popularByType.movie, ...popularByType.series, ...popularByType.anime].slice(0, 36);
+const editorTop = editorPicksList.slice(0, 12);
 const newTop = (newReleases.length >= 8 ? newReleases : movies.filter(m => m.year).sort(sortNewest)).slice(0, 24);
 const classicTop = classics.slice(0, 24);
-const boostReasons = [...boosts.entries()].map(([slug, b]) => ({ slug, boost: b.boost, reason: b.reason })).filter(b => b.boost !== 20 || b.reason !== 'Editor\'s pick');
 write('trending', layout({
-  title: 'Trending, Popular, New & Classics',
-  description: 'NEXTCLIP\'s transparent rankings: trending by editorial score, popular by editorial rating, new releases by year and classics. No fake view counts.',
+  title: 'Trending, Popular, Editor\'s Picks & New Releases',
+  description: 'NEXTCLIP\'s editorial rankings: trending (curated per content type), popular, editor\'s picks, new releases and classics. No fake view counts.',
   path: '/trending/', activeNav: 'trending',
   schema: [{ '@context':'https://schema.org', '@type':'CollectionPage', name:'Trending & Popular on NEXTCLIP', url:url('/trending/') }],
-  body: `<main class="shell"><section class="hero"><div class="eyebrow">Transparent rankings</div><h1>Trending &amp; Popular</h1><p class="lead">Four separate concepts — trending, popular, new releases and classics — with the rules for each explained below.</p></section>
-  <div class="trend-note"><b style="color:var(--text)">How the Trending score works.</b><br>Trending Score = editorial rating × 10 (0–100) + recency (100 − (${CURRENT_YEAR} − release year) × 8, minimum 0) + editorial boost (featured +20, topical boosts up to +30).<br>We have no real viewer statistics, so we never pretend to — this is an editorial/algorithmic blend, and real analytics can be plugged into the same pipeline later.<br>${boostReasons.length ? 'Current boosts: ' + boostReasons.map(b => `${esc(b.reason)} (+${b.boost})`).join(' · ') : ''}</div>
-  <section class="section" id="trending-now"><div class="section-head"><h2>🔥 Trending Now</h2><a href="#new-releases">New releases ↓</a></div><p class="section-note">Top 24 by trending score. Old classics rarely appear here — that is the point.</p><div class="grid grid-2">${trendTop.map((m,i) => card(m, {rank: i+1, reason:true})).join('')}</div></section>
-  <section class="section"><div class="section-head"><h2>⭐ Popular</h2></div><p class="section-note">Top 24 by NEXTCLIP editorial score.</p><div class="grid">${popularTop.map(card).join('')}</div></section>
+  body: `<main class="shell"><section class="hero"><div class="eyebrow">Editorial rankings</div><h1>Trending, Popular &amp; Picks</h1><p class="lead">Four independent concepts, curated by the NEXTCLIP editorial team. No fake view counts, no live-traffic claims — real analytics will plug in here later.</p></section>
+  <div class="trend-note"><b style="color:var(--text)">How Trending Now works.</b><br>Trending Now is an <b>editorially curated list</b> (managed in content/rankings.json). It is NOT derived from ratings, recency or traffic. When NEXTCLIP has real user activity, Trending can switch to: recent engagement + growth rate + searches + clicks + recency — without changing the site architecture.</div>
+  <section class="section" id="trending-now"><div class="section-head"><h2>🔥 Trending Movies</h2></div><p class="section-note">Curated by the editorial team.</p><div class="grid grid-2">${trendTopMovie.map((m,i) => card(m, {rank: m.trendingRank})).join('') || '<p style="color:var(--muted)">No trending movies configured yet.</p>'}</div></section>
+  <section class="section"><div class="section-head"><h2>🔥 Trending Series</h2></div><p class="section-note">Curated by the editorial team.</p><div class="grid grid-2">${trendTopSeries.map((m,i) => card(m, {rank: m.trendingRank})).join('') || '<p style="color:var(--muted)">No trending series configured yet.</p>'}</div></section>
+  <section class="section"><div class="section-head"><h2>🔥 Trending Anime</h2></div><p class="section-note">Curated by the editorial team.</p><div class="grid grid-2">${trendTopAnime.map((m,i) => card(m, {rank: m.trendingRank})).join('') || '<p style="color:var(--muted)">No trending anime configured yet.</p>'}</div></section>
+  <section class="section" id="editors-picks"><div class="section-head"><h2>👑 Editor\'s Picks</h2></div><p class="section-note">Personal recommendations from the NEXTCLIP desk — independent of trending and popularity.</p><div class="grid grid-2">${editorTop.map(m => card(m)).join('') || '<p style="color:var(--muted)">No editor\'s picks configured yet.</p>'}</div></section>
+  <section class="section"><div class="section-head"><h2>⭐ Popular</h2></div><p class="section-note">Evergreen favourites, editorially ranked per content type.</p><div class="grid">${popularTop.map(card).join('')}</div></section>
   <section class="section" id="new-releases"><div class="section-head"><h2>🆕 New Releases</h2></div><p class="section-note">Newest verified release years (${CURRENT_YEAR - 2}–${CURRENT_YEAR}). Older titles are never re-labelled as new.</p><div class="grid">${newTop.map(card).join('')}</div></section>
   <section class="section" id="classics"><div class="section-head"><h2>🎞️ Classics</h2></div><p class="section-note">Titles from 2000 and earlier, ranked by editorial score.</p><div class="grid">${classicTop.map(card).join('')}</div></section></main>`
 }));
@@ -573,7 +616,7 @@ for (const m of movies) {
     activeNav: typeDir === 'movie' ? 'movies' : (typeDir === 'series' ? 'series' : 'anime'),
     schema: schemaList,
     image: poster(m),
-    body: `<main class="shell"><div class="crumb"><a href="${url('/')}">Home</a> / <a href="${url('/' + (typeDir === 'movie' ? 'movies' : typeDir) + '/')}">${esc(typeDir === 'movie' ? 'Movies' : label)}</a> / ${esc(m.title)}</div><section class="movie-hero" style="--movie-backdrop:url('${esc(poster(m))}')">${image(m)}<div><div class="eyebrow">${esc(label)} information</div><h1>${esc(m.title)}</h1><div class="badges"><span class="badge"><span class="type-badge tb-${typeDir}">${typeDir === 'series' ? 'SERIES' : (typeDir === 'anime' ? 'ANIME' : 'MOVIE')}</span></span>${m.year ? `<span class="badge">${m.year}</span>` : ''}${genreBadges.join('')}${m.rating && m.rating.value != null ? `<span class="badge" title="${esc(m.rating.source || 'NEXTCLIP editorial score')}">Editorial score ${esc(String(m.rating.value))}/10</span>` : ''}</div><p class="lead">${esc(m.description || m.teaser || 'Information is being added for this title.')}</p>${m.trailer ? `<a class="cta" href="${esc(m.trailer)}" target="_blank" rel="noopener">Watch trailer on YouTube</a>` : ''}<button class="quiet-link share-action" type="button" data-share-path="${pagePath}" data-share-title="${esc(m.title)}">Share</button></div></section><section class="shell trailer-section">${trailerSection(m)}</section><section class="body"><article class="prose"><h2>About ${esc(m.title)}</h2><p>${esc(m.description || 'A full synopsis is not currently available for this title.')}</p>${m.facts.length ? `<h2>Notes</h2><ul>${m.facts.map(f => `<li>${esc(f)}</li>`).join('')}</ul>` : ''}<h2>More like this</h2>${related.length ? `<div class="grid">${related.map(card).join('')}</div>` : '<p>Related titles are not available yet.</p>'}<h2>Related reading</h2>${relatedArticles.length ? `<div class="list">${relatedArticles.map(a => `<a class="row" href="${url('/article/' + a.slug + '/')}"><div><b>${esc(a.title)}</b><span class="meta" style="font-size:12px;color:var(--muted)">${esc(a.category)}</span></div></a>`).join('')}</div>` : '<p>Related editorial reading is not available for this title yet.</p>'}</article><aside class="aside"><h2>Details</h2><dl><dt>Type</dt><dd>${esc(label)}</dd><dt>Year</dt><dd>${m.year || 'Information unavailable'}</dd><dt>Genre</dt><dd>${m.genres.length ? m.genres.map(esc).join(', ') : (esc(m.genre || 'Information unavailable'))}</dd><dt>Country</dt><dd>${esc(m.country || 'Information unavailable')}</dd><dt>Language</dt><dd>${esc(m.language || 'Information unavailable')}</dd><dt>Runtime</dt><dd>${esc(m.runtime || 'Information unavailable')}</dd><dt>Director</dt><dd>${esc(m.director || 'Information unavailable')}</dd><dt>Cast</dt><dd>${m.cast.length ? m.cast.map(esc).join('; ') : 'Information unavailable'}</dd>${m.trendingScore ? `<dt>Trending score</dt><dd>${m.trendingScore} <span class="score-pill" title="Popularity ${m.popularity} + recency ${m.recency} + editorial boost ${m.editorialBoost}">${m.editorialBoost ? '+' + m.editorialBoost + ' boost' : 'recency-based'}</span></dd>` : ''}</dl></aside></section></main>`
+    body: `<main class="shell"><div class="crumb"><a href="${url('/')}">Home</a> / <a href="${url('/' + (typeDir === 'movie' ? 'movies' : typeDir) + '/')}">${esc(typeDir === 'movie' ? 'Movies' : label)}</a> / ${esc(m.title)}</div><section class="movie-hero" style="--movie-backdrop:url('${esc(poster(m))}')">${image(m)}<div><div class="eyebrow">${esc(label)} information</div><h1>${esc(m.title)}</h1><div class="badges"><span class="badge"><span class="type-badge tb-${typeDir}">${typeDir === 'series' ? 'SERIES' : (typeDir === 'anime' ? 'ANIME' : 'MOVIE')}</span></span>${m.year ? `<span class="badge">${m.year}</span>` : ''}${genreBadges.join('')}${m.rating && m.rating.value != null ? `<span class="badge" title="${esc(m.rating.source || 'NEXTCLIP editorial score')}">Editorial score ${esc(String(m.rating.value))}/10</span>` : ''}${m.trending ? `<span class="badge" title="Editorially curated — not live traffic data">🔥 Trending #${m.trendingRank}</span>` : ''}${m.popular ? `<span class="badge" title="Editorial popular pick">⭐ Popular</span>` : ''}${m.editorPick ? `<span class="badge" title="NEXTCLIP editor's recommendation">👑 Editor's Pick</span>` : ''}</div><p class="lead">${esc(m.description || m.teaser || 'Information is being added for this title.')}</p>${m.trailer ? `<a class="cta" href="${esc(m.trailer)}" target="_blank" rel="noopener">Watch trailer on YouTube</a>` : ''}<button class="quiet-link share-action" type="button" data-share-path="${pagePath}" data-share-title="${esc(m.title)}">Share</button></div></section><section class="shell trailer-section">${trailerSection(m)}</section><section class="body"><article class="prose"><h2>About ${esc(m.title)}</h2><p>${esc(m.description || 'A full synopsis is not currently available for this title.')}</p>${m.facts.length ? `<h2>Notes</h2><ul>${m.facts.map(f => `<li>${esc(f)}</li>`).join('')}</ul>` : ''}<h2>More like this</h2>${related.length ? `<div class="grid">${related.map(card).join('')}</div>` : '<p>Related titles are not available yet.</p>'}<h2>Related reading</h2>${relatedArticles.length ? `<div class="list">${relatedArticles.map(a => `<a class="row" href="${url('/article/' + a.slug + '/')}"><div><b>${esc(a.title)}</b><span class="meta" style="font-size:12px;color:var(--muted)">${esc(a.category)}</span></div></a>`).join('')}</div>` : '<p>Related editorial reading is not available for this title yet.</p>'}</article><aside class="aside"><h2>Details</h2><dl><dt>Type</dt><dd>${esc(label)}</dd><dt>Year</dt><dd>${m.year || 'Information unavailable'}</dd><dt>Genre</dt><dd>${m.genres.length ? m.genres.map(esc).join(', ') : (esc(m.genre || 'Information unavailable'))}</dd><dt>Country</dt><dd>${esc(m.country || 'Information unavailable')}</dd><dt>Language</dt><dd>${esc(m.language || 'Information unavailable')}</dd><dt>Runtime</dt><dd>${esc(m.runtime || 'Information unavailable')}</dd><dt>Director</dt><dd>${esc(m.director || 'Information unavailable')}</dd><dt>Cast</dt><dd>${m.cast.length ? m.cast.map(esc).join('; ') : 'Information unavailable'}</dd>${m.trending ? `<dt>Trending</dt><dd>🔥 #${m.trendingRank} (editorially curated)${m.trendingUntil ? ` · until ${m.trendingUntil}` : ''}</dd>` : ''}${m.popular ? `<dt>Popular</dt><dd>⭐ #${m.popularRank} (editorial popular pick)</dd>` : ''}${m.editorPick ? `<dt>Editor's Pick</dt><dd>👑 #${m.editorPickRank}${m.editorPickNote ? ` — ${esc(m.editorPickNote)}` : ''}</dd>` : ''}</dl></aside></section></main>`
   }));
   if (typeDir !== 'movie') {
     write(`movie/${m.slug}`, layout({
@@ -688,10 +731,13 @@ const report = [
   `- Per-type genre pages: ${genrePaths.length}`,
   `- Indexable URLs in sitemap: **${[...new Set(paths)].length}**`,
   '',
-  '## Trending (transparent score)',
-  `- Formula: popularity (editorial rating × 10) + recency (100 − (${CURRENT_YEAR} − year) × 8) + editorial boost (featured +20, topical +10..30)`,
-  `- Top 5: ${trendingList.slice(0, 5).map(m => `${m.title} (${m.trendingScore})`).join(', ')}`,
-  `- No viewer statistics are used or claimed.`,
+  '## Rankings (editorially curated)',
+  `- Trending Now: ${trendingList.length} titles (${trendingByType.movie.length} movies / ${trendingByType.series.length} series / ${trendingByType.anime.length} anime), ranked by trendingRank ASC from content/rankings.json`,
+  `- Popular: ${popularList.length} titles (${popularByType.movie.length} movies / ${popularByType.series.length} series / ${popularByType.anime.length} anime), independent of trending`,
+  `- Editor's Picks: ${editorPicksList.length} titles, independent of trending/popular`,
+  `- Featured hero: ${hero ? hero.title : 'none'}`,
+  `- Deterministic: same catalogue + same rankings.json always produces the same lists (no random, no score-based trending)`,
+  `- Future: Trending Score = recent engagement + growth rate + searches + clicks + recency, once real analytics exist`,
   '',
   '## Trailer system',
   `- Official trailers: **${trailerStats.official}**`,
@@ -704,7 +750,7 @@ const report = [
   '- Fan-made videos are labelled "Community trailer" with a disclaimer; never "Official Trailer".',
   '',
   '## Editorial config',
-  `- Featured: ${featuredList.length} titles; boosts: ${boostReasons.length}`,
+  `- Featured hero: ${hero ? hero.title : 'none'} (content/rankings.json)`,
   ''
 ].join('\n');
 fs.writeFileSync(path.join(root, 'reports', 'catalogue-report.md'), report);

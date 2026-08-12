@@ -1,6 +1,6 @@
 # NEXTCLIP catalogue & frontend report
 
-Generated: 2026-08-12T21:25:39.752Z
+Generated: 2026-08-12T21:53:12.044Z
 
 ## Catalogue
 - Total titles: **630**
@@ -24,10 +24,13 @@ Generated: 2026-08-12T21:25:39.752Z
 - Per-type genre pages: 60
 - Indexable URLs in sitemap: **792**
 
-## Trending (transparent score)
-- Formula: popularity (editorial rating × 10) + recency (100 − (2026 − year) × 8) + editorial boost (featured +20, topical +10..30)
-- Top 5: Squid Game (200), Dune: Part Two (194), The Last of Us (191), Oppenheimer (186), Nosferatu (174)
-- No viewer statistics are used or claimed.
+## Rankings (editorially curated)
+- Trending Now: 22 titles (10 movies / 6 series / 6 anime), ranked by trendingRank ASC from content/rankings.json
+- Popular: 28 titles (12 movies / 8 series / 8 anime), independent of trending
+- Editor's Picks: 6 titles, independent of trending/popular
+- Featured hero: Interstellar
+- Deterministic: same catalogue + same rankings.json always produces the same lists (no random, no score-based trending)
+- Future: Trending Score = recent engagement + growth rate + searches + clicks + recency, once real analytics exist
 
 ## Trailer system
 - Official trailers: **568**
@@ -40,4 +43,4 @@ Generated: 2026-08-12T21:25:39.752Z
 - Fan-made videos are labelled "Community trailer" with a disclaimer; never "Official Trailer".
 
 ## Editorial config
-- Featured: 8 titles; boosts: 33
+- Featured hero: Interstellar (content/rankings.json)
