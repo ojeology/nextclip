@@ -23,9 +23,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "Oj55KinxZx4",
+  "trailer": "https://www.youtube.com/watch?v=Oj55KinxZx4",
+  "poster": "https://i.ytimg.com/vi/Oj55KinxZx4/hqdefault.jpg"
  },
  {
   "id": "28-years-later",
@@ -113,9 +113,9 @@
   "country": "Japan",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "nfK6UgLra7g",
+  "trailer": "https://www.youtube.com/watch?v=nfK6UgLra7g",
+  "poster": "https://i.ytimg.com/vi/nfK6UgLra7g/hqdefault.jpg"
  },
  {
   "id": "a-taxi-driver",
@@ -146,9 +146,9 @@
   "country": "Nigeria",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "-UU1qPtU4Lc",
+  "trailer": "https://www.youtube.com/watch?v=-UU1qPtU4Lc",
+  "poster": "https://i.ytimg.com/vi/-UU1qPtU4Lc/hqdefault.jpg"
  },
  {
   "id": "aftersun",
@@ -179,9 +179,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "R9pXbNz6Vbw",
+  "trailer": "https://www.youtube.com/watch?v=R9pXbNz6Vbw",
+  "poster": "https://i.ytimg.com/vi/R9pXbNz6Vbw/hqdefault.jpg"
  },
  {
   "id": "airplane",
@@ -193,9 +193,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "07pPmCfKi3U",
+  "trailer": "https://www.youtube.com/watch?v=07pPmCfKi3U",
+  "poster": "https://i.ytimg.com/vi/07pPmCfKi3U/hqdefault.jpg"
  },
  {
   "id": "akira",
@@ -206,10 +206,10 @@
   "genre": "Animation",
   "country": "Japan",
   "language": "Japanese",
-  "poster": null,
+  "poster": "https://i.ytimg.com/vi/E-FH3O_753Q/hqdefault.jpg",
   "backdrop": null,
-  "trailer": null,
-  "youtubeId": null,
+  "trailer": "https://www.youtube.com/watch?v=E-FH3O_753Q",
+  "youtubeId": "E-FH3O_753Q",
   "cast": [],
   "director": null,
   "runtime": null,
@@ -245,9 +245,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "3F3zxLwFoyw",
+  "trailer": "https://www.youtube.com/watch?v=3F3zxLwFoyw",
+  "poster": "https://i.ytimg.com/vi/3F3zxLwFoyw/hqdefault.jpg"
  },
  {
   "id": "alien-resurrection",
@@ -259,9 +259,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "53If-aOy58A",
+  "trailer": "https://www.youtube.com/watch?v=53If-aOy58A",
+  "poster": "https://i.ytimg.com/vi/53If-aOy58A/hqdefault.jpg"
  },
  {
   "id": "alien-romulus",
@@ -292,9 +292,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "oSeQQlaCZgU",
+  "trailer": "https://www.youtube.com/watch?v=oSeQQlaCZgU",
+  "poster": "https://i.ytimg.com/vi/oSeQQlaCZgU/hqdefault.jpg"
  },
  {
   "id": "all-of-us-are-dead",
@@ -306,9 +306,9 @@
   "country": "Korea",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "IN5TD4VRcSM",
+  "trailer": "https://www.youtube.com/watch?v=IN5TD4VRcSM",
+  "poster": "https://i.ytimg.com/vi/IN5TD4VRcSM/hqdefault.jpg"
  },
  {
   "id": "all-quiet-on-the-western-front",
@@ -339,9 +339,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "-tnxzJ0SSOw",
+  "trailer": "https://www.youtube.com/watch?v=-tnxzJ0SSOw",
+  "poster": "https://i.ytimg.com/vi/-tnxzJ0SSOw/hqdefault.jpg"
  },
  {
   "id": "amelie",
@@ -353,9 +353,9 @@
   "country": "France",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "HUECWi5pX7o",
+  "trailer": "https://www.youtube.com/watch?v=HUECWi5pX7o",
+  "poster": "https://i.ytimg.com/vi/HUECWi5pX7o/hqdefault.jpg"
  },
  {
   "id": "anchorman",
@@ -367,9 +367,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "QvJ1K0_JzFI",
+  "trailer": "https://www.youtube.com/watch?v=QvJ1K0_JzFI",
+  "poster": "https://i.ytimg.com/vi/QvJ1K0_JzFI/hqdefault.jpg"
  },
  {
   "id": "andhadhun",
@@ -380,10 +380,10 @@
   "genre": "Thriller",
   "country": "India",
   "language": "Hindi",
-  "poster": null,
+  "poster": "https://i.ytimg.com/vi/Yw7ue1e23jM/hqdefault.jpg",
   "backdrop": null,
-  "trailer": null,
-  "youtubeId": null,
+  "trailer": "https://www.youtube.com/watch?v=Yw7ue1e23jM",
+  "youtubeId": "Yw7ue1e23jM",
   "cast": [],
   "director": null,
   "runtime": null,
@@ -471,9 +471,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "UUkn-enk2RU",
+  "trailer": "https://www.youtube.com/watch?v=UUkn-enk2RU",
+  "poster": "https://i.ytimg.com/vi/UUkn-enk2RU/hqdefault.jpg"
  },
  {
   "id": "apocalypse-now",
@@ -499,9 +499,9 @@
   "country": "Japan",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "XYNGkSvFT8c",
+  "trailer": "https://www.youtube.com/watch?v=XYNGkSvFT8c",
+  "poster": "https://i.ytimg.com/vi/XYNGkSvFT8c/hqdefault.jpg"
  },
  {
   "id": "aquaman-2",
@@ -513,9 +513,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "UGc5Tzz19UY",
+  "trailer": "https://www.youtube.com/watch?v=UGc5Tzz19UY",
+  "poster": "https://i.ytimg.com/vi/UGc5Tzz19UY/hqdefault.jpg"
  },
  {
   "id": "arcane-season-2",
@@ -527,9 +527,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "ysqiEC6bLUI",
+  "trailer": "https://www.youtube.com/watch?v=ysqiEC6bLUI",
+  "poster": "https://i.ytimg.com/vi/ysqiEC6bLUI/hqdefault.jpg"
  },
  {
   "id": "article-15",
@@ -540,10 +540,10 @@
   "genre": "Crime",
   "country": "India",
   "language": "Hindi",
-  "poster": null,
+  "poster": "https://i.ytimg.com/vi/Nme0it4iX94/hqdefault.jpg",
   "backdrop": null,
-  "trailer": null,
-  "youtubeId": null,
+  "trailer": "https://www.youtube.com/watch?v=Nme0it4iX94",
+  "youtubeId": "Nme0it4iX94",
   "cast": [],
   "director": null,
   "runtime": null,
@@ -560,9 +560,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "IGDdv88uJsQ",
+  "trailer": "https://www.youtube.com/watch?v=IGDdv88uJsQ",
+  "poster": "https://i.ytimg.com/vi/IGDdv88uJsQ/hqdefault.jpg"
  },
  {
   "id": "attack-on-titan",
@@ -612,9 +612,9 @@
   "country": "India",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "3NQRhE772b0",
+  "trailer": "https://www.youtube.com/watch?v=3NQRhE772b0",
+  "poster": "https://i.ytimg.com/vi/3NQRhE772b0/hqdefault.jpg"
  },
  {
   "id": "baahubali-2",
@@ -626,9 +626,9 @@
   "country": "India",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "X4hEii_WRPA",
+  "trailer": "https://www.youtube.com/watch?v=X4hEii_WRPA",
+  "poster": "https://i.ytimg.com/vi/X4hEii_WRPA/hqdefault.jpg"
  },
  {
   "id": "baahubali-the-beginning",
@@ -659,9 +659,9 @@
   "country": "Australia",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "k5WQZzDRVtw",
+  "trailer": "https://www.youtube.com/watch?v=k5WQZzDRVtw",
+  "poster": "https://i.ytimg.com/vi/k5WQZzDRVtw/hqdefault.jpg"
  },
  {
   "id": "back-to-the-future",
@@ -673,9 +673,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "qvsgGtivCgs",
+  "trailer": "https://www.youtube.com/watch?v=qvsgGtivCgs",
+  "poster": "https://i.ytimg.com/vi/qvsgGtivCgs/hqdefault.jpg"
  },
  {
   "id": "back-to-the-future-2",
@@ -687,9 +687,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "MdENmefJRpw",
+  "trailer": "https://www.youtube.com/watch?v=MdENmefJRpw",
+  "poster": "https://i.ytimg.com/vi/MdENmefJRpw/hqdefault.jpg"
  },
  {
   "id": "back-to-the-future-3",
@@ -701,9 +701,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "3C8c3EoEfw4",
+  "trailer": "https://www.youtube.com/watch?v=3C8c3EoEfw4",
+  "poster": "https://i.ytimg.com/vi/3C8c3EoEfw4/hqdefault.jpg"
  },
  {
   "id": "bajrangi-bhaijaan",
@@ -729,9 +729,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "KKRBAFlN5ww",
+  "trailer": "https://www.youtube.com/watch?v=KKRBAFlN5ww",
+  "poster": "https://i.ytimg.com/vi/KKRBAFlN5ww/hqdefault.jpg"
  },
  {
   "id": "barry-lyndon",
@@ -756,10 +756,10 @@
   "genre": "Thriller",
   "country": "Japan",
   "language": "Japanese",
-  "poster": null,
+  "poster": "https://i.ytimg.com/vi/N0p1t-dC7Ko/hqdefault.jpg",
   "backdrop": null,
-  "trailer": null,
-  "youtubeId": null,
+  "trailer": "https://www.youtube.com/watch?v=N0p1t-dC7Ko",
+  "youtubeId": "N0p1t-dC7Ko",
   "cast": [],
   "director": null,
   "runtime": null,
@@ -776,9 +776,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "6MUcuqbGTxc",
+  "trailer": "https://www.youtube.com/watch?v=6MUcuqbGTxc",
+  "poster": "https://i.ytimg.com/vi/6MUcuqbGTxc/hqdefault.jpg"
  },
  {
   "id": "better-call-saul",
@@ -790,9 +790,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "l1xIGfVFb-U",
+  "trailer": "https://www.youtube.com/watch?v=l1xIGfVFb-U",
+  "poster": "https://i.ytimg.com/vi/l1xIGfVFb-U/hqdefault.jpg"
  },
  {
   "id": "black-clover",
@@ -804,9 +804,9 @@
   "country": "Japan",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "9QyiEgv33z4",
+  "trailer": "https://www.youtube.com/watch?v=9QyiEgv33z4",
+  "poster": "https://i.ytimg.com/vi/9QyiEgv33z4/hqdefault.jpg"
  },
  {
   "id": "black-mirror",
@@ -818,9 +818,9 @@
   "country": "United Kingdom",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "1iqra1ojEvM",
+  "trailer": "https://www.youtube.com/watch?v=1iqra1ojEvM",
+  "poster": "https://i.ytimg.com/vi/1iqra1ojEvM/hqdefault.jpg"
  },
  {
   "id": "black-panther-2",
@@ -832,9 +832,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "_Z3QKkl1WyM",
+  "trailer": "https://www.youtube.com/watch?v=_Z3QKkl1WyM",
+  "poster": "https://i.ytimg.com/vi/_Z3QKkl1WyM/hqdefault.jpg"
  },
  {
   "id": "blade-runner",
@@ -846,9 +846,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "eogpIG53Cis",
+  "trailer": "https://www.youtube.com/watch?v=eogpIG53Cis",
+  "poster": "https://i.ytimg.com/vi/eogpIG53Cis/hqdefault.jpg"
  },
  {
   "id": "blazing-saddles",
@@ -860,9 +860,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "VKayG1TrfuE",
+  "trailer": "https://www.youtube.com/watch?v=VKayG1TrfuE",
+  "poster": "https://i.ytimg.com/vi/VKayG1TrfuE/hqdefault.jpg"
  },
  {
   "id": "bleach",
@@ -874,9 +874,9 @@
   "country": "Japan",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "DLRjhptssns",
+  "trailer": "https://www.youtube.com/watch?v=DLRjhptssns",
+  "poster": "https://i.ytimg.com/vi/DLRjhptssns/hqdefault.jpg"
  },
  {
   "id": "blockers",
@@ -888,9 +888,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "RfFcaV5O7SU",
+  "trailer": "https://www.youtube.com/watch?v=RfFcaV5O7SU",
+  "poster": "https://i.ytimg.com/vi/RfFcaV5O7SU/hqdefault.jpg"
  },
  {
   "id": "blood-sisters",
@@ -902,9 +902,9 @@
   "country": "Nigeria",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "r9sSydb5ec8",
+  "trailer": "https://www.youtube.com/watch?v=r9sSydb5ec8",
+  "poster": "https://i.ytimg.com/vi/r9sSydb5ec8/hqdefault.jpg"
  },
  {
   "id": "blue-beetle",
@@ -935,9 +935,9 @@
   "country": "Japan",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "IVsII3dLbWc",
+  "trailer": "https://www.youtube.com/watch?v=IVsII3dLbWc",
+  "poster": "https://i.ytimg.com/vi/IVsII3dLbWc/hqdefault.jpg"
  },
  {
   "id": "bodyguard",
@@ -949,9 +949,9 @@
   "country": "United Kingdom",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "tLfLU6-9lxY",
+  "trailer": "https://www.youtube.com/watch?v=tLfLU6-9lxY",
+  "poster": "https://i.ytimg.com/vi/tLfLU6-9lxY/hqdefault.jpg"
  },
  {
   "id": "booksmart",
@@ -963,9 +963,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "VjGJm3wV5-I",
+  "trailer": "https://www.youtube.com/watch?v=VjGJm3wV5-I",
+  "poster": "https://i.ytimg.com/vi/VjGJm3wV5-I/hqdefault.jpg"
  },
  {
   "id": "bourne-identity",
@@ -977,9 +977,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "FpKaB5dvQ4g",
+  "trailer": "https://www.youtube.com/watch?v=FpKaB5dvQ4g",
+  "poster": "https://i.ytimg.com/vi/FpKaB5dvQ4g/hqdefault.jpg"
  },
  {
   "id": "bourne-supremacy",
@@ -991,9 +991,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "Y-HqyyfBbSo",
+  "trailer": "https://www.youtube.com/watch?v=Y-HqyyfBbSo",
+  "poster": "https://i.ytimg.com/vi/Y-HqyyfBbSo/hqdefault.jpg"
  },
  {
   "id": "bourne-ultimatum",
@@ -1005,9 +1005,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "ZT2ZxjUjSo0",
+  "trailer": "https://www.youtube.com/watch?v=ZT2ZxjUjSo0",
+  "poster": "https://i.ytimg.com/vi/ZT2ZxjUjSo0/hqdefault.jpg"
  },
  {
   "id": "breaded-life",
@@ -1018,10 +1018,10 @@
   "genre": "Comedy",
   "country": "Nigeria",
   "language": "English",
-  "poster": null,
+  "poster": "https://i.ytimg.com/vi/4gs_-ngK5Tk/hqdefault.jpg",
   "backdrop": null,
-  "trailer": null,
-  "youtubeId": null,
+  "trailer": "https://www.youtube.com/watch?v=4gs_-ngK5Tk",
+  "youtubeId": "4gs_-ngK5Tk",
   "cast": [],
   "director": null,
   "runtime": null,
@@ -1052,9 +1052,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "FNppLrmdyug",
+  "trailer": "https://www.youtube.com/watch?v=FNppLrmdyug",
+  "poster": "https://i.ytimg.com/vi/FNppLrmdyug/hqdefault.jpg"
  },
  {
   "id": "brotherhood",
@@ -1065,10 +1065,10 @@
   "genre": "Crime",
   "country": "Nigeria",
   "language": "English",
-  "poster": null,
+  "poster": "https://i.ytimg.com/vi/cJaR6ScaKmM/hqdefault.jpg",
   "backdrop": null,
-  "trailer": null,
-  "youtubeId": null,
+  "trailer": "https://www.youtube.com/watch?v=cJaR6ScaKmM",
+  "youtubeId": "cJaR6ScaKmM",
   "cast": [],
   "director": null,
   "runtime": null,
@@ -1084,10 +1084,10 @@
   "genre": "Thriller",
   "country": "South Korea",
   "language": "Korean",
-  "poster": null,
+  "poster": "https://i.ytimg.com/vi/AUN9IPMwEPY/hqdefault.jpg",
   "backdrop": null,
-  "trailer": null,
-  "youtubeId": null,
+  "trailer": "https://www.youtube.com/watch?v=AUN9IPMwEPY",
+  "youtubeId": "AUN9IPMwEPY",
   "cast": [],
   "director": null,
   "runtime": null,
@@ -1104,9 +1104,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "Z9AYPxH5NTM",
+  "trailer": "https://www.youtube.com/watch?v=Z9AYPxH5NTM",
+  "poster": "https://i.ytimg.com/vi/Z9AYPxH5NTM/hqdefault.jpg"
  },
  {
   "id": "captain-america",
@@ -1118,9 +1118,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "JerVrbLldXw",
+  "trailer": "https://www.youtube.com/watch?v=JerVrbLldXw",
+  "poster": "https://i.ytimg.com/vi/JerVrbLldXw/hqdefault.jpg"
  },
  {
   "id": "carrie",
@@ -1132,9 +1132,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "j9Mg-GRS46Y",
+  "trailer": "https://www.youtube.com/watch?v=j9Mg-GRS46Y",
+  "poster": "https://i.ytimg.com/vi/j9Mg-GRS46Y/hqdefault.jpg"
  },
  {
   "id": "casablanca",
@@ -1165,9 +1165,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "EJXDMwGWhoA",
+  "trailer": "https://www.youtube.com/watch?v=EJXDMwGWhoA",
+  "poster": "https://i.ytimg.com/vi/EJXDMwGWhoA/hqdefault.jpg"
  },
  {
   "id": "castle-in-sky",
@@ -1179,9 +1179,9 @@
   "country": "Japan",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "5lMRfLJGXSM",
+  "trailer": "https://www.youtube.com/watch?v=5lMRfLJGXSM",
+  "poster": "https://i.ytimg.com/vi/5lMRfLJGXSM/hqdefault.jpg"
  },
  {
   "id": "chainsaw-man",
@@ -1231,9 +1231,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "s9APLXM9Ei8",
+  "trailer": "https://www.youtube.com/watch?v=s9APLXM9Ei8",
+  "poster": "https://i.ytimg.com/vi/s9APLXM9Ei8/hqdefault.jpg"
  },
  {
   "id": "children-of-men",
@@ -1245,9 +1245,9 @@
   "country": "United Kingdom",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "2VT2apoX90o",
+  "trailer": "https://www.youtube.com/watch?v=2VT2apoX90o",
+  "poster": "https://i.ytimg.com/vi/2VT2apoX90o/hqdefault.jpg"
  },
  {
   "id": "citation",
@@ -1258,10 +1258,10 @@
   "genre": "Drama",
   "country": "Nigeria",
   "language": "English",
-  "poster": null,
+  "poster": "https://i.ytimg.com/vi/1eMAYynMc1w/hqdefault.jpg",
   "backdrop": null,
-  "trailer": null,
-  "youtubeId": null,
+  "trailer": "https://www.youtube.com/watch?v=1eMAYynMc1w",
+  "youtubeId": "1eMAYynMc1w",
   "cast": [],
   "director": null,
   "runtime": null,
@@ -1297,9 +1297,9 @@
   "country": "United Kingdom",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "T54uZPI4Z8A",
+  "trailer": "https://www.youtube.com/watch?v=T54uZPI4Z8A",
+  "poster": "https://i.ytimg.com/vi/T54uZPI4Z8A/hqdefault.jpg"
  },
  {
   "id": "cloud-atlas",
@@ -1311,9 +1311,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "ByehYal_cCs",
+  "trailer": "https://www.youtube.com/watch?v=ByehYal_cCs",
+  "poster": "https://i.ytimg.com/vi/ByehYal_cCs/hqdefault.jpg"
  },
  {
   "id": "code-geass",
@@ -1325,9 +1325,9 @@
   "country": "Japan",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "HyDqROvRDVM",
+  "trailer": "https://www.youtube.com/watch?v=HyDqROvRDVM",
+  "poster": "https://i.ytimg.com/vi/HyDqROvRDVM/hqdefault.jpg"
  },
  {
   "id": "con-air",
@@ -1339,9 +1339,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "Olvpk5BXWCI",
+  "trailer": "https://www.youtube.com/watch?v=Olvpk5BXWCI",
+  "poster": "https://i.ytimg.com/vi/Olvpk5BXWCI/hqdefault.jpg"
  },
  {
   "id": "conclave",
@@ -1371,10 +1371,10 @@
   "genre": "Drama",
   "country": "India",
   "language": "Marathi",
-  "poster": null,
+  "poster": "https://i.ytimg.com/vi/MEOeJEFKs0E/hqdefault.jpg",
   "backdrop": null,
-  "trailer": null,
-  "youtubeId": null,
+  "trailer": "https://www.youtube.com/watch?v=MEOeJEFKs0E",
+  "youtubeId": "MEOeJEFKs0E",
   "cast": [],
   "director": null,
   "runtime": null,
@@ -1391,9 +1391,9 @@
   "country": "Japan",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "OhNwckCLzis",
+  "trailer": "https://www.youtube.com/watch?v=OhNwckCLzis",
+  "poster": "https://i.ytimg.com/vi/OhNwckCLzis/hqdefault.jpg"
  },
  {
   "id": "crash-landing-on-you",
@@ -1405,9 +1405,9 @@
   "country": "Korea",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "GVQGWgeVc4k",
+  "trailer": "https://www.youtube.com/watch?v=GVQGWgeVc4k",
+  "poster": "https://i.ytimg.com/vi/GVQGWgeVc4k/hqdefault.jpg"
  },
  {
   "id": "crazy-rich-asians",
@@ -1419,9 +1419,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "ZQ-YX-5bAs0",
+  "trailer": "https://www.youtube.com/watch?v=ZQ-YX-5bAs0",
+  "poster": "https://i.ytimg.com/vi/ZQ-YX-5bAs0/hqdefault.jpg"
  },
  {
   "id": "creed",
@@ -1433,9 +1433,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "Uv554B7YHk4",
+  "trailer": "https://www.youtube.com/watch?v=Uv554B7YHk4",
+  "poster": "https://i.ytimg.com/vi/Uv554B7YHk4/hqdefault.jpg"
  },
  {
   "id": "crouching-tiger",
@@ -1447,9 +1447,9 @@
   "country": "Taiwan",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "-jTdOdcMKoY",
+  "trailer": "https://www.youtube.com/watch?v=-jTdOdcMKoY",
+  "poster": "https://i.ytimg.com/vi/-jTdOdcMKoY/hqdefault.jpg"
  },
  {
   "id": "dandadan",
@@ -1494,9 +1494,9 @@
   "country": "Germany",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "rrwycJ08PSA",
+  "trailer": "https://www.youtube.com/watch?v=rrwycJ08PSA",
+  "poster": "https://i.ytimg.com/vi/rrwycJ08PSA/hqdefault.jpg"
  },
  {
   "id": "death-note",
@@ -1564,10 +1564,10 @@
   "genre": "Drama",
   "country": "Japan",
   "language": "Japanese",
-  "poster": null,
+  "poster": "https://i.ytimg.com/vi/3swP6tdmnJk/hqdefault.jpg",
   "backdrop": null,
-  "trailer": null,
-  "youtubeId": null,
+  "trailer": "https://www.youtube.com/watch?v=3swP6tdmnJk",
+  "youtubeId": "3swP6tdmnJk",
   "cast": [],
   "director": null,
   "runtime": null,
@@ -1598,9 +1598,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "jaJuwKCmJbY",
+  "trailer": "https://www.youtube.com/watch?v=jaJuwKCmJbY",
+  "poster": "https://i.ytimg.com/vi/jaJuwKCmJbY/hqdefault.jpg"
  },
  {
   "id": "die-hard-2",
@@ -1612,9 +1612,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "CvHp7xJZ4_U",
+  "trailer": "https://www.youtube.com/watch?v=CvHp7xJZ4_U",
+  "poster": "https://i.ytimg.com/vi/CvHp7xJZ4_U/hqdefault.jpg"
  },
  {
   "id": "die-hard-3",
@@ -1626,9 +1626,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "QKxQ5SBzLWA",
+  "trailer": "https://www.youtube.com/watch?v=QKxQ5SBzLWA",
+  "poster": "https://i.ytimg.com/vi/QKxQ5SBzLWA/hqdefault.jpg"
  },
  {
   "id": "district-9",
@@ -1640,9 +1640,9 @@
   "country": "South Africa",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "DyLUwOcR5pk",
+  "trailer": "https://www.youtube.com/watch?v=DyLUwOcR5pk",
+  "poster": "https://i.ytimg.com/vi/DyLUwOcR5pk/hqdefault.jpg"
  },
  {
   "id": "do-the-right-thing",
@@ -1653,10 +1653,10 @@
   "genre": "Drama",
   "country": "United States",
   "language": "English",
-  "poster": null,
+  "poster": "https://i.ytimg.com/vi/5Ny631yQ-DM/hqdefault.jpg",
   "backdrop": null,
-  "trailer": null,
-  "youtubeId": null,
+  "trailer": "https://www.youtube.com/watch?v=5Ny631yQ-DM",
+  "youtubeId": "5Ny631yQ-DM",
   "cast": [],
   "director": null,
   "runtime": null,
@@ -1673,9 +1673,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "h7gvFravm4A",
+  "trailer": "https://www.youtube.com/watch?v=h7gvFravm4A",
+  "poster": "https://i.ytimg.com/vi/h7gvFravm4A/hqdefault.jpg"
  },
  {
   "id": "downton-abbey",
@@ -1687,9 +1687,9 @@
   "country": "United Kingdom",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "tu3mP0c51hE",
+  "trailer": "https://www.youtube.com/watch?v=tu3mP0c51hE",
+  "poster": "https://i.ytimg.com/vi/tu3mP0c51hE/hqdefault.jpg"
  },
  {
   "id": "dr-strangelove",
@@ -1701,9 +1701,9 @@
   "country": "United Kingdom",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "jPU1AYTxwg4",
+  "trailer": "https://www.youtube.com/watch?v=jPU1AYTxwg4",
+  "poster": "https://i.ytimg.com/vi/jPU1AYTxwg4/hqdefault.jpg"
  },
  {
   "id": "dragon-ball-super",
@@ -1715,9 +1715,9 @@
   "country": "Japan",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "Tf4wBaSj7SE",
+  "trailer": "https://www.youtube.com/watch?v=Tf4wBaSj7SE",
+  "poster": "https://i.ytimg.com/vi/Tf4wBaSj7SE/hqdefault.jpg"
  },
  {
   "id": "dragon-ball-super-broly",
@@ -1729,9 +1729,9 @@
   "country": "Japan",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "FHgm89hKpXU",
+  "trailer": "https://www.youtube.com/watch?v=FHgm89hKpXU",
+  "poster": "https://i.ytimg.com/vi/FHgm89hKpXU/hqdefault.jpg"
  },
  {
   "id": "dragon-ball-super-super-hero",
@@ -1762,9 +1762,9 @@
   "country": "Japan",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "hjmAPk1O2Is",
+  "trailer": "https://www.youtube.com/watch?v=hjmAPk1O2Is",
+  "poster": "https://i.ytimg.com/vi/hjmAPk1O2Is/hqdefault.jpg"
  },
  {
   "id": "drishyam",
@@ -1794,10 +1794,10 @@
   "genre": "Drama",
   "country": "Japan",
   "language": "Japanese",
-  "poster": null,
+  "poster": "https://i.ytimg.com/vi/wxSecn55IS8/hqdefault.jpg",
   "backdrop": null,
-  "trailer": null,
-  "youtubeId": null,
+  "trailer": "https://www.youtube.com/watch?v=wxSecn55IS8",
+  "youtubeId": "wxSecn55IS8",
   "cast": [],
   "director": null,
   "runtime": null,
@@ -1833,9 +1833,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "VjctHUEmutw",
+  "trailer": "https://www.youtube.com/watch?v=VjctHUEmutw",
+  "poster": "https://i.ytimg.com/vi/VjctHUEmutw/hqdefault.jpg"
  },
  {
   "id": "eternal-sunshine",
@@ -1847,9 +1847,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "07-QBnEkgXU",
+  "trailer": "https://www.youtube.com/watch?v=07-QBnEkgXU",
+  "poster": "https://i.ytimg.com/vi/07-QBnEkgXU/hqdefault.jpg"
  },
  {
   "id": "euphoria",
@@ -1861,9 +1861,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "UR4Pxgnm-GA",
+  "trailer": "https://www.youtube.com/watch?v=UR4Pxgnm-GA",
+  "poster": "https://i.ytimg.com/vi/UR4Pxgnm-GA/hqdefault.jpg"
  },
  {
   "id": "everything-everywhere",
@@ -1875,9 +1875,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "wxN1T1uxQ2g",
+  "trailer": "https://www.youtube.com/watch?v=wxN1T1uxQ2g",
+  "poster": "https://i.ytimg.com/vi/wxN1T1uxQ2g/hqdefault.jpg"
  },
  {
   "id": "everything-everywhere-all-at-once",
@@ -1908,9 +1908,9 @@
   "country": "United Kingdom",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "bggUmgeMCdc",
+  "trailer": "https://www.youtube.com/watch?v=bggUmgeMCdc",
+  "poster": "https://i.ytimg.com/vi/bggUmgeMCdc/hqdefault.jpg"
  },
  {
   "id": "extraordinary-attorney-woo",
@@ -1922,9 +1922,9 @@
   "country": "Korea",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "MxeXECe2t-c",
+  "trailer": "https://www.youtube.com/watch?v=MxeXECe2t-c",
+  "poster": "https://i.ytimg.com/vi/MxeXECe2t-c/hqdefault.jpg"
  },
  {
   "id": "extreme-job",
@@ -1935,10 +1935,10 @@
   "genre": "Comedy",
   "country": "South Korea",
   "language": "Korean",
-  "poster": null,
+  "poster": "https://i.ytimg.com/vi/l9Hu3Xocc-g/hqdefault.jpg",
   "backdrop": null,
-  "trailer": null,
-  "youtubeId": null,
+  "trailer": "https://www.youtube.com/watch?v=l9Hu3Xocc-g",
+  "youtubeId": "l9Hu3Xocc-g",
   "cast": [],
   "director": null,
   "runtime": null,
@@ -1955,9 +1955,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "xgVo96JaqeM",
+  "trailer": "https://www.youtube.com/watch?v=xgVo96JaqeM",
+  "poster": "https://i.ytimg.com/vi/xgVo96JaqeM/hqdefault.jpg"
  },
  {
   "id": "eyimofe",
@@ -1968,10 +1968,10 @@
   "genre": "Drama",
   "country": "Nigeria",
   "language": "English",
-  "poster": null,
+  "poster": "https://i.ytimg.com/vi/H9LbzskTaBQ/hqdefault.jpg",
   "backdrop": null,
-  "trailer": null,
-  "youtubeId": null,
+  "trailer": "https://www.youtube.com/watch?v=H9LbzskTaBQ",
+  "youtubeId": "H9LbzskTaBQ",
   "cast": [],
   "director": null,
   "runtime": null,
@@ -1988,9 +1988,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "S-nDX0BeFoQ",
+  "trailer": "https://www.youtube.com/watch?v=S-nDX0BeFoQ",
+  "poster": "https://i.ytimg.com/vi/S-nDX0BeFoQ/hqdefault.jpg"
  },
  {
   "id": "fairy-tail",
@@ -2002,9 +2002,9 @@
   "country": "Japan",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "0WA046q00fU",
+  "trailer": "https://www.youtube.com/watch?v=0WA046q00fU",
+  "poster": "https://i.ytimg.com/vi/0WA046q00fU/hqdefault.jpg"
  },
  {
   "id": "fallout",
@@ -2035,9 +2035,9 @@
   "country": "Nigeria",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "JtrA9DELEhA",
+  "trailer": "https://www.youtube.com/watch?v=JtrA9DELEhA",
+  "poster": "https://i.ytimg.com/vi/JtrA9DELEhA/hqdefault.jpg"
  },
  {
   "id": "fargo",
@@ -2049,9 +2049,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "setgvHG3w48",
+  "trailer": "https://www.youtube.com/watch?v=setgvHG3w48",
+  "poster": "https://i.ytimg.com/vi/setgvHG3w48/hqdefault.jpg"
  },
  {
   "id": "fire-force",
@@ -2063,9 +2063,9 @@
   "country": "Japan",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "fzM43HZ6oeg",
+  "trailer": "https://www.youtube.com/watch?v=fzM43HZ6oeg",
+  "poster": "https://i.ytimg.com/vi/fzM43HZ6oeg/hqdefault.jpg"
  },
  {
   "id": "friends",
@@ -2077,9 +2077,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "RasWhgd4vao",
+  "trailer": "https://www.youtube.com/watch?v=RasWhgd4vao",
+  "poster": "https://i.ytimg.com/vi/RasWhgd4vao/hqdefault.jpg"
  },
  {
   "id": "frieren",
@@ -2091,9 +2091,9 @@
   "country": "Japan",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "Iwr1aLEDpe4",
+  "trailer": "https://www.youtube.com/watch?v=Iwr1aLEDpe4",
+  "poster": "https://i.ytimg.com/vi/Iwr1aLEDpe4/hqdefault.jpg"
  },
  {
   "id": "full-metal-jacket",
@@ -2105,9 +2105,9 @@
   "country": "United Kingdom",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "n2i917l5RFc",
+  "trailer": "https://www.youtube.com/watch?v=n2i917l5RFc",
+  "poster": "https://i.ytimg.com/vi/n2i917l5RFc/hqdefault.jpg"
  },
  {
   "id": "fullmetal-alchemist-brotherhood",
@@ -2166,9 +2166,9 @@
   "country": "India",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "WcHkm2JGrTc",
+  "trailer": "https://www.youtube.com/watch?v=WcHkm2JGrTc",
+  "poster": "https://i.ytimg.com/vi/WcHkm2JGrTc/hqdefault.jpg"
  },
  {
   "id": "gen-v",
@@ -2180,9 +2180,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "mmkLMXN_lpI",
+  "trailer": "https://www.youtube.com/watch?v=mmkLMXN_lpI",
+  "poster": "https://i.ytimg.com/vi/mmkLMXN_lpI/hqdefault.jpg"
  },
  {
   "id": "ghostbusters",
@@ -2194,9 +2194,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "6hDkhw5Wkas",
+  "trailer": "https://www.youtube.com/watch?v=6hDkhw5Wkas",
+  "poster": "https://i.ytimg.com/vi/6hDkhw5Wkas/hqdefault.jpg"
  },
  {
   "id": "gintama",
@@ -2208,9 +2208,9 @@
   "country": "Japan",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "1MXcxr8Hlhw",
+  "trailer": "https://www.youtube.com/watch?v=1MXcxr8Hlhw",
+  "poster": "https://i.ytimg.com/vi/1MXcxr8Hlhw/hqdefault.jpg"
  },
  {
   "id": "girl-with-dragon-tattoo",
@@ -2222,9 +2222,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "DqQe3OrsMKI",
+  "trailer": "https://www.youtube.com/watch?v=DqQe3OrsMKI",
+  "poster": "https://i.ytimg.com/vi/DqQe3OrsMKI/hqdefault.jpg"
  },
  {
   "id": "gladiator-ii",
@@ -2255,9 +2255,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "gj5ibYSz8C0",
+  "trailer": "https://www.youtube.com/watch?v=gj5ibYSz8C0",
+  "poster": "https://i.ytimg.com/vi/gj5ibYSz8C0/hqdefault.jpg"
  },
  {
   "id": "godfather-part-ii",
@@ -2269,9 +2269,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "tF_v4ZZkQWE",
+  "trailer": "https://www.youtube.com/watch?v=tF_v4ZZkQWE",
+  "poster": "https://i.ytimg.com/vi/tF_v4ZZkQWE/hqdefault.jpg"
  },
  {
   "id": "godfather-part-iii",
@@ -2283,9 +2283,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "UUkG37KSWf0",
+  "trailer": "https://www.youtube.com/watch?v=UUkG37KSWf0",
+  "poster": "https://i.ytimg.com/vi/UUkG37KSWf0/hqdefault.jpg"
  },
  {
   "id": "godzilla-2014",
@@ -2297,9 +2297,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "GQyO4ghNox0",
+  "trailer": "https://www.youtube.com/watch?v=GQyO4ghNox0",
+  "poster": "https://i.ytimg.com/vi/GQyO4ghNox0/hqdefault.jpg"
  },
  {
   "id": "godzilla-kong",
@@ -2311,9 +2311,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "odM92ap8_c0",
+  "trailer": "https://www.youtube.com/watch?v=odM92ap8_c0",
+  "poster": "https://i.ytimg.com/vi/odM92ap8_c0/hqdefault.jpg"
  },
  {
   "id": "goldeneye",
@@ -2325,9 +2325,9 @@
   "country": "United Kingdom",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "8Zw8ylP4buA",
+  "trailer": "https://www.youtube.com/watch?v=8Zw8ylP4buA",
+  "poster": "https://i.ytimg.com/vi/8Zw8ylP4buA/hqdefault.jpg"
  },
  {
   "id": "good-bad-ugly",
@@ -2339,9 +2339,9 @@
   "country": "Italy",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "IFNUGzCOQoI",
+  "trailer": "https://www.youtube.com/watch?v=IFNUGzCOQoI",
+  "poster": "https://i.ytimg.com/vi/IFNUGzCOQoI/hqdefault.jpg"
  },
  {
   "id": "good-boys",
@@ -2353,9 +2353,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "zPXqwAGmX04",
+  "trailer": "https://www.youtube.com/watch?v=zPXqwAGmX04",
+  "poster": "https://i.ytimg.com/vi/zPXqwAGmX04/hqdefault.jpg"
  },
  {
   "id": "good-omens",
@@ -2367,9 +2367,9 @@
   "country": "United Kingdom",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "On0RbFjh8tI",
+  "trailer": "https://www.youtube.com/watch?v=On0RbFjh8tI",
+  "poster": "https://i.ytimg.com/vi/On0RbFjh8tI/hqdefault.jpg"
  },
  {
   "id": "goodfellas",
@@ -2381,9 +2381,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "2ilzidi_J8Q",
+  "trailer": "https://www.youtube.com/watch?v=2ilzidi_J8Q",
+  "poster": "https://i.ytimg.com/vi/2ilzidi_J8Q/hqdefault.jpg"
  },
  {
   "id": "grand-budapest",
@@ -2395,9 +2395,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "1Fg5iWmQjwk",
+  "trailer": "https://www.youtube.com/watch?v=1Fg5iWmQjwk",
+  "poster": "https://i.ytimg.com/vi/1Fg5iWmQjwk/hqdefault.jpg"
  },
  {
   "id": "grave-fireflies",
@@ -2423,9 +2423,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "dW1BIid8Osg",
+  "trailer": "https://www.youtube.com/watch?v=dW1BIid8Osg",
+  "poster": "https://i.ytimg.com/vi/dW1BIid8Osg/hqdefault.jpg"
  },
  {
   "id": "guardians-of-the-galaxy-vol-3",
@@ -2474,10 +2474,10 @@
   "genre": "Drama",
   "country": "India",
   "language": "Hindi",
-  "poster": null,
+  "poster": "https://i.ytimg.com/vi/ZmN_VSo8DOo/hqdefault.jpg",
   "backdrop": null,
-  "trailer": null,
-  "youtubeId": null,
+  "trailer": "https://www.youtube.com/watch?v=ZmN_VSo8DOo",
+  "youtubeId": "ZmN_VSo8DOo",
   "cast": [],
   "director": null,
   "runtime": null,
@@ -2494,9 +2494,9 @@
   "country": "Japan",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "JOGp2c7-cKc",
+  "trailer": "https://www.youtube.com/watch?v=JOGp2c7-cKc",
+  "poster": "https://i.ytimg.com/vi/JOGp2c7-cKc/hqdefault.jpg"
  },
  {
   "id": "half-of-a-yellow-sun",
@@ -2507,10 +2507,10 @@
   "genre": "Drama",
   "country": "Nigeria",
   "language": "English",
-  "poster": null,
+  "poster": "https://i.ytimg.com/vi/5wF4wU6HuUk/hqdefault.jpg",
   "backdrop": null,
-  "trailer": null,
-  "youtubeId": null,
+  "trailer": "https://www.youtube.com/watch?v=5wF4wU6HuUk",
+  "youtubeId": "5wF4wU6HuUk",
   "cast": [],
   "director": null,
   "runtime": null,
@@ -2527,9 +2527,9 @@
   "country": "Nigeria",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "5wF4wU6HuUk",
+  "trailer": "https://www.youtube.com/watch?v=5wF4wU6HuUk",
+  "poster": "https://i.ytimg.com/vi/5wF4wU6HuUk/hqdefault.jpg"
  },
  {
   "id": "halloween",
@@ -2541,9 +2541,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "oVgtguYmNBg",
+  "trailer": "https://www.youtube.com/watch?v=oVgtguYmNBg",
+  "poster": "https://i.ytimg.com/vi/oVgtguYmNBg/hqdefault.jpg"
  },
  {
   "id": "hard-boiled",
@@ -2555,9 +2555,9 @@
   "country": "Hong Kong",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "fWvCK7doZqM",
+  "trailer": "https://www.youtube.com/watch?v=fWvCK7doZqM",
+  "poster": "https://i.ytimg.com/vi/fWvCK7doZqM/hqdefault.jpg"
  },
  {
   "id": "hawkeye",
@@ -2569,9 +2569,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "5VYb3B1ETlk",
+  "trailer": "https://www.youtube.com/watch?v=5VYb3B1ETlk",
+  "poster": "https://i.ytimg.com/vi/5VYb3B1ETlk/hqdefault.jpg"
  },
  {
   "id": "heat",
@@ -2583,9 +2583,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "2GfZl4kuVNI",
+  "trailer": "https://www.youtube.com/watch?v=2GfZl4kuVNI",
+  "poster": "https://i.ytimg.com/vi/2GfZl4kuVNI/hqdefault.jpg"
  },
  {
   "id": "hells-paradise",
@@ -2597,9 +2597,9 @@
   "country": "Japan",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "aaHZdwPZX6g",
+  "trailer": "https://www.youtube.com/watch?v=aaHZdwPZX6g",
+  "poster": "https://i.ytimg.com/vi/aaHZdwPZX6g/hqdefault.jpg"
  },
  {
   "id": "her",
@@ -2611,9 +2611,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "dJTU48_yghs",
+  "trailer": "https://www.youtube.com/watch?v=dJTU48_yghs",
+  "poster": "https://i.ytimg.com/vi/dJTU48_yghs/hqdefault.jpg"
  },
  {
   "id": "hero-2002",
@@ -2625,9 +2625,9 @@
   "country": "China",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "_USDk5jaGek",
+  "trailer": "https://www.youtube.com/watch?v=_USDk5jaGek",
+  "poster": "https://i.ytimg.com/vi/_USDk5jaGek/hqdefault.jpg"
  },
  {
   "id": "horimiya",
@@ -2639,9 +2639,9 @@
   "country": "Japan",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "b7ZYm_LEJ6Y",
+  "trailer": "https://www.youtube.com/watch?v=b7ZYm_LEJ6Y",
+  "poster": "https://i.ytimg.com/vi/b7ZYm_LEJ6Y/hqdefault.jpg"
  },
  {
   "id": "house-flying-daggers",
@@ -2653,9 +2653,9 @@
   "country": "China",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "onrJqg6OmM4",
+  "trailer": "https://www.youtube.com/watch?v=onrJqg6OmM4",
+  "poster": "https://i.ytimg.com/vi/onrJqg6OmM4/hqdefault.jpg"
  },
  {
   "id": "house-of-the-dragon",
@@ -2705,9 +2705,9 @@
   "country": "Japan",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "iwROgK94zcM",
+  "trailer": "https://www.youtube.com/watch?v=iwROgK94zcM",
+  "poster": "https://i.ytimg.com/vi/iwROgK94zcM/hqdefault.jpg"
  },
  {
   "id": "hulk",
@@ -2719,9 +2719,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "xbqNb2PFKKA",
+  "trailer": "https://www.youtube.com/watch?v=xbqNb2PFKKA",
+  "poster": "https://i.ytimg.com/vi/xbqNb2PFKKA/hqdefault.jpg"
  },
  {
   "id": "hunter-x-hunter",
@@ -2733,9 +2733,9 @@
   "country": "Japan",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "d6kBeJjTGnY",
+  "trailer": "https://www.youtube.com/watch?v=d6kBeJjTGnY",
+  "poster": "https://i.ytimg.com/vi/d6kBeJjTGnY/hqdefault.jpg"
  },
  {
   "id": "i-robot",
@@ -2747,9 +2747,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "7Dlo-VB0-HI",
+  "trailer": "https://www.youtube.com/watch?v=7Dlo-VB0-HI",
+  "poster": "https://i.ytimg.com/vi/7Dlo-VB0-HI/hqdefault.jpg"
  },
  {
   "id": "i-saw-the-devil",
@@ -2799,9 +2799,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "FuZdS9da4S4",
+  "trailer": "https://www.youtube.com/watch?v=FuZdS9da4S4",
+  "poster": "https://i.ytimg.com/vi/FuZdS9da4S4/hqdefault.jpg"
  },
  {
   "id": "inside-out-2",
@@ -2865,9 +2865,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "-bfAVpuko5o",
+  "trailer": "https://www.youtube.com/watch?v=-bfAVpuko5o",
+  "poster": "https://i.ytimg.com/vi/-bfAVpuko5o/hqdefault.jpg"
  },
  {
   "id": "ip-man",
@@ -2879,9 +2879,9 @@
   "country": "Hong Kong",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "wv9PD1_JIC8",
+  "trailer": "https://www.youtube.com/watch?v=wv9PD1_JIC8",
+  "poster": "https://i.ytimg.com/vi/wv9PD1_JIC8/hqdefault.jpg"
  },
  {
   "id": "ip-man-2",
@@ -2893,9 +2893,9 @@
   "country": "Hong Kong",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "4ynwOQX1A7k",
+  "trailer": "https://www.youtube.com/watch?v=4ynwOQX1A7k",
+  "poster": "https://i.ytimg.com/vi/4ynwOQX1A7k/hqdefault.jpg"
  },
  {
   "id": "iron-man",
@@ -2907,9 +2907,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "8ugaeA-nMTc",
+  "trailer": "https://www.youtube.com/watch?v=8ugaeA-nMTc",
+  "poster": "https://i.ytimg.com/vi/8ugaeA-nMTc/hqdefault.jpg"
  },
  {
   "id": "iron-man-2",
@@ -2921,9 +2921,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "BoohRoVA9WQ",
+  "trailer": "https://www.youtube.com/watch?v=BoohRoVA9WQ",
+  "poster": "https://i.ytimg.com/vi/BoohRoVA9WQ/hqdefault.jpg"
  },
  {
   "id": "iron-man-3",
@@ -2935,9 +2935,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "Ke1Y3P9D0Bc",
+  "trailer": "https://www.youtube.com/watch?v=Ke1Y3P9D0Bc",
+  "poster": "https://i.ytimg.com/vi/Ke1Y3P9D0Bc/hqdefault.jpg"
  },
  {
   "id": "it-follows",
@@ -2949,9 +2949,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "HkZYbOH0ujw",
+  "trailer": "https://www.youtube.com/watch?v=HkZYbOH0ujw",
+  "poster": "https://i.ytimg.com/vi/HkZYbOH0ujw/hqdefault.jpg"
  },
  {
   "id": "itaewon-class",
@@ -2963,9 +2963,9 @@
   "country": "Korea",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "NNP8m3gaaFE",
+  "trailer": "https://www.youtube.com/watch?v=NNP8m3gaaFE",
+  "poster": "https://i.ytimg.com/vi/NNP8m3gaaFE/hqdefault.jpg"
  },
  {
   "id": "jallikattu",
@@ -2976,10 +2976,10 @@
   "genre": "Thriller",
   "country": "India",
   "language": "Malayalam",
-  "poster": null,
+  "poster": "https://i.ytimg.com/vi/v1tVOAIVQzo/hqdefault.jpg",
   "backdrop": null,
-  "trailer": null,
-  "youtubeId": null,
+  "trailer": "https://www.youtube.com/watch?v=v1tVOAIVQzo",
+  "youtubeId": "v1tVOAIVQzo",
   "cast": [],
   "director": null,
   "runtime": null,
@@ -2996,9 +2996,9 @@
   "country": "India",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "MWOlnZSnXJo",
+  "trailer": "https://www.youtube.com/watch?v=MWOlnZSnXJo",
+  "poster": "https://i.ytimg.com/vi/MWOlnZSnXJo/hqdefault.jpg"
  },
  {
   "id": "jaws",
@@ -3029,9 +3029,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "ChpLV9AMqm4",
+  "trailer": "https://www.youtube.com/watch?v=ChpLV9AMqm4",
+  "poster": "https://i.ytimg.com/vi/ChpLV9AMqm4/hqdefault.jpg"
  },
  {
   "id": "john-wick-3",
@@ -3043,9 +3043,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "M7XM597XO94",
+  "trailer": "https://www.youtube.com/watch?v=M7XM597XO94",
+  "poster": "https://i.ytimg.com/vi/M7XM597XO94/hqdefault.jpg"
  },
  {
   "id": "john-wick-4",
@@ -3076,9 +3076,9 @@
   "country": "Japan",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "fvSKmPdD2a4",
+  "trailer": "https://www.youtube.com/watch?v=fvSKmPdD2a4",
+  "poster": "https://i.ytimg.com/vi/fvSKmPdD2a4/hqdefault.jpg"
  },
  {
   "id": "jojo-rabbit",
@@ -3090,9 +3090,9 @@
   "country": "Germany",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "tL4McUzXfFI",
+  "trailer": "https://www.youtube.com/watch?v=tL4McUzXfFI",
+  "poster": "https://i.ytimg.com/vi/tL4McUzXfFI/hqdefault.jpg"
  },
  {
   "id": "jujutsu-kaisen",
@@ -3123,9 +3123,9 @@
   "country": "Japan",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "2docezZl574",
+  "trailer": "https://www.youtube.com/watch?v=2docezZl574",
+  "poster": "https://i.ytimg.com/vi/2docezZl574/hqdefault.jpg"
  },
  {
   "id": "jupiter-ascending",
@@ -3137,9 +3137,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "t4ZzMkDLjWI",
+  "trailer": "https://www.youtube.com/watch?v=t4ZzMkDLjWI",
+  "poster": "https://i.ytimg.com/vi/t4ZzMkDLjWI/hqdefault.jpg"
  },
  {
   "id": "jurassic-world",
@@ -3151,9 +3151,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "RFinNxS5KN4",
+  "trailer": "https://www.youtube.com/watch?v=RFinNxS5KN4",
+  "poster": "https://i.ytimg.com/vi/RFinNxS5KN4/hqdefault.jpg"
  },
  {
   "id": "jurassic-world-fallen-kingdom",
@@ -3197,10 +3197,10 @@
   "genre": "Comedy",
   "country": "India",
   "language": "Tamil",
-  "poster": null,
+  "poster": "https://i.ytimg.com/vi/4ne1TkUFYpA/hqdefault.jpg",
   "backdrop": null,
-  "trailer": null,
-  "youtubeId": null,
+  "trailer": "https://www.youtube.com/watch?v=4ne1TkUFYpA",
+  "youtubeId": "4ne1TkUFYpA",
   "cast": [],
   "director": null,
   "runtime": null,
@@ -3231,9 +3231,9 @@
   "country": "Japan",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "rZ95aZmQu_8",
+  "trailer": "https://www.youtube.com/watch?v=rZ95aZmQu_8",
+  "poster": "https://i.ytimg.com/vi/rZ95aZmQu_8/hqdefault.jpg"
  },
  {
   "id": "kaiju-no-8",
@@ -3245,9 +3245,9 @@
   "country": "Japan",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "JwF7bhvnCxI",
+  "trailer": "https://www.youtube.com/watch?v=JwF7bhvnCxI",
+  "poster": "https://i.ytimg.com/vi/JwF7bhvnCxI/hqdefault.jpg"
  },
  {
   "id": "kantara",
@@ -3278,9 +3278,9 @@
   "country": "India",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "JKa05nyUmuQ",
+  "trailer": "https://www.youtube.com/watch?v=JKa05nyUmuQ",
+  "poster": "https://i.ytimg.com/vi/JKa05nyUmuQ/hqdefault.jpg"
  },
  {
   "id": "kikis-delivery",
@@ -3292,9 +3292,9 @@
   "country": "Japan",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "4bG17OYs-GA",
+  "trailer": "https://www.youtube.com/watch?v=4bG17OYs-GA",
+  "poster": "https://i.ytimg.com/vi/4bG17OYs-GA/hqdefault.jpg"
  },
  {
   "id": "king-of-boys",
@@ -3325,9 +3325,9 @@
   "country": "Korea",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "4l-yByZpaaM",
+  "trailer": "https://www.youtube.com/watch?v=4l-yByZpaaM",
+  "poster": "https://i.ytimg.com/vi/4l-yByZpaaM/hqdefault.jpg"
  },
  {
   "id": "kong-skull-island",
@@ -3339,9 +3339,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "44LdLqgOpjo",
+  "trailer": "https://www.youtube.com/watch?v=44LdLqgOpjo",
+  "poster": "https://i.ytimg.com/vi/44LdLqgOpjo/hqdefault.jpg"
  },
  {
   "id": "kumbalangi-nights",
@@ -3386,9 +3386,9 @@
   "country": "France",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "o9-QRvoCryo",
+  "trailer": "https://www.youtube.com/watch?v=o9-QRvoCryo",
+  "poster": "https://i.ytimg.com/vi/o9-QRvoCryo/hqdefault.jpg"
  },
  {
   "id": "lady-bird",
@@ -3418,10 +3418,10 @@
   "genre": "Drama",
   "country": "India",
   "language": "Hindi",
-  "poster": null,
+  "poster": "https://i.ytimg.com/vi/BzJmHad6IWg/hqdefault.jpg",
   "backdrop": null,
-  "trailer": null,
-  "youtubeId": null,
+  "trailer": "https://www.youtube.com/watch?v=BzJmHad6IWg",
+  "youtubeId": "BzJmHad6IWg",
   "cast": [],
   "director": null,
   "runtime": null,
@@ -3438,9 +3438,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "sagmdpkWUqc",
+  "trailer": "https://www.youtube.com/watch?v=sagmdpkWUqc",
+  "poster": "https://i.ytimg.com/vi/sagmdpkWUqc/hqdefault.jpg"
  },
  {
   "id": "let-bullets-fly",
@@ -3452,9 +3452,9 @@
   "country": "China",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "8jguQ_8ySjE",
+  "trailer": "https://www.youtube.com/watch?v=8jguQ_8ySjE",
+  "poster": "https://i.ytimg.com/vi/8jguQ_8ySjE/hqdefault.jpg"
  },
  {
   "id": "lethal-weapon",
@@ -3466,9 +3466,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "bKeW-MGu-qQ",
+  "trailer": "https://www.youtube.com/watch?v=bKeW-MGu-qQ",
+  "poster": "https://i.ytimg.com/vi/bKeW-MGu-qQ/hqdefault.jpg"
  },
  {
   "id": "lionheart",
@@ -3499,9 +3499,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "bQ7BZTMLImA",
+  "trailer": "https://www.youtube.com/watch?v=bQ7BZTMLImA",
+  "poster": "https://i.ytimg.com/vi/bQ7BZTMLImA/hqdefault.jpg"
  },
  {
   "id": "living-in-bondage",
@@ -3546,9 +3546,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "Div0iP65aZo",
+  "trailer": "https://www.youtube.com/watch?v=Div0iP65aZo",
+  "poster": "https://i.ytimg.com/vi/Div0iP65aZo/hqdefault.jpg"
  },
  {
   "id": "loki",
@@ -3560,9 +3560,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "nW948Va-l10",
+  "trailer": "https://www.youtube.com/watch?v=nW948Va-l10",
+  "poster": "https://i.ytimg.com/vi/nW948Va-l10/hqdefault.jpg"
  },
  {
   "id": "loki-season-2",
@@ -3574,9 +3574,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "dug56u8NN7g",
+  "trailer": "https://www.youtube.com/watch?v=dug56u8NN7g",
+  "poster": "https://i.ytimg.com/vi/dug56u8NN7g/hqdefault.jpg"
  },
  {
   "id": "longlegs",
@@ -3587,10 +3587,10 @@
   "genre": "Horror",
   "country": null,
   "language": null,
-  "poster": "https://i.ytimg.com/vi/B_tDLs6u2E0/hqdefault.jpg",
+  "poster": "https://i.ytimg.com/vi/OG7wOTE8NhE/hqdefault.jpg",
   "backdrop": null,
-  "trailer": "https://www.youtube.com/watch?v=B_tDLs6u2E0",
-  "youtubeId": "B_tDLs6u2E0",
+  "trailer": "https://www.youtube.com/watch?v=OG7wOTE8NhE",
+  "youtubeId": "OG7wOTE8NhE",
   "cast": [],
   "director": null,
   "runtime": null,
@@ -3607,9 +3607,9 @@
   "country": "Japan",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "wkRR2VUsWfU",
+  "trailer": "https://www.youtube.com/watch?v=wkRR2VUsWfU",
+  "poster": "https://i.ytimg.com/vi/wkRR2VUsWfU/hqdefault.jpg"
  },
  {
   "id": "looper",
@@ -3621,9 +3621,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "2iQuhsmtfHw",
+  "trailer": "https://www.youtube.com/watch?v=2iQuhsmtfHw",
+  "poster": "https://i.ytimg.com/vi/2iQuhsmtfHw/hqdefault.jpg"
  },
  {
   "id": "lost",
@@ -3635,9 +3635,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "KTu8iDynwNc",
+  "trailer": "https://www.youtube.com/watch?v=KTu8iDynwNc",
+  "poster": "https://i.ytimg.com/vi/KTu8iDynwNc/hqdefault.jpg"
  },
  {
   "id": "lost-in-translation",
@@ -3649,9 +3649,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "W6iVPCRflQM",
+  "trailer": "https://www.youtube.com/watch?v=W6iVPCRflQM",
+  "poster": "https://i.ytimg.com/vi/W6iVPCRflQM/hqdefault.jpg"
  },
  {
   "id": "luther",
@@ -3663,9 +3663,9 @@
   "country": "United Kingdom",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "irPcCNXji90",
+  "trailer": "https://www.youtube.com/watch?v=irPcCNXji90",
+  "poster": "https://i.ytimg.com/vi/irPcCNXji90/hqdefault.jpg"
  },
  {
   "id": "mad-max",
@@ -3677,9 +3677,9 @@
   "country": "Australia",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "76jy3zJ9_PE",
+  "trailer": "https://www.youtube.com/watch?v=76jy3zJ9_PE",
+  "poster": "https://i.ytimg.com/vi/76jy3zJ9_PE/hqdefault.jpg"
  },
  {
   "id": "madame-web",
@@ -3691,9 +3691,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "s_76M4c4LTo",
+  "trailer": "https://www.youtube.com/watch?v=s_76M4c4LTo",
+  "poster": "https://i.ytimg.com/vi/s_76M4c4LTo/hqdefault.jpg"
  },
  {
   "id": "mami-wata",
@@ -3743,9 +3743,9 @@
   "country": "Japan",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "hxnl9nYl67k",
+  "trailer": "https://www.youtube.com/watch?v=hxnl9nYl67k",
+  "poster": "https://i.ytimg.com/vi/hxnl9nYl67k/hqdefault.jpg"
  },
  {
   "id": "memento",
@@ -3757,9 +3757,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "4CV41hoyS8A",
+  "trailer": "https://www.youtube.com/watch?v=4CV41hoyS8A",
+  "poster": "https://i.ytimg.com/vi/4CV41hoyS8A/hqdefault.jpg"
  },
  {
   "id": "memories-of-murder",
@@ -3866,9 +3866,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "PHlJQCyqiaI",
+  "trailer": "https://www.youtube.com/watch?v=PHlJQCyqiaI",
+  "poster": "https://i.ytimg.com/vi/PHlJQCyqiaI/hqdefault.jpg"
  },
  {
   "id": "minority-report",
@@ -3880,9 +3880,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "lG7DGMgfOb8",
+  "trailer": "https://www.youtube.com/watch?v=lG7DGMgfOb8",
+  "poster": "https://i.ytimg.com/vi/lG7DGMgfOb8/hqdefault.jpg"
  },
  {
   "id": "miraculous",
@@ -3894,9 +3894,9 @@
   "country": "France",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "3fzFvZToh8o",
+  "trailer": "https://www.youtube.com/watch?v=3fzFvZToh8o",
+  "poster": "https://i.ytimg.com/vi/3fzFvZToh8o/hqdefault.jpg"
  },
  {
   "id": "mob-psycho-100",
@@ -3908,9 +3908,9 @@
   "country": "Japan",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "nTze7vAdRpM",
+  "trailer": "https://www.youtube.com/watch?v=nTze7vAdRpM",
+  "poster": "https://i.ytimg.com/vi/nTze7vAdRpM/hqdefault.jpg"
  },
  {
   "id": "money-heist",
@@ -3922,9 +3922,9 @@
   "country": "Spain",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "_InqQJRqGW4",
+  "trailer": "https://www.youtube.com/watch?v=_InqQJRqGW4",
+  "poster": "https://i.ytimg.com/vi/_InqQJRqGW4/hqdefault.jpg"
  },
  {
   "id": "moon",
@@ -3936,9 +3936,9 @@
   "country": "United Kingdom",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "WWoDBcSW4_c",
+  "trailer": "https://www.youtube.com/watch?v=WWoDBcSW4_c",
+  "poster": "https://i.ytimg.com/vi/WWoDBcSW4_c/hqdefault.jpg"
  },
  {
   "id": "moon-knight",
@@ -3950,9 +3950,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "x7Krla_UxRg",
+  "trailer": "https://www.youtube.com/watch?v=x7Krla_UxRg",
+  "poster": "https://i.ytimg.com/vi/x7Krla_UxRg/hqdefault.jpg"
  },
  {
   "id": "moonlight",
@@ -3983,9 +3983,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "oZ6iiRrz1SY",
+  "trailer": "https://www.youtube.com/watch?v=oZ6iiRrz1SY",
+  "poster": "https://i.ytimg.com/vi/oZ6iiRrz1SY/hqdefault.jpg"
  },
  {
   "id": "ms-marvel",
@@ -3997,9 +3997,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "m9EX0f6V11Y",
+  "trailer": "https://www.youtube.com/watch?v=m9EX0f6V11Y",
+  "poster": "https://i.ytimg.com/vi/m9EX0f6V11Y/hqdefault.jpg"
  },
  {
   "id": "my-hero-academia",
@@ -4030,9 +4030,9 @@
   "country": "Korea",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "ZOl7iOrD31Q",
+  "trailer": "https://www.youtube.com/watch?v=ZOl7iOrD31Q",
+  "poster": "https://i.ytimg.com/vi/ZOl7iOrD31Q/hqdefault.jpg"
  },
  {
   "id": "napoleon-dynamite",
@@ -4044,9 +4044,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "WjBkjq1v4pc",
+  "trailer": "https://www.youtube.com/watch?v=WjBkjq1v4pc",
+  "poster": "https://i.ytimg.com/vi/WjBkjq1v4pc/hqdefault.jpg"
  },
  {
   "id": "narcos",
@@ -4058,9 +4058,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "xl8zdCY-abw",
+  "trailer": "https://www.youtube.com/watch?v=xl8zdCY-abw",
+  "poster": "https://i.ytimg.com/vi/xl8zdCY-abw/hqdefault.jpg"
  },
  {
   "id": "naruto",
@@ -4091,9 +4091,9 @@
   "country": "Japan",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "6zhLBe319KE",
+  "trailer": "https://www.youtube.com/watch?v=6zhLBe319KE",
+  "poster": "https://i.ytimg.com/vi/6zhLBe319KE/hqdefault.jpg"
  },
  {
   "id": "ne-zha",
@@ -4105,9 +4105,9 @@
   "country": "China",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "daoCb8oDf1k",
+  "trailer": "https://www.youtube.com/watch?v=daoCb8oDf1k",
+  "poster": "https://i.ytimg.com/vi/daoCb8oDf1k/hqdefault.jpg"
  },
  {
   "id": "night-living-dead",
@@ -4119,9 +4119,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "pd5a0gs-UCQ",
+  "trailer": "https://www.youtube.com/watch?v=pd5a0gs-UCQ",
+  "poster": "https://i.ytimg.com/vi/pd5a0gs-UCQ/hqdefault.jpg"
  },
  {
   "id": "nightcrawler",
@@ -4133,9 +4133,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "u1uP_8VJkDQ",
+  "trailer": "https://www.youtube.com/watch?v=u1uP_8VJkDQ",
+  "poster": "https://i.ytimg.com/vi/u1uP_8VJkDQ/hqdefault.jpg"
  },
  {
   "id": "nneka-pretty-serpent",
@@ -4160,10 +4160,10 @@
   "genre": "Thriller",
   "country": "Nigeria",
   "language": "English",
-  "poster": null,
+  "poster": "https://i.ytimg.com/vi/HdQBNNMxLMA/hqdefault.jpg",
   "backdrop": null,
-  "trailer": null,
-  "youtubeId": null,
+  "trailer": "https://www.youtube.com/watch?v=HdQBNNMxLMA",
+  "youtubeId": "HdQBNNMxLMA",
   "cast": [],
   "director": null,
   "runtime": null,
@@ -4198,10 +4198,10 @@
   "genre": "Drama",
   "country": "Nigeria",
   "language": "English",
-  "poster": null,
+  "poster": "https://i.ytimg.com/vi/sdOPdiuSuj8/hqdefault.jpg",
   "backdrop": null,
-  "trailer": null,
-  "youtubeId": null,
+  "trailer": "https://www.youtube.com/watch?v=sdOPdiuSuj8",
+  "youtubeId": "sdOPdiuSuj8",
   "cast": [],
   "director": null,
   "runtime": null,
@@ -4218,9 +4218,9 @@
   "country": "Italy",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "11sHtpvnn4I",
+  "trailer": "https://www.youtube.com/watch?v=11sHtpvnn4I",
+  "poster": "https://i.ytimg.com/vi/11sHtpvnn4I/hqdefault.jpg"
  },
  {
   "id": "one-piece",
@@ -4284,9 +4284,9 @@
   "country": "Japan",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "qBdggfOMdKc",
+  "trailer": "https://www.youtube.com/watch?v=qBdggfOMdKc",
+  "poster": "https://i.ytimg.com/vi/qBdggfOMdKc/hqdefault.jpg"
  },
  {
   "id": "ozark",
@@ -4298,9 +4298,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "5hAXVqrljbs",
+  "trailer": "https://www.youtube.com/watch?v=5hAXVqrljbs",
+  "poster": "https://i.ytimg.com/vi/5hAXVqrljbs/hqdefault.jpg"
  },
  {
   "id": "pan-labyrinth",
@@ -4312,9 +4312,9 @@
   "country": "Spain",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "TaFZoqWoOj0",
+  "trailer": "https://www.youtube.com/watch?v=TaFZoqWoOj0",
+  "poster": "https://i.ytimg.com/vi/TaFZoqWoOj0/hqdefault.jpg"
  },
  {
   "id": "paprika",
@@ -4326,9 +4326,9 @@
   "country": "Japan",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "anu2IrsUlVs",
+  "trailer": "https://www.youtube.com/watch?v=anu2IrsUlVs",
+  "poster": "https://i.ytimg.com/vi/anu2IrsUlVs/hqdefault.jpg"
  },
  {
   "id": "past-lives",
@@ -4359,9 +4359,9 @@
   "country": "India",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "yswBxKPFSvA",
+  "trailer": "https://www.youtube.com/watch?v=yswBxKPFSvA",
+  "poster": "https://i.ytimg.com/vi/yswBxKPFSvA/hqdefault.jpg"
  },
  {
   "id": "pather-panchali",
@@ -4372,10 +4372,10 @@
   "genre": "Drama",
   "country": "India",
   "language": "Bengali",
-  "poster": null,
+  "poster": "https://i.ytimg.com/vi/KQ7l3SFA0Rs/hqdefault.jpg",
   "backdrop": null,
-  "trailer": null,
-  "youtubeId": null,
+  "trailer": "https://www.youtube.com/watch?v=KQ7l3SFA0Rs",
+  "youtubeId": "KQ7l3SFA0Rs",
   "cast": [],
   "director": null,
   "runtime": null,
@@ -4405,10 +4405,10 @@
   "genre": "Animation",
   "country": "Japan",
   "language": "Japanese",
-  "poster": null,
+  "poster": "https://i.ytimg.com/vi/a1kZIiLmS0k/hqdefault.jpg",
   "backdrop": null,
-  "trailer": null,
-  "youtubeId": null,
+  "trailer": "https://www.youtube.com/watch?v=a1kZIiLmS0k",
+  "youtubeId": "a1kZIiLmS0k",
   "cast": [],
   "director": null,
   "runtime": null,
@@ -4444,9 +4444,9 @@
   "country": "India",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "SOXWc32k4zA",
+  "trailer": "https://www.youtube.com/watch?v=SOXWc32k4zA",
+  "poster": "https://i.ytimg.com/vi/SOXWc32k4zA/hqdefault.jpg"
  },
  {
   "id": "poetry",
@@ -4457,10 +4457,10 @@
   "genre": "Drama",
   "country": "South Korea",
   "language": "Korean",
-  "poster": null,
+  "poster": "https://i.ytimg.com/vi/uddR2naMUiA/hqdefault.jpg",
   "backdrop": null,
-  "trailer": null,
-  "youtubeId": null,
+  "trailer": "https://www.youtube.com/watch?v=uddR2naMUiA",
+  "youtubeId": "uddR2naMUiA",
   "cast": [],
   "director": null,
   "runtime": null,
@@ -4477,9 +4477,9 @@
   "country": "Japan",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "3LRyNwYg1f8",
+  "trailer": "https://www.youtube.com/watch?v=3LRyNwYg1f8",
+  "poster": "https://i.ytimg.com/vi/3LRyNwYg1f8/hqdefault.jpg"
  },
  {
   "id": "predator",
@@ -4491,9 +4491,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "_1wDBNHYDv8",
+  "trailer": "https://www.youtube.com/watch?v=_1wDBNHYDv8",
+  "poster": "https://i.ytimg.com/vi/_1wDBNHYDv8/hqdefault.jpg"
  },
  {
   "id": "predator-2",
@@ -4505,9 +4505,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "Gq0r13cU934",
+  "trailer": "https://www.youtube.com/watch?v=Gq0r13cU934",
+  "poster": "https://i.ytimg.com/vi/Gq0r13cU934/hqdefault.jpg"
  },
  {
   "id": "prometheus",
@@ -4519,9 +4519,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "yA6OKoW30Pk",
+  "trailer": "https://www.youtube.com/watch?v=yA6OKoW30Pk",
+  "poster": "https://i.ytimg.com/vi/yA6OKoW30Pk/hqdefault.jpg"
  },
  {
   "id": "pushpa",
@@ -4533,9 +4533,9 @@
   "country": "India",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "ou6h-22tMnA",
+  "trailer": "https://www.youtube.com/watch?v=ou6h-22tMnA",
+  "poster": "https://i.ytimg.com/vi/ou6h-22tMnA/hqdefault.jpg"
  },
  {
   "id": "queen",
@@ -4546,10 +4546,10 @@
   "genre": "Comedy",
   "country": "India",
   "language": "Hindi",
-  "poster": null,
+  "poster": "https://i.ytimg.com/vi/2A5KtlZq7ws/hqdefault.jpg",
   "backdrop": null,
-  "trailer": null,
-  "youtubeId": null,
+  "trailer": "https://www.youtube.com/watch?v=2A5KtlZq7ws",
+  "youtubeId": "2A5KtlZq7ws",
   "cast": [],
   "director": null,
   "runtime": null,
@@ -4566,9 +4566,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "Rh_BJXG1-44",
+  "trailer": "https://www.youtube.com/watch?v=Rh_BJXG1-44",
+  "poster": "https://i.ytimg.com/vi/Rh_BJXG1-44/hqdefault.jpg"
  },
  {
   "id": "rambo",
@@ -4580,9 +4580,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "oXngES_l_HQ",
+  "trailer": "https://www.youtube.com/watch?v=oXngES_l_HQ",
+  "poster": "https://i.ytimg.com/vi/oXngES_l_HQ/hqdefault.jpg"
  },
  {
   "id": "rashomon",
@@ -4593,10 +4593,10 @@
   "genre": "Drama",
   "country": "Japan",
   "language": "Japanese",
-  "poster": null,
+  "poster": "https://i.ytimg.com/vi/xCZ9TguVOIA/hqdefault.jpg",
   "backdrop": null,
-  "trailer": null,
-  "youtubeId": null,
+  "trailer": "https://www.youtube.com/watch?v=xCZ9TguVOIA",
+  "youtubeId": "xCZ9TguVOIA",
   "cast": [],
   "director": null,
   "runtime": null,
@@ -4613,9 +4613,9 @@
   "country": "Japan",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "65BiDF9YdGg",
+  "trailer": "https://www.youtube.com/watch?v=65BiDF9YdGg",
+  "poster": "https://i.ytimg.com/vi/65BiDF9YdGg/hqdefault.jpg"
  },
  {
   "id": "red-cliff",
@@ -4627,9 +4627,9 @@
   "country": "China",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "pd0bqLQrtdE",
+  "trailer": "https://www.youtube.com/watch?v=pd0bqLQrtdE",
+  "poster": "https://i.ytimg.com/vi/pd0bqLQrtdE/hqdefault.jpg"
  },
  {
   "id": "reservoir-dogs",
@@ -4641,9 +4641,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "vayksn4Y93A",
+  "trailer": "https://www.youtube.com/watch?v=vayksn4Y93A",
+  "poster": "https://i.ytimg.com/vi/vayksn4Y93A/hqdefault.jpg"
  },
  {
   "id": "robocop",
@@ -4655,9 +4655,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "IqvRDhW-XVA",
+  "trailer": "https://www.youtube.com/watch?v=IqvRDhW-XVA",
+  "poster": "https://i.ytimg.com/vi/IqvRDhW-XVA/hqdefault.jpg"
  },
  {
   "id": "rocky",
@@ -4669,9 +4669,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "-Hk-LYcavrw",
+  "trailer": "https://www.youtube.com/watch?v=-Hk-LYcavrw",
+  "poster": "https://i.ytimg.com/vi/-Hk-LYcavrw/hqdefault.jpg"
  },
  {
   "id": "rocky-2",
@@ -4683,9 +4683,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "A2P9ATb9Qx8",
+  "trailer": "https://www.youtube.com/watch?v=A2P9ATb9Qx8",
+  "poster": "https://i.ytimg.com/vi/A2P9ATb9Qx8/hqdefault.jpg"
  },
  {
   "id": "rrr",
@@ -4716,9 +4716,9 @@
   "country": "Germany",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "ZCYnsUdO6H0",
+  "trailer": "https://www.youtube.com/watch?v=ZCYnsUdO6H0",
+  "poster": "https://i.ytimg.com/vi/ZCYnsUdO6H0/hqdefault.jpg"
  },
  {
   "id": "sairat",
@@ -4749,9 +4749,9 @@
   "country": "Japan",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "9TbmxbckSjE",
+  "trailer": "https://www.youtube.com/watch?v=9TbmxbckSjE",
+  "poster": "https://i.ytimg.com/vi/9TbmxbckSjE/hqdefault.jpg"
  },
  {
   "id": "samurai-champloo",
@@ -4763,9 +4763,9 @@
   "country": "Japan",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "hficV9yr2mA",
+  "trailer": "https://www.youtube.com/watch?v=hficV9yr2mA",
+  "poster": "https://i.ytimg.com/vi/hficV9yr2mA/hqdefault.jpg"
  },
  {
   "id": "saw",
@@ -4777,9 +4777,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "S-1QgOMQ-ls",
+  "trailer": "https://www.youtube.com/watch?v=S-1QgOMQ-ls",
+  "poster": "https://i.ytimg.com/vi/S-1QgOMQ-ls/hqdefault.jpg"
  },
  {
   "id": "scarface",
@@ -4805,9 +4805,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "i3J6ACKQ7K0",
+  "trailer": "https://www.youtube.com/watch?v=i3J6ACKQ7K0",
+  "poster": "https://i.ytimg.com/vi/i3J6ACKQ7K0/hqdefault.jpg"
  },
  {
   "id": "secret-invasion",
@@ -4819,9 +4819,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "Tp_YZNqNBhw",
+  "trailer": "https://www.youtube.com/watch?v=Tp_YZNqNBhw",
+  "poster": "https://i.ytimg.com/vi/Tp_YZNqNBhw/hqdefault.jpg"
  },
  {
   "id": "seinfeld",
@@ -4833,9 +4833,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "hQXKyIG_NS4",
+  "trailer": "https://www.youtube.com/watch?v=hQXKyIG_NS4",
+  "poster": "https://i.ytimg.com/vi/hQXKyIG_NS4/hqdefault.jpg"
  },
  {
   "id": "seven-deadly-sins",
@@ -4847,9 +4847,9 @@
   "country": "Japan",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "wxcvbL6o55M",
+  "trailer": "https://www.youtube.com/watch?v=wxcvbL6o55M",
+  "poster": "https://i.ytimg.com/vi/wxcvbL6o55M/hqdefault.jpg"
  },
  {
   "id": "seven-samurai",
@@ -4899,9 +4899,9 @@
   "country": "China",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "Zw3LjaZlSLM",
+  "trailer": "https://www.youtube.com/watch?v=Zw3LjaZlSLM",
+  "poster": "https://i.ytimg.com/vi/Zw3LjaZlSLM/hqdefault.jpg"
  },
  {
   "id": "shanty-town",
@@ -4913,9 +4913,9 @@
   "country": "Nigeria",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "g3-TbsMEVPw",
+  "trailer": "https://www.youtube.com/watch?v=g3-TbsMEVPw",
+  "poster": "https://i.ytimg.com/vi/g3-TbsMEVPw/hqdefault.jpg"
  },
  {
   "id": "shazam",
@@ -4927,9 +4927,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "go6GEIrcvFY",
+  "trailer": "https://www.youtube.com/watch?v=go6GEIrcvFY",
+  "poster": "https://i.ytimg.com/vi/go6GEIrcvFY/hqdefault.jpg"
  },
  {
   "id": "she-hulk",
@@ -4941,9 +4941,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "u7JsKhI2An0",
+  "trailer": "https://www.youtube.com/watch?v=u7JsKhI2An0",
+  "poster": "https://i.ytimg.com/vi/u7JsKhI2An0/hqdefault.jpg"
  },
  {
   "id": "sherlock",
@@ -4955,9 +4955,9 @@
   "country": "United Kingdom",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "y9ZouUyPKx8",
+  "trailer": "https://www.youtube.com/watch?v=y9ZouUyPKx8",
+  "poster": "https://i.ytimg.com/vi/y9ZouUyPKx8/hqdefault.jpg"
  },
  {
   "id": "shogun",
@@ -5026,9 +5026,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "6iB21hsprAQ",
+  "trailer": "https://www.youtube.com/watch?v=6iB21hsprAQ",
+  "poster": "https://i.ytimg.com/vi/6iB21hsprAQ/hqdefault.jpg"
  },
  {
   "id": "silo",
@@ -5078,9 +5078,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "_kbQAJR9YWQ",
+  "trailer": "https://www.youtube.com/watch?v=_kbQAJR9YWQ",
+  "poster": "https://i.ytimg.com/vi/_kbQAJR9YWQ/hqdefault.jpg"
  },
  {
   "id": "sinners",
@@ -5125,9 +5125,9 @@
   "country": "Japan",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "nle-73CcG1k",
+  "trailer": "https://www.youtube.com/watch?v=nle-73CcG1k",
+  "poster": "https://i.ytimg.com/vi/nle-73CcG1k/hqdefault.jpg"
  },
  {
   "id": "solo-leveling",
@@ -5158,9 +5158,9 @@
   "country": "Japan",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "pcAigv_MQAo",
+  "trailer": "https://www.youtube.com/watch?v=pcAigv_MQAo",
+  "poster": "https://i.ytimg.com/vi/pcAigv_MQAo/hqdefault.jpg"
  },
  {
   "id": "sound-of-metal",
@@ -5191,9 +5191,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "8piqd2BWeGI",
+  "trailer": "https://www.youtube.com/watch?v=8piqd2BWeGI",
+  "poster": "https://i.ytimg.com/vi/8piqd2BWeGI/hqdefault.jpg"
  },
  {
   "id": "speed-2",
@@ -5219,9 +5219,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "t06RUxPbp_c",
+  "trailer": "https://www.youtube.com/watch?v=t06RUxPbp_c",
+  "poster": "https://i.ytimg.com/vi/t06RUxPbp_c/hqdefault.jpg"
  },
  {
   "id": "spider-man-2",
@@ -5233,9 +5233,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "1s9Yln0YwCw",
+  "trailer": "https://www.youtube.com/watch?v=1s9Yln0YwCw",
+  "poster": "https://i.ytimg.com/vi/1s9Yln0YwCw/hqdefault.jpg"
  },
  {
   "id": "spider-man-3",
@@ -5247,9 +5247,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "e5wUilOeOmg",
+  "trailer": "https://www.youtube.com/watch?v=e5wUilOeOmg",
+  "poster": "https://i.ytimg.com/vi/e5wUilOeOmg/hqdefault.jpg"
  },
  {
   "id": "spy-x-family",
@@ -5261,9 +5261,9 @@
   "country": "Japan",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "JP6vBnazpWI",
+  "trailer": "https://www.youtube.com/watch?v=JP6vBnazpWI",
+  "poster": "https://i.ytimg.com/vi/JP6vBnazpWI/hqdefault.jpg"
  },
  {
   "id": "stardust",
@@ -5275,9 +5275,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "-wwv427DAvA",
+  "trailer": "https://www.youtube.com/watch?v=-wwv427DAvA",
+  "poster": "https://i.ytimg.com/vi/-wwv427DAvA/hqdefault.jpg"
  },
  {
   "id": "steins-gate",
@@ -5289,9 +5289,9 @@
   "country": "Japan",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "4EtT1VdgGTw",
+  "trailer": "https://www.youtube.com/watch?v=4EtT1VdgGTw",
+  "poster": "https://i.ytimg.com/vi/4EtT1VdgGTw/hqdefault.jpg"
  },
  {
   "id": "step-brothers",
@@ -5303,9 +5303,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "CewglxElBK0",
+  "trailer": "https://www.youtube.com/watch?v=CewglxElBK0",
+  "poster": "https://i.ytimg.com/vi/CewglxElBK0/hqdefault.jpg"
  },
  {
   "id": "stree",
@@ -5331,9 +5331,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "OzYxJV_rmE8",
+  "trailer": "https://www.youtube.com/watch?v=OzYxJV_rmE8",
+  "poster": "https://i.ytimg.com/vi/OzYxJV_rmE8/hqdefault.jpg"
  },
  {
   "id": "suicide-squad",
@@ -5345,9 +5345,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "eg5ciqQzmK0",
+  "trailer": "https://www.youtube.com/watch?v=eg5ciqQzmK0",
+  "poster": "https://i.ytimg.com/vi/eg5ciqQzmK0/hqdefault.jpg"
  },
  {
   "id": "super-deluxe",
@@ -5397,9 +5397,9 @@
   "country": "Japan",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "IfKNOUUtyCA",
+  "trailer": "https://www.youtube.com/watch?v=IfKNOUUtyCA",
+  "poster": "https://i.ytimg.com/vi/IfKNOUUtyCA/hqdefault.jpg"
  },
  {
   "id": "swallow",
@@ -5411,9 +5411,9 @@
   "country": "Nigeria",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "WH19OJ7k270",
+  "trailer": "https://www.youtube.com/watch?v=WH19OJ7k270",
+  "poster": "https://i.ytimg.com/vi/WH19OJ7k270/hqdefault.jpg"
  },
  {
   "id": "sweet-home",
@@ -5425,9 +5425,9 @@
   "country": "Korea",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "7rI56NmD33Y",
+  "trailer": "https://www.youtube.com/watch?v=7rI56NmD33Y",
+  "poster": "https://i.ytimg.com/vi/7rI56NmD33Y/hqdefault.jpg"
  },
  {
   "id": "swiss-army-man",
@@ -5439,9 +5439,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "yrK1f4TsQfM",
+  "trailer": "https://www.youtube.com/watch?v=yrK1f4TsQfM",
+  "poster": "https://i.ytimg.com/vi/yrK1f4TsQfM/hqdefault.jpg"
  },
  {
   "id": "sword-art-online",
@@ -5453,9 +5453,9 @@
   "country": "Japan",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "C8Jl_-b7ju0",
+  "trailer": "https://www.youtube.com/watch?v=C8Jl_-b7ju0",
+  "poster": "https://i.ytimg.com/vi/C8Jl_-b7ju0/hqdefault.jpg"
  },
  {
   "id": "taken",
@@ -5467,9 +5467,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "XK9zL0ze9O4",
+  "trailer": "https://www.youtube.com/watch?v=XK9zL0ze9O4",
+  "poster": "https://i.ytimg.com/vi/XK9zL0ze9O4/hqdefault.jpg"
  },
  {
   "id": "talk-to-me",
@@ -5481,9 +5481,9 @@
   "country": "Australia",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "aLAKJu9aJys",
+  "trailer": "https://www.youtube.com/watch?v=aLAKJu9aJys",
+  "poster": "https://i.ytimg.com/vi/aLAKJu9aJys/hqdefault.jpg"
  },
  {
   "id": "tasm-2",
@@ -5495,9 +5495,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "nbp3Ra3Yp74",
+  "trailer": "https://www.youtube.com/watch?v=nbp3Ra3Yp74",
+  "poster": "https://i.ytimg.com/vi/nbp3Ra3Yp74/hqdefault.jpg"
  },
  {
   "id": "ted-lasso",
@@ -5523,9 +5523,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "NGsWgHNxK9c",
+  "trailer": "https://www.youtube.com/watch?v=NGsWgHNxK9c",
+  "poster": "https://i.ytimg.com/vi/NGsWgHNxK9c/hqdefault.jpg"
  },
  {
   "id": "terminator",
@@ -5537,9 +5537,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "nGrW-OR2uDk",
+  "trailer": "https://www.youtube.com/watch?v=nGrW-OR2uDk",
+  "poster": "https://i.ytimg.com/vi/nGrW-OR2uDk/hqdefault.jpg"
  },
  {
   "id": "terminator-3",
@@ -5551,9 +5551,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "5UgPJhyJmlM",
+  "trailer": "https://www.youtube.com/watch?v=5UgPJhyJmlM",
+  "poster": "https://i.ytimg.com/vi/5UgPJhyJmlM/hqdefault.jpg"
  },
  {
   "id": "the-100",
@@ -5565,9 +5565,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "aDrsItJ_HU4",
+  "trailer": "https://www.youtube.com/watch?v=aDrsItJ_HU4",
+  "poster": "https://i.ytimg.com/vi/aDrsItJ_HU4/hqdefault.jpg"
  },
  {
   "id": "the-banshees-of-inisherin",
@@ -5578,10 +5578,10 @@
   "genre": "Drama",
   "country": "Ireland",
   "language": "English",
-  "poster": null,
+  "poster": "https://i.ytimg.com/vi/uRu3zLOJN2c/hqdefault.jpg",
   "backdrop": null,
-  "trailer": null,
-  "youtubeId": null,
+  "trailer": "https://www.youtube.com/watch?v=uRu3zLOJN2c",
+  "youtubeId": "uRu3zLOJN2c",
   "cast": [],
   "director": null,
   "runtime": null,
@@ -5655,9 +5655,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "MN8fFM1ZdWo",
+  "trailer": "https://www.youtube.com/watch?v=MN8fFM1ZdWo",
+  "poster": "https://i.ytimg.com/vi/MN8fFM1ZdWo/hqdefault.jpg"
  },
  {
   "id": "the-boys-season-3",
@@ -5669,9 +5669,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "K-8VYKUZYiw",
+  "trailer": "https://www.youtube.com/watch?v=K-8VYKUZYiw",
+  "poster": "https://i.ytimg.com/vi/K-8VYKUZYiw/hqdefault.jpg"
  },
  {
   "id": "the-brutalist",
@@ -5735,9 +5735,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "r-MiSNsCdQ4",
+  "trailer": "https://www.youtube.com/watch?v=r-MiSNsCdQ4",
+  "poster": "https://i.ytimg.com/vi/r-MiSNsCdQ4/hqdefault.jpg"
  },
  {
   "id": "the-exorcist",
@@ -5749,9 +5749,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "BU2eYAO31Cc",
+  "trailer": "https://www.youtube.com/watch?v=BU2eYAO31Cc",
+  "poster": "https://i.ytimg.com/vi/BU2eYAO31Cc/hqdefault.jpg"
  },
  {
   "id": "the-falcon-winter-soldier",
@@ -5763,9 +5763,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "IWBsDaFWyTE",
+  "trailer": "https://www.youtube.com/watch?v=IWBsDaFWyTE",
+  "poster": "https://i.ytimg.com/vi/IWBsDaFWyTE/hqdefault.jpg"
  },
  {
   "id": "the-fall-guy",
@@ -5834,9 +5834,9 @@
   "country": "France",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "5Sg2RkdkSvk",
+  "trailer": "https://www.youtube.com/watch?v=5Sg2RkdkSvk",
+  "poster": "https://i.ytimg.com/vi/5Sg2RkdkSvk/hqdefault.jpg"
  },
  {
   "id": "the-figurine",
@@ -5880,10 +5880,10 @@
   "genre": "Drama",
   "country": "United States",
   "language": "English",
-  "poster": null,
+  "poster": "https://i.ytimg.com/vi/WwQ-NH1rRT4/hqdefault.jpg",
   "backdrop": null,
-  "trailer": null,
-  "youtubeId": null,
+  "trailer": "https://www.youtube.com/watch?v=WwQ-NH1rRT4",
+  "youtubeId": "WwQ-NH1rRT4",
   "cast": [],
   "director": null,
   "runtime": null,
@@ -5900,9 +5900,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "ETPVU0acnrE",
+  "trailer": "https://www.youtube.com/watch?v=ETPVU0acnrE",
+  "poster": "https://i.ytimg.com/vi/ETPVU0acnrE/hqdefault.jpg"
  },
  {
   "id": "the-glory",
@@ -5914,9 +5914,9 @@
   "country": "Korea",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "tqVVrTvrI8U",
+  "trailer": "https://www.youtube.com/watch?v=tqVVrTvrI8U",
+  "poster": "https://i.ytimg.com/vi/tqVVrTvrI8U/hqdefault.jpg"
  },
  {
   "id": "the-godfather",
@@ -6004,9 +6004,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "O2NKzO-fxwQ",
+  "trailer": "https://www.youtube.com/watch?v=O2NKzO-fxwQ",
+  "poster": "https://i.ytimg.com/vi/O2NKzO-fxwQ/hqdefault.jpg"
  },
  {
   "id": "the-handmaiden",
@@ -6037,9 +6037,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "tcdUhdOlz9M",
+  "trailer": "https://www.youtube.com/watch?v=tcdUhdOlz9M",
+  "poster": "https://i.ytimg.com/vi/tcdUhdOlz9M/hqdefault.jpg"
  },
  {
   "id": "the-holdovers",
@@ -6088,10 +6088,10 @@
   "genre": "Thriller",
   "country": "South Korea",
   "language": "Korean",
-  "poster": null,
+  "poster": "https://i.ytimg.com/vi/6d8jGtx0TKU/hqdefault.jpg",
   "backdrop": null,
-  "trailer": null,
-  "youtubeId": null,
+  "trailer": "https://www.youtube.com/watch?v=6d8jGtx0TKU",
+  "youtubeId": "6d8jGtx0TKU",
   "cast": [],
   "director": null,
   "runtime": null,
@@ -6108,9 +6108,9 @@
   "country": "France",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "_q43vIEOt68",
+  "trailer": "https://www.youtube.com/watch?v=_q43vIEOt68",
+  "poster": "https://i.ytimg.com/vi/_q43vIEOt68/hqdefault.jpg"
  },
  {
   "id": "the-iron-giant",
@@ -6141,9 +6141,9 @@
   "country": "United Kingdom",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "O2yd4em1I6M",
+  "trailer": "https://www.youtube.com/watch?v=O2yd4em1I6M",
+  "poster": "https://i.ytimg.com/vi/O2yd4em1I6M/hqdefault.jpg"
  },
  {
   "id": "the-last-black-man-in-san-francisco",
@@ -6154,10 +6154,10 @@
   "genre": "Drama",
   "country": "United States",
   "language": "English",
-  "poster": null,
+  "poster": "https://i.ytimg.com/vi/C0FnJDhY9-0/hqdefault.jpg",
   "backdrop": null,
-  "trailer": null,
-  "youtubeId": null,
+  "trailer": "https://www.youtube.com/watch?v=C0FnJDhY9-0",
+  "youtubeId": "C0FnJDhY9-0",
   "cast": [],
   "director": null,
   "runtime": null,
@@ -6174,9 +6174,9 @@
   "country": "United Kingdom",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "og5_7KpFtrI",
+  "trailer": "https://www.youtube.com/watch?v=og5_7KpFtrI",
+  "poster": "https://i.ytimg.com/vi/og5_7KpFtrI/hqdefault.jpg"
  },
  {
   "id": "the-lighthouse",
@@ -6207,9 +6207,9 @@
   "country": "Germany",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "n3_iLOp6IhM",
+  "trailer": "https://www.youtube.com/watch?v=n3_iLOp6IhM",
+  "poster": "https://i.ytimg.com/vi/n3_iLOp6IhM/hqdefault.jpg"
  },
  {
   "id": "the-lunchbox",
@@ -6220,10 +6220,10 @@
   "genre": "Drama",
   "country": "India",
   "language": "Hindi",
-  "poster": null,
+  "poster": "https://i.ytimg.com/vi/sK3R0rvnlPs/hqdefault.jpg",
   "backdrop": null,
-  "trailer": null,
-  "youtubeId": null,
+  "trailer": "https://www.youtube.com/watch?v=sK3R0rvnlPs",
+  "youtubeId": "sK3R0rvnlPs",
   "cast": [],
   "director": null,
   "runtime": null,
@@ -6259,9 +6259,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "kYzz0FSgpSU",
+  "trailer": "https://www.youtube.com/watch?v=kYzz0FSgpSU",
+  "poster": "https://i.ytimg.com/vi/kYzz0FSgpSU/hqdefault.jpg"
  },
  {
   "id": "the-matrix-revolutions",
@@ -6273,9 +6273,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "hMbexEPAOQI",
+  "trailer": "https://www.youtube.com/watch?v=hMbexEPAOQI",
+  "poster": "https://i.ytimg.com/vi/hMbexEPAOQI/hqdefault.jpg"
  },
  {
   "id": "the-milkmaid",
@@ -6325,9 +6325,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "pzD9zGcUNrw",
+  "trailer": "https://www.youtube.com/watch?v=pzD9zGcUNrw",
+  "poster": "https://i.ytimg.com/vi/pzD9zGcUNrw/hqdefault.jpg"
  },
  {
   "id": "the-odyssey",
@@ -6358,9 +6358,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "kEiMppTHQs8",
+  "trailer": "https://www.youtube.com/watch?v=kEiMppTHQs8",
+  "poster": "https://i.ytimg.com/vi/kEiMppTHQs8/hqdefault.jpg"
  },
  {
   "id": "the-other-guys",
@@ -6372,9 +6372,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "D6WOoUG1eNo",
+  "trailer": "https://www.youtube.com/watch?v=D6WOoUG1eNo",
+  "poster": "https://i.ytimg.com/vi/D6WOoUG1eNo/hqdefault.jpg"
  },
  {
   "id": "the-penguin",
@@ -6386,9 +6386,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "sfJG6IiA_s8",
+  "trailer": "https://www.youtube.com/watch?v=sfJG6IiA_s8",
+  "poster": "https://i.ytimg.com/vi/sfJG6IiA_s8/hqdefault.jpg"
  },
  {
   "id": "the-prestige",
@@ -6400,9 +6400,9 @@
   "country": "United Kingdom",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "RLtaA9fFNXU",
+  "trailer": "https://www.youtube.com/watch?v=RLtaA9fFNXU",
+  "poster": "https://i.ytimg.com/vi/RLtaA9fFNXU/hqdefault.jpg"
  },
  {
   "id": "the-princess-bride",
@@ -6414,9 +6414,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "O3CIXEAjcc8",
+  "trailer": "https://www.youtube.com/watch?v=O3CIXEAjcc8",
+  "poster": "https://i.ytimg.com/vi/O3CIXEAjcc8/hqdefault.jpg"
  },
  {
   "id": "the-ring",
@@ -6428,9 +6428,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "mTACCgSWu8E",
+  "trailer": "https://www.youtube.com/watch?v=mTACCgSWu8E",
+  "poster": "https://i.ytimg.com/vi/mTACCgSWu8E/hqdefault.jpg"
  },
  {
   "id": "the-road",
@@ -6442,9 +6442,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "bO8EqMsxOiU",
+  "trailer": "https://www.youtube.com/watch?v=bO8EqMsxOiU",
+  "poster": "https://i.ytimg.com/vi/bO8EqMsxOiU/hqdefault.jpg"
  },
  {
   "id": "the-rock",
@@ -6456,9 +6456,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "a3qcNyjj9ZQ",
+  "trailer": "https://www.youtube.com/watch?v=a3qcNyjj9ZQ",
+  "poster": "https://i.ytimg.com/vi/a3qcNyjj9ZQ/hqdefault.jpg"
  },
  {
   "id": "the-running-man",
@@ -6489,9 +6489,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "Z6pdYkqeT7A",
+  "trailer": "https://www.youtube.com/watch?v=Z6pdYkqeT7A",
+  "poster": "https://i.ytimg.com/vi/Z6pdYkqeT7A/hqdefault.jpg"
  },
  {
   "id": "the-shape-of-water",
@@ -6503,9 +6503,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "XFYWazblaUA",
+  "trailer": "https://www.youtube.com/watch?v=XFYWazblaUA",
+  "poster": "https://i.ytimg.com/vi/XFYWazblaUA/hqdefault.jpg"
  },
  {
   "id": "the-shining",
@@ -6550,9 +6550,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "eQQGQa3lTGs",
+  "trailer": "https://www.youtube.com/watch?v=eQQGQa3lTGs",
+  "poster": "https://i.ytimg.com/vi/eQQGQa3lTGs/hqdefault.jpg"
  },
  {
   "id": "the-substance",
@@ -6583,9 +6583,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "brPRW-_OcdE",
+  "trailer": "https://www.youtube.com/watch?v=brPRW-_OcdE",
+  "poster": "https://i.ytimg.com/vi/brPRW-_OcdE/hqdefault.jpg"
  },
  {
   "id": "the-trade",
@@ -6596,10 +6596,10 @@
   "genre": "Crime",
   "country": "Nigeria",
   "language": "English",
-  "poster": null,
+  "poster": "https://i.ytimg.com/vi/s7tK_QGoOPo/hqdefault.jpg",
   "backdrop": null,
-  "trailer": null,
-  "youtubeId": null,
+  "trailer": "https://www.youtube.com/watch?v=s7tK_QGoOPo",
+  "youtubeId": "s7tK_QGoOPo",
   "cast": [],
   "director": null,
   "runtime": null,
@@ -6616,9 +6616,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "7FnbLyv2oio",
+  "trailer": "https://www.youtube.com/watch?v=7FnbLyv2oio",
+  "poster": "https://i.ytimg.com/vi/7FnbLyv2oio/hqdefault.jpg"
  },
  {
   "id": "the-truman-show",
@@ -6649,9 +6649,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "0DAmWHxeoKw",
+  "trailer": "https://www.youtube.com/watch?v=0DAmWHxeoKw",
+  "poster": "https://i.ytimg.com/vi/0DAmWHxeoKw/hqdefault.jpg"
  },
  {
   "id": "the-wailing",
@@ -6682,9 +6682,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "s1xjv2iCQUc",
+  "trailer": "https://www.youtube.com/watch?v=s1xjv2iCQUc",
+  "poster": "https://i.ytimg.com/vi/s1xjv2iCQUc/hqdefault.jpg"
  },
  {
   "id": "the-wedding-party",
@@ -6715,9 +6715,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "TGLq7_MonZ4",
+  "trailer": "https://www.youtube.com/watch?v=TGLq7_MonZ4",
+  "poster": "https://i.ytimg.com/vi/TGLq7_MonZ4/hqdefault.jpg"
  },
  {
   "id": "the-wind-rises",
@@ -6729,9 +6729,9 @@
   "country": "Japan",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "RzSpDgiF5y8",
+  "trailer": "https://www.youtube.com/watch?v=RzSpDgiF5y8",
+  "poster": "https://i.ytimg.com/vi/RzSpDgiF5y8/hqdefault.jpg"
  },
  {
   "id": "the-wire",
@@ -6743,9 +6743,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "uDcQbk78CSw",
+  "trailer": "https://www.youtube.com/watch?v=uDcQbk78CSw",
+  "poster": "https://i.ytimg.com/vi/uDcQbk78CSw/hqdefault.jpg"
  },
  {
   "id": "the-witch",
@@ -6808,10 +6808,10 @@
   "genre": "Superhero",
   "country": null,
   "language": null,
-  "poster": "https://i.ytimg.com/vi/Oe61Le-kmow/hqdefault.jpg",
+  "poster": "https://i.ytimg.com/vi/hUUszE29jS0/hqdefault.jpg",
   "backdrop": null,
-  "trailer": "https://www.youtube.com/watch?v=Oe61Le-kmow",
-  "youtubeId": "Oe61Le-kmow",
+  "trailer": "https://www.youtube.com/watch?v=hUUszE29jS0",
+  "youtubeId": "hUUszE29jS0",
   "cast": [],
   "director": null,
   "runtime": null,
@@ -6828,9 +6828,9 @@
   "country": "Japan",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "vGuQeQsoRgU",
+  "trailer": "https://www.youtube.com/watch?v=vGuQeQsoRgU",
+  "poster": "https://i.ytimg.com/vi/vGuQeQsoRgU/hqdefault.jpg"
  },
  {
   "id": "tokyo-story",
@@ -6861,9 +6861,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "xa_z57UatDY",
+  "trailer": "https://www.youtube.com/watch?v=xa_z57UatDY",
+  "poster": "https://i.ytimg.com/vi/xa_z57UatDY/hqdefault.jpg"
  },
  {
   "id": "toradora",
@@ -6889,9 +6889,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "Mw1V8wxtnA0",
+  "trailer": "https://www.youtube.com/watch?v=Mw1V8wxtnA0",
+  "poster": "https://i.ytimg.com/vi/Mw1V8wxtnA0/hqdefault.jpg"
  },
  {
   "id": "totoro",
@@ -6903,9 +6903,9 @@
   "country": "Japan",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "92a7Hj0ijLs",
+  "trailer": "https://www.youtube.com/watch?v=92a7Hj0ijLs",
+  "poster": "https://i.ytimg.com/vi/92a7Hj0ijLs/hqdefault.jpg"
  },
  {
   "id": "trigun",
@@ -6917,9 +6917,9 @@
   "country": "Japan",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "bJVyIXeUznY",
+  "trailer": "https://www.youtube.com/watch?v=bJVyIXeUznY",
+  "poster": "https://i.ytimg.com/vi/bJVyIXeUznY/hqdefault.jpg"
  },
  {
   "id": "true-detective",
@@ -6931,9 +6931,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "fVQUcaO4AvE",
+  "trailer": "https://www.youtube.com/watch?v=fVQUcaO4AvE",
+  "poster": "https://i.ytimg.com/vi/fVQUcaO4AvE/hqdefault.jpg"
  },
  {
   "id": "tumbbad",
@@ -6982,10 +6982,10 @@
   "genre": "Drama",
   "country": "India",
   "language": "Hindi",
-  "poster": null,
+  "poster": "https://i.ytimg.com/vi/-N137wsl3TM/hqdefault.jpg",
   "backdrop": null,
-  "trailer": null,
-  "youtubeId": null,
+  "trailer": "https://www.youtube.com/watch?v=-N137wsl3TM",
+  "youtubeId": "-N137wsl3TM",
   "cast": [],
   "director": null,
   "runtime": null,
@@ -7016,9 +7016,9 @@
   "country": "Canada",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "Auzs95InJzo",
+  "trailer": "https://www.youtube.com/watch?v=Auzs95InJzo",
+  "poster": "https://i.ytimg.com/vi/Auzs95InJzo/hqdefault.jpg"
  },
  {
   "id": "vikram-vedha",
@@ -7049,9 +7049,9 @@
   "country": "Korea",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "_J8tYxYB_YU",
+  "trailer": "https://www.youtube.com/watch?v=_J8tYxYB_YU",
+  "poster": "https://i.ytimg.com/vi/_J8tYxYB_YU/hqdefault.jpg"
  },
  {
   "id": "vinland-saga",
@@ -7063,9 +7063,9 @@
   "country": "Japan",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "Ph50sNkApVM",
+  "trailer": "https://www.youtube.com/watch?v=Ph50sNkApVM",
+  "poster": "https://i.ytimg.com/vi/Ph50sNkApVM/hqdefault.jpg"
  },
  {
   "id": "violet-evergarden",
@@ -7091,9 +7091,9 @@
   "country": "China",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "0TDII5IkI3Y",
+  "trailer": "https://www.youtube.com/watch?v=0TDII5IkI3Y",
+  "poster": "https://i.ytimg.com/vi/0TDII5IkI3Y/hqdefault.jpg"
  },
  {
   "id": "wandering-earth-2",
@@ -7105,9 +7105,9 @@
   "country": "China",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "8ZIfInUTiIg",
+  "trailer": "https://www.youtube.com/watch?v=8ZIfInUTiIg",
+  "poster": "https://i.ytimg.com/vi/8ZIfInUTiIg/hqdefault.jpg"
  },
  {
   "id": "war-of-the-worlds",
@@ -7119,9 +7119,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "SM6aEEjc5hA",
+  "trailer": "https://www.youtube.com/watch?v=SM6aEEjc5hA",
+  "poster": "https://i.ytimg.com/vi/SM6aEEjc5hA/hqdefault.jpg"
  },
  {
   "id": "weathering-with-you",
@@ -7133,9 +7133,9 @@
   "country": "Japan",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "Q6iK6DjV_iE",
+  "trailer": "https://www.youtube.com/watch?v=Q6iK6DjV_iE",
+  "poster": "https://i.ytimg.com/vi/Q6iK6DjV_iE/hqdefault.jpg"
  },
  {
   "id": "what-we-do-in-shadows",
@@ -7147,9 +7147,9 @@
   "country": "New Zealand",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "IAZEWtyhpes",
+  "trailer": "https://www.youtube.com/watch?v=IAZEWtyhpes",
+  "poster": "https://i.ytimg.com/vi/IAZEWtyhpes/hqdefault.jpg"
  },
  {
   "id": "whiplash",
@@ -7180,9 +7180,9 @@
   "country": "Japan",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "0pVkiod6V0U",
+  "trailer": "https://www.youtube.com/watch?v=0pVkiod6V0U",
+  "poster": "https://i.ytimg.com/vi/0pVkiod6V0U/hqdefault.jpg"
  },
  {
   "id": "willow",
@@ -7194,9 +7194,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "uzn2izehkno",
+  "trailer": "https://www.youtube.com/watch?v=uzn2izehkno",
+  "poster": "https://i.ytimg.com/vi/uzn2izehkno/hqdefault.jpg"
  },
  {
   "id": "wolf-warrior-2",
@@ -7208,9 +7208,9 @@
   "country": "China",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "klyyYsmzcNQ",
+  "trailer": "https://www.youtube.com/watch?v=klyyYsmzcNQ",
+  "poster": "https://i.ytimg.com/vi/klyyYsmzcNQ/hqdefault.jpg"
  },
  {
   "id": "wonka",
@@ -7241,9 +7241,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "VNxwlx6etXI",
+  "trailer": "https://www.youtube.com/watch?v=VNxwlx6etXI",
+  "poster": "https://i.ytimg.com/vi/VNxwlx6etXI/hqdefault.jpg"
  },
  {
   "id": "x-men-2",
@@ -7269,9 +7269,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "MYUSZV8DZ68",
+  "trailer": "https://www.youtube.com/watch?v=MYUSZV8DZ68",
+  "poster": "https://i.ytimg.com/vi/MYUSZV8DZ68/hqdefault.jpg"
  },
  {
   "id": "yellowjackets",
@@ -7283,9 +7283,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "Axx9Qhct49w",
+  "trailer": "https://www.youtube.com/watch?v=Axx9Qhct49w",
+  "poster": "https://i.ytimg.com/vi/Axx9Qhct49w/hqdefault.jpg"
  },
  {
   "id": "your-lie-in-april",
@@ -7297,9 +7297,9 @@
   "country": "Japan",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "3aL0gDZtFbE",
+  "trailer": "https://www.youtube.com/watch?v=3aL0gDZtFbE",
+  "poster": "https://i.ytimg.com/vi/3aL0gDZtFbE/hqdefault.jpg"
  },
  {
   "id": "zodiac",
@@ -7311,9 +7311,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "yNncHPl1UXg",
+  "trailer": "https://www.youtube.com/watch?v=yNncHPl1UXg",
+  "poster": "https://i.ytimg.com/vi/yNncHPl1UXg/hqdefault.jpg"
  },
  {
   "id": "the-shawshank-redemption",
@@ -7352,7 +7352,10 @@
   "genre": "Crime",
   "country": "United States",
   "language": "English",
-  "status": "published"
+  "status": "published",
+  "youtubeId": "s7EdQ4FqbhY",
+  "trailer": "https://www.youtube.com/watch?v=s7EdQ4FqbhY",
+  "poster": "https://i.ytimg.com/vi/s7EdQ4FqbhY/hqdefault.jpg"
  },
  {
   "id": "fight-club",
@@ -7405,9 +7408,9 @@
   "genre": "Sci-Fi",
   "country": "United States",
   "language": "English",
-  "trailer": "https://www.youtube.com/watch?v=5UfAaqKB_Uo",
-  "youtubeId": "5UfAaqKB_Uo",
-  "poster": "https://i.ytimg.com/vi/5UfAaqKB_Uo/hqdefault.jpg",
+  "trailer": "https://www.youtube.com/watch?v=p4vIFhk621Q",
+  "youtubeId": "p4vIFhk621Q",
+  "poster": "https://i.ytimg.com/vi/p4vIFhk621Q/hqdefault.jpg",
   "status": "published"
  },
  {
@@ -7419,9 +7422,9 @@
   "genre": "Fantasy",
   "country": "United Kingdom",
   "language": "English",
-  "trailer": "https://www.youtube.com/watch?v=VyHV0BtdbbQ",
-  "youtubeId": "VyHV0BtdbbQ",
-  "poster": "https://i.ytimg.com/vi/VyHV0BtdbbQ/hqdefault.jpg",
+  "trailer": "https://www.youtube.com/watch?v=VyHV0BRtdxo",
+  "youtubeId": "VyHV0BRtdxo",
+  "poster": "https://i.ytimg.com/vi/VyHV0BRtdxo/hqdefault.jpg",
   "status": "published"
  },
  {
@@ -7433,9 +7436,9 @@
   "genre": "Fantasy",
   "country": "United Kingdom",
   "language": "English",
-  "trailer": "https://www.youtube.com/watch?v=MYK8I8vLk4g",
-  "youtubeId": "MYK8I8vLk4g",
-  "poster": "https://i.ytimg.com/vi/MYK8I8vLk4g/hqdefault.jpg",
+  "trailer": "https://www.youtube.com/watch?v=mObK5XD8udk",
+  "youtubeId": "mObK5XD8udk",
+  "poster": "https://i.ytimg.com/vi/mObK5XD8udk/hqdefault.jpg",
   "status": "published"
  },
  {
@@ -7447,9 +7450,9 @@
   "genre": "Action",
   "country": "United States",
   "language": "English",
-  "trailer": "https://www.youtube.com/watch?v=Bimq7y9z7Ko",
-  "youtubeId": "Bimq7y9z7Ko",
-  "poster": "https://i.ytimg.com/vi/Bimq7y9z7Ko/hqdefault.jpg",
+  "trailer": "https://www.youtube.com/watch?v=QWBKEmWWL38",
+  "youtubeId": "QWBKEmWWL38",
+  "poster": "https://i.ytimg.com/vi/QWBKEmWWL38/hqdefault.jpg",
   "status": "published"
  },
  {
@@ -7475,7 +7478,10 @@
   "genre": "Animation",
   "country": "United States",
   "language": "English",
-  "status": "published"
+  "status": "published",
+  "youtubeId": "Rvr68u6k5sI",
+  "trailer": "https://www.youtube.com/watch?v=Rvr68u6k5sI",
+  "poster": "https://i.ytimg.com/vi/Rvr68u6k5sI/hqdefault.jpg"
  },
  {
   "id": "frozen-2",
@@ -7486,7 +7492,10 @@
   "genre": "Animation",
   "country": "United States",
   "language": "English",
-  "status": "published"
+  "status": "published",
+  "youtubeId": "Zi4LMpSDccc",
+  "trailer": "https://www.youtube.com/watch?v=Zi4LMpSDccc",
+  "poster": "https://i.ytimg.com/vi/Zi4LMpSDccc/hqdefault.jpg"
  },
  {
   "id": "encanto",
@@ -7511,7 +7520,10 @@
   "genre": "Animation",
   "country": "United States",
   "language": "English",
-  "status": "published"
+  "status": "published",
+  "youtubeId": "z3biFxZIJOQ",
+  "trailer": "https://www.youtube.com/watch?v=z3biFxZIJOQ",
+  "poster": "https://i.ytimg.com/vi/z3biFxZIJOQ/hqdefault.jpg"
  },
  {
   "id": "wreck-it-ralph",
@@ -7522,7 +7534,10 @@
   "genre": "Animation",
   "country": "United States",
   "language": "English",
-  "status": "published"
+  "status": "published",
+  "youtubeId": "vf4r5q8-aWo",
+  "trailer": "https://www.youtube.com/watch?v=vf4r5q8-aWo",
+  "poster": "https://i.ytimg.com/vi/vf4r5q8-aWo/hqdefault.jpg"
  },
  {
   "id": "tangled",
@@ -7533,7 +7548,10 @@
   "genre": "Animation",
   "country": "United States",
   "language": "English",
-  "status": "published"
+  "status": "published",
+  "youtubeId": "2f516ZLyC6U",
+  "trailer": "https://www.youtube.com/watch?v=2f516ZLyC6U",
+  "poster": "https://i.ytimg.com/vi/2f516ZLyC6U/hqdefault.jpg"
  },
  {
   "id": "shrek",
@@ -7544,7 +7562,10 @@
   "genre": "Animation",
   "country": "United States",
   "language": "English",
-  "status": "published"
+  "status": "published",
+  "youtubeId": "CwXOrWvPBPk",
+  "trailer": "https://www.youtube.com/watch?v=CwXOrWvPBPk",
+  "poster": "https://i.ytimg.com/vi/CwXOrWvPBPk/hqdefault.jpg"
  },
  {
   "id": "madagascar",
@@ -7555,7 +7576,10 @@
   "genre": "Animation",
   "country": "United States",
   "language": "English",
-  "status": "published"
+  "status": "published",
+  "youtubeId": "fq5zU9T_Hl4",
+  "trailer": "https://www.youtube.com/watch?v=fq5zU9T_Hl4",
+  "poster": "https://i.ytimg.com/vi/fq5zU9T_Hl4/hqdefault.jpg"
  },
  {
   "id": "kung-fu-panda",
@@ -7566,7 +7590,10 @@
   "genre": "Animation",
   "country": "United States",
   "language": "English",
-  "status": "published"
+  "status": "published",
+  "youtubeId": "NRc-ze7Wrxw",
+  "trailer": "https://www.youtube.com/watch?v=NRc-ze7Wrxw",
+  "poster": "https://i.ytimg.com/vi/NRc-ze7Wrxw/hqdefault.jpg"
  },
  {
   "id": "the-super-mario-bros-movie",
@@ -7577,7 +7604,10 @@
   "genre": "Animation",
   "country": "United States",
   "language": "English",
-  "status": "published"
+  "status": "published",
+  "youtubeId": "TnGl01FkMMo",
+  "trailer": "https://www.youtube.com/watch?v=TnGl01FkMMo",
+  "poster": "https://i.ytimg.com/vi/TnGl01FkMMo/hqdefault.jpg"
  },
  {
   "id": "spider-verse-2",
@@ -7602,7 +7632,10 @@
   "genre": "Animation",
   "country": "United States",
   "language": "English",
-  "status": "published"
+  "status": "published",
+  "youtubeId": "67vbA5ZJdKQ",
+  "trailer": "https://www.youtube.com/watch?v=67vbA5ZJdKQ",
+  "poster": "https://i.ytimg.com/vi/67vbA5ZJdKQ/hqdefault.jpg"
  },
  {
   "id": "puss-in-boots-last-wish",
@@ -7613,7 +7646,10 @@
   "genre": "Animation",
   "country": "United States",
   "language": "English",
-  "status": "published"
+  "status": "published",
+  "youtubeId": "RqrXhwS33yc",
+  "trailer": "https://www.youtube.com/watch?v=RqrXhwS33yc",
+  "poster": "https://i.ytimg.com/vi/RqrXhwS33yc/hqdefault.jpg"
  },
  {
   "id": "elemental",
@@ -7624,7 +7660,10 @@
   "genre": "Animation",
   "country": "United States",
   "language": "English",
-  "status": "published"
+  "status": "published",
+  "youtubeId": "hXzcyx9V0xw",
+  "trailer": "https://www.youtube.com/watch?v=hXzcyx9V0xw",
+  "poster": "https://i.ytimg.com/vi/hXzcyx9V0xw/hqdefault.jpg"
  },
  {
   "id": "cars",
@@ -7635,7 +7674,10 @@
   "genre": "Animation",
   "country": "United States",
   "language": "English",
-  "status": "published"
+  "status": "published",
+  "youtubeId": "W_H7_tDHFE8",
+  "trailer": "https://www.youtube.com/watch?v=W_H7_tDHFE8",
+  "poster": "https://i.ytimg.com/vi/W_H7_tDHFE8/hqdefault.jpg"
  },
  {
   "id": "monsters-inc",
@@ -7646,7 +7688,10 @@
   "genre": "Animation",
   "country": "United States",
   "language": "English",
-  "status": "published"
+  "status": "published",
+  "youtubeId": "CGbgaHoapFM",
+  "trailer": "https://www.youtube.com/watch?v=CGbgaHoapFM",
+  "poster": "https://i.ytimg.com/vi/CGbgaHoapFM/hqdefault.jpg"
  },
  {
   "id": "finding-nemo",
@@ -7657,7 +7702,10 @@
   "genre": "Animation",
   "country": "United States",
   "language": "English",
-  "status": "published"
+  "status": "published",
+  "youtubeId": "9oQ628Seb9w",
+  "trailer": "https://www.youtube.com/watch?v=9oQ628Seb9w",
+  "poster": "https://i.ytimg.com/vi/9oQ628Seb9w/hqdefault.jpg"
  },
  {
   "id": "the-incredibles",
@@ -7668,7 +7716,10 @@
   "genre": "Animation",
   "country": "United States",
   "language": "English",
-  "status": "published"
+  "status": "published",
+  "youtubeId": "-UaGUdNJdRQ",
+  "trailer": "https://www.youtube.com/watch?v=-UaGUdNJdRQ",
+  "poster": "https://i.ytimg.com/vi/-UaGUdNJdRQ/hqdefault.jpg"
  },
  {
   "id": "ratatouille",
@@ -7693,7 +7744,10 @@
   "genre": "Animation",
   "country": "United States",
   "language": "English",
-  "status": "published"
+  "status": "published",
+  "youtubeId": "CZ1CATNbXg0",
+  "trailer": "https://www.youtube.com/watch?v=CZ1CATNbXg0",
+  "poster": "https://i.ytimg.com/vi/CZ1CATNbXg0/hqdefault.jpg"
  },
  {
   "id": "up",
@@ -7704,7 +7758,10 @@
   "genre": "Animation",
   "country": "United States",
   "language": "English",
-  "status": "published"
+  "status": "published",
+  "youtubeId": "HWEW_qTLSEE",
+  "trailer": "https://www.youtube.com/watch?v=HWEW_qTLSEE",
+  "poster": "https://i.ytimg.com/vi/HWEW_qTLSEE/hqdefault.jpg"
  },
  {
   "id": "toy-story",
@@ -7715,7 +7772,10 @@
   "genre": "Animation",
   "country": "United States",
   "language": "English",
-  "status": "published"
+  "status": "published",
+  "youtubeId": "v-PjgYDrg70",
+  "trailer": "https://www.youtube.com/watch?v=v-PjgYDrg70",
+  "poster": "https://i.ytimg.com/vi/v-PjgYDrg70/hqdefault.jpg"
  },
  {
   "id": "how-to-train-your-dragon-2010",
@@ -7726,6 +7786,9 @@
   "genre": "Animation",
   "country": "United States",
   "language": "English",
-  "status": "published"
+  "status": "published",
+  "youtubeId": "2AKsAxrhqgM",
+  "trailer": "https://www.youtube.com/watch?v=2AKsAxrhqgM",
+  "poster": "https://i.ytimg.com/vi/2AKsAxrhqgM/hqdefault.jpg"
  }
 ]

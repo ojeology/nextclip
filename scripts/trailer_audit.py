@@ -20,6 +20,10 @@ import json, os, re, time, unicodedata, urllib.request
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.chdir(ROOT)
 
+_ROMAN = {'i': '1', 'ii': '2', 'iii': '3', 'iv': '4', 'v': '5', 'vi': '6',
+           'vii': '7', 'viii': '8', 'ix': '9', 'x': '10', 'xi': '11', 'xii': '12',
+           'xiii': '13', 'xiv': '14', 'xv': '15', 'xx': '20', 'xxi': '21', 'xxii': '22'}
+
 def norm(s):
     s = unicodedata.normalize('NFKD', str(s))
     s = ''.join(c for c in s if not unicodedata.combining(c))
@@ -63,7 +67,7 @@ CHANNEL_CLASSES = {
         'wit studio', 'studio ghibli', 'ghibli', 'kyoto animation',
         'madhouse', 'production i.g', 'j.c.staff', 'aniplex', 'kadokawa',
         'kodansha', 'shueisha', 'shonen jump', 'viz', 'kino lorber',
-        'criterion', 'magnolia', 'roadside', 'shout factory', 'saban',
+        'criterion', 'janus', 'magnolia', 'roadside', 'shout factory', 'saban',
         'well go usa', 'tiff', 'bfi', 'motion picture association',
         'rotten tomatoes', 'movieclips', 'ign', 'trailer blend', 'flickdirect',
     ],
@@ -83,23 +87,28 @@ CHANNEL_CLASSES = {
     'community': [
         'horror society', 'nollycritic', 'mpm premium', 'alextvshows',
         'george m.c', 'prime movies', 'andrew henderson', 'superanon',
-        'nathansmoviereviews', '3idiots', 'klokline',
+        'nathansmoviereviews', '3idiots', 'klokline', 'superanon9876',
     ],
 }
-CHANNEL_LOOKUP = [(cls, k) for cls, keys in CHANNEL_CLASSES.items() for k in keys]
+# Extra concatenated variants that would otherwise break word boundaries
+CHANNEL_CLASSES['studio'] += ['nbcuniversal', 'paramountplus', 'peacocktv', 'disneystudios', 'sonypicturesentertainment',
+                              'searchlightpictures', 'vizmedia', 'africaonnetflix', 'matchbox',
+                              'eonefilms', 'imax', 'bfitrailers', 'ifcfirsttake', 'indiamarvel']
 
 def channel_class(author):
+    """Word-boundary substring match: 'dc' must not match 'podcast'."""
     a = (author or '').lower()
-    for cls, key in CHANNEL_LOOKUP:
-        if key in a:
-            return cls
+    for cls, keys in CHANNEL_CLASSES.items():
+        for k in keys:
+            if re.search(r'(?<![a-z0-9])' + re.escape(k) + r'(?![a-z0-9])', a):
+                return cls
     return None
 
 def classify(video_title):
     t = norm(video_title)
     if 'teaser' in t:
         return 'official-teaser'
-    if 'clip' in t or 'scene' in t or 'featurette' in t or 'behind the scenes' in t:
+    if re.search(r'\b(clip|scene|featurette)\b', t) or 'behind the scenes' in t:
         return 'official-clip'
     return 'official-trailer'
 
@@ -108,7 +117,14 @@ def overlap(expected, video_title):
     tw = set(norm(video_title).split())
     if not ew:
         return 0.0
-    return len(ew & tw) / len(ew)
+    score = len(ew & tw) / len(ew)
+    # Roman->digit on the FINAL token of the expected title only
+    # (Frozen II vs "Frozen 2", Rocky IV vs "Rocky 4") — never touches X-Men.
+    last = norm(expected).split()[-1]
+    if last in _ROMAN and _ROMAN[last] in tw:
+        ew2 = (ew - {last}) | {_ROMAN[last]}
+        score = max(score, len(ew2 & tw) / max(len(ew2), 1))
+    return score
 
 STATUS_RANK = {'verified': 0, 'community': 1, 'unverified-channel': 2, 'mismatch': 3, 'error': 4, 'broken': 5}
 

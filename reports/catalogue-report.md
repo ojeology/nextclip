@@ -1,6 +1,6 @@
 # NEXTCLIP catalogue & frontend report
 
-Generated: 2026-08-12T20:19:23.219Z
+Generated: 2026-08-12T21:12:31.214Z
 
 ## Catalogue
 - Total titles: **630**
@@ -8,8 +8,8 @@ Generated: 2026-08-12T20:19:23.219Z
 - Series: **79**
 - Anime: **74**
 - Unclassified / ambiguous type: **0**
-- With verified trailers: **253**
-- Without trailers: **377**
+- With verified trailers: **600**
+- Without trailers: **30**
 - With editorial ratings: **127**
 - With country data: **453** / language: **453**
 
@@ -30,13 +30,12 @@ Generated: 2026-08-12T20:19:23.219Z
 - No viewer statistics are used or claimed.
 
 ## Trailer system
-- Official trailers: **228**
-- Official teasers: **6**
-- Official clips: **7**
-- Community/fan-made fallbacks (labelled): **12**
-- No verified trailer: **377**
-- Broken/unavailable detected: **6**
-- Broken: Deadpool 2 (D86Rte8XQ3M) [broken]; Longlegs (B_tDLs6u2E0) [mismatch]; Star Wars: Return of the Jedi (5UfAaqKB_Uo) [broken]; Harry Potter and the Sorcerer's Stone (VyHV0BtdbbQ) [broken]; Harry Potter and the Deathly Hallows – Part 2 (MYK8I8vLk4g) [broken]; Jurassic Park (Bimq7y9z7Ko) [broken]
+- Official trailers: **568**
+- Official teasers: **14**
+- Official clips: **1**
+- Community/fan-made fallbacks (labelled): **17**
+- No verified trailer: **30**
+- Broken/unavailable detected: **0**
 - Priority: official-trailer > official-teaser > official-clip > fan-made > unavailable
 - Fan-made videos are labelled "Community trailer" with a disclaimer; never "Official Trailer".
 
