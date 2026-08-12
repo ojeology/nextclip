@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-08-12T17:48:42.575Z",
-  "total": 237,
-  "valid": 190,
+  "generatedAt": "2026-08-12T17:56:33.481Z",
+  "total": 244,
+  "valid": 197,
   "unavailable": 47,
   "records": [
     {
@@ -1662,6 +1662,55 @@
       "youtubeId": "CFZtIS9bceE",
       "status": "valid-id",
       "watchUrl": "https://www.youtube.com/watch?v=CFZtIS9bceE"
+    },
+    {
+      "id": "one-piece",
+      "title": "One Piece",
+      "youtubeId": "eU0i7L3cakI",
+      "status": "valid-id",
+      "watchUrl": "https://www.youtube.com/watch?v=eU0i7L3cakI"
+    },
+    {
+      "id": "naruto",
+      "title": "Naruto",
+      "youtubeId": "yeUpnIKt6k4",
+      "status": "valid-id",
+      "watchUrl": "https://www.youtube.com/watch?v=yeUpnIKt6k4"
+    },
+    {
+      "id": "solo-leveling",
+      "title": "Solo Leveling",
+      "youtubeId": "YvGSK8mIlt8",
+      "status": "valid-id",
+      "watchUrl": "https://www.youtube.com/watch?v=YvGSK8mIlt8"
+    },
+    {
+      "id": "the-bear",
+      "title": "The Bear",
+      "youtubeId": "ojjCvICC86c",
+      "status": "valid-id",
+      "watchUrl": "https://www.youtube.com/watch?v=ojjCvICC86c"
+    },
+    {
+      "id": "shogun",
+      "title": "Shōgun",
+      "youtubeId": "yAN5uspO_hk",
+      "status": "valid-id",
+      "watchUrl": "https://www.youtube.com/watch?v=yAN5uspO_hk"
+    },
+    {
+      "id": "inside-out-2",
+      "title": "Inside Out 2",
+      "youtubeId": "LEjhY15eCx0",
+      "status": "valid-id",
+      "watchUrl": "https://www.youtube.com/watch?v=LEjhY15eCx0"
+    },
+    {
+      "id": "fallout",
+      "title": "Fallout",
+      "youtubeId": "ECI3eCAxRGw",
+      "status": "valid-id",
+      "watchUrl": "https://www.youtube.com/watch?v=ECI3eCAxRGw"
     }
   ]
 }
