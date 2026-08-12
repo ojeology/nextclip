@@ -1,288 +1,42 @@
 [
   {
-    "id": "broke-internet",
-    "slug": "5-movies-that-broke-the-internet",
-    "title": "5 Movies That Broke the Internet",
-    "description": "Every few years, a movie doesn't just succeed — it crashes websites, floods timelines, and becomes the only thing anyone talks about. These are the films that broke the internet.",
-    "category": "Movie Facts",
-    "tags": [
-      "blockbuster",
-      "fun",
-      "epic"
-    ],
-    "emoji": "💥",
-    "items": [
-      {
-        "heading": "Avengers: Endgame (2019)",
-        "body": "Ticket presales crashed theater websites worldwide in minutes. At release, it became the most-tweeted film ever, and 'I love you 3000' trended for months. The portals scene alone caused mass theater chaos — people screamed, cried, and recorded each other instead of the screen."
-      },
-      {
-        "heading": "Spider-Man: No Way Home (2021)",
-        "body": "The multiverse reveal broke fan sites and sent leaks into overdrive for a full year. When Tobey and Andrew finally appeared, cinemas erupted like a stadium crowd. It also broke pandemic-era box office records, proving the internet's favorite rumor could sell a billion dollars."
-      },
-      {
-        "heading": "Squid Game (2021)",
-        "body": "Netflix's servers strained as 1.65 billion hours were streamed in a month. The dalgona candy challenge flooded TikTok, green tracksuits became a global costume, and 'Red Light, Green Light' became the most recreated scene of the decade. A Korean show broke the internet worldwide."
-      },
-      {
-        "heading": "Barbenheimer (2023)",
-        "body": "Barbie and Oppenheimer released on the same day, and the internet turned it into a double-feature religion. The meme war produced merch, group costumes, and a combined $2.4 billion. No studio planned it — the internet made it happen."
-      },
-      {
-        "heading": "Deadpool & Wolverine (2024)",
-        "body": "The 'Bye Bye Bye' dance opened a thousand TikToks, cameo leaks broke fan sites for months, and the R-rated Marvel film became the highest-grossing R-rated movie ever. Ryan Reynolds and Hugh Jackman's banter owned every platform for a full summer."
-      }
-    ],
-    "relatedMovieSlugs": [],
-    "status": "published",
-    "updatedAt": null,
-    "createdAt": null
-  },
-  {
-    "id": "never-end",
-    "slug": "7-movies-we-wished-never-ended",
-    "title": "7 Movies We Wished Never Ended",
-    "description": "Some movies end and the credits feel like a loss. These are the films we never wanted to leave.",
-    "category": "Movie Recommendations",
-    "tags": [
-      "emotional",
-      "feel-good",
-      "epic"
-    ],
-    "emoji": "🥲",
-    "items": [
-      {
-        "heading": "Interstellar",
-        "body": "The tesseract, the ghost, the fifth dimension — and then Cooper and Murph finally reunite. The film ends, and you're left wanting just one more scene with them on the porch."
-      },
-      {
-        "heading": "Spirited Away",
-        "body": "Chihiro leaves the spirit world, and the grass tunnel swallows her — and us. The ache of leaving that world is the whole point, and we'd walk back through the tunnel in a second."
-      },
-      {
-        "heading": "Top Gun: Maverick",
-        "body": "The sunset flight, the F-14, the smile between two pilots who became brothers. You want to stay in the sky with them forever."
-      },
-      {
-        "heading": "Your Name",
-        "body": "The stairs. The question. The tears. Mitsuha and Taki finally meet, and the credits roll — but we want to see their next hundred meetings."
-      },
-      {
-        "heading": "Dune: Part Two",
-        "body": "The sandworm ride, the war drums, the black-and-white arena. When it ends on Paul's war, you feel the movie is only halfway — and you'd gladly watch another four hours."
-      },
-      {
-        "heading": "Barbie",
-        "body": "'I'm here to see my gynecologist.' The perfect final line — and then it's over. You want to stay in Barbie Land (or at least watch Ken learn about patriarchy for another hour)."
-      },
-      {
-        "heading": "Squid Game",
-        "body": "Gi-hun turns back at the airport, and the season ends on his choice. You need the next season immediately — and the wait makes it hurt more."
-      }
-    ],
-    "relatedMovieSlugs": [],
-    "status": "published",
-    "updatedAt": null,
-    "createdAt": null
-  },
-  {
-    "id": "agent-kim",
-    "slug": "10-facts-about-agent-kim-squid-game-season-3",
-    "title": "10 Facts About Agent Kim — Squid Game Season 3",
-    "description": "She's the pink-suit soldier everyone can't stop talking about. Here's what we actually know about the character fans call Agent Kim — aka Kang No-eul, aka Soldier 011 — going into the final season.",
+    "id": "interstellar-ending-explained",
+    "slug": "interstellar-ending-explained",
+    "title": "Interstellar Ending Explained: What Cooper’s Journey Means",
+    "description": "A spoiler-marked explanation of the final act of Interstellar, including the tesseract, Murph’s discovery and why Cooper leaves again.",
     "category": "Movie Explainers",
     "tags": [
-      "series",
-      "dark",
-      "thriller"
-    ],
-    "emoji": "🩷",
-    "items": [
-      {
-        "heading": "She's played by Park Gyu-young",
-        "body": "The actress, a rising K-drama star (Celebrity, Sweet Home), takes the role to a new level in Season 3 — she's listed as a main character."
-      },
-      {
-        "heading": "Her real name is Kang No-eul",
-        "body": "The character is a North Korean defector who joins the soldier ranks to earn money — her backstory is one of the show's most tragic."
-      },
-      {
-        "heading": "She's 'Soldier 011'",
-        "body": "That's her designation among the masked staff — a number that hides her identity but not her story."
-      },
-      {
-        "heading": "She was the soldier who fed people",
-        "body": "In Season 2, she's the masked soldier who brings food to the players — a tiny act of humanity inside the machine, which fans latched onto."
-      },
-      {
-        "heading": "She defected from North Korea",
-        "body": "Her motivation: the money to secure a future for her child. Everything she does in the games is for that one goal."
-      },
-      {
-        "heading": "Season 3 'reactivates' her",
-        "body": "The final season brings her back to the front lines — and trailers show her holding a gun, not a tray. Her arc is about to collide with Gi-hun's rebellion."
-      },
-      {
-        "heading": "She barely speaks",
-        "body": "Park Gyu-young's performance is mostly masked — eyes and body language only. Fans call it some of the most expressive acting in the series."
-      },
-      {
-        "heading": "She's connected to the Front Man's world",
-        "body": "Her scenes intercut with the staff's inner workings — she's our window into the people who run the games."
-      },
-      {
-        "heading": "Theories are everywhere",
-        "body": "Fans debate everything: will she switch sides? Is her child dead? Will she face Gi-hun in the finale? The showrunners have confirmed the ending 'will shock the world one last time.'"
-      },
-      {
-        "heading": "Her story is the show's heart",
-        "body": "Squid Game has always been about people driven to extremes by poverty. No-eul is the mirror of the players — a woman who chose the other side of the same desperation."
-      }
-    ],
-    "relatedMovieSlugs": [],
-    "status": "published",
-    "updatedAt": null,
-    "createdAt": null
-  },
-  {
-    "id": "korean-movies",
-    "slug": "10-korean-movies-everyone-should-watch",
-    "title": "10 Korean Movies Everyone Should Watch",
-    "description": "Korean cinema is the best-kept secret that isn't a secret anymore. From Oscar winners to zombie trains, here are ten films that prove Korea makes the best movies on Earth.",
-    "category": "Movie Recommendations",
-    "tags": [
-      "korean",
-      "epic",
-      "emotional"
-    ],
-    "emoji": "🇰🇷",
-    "items": [
-      {
-        "heading": "Parasite (2019)",
-        "body": "The first non-English Best Picture Oscar winner. A class-war masterpiece that's funny, terrifying, and perfect."
-      },
-      {
-        "heading": "Train to Busan (2016)",
-        "body": "The modern zombie classic — a train ride through hell with the biggest heart in horror."
-      },
-      {
-        "heading": "Oldboy (2003)",
-        "body": "Park Chan-wook's revenge masterpiece. The corridor fight scene changed action cinema forever."
-      },
-      {
-        "heading": "Memories of Murder (2003)",
-        "body": "Bong Joon-ho's serial-killer film — the one that made his name. Haunting, funny, and unbearably sad."
-      },
-      {
-        "heading": "The Handmaiden (2016)",
-        "body": "A con, a heiress, and a twist you won't see coming. Park Chan-wook's most beautiful film."
-      },
-      {
-        "heading": "Snowpiercer (2013)",
-        "body": "The last train of humanity — a class war in one carriage at a time. Bong Joon-ho's English-language debut."
-      },
-      {
-        "heading": "Decision to Leave (2022)",
-        "body": "A detective falls for his suspect. The most romantic thriller of the decade — and a Cannes winner."
-      },
-      {
-        "heading": "Burning (2018)",
-        "body": "A slow-burn mystery that ends on one of cinema's great unanswered questions. Steven Yeun is terrifying."
-      },
-      {
-        "heading": "A Taxi Driver (2017)",
-        "body": "The true story of a cabbie who drove a journalist into the Gwangju Uprising. The most emotional film on this list."
-      },
-      {
-        "heading": "The Host (2006)",
-        "body": "Bong Joon-ho's monster movie — a creature feature about family, government failure, and ramen."
-      }
-    ],
-    "relatedMovieSlugs": [],
-    "status": "published",
-    "updatedAt": null,
-    "createdAt": null
-  },
-  {
-    "id": "vampire-horror",
-    "slug": "5-vampire-movies-that-changed-horror",
-    "title": "5 Vampire Movies That Changed Horror",
-    "description": "Vampires are horror's oldest monsters — and every generation reinvents them. These five films changed the rules.",
-    "category": "Movie Facts",
-    "tags": [
-      "horror",
-      "vampire",
-      "dark"
-    ],
-    "emoji": "🧛",
-    "items": [
-      {
-        "heading": "Nosferatu (1922)",
-        "body": "The original. F.W. Murnau's unauthorized Dracula adaptation created the vampire as we know him — rat-faced, shadow-soaked, death itself. A century later, it still terrifies."
-      },
-      {
-        "heading": "Dracula (1931)",
-        "body": "Bela Lugosi made the vampire a gentleman — cape, accent, hypnotic charm. The image that launched a thousand imitations, and the film that made Universal's horror empire."
-      },
-      {
-        "heading": "Interview with the Vampire (1994)",
-        "body": "Tom Cruise and Brad Pitt turned vampires into tragic, gorgeous, philosophizing rock stars. The gothic romance era begins here."
-      },
-      {
-        "heading": "Let the Right One In (2008)",
-        "body": "The Swedish masterpiece that made vampires children — lonely, desperate, and heartbreaking. The most human vampire film ever made."
-      },
-      {
-        "heading": "Nosferatu (2024)",
-        "body": "Robert Eggers' reimagining brings Orlok back as pure nightmare — plague, obsession, and rats. The scariest vampire ever put on screen, and proof the monster still works."
-      }
-    ],
-    "relatedMovieSlugs": [],
-    "status": "published",
-    "updatedAt": null,
-    "createdAt": null
-  },
-  {
-    "id": "movies-like-interstellar",
-    "slug": "movies-like-interstellar",
-    "title": "Movies Like Interstellar: Six Big Ideas to Explore Next",
-    "description": "A spoiler-light route through six films for viewers who want more cosmic scale, emotional stakes and mind-bending questions after Interstellar.",
-    "category": "Movie Recommendations",
-    "tags": [
-      "science fiction",
-      "space",
-      "recommendations"
+      "interstellar",
+      "ending explained",
+      "science fiction"
     ],
     "emoji": "",
     "items": [
       {
-        "heading": "Start with the emotion, not the science",
-        "body": "The most satisfying follow-up to Interstellar is not necessarily another film about a spacecraft. Its real pull is the collision between an enormous idea and a personal decision. Look for stories that give their spectacle an emotional centre."
+        "heading": "Quick answer",
+        "body": "Cooper does not travel backward in time in the usual sense. Inside the tesseract, he can send information through gravity to Murph at different moments in her room. The future humans who built the tesseract give him that limited access because Murph, not Cooper, is the person who can complete the work on Earth."
       },
       {
-        "heading": "Arrival",
-        "body": "Arrival is a strong next stop for viewers who liked Interstellar's patience with big questions. It turns language, memory and first contact into a quiet, human-scale mystery rather than a race to win."
+        "heading": "Why the bookshelf matters",
+        "body": "The bookshelf is the film’s way of showing gravity as a bridge across time. Cooper cannot speak directly to Murph, but he can move the watch hand and earlier books. The scene turns the apparent ghost from the beginning of the film into Cooper himself, acting with information he only learns much later."
       },
       {
-        "heading": "The Martian and Gravity",
-        "body": "For survival-focused space stories, The Martian and Gravity offer different kinds of tension. One is built around problem-solving and humour; the other stays close to immediate physical danger. Both make isolation part of the experience."
+        "heading": "What Murph solves",
+        "body": "Murph receives the quantum data from the black hole through the watch. The point is not that she receives a finished answer; she has the knowledge and scientific skill to make the breakthrough usable. The ending gives her agency rather than making Cooper the lone saviour."
       },
       {
-        "heading": "Dune: Part Two",
-        "body": "If the appeal was scale, Dune: Part Two is a natural move. It shifts from space travel to prophecy, politics and a vast desert world, but it keeps the feeling that individual choices can reshape entire systems."
+        "heading": "Why Cooper leaves Murph",
+        "body": "When Cooper reaches the space station, Murph is old and surrounded by her family. She tells him not to stay for her final days. The emotional logic is that their reunion has happened, but Amelia Brand is alone on another mission and still needs help."
       },
       {
-        "heading": "Keep the discovery going",
-        "body": "Use this list as a starting point rather than a ranking. The best next movie depends on whether you want more wonder, more tension or more ideas to argue about after the credits."
+        "heading": "What to watch next",
+        "body": "For another science-fiction story built around communication and time, explore Arrival. For a different kind of space-survival pressure, The Martian and Gravity offer useful next stops."
       }
     ],
     "relatedMovieSlugs": [
       "interstellar",
       "arrival",
-      "the-martian",
-      "gravity",
-      "tenet",
-      "dune-part-two"
+      "the-martian"
     ],
     "status": "published",
     "author": null,
@@ -290,39 +44,45 @@
     "updatedAt": null
   },
   {
-    "id": "why-dune-part-two-feels-large",
-    "slug": "why-dune-part-two-feels-large",
-    "title": "Why Dune: Part Two Feels So Vast Without Losing Its Focus",
-    "description": "A spoiler-light look at the choices that make Dune: Part Two feel enormous while keeping its central relationships in view.",
-    "category": "Movie Explainers",
+    "id": "movies-like-interstellar-guide",
+    "slug": "movies-like-interstellar-guide",
+    "title": "Six Movies to Watch If Interstellar Left You Wanting More",
+    "description": "A practical, spoiler-light set of follow-ups for viewers who liked Interstellar’s cosmic scale, emotional stakes and big questions.",
+    "category": "Movie Recommendations",
     "tags": [
-      "dune",
+      "interstellar",
       "science fiction",
-      "explainer"
+      "recommendations"
     ],
     "emoji": "",
     "items": [
       {
-        "heading": "Scale is a storytelling tool",
-        "body": "Large images only matter when they change how a character feels. Dune: Part Two repeatedly places people against spaces that make them look small, then asks what they will do with power inside those spaces."
+        "heading": "Choose the part of Interstellar you want more of",
+        "body": "Interstellar can lead to very different next watches. Some viewers want the space travel, some want the time puzzle, and others want the family story underneath the spectacle. Starting with that distinction makes the recommendation more useful than a random science-fiction list."
       },
       {
-        "heading": "The world has pressure",
-        "body": "The film's desert setting is not simply a backdrop. It creates limits, rituals and choices. That pressure makes the story feel bigger because every movement appears to have a cost."
+        "heading": "Arrival for the big question",
+        "body": "Arrival is the best next choice when the appeal was a film that trusts the audience with a difficult idea. Its pace is quieter, but its emotional payoff comes from the same willingness to connect a scientific premise to a personal choice."
       },
       {
-        "heading": "A personal point of view",
-        "body": "Even as the story expands, the emotional focus stays close to a few key relationships. That balance lets the spectacle feel connected to decisions rather than detached from them."
+        "heading": "The Martian for survival and problem-solving",
+        "body": "The Martian shifts the mood toward ingenuity and humour. It is a good follow-up if you enjoyed watching characters work through impossible technical constraints without losing the human stakes."
       },
       {
-        "heading": "Where to explore next",
-        "body": "For more science-fiction worlds built around atmosphere and moral pressure, explore Dune, Arrival and Blade Runner 2049 in the movie catalogue."
+        "heading": "Gravity for immediate tension",
+        "body": "Gravity is more concentrated: one person, one hostile environment and very little margin for error. Choose it when you want the physical danger of space rather than a large philosophical puzzle."
+      },
+      {
+        "heading": "Dune: Part Two and Blade Runner 2049 for atmosphere",
+        "body": "Dune: Part Two and Blade Runner 2049 are strong options for viewers who respond to scale, design and questions of power. They are not copies of Interstellar; each has a distinct world and pace."
       }
     ],
     "relatedMovieSlugs": [
-      "dune-part-two",
-      "dune",
+      "interstellar",
       "arrival",
+      "the-martian",
+      "gravity",
+      "dune-part-two",
       "blade-runner-2049"
     ],
     "status": "published",
@@ -331,44 +91,92 @@
     "updatedAt": null
   },
   {
-    "id": "korean-cinema-starter-guide",
-    "slug": "korean-cinema-starter-guide",
-    "title": "A Starter Guide to Korean Cinema: Five Different Ways In",
-    "description": "Korean cinema is not one genre. This guide uses titles already in the catalogue to help new viewers choose a first watch based on mood.",
-    "category": "Movie Recommendations",
+    "id": "nigerian-thrillers-worth-your-time",
+    "slug": "nigerian-thrillers-worth-your-time",
+    "title": "Five Nigerian Thrillers to Start With, and What Each One Does Differently",
+    "description": "A focused guide to Nigerian thrillers already in the catalogue, from political mystery to crime drama and supernatural unease.",
+    "category": "Nigerian / African Movies",
     "tags": [
-      "korean cinema",
-      "recommendations"
+      "nigerian cinema",
+      "thrillers",
+      "nollywood"
     ],
     "emoji": "",
     "items": [
       {
-        "heading": "Start with the mood you want",
-        "body": "A useful first step is to choose a mood rather than chase a single definition of Korean cinema. The catalogue includes social satire, action, horror, romance and slow-burn mystery."
+        "heading": "A useful place to begin",
+        "body": "Nigerian thriller cinema is not one fixed style. The titles in this guide use mystery, crime, folklore and political pressure in different ways. Pick the mood you want rather than treating them as interchangeable."
       },
       {
-        "heading": "For a sharp social story",
-        "body": "Parasite is a strong entry point for viewers who enjoy tonal shifts and stories about class, family and ambition. Its accessible setup makes it easy to discuss after watching."
+        "heading": "October 1 for historical mystery",
+        "body": "October 1 uses a murder investigation in the final days before Nigerian independence to create tension around a community already carrying political anxiety. It is the right choice when you want a measured mystery rather than nonstop action."
       },
       {
-        "heading": "For momentum",
-        "body": "Train to Busan is a clear choice when you want a fast, emotionally direct thriller. It uses a contained journey to keep the stakes immediate."
+        "heading": "The Figurine for supernatural uncertainty",
+        "body": "The Figurine works best for viewers who enjoy a story where belief is part of the tension. Its central question is not only what the object can do, but what fear and expectation do to the people around it."
       },
       {
-        "heading": "For darker mysteries",
-        "body": "Oldboy, The Handmaiden and Burning offer very different experiences, but each rewards close attention. Choose based on your tolerance for intensity and ambiguity."
+        "heading": "The Black Book and Brotherhood for crime pressure",
+        "body": "The Black Book follows a father seeking answers inside a corrupt system, while Brotherhood places family loyalty under pressure from crime. Both are useful choices when you want a more direct contemporary thriller."
       },
       {
-        "heading": "Use the genre hub",
-        "body": "The Korean movie collection is a better place to continue than a single all-purpose list. Browse the titles, read their movie pages and follow the related recommendations that match your taste."
+        "heading": "Where to go next",
+        "body": "Explore the Nigerian Cinema topic hub for dramas, comedies and fantasy films alongside these thrillers. The point is discovery across a cinema, not a claim that one title represents every Nigerian story."
+      }
+    ],
+    "relatedMovieSlugs": [
+      "october-1",
+      "the-figurine",
+      "the-black-book",
+      "brotherhood",
+      "gangs-of-lagos"
+    ],
+    "status": "published",
+    "author": null,
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "korean-cinema-starter-guide-rebuilt",
+    "slug": "korean-cinema-starter-guide-rebuilt",
+    "title": "A Korean Cinema Starter Guide for Different Moods",
+    "description": "A spoiler-light way into Korean cinema using the actual films in the catalogue: mystery, family drama, monster horror, romance and moral tension.",
+    "category": "Movie Guides",
+    "tags": [
+      "korean cinema",
+      "movie guide",
+      "south korea"
+    ],
+    "emoji": "",
+    "items": [
+      {
+        "heading": "Do not start with a label",
+        "body": "Korean cinema is too varied for a single starter list. A better approach is to choose a mood: social tension, fast genre storytelling, slow mystery, romance or family conflict."
+      },
+      {
+        "heading": "For sharp social observation",
+        "body": "Parasite is a natural entry point for viewers who want a story that changes tone while staying focused on class, family and ambition. It works as a conversation starter because its details keep opening up after the first watch."
+      },
+      {
+        "heading": "For energy and emotion",
+        "body": "Train to Busan is a strong choice when you want momentum. Its contained journey gives the action a clear emotional line, making it approachable even for viewers who do not usually choose zombie stories."
+      },
+      {
+        "heading": "For mystery and atmosphere",
+        "body": "Decision to Leave and Memories of Murder reward patience. The first is a romantic mystery shaped by distance and uncertainty; the second follows investigators who cannot force a clear answer from a difficult case."
+      },
+      {
+        "heading": "For a bolder next step",
+        "body": "The Handmaiden and The Host show how far the range can stretch: one is an intricate period thriller, the other a family story wrapped in monster horror. Follow the Korean Cinema topic hub when you are ready to branch out."
       }
     ],
     "relatedMovieSlugs": [
       "parasite",
       "train-to-busan",
-      "oldboy",
+      "decision-to-leave",
+      "memories-of-murder",
       "the-handmaiden",
-      "burning"
+      "the-host"
     ],
     "status": "published",
     "author": null,
@@ -376,91 +184,45 @@
     "updatedAt": null
   },
   {
-    "id": "modern-horror-starter-route",
-    "slug": "modern-horror-starter-route",
-    "title": "A Beginner-Friendly Route Through Modern Horror",
-    "description": "A practical, spoiler-light path through modern horror for viewers who want tension, atmosphere or big ideas without choosing blindly.",
-    "category": "Movie Recommendations",
+    "id": "indian-cinema-first-five",
+    "slug": "indian-cinema-first-five",
+    "title": "Five Indian Films to Start With Across Five Different Moods",
+    "description": "A starter route through Indian cinema in the catalogue, from large-scale action and sports drama to quiet romance and unsettling folklore.",
+    "category": "Movie Guides",
     "tags": [
-      "horror",
+      "indian cinema",
+      "movie guide",
       "recommendations"
     ],
     "emoji": "",
     "items": [
       {
-        "heading": "Choose your kind of fear",
-        "body": "Horror is easier to explore when you begin with a feeling: social tension, a contained survival story, unsettling family drama or strange mystery. That choice is more useful than treating every horror film as the same experience."
+        "heading": "There is no single Indian-cinema experience",
+        "body": "The catalogue includes films in Hindi, Telugu, Kannada and Malayalam, each with different rhythms and traditions. This guide uses mood rather than language as the starting point."
       },
       {
-        "heading": "For a smart entry point",
-        "body": "Get Out is a good first choice for viewers who want a thriller with social observation and clear momentum. It gives new horror viewers plenty to talk about beyond the scares."
+        "heading": "RRR for scale",
+        "body": "RRR is the choice when you want a large, emotionally direct action drama. Its friendship at the centre gives the spectacle a human anchor."
       },
       {
-        "heading": "For contained tension",
-        "body": "A Quiet Place turns silence and attention into its main source of pressure. It is a practical next watch when you want a tightly focused survival premise."
+        "heading": "Dangal for a sports and family story",
+        "body": "Dangal is a useful next watch for viewers who prefer grounded pressure over fantasy scale. The film builds its tension around training, family expectations and competition."
       },
       {
-        "heading": "For atmosphere",
-        "body": "Hereditary and Midsommar are slower, more uncomfortable experiences. They suit viewers who prefer mood and unease over quick shocks."
+        "heading": "The Lunchbox for quiet connection",
+        "body": "The Lunchbox moves at a gentler pace. Its mistaken delivery premise becomes a way to explore routine, loneliness and what people choose to share with a stranger."
       },
       {
-        "heading": "Keep your next choice intentional",
-        "body": "Read the individual movie pages before choosing. The best horror recommendation is one that matches your comfort level and the kind of story you want tonight."
+        "heading": "Tumbbad and Kumbalangi Nights for a different route",
+        "body": "Tumbbad is for viewers who want folklore and horror, while Kumbalangi Nights is for those drawn to family dynamics. Together they show why a single label cannot capture Indian cinema."
       }
     ],
     "relatedMovieSlugs": [
-      "get-out",
-      "a-quiet-place",
-      "hereditary",
-      "midsommar",
-      "the-menu",
-      "nope"
-    ],
-    "status": "published",
-    "author": null,
-    "createdAt": null,
-    "updatedAt": null
-  },
-  {
-    "id": "how-to-pick-a-movie-tonight",
-    "slug": "how-to-pick-a-movie-tonight",
-    "title": "How to Pick a Movie Tonight Without Scrolling Forever",
-    "description": "A simple decision framework for choosing a film by mood, time, company and the kind of conversation you want after it ends.",
-    "category": "Movie Recommendations",
-    "tags": [
-      "movie night",
-      "recommendations"
-    ],
-    "emoji": "",
-    "items": [
-      {
-        "heading": "Start with the room",
-        "body": "The right movie depends on more than its reputation. Consider how much time you have, who is watching and whether the group wants comfort, tension, laughter or a conversation afterwards."
-      },
-      {
-        "heading": "Give yourself a useful constraint",
-        "body": "A simple limit removes the endless scroll. Choose one: a genre, a decade, a runtime range or a filmmaker you want to explore. A good constraint makes discovery feel intentional."
-      },
-      {
-        "heading": "Use a mood-based shortcut",
-        "body": "For momentum, try an action or adventure title. For a group puzzle, choose a mystery. For a big emotional experience, choose a drama or animation. The genre and year hubs make those paths easy to browse."
-      },
-      {
-        "heading": "Read just enough",
-        "body": "A short description and trailer can help, but avoid turning selection into research. Use a movie page to confirm the basics, then save the deeper reading for after the film."
-      },
-      {
-        "heading": "Make the next choice easier",
-        "body": "When a movie works, follow its related titles or its genre page. Building a small personal trail is more useful than starting from zero every time."
-      }
-    ],
-    "relatedMovieSlugs": [
-      "top-gun-maverick",
-      "knives-out",
-      "barbie",
-      "interstellar",
-      "parasite",
-      "spirited-away"
+      "rrr",
+      "dangal",
+      "the-lunchbox",
+      "tumbbad",
+      "kumbalangi-nights"
     ],
     "status": "published",
     "author": null,
