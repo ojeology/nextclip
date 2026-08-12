@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-08-12T18:02:00.969Z",
-  "total": 246,
-  "valid": 199,
+  "generatedAt": "2026-08-12T18:12:01.242Z",
+  "total": 257,
+  "valid": 210,
   "unavailable": 47,
   "records": [
     {
@@ -1725,6 +1725,83 @@
       "youtubeId": "5KyHy4KRvIc",
       "status": "valid-id",
       "watchUrl": "https://www.youtube.com/watch?v=5KyHy4KRvIc"
+    },
+    {
+      "id": "death-note",
+      "title": "Death Note",
+      "youtubeId": "NlJZ-YgAt-c",
+      "status": "valid-id",
+      "watchUrl": "https://www.youtube.com/watch?v=NlJZ-YgAt-c"
+    },
+    {
+      "id": "demon-slayer",
+      "title": "Demon Slayer: Kimetsu no Yaiba",
+      "youtubeId": "wyiZWYMilgk",
+      "status": "valid-id",
+      "watchUrl": "https://www.youtube.com/watch?v=wyiZWYMilgk"
+    },
+    {
+      "id": "chainsaw-man",
+      "title": "Chainsaw Man",
+      "youtubeId": "FaHY74-6UYs",
+      "status": "valid-id",
+      "watchUrl": "https://www.youtube.com/watch?v=FaHY74-6UYs"
+    },
+    {
+      "id": "dragon-ball-super-super-hero",
+      "title": "Dragon Ball Super: Super Hero",
+      "youtubeId": "W9JHZwtObqs",
+      "status": "valid-id",
+      "watchUrl": "https://www.youtube.com/watch?v=W9JHZwtObqs"
+    },
+    {
+      "id": "my-hero-academia",
+      "title": "My Hero Academia",
+      "youtubeId": "T5HMoxJRhRY",
+      "status": "valid-id",
+      "watchUrl": "https://www.youtube.com/watch?v=T5HMoxJRhRY"
+    },
+    {
+      "id": "severance",
+      "title": "Severance",
+      "youtubeId": "8aWqLlGHnAA",
+      "status": "valid-id",
+      "watchUrl": "https://www.youtube.com/watch?v=8aWqLlGHnAA"
+    },
+    {
+      "id": "the-boys",
+      "title": "The Boys",
+      "youtubeId": "RUPPHdYZgtY",
+      "status": "valid-id",
+      "watchUrl": "https://www.youtube.com/watch?v=RUPPHdYZgtY"
+    },
+    {
+      "id": "house-of-the-dragon",
+      "title": "House of the Dragon",
+      "youtubeId": "5X1dMFuHZhc",
+      "status": "valid-id",
+      "watchUrl": "https://www.youtube.com/watch?v=5X1dMFuHZhc"
+    },
+    {
+      "id": "one-punch-man",
+      "title": "One Punch Man",
+      "youtubeId": "Poo5lqoWSGw",
+      "status": "valid-id",
+      "watchUrl": "https://www.youtube.com/watch?v=Poo5lqoWSGw"
+    },
+    {
+      "id": "blue-beetle",
+      "title": "Blue Beetle",
+      "youtubeId": "vS3_72Gb-bI",
+      "status": "valid-id",
+      "watchUrl": "https://www.youtube.com/watch?v=vS3_72Gb-bI"
+    },
+    {
+      "id": "the-witcher",
+      "title": "The Witcher",
+      "youtubeId": "Xo4T56l74Mk",
+      "status": "valid-id",
+      "watchUrl": "https://www.youtube.com/watch?v=Xo4T56l74Mk"
     }
   ]
 }
