@@ -1,0 +1,81 @@
+[
+  {
+    "id": "movies-like-interstellar",
+    "slug": "movies-like-interstellar",
+    "title": "Movies Like Interstellar: Six Big Ideas to Explore Next",
+    "excerpt": "A spoiler-light route through six films for viewers who want more cosmic scale, emotional stakes and mind-bending questions after Interstellar.",
+    "category": "Movie Recommendations",
+    "tags": ["science fiction", "space", "recommendations"],
+    "relatedMovieSlugs": ["interstellar", "arrival", "the-martian", "gravity", "tenet", "dune-part-two"],
+    "content": [
+      {"heading": "Start with the emotion, not the science", "body": "The most satisfying follow-up to Interstellar is not necessarily another film about a spacecraft. Its real pull is the collision between an enormous idea and a personal decision. Look for stories that give their spectacle an emotional centre."},
+      {"heading": "Arrival", "body": "Arrival is a strong next stop for viewers who liked Interstellar's patience with big questions. It turns language, memory and first contact into a quiet, human-scale mystery rather than a race to win."},
+      {"heading": "The Martian and Gravity", "body": "For survival-focused space stories, The Martian and Gravity offer different kinds of tension. One is built around problem-solving and humour; the other stays close to immediate physical danger. Both make isolation part of the experience."},
+      {"heading": "Dune: Part Two", "body": "If the appeal was scale, Dune: Part Two is a natural move. It shifts from space travel to prophecy, politics and a vast desert world, but it keeps the feeling that individual choices can reshape entire systems."},
+      {"heading": "Keep the discovery going", "body": "Use this list as a starting point rather than a ranking. The best next movie depends on whether you want more wonder, more tension or more ideas to argue about after the credits."}
+    ]
+  },
+  {
+    "id": "why-dune-part-two-feels-large",
+    "slug": "why-dune-part-two-feels-large",
+    "title": "Why Dune: Part Two Feels So Vast Without Losing Its Focus",
+    "excerpt": "A spoiler-light look at the choices that make Dune: Part Two feel enormous while keeping its central relationships in view.",
+    "category": "Movie Explainers",
+    "tags": ["dune", "science fiction", "explainer"],
+    "relatedMovieSlugs": ["dune-part-two", "dune", "arrival", "blade-runner-2049"],
+    "content": [
+      {"heading": "Scale is a storytelling tool", "body": "Large images only matter when they change how a character feels. Dune: Part Two repeatedly places people against spaces that make them look small, then asks what they will do with power inside those spaces."},
+      {"heading": "The world has pressure", "body": "The film's desert setting is not simply a backdrop. It creates limits, rituals and choices. That pressure makes the story feel bigger because every movement appears to have a cost."},
+      {"heading": "A personal point of view", "body": "Even as the story expands, the emotional focus stays close to a few key relationships. That balance lets the spectacle feel connected to decisions rather than detached from them."},
+      {"heading": "Where to explore next", "body": "For more science-fiction worlds built around atmosphere and moral pressure, explore Dune, Arrival and Blade Runner 2049 in the movie catalogue."}
+    ]
+  },
+  {
+    "id": "korean-cinema-starter-guide",
+    "slug": "korean-cinema-starter-guide",
+    "title": "A Starter Guide to Korean Cinema: Five Different Ways In",
+    "excerpt": "Korean cinema is not one genre. This guide uses titles already in the catalogue to help new viewers choose a first watch based on mood.",
+    "category": "Movie Recommendations",
+    "tags": ["korean cinema", "recommendations"],
+    "relatedMovieSlugs": ["parasite", "train-to-busan", "oldboy", "the-handmaiden", "burning"],
+    "content": [
+      {"heading": "Start with the mood you want", "body": "A useful first step is to choose a mood rather than chase a single definition of Korean cinema. The catalogue includes social satire, action, horror, romance and slow-burn mystery."},
+      {"heading": "For a sharp social story", "body": "Parasite is a strong entry point for viewers who enjoy tonal shifts and stories about class, family and ambition. Its accessible setup makes it easy to discuss after watching."},
+      {"heading": "For momentum", "body": "Train to Busan is a clear choice when you want a fast, emotionally direct thriller. It uses a contained journey to keep the stakes immediate."},
+      {"heading": "For darker mysteries", "body": "Oldboy, The Handmaiden and Burning offer very different experiences, but each rewards close attention. Choose based on your tolerance for intensity and ambiguity."},
+      {"heading": "Use the genre hub", "body": "The Korean movie collection is a better place to continue than a single all-purpose list. Browse the titles, read their movie pages and follow the related recommendations that match your taste."}
+    ]
+  },
+  {
+    "id": "modern-horror-starter-route",
+    "slug": "modern-horror-starter-route",
+    "title": "A Beginner-Friendly Route Through Modern Horror",
+    "excerpt": "A practical, spoiler-light path through modern horror for viewers who want tension, atmosphere or big ideas without choosing blindly.",
+    "category": "Movie Recommendations",
+    "tags": ["horror", "recommendations"],
+    "relatedMovieSlugs": ["get-out", "a-quiet-place", "hereditary", "midsommar", "the-menu", "nope"],
+    "content": [
+      {"heading": "Choose your kind of fear", "body": "Horror is easier to explore when you begin with a feeling: social tension, a contained survival story, unsettling family drama or strange mystery. That choice is more useful than treating every horror film as the same experience."},
+      {"heading": "For a smart entry point", "body": "Get Out is a good first choice for viewers who want a thriller with social observation and clear momentum. It gives new horror viewers plenty to talk about beyond the scares."},
+      {"heading": "For contained tension", "body": "A Quiet Place turns silence and attention into its main source of pressure. It is a practical next watch when you want a tightly focused survival premise."},
+      {"heading": "For atmosphere", "body": "Hereditary and Midsommar are slower, more uncomfortable experiences. They suit viewers who prefer mood and unease over quick shocks."},
+      {"heading": "Keep your next choice intentional", "body": "Read the individual movie pages before choosing. The best horror recommendation is one that matches your comfort level and the kind of story you want tonight."}
+    ]
+  },
+  {
+    "id": "how-to-pick-a-movie-tonight",
+    "slug": "how-to-pick-a-movie-tonight",
+    "title": "How to Pick a Movie Tonight Without Scrolling Forever",
+    "excerpt": "A simple decision framework for choosing a film by mood, time, company and the kind of conversation you want after it ends.",
+    "category": "Movie Recommendations",
+    "tags": ["movie night", "recommendations"],
+    "relatedMovieSlugs": ["top-gun-maverick", "knives-out", "barbie", "interstellar", "parasite", "spirited-away"],
+    "content": [
+      {"heading": "Start with the room", "body": "The right movie depends on more than its reputation. Consider how much time you have, who is watching and whether the group wants comfort, tension, laughter or a conversation afterwards."},
+      {"heading": "Give yourself a useful constraint", "body": "A simple limit removes the endless scroll. Choose one: a genre, a decade, a runtime range or a filmmaker you want to explore. A good constraint makes discovery feel intentional."},
+      {"heading": "Use a mood-based shortcut", "body": "For momentum, try an action or adventure title. For a group puzzle, choose a mystery. For a big emotional experience, choose a drama or animation. The genre and year hubs make those paths easy to browse."},
+      {"heading": "Read just enough", "body": "A short description and trailer can help, but avoid turning selection into research. Use a movie page to confirm the basics, then save the deeper reading for after the film."},
+      {"heading": "Make the next choice easier", "body": "When a movie works, follow its related titles or its genre page. Building a small personal trail is more useful than starting from zero every time."}
+    ]
+  }
+]
