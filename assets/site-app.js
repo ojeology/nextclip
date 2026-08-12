@@ -29,26 +29,128 @@
     });
   });
 
-  /* ---------- lazy trailer players ---------- */
-  document.querySelectorAll('[data-trailer-id]').forEach(function (frame) {
-    var play = frame.querySelector('.trailer-play');
-    if (!play) return;
-    play.addEventListener('click', function () {
-      var id = frame.getAttribute('data-trailer-id');
-      if (!/^[A-Za-z0-9_-]{11}$/.test(id)) {
-        frame.outerHTML = '<div class="trailer-unavailable"><b>Trailer unavailable</b><span>This trailer link is not valid.</span></div>';
-        return;
+  /* ---------- lazy trailer players (multi-candidate, failure-safe) ---------- */
+  function frameHtml(id, title) {
+    var iframe = document.createElement('iframe');
+    iframe.src = 'https://www.youtube-nocookie.com/embed/' + id + '?rel=0&modestbranding=1';
+    iframe.title = title + ' trailer';
+    iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
+    iframe.setAttribute('allowfullscreen', '');
+    iframe.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
+    return iframe;
+  }
+  document.querySelectorAll('[data-trailer-box]').forEach(function (box) {
+    var candidates = [];
+    try { candidates = JSON.parse(box.getAttribute('data-trailer-candidates')); } catch (e) { candidates = []; }
+    if (!candidates.length) return;
+    var title = box.getAttribute('data-trailer-title') || 'Movie';
+    var index = 0;
+    var current = candidates[index];
+    var started = false;
+    var failTimer = null;
+
+    function showError() {
+      if (failTimer) { clearTimeout(failTimer); failTimer = null; }
+      var frame = box.querySelector('[data-trailer-id]');
+      if (frame && frame.parentNode) frame.parentNode.removeChild(frame);
+      var err = box.querySelector('[data-trailer-error]');
+      if (err) {
+        var watch = err.querySelector('[data-trailer-watch]');
+        if (watch && current) watch.setAttribute('href', current.watch);
+        err.hidden = false;
       }
-      var iframe = document.createElement('iframe');
-      iframe.src = 'https://www.youtube-nocookie.com/embed/' + id + '?rel=0&modestbranding=1';
-      iframe.title = (frame.getAttribute('data-trailer-title') || 'Movie') + ' official trailer';
-      iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
-      iframe.setAttribute('allowfullscreen', '');
-      iframe.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
-      frame.innerHTML = '';
-      frame.appendChild(iframe);
-    });
+      var alt = box.querySelector('[data-trailer-alt]');
+      if (alt) alt.hidden = !(candidates.length > 1);
+      var fb = box.querySelector('.trailer-fallback');
+      if (fb) fb.hidden = true;
+    }
+    function play() {
+      if (!current || !/^[A-Za-z0-9_-]{11}$/.test(current.id)) { showError(); return; }
+      var err = box.querySelector('[data-trailer-error]');
+      if (err) err.hidden = true;
+      var frame = box.querySelector('[data-trailer-id]');
+      if (frame) { frame.innerHTML = ''; frame.appendChild(frameHtml(current.id, title)); }
+      started = false;
+      if (failTimer) clearTimeout(failTimer);
+      failTimer = setTimeout(function () { if (!started) showError(); }, 10000);
+    }
+    function render() {
+      current = candidates[index];
+      var frame = box.querySelector('[data-trailer-id]');
+      if (frame) {
+        frame.hidden = false;
+        frame.setAttribute('data-trailer-id', current.id);
+        frame.innerHTML = '<img loading="lazy" src="https://i.ytimg.com/vi/' + current.id + '/hqdefault.jpg" alt="' + title + ' trailer thumbnail"><button type="button" class="trailer-play">Play trailer</button>';
+      }
+      var err = box.querySelector('[data-trailer-error]');
+      if (err) err.hidden = true;
+      var fb = box.querySelector('.trailer-fallback');
+      if (fb) { fb.hidden = false; fb.innerHTML = 'If the embedded player is unavailable, <a href="' + current.watch + '" target="_blank" rel="noopener">watch the trailer on YouTube</a>.'; }
+      var alt = box.querySelector('[data-trailer-alt]');
+      if (alt) alt.hidden = !(candidates.length > 1);
+      var badge = box.querySelector('.trailer-status');
+      if (badge) {
+        var isFan = current.type === 'fan-made';
+        badge.className = 'trailer-status ' + (isFan ? 't-fan' : 't-ok');
+        badge.textContent = (isFan ? '🟡 ' : '🟢 ') + (current.label || 'Trailer');
+      }
+      var meta = box.querySelector('.trailer-meta');
+      if (meta) meta.textContent = current.channel ? 'YouTube · via ' + current.channel : 'YouTube';
+      var disc = box.querySelector('.trailer-disclaimer');
+      if (disc) disc.hidden = !isFan;
+      var playBtn = frame && frame.querySelector('.trailer-play');
+      if (playBtn) playBtn.addEventListener('click', play);
+    }
+    // failure detection: YouTube posts {event:'onError'} messages; also
+    // consider a 10s silent load a failure.
+    function onMessage(e) {
+      var d = e.data;
+      if (!d || typeof d !== 'object' || !d.event) return;
+      if (d.event === 'onError') { showError(); }
+      else if (d.event === 'onReady' || d.event === 'onStateChange' || d.event === 'infoDelivery') { started = true; if (failTimer) { clearTimeout(failTimer); failTimer = null; } }
+    }
+    window.addEventListener('message', onMessage);
+    var playBtn = box.querySelector('.trailer-play');
+    if (playBtn) playBtn.addEventListener('click', play);
+    var altBtn = box.querySelector('[data-trailer-alt]');
+    if (altBtn) altBtn.addEventListener('click', function () { index = (index + 1) % candidates.length; render(); });
   });
+
+  /* ---------- trailer admin audit table (/trailers/) ---------- */
+  var taData = document.getElementById('trailer-admin-data');
+  if (taData) {
+    var T = [];
+    try { T = JSON.parse(taData.textContent); } catch (e) {}
+    var taBody = document.getElementById('ta-body');
+    var taFilter = document.getElementById('ta-filter');
+    var taQ = document.getElementById('ta-q');
+    function taTag(status) {
+      if (status === 'official') return '<span class="tr-tag ok">OFFICIAL</span>';
+      if (status === 'fan-made') return '<span class="tr-tag fan">COMMUNITY</span>';
+      return '<span class="tr-tag miss">NO TRAILER</span>';
+    }
+    function taRender() {
+      var q = (taQ ? taQ.value : '').trim().toLowerCase();
+      var f = taFilter ? taFilter.value : '';
+      var rows = T.filter(function (r) {
+        if (f && r.status !== f) return false;
+        if (q && (r.title + ' ' + r.slug).toLowerCase().indexOf(q) === -1) return false;
+        return true;
+      });
+      taBody.innerHTML = rows.map(function (r) {
+        return '<tr><td><b>' + esc(r.title) + '</b><br><span style="color:var(--muted);font-size:11px">' + esc(r.slug) + ' · ' + esc(r.typeDir) + '</span></td>' +
+          '<td>' + taTag(r.status) + '</td>' +
+          '<td>' + esc(r.label || '—') + '</td>' +
+          '<td>' + (r.videoId ? '<code>' + esc(r.videoId) + '</code>' : '—') + (r.candidates && r.candidates.length > 1 ? '<br><span style="color:var(--muted);font-size:10px">+' + (r.candidates.length - 1) + ' more</span>' : '') + '</td>' +
+          '<td>' + esc(r.channel || '—') + '</td>' +
+          '<td>' + (r.verified ? '✓' : '—') + '</td>' +
+          '<td>' + esc(r.lastChecked || '—') + '</td></tr>';
+      }).join('') || '<tr><td colspan="7" style="color:var(--muted)">No titles match.</td></tr>';
+    }
+    if (taFilter) taFilter.addEventListener('change', taRender);
+    if (taQ) taQ.addEventListener('input', taRender);
+    taRender();
+  }
 
   /* ---------- load-more (server-rendered grids) ---------- */
   document.querySelectorAll('[data-load-more]').forEach(function (btn) {

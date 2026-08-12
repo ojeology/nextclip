@@ -1,6 +1,6 @@
 # NEXTCLIP catalogue & frontend report
 
-Generated: 2026-08-12T19:23:27.855Z
+Generated: 2026-08-12T20:19:23.219Z
 
 ## Catalogue
 - Total titles: **630**
@@ -28,6 +28,17 @@ Generated: 2026-08-12T19:23:27.855Z
 - Formula: popularity (editorial rating × 10) + recency (100 − (2026 − year) × 8) + editorial boost (featured +20, topical +10..30)
 - Top 5: Squid Game (200), Dune: Part Two (194), The Last of Us (191), Oppenheimer (186), Nosferatu (174)
 - No viewer statistics are used or claimed.
+
+## Trailer system
+- Official trailers: **228**
+- Official teasers: **6**
+- Official clips: **7**
+- Community/fan-made fallbacks (labelled): **12**
+- No verified trailer: **377**
+- Broken/unavailable detected: **6**
+- Broken: Deadpool 2 (D86Rte8XQ3M) [broken]; Longlegs (B_tDLs6u2E0) [mismatch]; Star Wars: Return of the Jedi (5UfAaqKB_Uo) [broken]; Harry Potter and the Sorcerer's Stone (VyHV0BtdbbQ) [broken]; Harry Potter and the Deathly Hallows – Part 2 (MYK8I8vLk4g) [broken]; Jurassic Park (Bimq7y9z7Ko) [broken]
+- Priority: official-trailer > official-teaser > official-clip > fan-made > unavailable
+- Fan-made videos are labelled "Community trailer" with a disclaimer; never "Official Trailer".
 
 ## Editorial config
 - Featured: 8 titles; boosts: 33

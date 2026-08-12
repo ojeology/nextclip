@@ -457,9 +457,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "pWdKf3MneyI",
+  "trailer": "https://www.youtube.com/watch?v=pWdKf3MneyI",
+  "poster": "https://i.ytimg.com/vi/pWdKf3MneyI/hqdefault.jpg"
  },
  {
   "id": "ant-man-2",
@@ -2832,9 +2832,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "zuZnRUcoWos",
+  "trailer": "https://www.youtube.com/watch?v=zuZnRUcoWos",
+  "poster": "https://i.ytimg.com/vi/zuZnRUcoWos/hqdefault.jpg"
  },
  {
   "id": "into-the-badlands",
@@ -3165,9 +3165,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "vn9mMeWcgoM",
+  "trailer": "https://www.youtube.com/watch?v=vn9mMeWcgoM",
+  "poster": "https://i.ytimg.com/vi/vn9mMeWcgoM/hqdefault.jpg"
  },
  {
   "id": "jurassic-world-rebirth",
@@ -5867,9 +5867,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "hebWYacbdvc",
+  "trailer": "https://www.youtube.com/watch?v=hebWYacbdvc",
+  "poster": "https://i.ytimg.com/vi/hebWYacbdvc/hqdefault.jpg"
  },
  {
   "id": "the-florida-project",
@@ -6757,9 +6757,9 @@
   "country": "United States",
   "language": "English",
   "status": "published",
-  "youtubeId": null,
-  "trailer": null,
-  "poster": null
+  "youtubeId": "iQXmlf3Sefg",
+  "trailer": "https://www.youtube.com/watch?v=iQXmlf3Sefg",
+  "poster": "https://i.ytimg.com/vi/iQXmlf3Sefg/hqdefault.jpg"
  },
  {
   "id": "the-witcher",
@@ -7497,7 +7497,10 @@
   "genre": "Animation",
   "country": "United States",
   "language": "English",
-  "status": "published"
+  "status": "published",
+  "youtubeId": "CaimKeDcudo",
+  "trailer": "https://www.youtube.com/watch?v=CaimKeDcudo",
+  "poster": "https://i.ytimg.com/vi/CaimKeDcudo/hqdefault.jpg"
  },
  {
   "id": "big-hero-6",

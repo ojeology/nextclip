@@ -1,0 +1,69 @@
+{
+  "generatedAt": "2026-08-12T20:19:22.976Z",
+  "totalTitles": 630,
+  "officialTrailers": 228,
+  "officialTeasers": 6,
+  "officialClips": 7,
+  "fanMade": 12,
+  "titlesWithVerifiedTrailer": 253,
+  "noCandidateAtAll": 371,
+  "noVerifiedTrailer": 377,
+  "brokenUnavailable": 6,
+  "brokenList": [
+    {
+      "slug": "deadpool-2",
+      "title": "Deadpool 2",
+      "videoId": "D86Rte8XQ3M",
+      "status": "broken",
+      "channel": null,
+      "videoTitle": null,
+      "lastChecked": "2026-08-12"
+    },
+    {
+      "slug": "longlegs",
+      "title": "Longlegs",
+      "videoId": "B_tDLs6u2E0",
+      "status": "mismatch",
+      "channel": "Rotten Tomatoes Trailers",
+      "videoTitle": "The Substance Trailer #1 (2024)",
+      "lastChecked": "2026-08-12"
+    },
+    {
+      "slug": "return-of-the-jedi",
+      "title": "Star Wars: Return of the Jedi",
+      "videoId": "5UfAaqKB_Uo",
+      "status": "broken",
+      "channel": null,
+      "videoTitle": null,
+      "lastChecked": "2026-08-12"
+    },
+    {
+      "slug": "harry-potter-sorcerers-stone",
+      "title": "Harry Potter and the Sorcerer's Stone",
+      "videoId": "VyHV0BtdbbQ",
+      "status": "broken",
+      "channel": null,
+      "videoTitle": null,
+      "lastChecked": "2026-08-12"
+    },
+    {
+      "slug": "harry-potter-deathly-hallows-2",
+      "title": "Harry Potter and the Deathly Hallows – Part 2",
+      "videoId": "MYK8I8vLk4g",
+      "status": "broken",
+      "channel": null,
+      "videoTitle": null,
+      "lastChecked": "2026-08-12"
+    },
+    {
+      "slug": "jurassic-park",
+      "title": "Jurassic Park",
+      "videoId": "Bimq7y9z7Ko",
+      "status": "broken",
+      "channel": null,
+      "videoTitle": null,
+      "lastChecked": "2026-08-12"
+    }
+  ],
+  "note": "Counts reflect the primary (highest-priority) trailer per title. Fan-made videos are only used as a fallback and are labelled as community-created on the site. noVerifiedTrailer includes titles with broken/wrong candidates."
+}

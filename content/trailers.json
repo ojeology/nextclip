@@ -1,0 +1,9 @@
+{
+  "_comment": "ADMIN TRAILER OVERRIDES — edit this file (or use scripts/trailer_admin.py) to control trailers without touching frontend code or the legacy app. Each entry replaces the display candidates for that title. 'candidates' are shown in order after priority sorting; 'excludeTrailers: true' hides all trailers for the title. Fields: videoId (11-char YouTube ID), type (official-trailer | official-teaser | official-clip | fan-made), title (display label), source, channel, verified (bool), lastChecked.",
+  "spirited-away": {
+    "note": "Legacy anime record; legacy/index.html cannot be edited, so the trailer is managed here. Verified 2026-08-12 via oEmbed.",
+    "candidates": [
+      { "videoId": "ByXuk9QqQkk", "type": "official-trailer", "title": "Official Trailer", "source": "YouTube", "channel": "Crunchyroll Store Australia", "verified": true, "lastChecked": "2026-08-12" }
+    ]
+  }
+}
