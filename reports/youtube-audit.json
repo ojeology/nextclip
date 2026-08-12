@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-08-12T15:41:03.000Z",
-  "total": 167,
+  "generatedAt": "2026-08-12T15:43:25.626Z",
+  "total": 227,
   "valid": 127,
-  "unavailable": 40,
+  "unavailable": 100,
   "records": [
     {
       "id": "everything-everywhere-all-at-once",
@@ -280,6 +280,426 @@
     {
       "id": "perfect-blue",
       "title": "Perfect Blue",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "casablanca",
+      "title": "Casablanca",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "singin-in-the-rain",
+      "title": "Singin’ in the Rain",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "the-godfather",
+      "title": "The Godfather",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "jaws",
+      "title": "Jaws",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "alien",
+      "title": "Alien",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "do-the-right-thing",
+      "title": "Do the Right Thing",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "the-truman-show",
+      "title": "The Truman Show",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "the-iron-giant",
+      "title": "The Iron Giant",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "the-grand-budapest-hotel",
+      "title": "The Grand Budapest Hotel",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "moonlight",
+      "title": "Moonlight",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "lady-bird",
+      "title": "Lady Bird",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "the-florida-project",
+      "title": "The Florida Project",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "the-lighthouse",
+      "title": "The Lighthouse",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "the-green-knight",
+      "title": "The Green Knight",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "minari",
+      "title": "Minari",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "aftersun",
+      "title": "Aftersun",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "the-zone-of-interest",
+      "title": "The Zone of Interest",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "all-quiet-on-the-western-front",
+      "title": "All Quiet on the Western Front",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "the-last-black-man-in-san-francisco",
+      "title": "The Last Black Man in San Francisco",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "sound-of-metal",
+      "title": "Sound of Metal",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "sholay",
+      "title": "Sholay",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "pather-panchali",
+      "title": "Pather Panchali",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "queen",
+      "title": "Queen",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "andhadhun",
+      "title": "Andhadhun",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "drishyam",
+      "title": "Drishyam",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "sairat",
+      "title": "Sairat",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "masaan",
+      "title": "Masaan",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "the-great-indian-kitchen",
+      "title": "The Great Indian Kitchen",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "court",
+      "title": "Court",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "udaan",
+      "title": "Udaan",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "haider",
+      "title": "Haider",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "article-15",
+      "title": "Article 15",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "kaaka-muttai",
+      "title": "Kaaka Muttai",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "vikram-vedha",
+      "title": "Vikram Vedha",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "baahubali-the-beginning",
+      "title": "Baahubali: The Beginning",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "the-milkmaid",
+      "title": "The Milkmaid",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "oloture",
+      "title": "Òlòtūré",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "ije-the-journey",
+      "title": "Ije: The Journey",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "half-of-a-yellow-sun",
+      "title": "Half of a Yellow Sun",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "phone-swap",
+      "title": "Phone Swap",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "living-in-bondage-breaking-free",
+      "title": "Living in Bondage: Breaking Free",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "gangs-of-lagos",
+      "title": "Gangs of Lagos",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "mami-wata",
+      "title": "Mami Wata",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "the-trade",
+      "title": "The Trade",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "breaded-life",
+      "title": "Breaded Life",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "oldboy",
+      "title": "Oldboy",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "the-host",
+      "title": "The Host",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "the-chaser",
+      "title": "The Chaser",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "i-saw-the-devil",
+      "title": "I Saw the Devil",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "poetry",
+      "title": "Poetry",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "the-man-from-nowhere",
+      "title": "The Man from Nowhere",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "a-bittersweet-life",
+      "title": "A Bittersweet Life",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "the-housemaid",
+      "title": "The Housemaid",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "extreme-job",
+      "title": "Extreme Job",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "burning",
+      "title": "Burning",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "seven-samurai",
+      "title": "Seven Samurai",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "rashomon",
+      "title": "Rashomon",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "akira",
+      "title": "Akira",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "battle-royale",
+      "title": "Battle Royale",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "departures",
+      "title": "Departures",
       "youtubeId": null,
       "status": "unavailable",
       "watchUrl": null

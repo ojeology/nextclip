@@ -4,18 +4,18 @@ Generated: 2026-08-12
 
 ## Catalogue coverage
 
-- Movies audited: **127**
+- Movies audited: **227**
 - COMPLETE metadata: **127**
-- PARTIAL metadata: **0**
+- PARTIAL metadata: **100**
 - MISSING metadata: **0**
-- Movies requiring editorial/media attention: **80**
+- Movies requiring editorial/media attention: **180**
 
 Complete means the currently available title, slug, year, genre, description, temporary poster source, and YouTube ID are present. It does not mean that unavailable cast, director, country, language, runtime, or backdrop data has been invented.
 
 ## Editorial inventory
 
 - Published articles: **10**
-- Published topic hubs: **5**
+- Published topic hubs: **7**
 - Article categories: **Movie Facts, Movie Recommendations, Movie Explainers**
 
 ## Priority movie enrichment queue
