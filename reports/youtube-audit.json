@@ -1,9 +1,149 @@
 {
-  "generatedAt": "2026-08-12T15:11:40.805Z",
-  "total": 127,
+  "generatedAt": "2026-08-12T15:22:20.771Z",
+  "total": 147,
   "valid": 127,
-  "unavailable": 0,
+  "unavailable": 20,
   "records": [
+    {
+      "id": "everything-everywhere-all-at-once",
+      "title": "Everything Everywhere All at Once",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "the-holdovers",
+      "title": "The Holdovers",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "the-banshees-of-inisherin",
+      "title": "The Banshees of Inisherin",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "rrr",
+      "title": "RRR",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "3-idiots",
+      "title": "3 Idiots",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "dangal",
+      "title": "Dangal",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "the-lunchbox",
+      "title": "The Lunchbox",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "kantara",
+      "title": "Kantara",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "jallikattu",
+      "title": "Jallikattu",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "the-wedding-party",
+      "title": "The Wedding Party",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "lionheart",
+      "title": "Lionheart",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "king-of-boys",
+      "title": "King of Boys",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "the-black-book",
+      "title": "The Black Book",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "eyimofe",
+      "title": "Eyimofe",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "citation",
+      "title": "Citation",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "anikulapo",
+      "title": "Aníkúlápó",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "decision-to-leave",
+      "title": "Decision to Leave",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "the-wailing",
+      "title": "The Wailing",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "shoplifters",
+      "title": "Shoplifters",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "drive-my-car",
+      "title": "Drive My Car",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
     {
       "id": "dune2",
       "title": "Dune: Part Two",

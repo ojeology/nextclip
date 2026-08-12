@@ -91,5 +91,38 @@
       "korean-cinema-starter-guide",
       "10-korean-movies-everyone-should-watch"
     ]
+  },
+  {
+    "id": "nigerian-cinema",
+    "slug": "nigerian-cinema",
+    "title": "Nigerian Cinema",
+    "description": "A starting point for Nigerian films in the NEXTCLIP catalogue, spanning family drama, crime stories, social comedy and fantasy.",
+    "status": "published",
+    "movieSlugs": [
+      "the-wedding-party",
+      "lionheart",
+      "king-of-boys",
+      "the-black-book",
+      "eyimofe",
+      "citation",
+      "anikulapo"
+    ],
+    "articleSlugs": []
+  },
+  {
+    "id": "indian-cinema",
+    "slug": "indian-cinema",
+    "title": "Indian Cinema",
+    "description": "A selection of Indian films from the catalogue across Telugu, Hindi, Kannada and Malayalam storytelling.",
+    "status": "published",
+    "movieSlugs": [
+      "rrr",
+      "3-idiots",
+      "dangal",
+      "the-lunchbox",
+      "kantara",
+      "jallikattu"
+    ],
+    "articleSlugs": []
   }
 ]

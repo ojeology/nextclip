@@ -57,6 +57,20 @@ const movies = [...ctx.LIB, ...ctx.ANIME].map((raw, i) => {
     watchLinks: Array.isArray(raw.links) ? raw.links.map(x => ({ name: clean(x.name), url: x.url })) : []
   };
 });
+// Curated expansion records live outside the legacy inline application data.
+const cataloguePath = path.join(root, 'content', 'catalogue.json');
+if (fs.existsSync(cataloguePath)) {
+  const additional = JSON.parse(fs.readFileSync(cataloguePath, 'utf8'));
+  const ids = new Set(movies.map(m => m.id)), slugs = new Set(movies.map(m => m.slug));
+  additional.forEach(record => {
+    if (!record || record.status !== 'published') return;
+    if (!record.id || !record.title || !record.slug || !record.description || !record.year || !record.genre) throw new Error(`Invalid catalogue record: ${record && record.id || 'unknown'}`);
+    if (ids.has(record.id) || slugs.has(record.slug)) throw new Error(`Duplicate catalogue record: ${record.id}`);
+    const youtubeId = normalizeYouTube(record.youtubeId || record.trailer);
+    movies.push({ id:record.id, title:clean(record.title), slug:slugify(record.slug), description:clean(record.description), year:Number(record.year), genre:clean(record.genre), country:record.country||null, language:record.language||null, poster:record.poster||null, backdrop:record.backdrop||null, trailer:youtubeId?`https://www.youtube.com/watch?v=${youtubeId}`:null, youtubeId, cast:Array.isArray(record.cast)?record.cast:[], director:record.director||null, runtime:record.runtime||null, rating:record.rating||null, status:'published', createdAt:record.createdAt||null, updatedAt:record.updatedAt||null, legacyType:'movie', teaser:clean(record.description), facts:[], watchLinks:[] });
+    ids.add(record.id); slugs.add(record.slug);
+  });
+}
 const legacyArticleCategories = { 'broke-internet':'Movie Facts', 'never-end':'Movie Recommendations', 'agent-kim':'Movie Explainers', 'korean-movies':'Movie Recommendations', 'vampire-horror':'Movie Facts' };
 let articles = (ctx.ARTICLES || []).map(a => ({ id:a.id, slug:slugify(a.title), title:clean(a.title), description:clean(a.intro), category:legacyArticleCategories[a.id] || 'Editorial', tags:(a.tags||[]).map(clean), emoji:a.emoji || '', items:(a.items||[]).map(x=>({heading:clean(x.h), body:clean(x.p)})), relatedMovieSlugs:[], status:'published', updatedAt:null, createdAt:null }));
 const authoredEditorialPath = path.join(root, 'content', 'editorial.json');
