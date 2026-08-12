@@ -1,16 +1,9 @@
 {
-  "generatedAt": "2026-08-12T17:47:41.035Z",
+  "generatedAt": "2026-08-12T17:48:42.575Z",
   "total": 237,
-  "valid": 185,
-  "unavailable": 52,
+  "valid": 190,
+  "unavailable": 47,
   "records": [
-    {
-      "id": "the-holdovers",
-      "title": "The Holdovers",
-      "youtubeId": null,
-      "status": "unavailable",
-      "watchUrl": null
-    },
     {
       "id": "the-banshees-of-inisherin",
       "title": "The Banshees of Inisherin",
@@ -49,20 +42,6 @@
     {
       "id": "drive-my-car",
       "title": "Drive My Car",
-      "youtubeId": null,
-      "status": "unavailable",
-      "watchUrl": null
-    },
-    {
-      "id": "the-nice-guys",
-      "title": "The Nice Guys",
-      "youtubeId": null,
-      "status": "unavailable",
-      "watchUrl": null
-    },
-    {
-      "id": "the-farewell",
-      "title": "The Farewell",
       "youtubeId": null,
       "status": "unavailable",
       "watchUrl": null
@@ -124,22 +103,8 @@
       "watchUrl": null
     },
     {
-      "id": "singin-in-the-rain",
-      "title": "Singin’ in the Rain",
-      "youtubeId": null,
-      "status": "unavailable",
-      "watchUrl": null
-    },
-    {
       "id": "do-the-right-thing",
       "title": "Do the Right Thing",
-      "youtubeId": null,
-      "status": "unavailable",
-      "watchUrl": null
-    },
-    {
-      "id": "the-iron-giant",
-      "title": "The Iron Giant",
       "youtubeId": null,
       "status": "unavailable",
       "watchUrl": null
@@ -1265,6 +1230,13 @@
       "watchUrl": "https://www.youtube.com/watch?v=XJCwaMyo3bc"
     },
     {
+      "id": "the-holdovers",
+      "title": "The Holdovers",
+      "youtubeId": "AhKLpJmHhIg",
+      "status": "valid-id",
+      "watchUrl": "https://www.youtube.com/watch?v=AhKLpJmHhIg"
+    },
+    {
       "id": "rrr",
       "title": "RRR",
       "youtubeId": "f_vbAtFSEc0",
@@ -1363,6 +1335,20 @@
       "watchUrl": "https://www.youtube.com/watch?v=IOokgSy7Kqs"
     },
     {
+      "id": "the-nice-guys",
+      "title": "The Nice Guys",
+      "youtubeId": "GQR5zsLHbYw",
+      "status": "valid-id",
+      "watchUrl": "https://www.youtube.com/watch?v=GQR5zsLHbYw"
+    },
+    {
+      "id": "the-farewell",
+      "title": "The Farewell",
+      "youtubeId": "RofpAjqwMa8",
+      "status": "valid-id",
+      "watchUrl": "https://www.youtube.com/watch?v=RofpAjqwMa8"
+    },
+    {
       "id": "past-lives",
       "title": "Past Lives",
       "youtubeId": "kA244xewjcI",
@@ -1426,6 +1412,13 @@
       "watchUrl": "https://www.youtube.com/watch?v=BkL9l7qovsE"
     },
     {
+      "id": "singin-in-the-rain",
+      "title": "Singin’ in the Rain",
+      "youtubeId": "_5-1qVISAKM",
+      "status": "valid-id",
+      "watchUrl": "https://www.youtube.com/watch?v=_5-1qVISAKM"
+    },
+    {
       "id": "the-godfather",
       "title": "The Godfather",
       "youtubeId": "1x0GpEZnwa8",
@@ -1452,6 +1445,13 @@
       "youtubeId": "dlnmQbPGuls",
       "status": "valid-id",
       "watchUrl": "https://www.youtube.com/watch?v=dlnmQbPGuls"
+    },
+    {
+      "id": "the-iron-giant",
+      "title": "The Iron Giant",
+      "youtubeId": "obLtyj8hfFk",
+      "status": "valid-id",
+      "watchUrl": "https://www.youtube.com/watch?v=obLtyj8hfFk"
     },
     {
       "id": "the-grand-budapest-hotel",
