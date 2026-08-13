@@ -51,9 +51,9 @@ section('Vertical hubs');
 /* 3. Vertical category pages */
 section('Vertical category pages');
 {
-  for (const f of ['sports/premier-league/index.html', 'sports/champions-league/index.html', 'memes/whatsapp-stickers/index.html',
+  for (const f of ['sports/champions-league/index.html', 'memes/whatsapp-stickers/index.html',
                    'make-money/freelancing/index.html', 'make-money/platform-reviews/index.html', 'tech/ai-tools/index.html',
-                   'tech/ai-tutorials/index.html', 'sports/transfers/index.html']) {
+                   'tech/ai-tutorials/index.html', 'sports/la-liga/index.html']) {
     const s = read(f);
     assert(/<h1>/.test(s), f + ' has h1');
     assert(s.indexOf('foundation ready') > -1, f + ' shows honest placeholder state');

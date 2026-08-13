@@ -536,6 +536,22 @@
     setTimeout(function () { if (heroVisible && !userPaused) { loadHeroVideo(false); scheduleHero(); } }, 1200);
   }
 
+  /* ---------- sports hero carousel arrows (scroll-snap track) ---------- */
+  var spHero = document.querySelector('.sp-hero');
+  if (spHero) {
+    var spTrack = spHero.querySelector('.sp-hero-track');
+    var spPrev = spHero.querySelector('[data-sp-hero-prev]');
+    var spNext = spHero.querySelector('[data-sp-hero-next]');
+    function spScroll(dir) {
+      if (!spTrack) return;
+      var card = spTrack.querySelector('.sp-hero-card');
+      var w = card ? card.getBoundingClientRect().width + 16 : spTrack.clientWidth * 0.8;
+      spTrack.scrollBy({ left: dir * w, behavior: 'smooth' });
+    }
+    if (spPrev) spPrev.addEventListener('click', function () { spScroll(-1); });
+    if (spNext) spNext.addEventListener('click', function () { spScroll(1); });
+  }
+
   /* ---------- homepage recommendation engine (catalogue-based) ---------- */
   var recForm = document.querySelector('[data-rec-form]');
   if (recForm) {
