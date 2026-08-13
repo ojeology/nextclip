@@ -705,7 +705,7 @@ for (const m of movies) {
   }
   crumbs.push({name:m.title, path:pagePath});
   const related = relatedFor(m);
-  const relatedArticles = (articleToMovies.get(m.slug) || []).slice(0, 3);
+  const relatedArticles = (articleToMovies.get(m.slug) || []).slice(-4).reverse(); // newest-connected first
   write(`${typeDir}/${m.slug}`, layout({
     title: seoTitle,
     description: (m.description || '').length >= 80 ? (m.description || seoDesc).slice(0, 158) : seoDesc,
