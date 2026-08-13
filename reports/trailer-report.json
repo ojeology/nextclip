@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-08-13T04:29:56.138Z",
-  "totalTitles": 630,
+  "generatedAt": "2026-08-13T04:55:38.515Z",
+  "totalTitles": 632,
   "officialTrailers": 568,
   "officialTeasers": 14,
   "officialClips": 1,
   "fanMade": 17,
   "titlesWithVerifiedTrailer": 600,
-  "noCandidateAtAll": 30,
-  "noVerifiedTrailer": 30,
+  "noCandidateAtAll": 32,
+  "noVerifiedTrailer": 32,
   "brokenUnavailable": 0,
   "brokenList": [],
   "note": "Counts reflect the primary (highest-priority) trailer per title. Fan-made videos are only used as a fallback and are labelled as community-created on the site. noVerifiedTrailer includes titles with broken/wrong candidates."

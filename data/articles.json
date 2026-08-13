@@ -914,8 +914,9 @@
       }
     ],
     "relatedMovieSlugs": [
+      "alice-in-borderland",
       "squid-game",
-      "train-to-busan"
+      "all-of-us-are-dead"
     ],
     "status": "published",
     "author": "Ibrahim Sodiq",
@@ -1943,7 +1944,10 @@
       }
     ],
     "relatedMovieSlugs": [
-      "prisoners"
+      "prison-break",
+      "money-heist",
+      "breaking-bad",
+      "ozark"
     ],
     "status": "published",
     "author": "Ibrahim Sodiq",

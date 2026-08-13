@@ -80,7 +80,7 @@ section('Search page');
 const searchHtml = fs.readFileSync(path.join(ROOT, 'search/index.html'), 'utf8');
 const sjson = searchHtml.match(/<script id="search-data" type="application\/json">([\s\S]*?)<\/script>/);
 assert(!!sjson, 'search page embeds data');
-assert(JSON.parse(sjson[1]).movies.length === 630, 'search index has 630 titles');
+assert(JSON.parse(sjson[1]).movies.length === 632, 'search index has 632 titles');
 run(searchHtml, (dom) => {
   const w = dom.window, d = w.document;
   const q = d.getElementById('search-q');

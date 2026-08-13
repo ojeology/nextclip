@@ -141,7 +141,7 @@ function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
   {
     const dom = load(fs.readFileSync(path.join(ROOT, 'trailers/index.html'), 'utf8'));
     const d = dom.window.document;
-    assert(d.querySelectorAll('#ta-body tr').length === 630, 'admin table lists 630 titles');
+    assert(d.querySelectorAll('#ta-body tr').length === 632, 'admin table lists 632 titles');
     const f = d.getElementById('ta-filter');
     f.value = 'fan-made';
     f.dispatchEvent(new dom.window.Event('change'));
