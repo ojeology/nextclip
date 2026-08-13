@@ -1,78 +1,315 @@
 {
-  "_comment": "NEXTCLIP CENTRAL RANKINGS — edit this ONE file to control Trending, Popular, Editor's Picks and the Featured hero. No need to touch catalogue records. All slugs must exist in the catalogue (build warns otherwise). 'rank' numbers control order (ASC). 'until' (optional, YYYY-MM-DD) auto-expires a trending entry. These are editorial decisions, NOT live traffic data — real analytics can replace Trending later without changing this file's shape.",
-  "hero": { "slug": "interstellar", "typeDir": "movie" },
-  "trending": {
-    "movie": [
-      { "slug": "superman-2025", "rank": 1, "until": "2026-12-31" },
-      { "slug": "avengers-doomsday", "rank": 2, "until": "2026-12-31" },
-      { "slug": "dune-part-three", "rank": 3 },
-      { "slug": "the-odyssey", "rank": 4 },
-      { "slug": "jurassic-world-rebirth", "rank": 5 },
-      { "slug": "28-years-later", "rank": 6 },
-      { "slug": "sinners", "rank": 7 },
-      { "slug": "mickey-17", "rank": 8 },
-      { "slug": "the-running-man", "rank": 9 },
-      { "slug": "how-to-train-your-dragon-2025", "rank": 10 }
-    ],
-    "series": [
-      { "slug": "squid-game", "rank": 1, "until": "2026-12-31" },
-      { "slug": "stranger-things", "rank": 2 },
-      { "slug": "severance", "rank": 3 },
-      { "slug": "the-last-of-us", "rank": 4 },
-      { "slug": "house-of-the-dragon", "rank": 5 },
-      { "slug": "wednesday", "rank": 6 }
-    ],
-    "anime": [
-      { "slug": "solo-leveling", "rank": 1 },
-      { "slug": "sakamoto-days", "rank": 2 },
-      { "slug": "dandadan", "rank": 3 },
-      { "slug": "kaiju-no-8", "rank": 4 },
-      { "slug": "demon-slayer", "rank": 5 },
-      { "slug": "chainsaw-man", "rank": 6 }
-    ]
-  },
-  "popular": {
-    "movie": [
-      { "slug": "titanic", "rank": 1 },
-      { "slug": "avatar-the-way-of-water", "rank": 2 },
-      { "slug": "the-dark-knight", "rank": 3 },
-      { "slug": "inception", "rank": 4 },
-      { "slug": "interstellar", "rank": 5 },
-      { "slug": "avengers-endgame", "rank": 6 },
-      { "slug": "spider-man-no-way-home", "rank": 7 },
-      { "slug": "the-godfather", "rank": 8 },
-      { "slug": "the-shawshank-redemption", "rank": 9 },
-      { "slug": "forrest-gump", "rank": 10 },
-      { "slug": "parasite", "rank": 11 },
-      { "slug": "top-gun-maverick", "rank": 12 }
-    ],
-    "series": [
-      { "slug": "breaking-bad", "rank": 1 },
-      { "slug": "money-heist", "rank": 2 },
-      { "slug": "game-of-thrones", "rank": 3 },
-      { "slug": "squid-game", "rank": 4 },
-      { "slug": "the-office-us", "rank": 5 },
-      { "slug": "friends", "rank": 6 },
-      { "slug": "peaky-blinders", "rank": 7 },
-      { "slug": "sherlock", "rank": 8 }
-    ],
-    "anime": [
-      { "slug": "one-piece", "rank": 1 },
-      { "slug": "naruto", "rank": 2 },
-      { "slug": "dragon-ball-z", "rank": 3 },
-      { "slug": "attack-on-titan", "rank": 4 },
-      { "slug": "jujutsu-kaisen", "rank": 5 },
-      { "slug": "death-note", "rank": 6 },
-      { "slug": "my-hero-academia", "rank": 7 },
-      { "slug": "demon-slayer", "rank": 8 }
-    ]
-  },
-  "editorPicks": [
-    { "slug": "one-piece", "rank": 1, "note": "The pirate adventure of a lifetime" },
-    { "slug": "solo-leveling", "rank": 2, "note": "E-rank to S-rank — the grind arc" },
-    { "slug": "breaking-bad", "rank": 3, "note": "TV drama gold standard" },
-    { "slug": "into-the-badlands", "rank": 4, "note": "The underrated martial-arts gem" },
-    { "slug": "interstellar", "rank": 5, "note": "Space, time and the power of love" },
-    { "slug": "squid-game", "rank": 6, "note": "Survival games that broke the internet" }
+ "_comment": "NEXTCLIP CENTRAL RANKINGS — THIS IS THE ONE FILE TO EDIT. Change the Trending lists here; no catalogue records need touching. 'slug' identifies the title (the 'title' field is only for your readability — the build checks it matches). 'trendingRank' controls order (lower = first). 'until' (optional, YYYY-MM-DD) auto-removes an entry after that date. This is a manually curated editorial list — NOT live traffic data, no fake view counts.",
+ "hero": {
+  "slug": "interstellar",
+  "title": "Interstellar",
+  "typeDir": "movie"
+ },
+ "trending": {
+  "movie": [
+   {
+    "slug": "superman-2025",
+    "title": "Superman",
+    "trendingRank": 1,
+    "until": "2026-12-31"
+   },
+   {
+    "slug": "avengers-doomsday",
+    "title": "Avengers: Doomsday",
+    "trendingRank": 2,
+    "until": "2026-12-31"
+   },
+   {
+    "slug": "dune-part-three",
+    "title": "Dune: Part Three",
+    "trendingRank": 3
+   },
+   {
+    "slug": "the-odyssey",
+    "title": "The Odyssey",
+    "trendingRank": 4
+   },
+   {
+    "slug": "jurassic-world-rebirth",
+    "title": "Jurassic World Rebirth",
+    "trendingRank": 5
+   },
+   {
+    "slug": "28-years-later",
+    "title": "28 Years Later",
+    "trendingRank": 6
+   },
+   {
+    "slug": "sinners",
+    "title": "Sinners",
+    "trendingRank": 7
+   },
+   {
+    "slug": "mickey-17",
+    "title": "Mickey 17",
+    "trendingRank": 8
+   },
+   {
+    "slug": "the-running-man",
+    "title": "The Running Man",
+    "trendingRank": 9
+   },
+   {
+    "slug": "how-to-train-your-dragon-2025",
+    "title": "How to Train Your Dragon",
+    "trendingRank": 10
+   }
+  ],
+  "series": [
+   {
+    "slug": "squid-game",
+    "title": "Squid Game",
+    "trendingRank": 1,
+    "until": "2026-12-31"
+   },
+   {
+    "slug": "stranger-things",
+    "title": "Stranger Things",
+    "trendingRank": 2
+   },
+   {
+    "slug": "severance",
+    "title": "Severance",
+    "trendingRank": 3
+   },
+   {
+    "slug": "the-last-of-us",
+    "title": "The Last of Us",
+    "trendingRank": 4
+   },
+   {
+    "slug": "house-of-the-dragon",
+    "title": "House of the Dragon",
+    "trendingRank": 5
+   },
+   {
+    "slug": "wednesday",
+    "title": "Wednesday",
+    "trendingRank": 6
+   }
+  ],
+  "anime": [
+   {
+    "slug": "solo-leveling",
+    "title": "Solo Leveling",
+    "trendingRank": 1
+   },
+   {
+    "slug": "sakamoto-days",
+    "title": "Sakamoto Days",
+    "trendingRank": 2
+   },
+   {
+    "slug": "dandadan",
+    "title": "Dandadan",
+    "trendingRank": 3
+   },
+   {
+    "slug": "kaiju-no-8",
+    "title": "Kaiju No. 8",
+    "trendingRank": 4
+   },
+   {
+    "slug": "demon-slayer",
+    "title": "Demon Slayer: Kimetsu no Yaiba",
+    "trendingRank": 5
+   },
+   {
+    "slug": "chainsaw-man",
+    "title": "Chainsaw Man",
+    "trendingRank": 6
+   }
   ]
+ },
+ "popular": {
+  "movie": [
+   {
+    "slug": "titanic",
+    "title": "Titanic",
+    "popularRank": 1
+   },
+   {
+    "slug": "avatar-the-way-of-water",
+    "title": "Avatar: The Way of Water",
+    "popularRank": 2
+   },
+   {
+    "slug": "the-dark-knight",
+    "title": "The Dark Knight",
+    "popularRank": 3
+   },
+   {
+    "slug": "inception",
+    "title": "Inception",
+    "popularRank": 4
+   },
+   {
+    "slug": "interstellar",
+    "title": "Interstellar",
+    "popularRank": 5
+   },
+   {
+    "slug": "avengers-endgame",
+    "title": "Avengers: Endgame",
+    "popularRank": 6
+   },
+   {
+    "slug": "spider-man-no-way-home",
+    "title": "Spider-Man: No Way Home",
+    "popularRank": 7
+   },
+   {
+    "slug": "the-godfather",
+    "title": "The Godfather",
+    "popularRank": 8
+   },
+   {
+    "slug": "the-shawshank-redemption",
+    "title": "The Shawshank Redemption",
+    "popularRank": 9
+   },
+   {
+    "slug": "forrest-gump",
+    "title": "Forrest Gump",
+    "popularRank": 10
+   },
+   {
+    "slug": "parasite",
+    "title": "Parasite",
+    "popularRank": 11
+   },
+   {
+    "slug": "top-gun-maverick",
+    "title": "Top Gun: Maverick",
+    "popularRank": 12
+   }
+  ],
+  "series": [
+   {
+    "slug": "breaking-bad",
+    "title": "Breaking Bad",
+    "popularRank": 1
+   },
+   {
+    "slug": "money-heist",
+    "title": "Money Heist",
+    "popularRank": 2
+   },
+   {
+    "slug": "game-of-thrones",
+    "title": "Game of Thrones",
+    "popularRank": 3
+   },
+   {
+    "slug": "squid-game",
+    "title": "Squid Game",
+    "popularRank": 4
+   },
+   {
+    "slug": "the-office-us",
+    "title": "The Office",
+    "popularRank": 5
+   },
+   {
+    "slug": "friends",
+    "title": "Friends",
+    "popularRank": 6
+   },
+   {
+    "slug": "peaky-blinders",
+    "title": "Peaky Blinders",
+    "popularRank": 7
+   },
+   {
+    "slug": "sherlock",
+    "title": "Sherlock",
+    "popularRank": 8
+   }
+  ],
+  "anime": [
+   {
+    "slug": "one-piece",
+    "title": "One Piece",
+    "popularRank": 1
+   },
+   {
+    "slug": "naruto",
+    "title": "Naruto",
+    "popularRank": 2
+   },
+   {
+    "slug": "dragon-ball-z",
+    "title": "Dragon Ball Z",
+    "popularRank": 3
+   },
+   {
+    "slug": "attack-on-titan",
+    "title": "Attack on Titan",
+    "popularRank": 4
+   },
+   {
+    "slug": "jujutsu-kaisen",
+    "title": "Jujutsu Kaisen",
+    "popularRank": 5
+   },
+   {
+    "slug": "death-note",
+    "title": "Death Note",
+    "popularRank": 6
+   },
+   {
+    "slug": "my-hero-academia",
+    "title": "My Hero Academia",
+    "popularRank": 7
+   },
+   {
+    "slug": "demon-slayer",
+    "title": "Demon Slayer: Kimetsu no Yaiba",
+    "popularRank": 8
+   }
+  ]
+ },
+ "editorPicks": [
+  {
+   "slug": "one-piece",
+   "title": "One Piece",
+   "editorPickRank": 1,
+   "note": "The pirate adventure of a lifetime"
+  },
+  {
+   "slug": "solo-leveling",
+   "title": "Solo Leveling",
+   "editorPickRank": 2,
+   "note": "E-rank to S-rank — the grind arc"
+  },
+  {
+   "slug": "breaking-bad",
+   "title": "Breaking Bad",
+   "editorPickRank": 3,
+   "note": "TV drama gold standard"
+  },
+  {
+   "slug": "into-the-badlands",
+   "title": "Into the Badlands",
+   "editorPickRank": 4,
+   "note": "The underrated martial-arts gem"
+  },
+  {
+   "slug": "interstellar",
+   "title": "Interstellar",
+   "editorPickRank": 5,
+   "note": "Space, time and the power of love"
+  },
+  {
+   "slug": "squid-game",
+   "title": "Squid Game",
+   "editorPickRank": 6,
+   "note": "Survival games that broke the internet"
+  }
+ ]
 }
