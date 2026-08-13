@@ -1,6 +1,6 @@
 # NEXTCLIP catalogue & frontend report
 
-Generated: 2026-08-13T08:02:13.784Z
+Generated: 2026-08-13T11:17:30.569Z
 
 ## Catalogue
 - Total titles: **632**
@@ -22,7 +22,7 @@ Generated: 2026-08-13T08:02:13.784Z
 - Title pages: 632
 - Category pages: /movies/, /series/, /anime/
 - Per-type genre pages: 60
-- Indexable URLs in sitemap: **847**
+- Indexable URLs in sitemap: **851**
 
 ## Rankings (editorially curated)
 - Trending Now: 22 titles (10 movies / 6 series / 6 anime), ranked by trendingRank ASC from content/rankings.json

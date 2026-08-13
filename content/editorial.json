@@ -1905,7 +1905,7 @@
   "id": "10-shows-like-alice-in-borderland-you-should-watch-next",
   "slug": "10-shows-like-alice-in-borderland-you-should-watch-next",
   "title": "10 Shows Like Alice in Borderland You Should Watch Next",
-  "excerpt": "Roadmap draft — full editorial article coming soon on NEXTCLIP.",
+  "excerpt": "Deadly games, impossible decisions and the constant feeling that one mistake could be your last — 10 shows that give Alice in Borderland fans the same rush, from Squid Game to Kingdom.",
   "category": "Survival",
   "tags": [
    "survival",
@@ -1913,7 +1913,256 @@
   ],
   "emoji": "",
   "items": [],
-  "blocks": [],
+  "blocks": [
+   {
+    "type": "paragraph",
+    "text": "If Alice in Borderland hooked you with its deadly games, impossible decisions, psychological pressure and constant feeling that one mistake could be your last, finding something that gives you the same rush can be difficult."
+   },
+   {
+    "type": "paragraph",
+    "text": "Not every recommendation below is exactly like Alice in Borderland. Some focus more on deadly competition, others on strategy, survival, deception or horror. But they all share something important: the characters are never completely safe."
+   },
+   {
+    "type": "paragraph",
+    "text": "Here are 10 worth adding to your watchlist."
+   },
+   {
+    "type": "heading",
+    "text": "1. Squid Game"
+   },
+   {
+    "type": "paragraph",
+    "text": "If you've watched Alice in Borderland, Squid Game is probably the first recommendation you'll hear."
+   },
+   {
+    "type": "paragraph",
+    "text": "Both put ordinary people into dangerous games where losing can mean death. But the two shows approach survival differently."
+   },
+   {
+    "type": "paragraph",
+    "text": "Squid Game puts more emphasis on desperation, money, relationships and what people are willing to do when their lives are on the line. Alice in Borderland leans more heavily into solving the games and understanding their rules."
+   },
+   {
+    "type": "paragraph",
+    "text": "If you want another series where every round can completely change the situation, start here."
+   },
+   {
+    "type": "heading",
+    "text": "2. No Game No Life"
+   },
+   {
+    "type": "paragraph",
+    "text": "No Game No Life takes the concept of games in a completely different direction."
+   },
+   {
+    "type": "paragraph",
+    "text": "Rather than focusing on physical survival, it is built around intelligence, strategy and outsmarting opponents. The characters don't simply ask, \"Can we win?\" They constantly look for the hidden advantage that their opponents haven't noticed."
+   },
+   {
+    "type": "paragraph",
+    "text": "If the part of Alice in Borderland you enjoyed most was watching Arisu figure out how a game works, this one deserves your attention."
+   },
+   {
+    "type": "heading",
+    "text": "3. Liar Game"
+   },
+   {
+    "type": "paragraph",
+    "text": "Liar Game is for viewers who enjoy the psychological side of competition."
+   },
+   {
+    "type": "paragraph",
+    "text": "The battles aren't necessarily about physical strength. They're about deception, trust, manipulation and figuring out what the other players are planning."
+   },
+   {
+    "type": "paragraph",
+    "text": "That makes the series especially interesting for anyone who enjoys the moments in Alice in Borderland where understanding people is just as important as understanding the rules."
+   },
+   {
+    "type": "heading",
+    "text": "4. Devil's Game"
+   },
+   {
+    "type": "paragraph",
+    "text": "Devil's Game brings another dangerous competition where the players have to think carefully about every decision they make."
+   },
+   {
+    "type": "paragraph",
+    "text": "The appeal is the uncertainty. You don't simply have to understand the game — you have to understand the people playing it."
+   },
+   {
+    "type": "paragraph",
+    "text": "If you like stories where alliances can change and one bad decision can completely turn the situation around, this is one to check out."
+   },
+   {
+    "type": "heading",
+    "text": "5. Tomodachi Game"
+   },
+   {
+    "type": "paragraph",
+    "text": "What happens when friendship becomes part of the game?"
+   },
+   {
+    "type": "paragraph",
+    "text": "That's where Tomodachi Game gets interesting."
+   },
+   {
+    "type": "paragraph",
+    "text": "The characters are placed in situations designed to test their relationships, trust and ability to read one another. Someone who looks like an ally might have another plan entirely."
+   },
+   {
+    "type": "paragraph",
+    "text": "For Alice in Borderland fans, this is particularly appealing because some of the most dangerous situations aren't necessarily caused by the game itself. They're caused by the people playing it."
+   },
+   {
+    "type": "heading",
+    "text": "6. Final Destination"
+   },
+   {
+    "type": "paragraph",
+    "text": "Final Destination isn't a game-based survival series, but it has the same kind of uncomfortable question hanging over its characters:"
+   },
+   {
+    "type": "paragraph",
+    "text": "Who is going to survive?"
+   },
+   {
+    "type": "paragraph",
+    "text": "The characters are constantly trying to understand the danger around them and find a way to escape it."
+   },
+   {
+    "type": "paragraph",
+    "text": "The result is a completely different type of survival story — one where knowing that something terrible is coming can sometimes be even more frightening than not knowing."
+   },
+   {
+    "type": "heading",
+    "text": "7. All of Us Are Dead"
+   },
+   {
+    "type": "paragraph",
+    "text": "If you want survival with a much more direct physical threat, All of Us Are Dead is an excellent choice."
+   },
+   {
+    "type": "paragraph",
+    "text": "A group of students suddenly find themselves trapped in their school during a zombie outbreak. They have to make decisions quickly, work together and figure out who they can trust while the danger continues to spread."
+   },
+   {
+    "type": "paragraph",
+    "text": "Like Alice in Borderland, the characters are thrown into a situation they never asked for and forced to adapt quickly."
+   },
+   {
+    "type": "paragraph",
+    "text": "The fact that many of them are still just kids makes the situation even more intense."
+   },
+   {
+    "type": "heading",
+    "text": "8. The 100"
+   },
+   {
+    "type": "paragraph",
+    "text": "The 100 takes survival beyond a single location."
+   },
+   {
+    "type": "paragraph",
+    "text": "A group of young people is sent to Earth after humanity has spent years living away from the planet. What initially looks like an opportunity to start over quickly becomes a fight for survival."
+   },
+   {
+    "type": "paragraph",
+    "text": "The series keeps changing the rules. New threats appear, alliances shift and characters are repeatedly forced to make choices where there isn't an easy answer."
+   },
+   {
+    "type": "paragraph",
+    "text": "If you enjoy survival stories that grow into something much larger, The 100 is worth watching."
+   },
+   {
+    "type": "heading",
+    "text": "9. Sweet Home"
+   },
+   {
+    "type": "paragraph",
+    "text": "Sweet Home takes the survival formula into horror."
+   },
+   {
+    "type": "paragraph",
+    "text": "People become trapped inside an apartment complex while monsters begin appearing outside and, eventually, within the building itself. Survival becomes a question of cooperation, courage and understanding what is actually happening."
+   },
+   {
+    "type": "paragraph",
+    "text": "Like Alice in Borderland, it creates the feeling that nowhere is completely safe."
+   },
+   {
+    "type": "paragraph",
+    "text": "If you want something darker and more frightening after Alice in Borderland, Sweet Home is a strong choice."
+   },
+   {
+    "type": "heading",
+    "text": "10. Kingdom"
+   },
+   {
+    "type": "paragraph",
+    "text": "Kingdom combines survival, horror and historical drama."
+   },
+   {
+    "type": "paragraph",
+    "text": "Set in Korea during the Joseon period, the story introduces a mysterious plague that turns people into violent creatures. As the outbreak spreads, survival becomes only one part of a much bigger political struggle."
+   },
+   {
+    "type": "paragraph",
+    "text": "The series does a good job of mixing action and suspense with a larger mystery surrounding the outbreak."
+   },
+   {
+    "type": "paragraph",
+    "text": "If you enjoy survival stories where the danger keeps expanding, Kingdom is worth adding to your list."
+   },
+   {
+    "type": "heading",
+    "text": "Which One Should You Watch First?"
+   },
+   {
+    "type": "paragraph",
+    "text": "That depends on what you loved about Alice in Borderland."
+   },
+   {
+    "type": "paragraph",
+    "text": "For deadly games: Squid Game"
+   },
+   {
+    "type": "paragraph",
+    "text": "For strategy and intelligence: No Game No Life or Liar Game"
+   },
+   {
+    "type": "paragraph",
+    "text": "For psychological manipulation: Tomodachi Game"
+   },
+   {
+    "type": "paragraph",
+    "text": "For pure survival: All of Us Are Dead"
+   },
+   {
+    "type": "paragraph",
+    "text": "For survival horror: Sweet Home or Kingdom"
+   },
+   {
+    "type": "paragraph",
+    "text": "For a different kind of death-driven suspense: Final Destination"
+   },
+   {
+    "type": "paragraph",
+    "text": "For a bigger survival story: The 100"
+   },
+   {
+    "type": "paragraph",
+    "text": "Alice in Borderland is difficult to replace because it combines so many things at once — games, survival, mystery, strategy and psychological pressure."
+   },
+   {
+    "type": "paragraph",
+    "text": "But if those are the elements that kept you watching, this list gives you several different ways to get that same feeling again."
+   },
+   {
+    "type": "paragraph",
+    "text": "And if you haven't watched Alice in Borderland yet, start there."
+   }
+  ],
   "relatedMovieSlugs": [
    "alice-in-borderland",
    "squid-game",
@@ -1930,8 +2179,8 @@
    "the-100",
    "yellowjackets"
   ],
-  "status": "draft",
-  "author": null,
+  "status": "published",
+  "author": "Ibrahim Sodiq",
   "createdAt": null,
   "updatedAt": null,
   "featuredImage": null
@@ -1967,7 +2216,7 @@
   "id": "squid-game-season-1-why-it-became-a-global-phenomenon",
   "slug": "squid-game-season-1-why-it-became-a-global-phenomenon",
   "title": "Squid Game Season 1: Why It Became a Global Phenomenon",
-  "excerpt": "Roadmap draft — full editorial article coming soon on NEXTCLIP.",
+  "excerpt": "Children's games, life-or-death stakes: why Squid Game Season 1 became a global phenomenon — and why it still stands out.",
   "category": "TV Series",
   "tags": [
    "squid-game",
@@ -1975,7 +2224,284 @@
   ],
   "emoji": "",
   "items": [],
-  "blocks": [],
+  "blocks": [
+   {
+    "type": "paragraph",
+    "text": "At first, Squid Game doesn't feel like the kind of series that is about to become a worldwide phenomenon."
+   },
+   {
+    "type": "paragraph",
+    "text": "The beginning can feel slow. We meet people struggling with money, family problems and debts, and some of the characters can be difficult — or even frustrating — to watch."
+   },
+   {
+    "type": "paragraph",
+    "text": "Then the game begins."
+   },
+   {
+    "type": "paragraph",
+    "text": "And suddenly, everything changes."
+   },
+   {
+    "type": "heading",
+    "text": "Nobody Expected Children's Games to Become Deadly"
+   },
+   {
+    "type": "paragraph",
+    "text": "That's probably one of the biggest reasons Squid Game worked so well."
+   },
+   {
+    "type": "paragraph",
+    "text": "The games themselves are familiar."
+   },
+   {
+    "type": "paragraph",
+    "text": "Red Light, Green Light."
+   },
+   {
+    "type": "paragraph",
+    "text": "Tug of War."
+   },
+   {
+    "type": "paragraph",
+    "text": "Marbles."
+   },
+   {
+    "type": "paragraph",
+    "text": "These are games that sound harmless. They're the kind of games people associate with childhood."
+   },
+   {
+    "type": "paragraph",
+    "text": "Then Squid Game takes that familiarity and turns it into something horrifying."
+   },
+   {
+    "type": "paragraph",
+    "text": "The first major shock comes when the players realize that losing isn't simply losing."
+   },
+   {
+    "type": "paragraph",
+    "text": "Losing means dying."
+   },
+   {
+    "type": "paragraph",
+    "text": "That moment completely changes how you look at every game afterward."
+   },
+   {
+    "type": "paragraph",
+    "text": "A simple children's game suddenly becomes a fight for survival."
+   },
+   {
+    "type": "heading",
+    "text": "Survival of the Fittest"
+   },
+   {
+    "type": "paragraph",
+    "text": "Once the players understand the rules, Squid Game becomes much more than a competition."
+   },
+   {
+    "type": "paragraph",
+    "text": "It becomes survival of the fittest."
+   },
+   {
+    "type": "paragraph",
+    "text": "Everyone has a reason for being there. Debt, desperation and personal circumstances have pushed them into a situation where the prize money looks worth risking everything for."
+   },
+   {
+    "type": "paragraph",
+    "text": "But the money also changes people."
+   },
+   {
+    "type": "paragraph",
+    "text": "Friendships become complicated."
+   },
+   {
+    "type": "paragraph",
+    "text": "Trust becomes dangerous."
+   },
+   {
+    "type": "paragraph",
+    "text": "And every decision has consequences."
+   },
+   {
+    "type": "paragraph",
+    "text": "You start watching not only to find out who wins, but to see what people are willing to become in order to survive."
+   },
+   {
+    "type": "heading",
+    "text": "The Characters Make the Games More Difficult to Watch"
+   },
+   {
+    "type": "paragraph",
+    "text": "Squid Game also gives you characters that you can love, hate or simply find frustrating."
+   },
+   {
+    "type": "paragraph",
+    "text": "Some characters are deliberately difficult to like."
+   },
+   {
+    "type": "paragraph",
+    "text": "There are selfish people, manipulative people, desperate people and characters who make decisions that leave you shouting at the screen."
+   },
+   {
+    "type": "paragraph",
+    "text": "But that's part of what makes the show uncomfortable."
+   },
+   {
+    "type": "paragraph",
+    "text": "These aren't perfect heroes entering a game."
+   },
+   {
+    "type": "paragraph",
+    "text": "They're ordinary people carrying their own problems into an extraordinary situation."
+   },
+   {
+    "type": "paragraph",
+    "text": "And when survival becomes the priority, those personalities become even more important."
+   },
+   {
+    "type": "heading",
+    "text": "The Games Keep Raising the Pressure"
+   },
+   {
+    "type": "paragraph",
+    "text": "The biggest strength of Season 1 is its ability to make each game feel different."
+   },
+   {
+    "type": "paragraph",
+    "text": "You don't know exactly what is coming next."
+   },
+   {
+    "type": "paragraph",
+    "text": "You might think a game will be simple, only to realize that there is a brutal twist behind it."
+   },
+   {
+    "type": "paragraph",
+    "text": "The contestants don't have all the information."
+   },
+   {
+    "type": "paragraph",
+    "text": "Neither does the viewer."
+   },
+   {
+    "type": "paragraph",
+    "text": "That uncertainty creates the tension."
+   },
+   {
+    "type": "paragraph",
+    "text": "Even when you're watching something as simple as two people playing marbles, you know that the result could destroy someone."
+   },
+   {
+    "type": "paragraph",
+    "text": "That's what Squid Game does so well: it makes simple games feel terrifying."
+   },
+   {
+    "type": "heading",
+    "text": "Why People Couldn't Stop Talking About It"
+   },
+   {
+    "type": "paragraph",
+    "text": "Squid Game wasn't successful simply because it had violence."
+   },
+   {
+    "type": "paragraph",
+    "text": "It had a concept that was incredibly easy to understand."
+   },
+   {
+    "type": "paragraph",
+    "text": "People are placed into games."
+   },
+   {
+    "type": "paragraph",
+    "text": "There is a huge prize."
+   },
+   {
+    "type": "paragraph",
+    "text": "They have to survive."
+   },
+   {
+    "type": "paragraph",
+    "text": "That's enough to make someone curious."
+   },
+   {
+    "type": "paragraph",
+    "text": "But underneath that simple idea are themes about money, inequality, desperation, greed, friendship and the value people place on human life."
+   },
+   {
+    "type": "paragraph",
+    "text": "That gave viewers something to talk about after each episode."
+   },
+   {
+    "type": "paragraph",
+    "text": "People weren't only asking:"
+   },
+   {
+    "type": "paragraph",
+    "text": "\"Who will survive?\""
+   },
+   {
+    "type": "paragraph",
+    "text": "They were also asking:"
+   },
+   {
+    "type": "paragraph",
+    "text": "\"What would I do if I were there?\""
+   },
+   {
+    "type": "paragraph",
+    "text": "And that's a much more powerful question."
+   },
+   {
+    "type": "heading",
+    "text": "Why Season 1 Still Stands Out"
+   },
+   {
+    "type": "paragraph",
+    "text": "For me, Squid Game Season 1 works because of the constant feeling that everything could go wrong."
+   },
+   {
+    "type": "paragraph",
+    "text": "The early episodes may take their time, and some of the characters can definitely be frustrating, but once the games begin, the series becomes extremely difficult to ignore."
+   },
+   {
+    "type": "paragraph",
+    "text": "The killing."
+   },
+   {
+    "type": "paragraph",
+    "text": "The pressure."
+   },
+   {
+    "type": "paragraph",
+    "text": "The races."
+   },
+   {
+    "type": "paragraph",
+    "text": "The betrayals."
+   },
+   {
+    "type": "paragraph",
+    "text": "The uncertainty."
+   },
+   {
+    "type": "paragraph",
+    "text": "Everything keeps pushing the story forward."
+   },
+   {
+    "type": "paragraph",
+    "text": "And perhaps the most disturbing part is that the games themselves are so innocent."
+   },
+   {
+    "type": "paragraph",
+    "text": "Squid Game took things that were supposed to belong to childhood and turned them into a brutal fight for survival."
+   },
+   {
+    "type": "paragraph",
+    "text": "That's the idea that made the series unforgettable."
+   },
+   {
+    "type": "paragraph",
+    "text": "It wasn't just a game anymore. It was life or death."
+   }
+  ],
   "relatedMovieSlugs": [
    "squid-game",
    "alice-in-borderland"
@@ -1984,8 +2510,8 @@
    "squid-game",
    "alice-in-borderland"
   ],
-  "status": "draft",
-  "author": null,
+  "status": "published",
+  "author": "Ibrahim Sodiq",
   "createdAt": null,
   "updatedAt": null,
   "featuredImage": null
