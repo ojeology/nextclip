@@ -27,19 +27,43 @@ section('PL hero carousel');
 /* 2. Transfer pages */
 section('Transfer trackers');
 {
-  for (const lg of ['premier-league', 'la-liga', 'serie-a', 'bundesliga', 'ligue-1']) {
+  for (const lg of ['la-liga', 'serie-a', 'bundesliga', 'ligue-1']) {
     const s = read('sports/transfers/' + lg + '-2026-27/index.html');
     assert(/Transfer In/.test(s) && /Transfer Out/.test(s), lg + ': in/out sections');
     assert(/Confirmed/.test(s) && /Reported/.test(s) && /Rumoured/.test(s), lg + ': status legend');
     assert(/Transfer information changes frequently/.test(s), lg + ': disclaimer');
     assert(/never presented as confirmed/.test(s), lg + ': no rumour-as-confirmed');
     var canon = s.match(/rel="canonical" href="([^"]+)"/);
-    assert(canon && canon[1] === 'https://ojeology.github.io/nextclip/sports/transfers/' + lg + '-2026-27/', lg + ': canonical correct (' + (canon && canon[1]) + ')');
+    assert(canon && canon[1] === 'https://ojeology.github.io/nextclip/sports/transfers/' + lg + '-2026-27/', lg + ': canonical correct');
     assert(!/href="https:\/\/ojeology\.github\.io\/nextclip\/transfers\//.test(s), lg + ': no unprefixed links');
   }
   const hub = read('sports/transfers/index.html');
   assert(hub.indexOf('Transfer trackers 2026/27') > -1, 'transfers hub title');
   assert(hub.indexOf('Managers In &amp; Out') > -1, 'transfers hub links managers');
+}
+
+/* 2b. Full PL tracker (populated) */
+section('PL transfer tracker (populated)');
+{
+  const s = read('sports/transfers/premier-league-2026-27/index.html');
+  assert(/LIVE TRANSFER WINDOW/.test(s), 'live window banner');
+  assert(!/snapshot/i.test(s), 'never described as a snapshot');
+  assert(/Last updated: 13 August 2026/.test(s), 'last updated date');
+  assert((s.match(/class="sp-club"/g) || []).length === 20, 'all 20 clubs');
+  assert((s.match(/<h3>Players In<\/h3>/g) || []).length === 20, '20 Players In sections');
+  assert((s.match(/<h3>Players Out<\/h3>/g) || []).length === 20, '20 Players Out sections');
+  assert((s.match(/Manager:/g) || []).length === 20, '20 manager lines');
+  assert(s.indexOf('Bruno Guimarães') > -1 && s.indexOf('Morgan Rogers') > -1 && s.indexOf('Sandro Tonali') > -1 && s.indexOf('Elliot Anderson') > -1, 'key transfers present');
+  assert(/Rumour \/ Reported interest — not confirmed/.test(s), 'rumours section separated');
+  assert(s.indexOf('Bouaddi') > -1 && s.indexOf('Rodri') > -1, 'Man City rumours in the rumours section');
+  assert((s.match(/club-[a-z-]+\.svg/g) || []).length === 20, '20 club crest SVGs');
+  assert(/Transfer window still open/.test(s), 'window-still-open footer note');
+  assert(/Discover what you love, learn what you need, and find what's next/.test(s), 'BRYME signoff');
+  assert(/Transfer information changes frequently/.test(s), 'frequency disclaimer');
+  for (const st of ['Confirmed', 'Departed', 'Released', 'Retired', 'Loan', 'Free']) assert(s.indexOf(st) > -1, 'status vocabulary: ' + st);
+  var canon = s.match(/rel="canonical" href="([^"]+)"/);
+  assert(canon && canon[1] === 'https://ojeology.github.io/nextclip/sports/transfers/premier-league-2026-27/', 'PL tracker canonical correct');
+  assert(s.indexOf('NEXTCLIP') === -1, 'no NEXTCLIP literal');
 }
 
 /* 3. Managers page */

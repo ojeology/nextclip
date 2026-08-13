@@ -364,7 +364,7 @@ fs.writeFileSync(path.join(root,'assets/site.css'), css + '\n' + `/* Primary pla
 /* ==== BRYME SPORTS ==== */
 .sp-pl-hero{padding:44px 0 8px}.sp-pl-hero h1{font-size:clamp(34px,6vw,64px);line-height:1.02;margin:8px 0}
 .sp-hero{position:relative;margin:26px 0 10px}.sp-hero-track{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 48px)/3);gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 2px 18px;scrollbar-width:none}.sp-hero-track::-webkit-scrollbar{display:none}
-.sp-hero-card{position:relative;min-height:220px;display:flex;flex-direction:column;justify-content:flex-end;gap:8px;padding:22px;border-radius:12px;background:linear-gradient(150deg,#14241c,#0d1511 70%);border:1px solid rgba(61,220,132,.25);overflow:hidden;scroll-snap-align:start;transition:transform .2s,box-shadow .2s}.sp-hero-card:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(0,0,0,.4)}.sp-hero-card:before{content:"";position:absolute;inset:0;opacity:.14;background:radial-gradient(240px 120px at 80% 0,rgba(61,220,132,.8),transparent 70%);pointer-events:none}.sp-hero-first{border-color:rgba(61,220,132,.55)}
+.sp-hero-card{position:relative;min-height:240px;display:flex;flex-direction:column;justify-content:flex-end;gap:8px;padding:22px;border-radius:12px;background:linear-gradient(150deg,#14241c,#0d1511 70%);border:1px solid rgba(61,220,132,.25);overflow:hidden;scroll-snap-align:start;transition:transform .2s,box-shadow .2s;isolation:isolate}.sp-hero-card:after{content:"";position:absolute;inset:0;z-index:-1;background-image:var(--card-img);background-size:cover;background-position:center;opacity:.28;transition:opacity .3s}.sp-hero-card:hover:after{opacity:.4}.sp-hero-card>*{position:relative;z-index:1;text-shadow:0 2px 8px rgba(0,0,0,.85)}.sp-hero-card:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(0,0,0,.4)}.sp-hero-card:before{content:"";position:absolute;inset:0;opacity:.14;background:radial-gradient(240px 120px at 80% 0,rgba(61,220,132,.8),transparent 70%);pointer-events:none}.sp-hero-first{border-color:rgba(61,220,132,.55)}
 .sp-hero-tag{font-size:10.5px;font-weight:900;letter-spacing:.1em;color:var(--sports);text-transform:uppercase}.sp-hero-card h3{font-size:clamp(17px,1.6vw,21px);line-height:1.2;margin:0}.sp-hero-card p{font-size:12.5px;color:var(--muted);line-height:1.5;margin:0;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}.sp-hero-go{font-size:12px;font-weight:800;color:var(--sports)}
 .sp-hero-arrow{position:absolute;top:40%;transform:translateY(-50%);z-index:3;width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,255,255,.25);background:rgba(8,9,11,.7);color:#fff;font-size:20px;cursor:pointer;display:grid;place-items:center}.sp-hero-prev{left:2px}.sp-hero-next{right:2px}.sp-hero-arrow:hover{border-color:var(--sports)}
 .sp-table-wrap{overflow-x:auto;margin:10px 0 26px;border:1px solid var(--line);border-radius:8px}.sp-table{width:100%;border-collapse:collapse;font-size:13px;min-width:640px}.sp-table th,.sp-table td{padding:10px 12px;border-bottom:1px solid var(--line);text-align:left}.sp-table th{background:#101318;color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.07em}.sp-table td{vertical-align:top}.sp-empty td{color:var(--muted);font-style:italic;padding:22px;line-height:1.6;text-align:center}
@@ -376,6 +376,11 @@ fs.writeFileSync(path.join(root,'assets/site.css'), css + '\n' + `/* Primary pla
 .sp-source{margin-top:30px;border:1px solid var(--line);border-radius:8px;padding:18px 20px;background:#101318}.sp-source h2{font-size:16px;margin:0 0 8px}.sp-source p{margin:6px 0;font-size:13.5px}.sp-source-note{font-size:12.5px;color:var(--muted);line-height:1.6;margin:8px 0 0}
 .sp-related{margin-top:34px;padding-top:24px;border-top:1px solid var(--line)}.sp-related h2{font-size:18px;margin:0 0 14px}.sp-rel-grid{display:flex;flex-wrap:wrap;gap:10px}.sp-rel{border:1px solid var(--line);border-radius:20px;padding:8px 14px;font-size:12.5px;font-weight:700;color:#d9dde1}.sp-rel:hover{border-color:var(--sports);color:#fff}.sp-rel-static{color:var(--muted);cursor:default}
 .sp-mc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;margin:18px 0}.sp-mc-card{min-height:120px;border:1px dashed var(--line);border-radius:10px;padding:18px;display:flex;flex-direction:column;justify-content:flex-end;background:#101318}.sp-mc-card b{font-size:15px}.sp-mc-card p{font-size:12.5px;color:var(--muted);margin:4px 0 0;line-height:1.5}
+.sp-live{display:flex;gap:14px;align-items:flex-start;background:linear-gradient(135deg,rgba(61,220,132,.1),rgba(61,220,132,.03));border:1px solid rgba(61,220,132,.35);border-radius:10px;padding:18px 20px;margin:6px 0 14px}.sp-live-dot{flex:none;width:12px;height:12px;border-radius:50%;background:#3ddc84;margin-top:5px;box-shadow:0 0 0 0 rgba(61,220,132,.6);animation:spPulse 2s infinite}@keyframes spPulse{0%{box-shadow:0 0 0 0 rgba(61,220,132,.55)}70%{box-shadow:0 0 0 9px rgba(61,220,132,0)}100%{box-shadow:0 0 0 0 rgba(61,220,132,0)}}.sp-live b{font-size:15px;letter-spacing:.04em}.sp-live p{margin:4px 0 0;font-size:13px;color:var(--muted);line-height:1.6}.sp-updated{font-size:12.5px;color:var(--gold);font-weight:800;margin:0 0 16px}.sp-freq-note{font-size:12.5px;color:var(--muted);margin:-8px 0 16px;font-style:italic}
+.sp-club-nav{display:flex;flex-wrap:wrap;gap:7px;margin:0 0 22px}.sp-club-nav a{font-size:12px;font-weight:700;border:1px solid var(--line);border-radius:16px;padding:5px 11px;color:var(--muted)}.sp-club-nav a:hover{color:#fff;border-color:var(--sports)}
+.sp-clubs{display:flex;flex-direction:column;gap:20px}.sp-club{border:1px solid var(--line);border-radius:12px;background:#101318;overflow:hidden}.sp-club-head{display:flex;gap:16px;align-items:center;padding:16px 20px;background:linear-gradient(90deg,#151a21,#101318)}.sp-club-head img{width:56px;height:67px;object-fit:contain;filter:drop-shadow(0 4px 10px rgba(0,0,0,.5))}.sp-club-head h2{font-size:22px;margin:0}.sp-club-man{font-size:13px;color:var(--muted);margin:3px 0 0}.sp-club-man b{color:var(--text)}.sp-club-cols{display:grid;grid-template-columns:1fr 1fr;gap:0}.sp-club-col{padding:6px 20px 18px}.sp-club-col h3{font-size:13px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:var(--sports);margin:12px 0 8px}.sp-club-col+.sp-club-col{border-left:1px solid var(--line)}.sp-club .sp-table{min-width:0}.sp-club-notes{font-size:13px;color:#c9ced4;line-height:1.65;border-top:1px solid var(--line);padding:14px 20px;margin:0}.sp-club-notes b{color:var(--gold)}.sp-rumours{margin:0 20px 12px;border:1px dashed rgba(231,187,92,.4);border-radius:8px;padding:12px 16px;font-size:13px}.sp-rumours b{color:#e7bb5c;display:block;margin-bottom:6px}.sp-rumours p{margin:3px 0;color:var(--muted)}
+.sp-window-note{margin:26px 0 0;font-size:13px;color:var(--muted);font-style:italic}.sp-signoff{margin:26px 0 8px;font-size:13px;color:var(--gold);font-weight:800}
+@media(max-width:760px){.sp-club-cols{grid-template-columns:1fr}.sp-club-col+.sp-club-col{border-left:0;border-top:1px solid var(--line)}.sp-club-head{padding:14px 16px}.sp-club-head h2{font-size:19px}.sp-club .sp-table{min-width:430px}.sp-live{padding:14px 16px}}
 .sp-gw-sec{padding:16px 0;border-bottom:1px solid var(--line)}.sp-gw-sec h2{font-size:19px;margin:0 0 6px}.sp-empty-line{color:var(--muted);font-size:13.5px}
 @media(max-width:1024px){.sp-hero-track{grid-auto-columns:calc((100% - 32px)/2)}}
 @media(max-width:640px){.sp-hero-track{grid-auto-columns:calc(100% - 40px)}.sp-hero-arrow{display:none}.sp-hero-card{min-height:200px}.sp-article-head h1{font-size:30px}}
@@ -786,7 +791,7 @@ function matchCentre(){
 }
 /* --- PL hub: hero carousel + links --- */
 function plHub(){
-  const heroCards = (S.hero.cards || []).map((c, i) => `<a class="sp-hero-card${i === 0 ? ' sp-hero-first' : ''}" href="${url(c.route + '/')}"><span class="sp-hero-tag">${esc(c.tag)}</span><h3>${esc(c.title)}</h3><p>${esc(c.desc)}</p><span class="sp-hero-go">Read →</span></a>`).join('');
+  const heroCards = (S.hero.cards || []).map((c, i) => `<a class="sp-hero-card${i === 0 ? ' sp-hero-first' : ''}" href="${url(c.route + '/')}" style="--card-img:url('${url('/assets/img/sports/' + (c.img || 'hero-matchweek.jpg'))}')"><span class="sp-hero-tag">${esc(c.tag)}</span><h3>${esc(c.title)}</h3><p>${esc(c.desc)}</p><span class="sp-hero-go">Read →</span></a>`).join('');
   const crumbs = [{name:'Home', path:'/'}, {name:'BRYME Sports', path:'/sports/'}, {name:'Premier League', path:'/sports/premier-league/'}];
   const body = `<main class="shell"><div class="crumb"><a href="${url('/')}">Home</a> / <a href="${url('/sports/')}">BRYME Sports</a> / Premier League</div>
     <section class="sp-pl-hero"><div class="eyebrow">⚽ Premier League · ${SEASON}</div><h1>${esc(S.hero.kicker)}</h1><p class="lead">${esc(S.hero.subtitle)}</p></section>
@@ -802,9 +807,47 @@ function plHub(){
     <section class="sp-related"><h2>Related</h2><div class="sp-rel-grid"><a class="sp-rel" href="${url('/sports/transfers/')}">All transfer trackers</a><a class="sp-rel" href="${url('/sports/managers-2026-27/')}">Managers In &amp; Out</a><a class="sp-rel" href="${url('/sports/')}">BRYME Sports</a></div></section></main>`;
   write('sports/premier-league', layout({ title: 'Premier League ' + SEASON + ' | BRYME Sports', description: S.hero.kicker + ' — ' + S.hero.subtitle + ' Matchweek ' + MW + ' previews, transfers, FPL, injuries, fixtures, results and the BRYME editorial table prediction.', path: '/sports/premier-league/', activeNav: 'sports', schema: [{ '@context':'https://schema.org', '@type':'CollectionPage', name: 'Premier League ' + SEASON, url: url('/sports/premier-league/') }, breadcrumbs(crumbs)], body }));
 }
+/* --- full Premier League transfer tracker (20 clubs) --- */
+function buildPlTransferTracker(){
+  const plPath = path.join(root, 'content', 'pl-transfers.json');
+  let pl = {};
+  if (fs.existsSync(plPath)) { try { pl = JSON.parse(fs.readFileSync(plPath, 'utf8')); } catch (e) { warnings.push('pl-transfers.json unreadable'); } }
+  const imgUrl = id => url('/assets/img/sports/club-' + id + '.svg');
+  const statusBadge = t => t === 'Loan' ? 'sp-st-conf' : (t === 'Free' ? 'sp-st-rep' : (t === 'Released' || t === 'Retired' || t === 'Departed' ? 'sp-st-rum' : 'sp-st-conf'));
+  const statusLabel = t => t === 'Confirmed' ? 'Confirmed' : t;
+  const rows = list => list.length ? list.map(r => `<tr><td><b>${esc(r.player)}</b></td><td>${esc(r.from || r.to || '—')}</td><td>${esc(r.detail)}</td><td><span class="${statusBadge(r.type)}">${esc(statusLabel(r.type))}</span></td></tr>`).join('')
+    : `<tr class="sp-empty"><td colspan="4">No confirmed ${esc('')}transfers listed yet — nothing is added before it is officially confirmed.</td></tr>`;
+  const clubCard = c => `<article class="sp-club" id="${esc(c.id)}">
+    <header class="sp-club-head"><img src="${imgUrl(c.id)}" alt="Abstract crest illustration for ${esc(c.name)} — BRYME-generated artwork" width="64" height="77" loading="lazy"><div><h2>${esc(c.name)}</h2><p class="sp-club-man">Manager: <b>${esc(c.manager)}</b> · ${esc(c.managerNote)}</p></div></header>
+    <div class="sp-club-cols">
+      <div class="sp-club-col"><h3>Players In</h3><div class="sp-table-wrap"><table class="sp-table"><thead><tr><th>Player</th><th>From</th><th>Transfer type / fee</th><th>Status</th></tr></thead><tbody>${rows(c.playersIn)}</tbody></table></div></div>
+      <div class="sp-club-col"><h3>Players Out</h3><div class="sp-table-wrap"><table class="sp-table"><thead><tr><th>Player</th><th>To</th><th>Transfer type / fee</th><th>Status</th></tr></thead><tbody>${rows(c.playersOut)}</tbody></table></div></div>
+    </div>
+    ${(c.rumours && c.rumours.length) ? `<div class="sp-rumours"><b>Rumour / Reported interest — not confirmed</b>${c.rumours.map(r => `<p>${esc(r)}</p>`).join('')}</div>` : ''}
+    ${c.notes ? `<p class="sp-club-notes"><b>Transfer notes.</b> ${esc(c.notes)}</p>` : ''}
+  </article>`;
+  const crumbs = [{name:'Home', path:'/'}, {name:'BRYME Sports', path:'/sports/'}, {name:'Transfers', path:'/sports/transfers/'}, {name:'Premier League Transfers 2026/27', path:'/sports/transfers/premier-league-2026-27/'}];
+  const body = `<main class="shell"><div class="crumb"><a href="${url('/')}">Home</a> / <a href="${url('/sports/')}">BRYME Sports</a> / <a href="${url('/sports/transfers/')}">Transfers</a> / Premier League</div>
+    <section class="hero"><div class="eyebrow">⚽ BRYME Sports · Transfers</div><h1>Premier League Transfers ${esc(pl.windowClose ? '2026/27' : '')}</h1></section>
+    <div class="sp-live"><span class="sp-live-dot"></span><div><b>LIVE TRANSFER WINDOW</b><p>Premier League 2026/27 Transfers — All Clubs. This page shows the transfers completed by each Premier League club as they stand right now. The transfer window is still open, so players may move clubs, deals may be completed, and squad information may change before the transfer window closes${pl.windowClose ? ' (' + esc(pl.windowClose) + ')' : ''}. BRYME will continue updating this page as new transfers are confirmed.</p></div></div>
+    <p class="sp-updated">Last updated: ${esc(pl.lastUpdated || '—')}</p>
+    <p class="sp-freq-note">Transfer information changes frequently. This list is updated as new information becomes available and may not include breaking or unannounced developments.</p>
+    <nav class="sp-club-nav" aria-label="Jump to club">${(pl.clubs || []).map(c => `<a href="#${esc(c.id)}">${esc(c.name.replace(' &amp; Hove Albion', '').replace('Hotspur', ''))}</a>`).join('')}</nav>
+    <div class="sp-clubs">${(pl.clubs || []).map(clubCard).join('')}</div>
+    <p class="sp-window-note">Transfer window still open: this page will be updated as new deals are officially confirmed.</p>
+    <section class="sp-source"><h2>Sources</h2><p>${(pl.sources || []).map(esc).join(' · ')}</p><p class="sp-source-note">Transfer information is summarised in BRYME's own words. Where an external report is used, the source is named. Rumours are never presented as confirmed transfers.</p></section>
+    <p class="sp-signoff">BRYME Sports — Discover what you love, learn what you need, and find what's next.</p></main>`;
+  write('sports/transfers/premier-league-2026-27', layout({
+    title: 'Premier League 2026/27 Transfers: All 20 Clubs, Players In & Out',
+    description: 'Track every confirmed Premier League 2026/27 transfer. See players joining and leaving all 20 clubs, managers, major deals and the latest transfer updates.',
+    path: '/sports/transfers/premier-league-2026-27/', activeNav: 'sports',
+    schema: [{ '@context':'https://schema.org', '@type':'CollectionPage', name: 'Premier League 2026/27 Transfers', description: 'Confirmed Premier League transfers for the 2026/27 season, all 20 clubs.', url: url('/sports/transfers/premier-league-2026-27/') }, breadcrumbs(crumbs)],
+    body
+  }));
+}
 /* --- execute --- */
 (S.articlePlaceholders || []).forEach(sportArticlePlaceholder);
-transferPage(S.transfers.leagues[0]); transferPage(S.transfers.leagues[1]); transferPage(S.transfers.leagues[2]); transferPage(S.transfers.leagues[3]); transferPage(S.transfers.leagues[4]);
+buildPlTransferTracker(); transferPage(S.transfers.leagues[1]); transferPage(S.transfers.leagues[2]); transferPage(S.transfers.leagues[3]); transferPage(S.transfers.leagues[4]);
 transfersHub(); managersPage(); editorialTablePage(); fplHub(); fixturesResults(); matchCentre(); plHub();
 // cleanup any stray non-prefixed sports pages (from earlier builds)
 for (const stray of ['premier-league', 'fpl']) {
