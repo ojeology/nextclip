@@ -62,7 +62,7 @@ function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
   /* 4. REGRESSION: player loads -> watchdog must NOT fire */
   section('Regression: no error after player loads');
   {
-    const dom = load(BOX_HTML, w => { w.NEXTCLIP_TRAILER_TIMEOUT = 200; });
+    const dom = load(BOX_HTML, w => { w.BRYME_TRAILER_TIMEOUT = 200; });
     const d = dom.window.document;
     d.querySelector('.trailer-play').click();
     const iframe = d.querySelector('[data-trailer-id] iframe');
@@ -80,7 +80,7 @@ function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
   /* 5. Stuck load -> error card -> retry */
   section('Stuck load -> error card');
   {
-    const dom = load(BOX_HTML, w => { w.NEXTCLIP_TRAILER_TIMEOUT = 150; });
+    const dom = load(BOX_HTML, w => { w.BRYME_TRAILER_TIMEOUT = 150; });
     const d = dom.window.document;
     d.querySelector('.trailer-play').click();
     assert(!!d.querySelector('[data-trailer-id] iframe'), 'iframe created');
@@ -97,7 +97,7 @@ function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
   /* 6. onError mid-play */
   section('onError mid-play');
   {
-    const dom = load(BOX_HTML, w => { w.NEXTCLIP_TRAILER_TIMEOUT = 5000; });
+    const dom = load(BOX_HTML, w => { w.BRYME_TRAILER_TIMEOUT = 5000; });
     const d = dom.window.document;
     d.querySelector('.trailer-play').click();
     const iframe = d.querySelector('[data-trailer-id] iframe');

@@ -3,7 +3,7 @@
     "id": "marvel-movies",
     "slug": "marvel-movies",
     "title": "Marvel Movies",
-    "description": "A focused route through the Marvel titles already available in the NEXTCLIP catalogue, from team-up events to character-led stories.",
+    "description": "A focused route through the Marvel titles already available in the BRYME catalogue, from team-up events to character-led stories.",
     "status": "published",
     "movieSlugs": [
       "the-avengers",
@@ -42,7 +42,7 @@
     "id": "action-essentials",
     "slug": "action-essentials",
     "title": "Action Essentials",
-    "description": "A curated route through action films already in the NEXTCLIP catalogue, from high-speed spectacle to precise genre classics.",
+    "description": "A curated route through action films already in the BRYME catalogue, from high-speed spectacle to precise genre classics.",
     "status": "published",
     "movieSlugs": [
       "mad-max-fury-road",
@@ -96,7 +96,7 @@
     "id": "nigerian-cinema",
     "slug": "nigerian-cinema",
     "title": "Nigerian Cinema",
-    "description": "A starting point for Nigerian films in the NEXTCLIP catalogue, spanning family drama, crime stories, social comedy and fantasy.",
+    "description": "A starting point for Nigerian films in the BRYME catalogue, spanning family drama, crime stories, social comedy and fantasy.",
     "status": "published",
     "movieSlugs": [
       "the-wedding-party",

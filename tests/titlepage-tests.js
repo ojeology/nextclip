@@ -63,21 +63,21 @@ section('Related titles quality');
   assert(solo[0] === 'Demon Slayer: Kimetsu no Yaiba' || solo[0] === 'Jujutsu Kaisen', 'Solo Leveling: themed picks first (got ' + solo[0] + ')');
 }
 
-/* 4. Hero: WATCH TRAILER + READ NEXTCLIP STORY when article exists */
+/* 4. Hero: WATCH TRAILER + READ BRYME STORY when article exists */
 section('Hero CTAs');
 {
   const aib = read('series/alice-in-borderland/index.html');
   assert(/WATCH TRAILER/.test(aib), 'AIB hero: WATCH TRAILER');
-  assert(/READ NEXTCLIP STORY/.test(aib), 'AIB hero: READ NEXTCLIP STORY (article exists)');
+  assert(/READ BRYME STORY/.test(aib), 'AIB hero: READ BRYME STORY (article exists)');
   const titanic = read('movie/titanic/index.html');
-  assert(!/READ NEXTCLIP STORY/.test(titanic), 'Titanic hero: no story CTA (no article)');
+  assert(!/READ BRYME STORY/.test(titanic), 'Titanic hero: no story CTA (no article)');
 }
 
 /* 5. Editorial rating label */
 section('Editorial rating');
 {
   const sq = read('series/squid-game/index.html');
-  assert(/★ 9\/10 · NEXTCLIP Editorial/.test(sq), 'Squid Game badge: "★ 9/10 · NEXTCLIP Editorial"');
+  assert(/★ 9\/10 · BRYME Editorial/.test(sq), 'Squid Game badge: "★ 9/10 · BRYME Editorial"');
   assert(/not IMDb, Rotten Tomatoes or audience ratings/.test(sq), 'badge explicitly disclaims third-party rating sources');
   assert(!/<span class="badge"[^>]*>[^<]*(?:IMDb|Rotten Tomatoes)[^<]*<\/span>/.test(sq), 'no third-party rating shown as the badge value');
 }
@@ -112,7 +112,7 @@ section('Related stories');
 section('SEO essentials');
 {
   const aib = read('series/alice-in-borderland/index.html');
-  assert(/<title>Alice in Borderland \(2020\) – Series Overview, Trailer &amp; NEXTCLIP/.test(aib), 'unique title tag');
+  assert(/<title>Alice in Borderland \(2020\) – Series Overview, Trailer &amp; BRYME/.test(aib), 'unique title tag');
   assert(/<link rel="canonical" href="https:\/\/ojeology\.github\.io\/nextclip\/series\/alice-in-borderland\/">/.test(aib), 'canonical');
   assert(/property="og:title"/.test(aib) && /property="og:url"/.test(aib), 'Open Graph');
   const ld = JSON.parse(aib.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1]);

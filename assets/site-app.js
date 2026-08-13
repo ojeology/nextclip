@@ -1,9 +1,9 @@
-/* NEXTCLIP frontend app: lazy trailers, share buttons, load-more,
+/* BRYME frontend app: lazy trailers, share buttons, load-more,
    per-type category browsers (genre/year/country/language/sort) and global search.
    Written in ES5 for maximum compatibility. */
 (function () {
   'use strict';
-  var BASE = typeof window.NEXTCLIP_BASE !== 'undefined' ? window.NEXTCLIP_BASE : '';
+  var BASE = typeof window.BRYME_BASE !== 'undefined' ? window.BRYME_BASE : '';
   function esc(s) {
     return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
       return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
@@ -12,7 +12,7 @@
   function cardHtml(m, typeDir) {
     var label = typeDir === 'series' ? 'SERIES' : (typeDir === 'anime' ? 'ANIME' : 'MOVIE');
     var genre = m.g || '';
-    var rating = m.r != null ? '<p class="tile-rating" title="NEXTCLIP editorial score">★ ' + m.r + '/10 · Editorial</p>' : '';
+    var rating = m.r != null ? '<p class="tile-rating" title="BRYME editorial score">★ ' + m.r + '/10 · Editorial</p>' : '';
     var img = m.p ? '<img loading="lazy" src="' + esc(m.p) + '" alt="' + esc(m.t) + ' trailer thumbnail">' : '<div class="placeholder">' + esc(m.t) + '</div>';
     return '<a class="tile" href="' + BASE + '/' + typeDir + '/' + esc(m.s) + '/"><div class="poster">' + img + '</div><h3>' + esc(m.t) + '</h3><div class="tile-meta"><span class="type-badge tb-' + typeDir + '">' + label + '</span><span>' + (m.y || '') + '</span>' + (genre ? '<span class="sep">·</span><span>' + esc(genre) + '</span>' : '') + '</div>' + rating + '</a>';
   }
@@ -30,7 +30,7 @@
   });
 
   /* ---------- lazy trailer players (multi-candidate, failure-safe) ---------- */
-  var TRAILER_WATCHDOG_MS = (typeof window.NEXTCLIP_TRAILER_TIMEOUT !== 'undefined') ? window.NEXTCLIP_TRAILER_TIMEOUT : 30000;
+  var TRAILER_WATCHDOG_MS = (typeof window.BRYME_TRAILER_TIMEOUT !== 'undefined') ? window.BRYME_TRAILER_TIMEOUT : 30000;
   function frameHtml(id, title) {
     var iframe = document.createElement('iframe');
     var src = 'https://www.youtube-nocookie.com/embed/' + id + '?rel=0&modestbranding=1&playsinline=1&enablejsapi=1';
@@ -302,7 +302,7 @@
   /* ---------- global search ---------- */
   var searchData = document.getElementById('search-data');
   if (searchData) {
-    var S = { movies: [], articles: [], topics: [] };
+    var S = { movies: [], articles: [], topics: [], verticals: [] };
     try { S = JSON.parse(searchData.textContent); } catch (e) {}
     var qEl = document.getElementById('search-q');
     var statusEl = document.getElementById('search-status');
@@ -332,9 +332,12 @@
       }
       var foundA = S.articles.filter(function (a) { return match(a, tokens, ['title', 'description', 'category', 'tags']); });
       var foundT = (S.topics || []).filter(function (t) { return match(t, tokens, ['title', 'description']); });
+      var foundV = (S.verticals || []).filter(function (t) { return match(t, tokens, ['title', 'description']); });
+      var VEMOJI = { entertainment: '🎬', sports: '⚽', memes: '😂', 'make-money': '💰', tech: '🤖' };
       var showM = activeTab === 'all' || activeTab === 'movie' || activeTab === 'series' || activeTab === 'anime';
       var showA = activeTab === 'all' || activeTab === 'article';
       var showT = activeTab === 'all';
+      var showV = activeTab === 'all';
       var html = '';
       var total = 0;
       if (showM && foundM.length) {
@@ -343,6 +346,16 @@
         html += foundM.slice(0, 30).map(function (m) {
           var g = (m.genres && m.genres.length) ? m.genres[0] : (m.genre || '');
           return cardHtml({ s: m.slug, t: m.title, y: m.year, g: g, p: m.poster || '', r: null }, m.type || 'movie');
+        }).join('');
+      }
+      if (showV && foundV.length) {
+        total += foundV.length;
+        html += '<div class="search-group">Verticals (' + foundV.length + ')</div>';
+        html += foundV.map(function (v) {
+          var emoji = VEMOJI[v.type] || '🔎';
+          var vlabel = { entertainment: 'ENTERTAINMENT', sports: 'SPORTS', memes: 'MEMES & STICKERS', 'make-money': 'MAKE MONEY', tech: 'TECH & AI' }[v.type] || v.type.toUpperCase();
+          var bcls = v.type === 'sports' ? 'tb-sports' : v.type === 'memes' ? 'tb-memes' : v.type === 'make-money' ? 'tb-money' : v.type === 'tech' ? 'tb-tech' : 'tb-ent';
+          return '<a class="row" href="' + BASE + '/' + esc(v.slug) + '/"><div><b>' + emoji + ' ' + esc(v.title) + '</b><span class="meta" style="font-size:12px;color:var(--muted)"><span class="type-badge ' + bcls + '">' + vlabel + '</span> · ' + esc((v.description || '').slice(0, 90)) + '</span></div></a>';
         }).join('');
       }
       if (showA && foundA.length) {
@@ -390,10 +403,11 @@
     var muteBtn = heroEl.querySelector('[data-hero-mute]');
     var pauseBtn = heroEl.querySelector('[data-hero-pause]');
     var videoBox = heroEl.querySelector('[data-hero-video]');
-    var idx = 0, timer = null, videoTimer = null, playing = false, userPaused = false, heroVisible = true, muted = true;
+    var idx = 0, timer = null, advanceTimer = null, playing = false, userPaused = false, heroVisible = true, muted = true;
     var interval = parseInt(heroEl.getAttribute('data-interval') || '8000', 10);
+    var VIDEO_HOLD_MS = 12000; // how long an actively playing trailer holds before rotating
 
-    function clearHeroTimers() { if (timer) { clearTimeout(timer); timer = null; } if (videoTimer) { clearTimeout(videoTimer); videoTimer = null; } }
+    function clearHeroTimers() { if (timer) { clearTimeout(timer); timer = null; } if (advanceTimer) { clearTimeout(advanceTimer); advanceTimer = null; } }
     function heroOrigin() { try { if (/^https?:\/\//i.test(window.location.origin || '')) return '&origin=' + encodeURIComponent(window.location.origin); } catch (e) {} return ''; }
     function hideHeroVideo() {
       if (videoBox) { videoBox.hidden = true; videoBox.innerHTML = ''; }
@@ -401,17 +415,17 @@
       if (pauseBtn) pauseBtn.hidden = false;
       playing = false;
     }
-    function stopHeroVideo() { hideHeroVideo(); }
     function loadHeroVideo(withSound) {
       var s = slides[idx];
       if (!s) return;
       var vid = s.getAttribute('data-video');
       if (!vid) return;
-      stopHeroVideo();
+      hideHeroVideo();
       videoBox.hidden = false;
-      if (muteBtn) { muteBtn.hidden = false; muteBtn.textContent = withSound ? '🔊' : '🔇'; muteBtn.setAttribute('aria-label', withSound ? 'Mute trailer' : 'Unmute trailer'); }
+      if (muteBtn) { muteBtn.hidden = false; muteBtn.textContent = withSound ? '\u{1F50A}' : '\u{1F507}'; muteBtn.setAttribute('aria-label', withSound ? 'Mute trailer' : 'Unmute trailer'); }
       if (pauseBtn) pauseBtn.hidden = false;
       var iframe = document.createElement('iframe');
+      // autoplay is ALWAYS muted on load; sound only ever comes from an explicit user tap
       iframe.src = 'https://www.youtube-nocookie.com/embed/' + vid + '?autoplay=1&mute=' + (withSound ? 0 : 1) + '&playsinline=1&loop=1&playlist=' + vid + '&rel=0&modestbranding=1&enablejsapi=1' + heroOrigin();
       iframe.setAttribute('allow', 'autoplay; encrypted-media; picture-in-picture');
       iframe.setAttribute('allowfullscreen', '');
@@ -420,59 +434,76 @@
       videoBox.appendChild(iframe);
       playing = false;
       muted = !withSound;
-      // watchdog: if the player never confirms playback (autoplay blocked), fall back to the poster
-      videoTimer = setTimeout(function () { if (!playing) { hideHeroVideo(); } }, 5000);
-      // advance window while a video is playing
-      videoTimer = setTimeout(function () { if (playing) { nextSlide(); } }, 12000);
+      var loaded = false;
+      iframe.addEventListener('load', function () {
+        loaded = true;
+        // player page is up; assume muted autoplay began. If the browser blocked
+        // autoplay we still hold a reasonable time, then rotate — never 1-2s.
+        playing = true;
+        scheduleHeroAdvance();
+      });
+      // fallback: if the player page never even loads (blocked/error), drop to poster
+      advanceTimer = setTimeout(function () {
+        if (!loaded) { hideHeroVideo(); scheduleHero(); }
+      }, 6000);
+      scheduleHeroAdvance();
+    }
+    function scheduleHeroAdvance() {
+      if (advanceTimer) { clearTimeout(advanceTimer); advanceTimer = null; }
+      advanceTimer = setTimeout(function () {
+        if (playing) { nextSlide(); } else { scheduleHero(); }
+      }, VIDEO_HOLD_MS);
     }
     function scheduleHero() {
       clearHeroTimers();
       if (!heroVisible || userPaused) return;
       timer = setTimeout(function () {
-        if (playing) { scheduleHero(); return; }
+        if (playing) { scheduleHero(); return; } // never cut an active video short
         nextSlide();
       }, interval);
     }
     function setSlide(i) {
       clearHeroTimers();
-      stopHeroVideo();
+      hideHeroVideo();
       idx = ((i % slides.length) + slides.length) % slides.length;
       slides.forEach(function (sl, k) { sl.classList.toggle('is-active', k === idx); });
       dots.forEach(function (d, k) { d.classList.toggle('is-active', k === idx); d.setAttribute('aria-selected', k === idx); });
       if (heroVisible && !userPaused) {
-        // try muted autoplay for the active slide; blocked autoplay falls back gracefully
-        setTimeout(function () { if (heroVisible && !userPaused) loadHeroVideo(true); }, 300);
+        // attempt muted autoplay after a beat; if the browser blocks it we fall back to the poster
+        setTimeout(function () { if (heroVisible && !userPaused) loadHeroVideo(false); }, 250);
         scheduleHero();
       }
     }
     function nextSlide() { setSlide(idx + 1); }
     function prevSlide() { setSlide(idx - 1); }
-    if (prevBtn) prevBtn.addEventListener('click', prevSlide);
-    if (nextBtn) nextBtn.addEventListener('click', nextSlide);
-    dots.forEach(function (d) { d.addEventListener('click', function () { setSlide(parseInt(d.getAttribute('data-hero-dot'), 10)); }); });
+    if (prevBtn) prevBtn.addEventListener('click', function () { userPaused = false; if (pauseBtn) pauseBtn.textContent = '\u23F8'; prevSlide(); });
+    if (nextBtn) nextBtn.addEventListener('click', function () { userPaused = false; if (pauseBtn) pauseBtn.textContent = '\u23F8'; nextSlide(); });
+    dots.forEach(function (d) { d.addEventListener('click', function () { userPaused = false; if (pauseBtn) pauseBtn.textContent = '\u23F8'; setSlide(parseInt(d.getAttribute('data-hero-dot'), 10)); }); });
     heroEl.querySelectorAll('[data-hero-watch]').forEach(function (b) {
       b.addEventListener('click', function () {
-        if (videoBox && !videoBox.hidden) { stopHeroVideo(); return; }
-        loadHeroVideo(false); // user gesture -> sound allowed
+        if (videoBox && !videoBox.hidden) { hideHeroVideo(); return; }
+        loadHeroVideo(false); // still starts muted; the unmute button gives sound
       });
     });
     if (muteBtn) muteBtn.addEventListener('click', function () {
-      if (videoBox && !videoBox.hidden) loadHeroVideo(muted);
+      // toggle sound: reload current video with the opposite mute state
+      loadHeroVideo(muted);
     });
     if (pauseBtn) pauseBtn.addEventListener('click', function () {
       userPaused = !userPaused;
-      pauseBtn.textContent = userPaused ? '▶' : '⏸';
+      pauseBtn.textContent = userPaused ? '\u25B6' : '\u23F8';
       pauseBtn.setAttribute('aria-label', userPaused ? 'Resume rotation' : 'Pause rotation');
-      if (userPaused) { clearHeroTimers(); stopHeroVideo(); } else { scheduleHero(); }
+      if (userPaused) { clearHeroTimers(); hideHeroVideo(); } else { scheduleHero(); }
     });
     window.addEventListener('message', function (e) {
       var d = e.data;
       if (!d || typeof d !== 'object' || !d.event) return;
       if (d.event === 'onStateChange') {
         var st = d.info;
-        if (st === 1) { playing = true; if (videoTimer) { clearTimeout(videoTimer); videoTimer = null; } }
-        else if (st === 0) { nextSlide(); } // video ended -> advance
-      } else if (d.event === 'onError') { hideHeroVideo(); }
+        if (st === 1) { playing = true; scheduleHeroAdvance(); }
+        else if (st === 0) { nextSlide(); } // video finished -> advance
+        else if (st === 2 || st === 5) { playing = false; scheduleHero(); } // paused/blocked -> poster rotation
+      } else if (d.event === 'onError') { hideHeroVideo(); scheduleHero(); }
     });
     // touch swipe
     var touchX = null;
@@ -487,18 +518,22 @@
       if (e.key === 'ArrowRight') nextSlide();
       if (e.key === 'ArrowLeft') prevSlide();
     });
-    // pause rotation when the hero leaves the viewport (saves bandwidth)
+    // stop audio/video when the hero leaves the viewport or the tab hides
     if ('IntersectionObserver' in window) {
       var heroIO = new IntersectionObserver(function (entries) {
         entries.forEach(function (en) {
           heroVisible = en.isIntersecting;
-          if (!heroVisible) { clearHeroTimers(); stopHeroVideo(); } else { scheduleHero(); }
+          if (!heroVisible) { clearHeroTimers(); hideHeroVideo(); } else { scheduleHero(); }
         });
-      }, { threshold: 0.15 });
+      }, { threshold: 0.12 });
       heroIO.observe(heroEl);
     }
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) { clearHeroTimers(); hideHeroVideo(); }
+      else if (heroVisible && !userPaused) { scheduleHero(); }
+    });
     // initial muted autoplay attempt after the page settles
-    setTimeout(function () { if (heroVisible && !userPaused) { loadHeroVideo(true); scheduleHero(); } }, 1200);
+    setTimeout(function () { if (heroVisible && !userPaused) { loadHeroVideo(false); scheduleHero(); } }, 1200);
   }
 
   /* ---------- homepage recommendation engine (catalogue-based) ---------- */
@@ -558,8 +593,53 @@
       recData.items.forEach(function (x) { if (x.s === slug) found = x; });
       return found;
     }
+    // --- live title suggestions below the input (click to open the title page) ---
+    var recSuggest = document.createElement('div');
+    recSuggest.className = 'rec-suggest';
+    recSuggest.hidden = true;
+    recInput.parentNode.insertBefore(recSuggest, recInput.nextSibling);
+    var suggestTimer = null;
+    function recRenderSuggestions() {
+      var q = (recInput.value || '').trim();
+      if (q.length < 2) { recSuggest.hidden = true; recSuggest.innerHTML = ''; return; }
+      recLoad(function () {
+        if ((recInput.value || '').trim() !== q) return; // stale keystroke
+        var qt = recTokens(q);
+        var matches = [];
+        recData.items.forEach(function (it) {
+          var t = recTokens(it.t);
+          var hit = 0;
+          qt.forEach(function (w) { if (t.indexOf(w) > -1) hit++; });
+          if (hit === qt.length) matches.push(it);
+        });
+        matches.sort(function (a, b) { return (b.r || 0) - (a.r || 0); });
+        if (!matches.length) { recSuggest.hidden = true; recSuggest.innerHTML = ''; return; }
+        recSuggest.innerHTML = matches.slice(0, 6).map(function (it) {
+          var img = it.p ? '<img loading="lazy" width="60" height="45" src="' + esc(it.p) + '" alt="">' : '<span class="rec-sug-ph"></span>';
+          return '<button type="button" class="rec-sug-item" data-sug="' + esc(it.s) + '">' + img + '<span class="rec-sug-txt"><b>' + esc(it.t) + '</b><small>' + it.ty.toUpperCase() + (it.y ? ' · ' + it.y : '') + '</small></span></button>';
+        }).join('');
+        recSuggest.hidden = false;
+      });
+    }
+    recInput.addEventListener('input', function () {
+      if (suggestTimer) clearTimeout(suggestTimer);
+      suggestTimer = setTimeout(recRenderSuggestions, 180);
+    });
+    recInput.addEventListener('focus', function () { if ((recInput.value || '').trim().length >= 2) recRenderSuggestions(); });
+    recSuggest.addEventListener('click', function (e) {
+      var btn = e.target.closest ? e.target.closest('[data-sug]') : null;
+      if (!btn) return;
+      var slug = btn.getAttribute('data-sug');
+      var it = null;
+      recData.items.forEach(function (x) { if (x.s === slug) it = x; });
+      if (it) { window.location.href = BASE + '/' + it.ty + '/' + it.s + '/'; }
+    });
+    document.addEventListener('click', function (e) {
+      if (!recSuggest.contains(e.target) && e.target !== recInput) { recSuggest.hidden = true; }
+    });
     recForm.addEventListener('submit', function (ev) {
       ev.preventDefault();
+      recSuggest.hidden = true;
       var q = (recInput.value || '').trim();
       if (!q) { recStatus.textContent = 'Type a movie, series or anime title first.'; return; }
       recStatus.textContent = 'Finding your next watch...';
@@ -572,7 +652,7 @@
             var it = recBySlug(slug);
             return it ? '<a href="' + BASE + '/' + it.ty + '/' + it.s + '/">' + esc(it.t) + '</a>' : '';
           }).join('');
-          recResults.innerHTML = '<div class="rec-miss"><b>We couldn\'t find that title in NEXTCLIP.</b><span>Try another movie or series — or start with one of these:</span><span class="rec-pop">' + links + '</span></div>';
+          recResults.innerHTML = '<div class="rec-miss"><b>We couldn\'t find that title on BRYME.</b><span>Try another movie or series — or start with one of these:</span><span class="rec-pop">' + links + '</span></div>';
           return;
         }
         var scored = [];
