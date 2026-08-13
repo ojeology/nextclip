@@ -1,6 +1,6 @@
 # NEXTCLIP catalogue & frontend report
 
-Generated: 2026-08-13T07:29:07.377Z
+Generated: 2026-08-13T08:02:13.784Z
 
 ## Catalogue
 - Total titles: **632**
