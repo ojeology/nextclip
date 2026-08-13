@@ -1,0 +1,1214 @@
+{
+ "_comment": "VERIFIED-DATA-ONLY transfer trackers for La Liga, Serie A, Bundesliga and Ligue 1 (2026/27). NOTHING is listed until it is officially confirmed by a club or widely reported by credible outlets — the PL tracker works this way and so do these. Club lists are shells based on the most recent completed season; the 2026/27 composition (promoted/relegated clubs) must be verified before publishing transfers. Paste verified entries into playersIn/playersOut with {player, from/to, type (Confirmed/Loan/Free/Released/Retired/Departed), detail}, manager name + note, rumours (never in confirmed tables), and notes.",
+ "leagues": [
+  {
+   "id": "la-liga",
+   "name": "La Liga",
+   "windowClose": null,
+   "lastUpdated": null,
+   "sources": [
+    "Club official announcements",
+    "Sky Sports",
+    "ESPN",
+    "Reuters",
+    "The Guardian",
+    "Transfermarkt",
+    "Marca",
+    "AS"
+   ],
+   "clubs": [
+    {
+     "id": "real-madrid",
+     "name": "Real Madrid",
+     "colors": [
+      "#FFFFFF",
+      "#FEBE10",
+      "#00529F"
+     ],
+     "manager": null,
+     "managerNote": "Pending verification",
+     "playersIn": [],
+     "playersOut": [],
+     "rumours": [],
+     "notes": null
+    },
+    {
+     "id": "barcelona",
+     "name": "Barcelona",
+     "colors": [
+      "#A50044",
+      "#004D98",
+      "#EDBB00"
+     ],
+     "manager": null,
+     "managerNote": "Pending verification",
+     "playersIn": [],
+     "playersOut": [],
+     "rumours": [],
+     "notes": null
+    },
+    {
+     "id": "atletico-madrid",
+     "name": "Atlético Madrid",
+     "colors": [
+      "#CB3524",
+      "#FFFFFF",
+      "#262E62"
+     ],
+     "manager": null,
+     "managerNote": "Pending verification",
+     "playersIn": [],
+     "playersOut": [],
+     "rumours": [],
+     "notes": null
+    },
+    {
+     "id": "athletic-bilbao",
+     "name": "Athletic Club",
+     "colors": [
+      "#EE2523",
+      "#FFFFFF",
+      "#111111"
+     ],
+     "manager": null,
+     "managerNote": "Pending verification",
+     "playersIn": [],
+     "playersOut": [],
+     "rumours": [],
+     "notes": null
+    },
+    {
+     "id": "real-sociedad",
+     "name": "Real Sociedad",
+     "colors": [
+      "#0067B1",
+      "#FFFFFF",
+      "#111111"
+     ],
+     "manager": null,
+     "managerNote": "Pending verification",
+     "playersIn": [],
+     "playersOut": [],
+     "rumours": [],
+     "notes": null
+    },
+    {
+     "id": "real-betis",
+     "name": "Real Betis",
+     "colors": [
+      "#00954C",
+      "#FFFFFF",
+      "#111111"
+     ],
+     "manager": null,
+     "managerNote": "Pending verification",
+     "playersIn": [],
+     "playersOut": [],
+     "rumours": [],
+     "notes": null
+    },
+    {
+     "id": "villarreal",
+     "name": "Villarreal",
+     "colors": [
+      "#FFE667",
+      "#005187",
+      "#FFFFFF"
+     ],
+     "manager": null,
+     "managerNote": "Pending verification",
+     "playersIn": [],
+     "playersOut": [],
+     "rumours": [],
+     "notes": null
+    },
+    {
+     "id": "sevilla",
+     "name": "Sevilla",
+     "colors": [
+      "#FFFFFF",
+      "#D81E2C",
+      "#111111"
+     ],
+     "manager": null,
+     "managerNote": "Pending verification",
+     "playersIn": [],
+     "playersOut": [],
+     "rumours": [],
+     "notes": null
+    },
+    {
+     "id": "valencia",
+     "name": "Valencia",
+     "colors": [
+      "#EE7F00",
+      "#111111",
+      "#FFFFFF"
+     ],
+     "manager": null,
+     "managerNote": "Pending verification",
+     "playersIn": [],
+     "playersOut": [],
+     "rumours": [],
+     "notes": null
+    },
+    {
+     "id": "celta-vigo",
+     "name": "Celta Vigo",
+     "colors": [
+      "#90BEEF",
+      "#FFFFFF",
+      "#111111"
+     ],
+     "manager": null,
+     "managerNote": "Pending verification",
+     "playersIn": [],
+     "playersOut": [],
+     "rumours": [],
+     "notes": null
+    },
+    {
+     "id": "girona",
+     "name": "Girona",
+     "colors": [
+      "#CD2534",
+      "#FFFFFF",
+      "#111111"
+     ],
+     "manager": null,
+     "managerNote": "Pending verification",
+     "playersIn": [],
+     "playersOut": [],
+     "rumours": [],
+     "notes": null
+    },
+    {
+     "id": "osasuna",
+     "name": "Osasuna",
+     "colors": [
+      "#D91A21",
+      "#0B1F3A",
+      "#FFFFFF"
+     ],
+     "manager": null,
+     "managerNote": "Pending verification",
+     "playersIn": [],
+     "playersOut": [],
+     "rumours": [],
+     "notes": null
+    },
+    {
+     "id": "mallorca",
+     "name": "Mallorca",
+     "colors": [
+      "#E30613",
+      "#111111",
+      "#FFFFFF"
+     ],
+     "manager": null,
+     "managerNote": "Pending verification",
+     "playersIn": [],
+     "playersOut": [],
+     "rumours": [],
+     "notes": null
+    },
+    {
+     "id": "rayo-vallecano",
+     "name": "Rayo Vallecano",
+     "colors": [
+      "#FFFFFF",
+      "#E30613",
+      "#111111"
+     ],
+     "manager": null,
+     "managerNote": "Pending verification",
+     "playersIn": [],
+     "playersOut": [],
+     "rumours": [],
+     "notes": null
+    },
+    {
+     "id": "getafe",
+     "name": "Getafe",
+     "colors": [
+      "#003DA5",
+      "#FFFFFF",
+      "#111111"
+     ],
+     "manager": null,
+     "managerNote": "Pending verification",
+     "playersIn": [],
+     "playersOut": [],
+     "rumours": [],
+     "notes": null
+    },
+    {
+     "id": "espanyol",
+     "name": "Espanyol",
+     "colors": [
+      "#007FC8",
+      "#FFFFFF",
+      "#111111"
+     ],
+     "manager": null,
+     "managerNote": "Pending verification",
+     "playersIn": [],
+     "playersOut": [],
+     "rumours": [],
+     "notes": null
+    },
+    {
+     "id": "alaves",
+     "name": "Alavés",
+     "colors": [
+      "#0E4C96",
+      "#FFFFFF",
+      "#111111"
+     ],
+     "manager": null,
+     "managerNote": "Pending verification",
+     "playersIn": [],
+     "playersOut": [],
+     "rumours": [],
+     "notes": null
+    },
+    {
+     "id": "las-palmas",
+     "name": "Las Palmas",
+     "colors": [
+      "#FFD100",
+      "#0093DD",
+      "#FFFFFF"
+     ],
+     "manager": null,
+     "managerNote": "Pending verification",
+     "playersIn": [],
+     "playersOut": [],
+     "rumours": [],
+     "notes": null
+    },
+    {
+     "id": "leganes",
+     "name": "Leganés",
+     "colors": [
+      "#0060A8",
+      "#FFFFFF",
+      "#111111"
+     ],
+     "manager": null,
+     "managerNote": "Pending verification",
+     "playersIn": [],
+     "playersOut": [],
+     "rumours": [],
+     "notes": null
+    },
+    {
+     "id": "valladolid",
+     "name": "Real Valladolid",
+     "colors": [
+      "#8E2A52",
+      "#FFFFFF",
+      "#111111"
+     ],
+     "manager": null,
+     "managerNote": "Pending verification",
+     "playersIn": [],
+     "playersOut": [],
+     "rumours": [],
+     "notes": null
+    }
+   ]
+  },
+  {
+   "id": "serie-a",
+   "name": "Serie A",
+   "windowClose": null,
+   "lastUpdated": null,
+   "sources": [
+    "Club official announcements",
+    "Sky Sports",
+    "ESPN",
+    "Reuters",
+    "The Guardian",
+    "Transfermarkt",
+    "La Gazzetta dello Sport"
+   ],
+   "clubs": [
+    {
+     "id": "inter",
+     "name": "Inter Milan",
+     "colors": [
+      "#111111",
+      "#0068A8",
+      "#FFFFFF"
+     ],
+     "manager": null,
+     "managerNote": "Pending verification",
+     "playersIn": [],
+     "playersOut": [],
+     "rumours": [],
+     "notes": null
+    },
+    {
+     "id": "milan",
+     "name": "AC Milan",
+     "colors": [
+      "#FB090B",
+      "#111111",
+      "#FFFFFF"
+     ],
+     "manager": null,
+     "managerNote": "Pending verification",
+     "playersIn": [],
+     "playersOut": [],
+     "rumours": [],
+     "notes": null
+    },
+    {
+     "id": "juventus",
+     "name": "Juventus",
+     "colors": [
+      "#111111",
+      "#FFFFFF",
+      "#7A7A7A"
+     ],
+     "manager": null,
+     "managerNote": "Pending verification",
+     "playersIn": [],
+     "playersOut": [],
+     "rumours": [],
+     "notes": null
+    },
+    {
+     "id": "napoli",
+     "name": "Napoli",
+     "colors": [
+      "#00A2E8",
+      "#FFFFFF",
+      "#003366"
+     ],
+     "manager": null,
+     "managerNote": "Pending verification",
+     "playersIn": [],
+     "playersOut": [],
+     "rumours": [],
+     "notes": null
+    },
+    {
+     "id": "atalanta",
+     "name": "Atalanta",
+     "colors": [
+      "#0B4FA6",
+      "#111111",
+      "#FFFFFF"
+     ],
+     "manager": null,
+     "managerNote": "Pending verification",
+     "playersIn": [],
+     "playersOut": [],
+     "rumours": [],
+     "notes": null
+    },
+    {
+     "id": "roma",
+     "name": "Roma",
+     "colors": [
+      "#8E1F2F",
+      "#F0BC42",
+      "#FFFFFF"
+     ],
+     "manager": null,
+     "managerNote": "Pending verification",
+     "playersIn": [],
+     "playersOut": [],
+     "rumours": [],
+     "notes": null
+    },
+    {
+     "id": "lazio",
+     "name": "Lazio",
+     "colors": [
+      "#87D8F7",
+      "#FFFFFF",
+      "#0055A4"
+     ],
+     "manager": null,
+     "managerNote": "Pending verification",
+     "playersIn": [],
+     "playersOut": [],
+     "rumours": [],
+     "notes": null
+    },
+    {
+     "id": "fiorentina",
+     "name": "Fiorentina",
+     "colors": [
+      "#582C83",
+      "#FFFFFF",
+      "#111111"
+     ],
+     "manager": null,
+     "managerNote": "Pending verification",
+     "playersIn": [],
+     "playersOut": [],
+     "rumours": [],
+     "notes": null
+    },
+    {
+     "id": "bologna",
+     "name": "Bologna",
+     "colors": [
+      "#A11C22",
+      "#1B458F",
+      "#FFFFFF"
+     ],
+     "manager": null,
+     "managerNote": "Pending verification",
+     "playersIn": [],
+     "playersOut": [],
+     "rumours": [],
+     "notes": null
+    },
+    {
+     "id": "torino",
+     "name": "Torino",
+     "colors": [
+      "#9B1B30",
+      "#FFFFFF",
+      "#111111"
+     ],
+     "manager": null,
+     "managerNote": "Pending verification",
+     "playersIn": [],
+     "playersOut": [],
+     "rumours": [],
+     "notes": null
+    },
+    {
+     "id": "udinese",
+     "name": "Udinese",
+     "colors": [
+      "#111111",
+      "#FFFFFF",
+      "#111111"
+     ],
+     "manager": null,
+     "managerNote": "Pending verification",
+     "playersIn": [],
+     "playersOut": [],
+     "rumours": [],
+     "notes": null
+    },
+    {
+     "id": "genoa",
+     "name": "Genoa",
+     "colors": [
+      "#C4102B",
+      "#1B3E91",
+      "#FFFFFF"
+     ],
+     "manager": null,
+     "managerNote": "Pending verification",
+     "playersIn": [],
+     "playersOut": [],
+     "rumours": [],
+     "notes": null
+    },
+    {
+     "id": "cagliari",
+     "name": "Cagliari",
+     "colors": [
+      "#A32638",
+      "#1B3E91",
+      "#FFFFFF"
+     ],
+     "manager": null,
+     "managerNote": "Pending verification",
+     "playersIn": [],
+     "playersOut": [],
+     "rumours": [],
+     "notes": null
+    },
+    {
+     "id": "verona",
+     "name": "Hellas Verona",
+     "colors": [
+      "#FFD200",
+      "#0055A4",
+      "#FFFFFF"
+     ],
+     "manager": null,
+     "managerNote": "Pending verification",
+     "playersIn": [],
+     "playersOut": [],
+     "rumours": [],
+     "notes": null
+    },
+    {
+     "id": "como",
+     "name": "Como",
+     "colors": [
+      "#2E4E9E",
+      "#FFFFFF",
+      "#111111"
+     ],
+     "manager": null,
+     "managerNote": "Pending verification",
+     "playersIn": [],
+     "playersOut": [],
+     "rumours": [],
+     "notes": null
+    },
+    {
+     "id": "empoli",
+     "name": "Empoli",
+     "colors": [
+      "#005CA9",
+      "#FFFFFF",
+      "#111111"
+     ],
+     "manager": null,
+     "managerNote": "Pending verification",
+     "playersIn": [],
+     "playersOut": [],
+     "rumours": [],
+     "notes": null
+    },
+    {
+     "id": "lecce",
+     "name": "Lecce",
+     "colors": [
+      "#FFD100",
+      "#E30613",
+      "#FFFFFF"
+     ],
+     "manager": null,
+     "managerNote": "Pending verification",
+     "playersIn": [],
+     "playersOut": [],
+     "rumours": [],
+     "notes": null
+    },
+    {
+     "id": "parma",
+     "name": "Parma",
+     "colors": [
+      "#FFD100",
+      "#0055A4",
+      "#FFFFFF"
+     ],
+     "manager": null,
+     "managerNote": "Pending verification",
+     "playersIn": [],
+     "playersOut": [],
+     "rumours": [],
+     "notes": null
+    },
+    {
+     "id": "monza",
+     "name": "Monza",
+     "colors": [
+      "#E91E2C",
+      "#FFFFFF",
+      "#111111"
+     ],
+     "manager": null,
+     "managerNote": "Pending verification",
+     "playersIn": [],
+     "playersOut": [],
+     "rumours": [],
+     "notes": null
+    },
+    {
+     "id": "venezia",
+     "name": "Venezia",
+     "colors": [
+      "#F7941D",
+      "#0B3D2E",
+      "#111111"
+     ],
+     "manager": null,
+     "managerNote": "Pending verification",
+     "playersIn": [],
+     "playersOut": [],
+     "rumours": [],
+     "notes": null
+    }
+   ]
+  },
+  {
+   "id": "bundesliga",
+   "name": "Bundesliga",
+   "windowClose": null,
+   "lastUpdated": null,
+   "sources": [
+    "Club official announcements",
+    "Sky Sports",
+    "ESPN",
+    "Reuters",
+    "The Guardian",
+    "Transfermarkt",
+    "Kicker"
+   ],
+   "clubs": [
+    {
+     "id": "bayern",
+     "name": "Bayern Munich",
+     "colors": [
+      "#DC052D",
+      "#FFFFFF",
+      "#0066B2"
+     ],
+     "manager": null,
+     "managerNote": "Pending verification",
+     "playersIn": [],
+     "playersOut": [],
+     "rumours": [],
+     "notes": null
+    },
+    {
+     "id": "dortmund",
+     "name": "Borussia Dortmund",
+     "colors": [
+      "#FDE100",
+      "#111111",
+      "#FFFFFF"
+     ],
+     "manager": null,
+     "managerNote": "Pending verification",
+     "playersIn": [],
+     "playersOut": [],
+     "rumours": [],
+     "notes": null
+    },
+    {
+     "id": "leverkusen",
+     "name": "Bayer Leverkusen",
+     "colors": [
+      "#E32221",
+      "#111111",
+      "#FFFFFF"
+     ],
+     "manager": null,
+     "managerNote": "Pending verification",
+     "playersIn": [],
+     "playersOut": [],
+     "rumours": [],
+     "notes": null
+    },
+    {
+     "id": "leipzig",
+     "name": "RB Leipzig",
+     "colors": [
+      "#E4002B",
+      "#FFFFFF",
+      "#111111"
+     ],
+     "manager": null,
+     "managerNote": "Pending verification",
+     "playersIn": [],
+     "playersOut": [],
+     "rumours": [],
+     "notes": null
+    },
+    {
+     "id": "frankfurt",
+     "name": "Eintracht Frankfurt",
+     "colors": [
+      "#E1000F",
+      "#111111",
+      "#FFFFFF"
+     ],
+     "manager": null,
+     "managerNote": "Pending verification",
+     "playersIn": [],
+     "playersOut": [],
+     "rumours": [],
+     "notes": null
+    },
+    {
+     "id": "stuttgart",
+     "name": "VfB Stuttgart",
+     "colors": [
+      "#FFFFFF",
+      "#E30613",
+      "#111111"
+     ],
+     "manager": null,
+     "managerNote": "Pending verification",
+     "playersIn": [],
+     "playersOut": [],
+     "rumours": [],
+     "notes": null
+    },
+    {
+     "id": "gladbach",
+     "name": "Borussia Mönchengladbach",
+     "colors": [
+      "#111111",
+      "#FFFFFF",
+      "#00A651"
+     ],
+     "manager": null,
+     "managerNote": "Pending verification",
+     "playersIn": [],
+     "playersOut": [],
+     "rumours": [],
+     "notes": null
+    },
+    {
+     "id": "wolfsburg",
+     "name": "Wolfsburg",
+     "colors": [
+      "#65B32E",
+      "#FFFFFF",
+      "#111111"
+     ],
+     "manager": null,
+     "managerNote": "Pending verification",
+     "playersIn": [],
+     "playersOut": [],
+     "rumours": [],
+     "notes": null
+    },
+    {
+     "id": "freiburg",
+     "name": "SC Freiburg",
+     "colors": [
+      "#E50018",
+      "#FFFFFF",
+      "#111111"
+     ],
+     "manager": null,
+     "managerNote": "Pending verification",
+     "playersIn": [],
+     "playersOut": [],
+     "rumours": [],
+     "notes": null
+    },
+    {
+     "id": "hoffenheim",
+     "name": "Hoffenheim",
+     "colors": [
+      "#1961B5",
+      "#FFFFFF",
+      "#111111"
+     ],
+     "manager": null,
+     "managerNote": "Pending verification",
+     "playersIn": [],
+     "playersOut": [],
+     "rumours": [],
+     "notes": null
+    },
+    {
+     "id": "mainz",
+     "name": "Mainz 05",
+     "colors": [
+      "#E3000F",
+      "#FFFFFF",
+      "#111111"
+     ],
+     "manager": null,
+     "managerNote": "Pending verification",
+     "playersIn": [],
+     "playersOut": [],
+     "rumours": [],
+     "notes": null
+    },
+    {
+     "id": "augsburg",
+     "name": "Augsburg",
+     "colors": [
+      "#BA3733",
+      "#00A651",
+      "#FFFFFF"
+     ],
+     "manager": null,
+     "managerNote": "Pending verification",
+     "playersIn": [],
+     "playersOut": [],
+     "rumours": [],
+     "notes": null
+    },
+    {
+     "id": "werder",
+     "name": "Werder Bremen",
+     "colors": [
+      "#1D9053",
+      "#FFFFFF",
+      "#111111"
+     ],
+     "manager": null,
+     "managerNote": "Pending verification",
+     "playersIn": [],
+     "playersOut": [],
+     "rumours": [],
+     "notes": null
+    },
+    {
+     "id": "union-berlin",
+     "name": "Union Berlin",
+     "colors": [
+      "#EB1923",
+      "#FFFFFF",
+      "#111111"
+     ],
+     "manager": null,
+     "managerNote": "Pending verification",
+     "playersIn": [],
+     "playersOut": [],
+     "rumours": [],
+     "notes": null
+    },
+    {
+     "id": "st-pauli",
+     "name": "St. Pauli",
+     "colors": [
+      "#5B4B3A",
+      "#FFFFFF",
+      "#111111"
+     ],
+     "manager": null,
+     "managerNote": "Pending verification",
+     "playersIn": [],
+     "playersOut": [],
+     "rumours": [],
+     "notes": null
+    },
+    {
+     "id": "heidenheim",
+     "name": "Heidenheim",
+     "colors": [
+      "#E30613",
+      "#005CA9",
+      "#FFFFFF"
+     ],
+     "manager": null,
+     "managerNote": "Pending verification",
+     "playersIn": [],
+     "playersOut": [],
+     "rumours": [],
+     "notes": null
+    },
+    {
+     "id": "bochum",
+     "name": "Bochum",
+     "colors": [
+      "#005CA9",
+      "#FFFFFF",
+      "#111111"
+     ],
+     "manager": null,
+     "managerNote": "Pending verification",
+     "playersIn": [],
+     "playersOut": [],
+     "rumours": [],
+     "notes": null
+    },
+    {
+     "id": "holstein-kiel",
+     "name": "Holstein Kiel",
+     "colors": [
+      "#005CA9",
+      "#FFFFFF",
+      "#E30613"
+     ],
+     "manager": null,
+     "managerNote": "Pending verification",
+     "playersIn": [],
+     "playersOut": [],
+     "rumours": [],
+     "notes": null
+    }
+   ]
+  },
+  {
+   "id": "ligue-1",
+   "name": "Ligue 1",
+   "windowClose": null,
+   "lastUpdated": null,
+   "sources": [
+    "Club official announcements",
+    "Sky Sports",
+    "ESPN",
+    "Reuters",
+    "The Guardian",
+    "Transfermarkt",
+    "L'Équipe"
+   ],
+   "clubs": [
+    {
+     "id": "psg",
+     "name": "Paris Saint-Germain",
+     "colors": [
+      "#004170",
+      "#DA291C",
+      "#FFFFFF"
+     ],
+     "manager": null,
+     "managerNote": "Pending verification",
+     "playersIn": [],
+     "playersOut": [],
+     "rumours": [],
+     "notes": null
+    },
+    {
+     "id": "marseille",
+     "name": "Marseille",
+     "colors": [
+      "#2FAEE0",
+      "#FFFFFF",
+      "#111111"
+     ],
+     "manager": null,
+     "managerNote": "Pending verification",
+     "playersIn": [],
+     "playersOut": [],
+     "rumours": [],
+     "notes": null
+    },
+    {
+     "id": "monaco",
+     "name": "Monaco",
+     "colors": [
+      "#E30613",
+      "#FFFFFF",
+      "#111111"
+     ],
+     "manager": null,
+     "managerNote": "Pending verification",
+     "playersIn": [],
+     "playersOut": [],
+     "rumours": [],
+     "notes": null
+    },
+    {
+     "id": "lyon",
+     "name": "Lyon",
+     "colors": [
+      "#DA291C",
+      "#0055A4",
+      "#FFFFFF"
+     ],
+     "manager": null,
+     "managerNote": "Pending verification",
+     "playersIn": [],
+     "playersOut": [],
+     "rumours": [],
+     "notes": null
+    },
+    {
+     "id": "lille",
+     "name": "Lille",
+     "colors": [
+      "#E30613",
+      "#12264C",
+      "#FFFFFF"
+     ],
+     "manager": null,
+     "managerNote": "Pending verification",
+     "playersIn": [],
+     "playersOut": [],
+     "rumours": [],
+     "notes": null
+    },
+    {
+     "id": "nice",
+     "name": "Nice",
+     "colors": [
+      "#E30613",
+      "#111111",
+      "#FFFFFF"
+     ],
+     "manager": null,
+     "managerNote": "Pending verification",
+     "playersIn": [],
+     "playersOut": [],
+     "rumours": [],
+     "notes": null
+    },
+    {
+     "id": "lens",
+     "name": "Lens",
+     "colors": [
+      "#E30613",
+      "#F7C600",
+      "#FFFFFF"
+     ],
+     "manager": null,
+     "managerNote": "Pending verification",
+     "playersIn": [],
+     "playersOut": [],
+     "rumours": [],
+     "notes": null
+    },
+    {
+     "id": "rennes",
+     "name": "Rennes",
+     "colors": [
+      "#E30613",
+      "#111111",
+      "#FFFFFF"
+     ],
+     "manager": null,
+     "managerNote": "Pending verification",
+     "playersIn": [],
+     "playersOut": [],
+     "rumours": [],
+     "notes": null
+    },
+    {
+     "id": "strasbourg",
+     "name": "Strasbourg",
+     "colors": [
+      "#009FE3",
+      "#FFFFFF",
+      "#111111"
+     ],
+     "manager": null,
+     "managerNote": "Pending verification",
+     "playersIn": [],
+     "playersOut": [],
+     "rumours": [],
+     "notes": null
+    },
+    {
+     "id": "toulouse",
+     "name": "Toulouse",
+     "colors": [
+      "#5C2D91",
+      "#FFFFFF",
+      "#111111"
+     ],
+     "manager": null,
+     "managerNote": "Pending verification",
+     "playersIn": [],
+     "playersOut": [],
+     "rumours": [],
+     "notes": null
+    },
+    {
+     "id": "nantes",
+     "name": "Nantes",
+     "colors": [
+      "#F7D117",
+      "#00A651",
+      "#FFFFFF"
+     ],
+     "manager": null,
+     "managerNote": "Pending verification",
+     "playersIn": [],
+     "playersOut": [],
+     "rumours": [],
+     "notes": null
+    },
+    {
+     "id": "reims",
+     "name": "Reims",
+     "colors": [
+      "#E30613",
+      "#FFFFFF",
+      "#111111"
+     ],
+     "manager": null,
+     "managerNote": "Pending verification",
+     "playersIn": [],
+     "playersOut": [],
+     "rumours": [],
+     "notes": null
+    },
+    {
+     "id": "montpellier",
+     "name": "Montpellier",
+     "colors": [
+      "#EF7D00",
+      "#1B3E91",
+      "#FFFFFF"
+     ],
+     "manager": null,
+     "managerNote": "Pending verification",
+     "playersIn": [],
+     "playersOut": [],
+     "rumours": [],
+     "notes": null
+    },
+    {
+     "id": "auxerre",
+     "name": "Auxerre",
+     "colors": [
+      "#FFFFFF",
+      "#005CA9",
+      "#111111"
+     ],
+     "manager": null,
+     "managerNote": "Pending verification",
+     "playersIn": [],
+     "playersOut": [],
+     "rumours": [],
+     "notes": null
+    },
+    {
+     "id": "le-havre",
+     "name": "Le Havre",
+     "colors": [
+      "#0094D8",
+      "#0B3D2E",
+      "#FFFFFF"
+     ],
+     "manager": null,
+     "managerNote": "Pending verification",
+     "playersIn": [],
+     "playersOut": [],
+     "rumours": [],
+     "notes": null
+    },
+    {
+     "id": "brest",
+     "name": "Brest",
+     "colors": [
+      "#E30613",
+      "#FFFFFF",
+      "#111111"
+     ],
+     "manager": null,
+     "managerNote": "Pending verification",
+     "playersIn": [],
+     "playersOut": [],
+     "rumours": [],
+     "notes": null
+    },
+    {
+     "id": "angers",
+     "name": "Angers",
+     "colors": [
+      "#111111",
+      "#FFFFFF",
+      "#D4AF37"
+     ],
+     "manager": null,
+     "managerNote": "Pending verification",
+     "playersIn": [],
+     "playersOut": [],
+     "rumours": [],
+     "notes": null
+    },
+    {
+     "id": "saint-etienne",
+     "name": "Saint-Étienne",
+     "colors": [
+      "#0F9D58",
+      "#FFFFFF",
+      "#111111"
+     ],
+     "manager": null,
+     "managerNote": "Pending verification",
+     "playersIn": [],
+     "playersOut": [],
+     "rumours": [],
+     "notes": null
+    }
+   ]
+  }
+ ]
+}

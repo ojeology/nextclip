@@ -376,7 +376,7 @@ fs.writeFileSync(path.join(root,'assets/site.css'), css + '\n' + `/* Primary pla
 .sp-source{margin-top:30px;border:1px solid var(--line);border-radius:8px;padding:18px 20px;background:#101318}.sp-source h2{font-size:16px;margin:0 0 8px}.sp-source p{margin:6px 0;font-size:13.5px}.sp-source-note{font-size:12.5px;color:var(--muted);line-height:1.6;margin:8px 0 0}
 .sp-related{margin-top:34px;padding-top:24px;border-top:1px solid var(--line)}.sp-related h2{font-size:18px;margin:0 0 14px}.sp-rel-grid{display:flex;flex-wrap:wrap;gap:10px}.sp-rel{border:1px solid var(--line);border-radius:20px;padding:8px 14px;font-size:12.5px;font-weight:700;color:#d9dde1}.sp-rel:hover{border-color:var(--sports);color:#fff}.sp-rel-static{color:var(--muted);cursor:default}
 .sp-mc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;margin:18px 0}.sp-mc-card{min-height:120px;border:1px dashed var(--line);border-radius:10px;padding:18px;display:flex;flex-direction:column;justify-content:flex-end;background:#101318}.sp-mc-card b{font-size:15px}.sp-mc-card p{font-size:12.5px;color:var(--muted);margin:4px 0 0;line-height:1.5}
-.sp-live{display:flex;gap:14px;align-items:flex-start;background:linear-gradient(135deg,rgba(61,220,132,.1),rgba(61,220,132,.03));border:1px solid rgba(61,220,132,.35);border-radius:10px;padding:18px 20px;margin:6px 0 14px}.sp-live-dot{flex:none;width:12px;height:12px;border-radius:50%;background:#3ddc84;margin-top:5px;box-shadow:0 0 0 0 rgba(61,220,132,.6);animation:spPulse 2s infinite}@keyframes spPulse{0%{box-shadow:0 0 0 0 rgba(61,220,132,.55)}70%{box-shadow:0 0 0 9px rgba(61,220,132,0)}100%{box-shadow:0 0 0 0 rgba(61,220,132,0)}}.sp-live b{font-size:15px;letter-spacing:.04em}.sp-live p{margin:4px 0 0;font-size:13px;color:var(--muted);line-height:1.6}.sp-updated{font-size:12.5px;color:var(--gold);font-weight:800;margin:0 0 16px}.sp-freq-note{font-size:12.5px;color:var(--muted);margin:-8px 0 16px;font-style:italic}
+.sp-live{display:flex;gap:14px;align-items:flex-start;background:linear-gradient(135deg,rgba(61,220,132,.1),rgba(61,220,132,.03));border:1px solid rgba(61,220,132,.35);border-radius:10px;padding:18px 20px;margin:6px 0 14px}.sp-live-dot{flex:none;width:12px;height:12px;border-radius:50%;background:#3ddc84;margin-top:5px;box-shadow:0 0 0 0 rgba(61,220,132,.6);animation:spPulse 2s infinite}@keyframes spPulse{0%{box-shadow:0 0 0 0 rgba(61,220,132,.55)}70%{box-shadow:0 0 0 9px rgba(61,220,132,0)}100%{box-shadow:0 0 0 0 rgba(61,220,132,0)}}.sp-live b{font-size:15px;letter-spacing:.04em}.sp-live p{margin:4px 0 0;font-size:13px;color:var(--muted);line-height:1.6}.sp-updated{font-size:12.5px;color:var(--gold);font-weight:800;margin:0 0 16px}.sp-truth{display:flex;gap:12px;align-items:flex-start;background:rgba(231,187,92,.06);border:1px solid rgba(231,187,92,.3);border-radius:10px;padding:14px 18px;margin:0 0 14px}.sp-truth b{color:var(--gold);font-size:13px;flex:none}.sp-legend-line{font-size:12.5px;color:var(--muted);margin:0 0 14px}.sp-truth p{margin:0;font-size:12.5px;color:var(--muted);line-height:1.6}.sp-freq-note{font-size:12.5px;color:var(--muted);margin:-8px 0 16px;font-style:italic}
 .sp-club-nav{display:flex;flex-wrap:wrap;gap:7px;margin:0 0 22px}.sp-club-nav a{font-size:12px;font-weight:700;border:1px solid var(--line);border-radius:16px;padding:5px 11px;color:var(--muted)}.sp-club-nav a:hover{color:#fff;border-color:var(--sports)}
 .sp-clubs{display:flex;flex-direction:column;gap:20px}.sp-club{border:1px solid var(--line);border-radius:12px;background:#101318;overflow:hidden}.sp-club-head{display:flex;gap:16px;align-items:center;padding:16px 20px;background:linear-gradient(90deg,#151a21,#101318)}.sp-club-head img{width:56px;height:67px;object-fit:contain;filter:drop-shadow(0 4px 10px rgba(0,0,0,.5))}.sp-club-head h2{font-size:22px;margin:0}.sp-club-man{font-size:13px;color:var(--muted);margin:3px 0 0}.sp-club-man b{color:var(--text)}.sp-club-cols{display:grid;grid-template-columns:1fr 1fr;gap:0}.sp-club-col{padding:6px 20px 18px}.sp-club-col h3{font-size:13px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:var(--sports);margin:12px 0 8px}.sp-club-col+.sp-club-col{border-left:1px solid var(--line)}.sp-club .sp-table{min-width:0}.sp-club-notes{font-size:13px;color:#c9ced4;line-height:1.65;border-top:1px solid var(--line);padding:14px 20px;margin:0}.sp-club-notes b{color:var(--gold)}.sp-rumours{margin:0 20px 12px;border:1px dashed rgba(231,187,92,.4);border-radius:8px;padding:12px 16px;font-size:13px}.sp-rumours b{color:#e7bb5c;display:block;margin-bottom:6px}.sp-rumours p{margin:3px 0;color:var(--muted)}
 .sp-window-note{margin:26px 0 0;font-size:13px;color:var(--muted);font-style:italic}.sp-signoff{margin:26px 0 8px;font-size:13px;color:var(--gold);font-weight:800}
@@ -845,9 +845,54 @@ function buildPlTransferTracker(){
     body
   }));
 }
+/* --- league transfer trackers (La Liga, Serie A, Bundesliga, Ligue 1) ---
+   TRUTH-FIRST: nothing is listed until officially confirmed by a club or
+   widely reported by credible outlets. Club shells are placeholders for
+   verified data; the 2026/27 club composition must be confirmed. */
+function buildLeagueTrackers(){
+  const pathLg = path.join(root, 'content', 'league-transfers.json');
+  let lgData = { leagues: [] };
+  if (fs.existsSync(pathLg)) { try { lgData = JSON.parse(fs.readFileSync(pathLg, 'utf8')); } catch (e) { warnings.push('league-transfers.json unreadable'); } }
+  const imgUrl = id => url('/assets/img/sports/club-' + id + '.svg');
+  const statusBadge = t => t === 'Loan' ? 'sp-st-conf' : (t === 'Free' ? 'sp-st-rep' : (t === 'Released' || t === 'Retired' || t === 'Departed' ? 'sp-st-rum' : 'sp-st-conf'));
+  const statusLabel = t => t === 'Confirmed' ? 'Confirmed' : t;
+  const rows = (list, kind) => list && list.length ? list.map(r => `<tr><td><b>${esc(r.player)}</b></td><td>${esc(r.from || r.to || '—')}</td><td>${esc(r.detail || '—')}</td><td><span class="${statusBadge(r.type)}">${esc(statusLabel(r.type))}</span></td></tr>`).join('')
+    : `<tr class="sp-empty"><td colspan="4">No confirmed ${esc(kind)} listed yet — BRYME only lists transfers that are officially confirmed by a club or widely reported by credible outlets. Nothing is invented to fill this table.</td></tr>`;
+  const clubCard = c => `<article class="sp-club" id="${esc(c.id)}">
+    <header class="sp-club-head"><img src="${imgUrl(c.id)}" alt="Abstract crest illustration for ${esc(c.name)} — BRYME-generated artwork" width="64" height="77" loading="lazy"><div><h2>${esc(c.name)}</h2><p class="sp-club-man">Manager: ${c.manager ? '<b>' + esc(c.manager) + '</b> · ' + esc(c.managerNote || '') : '<b>' + esc(c.managerNote || 'Pending verification') + '</b>'}</p></div></header>
+    <div class="sp-club-cols">
+      <div class="sp-club-col"><h3>Players In</h3><div class="sp-table-wrap"><table class="sp-table"><thead><tr><th>Player</th><th>From</th><th>Transfer type / fee</th><th>Status</th></tr></thead><tbody>${rows(c.playersIn, 'arrivals')}</tbody></table></div></div>
+      <div class="sp-club-col"><h3>Players Out</h3><div class="sp-table-wrap"><table class="sp-table"><thead><tr><th>Player</th><th>To</th><th>Transfer type / fee</th><th>Status</th></tr></thead><tbody>${rows(c.playersOut, 'departures')}</tbody></table></div></div>
+    </div>
+    ${(c.rumours && c.rumours.length) ? `<div class="sp-rumours"><b>Rumour / Reported interest — not confirmed</b>${c.rumours.map(r => `<p>${esc(r)}</p>`).join('')}</div>` : ''}
+    ${c.notes ? `<p class="sp-club-notes"><b>Transfer notes.</b> ${esc(c.notes)}</p>` : ''}
+  </article>`;
+  for (const lg of lgData.leagues || []) {
+    const crumbs = [{name:'Home', path:'/'}, {name:'BRYME Sports', path:'/sports/'}, {name:'Transfers', path:'/sports/transfers/'}, {name:lg.name + ' Transfers 2026/27', path:'/sports/transfers/' + lg.id + '-2026-27/'}];
+    const body = `<main class="shell"><div class="crumb"><a href="${url('/')}">Home</a> / <a href="${url('/sports/')}">BRYME Sports</a> / <a href="${url('/sports/transfers/')}">Transfers</a> / ${esc(lg.name)}</div>
+      <section class="hero"><div class="eyebrow">⚽ BRYME Sports · Transfers</div><h1>${esc(lg.name)} Transfers 2026/27</h1></section>
+      <div class="sp-live"><span class="sp-live-dot"></span><div><b>LIVE TRANSFER WINDOW</b><p>${esc(lg.name)} 2026/27 Transfers — All Clubs. This page shows the transfers completed by each club as they stand right now. The transfer window is still open, so players may move clubs, deals may be completed, and squad information may change before the transfer window closes. BRYME will continue updating this page as new transfers are confirmed.</p></div></div>
+      <div class="sp-truth"><b>Truth first — nothing fabricated.</b><p>BRYME only lists transfers that are officially confirmed by the club or widely reported by credible outlets, with the source shown. Rumours are never presented as confirmed. If a transfer is uncertain, it is left out until it can be verified.</p></div>
+      <p class="sp-legend-line">Status legend: <span class="sp-st-conf">Confirmed</span><span class="sp-st-rep">Loan · Free</span><span class="sp-st-rum">Released · Retired · Departed</span><span class="sp-st-rum">Rumour (never in confirmed tables)</span></p>
+      <p class="sp-updated">Last updated: ${esc(lg.lastUpdated || 'Pending verification')}</p>
+      <p class="sp-freq-note">Transfer information changes frequently. This list is updated as new information becomes available and may not include breaking or unannounced developments. Club list: based on the most recent completed season — the 2026/27 line-up (promoted/relegated clubs) must be verified before publishing.</p>
+      <nav class="sp-club-nav" aria-label="Jump to club">${(lg.clubs || []).map(c => `<a href="#${esc(c.id)}">${esc(c.name.replace(' &amp; Hove Albion', '').replace('Hotspur', ''))}</a>`).join('')}</nav>
+      <div class="sp-clubs">${(lg.clubs || []).map(clubCard).join('')}</div>
+      <p class="sp-window-note">Transfer window still open: this page will be updated as new deals are officially confirmed.</p>
+      <section class="sp-source"><h2>Sources</h2><p>${(lg.sources || []).map(esc).join(' · ')}</p><p class="sp-source-note">Transfer information is summarised in BRYME's own words. Where an external report is used, the source is named. Rumours are never presented as confirmed transfers.</p></section>
+      <p class="sp-signoff">BRYME Sports — Discover what you love, learn what you need, and find what's next.</p></main>`;
+    write('sports/transfers/' + lg.id + '-2026-27', layout({
+      title: lg.name + ' Transfers 2026/27: All Clubs, Players In & Out',
+      description: 'Track every confirmed ' + lg.name + ' 2026/27 transfer. See players joining and leaving clubs, managers, major deals and the latest transfer updates. Only officially confirmed deals are listed.',
+      path: '/sports/transfers/' + lg.id + '-2026-27/', activeNav: 'sports',
+      schema: [{ '@context':'https://schema.org', '@type':'CollectionPage', name: lg.name + ' Transfers 2026/27', description: 'Confirmed ' + lg.name + ' transfers for the 2026/27 season, all clubs.', url: url('/sports/transfers/' + lg.id + '-2026-27/') }, breadcrumbs(crumbs)],
+      body
+    }));
+  }
+}
 /* --- execute --- */
 (S.articlePlaceholders || []).forEach(sportArticlePlaceholder);
-buildPlTransferTracker(); transferPage(S.transfers.leagues[1]); transferPage(S.transfers.leagues[2]); transferPage(S.transfers.leagues[3]); transferPage(S.transfers.leagues[4]);
+buildPlTransferTracker(); buildLeagueTrackers();
 transfersHub(); managersPage(); editorialTablePage(); fplHub(); fixturesResults(); matchCentre(); plHub();
 // cleanup any stray non-prefixed sports pages (from earlier builds)
 for (const stray of ['premier-league', 'fpl']) {
