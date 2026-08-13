@@ -102,7 +102,8 @@ run(searchHtml, (dom) => {
       q.dispatchEvent(new w.Event('input'));
       setTimeout(() => {
         const rows = d.querySelectorAll('#search-results .row');
-        assert(rows.length === 2, 'article search finds matching articles (got ' + rows.length + ')');
+        // 3 matches: two Prison Break articles + Breaking Bad opinion piece (its description mentions Prison Break)
+        assert(rows.length === 3, 'article search finds matching articles (got ' + rows.length + ')');
         finish();
       }, 200);
     }, 200);
