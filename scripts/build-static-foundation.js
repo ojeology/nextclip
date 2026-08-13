@@ -875,7 +875,8 @@ function buildLeagueTrackers(){
       <div class="sp-truth"><b>Truth first — nothing fabricated.</b><p>BRYME only lists transfers that are officially confirmed by the club or widely reported by credible outlets, with the source shown. Rumours are never presented as confirmed. If a transfer is uncertain, it is left out until it can be verified.</p></div>
       <p class="sp-legend-line">Status legend: <span class="sp-st-conf">Confirmed</span><span class="sp-st-rep">Loan · Free</span><span class="sp-st-rum">Released · Retired · Departed</span><span class="sp-st-rum">Rumour (never in confirmed tables)</span></p>
       <p class="sp-updated">Last updated: ${esc(lg.lastUpdated || 'Pending verification')}</p>
-      <p class="sp-freq-note">Transfer information changes frequently. This list is updated as new information becomes available and may not include breaking or unannounced developments. Club list: based on the most recent completed season — the 2026/27 line-up (promoted/relegated clubs) must be verified before publishing.</p>
+      ${lg.leagueNote ? `<div class="vnote" style="margin:0 0 14px">${esc(lg.leagueNote)}</div>` : ''}
+      <p class="sp-freq-note">Transfer information changes frequently. This list is updated as new information becomes available and may not include breaking or unannounced developments.${lg.compositionVerified ? '' : ' Club list: based on the most recent completed season — the 2026/27 line-up (promoted/relegated clubs) must be verified before publishing.'}</p>
       <nav class="sp-club-nav" aria-label="Jump to club">${(lg.clubs || []).map(c => `<a href="#${esc(c.id)}">${esc(c.name.replace(' &amp; Hove Albion', '').replace('Hotspur', ''))}</a>`).join('')}</nav>
       <div class="sp-clubs">${(lg.clubs || []).map(clubCard).join('')}</div>
       <p class="sp-window-note">Transfer window still open: this page will be updated as new deals are officially confirmed.</p>

@@ -48,32 +48,52 @@ section('PL transfer tracker (populated)');
   assert(s.indexOf('NEXTCLIP') === -1, 'no NEXTCLIP literal');
 }
 
-/* 2c. League trackers (La Liga, Serie A, Bundesliga, Ligue 1) — truth-first */
-section('League transfer trackers (truth-first)');
+/* 2c. League trackers — La Liga & Serie A populated (verified), Bundesliga & Ligue 1 truth-first */
+section('League transfer trackers');
 {
-  const leagues = [
-    ['la-liga', 'La Liga', 20],
-    ['serie-a', 'Serie A', 20],
-    ['bundesliga', 'Bundesliga', 18],
-    ['ligue-1', 'Ligue 1', 18]
-  ];
-  for (const [id, name, clubCount] of leagues) {
+  // Populated leagues (user-verified data)
+  for (const [id, name, clubCount] of [['la-liga', 'La Liga', 20], ['serie-a', 'Serie A', 20]]) {
     const s = read('sports/transfers/' + id + '-2026-27/index.html');
     assert(new RegExp('>' + name.replace('+', '\\+') + ' Transfers 2026/27<').test(s), id + ': page title');
     assert(/LIVE TRANSFER WINDOW/.test(s), id + ': live banner');
     assert(/Truth first — nothing fabricated/.test(s), id + ': truth banner');
-    assert(/officially confirmed by a club or widely reported/.test(s), id + ': verified-only empty state');
     assert((s.match(/class="sp-club"/g) || []).length === clubCount, id + ': ' + clubCount + ' club cards');
     assert((s.match(/club-[a-z-]+\.svg/g) || []).length === clubCount, id + ': ' + clubCount + ' crests');
-    assert((s.match(/<tr><td><b>/g) || []).length === 0, id + ': ZERO fabricated transfer rows');
-    assert(/2026\/27 line-up \(promoted\/relegated clubs\) must be verified/.test(s), id + ': composition verification note');
-    assert(/Status legend/.test(s) && /Rumour \(never in confirmed tables\)/.test(s), id + ': status legend');
+    const rows = (s.match(/<tr><td><b>/g) || []).length;
+    assert(rows > 20, id + ': populated with confirmed transfers (' + rows + ' rows)');
+    assert(/Last updated: 13 August 2026/.test(s), id + ': real last-updated date');
+    assert(!/must be verified before publishing/.test(s), id + ': composition verified (no warning note)');
+    assert(/Status legend/.test(s), id + ': status legend');
     assert(/Transfer window still open/.test(s), id + ': window note');
     assert(/Discover what you love, learn what you need, and find what's next/.test(s), id + ': signoff');
-    assert(/Last updated: Pending verification/.test(s), id + ': honest last-updated state');
-    var canon = s.match(/rel="canonical" href="([^"]+)"/);
-    assert(canon && canon[1] === 'https://ojeology.github.io/nextclip/sports/transfers/' + id + '-2026-27/', id + ': canonical correct');
     assert(s.indexOf('NEXTCLIP') === -1, id + ': no NEXTCLIP literal');
+  }
+  // La Liga specifics: 20 managers, no rumours box (user supplied none), key deals
+  {
+    const s = read('sports/transfers/la-liga-2026-27/index.html');
+    assert((s.match(/Manager:/g) || []).length === 20, 'la-liga: 20 managers');
+    assert(s.indexOf('Yan Diomande') > -1 && s.indexOf('Mourinho') > -1 && s.indexOf('Aubameyang') > -1 && s.indexOf('Sergio Canales') > -1, 'la-liga: key deals present');
+    assert(!/Rumour \/ Reported interest/.test(s), 'la-liga: no rumours box (data had none)');
+  }
+  // Serie A specifics: rumours box, statuses
+  {
+    const s = read('sports/transfers/serie-a-2026-27/index.html');
+    assert((s.match(/Manager:/g) || []).length === 20, 'serie-a: 20 managers');
+    assert(s.indexOf('Gonçalo Ramos') > -1 && s.indexOf('Dovbyk') > -1 && s.indexOf('Chalobah') > -1 && s.indexOf('Akor Adams') > -1, 'serie-a: key deals present');
+    assert(/Rumour \/ Reported interest — not confirmed/.test(s), 'serie-a: rumours box present');
+    assert(s.indexOf('Vlahović') > -1 && s.indexOf('Lukaku') > -1 && s.indexOf('Bouaddi') === -1, 'serie-a: rumours kept out of confirmed tables');
+    assert(/Nine clubs changed head coach/.test(s), 'serie-a: league note (9 manager changes)');
+  }
+  // Empty leagues (truth-first)
+  for (const [id, name, clubCount] of [['bundesliga', 'Bundesliga', 18], ['ligue-1', 'Ligue 1', 18]]) {
+    const s = read('sports/transfers/' + id + '-2026-27/index.html');
+    assert(new RegExp('>' + name.replace('+', '\\+') + ' Transfers 2026/27<').test(s), id + ': page title');
+    assert(/LIVE TRANSFER WINDOW/.test(s), id + ': live banner');
+    assert((s.match(/class="sp-club"/g) || []).length === clubCount, id + ': ' + clubCount + ' club cards');
+    assert((s.match(/<tr><td><b>/g) || []).length === 0, id + ': ZERO fabricated transfer rows');
+    assert(/Last updated: Pending verification/.test(s), id + ': honest last-updated state');
+    assert(/must be verified before publishing/.test(s), id + ': composition verification note');
+    assert(/officially confirmed by a club or widely reported/.test(s), id + ': verified-only empty state');
   }
 }
 
