@@ -759,7 +759,7 @@ function managersPage(){
     if (lgId === 'la-liga') return url('/assets/img/sports/ll/' + (LL_NAME[id] || id) + '.png');
     if (lgId === 'bundesliga') return id === 'hamburg' ? url('/assets/img/sports/club-' + id + '.svg') : url('/assets/img/sports/bl/' + id + '.svg');
     if (lgId === 'ligue-1') return url('/assets/img/sports/l1/' + id + '.webp');
-    if (lgId === 'serie-a') return SA_OFFICIAL.includes(id) ? url('/assets/img/sports/sa/' + id + '.' + (id === 'venezia' ? 'webp' : 'png')) : url('/assets/img/sports/club-' + id + '.svg');
+    if (lgId === 'serie-a') return url('/assets/img/sports/sa/' + id + (id === 'lazio' ? '.png' : '.svg'));
     return url('/assets/img/sports/club-' + id + '.svg');
   };
   const badge = note => {
@@ -771,7 +771,7 @@ function managersPage(){
   const leagueBlocks = leagueOrder.filter(l => byLeague[l]).map(lg => {
     const rows = byLeague[lg].map(c => {
       const lgId = { 'Premier League':'premier-league', 'La Liga':'la-liga', 'Serie A':'serie-a', 'Bundesliga':'bundesliga', 'Ligue 1':'ligue-1' }[lg];
-      const official = lg === 'Premier League' || ['La Liga','Bundesliga','Ligue 1'].includes(lg) || (lg === 'Serie A' && SA_OFFICIAL.includes(c.id));
+      const official = lg === 'Premier League' || lg === 'Serie A' || (['La Liga','Bundesliga','Ligue 1'].includes(lg) && c.id !== 'hamburg');
       return `<tr><td class="sp-mgr-club"><img src="${managerCrest(lg, c.id)}" alt="${official ? esc(c.name) + ' official club crest' : 'Abstract crest for ' + esc(c.name) + ' — BRYME-generated illustration'}" width="28" height="34" loading="lazy"><b>${esc(c.name)}</b></td><td>${c.manager ? '<b>' + esc(c.manager) + '</b>' : '<span class="sp-mgr-pending">Pending verification</span>'}</td><td>${badge(c.note)} <span class="sp-mgr-note">${esc(c.note || '')}</span></td></tr>`;
     }).join('');
     return `<h3 class="sp-dir">${esc(lg)}</h3><div class="sp-table-wrap"><table class="sp-table"><thead><tr><th>Club</th><th>Manager</th><th>Status / note</th></tr></thead><tbody>${rows}</tbody></table></div>`;
@@ -780,7 +780,7 @@ function managersPage(){
   const body = `<main class="shell"><div class="crumb"><a href="${url('/')}">Home</a> / <a href="${url('/sports/')}">BRYME Sports</a> / Managers</div>
     <section class="hero"><div class="eyebrow">⚽ Managers</div><h1>${esc(S.managers.title)}</h1><p class="lead">${esc(note)}</p></section>
     <p class="sp-updated">Last updated: ${esc('13 August 2026')}</p>
-    <div class="sp-credits"><b>Premier League club crests</b> © Copyright The Football Association Premier League Limited, 2016, used under the Premier League Logo Site media licence for editorial reporting. BRYME Sports is not affiliated with, endorsed or sponsored by the Premier League or any club. Crests for La Liga, Serie A, Bundesliga and Ligue 1 clubs are BRYME-generated abstract illustrations until official assets are licensed.</div>
+    <div class="sp-credits"><b>Premier League club crests</b> © Copyright The Football Association Premier League Limited, 2016, used under the Premier League Logo Site media licence for editorial reporting. BRYME Sports is not affiliated with, endorsed or sponsored by the Premier League or any club. Crests for La Liga (LaLiga), Serie A, Bundesliga (DFL) and Ligue 1 (LFP) clubs are © their respective clubs, retrieved from official league/club websites and Wikimedia Commons, and used solely for editorial reporting. Only Hamburger SV still shows a BRYME-generated abstract illustration.</div>
     <div class="sp-legend-line">${leagueOrder.filter(l => byLeague[l]).map(l => `<span class="sp-st-conf">${esc(l)}</span>`).join(' ')}</div>
     ${leagueBlocks}
     <section class="sp-related"><h2>Related</h2><div class="sp-rel-grid"><a class="sp-rel" href="${url('/sports/transfers/')}">Transfer trackers</a><a class="sp-rel" href="${url('/sports/premier-league/matchweek-1-preview/')}">Matchweek ${MW} Preview</a></div></section></main>`;
@@ -897,7 +897,7 @@ function buildPlTransferTracker(){
    verified data; the 2026/27 club composition must be confirmed. */
 /* Official crest constants shared by league trackers + managers page */
 const LL_NAME = { 'atletico-madrid':'atletico', 'athletic-bilbao':'athletic', 'real-betis':'betis', 'celta-vigo':'celta', 'rayo-vallecano':'rayo', 'deportivo':'deportivo', 'racing':'racing' };
-const SA_OFFICIAL = ['inter','torino','monza','lazio','venezia','roma','cagliari'];
+const SA_OFFICIAL = ['inter','milan','juventus','napoli','roma','lazio','atalanta','bologna','fiorentina','como','genoa','sassuolo','udinese','lecce','parma','frosinone','torino','monza','venezia','cagliari'];
 function buildLeagueTrackers(){
   const pathLg = path.join(root, 'content', 'league-transfers.json');
   let lgData = { leagues: [] };
@@ -910,13 +910,13 @@ function buildLeagueTrackers(){
     }
     if (league === 'ligue-1') return url('/assets/img/sports/l1/' + id + '.webp');
     if (league === 'serie-a') {
-      if (!SA_OFFICIAL.includes(id)) return url('/assets/img/sports/club-' + id + '.svg');
-      return url('/assets/img/sports/sa/' + id + '.' + (id === 'venezia' ? 'webp' : 'png'));
+      return url('/assets/img/sports/sa/' + id + (id === 'lazio' ? '.png' : '.svg'));
     }
     return url('/assets/img/sports/club-' + id + '.svg');
   }
   function crestAlt(league, id, name){
-    return league === 'premier-league' || ['la-liga','bundesliga','ligue-1'].includes(league) || (league === 'serie-a' && SA_OFFICIAL.includes(id))
+    if (league === 'bundesliga' && id === 'hamburg') return 'Abstract crest for ' + name + ' — BRYME-generated illustration';
+    return league === 'premier-league' || ['la-liga','bundesliga','ligue-1'].includes(league) || league === 'serie-a'
       ? name + ' official club crest' : 'Abstract crest for ' + name + ' — BRYME-generated illustration';
   }
   const CREDIT_LINES = {
@@ -924,7 +924,7 @@ function buildLeagueTrackers(){
     'la-liga': '<b>Club shields</b> © the respective clubs and LaLiga, obtained from the official LaLiga website (files.laliga.es) and used solely for editorial reporting on BRYME Sports. BRYME Sports is not affiliated with, endorsed or sponsored by LaLiga or any club.',
     'bundesliga': '<b>Club crests</b> © the respective clubs and the DFL, obtained from the official bundesliga.com website and used solely for editorial reporting on BRYME Sports. BRYME Sports is not affiliated with, endorsed or sponsored by the DFL/Bundesliga or any club. Crests may be resized for editorial presentation but are not altered.',
     'ligue-1': '<b>Club crests</b> © the respective clubs and the LFP, obtained from the official ligue1.com website (official marks) and used solely for editorial reporting on BRYME Sports. BRYME Sports is not affiliated with, endorsed or sponsored by the LFP/Ligue 1 or any club.',
-    'serie-a': '<b>Club crests</b> © the respective clubs, obtained from each club\'s official website and used solely for editorial reporting on BRYME Sports. Where an official asset could not be verified, a BRYME-generated abstract illustration is shown instead. BRYME Sports is not affiliated with, endorsed or sponsored by Lega Serie A or any club.'
+    'serie-a': '<b>Club crests</b> © the respective clubs, retrieved from Wikimedia Commons (Wikipedia) and official club websites, and used solely for editorial reporting on BRYME Sports. BRYME Sports is not affiliated with, endorsed or sponsored by Lega Serie A or any club.'
   };
   const imgUrl = id => url('/assets/img/sports/club-' + id + '.svg');
   const statusBadge = t => t === 'Loan' ? 'sp-st-conf' : (t === 'Free' ? 'sp-st-rep' : (t === 'Released' || t === 'Retired' || t === 'Departed' ? 'sp-st-rum' : 'sp-st-conf'));
@@ -932,7 +932,7 @@ function buildLeagueTrackers(){
   const rows = (list, kind) => list && list.length ? list.map(r => `<tr><td><b>${esc(r.player)}</b></td><td>${esc(r.from || r.to || '—')}</td><td>${esc(r.detail || '—')}</td><td><span class="${statusBadge(r.type)}">${esc(statusLabel(r.type))}</span></td></tr>`).join('')
     : `<tr class="sp-empty"><td colspan="4">No confirmed ${esc(kind)} listed yet — BRYME only lists transfers that are officially confirmed by a club or widely reported by credible outlets. Nothing is invented to fill this table.</td></tr>`;
   const clubCard = (c, lgId) => `<article class="sp-club" id="${esc(c.id)}">
-    <header class="sp-club-head"><img src="${crestUrl(lgId, c.id)}" alt="${crestAlt(lgId, c.id, c.name)}" width="64" height="77" loading="lazy"><div><h2>${esc(c.name)}</h2><p class="sp-club-man">Manager:</header>
+    <header class="sp-club-head"><img src="${crestUrl(lgId, c.id)}" alt="${crestAlt(lgId, c.id, c.name)}" width="64" height="77" loading="lazy"><div><h2>${esc(c.name)}</h2><p class="sp-club-man">Manager: <b>${esc(c.manager || 'Pending verification')}</b>${c.managerNote ? ' · ' + esc(c.managerNote) : ''}</p></div></header>
     <div class="sp-club-cols">
       <div class="sp-club-col"><h3>Players In</h3><div class="sp-table-wrap"><table class="sp-table"><thead><tr><th>Player</th><th>From</th><th>Transfer type / fee</th><th>Status</th></tr></thead><tbody>${rows(c.playersIn, 'arrivals')}</tbody></table></div></div>
       <div class="sp-club-col"><h3>Players Out</h3><div class="sp-table-wrap"><table class="sp-table"><thead><tr><th>Player</th><th>To</th><th>Transfer type / fee</th><th>Status</th></tr></thead><tbody>${rows(c.playersOut, 'departures')}</tbody></table></div></div>

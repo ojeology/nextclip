@@ -62,9 +62,9 @@ section('League transfer trackers');
     assert(/Truth first — nothing fabricated/.test(s), id + ': truth banner');
     assert((s.match(/class="sp-club"/g) || []).length === clubCount, id + ': ' + clubCount + ' club cards');
     const officialCrests = {
-      'la-liga': ['ll/', 20], 'bundesliga': ['bl/', 17], 'ligue-1': ['l1/', 18], 'serie-a': ['sa/', 7]
+      'la-liga': ['ll/', 20], 'bundesliga': ['bl/', 17], 'ligue-1': ['l1/', 18], 'serie-a': ['sa/', 20]
     }[id];
-    const abstractCrests = { 'la-liga': 0, 'bundesliga': 1, 'ligue-1': 0, 'serie-a': 13 }[id];
+    const abstractCrests = { 'la-liga': 0, 'bundesliga': 1, 'ligue-1': 0, 'serie-a': 0 }[id];
     const o = s.split('assets/img/sports/' + officialCrests[0]).length - 1;
     const a = s.split('assets/img/sports/club-').length - 1;
     assert(o === officialCrests[1], id + ': ' + officialCrests[1] + ' official crests (got ' + o + ')');
@@ -123,8 +123,8 @@ section('Managers');
   assert((s.match(/sports\/ll\/[a-z0-9-]+\.png/g) || []).length === 20, 'managers page: 20 official La Liga shields');
   assert((s.match(/sports\/bl\/[a-z0-9-]+\.svg/g) || []).length === 17, 'managers page: 17 official Bundesliga crests');
   assert((s.match(/sports\/l1\/[a-z0-9-]+\.webp/g) || []).length === 18, 'managers page: 18 official Ligue 1 crests');
-  assert((s.match(/sports\/sa\/[a-z0-9-]+\.(?:png|webp)/g) || []).length === 7, 'managers page: 7 official Serie A crests');
-  assert((s.match(/sports\/club-[a-z0-9-]+\.svg/g) || []).length === 14, 'managers page: 14 abstract crests (HSV + 13 Serie A)');
+  assert((s.match(/sports\/sa\/[a-z0-9-]+\.(?:png|svg)/g) || []).length === 20, 'managers page: 20 official Serie A crests');
+  assert((s.match(/sports\/club-[a-z0-9-]+\.svg/g) || []).length === 1, 'managers page: 1 abstract crest (HSV only)');
   assert(s.indexOf('© Copyright The Football Association Premier League Limited, 2016') > -1, 'managers page: PL copyright notice');
   assert((s.match(/sp-mgr-new/g) || []).length > 30, 'NEW manager badges present (' + (s.match(/sp-mgr-new/g) || []).length + ')');
   assert((s.match(/sp-mgr-keep/g) || []).length > 40, 'No-change badges present (' + (s.match(/sp-mgr-keep/g) || []).length + ')');
