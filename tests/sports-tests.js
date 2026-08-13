@@ -101,13 +101,21 @@ section('League transfer trackers');
   }
 }
 
-/* 3. Managers page */
+/* 3. Managers page (populated from the trackers) */
 section('Managers');
 {
   const s = read('sports/managers-2026-27/index.html');
   assert(/Managers In &amp; Out — 2026\/27/.test(s), 'managers title');
   for (const lg of ['Premier League', 'La Liga', 'Serie A', 'Bundesliga', 'Ligue 1']) assert(s.indexOf(lg) > -1, 'league section: ' + lg);
-  assert(/once confirmed by clubs/.test(s), 'confirmation-only note');
+  assert((s.match(/sp-mgr-club/g) || []).length === 96, 'all 96 clubs listed (got ' + (s.match(/sp-mgr-club/g) || []).length + ')');
+  assert((s.match(/sp-mgr-new/g) || []).length > 30, 'NEW manager badges present (' + (s.match(/sp-mgr-new/g) || []).length + ')');
+  assert((s.match(/sp-mgr-keep/g) || []).length > 40, 'No-change badges present (' + (s.match(/sp-mgr-keep/g) || []).length + ')');
+  assert(s.indexOf('Pending verification') === -1, 'zero pending managers');
+  for (const name of ['Mourinho', 'Kompany', 'Allegri', 'Xabi Alonso', 'Luis Enrique', 'Arteta', 'Demichelis', 'Génésio', 'Maresca']) {
+    assert(s.indexOf(name) > -1, 'manager present: ' + name);
+  }
+  assert(/Last updated: 13 August 2026/.test(s), 'managers last updated date');
+  assert(s.indexOf('NEXTCLIP') === -1, 'no NEXTCLIP literal');
 }
 
 /* 4. Editorial table */
@@ -182,7 +190,7 @@ section('Responsive CSS');
   const css = read('assets/site.css');
   assert(/@media\(max-width:640px\)\{\.sp-hero-track\{grid-auto-columns:calc\(100% - 40px\)\}/.test(css), 'mobile: one hero card at a time');
   assert(/@media\(max-width:1024px\)\{\.sp-hero-track\{grid-auto-columns:calc\(\(100% - 32px\)\/2\)\}/.test(css), 'tablet: two cards');
-  assert(/@media\(min-width:1440px\)\{\.sp-hero-track\{grid-auto-columns:calc\(\(100% - 64px\)\/5\)\}/.test(css), 'desktop: five cards');
+  assert(css.indexOf('@media(min-width:1440px){.sp-hero-track{grid-auto-columns:calc((100% - 64px)/5);grid-auto-flow:column}}') > -1, 'desktop: five cards, no overflow');
   assert(/\.sp-table\{[^}]*min-width:640px/.test(css), 'tables scroll horizontally instead of overflowing');
 }
 

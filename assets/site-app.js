@@ -542,14 +542,34 @@
     var spTrack = spHero.querySelector('.sp-hero-track');
     var spPrev = spHero.querySelector('[data-sp-hero-prev]');
     var spNext = spHero.querySelector('[data-sp-hero-next]');
+    var spCards = spHero.querySelectorAll('.sp-hero-card');
+    function spCanScroll() {
+      return spTrack && spTrack.scrollWidth > spTrack.clientWidth + 4;
+    }
+    function spUpdateArrows() {
+      if (!spPrev || !spNext) return;
+      var can = spCanScroll();
+      spPrev.style.display = can ? 'grid' : 'none';
+      spNext.style.display = can ? 'grid' : 'none';
+    }
     function spScroll(dir) {
-      if (!spTrack) return;
+      if (!spTrack || !spCanScroll()) return;
       var card = spTrack.querySelector('.sp-hero-card');
       var w = card ? card.getBoundingClientRect().width + 16 : spTrack.clientWidth * 0.8;
-      spTrack.scrollBy({ left: dir * w, behavior: 'smooth' });
+      var max = spTrack.scrollWidth - spTrack.clientWidth;
+      var target = spTrack.scrollLeft + dir * w;
+      if (target < 0) target = 0;
+      if (target > max) target = max;
+      spTrack.scrollTo({ left: target, behavior: 'smooth' });
     }
     if (spPrev) spPrev.addEventListener('click', function () { spScroll(-1); });
     if (spNext) spNext.addEventListener('click', function () { spScroll(1); });
+    // hide arrows when everything fits (desktop 5-card view)
+    spUpdateArrows();
+    if (typeof ResizeObserver !== 'undefined' && spTrack) {
+      new ResizeObserver(spUpdateArrows).observe(spTrack);
+    }
+    window.addEventListener('resize', spUpdateArrows);
   }
 
   /* ---------- homepage recommendation engine (catalogue-based) ---------- */
