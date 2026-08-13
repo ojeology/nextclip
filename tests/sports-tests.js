@@ -178,26 +178,106 @@ section('Article placeholders');
   }
 }
 
+/* 6b. Fixture data integrity (content/fixtures.json) */
+section('Fixture data integrity');
+{
+  const F = JSON.parse(read('content/fixtures.json'));
+  assert(F.matchweeks.length === 38, '38 matchweeks');
+  const all = F.matchweeks.flatMap(w => w.matches);
+  assert(all.length === 380, '380 matches total');
+  const cnt = {}, home = {};
+  const pairs = new Set();
+  for (const m of all) {
+    cnt[m.id] = (cnt[m.id] || 0) + 1; cnt[m.away] = (cnt[m.away] || 0) + 1;
+    home[m.id] = (home[m.id] || 0) + 1;
+    pairs.add(m.id + '>' + m.away);
+  }
+  assert(Object.keys(cnt).length === 20, '20 clubs');
+  assert(Object.values(cnt).every(v => v === 38), 'every club plays 38 games');
+  assert(Object.values(home).every(v => v === 19), 'every club has 19 home games');
+  assert(pairs.size === 380, 'each fixture pairing appears exactly once');
+  assert(F.matchweeks.every(w => w.matches.length === 10), '10 matches per matchweek');
+  assert(F.matchweeks[0].matches[0].homeName === 'Arsenal' && F.matchweeks[0].matches[0].awayName === 'Coventry City', 'MW1 opener: Arsenal v Coventry City');
+  assert(F.matchweeks[0].matches[0].time === '20:00' && F.matchweeks[0].matches[0].tv === 'Sky Sports', 'MW1 opener: official kickoff + TV');
+  assert(F.matchweeks[12].matches.every(m => m.time === '20:00'), 'midweek MW13 defaults to 20:00');
+  assert(F.matchweeks[18].matches.every(m => m.time === '15:00' || m.timePublished), 'MW19 (Sat 2 Jan 2027) weekend default 15:00');
+  assert(Object.keys(F.venues).length === 20, 'all 20 venues mapped');
+  assert(F.venues.arsenal.name === 'Emirates Stadium', 'Arsenal venue');
+  assert(F.venues['man-united'].capacity === 74500, 'Old Trafford capacity');
+  assert(F.sourceUrl.indexOf('premierleague.com') > -1, 'official source URL');
+}
+
 /* 7. Match centre + fixtures/results */
 section('Match centre, fixtures, results');
 {
   const mc = read('sports/premier-league/matches/index.html');
   assert(/Premier League Matchweek 1/.test(mc), 'match centre title');
-  assert(/No fixtures are shown before they are verified/.test(mc), 'no fabricated fixtures');
+  assert((mc.match(/class="sp-mc-card solid/g) || []).length === 10, 'match centre: 10 Matchweek 1 cards');
+  assert(/arsenal-vs-coventry\//.test(mc), 'match centre: links to Arsenal v Coventry page');
+  assert(/all 380 fixtures/.test(mc), 'match centre: full-season note');
   for (const sec of ['Match overview', 'Head-to-head record', 'Expected lineups', 'Tactical matchup', 'BRYME editorial outlook', 'Editorial score prediction', 'Post-match analysis']) {
-    assert(mc.indexOf(sec) > -1, 'match page section: ' + sec);
+    assert(mc.indexOf(sec) > -1, 'match page section listed: ' + sec);
   }
-  assert(read('sports/premier-league/fixtures/index.html').indexOf('kickoff times are confirmed') > -1, 'fixtures: verified-only note');
-  assert(read('sports/premier-league/results/index.html').indexOf('only after matches are actually played') > -1, 'results: no assumed results');
+
+  const fx = read('sports/premier-league/fixtures/index.html');
+  assert(/Premier League Fixtures 2026\/27/.test(fx), 'fixtures: title');
+  assert(/All 380 fixtures/.test(fx), 'fixtures: 380 matches stated');
+  assert(/Arsenal v Coventry City/.test(fx), 'fixtures: MW1 opener present');
+  assert(/Friday 21 August 2026/.test(fx), 'fixtures: opening date present');
+  assert(/Sunderland v Manchester City/.test(fx), 'fixtures: final-day fixture present');
+  assert(/Matchweek 38/.test(fx), 'fixtures: matchweek 38 present');
+  assert(/20:00/.test(fx) && /12:30/.test(fx) && /17:30/.test(fx), 'fixtures: published kickoff times present');
+  assert(/Sky Sports/.test(fx) && /TNT Sports/.test(fx), 'fixtures: TV selections present');
+  assert(/\(std\)/.test(fx) && /15:00/.test(fx), 'fixtures: standard-slot legend + 15:00 defaults');
+  assert(/premierleague\.com\/en\/news\/4675097/.test(fx), 'fixtures: official source cited');
+  assert(/subject to change/.test(fx), 'fixtures: subject-to-change note');
+  assert((fx.match(/class="sp-mwnav"/g) || []).length >= 1, 'fixtures: matchweek jump nav');
+  assert((fx.match(/class="sp-mw"/g) || []).length === 38, 'fixtures: 38 matchweek blocks');
+  assert((fx.match(/class="sp-fixture"/g) || []).length === 380, 'fixtures: 380 fixture rows');
+  assert(fx.indexOf('1-0') === -1 && fx.indexOf('0-1') === -1, 'fixtures: no scores anywhere');
+
+  const rs = read('sports/premier-league/results/index.html');
+  assert(/No matches played yet/.test(rs), 'results: honest empty state');
+  assert(/21 August 2026/.test(rs), 'results: season start date stated');
+  assert(/never predicted/.test(rs), 'results: no predicted results');
+  assert(/Upcoming — Matchweek 1/.test(rs), 'results: MW1 preview block');
+  assert(rs.indexOf('1-0') === -1 && rs.indexOf('0-1') === -1, 'results: no fabricated scores');
+
+  // per-match page
+  const mp = read('sports/premier-league/matches/arsenal-vs-coventry/index.html');
+  assert(/Arsenal v Coventry City/.test(mp), 'match page: title');
+  assert(/Emirates Stadium/.test(mp), 'match page: venue');
+  assert(/60,704/.test(mp), 'match page: venue capacity');
+  assert(/20:00 UK/.test(mp), 'match page: kickoff UK time');
+  assert(/Sky Sports/.test(mp), 'match page: TV');
+  assert(/Upcoming — not yet played/.test(mp), 'match page: honest status');
+  assert((mp.match(/class="sp-msec"/g) || []).length === 16, 'match page: 16 analysis sections');
+  assert(/Match result after the game/.test(mp) && /Post-match analysis/.test(mp), 'match page: post-match sections present');
+  assert(/EventScheduled/.test(mp), 'match page: JSON-LD scheduled event');
+  assert(/2026-08-21T20:00:00/.test(mp), 'match page: JSON-LD startDate with kickoff');
+  assert(mp.indexOf('1-0') === -1 && mp.indexOf('0-1') === -1, 'match page: no fabricated score');
+  // winter fixture: WAT shown (UK GMT -> Lagos +1); MW13 Wed 2 Dec 20:00 published
+  const wint = read('sports/premier-league/matches/tottenham-vs-fulham/index.html');
+  assert(/Matchweek 13/.test(wint), 'winter match page: matchweek 13 (2 Dec)');
+  assert(/20:00 UK · 21:00 WAT/.test(wint), 'winter match page: Lagos kickoff (UK+1)');
+  // all 380 match pages exist
+  const F = JSON.parse(read('content/fixtures.json'));
+  const slugs = F.matchweeks.flatMap(w => w.matches).map(m => 'sports/premier-league/matches/' + m.id + '-vs-' + m.away + '/index.html');
+  const missing = slugs.filter(p => !fs.existsSync(path.join(ROOT, p)));
+  assert(missing.length === 0, 'all 380 per-match pages generated' + (missing.length ? ' — missing: ' + missing.slice(0, 3).join(', ') : ''));
 }
 
 /* 8. Sitemap coverage + no stray unprefixed pages */
 section('Sitemap');
 {
   const sm = read('sitemap.xml');
-  for (const p of ['/sports/premier-league/matchweek-1-preview/', '/sports/fpl/gameweek-1/', '/sports/transfers/premier-league-2026-27/', '/sports/managers-2026-27/', '/sports/premier-league/table/', '/sports/premier-league/matches/']) {
+  for (const p of ['/sports/premier-league/matchweek-1-preview/', '/sports/fpl/gameweek-1/', '/sports/transfers/premier-league-2026-27/', '/sports/managers-2026-27/', '/sports/premier-league/table/', '/sports/premier-league/matches/', '/sports/premier-league/fixtures/', '/sports/premier-league/results/', '/sports/premier-league/matches/arsenal-vs-coventry/']) {
     assert(sm.indexOf('nextclip' + p) > -1, 'sitemap: ' + p);
   }
+  const F = JSON.parse(read('content/fixtures.json'));
+  const slugs = F.matchweeks.flatMap(w => w.matches).map(m => '/sports/premier-league/matches/' + m.id + '-vs-' + m.away + '/');
+  const inSm = slugs.filter(s => sm.indexOf('nextclip' + s) === -1);
+  assert(inSm.length === 0, 'sitemap: all 380 match pages included' + (inSm.length ? ' — missing ' + inSm.length : ''));
   assert(!/nextclip\/premier-league\//.test(sm), 'no unprefixed PL URLs in sitemap');
   assert(!/nextclip\/fpl\//.test(sm), 'no unprefixed FPL URLs in sitemap');
 }

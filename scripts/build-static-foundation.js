@@ -380,6 +380,7 @@ fs.writeFileSync(path.join(root,'assets/site.css'), css + '\n' + `/* Primary pla
 .sp-club-nav{display:flex;flex-wrap:wrap;gap:7px;margin:0 0 22px}.sp-club-nav a{font-size:12px;font-weight:700;border:1px solid var(--line);border-radius:16px;padding:5px 11px;color:var(--muted)}.sp-club-nav a:hover{color:#fff;border-color:var(--sports)}
 .sp-clubs{display:flex;flex-direction:column;gap:20px}.sp-club{border:1px solid var(--line);border-radius:12px;background:#101318;overflow:hidden}.sp-club-head{display:flex;gap:16px;align-items:center;padding:16px 20px;background:linear-gradient(90deg,#151a21,#101318)}.sp-club-head img{width:56px;height:67px;object-fit:contain;filter:drop-shadow(0 4px 10px rgba(0,0,0,.5))}.sp-club-head h2{font-size:22px;margin:0}.sp-club-man{font-size:13px;color:var(--muted);margin:3px 0 0}.sp-club-man b{color:var(--text)}.sp-club-cols{display:grid;grid-template-columns:1fr 1fr;gap:0}.sp-club-col{padding:6px 20px 18px}.sp-club-col h3{font-size:13px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:var(--sports);margin:12px 0 8px}.sp-club-col+.sp-club-col{border-left:1px solid var(--line)}.sp-club .sp-table{min-width:0}.sp-club-notes{font-size:13px;color:#c9ced4;line-height:1.65;border-top:1px solid var(--line);padding:14px 20px;margin:0}.sp-club-notes b{color:var(--gold)}.sp-rumours{margin:0 20px 12px;border:1px dashed rgba(231,187,92,.4);border-radius:8px;padding:12px 16px;font-size:13px}.sp-rumours b{color:#e7bb5c;display:block;margin-bottom:6px}.sp-rumours p{margin:3px 0;color:var(--muted)}
 .sp-window-note{margin:26px 0 0;font-size:13px;color:var(--muted);font-style:italic}.sp-signoff{margin:26px 0 8px;font-size:13px;color:var(--gold);font-weight:800}
+.sp-mw{border:1px solid var(--line);border-radius:10px;background:#101318;margin:0 0 18px;overflow:hidden}.sp-mw-head{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px;padding:12px 18px;background:linear-gradient(90deg,#151a21,#101318);border-bottom:1px solid var(--line)}.sp-mw-head h2{font-size:17px;margin:0}.sp-mw-date{font-size:12px;color:var(--muted);font-weight:700}.sp-fixture{display:grid;grid-template-columns:1fr auto;gap:4px 18px;align-items:center;padding:11px 18px;border-bottom:1px solid var(--line)}.sp-fixture:last-child{border-bottom:0}.sp-fixture:hover{background:#161b22}.sp-fixt{display:flex;flex-wrap:wrap;align-items:center;gap:10px;font-size:14.5px;font-weight:700}.sp-fixt img{width:22px;height:27px;object-fit:contain;filter:drop-shadow(0 2px 5px rgba(0,0,0,.5))}.sp-fixt .sp-vs{color:var(--muted);font-weight:400;font-size:12px}.sp-fixt a{color:var(--text)}.sp-fixt a:hover{color:var(--sports)}.sp-fixt-info{display:flex;flex-wrap:wrap;align-items:center;gap:10px;font-size:12px;color:var(--muted)}.sp-fixt-day{font-weight:800;color:#c9ced4}.sp-fixt-time{font-weight:800;color:var(--text)}.sp-std{font-size:10px;color:var(--muted);font-weight:700}.sp-tv{font-size:10.5px;font-weight:900;letter-spacing:.04em;padding:2px 8px;border-radius:11px;background:rgba(79,142,247,.14);color:#7fb0ff;border:1px solid rgba(79,142,247,.35)}.sp-tv.tnt{background:rgba(233,75,44,.12);color:#ff9d8a;border-color:rgba(233,75,44,.35)}.sp-matchlink{font-size:12px;font-weight:800;color:var(--sports)}.sp-matchlink:hover{text-decoration:underline}.sp-mwnav{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 18px}.sp-mwnav a{font-size:11.5px;font-weight:800;border:1px solid var(--line);border-radius:14px;padding:4px 9px;color:var(--muted)}.sp-mwnav a:hover{color:#fff;border-color:var(--sports)}.sp-fix-legend{font-size:12px;color:var(--muted);line-height:1.7;border:1px dashed var(--line);border-radius:8px;padding:12px 16px;margin:0 0 20px}.sp-match-hero{display:flex;gap:20px;align-items:center;flex-wrap:wrap;margin:10px 0 22px;padding:22px 24px;border:1px solid var(--line);border-radius:12px;background:linear-gradient(90deg,#151a21,#101318)}.sp-match-hero img{width:64px;height:77px;object-fit:contain;filter:drop-shadow(0 4px 10px rgba(0,0,0,.5))}.sp-match-hero .sp-mh-vs{font-size:18px;color:var(--muted);font-weight:800}.sp-match-hero h1{font-size:clamp(24px,4vw,36px);margin:0;line-height:1.05}.sp-match-meta{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:13px;color:var(--muted);margin:0 0 4px}.sp-match-meta b{color:var(--text)}.sp-pill{display:inline-block;font-size:11px;font-weight:900;letter-spacing:.05em;padding:3px 10px;border-radius:13px;background:rgba(61,220,132,.13);color:#3ddc84;border:1px solid rgba(61,220,132,.4);margin-right:6px}.sp-msec-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px;margin:14px 0 8px}.sp-msec{min-height:96px;border:1px dashed var(--line);border-radius:9px;padding:14px 16px;background:#0f1217;display:flex;flex-direction:column;gap:5px}.sp-msec b{font-size:13.5px;color:#d9dde1}.sp-msec p{font-size:12px;color:var(--muted);margin:0;line-height:1.5}.sp-msec .sp-pend{font-size:10.5px;font-weight:900;letter-spacing:.06em;color:var(--gold);text-transform:uppercase}.sp-mc-card.solid{border:1px solid var(--line);border-style:solid;background:linear-gradient(180deg,#14181f,#101318)}.sp-mc-card a.sp-mc-go{font-size:12px;font-weight:800;color:var(--sports);text-decoration:none;margin-top:8px}.sp-mc-card a.sp-mc-go:hover{text-decoration:underline}.sp-mc-crests{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:10px}.sp-mc-crests img{width:30px;height:36px;object-fit:contain;filter:drop-shadow(0 2px 6px rgba(0,0,0,.5))}.sp-mc-crests .sp-vs{color:var(--muted);font-size:11px;font-weight:800}
 @media(max-width:760px){.sp-club-cols{grid-template-columns:1fr}.sp-club-col+.sp-club-col{border-left:0;border-top:1px solid var(--line)}.sp-club-head{padding:14px 16px}.sp-club-head h2{font-size:19px}.sp-club .sp-table{min-width:430px}.sp-live{padding:14px 16px}}
 .sp-gw-sec{padding:16px 0;border-bottom:1px solid var(--line)}.sp-gw-sec h2{font-size:19px;margin:0 0 6px}.sp-empty-line{color:var(--muted);font-size:13.5px}
 @media(max-width:1024px){.sp-hero-track{grid-auto-columns:calc((100% - 32px)/2)}}@media(min-width:1025px) and (max-width:1439px){.sp-hero{max-width:1180px;margin-left:auto;margin-right:auto}}
@@ -813,25 +814,111 @@ function fplHub(){
 }
 /* --- fixtures / results --- */
 function fixturesResults(){
-  const make = (slug, title, eyebrow, note) => {
-    const crumbs = [{name:'Home', path:'/'}, {name:'BRYME Sports', path:'/sports/'}, {name:'Premier League', path:'/sports/premier-league/'}, {name:title, path:'/sports/premier-league/' + slug + '/'}];
-    const body = `<main class="shell"><div class="crumb"><a href="${url('/')}">Home</a> / <a href="${url('/sports/')}">BRYME Sports</a> / <a href="${url('/sports/premier-league/')}">Premier League</a> / ${esc(title)}</div>
-      <section class="hero"><div class="eyebrow">⚽ Premier League · ${esc(eyebrow)}</div><h1>${esc(title)}</h1><p class="lead">${esc(note)}</p></section>
-      <div class="vstate"><b>No verified entries to display yet</b><p>Fixtures appear here once the official fixture list and kickoff times are confirmed. Results appear only after matches are actually played. Nothing is shown before it is verified.</p></div>
-      <section class="sp-related"><h2>Related</h2><div class="sp-rel-grid"><a class="sp-rel" href="${url('/sports/premier-league/table/')}">Table</a><a class="sp-rel" href="${url('/sports/premier-league/matches/')}">Match Centre</a><a class="sp-rel" href="${url('/sports/premier-league/matchweek-1-preview/')}">Matchweek ${MW}</a></div></section></main>`;
-    write('sports/premier-league/' + slug, layout({ title: title + ' | BRYME Sports', description: note, path: '/sports/premier-league/' + slug + '/', activeNav: 'sports', schema: [{ '@context':'https://schema.org', '@type':'CollectionPage', name: title, url: url('/sports/premier-league/' + slug + '/') }, breadcrumbs(crumbs)], body }));
+  const F = (() => { try { return JSON.parse(fs.readFileSync(path.join(root, 'content', 'fixtures.json'), 'utf8')); } catch (e) { warnings.push('fixtures.json unreadable'); return { matchweeks: [], venues: {} }; } })();
+  const crest = id => url('/assets/img/sports/pl/' + id + '.svg');
+  const fTv = (m, mark) => m.tv ? `<span class="sp-tv${(m.tv || '').toLowerCase().indexOf('tnt') > -1 ? ' tnt' : ''}">${esc(m.tv)}${mark}</span>` : '';
+  const dayFmt = label => {
+    const m = label.match(/^(\w+)\s+(\d{1,2})\s+(\w+)(?:\s+(\d{4}))?/);
+    if (!m) return esc(label);
+    const year = m[4] ? ' ' + m[4] : '';
+    return esc(m[1] + ' ' + m[2] + ' ' + m[3]) + `<span class="sp-std">${esc(year)}</span>`;
   };
-  make('fixtures', 'Premier League Fixtures', 'Fixtures', 'Upcoming Premier League fixtures, easy to browse. Fixture lists are added once confirmed with official kickoff times.');
-  make('results', 'Premier League Results', 'Results', 'Completed Premier League match results. Results appear only after matches are actually played — never predicted or assumed.');
+  const timeFmt = m => m.timePublished
+    ? `<span class="sp-fixt-time">${esc(m.time)}</span><span class="sp-std">UK</span>`
+    : `<span class="sp-fixt-time">${esc(m.time)}</span><span class="sp-std">UK · std</span>`;
+  const fixtureRow = m => `<div class="sp-fixture" aria-label="${esc(m.homeName)} v ${esc(m.awayName)}">
+      <div class="sp-fixt"><span class="sp-fixt-day">${dayFmt(m.dayLabel)}</span><img src="${crest(m.id)}" alt="" width="22" height="27" loading="lazy"><a href="${url('/sports/premier-league/matches/' + m.id + '-vs-' + m.away + '/')}">${esc(m.homeName)}</a><span class="sp-vs">v</span><img src="${crest(m.away)}" alt="" width="22" height="27" loading="lazy"><a href="${url('/sports/premier-league/matches/' + m.id + '-vs-' + m.away + '/')}">${esc(m.awayName)}</a></div>
+      <div class="sp-fixt-info">${timeFmt(m)}${fTv(m, m.tvMark)}<a class="sp-matchlink" href="${url('/sports/premier-league/matches/' + m.id + '-vs-' + m.away + '/')}">Match page →</a></div>
+    </div>`;
+  const mwBlocks = (F.matchweeks || []).map(w => {
+    const days = [...new Set(w.matches.map(m => m.dayLabel))];
+    return `<section class="sp-mw" id="mw-${w.number}"><div class="sp-mw-head"><h2>Matchweek ${w.number}</h2><span class="sp-mw-date">${esc(days.join(' · '))}</span></div>${w.matches.map(fixtureRow).join('')}</section>`;
+  }).join('');
+  const crumbsF = [{name:'Home', path:'/'}, {name:'BRYME Sports', path:'/sports/'}, {name:'Premier League', path:'/sports/premier-league/'}, {name:'Fixtures', path:'/sports/premier-league/fixtures/'}];
+  const bodyF = `<main class="shell"><div class="crumb"><a href="${url('/')}">Home</a> / <a href="${url('/sports/')}">BRYME Sports</a> / <a href="${url('/sports/premier-league/')}">Premier League</a> / Fixtures</div>
+    <section class="hero"><div class="eyebrow">⚽ Premier League · Fixtures</div><h1>Premier League Fixtures 2026/27</h1><p class="lead">All 380 fixtures of the 2026/27 Premier League season, exactly as published by the Premier League on 19 June 2026. Kick-off times in UK time; every fixture has its own match page.</p></section>
+    <p class="sp-updated">Last updated: ${esc(F.lastUpdated || 'Pending verification')}</p>
+    <div class="sp-truth"><b>Truth first.</b><p>This is the official fixture list released by the Premier League — no dates, teams or kickoff times have been invented. ${esc(F.subjectToChange)}</p></div>
+    <div class="sp-fix-legend"><b>Kick-off times</b> are UK time as published by the Premier League. <b>(std)</b> marks the league's standard slot — 15:00 on weekend/Bank Holiday dates and 20:00 midweek — where the Premier League did not publish a specific time. ${esc(F.kickoffNote)}</div>
+    <nav class="sp-mwnav" aria-label="Jump to matchweek">${(F.matchweeks || []).map(w => `<a href="#mw-${w.number}">MW ${w.number}</a>`).join('')}</nav>
+    ${mwBlocks}
+    ${(F.footnotes && F.footnotes.length) ? `<div class="sp-fix-legend"><b>Fixture notes</b><br>${F.footnotes.map(n => '• ' + esc(n)).join('<br>')}</div>` : ''}
+    <section class="sp-source"><h2>Source</h2><p><b>Source:</b> Official Premier League fixture release — ${esc(F.source)}, via <a href="${esc(F.sourceUrl)}" rel="nofollow noopener">premierleague.com</a>. Fixtures: 380 matches across 38 matchweeks, 21 August 2026 – 30 May 2027.</p><p class="sp-source-note">Kick-off times and broadcast selections are those published by the Premier League and may change (TV selections are confirmed by the league's broadcasters). BRYME only lists officially published fixtures — nothing is invented or assumed. Results are never shown before a match is played.</p></section>
+    <section class="sp-related"><h2>Related</h2><div class="sp-rel-grid"><a class="sp-rel" href="${url('/sports/premier-league/results/')}">Results</a><a class="sp-rel" href="${url('/sports/premier-league/matches/')}">Match Centre</a><a class="sp-rel" href="${url('/sports/premier-league/table/')}">Table</a><a class="sp-rel" href="${url('/sports/transfers/premier-league-2026-27/')}">Transfers</a></div></section></main>`;
+  write('sports/premier-league/fixtures', layout({ title: 'Premier League Fixtures 2026/27: All 380 Matches | BRYME Sports', description: 'Complete Premier League 2026/27 fixture list — all 380 matches across 38 matchweeks with dates, kick-off times (UK) and TV selections, from the official Premier League release. Nothing invented.', path: '/sports/premier-league/fixtures/', activeNav: 'sports', schema: [{ '@context':'https://schema.org', '@type':'CollectionPage', name: 'Premier League Fixtures 2026/27', description: 'All 380 Premier League 2026/27 fixtures as published by the Premier League.', url: url('/sports/premier-league/fixtures/') }, breadcrumbs(crumbsF)], body: bodyF }));
+  const crumbsR = [{name:'Home', path:'/'}, {name:'BRYME Sports', path:'/sports/'}, {name:'Premier League', path:'/sports/premier-league/'}, {name:'Results', path:'/sports/premier-league/results/'}];
+  const mw1 = (F.matchweeks && F.matchweeks[0] && F.matchweeks[0].matches) || [];
+  const nextBlock = mw1.length ? `<h3 class="sp-dir">Upcoming — Matchweek 1 (21–24 August 2026)</h3><div class="sp-table-wrap"><table class="sp-table"><thead><tr><th>Date</th><th>Fixture</th><th>Kickoff (UK)</th><th>TV</th></tr></thead><tbody>${mw1.map(m => `<tr><td>${esc(m.dayLabel)}</td><td><b>${esc(m.homeName)}</b> v <b>${esc(m.awayName)}</b></td><td>${esc(m.time)}</td><td>${esc(m.tv || '—')}</td></tr>`).join('')}</tbody></table></div>` : '';
+  const bodyR = `<main class="shell"><div class="crumb"><a href="${url('/')}">Home</a> / <a href="${url('/sports/')}">BRYME Sports</a> / <a href="${url('/sports/premier-league/')}">Premier League</a> / Results</div>
+    <section class="hero"><div class="eyebrow">⚽ Premier League · Results</div><h1>Premier League Results 2026/27</h1><p class="lead">Completed Premier League match results. Results appear only after matches are actually played and officially confirmed — never predicted or assumed.</p></section>
+    <p class="sp-updated">Last updated: ${esc(F.lastUpdated || 'Pending verification')}</p>
+    <div class="vstate"><b>No matches played yet</b><p>The 2026/27 Premier League season starts on Friday 21 August 2026, so as of ${esc(F.lastUpdated || 'today')} no league fixtures have been played and there are no results to show. When matches are played, the official result, scorers and match data are added here after full-time — verified only.</p></div>
+    ${nextBlock}
+    <div class="sp-truth"><b>Truth first.</b><p>BRYME never publishes a result, scoreline or scorer before a match is played and the outcome is confirmed by the club or official league channels. If a result cannot be verified, it is not shown.</p></div>
+    <section class="sp-related"><h2>Related</h2><div class="sp-rel-grid"><a class="sp-rel" href="${url('/sports/premier-league/fixtures/')}">Fixtures</a><a class="sp-rel" href="${url('/sports/premier-league/matches/')}">Match Centre</a><a class="sp-rel" href="${url('/sports/premier-league/table/')}">Table</a><a class="sp-rel" href="${url('/sports/transfers/premier-league-2026-27/')}">Transfers</a></div></section></main>`;
+  write('sports/premier-league/results', layout({ title: 'Premier League Results 2026/27 | BRYME Sports', description: 'Premier League 2026/27 results — only official, verified match results after matches are played. No results are predicted or assumed.', path: '/sports/premier-league/results/', activeNav: 'sports', schema: [{ '@context':'https://schema.org', '@type':'CollectionPage', name: 'Premier League Results 2026/27', url: url('/sports/premier-league/results/') }, breadcrumbs(crumbsR)], body: bodyR }));
+  return F;
 }
-/* --- match centre + match page template --- */
-function matchCentre(){
+/* --- match centre + per-match pages (all 380 fixtures) --- */
+let matchPagePaths = [];
+function matchCentre(F){
+  const crest = id => url('/assets/img/sports/pl/' + id + '.svg');
+  const slug = (m) => m.id + '-vs-' + m.away;
+  const matchUrl = m => url('/sports/premier-league/matches/' + slug(m) + '/');
+  const ukOffset = (dateISO) => {
+    const y = Number(dateISO.slice(0, 4));
+    let start = new Date(Date.UTC(y, 2, 31)); while (start.getUTCDay() !== 0) start.setUTCDate(start.getUTCDate() - 1);
+    let end = new Date(Date.UTC(y, 9, 31)); while (end.getUTCDay() !== 0) end.setUTCDate(end.getUTCDate() - 1);
+    const t = Date.parse(dateISO + 'T12:00:00Z');
+    return (t >= start.getTime() && t < end.getTime()) ? 1 : 0;
+  };
+  const watTime = (time, off) => {
+    const [h, mnt] = time.split(':').map(Number);
+    let w = h + off; if (w >= 24) w -= 24;
+    return String(w).padStart(2, '0') + ':' + String(mnt).padStart(2, '0');
+  };
+  const venue = (id) => (F.venues || {})[id];
+
+  // --- per-match pages ---
+  (F.matchweeks || []).forEach(w => w.matches.forEach(m => {
+    const mwNum = w.number, v = venue(m.id) || {};
+    const off = ukOffset(m.date);
+    const sections = (S.matchCentre.matchPageSections || []).map(s => {
+      const isPost = /result after the game|post-match/i.test(s);
+      return `<div class="sp-msec"><span class="sp-pend">${isPost ? 'After full-time' : 'Pending verification'}</span><b>${esc(s)}</b><p>${isPost ? 'This section is written after the match, once the result is officially confirmed.' : 'Filled in with verified data only — never predicted or fabricated.'}</p></div>`;
+    }).join('');
+    const crumbs = [{name:'Home', path:'/'}, {name:'BRYME Sports', path:'/sports/'}, {name:'Premier League', path:'/sports/premier-league/'}, {name:'Match Centre', path:'/sports/premier-league/matches/'}, {name:m.homeName + ' v ' + m.awayName, path:'/sports/premier-league/matches/' + slug(m) + '/'}];
+    const body = `<main class="shell"><div class="crumb"><a href="${url('/')}">Home</a> / <a href="${url('/sports/')}">BRYME Sports</a> / <a href="${url('/sports/premier-league/')}">Premier League</a> / <a href="${url('/sports/premier-league/matches/')}">Match Centre</a> / ${esc(m.homeName)} v ${esc(m.awayName)}</div>
+      <section class="hero"><div class="eyebrow">⚽ Premier League ${SEASON} · Matchweek ${mwNum}</div><h1>${esc(m.homeName)} v ${esc(m.awayName)}</h1></section>
+      <div class="sp-match-hero"><img src="${crest(m.id)}" alt="${esc(m.homeName)} official club crest" width="64" height="77"><span class="sp-mh-vs">v</span><img src="${crest(m.away)}" alt="${esc(m.awayName)} official club crest" width="64" height="77"><div><span class="sp-pill">Upcoming — not yet played</span><h1 style="margin-top:6px">${esc(m.homeName)} v ${esc(m.awayName)}</h1><p class="sp-match-meta"><span><b>Date:</b> ${esc(m.dayLabel)}</span><span><b>Kickoff:</b> ${esc(m.time)} UK${off === 1 ? '' : ' · ' + esc(watTime(m.time, 1)) + ' WAT'}</span>${m.tv ? `<span><b>TV:</b> ${esc(m.tv)}</span>` : ''}<span><b>Venue:</b> ${esc(v.name || 'TBC')}${v.capacity ? ' · ' + esc(v.capacity.toLocaleString('en-GB')) : ''}</span></p></div></div>
+      <div class="sp-truth"><b>Truth first.</b><p>This match has not been played yet — there is no result, scoreline, lineup or statistic to report. Every section below is filled only with verified data as it becomes available (lineups at kickoff, result after full-time). BRYME never predicts scores or fabricates match details.</p></div>
+      <h3 class="sp-dir">Match analysis sections</h3>
+      <div class="sp-msec-grid">${sections}</div>
+      <section class="sp-related"><h2>Related</h2><div class="sp-rel-grid"><a class="sp-rel" href="${url('/sports/premier-league/fixtures/')}">Fixtures</a><a class="sp-rel" href="${url('/sports/premier-league/results/')}">Results</a><a class="sp-rel" href="${url('/sports/premier-league/table/')}">Table</a><a class="sp-rel" href="${url('/sports/premier-league/')}">Premier League hub</a></div></section></main>`;
+    const isoStart = m.date + 'T' + m.time + ':00' + (off === 1 ? '+01:00' : '+00:00');
+    write('sports/premier-league/matches/' + slug(m), layout({
+      title: m.homeName + ' v ' + m.awayName + ' — Matchweek ' + mwNum + ' · Premier League ' + SEASON + ' | BRYME Sports',
+      description: m.homeName + ' v ' + m.awayName + ', ' + SEASON + ' Premier League Matchweek ' + mwNum + ' — ' + m.dayLabel + ', ' + m.time + ' UK' + (m.tv ? ' on ' + m.tv : '') + ' at ' + (v.name || 'TBC') + '. Match analysis sections appear once verified; no results are predicted.',
+      path: '/sports/premier-league/matches/' + slug(m) + '/', activeNav: 'sports',
+      schema: [{ '@context':'https://schema.org', '@type':'SportsEvent', name: m.homeName + ' v ' + m.awayName, startDate: isoStart, eventStatus: 'https://schema.org/EventScheduled', eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode', location: { '@type':'Place', name: v.name || 'TBC' }, homeTeam: { '@type':'SportsTeam', name: m.homeName }, awayTeam: { '@type':'SportsTeam', name: m.awayName }, url: matchUrl(m) }, breadcrumbs(crumbs)],
+      body
+    }));
+    matchPagePaths.push('/sports/premier-league/matches/' + slug(m) + '/');
+  }));
+
+  // --- match centre hub page ---
+  const mw1 = (F.matchweeks && F.matchweeks[0]) || { number: 1, matches: [] };
+  const cards = mw1.matches.map(m => `<div class="sp-mc-card solid" aria-label="${esc(m.homeName)} v ${esc(m.awayName)} — ${esc(m.dayLabel)}, ${esc(m.time)} UK"><div class="sp-mc-crests"><img src="${crest(m.id)}" alt="" width="30" height="36"><span class="sp-vs">v</span><img src="${crest(m.away)}" alt="" width="30" height="36"></div><b>${esc(m.homeName)} v ${esc(m.awayName)}</b><p>${esc(m.dayLabel)} · ${esc(m.time)} UK${m.tv ? ' · ' + esc(m.tv) : ''}</p><a class="sp-mc-go" href="${matchUrl(m)}">Match page →</a></div>`).join('');
   const crumbs = [{name:'Home', path:'/'}, {name:'BRYME Sports', path:'/sports/'}, {name:'Premier League', path:'/sports/premier-league/'}, {name:S.matchCentre.title, path:'/sports/premier-league/matches/'}];
   const body = `<main class="shell"><div class="crumb"><a href="${url('/')}">Home</a> / <a href="${url('/sports/')}">BRYME Sports</a> / <a href="${url('/sports/premier-league/')}">Premier League</a> / ${esc(S.matchCentre.title)}</div>
     <section class="hero"><div class="eyebrow">⚽ Premier League · Match Centre</div><h1>${esc(S.matchCentre.title)}</h1><p class="lead">${esc(S.matchCentre.note)}</p></section>
-    <div class="sp-mc-grid">${[1, 2, 3].map(n => `<div class="sp-mc-card sp-mc-empty"><b>Match ${n}</b><p>Fixture card — teams, kickoff and link to the match-analysis page appear once confirmed.</p></div>`).join('')}</div>
+    <p class="sp-updated">Last updated: ${esc(F.lastUpdated || 'Pending verification')}</p>
+    <div class="sp-truth"><b>Truth first.</b><p>Every one of the 380 fixtures in the ${SEASON} season has its own match page with the officially published kickoff date, time and venue. Match analysis sections (lineups, injuries, form, result, post-match) are filled in only with verified data — never predicted or fabricated.</p></div>
+    <h3 class="sp-dir">Matchweek ${mw1.number} — ${esc([...new Set(mw1.matches.map(x => x.dayLabel))].join(' · '))}</h3>
+    <div class="sp-mc-grid">${cards}</div>
+    <p class="sp-freq-note">Looking for the whole season? See <a href="${url('/sports/premier-league/fixtures/')}">all 380 fixtures across 38 matchweeks</a>.</p>
     <section class="sp-related"><h2>Match page sections</h2><p class="sp-source-note">Every match gets its own analysis page at /sports/premier-league/matches/[team-a]-vs-[team-b]/ with:</p><div class="sp-rel-grid">${S.matchCentre.matchPageSections.map(s => `<span class="sp-rel sp-rel-static">${esc(s)}</span>`).join('')}</div></section>
-    <section class="sp-related"><h2>Related</h2><div class="sp-rel-grid"><a class="sp-rel" href="${url('/sports/premier-league/fixtures/')}">Fixtures</a><a class="sp-rel" href="${url('/sports/premier-league/table/')}">Table</a><a class="sp-rel" href="${url('/sports/premier-league/matchweek-1-preview/')}">Matchweek ${MW} Preview</a></div></section></main>`;
+    <section class="sp-related"><h2>Related</h2><div class="sp-rel-grid"><a class="sp-rel" href="${url('/sports/premier-league/fixtures/')}">Fixtures</a><a class="sp-rel" href="${url('/sports/premier-league/results/')}">Results</a><a class="sp-rel" href="${url('/sports/premier-league/table/')}">Table</a><a class="sp-rel" href="${url('/sports/premier-league/matchweek-1-preview/')}">Matchweek ${MW} Preview</a></div></section></main>`;
   write('sports/premier-league/matches', layout({ title: S.matchCentre.title + ' | BRYME Sports', description: S.matchCentre.note, path: '/sports/premier-league/matches/', activeNav: 'sports', schema: [{ '@context':'https://schema.org', '@type':'CollectionPage', name: S.matchCentre.title, url: url('/sports/premier-league/matches/') }, breadcrumbs(crumbs)], body }));
 }
 /* --- PL hub: hero carousel + links --- */
@@ -968,7 +1055,7 @@ function buildLeagueTrackers(){
 /* --- execute --- */
 (S.articlePlaceholders || []).forEach(sportArticlePlaceholder);
 buildPlTransferTracker(); buildLeagueTrackers();
-transfersHub(); managersPage(); editorialTablePage(); fplHub(); fixturesResults(); matchCentre(); plHub();
+transfersHub(); managersPage(); editorialTablePage(); fplHub(); const FIX = fixturesResults(); matchCentre(FIX); plHub();
 // cleanup any stray non-prefixed sports pages (from earlier builds)
 for (const stray of ['premier-league', 'fpl']) {
   if (fs.existsSync(path.join(root, stray)) && !['premier-league', 'fpl'].includes(stray)) {}
@@ -1499,7 +1586,7 @@ for (const page of legalPages) {
 const genrePaths = typeConfig.flatMap(t => [...genreIndexByType[t.dir].keys()].map(s => `/${t.pageDir}/${s}/`));
 const legalPaths = legalPages.map(p => '/' + p.dir + '/');
 const verticalPaths = ['/entertainment/'].concat(VERTICALS.flatMap(v => ['/' + v.dir + '/'].concat((v.categories || []).map(c => '/' + v.dir + '/' + c.slug + '/'))));
-const paths = ['/','/movies/','/series/','/anime/','/trending/','/genres/','/years/','/topics/','/articles/', ...legalPaths, ...verticalPaths, ...sportsExtraPaths, ...genrePaths, ...movies.map(m => `/${m.typeDir || 'movie'}/${m.slug}/`), ...[...yearMap.keys()].map(y => `/year/${y}/`), ...[...seriesYearMap.keys()].map(y => `/series/${y}/`), ...[...animeYearMap.keys()].map(y => `/anime/${y}/`), ...articles.map(a => `/article/${a.slug}/`), ...topics.map(t => `/topic/${t.slug}/`), ...[...articleCategoryMap.keys()].map(s => `/articles/${s}/`)];
+const paths = ['/','/movies/','/series/','/anime/','/trending/','/genres/','/years/','/topics/','/articles/', ...legalPaths, ...verticalPaths, ...sportsExtraPaths, ...matchPagePaths, ...genrePaths, ...movies.map(m => `/${m.typeDir || 'movie'}/${m.slug}/`), ...[...yearMap.keys()].map(y => `/year/${y}/`), ...[...seriesYearMap.keys()].map(y => `/series/${y}/`), ...[...animeYearMap.keys()].map(y => `/anime/${y}/`), ...articles.map(a => `/article/${a.slug}/`), ...topics.map(t => `/topic/${t.slug}/`), ...[...articleCategoryMap.keys()].map(s => `/articles/${s}/`)];
 fs.writeFileSync(path.join(root, '404.html'), layout({
   title: 'Page not found', description: 'This page is not available on BRYME.', path: '/404.html', noindex: true,
   body: `<main class="shell"><section class="hero"><div class="eyebrow">404</div><h1>Looks like this one disappeared.</h1><p class="lead">Try searching the catalogue, or browse a single content type.</p><p><a class="cta" href="${url('/search/')}">Search everything</a> <a class="quiet-link" href="${url('/movies/')}">Movies</a> <a class="quiet-link" href="${url('/series/')}">Series</a> <a class="quiet-link" href="${url('/anime/')}">Anime</a> <a class="quiet-link" href="${url('/articles/')}">Latest articles</a></p></section></main>`
