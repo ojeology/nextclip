@@ -1,6 +1,6 @@
 # NEXTCLIP catalogue & frontend report
 
-Generated: 2026-08-13T04:55:38.836Z
+Generated: 2026-08-13T04:59:46.215Z
 
 ## Catalogue
 - Total titles: **632**
@@ -8,8 +8,8 @@ Generated: 2026-08-13T04:55:38.836Z
 - Series: **81**
 - Anime: **74**
 - Unclassified / ambiguous type: **0**
-- With verified trailers: **600**
-- Without trailers: **32**
+- With verified trailers: **602**
+- Without trailers: **30**
 - With editorial ratings: **127**
 - With country data: **455** / language: **455**
 
@@ -33,11 +33,11 @@ Generated: 2026-08-13T04:55:38.836Z
 - Future: Trending Score = recent engagement + growth rate + searches + clicks + recency, once real analytics exist
 
 ## Trailer system
-- Official trailers: **568**
+- Official trailers: **570**
 - Official teasers: **14**
 - Official clips: **1**
 - Community/fan-made fallbacks (labelled): **17**
-- No verified trailer: **32**
+- No verified trailer: **30**
 - Broken/unavailable detected: **0**
 - Priority: official-trailer > official-teaser > official-clip > fan-made > unavailable
 - Fan-made videos are labelled "Community trailer" with a disclaimer; never "Official Trailer".
