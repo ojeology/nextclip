@@ -379,4 +379,218 @@
       if (init) { qEl.value = init; render(); }
     } catch (e) {}
   }
+
+  /* ---------- homepage hero carousel ---------- */
+  var heroEl = document.querySelector('[data-hero]');
+  if (heroEl) {
+    var slides = Array.prototype.slice.call(heroEl.querySelectorAll('[data-slide]'));
+    var dots = Array.prototype.slice.call(heroEl.querySelectorAll('[data-hero-dot]'));
+    var prevBtn = heroEl.querySelector('[data-hero-prev]');
+    var nextBtn = heroEl.querySelector('[data-hero-next]');
+    var muteBtn = heroEl.querySelector('[data-hero-mute]');
+    var pauseBtn = heroEl.querySelector('[data-hero-pause]');
+    var videoBox = heroEl.querySelector('[data-hero-video]');
+    var idx = 0, timer = null, videoTimer = null, playing = false, userPaused = false, heroVisible = true, muted = true;
+    var interval = parseInt(heroEl.getAttribute('data-interval') || '8000', 10);
+
+    function clearHeroTimers() { if (timer) { clearTimeout(timer); timer = null; } if (videoTimer) { clearTimeout(videoTimer); videoTimer = null; } }
+    function heroOrigin() { try { if (/^https?:\/\//i.test(window.location.origin || '')) return '&origin=' + encodeURIComponent(window.location.origin); } catch (e) {} return ''; }
+    function hideHeroVideo() {
+      if (videoBox) { videoBox.hidden = true; videoBox.innerHTML = ''; }
+      if (muteBtn) muteBtn.hidden = true;
+      if (pauseBtn) pauseBtn.hidden = false;
+      playing = false;
+    }
+    function stopHeroVideo() { hideHeroVideo(); }
+    function loadHeroVideo(withSound) {
+      var s = slides[idx];
+      if (!s) return;
+      var vid = s.getAttribute('data-video');
+      if (!vid) return;
+      stopHeroVideo();
+      videoBox.hidden = false;
+      if (muteBtn) { muteBtn.hidden = false; muteBtn.textContent = withSound ? '🔊' : '🔇'; muteBtn.setAttribute('aria-label', withSound ? 'Mute trailer' : 'Unmute trailer'); }
+      if (pauseBtn) pauseBtn.hidden = false;
+      var iframe = document.createElement('iframe');
+      iframe.src = 'https://www.youtube-nocookie.com/embed/' + vid + '?autoplay=1&mute=' + (withSound ? 0 : 1) + '&playsinline=1&loop=1&playlist=' + vid + '&rel=0&modestbranding=1&enablejsapi=1' + heroOrigin();
+      iframe.setAttribute('allow', 'autoplay; encrypted-media; picture-in-picture');
+      iframe.setAttribute('allowfullscreen', '');
+      iframe.title = s.getAttribute('data-title') + ' trailer';
+      videoBox.innerHTML = '';
+      videoBox.appendChild(iframe);
+      playing = false;
+      muted = !withSound;
+      // watchdog: if the player never confirms playback (autoplay blocked), fall back to the poster
+      videoTimer = setTimeout(function () { if (!playing) { hideHeroVideo(); } }, 5000);
+      // advance window while a video is playing
+      videoTimer = setTimeout(function () { if (playing) { nextSlide(); } }, 12000);
+    }
+    function scheduleHero() {
+      clearHeroTimers();
+      if (!heroVisible || userPaused) return;
+      timer = setTimeout(function () {
+        if (playing) { scheduleHero(); return; }
+        nextSlide();
+      }, interval);
+    }
+    function setSlide(i) {
+      clearHeroTimers();
+      stopHeroVideo();
+      idx = ((i % slides.length) + slides.length) % slides.length;
+      slides.forEach(function (sl, k) { sl.classList.toggle('is-active', k === idx); });
+      dots.forEach(function (d, k) { d.classList.toggle('is-active', k === idx); d.setAttribute('aria-selected', k === idx); });
+      if (heroVisible && !userPaused) {
+        // try muted autoplay for the active slide; blocked autoplay falls back gracefully
+        setTimeout(function () { if (heroVisible && !userPaused) loadHeroVideo(true); }, 300);
+        scheduleHero();
+      }
+    }
+    function nextSlide() { setSlide(idx + 1); }
+    function prevSlide() { setSlide(idx - 1); }
+    if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+    if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+    dots.forEach(function (d) { d.addEventListener('click', function () { setSlide(parseInt(d.getAttribute('data-hero-dot'), 10)); }); });
+    heroEl.querySelectorAll('[data-hero-watch]').forEach(function (b) {
+      b.addEventListener('click', function () {
+        if (videoBox && !videoBox.hidden) { stopHeroVideo(); return; }
+        loadHeroVideo(false); // user gesture -> sound allowed
+      });
+    });
+    if (muteBtn) muteBtn.addEventListener('click', function () {
+      if (videoBox && !videoBox.hidden) loadHeroVideo(muted);
+    });
+    if (pauseBtn) pauseBtn.addEventListener('click', function () {
+      userPaused = !userPaused;
+      pauseBtn.textContent = userPaused ? '▶' : '⏸';
+      pauseBtn.setAttribute('aria-label', userPaused ? 'Resume rotation' : 'Pause rotation');
+      if (userPaused) { clearHeroTimers(); stopHeroVideo(); } else { scheduleHero(); }
+    });
+    window.addEventListener('message', function (e) {
+      var d = e.data;
+      if (!d || typeof d !== 'object' || !d.event) return;
+      if (d.event === 'onStateChange') {
+        var st = d.info;
+        if (st === 1) { playing = true; if (videoTimer) { clearTimeout(videoTimer); videoTimer = null; } }
+        else if (st === 0) { nextSlide(); } // video ended -> advance
+      } else if (d.event === 'onError') { hideHeroVideo(); }
+    });
+    // touch swipe
+    var touchX = null;
+    heroEl.addEventListener('touchstart', function (e) { touchX = e.touches ? e.touches[0].clientX : null; }, { passive: true });
+    heroEl.addEventListener('touchend', function (e) {
+      if (touchX === null || !e.changedTouches) return;
+      var dx = e.changedTouches[0].clientX - touchX;
+      if (Math.abs(dx) > 50) { if (dx < 0) nextSlide(); else prevSlide(); }
+      touchX = null;
+    }, { passive: true });
+    heroEl.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight') nextSlide();
+      if (e.key === 'ArrowLeft') prevSlide();
+    });
+    // pause rotation when the hero leaves the viewport (saves bandwidth)
+    if ('IntersectionObserver' in window) {
+      var heroIO = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          heroVisible = en.isIntersecting;
+          if (!heroVisible) { clearHeroTimers(); stopHeroVideo(); } else { scheduleHero(); }
+        });
+      }, { threshold: 0.15 });
+      heroIO.observe(heroEl);
+    }
+    // initial muted autoplay attempt after the page settles
+    setTimeout(function () { if (heroVisible && !userPaused) { loadHeroVideo(true); scheduleHero(); } }, 1200);
+  }
+
+  /* ---------- homepage recommendation engine (catalogue-based) ---------- */
+  var recForm = document.querySelector('[data-rec-form]');
+  if (recForm) {
+    var recInput = recForm.querySelector('[data-rec-input]');
+    var recStatus = document.querySelector('[data-rec-status]');
+    var recResults = document.querySelector('[data-rec-results]');
+    var recData = null;
+    var COMMON_G = { action: 1, adventure: 1, comedy: 1, drama: 1, fantasy: 1, 'sci-fi': 1, thriller: 1, romance: 1, crime: 1, horror: 1, animation: 1, family: 1 };
+    function recNorm(x) { return String(x || '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').replace(/^\s+|\s+$/g, ''); }
+    function recTokens(x) { return recNorm(x).split(/\s+/).filter(Boolean); }
+    function recLoad(cb) {
+      if (recData) { cb(); return; }
+      fetch(BASE + '/data/rec-data.json').then(function (r) { return r.json(); }).then(function (d) {
+        recData = d; cb();
+      }).catch(function () {
+        recStatus.textContent = 'Recommendations are unavailable right now. Please try again later.';
+      });
+    }
+    function recMatch(q) {
+      var qt = recTokens(q);
+      if (!qt.length) return null;
+      var best = null, bestScore = 0;
+      recData.items.forEach(function (it) {
+        var t = recTokens(it.t);
+        var hit = 0;
+        qt.forEach(function (w) { if (t.indexOf(w) > -1) hit++; });
+        var score = hit / qt.length;
+        if (score > bestScore) { bestScore = score; best = it; }
+      });
+      return (best && bestScore >= 0.6) ? best : null;
+    }
+    function recExplain(src, cand) {
+      var sharedG = (src.g || []).filter(function (g) { return (cand.g || []).indexOf(g) > -1; });
+      var sharedK = (src.k || []).filter(function (k) { return (cand.k || []).indexOf(k) > -1; });
+      return { genres: sharedG, keys: sharedK.slice(0, 3) };
+    }
+    function recScore(src, cand) {
+      var score = 0;
+      var rel = (recData.relations && recData.relations[src.s]) || [];
+      if (rel.indexOf(cand.s) > -1) score += 100;
+      (cand.g || []).forEach(function (g) { if ((src.g || []).indexOf(g) > -1) score += COMMON_G[g] ? 2 : 6; });
+      if (cand.ty === src.ty) score += 3;
+      if (src.y && cand.y && Math.abs(src.y - cand.y) <= 3) score += 1;
+      (src.k || []).forEach(function (k) { if ((cand.k || []).indexOf(k) > -1) score += 1; });
+      return score;
+    }
+    function recCard(it) {
+      var img = it.p ? '<img loading="lazy" width="480" height="360" src="' + esc(it.p) + '" alt="' + esc(it.t) + ' poster">' : '<div class="placeholder">' + esc(it.t) + '</div>';
+      var rating = it.r != null ? '<p class="tile-rating">★ ' + it.r + '/10 · Editorial</p>' : '';
+      var url = BASE + '/' + it.ty + '/' + it.s + '/';
+      return '<div class="tile"><div class="poster">' + img + '</div><h3>' + esc(it.t) + '</h3><div class="tile-meta"><span class="type-badge tb-' + it.ty + '">' + it.ty.toUpperCase() + '</span><span>' + (it.y || '') + '</span></div>' + rating + '<div class="rec-actions"><a class="ra-trailer" href="' + url + '#trailer">Watch Trailer</a><a class="ra-details" href="' + url + '">View Details</a></div></div>';
+    }
+    function recBySlug(slug) {
+      var found = null;
+      recData.items.forEach(function (x) { if (x.s === slug) found = x; });
+      return found;
+    }
+    recForm.addEventListener('submit', function (ev) {
+      ev.preventDefault();
+      var q = (recInput.value || '').trim();
+      if (!q) { recStatus.textContent = 'Type a movie, series or anime title first.'; return; }
+      recStatus.textContent = 'Finding your next watch...';
+      recResults.innerHTML = '';
+      recLoad(function () {
+        var src = recMatch(q);
+        if (!src) {
+          recStatus.textContent = '';
+          var links = (recData.popular || []).map(function (slug) {
+            var it = recBySlug(slug);
+            return it ? '<a href="' + BASE + '/' + it.ty + '/' + it.s + '/">' + esc(it.t) + '</a>' : '';
+          }).join('');
+          recResults.innerHTML = '<div class="rec-miss"><b>We couldn\'t find that title in NEXTCLIP.</b><span>Try another movie or series — or start with one of these:</span><span class="rec-pop">' + links + '</span></div>';
+          return;
+        }
+        var scored = [];
+        recData.items.forEach(function (it) { if (it.s !== src.s) scored.push({ it: it, sc: recScore(src, it) }); });
+        scored.sort(function (a, b) { return (b.sc - a.sc) || ((b.it.r || 0) - (a.it.r || 0)) || (b.it.t < a.it.t ? -1 : 1); });
+        var picks = scored.slice(0, 8);
+        // explanation built from the signals these picks actually share with the source
+        var signalCount = {};
+        picks.forEach(function (p) {
+          var e = recExplain(src, p.it);
+          e.genres.concat(e.keys).forEach(function (x) { signalCount[x] = (signalCount[x] || 0) + 1; });
+        });
+        var topSignals = Object.keys(signalCount).sort(function (a, b) { return signalCount[b] - signalCount[a]; }).slice(0, 4);
+        var why = topSignals.length ? 'You might enjoy these because they share ' + topSignals.join(', ') + '.' : 'You might enjoy these picks based on similar themes and genres.';
+        recStatus.textContent = '';
+        recResults.innerHTML = '<h3>Because you liked <b>' + esc(src.t) + '</b>...</h3><p class="rec-reason">' + esc(why) + '</p><div class="rec-grid">' + picks.map(function (p) { return recCard(p.it); }).join('') + '</div>';
+        if (recResults.scrollIntoView) recResults.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      });
+    });
+  }
 })();

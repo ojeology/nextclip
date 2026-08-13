@@ -28,16 +28,17 @@ const rankings = JSON.parse(fs.readFileSync(path.join(ROOT, 'content/rankings.js
 section('Homepage hierarchy');
 {
   const heads = Array.from(home.matchAll(/<h2>([^<]{2,60})<\/h2>/g)).map(m => m[1]);
-  const order = heads.slice(0, 9);
-  assert(order[0].includes('Trending Now'), '1st: 🔥 Trending Now (got: ' + order[0] + ')');
-  assert(order[1].includes('Popular Movies'), '2nd: ⭐ Popular Movies');
-  assert(order[2].includes('Popular Series'), '3rd: ⭐ Popular Series');
-  assert(order[3].includes('Popular Anime'), '4th: ⭐ Popular Anime');
-  assert(order[4].includes("Editor's Picks"), '5th: 👑 Editor\'s Picks');
-  assert(order[5].includes('New Releases'), '6th: 🆕 New Releases');
-  assert(order[6].includes('Movies') && !order[6].includes('Popular'), '7th: 🎬 Movies (got: ' + order[6] + ')');
-  assert(order[7].includes('Series') && !order[7].includes('Popular'), '8th: 📺 Series');
-  assert(order[8].includes('Anime') && !order[8].includes('Popular'), '9th: 🍥 Anime');
+  const order = heads.slice(0, 10);
+  assert(order[0].includes("DON'T KNOW WHAT TO WATCH?"), '1st: DON\'T KNOW WHAT TO WATCH? (got: ' + order[0] + ')');
+  assert(order[1].includes('Trending Now'), '2nd: 🔥 Trending Now (got: ' + order[1] + ')');
+  assert(order[2].includes('Popular Movies'), '3rd: ⭐ Popular Movies');
+  assert(order[3].includes('Popular Series'), '4th: ⭐ Popular Series');
+  assert(order[4].includes('Popular Anime'), '5th: ⭐ Popular Anime');
+  assert(order[5].includes("Editor's Picks"), '6th: 👑 Editor\'s Picks');
+  assert(order[6].includes('New Releases'), '7th: 🆕 New Releases');
+  assert(order[7].includes('Movies') && !order[7].includes('Popular'), '8th: 🎬 Movies (got: ' + order[7] + ')');
+  assert(order[8].includes('Series') && !order[8].includes('Popular'), '9th: 📺 Series');
+  assert(order[9].includes('Anime') && !order[9].includes('Popular'), '10th: 🍥 Anime');
 }
 
 /* 2. Trending = config order, per-type ranks */
