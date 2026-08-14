@@ -949,7 +949,7 @@ function matchCentre(){
     (F.matchweeks || []).forEach(w => w.matches.forEach(m => {
       const v = venueOf(m);
       const t = leagueTimeInfo(lg, m);
-      const sections = (S.matchCentre.matchPageSections || []).map(s => {
+      let sections = (S.matchCentre.matchPageSections || []).map(s => {
         const isPost = /result after the game|post-match/i.test(s);
         return `<div class="sp-msec"><span class="sp-pend">${isPost ? 'After full-time' : 'Pending verification'}</span><b>${esc(s)}</b><p>${isPost ? 'This section is written after the match, once the result is officially confirmed.' : 'Filled in with verified data only — never predicted or fabricated.'}</p></div>`;
       }).join('');
