@@ -567,7 +567,8 @@ function verticalPage(v, category){
   const crumbs = [{name:'Home', path:'/'}, {name:v.name, path:'/' + v.dir + '/'}];
   if (category) crumbs.push({name:category.name, path:catPath});
   const catGrid = (v.categories || []).map(c => `<a class="vcat" href="${url('/' + v.dir + '/' + c.slug + '/')}"><b>${esc(c.name)}</b><span>${esc(c.desc)}</span></a>`).join('');
-  const body = `<main class="shell"><div class="crumb"><a href="${url('/')}">Home</a> / ${category ? `<a href="${url('/' + v.dir + '/')}">${esc(v.name)}</a> / ${esc(category.name)}` : esc(v.name)}</div><section class="hero vhero vhero-${v.dir}"><div class="eyebrow">${v.emoji} ${category ? esc(v.name) + ' · ' + esc(category.name) : esc(v.name)}</div><h1>${esc(category ? category.name : v.name)}</h1><p class="lead">${esc(category ? category.desc : v.tagline)}</p></section><section class="section">${category ? `<div class="vstate"><b>${esc(category.name)} — foundation ready</b><p>This section is being built. Articles will appear here as they are researched and published.</p></div>` : `<p class="lead" style="margin-bottom:18px">${esc(v.desc)}</p><div class="vnote">${esc(v.note)}</div><h2 style="margin:26px 0 14px">Explore ${esc(v.short)}</h2><div class="vcat-grid">${catGrid}</div>`}</section><section class="section"><div class="section-head"><h2>Explore BRYME</h2></div><div class="vchips">${VERTICALS.map(verticalChip).join('')}</div></section></main>`;
+  const fixturesBlock = (v.dir === 'sports' && !category) ? '<section class="section"><div class="section-head"><h2>Fixtures &amp; Results 2026/27</h2></div><div class="vcat-grid">' + LEAGUE_FIX.map(lg => { const F = loadLeagueFixtures(lg.slug); const total = (F.matchweeks || []).reduce((n, w) => n + w.matches.length, 0); return '<a class="vcat" href="' + url('/sports/' + lg.slug + '/fixtures/') + '"><b>' + esc(lg.name) + '</b><span>All ' + total + ' fixtures — dates, kickoffs &amp; match pages</span></a>'; }).join('') + '<a class="vcat" href="' + url('/sports/managers-2026-27/') + '"><b>Managers</b><span>Managers In &amp; Out — 2026/27</span></a></div></section>' : '';
+  const body = `<main class="shell"><div class="crumb"><a href="${url('/')}">Home</a> / ${category ? `<a href="${url('/' + v.dir + '/')}">${esc(v.name)}</a> / ${esc(category.name)}` : esc(v.name)}</div><section class="hero vhero vhero-${v.dir}"><div class="eyebrow">${v.emoji} ${category ? esc(v.name) + ' · ' + esc(category.name) : esc(v.name)}</div><h1>${esc(category ? category.name : v.name)}</h1><p class="lead">${esc(category ? category.desc : v.tagline)}</p></section><section class="section">${category ? `<div class="vstate"><b>${esc(category.name)} — foundation ready</b><p>This section is being built. Articles will appear here as they are researched and published.</p></div>` : `<p class="lead" style="margin-bottom:18px">${esc(v.desc)}</p><div class="vnote">${esc(v.note)}</div><h2 style="margin:26px 0 14px">Explore ${esc(v.short)}</h2><div class="vcat-grid">${catGrid}</div>`}</section>${fixturesBlock}<section class="section"><div class="section-head"><h2>Explore BRYME</h2></div><div class="vchips">${VERTICALS.map(verticalChip).join('')}</div></section></main>`;
   write(v.dir + (category ? '/' + category.slug : ''), layout({
     title: category ? `${category.name} – ${v.name}` : `${v.name} – ${v.tagline}`,
     description: category ? `${category.desc} ${v.name} — foundation section on BRYME.` : `${v.desc} ${v.note}`,
@@ -644,6 +645,38 @@ write('', layout({
   <section class="discover-cta"><div><div class="eyebrow">Full catalogue</div><h2>Pick a lane: Movies, Series or Anime.</h2><p>Each section is strictly filtered to its own content type. No mixed-up walls of posters.</p></div><a class="cta" href="${url('/search/')}">Search everything</a></div></section></main></main><script id="hero-data" type="application/json">${heroEmbed}</script>`
 }));
 
+
+/* ---------------- League fixtures (all five leagues) ---------------- */
+const LEAGUE_FIXTURE_FILES = {
+  'premier-league': 'fixtures.json',
+  'la-liga': 'fixtures-la-liga.json',
+  'serie-a': 'fixtures-serie-a.json',
+  'bundesliga': 'fixtures-bundesliga.json',
+  'ligue-1': 'fixtures-ligue-1.json'
+};
+const LEAGUE_FIX = [
+  { slug:'premier-league', name:'Premier League', roundLabel:'Matchweek', tz:'Europe/London', timeSuffix:'UK',
+    stdSlot:'<b>(std)</b> marks the Premier League\'s standard slot — 15:00 on weekend/Bank Holiday dates and 20:00 midweek — where no specific time was published. ',
+    crest:id=>url('/assets/img/sports/pl/'+id+'.svg'), alt:(id,name)=> name + ' official club crest' },
+  { slug:'la-liga', name:'La Liga', roundLabel:'Jornada', tz:'Europe/Madrid', timeSuffix:null,
+    crest:id=>url('/assets/img/sports/ll/'+(LL_NAME[id]||id)+'.png'), alt:(id,name)=> name + ' official club crest' },
+  { slug:'serie-a', name:'Serie A', roundLabel:'Giornata', tz:'Europe/Rome', timeSuffix:null,
+    crest:id=>url('/assets/img/sports/sa/'+id+(id==='lazio'?'.png':'.svg')), alt:(id,name)=> name + ' official club crest' },
+  { slug:'bundesliga', name:'Bundesliga', roundLabel:'Spieltag', tz:'Europe/Berlin', timeSuffix:null,
+    crest:id=> id==='hamburg' ? url('/assets/img/sports/club-hamburg.svg') : url('/assets/img/sports/bl/'+id+'.svg'),
+    alt:(id,name)=> id==='hamburg' ? 'Abstract crest for '+name+' — BRYME-generated illustration' : name + ' official club crest' },
+  { slug:'ligue-1', name:'Ligue 1', roundLabel:'Journée', tz:'Europe/Paris', timeSuffix:null,
+    crest:id=>url('/assets/img/sports/l1/'+id+'.webp'), alt:(id,name)=> name + ' official club crest' }
+];
+const LEAGUE_FIXTURES_DATA = {};
+const LEAGUE_MATCH_PATHS = [];
+function loadLeagueFixtures(slug){
+  if (LEAGUE_FIXTURES_DATA[slug]) return LEAGUE_FIXTURES_DATA[slug];
+  const file = LEAGUE_FIXTURE_FILES[slug];
+  try { LEAGUE_FIXTURES_DATA[slug] = JSON.parse(fs.readFileSync(path.join(root, 'content', file), 'utf8')); }
+  catch (e) { warnings.push(file + ' unreadable'); LEAGUE_FIXTURES_DATA[slug] = { matchweeks: [], venues: {} }; }
+  return LEAGUE_FIXTURES_DATA[slug];
+}
 
 for (const v of VERTICALS) {
   verticalPage(v, null);
@@ -813,114 +846,145 @@ function fplHub(){
   write('sports/fpl/gameweek-' + MW, layout({ title: 'FPL Gameweek ' + MW + ' | BRYME Sports', description: 'Fantasy Premier League Gameweek ' + MW + ' — players to watch, picks, captaincy and fixture difficulty.', path: '/sports/fpl/gameweek-' + MW + '/', activeNav: 'sports', schema: [{ '@context':'https://schema.org', '@type':'CollectionPage', name: 'FPL Gameweek ' + MW, url: url('/sports/fpl/gameweek-' + MW + '/') }, breadcrumbs([{name:'Home', path:'/'}, {name:'BRYME Sports', path:'/sports/'}, {name:'FPL', path:'/sports/fpl/'}, {name:'Gameweek ' + MW, path:'/sports/fpl/gameweek-' + MW + '/'}])], body: gwBody }));
 }
 /* --- fixtures / results --- */
-function fixturesResults(){
-  const F = (() => { try { return JSON.parse(fs.readFileSync(path.join(root, 'content', 'fixtures.json'), 'utf8')); } catch (e) { warnings.push('fixtures.json unreadable'); return { matchweeks: [], venues: {} }; } })();
-  const crest = id => url('/assets/img/sports/pl/' + id + '.svg');
-  const fTv = (m, mark) => m.tv ? `<span class="sp-tv${(m.tv || '').toLowerCase().indexOf('tnt') > -1 ? ' tnt' : ''}">${esc(m.tv)}${mark}</span>` : '';
-  const dayFmt = label => {
-    const m = label.match(/^(\w+)\s+(\d{1,2})\s+(\w+)(?:\s+(\d{4}))?/);
-    if (!m) return esc(label);
-    const year = m[4] ? ' ' + m[4] : '';
-    return esc(m[1] + ' ' + m[2] + ' ' + m[3]) + `<span class="sp-std">${esc(year)}</span>`;
-  };
-  const timeFmt = m => m.timePublished
-    ? `<span class="sp-fixt-time">${esc(m.time)}</span><span class="sp-std">UK</span>`
-    : `<span class="sp-fixt-time">${esc(m.time)}</span><span class="sp-std">UK · std</span>`;
-  const fixtureRow = m => `<div class="sp-fixture" aria-label="${esc(m.homeName)} v ${esc(m.awayName)}">
-      <div class="sp-fixt"><span class="sp-fixt-day">${dayFmt(m.dayLabel)}</span><img src="${crest(m.id)}" alt="" width="22" height="27" loading="lazy"><a href="${url('/sports/premier-league/matches/' + m.id + '-vs-' + m.away + '/')}">${esc(m.homeName)}</a><span class="sp-vs">v</span><img src="${crest(m.away)}" alt="" width="22" height="27" loading="lazy"><a href="${url('/sports/premier-league/matches/' + m.id + '-vs-' + m.away + '/')}">${esc(m.awayName)}</a></div>
-      <div class="sp-fixt-info">${timeFmt(m)}${fTv(m, m.tvMark)}<a class="sp-matchlink" href="${url('/sports/premier-league/matches/' + m.id + '-vs-' + m.away + '/')}">Match page →</a></div>
+function euDstOffset(dateISO){
+  // returns UTC offset hours for the league's local time on that date: +1 (CET) / +2 (CEST)
+  const y = Number(dateISO.slice(0, 4));
+  let start = new Date(Date.UTC(y, 2, 31)); while (start.getUTCDay() !== 0) start.setUTCDate(start.getUTCDate() - 1);
+  let end = new Date(Date.UTC(y, 9, 31)); while (end.getUTCDay() !== 0) end.setUTCDate(end.getUTCDate() - 1);
+  const t = Date.parse(dateISO + 'T12:00:00Z');
+  return (t >= start.getTime() && t < end.getTime()) ? 2 : 1;
+}
+function leagueTimeInfo(lg, m){
+  // returns { display, wat } for a match kickoff
+  if (!m.time) return { display: '<span class="sp-fixt-time">Time TBC</span>', wat: '' };
+  if (lg.slug === 'premier-league' && !m.timePublished) {
+    return { display: `<span class="sp-fixt-time">${esc(m.time)} UK</span><span class="sp-std"> · std</span>`, wat: '' };
+  }
+  let offset;
+  if (lg.slug === 'premier-league') {
+    offset = euDstOffset(m.date) - 1; // BST +1 / GMT 0
+  } else {
+    offset = euDstOffset(m.date); // CEST +2 / CET +1
+  }
+  const tzSuffix = lg.timeSuffix || (offset === 2 ? 'CEST' : 'CET');
+  let wat = '';
+  if (offset !== 1) { // WAT = UTC+1; show when it differs from league-local time
+    const [h, mn] = m.time.split(':').map(Number);
+    let w = h + 1 - offset; if (w < 0) w += 24; if (w >= 24) w -= 24;
+    wat = `<span class="sp-std"> · ${String(w).padStart(2, '0')}:${String(mn).padStart(2, '0')} WAT</span>`;
+  }
+  return { display: `<span class="sp-fixt-time">${esc(m.time)} ${tzSuffix}</span>`, wat };
+}
+function fixtureRowFor(lg, m){
+  const t = leagueTimeInfo(lg, m);
+  const tv = m.tv ? `<span class="sp-tv${(m.tv || '').toLowerCase().indexOf('tnt') > -1 ? ' tnt' : ''}">${esc(m.tv)}</span>` : '';
+  const dayM = (m.dayLabel || '').match(/^(\w+)\s+(\d{1,2})\s+(\w+)(?:\s+(\d{4}))?/);
+  const day = dayM ? esc(dayM[1] + ' ' + dayM[2] + ' ' + dayM[3]) + `<span class="sp-std">${esc(dayM[4] ? ' ' + dayM[4] : '')}</span>` : esc(m.dayLabel || m.date);
+  const urlM = '/sports/' + lg.slug + '/matches/' + m.id + '-vs-' + m.away + '/';
+  return `<div class="sp-fixture" aria-label="${esc(m.homeName)} v ${esc(m.awayName)}">
+      <div class="sp-fixt"><span class="sp-fixt-day">${day}</span><img src="${lg.crest(m.id)}" alt="" width="22" height="27" loading="lazy"><a href="${url(urlM)}">${esc(m.homeName)}</a><span class="sp-vs">v</span><img src="${lg.crest(m.away)}" alt="" width="22" height="27" loading="lazy"><a href="${url(urlM)}">${esc(m.awayName)}</a></div>
+      <div class="sp-fixt-info">${t.display}${t.wat}${tv}<a class="sp-matchlink" href="${url(urlM)}">Match page →</a></div>
     </div>`;
-  const mwBlocks = (F.matchweeks || []).map(w => {
-    const days = [...new Set(w.matches.map(m => m.dayLabel))];
-    return `<section class="sp-mw" id="mw-${w.number}"><div class="sp-mw-head"><h2>Matchweek ${w.number}</h2><span class="sp-mw-date">${esc(days.join(' · '))}</span></div>${w.matches.map(fixtureRow).join('')}</section>`;
-  }).join('');
-  const crumbsF = [{name:'Home', path:'/'}, {name:'BRYME Sports', path:'/sports/'}, {name:'Premier League', path:'/sports/premier-league/'}, {name:'Fixtures', path:'/sports/premier-league/fixtures/'}];
-  const bodyF = `<main class="shell"><div class="crumb"><a href="${url('/')}">Home</a> / <a href="${url('/sports/')}">BRYME Sports</a> / <a href="${url('/sports/premier-league/')}">Premier League</a> / Fixtures</div>
-    <section class="hero"><div class="eyebrow">⚽ Premier League · Fixtures</div><h1>Premier League Fixtures 2026/27</h1><p class="lead">All 380 fixtures of the 2026/27 Premier League season, exactly as published by the Premier League on 19 June 2026. Kick-off times in UK time; every fixture has its own match page.</p></section>
-    <p class="sp-updated">Last updated: ${esc(F.lastUpdated || 'Pending verification')}</p>
-    <div class="sp-truth"><b>Truth first.</b><p>This is the official fixture list released by the Premier League — no dates, teams or kickoff times have been invented. ${esc(F.subjectToChange)}</p></div>
-    <div class="sp-fix-legend"><b>Kick-off times</b> are UK time as published by the Premier League. <b>(std)</b> marks the league's standard slot — 15:00 on weekend/Bank Holiday dates and 20:00 midweek — where the Premier League did not publish a specific time. ${esc(F.kickoffNote)}</div>
-    <nav class="sp-mwnav" aria-label="Jump to matchweek">${(F.matchweeks || []).map(w => `<a href="#mw-${w.number}">MW ${w.number}</a>`).join('')}</nav>
-    ${mwBlocks}
-    ${(F.footnotes && F.footnotes.length) ? `<div class="sp-fix-legend"><b>Fixture notes</b><br>${F.footnotes.map(n => '• ' + esc(n)).join('<br>')}</div>` : ''}
-    <section class="sp-source"><h2>Source</h2><p><b>Source:</b> Official Premier League fixture release — ${esc(F.source)}, via <a href="${esc(F.sourceUrl)}" rel="nofollow noopener">premierleague.com</a>. Fixtures: 380 matches across 38 matchweeks, 21 August 2026 – 30 May 2027.</p><p class="sp-source-note">Kick-off times and broadcast selections are those published by the Premier League and may change (TV selections are confirmed by the league's broadcasters). BRYME only lists officially published fixtures — nothing is invented or assumed. Results are never shown before a match is played.</p></section>
-    <section class="sp-related"><h2>Related</h2><div class="sp-rel-grid"><a class="sp-rel" href="${url('/sports/premier-league/results/')}">Results</a><a class="sp-rel" href="${url('/sports/premier-league/matches/')}">Match Centre</a><a class="sp-rel" href="${url('/sports/premier-league/table/')}">Table</a><a class="sp-rel" href="${url('/sports/transfers/premier-league-2026-27/')}">Transfers</a></div></section></main>`;
-  write('sports/premier-league/fixtures', layout({ title: 'Premier League Fixtures 2026/27: All 380 Matches | BRYME Sports', description: 'Complete Premier League 2026/27 fixture list — all 380 matches across 38 matchweeks with dates, kick-off times (UK) and TV selections, from the official Premier League release. Nothing invented.', path: '/sports/premier-league/fixtures/', activeNav: 'sports', schema: [{ '@context':'https://schema.org', '@type':'CollectionPage', name: 'Premier League Fixtures 2026/27', description: 'All 380 Premier League 2026/27 fixtures as published by the Premier League.', url: url('/sports/premier-league/fixtures/') }, breadcrumbs(crumbsF)], body: bodyF }));
-  const crumbsR = [{name:'Home', path:'/'}, {name:'BRYME Sports', path:'/sports/'}, {name:'Premier League', path:'/sports/premier-league/'}, {name:'Results', path:'/sports/premier-league/results/'}];
-  const mw1 = (F.matchweeks && F.matchweeks[0] && F.matchweeks[0].matches) || [];
-  const nextBlock = mw1.length ? `<h3 class="sp-dir">Upcoming — Matchweek 1 (21–24 August 2026)</h3><div class="sp-table-wrap"><table class="sp-table"><thead><tr><th>Date</th><th>Fixture</th><th>Kickoff (UK)</th><th>TV</th></tr></thead><tbody>${mw1.map(m => `<tr><td>${esc(m.dayLabel)}</td><td><b>${esc(m.homeName)}</b> v <b>${esc(m.awayName)}</b></td><td>${esc(m.time)}</td><td>${esc(m.tv || '—')}</td></tr>`).join('')}</tbody></table></div>` : '';
-  const bodyR = `<main class="shell"><div class="crumb"><a href="${url('/')}">Home</a> / <a href="${url('/sports/')}">BRYME Sports</a> / <a href="${url('/sports/premier-league/')}">Premier League</a> / Results</div>
-    <section class="hero"><div class="eyebrow">⚽ Premier League · Results</div><h1>Premier League Results 2026/27</h1><p class="lead">Completed Premier League match results. Results appear only after matches are actually played and officially confirmed — never predicted or assumed.</p></section>
-    <p class="sp-updated">Last updated: ${esc(F.lastUpdated || 'Pending verification')}</p>
-    <div class="vstate"><b>No matches played yet</b><p>The 2026/27 Premier League season starts on Friday 21 August 2026, so as of ${esc(F.lastUpdated || 'today')} no league fixtures have been played and there are no results to show. When matches are played, the official result, scorers and match data are added here after full-time — verified only.</p></div>
-    ${nextBlock}
-    <div class="sp-truth"><b>Truth first.</b><p>BRYME never publishes a result, scoreline or scorer before a match is played and the outcome is confirmed by the club or official league channels. If a result cannot be verified, it is not shown.</p></div>
-    <section class="sp-related"><h2>Related</h2><div class="sp-rel-grid"><a class="sp-rel" href="${url('/sports/premier-league/fixtures/')}">Fixtures</a><a class="sp-rel" href="${url('/sports/premier-league/matches/')}">Match Centre</a><a class="sp-rel" href="${url('/sports/premier-league/table/')}">Table</a><a class="sp-rel" href="${url('/sports/transfers/premier-league-2026-27/')}">Transfers</a></div></section></main>`;
-  write('sports/premier-league/results', layout({ title: 'Premier League Results 2026/27 | BRYME Sports', description: 'Premier League 2026/27 results — only official, verified match results after matches are played. No results are predicted or assumed.', path: '/sports/premier-league/results/', activeNav: 'sports', schema: [{ '@context':'https://schema.org', '@type':'CollectionPage', name: 'Premier League Results 2026/27', url: url('/sports/premier-league/results/') }, breadcrumbs(crumbsR)], body: bodyR }));
-  return F;
 }
-/* --- match centre + per-match pages (all 380 fixtures) --- */
-let matchPagePaths = [];
-function matchCentre(F){
-  const crest = id => url('/assets/img/sports/pl/' + id + '.svg');
-  const slug = (m) => m.id + '-vs-' + m.away;
-  const matchUrl = m => url('/sports/premier-league/matches/' + slug(m) + '/');
-  const ukOffset = (dateISO) => {
-    const y = Number(dateISO.slice(0, 4));
-    let start = new Date(Date.UTC(y, 2, 31)); while (start.getUTCDay() !== 0) start.setUTCDate(start.getUTCDate() - 1);
-    let end = new Date(Date.UTC(y, 9, 31)); while (end.getUTCDay() !== 0) end.setUTCDate(end.getUTCDate() - 1);
-    const t = Date.parse(dateISO + 'T12:00:00Z');
-    return (t >= start.getTime() && t < end.getTime()) ? 1 : 0;
-  };
-  const watTime = (time, off) => {
-    const [h, mnt] = time.split(':').map(Number);
-    let w = h + off; if (w >= 24) w -= 24;
-    return String(w).padStart(2, '0') + ':' + String(mnt).padStart(2, '0');
-  };
-  const venue = (id) => (F.venues || {})[id];
-
-  // --- per-match pages ---
-  (F.matchweeks || []).forEach(w => w.matches.forEach(m => {
-    const mwNum = w.number, v = venue(m.id) || {};
-    const off = ukOffset(m.date);
-    const sections = (S.matchCentre.matchPageSections || []).map(s => {
-      const isPost = /result after the game|post-match/i.test(s);
-      return `<div class="sp-msec"><span class="sp-pend">${isPost ? 'After full-time' : 'Pending verification'}</span><b>${esc(s)}</b><p>${isPost ? 'This section is written after the match, once the result is officially confirmed.' : 'Filled in with verified data only — never predicted or fabricated.'}</p></div>`;
+function fixturesResults(){
+  for (const lg of LEAGUE_FIX) {
+    const F = loadLeagueFixtures(lg.slug);
+    const mwBlocks = (F.matchweeks || []).map(w => {
+      const days = [...new Set(w.matches.map(m => m.dayLabel))];
+      return `<section class="sp-mw" id="mw-${w.number}"><div class="sp-mw-head"><h2>${esc(lg.roundLabel)} ${w.number}</h2><span class="sp-mw-date">${esc(days.join(' · '))}</span></div>${w.matches.map(m => fixtureRowFor(lg, m)).join('')}</section>`;
     }).join('');
-    const crumbs = [{name:'Home', path:'/'}, {name:'BRYME Sports', path:'/sports/'}, {name:'Premier League', path:'/sports/premier-league/'}, {name:'Match Centre', path:'/sports/premier-league/matches/'}, {name:m.homeName + ' v ' + m.awayName, path:'/sports/premier-league/matches/' + slug(m) + '/'}];
-    const body = `<main class="shell"><div class="crumb"><a href="${url('/')}">Home</a> / <a href="${url('/sports/')}">BRYME Sports</a> / <a href="${url('/sports/premier-league/')}">Premier League</a> / <a href="${url('/sports/premier-league/matches/')}">Match Centre</a> / ${esc(m.homeName)} v ${esc(m.awayName)}</div>
-      <section class="hero"><div class="eyebrow">⚽ Premier League ${SEASON} · Matchweek ${mwNum}</div><h1>${esc(m.homeName)} v ${esc(m.awayName)}</h1></section>
-      <div class="sp-match-hero"><img src="${crest(m.id)}" alt="${esc(m.homeName)} official club crest" width="64" height="77"><span class="sp-mh-vs">v</span><img src="${crest(m.away)}" alt="${esc(m.awayName)} official club crest" width="64" height="77"><div><span class="sp-pill">Upcoming — not yet played</span><h1 style="margin-top:6px">${esc(m.homeName)} v ${esc(m.awayName)}</h1><p class="sp-match-meta"><span><b>Date:</b> ${esc(m.dayLabel)}</span><span><b>Kickoff:</b> ${esc(m.time)} UK${off === 1 ? '' : ' · ' + esc(watTime(m.time, 1)) + ' WAT'}</span>${m.tv ? `<span><b>TV:</b> ${esc(m.tv)}</span>` : ''}<span><b>Venue:</b> ${esc(v.name || 'TBC')}${v.capacity ? ' · ' + esc(v.capacity.toLocaleString('en-GB')) : ''}</span></p></div></div>
-      <div class="sp-truth"><b>Truth first.</b><p>This match has not been played yet — there is no result, scoreline, lineup or statistic to report. Every section below is filled only with verified data as it becomes available (lineups at kickoff, result after full-time). BRYME never predicts scores or fabricates match details.</p></div>
-      <h3 class="sp-dir">Match analysis sections</h3>
-      <div class="sp-msec-grid">${sections}</div>
-      <section class="sp-related"><h2>Related</h2><div class="sp-rel-grid"><a class="sp-rel" href="${url('/sports/premier-league/fixtures/')}">Fixtures</a><a class="sp-rel" href="${url('/sports/premier-league/results/')}">Results</a><a class="sp-rel" href="${url('/sports/premier-league/table/')}">Table</a><a class="sp-rel" href="${url('/sports/premier-league/')}">Premier League hub</a></div></section></main>`;
-    const isoStart = m.date + 'T' + m.time + ':00' + (off === 1 ? '+01:00' : '+00:00');
-    write('sports/premier-league/matches/' + slug(m), layout({
-      title: m.homeName + ' v ' + m.awayName + ' — Matchweek ' + mwNum + ' · Premier League ' + SEASON + ' | BRYME Sports',
-      description: m.homeName + ' v ' + m.awayName + ', ' + SEASON + ' Premier League Matchweek ' + mwNum + ' — ' + m.dayLabel + ', ' + m.time + ' UK' + (m.tv ? ' on ' + m.tv : '') + ' at ' + (v.name || 'TBC') + '. Match analysis sections appear once verified; no results are predicted.',
-      path: '/sports/premier-league/matches/' + slug(m) + '/', activeNav: 'sports',
-      schema: [{ '@context':'https://schema.org', '@type':'SportsEvent', name: m.homeName + ' v ' + m.awayName, startDate: isoStart, eventStatus: 'https://schema.org/EventScheduled', eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode', location: { '@type':'Place', name: v.name || 'TBC' }, homeTeam: { '@type':'SportsTeam', name: m.homeName }, awayTeam: { '@type':'SportsTeam', name: m.awayName }, url: matchUrl(m) }, breadcrumbs(crumbs)],
-      body
-    }));
-    matchPagePaths.push('/sports/premier-league/matches/' + slug(m) + '/');
-  }));
+    const total = (F.matchweeks || []).reduce((n, w) => n + w.matches.length, 0);
+    const crumb = [{name:'Home', path:'/'}, {name:'BRYME Sports', path:'/sports/'}, {name:F.league, path:'/sports/' + lg.slug + '/'}, {name:'Fixtures', path:'/sports/' + lg.slug + '/fixtures/'}];
+    const hasTbc = (F.matchweeks || []).some(w => w.matches.some(m => !m.time));
+    const body = `<main class="shell"><div class="crumb"><a href="${url('/')}">Home</a> / <a href="${url('/sports/')}">BRYME Sports</a> / <a href="${url('/sports/' + lg.slug + '/')}">${esc(F.league)}</a> / Fixtures</div>
+      <section class="hero"><div class="eyebrow">⚽ ${esc(F.league)} · Fixtures</div><h1>${esc(F.league)} Fixtures ${esc(F.season)}</h1><p class="lead">All ${total} fixtures of the ${esc(F.season)} ${esc(F.league)} season. ${F.source ? esc(F.source) : ''} Dates and kick-off times are shown exactly as published — nothing is invented.</p></section>
+      <p class="sp-updated">Last updated: ${esc(F.lastUpdated || 'Pending verification')}</p>
+      <div class="sp-truth"><b>Truth first.</b><p>This is the official fixture list as published for the ${esc(F.season)} ${esc(F.league)} season. ${F.subjectToChange ? esc(F.subjectToChange) : ''}</p></div>
+      <div class="sp-fix-legend">${lg.stdSlot || ''}${hasTbc ? '<b>Time TBC</b> means the league has not yet published the kick-off time for that match — it appears here as soon as it is officially confirmed. ' : ''}${F.kickoffNote ? esc(F.kickoffNote) : ''}</div>
+      <nav class="sp-mwnav" aria-label="Jump to round">${(F.matchweeks || []).map(w => `<a href="#mw-${w.number}">${esc(lg.roundLabel.slice(0, 2))} ${w.number}</a>`).join('')}</nav>
+      ${mwBlocks}
+      ${(F.footnotes && F.footnotes.length) ? `<div class="sp-fix-legend"><b>Fixture notes</b><br>${F.footnotes.map(n => '• ' + esc(n)).join('<br>')}</div>` : ''}
+      <section class="sp-source"><h2>Source</h2><p><b>Source:</b> ${esc(F.source || 'Official league fixture release')}${F.sourceUrl ? ` — <a href="${esc(F.sourceUrl)}" rel="nofollow noopener">${esc(new URL(F.sourceUrl).hostname)}</a>` : ''}</p><p class="sp-source-note">Fixtures are summarised in BRYME's own words from official publications. Dates, kick-off times and venues are only listed as published; changes announced officially are reflected as soon as BRYME verifies them. Results are never shown before a match is played.</p></section>
+      <section class="sp-related"><h2>Related</h2><div class="sp-rel-grid"><a class="sp-rel" href="${url('/sports/' + lg.slug + '/results/')}">Results</a><a class="sp-rel" href="${url('/sports/' + lg.slug + '/matches/')}">Match Centre</a><a class="sp-rel" href="${url('/sports/transfers/' + lg.slug + '-2026-27/')}">Transfers</a><a class="sp-rel" href="${url('/sports/')}">BRYME Sports</a></div></section></main>`;
+    write('sports/' + lg.slug + '/fixtures', layout({ title: `${F.league} Fixtures ${F.season}: All ${total} Matches | BRYME Sports`, description: `Complete ${F.league} ${F.season} fixture list — all ${total} matches across ${(F.matchweeks || []).length} rounds with dates and kick-off times from the official release. Nothing invented.`, path: '/sports/' + lg.slug + '/fixtures/', activeNav: 'sports', schema: [{ '@context':'https://schema.org', '@type':'CollectionPage', name: `${F.league} Fixtures ${F.season}`, description: `All ${total} ${F.league} ${F.season} fixtures as published.`, url: url('/sports/' + lg.slug + '/fixtures/') }, breadcrumbs(crumb)], body }));
 
-  // --- match centre hub page ---
-  const mw1 = (F.matchweeks && F.matchweeks[0]) || { number: 1, matches: [] };
-  const cards = mw1.matches.map(m => `<div class="sp-mc-card solid" aria-label="${esc(m.homeName)} v ${esc(m.awayName)} — ${esc(m.dayLabel)}, ${esc(m.time)} UK"><div class="sp-mc-crests"><img src="${crest(m.id)}" alt="" width="30" height="36"><span class="sp-vs">v</span><img src="${crest(m.away)}" alt="" width="30" height="36"></div><b>${esc(m.homeName)} v ${esc(m.awayName)}</b><p>${esc(m.dayLabel)} · ${esc(m.time)} UK${m.tv ? ' · ' + esc(m.tv) : ''}</p><a class="sp-mc-go" href="${matchUrl(m)}">Match page →</a></div>`).join('');
-  const crumbs = [{name:'Home', path:'/'}, {name:'BRYME Sports', path:'/sports/'}, {name:'Premier League', path:'/sports/premier-league/'}, {name:S.matchCentre.title, path:'/sports/premier-league/matches/'}];
-  const body = `<main class="shell"><div class="crumb"><a href="${url('/')}">Home</a> / <a href="${url('/sports/')}">BRYME Sports</a> / <a href="${url('/sports/premier-league/')}">Premier League</a> / ${esc(S.matchCentre.title)}</div>
-    <section class="hero"><div class="eyebrow">⚽ Premier League · Match Centre</div><h1>${esc(S.matchCentre.title)}</h1><p class="lead">${esc(S.matchCentre.note)}</p></section>
-    <p class="sp-updated">Last updated: ${esc(F.lastUpdated || 'Pending verification')}</p>
-    <div class="sp-truth"><b>Truth first.</b><p>Every one of the 380 fixtures in the ${SEASON} season has its own match page with the officially published kickoff date, time and venue. Match analysis sections (lineups, injuries, form, result, post-match) are filled in only with verified data — never predicted or fabricated.</p></div>
-    <h3 class="sp-dir">Matchweek ${mw1.number} — ${esc([...new Set(mw1.matches.map(x => x.dayLabel))].join(' · '))}</h3>
-    <div class="sp-mc-grid">${cards}</div>
-    <p class="sp-freq-note">Looking for the whole season? See <a href="${url('/sports/premier-league/fixtures/')}">all 380 fixtures across 38 matchweeks</a>.</p>
-    <section class="sp-related"><h2>Match page sections</h2><p class="sp-source-note">Every match gets its own analysis page at /sports/premier-league/matches/[team-a]-vs-[team-b]/ with:</p><div class="sp-rel-grid">${S.matchCentre.matchPageSections.map(s => `<span class="sp-rel sp-rel-static">${esc(s)}</span>`).join('')}</div></section>
-    <section class="sp-related"><h2>Related</h2><div class="sp-rel-grid"><a class="sp-rel" href="${url('/sports/premier-league/fixtures/')}">Fixtures</a><a class="sp-rel" href="${url('/sports/premier-league/results/')}">Results</a><a class="sp-rel" href="${url('/sports/premier-league/table/')}">Table</a><a class="sp-rel" href="${url('/sports/premier-league/matchweek-1-preview/')}">Matchweek ${MW} Preview</a></div></section></main>`;
-  write('sports/premier-league/matches', layout({ title: S.matchCentre.title + ' | BRYME Sports', description: S.matchCentre.note, path: '/sports/premier-league/matches/', activeNav: 'sports', schema: [{ '@context':'https://schema.org', '@type':'CollectionPage', name: S.matchCentre.title, url: url('/sports/premier-league/matches/') }, breadcrumbs(crumbs)], body }));
+    // ---- results page (honest empty state + next round preview) ----
+    const mw1 = (F.matchweeks && F.matchweeks[0] && F.matchweeks[0].matches) || [];
+    const nextBlock = mw1.length ? `<h3 class="sp-dir">Upcoming — ${esc(lg.roundLabel)} 1 (${esc([...new Set(mw1.map(m => m.dayLabel))].join(' · '))})</h3><div class="sp-table-wrap"><table class="sp-table"><thead><tr><th>Date</th><th>Fixture</th><th>Kickoff</th><th>TV</th></tr></thead><tbody>${mw1.map(m => `<tr><td>${esc(m.dayLabel)}</td><td><b>${esc(m.homeName)}</b> v <b>${esc(m.awayName)}</b></td><td>${m.time ? esc(m.time + (lg.timeSuffix || ' local')) : 'TBC'}</td><td>${esc(m.tv || '—')}</td></tr>`).join('')}</tbody></table></div>` : '';
+    const crumbR = [{name:'Home', path:'/'}, {name:'BRYME Sports', path:'/sports/'}, {name:F.league, path:'/sports/' + lg.slug + '/'}, {name:'Results', path:'/sports/' + lg.slug + '/results/'}];
+    const bodyR = `<main class="shell"><div class="crumb"><a href="${url('/')}">Home</a> / <a href="${url('/sports/')}">BRYME Sports</a> / <a href="${url('/sports/' + lg.slug + '/')}">${esc(F.league)}</a> / Results</div>
+      <section class="hero"><div class="eyebrow">⚽ ${esc(F.league)} · Results</div><h1>${esc(F.league)} Results ${esc(F.season)}</h1><p class="lead">Completed ${esc(F.league)} match results. Results appear only after matches are actually played and officially confirmed — never predicted or assumed.</p></section>
+      <p class="sp-updated">Last updated: ${esc(F.lastUpdated || 'Pending verification')}</p>
+      <div class="vstate"><b>No matches played yet</b><p>The ${esc(F.season)} ${esc(F.league)} season ${(F.matchweeks && F.matchweeks[0] && F.matchweeks[0].matches[0]) ? 'starts ' + esc(F.matchweeks[0].matches[0].dayLabel) : 'has not started'} — so as of ${esc(F.lastUpdated || 'today')} no league fixtures have been played and there are no results to show. When matches are played, the official result and match data are added here after full-time — verified only.</p></div>
+      ${nextBlock}
+      <div class="sp-truth"><b>Truth first.</b><p>BRYME never publishes a result, scoreline or scorer before a match is played and the outcome is confirmed by the club or official league channels. If a result cannot be verified, it is not shown.</p></div>
+      <section class="sp-related"><h2>Related</h2><div class="sp-rel-grid"><a class="sp-rel" href="${url('/sports/' + lg.slug + '/fixtures/')}">Fixtures</a><a class="sp-rel" href="${url('/sports/' + lg.slug + '/matches/')}">Match Centre</a><a class="sp-rel" href="${url('/sports/transfers/' + lg.slug + '-2026-27/')}">Transfers</a></div></section></main>`;
+    write('sports/' + lg.slug + '/results', layout({ title: `${F.league} Results ${F.season} | BRYME Sports`, description: `${F.league} ${F.season} results — only official, verified match results after matches are played. No results are predicted or assumed.`, path: '/sports/' + lg.slug + '/results/', activeNav: 'sports', schema: [{ '@context':'https://schema.org', '@type':'CollectionPage', name: `${F.league} Results ${F.season}`, url: url('/sports/' + lg.slug + '/results/') }, breadcrumbs(crumbR)], body: bodyR }));
+  }
 }
+
+/* --- match centre + per-match pages (all five leagues) --- */
+function matchCentre(){
+  for (const lg of LEAGUE_FIX) {
+    const F = loadLeagueFixtures(lg.slug);
+    const venueOf = (m) => {
+      const v = (F.venues || {})[m.id] || {};
+      const name = m.venue || v.name || null;
+      const cap = v.capacity;
+      return { name, cap };
+    };
+    const slug = m => m.id + '-vs-' + m.away;
+    const matchUrl = m => '/sports/' + lg.slug + '/matches/' + slug(m) + '/';
+    // --- per-match pages ---
+    (F.matchweeks || []).forEach(w => w.matches.forEach(m => {
+      const v = venueOf(m);
+      const t = leagueTimeInfo(lg, m);
+      const sections = (S.matchCentre.matchPageSections || []).map(s => {
+        const isPost = /result after the game|post-match/i.test(s);
+        return `<div class="sp-msec"><span class="sp-pend">${isPost ? 'After full-time' : 'Pending verification'}</span><b>${esc(s)}</b><p>${isPost ? 'This section is written after the match, once the result is officially confirmed.' : 'Filled in with verified data only — never predicted or fabricated.'}</p></div>`;
+      }).join('');
+      const crumbs = [{name:'Home', path:'/'}, {name:'BRYME Sports', path:'/sports/'}, {name:F.league, path:'/sports/' + lg.slug + '/'}, {name:'Match Centre', path:'/sports/' + lg.slug + '/matches/'}, {name:m.homeName + ' v ' + m.awayName, path: matchUrl(m)}];
+      const body = `<main class="shell"><div class="crumb"><a href="${url('/')}">Home</a> / <a href="${url('/sports/')}">BRYME Sports</a> / <a href="${url('/sports/' + lg.slug + '/')}">${esc(F.league)}</a> / <a href="${url('/sports/' + lg.slug + '/matches/')}">Match Centre</a> / ${esc(m.homeName)} v ${esc(m.awayName)}</div>
+        <section class="hero"><div class="eyebrow">⚽ ${esc(F.league)} ${esc(F.season)} · ${esc(lg.roundLabel)} ${w.number}</div><h1>${esc(m.homeName)} v ${esc(m.awayName)}</h1></section>
+        <div class="sp-match-hero"><img src="${lg.crest(m.id)}" alt="${lg.alt(m.id, m.homeName)}" width="64" height="77"><span class="sp-mh-vs">v</span><img src="${lg.crest(m.away)}" alt="${lg.alt(m.away, m.awayName)}" width="64" height="77"><div><span class="sp-pill">Upcoming — not yet played</span><h1 style="margin-top:6px">${esc(m.homeName)} v ${esc(m.awayName)}</h1><p class="sp-match-meta"><span><b>Date:</b> ${esc(m.dayLabel)}</span><span><b>Kickoff:</b> ${m.time ? esc(t.display.replace(/<[^>]+>/g, '')) + (t.wat ? esc(t.wat.replace(/<[^>]+>/g, '')) : '') : 'TBC — announced closer to the round'}</span>${m.tv ? `<span><b>TV:</b> ${esc(m.tv)}</span>` : ''}<span><b>Venue:</b> ${esc(v.name || 'TBC')}${v.cap ? ' · ' + esc(Number(v.cap).toLocaleString('en-GB')) : ''}</span></p>${m.note ? `<p class="sp-match-meta" style="margin-top:6px"><b>Note:</b> ${esc(m.note)}</p>` : ''}</div></div>
+        <div class="sp-truth"><b>Truth first.</b><p>This match has not been played yet — there is no result, scoreline, lineup or statistic to report. Every section below is filled only with verified data as it becomes available (lineups at kickoff, result after full-time). BRYME never predicts scores or fabricates match details.</p></div>
+        <h3 class="sp-dir">Match analysis sections</h3>
+        <div class="sp-msec-grid">${sections}</div>
+        <section class="sp-related"><h2>Related</h2><div class="sp-rel-grid"><a class="sp-rel" href="${url('/sports/' + lg.slug + '/fixtures/')}">Fixtures</a><a class="sp-rel" href="${url('/sports/' + lg.slug + '/results/')}">Results</a><a class="sp-rel" href="${url('/sports/' + lg.slug + '/matches/')}">Match Centre</a><a class="sp-rel" href="${url('/sports/')}">BRYME Sports</a></div></section></main>`;
+      let startDate;
+      const off = lg.slug === 'premier-league' ? (euDstOffset(m.date) - 1) : euDstOffset(m.date);
+      if (m.time) {
+        startDate = m.date + 'T' + m.time + ':00' + (off === 2 ? '+02:00' : off === 1 ? '+01:00' : '+00:00');
+      } else {
+        startDate = m.date;
+      }
+      write('sports/' + lg.slug + '/matches/' + slug(m), layout({
+        title: `${m.homeName} v ${m.awayName} — ${lg.roundLabel} ${w.number} · ${F.league} ${F.season} | BRYME Sports`,
+        description: `${m.homeName} v ${m.awayName}, ${F.season} ${F.league} ${lg.roundLabel} ${w.number} — ${m.dayLabel}${m.time ? ', ' + m.time + ' local' : ', kickoff TBC'}${v.name ? ' at ' + v.name : ''}. Match analysis sections appear once verified; no results are predicted.`,
+        path: matchUrl(m), activeNav: 'sports',
+        schema: [{ '@context':'https://schema.org', '@type':'SportsEvent', name: m.homeName + ' v ' + m.awayName, startDate, eventStatus: 'https://schema.org/EventScheduled', eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode', location: v.name ? { '@type':'Place', name: v.name } : undefined, homeTeam: { '@type':'SportsTeam', name: m.homeName }, awayTeam: { '@type':'SportsTeam', name: m.awayName }, url: url(matchUrl(m)) }, breadcrumbs(crumbs)],
+        body
+      }));
+      LEAGUE_MATCH_PATHS.push(matchUrl(m));
+    }));
+    // --- match centre hub ---
+    const mw1 = (F.matchweeks && F.matchweeks[0]) || { number: 1, matches: [] };
+    const cards = mw1.matches.map(m => `<div class="sp-mc-card solid" aria-label="${esc(m.homeName)} v ${esc(m.awayName)} — ${esc(m.dayLabel)}${m.time ? ', ' + esc(m.time) : ''}"><div class="sp-mc-crests"><img src="${lg.crest(m.id)}" alt="" width="30" height="36"><span class="sp-vs">v</span><img src="${lg.crest(m.away)}" alt="" width="30" height="36"></div><b>${esc(m.homeName)} v ${esc(m.awayName)}</b><p>${esc(m.dayLabel)}${m.time ? ' · ' + esc(m.time) + (lg.timeSuffix ? ' ' + esc(lg.timeSuffix) : ' local') : ' · Time TBC'}${m.tv ? ' · ' + esc(m.tv) : ''}</p><a class="sp-mc-go" href="${url(matchUrl(m))}">Match page →</a></div>`).join('');
+    const crumbs = [{name:'Home', path:'/'}, {name:'BRYME Sports', path:'/sports/'}, {name:F.league, path:'/sports/' + lg.slug + '/'}, {name:'Match Centre', path:'/sports/' + lg.slug + '/matches/'}];
+    const total = (F.matchweeks || []).reduce((n, w) => n + w.matches.length, 0);
+    const body = `<main class="shell"><div class="crumb"><a href="${url('/')}">Home</a> / <a href="${url('/sports/')}">BRYME Sports</a> / <a href="${url('/sports/' + lg.slug + '/')}">${esc(F.league)}</a> / Match Centre</div>
+      <section class="hero"><div class="eyebrow">⚽ ${esc(F.league)} · Match Centre</div><h1>${esc(F.league)} ${esc(lg.roundLabel)} ${mw1.number}</h1><p class="lead">${esc(lg.roundLabel)} ${mw1.number} fixtures with dates and kick-off times from the official ${esc(F.league)} calendar. Every one of the ${total} matches in the ${esc(F.season)} season has its own match page.</p></section>
+      <p class="sp-updated">Last updated: ${esc(F.lastUpdated || 'Pending verification')}</p>
+      <div class="sp-truth"><b>Truth first.</b><p>Every fixture has its own match page with the officially published date${(F.matchweeks || []).some(w => w.matches.some(x => x.time)) ? ' and kick-off time' : ''}. Match analysis sections (lineups, injuries, form, result, post-match) are filled in only with verified data — never predicted or fabricated.</p></div>
+      <h3 class="sp-dir">${esc(lg.roundLabel)} ${mw1.number} — ${esc([...new Set(mw1.matches.map(x => x.dayLabel))].join(' · '))}</h3>
+      <div class="sp-mc-grid">${cards}</div>
+      <p class="sp-freq-note">Looking for the whole season? See <a href="${url('/sports/' + lg.slug + '/fixtures/')}">all ${total} fixtures across ${(F.matchweeks || []).length} rounds</a>.</p>
+      <section class="sp-related"><h2>Match page sections</h2><p class="sp-source-note">Every match gets its own analysis page at /sports/${lg.slug}/matches/[team-a]-vs-[team-b]/ with:</p><div class="sp-rel-grid">${S.matchCentre.matchPageSections.map(s => `<span class="sp-rel sp-rel-static">${esc(s)}</span>`).join('')}</div></section>
+      <section class="sp-related"><h2>Related</h2><div class="sp-rel-grid"><a class="sp-rel" href="${url('/sports/' + lg.slug + '/fixtures/')}">Fixtures</a><a class="sp-rel" href="${url('/sports/' + lg.slug + '/results/')}">Results</a><a class="sp-rel" href="${url('/sports/transfers/' + lg.slug + '-2026-27/')}">Transfers</a><a class="sp-rel" href="${url('/sports/')}">BRYME Sports</a></div></section></main>`;
+    write('sports/' + lg.slug + '/matches', layout({ title: `${F.league} ${lg.roundLabel} ${mw1.number} | BRYME Sports`, description: `${F.league} ${lg.roundLabel} ${mw1.number} — fixtures, kick-off times and match pages. All ${total} matches of the ${F.season} season have their own page; analysis sections fill in with verified data only.`, path: '/sports/' + lg.slug + '/matches/', activeNav: 'sports', schema: [{ '@context':'https://schema.org', '@type':'CollectionPage', name: `${F.league} ${lg.roundLabel} ${mw1.number}`, url: url('/sports/' + lg.slug + '/matches/') }, breadcrumbs(crumbs)], body }));
+  }
+}
+
 /* --- PL hub: hero carousel + links --- */
 function plHub(){
   const heroCards = (S.hero.cards || []).map((c, i) => `<a class="sp-hero-card${i === 0 ? ' sp-hero-first' : ''}" href="${url(c.route + '/')}" style="--card-img:url('${url('/assets/img/sports/' + (c.img || 'hero-matchweek.jpg'))}')"><span class="sp-hero-tag">${esc(c.tag)}</span><h3>${esc(c.title)}</h3><p>${esc(c.desc)}</p><span class="sp-hero-go">Read →</span></a>`).join('');
@@ -1042,6 +1106,7 @@ function buildLeagueTrackers(){
       <div class="sp-credits">${CREDIT_LINES[lg.id] || ''}</div>
       <p class="sp-window-note">Transfer window still open: this page will be updated as new deals are officially confirmed.</p>
       <section class="sp-source"><h2>Sources</h2><p>${(lg.sources || []).map(esc).join(' · ')}</p><p class="sp-source-note">Transfer information is summarised in BRYME's own words. Where an external report is used, the source is named. Rumours are never presented as confirmed transfers.</p></section>
+      <section class="sp-related"><h2>Related</h2><div class="sp-rel-grid"><a class="sp-rel" href="${url('/sports/' + lg.id + '/fixtures/')}">Fixtures</a><a class="sp-rel" href="${url('/sports/' + lg.id + '/results/')}">Results</a><a class="sp-rel" href="${url('/sports/' + lg.id + '/matches/')}">Match Centre</a><a class="sp-rel" href="${url('/sports/managers-2026-27/')}">Managers</a></div></section>
       <p class="sp-signoff">BRYME Sports — Discover what you love, learn what you need, and find what's next.</p></main>`;
     write('sports/transfers/' + lg.id + '-2026-27', layout({
       title: lg.name + ' Transfers 2026/27: All Clubs, Players In & Out',
@@ -1055,13 +1120,14 @@ function buildLeagueTrackers(){
 /* --- execute --- */
 (S.articlePlaceholders || []).forEach(sportArticlePlaceholder);
 buildPlTransferTracker(); buildLeagueTrackers();
-transfersHub(); managersPage(); editorialTablePage(); fplHub(); const FIX = fixturesResults(); matchCentre(FIX); plHub();
+transfersHub(); managersPage(); editorialTablePage(); fplHub(); fixturesResults(); matchCentre(); plHub();
 // cleanup any stray non-prefixed sports pages (from earlier builds)
 for (const stray of ['premier-league', 'fpl']) {
   if (fs.existsSync(path.join(root, stray)) && !['premier-league', 'fpl'].includes(stray)) {}
 }
 const sportsExtraPaths = [];
-['sports/transfers', 'sports/managers-2026-27', 'sports/premier-league/table', 'sports/fpl', 'sports/fpl/gameweek-' + MW, 'sports/premier-league/fixtures', 'sports/premier-league/results', 'sports/premier-league/matches'].forEach(p => sportsExtraPaths.push('/' + p + '/'));
+['sports/transfers', 'sports/managers-2026-27', 'sports/premier-league/table', 'sports/fpl', 'sports/fpl/gameweek-' + MW].forEach(p => sportsExtraPaths.push('/' + p + '/'));
+['premier-league','la-liga','serie-a','bundesliga','ligue-1'].forEach(slug => ['fixtures','results','matches'].forEach(pp => sportsExtraPaths.push('/sports/' + slug + '/' + pp + '/')));
 (S.articlePlaceholders || []).forEach(a => sportsExtraPaths.push('/sports/' + a.route + '/'));
 (S.hero.cards || []).forEach(c => sportsExtraPaths.push(c.route + '/'));
 S.transfers.leagues.forEach(l => sportsExtraPaths.push('/sports/transfers/' + l.id + '-2026-27/'));
@@ -1586,7 +1652,7 @@ for (const page of legalPages) {
 const genrePaths = typeConfig.flatMap(t => [...genreIndexByType[t.dir].keys()].map(s => `/${t.pageDir}/${s}/`));
 const legalPaths = legalPages.map(p => '/' + p.dir + '/');
 const verticalPaths = ['/entertainment/'].concat(VERTICALS.flatMap(v => ['/' + v.dir + '/'].concat((v.categories || []).map(c => '/' + v.dir + '/' + c.slug + '/'))));
-const paths = ['/','/movies/','/series/','/anime/','/trending/','/genres/','/years/','/topics/','/articles/', ...legalPaths, ...verticalPaths, ...sportsExtraPaths, ...matchPagePaths, ...genrePaths, ...movies.map(m => `/${m.typeDir || 'movie'}/${m.slug}/`), ...[...yearMap.keys()].map(y => `/year/${y}/`), ...[...seriesYearMap.keys()].map(y => `/series/${y}/`), ...[...animeYearMap.keys()].map(y => `/anime/${y}/`), ...articles.map(a => `/article/${a.slug}/`), ...topics.map(t => `/topic/${t.slug}/`), ...[...articleCategoryMap.keys()].map(s => `/articles/${s}/`)];
+const paths = ['/','/movies/','/series/','/anime/','/trending/','/genres/','/years/','/topics/','/articles/', ...legalPaths, ...verticalPaths, ...sportsExtraPaths, ...LEAGUE_MATCH_PATHS, ...genrePaths, ...movies.map(m => `/${m.typeDir || 'movie'}/${m.slug}/`), ...[...yearMap.keys()].map(y => `/year/${y}/`), ...[...seriesYearMap.keys()].map(y => `/series/${y}/`), ...[...animeYearMap.keys()].map(y => `/anime/${y}/`), ...articles.map(a => `/article/${a.slug}/`), ...topics.map(t => `/topic/${t.slug}/`), ...[...articleCategoryMap.keys()].map(s => `/articles/${s}/`)];
 fs.writeFileSync(path.join(root, '404.html'), layout({
   title: 'Page not found', description: 'This page is not available on BRYME.', path: '/404.html', noindex: true,
   body: `<main class="shell"><section class="hero"><div class="eyebrow">404</div><h1>Looks like this one disappeared.</h1><p class="lead">Try searching the catalogue, or browse a single content type.</p><p><a class="cta" href="${url('/search/')}">Search everything</a> <a class="quiet-link" href="${url('/movies/')}">Movies</a> <a class="quiet-link" href="${url('/series/')}">Series</a> <a class="quiet-link" href="${url('/anime/')}">Anime</a> <a class="quiet-link" href="${url('/articles/')}">Latest articles</a></p></section></main>`

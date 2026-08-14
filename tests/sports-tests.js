@@ -292,5 +292,80 @@ section('Responsive CSS');
   assert(/\.sp-table\{[^}]*min-width:640px/.test(css), 'tables scroll horizontally instead of overflowing');
 }
 
+/* 7b. Other leagues — fixtures, results, match centre, match pages */
+section('La Liga, Serie A, Bundesliga, Ligue 1 — fixtures & matches');
+{
+  const leagues = [
+    { slug: 'la-liga', name: 'La Liga', round: 'Jornada', total: 380, per: 10, times: 40, mwCount: 38 },
+    { slug: 'serie-a', name: 'Serie A', round: 'Giornata', total: 380, per: 10, times: 48, mwCount: 38 },
+    { slug: 'bundesliga', name: 'Bundesliga', round: 'Spieltag', total: 306, per: 9, times: 306, mwCount: 34 },
+    { slug: 'ligue-1', name: 'Ligue 1', round: 'Journée', total: 306, per: 9, times: 27, mwCount: 34 },
+  ];
+  for (const lg of leagues) {
+    // fixtures page
+    const fx = read(`sports/${lg.slug}/fixtures/index.html`);
+    assert(fx.indexOf(`${lg.name} Fixtures 2026/27`) > -1, `${lg.slug}: fixtures title`);
+    assert((fx.match(/class="sp-fixture"/g) || []).length === lg.total, `${lg.slug}: ${lg.total} fixture rows`);
+    assert((fx.match(/class="sp-mw"/g) || []).length === lg.mwCount, `${lg.slug}: ${lg.mwCount} round blocks`);
+    assert((fx.match(/class="sp-mwnav"/g) || []).length >= 1, `${lg.slug}: round jump nav`);
+    assert(fx.indexOf(`${lg.round} ${lg.mwCount}`) > -1, `${lg.slug}: last round label present`);
+    assert(fx.indexOf('1-0') === -1 && fx.indexOf('0-1') === -1 && fx.indexOf('2-0') === -1, `${lg.slug}: no scores on fixtures`);
+    assert(fx.indexOf('Last updated: 14 August 2026') > -1, `${lg.slug}: last-updated date`);
+    // results page
+    const rs = read(`sports/${lg.slug}/results/index.html`);
+    assert(/No matches played yet/.test(rs), `${lg.slug}: results honest empty state`);
+    assert(/never predicted/.test(rs), `${lg.slug}: results no prediction`);
+    assert(rs.indexOf(`Upcoming — ${lg.round} 1`) > -1, `${lg.slug}: results next-round preview`);
+    // match centre
+    const mc = read(`sports/${lg.slug}/matches/index.html`);
+    assert(mc.indexOf(`${lg.name} ${lg.round} 1`) > -1, `${lg.slug}: match centre title`);
+    assert((mc.match(/class="sp-mc-card solid"/g) || []).length === lg.per, `${lg.slug}: ${lg.per} round-1 cards`);
+    assert(mc.indexOf(`all ${lg.total} fixtures`) > -1, `${lg.slug}: match centre total note`);
+    // data file
+    const F = JSON.parse(read(`content/fixtures-${lg.slug}.json`));
+    assert(F.matchweeks.length === lg.mwCount, `${lg.slug}: ${lg.mwCount} rounds in data`);
+    const all = F.matchweeks.flatMap(w => w.matches);
+    assert(all.length === lg.total, `${lg.slug}: ${lg.total} matches in data`);
+    const tm = all.filter(m => m.timePublished).length;
+    assert(tm === lg.times, `${lg.slug}: ${lg.times} published times (got ${tm})`);
+    const teams = new Set();
+    all.forEach(m => { teams.add(m.id); teams.add(m.away); });
+    assert(teams.size === (lg.per * 2), `${lg.slug}: ${lg.per * 2} clubs`);
+    // sitemap
+    const sm = read('sitemap.xml');
+    for (const p of [`/sports/${lg.slug}/fixtures/`, `/sports/${lg.slug}/results/`, `/sports/${lg.slug}/matches/`]) {
+      assert(sm.indexOf('nextclip' + p) > -1, `${lg.slug} sitemap: ${p}`);
+    }
+  }
+  // per-match pages spot checks
+  const ll = read('sports/la-liga/matches/espanyol-vs-real-madrid/index.html');
+  assert(/Jornada 2/.test(ll) && /21:30 CEST/.test(ll) && /RCDE Stadium/.test(ll), 'La Liga match page: Espanyol v Real Madrid (J2, 21:30 CEST, RCDE)');
+  const ll2 = read('sports/la-liga/matches/celta-vigo-vs-osasuna/index.html');
+  assert(/Postponed from 16 August 2026/.test(ll2) && /20:30 CEST/.test(ll2), 'La Liga match page: Celta-Osasuna postponement note');
+  const sa = read('sports/serie-a/matches/genoa-vs-napoli/index.html');
+  assert(/Giornata 1/.test(sa) && /20:45 CEST/.test(sa) && /Stadio Luigi Ferraris/.test(sa), 'Serie A match page: Genoa v Napoli (G1, 20:45 CEST)');
+  const bl = read('sports/bundesliga/matches/bayern-vs-stuttgart/index.html');
+  assert(/Spieltag 1/.test(bl) && /20:30 CEST/.test(bl) && /Allianz Arena/.test(bl), 'Bundesliga match page: Bayern v Stuttgart (S1, 20:30 CEST)');
+  const l1 = read('sports/ligue-1/matches/marseille-vs-strasbourg/index.html');
+  assert(/Journée 1/.test(l1) && /20:45 CEST/.test(l1) && /Stade Vélodrome/.test(l1), 'Ligue 1 match page: Marseille v Strasbourg (J1, 20:45 CEST)');
+  const l1t = read('sports/ligue-1/matches/psg-vs-rennes/index.html');
+  assert(/Journée 1/.test(l1t) && /Parc des Princes/.test(l1t), 'Ligue 1 match page: PSG v Rennes venue');
+  const l1tbc = read('sports/ligue-1/matches/angers-vs-auxerre/index.html');
+  assert(/TBC — announced closer to the round/.test(l1tbc), 'Ligue 1 match page: honest TBC kickoff (round 4+)');
+  // every match page exists for all leagues
+  for (const lg of leagues) {
+    const F = JSON.parse(read(`content/fixtures-${lg.slug}.json`));
+    const slugs = F.matchweeks.flatMap(w => w.matches).map(m => `sports/${lg.slug}/matches/${m.id}-vs-${m.away}/index.html`);
+    const missing = slugs.filter(p => !fs.existsSync(path.join(ROOT, p)));
+    assert(missing.length === 0, `${lg.slug}: all ${slugs.length} per-match pages generated` + (missing.length ? ' — missing ' + missing.length : ''));
+  }
+  // league fixtures JSON-LD on a match page
+  const ld = read('sports/bundesliga/matches/bayern-vs-stuttgart/index.html');
+  assert(/SportsEvent/.test(ld) && /2026-08-28T20:30:00\+02:00/.test(ld), 'Bundesliga match page: JSON-LD startDate with CEST offset');
+  const ld2 = read('sports/serie-a/matches/genoa-vs-napoli/index.html');
+  assert(/2026-08-22T20:45:00\+02:00/.test(ld2), 'Serie A match page: JSON-LD startDate');
+}
+
 console.log('\nRESULTS: ' + pass + ' passed, ' + fail + ' failed');
 process.exit(fail ? 1 : 0);
+
