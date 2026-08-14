@@ -1,0 +1,23 @@
+{
+  "league":"Premier League","season":"2026/27","lastChecked":"2026-08-14","sourcePolicy":"Founding and stadium facts require an official club source or a cited reference source. Major-honours totals are deliberately withheld until each club record is independently reconciled against official club/competition honours lists.","clubs":[
+{"slug":"arsenal","name":"Arsenal","founded":"1886","city":"London, England","stadium":"Emirates Stadium","source":"https://www.arsenal.com/history"},
+{"slug":"aston-villa","name":"Aston Villa","founded":"1874","city":"Birmingham, England","stadium":"Villa Park","source":"https://www.avfc.co.uk/club/history"},
+{"slug":"bournemouth","name":"AFC Bournemouth","founded":"1899","city":"Bournemouth, England","stadium":"Vitality Stadium","source":"https://www.afcb.co.uk/club/history/"},
+{"slug":"brentford","name":"Brentford","founded":"1889","city":"Brentford, England","stadium":"Gtech Community Stadium","source":"https://www.brentfordfc.com/en/history"},
+{"slug":"brighton","name":"Brighton & Hove Albion","founded":"1901","city":"Brighton, England","stadium":"American Express Stadium","source":"https://www.brightonandhovealbion.com/club/history"},
+{"slug":"chelsea","name":"Chelsea","founded":"1905","city":"London, England","stadium":"Stamford Bridge","source":"https://www.chelseafc.com/en/about-chelsea/history"},
+{"slug":"coventry","name":"Coventry City","founded":"1883","city":"Coventry, England","stadium":"Coventry Building Society Arena","source":"https://www.ccfc.co.uk/club/history/"},
+{"slug":"crystal-palace","name":"Crystal Palace","founded":"1905","city":"London, England","stadium":"Selhurst Park","source":"https://www.cpfc.co.uk/club/history/"},
+{"slug":"everton","name":"Everton","founded":"1878","city":"Liverpool, England","stadium":"Hill Dickinson Stadium","source":"https://www.evertonfc.com/club/history"},
+{"slug":"fulham","name":"Fulham","founded":"1879","city":"London, England","stadium":"Craven Cottage","source":"https://www.fulhamfc.com/club/history"},
+{"slug":"hull","name":"Hull City","founded":"1904","city":"Hull, England","stadium":"MKM Stadium","source":"https://www.wearehullcity.co.uk/club/history"},
+{"slug":"ipswich","name":"Ipswich Town","founded":"1878","city":"Ipswich, England","stadium":"Portman Road","source":"https://www.itfc.co.uk/club/history"},
+{"slug":"leeds","name":"Leeds United","founded":"1919","city":"Leeds, England","stadium":"Elland Road","source":"https://www.leedsunited.com/club/history"},
+{"slug":"liverpool","name":"Liverpool","founded":"1892","city":"Liverpool, England","stadium":"Anfield","source":"https://www.liverpoolfc.com/history"},
+{"slug":"man-city","name":"Manchester City","founded":"1894","city":"Manchester, England","stadium":"Etihad Stadium","source":"https://www.mancity.com/club/history"},
+{"slug":"man-united","name":"Manchester United","founded":"1878","city":"Manchester, England","stadium":"Old Trafford","source":"https://www.manutd.com/en/history"},
+{"slug":"newcastle","name":"Newcastle United","founded":"1892","city":"Newcastle upon Tyne, England","stadium":"St James' Park","source":"https://www.nufc.co.uk/club/history/"},
+{"slug":"nottingham-forest","name":"Nottingham Forest","founded":"1865","city":"Nottingham, England","stadium":"City Ground","source":"https://www.nottinghamforest.co.uk/club/history/"},
+{"slug":"sunderland","name":"Sunderland","founded":"1879","city":"Sunderland, England","stadium":"Stadium of Light","source":"https://www.safc.com/club/history"},
+{"slug":"tottenham","name":"Tottenham Hotspur","founded":"1882","city":"London, England","stadium":"Tottenham Hotspur Stadium","source":"https://www.tottenhamhotspur.com/the-club/history-and-honours/"}
+]}
