@@ -1,0 +1,22 @@
+{"league":"La Liga","season":"2026/27","lastChecked":"2026-08-14","sourcePolicy":"Founding and stadium facts use cited reference links. Major-honours totals remain withheld until independently reconciled.","clubs":[
+{"slug":"alaves","name":"Deportivo Alavés","founded":"1921","city":"Vitoria-Gasteiz, Spain","stadium":"Mendizorrotza","source":"https://en.wikipedia.org/wiki/Deportivo_Alav%C3%A9s"},
+{"slug":"getafe","name":"Getafe","founded":"1983","city":"Getafe, Spain","stadium":"Coliseum","source":"https://en.wikipedia.org/wiki/Getafe_CF"},
+{"slug":"sevilla","name":"Sevilla","founded":"1890","city":"Seville, Spain","stadium":"Ramón Sánchez Pizjuán","source":"https://en.wikipedia.org/wiki/Sevilla_FC"},
+{"slug":"rayo-vallecano","name":"Rayo Vallecano","founded":"1924","city":"Madrid, Spain","stadium":"Vallecas Stadium","source":"https://en.wikipedia.org/wiki/Rayo_Vallecano"},
+{"slug":"racing","name":"Racing Santander","founded":"1913","city":"Santander, Spain","stadium":"El Sardinero","source":"https://en.wikipedia.org/wiki/Racing_de_Santander"},
+{"slug":"villarreal","name":"Villarreal","founded":"1923","city":"Villarreal, Spain","stadium":"Estadio de la Cerámica","source":"https://en.wikipedia.org/wiki/Villarreal_CF"},
+{"slug":"espanyol","name":"Espanyol","founded":"1900","city":"Barcelona, Spain","stadium":"RCDE Stadium","source":"https://en.wikipedia.org/wiki/RCD_Espanyol"},
+{"slug":"levante","name":"Levante","founded":"1909","city":"Valencia, Spain","stadium":"Ciutat de València","source":"https://en.wikipedia.org/wiki/Levante_UD"},
+{"slug":"celta-vigo","name":"Celta Vigo","founded":"1923","city":"Vigo, Spain","stadium":"Balaídos","source":"https://en.wikipedia.org/wiki/RC_Celta_de_Vigo"},
+{"slug":"osasuna","name":"Osasuna","founded":"1920","city":"Pamplona, Spain","stadium":"El Sadar","source":"https://en.wikipedia.org/wiki/CA_Osasuna"},
+{"slug":"deportivo","name":"Deportivo de La Coruña","founded":"1906","city":"A Coruña, Spain","stadium":"Riazor","source":"https://en.wikipedia.org/wiki/Deportivo_de_La_Coru%C3%B1a"},
+{"slug":"elche","name":"Elche","founded":"1923","city":"Elche, Spain","stadium":"Martínez Valero","source":"https://en.wikipedia.org/wiki/Elche_CF"},
+{"slug":"atletico-madrid","name":"Atlético Madrid","founded":"1903","city":"Madrid, Spain","stadium":"Riyadh Air Metropolitano","source":"https://en.wikipedia.org/wiki/Atl%C3%A9tico_Madrid"},
+{"slug":"malaga","name":"Málaga","founded":"1948","city":"Málaga, Spain","stadium":"La Rosaleda","source":"https://en.wikipedia.org/wiki/M%C3%A1laga_CF"},
+{"slug":"valencia","name":"Valencia","founded":"1919","city":"Valencia, Spain","stadium":"Mestalla","source":"https://en.wikipedia.org/wiki/Valencia_CF"},
+{"slug":"real-betis","name":"Real Betis","founded":"1907","city":"Seville, Spain","stadium":"Benito Villamarín","source":"https://en.wikipedia.org/wiki/Real_Betis"},
+{"slug":"real-madrid","name":"Real Madrid","founded":"1902","city":"Madrid, Spain","stadium":"Santiago Bernabéu","source":"https://en.wikipedia.org/wiki/Real_Madrid_CF"},
+{"slug":"real-sociedad","name":"Real Sociedad","founded":"1909","city":"San Sebastián, Spain","stadium":"Anoeta Stadium","source":"https://en.wikipedia.org/wiki/Real_Sociedad"},
+{"slug":"barcelona","name":"Barcelona","founded":"1899","city":"Barcelona, Spain","stadium":"Spotify Camp Nou","source":"https://en.wikipedia.org/wiki/FC_Barcelona"},
+{"slug":"athletic-bilbao","name":"Athletic Club","founded":"1898","city":"Bilbao, Spain","stadium":"San Mamés","source":"https://en.wikipedia.org/wiki/Athletic_Bilbao"}
+]}
