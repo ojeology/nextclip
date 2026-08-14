@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""NEXTCLIP trailer admin CLI.
+"""BRYME trailer admin CLI.
 
 Manage trailer information without touching frontend code. All changes are
 written to content/trailers.json (per-title candidate lists).
@@ -181,7 +181,7 @@ def cmd_verify(args):
     save_overrides(d)
 
 def main():
-    ap = argparse.ArgumentParser(description='NEXTCLIP trailer admin')
+    ap = argparse.ArgumentParser(description='BRYME trailer admin')
     sub = ap.add_subparsers(dest='cmd')
     p = sub.add_parser('list'); p.add_argument('--status'); p.add_argument('--q')
     sub.add_parser('show').add_argument('slug')

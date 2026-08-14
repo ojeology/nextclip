@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the NEXTCLIP 500-title catalogue batch.
+"""Build the BRYME 500-title catalogue batch.
 Only real, famous titles with verified basic facts (year, country, genre, premise).
 Trailers: only verified official IDs are included; everything else stays empty
 so the site shows the clean 'Trailer unavailable' state."""

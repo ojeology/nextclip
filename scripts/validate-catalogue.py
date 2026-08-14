@@ -39,7 +39,7 @@ valid_genres = {'Drama','Action','Superhero','Sci-Fi','Horror','Thriller','Serie
 bad_genre = sum(1 for x in m if x.get('genre') not in valid_genres)
 
 print("=" * 60)
-print("NEXTCLIP CATALOGUE VALIDATION REPORT")
+print("BRYME CATALOGUE VALIDATION REPORT")
 print("=" * 60)
 print(f"Total titles:            {len(m)}")
 print(f"  Movies:                {types['movie']}")

@@ -1,11 +1,11 @@
-# NEXTCLIP — Product, Content & SEO Audit
+# BRYME — Product, Content & SEO Audit
 
 **Audit date:** 12 August 2026
 **Scope inspected:** entire repository, client UI, data model, routing, media implementation, responsive CSS, metadata, PWA manifest, and Git history.
 
 ## Executive summary
 
-NEXTCLIP is currently a **single-file, client-rendered static prototype**, not yet a crawlable movie platform. The repository has only:
+BRYME (formerly NEXTCLIP) is currently a **single-file, client-rendered static prototype**, not yet a crawlable movie platform. The repository has only:
 
 - `index.html` — 1,309 lines containing all CSS, JavaScript, movie/anime/article data, routing and UI
 - `manifest.webmanifest`
