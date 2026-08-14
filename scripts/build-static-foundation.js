@@ -365,7 +365,8 @@ fs.writeFileSync(path.join(root,'assets/site.css'), css + '\n' + `/* Primary pla
 .sp-pl-hero{padding:44px 0 8px}.sp-pl-hero h1{font-size:clamp(34px,6vw,64px);line-height:1.02;margin:8px 0}
 .sp-hero{position:relative;margin:26px 0 10px;max-width:100%;overflow:hidden}.sp-hero-track{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 48px)/3);gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 2px 18px;scrollbar-width:none;overscroll-behavior-x:contain;scrollbar-gutter:stable}.sp-hero-track::-webkit-scrollbar{display:none}.sp-hero-card{scroll-snap-align:start}
 .sp-hero-card{position:relative;min-height:240px;display:flex;flex-direction:column;justify-content:flex-end;gap:8px;padding:22px;border-radius:12px;background:linear-gradient(150deg,#14241c,#0d1511 70%);border:1px solid rgba(61,220,132,.25);overflow:hidden;scroll-snap-align:start;transition:transform .2s,box-shadow .2s;isolation:isolate}.sp-hero-card:after{content:"";position:absolute;inset:0;z-index:-1;background-image:var(--card-img);background-size:cover;background-position:center;opacity:.28;transition:opacity .3s}.sp-hero-card:hover:after{opacity:.4}.sp-hero-card>*{position:relative;z-index:1;text-shadow:0 2px 8px rgba(0,0,0,.85)}.sp-hero-card:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(0,0,0,.4)}.sp-hero-card:before{content:"";position:absolute;inset:0;opacity:.14;background:radial-gradient(240px 120px at 80% 0,rgba(61,220,132,.8),transparent 70%);pointer-events:none}.sp-hero-first{border-color:rgba(61,220,132,.55)}
-.sp-hero-tag{font-size:10.5px;font-weight:900;letter-spacing:.1em;color:var(--sports);text-transform:uppercase}.sp-hero-card h3{font-size:clamp(17px,1.6vw,21px);line-height:1.2;margin:0}.sp-hero-card p{font-size:12.5px;color:var(--muted);line-height:1.5;margin:0;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}.sp-hero-go{font-size:12px;font-weight:800;color:var(--sports)}
+.sp-hero-tag{font-size:10.5px;font-weight:900;letter-spacing:.1em;color:var(--sports);text-transform:uppercase}.sp-hero-card h3{font-size:clamp(17px,1.6vw,21px);line-height:1.2;margin:0}.sp-hero-card p{font-size:12.5px;color:var(--muted);line-height:1.5;margin:0;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.sp-hero-crests{display:flex;align-items:center;gap:7px}.sp-hero-crests img{width:26px;height:32px;object-fit:contain;filter:drop-shadow(0 2px 6px rgba(0,0,0,.6))}.sp-hero-crests b{color:var(--muted);font-size:10px;font-weight:800}.sp-hero-go{font-size:12px;font-weight:800;color:var(--sports)}
 .sp-hero-arrow{position:absolute;top:40%;transform:translateY(-50%);z-index:3;width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,255,255,.25);background:rgba(8,9,11,.7);color:#fff;font-size:20px;cursor:pointer;display:grid;place-items:center}.sp-hero-prev{left:2px}.sp-hero-next{right:2px}.sp-hero-arrow:hover{border-color:var(--sports)}
 .sp-table-wrap{overflow-x:auto;margin:10px 0 26px;border:1px solid var(--line);border-radius:8px}.sp-table{width:100%;border-collapse:collapse;font-size:13px;min-width:640px}.sp-table th,.sp-table td{padding:10px 12px;border-bottom:1px solid var(--line);text-align:left}.sp-table th{background:#101318;color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.07em}.sp-table td{vertical-align:top}.sp-empty td{color:var(--muted);font-style:italic;padding:22px;line-height:1.6;text-align:center}
 .sp-dir{font-size:17px;margin:22px 0 6px}.sp-st-conf,.sp-st-rep,.sp-st-rum{display:inline-block;font-size:11px;font-weight:800;padding:2px 9px;border-radius:12px;margin-right:6px}.sp-st-conf{background:rgba(61,220,132,.15);color:#3ddc84;border:1px solid rgba(61,220,132,.4)}.sp-st-rep{background:rgba(231,187,92,.12);color:#e7bb5c;border:1px solid rgba(231,187,92,.4)}.sp-st-rum{background:rgba(154,161,169,.12);color:var(--muted);border:1px solid rgba(154,161,169,.4)}
@@ -969,7 +970,19 @@ function matchCentre(){
     }));
     // --- match centre hub ---
     const mw1 = (F.matchweeks && F.matchweeks[0]) || { number: 1, matches: [] };
-    const cards = mw1.matches.map(m => `<div class="sp-mc-card solid" aria-label="${esc(m.homeName)} v ${esc(m.awayName)} — ${esc(m.dayLabel)}${m.time ? ', ' + esc(m.time) : ''}"><div class="sp-mc-crests"><img src="${lg.crest(m.id)}" alt="" width="30" height="36"><span class="sp-vs">v</span><img src="${lg.crest(m.away)}" alt="" width="30" height="36"></div><b>${esc(m.homeName)} v ${esc(m.awayName)}</b><p>${esc(m.dayLabel)}${m.time ? ' · ' + esc(m.time) + (lg.timeSuffix ? ' ' + esc(lg.timeSuffix) : ' local') : ' · Time TBC'}${m.tv ? ' · ' + esc(m.tv) : ''}</p><a class="sp-mc-go" href="${url(matchUrl(m))}">Match page →</a></div>`).join('');
+    const heroImg = url('/assets/img/sports/hero-' + lg.slug + '.jpg');
+    const cards = mw1.matches.map((m, i) => {
+      const t = leagueTimeInfo(lg, m);
+      const timeStr = m.time ? esc(t.display.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim()) : 'Time TBC';
+      const tv = m.tv ? ' · ' + esc(m.tv) : '';
+      return `<a class="sp-hero-card${i === 0 ? ' sp-hero-first' : ''}" href="${url(matchUrl(m))}" style="--card-img:url('${heroImg}')">
+        <span class="sp-hero-crests"><img src="${lg.crest(m.id)}" alt="" width="26" height="32" loading="lazy"><b>v</b><img src="${lg.crest(m.away)}" alt="" width="26" height="32" loading="lazy"></span>
+        <span class="sp-hero-tag">${esc(lg.roundLabel)} ${mw1.number} · ${timeStr}</span>
+        <h3>${esc(m.homeName)} v ${esc(m.awayName)}</h3>
+        <p>${esc(m.dayLabel)}${tv}</p>
+        <span class="sp-hero-go">Match page →</span>
+      </a>`;
+    }).join('');
     const crumbs = [{name:'Home', path:'/'}, {name:'BRYME Sports', path:'/sports/'}, {name:F.league, path:'/sports/' + lg.slug + '/'}, {name:'Match Centre', path:'/sports/' + lg.slug + '/matches/'}];
     const total = (F.matchweeks || []).reduce((n, w) => n + w.matches.length, 0);
     const body = `<main class="shell"><div class="crumb"><a href="${url('/')}">Home</a> / <a href="${url('/sports/')}">BRYME Sports</a> / <a href="${url('/sports/' + lg.slug + '/')}">${esc(F.league)}</a> / Match Centre</div>
@@ -977,7 +990,7 @@ function matchCentre(){
       <p class="sp-updated">Last updated: ${esc(F.lastUpdated || 'Pending verification')}</p>
       <div class="sp-truth"><b>Truth first.</b><p>Every fixture has its own match page with the officially published date${(F.matchweeks || []).some(w => w.matches.some(x => x.time)) ? ' and kick-off time' : ''}. Match analysis sections (lineups, injuries, form, result, post-match) are filled in only with verified data — never predicted or fabricated.</p></div>
       <h3 class="sp-dir">${esc(lg.roundLabel)} ${mw1.number} — ${esc([...new Set(mw1.matches.map(x => x.dayLabel))].join(' · '))}</h3>
-      <div class="sp-mc-grid">${cards}</div>
+      <section class="sp-hero" aria-label="${esc(F.league)} ${esc(lg.roundLabel)} ${mw1.number} fixtures"><div class="sp-hero-track">${cards}</div><button type="button" class="sp-hero-arrow sp-hero-prev" data-sp-hero-prev aria-label="Previous card">‹</button><button type="button" class="sp-hero-arrow sp-hero-next" data-sp-hero-next aria-label="Next card">›</button></section>
       <p class="sp-freq-note">Looking for the whole season? See <a href="${url('/sports/' + lg.slug + '/fixtures/')}">all ${total} fixtures across ${(F.matchweeks || []).length} rounds</a>.</p>
       <section class="sp-related"><h2>Match page sections</h2><p class="sp-source-note">Every match gets its own analysis page at /sports/${lg.slug}/matches/[team-a]-vs-[team-b]/ with:</p><div class="sp-rel-grid">${S.matchCentre.matchPageSections.map(s => `<span class="sp-rel sp-rel-static">${esc(s)}</span>`).join('')}</div></section>
       <section class="sp-related"><h2>Related</h2><div class="sp-rel-grid"><a class="sp-rel" href="${url('/sports/' + lg.slug + '/fixtures/')}">Fixtures</a><a class="sp-rel" href="${url('/sports/' + lg.slug + '/results/')}">Results</a><a class="sp-rel" href="${url('/sports/transfers/' + lg.slug + '-2026-27/')}">Transfers</a><a class="sp-rel" href="${url('/sports/')}">BRYME Sports</a></div></section></main>`;
@@ -1003,6 +1016,52 @@ function plHub(){
     <section class="sp-related"><h2>Related</h2><div class="sp-rel-grid"><a class="sp-rel" href="${url('/sports/transfers/')}">All transfer trackers</a><a class="sp-rel" href="${url('/sports/managers-2026-27/')}">Managers In &amp; Out</a><a class="sp-rel" href="${url('/sports/')}">BRYME Sports</a></div></section></main>`;
   write('sports/premier-league', layout({ title: 'Premier League ' + SEASON + ' | BRYME Sports', description: S.hero.kicker + ' — ' + S.hero.subtitle + ' Matchweek ' + MW + ' previews, transfers, FPL, injuries, fixtures, results and the BRYME editorial table prediction.', path: '/sports/premier-league/', activeNav: 'sports', schema: [{ '@context':'https://schema.org', '@type':'CollectionPage', name: 'Premier League ' + SEASON, url: url('/sports/premier-league/') }, breadcrumbs(crumbs)], body }));
 }
+/* --- league hub pages (La Liga, Serie A, Bundesliga, Ligue 1) — PL-style hero fixture cards --- */
+function leagueHub(){
+  for (const lg of LEAGUE_FIX.filter(l => l.slug !== 'premier-league')) {
+    const F = loadLeagueFixtures(lg.slug);
+    const mw1 = (F.matchweeks && F.matchweeks[0]) || { number: 1, matches: [] };
+    const heroImg = url('/assets/img/sports/hero-' + lg.slug + '.jpg');
+    const card = (m, i) => {
+      const t = leagueTimeInfo(lg, m);
+      const urlM = '/sports/' + lg.slug + '/matches/' + m.id + '-vs-' + m.away + '/';
+      const timeStr = m.time ? esc(t.display.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim()) : 'Time TBC';
+      const tv = m.tv ? ' · ' + esc(m.tv) : '';
+      return `<a class="sp-hero-card${i === 0 ? ' sp-hero-first' : ''}" href="${url(urlM)}" style="--card-img:url('${heroImg}')">
+        <span class="sp-hero-crests"><img src="${lg.crest(m.id)}" alt="" width="26" height="32" loading="lazy"><b>v</b><img src="${lg.crest(m.away)}" alt="" width="26" height="32" loading="lazy"></span>
+        <span class="sp-hero-tag">${esc(lg.roundLabel)} ${mw1.number} · ${timeStr}</span>
+        <h3>${esc(m.homeName)} v ${esc(m.awayName)}</h3>
+        <p>${esc(m.dayLabel)}${m.venue ? ' · ' + esc(m.venue) : ''}${tv}</p>
+        <span class="sp-hero-go">Match page →</span>
+      </a>`;
+    };
+    const cards = mw1.matches.map(card).join('');
+    const total = (F.matchweeks || []).reduce((n, w) => n + w.matches.length, 0);
+    const rounds = (F.matchweeks || []).length;
+    const kicker = F.league + ' ' + F.season;
+    const subtitle = F.league + ' ' + F.season + ' — all ' + total + ' fixtures across ' + rounds + ' rounds from the official calendar. Every match has its own page with the officially published date' + ((F.matchweeks || []).some(w => w.matches.some(x => x.time)) ? ' and kick-off time' : '') + '.';
+    const crumbs = [{name:'Home', path:'/'}, {name:'BRYME Sports', path:'/sports/'}, {name:F.league, path:'/sports/' + lg.slug + '/'}];
+    const body = `<main class="shell"><div class="crumb"><a href="${url('/')}">Home</a> / <a href="${url('/sports/')}">BRYME Sports</a> / ${esc(F.league)}</div>
+      <section class="sp-pl-hero"><div class="eyebrow">⚽ ${esc(F.league)} · ${esc(F.season)}</div><h1>${esc(kicker)}</h1><p class="lead">${esc(subtitle)}</p></section>
+      <section class="sp-hero" aria-label="${esc(F.league)} ${esc(lg.roundLabel)} ${mw1.number} fixtures"><div class="sp-hero-track">${cards}</div><button type="button" class="sp-hero-arrow sp-hero-prev" data-sp-hero-prev aria-label="Previous card">‹</button><button type="button" class="sp-hero-arrow sp-hero-next" data-sp-hero-next aria-label="Next card">›</button></section>
+      <section class="section"><div class="section-head"><h2>${esc(lg.roundLabel)} ${mw1.number} hub</h2></div><div class="vcat-grid">
+        <a class="vcat" href="${url('/sports/' + lg.slug + '/matches/')}"><b>Match Centre</b><span>${esc(lg.roundLabel)} ${mw1.number} fixtures and match analysis</span></a>
+        <a class="vcat" href="${url('/sports/' + lg.slug + '/fixtures/')}"><b>Fixtures</b><span>All ${total} fixtures — dates, kickoffs &amp; match pages</span></a>
+        <a class="vcat" href="${url('/sports/' + lg.slug + '/results/')}"><b>Results</b><span>Completed results</span></a>
+        <a class="vcat" href="${url('/sports/transfers/' + lg.slug + '-2026-27/')}"><b>Transfers</b><span>${esc(F.league)} transfer tracker</span></a>
+        <a class="vcat" href="${url('/sports/managers-2026-27/')}"><b>Managers</b><span>Managers In &amp; Out — ${F.season}</span></a>
+      </div></section>
+      <section class="sp-related"><h2>Related</h2><div class="sp-rel-grid"><a class="sp-rel" href="${url('/sports/transfers/')}">All transfer trackers</a><a class="sp-rel" href="${url('/sports/managers-2026-27/')}">Managers In &amp; Out</a><a class="sp-rel" href="${url('/sports/')}">BRYME Sports</a></div></section></main>`;
+    write('sports/' + lg.slug, layout({
+      title: `${F.league} ${F.season} | BRYME Sports`,
+      description: `${kicker} — ${F.league} ${F.season} ${lg.roundLabel} ${mw1.number} fixtures, ${total} matches across ${rounds} rounds, transfers, results and match pages from the official calendar.`,
+      path: '/sports/' + lg.slug + '/', activeNav: 'sports',
+      schema: [{ '@context':'https://schema.org', '@type':'CollectionPage', name: `${F.league} ${F.season}`, url: url('/sports/' + lg.slug + '/') }, breadcrumbs(crumbs)],
+      body
+    }));
+  }
+}
+
 /* --- full Premier League transfer tracker (20 clubs) --- */
 function buildPlTransferTracker(){
   const plPath = path.join(root, 'content', 'pl-transfers.json');
@@ -1120,7 +1179,7 @@ function buildLeagueTrackers(){
 /* --- execute --- */
 (S.articlePlaceholders || []).forEach(sportArticlePlaceholder);
 buildPlTransferTracker(); buildLeagueTrackers();
-transfersHub(); managersPage(); editorialTablePage(); fplHub(); fixturesResults(); matchCentre(); plHub();
+transfersHub(); managersPage(); editorialTablePage(); fplHub(); fixturesResults(); matchCentre(); plHub(); leagueHub();
 // cleanup any stray non-prefixed sports pages (from earlier builds)
 for (const stray of ['premier-league', 'fpl']) {
   if (fs.existsSync(path.join(root, stray)) && !['premier-league', 'fpl'].includes(stray)) {}
@@ -1128,6 +1187,7 @@ for (const stray of ['premier-league', 'fpl']) {
 const sportsExtraPaths = [];
 ['sports/transfers', 'sports/managers-2026-27', 'sports/premier-league/table', 'sports/fpl', 'sports/fpl/gameweek-' + MW].forEach(p => sportsExtraPaths.push('/' + p + '/'));
 ['premier-league','la-liga','serie-a','bundesliga','ligue-1'].forEach(slug => ['fixtures','results','matches'].forEach(pp => sportsExtraPaths.push('/sports/' + slug + '/' + pp + '/')));
+['premier-league','la-liga','serie-a','bundesliga','ligue-1'].forEach(slug => sportsExtraPaths.push('/sports/' + slug + '/'));
 (S.articlePlaceholders || []).forEach(a => sportsExtraPaths.push('/sports/' + a.route + '/'));
 (S.hero.cards || []).forEach(c => sportsExtraPaths.push(c.route + '/'));
 S.transfers.leagues.forEach(l => sportsExtraPaths.push('/sports/transfers/' + l.id + '-2026-27/'));

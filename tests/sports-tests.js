@@ -212,7 +212,7 @@ section('Match centre, fixtures, results');
 {
   const mc = read('sports/premier-league/matches/index.html');
   assert(/Premier League Matchweek 1/.test(mc), 'match centre title');
-  assert((mc.match(/class="sp-mc-card solid/g) || []).length === 10, 'match centre: 10 Matchweek 1 cards');
+  assert((mc.match(/class="sp-hero-card/g) || []).length === 10, 'match centre: 10 Matchweek 1 hero cards');
   assert(/arsenal-vs-coventry\//.test(mc), 'match centre: links to Arsenal v Coventry page');
   assert(/all 380 fixtures/.test(mc), 'match centre: full-season note');
   for (const sec of ['Match overview', 'Head-to-head record', 'Expected lineups', 'Tactical matchup', 'BRYME editorial outlook', 'Editorial score prediction', 'Post-match analysis']) {
@@ -319,7 +319,7 @@ section('La Liga, Serie A, Bundesliga, Ligue 1 — fixtures & matches');
     // match centre
     const mc = read(`sports/${lg.slug}/matches/index.html`);
     assert(mc.indexOf(`${lg.name} ${lg.round} 1`) > -1, `${lg.slug}: match centre title`);
-    assert((mc.match(/class="sp-mc-card solid"/g) || []).length === lg.per, `${lg.slug}: ${lg.per} round-1 cards`);
+    assert((mc.match(/class="sp-hero-card/g) || []).length === lg.per, `${lg.slug}: ${lg.per} round-1 hero cards`);
     assert(mc.indexOf(`all ${lg.total} fixtures`) > -1, `${lg.slug}: match centre total note`);
     // data file
     const F = JSON.parse(read(`content/fixtures-${lg.slug}.json`));
@@ -337,6 +337,24 @@ section('La Liga, Serie A, Bundesliga, Ligue 1 — fixtures & matches');
       assert(sm.indexOf('nextclip' + p) > -1, `${lg.slug} sitemap: ${p}`);
     }
   }
+  // league hub pages — PL-style hero fixture cards
+  for (const lg of leagues) {
+    const hub = read(`sports/${lg.slug}/index.html`);
+    assert(hub.indexOf(`${lg.name} ${lg.round} 1`) > -1, `${lg.slug} hub: hero section heading`);
+    assert((hub.match(/class="sp-hero-card/g) || []).length === lg.per, `${lg.slug} hub: ${lg.per} hero fixture cards`);
+    assert(/sp-hero-track/.test(hub) && /data-sp-hero-prev/.test(hub) && /data-sp-hero-next/.test(hub), `${lg.slug} hub: carousel track + arrows`);
+    assert(/hero-/.test(hub) && /sp-hero-crests/.test(hub), `${lg.slug} hub: image-backed cards with crests`);
+    assert(hub.indexOf(`/sports/${lg.slug}/matches/`) > -1 && hub.indexOf(`/sports/${lg.slug}/fixtures/`) > -1, `${lg.slug} hub: hub links present`);
+    assert(hub.indexOf(`/sports/transfers/${lg.slug}-2026-27/`) > -1, `${lg.slug} hub: transfers link`);
+    const mc = read(`sports/${lg.slug}/matches/index.html`);
+    assert((mc.match(/class="sp-hero-card/g) || []).length === lg.per, `${lg.slug} match centre: ${lg.per} hero-style cards`);
+    assert(/sp-hero-track/.test(mc) && /data-sp-hero-prev/.test(mc), `${lg.slug} match centre: carousel`);
+  }
+  // Ligue 1 hub now exists (was 404)
+  assert(fs.existsSync(path.join(ROOT, 'sports/ligue-1/index.html')), 'ligue-1 hub page exists');
+  // PL hub unchanged: still 5 hero cards
+  const pl = read('sports/premier-league/index.html');
+  assert((pl.match(/class="sp-hero-card/g) || []).length === 5, 'PL hub: still 5 hero cards');
   // per-match pages spot checks
   const ll = read('sports/la-liga/matches/espanyol-vs-real-madrid/index.html');
   assert(/Jornada 2/.test(ll) && /21:30 CEST/.test(ll) && /RCDE Stadium/.test(ll), 'La Liga match page: Espanyol v Real Madrid (J2, 21:30 CEST, RCDE)');
