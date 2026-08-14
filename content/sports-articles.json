@@ -235,19 +235,79 @@
       "slug": "premier-league-matchweek-1-guide",
       "title": "Premier League Matchweek 1: Everything You Need to Know",
       "category": "Matchweek coverage",
-      "status": "draft",
+      "status": "review",
       "labels": [
         "matchweek",
-        "featured"
+        "featured",
+        "analysis"
       ],
       "author": "BRYME Sports Editorial",
       "publicationDate": null,
       "lastUpdated": null,
-      "seoTitle": "Premier League Matchweek 1: Everything You Need to Know | BRYME Sports",
-      "metaDescription": null,
+      "seoTitle": "Premier League 2026/27 — Matchday 1 Analysis | BRYME Sports",
+      "metaDescription": "Review-stage Matchweek 1 analysis for the Premier League 2026/27 opening round. Match results and post-match analysis remain pending.",
       "heroImage": null,
-      "body": [],
-      "relatedArticles": []
+      "body": [
+        {
+          "heading": "Editorial review status",
+          "text": "This Matchweek 1 analysis is in editorial review. It is not published or indexed. Results and post-match analysis fields will remain blank until each fixture has been played and verified."
+        },
+        {
+          "heading": "Managerial context",
+          "text": "The supplied research packet identifies nine clubs beginning the season under a head coach appointed since May 2026: Manchester City, Chelsea, Liverpool, Bournemouth, Crystal Palace, Nottingham Forest, Ipswich Town, Fulham and Newcastle United."
+        },
+        {
+          "heading": "Arsenal vs Coventry City",
+          "text": "Friday 21 August, Emirates Stadium. Planned analysis: Arsenal begin their title defence against newly promoted Coventry. Research notes flag Arsenal centre-back availability and Coventry’s compact defensive approach as the early tactical questions. BRYME editorial score prediction: Arsenal 2–0 Coventry City. Match result after the game: pending. Post-match analysis: pending."
+        },
+        {
+          "heading": "Hull City vs Manchester United",
+          "text": "Saturday 22 August, MKM Stadium. Planned analysis: promoted Hull host Manchester United under Michael Carrick. The review packet flags Hull’s extensive defensive injury list as a key pre-match factor. BRYME editorial score prediction: Hull City 1–2 Manchester United. Match result after the game: pending. Post-match analysis: pending."
+        },
+        {
+          "heading": "Everton vs Crystal Palace",
+          "text": "Saturday 22 August, Hill Dickinson Stadium. Planned analysis: David Moyes’ Everton face Pierre Sage’s new-look Palace. The research packet explicitly flags conflicting reports for the most recent meeting; this must be checked against the official Premier League record before publication. BRYME editorial score prediction: Everton 1–1 Crystal Palace. Match result after the game: pending. Post-match analysis: pending."
+        },
+        {
+          "heading": "Nottingham Forest vs Leeds United",
+          "text": "Saturday 22 August, City Ground. Planned analysis: Oliver Glasner begins at Forest against a more settled Leeds under Daniel Farke. The main theme is early cohesion versus Forest’s attacking ceiling. BRYME editorial score prediction: Nottingham Forest 2–1 Leeds United. Match result after the game: pending. Post-match analysis: pending."
+        },
+        {
+          "heading": "Ipswich Town vs Sunderland",
+          "text": "Saturday 22 August, Portman Road. Planned analysis: Gary O’Neil’s newly promoted Ipswich face a Sunderland side with greater continuity. The supplied packet identifies Ipswich’s goalkeeper situation and summer turnover as key watch points. BRYME editorial score prediction: Ipswich Town 1–1 Sunderland. Match result after the game: pending. Post-match analysis: pending."
+        },
+        {
+          "heading": "Brentford vs Tottenham Hotspur",
+          "text": "Saturday 22 August, Gtech Community Stadium. Planned analysis: Keith Andrews’ Brentford meet Roberto De Zerbi’s Tottenham. The focal point is whether Tottenham’s new possession structure can handle Brentford’s organised pressing. BRYME editorial score prediction: Brentford 1–1 Tottenham Hotspur. Match result after the game: pending. Post-match analysis: pending."
+        },
+        {
+          "heading": "Brighton & Hove Albion vs Aston Villa",
+          "text": "Sunday 23 August, American Express Stadium. Planned analysis: settled managers Fabian Hürzeler and Unai Emery meet in a fixture where Villa’s recent record against Brighton is central to the preview. BRYME editorial score prediction: Brighton & Hove Albion 1–2 Aston Villa. Match result after the game: pending. Post-match analysis: pending."
+        },
+        {
+          "heading": "Manchester City vs Bournemouth",
+          "text": "Sunday 23 August, Etihad Stadium. Planned analysis: Enzo Maresca’s first home league match after Guardiola’s departure against Marco Rose’s Bournemouth. The supplied research identifies Rodri’s absence and both clubs’ managerial transitions as major factors. BRYME editorial score prediction: Manchester City 2–1 Bournemouth. Match result after the game: pending. Post-match analysis: pending."
+        },
+        {
+          "heading": "Newcastle United vs Liverpool",
+          "text": "Sunday 23 August, St James’ Park. Planned analysis: Matthias Jaissle’s Newcastle welcome Andoni Iraola’s Liverpool in an opening-weekend meeting of two new systems. The research packet requires final injury and squad checks close to kick-off. BRYME editorial score prediction: Newcastle United 1–2 Liverpool. Match result after the game: pending. Post-match analysis: pending."
+        },
+        {
+          "heading": "Fulham vs Chelsea",
+          "text": "Monday 24 August, Craven Cottage. Planned analysis: Álvaro Arbeloa’s Fulham and Xabi Alonso’s Chelsea begin new coaching eras in a West London derby. BRYME editorial score prediction: Fulham 1–1 Chelsea. Match result after the game: pending. Post-match analysis: pending."
+        },
+        {
+          "heading": "Research sources to verify before publication",
+          "text": "The supplied packet cites Premier League official fixture and preview material, ESPN, Sky Sports, BBC Sport, Yahoo Sports, Sporting News, NBC Sports, FotMob, club-specific reporting and other preview sources. Each factual claim, injury, lineup, transfer and source reference requires final editorial verification before this article can move from Review to Published."
+        }
+      ],
+      "relatedArticles": [],
+      "reviewSnapshot": "14 August 2026",
+      "reviewNotes": [
+        "Season begins 21 August 2026; no match has been played at the time of this research packet.",
+        "Team news, injuries and expected lineups are provisional and must be rechecked within 48 hours of kick-off.",
+        "The Everton–Crystal Palace most-recent meeting has a documented source conflict and requires official Premier League verification before publication."
+      ]
     },
     {
       "slug": "players-to-watch-this-weekend",
