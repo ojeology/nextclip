@@ -710,3 +710,16 @@
     });
   }
 })();
+/* Persistent back control */
+(function () {
+  'use strict';
+  if (location.pathname === '/' || document.querySelector('[data-bryme-back]')) return;
+  var back = document.createElement('button');
+  back.type = 'button'; back.className = 'bryme-back'; back.setAttribute('data-bryme-back','');
+  back.setAttribute('aria-label', 'Go back'); back.innerHTML = '← <span>Back</span>';
+  back.addEventListener('click', function () {
+    if (history.length > 1 && document.referrer && new URL(document.referrer).origin === location.origin) history.back();
+    else location.href = '/';
+  });
+  document.body.appendChild(back);
+})();
