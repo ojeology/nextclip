@@ -19,8 +19,15 @@ const CURRENT_YEAR = new Date().getFullYear();
 const clean = v => String(v || '').replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
 const slugify = v => clean(v).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 const esc = v => String(v ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-const url = p => site.url + p;
-const breadcrumbs = items => ({ '@context':'https://schema.org', '@type':'BreadcrumbList', itemListElement:items.map((item, index) => ({ '@type':'ListItem', position:index+1, name:item.name, item:url(item.path) })) });
+/* Internal links are root-relative so the site works from any host (Render today,
+   a custom domain later). absUrl() builds absolute production URLs where the web
+   requires them (canonical, og:url, sitemap, robots, structured data). */
+const url = p => {
+  const q = String(p || '/');
+  return q.charAt(0) === '/' ? q : '/' + q;
+};
+const absUrl = p => site.url + url(p);
+const breadcrumbs = items => ({ '@context':'https://schema.org', '@type':'BreadcrumbList', itemListElement:items.map((item, index) => ({ '@type':'ListItem', position:index+1, name:item.name, item:absUrl(item.path) })) });
 const normalizeYouTube = value => {
   const raw = String(value || '').trim();
   if (!raw) return null;
@@ -446,13 +453,13 @@ function trailerBoxInner(m, idx){
   <p class="trailer-fallback">If the embedded player is unavailable, <a href="${esc(t.watch)}" target="_blank" rel="noopener">watch the trailer on YouTube</a>.</p>${altBtn}`;
 }
 function pageScript(){
-  return `<script>window.BRYME_BASE=${JSON.stringify(site.url)}<\/script><script src="${url('/assets/site-app.js')}"><\/script>`;
+  return `<script>window.BRYME_BASE=''<\/script><script src="${url('/assets/site-app.js')}"><\/script>`;
 }
 function layout(o){
-  const socialImage = o.image ? `<meta property="og:image" content="${esc(o.image)}"><meta name="twitter:image" content="${esc(o.image)}">` : '';
+  const socialImage = o.image ? `<meta property="og:image" content="${esc(/^https?:\/\//i.test(o.image) ? o.image : absUrl(o.image))}"><meta name="twitter:image" content="${esc(/^https?:\/\//i.test(o.image) ? o.image : absUrl(o.image))}">` : '';
   const schema = o.schema ? `<script type="application/ld+json">${JSON.stringify(o.schema).replace(/</g,'\\u003c')}<\/script>` : '';
   const active = o.activeNav || '';
-  return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${esc(o.title)} | ${site.name}</title><meta name="description" content="${esc(o.description)}">${o.noindex?'<meta name="robots" content="noindex,follow">':''}<link rel="canonical" href="${url(o.canonical || o.path)}"><meta property="og:type" content="${esc(o.ogType || 'website')}"><meta property="og:site_name" content="${site.name}"><meta property="og:title" content="${esc(o.title)}"><meta property="og:description" content="${esc(o.description)}"><meta property="og:url" content="${url(o.path)}">${socialImage}<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${esc(o.title)}"><meta name="twitter:description" content="${esc(o.description)}"><link rel="stylesheet" href="${url('/assets/site.css')}">${schema}</head><body><header class="top"><div class="shell"><a class="brand" href="${url('/')}">BRY<b>ME</b></a><nav class="topnav"><a href="${url('/')}"${active==='home'?' class="active"':''}>Home</a><a href="${url('/entertainment/')}"${active==='entertainment'?' class="active"':''}>🎬 Entertainment</a><a href="${url('/sports/')}"${active==='sports'?' class="active"':''}>⚽ Sports</a><a href="${url('/memes/')}"${active==='memes'?' class="active"':''}>😂 Memes</a><a href="${url('/make-money/')}"${active==='make-money'?' class="active"':''}>💰 Make Money</a><a href="${url('/tech/')}"${active==='tech'?' class="active"':''}>🤖 Tech &amp; AI</a><a class="nav-search" href="${url('/search/')}">Search</a></nav></div></header>${o.body}<nav class="mobile-nav"><a href="${url('/')}"${active==='home'?' class="active"':''}><span class="mn-ico">🏠</span>Home</a><a href="${url('/entertainment/')}"${active==='entertainment'?' class="active"':''}><span class="mn-ico">🎬</span>Entertain</a><a href="${url('/sports/')}"${active==='sports'?' class="active"':''}><span class="mn-ico">⚽</span>Sports</a><a href="${url('/memes/')}"${active==='memes'?' class="active"':''}><span class="mn-ico">😂</span>Memes</a><a href="${url('/make-money/')}"${active==='make-money'?' class="active"':''}><span class="mn-ico">💰</span>Money</a><a href="${url('/tech/')}"${active==='tech'?' class="active"':''}><span class="mn-ico">🤖</span>Tech</a><a href="${url('/search/')}"><span class="mn-ico">🔍</span>Search</a></nav><footer class="footer"><div class="shell"><div class="footer-grid">
+  return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${esc(o.title)} | ${site.name}</title><meta name="description" content="${esc(o.description)}">${o.noindex?'<meta name="robots" content="noindex,follow">':''}<link rel="canonical" href="${absUrl(o.canonical || o.path)}"><meta property="og:type" content="${esc(o.ogType || 'website')}"><meta property="og:site_name" content="${site.name}"><meta property="og:title" content="${esc(o.title)}"><meta property="og:description" content="${esc(o.description)}"><meta property="og:url" content="${absUrl(o.path)}">${socialImage}<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${esc(o.title)}"><meta name="twitter:description" content="${esc(o.description)}"><link rel="stylesheet" href="${url('/assets/site.css')}">${schema}</head><body><header class="top"><div class="shell"><a class="brand" href="${url('/')}">BRY<b>ME</b></a><nav class="topnav"><a href="${url('/')}"${active==='home'?' class="active"':''}>Home</a><a href="${url('/entertainment/')}"${active==='entertainment'?' class="active"':''}>🎬 Entertainment</a><a href="${url('/sports/')}"${active==='sports'?' class="active"':''}>⚽ Sports</a><a href="${url('/memes/')}"${active==='memes'?' class="active"':''}>😂 Memes</a><a href="${url('/make-money/')}"${active==='make-money'?' class="active"':''}>💰 Make Money</a><a href="${url('/tech/')}"${active==='tech'?' class="active"':''}>🤖 Tech &amp; AI</a><a class="nav-search" href="${url('/search/')}">Search</a></nav></div></header>${o.body}<nav class="mobile-nav"><a href="${url('/')}"${active==='home'?' class="active"':''}><span class="mn-ico">🏠</span>Home</a><a href="${url('/entertainment/')}"${active==='entertainment'?' class="active"':''}><span class="mn-ico">🎬</span>Entertain</a><a href="${url('/sports/')}"${active==='sports'?' class="active"':''}><span class="mn-ico">⚽</span>Sports</a><a href="${url('/memes/')}"${active==='memes'?' class="active"':''}><span class="mn-ico">😂</span>Memes</a><a href="${url('/make-money/')}"${active==='make-money'?' class="active"':''}><span class="mn-ico">💰</span>Money</a><a href="${url('/tech/')}"${active==='tech'?' class="active"':''}><span class="mn-ico">🤖</span>Tech</a><a href="${url('/search/')}"><span class="mn-ico">🔍</span>Search</a></nav><footer class="footer"><div class="shell"><div class="footer-grid">
   <div class="footer-brand"><a class="brand" href="${url('/')}">BRY<b>ME</b></a><p>Discover what you love. Learn what you need. Find what's next.</p></div>
   <nav class="footer-col" aria-label="Explore"><h4>Verticals</h4><a href="${url('/entertainment/')}">🎬 Entertainment</a><a href="${url('/sports/')}">⚽ Sports</a><a href="${url('/memes/')}">😂 Memes &amp; Stickers</a><a href="${url('/make-money/')}">💰 Make Money</a><a href="${url('/tech/')}">🤖 Tech &amp; AI</a></nav>
   <nav class="footer-col" aria-label="Explore"><h4>Entertainment</h4><a href="${url('/movies/')}">Movies</a><a href="${url('/series/')}">Series</a><a href="${url('/anime/')}">Anime</a><a href="${url('/articles/')}">Articles</a><a href="${url('/genres/')}">Genres</a></nav>
@@ -575,7 +582,7 @@ function verticalPage(v, category){
     description: category ? `${category.desc} ${v.name} — foundation section on BRYME.` : `${v.desc} ${v.note}`,
     path: catPath,
     activeNav: v.active,
-    schema: [{ '@context':'https://schema.org', '@type':'CollectionPage', name: category ? category.name : v.name, description: (category ? category.desc : v.desc), url: url(catPath) }, breadcrumbs(crumbs)],
+    schema: [{ '@context':'https://schema.org', '@type':'CollectionPage', name: category ? category.name : v.name, description: (category ? category.desc : v.desc), url: absUrl(catPath) }, breadcrumbs(crumbs)],
     body: body
   }));
 }
@@ -755,7 +762,7 @@ function transferPage(league){
     ${row('in')}${row('out')}
     <section class="sp-related"><h2>Other leagues</h2><div class="sp-rel-grid">${S.transfers.leagues.filter(l => l.id !== league.id).map(l => `<a class="sp-rel" href="${url('/sports/transfers/' + l.id + '-2026-27/')}">${esc(l.name)} Transfers</a>`).join('')}</div></section>
     <section class="sp-related"><h2>Related</h2><div class="sp-rel-grid"><a class="sp-rel" href="${url('/sports/managers-2026-27/')}">Managers In &amp; Out</a><a class="sp-rel" href="${url('/sports/premier-league/matchweek-1-preview/')}">Matchweek ${MW} Preview</a></div></section></main>`;
-  write('sports/transfers/' + league.id + '-2026-27', layout({ title: league.title + ' | BRYME Sports', description: 'Structured ' + league.name + ' transfer tracker for ' + SEASON + ' — confirmed, reported and rumoured deals, each with a source.', path: '/sports/transfers/' + league.id + '-2026-27/', activeNav: 'sports', schema: [{ '@context':'https://schema.org', '@type':'CollectionPage', name: league.title, url: url('/sports/transfers/' + league.id + '-2026-27/') }, breadcrumbs(crumbs)], body }));
+  write('sports/transfers/' + league.id + '-2026-27', layout({ title: league.title + ' | BRYME Sports', description: 'Structured ' + league.name + ' transfer tracker for ' + SEASON + ' — confirmed, reported and rumoured deals, each with a source.', path: '/sports/transfers/' + league.id + '-2026-27/', activeNav: 'sports', schema: [{ '@context':'https://schema.org', '@type':'CollectionPage', name: league.title, url: absUrl('/sports/transfers/' + league.id + '-2026-27/') }, breadcrumbs(crumbs)], body }));
 }
 /* --- transfers hub --- */
 function transfersHub(){
@@ -764,7 +771,7 @@ function transfersHub(){
     <section class="hero"><div class="eyebrow">⚽ Transfers</div><h1>Transfer trackers ${SEASON}</h1><p class="lead">League-by-league transfer trackers. Every deal is labelled Confirmed, Reported or Rumoured — never presented as more than the source supports.</p></section>
     <div class="vnote">${esc(S.transfers.disclaimer)}</div>
     <section class="section"><div class="vcat-grid">${S.transfers.leagues.map(l => `<a class="vcat" href="${url('/sports/transfers/' + l.id + '-2026-27/')}"><b>${esc(l.name)}</b><span>Transfers ${SEASON} — tracker</span></a>`).join('')}<a class="vcat" href="${url('/sports/managers-2026-27/')}"><b>Managers</b><span>Managers In &amp; Out — ${SEASON}</span></a></div></section></main>`;
-  write('sports/transfers', layout({ title: 'Transfers ' + SEASON + ' | BRYME Sports', description: 'League-by-league football transfer trackers for ' + SEASON + ' — Premier League, La Liga, Serie A, Bundesliga and Ligue 1, each deal labelled and sourced.', path: '/sports/transfers/', activeNav: 'sports', schema: [{ '@context':'https://schema.org', '@type':'CollectionPage', name: 'Transfers ' + SEASON, url: url('/sports/transfers/') }, breadcrumbs(crumbs)], body }));
+  write('sports/transfers', layout({ title: 'Transfers ' + SEASON + ' | BRYME Sports', description: 'League-by-league football transfer trackers for ' + SEASON + ' — Premier League, La Liga, Serie A, Bundesliga and Ligue 1, each deal labelled and sourced.', path: '/sports/transfers/', activeNav: 'sports', schema: [{ '@context':'https://schema.org', '@type':'CollectionPage', name: 'Transfers ' + SEASON, url: absUrl('/sports/transfers/') }, breadcrumbs(crumbs)], body }));
 }
 /* --- managers page (real data from the transfer trackers) --- */
 function managersPage(){
@@ -819,7 +826,7 @@ function managersPage(){
     <div class="sp-legend-line">${leagueOrder.filter(l => byLeague[l]).map(l => `<span class="sp-st-conf">${esc(l)}</span>`).join(' ')}</div>
     ${leagueBlocks}
     <section class="sp-related"><h2>Related</h2><div class="sp-rel-grid"><a class="sp-rel" href="${url('/sports/transfers/')}">Transfer trackers</a><a class="sp-rel" href="${url('/sports/premier-league/matchweek-1-preview/')}">Matchweek ${MW} Preview</a></div></section></main>`;
-  write('sports/managers-2026-27', layout({ title: S.managers.title + ' | BRYME Sports', description: note, path: '/sports/managers-2026-27/', activeNav: 'sports', schema: [{ '@context':'https://schema.org', '@type':'CollectionPage', name: S.managers.title, url: url('/sports/managers-2026-27/') }, breadcrumbs(crumbs)], body }));
+  write('sports/managers-2026-27', layout({ title: S.managers.title + ' | BRYME Sports', description: note, path: '/sports/managers-2026-27/', activeNav: 'sports', schema: [{ '@context':'https://schema.org', '@type':'CollectionPage', name: S.managers.title, url: absUrl('/sports/managers-2026-27/') }, breadcrumbs(crumbs)], body }));
 }
 /* --- editorial prediction table --- */
 function editorialTablePage(){
@@ -829,7 +836,7 @@ function editorialTablePage(){
     <div class="sp-table-wrap"><table class="sp-table sp-table-pred"><thead><tr>${S.editorialTable.columns.map(c => `<th>${esc(c)}</th>`).join('')}</tr></thead><tbody><tr class="sp-empty"><td colspan="7">The editorial prediction table will appear here once the BRYME Sports editorial team finalises it for ${mwLabel}. Predictions are never presented as guarantees or as the official table.</td></tr></tbody></table></div>
     <p class="sp-source-note">After the gameweek is completed, this component can be replaced with the official Premier League table.</p>
     <section class="sp-related"><h2>Related</h2><div class="sp-rel-grid"><a class="sp-rel" href="${url('/sports/premier-league/fixtures/')}">Fixtures</a><a class="sp-rel" href="${url('/sports/premier-league/results/')}">Results</a><a class="sp-rel" href="${url('/sports/premier-league/matchweek-1-preview/')}">Matchweek ${MW}</a></div></section></main>`;
-  write('sports/premier-league/table', layout({ title: S.editorialTable.title + ' | BRYME Sports', description: S.editorialTable.label + ' — ' + S.editorialTable.note, path: '/sports/premier-league/table/', activeNav: 'sports', schema: [{ '@context':'https://schema.org', '@type':'CollectionPage', name: S.editorialTable.title, url: url('/sports/premier-league/table/') }, breadcrumbs(crumbs)], body }));
+  write('sports/premier-league/table', layout({ title: S.editorialTable.title + ' | BRYME Sports', description: S.editorialTable.label + ' — ' + S.editorialTable.note, path: '/sports/premier-league/table/', activeNav: 'sports', schema: [{ '@context':'https://schema.org', '@type':'CollectionPage', name: S.editorialTable.title, url: absUrl('/sports/premier-league/table/') }, breadcrumbs(crumbs)], body }));
 }
 /* --- FPL hub --- */
 function fplHub(){
@@ -838,13 +845,13 @@ function fplHub(){
     <section class="hero"><div class="eyebrow">⚽ Fantasy Premier League</div><h1>${esc(S.fpl.title)}</h1><p class="lead">${esc(S.fpl.desc)}</p></section>
     <section class="section"><div class="vcat-grid">${S.fpl.sections.map(s => `<a class="vcat" href="${url('/sports/fpl/gameweek-' + MW + '/#' + s.id + '/')}"><b>${esc(s.name)}</b><span>Gameweek ${MW} section</span></a>`).join('')}<a class="vcat" href="${url('/sports/fpl/gameweek-' + MW + '-players-to-watch/')}"><b>Gameweek ${MW} Players to Watch</b><span>Popular picks, differentials, captaincy</span></a></div></section>
     <section class="sp-related"><h2>Related</h2><div class="sp-rel-grid"><a class="sp-rel" href="${url('/sports/premier-league/matchweek-1-preview/')}">Matchweek ${MW} Preview</a><a class="sp-rel" href="${url('/sports/premier-league/injuries-matchweek-1/')}">Injury Report</a></div></section></main>`;
-  write('sports/fpl', layout({ title: 'Fantasy Premier League | BRYME Sports', description: S.fpl.desc, path: '/sports/fpl/', activeNav: 'sports', schema: [{ '@context':'https://schema.org', '@type':'CollectionPage', name: 'Fantasy Premier League', url: url('/sports/fpl/') }, breadcrumbs(crumbs)], body }));
+  write('sports/fpl', layout({ title: 'Fantasy Premier League | BRYME Sports', description: S.fpl.desc, path: '/sports/fpl/', activeNav: 'sports', schema: [{ '@context':'https://schema.org', '@type':'CollectionPage', name: 'Fantasy Premier League', url: absUrl('/sports/fpl/') }, breadcrumbs(crumbs)], body }));
   // gameweek hub
   const gwBody = `<main class="shell"><div class="crumb"><a href="${url('/')}">Home</a> / <a href="${url('/sports/')}">BRYME Sports</a> / <a href="${url('/sports/fpl/')}">FPL</a> / Gameweek ${MW}</div>
     <section class="hero"><div class="eyebrow">⚽ FPL · Gameweek ${MW}</div><h1>FPL Gameweek ${MW}</h1><p class="lead">Gameweek-by-gameweek FPL content. Each section below fills with researched, sourced content.</p></section>
     <section class="section">${S.fpl.sections.map(s => `<div class="sp-gw-sec" id="${s.id}"><h2>${esc(s.name)}</h2><p class="sp-empty-line">Content for this section is being prepared. No picks, predictions or difficulty ratings are shown before they are researched and sourced.</p></div>`).join('')}</section>
     <section class="sp-related"><h2>Related</h2><div class="sp-rel-grid"><a class="sp-rel" href="${url('/sports/fpl/gameweek-' + MW + '-players-to-watch/')}">Players to Watch</a><a class="sp-rel" href="${url('/sports/premier-league/matchweek-1-preview/')}">Matchweek ${MW} Preview</a></div></section></main>`;
-  write('sports/fpl/gameweek-' + MW, layout({ title: 'FPL Gameweek ' + MW + ' | BRYME Sports', description: 'Fantasy Premier League Gameweek ' + MW + ' — players to watch, picks, captaincy and fixture difficulty.', path: '/sports/fpl/gameweek-' + MW + '/', activeNav: 'sports', schema: [{ '@context':'https://schema.org', '@type':'CollectionPage', name: 'FPL Gameweek ' + MW, url: url('/sports/fpl/gameweek-' + MW + '/') }, breadcrumbs([{name:'Home', path:'/'}, {name:'BRYME Sports', path:'/sports/'}, {name:'FPL', path:'/sports/fpl/'}, {name:'Gameweek ' + MW, path:'/sports/fpl/gameweek-' + MW + '/'}])], body: gwBody }));
+  write('sports/fpl/gameweek-' + MW, layout({ title: 'FPL Gameweek ' + MW + ' | BRYME Sports', description: 'Fantasy Premier League Gameweek ' + MW + ' — players to watch, picks, captaincy and fixture difficulty.', path: '/sports/fpl/gameweek-' + MW + '/', activeNav: 'sports', schema: [{ '@context':'https://schema.org', '@type':'CollectionPage', name: 'FPL Gameweek ' + MW, url: absUrl('/sports/fpl/gameweek-' + MW + '/') }, breadcrumbs([{name:'Home', path:'/'}, {name:'BRYME Sports', path:'/sports/'}, {name:'FPL', path:'/sports/fpl/'}, {name:'Gameweek ' + MW, path:'/sports/fpl/gameweek-' + MW + '/'}])], body: gwBody }));
 }
 /* --- fixtures / results --- */
 function euDstOffset(dateISO){
@@ -907,7 +914,7 @@ function fixturesResults(){
       ${(F.footnotes && F.footnotes.length) ? `<div class="sp-fix-legend"><b>Fixture notes</b><br>${F.footnotes.map(n => '• ' + esc(n)).join('<br>')}</div>` : ''}
       <section class="sp-source"><h2>Source</h2><p><b>Source:</b> ${esc(F.source || 'Official league fixture release')}${F.sourceUrl ? ` — <a href="${esc(F.sourceUrl)}" rel="nofollow noopener">${esc(new URL(F.sourceUrl).hostname)}</a>` : ''}</p><p class="sp-source-note">Fixtures are summarised in BRYME's own words from official publications. Dates, kick-off times and venues are only listed as published; changes announced officially are reflected as soon as BRYME verifies them. Results are never shown before a match is played.</p></section>
       <section class="sp-related"><h2>Related</h2><div class="sp-rel-grid"><a class="sp-rel" href="${url('/sports/' + lg.slug + '/results/')}">Results</a><a class="sp-rel" href="${url('/sports/' + lg.slug + '/matches/')}">Match Centre</a><a class="sp-rel" href="${url('/sports/transfers/' + lg.slug + '-2026-27/')}">Transfers</a><a class="sp-rel" href="${url('/sports/')}">BRYME Sports</a></div></section></main>`;
-    write('sports/' + lg.slug + '/fixtures', layout({ title: `${F.league} Fixtures ${F.season}: All ${total} Matches | BRYME Sports`, description: `Complete ${F.league} ${F.season} fixture list — all ${total} matches across ${(F.matchweeks || []).length} rounds with dates and kick-off times from the official release. Nothing invented.`, path: '/sports/' + lg.slug + '/fixtures/', activeNav: 'sports', schema: [{ '@context':'https://schema.org', '@type':'CollectionPage', name: `${F.league} Fixtures ${F.season}`, description: `All ${total} ${F.league} ${F.season} fixtures as published.`, url: url('/sports/' + lg.slug + '/fixtures/') }, breadcrumbs(crumb)], body }));
+    write('sports/' + lg.slug + '/fixtures', layout({ title: `${F.league} Fixtures ${F.season}: All ${total} Matches | BRYME Sports`, description: `Complete ${F.league} ${F.season} fixture list — all ${total} matches across ${(F.matchweeks || []).length} rounds with dates and kick-off times from the official release. Nothing invented.`, path: '/sports/' + lg.slug + '/fixtures/', activeNav: 'sports', schema: [{ '@context':'https://schema.org', '@type':'CollectionPage', name: `${F.league} Fixtures ${F.season}`, description: `All ${total} ${F.league} ${F.season} fixtures as published.`, url: absUrl('/sports/' + lg.slug + '/fixtures/') }, breadcrumbs(crumb)], body }));
 
     // ---- results page (honest empty state + next round preview) ----
     const mw1 = (F.matchweeks && F.matchweeks[0] && F.matchweeks[0].matches) || [];
@@ -920,7 +927,7 @@ function fixturesResults(){
       ${nextBlock}
       <div class="sp-truth"><b>Truth first.</b><p>BRYME never publishes a result, scoreline or scorer before a match is played and the outcome is confirmed by the club or official league channels. If a result cannot be verified, it is not shown.</p></div>
       <section class="sp-related"><h2>Related</h2><div class="sp-rel-grid"><a class="sp-rel" href="${url('/sports/' + lg.slug + '/fixtures/')}">Fixtures</a><a class="sp-rel" href="${url('/sports/' + lg.slug + '/matches/')}">Match Centre</a><a class="sp-rel" href="${url('/sports/transfers/' + lg.slug + '-2026-27/')}">Transfers</a></div></section></main>`;
-    write('sports/' + lg.slug + '/results', layout({ title: `${F.league} Results ${F.season} | BRYME Sports`, description: `${F.league} ${F.season} results — only official, verified match results after matches are played. No results are predicted or assumed.`, path: '/sports/' + lg.slug + '/results/', activeNav: 'sports', schema: [{ '@context':'https://schema.org', '@type':'CollectionPage', name: `${F.league} Results ${F.season}`, url: url('/sports/' + lg.slug + '/results/') }, breadcrumbs(crumbR)], body: bodyR }));
+    write('sports/' + lg.slug + '/results', layout({ title: `${F.league} Results ${F.season} | BRYME Sports`, description: `${F.league} ${F.season} results — only official, verified match results after matches are played. No results are predicted or assumed.`, path: '/sports/' + lg.slug + '/results/', activeNav: 'sports', schema: [{ '@context':'https://schema.org', '@type':'CollectionPage', name: `${F.league} Results ${F.season}`, url: absUrl('/sports/' + lg.slug + '/results/') }, breadcrumbs(crumbR)], body: bodyR }));
   }
 }
 
@@ -963,7 +970,7 @@ function matchCentre(){
         title: `${m.homeName} v ${m.awayName} — ${lg.roundLabel} ${w.number} · ${F.league} ${F.season} | BRYME Sports`,
         description: `${m.homeName} v ${m.awayName}, ${F.season} ${F.league} ${lg.roundLabel} ${w.number} — ${m.dayLabel}${m.time ? ', ' + m.time + ' local' : ', kickoff TBC'}${v.name ? ' at ' + v.name : ''}. Match analysis sections appear once verified; no results are predicted.`,
         path: matchUrl(m), activeNav: 'sports',
-        schema: [{ '@context':'https://schema.org', '@type':'SportsEvent', name: m.homeName + ' v ' + m.awayName, startDate, eventStatus: 'https://schema.org/EventScheduled', eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode', location: v.name ? { '@type':'Place', name: v.name } : undefined, homeTeam: { '@type':'SportsTeam', name: m.homeName }, awayTeam: { '@type':'SportsTeam', name: m.awayName }, url: url(matchUrl(m)) }, breadcrumbs(crumbs)],
+        schema: [{ '@context':'https://schema.org', '@type':'SportsEvent', name: m.homeName + ' v ' + m.awayName, startDate, eventStatus: 'https://schema.org/EventScheduled', eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode', location: v.name ? { '@type':'Place', name: v.name } : undefined, homeTeam: { '@type':'SportsTeam', name: m.homeName }, awayTeam: { '@type':'SportsTeam', name: m.awayName }, url: absUrl(matchUrl(m)) }, breadcrumbs(crumbs)],
         body
       }));
       LEAGUE_MATCH_PATHS.push(matchUrl(m));
@@ -994,7 +1001,7 @@ function matchCentre(){
       <p class="sp-freq-note">Looking for the whole season? See <a href="${url('/sports/' + lg.slug + '/fixtures/')}">all ${total} fixtures across ${(F.matchweeks || []).length} rounds</a>.</p>
       <section class="sp-related"><h2>Match page sections</h2><p class="sp-source-note">Every match gets its own analysis page at /sports/${lg.slug}/matches/[team-a]-vs-[team-b]/ with:</p><div class="sp-rel-grid">${S.matchCentre.matchPageSections.map(s => `<span class="sp-rel sp-rel-static">${esc(s)}</span>`).join('')}</div></section>
       <section class="sp-related"><h2>Related</h2><div class="sp-rel-grid"><a class="sp-rel" href="${url('/sports/' + lg.slug + '/fixtures/')}">Fixtures</a><a class="sp-rel" href="${url('/sports/' + lg.slug + '/results/')}">Results</a><a class="sp-rel" href="${url('/sports/transfers/' + lg.slug + '-2026-27/')}">Transfers</a><a class="sp-rel" href="${url('/sports/')}">BRYME Sports</a></div></section></main>`;
-    write('sports/' + lg.slug + '/matches', layout({ title: `${F.league} ${lg.roundLabel} ${mw1.number} | BRYME Sports`, description: `${F.league} ${lg.roundLabel} ${mw1.number} — fixtures, kick-off times and match pages. All ${total} matches of the ${F.season} season have their own page; analysis sections fill in with verified data only.`, path: '/sports/' + lg.slug + '/matches/', activeNav: 'sports', schema: [{ '@context':'https://schema.org', '@type':'CollectionPage', name: `${F.league} ${lg.roundLabel} ${mw1.number}`, url: url('/sports/' + lg.slug + '/matches/') }, breadcrumbs(crumbs)], body }));
+    write('sports/' + lg.slug + '/matches', layout({ title: `${F.league} ${lg.roundLabel} ${mw1.number} | BRYME Sports`, description: `${F.league} ${lg.roundLabel} ${mw1.number} — fixtures, kick-off times and match pages. All ${total} matches of the ${F.season} season have their own page; analysis sections fill in with verified data only.`, path: '/sports/' + lg.slug + '/matches/', activeNav: 'sports', schema: [{ '@context':'https://schema.org', '@type':'CollectionPage', name: `${F.league} ${lg.roundLabel} ${mw1.number}`, url: absUrl('/sports/' + lg.slug + '/matches/') }, breadcrumbs(crumbs)], body }));
   }
 }
 
@@ -1014,7 +1021,7 @@ function plHub(){
       <a class="vcat" href="${url('/sports/transfers/premier-league-2026-27/')}"><b>Transfers</b><span>Premier League transfer tracker</span></a>
     </div></section>
     <section class="sp-related"><h2>Related</h2><div class="sp-rel-grid"><a class="sp-rel" href="${url('/sports/transfers/')}">All transfer trackers</a><a class="sp-rel" href="${url('/sports/managers-2026-27/')}">Managers In &amp; Out</a><a class="sp-rel" href="${url('/sports/')}">BRYME Sports</a></div></section></main>`;
-  write('sports/premier-league', layout({ title: 'Premier League ' + SEASON + ' | BRYME Sports', description: S.hero.kicker + ' — ' + S.hero.subtitle + ' Matchweek ' + MW + ' previews, transfers, FPL, injuries, fixtures, results and the BRYME editorial table prediction.', path: '/sports/premier-league/', activeNav: 'sports', schema: [{ '@context':'https://schema.org', '@type':'CollectionPage', name: 'Premier League ' + SEASON, url: url('/sports/premier-league/') }, breadcrumbs(crumbs)], body }));
+  write('sports/premier-league', layout({ title: 'Premier League ' + SEASON + ' | BRYME Sports', description: S.hero.kicker + ' — ' + S.hero.subtitle + ' Matchweek ' + MW + ' previews, transfers, FPL, injuries, fixtures, results and the BRYME editorial table prediction.', path: '/sports/premier-league/', activeNav: 'sports', schema: [{ '@context':'https://schema.org', '@type':'CollectionPage', name: 'Premier League ' + SEASON, url: absUrl('/sports/premier-league/') }, breadcrumbs(crumbs)], body }));
 }
 /* --- league hub pages (La Liga, Serie A, Bundesliga, Ligue 1) — PL-style hero fixture cards --- */
 function leagueHub(){
@@ -1056,7 +1063,7 @@ function leagueHub(){
       title: `${F.league} ${F.season} | BRYME Sports`,
       description: `${kicker} — ${F.league} ${F.season} ${lg.roundLabel} ${mw1.number} fixtures, ${total} matches across ${rounds} rounds, transfers, results and match pages from the official calendar.`,
       path: '/sports/' + lg.slug + '/', activeNav: 'sports',
-      schema: [{ '@context':'https://schema.org', '@type':'CollectionPage', name: `${F.league} ${F.season}`, url: url('/sports/' + lg.slug + '/') }, breadcrumbs(crumbs)],
+      schema: [{ '@context':'https://schema.org', '@type':'CollectionPage', name: `${F.league} ${F.season}`, url: absUrl('/sports/' + lg.slug + '/') }, breadcrumbs(crumbs)],
       body
     }));
   }
@@ -1097,7 +1104,7 @@ function buildPlTransferTracker(){
     title: 'Premier League 2026/27 Transfers: All 20 Clubs, Players In & Out',
     description: 'Track every confirmed Premier League 2026/27 transfer. See players joining and leaving all 20 clubs, managers, major deals and the latest transfer updates.',
     path: '/sports/transfers/premier-league-2026-27/', activeNav: 'sports',
-    schema: [{ '@context':'https://schema.org', '@type':'CollectionPage', name: 'Premier League 2026/27 Transfers', description: 'Confirmed Premier League transfers for the 2026/27 season, all 20 clubs.', url: url('/sports/transfers/premier-league-2026-27/') }, breadcrumbs(crumbs)],
+    schema: [{ '@context':'https://schema.org', '@type':'CollectionPage', name: 'Premier League 2026/27 Transfers', description: 'Confirmed Premier League transfers for the 2026/27 season, all 20 clubs.', url: absUrl('/sports/transfers/premier-league-2026-27/') }, breadcrumbs(crumbs)],
     body
   }));
 }
@@ -1171,7 +1178,7 @@ function buildLeagueTrackers(){
       title: lg.name + ' Transfers 2026/27: All Clubs, Players In & Out',
       description: 'Track every confirmed ' + lg.name + ' 2026/27 transfer. See players joining and leaving clubs, managers, major deals and the latest transfer updates. Only officially confirmed deals are listed.',
       path: '/sports/transfers/' + lg.id + '-2026-27/', activeNav: 'sports',
-      schema: [{ '@context':'https://schema.org', '@type':'CollectionPage', name: lg.name + ' Transfers 2026/27', description: 'Confirmed ' + lg.name + ' transfers for the 2026/27 season, all clubs.', url: url('/sports/transfers/' + lg.id + '-2026-27/') }, breadcrumbs(crumbs)],
+      schema: [{ '@context':'https://schema.org', '@type':'CollectionPage', name: lg.name + ' Transfers 2026/27', description: 'Confirmed ' + lg.name + ' transfers for the 2026/27 season, all clubs.', url: absUrl('/sports/transfers/' + lg.id + '-2026-27/') }, breadcrumbs(crumbs)],
       body
     }));
   }
@@ -1696,7 +1703,7 @@ const legalPages = [
 ];
 for (const page of legalPages) {
   const schema = [
-    { '@context':'https://schema.org', '@type': page.schemaType, name: page.hero, description: page.description, url: url('/' + page.dir + '/') },
+    { '@context':'https://schema.org', '@type': page.schemaType, name: page.hero, description: page.description, url: absUrl('/' + page.dir + '/') },
     breadcrumbs([{ name:'Home', path:'/' }, { name: page.hero, path: '/' + page.dir + '/' }])
   ];
   write(page.dir, layout({
@@ -1718,9 +1725,9 @@ fs.writeFileSync(path.join(root, '404.html'), layout({
   body: `<main class="shell"><section class="hero"><div class="eyebrow">404</div><h1>Looks like this one disappeared.</h1><p class="lead">Try searching the catalogue, or browse a single content type.</p><p><a class="cta" href="${url('/search/')}">Search everything</a> <a class="quiet-link" href="${url('/movies/')}">Movies</a> <a class="quiet-link" href="${url('/series/')}">Series</a> <a class="quiet-link" href="${url('/anime/')}">Anime</a> <a class="quiet-link" href="${url('/articles/')}">Latest articles</a></p></section></main>`
 }));
 if (fs.existsSync(path.join(root, '404'))) { fs.rmSync(path.join(root, '404'), {recursive:true, force:true}); }
-const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${[...new Set(paths)].map(p => `  <url><loc>${url(p)}</loc></url>`).join('\n')}\n</urlset>\n`;
+const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${[...new Set(paths)].map(p => `  <url><loc>${absUrl(p)}</loc></url>`).join('\n')}\n</urlset>\n`;
 fs.writeFileSync(path.join(root, 'sitemap.xml'), xml);
-fs.writeFileSync(path.join(root, 'robots.txt'), `User-agent: *\nAllow: /\nSitemap: ${url('/sitemap.xml')}\n`);
+fs.writeFileSync(path.join(root, 'robots.txt'), `User-agent: *\nAllow: /\nSitemap: ${absUrl('/sitemap.xml')}\n`);
 
 /* ---------------- Catalogue report ---------------- */
 const typeCounts = { movie:0, series:0, anime:0 };

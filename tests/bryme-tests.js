@@ -40,7 +40,7 @@ section('Vertical hubs');
     const s = read(f);
     assert(/<h1>/.test(s), f + ' has h1');
     assert(s.indexOf('NEXTCLIP') === -1, f + ' has no NEXTCLIP literal');
-    assert(/rel="canonical" href="https:\/\/ojeology\.github\.io\/nextclip\//.test(s), f + ' canonical on production domain');
+    assert(/rel="canonical" href="https:\/\/bryme\.onrender\.com\//.test(s), f + ' canonical on production domain');
     assert(/<link rel="canonical"/.test(s) && /property="og:title"/.test(s), f + ' SEO meta present');
   }
   assert(read('sports/index.html').indexOf('class="vcat"') > 0, 'sports hub lists categories');
@@ -66,7 +66,7 @@ section('Sitemap');
 {
   const sm = read('sitemap.xml');
   for (const p of ['/sports/', '/memes/', '/make-money/', '/tech/', '/entertainment/', '/sports/premier-league/', '/tech/ai-tools/', '/memes/whatsapp-stickers/']) {
-    assert(sm.indexOf('nextclip' + p) > -1, 'sitemap includes ' + p);
+    assert(sm.indexOf('bryme.onrender.com' + p) > -1, 'sitemap includes ' + p);
   }
 }
 
@@ -92,7 +92,7 @@ section('Homepage fixes (DOM)');
   const dom = new JSDOM(read('index.html'), {
     runScripts: 'dangerously',
     virtualConsole: vc,
-    url: 'https://ojeology.github.io/nextclip/',
+    url: 'https://bryme.onrender.com/',
     beforeParse(window) {
       window.fetch = function () {
         return Promise.resolve({ json: function () {

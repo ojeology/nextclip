@@ -17,15 +17,15 @@ const relTitles = (html) => {
 section('Year index is type-aware');
 {
   const aib = read('series/alice-in-borderland/index.html');
-  assert(/<dt>Year index<\/dt><dd><a href="https:\/\/ojeology\.github\.io\/nextclip\/series\/2020\/">2020 series<\/a>/.test(aib), 'Alice in Borderland -> /series/2020/ "2020 series"');
+  assert(/<dt>Year index<\/dt><dd><a href="\/series\/2020\/">2020 series<\/a>/.test(aib), 'Alice in Borderland -> /series/2020/ "2020 series"');
   assert(!/year\/2020\//.test(aib), 'no movie year link on series page');
-  assert(/<div class="crumb">.*?\/ <a href="https:\/\/ojeology\.github\.io\/nextclip\/series\/2020\/">2020<\/a> \/ Alice in Borderland/.test(aib.replace(/\n/g, ' ')), 'breadcrumb: Home / TV Series / 2020 / Alice in Borderland');
+  assert(/<div class="crumb">.*?\/ <a href="\/series\/2020\/">2020<\/a> \/ Alice in Borderland/.test(aib.replace(/\n/g, ' ')), 'breadcrumb: Home / TV Series / 2020 / Alice in Borderland');
   const interstellar = read('movie/interstellar/index.html');
-  assert(/<dt>Year index<\/dt><dd><a href="https:\/\/ojeology\.github\.io\/nextclip\/year\/2014\/">2014 movies<\/a>/.test(interstellar), 'Interstellar -> /year/2014/ "2014 movies"');
+  assert(/<dt>Year index<\/dt><dd><a href="\/year\/2014\/">2014 movies<\/a>/.test(interstellar), 'Interstellar -> /year/2014/ "2014 movies"');
   const solo = read('anime/solo-leveling/index.html');
-  assert(/<dt>Year index<\/dt><dd><a href="https:\/\/ojeology\.github\.io\/nextclip\/anime\/2024\/">2024 anime<\/a>/.test(solo), 'Solo Leveling -> /anime/2024/ "2024 anime"');
+  assert(/<dt>Year index<\/dt><dd><a href="\/anime\/2024\/">2024 anime<\/a>/.test(solo), 'Solo Leveling -> /anime/2024/ "2024 anime"');
   const pb = read('series/prison-break/index.html');
-  assert(/<dt>Year index<\/dt><dd><a href="https:\/\/ojeology\.github\.io\/nextclip\/series\/2005\/">2005 series<\/a>/.test(pb), 'Prison Break -> /series/2005/');
+  assert(/<dt>Year index<\/dt><dd><a href="\/series\/2005\/">2005 series<\/a>/.test(pb), 'Prison Break -> /series/2005/');
   // audit: no series/anime page links a /year/ (movie) index
   let bad = [];
   for (const d of ['series', 'anime']) {
@@ -35,7 +35,7 @@ section('Year index is type-aware');
     for (const f of fs.readdirSync(path.join(ROOT, d))) {
       if (!fs.existsSync(path.join(ROOT, d, f, 'index.html'))) continue;
       const html = read(d + '/' + f + '/index.html');
-      if (/<dt>Year index<\/dt><dd><a href="https:\/\/ojeology\.github\.io\/nextclip\/year\//.test(html)) bad.push(d + '/' + f);
+      if (/<dt>Year index<\/dt><dd><a href="\/year\//.test(html)) bad.push(d + '/' + f);
     }
   }
   assert(bad.length === 0, 'no series/anime page links the movie year index (got ' + bad.join(', ') + ')');
@@ -113,7 +113,7 @@ section('SEO essentials');
 {
   const aib = read('series/alice-in-borderland/index.html');
   assert(/<title>Alice in Borderland \(2020\) – Series Overview, Trailer &amp; BRYME/.test(aib), 'unique title tag');
-  assert(/<link rel="canonical" href="https:\/\/ojeology\.github\.io\/nextclip\/series\/alice-in-borderland\/">/.test(aib), 'canonical');
+  assert(/<link rel="canonical" href="https:\/\/bryme\.onrender\.com\/series\/alice-in-borderland\/">/.test(aib), 'canonical');
   assert(/property="og:title"/.test(aib) && /property="og:url"/.test(aib), 'Open Graph');
   const ld = JSON.parse(aib.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1]);
   assert(ld.some(x => x['@type'] === 'TVSeries') && ld.some(x => x['@type'] === 'BreadcrumbList'), 'TVSeries + BreadcrumbList schema');

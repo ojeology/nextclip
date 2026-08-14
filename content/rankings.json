@@ -1,5 +1,5 @@
 {
- "_comment": "NEXTCLIP CENTRAL RANKINGS — THIS IS THE ONE FILE TO EDIT. Change the Trending lists here; no catalogue records need touching. 'slug' identifies the title (the 'title' field is only for your readability — the build checks it matches). 'trendingRank' controls order (lower = first). 'until' (optional, YYYY-MM-DD) auto-removes an entry after that date. This is a manually curated editorial list — NOT live traffic data, no fake view counts.",
+ "_comment": "BRYME CENTRAL RANKINGS — THIS IS THE ONE FILE TO EDIT. Change the Trending lists here; no catalogue records need touching. 'slug' identifies the title (the 'title' field is only for your readability — the build checks it matches). 'trendingRank' controls order (lower = first). 'until' (optional, YYYY-MM-DD) auto-removes an entry after that date. This is a manually curated editorial list — NOT live traffic data, no fake view counts.",
  "hero": {
   "slug": "interstellar",
   "title": "Interstellar",

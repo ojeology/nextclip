@@ -14,7 +14,7 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
 function loadHome() {
   const dom = new JSDOM(fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8'), {
     runScripts: 'dangerously',
-    url: 'https://ojeology.github.io/nextclip/',
+    url: 'https://bryme.onrender.com/',
     beforeParse(window) {
       // stub fetch for the rec-data lazy load
       window.fetch = function () {
@@ -147,7 +147,8 @@ function loadHome() {
       assert(home.indexOf('🆕 New Releases') > -1, 'New Releases intact');
       assert(home.indexOf('Latest articles') > -1, 'Articles section intact');
       assert(home.indexOf('Browse by genre') > -1, 'Genre section intact');
-      assert(home.indexOf('https://ojeology.github.io/nextclip/') > -1, 'absolute production links intact');
+      assert(home.indexOf('href="/movies/"') > -1 && home.indexOf('href="/sports/"') > -1, 'root-relative internal links intact');
+      assert(home.indexOf('https://bryme.onrender.com/') > -1, 'absolute production canonical/og:url present');
       assert(home.match(/<title>[^<]+<\/title>/), 'title tag preserved');
       assert(home.indexOf('rel="canonical"') > -1, 'canonical preserved');
       // no indexable duplicate states introduced

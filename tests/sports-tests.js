@@ -19,8 +19,8 @@ section('PL hero carousel');
   const tags = ['MATCHWEEK AHEAD', 'FPL WATCH', "WHO'S READY TO BREAK OUT?", "WHO'S IN? WHO'S OUT?", "THE MATCHES YOU CAN'T MISS"];
   for (const t of tags) assert(s.indexOf(t) > -1, 'hero card tag: ' + t);
   assert(/data-sp-hero-prev/.test(s) && /data-sp-hero-next/.test(s), 'carousel arrows present');
-  assert(/href="https:\/\/ojeology\.github\.io\/nextclip\/sports\/premier-league\/matchweek-1-preview\/"/.test(s), 'card 1 links to matchweek preview');
-  assert(/href="https:\/\/ojeology\.github\.io\/nextclip\/sports\/fpl\/gameweek-1-players-to-watch\/"/.test(s), 'card 2 links to FPL watch');
+  assert(/href="\/sports\/premier-league\/matchweek-1-preview\/"/.test(s), 'card 1 links to matchweek preview (root-relative)');
+  assert(/href="\/sports\/fpl\/gameweek-1-players-to-watch\/"/.test(s), 'card 2 links to FPL watch (root-relative)');
   assert(s.indexOf('NEXTCLIP') === -1, 'no NEXTCLIP literal');
 }
 
@@ -47,7 +47,7 @@ section('PL transfer tracker (populated)');
   assert(/Transfer information changes frequently/.test(s), 'frequency disclaimer');
   for (const st of ['Confirmed', 'Departed', 'Released', 'Retired', 'Loan', 'Free']) assert(s.indexOf(st) > -1, 'status vocabulary: ' + st);
   var canon = s.match(/rel="canonical" href="([^"]+)"/);
-  assert(canon && canon[1] === 'https://ojeology.github.io/nextclip/sports/transfers/premier-league-2026-27/', 'PL tracker canonical correct');
+  assert(canon && canon[1] === 'https://bryme.onrender.com/sports/transfers/premier-league-2026-27/', 'PL tracker canonical correct');
   assert(s.indexOf('NEXTCLIP') === -1, 'no NEXTCLIP literal');
 }
 
@@ -172,7 +172,7 @@ section('Article placeholders');
     assert(/By BRYME Sports Editorial/.test(s), r + ': author/editorial label');
     assert(/Original report/.test(s), r + ': source section');
     assert(/structured placeholder/.test(s), r + ': honest placeholder state');
-    assert(/rel="canonical" href="https:\/\/ojeology\.github\.io\/nextclip\/sports\//.test(s), r + ': canonical has sports/ prefix');
+    assert(/rel="canonical" href="https:\/\/bryme\.onrender\.com\/sports\//.test(s), r + ': canonical has sports/ prefix');
     assert(/sp-rel/.test(s), r + ': related-content block');
     assert(JSON.parse(s.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1]).some(d => d['@type'] === 'Article'), r + ': Article schema');
   }
@@ -272,11 +272,11 @@ section('Sitemap');
 {
   const sm = read('sitemap.xml');
   for (const p of ['/sports/premier-league/matchweek-1-preview/', '/sports/fpl/gameweek-1/', '/sports/transfers/premier-league-2026-27/', '/sports/managers-2026-27/', '/sports/premier-league/table/', '/sports/premier-league/matches/', '/sports/premier-league/fixtures/', '/sports/premier-league/results/', '/sports/premier-league/matches/arsenal-vs-coventry/']) {
-    assert(sm.indexOf('nextclip' + p) > -1, 'sitemap: ' + p);
+    assert(sm.indexOf('bryme.onrender.com' + p) > -1, 'sitemap: ' + p);
   }
   const F = JSON.parse(read('content/fixtures.json'));
   const slugs = F.matchweeks.flatMap(w => w.matches).map(m => '/sports/premier-league/matches/' + m.id + '-vs-' + m.away + '/');
-  const inSm = slugs.filter(s => sm.indexOf('nextclip' + s) === -1);
+  const inSm = slugs.filter(s => sm.indexOf('bryme.onrender.com' + s) === -1);
   assert(inSm.length === 0, 'sitemap: all 380 match pages included' + (inSm.length ? ' — missing ' + inSm.length : ''));
   assert(!/nextclip\/premier-league\//.test(sm), 'no unprefixed PL URLs in sitemap');
   assert(!/nextclip\/fpl\//.test(sm), 'no unprefixed FPL URLs in sitemap');
@@ -334,7 +334,7 @@ section('La Liga, Serie A, Bundesliga, Ligue 1 — fixtures & matches');
     // sitemap
     const sm = read('sitemap.xml');
     for (const p of [`/sports/${lg.slug}/fixtures/`, `/sports/${lg.slug}/results/`, `/sports/${lg.slug}/matches/`]) {
-      assert(sm.indexOf('nextclip' + p) > -1, `${lg.slug} sitemap: ${p}`);
+      assert(sm.indexOf('bryme.onrender.com' + p) > -1, `${lg.slug} sitemap: ${p}`);
     }
   }
   // league hub pages — PL-style hero fixture cards

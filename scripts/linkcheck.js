@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-/* Static link integrity check for NEXTCLIP.
+/* Static link integrity check for BRYME.
    Crawls every generated .html page (excluding legacy/) and verifies every
    internal href/src resolves to a real file. Prints a summary. */
 const fs = require('fs'), path = require('path');

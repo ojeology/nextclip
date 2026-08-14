@@ -10,7 +10,7 @@ let pass = 0, fail = 0;
 function assert(cond, msg) { if (cond) { pass++; } else { fail++; console.log('  ✗ FAIL:', msg); } }
 function section(name) { console.log('\n== ' + name + ' =='); }
 function run(html, fn) {
-  const dom = new JSDOM(html, { runScripts: 'dangerously', url: 'https://ojeology.github.io/nextclip/movies/' });
+  const dom = new JSDOM(html, { runScripts: 'dangerously', url: 'https://bryme.onrender.com/movies/' });
   dom.window.eval(app);
   return fn(dom);
 }

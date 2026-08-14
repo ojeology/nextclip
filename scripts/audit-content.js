@@ -14,7 +14,7 @@ const groups = { COMPLETE: [], PARTIAL: [], MISSING: [] };
 movies.forEach(m => groups[status(m)].push(m));
 const weak = movies.filter(m => !m.description || m.description.length < 110 || !m.poster || !m.youtubeId);
 const lines = [
-  '# NEXTCLIP content and SEO readiness audit', '',
+  '# BRYME content and SEO readiness audit', '',
   `Generated: ${new Date().toISOString().slice(0, 10)}`, '',
   '## Catalogue coverage', '',
   `- Movies audited: **${movies.length}**`,
