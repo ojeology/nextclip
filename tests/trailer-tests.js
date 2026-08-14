@@ -1,4 +1,4 @@
-/* NEXTCLIP test suite — trailer fallback & verification system
+/* BRYME test suite — trailer fallback & verification system
    Run: NODE_PATH=/path/to/jsdom/node_modules node tests/trailer-tests.js */
 const { JSDOM } = require('jsdom');
 const fs = require('fs');

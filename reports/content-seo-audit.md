@@ -1,4 +1,4 @@
-# NEXTCLIP content and SEO readiness audit
+# BRYME content and SEO readiness audit
 
 Generated: 2026-08-12
 

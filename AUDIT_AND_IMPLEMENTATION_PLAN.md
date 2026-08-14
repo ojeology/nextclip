@@ -5,7 +5,7 @@
 
 ## Executive summary
 
-BRYME (formerly NEXTCLIP) is currently a **single-file, client-rendered static prototype**, not yet a crawlable movie platform. The repository has only:
+BRYME is currently a **single-file, client-rendered static prototype**, not yet a crawlable movie platform. The repository has only:
 
 - `index.html` — 1,309 lines containing all CSS, JavaScript, movie/anime/article data, routing and UI
 - `manifest.webmanifest`

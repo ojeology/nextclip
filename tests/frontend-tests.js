@@ -1,4 +1,4 @@
-/* NEXTCLIP test suite — category browsers + search
+/* BRYME test suite — category browsers + search
    Run: NODE_PATH=/path/to/jsdom/node_modules node tests/frontend-tests.js */
 const { JSDOM } = require('jsdom');
 const fs = require('fs');

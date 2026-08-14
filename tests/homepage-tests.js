@@ -1,4 +1,4 @@
-/* NEXTCLIP test suite — homepage hero carousel + recommendation engine
+/* BRYME test suite — homepage hero carousel + recommendation engine
    Run: NODE_PATH=/path/to/jsdom/node_modules node tests/homepage-tests.js */
 const { JSDOM } = require('jsdom');
 const fs = require('fs');

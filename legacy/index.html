@@ -4,11 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#0a0a0a">
-<meta name="description" content="NEXTCLIP — official trailer highlights, reviews, endings explained. Picks for You. Anime. The feed never stops.">
+<meta name="description" content="BRYME — official trailer highlights, reviews, endings explained. Picks for You. Anime. The feed never stops.">
 <!-- Production URL metadata is generated from site.config.json by scripts/build-static-foundation.js. -->
-<script src="../assets/site-meta.js"></script>
 <link rel="manifest" href="../manifest.webmanifest">
-<title>NEXTCLIP</title>
+<title>BRYME</title>
+<link rel="canonical" href="https://bryme.onrender.com/legacy/">
+<meta property="og:url" content="https://bryme.onrender.com/legacy/">
+<meta property="og:site_name" content="BRYME">
 <style>
   :root{
     --bg:#0a0a0a; --bg2:#111111; --card:#141414; --card2:#1c1c1c; --line:#262626;
@@ -220,7 +222,7 @@
   <button class="navbtn" data-route="#/vs"><span class="ic">⚔️</span>Clash</button>
 
 </nav>
-<div class="footer">NEXTCLIP · official trailers only · built by Ibrahim Sodiq · © 2026 · v9</div>
+<div class="footer">BRYME · official trailers only · built by Ibrahim Sodiq · © 2026 · v9</div>
 <script>
 "use strict";
 var mem = {};
@@ -729,7 +731,7 @@ function posterSVG(m, wide){
     "<text x='"+W/2+"' y='"+H*0.42+"' font-family='sans-serif' font-size='"+(wide?52:30)+"' font-weight='900' fill='#ffffff' text-anchor='middle'>"+esc(m.title)+"</text>"+
     "<text x='"+W/2+"' y='"+H*0.5+"' font-family='sans-serif' font-size='"+(wide?20:13)+"' fill='rgba(255,255,255,.7)' text-anchor='middle'>"+esc(m.genre)+" · "+m.year+"</text>"+
     "<rect x='"+W/2+"' y='"+H*0.6+"' width='"+(wide?90:54)+"' height='"+(wide?5:4)+"' fill='#e50914' rx='2'/>"+
-    "<text x='"+W/2+"' y='"+H*0.9+"' font-family='sans-serif' font-size='"+(wide?13:9)+"' fill='rgba(255,255,255,.35)' text-anchor='middle'>NEXTCLIP</text>"+
+    "<text x='"+W/2+"' y='"+H*0.9+"' font-family='sans-serif' font-size='"+(wide?13:9)+"' fill='rgba(255,255,255,.35)' text-anchor='middle'>BRYME</text>"+
     "</svg>";
   return "data:image/svg+xml;utf8,"+encodeURIComponent(svg);
 }
@@ -1127,7 +1129,7 @@ function renderArticle(id){
   // related movies by tag
   var rel=ALL.filter(function(m){ var tags=getTags(m); return tags.some(function(t){ return a.tags.indexOf(t)>-1; }); }).slice(0,6);
   if(rel.length){
-    h+='<h2>🎬 Related on NEXTCLIP</h2><div class="row">';
+    h+='<h2>🎬 Related on BRYME</h2><div class="row">';
     rel.forEach(function(m){ h+=posterCard(m); });
     h+='</div>';
   }
@@ -1139,7 +1141,7 @@ function renderArticle(id){
 function renderDisclaimer(){
   var el=document.getElementById("view-disclaimer");
   var h='<h2>⚖️ Disclaimer</h2>';
-  h+='<div class="sec"><div class="h">About the content</div><p>NEXTCLIP is an editorial and commentary website. We do not host, stream, or distribute copyrighted movies or series. All video content on this site is embedded from official YouTube channels — primarily studio-released trailers and promotional material — via YouTube\'s official embed feature.</p></div>';
+  h+='<div class="sec"><div class="h">About the content</div><p>BRYME is an editorial and commentary website. We do not host, stream, or distribute copyrighted movies or series. All video content on this site is embedded from official YouTube channels — primarily studio-released trailers and promotional material — via YouTube\'s official embed feature.</p></div>';
   h+='<div class="sec"><div class="h">Trademarks &amp; copyright</div><p>All movie titles, characters, posters, trailers and related material are the property of their respective owners (studios, publishers, and rights holders). They are used here for commentary, criticism, and informational purposes. We claim no ownership of any third-party content shown on this site.</p></div>';
   h+='<div class="sec"><div class="h">No piracy</div><p>We never link to pirate, torrent, or illegal streaming sites. The "Watch &amp; download" links on each title page point only to official platforms (Netflix, Prime Video, Apple TV, Disney+, Max, etc.). If you believe anything on this site infringes your rights, contact us and we will remove it promptly.</p></div>';
   h+='<div class="sec"><div class="h">AI-assisted content</div><p>Written content on this site (reviews, recaps, facts, articles) may be AI-assisted. All AI-assisted work is labeled as such. Video content is never AI-generated — only official trailers are used.</p></div>';
@@ -1186,7 +1188,7 @@ function renderMatchup(id){
 
 
 function siteFooter(){
-  return '<div class="sitefooter"><div class="frow"><a data-route="#/about">About</a><a data-route="#/contact">Contact</a><a data-route="#/disclaimer">Disclaimer</a></div><div class="fcopy">NEXTCLIP © 2026 · v9 Ibrahim Sodiq · Official trailers only · AI-assisted content disclosed</div></div>';
+  return '<div class="sitefooter"><div class="frow"><a data-route="#/about">About</a><a data-route="#/contact">Contact</a><a data-route="#/disclaimer">Disclaimer</a></div><div class="fcopy">BRYME © 2026 · v9 Ibrahim Sodiq · Official trailers only · AI-assisted content disclosed</div></div>';
 }
 
 /* ============ ABOUT ============ */
@@ -1196,9 +1198,9 @@ function renderAbout(){
   h+='<div class="tags"><span>✍️ Essayist</span><span>🐉 Fantasy writer</span><span>📱 Builds on a phone</span><span>🤖 AI-assisted</span><span>🇳🇬 Lagos, Nigeria</span></div></div>';
   h+='<div class="aboutbody">';
   h+='<p><b>I am Ibrahim Sodiq</b> — a writer and self-taught builder from Lagos, Nigeria. I write essays about AI, education and opportunity in Africa, I write dark fantasy, and I build things on my phone that most people say need a laptop.</p>';
-  h+='<p>I have pitched across African and international publications, built my own writing-pipeline tracker, and now I am building <b>NEXTCLIP</b> — a place where every trailer highlight leads to a full story: about the movie, the cast, the facts, the review, the ending explained, and where to watch it legally.</p>';
+  h+='<p>I have pitched across African and international publications, built my own writing-pipeline tracker, and now I am building <b>BRYME</b> — a place where every trailer highlight leads to a full story: about the movie, the cast, the facts, the review, the ending explained, and where to watch it legally.</p>';
   h+='<p>My story is the backbone of my writing: gambling taught me what shortcuts cost, and programming taught me what the long road is worth. I believe technology is transformation, not magic — and that persistence beats hype every single time.</p>';
-  h+='<p><b>Why NEXTCLIP?</b> Because movies and anime deserve more than a scroll. Every clip here has a story page behind it, and every story page is written to make you stay a little longer and learn a little more.</p>';
+  h+='<p><b>Why BRYME?</b> Because movies and anime deserve more than a scroll. Every clip here has a story page behind it, and every story page is written to make you stay a little longer and learn a little more.</p>';
   h+='</div>';
   el.innerHTML=h;
 }
@@ -1226,7 +1228,7 @@ function renderContact(){
 /* ============ SHARE ============ */
 function shareItem(id){
   var m=getMovie(id); if(!m) return;
-  var text=m.title+" ("+m.genre+") — the best 90 seconds\n\n"+m.teaser+"\n\n👉 Full highlight + review + ending explained on NEXTCLIP: "+location.origin+location.pathname+"#/movie/"+id;
+  var text=m.title+" ("+m.genre+") — the best 90 seconds\n\n"+m.teaser+"\n\n👉 Full highlight + review + ending explained on BRYME: "+location.origin+location.pathname+"#/movie/"+id;
   if(navigator.share){
     navigator.share({title:m.title, text:text, url:location.href}).catch(function(){});
     return;
@@ -1283,7 +1285,7 @@ document.addEventListener("click",function(e){
       var msg=document.getElementById("cMsg").value||"";
       if(!msg){ toast("Write a message first ✍️"); return; }
       var body=encodeURIComponent("Name: "+n+"\nEmail: "+em+"\n\n"+msg);
-      window.location.href="mailto:Sodiqibrahim03@gmail.com?subject="+encodeURIComponent("Message from NEXTCLIP")+"&body="+body;
+      window.location.href="mailto:Sodiqibrahim03@gmail.com?subject="+encodeURIComponent("Message from BRYME")+"&body="+body;
       toast("Opening your email app… ✈️");
       return;
     }

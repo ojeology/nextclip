@@ -1,4 +1,4 @@
-/* NEXTCLIP test suite — title page quality (year index, related, hero, seasons, stories)
+/* BRYME test suite — title page quality (year index, related, hero, seasons, stories)
    Run: NODE_PATH=/path/to/jsdom/node_modules node tests/titlepage-tests.js */
 const fs = require('fs');
 const path = require('path');

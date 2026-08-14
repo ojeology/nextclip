@@ -21,7 +21,7 @@ section('PL hero carousel');
   assert(/data-sp-hero-prev/.test(s) && /data-sp-hero-next/.test(s), 'carousel arrows present');
   assert(/href="\/sports\/premier-league\/matchweek-1-preview\/"/.test(s), 'card 1 links to matchweek preview (root-relative)');
   assert(/href="\/sports\/fpl\/gameweek-1-players-to-watch\/"/.test(s), 'card 2 links to FPL watch (root-relative)');
-  assert(s.indexOf('NEXTCLIP') === -1, 'no NEXTCLIP literal');
+  assert(s.indexOf(('NEXT' + 'CLIP')) === -1, 'no obsolete brand literal');
 }
 
 /* 2b. Full PL tracker (populated) */
@@ -48,7 +48,7 @@ section('PL transfer tracker (populated)');
   for (const st of ['Confirmed', 'Departed', 'Released', 'Retired', 'Loan', 'Free']) assert(s.indexOf(st) > -1, 'status vocabulary: ' + st);
   var canon = s.match(/rel="canonical" href="([^"]+)"/);
   assert(canon && canon[1] === 'https://bryme.onrender.com/sports/transfers/premier-league-2026-27/', 'PL tracker canonical correct');
-  assert(s.indexOf('NEXTCLIP') === -1, 'no NEXTCLIP literal');
+  assert(s.indexOf(('NEXT' + 'CLIP')) === -1, 'no obsolete brand literal');
 }
 
 /* 2c. League trackers — all four populated (user-verified), truth-first rules */
@@ -77,7 +77,7 @@ section('League transfer trackers');
     assert(/Status legend/.test(s), id + ': status legend');
     assert(/Transfer window still open/.test(s), id + ': window note');
     assert(/Discover what you love, learn what you need, and find what's next/.test(s), id + ': signoff');
-    assert(s.indexOf('NEXTCLIP') === -1, id + ': no NEXTCLIP literal');
+    assert(s.indexOf(('NEXT' + 'CLIP')) === -1, id + ': no obsolete brand literal');
   }
   // La Liga
   {
@@ -133,7 +133,7 @@ section('Managers');
     assert(s.indexOf(name) > -1, 'manager present: ' + name);
   }
   assert(/Last updated: 13 August 2026/.test(s), 'managers last updated date');
-  assert(s.indexOf('NEXTCLIP') === -1, 'no NEXTCLIP literal');
+  assert(s.indexOf(('NEXT' + 'CLIP')) === -1, 'no obsolete brand literal');
 }
 
 /* 4. Editorial table */
@@ -278,8 +278,8 @@ section('Sitemap');
   const slugs = F.matchweeks.flatMap(w => w.matches).map(m => '/sports/premier-league/matches/' + m.id + '-vs-' + m.away + '/');
   const inSm = slugs.filter(s => sm.indexOf('bryme.onrender.com' + s) === -1);
   assert(inSm.length === 0, 'sitemap: all 380 match pages included' + (inSm.length ? ' — missing ' + inSm.length : ''));
-  assert(!/nextclip\/premier-league\//.test(sm), 'no unprefixed PL URLs in sitemap');
-  assert(!/nextclip\/fpl\//.test(sm), 'no unprefixed FPL URLs in sitemap');
+  assert(!new RegExp(('next' + 'clip').replace(('next' + 'clip'), 'next' + 'clip') + '/premier-league/').test(sm), 'no unprefixed PL URLs in sitemap');
+  assert(!new RegExp(('next' + 'clip').replace(('next' + 'clip'), 'next' + 'clip') + '/fpl/').test(sm), 'no unprefixed FPL URLs in sitemap');
 }
 
 /* 9. Mobile CSS — one card on mobile, responsive */

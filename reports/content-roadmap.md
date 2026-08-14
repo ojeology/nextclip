@@ -1,4 +1,4 @@
-# NEXTCLIP content roadmap — first quality expansion cycle
+# BRYME content roadmap — first quality expansion cycle
 
 This roadmap uses the current catalogue and is intentionally focused on pages that can be useful without inventing release information, credits, ratings, or news.
 
@@ -20,7 +20,7 @@ This roadmap uses the current catalogue and is intentionally focused on pages th
 These are briefs, not automatically published articles. Each must be researched, fact-checked and editorially reviewed before its status changes to `published`.
 
 1. **Movies like Inception** — recommendation guide linked to Inception, Tenet, The Matrix and Arrival.
-2. **Best action movies in the current NEXTCLIP catalogue** — a short, reason-led list, not a ranking based on invented popularity.
+2. **Best action movies in the current BRYME catalogue** — a short, reason-led list, not a ranking based on invented popularity.
 3. **Best superhero movies in the current catalogue** — linked to the Marvel topic and relevant title pages.
 4. **A spoiler-light guide to the ending of The Matrix** — publish only after a human editorial review of the explanation.
 5. **Why Parasite changes tone so sharply** — analysis rather than a copied plot summary.

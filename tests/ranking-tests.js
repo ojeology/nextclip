@@ -1,4 +1,4 @@
-/* NEXTCLIP test suite — ranking/editorial system
+/* BRYME test suite — ranking/editorial system
    Run: NODE_PATH=/path/to/jsdom/node_modules node tests/ranking-tests.js
    (jsdom must be installed; e.g. npm install jsdom in any folder) */
 const { JSDOM } = require('jsdom');

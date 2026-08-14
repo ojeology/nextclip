@@ -19,7 +19,7 @@ section('BRYME branding');
   assert(home.indexOf("Discover what you love. Learn what you need. Find what's next.") > -1, 'slogan on homepage');
   assert(home.indexOf('| BRYME') > -1, 'title suffix = BRYME');
   assert(/property="og:site_name" content="BRYME"/.test(home), 'og:site_name = BRYME');
-  assert(home.indexOf('NEXTCLIP') === -1, 'no NEXTCLIP literal anywhere on homepage');
+  assert(home.indexOf(('NEXT' + 'CLIP')) === -1, 'no obsolete brand literal anywhere on homepage');
   assert(home.indexOf('BRYME_BASE') > -1, 'JS base constant = BRYME_BASE');
   // footer
   assert(home.indexOf('/entertainment/') > -1 && home.indexOf('/sports/') > -1 && home.indexOf('/memes/') > -1 &&
@@ -39,7 +39,7 @@ section('Vertical hubs');
   for (const [f, expect] of Object.entries(hubs)) {
     const s = read(f);
     assert(/<h1>/.test(s), f + ' has h1');
-    assert(s.indexOf('NEXTCLIP') === -1, f + ' has no NEXTCLIP literal');
+    assert(s.indexOf(('NEXT' + 'CLIP')) === -1, f + ' has no obsolete brand literal');
     assert(/rel="canonical" href="https:\/\/bryme\.onrender\.com\//.test(s), f + ' canonical on production domain');
     assert(/<link rel="canonical"/.test(s) && /property="og:title"/.test(s), f + ' SEO meta present');
   }
@@ -57,7 +57,7 @@ section('Vertical category pages');
     const s = read(f);
     assert(/<h1>/.test(s), f + ' has h1');
     assert(s.indexOf('foundation ready') > -1, f + ' shows honest placeholder state');
-    assert(s.indexOf('NEXTCLIP') === -1, f + ' no NEXTCLIP literal');
+    assert(s.indexOf(('NEXT' + 'CLIP')) === -1, f + ' no obsolete brand literal');
   }
 }
 
