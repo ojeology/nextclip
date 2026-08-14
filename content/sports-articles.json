@@ -1,0 +1,341 @@
+{
+  "version": 1,
+  "categories": [
+    "Premier League",
+    "La Liga",
+    "Serie A",
+    "Bundesliga",
+    "Ligue 1",
+    "Champions League / European football",
+    "Transfer news",
+    "Players",
+    "Managers",
+    "FPL",
+    "Matchweek coverage",
+    "Football debates",
+    "Football history",
+    "BRYME original/editorial pieces"
+  ],
+  "statusFlow": [
+    "draft",
+    "review",
+    "published"
+  ],
+  "articles": [
+    {
+      "slug": "arsenal-title-defence",
+      "title": "Arsenal Begin Their Title Defence: Can Anyone Stop Them?",
+      "category": "Premier League",
+      "status": "draft",
+      "labels": [
+        "featured",
+        "analysis"
+      ],
+      "author": "BRYME Sports Editorial",
+      "publicationDate": null,
+      "lastUpdated": null,
+      "seoTitle": "Arsenal Begin Their Title Defence: Can Anyone Stop Them? | BRYME Sports",
+      "metaDescription": null,
+      "heroImage": null,
+      "body": [],
+      "relatedArticles": []
+    },
+    {
+      "slug": "ballon-dor-race",
+      "title": "The Ballon d’Or Race: Who Really Deserves It?",
+      "category": "Football debates",
+      "status": "draft",
+      "labels": [
+        "trending",
+        "analysis"
+      ],
+      "author": "BRYME Sports Editorial",
+      "publicationDate": null,
+      "lastUpdated": null,
+      "seoTitle": "The Ballon d’Or Race: Who Really Deserves It? | BRYME Sports",
+      "metaDescription": null,
+      "heroImage": null,
+      "body": [],
+      "relatedArticles": []
+    },
+    {
+      "slug": "rodris-future",
+      "title": "Rodri’s Future: What Happens to Manchester City If He Leaves?",
+      "category": "Players",
+      "status": "draft",
+      "labels": [
+        "featured",
+        "analysis"
+      ],
+      "author": "BRYME Sports Editorial",
+      "publicationDate": null,
+      "lastUpdated": null,
+      "seoTitle": "Rodri’s Future: What Happens to Manchester City If He Leaves? | BRYME Sports",
+      "metaDescription": null,
+      "heroImage": null,
+      "body": [],
+      "relatedArticles": []
+    },
+    {
+      "slug": "marescas-second-attempt-in-england",
+      "title": "Maresca’s Second Attempt in England: Can He Make It Work?",
+      "category": "Managers",
+      "status": "draft",
+      "labels": [
+        "analysis"
+      ],
+      "author": "BRYME Sports Editorial",
+      "publicationDate": null,
+      "lastUpdated": null,
+      "seoTitle": "Maresca’s Second Attempt in England: Can He Make It Work? | BRYME Sports",
+      "metaDescription": null,
+      "heroImage": null,
+      "body": [],
+      "relatedArticles": []
+    },
+    {
+      "slug": "newly-promoted-clubs-approach",
+      "title": "The Newly Promoted Clubs: What Is Their Approach to the Premier League?",
+      "category": "Premier League",
+      "status": "draft",
+      "labels": [
+        "analysis"
+      ],
+      "author": "BRYME Sports Editorial",
+      "publicationDate": null,
+      "lastUpdated": null,
+      "seoTitle": "The Newly Promoted Clubs: What Is Their Approach to the Premier League? | BRYME Sports",
+      "metaDescription": null,
+      "heroImage": null,
+      "body": [],
+      "relatedArticles": []
+    },
+    {
+      "slug": "manchester-city-without-guardiola",
+      "title": "Manchester City Without Guardiola: What Happens Next?",
+      "category": "Managers",
+      "status": "draft",
+      "labels": [
+        "featured",
+        "analysis"
+      ],
+      "author": "BRYME Sports Editorial",
+      "publicationDate": null,
+      "lastUpdated": null,
+      "seoTitle": "Manchester City Without Guardiola: What Happens Next? | BRYME Sports",
+      "metaDescription": null,
+      "heroImage": null,
+      "body": [],
+      "relatedArticles": []
+    },
+    {
+      "slug": "liverpools-next-chapter",
+      "title": "Liverpool’s Next Chapter: Can They Challenge Again?",
+      "category": "Premier League",
+      "status": "draft",
+      "labels": [
+        "analysis"
+      ],
+      "author": "BRYME Sports Editorial",
+      "publicationDate": null,
+      "lastUpdated": null,
+      "seoTitle": "Liverpool’s Next Chapter: Can They Challenge Again? | BRYME Sports",
+      "metaDescription": null,
+      "heroImage": null,
+      "body": [],
+      "relatedArticles": []
+    },
+    {
+      "slug": "manchester-united-finally-their-season",
+      "title": "Manchester United: Is This Finally Their Season?",
+      "category": "Premier League",
+      "status": "draft",
+      "labels": [
+        "trending",
+        "analysis"
+      ],
+      "author": "BRYME Sports Editorial",
+      "publicationDate": null,
+      "lastUpdated": null,
+      "seoTitle": "Manchester United: Is This Finally Their Season? | BRYME Sports",
+      "metaDescription": null,
+      "heroImage": null,
+      "body": [],
+      "relatedArticles": []
+    },
+    {
+      "slug": "players-who-could-explode-this-season",
+      "title": "The Players Who Could Explode This Season",
+      "category": "Players",
+      "status": "draft",
+      "labels": [
+        "trending"
+      ],
+      "author": "BRYME Sports Editorial",
+      "publicationDate": null,
+      "lastUpdated": null,
+      "seoTitle": "The Players Who Could Explode This Season | BRYME Sports",
+      "metaDescription": null,
+      "heroImage": null,
+      "body": [],
+      "relatedArticles": []
+    },
+    {
+      "slug": "managers-with-most-to-prove",
+      "title": "The Managers With the Most to Prove",
+      "category": "Managers",
+      "status": "draft",
+      "labels": [
+        "analysis"
+      ],
+      "author": "BRYME Sports Editorial",
+      "publicationDate": null,
+      "lastUpdated": null,
+      "seoTitle": "The Managers With the Most to Prove | BRYME Sports",
+      "metaDescription": null,
+      "heroImage": null,
+      "body": [],
+      "relatedArticles": []
+    },
+    {
+      "slug": "five-biggest-transfer-winners",
+      "title": "The Five Biggest Transfer Winners",
+      "category": "Transfer news",
+      "status": "draft",
+      "labels": [
+        "transfer"
+      ],
+      "author": "BRYME Sports Editorial",
+      "publicationDate": null,
+      "lastUpdated": null,
+      "seoTitle": "The Five Biggest Transfer Winners | BRYME Sports",
+      "metaDescription": null,
+      "heroImage": null,
+      "body": [],
+      "relatedArticles": []
+    },
+    {
+      "slug": "five-clubs-that-still-need-signings",
+      "title": "The Five Clubs That Still Need Signings",
+      "category": "Transfer news",
+      "status": "draft",
+      "labels": [
+        "transfer"
+      ],
+      "author": "BRYME Sports Editorial",
+      "publicationDate": null,
+      "lastUpdated": null,
+      "seoTitle": "The Five Clubs That Still Need Signings | BRYME Sports",
+      "metaDescription": null,
+      "heroImage": null,
+      "body": [],
+      "relatedArticles": []
+    },
+    {
+      "slug": "premier-league-matchweek-1-guide",
+      "title": "Premier League Matchweek 1: Everything You Need to Know",
+      "category": "Matchweek coverage",
+      "status": "draft",
+      "labels": [
+        "matchweek",
+        "featured"
+      ],
+      "author": "BRYME Sports Editorial",
+      "publicationDate": null,
+      "lastUpdated": null,
+      "seoTitle": "Premier League Matchweek 1: Everything You Need to Know | BRYME Sports",
+      "metaDescription": null,
+      "heroImage": null,
+      "body": [],
+      "relatedArticles": []
+    },
+    {
+      "slug": "players-to-watch-this-weekend",
+      "title": "Players to Watch This Weekend",
+      "category": "Matchweek coverage",
+      "status": "draft",
+      "labels": [
+        "matchweek"
+      ],
+      "author": "BRYME Sports Editorial",
+      "publicationDate": null,
+      "lastUpdated": null,
+      "seoTitle": "Players to Watch This Weekend | BRYME Sports",
+      "metaDescription": null,
+      "heroImage": null,
+      "body": [],
+      "relatedArticles": []
+    },
+    {
+      "slug": "tactical-questions-ahead-of-matchweek-1",
+      "title": "The Biggest Tactical Questions Ahead of Matchweek 1",
+      "category": "Matchweek coverage",
+      "status": "draft",
+      "labels": [
+        "matchweek",
+        "analysis"
+      ],
+      "author": "BRYME Sports Editorial",
+      "publicationDate": null,
+      "lastUpdated": null,
+      "seoTitle": "The Biggest Tactical Questions Ahead of Matchweek 1 | BRYME Sports",
+      "metaDescription": null,
+      "heroImage": null,
+      "body": [],
+      "relatedArticles": []
+    },
+    {
+      "slug": "five-matches-we-cannot-wait-to-watch",
+      "title": "The Five Matches We Cannot Wait to Watch",
+      "category": "Matchweek coverage",
+      "status": "draft",
+      "labels": [
+        "matchweek",
+        "trending"
+      ],
+      "author": "BRYME Sports Editorial",
+      "publicationDate": null,
+      "lastUpdated": null,
+      "seoTitle": "The Five Matches We Cannot Wait to Watch | BRYME Sports",
+      "metaDescription": null,
+      "heroImage": null,
+      "body": [],
+      "relatedArticles": []
+    },
+    {
+      "slug": "premier-league-banter-table",
+      "title": "Premier League Banter Table",
+      "category": "BRYME original/editorial pieces",
+      "status": "draft",
+      "labels": [
+        "editor-pick"
+      ],
+      "author": "BRYME Sports Editorial",
+      "publicationDate": null,
+      "lastUpdated": null,
+      "seoTitle": "Premier League Banter Table | BRYME Sports",
+      "metaDescription": null,
+      "heroImage": null,
+      "body": [],
+      "relatedArticles": []
+    },
+    {
+      "slug": "five-things-fans-will-talk-about-this-weekend",
+      "title": "Five Things Football Fans Will Be Talking About This Weekend",
+      "category": "Football debates",
+      "status": "draft",
+      "labels": [
+        "trending",
+        "matchweek"
+      ],
+      "author": "BRYME Sports Editorial",
+      "publicationDate": null,
+      "lastUpdated": null,
+      "seoTitle": "Five Things Football Fans Will Be Talking About This Weekend | BRYME Sports",
+      "metaDescription": null,
+      "heroImage": null,
+      "body": [],
+      "relatedArticles": []
+    }
+  ]
+}
