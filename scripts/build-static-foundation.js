@@ -1393,6 +1393,8 @@ for (const s of genreIndexByType.movie.keys()) {
 /* ---------------- Years (per content type) ---------------- */
 const yearMap = new Map();        // movies  -> /year/{y}/
 const seriesYearMap = new Map();  // series  -> /series/{y}/
+const THIN_ARCHIVE_MIN = 3;            // below this an archive is noindexed and left out of the sitemap
+const thinArchive = list => (list || []).length < THIN_ARCHIVE_MIN;
 const animeYearMap = new Map();   // anime   -> /anime/{y}/
 movies.forEach(m => {
   if (!m.year) return;
@@ -1409,15 +1411,15 @@ write('years', layout({
   body: `<main class="shell"><section class="hero"><div class="eyebrow">Browse by year</div><h1>Years, separated by type.</h1><p class="lead">Series and anime are never mixed into the movie year index. Each type has its own year pages.</p></section><section class="section"><div class="genre-trio"><div class="genre-panel"><h3>🎬 Movies <span class="gp-count">${yearMap.size} years</span></h3><div class="genre-chips">${yearChip(yearMap, 'year', 'movies')}</div></div><div class="genre-panel"><h3>📺 Series <span class="gp-count">${seriesYearMap.size} years</span></h3><div class="genre-chips">${yearChip(seriesYearMap, 'series', 'series')}</div></div><div class="genre-panel"><h3>🍥 Anime <span class="gp-count">${animeYearMap.size} years</span></h3><div class="genre-chips">${yearChip(animeYearMap, 'anime', 'anime')}</div></div></div></section></main>`
 }));
 for (const [year, list] of yearMap) write(`year/${year}`, layout({
-  title: `Movies from ${year}`, description: `Explore movies from ${year} in the BRYME catalogue.`, path: `/year/${year}/`, activeNav: 'movies', image: list[0] ? poster(list[0]) : undefined,
+  title: `Movies from ${year}`, description: `Explore movies from ${year} in the BRYME catalogue.`, path: `/year/${year}/`, noindex: thinArchive(list), activeNav: 'movies', image: list[0] ? poster(list[0]) : undefined,
   body: `<main class="shell"><div class="crumb"><a href="${url('/years/')}">Years</a> / <a href="${url('/movies/')}">Movies</a> / ${year}</div><section class="hero"><div class="eyebrow">Year · Movies</div><h1>Movies from ${year}</h1></section><section class="section">${progressiveGrid(list, 36)}</section></main>`
 }));
 for (const [year, list] of seriesYearMap) write(`series/${year}`, layout({
-  title: `Series from ${year}`, description: `Explore TV series from ${year} in the BRYME catalogue.`, path: `/series/${year}/`, activeNav: 'series', image: list[0] ? poster(list[0]) : undefined,
+  title: `Series from ${year}`, description: `Explore TV series from ${year} in the BRYME catalogue.`, path: `/series/${year}/`, noindex: thinArchive(list), activeNav: 'series', image: list[0] ? poster(list[0]) : undefined,
   body: `<main class="shell"><div class="crumb"><a href="${url('/years/')}">Years</a> / <a href="${url('/series/')}">Series</a> / ${year}</div><section class="hero"><div class="eyebrow">Year · Series</div><h1>Series from ${year}</h1></section><section class="section">${progressiveGrid(list, 36)}</section></main>`
 }));
 for (const [year, list] of animeYearMap) write(`anime/${year}`, layout({
-  title: `Anime from ${year}`, description: `Explore anime from ${year} in the BRYME catalogue.`, path: `/anime/${year}/`, activeNav: 'anime', image: list[0] ? poster(list[0]) : undefined,
+  title: `Anime from ${year}`, description: `Explore anime from ${year} in the BRYME catalogue.`, path: `/anime/${year}/`, noindex: thinArchive(list), activeNav: 'anime', image: list[0] ? poster(list[0]) : undefined,
   body: `<main class="shell"><div class="crumb"><a href="${url('/years/')}">Years</a> / <a href="${url('/anime/')}">Anime</a> / ${year}</div><section class="hero"><div class="eyebrow">Year · Anime</div><h1>Anime from ${year}</h1></section><section class="section">${progressiveGrid(list, 36)}</section></main>`
 }));
 
@@ -1600,8 +1602,21 @@ for (const m of movies) {
   <section class="shell trailer-section" id="trailer">${trailerSection(m)}</section>
   <section class="body">
     <article class="prose">
-      <h2>About ${esc(m.title)}</h2>
-      <p>${esc(m.description || 'A full synopsis is not currently available for this title.')}</p>
+      ${(() => {
+        /* Only render an About section when it says something the hero synopsis did not.
+           Previously this reprinted m.description verbatim under a heading on 71% of title
+           pages - padding that reads as filler and adds no information for a reader or a
+           crawler. If a longer in-house synopsis is written later it appears here
+           automatically; otherwise the page relies on the hero synopsis and the verified
+           Details block below. */
+        const long = m.longDescription || m.synopsis || m.about || '';
+        const lead = (m.description || '').trim();
+        if (long && long.trim() !== lead) {
+          return `<h2>About ${esc(m.title)}</h2>` + long.trim().split(/\n{2,}/).map(t => `<p>${esc(t.trim())}</p>`).join('');
+        }
+        if (!lead) return `<h2>About ${esc(m.title)}</h2><p>A full synopsis is not currently available for this title.</p>`;
+        return '';
+      })()}
       ${m.facts.length ? `<h2>Notes</h2><ul>${m.facts.map(f => `<li>${esc(f)}</li>`).join('')}</ul>` : ''}
       ${(typeDir !== 'movie' && m.seasons.length) ? `<h2>Seasons</h2><div class="list">${m.seasons.map(x => `<div class="row"><div><b>${esc(x.title || ('Season ' + x.seasonNumber))}</b><span class="meta" style="font-size:12px;color:var(--muted)">${x.year ? x.year + ' · ' : ''}${x.episodeCount ? x.episodeCount + ' episodes' : 'episode count unavailable'}</span></div></div>`).join('')}</div>` : ''}
       <h2>You may also like</h2>
@@ -1890,7 +1905,7 @@ const verticalPaths = ['/entertainment/','/sports/articles/']
 /* Published vertical articles are real, indexable pages. */
 const verticalArticlePaths = moneyArticles.map(a => articlePathFor('make-money', a))
   .concat(sportsArticlesPub.map(a => articlePathFor('sports', a)));
-const paths = ['/','/movies/','/series/','/anime/','/trending/','/genres/','/years/','/topics/','/articles/', ...legalPaths, ...verticalPaths, ...verticalArticlePaths, ...sportsExtraPaths, ...LEAGUE_MATCH_PATHS.filter(p => !UNPLAYED_MATCH_PATHS.has(p)), ...genrePaths, ...movies.map(m => `/${m.typeDir || 'movie'}/${m.slug}/`), ...[...yearMap.keys()].map(y => `/year/${y}/`), ...[...seriesYearMap.keys()].map(y => `/series/${y}/`), ...[...animeYearMap.keys()].map(y => `/anime/${y}/`), ...articles.map(a => `/article/${a.slug}/`), ...topics.map(t => `/topic/${t.slug}/`), ...[...articleCategoryMap.keys()].map(s => `/articles/${s}/`)];
+const paths = ['/','/movies/','/series/','/anime/','/trending/','/genres/','/years/','/topics/','/articles/', ...legalPaths, ...verticalPaths, ...verticalArticlePaths, ...sportsExtraPaths, ...LEAGUE_MATCH_PATHS.filter(p => !UNPLAYED_MATCH_PATHS.has(p)), ...genrePaths, ...movies.map(m => `/${m.typeDir || 'movie'}/${m.slug}/`), ...[...yearMap].filter(([,l]) => !thinArchive(l)).map(([y]) => `/year/${y}/`), ...[...seriesYearMap].filter(([,l]) => !thinArchive(l)).map(([y]) => `/series/${y}/`), ...[...animeYearMap].filter(([,l]) => !thinArchive(l)).map(([y]) => `/anime/${y}/`), ...articles.map(a => `/article/${a.slug}/`), ...topics.map(t => `/topic/${t.slug}/`), ...[...articleCategoryMap.keys()].map(s => `/articles/${s}/`)];
 fs.writeFileSync(path.join(root, '404.html'), layout({
   title: 'Page not found', description: 'This page is not available on BRYME.', path: '/404.html', noindex: true,
   body: `<main class="shell"><section class="hero"><div class="eyebrow">404</div><h1>Looks like this one disappeared.</h1><p class="lead">Try searching the catalogue, or browse a single content type.</p><p><a class="cta" href="${url('/search/')}">Search everything</a> <a class="quiet-link" href="${url('/movies/')}">Movies</a> <a class="quiet-link" href="${url('/series/')}">Series</a> <a class="quiet-link" href="${url('/anime/')}">Anime</a> <a class="quiet-link" href="${url('/articles/')}">Latest articles</a></p></section></main>`
