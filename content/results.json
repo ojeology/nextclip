@@ -1,0 +1,19 @@
+{
+  "_readme": "Match results for BRYME Sports. Keyed by league slug, then by match slug (home id + '-vs-' + away id, matching the fixture). A result MUST carry a source with a url - the build refuses to publish an unsourced result. Add results with: node scripts/add-result.js. Validate with: node scripts/validate-results.js",
+  "_schema": {
+    "homeScore": "integer, required",
+    "awayScore": "integer, required",
+    "status": "FT | AET | FT (pens) - optional, defaults to FT",
+    "penalties": "optional string, e.g. '4-3' - only for FT (pens)",
+    "playedOn": "YYYY-MM-DD, optional",
+    "scorers": "optional array of {team:'home'|'away', player, minute}",
+    "attendance": "optional integer",
+    "source": "REQUIRED object {name, url} - where the result was confirmed",
+    "verifiedOn": "YYYY-MM-DD, optional - when you checked it"
+  },
+  "premier-league": {},
+  "la-liga": {},
+  "serie-a": {},
+  "bundesliga": {},
+  "ligue-1": {}
+}

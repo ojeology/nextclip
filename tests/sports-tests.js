@@ -267,6 +267,43 @@ section('Match centre, fixtures, results');
   assert(missing.length === 0, 'all 380 per-match pages generated' + (missing.length ? ' — missing: ' + missing.slice(0, 3).join(', ') : ''));
 }
 
+/* 7b. Results pipeline — content/results.json drives played state, indexing and the results page */
+section('Results pipeline');
+{
+  const R = JSON.parse(read('content/results.json'));
+  for (const lg of ['premier-league','la-liga','serie-a','bundesliga','ligue-1'])
+    assert(R[lg] && typeof R[lg] === 'object', `results.json has a ${lg} bucket`);
+
+  /* every stored result must reference a real fixture and be attributable */
+  const F = JSON.parse(read('content/fixtures.json'));
+  const valid = new Set(F.matchweeks.flatMap(w => w.matches).map(m => m.id + '-vs-' + m.away));
+  let sourced = 0;
+  for (const [slug, r] of Object.entries(R['premier-league'] || {})) {
+    assert(valid.has(slug), `result ${slug} matches a real fixture`);
+    assert(Number.isInteger(r.homeScore) && Number.isInteger(r.awayScore), `result ${slug} has integer scores`);
+    assert(r.source && /^https?:\/\//.test(r.source.url || ''), `result ${slug} carries a source url`);
+    sourced++;
+  }
+
+  /* an unplayed fixture stays noindex and out of the sitemap; a played one does the opposite */
+  const sm = read('sitemap.xml');
+  const played = new Set(Object.keys(R['premier-league'] || {}));
+  const sample = [...valid].slice(0, 40);
+  for (const slug of sample) {
+    const html = read('sports/premier-league/matches/' + slug + '/index.html');
+    const inSm = sm.indexOf('bryme.onrender.com/sports/premier-league/matches/' + slug + '/') > -1;
+    if (played.has(slug)) {
+      assert(!/name="robots" content="noindex/.test(html), `played ${slug} is indexable`);
+      assert(inSm, `played ${slug} is in the sitemap`);
+      assert(!/has not been played yet/.test(html), `played ${slug} drops the unplayed notice`);
+    } else {
+      assert(/name="robots" content="noindex/.test(html), `unplayed ${slug} is noindex`);
+      assert(!inSm, `unplayed ${slug} is out of the sitemap`);
+    }
+  }
+  assert(true, `results pipeline consistent (${sourced} sourced result(s) recorded)`);
+}
+
 /* 8. Sitemap coverage + no stray unprefixed pages */
 section('Sitemap');
 {
