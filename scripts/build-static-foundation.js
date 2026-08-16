@@ -420,8 +420,208 @@ fs.writeFileSync(path.join(root,'assets/site.css'), css + '\n' + '.sports-featur
 @media(max-width:1024px){.sp-hero-track{grid-auto-columns:calc((100% - 32px)/2)}}@media(min-width:1025px) and (max-width:1439px){.sp-hero{max-width:1180px;margin-left:auto;margin-right:auto}}
 @media(max-width:640px){.sp-hero-track{grid-auto-columns:calc(100% - 40px)}.sp-hero-arrow{display:none}.sp-hero-card{min-height:200px}.sp-article-head h1{font-size:30px}}
 @media(min-width:1440px){.sp-hero-track{grid-auto-columns:calc((100% - 64px)/5);grid-auto-flow:column}}
-.visually-hidden{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}@media(max-width:760px){.hero-carousel{min-height:520px}.hero-slide-inner{padding-top:150px;padding-bottom:52px}.hero-slide h1{font-size:40px}.hero-slide p{font-size:14.5px}.hero-ctrl{width:40px;height:40px;font-size:19px}.hero-prev{left:8px}.hero-next{right:8px}.rec-inner{padding:26px 18px}.rec-cta{width:100%;text-align:center}}.hero-kicker{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:12px;font-weight:800;color:var(--muted);letter-spacing:.05em;text-transform:uppercase;margin-bottom:10px}.hero-kicker .dot{opacity:.35}.cta-ghost{background:transparent;border:1px solid var(--accent);color:#fff}.cta-ghost:hover{background:var(--accent)}.take-card{margin-top:28px;border:1px solid var(--line);border-left:3px solid var(--gold);background:#101318;padding:18px 20px;border-radius:0 6px 6px 0}.take-card h3{font-size:19px;line-height:1.25;margin:6px 0}.take-card p{font-size:14px;color:var(--muted);margin:0 0 12px}.take-card .cta{margin:0}.sub-section{padding:8px 0 34px}.sub-section h2{font-size:clamp(20px,3vw,26px)}.sub-section .lead,.sub-section p.sec-note{font-size:13px;color:var(--muted);margin:0 0 14px}@media(max-width:760px){.hero-kicker{font-size:10.5px;gap:6px}.take-card{padding:15px 14px}.hero-actions .cta{min-height:44px;display:inline-flex;align-items:center}.story-grid-title{grid-template-columns:repeat(2,1fr)}@media(max-width:760px){.story-grid-title{grid-template-columns:1fr}.story-grid-title a{min-height:150px}}`);
+.visually-hidden{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}@media(max-width:760px){.hero-carousel{min-height:520px}.hero-slide-inner{padding-top:150px;padding-bottom:52px}.hero-slide h1{font-size:40px}.hero-slide p{font-size:14.5px}.hero-ctrl{width:40px;height:40px;font-size:19px}.hero-prev{left:8px}.hero-next{right:8px}.rec-inner{padding:26px 18px}.rec-cta{width:100%;text-align:center}}.hero-kicker{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:12px;font-weight:800;color:var(--muted);letter-spacing:.05em;text-transform:uppercase;margin-bottom:10px}.hero-kicker .dot{opacity:.35}.cta-ghost{background:transparent;border:1px solid var(--accent);color:#fff}.cta-ghost:hover{background:var(--accent)}.take-card{margin-top:28px;border:1px solid var(--line);border-left:3px solid var(--gold);background:#101318;padding:18px 20px;border-radius:0 6px 6px 0}.take-card h3{font-size:19px;line-height:1.25;margin:6px 0}.take-card p{font-size:14px;color:var(--muted);margin:0 0 12px}.take-card .cta{margin:0}.sub-section{padding:8px 0 34px}.sub-section h2{font-size:clamp(20px,3vw,26px)}.sub-section .lead,.sub-section p.sec-note{font-size:13px;color:var(--muted);margin:0 0 14px}@media(max-width:760px){.hero-kicker{font-size:10.5px;gap:6px}.take-card{padding:15px 14px}.hero-actions .cta{min-height:44px;display:inline-flex;align-items:center}.story-grid-title{grid-template-columns:repeat(2,1fr)}@media(max-width:760px){.story-grid-title{grid-template-columns:1fr}.story-grid-title a{min-height:150px}}}`);
 fs.appendFileSync(path.join(root,'assets/site.css'), `\n/* Verified metadata attribution */\n.meta-source{margin:10px 0 0;font-size:12px;line-height:1.55;color:#8b93a1}.meta-source a{color:#a9b3c2;text-decoration:underline;text-underline-offset:2px}.meta-source a:hover{color:#fff}\n`);
+fs.appendFileSync(path.join(root,'assets/site.css'), `
+/* ============================================================
+   COLOUR & DEPTH LAYER
+   Appended last so it layers over the base sheet without
+   rewriting it. Adds the vertical colour identities, gradients
+   and hover states across the site. Structure is untouched -
+   this is presentation only.
+   ============================================================ */
+:root{
+  --grad-brand:linear-gradient(115deg,#ff6a3d,#e94b2c 45%,#c2341c);
+  --grad-gold:linear-gradient(115deg,#f7d489,#e7bb5c 50%,#c99a37);
+  --grad-sports:linear-gradient(115deg,#4dffa0,#3ddc84 48%,#1fa862);
+  --grad-money:linear-gradient(115deg,#ffd98a,#e7bb5c 48%,#b98f2f);
+  --grad-tech:linear-gradient(115deg,#7fb0ff,#4f8ef7 48%,#2a63c9);
+  --grad-ent:linear-gradient(115deg,#ff7d5c,#e94b2c 48%,#b8331b);
+  --ring:0 0 0 1px rgba(255,255,255,.06);
+}
+/* page canvas: soft coloured light instead of flat black */
+body{
+  background:
+    radial-gradient(1100px 520px at 12% -8%, rgba(233,75,44,.14), transparent 62%),
+    radial-gradient(900px 460px at 88% 0%, rgba(79,142,247,.12), transparent 60%),
+    radial-gradient(760px 420px at 50% 108%, rgba(61,220,132,.09), transparent 62%),
+    var(--bg);
+  background-attachment:fixed;
+}
+/* brand wordmark */
+.brand,.logo,header .top b{letter-spacing:.02em}
+.brand-grad,.footer-brand b{background:var(--grad-brand);-webkit-background-clip:text;background-clip:text;color:transparent}
+/* primary action */
+.cta{
+  background:var(--grad-brand);border:0;color:#fff;border-radius:7px;
+  box-shadow:0 6px 20px rgba(233,75,44,.28), var(--ring);
+  transition:transform .18s ease, box-shadow .18s ease, filter .18s ease;
+}
+.cta:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(233,75,44,.4), var(--ring);filter:saturate(1.08)}
+.cta:active{transform:translateY(0)}
+/* every section heading gets a coloured lead-in bar */
+.section-head h2,.home-section h2,.section>h2,main h2,.brand-slogan{position:relative;padding-left:15px}
+.section-head h2:before,.home-section h2:before,.section>h2:before,main h2:before,.brand-slogan:before{
+  content:"";position:absolute;left:0;top:.16em;bottom:.16em;width:5px;border-radius:4px;background:var(--grad-brand);
+}
+.article-body h2:before,.legal-prose h2:before{background:var(--grad-gold)}
+body[data-nav="sports"] main h2:before,body[data-nav="sports"] .section-head h2:before{background:var(--grad-sports)}
+body[data-nav="make-money"] main h2:before{background:var(--grad-money)}
+body[data-nav="tech"] main h2:before{background:var(--grad-tech)}
+body[data-nav="sports"] .cta{background:var(--grad-sports);box-shadow:0 6px 20px rgba(61,220,132,.28),var(--ring);color:#06210f}
+body[data-nav="tech"] .cta{background:var(--grad-tech);box-shadow:0 6px 20px rgba(79,142,247,.3),var(--ring)}
+body[data-nav="make-money"] .cta{background:var(--grad-money);box-shadow:0 6px 20px rgba(231,187,92,.28),var(--ring);color:#2a1e05}
+.section-head a{color:var(--gold);font-weight:800;font-size:13px}
+.section-head a:hover{color:#fff}
+/* big page titles pick up a warm gradient */
+.hero h1,.vhero h1,.article-hero h1{
+  background:linear-gradient(100deg,#ffffff 30%,#ffd9c9 62%,#ffb08e);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.vhero-sports h1{background:linear-gradient(100deg,#ffffff 30%,#c9ffe3 62%,#6affab);-webkit-background-clip:text;background-clip:text}
+.vhero-tech h1{background:linear-gradient(100deg,#ffffff 30%,#cfe0ff 62%,#8fb6ff);-webkit-background-clip:text;background-clip:text}
+.vhero-make-money h1{background:linear-gradient(100deg,#ffffff 30%,#ffeec4 62%,#f5cd76);-webkit-background-clip:text;background-clip:text}
+/* category cards: lit top edge, brighter surface, coloured lift */
+.vcat{position:relative;overflow:hidden;background:linear-gradient(160deg,#181d26,#11151b);border-color:rgba(255,255,255,.1)}
+.vcat:before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--grad-brand);opacity:.9}
+body[data-nav="sports"] .vcat:before{background:var(--grad-sports)}
+body[data-nav="make-money"] .vcat:before{background:var(--grad-money)}
+body[data-nav="tech"] .vcat:before{background:var(--grad-tech)}
+body[data-nav="sports"] .prose a,body[data-nav="sports"] .sp-table a{color:#7dffb9}
+body[data-nav="tech"] .prose a{color:#a8c8ff}
+.vcat:hover{transform:translateY(-4px);border-color:rgba(255,255,255,.22);box-shadow:0 16px 34px rgba(0,0,0,.45)}
+.vcat b{font-size:15px}
+/* data tables read as content, not spreadsheets */
+.sp-table thead th{background:linear-gradient(180deg,rgba(255,255,255,.06),transparent);color:#cfd5db;border-bottom-color:rgba(255,255,255,.14)}
+.sp-table tbody tr:hover{background:rgba(255,255,255,.035)}
+.sp-table a{color:#ffcaa8}.sp-table a:hover{color:#fff}
+/* panels lift off the page */
+.sp-msec,.genre-panel,.rec-miss{background:linear-gradient(160deg,#161b23,#0f1216)}
+.sp-rel{background:linear-gradient(160deg,#171c24,#101318);transition:transform .16s ease,border-color .16s ease}
+.sp-rel:hover{transform:translateY(-2px);border-color:rgba(255,255,255,.25)}
+/* cards and tiles lift with light */
+.tile:hover{transform:translateY(-5px)}
+.tile .poster,.editorial-card .poster{transition:box-shadow .22s ease, filter .22s ease}
+.tile:hover .poster,.editorial-card:hover .poster{box-shadow:0 16px 34px rgba(0,0,0,.55);filter:saturate(1.06) contrast(1.03)}
+.vcat{background:linear-gradient(150deg,#141821,#0f1216);transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease}
+.vcat:hover{transform:translateY(-3px);box-shadow:0 12px 26px rgba(0,0,0,.4)}
+.story-grid a{transition:background .2s ease,transform .2s ease}
+.story-grid a:hover{transform:translateY(-3px)}
+/* vertical identity: colour the chips and hubs properly */
+.vchip{border-color:rgba(255,255,255,.09)}
+.vchip:before{opacity:.3}
+.vchip-sports:hover{border-color:rgba(61,220,132,.55);box-shadow:0 12px 30px rgba(61,220,132,.16)}
+.vchip-make-money:hover{border-color:rgba(231,187,92,.55);box-shadow:0 12px 30px rgba(231,187,92,.16)}
+.vchip-tech:hover{border-color:rgba(79,142,247,.55);box-shadow:0 12px 30px rgba(79,142,247,.16)}
+.vchip-entertainment:hover{border-color:rgba(233,75,44,.55);box-shadow:0 12px 30px rgba(233,75,44,.16)}
+.vhero{position:relative;overflow:hidden}
+.vhero:after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;opacity:.85}
+.vhero-sports:after{background:var(--grad-sports)}
+.vhero-make-money:after{background:var(--grad-money)}
+.vhero-tech:after{background:var(--grad-tech)}
+.vhero-sports{background:radial-gradient(620px 260px at 72% -10%,rgba(61,220,132,.22),transparent 68%)}
+.vhero-make-money{background:radial-gradient(620px 260px at 72% -10%,rgba(231,187,92,.22),transparent 68%)}
+.vhero-tech{background:radial-gradient(620px 260px at 72% -10%,rgba(79,142,247,.24),transparent 68%)}
+/* eyebrows and pills */
+.eyebrow{background:var(--grad-gold);-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:900}
+.vhero-sports .eyebrow{background:var(--grad-sports);-webkit-background-clip:text;background-clip:text}
+.vhero-tech .eyebrow{background:var(--grad-tech);-webkit-background-clip:text;background-clip:text}
+.genre-chips a:hover{background:rgba(233,75,44,.14);border-color:var(--accent);color:#fff}
+.stabs.active{background:var(--grad-brand);border-color:transparent;box-shadow:0 4px 14px rgba(233,75,44,.3)}
+.score-pill{background:rgba(231,187,92,.1)}
+.sp-pill{background:rgba(255,255,255,.05)}
+/* type accents on cards */
+.tile-meta b,.card-type{color:var(--muted)}
+/* navigation */
+.topnav a{position:relative;transition:color .16s ease}
+.topnav a:after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:2px;border-radius:2px;background:var(--grad-brand);transform:scaleX(0);transition:transform .18s ease}
+.topnav a:hover:after,.topnav a.active:after{transform:scaleX(1)}
+.top{background:linear-gradient(180deg,rgba(10,12,15,.97),rgba(10,12,15,.82));border-bottom-color:rgba(255,255,255,.08)}
+/* article reading experience */
+.article-body h2{position:relative;padding-left:15px}
+.article-body h2:before{content:"";position:absolute;left:0;top:.22em;bottom:.22em;width:3px;border-radius:3px;background:var(--grad-gold)}
+.article-hero .eyebrow{letter-spacing:.1em}
+.prose a{color:#ffb199;border-bottom:1px solid rgba(255,177,153,.35)}
+.prose a:hover{color:#fff;border-bottom-color:#fff}
+/* panels */
+.vstate{background:linear-gradient(150deg,#12161c,#0e1114)}
+.vnote,.trend-note{background:linear-gradient(90deg,rgba(231,187,92,.07),transparent 70%),#101318}
+.sp-result{background:linear-gradient(90deg,rgba(61,220,132,.09),transparent 62%),#101318}
+.rec-inner{background:linear-gradient(135deg,#181d27,#0e1014);box-shadow:0 20px 60px rgba(0,0,0,.35)}
+/* footer */
+.footer{position:relative;background:linear-gradient(180deg,#0b0d11,#08090b)}
+.footer:before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#e94b2c,#e7bb5c 32%,#3ddc84 64%,#4f8ef7)}
+.footer-col a:hover{color:#fff}
+/* mobile bar */
+.mobile-nav a.active{background:linear-gradient(180deg,rgba(233,75,44,.22),transparent)}
+/* Back control: it is fixed-position, so keep it clear of the breadcrumb rather
+   than letting it sit on top of the first line of text. */
+body .bryme-back{top:auto;bottom:78px;left:14px;opacity:.92}
+body .bryme-back:hover{opacity:1}
+@media(min-width:761px){body .bryme-back{bottom:24px;left:18px}}
+/* ---------- editorial layout variants ----------
+   One tile component, four presentations. The wrapper class decides the
+   shape, so curated order, counts and ranks are never altered by layout. */
+.home-section{padding:44px 0}
+.section-note{font-size:13px;color:var(--muted);margin:6px 0 0;max-width:640px}
+.section-head{align-items:start}
+.section-head>div{min-width:0}
+
+/* Variants must undo the base rail's horizontal-scroll grid before laying out. */
+.rail-lead,.rail-wall,.rail-chart,.rail-spread{
+  grid-auto-flow:row;grid-auto-columns:auto;overflow-x:visible;
+  scroll-snap-type:none;padding:2px 1px 4px;
+}
+.rail-lead .tile,.rail-wall .tile,.rail-chart .tile,.rail-spread .tile{scroll-snap-align:none}
+
+/* LEAD - mosaic: one feature at 2x2, the rest fill around it.
+   Works with any number of items, so a curated list is never truncated. */
+.rail-lead{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;overflow:visible}
+.rail-lead .tile{min-width:0}
+.rail-lead .tile .poster{aspect-ratio:2/3}
+.rail-lead .tile:first-child{grid-column:span 2;grid-row:span 2;display:flex;flex-direction:column}
+.rail-lead .tile:first-child .poster{aspect-ratio:auto;flex:1;min-height:300px}
+.rail-lead .tile:first-child .poster img{width:100%;height:100%;object-fit:cover}
+.rail-lead .tile:first-child h3{font-size:clamp(20px,2.2vw,27px);line-height:1.15;margin-top:12px}
+.rail-lead .tile:first-child .tile-meta{font-size:13px}
+.rail-lead h3{font-size:14px;line-height:1.3}
+.rail-lead .tile:not(:first-child) .tile-rating{display:none}
+/* WALL - dense poster grid */
+.rail-wall{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:16px;overflow:visible}
+.rail-wall .tile{min-width:0}
+.rail-wall .tile .poster{aspect-ratio:2/3}
+.rail-wall h3{font-size:13.5px;line-height:1.3}
+.rail-wall .tile-rating{display:none}
+
+/* CHART - numbered two-column list */
+.rail-chart{display:grid;grid-template-columns:1fr 1fr;gap:0 28px;counter-reset:ch;overflow:visible}
+.rail-chart .tile{counter-increment:ch;display:grid;grid-template-columns:40px 48px minmax(0,1fr);gap:13px;align-items:center;padding:9px 6px;border-bottom:1px solid rgba(255,255,255,.055);border-radius:8px;transition:background .16s}
+.rail-chart .tile:hover{background:rgba(255,255,255,.045)}
+.rail-chart .tile:before{content:counter(ch);font-size:25px;font-weight:900;text-align:center;color:transparent;-webkit-text-stroke:1.4px rgba(255,255,255,.32);font-variant-numeric:tabular-nums}
+.rail-chart .tile:nth-child(-n+3):before{-webkit-text-stroke:0;background:var(--grad-brand);-webkit-background-clip:text;background-clip:text}
+.rail-chart .poster{width:48px;aspect-ratio:2/3;margin:0;border-radius:5px}
+.rail-chart h3{font-size:15px;line-height:1.25;margin:0}
+.rail-chart .tile-meta{font-size:11.5px}
+.rail-chart .tile-rating{display:none}
+
+/* SPREAD - equal-weight features, image behind the text */
+.rail-spread{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;overflow:visible}
+.rail-spread .tile{position:relative;min-height:300px;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,.09);display:flex;flex-direction:column;justify-content:flex-end;padding:18px}
+.rail-spread .tile .poster{position:absolute;inset:0;margin:0;border-radius:0;aspect-ratio:auto;z-index:-2}
+.rail-spread .tile .poster img{width:100%;height:100%;object-fit:cover}
+.rail-spread .tile:after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(0deg,rgba(6,8,11,.985) 22%,rgba(6,8,11,.8) 52%,rgba(6,8,11,.35))}
+.rail-spread h3{font-size:21px;line-height:1.16;margin:6px 0 4px}
+.rail-spread .tile-meta,.rail-spread .tile-rating{position:relative}
+
+@media(max-width:1080px){.rail-wall{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(max-width:980px){
+  .rail-lead{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .rail-lead .tile:first-child .poster{min-height:210px}
+  .rail-chart,.rail-spread{grid-template-columns:1fr}
+}
+@media(max-width:620px){.rail-wall{grid-template-columns:repeat(3,minmax(0,1fr));gap:11px}.home-section{padding:30px 0}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+`);
 fs.appendFileSync(path.join(root,'assets/site.css'), `\n/* Persistent navigation control */\n.bryme-back{position:fixed;left:14px;top:74px;z-index:80;display:grid;place-items:center;width:34px;height:34px;border:1px solid rgba(255,255,255,.22);border-radius:50%;background:rgba(8,9,11,.88);backdrop-filter:blur(10px);color:#fff;font:900 21px/1 system-ui,sans-serif;padding:0;cursor:pointer;box-shadow:0 7px 22px rgba(0,0,0,.35)}.bryme-back:hover{border-color:var(--sports,#3ddc84);transform:translateX(-1px)}@media(max-width:760px){.bryme-back{left:10px;top:64px;width:32px;height:32px}}\n`);
 /* ------------------------------------------------------------------ */
 /* Shared markup helpers                                              */
@@ -487,7 +687,7 @@ function layout(o){
   const socialImage = o.image ? `<meta property="og:image" content="${esc(/^https?:\/\//i.test(o.image) ? o.image : absUrl(o.image))}"><meta name="twitter:image" content="${esc(/^https?:\/\//i.test(o.image) ? o.image : absUrl(o.image))}">` : '';
   const schema = o.schema ? `<script type="application/ld+json">${JSON.stringify(o.schema).replace(/</g,'\\u003c')}<\/script>` : '';
   const active = o.activeNav || '';
-  return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${esc(o.title)} | ${site.name}</title><meta name="description" content="${esc(o.description)}">${o.noindex?'<meta name="robots" content="noindex,follow">':''}<link rel="canonical" href="${absUrl(o.canonical || o.path)}"><meta property="og:type" content="${esc(o.ogType || 'website')}"><meta property="og:site_name" content="${site.name}"><meta property="og:title" content="${esc(o.title)}"><meta property="og:description" content="${esc(o.description)}"><meta property="og:url" content="${absUrl(o.path)}">${socialImage}<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${esc(o.title)}"><meta name="twitter:description" content="${esc(o.description)}"><link rel="stylesheet" href="${url('/assets/site.css')}">${schema}</head><body><header class="top"><div class="shell"><a class="brand" href="${url('/')}">BRY<b>ME</b></a><nav class="topnav"><a href="${url('/')}"${active==='home'?' class="active"':''}>Home</a><a href="${url('/entertainment/')}"${active==='entertainment'?' class="active"':''}>🎬 Entertainment</a><a href="${url('/sports/')}"${active==='sports'?' class="active"':''}>⚽ Sports</a><a href="${url('/make-money/')}"${active==='make-money'?' class="active"':''}>💰 Make Money</a><a href="${url('/tech/')}"${active==='tech'?' class="active"':''}>🤖 Tech &amp; AI</a><a class="nav-search" href="${url('/search/')}">Search</a></nav></div></header>${o.body}<nav class="mobile-nav"><a href="${url('/')}"${active==='home'?' class="active"':''}><span class="mn-ico">🏠</span>Home</a><a href="${url('/entertainment/')}"${active==='entertainment'?' class="active"':''}><span class="mn-ico">🎬</span>Entertain</a><a href="${url('/sports/')}"${active==='sports'?' class="active"':''}><span class="mn-ico">⚽</span>Sports</a><a href="${url('/make-money/')}"${active==='make-money'?' class="active"':''}><span class="mn-ico">💰</span>Money</a><a href="${url('/tech/')}"${active==='tech'?' class="active"':''}><span class="mn-ico">🤖</span>Tech</a><a href="${url('/search/')}"><span class="mn-ico">🔍</span>Search</a></nav><footer class="footer"><div class="shell"><div class="footer-grid">
+  return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${esc(o.title)} | ${site.name}</title><meta name="description" content="${esc(o.description)}">${o.noindex?'<meta name="robots" content="noindex,follow">':''}<link rel="canonical" href="${absUrl(o.canonical || o.path)}"><meta property="og:type" content="${esc(o.ogType || 'website')}"><meta property="og:site_name" content="${site.name}"><meta property="og:title" content="${esc(o.title)}"><meta property="og:description" content="${esc(o.description)}"><meta property="og:url" content="${absUrl(o.path)}">${socialImage}<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${esc(o.title)}"><meta name="twitter:description" content="${esc(o.description)}"><link rel="stylesheet" href="${url('/assets/site.css')}">${schema}</head><body data-nav="${esc(o.activeNav || '')}"><header class="top"><div class="shell"><a class="brand" href="${url('/')}">BRY<b>ME</b></a><nav class="topnav"><a href="${url('/')}"${active==='home'?' class="active"':''}>Home</a><a href="${url('/entertainment/')}"${active==='entertainment'?' class="active"':''}>🎬 Entertainment</a><a href="${url('/sports/')}"${active==='sports'?' class="active"':''}>⚽ Sports</a><a href="${url('/make-money/')}"${active==='make-money'?' class="active"':''}>💰 Make Money</a><a href="${url('/tech/')}"${active==='tech'?' class="active"':''}>🤖 Tech &amp; AI</a><a class="nav-search" href="${url('/search/')}">Search</a></nav></div></header>${o.body}<nav class="mobile-nav"><a href="${url('/')}"${active==='home'?' class="active"':''}><span class="mn-ico">🏠</span>Home</a><a href="${url('/entertainment/')}"${active==='entertainment'?' class="active"':''}><span class="mn-ico">🎬</span>Entertain</a><a href="${url('/sports/')}"${active==='sports'?' class="active"':''}><span class="mn-ico">⚽</span>Sports</a><a href="${url('/make-money/')}"${active==='make-money'?' class="active"':''}><span class="mn-ico">💰</span>Money</a><a href="${url('/tech/')}"${active==='tech'?' class="active"':''}><span class="mn-ico">🤖</span>Tech</a><a href="${url('/search/')}"><span class="mn-ico">🔍</span>Search</a></nav><footer class="footer"><div class="shell"><div class="footer-grid">
   <div class="footer-brand"><a class="brand" href="${url('/')}">BRY<b>ME</b></a><p>Discover what you love. Learn what you need. Find what's next.</p></div>
   <nav class="footer-col" aria-label="Explore"><h4>Verticals</h4><a href="${url('/entertainment/')}">🎬 Entertainment</a><a href="${url('/sports/')}">⚽ Sports</a><a href="${url('/make-money/')}">💰 Make Money</a><a href="${url('/tech/')}">🤖 Tech &amp; AI</a></nav>
   <nav class="footer-col" aria-label="Explore"><h4>Entertainment</h4><a href="${url('/movies/')}">Movies</a><a href="${url('/series/')}">Series</a><a href="${url('/anime/')}">Anime</a><a href="${url('/articles/')}">Articles</a><a href="${url('/genres/')}">Genres</a></nav>
@@ -501,8 +701,84 @@ function layout(o){
 /* Pages                                                              */
 /* ------------------------------------------------------------------ */
 function write(dir, content){ const out = path.join(root, dir, 'index.html'); fs.mkdirSync(path.dirname(out), {recursive:true}); fs.writeFileSync(out, content); }
+/* ================================================================
+   EDITORIAL LAYOUT COMPONENTS
+   The homepage was nine identical card rails stacked on top of each
+   other, which reads as a template rather than a publication. These
+   give each section its own shape: a lead story with supporting grid,
+   a ranked chart, a poster wall, and a magazine spread. Same data,
+   same links - different hierarchy.
+   ================================================================ */
+function clip(text, n){
+  const t = String(text || '').trim();
+  if (t.length <= n) return t;
+  const cut = t.slice(0, n);
+  const sp = cut.lastIndexOf(' ');
+  return (sp > n * 0.6 ? cut.slice(0, sp) : cut).replace(/[,;:.\s]+$/, '') + '…';
+}
+function sectionHead(title, emoji, moreUrl, note, eyebrow){
+  return `<div class="section-head"><div>${eyebrow ? `<div class="eyebrow">${esc(eyebrow)}</div>` : ''}<h2>${emoji ? emoji + ' ' : ''}${esc(title)}</h2>${note ? `<p class="section-note">${esc(note)}</p>` : ''}</div>${moreUrl ? `<a href="${url(moreUrl)}">View all</a>` : ''}</div>`;
+}
+/* One dominant story plus a supporting column - the standard editorial lead. */
+function leadSection(title, emoji, items, moreUrl, note, eyebrow){
+  if (!items || !items.length) return '';
+  const [lead, ...rest] = items;
+  const side = rest.slice(0, 4);
+  const typeDir = m => m.typeDir || 'movie';
+  const label = m => typeDir(m) === 'series' ? 'SERIES' : (typeDir(m) === 'anime' ? 'ANIME' : 'MOVIE');
+  const art = m => poster(m);
+  return `<section class="home-section lead-section"><div class="shell">${sectionHead(title, emoji, moreUrl, note, eyebrow)}
+    <div class="lead-grid">
+      <a class="lead-main" href="${url('/' + typeDir(lead) + '/' + lead.slug + '/')}">
+        <div class="lead-art"><img src="${esc(art(lead))}" alt="${esc(lead.title)}" loading="lazy" width="760" height="428"></div>
+        <div class="lead-copy"><span class="lead-tag">${label(lead)}${lead.year ? ' · ' + lead.year : ''}</span><h3>${esc(lead.title)}</h3>${lead.description ? `<p>${esc(clip(lead.description, 165))}</p>` : ''}${lead.rating && lead.rating.value != null ? `<span class="lead-score">★ ${esc(String(lead.rating.value))}/10 · Editorial</span>` : ''}</div>
+      </a>
+      <div class="lead-side">${side.map(m => `<a class="lead-item" href="${url('/' + typeDir(m) + '/' + m.slug + '/')}">
+        <img src="${esc(art(m))}" alt="${esc(m.title)}" loading="lazy" width="112" height="64">
+        <div><span>${label(m)}${m.year ? ' · ' + m.year : ''}</span><b>${esc(m.title)}</b></div></a>`).join('')}</div>
+    </div></div></section>`;
+}
+/* A ranked chart - big numerals, compact rows, reads as a list not a carousel. */
+function chartSection(title, emoji, items, moreUrl, note, eyebrow){
+  if (!items || !items.length) return '';
+  const rows = items.slice(0, 10);
+  const typeDir = m => m.typeDir || 'movie';
+  return `<section class="home-section chart-section"><div class="shell">${sectionHead(title, emoji, moreUrl, note, eyebrow)}
+    <ol class="chart">${rows.map((m, i) => `<li><a href="${url('/' + typeDir(m) + '/' + m.slug + '/')}">
+      <span class="chart-n">${i + 1}</span>
+      <img src="${esc(poster(m))}" alt="${esc(m.title)}" loading="lazy" width="46" height="66">
+      <span class="chart-t"><b>${esc(m.title)}</b><i>${(typeDir(m) === 'series' ? 'Series' : typeDir(m) === 'anime' ? 'Anime' : 'Movie')}${m.year ? ' · ' + m.year : ''}${m.genreLabel || m.genre ? ' · ' + esc(m.genreLabel || m.genre) : ''}</i></span>
+      ${m.rating && m.rating.value != null ? `<span class="chart-s">★ ${esc(String(m.rating.value))}</span>` : ''}
+    </a></li>`).join('')}</ol></div></section>`;
+}
+/* A dense poster wall - browsing, not reading. */
+function wallSection(title, emoji, items, moreUrl, note, eyebrow, limit){
+  if (!items || !items.length) return '';
+  const typeDir = m => m.typeDir || 'movie';
+  return `<section class="home-section wall-section"><div class="shell">${sectionHead(title, emoji, moreUrl, note, eyebrow)}
+    <div class="wall">${items.slice(0, limit || 12).map(m => `<a class="wall-item" href="${url('/' + typeDir(m) + '/' + m.slug + '/')}">
+      <img src="${esc(poster(m))}" alt="${esc(m.title)}" loading="lazy" width="200" height="286">
+      <span class="wall-cap"><b>${esc(m.title)}</b><i>${m.year || ''}</i></span></a>`).join('')}</div></div></section>`;
+}
+/* Magazine spread - equal-weight feature cards with the image behind the text. */
+function spreadSection(title, emoji, items, moreUrl, note, eyebrow){
+  if (!items || !items.length) return '';
+  const typeDir = m => m.typeDir || 'movie';
+  return `<section class="home-section spread-section"><div class="shell">${sectionHead(title, emoji, moreUrl, note, eyebrow)}
+    <div class="spread">${items.slice(0, 3).map(m => `<a class="spread-card" href="${url('/' + typeDir(m) + '/' + m.slug + '/')}" style="--sp-img:url('${esc(poster(m))}')">
+      <span class="spread-tag">${typeDir(m) === 'series' ? 'SERIES' : typeDir(m) === 'anime' ? 'ANIME' : 'MOVIE'}${m.year ? ' · ' + m.year : ''}</span>
+      <b>${esc(m.title)}</b>${m.description ? `<p>${esc(clip(m.description, 118))}</p>` : ''}</a>`).join('')}</div></div></section>`;
+}
+
 function railSection(title, emoji, items, moreUrl, note, opts){
-  return `<section class="home-section"><div class="shell"><div class="section-head"><h2>${emoji ? emoji + ' ' : ''}${esc(title)}</h2>${moreUrl ? `<a href="${url(moreUrl)}">View all</a>` : ''}</div>${note ? `<p class="section-note">${esc(note)}</p>` : ''}<div class="rail">${items.map((m,i) => card(m, {rank: opts && opts.ranked ? (opts.rankKey ? (m[opts.rankKey] || i + 1) : i + 1) : null})).join('')}</div></div></section>`;
+  /* opts.variant changes only the wrapper class. Every section keeps the same
+     <a class="tile"> markup and the full configured item list, so curated order,
+     per-type ranks and counts stay intact - the layout differences are CSS. */
+  const v = (opts && opts.variant) ? String(opts.variant) : '';
+  const secClass = v ? ' sec-' + v : '';
+  const variant = v ? ' rail-' + v : '';
+  const eyebrow = (opts && opts.eyebrow) ? `<div class="eyebrow">${esc(opts.eyebrow)}</div>` : '';
+  return `<section class="home-section${secClass}"><div class="shell"><div class="section-head"><div>${eyebrow}<h2>${emoji ? emoji + ' ' : ''}${esc(title)}</h2>${note ? `<p class="section-note">${esc(note)}</p>` : ''}</div>${moreUrl ? `<a href="${url(moreUrl)}">View all</a>` : ''}</div><div class="rail${variant}">${items.map((m,i) => card(m, {rank: opts && opts.ranked ? (opts.rankKey ? (m[opts.rankKey] || i + 1) : i + 1) : null})).join('')}</div></div></section>`;
 }
 
 /* ================================================================
@@ -513,15 +789,11 @@ function railSection(title, emoji, items, moreUrl, note, opts){
 const VERTICALS = [
   {
     dir: 'sports', emoji: '⚽', name: 'BRYME Sports', short: 'Sports', active: 'sports', accent: '#3ddc84',
-    tagline: 'Football-first sports coverage: Premier League, Champions League, La Liga and more.',
-    desc: 'BRYME Sports starts with football — the Premier League, Champions League, La Liga, Serie A, Bundesliga and international football — and will grow from there. You will find club histories, rivalry explainers, records, player profiles, match previews and reports.',
+    tagline: 'Football, covered properly: Premier League, Champions League, La Liga, Serie A, Bundesliga and Ligue 1.',
+    desc: 'BRYME Sports is football. The Premier League, Champions League, La Liga, Serie A, Bundesliga, Ligue 1 and international football — with club histories, rivalry explainers, records, player profiles, match previews and reports. We cover one sport properly rather than several thinly.',
     note: 'Current reporting (previews, results, transfers) is always researched before publication. No result, transfer, injury, fixture or statistic is ever invented.',
     categories: [
       { slug: 'football', name: 'Football', desc: 'Premier League, Champions League, La Liga, Serie A, Bundesliga, Ligue 1, FPL and the global game.' },
-      { slug: 'basketball', name: 'Basketball', desc: 'NBA, WNBA, international basketball and the stories around the court.' },
-      { slug: 'boxing-mma', name: 'Boxing & MMA', desc: 'Fight cards, athletes, rivalries and combat-sport culture.' },
-      { slug: 'tennis', name: 'Tennis', desc: 'Grand Slams, tours, players and the biggest matches.' },
-      { slug: 'athletics', name: 'Athletics', desc: 'Track, field, road racing and extraordinary performances.' },
       /* These six hubs existed as orphaned static pages that no build step regenerated: they were
          live, stuck on the placeholder notice and missing from the sitemap. Declaring them here puts
          them back under the build, so they list their articles and de-index themselves while empty. */
@@ -659,7 +931,7 @@ function verticalPage(v, category){
   const footballHub = `<section class="section"><div class="vnote">Football is BRYME’s first fully built sports hub. Pick a competition or follow fixtures, FPL, transfers and the game’s biggest stories.</div><h2 style="margin:26px 0 14px">Football competitions</h2><div class="vcat-grid"><a class="vcat" href="${url('/sports/premier-league/')}"><b>Premier League</b><span>England’s top flight: fixtures, clubs, transfers and FPL.</span></a><a class="vcat" href="${url('/sports/champions-league/')}"><b>Champions League</b><span>Europe’s biggest club competition.</span></a><a class="vcat" href="${url('/sports/la-liga/')}"><b>La Liga</b><span>Spanish football: Real Madrid, Barcelona and beyond.</span></a><a class="vcat" href="${url('/sports/serie-a/')}"><b>Serie A</b><span>Italian football and its storied clubs.</span></a><a class="vcat" href="${url('/sports/bundesliga/')}"><b>Bundesliga</b><span>German football and its fan culture.</span></a><a class="vcat" href="${url('/sports/ligue-1/')}"><b>Ligue 1</b><span>French football, fixtures and clubs.</span></a><a class="vcat" href="${url('/sports/international/')}"><b>International football</b><span>National teams, tournaments and qualifiers.</span></a></div><h2 style="margin:30px 0 14px">Follow the game</h2><div class="vcat-grid"><a class="vcat" href="${url('/sports/fpl/')}"><b>Fantasy Premier League</b><span>Picks, captains and fixture-led decisions.</span></a><a class="vcat" href="${url('/sports/transfers/')}"><b>Transfers</b><span>Verified transfer coverage and market context.</span></a><a class="vcat" href="${url('/sports/players/')}"><b>Players</b><span>Profiles, careers and stories.</span></a><a class="vcat" href="${url('/sports/clubs/')}"><b>Clubs</b><span>Histories, identities and fan culture.</span></a><a class="vcat" href="${url('/sports/history/')}"><b>History</b><span>Historic moments and great eras.</span></a><a class="vcat" href="${url('/sports/records/')}"><b>Records</b><span>Goals, titles, appearances and numbers.</span></a></div></section>`;
   const sportsTeaserBlock = (v.dir === 'sports' && !category) ? `<section class="section sports-teaser"><div class="section-head"><h2>Premier League 2026/27</h2></div><div class="trailer-frame" style="max-width:100%"><iframe width="100%" height="500" src="https://www.youtube.com/embed/nx8rgJrmSFY" title="Premier League 2026/27 — The Wait Is Over" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen><\/iframe></div></section>` : '';
   const fixturesBlock = (v.dir === 'sports' && !category) ? '<section class="section"><div class="section-head"><h2>Fixtures &amp; Results 2026/27</h2></div><div class="vcat-grid">' + LEAGUE_FIX.map(lg => { const F = loadLeagueFixtures(lg.slug); const total = (F.matchweeks || []).reduce((n, w) => n + w.matches.length, 0); return '<a class="vcat" href="' + url('/sports/' + lg.slug + '/fixtures/') + '"><b>' + esc(lg.name) + '</b><span>All ' + total + ' fixtures — dates, kickoffs &amp; match pages</span></a>'; }).join('') + '<a class="vcat" href="' + url('/sports/managers-2026-27/') + '"><b>Managers</b><span>Managers In &amp; Out — 2026/27</span></a></div></section>' : '';
-  const defaultHero = `<section class="hero vhero vhero-${v.dir}"><div class="eyebrow">${v.emoji} ${category ? esc(v.name) + ' · ' + esc(category.name) : esc(v.name)}</div><h1>${esc(category ? category.name : v.name)}</h1><p class="lead">${esc(category ? category.desc : v.tagline)}</p></section>`;
+  const defaultHero = `<section class="hero vhero vhero-${v.dir}" data-vertical="${v.dir}"><div class="eyebrow">${v.emoji} ${category ? esc(v.name) + ' · ' + esc(category.name) : esc(v.name)}</div><h1>${esc(category ? category.name : v.name)}</h1><p class="lead">${esc(category ? category.desc : v.tagline)}</p></section>`;
   const pageHero = defaultHero + sportsFeature;
   const catArticles = category ? ((verticalArticleIndex[v.dir] && verticalArticleIndex[v.dir].get(category.slug)) || []) : [];
   const catArticleBlock = catArticles.length
@@ -732,14 +1004,14 @@ write('', layout({
     </div>
   </section>
   ${railSection('Trending Now', '🔥', trendNow, '/trending/', 'Curated by the BRYME editorial team — not live traffic data. Ranked per content type.', {ranked:true, rankKey:'trendingRank'})}
-  ${railSection('Popular Movies', '⭐', popularMovies, '/movies/', 'Evergreen movie favourites, editorially ranked.')}
-  ${railSection('Popular Series', '⭐', popularSeries, '/series/', 'Evergreen TV series favourites, editorially ranked.')}
-  ${railSection('Popular Anime', '⭐', popularAnime, '/anime/', 'Evergreen anime favourites, editorially ranked.')}
-  ${railSection('Editor\'s Picks', '👑', editorPicksNow, '/trending/#editors-picks', 'Hand-picked by the BRYME editorial desk — separate from trending and popularity.')}
-  ${railSection('New Releases', '🆕', freshNow, '/trending/#new-releases', 'Newest verified release years — old classics are never re-labelled as new.')}
-  ${railSection('Movies', '🎬', browseMovies, '/movies/', 'Keep exploring the movie catalogue.')}
-  ${railSection('Series', '📺', browseSeries, '/series/', 'Keep exploring the series catalogue.')}
-  ${railSection('Anime', '🍥', browseAnime, '/anime/', 'Keep exploring the anime catalogue.')}
+  ${railSection('Popular Movies', '⭐', popularMovies, '/movies/', 'Evergreen movie favourites, editorially ranked.', {variant:'lead', eyebrow:'Film'})}
+  ${railSection('Popular Series', '⭐', popularSeries, '/series/', 'Evergreen TV series favourites, editorially ranked.', {variant:'lead', eyebrow:'Television'})}
+  ${railSection('Popular Anime', '⭐', popularAnime, '/anime/', 'Evergreen anime favourites, editorially ranked.', {variant:'wall', eyebrow:'Animation'})}
+  ${railSection('Editor\'s Picks', '👑', editorPicksNow, '/trending/#editors-picks', 'Hand-picked by the BRYME editorial desk — separate from trending and popularity.', {variant:'spread', eyebrow:'From the desk'})}
+  ${railSection('New Releases', '🆕', freshNow, '/trending/#new-releases', 'Newest verified release years — old classics are never re-labelled as new.', {eyebrow:'Just added'})}
+  ${railSection('Movies', '🎬', browseMovies, '/movies/', 'Keep exploring the movie catalogue.', {variant:'wall', eyebrow:'Browse'})}
+  ${railSection('Series', '📺', browseSeries, '/series/', 'Keep exploring the series catalogue.', {variant:'chart', eyebrow:'Browse'})}
+  ${railSection('Anime', '🍥', browseAnime, '/anime/', 'Keep exploring the anime catalogue.', {variant:'chart', eyebrow:'Browse'})}
   <section class="home-section"><div class="shell"><div class="section-head"><h2>🎭 Browse by genre</h2><a href="${url('/genres/')}">All genres</a></div><div class="genre-trio"><div class="genre-panel"><h3>🎬 Movie genres <span class="gp-count">${movies.filter(m=>m.typeDir==='movie').length} films</span></h3><div class="genre-chips">${genreChips(movies.filter(m=>m.typeDir==='movie'), 'movies', 9)}</div></div><div class="genre-panel"><h3>📺 Series genres <span class="gp-count">${movies.filter(m=>m.typeDir==='series').length} shows</span></h3><div class="genre-chips">${genreChips(movies.filter(m=>m.typeDir==='series'), 'series', 9)}</div></div><div class="genre-panel"><h3>🍥 Anime genres <span class="gp-count">${movies.filter(m=>m.typeDir==='anime').length} titles</span></h3><div class="genre-chips">${genreChips(movies.filter(m=>m.typeDir==='anime'), 'anime', 9)}</div></div></div></div></section>
   <section class="home-section"><div class="shell"><div class="section-head"><div><div class="eyebrow">From the editorial desk</div><h2>📰 Latest articles</h2></div><a href="${url('/articles/')}">All stories</a></div><div class="story-grid">${latestArticles.map(a => `<a href="${url('/article/' + a.slug + '/')}"><span>${esc(a.category)}</span><h3>${esc(a.title)}</h3><p>${esc(a.description)}</p><b>Read story</b></a>`).join('')}</div></div></section>
   <section class="discover-cta"><div><div class="eyebrow">Full catalogue</div><h2>Pick a lane: Movies, Series or Anime.</h2><p>Each section is strictly filtered to its own content type. No mixed-up walls of posters.</p></div><a class="cta" href="${url('/search/')}">Search everything</a></div></section></main></main><script id="hero-data" type="application/json">${heroEmbed}</script>`
