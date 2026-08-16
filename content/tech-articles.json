@@ -1,0 +1,74 @@
+[
+  {
+    "id": "ai-assistant-data-training-settings",
+    "slug": "ai-assistant-data-training-settings",
+    "title": "What ChatGPT, Claude and Gemini Actually Do With Your Conversations",
+    "seoTitle": "ChatGPT, Claude & Gemini: What Each Really Does With Your Chats (2026)",
+    "excerpt": "All three let you stop your chats training their models. All three keep a route around that setting — and on every one of them, the same small button is the thing that undoes it.",
+    "category": "AI Assistants",
+    "categorySlug": "ai-assistants",
+    "tags": [
+      "ai",
+      "privacy",
+      "chatgpt",
+      "claude",
+      "gemini",
+      "data"
+    ],
+    "relatedMovieSlugs": [],
+    "status": "published",
+    "author": "Ibrahim Sodiq",
+    "publishedAt": "2026-08-16",
+    "updatedAt": "2026-08-16",
+    "readingTime": "8 min read",
+    "content": [
+      {
+        "heading": "Three settings, three different meanings of “no”",
+        "body": "Every guide to AI privacy tells you the same thing: find the training toggle and turn it off. That advice is correct and badly incomplete.\n\nThe three major assistants do let you stop your conversations being used to train their models. But each one keeps at least one documented route by which your conversation is used or retained anyway, and those routes differ enough that a single piece of advice cannot cover all three.\n\nEverything below comes from the companies' own privacy documentation, checked on 16 August 2026, with the last-updated date of each page recorded. This matters more than usual here: two of these pages had been revised within the previous six weeks, and popular guides currently in circulation describe defaults that have since changed."
+      },
+      {
+        "heading": "The one thing that is true everywhere: the feedback button",
+        "body": "If you remember nothing else, remember this. On all three services, pressing thumbs up or thumbs down does something different from ordinary chatting — and on two of them it overrides the privacy choice you already made.\n\nOpenAI states it plainly: “Even if you have opted out of training, you can still choose to provide feedback... If you choose to provide feedback, the entire conversation associated with that feedback may be used to train our models.” Your opt-out holds until you rate a response. Then the whole conversation becomes eligible.\n\nAnthropic stores feedback conversations for five years. Submitting a thumbs up or down stores the entire related conversation in its back end for up to five years, including custom styles and conversation preferences — though it de-links the feedback from your user ID first and does not combine it with your other conversations.\n\nGoogle treats human review as a separate track entirely, covered below, and its consequences outlast deletion.\n\nThe rating button reads like a small courtesy to the developers. On OpenAI it is a consent action."
+      },
+      {
+        "heading": "ChatGPT: opt-out is real, but Codex has its own switch",
+        "body": "For individual accounts, OpenAI says it may use your content to train its models, and you opt out either through the privacy portal by clicking “do not train on my content” or through Settings, Data Controls. Once you opt out, new conversations are not used for training. Past conversations already used in completed training runs are not retrieved.\n\nBusiness accounts invert the default. OpenAI does not train on inputs or outputs from ChatGPT Business, ChatGPT Enterprise or the API. Organisations are opted out unless they explicitly opt in.\n\nTwo details that catch people out:\n\nTemporary Chat is the strongest consumer control. Those chats do not appear in history, do not use or create memories, and are not used for training.\n\nCodex keeps separate settings. OpenAI warns directly that adjusting your settings in the ChatGPT interface or the privacy portal will not affect Codex full-environment training settings, which are managed in Codex Settings. If you write code with it, opting out in ChatGPT is not enough."
+      },
+      {
+        "heading": "Claude: the narrowest default, and the longest tail",
+        "body": "Anthropic's consumer documentation lists exactly three situations in which your chats and coding sessions are used to improve its models: you choose to allow it, your conversation is flagged for safety review, or you explicitly opt in to something like the Trusted Tester Program.\n\nNote what the second one means. Safety-flagged conversations may be used or analysed regardless of your training preference, including to train models used by Anthropic's own Safeguards team.\n\nIf you do allow training, the retention is long: data may be kept in a de-identified form for up to five years in model training pipelines. That applies only to new or resumed chats started after you enabled the setting — it is not retroactive.\n\nTurning it off is more generous than the other two. Anthropic says that if you turn the setting off, it will not use your previous or new chats for future model training, and that deleting a chat also removes it from future training. The unavoidable limit is the same everywhere: data already inside a training run in progress, or inside a model already trained, stays there.\n\nDeletion is fast — a deleted conversation leaves your history immediately and back-end storage within 30 days. Two exceptions run much longer: content flagged as violating the Usage Policy is retained for up to two years, and the associated trust-and-safety classification scores for up to seven. Incognito chats are never used to improve Claude, even with model improvement switched on. Connector content — Google Drive and MCP servers — is excluded unless you paste it into the conversation yourself."
+      },
+      {
+        "heading": "Gemini: the setting that does not cover deletion",
+        "body": "Google's is the most tangled of the three, and the one where the popular advice is furthest from the documentation.\n\nYour controls live in Gemini Apps Activity, where you can review and delete activity, change the auto-delete period, and control whether your data improves Google's AI. The auto-delete default is 18 months. You can shorten it to 3, lengthen it to 36, or set it to keep activity indefinitely.\n\nThen comes the part that matters most, and it is stated outright in Google's own notice: chats reviewed by human reviewers are not deleted when you delete your activity. They are retained for up to three years, along with related data such as your language, device type, location information and feedback.\n\nRead that again in practical terms. Deleting your Gemini history does not delete a conversation a human reviewer has already seen. Nothing in the interface tells you which conversations those are.\n\nTwo further limits: turning Keep Activity off does not stop Google using your chats to respond to you and to protect Google, its users and the public — explicitly including with help from human reviewers. And your Gemini settings do not control the processing of your chats into anonymised data used to improve Google services generally.\n\nOne more trap for anyone who assumes deletion is deletion: using Gemini alongside other Google services means those services may save activity under their own policies, and clearing your Gemini activity does not remove it from them."
+      },
+      {
+        "heading": "Side by side",
+        "body": "Trained on by default, consumer tier: ChatGPT yes, unless you opt out. Claude only if you allow it, with safety review as a standing exception. Gemini controlled through Gemini Apps Activity, with human review continuing regardless.\n\nBusiness and API: OpenAI does not train on business or API data unless the organisation opts in. Anthropic documents commercial products separately from the consumer terms cited here.\n\nA private mode that is never trained on: ChatGPT has Temporary Chat, Claude has Incognito. Both are excluded from training even when the main setting is on.\n\nThe feedback button: on ChatGPT it can override your opt-out for that conversation. On Claude it stores the conversation for five years, de-linked from your ID.\n\nDoes deleting remove it: on Claude, yes for future training, with back-end deletion inside 30 days. On Gemini, not if a human reviewer has seen it — that copy persists for up to three years.\n\nLongest documented retention: Claude keeps trust-and-safety classification scores for up to seven years on flagged content. Google keeps human-reviewed chats three years past deletion. Anthropic keeps allowed-training data five years."
+      },
+      {
+        "heading": "What to actually do",
+        "body": "Use the private mode rather than the global toggle for anything sensitive. Temporary Chat and Incognito are documented as never being used for training, which is a stronger and clearer guarantee than a preference that has exceptions attached.\n\nStop rating responses in conversations you care about. It is the single most consequential habit here, and the one nobody thinks about, because on OpenAI it can reverse the opt-out you deliberately set.\n\nIf you write code with Codex, check Codex Settings separately. OpenAI says explicitly that your ChatGPT setting does not reach it.\n\nSet your Gemini auto-delete period deliberately. The default is 18 months, which is longer than most people would choose if asked.\n\nDo not treat any of this as erasure. Every one of the three states some version of the same limit: data already in a completed or in-progress training run does not come back out. The setting governs what happens next, not what already happened. Turning it on early is worth more than turning it on carefully.\n\nAnd assume this article has a shelf life. Two of these three pages changed within six weeks of it being written. The links below go to the source documents; if you are making a decision that matters, open them rather than trusting any summary, this one included."
+      }
+    ],
+    "sources": [
+      {
+        "name": "OpenAI — How your data is used to improve model performance",
+        "url": "https://help.openai.com/en/articles/5722486-how-your-data-is-used-to-improve-model-performance"
+      },
+      {
+        "name": "Anthropic — Is my data used for model training? (consumer, updated 16 March 2026)",
+        "url": "https://privacy.claude.com/en/articles/10023580-is-my-data-used-for-model-training"
+      },
+      {
+        "name": "Anthropic — How long do you store my data? (updated 1 July 2026)",
+        "url": "https://privacy.claude.com/en/articles/10023548-how-long-do-you-store-my-data"
+      },
+      {
+        "name": "Google — Gemini Apps Privacy Hub (updated 10 August 2026)",
+        "url": "https://support.google.com/gemini/answer/13594961?hl=en"
+      }
+    ],
+    "sourcesCheckedOn": "2026-08-16"
+  }
+]

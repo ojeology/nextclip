@@ -600,21 +600,24 @@ function loadVerticalArticles(file, key) {
     return list.filter(a => a && a.status === 'published');
   } catch (e) { return []; }
 }
-const moneyArticles = loadVerticalArticles('make-money-articles.json', 'articles');
-const sportsArticlesPub = loadVerticalArticles('sports-articles.json', 'articles');
+/* Every vertical reads content/<dir>-articles.json, so adding a vertical needs no new code. */
+const VERTICAL_ARTICLES = {};
+const verticalArticleIndex = {};
 /* article → category slug (explicit categorySlug wins; otherwise slugify the label) */
 const articleCatSlug = a => slugify(a.categorySlug || a.category || '');
-const verticalArticleIndex = { 'make-money': new Map(), sports: new Map() };
-moneyArticles.forEach(a => {
-  const key = articleCatSlug(a);
-  if (!verticalArticleIndex['make-money'].has(key)) verticalArticleIndex['make-money'].set(key, []);
-  verticalArticleIndex['make-money'].get(key).push(a);
+VERTICALS.forEach(v => {
+  const list = loadVerticalArticles(v.dir + '-articles.json', 'articles');
+  VERTICAL_ARTICLES[v.dir] = list;
+  const idx = new Map();
+  list.forEach(a => {
+    const key = articleCatSlug(a);
+    if (!idx.has(key)) idx.set(key, []);
+    idx.get(key).push(a);
+  });
+  verticalArticleIndex[v.dir] = idx;
 });
-sportsArticlesPub.forEach(a => {
-  const key = articleCatSlug(a);
-  if (!verticalArticleIndex.sports.has(key)) verticalArticleIndex.sports.set(key, []);
-  verticalArticleIndex.sports.get(key).push(a);
-});
+const moneyArticles = VERTICAL_ARTICLES['make-money'] || [];
+const sportsArticlesPub = VERTICAL_ARTICLES.sports || [];
 const articlePathFor = (dir, a) => '/' + dir + '/' + a.slug + '/';
 /* An article slug must never collide with a category/section slug at the same level. */
 VERTICALS.forEach(v => {
@@ -1877,7 +1880,7 @@ function renderVerticalArticle(dir, verticalName, a) {
     title: a.seoTitle || a.title,
     description: a.excerpt || `${a.title} — ${verticalName} on BRYME.`,
     path: pagePath,
-    activeNav: dir === 'sports' ? 'sports' : 'make-money',
+    activeNav: dir,
     ogType: 'article',
     schema: [{
       '@context': 'https://schema.org', '@type': 'Article',
@@ -1893,8 +1896,7 @@ function renderVerticalArticle(dir, verticalName, a) {
     body
   }));
 }
-moneyArticles.forEach(a => renderVerticalArticle('make-money', 'BRYME Make Money', a));
-sportsArticlesPub.forEach(a => renderVerticalArticle('sports', 'BRYME Sports', a));
+VERTICALS.forEach(v => (VERTICAL_ARTICLES[v.dir] || []).forEach(a => renderVerticalArticle(v.dir, v.name, a)));
 
 /* ---------------- 404, sitemap, robots ---------------- */
 const genrePaths = typeConfig.flatMap(t => [...genreIndexByType[t.dir].keys()].map(s => `/${t.pageDir}/${s}/`));
@@ -1903,8 +1905,7 @@ const verticalPaths = ['/entertainment/','/sports/articles/']
   .concat(VERTICALS.flatMap(v => ['/' + v.dir + '/'].concat((v.categories || []).map(c => '/' + v.dir + '/' + c.slug + '/'))))
   .filter(p => !EMPTY_HUB_PATHS.has(p));
 /* Published vertical articles are real, indexable pages. */
-const verticalArticlePaths = moneyArticles.map(a => articlePathFor('make-money', a))
-  .concat(sportsArticlesPub.map(a => articlePathFor('sports', a)));
+const verticalArticlePaths = VERTICALS.flatMap(v => (VERTICAL_ARTICLES[v.dir] || []).map(a => articlePathFor(v.dir, a)));
 const paths = ['/','/movies/','/series/','/anime/','/trending/','/genres/','/years/','/topics/','/articles/', ...legalPaths, ...verticalPaths, ...verticalArticlePaths, ...sportsExtraPaths, ...LEAGUE_MATCH_PATHS.filter(p => !UNPLAYED_MATCH_PATHS.has(p)), ...genrePaths, ...movies.map(m => `/${m.typeDir || 'movie'}/${m.slug}/`), ...[...yearMap].filter(([,l]) => !thinArchive(l)).map(([y]) => `/year/${y}/`), ...[...seriesYearMap].filter(([,l]) => !thinArchive(l)).map(([y]) => `/series/${y}/`), ...[...animeYearMap].filter(([,l]) => !thinArchive(l)).map(([y]) => `/anime/${y}/`), ...articles.map(a => `/article/${a.slug}/`), ...topics.map(t => `/topic/${t.slug}/`), ...[...articleCategoryMap.keys()].map(s => `/articles/${s}/`)];
 fs.writeFileSync(path.join(root, '404.html'), layout({
   title: 'Page not found', description: 'This page is not available on BRYME.', path: '/404.html', noindex: true,
