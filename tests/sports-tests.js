@@ -271,13 +271,24 @@ section('Match centre, fixtures, results');
 section('Sitemap');
 {
   const sm = read('sitemap.xml');
-  for (const p of ['/sports/premier-league/matchweek-1-preview/', '/sports/fpl/gameweek-1/', '/sports/transfers/premier-league-2026-27/', '/sports/managers-2026-27/', '/sports/premier-league/table/', '/sports/premier-league/matches/', '/sports/premier-league/fixtures/', '/sports/premier-league/results/', '/sports/premier-league/matches/arsenal-vs-coventry/']) {
+  for (const p of ['/sports/premier-league/matchweek-1-preview/', '/sports/fpl/gameweek-1/', '/sports/transfers/premier-league-2026-27/', '/sports/managers-2026-27/', '/sports/premier-league/table/', '/sports/premier-league/matches/', '/sports/premier-league/fixtures/', '/sports/premier-league/results/']) {
     assert(sm.indexOf('bryme.onrender.com' + p) > -1, 'sitemap: ' + p);
   }
+  /* Unplayed fixtures are deliberately kept OUT of the sitemap and marked noindex: each is ~366
+     words of which all but ~1 sentence is boilerplate shared with every other fixture page, and
+     submitting ~1,750 of them drowned the pages that carry unique content. They stay linked and
+     readable; they become indexable automatically once they carry a real result. */
   const F = JSON.parse(read('content/fixtures.json'));
-  const slugs = F.matchweeks.flatMap(w => w.matches).map(m => '/sports/premier-league/matches/' + m.id + '-vs-' + m.away + '/');
-  const inSm = slugs.filter(s => sm.indexOf('bryme.onrender.com' + s) === -1);
-  assert(inSm.length === 0, 'sitemap: all 380 match pages included' + (inSm.length ? ' — missing ' + inSm.length : ''));
+  const all = F.matchweeks.flatMap(w => w.matches);
+  const slugs = all.map(m => '/sports/premier-league/matches/' + m.id + '-vs-' + m.away + '/');
+  const unplayed = all.filter(m => !(m.result || m.score || m.fullTime || m.played));
+  const leaked = slugs.filter((s, i) => !(all[i].result || all[i].score || all[i].fullTime || all[i].played))
+                      .filter(s => sm.indexOf('bryme.onrender.com' + s) > -1);
+  assert(leaked.length === 0, 'sitemap: no unplayed fixture submitted' + (leaked.length ? ' — leaked ' + leaked.length : ''));
+  assert(unplayed.length > 0, 'fixtures.json: unplayed fixtures present to exercise the rule');
+  const sample = read('sports/premier-league/matches/arsenal-vs-coventry/index.html');
+  assert(/name="robots" content="noindex/.test(sample), 'unplayed fixture page is noindex');
+  assert(sample.indexOf('Coventry') > -1, 'unplayed fixture page still renders for readers');
   assert(!new RegExp(('next' + 'clip').replace(('next' + 'clip'), 'next' + 'clip') + '/premier-league/').test(sm), 'no unprefixed PL URLs in sitemap');
   assert(!new RegExp(('next' + 'clip').replace(('next' + 'clip'), 'next' + 'clip') + '/fpl/').test(sm), 'no unprefixed FPL URLs in sitemap');
 }

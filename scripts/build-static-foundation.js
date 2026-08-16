@@ -749,6 +749,7 @@ const LEAGUE_FIX = [
 ];
 const LEAGUE_FIXTURES_DATA = {};
 const LEAGUE_MATCH_PATHS = [];
+const UNPLAYED_MATCH_PATHS = new Set();
 function loadLeagueFixtures(slug){
   if (LEAGUE_FIXTURES_DATA[slug]) return LEAGUE_FIXTURES_DATA[slug];
   const file = LEAGUE_FIXTURE_FILES[slug];
@@ -1045,7 +1046,16 @@ function matchCentre(){
       } else {
         startDate = m.date;
       }
+      /* A fixture that has not been played has no result, lineup or statistic to report: ~366 words
+         of which all but roughly one sentence is template shared with every other fixture page.
+         Submitting ~1,750 of those to Google buries the pages that do carry unique content and
+         invites "Crawled - currently not indexed" across the whole site. So an unplayed fixture is
+         kept for readers (kickoff time, venue, pre-match notes) but marked noindex,follow and left
+         out of sitemap.xml. It becomes indexable automatically once it carries a real result. */
+      const matchPlayed = !!(m.result || m.score || m.fullTime || m.played);
+      if (!matchPlayed) UNPLAYED_MATCH_PATHS.add(matchUrl(m));
       write('sports/' + lg.slug + '/matches/' + slug(m), layout({
+        noindex: !matchPlayed,
         title: `${m.homeName} v ${m.awayName} — ${lg.roundLabel} ${w.number} · ${F.league} ${F.season} | BRYME Sports`,
         description: `${m.homeName} v ${m.awayName}, ${F.season} ${F.league} ${lg.roundLabel} ${w.number} — ${m.dayLabel}${m.time ? ', ' + m.time + ' local' : ', kickoff TBC'}${v.name ? ' at ' + v.name : ''}. Match analysis sections appear once verified; no results are predicted.`,
         path: matchUrl(m), activeNav: 'sports',
@@ -1880,7 +1890,7 @@ const verticalPaths = ['/entertainment/','/sports/articles/']
 /* Published vertical articles are real, indexable pages. */
 const verticalArticlePaths = moneyArticles.map(a => articlePathFor('make-money', a))
   .concat(sportsArticlesPub.map(a => articlePathFor('sports', a)));
-const paths = ['/','/movies/','/series/','/anime/','/trending/','/genres/','/years/','/topics/','/articles/', ...legalPaths, ...verticalPaths, ...verticalArticlePaths, ...sportsExtraPaths, ...LEAGUE_MATCH_PATHS, ...genrePaths, ...movies.map(m => `/${m.typeDir || 'movie'}/${m.slug}/`), ...[...yearMap.keys()].map(y => `/year/${y}/`), ...[...seriesYearMap.keys()].map(y => `/series/${y}/`), ...[...animeYearMap.keys()].map(y => `/anime/${y}/`), ...articles.map(a => `/article/${a.slug}/`), ...topics.map(t => `/topic/${t.slug}/`), ...[...articleCategoryMap.keys()].map(s => `/articles/${s}/`)];
+const paths = ['/','/movies/','/series/','/anime/','/trending/','/genres/','/years/','/topics/','/articles/', ...legalPaths, ...verticalPaths, ...verticalArticlePaths, ...sportsExtraPaths, ...LEAGUE_MATCH_PATHS.filter(p => !UNPLAYED_MATCH_PATHS.has(p)), ...genrePaths, ...movies.map(m => `/${m.typeDir || 'movie'}/${m.slug}/`), ...[...yearMap.keys()].map(y => `/year/${y}/`), ...[...seriesYearMap.keys()].map(y => `/series/${y}/`), ...[...animeYearMap.keys()].map(y => `/anime/${y}/`), ...articles.map(a => `/article/${a.slug}/`), ...topics.map(t => `/topic/${t.slug}/`), ...[...articleCategoryMap.keys()].map(s => `/articles/${s}/`)];
 fs.writeFileSync(path.join(root, '404.html'), layout({
   title: 'Page not found', description: 'This page is not available on BRYME.', path: '/404.html', noindex: true,
   body: `<main class="shell"><section class="hero"><div class="eyebrow">404</div><h1>Looks like this one disappeared.</h1><p class="lead">Try searching the catalogue, or browse a single content type.</p><p><a class="cta" href="${url('/search/')}">Search everything</a> <a class="quiet-link" href="${url('/movies/')}">Movies</a> <a class="quiet-link" href="${url('/series/')}">Series</a> <a class="quiet-link" href="${url('/anime/')}">Anime</a> <a class="quiet-link" href="${url('/articles/')}">Latest articles</a></p></section></main>`
