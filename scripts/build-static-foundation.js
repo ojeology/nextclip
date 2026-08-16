@@ -420,8 +420,238 @@ fs.writeFileSync(path.join(root,'assets/site.css'), css + '\n' + '.sports-featur
 @media(max-width:1024px){.sp-hero-track{grid-auto-columns:calc((100% - 32px)/2)}}@media(min-width:1025px) and (max-width:1439px){.sp-hero{max-width:1180px;margin-left:auto;margin-right:auto}}
 @media(max-width:640px){.sp-hero-track{grid-auto-columns:calc(100% - 40px)}.sp-hero-arrow{display:none}.sp-hero-card{min-height:200px}.sp-article-head h1{font-size:30px}}
 @media(min-width:1440px){.sp-hero-track{grid-auto-columns:calc((100% - 64px)/5);grid-auto-flow:column}}
-.visually-hidden{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}@media(max-width:760px){.hero-carousel{min-height:520px}.hero-slide-inner{padding-top:150px;padding-bottom:52px}.hero-slide h1{font-size:40px}.hero-slide p{font-size:14.5px}.hero-ctrl{width:40px;height:40px;font-size:19px}.hero-prev{left:8px}.hero-next{right:8px}.rec-inner{padding:26px 18px}.rec-cta{width:100%;text-align:center}}.hero-kicker{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:12px;font-weight:800;color:var(--muted);letter-spacing:.05em;text-transform:uppercase;margin-bottom:10px}.hero-kicker .dot{opacity:.35}.cta-ghost{background:transparent;border:1px solid var(--accent);color:#fff}.cta-ghost:hover{background:var(--accent)}.take-card{margin-top:28px;border:1px solid var(--line);border-left:3px solid var(--gold);background:#101318;padding:18px 20px;border-radius:0 6px 6px 0}.take-card h3{font-size:19px;line-height:1.25;margin:6px 0}.take-card p{font-size:14px;color:var(--muted);margin:0 0 12px}.take-card .cta{margin:0}.sub-section{padding:8px 0 34px}.sub-section h2{font-size:clamp(20px,3vw,26px)}.sub-section .lead,.sub-section p.sec-note{font-size:13px;color:var(--muted);margin:0 0 14px}@media(max-width:760px){.hero-kicker{font-size:10.5px;gap:6px}.take-card{padding:15px 14px}.hero-actions .cta{min-height:44px;display:inline-flex;align-items:center}.story-grid-title{grid-template-columns:repeat(2,1fr)}@media(max-width:760px){.story-grid-title{grid-template-columns:1fr}.story-grid-title a{min-height:150px}}`);
+.visually-hidden{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}@media(max-width:760px){.hero-carousel{min-height:520px}.hero-slide-inner{padding-top:150px;padding-bottom:52px}.hero-slide h1{font-size:40px}.hero-slide p{font-size:14.5px}.hero-ctrl{width:40px;height:40px;font-size:19px}.hero-prev{left:8px}.hero-next{right:8px}.rec-inner{padding:26px 18px}.rec-cta{width:100%;text-align:center}}.hero-kicker{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:12px;font-weight:800;color:var(--muted);letter-spacing:.05em;text-transform:uppercase;margin-bottom:10px}.hero-kicker .dot{opacity:.35}.cta-ghost{background:transparent;border:1px solid var(--accent);color:#fff}.cta-ghost:hover{background:var(--accent)}.take-card{margin-top:28px;border:1px solid var(--line);border-left:3px solid var(--gold);background:#101318;padding:18px 20px;border-radius:0 6px 6px 0}.take-card h3{font-size:19px;line-height:1.25;margin:6px 0}.take-card p{font-size:14px;color:var(--muted);margin:0 0 12px}.take-card .cta{margin:0}.sub-section{padding:8px 0 34px}.sub-section h2{font-size:clamp(20px,3vw,26px)}.sub-section .lead,.sub-section p.sec-note{font-size:13px;color:var(--muted);margin:0 0 14px}@media(max-width:760px){.hero-kicker{font-size:10.5px;gap:6px}.take-card{padding:15px 14px}.hero-actions .cta{min-height:44px;display:inline-flex;align-items:center}.story-grid-title{grid-template-columns:repeat(2,1fr)}@media(max-width:760px){.story-grid-title{grid-template-columns:1fr}.story-grid-title a{min-height:150px}}}`);
 fs.appendFileSync(path.join(root,'assets/site.css'), `\n/* Verified metadata attribution */\n.meta-source{margin:10px 0 0;font-size:12px;line-height:1.55;color:#8b93a1}.meta-source a{color:#a9b3c2;text-decoration:underline;text-underline-offset:2px}.meta-source a:hover{color:#fff}\n`);
+fs.appendFileSync(path.join(root,'assets/site.css'), `
+/* ============================================================
+   COLOUR & DEPTH LAYER
+   Appended last so it layers over the base sheet without
+   rewriting it. Adds the vertical colour identities, gradients
+   and hover states across the site. Structure is untouched -
+   this is presentation only.
+   ============================================================ */
+:root{
+  --grad-brand:linear-gradient(115deg,#ff6a3d,#e94b2c 45%,#c2341c);
+  --grad-gold:linear-gradient(115deg,#f7d489,#e7bb5c 50%,#c99a37);
+  --grad-sports:linear-gradient(115deg,#4dffa0,#3ddc84 48%,#1fa862);
+  --grad-money:linear-gradient(115deg,#ffd98a,#e7bb5c 48%,#b98f2f);
+  --grad-tech:linear-gradient(115deg,#7fb0ff,#4f8ef7 48%,#2a63c9);
+  --grad-ent:linear-gradient(115deg,#ff7d5c,#e94b2c 48%,#b8331b);
+  --ring:0 0 0 1px rgba(255,255,255,.06);
+}
+/* page canvas: soft coloured light instead of flat black */
+body{
+  background:
+    radial-gradient(1100px 520px at 12% -8%, rgba(233,75,44,.14), transparent 62%),
+    radial-gradient(900px 460px at 88% 0%, rgba(79,142,247,.12), transparent 60%),
+    radial-gradient(760px 420px at 50% 108%, rgba(61,220,132,.09), transparent 62%),
+    var(--bg);
+  background-attachment:fixed;
+}
+/* brand wordmark */
+.brand,.logo,header .top b{letter-spacing:.02em}
+.brand-grad,.footer-brand b{background:var(--grad-brand);-webkit-background-clip:text;background-clip:text;color:transparent}
+/* primary action */
+.cta{
+  background:var(--grad-brand);border:0;color:#fff;border-radius:7px;
+  box-shadow:0 6px 20px rgba(233,75,44,.28), var(--ring);
+  transition:transform .18s ease, box-shadow .18s ease, filter .18s ease;
+}
+.cta:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(233,75,44,.4), var(--ring);filter:saturate(1.08)}
+.cta:active{transform:translateY(0)}
+/* every section heading gets a coloured lead-in bar */
+.section-head h2,.home-section h2,.section>h2,main h2,.brand-slogan{position:relative;padding-left:15px}
+.section-head h2:before,.home-section h2:before,.section>h2:before,main h2:before,.brand-slogan:before{
+  content:"";position:absolute;left:0;top:.16em;bottom:.16em;width:5px;border-radius:4px;background:var(--grad-brand);
+}
+.article-body h2:before,.legal-prose h2:before{background:var(--grad-gold)}
+body[data-nav="sports"] main h2:before,body[data-nav="sports"] .section-head h2:before{background:var(--grad-sports)}
+body[data-nav="make-money"] main h2:before{background:var(--grad-money)}
+body[data-nav="tech"] main h2:before{background:var(--grad-tech)}
+body[data-nav="sports"] .cta{background:var(--grad-sports);box-shadow:0 6px 20px rgba(61,220,132,.28),var(--ring);color:#06210f}
+body[data-nav="tech"] .cta{background:var(--grad-tech);box-shadow:0 6px 20px rgba(79,142,247,.3),var(--ring)}
+body[data-nav="make-money"] .cta{background:var(--grad-money);box-shadow:0 6px 20px rgba(231,187,92,.28),var(--ring);color:#2a1e05}
+.section-head a{color:var(--gold);font-weight:800;font-size:13px}
+.section-head a:hover{color:#fff}
+/* big page titles pick up a warm gradient */
+.hero h1,.vhero h1,.article-hero h1{
+  background:linear-gradient(100deg,#ffffff 30%,#ffd9c9 62%,#ffb08e);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.vhero-sports h1{background:linear-gradient(100deg,#ffffff 30%,#c9ffe3 62%,#6affab);-webkit-background-clip:text;background-clip:text}
+.vhero-tech h1{background:linear-gradient(100deg,#ffffff 30%,#cfe0ff 62%,#8fb6ff);-webkit-background-clip:text;background-clip:text}
+.vhero-make-money h1{background:linear-gradient(100deg,#ffffff 30%,#ffeec4 62%,#f5cd76);-webkit-background-clip:text;background-clip:text}
+/* category cards: lit top edge, brighter surface, coloured lift */
+.vcat{position:relative;overflow:hidden;background:linear-gradient(160deg,#181d26,#11151b);border-color:rgba(255,255,255,.1)}
+.vcat:before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--grad-brand);opacity:.9}
+body[data-nav="sports"] .vcat:before{background:var(--grad-sports)}
+body[data-nav="make-money"] .vcat:before{background:var(--grad-money)}
+body[data-nav="tech"] .vcat:before{background:var(--grad-tech)}
+body[data-nav="sports"] .prose a,body[data-nav="sports"] .sp-table a{color:#7dffb9}
+body[data-nav="tech"] .prose a{color:#a8c8ff}
+.vcat:hover{transform:translateY(-4px);border-color:rgba(255,255,255,.22);box-shadow:0 16px 34px rgba(0,0,0,.45)}
+.vcat b{font-size:15px}
+/* data tables read as content, not spreadsheets */
+.sp-table thead th{background:linear-gradient(180deg,rgba(255,255,255,.06),transparent);color:#cfd5db;border-bottom-color:rgba(255,255,255,.14)}
+.sp-table tbody tr:hover{background:rgba(255,255,255,.035)}
+.sp-table a{color:#ffcaa8}.sp-table a:hover{color:#fff}
+/* panels lift off the page */
+.sp-msec,.genre-panel,.rec-miss{background:linear-gradient(160deg,#161b23,#0f1216)}
+.sp-rel{background:linear-gradient(160deg,#171c24,#101318);transition:transform .16s ease,border-color .16s ease}
+.sp-rel:hover{transform:translateY(-2px);border-color:rgba(255,255,255,.25)}
+/* cards and tiles lift with light */
+.tile:hover{transform:translateY(-5px)}
+.tile .poster,.editorial-card .poster{transition:box-shadow .22s ease, filter .22s ease}
+.tile:hover .poster,.editorial-card:hover .poster{box-shadow:0 16px 34px rgba(0,0,0,.55);filter:saturate(1.06) contrast(1.03)}
+.vcat{background:linear-gradient(150deg,#141821,#0f1216);transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease}
+.vcat:hover{transform:translateY(-3px);box-shadow:0 12px 26px rgba(0,0,0,.4)}
+.story-grid a{transition:background .2s ease,transform .2s ease}
+.story-grid a:hover{transform:translateY(-3px)}
+/* vertical identity: colour the chips and hubs properly */
+.vchip{border-color:rgba(255,255,255,.09)}
+.vchip:before{opacity:.3}
+.vchip-sports:hover{border-color:rgba(61,220,132,.55);box-shadow:0 12px 30px rgba(61,220,132,.16)}
+.vchip-make-money:hover{border-color:rgba(231,187,92,.55);box-shadow:0 12px 30px rgba(231,187,92,.16)}
+.vchip-tech:hover{border-color:rgba(79,142,247,.55);box-shadow:0 12px 30px rgba(79,142,247,.16)}
+.vchip-entertainment:hover{border-color:rgba(233,75,44,.55);box-shadow:0 12px 30px rgba(233,75,44,.16)}
+.vhero{position:relative;overflow:hidden}
+.vhero:after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;opacity:.85}
+.vhero-sports:after{background:var(--grad-sports)}
+.vhero-make-money:after{background:var(--grad-money)}
+.vhero-tech:after{background:var(--grad-tech)}
+.vhero-sports{background:radial-gradient(620px 260px at 72% -10%,rgba(61,220,132,.22),transparent 68%)}
+.vhero-make-money{background:radial-gradient(620px 260px at 72% -10%,rgba(231,187,92,.22),transparent 68%)}
+.vhero-tech{background:radial-gradient(620px 260px at 72% -10%,rgba(79,142,247,.24),transparent 68%)}
+/* eyebrows and pills */
+.eyebrow{background:var(--grad-gold);-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:900}
+.vhero-sports .eyebrow{background:var(--grad-sports);-webkit-background-clip:text;background-clip:text}
+.vhero-tech .eyebrow{background:var(--grad-tech);-webkit-background-clip:text;background-clip:text}
+.genre-chips a:hover{background:rgba(233,75,44,.14);border-color:var(--accent);color:#fff}
+.stabs.active{background:var(--grad-brand);border-color:transparent;box-shadow:0 4px 14px rgba(233,75,44,.3)}
+.score-pill{background:rgba(231,187,92,.1)}
+.sp-pill{background:rgba(255,255,255,.05)}
+/* type accents on cards */
+.tile-meta b,.card-type{color:var(--muted)}
+/* navigation */
+.topnav a{position:relative;transition:color .16s ease}
+.topnav a:after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:2px;border-radius:2px;background:var(--grad-brand);transform:scaleX(0);transition:transform .18s ease}
+.topnav a:hover:after,.topnav a.active:after{transform:scaleX(1)}
+.top{background:linear-gradient(180deg,rgba(10,12,15,.97),rgba(10,12,15,.82));border-bottom-color:rgba(255,255,255,.08)}
+/* article reading experience */
+.article-body h2{position:relative;padding-left:15px}
+.article-body h2:before{content:"";position:absolute;left:0;top:.22em;bottom:.22em;width:3px;border-radius:3px;background:var(--grad-gold)}
+.article-hero .eyebrow{letter-spacing:.1em}
+.prose a{color:#ffb199;border-bottom:1px solid rgba(255,177,153,.35)}
+.prose a:hover{color:#fff;border-bottom-color:#fff}
+/* panels */
+.vstate{background:linear-gradient(150deg,#12161c,#0e1114)}
+.vnote,.trend-note{background:linear-gradient(90deg,rgba(231,187,92,.07),transparent 70%),#101318}
+.sp-result{background:linear-gradient(90deg,rgba(61,220,132,.09),transparent 62%),#101318}
+.rec-inner{background:linear-gradient(135deg,#181d27,#0e1014);box-shadow:0 20px 60px rgba(0,0,0,.35)}
+/* footer */
+.footer{position:relative;background:linear-gradient(180deg,#0b0d11,#08090b)}
+.footer:before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#e94b2c,#e7bb5c 32%,#3ddc84 64%,#4f8ef7)}
+.footer-col a:hover{color:#fff}
+/* mobile bar */
+.mobile-nav a.active{background:linear-gradient(180deg,rgba(233,75,44,.22),transparent)}
+/* Back control: it is fixed-position, so keep it clear of the breadcrumb rather
+   than letting it sit on top of the first line of text. */
+body .bryme-back{top:auto;bottom:78px;left:14px;opacity:.92}
+body .bryme-back:hover{opacity:1}
+@media(min-width:761px){body .bryme-back{bottom:24px;left:18px}}
+/* ---------- editorial layout variants ----------
+   One tile component, four presentations. The wrapper class decides the
+   shape, so curated order, counts and ranks are never altered by layout. */
+.home-section{padding:44px 0}
+.section-note{font-size:13px;color:var(--muted);margin:6px 0 0;max-width:640px}
+.section-head{align-items:start}
+.section-head>div{min-width:0}
+
+/* Variants must undo the base rail's horizontal-scroll grid before laying out. */
+.rail-lead,.rail-wall,.rail-chart,.rail-spread{
+  grid-auto-flow:row;grid-auto-columns:auto;overflow-x:visible;
+  scroll-snap-type:none;padding:2px 1px 4px;
+}
+.rail-lead .tile,.rail-wall .tile,.rail-chart .tile,.rail-spread .tile{scroll-snap-align:none}
+
+/* LEAD - mosaic: one feature at 2x2, the rest fill around it.
+   Works with any number of items, so a curated list is never truncated. */
+.rail-lead{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;overflow:visible}
+.rail-lead .tile{min-width:0}
+.rail-lead .tile .poster{aspect-ratio:2/3}
+.rail-lead .tile:first-child{grid-column:span 2;grid-row:span 2;display:flex;flex-direction:column}
+.rail-lead .tile:first-child .poster{aspect-ratio:auto;flex:1;min-height:300px}
+.rail-lead .tile:first-child .poster img{width:100%;height:100%;object-fit:cover}
+.rail-lead .tile:first-child h3{font-size:clamp(20px,2.2vw,27px);line-height:1.15;margin-top:12px}
+.rail-lead .tile:first-child .tile-meta{font-size:13px}
+.rail-lead h3{font-size:14px;line-height:1.3}
+.rail-lead .tile:not(:first-child) .tile-rating{display:none}
+/* WALL - dense poster grid */
+.rail-wall{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:16px;overflow:visible}
+.rail-wall .tile{min-width:0}
+.rail-wall .tile .poster{aspect-ratio:2/3}
+.rail-wall h3{font-size:13.5px;line-height:1.3}
+.rail-wall .tile-rating{display:none}
+
+/* CHART - numbered two-column list */
+.rail-chart{display:grid;grid-template-columns:1fr 1fr;gap:0 28px;counter-reset:ch;overflow:visible}
+.rail-chart .tile{counter-increment:ch;display:grid;grid-template-columns:40px 48px minmax(0,1fr);gap:13px;align-items:center;padding:9px 6px;border-bottom:1px solid rgba(255,255,255,.055);border-radius:8px;transition:background .16s}
+.rail-chart .tile:hover{background:rgba(255,255,255,.045)}
+.rail-chart .tile:before{content:counter(ch);font-size:25px;font-weight:900;text-align:center;color:transparent;-webkit-text-stroke:1.4px rgba(255,255,255,.32);font-variant-numeric:tabular-nums}
+.rail-chart .tile:nth-child(-n+3):before{-webkit-text-stroke:0;background:var(--grad-brand);-webkit-background-clip:text;background-clip:text}
+.rail-chart .poster{width:48px;aspect-ratio:2/3;margin:0;border-radius:5px}
+.rail-chart h3{font-size:15px;line-height:1.25;margin:0}
+.rail-chart .tile-meta{font-size:11.5px}
+.rail-chart .tile-rating{display:none}
+
+/* SPREAD - equal-weight features, image behind the text */
+.rail-spread{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;overflow:visible}
+.rail-spread .tile{position:relative;min-height:300px;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,.09);display:flex;flex-direction:column;justify-content:flex-end;padding:18px}
+.rail-spread .tile .poster{position:absolute;inset:0;margin:0;border-radius:0;aspect-ratio:auto;z-index:-2}
+.rail-spread .tile .poster img{width:100%;height:100%;object-fit:cover}
+.rail-spread .tile:after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(0deg,rgba(6,8,11,.985) 22%,rgba(6,8,11,.8) 52%,rgba(6,8,11,.35))}
+.rail-spread h3{font-size:21px;line-height:1.16;margin:6px 0 4px}
+.rail-spread .tile-meta,.rail-spread .tile-rating{position:relative}
+
+@media(max-width:1080px){.rail-wall{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(max-width:980px){
+  .rail-lead{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .rail-lead .tile:first-child .poster{min-height:210px}
+  .rail-chart,.rail-spread{grid-template-columns:1fr}
+}
+@media(max-width:620px){.rail-wall{grid-template-columns:repeat(3,minmax(0,1fr));gap:11px}.home-section{padding:30px 0}}
+/* ---------- match editorial workflow ---------- */
+.sp-preview{margin:18px 0 0}
+.sp-msec-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:12px}
+.sp-msec{background:linear-gradient(160deg,#161b23,#0f1216);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:15px 17px}
+.sp-msec>b{display:block;font-size:11.5px;font-weight:900;letter-spacing:.09em;text-transform:uppercase;color:var(--gold);margin-bottom:7px}
+.sp-msec p{margin:0 0 8px;font-size:14.5px;line-height:1.62;color:#d9dde1}
+.sp-msec p:last-child{margin-bottom:0}
+.sp-msec ul{margin:0;padding-left:18px;font-size:14px;line-height:1.6;color:#d9dde1}
+/* an unconfirmed field is visibly a gap in the record, not filler */
+.sp-msec-unknown{border-style:dashed;background:#0f1216}
+.sp-msec-unknown>b{color:var(--muted)}
+.sp-unknown{display:block;font-size:13.5px;line-height:1.6;color:var(--muted);font-style:italic}
+/* the preserved pre-match preview, once the match has been played */
+.sp-preview-archived{margin-top:26px;padding-top:4px;border-top:1px solid var(--line)}
+.sp-archive-note{background:linear-gradient(90deg,rgba(231,187,92,.09),transparent 70%);border:1px solid rgba(231,187,92,.28);border-left:3px solid var(--gold);border-radius:0 8px 8px 0;padding:13px 16px;margin:18px 0 14px}
+.sp-archive-note b{display:block;font-size:14.5px;margin-bottom:3px}
+.sp-archive-note p{margin:0;font-size:13px;color:var(--muted);line-height:1.6}
+.sp-preview-archived .sp-msec{opacity:.86}
+.sp-postmatch{margin-top:20px}
+.sp-postmatch .sp-msec>b{color:#3ddc84}
+@media(max-width:760px){.sp-msec-grid{grid-template-columns:1fr}}
+/* ---------- clubs directory ---------- */
+.cd-jumps{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 6px}
+.cd-jump{font-size:12.5px;font-weight:800;text-transform:capitalize;padding:7px 13px;border:1px solid var(--line);border-radius:20px;color:#d9dde1;background:#101318}
+.cd-jump:hover{border-color:var(--sports,#3ddc84);color:#fff}
+.cd-count{font-size:12px;font-weight:700;color:var(--muted);margin-left:8px}
+.cd-table{font-size:13.5px}
+.cd-table td{vertical-align:middle}
+.cd-table tbody tr:nth-child(even){background:rgba(255,255,255,.018)}
+.cd-na{color:var(--muted);font-style:italic;font-size:12.5px}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+`);
 fs.appendFileSync(path.join(root,'assets/site.css'), `\n/* Persistent navigation control */\n.bryme-back{position:fixed;left:14px;top:74px;z-index:80;display:grid;place-items:center;width:34px;height:34px;border:1px solid rgba(255,255,255,.22);border-radius:50%;background:rgba(8,9,11,.88);backdrop-filter:blur(10px);color:#fff;font:900 21px/1 system-ui,sans-serif;padding:0;cursor:pointer;box-shadow:0 7px 22px rgba(0,0,0,.35)}.bryme-back:hover{border-color:var(--sports,#3ddc84);transform:translateX(-1px)}@media(max-width:760px){.bryme-back{left:10px;top:64px;width:32px;height:32px}}\n`);
 /* ------------------------------------------------------------------ */
 /* Shared markup helpers                                              */
@@ -487,7 +717,7 @@ function layout(o){
   const socialImage = o.image ? `<meta property="og:image" content="${esc(/^https?:\/\//i.test(o.image) ? o.image : absUrl(o.image))}"><meta name="twitter:image" content="${esc(/^https?:\/\//i.test(o.image) ? o.image : absUrl(o.image))}">` : '';
   const schema = o.schema ? `<script type="application/ld+json">${JSON.stringify(o.schema).replace(/</g,'\\u003c')}<\/script>` : '';
   const active = o.activeNav || '';
-  return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${esc(o.title)} | ${site.name}</title><meta name="description" content="${esc(o.description)}">${o.noindex?'<meta name="robots" content="noindex,follow">':''}<link rel="canonical" href="${absUrl(o.canonical || o.path)}"><meta property="og:type" content="${esc(o.ogType || 'website')}"><meta property="og:site_name" content="${site.name}"><meta property="og:title" content="${esc(o.title)}"><meta property="og:description" content="${esc(o.description)}"><meta property="og:url" content="${absUrl(o.path)}">${socialImage}<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${esc(o.title)}"><meta name="twitter:description" content="${esc(o.description)}"><link rel="stylesheet" href="${url('/assets/site.css')}">${schema}</head><body><header class="top"><div class="shell"><a class="brand" href="${url('/')}">BRY<b>ME</b></a><nav class="topnav"><a href="${url('/')}"${active==='home'?' class="active"':''}>Home</a><a href="${url('/entertainment/')}"${active==='entertainment'?' class="active"':''}>🎬 Entertainment</a><a href="${url('/sports/')}"${active==='sports'?' class="active"':''}>⚽ Sports</a><a href="${url('/make-money/')}"${active==='make-money'?' class="active"':''}>💰 Make Money</a><a href="${url('/tech/')}"${active==='tech'?' class="active"':''}>🤖 Tech &amp; AI</a><a class="nav-search" href="${url('/search/')}">Search</a></nav></div></header>${o.body}<nav class="mobile-nav"><a href="${url('/')}"${active==='home'?' class="active"':''}><span class="mn-ico">🏠</span>Home</a><a href="${url('/entertainment/')}"${active==='entertainment'?' class="active"':''}><span class="mn-ico">🎬</span>Entertain</a><a href="${url('/sports/')}"${active==='sports'?' class="active"':''}><span class="mn-ico">⚽</span>Sports</a><a href="${url('/make-money/')}"${active==='make-money'?' class="active"':''}><span class="mn-ico">💰</span>Money</a><a href="${url('/tech/')}"${active==='tech'?' class="active"':''}><span class="mn-ico">🤖</span>Tech</a><a href="${url('/search/')}"><span class="mn-ico">🔍</span>Search</a></nav><footer class="footer"><div class="shell"><div class="footer-grid">
+  return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${esc(o.title)} | ${site.name}</title><meta name="description" content="${esc(o.description)}">${o.noindex?'<meta name="robots" content="noindex,follow">':''}<link rel="canonical" href="${absUrl(o.canonical || o.path)}"><meta property="og:type" content="${esc(o.ogType || 'website')}"><meta property="og:site_name" content="${site.name}"><meta property="og:title" content="${esc(o.title)}"><meta property="og:description" content="${esc(o.description)}"><meta property="og:url" content="${absUrl(o.path)}">${socialImage}<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${esc(o.title)}"><meta name="twitter:description" content="${esc(o.description)}"><link rel="stylesheet" href="${url('/assets/site.css')}">${schema}</head><body data-nav="${esc(o.activeNav || '')}"><header class="top"><div class="shell"><a class="brand" href="${url('/')}">BRY<b>ME</b></a><nav class="topnav"><a href="${url('/')}"${active==='home'?' class="active"':''}>Home</a><a href="${url('/entertainment/')}"${active==='entertainment'?' class="active"':''}>🎬 Entertainment</a><a href="${url('/sports/')}"${active==='sports'?' class="active"':''}>⚽ Sports</a><a href="${url('/make-money/')}"${active==='make-money'?' class="active"':''}>💰 Make Money</a><a href="${url('/tech/')}"${active==='tech'?' class="active"':''}>🤖 Tech &amp; AI</a><a class="nav-search" href="${url('/search/')}">Search</a></nav></div></header>${o.body}<nav class="mobile-nav"><a href="${url('/')}"${active==='home'?' class="active"':''}><span class="mn-ico">🏠</span>Home</a><a href="${url('/entertainment/')}"${active==='entertainment'?' class="active"':''}><span class="mn-ico">🎬</span>Entertain</a><a href="${url('/sports/')}"${active==='sports'?' class="active"':''}><span class="mn-ico">⚽</span>Sports</a><a href="${url('/make-money/')}"${active==='make-money'?' class="active"':''}><span class="mn-ico">💰</span>Money</a><a href="${url('/tech/')}"${active==='tech'?' class="active"':''}><span class="mn-ico">🤖</span>Tech</a><a href="${url('/search/')}"><span class="mn-ico">🔍</span>Search</a></nav><footer class="footer"><div class="shell"><div class="footer-grid">
   <div class="footer-brand"><a class="brand" href="${url('/')}">BRY<b>ME</b></a><p>Discover what you love. Learn what you need. Find what's next.</p></div>
   <nav class="footer-col" aria-label="Explore"><h4>Verticals</h4><a href="${url('/entertainment/')}">🎬 Entertainment</a><a href="${url('/sports/')}">⚽ Sports</a><a href="${url('/make-money/')}">💰 Make Money</a><a href="${url('/tech/')}">🤖 Tech &amp; AI</a></nav>
   <nav class="footer-col" aria-label="Explore"><h4>Entertainment</h4><a href="${url('/movies/')}">Movies</a><a href="${url('/series/')}">Series</a><a href="${url('/anime/')}">Anime</a><a href="${url('/articles/')}">Articles</a><a href="${url('/genres/')}">Genres</a></nav>
@@ -501,8 +731,84 @@ function layout(o){
 /* Pages                                                              */
 /* ------------------------------------------------------------------ */
 function write(dir, content){ const out = path.join(root, dir, 'index.html'); fs.mkdirSync(path.dirname(out), {recursive:true}); fs.writeFileSync(out, content); }
+/* ================================================================
+   EDITORIAL LAYOUT COMPONENTS
+   The homepage was nine identical card rails stacked on top of each
+   other, which reads as a template rather than a publication. These
+   give each section its own shape: a lead story with supporting grid,
+   a ranked chart, a poster wall, and a magazine spread. Same data,
+   same links - different hierarchy.
+   ================================================================ */
+function clip(text, n){
+  const t = String(text || '').trim();
+  if (t.length <= n) return t;
+  const cut = t.slice(0, n);
+  const sp = cut.lastIndexOf(' ');
+  return (sp > n * 0.6 ? cut.slice(0, sp) : cut).replace(/[,;:.\s]+$/, '') + '…';
+}
+function sectionHead(title, emoji, moreUrl, note, eyebrow){
+  return `<div class="section-head"><div>${eyebrow ? `<div class="eyebrow">${esc(eyebrow)}</div>` : ''}<h2>${emoji ? emoji + ' ' : ''}${esc(title)}</h2>${note ? `<p class="section-note">${esc(note)}</p>` : ''}</div>${moreUrl ? `<a href="${url(moreUrl)}">View all</a>` : ''}</div>`;
+}
+/* One dominant story plus a supporting column - the standard editorial lead. */
+function leadSection(title, emoji, items, moreUrl, note, eyebrow){
+  if (!items || !items.length) return '';
+  const [lead, ...rest] = items;
+  const side = rest.slice(0, 4);
+  const typeDir = m => m.typeDir || 'movie';
+  const label = m => typeDir(m) === 'series' ? 'SERIES' : (typeDir(m) === 'anime' ? 'ANIME' : 'MOVIE');
+  const art = m => poster(m);
+  return `<section class="home-section lead-section"><div class="shell">${sectionHead(title, emoji, moreUrl, note, eyebrow)}
+    <div class="lead-grid">
+      <a class="lead-main" href="${url('/' + typeDir(lead) + '/' + lead.slug + '/')}">
+        <div class="lead-art"><img src="${esc(art(lead))}" alt="${esc(lead.title)}" loading="lazy" width="760" height="428"></div>
+        <div class="lead-copy"><span class="lead-tag">${label(lead)}${lead.year ? ' · ' + lead.year : ''}</span><h3>${esc(lead.title)}</h3>${lead.description ? `<p>${esc(clip(lead.description, 165))}</p>` : ''}${lead.rating && lead.rating.value != null ? `<span class="lead-score">★ ${esc(String(lead.rating.value))}/10 · Editorial</span>` : ''}</div>
+      </a>
+      <div class="lead-side">${side.map(m => `<a class="lead-item" href="${url('/' + typeDir(m) + '/' + m.slug + '/')}">
+        <img src="${esc(art(m))}" alt="${esc(m.title)}" loading="lazy" width="112" height="64">
+        <div><span>${label(m)}${m.year ? ' · ' + m.year : ''}</span><b>${esc(m.title)}</b></div></a>`).join('')}</div>
+    </div></div></section>`;
+}
+/* A ranked chart - big numerals, compact rows, reads as a list not a carousel. */
+function chartSection(title, emoji, items, moreUrl, note, eyebrow){
+  if (!items || !items.length) return '';
+  const rows = items.slice(0, 10);
+  const typeDir = m => m.typeDir || 'movie';
+  return `<section class="home-section chart-section"><div class="shell">${sectionHead(title, emoji, moreUrl, note, eyebrow)}
+    <ol class="chart">${rows.map((m, i) => `<li><a href="${url('/' + typeDir(m) + '/' + m.slug + '/')}">
+      <span class="chart-n">${i + 1}</span>
+      <img src="${esc(poster(m))}" alt="${esc(m.title)}" loading="lazy" width="46" height="66">
+      <span class="chart-t"><b>${esc(m.title)}</b><i>${(typeDir(m) === 'series' ? 'Series' : typeDir(m) === 'anime' ? 'Anime' : 'Movie')}${m.year ? ' · ' + m.year : ''}${m.genreLabel || m.genre ? ' · ' + esc(m.genreLabel || m.genre) : ''}</i></span>
+      ${m.rating && m.rating.value != null ? `<span class="chart-s">★ ${esc(String(m.rating.value))}</span>` : ''}
+    </a></li>`).join('')}</ol></div></section>`;
+}
+/* A dense poster wall - browsing, not reading. */
+function wallSection(title, emoji, items, moreUrl, note, eyebrow, limit){
+  if (!items || !items.length) return '';
+  const typeDir = m => m.typeDir || 'movie';
+  return `<section class="home-section wall-section"><div class="shell">${sectionHead(title, emoji, moreUrl, note, eyebrow)}
+    <div class="wall">${items.slice(0, limit || 12).map(m => `<a class="wall-item" href="${url('/' + typeDir(m) + '/' + m.slug + '/')}">
+      <img src="${esc(poster(m))}" alt="${esc(m.title)}" loading="lazy" width="200" height="286">
+      <span class="wall-cap"><b>${esc(m.title)}</b><i>${m.year || ''}</i></span></a>`).join('')}</div></div></section>`;
+}
+/* Magazine spread - equal-weight feature cards with the image behind the text. */
+function spreadSection(title, emoji, items, moreUrl, note, eyebrow){
+  if (!items || !items.length) return '';
+  const typeDir = m => m.typeDir || 'movie';
+  return `<section class="home-section spread-section"><div class="shell">${sectionHead(title, emoji, moreUrl, note, eyebrow)}
+    <div class="spread">${items.slice(0, 3).map(m => `<a class="spread-card" href="${url('/' + typeDir(m) + '/' + m.slug + '/')}" style="--sp-img:url('${esc(poster(m))}')">
+      <span class="spread-tag">${typeDir(m) === 'series' ? 'SERIES' : typeDir(m) === 'anime' ? 'ANIME' : 'MOVIE'}${m.year ? ' · ' + m.year : ''}</span>
+      <b>${esc(m.title)}</b>${m.description ? `<p>${esc(clip(m.description, 118))}</p>` : ''}</a>`).join('')}</div></div></section>`;
+}
+
 function railSection(title, emoji, items, moreUrl, note, opts){
-  return `<section class="home-section"><div class="shell"><div class="section-head"><h2>${emoji ? emoji + ' ' : ''}${esc(title)}</h2>${moreUrl ? `<a href="${url(moreUrl)}">View all</a>` : ''}</div>${note ? `<p class="section-note">${esc(note)}</p>` : ''}<div class="rail">${items.map((m,i) => card(m, {rank: opts && opts.ranked ? (opts.rankKey ? (m[opts.rankKey] || i + 1) : i + 1) : null})).join('')}</div></div></section>`;
+  /* opts.variant changes only the wrapper class. Every section keeps the same
+     <a class="tile"> markup and the full configured item list, so curated order,
+     per-type ranks and counts stay intact - the layout differences are CSS. */
+  const v = (opts && opts.variant) ? String(opts.variant) : '';
+  const secClass = v ? ' sec-' + v : '';
+  const variant = v ? ' rail-' + v : '';
+  const eyebrow = (opts && opts.eyebrow) ? `<div class="eyebrow">${esc(opts.eyebrow)}</div>` : '';
+  return `<section class="home-section${secClass}"><div class="shell"><div class="section-head"><div>${eyebrow}<h2>${emoji ? emoji + ' ' : ''}${esc(title)}</h2>${note ? `<p class="section-note">${esc(note)}</p>` : ''}</div>${moreUrl ? `<a href="${url(moreUrl)}">View all</a>` : ''}</div><div class="rail${variant}">${items.map((m,i) => card(m, {rank: opts && opts.ranked ? (opts.rankKey ? (m[opts.rankKey] || i + 1) : i + 1) : null})).join('')}</div></div></section>`;
 }
 
 /* ================================================================
@@ -513,15 +819,11 @@ function railSection(title, emoji, items, moreUrl, note, opts){
 const VERTICALS = [
   {
     dir: 'sports', emoji: '⚽', name: 'BRYME Sports', short: 'Sports', active: 'sports', accent: '#3ddc84',
-    tagline: 'Football-first sports coverage: Premier League, Champions League, La Liga and more.',
-    desc: 'BRYME Sports starts with football — the Premier League, Champions League, La Liga, Serie A, Bundesliga and international football — and will grow from there. You will find club histories, rivalry explainers, records, player profiles, match previews and reports.',
+    tagline: 'Football, covered properly: Premier League, Champions League, La Liga, Serie A, Bundesliga and Ligue 1.',
+    desc: 'BRYME Sports is football. The Premier League, Champions League, La Liga, Serie A, Bundesliga, Ligue 1 and international football — with club histories, rivalry explainers, records, player profiles, match previews and reports. We cover one sport properly rather than several thinly.',
     note: 'Current reporting (previews, results, transfers) is always researched before publication. No result, transfer, injury, fixture or statistic is ever invented.',
     categories: [
       { slug: 'football', name: 'Football', desc: 'Premier League, Champions League, La Liga, Serie A, Bundesliga, Ligue 1, FPL and the global game.' },
-      { slug: 'basketball', name: 'Basketball', desc: 'NBA, WNBA, international basketball and the stories around the court.' },
-      { slug: 'boxing-mma', name: 'Boxing & MMA', desc: 'Fight cards, athletes, rivalries and combat-sport culture.' },
-      { slug: 'tennis', name: 'Tennis', desc: 'Grand Slams, tours, players and the biggest matches.' },
-      { slug: 'athletics', name: 'Athletics', desc: 'Track, field, road racing and extraordinary performances.' },
       /* These six hubs existed as orphaned static pages that no build step regenerated: they were
          live, stuck on the placeholder notice and missing from the sitemap. Declaring them here puts
          them back under the build, so they list their articles and de-index themselves while empty. */
@@ -656,20 +958,65 @@ function verticalPage(v, category){
   const sportsEditorial = (() => { const f = path.join(root, 'content', 'sports-articles.json'); if (!fs.existsSync(f)) return []; try { return (JSON.parse(fs.readFileSync(f, 'utf8')).articles || []).filter(a => a.status === 'published'); } catch (_) { return []; } })();
   const sportsStoriesBlock = (v.dir === 'sports' && !category) ? `<section class="section"><div class="section-head"><h2>BRYME Sports Stories</h2><a href="${url('/sports/articles/')}">All stories</a></div>${sportsEditorial.length ? `<div class="vcat-grid">${sportsEditorial.filter(a => (a.labels || []).some(x => ['featured','trending','editor-pick'].includes(x))).slice(0,6).map(a => `<a class="vcat" href="${url('/sports/articles/' + a.slug + '/')}"><b>${esc(a.title)}</b><span>${esc(a.category)} · ${esc((a.labels || []).join(' · '))}</span></a>`).join('')}</div>` : `<div class="vstate"><b>Stories are being prepared</b><p>Drafts are researched and reviewed before publication. Published BRYME Sports stories will appear here.</p><a class="quiet-link" href="${url('/sports/articles/')}">Visit the Sports editorial desk</a></div>`}</section>` : '';
   const sportsFeature = (v.dir === 'sports' && category && category.slug === 'football') ? `<section class="sp-hero" aria-label="Featured BRYME Sports stories"><div class="sp-hero-track"><a class="sp-hero-card sp-hero-first" href="${url('/sports/premier-league/')}" style="--card-img:url('/assets/img/sports/hero-premier-league.jpg')"><span class="sp-hero-tag">Welcome to the Premier League</span><h3>The 2026/27 season starts here</h3><p>Fixtures, clubs, match pages and the stories that will define the campaign.</p><span class="sp-hero-go">Explore the season →</span></a><a class="sp-hero-card" href="${url('/sports/fpl/')}" style="--card-img:url('/assets/img/sports/hero-fpl.jpg')"><span class="sp-hero-tag">Fantasy Premier League</span><h3>Top FPL picks for the new season</h3><p>Start with the fixtures, the key decisions and the players worth watching.</p><span class="sp-hero-go">Build your FPL view →</span></a><a class="sp-hero-card" href="${url('/sports/managers-2026-27/')}" style="--card-img:url('/assets/img/sports/hero-man-city-manager.jpg')"><span class="sp-hero-tag">Manchester City</span><h3>Enzo Maresca: a new chapter at City</h3><p>Follow the manager changes and the early storylines around the Premier League.</p><span class="sp-hero-go">See managers in &amp; out →</span></a></div></section>` : '';
+  /* ---- Clubs directory: the Clubs hub IS the reference page ----
+     Built from content/club-history/*.json, where every club record already carries an
+     official source. Capacities come from the fixture venue data where it exists.
+     Honours totals are deliberately absent - the existing source policy withholds them
+     until each club is reconciled against official honours lists, and inventing them
+     here to fill a column would be exactly the wrong trade. */
+  const clubsDirectory = (() => {
+    if (!(v.dir === 'sports' && category && category.slug === 'clubs')) return '';
+    const dir = path.join(root, 'content', 'club-history');
+    if (!fs.existsSync(dir)) return '';
+    const order = ['premier-league','la-liga','serie-a','bundesliga','ligue-1','eredivisie'];
+    const capsFor = (lgSlug) => {
+      const fname = lgSlug === 'premier-league' ? 'fixtures.json' : `fixtures-${lgSlug}.json`;
+      const fp = path.join(root, 'content', fname);
+      if (!fs.existsSync(fp)) return {};
+      try { return (JSON.parse(fs.readFileSync(fp, 'utf8')).venues) || {}; } catch (e) { return {}; }
+    };
+    let total = 0, checked = null;
+    const tables = order.map(lgSlug => {
+      const fp = path.join(dir, lgSlug + '.json');
+      if (!fs.existsSync(fp)) return '';
+      let D; try { D = JSON.parse(fs.readFileSync(fp, 'utf8')); } catch (e) { return ''; }
+      const clubs = (D.clubs || []).slice().sort((a, b) => String(a.name).localeCompare(String(b.name)));
+      if (!clubs.length) return '';
+      total += clubs.length;
+      checked = checked || D.lastChecked;
+      const caps = capsFor(lgSlug);
+      const anyCap = clubs.some(c => caps[c.slug] && caps[c.slug].capacity);
+      return `<h3 class="sp-dir" id="${esc(lgSlug)}">${esc(D.league || lgSlug)} <span class="cd-count">${clubs.length} clubs</span></h3>
+      <div class="sp-table-wrap"><table class="sp-table cd-table"><thead><tr><th>Club</th><th>Founded</th><th>City</th><th>Stadium</th>${anyCap ? '<th>Capacity</th>' : ''}<th>Source</th></tr></thead><tbody>
+      ${clubs.map(c => {
+        const cap = caps[c.slug] && caps[c.slug].capacity;
+        return `<tr><td><b>${esc(c.name)}</b></td><td>${esc(c.founded || '—')}</td><td>${esc(c.city || '—')}</td><td>${esc(c.stadium || '—')}</td>${anyCap ? `<td>${cap ? esc(Number(cap).toLocaleString('en-GB')) : '<span class="cd-na">not recorded</span>'}</td>` : ''}<td>${c.source ? `<a href="${esc(c.source)}" rel="nofollow noopener">official</a>` : '<span class="cd-na">—</span>'}</td></tr>`;
+      }).join('')}
+      </tbody></table></div>`;
+    }).filter(Boolean).join('');
+    const jump = order.filter(o => fs.existsSync(path.join(dir, o + '.json')))
+      .map(o => `<a class="cd-jump" href="#${o}">${esc(o.replace(/-/g, ' '))}</a>`).join('');
+    return `<section class="section">
+      <div class="vnote">Founding year, home city and stadium for <b>${total} clubs</b> across six European leagues. Every row is backed by an official club source, linked in the last column. Last reconciled ${esc(checked || 'recently')}.</div>
+      <div class="cd-jumps">${jump}</div>
+      ${tables}
+      <div class="sp-truth"><b>Why there is no honours column.</b><p>BRYME does not publish major-honours totals until each club has been reconciled against official club and competition honours lists. Trophy counts differ between sources depending on whether defunct competitions, shared titles and regional championships are included, and a table that quietly picks one interpretation is worse than no table. The column will appear when the reconciliation is done, not before.</p></div>
+    </section>`;
+  })();
   const footballHub = `<section class="section"><div class="vnote">Football is BRYME’s first fully built sports hub. Pick a competition or follow fixtures, FPL, transfers and the game’s biggest stories.</div><h2 style="margin:26px 0 14px">Football competitions</h2><div class="vcat-grid"><a class="vcat" href="${url('/sports/premier-league/')}"><b>Premier League</b><span>England’s top flight: fixtures, clubs, transfers and FPL.</span></a><a class="vcat" href="${url('/sports/champions-league/')}"><b>Champions League</b><span>Europe’s biggest club competition.</span></a><a class="vcat" href="${url('/sports/la-liga/')}"><b>La Liga</b><span>Spanish football: Real Madrid, Barcelona and beyond.</span></a><a class="vcat" href="${url('/sports/serie-a/')}"><b>Serie A</b><span>Italian football and its storied clubs.</span></a><a class="vcat" href="${url('/sports/bundesliga/')}"><b>Bundesliga</b><span>German football and its fan culture.</span></a><a class="vcat" href="${url('/sports/ligue-1/')}"><b>Ligue 1</b><span>French football, fixtures and clubs.</span></a><a class="vcat" href="${url('/sports/international/')}"><b>International football</b><span>National teams, tournaments and qualifiers.</span></a></div><h2 style="margin:30px 0 14px">Follow the game</h2><div class="vcat-grid"><a class="vcat" href="${url('/sports/fpl/')}"><b>Fantasy Premier League</b><span>Picks, captains and fixture-led decisions.</span></a><a class="vcat" href="${url('/sports/transfers/')}"><b>Transfers</b><span>Verified transfer coverage and market context.</span></a><a class="vcat" href="${url('/sports/players/')}"><b>Players</b><span>Profiles, careers and stories.</span></a><a class="vcat" href="${url('/sports/clubs/')}"><b>Clubs</b><span>Histories, identities and fan culture.</span></a><a class="vcat" href="${url('/sports/history/')}"><b>History</b><span>Historic moments and great eras.</span></a><a class="vcat" href="${url('/sports/records/')}"><b>Records</b><span>Goals, titles, appearances and numbers.</span></a></div></section>`;
   const sportsTeaserBlock = (v.dir === 'sports' && !category) ? `<section class="section sports-teaser"><div class="section-head"><h2>Premier League 2026/27</h2></div><div class="trailer-frame" style="max-width:100%"><iframe width="100%" height="500" src="https://www.youtube.com/embed/nx8rgJrmSFY" title="Premier League 2026/27 — The Wait Is Over" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen><\/iframe></div></section>` : '';
   const fixturesBlock = (v.dir === 'sports' && !category) ? '<section class="section"><div class="section-head"><h2>Fixtures &amp; Results 2026/27</h2></div><div class="vcat-grid">' + LEAGUE_FIX.map(lg => { const F = loadLeagueFixtures(lg.slug); const total = (F.matchweeks || []).reduce((n, w) => n + w.matches.length, 0); return '<a class="vcat" href="' + url('/sports/' + lg.slug + '/fixtures/') + '"><b>' + esc(lg.name) + '</b><span>All ' + total + ' fixtures — dates, kickoffs &amp; match pages</span></a>'; }).join('') + '<a class="vcat" href="' + url('/sports/managers-2026-27/') + '"><b>Managers</b><span>Managers In &amp; Out — 2026/27</span></a></div></section>' : '';
-  const defaultHero = `<section class="hero vhero vhero-${v.dir}"><div class="eyebrow">${v.emoji} ${category ? esc(v.name) + ' · ' + esc(category.name) : esc(v.name)}</div><h1>${esc(category ? category.name : v.name)}</h1><p class="lead">${esc(category ? category.desc : v.tagline)}</p></section>`;
+  const defaultHero = `<section class="hero vhero vhero-${v.dir}" data-vertical="${v.dir}"><div class="eyebrow">${v.emoji} ${category ? esc(v.name) + ' · ' + esc(category.name) : esc(v.name)}</div><h1>${esc(category ? category.name : v.name)}</h1><p class="lead">${esc(category ? category.desc : v.tagline)}</p></section>`;
   const pageHero = defaultHero + sportsFeature;
   const catArticles = category ? ((verticalArticleIndex[v.dir] && verticalArticleIndex[v.dir].get(category.slug)) || []) : [];
   const catArticleBlock = catArticles.length
     ? `<div class="vcat-grid">${catArticles.map(a => articleCard(v.dir, a)).join('')}</div>`
     : '';
-  const body = `<main class="shell"><div class="crumb"><a href="${url('/')}">Home</a> / ${category ? `<a href="${url('/' + v.dir + '/')}">${esc(v.name)}</a> / ${esc(category.name)}` : esc(v.name)}</div>${pageHero}<section class="section">${category ? (v.dir === 'sports' && category.slug === 'football' ? (footballHub + catArticleBlock) : (catArticles.length ? catArticleBlock : `<div class="vstate"><b>${esc(category.name)} — foundation ready</b><p>This section is being built. Articles will appear here as they are researched and published.</p></div>`)) : `<p class="lead" style="margin-bottom:18px">${esc(v.desc)}</p><div class="vnote">${esc(v.note)}</div><h2 style="margin:26px 0 14px">Explore ${esc(v.short)}</h2><div class="vcat-grid">${catGrid}</div>`}</section>${sportsTeaserBlock}${fixturesBlock}${sportsStoriesBlock}<section class="section"><div class="section-head"><h2>Explore BRYME</h2></div><div class="vchips">${VERTICALS.map(verticalChip).join('')}</div></section></main>`;
-  const emptyHub = !!category && !catArticles.length && !(v.dir === 'sports' && category.slug === 'football');
+  const body = `<main class="shell"><div class="crumb"><a href="${url('/')}">Home</a> / ${category ? `<a href="${url('/' + v.dir + '/')}">${esc(v.name)}</a> / ${esc(category.name)}` : esc(v.name)}</div>${pageHero}<section class="section">${category ? (v.dir === 'sports' && category.slug === 'football' ? (footballHub + catArticleBlock) : (clubsDirectory ? (clubsDirectory + catArticleBlock) : (catArticles.length ? catArticleBlock : `<div class="vstate"><b>${esc(category.name)} — foundation ready</b><p>This section is being built. Articles will appear here as they are researched and published.</p></div>`))) : `<p class="lead" style="margin-bottom:18px">${esc(v.desc)}</p><div class="vnote">${esc(v.note)}</div><h2 style="margin:26px 0 14px">Explore ${esc(v.short)}</h2><div class="vcat-grid">${catGrid}</div>`}</section>${sportsTeaserBlock}${fixturesBlock}${sportsStoriesBlock}<section class="section"><div class="section-head"><h2>Explore BRYME</h2></div><div class="vchips">${VERTICALS.map(verticalChip).join('')}</div></section></main>`;
+  const emptyHub = !!category && !catArticles.length && !clubsDirectory && !(v.dir === 'sports' && category.slug === 'football');
   if (emptyHub) EMPTY_HUB_PATHS.add(catPath);
   write(v.dir + (category ? '/' + category.slug : ''), layout({
-    title: category ? `${category.name} – ${v.name}` : `${v.name} – ${v.tagline}`,
+    title: category ? `${category.name} – ${v.short}` : `${v.name} – ${v.tagline}`,
     description: category ? `${category.desc} ${v.name} — foundation section on BRYME.` : `${v.desc} ${v.note}`,
     noindex: emptyHub,
     path: catPath,
@@ -732,14 +1079,14 @@ write('', layout({
     </div>
   </section>
   ${railSection('Trending Now', '🔥', trendNow, '/trending/', 'Curated by the BRYME editorial team — not live traffic data. Ranked per content type.', {ranked:true, rankKey:'trendingRank'})}
-  ${railSection('Popular Movies', '⭐', popularMovies, '/movies/', 'Evergreen movie favourites, editorially ranked.')}
-  ${railSection('Popular Series', '⭐', popularSeries, '/series/', 'Evergreen TV series favourites, editorially ranked.')}
-  ${railSection('Popular Anime', '⭐', popularAnime, '/anime/', 'Evergreen anime favourites, editorially ranked.')}
-  ${railSection('Editor\'s Picks', '👑', editorPicksNow, '/trending/#editors-picks', 'Hand-picked by the BRYME editorial desk — separate from trending and popularity.')}
-  ${railSection('New Releases', '🆕', freshNow, '/trending/#new-releases', 'Newest verified release years — old classics are never re-labelled as new.')}
-  ${railSection('Movies', '🎬', browseMovies, '/movies/', 'Keep exploring the movie catalogue.')}
-  ${railSection('Series', '📺', browseSeries, '/series/', 'Keep exploring the series catalogue.')}
-  ${railSection('Anime', '🍥', browseAnime, '/anime/', 'Keep exploring the anime catalogue.')}
+  ${railSection('Popular Movies', '⭐', popularMovies, '/movies/', 'Evergreen movie favourites, editorially ranked.', {variant:'lead', eyebrow:'Film'})}
+  ${railSection('Popular Series', '⭐', popularSeries, '/series/', 'Evergreen TV series favourites, editorially ranked.', {variant:'lead', eyebrow:'Television'})}
+  ${railSection('Popular Anime', '⭐', popularAnime, '/anime/', 'Evergreen anime favourites, editorially ranked.', {variant:'wall', eyebrow:'Animation'})}
+  ${railSection('Editor\'s Picks', '👑', editorPicksNow, '/trending/#editors-picks', 'Hand-picked by the BRYME editorial desk — separate from trending and popularity.', {variant:'spread', eyebrow:'From the desk'})}
+  ${railSection('New Releases', '🆕', freshNow, '/trending/#new-releases', 'Newest verified release years — old classics are never re-labelled as new.', {eyebrow:'Just added'})}
+  ${railSection('Movies', '🎬', browseMovies, '/movies/', 'Keep exploring the movie catalogue.', {variant:'wall', eyebrow:'Browse'})}
+  ${railSection('Series', '📺', browseSeries, '/series/', 'Keep exploring the series catalogue.', {variant:'chart', eyebrow:'Browse'})}
+  ${railSection('Anime', '🍥', browseAnime, '/anime/', 'Keep exploring the anime catalogue.', {variant:'chart', eyebrow:'Browse'})}
   <section class="home-section"><div class="shell"><div class="section-head"><h2>🎭 Browse by genre</h2><a href="${url('/genres/')}">All genres</a></div><div class="genre-trio"><div class="genre-panel"><h3>🎬 Movie genres <span class="gp-count">${movies.filter(m=>m.typeDir==='movie').length} films</span></h3><div class="genre-chips">${genreChips(movies.filter(m=>m.typeDir==='movie'), 'movies', 9)}</div></div><div class="genre-panel"><h3>📺 Series genres <span class="gp-count">${movies.filter(m=>m.typeDir==='series').length} shows</span></h3><div class="genre-chips">${genreChips(movies.filter(m=>m.typeDir==='series'), 'series', 9)}</div></div><div class="genre-panel"><h3>🍥 Anime genres <span class="gp-count">${movies.filter(m=>m.typeDir==='anime').length} titles</span></h3><div class="genre-chips">${genreChips(movies.filter(m=>m.typeDir==='anime'), 'anime', 9)}</div></div></div></div></section>
   <section class="home-section"><div class="shell"><div class="section-head"><div><div class="eyebrow">From the editorial desk</div><h2>📰 Latest articles</h2></div><a href="${url('/articles/')}">All stories</a></div><div class="story-grid">${latestArticles.map(a => `<a href="${url('/article/' + a.slug + '/')}"><span>${esc(a.category)}</span><h3>${esc(a.title)}</h3><p>${esc(a.description)}</p><b>Read story</b></a>`).join('')}</div></div></section>
   <section class="discover-cta"><div><div class="eyebrow">Full catalogue</div><h2>Pick a lane: Movies, Series or Anime.</h2><p>Each section is strictly filtered to its own content type. No mixed-up walls of posters.</p></div><a class="cta" href="${url('/search/')}">Search everything</a></div></section></main></main><script id="hero-data" type="application/json">${heroEmbed}</script>`
@@ -1007,7 +1354,7 @@ function fixturesResults(){
       ${(F.footnotes && F.footnotes.length) ? `<div class="sp-fix-legend"><b>Fixture notes</b><br>${F.footnotes.map(n => '• ' + esc(n)).join('<br>')}</div>` : ''}
       <section class="sp-source"><h2>Source</h2><p><b>Source:</b> ${esc(F.source || 'Official league fixture release')}${F.sourceUrl ? ` — <a href="${esc(F.sourceUrl)}" rel="nofollow noopener">${esc(new URL(F.sourceUrl).hostname)}</a>` : ''}</p><p class="sp-source-note">Fixtures are summarised in BRYME's own words from official publications. Dates, kick-off times and venues are only listed as published; changes announced officially are reflected as soon as BRYME verifies them. Results are never shown before a match is played.</p></section>
       <section class="sp-related"><h2>Related</h2><div class="sp-rel-grid"><a class="sp-rel" href="${url('/sports/' + lg.slug + '/results/')}">Results</a><a class="sp-rel" href="${url('/sports/' + lg.slug + '/matches/')}">Match Centre</a><a class="sp-rel" href="${url('/sports/transfers/' + lg.slug + '-2026-27/')}">Transfers</a><a class="sp-rel" href="${url('/sports/')}">BRYME Sports</a></div></section></main>`;
-    write('sports/' + lg.slug + '/fixtures', layout({ title: `${F.league} Fixtures ${F.season}: All ${total} Matches | BRYME Sports`, description: `Complete ${F.league} ${F.season} fixture list — all ${total} matches across ${(F.matchweeks || []).length} rounds with dates and kick-off times from the official release. Nothing invented.`, path: '/sports/' + lg.slug + '/fixtures/', activeNav: 'sports', schema: [{ '@context':'https://schema.org', '@type':'CollectionPage', name: `${F.league} Fixtures ${F.season}`, description: `All ${total} ${F.league} ${F.season} fixtures as published.`, url: absUrl('/sports/' + lg.slug + '/fixtures/') }, breadcrumbs(crumb)], body }));
+    write('sports/' + lg.slug + '/fixtures', layout({ title: `${F.league} Fixtures ${F.season}: All ${total} Matches`, description: `Complete ${F.league} ${F.season} fixture list — all ${total} matches across ${(F.matchweeks || []).length} rounds with dates and kick-off times from the official release. Nothing invented.`, path: '/sports/' + lg.slug + '/fixtures/', activeNav: 'sports', schema: [{ '@context':'https://schema.org', '@type':'CollectionPage', name: `${F.league} Fixtures ${F.season}`, description: `All ${total} ${F.league} ${F.season} fixtures as published.`, url: absUrl('/sports/' + lg.slug + '/fixtures/') }, breadcrumbs(crumb)], body }));
 
     // ---- results page (honest empty state + next round preview) ----
     const mw1 = (F.matchweeks && F.matchweeks[0] && F.matchweeks[0].matches) || [];
@@ -1032,7 +1379,7 @@ function fixturesResults(){
       ${nextBlock}
       <div class="sp-truth"><b>Truth first.</b><p>BRYME never publishes a result, scoreline or scorer before a match is played and the outcome is confirmed by the club or official league channels. If a result cannot be verified, it is not shown.</p></div>
       <section class="sp-related"><h2>Related</h2><div class="sp-rel-grid"><a class="sp-rel" href="${url('/sports/' + lg.slug + '/fixtures/')}">Fixtures</a><a class="sp-rel" href="${url('/sports/' + lg.slug + '/matches/')}">Match Centre</a><a class="sp-rel" href="${url('/sports/transfers/' + lg.slug + '-2026-27/')}">Transfers</a></div></section></main>`;
-    write('sports/' + lg.slug + '/results', layout({ title: `${F.league} Results ${F.season} | BRYME Sports`, description: `${F.league} ${F.season} results — only official, verified match results after matches are played. No results are predicted or assumed.`, path: '/sports/' + lg.slug + '/results/', activeNav: 'sports', schema: [{ '@context':'https://schema.org', '@type':'CollectionPage', name: `${F.league} Results ${F.season}`, url: absUrl('/sports/' + lg.slug + '/results/') }, breadcrumbs(crumbR)], body: bodyR }));
+    write('sports/' + lg.slug + '/results', layout({ title: `${F.league} Results ${F.season}`, description: `${F.league} ${F.season} results — only official, verified match results after matches are played. No results are predicted or assumed.`, path: '/sports/' + lg.slug + '/results/', activeNav: 'sports', schema: [{ '@context':'https://schema.org', '@type':'CollectionPage', name: `${F.league} Results ${F.season}`, url: absUrl('/sports/' + lg.slug + '/results/') }, breadcrumbs(crumbR)], body: bodyR }));
   }
 }
 
@@ -1080,6 +1427,112 @@ function resultBlock(m, r){
     <p class="sp-source-note">Result confirmed via <a href="${esc(r.source.url)}" rel="nofollow noopener">${esc(r.source.name || r.source.url)}</a>${r.verifiedOn ? ` · checked ${esc(r.verifiedOn)}` : ''}.</p></div>`;
 }
 
+/* ================================================================
+   WEEKLY EDITORIAL WORKFLOW FOR MATCH PAGES
+   ----------------------------------------------------------------
+   The fixture database stays complete: every scheduled match keeps a
+   page at its permanent URL. What changes is whether that page is an
+   INDEXABLE EDITORIAL PAGE or a schedule entry.
+
+   A fixture is written up roughly 3-5 days before kickoff. Adding an
+   entry to content/match-editorial.json is what promotes it: the page
+   gains the full preview, becomes indexable, and enters the sitemap
+   with a lastmod. Without an entry it stays noindex and out of the
+   sitemap, so thousands of unplayed fixtures are never submitted.
+
+   After the match the SAME URL is updated - never a second URL. The
+   result and post-match analysis go on top, and the pre-match preview
+   is preserved below under its own heading so readers can see what
+   BRYME expected and what actually happened.
+
+   Nothing here invents team news. A field that is absent renders as an
+   explicit "not confirmed" state.
+   ================================================================ */
+const EDITORIAL_WINDOW_DAYS = 5;   /* start writing this many days out */
+const EDITORIAL_WINDOW_MIN  = 3;   /* page should be live by this many days out */
+const BUILD_DAY = (process.env.BRYME_TODAY || new Date().toISOString().slice(0, 10));
+const EDITORIAL = (() => {
+  const f = path.join(root, 'content', 'match-editorial.json');
+  if (!fs.existsSync(f)) return {};
+  try { return JSON.parse(fs.readFileSync(f, 'utf8')); } catch (e) { return {}; }
+})();
+const PAGE_LASTMOD = new Map();     /* path -> YYYY-MM-DD for sitemap <lastmod> */
+const EDITORIAL_FIELDS = ['overview','recentForm','headToHead','lastFiveMeetings','homeAwayForm',
+  'keyPlayers','injuries','suspensions','expectedLineups','tacticalMatchup','historicalContext',
+  'underdog','outlook','scorePrediction'];
+function daysUntil(dateStr){
+  if (!dateStr) return null;
+  const a = Date.parse(dateStr + 'T00:00:00Z'), b = Date.parse(BUILD_DAY + 'T00:00:00Z');
+  if (isNaN(a) || isNaN(b)) return null;
+  return Math.round((a - b) / 86400000);
+}
+/* Sitemap <lastmod> and schema.org dates must be ISO 8601. Anything that is not a clean
+   YYYY-MM-DD is dropped rather than emitted in a format crawlers will reject. */
+const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/;
+const BAD_DATES = [];
+function isoDate(v, where){
+  if (!v) return null;
+  const t = String(v).trim();
+  if (ISO_DATE.test(t)) return t;
+  BAD_DATES.push(`${where}: "${t}" is not YYYY-MM-DD`);
+  return null;
+}
+function editorialFor(leagueSlug, matchSlug){
+  const e = ((EDITORIAL[leagueSlug] || {})[matchSlug]);
+  if (!e) return null;
+  /* "meaningful content" gate: a stub with only dates must not go into the sitemap */
+  const filled = EDITORIAL_FIELDS.filter(k => {
+    const v = e[k];
+    return Array.isArray(v) ? v.length > 0 : (typeof v === 'string' && v.trim().length > 12);
+  });
+  if (filled.length < 3) return null;
+  return e;
+}
+const UNKNOWN = txt => `<span class="sp-unknown">${esc(txt)}</span>`;
+function edRow(label, value, unknownNote){
+  const has = Array.isArray(value) ? value.length : (typeof value === 'string' && value.trim());
+  const body = !has ? UNKNOWN(unknownNote || 'Not confirmed at the time of writing.')
+    : Array.isArray(value) ? `<ul>${value.map(x => `<li>${esc(x)}</li>`).join('')}</ul>`
+    : String(value).split(/\n{2,}/).map(t => `<p>${esc(t.trim())}</p>`).join('');
+  return `<div class="sp-msec${has ? '' : ' sp-msec-unknown'}"><b>${esc(label)}</b>${body}</div>`;
+}
+function previewBlock(e, opts){
+  const past = !!(opts && opts.past);
+  return `<section class="sp-preview${past ? ' sp-preview-archived' : ''}">
+    ${past ? `<div class="sp-archive-note"><b>What BRYME said before kickoff</b><p>This preview was published on ${esc(e.publishedAt || 'an earlier date')} and is preserved unchanged. It is what we expected, not what happened.</p></div>` : ''}
+    <div class="sp-msec-grid">
+      ${edRow('Match overview', e.overview)}
+      ${edRow('Recent form', e.recentForm)}
+      ${edRow('Head-to-head record', e.headToHead)}
+      ${edRow('Last five meetings', e.lastFiveMeetings)}
+      ${edRow('Home & away form', e.homeAwayForm)}
+      ${edRow('Key players', e.keyPlayers)}
+      ${edRow('Injuries', e.injuries, 'No injury information confirmed by the clubs at the time of writing. BRYME does not publish unverified team news.')}
+      ${edRow('Suspensions', e.suspensions, 'No suspensions confirmed at the time of writing.')}
+      ${edRow('Expected lineups', e.expectedLineups, 'No lineup has been announced. Expected XIs are not published here as speculation.')}
+      ${edRow('Tactical matchup', e.tacticalMatchup)}
+      ${edRow('Historical context', e.historicalContext)}
+      ${edRow('The case for the underdog', e.underdog)}
+      ${edRow('BRYME editorial outlook', e.outlook)}
+      ${edRow('BRYME editorial score prediction', e.scorePrediction)}
+    </div>
+    ${Array.isArray(e.sources) && e.sources.length ? `<p class="sp-source-note">Sources: ${e.sources.map(x => x.url ? `<a href="${esc(x.url)}" rel="nofollow noopener">${esc(x.name || x.url)}</a>` : esc(x.name || '')).join(' · ')}</p>` : ''}
+  </section>`;
+}
+function postMatchBlock(pm){
+  return `<section class="sp-postmatch">
+    <h3 class="sp-dir">Post-match analysis</h3>
+    <div class="sp-msec-grid">
+      ${edRow('What actually happened', pm.whatHappened)}
+      ${edRow('Tactical developments', pm.tacticalDevelopments)}
+      ${edRow('Key performers', pm.keyPerformers)}
+      ${edRow('Disappointing performers', pm.disappointing)}
+      ${edRow('Against the pre-match prediction', pm.vsPrediction)}
+      ${edRow('BRYME post-match analysis', pm.analysis)}
+    </div>
+  </section>`;
+}
+
 function matchCentre(){
   for (const lg of LEAGUE_FIX) {
     const F = loadLeagueFixtures(lg.slug);
@@ -1095,6 +1548,17 @@ function matchCentre(){
     (F.matchweeks || []).forEach(w => w.matches.forEach(m => {
       const v = venueOf(m);
       const RES = resultFor(lg.slug, slug(m));
+      const matchPlayed = !!RES;
+      const ED = editorialFor(lg.slug, slug(m));
+      /* Indexable once it is a real editorial page (preview written) or the match has a
+         sourced result. Otherwise it stays a schedule entry: noindex, no sitemap. */
+      const isEditorial = !!(ED || RES);
+      if (!isEditorial) UNPLAYED_MATCH_PATHS.add(matchUrl(m));
+      const datePublished = isoDate((ED && ED.publishedAt) || (RES && RES.playedOn), matchUrl(m) + ' datePublished');
+      const dateModified = isoDate((RES && (RES.verifiedOn || RES.playedOn))
+        || (ED && ED.postMatch && ED.postMatch.publishedAt)
+        || (ED && (ED.updatedAt || ED.publishedAt)), matchUrl(m) + ' dateModified');
+      if (isEditorial && dateModified) PAGE_LASTMOD.set(matchUrl(m), dateModified);
       const t = leagueTimeInfo(lg, m);
       let sections = (S.matchCentre.matchPageSections || []).map(s => {
         const isPost = /result after the game|post-match/i.test(s);
@@ -1110,9 +1574,11 @@ function matchCentre(){
       const body = `<main class="shell"><div class="crumb"><a href="${url('/')}">Home</a> / <a href="${url('/sports/')}">BRYME Sports</a> / <a href="${url('/sports/' + lg.slug + '/')}">${esc(F.league)}</a> / <a href="${url('/sports/' + lg.slug + '/matches/')}">Match Centre</a> / ${esc(m.homeName)} v ${esc(m.awayName)}</div>
         <section class="hero"><div class="eyebrow">⚽ ${esc(F.league)} ${esc(F.season)} · ${esc(lg.roundLabel)} ${w.number}</div><h1>${esc(m.homeName)} v ${esc(m.awayName)}</h1></section>
         <div class="sp-match-hero"><img src="${lg.crest(m.id)}" alt="${lg.alt(m.id, m.homeName)}" width="64" height="77"><span class="sp-mh-vs">v</span><img src="${lg.crest(m.away)}" alt="${lg.alt(m.away, m.awayName)}" width="64" height="77"><div>${RES ? `<span class="sp-pill sp-pill-ft">${esc(RES.status || 'FT')} ${RES.homeScore}&ndash;${RES.awayScore}</span>` : `<span class="sp-pill">Upcoming — not yet played</span>`}<h1 style="margin-top:6px">${esc(m.homeName)} v ${esc(m.awayName)}</h1><p class="sp-match-meta"><span><b>Date:</b> ${esc(m.dayLabel)}</span><span><b>Kickoff:</b> ${m.time ? esc(t.display.replace(/<[^>]+>/g, '')) + (t.wat ? esc(t.wat.replace(/<[^>]+>/g, '')) : '') : 'TBC — announced closer to the round'}</span>${m.tv ? `<span><b>TV:</b> ${esc(m.tv)}</span>` : ''}<span><b>Venue:</b> ${esc(v.name || 'TBC')}${v.cap ? ' · ' + esc(Number(v.cap).toLocaleString('en-GB')) : ''}</span></p>${m.note ? `<p class="sp-match-meta" style="margin-top:6px"><b>Note:</b> ${esc(m.note)}</p>` : ''}</div></div>
-        ${RES ? resultBlock(m, RES) : `<div class="sp-truth"><b>Truth first.</b><p>This match has not been played yet — there is no result, scoreline, lineup or statistic to report. Pre-match research below is an editorial review snapshot from 14 August 2026. Team news and expected lineups are provisional and must be rechecked close to kickoff. Match result and post-match analysis remain blank until official confirmation.</p></div>`}
-        <h3 class="sp-dir">Match analysis sections</h3>
-        <div class="sp-msec-grid">${sections}</div>
+        ${RES ? resultBlock(m, RES) : (ED ? '' : `<div class="sp-truth"><b>Truth first.</b><p>This match has not been played yet — there is no result, scoreline, lineup or statistic to report. Pre-match research below is an editorial review snapshot from 14 August 2026. Team news and expected lineups are provisional and must be rechecked close to kickoff. Match result and post-match analysis remain blank until official confirmation.</p></div>`)}
+        ${(!RES && ED) ? `<div class="sp-truth"><b>Preview — not yet played.</b><p>This match has not been played. Everything below is pre-match editorial published on ${esc(ED.publishedAt || '')}; there is no result, lineup or statistic to report yet. Team news is only shown where a club or official source has confirmed it.</p></div>` : ''}
+        ${(RES && ED && ED.postMatch) ? postMatchBlock(ED.postMatch) : ''}
+        ${ED ? previewBlock(ED, {past: !!RES}) : ''}
+        ${ED ? '' : `<h3 class="sp-dir">Match analysis sections</h3><div class="sp-msec-grid">${sections}</div>`}
         <section class="sp-related"><h2>Related</h2><div class="sp-rel-grid"><a class="sp-rel" href="${url('/sports/' + lg.slug + '/fixtures/')}">Fixtures</a><a class="sp-rel" href="${url('/sports/' + lg.slug + '/results/')}">Results</a><a class="sp-rel" href="${url('/sports/' + lg.slug + '/matches/')}">Match Centre</a><a class="sp-rel" href="${url('/sports/')}">BRYME Sports</a></div></section></main>`;
       let startDate;
       const off = lg.slug === 'premier-league' ? (euDstOffset(m.date) - 1) : euDstOffset(m.date);
@@ -1127,14 +1593,41 @@ function matchCentre(){
          invites "Crawled - currently not indexed" across the whole site. So an unplayed fixture is
          kept for readers (kickoff time, venue, pre-match notes) but marked noindex,follow and left
          out of sitemap.xml. It becomes indexable automatically once it carries a real result. */
-      const matchPlayed = !!RES;
-      if (!matchPlayed) UNPLAYED_MATCH_PATHS.add(matchUrl(m));
       write('sports/' + lg.slug + '/matches/' + slug(m), layout({
-        noindex: !matchPlayed,
-        title: `${m.homeName} v ${m.awayName} — ${lg.roundLabel} ${w.number} · ${F.league} ${F.season} | BRYME Sports`,
-        description: `${m.homeName} v ${m.awayName}, ${F.season} ${F.league} ${lg.roundLabel} ${w.number} — ${m.dayLabel}${m.time ? ', ' + m.time + ' local' : ', kickoff TBC'}${v.name ? ' at ' + v.name : ''}. Match analysis sections appear once verified; no results are predicted.`,
+        noindex: !isEditorial,
+        title: RES
+          ? `${m.homeName} ${RES.homeScore}-${RES.awayScore} ${m.awayName} — Result & Analysis · ${F.league} ${F.season}`
+          : (ED ? `${m.homeName} v ${m.awayName} — Preview, Form & Prediction · ${lg.roundLabel} ${w.number} · ${F.league}`
+                : `${m.homeName} v ${m.awayName} — ${lg.roundLabel} ${w.number} · ${F.league} ${F.season}`),
+        description: RES
+          ? `${m.homeName} ${RES.homeScore}-${RES.awayScore} ${m.awayName}: full-time result, goalscorers and BRYME post-match analysis from ${F.league} ${lg.roundLabel} ${w.number}, ${F.season}.`
+          : (ED ? `${m.homeName} v ${m.awayName} preview: form, head-to-head, tactical matchup and BRYME's editorial prediction for ${F.league} ${lg.roundLabel} ${w.number}${m.time ? `, kick-off ${m.time}` : ''}.`
+                : `${m.homeName} v ${m.awayName}, ${F.season} ${F.league} ${lg.roundLabel} ${w.number} — ${m.dayLabel}${m.time ? ', ' + m.time + ' local' : ', kickoff TBC'}${v.name ? ' at ' + v.name : ''}. Match analysis sections appear once verified; no results are predicted.`),
         path: matchUrl(m), activeNav: 'sports',
-        schema: [{ '@context':'https://schema.org', '@type':'SportsEvent', name: m.homeName + ' v ' + m.awayName, startDate, eventStatus: 'https://schema.org/EventScheduled', eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode', location: v.name ? { '@type':'Place', name: v.name } : undefined, homeTeam: { '@type':'SportsTeam', name: m.homeName }, awayTeam: { '@type':'SportsTeam', name: m.awayName }, url: absUrl(matchUrl(m)) }, breadcrumbs(crumbs)],
+        schema: (() => {
+          const ev = [{ '@context':'https://schema.org', '@type':'SportsEvent', name: m.homeName + ' v ' + m.awayName, startDate, eventStatus: 'https://schema.org/EventScheduled', eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode', location: v.name ? { '@type':'Place', name: v.name } : undefined, homeTeam: { '@type':'SportsTeam', name: m.homeName }, awayTeam: { '@type':'SportsTeam', name: m.awayName }, url: absUrl(matchUrl(m)) }, breadcrumbs(crumbs)];
+          const sportsEvent = ev[0];
+          if (RES) {
+            sportsEvent.eventStatus = 'https://schema.org/EventScheduled';
+            sportsEvent.homeTeam = { '@type':'SportsTeam', name: m.homeName };
+            sportsEvent.awayTeam = { '@type':'SportsTeam', name: m.awayName };
+          }
+          if (isEditorial) {
+            /* the editorial write-up itself, so datePublished/dateModified are expressed */
+            ev.push({
+              '@context':'https://schema.org', '@type':'Article',
+              headline: RES ? `${m.homeName} ${RES.homeScore}-${RES.awayScore} ${m.awayName}: result and analysis`
+                            : `${m.homeName} v ${m.awayName}: preview and prediction`,
+              datePublished: datePublished || undefined,
+              dateModified: dateModified || datePublished || undefined,
+              author: { '@type':'Organization', name: 'BRYME Sports' },
+              publisher: { '@type':'Organization', name: site.name },
+              mainEntityOfPage: absUrl(matchUrl(m)),
+              articleSection: F.league
+            });
+          }
+          return ev;
+        })(),
         body
       }));
       LEAGUE_MATCH_PATHS.push(matchUrl(m));
@@ -1165,7 +1658,7 @@ function matchCentre(){
       <p class="sp-freq-note">Looking for the whole season? See <a href="${url('/sports/' + lg.slug + '/fixtures/')}">all ${total} fixtures across ${(F.matchweeks || []).length} rounds</a>.</p>
       <section class="sp-related"><h2>Match page sections</h2><p class="sp-source-note">Every match gets its own analysis page at /sports/${lg.slug}/matches/[team-a]-vs-[team-b]/ with:</p><div class="sp-rel-grid">${S.matchCentre.matchPageSections.map(s => `<span class="sp-rel sp-rel-static">${esc(s)}</span>`).join('')}</div></section>
       <section class="sp-related"><h2>Related</h2><div class="sp-rel-grid"><a class="sp-rel" href="${url('/sports/' + lg.slug + '/fixtures/')}">Fixtures</a><a class="sp-rel" href="${url('/sports/' + lg.slug + '/results/')}">Results</a><a class="sp-rel" href="${url('/sports/transfers/' + lg.slug + '-2026-27/')}">Transfers</a><a class="sp-rel" href="${url('/sports/')}">BRYME Sports</a></div></section></main>`;
-    write('sports/' + lg.slug + '/matches', layout({ title: `${F.league} ${lg.roundLabel} ${mw1.number} | BRYME Sports`, description: `${F.league} ${lg.roundLabel} ${mw1.number} — fixtures, kick-off times and match pages. All ${total} matches of the ${F.season} season have their own page; analysis sections fill in with verified data only.`, path: '/sports/' + lg.slug + '/matches/', activeNav: 'sports', schema: [{ '@context':'https://schema.org', '@type':'CollectionPage', name: `${F.league} ${lg.roundLabel} ${mw1.number}`, url: absUrl('/sports/' + lg.slug + '/matches/') }, breadcrumbs(crumbs)], body }));
+    write('sports/' + lg.slug + '/matches', layout({ title: `${F.league} ${lg.roundLabel} ${mw1.number}`, description: `${F.league} ${lg.roundLabel} ${mw1.number} — fixtures, kick-off times and match pages. All ${total} matches of the ${F.season} season have their own page; analysis sections fill in with verified data only.`, path: '/sports/' + lg.slug + '/matches/', activeNav: 'sports', schema: [{ '@context':'https://schema.org', '@type':'CollectionPage', name: `${F.league} ${lg.roundLabel} ${mw1.number}`, url: absUrl('/sports/' + lg.slug + '/matches/') }, breadcrumbs(crumbs)], body }));
   }
 }
 
@@ -1224,7 +1717,7 @@ function leagueHub(){
       </div></section>
       <section class="sp-related"><h2>Related</h2><div class="sp-rel-grid"><a class="sp-rel" href="${url('/sports/transfers/')}">All transfer trackers</a><a class="sp-rel" href="${url('/sports/managers-2026-27/')}">Managers In &amp; Out</a><a class="sp-rel" href="${url('/sports/')}">BRYME Sports</a></div></section></main>`;
     write('sports/' + lg.slug, layout({
-      title: `${F.league} ${F.season} | BRYME Sports`,
+      title: `${F.league} ${F.season}`,
       description: `${kicker} — ${F.league} ${F.season} ${lg.roundLabel} ${mw1.number} fixtures, ${total} matches across ${rounds} rounds, transfers, results and match pages from the official calendar.`,
       path: '/sports/' + lg.slug + '/', activeNav: 'sports',
       schema: [{ '@context':'https://schema.org', '@type':'CollectionPage', name: `${F.league} ${F.season}`, url: absUrl('/sports/' + lg.slug + '/') }, breadcrumbs(crumbs)],
@@ -2021,7 +2514,7 @@ fs.writeFileSync(path.join(root, '404.html'), layout({
   body: `<main class="shell"><section class="hero"><div class="eyebrow">404</div><h1>Looks like this one disappeared.</h1><p class="lead">Try searching the catalogue, or browse a single content type.</p><p><a class="cta" href="${url('/search/')}">Search everything</a> <a class="quiet-link" href="${url('/movies/')}">Movies</a> <a class="quiet-link" href="${url('/series/')}">Series</a> <a class="quiet-link" href="${url('/anime/')}">Anime</a> <a class="quiet-link" href="${url('/articles/')}">Latest articles</a></p></section></main>`
 }));
 if (fs.existsSync(path.join(root, '404'))) { fs.rmSync(path.join(root, '404'), {recursive:true, force:true}); }
-const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${[...new Set(paths)].map(p => `  <url><loc>${absUrl(p)}</loc></url>`).join('\n')}\n</urlset>\n`;
+const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${[...new Set(paths)].map(p => `  <url><loc>${absUrl(p)}</loc>${PAGE_LASTMOD.has(p) ? `<lastmod>${PAGE_LASTMOD.get(p)}</lastmod>` : ''}</url>`).join('\n')}\n</urlset>\n`;
 fs.writeFileSync(path.join(root, 'sitemap.xml'), xml);
 fs.writeFileSync(path.join(root, 'robots.txt'), `User-agent: *\nAllow: /\nSitemap: ${absUrl('/sitemap.xml')}\n`);
 
@@ -2083,6 +2576,11 @@ fs.writeFileSync(path.join(root, 'reports', 'catalogue-report.md'), report);
 if (warnings.length) {
   console.log('WARNINGS:');
   warnings.forEach(w => console.log('  - ' + w));
+}
+if (BAD_DATES.length) {
+  console.error('\nNON-ISO DATES (dropped from sitemap/structured data):');
+  BAD_DATES.forEach(d => console.error('  - ' + d));
+  process.exitCode = 1;
 }
 if (REJECTED_RESULTS.length) {
   console.error('\nREFUSED to publish ' + REJECTED_RESULTS.length + ' result(s) - every result needs integer scores and a source.url:');
