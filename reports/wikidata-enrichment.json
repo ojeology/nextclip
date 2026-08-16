@@ -1,46 +1,16 @@
 {
-  "generated": "2026-08-16 16:22:15",
+  "generated": "2026-08-16 16:31:42",
   "source": "Wikidata SPARQL endpoint (CC0 structured data)",
   "catalogueSize": 632,
-  "enrichedTotal": 578,
-  "matchedThisRun": 549,
-  "unmatchedThisRun": 43,
+  "enrichedTotal": 595,
+  "matchedThisRun": 17,
+  "unmatchedThisRun": 26,
   "ambiguousThisRun": 11,
   "unmatched": [
     {
       "id": "topgun",
       "title": "Top Gun: Maverick",
       "year": 2022,
-      "reason": "no entity with this exact title"
-    },
-    {
-      "id": "mideadreck",
-      "title": "Mission: Impossible – Dead Reckoning",
-      "year": 2023,
-      "reason": "no entity with this exact title"
-    },
-    {
-      "id": "lastjedi",
-      "title": "Star Wars: The Last Jedi",
-      "year": 2017,
-      "reason": "no entity with this exact title"
-    },
-    {
-      "id": "riseofskywalker",
-      "title": "Star Wars: The Rise of Skywalker",
-      "year": 2019,
-      "reason": "no entity with this exact title"
-    },
-    {
-      "id": "anewhope",
-      "title": "Star Wars: A New Hope",
-      "year": 1977,
-      "reason": "no entity with this exact title"
-    },
-    {
-      "id": "se7en",
-      "title": "Se7en",
-      "year": 1995,
       "reason": "no entity with this exact title"
     },
     {
@@ -62,12 +32,6 @@
       "reason": "no entity with this exact title"
     },
     {
-      "id": "anchorman",
-      "title": "Anchorman",
-      "year": 2004,
-      "reason": "no entity with this exact title"
-    },
-    {
       "id": "anikulapo",
       "title": "Aníkúlápó",
       "year": 2022,
@@ -86,12 +50,6 @@
       "reason": "no entity with this exact title"
     },
     {
-      "id": "code-geass",
-      "title": "Code Geass",
-      "year": 2006,
-      "reason": "no entity with this exact title"
-    },
-    {
       "id": "die-hard-3",
       "title": "Die Hard: With a Vengeance",
       "year": 1995,
@@ -104,34 +62,10 @@
       "reason": "no entity with this exact title"
     },
     {
-      "id": "frieren",
-      "title": "Frieren: Beyond Journey's End",
-      "year": 2023,
-      "reason": "no entity with this exact title"
-    },
-    {
-      "id": "gangs-of-wasseypur",
-      "title": "Gangs of Wasseypur",
-      "year": 2012,
-      "reason": "no entity with this exact title"
-    },
-    {
-      "id": "hunter-x-hunter",
-      "title": "Hunter x Hunter",
-      "year": 2011,
-      "reason": "no entity with this exact title"
-    },
-    {
       "id": "ije-the-journey",
       "title": "Ije: The Journey",
       "year": 2010,
       "reason": "no entity with this exact title"
-    },
-    {
-      "id": "jallikattu",
-      "title": "Jallikattu",
-      "year": 2019,
-      "reason": "no candidate with a matching year"
     },
     {
       "id": "kgf-2",
@@ -143,24 +77,6 @@
       "id": "loki-season-2",
       "title": "Loki: Season 2",
       "year": 2023,
-      "reason": "no entity with this exact title"
-    },
-    {
-      "id": "mashle",
-      "title": "Mashle: Magic and Muscles",
-      "year": 2023,
-      "reason": "no entity with this exact title"
-    },
-    {
-      "id": "merry-men",
-      "title": "Merry Men",
-      "year": 2018,
-      "reason": "no entity with this exact title"
-    },
-    {
-      "id": "one-punch-man",
-      "title": "One Punch Man",
-      "year": 2015,
       "reason": "no entity with this exact title"
     },
     {
@@ -179,12 +95,6 @@
       "id": "singin-in-the-rain",
       "title": "Singin’ in the Rain",
       "year": 1952,
-      "reason": "no entity with this exact title"
-    },
-    {
-      "id": "spy-x-family",
-      "title": "Spy x Family",
-      "year": 2022,
       "reason": "no entity with this exact title"
     },
     {
@@ -245,18 +155,6 @@
       "id": "return-of-the-jedi",
       "title": "Star Wars: Return of the Jedi",
       "year": 1983,
-      "reason": "no entity with this exact title"
-    },
-    {
-      "id": "harry-potter-sorcerers-stone",
-      "title": "Harry Potter and the Sorcerer's Stone",
-      "year": 2001,
-      "reason": "no entity with this exact title"
-    },
-    {
-      "id": "frozen-2",
-      "title": "Frozen II",
-      "year": 2019,
       "reason": "no entity with this exact title"
     },
     {

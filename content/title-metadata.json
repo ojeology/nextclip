@@ -723,6 +723,34 @@
     "title": "Amélie",
     "year": 2001
   },
+  "anchorman": {
+    "cast": [
+      "Christina Applegate",
+      "Paul Rudd",
+      "Steve Carell",
+      "David Koechner",
+      "Fred Willard"
+    ],
+    "castSource": {
+      "field": "infobox starring",
+      "name": "Wikipedia",
+      "retrieved": "2026-08-16",
+      "url": "https://en.wikipedia.org/wiki/Anchorman:_The_Legend_of_Ron_Burgundy"
+    },
+    "country": "United States",
+    "director": "Adam McKay",
+    "language": "English",
+    "runtime": "95 min",
+    "source": {
+      "id": "Q467076",
+      "name": "Wikidata",
+      "retrieved": "2026-08-16",
+      "url": "https://www.wikidata.org/wiki/Q467076",
+      "wikipedia": "https://en.wikipedia.org/wiki/Anchorman:_The_Legend_of_Ron_Burgundy"
+    },
+    "title": "Anchorman",
+    "year": 2004
+  },
   "andhadhun": {
     "cast": [
       "Tabu",
@@ -778,6 +806,34 @@
     },
     "title": "Andor",
     "year": 2022
+  },
+  "anewhope": {
+    "cast": [
+      "Mark Hamill",
+      "Harrison Ford",
+      "Carrie Fisher",
+      "Peter Cushing",
+      "Alec Guinness"
+    ],
+    "castSource": {
+      "field": "infobox starring",
+      "name": "Wikipedia",
+      "retrieved": "2026-08-16",
+      "url": "https://en.wikipedia.org/wiki/Star_Wars_(film)"
+    },
+    "country": "United States",
+    "director": "George Lucas",
+    "language": "English",
+    "runtime": "121 min",
+    "source": {
+      "id": "Q17738",
+      "name": "Wikidata",
+      "retrieved": "2026-08-16",
+      "url": "https://www.wikidata.org/wiki/Q17738",
+      "wikipedia": "https://en.wikipedia.org/wiki/Star_Wars_(film)"
+    },
+    "title": "Star Wars: A New Hope",
+    "year": 1977
   },
   "annihilation": {
     "cast": [
@@ -2830,6 +2886,30 @@
     "title": "Coco",
     "year": 2017
   },
+  "code-geass": {
+    "cast": [
+      "#Voice cast"
+    ],
+    "castSource": {
+      "field": "infobox starring",
+      "name": "Wikipedia",
+      "retrieved": "2026-08-16",
+      "url": "https://en.wikipedia.org/wiki/Code_Geass_Lelouch_of_the_Rebellion"
+    },
+    "country": "Japan",
+    "director": "Gorō Taniguchi",
+    "language": "Japanese",
+    "runtime": null,
+    "source": {
+      "id": "Q4384067",
+      "name": "Wikidata",
+      "retrieved": "2026-08-16",
+      "url": "https://www.wikidata.org/wiki/Q4384067",
+      "wikipedia": "https://en.wikipedia.org/wiki/Code_Geass_Lelouch_of_the_Rebellion"
+    },
+    "title": "Code Geass",
+    "year": 2006
+  },
   "con-air": {
     "cast": [
       "Nicolas Cage",
@@ -4565,6 +4645,22 @@
     "title": "Friends",
     "year": 1994
   },
+  "frieren": {
+    "cast": [],
+    "country": "Japan",
+    "director": "Keiichirō Saitō",
+    "language": "Japanese",
+    "runtime": "24 min",
+    "source": {
+      "id": "Q115792176",
+      "name": "Wikidata",
+      "retrieved": "2026-08-16",
+      "url": "https://www.wikidata.org/wiki/Q115792176",
+      "wikipedia": "https://en.wikipedia.org/wiki/Frieren_(TV_series)"
+    },
+    "title": "Frieren: Beyond Journey's End",
+    "year": 2023
+  },
   "frozen": {
     "cast": [
       "Kristen Bell",
@@ -4592,6 +4688,33 @@
     },
     "title": "Frozen",
     "year": 2013
+  },
+  "frozen-2": {
+    "cast": [
+      "Kristen Bell",
+      "Idina Menzel",
+      "Josh Gad",
+      "Jonathan Groff"
+    ],
+    "castSource": {
+      "field": "infobox starring",
+      "name": "Wikipedia",
+      "retrieved": "2026-08-16",
+      "url": "https://en.wikipedia.org/wiki/Frozen_2"
+    },
+    "country": "United States",
+    "director": "Chris Buck; Jennifer Lee",
+    "language": "English",
+    "runtime": "103 min",
+    "source": {
+      "id": "Q24733929",
+      "name": "Wikidata",
+      "retrieved": "2026-08-16",
+      "url": "https://www.wikidata.org/wiki/Q24733929",
+      "wikipedia": "https://en.wikipedia.org/wiki/Frozen_2"
+    },
+    "title": "Frozen II",
+    "year": 2019
   },
   "full-metal-jacket": {
     "cast": [
@@ -4717,6 +4840,29 @@
     },
     "title": "Gangs of Lagos",
     "year": 2023
+  },
+  "gangs-of-wasseypur": {
+    "cast": [
+      "Manoj Bajpai",
+      "Reema Sen",
+      "Nawazuddin Siddiqui",
+      "Piyush Mishra",
+      "Huma Qureshi",
+      "Jaideep Ahlawat"
+    ],
+    "country": "India",
+    "director": "Anurag Kashyap",
+    "language": "Hindi",
+    "runtime": "160 min",
+    "source": {
+      "id": "Q2690472",
+      "name": "Wikidata",
+      "retrieved": "2026-08-16",
+      "url": "https://www.wikidata.org/wiki/Q2690472",
+      "wikipedia": null
+    },
+    "title": "Gangs of Wasseypur",
+    "year": 2012
   },
   "gen-v": {
     "cast": [
@@ -5657,6 +5803,35 @@
     "title": "Harry Potter and the Deathly Hallows – Part 2",
     "year": 2011
   },
+  "harry-potter-sorcerers-stone": {
+    "cast": [
+      "Daniel Radcliffe",
+      "Rupert Grint",
+      "Emma Watson",
+      "John Cleese",
+      "Robbie Coltrane",
+      "Warwick Davis"
+    ],
+    "castSource": {
+      "field": "infobox starring",
+      "name": "Wikipedia",
+      "retrieved": "2026-08-16",
+      "url": "https://en.wikipedia.org/wiki/Harry_Potter_and_the_Philosopher%27s_Stone_(film)"
+    },
+    "country": "United Kingdom; United States",
+    "director": "Chris Columbus",
+    "language": "English",
+    "runtime": "152 min",
+    "source": {
+      "id": "Q102438",
+      "name": "Wikidata",
+      "retrieved": "2026-08-16",
+      "url": "https://www.wikidata.org/wiki/Q102438",
+      "wikipedia": "https://en.wikipedia.org/wiki/Harry_Potter_and_the_Philosopher%27s_Stone_(film)"
+    },
+    "title": "Harry Potter and the Sorcerer's Stone",
+    "year": 2001
+  },
   "hawkeye": {
     "cast": [
       "Jeremy Renner",
@@ -6041,6 +6216,22 @@
     },
     "title": "The Incredible Hulk",
     "year": 2008
+  },
+  "hunter-x-hunter": {
+    "cast": [],
+    "country": "Japan",
+    "director": null,
+    "language": "Japanese",
+    "runtime": null,
+    "source": {
+      "id": "Q70209136",
+      "name": "Wikidata",
+      "retrieved": "2026-08-16",
+      "url": "https://www.wikidata.org/wiki/Q70209136",
+      "wikipedia": "https://en.wikipedia.org/wiki/Hunter_%C3%97_Hunter_(2011_TV_series)"
+    },
+    "title": "Hunter x Hunter",
+    "year": 2011
   },
   "i-robot": {
     "cast": [
@@ -6565,6 +6756,32 @@
     },
     "title": "Itaewon Class",
     "year": 2020
+  },
+  "jallikattu": {
+    "cast": [
+      "Antony Varghese",
+      "Chemban Vinod Jose",
+      "Sabumon Abdusamad"
+    ],
+    "castSource": {
+      "field": "infobox starring",
+      "name": "Wikipedia",
+      "retrieved": "2026-08-16",
+      "url": "https://en.wikipedia.org/wiki/Jallikattu_(2019_film)"
+    },
+    "country": "India",
+    "director": "Lijo Jose Pellissery",
+    "language": "Malayalam",
+    "runtime": "91 min",
+    "source": {
+      "id": "Q67202673",
+      "name": "Wikidata",
+      "retrieved": "2026-08-16",
+      "url": "https://www.wikidata.org/wiki/Q67202673",
+      "wikipedia": "https://en.wikipedia.org/wiki/Jallikattu_(2019_film)"
+    },
+    "title": "Jallikattu",
+    "year": 2019
   },
   "jawan": {
     "cast": [
@@ -7473,6 +7690,35 @@
     "title": "Indiana Jones and the Last Crusade",
     "year": 1989
   },
+  "lastjedi": {
+    "cast": [
+      "Mark Hamill",
+      "Carrie Fisher",
+      "Adam Driver",
+      "Daisy Ridley",
+      "John Boyega",
+      "Oscar Isaac"
+    ],
+    "castSource": {
+      "field": "infobox starring",
+      "name": "Wikipedia",
+      "retrieved": "2026-08-16",
+      "url": "https://en.wikipedia.org/wiki/Star_Wars:_The_Last_Jedi"
+    },
+    "country": "United States",
+    "director": "Rian Johnson",
+    "language": "English",
+    "runtime": "152 min",
+    "source": {
+      "id": "Q18486021",
+      "name": "Wikidata",
+      "retrieved": "2026-08-16",
+      "url": "https://www.wikidata.org/wiki/Q18486021",
+      "wikipedia": "https://en.wikipedia.org/wiki/Star_Wars:_The_Last_Jedi"
+    },
+    "title": "Star Wars: The Last Jedi",
+    "year": 2017
+  },
   "lastofus": {
     "cast": [
       "Pedro Pascal",
@@ -8168,6 +8414,22 @@
     "title": "Masaan",
     "year": 2015
   },
+  "mashle": {
+    "cast": [],
+    "country": "Japan",
+    "director": null,
+    "language": "Japanese",
+    "runtime": "23 min",
+    "source": {
+      "id": "Q115754239",
+      "name": "Wikidata",
+      "retrieved": "2026-08-16",
+      "url": "https://www.wikidata.org/wiki/Q115754239",
+      "wikipedia": null
+    },
+    "title": "Mashle: Magic and Muscles",
+    "year": 2023
+  },
   "matrix": {
     "cast": [
       "Keanu Reeves",
@@ -8305,6 +8567,35 @@
     "title": "The Menu",
     "year": 2022
   },
+  "merry-men": {
+    "cast": [
+      "Ramsey Nouah",
+      "AY Makun",
+      "Jim Iyke",
+      "Damilola Adegbite",
+      "Richard Mofe-Damijo",
+      "Iretiola Doyle"
+    ],
+    "castSource": {
+      "field": "infobox starring",
+      "name": "Wikipedia",
+      "retrieved": "2026-08-16",
+      "url": "https://en.wikipedia.org/wiki/Merry_Men:_The_Real_Yoruba_Demons"
+    },
+    "country": "Nigeria",
+    "director": "Toka McBaror",
+    "language": "English; Yoruba",
+    "runtime": "106 min",
+    "source": {
+      "id": "Q59725751",
+      "name": "Wikidata",
+      "retrieved": "2026-08-16",
+      "url": "https://www.wikidata.org/wiki/Q59725751",
+      "wikipedia": "https://en.wikipedia.org/wiki/Merry_Men:_The_Real_Yoruba_Demons"
+    },
+    "title": "Merry Men",
+    "year": 2018
+  },
   "mi-final-reckoning": {
     "cast": [
       "Hayley Atwell",
@@ -8361,6 +8652,35 @@
     },
     "title": "Mickey 17",
     "year": 2025
+  },
+  "mideadreck": {
+    "cast": [
+      "Hayley Atwell",
+      "Ving Rhames",
+      "Simon Pegg",
+      "Rebecca Ferguson",
+      "Vanessa Kirby",
+      "Henry Czerny"
+    ],
+    "castSource": {
+      "field": "infobox starring",
+      "name": "Wikipedia",
+      "retrieved": "2026-08-16",
+      "url": "https://en.wikipedia.org/wiki/Mission:_Impossible_%E2%80%93_Dead_Reckoning_Part_One"
+    },
+    "country": "United States",
+    "director": "Christopher McQuarrie",
+    "language": "English",
+    "runtime": "163 min",
+    "source": {
+      "id": "Q61876370",
+      "name": "Wikidata",
+      "retrieved": "2026-08-16",
+      "url": "https://www.wikidata.org/wiki/Q61876370",
+      "wikipedia": "https://en.wikipedia.org/wiki/Mission:_Impossible_%E2%80%93_Dead_Reckoning_Part_One"
+    },
+    "title": "Mission: Impossible – Dead Reckoning",
+    "year": 2023
   },
   "midsommar": {
     "cast": [
@@ -9371,6 +9691,22 @@
     "title": "One Piece Film: Red",
     "year": 2022
   },
+  "one-punch-man": {
+    "cast": [],
+    "country": "Japan",
+    "director": null,
+    "language": "Japanese",
+    "runtime": null,
+    "source": {
+      "id": "Q22341674",
+      "name": "Wikidata",
+      "retrieved": "2026-08-16",
+      "url": "https://www.wikidata.org/wiki/Q22341674",
+      "wikipedia": null
+    },
+    "title": "One Punch Man",
+    "year": 2015
+  },
   "oppenheimer": {
     "cast": [
       "Cillian Murphy",
@@ -10330,6 +10666,35 @@
     "title": "The Revenant",
     "year": 2015
   },
+  "riseofskywalker": {
+    "cast": [
+      "Carrie Fisher",
+      "Mark Hamill",
+      "Adam Driver",
+      "Daisy Ridley",
+      "John Boyega",
+      "Oscar Isaac"
+    ],
+    "castSource": {
+      "field": "infobox starring",
+      "name": "Wikipedia",
+      "retrieved": "2026-08-16",
+      "url": "https://en.wikipedia.org/wiki/Star_Wars:_The_Rise_of_Skywalker"
+    },
+    "country": "United States",
+    "director": "J. J. Abrams",
+    "language": "English",
+    "runtime": "142 min",
+    "source": {
+      "id": "Q20977110",
+      "name": "Wikidata",
+      "retrieved": "2026-08-16",
+      "url": "https://www.wikidata.org/wiki/Q20977110",
+      "wikipedia": "https://en.wikipedia.org/wiki/Star_Wars:_The_Rise_of_Skywalker"
+    },
+    "title": "Star Wars: The Rise of Skywalker",
+    "year": 2019
+  },
   "robocop": {
     "cast": [
       "Peter Weller",
@@ -10638,6 +11003,33 @@
     },
     "title": "Scream",
     "year": 1996
+  },
+  "se7en": {
+    "cast": [
+      "Brad Pitt",
+      "Morgan Freeman",
+      "Gwyneth Paltrow",
+      "John C. McGinley"
+    ],
+    "castSource": {
+      "field": "infobox starring",
+      "name": "Wikipedia",
+      "retrieved": "2026-08-16",
+      "url": "https://en.wikipedia.org/wiki/Seven_(1995_film)"
+    },
+    "country": "United States",
+    "director": "David Fincher",
+    "language": "English",
+    "runtime": "127 min",
+    "source": {
+      "id": "Q190908",
+      "name": "Wikidata",
+      "retrieved": "2026-08-16",
+      "url": "https://www.wikidata.org/wiki/Q190908",
+      "wikipedia": "https://en.wikipedia.org/wiki/Seven_(1995_film)"
+    },
+    "title": "Se7en",
+    "year": 1995
   },
   "secret-invasion": {
     "cast": [
@@ -11601,6 +11993,22 @@
     },
     "title": "Spirited Away",
     "year": 2001
+  },
+  "spy-x-family": {
+    "cast": [],
+    "country": "Japan",
+    "director": "Kazuhiro Furuhashi",
+    "language": "Japanese",
+    "runtime": "24 min",
+    "source": {
+      "id": "Q109333365",
+      "name": "Wikidata",
+      "retrieved": "2026-08-16",
+      "url": "https://www.wikidata.org/wiki/Q109333365",
+      "wikipedia": "https://en.wikipedia.org/wiki/Spy_%C3%97_Family_(TV_series)"
+    },
+    "title": "Spy x Family",
+    "year": 2022
   },
   "squidgame": {
     "cast": [

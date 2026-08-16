@@ -1,8 +1,8 @@
 {
-  "generated": "2026-08-16 16:26:11",
+  "generated": "2026-08-16 16:32:12",
   "source": "English Wikipedia infobox 'starring' field",
-  "withBilledCast": 494,
-  "withoutBilledCast": 29,
+  "withBilledCast": 543,
+  "withoutBilledCast": 34,
   "withoutBilledCastList": [
     {
       "id": "arcane",
@@ -60,11 +60,6 @@
       "article": "Dragon Ball Z"
     },
     {
-      "id": "fairy-tail",
-      "title": "Fairy Tail",
-      "article": "Fairy Tail (TV series)"
-    },
-    {
       "id": "demon-slayer",
       "title": "Demon Slayer: Kimetsu no Yaiba",
       "article": "Demon Slayer: Kimetsu no Yaiba (TV series)"
@@ -80,9 +75,24 @@
       "article": "Fullmetal Alchemist: Brotherhood"
     },
     {
+      "id": "fairy-tail",
+      "title": "Fairy Tail",
+      "article": "Fairy Tail (TV series)"
+    },
+    {
       "id": "gintama",
       "title": "Gintama",
       "article": "Gintama (TV series)"
+    },
+    {
+      "id": "frieren",
+      "title": "Frieren: Beyond Journey's End",
+      "article": "Frieren (TV series)"
+    },
+    {
+      "id": "hunter-x-hunter",
+      "title": "Hunter x Hunter",
+      "article": "Hunter × Hunter (2011 TV series)"
     },
     {
       "id": "haikyuu",
@@ -110,6 +120,11 @@
       "article": "Jujutsu Kaisen (TV series)"
     },
     {
+      "id": "miraculous",
+      "title": "Miraculous: Tales of Ladybug & Cat Noir",
+      "article": "Miraculous: Tales of Ladybug & Cat Noir"
+    },
+    {
       "id": "one-piece",
       "title": "One Piece",
       "article": "One Piece (1999 TV series)"
@@ -120,6 +135,11 @@
       "article": "Naruto (TV series)"
     },
     {
+      "id": "my-hero-academia",
+      "title": "My Hero Academia",
+      "article": "My Hero Academia (TV series)"
+    },
+    {
       "id": "samurai-champloo",
       "title": "Samurai Champloo",
       "article": "Samurai Champloo"
@@ -128,6 +148,11 @@
       "id": "steins-gate",
       "title": "Steins;Gate",
       "article": "Steins;Gate (TV series)"
+    },
+    {
+      "id": "spy-x-family",
+      "title": "Spy x Family",
+      "article": "Spy × Family (TV series)"
     },
     {
       "id": "slime",

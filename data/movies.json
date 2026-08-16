@@ -5130,16 +5130,23 @@
     "description": "An AI weapon is rewriting the world. Ethan Hunt's final mission: destroy it, no matter the cost.",
     "year": 2023,
     "genre": "Action",
-    "country": null,
-    "language": null,
+    "country": "United States",
+    "language": "English",
     "poster": "https://i.ytimg.com/vi/avz06PDqDbM/hqdefault.jpg",
     "backdrop": null,
     "trailer": "https://www.youtube.com/watch?v=avz06PDqDbM",
     "youtubeId": "avz06PDqDbM",
-    "cast": [],
+    "cast": [
+      "Hayley Atwell",
+      "Ving Rhames",
+      "Simon Pegg",
+      "Rebecca Ferguson",
+      "Vanessa Kirby",
+      "Henry Czerny"
+    ],
     "legacyCastNotes": [],
-    "director": null,
-    "runtime": null,
+    "director": "Christopher McQuarrie",
+    "runtime": "163 min",
     "rating": {
       "value": 8,
       "source": "BRYME editorial score"
@@ -5152,6 +5159,19 @@
     "teaser": "An AI weapon is rewriting the world. Ethan Hunt's final mission: destroy it, no matter the cost.",
     "facts": [],
     "watchLinks": [],
+    "metaSource": {
+      "id": "Q61876370",
+      "name": "Wikidata",
+      "retrieved": "2026-08-16",
+      "url": "https://www.wikidata.org/wiki/Q61876370",
+      "wikipedia": "https://en.wikipedia.org/wiki/Mission:_Impossible_%E2%80%93_Dead_Reckoning_Part_One"
+    },
+    "castSource": {
+      "field": "infobox starring",
+      "name": "Wikipedia",
+      "retrieved": "2026-08-16",
+      "url": "https://en.wikipedia.org/wiki/Mission:_Impossible_%E2%80%93_Dead_Reckoning_Part_One"
+    },
     "genres": [],
     "typeLabel": "Movie",
     "trending": false,
@@ -7227,16 +7247,23 @@
     "description": "Rey finds Luke. The galaxy finds hope. The Force finds a new meaning.",
     "year": 2017,
     "genre": "Sci-Fi",
-    "country": null,
-    "language": null,
+    "country": "United States",
+    "language": "English",
     "poster": "https://i.ytimg.com/vi/Q0CbN8sfihY/hqdefault.jpg",
     "backdrop": null,
     "trailer": "https://www.youtube.com/watch?v=Q0CbN8sfihY",
     "youtubeId": "Q0CbN8sfihY",
-    "cast": [],
+    "cast": [
+      "Mark Hamill",
+      "Carrie Fisher",
+      "Adam Driver",
+      "Daisy Ridley",
+      "John Boyega",
+      "Oscar Isaac"
+    ],
     "legacyCastNotes": [],
-    "director": null,
-    "runtime": null,
+    "director": "Rian Johnson",
+    "runtime": "152 min",
     "rating": {
       "value": 7,
       "source": "BRYME editorial score"
@@ -7249,6 +7276,19 @@
     "teaser": "Rey finds Luke. The galaxy finds hope. The Force finds a new meaning.",
     "facts": [],
     "watchLinks": [],
+    "metaSource": {
+      "id": "Q18486021",
+      "name": "Wikidata",
+      "retrieved": "2026-08-16",
+      "url": "https://www.wikidata.org/wiki/Q18486021",
+      "wikipedia": "https://en.wikipedia.org/wiki/Star_Wars:_The_Last_Jedi"
+    },
+    "castSource": {
+      "field": "infobox starring",
+      "name": "Wikipedia",
+      "retrieved": "2026-08-16",
+      "url": "https://en.wikipedia.org/wiki/Star_Wars:_The_Last_Jedi"
+    },
     "genres": [],
     "typeLabel": "Movie",
     "trending": false,
@@ -7371,16 +7411,23 @@
     "description": "The saga ends. Rey faces Palpatine, Kylo faces his demons, and the Skywalker story closes.",
     "year": 2019,
     "genre": "Sci-Fi",
-    "country": null,
-    "language": null,
+    "country": "United States",
+    "language": "English",
     "poster": "https://i.ytimg.com/vi/8Qn_spdM5Zg/hqdefault.jpg",
     "backdrop": null,
     "trailer": "https://www.youtube.com/watch?v=8Qn_spdM5Zg",
     "youtubeId": "8Qn_spdM5Zg",
-    "cast": [],
+    "cast": [
+      "Carrie Fisher",
+      "Mark Hamill",
+      "Adam Driver",
+      "Daisy Ridley",
+      "John Boyega",
+      "Oscar Isaac"
+    ],
     "legacyCastNotes": [],
-    "director": null,
-    "runtime": null,
+    "director": "J. J. Abrams",
+    "runtime": "142 min",
     "rating": {
       "value": 6,
       "source": "BRYME editorial score"
@@ -7393,6 +7440,19 @@
     "teaser": "The saga ends. Rey faces Palpatine, Kylo faces his demons, and the Skywalker story closes.",
     "facts": [],
     "watchLinks": [],
+    "metaSource": {
+      "id": "Q20977110",
+      "name": "Wikidata",
+      "retrieved": "2026-08-16",
+      "url": "https://www.wikidata.org/wiki/Q20977110",
+      "wikipedia": "https://en.wikipedia.org/wiki/Star_Wars:_The_Rise_of_Skywalker"
+    },
+    "castSource": {
+      "field": "infobox starring",
+      "name": "Wikipedia",
+      "retrieved": "2026-08-16",
+      "url": "https://en.wikipedia.org/wiki/Star_Wars:_The_Rise_of_Skywalker"
+    },
     "genres": [],
     "typeLabel": "Movie",
     "trending": false,
@@ -8489,16 +8549,22 @@
     "description": "A farm boy, a smuggler, a princess, and a droid. The galaxy far, far away begins here.",
     "year": 1977,
     "genre": "Sci-Fi",
-    "country": null,
-    "language": null,
+    "country": "United States",
+    "language": "English",
     "poster": "https://i.ytimg.com/vi/vZ734NWnAHA/hqdefault.jpg",
     "backdrop": null,
     "trailer": "https://www.youtube.com/watch?v=vZ734NWnAHA",
     "youtubeId": "vZ734NWnAHA",
-    "cast": [],
+    "cast": [
+      "Mark Hamill",
+      "Harrison Ford",
+      "Carrie Fisher",
+      "Peter Cushing",
+      "Alec Guinness"
+    ],
     "legacyCastNotes": [],
-    "director": null,
-    "runtime": null,
+    "director": "George Lucas",
+    "runtime": "121 min",
     "rating": {
       "value": 9,
       "source": "BRYME editorial score"
@@ -8511,6 +8577,19 @@
     "teaser": "A farm boy, a smuggler, a princess, and a droid. The galaxy far, far away begins here.",
     "facts": [],
     "watchLinks": [],
+    "metaSource": {
+      "id": "Q17738",
+      "name": "Wikidata",
+      "retrieved": "2026-08-16",
+      "url": "https://www.wikidata.org/wiki/Q17738",
+      "wikipedia": "https://en.wikipedia.org/wiki/Star_Wars_(film)"
+    },
+    "castSource": {
+      "field": "infobox starring",
+      "name": "Wikipedia",
+      "retrieved": "2026-08-16",
+      "url": "https://en.wikipedia.org/wiki/Star_Wars_(film)"
+    },
     "genres": [],
     "typeLabel": "Movie",
     "trending": false,
@@ -9938,16 +10017,21 @@
     "description": "Two detectives hunt a killer using the seven deadly sins. The box. The head. 'What's in the box?'",
     "year": 1995,
     "genre": "Thriller",
-    "country": null,
-    "language": null,
+    "country": "United States",
+    "language": "English",
     "poster": "https://i.ytimg.com/vi/znmZoVkCjpI/hqdefault.jpg",
     "backdrop": null,
     "trailer": "https://www.youtube.com/watch?v=znmZoVkCjpI",
     "youtubeId": "znmZoVkCjpI",
-    "cast": [],
+    "cast": [
+      "Brad Pitt",
+      "Morgan Freeman",
+      "Gwyneth Paltrow",
+      "John C. McGinley"
+    ],
     "legacyCastNotes": [],
-    "director": null,
-    "runtime": null,
+    "director": "David Fincher",
+    "runtime": "127 min",
     "rating": {
       "value": 9,
       "source": "BRYME editorial score"
@@ -9960,6 +10044,19 @@
     "teaser": "Two detectives hunt a killer using the seven deadly sins. The box. The head. 'What's in the box?'",
     "facts": [],
     "watchLinks": [],
+    "metaSource": {
+      "id": "Q190908",
+      "name": "Wikidata",
+      "retrieved": "2026-08-16",
+      "url": "https://www.wikidata.org/wiki/Q190908",
+      "wikipedia": "https://en.wikipedia.org/wiki/Seven_(1995_film)"
+    },
+    "castSource": {
+      "field": "infobox starring",
+      "name": "Wikipedia",
+      "retrieved": "2026-08-16",
+      "url": "https://en.wikipedia.org/wiki/Seven_(1995_film)"
+    },
     "genres": [],
     "typeLabel": "Movie",
     "trending": false,
@@ -12603,9 +12700,15 @@
     "backdrop": null,
     "trailer": "https://www.youtube.com/watch?v=QvJ1K0_JzFI",
     "youtubeId": "QvJ1K0_JzFI",
-    "cast": [],
-    "director": null,
-    "runtime": null,
+    "cast": [
+      "Christina Applegate",
+      "Paul Rudd",
+      "Steve Carell",
+      "David Koechner",
+      "Fred Willard"
+    ],
+    "director": "Adam McKay",
+    "runtime": "95 min",
     "rating": null,
     "status": "published",
     "createdAt": null,
@@ -12615,6 +12718,19 @@
     "teaser": "San Diego's top newsman faces a female rival and a battle of the anchormen. Will Ferrell.",
     "facts": [],
     "watchLinks": [],
+    "metaSource": {
+      "id": "Q467076",
+      "name": "Wikidata",
+      "retrieved": "2026-08-16",
+      "url": "https://www.wikidata.org/wiki/Q467076",
+      "wikipedia": "https://en.wikipedia.org/wiki/Anchorman:_The_Legend_of_Ron_Burgundy"
+    },
+    "castSource": {
+      "field": "infobox starring",
+      "name": "Wikipedia",
+      "retrieved": "2026-08-16",
+      "url": "https://en.wikipedia.org/wiki/Anchorman:_The_Legend_of_Ron_Burgundy"
+    },
     "genres": [],
     "typeLabel": "Movie",
     "trending": false,
@@ -17247,8 +17363,10 @@
     "backdrop": null,
     "trailer": "https://www.youtube.com/watch?v=HyDqROvRDVM",
     "youtubeId": "HyDqROvRDVM",
-    "cast": [],
-    "director": null,
+    "cast": [
+      "#Voice cast"
+    ],
+    "director": "Gorō Taniguchi",
     "runtime": null,
     "rating": null,
     "status": "published",
@@ -17259,6 +17377,19 @@
     "teaser": "A genius student gets a power that lets him command anyone — and uses it to overthrow an empire.",
     "facts": [],
     "watchLinks": [],
+    "metaSource": {
+      "id": "Q4384067",
+      "name": "Wikidata",
+      "retrieved": "2026-08-16",
+      "url": "https://www.wikidata.org/wiki/Q4384067",
+      "wikipedia": "https://en.wikipedia.org/wiki/Code_Geass_Lelouch_of_the_Rebellion"
+    },
+    "castSource": {
+      "field": "infobox starring",
+      "name": "Wikipedia",
+      "retrieved": "2026-08-16",
+      "url": "https://en.wikipedia.org/wiki/Code_Geass_Lelouch_of_the_Rebellion"
+    },
     "genres": [
       "Mecha",
       "Sci-Fi",
@@ -20825,8 +20956,8 @@
     "trailer": "https://www.youtube.com/watch?v=Iwr1aLEDpe4",
     "youtubeId": "Iwr1aLEDpe4",
     "cast": [],
-    "director": null,
-    "runtime": null,
+    "director": "Keiichirō Saitō",
+    "runtime": "24 min",
     "rating": null,
     "status": "published",
     "createdAt": null,
@@ -20836,6 +20967,13 @@
     "teaser": "An elf mage outlives her adventuring party and journeys to understand the humans she loved.",
     "facts": [],
     "watchLinks": [],
+    "metaSource": {
+      "id": "Q115792176",
+      "name": "Wikidata",
+      "retrieved": "2026-08-16",
+      "url": "https://www.wikidata.org/wiki/Q115792176",
+      "wikipedia": "https://en.wikipedia.org/wiki/Frieren_(TV_series)"
+    },
     "genres": [
       "Fantasy",
       "Adventure",
@@ -21175,9 +21313,16 @@
     "backdrop": null,
     "trailer": "https://www.youtube.com/watch?v=WcHkm2JGrTc",
     "youtubeId": "WcHkm2JGrTc",
-    "cast": [],
-    "director": null,
-    "runtime": null,
+    "cast": [
+      "Manoj Bajpai",
+      "Reema Sen",
+      "Nawazuddin Siddiqui",
+      "Piyush Mishra",
+      "Huma Qureshi",
+      "Jaideep Ahlawat"
+    ],
+    "director": "Anurag Kashyap",
+    "runtime": "160 min",
     "rating": null,
     "status": "published",
     "createdAt": null,
@@ -21187,6 +21332,13 @@
     "teaser": "Three generations of a coal-mining family wage war over Wasseypur. Anurag Kashyap's crime epic.",
     "facts": [],
     "watchLinks": [],
+    "metaSource": {
+      "id": "Q2690472",
+      "name": "Wikidata",
+      "retrieved": "2026-08-16",
+      "url": "https://www.wikidata.org/wiki/Q2690472",
+      "wikipedia": null
+    },
     "genres": [],
     "typeLabel": "Movie",
     "trending": false,
@@ -25228,9 +25380,13 @@
     "backdrop": null,
     "trailer": "https://www.youtube.com/watch?v=v1tVOAIVQzo",
     "youtubeId": "v1tVOAIVQzo",
-    "cast": [],
-    "director": null,
-    "runtime": null,
+    "cast": [
+      "Antony Varghese",
+      "Chemban Vinod Jose",
+      "Sabumon Abdusamad"
+    ],
+    "director": "Lijo Jose Pellissery",
+    "runtime": "91 min",
     "rating": null,
     "status": "published",
     "createdAt": null,
@@ -25240,6 +25396,19 @@
     "teaser": "When a buffalo escapes into a village, an attempt to capture it exposes fear, rivalry and crowd instinct. This tense thriller turns a local emergency into social chaos.",
     "facts": [],
     "watchLinks": [],
+    "metaSource": {
+      "id": "Q67202673",
+      "name": "Wikidata",
+      "retrieved": "2026-08-16",
+      "url": "https://www.wikidata.org/wiki/Q67202673",
+      "wikipedia": "https://en.wikipedia.org/wiki/Jallikattu_(2019_film)"
+    },
+    "castSource": {
+      "field": "infobox starring",
+      "name": "Wikipedia",
+      "retrieved": "2026-08-16",
+      "url": "https://en.wikipedia.org/wiki/Jallikattu_(2019_film)"
+    },
     "genres": [],
     "typeLabel": "Movie",
     "trending": false,
@@ -28807,7 +28976,7 @@
     "youtubeId": "hxnl9nYl67k",
     "cast": [],
     "director": null,
-    "runtime": null,
+    "runtime": "23 min",
     "rating": null,
     "status": "published",
     "createdAt": null,
@@ -28817,6 +28986,13 @@
     "teaser": "In a world ruled by magic, a boy with impossible muscles punches his way to the top.",
     "facts": [],
     "watchLinks": [],
+    "metaSource": {
+      "id": "Q115754239",
+      "name": "Wikidata",
+      "retrieved": "2026-08-16",
+      "url": "https://www.wikidata.org/wiki/Q115754239",
+      "wikipedia": null
+    },
     "genres": [
       "Comedy",
       "Action",
@@ -29016,9 +29192,16 @@
     "backdrop": null,
     "trailer": null,
     "youtubeId": null,
-    "cast": [],
-    "director": null,
-    "runtime": null,
+    "cast": [
+      "Ramsey Nouah",
+      "AY Makun",
+      "Jim Iyke",
+      "Damilola Adegbite",
+      "Richard Mofe-Damijo",
+      "Iretiola Doyle"
+    ],
+    "director": "Toka McBaror",
+    "runtime": "106 min",
     "rating": null,
     "status": "published",
     "createdAt": null,
@@ -29028,6 +29211,19 @@
     "teaser": "A group of wealthy friends in Abuja use charm and confidence to navigate romance and trouble. It is a glossy social comedy about friendship and consequences.",
     "facts": [],
     "watchLinks": [],
+    "metaSource": {
+      "id": "Q59725751",
+      "name": "Wikidata",
+      "retrieved": "2026-08-16",
+      "url": "https://www.wikidata.org/wiki/Q59725751",
+      "wikipedia": "https://en.wikipedia.org/wiki/Merry_Men:_The_Real_Yoruba_Demons"
+    },
+    "castSource": {
+      "field": "infobox starring",
+      "name": "Wikipedia",
+      "retrieved": "2026-08-16",
+      "url": "https://en.wikipedia.org/wiki/Merry_Men:_The_Real_Yoruba_Demons"
+    },
     "genres": [],
     "typeLabel": "Movie",
     "trending": false,
@@ -31266,8 +31462,8 @@
     "description": "Saitama can defeat any enemy with a single punch — and he's bored. The comedy-action masterpiece from ONE and Yusuke Murata.",
     "year": 2015,
     "genre": "Anime",
-    "country": null,
-    "language": null,
+    "country": "Japan",
+    "language": "Japanese",
     "poster": "https://i.ytimg.com/vi/Poo5lqoWSGw/hqdefault.jpg",
     "backdrop": null,
     "trailer": "https://www.youtube.com/watch?v=Poo5lqoWSGw",
@@ -31284,6 +31480,13 @@
     "teaser": "Saitama can defeat any enemy with a single punch — and he's bored. The comedy-action masterpiece from ONE and Yusuke Murata.",
     "facts": [],
     "watchLinks": [],
+    "metaSource": {
+      "id": "Q22341674",
+      "name": "Wikidata",
+      "retrieved": "2026-08-16",
+      "url": "https://www.wikidata.org/wiki/Q22341674",
+      "wikipedia": null
+    },
     "genres": [
       "Action",
       "Comedy",
@@ -36021,8 +36224,8 @@
     "trailer": "https://www.youtube.com/watch?v=JP6vBnazpWI",
     "youtubeId": "JP6vBnazpWI",
     "cast": [],
-    "director": null,
-    "runtime": null,
+    "director": "Kazuhiro Furuhashi",
+    "runtime": "24 min",
     "rating": null,
     "status": "published",
     "createdAt": null,
@@ -36032,6 +36235,13 @@
     "teaser": "A spy, an assassin and a telepath form a fake family — each hiding their true identity from the others.",
     "facts": [],
     "watchLinks": [],
+    "metaSource": {
+      "id": "Q109333365",
+      "name": "Wikidata",
+      "retrieved": "2026-08-16",
+      "url": "https://www.wikidata.org/wiki/Q109333365",
+      "wikipedia": "https://en.wikipedia.org/wiki/Spy_%C3%97_Family_(TV_series)"
+    },
     "genres": [
       "Comedy",
       "Action",
@@ -46240,9 +46450,16 @@
     "backdrop": null,
     "trailer": "https://www.youtube.com/watch?v=VyHV0BRtdxo",
     "youtubeId": "VyHV0BRtdxo",
-    "cast": [],
-    "director": null,
-    "runtime": null,
+    "cast": [
+      "Daniel Radcliffe",
+      "Rupert Grint",
+      "Emma Watson",
+      "John Cleese",
+      "Robbie Coltrane",
+      "Warwick Davis"
+    ],
+    "director": "Chris Columbus",
+    "runtime": "152 min",
     "rating": null,
     "status": "published",
     "createdAt": null,
@@ -46252,6 +46469,19 @@
     "teaser": "An orphan discovers he is a wizard and enters Hogwarts, where he must stop a plot to steal a legendary stone. Where the Wizarding World began.",
     "facts": [],
     "watchLinks": [],
+    "metaSource": {
+      "id": "Q102438",
+      "name": "Wikidata",
+      "retrieved": "2026-08-16",
+      "url": "https://www.wikidata.org/wiki/Q102438",
+      "wikipedia": "https://en.wikipedia.org/wiki/Harry_Potter_and_the_Philosopher%27s_Stone_(film)"
+    },
+    "castSource": {
+      "field": "infobox starring",
+      "name": "Wikipedia",
+      "retrieved": "2026-08-16",
+      "url": "https://en.wikipedia.org/wiki/Harry_Potter_and_the_Philosopher%27s_Stone_(film)"
+    },
     "genres": [],
     "typeLabel": "Movie",
     "trending": false,
@@ -46610,9 +46840,14 @@
     "backdrop": null,
     "trailer": "https://www.youtube.com/watch?v=Zi4LMpSDccc",
     "youtubeId": "Zi4LMpSDccc",
-    "cast": [],
-    "director": null,
-    "runtime": null,
+    "cast": [
+      "Kristen Bell",
+      "Idina Menzel",
+      "Josh Gad",
+      "Jonathan Groff"
+    ],
+    "director": "Chris Buck; Jennifer Lee",
+    "runtime": "103 min",
     "rating": null,
     "status": "published",
     "createdAt": null,
@@ -46622,6 +46857,19 @@
     "teaser": "Elsa follows a mysterious voice into an enchanted forest to discover the truth about her powers and her family's past.",
     "facts": [],
     "watchLinks": [],
+    "metaSource": {
+      "id": "Q24733929",
+      "name": "Wikidata",
+      "retrieved": "2026-08-16",
+      "url": "https://www.wikidata.org/wiki/Q24733929",
+      "wikipedia": "https://en.wikipedia.org/wiki/Frozen_2"
+    },
+    "castSource": {
+      "field": "infobox starring",
+      "name": "Wikipedia",
+      "retrieved": "2026-08-16",
+      "url": "https://en.wikipedia.org/wiki/Frozen_2"
+    },
     "genres": [],
     "typeLabel": "Movie",
     "trending": false,

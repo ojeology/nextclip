@@ -120,19 +120,20 @@ PREFIX ps: <http://www.wikidata.org/prop/statement/>
 PREFIX pq: <http://www.wikidata.org/prop/qualifier/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX schema: <http://schema.org/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 """
 
 
 def facts_query(titles):
     values = " ".join('"%s"@en' % t.replace('\\', '\\\\').replace('"', '\\"') for t in titles)
     return PREFIXES + f"""
-SELECT ?item ?itemLabel ?year ?startYear ?runtime ?enwiki
+SELECT ?item ?itemLabel (?title AS ?matchedTitle) ?year ?startYear ?runtime ?enwiki
        (GROUP_CONCAT(DISTINCT ?dL; separator="; ") AS ?directors)
        (GROUP_CONCAT(DISTINCT ?coL; separator="; ") AS ?countries)
        (GROUP_CONCAT(DISTINCT ?laL; separator="; ") AS ?languages)
 WHERE {{
   VALUES ?title {{ {values} }}
-  ?item rdfs:label ?title .
+  {{ ?item rdfs:label ?title }} UNION {{ ?item skos:altLabel ?title }}
   ?item wdt:P31 ?type . VALUES ?type {{ {TYPES} }}
   ?item rdfs:label ?itemLabel . FILTER(LANG(?itemLabel)="en")
   OPTIONAL {{ ?item wdt:P577 ?pub . BIND(YEAR(?pub) AS ?year) }}
@@ -143,7 +144,7 @@ WHERE {{
   OPTIONAL {{ ?item wdt:P364 ?la . ?la rdfs:label ?laL . FILTER(LANG(?laL)="en") }}
   OPTIONAL {{ ?enwiki schema:about ?item ; schema:isPartOf <https://en.wikipedia.org/> }}
 }}
-GROUP BY ?item ?itemLabel ?year ?startYear ?runtime ?enwiki
+GROUP BY ?item ?itemLabel ?title ?year ?startYear ?runtime ?enwiki
 """
 
 
@@ -193,11 +194,19 @@ def main():
             print(f"    ! batch failed ({exc}); these titles stay pending")
             continue
 
-        # index rows by normalised label
+        # Index rows by the entity label AND by every requested title the row
+        # could satisfy (an alternate-label hit will not equal the main label).
         by_label = defaultdict(list)
+        norm_titles = {norm(t): t for t in titles}
         for row in rows:
             label = row.get("itemLabel", {}).get("value", "")
             by_label[norm(label)].append(row)
+        for row in rows:
+            alt = row.get("matchedTitle", {}).get("value")
+            if alt and norm(alt) in norm_titles:
+                bucket = by_label[norm(alt)]
+                if row not in bucket:
+                    bucket.append(row)
 
         for rec in chunk:
             want_year = rec.get("year")
