@@ -1,0 +1,30 @@
+[
+  {
+    "slug": "ibrahim-sodiq",
+    "name": "Ibrahim Sodiq",
+    "role": "Writer — Make Money, Tech & AI, Sports",
+    "summary": "Self-taught developer who learned to code largely on a phone. Writes BRYME's Make Money, Tech and Sports coverage.",
+    "bio": [
+      "Ibrahim Sodiq writes BRYME's Make Money, Tech & AI and Sports coverage.",
+      "He learned to code largely using his phone rather than starting with an expensive computer setup, and works with Python, APIs, databases, WebSockets, automation and web development.",
+      "He has built and operated his own trading bots, including Telegram integrations, machine-learning components, databases and live dashboards, and has built websites and deployed them himself on services such as Render.",
+      "Tools he has worked with include GitHub, Firebase, Neon and PostgreSQL, Replit, Render and Capacitor. What he writes about deployment comes from troubleshooting real failures rather than from following tutorials."
+    ],
+    "knowsAbout": [
+      "Python",
+      "APIs",
+      "Databases",
+      "WebSockets",
+      "Automation",
+      "Web development",
+      "Trading bots",
+      "Machine learning",
+      "Deployment",
+      "PostgreSQL",
+      "Firebase",
+      "Render",
+      "Capacitor",
+      "GitHub"
+    ]
+  }
+]

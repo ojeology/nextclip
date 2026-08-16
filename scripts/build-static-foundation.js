@@ -600,6 +600,24 @@ function loadVerticalArticles(file, key) {
     return list.filter(a => a && a.status === 'published');
   } catch (e) { return []; }
 }
+/* ================================================================
+   AUTHORS — a byline is only a trust signal if it resolves to a real person.
+   Bio content comes from content/authors.json and is supplied by the author;
+   nothing here is generated or embellished. A byline with no matching record
+   simply renders as plain text rather than linking nowhere.
+   ================================================================ */
+const AUTHORS = (() => {
+  const f = path.join(root, 'content', 'authors.json');
+  if (!fs.existsSync(f)) return new Map();
+  try { return new Map(JSON.parse(fs.readFileSync(f, 'utf8')).map(a => [a.name, a])); }
+  catch (e) { return new Map(); }
+})();
+const authorPath = a => '/author/' + a.slug + '/';
+const authorLink = name => {
+  const a = AUTHORS.get(name);
+  return a ? `<a href="${url(authorPath(a))}" rel="author">${esc(name)}</a>` : esc(name);
+};
+
 /* Every vertical reads content/<dir>-articles.json, so adding a vertical needs no new code. */
 const VERTICAL_ARTICLES = {};
 const verticalArticleIndex = {};
@@ -1872,7 +1890,7 @@ function renderVerticalArticle(dir, verticalName, a) {
 
   const updated = a.updatedAt && a.updatedAt !== a.publishedAt ? ` · updated ${esc(a.updatedAt)}` : '';
   const body = `<main class="shell"><div class="crumb">${crumbs.slice(0, -1).map(c => `<a href="${url(c.path)}">${esc(c.name)}</a>`).join(' / ')} / ${esc(a.title)}</div>
-  <section class="article-hero"><div class="eyebrow">${esc(cat ? cat.name : verticalName)}</div><h1>${esc(a.title)}</h1>${a.excerpt ? `<p class="lead">${esc(a.excerpt)}</p>` : ''}<div class="article-meta">${a.author ? `<span>${esc(a.author)}</span>` : ''}${a.publishedAt ? `<span>${esc(a.publishedAt)}${updated}</span>` : ''}${a.readingTime ? `<span>${esc(a.readingTime)}</span>` : ''}</div></section>
+  <section class="article-hero"><div class="eyebrow">${esc(cat ? cat.name : verticalName)}</div><h1>${esc(a.title)}</h1>${a.excerpt ? `<p class="lead">${esc(a.excerpt)}</p>` : ''}<div class="article-meta">${a.author ? `<span>${authorLink(a.author)}</span>` : ''}${a.publishedAt ? `<span>${esc(a.publishedAt)}${updated}</span>` : ''}${a.readingTime ? `<span>${esc(a.readingTime)}</span>` : ''}</div></section>
   <article class="prose article-body">${sections}</article>
   ${sourceBlock}${relatedBlock}</main>`;
 
@@ -1888,7 +1906,11 @@ function renderVerticalArticle(dir, verticalName, a) {
       description: a.excerpt || undefined,
       datePublished: a.publishedAt || undefined,
       dateModified: a.updatedAt || a.publishedAt || undefined,
-      author: { '@type': a.author && /\s/.test(a.author) ? 'Person' : 'Organization', name: a.author || 'BRYME Editorial' },
+      author: (() => {
+        const rec = AUTHORS.get(a.author);
+        if (rec) return { '@type': 'Person', name: rec.name, url: absUrl(authorPath(rec)), jobTitle: rec.role || undefined, knowsAbout: rec.knowsAbout || undefined };
+        return { '@type': a.author && /\s/.test(a.author) ? 'Person' : 'Organization', name: a.author || 'BRYME Editorial' };
+      })(),
       publisher: { '@type': 'Organization', name: site.name },
       mainEntityOfPage: absUrl(pagePath),
       articleSection: cat ? cat.name : verticalName
@@ -1898,6 +1920,39 @@ function renderVerticalArticle(dir, verticalName, a) {
 }
 VERTICALS.forEach(v => (VERTICAL_ARTICLES[v.dir] || []).forEach(a => renderVerticalArticle(v.dir, v.name, a)));
 
+/* ---------------- Author pages ---------------- */
+const AUTHOR_PATHS = [];
+AUTHORS.forEach(a => {
+  const written = VERTICALS.flatMap(v => (VERTICAL_ARTICLES[v.dir] || [])
+    .filter(x => x.author === a.name)
+    .map(x => ({ art: x, dir: v.dir, vertical: v.name })));
+  const crumbs = [{ name: 'Home', path: '/' }, { name: 'Authors', path: '/' }, { name: a.name, path: authorPath(a) }];
+  const body = `<main class="shell"><div class="crumb"><a href="${url('/')}">Home</a> / ${esc(a.name)}</div>
+  <section class="article-hero"><div class="eyebrow">${esc(a.role || 'Writer')}</div><h1>${esc(a.name)}</h1>${a.summary ? `<p class="lead">${esc(a.summary)}</p>` : ''}</section>
+  <article class="prose article-body">${(a.bio || []).map(t => `<p>${esc(t)}</p>`).join('')}
+  ${a.knowsAbout && a.knowsAbout.length ? `<h2>Works with</h2><p>${a.knowsAbout.map(esc).join(' · ')}</p>` : ''}
+  ${a.contact ? `<h2>Contact</h2><p>${esc(a.contact)}</p>` : ''}</article>
+  ${written.length ? `<section class="section"><div class="section-head"><h2>Articles by ${esc(a.name)}</h2></div><div class="vcat-grid">${written.map(w => articleCard(w.dir, w.art)).join('')}</div></section>` : ''}
+  </main>`;
+  write('author/' + a.slug, layout({
+    title: `${a.name} — ${a.role || 'Writer'}`,
+    description: a.summary || `${a.name} writes for ${site.name}.`,
+    path: authorPath(a),
+    schema: [{
+      '@context': 'https://schema.org', '@type': 'ProfilePage',
+      mainEntity: {
+        '@type': 'Person', name: a.name, url: absUrl(authorPath(a)),
+        jobTitle: a.role || undefined,
+        description: (a.bio || []).join(' ') || undefined,
+        knowsAbout: a.knowsAbout || undefined,
+        worksFor: { '@type': 'Organization', name: site.name }
+      }
+    }, breadcrumbs(crumbs)],
+    body
+  }));
+  AUTHOR_PATHS.push(authorPath(a));
+});
+
 /* ---------------- 404, sitemap, robots ---------------- */
 const genrePaths = typeConfig.flatMap(t => [...genreIndexByType[t.dir].keys()].map(s => `/${t.pageDir}/${s}/`));
 const legalPaths = legalPages.map(p => '/' + p.dir + '/');
@@ -1906,7 +1961,7 @@ const verticalPaths = ['/entertainment/','/sports/articles/']
   .filter(p => !EMPTY_HUB_PATHS.has(p));
 /* Published vertical articles are real, indexable pages. */
 const verticalArticlePaths = VERTICALS.flatMap(v => (VERTICAL_ARTICLES[v.dir] || []).map(a => articlePathFor(v.dir, a)));
-const paths = ['/','/movies/','/series/','/anime/','/trending/','/genres/','/years/','/topics/','/articles/', ...legalPaths, ...verticalPaths, ...verticalArticlePaths, ...sportsExtraPaths, ...LEAGUE_MATCH_PATHS.filter(p => !UNPLAYED_MATCH_PATHS.has(p)), ...genrePaths, ...movies.map(m => `/${m.typeDir || 'movie'}/${m.slug}/`), ...[...yearMap].filter(([,l]) => !thinArchive(l)).map(([y]) => `/year/${y}/`), ...[...seriesYearMap].filter(([,l]) => !thinArchive(l)).map(([y]) => `/series/${y}/`), ...[...animeYearMap].filter(([,l]) => !thinArchive(l)).map(([y]) => `/anime/${y}/`), ...articles.map(a => `/article/${a.slug}/`), ...topics.map(t => `/topic/${t.slug}/`), ...[...articleCategoryMap.keys()].map(s => `/articles/${s}/`)];
+const paths = ['/','/movies/','/series/','/anime/','/trending/','/genres/','/years/','/topics/','/articles/', ...legalPaths, ...AUTHOR_PATHS, ...verticalPaths, ...verticalArticlePaths, ...sportsExtraPaths, ...LEAGUE_MATCH_PATHS.filter(p => !UNPLAYED_MATCH_PATHS.has(p)), ...genrePaths, ...movies.map(m => `/${m.typeDir || 'movie'}/${m.slug}/`), ...[...yearMap].filter(([,l]) => !thinArchive(l)).map(([y]) => `/year/${y}/`), ...[...seriesYearMap].filter(([,l]) => !thinArchive(l)).map(([y]) => `/series/${y}/`), ...[...animeYearMap].filter(([,l]) => !thinArchive(l)).map(([y]) => `/anime/${y}/`), ...articles.map(a => `/article/${a.slug}/`), ...topics.map(t => `/topic/${t.slug}/`), ...[...articleCategoryMap.keys()].map(s => `/articles/${s}/`)];
 fs.writeFileSync(path.join(root, '404.html'), layout({
   title: 'Page not found', description: 'This page is not available on BRYME.', path: '/404.html', noindex: true,
   body: `<main class="shell"><section class="hero"><div class="eyebrow">404</div><h1>Looks like this one disappeared.</h1><p class="lead">Try searching the catalogue, or browse a single content type.</p><p><a class="cta" href="${url('/search/')}">Search everything</a> <a class="quiet-link" href="${url('/movies/')}">Movies</a> <a class="quiet-link" href="${url('/series/')}">Series</a> <a class="quiet-link" href="${url('/anime/')}">Anime</a> <a class="quiet-link" href="${url('/articles/')}">Latest articles</a></p></section></main>`
