@@ -559,6 +559,7 @@ body[data-nav="tech"] .prose a{color:#a8c8ff}
 body .bryme-back{top:auto;bottom:78px;left:14px;opacity:.92}
 body .bryme-back:hover{opacity:1}
 @media(min-width:761px){body .bryme-back{bottom:24px;left:18px}}
+<<<<<<< HEAD
 /* ---------- editorial layout variants ----------
    One tile component, four presentations. The wrapper class decides the
    shape, so curated order, counts and ranks are never altered by layout. */
@@ -620,6 +621,8 @@ body .bryme-back:hover{opacity:1}
   .rail-chart,.rail-spread{grid-template-columns:1fr}
 }
 @media(max-width:620px){.rail-wall{grid-template-columns:repeat(3,minmax(0,1fr));gap:11px}.home-section{padding:30px 0}}
+=======
+>>>>>>> origin/main
 @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 `);
 fs.appendFileSync(path.join(root,'assets/site.css'), `\n/* Persistent navigation control */\n.bryme-back{position:fixed;left:14px;top:74px;z-index:80;display:grid;place-items:center;width:34px;height:34px;border:1px solid rgba(255,255,255,.22);border-radius:50%;background:rgba(8,9,11,.88);backdrop-filter:blur(10px);color:#fff;font:900 21px/1 system-ui,sans-serif;padding:0;cursor:pointer;box-shadow:0 7px 22px rgba(0,0,0,.35)}.bryme-back:hover{border-color:var(--sports,#3ddc84);transform:translateX(-1px)}@media(max-width:760px){.bryme-back{left:10px;top:64px;width:32px;height:32px}}\n`);
