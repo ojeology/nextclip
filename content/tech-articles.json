@@ -145,5 +145,72 @@
       }
     ],
     "sourcesCheckedOn": "2026-08-16"
+  },
+  {
+    "id": "render-deployment-failures-what-they-taught-me",
+    "slug": "render-deployment-failures-what-they-taught-me",
+    "title": "The Website Worked. The Deployment Didn't.",
+    "seoTitle": "Render Deployment Errors: Could Not Read package.json, Publish Directory & Free-Tier Traps",
+    "excerpt": "Four things that went wrong deploying my own projects to Render — including the ENOENT package.json error on this very site — and the free-tier behaviour that can quietly tell Google not to index you.",
+    "category": "Hosting",
+    "categorySlug": "hosting",
+    "tags": [
+      "render",
+      "deployment",
+      "hosting",
+      "devops",
+      "troubleshooting"
+    ],
+    "relatedMovieSlugs": [],
+    "status": "published",
+    "author": "Ibrahim Sodiq",
+    "publishedAt": "2026-08-16",
+    "updatedAt": "2026-08-16",
+    "readingTime": "9 min read",
+    "content": [
+      {
+        "heading": "Two different sentences",
+        "body": "There is a gap between these two statements that nobody warns you about:\n\n“The website works.”\n\n“The hosting platform knows exactly how to build and serve the website.”\n\nEverything below happened in that gap. These are real failures from deploying my own projects, including this site. I am not writing this as someone with an infrastructure career — I do not have one. I built projects, deployed them, hit errors, read the logs and the configuration, traced the problem, changed the configuration, redeployed, and learned something each time. That is the entire qualification behind this article, and it is the one that produced the specifics."
+      },
+      {
+        "heading": "1. “Could not read package.json” — on a site with no package.json",
+        "body": "While moving the BRYME website from GitHub to Render, a deployment failed with:\n\nnpm ERR! code ENOENT\n\nand, specifically:\n\nCould not read package.json\n\nRender was looking for the file at /opt/render/project/src/package.json, and it was not there.\n\nThe instinct when you see npm fail is to start debugging your application. That instinct was wrong. Nothing about the website was broken. The deployment configuration was pointing Render at the wrong place for the project's package.json — the platform was starting from a directory that did not match the repository's structure.\n\nSo I went and looked at the Render service configuration, the repository structure and the build settings, rather than assuming the application code was at fault. That is the whole fix, and the reason it is worth writing down is that the error message points you in exactly the wrong direction. An npm error reads like a code problem. This was a path problem.\n\nThere is also a documented reason a static site tries to run npm at all. Render's own static site documentation states that by default Render automatically attempts to detect and install your static site's dependencies. If it detects a Node project, it goes looking for package.json — even when your site is plain static files that never needed npm. The docs note you can add a SKIP_INSTALL_DEPS environment variable set to true if you would rather handle dependency installation yourself as part of the build command.\n\nThe lesson generalises past Render: a deployment can fail while the application is completely fine, purely because the platform started in the wrong directory or the build configuration does not match the repository layout."
+      },
+      {
+        "heading": "2. The publish directory it would not deploy without",
+        "body": "During the same migration, Render required a publish directory for the static-site deployment and would not accept the configuration while that field was blank.\n\nThis one is less dramatic and just as instructive. Nothing was broken. There was simply information the platform needed that I had not given it: which directory actually contains the built site to serve.\n\nA local development setup infers a great deal. You run a command, something appears, you open it in a browser. A hosting platform infers nothing it has not been told. The project has to be configured according to the way its frontend is actually built — not the way it feels like it works when you are the one running it."
+      },
+      {
+        "heading": "3. Two deployments of the same site, and only one of them real",
+        "body": "I initially created another Render deployment and got a different Render URL back. The original production site was already running at https://bryme.onrender.com/, and now there was a second, freshly generated address for the same project.\n\nThe tempting move is to treat whatever URL you are currently looking at as the site. I suspended the unnecessary deployment and went back to the existing production service instead.\n\nThis is an easy mess to make and a genuinely annoying one to clean up later. Two live services for one project means two things that can drift apart, two sets of configuration to keep in step, and eventually a change deployed to the wrong one and a confusing half hour working out why the fix did not appear. Knowing which service is actually production is not administrative tidiness; it is the thing that keeps deployments predictable."
+      },
+      {
+        "heading": "4. Free hosting is not free infrastructure",
+        "body": "I have used free hosting on real projects — Render for hosting, with UptimeRobot for uptime monitoring on one of my sites.\n\nThe useful lesson is the general one: a free tier is not unlimited infrastructure. Free plans come with limitations — sleeping and spin-down behaviour, resource restrictions, usage caps — that vary by provider and by whatever the current plan actually says.\n\nI am not going to claim a specific incident here, because I would be reconstructing it rather than reporting it. What I can do is point at what Render documents, which is worth reading before you rely on a free instance:\n\nA Free web service spins down after 15 minutes without inbound traffic, counting both HTTP requests and WebSocket messages, and spinning back up on the next request takes about a minute. Render grants 750 Free instance hours per workspace per calendar month, and suspends Free web services for the rest of the month once they are used up. The filesystem is ephemeral — anything written locally is lost on redeploy, restart or spin-down. Free Postgres databases expire 30 days after creation.\n\nAnd one that deserves far more attention than it gets."
+      },
+      {
+        "heading": "The free-tier detail that can quietly cost you Google",
+        "body": "This is in Render's documentation and I have never seen it mentioned in a tutorial.\n\nWhile a Free web service is spun down, incoming requests to /robots.txt automatically receive a standard disallow-all response — User-agent: * followed by Disallow: / — and those requests never reach your service or trigger a spin-up.\n\nSit with what that means. If Googlebot requests your robots.txt during any of the periods your free service is asleep, it is told not to crawl anything. Your application is fine. Your actual robots.txt is fine. The platform answered on its behalf while it was idle, and the answer was no.\n\nA low-traffic site is asleep most of the time, which is exactly the kind of site that most needs to be crawled. The failure is invisible from the browser, because your own visit wakes the service up and then everything looks correct.\n\nTwo practical notes. This applies to Free web services; static sites on Render are served over a CDN and do not have instance types, so they are not subject to spin-down. And this is a real argument for uptime monitoring on a free tier — not because pinging keeps a service awake as a trick, but because you should know how much of the day your site is actually asleep before you conclude that search engines are ignoring you for some other reason."
+      },
+      {
+        "heading": "5. Backends and databases are where configuration bites hardest",
+        "body": "My projects have not all been static. I have worked with PostgreSQL, Neon, Firebase, Express, Render, GitHub and Replit, and I have run into configuration and connectivity problems during both development and deployment.\n\nI am deliberately not narrating a specific database failure here. The honest version is that connectivity and configuration issues are where most of the difficulty lives once a backend is involved, and that they are almost always about how the environment is configured rather than about the code being wrong — the same pattern as the package.json failure above, in a place where it is harder to see."
+      },
+      {
+        "heading": "What this actually taught me",
+        "body": "Read the error, then question where it is pointing. An npm error that turns out to be a directory-path problem is a good reminder that the loudest part of a stack trace is not always the relevant part.\n\nAssume the platform knows nothing you have not configured. Publish directory, root directory, build command, environment variables — anything your local setup infers is something a host has to be told.\n\nCheck the platform's own documentation before a workaround. The reason a static site was running npm at all is stated plainly in Render's docs. So is the robots.txt behaviour. Both took less time to find than the guessing they replaced.\n\nKeep one production service. Suspend the extras before they become a source of confusion.\n\nAnd treat a failed deploy as information rather than a verdict. Every failure in this article was a configuration mismatch, not broken software — which meant every one of them was fixable by reading something and changing a setting."
+      }
+    ],
+    "sources": [
+      {
+        "name": "Render — Static Sites (automatic dependency installation, SKIP_INSTALL_DEPS)",
+        "url": "https://render.com/docs/static-sites"
+      },
+      {
+        "name": "Render — Deploy for Free (spin-down, instance hours, ephemeral filesystem, robots.txt behaviour)",
+        "url": "https://render.com/docs/free"
+      }
+    ],
+    "sourcesCheckedOn": "2026-08-16"
   }
 ]
