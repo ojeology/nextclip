@@ -641,7 +641,6 @@ body .bryme-back:hover{opacity:1}
 .sp-postmatch{margin-top:20px}
 .sp-postmatch .sp-msec>b{color:#3ddc84}
 @media(max-width:760px){.sp-msec-grid{grid-template-columns:1fr}}
-<<<<<<< HEAD
 /* ---------- clubs directory ---------- */
 .cd-jumps{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 6px}
 .cd-jump{font-size:12.5px;font-weight:800;text-transform:capitalize;padding:7px 13px;border:1px solid var(--line);border-radius:20px;color:#d9dde1;background:#101318}
@@ -651,8 +650,6 @@ body .bryme-back:hover{opacity:1}
 .cd-table td{vertical-align:middle}
 .cd-table tbody tr:nth-child(even){background:rgba(255,255,255,.018)}
 .cd-na{color:var(--muted);font-style:italic;font-size:12.5px}
-=======
->>>>>>> origin/main
 @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 `);
 fs.appendFileSync(path.join(root,'assets/site.css'), `\n/* Persistent navigation control */\n.bryme-back{position:fixed;left:14px;top:74px;z-index:80;display:grid;place-items:center;width:34px;height:34px;border:1px solid rgba(255,255,255,.22);border-radius:50%;background:rgba(8,9,11,.88);backdrop-filter:blur(10px);color:#fff;font:900 21px/1 system-ui,sans-serif;padding:0;cursor:pointer;box-shadow:0 7px 22px rgba(0,0,0,.35)}.bryme-back:hover{border-color:var(--sports,#3ddc84);transform:translateX(-1px)}@media(max-width:760px){.bryme-back{left:10px;top:64px;width:32px;height:32px}}\n`);
