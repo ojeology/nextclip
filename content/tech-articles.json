@@ -70,5 +70,80 @@
       }
     ],
     "sourcesCheckedOn": "2026-08-16"
+  },
+  {
+    "id": "learning-to-code-on-a-phone-termux",
+    "slug": "learning-to-code-on-a-phone-termux",
+    "title": "Learning to Code on a Phone: What Actually Broke, and What Fixed It",
+    "seoTitle": "Learning to Code on an Android Phone with Termux: The Real Obstacles",
+    "excerpt": "I started building software on an Android phone using Termux. The obstacle was never the screen or the keyboard — it was installing anything. Here is what went wrong, the detour that did not work, and the change that did.",
+    "category": "Beginner Coding",
+    "categorySlug": "beginner-coding",
+    "tags": [
+      "termux",
+      "android",
+      "python",
+      "beginner",
+      "development-setup"
+    ],
+    "relatedMovieSlugs": [],
+    "status": "published",
+    "author": "Ibrahim Sodiq",
+    "publishedAt": "2026-08-16",
+    "updatedAt": "2026-08-16",
+    "readingTime": "7 min read",
+    "content": [
+      {
+        "heading": "The part people get wrong about phone development",
+        "body": "When people hear that someone learned to code on a phone, they usually picture the discomfort: the small screen, the on-screen keyboard, the missing shortcuts. Those are real, and they are also not the problem.\n\nThe actual wall is installation. Writing Python on a phone is easy. Getting the libraries you want to install and run is where the whole thing stops.\n\nI started learning and developing software on an Android phone, primarily using Termux, rather than starting with an expensive computer setup. What follows is what actually broke and what eventually got past it. I am not going to tell you it was straightforward, because it was not."
+      },
+      {
+        "heading": "Where it stalled: dependencies",
+        "body": "Early on I kept running into dependency and installation problems while trying to build the tools I needed. Not syntax errors, not logic bugs — the code was not the obstacle. Package installation was.\n\nThis is the point where a lot of people conclude that a phone is simply not a real development environment and stop. It is a reasonable conclusion to reach. It is also wrong, but it takes a while to find that out."
+      },
+      {
+        "heading": "The detour: trying Ubuntu on the phone",
+        "body": "Because of those limitations, I moved to an Ubuntu environment on the phone to see if it would make development and package installation easier.\n\nThis is worth being honest about, because it is the step that usually gets edited out of these stories. The obvious move when your environment fights you is to replace the environment. So I did.\n\nIt was not the answer. I eventually went back to Termux — not because Ubuntu failed outright, but because I had worked out a better way to handle the actual problem, and once that was solved the reason for the detour disappeared."
+      },
+      {
+        "heading": "What actually fixed it: virtual environments",
+        "body": "The change that made the difference was managing Python dependencies with virtual environments — venv. Using them, I was able to install and manage heavier Python libraries directly in Termux.\n\nThat is the whole turning point. Not a different phone, not a different operating system, not better hardware. A different way of managing dependencies inside the environment I already had.\n\nIf you are stuck at the same place, that is the thing I would point at first."
+      },
+      {
+        "heading": "Why installing anything on Termux is genuinely hard",
+        "body": "It is worth understanding why this is difficult, because it is not a failure on your part and it is not Termux being badly built.\n\nMost Python packages that contain compiled C code ship as prebuilt wheels on PyPI, and those wheels are built for standard Linux distributions. Termux runs on Android, which uses a different C library, so those prebuilt wheels do not match. Instead of dropping in a ready-made binary, pip falls back to compiling the package from source on the device — which needs a working toolchain and every build dependency present, and which is slow on a phone.\n\nThis is why the failures cluster around exactly the libraries you most want. NumPy has historically failed on Termux with an error about required math functions being unavailable, with the widely shared workaround being to set the MATHLIB environment variable before installing. SciPy needs BLAS and LAPACK present before it will build at all, and one person who got it working reported the build alone taking more than fifteen minutes.\n\nTwo things worth knowing that are easy to miss. Termux's own package manager carries prebuilt versions of some of these libraries — installing numpy through pkg rather than pip sidesteps the compilation entirely, and on a well-known Stack Overflow thread that single distinction between pkg and pip was the fix. The Termux User Repository also provides additional prebuilt packages and a package index you can point pip at directly.\n\nNone of that is obvious when you are starting out. You get an error that looks like your fault, and nothing tells you the wheel simply does not exist for your platform."
+      },
+      {
+        "heading": "Why I kept going",
+        "body": "I did not persist because I had unusual discipline. I persisted because I wanted something specific.\n\nThe whole process was driven by wanting to build trading software. I kept experimenting with different Python libraries and development tools because I wanted to build my own automated trading systems rather than simply use someone else's.\n\nThat matters more than any technique in this article. A dependency error is a wall if you are learning to code in the abstract. It is a puzzle if it is standing between you and something you actually want to exist. Same error, completely different response.\n\nThe environment problems did not stop being annoying. They stopped being reasons to quit."
+      },
+      {
+        "heading": "What the setup became",
+        "body": "The same phone-based development setup eventually became capable of supporting much more serious projects: Python trading bots, API integrations, automation and websites.\n\nI want to be careful here, because this is where this kind of story usually inflates. I am not claiming phone development is as comfortable as a laptop, that it is the right choice if you have an alternative, or that it made anything faster. It did not. Every one of those constraints was real and none of them disappeared.\n\nWhat I am saying is narrower and, I think, more useful: the device was not the thing that decided whether the learning happened."
+      },
+      {
+        "heading": "If you are trying this",
+        "body": "Assume installation is the hard part, not writing code. Budget your patience accordingly.\n\nTry the platform's package manager before pip when a library refuses to build. On Termux that means pkg, and for several of the heavy scientific libraries it is the difference between working and not.\n\nUse virtual environments. This is what changed things for me, and it is free to adopt.\n\nWhen an install fails, search the exact error together with Termux rather than alone. These failures are platform-specific and extremely common, and someone has almost always hit the same one.\n\nAnd do not switch environments at the first serious obstacle. I did, and it cost me a detour. Sometimes the environment really is the problem. More often the problem travels with you."
+      }
+    ],
+    "sources": [
+      {
+        "name": "Why pip throws an error when installing NumPy in Termux — the MATHLIB workaround",
+        "url": "https://superuser.com/questions/1724176/why-pip-throwing-an-error-when-installing-numpy-in-termux"
+      },
+      {
+        "name": "Cannot pip install NumPy in Termux — use pkg install python-numpy instead",
+        "url": "https://stackoverflow.com/questions/77965881/cannot-pip-install-numpy-and-many-other-packages-in-termux-on-an-android-tabl"
+      },
+      {
+        "name": "Compiling SciPy on Termux — BLAS/LAPACK and build times",
+        "url": "https://stackoverflow.com/questions/72196112/attempt-to-compile-scipy-on-android-termux-python-3-10"
+      },
+      {
+        "name": "Termux User Repository (prebuilt packages)",
+        "url": "https://github.com/termux-user-repository/tur"
+      }
+    ],
+    "sourcesCheckedOn": "2026-08-16"
   }
 ]
