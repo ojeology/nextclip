@@ -559,7 +559,6 @@ body[data-nav="tech"] .prose a{color:#a8c8ff}
 body .bryme-back{top:auto;bottom:78px;left:14px;opacity:.92}
 body .bryme-back:hover{opacity:1}
 @media(min-width:761px){body .bryme-back{bottom:24px;left:18px}}
-<<<<<<< HEAD
 /* ---------- editorial layout variants ----------
    One tile component, four presentations. The wrapper class decides the
    shape, so curated order, counts and ranks are never altered by layout. */
@@ -621,8 +620,6 @@ body .bryme-back:hover{opacity:1}
   .rail-chart,.rail-spread{grid-template-columns:1fr}
 }
 @media(max-width:620px){.rail-wall{grid-template-columns:repeat(3,minmax(0,1fr));gap:11px}.home-section{padding:30px 0}}
-=======
->>>>>>> origin/main
 /* ---------- match editorial workflow ---------- */
 .sp-preview{margin:18px 0 0}
 .sp-msec-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:12px}
