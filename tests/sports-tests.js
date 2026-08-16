@@ -285,20 +285,30 @@ section('Results pipeline');
     sourced++;
   }
 
-  /* an unplayed fixture stays noindex and out of the sitemap; a played one does the opposite */
+  /* Indexability is now governed by the editorial workflow, not by the result alone:
+     a fixture is indexable once it has a written preview (>=3 populated fields) OR a
+     recorded result. Everything else stays a schedule entry - noindex, no sitemap.
+     Full lifecycle coverage lives in tests/editorial-workflow-tests.js. */
   const sm = read('sitemap.xml');
+  const ED = JSON.parse(read('content/match-editorial.json'))['premier-league'] || {};
+  const EDF = ['overview','recentForm','headToHead','lastFiveMeetings','homeAwayForm','keyPlayers',
+    'injuries','suspensions','expectedLineups','tacticalMatchup','historicalContext','underdog','outlook','scorePrediction'];
+  const hasPreview = slug => {
+    const e = ED[slug]; if (!e) return false;
+    return EDF.filter(k => Array.isArray(e[k]) ? e[k].length > 0 : (typeof e[k] === 'string' && e[k].trim().length > 12)).length >= 3;
+  };
   const played = new Set(Object.keys(R['premier-league'] || {}));
   const sample = [...valid].slice(0, 40);
   for (const slug of sample) {
     const html = read('sports/premier-league/matches/' + slug + '/index.html');
     const inSm = sm.indexOf('bryme.onrender.com/sports/premier-league/matches/' + slug + '/') > -1;
-    if (played.has(slug)) {
-      assert(!/name="robots" content="noindex/.test(html), `played ${slug} is indexable`);
-      assert(inSm, `played ${slug} is in the sitemap`);
-      assert(!/has not been played yet/.test(html), `played ${slug} drops the unplayed notice`);
+    if (played.has(slug) || hasPreview(slug)) {
+      assert(!/name="robots" content="noindex/.test(html), `editorial ${slug} is indexable`);
+      assert(inSm, `editorial ${slug} is in the sitemap`);
+      if (played.has(slug)) assert(!/has not been played yet/.test(html), `played ${slug} drops the unplayed notice`);
     } else {
-      assert(/name="robots" content="noindex/.test(html), `unplayed ${slug} is noindex`);
-      assert(!inSm, `unplayed ${slug} is out of the sitemap`);
+      assert(/name="robots" content="noindex/.test(html), `dormant ${slug} is noindex`);
+      assert(!inSm, `dormant ${slug} is out of the sitemap`);
     }
   }
   assert(true, `results pipeline consistent (${sourced} sourced result(s) recorded)`);
@@ -319,9 +329,22 @@ section('Sitemap');
   const all = F.matchweeks.flatMap(w => w.matches);
   const slugs = all.map(m => '/sports/premier-league/matches/' + m.id + '-vs-' + m.away + '/');
   const unplayed = all.filter(m => !(m.result || m.score || m.fullTime || m.played));
-  const leaked = slugs.filter((s, i) => !(all[i].result || all[i].score || all[i].fullTime || all[i].played))
-                      .filter(s => sm.indexOf('bryme.onrender.com' + s) > -1);
-  assert(leaked.length === 0, 'sitemap: no unplayed fixture submitted' + (leaked.length ? ' — leaked ' + leaked.length : ''));
+  /* A fixture may appear in the sitemap only if it has been written up or played.
+     Dormant schedule entries must never be submitted. */
+  const EDpl = JSON.parse(read('content/match-editorial.json'))['premier-league'] || {};
+  const EDFL = ['overview','recentForm','headToHead','lastFiveMeetings','homeAwayForm','keyPlayers',
+    'injuries','suspensions','expectedLineups','tacticalMatchup','historicalContext','underdog','outlook','scorePrediction'];
+  const written = sl => {
+    const e = EDpl[sl.replace('/sports/premier-league/matches/','').replace(/\/$/,'')];
+    if (!e) return false;
+    return EDFL.filter(k => Array.isArray(e[k]) ? e[k].length > 0 : (typeof e[k] === 'string' && e[k].trim().length > 12)).length >= 3;
+  };
+  const resPL = JSON.parse(read('content/results.json'))['premier-league'] || {};
+  const leaked = slugs.filter(sl => sm.indexOf('bryme.onrender.com' + sl) > -1)
+    .filter(sl => !written(sl) && !resPL[sl.replace('/sports/premier-league/matches/','').replace(/\/$/,'')]);
+  assert(leaked.length === 0, 'sitemap: no dormant fixture submitted' + (leaked.length ? ' — leaked ' + leaked.length : ''));
+  const submitted = slugs.filter(sl => sm.indexOf('bryme.onrender.com' + sl) > -1).length;
+  assert(submitted < 50, `only written-up fixtures are submitted (${submitted} of ${slugs.length})`);
   assert(unplayed.length > 0, 'fixtures.json: unplayed fixtures present to exercise the rule');
   const sample = read('sports/premier-league/matches/arsenal-vs-coventry/index.html');
   assert(/name="robots" content="noindex/.test(sample), 'unplayed fixture page is noindex');
