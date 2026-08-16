@@ -97,7 +97,8 @@
         "heading": "The BRYME conclusion",
         "body": "There is nothing wrong with wanting money. The mistake is believing money should arrive without value being created. If making money online was that easy, nobody would be doing the hard work. A phone and internet can open doors, but a valuable skill helps you walk through them. Stop chasing the shortcut. Build something valuable."
       }
-    ]
+    ],
+    "categorySlug": "beginner-guides"
   },
   {
     "id": "website-monetization-guide",
@@ -192,6 +193,78 @@
         "heading": "Final BRYME editorial",
         "body": "Build the website, establish it, test it, then give it to the world to see. Once the world loves it, monetize and get your pay. Do not build only to display ads. Build something people want, build real traffic, do not annoy visitors, and use the method that fits. Build the audience first. Monetize the value second."
       }
-    ]
+    ],
+    "categorySlug": "website-monetization"
+  },
+  {
+    "id": "freelance-platform-fees-explained",
+    "slug": "freelance-platform-fees-explained",
+    "title": "What Upwork and Fiverr Actually Take From You in 2026",
+    "seoTitle": "Upwork and Fiverr Fees in 2026: What the Platforms Actually Take",
+    "excerpt": "Most fee guides online are repeating numbers the platforms have already changed. Here is what Upwork's and Fiverr's own documentation says today — and how to price so the cut does not surprise you.",
+    "category": "Freelancing",
+    "categorySlug": "freelancing",
+    "tags": [
+      "freelancing",
+      "upwork",
+      "fiverr",
+      "fees",
+      "pricing"
+    ],
+    "relatedMovieSlugs": [],
+    "status": "published",
+    "author": "BRYME Make Money",
+    "publishedAt": "2026-08-16",
+    "updatedAt": "2026-08-16",
+    "readingTime": "7 min read",
+    "content": [
+      {
+        "heading": "The number in the blog posts is not the number on your invoice",
+        "body": "Search for what Upwork charges and you will be told, confidently and almost everywhere, that it is a flat 10%. Search for Fiverr and you will be told the buyer pays 5.5% plus a $3 small-order fee on orders under $100. Both of those claims appear in fee guides published this year.\n\nOne of them is out of date and the other is wrong. This matters, because if you price your work off a number a content farm copied from a 2023 announcement, the shortfall comes out of your own pay.\n\nSo this guide does not cite fee calculators or comparison blogs. Every figure below comes from the platforms' own help documentation and legal terms, and the date each was checked is stated at the bottom. If a number here disagrees with something you read elsewhere, check the primary source before you trust either of us."
+      },
+      {
+        "heading": "Upwork: not a flat 10%, and not the same on every contract",
+        "body": "Upwork's own support article on the Freelancer Service Fee states that the fee \"ranges from 0% to 15% per contract.\" There is no single platform-wide percentage any more. The fee is set per contract, based on factors Upwork describes only as supporting \"a balanced and competitive environment across different types of work.\"\n\nThe practical consequences are more useful than the theory:\n\nThe fee is shown to you before you commit. Upwork displays the percentage when you submit a proposal or when a client sends you an offer, and you can see it later in the contract details and transaction summaries. You never have to guess which rate applies — but you do have to look, on every single contract.\n\nOnce a contract starts, the rate is locked. Upwork is explicit that once a proposal, offer or contract is sent, the fee will not change for that contract. What it will not do is stay the same across your other contracts.\n\nThe old tiered model is gone, and so is loyalty. The 20%/10%/5% sliding scale that rewarded long client relationships no longer exists. Billing a client for the hundredth time earns you no discount, and Upwork states plainly that it offers no regular discounts on the fee.\n\nThere are documented exceptions. Freelancers on Upwork Payroll pay no service fee, because they are paid through a third-party staffing firm. Any Hire contracts carry no freelancer service fee. Direct Contracts — where you bring your own client to the platform — carry a reduced fee. Enterprise client contracts are individually negotiated, though Upwork says freelancers working with Enterprise clients typically pay 10%."
+      },
+      {
+        "heading": "The refund rule that almost nobody mentions",
+        "body": "If money you were paid is refunded to the client, Upwork refunds the service fee you paid on that amount. Their worked example: $100 is returned to the client, your fee was 10%, so the $10 fee is returned to you.\n\nThis is a genuine protection and it is worth knowing before a dispute, not after. You are not charged a commission on money you did not ultimately keep. It does not, of course, refund your time."
+      },
+      {
+        "heading": "Fiverr: 80% to you, stated in the payment terms",
+        "body": "Fiverr is simpler and more expensive. Its Payment Terms, last updated January 2026, state that each completed order \"credits your account with Earnings equal to 80% of the purchase amount.\" That is a 20% commission with no tiers, no volume discount and no loyalty reduction.\n\nThe same 80% rule is applied to hourly contracts: each completed weekly report credits you 80% of the hourly rate for the hours worked.\n\nThe one documented exception runs the other way, and it is unusual. Logo Designs sold through Fiverr's Logo Maker use a tier-based model where your share is a fixed percentage per tier, from 20% at the lowest tier up to 50% at the highest. Tiers are based on your Logo Maker sales over the previous twelve months and are recalculated on the first day of each month."
+      },
+      {
+        "heading": "What your Fiverr buyer pays, and why it is your problem",
+        "body": "The buyer-side fee is where the widely repeated numbers are wrong. Fiverr's Payment Terms state that as of September 2025 the service fee on gigs is 5.5% of the purchase amount, and that purchases under US$200 attract an additional US$3.50 small order fee.\n\nNot $3. Not under $100. The threshold is $200 and the fee is $3.50.\n\nThat is a meaningful difference when you are setting package prices, because the small order fee is charged on a much larger share of orders than the popular guides imply. A $60 gig is a small order under Fiverr's actual rules; several fee comparison sites would tell you it is not.\n\nHourly contracts add one more line: a US$5 Order Initiation Fee on each new hourly contract, plus the 5.5% service fee on the hourly rate. The weekly billing cycle runs Monday 00:00 UTC to Sunday 23:59 UTC, with buyers charged automatically each Monday.\n\nNone of this comes out of your 80%. It still matters, because it is the number your buyer sees at checkout, and it shapes what they are willing to accept as your headline price."
+      },
+      {
+        "heading": "Getting the money out",
+        "body": "Fiverr publishes its withdrawal fees directly in the payment terms, charged by its payment service providers rather than by Fiverr:\n\nPayPal costs US$0. The Fiverr Revenue Card, operated by Payoneer, costs US$1 within two days or US$3 within two hours, and is available worldwide except in India and Russia. Local Bank Transfer, also via Payoneer, costs US$3 per transfer and is available worldwide. Direct Deposit (ACH) costs US$1 per transfer and is US-only.\n\nTwo cautions that apply to anyone paid outside the United States. First, Fiverr notes that the provider you choose may apply additional fees based on your location and currency. Second, your Fiverr balance is always derived from its US dollar value, so the local-currency amount moves daily with exchange rates and includes conversion fees. You always have the option to withdraw in US dollars.\n\nThere is also a rule worth knowing before you ever need it: earnings from a disabled account can only be withdrawn after a 90-day safety period following full verification of account ownership.\n\nUpwork's withdrawal options and their costs are documented separately from the service fee article cited here, and vary by country and method — check them against your own account rather than against any figure quoted in a guide, including this one."
+      },
+      {
+        "heading": "Pricing so the fee is not a surprise",
+        "body": "The arithmetic freelancers get wrong is subtracting the fee instead of dividing by what is left.\n\nIf you want to keep $20 an hour and the fee is 10%, you do not charge $22. You charge your target divided by 0.90, which is $22.22 — and this is exactly the example Upwork uses in its own documentation. Charging $22 leaves you $19.80.\n\nThe general rule: your rate equals your target take-home divided by (1 minus the fee rate). At Fiverr's 20%, keeping $100 means charging $125, not $120. At Upwork's maximum 15%, keeping $100 means charging $117.65.\n\nBecause Upwork's fee is now per-contract rather than fixed, this calculation has to be redone for each contract instead of once. Read the percentage on the offer screen before you accept it. Upwork provides a built-in rate calculator that estimates net pay after the fee, and it notes that rounding can shift the final figure by a cent or two in either direction."
+      },
+      {
+        "heading": "What this does not tell you",
+        "body": "Fees are the easiest part of platform economics to verify and the least important part of whether the work is worth doing.\n\nThis guide makes no claim about which platform will earn you more, how quickly you can expect a first order, or what a realistic income is. Those depend on your category, your portfolio, your competition and your timing, and anyone who quotes you a confident number for them is guessing.\n\nWhat you can take from this: the commission is knowable, it is published, and it is different from what most of the internet says it is. Check it on the source, price by dividing rather than subtracting, and re-check whenever you start a new contract — because on Upwork the rate is now a per-contract variable, and on Fiverr the buyer-side thresholds have already moved once since September 2025."
+      }
+    ],
+    "sources": [
+      {
+        "name": "Upwork — Learn about the Freelancer Service Fee",
+        "url": "https://support.upwork.com/hc/en-us/articles/211062538-Learn-about-the-Freelancer-Service-Fee"
+      },
+      {
+        "name": "Fiverr — Payment Terms (last updated January 2026)",
+        "url": "https://www.fiverr.com/legal-portal/legal-terms/payment-terms-of-service"
+      },
+      {
+        "name": "Fiverr — Terms of Service (last updated January 2026)",
+        "url": "https://www.fiverr.com/legal-portal/legal-terms/terms-of-service"
+      }
+    ],
+    "sourcesCheckedOn": "2026-08-16"
   }
 ]

@@ -396,6 +396,106 @@
       "heroImage": null,
       "body": [],
       "relatedArticles": []
+    },
+    {
+      "slug": "champions-league-format-explained",
+      "title": "How the Champions League Actually Works Now",
+      "seoTitle": "Champions League Format Explained: The 36-Team League Phase",
+      "excerpt": "The group stage is gone. One 36-team table, eight matches against eight different opponents, and a bottom twelve who go home with nothing. Here is the format, and what it changed.",
+      "category": "Champions League",
+      "categorySlug": "champions-league",
+      "author": "BRYME Sports",
+      "labels": [
+        "champions-league",
+        "format",
+        "explainer"
+      ],
+      "status": "published",
+      "publishedAt": "2026-08-16",
+      "updatedAt": "2026-08-16",
+      "readingTime": "6 min read",
+      "metaDescription": "A clear explainer of the Champions League league-phase format: 36 teams, eight opponents, the top-eight bye, the play-off round and the seeding that shapes the bracket.",
+      "content": [
+        {
+          "heading": "One table, not eight groups",
+          "body": "From the 2024–25 season the Champions League abandoned the group stage it had used for three decades. Instead of eight groups of four, all 36 clubs now sit in a single league table.\n\nThe number of participants rose from 32 to 36. Each club plays eight matches — four at home, four away — against eight different opponents, and never plays the same team twice. Points work exactly as they do in a domestic league: three for a win, one for a draw.\n\nThe format is drawn from the Swiss system used in chess tournaments, where players are matched by strength rather than sorted into fixed pools. For the draw, the 36 clubs are divided into four seeding pots by UEFA club coefficient, and each team is drawn against two opponents from each pot, playing one home and one away in each pairing.\n\nThe league phase runs from September to January. The knockout rounds begin in February."
+        },
+        {
+          "heading": "What the table decides",
+          "body": "When the eight matches are done, the single table splits three ways.\n\nPositions 1 to 8 go straight into the round of 16. They skip February entirely and enter the draw as seeded teams.\n\nPositions 9 to 24 enter a two-legged knockout play-off round in February — eight ties for the remaining eight places in the last 16. Teams finishing 9th to 16th are seeded in that draw; teams finishing 17th to 24th are not.\n\nPositions 25 to 36 are eliminated. This is the change that most altered the competition's stakes: under the previous format, third place in a group meant a drop into the Europa League. Now the bottom twelve are out of European football for the season, with no parachute.\n\nFinishing ninth and finishing twenty-fourth both mean the play-off round, but they are not the same outcome. The seeding advantage runs all the way through the bracket."
+        },
+        {
+          "heading": "Why league position still matters after the league phase",
+          "body": "The knockout bracket is shaped by where you finished, and the advantage compounds.\n\nHigher-ranked sides get the second leg at home — in the play-off round for those seeded 9th to 16th, and in the round of 16 for the top eight. The top four in the league phase carry that advantage into the quarter-finals, and the top two into the semi-finals.\n\nThe top eight are also paired in the draw so that the sides finishing first and second land on opposite sides of the bracket, meaning the two best league-phase records cannot meet before the final.\n\nOne useful wrinkle: if an unseeded club knocks out a seeded one, it inherits that seeding position for the rest of the run. The bracket keeps its shape even when the favourites do not survive it."
+        },
+        {
+          "heading": "Getting in: the qualifying rounds nobody watches",
+          "body": "The 36 clubs in the league phase do not all arrive the same way, and most of the field is settled long before September.\n\nTwenty-nine teams qualify in advance: the Champions League and Europa League title holders, the champions of the ten highest-ranked associations, runners-up from the top six, third-placed teams from the top five, fourth-placed teams from the top four, and two places awarded to the associations with the best one-year coefficient.\n\nThe remaining seven come through qualifying, which begins in early July — before most domestic seasons have even started. Qualifying is split into two separate streams: a Champions Path for teams that won their national league, and a League Path for those who qualified by finishing second, third or fourth. Five of the seven places go to the Champions Path and two to the League Path.\n\nThat split is deliberate. It protects a route into the competition for champions of smaller associations, who would otherwise be drawn against clubs from far stronger leagues at every stage."
+        },
+        {
+          "heading": "What the format changed in practice",
+          "body": "Three things are measurably different.\n\nMore matches. Guaranteed group-stage football went from six matches to eight. A club reaching the final can now play up to 17 matches in the competition, against a previous maximum of 13.\n\nMore variety of opponent. Eight different opponents rather than three played twice means a wider spread of fixtures, and it removes the dead rubber — the final group game between two teams who had already settled their fate.\n\nHarsher elimination. Finishing outside the top 24 ends your European season outright.\n\nThe honest caveat: whether the format is better is an argument about taste and calendar congestion, not a question with a factual answer. What is not in dispute is that clubs now need deeper squads. Eight matches against eight different opponents inside ten weeks cannot be navigated with the small core that a four-team group allowed."
+        }
+      ],
+      "sources": [
+        {
+          "name": "UEFA Champions League — format and distribution (Wikipedia)",
+          "url": "https://en.wikipedia.org/wiki/UEFA_Champions_League"
+        }
+      ],
+      "sourcesCheckedOn": "2026-08-16"
+    },
+    {
+      "slug": "champions-league-records",
+      "title": "Champions League Records: Who Actually Holds What",
+      "seoTitle": "Champions League Records: Most Titles, Most Finals Lost, Every Multiple Winner",
+      "excerpt": "Real Madrid's fifteen, the five-in-a-row nobody has matched, Juventus's seven lost finals, and the four clubs who reached a final in their own stadium. The records, with the awkward ones included.",
+      "category": "Records",
+      "categorySlug": "records",
+      "author": "BRYME Sports",
+      "labels": [
+        "champions-league",
+        "records",
+        "history"
+      ],
+      "status": "published",
+      "publishedAt": "2026-08-16",
+      "updatedAt": "2026-08-16",
+      "readingTime": "6 min read",
+      "metaDescription": "Champions League and European Cup records: most titles, consecutive wins, most finals lost, the multiple-winner badge, and the clubs who lost finals in their own stadium.",
+      "content": [
+        {
+          "heading": "The competition, briefly",
+          "body": "The competition was established in 1955 and was called the European Cup until it was renamed ahead of the 1992–93 season. Every record below spans both eras, because they are the same trophy and the same lineage.\n\nIn seventy years, 24 clubs have won it."
+        },
+        {
+          "heading": "Most titles: Real Madrid, and it is not close",
+          "body": "Real Madrid hold fifteen titles, including the very first edition in 1956.\n\nThey also hold the record for consecutive wins, with five straight titles from 1956 to 1960 — a run that has never been approached since, and which the current format makes structurally harder to repeat.\n\nBy country, Spain has produced the most champions with twenty wins from just two clubs. England has fifteen wins from a record six different clubs — the widest spread of any nation. Italy has twelve from three.\n\nThat English figure comes with an asterisk that is part of the record: English clubs were banned from European competition for five years after the Heysel disaster in 1985."
+        },
+        {
+          "heading": "The multiple-winner badge",
+          "body": "A club that wins the competition three times in a row, or five times in total, earns the multiple-winner badge worn on the shirt in European competition.\n\nSix clubs have earned it: Real Madrid, Ajax, Bayern Munich, AC Milan, Liverpool and Barcelona.\n\nThere used to be a second prize attached. Until 2009, a club reaching that threshold was allowed to keep the European Champion Clubs' Cup itself, and UEFA commissioned a new one. Since 2009 the winners each year receive a full-size replica and UEFA retains the original trophy."
+        },
+        {
+          "heading": "The records nobody wants",
+          "body": "Juventus have lost seven finals — more than any other club.\n\nAtlético Madrid are the only side to have reached three finals without ever winning the trophy. Reims, Valencia and Arsenal have each finished runners-up twice without winning it.\n\nAnd then there is the cruellest category in the competition's history. The venue for the final is chosen years in advance, and on four occasions a club has reached a final scheduled for its own stadium.\n\nTwo of them took the chance. Real Madrid won their second European Cup at the Santiago Bernabéu in 1957, and Inter Milan won their second at the San Siro in 1965.\n\nThe other two lost — both on penalties. Roma were beaten by Liverpool at the Stadio Olimpico in 1984, and Bayern Munich were beaten by Chelsea at the Allianz Arena in 2012."
+        },
+        {
+          "heading": "The current holders",
+          "body": "Paris Saint-Germain are the reigning champions, having won the 2026 final 4–3 on penalties against Arsenal after a 1–1 draw following extra time.\n\nIt is PSG's second title. For Arsenal it was a second final lost without a win — which is how they join Reims and Valencia in the runners-up column above."
+        },
+        {
+          "heading": "A note on how these records are counted",
+          "body": "Records in this competition are usually quoted for the combined European Cup and Champions League era, which is why Real Madrid's total includes titles from the 1950s and why Ajax's badge rests substantially on the early 1970s.\n\nAppearance and goalscoring records are counted differently by different sources depending on whether qualifying rounds are included, so they are deliberately left out here rather than quoted with a caveat that most readers will not notice. The club records above are drawn from the finals record itself, where the count is unambiguous."
+        }
+      ],
+      "sources": [
+        {
+          "name": "List of European Cup and UEFA Champions League finals (Wikipedia)",
+          "url": "https://en.wikipedia.org/wiki/List_of_European_Cup_and_UEFA_Champions_League_finals"
+        }
+      ],
+      "sourcesCheckedOn": "2026-08-16"
     }
   ]
 }
