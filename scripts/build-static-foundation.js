@@ -79,6 +79,32 @@ if (fs.existsSync(cataloguePath)) {
 }
 
 /* ------------------------------------------------------------------ */
+/* Verified title metadata overlay (content/title-metadata.json)      */
+/* ------------------------------------------------------------------ */
+/* Director, cast, runtime, country and language sourced from Wikidata
+   (CC0 structured data) by scripts/enrich-wikidata.py. The overlay only
+   FILLS BLANKS — any value already present in the catalogue or in the
+   legacy data wins, so editorial corrections are never overwritten.
+   Each enriched record keeps the Wikidata id and Wikipedia link so the
+   title page can say where the facts came from. */
+const titleMetaPath = path.join(root, 'content', 'title-metadata.json');
+let titleMeta = {};
+if (fs.existsSync(titleMetaPath)) titleMeta = JSON.parse(fs.readFileSync(titleMetaPath, 'utf8'));
+let enrichedCount = 0;
+movies.forEach(m => {
+  const meta = titleMeta[m.id];
+  if (!meta) return;
+  let used = false;
+  if (!m.director && meta.director) { m.director = clean(meta.director); used = true; }
+  if ((!m.cast || !m.cast.length) && Array.isArray(meta.cast) && meta.cast.length) { m.cast = meta.cast.map(clean); used = true; }
+  if (!m.runtime && meta.runtime) { m.runtime = clean(meta.runtime); used = true; }
+  if (!m.country && meta.country) { m.country = clean(meta.country); used = true; }
+  if (!m.language && meta.language) { m.language = clean(meta.language); used = true; }
+  if (used && meta.source) { m.metaSource = meta.source; enrichedCount++; }
+  if (m.cast && m.cast.length && meta.castSource) m.castSource = meta.castSource;
+});
+
+/* ------------------------------------------------------------------ */
 /* Frontend enrichment (does NOT touch content/catalogue.json)        */
 /* ------------------------------------------------------------------ */
 const typeGenresPath = path.join(root, 'content', 'type-genres.json');
@@ -395,6 +421,7 @@ fs.writeFileSync(path.join(root,'assets/site.css'), css + '\n' + '.sports-featur
 @media(max-width:640px){.sp-hero-track{grid-auto-columns:calc(100% - 40px)}.sp-hero-arrow{display:none}.sp-hero-card{min-height:200px}.sp-article-head h1{font-size:30px}}
 @media(min-width:1440px){.sp-hero-track{grid-auto-columns:calc((100% - 64px)/5);grid-auto-flow:column}}
 .visually-hidden{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}@media(max-width:760px){.hero-carousel{min-height:520px}.hero-slide-inner{padding-top:150px;padding-bottom:52px}.hero-slide h1{font-size:40px}.hero-slide p{font-size:14.5px}.hero-ctrl{width:40px;height:40px;font-size:19px}.hero-prev{left:8px}.hero-next{right:8px}.rec-inner{padding:26px 18px}.rec-cta{width:100%;text-align:center}}.hero-kicker{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:12px;font-weight:800;color:var(--muted);letter-spacing:.05em;text-transform:uppercase;margin-bottom:10px}.hero-kicker .dot{opacity:.35}.cta-ghost{background:transparent;border:1px solid var(--accent);color:#fff}.cta-ghost:hover{background:var(--accent)}.take-card{margin-top:28px;border:1px solid var(--line);border-left:3px solid var(--gold);background:#101318;padding:18px 20px;border-radius:0 6px 6px 0}.take-card h3{font-size:19px;line-height:1.25;margin:6px 0}.take-card p{font-size:14px;color:var(--muted);margin:0 0 12px}.take-card .cta{margin:0}.sub-section{padding:8px 0 34px}.sub-section h2{font-size:clamp(20px,3vw,26px)}.sub-section .lead,.sub-section p.sec-note{font-size:13px;color:var(--muted);margin:0 0 14px}@media(max-width:760px){.hero-kicker{font-size:10.5px;gap:6px}.take-card{padding:15px 14px}.hero-actions .cta{min-height:44px;display:inline-flex;align-items:center}.story-grid-title{grid-template-columns:repeat(2,1fr)}@media(max-width:760px){.story-grid-title{grid-template-columns:1fr}.story-grid-title a{min-height:150px}}`);
+fs.appendFileSync(path.join(root,'assets/site.css'), `\n/* Verified metadata attribution */\n.meta-source{margin:10px 0 0;font-size:12px;line-height:1.55;color:#8b93a1}.meta-source a{color:#a9b3c2;text-decoration:underline;text-underline-offset:2px}.meta-source a:hover{color:#fff}\n`);
 fs.appendFileSync(path.join(root,'assets/site.css'), `\n/* Persistent navigation control */\n.bryme-back{position:fixed;left:14px;top:74px;z-index:80;display:grid;place-items:center;width:34px;height:34px;border:1px solid rgba(255,255,255,.22);border-radius:50%;background:rgba(8,9,11,.88);backdrop-filter:blur(10px);color:#fff;font:900 21px/1 system-ui,sans-serif;padding:0;cursor:pointer;box-shadow:0 7px 22px rgba(0,0,0,.35)}.bryme-back:hover{border-color:var(--sports,#3ddc84);transform:translateX(-1px)}@media(max-width:760px){.bryme-back{left:10px;top:64px;width:32px;height:32px}}\n`);
 /* ------------------------------------------------------------------ */
 /* Shared markup helpers                                              */
@@ -1448,6 +1475,16 @@ for (const m of movies) {
   const schema = { '@context':'https://schema.org', '@type':schemaType, name:m.title, description:m.description || m.teaser || undefined, dateCreated:m.year ? String(m.year) : undefined, genre:(m.genres[0] || m.genre) || undefined, sameAs:m.trailer || undefined, image: poster(m) || undefined };
   if (m.country) schema.countryOfOrigin = m.country;
   if (m.language) schema.inLanguage = m.language;
+  /* Verified credits (Wikidata/Wikipedia overlay) — only emitted when real. */
+  if (m.director) {
+    const directors = m.director.split(';').map(d => d.trim()).filter(Boolean);
+    if (directors.length) schema.director = directors.map(name => ({ '@type':'Person', name }));
+  }
+  if (m.cast && m.cast.length) schema.actor = m.cast.map(name => ({ '@type':'Person', name }));
+  if (m.runtime) {
+    const mins = parseInt(String(m.runtime).replace(/[^0-9]/g, ''), 10);
+    if (mins > 0) schema.duration = `PT${mins}M`;
+  }
   if (schemaType === 'TVSeries' && m.year) schema.startDate = String(m.year);
   if (schemaType === 'TVSeries' && m.numberOfSeasons) schema.numberOfSeasons = m.numberOfSeasons;
   if (schemaType === 'TVSeries' && m.numberOfEpisodes) schema.numberOfEpisodes = m.numberOfEpisodes;
@@ -1505,6 +1542,7 @@ for (const m of movies) {
     <aside class="aside">
       <h2>Details</h2>
       <dl><dt>Type</dt><dd>${esc(label)}</dd><dt>Year</dt><dd>${m.year || 'Information unavailable'}</dd><dt>Genre</dt><dd>${m.genres.length ? m.genres.map(g => `<a href="${url('/' + typeDir + '/' + slugify(g) + '/')}">${esc(g)}</a>`).join(', ') : (esc(m.genre || 'Information unavailable'))}</dd>${m.country ? `<dt>Country</dt><dd>${esc(m.country)}</dd>` : ''}${m.language ? `<dt>Language</dt><dd>${esc(m.language)}</dd>` : ''}${m.runtime ? `<dt>Runtime</dt><dd>${esc(m.runtime)}</dd>` : ''}${m.director ? `<dt>Director</dt><dd>${esc(m.director)}</dd>` : ''}${m.cast && m.cast.length ? `<dt>Cast</dt><dd>${m.cast.map(esc).join('; ')}</dd>` : ''}<dt>Year index</dt><dd><a href="${url(yearPath)}">${esc(yearLabel)}</a></dd>${m.trending ? `<dt>Trending</dt><dd>🔥 #${m.trendingRank} (editorially curated)${m.trendingUntil ? ` · until ${m.trendingUntil}` : ''}</dd>` : ''}${m.popular ? `<dt>Popular</dt><dd>⭐ #${m.popularRank} (editorial popular pick)</dd>` : ''}${m.editorPick ? `<dt>Editor's Pick</dt><dd>👑 #${m.editorPickRank}${m.editorPickNote ? ` — ${esc(m.editorPickNote)}` : ''}</dd>` : ''}</dl>
+      ${m.metaSource ? `<p class="meta-source">Director, runtime, country and language from <a href="${esc(m.metaSource.url)}" rel="nofollow noopener">Wikidata</a>${m.castSource && m.castSource.url ? `; billed cast from <a href="${esc(m.castSource.url)}" rel="nofollow noopener">Wikipedia</a>` : ''}${m.metaSource.retrieved ? ` · retrieved ${esc(m.metaSource.retrieved)}` : ''}. BRYME's synopsis and editorial score are written in-house.</p>` : ''}
     </aside>
   </section></main>`
   }));

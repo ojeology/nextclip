@@ -1,6 +1,6 @@
 # BRYME catalogue & frontend report
 
-Generated: 2026-08-14T12:30:13.336Z
+Generated: 2026-08-16T16:27:40.061Z
 
 ## Catalogue
 - Total titles: **632**
@@ -11,7 +11,7 @@ Generated: 2026-08-14T12:30:13.336Z
 - With verified trailers: **602**
 - Without trailers: **30**
 - With editorial ratings: **127**
-- With country data: **455** / language: **455**
+- With country data: **617** / language: **617**
 
 ## Genre coverage (per type)
 - Movie genres: `sci-fi` (52), `action` (72), `drama` (60), `korean` (2), `horror` (40), `superhero` (55), `animation` (41), `war` (7), `fantasy` (15), `thriller` (32), `comedy` (33), `romance` (10), `crime` (18), `nigerian` (8), `french` (3), `indian` (13), `chinese` (12), `western` (2), `german` (2)

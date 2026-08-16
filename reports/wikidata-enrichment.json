@@ -1,0 +1,371 @@
+{
+  "generated": "2026-08-16 16:22:15",
+  "source": "Wikidata SPARQL endpoint (CC0 structured data)",
+  "catalogueSize": 632,
+  "enrichedTotal": 578,
+  "matchedThisRun": 549,
+  "unmatchedThisRun": 43,
+  "ambiguousThisRun": 11,
+  "unmatched": [
+    {
+      "id": "topgun",
+      "title": "Top Gun: Maverick",
+      "year": 2022,
+      "reason": "no entity with this exact title"
+    },
+    {
+      "id": "mideadreck",
+      "title": "Mission: Impossible – Dead Reckoning",
+      "year": 2023,
+      "reason": "no entity with this exact title"
+    },
+    {
+      "id": "lastjedi",
+      "title": "Star Wars: The Last Jedi",
+      "year": 2017,
+      "reason": "no entity with this exact title"
+    },
+    {
+      "id": "riseofskywalker",
+      "title": "Star Wars: The Rise of Skywalker",
+      "year": 2019,
+      "reason": "no entity with this exact title"
+    },
+    {
+      "id": "anewhope",
+      "title": "Star Wars: A New Hope",
+      "year": 1977,
+      "reason": "no entity with this exact title"
+    },
+    {
+      "id": "se7en",
+      "title": "Se7en",
+      "year": 1995,
+      "reason": "no entity with this exact title"
+    },
+    {
+      "id": "lalaland",
+      "title": "La La Land",
+      "year": 2016,
+      "reason": "no candidate with a matching year"
+    },
+    {
+      "id": "mugentrain",
+      "title": "Demon Slayer: Mugen Train",
+      "year": 2020,
+      "reason": "no entity with this exact title"
+    },
+    {
+      "id": "alien-resurrection",
+      "title": "Alien: Resurrection",
+      "year": 1997,
+      "reason": "no entity with this exact title"
+    },
+    {
+      "id": "anchorman",
+      "title": "Anchorman",
+      "year": 2004,
+      "reason": "no entity with this exact title"
+    },
+    {
+      "id": "anikulapo",
+      "title": "Aníkúlápó",
+      "year": 2022,
+      "reason": "no entity with this exact title"
+    },
+    {
+      "id": "arcane-season-2",
+      "title": "Arcane: Season 2",
+      "year": 2024,
+      "reason": "no entity with this exact title"
+    },
+    {
+      "id": "avengers-doomsday",
+      "title": "Avengers: Doomsday",
+      "year": 2026,
+      "reason": "no entity with this exact title"
+    },
+    {
+      "id": "code-geass",
+      "title": "Code Geass",
+      "year": 2006,
+      "reason": "no entity with this exact title"
+    },
+    {
+      "id": "die-hard-3",
+      "title": "Die Hard: With a Vengeance",
+      "year": 1995,
+      "reason": "no entity with this exact title"
+    },
+    {
+      "id": "dune-part-three",
+      "title": "Dune: Part Three",
+      "year": 2026,
+      "reason": "no entity with this exact title"
+    },
+    {
+      "id": "frieren",
+      "title": "Frieren: Beyond Journey's End",
+      "year": 2023,
+      "reason": "no entity with this exact title"
+    },
+    {
+      "id": "gangs-of-wasseypur",
+      "title": "Gangs of Wasseypur",
+      "year": 2012,
+      "reason": "no entity with this exact title"
+    },
+    {
+      "id": "hunter-x-hunter",
+      "title": "Hunter x Hunter",
+      "year": 2011,
+      "reason": "no entity with this exact title"
+    },
+    {
+      "id": "ije-the-journey",
+      "title": "Ije: The Journey",
+      "year": 2010,
+      "reason": "no entity with this exact title"
+    },
+    {
+      "id": "jallikattu",
+      "title": "Jallikattu",
+      "year": 2019,
+      "reason": "no candidate with a matching year"
+    },
+    {
+      "id": "kgf-2",
+      "title": "KGF: Chapter 2",
+      "year": 2022,
+      "reason": "no entity with this exact title"
+    },
+    {
+      "id": "loki-season-2",
+      "title": "Loki: Season 2",
+      "year": 2023,
+      "reason": "no entity with this exact title"
+    },
+    {
+      "id": "mashle",
+      "title": "Mashle: Magic and Muscles",
+      "year": 2023,
+      "reason": "no entity with this exact title"
+    },
+    {
+      "id": "merry-men",
+      "title": "Merry Men",
+      "year": 2018,
+      "reason": "no entity with this exact title"
+    },
+    {
+      "id": "one-punch-man",
+      "title": "One Punch Man",
+      "year": 2015,
+      "reason": "no entity with this exact title"
+    },
+    {
+      "id": "re-zero",
+      "title": "Re:Zero – Starting Life in Another World",
+      "year": 2016,
+      "reason": "no entity with this exact title"
+    },
+    {
+      "id": "shazam",
+      "title": "Shazam!",
+      "year": 2019,
+      "reason": "no candidate with a matching year"
+    },
+    {
+      "id": "singin-in-the-rain",
+      "title": "Singin’ in the Rain",
+      "year": 1952,
+      "reason": "no entity with this exact title"
+    },
+    {
+      "id": "spy-x-family",
+      "title": "Spy x Family",
+      "year": 2022,
+      "reason": "no entity with this exact title"
+    },
+    {
+      "id": "the-bear",
+      "title": "The Bear",
+      "year": 2022,
+      "reason": "no candidate with a matching year"
+    },
+    {
+      "id": "the-boys",
+      "title": "The Boys",
+      "year": 2019,
+      "reason": "no candidate with a matching year"
+    },
+    {
+      "id": "the-boys-season-2",
+      "title": "The Boys: Season 2",
+      "year": 2020,
+      "reason": "no entity with this exact title"
+    },
+    {
+      "id": "the-boys-season-3",
+      "title": "The Boys: Season 3",
+      "year": 2022,
+      "reason": "no entity with this exact title"
+    },
+    {
+      "id": "the-trade",
+      "title": "The Trade",
+      "year": 2023,
+      "reason": "no candidate with a matching year"
+    },
+    {
+      "id": "wandering-earth-2",
+      "title": "The Wandering Earth II",
+      "year": 2023,
+      "reason": "no entity with this exact title"
+    },
+    {
+      "id": "x-men-2",
+      "title": "X2: X-Men United",
+      "year": 2003,
+      "reason": "no entity with this exact title"
+    },
+    {
+      "id": "forrest-gump",
+      "title": "Forrest Gump",
+      "year": 1994,
+      "reason": "no entity with this exact title"
+    },
+    {
+      "id": "empire-strikes-back",
+      "title": "Star Wars: The Empire Strikes Back",
+      "year": 1980,
+      "reason": "no entity with this exact title"
+    },
+    {
+      "id": "return-of-the-jedi",
+      "title": "Star Wars: Return of the Jedi",
+      "year": 1983,
+      "reason": "no entity with this exact title"
+    },
+    {
+      "id": "harry-potter-sorcerers-stone",
+      "title": "Harry Potter and the Sorcerer's Stone",
+      "year": 2001,
+      "reason": "no entity with this exact title"
+    },
+    {
+      "id": "frozen-2",
+      "title": "Frozen II",
+      "year": 2019,
+      "reason": "no entity with this exact title"
+    },
+    {
+      "id": "toy-story",
+      "title": "Toy Story",
+      "year": 1995,
+      "reason": "no entity with this exact title"
+    }
+  ],
+  "ambiguous": [
+    {
+      "id": "titanic",
+      "title": "Titanic",
+      "year": 1997,
+      "candidates": [
+        "Q123374212",
+        "Q44578"
+      ]
+    },
+    {
+      "id": "death-note",
+      "title": "Death Note",
+      "year": 2006,
+      "candidates": [
+        "Q1200673",
+        "Q718624"
+      ]
+    },
+    {
+      "id": "departures",
+      "title": "Departures",
+      "year": 2008,
+      "candidates": [
+        "Q1044598",
+        "Q5260595"
+      ]
+    },
+    {
+      "id": "girl-with-dragon-tattoo",
+      "title": "The Girl with the Dragon Tattoo",
+      "year": 2011,
+      "candidates": [
+        "Q276343",
+        "Q474093"
+      ]
+    },
+    {
+      "id": "horimiya",
+      "title": "Horimiya",
+      "year": 2021,
+      "candidates": [
+        "Q104815263",
+        "Q111342113",
+        "Q118206776"
+      ]
+    },
+    {
+      "id": "kingdom",
+      "title": "Kingdom",
+      "year": 2019,
+      "candidates": [
+        "Q30947892",
+        "Q59726567"
+      ]
+    },
+    {
+      "id": "lost",
+      "title": "Lost",
+      "year": 2004,
+      "candidates": [
+        "Q11266757",
+        "Q23567"
+      ]
+    },
+    {
+      "id": "taken",
+      "title": "Taken",
+      "year": 2008,
+      "candidates": [
+        "Q137942204",
+        "Q277080"
+      ]
+    },
+    {
+      "id": "the-black-book",
+      "title": "The Black Book",
+      "year": 2023,
+      "candidates": [
+        "Q122830674",
+        "Q126717901"
+      ]
+    },
+    {
+      "id": "the-princess-bride",
+      "title": "The Princess Bride",
+      "year": 1987,
+      "candidates": [
+        "Q123373074",
+        "Q506418"
+      ]
+    },
+    {
+      "id": "the-witch",
+      "title": "The Witch",
+      "year": 2015,
+      "candidates": [
+        "Q19057481",
+        "Q61818834"
+      ]
+    }
+  ]
+}

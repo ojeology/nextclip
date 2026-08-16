@@ -1,0 +1,153 @@
+{
+  "generated": "2026-08-16 16:26:11",
+  "source": "English Wikipedia infobox 'starring' field",
+  "withBilledCast": 494,
+  "withoutBilledCast": 29,
+  "withoutBilledCastList": [
+    {
+      "id": "arcane",
+      "title": "Arcane",
+      "article": "Arcane (TV series)"
+    },
+    {
+      "id": "apothecary-diary",
+      "title": "The Apothecary Diaries",
+      "article": "The Apothecary Diaries (TV series)"
+    },
+    {
+      "id": "bleach",
+      "title": "Bleach",
+      "article": "Bleach (TV series)"
+    },
+    {
+      "id": "black-mirror",
+      "title": "Black Mirror",
+      "article": "Black Mirror"
+    },
+    {
+      "id": "attack-on-titan",
+      "title": "Attack on Titan",
+      "article": "Attack on Titan (TV series)"
+    },
+    {
+      "id": "black-clover",
+      "title": "Black Clover",
+      "article": "Black Clover (TV series)"
+    },
+    {
+      "id": "cowboy-bebop",
+      "title": "Cowboy Bebop",
+      "article": "Cowboy Bebop"
+    },
+    {
+      "id": "chainsaw-man",
+      "title": "Chainsaw Man",
+      "article": "Chainsaw Man (TV series)"
+    },
+    {
+      "id": "dandadan",
+      "title": "Dandadan",
+      "article": "Dandadan (TV series)"
+    },
+    {
+      "id": "face-off",
+      "title": "Face/Off",
+      "article": "Off"
+    },
+    {
+      "id": "dragon-ball-z",
+      "title": "Dragon Ball Z",
+      "article": "Dragon Ball Z"
+    },
+    {
+      "id": "fairy-tail",
+      "title": "Fairy Tail",
+      "article": "Fairy Tail (TV series)"
+    },
+    {
+      "id": "demon-slayer",
+      "title": "Demon Slayer: Kimetsu no Yaiba",
+      "article": "Demon Slayer: Kimetsu no Yaiba (TV series)"
+    },
+    {
+      "id": "dragon-ball-super",
+      "title": "Dragon Ball Super",
+      "article": "Dragon Ball Super (TV series)"
+    },
+    {
+      "id": "fullmetal-alchemist-brotherhood",
+      "title": "Fullmetal Alchemist: Brotherhood",
+      "article": "Fullmetal Alchemist: Brotherhood"
+    },
+    {
+      "id": "gintama",
+      "title": "Gintama",
+      "article": "Gintama (TV series)"
+    },
+    {
+      "id": "haikyuu",
+      "title": "Haikyu!!",
+      "article": "Haikyu!! (TV series)"
+    },
+    {
+      "id": "invincible",
+      "title": "Invincible",
+      "article": "Invincible (TV series)"
+    },
+    {
+      "id": "hells-paradise",
+      "title": "Hell's Paradise",
+      "article": "Hell's Paradise (TV series)"
+    },
+    {
+      "id": "jojo-bizarre-adventure",
+      "title": "JoJo's Bizarre Adventure",
+      "article": "JoJo's Bizarre Adventure (TV series)"
+    },
+    {
+      "id": "jujutsu-kaisen",
+      "title": "Jujutsu Kaisen",
+      "article": "Jujutsu Kaisen (TV series)"
+    },
+    {
+      "id": "one-piece",
+      "title": "One Piece",
+      "article": "One Piece (1999 TV series)"
+    },
+    {
+      "id": "naruto",
+      "title": "Naruto",
+      "article": "Naruto (TV series)"
+    },
+    {
+      "id": "samurai-champloo",
+      "title": "Samurai Champloo",
+      "article": "Samurai Champloo"
+    },
+    {
+      "id": "steins-gate",
+      "title": "Steins;Gate",
+      "article": "Steins;Gate (TV series)"
+    },
+    {
+      "id": "slime",
+      "title": "That Time I Got Reincarnated as a Slime",
+      "article": "That Time I Got Reincarnated as a Slime (TV series)"
+    },
+    {
+      "id": "sword-art-online",
+      "title": "Sword Art Online",
+      "article": "Sword Art Online (TV series)"
+    },
+    {
+      "id": "tokyo-ghoul",
+      "title": "Tokyo Ghoul",
+      "article": "Tokyo Ghoul season 1"
+    },
+    {
+      "id": "vinland-saga",
+      "title": "Vinland Saga",
+      "article": "Vinland Saga (TV series)"
+    }
+  ]
+}
