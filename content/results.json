@@ -12,7 +12,52 @@
     "verifiedOn": "YYYY-MM-DD, optional - when you checked it"
   },
   "premier-league": {},
-  "la-liga": {},
+  "la-liga": {
+    "alaves-vs-getafe": {
+      "homeScore": 3,
+      "awayScore": 0,
+      "status": "FT",
+      "playedOn": "2026-08-15",
+      "source": {
+        "name": "BBC Sport — Alavés v Getafe match summary",
+        "url": "https://www.bbc.com/sport/football/live/cmx2kvp0kn1et"
+      },
+      "verifiedOn": "2026-08-17"
+    },
+    "sevilla-vs-rayo-vallecano": {
+      "homeScore": 2,
+      "awayScore": 1,
+      "status": "FT",
+      "playedOn": "2026-08-15",
+      "source": {
+        "name": "worldfootball.net — Primera División 2026/27 matchday 1",
+        "url": "https://www.worldfootball.net/competition/co97/spain-primera-division/results-and-standings/"
+      },
+      "verifiedOn": "2026-08-17"
+    },
+    "racing-vs-villarreal": {
+      "homeScore": 2,
+      "awayScore": 2,
+      "status": "FT",
+      "playedOn": "2026-08-16",
+      "source": {
+        "name": "worldfootball.net — Primera División 2026/27 matchday 1",
+        "url": "https://www.worldfootball.net/competition/co97/spain-primera-division/results-and-standings/"
+      },
+      "verifiedOn": "2026-08-17"
+    },
+    "espanyol-vs-levante": {
+      "homeScore": 3,
+      "awayScore": 0,
+      "status": "FT",
+      "playedOn": "2026-08-16",
+      "source": {
+        "name": "worldfootball.net — Primera División 2026/27 matchday 1",
+        "url": "https://www.worldfootball.net/competition/co97/spain-primera-division/results-and-standings/"
+      },
+      "verifiedOn": "2026-08-17"
+    }
+  },
   "serie-a": {},
   "bundesliga": {},
   "ligue-1": {}

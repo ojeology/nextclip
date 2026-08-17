@@ -527,7 +527,8 @@
       "wikipedia": "https://en.wikipedia.org/wiki/Alien_3"
     },
     "title": "Alien 3",
-    "year": 1992
+    "year": 1992,
+    "description": "Ripley wakes on a prison planet with no weapons, no allies and something loose in the vents. Bleak, bald and unloved on release, better than remembered."
   },
   "alien-romulus": {
     "cast": [
@@ -920,7 +921,8 @@
       "wikipedia": "https://en.wikipedia.org/wiki/Ant-Man_(film)"
     },
     "title": "Ant-Man",
-    "year": 2015
+    "year": 2015,
+    "description": "A burglar with a talent for getting caught inherits a suit that shrinks him to the size of an insect. Marvel's smallest hero, and its funniest heist."
   },
   "ant-man-2": {
     "cast": [
@@ -1933,7 +1935,8 @@
       "wikipedia": "https://en.wikipedia.org/wiki/Blazing_Saddles"
     },
     "title": "Blazing Saddles",
-    "year": 1974
+    "year": 1974,
+    "description": "A Black sheriff is appointed to a frontier town that wants him gone, in a comedy that aims at the western, the audience and the studio behind it."
   },
   "bleach": {
     "cast": [],
@@ -2507,7 +2510,8 @@
       "wikipedia": "https://en.wikipedia.org/wiki/Carrie_(1976_film)"
     },
     "title": "Carrie",
-    "year": 1976
+    "year": 1976,
+    "description": "A bullied girl with telekinesis is asked to the prom by a boy who means it. De Palma turns King's first novel into a slow walk to a bucket of blood."
   },
   "cars": {
     "cast": [
@@ -5859,7 +5863,8 @@
       "wikipedia": "https://en.wikipedia.org/wiki/Hawkeye_(miniseries)"
     },
     "title": "Hawkeye",
-    "year": 2021
+    "year": 2021,
+    "description": "Clint Barton wants to get home for Christmas. Kate Bishop wants to be him. New York in December, tracksuit mafia, and a terrible holiday for both."
   },
   "heat": {
     "cast": [
@@ -6617,7 +6622,8 @@
       "wikipedia": "https://en.wikipedia.org/wiki/Iron_Man_(2008_film)"
     },
     "title": "Iron Man",
-    "year": 2008
+    "year": 2008,
+    "description": "A weapons manufacturer is nearly killed by his own product, builds a way out of a cave, and decides to become something better. Where all of it started."
   },
   "iron-man-2": {
     "cast": [
@@ -7997,7 +8003,8 @@
       "wikipedia": "https://en.wikipedia.org/wiki/Loki_(TV_series)"
     },
     "title": "Loki",
-    "year": 2021
+    "year": 2021,
+    "description": "Pulled out of his own timeline by a bureaucracy that polices reality, the God of Mischief is made to help repair the damage he spent a decade causing."
   },
   "longlegs": {
     "cast": [
@@ -9269,7 +9276,8 @@
       "wikipedia": "https://en.wikipedia.org/wiki/Narcos"
     },
     "title": "Narcos",
-    "year": 2015
+    "year": 2015,
+    "description": "Pablo Escobar builds an empire out of cocaine and fear while two DEA agents chase him through a country he has already bought. Told from both sides."
   },
   "naruto": {
     "cast": [],
@@ -9539,7 +9547,8 @@
       "wikipedia": "https://en.wikipedia.org/wiki/Oblivion_(2013_film)"
     },
     "title": "Oblivion",
-    "year": 2013
+    "year": 2013,
+    "description": "A repairman servicing drones over a ruined Earth keeps finding pieces of a life he cannot remember living. Beautiful, lonely, and quietly devastating."
   },
   "october-1": {
     "cast": [
@@ -10189,7 +10198,8 @@
       "wikipedia": "https://en.wikipedia.org/wiki/Predator_2"
     },
     "title": "Predator 2",
-    "year": 1990
+    "year": 1990,
+    "description": "The hunt moves from the jungle to Los Angeles in a heatwave, where a cop chasing a cartel war finds something far worse stalking the rooftops."
   },
   "prison-break": {
     "cast": [
@@ -10863,7 +10873,8 @@
       "wikipedia": "https://en.wikipedia.org/wiki/Run_Lola_Run"
     },
     "title": "Run Lola Run",
-    "year": 1998
+    "year": 1998,
+    "description": "Twenty minutes, a hundred thousand marks, and three versions of the same sprint through Berlin. A film built like a pop song and edited like a panic attack."
   },
   "sairat": {
     "cast": [
@@ -11058,7 +11069,8 @@
       "wikipedia": "https://en.wikipedia.org/wiki/Secret_Invasion_(miniseries)"
     },
     "title": "Secret Invasion",
-    "year": 2023
+    "year": 2023,
+    "description": "Nick Fury returns to Earth older and outmanoeuvred, hunting shapeshifters who have spent thirty years quietly taking the seats that matter."
   },
   "seinfeld": {
     "cast": [
@@ -11876,7 +11888,8 @@
       "wikipedia": "https://en.wikipedia.org/wiki/Spider-Man_3"
     },
     "title": "Spider-Man 3",
-    "year": 2007
+    "year": 2007,
+    "description": "Venom, Sandman, the black suit and a dance number. Overstuffed, overreaching and far more interesting than its reputation suggests."
   },
   "spider-verse-2": {
     "cast": [
@@ -12512,7 +12525,8 @@
       "wikipedia": "https://en.wikipedia.org/wiki/The_Amazing_Spider-Man_2"
     },
     "title": "The Amazing Spider-Man 2",
-    "year": 2014
+    "year": 2014,
+    "description": "Electro rises out of neglect, Harry Osborn runs out of time, and Gwen Stacy walks into the clock tower. The sequel that broke a franchise and a heart."
   },
   "ted-lasso": {
     "cast": [
@@ -12653,7 +12667,8 @@
       "wikipedia": "https://en.wikipedia.org/wiki/Terminator_3:_Rise_of_the_Machines"
     },
     "title": "Terminator 3: Rise of the Machines",
-    "year": 2003
+    "year": 2003,
+    "description": "A liquid-metal Terminator hunts a drifting John Connor while Judgment Day closes in. The sequel that refused to let the future be rewritten."
   },
   "terminator2": {
     "cast": [
@@ -13788,7 +13803,8 @@
       "wikipedia": "https://en.wikipedia.org/wiki/The_Matrix_Revolutions"
     },
     "title": "The Matrix Revolutions",
-    "year": 2003
+    "year": 2003,
+    "description": "Zion under siege, Neo blind and walking towards the machines, and a truce nobody wanted. The trilogy ends in rain, ruin and an argument about purpose."
   },
   "the-milkmaid": {
     "cast": [
@@ -15906,7 +15922,8 @@
       "wikipedia": "https://en.wikipedia.org/wiki/X-Men:_Days_of_Future_Past"
     },
     "title": "X-Men: Days of Future Past",
-    "year": 2014
+    "year": 2014,
+    "description": "Wolverine is sent back to 1973 to stop an assassination that dooms mutantkind, and has to make two versions of Charles Xavier agree on anything."
   },
   "yellowjackets": {
     "cast": [
@@ -16035,5 +16052,44 @@
     },
     "title": "Zootopia",
     "year": 2016
+  },
+  "the-boys-season-3": {
+    "description": "Soldier Boy comes back from the dead with a grudge, and Homelander stops pretending to be liked. The season the show turned genuinely frightening."
+  },
+  "loki-season-2": {
+    "description": "Loki slips loose in time while the TVA tears itself apart, chasing a fix for a multiverse that will not stop fraying. A god learning to care, badly."
+  },
+  "tasm": {
+    "description": "A reboot with a skateboard and a grudge: Peter Parker hunts the truth about his parents, falls for Gwen Stacy, and meets a scientist becoming a lizard."
+  },
+  "the-incredible-hulk": {
+    "description": "Bruce Banner runs, a general hunts him, and a soldier volunteers to become something worse. Edward Norton's one turn, angrier than what followed."
+  },
+  "black-panther-wakanda-forever": {
+    "description": "Wakanda buries a king and finds a rival empire beneath the sea. A sequel that had to be about grief before it could be about anything else."
+  },
+  "rocky-ii": {
+    "description": "Rocky has the rematch, the money and the family, and none of it makes the second fight easier. The sequel about what winning costs."
+  },
+  "star-wars-the-last-jedi": {
+    "description": "Rey finds Luke Skywalker hiding from his own legend, and the Resistance runs out of fuel and time. The Star Wars film that argued with Star Wars."
+  },
+  "the-boys-season-2": {
+    "description": "Butcher goes after Vought and the truth about Compound V, while a new supe arrives with a smile and a swastika underneath. The satire sharpens considerably."
+  },
+  "alien-resurrection": {
+    "description": "Two hundred years on, Ripley is cloned by scientists who want the thing inside her. Wetter, stranger and more grotesque than any Alien film before it."
+  },
+  "she-hulk-attorney-at-law": {
+    "description": "Jennifer Walters gets her cousin's powers and none of his angst, then discovers superhuman law is mostly paperwork. A sitcom wearing a Marvel costume."
+  },
+  "x2": {
+    "description": "Stryker raids the school and forces Xavier's students and Magneto's followers into the same room. The X-Men film that made the metaphor land hardest."
+  },
+  "ant-man-and-the-wasp": {
+    "description": "Scott Lang is under house arrest, Hope van Dyne is out of patience, and Janet has been lost in the Quantum Realm for thirty years. A rescue at two scales."
+  },
+  "house-of-flying-daggers": {
+    "description": "A blind dancer and the policeman sent to follow her fall through a rebellion neither can be honest about. Zhang Yimou at his most saturated and doomed."
   }
 }
