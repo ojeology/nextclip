@@ -166,6 +166,28 @@
     </news:news>
   </url>
   <url>
+    <loc>https://bryme.onrender.com/sports/la-liga/matches/celta-vigo-vs-osasuna/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>BRYME</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-17</news:publication_date>
+      <news:title>Celta Vigo v Osasuna: preview, form and prediction</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://bryme.onrender.com/sports/la-liga/matches/deportivo-vs-elche/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>BRYME</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-17</news:publication_date>
+      <news:title>Deportivo de La Coruña v Elche: preview, form and prediction</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://bryme.onrender.com/sports/la-liga/matches/atletico-madrid-vs-malaga/</loc>
     <news:news>
       <news:publication>
@@ -174,6 +196,39 @@
       </news:publication>
       <news:publication_date>2026-08-17</news:publication_date>
       <news:title>Atlético Madrid v Málaga: preview, form and prediction</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://bryme.onrender.com/sports/la-liga/matches/valencia-vs-real-betis/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>BRYME</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-17</news:publication_date>
+      <news:title>Valencia v Real Betis: preview, form and prediction</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://bryme.onrender.com/sports/la-liga/matches/real-madrid-vs-real-sociedad/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>BRYME</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-17</news:publication_date>
+      <news:title>Real Madrid v Real Sociedad: preview, form and prediction</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://bryme.onrender.com/sports/la-liga/matches/barcelona-vs-athletic-bilbao/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>BRYME</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-17</news:publication_date>
+      <news:title>Barcelona v Athletic Club: preview, form and prediction</news:title>
     </news:news>
   </url>
   <url>
@@ -232,6 +287,39 @@
     </news:news>
   </url>
   <url>
+    <loc>https://bryme.onrender.com/sports/serie-a/matches/atalanta-vs-sassuolo/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>BRYME</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-17</news:publication_date>
+      <news:title>Atalanta v Sassuolo: preview, form and prediction</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://bryme.onrender.com/sports/serie-a/matches/bologna-vs-lazio/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>BRYME</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-17</news:publication_date>
+      <news:title>Bologna v Lazio: preview, form and prediction</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://bryme.onrender.com/sports/serie-a/matches/frosinone-vs-juventus/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>BRYME</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-17</news:publication_date>
+      <news:title>Frosinone v Juventus: preview, form and prediction</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://bryme.onrender.com/sports/serie-a/matches/genoa-vs-napoli/</loc>
     <news:news>
       <news:publication>
@@ -265,6 +353,28 @@
     </news:news>
   </url>
   <url>
+    <loc>https://bryme.onrender.com/sports/serie-a/matches/roma-vs-fiorentina/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>BRYME</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-17</news:publication_date>
+      <news:title>Roma v Fiorentina: preview, form and prediction</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://bryme.onrender.com/sports/serie-a/matches/torino-vs-milan/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>BRYME</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-17</news:publication_date>
+      <news:title>Torino v AC Milan: preview, form and prediction</news:title>
+    </news:news>
+  </url>
+  <url>
     <loc>https://bryme.onrender.com/sports/serie-a/matches/udinese-vs-como/</loc>
     <news:news>
       <news:publication>
@@ -273,6 +383,116 @@
       </news:publication>
       <news:publication_date>2026-08-17</news:publication_date>
       <news:title>Udinese v Como: preview, form and prediction</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://bryme.onrender.com/sports/serie-a/matches/venezia-vs-lecce/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>BRYME</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-17</news:publication_date>
+      <news:title>Venezia v Lecce: preview, form and prediction</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://bryme.onrender.com/sports/bundesliga/matches/bayern-vs-stuttgart/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>BRYME</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-17</news:publication_date>
+      <news:title>Bayern Munich v VfB Stuttgart: preview, form and prediction</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://bryme.onrender.com/sports/bundesliga/matches/leipzig-vs-gladbach/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>BRYME</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-17</news:publication_date>
+      <news:title>RB Leipzig v Borussia Mönchengladbach: preview, form and prediction</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://bryme.onrender.com/sports/bundesliga/matches/mainz-vs-paderborn/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>BRYME</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-17</news:publication_date>
+      <news:title>Mainz 05 v SC Paderborn: preview, form and prediction</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://bryme.onrender.com/sports/bundesliga/matches/union-berlin-vs-frankfurt/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>BRYME</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-17</news:publication_date>
+      <news:title>Union Berlin v Eintracht Frankfurt: preview, form and prediction</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://bryme.onrender.com/sports/bundesliga/matches/koln-vs-hoffenheim/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>BRYME</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-17</news:publication_date>
+      <news:title>1. FC Köln v TSG Hoffenheim: preview, form and prediction</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://bryme.onrender.com/sports/bundesliga/matches/elversberg-vs-leverkusen/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>BRYME</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-17</news:publication_date>
+      <news:title>SV Elversberg v Bayer Leverkusen: preview, form and prediction</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://bryme.onrender.com/sports/bundesliga/matches/dortmund-vs-hamburg/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>BRYME</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-17</news:publication_date>
+      <news:title>Borussia Dortmund v Hamburger SV: preview, form and prediction</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://bryme.onrender.com/sports/bundesliga/matches/freiburg-vs-werder/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>BRYME</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-17</news:publication_date>
+      <news:title>SC Freiburg v Werder Bremen: preview, form and prediction</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://bryme.onrender.com/sports/bundesliga/matches/augsburg-vs-schalke/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>BRYME</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-17</news:publication_date>
+      <news:title>FC Augsburg v Schalke 04: preview, form and prediction</news:title>
     </news:news>
   </url>
   <url>
@@ -339,6 +559,39 @@
       </news:publication>
       <news:publication_date>2026-08-17</news:publication_date>
       <news:title>ESTAC Troyes v Paris FC: preview, form and prediction</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://bryme.onrender.com/sports/ligue-1/matches/angers-vs-lille/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>BRYME</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-17</news:publication_date>
+      <news:title>Angers SCO v Lille (LOSC): preview, form and prediction</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://bryme.onrender.com/sports/ligue-1/matches/le-havre-vs-monaco/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>BRYME</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-17</news:publication_date>
+      <news:title>Le Havre AC v AS Monaco: preview, form and prediction</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://bryme.onrender.com/sports/ligue-1/matches/psg-vs-rennes/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>BRYME</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-08-17</news:publication_date>
+      <news:title>Paris Saint-Germain v Stade Rennais: preview, form and prediction</news:title>
     </news:news>
   </url>
 </urlset>
