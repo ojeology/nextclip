@@ -1565,7 +1565,11 @@ function sportArticlePlaceholder(art){
       <section class="sp-source"><h2>Source</h2><p><b>Source:</b> [Source Name]</p><p><b>Original report:</b> [Link]</p><p class="sp-source-note">Information on this page is rewritten in BRYME's own original editorial voice, never copied. External selections and claims are always identified with their source.</p></section>
       ${related ? `<section class="sp-related"><h2>Related reading</h2><div class="sp-rel-grid">${related}</div></section>` : ''}
     </article></main>`;
-  write('sports/' + route, layout({ title: art.title + ' | BRYME Sports', description: art.excerpt, path: '/sports/' + route + '/', activeNav: 'sports', schema, body }));
+  /* A placeholder is a structured shell, not a finished article. Indexing an empty
+     "when the article is finalised" page invites Google/Bing "Crawled - currently not
+     indexed" and reads as thin. Keep it reachable for visitors but noindex,follow and
+     out of the sitemap until real editorial content replaces the placeholder. */
+  write('sports/' + route, layout({ title: art.title + ' | BRYME Sports', description: art.excerpt, path: '/sports/' + route + '/', activeNav: 'sports', noindex: true, schema, body }));
 }
 /* --- transfer page: structured table, legend, empty state --- */
 function transferPage(league){
@@ -1653,7 +1657,10 @@ function editorialTablePage(){
     <div class="sp-table-wrap"><table class="sp-table sp-table-pred"><thead><tr>${S.editorialTable.columns.map(c => `<th>${esc(c)}</th>`).join('')}</tr></thead><tbody><tr class="sp-empty"><td colspan="7">The editorial prediction table will appear here once the BRYME Sports editorial team finalises it for ${mwLabel}. Predictions are never presented as guarantees or as the official table.</td></tr></tbody></table></div>
     <p class="sp-source-note">After the gameweek is completed, this component can be replaced with the official Premier League table.</p>
     <section class="sp-related"><h2>Related</h2><div class="sp-rel-grid"><a class="sp-rel" href="${url('/sports/premier-league/fixtures/')}">Fixtures</a><a class="sp-rel" href="${url('/sports/premier-league/results/')}">Results</a><a class="sp-rel" href="${url('/sports/premier-league/matchweek-1-preview/')}">Matchweek ${MW}</a></div></section></main>`;
-  write('sports/premier-league/table', layout({ title: S.editorialTable.title + ' | BRYME Sports', description: S.editorialTable.label + ' — ' + S.editorialTable.note, path: '/sports/premier-league/table/', activeNav: 'sports', schema: [{ '@context':'https://schema.org', '@type':'CollectionPage', name: S.editorialTable.title, url: absUrl('/sports/premier-league/table/') }, breadcrumbs(crumbs)], body }));
+  /* The editorial prediction table is still an empty placeholder. Indexing an empty
+     table invites "Crawled - currently not indexed", so keep it noindex,follow and out
+     of the sitemap until the prediction table is actually finalised. */
+  write('sports/premier-league/table', layout({ title: S.editorialTable.title + ' | BRYME Sports', description: S.editorialTable.label + ' — ' + S.editorialTable.note, path: '/sports/premier-league/table/', activeNav: 'sports', noindex: true, schema: [{ '@context':'https://schema.org', '@type':'CollectionPage', name: S.editorialTable.title, url: absUrl('/sports/premier-league/table/') }, breadcrumbs(crumbs)], body }));
 }
 /* --- FPL hub --- */
 function fplHub(){
@@ -1668,7 +1675,12 @@ function fplHub(){
     <section class="hero"><div class="eyebrow">⚽ FPL · Gameweek ${MW}</div><h1>FPL Gameweek ${MW}</h1><p class="lead">Gameweek-by-gameweek FPL content. Each section below fills with researched, sourced content.</p></section>
     <section class="section">${S.fpl.sections.map(s => `<div class="sp-gw-sec" id="${s.id}"><h2>${esc(s.name)}</h2><p class="sp-empty-line">Content for this section is being prepared. No picks, predictions or difficulty ratings are shown before they are researched and sourced.</p></div>`).join('')}</section>
     <section class="sp-related"><h2>Related</h2><div class="sp-rel-grid"><a class="sp-rel" href="${url('/sports/fpl/gameweek-' + MW + '-players-to-watch/')}">Players to Watch</a><a class="sp-rel" href="${url('/sports/premier-league/matchweek-1-preview/')}">Matchweek ${MW} Preview</a></div></section></main>`;
-  write('sports/fpl/gameweek-' + MW, layout({ title: 'FPL Gameweek ' + MW + ' | BRYME Sports', description: 'Fantasy Premier League Gameweek ' + MW + ' — players to watch, picks, captaincy and fixture difficulty.', path: '/sports/fpl/gameweek-' + MW + '/', activeNav: 'sports', schema: [{ '@context':'https://schema.org', '@type':'CollectionPage', name: 'FPL Gameweek ' + MW, url: absUrl('/sports/fpl/gameweek-' + MW + '/') }, breadcrumbs([{name:'Home', path:'/'}, {name:'BRYME Sports', path:'/sports/'}, {name:'FPL', path:'/sports/fpl/'}, {name:'Gameweek ' + MW, path:'/sports/fpl/gameweek-' + MW + '/'}])], body: gwBody }));
+  /* Every FPL section is still an empty "being prepared" shell until the editorial
+     team writes researched picks. Indexing 8 empty sections reads as thin, so the
+     gameweek hub stays reachable for visitors but noindex,follow and out of the
+     sitemap until at least one section carries real content. */
+  const fplGwEmpty = S.fpl.sections.length > 0 && gwBody.includes('sp-empty-line');
+  write('sports/fpl/gameweek-' + MW, layout({ title: 'FPL Gameweek ' + MW + ' | BRYME Sports', description: 'Fantasy Premier League Gameweek ' + MW + ' — players to watch, picks, captaincy and fixture difficulty.', path: '/sports/fpl/gameweek-' + MW + '/', activeNav: 'sports', noindex: fplGwEmpty, schema: [{ '@context':'https://schema.org', '@type':'CollectionPage', name: 'FPL Gameweek ' + MW, url: absUrl('/sports/fpl/gameweek-' + MW + '/') }, breadcrumbs([{name:'Home', path:'/'}, {name:'BRYME Sports', path:'/sports/'}, {name:'FPL', path:'/sports/fpl/'}, {name:'Gameweek ' + MW, path:'/sports/fpl/gameweek-' + MW + '/'}])], body: gwBody }));
 }
 /* --- fixtures / results --- */
 function euDstOffset(dateISO){
@@ -2160,10 +2172,17 @@ for (const stray of ['premier-league', 'fpl']) {
   if (fs.existsSync(path.join(root, stray)) && !['premier-league', 'fpl'].includes(stray)) {}
 }
 const sportsExtraPaths = [];
-['sports/transfers', 'sports/managers-2026-27', 'sports/premier-league/table', 'sports/fpl', 'sports/fpl/gameweek-' + MW].forEach(p => sportsExtraPaths.push('/' + p + '/'));
+const PLACEHOLDER_SPORTS_PATHS = new Set();
+/* Empty placeholders stay out of the sitemap: the editorial prediction table (empty
+   until finalised) and the FPL gameweek hub (currently all sections are "being
+   prepared"). Both remain reachable but noindex until real content is written. */
+PLACEHOLDER_SPORTS_PATHS.add('/sports/premier-league/table/');
+PLACEHOLDER_SPORTS_PATHS.add('/sports/fpl/gameweek-' + MW + '/');
+['sports/transfers', 'sports/managers-2026-27', 'sports/fpl'].forEach(p => sportsExtraPaths.push('/' + p + '/'));
 ['premier-league','la-liga','serie-a','bundesliga','ligue-1'].forEach(slug => ['fixtures','results','matches'].forEach(pp => sportsExtraPaths.push('/sports/' + slug + '/' + pp + '/')));
 ['premier-league','la-liga','serie-a','bundesliga','ligue-1'].forEach(slug => sportsExtraPaths.push('/sports/' + slug + '/'));
-(S.articlePlaceholders || []).forEach(a => sportsExtraPaths.push('/sports/' + a.route + '/'));
+/* Placeholder articles stay out of the sitemap (they are noindexed until written). */
+(S.articlePlaceholders || []).forEach(a => PLACEHOLDER_SPORTS_PATHS.add('/sports/' + a.route + '/'));
 (S.hero.cards || []).forEach(c => sportsExtraPaths.push(c.route + '/'));
 S.transfers.leagues.forEach(l => sportsExtraPaths.push('/sports/transfers/' + l.id + '-2026-27/'));
 
@@ -2940,7 +2959,7 @@ const verticalPaths = ['/entertainment/','/sports/articles/']
   .filter(p => !EMPTY_HUB_PATHS.has(p));
 /* Published vertical articles are real, indexable pages. */
 const verticalArticlePaths = VERTICALS.flatMap(v => (VERTICAL_ARTICLES[v.dir] || []).map(a => articlePathFor(v.dir, a)));
-const paths = ['/','/movies/','/series/','/anime/','/trending/','/genres/','/years/','/topics/','/articles/', ...legalPaths, ...AUTHOR_PATHS, ...verticalPaths, ...verticalArticlePaths, ...sportsExtraPaths, ...LEAGUE_MATCH_PATHS.filter(p => !UNPLAYED_MATCH_PATHS.has(p)), ...genrePaths.filter(p => !THIN_LISTING_PATHS.has(p)), ...movies.map(m => `/${m.typeDir || 'movie'}/${m.slug}/`), ...[...yearMap].filter(([,l]) => !thinArchive(l)).map(([y]) => `/year/${y}/`), ...[...seriesYearMap].filter(([,l]) => !thinArchive(l)).map(([y]) => `/series/${y}/`), ...[...animeYearMap].filter(([,l]) => !thinArchive(l)).map(([y]) => `/anime/${y}/`), ...articles.map(a => `/article/${a.slug}/`), ...topics.map(t => `/topic/${t.slug}/`), ...[...articleCategoryMap.keys()].map(s => `/articles/${s}/`).filter(p => !THIN_LISTING_PATHS.has(p))];
+const paths = ['/','/movies/','/series/','/anime/','/trending/','/genres/','/years/','/topics/','/articles/', ...legalPaths, ...AUTHOR_PATHS, ...verticalPaths, ...verticalArticlePaths, ...sportsExtraPaths.filter(p => !PLACEHOLDER_SPORTS_PATHS.has(p)), ...LEAGUE_MATCH_PATHS.filter(p => !UNPLAYED_MATCH_PATHS.has(p)), ...genrePaths.filter(p => !THIN_LISTING_PATHS.has(p)), ...movies.map(m => `/${m.typeDir || 'movie'}/${m.slug}/`), ...[...yearMap].filter(([,l]) => !thinArchive(l)).map(([y]) => `/year/${y}/`), ...[...seriesYearMap].filter(([,l]) => !thinArchive(l)).map(([y]) => `/series/${y}/`), ...[...animeYearMap].filter(([,l]) => !thinArchive(l)).map(([y]) => `/anime/${y}/`), ...articles.map(a => `/article/${a.slug}/`), ...topics.map(t => `/topic/${t.slug}/`), ...[...articleCategoryMap.keys()].map(s => `/articles/${s}/`).filter(p => !THIN_LISTING_PATHS.has(p))];
 fs.writeFileSync(path.join(root, '404.html'), layout({
   title: 'Page not found', description: 'This page is not available on BRYME.', path: '/404.html', noindex: true,
   body: `<main class="shell"><section class="hero"><div class="eyebrow">404</div><h1>Looks like this one disappeared.</h1><p class="lead">Try searching the catalogue, or browse a single content type.</p><p><a class="cta" href="${url('/search/')}">Search everything</a> <a class="quiet-link" href="${url('/movies/')}">Movies</a> <a class="quiet-link" href="${url('/series/')}">Series</a> <a class="quiet-link" href="${url('/anime/')}">Anime</a> <a class="quiet-link" href="${url('/articles/')}">Latest articles</a></p></section></main>`
