@@ -4,8 +4,13 @@
   "description": "Discover what you love. Learn what you need. Find what's next. Entertainment, sports, memes, money guides and tech & AI.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#0a0a0a",
-  "theme_color": "#0a0a0a",
+  "background_color": "#08090b",
+  "theme_color": "#08090b",
   "orientation": "portrait",
-  "scope": "/"
+  "scope": "/",
+  "icons": [
+    { "src": "/assets/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/assets/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/assets/icons/icon-512-maskable.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
 }

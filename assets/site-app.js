@@ -17,6 +17,77 @@
     return '<a class="tile" href="' + BASE + '/' + typeDir + '/' + esc(m.s) + '/"><div class="poster">' + img + '</div><h3>' + esc(m.t) + '</h3><div class="tile-meta"><span class="type-badge tb-' + typeDir + '">' + label + '</span><span>' + (m.y || '') + '</span>' + (genre ? '<span class="sep">·</span><span>' + esc(genre) + '</span>' : '') + '</div>' + rating + '</a>';
   }
 
+  /* ---------- theme toggle, back-to-top, scroll progress, / shortcut ---------- */
+  var SUN_SVG = '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>';
+  var MOON_SVG = '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+  function currentTheme() {
+    return document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+  }
+  function applyTheme(t) {
+    var m = document.querySelector('meta[name=theme-color]');
+    if (t === 'light') {
+      document.documentElement.setAttribute('data-theme', 'light');
+      document.documentElement.style.colorScheme = 'light';
+      if (m) m.setAttribute('content', '#f4f5f7');
+    } else {
+      document.documentElement.removeAttribute('data-theme');
+      document.documentElement.style.colorScheme = '';
+      if (m) m.setAttribute('content', '#08090b');
+    }
+  }
+  function themeBtnIcon(t) { return t === 'light' ? MOON_SVG : SUN_SVG; }
+  var header = document.querySelector('.top .shell');
+  var themeBtn = null;
+  if (header) {
+    themeBtn = document.createElement('button');
+    themeBtn.type = 'button';
+    themeBtn.className = 'theme-toggle';
+    themeBtn.title = 'Switch between dark and light theme';
+    themeBtn.setAttribute('aria-label', 'Switch to ' + (currentTheme() === 'light' ? 'dark' : 'light') + ' theme');
+    themeBtn.innerHTML = themeBtnIcon(currentTheme());
+    themeBtn.addEventListener('click', function () {
+      var next = currentTheme() === 'light' ? 'dark' : 'light';
+      try { localStorage.setItem('bryme-theme', next); } catch (e) {}
+      applyTheme(next);
+      themeBtn.innerHTML = themeBtnIcon(next);
+      themeBtn.setAttribute('aria-label', 'Switch to ' + (next === 'light' ? 'dark' : 'light') + ' theme');
+    });
+    header.appendChild(themeBtn);
+  }
+  // Reading progress bar (thin gradient at the very top)
+  var prog = document.createElement('div');
+  prog.id = 'bryme-progress';
+  prog.setAttribute('aria-hidden', 'true');
+  document.body.appendChild(prog);
+  // Back-to-top button
+  var topBtn = document.createElement('button');
+  topBtn.type = 'button';
+  topBtn.className = 'bryme-top';
+  topBtn.setAttribute('aria-label', 'Back to top');
+  topBtn.innerHTML = '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="18 15 12 9 6 15"/></svg>';
+  topBtn.addEventListener('click', function () { try { window.scrollTo({ top: 0, behavior: 'smooth' }); } catch (e) { window.scrollTo(0, 0); } });
+  document.body.appendChild(topBtn);
+  function onScroll() {
+    var y = window.pageYOffset || document.documentElement.scrollTop || 0;
+    topBtn.classList.toggle('is-visible', y > 420);
+    var h = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    if (prog) prog.style.width = (h > 0 ? (y / h * 100) : 0) + '%';
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  onScroll();
+  // Press "/" to jump straight to Search (or the homepage recommendation box)
+  document.addEventListener('keydown', function (e) {
+    if (e.key !== '/') return;
+    var tag = (document.activeElement && document.activeElement.tagName) || '';
+    if (/INPUT|TEXTAREA|SELECT/.test(tag)) return;
+    e.preventDefault();
+    var s = document.getElementById('search-q');
+    if (s) { s.focus(); try { s.select(); } catch (err) {} return; }
+    var r = document.querySelector('[data-rec-input]');
+    if (r) r.focus();
+  });
+
   /* ---------- share buttons ---------- */
   document.querySelectorAll('[data-share-path]').forEach(function (button) {
     button.addEventListener('click', function () {

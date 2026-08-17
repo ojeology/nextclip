@@ -710,6 +710,88 @@ body[data-nav="sports"] .mp-when{color:#3ddc84}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 `);
 fs.appendFileSync(path.join(root,'assets/site.css'), `\n/* Persistent navigation control */\n.bryme-back{position:fixed;left:14px;top:74px;z-index:80;display:grid;place-items:center;width:34px;height:34px;border:1px solid rgba(255,255,255,.22);border-radius:50%;background:rgba(8,9,11,.88);backdrop-filter:blur(10px);color:#fff;font:900 21px/1 system-ui,sans-serif;padding:0;cursor:pointer;box-shadow:0 7px 22px rgba(0,0,0,.35)}.bryme-back:hover{border-color:var(--sports,#3ddc84);transform:translateX(-1px)}@media(max-width:760px){.bryme-back{left:10px;top:64px;width:32px;height:32px}}\n`);
+
+/* UPGRADE LAYER appended in the build so it is never lost on rebuild */
+fs.appendFileSync(path.join(root,'assets/site.css'), `
+/* ============================================================
+   UPGRADE LAYER — interactive controls, focus & LIGHT THEME.
+   Appended last (after the platform sheet). Dark remains the
+   default; the light theme flips the page canvas and content
+   surfaces while the cinematic full-bleed banners (hero, movie
+   hero, sports feature, footer, mobile bar) stay dark.
+   ============================================================ */
+html{color-scheme:dark}
+[data-theme="light"]{color-scheme:light}
+.theme-toggle{display:inline-grid;place-items:center;width:34px;height:34px;flex:none;border:1px solid var(--line);border-radius:50%;background:rgba(255,255,255,.04);color:var(--text);cursor:pointer;padding:0;transition:border-color .18s,color .18s,transform .18s}
+.theme-toggle:hover{border-color:var(--accent);color:var(--accent);transform:rotate(20deg)}
+.theme-toggle svg{display:block}
+[data-theme="light"] .theme-toggle{background:#fff;color:#171b22}
+[data-theme="light"] .theme-toggle:hover{color:var(--accent)}
+#bryme-progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:120;background:linear-gradient(90deg,#e94b2c,#e7bb5c,#3ddc84,#4f8ef7);box-shadow:0 0 8px rgba(233,75,44,.55);pointer-events:none}
+.bryme-top{position:fixed;right:18px;bottom:84px;z-index:90;display:grid;place-items:center;width:42px;height:42px;border:1px solid rgba(255,255,255,.22);border-radius:50%;background:rgba(8,9,11,.85);backdrop-filter:blur(10px);color:#fff;cursor:pointer;padding:0;box-shadow:0 8px 24px rgba(0,0,0,.4);opacity:0;transform:translateY(12px);pointer-events:none;transition:opacity .22s,transform .22s,border-color .18s}
+.bryme-top.is-visible{opacity:1;transform:translateY(0);pointer-events:auto}
+.bryme-top:hover{border-color:var(--accent);color:var(--accent)}
+.bryme-top svg{display:block}
+[data-theme="light"] .bryme-top{background:rgba(255,255,255,.92);color:#171b22;border-color:rgba(20,30,44,.2)}
+@media(min-width:761px){.bryme-top{bottom:30px}}
+@media(max-width:760px){.bryme-top{bottom:78px}}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:3px}
+[data-theme="light"] a:focus-visible,[data-theme="light"] button:focus-visible{outline-color:#c24427}
+[data-theme="light"]{--bg:#f2f4f7;--panel:#ffffff;--line:#d7dbe2;--text:#161b22;--muted:#5a6572;--accent:#cf4424;--gold:#a86f14}
+[data-theme="light"] body{background:radial-gradient(1100px 520px at 12% -8%, rgba(233,75,44,.06), transparent 60%),radial-gradient(900px 460px at 88% 0%, rgba(79,142,247,.06), transparent 58%),var(--bg);background-attachment:fixed}
+[data-theme="light"] .top{background:rgba(255,255,255,.86);border-bottom-color:#dde1e7}
+[data-theme="light"] .topnav a:hover,[data-theme="light"] .topnav a.active{color:#161b22}
+[data-theme="light"] .nav-search{color:#a06b12!important}
+[data-theme="light"] .hero h1,[data-theme="light"] .home-hero h1,[data-theme="light"] .article-hero h1{background:linear-gradient(100deg,#161b22 20%,#4a3b2e 70%);-webkit-background-clip:text;background-clip:text;color:transparent}
+[data-theme="light"] .prose p,[data-theme="light"] .article-body p,[data-theme="light"] .sp-score span{color:#3a434e}
+[data-theme="light"] .article-body blockquote{color:#2b333c}
+[data-theme="light"] .prose a{color:#c24427;border-bottom-color:rgba(194,68,39,.35)}
+[data-theme="light"] .prose a:hover{color:#8f2d16;border-bottom-color:#8f2d16}
+[data-theme="light"] .crumb a:hover,[data-theme="light"] .badge a:hover,[data-theme="light"] .footer-col a:hover,[data-theme="light"] .genre-chips a:hover,[data-theme="light"] .sp-mwnav a:hover,[data-theme="light"] .sp-club-nav a:hover{color:#161b22}
+[data-theme="light"] .genre-chips a{color:#2b333c}
+[data-theme="light"] .genre-chips a:hover{color:#fff}
+[data-theme="light"] .meta-source{color:#5a6572}
+[data-theme="light"] .meta-source a{color:#3a434e}
+[data-theme="light"] .meta-source a:hover{color:#161b22}
+[data-theme="light"] .cta-ghost{color:#161b22;border-color:#cf4424}
+[data-theme="light"] .cta-ghost:hover{color:#fff}
+[data-theme="light"] .rail-chart .tile:before{-webkit-text-stroke:1.4px rgba(20,30,44,.35)}
+[data-theme="light"] .rail-chart .tile:hover{background:rgba(20,30,44,.05)}
+[data-theme="light"] .section-head a,[data-theme="light"] .tile-rating,[data-theme="light"] .mp-when{color:#a06b12}
+[data-theme="light"] .searchbox,[data-theme="light"] .stabs,[data-theme="light"] .ffield select,[data-theme="light"] .rec-form input{background:#fff;border-color:var(--line);color:#161b22}
+[data-theme="light"] .filterbar{background:#fff}
+[data-theme="light"] .fbtn{background:#fff;color:#5a6572}
+[data-theme="light"] .fbtn:hover{color:#161b22}
+[data-theme="light"] .rec-inner,[data-theme="light"] .take-card,[data-theme="light"] .vcat,[data-theme="light"] .vchip,[data-theme="light"] .genre-panel,[data-theme="light"] .trend-note,[data-theme="light"] .vnote,[data-theme="light"] .vstate,[data-theme="light"] .sp-result,[data-theme="light"] .sp-credits,[data-theme="light"] .rec-suggest,[data-theme="light"] .rec-miss,[data-theme="light"] .story-grid a{background:#ffffff;border-color:var(--line)}
+[data-theme="light"] .rec-inner{box-shadow:0 20px 60px rgba(20,30,44,.12)}
+[data-theme="light"] .vcat:hover{box-shadow:0 12px 26px rgba(20,30,44,.14)}
+[data-theme="light"] .vchip:hover{box-shadow:0 10px 26px rgba(20,30,44,.12)}
+[data-theme="light"] .story-grid{background:#d7dbe2}
+[data-theme="light"] .story-grid a:hover{background:#eef1f5}
+[data-theme="light"] .discover-cta{background:linear-gradient(90deg,#ffffff,#eef1f5);border-top-color:#d7dbe2}
+[data-theme="light"] .genre-chips a b{color:#5a6572}
+[data-theme="light"] .rec-sug-item:hover,[data-theme="light"] .rec-sug-item:focus-visible{background:#eef1f5}
+[data-theme="light"] .rec-sug-ph{background:#e3e7ec}
+[data-theme="light"] .sp-msec,[data-theme="light"] .sp-club,[data-theme="light"] .sp-mw,[data-theme="light"] .sp-match-hero,[data-theme="light"] .sp-mc-card.solid{background:#ffffff;border-color:var(--line)}
+[data-theme="light"] .sp-club-head,[data-theme="light"] .sp-mw-head{background:linear-gradient(90deg,#ffffff,#f1f4f8)}
+[data-theme="light"] .sp-msec p,[data-theme="light"] .sp-msec b,[data-theme="light"] .sp-club-notes,[data-theme="light"] .sp-fixt-day{color:#2b333c}
+[data-theme="light"] .sp-fixture:hover{background:#f3f6f9}
+[data-theme="light"] .cd-jump{background:#fff;border-color:var(--line);color:#2b333c}
+[data-theme="light"] .cd-jump:hover{color:#161b22}
+[data-theme="light"] .sp-artcard{background:linear-gradient(160deg,rgba(61,220,132,.08),rgba(255,255,255,0))}
+[data-theme="light"] .trailer-error{background:rgba(179,74,58,.06);border-color:#d9a09a}
+[data-theme="light"] .trailer-error b{color:#b33a2a}
+[data-theme="light"] .trailer-disclaimer{background:rgba(231,187,92,.16);border-color:rgba(196,150,45,.4);color:#7a5a10}
+[data-theme="light"] .sp-pill{background:rgba(61,220,132,.14);color:#128a4e}
+[data-theme="light"] .vhero p,[data-theme="light"] .vhero .lead,[data-theme="light"] .sports-feature p,[data-theme="light"] .home-hero p{color:#d2d6d9}
+[data-theme="light"] .movie-hero h1,[data-theme="light"] .movie-hero p,[data-theme="light"] .movie-hero .lead{color:#fff}
+[data-theme="light"] .movie-hero .badge{color:#d3d7d9}
+[data-theme="light"] .hero-slide p,[data-theme="light"] .hero-slide-kicker{color:#d2d6d9}
+[data-theme="light"] .mobile-nav{background:rgba(255,255,255,.97);border-top-color:#d7dbe2}
+[data-theme="light"] .mobile-nav a{color:#5a6572}
+[data-theme="light"] .mobile-nav a:active,[data-theme="light"] .mobile-nav a.active{color:#161b22;background:#eef1f5}
+[data-theme="light"] .footer{background:linear-gradient(180deg,#0d1014,#08090b)}
+`);
 /* ------------------------------------------------------------------ */
 /* Shared markup helpers                                              */
 /* ------------------------------------------------------------------ */
@@ -798,7 +880,8 @@ const DEFAULT_CARD = (() => {
   const socialImage = (o.image || DEFAULT_CARD) ? `<meta property="og:image" content="${esc(/^https?:\/\//i.test(o.image || DEFAULT_CARD) ? (o.image || DEFAULT_CARD) : absUrl(o.image || DEFAULT_CARD))}"><meta name="twitter:image" content="${esc(/^https?:\/\//i.test(o.image) ? o.image : absUrl(o.image))}">` : '';
   const schema = o.schema ? `<script type="application/ld+json">${JSON.stringify(o.schema).replace(/</g,'\\u003c')}<\/script>` : '';
   const active = o.activeNav || '';
-  return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${esc(o.title)} | ${site.name}</title><meta name="description" content="${esc(o.description)}">${VERIFY_TAGS}${o.noindex?'<meta name="robots" content="noindex,follow">':''}<link rel="canonical" href="${absUrl(o.canonical || o.path)}"><meta property="og:type" content="${esc(o.ogType || 'website')}"><meta property="og:site_name" content="${site.name}"><meta property="og:title" content="${esc(o.title)}"><meta property="og:description" content="${esc(o.description)}"><meta property="og:url" content="${absUrl(o.path)}">${socialImage}<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${esc(o.title)}"><meta name="twitter:description" content="${esc(o.description)}"><link rel="stylesheet" href="${url('/assets/site.css')}">${schema}</head><body data-nav="${esc(o.activeNav || '')}"><header class="top"><div class="shell"><a class="brand" href="${url('/')}">BRY<b>ME</b></a><nav class="topnav"><a href="${url('/')}"${active==='home'?' class="active"':''}>Home</a><a href="${url('/entertainment/')}"${active==='entertainment'?' class="active"':''}>🎬 Entertainment</a><a href="${url('/sports/')}"${active==='sports'?' class="active"':''}>⚽ Sports</a><a href="${url('/make-money/')}"${active==='make-money'?' class="active"':''}>💰 Make Money</a><a href="${url('/tech/')}"${active==='tech'?' class="active"':''}>🤖 Tech &amp; AI</a><a class="nav-search" href="${url('/search/')}">Search</a></nav></div></header>${o.body}<nav class="mobile-nav"><a href="${url('/')}"${active==='home'?' class="active"':''}><span class="mn-ico">🏠</span>Home</a><a href="${url('/entertainment/')}"${active==='entertainment'?' class="active"':''}><span class="mn-ico">🎬</span>Entertain</a><a href="${url('/sports/')}"${active==='sports'?' class="active"':''}><span class="mn-ico">⚽</span>Sports</a><a href="${url('/make-money/')}"${active==='make-money'?' class="active"':''}><span class="mn-ico">💰</span>Money</a><a href="${url('/tech/')}"${active==='tech'?' class="active"':''}><span class="mn-ico">🤖</span>Tech</a><a href="${url('/search/')}"><span class="mn-ico">🔍</span>Search</a></nav><footer class="footer"><div class="shell"><div class="footer-grid">
+  const themeInit = '<script>try{var t=localStorage.getItem(\'bryme-theme\');var p=(t===\'light\'||t===\'dark\')?t:(window.matchMedia&&window.matchMedia(\'(prefers-color-scheme: light)\').matches?\'light\':\'dark\');var m=document.querySelector(\'meta[name=theme-color]\');if(p===\'light\'){document.documentElement.setAttribute(\'data-theme\',\'light\');document.documentElement.style.colorScheme=\'light\';if(m)m.setAttribute(\'content\',\'#f4f5f7\');}else{document.documentElement.removeAttribute(\'data-theme\');if(m)m.setAttribute(\'content\',\'#08090b\');}}catch(e){}</script>';
+  return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#08090b"><meta name="color-scheme" content="dark light"><link rel="icon" href="${url('/assets/favicon.svg')}" type="image/svg+xml"><link rel="icon" href="${url('/assets/favicon.png')}" type="image/png" sizes="32x32"><link rel="apple-touch-icon" href="${url('/assets/icons/apple-touch-icon.png')}"><link rel="manifest" href="${url('/manifest.webmanifest')}"><link rel="preconnect" href="https://i.ytimg.com" crossorigin><link rel="preconnect" href="https://www.youtube-nocookie.com" crossorigin><link rel="preconnect" href="https://www.youtube.com" crossorigin>${themeInit}<title>${esc(o.title)} | ${site.name}</title><meta name="description" content="${esc(o.description)}">${VERIFY_TAGS}${o.noindex?'<meta name="robots" content="noindex,follow">':''}<link rel="canonical" href="${absUrl(o.canonical || o.path)}"><meta property="og:type" content="${esc(o.ogType || 'website')}"><meta property="og:site_name" content="${site.name}"><meta property="og:title" content="${esc(o.title)}"><meta property="og:description" content="${esc(o.description)}"><meta property="og:url" content="${absUrl(o.path)}">${socialImage}<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${esc(o.title)}"><meta name="twitter:description" content="${esc(o.description)}"><link rel="stylesheet" href="${url('/assets/site.css')}">${schema}</head><body data-nav="${esc(o.activeNav || '')}"><header class="top"><div class="shell"><a class="brand" href="${url('/')}">BRY<b>ME</b></a><nav class="topnav"><a href="${url('/')}"${active==='home'?' class="active"':''}>Home</a><a href="${url('/entertainment/')}"${active==='entertainment'?' class="active"':''}>🎬 Entertainment</a><a href="${url('/sports/')}"${active==='sports'?' class="active"':''}>⚽ Sports</a><a href="${url('/make-money/')}"${active==='make-money'?' class="active"':''}>💰 Make Money</a><a href="${url('/tech/')}"${active==='tech'?' class="active"':''}>🤖 Tech &amp; AI</a><a class="nav-search" href="${url('/search/')}">Search</a></nav></div></header>${o.body}<nav class="mobile-nav"><a href="${url('/')}"${active==='home'?' class="active"':''}><span class="mn-ico">🏠</span>Home</a><a href="${url('/entertainment/')}"${active==='entertainment'?' class="active"':''}><span class="mn-ico">🎬</span>Entertain</a><a href="${url('/sports/')}"${active==='sports'?' class="active"':''}><span class="mn-ico">⚽</span>Sports</a><a href="${url('/make-money/')}"${active==='make-money'?' class="active"':''}><span class="mn-ico">💰</span>Money</a><a href="${url('/tech/')}"${active==='tech'?' class="active"':''}><span class="mn-ico">🤖</span>Tech</a><a href="${url('/search/')}"><span class="mn-ico">🔍</span>Search</a></nav><footer class="footer"><div class="shell"><div class="footer-grid">
   <div class="footer-brand"><a class="brand" href="${url('/')}">BRY<b>ME</b></a><p>Discover what you love. Learn what you need. Find what's next.</p></div>
   <nav class="footer-col" aria-label="Explore"><h4>Verticals</h4><a href="${url('/entertainment/')}">🎬 Entertainment</a><a href="${url('/sports/')}">⚽ Sports</a><a href="${url('/make-money/')}">💰 Make Money</a><a href="${url('/tech/')}">🤖 Tech &amp; AI</a></nav>
   <nav class="footer-col" aria-label="Explore"><h4>Entertainment</h4><a href="${url('/movies/')}">Movies</a><a href="${url('/series/')}">Series</a><a href="${url('/anime/')}">Anime</a><a href="${url('/articles/')}">Articles</a><a href="${url('/genres/')}">Genres</a></nav>
