@@ -240,6 +240,15 @@ body .bryme-back:hover{opacity:1}
 .sp-msec-unknown{border-style:dashed;background:#0f1216}
 .sp-msec-unknown>b{color:var(--muted)}
 .sp-unknown{display:block;font-size:13.5px;line-height:1.6;color:var(--muted);font-style:italic}
+/* empty match panel: one honest summary instead of repeated pending cards */
+.sp-empty-panel{margin:22px 0 0;border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:0 10px 10px 0;background:linear-gradient(160deg,#151a21,#0f1216);padding:20px 22px;max-width:860px}
+.sp-empty-panel .sp-pend{display:inline-block;font-size:10.5px;font-weight:900;letter-spacing:.06em;color:var(--gold);text-transform:uppercase;margin-bottom:8px}
+.sp-empty-panel b{display:block;font-size:17px;line-height:1.3;margin-bottom:8px}
+.sp-empty-panel p{font-size:14.5px;line-height:1.62;color:#d9dde1;margin:0 0 8px}
+.sp-empty-panel p.sp-empty-note{margin:0;font-size:13px;color:var(--muted)}
+[data-theme="light"] .sp-empty-panel{background:#ffffff;border-color:var(--line)}
+[data-theme="light"] .sp-empty-panel p{color:#2b333c}
+[data-theme="light"] .sp-empty-panel p.sp-empty-note{color:#5a6572}
 /* the preserved pre-match preview, once the match has been played */
 .sp-preview-archived{margin-top:26px;padding-top:4px;border-top:1px solid var(--line)}
 .sp-archive-note{background:linear-gradient(90deg,rgba(231,187,92,.09),transparent 70%);border:1px solid rgba(231,187,92,.28);border-left:3px solid var(--gold);border-radius:0 8px 8px 0;padding:13px 16px;margin:18px 0 14px}

@@ -679,6 +679,15 @@ body .bryme-back:hover{opacity:1}
 .sp-msec-unknown{border-style:dashed;background:#0f1216}
 .sp-msec-unknown>b{color:var(--muted)}
 .sp-unknown{display:block;font-size:13.5px;line-height:1.6;color:var(--muted);font-style:italic}
+/* empty match panel: one honest summary instead of repeated pending cards */
+.sp-empty-panel{margin:22px 0 0;border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:0 10px 10px 0;background:linear-gradient(160deg,#151a21,#0f1216);padding:20px 22px;max-width:860px}
+.sp-empty-panel .sp-pend{display:inline-block;font-size:10.5px;font-weight:900;letter-spacing:.06em;color:var(--gold);text-transform:uppercase;margin-bottom:8px}
+.sp-empty-panel b{display:block;font-size:17px;line-height:1.3;margin-bottom:8px}
+.sp-empty-panel p{font-size:14.5px;line-height:1.62;color:#d9dde1;margin:0 0 8px}
+.sp-empty-panel p.sp-empty-note{margin:0;font-size:13px;color:var(--muted)}
+[data-theme="light"] .sp-empty-panel{background:#ffffff;border-color:var(--line)}
+[data-theme="light"] .sp-empty-panel p{color:#2b333c}
+[data-theme="light"] .sp-empty-panel p.sp-empty-note{color:#5a6572}
 /* the preserved pre-match preview, once the match has been played */
 .sp-preview-archived{margin-top:26px;padding-top:4px;border-top:1px solid var(--line)}
 .sp-archive-note{background:linear-gradient(90deg,rgba(231,187,92,.09),transparent 70%);border:1px solid rgba(231,187,92,.28);border-left:3px solid var(--gold);border-radius:0 8px 8px 0;padding:13px 16px;margin:18px 0 14px}
@@ -1799,6 +1808,26 @@ function resultBlock(m, r){
    manager's first game, a promoted club's route up. Declared per fixture in
    match-editorial.json as "relatedArticles": ["<slug>"], resolved against the published
    sports articles so a typo or an unpublished draft produces nothing rather than a 404. */
+/* --- Empty (un-played, not-yet-researched) match page panel ---
+   Instead of printing 16 near-identical "Pending verification" cards (which made
+   the page read as a repeated template and bloated the HTML that a crawler has to
+   chew through), an un-researched fixture gets ONE honest panel: it confirms the
+   fixture facts BRYME actually knows from the official calendar and says plainly
+   that analysis will be added with verified data. Factual, non-repetitive, and
+   it will no longer bury genuinely-researched pages under template noise. */
+function emptyMatchPanel(m, lg, F, t, v){
+  const known = [];
+  if (m.dayLabel) known.push(`<b>Date:</b> ${esc(m.dayLabel)}`);
+  if (m.time) known.push(`<b>Kickoff:</b> ${esc(t.display.replace(/<[^>]+>/g, ''))}`);
+  if (m.tv) known.push(`<b>TV:</b> ${esc(m.tv)}`);
+  if (v && v.name) known.push(`<b>Venue:</b> ${esc(v.name)}`);
+  return `<div class="sp-empty-panel">
+    <span class="sp-pend">Analysis in progress</span>
+    <b>This fixture is scheduled, not yet covered.</b>
+    <p>BRYME will research ${esc(m.homeName)} v ${esc(m.awayName)} before kickoff and fill this page with verified data only — form, head-to-head, team news, lineups and a prediction — never predicted or fabricated. Until then, the officially published details are: ${known.length ? known.join(' · ') : 'date to be confirmed by the league'}.</p>
+    <p class="sp-empty-note">Match result and post-match analysis appear only after full-time, once the outcome is officially confirmed.</p>
+  </div>`;
+}
 function relatedArticleCards(ed){
   if (!ed || !Array.isArray(ed.relatedArticles) || !ed.relatedArticles.length) return '';
   const pool = (VERTICAL_ARTICLES.sports || []).filter(a => a.status === 'published');
@@ -1859,7 +1888,7 @@ function matchCentre(){
         ${(!RES && ED) ? `<div class="sp-truth"><b>Preview — not yet played.</b><p>This match has not been played. Everything below is pre-match editorial published on ${esc(ED.publishedAt || '')}; there is no result, lineup or statistic to report yet. Team news is only shown where a club or official source has confirmed it.</p></div>` : ''}
         ${(RES && ED && ED.postMatch) ? postMatchBlock(ED.postMatch) : ''}
         ${ED ? previewBlock(ED, {past: !!RES}) : ''}
-        ${ED ? '' : `<h3 class="sp-dir">Match analysis sections</h3><div class="sp-msec-grid">${sections}</div>`}
+        ${ED ? '' : emptyMatchPanel(m, lg, F, t, v)}
         ${relatedArticleCards(ED)}
         <section class="sp-related"><h2>Related</h2><div class="sp-rel-grid"><a class="sp-rel" href="${url('/sports/' + lg.slug + '/fixtures/')}">Fixtures</a><a class="sp-rel" href="${url('/sports/' + lg.slug + '/results/')}">Results</a><a class="sp-rel" href="${url('/sports/' + lg.slug + '/matches/')}">Match Centre</a><a class="sp-rel" href="${url('/sports/')}">BRYME Sports</a></div></section></main>`;
       let startDate;
@@ -2389,6 +2418,50 @@ movies.forEach(m => {
   m.numberOfEpisodes = m.seasons.reduce((sum, x) => sum + (x.episodeCount || 0), 0) || null;
 });
 
+/* ---- fact-derived prose for thin title pages ----
+   Many title pages carry only a short one-line teaser, which reads as thin to a
+   reader and a crawler. The metadata overlay (Wikidata/Wikipedia) already holds
+   verified facts for most titles — director, cast, year, genre, country,
+   language, runtime. This helper turns those verified facts into a short,
+   factual "At a glance" paragraph. It assembles ONLY facts already on the
+   record; it never invents plot, opinions, or ratings. If a longer in-house
+   synopsis (longDescription) exists it takes precedence and this is skipped. */
+function factBlurb(m){
+  const isMovie = m.typeDir === 'movie';
+  const noun = isMovie ? 'film' : (m.typeDir === 'anime' ? 'anime' : 'series');
+  const sentences = [];
+  // Sentence 1: core identity (type + genre + year + director)
+  const genres = (m.genres || []).map(g => g.toLowerCase()).filter(Boolean);
+  const genreTxt = genres.length > 1 ? genres.slice(0, -1).join(', ') + ' and ' + genres[genres.length - 1] : (genres[0] || '');
+  const dirs = (m.director || '').split(';').map(d => d.trim()).filter(Boolean);
+  const dirTxt = dirs.length > 1 ? dirs.slice(0, -1).join(', ') + ' and ' + dirs[dirs.length - 1] : (dirs[0] || '');
+  const ident = [];
+  if (genreTxt) ident.push(genreTxt + ' ' + noun);
+  if (dirTxt) ident.push('directed by ' + dirTxt);
+  if (m.year) ident.push('released in ' + m.year);
+  if (ident.length) {
+    const firstWord = (genres[0] || '').replace(/^\(/,'');
+    const useAn = /^[aeiou]/i.test(firstWord) && !/^uni|^eu|^one/.test(firstWord);
+    const prefix = genreTxt ? (useAn ? ' is an ' : ' is a ') : ' is ';
+    let s = m.title + prefix + ident.join(', ');
+    s = s.replace(', and released in', ' and released in').replace(', released in', ' and released in').replace(', directed by', ' directed by');
+    sentences.push(s + '.');
+  }
+  // Sentence 2: origin / language
+  const origin = [];
+  if (m.country) origin.push('from ' + m.country);
+  if (m.language && String(m.language).toLowerCase() !== 'english') origin.push('spoken in ' + m.language);
+  if (origin.length) sentences.push('It comes ' + origin.join(', ') + '.');
+  // Sentence 3: cast
+  const castTxt = (m.cast && m.cast.length) ? m.cast.slice(0, 4).join(', ') : null;
+  if (castTxt) sentences.push('The cast includes ' + castTxt + '.');
+  // Sentence 4: runtime
+  if (m.runtime) { const mins = parseInt(String(m.runtime).replace(/[^0-9]/g, ''), 10); if (mins > 0) sentences.push('The ' + noun + ' runs about ' + mins + ' minutes.'); }
+  if (sentences.length) return sentences.join(' ');
+  if (castTxt) return 'The cast of ' + m.title + ' includes ' + castTxt + '.';
+  return '';
+}
+
 for (const m of movies) {
   const typeDir = m.typeDir || 'movie';
   const label = m.typeLabel;
@@ -2458,17 +2531,19 @@ for (const m of movies) {
   <section class="body">
     <article class="prose">
       ${(() => {
-        /* Only render an About section when it says something the hero synopsis did not.
-           Previously this reprinted m.description verbatim under a heading on 71% of title
-           pages - padding that reads as filler and adds no information for a reader or a
-           crawler. If a longer in-house synopsis is written later it appears here
-           automatically; otherwise the page relies on the hero synopsis and the verified
-           Details block below. */
+        /* About section. A longer in-house synopsis (longDescription) takes precedence and
+           is shown in full. Otherwise, rather than showing nothing on a thin one-line page,
+           we render a short fact-derived "At a glance" paragraph built ONLY from verified
+           metadata (director, cast, year, genre, country, language, runtime) — it never
+           invents plot or opinion. If there is nothing factual to say, we fall back to a
+           neutral line rather than leaving a bare stub. */
         const long = m.longDescription || m.synopsis || m.about || '';
         const lead = (m.description || '').trim();
         if (long && long.trim() !== lead) {
           return `<h2>About ${esc(m.title)}</h2>` + long.trim().split(/\n{2,}/).map(t => `<p>${esc(t.trim())}</p>`).join('');
         }
+        const fb = factBlurb(m);
+        if (fb) return `<h2>About ${esc(m.title)}</h2><p>${esc(fb)}</p>`;
         if (!lead) return `<h2>About ${esc(m.title)}</h2><p>A full synopsis is not currently available for this title.</p>`;
         return '';
       })()}

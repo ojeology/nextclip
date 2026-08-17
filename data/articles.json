@@ -4082,5 +4082,237 @@
     "author": "Ibrahim Sodiq",
     "createdAt": null,
     "updatedAt": null
+  },
+  {
+    "id": "dune-sci-fi-epics-guide",
+    "slug": "dune-sci-fi-epics-guide",
+    "title": "Movies Like Dune: Big-Scale Science-Fiction Epics to Watch Next",
+    "description": "If Dune's scale, worldbuilding and political ambition are what you want more of, these are the sci-fi epics that come closest — with a note on what each one does differently.",
+    "category": "Movie Guides",
+    "tags": [
+      "dune",
+      "science fiction",
+      "recommendations",
+      "epic"
+    ],
+    "emoji": "",
+    "items": [
+      {
+        "heading": "Start with the story you loved",
+        "body": "Dune works on several levels at once: a desert planet and its ecology, a royal power struggle, a chosen-one prophecy, and enormous scale. Different viewers latch onto different parts, so the best next watch depends on which one pulled you in."
+      },
+      {
+        "heading": "For more of the same world: Dune: Part Two",
+        "body": "The direct sequel continues Paul Atreides's story across the desert. If you want more of the sand, the Fremen and the political fallout of the first film, this is the obvious next stop before anything else."
+      },
+      {
+        "heading": "For scale and design: Blade Runner 2049",
+        "body": "Directed by Denis Villeneuve, the same director as the modern Dune films, Blade Runner 2049 shares that patient, enormous-screen visual language. It is more of a detective story set in a rain-soaked future city, but the sense of a vast, detailed world is very similar."
+      },
+      {
+        "heading": "For the big questions: Interstellar",
+        "body": "Interstellar trades Dune's sand for space and its politics for family and time. If you responded to the sense of cosmic scale and big ideas rather than the warring houses, this is the closest match in feel."
+      },
+      {
+        "heading": "For a quieter cosmic mystery: Arrival",
+        "body": "Arrival is smaller in spectacle but just as ambitious in idea. It asks how communication and time actually work, and it trusts the audience the way Dune does. A strong pick when you want the brain of Dune without the battles."
+      },
+      {
+        "heading": "For problem-solving and survival: The Martian",
+        "body": "The Martian is Dune's opposite in tone — optimistic, funny, and built around engineering problems. If what you loved was watching a stranded protagonist survive against a hostile world through skill and cleverness, this delivers that energy."
+      },
+      {
+        "heading": "For pure tension: Gravity",
+        "body": "Gravity is the most concentrated of the group: one character, one accident, very little margin for error. Choose it when you want the physical danger of space rather than Dune's sprawling political canvas."
+      },
+      {
+        "heading": "How to choose",
+        "body": "If you loved the world and politics, start with Dune: Part Two. If you loved the scale and visuals, go Blade Runner 2049. If you loved the big ideas, Interstellar or Arrival. If you loved survival against a hostile place, The Martian or Gravity. All of them are strong, and none is a copy of Dune."
+      }
+    ],
+    "blocks": [],
+    "relatedMovieSlugs": [
+      "dune-part-two",
+      "blade-runner-2049",
+      "interstellar",
+      "arrival",
+      "the-martian",
+      "gravity"
+    ],
+    "status": "published",
+    "author": null,
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "christopher-nolan-movies-order",
+    "slug": "christopher-nolan-movies-order",
+    "title": "Christopher Nolan Movies in Order: Where to Start and What to Watch Next",
+    "description": "A practical route through Christopher Nolan's filmography — which films connect, where to begin if you are new to his work, and what each one does best.",
+    "category": "Movie Guides",
+    "tags": [
+      "christopher nolan",
+      "director",
+      "filmography",
+      "science fiction"
+    ],
+    "emoji": "",
+    "items": [
+      {
+        "heading": "Why Nolan rewards any starting point",
+        "body": "Christopher Nolan makes big, intricate films that combine spectacle with ideas about memory, time and identity. You do not need to watch them in release order to enjoy them, but understanding how his work connects makes the later films richer."
+      },
+      {
+        "heading": "The easiest entry point: Inception",
+        "body": "Inception is the most accessible of his mind-bending films. It has a clear heist structure with a dream-within-a-dream twist, and it moves fast. If you have never seen a Nolan film, start here."
+      },
+      {
+        "heading": "The emotional one: Interstellar",
+        "body": "Interstellar is Nolan's most openly emotional film. It is still full of big science ideas, but at its centre is a father-daughter story. Choose this if you want the scale with the most feeling."
+      },
+      {
+        "heading": "The mind-bending classic: Memento",
+        "body": "Memento is a tight, low-budget film told in reverse about a man who cannot form new memories. It is where Nolan's obsession with memory and narrative structure began. Best for viewers who like to work at a puzzle."
+      },
+      {
+        "heading": "The pure spectacle: Tenet",
+        "body": "Tenet is Nolan's most complex film — time runs backward in places and the plot is hard to follow on a first watch. Do not start here, but return to it once you are comfortable with his style. It rewards multiple viewings."
+      },
+      {
+        "heading": "The character one: The Dark Knight",
+        "body": "The Dark Knight is not a science-fiction film, but it shares Nolan's craft and sense of consequence. It works as a standalone thriller built around one of cinema's great villains, and it is a fine entry point for people who prefer real-world stakes."
+      },
+      {
+        "heading": "The historical turn: Oppenheimer",
+        "body": "Oppenheimer is a dialogue-driven historical drama with no science-fiction premise. It shows how Nolan's methods — parallel timelines, mounting tension — work on real events. A good pick if you want his technique applied to the past."
+      },
+      {
+        "heading": "The war film: Dunkirk",
+        "body": "Dunkirk is a lean, nearly dialogue-free war film told across three timescales that slowly converge. It is Nolan's most purely sensory work. Choose it when you want tension and craft over plot twists."
+      },
+      {
+        "heading": "A suggested route",
+        "body": "For most newcomers the smoothest path is Inception, then The Dark Knight, then Interstellar, then Memento, then Oppenheimer or Dunkirk, leaving Tenet for last. But there is no wrong way in — every film stands on its own."
+      }
+    ],
+    "blocks": [],
+    "relatedMovieSlugs": [
+      "inception",
+      "interstellar",
+      "memento",
+      "tenet",
+      "dunkirk",
+      "oppenheimer",
+      "the-dark-knight"
+    ],
+    "status": "published",
+    "author": null,
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "alien-franchise-in-order",
+    "slug": "alien-franchise-in-order",
+    "title": "The Alien Franchise in Order: Which Films to Watch and Why",
+    "description": "A practical guide to the Alien films — the best places to start, how the timeline actually runs, and how the series shifts between horror and action.",
+    "category": "Movie Guides",
+    "tags": [
+      "alien",
+      "horror",
+      "science fiction",
+      "franchise"
+    ],
+    "emoji": "",
+    "items": [
+      {
+        "heading": "Two very different Alien films set the tone",
+        "body": "The Alien series really has two founding films with different identities. The first is a slow, claustrophobic horror film. The sequel is a bigger, louder action film. Most of the debate about the series is really a debate about which of those two you prefer."
+      },
+      {
+        "heading": "Alien (the original)",
+        "body": "The original Alien is a haunted-house film set on a spaceship, with one creature and a tightening atmosphere. It is the best place to start because everything after it either extends or reacts to it. It is also the purest horror film in the series."
+      },
+      {
+        "heading": "Aliens (the sequel)",
+        "body": "Aliens turns the horror into action, adding more creatures, soldiers and gunfire. If you found the first film too slow, this is the counterpoint. It is widely considered the other high point of the franchise."
+      },
+      {
+        "heading": "Alien 3 and Alien: Resurrection",
+        "body": "Alien 3 strips the series back toward a smaller, grimmer story; Alien: Resurrection pushes it in a more stylised, almost comic direction. Both are divisive. Watch them to complete the original arc, but know they split opinion."
+      },
+      {
+        "heading": "Alien: Romulus",
+        "body": "Alien: Romulus is a recent return that blends the horror of the first film with callbacks across the series. It is a strong modern entry point for someone who wants a current Alien film without committing to the older ones."
+      },
+      {
+        "heading": "The crossover: Predator",
+        "body": "Predator shares the Alien universe in expanded media, and fans of the creature-hunting setup will find a similar tension. It is not a direct sequel, but it is the natural companion watch."
+      },
+      {
+        "heading": "A suggested order",
+        "body": "If you want the core experience: watch Alien, then Aliens, then Alien: Romulus. If you want the full story after that, continue with Alien 3 and Alien: Resurrection. Begin with the original — every other film makes more sense once you have seen what started it."
+      }
+    ],
+    "blocks": [],
+    "relatedMovieSlugs": [
+      "alien",
+      "aliens",
+      "alien-3",
+      "alien-resurrection",
+      "alien-romulus",
+      "predator"
+    ],
+    "status": "published",
+    "author": null,
+    "createdAt": null,
+    "updatedAt": null
+  },
+  {
+    "id": "movies-like-parasite",
+    "slug": "movies-like-parasite",
+    "title": "Movies Like Parasite: Class, Tension and Dark Surprises",
+    "description": "Parasite mixes class commentary with escalating tension and sharp tonal shifts. These films share at least one of those strengths and stand on their own.",
+    "category": "Movie Guides",
+    "tags": [
+      "parasite",
+      "korean cinema",
+      "class",
+      "thriller"
+    ],
+    "emoji": "",
+    "items": [
+      {
+        "heading": "What makes Parasite hard to match",
+        "body": "Parasite is a class thriller that keeps changing genre — it starts as a con comedy, turns into a family drama, then becomes something darker and more violent. Few films juggle those shifts this well, so the best alternatives usually share one strong element rather than all of them."
+      },
+      {
+        "heading": "Start with other Korean class films",
+        "body": "Korean cinema has explored class and money with unusual sharpness. A good starting route is to follow the films and directors that made Korean thrillers famous internationally, watching how they turn ordinary family life into suspense."
+      },
+      {
+        "heading": "The con-and-space angle",
+        "body": "Part of Parasite's appeal is the clever scheme and the way the poorer family gradually occupies the richer family's home. Films built around a careful con, a false identity, or slowly tightening tension capture that same pull."
+      },
+      {
+        "heading": "The tonal-switch angle",
+        "body": "If the part you loved was how abruptly the film can turn dark and violent, look for films that begin in a comfortable, even comic register and then descend. The shock of that shift is a signature shared by a handful of directors."
+      },
+      {
+        "heading": "The class-commentary angle",
+        "body": "If the social message mattered most, seek out films and shows that use a single household, workplace or crisis to expose inequality. The best of these let the setting do the talking rather than lecturing."
+      },
+      {
+        "heading": "How to choose",
+        "body": "Ask what grabbed you: the clever scheme, the sudden darkness, or the social point. That single answer points to the strongest next watch. Almost no film matches all three of Parasite's tricks at once, so the goal is to find one that nails the element you care about most."
+      }
+    ],
+    "blocks": [],
+    "relatedMovieSlugs": [
+      "parasite"
+    ],
+    "status": "published",
+    "author": null,
+    "createdAt": null,
+    "updatedAt": null
   }
 ]
