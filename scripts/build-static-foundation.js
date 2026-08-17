@@ -1169,7 +1169,7 @@ function verticalPage(v, category){
   })();
   const footballHub = `<section class="section"><div class="vnote">Football is BRYME’s first fully built sports hub. Pick a competition or follow fixtures, FPL, transfers and the game’s biggest stories.</div><h2 style="margin:26px 0 14px">Football competitions</h2><div class="vcat-grid"><a class="vcat" href="${url('/sports/premier-league/')}"><b>Premier League</b><span>England’s top flight: fixtures, clubs, transfers and FPL.</span></a><a class="vcat" href="${url('/sports/champions-league/')}"><b>Champions League</b><span>Europe’s biggest club competition.</span></a><a class="vcat" href="${url('/sports/la-liga/')}"><b>La Liga</b><span>Spanish football: Real Madrid, Barcelona and beyond.</span></a><a class="vcat" href="${url('/sports/serie-a/')}"><b>Serie A</b><span>Italian football and its storied clubs.</span></a><a class="vcat" href="${url('/sports/bundesliga/')}"><b>Bundesliga</b><span>German football and its fan culture.</span></a><a class="vcat" href="${url('/sports/ligue-1/')}"><b>Ligue 1</b><span>French football, fixtures and clubs.</span></a><a class="vcat" href="${url('/sports/international/')}"><b>International football</b><span>National teams, tournaments and qualifiers.</span></a></div><h2 style="margin:30px 0 14px">Follow the game</h2><div class="vcat-grid"><a class="vcat" href="${url('/sports/fpl/')}"><b>Fantasy Premier League</b><span>Picks, captains and fixture-led decisions.</span></a><a class="vcat" href="${url('/sports/transfers/')}"><b>Transfers</b><span>Verified transfer coverage and market context.</span></a><a class="vcat" href="${url('/sports/players/')}"><b>Players</b><span>Profiles, careers and stories.</span></a><a class="vcat" href="${url('/sports/clubs/')}"><b>Clubs</b><span>Histories, identities and fan culture.</span></a><a class="vcat" href="${url('/sports/history/')}"><b>History</b><span>Historic moments and great eras.</span></a><a class="vcat" href="${url('/sports/records/')}"><b>Records</b><span>Goals, titles, appearances and numbers.</span></a></div></section>`;
   const sportsTeaserBlock = (v.dir === 'sports' && !category) ? `<section class="section sports-teaser"><div class="section-head"><h2>Premier League 2026/27</h2></div><div class="trailer-frame" style="max-width:100%"><iframe width="100%" height="500" src="https://www.youtube.com/embed/nx8rgJrmSFY" title="Premier League 2026/27 — The Wait Is Over" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen><\/iframe></div></section>` : '';
-  const fixturesBlock = (v.dir === 'sports' && !category) ? '<section class="section"><div class="section-head"><h2>Fixtures &amp; Results 2026/27</h2></div><div class="vcat-grid">' + LEAGUE_FIX.map(lg => { const F = loadLeagueFixtures(lg.slug); const total = (F.matchweeks || []).reduce((n, w) => n + w.matches.length, 0); return '<a class="vcat" href="' + url('/sports/' + lg.slug + '/fixtures/') + '"><b>' + esc(lg.name) + '</b><span>All ' + total + ' fixtures — dates, kickoffs &amp; match pages</span></a>'; }).join('') + '<a class="vcat" href="' + url('/sports/managers-2026-27/') + '"><b>Managers</b><span>Managers In &amp; Out — 2026/27</span></a></div></section>' : '';
+  const fixturesBlock = (v.dir === 'sports' && !category) ? '<section class="section"><div class="section-head"><h2>Fixtures &amp; Results 2026/27</h2></div><div class="vcat-grid">' + LEAGUE_FIX.map(lg => { const sum = leagueFixturesSummary(lg.slug); const tr = transferStats(lg.slug); const bits = ['All ' + sum.total + ' fixtures — dates, kickoffs & match pages']; if (tr.in + tr.out > 0) bits.push(tr.in + ' in / ' + tr.out + ' out tracked'); return '<a class="vcat" href="' + url('/sports/' + lg.slug + '/fixtures/') + '"><b>' + esc(lg.name) + '</b><span>' + esc(bits.join(' · ')) + '</span></a>'; }).join('') + '<a class="vcat" href="' + url('/sports/managers-2026-27/') + '"><b>Managers</b><span>Managers In &amp; Out — 2026/27</span></a></div></section>' : '';
   const defaultHero = `<section class="hero vhero vhero-${v.dir}" data-vertical="${v.dir}"><div class="eyebrow">${v.emoji} ${category ? esc(v.name) + ' · ' + esc(category.name) : esc(v.name)}</div><h1>${esc(category ? category.name : v.name)}</h1><p class="lead">${esc(category ? category.desc : v.tagline)}</p></section>`;
   const pageHero = defaultHero + sportsFeature;
   const catArticles = category ? ((verticalArticleIndex[v.dir] && verticalArticleIndex[v.dir].get(category.slug)) || []) : [];
@@ -1446,6 +1446,53 @@ function loadLeagueFixtures(slug){
   catch (e) { warnings.push(file + ' unreadable'); LEAGUE_FIXTURES_DATA[slug] = { matchweeks: [], venues: {} }; }
   return LEAGUE_FIXTURES_DATA[slug];
 }
+/* ---- REAL per-league stats for the hub cards ----
+   Pulls only verified data already in the repo: the official fixture list, the
+   sourced results file, the editorial match analysis, and the transfer trackers.
+   Every number shown is computed, never invented. Used to replace the generic
+   "Completed results" / "transfer tracker" one-liners with real counts. */
+const TRANSFER_FILES = { 'premier-league':'pl-transfers.json', 'la-liga':'league-transfers.json', 'serie-a':'league-transfers.json', 'bundesliga':'league-transfers.json', 'ligue-1':'league-transfers.json' };
+function transferStats(slug){
+  const out = { in:0, out:0, confirmed:0, managerNew:0 };
+  const file = TRANSFER_FILES[slug];
+  if (!file) return out;
+  try {
+    const d = JSON.parse(fs.readFileSync(path.join(root, 'content', file), 'utf8'));
+    let clubs = (file === 'pl-transfers.json') ? (d.clubs || []) : (((d.leagues || []).find(l => l.id === slug) || {}).clubs || []);
+    clubs.forEach(c => {
+      (c.playersIn || []).forEach(x => { out.in++; if (/confirmed/i.test(x.type || '')) out.confirmed++; });
+      (c.playersOut || []).forEach(x => { out.out++; if (/confirmed/i.test(x.type || '')) out.confirmed++; });
+      if (c.managerNote && /new/i.test(c.managerNote)) out.managerNew++;
+    });
+  } catch (e) {}
+  return out;
+}
+function leagueFixturesSummary(slug){
+  const F = loadLeagueFixtures(slug);
+  const total = (F.matchweeks || []).reduce((n, w) => n + w.matches.length, 0);
+  const rounds = (F.matchweeks || []).length;
+  return { total, rounds };
+}
+function resultCountFor(slug){
+  const r = (RESULTS[slug] || {});
+  const n = Object.keys(r).filter(k => !k.startsWith('_')).length;
+  if (n > 0) return n + (n === 1 ? ' verified result' : ' verified results');
+  const F = loadLeagueFixtures(slug);
+  const first = (F.matchweeks || [])[0] && (F.matchweeks[0].matches || [])[0];
+  return first ? 'Season starts ' + esc(first.dayLabel || 'soon') + ' — no results yet' : 'No matches played yet';
+}
+function transferBlurb(slug, leagueName){
+  const tr = transferStats(slug);
+  const parts = [];
+  if (tr.in > 0) parts.push(tr.in + ' in / ' + tr.out + ' out tracked');
+  if (tr.confirmed > 0) parts.push(tr.confirmed + ' confirmed');
+  return parts.length ? esc(parts.join(' · ')) : esc(leagueName + ' transfer tracker');
+}
+function managerBlurb(slug, season){
+  const tr = transferStats(slug);
+  if (tr.managerNew > 0) return tr.managerNew + ' new manager' + (tr.managerNew === 1 ? '' : 's') + ' confirmed — ' + season;
+  return 'Managers In &amp; Out — ' + esc(season);
+}
 
 for (const v of VERTICALS) {
   verticalPage(v, null);
@@ -1531,7 +1578,7 @@ function transfersHub(){
   const body = `<main class="shell"><div class="crumb"><a href="${url('/')}">Home</a> / <a href="${url('/sports/')}">BRYME Sports</a> / Transfers</div>
     <section class="hero"><div class="eyebrow">⚽ Transfers</div><h1>Transfer trackers ${SEASON}</h1><p class="lead">League-by-league transfer trackers. Every deal is labelled Confirmed, Reported or Rumoured — never presented as more than the source supports.</p></section>
     <div class="vnote">${esc(S.transfers.disclaimer)}</div>
-    <section class="section"><div class="vcat-grid">${S.transfers.leagues.map(l => `<a class="vcat" href="${url('/sports/transfers/' + l.id + '-2026-27/')}"><b>${esc(l.name)}</b><span>Transfers ${SEASON} — tracker</span></a>`).join('')}<a class="vcat" href="${url('/sports/managers-2026-27/')}"><b>Managers</b><span>Managers In &amp; Out — ${SEASON}</span></a></div></section></main>`;
+    <section class="section"><div class="vcat-grid">${S.transfers.leagues.map(l => { const tr = transferStats(l.id); const bits = ['Transfers ' + SEASON]; if (tr.in + tr.out > 0) bits.push(tr.in + ' in / ' + tr.out + ' out'); if (tr.confirmed > 0) bits.push(tr.confirmed + ' confirmed'); return `<a class="vcat" href="${url('/sports/transfers/' + l.id + '-2026-27/')}"><b>${esc(l.name)}</b><span>${esc(bits.join(' · '))}</span></a>`; }).join('')}<a class="vcat" href="${url('/sports/managers-2026-27/')}"><b>Managers</b><span>Managers In &amp; Out — ${SEASON}</span></a></div></section></main>`;
   write('sports/transfers', layout({ title: 'Transfers ' + SEASON + ' | BRYME Sports', description: 'League-by-league football transfer trackers for ' + SEASON + ' — Premier League, La Liga, Serie A, Bundesliga and Ligue 1, each deal labelled and sourced.', path: '/sports/transfers/', activeNav: 'sports', schema: [{ '@context':'https://schema.org', '@type':'CollectionPage', name: 'Transfers ' + SEASON, url: absUrl('/sports/transfers/') }, breadcrumbs(crumbs)], body }));
 }
 /* --- managers page (real data from the transfer trackers) --- */
@@ -1906,11 +1953,11 @@ function plHub(){
     <section class="sp-hero" aria-label="Premier League matchweek ${MW} highlights"><div class="sp-hero-track">${heroCards}</div><button type="button" class="sp-hero-arrow sp-hero-prev" data-sp-hero-prev aria-label="Previous card">‹</button><button type="button" class="sp-hero-arrow sp-hero-next" data-sp-hero-next aria-label="Next card">›</button></section>
     <section class="section"><div class="section-head"><h2>Matchweek ${MW} hub</h2></div><div class="vcat-grid">
       <a class="vcat" href="${url('/sports/premier-league/matches/')}"><b>Match Centre</b><span>Matchweek ${MW} fixtures and match analysis</span></a>
-      <a class="vcat" href="${url('/sports/premier-league/fixtures/')}"><b>Fixtures</b><span>Upcoming fixtures</span></a>
-      <a class="vcat" href="${url('/sports/premier-league/results/')}"><b>Results</b><span>Completed results</span></a>
+      <a class="vcat" href="${url('/sports/premier-league/fixtures/')}"><b>Fixtures</b><span>${leagueFixturesSummary('premier-league').total} fixtures across ${leagueFixturesSummary('premier-league').rounds} rounds — dates &amp; kickoffs</span></a>
+      <a class="vcat" href="${url('/sports/premier-league/results/')}"><b>Results</b><span>${resultCountFor('premier-league')}</span></a>
       <a class="vcat" href="${url('/sports/premier-league/table/')}"><b>Table</b><span>Editorial prediction + official table later</span></a>
       <a class="vcat" href="${url('/sports/fpl/')}"><b>FPL</b><span>Fantasy Premier League coverage</span></a>
-      <a class="vcat" href="${url('/sports/transfers/premier-league-2026-27/')}"><b>Transfers</b><span>Premier League transfer tracker</span></a>
+      <a class="vcat" href="${url('/sports/transfers/premier-league-2026-27/')}"><b>Transfers</b><span>${transferBlurb('premier-league', 'Premier League')}</span></a>
     </div></section>
     <section class="sp-related"><h2>Related</h2><div class="sp-rel-grid"><a class="sp-rel" href="${url('/sports/transfers/')}">All transfer trackers</a><a class="sp-rel" href="${url('/sports/managers-2026-27/')}">Managers In &amp; Out</a><a class="sp-rel" href="${url('/sports/')}">BRYME Sports</a></div></section></main>`;
   write('sports/premier-league', layout({ title: 'Premier League ' + SEASON + ' | BRYME Sports', description: S.hero.kicker + ' — ' + S.hero.subtitle + ' Matchweek ' + MW + ' previews, transfers, FPL, injuries, fixtures, results and the BRYME editorial table prediction.', path: '/sports/premier-league/', activeNav: 'sports', schema: [{ '@context':'https://schema.org', '@type':'CollectionPage', name: 'Premier League ' + SEASON, url: absUrl('/sports/premier-league/') }, breadcrumbs(crumbs)], body }));
@@ -1946,9 +1993,9 @@ function leagueHub(){
       <section class="section"><div class="section-head"><h2>${esc(lg.roundLabel)} ${mw1.number} hub</h2></div><div class="vcat-grid">
         <a class="vcat" href="${url('/sports/' + lg.slug + '/matches/')}"><b>Match Centre</b><span>${esc(lg.roundLabel)} ${mw1.number} fixtures and match analysis</span></a>
         <a class="vcat" href="${url('/sports/' + lg.slug + '/fixtures/')}"><b>Fixtures</b><span>All ${total} fixtures — dates, kickoffs &amp; match pages</span></a>
-        <a class="vcat" href="${url('/sports/' + lg.slug + '/results/')}"><b>Results</b><span>Completed results</span></a>
-        <a class="vcat" href="${url('/sports/transfers/' + lg.slug + '-2026-27/')}"><b>Transfers</b><span>${esc(F.league)} transfer tracker</span></a>
-        <a class="vcat" href="${url('/sports/managers-2026-27/')}"><b>Managers</b><span>Managers In &amp; Out — ${F.season}</span></a>
+        <a class="vcat" href="${url('/sports/' + lg.slug + '/results/')}"><b>Results</b><span>${resultCountFor(lg.slug)}</span></a>
+        <a class="vcat" href="${url('/sports/transfers/' + lg.slug + '-2026-27/')}"><b>Transfers</b><span>${transferBlurb(lg.slug, F.league)}</span></a>
+        <a class="vcat" href="${url('/sports/managers-2026-27/')}"><b>Managers</b><span>${managerBlurb(lg.slug, F.season)}</span></a>
       </div></section>
       <section class="sp-related"><h2>Related</h2><div class="sp-rel-grid"><a class="sp-rel" href="${url('/sports/transfers/')}">All transfer trackers</a><a class="sp-rel" href="${url('/sports/managers-2026-27/')}">Managers In &amp; Out</a><a class="sp-rel" href="${url('/sports/')}">BRYME Sports</a></div></section></main>`;
     write('sports/' + lg.slug, layout({
