@@ -13030,5 +13030,131 @@
         "status": "verified"
       }
     ]
+  },
+  {
+    "slug": "omo-ghetto-the-saga",
+    "title": "Omo Ghetto: The Saga",
+    "typeDir": "movie",
+    "status": "official",
+    "trailerType": "official-trailer",
+    "label": "Official Trailer",
+    "videoId": "yhuSzTn0ijE",
+    "channel": "FilmOneNG",
+    "verified": true,
+    "lastChecked": "2026-08-17",
+    "candidates": [
+      {
+        "id": "yhuSzTn0ijE",
+        "type": "official-trailer",
+        "channel": "FilmOneNG",
+        "verified": true,
+        "status": "verified"
+      }
+    ]
+  },
+  {
+    "slug": "king-of-boys-2",
+    "title": "King of Boys: The Return of the King",
+    "typeDir": "movie",
+    "status": "official",
+    "trailerType": "official-trailer",
+    "label": "Official Trailer",
+    "videoId": "i4OeHI3EJuY",
+    "channel": "Netflix",
+    "verified": true,
+    "lastChecked": "2026-08-17",
+    "candidates": [
+      {
+        "id": "i4OeHI3EJuY",
+        "type": "official-trailer",
+        "channel": "Netflix",
+        "verified": true,
+        "status": "verified"
+      }
+    ]
+  },
+  {
+    "slug": "rattle-snake-the-ahanna-story",
+    "title": "RattleSnake: The Ahanna Story",
+    "typeDir": "movie",
+    "status": "official",
+    "trailerType": "official-trailer",
+    "label": "Official Trailer",
+    "videoId": "fGkINQho588",
+    "channel": "FilmOneNG",
+    "verified": true,
+    "lastChecked": "2026-08-17",
+    "candidates": [
+      {
+        "id": "fGkINQho588",
+        "type": "official-trailer",
+        "channel": "FilmOneNG",
+        "verified": true,
+        "status": "verified"
+      }
+    ]
+  },
+  {
+    "slug": "the-set-up",
+    "title": "The Set Up",
+    "typeDir": "movie",
+    "status": "official",
+    "trailerType": "official-trailer",
+    "label": "Official Trailer",
+    "videoId": "4jNBbzK0RX4",
+    "channel": "FilmOneNG",
+    "verified": true,
+    "lastChecked": "2026-08-17",
+    "candidates": [
+      {
+        "id": "4jNBbzK0RX4",
+        "type": "official-trailer",
+        "channel": "FilmOneNG",
+        "verified": true,
+        "status": "verified"
+      }
+    ]
+  },
+  {
+    "slug": "ijogbon",
+    "title": "Ijogbon",
+    "typeDir": "movie",
+    "status": "official",
+    "trailerType": "official-trailer",
+    "label": "Official Trailer",
+    "videoId": "boEnyPJ6BX4",
+    "channel": "Netflix",
+    "verified": true,
+    "lastChecked": "2026-08-17",
+    "candidates": [
+      {
+        "id": "boEnyPJ6BX4",
+        "type": "official-trailer",
+        "channel": "Netflix",
+        "verified": true,
+        "status": "verified"
+      }
+    ]
+  },
+  {
+    "slug": "chief-daddy",
+    "title": "Chief Daddy",
+    "typeDir": "movie",
+    "status": "official",
+    "trailerType": "official-trailer",
+    "label": "Official Trailer",
+    "videoId": "hzO2BjNna90",
+    "channel": "FilmOneNG",
+    "verified": true,
+    "lastChecked": "2026-08-17",
+    "candidates": [
+      {
+        "id": "hzO2BjNna90",
+        "type": "official-trailer",
+        "channel": "FilmOneNG",
+        "verified": true,
+        "status": "verified"
+      }
+    ]
   }
 ]

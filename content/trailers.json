@@ -39,5 +39,89 @@
     "lastChecked": "2026-08-12"
    }
   ]
+ },
+ "omo-ghetto-the-saga": {
+  "note": "Nollywood hit, verified via YouTube 2026-08-17.",
+  "candidates": [
+   {
+    "videoId": "yhuSzTn0ijE",
+    "type": "official-trailer",
+    "title": "Official Trailer",
+    "source": "YouTube",
+    "channel": "FilmOneNG",
+    "verified": true,
+    "lastChecked": "2026-08-17"
+   }
+  ]
+ },
+ "king-of-boys-2": {
+  "note": "Netflix Nollywood sequel, verified via YouTube 2026-08-17.",
+  "candidates": [
+   {
+    "videoId": "i4OeHI3EJuY",
+    "type": "official-trailer",
+    "title": "Official Trailer",
+    "source": "YouTube",
+    "channel": "Netflix",
+    "verified": true,
+    "lastChecked": "2026-08-17"
+   }
+  ]
+ },
+ "rattle-snake-the-ahanna-story": {
+  "note": "Nollywood heist remake, verified via YouTube 2026-08-17.",
+  "candidates": [
+   {
+    "videoId": "fGkINQho588",
+    "type": "official-trailer",
+    "title": "Official Trailer",
+    "source": "YouTube",
+    "channel": "FilmOneNG",
+    "verified": true,
+    "lastChecked": "2026-08-17"
+   }
+  ]
+ },
+ "the-set-up": {
+  "note": "Nollywood thriller, verified via YouTube 2026-08-17.",
+  "candidates": [
+   {
+    "videoId": "4jNBbzK0RX4",
+    "type": "official-trailer",
+    "title": "Official Trailer",
+    "source": "YouTube",
+    "channel": "FilmOneNG",
+    "verified": true,
+    "lastChecked": "2026-08-17"
+   }
+  ]
+ },
+ "ijogbon": {
+  "note": "Kunle Afolayan Nollywood film, verified via YouTube 2026-08-17.",
+  "candidates": [
+   {
+    "videoId": "boEnyPJ6BX4",
+    "type": "official-trailer",
+    "title": "Official Trailer",
+    "source": "YouTube",
+    "channel": "Netflix",
+    "verified": true,
+    "lastChecked": "2026-08-17"
+   }
+  ]
+ },
+ "chief-daddy": {
+  "note": "Nigerian comedy hit, verified via YouTube 2026-08-17.",
+  "candidates": [
+   {
+    "videoId": "hzO2BjNna90",
+    "type": "official-trailer",
+    "title": "Official Trailer",
+    "source": "YouTube",
+    "channel": "FilmOneNG",
+    "verified": true,
+    "lastChecked": "2026-08-17"
+   }
+  ]
  }
 }

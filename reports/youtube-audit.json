@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-08-17T19:41:23.200Z",
-  "total": 632,
-  "valid": 602,
+  "generatedAt": "2026-08-17T20:33:20.434Z",
+  "total": 638,
+  "valid": 608,
   "unavailable": 30,
   "records": [
     {
@@ -4427,6 +4427,48 @@
       "youtubeId": "49_44FFKZ1M",
       "status": "valid-id",
       "watchUrl": "https://www.youtube.com/watch?v=49_44FFKZ1M"
+    },
+    {
+      "id": "omo-ghetto-the-saga",
+      "title": "Omo Ghetto: The Saga",
+      "youtubeId": "yhuSzTn0ijE",
+      "status": "valid-id",
+      "watchUrl": "https://www.youtube.com/watch?v=yhuSzTn0ijE"
+    },
+    {
+      "id": "king-of-boys-2",
+      "title": "King of Boys: The Return of the King",
+      "youtubeId": "i4OeHI3EJuY",
+      "status": "valid-id",
+      "watchUrl": "https://www.youtube.com/watch?v=i4OeHI3EJuY"
+    },
+    {
+      "id": "rattle-snake-the-ahanna-story",
+      "title": "RattleSnake: The Ahanna Story",
+      "youtubeId": "fGkINQho588",
+      "status": "valid-id",
+      "watchUrl": "https://www.youtube.com/watch?v=fGkINQho588"
+    },
+    {
+      "id": "the-set-up",
+      "title": "The Set Up",
+      "youtubeId": "4jNBbzK0RX4",
+      "status": "valid-id",
+      "watchUrl": "https://www.youtube.com/watch?v=4jNBbzK0RX4"
+    },
+    {
+      "id": "ijogbon",
+      "title": "Ijogbon",
+      "youtubeId": "boEnyPJ6BX4",
+      "status": "valid-id",
+      "watchUrl": "https://www.youtube.com/watch?v=boEnyPJ6BX4"
+    },
+    {
+      "id": "chief-daddy",
+      "title": "Chief Daddy",
+      "youtubeId": "hzO2BjNna90",
+      "status": "valid-id",
+      "watchUrl": "https://www.youtube.com/watch?v=hzO2BjNna90"
     }
   ]
 }
