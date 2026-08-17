@@ -9,6 +9,19 @@ function assert(cond, msg) { if (cond) { pass++; } else { fail++; console.log(' 
 function section(name) { console.log('\n== ' + name + ' =='); }
 const read = p => fs.readFileSync(path.join(ROOT, p), 'utf8');
 
+/* Played matches, so the results-page assertions can tell a league that has started from
+   one that has not. */
+const RESULTS = (() => {
+  /* results.json is keyed by league slug, with _readme/_schema alongside the data */
+  const raw = JSON.parse(fs.readFileSync(path.join(ROOT, 'content', 'results.json'), 'utf8'));
+  const by = {};
+  for (const [k, v] of Object.entries(raw)) {
+    if (k.startsWith('_')) continue;
+    by[k] = Object.keys(v || {});
+  }
+  return by;
+})();
+
 /* 1. PL hub hero carousel */
 section('PL hero carousel');
 {
@@ -251,11 +264,15 @@ section('Match centre, fixtures, results');
   assert(/20:00 UK/.test(mp), 'match page: kickoff UK time');
   assert(/Sky Sports/.test(mp), 'match page: TV');
   assert(/Upcoming — not yet played/.test(mp), 'match page: honest status');
-  assert((mp.match(/class="sp-msec"/g) || []).length === 16, 'match page: 16 analysis sections');
-  assert(/Match result after the game/.test(mp) && /Post-match analysis/.test(mp), 'match page: post-match sections present');
+  /* This fixture now carries a published editorial preview, so it renders the real
+     14-section preview instead of the generic placeholder grid. */
+  assert(/class="sp-preview"/.test(mp), 'match page: editorial preview rendered');
+  assert((mp.match(/class="sp-msec"/g) || []).length >= 14, 'match page: full editorial section set');
+  assert(!/class="sp-postmatch"/.test(mp), 'match page: no post-match block before kickoff');
+  assert(!/Match result after the game/.test(mp), 'match page: generic placeholder grid replaced');
   assert(/EventScheduled/.test(mp), 'match page: JSON-LD scheduled event');
   assert(/2026-08-21T20:00:00/.test(mp), 'match page: JSON-LD startDate with kickoff');
-  assert(mp.indexOf('1-0') === -1 && mp.indexOf('0-1') === -1, 'match page: no fabricated score');
+  assert(!/class="sp-result"/.test(mp) && !/sp-pill-ft/.test(mp), 'match page: no result presented before the match');
   // winter fixture: WAT shown (UK GMT -> Lagos +1); MW13 Wed 2 Dec 20:00 published
   const wint = read('sports/premier-league/matches/tottenham-vs-fulham/index.html');
   assert(/Matchweek 13/.test(wint), 'winter match page: matchweek 13 (2 Dec)');
@@ -285,20 +302,30 @@ section('Results pipeline');
     sourced++;
   }
 
-  /* an unplayed fixture stays noindex and out of the sitemap; a played one does the opposite */
+  /* Indexability is now governed by the editorial workflow, not by the result alone:
+     a fixture is indexable once it has a written preview (>=3 populated fields) OR a
+     recorded result. Everything else stays a schedule entry - noindex, no sitemap.
+     Full lifecycle coverage lives in tests/editorial-workflow-tests.js. */
   const sm = read('sitemap.xml');
+  const ED = JSON.parse(read('content/match-editorial.json'))['premier-league'] || {};
+  const EDF = ['overview','recentForm','headToHead','lastFiveMeetings','homeAwayForm','keyPlayers',
+    'injuries','suspensions','expectedLineups','tacticalMatchup','historicalContext','underdog','outlook','scorePrediction'];
+  const hasPreview = slug => {
+    const e = ED[slug]; if (!e) return false;
+    return EDF.filter(k => Array.isArray(e[k]) ? e[k].length > 0 : (typeof e[k] === 'string' && e[k].trim().length > 12)).length >= 3;
+  };
   const played = new Set(Object.keys(R['premier-league'] || {}));
   const sample = [...valid].slice(0, 40);
   for (const slug of sample) {
     const html = read('sports/premier-league/matches/' + slug + '/index.html');
     const inSm = sm.indexOf('bryme.onrender.com/sports/premier-league/matches/' + slug + '/') > -1;
-    if (played.has(slug)) {
-      assert(!/name="robots" content="noindex/.test(html), `played ${slug} is indexable`);
-      assert(inSm, `played ${slug} is in the sitemap`);
-      assert(!/has not been played yet/.test(html), `played ${slug} drops the unplayed notice`);
+    if (played.has(slug) || hasPreview(slug)) {
+      assert(!/name="robots" content="noindex/.test(html), `editorial ${slug} is indexable`);
+      assert(inSm, `editorial ${slug} is in the sitemap`);
+      if (played.has(slug)) assert(!/has not been played yet/.test(html), `played ${slug} drops the unplayed notice`);
     } else {
-      assert(/name="robots" content="noindex/.test(html), `unplayed ${slug} is noindex`);
-      assert(!inSm, `unplayed ${slug} is out of the sitemap`);
+      assert(/name="robots" content="noindex/.test(html), `dormant ${slug} is noindex`);
+      assert(!inSm, `dormant ${slug} is out of the sitemap`);
     }
   }
   assert(true, `results pipeline consistent (${sourced} sourced result(s) recorded)`);
@@ -319,13 +346,30 @@ section('Sitemap');
   const all = F.matchweeks.flatMap(w => w.matches);
   const slugs = all.map(m => '/sports/premier-league/matches/' + m.id + '-vs-' + m.away + '/');
   const unplayed = all.filter(m => !(m.result || m.score || m.fullTime || m.played));
-  const leaked = slugs.filter((s, i) => !(all[i].result || all[i].score || all[i].fullTime || all[i].played))
-                      .filter(s => sm.indexOf('bryme.onrender.com' + s) > -1);
-  assert(leaked.length === 0, 'sitemap: no unplayed fixture submitted' + (leaked.length ? ' — leaked ' + leaked.length : ''));
+  /* A fixture may appear in the sitemap only if it has been written up or played.
+     Dormant schedule entries must never be submitted. */
+  const EDpl = JSON.parse(read('content/match-editorial.json'))['premier-league'] || {};
+  const EDFL = ['overview','recentForm','headToHead','lastFiveMeetings','homeAwayForm','keyPlayers',
+    'injuries','suspensions','expectedLineups','tacticalMatchup','historicalContext','underdog','outlook','scorePrediction'];
+  const written = sl => {
+    const e = EDpl[sl.replace('/sports/premier-league/matches/','').replace(/\/$/,'')];
+    if (!e) return false;
+    return EDFL.filter(k => Array.isArray(e[k]) ? e[k].length > 0 : (typeof e[k] === 'string' && e[k].trim().length > 12)).length >= 3;
+  };
+  const resPL = JSON.parse(read('content/results.json'))['premier-league'] || {};
+  const leaked = slugs.filter(sl => sm.indexOf('bryme.onrender.com' + sl) > -1)
+    .filter(sl => !written(sl) && !resPL[sl.replace('/sports/premier-league/matches/','').replace(/\/$/,'')]);
+  assert(leaked.length === 0, 'sitemap: no dormant fixture submitted' + (leaked.length ? ' — leaked ' + leaked.length : ''));
+  const submitted = slugs.filter(sl => sm.indexOf('bryme.onrender.com' + sl) > -1).length;
+  assert(submitted < 50, `only written-up fixtures are submitted (${submitted} of ${slugs.length})`);
   assert(unplayed.length > 0, 'fixtures.json: unplayed fixtures present to exercise the rule');
-  const sample = read('sports/premier-league/matches/arsenal-vs-coventry/index.html');
-  assert(/name="robots" content="noindex/.test(sample), 'unplayed fixture page is noindex');
-  assert(sample.indexOf('Coventry') > -1, 'unplayed fixture page still renders for readers');
+  /* Use a fixture with no editorial entry - arsenal-vs-coventry is now a live preview. */
+  const dormantPath = slugs.find(sl => !written(sl) && !resPL[sl.replace('/sports/premier-league/matches/','').replace(/\/$/,'')]);
+  const dormantSlug = dormantPath && dormantPath.replace('/sports/premier-league/matches/','').replace(/\/$/,'');
+  assert(!!dormantSlug, 'a dormant fixture exists to exercise the rule');
+  const sample = read('sports/premier-league/matches/' + dormantSlug + '/index.html');
+  assert(/name="robots" content="noindex/.test(sample), `dormant fixture ${dormantSlug} is noindex`);
+  assert(/Match Centre/.test(sample), 'dormant fixture page still renders for readers');
   assert(!new RegExp(('next' + 'clip').replace(('next' + 'clip'), 'next' + 'clip') + '/premier-league/').test(sm), 'no unprefixed PL URLs in sitemap');
   assert(!new RegExp(('next' + 'clip').replace(('next' + 'clip'), 'next' + 'clip') + '/fpl/').test(sm), 'no unprefixed FPL URLs in sitemap');
 }
@@ -361,7 +405,14 @@ section('La Liga, Serie A, Bundesliga, Ligue 1 — fixtures & matches');
     assert(fx.indexOf('Last updated: 14 August 2026') > -1, `${lg.slug}: last-updated date`);
     // results page
     const rs = read(`sports/${lg.slug}/results/index.html`);
-    assert(/No matches played yet/.test(rs), `${lg.slug}: results honest empty state`);
+    /* Leagues that have started show results; the rest must show an honest empty state
+       rather than an invented one. La Liga began on 15 August 2026, so it has results. */
+    if ((RESULTS[lg.slug] || []).length > 0) {
+      assert(!/No matches played yet/.test(rs), `${lg.slug}: no empty state once matches are played`);
+      assert(/Results &mdash; \d+ match|Results — \d+ match/.test(rs), `${lg.slug}: results page lists played matches`);
+    } else {
+      assert(/No matches played yet/.test(rs), `${lg.slug}: results honest empty state`);
+    }
     assert(/never predicted/.test(rs), `${lg.slug}: results no prediction`);
     assert(rs.indexOf(`Upcoming — ${lg.round} 1`) > -1, `${lg.slug}: results next-round preview`);
     // match centre
