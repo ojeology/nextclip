@@ -360,3 +360,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 [data-theme="light"] .mobile-nav a{color:#5a6572}
 [data-theme="light"] .mobile-nav a:active,[data-theme="light"] .mobile-nav a.active{color:#161b22;background:#eef1f5}
 [data-theme="light"] .footer{background:linear-gradient(180deg,#0d1014,#08090b)}
+/* Hero carousel: non-active slides use h2 (single h1 per page); keep them styled
+   identically to the active h1 so the carousel visuals don't change. */
+.hero-slide h2{font-size:clamp(42px,7vw,78px);line-height:.96;max-width:760px;margin:0 0 10px;font-weight:700;letter-spacing:0}
+@media(max-width:760px){.hero-slide h2{font-size:40px}}

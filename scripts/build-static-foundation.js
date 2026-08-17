@@ -800,6 +800,10 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 [data-theme="light"] .mobile-nav a{color:#5a6572}
 [data-theme="light"] .mobile-nav a:active,[data-theme="light"] .mobile-nav a.active{color:#161b22;background:#eef1f5}
 [data-theme="light"] .footer{background:linear-gradient(180deg,#0d1014,#08090b)}
+/* Hero carousel: non-active slides use h2 (single h1 per page); keep them styled
+   identically to the active h1 so the carousel visuals don't change. */
+.hero-slide h2{font-size:clamp(42px,7vw,78px);line-height:.96;max-width:760px;margin:0 0 10px;font-weight:700;letter-spacing:0}
+@media(max-width:760px){.hero-slide h2{font-size:40px}}
 `);
 /* ------------------------------------------------------------------ */
 /* Shared markup helpers                                              */
@@ -1379,12 +1383,16 @@ function heroSlideMarkup(m, idx){
   const kicker = `<span class="type-badge tb-${m.typeDir}">${m.typeLabel.toUpperCase()}</span>${m.year ? `<span>${m.year}</span>` : ''}${m.genreLabel ? `<span class="dot">·</span><span>${esc(m.genreLabel)}</span>` : ''}`;
   const rating = m.rating != null ? `<p class="hero-slide-rating">★ ${m.rating}/10 · BRYME Editorial</p>` : '';
   const desc = esc((m.tagline || m.description || '').slice(0, 200));
-  return `<div class="hero-slide${idx === 0 ? ' is-active' : ''}" data-slide data-video="${m.youtubeId}" data-title="${esc(m.title)}" data-url="${m.url}" style="background-image:url('${esc(m.poster)}')"><div class="hero-slide-shade"></div><div class="shell hero-slide-inner"><div class="hero-slide-kicker">${kicker}</div><h1>${esc(m.title)}</h1>${rating}<p>${desc}</p><div class="hero-actions"><button type="button" class="cta hero-watch" data-hero-watch>▶ Watch Trailer</button><a class="cta cta-ghost" href="${m.url}">View Details</a></div></div></div>`;
+  /* SEO: a carousel should expose exactly one h1 (the active slide's title). The
+     remaining slides use h2 with identical styling, so the page has a single
+     top-level heading instead of one per slide. */
+  const titleTag = idx === 0 ? 'h1' : 'h2';
+  return `<div class="hero-slide${idx === 0 ? ' is-active' : ''}" data-slide data-video="${m.youtubeId}" data-title="${esc(m.title)}" data-url="${m.url}" style="background-image:url('${esc(m.poster)}')"><div class="hero-slide-shade"></div><div class="shell hero-slide-inner"><div class="hero-slide-kicker">${kicker}</div><${titleTag}>${esc(m.title)}</${titleTag}>${rating}<p>${desc}</p><div class="hero-actions"><button type="button" class="cta hero-watch" data-hero-watch>▶ Watch Trailer</button><a class="cta cta-ghost" href="${m.url}">View Details</a></div></div></div>`;
 }
 const heroEmbed = JSON.stringify(heroSlides.map(m => ({ t: m.title, ty: m.typeLabel, td: m.typeDir, y: m.year, g: m.genreLabel, r: m.rating, v: m.youtubeId, p: m.poster, d: (m.tagline || m.description || '').slice(0, 200), u: m.url }))).replace(/</g, '\u003c');
 write('', layout({
   title: 'Movies, TV Series & Anime – Trailers, Stories & Discovery',
-  description: 'BRYME helps you discover what to watch: 630+ movies, TV series and anime with verified trailers, editorial guides, plus sports, memes, practical money guides and tech & AI.',
+  description: 'Discover what to watch on BRYME: 630+ movies, TV series and anime with verified trailers, editorial guides, plus sports, money and tech & AI coverage.',
   path: '/', image: poster(heroSlide), activeNav: 'home',
   schema: [{ '@context':'https://schema.org', '@type':'WebSite', name:site.name, url:url('/'), description:site.description }, { '@context':'https://schema.org', '@type':'CollectionPage', name:'BRYME – Discover Entertainment, Sports, Money & Tech', url:url('/') }],
   body: `<main>
@@ -1894,7 +1902,7 @@ function matchCentre(){
       }
       const crumbs = [{name:'Home', path:'/'}, {name:'BRYME Sports', path:'/sports/'}, {name:F.league, path:'/sports/' + lg.slug + '/'}, {name:'Match Centre', path:'/sports/' + lg.slug + '/matches/'}, {name:m.homeName + ' v ' + m.awayName, path: matchUrl(m)}];
       const body = `<main class="shell"><div class="crumb"><a href="${url('/')}">Home</a> / <a href="${url('/sports/')}">BRYME Sports</a> / <a href="${url('/sports/' + lg.slug + '/')}">${esc(F.league)}</a> / <a href="${url('/sports/' + lg.slug + '/matches/')}">Match Centre</a> / ${esc(m.homeName)} v ${esc(m.awayName)}</div>
-        <section class="hero"><div class="eyebrow">⚽ ${esc(F.league)} ${esc(F.season)} · ${esc(lg.roundLabel)} ${w.number}</div><h1>${esc(m.homeName)} v ${esc(m.awayName)}</h1></section>
+        <section class="hero"><div class="eyebrow">⚽ ${esc(F.league)} ${esc(F.season)} · ${esc(lg.roundLabel)} ${w.number}</div><span class="visually-hidden">${esc(m.homeName)} v ${esc(m.awayName)}</span></section>
         <div class="sp-match-hero"><img src="${lg.crest(m.id)}" alt="${lg.alt(m.id, m.homeName)}" width="64" height="77"><span class="sp-mh-vs">v</span><img src="${lg.crest(m.away)}" alt="${lg.alt(m.away, m.awayName)}" width="64" height="77"><div>${RES ? `<span class="sp-pill sp-pill-ft">${esc(RES.status || 'FT')} ${RES.homeScore}&ndash;${RES.awayScore}</span>` : `<span class="sp-pill">Upcoming — not yet played</span>`}<h1 style="margin-top:6px">${esc(m.homeName)} v ${esc(m.awayName)}</h1><p class="sp-match-meta"><span><b>Date:</b> ${esc(m.dayLabel)}</span><span><b>Kickoff:</b> ${m.time ? esc(t.display.replace(/<[^>]+>/g, '')) + (t.wat ? esc(t.wat.replace(/<[^>]+>/g, '')) : '') : 'TBC — announced closer to the round'}</span>${m.tv ? `<span><b>TV:</b> ${esc(m.tv)}</span>` : ''}<span><b>Venue:</b> ${esc(v.name || 'TBC')}${v.cap ? ' · ' + esc(Number(v.cap).toLocaleString('en-GB')) : ''}</span></p>${m.note ? `<p class="sp-match-meta" style="margin-top:6px"><b>Note:</b> ${esc(m.note)}</p>` : ''}</div></div>
         ${RES ? resultBlock(m, RES) : (ED ? '' : `<div class="sp-truth"><b>Truth first.</b><p>This match has not been played yet — there is no result, scoreline, lineup or statistic to report. Pre-match research below is an editorial review snapshot from 14 August 2026. Team news and expected lineups are provisional and must be rechecked close to kickoff. Match result and post-match analysis remain blank until official confirmation.</p></div>`)}
         ${(!RES && ED) ? `<div class="sp-truth"><b>Preview — not yet played.</b><p>This match has not been played. Everything below is pre-match editorial published on ${esc(ED.publishedAt || '')}; there is no result, lineup or statistic to report yet. Team news is only shown where a club or official source has confirmed it.</p></div>` : ''}
