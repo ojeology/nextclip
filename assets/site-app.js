@@ -805,3 +805,65 @@
     navigator.serviceWorker.register('/sw.js', { scope: '/' }).catch(function () {});
   });
 })();
+
+/* Monetag page tags — initialize once. Product > ads.
+   Vignette 11610753 + tag 11610749. Never re-inject on filter/search/card render. */
+(function () {
+  'use strict';
+  if (window.__brymeAdsInit) return;
+  window.__brymeAdsInit = true;
+
+  var TAG = { key: 'tag', zone: '11610749', src: 'https://nap5k.com/tag.min.js' };
+  var VIGNETTE = { key: 'vignette', zone: '11610753', src: 'https://n6wxm.com/vignette.min.js' };
+
+  function nationalityOpen() {
+    var step = document.querySelector('[data-mm-step="nationality"]');
+    return !!(step && !step.hidden);
+  }
+
+  function already(key) {
+    return !!document.querySelector('script[data-bryme-ad="' + key + '"]');
+  }
+
+  function inject(spec) {
+    if (!spec || already(spec.key)) return;
+    var host = document.body || document.documentElement;
+    if (!host) return;
+    var s = document.createElement('script');
+    s.async = true;
+    s.dataset.brymeAd = spec.key;
+    s.dataset.zone = spec.zone;
+    s.src = spec.src;
+    host.appendChild(s);
+  }
+
+  function start() {
+    if (nationalityOpen()) return false;
+    inject(TAG);
+    inject(VIGNETTE);
+    return true;
+  }
+
+  function watchOnboarding() {
+    var hub = document.querySelector('[data-mm-app]');
+    if (!hub) return;
+    var obs = new MutationObserver(function () {
+      if (start()) obs.disconnect();
+    });
+    obs.observe(hub, { attributes: true, subtree: true, attributeFilter: ['hidden'] });
+  }
+
+  function boot() {
+    if (start()) return;
+    watchOnboarding();
+  }
+
+  /* First screen stays readable. Do not bind ads to clicks, filters, or search. */
+  function schedule() {
+    var wait = nationalityOpen() ? 0 : 4500;
+    setTimeout(boot, wait);
+  }
+
+  if (document.readyState === 'complete') schedule();
+  else window.addEventListener('load', schedule);
+})();
