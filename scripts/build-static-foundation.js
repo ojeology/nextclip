@@ -166,6 +166,13 @@ if (fs.existsSync(cataloguePath)) {
 const titleMetaPath = path.join(root, 'content', 'title-metadata.json');
 let titleMeta = {};
 if (fs.existsSync(titleMetaPath)) titleMeta = JSON.parse(fs.readFileSync(titleMetaPath, 'utf8'));
+const titleEditorialsPath = path.join(root, 'content', 'title-editorials.json');
+let TITLE_EDITORIALS = {};
+if (fs.existsSync(titleEditorialsPath)) {
+  try { TITLE_EDITORIALS = JSON.parse(fs.readFileSync(titleEditorialsPath, 'utf8')); } catch (e) { warnings.push('title-editorials.json unreadable'); }
+}
+if (TITLE_EDITORIALS._comment) delete TITLE_EDITORIALS._comment;
+const editorialOf = m => (m && TITLE_EDITORIALS[m.slug]) || null;
 let enrichedCount = 0;
 movies.forEach(m => {
   const meta = titleMeta[m.id];
@@ -2185,6 +2192,9 @@ write('entertainment', layout({
   <section class="section"><div class="section-head"><h2>⭐ Popular Movies</h2><a href="${url('/movies/')}">All movies</a></div><div class="rail">${popularMovies.slice(0, 10).map(card).join('')}</div></section>
   <section class="section"><div class="section-head"><h2>⭐ Popular Series</h2><a href="${url('/series/')}">All series</a></div><div class="rail">${popularSeries.slice(0, 10).map(card).join('')}</div></section>
   <section class="section"><div class="section-head"><h2>⭐ Popular Anime</h2><a href="${url('/anime/')}">All anime</a></div><div class="rail">${popularAnime.slice(0, 10).map(card).join('')}</div></section>
+  <section class="section"><div class="section-head"><h2>Start here</h2><a href="${url('/articles/')}">All stories</a></div>
+  <p class="section-note">These are existing BRYME pieces — not new URLs dumped for a crawler.</p>
+  <div class="story-grid">${['nigerian-thrillers-worth-your-time','korean-cinema-starter-guide-rebuilt','dune-sci-fi-epics-guide','christopher-nolan-movies-order','squid-game-season-1-why-it-became-a-global-phenomenon','10-anime-like-solo-leveling-you-should-watch'].map(slug => articles.find(a => a.slug === slug)).filter(Boolean).map(a => `<a href="${url('/article/' + a.slug + '/')}"><span>${esc(a.category)}</span><h3>${esc(a.title)}</h3><p>${esc((a.description || '').slice(0, 120))}</p><b>Read story</b></a>`).join('')}</div></section>
   <section class="section"><div class="section-head"><h2>📰 Latest articles</h2><a href="${url('/articles/')}">All stories</a></div><div class="story-grid">${latestArticles.map(a => `<a href="${url('/article/' + a.slug + '/')}"><span>${esc(a.category)}</span><h3>${esc(a.title)}</h3><p>${esc(a.description.slice(0, 120))}</p><b>Read story</b></a>`).join('')}</div></section>
   ${coreHubStrip('entertainment')}</main>`
 }));
@@ -2887,7 +2897,7 @@ for (const t of typeConfig) {
     activeNav: t.activeNav,
     image: list[0] ? posterOrCard(list[0]) : undefined,
     schema: [{ '@context':'https://schema.org', '@type':'CollectionPage', name:t.label + ' on BRYME', description:tDesc, url:url('/' + t.pageDir + '/') }, breadcrumbs([{name:'Home', path:'/'}, {name:t.label, path:'/' + t.pageDir + '/'}])],
-    body: `<main class="shell"><section class="hero"><div class="eyebrow">${t.seoNote}</div><h1>${esc(t.label)}</h1><p class="lead">${esc(tDesc)}</p></section>${coreHubStrip(t.pageDir === 'movies' ? 'movies' : t.dir, { title: 'Also on BRYME', lead: 'From here you can jump to series, anime, football, money guides or tech — or stay and browse this catalogue.' })}<section class="section"><h2>Browse ${esc(t.label.toLowerCase())}</h2>${filterBar}<p class="count-line" data-count>${list.length} ${t.label.toLowerCase()} in the catalogue</p>${progressiveGrid(list, 40)}</section><script id="catalogue-data" type="application/json">${json}<\/script></main>`
+    body: `<main class="shell"><section class="hero"><div class="eyebrow">${t.seoNote}</div><h1>${esc(t.label)}</h1><p class="lead">${esc(tDesc)}</p></section>${coreHubStrip(t.pageDir === 'movies' ? 'movies' : t.dir, { title: 'Also on BRYME', lead: 'From here you can jump to series, anime, football, money guides or tech — or stay and browse this catalogue.' })}${t.dir === 'movie' ? `<section class="section"><div class="section-head"><h2>Start with these</h2></div><p class="section-note">Flagship pages with a full BRYME write-up — open one, then follow related titles.</p><div class="rail">${['dune-part-two','interstellar','parasite','oppenheimer','black-panther','a-tribe-called-judah','93-days','october-1'].map(s => slugIndex.get(s)).filter(Boolean).map(card).join('')}</div></section>` : ''}<section class="section"><h2>Browse ${esc(t.label.toLowerCase())}</h2>${filterBar}<p class="count-line" data-count>${list.length} ${t.label.toLowerCase()} in the catalogue</p>${progressiveGrid(list, 40)}</section><script id="catalogue-data" type="application/json">${json}<\/script></main>`
   }));
 }
 
@@ -3134,6 +3144,10 @@ function whereToWatchBlock(m){
   return `<section class="tp-watch" id="watch"><h2>Where to watch legally</h2><p>Official platforms you can check. A search link is not a promise the title is licensed there right now.</p><div class="tp-watch-row">${items}</div>${note}</section>`;
 }
 function whyYouMightLikeBlock(m, related){
+  const ed = editorialOf(m);
+  if (ed && Array.isArray(ed.why) && ed.why.length) {
+    return `<section class="tp-why"><h2>Why you might like it</h2>${ed.why.map(b => `<p>${esc(b)}</p>`).join('')}</section>`;
+  }
   const bits = [];
   const gs = listedGenres(m);
   if (gs.length) bits.push('BRYME lists ' + m.title + ' as ' + gs.join(' / ').toLowerCase() + '.');
@@ -3329,7 +3343,8 @@ for (const m of movies) {
       <h1>${esc(m.title)}</h1>
       <div class="badges">${m.rating && m.rating.value != null ? `<span class="badge" title="BRYME editorial score — not IMDb, Rotten Tomatoes or audience ratings">★ ${esc(String(m.rating.value))}/10 · BRYME Editorial</span>` : ''}${m.trending ? `<span class="badge" title="Editorially curated — not live traffic data">🔥 Trending #${m.trendingRank}</span>` : ''}${m.popular ? `<span class="badge" title="Editorial popular pick">⭐ Popular</span>` : ''}${m.editorPick ? `<span class="badge" title="BRYME editor's recommendation">👑 Editor's Pick</span>` : ''}</div>
       ${(() => {
-        const hook = (m.teaser && m.description && m.teaser.trim() && m.teaser.trim() !== m.description.trim()) ? m.teaser.trim() : (m.description || m.teaser || '').trim();
+        const ed = editorialOf(m);
+        const hook = (ed && ed.hook) || ((m.teaser && m.description && m.teaser.trim() && m.teaser.trim() !== m.description.trim()) ? m.teaser.trim() : (m.description || m.teaser || '').trim());
         return hook ? `<p class="lead">${esc(hook)}</p>` : '';
       })()}
       <div class="hero-actions">${m.youtubeId ? `<a class="cta" href="#trailer">Watch trailer</a>` : ''}<a class="cta cta-ghost" href="#watch">Where to watch</a>${related.length ? `<a class="quiet-link" href="#similar">Similar titles</a>` : ''}${relatedArticles.length ? `<a class="cta cta-ghost" href="${url('/article/' + relatedArticles[0].slug + '/')}">Read BRYME story</a>` : ''}<button class="quiet-link share-action" type="button" data-share-path="${pagePath}" data-share-title="${esc(m.title)}">Share</button></div>
@@ -3339,16 +3354,20 @@ for (const m of movies) {
   <section class="body">
     <article class="prose">
       ${(() => {
+        const ed = editorialOf(m);
+        if (ed && ed.summary) return `<h2>Quick summary</h2><p>${esc(ed.summary)}</p>`;
         const hook = (m.teaser && m.description && m.teaser.trim() && m.teaser.trim() !== m.description.trim()) ? m.teaser.trim() : '';
         const full = (m.description || '').trim();
         if (hook && full && full !== hook) return `<h2>Quick summary</h2><p>${esc(full)}</p>`;
         return '';
       })()}
       ${(() => {
+        const ed = editorialOf(m);
         const long = m.longDescription || m.synopsis || m.about || '';
         const fb = factBlurb(m);
         const parts = [];
-        if (fb) parts.push(`<p>${esc(fb)}</p>`);
+        if (ed && Array.isArray(ed.about)) ed.about.forEach(p => parts.push(`<p>${esc(p)}</p>`));
+        else if (fb) parts.push(`<p>${esc(fb)}</p>`);
         if (long && long.trim() && long.trim() !== (m.description || '').trim()) {
           long.trim().split(/\n{2,}/).forEach(t => parts.push(`<p>${esc(t.trim())}</p>`));
         }
