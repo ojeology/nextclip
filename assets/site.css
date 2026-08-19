@@ -364,3 +364,64 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
    identically to the active h1 so the carousel visuals don't change. */
 .hero-slide h2{font-size:clamp(42px,7vw,78px);line-height:.96;max-width:760px;margin:0 0 10px;font-weight:700;letter-spacing:0}
 @media(max-width:760px){.hero-slide h2{font-size:40px}}
+
+/* Writing Field Notes desk */
+.wo-feature-card{border-color:rgba(231,187,92,.45)!important;background:linear-gradient(160deg,rgba(231,187,92,.12),#101318)!important}
+.wo-banner{border:1px solid var(--line);border-left:3px solid var(--gold);background:#101318;padding:14px 16px;border-radius:0 8px 8px 0;margin:0 0 18px;max-width:820px}
+.wo-banner b{display:block;margin-bottom:4px}
+.wo-banner p{margin:0;color:var(--muted);font-size:14px;line-height:1.6}
+.wo-how{padding:8px 0 10px;max-width:820px}
+.wo-steps{margin:10px 0 16px;padding-left:20px}
+.wo-steps li{margin:0 0 10px;color:#d9dde1;line-height:1.55}
+.wo-filters{display:flex;flex-wrap:wrap;gap:12px;align-items:end;padding:14px 16px;margin:0 0 18px;background:#101318;border:1px solid var(--line);border-radius:8px}
+.wo-filters label{display:flex;flex-direction:column;gap:4px;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.wo-filters select{background:#171b20;color:var(--text);border:1px solid var(--line);border-radius:4px;font:inherit;font-size:13px;padding:8px 10px;min-width:160px}
+.wo-count{margin:0;font-size:12.5px;color:var(--muted);font-weight:700;letter-spacing:0;text-transform:none}
+.wo-grid{display:grid;gap:14px}
+.wo-card{border:1px solid var(--line);border-radius:10px;background:linear-gradient(160deg,#161b23,#0f1216);padding:18px 18px 16px}
+.wo-card-head{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;align-items:baseline}
+.wo-card h3{margin:0;font-size:20px;line-height:1.2}
+.wo-checked{font-size:12px;color:var(--gold);font-weight:800}
+.wo-meta{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.wo-pay,.wo-contact,.wo-from,.wo-flag{font-size:11px;font-weight:800;letter-spacing:.04em;padding:3px 9px;border-radius:12px;border:1px solid var(--line)}
+.wo-pay-paid{color:#3ddc84;border-color:rgba(61,220,132,.4);background:rgba(61,220,132,.1)}
+.wo-pay-unpaid{color:#ff9d8a;border-color:rgba(233,75,44,.35);background:rgba(233,75,44,.08)}
+.wo-pay-mixed,.wo-pay-unknown{color:var(--gold);border-color:rgba(231,187,92,.4)}
+.wo-replied{color:#3ddc84;border-color:rgba(61,220,132,.4)}
+.wo-no-reply,.wo-waiting{color:var(--gold);border-color:rgba(231,187,92,.4)}
+.wo-not-contacted{color:var(--muted)}
+.wo-tags{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 10px}
+.wo-tag{font-size:11px;font-weight:700;border:1px solid var(--line);border-radius:12px;padding:2px 8px;color:#d9dde1}
+.wo-card p{margin:0 0 8px;color:#d9dde1;font-size:15px;line-height:1.6}
+.wo-unknowns,.wo-notfor,.wo-paynotes{font-size:13.5px!important;color:var(--muted)!important}
+.wo-apply{display:inline-block;margin-top:6px;font-weight:800;font-size:13px;color:var(--gold)}
+.wo-apply:hover{color:#fff}
+.wo-pending{color:var(--muted);font-size:14px}
+.wo-empty{margin-top:8px}
+[data-theme="light"] .wo-card,[data-theme="light"] .wo-filters,[data-theme="light"] .wo-banner{background:#fff;border-color:var(--line)}
+[data-theme="light"] .wo-card p{color:#2b333c}
+[data-theme="light"] .wo-filters select{background:#fff;color:#161b22}
+
+.mm-desk{margin:8px 0 28px;padding:22px 22px 18px;border:1px solid var(--line);border-radius:12px;background:linear-gradient(160deg,#161b23,#0f1216)}
+.mm-desk h2{margin:18px 0 6px}
+.mm-desk h2:first-child{margin-top:0}
+.mm-desk-lead{color:var(--muted);font-size:14.5px;line-height:1.6;max-width:720px;margin:0 0 12px}
+.mm-countries{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 8px}
+.mm-country{background:#101318;border:1px solid var(--line);color:var(--text);font:inherit;font-size:13.5px;font-weight:700;padding:8px 14px;border-radius:20px;cursor:pointer}
+.mm-country:hover{border-color:var(--gold)}
+.mm-country.is-on{background:var(--grad-money);color:#2a1e05;border-color:transparent}
+.mm-paths{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin:0 0 16px}
+.mm-path{display:flex;flex-direction:column;gap:4px;padding:15px 17px;border:1px solid var(--line);border-radius:8px;background:#101318}
+.mm-path.is-live{border-color:rgba(231,187,92,.45)}
+.mm-path.is-live:hover{transform:translateY(-2px)}
+.mm-path.is-later{opacity:.62;cursor:default}
+.mm-path b{font-size:15px}
+.mm-path span{font-size:12.5px;color:var(--muted);line-height:1.5}
+.wo-inline-desk{padding:16px;margin:0 0 18px}
+.wo-facts{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;margin:12px 0;padding:0}
+.wo-facts div{border:1px solid var(--line);border-radius:8px;padding:10px 12px;background:rgba(0,0,0,.15)}
+.wo-facts dt{font-size:10.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 4px}
+.wo-facts dd{margin:0;font-size:13.5px;font-weight:700;line-height:1.4}
+.wo-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:8px}
+[data-theme="light"] .mm-desk,[data-theme="light"] .mm-path,[data-theme="light"] .mm-country,[data-theme="light"] .wo-facts div{background:#fff}
+[data-theme="light"] .mm-country.is-on{color:#2a1e05}

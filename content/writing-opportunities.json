@@ -1,0 +1,24 @@
+{
+  "updatedAt": "2026-08-19",
+  "writerBase": "Nigeria",
+  "title": "Writing catalogue",
+  "tagline": "Pick your country, then writing. Every site below is one I researched. A gig is not guaranteed.",
+  "youtubeVideoUrl": null,
+  "youtubeVideoTitle": null,
+  "countries": [
+    { "id": "nigeria", "name": "Nigeria" },
+    { "id": "ghana", "name": "Ghana" },
+    { "id": "kenya", "name": "Kenya" },
+    { "id": "south-africa", "name": "South Africa" },
+    { "id": "united-kingdom", "name": "United Kingdom" },
+    { "id": "united-states", "name": "United States" },
+    { "id": "other", "name": "Another country" }
+  ],
+  "paths": [
+    { "id": "writing", "name": "Writing", "status": "live", "blurb": "Publications I researched and wrote to. Guidelines, pay, country, reply — dated." },
+    { "id": "design", "name": "Design", "status": "later", "blurb": "Same format when I have first-hand notes." },
+    { "id": "video-editing", "name": "Video editing", "status": "later", "blurb": "Same format when I have first-hand notes." },
+    { "id": "virtual-assistance", "name": "Virtual assistance", "status": "later", "blurb": "Same format when I have first-hand notes." }
+  ],
+  "opportunities": []
+}

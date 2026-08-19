@@ -805,6 +805,73 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 .hero-slide h2{font-size:clamp(42px,7vw,78px);line-height:.96;max-width:760px;margin:0 0 10px;font-weight:700;letter-spacing:0}
 @media(max-width:760px){.hero-slide h2{font-size:40px}}
 `);
+
+fs.appendFileSync(path.join(root,'assets/site.css'), `
+/* Writing Field Notes desk */
+.wo-feature-card{border-color:rgba(231,187,92,.45)!important;background:linear-gradient(160deg,rgba(231,187,92,.12),#101318)!important}
+.wo-banner{border:1px solid var(--line);border-left:3px solid var(--gold);background:#101318;padding:14px 16px;border-radius:0 8px 8px 0;margin:0 0 18px;max-width:820px}
+.wo-banner b{display:block;margin-bottom:4px}
+.wo-banner p{margin:0;color:var(--muted);font-size:14px;line-height:1.6}
+.wo-how{padding:8px 0 10px;max-width:820px}
+.wo-steps{margin:10px 0 16px;padding-left:20px}
+.wo-steps li{margin:0 0 10px;color:#d9dde1;line-height:1.55}
+.wo-filters{display:flex;flex-wrap:wrap;gap:12px;align-items:end;padding:14px 16px;margin:0 0 18px;background:#101318;border:1px solid var(--line);border-radius:8px}
+.wo-filters label{display:flex;flex-direction:column;gap:4px;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.wo-filters select{background:#171b20;color:var(--text);border:1px solid var(--line);border-radius:4px;font:inherit;font-size:13px;padding:8px 10px;min-width:160px}
+.wo-count{margin:0;font-size:12.5px;color:var(--muted);font-weight:700;letter-spacing:0;text-transform:none}
+.wo-grid{display:grid;gap:14px}
+.wo-card{border:1px solid var(--line);border-radius:10px;background:linear-gradient(160deg,#161b23,#0f1216);padding:18px 18px 16px}
+.wo-card-head{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;align-items:baseline}
+.wo-card h3{margin:0;font-size:20px;line-height:1.2}
+.wo-checked{font-size:12px;color:var(--gold);font-weight:800}
+.wo-meta{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.wo-pay,.wo-contact,.wo-from,.wo-flag{font-size:11px;font-weight:800;letter-spacing:.04em;padding:3px 9px;border-radius:12px;border:1px solid var(--line)}
+.wo-pay-paid{color:#3ddc84;border-color:rgba(61,220,132,.4);background:rgba(61,220,132,.1)}
+.wo-pay-unpaid{color:#ff9d8a;border-color:rgba(233,75,44,.35);background:rgba(233,75,44,.08)}
+.wo-pay-mixed,.wo-pay-unknown{color:var(--gold);border-color:rgba(231,187,92,.4)}
+.wo-replied{color:#3ddc84;border-color:rgba(61,220,132,.4)}
+.wo-no-reply,.wo-waiting{color:var(--gold);border-color:rgba(231,187,92,.4)}
+.wo-not-contacted{color:var(--muted)}
+.wo-tags{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 10px}
+.wo-tag{font-size:11px;font-weight:700;border:1px solid var(--line);border-radius:12px;padding:2px 8px;color:#d9dde1}
+.wo-card p{margin:0 0 8px;color:#d9dde1;font-size:15px;line-height:1.6}
+.wo-unknowns,.wo-notfor,.wo-paynotes{font-size:13.5px!important;color:var(--muted)!important}
+.wo-apply{display:inline-block;margin-top:6px;font-weight:800;font-size:13px;color:var(--gold)}
+.wo-apply:hover{color:#fff}
+.wo-pending{color:var(--muted);font-size:14px}
+.wo-empty{margin-top:8px}
+[data-theme="light"] .wo-card,[data-theme="light"] .wo-filters,[data-theme="light"] .wo-banner{background:#fff;border-color:var(--line)}
+[data-theme="light"] .wo-card p{color:#2b333c}
+[data-theme="light"] .wo-filters select{background:#fff;color:#161b22}
+`);
+
+
+fs.appendFileSync(path.join(root,'assets/site.css'), `
+.mm-desk{margin:8px 0 28px;padding:22px 22px 18px;border:1px solid var(--line);border-radius:12px;background:linear-gradient(160deg,#161b23,#0f1216)}
+.mm-desk h2{margin:18px 0 6px}
+.mm-desk h2:first-child{margin-top:0}
+.mm-desk-lead{color:var(--muted);font-size:14.5px;line-height:1.6;max-width:720px;margin:0 0 12px}
+.mm-countries{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 8px}
+.mm-country{background:#101318;border:1px solid var(--line);color:var(--text);font:inherit;font-size:13.5px;font-weight:700;padding:8px 14px;border-radius:20px;cursor:pointer}
+.mm-country:hover{border-color:var(--gold)}
+.mm-country.is-on{background:var(--grad-money);color:#2a1e05;border-color:transparent}
+.mm-paths{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin:0 0 16px}
+.mm-path{display:flex;flex-direction:column;gap:4px;padding:15px 17px;border:1px solid var(--line);border-radius:8px;background:#101318}
+.mm-path.is-live{border-color:rgba(231,187,92,.45)}
+.mm-path.is-live:hover{transform:translateY(-2px)}
+.mm-path.is-later{opacity:.62;cursor:default}
+.mm-path b{font-size:15px}
+.mm-path span{font-size:12.5px;color:var(--muted);line-height:1.5}
+.wo-inline-desk{padding:16px;margin:0 0 18px}
+.wo-facts{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;margin:12px 0;padding:0}
+.wo-facts div{border:1px solid var(--line);border-radius:8px;padding:10px 12px;background:rgba(0,0,0,.15)}
+.wo-facts dt{font-size:10.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 4px}
+.wo-facts dd{margin:0;font-size:13.5px;font-weight:700;line-height:1.4}
+.wo-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:8px}
+[data-theme="light"] .mm-desk,[data-theme="light"] .mm-path,[data-theme="light"] .mm-country,[data-theme="light"] .wo-facts div{background:#fff}
+[data-theme="light"] .mm-country.is-on{color:#2a1e05}
+`);
+
 /* ------------------------------------------------------------------ */
 /* Shared markup helpers                                              */
 /* ------------------------------------------------------------------ */
@@ -1030,6 +1097,7 @@ const VERTICALS = [
       { slug: 'online-businesses', name: 'Online Businesses', desc: 'Small online business models explained.' },
       { slug: 'income-skills', name: 'Income Skills', desc: 'Skills that can generate income and how to learn them.' },
       { slug: 'platform-reviews', name: 'Platform Reviews', desc: 'Earning platforms reviewed honestly, with risks and fees.' },
+      { slug: 'writing', name: 'Writing Opportunities', desc: 'Field notes on writing for websites: research, applications and what actually happened.' },
       { slug: 'beginner-guides', name: 'Beginner Guides', desc: 'Start here if you are new to online income.' }
     ]
   },
@@ -1061,6 +1129,7 @@ const VERTICALS = [
 searchIndex.verticals = [{ type:'entertainment', title:'BRYME Entertainment', slug:'entertainment', description:'Movies, TV series and anime with verified trailers and editorial articles.' }].concat(
   VERTICALS.flatMap(v => [{ type: v.dir, title: v.name, slug: v.dir, description: v.desc }].concat((v.categories || []).map(c => ({ type: v.dir, title: c.name, slug: v.dir + '/' + c.slug, description: c.desc }))))
 );
+searchIndex.verticals.push({ type:'make-money', title:'Writing Field Notes', slug:'make-money/writing-opportunities', description:'I research websites, write to them, and publish what happened. A gig is not guaranteed.' });
 fs.writeFileSync(path.join(root, 'data/search-index.json'), JSON.stringify(searchIndex)+'\n');
 /* ================================================================
    VERTICAL ARTICLES — Make Money and Sports editorial.
@@ -1119,6 +1188,7 @@ const articlePathFor = (dir, a) => '/' + dir + '/' + a.slug + '/';
 /* An article slug must never collide with a category/section slug at the same level. */
 VERTICALS.forEach(v => {
   const reserved = new Set(['articles'].concat((v.categories || []).map(c => c.slug)));
+  if (v.dir === 'make-money') reserved.add('writing-opportunities');
   (v.dir === 'sports' ? sportsArticlesPub : v.dir === 'make-money' ? moneyArticles : []).forEach(a => {
     if (reserved.has(a.slug)) throw new Error(`Article slug "${a.slug}" collides with a ${v.dir} section slug. Rename the article slug in content/${v.dir === 'sports' ? 'sports' : 'make-money'}-articles.json.`);
   });
@@ -1126,12 +1196,90 @@ VERTICALS.forEach(v => {
 const articleCard = (dir, a) => `<a class="vcat" href="${url(articlePathFor(dir, a))}"><b>${esc(a.title)}</b><span>${esc(a.excerpt || '')}</span></a>`;
 
 const EMPTY_HUB_PATHS = new Set();
+const WRITING_EXTRA_PATHS = [];
 const verticalChip = v => `<a class="vchip vchip-${v.dir}" href="${url('/' + v.dir + '/')}"><span class="vchip-emoji">${v.emoji}</span><span class="vchip-name">${esc(v.name)}</span><span class="vchip-tag">${esc(v.tagline)}</span></a>`;
+const MONEY_DESK = (() => {
+  const fallback = {
+    countries: [
+      { id: 'nigeria', name: 'Nigeria' },
+      { id: 'ghana', name: 'Ghana' },
+      { id: 'kenya', name: 'Kenya' },
+      { id: 'south-africa', name: 'South Africa' },
+      { id: 'united-kingdom', name: 'United Kingdom' },
+      { id: 'united-states', name: 'United States' },
+      { id: 'other', name: 'Another country' }
+    ],
+    paths: [
+      { id: 'writing', name: 'Writing', status: 'live', blurb: 'Publications I researched and wrote to. A gig is not guaranteed.' },
+      { id: 'design', name: 'Design', status: 'later', blurb: 'Same format when I have first-hand notes.' },
+      { id: 'video-editing', name: 'Video editing', status: 'later', blurb: 'Same format when I have first-hand notes.' },
+      { id: 'virtual-assistance', name: 'Virtual assistance', status: 'later', blurb: 'Same format when I have first-hand notes.' }
+    ]
+  };
+  const f = path.join(root, 'content', 'writing-opportunities.json');
+  if (!fs.existsSync(f)) return fallback;
+  try {
+    const d = JSON.parse(fs.readFileSync(f, 'utf8'));
+    return {
+      countries: Array.isArray(d.countries) && d.countries.length ? d.countries : fallback.countries,
+      paths: Array.isArray(d.paths) && d.paths.length ? d.paths : fallback.paths
+    };
+  } catch (e) { return fallback; }
+})();
+function moneyDeskHtml(){
+  const countries = MONEY_DESK.countries.map(c =>
+    `<button type="button" class="mm-country" data-mm-country="${esc(c.id)}" data-mm-country-name="${esc(c.name)}">${esc(c.name)}</button>`
+  ).join('');
+  const paths = MONEY_DESK.paths.map(p => {
+    if (p.status === 'live') {
+      return `<a class="mm-path is-live" data-mm-path="${esc(p.id)}" href="${url('/make-money/writing-opportunities/')}"><b>${esc(p.name)}</b><span>${esc(p.blurb || '')}</span></a>`;
+    }
+    return `<div class="mm-path is-later"><b>${esc(p.name)}</b><span>Later — same research standard, not open yet.</span></div>`;
+  }).join('');
+  return `<section class="mm-desk" data-mm-desk>
+    <h2>1. Your country</h2>
+    <p class="mm-desk-lead">The catalogue you see next depends on where you write from. A site that only takes US writers will not be sold to Lagos as “open to everyone.”</p>
+    <div class="mm-countries" role="group" aria-label="Choose your country">${countries}</div>
+    <h2>2. What you want to do</h2>
+    <p class="mm-desk-lead">Writing is open. Other paths use the same format when I have first-hand notes. I will not invent a catalogue to look busy.</p>
+    <div class="mm-paths">${paths}</div>
+    <div class="vnote">Nothing is guaranteed. A site can close submissions, ignore you, or stop paying. Every card is dated. If I do not know, the card says unknown.</div>
+  </section>
+  <script>
+  (function(){
+    var KEY = 'bryme-mm-country';
+    var desk = document.querySelector('[data-mm-desk]');
+    if (!desk) return;
+    function qCountry(){ try { return new URLSearchParams(location.search).get('country') || ''; } catch (e) { return ''; } }
+    var current = qCountry();
+    try { if (!current) current = localStorage.getItem(KEY) || ''; } catch (e) {}
+    function setCountry(id){
+      current = id || '';
+      try { if (id) localStorage.setItem(KEY, id); } catch (e) {}
+      desk.querySelectorAll('[data-mm-country]').forEach(function(btn){
+        btn.classList.toggle('is-on', btn.getAttribute('data-mm-country') === current);
+      });
+      desk.querySelectorAll('a[data-mm-path]').forEach(function(a){
+        var base = a.getAttribute('href').split('?')[0];
+        a.setAttribute('href', current ? base + '?country=' + encodeURIComponent(current) : base);
+      });
+    }
+    desk.addEventListener('click', function(e){
+      var btn = e.target.closest('[data-mm-country]');
+      if (!btn) return;
+      setCountry(btn.getAttribute('data-mm-country'));
+    });
+    setCountry(current);
+  })();
+  </script>`;
+}
+
+
 function verticalPage(v, category){
   const catPath = category ? '/' + v.dir + '/' + category.slug + '/' : '/' + v.dir + '/';
   const crumbs = [{name:'Home', path:'/'}, {name:v.name, path:'/' + v.dir + '/'}];
   if (category) crumbs.push({name:category.name, path:catPath});
-  const catGrid = (v.categories || []).map(c => `<a class="vcat" href="${url('/' + v.dir + '/' + c.slug + '/')}"><b>${esc(c.name)}</b><span>${esc(c.desc)}</span></a>`).join('') + (v.dir === 'make-money' ? `<a class="vcat" href="${url('/make-money/beginners-guide-to-making-money-online/')}"><b>Beginner’s Guide to Making Money Online</b><span>An honest, skill-first guide to avoiding shortcuts and building value.</span></a>` : '');
+  const catGrid = (v.dir === 'make-money' ? `<a class="vcat wo-feature-card" href="${url('/make-money/writing-opportunities/')}"><b>Writing Field Notes</b><span>I research websites, write to them, and publish what happened. A gig is not guaranteed.</span></a>` : '') + (v.categories || []).map(c => `<a class="vcat" href="${url('/' + v.dir + '/' + c.slug + '/')}"><b>${esc(c.name)}</b><span>${esc(c.desc)}</span></a>`).join('') + (v.dir === 'make-money' ? `<a class="vcat" href="${url('/make-money/beginners-guide-to-making-money-online/')}"><b>Beginner’s Guide to Making Money Online</b><span>An honest, skill-first guide to avoiding shortcuts and building value.</span></a>` : '');
   const sportsEditorial = (() => { const f = path.join(root, 'content', 'sports-articles.json'); if (!fs.existsSync(f)) return []; try { return (JSON.parse(fs.readFileSync(f, 'utf8')).articles || []).filter(a => a.status === 'published'); } catch (_) { return []; } })();
   const sportsStoriesBlock = (v.dir === 'sports' && !category) ? `<section class="section"><div class="section-head"><h2>BRYME Sports Stories</h2><a href="${url('/sports/articles/')}">All stories</a></div>${sportsEditorial.length ? `<div class="vcat-grid">${sportsEditorial.filter(a => (a.labels || []).some(x => ['featured','trending','editor-pick'].includes(x))).slice(0,6).map(a => `<a class="vcat" href="${url('/sports/articles/' + a.slug + '/')}"><b>${esc(a.title)}</b><span>${esc(a.category)} · ${esc((a.labels || []).join(' · '))}</span></a>`).join('')}</div>` : `<div class="vstate"><b>Stories are being prepared</b><p>Drafts are researched and reviewed before publication. Published BRYME Sports stories will appear here.</p><a class="quiet-link" href="${url('/sports/articles/')}">Visit the Sports editorial desk</a></div>`}</section>` : '';
   const sportsFeature = (v.dir === 'sports' && category && category.slug === 'football') ? `<section class="sp-hero" aria-label="Featured BRYME Sports stories"><div class="sp-hero-track"><a class="sp-hero-card sp-hero-first" href="${url('/sports/premier-league/')}" style="--card-img:url('/assets/img/sports/hero-premier-league.jpg')"><span class="sp-hero-tag">Welcome to the Premier League</span><h3>The 2026/27 season starts here</h3><p>Fixtures, clubs, match pages and the stories that will define the campaign.</p><span class="sp-hero-go">Explore the season →</span></a><a class="sp-hero-card" href="${url('/sports/fpl/')}" style="--card-img:url('/assets/img/sports/hero-fpl.jpg')"><span class="sp-hero-tag">Fantasy Premier League</span><h3>Top FPL picks for the new season</h3><p>Start with the fixtures, the key decisions and the players worth watching.</p><span class="sp-hero-go">Build your FPL view →</span></a><a class="sp-hero-card" href="${url('/sports/managers-2026-27/')}" style="--card-img:url('/assets/img/sports/hero-man-city-manager.jpg')"><span class="sp-hero-tag">Manchester City</span><h3>Enzo Maresca: a new chapter at City</h3><p>Follow the manager changes and the early storylines around the Premier League.</p><span class="sp-hero-go">See managers in &amp; out →</span></a></div></section>` : '';
@@ -1186,10 +1334,13 @@ function verticalPage(v, category){
   const defaultHero = `<section class="hero vhero vhero-${v.dir}" data-vertical="${v.dir}"><div class="eyebrow">${v.emoji} ${category ? esc(v.name) + ' · ' + esc(category.name) : esc(v.name)}</div><h1>${esc(category ? category.name : v.name)}</h1><p class="lead">${esc(category ? category.desc : v.tagline)}</p></section>`;
   const pageHero = defaultHero + sportsFeature;
   const catArticles = category ? ((verticalArticleIndex[v.dir] && verticalArticleIndex[v.dir].get(category.slug)) || []) : [];
+  const writingDeskBlock = (v.dir === 'make-money' && category && category.slug === 'writing')
+    ? `<div class="wo-banner"><b>The live log is next door.</b><p>These are the articles about the series. Dated field notes — who I emailed, who replied, how they pay — live on <a href="${url('/make-money/writing-opportunities/')}">Writing Field Notes</a>.</p></div>`
+    : '';
   const catArticleBlock = catArticles.length
     ? `<div class="vcat-grid">${catArticles.map(a => articleCard(v.dir, a)).join('')}</div>`
     : '';
-  const body = `<main class="shell"><div class="crumb"><a href="${url('/')}">Home</a> / ${category ? `<a href="${url('/' + v.dir + '/')}">${esc(v.name)}</a> / ${esc(category.name)}` : esc(v.name)}</div>${pageHero}<section class="section">${category ? (v.dir === 'sports' && category.slug === 'football' ? (footballHub + catArticleBlock) : (clubsDirectory ? (clubsDirectory + catArticleBlock) : (catArticles.length ? catArticleBlock : `<div class="vstate"><b>${esc(category.name)} — foundation ready</b><p>This section is being built. Articles will appear here as they are researched and published.</p></div>`))) : `<p class="lead" style="margin-bottom:18px">${esc(v.desc)}</p><div class="vnote">${esc(v.note)}</div><h2 style="margin:26px 0 14px">Explore ${esc(v.short)}</h2><div class="vcat-grid">${catGrid}</div>`}</section>${(v.dir === 'sports' && !category) ? livePreviewBlock(10) : ''}${sportsTeaserBlock}${fixturesBlock}${sportsStoriesBlock}<section class="section"><div class="section-head"><h2>Explore BRYME</h2></div><div class="vchips">${VERTICALS.map(verticalChip).join('')}</div></section></main>`;
+  const body = `<main class="shell"><div class="crumb"><a href="${url('/')}">Home</a> / ${category ? `<a href="${url('/' + v.dir + '/')}">${esc(v.name)}</a> / ${esc(category.name)}` : esc(v.name)}</div>${pageHero}<section class="section">${category ? (v.dir === 'sports' && category.slug === 'football' ? (footballHub + catArticleBlock) : (clubsDirectory ? (clubsDirectory + catArticleBlock) : (catArticles.length ? writingDeskBlock + catArticleBlock : (writingDeskBlock || `<div class="vstate"><b>${esc(category.name)} — foundation ready</b><p>This section is being built. Articles will appear here as they are researched and published.</p></div>`)))) : `${v.dir === 'make-money' ? moneyDeskHtml() : ''}<p class="lead" style="margin-bottom:18px">${esc(v.desc)}</p><div class="vnote">${esc(v.note)}</div><h2 style="margin:26px 0 14px">${v.dir === 'make-money' ? 'Guides already published' : 'Explore ' + esc(v.short)}</h2><div class="vcat-grid">${catGrid}</div>`}</section>${(v.dir === 'sports' && !category) ? livePreviewBlock(10) : ''}${sportsTeaserBlock}${fixturesBlock}${sportsStoriesBlock}<section class="section"><div class="section-head"><h2>Explore BRYME</h2></div><div class="vchips">${VERTICALS.map(verticalChip).join('')}</div></section></main>`;
   const emptyHub = !!category && !catArticles.length && !clubsDirectory && !(v.dir === 'sports' && category.slug === 'football');
   if (emptyHub) EMPTY_HUB_PATHS.add(catPath);
   write(v.dir + (category ? '/' + category.slug : ''), layout({
@@ -1515,6 +1666,319 @@ for (const v of VERTICALS) {
   verticalPage(v, null);
   (v.categories || []).forEach(c => verticalPage(v, c));
 }
+
+function buildWritingOpportunities(){
+  const file = path.join(root, 'content', 'writing-opportunities.json');
+  let data = { updatedAt: TODAY, writerBase: 'Nigeria', title: 'Writing catalogue', tagline: '', youtubeVideoUrl: null, opportunities: [], countries: MONEY_DESK.countries, paths: MONEY_DESK.paths };
+  if (fs.existsSync(file)) {
+    try { data = Object.assign(data, JSON.parse(fs.readFileSync(file, 'utf8'))); }
+    catch (e) { warnings.push('writing-opportunities.json unreadable'); }
+  }
+  const PAY = new Set(['paid', 'unpaid', 'mixed', 'unknown']);
+  const ISO = /^\d{4}-\d{2}-\d{2}$/;
+  const daysBetween = (a, b) => {
+    const A = Date.parse(String(a) + 'T00:00:00Z'), B = Date.parse(String(b) + 'T00:00:00Z');
+    if (isNaN(A) || isNaN(B)) return null;
+    return Math.round((B - A) / 86400000);
+  };
+  const published = [];
+  (Array.isArray(data.opportunities) ? data.opportunities : []).forEach((o, idx) => {
+    if (!o || o.status !== 'published') return;
+    const label = o.slug || o.name || ('row ' + idx);
+    if (!o.name || !o.slug) { warnings.push('writing-opportunities: dropped ' + label + ' — missing name/slug'); return; }
+    if (!o.siteUrl && !o.applyUrl) { warnings.push('writing-opportunities: dropped ' + label + ' — no siteUrl or applyUrl'); return; }
+    if (!o.lastChecked || !ISO.test(String(o.lastChecked))) { warnings.push('writing-opportunities: dropped ' + label + ' — lastChecked must be YYYY-MM-DD'); return; }
+    if (!o.writerCountry) { warnings.push('writing-opportunities: dropped ' + label + ' — writerCountry required'); return; }
+    const substance = [o.notes, o.whatTheyWant, o.payNotes, o.guidelines, o.howToSubmit].some(v => {
+      if (Array.isArray(v)) return v.join(' ').trim().length > 20;
+      return typeof v === 'string' && v.trim().length > 20;
+    }) || o.contacted === true;
+    if (!substance) { warnings.push('writing-opportunities: dropped ' + label + ' — no notes, brief or contact'); return; }
+    const claimedOutcome = o.replied != null || o.gotPaid === true || o.landedGig === true || o.replyDays != null;
+    if (claimedOutcome && o.contacted !== true) { warnings.push('writing-opportunities: dropped ' + label + ' — reply/pay claimed without contacted:true'); return; }
+    if (o.payStatus && !PAY.has(o.payStatus)) { warnings.push('writing-opportunities: dropped ' + label + ' — payStatus must be paid|unpaid|mixed|unknown'); return; }
+    published.push(o);
+  });
+  published.sort((a, b) => String(b.lastChecked).localeCompare(String(a.lastChecked)) || String(a.name).localeCompare(String(b.name)));
+
+  const niches = [...new Set(published.flatMap(o => Array.isArray(o.niches) ? o.niches : (o.niche ? [o.niche] : [])))].sort();
+  const payLabel = s => s === 'paid' ? 'Pays (as stated)' : s === 'unpaid' ? 'Does not pay' : s === 'mixed' ? 'Sometimes pays' : 'Pay unknown';
+
+  const replyFact = o => {
+    if (o.contacted !== true) return { key: 'unknown', label: 'Reply unknown — I have not written to them' };
+    if (o.replied === true && o.contactedOn && o.repliedOn) {
+      const n = daysBetween(o.contactedOn, o.repliedOn);
+      return { key: 'replied', label: n != null ? 'Replied in ' + n + ' day' + (n === 1 ? '' : 's') + ' (my application)' : 'Replied (my application)' };
+    }
+    if (o.replied === true) return { key: 'replied', label: o.repliedOn ? 'Replied ' + o.repliedOn + ' (my application)' : 'Replied (my application)' };
+    if (o.replied === false) {
+      const n = o.contactedOn ? daysBetween(o.contactedOn, o.lastChecked || TODAY) : null;
+      return { key: 'no-reply', label: n != null ? 'No reply after ' + n + ' day' + (n === 1 ? '' : 's') + ' (my application)' : 'No reply (my application)' };
+    }
+    return { key: 'waiting', label: o.contactedOn ? 'Waiting since ' + o.contactedOn : 'Contacted — waiting' };
+  };
+
+  const yn = (v, yes, no, unk) => v === true ? yes : v === false ? no : unk;
+
+  const policyFor = (o, countryName) => {
+    if (!countryName) return 'unknown';
+    const policy = o.countryPolicy && typeof o.countryPolicy === 'object' ? o.countryPolicy : null;
+    if (policy && policy[countryName]) return policy[countryName];
+    if (Array.isArray(o.countriesAccepted) && o.countriesAccepted.map(String).some(x => x.toLowerCase() === countryName.toLowerCase())) return 'accepted';
+    if (Array.isArray(o.countriesRejected) && o.countriesRejected.map(String).some(x => x.toLowerCase() === countryName.toLowerCase())) return 'rejected';
+    return 'unknown';
+  };
+
+  const listBlock = (title, value) => {
+    if (!value) return '';
+    if (Array.isArray(value) && value.length) return `<h3>${esc(title)}</h3><ol>${value.map(x => `<li>${esc(x)}</li>`).join('')}</ol>`;
+    if (typeof value === 'string' && value.trim()) return `<h3>${esc(title)}</h3>` + String(value).split(/\n{2,}/).map(t => `<p>${esc(t.trim())}</p>`).join('');
+    return '';
+  };
+
+  const facts = (o) => {
+    const reply = replyFact(o);
+    const open = yn(o.submissionsOpen, 'Open when last checked', 'Closed when last checked', 'Unknown');
+    const articles = yn(o.acceptsArticles, 'Yes', 'No', 'Unknown');
+    return `<dl class="wo-facts">
+      <div><dt>Accepts articles</dt><dd>${esc(articles)}</dd></div>
+      <div><dt>Submissions</dt><dd>${esc(open)}${o.submissionsCheckedOn || o.lastChecked ? ' · checked ' + esc(o.submissionsCheckedOn || o.lastChecked) : ''}</dd></div>
+      <div><dt>Pay</dt><dd>${esc(payLabel(o.payStatus || 'unknown'))}</dd></div>
+      <div><dt>Reply</dt><dd class="wo-${reply.key}">${esc(reply.label)}</dd></div>
+      <div data-wo-country-cell><dt>Your country</dt><dd data-wo-country-verdict>Unknown until you pick a country</dd></div>
+    </dl>`;
+  };
+
+  const card = o => {
+    const reply = replyFact(o);
+    const tags = (Array.isArray(o.niches) ? o.niches : (o.niche ? [o.niche] : [])).map(n => `<span class="wo-tag">${esc(n)}</span>`).join('');
+    const apply = o.applyUrl
+      ? `<a class="wo-apply" href="${esc(o.applyUrl)}" rel="nofollow noopener" target="_blank">How they ask you to submit</a>`
+      : (o.siteUrl ? `<a class="wo-apply" href="${esc(o.siteUrl)}" rel="nofollow noopener" target="_blank">Visit site</a>` : '');
+    const policyJson = esc(JSON.stringify(o.countryPolicy || {}));
+    const accepted = esc(JSON.stringify(o.countriesAccepted || []));
+    const rejected = esc(JSON.stringify(o.countriesRejected || []));
+    return `<article class="wo-card" data-niches="${esc((Array.isArray(o.niches) ? o.niches : []).join(','))}" data-contact="${reply.key}" data-policy="${policyJson}" data-accepted="${accepted}" data-rejected="${rejected}">
+      <header class="wo-card-head"><h3><a href="${url('/make-money/writing-opportunities/' + o.slug + '/')}">${esc(o.name)}</a></h3><span class="wo-checked">Last checked ${esc(o.lastChecked)}</span></header>
+      ${tags ? `<div class="wo-tags">${tags}</div>` : ''}
+      ${facts(o)}
+      ${o.whatTheyWant ? `<p>${esc(o.whatTheyWant)}</p>` : ''}
+      ${o.whoItsNotFor ? `<p class="wo-notfor"><b>Skip if:</b> ${esc(o.whoItsNotFor)}</p>` : ''}
+      <p class="wo-actions">${apply} <a class="wo-apply" href="${url('/make-money/writing-opportunities/' + o.slug + '/')}">Full guide</a></p>
+    </article>`;
+  };
+
+  const countryStrip = `<div class="mm-desk wo-inline-desk" data-mm-desk data-mm-desk-compact>
+    <p class="mm-desk-lead"><b>Country.</b> Pick yours. Cards that reject it drop out. Unknown stays visible — I will not pretend I know.</p>
+    <div class="mm-countries" role="group" aria-label="Choose your country">${(data.countries || MONEY_DESK.countries).map(c => `<button type="button" class="mm-country" data-mm-country="${esc(c.id)}" data-mm-country-name="${esc(c.name)}">${esc(c.name)}</button>`).join('')}</div>
+  </div>`;
+
+  const filterBar = published.length ? `<div class="wo-filters" data-wo-filters>
+    <label>Niche <select data-wo-niche><option value="">All niches</option>${niches.map(n => `<option value="${esc(n)}">${esc(n)}</option>`).join('')}</select></label>
+    <label>Reply <select data-wo-contact><option value="">Any</option><option value="replied">Replied to me</option><option value="no-reply">No reply</option><option value="waiting">Waiting</option><option value="unknown">Not contacted</option></select></label>
+    <button type="button" class="fbtn" data-wo-clear>Clear filters</button>
+    <p class="wo-count" data-wo-count></p>
+  </div>` : '';
+
+  const empty = `<div class="vstate wo-empty"><b>No sites in the catalogue yet</b><p data-wo-empty-copy>I have not published a dated site. When I research one and write to them, the card will appear here — including if they never reply. I will not invent a reply time or “actively hiring” badge to fill this space.</p></div>`;
+
+  const how = `<section class="wo-how">
+    <h2>What each card is allowed to say</h2>
+    <ol class="wo-steps">
+      <li><b>Accepts articles / submissions open.</b> Only from their current write-for-us page, dated.</li>
+      <li><b>Pay.</b> Only what they published or told me. Not a rate from another blog.</li>
+      <li><b>Your country.</b> Accepted, rejected, or unknown. Unknown is the default.</li>
+      <li><b>Reply time.</b> Only from my own application: “replied in X days” or “no reply after X days”. Never a guessed average.</li>
+    </ol>
+    <div class="vnote">Writing can pay. Landing a gig is not promised. Guidelines change. Re-check their page before you send anything.</div>
+  </section>`;
+
+  const yt = data.youtubeVideoUrl
+    ? `<section class="wo-video"><h2>Latest video</h2><p><a href="${esc(data.youtubeVideoUrl)}" rel="noopener" target="_blank">${esc(data.youtubeVideoTitle || 'Watch on YouTube')}</a></p></section>`
+    : `<section class="wo-video"><h2>YouTube</h2><p class="wo-pending">No video is linked yet. When the first one goes up it will sit here.</p></section>`;
+
+  const guideLink = url('/make-money/writing-field-notes-how-this-works/');
+  const crumbs = [
+    { name: 'Home', path: '/' },
+    { name: 'BRYME Make Money', path: '/make-money/' },
+    { name: 'Writing catalogue', path: '/make-money/writing-opportunities/' }
+  ];
+  const desc = 'A catalogue of websites I researched for writers. Filter by country. See whether they accept articles, if submissions were open when I checked, whether they pay, and how I applied. A gig is not guaranteed.';
+  const body = `<main class="shell wo-page"><div class="crumb"><a href="${url('/')}">Home</a> / <a href="${url('/make-money/')}">BRYME Make Money</a> / Writing</div>
+    <section class="hero vhero vhero-make-money"><div class="eyebrow">💰 BRYME Make Money · Writing</div>
+      <h1>${esc(data.title || 'Writing catalogue')}</h1>
+      <p class="lead">${esc(data.tagline || 'Pick your country. Then see sites I actually researched. A gig is not guaranteed.')}</p>
+    </section>
+    ${countryStrip}
+    ${how}
+    <section class="section">
+      <div class="section-head"><h2>The catalogue</h2></div>
+      <p class="section-note">${published.length ? published.length + ' published site' + (published.length === 1 ? '' : 's') + ' · last file update ' + esc(data.updatedAt || TODAY) : 'Empty on purpose until a site is researched and dated.'}</p>
+      ${filterBar}
+      <div class="wo-grid" data-wo-grid>${published.length ? published.map(card).join('') : empty}</div>
+    </section>
+    ${yt}
+    <section class="section"><div class="section-head"><h2>Read the rulebook</h2></div>
+      <div class="vcat-grid">
+        <a class="vcat" href="${guideLink}"><b>How this series works</b><span>What I log, what I refuse to invent, and why this beats buying a script.</span></a>
+        <a class="vcat" href="${url('/make-money/beginners-guide-to-making-money-online/')}"><b>Beginner’s guide to making money online</b><span>The skill-first piece this series sits on top of.</span></a>
+      </div>
+    </section>
+    <section class="section"><div class="section-head"><h2>Explore BRYME</h2></div><div class="vchips">${VERTICALS.map(verticalChip).join('')}</div></section>
+  </main>
+  <script>
+  (function(){
+    var KEY = 'bryme-mm-country';
+    var desk = document.querySelector('[data-mm-desk]');
+    var grid = document.querySelector('[data-wo-grid]');
+    var countries = ${JSON.stringify((data.countries || []).map(c => ({id:c.id, name:c.name}))).replace(/</g, '\\\\u003c')};
+    function qCountry(){ try { return new URLSearchParams(location.search).get('country') || ''; } catch (e) { return ''; } }
+    function saved(){ try { return localStorage.getItem(KEY) || ''; } catch (e) { return ''; } }
+    function nameOf(id){ var hit = countries.filter(function(c){ return c.id === id; })[0]; return hit ? hit.name : ''; }
+    var current = qCountry() || saved();
+    function verdict(card, countryName){
+      if (!countryName) return 'unknown';
+      try {
+        var policy = JSON.parse(card.getAttribute('data-policy') || '{}');
+        if (policy[countryName]) return policy[countryName];
+        var acc = JSON.parse(card.getAttribute('data-accepted') || '[]');
+        var rej = JSON.parse(card.getAttribute('data-rejected') || '[]');
+        var low = countryName.toLowerCase();
+        if (acc.some(function(x){ return String(x).toLowerCase() === low; })) return 'accepted';
+        if (rej.some(function(x){ return String(x).toLowerCase() === low; })) return 'rejected';
+      } catch (e) {}
+      return 'unknown';
+    }
+    function paintCountry(){
+      if (desk) {
+        desk.querySelectorAll('[data-mm-country]').forEach(function(btn){
+          btn.classList.toggle('is-on', btn.getAttribute('data-mm-country') === current);
+        });
+      }
+      var countryName = nameOf(current);
+      try { if (current) localStorage.setItem(KEY, current); } catch (e) {}
+      if (grid) {
+        grid.querySelectorAll('.wo-card').forEach(function(card){
+          var v = verdict(card, countryName);
+          card.setAttribute('data-country-verdict', v);
+          var dd = card.querySelector('[data-wo-country-verdict]');
+          if (dd) {
+            dd.textContent = !countryName ? 'Pick a country above' : (v === 'accepted' ? 'Accepts ' + countryName + ' (as logged)' : v === 'rejected' ? 'Does not accept ' + countryName + ' (as logged)' : 'Unknown for ' + countryName);
+          }
+        });
+      }
+      var emptyCopy = document.querySelector('[data-wo-empty-copy]');
+      if (emptyCopy && countryName) {
+        emptyCopy.textContent = 'I have not published a dated site for ' + countryName + ' yet. When I research one and write to them, it will appear here. I will not invent a reply time to fill this space.';
+      }
+      applyFilters();
+    }
+    var root = document.querySelector('[data-wo-filters]');
+    var niche = root && root.querySelector('[data-wo-niche]');
+    var contact = root && root.querySelector('[data-wo-contact]');
+    var count = root && root.querySelector('[data-wo-count]');
+    function applyFilters(){
+      if (!grid) return;
+      var cards = Array.prototype.slice.call(grid.querySelectorAll('.wo-card'));
+      var n = niche && niche.value;
+      var k = contact && contact.value;
+      var shown = 0;
+      cards.forEach(function(card){
+        var ok = true;
+        if (card.getAttribute('data-country-verdict') === 'rejected') ok = false;
+        if (n && (',' + (card.getAttribute('data-niches') || '') + ',').indexOf(',' + n + ',') === -1) ok = false;
+        if (k && card.getAttribute('data-contact') !== k) ok = false;
+        card.hidden = !ok;
+        if (ok) shown++;
+      });
+      if (count) count.textContent = cards.length ? (shown + ' of ' + cards.length + ' sites') : '';
+    }
+    if (desk) desk.addEventListener('click', function(e){
+      var btn = e.target.closest('[data-mm-country]');
+      if (!btn) return;
+      current = btn.getAttribute('data-mm-country');
+      try {
+        var u = new URL(location.href);
+        u.searchParams.set('country', current);
+        history.replaceState({}, '', u.toString());
+      } catch (err) {}
+      paintCountry();
+    });
+    if (root) {
+      root.addEventListener('change', applyFilters);
+      var clear = root.querySelector('[data-wo-clear]');
+      if (clear) clear.addEventListener('click', function(){
+        if (niche) niche.value = '';
+        if (contact) contact.value = '';
+        applyFilters();
+      });
+    }
+    paintCountry();
+  })();
+  <\/script>`;
+
+  const pagePath = '/make-money/writing-opportunities/';
+  WRITING_EXTRA_PATHS.push(pagePath);
+  const lastmod = ISO.test(String(data.updatedAt || '')) ? data.updatedAt : TODAY;
+  if (typeof PAGE_LASTMOD !== 'undefined') PAGE_LASTMOD.set(pagePath, lastmod);
+
+  write('make-money/writing-opportunities', layout({
+    title: (data.title || 'Writing catalogue') + ' – sites I actually researched',
+    description: desc,
+    path: pagePath,
+    activeNav: 'make-money',
+    schema: [
+      { '@context': 'https://schema.org', '@type': 'CollectionPage', name: data.title || 'Writing catalogue', description: desc, url: absUrl(pagePath) },
+      breadcrumbs(crumbs)
+    ],
+    body
+  }));
+
+  published.forEach(o => {
+    const reply = replyFact(o);
+    const detailPath = '/make-money/writing-opportunities/' + o.slug + '/';
+    WRITING_EXTRA_PATHS.push(detailPath);
+    if (ISO.test(String(o.lastChecked))) PAGE_LASTMOD.set(detailPath, o.lastChecked);
+    const sourceBlock = Array.isArray(o.sources) && o.sources.length
+      ? `<section class="sp-source"><h2>Sources</h2><p>${o.sources.map(src =>
+          src.url ? `<a href="${esc(src.url)}" rel="nofollow noopener">${esc(src.name || src.url)}</a>` : esc(src.name || src)
+        ).join(' · ')}</p><p class="sp-source-note">Checked ${esc(o.lastChecked)}. Their rules can change — confirm on their page before you send work.</p></section>`
+      : '';
+    const dCrumbs = crumbs.concat([{ name: o.name, path: detailPath }]);
+    const dBody = `<main class="shell wo-page"><div class="crumb"><a href="${url('/')}">Home</a> / <a href="${url('/make-money/')}">BRYME Make Money</a> / <a href="${url(pagePath)}">Writing</a> / ${esc(o.name)}</div>
+      <section class="article-hero"><div class="eyebrow">Writing catalogue</div>
+        <h1>${esc(o.name)}</h1>
+        <p class="lead">${esc(o.whatTheyWant || o.notes || 'A publication I researched for writers. Nothing here is a guarantee.')}</p>
+        <div class="article-meta"><span>Last checked ${esc(o.lastChecked)}</span><span>Logged from ${esc(o.writerCountry)}</span></div>
+      </section>
+      <article class="prose article-body">
+        ${facts(o)}
+        ${o.payNotes ? `<h2>Pay</h2><p>${esc(o.payNotes)}</p>` : ''}
+        ${listBlock('Write-up guidelines', o.guidelines)}
+        ${listBlock('How to submit', o.howToSubmit)}
+        ${o.notes ? `<h2>What I did</h2><p>${esc(o.notes)}</p>` : ''}
+        ${o.whoItsNotFor ? `<h2>Skip this if</h2><p>${esc(o.whoItsNotFor)}</p>` : ''}
+        ${Array.isArray(o.unknowns) && o.unknowns.length ? `<h2>Still unknown</h2><ul>${o.unknowns.map(u => `<li>${esc(u)}</li>`).join('')}</ul>` : ''}
+        <div class="vnote">A gig is not guaranteed. This is a dated field note, not a hiring promise.</div>
+        ${o.applyUrl ? `<p><a class="cta" href="${esc(o.applyUrl)}" rel="nofollow noopener" target="_blank">Their submit page</a></p>` : ''}
+      </article>
+      ${sourceBlock}
+      <section class="section"><a class="quiet-link" href="${url(pagePath)}">← Back to the writing catalogue</a></section>
+    </main>`;
+    write('make-money/writing-opportunities/' + o.slug, layout({
+      title: o.name + ' – writing guide',
+      description: (o.whatTheyWant || o.notes || ('How to submit to ' + o.name + '. Dated. A gig is not guaranteed.')).slice(0, 158),
+      path: detailPath,
+      activeNav: 'make-money',
+      schema: [{ '@context':'https://schema.org', '@type':'Article', headline: o.name, dateModified: o.lastChecked, description: o.whatTheyWant || undefined }, breadcrumbs(dCrumbs)],
+      body: dBody
+    }));
+  });
+}
+
+
+buildWritingOpportunities();
+
 
 // Entertainment hub — the existing mature section, presented under BRYME Entertainment
 write('entertainment', layout({
@@ -2359,7 +2823,7 @@ write('trending', layout({
 }));
 
 /* ---------------- Search ---------------- */
-const searchEmbed = JSON.stringify({ movies: searchIndex.movies, articles: searchIndex.articles, topics: searchIndex.topics }).replace(/</g, '\\u003c');
+const searchEmbed = JSON.stringify({ movies: searchIndex.movies, articles: searchIndex.articles, topics: searchIndex.topics, verticals: searchIndex.verticals || [] }).replace(/</g, '\\u003c');
 write('search', layout({
   title: 'Search Movies, TV Series & Anime',
   description: 'Search across BRYME — movies, TV series, anime, sports, memes, money guides and tech — every result is labelled with its vertical.',
@@ -2964,6 +3428,7 @@ const genrePaths = typeConfig.flatMap(t => [...genreIndexByType[t.dir].keys()].m
 const legalPaths = legalPages.map(p => '/' + p.dir + '/');
 const verticalPaths = ['/entertainment/','/sports/articles/']
   .concat(VERTICALS.flatMap(v => ['/' + v.dir + '/'].concat((v.categories || []).map(c => '/' + v.dir + '/' + c.slug + '/'))))
+  .concat(WRITING_EXTRA_PATHS)
   .filter(p => !EMPTY_HUB_PATHS.has(p));
 /* Published vertical articles are real, indexable pages. */
 const verticalArticlePaths = VERTICALS.flatMap(v => (VERTICAL_ARTICLES[v.dir] || []).map(a => articlePathFor(v.dir, a)));
