@@ -4106,6 +4106,248 @@ fs.appendFileSync(path.join(root,'assets/site.css'), `
 [data-theme="light"] .placeholder{background:linear-gradient(145deg,#e9edf2,#d7dbe2);color:#161b22}
 `);
 
+
+fs.appendFileSync(path.join(root,'assets/site.css'), `
+
+/* ============================================================
+   MOBILE COMPACTNESS
+   Last visual pass. Desktop is unchanged. Only phones/small
+   screens: shrink oversized icons, buttons, headings, nav and
+   padding so more of the same design fits on one screen.
+   ============================================================ */
+@media (max-width: 760px) {
+  /* Header + tools */
+  .top .shell { min-height: 46px; padding: 6px 12px; gap: 8px; }
+  .brand { font-size: 15px; letter-spacing: .08em; }
+  .header-search { min-height: 32px; padding: 4px 10px; font-size: 12px; }
+  .theme-toggle { width: 32px; height: 32px; }
+  .theme-toggle svg, .bryme-top svg { width: 15px; height: 15px; }
+  .bryme-top { width: 34px; height: 34px; right: 12px; bottom: 62px; }
+  .shell { padding-left: 12px; padding-right: 12px; }
+
+  /* Bottom nav: slimmer, icons still tappable */
+  body { padding-bottom: calc(54px + env(safe-area-inset-bottom, 0px)); }
+  .mobile-nav { grid-auto-columns: minmax(0, 1fr); }
+  .mobile-nav a {
+    min-height: 46px;
+    padding: 5px 1px calc(5px + env(safe-area-inset-bottom, 0px) / 4);
+    font-size: 9.5px;
+    gap: 1px;
+  }
+  .mobile-nav .mn-ico { font-size: 13px; margin-bottom: 0; line-height: 1; }
+
+  /* Headings: slightly smaller, still a title */
+  .hero h1,
+  .vhero h1,
+  .article-hero h1,
+  .home-hero h1,
+  .sp-pl-hero h1,
+  .sp-article-head h1 {
+    font-size: clamp(22px, 6.6vw, 30px) !important;
+    line-height: 1.15 !important;
+    margin: 6px 0 8px;
+  }
+  .hero-carousel .hero-slide h1,
+  .hero-carousel .hero-slide h2 {
+    font-size: clamp(22px, 6.6vw, 30px) !important;
+    line-height: 1.12 !important;
+    margin: 0 0 6px;
+  }
+  .sports-feature h1 { font-size: 26px !important; margin: 6px auto 8px; }
+  .section-head h2,
+  .home-section h2,
+  .section > h2,
+  .section h2 { font-size: 18px; }
+  .rec-copy h2 { font-size: 20px; margin: 2px 0 4px; }
+  .article-body h2,
+  .tp-page .prose h2,
+  .legal-prose h2 { font-size: 18px; margin-top: 22px; }
+  .wo-card h3,
+  .oc-card h3 { font-size: 16px; }
+  .story-grid h3 { font-size: 16px; margin: 6px 0; }
+  .editorial-card h3 { font-size: 14.5px; }
+  .take-card h3 { font-size: 16px; }
+  .movie-hero h1 { font-size: clamp(22px, 6.4vw, 28px) !important; margin: 4px 0 6px; }
+
+  /* Body copy: a notch tighter, still readable */
+  .lead, .vhero .lead { font-size: 14px; line-height: 1.5; }
+  .hero-slide p, .home-hero p { font-size: 13.5px; }
+  .article-body p { font-size: 15.5px; line-height: 1.6; }
+  .tp-page .prose p { font-size: 15px; line-height: 1.6; }
+
+  /* Section / page padding */
+  .hero { padding: 20px 0 14px; }
+  .vhero, .sp-pl-hero { padding: 16px 0 6px; }
+  .section { padding: 14px 0; }
+  .home-section { padding: 16px 0 !important; }
+  .rec-section { padding: 16px 0; }
+  .brand-strip { padding: 12px 0 4px; }
+  .sub-section { padding: 4px 0 16px; }
+  .article-hero { padding: 18px 0 10px; }
+  .article-body { padding: 10px 0 36px; }
+  .legal-prose { padding: 6px 0 36px; }
+  .crumb { padding: 10px 0 0; font-size: 12px; }
+  .body { padding: 12px 0 32px; }
+  .section-head { gap: 8px; margin: 0 0 8px; }
+  .section-note { margin: 2px 0 8px; }
+  .count-line { margin: 0 0 8px; }
+  .home-main { padding-bottom: 16px; }
+
+  /* Heroes: stop eating the first screen */
+  .hero-carousel {
+    min-height: min(52svh, 340px) !important;
+  }
+  .hero-slide-inner {
+    padding-top: 58px !important;
+    padding-bottom: 28px !important;
+  }
+  .home-hero { min-height: 320px; }
+  .home-hero-inner { padding-top: 64px; padding-bottom: 24px; }
+  .sports-feature {
+    min-height: 220px !important;
+    padding: 22px 14px !important;
+    margin: 0 -12px 4px;
+  }
+  .sports-feature:after { font-size: 110px !important; right: -8px; bottom: -28px; }
+  .sports-feature p { font-size: 13.5px; line-height: 1.45; }
+  .sports-feature .cta { margin-top: 12px; }
+  .sports-feature-meta { margin-top: 10px; }
+  .movie-hero {
+    grid-template-columns: 88px minmax(0, 1fr) !important;
+    gap: 10px !important;
+    padding: 12px 12px 14px !important;
+    min-height: 0 !important;
+  }
+  .movie-hero .poster { max-height: 132px !important; }
+  .trailer-section { padding: 0 12px 10px; }
+
+  /* Icons / controls that were bulky */
+  .vchip-emoji { font-size: 16px; line-height: 1; }
+  .trailer-play { width: 52px; height: 36px; border-radius: 8px; }
+  .trailer-play:before { border-left-width: 12px; border-top-width: 7px; border-bottom-width: 7px; }
+  .hero-ctrl { width: 30px; height: 30px; font-size: 16px; }
+  .hero-vctrl { width: 30px; height: 30px; font-size: 13px; top: 10px; right: 10px; }
+  .hero-pause { right: 46px; }
+  .hero-dots { bottom: 10px; gap: 6px; }
+  .hero-dot { width: 7px; height: 7px; }
+  .rank { min-width: 18px; height: 18px; font-size: 10px; top: 4px; left: 4px; }
+  .sp-club-head img { width: 40px; height: 48px; }
+  .sp-match-hero img { width: 40px; height: 48px; }
+  .sp-hero-crests img { width: 22px; height: 26px; }
+  .sp-mc-crests img { width: 24px; height: 28px; }
+  .sp-fixt img { width: 18px; height: 22px; }
+  .genre-panel h3 { font-size: 14px; gap: 6px; }
+
+  /* Buttons: smaller, still easy to tap */
+  .cta,
+  .cta-ghost,
+  button.cta,
+  .hero-actions .cta,
+  .hero-actions .cta-ghost {
+    min-height: 36px !important;
+    padding: 7px 12px !important;
+    font-size: 13px;
+    margin-top: 0;
+  }
+  .loadmore { padding: 8px 16px; margin: 12px auto 0; font-size: 13.5px; }
+  .rec-cta { padding: 10px 16px; font-size: 14px; min-height: 40px; }
+  .rec-form input { padding: 10px 12px; }
+  .searchbox { padding: 10px 12px; margin: 8px 0; font-size: 16px; }
+  .stabs { padding: 6px 10px; font-size: 12px; }
+  .send-wa { min-height: 34px; padding: 6px 12px; font-size: 13px; }
+  .send-bar { margin: 10px 0 0; padding: 8px 10px; gap: 8px 10px; }
+  .tp-watch-btn { min-height: 36px; padding: 6px 12px; font-size: 13px; }
+  .fbtn { padding: 6px 10px; }
+  .mm-country { min-height: 34px; padding: 6px 11px; font-size: 13px; }
+  .header-search { min-height: 32px; }
+
+  /* Cards and containers */
+  .vchip { padding: 10px 11px; gap: 3px; border-radius: 8px; }
+  .vchip-name { font-size: 13.5px; }
+  .vchip-tag { font-size: 11px; }
+  .vchips { gap: 8px; }
+  .vcat { padding: 10px 11px; }
+  .vcat b { font-size: 13.5px; }
+  .vcat-grid { gap: 8px; }
+  .oc-card { padding: 12px 12px 10px; border-radius: 10px; }
+  .oc-filters { padding: 10px; margin: 0 0 12px; }
+  .oc-search-wrap input { padding: 9px 10px; }
+  .oc-facts { margin: 8px 0; gap: 6px; }
+  .wo-card { padding: 12px 12px 10px; }
+  .wo-filters { padding: 10px 12px; margin: 0 0 12px; gap: 8px; }
+  .wo-banner { padding: 10px 12px; margin: 0 0 12px; }
+  .mm-desk { padding: 12px; margin: 4px 0 16px; }
+  .mm-cat { padding: 11px; min-height: 88px; }
+  .mm-path { padding: 11px 12px; }
+  .story-grid a,
+  .story-grid-title a { min-height: 118px !important; padding: 14px; }
+  .sp-hero-card { min-height: 148px !important; padding: 14px; gap: 5px; }
+  .sp-hero { margin: 14px 0 6px; }
+  .sp-artcard { padding: 12px 13px; }
+  .sp-artcard b { font-size: 14.5px; }
+  .take-card { margin-top: 14px; padding: 12px; }
+  .tp-watch { margin: 16px 0; padding: 12px; }
+  .tp-next { margin: 22px 0 6px; padding-top: 14px; }
+  .rec-inner { padding: 14px 12px; gap: 12px; }
+  .filterbar { padding: 10px; margin: 0 0 12px; gap: 8px; }
+  .genre-panel { padding: 12px; }
+  .discover-cta { padding: 16px 12px; margin: 18px 0 0; }
+  .sp-match-hero { padding: 12px; gap: 10px; }
+  .sp-live { padding: 12px; gap: 10px; }
+  .sp-source { padding: 12px 14px; margin-top: 18px; }
+  .sp-club-head { padding: 10px 12px; gap: 10px; }
+  .sp-empty-panel { padding: 14px; }
+  .sp-mc-card { min-height: 96px; padding: 12px; }
+  .sp-msec { padding: 12px; min-height: 0; }
+  .row { padding: 10px 0; gap: 10px; }
+
+  /* Poster rails: a bit denser, still a row */
+  .grid, .grid-2 { gap: 8px !important; }
+  .rail { grid-auto-columns: 112px; gap: 8px; padding-bottom: 10px; }
+  .rail-lead,
+  .rail-wall,
+  .rail-spread {
+    grid-auto-columns: minmax(112px, 34vw) !important;
+    gap: 8px !important;
+    padding-bottom: 10px;
+  }
+  .rail-spread { grid-auto-columns: minmax(200px, 72vw) !important; }
+  .rail-spread .tile { min-height: 168px; padding: 12px; }
+  .tile h3 { font-size: 12px; margin-top: 6px; min-height: 2.4em; }
+  .editorial-row { gap: 8px; }
+
+  /* Footer */
+  .footer { padding: 18px 0 72px; }
+  .footer-grid { gap: 12px; margin: 0 0 12px; }
+  .footer .foot-links { gap: 12px; margin: 8px 0 12px; }
+
+  /* Misc gaps */
+  .hero-actions { gap: 8px; margin-top: 10px; }
+  .badges { gap: 5px; }
+  .search-tabs { margin: 0 0 12px; }
+  .article-meta { margin-top: 10px; }
+  .article-related { margin-top: 28px; padding-top: 16px; }
+
+  /* Nationality picker / send landing */
+  .mm-onboard { margin: 0 auto 16px; }
+  .mm-onboard h1 { font-size: clamp(22px, 6.4vw, 28px); margin: 6px 0 8px; }
+  .mm-country-q { padding: 10px 12px; margin: 0 0 10px; }
+  .mm-country-list { max-height: 240px; gap: 6px; }
+  .now-grid { display: grid; gap: 8px; margin: 12px 0; }
+  .now-card { display: flex; flex-direction: column; gap: 4px; padding: 12px; border: 1px solid var(--line); border-radius: 10px; }
+  .now-card b { font-size: 15px; line-height: 1.25; }
+  .now-card > span { font-size: 13px; line-height: 1.45; }
+  .now-card .now-go { font-size: 12.5px; font-weight: 800; color: var(--gold); }
+  .now-copy { font-size: 12.5px; padding: 10px; overflow-x: auto; max-width: 100%; }
+}
+
+@media (max-width: 380px) {
+  .hero-carousel { min-height: min(48svh, 300px) !important; }
+  .sports-feature { min-height: 196px !important; }
+  .movie-hero { grid-template-columns: 76px minmax(0, 1fr) !important; }
+  .movie-hero .poster { max-height: 114px !important; }
+}
+`);
 if (warnings.length) {
   console.log('WARNINGS:');
   warnings.forEach(w => console.log('  - ' + w));
