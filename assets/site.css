@@ -1024,3 +1024,56 @@ input,select,textarea{font-size:16px}
   .movie-hero { grid-template-columns: 76px minmax(0, 1fr) !important; }
   .movie-hero .poster { max-height: 114px !important; }
 }
+
+/* ============================================================
+   LIGHT MODE INPUTS + FIRST-VISIT DESK HINT
+   Type / Payment / Word-count selects stayed #0d1013 in white
+   mode. First-visit mobile notice is not an ad.
+   ============================================================ */
+[data-theme="light"] .oc-filters select,
+[data-theme="light"] .oc-search-wrap input,
+[data-theme="light"] .oc-filters select option,
+[data-theme="light"] .wo-filters select,
+[data-theme="light"] .wo-filters select option,
+[data-theme="light"] .ffield select,
+[data-theme="light"] .ffield select option,
+[data-theme="light"] .mm-country-q,
+[data-theme="light"] .oc-search-wrap input:focus,
+[data-theme="light"] .oc-filters select:focus{
+  background:#fff !important;
+  color:#161b22 !important;
+  border-color:var(--line) !important;
+  color-scheme:light;
+}
+[data-theme="light"] .oc-facts div,
+[data-theme="light"] .wo-facts div{
+  background:#fff !important;
+  color:#161b22;
+}
+[data-theme="light"] .oc-facts dt,
+[data-theme="light"] .wo-facts dt{color:#5a6572}
+[data-theme="light"] .oc-facts dd,
+[data-theme="light"] .wo-facts dd{color:#161b22}
+
+.desk-hint{
+  position:fixed;inset:0;z-index:95;
+  display:grid;place-items:end center;
+  padding:16px 12px calc(72px + env(safe-area-inset-bottom,0px));
+  background:rgba(8,9,11,.52);
+}
+.desk-hint-card{
+  width:100%;max-width:420px;
+  background:#111419;border:1px solid var(--line);
+  border-radius:14px;padding:16px 16px 14px;
+  color:#f4f5f6;box-shadow:0 18px 40px rgba(0,0,0,.35);
+}
+.desk-hint-card h2{font-size:18px;line-height:1.25;margin:0 0 8px;color:#fff}
+.desk-hint-card p{font-size:14px;line-height:1.55;margin:0 0 10px;color:#c5cbd2}
+.desk-hint-card .cta{margin:4px 0 0;min-height:40px;padding:8px 14px;font-size:14px}
+[data-theme="light"] .desk-hint{background:rgba(22,27,34,.35)}
+[data-theme="light"] .desk-hint-card{background:#fff;border-color:var(--line);color:#161b22}
+[data-theme="light"] .desk-hint-card h2{color:#161b22}
+[data-theme="light"] .desk-hint-card p{color:#5a6572}
+@media(min-width:761px){
+  .desk-hint{display:none !important}
+}

@@ -799,20 +799,116 @@
 
 /* Monetag (zone 11610560): first-party worker at /sw.js.
    Register after a short wait or the first tap/scroll — not on first paint,
-   and not after a long delay that misses the visit. */
+   and not after a long delay that misses the visit. First mobile visit
+   waits until the desktop hint is closed. */
 (function () {
   'use strict';
   if (!('serviceWorker' in navigator)) return;
   var done = false;
+  function firstMobile() {
+    var mobile = !!(window.matchMedia && window.matchMedia('(max-width: 760px)').matches);
+    var seen = false;
+    try { seen = !!localStorage.getItem('bryme-desk-hint'); } catch (e) {}
+    return mobile && !seen;
+  }
+  function hintOpen() {
+    return !!document.querySelector('[data-bryme-desk-hint]');
+  }
   function reg() {
     if (done) return;
+    if (hintOpen() || firstMobile()) return;
     done = true;
     navigator.serviceWorker.register('/sw.js', { scope: '/' }).catch(function () {});
   }
-  window.addEventListener('load', function () { setTimeout(reg, 5000); });
+  window.addEventListener('load', function () { setTimeout(reg, firstMobile() ? 16000 : 5000); });
+  document.addEventListener('bryme-desk-hint-done', function () { setTimeout(reg, 8000); });
   ['scroll', 'touchstart', 'click'].forEach(function (ev) {
-    window.addEventListener(ev, function () { setTimeout(reg, 600); }, { once: true, passive: true });
+    window.addEventListener(ev, function () {
+      if (hintOpen() || firstMobile()) return;
+      setTimeout(reg, 600);
+    }, { once: true, passive: true });
   });
+})();
+
+/* First-visit mobile notice: BRYME is easier on a computer.
+   Not an ad. Once only. Does not force desktop. Holds ads until
+   the reader dismisses it, then still waits so they can switch. */
+(function () {
+  'use strict';
+  var KEY = 'bryme-desk-hint';
+  function isMobile() {
+    return !!(window.matchMedia && window.matchMedia('(max-width: 760px)').matches);
+  }
+  function seen() {
+    try { return !!localStorage.getItem(KEY); } catch (e) { return false; }
+  }
+  function mark() {
+    try { localStorage.setItem(KEY, '1'); } catch (e) {}
+  }
+  function skipHere() {
+    return /\/(privacy|disclaimer|terms|copyright|editorial-policy|contact)\/?$/.test(location.pathname || '');
+  }
+  function nationalityOpen() {
+    var step = document.querySelector('[data-mm-step="nationality"]');
+    return !!(step && !step.hidden);
+  }
+  function done(how) {
+    mark();
+    var el = document.querySelector('[data-bryme-desk-hint]');
+    if (el && el.parentNode) el.parentNode.removeChild(el);
+    document.documentElement.style.overflow = '';
+    try { document.dispatchEvent(new CustomEvent('bryme-desk-hint-done', { detail: how || 'ok' })); } catch (e) {}
+  }
+  function show() {
+    if (seen() || !isMobile() || skipHere() || nationalityOpen()) return;
+    if (document.querySelector('[data-bryme-desk-hint]')) return;
+    var wrap = document.createElement('div');
+    wrap.className = 'desk-hint';
+    wrap.setAttribute('data-bryme-desk-hint', '');
+    wrap.setAttribute('role', 'dialog');
+    wrap.setAttribute('aria-modal', 'true');
+    wrap.setAttribute('aria-labelledby', 'desk-hint-title');
+    wrap.innerHTML = '<div class="desk-hint-card">' +
+      '<h2 id="desk-hint-title">Easier on a computer</h2>' +
+      '<p>BRYME is built to be read on a larger screen. If you have a laptop or desktop, open this site there.</p>' +
+      '<p>You can keep reading on this phone. This first look is yours — ads wait a moment.</p>' +
+      '<button type="button" class="cta" data-desk-hint-ok>Keep reading here</button>' +
+      '</div>';
+    wrap.addEventListener('click', function (e) {
+      if (e.target === wrap) done('backdrop');
+    });
+    var btn = wrap.querySelector('[data-desk-hint-ok]');
+    if (btn) btn.addEventListener('click', function () { done('ok'); });
+    document.body.appendChild(wrap);
+    document.documentElement.style.overflow = 'hidden';
+    try { if (btn) btn.focus(); } catch (e) {}
+  }
+  function boot() {
+    if (!isMobile() || seen() || skipHere()) return;
+    if (nationalityOpen()) {
+      var hub = document.querySelector('[data-mm-app]');
+      if (!hub || typeof MutationObserver === 'undefined') return;
+      var mo = new MutationObserver(function () {
+        if (nationalityOpen()) return;
+        mo.disconnect();
+        show();
+      });
+      mo.observe(hub, { attributes: true, subtree: true, attributeFilter: ['hidden'] });
+      return;
+    }
+    show();
+  }
+  window.addEventListener('resize', function () {
+    if (!isMobile()) {
+      var el = document.querySelector('[data-bryme-desk-hint]');
+      if (el) done('desktop');
+    }
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && document.querySelector('[data-bryme-desk-hint]')) done('esc');
+  });
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
+  else boot();
 })();
 
 /* Monetag page tags — product first, then ads.
@@ -829,9 +925,12 @@
   var VIGNETTE = { key: 'vignette', zone: '11610753', src: 'https://n6wxm.com/vignette.min.js' };
   var V_SESSION = 'bryme-ad-vignette';
   var V_AT = 'bryme-ad-vignette-at';
+  var DESK_HINT = 'bryme-desk-hint';
   var V_COOLDOWN_MS = 18 * 60 * 1000;
   var TAG_DELAY_MS = 1800;
+  var TAG_FIRST_MS = 14000;
   var VIGNETTE_DWELL_MS = 5000;
+  var VIGNETTE_FIRST_MS = 28000;
   var VIGNETTE_SCROLL_PX = 300;
 
   var tagStarted = false;
@@ -862,9 +961,20 @@
     return skipTagHere();
   }
 
+  function seenDeskHint() {
+    try { return !!localStorage.getItem(DESK_HINT); } catch (e) { return false; }
+  }
+  function deskHintOpen() {
+    return !!document.querySelector('[data-bryme-desk-hint]');
+  }
+  function firstVisitMobile() {
+    return isMobile() && !seenDeskHint();
+  }
+
   /* Hold only when an overlay would actually break the visit. */
   function firstScreenBusy() {
     if (nationalityOpen()) return true;
+    if (deskHintOpen()) return true;
     if (document.querySelector('.trailer-section iframe')) return true;
     return false;
   }
@@ -900,6 +1010,7 @@
 
   function pageUsable() {
     if (nationalityOpen()) return false;
+    if (deskHintOpen()) return false;
     if (document.visibilityState === 'hidden') return false;
     if (document.prerendering) return false;
     return true;
@@ -940,7 +1051,10 @@
 
   function startTag() {
     if (tagStarted || skipTagHere()) return;
-    if (!pageUsable()) return;
+    if (!pageUsable()) {
+      setTimeout(startTag, 3000);
+      return;
+    }
     tagStarted = true;
     inject(TAG);
   }
@@ -964,17 +1078,19 @@
 
   function armVignette() {
     if (vigStarted || skipVignetteHere() || !vignetteAllowed()) return;
+    if (deskHintOpen()) return;
     if (vigTimer) return;
+    var wait = firstVisitMobile() ? VIGNETTE_FIRST_MS : (isMobile() ? 12000 : VIGNETTE_DWELL_MS);
     vigTimer = setTimeout(function () {
       vigTimer = null;
       startVignette();
-    }, isMobile() ? 12000 : VIGNETTE_DWELL_MS);
+    }, wait);
   }
 
   function onScroll() {
-    if (vigStarted || skipVignetteHere() || nationalityOpen()) return;
+    if (vigStarted || skipVignetteHere() || nationalityOpen() || deskHintOpen()) return;
     var y = window.pageYOffset || document.documentElement.scrollTop || 0;
-    var need = isMobile() ? 280 : VIGNETTE_SCROLL_PX;
+    var need = firstVisitMobile() ? 520 : (isMobile() ? 280 : VIGNETTE_SCROLL_PX);
     if (y < need) return;
     startVignette();
   }
@@ -992,12 +1108,14 @@
   }
 
   function scheduleContentAds() {
-    setTimeout(startTag, TAG_DELAY_MS);
+    if (deskHintOpen()) return;
+    var tagWait = firstVisitMobile() ? TAG_FIRST_MS : TAG_DELAY_MS;
+    setTimeout(startTag, tagWait);
     armVignette();
   }
 
   function boot() {
-    if (nationalityOpen()) {
+    if (nationalityOpen() || deskHintOpen()) {
       watchOnboarding();
       return;
     }
@@ -1013,9 +1131,13 @@
   }
 
   window.addEventListener('scroll', onScroll, { passive: true });
+  document.addEventListener('bryme-desk-hint-done', function () {
+    scheduleContentAds();
+  });
   document.addEventListener('visibilitychange', function () {
     if (document.visibilityState === 'hidden') return;
-    if (nationalityOpen()) return;
+    if (nationalityOpen() || deskHintOpen()) return;
+    if (firstVisitMobile()) return;
     if (!tagStarted && !skipTagHere()) startTag();
   });
 

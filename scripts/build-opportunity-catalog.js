@@ -470,6 +470,7 @@ module.exports = function buildOpportunityCatalog(ctx) {
 .oc-report details{border:1px solid var(--line);border-radius:8px;padding:10px 14px}
 .oc-report a{display:block;padding:6px 0;font-size:14px}
 [data-theme="light"] .oc-card,[data-theme="light"] .oc-filters,[data-theme="light"] .mm-cat,[data-theme="light"] .mm-country-q{background:#fff}
+[data-theme="light"] .oc-filters select,[data-theme="light"] .oc-search-wrap input,[data-theme="light"] .oc-filters select option{background:#fff;color:#161b22;border-color:var(--line)}
 @media(min-width:700px){
   .oc-facts{grid-template-columns:1fr 1fr}
 }
