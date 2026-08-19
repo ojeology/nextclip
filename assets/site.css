@@ -608,3 +608,180 @@ input,select,textarea{font-size:16px}
   .oc-filter-grid{grid-template-columns:1fr 1fr}
   .oc-card h3{font-size:18px}
 }
+
+/* ============================================================
+   LIGHT MODE READABILITY
+   Last layer. White mode was flipping --text/--muted to dark
+   while many cards stayed black, so boxes became unreadable.
+   Content cards go light. Cinematic banners stay dark but
+   their type is locked to light colours.
+   ============================================================ */
+.send-bar{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;margin:16px 0 0;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:#101318}
+.send-bar p{margin:0;font-size:13px;font-weight:800;color:var(--muted)}
+.send-wa{display:inline-flex;align-items:center;min-height:40px;padding:8px 14px;border-radius:8px;background:#25d366;color:#06210f;font-weight:800;font-size:13.5px}
+.send-wa:hover{filter:brightness(1.06);color:#06210f}
+[data-theme="light"] .send-bar{background:#fff;border-color:var(--line)}
+[data-theme="light"] .send-bar p{color:#5a6572}
+
+/* Content cards that were still black */
+[data-theme="light"] .sp-source,
+[data-theme="light"] .sp-mc-card,
+[data-theme="light"] .sp-body-placeholder,
+[data-theme="light"] .sp-img,
+[data-theme="light"] .sp-rel,
+[data-theme="light"] .sp-fix-legend,
+[data-theme="light"] .sp-rumours,
+[data-theme="light"] .sp-archive-note,
+[data-theme="light"] .sp-live,
+[data-theme="light"] .sp-truth,
+[data-theme="light"] .oc-card,
+[data-theme="light"] .oc-filters,
+[data-theme="light"] .oc-editor,
+[data-theme="light"] .oc-official,
+[data-theme="light"] .oc-facts div,
+[data-theme="light"] .mm-cat,
+[data-theme="light"] .mm-country-q,
+[data-theme="light"] .wo-feature-card,
+[data-theme="light"] .wo-banner,
+[data-theme="light"] .wo-card,
+[data-theme="light"] .wo-filters,
+[data-theme="light"] .tp-watch,
+[data-theme="light"] .tp-watch-btn,
+[data-theme="light"] .tp-next-links a,
+[data-theme="light"] .sa-card,
+[data-theme="light"] .sa-empty,
+[data-theme="light"] .sa-draft,
+[data-theme="light"] .filterbar,
+[data-theme="light"] .take-card,
+[data-theme="light"] .vcat,
+[data-theme="light"] .vchip,
+[data-theme="light"] .genre-panel,
+[data-theme="light"] .mm-desk,
+[data-theme="light"] .mm-path,
+[data-theme="light"] .mm-country{
+  background:#fff !important;
+  border-color:var(--line) !important;
+  color:#161b22;
+}
+[data-theme="light"] .wo-feature-card{
+  background:linear-gradient(160deg,rgba(231,187,92,.16),#fff) !important;
+}
+[data-theme="light"] .sp-artcard{
+  background:linear-gradient(160deg,rgba(61,220,132,.10),#fff) !important;
+}
+
+/* Hardcoded pale text sitting on now-white cards */
+[data-theme="light"] .wo-steps li,
+[data-theme="light"] .wo-tag,
+[data-theme="light"] .wo-card p,
+[data-theme="light"] .wo-banner p,
+[data-theme="light"] .sp-rel,
+[data-theme="light"] .sp-rel-static,
+[data-theme="light"] .sp-source p,
+[data-theme="light"] .sp-source h2,
+[data-theme="light"] .sp-source-note,
+[data-theme="light"] .sp-mc-card b,
+[data-theme="light"] .sp-mc-card p,
+[data-theme="light"] .sp-club-notes,
+[data-theme="light"] .sp-fixt-day,
+[data-theme="light"] .sp-msec p,
+[data-theme="light"] .sp-msec b,
+[data-theme="light"] .sp-msec ul,
+[data-theme="light"] .cd-jump,
+[data-theme="light"] .oc-card h3,
+[data-theme="light"] .oc-facts dd,
+[data-theme="light"] .mm-cat b,
+[data-theme="light"] .mm-path b,
+[data-theme="light"] .vcat b,
+[data-theme="light"] .prose li,
+[data-theme="light"] .legal-prose p,
+[data-theme="light"] .article-body li{
+  color:#2b333c;
+}
+[data-theme="light"] .wo-tag,
+[data-theme="light"] .oc-pub,
+[data-theme="light"] .mm-cat span,
+[data-theme="light"] .mm-path span,
+[data-theme="light"] .vcat span,
+[data-theme="light"] .vchip-tag,
+[data-theme="light"] .sp-source-note,
+[data-theme="light"] .oc-disclaimer,
+[data-theme="light"] .oc-note{
+  color:#5a6572;
+}
+[data-theme="light"] .sp-table th{
+  background:#f1f4f8;
+  color:#5a6572;
+}
+[data-theme="light"] .sp-table a,
+[data-theme="light"] body[data-nav="sports"] .sp-table a{
+  color:#c24427;
+}
+[data-theme="light"] .sp-table a:hover{color:#8f2d16}
+[data-theme="light"] .quiet-link{color:#161b22;border-bottom-color:rgba(22,27,34,.35)}
+[data-theme="light"] .section-head a:hover,
+[data-theme="light"] .wo-apply:hover,
+[data-theme="light"] .header-search:hover,
+[data-theme="light"] .loadmore:hover,
+[data-theme="light"] .sp-rel:hover,
+[data-theme="light"] .tp-next-links a:hover,
+[data-theme="light"] .tp-watch-btn:hover{
+  color:#161b22;
+}
+[data-theme="light"] .genre-chips a:hover{color:#161b22;background:#f3f6f9}
+
+/* Cinematic surfaces stay dark — lock type to light so flipped
+   --text/--muted cannot turn them into black-on-black boxes */
+[data-theme="light"] .footer,
+[data-theme="light"] .footer p,
+[data-theme="light"] .footer small,
+[data-theme="light"] .footer-col a,
+[data-theme="light"] .footer .foot-links a{
+  color:#c5cbd2;
+}
+[data-theme="light"] .footer-col h4,
+[data-theme="light"] .footer-brand b{
+  color:#f4f5f6;
+  background:none;
+  -webkit-background-clip:unset;
+  background-clip:unset;
+}
+[data-theme="light"] .footer-col a:hover,
+[data-theme="light"] .footer .foot-links a:hover{color:#fff}
+
+[data-theme="light"] .sp-hero-card,
+[data-theme="light"] .sp-hero-card h3{color:#f4f5f6}
+[data-theme="light"] .sp-hero-card p{color:#d5e4da}
+[data-theme="light"] .sp-hero-tag,
+[data-theme="light"] .sp-hero-go{color:#7dffb9}
+[data-theme="light"] .sp-hero-crests b{color:#c5d0c8}
+
+[data-theme="light"] .sports-feature h1,
+[data-theme="light"] .sports-feature .eyebrow{
+  background:none;
+  -webkit-background-clip:unset;
+  background-clip:unset;
+  color:#fff;
+}
+[data-theme="light"] .sports-feature p{color:#c3d0c8}
+[data-theme="light"] .home-hero .quiet-link,
+[data-theme="light"] .movie-hero .quiet-link,
+[data-theme="light"] .hero-slide .quiet-link,
+[data-theme="light"] .sports-feature .quiet-link{color:#fff;border-bottom-color:rgba(255,255,255,.4)}
+
+[data-theme="light"] .vhero h1{
+  background:linear-gradient(100deg,#161b22 20%,#4a3b2e 70%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+[data-theme="light"] .vhero-sports h1{
+  background:linear-gradient(100deg,#0b3d24 10%,#128a4e 70%);
+  -webkit-background-clip:text;
+  background-clip:text;
+}
+[data-theme="light"] .vhero p,
+[data-theme="light"] .vhero .lead{color:#5a6572}
+
+[data-theme="light"] .poster{background:#e7ebf0}
+[data-theme="light"] .placeholder{background:linear-gradient(145deg,#e9edf2,#d7dbe2);color:#161b22}
