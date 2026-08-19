@@ -27,6 +27,42 @@ const url = p => {
   return q.charAt(0) === '/' ? q : '/' + q;
 };
 const absUrl = p => site.url + url(p);
+/* Bing and schema.org reject relative URLs in JSON-LD. SVG is also a poor
+   social/schema image (Facebook/Bing want jpg/png). Walk every graph we emit. */
+const DEFAULT_SOCIAL = '/assets/bryme-card.png';
+const SCHEMA_URL_KEYS = new Set(['url','image','item','mainEntityOfPage','sameAs','logo','contentUrl','thumbnailUrl','embedUrl','@id']);
+function schemaAbsValue(v){
+  if (typeof v !== 'string' || !v) return v;
+  let out = v;
+  if (out.startsWith('/') && !out.startsWith('//')) out = absUrl(out);
+  if (/\.svg(\?|#|$)/i.test(out) && /\/assets\//.test(out)) out = absUrl(DEFAULT_SOCIAL);
+  return out;
+}
+function normalizeSchema(node){
+  if (Array.isArray(node)) return node.map(normalizeSchema);
+  if (!node || typeof node !== 'object') return node;
+  const out = {};
+  for (const [k, v] of Object.entries(node)) {
+    if (typeof v === 'string' && (SCHEMA_URL_KEYS.has(k) || /Url$|URL$/.test(k))) out[k] = schemaAbsValue(v);
+    else out[k] = normalizeSchema(v);
+  }
+  return out;
+}
+function socialCardUrl(img){
+  if (!img) return absUrl(DEFAULT_SOCIAL);
+  const abs = /^https?:\/\//i.test(img) ? img : absUrl(img);
+  if (/\.svg(\?|#|$)/i.test(abs)) return absUrl(DEFAULT_SOCIAL);
+  return abs;
+}
+function socialMeta(img){
+  const src = socialCardUrl(img);
+  const isDefault = src.endsWith(DEFAULT_SOCIAL);
+  const isYt = /ytimg\.com/.test(src);
+  const type = /\.png(\?|#|$)/i.test(src) ? 'image/png' : 'image/jpeg';
+  const w = isDefault ? 1200 : (isYt ? 480 : '');
+  const h = isDefault ? 630 : (isYt ? 360 : '');
+  return `<meta property="og:image" content="${esc(src)}"><meta property="og:image:type" content="${type}">${w ? `<meta property="og:image:width" content="${w}"><meta property="og:image:height" content="${h}">` : ''}<meta property="og:image:alt" content="${esc(site.name)}"><meta name="twitter:image" content="${esc(src)}"><meta name="twitter:image:alt" content="${esc(site.name)}">`;
+}
 const breadcrumbs = items => ({ '@context':'https://schema.org', '@type':'BreadcrumbList', itemListElement:items.map((item, index) => ({ '@type':'ListItem', position:index+1, name:item.name, item:absUrl(item.path) })) });
 const normalizeYouTube = value => {
   const raw = String(value || '').trim();
@@ -1058,23 +1094,8 @@ function pageTitle(raw){
 function pageDesc(raw){ return clipMeta(raw, 155); }
 
 function layout(o){
-/* A branded default so every page has a social card. Hubs, about, contact and article
-   pages had none, which means a bare grey box wherever the URL is shared. Written once. */
-const DEFAULT_CARD = (() => {
-  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="${esc(site.name)}">
-<defs><linearGradient id="d" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#141a22"/><stop offset="1" stop-color="#08090b"/></linearGradient></defs>
-<rect width="1200" height="630" fill="url(#d)"/>
-<rect x="34" y="34" width="1132" height="562" fill="none" stroke="rgba(255,255,255,.14)" stroke-width="2" rx="22"/>
-<text x="86" y="300" font-family="Georgia,serif" font-weight="700" font-size="104" fill="#f4f5f6">BRY<tspan fill="#e94b2c">ME</tspan></text>
-<text x="92" y="368" font-family="Georgia,serif" font-size="30" fill="rgba(255,255,255,.68)">${esc(site.description || 'Film, series, anime and football')}</text>
-<text x="92" y="540" font-family="Georgia,serif" font-size="20" letter-spacing="4" fill="rgba(255,255,255,.42)">BRYME.ONRENDER.COM</text>
-</svg>`;
-  fs.writeFileSync(path.join(root, 'assets', 'bryme-card.svg'), svg);
-  return '/assets/bryme-card.svg';
-})();
-
-  const socialImage = (o.image || DEFAULT_CARD) ? `<meta property="og:image" content="${esc(/^https?:\/\//i.test(o.image || DEFAULT_CARD) ? (o.image || DEFAULT_CARD) : absUrl(o.image || DEFAULT_CARD))}"><meta name="twitter:image" content="${esc(/^https?:\/\//i.test(o.image) ? o.image : absUrl(o.image))}">` : '';
-  const schema = o.schema ? `<script type="application/ld+json">${JSON.stringify(o.schema).replace(/</g,'\\u003c')}<\/script>` : '';
+  const socialImage = socialMeta(o.image);
+  const schema = o.schema ? `<script type="application/ld+json">${JSON.stringify(normalizeSchema(o.schema)).replace(/</g,'\\u003c')}<\/script>` : '';
   const active = o.activeNav || '';
   const themeInit = '<script>try{var t=localStorage.getItem(\'bryme-theme\');var p=(t===\'light\'||t===\'dark\')?t:(window.matchMedia&&window.matchMedia(\'(prefers-color-scheme: light)\').matches?\'light\':\'dark\');var m=document.querySelector(\'meta[name=theme-color]\');if(p===\'light\'){document.documentElement.setAttribute(\'data-theme\',\'light\');document.documentElement.style.colorScheme=\'light\';if(m)m.setAttribute(\'content\',\'#f4f5f7\');}else{document.documentElement.removeAttribute(\'data-theme\');if(m)m.setAttribute(\'content\',\'#08090b\');}}catch(e){}</script>';
   return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#08090b"><meta name="color-scheme" content="dark light"><link rel="icon" href="${url('/assets/favicon.svg')}" type="image/svg+xml"><link rel="icon" href="${url('/assets/favicon.png')}" type="image/png" sizes="32x32"><link rel="apple-touch-icon" href="${url('/assets/icons/apple-touch-icon.png')}"><link rel="manifest" href="${url('/manifest.webmanifest')}"><link rel="preconnect" href="https://i.ytimg.com" crossorigin><link rel="preconnect" href="https://www.youtube-nocookie.com" crossorigin><link rel="preconnect" href="https://www.youtube.com" crossorigin>${themeInit}<title>${esc(pageTitle(o.title))}</title><meta name="description" content="${esc(pageDesc(o.description))}">${VERIFY_TAGS}${o.noindex?'<meta name="robots" content="noindex,follow">':''}<link rel="canonical" href="${absUrl(o.canonical || o.path)}"><meta property="og:type" content="${esc(o.ogType || 'website')}"><meta property="og:site_name" content="${site.name}"><meta property="og:title" content="${esc(pageTitle(o.title))}"><meta property="og:description" content="${esc(pageDesc(o.description))}"><meta property="og:url" content="${absUrl(o.path)}">${socialImage}<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${esc(pageTitle(o.title))}"><meta name="twitter:description" content="${esc(pageDesc(o.description))}"><link rel="stylesheet" href="${url('/assets/site.css')}">${schema}</head><body data-nav="${esc(o.activeNav || '')}"><header class="top"><div class="shell"><a class="brand" href="${url('/')}">BRY<b>ME</b></a><nav class="topnav"><a href="${url('/')}"${active==='home'?' class="active"':''}>Home</a><a href="${url('/entertainment/')}"${active==='entertainment'?' class="active"':''}>🎬 Entertainment</a><a href="${url('/sports/')}"${active==='sports'?' class="active"':''}>⚽ Sports</a><a href="${url('/make-money/')}"${active==='make-money'?' class="active"':''}>💰 Make Money</a><a href="${url('/tech/')}"${active==='tech'?' class="active"':''}>🤖 Tech &amp; AI</a><a class="nav-search" href="${url('/search/')}">Search</a></nav><div class="top-tools"><a class="header-search" href="${url('/search/')}" aria-label="Search">Search</a></div></div></header>${o.body}<nav class="mobile-nav"><a href="${url('/')}"${active==='home'?' class="active"':''}><span class="mn-ico">🏠</span>Home</a><a href="${url('/entertainment/')}"${active==='entertainment'?' class="active"':''}><span class="mn-ico">🎬</span>Entertain</a><a href="${url('/sports/')}"${active==='sports'?' class="active"':''}><span class="mn-ico">⚽</span>Sports</a><a href="${url('/make-money/')}"${active==='make-money'?' class="active"':''}><span class="mn-ico">💰</span>Money</a><a href="${url('/tech/')}"${active==='tech'?' class="active"':''}><span class="mn-ico">🤖</span>Tech</a><a href="${url('/search/')}"><span class="mn-ico">🔍</span>Search</a></nav><footer class="footer"><div class="shell"><div class="footer-grid">
@@ -1661,7 +1682,7 @@ write('', layout({
   title: 'Movies, TV Series & Anime',
   description: 'Discover what to watch on BRYME: 630+ movies, TV series and anime with verified trailers, editorial guides, plus sports, money and tech & AI coverage.',
   path: '/', image: poster(heroSlide), activeNav: 'home',
-  schema: [{ '@context':'https://schema.org', '@type':'WebSite', name:site.name, url:url('/'), description:site.description }, { '@context':'https://schema.org', '@type':'CollectionPage', name:'BRYME – Discover Entertainment, Sports, Money & Tech', url:url('/') }],
+  schema: [{ '@context':'https://schema.org', '@type':'WebSite', name:site.name, url:absUrl('/'), description:site.description, publisher:{ '@type':'Organization', name:site.name, url:absUrl('/'), logo:absUrl('/assets/icons/icon-512.png') } }, { '@context':'https://schema.org', '@type':'CollectionPage', name:'Movies, TV Series & Anime', description:'Discover what to watch on BRYME: 630+ movies, TV series and anime with verified trailers, editorial guides, plus sports, money and tech & AI coverage.', url:absUrl('/') }],
   body: `<main>
   <section class="hero-carousel" data-hero role="region" aria-roledescription="carousel" aria-label="Featured titles" data-interval="8000">
     <div class="hero-slides">${heroSlides.map(heroSlideMarkup).join('')}</div>
@@ -3097,6 +3118,7 @@ for (const m of movies) {
   if (relatedArts.length) schema.about = relatedArts.map(a => ({ '@type':'Article', name:a.title, url:url('/article/' + a.slug + '/') }));
   Object.keys(schema).forEach(k => schema[k] === undefined && delete schema[k]);
   const pagePath = `/${typeDir}/${m.slug}/`;
+  schema.url = pagePath;
   const yearPath = typeDir === 'movie' ? '/year/' + m.year + '/' : '/' + typeDir + '/' + m.year + '/';
   const yearLabel = m.year ? (typeDir === 'movie' ? m.year + ' movies' : (typeDir === 'series' ? m.year + ' series' : m.year + ' anime')) : null;
   const crumbs = [{name:'Home', path:'/'}, {name: label === 'TV Series' ? 'TV Series' : (label === 'Anime' ? 'Anime' : 'Movies'), path: '/' + (typeDir === 'movie' ? 'movies' : typeDir) + '/'}];
