@@ -36,7 +36,7 @@
     }
   }
   function themeBtnIcon(t) { return t === 'light' ? MOON_SVG : SUN_SVG; }
-  var header = document.querySelector('.top .shell');
+  var header = document.querySelector('.top-tools') || document.querySelector('.top .shell');
   var themeBtn = null;
   if (header) {
     themeBtn = document.createElement('button');

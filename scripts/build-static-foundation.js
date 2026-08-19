@@ -467,7 +467,7 @@ fs.writeFileSync(path.join(root,'assets/site.css'), css + '\n' + '.sports-featur
 @media(max-width:1024px){.sp-hero-track{grid-auto-columns:calc((100% - 32px)/2)}}@media(min-width:1025px) and (max-width:1439px){.sp-hero{max-width:1180px;margin-left:auto;margin-right:auto}}
 @media(max-width:640px){.sp-hero-track{grid-auto-columns:calc(100% - 40px)}.sp-hero-arrow{display:none}.sp-hero-card{min-height:200px}.sp-article-head h1{font-size:30px}}
 @media(min-width:1440px){.sp-hero-track{grid-auto-columns:calc((100% - 64px)/5);grid-auto-flow:column}}
-.visually-hidden{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}@media(max-width:760px){.hero-carousel{min-height:520px}.hero-slide-inner{padding-top:150px;padding-bottom:52px}.hero-slide h1{font-size:40px}.hero-slide p{font-size:14.5px}.hero-ctrl{width:40px;height:40px;font-size:19px}.hero-prev{left:8px}.hero-next{right:8px}.rec-inner{padding:26px 18px}.rec-cta{width:100%;text-align:center}}.hero-kicker{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:12px;font-weight:800;color:var(--muted);letter-spacing:.05em;text-transform:uppercase;margin-bottom:10px}.hero-kicker .dot{opacity:.35}.cta-ghost{background:transparent;border:1px solid var(--accent);color:#fff}.cta-ghost:hover{background:var(--accent)}.take-card{margin-top:28px;border:1px solid var(--line);border-left:3px solid var(--gold);background:#101318;padding:18px 20px;border-radius:0 6px 6px 0}.take-card h3{font-size:19px;line-height:1.25;margin:6px 0}.take-card p{font-size:14px;color:var(--muted);margin:0 0 12px}.take-card .cta{margin:0}.sub-section{padding:8px 0 34px}.sub-section h2{font-size:clamp(20px,3vw,26px)}.sub-section .lead,.sub-section p.sec-note{font-size:13px;color:var(--muted);margin:0 0 14px}@media(max-width:760px){.hero-kicker{font-size:10.5px;gap:6px}.take-card{padding:15px 14px}.hero-actions .cta{min-height:44px;display:inline-flex;align-items:center}.story-grid-title{grid-template-columns:repeat(2,1fr)}@media(max-width:760px){.story-grid-title{grid-template-columns:1fr}.story-grid-title a{min-height:150px}}}`);
+.visually-hidden{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}@media(max-width:760px){.hero-carousel{min-height:520px}.hero-slide-inner{padding-top:150px;padding-bottom:52px}.hero-slide h1{font-size:40px}.hero-slide p{font-size:14.5px}.hero-ctrl{width:40px;height:40px;font-size:19px}.hero-prev{left:8px}.hero-next{right:8px}.rec-inner{padding:26px 18px}.rec-cta{width:100%;text-align:center}}.hero-kicker{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:12px;font-weight:800;color:var(--muted);letter-spacing:.05em;text-transform:uppercase;margin-bottom:10px}.hero-kicker .dot{opacity:.35}.cta-ghost{background:transparent;border:1px solid var(--accent);color:#fff}.cta-ghost:hover{background:var(--accent)}.take-card{margin-top:28px;border:1px solid var(--line);border-left:3px solid var(--gold);background:#101318;padding:18px 20px;border-radius:0 6px 6px 0}.take-card h3{font-size:19px;line-height:1.25;margin:6px 0}.take-card p{font-size:14px;color:var(--muted);margin:0 0 12px}.take-card .cta{margin:0}.sub-section{padding:8px 0 34px}.sub-section h2{font-size:clamp(20px,3vw,26px)}.sub-section .lead,.sub-section p.sec-note{font-size:13px;color:var(--muted);margin:0 0 14px}@media(max-width:760px){.hero-kicker{font-size:10.5px;gap:6px}.take-card{padding:15px 14px}.hero-actions .cta{min-height:44px;display:inline-flex;align-items:center}.story-grid-title{grid-template-columns:1fr}.story-grid-title a{min-height:150px}}}`);
 fs.appendFileSync(path.join(root,'assets/site.css'), `\n/* Verified metadata attribution */\n.meta-source{margin:10px 0 0;font-size:12px;line-height:1.55;color:#8b93a1}.meta-source a{color:#a9b3c2;text-decoration:underline;text-underline-offset:2px}.meta-source a:hover{color:#fff}\n`);
 fs.appendFileSync(path.join(root,'assets/site.css'), `
 /* ============================================================
@@ -872,6 +872,97 @@ fs.appendFileSync(path.join(root,'assets/site.css'), `
 [data-theme="light"] .mm-country.is-on{color:#2a1e05}
 `);
 
+
+fs.appendFileSync(path.join(root,'assets/site.css'), `
+/* ============================================================
+   MOBILE POLISH LAYER
+   ============================================================ */
+html,body{max-width:100%;overflow-x:hidden}
+img,video,iframe,svg{max-width:100%;height:auto}
+.shell,.home-main,.hero-slide-inner,.movie-hero,.rec-inner,.mm-desk,.vcat,.tile,.wo-card{min-width:0}
+input,select,textarea{font-size:16px}
+.top-tools{display:flex;align-items:center;gap:8px;margin-left:auto;flex:none}
+.header-search{display:none;font-size:12.5px;font-weight:800;color:var(--gold);border:1px solid var(--line);border-radius:16px;padding:6px 12px}
+.header-search:hover{color:#fff;border-color:var(--accent)}
+@media(max-width:760px){
+  html{text-size-adjust:100%;-webkit-text-size-adjust:100%}
+  body{padding-bottom:calc(64px + env(safe-area-inset-bottom,0px))}
+  .shell{padding-left:16px;padding-right:16px}
+  .top{padding-top:env(safe-area-inset-top,0px)}
+  .top .shell{min-height:52px;padding:8px 16px;gap:10px}
+  .brand{font-size:16px}
+  .header-search{display:inline-flex;align-items:center;min-height:36px}
+  .theme-toggle{width:36px;height:36px}
+  .bryme-back{display:none}
+  .mobile-nav{padding-bottom:env(safe-area-inset-bottom,0px);grid-auto-columns:minmax(52px,1fr);justify-content:stretch}
+  .mobile-nav a{padding:8px 2px calc(8px + env(safe-area-inset-bottom,0px)/4);min-height:52px;display:flex;flex-direction:column;align-items:center;justify-content:center}
+  .hero h1,.vhero h1,.article-hero h1,.home-hero h1,.hero-slide h1,.hero-slide h2{
+    font-size:clamp(26px,8vw,36px)!important;line-height:1.12!important;
+    background:none!important;-webkit-text-fill-color:unset!important;color:var(--text)!important;
+    overflow-wrap:anywhere;word-break:break-word;max-width:100%
+  }
+  [data-theme="light"] .hero h1,[data-theme="light"] .vhero h1,[data-theme="light"] .article-hero h1{color:#161b22!important}
+  .hero-carousel .hero-slide h1,.hero-carousel .hero-slide h2,.hero-carousel .hero-slide p,.hero-carousel .hero-slide-rating{color:#fff!important}
+  .lead,.vhero .lead{font-size:15px;line-height:1.55}
+  .hero-carousel{min-height:min(70svh,480px)}
+  .hero-slide-inner{padding-top:88px;padding-bottom:56px}
+  .hero-slide p{font-size:14px}
+  .hero-actions{flex-direction:column;align-items:stretch;gap:10px;margin-top:16px}
+  .hero-actions .cta,.hero-actions .cta-ghost{width:100%;justify-content:center;min-height:46px;text-align:center}
+  .hero-ctrl{width:34px;height:34px;font-size:18px}
+  .hero-prev{left:6px}.hero-next{right:6px}
+  .hero-dots{bottom:12px}
+  .grid,.grid-2,.rail-wall{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:12px!important}
+  .rail-lead{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:12px!important}
+  .rail-lead .tile:first-child{grid-column:auto!important;grid-row:auto!important;display:block!important}
+  .rail-lead .tile:first-child .poster{aspect-ratio:2/3!important;min-height:0!important;flex:none!important}
+  .rail-lead .tile:first-child h3{font-size:13.5px!important;margin-top:8px}
+  .rail-spread{grid-template-columns:1fr!important}
+  .rail-spread .tile{min-height:210px}
+  .rail-chart{grid-template-columns:1fr!important;gap:0}
+  .rail-chart .tile{grid-template-columns:36px 44px minmax(0,1fr);padding:8px 0}
+  .tile h3{font-size:13px;min-height:0}
+  .poster img{object-position:center top}
+  .movie-hero{grid-template-columns:1fr!important;gap:16px;padding:20px 16px 22px!important;min-height:0!important;align-items:start}
+  .movie-hero .poster{max-width:148px;max-height:none!important}
+  .movie-hero .lead{-webkit-line-clamp:6!important}
+  .body{display:block}
+  .filterbar{flex-wrap:wrap!important;overflow:visible!important}
+  .ffield,.ffield select{max-width:100%!important;width:100%}
+  .rec-form{flex-direction:column}
+  .rec-form input,.rec-cta{width:100%;flex:1 1 auto}
+  .rec-inner{padding:20px 16px}
+  .searchbox{font-size:16px;padding:12px}
+  .mm-desk{padding:16px 14px}
+  .mm-paths{grid-template-columns:1fr}
+  .mm-countries{gap:6px}
+  .mm-country{padding:8px 12px;min-height:40px}
+  .wo-facts{grid-template-columns:1fr 1fr}
+  .vcat-grid{grid-template-columns:1fr}
+  .vchips{grid-template-columns:1fr}
+  .editorial-row{grid-template-columns:1fr 1fr;gap:10px}
+  .genre-trio{grid-template-columns:1fr}
+  .story-grid,.story-grid-title{grid-template-columns:1fr!important}
+  .sp-table{min-width:520px}
+  .sp-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%}
+  .sp-match-hero{padding:16px;gap:12px}
+  .sp-match-hero img{width:48px;height:58px}
+  .sp-match-hero h1{font-size:22px}
+  .sp-hero-card{min-height:180px}
+  .footer{padding-bottom:24px}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:16px}
+  .discover-cta{margin-left:0;margin-right:0;padding:22px 16px}
+  .take-card,.vnote,.wo-banner{max-width:100%}
+  .article-body,.legal-prose,.article-hero{max-width:100%}
+  .article-body p{font-size:16px}
+  .cta,.cta-ghost,button.cta{min-height:44px}
+}
+@media(max-width:380px){
+  .wo-facts{grid-template-columns:1fr}
+  .hero-carousel{min-height:420px}
+}
+`);
+
 /* ------------------------------------------------------------------ */
 /* Shared markup helpers                                              */
 /* ------------------------------------------------------------------ */
@@ -961,7 +1052,7 @@ const DEFAULT_CARD = (() => {
   const schema = o.schema ? `<script type="application/ld+json">${JSON.stringify(o.schema).replace(/</g,'\\u003c')}<\/script>` : '';
   const active = o.activeNav || '';
   const themeInit = '<script>try{var t=localStorage.getItem(\'bryme-theme\');var p=(t===\'light\'||t===\'dark\')?t:(window.matchMedia&&window.matchMedia(\'(prefers-color-scheme: light)\').matches?\'light\':\'dark\');var m=document.querySelector(\'meta[name=theme-color]\');if(p===\'light\'){document.documentElement.setAttribute(\'data-theme\',\'light\');document.documentElement.style.colorScheme=\'light\';if(m)m.setAttribute(\'content\',\'#f4f5f7\');}else{document.documentElement.removeAttribute(\'data-theme\');if(m)m.setAttribute(\'content\',\'#08090b\');}}catch(e){}</script>';
-  return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#08090b"><meta name="color-scheme" content="dark light"><link rel="icon" href="${url('/assets/favicon.svg')}" type="image/svg+xml"><link rel="icon" href="${url('/assets/favicon.png')}" type="image/png" sizes="32x32"><link rel="apple-touch-icon" href="${url('/assets/icons/apple-touch-icon.png')}"><link rel="manifest" href="${url('/manifest.webmanifest')}"><link rel="preconnect" href="https://i.ytimg.com" crossorigin><link rel="preconnect" href="https://www.youtube-nocookie.com" crossorigin><link rel="preconnect" href="https://www.youtube.com" crossorigin>${themeInit}<title>${esc(o.title)} | ${site.name}</title><meta name="description" content="${esc(o.description)}">${VERIFY_TAGS}${o.noindex?'<meta name="robots" content="noindex,follow">':''}<link rel="canonical" href="${absUrl(o.canonical || o.path)}"><meta property="og:type" content="${esc(o.ogType || 'website')}"><meta property="og:site_name" content="${site.name}"><meta property="og:title" content="${esc(o.title)}"><meta property="og:description" content="${esc(o.description)}"><meta property="og:url" content="${absUrl(o.path)}">${socialImage}<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${esc(o.title)}"><meta name="twitter:description" content="${esc(o.description)}"><link rel="stylesheet" href="${url('/assets/site.css')}">${schema}</head><body data-nav="${esc(o.activeNav || '')}"><header class="top"><div class="shell"><a class="brand" href="${url('/')}">BRY<b>ME</b></a><nav class="topnav"><a href="${url('/')}"${active==='home'?' class="active"':''}>Home</a><a href="${url('/entertainment/')}"${active==='entertainment'?' class="active"':''}>🎬 Entertainment</a><a href="${url('/sports/')}"${active==='sports'?' class="active"':''}>⚽ Sports</a><a href="${url('/make-money/')}"${active==='make-money'?' class="active"':''}>💰 Make Money</a><a href="${url('/tech/')}"${active==='tech'?' class="active"':''}>🤖 Tech &amp; AI</a><a class="nav-search" href="${url('/search/')}">Search</a></nav></div></header>${o.body}<nav class="mobile-nav"><a href="${url('/')}"${active==='home'?' class="active"':''}><span class="mn-ico">🏠</span>Home</a><a href="${url('/entertainment/')}"${active==='entertainment'?' class="active"':''}><span class="mn-ico">🎬</span>Entertain</a><a href="${url('/sports/')}"${active==='sports'?' class="active"':''}><span class="mn-ico">⚽</span>Sports</a><a href="${url('/make-money/')}"${active==='make-money'?' class="active"':''}><span class="mn-ico">💰</span>Money</a><a href="${url('/tech/')}"${active==='tech'?' class="active"':''}><span class="mn-ico">🤖</span>Tech</a><a href="${url('/search/')}"><span class="mn-ico">🔍</span>Search</a></nav><footer class="footer"><div class="shell"><div class="footer-grid">
+  return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#08090b"><meta name="color-scheme" content="dark light"><link rel="icon" href="${url('/assets/favicon.svg')}" type="image/svg+xml"><link rel="icon" href="${url('/assets/favicon.png')}" type="image/png" sizes="32x32"><link rel="apple-touch-icon" href="${url('/assets/icons/apple-touch-icon.png')}"><link rel="manifest" href="${url('/manifest.webmanifest')}"><link rel="preconnect" href="https://i.ytimg.com" crossorigin><link rel="preconnect" href="https://www.youtube-nocookie.com" crossorigin><link rel="preconnect" href="https://www.youtube.com" crossorigin>${themeInit}<title>${esc(o.title)} | ${site.name}</title><meta name="description" content="${esc(o.description)}">${VERIFY_TAGS}${o.noindex?'<meta name="robots" content="noindex,follow">':''}<link rel="canonical" href="${absUrl(o.canonical || o.path)}"><meta property="og:type" content="${esc(o.ogType || 'website')}"><meta property="og:site_name" content="${site.name}"><meta property="og:title" content="${esc(o.title)}"><meta property="og:description" content="${esc(o.description)}"><meta property="og:url" content="${absUrl(o.path)}">${socialImage}<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${esc(o.title)}"><meta name="twitter:description" content="${esc(o.description)}"><link rel="stylesheet" href="${url('/assets/site.css')}">${schema}</head><body data-nav="${esc(o.activeNav || '')}"><header class="top"><div class="shell"><a class="brand" href="${url('/')}">BRY<b>ME</b></a><nav class="topnav"><a href="${url('/')}"${active==='home'?' class="active"':''}>Home</a><a href="${url('/entertainment/')}"${active==='entertainment'?' class="active"':''}>🎬 Entertainment</a><a href="${url('/sports/')}"${active==='sports'?' class="active"':''}>⚽ Sports</a><a href="${url('/make-money/')}"${active==='make-money'?' class="active"':''}>💰 Make Money</a><a href="${url('/tech/')}"${active==='tech'?' class="active"':''}>🤖 Tech &amp; AI</a><a class="nav-search" href="${url('/search/')}">Search</a></nav><div class="top-tools"><a class="header-search" href="${url('/search/')}" aria-label="Search">Search</a></div></div></header>${o.body}<nav class="mobile-nav"><a href="${url('/')}"${active==='home'?' class="active"':''}><span class="mn-ico">🏠</span>Home</a><a href="${url('/entertainment/')}"${active==='entertainment'?' class="active"':''}><span class="mn-ico">🎬</span>Entertain</a><a href="${url('/sports/')}"${active==='sports'?' class="active"':''}><span class="mn-ico">⚽</span>Sports</a><a href="${url('/make-money/')}"${active==='make-money'?' class="active"':''}><span class="mn-ico">💰</span>Money</a><a href="${url('/tech/')}"${active==='tech'?' class="active"':''}><span class="mn-ico">🤖</span>Tech</a><a href="${url('/search/')}"><span class="mn-ico">🔍</span>Search</a></nav><footer class="footer"><div class="shell"><div class="footer-grid">
   <div class="footer-brand"><a class="brand" href="${url('/')}">BRY<b>ME</b></a><p>Discover what you love. Learn what you need. Find what's next.</p></div>
   <nav class="footer-col" aria-label="Explore"><h4>Verticals</h4><a href="${url('/entertainment/')}">🎬 Entertainment</a><a href="${url('/sports/')}">⚽ Sports</a><a href="${url('/make-money/')}">💰 Make Money</a><a href="${url('/tech/')}">🤖 Tech &amp; AI</a></nav>
   <nav class="footer-col" aria-label="Explore"><h4>Entertainment</h4><a href="${url('/movies/')}">Movies</a><a href="${url('/series/')}">Series</a><a href="${url('/anime/')}">Anime</a><a href="${url('/articles/')}">Articles</a><a href="${url('/genres/')}">Genres</a></nav>
@@ -1556,7 +1647,7 @@ write('', layout({
     <button type="button" class="hero-vctrl hero-pause" data-hero-pause aria-label="Pause rotation" hidden>&#9208;</button>
     <div class="hero-video" data-hero-video hidden></div>
   </section>
-  <main class="shell home-main">
+  <div class="home-main">
   <section class="home-section brand-strip"><div class="shell"><p class="brand-slogan">Discover what you love. Learn what you need. Find what's next.</p><div class="vchips">${VERTICALS.map(verticalChip).join('')}<a class="vchip vchip-entertainment" href="${url('/entertainment/')}"><span class="vchip-emoji">🎬</span><span class="vchip-name">BRYME Entertainment</span><span class="vchip-tag">Movies, series, anime & articles</span></a></div></div></section>
   <section class="home-section rec-section" id="recommend">
     <div class="shell rec-inner">
@@ -1578,7 +1669,7 @@ write('', layout({
   ${livePreviewBlock(24)}
   <section class="home-section"><div class="shell"><div class="section-head"><h2>🎭 Browse by genre</h2><a href="${url('/genres/')}">All genres</a></div><div class="genre-trio"><div class="genre-panel"><h3>🎬 Movie genres <span class="gp-count">${movies.filter(m=>m.typeDir==='movie').length} films</span></h3><div class="genre-chips">${genreChips(movies.filter(m=>m.typeDir==='movie'), 'movies', 9)}</div></div><div class="genre-panel"><h3>📺 Series genres <span class="gp-count">${movies.filter(m=>m.typeDir==='series').length} shows</span></h3><div class="genre-chips">${genreChips(movies.filter(m=>m.typeDir==='series'), 'series', 9)}</div></div><div class="genre-panel"><h3>🍥 Anime genres <span class="gp-count">${movies.filter(m=>m.typeDir==='anime').length} titles</span></h3><div class="genre-chips">${genreChips(movies.filter(m=>m.typeDir==='anime'), 'anime', 9)}</div></div></div></div></section>
   <section class="home-section"><div class="shell"><div class="section-head"><div><div class="eyebrow">From the editorial desk</div><h2>📰 Latest articles</h2></div><a href="${url('/articles/')}">All stories</a></div><div class="story-grid">${latestArticles.map(a => `<a href="${url('/article/' + a.slug + '/')}"><span>${esc(a.category)}</span><h3>${esc(a.title)}</h3><p>${esc(a.description)}</p><b>Read story</b></a>`).join('')}</div></div></section>
-  <section class="discover-cta"><div><div class="eyebrow">Full catalogue</div><h2>Pick a lane: Movies, Series or Anime.</h2><p>Each section is strictly filtered to its own content type. No mixed-up walls of posters.</p></div><a class="cta" href="${url('/search/')}">Search everything</a></div></section></main></main><script id="hero-data" type="application/json">${heroEmbed}</script>`
+  <section class="discover-cta"><div><div class="eyebrow">Full catalogue</div><h2>Pick a lane: Movies, Series or Anime.</h2><p>Each section is strictly filtered to its own content type. No mixed-up walls of posters.</p></div><a class="cta" href="${url('/search/')}">Search everything</a></div></section></div></main><script id="hero-data" type="application/json">${heroEmbed}</script>`
 }));
 
 
