@@ -303,3 +303,8 @@ Official pages only. Third-party $ figures were discarded unless the official pa
 
 Accuracy beats quantity. Geographic spread of this pass: Southasia, SWANA, Latin America / Caribbean beat, Australia / Aotearoa, Canada (BC), UK, US literary and SF, worldwide climate and travel.
 
+
+
+## Batch 3 — added 19 August 2026 (official pages only)
+
+Asimov’s fiction, Analog fiction, Analog fact, Beneath Ceaseless Skies, khōréō fiction (November 2026 window). All editor experience: not yet submitted. No HumAngle (no official pay+door). No extra Offing departments (current open departments not listed on the official submit page fetch). Khōréō is diaspora/immigrant identification, not a worldwide open call.

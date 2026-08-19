@@ -4549,6 +4549,441 @@
         "$300",
         "freelance"
       ]
+    },
+    {
+      "id": "asimovs-fiction",
+      "slug": "asimovs-fiction",
+      "status": "published",
+      "vertical": "writing",
+      "publication": "Asimov’s Science Fiction",
+      "title": "Science fiction short stories",
+      "seoTitle": "Asimov’s Science Fiction: 8–10¢ a word, official guidelines",
+      "excerpt": "Asimov’s pays 8–10 US cents a word for short stories up to 7,500 words, then 8 cents a word after that. Official page: any writer, previously published or not. No simultaneous submissions. AI-assisted work is banned.",
+      "officialUrl": "https://asimovs.com/contact-us/writers-guidelines/",
+      "applyUrl": "https://asimovs.magazinesubmissions.com/",
+      "applyEmail": null,
+      "applyMethod": "Official online submissions system — not email",
+      "sources": [
+        {
+          "name": "Asimov’s — Writer's Guidelines (official)",
+          "url": "https://asimovs.com/contact-us/writers-guidelines/"
+        }
+      ],
+      "lastVerified": "2026-08-19",
+      "publishedAt": "2026-08-19",
+      "eligibility": {
+        "summary": "Official: Asimov’s will consider material submitted by any writer, previously published or not. No country list.",
+        "mode": "open",
+        "notStated": false
+      },
+      "writingTypes": [
+        "fiction"
+      ],
+      "writingTypeLabel": "Science fiction short story (some borderline fantasy/slipstream)",
+      "pay": {
+        "currency": "USD",
+        "amountMin": 80,
+        "amountMax": null,
+        "display": "8–10¢ per word (8¢ after 7,500 words)",
+        "conditions": "Official: 8–10 cents per word for short stories up to 7,500 words, and 8 cents for each word over 7,500. They seldom buy stories shorter than 1,000 words or longer than 20,000 words. Poetry is a separate $1-a-line rate, not copied onto this card.",
+        "timing": "Not publicly stated on the guidelines page"
+      },
+      "wordCount": {
+        "min": 1000,
+        "max": 20000,
+        "display": "Seldom under 1,000 or over 20,000; no novel serials"
+      },
+      "response": {
+        "label": "Average about five weeks; query after 45 days",
+        "band": "1-3-months",
+        "official": true
+      },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "prohibited",
+      "experience": "not-stated",
+      "whatTheyWant": [
+        "Character-oriented science fiction. Official: SF dominates; they also buy some borderline fantasy, slipstream and surreal fiction.",
+        "Serious, thoughtful, accessible fiction; humour is allowed.",
+        "Standard manuscript format (.DOC, .DOCX or .RTF) via the online form."
+      ],
+      "whatTheyDontWant": [
+        "Sword and sorcery. Explicit sex or violence.",
+        "Reprints. Simultaneous submissions.",
+        "Email submissions.",
+        "Any submission written, developed or assisted by AI writing tools. Official: that can get you banned."
+      ],
+      "requirements": [
+        "Online system only",
+        "No simultaneous submissions",
+        "No AI",
+        "Standard manuscript format"
+      ],
+      "rights": "Official Must Read Magazines rights: exclusive first English-language publication rights for one year; then non-exclusive archive, translation, anthology and limited paper-goods excerpt rights. Major award anthologies may be licensed by the author without asking.",
+      "howToSubmit": [
+        "Read https://asimovs.com/contact-us/writers-guidelines/.",
+        "Submit at https://asimovs.magazinesubmissions.com/.",
+        "Keep the tracking number. Query asimovs@mustreadbookspublishing.com only after 45 days."
+      ],
+      "keywords": [
+        "asimovs",
+        "science fiction",
+        "8 cents",
+        "10 cents",
+        "worldwide"
+      ],
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      }
+    },
+    {
+      "id": "analog-fiction",
+      "slug": "analog-fiction",
+      "status": "published",
+      "vertical": "writing",
+      "publication": "Analog Science Fiction and Fact",
+      "title": "Science fiction stories",
+      "seoTitle": "Analog SF: 8–10¢ a word for fiction, official guidelines",
+      "excerpt": "Analog pays 8–10 US cents a word for short fiction up to about 20,000 words. Official: any writer, solely on merit. Science or technology must be integral to the plot. No simultaneous submissions. AI-assisted work is banned.",
+      "officialUrl": "https://analogsf.com/contact-us/writers-guidelines/",
+      "applyUrl": "https://analog.magazinesubmissions.com/",
+      "applyEmail": null,
+      "applyMethod": "Official online submissions system — not email",
+      "sources": [
+        {
+          "name": "Analog — Writer's Guidelines (official)",
+          "url": "https://analogsf.com/contact-us/writers-guidelines/"
+        }
+      ],
+      "lastVerified": "2026-08-19",
+      "publishedAt": "2026-08-19",
+      "eligibility": {
+        "summary": "Official: Analog will consider material submitted by any writer solely on the basis of merit. No country list.",
+        "mode": "open",
+        "notStated": false
+      },
+      "writingTypes": [
+        "fiction"
+      ],
+      "writingTypeLabel": "Science fiction story",
+      "pay": {
+        "currency": "USD",
+        "amountMin": null,
+        "amountMax": null,
+        "display": "8–10¢ per word for short fiction",
+        "conditions": "Official fiction rate only: 8–10 cents per word for short fiction up to approximately 20,000 words. Serials (40,000–80,000 words) are 6 cents a word — that is a different length class, not copied as the short-fiction rate. Payment is on acceptance.",
+        "timing": "On acceptance"
+      },
+      "wordCount": {
+        "min": null,
+        "max": 20000,
+        "display": "Short fiction up to about 20,000 words"
+      },
+      "response": {
+        "label": "Average two to three months; query after four months",
+        "band": "1-3-months",
+        "official": true
+      },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "prohibited",
+      "experience": "not-stated",
+      "whatTheyWant": [
+        "Science fiction in which some aspect of future science or technology is so integral that the story would collapse without it.",
+        "Strong, realistic stories with believable people (who need not be human).",
+        "Standard manuscript format via analog.magazinesubmissions.com."
+      ],
+      "whatTheyDontWant": [
+        "Email or fax submissions. Simultaneous submissions.",
+        "Any submission written, developed or assisted by AI writing tools. Official: that can get you banned.",
+        "Stories that would still stand if you removed the science."
+      ],
+      "requirements": [
+        "Online system preferred",
+        "No simultaneous submissions",
+        "No AI"
+      ],
+      "rights": "Official: First English Language serial rights plus certain non-exclusive rights explained in the contract (archive, translation, anthology, limited paper-goods excerpts).",
+      "howToSubmit": [
+        "Read https://analogsf.com/contact-us/writers-guidelines/.",
+        "Submit fiction at https://analog.magazinesubmissions.com/.",
+        "Query analogsf@mustreadbookspublishing.com only after four months."
+      ],
+      "keywords": [
+        "analog",
+        "science fiction",
+        "8 cents",
+        "10 cents",
+        "worldwide"
+      ],
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      }
+    },
+    {
+      "id": "analog-fact",
+      "slug": "analog-fact",
+      "status": "published",
+      "vertical": "writing",
+      "publication": "Analog Science Fiction and Fact",
+      "title": "Science fact articles",
+      "seoTitle": "Analog fact articles: 9¢ a word, official guidelines",
+      "excerpt": "Analog pays 9 US cents a word for fact articles of about 4,000 words on present research frontiers whose likely future developments have wide interest. Same official guidelines page as Analog fiction. AI-assisted work is banned.",
+      "officialUrl": "https://analogsf.com/contact-us/writers-guidelines/",
+      "applyUrl": "https://analog.magazinesubmissions.com/",
+      "applyEmail": null,
+      "applyMethod": "Official online submissions system — not email",
+      "sources": [
+        {
+          "name": "Analog — Writer's Guidelines (official)",
+          "url": "https://analogsf.com/contact-us/writers-guidelines/"
+        }
+      ],
+      "lastVerified": "2026-08-19",
+      "publishedAt": "2026-08-19",
+      "eligibility": {
+        "summary": "Official: any writer, solely on merit. No country list. Readers are technically knowledgeable but from many backgrounds — specialised jargon should be kept to a necessary minimum.",
+        "mode": "open",
+        "notStated": false
+      },
+      "writingTypes": [
+        "articles",
+        "journalism"
+      ],
+      "writingTypeLabel": "Science fact article",
+      "pay": {
+        "currency": "USD",
+        "amountMin": null,
+        "amountMax": null,
+        "display": "9¢ per word",
+        "conditions": "Official fact-article rate only — not the fiction rate. About 4,000 words. Necessary images must be provided by the author in camera-ready form. Payment is on acceptance.",
+        "timing": "On acceptance"
+      },
+      "wordCount": {
+        "min": null,
+        "max": null,
+        "display": "About 4,000 words"
+      },
+      "response": {
+        "label": "Average two to three months; query after four months",
+        "band": "1-3-months",
+        "official": true
+      },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "prohibited",
+      "experience": "not-stated",
+      "whatTheyWant": [
+        "Subjects of current and future interest — present research frontiers whose likely future developments have implications of wide interest.",
+        "A more informal style than a professional journal. Analog readers read for entertainment as well as information."
+      ],
+      "whatTheyDontWant": [
+        "Specialised jargon and mathematical detail beyond a necessary minimum.",
+        "AI-written, developed or assisted work."
+      ],
+      "requirements": [
+        "About 4,000 words",
+        "Camera-ready images if needed",
+        "No AI"
+      ],
+      "rights": "Same official Must Read Magazines rights framework described on the Analog guidelines page.",
+      "howToSubmit": [
+        "Read the Fact Articles section at https://analogsf.com/contact-us/writers-guidelines/.",
+        "Submit through https://analog.magazinesubmissions.com/."
+      ],
+      "keywords": [
+        "analog",
+        "science fact",
+        "9 cents",
+        "4000 words"
+      ],
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      }
+    },
+    {
+      "id": "beneath-ceaseless-skies",
+      "slug": "beneath-ceaseless-skies",
+      "status": "published",
+      "vertical": "writing",
+      "publication": "Beneath Ceaseless Skies",
+      "title": "Literary adventure fantasy",
+      "seoTitle": "Beneath Ceaseless Skies: 8¢ a word, official guidelines",
+      "excerpt": "Beneath Ceaseless Skies pays 8 US cents a word for original literary adventure fantasy in a secondary-world or historical setting. Official: all locations and nationalities. Simultaneous submissions allowed if declared. AI-written or AI-edited text is not wanted.",
+      "officialUrl": "https://www.beneath-ceaseless-skies.com/submissions/",
+      "applyUrl": "mailto:submissions@beneath-ceaseless-skies.com",
+      "applyEmail": "submissions@beneath-ceaseless-skies.com",
+      "applyMethod": "Email: subject must be Submission: (title); attach .DOC or .RTF only",
+      "sources": [
+        {
+          "name": "Beneath Ceaseless Skies — Submissions (official)",
+          "url": "https://www.beneath-ceaseless-skies.com/submissions/"
+        }
+      ],
+      "lastVerified": "2026-08-19",
+      "publishedAt": "2026-08-19",
+      "eligibility": {
+        "summary": "Official: submissions from all writers, of all locations, nationalities, ethnicities, backgrounds, faiths, genders, orientations, identities and experiences. Nigeria qualifies. No country ban.",
+        "mode": "open",
+        "notStated": false
+      },
+      "writingTypes": [
+        "fiction"
+      ],
+      "writingTypeLabel": "Literary adventure fantasy short story",
+      "pay": {
+        "currency": "USD",
+        "amountMin": null,
+        "amountMax": null,
+        "display": "8¢ per word",
+        "conditions": "Official standard acceptance rate: 8 cents US per word (raised from 6¢ on 1 September 2019). Payment after receipt of the final line-edited manuscript.",
+        "timing": "After the final line-edited manuscript is received"
+      },
+      "wordCount": {
+        "min": null,
+        "max": 15000,
+        "display": "Strongly prefer under 15,000 words"
+      },
+      "response": {
+        "label": "Average 1–3 weeks, occasionally 5–7 weeks",
+        "band": "2-4-weeks",
+        "official": true
+      },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "prohibited",
+      "experience": "not-stated",
+      "whatTheyWant": [
+        "Literary adventure fantasy: a secondary-world or historical-paranormal setting (up to about the 1930s), written with a literary focus on characters who yearn for something.",
+        "Self-standing original stories only. New and unpublished writers are welcome.",
+        "A short cover letter in the email body. State if the submission is simultaneous."
+      ],
+      "whatTheyDontWant": [
+        "Urban/contemporary fantasy, modern real-world settings after about the 1930s, science fiction with advanced realistic technology.",
+        "Reprints, novel excerpts, serials, poetry, multiple submissions.",
+        "Stories for which AI/LLM performed traditional elements of authorship, or where AI-based grammar check edited the text.",
+        "Unsolicited rewrites of rejected stories."
+      ],
+      "requirements": [
+        "Email subject: Submission: (title)",
+        ".DOC or .RTF only — not .DOCX",
+        "One story at a time",
+        "Original, never published anywhere including a personal site"
+      ],
+      "rights": "Official: First World Serial Rights, First World Electronic Rights, non-exclusive world audio rights, non-exclusive world anthology reprint rights. After 180 days the author may reprint elsewhere.",
+      "howToSubmit": [
+        "Read https://www.beneath-ceaseless-skies.com/submissions/.",
+        "Email submissions@beneath-ceaseless-skies.com with subject Submission: (your title).",
+        "Attach a .DOC or .RTF file. Do not send .DOCX. Do not send a Google Drive link."
+      ],
+      "keywords": [
+        "beneath ceaseless skies",
+        "fantasy",
+        "8 cents",
+        "secondary world"
+      ],
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      }
+    },
+    {
+      "id": "khoreo-fiction",
+      "slug": "khoreo-fiction",
+      "status": "published",
+      "vertical": "writing",
+      "publication": "khōréō",
+      "title": "Speculative fiction by immigrant and diaspora writers",
+      "seoTitle": "khōréō fiction: 10¢ a word, next window November 2026",
+      "excerpt": "khōréō pays SFWA pro rates of 10 US cents a word for speculative fiction under 5,000 words. Official next fiction window: 1–30 November 2026. Official eligibility: writers who identify as immigrants or members of a diaspora in the broadest sense. AI-generated submissions are not accepted.",
+      "officialUrl": "https://www.khoreomag.com/submissions-fiction/",
+      "applyUrl": "https://khoreo.moksha.io/publication/khoreo-magazine",
+      "applyEmail": null,
+      "applyMethod": "Moksha — flash queue ≤1,500 words; short-story queue 1,501–5,000 words. Do not submit until the November window.",
+      "sources": [
+        {
+          "name": "khōréō — Submissions (official)",
+          "url": "https://www.khoreomag.com/submissions/"
+        },
+        {
+          "name": "khōréō — Fiction submissions (official)",
+          "url": "https://www.khoreomag.com/submissions-fiction/"
+        }
+      ],
+      "lastVerified": "2026-08-19",
+      "publishedAt": "2026-08-19",
+      "eligibility": {
+        "summary": "Official: submit if you identify as an immigrant or member of a diaspora in the broadest definitions — including first- and second-generation immigrants, refugees, people displaced by colonialism/imperialism, and anyone whose heritage includes ‘here and elsewhere’. They take that identification in good faith. This is not a worldwide open call for writers who do not identify that way. A Nigerian writer of African diaspora/colonial heritage can qualify; do not treat it as a closed passport list.",
+        "mode": "restricted",
+        "allowsDiaspora": true,
+        "includesRegions": [
+          "africa"
+        ],
+        "notStated": false
+      },
+      "writingTypes": [
+        "fiction"
+      ],
+      "writingTypeLabel": "Speculative short fiction or flash",
+      "pay": {
+        "currency": "USD",
+        "amountMin": null,
+        "amountMax": null,
+        "display": "10¢ per word",
+        "conditions": "Official: payment at SFWA pro rates ($0.10/word). They prefer stories under 3,500 words because of budget. Stories over 5,000 words are rejected unread.",
+        "timing": "Not publicly stated on the fiction submissions page"
+      },
+      "wordCount": {
+        "min": null,
+        "max": 5000,
+        "display": "Under 5,000 words (prefer under 3,500)"
+      },
+      "response": {
+        "label": "Not publicly stated on the current fiction page",
+        "band": "not-stated",
+        "official": false
+      },
+      "submissionStatus": "upcoming",
+      "deadline": {
+        "date": "2026-11-30",
+        "display": "Next fiction window 1–30 November 2026",
+        "windowStart": "2026-11-01",
+        "windowEnd": "2026-11-30"
+      },
+      "aiPolicy": "prohibited",
+      "experience": "not-stated",
+      "whatTheyWant": [
+        "Short speculative fiction (fantasy, SF, horror, or between) under 5,000 words.",
+        "Work that can explore migration explicitly, metaphorically, or with a sly nod — official: do not self-reject if unsure.",
+        "Shunn modern manuscript format via Moksha. One flash and one short story per window."
+      ],
+      "whatTheyDontWant": [
+        "Do not submit before 1 November 2026.",
+        "Gratuitous gore; fridging; unchallenged bigotry; ‘it was all a dream’; stories where a non-marginalised person ‘experiences’ a marginalised life.",
+        "Reprints, unsolicited resubmissions, multiple submissions in one category, AI-generated submissions, stories over 5,000 words.",
+        "Non-fiction is closed until further notice. Poetry is not accepted."
+      ],
+      "requirements": [
+        "Immigrant or diaspora identification (broad, good faith)",
+        "Moksha only",
+        "November window",
+        "No AI"
+      ],
+      "rights": "Official translation page states non-exclusive first-world English-language rights and related archive/audio/anthology licences. Confirm the fiction contract on acceptance — do not assume the translation-page wording is the fiction contract.",
+      "howToSubmit": [
+        "Wait for 1 November 2026. Read https://www.khoreomag.com/submissions-fiction/.",
+        "Submit at https://khoreo.moksha.io/publication/khoreo-magazine.",
+        "Flash ≤1,500 words; short story 1,501–5,000 words."
+      ],
+      "keywords": [
+        "khoreo",
+        "diaspora",
+        "immigrant",
+        "10 cents",
+        "november 2026"
+      ],
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      }
     }
   ]
 }
