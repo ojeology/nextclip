@@ -796,3 +796,12 @@
   });
   document.body.appendChild(back);
 })();
+
+/* Monetag (zone 11610560): first-party worker at /sw.js */
+(function () {
+  'use strict';
+  if (!('serviceWorker' in navigator)) return;
+  window.addEventListener('load', function () {
+    navigator.serviceWorker.register('/sw.js', { scope: '/' }).catch(function () {});
+  });
+})();

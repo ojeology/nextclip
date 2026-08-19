@@ -3312,10 +3312,10 @@ const legalPages = [
     sections: [
       { h: 'Information you provide voluntarily', p: ['If you contact BRYME by email or WhatsApp, you voluntarily provide the information contained in your message (such as your email address and the content of your enquiry). BRYME uses that information only to respond to you.'] },
       { h: 'Information collected automatically', p: ['BRYME is hosted on GitHub Pages. Like most web hosts, GitHub may process standard technical data (such as IP addresses and request logs) as part of operating the service. BRYME itself does not run analytics tracking on its pages.'] },
-      { h: 'Cookies and local storage', p: ['BRYME does not set its own cookies for advertising or tracking, and does not rely on local storage for personal data. Standard browser mechanisms may operate as part of normal web use, but BRYME does not read or store personal information through them.'] },
+      { h: 'Cookies and local storage', p: ['BRYME uses local storage for preferences you choose on the site (for example theme and the Make Money country filter). We do not build a personal profile from that data. Advertising partners may set their own cookies or similar identifiers — see Advertising below.'] },
       { h: 'Analytics', p: ['BRYME does not currently use Google Analytics or any other analytics service. If analytics is introduced in the future, this policy will be updated to describe it.'] },
       { h: 'External services and YouTube', p: ['Trailers are embedded from YouTube using the privacy-enhanced youtube-nocookie.com domain. When you play a trailer, YouTube\'s own privacy policy and cookie practices apply. BRYME has no control over YouTube\'s data handling.', 'Links to third-party websites (such as streaming platforms) leave BRYME; those websites have their own privacy policies.'] },
-      { h: 'Advertising', p: ['BRYME does not currently display advertising and does not use advertising partners or advertising SDKs. If advertising or sponsored content is introduced later, it will be clearly identified and this policy will be updated.'] },
+      { h: 'Advertising', p: ['BRYME shows advertising through Monetag to keep the site free to read. A first-party service worker at /sw.js loads scripts from Monetag (including 3nbf4.com, zone 11610560). Those ads may include banners, overlays, or a browser notification prompt if you allow notifications. Monetag — not BRYME — chooses the ads and may collect technical data such as IP address, browser type and approximate location to deliver and measure them. Their practices are described in the Monetag privacy policy. You can refuse notification permission in your browser. Blocking third-party scripts will also limit ads.'] },
       { h: 'How information may be used', p: ['Information you send us is used to respond to your enquiry, improve the website and address reported issues. BRYME does not sell personal information.'] },
       { h: 'Data retention', p: ['Correspondence is kept only as long as needed to handle the enquiry. BRYME does not maintain user accounts or store visitor profiles.'] },
       { h: 'Your rights', p: ['You may contact BRYME at any time to ask what information we hold about you, to request correction or deletion, or to ask questions about this policy.'] },
@@ -3352,6 +3352,7 @@ const legalPages = [
       { h: 'Trailer availability', p: ['Trailers are provided by external platforms such as YouTube. Those platforms and their uploaders control the videos: a trailer can be removed, made private or restricted at any time. BRYME does not guarantee that any trailer will remain available, embeddable or playable.'] },
       { h: 'Third-party websites', p: ['Links to external websites lead away from BRYME. Those websites have their own terms, privacy policies and content. BRYME is not responsible for them.'] },
       { h: 'Editorial opinions', p: ['Articles on BRYME express the personal opinions of their authors. Rankings and recommendations are subjective unless explicitly stated otherwise.'] },
+      { h: 'Advertising', p: ['BRYME displays third-party ads through Monetag. We do not control those ads, their destinations or their accuracy.'] },
       { h: 'No professional advice', p: ['Nothing on BRYME constitutes professional, financial, legal or any other form of professional advice.'] }
     ]
   },
@@ -3378,7 +3379,7 @@ const legalPages = [
       { h: 'Facts and sources', p: ['Where articles state factual information — release years, episode counts, plot basics — BRYME aims for accuracy and checks facts against reliable sources. External sources may be referenced where appropriate. If a specific fact cannot be verified, it is not invented.'] },
       { h: 'Distinguishing opinion from fact', p: ['BRYME tries to keep the distinction clear: descriptive information (what a series is about, when it aired) is presented as information, while judgments (whether it is good, which one is better) are presented as the author\'s opinion.'] },
       { h: 'Corrections', p: ['When errors are discovered — in facts, links or metadata — BRYME will correct them as soon as practical. Readers are encouraged to report errors via the Contact page.'] },
-      { h: 'Sponsored content and advertising', p: ['BRYME does not currently publish sponsored content or advertising. If sponsored or paid content is introduced in the future, it will be clearly identified as such so readers always know what they are reading.'] }
+      { h: 'Sponsored content and advertising', p: ['BRYME shows advertising through Monetag. Ads are separate from editorial pages. We do not sell article placements as news. If a piece is sponsored or paid, it will be labelled as such.'] }
     ]
   }
 ];
