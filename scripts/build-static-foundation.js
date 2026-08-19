@@ -1557,7 +1557,13 @@ function verticalPage(v, category){
       <a class="sp-hero-card" href="${url('/sports/world-cup-2026-spain-champions/')}" style="--card-img:url('/assets/img/sports/hero-world-cup.jpg')"><span class="sp-hero-tag">World Cup 2026</span><h3>Spain are world champions</h3><p>Ferran Torres in the 106th minute at MetLife. The result, the format, and what it did to your league season.</p><span class="sp-hero-go">Read the final →</span></a>
       <a class="sp-hero-card" href="${url('/sports/premier-league-matchweek-1-guide/')}" style="--card-img:url('/assets/img/sports/hero-premier-league.jpg')"><span class="sp-hero-tag">Premier League</span><h3>The opening round, confirmed</h3><p>Every Friday-to-Monday fixture, kick-off time and TV listing. No predictions.</p><span class="sp-hero-go">Read the briefing →</span></a>
     </div></section>` : '';
-  const pageHero = sportsRootHero || (defaultHero + sportsFeature);
+  const techRootHero = (v.dir === 'tech' && !category) ? `<section class="tech-feature"><div class="sports-feature-inner"><div class="eyebrow">🤖 BRYME Tech &amp; AI</div><h1>Practical tools. No theatre.</h1><p>${esc(v.tagline)}</p></div></section>
+    <section class="sp-hero" aria-label="Featured BRYME Tech stories"><div class="sp-hero-track">
+      <a class="sp-hero-card sp-hero-first tech-tint" href="${url('/tech/ai-assistant-data-training-settings/')}" style="--card-img:url('/assets/img/tech/hero-privacy.jpg')"><span class="sp-hero-tag">AI assistants</span><h3>What they actually do with your chats</h3><p>ChatGPT, Claude and Gemini each have a training toggle. Each one also has a way around it.</p><span class="sp-hero-go">Read the settings →</span></a>
+      <a class="sp-hero-card tech-tint" href="${url('/tech/learning-to-code-on-a-phone-termux/')}" style="--card-img:url('/assets/img/tech/hero-phone-code.jpg')"><span class="sp-hero-tag">From a phone</span><h3>Learning to code on Android</h3><p>Termux, the numerical stack, and what actually broke. Not a course advert.</p><span class="sp-hero-go">Read what broke →</span></a>
+      <a class="sp-hero-card tech-tint" href="${url('/tech/render-deployment-failures-what-they-taught-me/')}" style="--card-img:url('/assets/img/tech/hero-deploy.jpg')"><span class="sp-hero-tag">Deploy</span><h3>The site worked. The deploy didn't.</h3><p>Four real Render failures, including the package.json error on this site.</p><span class="sp-hero-go">Read the failures →</span></a>
+    </div></section>` : '';
+  const pageHero = sportsRootHero || techRootHero || (defaultHero + sportsFeature);
   const catArticles = category ? ((verticalArticleIndex[v.dir] && verticalArticleIndex[v.dir].get(category.slug)) || []) : [];
   const writingDeskBlock = (v.dir === 'make-money' && category && category.slug === 'writing')
     ? `<div class="wo-banner"><b>The live log is next door.</b><p>These are the articles about the series. Dated field notes — who I emailed, who replied, how they pay — live on <a href="${url('/make-money/writing/')}">Writing Field Notes</a>.</p></div>`
@@ -4408,6 +4414,66 @@ fs.appendFileSync(path.join(root,'assets/site.css'), `
 [data-theme="light"] .desk-hint-card p{color:#5a6572}
 @media(min-width:761px){
   .desk-hint{display:none !important}
+}
+`);
+
+fs.appendFileSync(path.join(root,'assets/site.css'), `
+
+/* ============================================================
+   HUB FEATURE BANNERS — Make Money + Tech
+   Same shape as .sports-feature. Cards reuse .sp-hero-card
+   with gold / blue tints. Desktop sports cards unchanged.
+   ============================================================ */
+.mm-feature,.tech-feature{
+  position:relative;display:grid;place-items:center;min-height:320px;
+  margin:0 -20px 10px;padding:36px 24px;overflow:hidden;text-align:center;
+  isolation:isolate;border-bottom:1px solid var(--line)
+}
+.mm-feature{
+  background:radial-gradient(ellipse at 50% 110%,rgba(231,187,92,.30),transparent 47%),linear-gradient(135deg,#1a1408 0%,#20180c 48%,#080b0d 100%);
+  border-bottom-color:rgba(231,187,92,.35)
+}
+.tech-feature{
+  background:radial-gradient(ellipse at 50% 110%,rgba(79,142,247,.30),transparent 47%),linear-gradient(135deg,#071018 0%,#0c1624 48%,#080b0d 100%);
+  border-bottom-color:rgba(79,142,247,.35)
+}
+.mm-feature:before,.tech-feature:before{
+  content:"";position:absolute;inset:-35% -10% 0;
+  background:repeating-linear-gradient(118deg,transparent 0 74px,rgba(255,255,255,.035) 75px 77px,transparent 78px 152px);
+  transform:skewY(-5deg);z-index:-1
+}
+.mm-feature:after{content:"💰";position:absolute;right:7%;bottom:-20px;font-size:clamp(140px,24vw,300px);line-height:1;color:rgba(255,255,255,.05);z-index:-1}
+.tech-feature:after{content:"🤖";position:absolute;right:7%;bottom:-20px;font-size:clamp(140px,24vw,300px);line-height:1;color:rgba(255,255,255,.05);z-index:-1}
+.mm-feature h1,.tech-feature h1{font-size:clamp(32px,5.5vw,58px);line-height:1.02;letter-spacing:-.03em;margin:10px auto;color:#fff}
+.mm-feature p,.tech-feature p{max-width:610px;margin:0 auto;font-size:clamp(15px,2vw,17px);line-height:1.55}
+.mm-feature p{color:#e6d7b4}
+.tech-feature p{color:#c5d4ea}
+.mm-feature .eyebrow{color:#f0d48a}
+.tech-feature .eyebrow{color:#9ec0ff}
+
+.sp-hero-card.mm-tint{background:linear-gradient(150deg,#241c12,#14100c 70%);border-color:rgba(231,187,92,.28)}
+.sp-hero-card.mm-tint:before{background:radial-gradient(240px 120px at 80% 0,rgba(231,187,92,.75),transparent 70%)}
+.sp-hero-card.mm-tint .sp-hero-tag,
+.sp-hero-card.mm-tint .sp-hero-go{color:#e7bb5c}
+.sp-hero-card.tech-tint{background:linear-gradient(150deg,#121a28,#0c1018 70%);border-color:rgba(79,142,247,.28)}
+.sp-hero-card.tech-tint:before{background:radial-gradient(240px 120px at 80% 0,rgba(79,142,247,.75),transparent 70%)}
+.sp-hero-card.tech-tint .sp-hero-tag,
+.sp-hero-card.tech-tint .sp-hero-go{color:#7fb0ff}
+
+[data-theme="light"] .mm-feature h1,
+[data-theme="light"] .mm-feature .eyebrow,
+[data-theme="light"] .tech-feature h1,
+[data-theme="light"] .tech-feature .eyebrow{
+  background:none;-webkit-background-clip:unset;background-clip:unset;color:#fff
+}
+[data-theme="light"] .mm-feature p{color:#e6d7b4}
+[data-theme="light"] .tech-feature p{color:#c5d4ea}
+
+@media(max-width:760px){
+  .mm-feature,.tech-feature{min-height:210px;margin:0 -12px 4px;padding:22px 14px}
+  .mm-feature h1,.tech-feature h1{font-size:26px;margin:6px auto 8px}
+  .mm-feature:after,.tech-feature:after{font-size:110px;right:-8px;bottom:-28px}
+  .mm-feature p,.tech-feature p{font-size:13.5px;line-height:1.45}
 }
 `);
 if (warnings.length) {

@@ -99,7 +99,7 @@
       "status": "published",
       "publishedAt": "2026-08-19",
       "updatedAt": "2026-08-19",
-      "readingTime": "4 min read",
+      "readingTime": "5 min read",
       "metaDescription": "The 2026 Ballon d'Or ceremony is in London on 26 October. Last year's winners, what UEFA has confirmed, and what BRYME will not invent before the vote.",
       "content": [
         {
@@ -109,6 +109,14 @@
         {
           "heading": "Who holds it now",
           "body": "The 2025 men's Ballon d'Or went to Ousmane Dembélé (France, Paris Saint-Germain). The 2025 women's Ballon d'Or went to Aitana Bonmatí (Spain, Barcelona). UEFA published both results on 22–23 September 2025.\n\nThose are last year's winners. They are not this year's."
+        },
+        {
+          "heading": "How the vote works",
+          "body": "UEFA's official 2025 results page sets out the method. An international jury of specialised journalists votes — one from each of the top 100 FIFA-ranked nations for the men's award, and the top 50 for the women's.\n\nEach juror picks ten players from a 30-name list, in order. Those ten get 15, 12, 10, 8, 7, 5, 4, 3, 2 and 1 point.\n\nThat is last year's published method. If France Football changes it for 2026, the official announcement is the source — not this paragraph."
+        },
+        {
+          "heading": "What last year's vote actually looked like",
+          "body": "The 2025 ceremony was at the Théâtre du Châtelet in Paris on 22 September 2025 — the 69th edition, covering the 2024/25 season. UEFA published the points.\n\nMen's Ballon d'Or 2025: 1. Ousmane Dembélé (France, Paris Saint-Germain) 1,380. 2. Lamine Yamal (Spain, Barcelona) 1,059. 3. Vitinha (Portugal, Paris Saint-Germain) 703. 4. Mohamed Salah (Egypt, Liverpool) 657. 5. Raphinha (Brazil, Barcelona) 620. 6. Achraf Hakimi (Morocco, Paris Saint-Germain) 484. 7. Kylian Mbappé (France, Real Madrid) 378. 8. Cole Palmer (England, Chelsea) 211. 9. Gianluigi Donnarumma (Italy, Paris Saint-Germain / Manchester City) 172. 10. Nuno Mendes (Portugal, Paris Saint-Germain) 171.\n\nWomen's Ballon d'Or 2025: Aitana Bonmatí (Spain, Barcelona) 506, ahead of Mariona Caldentey (Spain, Arsenal) 478 and Alessia Russo (England, Arsenal) 420.\n\nThose numbers are last year. They are not a 2026 ranking."
         },
         {
           "heading": "What this page will not do",
@@ -131,6 +139,10 @@
         {
           "name": "UEFA — Aitana Bonmatí and Ousmane Dembélé win 2025 Ballon d'Or awards",
           "url": "https://www.uefa.com/news-media/news/029d-1ec9af5d0295-419f208aca97-1000--aitana-bonmati-and-ousmane-dembele-win-2025-ballon-d-or-a/"
+        },
+        {
+          "name": "UEFA — 2025 Ballon d'Or voting results: official rankings",
+          "url": "https://www.uefa.com/uefachampionsleague/news/029e-1eeae3a29e5c-64e217276491-1000--2025-ballon-d-or-voting-results-official-rankings/"
         }
       ],
       "sourcesCheckedOn": "2026-08-19"

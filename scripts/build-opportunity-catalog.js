@@ -503,10 +503,10 @@ module.exports = function buildOpportunityCatalog(ctx) {
   const hubCrumbs = [{ name: 'Home', path: '/' }, { name: 'BRYME Make Money', path: '/make-money/' }];
   const hubBody = `<main class="shell">
     <div class="crumb"><a href="${url('/')}">Home</a> / BRYME Make Money</div>
-    <section class="hero vhero vhero-make-money"><div class="eyebrow">💰 BRYME Make Money</div>
+    <section class="mm-feature"><div class="sports-feature-inner"><div class="eyebrow">💰 BRYME Make Money</div>
       <h1>Legitimate opportunities, filtered to you.</h1>
-      <p class="lead">Find paid work that matches your country and skill. We verify listings against official guidelines. Nothing here is a guarantee of acceptance or payment.</p>
-    </section>
+      <p>Find paid work that matches your country and skill. We verify listings against official guidelines. Nothing here is a guarantee of acceptance or payment.</p>
+    </div></section>
     <section class="mm-onboard" data-mm-app>
       <div data-mm-step="nationality">
         <h2>What's your nationality?</h2>
@@ -523,7 +523,12 @@ module.exports = function buildOpportunityCatalog(ctx) {
       </div>
     </section>
     ${disclaimer}
-    <section class="section"><div class="section-head"><h2>Guides already published</h2></div>
+    <section class="sp-hero" aria-label="Featured Make Money pages"><div class="sp-hero-track">
+      <a class="sp-hero-card sp-hero-first mm-tint" href="${url('/make-money/writing/')}" style="--card-img:url('/assets/img/money/hero-writing.jpg')"><span class="sp-hero-tag">Writing</span><h3>Markets we actually checked</h3><p>Official rates and doors. A gig is not guaranteed. Fifty-five listings, not a dump.</p><span class="sp-hero-go">Open the catalog →</span></a>
+      <a class="sp-hero-card mm-tint" href="${url('/make-money/freelance-platform-fees-explained/')}" style="--card-img:url('/assets/img/money/hero-fees.jpg')"><span class="sp-hero-tag">Fees</span><h3>What Upwork and Fiverr take in 2026</h3><p>From their own documentation, not a recycled listicle. Price so the cut does not surprise you.</p><span class="sp-hero-go">Read the fees →</span></a>
+      <a class="sp-hero-card mm-tint" href="${url('/make-money/beginners-guide-to-making-money-online/')}" style="--card-img:url('/assets/img/money/hero-beginner.jpg')"><span class="sp-hero-tag">Start here</span><h3>The beginner guide without the lie</h3><p>Skills, traps, and what is not a job. No fake income figures.</p><span class="sp-hero-go">Read the guide →</span></a>
+    </div></section>
+    <section class="section"><div class="section-head"><h2>More guides</h2></div>
       <div class="vcat-grid">${guideCards}</div>
     </section>
     ${typeof coreHubStrip === 'function' ? coreHubStrip('make-money') : `<section class="section"><div class="section-head"><h2>Explore BRYME</h2></div><div class="vchips">${VERTICALS.map(verticalChip).join('')}</div></section>`}
