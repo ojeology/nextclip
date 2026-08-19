@@ -1,0 +1,377 @@
+{
+  "updatedAt": "2026-08-19",
+  "disclaimer": "Information can change. Payment rates, submission requirements, eligibility, deadlines and response times are subject to change. Always check the publication's official guidelines before submitting. BRYME verifies listings as carefully as possible but does not guarantee acceptance or payment.",
+  "earningCategories": [
+    { "id": "writing", "name": "Writing", "emoji": "✍️", "status": "live", "blurb": "Verified publications that pay for writing. Filtered by your country." },
+    { "id": "graphic-design", "name": "Graphic Design", "emoji": "🎨", "status": "soon" },
+    { "id": "coding", "name": "Coding", "emoji": "💻", "status": "soon" },
+    { "id": "photography", "name": "Photography", "emoji": "📸", "status": "soon" },
+    { "id": "video", "name": "Video", "emoji": "🎥", "status": "soon" },
+    { "id": "voice", "name": "Voice Work", "emoji": "🎙️", "status": "soon" },
+    { "id": "transcription", "name": "Transcription", "emoji": "📝", "status": "soon" },
+    { "id": "illustration", "name": "Illustration / Art", "emoji": "🖼️", "status": "soon" },
+    { "id": "remote-work", "name": "Remote Work", "emoji": "🌐", "status": "soon" },
+    { "id": "other", "name": "Other legitimate opportunities", "emoji": "💼", "status": "soon" }
+  ],
+  "opportunities": [
+    {
+      "id": "afrolicious",
+      "slug": "afrolicious",
+      "status": "published",
+      "vertical": "writing",
+      "publication": "Afrolicious",
+      "title": "Stories, essays, thinkpieces and rants",
+      "seoTitle": "Afrolicious writing submissions: $75 for 600–800 words",
+      "excerpt": "Afrolicious pays $75 for stories, essays, thinkpieces and rants of 600–800 words. Official eligibility is Black Africans and Black African diasporas.",
+      "officialUrl": "https://afrolicious.com/issue/02/pitching-afrolicious/",
+      "applyUrl": "mailto:hello@afrolicious.com",
+      "applyEmail": "hello@afrolicious.com",
+      "applyMethod": "Email pitch",
+      "sources": [
+        { "name": "Pitching Afrolicious (official)", "url": "https://afrolicious.com/issue/02/pitching-afrolicious/" }
+      ],
+      "lastVerified": "2026-08-19",
+      "publishedAt": "2026-08-19",
+      "eligibility": {
+        "summary": "Black Africans and Black African diasporas. Nigeria qualifies. This is not a worldwide open call.",
+        "mode": "restricted",
+        "includesGroups": ["black-african", "black-african-diaspora"],
+        "includesRegions": ["africa"],
+        "allowsDiaspora": true,
+        "notStated": false
+      },
+      "writingTypes": ["articles", "essays", "opinion", "other"],
+      "writingTypeLabel": "Stories, essays, thinkpieces, rants",
+      "pay": {
+        "currency": "USD",
+        "amountMin": 75,
+        "amountMax": 75,
+        "display": "$75",
+        "conditions": "Official pitching page: $75 for stories, essays, thinkpieces and rants between 600 and 800 words. Page design/development is a separate $75 rate. Other formats are paid at a fair and agreed-upon rate — that rate is not stated as a fixed number.",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": { "min": 600, "max": 800, "display": "600–800 words" },
+      "response": { "label": "Within two weeks", "band": "under-2-weeks", "official": true },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "not-stated",
+      "experience": "not-stated",
+      "whatTheyWant": [
+        "Work at the intersection of the Africas and its diasporas. Afrolicious centers Blackness and Black Africanness.",
+        "Stories, essays, thinkpieces and rants of 600–800 words.",
+        "A pitch by email that includes: a 140-character thesis; one or two paragraphs describing the piece; three or four sources (potential sources count); a link to your website or blog; any ideas for the article design.",
+        "A personal website or blog outside social media is not required, but the publication says it prioritizes people who arrive with their own platform, regardless of size."
+      ],
+      "whatTheyDontWant": [
+        "The official pitching page does not list genre exclusions beyond the formats it names.",
+        "AI policy is not stated on the official pitching page."
+      ],
+      "requirements": [
+        "Email pitch to hello@afrolicious.com",
+        "140-character thesis",
+        "1–2 paragraph description",
+        "3–4 sources or potential sources",
+        "Link to website or blog",
+        "Optional article-design ideas"
+      ],
+      "rights": "Not publicly stated on the official pitching page.",
+      "howToSubmit": [
+        "Email hello@afrolicious.com with the pitch details listed above.",
+        "The official page says they will get back to you within two weeks."
+      ],
+      "keywords": ["afrolicious", "black african", "diaspora", "thinkpiece", "essay", "rant", "paid pitch"],
+      "editorExperience": { "status": "not-yet-submitted" }
+    },
+    {
+      "id": "the-republic-personal-essay",
+      "slug": "the-republic",
+      "status": "published",
+      "vertical": "writing",
+      "publication": "The Republic",
+      "title": "Personal Essay",
+      "seoTitle": "The Republic Personal Essay submissions: ₦100,000 for 2,001–3,000 words",
+      "excerpt": "The Republic pays ₦100,000 for Personal Essays of 2,001–3,000 words. Submit through the official account form. Other categories have their own rates on the official submissions page.",
+      "officialUrl": "https://rpublc.com/submissions",
+      "applyUrl": "https://rpublc.com/submissions#pitch",
+      "applyEmail": null,
+      "applyMethod": "Official submissions form (sign in or create an account)",
+      "sources": [
+        { "name": "The Republic — Submissions (official)", "url": "https://rpublc.com/submissions" }
+      ],
+      "lastVerified": "2026-08-19",
+      "publishedAt": "2026-08-19",
+      "eligibility": {
+        "summary": "The official submissions page does not state a nationality restriction. Personal essays should speak to questions shaping Nigerian and African life. Do not read that as a closed country list.",
+        "mode": "open",
+        "notStated": true
+      },
+      "writingTypes": ["personal-essays", "essays"],
+      "writingTypeLabel": "Personal Essay",
+      "pay": {
+        "currency": "NGN",
+        "amountMin": 100000,
+        "amountMax": 100000,
+        "display": "₦100,000",
+        "conditions": "This figure is the official Personal Essay fee only. The Republic states that rates vary by format, length and editorial demands. Other listed categories (Analysis & Opinion, Expert Commentary, Fiction, Deep Dive, Interview, Photo Essay, Profile, Review – Regular, Review – Extended, Reportage, The Black Atlantic) have their own rates on the official page. Those other rates are not copied here because they are not shown as a single static table on the current page. Check the official submissions page before pitching another category.",
+        "timing": "Payment is processed within 30 days of publication. After publication you receive an invoice request by email and are paid through your preferred method."
+      },
+      "wordCount": { "min": 2001, "max": 3000, "display": "2,001–3,000 words" },
+      "response": { "label": "Not publicly stated", "band": "not-stated", "official": false },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "not-stated",
+      "experience": "not-stated",
+      "whatTheyWant": [
+        "Personal essays that combine strong writing with clear insight, reflection and relevance to broader questions shaping Nigerian and African life.",
+        "The magazine publishes journalism, essays, criticism and fiction grounded in intellectual seriousness, strong reporting and clarity of thought."
+      ],
+      "whatTheyDontWant": [
+        "AI policy is not stated on the official submissions page.",
+        "Do not treat the Personal Essay rate as the rate for every Republic category."
+      ],
+      "requirements": [
+        "Sign in or create an account on The Republic",
+        "Use Submissions and complete the official form",
+        "Pitch through that form — the FAQ does not invite email pitches"
+      ],
+      "rights": "Not publicly stated on the official submissions page.",
+      "howToSubmit": [
+        "Go to https://rpublc.com/submissions",
+        "Log in or create an account.",
+        "Open Submissions and complete the form. Editors contact you if the piece is a fit."
+      ],
+      "keywords": ["the republic", "rpublc", "personal essay", "nigeria", "naira", "paid essay"],
+      "editorExperience": { "status": "not-yet-submitted" }
+    },
+    {
+      "id": "efiko",
+      "slug": "efiko",
+      "status": "published",
+      "vertical": "writing",
+      "publication": "Efiko Magazine",
+      "title": "8th edition — poetry, short story, essay",
+      "seoTitle": "Efiko Magazine submissions (8th edition): poetry, stories and essays",
+      "excerpt": "Efiko is accepting poetry, short stories and essays for its 8th edition until 30 August 2026. Nigerian-account contributors are paid ₦20,000 or ₦30,000 depending on length. Work sent outside the window is deleted unread.",
+      "officialUrl": "https://efikomag.com/submission-guidelines/",
+      "applyUrl": "mailto:submissions@efikomag.com",
+      "applyEmail": "submissions@efikomag.com",
+      "applyMethod": "Email a Word document",
+      "sources": [
+        { "name": "Efiko — Submission Guidelines (official)", "url": "https://efikomag.com/submission-guidelines/" }
+      ],
+      "lastVerified": "2026-08-19",
+      "publishedAt": "2026-08-19",
+      "eligibility": {
+        "summary": "Writers of African origin based anywhere in the world, or anyone writing about Africa.",
+        "mode": "restricted",
+        "includesGroups": ["african-origin", "writing-about-africa"],
+        "includesRegions": ["africa"],
+        "allowsDiaspora": true,
+        "notStated": false
+      },
+      "writingTypes": ["poetry", "fiction", "essays"],
+      "writingTypeLabel": "Poetry, short story, essay",
+      "pay": {
+        "currency": "NGN",
+        "amountMin": 20000,
+        "amountMax": 30000,
+        "display": "₦20,000 or ₦30,000 (Nigerian bank account)",
+        "conditions": "For contributors with a Nigerian bank account: ₦30,000 for 2 or more poems, or for prose over 2,500 published words; ₦20,000 for accepted submissions below those thresholds. Paid upon publication. Contributors with non-Nigerian bank accounts currently receive a novel or nonfiction book by a selected African author if Amazon delivers to their country, value capped at $35 including processing — not a cash fee. Do not describe Efiko as paying every contributor ₦30,000.",
+        "timing": "Processed upon publication."
+      },
+      "wordCount": {
+        "min": 1200,
+        "max": 5000,
+        "display": "Prose 1,200–5,000 words; poetry 2–5 poems / 10 pages",
+        "notes": "Poetry is specified as 2 to 5 poems totalling 10 pages, not a word count. The numeric min/max stored here is the official short-story and essay range."
+      },
+      "response": { "label": "Aims to respond within 3 months", "band": "1-3-months", "official": true },
+      "submissionStatus": "deadline",
+      "deadline": {
+        "date": "2026-08-30",
+        "display": "8th edition window closes 30 August 2026",
+        "windowEnd": "2026-08-30",
+        "recurring": false
+      },
+      "aiPolicy": "not-stated",
+      "experience": "not-stated",
+      "whatTheyWant": [
+        "Poems, short stories and essays of high quality from writers of African origin anywhere, or from people writing about Africa.",
+        "Times New Roman, 12pt, double-spaced, numbered pages.",
+        "One piece per issue.",
+        "A 5-line bio in the email body."
+      ],
+      "whatTheyDontWant": [
+        "Work sent outside the submission window is deleted unread.",
+        "Except in special cases, only original, previously unpublished work. Work that already exists online is not accepted.",
+        "More than one piece per issue.",
+        "Submissions that do not name the genre in the email subject line are not read.",
+        "Extensive revision after acceptance is not allowed. Title decisions are final."
+      ],
+      "requirements": [
+        "Word document attachment",
+        "Subject line states the genre",
+        "Filename is your name + genre",
+        "5-line bio in the email",
+        "Times New Roman 12pt, double-spaced, numbered pages"
+      ],
+      "rights": "First serial rights; rights to republish in a collection; shared rights for maiden adaptations. Text rights revert to the writer 90 days after publication. If you reprint or repurpose the work, you must acknowledge Efiko as first publisher.",
+      "howToSubmit": [
+        "Email a Word document to submissions@efikomag.com.",
+        "Put the genre in the subject line.",
+        "Name the file with your name and the genre.",
+        "Include a 5-line bio in the email body.",
+        "Simultaneous submissions are allowed; notify Efiko promptly if accepted elsewhere.",
+        "If you have no response after 3 months, the official page says to inquire at editors@efikomag.com."
+      ],
+      "keywords": ["efiko", "poetry", "short story", "essay", "african literary magazine", "naira"],
+      "editorExperience": { "status": "not-yet-submitted" }
+    },
+    {
+      "id": "oriire",
+      "slug": "oriire",
+      "status": "published",
+      "vertical": "writing",
+      "publication": "Oriire",
+      "title": "African mythology, folklore and cultural memory",
+      "seoTitle": "Oriire submissions: African mythology and folklore (₦10,000 / bonus ₦15,000)",
+      "excerpt": "Oriire pays ₦10,000 per accepted article (₦5,000 per codex entry). A temporary ₦15,000 bonus applies to Encounters, Folktales & Narrative Retellings and Listicles through 22 August 2026. AI-generated writing and images are prohibited.",
+      "officialUrl": "https://oriire.com/submissions",
+      "applyUrl": "https://oriire.com/join",
+      "applyEmail": null,
+      "applyMethod": "Official submission portal (create an account)",
+      "sources": [
+        { "name": "Oriire — Submit Your Work (official)", "url": "https://oriire.com/submissions" }
+      ],
+      "lastVerified": "2026-08-19",
+      "publishedAt": "2026-08-19",
+      "eligibility": {
+        "summary": "The official submissions page does not state a nationality restriction. The subject matter must be African mythology, folklore and cultural memory, tied to a specific ethnic group, culture, region or historical period.",
+        "mode": "open",
+        "notStated": true
+      },
+      "writingTypes": ["articles", "essays", "interviews", "reviews", "other"],
+      "writingTypeLabel": "Long-form, folktales, essays, interviews, heritage reviews, listicles, encounters",
+      "pay": {
+        "currency": "NGN",
+        "amountMin": 5000,
+        "amountMax": 15000,
+        "display": "₦10,000 per article; ₦5,000 per codex entry",
+        "conditions": "Standard official rates: ₦10,000 per accepted article and ₦5,000 per accepted codex entry. Temporary bonus through 22 August 2026: ₦15,000 per accepted submission in Encounters, Folktales & Narrative Retellings, or Listicles. After that date the standard rates apply. Payment details are requested on the submission form. Contributors handle their own tax obligations.",
+        "timing": "The official page says you get paid when the story is published. A more specific number of days is not stated.",
+        "temporary": {
+          "amount": 15000,
+          "currency": "NGN",
+          "display": "₦15,000",
+          "until": "2026-08-22",
+          "appliesTo": ["Encounters", "Folktales & Narrative Retellings", "Listicles"],
+          "standardDisplay": "₦10,000 per article"
+        }
+      },
+      "wordCount": { "min": null, "max": null, "display": "Not publicly stated" },
+      "response": { "label": "Review within 1–4 weeks", "band": "2-4-weeks", "official": true },
+      "submissionStatus": "rolling",
+      "deadline": null,
+      "aiPolicy": "prohibited",
+      "experience": "not-stated",
+      "whatTheyWant": [
+        "Long-form work on African mythology, folklore and cultural memory inside Oriire’s pillars: Mythology; Deities, Spirits & Cosmologies; Folktales, Legends & Oral Traditions; Ancestry, Destiny & Personhood; Festivals, Rituals, Symbols & Sacred Practice; Indigenous Knowledge Systems; Historical Memory & Heritage; Diaspora, Transformation & Survival.",
+        "Categories: Long-Form Articles; Folktales & Narrative Retellings; Essays; Interviews & Conversations; Heritage Reviews; Listicles; Encounters.",
+        "Specificity is mandatory: tie the piece to a specific ethnic group, culture, region or historical period.",
+        "Verifiable or historical claims must be sourced. Oral material may be attributed by provenance (for example “as told by”).",
+        "At least one relevant image you have the right to use, with a clear caption.",
+        "Voice: research-driven, intellectually grounded, clear. Vivid specific writing is welcome; empty ornament is not."
+      ],
+      "whatTheyDontWant": [
+        "AI-generated written content is strictly prohibited. AI-generated images are also prohibited.",
+        "Work published elsewhere.",
+        "Vague “African culture” pieces that are not tied to a specific people, place or period.",
+        "Clichés such as “rich tapestry” and vagueness such as “shrouded in mystery”.",
+        "A recipe on its own (foodways need ritual, symbolic or heritage meaning).",
+        "General political, economic or film history with no heritage or belief thread.",
+        "Repeating a subject already on Oriire without a clearly new angle.",
+        "Titles that end with a full stop, or subtitles that begin “This article explores”."
+      ],
+      "requirements": [
+        "Create an account and submit through the official portal",
+        "Original unpublished work",
+        "At least one captioned image you have rights to",
+        "Sources for verifiable/historical claims",
+        "Up to 2 articles and 3 codex entries every 14 days (drafts do not count)"
+      ],
+      "rights": "Not publicly stated on the official submissions page.",
+      "howToSubmit": [
+        "Create an account via https://oriire.com/join and submit the draft through the official portal.",
+        "Editorial review is stated as 1–4 weeks, then an edit pass, then publication and payment."
+      ],
+      "keywords": ["oriire", "mythology", "folklore", "africa", "ai prohibited", "naira", "listicle", "folktale"],
+      "editorExperience": { "status": "not-yet-submitted" }
+    },
+    {
+      "id": "the-lagos-review-loss-grief",
+      "slug": "the-lagos-review",
+      "status": "published",
+      "vertical": "writing",
+      "publication": "The Lagos Review",
+      "title": "Writing Loss & Grief",
+      "seoTitle": "The Lagos Review: Writing Loss & Grief essays — $250",
+      "excerpt": "The Lagos Review is paying $250 per published essay (up to 1,500 words) on loss and grief. Rolling submissions June–December 2026. AI-produced essays and fiction are not considered.",
+      "officialUrl": "https://thelagosreview.ng/call-for-essay-submissions-writing-loss-grief/",
+      "applyUrl": "mailto:submissions@thelagosreview.ng",
+      "applyEmail": "submissions@thelagosreview.ng",
+      "applyMethod": "Email",
+      "sources": [
+        { "name": "The Lagos Review — Call for essay submissions: Writing Loss & Grief (official)", "url": "https://thelagosreview.ng/call-for-essay-submissions-writing-loss-grief/" }
+      ],
+      "lastVerified": "2026-08-19",
+      "publishedAt": "2026-08-19",
+      "eligibility": {
+        "summary": "The official call does not state a nationality restriction. It is framed around personal experience of loss and grief.",
+        "mode": "open",
+        "notStated": true
+      },
+      "writingTypes": ["personal-essays", "essays"],
+      "writingTypeLabel": "Personal essay",
+      "pay": {
+        "currency": "USD",
+        "amountMin": 250,
+        "amountMax": 250,
+        "display": "$250 per published essay",
+        "conditions": "$250 per published essay, paid one month after publication. Separate additional opportunity: the top 12 published essays may be compiled into a book, with a one-off royalty of $500. That $500 is not the standard essay fee and is not guaranteed to every contributor.",
+        "timing": "Paid one month after publication."
+      },
+      "wordCount": { "min": null, "max": 1500, "display": "Up to 1,500 words" },
+      "response": { "label": "Not publicly stated", "band": "not-stated", "official": false },
+      "submissionStatus": "rolling",
+      "deadline": {
+        "date": "2026-12-31",
+        "display": "Rolling, June–December 2026",
+        "windowStart": "2026-06-01",
+        "windowEnd": "2026-12-31",
+        "recurring": false
+      },
+      "aiPolicy": "prohibited",
+      "experience": "not-stated",
+      "whatTheyWant": [
+        "Essays up to 1,500 words on loss and grief in all their forms — not only death.",
+        "Official examples include: loss of freedom through incarceration, kidnapping or injustice; migration and losing or searching for home; missed opportunities and vanished dreams; pregnancy loss; domestic or intimate partner violence; discrimination by race, tribe or ethnicity; losing a parent, child, partner, friend, or a stranger whose story pierced you.",
+        "First-person, honest, specific lived experience."
+      ],
+      "whatTheyDontWant": [
+        "AI-produced essays will not be considered.",
+        "Fiction will not be considered for this call."
+      ],
+      "requirements": [
+        "Essay, maximum 1,500 words",
+        "Email to submissions@thelagosreview.ng"
+      ],
+      "rights": "Not fully stated. The call notes that the top 12 published essays may be compiled into a book collection with a one-off $500 royalty. Broader rights terms are not on the call page.",
+      "howToSubmit": [
+        "Email your essay to submissions@thelagosreview.ng.",
+        "Submissions are received on a rolling basis from June to December 2026."
+      ],
+      "keywords": ["lagos review", "grief", "loss", "personal essay", "$250", "AI prohibited"],
+      "editorExperience": { "status": "not-yet-submitted" }
+    }
+  ]
+}

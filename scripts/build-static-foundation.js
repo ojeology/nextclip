@@ -2076,6 +2076,10 @@ function buildWritingOpportunities(){
 
 
 buildWritingOpportunities();
+require('./build-opportunity-catalog')({
+  fs, path, root, esc, url, absUrl, layout, write, breadcrumbs,
+  TODAY, PAGE_LASTMOD, WRITING_EXTRA_PATHS, warnings, VERTICALS, verticalChip, site
+});
 
 
 // Entertainment hub — the existing mature section, presented under BRYME Entertainment
