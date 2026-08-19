@@ -798,14 +798,20 @@
 })();
 
 /* Monetag (zone 11610560): first-party worker at /sw.js.
-   Delay so the first WhatsApp/phone screen is not a permission prompt. */
+   Register after a short wait or the first tap/scroll — not on first paint,
+   and not after a long delay that misses the visit. */
 (function () {
   'use strict';
   if (!('serviceWorker' in navigator)) return;
-  window.addEventListener('load', function () {
-    setTimeout(function () {
-      navigator.serviceWorker.register('/sw.js', { scope: '/' }).catch(function () {});
-    }, 18000);
+  var done = false;
+  function reg() {
+    if (done) return;
+    done = true;
+    navigator.serviceWorker.register('/sw.js', { scope: '/' }).catch(function () {});
+  }
+  window.addEventListener('load', function () { setTimeout(reg, 5000); });
+  ['scroll', 'touchstart', 'click'].forEach(function (ev) {
+    window.addEventListener(ev, function () { setTimeout(reg, 600); }, { once: true, passive: true });
   });
 })();
 
@@ -823,10 +829,10 @@
   var VIGNETTE = { key: 'vignette', zone: '11610753', src: 'https://n6wxm.com/vignette.min.js' };
   var V_SESSION = 'bryme-ad-vignette';
   var V_AT = 'bryme-ad-vignette-at';
-  var V_COOLDOWN_MS = 25 * 60 * 1000;
-  var TAG_DELAY_MS = 2200;
-  var VIGNETTE_DWELL_MS = 7000;
-  var VIGNETTE_SCROLL_PX = 380;
+  var V_COOLDOWN_MS = 18 * 60 * 1000;
+  var TAG_DELAY_MS = 1800;
+  var VIGNETTE_DWELL_MS = 5000;
+  var VIGNETTE_SCROLL_PX = 300;
   var pageEntered = Date.now();
 
   var tagStarted = false;
@@ -853,32 +859,19 @@
   }
 
   function skipVignetteHere() {
-    var p = pathOf();
-    if (p === '/' || p === '') return true;
-    if (/\/search\/?$/.test(p)) return true;
+    if (/\/search\/?$/.test(pathOf())) return true;
     return skipTagHere();
   }
 
-  function inView(el) {
-    if (!el || el.hidden) return false;
-    var r = el.getBoundingClientRect();
-    return !!(r.width && r.height && r.top < window.innerHeight && r.bottom > 56);
-  }
-
-  /* Do not cover the first screen a WhatsApp/YouTube visitor came to read. */
+  /* Hold only when an overlay would actually break the visit. */
   function firstScreenBusy() {
     if (nationalityOpen()) return true;
-    if (document.querySelector('.trailer-section iframe, [data-hero-video] iframe')) return true;
-    if (inView(document.querySelector('.movie-hero'))) return true;
-    if (inView(document.querySelector('.trailer-section'))) return true;
-    if (inView(document.querySelector('.hero-actions'))) return true;
-    if (inView(document.getElementById('watch')) || inView(document.querySelector('.tp-watch'))) return true;
+    if (document.querySelector('.trailer-section iframe')) return true;
     return false;
   }
 
   function vignetteHold() {
     if (isTyping() || officialApplyInView() || firstScreenBusy()) return true;
-    if (isMobile() && (Date.now() - pageEntered) < 10000) return true;
     return false;
   }
 
@@ -926,8 +919,7 @@
     var i, t, r;
     for (i = 0; i < links.length; i++) {
       t = (links[i].textContent || '').replace(/\s+/g, ' ').toLowerCase();
-      if (t.indexOf('submit') === -1 && t.indexOf('apply') === -1 && t.indexOf('official guidelines') === -1) continue;
-      if (t.indexOf('official') === -1 && t.indexOf('apply') === -1) continue;
+      if (t.indexOf('submit / apply') === -1 && !(t.indexOf('apply') > -1 && t.indexOf('official') > -1)) continue;
       r = links[i].getBoundingClientRect();
       if (r.width && r.height && r.top < window.innerHeight && r.bottom > 0) return true;
     }
@@ -983,7 +975,7 @@
   function onScroll() {
     if (vigStarted || skipVignetteHere() || nationalityOpen()) return;
     var y = window.pageYOffset || document.documentElement.scrollTop || 0;
-    var need = isMobile() ? Math.max(520, Math.floor((window.innerHeight || 640) * 0.9)) : VIGNETTE_SCROLL_PX;
+    var need = isMobile() ? 280 : VIGNETTE_SCROLL_PX;
     if (y < need) return;
     startVignette();
   }
