@@ -110,3 +110,18 @@ node scripts/request-indexing.js --since $(date +%F)    # then submit these by h
 ```
 
 The news sitemap updates itself in the same build. Nothing extra to remember.
+
+---
+
+## Custom domain later (site stays on Render)
+
+Live URL today: `https://bryme.onrender.com`. Internal links are root-relative, so a domain change is one config line plus DNS.
+
+1. Buy the domain at any registrar (Namecheap, Porkbun, Google Domains, etc.).
+2. In `site.config.json`, set `"siteUrl"` to `https://yourdomain.com` (no trailing slash).
+3. Run `node scripts/build-static-foundation.js` so canonical, Open Graph, sitemap and robots use the new host.
+4. Render → the BRYME static site → **Custom Domains** → add the domain.
+5. At the registrar, add the CNAME/A records Render shows. Wait for HTTPS to issue.
+6. Push the rebuilt site. Old `onrender.com` URLs can stay as a redirect if Render offers one.
+
+Do not put a token or password in the repo. Do not change `siteUrl` until the domain actually resolves.
