@@ -806,8 +806,11 @@
   });
 })();
 
-/* Monetag page tags — initialize once. Product > ads.
-   Vignette 11610753 + tag 11610749. Never re-inject on filter/search/card render. */
+/* Monetag page tags — product first, then ads.
+   Tag 11610749: lighter unit, once per page after the first screen is readable.
+   Vignette 11610753: interruptive. Once per visit (session + 25-minute cooldown),
+   only after the reader has had time on the page. Never on nationality, search,
+   filters, card renders, legal/contact, or over official apply. */
 (function () {
   'use strict';
   if (window.__brymeAdsInit) return;
@@ -815,55 +818,189 @@
 
   var TAG = { key: 'tag', zone: '11610749', src: 'https://nap5k.com/tag.min.js' };
   var VIGNETTE = { key: 'vignette', zone: '11610753', src: 'https://n6wxm.com/vignette.min.js' };
+  var V_SESSION = 'bryme-ad-vignette';
+  var V_AT = 'bryme-ad-vignette-at';
+  var V_COOLDOWN_MS = 25 * 60 * 1000;
+  var TAG_DELAY_MS = 2200;
+  var VIGNETTE_DWELL_MS = 7000;
+  var VIGNETTE_SCROLL_PX = 380;
+
+  var tagStarted = false;
+  var vigStarted = false;
+  var vigTimer = null;
+  var vigRetry = null;
+  var onboardingWatch = null;
 
   function nationalityOpen() {
     var step = document.querySelector('[data-mm-step="nationality"]');
     return !!(step && !step.hidden);
   }
 
+  function pathOf() {
+    return location.pathname || '';
+  }
+
+  function skipTagHere() {
+    return /\/(privacy|disclaimer|terms|copyright|editorial-policy|contact)\/?$/.test(pathOf());
+  }
+
+  function skipVignetteHere() {
+    var p = pathOf();
+    if (p === '/' || p === '') return true;
+    if (/\/search\/?$/.test(p)) return true;
+    return skipTagHere();
+  }
+
   function already(key) {
     return !!document.querySelector('script[data-bryme-ad="' + key + '"]');
   }
 
+  function storeGet(which, key) {
+    try { return which.getItem(key); } catch (e) { return null; }
+  }
+
+  function storeSet(which, key, val) {
+    try { which.setItem(key, val); } catch (e) {}
+  }
+
+  function vignetteAllowed() {
+    if (storeGet(sessionStorage, V_SESSION)) return false;
+    var at = parseInt(storeGet(localStorage, V_AT) || '0', 10);
+    if (at && (Date.now() - at) < V_COOLDOWN_MS) return false;
+    return true;
+  }
+
+  function markVignette() {
+    storeSet(sessionStorage, V_SESSION, '1');
+    storeSet(localStorage, V_AT, String(Date.now()));
+  }
+
+  function pageUsable() {
+    if (nationalityOpen()) return false;
+    if (document.visibilityState === 'hidden') return false;
+    if (document.prerendering) return false;
+    return true;
+  }
+
+  function isTyping() {
+    var el = document.activeElement;
+    if (!el) return false;
+    var tag = (el.tagName || '').toUpperCase();
+    if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return true;
+    return !!el.isContentEditable;
+  }
+
+  function officialApplyInView() {
+    var links = document.querySelectorAll('a[href][target="_blank"], a[rel*="nofollow"]');
+    var i, t, r;
+    for (i = 0; i < links.length; i++) {
+      t = (links[i].textContent || '').replace(/\s+/g, ' ').toLowerCase();
+      if (t.indexOf('submit') === -1 && t.indexOf('apply') === -1 && t.indexOf('official guidelines') === -1) continue;
+      if (t.indexOf('official') === -1 && t.indexOf('apply') === -1) continue;
+      r = links[i].getBoundingClientRect();
+      if (r.width && r.height && r.top < window.innerHeight && r.bottom > 0) return true;
+    }
+    return false;
+  }
+
   function inject(spec) {
-    if (!spec || already(spec.key)) return;
+    if (!spec || already(spec.key)) return false;
     var host = document.body || document.documentElement;
-    if (!host) return;
+    if (!host) return false;
     var s = document.createElement('script');
     s.async = true;
     s.dataset.brymeAd = spec.key;
     s.dataset.zone = spec.zone;
     s.src = spec.src;
     host.appendChild(s);
+    return true;
   }
 
-  function start() {
-    if (nationalityOpen()) return false;
+  function startTag() {
+    if (tagStarted || skipTagHere()) return;
+    if (!pageUsable()) return;
+    tagStarted = true;
     inject(TAG);
-    inject(VIGNETTE);
-    return true;
+  }
+
+  function startVignette() {
+    if (vigStarted || skipVignetteHere()) return;
+    if (!pageUsable()) return;
+    if (!vignetteAllowed()) return;
+    if (isTyping() || officialApplyInView()) {
+      if (!vigRetry) {
+        vigRetry = setTimeout(function () {
+          vigRetry = null;
+          startVignette();
+        }, 4000);
+      }
+      return;
+    }
+    vigStarted = true;
+    if (inject(VIGNETTE)) markVignette();
+  }
+
+  function armVignette() {
+    if (vigStarted || skipVignetteHere() || !vignetteAllowed()) return;
+    if (vigTimer) return;
+    vigTimer = setTimeout(function () {
+      vigTimer = null;
+      startVignette();
+    }, VIGNETTE_DWELL_MS);
+  }
+
+  function onScroll() {
+    if (vigStarted || skipVignetteHere() || nationalityOpen()) return;
+    var y = window.pageYOffset || document.documentElement.scrollTop || 0;
+    if (y < VIGNETTE_SCROLL_PX) return;
+    startVignette();
   }
 
   function watchOnboarding() {
     var hub = document.querySelector('[data-mm-app]');
-    if (!hub) return;
-    var obs = new MutationObserver(function () {
-      if (start()) obs.disconnect();
+    if (!hub || onboardingWatch) return;
+    onboardingWatch = new MutationObserver(function () {
+      if (nationalityOpen()) return;
+      onboardingWatch.disconnect();
+      onboardingWatch = null;
+      scheduleContentAds();
     });
-    obs.observe(hub, { attributes: true, subtree: true, attributeFilter: ['hidden'] });
+    onboardingWatch.observe(hub, { attributes: true, subtree: true, attributeFilter: ['hidden'] });
+  }
+
+  function scheduleContentAds() {
+    setTimeout(startTag, TAG_DELAY_MS);
+    armVignette();
   }
 
   function boot() {
-    if (start()) return;
-    watchOnboarding();
+    if (nationalityOpen()) {
+      watchOnboarding();
+      return;
+    }
+    scheduleContentAds();
   }
 
-  /* First screen stays readable. Do not bind ads to clicks, filters, or search. */
-  function schedule() {
-    var wait = nationalityOpen() ? 0 : 4500;
-    setTimeout(boot, wait);
+  function kick() {
+    if (document.prerendering) {
+      document.addEventListener('prerenderingchange', boot, { once: true });
+      return;
+    }
+    boot();
   }
 
-  if (document.readyState === 'complete') schedule();
-  else window.addEventListener('load', schedule);
+  window.addEventListener('scroll', onScroll, { passive: true });
+  document.addEventListener('visibilitychange', function () {
+    if (document.visibilityState === 'hidden') return;
+    if (nationalityOpen()) return;
+    if (!tagStarted && !skipTagHere()) startTag();
+  });
+
+  /* Start from DOM ready, not window load — images on slow networks
+     would otherwise delay ads until after the reader has left. */
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', kick);
+  } else {
+    kick();
+  }
 })();
