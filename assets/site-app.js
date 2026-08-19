@@ -797,6 +797,10 @@
   document.body.appendChild(back);
 })();
 
+/* Parked first-visit notice (desktop hint). Code stays for a later use.
+   Flip to true to show it again. When false, ads use normal timing. */
+window.BRYME_HINT_ENABLED = false;
+
 /* Monetag (zone 11610560): first-party worker at /sw.js.
    Register after a short wait or the first tap/scroll — not on first paint,
    and not after a long delay that misses the visit. First mobile visit
@@ -806,6 +810,7 @@
   if (!('serviceWorker' in navigator)) return;
   var done = false;
   function firstMobile() {
+    if (!window.BRYME_HINT_ENABLED) return false;
     var mobile = !!(window.matchMedia && window.matchMedia('(max-width: 760px)').matches);
     var seen = false;
     try { seen = !!localStorage.getItem('bryme-desk-hint'); } catch (e) {}
@@ -860,6 +865,7 @@
     try { document.dispatchEvent(new CustomEvent('bryme-desk-hint-done', { detail: how || 'ok' })); } catch (e) {}
   }
   function show() {
+    if (!window.BRYME_HINT_ENABLED) return;
     if (seen() || !isMobile() || skipHere() || nationalityOpen()) return;
     if (document.querySelector('[data-bryme-desk-hint]')) return;
     var wrap = document.createElement('div');
@@ -968,6 +974,7 @@
     return !!document.querySelector('[data-bryme-desk-hint]');
   }
   function firstVisitMobile() {
+    if (!window.BRYME_HINT_ENABLED) return false;
     return isMobile() && !seenDeskHint();
   }
 
