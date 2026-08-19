@@ -1377,6 +1377,7 @@ VERTICALS.forEach(v => {
 /* ---------- Shared editorial images (cinematic stills, no fake faces) ---------- */
 const HERO_IMG = {
   'ballon-dor-race': '/assets/img/sports/hero-ballon-dor.jpg',
+  'ballon-dor-2026-our-picks': '/assets/img/sports/hero-ballon-dor.jpg',
   'world-cup-2026-spain-champions': '/assets/img/sports/hero-world-cup.jpg',
   'premier-league-matchweek-1-guide': '/assets/img/sports/hero-matchweek.jpg',
   'arsenal-title-defence': '/assets/img/sports/hero-arsenal.jpg',
