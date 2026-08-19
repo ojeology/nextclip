@@ -600,6 +600,7 @@ input,select,textarea{font-size:16px}
 .oc-report details{border:1px solid var(--line);border-radius:8px;padding:10px 14px}
 .oc-report a{display:block;padding:6px 0;font-size:14px}
 [data-theme="light"] .oc-card,[data-theme="light"] .oc-filters,[data-theme="light"] .mm-cat,[data-theme="light"] .mm-country-q{background:#fff}
+[data-theme="light"] .oc-filters select,[data-theme="light"] .oc-search-wrap input,[data-theme="light"] .oc-filters select option{background:#fff;color:#161b22;border-color:var(--line)}
 @media(min-width:700px){
   .oc-facts{grid-template-columns:1fr 1fr}
 }
@@ -608,6 +609,7 @@ input,select,textarea{font-size:16px}
   .oc-filter-grid{grid-template-columns:1fr 1fr}
   .oc-card h3{font-size:18px}
 }
+
 
 /* ============================================================
    LIGHT MODE READABILITY
@@ -785,6 +787,7 @@ input,select,textarea{font-size:16px}
 
 [data-theme="light"] .poster{background:#e7ebf0}
 [data-theme="light"] .placeholder{background:linear-gradient(145deg,#e9edf2,#d7dbe2);color:#161b22}
+
 
 /* ============================================================
    MOBILE COMPACTNESS
@@ -1024,6 +1027,7 @@ input,select,textarea{font-size:16px}
   .movie-hero { grid-template-columns: 76px minmax(0, 1fr) !important; }
   .movie-hero .poster { max-height: 114px !important; }
 }
+
 
 /* ============================================================
    LIGHT MODE INPUTS + FIRST-VISIT DESK HINT

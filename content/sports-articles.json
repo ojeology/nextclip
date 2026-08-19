@@ -85,21 +85,55 @@
     },
     {
       "slug": "ballon-dor-race",
-      "title": "The Ballon d’Or Race: Who Really Deserves It?",
-      "category": "Football debates",
-      "status": "draft",
+      "title": "Ballon d'Or 2026: London, 26 October. The winner is not decided.",
+      "seoTitle": "Ballon d'Or 2026: Date, London Ceremony, 2025 Winners",
+      "excerpt": "UEFA and France Football have put the 70th Ballon d'Or in London on 26 October 2026. Ousmane Dembélé and Aitana Bonmatí hold the 2025 awards. The 2026 winners have not been named.",
+      "category": "Players",
+      "categorySlug": "players",
+      "author": "Ibrahim Sodiq",
       "labels": [
-        "trending",
-        "analysis"
+        "ballon-dor",
+        "players",
+        "2026"
       ],
-      "author": "BRYME Sports Editorial",
-      "publicationDate": null,
-      "lastUpdated": null,
-      "seoTitle": "The Ballon d’Or Race: Who Really Deserves It? | BRYME Sports",
-      "metaDescription": null,
-      "heroImage": null,
-      "body": [],
-      "relatedArticles": []
+      "status": "published",
+      "publishedAt": "2026-08-19",
+      "updatedAt": "2026-08-19",
+      "readingTime": "4 min read",
+      "metaDescription": "The 2026 Ballon d'Or ceremony is in London on 26 October. Last year's winners, what UEFA has confirmed, and what BRYME will not invent before the vote.",
+      "content": [
+        {
+          "heading": "What is confirmed",
+          "body": "The 2026 Ballon d'Or ceremony will be held in London on 26 October. UEFA announced the date and city on 28 May 2026. It is the 70th edition of the award France Football created in 1956, and the first time the ceremony has been staged in London.\n\nUEFA said the choice of city pays tribute to Sir Stanley Matthews, the first winner, 70 years earlier.\n\nThe award is presented by France Football (L'Équipe Group) and has been co-organised with UEFA since 2024. Official notices sit on ballondor.com."
+        },
+        {
+          "heading": "Who holds it now",
+          "body": "The 2025 men's Ballon d'Or went to Ousmane Dembélé (France, Paris Saint-Germain). The 2025 women's Ballon d'Or went to Aitana Bonmatí (Spain, Barcelona). UEFA published both results on 22–23 September 2025.\n\nThose are last year's winners. They are not this year's."
+        },
+        {
+          "heading": "What this page will not do",
+          "body": "The 2026 winners have not been announced. UEFA's May note said the list of nominees would be communicated in due course. As of 19 August 2026, BRYME is not copying a newspaper power ranking or a fan shortlist onto this page.\n\nWe will not tell you who \"really deserves\" the award. We will not invent a 30-name list. If France Football or UEFA publish an official shortlist, that is when names belong here.\n\nA World Cup summer sits inside the 2025/26 season this award covers. That will matter to voters. It does not let us name a winner in August."
+        },
+        {
+          "heading": "What to open next on BRYME",
+          "body": "The last tournament that will sit in voters' minds is already written up: Spain beat Argentina 1-0 after extra time in the 2026 World Cup final. The Premier League season that started last week is on its own pages.\n\nCome back to this one when there is an official list, or a result."
+        }
+      ],
+      "sources": [
+        {
+          "name": "UEFA — 2026 Ballon d'Or ceremony date and host city announced",
+          "url": "https://www.uefa.com/ballondor/news/02a5-20bba5196317-e0e34001e13b-1000--2026-ballon-d-or-ceremony-date-and-host-city-announced/"
+        },
+        {
+          "name": "UEFA — Ousmane Dembélé wins 2025 Men's Ballon d'Or",
+          "url": "https://www.uefa.com/uefachampionsleague/news/029d-1ec96c30aa3f-f6868c869cbd-1000--ousmane-dembele-wins-2025-men-s-ballon-d-or/"
+        },
+        {
+          "name": "UEFA — Aitana Bonmatí and Ousmane Dembélé win 2025 Ballon d'Or awards",
+          "url": "https://www.uefa.com/news-media/news/029d-1ec9af5d0295-419f208aca97-1000--aitana-bonmati-and-ousmane-dembele-win-2025-ballon-d-or-a/"
+        }
+      ],
+      "sourcesCheckedOn": "2026-08-19"
     },
     {
       "slug": "rodris-future",
