@@ -521,6 +521,39 @@ input,select,textarea{font-size:16px}
   .mm-paths{grid-template-columns:1fr}
 }
 
+/* ============================================================
+   TITLE PAGE — readable mini-editorial (movie / series / anime)
+   Mobile first. Ads stay global; nothing here is an ad slot.
+   ============================================================ */
+.tp-page .movie-hero .lead{display:block;-webkit-line-clamp:unset;overflow:visible;font-size:16px;line-height:1.55;max-width:640px}
+.tp-kicker-meta{display:flex;flex-wrap:wrap;gap:8px;align-items:center;color:#d3d7d9;font-size:13px;font-weight:700}
+.tp-kicker-meta .dot{opacity:.4}
+.hero-actions{flex-wrap:wrap;gap:10px 14px}
+.hero-actions .cta,.hero-actions .cta-ghost{text-transform:none;letter-spacing:0;font-size:14px;font-weight:800;min-height:44px;display:inline-flex;align-items:center;margin-top:0}
+.tp-watch{margin:28px 0;padding:18px;border:1px solid var(--line);border-radius:12px;background:linear-gradient(160deg,#161b23,#0f1216)}
+.tp-watch h2{margin-top:0}
+.tp-watch-row{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}
+.tp-watch-btn{display:inline-flex;align-items:center;min-height:44px;padding:8px 14px;border:1px solid var(--line);border-radius:8px;font-weight:800;font-size:13.5px;background:#101318}
+.tp-watch-btn:hover{border-color:var(--gold);color:#fff}
+.tp-watch-note{font-size:13px;color:var(--muted);margin:10px 0 0;line-height:1.55}
+.tp-why p,.tp-editorial p{font-size:16px;line-height:1.65}
+.tp-next{margin:36px 0 8px;padding-top:22px;border-top:1px solid var(--line)}
+.tp-next h3{font-size:16px;margin:16px 0 10px}
+.tp-next-links{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+.tp-next-links a{border:1px solid var(--line);border-radius:20px;padding:8px 14px;font-size:13px;font-weight:700}
+.tp-next-links a:hover{border-color:var(--accent);color:#fff}
+.aside dl > div{margin:0}
+.tp-page .prose h2{font-size:22px;line-height:1.25}
+.tp-page .prose p{font-size:16.5px;line-height:1.7}
+@media(max-width:760px){
+  .tp-watch{padding:14px}
+  .tp-page .movie-hero .lead{font-size:14.5px}
+  .grid.tp-related{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:12px!important}
+  .tp-page .prose p{font-size:15.5px}
+}
+[data-theme="light"] .tp-watch{background:#fff}
+[data-theme="light"] .tp-watch-btn{background:#fff;color:#161b22}
+
 /* Opportunity catalog */
 .mm-onboard{max-width:820px;margin:0 auto 28px}
 .mm-onboard h1{font-size:clamp(28px,6vw,44px);margin:8px 0 12px}

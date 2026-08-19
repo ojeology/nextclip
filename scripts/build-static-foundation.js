@@ -1006,6 +1006,42 @@ input,select,textarea{font-size:16px}
 }
 `);
 
+
+fs.appendFileSync(path.join(root,'assets/site.css'), `
+/* ============================================================
+   TITLE PAGE — readable mini-editorial (movie / series / anime)
+   Mobile first. Ads stay global; nothing here is an ad slot.
+   ============================================================ */
+.tp-page .movie-hero .lead{display:block;-webkit-line-clamp:unset;overflow:visible;font-size:16px;line-height:1.55;max-width:640px}
+.tp-kicker-meta{display:flex;flex-wrap:wrap;gap:8px;align-items:center;color:#d3d7d9;font-size:13px;font-weight:700}
+.tp-kicker-meta .dot{opacity:.4}
+.hero-actions{flex-wrap:wrap;gap:10px 14px}
+.hero-actions .cta,.hero-actions .cta-ghost{text-transform:none;letter-spacing:0;font-size:14px;font-weight:800;min-height:44px;display:inline-flex;align-items:center;margin-top:0}
+.tp-watch{margin:28px 0;padding:18px;border:1px solid var(--line);border-radius:12px;background:linear-gradient(160deg,#161b23,#0f1216)}
+.tp-watch h2{margin-top:0}
+.tp-watch-row{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}
+.tp-watch-btn{display:inline-flex;align-items:center;min-height:44px;padding:8px 14px;border:1px solid var(--line);border-radius:8px;font-weight:800;font-size:13.5px;background:#101318}
+.tp-watch-btn:hover{border-color:var(--gold);color:#fff}
+.tp-watch-note{font-size:13px;color:var(--muted);margin:10px 0 0;line-height:1.55}
+.tp-why p,.tp-editorial p{font-size:16px;line-height:1.65}
+.tp-next{margin:36px 0 8px;padding-top:22px;border-top:1px solid var(--line)}
+.tp-next h3{font-size:16px;margin:16px 0 10px}
+.tp-next-links{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+.tp-next-links a{border:1px solid var(--line);border-radius:20px;padding:8px 14px;font-size:13px;font-weight:700}
+.tp-next-links a:hover{border-color:var(--accent);color:#fff}
+.aside dl > div{margin:0}
+.tp-page .prose h2{font-size:22px;line-height:1.25}
+.tp-page .prose p{font-size:16.5px;line-height:1.7}
+@media(max-width:760px){
+  .tp-watch{padding:14px}
+  .tp-page .movie-hero .lead{font-size:14.5px}
+  .grid.tp-related{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:12px!important}
+  .tp-page .prose p{font-size:15.5px}
+}
+[data-theme="light"] .tp-watch{background:#fff}
+[data-theme="light"] .tp-watch-btn{background:#fff;color:#161b22}
+`);
+
 /* ------------------------------------------------------------------ */
 /* Shared markup helpers                                              */
 /* ------------------------------------------------------------------ */
@@ -3003,26 +3039,149 @@ for (const [from, val] of Object.entries(titleRelations)) {
 const COMMON_GENRES = new Set(['action', 'adventure', 'comedy', 'drama', 'fantasy', 'sci-fi', 'thriller', 'romance', 'crime', 'horror', 'animation', 'family']);
 const DISTINCTIVE_WEIGHT = 6, COMMON_WEIGHT = 2;
 function genreWeight(g) { return COMMON_GENRES.has(slugify(g)) ? COMMON_WEIGHT : DISTINCTIVE_WEIGHT; }
+function listedGenres(m){
+  if ((m.typeDir || 'movie') === 'movie') return [m.genre].filter(Boolean);
+  return (m.genres || []).filter(Boolean);
+}
+function countryTokens(s){
+  return String(s || '').split(/[;,/]/).map(x => x.trim().toLowerCase()).filter(Boolean);
+}
+function nameList(s){
+  return String(s || '').split(';').map(x => x.trim()).filter(Boolean);
+}
+function primaryCountry(m){
+  const parts = String(m.country || '').split(/[;,]/).map(s => s.trim()).filter(Boolean);
+  if (!parts.length) return '';
+  if (parts.length <= 2) return parts.join(', ');
+  /* Wikidata often dumps every filming location. Prefer a real production
+     country; otherwise say nothing rather than "Hungary" for Dune. */
+  const hints = ['Nigeria','United States','United Kingdom','India','South Korea','Japan','France','Canada','Australia','Germany','Brazil','Mexico','China','Hong Kong','Ireland','Italy','Spain','South Africa'];
+  for (const h of hints) {
+    const hit = parts.find(p => p.toLowerCase() === h.toLowerCase());
+    if (hit) return hit;
+  }
+  return '';
+}
+function detailsCountry(m){
+  const parts = String(m.country || '').split(/[;,]/).map(s => s.trim()).filter(Boolean);
+  if (!parts.length) return '';
+  if (parts.length <= 2) return parts.join(', ');
+  return primaryCountry(m) + ' (co-production)';
+}
+function runtimeLabel(m){
+  const mins = parseInt(String(m.runtime || '').replace(/[^0-9]/g, ''), 10);
+  return mins > 0 ? mins + ' min' : '';
+}
+function genrePath(m, g){
+  const typeDir = m.typeDir || 'movie';
+  const base = typeDir === 'movie' ? 'movies' : typeDir;
+  return '/' + base + '/' + slugify(g) + '/';
+}
+const LEGAL_WATCH_HOSTS = new Set([
+  'netflix.com','primevideo.com','amazon.com','amazon.co.uk','amazon.de',
+  'disneyplus.com','tv.apple.com','itunes.apple.com','play.google.com',
+  'youtube.com','m.youtube.com','youtu.be','max.com','play.hbomax.com',
+  'hulu.com','paramountplus.com','peacocktv.com','showmax.com','irokotv.com',
+  'tubitv.com','crunchyroll.com','mubi.com','curiositystream.com','plex.tv',
+  'watch.plex.tv','justwatch.com'
+]);
+function isLegalWatchUrl(raw){
+  try {
+    const u = new URL(String(raw || ''));
+    if (u.protocol !== 'https:') return false;
+    if (/torrent|magnet|putlocker|fmovies|123movie|soap2day|nkiri|netnaija|fzmovies|mobiletvshows|zippyshare/i.test(u.href)) return false;
+    const host = u.hostname.replace(/^www\./, '').toLowerCase();
+    return LEGAL_WATCH_HOSTS.has(host);
+  } catch (e) { return false; }
+}
+function watchLinkLabel(link){
+  const name = clean(link.name || 'platform');
+  let isSearch = false;
+  try {
+    const u = new URL(link.url);
+    isSearch = /\/search/i.test(u.pathname) || u.searchParams.has('q');
+  } catch (e) {}
+  return (isSearch ? 'Search ' : 'Check ') + name;
+}
+function whereToWatchBlock(m){
+  const links = (m.watchLinks || []).filter(l => l && l.url && isLegalWatchUrl(l.url));
+  const note = '<p class="tp-watch-note">BRYME does not host films and does not list unofficial streams. Availability changes by country — confirm on the service itself. These links are not advertisements.</p>';
+  if (!links.length) {
+    return `<section class="tp-watch" id="watch"><h2>Where to watch legally</h2><p>BRYME is not a streaming site. Look for ${esc(m.title)} on licensed services in your country — Netflix, Prime Video, Disney+, Showmax, YouTube Movies, or a cinema or rental store. If a service does not offer it, it is not listed here.</p>${note}</section>`;
+  }
+  const items = links.map(l => `<a class="tp-watch-btn" href="${esc(l.url)}" rel="nofollow noopener" target="_blank">${esc(watchLinkLabel(l))}</a>`).join('');
+  return `<section class="tp-watch" id="watch"><h2>Where to watch legally</h2><p>Official platforms you can check. A search link is not a promise the title is licensed there right now.</p><div class="tp-watch-row">${items}</div>${note}</section>`;
+}
+function whyYouMightLikeBlock(m, related){
+  const bits = [];
+  const gs = listedGenres(m);
+  if (gs.length) bits.push('BRYME lists ' + m.title + ' as ' + gs.join(' / ').toLowerCase() + '.');
+  const dirs = nameList(m.director);
+  if (dirs.length) bits.push('It was directed by ' + dirs.slice(0, 2).join(' and ') + '.');
+  if (m.cast && m.cast.length) bits.push('The billed cast includes ' + m.cast.slice(0, 3).join(', ') + '.');
+  if (m.editorPick) bits.push('It is on BRYME\'s Editor\'s Picks.');
+  if (related[0]) {
+    const more = related.slice(0, 2).map(x => x.title);
+    bits.push('If this is the lane you want, ' + more.join(' and ') + (more.length > 1 ? ' are' : ' is') + ' next on BRYME.');
+  }
+  if (bits.length < 2) return '';
+  return `<section class="tp-why"><h2>Why you might like it</h2>${bits.map(b => `<p>${esc(b)}</p>`).join('')}</section>`;
+}
+function keepExploringBlock(m, relatedArticles, yearPath){
+  const topicsHere = (typeof topics !== 'undefined' ? topics : []).filter(t => (t.movieSlugs || []).includes(m.slug));
+  const gs = listedGenres(m);
+  const links = [];
+  const noun = (m.typeDir === 'series') ? 'series' : (m.typeDir === 'anime' ? 'anime' : 'movies');
+  if (gs[0]) links.push(`<a href="${url(genrePath(m, gs[0]))}">More ${esc(gs[0])} ${noun}</a>`);
+  if (m.year && yearPath) links.push(`<a href="${url(yearPath)}">${esc(String(m.year))} index</a>`);
+  topicsHere.forEach(t => links.push(`<a href="${url('/topic/' + t.slug + '/')}">${esc(t.title)}</a>`));
+  links.push(`<a href="${url('/articles/')}">BRYME guides</a>`);
+  return `<section class="tp-next"><h2>Keep exploring</h2><p>Finished reading? Stay on BRYME — these are related pages, not download buttons.</p><div class="tp-next-links">${links.join('')}</div></section>`;
+}
+function articlesAboutTitle(m){
+  const title = String(m.title || '').toLowerCase();
+  const short = title.replace(/:.*/, '').trim();
+  return (articleToMovies.get(m.slug) || []).filter(a => {
+    const slugs = a.relatedMovieSlugs || [];
+    if (slugs[0] === m.slug) return true;
+    const hay = (a.title + ' ' + (a.description || '')).toLowerCase();
+    return (title && hay.indexOf(title) > -1) || (short.length > 3 && hay.indexOf(short) > -1);
+  }).slice(0, 3);
+}
 function relatedFor(m) {
   const typeDir = m.typeDir || 'movie';
   const manual = new Set(REL[m.slug] || []);
-  const mGenres = typeDir === 'movie' ? [m.genre].filter(Boolean) : (m.genres || []);
-  return movies
+  const mGenres = listedGenres(m);
+  const mCountries = countryTokens(m.country);
+  const mDirectors = nameList(m.director).map(d => d.toLowerCase());
+  const scored = movies
     .filter(x => x.id !== m.id && (x.typeDir || 'movie') === typeDir)
     .map(x => {
       let score = 0;
-      if (manual.has(x.slug)) score += 100; // manual editorial relationship
-      const xGenres = typeDir === 'movie' ? [x.genre].filter(Boolean) : (x.genres || []);
-      for (const g of mGenres) if (xGenres.includes(g)) score += genreWeight(g); // strong genre/theme match beats popularity
-      if (x.country && m.country && x.country === m.country) score += 2;
+      if (manual.has(x.slug)) score += 100;
+      const xGenres = listedGenres(x);
+      for (const g of mGenres) if (xGenres.includes(g)) score += genreWeight(g);
+      const xCountries = countryTokens(x.country);
+      if (xCountries.some(c => mCountries.includes(c))) score += 4;
+      const xDirectors = nameList(x.director).map(d => d.toLowerCase());
+      if (xDirectors.some(d => mDirectors.includes(d))) score += 12;
       if (x.language && m.language && x.language === m.language) score += 1;
       if (x.year && m.year && Math.abs(x.year - m.year) <= 3) score += 1;
-      if (x.rating && x.rating.value != null) score += x.rating.value / 10; // popularity tiebreak only
+      if (x.rating && x.rating.value != null) score += x.rating.value / 10;
       return { x, score };
     })
-    .sort((a, b) => (b.score - a.score) || ((b.x.rating?.value || 0) - (a.x.rating?.value || 0)) || ((b.x.year || 0) - (a.x.year || 0)) || a.x.title.localeCompare(b.x.title))
-    .slice(0, 8)
-    .map(r => r.x);
+    .filter(r => r.score >= 2)
+    .sort((a, b) => (b.score - a.score) || ((b.x.rating?.value || 0) - (a.x.rating?.value || 0)) || ((b.x.year || 0) - (a.x.year || 0)) || a.x.title.localeCompare(b.x.title));
+  const seen = new Set();
+  const out = [];
+  for (const r of scored) {
+    const key = r.x.title.toLowerCase();
+    if (seen.has(key)) continue;
+    seen.add(key);
+    out.push(r.x);
+    if (out.length === 6) break;
+  }
+  return out;
 }
 /* Seasons (series/anime only, optional) — architecture for future season data.
    Source: content/seasons.json (or a future catalogue field). Nothing is
@@ -3058,10 +3217,9 @@ function factBlurb(m){
   const isMovie = m.typeDir === 'movie';
   const noun = isMovie ? 'film' : (m.typeDir === 'anime' ? 'anime' : 'series');
   const sentences = [];
-  // Sentence 1: core identity (type + genre + year + director)
-  const genres = (m.genres || []).map(g => g.toLowerCase()).filter(Boolean);
+  const genres = listedGenres(m).map(g => g.toLowerCase()).filter(Boolean);
   const genreTxt = genres.length > 1 ? genres.slice(0, -1).join(', ') + ' and ' + genres[genres.length - 1] : (genres[0] || '');
-  const dirs = (m.director || '').split(';').map(d => d.trim()).filter(Boolean);
+  const dirs = nameList(m.director);
   const dirTxt = dirs.length > 1 ? dirs.slice(0, -1).join(', ') + ' and ' + dirs[dirs.length - 1] : (dirs[0] || '');
   const ident = [];
   if (genreTxt) ident.push(genreTxt + ' ' + noun);
@@ -3075,15 +3233,13 @@ function factBlurb(m){
     s = s.replace(', and released in', ' and released in').replace(', released in', ' and released in').replace(', directed by', ' directed by');
     sentences.push(s + '.');
   }
-  // Sentence 2: origin / language
   const origin = [];
-  if (m.country) origin.push('from ' + m.country);
+  const originCountry = primaryCountry(m);
+  if (originCountry) origin.push('from ' + originCountry);
   if (m.language && String(m.language).toLowerCase() !== 'english') origin.push('spoken in ' + m.language);
   if (origin.length) sentences.push('It comes ' + origin.join(', ') + '.');
-  // Sentence 3: cast
   const castTxt = (m.cast && m.cast.length) ? m.cast.slice(0, 4).join(', ') : null;
   if (castTxt) sentences.push('The cast includes ' + castTxt + '.');
-  // Sentence 4: runtime
   if (m.runtime) { const mins = parseInt(String(m.runtime).replace(/[^0-9]/g, ''), 10); if (mins > 0) sentences.push('The ' + noun + ' runs about ' + mins + ' minutes.'); }
   if (sentences.length) return sentences.join(' ');
   if (castTxt) return 'The cast of ' + m.title + ' includes ' + castTxt + '.';
@@ -3096,15 +3252,15 @@ for (const m of movies) {
   const schemaType = typeDir === 'series' ? 'TVSeries' : (typeDir === 'anime' ? (animeFilms.has(m.slug) ? 'Movie' : 'TVSeries') : 'Movie');
   const typeWord = typeDir === 'series' ? 'Series Overview' : (typeDir === 'anime' ? 'Anime Overview' : 'Movie Overview');
   const seoTitle = m.year ? `${m.title} (${m.year})` : m.title;
-  const genreText = m.genres.length ? m.genres[0] : (m.genre || '');
-  const seoDesc = `${m.title}${m.year ? ' (' + m.year + ')' : ''} — ${m.typeLabel.toLowerCase()}${genreText ? ' ' + genreText.toLowerCase() : ''} on BRYME, with trailer and details.`;
+  const genreText = listedGenres(m)[0] || '';
+  const seoDesc = `${m.title}${m.year ? ' (' + m.year + ')' : ''} — ${m.typeLabel.toLowerCase()}${genreText ? ' ' + genreText.toLowerCase() : ''} on BRYME. Trailer, story and legal viewing options.`;
   const relatedArts = (articleToMovies.get(m.slug) || []).slice(0, 2);
-  const schema = { '@context':'https://schema.org', '@type':schemaType, name:m.title, description:m.description || m.teaser || undefined, dateCreated:m.year ? String(m.year) : undefined, genre:(m.genres[0] || m.genre) || undefined, sameAs:m.trailer || undefined, image: posterOrCard(m) || undefined };
-  if (m.country) schema.countryOfOrigin = m.country;
+  const schema = { '@context':'https://schema.org', '@type':schemaType, name:m.title, description:m.description || m.teaser || undefined, dateCreated:m.year ? String(m.year) : undefined, genre:genreText || undefined, sameAs:m.trailer || undefined, image: posterOrCard(m) || undefined };
+  if (primaryCountry(m)) schema.countryOfOrigin = primaryCountry(m);
   if (m.language) schema.inLanguage = m.language;
   /* Verified credits (Wikidata/Wikipedia overlay) — only emitted when real. */
   if (m.director) {
-    const directors = m.director.split(';').map(d => d.trim()).filter(Boolean);
+    const directors = nameList(m.director);
     if (directors.length) schema.director = directors.map(name => ({ '@type':'Person', name }));
   }
   if (m.cast && m.cast.length) schema.actor = m.cast.map(name => ({ '@type':'Person', name }));
@@ -3119,13 +3275,12 @@ for (const m of movies) {
   Object.keys(schema).forEach(k => schema[k] === undefined && delete schema[k]);
   const pagePath = `/${typeDir}/${m.slug}/`;
   schema.url = pagePath;
-  const yearPath = typeDir === 'movie' ? '/year/' + m.year + '/' : '/' + typeDir + '/' + m.year + '/';
+  const yearPath = m.year ? (typeDir === 'movie' ? '/year/' + m.year + '/' : '/' + typeDir + '/' + m.year + '/') : '';
   const yearLabel = m.year ? (typeDir === 'movie' ? m.year + ' movies' : (typeDir === 'series' ? m.year + ' series' : m.year + ' anime')) : null;
-  const crumbs = [{name:'Home', path:'/'}, {name: label === 'TV Series' ? 'TV Series' : (label === 'Anime' ? 'Anime' : 'Movies'), path: '/' + (typeDir === 'movie' ? 'movies' : typeDir) + '/'}];
-  if (m.year) crumbs.push({name: String(m.year), path: yearPath});
-  const genreBadges = [];
-  if (typeDir === 'movie' && m.genre) genreBadges.push(`<a class="badge" href="${url('/movies/' + slugify(m.genre) + '/')}">${esc(m.genre)}</a>`);
-  else (m.genres || []).forEach(g => { genreBadges.push(`<a class="badge" href="${url('/' + typeDir + '/' + slugify(g) + '/')}">${esc(g)}</a>`); crumbs.push({name:g, path:`/${typeDir}/${slugify(g)}/`}); });
+  const listLabel = label === 'TV Series' ? 'TV Series' : (label === 'Anime' ? 'Anime' : 'Movies');
+  const listPath = '/' + (typeDir === 'movie' ? 'movies' : typeDir) + '/';
+  const crumbs = [{name:'Home', path:'/'}, {name: listLabel, path: listPath}];
+  if (genreText) crumbs.push({name: genreText, path: genrePath(m, genreText)});
   const schemaList = [schema, breadcrumbs(crumbs)];
   // VideoObject structured data is emitted ONLY when the primary trailer is a
   // verified official video whose title we actually know from oEmbed. No
@@ -3137,7 +3292,7 @@ for (const m of movies) {
   }
   crumbs.push({name:m.title, path:pagePath});
   const related = relatedFor(m);
-  const relatedArticles = (articleToMovies.get(m.slug) || []).slice(-4).reverse(); // newest-connected first
+  const relatedArticles = articlesAboutTitle(m);
   write(`${typeDir}/${m.slug}`, layout({
     title: seoTitle,
     description: (m.description || '').length >= 80 ? (m.description || seoDesc).slice(0, 158) : seoDesc,
@@ -3145,46 +3300,66 @@ for (const m of movies) {
     activeNav: typeDir === 'movie' ? 'movies' : (typeDir === 'series' ? 'series' : 'anime'),
     schema: schemaList,
     image: posterOrCard(m),   /* designed card when there is no poster or trailer thumbnail */
-    body: `<main class="shell"><div class="crumb"><a href="${url('/')}">Home</a> / <a href="${url('/' + (typeDir === 'movie' ? 'movies' : typeDir) + '/')}">${esc(typeDir === 'movie' ? 'Movies' : label)}</a>${m.year ? ` / <a href="${url(yearPath)}">${m.year}</a>` : ''} / ${esc(m.title)}</div>
+    body: `<main class="shell tp-page"><div class="crumb"><a href="${url('/')}">Home</a> / <a href="${url(listPath)}">${esc(listLabel)}</a>${genreText ? ` / <a href="${url(genrePath(m, genreText))}">${esc(genreText)}</a>` : ''} / ${esc(m.title)}</div>
   <section class="movie-hero" style="--movie-backdrop:url('${esc(poster(m))}')">
     ${image(m)}
     <div>
-      <div class="hero-kicker"><span class="type-badge tb-${typeDir}">${typeDir === 'series' ? 'SERIES' : (typeDir === 'anime' ? 'ANIME' : 'MOVIE')}</span>${m.year ? `<span>${m.year}</span>` : ''}${m.genres.length ? `<span class="dot">·</span><span>${m.genres.map(esc).join(' · ')}</span>` : ''}</div>
+      <div class="hero-kicker tp-kicker-meta"><span class="type-badge tb-${typeDir}">${typeDir === 'series' ? 'SERIES' : (typeDir === 'anime' ? 'ANIME' : 'MOVIE')}</span>${m.year ? `<span>${m.year}</span>` : ''}${genreText ? `<span class="dot">·</span><span>${esc(genreText)}</span>` : ''}${runtimeLabel(m) ? `<span class="dot">·</span><span>${esc(runtimeLabel(m))}</span>` : ''}${primaryCountry(m) ? `<span class="dot">·</span><span>${esc(primaryCountry(m))}</span>` : ''}</div>
       <h1>${esc(m.title)}</h1>
       <div class="badges">${m.rating && m.rating.value != null ? `<span class="badge" title="BRYME editorial score — not IMDb, Rotten Tomatoes or audience ratings">★ ${esc(String(m.rating.value))}/10 · BRYME Editorial</span>` : ''}${m.trending ? `<span class="badge" title="Editorially curated — not live traffic data">🔥 Trending #${m.trendingRank}</span>` : ''}${m.popular ? `<span class="badge" title="Editorial popular pick">⭐ Popular</span>` : ''}${m.editorPick ? `<span class="badge" title="BRYME editor's recommendation">👑 Editor's Pick</span>` : ''}</div>
-      <p class="lead">${esc(m.description || m.teaser || 'Information is being added for this title.')}</p>
-      <div class="hero-actions"><a class="cta" href="#trailer">WATCH TRAILER</a>${relatedArticles.length ? `<a class="cta cta-ghost" href="${url('/article/' + relatedArticles[0].slug + '/')}">READ BRYME STORY</a>` : ''}<button class="quiet-link share-action" type="button" data-share-path="${pagePath}" data-share-title="${esc(m.title)}">Share</button></div>
+      ${(() => {
+        const hook = (m.teaser && m.description && m.teaser.trim() && m.teaser.trim() !== m.description.trim()) ? m.teaser.trim() : (m.description || m.teaser || '').trim();
+        return hook ? `<p class="lead">${esc(hook)}</p>` : '';
+      })()}
+      <div class="hero-actions">${m.youtubeId ? `<a class="cta" href="#trailer">Watch trailer</a>` : ''}<a class="cta cta-ghost" href="#watch">Where to watch</a>${related.length ? `<a class="quiet-link" href="#similar">Similar titles</a>` : ''}${relatedArticles.length ? `<a class="cta cta-ghost" href="${url('/article/' + relatedArticles[0].slug + '/')}">Read BRYME story</a>` : ''}<button class="quiet-link share-action" type="button" data-share-path="${pagePath}" data-share-title="${esc(m.title)}">Share</button></div>
     </div>
   </section>
   <section class="shell trailer-section" id="trailer">${trailerSection(m)}</section>
   <section class="body">
     <article class="prose">
       ${(() => {
-        /* About section. A longer in-house synopsis (longDescription) takes precedence and
-           is shown in full. Otherwise, rather than showing nothing on a thin one-line page,
-           we render a short fact-derived "At a glance" paragraph built ONLY from verified
-           metadata (director, cast, year, genre, country, language, runtime) — it never
-           invents plot or opinion. If there is nothing factual to say, we fall back to a
-           neutral line rather than leaving a bare stub. */
-        const long = m.longDescription || m.synopsis || m.about || '';
-        const lead = (m.description || '').trim();
-        if (long && long.trim() !== lead) {
-          return `<h2>About ${esc(m.title)}</h2>` + long.trim().split(/\n{2,}/).map(t => `<p>${esc(t.trim())}</p>`).join('');
-        }
-        const fb = factBlurb(m);
-        if (fb) return `<h2>About ${esc(m.title)}</h2><p>${esc(fb)}</p>`;
-        if (!lead) return `<h2>About ${esc(m.title)}</h2><p>A full synopsis is not currently available for this title.</p>`;
+        const hook = (m.teaser && m.description && m.teaser.trim() && m.teaser.trim() !== m.description.trim()) ? m.teaser.trim() : '';
+        const full = (m.description || '').trim();
+        if (hook && full && full !== hook) return `<h2>Quick summary</h2><p>${esc(full)}</p>`;
         return '';
       })()}
+      ${(() => {
+        const long = m.longDescription || m.synopsis || m.about || '';
+        const fb = factBlurb(m);
+        const parts = [];
+        if (fb) parts.push(`<p>${esc(fb)}</p>`);
+        if (long && long.trim() && long.trim() !== (m.description || '').trim()) {
+          long.trim().split(/\n{2,}/).forEach(t => parts.push(`<p>${esc(t.trim())}</p>`));
+        }
+        if (!parts.length) return '';
+        return `<h2>What ${esc(m.title)} is about</h2>` + parts.join('');
+      })()}
+      ${whyYouMightLikeBlock(m, related)}
       ${m.facts.length ? `<h2>Notes</h2><ul>${m.facts.map(f => `<li>${esc(f)}</li>`).join('')}</ul>` : ''}
       ${(typeDir !== 'movie' && m.seasons.length) ? `<h2>Seasons</h2><div class="list">${m.seasons.map(x => `<div class="row"><div><b>${esc(x.title || ('Season ' + x.seasonNumber))}</b><span class="meta" style="font-size:12px;color:var(--muted)">${x.year ? x.year + ' · ' : ''}${x.episodeCount ? x.episodeCount + ' episodes' : 'episode count unavailable'}</span></div></div>`).join('')}</div>` : ''}
-      <h2>You may also like</h2>
-      ${related.length ? `<div class="grid">${related.map(card).join('')}</div>` : '<p>Related titles are not available yet.</p>'}
-      ${relatedArticles.length ? `<h2>Latest stories about ${esc(m.title)}</h2><div class="story-grid story-grid-title">${relatedArticles.map(a => `<a href="${url('/article/' + a.slug + '/')}"><span>${esc(a.category)}</span><h3>${esc(a.title)}</h3><p>${esc(a.description.slice(0, 140))}</p><b>READ ARTICLE →</b></a>`).join('')}</div>` : ''}
+      ${whereToWatchBlock(m)}
+      ${relatedArticles.length ? `<section class="tp-editorial"><h2>BRYME editorial</h2><p>Only real BRYME pieces are listed here. This is not a generated review and not a claim that BRYME watched the title on your behalf.</p><div class="story-grid story-grid-title">${relatedArticles.map(a => `<a href="${url('/article/' + a.slug + '/')}"><span>${esc(a.category)}</span><h3>${esc(a.title)}</h3><p>${esc((a.description || '').slice(0, 140))}</p><b>Read article</b></a>`).join('')}</div></section>` : ''}
+      <h2 id="similar">You may also like</h2>
+      ${related.length ? `<div class="grid tp-related">${related.map(card).join('')}</div>` : '<p>Related titles are not available yet.</p>'}
+      ${keepExploringBlock(m, relatedArticles, yearPath)}
     </article>
     <aside class="aside">
       <h2>Details</h2>
-      <dl><dt>Type</dt><dd>${esc(label)}</dd><dt>Year</dt><dd>${m.year || 'Information unavailable'}</dd><dt>Genre</dt><dd>${m.genres.length ? m.genres.map(g => `<a href="${url('/' + typeDir + '/' + slugify(g) + '/')}">${esc(g)}</a>`).join(', ') : (esc(m.genre || 'Information unavailable'))}</dd>${m.country ? `<dt>Country</dt><dd>${esc(m.country)}</dd>` : ''}${m.language ? `<dt>Language</dt><dd>${esc(m.language)}</dd>` : ''}${m.runtime ? `<dt>Runtime</dt><dd>${esc(m.runtime)}</dd>` : ''}${m.director ? `<dt>Director</dt><dd>${esc(m.director)}</dd>` : ''}${m.cast && m.cast.length ? `<dt>Cast</dt><dd>${m.cast.map(esc).join('; ')}</dd>` : ''}<dt>Year index</dt><dd><a href="${url(yearPath)}">${esc(yearLabel)}</a></dd>${m.trending ? `<dt>Trending</dt><dd>🔥 #${m.trendingRank} (editorially curated)${m.trendingUntil ? ` · until ${m.trendingUntil}` : ''}</dd>` : ''}${m.popular ? `<dt>Popular</dt><dd>⭐ #${m.popularRank} (editorial popular pick)</dd>` : ''}${m.editorPick ? `<dt>Editor's Pick</dt><dd>👑 #${m.editorPickRank}${m.editorPickNote ? ` — ${esc(m.editorPickNote)}` : ''}</dd>` : ''}</dl>
+      <dl>
+        <div><dt>Title</dt><dd>${esc(m.title)}</dd></div>
+        <div><dt>Type</dt><dd>${esc(label)}</dd></div>
+        ${m.year ? `<div><dt>Year</dt><dd>${m.year}</dd></div>` : ''}
+        ${genreText ? `<div><dt>Genre</dt><dd>${listedGenres(m).map(g => `<a href="${url(genrePath(m, g))}">${esc(g)}</a>`).join(', ')}</dd></div>` : ''}
+        ${detailsCountry(m) ? `<div><dt>Country</dt><dd>${esc(detailsCountry(m))}</dd></div>` : ''}
+        ${m.language ? `<div><dt>Language</dt><dd>${esc(m.language)}</dd></div>` : ''}
+        ${m.runtime ? `<div><dt>Runtime</dt><dd>${esc(m.runtime)}</dd></div>` : ''}
+        ${m.director ? `<div><dt>Director</dt><dd>${esc(m.director)}</dd></div>` : ''}
+        ${m.cast && m.cast.length ? `<div><dt>Cast</dt><dd>${m.cast.map(esc).join('; ')}</dd></div>` : ''}
+        ${yearPath ? `<div><dt>Year index</dt><dd><a href="${url(yearPath)}">${esc(yearLabel)}</a></dd></div>` : ''}
+        ${m.trending ? `<div><dt>Trending</dt><dd>🔥 #${m.trendingRank} (editorially curated)${m.trendingUntil ? ` · until ${m.trendingUntil}` : ''}</dd></div>` : ''}
+        ${m.popular ? `<div><dt>Popular</dt><dd>⭐ #${m.popularRank} (editorial popular pick)</dd></div>` : ''}
+        ${m.editorPick ? `<div><dt>Editor's Pick</dt><dd>👑 #${m.editorPickRank}${m.editorPickNote ? ` — ${esc(m.editorPickNote)}` : ''}</dd></div>` : ''}
+      </dl>
       ${m.metaSource ? `<p class="meta-source">Director, runtime, country and language from <a href="${esc(m.metaSource.url)}" rel="nofollow noopener">Wikidata</a>${m.castSource && m.castSource.url ? `; billed cast from <a href="${esc(m.castSource.url)}" rel="nofollow noopener">Wikipedia</a>` : ''}${m.metaSource.retrieved ? ` · retrieved ${esc(m.metaSource.retrieved)}` : ''}. BRYME's synopsis and editorial score are written in-house.</p>` : ''}
     </aside>
   </section></main>`
@@ -3315,7 +3490,7 @@ const legalPages = [
       { h: 'Cookies and local storage', p: ['BRYME uses local storage for preferences you choose on the site (for example theme and the Make Money country filter). A short-lived local record is also used so the interruptive ad is not shown on every page. We do not build a personal profile from that data. Advertising partners may set their own cookies or similar identifiers — see Advertising below.'] },
       { h: 'Analytics', p: ['BRYME does not currently use Google Analytics or any other analytics service. If analytics is introduced in the future, this policy will be updated to describe it.'] },
       { h: 'External services and YouTube', p: ['Trailers are embedded from YouTube using the privacy-enhanced youtube-nocookie.com domain. When you play a trailer, YouTube\'s own privacy policy and cookie practices apply. BRYME has no control over YouTube\'s data handling.', 'Links to third-party websites (such as streaming platforms) leave BRYME; those websites have their own privacy policies.'] },
-      { h: 'Advertising', p: ['BRYME shows advertising through Monetag to keep the site free to read. Ads load once after the page is usable — not on every search, filter or card. A first-party service worker at /sw.js (3nbf4.com, zone 11610560) may request notification permission. Page tags also load from nap5k.com (zone 11610749) and n6wxm.com (zone 11610753). Those ads may include a vignette overlay or in-page units. Monetag — not BRYME — chooses the ads and may collect technical data such as IP address, browser type and approximate location to deliver and measure them. Their practices are described in the Monetag privacy policy. You can refuse notification permission in your browser. Blocking third-party scripts will also limit ads. Ads are not shown on the nationality-selection step.'] },
+      { h: 'Advertising', p: ['BRYME shows advertising through Monetag to keep the site free to read. The lighter in-page tag can load after the page is readable. The interruptive vignette is limited to about once per visit, after you have had time on the page — not on every search, filter, card or page click. A first-party service worker at /sw.js (3nbf4.com, zone 11610560) may request notification permission. Page tags also load from nap5k.com (zone 11610749) and n6wxm.com (zone 11610753). Monetag — not BRYME — chooses the ads and may collect technical data such as IP address, browser type and approximate location to deliver and measure them. Their practices are described in the Monetag privacy policy. You can refuse notification permission in your browser. Blocking third-party scripts will also limit ads. Ads are not shown on the nationality-selection step, and legal and contact pages stay free of those page tags.'] },
       { h: 'How information may be used', p: ['Information you send us is used to respond to your enquiry, improve the website and address reported issues. BRYME does not sell personal information.'] },
       { h: 'Data retention', p: ['Correspondence is kept only as long as needed to handle the enquiry. BRYME does not maintain user accounts or store visitor profiles.'] },
       { h: 'Your rights', p: ['You may contact BRYME at any time to ask what information we hold about you, to request correction or deletion, or to ask questions about this policy.'] },
@@ -3653,4 +3828,3 @@ if (REJECTED_RESULTS.length) {
   process.exitCode = 1;
 }
 console.log(`Built ${movies.length} normalized catalogue records (${typeCounts.movie} movies / ${typeCounts.series} series / ${typeCounts.anime} anime), ${articles.length} articles and ${[...new Set(paths)].length} indexable URLs.`);
- Set(paths)].length} indexable URLs.`);
