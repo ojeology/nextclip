@@ -1193,6 +1193,644 @@
       "editorExperience": {
         "status": "not-yet-submitted"
       }
+    },
+    {
+      "id": "listverse",
+      "slug": "listverse",
+      "status": "published",
+      "vertical": "writing",
+      "publication": "Listverse",
+      "title": "Top-10 fact lists",
+      "seoTitle": "Listverse submissions: $100 for a 10-item list (7 countries only)",
+      "excerpt": "Listverse pays $100 USD (minus PayPal fees) for accepted 10-item lists of 1,500–2,000 words. Official submit page: only US, UK, NZ, Ireland, Canada, Australia and South Africa, unless you are already a published Listverse writer. Nigeria is not on that list.",
+      "officialUrl": "https://listverse.com/submit-a-list/",
+      "applyUrl": "https://listverse.com/submit-a-list/",
+      "applyEmail": "submit@listverse.com",
+      "applyMethod": "Official submit-a-list form",
+      "sources": [
+        {
+          "name": "Listverse — Submit A List (official)",
+          "url": "https://listverse.com/submit-a-list/"
+        },
+        {
+          "name": "Listverse Author’s Guide v3.0 (official PDF, still linked from the submit page)",
+          "url": "https://listverse.com/authors/listverse-author-guide.pdf"
+        }
+      ],
+      "lastVerified": "2026-08-19",
+      "publishedAt": "2026-08-19",
+      "eligibility": {
+        "summary": "Official submit page: only considering submissions from the US, UK, NZ, Ireland, Canada, Australia and South Africa, unless you are an existing published Listverse writer. They do not accept lists from outside those countries. Nigeria does not qualify.",
+        "mode": "restricted",
+        "includesCountries": [
+          "US",
+          "GB",
+          "NZ",
+          "IE",
+          "CA",
+          "AU",
+          "ZA"
+        ],
+        "allowsDiaspora": false,
+        "notStated": false
+      },
+      "writingTypes": [
+        "articles",
+        "other"
+      ],
+      "writingTypeLabel": "10-item fact list",
+      "pay": {
+        "currency": "USD",
+        "amountMin": 100,
+        "amountMax": 100,
+        "display": "$100 (minus PayPal fees)",
+        "conditions": "Official Author’s Guide, Appendix II: if they accept the list they send $100 USD minus PayPal fees within thirty days. You are not paid for submitting. Rejected lists stay yours. Accepted lists become Listverse property.",
+        "timing": "Within 30 days of acceptance, via PayPal."
+      },
+      "wordCount": {
+        "min": 1500,
+        "max": 2000,
+        "display": "1,500–2,000 words including the introduction; exactly 10 items"
+      },
+      "response": {
+        "label": "Aim to accept or reject within 30 days",
+        "band": "1-3-months",
+        "official": true
+      },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "not-stated",
+      "experience": "not-stated",
+      "whatTheyWant": [
+        "A finished 10-item list with an introductory paragraph, 1,500–2,000 words, native-level English.",
+        "Quality online sources for each item. No Wikipedia or other editable pages. Format sources as in section 7 of the Author’s Guide.",
+        "Popular official themes: mysteries, secrets, facts/misconceptions, history with a twist, the darker side of people. Uniqueness is required — do not rework a list already on Listverse or elsewhere.",
+        "American spelling. Imperial measures with metric in parentheses except in scientific pieces."
+      ],
+      "whatTheyDontWant": [
+        "Writers outside US, UK, NZ, Ireland, Canada, Australia and South Africa (unless already published there).",
+        "Sports, technology, or self-help / advice (official guide: almost never published).",
+        "Personal or unverifiable material. Translations of existing foreign-language pages. Content farms / middle-men.",
+        "Images (their editors add images). Illegal content. Plagiarism.",
+        "Sending two or more lists in one day — they treat that as a sign you rushed."
+      ],
+      "requirements": [
+        "Live in one of the seven named countries, or already be a published Listverse writer",
+        "PayPal",
+        "Finished 10-item list",
+        "Sources for every item"
+      ],
+      "rights": "On purchase: ownership, copyright and all other rights including moral rights transfer to Listverse Limited. They may edit. If rejected, rights stay with you.",
+      "howToSubmit": [
+        "Read https://listverse.com/authors/listverse-author-guide.pdf first.",
+        "Submit through https://listverse.com/submit-a-list/ and agree to the terms.",
+        "If you have not heard in 30 days, check spam. Official comms come from submit@listverse.com.",
+        "They do not negotiate rejected lists."
+      ],
+      "keywords": [
+        "listverse",
+        "listicle",
+        "$100",
+        "paypal",
+        "south africa",
+        "not nigeria"
+      ],
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      }
+    },
+    {
+      "id": "noema",
+      "slug": "noema",
+      "status": "published",
+      "vertical": "writing",
+      "publication": "Noema Magazine",
+      "title": "Essays, reported features, interviews, fiction",
+      "seoTitle": "Noema Magazine pitches: official guidelines, pay not stated on the current page",
+      "excerpt": "Noema wants essays, reported features, interviews, video or short fiction. Official contact page: send a full draft, or a pitch of at least 500 words, to edit@noemamag.com. A dollar-per-word figure is not on the official contact page or the official pitch guidelines. Do not treat third-party $1/word claims as verified.",
+      "officialUrl": "https://www.noemamag.com/contact/",
+      "applyUrl": "mailto:edit@noemamag.com",
+      "applyEmail": "edit@noemamag.com",
+      "applyMethod": "Email a full draft or a 500+ word pitch",
+      "sources": [
+        {
+          "name": "Noema — Pitch Us (official)",
+          "url": "https://www.noemamag.com/contact/"
+        },
+        {
+          "name": "Noema Pitch and Writing Guidelines (official Google Doc, linked from Pitch Us)",
+          "url": "https://docs.google.com/document/d/1Hu8dZS6s6HhT3mYeVmTZS0KyMJama4xtURsZPRj81sY/edit"
+        },
+        {
+          "name": "Noema — About (official)",
+          "url": "https://www.noemamag.com/about-noema/"
+        }
+      ],
+      "lastVerified": "2026-08-19",
+      "publishedAt": "2026-08-19",
+      "eligibility": {
+        "summary": "The official Pitch Us page does not list countries. It invites essays, reported features, video, interviews or fiction short stories.",
+        "mode": "open",
+        "notStated": true
+      },
+      "writingTypes": [
+        "essays",
+        "journalism",
+        "interviews",
+        "fiction"
+      ],
+      "writingTypeLabel": "Essay, reported feature, interview, short fiction",
+      "pay": {
+        "currency": null,
+        "amountMin": null,
+        "amountMax": null,
+        "display": "Not publicly stated on the official pages checked",
+        "conditions": "Neither the official Pitch Us page nor the official pitch/writing guidelines state a per-word or per-piece fee. Third-party sites have quoted $1/word. That figure is not copied here. Official guidelines do state a 25% kill fee if they decide not to publish a piece written in a timely manner and in good faith.",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "min": 2500,
+        "max": 4000,
+        "display": "Official sweet spot 2,500–4,000 words; pitches must be at least 500 words"
+      },
+      "response": {
+        "label": "Not publicly stated",
+        "band": "not-stated",
+        "official": false
+      },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "disclosure-required",
+      "experience": "not-stated",
+      "whatTheyWant": [
+        "Longform journalism on ideas: AI, climate, democracy, capitalism, philosophy, geopolitics, technology, culture. Published by the Berggruen Institute.",
+        "A clear thesis, defended for the length of the piece. Subheadlines. Colourful opening, often a vignette with a specific person. Concrete examples. Solutions more than diagnosis.",
+        "Full draft preferred. Alternative: pitch of at least 500 words with a concise thesis, expected word count, and links to a few published pieces.",
+        "An AI statement in every pitch and draft: whether you used AI, and how, where and why."
+      ],
+      "whatTheyDontWant": [
+        "Do not treat a third-party $1/word claim as official.",
+        "Undisclosed AI. Preference is for original work without AI; unauthorized or undisclosed use usually ends the relationship and forfeits the kill fee.",
+        "Sentences similar to your previously published or soon-to-be-published work.",
+        "Long mobile-unfriendly paragraphs. Posing questions you do not immediately answer."
+      ],
+      "requirements": [
+        "Email edit@noemamag.com",
+        "Full draft or 500+ word pitch",
+        "AI statement",
+        "Links to previous work"
+      ],
+      "rights": "Not fully stated on the Pitch Us page. Official guidelines mention a contract and indemnification.",
+      "howToSubmit": [
+        "Read the official guidelines linked from https://www.noemamag.com/contact/.",
+        "Email edit@noemamag.com. Best chance: full draft.",
+        "Art pitches go to art@noemamag.com — that is a different inbox."
+      ],
+      "keywords": [
+        "noema",
+        "neoma",
+        "essay",
+        "philosophy",
+        "AI disclosure",
+        "berggruen"
+      ],
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      }
+    },
+    {
+      "id": "vox-first-person",
+      "slug": "vox-first-person",
+      "status": "published",
+      "vertical": "writing",
+      "publication": "Vox",
+      "title": "First Person (personal essays)",
+      "seoTitle": "Vox First Person: not listed on the current official pitch page",
+      "excerpt": "Older Vox essays pointed writers to firstperson@vox.com. The official How to pitch Vox page checked on 19 August 2026 does not list First Person among sections taking freelance pitches. Do not treat that old address as a live market. Current official freelance doors on that page are Future Perfect and Climate.",
+      "officialUrl": "https://www.vox.com/how-to-pitch-vox-pitching-guidelines",
+      "applyUrl": "https://www.vox.com/how-to-pitch-vox-pitching-guidelines",
+      "applyEmail": null,
+      "applyMethod": "Do not email First Person as if it is open — re-read the official pitch page",
+      "sources": [
+        {
+          "name": "How to pitch Vox (official, current)",
+          "url": "https://www.vox.com/how-to-pitch-vox-pitching-guidelines"
+        }
+      ],
+      "lastVerified": "2026-08-19",
+      "publishedAt": "2026-08-19",
+      "eligibility": {
+        "summary": "Not applicable until First Person is listed again on the official pitch page.",
+        "mode": "open",
+        "notStated": true
+      },
+      "writingTypes": [
+        "personal-essays",
+        "essays"
+      ],
+      "writingTypeLabel": "Personal essay (First Person)",
+      "pay": {
+        "currency": null,
+        "amountMin": null,
+        "amountMax": null,
+        "display": "Not publicly stated on the current official pitch page",
+        "conditions": "Third-party sites have quoted $400–$500 for First Person. That figure is not on the current official How to pitch Vox page. Official language for accepted freelance work in general: competitive rates based on the amount and type of work, discussed if they are interested.",
+        "timing": "Official page: typically within 30 days via Shortlist, if assigned."
+      },
+      "wordCount": {
+        "min": null,
+        "max": null,
+        "display": "Not stated for First Person on the current official pitch page"
+      },
+      "response": {
+        "label": "They cannot respond to every pitch",
+        "band": "not-stated",
+        "official": true
+      },
+      "submissionStatus": "unknown",
+      "deadline": null,
+      "aiPolicy": "prohibited",
+      "experience": "not-stated",
+      "whatTheyWant": [
+        "Historically, First Person was Vox’s home for personal narrative essays. That description is from older published essays, not from the current pitch page.",
+        "The current official page says many sections are not taking freelance pitches, and that the page is updated regularly."
+      ],
+      "whatTheyDontWant": [
+        "Do not email firstperson@vox.com as if the current official page still lists it.",
+        "Do not use an AI chatbot to write a Vox pitch (site-wide official rule).",
+        "Do not treat third-party $400–$500 quotes as official First Person rates."
+      ],
+      "requirements": [
+        "Re-check https://www.vox.com/how-to-pitch-vox-pitching-guidelines before pitching",
+        "If First Person is not listed, do not submit there"
+      ],
+      "rights": "Not stated for First Person on the current official page.",
+      "howToSubmit": [
+        "Do not treat First Person as open on 19 August 2026.",
+        "Use the official Future Perfect or Climate cards if those sections match your idea."
+      ],
+      "keywords": [
+        "vox",
+        "first person",
+        "personal essay",
+        "not currently listed"
+      ],
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      }
+    },
+    {
+      "id": "vox-future-perfect",
+      "slug": "vox-future-perfect",
+      "status": "published",
+      "vertical": "writing",
+      "publication": "Vox",
+      "title": "Future Perfect",
+      "seoTitle": "Vox Future Perfect freelance pitches (official)",
+      "excerpt": "Vox’s official How to pitch page currently accepts Future Perfect freelance pitches. Most stories run 1,500–2,500 words. Email futureperfectfreelance@vox.com. Rates are not published as a fixed number — official language is competitive, based on the work.",
+      "officialUrl": "https://www.vox.com/how-to-pitch-vox-pitching-guidelines",
+      "applyUrl": "mailto:futureperfectfreelance@vox.com",
+      "applyEmail": "futureperfectfreelance@vox.com",
+      "applyMethod": "Email pitch (no attachments)",
+      "sources": [
+        {
+          "name": "How to pitch Vox (official)",
+          "url": "https://www.vox.com/how-to-pitch-vox-pitching-guidelines"
+        }
+      ],
+      "lastVerified": "2026-08-19",
+      "publishedAt": "2026-08-19",
+      "eligibility": {
+        "summary": "The official pitch page does not list countries.",
+        "mode": "open",
+        "notStated": true
+      },
+      "writingTypes": [
+        "journalism",
+        "analysis",
+        "essays"
+      ],
+      "writingTypeLabel": "Explainer / reported essay",
+      "pay": {
+        "currency": null,
+        "amountMin": null,
+        "amountMax": null,
+        "display": "Not a published fixed fee",
+        "conditions": "Official page: all accepted stories are paid at competitive rates based on the amount and type of work. Rates, deadlines, scope and kill fees (if any) are discussed if they are interested. A pitch itself creates no right to payment.",
+        "timing": "Typically within 30 days via Shortlist, if assigned."
+      },
+      "wordCount": {
+        "min": 1500,
+        "max": 2500,
+        "display": "Most stories 1,500–2,500 words"
+      },
+      "response": {
+        "label": "They cannot respond to every pitch",
+        "band": "not-stated",
+        "official": true
+      },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "prohibited",
+      "experience": "not-stated",
+      "whatTheyWant": [
+        "The world’s biggest, most neglected moral and technological problems.",
+        "Official core areas: global poverty and public health; catastrophic and existential threats; animal welfare and factory farming; progress studies; AI and biotechnology; philanthropy and altruism; moral philosophy.",
+        "A couple of paragraphs: unique angle, why now, why you, pre-reporting and source access, proposed headline and word count, a line about yourself, links to similar published work. All in the email body."
+      ],
+      "whatTheyDontWant": [
+        "Attachments. AI-written pitches.",
+        "Q&As unless the subject is hard to get.",
+        "Traditional reviews. Shopping roundups. Manuscripts or academic papers.",
+        "Already-written pieces — they rarely accept them."
+      ],
+      "requirements": [
+        "Email futureperfectfreelance@vox.com",
+        "Pitch in the body, no attachment",
+        "Headline, word count, clips"
+      ],
+      "rights": "Not fully stated on the pitch page. Assigned work goes through a Shortlist agreement.",
+      "howToSubmit": [
+        "Read https://www.vox.com/how-to-pitch-vox-pitching-guidelines.",
+        "Email futureperfectfreelance@vox.com with the pitch in the body."
+      ],
+      "keywords": [
+        "vox",
+        "future perfect",
+        "freelance",
+        "explainer"
+      ],
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      }
+    },
+    {
+      "id": "vox-climate",
+      "slug": "vox-climate",
+      "status": "published",
+      "vertical": "writing",
+      "publication": "Vox",
+      "title": "Climate",
+      "seoTitle": "Vox Climate freelance pitches (official)",
+      "excerpt": "Vox’s official How to pitch page currently accepts Climate freelance pitches of 800–2,500 words. Email climate@vox.com. Rates are not a published fixed number.",
+      "officialUrl": "https://www.vox.com/how-to-pitch-vox-pitching-guidelines",
+      "applyUrl": "mailto:climate@vox.com",
+      "applyEmail": "climate@vox.com",
+      "applyMethod": "Email pitch (no attachments)",
+      "sources": [
+        {
+          "name": "How to pitch Vox (official)",
+          "url": "https://www.vox.com/how-to-pitch-vox-pitching-guidelines"
+        }
+      ],
+      "lastVerified": "2026-08-19",
+      "publishedAt": "2026-08-19",
+      "eligibility": {
+        "summary": "The official pitch page does not list countries.",
+        "mode": "open",
+        "notStated": true
+      },
+      "writingTypes": [
+        "journalism",
+        "analysis"
+      ],
+      "writingTypeLabel": "Climate explainer / reported story",
+      "pay": {
+        "currency": null,
+        "amountMin": null,
+        "amountMax": null,
+        "display": "Not a published fixed fee",
+        "conditions": "Official page: competitive rates based on the amount and type of work, discussed if they want the piece. The pitch itself is not paid.",
+        "timing": "Typically within 30 days via Shortlist, if assigned."
+      },
+      "wordCount": {
+        "min": 800,
+        "max": 2500,
+        "display": "Assignments 800–2,500 words"
+      },
+      "response": {
+        "label": "They cannot respond to every pitch",
+        "band": "not-stated",
+        "official": true
+      },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "prohibited",
+      "experience": "not-stated",
+      "whatTheyWant": [
+        "Climate stories that give readers clarity and agency.",
+        "Current official interests: biodiversity and traditional ecological knowledge; labour, daily life and housing; conservation; the green energy transition; politics; solutions, adaptation and resilience.",
+        "Same pitch format as other Vox sections: angle, why now, why you, sourcing, headline, word count, clips. Body of the email only."
+      ],
+      "whatTheyDontWant": [
+        "Attachments. AI-written pitches.",
+        "Reviews, shopping roundups, academic manuscripts."
+      ],
+      "requirements": [
+        "Email climate@vox.com",
+        "Pitch in the body, no attachment"
+      ],
+      "rights": "Assigned work goes through a Shortlist agreement.",
+      "howToSubmit": [
+        "Read https://www.vox.com/how-to-pitch-vox-pitching-guidelines.",
+        "Email climate@vox.com."
+      ],
+      "keywords": [
+        "vox",
+        "climate",
+        "freelance",
+        "explainer"
+      ],
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      }
+    },
+    {
+      "id": "aeon-essays",
+      "slug": "aeon-essays",
+      "status": "published",
+      "vertical": "writing",
+      "publication": "Aeon",
+      "title": "Essays",
+      "seoTitle": "Aeon Magazine essays: currently closed for pitches",
+      "excerpt": "Aeon’s official Write for Aeon page says the magazine is currently closed for pitches. When open they want 2,500–5,000 word essays. Pay is a freelance fee or an honorarium depending on whether writing is your principal income, and on country of residence — no public number.",
+      "officialUrl": "https://aeon.co/pitch",
+      "applyUrl": "https://aeon.co/pitch",
+      "applyEmail": null,
+      "applyMethod": "Official pitch form — currently closed",
+      "sources": [
+        {
+          "name": "Write for Aeon (official)",
+          "url": "https://aeon.co/pitch"
+        },
+        {
+          "name": "Aeon Author terms (official)",
+          "url": "https://aeon.co/author-terms"
+        }
+      ],
+      "lastVerified": "2026-08-19",
+      "publishedAt": "2026-08-19",
+      "eligibility": {
+        "summary": "When open: academics and people with significant professional or practical expertise. They specifically encourage younger and emerging scholars, especially outside the US and the UK.",
+        "mode": "open",
+        "notStated": true
+      },
+      "writingTypes": [
+        "essays"
+      ],
+      "writingTypeLabel": "Longform essay",
+      "pay": {
+        "currency": null,
+        "amountMin": null,
+        "amountMax": null,
+        "display": "Freelance fee or honorarium — amount not published",
+        "conditions": "Official: if writing is your principal income, a freelance fee; otherwise an honorarium. The relevant fee for your country of residence is told to you before you sign a contract. Kill fee of 50% of the agreed fee if they refuse to publish after you submitted the agreed words and took part in editing.",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "min": 2500,
+        "max": 5000,
+        "display": "Generally 2,500–5,000 words"
+      },
+      "response": {
+        "label": "They cannot respond to every enquiry",
+        "band": "not-stated",
+        "official": true
+      },
+      "submissionStatus": "closed",
+      "deadline": {
+        "display": "Official page: currently closed for pitches. No reopen date stated.",
+        "recurring": false
+      },
+      "aiPolicy": "limited",
+      "experience": "not-stated",
+      "whatTheyWant": [
+        "When open: a pitch, not a completed draft. Perennial (not news-tied), cosmopolitan, pluralist.",
+        "Expect 3–5 drafts, fact-check and copy-edit. About three months from a good first draft to publication."
+      ],
+      "whatTheyDontWant": [
+        "Do not pitch while the official page says closed.",
+        "Completed drafts. Rebuttals. News commentary. Book reviews.",
+        "Drafts wholly or largely written by AI. Do not upload editor emails or contracted drafts to an LLM."
+      ],
+      "requirements": [
+        "Wait until the official pitch page reopens",
+        "Pitch, not a full draft"
+      ],
+      "rights": "Author retains copyright. Aeon gets first publication, exclusive digital rights for five years and exclusive print for one year, then non-exclusive. Ideas pieces may be CC BY-ND.",
+      "howToSubmit": [
+        "Do not use the form while it says closed.",
+        "Watch https://aeon.co/pitch."
+      ],
+      "keywords": [
+        "aeon",
+        "essay",
+        "closed",
+        "philosophy"
+      ],
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      }
+    },
+    {
+      "id": "chicken-soup",
+      "slug": "chicken-soup",
+      "status": "published",
+      "vertical": "writing",
+      "publication": "Chicken Soup for the Soul",
+      "title": "True first-person stories and story-poems",
+      "seoTitle": "Chicken Soup for the Soul: $250 if published, AI banned",
+      "excerpt": "Chicken Soup for the Soul pays $250 plus 10 free copies if they publish your true first-person story in a book — not for submitting. Official: writers from anywhere, English. AI and AI-assisted work (including Grammarly) are banned. Current official book topics have deadlines in September–November 2026.",
+      "officialUrl": "https://www.chickensoup.com/story-submissions/story-guidelines",
+      "applyUrl": "https://www.chickensoup.com/story-submissions/submit-your-story",
+      "applyEmail": null,
+      "applyMethod": "Official website form only",
+      "sources": [
+        {
+          "name": "Chicken Soup — Story Guidelines (official)",
+          "url": "https://www.chickensoup.com/story-submissions/story-guidelines"
+        },
+        {
+          "name": "Chicken Soup — Submissions FAQ (official)",
+          "url": "https://www.chickensoup.com/story-submissions/faq"
+        },
+        {
+          "name": "Chicken Soup — Possible Book Topics (official)",
+          "url": "https://www.chickensoup.com/story-submissions/possible-book-topics"
+        }
+      ],
+      "lastVerified": "2026-08-19",
+      "publishedAt": "2026-08-19",
+      "eligibility": {
+        "summary": "Official FAQ: they publish English-language stories from people around the world. You do not have to live in the United States.",
+        "mode": "open",
+        "notStated": false
+      },
+      "writingTypes": [
+        "personal-essays",
+        "other"
+      ],
+      "writingTypeLabel": "True first-person story or story-poem",
+      "pay": {
+        "currency": "USD",
+        "amountMin": 250,
+        "amountMax": 250,
+        "display": "$250 if published",
+        "conditions": "Official: they do not pay for submissions. If they publish the story in a book you are paid $250 one month after the book is published, plus ten free copies. You also get half-price cases of that book. A story is not paid unless it is selected and you sign their permission release.",
+        "timing": "One month after publication of the book."
+      },
+      "wordCount": {
+        "min": null,
+        "max": 1200,
+        "display": "Recommended maximum 1,200 words; no official minimum. Longer pieces are rarely read."
+      },
+      "response": {
+        "label": "No rejection letters. If you have not heard 60 days before the book’s on-sale date, they probably passed.",
+        "band": "3-plus-months",
+        "official": true
+      },
+      "submissionStatus": "deadline",
+      "deadline": {
+        "date": "2026-09-15",
+        "display": "Current official topics (check the page — they change): Count your blessings 15 Sept 2026; Random acts of kindness 30 Sept 2026; Humorous stories 15 Oct 2026; Married/couples 30 Nov 2026",
+        "windowEnd": "2026-11-30",
+        "recurring": false
+      },
+      "aiPolicy": "prohibited",
+      "experience": "not-stated",
+      "whatTheyWant": [
+        "A true first-person story with a beginning, middle and end, starting in the action.",
+        "Heartwarming, funny or extraordinary ordinary-life moments. Not a sermon, essay, eulogy, term paper, politics piece, biography or newspaper-style article about a stranger.",
+        "Poems only if they tell a story.",
+        "Submit only to a listed official book topic."
+      ],
+      "whatTheyDontWant": [
+        "AI-generated or AI-assisted work. Official page names Grammarly and says do not use AI at all.",
+        "Fiction. Previously published work except a small local publication or your own blog.",
+        "Book manuscripts from the public. Title ideas from the public.",
+        "Stories that do not match a listed book topic."
+      ],
+      "requirements": [
+        "Website form only: https://www.chickensoup.com/story-submissions/submit-your-story",
+        "True story, first person, usually ≤1,200 words",
+        "Match a current official book topic"
+      ],
+      "rights": "If selected you sign their standard permission release. Broader rights language is not copied here because the rest of that agreement is not fully quoted on the public guidelines page.",
+      "howToSubmit": [
+        "Pick a topic on https://www.chickensoup.com/story-submissions/possible-book-topics — only use deadlines on that page.",
+        "Submit via the official form. Success screen is the only confirmation.",
+        "Simultaneous submissions are allowed if you say so in the comments or email webmaster@chickensoupforthesoul.com."
+      ],
+      "keywords": [
+        "chicken soup",
+        "personal story",
+        "$250",
+        "AI prohibited",
+        "worldwide"
+      ],
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      }
     }
   ]
 }
