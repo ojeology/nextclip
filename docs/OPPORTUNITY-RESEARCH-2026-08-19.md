@@ -246,3 +246,60 @@ OFFICIAL SOURCES: https://agbowo.org/submissions/
 | Nyamiri-Bàsakkwacḕ | Third-party only; no official page verified today. |
 
 Accuracy beats quantity.
+
+---
+
+## World expansion — 19 August 2026 (second research pass)
+
+Official pages only. Third-party $ figures were discarded unless the official page stated them. Closed listings stay in the database.
+
+### Added
+
+| Listing | Official door | Status 19 Aug 2026 | Official pay |
+| --- | --- | --- | --- |
+| New Lines Magazine | https://newlinesmag.com/pitch/ | OPEN | Not stated (do not copy third-party $800) |
+| Himal Southasian | https://www.himalmag.com/submission-guidelines/ | OPEN | Set rates, told on commission |
+| Climate Home News | https://www.climatechangenews.com/about/write-for-us/ | OPEN | From £0.35/word. Comment unpaid — not this card |
+| Clarkesworld fiction | https://clarkesworldmagazine.com/submissions/ | OPEN | 14¢/word USD, worldwide |
+| Clarkesworld non-fiction | same | OPEN | 10¢/word to 2,500 |
+| Uncanny fiction | https://www.uncannymagazine.com/submissions/ | UPCOMING 24 Aug–7 Sep | 10¢/word |
+| Uncanny poetry | same | DEADLINE 31 Aug | $40/poem |
+| Griffith Review Bodies of Work | https://www.griffithreview.com/for-writers/ | DEADLINE 23 Aug AEST | AUD$0.75/word print |
+| Overland fiction | https://overland.org.au/submit/fiction-submissions/ | OPEN | $580 print / $180 online. **AU/NZ only** |
+| Overland online NF | https://overland.org.au/submit/nonfiction-submissions/ | OPEN | $180 + 12% super |
+| Americas Quarterly | https://www.americasquarterly.org/contact/ | OPEN | Not stated |
+| NACLA | https://nacla.org/write-for-nacla/ | OPEN | $100–$200 if writing is primary income |
+| The Tyee | https://thetyee.ca/submissions/ | OPEN | $300/day (usually 1–3 days) |
+| Wasafiri interviews | https://www.wasafiri.org/submit/ | OPEN | Typically £150 |
+| The Offing Wit Tea | Submittable | DEADLINE 1 Oct | $25–$100 |
+| The Rumpus essays/fiction/poetry | https://therumpus.net/about/ | UPCOMING 15 Sep | $500 prose / $200 poetry |
+| The Rumpus El Alboroto | Submittable | OPEN | Same rates, Spanish, ≤2,500 words |
+| Words Without Borders reviews | https://wordswithoutborders.org/submissions/ | OPEN (reviews only) | $175. General submissions closed 10 Aug |
+| Brevity | https://brevitymag.com/submissions/ | UPCOMING September | $45 featured |
+| The Markaz Review | https://themarkaz.org/submissions/ | OPEN | Honorarium, amount not published |
+| Strange Horizons fiction | official fiction guidelines | UPCOMING fall 2026 | 10¢/word, min $60 |
+| Electric Literature personal essays | https://electricliterature.com/about/submit/ | CLOSED | $100 |
+| Undark | https://undark.org/submission-guidelines/ | OPEN | Not stated on official pages |
+| Condé Nast Traveler | official pitch page, updated 24 Mar 2026 | OPEN | From $300 for 500–600 words |
+
+### Researched and not added
+
+| Lead | Why it stayed out |
+| --- | --- |
+| PREE (Caribbean) | Official: currently unable to pay |
+| Lolwe | Official: not currently accepting. Pay not a public number |
+| The Continent | No official freelance pitch URL found |
+| Africa Is a Country | No official write-for-us / rate page found |
+| HumAngle | No official pitch + rate page confirmed this pass |
+| The Caravan | Official pitch door exists; pay not on that page — skipped this pass rather than add another unpaid-unknown India card without more text |
+| Adda / Commonwealth | No current paid open call confirmed |
+| Guernica Submittable | Honorarium language mixed ($100 spotlights / reviews); general fiction/essay rates not cleanly stated on the snippet we could verify |
+| Narratively | Current public door is a prize/call with a January 2026 deadline that has passed; general pitch rates are third-party |
+| Granta | Next window 1–30 Sep 2026; official pay is only “professional rates”; £3.50 fee. Skipped rather than add a paid-unknown UK card |
+| Khōréō | Need a current open/closed check + immigrant-only eligibility quote before adding |
+| Overland print nonfiction | Official nonfiction page still says $550; 1 July 2026 announcement says $580. Figures disagree — no separate print-NF card |
+| Climate Home comment | Official: generally unpaid |
+| The Offing Translation: Prose | Open to 1 Sep, same $25–$100 band as Wit Tea — not given a second card this pass |
+
+Accuracy beats quantity. Geographic spread of this pass: Southasia, SWANA, Latin America / Caribbean beat, Australia / Aotearoa, Canada (BC), UK, US literary and SF, worldwide climate and travel.
+
