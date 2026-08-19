@@ -2,16 +2,67 @@
   "updatedAt": "2026-08-19",
   "disclaimer": "Information can change. Payment rates, submission requirements, eligibility, deadlines and response times are subject to change. Always check the publication's official guidelines before submitting. BRYME verifies listings as carefully as possible but does not guarantee acceptance or payment.",
   "earningCategories": [
-    { "id": "writing", "name": "Writing", "emoji": "✍️", "status": "live", "blurb": "Verified publications that pay for writing. Filtered by your country." },
-    { "id": "graphic-design", "name": "Graphic Design", "emoji": "🎨", "status": "soon" },
-    { "id": "coding", "name": "Coding", "emoji": "💻", "status": "soon" },
-    { "id": "photography", "name": "Photography", "emoji": "📸", "status": "soon" },
-    { "id": "video", "name": "Video", "emoji": "🎥", "status": "soon" },
-    { "id": "voice", "name": "Voice Work", "emoji": "🎙️", "status": "soon" },
-    { "id": "transcription", "name": "Transcription", "emoji": "📝", "status": "soon" },
-    { "id": "illustration", "name": "Illustration / Art", "emoji": "🖼️", "status": "soon" },
-    { "id": "remote-work", "name": "Remote Work", "emoji": "🌐", "status": "soon" },
-    { "id": "other", "name": "Other legitimate opportunities", "emoji": "💼", "status": "soon" }
+    {
+      "id": "writing",
+      "name": "Writing",
+      "emoji": "✍️",
+      "status": "live",
+      "blurb": "Verified publications that pay for writing. Filtered by your country."
+    },
+    {
+      "id": "graphic-design",
+      "name": "Graphic Design",
+      "emoji": "🎨",
+      "status": "soon"
+    },
+    {
+      "id": "coding",
+      "name": "Coding",
+      "emoji": "💻",
+      "status": "soon"
+    },
+    {
+      "id": "photography",
+      "name": "Photography",
+      "emoji": "📸",
+      "status": "soon"
+    },
+    {
+      "id": "video",
+      "name": "Video",
+      "emoji": "🎥",
+      "status": "soon"
+    },
+    {
+      "id": "voice",
+      "name": "Voice Work",
+      "emoji": "🎙️",
+      "status": "soon"
+    },
+    {
+      "id": "transcription",
+      "name": "Transcription",
+      "emoji": "📝",
+      "status": "soon"
+    },
+    {
+      "id": "illustration",
+      "name": "Illustration / Art",
+      "emoji": "🖼️",
+      "status": "soon"
+    },
+    {
+      "id": "remote-work",
+      "name": "Remote Work",
+      "emoji": "🌐",
+      "status": "soon"
+    },
+    {
+      "id": "other",
+      "name": "Other legitimate opportunities",
+      "emoji": "💼",
+      "status": "soon"
+    }
   ],
   "opportunities": [
     {
@@ -28,19 +79,32 @@
       "applyEmail": "hello@afrolicious.com",
       "applyMethod": "Email pitch",
       "sources": [
-        { "name": "Pitching Afrolicious (official)", "url": "https://afrolicious.com/issue/02/pitching-afrolicious/" }
+        {
+          "name": "Pitching Afrolicious (official)",
+          "url": "https://afrolicious.com/issue/02/pitching-afrolicious/"
+        }
       ],
       "lastVerified": "2026-08-19",
       "publishedAt": "2026-08-19",
       "eligibility": {
         "summary": "Black Africans and Black African diasporas. Nigeria qualifies. This is not a worldwide open call.",
         "mode": "restricted",
-        "includesGroups": ["black-african", "black-african-diaspora"],
-        "includesRegions": ["africa"],
+        "includesGroups": [
+          "black-african",
+          "black-african-diaspora"
+        ],
+        "includesRegions": [
+          "africa"
+        ],
         "allowsDiaspora": true,
         "notStated": false
       },
-      "writingTypes": ["articles", "essays", "opinion", "other"],
+      "writingTypes": [
+        "articles",
+        "essays",
+        "opinion",
+        "other"
+      ],
       "writingTypeLabel": "Stories, essays, thinkpieces, rants",
       "pay": {
         "currency": "USD",
@@ -50,8 +114,16 @@
         "conditions": "Official pitching page: $75 for stories, essays, thinkpieces and rants between 600 and 800 words. Page design/development is a separate $75 rate. Other formats are paid at a fair and agreed-upon rate — that rate is not stated as a fixed number.",
         "timing": "Not publicly stated"
       },
-      "wordCount": { "min": 600, "max": 800, "display": "600–800 words" },
-      "response": { "label": "Within two weeks", "band": "under-2-weeks", "official": true },
+      "wordCount": {
+        "min": 600,
+        "max": 800,
+        "display": "600–800 words"
+      },
+      "response": {
+        "label": "Within two weeks",
+        "band": "under-2-weeks",
+        "official": true
+      },
       "submissionStatus": "open",
       "deadline": null,
       "aiPolicy": "not-stated",
@@ -79,8 +151,18 @@
         "Email hello@afrolicious.com with the pitch details listed above.",
         "The official page says they will get back to you within two weeks."
       ],
-      "keywords": ["afrolicious", "black african", "diaspora", "thinkpiece", "essay", "rant", "paid pitch"],
-      "editorExperience": { "status": "not-yet-submitted" }
+      "keywords": [
+        "afrolicious",
+        "black african",
+        "diaspora",
+        "thinkpiece",
+        "essay",
+        "rant",
+        "paid pitch"
+      ],
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      }
     },
     {
       "id": "the-republic-personal-essay",
@@ -96,7 +178,10 @@
       "applyEmail": null,
       "applyMethod": "Official submissions form (sign in or create an account)",
       "sources": [
-        { "name": "The Republic — Submissions (official)", "url": "https://rpublc.com/submissions" }
+        {
+          "name": "The Republic — Submissions (official)",
+          "url": "https://rpublc.com/submissions"
+        }
       ],
       "lastVerified": "2026-08-19",
       "publishedAt": "2026-08-19",
@@ -105,7 +190,10 @@
         "mode": "open",
         "notStated": true
       },
-      "writingTypes": ["personal-essays", "essays"],
+      "writingTypes": [
+        "personal-essays",
+        "essays"
+      ],
       "writingTypeLabel": "Personal Essay",
       "pay": {
         "currency": "NGN",
@@ -115,8 +203,16 @@
         "conditions": "This figure is the official Personal Essay fee only. The Republic states that rates vary by format, length and editorial demands. Other listed categories (Analysis & Opinion, Expert Commentary, Fiction, Deep Dive, Interview, Photo Essay, Profile, Review – Regular, Review – Extended, Reportage, The Black Atlantic) have their own rates on the official page. Those other rates are not copied here because they are not shown as a single static table on the current page. Check the official submissions page before pitching another category.",
         "timing": "Payment is processed within 30 days of publication. After publication you receive an invoice request by email and are paid through your preferred method."
       },
-      "wordCount": { "min": 2001, "max": 3000, "display": "2,001–3,000 words" },
-      "response": { "label": "Not publicly stated", "band": "not-stated", "official": false },
+      "wordCount": {
+        "min": 2001,
+        "max": 3000,
+        "display": "2,001–3,000 words"
+      },
+      "response": {
+        "label": "Not publicly stated",
+        "band": "not-stated",
+        "official": false
+      },
       "submissionStatus": "open",
       "deadline": null,
       "aiPolicy": "not-stated",
@@ -140,8 +236,17 @@
         "Log in or create an account.",
         "Open Submissions and complete the form. Editors contact you if the piece is a fit."
       ],
-      "keywords": ["the republic", "rpublc", "personal essay", "nigeria", "naira", "paid essay"],
-      "editorExperience": { "status": "not-yet-submitted" }
+      "keywords": [
+        "the republic",
+        "rpublc",
+        "personal essay",
+        "nigeria",
+        "naira",
+        "paid essay"
+      ],
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      }
     },
     {
       "id": "efiko",
@@ -157,19 +262,31 @@
       "applyEmail": "submissions@efikomag.com",
       "applyMethod": "Email a Word document",
       "sources": [
-        { "name": "Efiko — Submission Guidelines (official)", "url": "https://efikomag.com/submission-guidelines/" }
+        {
+          "name": "Efiko — Submission Guidelines (official)",
+          "url": "https://efikomag.com/submission-guidelines/"
+        }
       ],
       "lastVerified": "2026-08-19",
       "publishedAt": "2026-08-19",
       "eligibility": {
         "summary": "Writers of African origin based anywhere in the world, or anyone writing about Africa.",
         "mode": "restricted",
-        "includesGroups": ["african-origin", "writing-about-africa"],
-        "includesRegions": ["africa"],
+        "includesGroups": [
+          "african-origin",
+          "writing-about-africa"
+        ],
+        "includesRegions": [
+          "africa"
+        ],
         "allowsDiaspora": true,
         "notStated": false
       },
-      "writingTypes": ["poetry", "fiction", "essays"],
+      "writingTypes": [
+        "poetry",
+        "fiction",
+        "essays"
+      ],
       "writingTypeLabel": "Poetry, short story, essay",
       "pay": {
         "currency": "NGN",
@@ -185,7 +302,11 @@
         "display": "Prose 1,200–5,000 words; poetry 2–5 poems / 10 pages",
         "notes": "Poetry is specified as 2 to 5 poems totalling 10 pages, not a word count. The numeric min/max stored here is the official short-story and essay range."
       },
-      "response": { "label": "Aims to respond within 3 months", "band": "1-3-months", "official": true },
+      "response": {
+        "label": "Aims to respond within 3 months",
+        "band": "1-3-months",
+        "official": true
+      },
       "submissionStatus": "deadline",
       "deadline": {
         "date": "2026-08-30",
@@ -224,8 +345,17 @@
         "Simultaneous submissions are allowed; notify Efiko promptly if accepted elsewhere.",
         "If you have no response after 3 months, the official page says to inquire at editors@efikomag.com."
       ],
-      "keywords": ["efiko", "poetry", "short story", "essay", "african literary magazine", "naira"],
-      "editorExperience": { "status": "not-yet-submitted" }
+      "keywords": [
+        "efiko",
+        "poetry",
+        "short story",
+        "essay",
+        "african literary magazine",
+        "naira"
+      ],
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      }
     },
     {
       "id": "oriire",
@@ -241,7 +371,10 @@
       "applyEmail": null,
       "applyMethod": "Official submission portal (create an account)",
       "sources": [
-        { "name": "Oriire — Submit Your Work (official)", "url": "https://oriire.com/submissions" }
+        {
+          "name": "Oriire — Submit Your Work (official)",
+          "url": "https://oriire.com/submissions"
+        }
       ],
       "lastVerified": "2026-08-19",
       "publishedAt": "2026-08-19",
@@ -250,7 +383,13 @@
         "mode": "open",
         "notStated": true
       },
-      "writingTypes": ["articles", "essays", "interviews", "reviews", "other"],
+      "writingTypes": [
+        "articles",
+        "essays",
+        "interviews",
+        "reviews",
+        "other"
+      ],
       "writingTypeLabel": "Long-form, folktales, essays, interviews, heritage reviews, listicles, encounters",
       "pay": {
         "currency": "NGN",
@@ -264,12 +403,24 @@
           "currency": "NGN",
           "display": "₦15,000",
           "until": "2026-08-22",
-          "appliesTo": ["Encounters", "Folktales & Narrative Retellings", "Listicles"],
+          "appliesTo": [
+            "Encounters",
+            "Folktales & Narrative Retellings",
+            "Listicles"
+          ],
           "standardDisplay": "₦10,000 per article"
         }
       },
-      "wordCount": { "min": null, "max": null, "display": "Not publicly stated" },
-      "response": { "label": "Review within 1–4 weeks", "band": "2-4-weeks", "official": true },
+      "wordCount": {
+        "min": null,
+        "max": null,
+        "display": "Not publicly stated"
+      },
+      "response": {
+        "label": "Review within 1–4 weeks",
+        "band": "2-4-weeks",
+        "official": true
+      },
       "submissionStatus": "rolling",
       "deadline": null,
       "aiPolicy": "prohibited",
@@ -304,8 +455,19 @@
         "Create an account via https://oriire.com/join and submit the draft through the official portal.",
         "Editorial review is stated as 1–4 weeks, then an edit pass, then publication and payment."
       ],
-      "keywords": ["oriire", "mythology", "folklore", "africa", "ai prohibited", "naira", "listicle", "folktale"],
-      "editorExperience": { "status": "not-yet-submitted" }
+      "keywords": [
+        "oriire",
+        "mythology",
+        "folklore",
+        "africa",
+        "ai prohibited",
+        "naira",
+        "listicle",
+        "folktale"
+      ],
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      }
     },
     {
       "id": "the-lagos-review-loss-grief",
@@ -321,7 +483,10 @@
       "applyEmail": "submissions@thelagosreview.ng",
       "applyMethod": "Email",
       "sources": [
-        { "name": "The Lagos Review — Call for essay submissions: Writing Loss & Grief (official)", "url": "https://thelagosreview.ng/call-for-essay-submissions-writing-loss-grief/" }
+        {
+          "name": "The Lagos Review — Call for essay submissions: Writing Loss & Grief (official)",
+          "url": "https://thelagosreview.ng/call-for-essay-submissions-writing-loss-grief/"
+        }
       ],
       "lastVerified": "2026-08-19",
       "publishedAt": "2026-08-19",
@@ -330,7 +495,10 @@
         "mode": "open",
         "notStated": true
       },
-      "writingTypes": ["personal-essays", "essays"],
+      "writingTypes": [
+        "personal-essays",
+        "essays"
+      ],
       "writingTypeLabel": "Personal essay",
       "pay": {
         "currency": "USD",
@@ -340,8 +508,16 @@
         "conditions": "$250 per published essay, paid one month after publication. Separate additional opportunity: the top 12 published essays may be compiled into a book, with a one-off royalty of $500. That $500 is not the standard essay fee and is not guaranteed to every contributor.",
         "timing": "Paid one month after publication."
       },
-      "wordCount": { "min": null, "max": 1500, "display": "Up to 1,500 words" },
-      "response": { "label": "Not publicly stated", "band": "not-stated", "official": false },
+      "wordCount": {
+        "min": null,
+        "max": 1500,
+        "display": "Up to 1,500 words"
+      },
+      "response": {
+        "label": "Not publicly stated",
+        "band": "not-stated",
+        "official": false
+      },
       "submissionStatus": "rolling",
       "deadline": {
         "date": "2026-12-31",
@@ -370,8 +546,653 @@
         "Email your essay to submissions@thelagosreview.ng.",
         "Submissions are received on a rolling basis from June to December 2026."
       ],
-      "keywords": ["lagos review", "grief", "loss", "personal essay", "$250", "AI prohibited"],
-      "editorExperience": { "status": "not-yet-submitted" }
+      "keywords": [
+        "lagos review",
+        "grief",
+        "loss",
+        "personal essay",
+        "$250",
+        "AI prohibited"
+      ],
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      }
+    },
+    {
+      "id": "adi-again",
+      "slug": "adi-again",
+      "status": "published",
+      "vertical": "writing",
+      "publication": "Adi Magazine",
+      "title": "Again column",
+      "seoTitle": "Adi Magazine Again column: $300 for a book you return to",
+      "excerpt": "Adi Magazine is paying $300 for Again columns of up to 1,500 words — a pitch about a book you return to. Official page: this column is open on a rolling basis during the June–September 2026 pause that closed other Adi categories.",
+      "officialUrl": "https://adimagazine.com/submissions/",
+      "applyUrl": "mailto:admin@adimagazine.com?subject=AGAIN%20PITCH",
+      "applyEmail": "admin@adimagazine.com",
+      "applyMethod": "Email pitch (AGAIN PITCH)",
+      "sources": [
+        {
+          "name": "Adi Magazine — Submissions (official)",
+          "url": "https://adimagazine.com/submissions/"
+        },
+        {
+          "name": "Adi Magazine — About (official)",
+          "url": "https://adimagazine.com/about/"
+        }
+      ],
+      "lastVerified": "2026-08-19",
+      "publishedAt": "2026-08-19",
+      "eligibility": {
+        "summary": "The official submissions page does not list countries. The Again column is addressed to policymakers, activists and politically-engaged writers. That is a subject/role description, not a nationality list.",
+        "mode": "open",
+        "notStated": true
+      },
+      "writingTypes": [
+        "essays",
+        "reviews",
+        "opinion"
+      ],
+      "writingTypeLabel": "Again column (book reflection)",
+      "pay": {
+        "currency": "USD",
+        "amountMin": 300,
+        "amountMax": 300,
+        "display": "$300",
+        "conditions": "Official submissions page: Adi pays $300 for Again columns up to 1,500 words. This rate is for the Again column only. Do not treat it as the rate for Adi essays, interviews, fiction or poetry.",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "min": null,
+        "max": 1500,
+        "display": "Up to 1,500 words"
+      },
+      "response": {
+        "label": "Not publicly stated",
+        "band": "not-stated",
+        "official": false
+      },
+      "submissionStatus": "rolling",
+      "deadline": null,
+      "aiPolicy": "prohibited",
+      "experience": "not-stated",
+      "whatTheyWant": [
+        "A love letter to a treasured text you return to again and again — political texts, poetry, novels or creative nonfiction.",
+        "Pitch: the title of the book plus a short summary (2 paragraphs maximum) of why you chose it.",
+        "Include 1–2 links to previous work.",
+        "Subject line: AGAIN PITCH.",
+        "Adi describes itself as a literary magazine of global politics dedicated to rehumanizing policy."
+      ],
+      "whatTheyDontWant": [
+        "Attachments unless editors request them.",
+        "Submissions or pitches generated with AI.",
+        "Work previously published in English.",
+        "Hate speech or discriminatory language.",
+        "More than one Adi submission at a time — wait until the current one is accepted or declined."
+      ],
+      "requirements": [
+        "Email admin@adimagazine.com",
+        "Subject: AGAIN PITCH",
+        "Book title + max 2-paragraph summary",
+        "1–2 links to previous work",
+        "No attachment unless requested"
+      ],
+      "rights": "Adi acquires first exclusive, world English-language publication rights. Copyright remains with the author.",
+      "howToSubmit": [
+        "Email admin@adimagazine.com with subject AGAIN PITCH.",
+        "Do not send an attachment unless an editor asks.",
+        "Simultaneous submissions are allowed; withdraw if accepted elsewhere."
+      ],
+      "keywords": [
+        "adi magazine",
+        "again column",
+        "book essay",
+        "$300",
+        "AI prohibited",
+        "rolling"
+      ],
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      }
+    },
+    {
+      "id": "adi-essays",
+      "slug": "adi-essays",
+      "status": "published",
+      "vertical": "writing",
+      "publication": "Adi Magazine",
+      "title": "Essays",
+      "seoTitle": "Adi Magazine essays: closed until 1 October 2026",
+      "excerpt": "Adi Magazine essays are closed until 1 October 2026. Other Adi categories (interviews, translations) reopen the same date. Essay pay is not stated on the current official submissions page.",
+      "officialUrl": "https://adimagazine.com/submissions/",
+      "applyUrl": "https://adimagazine.com/submissions/",
+      "applyEmail": "admin@adimagazine.com",
+      "applyMethod": "Do not submit until 1 October 2026 — official page",
+      "sources": [
+        {
+          "name": "Adi Magazine — Submissions (official)",
+          "url": "https://adimagazine.com/submissions/"
+        }
+      ],
+      "lastVerified": "2026-08-19",
+      "publishedAt": "2026-08-19",
+      "eligibility": {
+        "summary": "The official submissions page does not list countries. Do not treat that silence as a closed list or as a guaranteed worldwide call.",
+        "mode": "open",
+        "notStated": true
+      },
+      "writingTypes": [
+        "essays"
+      ],
+      "writingTypeLabel": "Essay",
+      "pay": {
+        "currency": null,
+        "amountMin": null,
+        "amountMax": null,
+        "display": "Not publicly stated on the current official page",
+        "conditions": "The 19 August 2026 official submissions page does not state an essay fee. Older third-party and staging pages have quoted other numbers. Those numbers are not copied here.",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "min": null,
+        "max": null,
+        "display": "Not publicly stated on the current official page"
+      },
+      "response": {
+        "label": "Not publicly stated",
+        "band": "not-stated",
+        "official": false
+      },
+      "submissionStatus": "upcoming",
+      "deadline": {
+        "display": "Reopens 1 October 2026",
+        "openingDate": "2026-10-01",
+        "recurring": false
+      },
+      "aiPolicy": "prohibited",
+      "experience": "not-stated",
+      "whatTheyWant": [
+        "Essays, when the window reopens on 1 October 2026. Adi publishes nonfiction (essays, interviews, reportage) as part of a literary magazine of global politics.",
+        "Interviews and translations are also listed as reopening 1 October 2026.",
+        "Fiction is listed separately: closed, reopening 8–30 November 2026 on Submittable, with official rates $500 (up to 5,000 words) and $200 (flash under 1,000 words). That is not this card."
+      ],
+      "whatTheyDontWant": [
+        "Do not submit essays during the June–September 2026 staff break. The official page says they will not be able to reply.",
+        "AI-generated submissions or pitches.",
+        "Work previously published in English.",
+        "More than one Adi submission at a time."
+      ],
+      "requirements": [
+        "Wait until 1 October 2026",
+        "Re-read https://adimagazine.com/submissions/ before pitching — the method may be restated when the window opens"
+      ],
+      "rights": "Adi acquires first exclusive, world English-language publication rights. Copyright remains with the author.",
+      "howToSubmit": [
+        "Do not email an essay pitch before 1 October 2026.",
+        "On or after that date, use the official submissions page. The current page does not yet give the reopened essay pitch format."
+      ],
+      "keywords": [
+        "adi magazine",
+        "essays",
+        "upcoming",
+        "october 2026",
+        "AI prohibited"
+      ],
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      }
+    },
+    {
+      "id": "longreads-personal-essay",
+      "slug": "longreads-personal-essay",
+      "status": "published",
+      "vertical": "writing",
+      "publication": "Longreads",
+      "title": "Personal essay",
+      "seoTitle": "Longreads personal essays: $500 for a finished draft",
+      "excerpt": "Longreads pays $500 for personal essays. They do not commission personal essays from a pitch — send a full, polished draft. Official page: writers and journalists around the world. Generative AI is not accepted.",
+      "officialUrl": "https://longreads.com/submissions/",
+      "applyUrl": "mailto:hello@longreads.com?subject=Personal%20Essay",
+      "applyEmail": "hello@longreads.com",
+      "applyMethod": "Email a finished draft",
+      "sources": [
+        {
+          "name": "Longreads — Submissions (official)",
+          "url": "https://longreads.com/submissions/"
+        }
+      ],
+      "lastVerified": "2026-08-19",
+      "publishedAt": "2026-08-19",
+      "eligibility": {
+        "summary": "Official page: pitches and original nonfiction from writers and journalists around the world. No country list.",
+        "mode": "open",
+        "notStated": false
+      },
+      "writingTypes": [
+        "personal-essays",
+        "essays"
+      ],
+      "writingTypeLabel": "Personal essay",
+      "pay": {
+        "currency": "USD",
+        "amountMin": 500,
+        "amountMax": 500,
+        "display": "$500",
+        "conditions": "Official page: the rate for personal essays is $500. This is not the rate for reading lists ($350) or reported features (from 50 cents a word).",
+        "timing": "Net-60. The official page says payment is often processed sooner."
+      },
+      "wordCount": {
+        "min": null,
+        "max": null,
+        "display": "No hard personal-essay limit stated. Official guideline for most published features: 2,000–6,000 words — a guideline, not a rule."
+      },
+      "response": {
+        "label": "They generally only reply if interested",
+        "band": "not-stated",
+        "official": true
+      },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "prohibited",
+      "experience": "not-stated",
+      "whatTheyWant": [
+        "A full, polished personal-essay draft. They will not commission a personal essay from a pitch.",
+        "Smart, unexpected angles and a compelling voice. Wide range of topics.",
+        "Attach PDF, Google Doc or Word, or paste the draft in the email.",
+        "Subject line should include the pitch type (“Personal Essay”) and the topic.",
+        "They do not accept fiction."
+      ],
+      "whatTheyDontWant": [
+        "A personal-essay pitch without a finished draft.",
+        "Any submission or pitch written or edited using generative AI tools such as ChatGPT.",
+        "Fiction."
+      ],
+      "requirements": [
+        "Finished draft",
+        "Email hello@longreads.com",
+        "Subject includes Personal Essay and the topic"
+      ],
+      "rights": "Not publicly stated on the official submissions page.",
+      "howToSubmit": [
+        "Email hello@longreads.com with subject line Personal Essay + topic.",
+        "Attach or paste the finished draft.",
+        "They cannot confirm receipt. They generally reply only if interested. Simultaneous submissions are encouraged."
+      ],
+      "keywords": [
+        "longreads",
+        "personal essay",
+        "$500",
+        "worldwide",
+        "AI prohibited"
+      ],
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      }
+    },
+    {
+      "id": "longreads-reading-list",
+      "slug": "longreads-reading-list",
+      "status": "published",
+      "vertical": "writing",
+      "publication": "Longreads",
+      "title": "Reading list",
+      "seoTitle": "Longreads reading lists: $350",
+      "excerpt": "Longreads pays $350 per reading list: an essay-style introduction plus links to freely available longform pieces on one theme. Official page: writers around the world. Generative AI is not accepted.",
+      "officialUrl": "https://longreads.com/submissions/",
+      "applyUrl": "mailto:hello@longreads.com?subject=Reading%20List",
+      "applyEmail": "hello@longreads.com",
+      "applyMethod": "Email pitch",
+      "sources": [
+        {
+          "name": "Longreads — Submissions (official)",
+          "url": "https://longreads.com/submissions/"
+        }
+      ],
+      "lastVerified": "2026-08-19",
+      "publishedAt": "2026-08-19",
+      "eligibility": {
+        "summary": "Official page: original nonfiction from writers and journalists around the world.",
+        "mode": "open",
+        "notStated": false
+      },
+      "writingTypes": [
+        "essays",
+        "other"
+      ],
+      "writingTypeLabel": "Reading list",
+      "pay": {
+        "currency": "USD",
+        "amountMin": 350,
+        "amountMax": 350,
+        "display": "$350",
+        "conditions": "Official page: $350 per reading list. Separate from the $500 personal-essay rate and from reported-feature rates.",
+        "timing": "Net-60. The official page says payment is often processed sooner."
+      },
+      "wordCount": {
+        "min": null,
+        "max": null,
+        "display": "Not publicly stated"
+      },
+      "response": {
+        "label": "They generally only reply if interested",
+        "band": "not-stated",
+        "official": true
+      },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "prohibited",
+      "experience": "not-stated",
+      "whatTheyWant": [
+        "A curated reading list: essay-style introduction, then links to longform stories on one theme that are freely available on the web.",
+        "Timely topics, or offbeat and unique angles. A diverse mix of publications and writers.",
+        "Subject line: Reading List + topic."
+      ],
+      "whatTheyDontWant": [
+        "Reading lists that feature books exclusively. A book as a side note is occasionally fine.",
+        "Generative AI writing or editing.",
+        "Fiction."
+      ],
+      "requirements": [
+        "Email hello@longreads.com",
+        "Subject includes Reading List and the topic"
+      ],
+      "rights": "Not publicly stated on the official submissions page.",
+      "howToSubmit": [
+        "Email hello@longreads.com with subject Reading List + topic.",
+        "They generally reply only if interested. Simultaneous submissions are encouraged."
+      ],
+      "keywords": [
+        "longreads",
+        "reading list",
+        "$350",
+        "worldwide",
+        "AI prohibited"
+      ],
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      }
+    },
+    {
+      "id": "longreads-reported-feature",
+      "slug": "longreads-reported-feature",
+      "status": "published",
+      "vertical": "writing",
+      "publication": "Longreads",
+      "title": "Reported feature",
+      "seoTitle": "Longreads reported features: from 50 cents a word",
+      "excerpt": "Longreads accepts pitches for reported features. Official rate starts at 50 cents per word and depends on reporting. Worldwide. Generative AI is not accepted.",
+      "officialUrl": "https://longreads.com/submissions/",
+      "applyUrl": "mailto:hello@longreads.com?subject=Reported%20Feature",
+      "applyEmail": "hello@longreads.com",
+      "applyMethod": "Email pitch",
+      "sources": [
+        {
+          "name": "Longreads — Submissions (official)",
+          "url": "https://longreads.com/submissions/"
+        }
+      ],
+      "lastVerified": "2026-08-19",
+      "publishedAt": "2026-08-19",
+      "eligibility": {
+        "summary": "Official page: original nonfiction from writers and journalists around the world.",
+        "mode": "open",
+        "notStated": false
+      },
+      "writingTypes": [
+        "journalism",
+        "articles",
+        "interviews"
+      ],
+      "writingTypeLabel": "Reported feature",
+      "pay": {
+        "currency": "USD",
+        "amountMin": null,
+        "amountMax": null,
+        "display": "From 50 cents per word",
+        "conditions": "Official page: rates start at 50 cents per word, depending on the amount of reporting and research. There is no single fixed fee. Researched/critical essay pitches are listed separately on the same page as starting at $500 depending on reporting and length — that is not this card.",
+        "timing": "Net-60. The official page says payment is often processed sooner."
+      },
+      "wordCount": {
+        "min": null,
+        "max": null,
+        "display": "No hard limit stated. Official guideline for most published features: 2,000–6,000 words — a guideline, not a rule."
+      },
+      "response": {
+        "label": "They generally only reply if interested",
+        "band": "not-stated",
+        "official": true
+      },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "prohibited",
+      "experience": "not-stated",
+      "whatTheyWant": [
+        "Pitches for profiles, dispatches, narrative reportage, oral histories and other reported features.",
+        "The shape of the story (structure, style, scenes, characters).",
+        "A reporting plan, including sourcing.",
+        "Something about you and clips of previously published work.",
+        "Why Longreads is the home for the story.",
+        "Subject line: Reported Feature + topic."
+      ],
+      "whatTheyDontWant": [
+        "Generative AI writing or editing.",
+        "Fiction.",
+        "A thin pitch with no reporting plan."
+      ],
+      "requirements": [
+        "Email pitch to hello@longreads.com",
+        "Subject includes Reported Feature and the topic",
+        "Reporting plan and clips"
+      ],
+      "rights": "Not publicly stated on the official submissions page.",
+      "howToSubmit": [
+        "Email hello@longreads.com with subject Reported Feature + topic.",
+        "They generally reply only if interested. Simultaneous submissions are encouraged."
+      ],
+      "keywords": [
+        "longreads",
+        "reported feature",
+        "journalism",
+        "worldwide",
+        "AI prohibited"
+      ],
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      }
+    },
+    {
+      "id": "omenana",
+      "slug": "omenana",
+      "status": "published",
+      "vertical": "writing",
+      "publication": "Omenana",
+      "title": "Speculative fiction, essays and reviews",
+      "seoTitle": "Omenana submissions: closed after 15 March 2026",
+      "excerpt": "Omenana’s official submissions page still says the window closed 15 March 2026. That date has passed. Official pay is $20 per published story. Africa and the African diaspora. Bookmark — do not submit as if it is open.",
+      "officialUrl": "https://omenana.com/omenana-submissions/",
+      "applyUrl": "https://omenana.com/omenana-submissions/",
+      "applyEmail": "editor@omenana.com",
+      "applyMethod": "Email when a new window is announced — currently closed",
+      "sources": [
+        {
+          "name": "Omenana Submissions (official)",
+          "url": "https://omenana.com/omenana-submissions/"
+        }
+      ],
+      "lastVerified": "2026-08-19",
+      "publishedAt": "2026-08-19",
+      "eligibility": {
+        "summary": "Artists and writers from Africa and the African diaspora. The official page points to the African Speculative Fiction Society definition of who is African. Nigeria qualifies. This is not a worldwide open call.",
+        "mode": "restricted",
+        "includesGroups": [
+          "african",
+          "african-diaspora"
+        ],
+        "includesRegions": [
+          "africa"
+        ],
+        "allowsDiaspora": true,
+        "notStated": false
+      },
+      "writingTypes": [
+        "fiction",
+        "essays",
+        "reviews"
+      ],
+      "writingTypeLabel": "Speculative fiction, essays, reviews",
+      "pay": {
+        "currency": "USD",
+        "amountMin": 20,
+        "amountMax": 20,
+        "display": "$20 per published story",
+        "conditions": "Official page: Omenana will pay $20 for every story published. Commissioned art is paid depending on budget. The page does not state a separate essay or review fee.",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "min": null,
+        "max": 5000,
+        "display": "Short fiction up to 5,000; flash up to 1,000; essays/CNF up to 3,000; reviews 800–2,000",
+        "notes": "Different categories have different official limits. The stored max is the short-fiction ceiling."
+      },
+      "response": {
+        "label": "Not publicly stated",
+        "band": "not-stated",
+        "official": false
+      },
+      "submissionStatus": "closed",
+      "deadline": {
+        "date": "2026-03-15",
+        "display": "Official page: open until 15 March 2026 — that date has passed",
+        "windowEnd": "2026-03-15",
+        "recurring": false
+      },
+      "aiPolicy": "not-stated",
+      "experience": "not-stated",
+      "whatTheyWant": [
+        "Speculative fiction and art (fantasy, science fiction, horror or magical realism) involving characters, settings or themes directly related to the African continent.",
+        "English (translations welcome). Original, previously unpublished. No fan fiction.",
+        "Non-fiction essays or reviews that deal with African speculative fiction.",
+        "When a window is open: one email attachment (.doc, .docx, .rtf or .odt) to editor@omenana.com, plus a cover letter with legal name, address, email, phone, brief publication history, bio (max 100 words) and a profile photo."
+      ],
+      "whatTheyDontWant": [
+        "Do not submit while the stated window is closed.",
+        "Poetry, drama or film scripts.",
+        "Simultaneous submissions — the official page says they no longer accept them.",
+        "Revised drafts of work already submitted, unless they ask.",
+        "Art already published anywhere other than your portfolio, unless they request it."
+      ],
+      "requirements": [
+        "Wait for a new official window",
+        "Africa / African diaspora eligibility",
+        "Speculative, Africa-related",
+        "Standard manuscript format"
+      ],
+      "rights": "Not publicly stated on the official submissions page.",
+      "howToSubmit": [
+        "Do not treat the March 2026 window as open.",
+        "When a new window is posted on https://omenana.com/omenana-submissions/, email editor@omenana.com as specified there."
+      ],
+      "keywords": [
+        "omenana",
+        "speculative fiction",
+        "africa",
+        "diaspora",
+        "closed",
+        "$20"
+      ],
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      }
+    },
+    {
+      "id": "agbowo-essays",
+      "slug": "agbowo-essays",
+      "status": "published",
+      "vertical": "writing",
+      "publication": "Agbowó",
+      "title": "Essays / nonfiction",
+      "seoTitle": "Agbowó essays: ₦50,000 — submissions currently closed",
+      "excerpt": "Agbowó’s official submissions page says submissions are closed at the moment. Official essay/nonfiction fee is ₦50,000 (non-Nigerians paid the equivalent). No next opening date is stated.",
+      "officialUrl": "https://agbowo.org/submissions/",
+      "applyUrl": "https://agbowo.org/submissions/",
+      "applyEmail": null,
+      "applyMethod": "Official page — currently closed; Google Form when a window opens",
+      "sources": [
+        {
+          "name": "Agbowó — Submissions (official)",
+          "url": "https://agbowo.org/submissions/"
+        }
+      ],
+      "lastVerified": "2026-08-19",
+      "publishedAt": "2026-08-19",
+      "eligibility": {
+        "summary": "The official essays section does not list countries. It looks for essays with roots wholly or partly in an African context (subject or case study). Poetry guidelines separately ask for poets of African origin. Do not collapse those two rules.",
+        "mode": "open",
+        "notStated": true
+      },
+      "writingTypes": [
+        "essays",
+        "creative-nonfiction"
+      ],
+      "writingTypeLabel": "Essay / nonfiction",
+      "pay": {
+        "currency": "NGN",
+        "amountMin": 50000,
+        "amountMax": 50000,
+        "display": "₦50,000",
+        "conditions": "Official compensation table: Essays/Nonfiction ₦50,000; Fiction ₦50,000; single poem ₦20,000; suite of 2–4 poems ₦40,000; one-act play ₦40,000; visual art ₦30,000. Non-Nigerians are paid the equivalent using OANDA. Nigerian authors are paid in naira. Outside Nigeria: equivalent via Wise or PayPal only. This card is the essay rate only.",
+        "timing": "Not publicly stated beyond “publication fee” for contributors to yearly issues."
+      },
+      "wordCount": {
+        "min": 750,
+        "max": 3500,
+        "display": "750–3,500 words"
+      },
+      "response": {
+        "label": "Not publicly stated for the current closed period",
+        "band": "not-stated",
+        "official": false
+      },
+      "submissionStatus": "closed",
+      "deadline": {
+        "display": "Official page: submissions are closed at the moment. No next opening date stated.",
+        "recurring": false
+      },
+      "aiPolicy": "not-stated",
+      "experience": "not-stated",
+      "whatTheyWant": [
+        "When open: essays 750–3,500 words, English (broken English acceptable), previously unpublished.",
+        "They look especially for essays rooted wholly or partly in an African context, and for uncommon topics, approaches and styles.",
+        "Word document, cover letter, 100–200 word bio, clear author photograph, social handles.",
+        "One entry per submission window."
+      ],
+      "whatTheyDontWant": [
+        "Do not submit while the official page says submissions are closed.",
+        "Previously published essays.",
+        "Plagiarism or unacknowledged quotes.",
+        "More than one entry in a window."
+      ],
+      "requirements": [
+        "Wait for an official reopening announcement",
+        "750–3,500 words",
+        "Word document + photo + bio"
+      ],
+      "rights": "Not publicly stated on the official submissions page.",
+      "howToSubmit": [
+        "Do not use the Google Forms on the page while the banner says submissions are closed.",
+        "Watch https://agbowo.org/submissions/ for the next window."
+      ],
+      "keywords": [
+        "agbowo",
+        "essay",
+        "nigeria",
+        "naira",
+        "closed",
+        "50000"
+      ],
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      }
     }
   ]
 }

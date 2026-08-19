@@ -44,10 +44,11 @@ module.exports = function buildOpportunityCatalog(ctx) {
   const statusMeta = o => {
     const d = o.deadline;
     if (d && d.windowEnd && d.windowEnd < TODAY) return { key: 'closed', label: 'Closed' };
-    const map = { open: 'Open', rolling: 'Rolling', deadline: 'Deadline', closed: 'Closed' };
+    const map = { open: 'Open', rolling: 'Rolling', deadline: 'Deadline', closed: 'Closed', upcoming: 'Upcoming' };
     let label = map[o.submissionStatus] || 'Not publicly stated';
     if (o.submissionStatus === 'deadline' && d && d.display) label = d.display;
     if (o.submissionStatus === 'rolling' && d && d.display) label = d.display;
+    if (o.submissionStatus === 'upcoming' && d && d.display) label = d.display;
     return { key: o.submissionStatus || 'open', label };
   };
 
@@ -185,6 +186,7 @@ module.exports = function buildOpportunityCatalog(ctx) {
           <option value="open">Open</option>
           <option value="rolling">Rolling</option>
           <option value="deadline">Deadline</option>
+          <option value="upcoming">Upcoming</option>
           <option value="closed">Closed</option>
         </select>
       </label>
