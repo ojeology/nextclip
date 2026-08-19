@@ -4,7 +4,7 @@
 module.exports = function buildOpportunityCatalog(ctx) {
   const {
     fs, path, root, esc, url, absUrl, layout, write, breadcrumbs,
-    TODAY, PAGE_LASTMOD, WRITING_EXTRA_PATHS, warnings, VERTICALS, verticalChip, site
+    TODAY, PAGE_LASTMOD, WRITING_EXTRA_PATHS, warnings, VERTICALS, verticalChip, coreHubStrip, site
   } = ctx;
 
   const ISO = /^\d{4}-\d{2}-\d{2}$/;
@@ -525,9 +525,7 @@ module.exports = function buildOpportunityCatalog(ctx) {
     <section class="section"><div class="section-head"><h2>Guides already published</h2></div>
       <div class="vcat-grid">${guideCards}</div>
     </section>
-    <section class="section"><div class="section-head"><h2>Explore BRYME</h2></div>
-      <div class="vchips">${VERTICALS.map(verticalChip).join('')}</div>
-    </section>
+    ${typeof coreHubStrip === 'function' ? coreHubStrip('make-money') : `<section class="section"><div class="section-head"><h2>Explore BRYME</h2></div><div class="vchips">${VERTICALS.map(verticalChip).join('')}</div></section>`}
   </main>${catalogScript}`;
 
   write('make-money', layout({

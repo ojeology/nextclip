@@ -1371,6 +1371,26 @@ const articleCard = (dir, a) => `<a class="vcat" href="${url(articlePathFor(dir,
 const EMPTY_HUB_PATHS = new Set();
 const WRITING_EXTRA_PATHS = [];
 const verticalChip = v => `<a class="vchip vchip-${v.dir}" href="${url('/' + v.dir + '/')}"><span class="vchip-emoji">${v.emoji}</span><span class="vchip-name">${esc(v.name)}</span><span class="vchip-tag">${esc(v.tagline)}</span></a>`;
+/* Core category headers — the pages Googlebot should treat as the site’s
+   spine. Used in-body (not only nav/footer) so crawl paths are obvious. */
+const CORE_HUBS = [
+  { id: 'entertainment', path: '/entertainment/', emoji: '🎬', name: 'Entertainment', tag: 'Movies, series, anime and articles', chip: 'entertainment' },
+  { id: 'movies', path: '/movies/', emoji: '🎥', name: 'Movies', tag: 'Trailers and the movie catalogue', chip: 'entertainment' },
+  { id: 'series', path: '/series/', emoji: '📺', name: 'TV Series', tag: 'Series catalogue', chip: 'entertainment' },
+  { id: 'anime', path: '/anime/', emoji: '🍥', name: 'Anime', tag: 'Anime catalogue', chip: 'entertainment' },
+  { id: 'sports', path: '/sports/', emoji: '⚽', name: 'Sports', tag: 'Football covered properly', chip: 'sports' },
+  { id: 'make-money', path: '/make-money/', emoji: '💰', name: 'Make Money', tag: 'Verified writing markets and honest guides', chip: 'make-money' },
+  { id: 'tech', path: '/tech/', emoji: '🤖', name: 'Tech & AI', tag: 'Practical tools and tutorials', chip: 'tech' }
+];
+function coreHubStrip(currentId, opts){
+  opts = opts || {};
+  const title = opts.title || 'Also on BRYME';
+  const lead = opts.lead || 'The main sections of the site. Open the next one that matches what you came for.';
+  const chips = CORE_HUBS.filter(h => h.id !== currentId).map(h =>
+    `<a class="vchip vchip-${h.chip}" href="${url(h.path)}"><span class="vchip-emoji">${h.emoji}</span><span class="vchip-name">${esc(h.name)}</span><span class="vchip-tag">${esc(h.tag)}</span></a>`
+  ).join('');
+  return `<section class="section core-hubs" data-core-hubs><div class="section-head"><h2>${esc(title)}</h2></div><p class="section-note">${esc(lead)}</p><div class="vchips">${chips}</div></section>`;
+}
 const MONEY_DESK = (() => {
   const fallback = {
     countries: [
@@ -1454,7 +1474,7 @@ function verticalPage(v, category){
   if (category) crumbs.push({name:category.name, path:catPath});
   const catGrid = (v.dir === 'make-money' ? `<a class="vcat wo-feature-card" href="${url('/make-money/writing/')}"><b>Writing Field Notes</b><span>I research websites, write to them, and publish what happened. A gig is not guaranteed.</span></a>` : '') + (v.categories || []).map(c => `<a class="vcat" href="${url('/' + v.dir + '/' + c.slug + '/')}"><b>${esc(c.name)}</b><span>${esc(c.desc)}</span></a>`).join('') + (v.dir === 'make-money' ? `<a class="vcat" href="${url('/make-money/beginners-guide-to-making-money-online/')}"><b>Beginner’s Guide to Making Money Online</b><span>An honest, skill-first guide to avoiding shortcuts and building value.</span></a>` : '');
   const sportsEditorial = (() => { const f = path.join(root, 'content', 'sports-articles.json'); if (!fs.existsSync(f)) return []; try { return (JSON.parse(fs.readFileSync(f, 'utf8')).articles || []).filter(a => a.status === 'published'); } catch (_) { return []; } })();
-  const sportsStoriesBlock = (v.dir === 'sports' && !category) ? `<section class="section"><div class="section-head"><h2>BRYME Sports Stories</h2><a href="${url('/sports/articles/')}">All stories</a></div>${sportsEditorial.length ? `<div class="vcat-grid">${sportsEditorial.filter(a => (a.labels || []).some(x => ['featured','trending','editor-pick'].includes(x))).slice(0,6).map(a => `<a class="vcat" href="${url('/sports/articles/' + a.slug + '/')}"><b>${esc(a.title)}</b><span>${esc(a.category)} · ${esc((a.labels || []).join(' · '))}</span></a>`).join('')}</div>` : `<div class="vstate"><b>Stories are being prepared</b><p>Drafts are researched and reviewed before publication. Published BRYME Sports stories will appear here.</p><a class="quiet-link" href="${url('/sports/articles/')}">Visit the Sports editorial desk</a></div>`}</section>` : '';
+  const sportsStoriesBlock = (v.dir === 'sports' && !category) ? `<section class="section"><div class="section-head"><h2>BRYME Sports Stories</h2><a href="${url('/sports/articles/')}">All stories</a></div>${sportsEditorial.length ? `<div class="vcat-grid">${sportsEditorial.slice(0, 8).map(a => `<a class="vcat" href="${url(articlePathFor('sports', a))}"><b>${esc(a.title)}</b><span>${esc(a.excerpt || a.category || '')}</span></a>`).join('')}</div>` : `<div class="vstate"><b>Stories are being prepared</b><p>Drafts are researched and reviewed before publication. Published BRYME Sports stories will appear here.</p><a class="quiet-link" href="${url('/sports/articles/')}">Visit the Sports editorial desk</a></div>`}</section>` : '';
   const sportsFeature = (v.dir === 'sports' && category && category.slug === 'football') ? `<section class="sp-hero" aria-label="Featured BRYME Sports stories"><div class="sp-hero-track"><a class="sp-hero-card sp-hero-first" href="${url('/sports/premier-league/')}" style="--card-img:url('/assets/img/sports/hero-premier-league.jpg')"><span class="sp-hero-tag">Welcome to the Premier League</span><h3>The 2026/27 season starts here</h3><p>Fixtures, clubs, match pages and the stories that will define the campaign.</p><span class="sp-hero-go">Explore the season →</span></a><a class="sp-hero-card" href="${url('/sports/fpl/')}" style="--card-img:url('/assets/img/sports/hero-fpl.jpg')"><span class="sp-hero-tag">Fantasy Premier League</span><h3>Top FPL picks for the new season</h3><p>Start with the fixtures, the key decisions and the players worth watching.</p><span class="sp-hero-go">Build your FPL view →</span></a><a class="sp-hero-card" href="${url('/sports/managers-2026-27/')}" style="--card-img:url('/assets/img/sports/hero-man-city-manager.jpg')"><span class="sp-hero-tag">Manchester City</span><h3>Enzo Maresca: a new chapter at City</h3><p>Follow the manager changes and the early storylines around the Premier League.</p><span class="sp-hero-go">See managers in &amp; out →</span></a></div></section>` : '';
   /* ---- Clubs directory: the Clubs hub IS the reference page ----
      Built from content/club-history/*.json, where every club record already carries an
@@ -1513,7 +1533,7 @@ function verticalPage(v, category){
   const catArticleBlock = catArticles.length
     ? `<div class="vcat-grid">${catArticles.map(a => articleCard(v.dir, a)).join('')}</div>`
     : '';
-  const body = `<main class="shell"><div class="crumb"><a href="${url('/')}">Home</a> / ${category ? `<a href="${url('/' + v.dir + '/')}">${esc(v.name)}</a> / ${esc(category.name)}` : esc(v.name)}</div>${pageHero}<section class="section">${category ? (v.dir === 'sports' && category.slug === 'football' ? (footballHub + catArticleBlock) : (clubsDirectory ? (clubsDirectory + catArticleBlock) : (catArticles.length ? writingDeskBlock + catArticleBlock : (writingDeskBlock || `<div class="vstate"><b>${esc(category.name)} — foundation ready</b><p>This section is being built. Articles will appear here as they are researched and published.</p></div>`)))) : `${v.dir === 'make-money' ? moneyDeskHtml() : ''}<p class="lead" style="margin-bottom:18px">${esc(v.desc)}</p><div class="vnote">${esc(v.note)}</div><h2 style="margin:26px 0 14px">${v.dir === 'make-money' ? 'Guides already published' : 'Explore ' + esc(v.short)}</h2><div class="vcat-grid">${catGrid}</div>`}</section>${(v.dir === 'sports' && !category) ? livePreviewBlock(10) : ''}${sportsTeaserBlock}${fixturesBlock}${sportsStoriesBlock}<section class="section"><div class="section-head"><h2>Explore BRYME</h2></div><div class="vchips">${VERTICALS.map(verticalChip).join('')}</div></section></main>`;
+  const body = `<main class="shell"><div class="crumb"><a href="${url('/')}">Home</a> / ${category ? `<a href="${url('/' + v.dir + '/')}">${esc(v.name)}</a> / ${esc(category.name)}` : esc(v.name)}</div>${pageHero}<section class="section">${category ? (v.dir === 'sports' && category.slug === 'football' ? (footballHub + catArticleBlock) : (clubsDirectory ? (clubsDirectory + catArticleBlock) : (catArticles.length ? writingDeskBlock + catArticleBlock : (writingDeskBlock || `<div class="vstate"><b>${esc(category.name)} — foundation ready</b><p>This section is being built. Articles will appear here as they are researched and published.</p></div>`)))) : `${v.dir === 'make-money' ? moneyDeskHtml() : ''}<p class="lead" style="margin-bottom:18px">${esc(v.desc)}</p><div class="vnote">${esc(v.note)}</div><h2 style="margin:26px 0 14px">${v.dir === 'make-money' ? 'Guides already published' : 'Explore ' + esc(v.short)}</h2><div class="vcat-grid">${catGrid}</div>`}</section>${(v.dir === 'sports' && !category) ? livePreviewBlock(10) : ''}${sportsTeaserBlock}${fixturesBlock}${sportsStoriesBlock}${coreHubStrip(v.dir)}</main>`;
   const emptyHub = !!category && !catArticles.length && !clubsDirectory && !(v.dir === 'sports' && category.slug === 'football');
   if (emptyHub) EMPTY_HUB_PATHS.add(catPath);
   write(v.dir + (category ? '/' + category.slug : ''), layout({
@@ -1730,7 +1750,7 @@ write('', layout({
     <div class="hero-video" data-hero-video hidden></div>
   </section>
   <div class="home-main">
-  <section class="home-section brand-strip"><div class="shell"><p class="brand-slogan">Discover what you love. Learn what you need. Find what's next.</p><div class="vchips">${VERTICALS.map(verticalChip).join('')}<a class="vchip vchip-entertainment" href="${url('/entertainment/')}"><span class="vchip-emoji">🎬</span><span class="vchip-name">BRYME Entertainment</span><span class="vchip-tag">Movies, series, anime & articles</span></a></div></div></section>
+  <section class="home-section brand-strip"><div class="shell"><p class="brand-slogan">Discover what you love. Learn what you need. Find what's next.</p>${coreHubStrip('home', { title: 'Explore BRYME', lead: 'Start with a section, then follow the titles and guides inside it.' }).replace('<section class="section core-hubs" data-core-hubs>', '<section class="core-hubs" data-core-hubs>')}</div></section>
   <section class="home-section rec-section" id="recommend">
     <div class="shell rec-inner">
       <div class="rec-copy"><div class="eyebrow">Personalised discovery</div><h2>DON'T KNOW WHAT TO WATCH?</h2><p class="rec-sub">Tell us one movie or series you loved. We'll find your next watch.</p></div>
@@ -1997,7 +2017,7 @@ function buildWritingOpportunities(){
         <a class="vcat" href="${url('/make-money/beginners-guide-to-making-money-online/')}"><b>Beginner’s guide to making money online</b><span>The skill-first piece this series sits on top of.</span></a>
       </div>
     </section>
-    <section class="section"><div class="section-head"><h2>Explore BRYME</h2></div><div class="vchips">${VERTICALS.map(verticalChip).join('')}</div></section>
+    ${coreHubStrip('make-money')}
   </main>
   <script>
   (function(){
@@ -2149,7 +2169,7 @@ function buildWritingOpportunities(){
 buildWritingOpportunities();
 require('./build-opportunity-catalog')({
   fs, path, root, esc, url, absUrl, layout, write, breadcrumbs,
-  TODAY, PAGE_LASTMOD, WRITING_EXTRA_PATHS, warnings, VERTICALS, verticalChip, site
+  TODAY, PAGE_LASTMOD, WRITING_EXTRA_PATHS, warnings, VERTICALS, verticalChip, coreHubStrip, site
 });
 
 
@@ -2165,7 +2185,8 @@ write('entertainment', layout({
   <section class="section"><div class="section-head"><h2>⭐ Popular Movies</h2><a href="${url('/movies/')}">All movies</a></div><div class="rail">${popularMovies.slice(0, 10).map(card).join('')}</div></section>
   <section class="section"><div class="section-head"><h2>⭐ Popular Series</h2><a href="${url('/series/')}">All series</a></div><div class="rail">${popularSeries.slice(0, 10).map(card).join('')}</div></section>
   <section class="section"><div class="section-head"><h2>⭐ Popular Anime</h2><a href="${url('/anime/')}">All anime</a></div><div class="rail">${popularAnime.slice(0, 10).map(card).join('')}</div></section>
-  <section class="section"><div class="section-head"><h2>📰 Latest articles</h2><a href="${url('/articles/')}">All stories</a></div><div class="story-grid">${latestArticles.map(a => `<a href="${url('/article/' + a.slug + '/')}"><span>${esc(a.category)}</span><h3>${esc(a.title)}</h3><p>${esc(a.description.slice(0, 120))}</p><b>Read story</b></a>`).join('')}</div></section></main>`
+  <section class="section"><div class="section-head"><h2>📰 Latest articles</h2><a href="${url('/articles/')}">All stories</a></div><div class="story-grid">${latestArticles.map(a => `<a href="${url('/article/' + a.slug + '/')}"><span>${esc(a.category)}</span><h3>${esc(a.title)}</h3><p>${esc(a.description.slice(0, 120))}</p><b>Read story</b></a>`).join('')}</div></section>
+  ${coreHubStrip('entertainment')}</main>`
 }));
 
 /* ================================================================
@@ -2866,7 +2887,7 @@ for (const t of typeConfig) {
     activeNav: t.activeNav,
     image: list[0] ? posterOrCard(list[0]) : undefined,
     schema: [{ '@context':'https://schema.org', '@type':'CollectionPage', name:t.label + ' on BRYME', description:tDesc, url:url('/' + t.pageDir + '/') }, breadcrumbs([{name:'Home', path:'/'}, {name:t.label, path:'/' + t.pageDir + '/'}])],
-    body: `<main class="shell"><section class="hero"><div class="eyebrow">${t.seoNote}</div><h1>${esc(t.label)}</h1><p class="lead">${esc(tDesc)}</p></section><section class="section"><h2>Browse ${esc(t.label.toLowerCase())}</h2>${filterBar}<p class="count-line" data-count>${list.length} ${t.label.toLowerCase()} in the catalogue</p>${progressiveGrid(list, 40)}</section><script id="catalogue-data" type="application/json">${json}<\/script></main>`
+    body: `<main class="shell"><section class="hero"><div class="eyebrow">${t.seoNote}</div><h1>${esc(t.label)}</h1><p class="lead">${esc(tDesc)}</p></section>${coreHubStrip(t.pageDir === 'movies' ? 'movies' : t.dir, { title: 'Also on BRYME', lead: 'From here you can jump to series, anime, football, money guides or tech — or stay and browse this catalogue.' })}<section class="section"><h2>Browse ${esc(t.label.toLowerCase())}</h2>${filterBar}<p class="count-line" data-count>${list.length} ${t.label.toLowerCase()} in the catalogue</p>${progressiveGrid(list, 40)}</section><script id="catalogue-data" type="application/json">${json}<\/script></main>`
   }));
 }
 
