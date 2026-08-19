@@ -79,8 +79,10 @@
   // Press "/" to jump straight to Search (or the homepage recommendation box)
   document.addEventListener('keydown', function (e) {
     if (e.key !== '/') return;
-    var tag = (document.activeElement && document.activeElement.tagName) || '';
+    var el = document.activeElement;
+    var tag = (el && el.tagName) || '';
     if (/INPUT|TEXTAREA|SELECT/.test(tag)) return;
+    if (el && el.isContentEditable) return;
     e.preventDefault();
     var s = document.getElementById('search-q');
     if (s) { s.focus(); try { s.select(); } catch (err) {} return; }

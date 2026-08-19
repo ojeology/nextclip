@@ -279,11 +279,18 @@ module.exports = function buildOpportunityCatalog(ctx) {
       function renderCountries(filter){
         if (!list) return;
         var f = (filter || '').toLowerCase();
-        list.innerHTML = CTRY.filter(function(c){
-          return !f || c.name.toLowerCase().indexOf(f) !== -1 || c.id.toLowerCase() === f;
-        }).map(function(c){
-          return '<button type="button" class="mm-country" data-mm-pick="'+c.id+'"><span>'+c.flag+'</span> '+c.name+'</button>';
-        }).join('');
+        var buttons = list.querySelectorAll('[data-mm-pick]');
+        if (!buttons.length) {
+          list.innerHTML = CTRY.map(function(c){
+            return '<button type="button" class="mm-country" data-mm-pick="'+c.id+'"><span>'+c.flag+'</span> '+c.name+'</button>';
+          }).join('');
+          buttons = list.querySelectorAll('[data-mm-pick]');
+        }
+        Array.prototype.forEach.call(buttons, function(btn){
+          var name = (btn.textContent || '').toLowerCase();
+          var id = (btn.getAttribute('data-mm-pick') || '').toLowerCase();
+          btn.hidden = !!(f && name.indexOf(f) === -1 && id !== f);
+        });
       }
       function showCats(){
         if (stepN) stepN.hidden = true;
@@ -301,7 +308,15 @@ module.exports = function buildOpportunityCatalog(ctx) {
         if (search) search.focus();
       }
       if (list) renderCountries('');
-      if (search) search.addEventListener('input', function(){ renderCountries(search.value); });
+      if (search) {
+        search.addEventListener('input', function(){ renderCountries(search.value); });
+        search.addEventListener('keydown', function(e){
+          if (e.key !== 'Enter') return;
+          e.preventDefault();
+          var first = list && list.querySelector('[data-mm-pick]:not([hidden])');
+          if (first) first.click();
+        });
+      }
       hub.addEventListener('click', function(e){
         var pick = e.target.closest('[data-mm-pick]');
         if (pick) {
@@ -403,14 +418,15 @@ module.exports = function buildOpportunityCatalog(ctx) {
     });
     apply();
   })();
-  <\\/script>`;
+  </script>`;
 
   /* ---------- CSS ---------- */
   fs.appendFileSync(path.join(root, 'assets/site.css'), `
 /* Opportunity catalog */
 .mm-onboard{max-width:820px;margin:0 auto 28px}
 .mm-onboard h1{font-size:clamp(28px,6vw,44px);margin:8px 0 12px}
-.mm-country-q{width:100%;max-width:520px;background:#101318;border:1px solid var(--line);border-radius:8px;color:var(--text);font:inherit;font-size:16px;padding:12px 14px;margin:0 0 14px}
+.mm-country-label{display:block;font-size:13px;font-weight:800;margin:0 0 6px}
+.mm-country-q{display:block;width:100%;max-width:520px;background:#101318;border:1px solid var(--line);border-radius:8px;color:var(--text);font:inherit;font-size:16px;padding:12px 14px;margin:0 0 14px;position:relative;z-index:2;-webkit-user-select:text;user-select:text}
 .mm-country-list{display:flex;flex-wrap:wrap;gap:8px;max-height:340px;overflow:auto;padding:2px}
 .mm-onboard .mm-country{display:inline-flex;align-items:center;gap:6px}
 .mm-cat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin:16px 0}
@@ -477,6 +493,10 @@ module.exports = function buildOpportunityCatalog(ctx) {
     `<a class="vcat" href="${url('/make-money/' + a.slug + '/')}"><b>${esc(a.title)}</b><span>${esc(a.excerpt || '')}</span></a>`
   ).join('');
 
+  const countryButtons = countries.map(c =>
+    `<button type="button" class="mm-country" data-mm-pick="${esc(c.id)}"><span>${flag(c.id)}</span> ${esc(c.name)}</button>`
+  ).join('');
+
   const hubCrumbs = [{ name: 'Home', path: '/' }, { name: 'BRYME Make Money', path: '/make-money/' }];
   const hubBody = `<main class="shell">
     <div class="crumb"><a href="${url('/')}">Home</a> / BRYME Make Money</div>
@@ -488,8 +508,9 @@ module.exports = function buildOpportunityCatalog(ctx) {
       <div data-mm-step="nationality">
         <h2>What's your nationality?</h2>
         <p class="mm-desk-lead">This is used only to hide opportunities that officially exclude your country. You can change it any time.</p>
-        <input class="mm-country-q" data-mm-country-q type="search" placeholder="Search for a country…" autocomplete="off" aria-label="Search for a country">
-        <div class="mm-country-list" data-mm-countries></div>
+        <label class="mm-country-label" for="mm-country-q">Type your country</label>
+        <input id="mm-country-q" class="mm-country-q" data-mm-country-q type="text" inputmode="search" placeholder="e.g. Nigeria, Ghana, Kenya…" autocomplete="off" autocapitalize="words" spellcheck="false" aria-label="Type your country">
+        <div class="mm-country-list" data-mm-countries>${countryButtons}</div>
       </div>
       <div data-mm-step="categories" hidden>
         <p class="oc-natbar"><button type="button" class="oc-nat-btn" data-mm-change data-mm-nat-label>Change country</button></p>
