@@ -547,11 +547,11 @@ module.exports = function buildOpportunityCatalog(ctx) {
   const wCrumbs = hubCrumbs.concat([{ name: 'Writing', path: '/make-money/writing/' }]);
   const wBody = `<main class="shell wo-page">
     <div class="crumb"><a href="${url('/')}">Home</a> / <a href="${url('/make-money/')}">Make Money</a> / Writing</div>
-    <section class="hero vhero vhero-make-money"><div class="eyebrow">✍️ Writing opportunities</div>
+    <section class="mm-feature mm-feature-photo" style="--hero-img:url('/assets/img/money/hero-writing.jpg')"><div class="sports-feature-inner"><div class="eyebrow">✍️ Writing opportunities</div>
       <h1>Verified places that pay writers.</h1>
-      <p class="lead">Official rates, eligibility, word counts and how to submit — checked against the publication, not copied from a listicle. A gig is not guaranteed.</p>
+      <p>Official rates, eligibility, word counts and how to submit — checked against the publication, not copied from a listicle. A gig is not guaranteed.</p>
       ${typeof sendBar === 'function' ? sendBar('/make-money/writing/', (SENDABLE_META && SENDABLE_META.writing && SENDABLE_META.writing.title) || 'Writing markets BRYME checked') : ''}
-    </section>
+    </div></section>
     <p class="oc-natbar" data-oc-nat></p>
     ${filterBar}
     ${disclaimer}

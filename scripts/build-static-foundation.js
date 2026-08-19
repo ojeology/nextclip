@@ -1373,7 +1373,107 @@ VERTICALS.forEach(v => {
     if (reserved.has(a.slug)) throw new Error(`Article slug "${a.slug}" collides with a ${v.dir} section slug. Rename the article slug in content/${v.dir === 'sports' ? 'sports' : 'make-money'}-articles.json.`);
   });
 });
-const articleCard = (dir, a) => `<a class="vcat" href="${url(articlePathFor(dir, a))}"><b>${esc(a.title)}</b><span>${esc(a.excerpt || '')}</span></a>`;
+
+/* ---------- Shared editorial images (cinematic stills, no fake faces) ---------- */
+const HERO_IMG = {
+  'ballon-dor-race': '/assets/img/sports/hero-ballon-dor.jpg',
+  'world-cup-2026-spain-champions': '/assets/img/sports/hero-world-cup.jpg',
+  'premier-league-matchweek-1-guide': '/assets/img/sports/hero-matchweek.jpg',
+  'arsenal-title-defence': '/assets/img/sports/hero-arsenal.jpg',
+  'manchester-city-without-guardiola': '/assets/img/sports/hero-man-city-manager.jpg',
+  'liverpools-next-chapter': '/assets/img/sports/hero-liverpool.jpg',
+  'newly-promoted-clubs-approach': '/assets/img/sports/hero-premier-league.jpg',
+  'five-matches-we-cannot-wait-to-watch': '/assets/img/sports/hero-matches.jpg',
+  'champions-league-format-explained': '/assets/img/sports/hero-matches.jpg',
+  'champions-league-records': '/assets/img/sports/hero-ballon-dor.jpg',
+  'premier-league-2026-27-season-guide': '/assets/img/sports/hero-premier-league.jpg',
+  'community-shield-2026-arsenal-manchester-city': '/assets/img/sports/hero-arsenal.jpg',
+  'english-champions-since-1888': '/assets/img/sports/hero-premier-league.jpg',
+  'beginners-guide-to-making-money-online': '/assets/img/money/hero-beginner.jpg',
+  'freelance-platform-fees-explained': '/assets/img/money/hero-fees.jpg',
+  'writing-field-notes-how-this-works': '/assets/img/money/hero-writing.jpg',
+  'website-monetization-guide': '/assets/img/money/hero-beginner.jpg',
+  'ai-assistant-data-training-settings': '/assets/img/tech/hero-privacy.jpg',
+  'learning-to-code-on-a-phone-termux': '/assets/img/tech/hero-phone-code.jpg',
+  'render-deployment-failures-what-they-taught-me': '/assets/img/tech/hero-deploy.jpg',
+  'nigerian-thrillers-worth-your-time': '/assets/img/ent/hero-nollywood.jpg',
+  'korean-cinema-starter-guide-rebuilt': '/assets/img/ent/hero-korean.jpg',
+  'indian-cinema-first-five': '/assets/img/ent/hero-indian.jpg',
+  'interstellar-ending-explained': '/assets/img/ent/hero-space.jpg',
+  'movies-like-interstellar-guide': '/assets/img/ent/hero-space.jpg',
+  'dune-sci-fi-epics-guide': '/assets/img/ent/hero-space.jpg',
+  'christopher-nolan-movies-order': '/assets/img/ent/hero-space.jpg',
+  'alien-franchise-in-order': '/assets/img/ent/hero-space.jpg',
+  'movies-like-parasite': '/assets/img/ent/hero-korean.jpg',
+  'squid-game-season-1-why-it-became-a-global-phenomenon': '/assets/img/ent/hero-survival.jpg',
+  'alice-in-borderland-vs-squid-game': '/assets/img/ent/hero-survival.jpg',
+  '10-shows-like-alice-in-borderland-you-should-watch-next': '/assets/img/ent/hero-survival.jpg',
+  'breaking-bad-two-seasons-opinion': '/assets/img/ent/hero-series.jpg',
+  'into-the-badlands-was-underrated': '/assets/img/ent/hero-series.jpg',
+  'prison-break-season-1-watching-all-night': '/assets/img/ent/hero-series.jpg',
+  'why-prison-break-season-1-is-still-one-of-the-best-tv-seasons': '/assets/img/ent/hero-series.jpg',
+  'one-piece-vs-naruto': '/assets/img/ent/hero-anime.jpg',
+  'solo-leveling-e-rank-to-s-rank': '/assets/img/ent/hero-anime.jpg',
+  'was-eren-yeager-really-the-villain': '/assets/img/ent/hero-anime.jpg',
+  '10-anime-like-solo-leveling-you-should-watch': '/assets/img/ent/hero-anime.jpg',
+  'solo-leveling-vs-hunter-x-hunter-the-similarities-and-differences': '/assets/img/ent/hero-anime.jpg',
+  'solo-leveling-from-e-rank-hunter-to-one-of-animes-most-powerful-characters': '/assets/img/ent/hero-anime.jpg'
+};
+const CAT_IMG = {
+  'sports/football': '/assets/img/sports/hero-premier-league.jpg',
+  'sports/champions-league': '/assets/img/sports/hero-matches.jpg',
+  'sports/records': '/assets/img/sports/hero-ballon-dor.jpg',
+  'sports/clubs': '/assets/img/sports/hero-arsenal.jpg',
+  'sports/history': '/assets/img/sports/hero-premier-league.jpg',
+  'sports/international': '/assets/img/sports/hero-world-cup.jpg',
+  'sports/players': '/assets/img/sports/hero-ballon-dor.jpg',
+  'sports/premier-league': '/assets/img/sports/hero-premier-league.jpg',
+  'sports/la-liga': '/assets/img/sports/hero-la-liga.jpg',
+  'sports/serie-a': '/assets/img/sports/hero-serie-a.jpg',
+  'sports/bundesliga': '/assets/img/sports/hero-bundesliga.jpg',
+  'sports/ligue-1': '/assets/img/sports/hero-ligue-1.jpg',
+  'sports/fpl': '/assets/img/sports/hero-fpl.jpg',
+  'sports/transfers': '/assets/img/sports/hero-man-city-manager.jpg',
+  'make-money/freelancing': '/assets/img/money/hero-fees.jpg',
+  'make-money/website-monetization': '/assets/img/money/hero-beginner.jpg',
+  'make-money/content-creation': '/assets/img/money/hero-writing.jpg',
+  'make-money/writing': '/assets/img/money/hero-writing.jpg',
+  'tech/ai-tools': '/assets/img/tech/hero-privacy.jpg',
+  'tech/ai-assistants': '/assets/img/tech/hero-privacy.jpg',
+  'tech/beginner-coding': '/assets/img/tech/hero-phone-code.jpg',
+  'tech/android-apps': '/assets/img/tech/hero-phone-code.jpg',
+  'tech/developer-tools': '/assets/img/tech/hero-deploy.jpg',
+  'hub/entertainment': '/assets/img/ent/hero-cinema.jpg',
+  'hub/movies': '/assets/img/ent/hero-cinema.jpg',
+  'hub/series': '/assets/img/ent/hero-series.jpg',
+  'hub/anime': '/assets/img/ent/hero-anime.jpg',
+  'hub/sports': '/assets/img/sports/hero-premier-league.jpg',
+  'hub/make-money': '/assets/img/money/hero-writing.jpg',
+  'hub/tech': '/assets/img/tech/hero-privacy.jpg',
+  'hub/articles': '/assets/img/ent/hero-cinema.jpg'
+};
+const DIR_FALLBACK = {
+  sports: '/assets/img/sports/hero-premier-league.jpg',
+  'make-money': '/assets/img/money/hero-writing.jpg',
+  tech: '/assets/img/tech/hero-privacy.jpg',
+  entertainment: '/assets/img/ent/hero-cinema.jpg',
+  article: '/assets/img/ent/hero-cinema.jpg'
+};
+function heroFor(slug, dir){
+  if (slug && HERO_IMG[slug]) return HERO_IMG[slug];
+  return DIR_FALLBACK[dir] || '/assets/img/ent/hero-cinema.jpg';
+}
+function catImg(key){ return CAT_IMG[key] || ''; }
+function photoTile(href, title, desc, img){
+  const style = img ? ` style="--card-img:url('${img}')"` : '';
+  return `<a class="vcat${img ? ' vcat-photo' : ''}" href="${url(href)}"${style}><b>${esc(title)}</b><span>${esc(desc)}</span></a>`;
+}
+function storyPhoto(href, kicker, title, desc, img){
+  const style = img ? ` style="--card-img:url('${img}')"` : '';
+  return `<a class="story-photo" href="${url(href)}"${style}><span>${esc(kicker || '')}</span><h3>${esc(title)}</h3><p>${esc(String(desc || '').slice(0, 140))}</p><b>Read story</b></a>`;
+}
+
+const articleCard = (dir, a) => photoTile(articlePathFor(dir, a), a.title, a.excerpt || '', heroFor(a.slug, dir));
 
 const EMPTY_HUB_PATHS = new Set();
 const WRITING_EXTRA_PATHS = [];
@@ -1393,10 +1493,18 @@ function coreHubStrip(currentId, opts){
   opts = opts || {};
   const title = opts.title || 'Also on BRYME';
   const lead = opts.lead || 'The main sections of the site. Open the next one that matches what you came for.';
-  const chips = CORE_HUBS.filter(h => h.id !== currentId).map(h =>
+  const photoIds = opts.photos || [];
+  const photos = photoIds.map((id, i) => {
+    const h = CORE_HUBS.find(x => x.id === id);
+    if (!h) return '';
+    const img = catImg('hub/' + id) || '';
+    return `<a class="hub-photo hub-photo-${h.chip}${i === 0 ? ' hub-photo-first' : ''}" href="${url(h.path)}"${img ? ` style="--card-img:url('${img}')"` : ''}><span>${esc(h.name)}</span><h3>${esc(h.tag)}</h3></a>`;
+  }).join('');
+  const photoSet = new Set(photoIds);
+  const chips = CORE_HUBS.filter(h => h.id !== currentId && !photoSet.has(h.id)).map(h =>
     `<a class="vchip vchip-${h.chip}" href="${url(h.path)}"><span class="vchip-emoji">${h.emoji}</span><span class="vchip-name">${esc(h.name)}</span><span class="vchip-tag">${esc(h.tag)}</span></a>`
   ).join('');
-  return `<section class="section core-hubs" data-core-hubs><div class="section-head"><h2>${esc(title)}</h2></div><p class="section-note">${esc(lead)}</p><div class="vchips">${chips}</div></section>`;
+  return `<section class="section core-hubs" data-core-hubs><div class="section-head"><h2>${esc(title)}</h2></div><p class="section-note">${esc(lead)}</p>${photos ? `<div class="hub-photos">${photos}</div>` : ''}${chips ? `<div class="vchips">${chips}</div>` : ''}</section>`;
 }
 function sendBar(path, title){
   const abs = absUrl(path);
@@ -1498,10 +1606,10 @@ function verticalPage(v, category){
   const catPath = category ? '/' + v.dir + '/' + category.slug + '/' : '/' + v.dir + '/';
   const crumbs = [{name:'Home', path:'/'}, {name:v.name, path:'/' + v.dir + '/'}];
   if (category) crumbs.push({name:category.name, path:catPath});
-  const catGrid = (v.dir === 'make-money' ? `<a class="vcat wo-feature-card" href="${url('/make-money/writing/')}"><b>Writing Field Notes</b><span>I research websites, write to them, and publish what happened. A gig is not guaranteed.</span></a>` : '') + (v.categories || []).map(c => `<a class="vcat" href="${url('/' + v.dir + '/' + c.slug + '/')}"><b>${esc(c.name)}</b><span>${esc(c.desc)}</span></a>`).join('') + (v.dir === 'make-money' ? `<a class="vcat" href="${url('/make-money/beginners-guide-to-making-money-online/')}"><b>Beginner’s Guide to Making Money Online</b><span>An honest, skill-first guide to avoiding shortcuts and building value.</span></a>` : '');
+  const catGrid = (v.dir === 'make-money' ? photoTile('/make-money/writing/', 'Writing Field Notes', 'I research websites, write to them, and publish what happened. A gig is not guaranteed.', catImg('make-money/writing')) : '') + (v.categories || []).map(c => photoTile('/' + v.dir + '/' + c.slug + '/', c.name, c.desc, catImg(v.dir + '/' + c.slug) || catImg('hub/' + v.dir))).join('') + (v.dir === 'make-money' ? photoTile('/make-money/beginners-guide-to-making-money-online/', 'Beginner’s Guide to Making Money Online', 'An honest, skill-first guide to avoiding shortcuts and building value.', heroFor('beginners-guide-to-making-money-online', 'make-money')) : '');
   const sportsEditorial = (() => { const f = path.join(root, 'content', 'sports-articles.json'); if (!fs.existsSync(f)) return []; try { return (JSON.parse(fs.readFileSync(f, 'utf8')).articles || []).filter(a => a.status === 'published'); } catch (_) { return []; } })();
-  const sportsStoriesBlock = (v.dir === 'sports' && !category) ? `<section class="section"><div class="section-head"><h2>BRYME Sports Stories</h2><a href="${url('/sports/articles/')}">All stories</a></div>${sportsEditorial.length ? `<div class="vcat-grid">${sportsEditorial.slice(0, 8).map(a => `<a class="vcat" href="${url(articlePathFor('sports', a))}"><b>${esc(a.title)}</b><span>${esc(a.excerpt || a.category || '')}</span></a>`).join('')}</div>` : `<div class="vstate"><b>Stories are being prepared</b><p>Drafts are researched and reviewed before publication. Published BRYME Sports stories will appear here.</p><a class="quiet-link" href="${url('/sports/articles/')}">Visit the Sports editorial desk</a></div>`}</section>` : '';
-  const sportsFeature = (v.dir === 'sports' && category && category.slug === 'football') ? `<section class="sp-hero" aria-label="Featured BRYME Sports stories"><div class="sp-hero-track"><a class="sp-hero-card sp-hero-first" href="${url('/sports/premier-league-matchweek-1-guide/')}" style="--card-img:url('/assets/img/sports/hero-premier-league.jpg')"><span class="sp-hero-tag">Matchweek 1</span><h3>The opening round, confirmed</h3><p>Every Friday-to-Monday fixture, kick-off time and TV listing. No predictions.</p><span class="sp-hero-go">Read the briefing →</span></a><a class="sp-hero-card" href="${url('/sports/arsenal-title-defence/')}" style="--card-img:url('/assets/img/sports/hero-fpl.jpg')"><span class="sp-hero-tag">Arsenal</span><h3>The title defence starts Friday</h3><p>Champions host Coventry. The Community Shield is already won. The league is not.</p><span class="sp-hero-go">Read the facts →</span></a><a class="sp-hero-card" href="${url('/sports/manchester-city-without-guardiola/')}" style="--card-img:url('/assets/img/sports/hero-man-city-manager.jpg')"><span class="sp-hero-tag">Manchester City</span><h3>After Guardiola: what is confirmed</h3><p>Maresca's appointment, the Community Shield, and Sunday against Bournemouth.</p><span class="sp-hero-go">Read what City announced →</span></a></div></section>` : '';
+  const sportsStoriesBlock = (v.dir === 'sports' && !category) ? `<section class="section"><div class="section-head"><h2>BRYME Sports Stories</h2><a href="${url('/sports/articles/')}">All stories</a></div>${sportsEditorial.length ? `<div class="story-grid">${sportsEditorial.slice(0, 8).map(a => storyPhoto(articlePathFor('sports', a), a.category || 'Sports', a.title, a.excerpt || '', heroFor(a.slug, 'sports'))).join('')}</div>` : `<div class="vstate"><b>Stories are being prepared</b><p>Drafts are researched and reviewed before publication. Published BRYME Sports stories will appear here.</p><a class="quiet-link" href="${url('/sports/articles/')}">Visit the Sports editorial desk</a></div>`}</section>` : '';
+  const sportsFeature = (v.dir === 'sports' && category && category.slug === 'football') ? `<section class="sp-hero" aria-label="Featured BRYME Sports stories"><div class="sp-hero-track"><a class="sp-hero-card sp-hero-first" href="${url('/sports/premier-league-matchweek-1-guide/')}" style="--card-img:url('/assets/img/sports/hero-premier-league.jpg')"><span class="sp-hero-tag">Matchweek 1</span><h3>The opening round, confirmed</h3><p>Every Friday-to-Monday fixture, kick-off time and TV listing. No predictions.</p><span class="sp-hero-go">Read the briefing →</span></a><a class="sp-hero-card" href="${url('/sports/arsenal-title-defence/')}" style="--card-img:url('/assets/img/sports/hero-arsenal.jpg')"><span class="sp-hero-tag">Arsenal</span><h3>The title defence starts Friday</h3><p>Champions host Coventry. The Community Shield is already won. The league is not.</p><span class="sp-hero-go">Read the facts →</span></a><a class="sp-hero-card" href="${url('/sports/manchester-city-without-guardiola/')}" style="--card-img:url('/assets/img/sports/hero-man-city-manager.jpg')"><span class="sp-hero-tag">Manchester City</span><h3>After Guardiola: what is confirmed</h3><p>Maresca's appointment, the Community Shield, and Sunday against Bournemouth.</p><span class="sp-hero-go">Read what City announced →</span></a></div></section>` : '';
   /* ---- Clubs directory: the Clubs hub IS the reference page ----
      Built from content/club-history/*.json, where every club record already carries an
      official source. Capacities come from the fixture venue data where it exists.
@@ -1547,10 +1655,11 @@ function verticalPage(v, category){
       <div class="sp-truth"><b>Why there is no honours column.</b><p>BRYME does not publish major-honours totals until each club has been reconciled against official club and competition honours lists. Trophy counts differ between sources depending on whether defunct competitions, shared titles and regional championships are included, and a table that quietly picks one interpretation is worse than no table. The column will appear when the reconciliation is done, not before.</p></div>
     </section>`;
   })();
-  const footballHub = `<section class="section"><div class="vnote">Football is BRYME’s first fully built sports hub. Pick a competition or follow fixtures, FPL, transfers and the game’s biggest stories.</div><h2 style="margin:26px 0 14px">Football competitions</h2><div class="vcat-grid"><a class="vcat" href="${url('/sports/premier-league/')}"><b>Premier League</b><span>England’s top flight: fixtures, clubs, transfers and FPL.</span></a><a class="vcat" href="${url('/sports/champions-league/')}"><b>Champions League</b><span>Europe’s biggest club competition.</span></a><a class="vcat" href="${url('/sports/la-liga/')}"><b>La Liga</b><span>Spanish football: Real Madrid, Barcelona and beyond.</span></a><a class="vcat" href="${url('/sports/serie-a/')}"><b>Serie A</b><span>Italian football and its storied clubs.</span></a><a class="vcat" href="${url('/sports/bundesliga/')}"><b>Bundesliga</b><span>German football and its fan culture.</span></a><a class="vcat" href="${url('/sports/ligue-1/')}"><b>Ligue 1</b><span>French football, fixtures and clubs.</span></a><a class="vcat" href="${url('/sports/international/')}"><b>International football</b><span>National teams, tournaments and qualifiers.</span></a></div><h2 style="margin:30px 0 14px">Follow the game</h2><div class="vcat-grid"><a class="vcat" href="${url('/sports/fpl/')}"><b>Fantasy Premier League</b><span>Picks, captains and fixture-led decisions.</span></a><a class="vcat" href="${url('/sports/transfers/')}"><b>Transfers</b><span>Verified transfer coverage and market context.</span></a><a class="vcat" href="${url('/sports/players/')}"><b>Players</b><span>Profiles, careers and stories.</span></a><a class="vcat" href="${url('/sports/clubs/')}"><b>Clubs</b><span>Histories, identities and fan culture.</span></a><a class="vcat" href="${url('/sports/history/')}"><b>History</b><span>Historic moments and great eras.</span></a><a class="vcat" href="${url('/sports/records/')}"><b>Records</b><span>Goals, titles, appearances and numbers.</span></a></div></section>`;
+  const footballHub = `<section class="section"><div class="vnote">Football is BRYME’s first fully built sports hub. Pick a competition or follow fixtures, FPL, transfers and the game’s biggest stories.</div><h2 style="margin:26px 0 14px">Football competitions</h2><div class="vcat-grid">${[['premier-league','Premier League','England’s top flight: fixtures, clubs, transfers and FPL.'],['champions-league','Champions League','Europe’s biggest club competition.'],['la-liga','La Liga','Spanish football: Real Madrid, Barcelona and beyond.'],['serie-a','Serie A','Italian football and its storied clubs.'],['bundesliga','Bundesliga','German football and its fan culture.'],['ligue-1','Ligue 1','French football, fixtures and clubs.'],['international','International football','National teams, tournaments and qualifiers.']].map(x => photoTile('/sports/' + x[0] + '/', x[1], x[2], catImg('sports/' + x[0]))).join('')}</div><h2 style="margin:30px 0 14px">Follow the game</h2><div class="vcat-grid">${[['fpl','Fantasy Premier League','Picks, captains and fixture-led decisions.'],['transfers','Transfers','Verified transfer coverage and market context.'],['players','Players','Profiles, careers and stories.'],['clubs','Clubs','Histories, identities and fan culture.'],['history','History','Historic moments and great eras.'],['records','Records','Goals, titles, appearances and numbers.']].map(x => photoTile('/sports/' + x[0] + '/', x[1], x[2], catImg('sports/' + x[0]))).join('')}</div></section>`;
   const sportsTeaserBlock = (v.dir === 'sports' && !category) ? `<section class="section sports-teaser"><div class="section-head"><h2>Premier League 2026/27</h2></div><div class="trailer-frame" style="max-width:100%"><iframe width="100%" height="500" src="https://www.youtube.com/embed/nx8rgJrmSFY" title="Premier League 2026/27 — The Wait Is Over" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen><\/iframe></div></section>` : '';
   const fixturesBlock = (v.dir === 'sports' && !category) ? '<section class="section"><div class="section-head"><h2>Fixtures &amp; Results 2026/27</h2></div><div class="vcat-grid">' + LEAGUE_FIX.map(lg => { const sum = leagueFixturesSummary(lg.slug); const tr = transferStats(lg.slug); const bits = ['All ' + sum.total + ' fixtures — dates, kickoffs & match pages']; if (tr.in + tr.out > 0) bits.push(tr.in + ' in / ' + tr.out + ' out tracked'); return '<a class="vcat" href="' + url('/sports/' + lg.slug + '/fixtures/') + '"><b>' + esc(lg.name) + '</b><span>' + esc(bits.join(' · ')) + '</span></a>'; }).join('') + '<a class="vcat" href="' + url('/sports/managers-2026-27/') + '"><b>Managers</b><span>Managers In &amp; Out — 2026/27</span></a></div></section>' : '';
-  const defaultHero = `<section class="hero vhero vhero-${v.dir}" data-vertical="${v.dir}"><div class="eyebrow">${v.emoji} ${category ? esc(v.name) + ' · ' + esc(category.name) : esc(v.name)}</div><h1>${esc(category ? category.name : v.name)}</h1><p class="lead">${esc(category ? category.desc : v.tagline)}</p></section>`;
+  const defaultHeroImg = category ? (catImg(v.dir + '/' + category.slug) || catImg('hub/' + v.dir)) : catImg('hub/' + v.dir);
+  const defaultHero = `<section class="hero vhero vhero-${v.dir}${defaultHeroImg ? ' vhero-photo' : ''}" data-vertical="${v.dir}"${defaultHeroImg ? ` style="--hero-img:url('${defaultHeroImg}')"` : ''}><div class="eyebrow">${v.emoji} ${category ? esc(v.name) + ' · ' + esc(category.name) : esc(v.name)}</div><h1>${esc(category ? category.name : v.name)}</h1><p class="lead">${esc(category ? category.desc : v.tagline)}</p></section>`;
   const sportsRootHero = (v.dir === 'sports' && !category) ? `<section class="sports-feature"><div class="sports-feature-inner"><div class="eyebrow">⚽ BRYME Sports</div><h1>Football, covered properly.</h1><p>${esc(v.tagline)}</p></div></section>
     <section class="sp-hero" aria-label="Featured BRYME Sports stories"><div class="sp-hero-track">
       <a class="sp-hero-card sp-hero-first" href="${url('/sports/ballon-dor-race/')}" style="--card-img:url('/assets/img/sports/hero-ballon-dor.jpg')"><span class="sp-hero-tag">Ballon d'Or</span><h3>London, 26 October. The winner is not decided.</h3><p>The 70th ceremony is confirmed. Last year's winners are confirmed. This year's names are not.</p><span class="sp-hero-go">Read what UEFA announced →</span></a>
@@ -1788,7 +1897,7 @@ write('', layout({
     <div class="hero-video" data-hero-video hidden></div>
   </section>
   <div class="home-main">
-  <section class="home-section brand-strip"><div class="shell"><p class="brand-slogan">Discover what you love. Learn what you need. Find what's next.</p>${coreHubStrip('home', { title: 'Explore BRYME', lead: 'Start with a section, then follow the titles and guides inside it.' }).replace('<section class="section core-hubs" data-core-hubs>', '<section class="core-hubs" data-core-hubs>')}</div></section>
+  <section class="home-section brand-strip"><div class="shell"><p class="brand-slogan">Discover what you love. Learn what you need. Find what's next.</p>${coreHubStrip('home', { title: 'Explore BRYME', lead: 'Start with a section, then follow the titles and guides inside it.', photos: ['entertainment','sports','make-money','tech'] }).replace('<section class="section core-hubs" data-core-hubs>', '<section class="core-hubs" data-core-hubs>')}</div></section>
   <section class="home-section rec-section" id="recommend">
     <div class="shell rec-inner">
       <div class="rec-copy"><div class="eyebrow">Personalised discovery</div><h2>DON'T KNOW WHAT TO WATCH?</h2><p class="rec-sub">Tell us one movie or series you loved. We'll find your next watch.</p></div>
@@ -1808,7 +1917,7 @@ write('', layout({
   ${railSection('Anime', '🍥', browseAnime, '/anime/', 'Keep exploring the anime catalogue.', {variant:'chart', eyebrow:'Browse'})}
   ${livePreviewBlock(24)}
   <section class="home-section"><div class="shell"><div class="section-head"><h2>🎭 Browse by genre</h2><a href="${url('/genres/')}">All genres</a></div><div class="genre-trio"><div class="genre-panel"><h3>🎬 Movie genres <span class="gp-count">${movies.filter(m=>m.typeDir==='movie').length} films</span></h3><div class="genre-chips">${genreChips(movies.filter(m=>m.typeDir==='movie'), 'movies', 9)}</div></div><div class="genre-panel"><h3>📺 Series genres <span class="gp-count">${movies.filter(m=>m.typeDir==='series').length} shows</span></h3><div class="genre-chips">${genreChips(movies.filter(m=>m.typeDir==='series'), 'series', 9)}</div></div><div class="genre-panel"><h3>🍥 Anime genres <span class="gp-count">${movies.filter(m=>m.typeDir==='anime').length} titles</span></h3><div class="genre-chips">${genreChips(movies.filter(m=>m.typeDir==='anime'), 'anime', 9)}</div></div></div></div></section>
-  <section class="home-section"><div class="shell"><div class="section-head"><div><div class="eyebrow">From the editorial desk</div><h2>📰 Latest articles</h2></div><a href="${url('/articles/')}">All stories</a></div><div class="story-grid">${latestArticles.map(a => `<a href="${url('/article/' + a.slug + '/')}"><span>${esc(a.category)}</span><h3>${esc(a.title)}</h3><p>${esc(a.description)}</p><b>Read story</b></a>`).join('')}</div></div></section>
+  <section class="home-section"><div class="shell"><div class="section-head"><div><div class="eyebrow">From the editorial desk</div><h2>📰 Latest articles</h2></div><a href="${url('/articles/')}">All stories</a></div><div class="story-grid">${latestArticles.map(a => storyPhoto('/article/' + a.slug + '/', a.category, a.title, a.description || '', heroFor(a.slug, 'entertainment'))).join('')}</div></div></section>
   <section class="discover-cta"><div><div class="eyebrow">Full catalogue</div><h2>Pick a lane: Movies, Series or Anime.</h2><p>Each section is strictly filtered to its own content type. No mixed-up walls of posters.</p></div><a class="cta" href="${url('/search/')}">Search everything</a></div></section></div></main><script id="hero-data" type="application/json">${heroEmbed}</script>`
 }));
 
@@ -2217,16 +2326,21 @@ write('entertainment', layout({
   description: 'BRYME Entertainment: 630+ movies, TV series and anime with verified trailers, editorial articles and curated recommendations.',
   path: '/entertainment/', activeNav: 'entertainment',
   schema: [{ '@context':'https://schema.org', '@type':'CollectionPage', name:'BRYME Entertainment', description:'Movies, TV series and anime discovery on BRYME.', url:url('/entertainment/') }, breadcrumbs([{name:'Home', path:'/'}, {name:'BRYME Entertainment', path:'/entertainment/'}])],
-  body: `<main class="shell"><section class="hero"><div class="eyebrow">🎬 BRYME Entertainment</div><h1>Movies, series &amp; anime worth your time.</h1><p class="lead">Browse 630+ titles with verified trailers, editorial articles and curated recommendations — all in one place.</p></section>
-  <section class="section"><div class="grid-2" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px">${[['Movies','/movies/','🎬'],['Series','/series/','📺'],['Anime','/anime/','🍥'],['Articles','/articles/','📰'],['Genres','/genres/','🎭'],['Years','/years/','🗓️'],['Trending & Picks','/trending/','🔥'],['Topics','/topics/','🧭']].map(x => `<a class="vcat" href="${url(x[1])}"><b>${x[2]} ${x[0]}</b><span>Explore the ${x[0].toLowerCase()} section</span></a>`).join('')}</div></section>
+  body: `<main class="shell"><section class="ent-feature ent-feature-photo" style="--hero-img:url('/assets/img/ent/hero-cinema.jpg')"><div class="ent-feature-inner"><div class="eyebrow">🎬 BRYME Entertainment</div><h1>Movies, series &amp; anime worth your time.</h1><p>Browse 630+ titles with verified trailers, editorial articles and curated recommendations — all in one place.</p></div></section>
+    <section class="sp-hero" aria-label="Featured BRYME Entertainment stories"><div class="sp-hero-track">
+      <a class="sp-hero-card sp-hero-first ent-tint" href="${url('/article/nigerian-thrillers-worth-your-time/')}" style="--card-img:url('/assets/img/ent/hero-nollywood.jpg')"><span class="sp-hero-tag">Nigeria</span><h3>Five Nigerian thrillers to start with</h3><p>October 1, The Figurine, Brotherhood and two more. A short list, not a dump.</p><span class="sp-hero-go">Read the guide →</span></a>
+      <a class="sp-hero-card ent-tint" href="${url('/article/squid-game-season-1-why-it-became-a-global-phenomenon/')}" style="--card-img:url('/assets/img/ent/hero-survival.jpg')"><span class="sp-hero-tag">Series</span><h3>Why Squid Game travelled</h3><p>The first season, the hook, and why it is still the show people name.</p><span class="sp-hero-go">Read the piece →</span></a>
+      <a class="sp-hero-card ent-tint" href="${url('/article/korean-cinema-starter-guide-rebuilt/')}" style="--card-img:url('/assets/img/ent/hero-korean.jpg')"><span class="sp-hero-tag">Korean cinema</span><h3>A starter guide by mood</h3><p>Not a dump of every Palme d'Or. A route through films already on BRYME.</p><span class="sp-hero-go">Open the guide →</span></a>
+    </div></section>
+  <section class="section"><div class="grid-2" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px">${[['Movies','/movies/','🎬','hub/movies'],['Series','/series/','📺','hub/series'],['Anime','/anime/','🍥','hub/anime'],['Articles','/articles/','📰','hub/articles'],['Genres','/genres/','🎭','hub/entertainment'],['Years','/years/','🗓️','hub/entertainment'],['Trending & Picks','/trending/','🔥','hub/entertainment'],['Topics','/topics/','🧭','hub/entertainment']].map(x => photoTile(x[1], x[2] + ' ' + x[0], 'Explore the ' + x[0].toLowerCase() + ' section', catImg(x[3]))).join('')}</div></section>
   <section class="section"><div class="section-head"><h2>🔥 Trending Now</h2><a href="${url('/trending/')}">View all</a></div><div class="rail">${trendNow.slice(0, 10).map(card).join('')}</div></section>
   <section class="section"><div class="section-head"><h2>⭐ Popular Movies</h2><a href="${url('/movies/')}">All movies</a></div><div class="rail">${popularMovies.slice(0, 10).map(card).join('')}</div></section>
   <section class="section"><div class="section-head"><h2>⭐ Popular Series</h2><a href="${url('/series/')}">All series</a></div><div class="rail">${popularSeries.slice(0, 10).map(card).join('')}</div></section>
   <section class="section"><div class="section-head"><h2>⭐ Popular Anime</h2><a href="${url('/anime/')}">All anime</a></div><div class="rail">${popularAnime.slice(0, 10).map(card).join('')}</div></section>
   <section class="section"><div class="section-head"><h2>Start here</h2><a href="${url('/articles/')}">All stories</a></div>
   <p class="section-note">These are existing BRYME pieces — not new URLs dumped for a crawler.</p>
-  <div class="story-grid">${['nigerian-thrillers-worth-your-time','korean-cinema-starter-guide-rebuilt','dune-sci-fi-epics-guide','christopher-nolan-movies-order','squid-game-season-1-why-it-became-a-global-phenomenon','10-anime-like-solo-leveling-you-should-watch'].map(slug => articles.find(a => a.slug === slug)).filter(Boolean).map(a => `<a href="${url('/article/' + a.slug + '/')}"><span>${esc(a.category)}</span><h3>${esc(a.title)}</h3><p>${esc((a.description || '').slice(0, 120))}</p><b>Read story</b></a>`).join('')}</div></section>
-  <section class="section"><div class="section-head"><h2>📰 Latest articles</h2><a href="${url('/articles/')}">All stories</a></div><div class="story-grid">${latestArticles.map(a => `<a href="${url('/article/' + a.slug + '/')}"><span>${esc(a.category)}</span><h3>${esc(a.title)}</h3><p>${esc(a.description.slice(0, 120))}</p><b>Read story</b></a>`).join('')}</div></section>
+  <div class="story-grid">${['nigerian-thrillers-worth-your-time','korean-cinema-starter-guide-rebuilt','dune-sci-fi-epics-guide','christopher-nolan-movies-order','squid-game-season-1-why-it-became-a-global-phenomenon','10-anime-like-solo-leveling-you-should-watch'].map(slug => articles.find(a => a.slug === slug)).filter(Boolean).map(a => storyPhoto('/article/' + a.slug + '/', a.category, a.title, a.description || '', heroFor(a.slug, 'entertainment'))).join('')}</div></section>
+  <section class="section"><div class="section-head"><h2>📰 Latest articles</h2><a href="${url('/articles/')}">All stories</a></div><div class="story-grid">${latestArticles.map(a => storyPhoto('/article/' + a.slug + '/', a.category, a.title, a.description || '', heroFor(a.slug, 'entertainment'))).join('')}</div></section>
   ${coreHubStrip('entertainment')}</main>`
 }));
 
@@ -2978,7 +3092,7 @@ for (const t of typeConfig) {
     activeNav: t.activeNav,
     image: list[0] ? posterOrCard(list[0]) : undefined,
     schema: [{ '@context':'https://schema.org', '@type':'CollectionPage', name:t.label + ' on BRYME', description:tDesc, url:url('/' + t.pageDir + '/') }, breadcrumbs([{name:'Home', path:'/'}, {name:t.label, path:'/' + t.pageDir + '/'}])],
-    body: `<main class="shell"><section class="hero"><div class="eyebrow">${t.seoNote}</div><h1>${esc(t.label)}</h1><p class="lead">${esc(tDesc)}</p></section>${coreHubStrip(t.pageDir === 'movies' ? 'movies' : t.dir, { title: 'Also on BRYME', lead: 'From here you can jump to series, anime, football, money guides or tech — or stay and browse this catalogue.' })}${t.dir === 'movie' ? `<section class="section"><div class="section-head"><h2>Start with these</h2></div><p class="section-note">Flagship pages with a full BRYME write-up — open one, then follow related titles.</p><div class="rail">${['dune-part-two','interstellar','parasite','oppenheimer','black-panther','a-tribe-called-judah','93-days','october-1'].map(s => slugIndex.get(s)).filter(Boolean).map(card).join('')}</div></section>` : ''}<section class="section"><h2>Browse ${esc(t.label.toLowerCase())}</h2>${filterBar}<p class="count-line" data-count>${list.length} ${t.label.toLowerCase()} in the catalogue</p>${progressiveGrid(list, 40)}</section><script id="catalogue-data" type="application/json">${json}<\/script></main>`
+    body: `<main class="shell"><section class="cat-feature" style="--hero-img:url('${t.dir === 'movie' ? '/assets/img/ent/hero-cinema.jpg' : (t.dir === 'series' ? '/assets/img/ent/hero-series.jpg' : '/assets/img/ent/hero-anime.jpg')}')"><div class="eyebrow">${t.seoNote}</div><h1>${esc(t.label)}</h1><p class="lead">${esc(tDesc)}</p></section>${coreHubStrip(t.pageDir === 'movies' ? 'movies' : t.dir, { title: 'Also on BRYME', lead: 'From here you can jump to series, anime, football, money guides or tech — or stay and browse this catalogue.' })}${t.dir === 'movie' ? `<section class="section"><div class="section-head"><h2>Start with these</h2></div><p class="section-note">Flagship pages with a full BRYME write-up — open one, then follow related titles.</p><div class="rail">${['dune-part-two','interstellar','parasite','oppenheimer','black-panther','a-tribe-called-judah','93-days','october-1'].map(s => slugIndex.get(s)).filter(Boolean).map(card).join('')}</div></section>` : ''}<section class="section"><h2>Browse ${esc(t.label.toLowerCase())}</h2>${filterBar}<p class="count-line" data-count>${list.length} ${t.label.toLowerCase()} in the catalogue</p>${progressiveGrid(list, 40)}</section><script id="catalogue-data" type="application/json">${json}<\/script></main>`
   }));
 }
 
@@ -3515,7 +3629,7 @@ write('articles', layout({
   title: 'Editorial – Movie, Series & Anime guides',
   description: 'Original editorial from BRYME: movie lists, explainers and guides that link back to the catalogue.',
   path: '/articles/', activeNav: 'articles',
-  body: `<main class="shell"><section class="hero"><div class="eyebrow">Editorial</div><h1>Stories behind the screen.</h1><p class="lead">Original guides and lists — separate from the catalogue, and always linking back to the movies, series and anime they talk about.</p></section><section class="section"><div class="list">${articles.map(articleRow).join('')}</div></section></main>`
+  body: `<main class="shell"><section class="ent-feature ent-feature-photo" style="--hero-img:url('/assets/img/ent/hero-cinema.jpg')"><div class="ent-feature-inner"><div class="eyebrow">Editorial</div><h1>Stories behind the screen.</h1><p>Original guides and lists — separate from the catalogue, and always linking back to the movies, series and anime they talk about.</p></div></section><section class="section"><div class="story-grid">${articles.map(a => storyPhoto('/article/' + a.slug + '/', a.category, a.title, a.description || '', heroFor(a.slug, 'entertainment'))).join('')}</div></section></main>`
 }));
 for (const a of articles) {
   const relatedMovies = (a.relatedMovieSlugs || []).map(slug => slugIndex.get(slug)).filter(Boolean);
@@ -3527,8 +3641,8 @@ for (const a of articles) {
     description: (SENDABLE_META[a.slug] && SENDABLE_META[a.slug].desc) || a.description,
     path: `/article/${a.slug}/`, activeNav: 'articles', ogType: 'article',
     schema: [schema, breadcrumbs([{name:'Home', path:'/'}, {name:'Articles', path:'/articles/'}, {name:a.title, path:`/article/${a.slug}/`}])],
-    image: relatedMovies[0] ? poster(relatedMovies[0]) : undefined,
-    body: `<main class="shell"><div class="crumb"><a href="${url('/articles/')}">Editorial</a> / ${esc(a.title)}</div><section class="article-hero"><div class="eyebrow">${esc(a.category)}</div><h1>${esc(a.title)}</h1><p class="lead">${esc(a.description)}</p><div class="article-meta">${a.author ? 'By ' + esc(a.author) + ' · ' : ''}Editorial guide · ${a.createdAt ? 'Published ' + esc(a.createdAt) + ' · ' : ''}${a.updatedAt ? 'Last updated ' + esc(a.updatedAt) + ' · ' : ''}Reading time: about ${Math.max(2, Math.ceil(articleWordCount(a) / 220))} minutes</div>${SENDABLE_META[a.slug] ? sendBar("/article/" + a.slug + "/", SENDABLE_META[a.slug].title || a.title) : `<button class="quiet-link share-action" type="button" data-share-path="/article/${a.slug}/" data-share-title="${esc(a.title)}">Share</button>`}</section><article class="prose article-body">${articleBlocks(a)}<section class="article-related"><h2>Related titles</h2>${relatedMovies.length ? `<div class="grid">${relatedMovies.map(card).join('')}</div>` : '<p>Related titles will be added when there is a useful match.</p>'}<h2>Keep reading</h2>${relatedStories.length ? `<div class="list">${relatedStories.map(articleRow).join('')}</div>` : ''}</section></article></main>`
+    image: heroFor(a.slug, 'entertainment'),
+    body: `<main class="shell"><div class="crumb"><a href="${url('/articles/')}">Editorial</a> / ${esc(a.title)}</div><section class="article-hero article-hero-photo" style="--hero-img:url('${heroFor(a.slug, 'entertainment')}')"><div class="eyebrow">${esc(a.category)}</div><h1>${esc(a.title)}</h1><p class="lead">${esc(a.description)}</p><div class="article-meta">${a.author ? 'By ' + esc(a.author) + ' · ' : ''}Editorial guide · ${a.createdAt ? 'Published ' + esc(a.createdAt) + ' · ' : ''}${a.updatedAt ? 'Last updated ' + esc(a.updatedAt) + ' · ' : ''}Reading time: about ${Math.max(2, Math.ceil(articleWordCount(a) / 220))} minutes</div>${SENDABLE_META[a.slug] ? sendBar("/article/" + a.slug + "/", SENDABLE_META[a.slug].title || a.title) : `<button class="quiet-link share-action" type="button" data-share-path="/article/${a.slug}/" data-share-title="${esc(a.title)}">Share</button>`}</section><article class="prose article-body">${articleBlocks(a)}<section class="article-related"><h2>Related titles</h2>${relatedMovies.length ? `<div class="grid">${relatedMovies.map(card).join('')}</div>` : '<p>Related titles will be added when there is a useful match.</p>'}<h2>Keep reading</h2>${relatedStories.length ? `<div class="list">${relatedStories.map(articleRow).join('')}</div>` : ''}</section></article></main>`
   }));
 }
 write('topics', layout({
@@ -3735,8 +3849,9 @@ function renderVerticalArticle(dir, verticalName, a) {
 
   const updated = a.updatedAt && a.updatedAt !== a.publishedAt ? ` · updated ${esc(a.updatedAt)}` : '';
   const send = SENDABLE_META[a.slug] ? sendBar(pagePath, SENDABLE_META[a.slug].title || a.title) : '';
+  const heroImg = heroFor(a.slug, dir);
   const body = `<main class="shell"><div class="crumb">${crumbs.slice(0, -1).map(c => `<a href="${url(c.path)}">${esc(c.name)}</a>`).join(' / ')} / ${esc(a.title)}</div>
-  <section class="article-hero"><div class="eyebrow">${esc(cat ? cat.name : verticalName)}</div><h1>${esc(a.title)}</h1>${a.excerpt ? `<p class="lead">${esc(a.excerpt)}</p>` : ''}<div class="article-meta">${a.author ? `<span>${authorLink(a.author)}</span>` : ''}${a.publishedAt ? `<span>${esc(a.publishedAt)}${updated}</span>` : ''}${a.readingTime ? `<span>${esc(a.readingTime)}</span>` : ''}</div>${send}</section>
+  <section class="article-hero article-hero-photo" style="--hero-img:url('${heroImg}')"><div class="eyebrow">${esc(cat ? cat.name : verticalName)}</div><h1>${esc(a.title)}</h1>${a.excerpt ? `<p class="lead">${esc(a.excerpt)}</p>` : ''}<div class="article-meta">${a.author ? `<span>${authorLink(a.author)}</span>` : ''}${a.publishedAt ? `<span>${esc(a.publishedAt)}${updated}</span>` : ''}${a.readingTime ? `<span>${esc(a.readingTime)}</span>` : ''}</div>${send}</section>
   <article class="prose article-body">${sections}</article>
   ${sourceBlock}${relatedBlock}</main>`;
 
@@ -3746,6 +3861,7 @@ function renderVerticalArticle(dir, verticalName, a) {
     path: pagePath,
     activeNav: dir,
     ogType: 'article',
+    image: heroImg,
     schema: [{
       '@context': 'https://schema.org', '@type': 'Article',
       headline: a.title,
@@ -3759,7 +3875,8 @@ function renderVerticalArticle(dir, verticalName, a) {
       })(),
       publisher: { '@type': 'Organization', name: site.name },
       mainEntityOfPage: absUrl(pagePath),
-      articleSection: cat ? cat.name : verticalName
+      articleSection: cat ? cat.name : verticalName,
+      image: absUrl(heroImg)
     }, breadcrumbs(crumbs)],
     body
   }));
@@ -4475,6 +4592,172 @@ fs.appendFileSync(path.join(root,'assets/site.css'), `
   .mm-feature:after,.tech-feature:after{font-size:110px;right:-8px;bottom:-28px}
   .mm-feature p,.tech-feature p{font-size:13.5px;line-height:1.45}
 }
+`);
+fs.appendFileSync(path.join(root,'assets/site.css'), `
+
+/* ============================================================
+   MORE IMAGES — photo tiles, article heroes, hub photos,
+   entertainment / catalogue banners. Desktop sports cards
+   keep their existing size. Mobile compactness only below 760.
+   ============================================================ */
+.vcat-photo{
+  position:relative;isolation:isolate;overflow:hidden;min-height:148px;
+  color:#f4f5f6;border-color:rgba(255,255,255,.12);background:#101318
+}
+.vcat-photo:before{
+  content:"";position:absolute;inset:0;z-index:-1;
+  background-image:linear-gradient(180deg,rgba(8,9,11,.18),rgba(8,9,11,.86)),var(--card-img);
+  background-size:cover;background-position:center
+}
+.vcat-photo b,.vcat-photo span{position:relative;z-index:1;text-shadow:0 1px 8px rgba(0,0,0,.75)}
+.vcat-photo span{color:#d5dbe0}
+.vcat-photo:hover{transform:translateY(-2px)}
+
+.story-grid a.story-photo,
+a.story-photo{
+  position:relative;isolation:isolate;overflow:hidden;min-height:230px;
+  color:#f4f5f6;background:#111419;display:flex;flex-direction:column;align-items:flex-start;
+  padding:22px
+}
+a.story-photo:before{
+  content:"";position:absolute;inset:0;z-index:0;
+  background-image:linear-gradient(180deg,rgba(8,9,11,.12) 0%,rgba(8,9,11,.88) 100%),var(--card-img);
+  background-size:cover;background-position:center
+}
+a.story-photo > *{position:relative;z-index:1;text-shadow:0 1px 8px rgba(0,0,0,.8)}
+a.story-photo span{color:#e7bb5c}
+a.story-photo h3{color:#fff}
+a.story-photo p{color:#d5dbe0}
+a.story-photo b{color:#fff}
+a.story-photo:hover{filter:brightness(1.06)}
+
+.hub-photos{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0 8px
+}
+.hub-photo{
+  position:relative;isolation:isolate;overflow:hidden;min-height:188px;
+  border-radius:12px;padding:18px;display:flex;flex-direction:column;justify-content:flex-end;
+  border:1px solid rgba(255,255,255,.12);color:#fff
+}
+.hub-photo:before{
+  content:"";position:absolute;inset:0;z-index:0;
+  background-image:linear-gradient(180deg,rgba(8,9,11,.1),rgba(8,9,11,.88)),var(--card-img);
+  background-size:cover;background-position:center
+}
+.hub-photo > *{position:relative;z-index:1;text-shadow:0 2px 10px rgba(0,0,0,.85)}
+.hub-photo span{font-size:11px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:#e7bb5c}
+.hub-photo h3{font-size:18px;line-height:1.2;margin:6px 0 0;color:#fff}
+.hub-photo-sports span{color:#7dffb9}
+.hub-photo-make-money span{color:#e7bb5c}
+.hub-photo-tech span{color:#9ec0ff}
+.hub-photo-entertainment span{color:#ffb08e}
+.hub-photo:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(0,0,0,.35)}
+
+.ent-feature{
+  position:relative;display:grid;place-items:center;min-height:320px;
+  margin:0 -20px 10px;padding:36px 24px;overflow:hidden;text-align:center;
+  isolation:isolate;border-bottom:1px solid rgba(233,75,44,.35);
+  background:radial-gradient(ellipse at 50% 110%,rgba(233,75,44,.28),transparent 47%),linear-gradient(135deg,#1a0c0a 0%,#180e0c 48%,#080b0d 100%)
+}
+.ent-feature.ent-feature-photo:before,
+.mm-feature.mm-feature-photo:before,
+.cat-feature:before,
+.vhero-photo:before,
+.article-hero-photo:before{
+  content:"";position:absolute;inset:0;z-index:-2;
+  background-image:var(--hero-img);background-size:cover;background-position:center
+}
+.ent-feature.ent-feature-photo:after,
+.mm-feature.mm-feature-photo:after,
+.cat-feature:after{
+  content:"";position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(180deg,rgba(8,9,11,.25),rgba(8,9,11,.78))
+}
+.ent-feature-inner{max-width:760px}
+.ent-feature .eyebrow{color:#ffb08e}
+.ent-feature h1{font-size:clamp(32px,5.5vw,58px);line-height:1.02;letter-spacing:-.03em;margin:10px auto;color:#fff}
+.ent-feature p{max-width:610px;margin:0 auto;font-size:clamp(15px,2vw,17px);line-height:1.55;color:#f0d4c8}
+
+.sp-hero-card.ent-tint{background:linear-gradient(150deg,#241412,#140e0c 70%);border-color:rgba(233,75,44,.28)}
+.sp-hero-card.ent-tint:before{background:radial-gradient(240px 120px at 80% 0,rgba(233,75,44,.75),transparent 70%)}
+.sp-hero-card.ent-tint .sp-hero-tag,
+.sp-hero-card.ent-tint .sp-hero-go{color:#ffb08e}
+
+.cat-feature{
+  position:relative;display:grid;place-items:end start;min-height:240px;
+  margin:0 -20px 10px;padding:42px 24px 28px;overflow:hidden;isolation:isolate;
+  border-bottom:1px solid var(--line);color:#fff
+}
+.cat-feature h1{font-size:clamp(32px,5vw,56px);line-height:1.04;margin:8px 0;color:#fff}
+.cat-feature .lead,.cat-feature p{max-width:640px;color:#e6e8ea}
+.cat-feature .eyebrow{color:#ffb08e}
+
+.mm-feature.mm-feature-photo{background:#1a1408}
+.mm-feature.mm-feature-photo .eyebrow,
+.mm-feature.mm-feature-photo h1,
+.mm-feature.mm-feature-photo p{position:relative;z-index:1}
+
+.vhero-photo{position:relative;isolation:isolate;overflow:hidden;min-height:210px}
+.vhero-photo:after{
+  content:"";position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(100deg,rgba(8,9,11,.82),rgba(8,9,11,.45) 70%,rgba(8,9,11,.7))
+}
+.vhero-photo h1,.vhero-photo .lead,.vhero-photo .eyebrow{position:relative;z-index:1}
+
+.article-hero-photo{
+  position:relative;isolation:isolate;overflow:hidden;
+  max-width:none;margin:8px -20px 0;padding:92px 20px 34px;min-height:320px;
+  display:flex;flex-direction:column;justify-content:flex-end
+}
+.article-hero-photo:after{
+  content:"";position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(180deg,rgba(8,9,11,.12) 0%,rgba(8,9,11,.55) 48%,rgba(8,9,11,.94) 100%)
+}
+.article-hero-photo h1{
+  background:none;-webkit-background-clip:unset;background-clip:unset;color:#fff;max-width:820px
+}
+.article-hero-photo .lead{color:#e6e8ea;max-width:760px}
+.article-hero-photo .eyebrow,
+.article-hero-photo .article-meta{color:#d5dbe0}
+.article-hero-photo .article-meta a{color:#fff}
+
+.sa-card.sa-card-photo{
+  position:relative;isolation:isolate;overflow:hidden;color:#f4f5f6;min-height:210px
+}
+.sa-card.sa-card-photo:before{
+  content:"";position:absolute;inset:0;z-index:0;
+  background-image:linear-gradient(180deg,rgba(8,9,11,.15),rgba(8,9,11,.9)),var(--card-img);
+  background-size:cover;background-position:center
+}
+.sa-card.sa-card-photo > *{position:relative;z-index:1}
+
+[data-theme="light"] .ent-feature h1,
+[data-theme="light"] .ent-feature .eyebrow,
+[data-theme="light"] .cat-feature h1,
+[data-theme="light"] .cat-feature .eyebrow,
+[data-theme="light"] .article-hero-photo h1,
+[data-theme="light"] .hub-photo h3,
+[data-theme="light"] .vcat-photo b,
+[data-theme="light"] a.story-photo h3{
+  background:none;-webkit-background-clip:unset;background-clip:unset;color:#fff
+}
+[data-theme="light"] .ent-feature p,
+[data-theme="light"] .cat-feature .lead,
+[data-theme="light"] .article-hero-photo .lead,
+[data-theme="light"] .vcat-photo span,
+[data-theme="light"] a.story-photo p{color:#e6e8ea}
+
+@media(max-width:760px){
+  .hub-photos{grid-template-columns:1fr 1fr;gap:8px;margin:12px 0 4px}
+  .hub-photo{min-height:132px;padding:12px;border-radius:10px}
+  .hub-photo h3{font-size:14px}
+  .ent-feature,.cat-feature{min-height:190px;margin:0 -12px 4px;padding:22px 14px}
+  .ent-feature h1,.cat-feature h1{font-size:26px}
+  .article-hero-photo{min-height:220px;padding:56px 14px 20px;margin:4px -12px 0}
+  .vcat-photo{min-height:120px}
+  a.story-photo{min-height:170px;padding:16px}
+}
+
 `);
 if (warnings.length) {
   console.log('WARNINGS:');
