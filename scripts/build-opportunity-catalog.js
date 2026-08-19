@@ -530,7 +530,7 @@ module.exports = function buildOpportunityCatalog(ctx) {
 
   write('make-money', layout({
     title: 'BRYME Make Money – verified paid opportunities by country',
-    description: 'Find legitimate online earning opportunities relevant to your country and skill. Writing is live. We verify listings against official guidelines and do not guarantee acceptance or payment.',
+    description: 'Find legitimate paid writing and other online opportunities for your country. Listings are checked against official guidelines. Acceptance is not guaranteed.',
     path: '/make-money/',
     activeNav: 'make-money',
     schema: [{ '@context': 'https://schema.org', '@type': 'CollectionPage', name: 'BRYME Make Money', url: absUrl('/make-money/') }, breadcrumbs(hubCrumbs)],
@@ -555,7 +555,7 @@ module.exports = function buildOpportunityCatalog(ctx) {
   </main>${catalogScript}`;
 
   write('make-money/writing', layout({
-    title: 'Writing opportunities – verified paid calls | BRYME',
+    title: 'Writing opportunities – verified paid calls',
     description: 'Paid writing opportunities verified against official guidelines. Filter by country, pay, word count, AI policy and deadline. Acceptance is not guaranteed.',
     path: '/make-money/writing/',
     activeNav: 'make-money',

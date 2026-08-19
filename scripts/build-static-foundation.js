@@ -1039,6 +1039,24 @@ const VERIFY_TAGS = [
   site.yandexVerification ? `<meta name="yandex-verification" content="${esc(site.yandexVerification)}">` : ''
 ].join('');
 
+
+function clipMeta(s, n){
+  s = String(s || '').replace(/\s+/g, ' ').trim();
+  if (s.length <= n) return s;
+  const cut = s.slice(0, n);
+  const sp = cut.lastIndexOf(' ');
+  return (sp > n * 0.55 ? cut.slice(0, sp) : cut).replace(/[,;:.]+$/, '') + '…';
+}
+function pageTitle(raw){
+  let t = String(raw || '').trim();
+  t = t.replace(/\s*\|\s*BRYME\s*$/i, '').trim();
+  const suffix = ' | ' + site.name;
+  const budget = 60 - suffix.length;
+  if (t.length > budget) t = clipMeta(t, budget);
+  return t + suffix;
+}
+function pageDesc(raw){ return clipMeta(raw, 155); }
+
 function layout(o){
 /* A branded default so every page has a social card. Hubs, about, contact and article
    pages had none, which means a bare grey box wherever the URL is shared. Written once. */
@@ -1059,7 +1077,7 @@ const DEFAULT_CARD = (() => {
   const schema = o.schema ? `<script type="application/ld+json">${JSON.stringify(o.schema).replace(/</g,'\\u003c')}<\/script>` : '';
   const active = o.activeNav || '';
   const themeInit = '<script>try{var t=localStorage.getItem(\'bryme-theme\');var p=(t===\'light\'||t===\'dark\')?t:(window.matchMedia&&window.matchMedia(\'(prefers-color-scheme: light)\').matches?\'light\':\'dark\');var m=document.querySelector(\'meta[name=theme-color]\');if(p===\'light\'){document.documentElement.setAttribute(\'data-theme\',\'light\');document.documentElement.style.colorScheme=\'light\';if(m)m.setAttribute(\'content\',\'#f4f5f7\');}else{document.documentElement.removeAttribute(\'data-theme\');if(m)m.setAttribute(\'content\',\'#08090b\');}}catch(e){}</script>';
-  return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#08090b"><meta name="color-scheme" content="dark light"><link rel="icon" href="${url('/assets/favicon.svg')}" type="image/svg+xml"><link rel="icon" href="${url('/assets/favicon.png')}" type="image/png" sizes="32x32"><link rel="apple-touch-icon" href="${url('/assets/icons/apple-touch-icon.png')}"><link rel="manifest" href="${url('/manifest.webmanifest')}"><link rel="preconnect" href="https://i.ytimg.com" crossorigin><link rel="preconnect" href="https://www.youtube-nocookie.com" crossorigin><link rel="preconnect" href="https://www.youtube.com" crossorigin>${themeInit}<title>${esc(o.title)} | ${site.name}</title><meta name="description" content="${esc(o.description)}">${VERIFY_TAGS}${o.noindex?'<meta name="robots" content="noindex,follow">':''}<link rel="canonical" href="${absUrl(o.canonical || o.path)}"><meta property="og:type" content="${esc(o.ogType || 'website')}"><meta property="og:site_name" content="${site.name}"><meta property="og:title" content="${esc(o.title)}"><meta property="og:description" content="${esc(o.description)}"><meta property="og:url" content="${absUrl(o.path)}">${socialImage}<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${esc(o.title)}"><meta name="twitter:description" content="${esc(o.description)}"><link rel="stylesheet" href="${url('/assets/site.css')}">${schema}</head><body data-nav="${esc(o.activeNav || '')}"><header class="top"><div class="shell"><a class="brand" href="${url('/')}">BRY<b>ME</b></a><nav class="topnav"><a href="${url('/')}"${active==='home'?' class="active"':''}>Home</a><a href="${url('/entertainment/')}"${active==='entertainment'?' class="active"':''}>🎬 Entertainment</a><a href="${url('/sports/')}"${active==='sports'?' class="active"':''}>⚽ Sports</a><a href="${url('/make-money/')}"${active==='make-money'?' class="active"':''}>💰 Make Money</a><a href="${url('/tech/')}"${active==='tech'?' class="active"':''}>🤖 Tech &amp; AI</a><a class="nav-search" href="${url('/search/')}">Search</a></nav><div class="top-tools"><a class="header-search" href="${url('/search/')}" aria-label="Search">Search</a></div></div></header>${o.body}<nav class="mobile-nav"><a href="${url('/')}"${active==='home'?' class="active"':''}><span class="mn-ico">🏠</span>Home</a><a href="${url('/entertainment/')}"${active==='entertainment'?' class="active"':''}><span class="mn-ico">🎬</span>Entertain</a><a href="${url('/sports/')}"${active==='sports'?' class="active"':''}><span class="mn-ico">⚽</span>Sports</a><a href="${url('/make-money/')}"${active==='make-money'?' class="active"':''}><span class="mn-ico">💰</span>Money</a><a href="${url('/tech/')}"${active==='tech'?' class="active"':''}><span class="mn-ico">🤖</span>Tech</a><a href="${url('/search/')}"><span class="mn-ico">🔍</span>Search</a></nav><footer class="footer"><div class="shell"><div class="footer-grid">
+  return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#08090b"><meta name="color-scheme" content="dark light"><link rel="icon" href="${url('/assets/favicon.svg')}" type="image/svg+xml"><link rel="icon" href="${url('/assets/favicon.png')}" type="image/png" sizes="32x32"><link rel="apple-touch-icon" href="${url('/assets/icons/apple-touch-icon.png')}"><link rel="manifest" href="${url('/manifest.webmanifest')}"><link rel="preconnect" href="https://i.ytimg.com" crossorigin><link rel="preconnect" href="https://www.youtube-nocookie.com" crossorigin><link rel="preconnect" href="https://www.youtube.com" crossorigin>${themeInit}<title>${esc(pageTitle(o.title))}</title><meta name="description" content="${esc(pageDesc(o.description))}">${VERIFY_TAGS}${o.noindex?'<meta name="robots" content="noindex,follow">':''}<link rel="canonical" href="${absUrl(o.canonical || o.path)}"><meta property="og:type" content="${esc(o.ogType || 'website')}"><meta property="og:site_name" content="${site.name}"><meta property="og:title" content="${esc(pageTitle(o.title))}"><meta property="og:description" content="${esc(pageDesc(o.description))}"><meta property="og:url" content="${absUrl(o.path)}">${socialImage}<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${esc(pageTitle(o.title))}"><meta name="twitter:description" content="${esc(pageDesc(o.description))}"><link rel="stylesheet" href="${url('/assets/site.css')}">${schema}</head><body data-nav="${esc(o.activeNav || '')}"><header class="top"><div class="shell"><a class="brand" href="${url('/')}">BRY<b>ME</b></a><nav class="topnav"><a href="${url('/')}"${active==='home'?' class="active"':''}>Home</a><a href="${url('/entertainment/')}"${active==='entertainment'?' class="active"':''}>🎬 Entertainment</a><a href="${url('/sports/')}"${active==='sports'?' class="active"':''}>⚽ Sports</a><a href="${url('/make-money/')}"${active==='make-money'?' class="active"':''}>💰 Make Money</a><a href="${url('/tech/')}"${active==='tech'?' class="active"':''}>🤖 Tech &amp; AI</a><a class="nav-search" href="${url('/search/')}">Search</a></nav><div class="top-tools"><a class="header-search" href="${url('/search/')}" aria-label="Search">Search</a></div></div></header>${o.body}<nav class="mobile-nav"><a href="${url('/')}"${active==='home'?' class="active"':''}><span class="mn-ico">🏠</span>Home</a><a href="${url('/entertainment/')}"${active==='entertainment'?' class="active"':''}><span class="mn-ico">🎬</span>Entertain</a><a href="${url('/sports/')}"${active==='sports'?' class="active"':''}><span class="mn-ico">⚽</span>Sports</a><a href="${url('/make-money/')}"${active==='make-money'?' class="active"':''}><span class="mn-ico">💰</span>Money</a><a href="${url('/tech/')}"${active==='tech'?' class="active"':''}><span class="mn-ico">🤖</span>Tech</a><a href="${url('/search/')}"><span class="mn-ico">🔍</span>Search</a></nav><footer class="footer"><div class="shell"><div class="footer-grid">
   <div class="footer-brand"><a class="brand" href="${url('/')}">BRY<b>ME</b></a><p>Discover what you love. Learn what you need. Find what's next.</p></div>
   <nav class="footer-col" aria-label="Explore"><h4>Verticals</h4><a href="${url('/entertainment/')}">🎬 Entertainment</a><a href="${url('/sports/')}">⚽ Sports</a><a href="${url('/make-money/')}">💰 Make Money</a><a href="${url('/tech/')}">🤖 Tech &amp; AI</a></nav>
   <nav class="footer-col" aria-label="Explore"><h4>Entertainment</h4><a href="${url('/movies/')}">Movies</a><a href="${url('/series/')}">Series</a><a href="${url('/anime/')}">Anime</a><a href="${url('/articles/')}">Articles</a><a href="${url('/genres/')}">Genres</a></nav>
@@ -1227,7 +1245,7 @@ const VERTICALS = [
 searchIndex.verticals = [{ type:'entertainment', title:'BRYME Entertainment', slug:'entertainment', description:'Movies, TV series and anime with verified trailers and editorial articles.' }].concat(
   VERTICALS.flatMap(v => [{ type: v.dir, title: v.name, slug: v.dir, description: v.desc }].concat((v.categories || []).map(c => ({ type: v.dir, title: c.name, slug: v.dir + '/' + c.slug, description: c.desc }))))
 );
-searchIndex.verticals.push({ type:'make-money', title:'Writing Field Notes', slug:'make-money/writing-opportunities', description:'I research websites, write to them, and publish what happened. A gig is not guaranteed.' });
+searchIndex.verticals.push({ type:'make-money', title:'Writing Field Notes', slug:'make-money/writing', description:'I research websites, write to them, and publish what happened. A gig is not guaranteed.' });
 fs.writeFileSync(path.join(root, 'data/search-index.json'), JSON.stringify(searchIndex)+'\n');
 /* ================================================================
    VERTICAL ARTICLES — Make Money and Sports editorial.
@@ -1330,7 +1348,7 @@ function moneyDeskHtml(){
   ).join('');
   const paths = MONEY_DESK.paths.map(p => {
     if (p.status === 'live') {
-      return `<a class="mm-path is-live" data-mm-path="${esc(p.id)}" href="${url('/make-money/writing-opportunities/')}"><b>${esc(p.name)}</b><span>${esc(p.blurb || '')}</span></a>`;
+      return `<a class="mm-path is-live" data-mm-path="${esc(p.id)}" href="${url('/make-money/writing/')}"><b>${esc(p.name)}</b><span>${esc(p.blurb || '')}</span></a>`;
     }
     return `<div class="mm-path is-later"><b>${esc(p.name)}</b><span>Later — same research standard, not open yet.</span></div>`;
   }).join('');
@@ -1377,7 +1395,7 @@ function verticalPage(v, category){
   const catPath = category ? '/' + v.dir + '/' + category.slug + '/' : '/' + v.dir + '/';
   const crumbs = [{name:'Home', path:'/'}, {name:v.name, path:'/' + v.dir + '/'}];
   if (category) crumbs.push({name:category.name, path:catPath});
-  const catGrid = (v.dir === 'make-money' ? `<a class="vcat wo-feature-card" href="${url('/make-money/writing-opportunities/')}"><b>Writing Field Notes</b><span>I research websites, write to them, and publish what happened. A gig is not guaranteed.</span></a>` : '') + (v.categories || []).map(c => `<a class="vcat" href="${url('/' + v.dir + '/' + c.slug + '/')}"><b>${esc(c.name)}</b><span>${esc(c.desc)}</span></a>`).join('') + (v.dir === 'make-money' ? `<a class="vcat" href="${url('/make-money/beginners-guide-to-making-money-online/')}"><b>Beginner’s Guide to Making Money Online</b><span>An honest, skill-first guide to avoiding shortcuts and building value.</span></a>` : '');
+  const catGrid = (v.dir === 'make-money' ? `<a class="vcat wo-feature-card" href="${url('/make-money/writing/')}"><b>Writing Field Notes</b><span>I research websites, write to them, and publish what happened. A gig is not guaranteed.</span></a>` : '') + (v.categories || []).map(c => `<a class="vcat" href="${url('/' + v.dir + '/' + c.slug + '/')}"><b>${esc(c.name)}</b><span>${esc(c.desc)}</span></a>`).join('') + (v.dir === 'make-money' ? `<a class="vcat" href="${url('/make-money/beginners-guide-to-making-money-online/')}"><b>Beginner’s Guide to Making Money Online</b><span>An honest, skill-first guide to avoiding shortcuts and building value.</span></a>` : '');
   const sportsEditorial = (() => { const f = path.join(root, 'content', 'sports-articles.json'); if (!fs.existsSync(f)) return []; try { return (JSON.parse(fs.readFileSync(f, 'utf8')).articles || []).filter(a => a.status === 'published'); } catch (_) { return []; } })();
   const sportsStoriesBlock = (v.dir === 'sports' && !category) ? `<section class="section"><div class="section-head"><h2>BRYME Sports Stories</h2><a href="${url('/sports/articles/')}">All stories</a></div>${sportsEditorial.length ? `<div class="vcat-grid">${sportsEditorial.filter(a => (a.labels || []).some(x => ['featured','trending','editor-pick'].includes(x))).slice(0,6).map(a => `<a class="vcat" href="${url('/sports/articles/' + a.slug + '/')}"><b>${esc(a.title)}</b><span>${esc(a.category)} · ${esc((a.labels || []).join(' · '))}</span></a>`).join('')}</div>` : `<div class="vstate"><b>Stories are being prepared</b><p>Drafts are researched and reviewed before publication. Published BRYME Sports stories will appear here.</p><a class="quiet-link" href="${url('/sports/articles/')}">Visit the Sports editorial desk</a></div>`}</section>` : '';
   const sportsFeature = (v.dir === 'sports' && category && category.slug === 'football') ? `<section class="sp-hero" aria-label="Featured BRYME Sports stories"><div class="sp-hero-track"><a class="sp-hero-card sp-hero-first" href="${url('/sports/premier-league/')}" style="--card-img:url('/assets/img/sports/hero-premier-league.jpg')"><span class="sp-hero-tag">Welcome to the Premier League</span><h3>The 2026/27 season starts here</h3><p>Fixtures, clubs, match pages and the stories that will define the campaign.</p><span class="sp-hero-go">Explore the season →</span></a><a class="sp-hero-card" href="${url('/sports/fpl/')}" style="--card-img:url('/assets/img/sports/hero-fpl.jpg')"><span class="sp-hero-tag">Fantasy Premier League</span><h3>Top FPL picks for the new season</h3><p>Start with the fixtures, the key decisions and the players worth watching.</p><span class="sp-hero-go">Build your FPL view →</span></a><a class="sp-hero-card" href="${url('/sports/managers-2026-27/')}" style="--card-img:url('/assets/img/sports/hero-man-city-manager.jpg')"><span class="sp-hero-tag">Manchester City</span><h3>Enzo Maresca: a new chapter at City</h3><p>Follow the manager changes and the early storylines around the Premier League.</p><span class="sp-hero-go">See managers in &amp; out →</span></a></div></section>` : '';
@@ -1433,7 +1451,7 @@ function verticalPage(v, category){
   const pageHero = defaultHero + sportsFeature;
   const catArticles = category ? ((verticalArticleIndex[v.dir] && verticalArticleIndex[v.dir].get(category.slug)) || []) : [];
   const writingDeskBlock = (v.dir === 'make-money' && category && category.slug === 'writing')
-    ? `<div class="wo-banner"><b>The live log is next door.</b><p>These are the articles about the series. Dated field notes — who I emailed, who replied, how they pay — live on <a href="${url('/make-money/writing-opportunities/')}">Writing Field Notes</a>.</p></div>`
+    ? `<div class="wo-banner"><b>The live log is next door.</b><p>These are the articles about the series. Dated field notes — who I emailed, who replied, how they pay — live on <a href="${url('/make-money/writing/')}">Writing Field Notes</a>.</p></div>`
     : '';
   const catArticleBlock = catArticles.length
     ? `<div class="vcat-grid">${catArticles.map(a => articleCard(v.dir, a)).join('')}</div>`
@@ -1442,8 +1460,8 @@ function verticalPage(v, category){
   const emptyHub = !!category && !catArticles.length && !clubsDirectory && !(v.dir === 'sports' && category.slug === 'football');
   if (emptyHub) EMPTY_HUB_PATHS.add(catPath);
   write(v.dir + (category ? '/' + category.slug : ''), layout({
-    title: category ? `${category.name} – ${v.short}` : `${v.name} – ${v.tagline}`,
-    description: category ? `${category.desc} ${v.name} — foundation section on BRYME.` : `${v.desc} ${v.note}`,
+    title: category ? `${category.name}` : v.name,
+    description: category ? category.desc : (v.tagline || v.desc),
     noindex: emptyHub,
     path: catPath,
     activeNav: v.active,
@@ -1640,7 +1658,7 @@ function heroSlideMarkup(m, idx){
 }
 const heroEmbed = JSON.stringify(heroSlides.map(m => ({ t: m.title, ty: m.typeLabel, td: m.typeDir, y: m.year, g: m.genreLabel, r: m.rating, v: m.youtubeId, p: m.poster, d: (m.tagline || m.description || '').slice(0, 200), u: m.url }))).replace(/</g, '\u003c');
 write('', layout({
-  title: 'Movies, TV Series & Anime – Trailers, Stories & Discovery',
+  title: 'Movies, TV Series & Anime',
   description: 'Discover what to watch on BRYME: 630+ movies, TV series and anime with verified trailers, editorial guides, plus sports, money and tech & AI coverage.',
   path: '/', image: poster(heroSlide), activeNav: 'home',
   schema: [{ '@context':'https://schema.org', '@type':'WebSite', name:site.name, url:url('/'), description:site.description }, { '@context':'https://schema.org', '@type':'CollectionPage', name:'BRYME – Discover Entertainment, Sports, Money & Tech', url:url('/') }],
@@ -2016,10 +2034,6 @@ function buildWritingOpportunities(){
   <\/script>`;
 
   const pagePath = '/make-money/writing-opportunities/';
-  WRITING_EXTRA_PATHS.push(pagePath);
-  const lastmod = ISO.test(String(data.updatedAt || '')) ? data.updatedAt : TODAY;
-  if (typeof PAGE_LASTMOD !== 'undefined') PAGE_LASTMOD.set(pagePath, lastmod);
-
   write('make-money/writing-opportunities', layout({
     title: (data.title || 'Writing catalogue') + ' – sites I actually researched',
     description: desc,
@@ -3060,9 +3074,9 @@ for (const m of movies) {
   const label = m.typeLabel;
   const schemaType = typeDir === 'series' ? 'TVSeries' : (typeDir === 'anime' ? (animeFilms.has(m.slug) ? 'Movie' : 'TVSeries') : 'Movie');
   const typeWord = typeDir === 'series' ? 'Series Overview' : (typeDir === 'anime' ? 'Anime Overview' : 'Movie Overview');
-  const seoTitle = m.year ? `${m.title} (${m.year}) – ${typeWord}, Trailer & BRYME` : `${m.title} – ${typeWord}, Trailer & BRYME`;
+  const seoTitle = m.year ? `${m.title} (${m.year})` : m.title;
   const genreText = m.genres.length ? m.genres[0] : (m.genre || '');
-  const seoDesc = `Explore ${m.title}${m.year ? ' (' + m.year + ')' : ''} on BRYME — a ${m.typeLabel.toLowerCase()}${genreText ? ' ' + genreText.toLowerCase() : ''} overview with trailer, key details, related titles and our editorial take.`;
+  const seoDesc = `${m.title}${m.year ? ' (' + m.year + ')' : ''} — ${m.typeLabel.toLowerCase()}${genreText ? ' ' + genreText.toLowerCase() : ''} on BRYME, with trailer and details.`;
   const relatedArts = (articleToMovies.get(m.slug) || []).slice(0, 2);
   const schema = { '@context':'https://schema.org', '@type':schemaType, name:m.title, description:m.description || m.teaser || undefined, dateCreated:m.year ? String(m.year) : undefined, genre:(m.genres[0] || m.genre) || undefined, sameAs:m.trailer || undefined, image: posterOrCard(m) || undefined };
   if (m.country) schema.countryOfOrigin = m.country;
@@ -3155,8 +3169,10 @@ for (const m of movies) {
   }));
   if (typeDir !== 'movie') {
     write(`movie/${m.slug}`, layout({
-      title: seoTitle, description: m.description || m.teaser || seoDesc, path: `/movie/${m.slug}/`, canonical: pagePath, noindex: true, image: poster(m),
-      body: `<main class="shell" style="padding-top:80px;text-align:center"><p>This title has moved. <a href="${url(pagePath)}">View ${esc(m.title)}</a>.</p></main><meta http-equiv="refresh" content="0;url=${url(pagePath)}">`
+      title: `${m.title} has moved`,
+      description: `This ${m.typeLabel.toLowerCase()} page has moved. Continue to ${m.title} on BRYME.`,
+      path: `/movie/${m.slug}/`, canonical: pagePath, noindex: true, image: poster(m),
+      body: `<main class="shell"><section class="hero"><div class="eyebrow">Moved</div><h1>${esc(m.title)} has moved</h1><p class="lead">This title now lives on its ${esc(m.typeLabel.toLowerCase())} page.</p><p><a class="cta" href="${url(pagePath)}">Continue to ${esc(m.title)}</a></p></section></main><meta http-equiv="refresh" content="0;url=${url(pagePath)}">`
     }));
   }
 }
