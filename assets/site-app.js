@@ -833,7 +833,6 @@
   var TAG_DELAY_MS = 1800;
   var VIGNETTE_DWELL_MS = 5000;
   var VIGNETTE_SCROLL_PX = 300;
-  var pageEntered = Date.now();
 
   var tagStarted = false;
   var vigStarted = false;
