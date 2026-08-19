@@ -1,6 +1,6 @@
 # BRYME catalogue & frontend report
 
-Generated: 2026-08-19T19:01:48.057Z
+Generated: 2026-08-19T19:09:43.318Z
 
 ## Catalogue
 - Total titles: **638**
@@ -22,7 +22,7 @@ Generated: 2026-08-19T19:01:48.057Z
 - Title pages: 638
 - Category pages: /movies/, /series/, /anime/
 - Per-type genre pages: 60
-- Indexable URLs in sitemap: **961**
+- Indexable URLs in sitemap: **962**
 
 ## Rankings (editorially curated)
 - Trending Now: 22 titles (10 movies / 6 series / 6 anime), ranked by trendingRank ASC from content/rankings.json

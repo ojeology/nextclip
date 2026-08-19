@@ -6,7 +6,9 @@
 Writing can pay. Landing the gig is not promised. This is what I actually did.
 
 **On-screen end card:**
-Full notes, dates and links: bryme.onrender.com/make-money/writing-opportunities/
+Full notes, dates and links: bryme.onrender.com/make-money/writing/
+
+Send-this landing (Status + description): bryme.onrender.com/now/
 
 Replace every `[BRACKET]` with a fact from your inbox or from the site’s own page. If you cannot fill a bracket, cut the sentence. Do not guess.
 

@@ -4,7 +4,7 @@
 module.exports = function buildOpportunityCatalog(ctx) {
   const {
     fs, path, root, esc, url, absUrl, layout, write, breadcrumbs,
-    TODAY, PAGE_LASTMOD, WRITING_EXTRA_PATHS, warnings, VERTICALS, verticalChip, coreHubStrip, site
+    TODAY, PAGE_LASTMOD, WRITING_EXTRA_PATHS, warnings, VERTICALS, verticalChip, coreHubStrip, sendBar, SENDABLE_META, site
   } = ctx;
 
   const ISO = /^\d{4}-\d{2}-\d{2}$/;
@@ -544,6 +544,7 @@ module.exports = function buildOpportunityCatalog(ctx) {
     <section class="hero vhero vhero-make-money"><div class="eyebrow">✍️ Writing opportunities</div>
       <h1>Verified places that pay writers.</h1>
       <p class="lead">Official rates, eligibility, word counts and how to submit — checked against the publication, not copied from a listicle. A gig is not guaranteed.</p>
+      ${typeof sendBar === 'function' ? sendBar('/make-money/writing/', (SENDABLE_META && SENDABLE_META.writing && SENDABLE_META.writing.title) || 'Writing markets BRYME checked') : ''}
     </section>
     <p class="oc-natbar" data-oc-nat></p>
     ${filterBar}

@@ -1398,6 +1398,23 @@ function coreHubStrip(currentId, opts){
   ).join('');
   return `<section class="section core-hubs" data-core-hubs><div class="section-head"><h2>${esc(title)}</h2></div><p class="section-note">${esc(lead)}</p><div class="vchips">${chips}</div></section>`;
 }
+function sendBar(path, title){
+  const abs = absUrl(path);
+  const text = title + ' — ' + abs;
+  const wa = 'https://wa.me/?text=' + encodeURIComponent(text);
+  return `<div class="send-bar" data-send-bar>
+    <p>Send this page</p>
+    <a class="send-wa" href="${esc(wa)}" target="_blank" rel="noopener">WhatsApp</a>
+    <button type="button" class="quiet-link share-action" data-share-path="${esc(path)}" data-share-title="${esc(title)}">Copy link</button>
+  </div>`;
+}
+const SENDABLE_META = {
+  'dune-part-two': { title: 'Dune: Part Two (2024) trailer & story', desc: 'What the film is, the official trailer, and legal viewing notes. Not a download page.' },
+  'a-tribe-called-judah': { title: 'A Tribe Called Judah — Lagos film', desc: 'Funke Akindele’s Lagos family crime film: what it is, who it is for, and legal watch notes.' },
+  'squid-game': { title: 'Squid Game (2021) story & what next', desc: 'What Squid Game is and what to open next on BRYME. No unofficial streams.' },
+  'nigerian-thrillers-worth-your-time': { title: 'Five Nigerian thrillers to start with', desc: 'October 1, The Figurine, Brotherhood and more — a short BRYME starter, not a dump.' },
+  'writing': { title: 'Writing gigs BRYME actually checked', desc: 'Official rates and doors. A gig is not guaranteed.' }
+};
 const MONEY_DESK = (() => {
   const fallback = {
     countries: [
@@ -2176,7 +2193,7 @@ function buildWritingOpportunities(){
 buildWritingOpportunities();
 require('./build-opportunity-catalog')({
   fs, path, root, esc, url, absUrl, layout, write, breadcrumbs,
-  TODAY, PAGE_LASTMOD, WRITING_EXTRA_PATHS, warnings, VERTICALS, verticalChip, coreHubStrip, site
+  TODAY, PAGE_LASTMOD, WRITING_EXTRA_PATHS, warnings, VERTICALS, verticalChip, coreHubStrip, sendBar, SENDABLE_META, site
 });
 
 
@@ -2198,6 +2215,56 @@ write('entertainment', layout({
   <section class="section"><div class="section-head"><h2>📰 Latest articles</h2><a href="${url('/articles/')}">All stories</a></div><div class="story-grid">${latestArticles.map(a => `<a href="${url('/article/' + a.slug + '/')}"><span>${esc(a.category)}</span><h3>${esc(a.title)}</h3><p>${esc(a.description.slice(0, 120))}</p><b>Read story</b></a>`).join('')}</div></section>
   ${coreHubStrip('entertainment')}</main>`
 }));
+
+/* WhatsApp / YouTube send landing — one URL for Status and video descriptions. */
+(function writeNowPage(){
+  const picks = [
+    { slug: 'a-tribe-called-judah', type: 'movie', kicker: 'Lagos · film', blurb: 'A mother, five sons, and a city that will not wait. Start here if you are sending to people in Nigeria.' },
+    { slug: 'dune-part-two', type: 'movie', kicker: 'Sci-fi · trailer', blurb: 'What the film is, the official trailer, and legal watch notes. Not a download page.' },
+    { slug: 'squid-game', type: 'series', kicker: 'Series', blurb: 'The survival show everyone already names — plus what to open next on BRYME.' },
+    { href: '/article/nigerian-thrillers-worth-your-time/', title: 'Five Nigerian thrillers to start with', kicker: 'Guide', blurb: 'October 1, The Figurine, Brotherhood and two more. A short list, not a dump.' },
+    { href: '/make-money/writing/', title: 'Writing markets we actually checked', kicker: 'Make Money', blurb: 'Official rates and doors. A gig is not guaranteed. This is the YouTube end-card link.' }
+  ];
+  const cards = picks.map(p => {
+    if (p.slug) {
+      const rec = slugIndex.get(p.slug);
+      if (!rec) return '';
+      const href = '/' + rec.typeDir + '/' + rec.slug + '/';
+      return `<a class="now-card" href="${url(href)}"><span class="oc-editor-kicker">${esc(p.kicker)}</span><b>${esc(rec.title)}</b><span>${esc(p.blurb)}</span><span class="now-go">Open →</span></a>`;
+    }
+    return `<a class="now-card" href="${url(p.href)}"><span class="oc-editor-kicker">${esc(p.kicker)}</span><b>${esc(p.title)}</b><span>${esc(p.blurb)}</span><span class="now-go">Open →</span></a>`;
+  }).join('');
+  const ytCopy = `What to open on BRYME:\nhttps://bryme.onrender.com/now/\n\nWriting markets I actually checked:\nhttps://bryme.onrender.com/make-money/writing/\n\nA gig is not guaranteed.`;
+  const waCopy = `Five pages on BRYME worth opening:\nhttps://bryme.onrender.com/now/`;
+  write('now', layout({
+    title: 'Send BRYME — five pages worth opening',
+    description: 'One link for WhatsApp Status or a YouTube description: five BRYME pages worth opening. Trailers, legal watch notes, and writing markets we checked. A gig is not guaranteed.',
+    path: '/now/',
+    activeNav: 'home',
+    schema: [{ '@context':'https://schema.org', '@type':'CollectionPage', name:'Send BRYME', url: absUrl('/now/') }, breadcrumbs([{name:'Home', path:'/'}, {name:'Send BRYME', path:'/now/'}])],
+    body: `<main class="shell">
+      <div class="crumb"><a href="${url('/')}">Home</a> / Send</div>
+      <section class="hero"><div class="eyebrow">WhatsApp · YouTube</div>
+        <h1>Send this. Then pick one.</h1>
+        <p class="lead">Five pages on BRYME worth a Status or a video description. Trailers, legal viewing notes, and writing markets we actually checked. Nothing here is a download. A gig is not guaranteed.</p>
+        ${sendBar('/now/', 'Five pages on BRYME worth opening')}
+      </section>
+      <section class="section"><div class="section-head"><h2>The five</h2></div>
+        <div class="now-grid">${cards}</div>
+      </section>
+      <section class="section" id="youtube"><div class="section-head"><h2>If you came from YouTube</h2></div>
+        <p class="section-note">The video is about the process. The living list is the writing catalogue. Paste this in the description and pin it.</p>
+        <pre class="now-copy">${esc(ytCopy)}</pre>
+        <p><a class="cta" href="${url('/make-money/writing/')}">Open writing markets</a>
+        <a class="quiet-link" href="${url('/make-money/writing-field-notes-how-this-works/')}">How the notes work</a></p>
+      </section>
+      <section class="section"><div class="section-head"><h2>WhatsApp caption</h2></div>
+        <pre class="now-copy">${esc(waCopy)}</pre>
+      </section>
+      ${coreHubStrip('home', { title: 'Or browse a section', lead: 'If you would rather wander than send one card.' })}
+    </main>`
+  }));
+})();
 
 /* ================================================================
    BRYME SPORTS — hero carousel, transfers, managers, editorial
@@ -3329,8 +3396,8 @@ for (const m of movies) {
   const related = relatedFor(m);
   const relatedArticles = articlesAboutTitle(m);
   write(`${typeDir}/${m.slug}`, layout({
-    title: seoTitle,
-    description: (m.description || '').length >= 80 ? (m.description || seoDesc).slice(0, 158) : seoDesc,
+    title: (SENDABLE_META[m.slug] && SENDABLE_META[m.slug].title) || seoTitle,
+    description: (SENDABLE_META[m.slug] && SENDABLE_META[m.slug].desc) || ((m.description || '').length >= 80 ? (m.description || seoDesc).slice(0, 158) : seoDesc),
     path: pagePath,
     activeNav: typeDir === 'movie' ? 'movies' : (typeDir === 'series' ? 'series' : 'anime'),
     schema: schemaList,
@@ -3348,6 +3415,7 @@ for (const m of movies) {
         return hook ? `<p class="lead">${esc(hook)}</p>` : '';
       })()}
       <div class="hero-actions">${m.youtubeId ? `<a class="cta" href="#trailer">Watch trailer</a>` : ''}<a class="cta cta-ghost" href="#watch">Where to watch</a>${related.length ? `<a class="quiet-link" href="#similar">Similar titles</a>` : ''}${relatedArticles.length ? `<a class="cta cta-ghost" href="${url('/article/' + relatedArticles[0].slug + '/')}">Read BRYME story</a>` : ''}<button class="quiet-link share-action" type="button" data-share-path="${pagePath}" data-share-title="${esc(m.title)}">Share</button></div>
+      ${SENDABLE_META[m.slug] ? sendBar(pagePath, SENDABLE_META[m.slug].title || m.title) : ''}
     </div>
   </section>
   <section class="shell trailer-section" id="trailer">${trailerSection(m)}</section>
@@ -3441,10 +3509,12 @@ for (const a of articles) {
   const schema = { '@context':'https://schema.org', '@type':'Article', headline:a.title, description:a.description, mainEntityOfPage:url(`/article/${a.slug}/`), publisher:{'@type':'Organization', name:site.name} };
   if (a.author) schema.author = { '@type': 'Person', name: a.author };
   write(`article/${a.slug}`, layout({
-    title: a.title, description: a.description, path: `/article/${a.slug}/`, activeNav: 'articles', ogType: 'article',
+    title: (SENDABLE_META[a.slug] && SENDABLE_META[a.slug].title) || a.title,
+    description: (SENDABLE_META[a.slug] && SENDABLE_META[a.slug].desc) || a.description,
+    path: `/article/${a.slug}/`, activeNav: 'articles', ogType: 'article',
     schema: [schema, breadcrumbs([{name:'Home', path:'/'}, {name:'Articles', path:'/articles/'}, {name:a.title, path:`/article/${a.slug}/`}])],
     image: relatedMovies[0] ? poster(relatedMovies[0]) : undefined,
-    body: `<main class="shell"><div class="crumb"><a href="${url('/articles/')}">Editorial</a> / ${esc(a.title)}</div><section class="article-hero"><div class="eyebrow">${esc(a.category)}</div><h1>${esc(a.title)}</h1><p class="lead">${esc(a.description)}</p><div class="article-meta">${a.author ? 'By ' + esc(a.author) + ' · ' : ''}Editorial guide · ${a.createdAt ? 'Published ' + esc(a.createdAt) + ' · ' : ''}${a.updatedAt ? 'Last updated ' + esc(a.updatedAt) + ' · ' : ''}Reading time: about ${Math.max(2, Math.ceil(articleWordCount(a) / 220))} minutes</div><button class="quiet-link share-action" type="button" data-share-path="/article/${a.slug}/" data-share-title="${esc(a.title)}">Share</button></section><article class="prose article-body">${articleBlocks(a)}<section class="article-related"><h2>Related titles</h2>${relatedMovies.length ? `<div class="grid">${relatedMovies.map(card).join('')}</div>` : '<p>Related titles will be added when there is a useful match.</p>'}<h2>Keep reading</h2>${relatedStories.length ? `<div class="list">${relatedStories.map(articleRow).join('')}</div>` : ''}</section></article></main>`
+    body: `<main class="shell"><div class="crumb"><a href="${url('/articles/')}">Editorial</a> / ${esc(a.title)}</div><section class="article-hero"><div class="eyebrow">${esc(a.category)}</div><h1>${esc(a.title)}</h1><p class="lead">${esc(a.description)}</p><div class="article-meta">${a.author ? 'By ' + esc(a.author) + ' · ' : ''}Editorial guide · ${a.createdAt ? 'Published ' + esc(a.createdAt) + ' · ' : ''}${a.updatedAt ? 'Last updated ' + esc(a.updatedAt) + ' · ' : ''}Reading time: about ${Math.max(2, Math.ceil(articleWordCount(a) / 220))} minutes</div>${SENDABLE_META[a.slug] ? sendBar("/article/" + a.slug + "/", SENDABLE_META[a.slug].title || a.title) : `<button class="quiet-link share-action" type="button" data-share-path="/article/${a.slug}/" data-share-title="${esc(a.title)}">Share</button>`}</section><article class="prose article-body">${articleBlocks(a)}<section class="article-related"><h2>Related titles</h2>${relatedMovies.length ? `<div class="grid">${relatedMovies.map(card).join('')}</div>` : '<p>Related titles will be added when there is a useful match.</p>'}<h2>Keep reading</h2>${relatedStories.length ? `<div class="list">${relatedStories.map(articleRow).join('')}</div>` : ''}</section></article></main>`
   }));
 }
 write('topics', layout({
@@ -3788,7 +3858,7 @@ const verticalPaths = ['/entertainment/','/sports/articles/']
   .filter(p => !EMPTY_HUB_PATHS.has(p));
 /* Published vertical articles are real, indexable pages. */
 const verticalArticlePaths = VERTICALS.flatMap(v => (VERTICAL_ARTICLES[v.dir] || []).map(a => articlePathFor(v.dir, a)));
-const paths = ['/','/movies/','/series/','/anime/','/trending/','/genres/','/years/','/topics/','/articles/', ...legalPaths, ...AUTHOR_PATHS, ...verticalPaths, ...verticalArticlePaths, ...sportsExtraPaths.filter(p => !PLACEHOLDER_SPORTS_PATHS.has(p)), ...LEAGUE_MATCH_PATHS.filter(p => !UNPLAYED_MATCH_PATHS.has(p)), ...genrePaths.filter(p => !THIN_LISTING_PATHS.has(p)), ...movies.map(m => `/${m.typeDir || 'movie'}/${m.slug}/`), ...[...yearMap].filter(([,l]) => !thinArchive(l)).map(([y]) => `/year/${y}/`), ...[...seriesYearMap].filter(([,l]) => !thinArchive(l)).map(([y]) => `/series/${y}/`), ...[...animeYearMap].filter(([,l]) => !thinArchive(l)).map(([y]) => `/anime/${y}/`), ...articles.map(a => `/article/${a.slug}/`), ...topics.map(t => `/topic/${t.slug}/`), ...[...articleCategoryMap.keys()].map(s => `/articles/${s}/`).filter(p => !THIN_LISTING_PATHS.has(p))];
+const paths = ['/','/now/','/movies/','/series/','/anime/','/trending/','/genres/','/years/','/topics/','/articles/', ...legalPaths, ...AUTHOR_PATHS, ...verticalPaths, ...verticalArticlePaths, ...sportsExtraPaths.filter(p => !PLACEHOLDER_SPORTS_PATHS.has(p)), ...LEAGUE_MATCH_PATHS.filter(p => !UNPLAYED_MATCH_PATHS.has(p)), ...genrePaths.filter(p => !THIN_LISTING_PATHS.has(p)), ...movies.map(m => `/${m.typeDir || 'movie'}/${m.slug}/`), ...[...yearMap].filter(([,l]) => !thinArchive(l)).map(([y]) => `/year/${y}/`), ...[...seriesYearMap].filter(([,l]) => !thinArchive(l)).map(([y]) => `/series/${y}/`), ...[...animeYearMap].filter(([,l]) => !thinArchive(l)).map(([y]) => `/anime/${y}/`), ...articles.map(a => `/article/${a.slug}/`), ...topics.map(t => `/topic/${t.slug}/`), ...[...articleCategoryMap.keys()].map(s => `/articles/${s}/`).filter(p => !THIN_LISTING_PATHS.has(p))];
 fs.writeFileSync(path.join(root, '404.html'), layout({
   title: 'Page not found', description: 'This page is not available on BRYME.', path: '/404.html', noindex: true,
   body: `<main class="shell"><section class="hero"><div class="eyebrow">404</div><h1>Looks like this one disappeared.</h1><p class="lead">Try searching the catalogue, or browse a single content type.</p><p><a class="cta" href="${url('/search/')}">Search everything</a> <a class="quiet-link" href="${url('/movies/')}">Movies</a> <a class="quiet-link" href="${url('/series/')}">Series</a> <a class="quiet-link" href="${url('/anime/')}">Anime</a> <a class="quiet-link" href="${url('/articles/')}">Latest articles</a></p></section></main>`
