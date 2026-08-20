@@ -99,10 +99,21 @@ module.exports = function buildOpportunityCatalog(ctx) {
 
   const countryEmbed = countries.map(c => ({ id: c.id, name: c.name, region: c.region, flag: flag(c.id) }));
 
+  const listingArt = o => {
+    const types = Array.isArray(o.writingTypes) ? o.writingTypes : [];
+    if (types.includes('poetry')) return '/assets/img/money/hero-poetry.jpg';
+    if (types.includes('fiction')) return '/assets/img/money/hero-fiction.jpg';
+    if (types.includes('journalism') || types.includes('analysis') || types.includes('articles')) return '/assets/img/money/hero-journalism.jpg';
+    if (types.includes('personal-essays') || types.includes('essays') || types.includes('creative-nonfiction')) return '/assets/img/money/hero-writing.jpg';
+    return '/assets/img/money/hero-beginner.jpg';
+  };
   const card = o => {
     const st = statusMeta(o);
     const elig = (o.eligibility && o.eligibility.summary) || 'Not publicly stated';
-    return `<article class="oc-card" data-oc-card>
+    const art = listingArt(o);
+    return `<article class="oc-card oc-card-has-art" data-oc-card>
+      <div class="oc-card-art" style="background-image:url('${art}')" aria-hidden="true"></div>
+      <div class="oc-card-body">
       <header class="oc-card-top">
         <div><p class="oc-pub">${esc(o.publication)}</p><h3><a href="${url('/make-money/writing/' + o.slug + '/')}">${esc(o.title)}</a></h3></div>
         <span class="oc-status oc-st-${esc(st.key)}">${esc(st.label)}</span>
@@ -117,6 +128,7 @@ module.exports = function buildOpportunityCatalog(ctx) {
       </dl>
       <p class="oc-verified">Verified ${esc(o.lastVerified)}</p>
       <p class="oc-actions"><a class="cta" href="${url('/make-money/writing/' + o.slug + '/')}">View details</a></p>
+      </div>
     </article>`;
   };
 
@@ -448,8 +460,11 @@ module.exports = function buildOpportunityCatalog(ctx) {
 .oc-filters select{background:#0d1013;border:1px solid var(--line);border-radius:6px;color:var(--text);font:inherit;font-size:13px;padding:8px}
 .oc-filter-actions{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-top:12px}
 .oc-count{margin:0;color:var(--muted);font-size:13px;font-weight:700}
-.oc-grid{display:flex;flex-direction:column;gap:14px}
+.oc-grid{display:flex;flex-direction:column;gap:18px}
 .oc-card{border:1px solid var(--line);border-radius:12px;background:linear-gradient(160deg,#161b23,#0f1216);padding:16px 16px 14px}
+.oc-card-has-art{display:grid;grid-template-columns:148px minmax(0,1fr);padding:0;overflow:hidden}
+.oc-card-art{min-height:100%;background-size:cover;background-position:center;background-color:#12151a}
+.oc-card-body{padding:16px 16px 14px;min-width:0}
 .oc-card-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
 .oc-pub{margin:0 0 2px;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--gold)}
 .oc-card h3{margin:0;font-size:20px;line-height:1.2}
@@ -471,10 +486,14 @@ module.exports = function buildOpportunityCatalog(ctx) {
 .oc-report a{display:block;padding:6px 0;font-size:14px}
 [data-theme="light"] .oc-card,[data-theme="light"] .oc-filters,[data-theme="light"] .mm-cat,[data-theme="light"] .mm-country-q{background:#fff}
 [data-theme="light"] .oc-filters select,[data-theme="light"] .oc-search-wrap input,[data-theme="light"] .oc-filters select option{background:#fff;color:#161b22;border-color:var(--line)}
+[data-theme="light"] .oc-card-has-art{background:#fff}
 @media(min-width:700px){
   .oc-facts{grid-template-columns:1fr 1fr}
 }
 @media(max-width:760px){
+  .oc-card-has-art{grid-template-columns:1fr}
+  .oc-card-art{min-height:120px}
+
   .mm-cat-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .oc-filter-grid{grid-template-columns:1fr 1fr}
   .oc-card h3{font-size:18px}
