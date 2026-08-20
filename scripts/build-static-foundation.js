@@ -251,6 +251,7 @@ movies.forEach(m => {
   m.trending = !!tr;
   m.trendingRank = tr ? tr.rank : null;
   m.trendingUntil = tr ? tr.until : null;
+  m.trendingNote = tr ? tr.note : null;
   const pr = popularCfg[m.typeDir].find(x => x.slug === m.slug);
   m.popular = !!pr;
   m.popularRank = pr ? pr.rank : null;
@@ -290,6 +291,23 @@ const trailerAuditPath = path.join(root, 'content', 'trailer-audit.json');
 if (fs.existsSync(trailerAuditPath)) { try { trailerAudit = JSON.parse(fs.readFileSync(trailerAuditPath, 'utf8')); } catch (e) { warnings.push('trailer-audit.json unreadable'); } }
 const trailerOverridesPath = path.join(root, 'content', 'trailers.json');
 if (fs.existsSync(trailerOverridesPath)) { try { trailerOverrides = JSON.parse(fs.readFileSync(trailerOverridesPath, 'utf8')); } catch (e) { warnings.push('trailers.json unreadable'); } }
+const videoEditorialPath = path.join(root, 'content', 'video-editorial.json');
+let VIDEO_EDITORIAL = {};
+if (fs.existsSync(videoEditorialPath)) {
+  try {
+    const rawEd = JSON.parse(fs.readFileSync(videoEditorialPath, 'utf8'));
+    VIDEO_EDITORIAL = (rawEd && rawEd.pages) ? rawEd.pages : (rawEd || {});
+    if (VIDEO_EDITORIAL._comment) delete VIDEO_EDITORIAL._comment;
+  } catch (e) { warnings.push('video-editorial.json unreadable'); }
+}
+function trailerEditorial(m, videoId){
+  const extra = VIDEO_EDITORIAL[m && m.slug];
+  if (!extra || extra.videoId !== videoId) return { caption: '', context: '', wrap: false };
+  const caption = extra.figcaption ? `<figcaption>${esc(extra.figcaption)}</figcaption>` : '';
+  const context = Array.isArray(extra.context) && extra.context.length
+    ? `<div class="video-context">${extra.context.map(p => `<p>${esc(p)}</p>`).join('')}</div>` : '';
+  return { caption, context, wrap: true };
+}
 const trailerStats = { official: 0, teaser: 0, clip: 0, fan: 0, missing: 0, broken: 0, brokenList: [] };
 movies.forEach(m => {
   const auditRec = trailerAudit[m.slug] || {};
@@ -1104,11 +1122,15 @@ function trailerBoxInner(m, idx){
   const sourceLine = t.channel ? `YouTube · via ${esc(t.channel)}` : 'YouTube';
   const verifiedNote = t.verified ? '' : `<span class="trailer-verif-note">(pending re-verification)</span>`;
   const altBtn = m.trailers.length > 1 ? `<button type="button" class="trailer-alt" data-trailer-alt>Try another trailer</button>` : '';
+  const watch = 'https://www.youtube.com/watch?v=' + t.videoId;
+  const ed = trailerEditorial(m, t.videoId);
+  const frame = `<div class="trailer-frame" data-trailer-id="${t.videoId}"><img loading="lazy" src="https://i.ytimg.com/vi/${t.videoId}/hqdefault.jpg" alt="${esc(m.title)} trailer thumbnail"><button type="button" class="trailer-play">Play trailer</button></div>`;
+  const player = ed.wrap ? `<figure class="video-figure">${frame}${ed.caption}</figure>${ed.context}` : frame;
   return `<div class="trailer-head"><span class="eyebrow">Trailer</span><span class="trailer-status ${isFan ? 't-fan' : 't-ok'}">${dot} ${esc(badge)}</span></div>
-  <div class="trailer-frame" data-trailer-id="${t.videoId}"><img loading="lazy" src="https://i.ytimg.com/vi/${t.videoId}/hqdefault.jpg" alt="${esc(m.title)} poster"><button type="button" class="trailer-play">Play trailer</button></div>
+  ${player}
   <p class="trailer-meta">${sourceLine}${verifiedNote}</p>${disclaimer}
-  <div class="trailer-error" data-trailer-error hidden><b>Trailer currently unavailable.</b><span>This video could not be played right now.</span><span class="trailer-error-actions"><a class="quiet-link" data-trailer-watch href="${esc(t.watch)}" target="_blank" rel="noopener">Watch on YouTube</a><button type="button" class="trailer-retry" data-trailer-retry>Try again</button></span></div>
-  <p class="trailer-fallback">If the embedded player is unavailable, <a href="${esc(t.watch)}" target="_blank" rel="noopener">watch the trailer on YouTube</a>.</p>${altBtn}`;
+  <div class="trailer-error" data-trailer-error hidden><b>Trailer currently unavailable.</b><span>This video could not be played right now.</span><span class="trailer-error-actions"><a class="quiet-link" data-trailer-watch href="${esc(watch)}" target="_blank" rel="noopener">Watch on YouTube</a><button type="button" class="trailer-retry" data-trailer-retry>Try again</button></span></div>
+  <p class="trailer-fallback">If the embedded player is unavailable, <a href="${esc(watch)}" target="_blank" rel="noopener">watch the trailer on YouTube</a>.</p>${altBtn}`;
 }
 function pageScript(){
   return `<script>window.BRYME_BASE=''<\/script><script src="${url('/assets/site-app.js')}"><\/script>`;
@@ -1148,7 +1170,7 @@ function layout(o){
   return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#08090b"><meta name="color-scheme" content="dark light"><link rel="icon" href="${url('/assets/favicon.svg')}" type="image/svg+xml"><link rel="icon" href="${url('/assets/favicon.png')}" type="image/png" sizes="32x32"><link rel="apple-touch-icon" href="${url('/assets/icons/apple-touch-icon.png')}"><link rel="manifest" href="${url('/manifest.webmanifest')}"><link rel="preconnect" href="https://i.ytimg.com" crossorigin><link rel="preconnect" href="https://www.youtube-nocookie.com" crossorigin><link rel="preconnect" href="https://www.youtube.com" crossorigin>${themeInit}<title>${esc(pageTitle(o.title))}</title><meta name="description" content="${esc(pageDesc(o.description))}">${VERIFY_TAGS}${o.lcpImage?`<link rel="preload" as="image" href="${esc(o.lcpImage)}" fetchpriority="high">`:''}${o.noindex?'<meta name="robots" content="noindex,follow">':''}<link rel="canonical" href="${absUrl(o.canonical || o.path)}"><meta property="og:type" content="${esc(o.ogType || 'website')}"><meta property="og:site_name" content="${site.name}"><meta property="og:title" content="${esc(pageTitle(o.title))}"><meta property="og:description" content="${esc(pageDesc(o.description))}"><meta property="og:url" content="${absUrl(o.path)}">${socialImage}<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${esc(pageTitle(o.title))}"><meta name="twitter:description" content="${esc(pageDesc(o.description))}"><link rel="stylesheet" href="${url('/assets/site.css')}">${schema}</head><body data-nav="${esc(o.activeNav || '')}"><header class="top"><div class="shell"><a class="brand" href="${url('/')}">BRY<b>ME</b></a><nav class="topnav"><a href="${url('/')}"${active==='home'?' class="active"':''}>Home</a><a href="${url('/entertainment/')}"${active==='entertainment'?' class="active"':''}>🎬 Entertainment</a><a href="${url('/sports/')}"${active==='sports'?' class="active"':''}>⚽ Sports</a><a href="${url('/make-money/')}"${active==='make-money'?' class="active"':''}>💰 Make Money</a><a href="${url('/tech/')}"${active==='tech'?' class="active"':''}>🤖 Tech &amp; AI</a><a class="nav-search" href="${url('/search/')}">Search</a></nav><div class="top-tools"><a class="header-search" href="${url('/search/')}" aria-label="Search">Search</a></div></div></header>${o.body}<nav class="mobile-nav"><a href="${url('/')}"${active==='home'?' class="active"':''}><span class="mn-ico">🏠</span>Home</a><a href="${url('/entertainment/')}"${active==='entertainment'?' class="active"':''}><span class="mn-ico">🎬</span>Entertain</a><a href="${url('/sports/')}"${active==='sports'?' class="active"':''}><span class="mn-ico">⚽</span>Sports</a><a href="${url('/make-money/')}"${active==='make-money'?' class="active"':''}><span class="mn-ico">💰</span>Money</a><a href="${url('/tech/')}"${active==='tech'?' class="active"':''}><span class="mn-ico">🤖</span>Tech</a><a href="${url('/search/')}"><span class="mn-ico">🔍</span>Search</a></nav><footer class="footer"><div class="shell"><div class="footer-grid">
   <div class="footer-brand"><a class="brand" href="${url('/')}">BRY<b>ME</b></a><p>Discover what you love. Learn what you need. Find what's next.</p></div>
   <nav class="footer-col" aria-label="Explore"><h4>Verticals</h4><a href="${url('/entertainment/')}">🎬 Entertainment</a><a href="${url('/sports/')}">⚽ Sports</a><a href="${url('/make-money/')}">💰 Make Money</a><a href="${url('/tech/')}">🤖 Tech &amp; AI</a></nav>
-  <nav class="footer-col" aria-label="Explore"><h4>Entertainment</h4><a href="${url('/movies/')}">Movies</a><a href="${url('/series/')}">Series</a><a href="${url('/anime/')}">Anime</a><a href="${url('/articles/')}">Articles</a><a href="${url('/genres/')}">Genres</a></nav>
+  <nav class="footer-col" aria-label="Explore"><h4>Entertainment</h4><a href="${url('/trending/')}">What's Trending</a><a href="${url('/movies/')}">Movies</a><a href="${url('/series/')}">Series</a><a href="${url('/anime/')}">Anime</a><a href="${url('/articles/')}">Articles</a><a href="${url('/genres/')}">Genres</a></nav>
   <nav class="footer-col" aria-label="Information"><h4>Information</h4><a href="${url('/about/')}">About</a><a href="${url('/contact/')}">Contact</a><a href="${url('/editorial-policy/')}">Editorial Policy</a></nav>
   <nav class="footer-col" aria-label="Legal"><h4>Legal</h4><a href="${url('/privacy/')}">Privacy Policy</a><a href="${url('/terms/')}">Terms of Use</a><a href="${url('/disclaimer/')}">Disclaimer</a><a href="${url('/copyright/')}">Copyright / DMCA</a></nav>
 </div>
@@ -1664,7 +1686,12 @@ function verticalPage(v, category){
     </section>`;
   })();
   const footballHub = `<section class="section"><div class="vnote">Football is BRYME’s first fully built sports hub. Pick a competition or follow fixtures, FPL, transfers and the game’s biggest stories.</div><h2 style="margin:26px 0 14px">Football competitions</h2><div class="vcat-grid">${[['premier-league','Premier League','England’s top flight: fixtures, clubs, transfers and FPL.'],['champions-league','Champions League','Europe’s biggest club competition.'],['la-liga','La Liga','Spanish football: Real Madrid, Barcelona and beyond.'],['serie-a','Serie A','Italian football and its storied clubs.'],['bundesliga','Bundesliga','German football and its fan culture.'],['ligue-1','Ligue 1','French football, fixtures and clubs.'],['international','International football','National teams, tournaments and qualifiers.']].map(x => photoTile('/sports/' + x[0] + '/', x[1], x[2], catImg('sports/' + x[0]))).join('')}</div><h2 style="margin:30px 0 14px">Follow the game</h2><div class="vcat-grid">${[['fpl','Fantasy Premier League','Picks, captains and fixture-led decisions.'],['transfers','Transfers','Verified transfer coverage and market context.'],['players','Players','Profiles, careers and stories.'],['clubs','Clubs','Histories, identities and fan culture.'],['history','History','Historic moments and great eras.'],['records','Records','Goals, titles, appearances and numbers.']].map(x => photoTile('/sports/' + x[0] + '/', x[1], x[2], catImg('sports/' + x[0]))).join('')}</div></section>`;
-  const sportsTeaserBlock = (v.dir === 'sports' && !category) ? `<section class="section sports-teaser"><div class="section-head"><h2>Premier League 2026/27</h2></div><div class="trailer-frame" style="max-width:100%"><iframe width="100%" height="500" src="https://www.youtube.com/embed/nx8rgJrmSFY" title="Premier League 2026/27 — The Wait Is Over" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen><\/iframe></div></section>` : '';
+  const sportsTeaserBlock = (v.dir === 'sports' && !category && VIDEO_EDITORIAL.sports && VIDEO_EDITORIAL.sports.videoId) ? (function(){
+    const sv = VIDEO_EDITORIAL.sports;
+    const cap = sv.figcaption ? `<figcaption>${esc(sv.figcaption)}</figcaption>` : '';
+    const ctx = Array.isArray(sv.context) && sv.context.length ? `<div class="video-context">${sv.context.map(p => `<p>${esc(p)}</p>`).join('')}</div>` : '';
+    return `<section class="section sports-teaser"><div class="section-head"><h2>Premier League 2026/27</h2></div><figure class="video-figure"><div class="trailer-frame" style="max-width:100%"><iframe src="https://www.youtube-nocookie.com/embed/${esc(sv.videoId)}" title="${esc(sv.name || 'Premier League 2026/27')}" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"><\/iframe></div>${cap}</figure>${ctx}</section>`;
+  }()) : '';
   const fixturesBlock = (v.dir === 'sports' && !category) ? '<section class="section"><div class="section-head"><h2>Fixtures &amp; Results 2026/27</h2></div><div class="vcat-grid">' + LEAGUE_FIX.map(lg => { const sum = leagueFixturesSummary(lg.slug); const tr = transferStats(lg.slug); const bits = ['All ' + sum.total + ' fixtures — dates, kickoffs & match pages']; if (tr.in + tr.out > 0) bits.push(tr.in + ' in / ' + tr.out + ' out tracked'); return '<a class="vcat" href="' + url('/sports/' + lg.slug + '/fixtures/') + '"><b>' + esc(lg.name) + '</b><span>' + esc(bits.join(' · ')) + '</span></a>'; }).join('') + '<a class="vcat" href="' + url('/sports/managers-2026-27/') + '"><b>Managers</b><span>Managers In &amp; Out — 2026/27</span></a></div></section>' : '';
   const defaultHeroImg = category ? (catImg(v.dir + '/' + category.slug) || catImg('hub/' + v.dir)) : catImg('hub/' + v.dir);
   const defaultHero = `<section class="hero vhero vhero-${v.dir}${defaultHeroImg ? ' vhero-photo' : ''}" data-vertical="${v.dir}"${defaultHeroImg ? ` style="--hero-img:url('${defaultHeroImg}')"` : ''}><div class="eyebrow">${v.emoji} ${category ? esc(v.name) + ' · ' + esc(category.name) : esc(v.name)}</div><h1>${esc(category ? category.name : v.name)}</h1><p class="lead">${esc(category ? category.desc : v.tagline)}</p></section>`;
@@ -1697,7 +1724,17 @@ function verticalPage(v, category){
     noindex: emptyHub,
     path: catPath,
     activeNav: v.active,
-    schema: [{ '@context':'https://schema.org', '@type':'CollectionPage', name: category ? category.name : v.name, description: (category ? category.desc : v.desc), url: absUrl(catPath) }, breadcrumbs(crumbs)],
+    schema: (function(){
+      const hubSchema = [{ '@context':'https://schema.org', '@type':'CollectionPage', name: category ? category.name : v.name, description: (category ? category.desc : v.desc), url: absUrl(catPath) }, breadcrumbs(crumbs)];
+      if (v.dir === 'sports' && !category && VIDEO_EDITORIAL.sports && VIDEO_EDITORIAL.sports.videoId) {
+        const sv = VIDEO_EDITORIAL.sports;
+        const vo = { '@context':'https://schema.org', '@type':'VideoObject', name: sv.name, description: sv.description, thumbnailUrl: sv.thumbnailUrl, embedUrl: sv.embedUrl };
+        if (sv.uploadDate) vo.uploadDate = sv.uploadDate;
+        if (sv.channel) vo.publisher = { '@type':'Organization', name: sv.channel };
+        hubSchema.push(vo);
+      }
+      return hubSchema;
+    })(),
     body: body
   }));
 }
@@ -1916,7 +1953,7 @@ write('', layout({
       <div class="rec-results" data-rec-results aria-live="polite"></div>
     </div>
   </section>
-  ${railSection('Trending Now', '🔥', trendNow.slice(0, 10), '/trending/', 'Curated by the BRYME editorial team — not live traffic data. Ranked per content type.', {ranked:true, rankKey:'trendingRank'})}
+  ${railSection("What's Trending", '🔥', trendNow.slice(0, 10), '/trending/', 'Curated by the BRYME editorial team — not live traffic data. Ranked per content type.', {ranked:true, rankKey:'trendingRank'})}
   ${railSection('Popular Movies', '⭐', popularMovies.slice(0, 8), '/movies/', 'Evergreen movie favourites, editorially ranked.', {variant:'lead', eyebrow:'Film'})}
   ${railSection('Popular Series', '⭐', popularSeries.slice(0, 8), '/series/', 'Evergreen TV series favourites, editorially ranked.', {variant:'lead', eyebrow:'Television'})}
   ${railSection('Popular Anime', '⭐', popularAnime.slice(0, 8), '/anime/', 'Evergreen anime favourites, editorially ranked.', {variant:'wall', eyebrow:'Animation'})}
@@ -2343,7 +2380,7 @@ write('entertainment', layout({
       <a class="sp-hero-card ent-tint" href="${url('/article/korean-cinema-starter-guide-rebuilt/')}" style="--card-img:url('/assets/img/ent/hero-korean.jpg')"><span class="sp-hero-tag">Korean cinema</span><h3>A starter guide by mood</h3><p>Not a dump of every Palme d'Or. A route through films already on BRYME.</p><span class="sp-hero-go">Open the guide →</span></a>
     </div></section>
   <section class="section"><div class="grid-2" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px">${[['Movies','/movies/','🎬','hub/movies'],['Series','/series/','📺','hub/series'],['Anime','/anime/','🍥','hub/anime'],['Articles','/articles/','📰','hub/articles'],['Genres','/genres/','🎭','hub/entertainment'],['Years','/years/','🗓️','hub/entertainment'],['Trending & Picks','/trending/','🔥','hub/entertainment'],['Topics','/topics/','🧭','hub/entertainment']].map(x => photoTile(x[1], x[2] + ' ' + x[0], 'Explore the ' + x[0].toLowerCase() + ' section', catImg(x[3]))).join('')}</div></section>
-  <section class="section"><div class="section-head"><h2>🔥 Trending Now</h2><a href="${url('/trending/')}">View all</a></div><div class="rail">${trendNow.slice(0, 10).map(card).join('')}</div></section>
+  <section class="section"><div class="section-head"><h2>🔥 What's Trending</h2><a href="${url('/trending/')}">View all</a></div><div class="rail">${trendNow.slice(0, 10).map(card).join('')}</div></section>
   <section class="section"><div class="section-head"><h2>⭐ Popular Movies</h2><a href="${url('/movies/')}">All movies</a></div><div class="rail">${popularMovies.slice(0, 10).map(card).join('')}</div></section>
   <section class="section"><div class="section-head"><h2>⭐ Popular Series</h2><a href="${url('/series/')}">All series</a></div><div class="rail">${popularSeries.slice(0, 10).map(card).join('')}</div></section>
   <section class="section"><div class="section-head"><h2>⭐ Popular Anime</h2><a href="${url('/anime/')}">All anime</a></div><div class="rail">${popularAnime.slice(0, 10).map(card).join('')}</div></section>
@@ -3208,6 +3245,47 @@ for (const [year, list] of animeYearMap) write(`anime/${year}`, layout({
 }));
 
 /* ---------------- Rankings hub (/trending/) ---------------- */
+function trendLabel(m){
+  if (m.trending && m.trendingRank != null && m.trendingRank <= 3) return { cls: 'tl-hot', text: '🔥 Hot' };
+  if (m.trending && m.trendingRank != null && m.trendingRank <= 7) return { cls: 'tl-rise', text: '📈 Rising' };
+  if (m.trending) return { cls: 'tl-watch', text: '👀 On the list' };
+  if (m.isNewRelease) return { cls: 'tl-new', text: '🆕 New' };
+  return null;
+}
+function trendCard(m, opts){
+  opts = opts || {};
+  const typeDir = m.typeDir || 'movie';
+  const label = typeDir === 'series' ? 'SERIES' : (typeDir === 'anime' ? 'ANIME' : 'MOVIE');
+  const genre = (typeDir === 'movie' ? m.genre : ((m.genres || [])[0] || m.genre || '')) || '';
+  const blurb = clipMeta(m.description || m.teaser || '', 150);
+  const lab = trendLabel(m);
+  const pageHref = url('/' + typeDir + '/' + m.slug + '/');
+  const thumb = posterThumb(m) || poster(m);
+  const img = thumb
+    ? `<img loading="lazy" decoding="async" width="160" height="90" src="${esc(thumb)}" alt="${esc(m.title)} poster">`
+    : `<img loading="lazy" decoding="async" width="160" height="240" src="${url(cardImage(m))}" alt="${esc(m.title)} — BRYME title card">`;
+  const rank = opts.rank ? `<span class="trend-rank">${opts.rank}</span>` : '';
+  const trailer = m.youtubeId
+    ? `<a class="trend-go" href="${pageHref}#trailer">Trailer</a>`
+    : `<span class="trend-none">No trailer on BRYME yet</span>`;
+  const note = (opts.note || m.trendingNote) ? `<p class="trend-why">${esc(opts.note || m.trendingNote)}</p>` : '';
+  return `<article class="trend-card"><a class="trend-poster" href="${pageHref}">${rank}${img}</a><div class="trend-body"><div class="trend-kicker"><span class="type-badge tb-${typeDir}">${label}</span>${lab ? `<span class="trend-lab ${lab.cls}">${lab.text}</span>` : ''}${m.year ? `<span>${m.year}</span>` : ''}${genre ? `<span class="sep">·</span><span>${esc(genre)}</span>` : ''}</div><h3><a href="${pageHref}">${esc(m.title)}</a></h3>${blurb ? `<p class="trend-blurb">${esc(blurb)}</p>` : ''}${note}<div class="trend-actions"><a class="cta" href="${pageHref}">View on BRYME</a>${trailer}</div></div></article>`;
+}
+function itemListSchema(name, items){
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name,
+    itemListOrder: 'https://schema.org/ItemListOrderAscending',
+    numberOfItems: items.length,
+    itemListElement: items.map((m, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      url: absUrl('/' + (m.typeDir || 'movie') + '/' + m.slug + '/'),
+      name: m.title
+    }))
+  };
+}
 const trendTopMovie = trendingByType.movie.slice(0, 24);
 const trendTopSeries = trendingByType.series.slice(0, 24);
 const trendTopAnime = trendingByType.anime.slice(0, 24);
@@ -3215,20 +3293,37 @@ const popularTop = [...popularByType.movie, ...popularByType.series, ...popularB
 const editorTop = editorPicksList.slice(0, 12);
 const newTop = (newReleases.length >= 8 ? newReleases : movies.filter(m => m.year).sort(sortNewest)).slice(0, 24);
 const classicTop = classics.slice(0, 24);
+const nollywoodTop = movies.filter(m => /nigeria/i.test(String(m.country || '')))
+  .sort((a, b) => ((b.year || 0) - (a.year || 0)) || a.title.localeCompare(b.title))
+  .slice(0, 12);
+const trendTrailers = trendingList.filter(m => m.youtubeId);
+const trendSlugSet = new Set(trendingList.map(m => m.slug));
+const trendStories = articles.filter(a => (a.relatedMovieSlugs || []).some(s => trendSlugSet.has(s))).slice(0, 6);
 write('trending', layout({
   title: 'Trending, Popular, Editor\'s Picks & New Releases',
   description: 'BRYME\'s editorial rankings: trending (curated per content type), popular, editor\'s picks, new releases and classics. No fake view counts.',
   path: '/trending/', activeNav: 'trending',
-  schema: [{ '@context':'https://schema.org', '@type':'CollectionPage', name:'Trending & Popular on BRYME', url:url('/trending/') }],
-  body: `<main class="shell"><section class="hero"><div class="eyebrow">Editorial rankings</div><h1>Trending, Popular &amp; Picks</h1><p class="lead">Four independent concepts, curated by the BRYME editorial team. No fake view counts, no live-traffic claims — real analytics will plug in here later.</p></section>
-  <div class="trend-note"><b style="color:var(--text)">How Trending Now works.</b><br>Trending Now is an <b>editorially curated list</b> (managed in content/rankings.json). It is NOT derived from ratings, recency or traffic. When BRYME has real user activity, Trending can switch to: recent engagement + growth rate + searches + clicks + recency — without changing the site architecture.</div>
-  <section class="section" id="trending-now"><div class="section-head"><h2>🔥 Trending Movies</h2></div><p class="section-note">Curated by the editorial team.</p><div class="grid grid-2">${trendTopMovie.map((m,i) => card(m, {rank: m.trendingRank})).join('') || '<p style="color:var(--muted)">No trending movies configured yet.</p>'}</div></section>
-  <section class="section"><div class="section-head"><h2>🔥 Trending Series</h2></div><p class="section-note">Curated by the editorial team.</p><div class="grid grid-2">${trendTopSeries.map((m,i) => card(m, {rank: m.trendingRank})).join('') || '<p style="color:var(--muted)">No trending series configured yet.</p>'}</div></section>
-  <section class="section"><div class="section-head"><h2>🔥 Trending Anime</h2></div><p class="section-note">Curated by the editorial team.</p><div class="grid grid-2">${trendTopAnime.map((m,i) => card(m, {rank: m.trendingRank})).join('') || '<p style="color:var(--muted)">No trending anime configured yet.</p>'}</div></section>
-  <section class="section" id="editors-picks"><div class="section-head"><h2>👑 Editor\'s Picks</h2></div><p class="section-note">Personal recommendations from the BRYME desk — independent of trending and popularity.</p><div class="grid grid-2">${editorTop.map(m => card(m)).join('') || '<p style="color:var(--muted)">No editor\'s picks configured yet.</p>'}</div></section>
+  schema: [
+    { '@context':'https://schema.org', '@type':'CollectionPage', name:'Trending & Popular on BRYME', url:url('/trending/') },
+    breadcrumbs([{name:'Home', path:'/'}, {name:"What's Trending", path:'/trending/'}]),
+    itemListSchema('What\'s Trending — Movies', trendTopMovie),
+    itemListSchema('What\'s Trending — TV series', trendTopSeries),
+    itemListSchema('What\'s Trending — Anime', trendTopAnime)
+  ],
+  body: `<main class="shell trend-page"><section class="hero"><div class="eyebrow">Discovery desk</div><h1>What's Trending</h1><p class="lead">Movies, series and anime the BRYME desk is pointing to right now — then Nollywood on this site, verified trailers, and the older lists (popular, editor's picks, new, classics). This is not a live TikTok or Google Trends feed.</p></section>
+  <nav class="trend-jump" aria-label="What's Trending"><a href="#movies">🎬 Movies</a><a href="#series">📺 TV series</a><a href="#anime">🍥 Anime</a><a href="#nollywood">🌍 Nollywood</a><a href="#trailers">🎞️ Trailers</a><a href="#editors-picks">👑 Editor's picks</a></nav>
+  <div class="trend-note"><b style="color:var(--text)">How these labels work.</b><br>🔥 Hot, 📈 Rising and 👀 On the list mark <b>position on BRYME's editorial list</b> (content/rankings.json) — not search volume, not TikTok, not a made-up percentage score. A title is on this page because an editor put it here. When BRYME has real analytics, this desk can switch to engagement + growth without changing the URL.</div>
+  <section class="section" id="movies"><div class="section-head"><h2>🎬 Movies</h2><a href="${url('/movies/')}">All movies</a></div><p class="section-note">${trendTopMovie.length} titles on the current editorial movie list.</p><div class="trend-list">${trendTopMovie.map(m => trendCard(m, {rank: m.trendingRank})).join('') || '<p style="color:var(--muted)">No trending movies configured yet.</p>'}</div></section>
+  <section class="section" id="series"><div class="section-head"><h2>📺 TV series</h2><a href="${url('/series/')}">All series</a></div><p class="section-note">${trendTopSeries.length} titles on the current editorial series list.</p><div class="trend-list">${trendTopSeries.map(m => trendCard(m, {rank: m.trendingRank})).join('') || '<p style="color:var(--muted)">No trending series configured yet.</p>'}</div></section>
+  <section class="section" id="anime"><div class="section-head"><h2>🍥 Anime</h2><a href="${url('/anime/')}">All anime</a></div><p class="section-note">${trendTopAnime.length} titles on the current editorial anime list.</p><div class="trend-list">${trendTopAnime.map(m => trendCard(m, {rank: m.trendingRank})).join('') || '<p style="color:var(--muted)">No trending anime configured yet.</p>'}</div></section>
+  <section class="section" id="nollywood"><div class="section-head"><h2>🌍 Nollywood on BRYME</h2><a href="${url('/movies/')}">Movies catalogue</a></div><p class="section-note">Nigerian titles already in the catalogue, newest first. This is a shelf on BRYME — not a claim that these films are trending on TikTok.</p><div class="trend-list">${nollywoodTop.map(m => trendCard(m)).join('') || '<p style="color:var(--muted)">No Nigerian titles in the catalogue yet.</p>'}</div></section>
+  <section class="section" id="trailers"><div class="section-head"><h2>🎞️ Trailers on this list</h2></div><p class="section-note">Verified YouTube trailers for titles on What's Trending. BRYME does not host the files. Play is on the title page.</p><div class="trend-list">${trendTrailers.map(m => trendCard(m, {rank: m.trendingRank})).join('') || '<p style="color:var(--muted)">No verified trailers on the current list.</p>'}</div></section>
+  ${trendStories.length ? `<section class="section" id="reading"><div class="section-head"><h2>Related BRYME stories</h2><a href="${url('/articles/')}">All stories</a></div><p class="section-note">Existing articles that already point at titles on this desk — not new pages spun up for a crawler.</p><div class="story-grid">${trendStories.map(a => storyPhoto('/article/' + a.slug + '/', a.category, a.title, a.description || '', heroFor(a.slug, 'entertainment'))).join('')}</div></section>` : ''}
+  <section class="section" id="editors-picks"><div class="section-head"><h2>👑 Editor's Picks</h2></div><p class="section-note">Personal recommendations from the BRYME desk — independent of the lists above.</p><div class="grid grid-2">${editorTop.map(m => card(m)).join('') || '<p style="color:var(--muted)">No editor\'s picks configured yet.</p>'}</div></section>
   <section class="section"><div class="section-head"><h2>⭐ Popular</h2></div><p class="section-note">Evergreen favourites, editorially ranked per content type.</p><div class="grid">${popularTop.map(card).join('')}</div></section>
   <section class="section" id="new-releases"><div class="section-head"><h2>🆕 New Releases</h2></div><p class="section-note">Newest verified release years (${CURRENT_YEAR - 2}–${CURRENT_YEAR}). Older titles are never re-labelled as new.</p><div class="grid">${newTop.map(card).join('')}</div></section>
-  <section class="section" id="classics"><div class="section-head"><h2>🎞️ Classics</h2></div><p class="section-note">Titles from 2000 and earlier, ranked by editorial score.</p><div class="grid">${classicTop.map(card).join('')}</div></section></main>`
+  <section class="section" id="classics"><div class="section-head"><h2>🎞️ Classics</h2></div><p class="section-note">Titles from 2000 and earlier, ranked by editorial score.</p><div class="grid">${classicTop.map(card).join('')}</div></section>
+  <section class="tp-next"><h2>Keep exploring</h2><p>Stay on BRYME — these are real sections, not download buttons.</p><div class="tp-next-links"><a href="${url('/movies/')}">Movies</a><a href="${url('/series/')}">TV series</a><a href="${url('/anime/')}">Anime</a><a href="${url('/entertainment/')}">Entertainment</a><a href="${url('/articles/')}">Stories</a></div></section></main>`
 }));
 
 /* ---------------- Search ---------------- */
@@ -3527,8 +3622,12 @@ for (const m of movies) {
   // fabricated upload dates, durations or creators.
   if (m.trailers.length && m.trailerType && m.trailerType !== 'fan-made' && m.trailerVerified) {
     const t0 = m.trailers[0];
-    schemaList.push({ '@context':'https://schema.org', '@type':'VideoObject', name: t0.videoTitle || `${m.title} official trailer`, description: `Official trailer for ${m.title}.`, thumbnailUrl: `https://i.ytimg.com/vi/${t0.videoId}/hqdefault.jpg`, embedUrl: `https://www.youtube-nocookie.com/embed/${t0.videoId}`, uploadDate: t0.lastChecked ? t0.lastChecked : undefined, publisher: t0.channel ? { '@type':'Organization', name: t0.channel } : undefined });
-    Object.keys(schemaList[schemaList.length - 1]).forEach(k => schemaList[schemaList.length - 1][k] === undefined && delete schemaList[schemaList.length - 1][k]);
+    const extra = VIDEO_EDITORIAL[m.slug];
+    const match = !!(extra && extra.videoId === t0.videoId);
+    const vo = { '@context':'https://schema.org', '@type':'VideoObject', name: (match && extra.name) || t0.videoTitle || (m.title + ' official trailer'), description: (match && extra.description) || ('Official trailer for ' + m.title + '.'), thumbnailUrl: (match && extra.thumbnailUrl) || ('https://i.ytimg.com/vi/' + t0.videoId + '/hqdefault.jpg'), embedUrl: 'https://www.youtube-nocookie.com/embed/' + t0.videoId };
+    if (match && extra.uploadDate) vo.uploadDate = extra.uploadDate;
+    if (t0.channel) vo.publisher = { '@type':'Organization', name: t0.channel };
+    schemaList.push(vo);
   }
   crumbs.push({name:m.title, path:pagePath});
   const related = relatedFor(m);
@@ -4810,6 +4909,63 @@ html,body{overflow-x:clip}
 .tile img{content-visibility:auto}
 .hero-video iframe{width:100%;height:100%;border:0;position:absolute;inset:0}
 `);
+
+fs.appendFileSync(path.join(root,'assets/site.css'), `
+/* video figure / figcaption — target embed pages; desktop layout unchanged */
+.video-figure{margin:0 0 8px;max-width:860px}
+.video-figure .trailer-frame{max-width:100%}
+.video-figure figcaption{font-size:13.5px;line-height:1.5;color:var(--muted);margin:10px 0 0}
+.video-context{max-width:760px;margin:14px 0 8px}
+.video-context p{font-size:16px;line-height:1.7;color:#d9dde1;margin:0 0 12px}
+.sports-teaser .video-figure{max-width:100%}
+[data-theme="light"] .video-context p{color:#2b333c}
+[data-theme="light"] .video-figure figcaption{color:#5a6572}
+@media(max-width:760px){
+  .video-context p{font-size:15px;line-height:1.6}
+  .video-figure figcaption{font-size:13px}
+}
+`);
+
+
+fs.appendFileSync(path.join(root,'assets/site.css'), `
+/* What's Trending desk — /trending/ only. Poster-first, no extra JS. */
+.trend-jump{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 18px}
+.trend-jump a{font-size:13px;font-weight:800;border:1px solid var(--line);border-radius:20px;padding:8px 12px;background:#101318;color:#d9dde1}
+.trend-jump a:hover{border-color:var(--accent);color:#fff}
+.trend-list{display:flex;flex-direction:column;gap:12px}
+.trend-card{display:grid;grid-template-columns:120px minmax(0,1fr);gap:16px;padding:14px;border:1px solid var(--line);border-radius:12px;background:linear-gradient(160deg,#161b23,#0f1216)}
+.trend-poster{position:relative;display:block;aspect-ratio:16/9;overflow:hidden;border-radius:8px;background:#171b20}
+.trend-poster img{width:100%;height:100%;object-fit:cover}
+.trend-rank{position:absolute;top:6px;left:6px;z-index:1;min-width:22px;height:22px;display:grid;place-items:center;font-size:11px;font-weight:900;border-radius:4px;background:rgba(8,9,11,.82);border:1px solid rgba(255,255,255,.25)}
+.trend-kicker{display:flex;flex-wrap:wrap;gap:6px 8px;align-items:center;font-size:12px;color:var(--muted);font-weight:700}
+.trend-kicker .sep{opacity:.45}
+.trend-lab{font-size:10.5px;font-weight:900;letter-spacing:.04em;padding:2px 8px;border-radius:12px;border:1px solid var(--line)}
+.tl-hot{color:#ff8a75;border-color:rgba(233,75,44,.45);background:rgba(233,75,44,.1)}
+.tl-rise{color:#e7bb5c;border-color:rgba(231,187,92,.45);background:rgba(231,187,92,.1)}
+.tl-watch{color:#9ec0ff;border-color:rgba(79,142,247,.35);background:rgba(79,142,247,.1)}
+.tl-new{color:#7dffb9;border-color:rgba(61,220,132,.4);background:rgba(61,220,132,.1)}
+.trend-body h3{margin:6px 0 4px;font-size:20px;line-height:1.2}
+.trend-body h3 a:hover{color:var(--gold)}
+.trend-blurb{margin:0 0 8px;font-size:14.5px;line-height:1.55;color:#d9dde1}
+.trend-why{margin:0 0 8px;font-size:13px;color:var(--gold);line-height:1.45}
+.trend-actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.trend-actions .cta{margin-top:0;min-height:36px;padding:8px 12px;font-size:13px}
+.trend-go{font-size:13px;font-weight:800;color:var(--gold)}
+.trend-go:hover{color:#fff}
+.trend-none{font-size:12px;color:var(--muted)}
+[data-theme="light"] .trend-card,[data-theme="light"] .trend-jump a{background:#fff;border-color:var(--line)}
+[data-theme="light"] .trend-blurb{color:#2b333c}
+[data-theme="light"] .trend-jump a{color:#2b333c}
+@media(max-width:760px){
+  .trend-card{grid-template-columns:96px minmax(0,1fr);gap:10px;padding:10px}
+  .trend-body h3{font-size:16px}
+  .trend-blurb{font-size:13.5px}
+  .trend-jump{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:6px}
+  .trend-jump a{flex:none}
+}
+`);
+
+
 if (warnings.length) {
   console.log('WARNINGS:');
   warnings.forEach(w => console.log('  - ' + w));

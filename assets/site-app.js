@@ -132,7 +132,7 @@
     function showError() {
       clearWatchdog();
       var frame = box.querySelector('[data-trailer-id]');
-      if (frame && frame.parentNode) frame.parentNode.removeChild(frame);
+      if (frame) { frame.hidden = true; frame.innerHTML = ''; }
       var err = box.querySelector('[data-trailer-error]');
       if (err) {
         var watch = err.querySelector('[data-trailer-watch]');
@@ -150,6 +150,7 @@
       if (err) err.hidden = true;
       var frame = box.querySelector('[data-trailer-id]');
       if (!frame) return;
+      frame.hidden = false;
       playerUp = false;
       frame.innerHTML = '';
       var iframe = frameHtml(current.id, title);
@@ -210,6 +211,7 @@
       var err = box.querySelector('[data-trailer-error]');
       if (err) err.hidden = true;
       var frame = box.querySelector('[data-trailer-id]');
+      if (frame) frame.hidden = false;
       if (!frame) {
         // re-create the frame if the error card removed it
         var head = box.querySelector('.trailer-head');
