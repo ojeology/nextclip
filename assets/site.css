@@ -1304,3 +1304,34 @@ a.story-photo:hover{filter:brightness(1.06)}
   a.story-photo{min-height:170px;padding:16px}
 }
 
+/* ============================================================
+   INSTALLED-APP LANDSCAPE
+   The PWA used to lock portrait. Phones in landscape are often
+   wider than 760px, so desktop CSS (560px heroes, no bottom nav)
+   ran in a ~390px-tall window. This only matches short screens.
+   Desktop monitors are unchanged.
+   ============================================================ */
+@media (orientation: landscape) and (max-height: 540px) {
+  body { padding-bottom: 50px; }
+  .mobile-nav { display: grid !important; }
+  .topnav { display: none !important; }
+  .top .shell { min-height: 42px; padding: 4px 12px; gap: 10px; }
+  .hero-carousel,
+  .home-hero { min-height: 220px; max-height: 100dvh; }
+  .hero-slide-inner,
+  .home-hero-inner { padding-top: 52px; padding-bottom: 18px; }
+  .hero-carousel h1,
+  .hero-slide h1,
+  .hero-slide h2,
+  .home-hero h1 { font-size: 26px; }
+  .sports-feature,
+  .mm-feature,
+  .tech-feature,
+  .ent-feature,
+  .cat-feature { min-height: 150px; padding: 16px 20px; }
+  .article-hero-photo { min-height: 160px; padding: 36px 16px 14px; }
+  .movie-hero { min-height: 240px; padding-top: 48px; padding-bottom: 16px; }
+  .sp-hero-card { min-height: 120px !important; }
+  .hub-photos { grid-template-columns: repeat(4, 1fr); }
+  .hub-photo { min-height: 110px; padding: 10px; }
+}
