@@ -4966,6 +4966,29 @@ fs.appendFileSync(path.join(root,'assets/site.css'), `
 `);
 
 
+fs.appendFileSync(path.join(root,'assets/site.css'), `
+/* post-watch CTA + desktop details stick — not an ad, not on mobile overlay nav */
+.trailer-frame{position:relative}
+.bryme-afterwatch{position:absolute;inset:0;z-index:4;display:flex;flex-direction:column;justify-content:flex-end;gap:8px;padding:16px;background:linear-gradient(0deg,rgba(8,9,11,.96) 18%,rgba(8,9,11,.72));color:#fff}
+.bryme-afterwatch .aw-kicker{margin:0;font-size:11px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:#e7bb5c}
+.bryme-afterwatch b{font-size:18px;line-height:1.2}
+.aw-sub{margin:4px 0 0;font-size:12px;color:#c5cbd2}
+.aw-links{display:flex;flex-wrap:wrap;gap:8px}
+.aw-links a{border:1px solid rgba(255,255,255,.25);border-radius:16px;padding:6px 10px;font-size:12.5px;font-weight:700}
+.aw-links a:hover{border-color:#e7bb5c;color:#fff}
+.aw-actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:6px}
+.aw-actions .cta,.aw-actions .cta-ghost{margin-top:0;min-height:36px;padding:8px 12px;font-size:13px}
+.aw-actions .quiet-link{color:#fff;border-bottom-color:rgba(255,255,255,.4)}
+@media(min-width:761px){
+  .tp-page .body .aside{position:sticky;top:74px;align-self:start}
+}
+@media(max-width:760px){
+  .bryme-afterwatch{padding:12px}
+  .bryme-afterwatch b{font-size:16px}
+}
+[data-theme="light"] .bryme-afterwatch{background:linear-gradient(0deg,rgba(8,9,11,.96) 18%,rgba(8,9,11,.72));color:#fff}
+`);
+
 if (warnings.length) {
   console.log('WARNINGS:');
   warnings.forEach(w => console.log('  - ' + w));

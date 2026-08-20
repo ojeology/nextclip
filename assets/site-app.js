@@ -166,11 +166,55 @@
     // Secondary signal: YouTube IFrame API postMessages. With enablejsapi=1
     // these report real errors (embedding blocked, video removed mid-play)
     // and confirm the player is alive.
+    function hideAfterWatch() {
+      var aw = box.querySelector('[data-afterwatch]');
+      if (aw && aw.parentNode) aw.parentNode.removeChild(aw);
+    }
+    function showAfterWatch() {
+      var frame = box.querySelector('[data-trailer-id]');
+      if (!frame || frame.querySelector('[data-afterwatch]')) return;
+      var related = document.querySelectorAll('.tp-related a.tile');
+      var links = [];
+      var i;
+      for (i = 0; i < related.length && links.length < 3; i++) {
+        var a = related[i];
+        var nameEl = a.querySelector('h3');
+        var href = a.getAttribute('href');
+        var name = nameEl ? nameEl.textContent : '';
+        if (href && name) links.push('<a href="' + esc(href) + '">' + esc(name) + '</a>');
+      }
+      var watch = document.getElementById('watch');
+      var next = document.querySelector('.tp-next-links a');
+      var html = '<div class="bryme-afterwatch" data-afterwatch role="dialog" aria-label="Next on BRYME">' +
+        '<p class="aw-kicker">Trailer finished</p>' +
+        '<b>Stay on BRYME</b>' +
+        (links.length ? '<p class="aw-sub">Similar titles</p><div class="aw-links">' + links.join('') + '</div>' : '') +
+        '<div class="aw-actions">' +
+        (watch ? '<a class="cta" href="#watch">Where to watch legally</a>' : '') +
+        '<a class="cta cta-ghost" href="/trending/">What\'s Trending</a>' +
+        '<button type="button" class="quiet-link" data-aw-replay>Replay trailer</button>' +
+        '</div></div>';
+      frame.appendChild((function () {
+        var wrap = document.createElement('div');
+        wrap.innerHTML = html;
+        return wrap.firstChild;
+      })());
+      var replay = frame.querySelector('[data-aw-replay]');
+      if (replay) replay.addEventListener('click', function () { hideAfterWatch(); play(); });
+    }
     function onMessage(e) {
       var d = e.data;
+      if (typeof d === 'string') {
+        try { d = JSON.parse(d); } catch (err) { return; }
+      }
       if (!d || typeof d !== 'object' || !d.event) return;
+      var frame = box.querySelector('iframe');
+      if (frame && e.source && e.source !== frame.contentWindow) return;
       if (d.event === 'onError') { showError(); }
-      else if (d.event === 'onReady' || d.event === 'onStateChange' || d.event === 'infoDelivery') { playerUp = true; clearWatchdog(); }
+      else if (d.event === 'onStateChange') {
+        playerUp = true; clearWatchdog();
+        if (Number(d.info) === 0) showAfterWatch();
+      } else if (d.event === 'onReady' || d.event === 'infoDelivery') { playerUp = true; clearWatchdog(); }
     }
     window.addEventListener('message', onMessage);
     function render() {
