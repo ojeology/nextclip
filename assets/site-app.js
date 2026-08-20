@@ -542,8 +542,11 @@
       slides.forEach(function (sl, k) { sl.classList.toggle('is-active', k === idx); });
       dots.forEach(function (d, k) { d.classList.toggle('is-active', k === idx); d.setAttribute('aria-selected', k === idx); });
       if (heroVisible && !userPaused) {
-        // attempt muted autoplay after a beat; if the browser blocks it we fall back to the poster
-        setTimeout(function () { if (heroVisible && !userPaused) loadHeroVideo(false); }, 250);
+        var slide = slides[idx];
+        if (slide && !slide.style.backgroundImage) {
+          var posterUrl = slide.getAttribute('data-poster');
+          if (posterUrl) slide.style.backgroundImage = "url('" + posterUrl + "')";
+        }
         scheduleHero();
       }
     }
@@ -605,8 +608,13 @@
       if (document.hidden) { clearHeroTimers(); hideHeroVideo(); }
       else if (heroVisible && !userPaused) { scheduleHero(); }
     });
-    // initial muted autoplay attempt after the page settles
-    setTimeout(function () { if (heroVisible && !userPaused) { loadHeroVideo(false); scheduleHero(); } }, 1200);
+    // Poster first. Trailer iframe loads only when the visitor taps Watch Trailer.
+    var first = slides[0];
+    if (first && !first.style.backgroundImage) {
+      var firstPoster = first.getAttribute('data-poster');
+      if (firstPoster) first.style.backgroundImage = "url('" + firstPoster + "')";
+    }
+    scheduleHero();
   }
 
   /* ---------- sports hero carousel arrows (scroll-snap track) ---------- */
@@ -983,6 +991,7 @@ window.BRYME_HINT_ENABLED = false;
     if (nationalityOpen()) return true;
     if (deskHintOpen()) return true;
     if (document.querySelector('.trailer-section iframe')) return true;
+    if (document.querySelector('.hero-video iframe')) return true;
     return false;
   }
 
