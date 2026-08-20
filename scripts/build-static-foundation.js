@@ -1397,6 +1397,7 @@ const HERO_IMG = {
   'ai-assistant-data-training-settings': '/assets/img/tech/hero-privacy.jpg',
   'learning-to-code-on-a-phone-termux': '/assets/img/tech/hero-phone-code.jpg',
   'render-deployment-failures-what-they-taught-me': '/assets/img/tech/hero-deploy.jpg',
+  'where-to-host-website-for-free': '/assets/img/tech/hero-hosting.jpg',
   'nigerian-thrillers-worth-your-time': '/assets/img/ent/hero-nollywood.jpg',
   'korean-cinema-starter-guide-rebuilt': '/assets/img/ent/hero-korean.jpg',
   'indian-cinema-first-five': '/assets/img/ent/hero-indian.jpg',
@@ -1444,6 +1445,8 @@ const CAT_IMG = {
   'tech/beginner-coding': '/assets/img/tech/hero-phone-code.jpg',
   'tech/android-apps': '/assets/img/tech/hero-phone-code.jpg',
   'tech/developer-tools': '/assets/img/tech/hero-deploy.jpg',
+  'tech/hosting': '/assets/img/tech/hero-hosting.jpg',
+  'tech/website-building': '/assets/img/tech/hero-hosting.jpg',
   'hub/entertainment': '/assets/img/ent/hero-cinema.jpg',
   'hub/movies': '/assets/img/ent/hero-cinema.jpg',
   'hub/series': '/assets/img/ent/hero-series.jpg',
@@ -1669,8 +1672,8 @@ function verticalPage(v, category){
     </div></section>` : '';
   const techRootHero = (v.dir === 'tech' && !category) ? `<section class="tech-feature"><div class="sports-feature-inner"><div class="eyebrow">🤖 BRYME Tech &amp; AI</div><h1>Practical tools. No theatre.</h1><p>${esc(v.tagline)}</p></div></section>
     <section class="sp-hero" aria-label="Featured BRYME Tech stories"><div class="sp-hero-track">
-      <a class="sp-hero-card sp-hero-first tech-tint" href="${url('/tech/ai-assistant-data-training-settings/')}" style="--card-img:url('/assets/img/tech/hero-privacy.jpg')"><span class="sp-hero-tag">AI assistants</span><h3>What they actually do with your chats</h3><p>ChatGPT, Claude and Gemini each have a training toggle. Each one also has a way around it.</p><span class="sp-hero-go">Read the settings →</span></a>
-      <a class="sp-hero-card tech-tint" href="${url('/tech/learning-to-code-on-a-phone-termux/')}" style="--card-img:url('/assets/img/tech/hero-phone-code.jpg')"><span class="sp-hero-tag">From a phone</span><h3>Learning to code on Android</h3><p>Termux, the numerical stack, and what actually broke. Not a course advert.</p><span class="sp-hero-go">Read what broke →</span></a>
+      <a class="sp-hero-card sp-hero-first tech-tint" href="${url('/tech/where-to-host-website-for-free/')}" style="--card-img:url('/assets/img/tech/hero-hosting.jpg')"><span class="sp-hero-tag">Hosting</span><h3>Where to host a website for free</h3><p>GitHub Pages, Cloudflare, Render, Vercel, Netlify. What their own docs actually say.</p><span class="sp-hero-go">Read what free means →</span></a>
+      <a class="sp-hero-card tech-tint" href="${url('/tech/ai-assistant-data-training-settings/')}" style="--card-img:url('/assets/img/tech/hero-privacy.jpg')"><span class="sp-hero-tag">AI assistants</span><h3>What they actually do with your chats</h3><p>ChatGPT, Claude and Gemini each have a training toggle. Each one also has a way around it.</p><span class="sp-hero-go">Read the settings →</span></a>
       <a class="sp-hero-card tech-tint" href="${url('/tech/render-deployment-failures-what-they-taught-me/')}" style="--card-img:url('/assets/img/tech/hero-deploy.jpg')"><span class="sp-hero-tag">Deploy</span><h3>The site worked. The deploy didn't.</h3><p>Four real Render failures, including the package.json error on this site.</p><span class="sp-hero-go">Read the failures →</span></a>
     </div></section>` : '';
   const pageHero = sportsRootHero || techRootHero || (defaultHero + sportsFeature);
