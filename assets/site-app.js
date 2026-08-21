@@ -1140,3 +1140,39 @@ document.addEventListener('error', function (e) {
   window.addEventListener('load', function () { setTimeout(tryPlay, 600); });
 })();
 
+/* Deep-link title pages: the Play (Watch Now) and Trailer buttons must actually
+   play the hero trailer — scroll to the top and start/unmute the player. */
+(function () {
+  'use strict';
+  function playHero() {
+    var hero = document.querySelector('.nm-video-hero');
+    if (!hero) return;
+    try { window.scrollTo({ top: 0, behavior: 'smooth' }); } catch (e) { window.scrollTo(0, 0); }
+    var frame = hero.querySelector('.trailer-frame');
+    if (!frame) return;
+    var btn = frame.querySelector('.trailer-play');
+    if (btn) { btn.click(); return; }
+    // already playing (autoplay): use the in-hero Unmute control, else poke the API
+    var um = hero.querySelector('[data-trailer-unmute]');
+    if (um && !um.hidden) { um.click(); return; }
+    var ifr = frame.querySelector('iframe');
+    if (ifr && ifr.contentWindow) {
+      try {
+        ifr.contentWindow.postMessage(JSON.stringify({ event: 'command', func: 'playVideo', args: [] }), '*');
+        ifr.contentWindow.postMessage(JSON.stringify({ event: 'command', func: 'unMute', args: [] }), '*');
+      } catch (e2) {}
+    }
+  }
+  document.addEventListener('click', function (e) {
+    var t = e.target;
+    while (t && t !== document) {
+      if (t.classList && (t.classList.contains('nm-watch-now') || t.classList.contains('nm-trailer'))) {
+        e.preventDefault();
+        playHero();
+        return;
+      }
+      t = t.parentNode;
+    }
+  });
+})();
+
