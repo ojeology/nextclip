@@ -172,3 +172,33 @@ reference slugs BRYME was missing (82 from the reference listing + Project Hail
 Mary). Full reference data (rating/year/type/age/desc/tagline) for 32 titles;
 real well-known metadata for the rest. All pages carry BRYME's SEO/legal shell,
 channel pills, Watch Now/Trailer CTAs, and More Like This. Sitemap updated.
+
+---
+
+# v8 · Portal homepage + NetMirror moves to /entertainment/ (2026-08-21)
+
+Massive landing-page redesign per request.
+
+## What changed
+1. **Homepage → portal for ALL content** (was the NetMirror movie page):
+   - Portal hero: brand statement + big search + quick links (Watch / Sports / Make Money / Tech)
+   - **4 vertical hub cards** (Entertainment / Sports / Make Money / Tech & AI) with real hero photos
+   - "Now on Entertainment" rail (top-rated titles from data/movies.json)
+   - Match previews (sports), Make Money + Tech panels with real links, recommendation box,
+     latest articles, licensed-services strip, search CTA
+2. **/entertainment/ → the NetMirror experience** (moved from the homepage):
+   - Hero carousel (5 slides, TRENDING NOW, Watch Now/More Info, age badges, white-pill dots)
+   - Top 10 Today rail, Popular Movies/Series/Anime rails, category grid, editorial stories,
+     genre chips, Start here, latest articles, licensed-services strip
+3. **Bottom navigation fixed** — every page now has ONE tidy 6-item bar
+   (Home · Entertainment · Sports · Money · Tech · Search) instead of the overflowing 9-item
+   version; floating back-to-top circle hidden on mobile; duplicate footer "Explore" label fixed.
+4. **Tests updated to match the new structure** (and fixed a latent crash):
+   - `homepage-tests.js` now tests the hero carousel on `/entertainment/`
+   - `ranking-tests.js` rewritten to test the entertainment hub order, Top-10 rail, popular
+     rails and the /trending/ hub with the real markup — **40/40 pass** (the old file crashed
+     partway with 15 stale failures)
+
+## Verified
+- Full suite: ranking 0 fails (was crash@15), homepage 0, all others at pristine baseline
+  (1/32/4/5/9/1 pre-existing content mismatches — no new failures).

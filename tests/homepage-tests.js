@@ -11,8 +11,8 @@ function assert(cond, msg) { if (cond) { pass++; } else { fail++; console.log(' 
 function section(name) { console.log('\n== ' + name + ' =='); }
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 
-function loadHome() {
-  const dom = new JSDOM(fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8'), {
+function loadEnt() {
+  const dom = new JSDOM(fs.readFileSync(path.join(ROOT, 'entertainment/index.html'), 'utf8'), {
     runScripts: 'dangerously',
     url: 'https://bryme.onrender.com/',
     beforeParse(window) {
@@ -32,7 +32,7 @@ function loadHome() {
   /* 1. Hero structure */
   section('Hero carousel structure');
   {
-    const dom = loadHome();
+    const dom = loadEnt();
     const d = dom.window.document;
     assert(d.querySelectorAll('[data-slide]').length === 5, 'exactly 5 hero slides');
     assert(d.querySelectorAll('.hero-slide.is-active').length === 1, 'exactly 1 active slide');
@@ -52,7 +52,7 @@ function loadHome() {
   /* 2. Navigation: next/prev/dots */
   section('Carousel navigation');
   {
-    const dom = loadHome();
+    const dom = loadEnt();
     const d = dom.window.document;
     const first = d.querySelector('.hero-slide.is-active h1').textContent;
     d.querySelector('[data-hero-next]').click();
@@ -69,7 +69,7 @@ function loadHome() {
   /* 3. Trailer playback: only ONE iframe, stops on slide change, mute control */
   section('Trailer playback');
   {
-    const dom = loadHome();
+    const dom = loadEnt();
     const d = dom.window.document;
     // click the active slide's watch button
     d.querySelector('.hero-slide.is-active [data-hero-watch]').click();
@@ -88,7 +88,7 @@ function loadHome() {
   /* 4. Recommendation: valid title */
   section('Recommendation — valid title');
   {
-    const dom = loadHome();
+    const dom = loadEnt();
     const d = dom.window.document;
     const input = d.querySelector('[data-rec-input]');
     input.value = 'alice in borderland';
@@ -111,7 +111,7 @@ function loadHome() {
     /* 5. Recommendation: unknown title */
     section('Recommendation — unknown title');
     {
-      const dom = loadHome();
+      const dom = loadEnt();
       const d = dom.window.document;
       d.querySelector('[data-rec-input]').value = 'zzzz not a real title';
       d.querySelector('[data-rec-form]').dispatchEvent(new dom.window.Event('submit', { cancelable: true }));
@@ -128,7 +128,7 @@ function loadHome() {
     /* 6. Recommendation: empty input */
     section('Recommendation — empty input');
     {
-      const dom = loadHome();
+      const dom = loadEnt();
       const d = dom.window.document;
       d.querySelector('[data-rec-form]').dispatchEvent(new dom.window.Event('submit', { cancelable: true }));
       assert(/Type a movie/.test(d.querySelector('[data-rec-status]').textContent), 'prompts for input when empty');

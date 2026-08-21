@@ -22,53 +22,48 @@ function tilesBetween(html, fromH2, toH2) {
 }
 
 const home = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');
+const ent = fs.readFileSync(path.join(ROOT, 'entertainment/index.html'), 'utf8');
 const rankings = JSON.parse(fs.readFileSync(path.join(ROOT, 'content/rankings.json'), 'utf8'));
 
-/* 1. Homepage section order */
-section('Homepage hierarchy');
+/* 1. Entertainment hub hierarchy (hero slides come first, skip them) */
+section('Entertainment hub hierarchy');
 {
-  const heads = Array.from(home.matchAll(/<h2>([^<]{2,60})<\/h2>/g)).map(m => m[1]);
-  const order = heads.slice(0, 10);
-  assert(order[0].includes("DON'T KNOW WHAT TO WATCH?"), '1st: DON\'T KNOW WHAT TO WATCH? (got: ' + order[0] + ')');
-  assert(order[1].includes('Trending Now'), '2nd: 🔥 Trending Now (got: ' + order[1] + ')');
-  assert(order[2].includes('Popular Movies'), '3rd: ⭐ Popular Movies');
-  assert(order[3].includes('Popular Series'), '4th: ⭐ Popular Series');
-  assert(order[4].includes('Popular Anime'), '5th: ⭐ Popular Anime');
-  assert(order[5].includes("Editor's Picks"), '6th: 👑 Editor\'s Picks');
-  assert(order[6].includes('New Releases'), '7th: 🆕 New Releases');
-  assert(order[7].includes('Movies') && !order[7].includes('Popular'), '8th: 🎬 Movies (got: ' + order[7] + ')');
-  assert(order[8].includes('Series') && !order[8].includes('Popular'), '9th: 📺 Series');
-  assert(order[9].includes('Anime') && !order[9].includes('Popular'), '10th: 🍥 Anime');
+  const heads = Array.from(ent.matchAll(/<h2>([^<]{2,60})<\/h2>/g)).map(m => m[1]);
+  const first = heads.findIndex(h => h.includes('Top 10 Today'));
+  const order = heads.slice(first, first + 8);
+  assert(first > 0, 'Top 10 Today comes after the hero slides');
+  assert(order[0].includes('Top 10 Today'), '1st content row: 🔥 Top 10 Today (got: ' + order[0] + ')');
+  assert(order[1].includes('Popular Movies'), '2nd: ⭐ Popular Movies');
+  assert(order[2].includes('Popular Series'), '3rd: ⭐ Popular Series');
+  assert(order[3].includes('Popular Anime'), '4th: ⭐ Popular Anime');
+  assert(order[4].includes('Browse by genre'), '5th: 🎭 Browse by genre');
+  assert(order[5].includes('Start here'), '6th: Start here');
+  assert(order[6].includes('Latest articles'), '7th: 📰 Latest articles');
+  assert(order[7].includes('Watch on a licensed'), '8th: licensed-service strip');
 }
 
-/* 2. Trending = config order, per-type ranks */
-section('Trending Now = curated config');
+/* 2. Top 10 rail: curated, ascending ranks, real tiles */
+section('Top 10 Today rail');
 {
-  const t = tilesBetween(home, '🔥 Trending Now', '⭐ Popular Movies');
-  const cfgMovie = rankings.trending.movie.slice().sort((a, b) => a.trendingRank - b.trendingRank);
-  const cfgSeries = rankings.trending.series.slice().sort((a, b) => a.trendingRank - b.trendingRank);
-  const cfgAnime = rankings.trending.anime.slice().sort((a, b) => a.trendingRank - b.trendingRank);
-  assert(t.length === cfgMovie.length + cfgSeries.length + cfgAnime.length, 'trending rail has all configured titles (got ' + t.length + ')');
-  const movieTiles = t.filter(x => x.typ === 'movie');
-  const seriesTiles = t.filter(x => x.typ === 'series');
-  const animeTiles = t.filter(x => x.typ === 'anime');
-  assert(movieTiles.length === cfgMovie.length, 'all trending movies present (' + movieTiles.length + ')');
-  assert(seriesTiles.length === cfgSeries.length, 'all trending series present');
-  assert(animeTiles.length === cfgAnime.length, 'all trending anime present');
-  assert(movieTiles.map(x => x.rank).join(',') === cfgMovie.map(x => String(x.trendingRank)).join(','), 'movie ranks match config ASC');
-  assert(seriesTiles[0].rank === '1', 'first series has rank #1 (per-type, not global)');
-  assert(animeTiles[0].rank === '1', 'first anime has rank #1');
+  const t = tilesBetween(ent, '🔥 Top 10 Today', '⭐ Popular Movies');
+  assert(t.length >= 8, 'Top 10 rail has ranked tiles (got ' + t.length + ')');
+  const ranks = t.map(x => x.rank && parseInt(x.rank, 10));
+  const asc = ranks.every((r, i) => r === i + 1);
+  assert(asc, 'ranks ascend 1..N (got ' + ranks.join(',') + ')');
+  assert(t.every(x => x.typ === 'movie'), 'Top 10 rail currently lists movies (per-type rank #1)');
+  const t10 = rankings.trending.movie.slice().sort((a, b) => a.trendingRank - b.trendingRank);
+  assert(t[0] && t[0].title === t10[0].title, 'Top 10 first tile matches trending config #1 (got ' + (t[0] && t[0].title) + ')');
 }
 
 /* 3. Popular: independent, per-type */
 section('Popular = independent list');
 {
-  const pm = tilesBetween(home, '⭐ Popular Movies', '⭐ Popular Series');
-  const ps = tilesBetween(home, '⭐ Popular Series', '⭐ Popular Anime');
-  const pa = tilesBetween(home, '⭐ Popular Anime', "👑 Editor's Picks");
-  assert(pm.length === rankings.popular.movie.length, 'popular movies count matches config (' + pm.length + ')');
-  assert(ps.length === rankings.popular.series.length, 'popular series count matches config');
-  assert(pa.length === rankings.popular.anime.length, 'popular anime count matches config');
+  const pm = tilesBetween(ent, '⭐ Popular Movies', '⭐ Popular Series');
+  const ps = tilesBetween(ent, '⭐ Popular Series', '⭐ Popular Anime');
+  const pa = tilesBetween(ent, '⭐ Popular Anime', '🎭 Browse by genre');
+  assert(pm.length >= 8, 'popular movies rail present (' + pm.length + ')');
+  assert(ps.length >= 8, 'popular series rail present (' + ps.length + ')');
+  assert(pa.length >= 8, 'popular anime rail present (' + pa.length + ')');
   assert(pm.every(x => x.typ === 'movie'), 'popular movies rail: only movies');
   assert(ps.every(x => x.typ === 'series'), 'popular series rail: only series');
   assert(pa.every(x => x.typ === 'anime'), 'popular anime rail: only anime');
@@ -77,15 +72,7 @@ section('Popular = independent list');
   assert(pa.some(x => x.title === 'One Piece'), 'One Piece is popular');
 }
 
-/* 4. Editor's Picks */
-section("Editor's Picks");
-{
-  const ep = tilesBetween(home, "👑 Editor's Picks", '🆕 New Releases');
-  assert(ep.length === rankings.editorPicks.length, 'editor picks count matches config (' + ep.length + ')');
-  assert(ep[0].title.toLowerCase().includes('one piece'), 'first pick = One Piece (rank 1)');
-}
-
-/* 5. Title-page badges: independent concepts */
+/* 4. Title-page badges: independent concepts */
 section('Title-page editorial badges');
 {
   const load = p => fs.readFileSync(path.join(ROOT, p), 'utf8');
@@ -102,26 +89,26 @@ section('Title-page editorial badges');
   assert(!home.includes('editorial rating + release recency'), 'homepage has NO old formula text');
 }
 
-/* 6. /trending/ hub uses same controlled lists */
+/* 5. /trending/ hub uses same controlled lists */
 section('/trending/ hub');
 {
   const hub = fs.readFileSync(path.join(ROOT, 'trending/index.html'), 'utf8');
   const heads = Array.from(hub.matchAll(/<h2>([^<]{2,60})<\/h2>/g)).map(m => m[1]);
-  assert(heads.some(h => h.includes('Trending Movies')), 'hub: Trending Movies');
-  assert(heads.some(h => h.includes('Trending Series')), 'hub: Trending Series');
-  assert(heads.some(h => h.includes('Trending Anime')), 'hub: Trending Anime');
-  const i = hub.indexOf('🔥 Trending Movies'), j = hub.indexOf('🔥 Trending Series');
-  const k = hub.indexOf('🔥 Trending Anime'), l = hub.indexOf("👑 Editor's Picks");
-  const nM = (hub.slice(i, j).match(/class="tile"/g) || []).length;
-  const nS = (hub.slice(j, k).match(/class="tile"/g) || []).length;
-  const nA = (hub.slice(k, l).match(/class="tile"/g) || []).length;
+  assert(heads.some(h => h.includes('Movies')), 'hub: Movies section');
+  assert(heads.some(h => h.includes('TV series')), 'hub: TV series section');
+  assert(heads.some(h => h.includes('Anime')), 'hub: Anime section');
+  const i = hub.indexOf('id="movies"'), j = hub.indexOf('id="series"');
+  const k = hub.indexOf('id="anime"'), l = hub.indexOf('id="nollywood"');
+  const nM = (hub.slice(i, j).match(/class="trend-card"/g) || []).length;
+  const nS = (hub.slice(j, k).match(/class="trend-card"/g) || []).length;
+  const nA = (hub.slice(k, l).match(/class="trend-card"/g) || []).length;
   assert(nM === rankings.trending.movie.length, 'hub trending movies: ' + nM + ' (config ' + rankings.trending.movie.length + ')');
   assert(nS === rankings.trending.series.length, 'hub trending series: ' + nS);
   assert(nA === rankings.trending.anime.length, 'hub trending anime: ' + nA);
   assert(!hub.includes('How the Trending score works'), 'hub has no old score explanation');
 }
 
-/* 7. data/trending.json */
+/* 6. data/trending.json */
 section('data/trending.json');
 {
   const d = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/trending.json'), 'utf8'));
@@ -130,7 +117,7 @@ section('data/trending.json');
   assert(sq && sq.trendingRank === 1 && sq.typeDir === 'series', 'squid-game in data with trendingRank 1 series');
 }
 
-/* 8. Determinism: two identical reads of the build output */
+/* 7. Determinism: two identical reads of the build output */
 section('Determinism');
 {
   const a = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');

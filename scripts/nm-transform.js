@@ -100,22 +100,24 @@ for (const file of htmls) {
     stats.desk++; changed = true;
   }
 
-  // B) mobile-nav: add Movies/Series/Anime before Search
-  if (s.indexOf('<nav class="mobile-nav">') > -1 && !/<a href="\/movies\/"><span class="mn-ico">🎬<\/span>Movies<\/a>/.test(s)) {
-    const before = '<a href="/search/"><span class="mn-ico">🔍</span>Search</a>';
-    const withCat = '<a href="/movies/"><span class="mn-ico">🎬</span>Movies</a><a href="/series/"><span class="mn-ico">📺</span>Series</a><a href="/anime/"><span class="mn-ico">🍥</span>Anime</a>' + before;
-    if (s.indexOf(before) > -1) {
-      // only inside the mobile-nav block
-      const navStart = s.indexOf('<nav class="mobile-nav">');
-      const navEnd = s.indexOf('</nav>', navStart);
-      const nav = s.slice(navStart, navEnd);
-      if (nav.indexOf(before) > -1 && !nav.includes('/movies/')) {
-        s = s.slice(0, navStart) + nav.replace(before, withCat) + s.slice(navEnd);
-        stats.mnav++; changed = true;
-      }
-    }
+  // B) mobile-nav: single tidy 6-item bar (Home/Entertain/Sports/Money/Tech/Search)
+  const NAV6 = [
+    ['/', '🏠', 'Home', '/'],
+    ['/entertainment/', '🎬', 'Entertain', '/entertainment'],
+    ['/sports/', '⚽', 'Sports', '/sports'],
+    ['/make-money/', '💰', 'Money', '/make-money'],
+    ['/tech/', '🤖', 'Tech', '/tech'],
+    ['/search/', '🔍', 'Search', '/search'],
+  ];
+  const mnavRe = /<nav class="mobile-nav">[\s\S]*?<\/nav>/;
+  if (mnavRe.test(s)) {
+    const links = NAV6.map(function (n) {
+      const active = (route === n[3] || route.startsWith(n[3] + '/')) ? ' class="active"' : '';
+      return '<a href="' + n[0] + '"' + active + '><span class="mn-ico">' + n[1] + '</span>' + n[2] + '</a>';
+    }).join('');
+    s = s.replace(mnavRe, '<nav class="mobile-nav">' + links + '</nav>');
+    stats.mnav++; changed = true;
   }
-
   // C) title-page NetMirror upgrades
   if (s.indexOf('class="movie-hero') > -1) {
     stats.detail++;
