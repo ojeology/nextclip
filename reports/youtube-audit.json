@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-08-20T16:45:09.970Z",
-  "total": 638,
-  "valid": 608,
-  "unavailable": 30,
+  "generatedAt": "2026-08-21T00:34:46.065Z",
+  "total": 648,
+  "valid": 617,
+  "unavailable": 31,
   "records": [
     {
       "id": "a-bittersweet-life",
@@ -210,6 +210,13 @@
     {
       "id": "x-men-2",
       "title": "X2: X-Men United",
+      "youtubeId": null,
+      "status": "unavailable",
+      "watchUrl": null
+    },
+    {
+      "id": "niu-lai",
+      "title": "Niu Lai",
       "youtubeId": null,
       "status": "unavailable",
       "watchUrl": null
@@ -4469,6 +4476,69 @@
       "youtubeId": "hzO2BjNna90",
       "status": "valid-id",
       "watchUrl": "https://www.youtube.com/watch?v=hzO2BjNna90"
+    },
+    {
+      "id": "spider-man-brand-new-day",
+      "title": "Spider-Man: Brand New Day",
+      "youtubeId": "8TZMtslA3UY",
+      "status": "valid-id",
+      "watchUrl": "https://www.youtube.com/watch?v=8TZMtslA3UY"
+    },
+    {
+      "id": "paw-patrol-the-dino-movie",
+      "title": "PAW Patrol: The Dino Movie",
+      "youtubeId": "xgI5iYmOf5Q",
+      "status": "valid-id",
+      "watchUrl": "https://www.youtube.com/watch?v=xgI5iYmOf5Q"
+    },
+    {
+      "id": "the-end-of-oak-street",
+      "title": "The End of Oak Street",
+      "youtubeId": "x8xFST_qhUs",
+      "status": "valid-id",
+      "watchUrl": "https://www.youtube.com/watch?v=x8xFST_qhUs"
+    },
+    {
+      "id": "katseye-wild-hearts",
+      "title": "KATSEYE: WILD HEARTS",
+      "youtubeId": "md5rZb2nEaM",
+      "status": "valid-id",
+      "watchUrl": "https://www.youtube.com/watch?v=md5rZb2nEaM"
+    },
+    {
+      "id": "vishwanath-and-sons",
+      "title": "Vishwanath and Sons",
+      "youtubeId": "jZHoM2YhFCY",
+      "status": "valid-id",
+      "watchUrl": "https://www.youtube.com/watch?v=jZHoM2YhFCY"
+    },
+    {
+      "id": "jana-nayagan",
+      "title": "Jana Nayagan",
+      "youtubeId": "fJaAYcERf3Y",
+      "status": "valid-id",
+      "watchUrl": "https://www.youtube.com/watch?v=fJaAYcERf3Y"
+    },
+    {
+      "id": "hope-2026",
+      "title": "Hope",
+      "youtubeId": "R5jcEBVBEbQ",
+      "status": "valid-id",
+      "watchUrl": "https://www.youtube.com/watch?v=R5jcEBVBEbQ"
+    },
+    {
+      "id": "toy-story-5",
+      "title": "Toy Story 5",
+      "youtubeId": "c51ND9Hdbw0",
+      "status": "valid-id",
+      "watchUrl": "https://www.youtube.com/watch?v=c51ND9Hdbw0"
+    },
+    {
+      "id": "call-of-my-life",
+      "title": "Call of My Life",
+      "youtubeId": "0ZFdiQwx_pM",
+      "status": "valid-id",
+      "watchUrl": "https://www.youtube.com/watch?v=0ZFdiQwx_pM"
     }
   ]
 }

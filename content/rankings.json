@@ -1,63 +1,81 @@
 {
  "_comment": "BRYME CENTRAL RANKINGS — THIS IS THE ONE FILE TO EDIT. Change the Trending lists here; no catalogue records need touching. 'slug' identifies the title (the 'title' field is only for your readability — the build checks it matches). 'trendingRank' controls order (lower = first). 'until' (optional, YYYY-MM-DD) auto-removes an entry after that date. This is a manually curated editorial list — NOT live traffic data, no fake view counts.",
  "hero": {
-  "slug": "interstellar",
-  "title": "Interstellar",
+  "slug": "spider-man-brand-new-day",
+  "title": "Spider-Man: Brand New Day",
   "typeDir": "movie"
  },
  "trending": {
   "movie": [
    {
-    "slug": "superman-2025",
-    "title": "Superman",
+    "slug": "spider-man-brand-new-day",
+    "title": "Spider-Man: Brand New Day",
     "trendingRank": 1,
-    "until": "2026-12-31"
-   },
-   {
-    "slug": "avengers-doomsday",
-    "title": "Avengers: Doomsday",
-    "trendingRank": 2,
-    "until": "2026-12-31"
-   },
-   {
-    "slug": "dune-part-three",
-    "title": "Dune: Part Three",
-    "trendingRank": 3
+    "badge": "hot",
+    "note": "The film actually filling cinemas this month — not a December placeholder."
    },
    {
     "slug": "the-odyssey",
     "title": "The Odyssey",
-    "trendingRank": 4
+    "trendingRank": 2,
+    "badge": "hot",
+    "note": "Nolan's Homer film is still running behind Spider-Man, not a memory of July."
    },
    {
-    "slug": "jurassic-world-rebirth",
-    "title": "Jurassic World Rebirth",
-    "trendingRank": 5
+    "slug": "niu-lai",
+    "title": "Niu Lai",
+    "trendingRank": 3,
+    "badge": "viral",
+    "note": "The Chinese calf cartoon that flopped, then would not leave the chart."
    },
    {
-    "slug": "28-years-later",
-    "title": "28 Years Later",
-    "trendingRank": 6
+    "slug": "the-end-of-oak-street",
+    "title": "The End of Oak Street",
+    "trendingRank": 4,
+    "badge": "new",
+    "note": "The grown-up dinosaur film that opened against PAW Patrol."
    },
    {
-    "slug": "sinners",
-    "title": "Sinners",
-    "trendingRank": 7
+    "slug": "paw-patrol-the-dino-movie",
+    "title": "PAW Patrol: The Dino Movie",
+    "trendingRank": 5,
+    "badge": "new",
+    "note": "The kids' dinosaur film in the same August weekend."
    },
    {
-    "slug": "mickey-17",
-    "title": "Mickey 17",
-    "trendingRank": 8
+    "slug": "toy-story-5",
+    "title": "Toy Story 5",
+    "trendingRank": 6,
+    "badge": "rising",
+    "note": "Still in theatres in August after a June opening."
    },
    {
-    "slug": "the-running-man",
-    "title": "The Running Man",
-    "trendingRank": 9
+    "slug": "jana-nayagan",
+    "title": "Jana Nayagan",
+    "trendingRank": 7,
+    "badge": "regional",
+    "note": "Vijay's delayed Tamil film, released after he became Chief Minister."
    },
    {
-    "slug": "how-to-train-your-dragon-2025",
-    "title": "How to Train Your Dragon",
-    "trendingRank": 10
+    "slug": "katseye-wild-hearts",
+    "title": "KATSEYE: WILD HEARTS",
+    "trendingRank": 8,
+    "badge": "global",
+    "note": "A pop-group documentary that took limited cinema dates in August."
+   },
+   {
+    "slug": "hope-2026",
+    "title": "Hope",
+    "trendingRank": 9,
+    "badge": "regional",
+    "note": "Na Hong-jin's Korean creature film: out at home, US date still ahead."
+   },
+   {
+    "slug": "call-of-my-life",
+    "title": "Call of My Life",
+    "trendingRank": 10,
+    "badge": "regional",
+    "note": "A 2026 Nollywood rom-com that actually sold cinema tickets at home."
    }
   ],
   "series": [

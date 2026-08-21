@@ -16091,5 +16091,207 @@
   },
   "house-of-flying-daggers": {
     "description": "A blind dancer and the policeman sent to follow her fall through a rebellion neither can be honest about. Zhang Yimou at his most saturated and doomed."
+  },
+  "spider-man-brand-new-day": {
+    "title": "Spider-Man: Brand New Day",
+    "year": 2026,
+    "country": "United States",
+    "language": "English",
+    "source": {
+      "name": "Official trailer credits (Spider-Man YouTube)",
+      "retrieved": "2026-08-21",
+      "url": "https://www.youtube.com/watch?v=8TZMtslA3UY"
+    },
+    "director": "Destin Daniel Cretton",
+    "cast": [
+      "Tom Holland",
+      "Zendaya",
+      "Sadie Sink",
+      "Jacob Batalon",
+      "Jon Bernthal",
+      "Tramell Tillman",
+      "Michael Mando",
+      "Mark Ruffalo"
+    ],
+    "castSource": {
+      "name": "Official trailer credits (Spider-Man YouTube)",
+      "retrieved": "2026-08-21",
+      "url": "https://www.youtube.com/watch?v=8TZMtslA3UY"
+    }
+  },
+  "paw-patrol-the-dino-movie": {
+    "title": "PAW Patrol: The Dino Movie",
+    "year": 2026,
+    "country": "United States",
+    "language": "English",
+    "source": {
+      "name": "Paramount Pictures official trailer",
+      "retrieved": "2026-08-21",
+      "url": "https://www.youtube.com/watch?v=xgI5iYmOf5Q"
+    }
+  },
+  "the-end-of-oak-street": {
+    "title": "The End of Oak Street",
+    "year": 2026,
+    "country": "United States",
+    "language": "English",
+    "source": {
+      "name": "Official site / distributor trailer",
+      "retrieved": "2026-08-21",
+      "url": "https://www.endofoakstreet.com/"
+    },
+    "director": "David Robert Mitchell",
+    "cast": [
+      "Anne Hathaway",
+      "Ewan McGregor",
+      "Maisy Stella",
+      "Christian Convery"
+    ],
+    "castSource": {
+      "name": "Official site / distributor trailer",
+      "retrieved": "2026-08-21",
+      "url": "https://www.endofoakstreet.com/"
+    }
+  },
+  "katseye-wild-hearts": {
+    "title": "KATSEYE: WILD HEARTS",
+    "year": 2026,
+    "country": "United States",
+    "language": "English",
+    "source": {
+      "name": "Official trailer credits (KATSEYE YouTube)",
+      "retrieved": "2026-08-21",
+      "url": "https://www.youtube.com/watch?v=md5rZb2nEaM"
+    },
+    "director": "Nadia Hallgren"
+  },
+  "niu-lai": {
+    "title": "Niu Lai",
+    "year": 2026,
+    "country": "China",
+    "language": "Chinese",
+    "source": {
+      "name": "Reuters dispatch, 20 August 2026",
+      "retrieved": "2026-08-21",
+      "url": "https://kfgo.com/2026/08/20/how-a-low-budget-fever-dream-sparked-a-chinese-box-office-revolt/"
+    },
+    "director": "Xin Yumeng"
+  },
+  "vishwanath-and-sons": {
+    "title": "Vishwanath and Sons",
+    "year": 2026,
+    "country": "India",
+    "language": "Tamil",
+    "source": {
+      "name": "Official trailer credits (Sithara Entertainments)",
+      "retrieved": "2026-08-21",
+      "url": "https://www.youtube.com/watch?v=jZHoM2YhFCY"
+    },
+    "director": "Venky Atluri",
+    "cast": [
+      "Suriya",
+      "Mamitha Baiju",
+      "Radhika Sarathkumar",
+      "Raveena Tandon"
+    ],
+    "castSource": {
+      "name": "Official trailer credits (Sithara Entertainments)",
+      "retrieved": "2026-08-21",
+      "url": "https://www.youtube.com/watch?v=jZHoM2YhFCY"
+    }
+  },
+  "jana-nayagan": {
+    "title": "Jana Nayagan",
+    "year": 2026,
+    "country": "India",
+    "language": "Tamil",
+    "source": {
+      "name": "Official trailer credits (KVN PRODUCTIONS)",
+      "retrieved": "2026-08-21",
+      "url": "https://www.youtube.com/watch?v=fJaAYcERf3Y"
+    },
+    "director": "H. Vinoth",
+    "cast": [
+      "Vijay",
+      "Pooja Hegde",
+      "Bobby Deol",
+      "Mamitha Baiju",
+      "Prakash Raj"
+    ],
+    "castSource": {
+      "name": "Official trailer credits (KVN PRODUCTIONS)",
+      "retrieved": "2026-08-21",
+      "url": "https://www.youtube.com/watch?v=fJaAYcERf3Y"
+    }
+  },
+  "hope-2026": {
+    "title": "Hope",
+    "year": 2026,
+    "country": "South Korea",
+    "language": "Korean",
+    "source": {
+      "name": "Official trailer credits (NEON)",
+      "retrieved": "2026-08-21",
+      "url": "https://www.youtube.com/watch?v=R5jcEBVBEbQ"
+    },
+    "director": "Na Hong-jin",
+    "cast": [
+      "Hwang Jung-min",
+      "Hoyeon",
+      "Zo In-sung"
+    ],
+    "castSource": {
+      "name": "Official trailer credits (NEON)",
+      "retrieved": "2026-08-21",
+      "url": "https://www.youtube.com/watch?v=R5jcEBVBEbQ"
+    }
+  },
+  "toy-story-5": {
+    "title": "Toy Story 5",
+    "year": 2026,
+    "country": "United States",
+    "language": "English",
+    "source": {
+      "name": "Official trailer credits (Pixar)",
+      "retrieved": "2026-08-21",
+      "url": "https://www.youtube.com/watch?v=c51ND9Hdbw0"
+    },
+    "director": "Andrew Stanton",
+    "cast": [
+      "Tom Hanks",
+      "Tim Allen",
+      "Joan Cusack",
+      "Greta Lee"
+    ],
+    "castSource": {
+      "name": "Official trailer credits (Pixar)",
+      "retrieved": "2026-08-21",
+      "url": "https://www.youtube.com/watch?v=c51ND9Hdbw0"
+    }
+  },
+  "call-of-my-life": {
+    "title": "Call of My Life",
+    "year": 2026,
+    "country": "Nigeria",
+    "language": "English",
+    "source": {
+      "name": "Official trailer credits (Bluhouse Studios)",
+      "retrieved": "2026-08-21",
+      "url": "https://www.youtube.com/watch?v=0ZFdiQwx_pM"
+    },
+    "director": "Dammy Twitch",
+    "cast": [
+      "Uzoamaka Power",
+      "Zubby Michael",
+      "Andrew Bunting",
+      "Broda Shaggi",
+      "Nkem Owoh",
+      "Patience Ozokwor"
+    ],
+    "castSource": {
+      "name": "Official trailer credits (Bluhouse Studios)",
+      "retrieved": "2026-08-21",
+      "url": "https://www.youtube.com/watch?v=0ZFdiQwx_pM"
+    }
   }
 }

@@ -229,7 +229,7 @@ function resolveRankList(entries, kind, typeDir) {
     if (e.title && clean(e.title).toLowerCase() !== rec.title.toLowerCase()) warnings.push(`rankings.json: ${kind} title mismatch for "${e.slug}" (config says "${e.title}", catalogue says "${rec.title}")`);
     if (e.until && String(e.until) < TODAY) { warnings.push(`rankings.json: ${kind} "${e.slug}" expired (until ${e.until}) — excluded`); return; }
     const rankField = RANK_FIELDS[kind] || 'rank';
-    out.push({ slug: e.slug, rank: Number(e[rankField] ?? e.rank) || out.length + 1, until: e.until || null, note: e.note || null });
+    out.push({ slug: e.slug, rank: Number(e[rankField] ?? e.rank) || out.length + 1, until: e.until || null, note: e.note || null, badge: e.badge || null });
   });
   out.sort((a, b) => a.rank - b.rank);
   return out;
@@ -252,6 +252,7 @@ movies.forEach(m => {
   m.trendingRank = tr ? tr.rank : null;
   m.trendingUntil = tr ? tr.until : null;
   m.trendingNote = tr ? tr.note : null;
+  m.trendingBadge = tr ? tr.badge : null;
   const pr = popularCfg[m.typeDir].find(x => x.slug === m.slug);
   m.popular = !!pr;
   m.popularRank = pr ? pr.rank : null;
@@ -3246,6 +3247,13 @@ for (const [year, list] of animeYearMap) write(`anime/${year}`, layout({
 
 /* ---------------- Rankings hub (/trending/) ---------------- */
 function trendLabel(m){
+  const b = String(m.trendingBadge || '').toLowerCase();
+  if (b === 'viral') return { cls: 'tl-watch', text: '👀 Viral' };
+  if (b === 'hot') return { cls: 'tl-hot', text: '🔥 Hot' };
+  if (b === 'rising') return { cls: 'tl-rise', text: '📈 Rising' };
+  if (b === 'new') return { cls: 'tl-new', text: '🆕 New' };
+  if (b === 'global') return { cls: 'tl-rise', text: '🌍 Global' };
+  if (b === 'regional') return { cls: 'tl-rise', text: '🌍 Regional' };
   if (m.trending && m.trendingRank != null && m.trendingRank <= 3) return { cls: 'tl-hot', text: '🔥 Hot' };
   if (m.trending && m.trendingRank != null && m.trendingRank <= 7) return { cls: 'tl-rise', text: '📈 Rising' };
   if (m.trending) return { cls: 'tl-watch', text: '👀 On the list' };
@@ -3296,6 +3304,12 @@ const classicTop = classics.slice(0, 24);
 const nollywoodTop = movies.filter(m => /nigeria/i.test(String(m.country || '')))
   .sort((a, b) => ((b.year || 0) - (a.year || 0)) || a.title.localeCompare(b.title))
   .slice(0, 12);
+const indiaNow = movies.filter(m => (m.typeDir || 'movie') === 'movie' && /india/i.test(String(m.country || '')) && m.year === CURRENT_YEAR)
+  .sort((a, b) => a.title.localeCompare(b.title));
+const chinaNow = movies.filter(m => (m.typeDir || 'movie') === 'movie' && /china/i.test(String(m.country || '')) && m.year === CURRENT_YEAR)
+  .sort((a, b) => a.title.localeCompare(b.title));
+const koreaNow = movies.filter(m => (m.typeDir || 'movie') === 'movie' && /korea/i.test(String(m.country || '')) && m.year === CURRENT_YEAR)
+  .sort((a, b) => a.title.localeCompare(b.title));
 const trendTrailers = trendingList.filter(m => m.youtubeId);
 const trendSlugSet = new Set(trendingList.map(m => m.slug));
 const trendStories = articles.filter(a => (a.relatedMovieSlugs || []).some(s => trendSlugSet.has(s))).slice(0, 6);
@@ -3311,12 +3325,15 @@ write('trending', layout({
     itemListSchema('What\'s Trending — Anime', trendTopAnime)
   ],
   body: `<main class="shell trend-page"><section class="hero"><div class="eyebrow">Discovery desk</div><h1>What's Trending</h1><p class="lead">Movies, series and anime the BRYME desk is pointing to right now — then Nollywood on this site, verified trailers, and the older lists (popular, editor's picks, new, classics). This is not a live TikTok or Google Trends feed.</p></section>
-  <nav class="trend-jump" aria-label="What's Trending"><a href="#movies">🎬 Movies</a><a href="#series">📺 TV series</a><a href="#anime">🍥 Anime</a><a href="#nollywood">🌍 Nollywood</a><a href="#trailers">🎞️ Trailers</a><a href="#editors-picks">👑 Editor's picks</a></nav>
-  <div class="trend-note"><b style="color:var(--text)">How these labels work.</b><br>🔥 Hot, 📈 Rising and 👀 On the list mark <b>position on BRYME's editorial list</b> (content/rankings.json) — not search volume, not TikTok, not a made-up percentage score. A title is on this page because an editor put it here. When BRYME has real analytics, this desk can switch to engagement + growth without changing the URL.</div>
+  <nav class="trend-jump" aria-label="What's Trending"><a href="#movies">🎬 Movies</a><a href="#series">📺 TV series</a><a href="#anime">🍥 Anime</a><a href="#nollywood">🇳🇬 Nollywood</a>${indiaNow.length >= 2 ? '<a href="#india">🇮🇳 India</a>' : ''}${chinaNow.length >= 2 ? '<a href="#china">🇨🇳 China</a>' : ''}${koreaNow.length >= 2 ? '<a href="#korea">🇰🇷 Korea</a>' : ''}<a href="#trailers">🎞️ Trailers</a><a href="#editors-picks">👑 Editor's picks</a></nav>
+  <div class="trend-note"><b style="color:var(--text)">How these labels work.</b><br>🔥 Hot, 📈 Rising, 👀 Viral, 🌍 Regional/Global and 🆕 New are <b>editorial labels</b> on BRYME's list (content/rankings.json) — not search volume, not TikTok, not a made-up percentage score. A title is on this page because an editor put it here. Country shelves below only appear when there are enough current titles to fill them. When BRYME has real analytics, this desk can switch to engagement + growth without changing the URL.</div>
   <section class="section" id="movies"><div class="section-head"><h2>🎬 Movies</h2><a href="${url('/movies/')}">All movies</a></div><p class="section-note">${trendTopMovie.length} titles on the current editorial movie list.</p><div class="trend-list">${trendTopMovie.map(m => trendCard(m, {rank: m.trendingRank})).join('') || '<p style="color:var(--muted)">No trending movies configured yet.</p>'}</div></section>
   <section class="section" id="series"><div class="section-head"><h2>📺 TV series</h2><a href="${url('/series/')}">All series</a></div><p class="section-note">${trendTopSeries.length} titles on the current editorial series list.</p><div class="trend-list">${trendTopSeries.map(m => trendCard(m, {rank: m.trendingRank})).join('') || '<p style="color:var(--muted)">No trending series configured yet.</p>'}</div></section>
   <section class="section" id="anime"><div class="section-head"><h2>🍥 Anime</h2><a href="${url('/anime/')}">All anime</a></div><p class="section-note">${trendTopAnime.length} titles on the current editorial anime list.</p><div class="trend-list">${trendTopAnime.map(m => trendCard(m, {rank: m.trendingRank})).join('') || '<p style="color:var(--muted)">No trending anime configured yet.</p>'}</div></section>
-  <section class="section" id="nollywood"><div class="section-head"><h2>🌍 Nollywood on BRYME</h2><a href="${url('/movies/')}">Movies catalogue</a></div><p class="section-note">Nigerian titles already in the catalogue, newest first. This is a shelf on BRYME — not a claim that these films are trending on TikTok.</p><div class="trend-list">${nollywoodTop.map(m => trendCard(m)).join('') || '<p style="color:var(--muted)">No Nigerian titles in the catalogue yet.</p>'}</div></section>
+  <section class="section" id="nollywood"><div class="section-head"><h2>🇳🇬 Nollywood on BRYME</h2><a href="${url('/movies/')}">Movies catalogue</a></div><p class="section-note">Nigerian titles already in the catalogue, newest first. This is a shelf on BRYME — not a claim that these films are trending on TikTok.</p><div class="trend-list">${nollywoodTop.map(m => trendCard(m)).join('') || '<p style="color:var(--muted)">No Nigerian titles in the catalogue yet.</p>'}</div></section>
+  ${indiaNow.length >= 2 ? `<section class="section" id="india"><div class="section-head"><h2>🇮🇳 India right now</h2><a href="${url('/movies/')}">Movies catalogue</a></div><p class="section-note">${indiaNow.length} Indian films from ${CURRENT_YEAR} already on BRYME. This is a shelf, not a new country URL, and not a national box-office chart.</p><div class="trend-list">${indiaNow.map(m => trendCard(m)).join('')}</div></section>` : ''}
+  ${chinaNow.length >= 2 ? `<section class="section" id="china"><div class="section-head"><h2>🇨🇳 China right now</h2><a href="${url('/movies/')}">Movies catalogue</a></div><p class="section-note">${chinaNow.length} Chinese films from ${CURRENT_YEAR} on BRYME. Shown only because there is enough to fill a shelf.</p><div class="trend-list">${chinaNow.map(m => trendCard(m)).join('')}</div></section>` : ''}
+  ${koreaNow.length >= 2 ? `<section class="section" id="korea"><div class="section-head"><h2>🇰🇷 Korea right now</h2><a href="${url('/movies/')}">Movies catalogue</a></div><p class="section-note">${koreaNow.length} Korean films from ${CURRENT_YEAR} on BRYME. Shown only because there is enough to fill a shelf.</p><div class="trend-list">${koreaNow.map(m => trendCard(m)).join('')}</div></section>` : ''}
   <section class="section" id="trailers"><div class="section-head"><h2>🎞️ Trailers on this list</h2></div><p class="section-note">Verified YouTube trailers for titles on What's Trending. BRYME does not host the files. Play is on the title page.</p><div class="trend-list">${trendTrailers.map(m => trendCard(m, {rank: m.trendingRank})).join('') || '<p style="color:var(--muted)">No verified trailers on the current list.</p>'}</div></section>
   ${trendStories.length ? `<section class="section" id="reading"><div class="section-head"><h2>Related BRYME stories</h2><a href="${url('/articles/')}">All stories</a></div><p class="section-note">Existing articles that already point at titles on this desk — not new pages spun up for a crawler.</p><div class="story-grid">${trendStories.map(a => storyPhoto('/article/' + a.slug + '/', a.category, a.title, a.description || '', heroFor(a.slug, 'entertainment'))).join('')}</div></section>` : ''}
   <section class="section" id="editors-picks"><div class="section-head"><h2>👑 Editor's Picks</h2></div><p class="section-note">Personal recommendations from the BRYME desk — independent of the lists above.</p><div class="grid grid-2">${editorTop.map(m => card(m)).join('') || '<p style="color:var(--muted)">No editor\'s picks configured yet.</p>'}</div></section>
@@ -3442,6 +3459,11 @@ function whereToWatchBlock(m){
   }
   const items = links.map(l => `<a class="tp-watch-btn" href="${esc(l.url)}" rel="nofollow noopener" target="_blank">${esc(watchLinkLabel(l))}</a>`).join('');
   return `<section class="tp-watch" id="watch"><h2>Where to watch legally</h2><p>Official platforms you can check. A search link is not a promise the title is licensed there right now.</p><div class="tp-watch-row">${items}</div>${note}</section>`;
+}
+function nowTalkingBlock(m){
+  const ed = editorialOf(m);
+  if (!ed || !Array.isArray(ed.now) || !ed.now.length) return '';
+  return `<section class="tp-now"><h2>Why people are talking about it</h2>${ed.now.map(p => `<p>${esc(p)}</p>`).join('')}</section>`;
 }
 function whyYouMightLikeBlock(m, related){
   const ed = editorialOf(m);
@@ -3679,6 +3701,7 @@ for (const m of movies) {
         if (!parts.length) return '';
         return `<h2>What ${esc(m.title)} is about</h2>` + parts.join('');
       })()}
+      ${nowTalkingBlock(m)}
       ${whyYouMightLikeBlock(m, related)}
       ${m.facts.length ? `<h2>Notes</h2><ul>${m.facts.map(f => `<li>${esc(f)}</li>`).join('')}</ul>` : ''}
       ${(typeDir !== 'movie' && m.seasons.length) ? `<h2>Seasons</h2><div class="list">${m.seasons.map(x => `<div class="row"><div><b>${esc(x.title || ('Season ' + x.seasonNumber))}</b><span class="meta" style="font-size:12px;color:var(--muted)">${x.year ? x.year + ' · ' : ''}${x.episodeCount ? x.episodeCount + ' episodes' : 'episode count unavailable'}</span></div></div>`).join('')}</div>` : ''}

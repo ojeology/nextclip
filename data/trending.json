@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-20T16:45:09.974Z",
+  "generatedAt": "2026-08-21T00:34:46.068Z",
   "mode": "editorial-curation",
   "note": "Trending Now is editorially curated (content/rankings.json). No live traffic data is claimed. When real analytics exist, Trending Score = recent engagement + growth rate + searches + clicks + recency can replace this list without changing the site architecture.",
   "futureSignals": [
@@ -14,27 +14,11 @@
   ],
   "records": [
     {
-      "slug": "superman-2025",
-      "title": "Superman",
+      "slug": "spider-man-brand-new-day",
+      "title": "Spider-Man: Brand New Day",
       "typeDir": "movie",
-      "year": 2025,
+      "year": 2026,
       "trendingRank": 1,
-      "trendingUntil": "2026-12-31"
-    },
-    {
-      "slug": "avengers-doomsday",
-      "title": "Avengers: Doomsday",
-      "typeDir": "movie",
-      "year": 2026,
-      "trendingRank": 2,
-      "trendingUntil": "2026-12-31"
-    },
-    {
-      "slug": "dune-part-three",
-      "title": "Dune: Part Three",
-      "typeDir": "movie",
-      "year": 2026,
-      "trendingRank": 3,
       "trendingUntil": null
     },
     {
@@ -42,54 +26,70 @@
       "title": "The Odyssey",
       "typeDir": "movie",
       "year": 2026,
+      "trendingRank": 2,
+      "trendingUntil": null
+    },
+    {
+      "slug": "niu-lai",
+      "title": "Niu Lai",
+      "typeDir": "movie",
+      "year": 2026,
+      "trendingRank": 3,
+      "trendingUntil": null
+    },
+    {
+      "slug": "the-end-of-oak-street",
+      "title": "The End of Oak Street",
+      "typeDir": "movie",
+      "year": 2026,
       "trendingRank": 4,
       "trendingUntil": null
     },
     {
-      "slug": "jurassic-world-rebirth",
-      "title": "Jurassic World Rebirth",
+      "slug": "paw-patrol-the-dino-movie",
+      "title": "PAW Patrol: The Dino Movie",
       "typeDir": "movie",
-      "year": 2025,
+      "year": 2026,
       "trendingRank": 5,
       "trendingUntil": null
     },
     {
-      "slug": "28-years-later",
-      "title": "28 Years Later",
+      "slug": "toy-story-5",
+      "title": "Toy Story 5",
       "typeDir": "movie",
-      "year": 2025,
+      "year": 2026,
       "trendingRank": 6,
       "trendingUntil": null
     },
     {
-      "slug": "sinners",
-      "title": "Sinners",
+      "slug": "jana-nayagan",
+      "title": "Jana Nayagan",
       "typeDir": "movie",
-      "year": 2025,
+      "year": 2026,
       "trendingRank": 7,
       "trendingUntil": null
     },
     {
-      "slug": "mickey-17",
-      "title": "Mickey 17",
+      "slug": "katseye-wild-hearts",
+      "title": "KATSEYE: WILD HEARTS",
       "typeDir": "movie",
-      "year": 2025,
+      "year": 2026,
       "trendingRank": 8,
       "trendingUntil": null
     },
     {
-      "slug": "the-running-man",
-      "title": "The Running Man",
+      "slug": "hope-2026",
+      "title": "Hope",
       "typeDir": "movie",
-      "year": 2025,
+      "year": 2026,
       "trendingRank": 9,
       "trendingUntil": null
     },
     {
-      "slug": "how-to-train-your-dragon-2025",
-      "title": "How to Train Your Dragon",
+      "slug": "call-of-my-life",
+      "title": "Call of My Life",
       "typeDir": "movie",
-      "year": 2025,
+      "year": 2026,
       "trendingRank": 10,
       "trendingUntil": null
     },

@@ -13156,5 +13156,207 @@
         "status": "verified"
       }
     ]
+  },
+  {
+    "slug": "spider-man-brand-new-day",
+    "title": "Spider-Man: Brand New Day",
+    "typeDir": "movie",
+    "status": "official",
+    "trailerType": "official-trailer",
+    "label": "Official Trailer",
+    "videoId": "8TZMtslA3UY",
+    "channel": "Spider-Man",
+    "verified": true,
+    "lastChecked": "2026-08-21",
+    "candidates": [
+      {
+        "id": "8TZMtslA3UY",
+        "type": "official-trailer",
+        "channel": "Spider-Man",
+        "verified": true,
+        "status": "verified"
+      }
+    ]
+  },
+  {
+    "slug": "paw-patrol-the-dino-movie",
+    "title": "PAW Patrol: The Dino Movie",
+    "typeDir": "movie",
+    "status": "official",
+    "trailerType": "official-trailer",
+    "label": "Official Trailer",
+    "videoId": "xgI5iYmOf5Q",
+    "channel": "Paramount Pictures",
+    "verified": true,
+    "lastChecked": "2026-08-21",
+    "candidates": [
+      {
+        "id": "xgI5iYmOf5Q",
+        "type": "official-trailer",
+        "channel": "Paramount Pictures",
+        "verified": true,
+        "status": "verified"
+      }
+    ]
+  },
+  {
+    "slug": "the-end-of-oak-street",
+    "title": "The End of Oak Street",
+    "typeDir": "movie",
+    "status": "official",
+    "trailerType": "official-trailer",
+    "label": "Official Trailer",
+    "videoId": "x8xFST_qhUs",
+    "channel": "Warner Bros. India",
+    "verified": true,
+    "lastChecked": "2026-08-21",
+    "candidates": [
+      {
+        "id": "x8xFST_qhUs",
+        "type": "official-trailer",
+        "channel": "Warner Bros. India",
+        "verified": true,
+        "status": "verified"
+      }
+    ]
+  },
+  {
+    "slug": "katseye-wild-hearts",
+    "title": "KATSEYE: WILD HEARTS",
+    "typeDir": "movie",
+    "status": "official",
+    "trailerType": "official-trailer",
+    "label": "Official Trailer",
+    "videoId": "md5rZb2nEaM",
+    "channel": "KATSEYE",
+    "verified": true,
+    "lastChecked": "2026-08-21",
+    "candidates": [
+      {
+        "id": "md5rZb2nEaM",
+        "type": "official-trailer",
+        "channel": "KATSEYE",
+        "verified": true,
+        "status": "verified"
+      }
+    ]
+  },
+  {
+    "slug": "niu-lai",
+    "title": "Niu Lai",
+    "typeDir": "movie",
+    "status": "none",
+    "trailerType": null,
+    "label": null,
+    "videoId": null,
+    "channel": null,
+    "verified": false,
+    "lastChecked": null,
+    "candidates": []
+  },
+  {
+    "slug": "vishwanath-and-sons",
+    "title": "Vishwanath and Sons",
+    "typeDir": "movie",
+    "status": "official",
+    "trailerType": "official-trailer",
+    "label": "Official Trailer",
+    "videoId": "jZHoM2YhFCY",
+    "channel": "Sithara Entertainments",
+    "verified": true,
+    "lastChecked": "2026-08-21",
+    "candidates": [
+      {
+        "id": "jZHoM2YhFCY",
+        "type": "official-trailer",
+        "channel": "Sithara Entertainments",
+        "verified": true,
+        "status": "verified"
+      }
+    ]
+  },
+  {
+    "slug": "jana-nayagan",
+    "title": "Jana Nayagan",
+    "typeDir": "movie",
+    "status": "official",
+    "trailerType": "official-trailer",
+    "label": "Official Trailer",
+    "videoId": "fJaAYcERf3Y",
+    "channel": "KVN PRODUCTIONS",
+    "verified": true,
+    "lastChecked": "2026-08-21",
+    "candidates": [
+      {
+        "id": "fJaAYcERf3Y",
+        "type": "official-trailer",
+        "channel": "KVN PRODUCTIONS",
+        "verified": true,
+        "status": "verified"
+      }
+    ]
+  },
+  {
+    "slug": "hope-2026",
+    "title": "Hope",
+    "typeDir": "movie",
+    "status": "official",
+    "trailerType": "official-trailer",
+    "label": "Official Trailer",
+    "videoId": "R5jcEBVBEbQ",
+    "channel": "NEON",
+    "verified": true,
+    "lastChecked": "2026-08-21",
+    "candidates": [
+      {
+        "id": "R5jcEBVBEbQ",
+        "type": "official-trailer",
+        "channel": "NEON",
+        "verified": true,
+        "status": "verified"
+      }
+    ]
+  },
+  {
+    "slug": "toy-story-5",
+    "title": "Toy Story 5",
+    "typeDir": "movie",
+    "status": "official",
+    "trailerType": "official-trailer",
+    "label": "Official Trailer",
+    "videoId": "c51ND9Hdbw0",
+    "channel": "Pixar",
+    "verified": true,
+    "lastChecked": "2026-08-21",
+    "candidates": [
+      {
+        "id": "c51ND9Hdbw0",
+        "type": "official-trailer",
+        "channel": "Pixar",
+        "verified": true,
+        "status": "verified"
+      }
+    ]
+  },
+  {
+    "slug": "call-of-my-life",
+    "title": "Call of My Life",
+    "typeDir": "movie",
+    "status": "official",
+    "trailerType": "official-trailer",
+    "label": "Official Trailer",
+    "videoId": "0ZFdiQwx_pM",
+    "channel": "Bluhouse Studios",
+    "verified": true,
+    "lastChecked": "2026-08-21",
+    "candidates": [
+      {
+        "id": "0ZFdiQwx_pM",
+        "type": "official-trailer",
+        "channel": "Bluhouse Studios",
+        "verified": true,
+        "status": "verified"
+      }
+    ]
   }
 ]
