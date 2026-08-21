@@ -3837,7 +3837,7 @@ const legalPages = [
       { h: 'Cookies and local storage', p: ['BRYME uses local storage for preferences you choose on the site (for example theme and the Make Money country filter). A short-lived local record is also used so the interruptive ad is not shown on every page. We do not build a personal profile from that data. Advertising partners may set their own cookies or similar identifiers — see Advertising below.'] },
       { h: 'Analytics', p: ['BRYME does not currently use Google Analytics or any other analytics service. If analytics is introduced in the future, this policy will be updated to describe it.'] },
       { h: 'External services and YouTube', p: ['Trailers are embedded from YouTube using the privacy-enhanced youtube-nocookie.com domain. When you play a trailer, YouTube\'s own privacy policy and cookie practices apply. BRYME has no control over YouTube\'s data handling.', 'Links to third-party websites (such as streaming platforms) leave BRYME; those websites have their own privacy policies.'] },
-      { h: 'Advertising', p: ['BRYME shows advertising through Monetag to keep the site free to read. The lighter in-page tag can load after the page is readable. The interruptive vignette is limited to about once per visit, after you have had time on the page — not on every search, filter, card or page click. A first-party service worker at /sw.js (3nbf4.com, zone 11610560) may request notification permission. Page tags also load from nap5k.com (zone 11610749) and n6wxm.com (zone 11610753). Monetag — not BRYME — chooses the ads and may collect technical data such as IP address, browser type and approximate location to deliver and measure them. Their practices are described in the Monetag privacy policy. You can refuse notification permission in your browser. Blocking third-party scripts will also limit ads. Ads are not shown on the nationality-selection step, and legal and contact pages stay free of those page tags.'] },
+      { h: 'Advertising', p: ['BRYME shows advertising through Monetag to keep the site free to read. The only format currently used is a dismissible vignette (n6wxm.com, zone 11610753), limited to about once per visit after you have had time on the page — not on every search, filter, card or page click. Monetag — not BRYME — chooses the ads and may collect technical data such as IP address, browser type and approximate location. Their practices are described in the Monetag privacy policy. Blocking third-party scripts will also limit ads. Ads are not shown on the nationality-selection step, and legal and contact pages stay free of those page tags.'] },
       { h: 'How information may be used', p: ['Information you send us is used to respond to your enquiry, improve the website and address reported issues. BRYME does not sell personal information.'] },
       { h: 'Data retention', p: ['Correspondence is kept only as long as needed to handle the enquiry. BRYME does not maintain user accounts or store visitor profiles.'] },
       { h: 'Your rights', p: ['You may contact BRYME at any time to ask what information we hold about you, to request correction or deletion, or to ask questions about this policy.'] },
@@ -4987,6 +4987,17 @@ fs.appendFileSync(path.join(root,'assets/site.css'), `
   .bryme-afterwatch b{font-size:16px}
 }
 [data-theme="light"] .bryme-afterwatch{background:linear-gradient(0deg,rgba(8,9,11,.96) 18%,rgba(8,9,11,.72));color:#fff}
+`);
+
+fs.appendFileSync(path.join(root,'assets/site.css'), `
+/* mobile fit: 375/390 — desktop from 761px unchanged */
+@media (max-width: 760px) {
+  .trailer-frame, .video-figure, .trailer-section-inner { width: 100%; max-width: 100%; }
+  .trailer-frame iframe { width: 100%; height: 100%; }
+  .trend-card, .trend-list, .trend-jump { max-width: 100%; }
+  .movie-hero, .home-hero, .hero-carousel { max-width: 100%; }
+  .tp-page .movie-hero { overflow: hidden; }
+}
 `);
 
 if (warnings.length) {

@@ -1421,3 +1421,12 @@ html,body{overflow-x:clip}
   .bryme-afterwatch b{font-size:16px}
 }
 [data-theme="light"] .bryme-afterwatch{background:linear-gradient(0deg,rgba(8,9,11,.96) 18%,rgba(8,9,11,.72));color:#fff}
+
+/* mobile fit: 375/390 — desktop from 761px unchanged */
+@media (max-width: 760px) {
+  .trailer-frame, .video-figure, .trailer-section-inner { width: 100%; max-width: 100%; }
+  .trailer-frame iframe { width: 100%; height: 100%; }
+  .trend-card, .trend-list, .trend-jump { max-width: 100%; }
+  .movie-hero, .home-hero, .hero-carousel { max-width: 100%; }
+  .tp-page .movie-hero { overflow: hidden; }
+}

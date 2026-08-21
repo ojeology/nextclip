@@ -851,149 +851,29 @@
   document.body.appendChild(back);
 })();
 
-/* Parked first-visit notice (desktop hint). Code stays for a later use.
-   Flip to true to show it again. When false, ads use normal timing. */
-window.BRYME_HINT_ENABLED = false;
-
-/* Monetag (zone 11610560): first-party worker at /sw.js.
-   Register after a short wait or the first tap/scroll — not on first paint,
-   and not after a long delay that misses the visit. First mobile visit
-   waits until the desktop hint is closed. */
+/* Drop any previously registered Monetag service worker (in-page push). */
 (function () {
   'use strict';
   if (!('serviceWorker' in navigator)) return;
-  var done = false;
-  function firstMobile() {
-    if (!window.BRYME_HINT_ENABLED) return false;
-    var mobile = !!(window.matchMedia && window.matchMedia('(max-width: 760px)').matches);
-    var seen = false;
-    try { seen = !!localStorage.getItem('bryme-desk-hint'); } catch (e) {}
-    return mobile && !seen;
-  }
-  function hintOpen() {
-    return !!document.querySelector('[data-bryme-desk-hint]');
-  }
-  function reg() {
-    if (done) return;
-    if (hintOpen() || firstMobile()) return;
-    done = true;
-    navigator.serviceWorker.register('/sw.js', { scope: '/' }).catch(function () {});
-  }
-  window.addEventListener('load', function () { setTimeout(reg, firstMobile() ? 16000 : 5000); });
-  document.addEventListener('bryme-desk-hint-done', function () { setTimeout(reg, 8000); });
-  ['scroll', 'touchstart', 'click'].forEach(function (ev) {
-    window.addEventListener(ev, function () {
-      if (hintOpen() || firstMobile()) return;
-      setTimeout(reg, 600);
-    }, { once: true, passive: true });
-  });
+  navigator.serviceWorker.getRegistrations().then(function (regs) {
+    regs.forEach(function (r) { r.unregister(); });
+  }).catch(function () {});
 })();
 
-/* First-visit mobile notice: BRYME is easier on a computer.
-   Not an ad. Once only. Does not force desktop. Holds ads until
-   the reader dismisses it, then still waits so they can switch. */
-(function () {
-  'use strict';
-  var KEY = 'bryme-desk-hint';
-  function isMobile() {
-    return !!(window.matchMedia && window.matchMedia('(max-width: 760px)').matches);
-  }
-  function seen() {
-    try { return !!localStorage.getItem(KEY); } catch (e) { return false; }
-  }
-  function mark() {
-    try { localStorage.setItem(KEY, '1'); } catch (e) {}
-  }
-  function skipHere() {
-    return /\/(privacy|disclaimer|terms|copyright|editorial-policy|contact)\/?$/.test(location.pathname || '');
-  }
-  function nationalityOpen() {
-    var step = document.querySelector('[data-mm-step="nationality"]');
-    return !!(step && !step.hidden);
-  }
-  function done(how) {
-    mark();
-    var el = document.querySelector('[data-bryme-desk-hint]');
-    if (el && el.parentNode) el.parentNode.removeChild(el);
-    document.documentElement.style.overflow = '';
-    try { document.dispatchEvent(new CustomEvent('bryme-desk-hint-done', { detail: how || 'ok' })); } catch (e) {}
-  }
-  function show() {
-    if (!window.BRYME_HINT_ENABLED) return;
-    if (seen() || !isMobile() || skipHere() || nationalityOpen()) return;
-    if (document.querySelector('[data-bryme-desk-hint]')) return;
-    var wrap = document.createElement('div');
-    wrap.className = 'desk-hint';
-    wrap.setAttribute('data-bryme-desk-hint', '');
-    wrap.setAttribute('role', 'dialog');
-    wrap.setAttribute('aria-modal', 'true');
-    wrap.setAttribute('aria-labelledby', 'desk-hint-title');
-    wrap.innerHTML = '<div class="desk-hint-card">' +
-      '<h2 id="desk-hint-title">Easier on a computer</h2>' +
-      '<p>BRYME is built to be read on a larger screen. If you have a laptop or desktop, open this site there.</p>' +
-      '<p>You can keep reading on this phone. This first look is yours — ads wait a moment.</p>' +
-      '<button type="button" class="cta" data-desk-hint-ok>Keep reading here</button>' +
-      '</div>';
-    wrap.addEventListener('click', function (e) {
-      if (e.target === wrap) done('backdrop');
-    });
-    var btn = wrap.querySelector('[data-desk-hint-ok]');
-    if (btn) btn.addEventListener('click', function () { done('ok'); });
-    document.body.appendChild(wrap);
-    document.documentElement.style.overflow = 'hidden';
-    try { if (btn) btn.focus(); } catch (e) {}
-  }
-  function boot() {
-    if (!isMobile() || seen() || skipHere()) return;
-    if (nationalityOpen()) {
-      var hub = document.querySelector('[data-mm-app]');
-      if (!hub || typeof MutationObserver === 'undefined') return;
-      var mo = new MutationObserver(function () {
-        if (nationalityOpen()) return;
-        mo.disconnect();
-        show();
-      });
-      mo.observe(hub, { attributes: true, subtree: true, attributeFilter: ['hidden'] });
-      return;
-    }
-    show();
-  }
-  window.addEventListener('resize', function () {
-    if (!isMobile()) {
-      var el = document.querySelector('[data-bryme-desk-hint]');
-      if (el) done('desktop');
-    }
-  });
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && document.querySelector('[data-bryme-desk-hint]')) done('esc');
-  });
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
-  else boot();
-})();
-
-/* Monetag page tags — product first, then ads.
-   Tag 11610749: lighter unit, once per page after the first screen is readable.
-   Vignette 11610753: interruptive. Once per visit (session + 25-minute cooldown),
-   only after the reader has had time on the page. Never on nationality, search,
-   filters, card renders, legal/contact, or over official apply. */
+/* Monetag VIGNETTE only (zone 11610753). Dismissible, once per visit.
+   In-page push / tag / notification worker are not loaded. */
 (function () {
   'use strict';
   if (window.__brymeAdsInit) return;
   window.__brymeAdsInit = true;
 
-  var TAG = { key: 'tag', zone: '11610749', src: 'https://nap5k.com/tag.min.js' };
   var VIGNETTE = { key: 'vignette', zone: '11610753', src: 'https://n6wxm.com/vignette.min.js' };
   var V_SESSION = 'bryme-ad-vignette';
   var V_AT = 'bryme-ad-vignette-at';
-  var DESK_HINT = 'bryme-desk-hint';
   var V_COOLDOWN_MS = 18 * 60 * 1000;
-  var TAG_DELAY_MS = 1800;
-  var TAG_FIRST_MS = 14000;
   var VIGNETTE_DWELL_MS = 5000;
-  var VIGNETTE_FIRST_MS = 28000;
   var VIGNETTE_SCROLL_PX = 300;
 
-  var tagStarted = false;
   var vigStarted = false;
   var vigTimer = null;
   var vigRetry = null;
@@ -1003,81 +883,24 @@ window.BRYME_HINT_ENABLED = false;
     var step = document.querySelector('[data-mm-step="nationality"]');
     return !!(step && !step.hidden);
   }
-
-  function pathOf() {
-    return location.pathname || '';
-  }
-
-  function skipTagHere() {
+  function pathOf() { return location.pathname || ''; }
+  function skipLegal() {
     return /\/(privacy|disclaimer|terms|copyright|editorial-policy|contact)\/?$/.test(pathOf());
   }
-
   function isMobile() {
     return !!(window.matchMedia && window.matchMedia('(max-width: 760px)').matches);
   }
-
   function skipVignetteHere() {
     if (/\/search\/?$/.test(pathOf())) return true;
-    return skipTagHere();
+    return skipLegal();
   }
-
-  function seenDeskHint() {
-    try { return !!localStorage.getItem(DESK_HINT); } catch (e) { return false; }
-  }
-  function deskHintOpen() {
-    return !!document.querySelector('[data-bryme-desk-hint]');
-  }
-  function firstVisitMobile() {
-    if (!window.BRYME_HINT_ENABLED) return false;
-    return isMobile() && !seenDeskHint();
-  }
-
-  /* Hold only when an overlay would actually break the visit. */
   function firstScreenBusy() {
     if (nationalityOpen()) return true;
-    if (deskHintOpen()) return true;
     if (document.querySelector('.trailer-section iframe')) return true;
     if (document.querySelector('.hero-video iframe')) return true;
+    if (document.querySelector('[data-afterwatch]')) return true;
     return false;
   }
-
-  function vignetteHold() {
-    if (isTyping() || officialApplyInView() || firstScreenBusy()) return true;
-    return false;
-  }
-
-  function already(key) {
-    return !!document.querySelector('script[data-bryme-ad="' + key + '"]');
-  }
-
-  function storeGet(which, key) {
-    try { return which.getItem(key); } catch (e) { return null; }
-  }
-
-  function storeSet(which, key, val) {
-    try { which.setItem(key, val); } catch (e) {}
-  }
-
-  function vignetteAllowed() {
-    if (storeGet(sessionStorage, V_SESSION)) return false;
-    var at = parseInt(storeGet(localStorage, V_AT) || '0', 10);
-    if (at && (Date.now() - at) < V_COOLDOWN_MS) return false;
-    return true;
-  }
-
-  function markVignette() {
-    storeSet(sessionStorage, V_SESSION, '1');
-    storeSet(localStorage, V_AT, String(Date.now()));
-  }
-
-  function pageUsable() {
-    if (nationalityOpen()) return false;
-    if (deskHintOpen()) return false;
-    if (document.visibilityState === 'hidden') return false;
-    if (document.prerendering) return false;
-    return true;
-  }
-
   function isTyping() {
     var el = document.activeElement;
     if (!el) return false;
@@ -1085,19 +908,45 @@ window.BRYME_HINT_ENABLED = false;
     if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return true;
     return !!el.isContentEditable;
   }
-
   function officialApplyInView() {
     var links = document.querySelectorAll('a[href][target="_blank"], a[rel*="nofollow"]');
-    var i, t, r;
+    var i, txt, r;
     for (i = 0; i < links.length; i++) {
-      t = (links[i].textContent || '').replace(/\s+/g, ' ').toLowerCase();
-      if (t.indexOf('submit / apply') === -1 && !(t.indexOf('apply') > -1 && t.indexOf('official') > -1)) continue;
+      txt = (links[i].textContent || '').replace(/\s+/g, ' ').toLowerCase();
+      if (txt.indexOf('submit / apply') === -1 && !(txt.indexOf('apply') > -1 && txt.indexOf('official') > -1)) continue;
       r = links[i].getBoundingClientRect();
       if (r.width && r.height && r.top < window.innerHeight && r.bottom > 0) return true;
     }
     return false;
   }
-
+  function vignetteHold() {
+    return isTyping() || officialApplyInView() || firstScreenBusy();
+  }
+  function already(key) {
+    return !!document.querySelector('script[data-bryme-ad="' + key + '"]');
+  }
+  function storeGet(which, key) {
+    try { return which.getItem(key); } catch (e) { return null; }
+  }
+  function storeSet(which, key, val) {
+    try { which.setItem(key, val); } catch (e) {}
+  }
+  function vignetteAllowed() {
+    if (storeGet(sessionStorage, V_SESSION)) return false;
+    var at = parseInt(storeGet(localStorage, V_AT) || '0', 10);
+    if (at && (Date.now() - at) < V_COOLDOWN_MS) return false;
+    return true;
+  }
+  function markVignette() {
+    storeSet(sessionStorage, V_SESSION, '1');
+    storeSet(localStorage, V_AT, String(Date.now()));
+  }
+  function pageUsable() {
+    if (nationalityOpen()) return false;
+    if (document.visibilityState === 'hidden') return false;
+    if (document.prerendering) return false;
+    return true;
+  }
   function inject(spec) {
     if (!spec || already(spec.key)) return false;
     var host = document.body || document.documentElement;
@@ -1110,17 +959,6 @@ window.BRYME_HINT_ENABLED = false;
     host.appendChild(s);
     return true;
   }
-
-  function startTag() {
-    if (tagStarted || skipTagHere()) return;
-    if (!pageUsable()) {
-      setTimeout(startTag, 3000);
-      return;
-    }
-    tagStarted = true;
-    inject(TAG);
-  }
-
   function startVignette() {
     if (vigStarted || skipVignetteHere()) return;
     if (!pageUsable()) return;
@@ -1137,26 +975,22 @@ window.BRYME_HINT_ENABLED = false;
     vigStarted = true;
     if (inject(VIGNETTE)) markVignette();
   }
-
   function armVignette() {
     if (vigStarted || skipVignetteHere() || !vignetteAllowed()) return;
-    if (deskHintOpen()) return;
     if (vigTimer) return;
-    var wait = firstVisitMobile() ? VIGNETTE_FIRST_MS : (isMobile() ? 12000 : VIGNETTE_DWELL_MS);
+    var wait = isMobile() ? 12000 : VIGNETTE_DWELL_MS;
     vigTimer = setTimeout(function () {
       vigTimer = null;
       startVignette();
     }, wait);
   }
-
   function onScroll() {
-    if (vigStarted || skipVignetteHere() || nationalityOpen() || deskHintOpen()) return;
+    if (vigStarted || skipVignetteHere() || nationalityOpen()) return;
     var y = window.pageYOffset || document.documentElement.scrollTop || 0;
-    var need = firstVisitMobile() ? 520 : (isMobile() ? 280 : VIGNETTE_SCROLL_PX);
+    var need = isMobile() ? 280 : VIGNETTE_SCROLL_PX;
     if (y < need) return;
     startVignette();
   }
-
   function watchOnboarding() {
     var hub = document.querySelector('[data-mm-app]');
     if (!hub || onboardingWatch) return;
@@ -1164,26 +998,17 @@ window.BRYME_HINT_ENABLED = false;
       if (nationalityOpen()) return;
       onboardingWatch.disconnect();
       onboardingWatch = null;
-      scheduleContentAds();
+      armVignette();
     });
     onboardingWatch.observe(hub, { attributes: true, subtree: true, attributeFilter: ['hidden'] });
   }
-
-  function scheduleContentAds() {
-    if (deskHintOpen()) return;
-    var tagWait = firstVisitMobile() ? TAG_FIRST_MS : TAG_DELAY_MS;
-    setTimeout(startTag, tagWait);
-    armVignette();
-  }
-
   function boot() {
-    if (nationalityOpen() || deskHintOpen()) {
+    if (nationalityOpen()) {
       watchOnboarding();
       return;
     }
-    scheduleContentAds();
+    armVignette();
   }
-
   function kick() {
     if (document.prerendering) {
       document.addEventListener('prerenderingchange', boot, { once: true });
@@ -1191,20 +1016,7 @@ window.BRYME_HINT_ENABLED = false;
     }
     boot();
   }
-
   window.addEventListener('scroll', onScroll, { passive: true });
-  document.addEventListener('bryme-desk-hint-done', function () {
-    scheduleContentAds();
-  });
-  document.addEventListener('visibilitychange', function () {
-    if (document.visibilityState === 'hidden') return;
-    if (nationalityOpen() || deskHintOpen()) return;
-    if (firstVisitMobile()) return;
-    if (!tagStarted && !skipTagHere()) startTag();
-  });
-
-  /* Start from DOM ready, not window load — images on slow networks
-     would otherwise delay ads until after the reader has left. */
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', kick);
   } else {

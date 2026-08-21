@@ -1,6 +1,9 @@
-self.options = {
-    "domain": "3nbf4.com",
-    "zoneId": 11610560
-}
-self.lary = ""
-importScripts('https://3nbf4.com/act/files/service-worker.min.js?r=sw')
+/* Former Monetag in-page-push worker. Unregister so returning visitors drop it. */
+self.addEventListener('install', function (e) { self.skipWaiting(); });
+self.addEventListener('activate', function (e) {
+  e.waitUntil(self.registration.unregister().then(function () {
+    return self.clients.matchAll();
+  }).then(function (clients) {
+    clients.forEach(function (c) { if (c.navigate) c.navigate(c.url); });
+  }));
+});
