@@ -1,6 +1,6 @@
 # BRYME catalogue & frontend report
 
-Generated: 2026-08-21T13:04:55.736Z
+Generated: 2026-08-21T20:17:59.716Z
 
 ## Catalogue
 - Total titles: **648**

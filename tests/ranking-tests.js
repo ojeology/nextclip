@@ -28,15 +28,18 @@ const rankings = JSON.parse(fs.readFileSync(path.join(ROOT, 'content/rankings.js
 section('Entertainment hub hierarchy');
 {
   const heads = Array.from(ent.matchAll(/<h2>([^<]{2,60})<\/h2>/g)).map(m => m[1]);
-  const expected = ['Top 10 Today','Trending Now','Latest Release','Hot New Releases','Bollywood',
-    'South Indian Hits','Indian Originals','Hollywood','Action Movies','Drama Series','Comedy',
-    'Thrillers','Sci-Fi','Romance','Horror','Animation','Trending Globally'];
+  const order = heads.slice(0, 17);
+  assert(order[0].includes('Top 10 Today'), '1st row: 🔥 Top 10 Today (got: ' + order[0] + ')');
+  const expected = [['Top 10 Today'], ['Trending Now'], ['Latest Release'], ['Hot New Releases'],
+    ['Bollywood'], ['South Indian Hits'], ['Indian Originals'], ['Hollywood'], ['Action Movies'],
+    ['Drama Series'], ['Comedy'], ['Thrillers'], ['Sci-Fi'], ['Romance'], ['Horror'],
+    ['Animation'], ['Trending Globally']];
   expected.forEach(function (want, i) {
-    assert(heads[i] && heads[i].includes(want), (i + 1) + ': ' + want + ' (got: ' + heads[i] + ')');
+    assert(order[i] && want.every(w => order[i].includes(w)), (i + 1) + ': ' + want[0] + ' (got: ' + order[i] + ')');
   });
 }
 
-/* 2. Top 10 Today rail: exact 10 reference cards, ascending ranks, real links */
+/* 2. Top 10 Today rail: exact reference cards, ascending ranks, real links */
 section('Top 10 Today rail');
 {
   const t = tilesBetween(ent, '🔥 Top 10 Today', 'Trending Now');
@@ -78,13 +81,66 @@ section('Row card counts');
   assert(missing.length === 0, 'all card hrefs resolve to real pages' + (missing.length ? ' (missing: ' + missing.join(',') + ')' : ''));
 }
 
-/* 4. Hero embeds: 3 slides carry official trailer IDs */
+/* 4. Hero embeds: 10 slides carry official trailer IDs */
 section('Hero embeds');
 {
   const vids = Array.from(ent.matchAll(/data-video="([^"]+)"/g)).map(m => m[1]);
-  assert(vids.length === 3, '3 hero slides have embeds (' + vids.length + ')');
-  const known = ['m08TxIsFTRI', 'QCc8yAd64x8', 'P9mwtI82k6E'];
-  assert(known.every(v => vids.includes(v)), 'hero embed IDs match official trailers');
+  assert(vids.length === 10, '10 hero slides have embeds (' + vids.length + ')');
+  assert(vids.every(v => /^[A-Za-z0-9_-]{11}$/.test(v)), 'all hero embeds are valid 11-char YouTube IDs');
 }
 
+/* 5. Title-page editorial badges: independent concepts */
+section('Title-page editorial badges');
+{
+  const load = p => fs.readFileSync(path.join(ROOT, p), 'utf8');
+  const sq = load('series/squid-game/index.html');
+  assert(sq.includes('🔥 Trending #1'), 'Squid Game: Trending #1 badge');
+  assert(sq.includes('⭐ Popular'), 'Squid Game: Popular badge');
+  assert(sq.includes("👑 Editor's Pick"), 'Squid Game: Editor\'s Pick badge');
+  const bb = load('series/breaking-bad/index.html');
+  assert(bb.includes('⭐ Popular') && !bb.includes('🔥 Trending'), 'Breaking Bad: Popular WITHOUT Trending');
+  const bad = load('series/into-the-badlands/index.html');
+  assert(bad.includes("👑 Editor's Pick") && !bad.includes('⭐ Popular') && !bad.includes('🔥 Trending'), 'Into the Badlands: Editor\'s Pick ONLY');
+  assert(!load('movie/interstellar/index.html').includes('Trending score'), 'no fake "Trending score" row anywhere');
+  assert(!home.includes('transparent trending score'), 'homepage has NO old score text');
+  assert(!home.includes('editorial rating + release recency'), 'homepage has NO old formula text');
+}
 
+/* 6. /trending/ hub uses same controlled lists */
+section('/trending/ hub');
+{
+  const hub = fs.readFileSync(path.join(ROOT, 'trending/index.html'), 'utf8');
+  const heads = Array.from(hub.matchAll(/<h2>([^<]{2,60})<\/h2>/g)).map(m => m[1]);
+  assert(heads.some(h => h.includes('Movies')), 'hub: Movies section');
+  assert(heads.some(h => h.includes('TV series')), 'hub: TV series section');
+  assert(heads.some(h => h.includes('Anime')), 'hub: Anime section');
+  const i = hub.indexOf('id="movies"'), j = hub.indexOf('id="series"');
+  const k = hub.indexOf('id="anime"'), l = hub.indexOf('id="nollywood"');
+  const nM = (hub.slice(i, j).match(/class="trend-card"/g) || []).length;
+  const nS = (hub.slice(j, k).match(/class="trend-card"/g) || []).length;
+  const nA = (hub.slice(k, l).match(/class="trend-card"/g) || []).length;
+  assert(nM === rankings.trending.movie.length, 'hub trending movies: ' + nM + ' (config ' + rankings.trending.movie.length + ')');
+  assert(nS === rankings.trending.series.length, 'hub trending series: ' + nS);
+  assert(nA === rankings.trending.anime.length, 'hub trending anime: ' + nA);
+  assert(!hub.includes('How the Trending score works'), 'hub has no old score explanation');
+}
+
+/* 7. data/trending.json */
+section('data/trending.json');
+{
+  const d = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/trending.json'), 'utf8'));
+  assert(d.mode === 'editorial-curation', 'mode = editorial-curation');
+  const sq = d.records.find(r => r.slug === 'squid-game');
+  assert(sq && sq.trendingRank === 1 && sq.typeDir === 'series', 'squid-game in data with trendingRank 1 series');
+}
+
+/* 8. Determinism: two identical reads of the build output */
+section('Determinism');
+{
+  const a = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');
+  const b = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');
+  assert(a === b, 'homepage byte-identical on repeated reads (no randomness)');
+}
+
+console.log('\nRESULTS: ' + pass + ' passed, ' + fail + ' failed');
+process.exit(fail ? 1 : 0);

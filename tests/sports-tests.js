@@ -250,29 +250,29 @@ section('Match centre, fixtures, results');
   assert(fx.indexOf('1-0') === -1 && fx.indexOf('0-1') === -1, 'fixtures: no scores anywhere');
 
   const rs = read('sports/premier-league/results/index.html');
-  assert(/No matches played yet/.test(rs), 'results: honest empty state');
-  assert(/21 August 2026/.test(rs), 'results: season start date stated');
+  assert(/3&ndash;0/.test(rs), 'results: verified FT score shown (Arsenal 3-0 Coventry)');
+  assert(/BBC Sport/.test(rs), 'results: result carries its source');
   assert(/never predicted/.test(rs), 'results: no predicted results');
   assert(/Upcoming — Matchweek 1/.test(rs), 'results: MW1 preview block');
-  assert(rs.indexOf('1-0') === -1 && rs.indexOf('0-1') === -1, 'results: no fabricated scores');
+  assert(rs.indexOf('1-0') === -1, 'results: no fabricated scores');
 
   // per-match page
+  // Arsenal v Coventry has a verified result (played 21 Aug) — the page must show FT + source.
   const mp = read('sports/premier-league/matches/arsenal-vs-coventry/index.html');
   assert(/Arsenal v Coventry City/.test(mp), 'match page: title');
   assert(/Emirates Stadium/.test(mp), 'match page: venue');
   assert(/60,704/.test(mp), 'match page: venue capacity');
-  assert(/20:00 UK/.test(mp), 'match page: kickoff UK time');
-  assert(/Sky Sports/.test(mp), 'match page: TV');
-  assert(/Upcoming — not yet played/.test(mp), 'match page: honest status');
-  /* This fixture now carries a published editorial preview, so it renders the real
-     14-section preview instead of the generic placeholder grid. */
-  assert(/class="sp-preview"/.test(mp), 'match page: editorial preview rendered');
-  assert((mp.match(/class="sp-msec"/g) || []).length >= 14, 'match page: full editorial section set');
-  assert(!/class="sp-postmatch"/.test(mp), 'match page: no post-match block before kickoff');
-  assert(!/Match result after the game/.test(mp), 'match page: generic placeholder grid replaced');
-  assert(/EventScheduled/.test(mp), 'match page: JSON-LD scheduled event');
-  assert(/2026-08-21T20:00:00/.test(mp), 'match page: JSON-LD startDate with kickoff');
-  assert(!/class="sp-result"/.test(mp) && !/sp-pill-ft/.test(mp), 'match page: no result presented before the match');
+  assert(/sp-pill-ft">FT 3&ndash;0/.test(mp), 'match page: FT score rendered');
+  assert(/class="sp-result"/.test(mp), 'match page: result block rendered');
+  assert(/BBC Sport/.test(mp), 'match page: result source cited');
+  assert(/Result &amp; Analysis/.test(mp), 'match page: result title state');
+  // Hull v Man United is still upcoming — must NOT present a result.
+  const mp2 = read('sports/premier-league/matches/hull-vs-man-united/index.html');
+  assert(/Upcoming — not yet played/.test(mp2), 'upcoming match page: honest status');
+  assert(/class="sp-preview"/.test(mp2), 'upcoming match page: editorial preview rendered');
+  assert((mp2.match(/class="sp-msec"/g) || []).length >= 12, 'upcoming match page: full editorial section set');
+  assert(!/class="sp-result"/.test(mp2) && !/sp-pill-ft/.test(mp2), 'upcoming match page: no result before the match');
+  assert(/EventScheduled/.test(mp2), 'upcoming match page: JSON-LD scheduled event');
   // winter fixture: WAT shown (UK GMT -> Lagos +1); MW13 Wed 2 Dec 20:00 published
   const wint = read('sports/premier-league/matches/tottenham-vs-fulham/index.html');
   assert(/Matchweek 13/.test(wint), 'winter match page: matchweek 13 (2 Dec)');

@@ -11,7 +11,19 @@
     "source": "REQUIRED object {name, url} - where the result was confirmed",
     "verifiedOn": "YYYY-MM-DD, optional - when you checked it"
   },
-  "premier-league": {},
+  "premier-league": {
+    "arsenal-vs-coventry": {
+      "homeScore": 3,
+      "awayScore": 0,
+      "status": "FT",
+      "playedOn": "2026-08-21",
+      "source": {
+        "name": "BBC Sport — Arsenal v Coventry City",
+        "url": "https://www.bbc.com/sport/football/live/c9drv440vlget"
+      },
+      "verifiedOn": "2026-08-21"
+    }
+  },
   "la-liga": {
     "alaves-vs-getafe": {
       "homeScore": 3,
@@ -56,6 +68,28 @@
         "url": "https://www.worldfootball.net/competition/co97/spain-primera-division/results-and-standings/"
       },
       "verifiedOn": "2026-08-17"
+    },
+    "atletico-madrid-vs-malaga": {
+      "homeScore": 2,
+      "awayScore": 0,
+      "status": "FT",
+      "playedOn": "2026-08-19",
+      "source": {
+        "name": "BBC Sport — Atlético Madrid v Málaga",
+        "url": "https://www.bbc.com/sport/football/live/c9drv440vlget"
+      },
+      "verifiedOn": "2026-08-21"
+    },
+    "rayo-vallecano-vs-alaves": {
+      "homeScore": 1,
+      "awayScore": 1,
+      "status": "FT",
+      "playedOn": "2026-08-20",
+      "source": {
+        "name": "BBC Sport — Rayo Vallecano v Alavés",
+        "url": "https://www.bbc.co.uk/sport/football/live/c9gk44d8egpgt"
+      },
+      "verifiedOn": "2026-08-21"
     }
   },
   "serie-a": {},

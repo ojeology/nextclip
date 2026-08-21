@@ -376,3 +376,35 @@ The repo has ALREADY completed the SEO migration described: pre-rendered static 
 (movie/, series/, genre/, channels/, year/), unique <title> + meta description per page,
 canonical, Open Graph, JSON-LD, sitemap.xml (1,317 URLs), robots.txt, alt + width/height
 on images. Old hash routing lives only in legacy/.
+
+---
+
+# v16 · Match results, 10-slide hero with images, 100% embeds+posters (2026-08-21)
+
+## 1. Football matches updated with real results
+- Added 3 verified sourced results via the results pipeline (content/results.json):
+  Arsenal 3-0 Coventry City (FT, BBC Sport), Atlético Madrid 2-0 Málaga (FT, BBC Sport),
+  Rayo Vallecano 1-1 Alavés (FT, BBC Sport).
+- Rebuilt sports pages via build-static-foundation.js → match pages now render
+  FT score + result block + source; league results pages updated; sitemap updated.
+- Homepage "⚽ Match previews" → "Latest results & previews"; the 3 played matches show
+  "FT · Arsenal 3-0 Coventry City" etc.; unplayed matches (Sat/Sun) remain upcoming previews.
+- Kept the two sliding rails (Premier League + Rest of Europe).
+
+## 2. Entertainment hero: 10 slides, all with images
+- Hero rebuilt with 10 slides (was 3): Avatar Aang, Swapped, Project Hail Mary, Chainsaw
+  Man: Reze, FROM, The Rookie, Your Name., Game of Thrones, Spirited Away, Forrest Gump.
+- Every slide has a REAL full-bleed backdrop image (official trailer thumbnail) + its
+  official trailer embed (data-video), age badge, ★ rating, Watch Now + More Info, dots.
+- Builder kept in scripts/build-hero.py (top-10 by rating among embedded titles).
+
+## 3. Remaining images + trailers — 100% coverage
+- Found + wired the last 3 official embeds: Ramyaa (Pj1lvjNXesI), Resort
+  (rlLjLSD3e70 — JioHotstar promo), Adaalat (iEHEuFfI-_Q promo).
+- Result: ALL 167 catalog titles now have an official trailer embed AND a poster image
+  (trailer thumbnails, data posters, or downloaded posters). Verified headless:
+  235/235 cards have images, 0 placeholders; 10/10 hero slides have images + embeds.
+
+## Tests
+- ranking 69/0, homepage 27/0, sports at baseline (5 pre-existing), editorial improved
+  32→30 (results render). No new failures.

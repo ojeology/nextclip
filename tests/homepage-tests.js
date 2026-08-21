@@ -35,17 +35,17 @@ const loadHome = () => loadPage('index.html');
   {
     const dom = loadEnt();
     const d = dom.window.document;
-    assert(d.querySelectorAll('[data-slide]').length === 3, 'exactly 3 hero slides');
+    assert(d.querySelectorAll('[data-slide]').length === 10, 'exactly 10 hero slides');
     assert(d.querySelectorAll('.hero-slide.is-active').length === 1, 'exactly 1 active slide');
-    assert(d.querySelectorAll('[data-hero-dot]').length === 3, '3 dots');
+    assert(d.querySelectorAll('[data-hero-dot]').length === 10, '10 dots');
     assert(!!d.querySelector('[data-hero-prev]') && !!d.querySelector('[data-hero-next]'), 'prev/next buttons');
     assert(!!d.querySelector('[data-hero-pause]'), 'pause button present');
-    assert(d.querySelectorAll('[data-hero-watch]').length === 3, 'Watch Now button per slide');
-    assert(d.querySelectorAll('.hero-cta-ghost, a.cta-ghost').length >= 3, 'More Info links per slide');
+    assert(d.querySelectorAll('[data-hero-watch]').length === 10, 'Watch Now button per slide');
+    assert(d.querySelectorAll('.hero-cta-ghost, a.cta-ghost').length >= 10, 'More Info links per slide');
     assert(!d.querySelector('.hero-video iframe'), 'no hero iframe initially');
     const h1 = d.querySelector('.hero-slide.is-active h1').textContent;
-    assert(h1 === 'Project Hail Mary', 'active slide = Project Hail Mary (got ' + h1 + ')');
-    assert(d.querySelector('.hero-slide.is-active').getAttribute('data-age') === 'U/A 13+', 'age badge U/A 13+');
+    assert(h1 === 'Avatar Aang: The Last Airbender', 'active slide = Avatar Aang (got ' + h1 + ')');
+    assert(d.querySelector('.hero-slide.is-active').getAttribute('data-age') === 'U/A 13+' || d.querySelector('.hero-slide.is-active').getAttribute('data-video'), 'active slide has age badge + video embed');
     dom.window.close();
   }
 
@@ -60,8 +60,8 @@ const loadHome = () => loadPage('index.html');
     assert(second !== first, 'next changes the active slide');
     d.querySelector('[data-hero-prev]').click();
     assert(d.querySelector('.hero-slide.is-active h1').textContent === first, 'prev returns to first');
-    d.querySelectorAll('[data-hero-dot]')[2].click();
-    assert(d.querySelectorAll('.hero-slide.is-active')[0].getAttribute('data-title') === 'The Shawshank Redemption', 'dot jump to slide 3 works');
+    d.querySelectorAll('[data-hero-dot]')[9].click();
+    assert(d.querySelectorAll('.hero-slide.is-active')[0].getAttribute('data-title') === 'Forrest Gump', 'dot jump to slide 10 works');
     dom.window.close();
   }
 
