@@ -257,3 +257,28 @@ RECTANGULAR cards, and hero embeds wired.
 ## Verified
 - homepage-tests 27/27 (hero embed playback now fully exercised), ranking-tests 0 fails,
   all other suites at pristine baseline (no new failures).
+
+---
+
+# v11 · Official embeds wired (2026-08-21)
+
+Found and wired official YouTube trailer embeds from my end (data files + verified
+searches): **85 of 167 catalog titles now play real official trailers** on their
+title pages (hero already had its 3). Map stored in `scripts/embeds.json`, applied
+by `scripts/wire-embeds.py`.
+
+Covered highlights: Reacher, The Traitors, The Odyssey, Outer Banks, Lanterns,
+Minions & Monsters, Avatar: Fire and Ash, Zootopia 2, Demon Slayer: Infinity Castle,
+Predator: Badlands, Scream 7, Wicked, Gladiator II, Furiosa, Civil War, Kalki 2898-AD,
+Pushpa 2, Stree 2, Singham Again, Animal, Jawan, Mission: Impossible — Final Reckoning,
+Captain America: BNW, all Spider-Man films (2002–Spider-Verse), Thor Ragnarok,
+Coraline, Coco, Spirited Away, Toy Story (1995), Back to the Future, Forrest Gump,
+The Notebook, Supergirl, Jackass, Moana, Scary Movie 6, Freakier Friday, Super Mario
+Galaxy, The Wild Robot, The Gorge, My Fault/Our Fault, Wicked: For Good, Chainsaw Man:
+Reze, Sinners, The Substance, 28 Years Later, Insidious + Out of the Further,
+Fifty Shades of Grey, Supernatural, Criminal Minds, Grey's Anatomy, The Rookie, FROM,
+Lioness, Shameless + 27 more from data/trailers.json.
+
+Remaining ~82 (mostly Indian Originals + niche titles): leave a placeholder; the
+user is gathering those embeds separately — drop IDs into scripts/embeds.json and
+re-run scripts/wire-embeds.py to finish.
