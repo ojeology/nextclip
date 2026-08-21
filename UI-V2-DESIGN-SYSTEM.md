@@ -307,3 +307,16 @@ Munjya, Vikram, Pushpa: The Rise, Masters of the Universe, Colony, GOAT, Mutiny,
 Welcome to the Jungle, Enola Holmes 3, Star Wars: Mandalorian & Grogu, The Sheep Detectives,
 War of the Worlds (2025), The Debt Collector, Greenland 2: Migration, Citizen Vigilante,
 The Devil's Mouth, Kraken, The Shadow's Edge, Shelter.
+
+---
+
+# v13 · Entertainment cards: back to classic portrait boxes, TALLER (2026-08-21)
+
+Reverted the entertainment cards from the wide 16:9 rectangles back to the classic
+NetMirror portrait poster card, and made them TALLER:
+- Posters are 3:5 portrait (height ~1.7x width) instead of 16:9 — clearly taller.
+- Cards sit in horizontal-scroll rails (old style): desktop ~180px wide / ~320px tall,
+  mobile ~150px / ~270px, ~2 cards visible per swipe.
+- SERIES badge top-left + ★ rating top-right on the poster; title + year below.
+- Top-10 outlined numbers back behind the poster, overlapping its left edge.
+- Verified headless at 420px & 1280px: 0 overlaps, 0 page overflow, rails scroll internally.
