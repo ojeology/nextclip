@@ -3485,13 +3485,13 @@ function lovedHeading(m){
   const noun = (m.typeDir === 'series') ? 'series' : (m.typeDir === 'anime' ? 'anime' : 'movie');
   const g = (listedGenres(m)[0] || '');
   const c = String(m.country || '');
-  if (m.slug === 'niu-lai') return "If you loved this, try these unusual animated movies";
-  if (/korea/i.test(c) && /thriller|horror/i.test(g)) return 'If you loved this Korean thriller, try these next';
-  if ((m.typeDir || '') === 'anime') return 'If you loved this anime, try these next';
-  if (/nigeria/i.test(c)) return 'If you loved this Nollywood title, try these next';
-  if (/india/i.test(c) && (m.typeDir || 'movie') === 'movie') return 'If you loved this Indian film, try these next';
-  if (g) return 'If you loved this ' + g.toLowerCase() + ' ' + noun + ', try these next';
-  return 'If you loved ' + m.title + ", you'll probably love these";
+  if (m.slug === 'niu-lai') return "If you like this, check these unusual animated movies";
+  if (/korea/i.test(c) && /thriller|horror/i.test(g)) return 'If you like this Korean thriller, check these out';
+  if ((m.typeDir || '') === 'anime') return 'If you like this anime, check these out';
+  if (/nigeria/i.test(c)) return 'If you like this Nollywood title, check these out';
+  if (/india/i.test(c) && (m.typeDir || 'movie') === 'movie') return 'If you like this Indian film, check these out';
+  if (g) return 'If you like this ' + g.toLowerCase() + ' ' + noun + ', check these out';
+  return 'If you like ' + m.title + ', check these out';
 }
 function recReason(from, to){
   const fg = listedGenres(from), tg = listedGenres(to);
@@ -3535,7 +3535,7 @@ function lovedBlock(m, related){
     const href = url('/' + (x.typeDir || 'movie') + '/' + x.slug + '/');
     return `<a class="tp-loved-card" href="${href}"><img loading="lazy" decoding="async" width="160" height="90" src="${esc(img)}" alt="${esc(x.title)} poster"><span><b>${esc(x.title)}</b><em>${esc(g)}${x.year ? ' · ' + x.year : ''}</em><small>${esc(recReason(m, x))}</small></span></a>`;
   }).join('');
-  return `<section class="tp-loved" id="loved"><h2>🍿 ${esc(lovedHeading(m))}</h2><p class="tp-loved-lead">Five titles already on BRYME — not a random dump and not a popup.</p><div class="tp-loved-list">${cards}</div><p class="tp-loved-more">Didn't find your next ${esc(noun === 'movies' ? 'movie' : noun)}? <a href="${url(explore)}">Explore What's Trending →</a></p></section>`;
+  return `<section class="tp-loved tp-loved-under" id="loved"><h2>🍿 ${esc(lovedHeading(m))}</h2><p class="tp-loved-lead">If you like this, check these out. It sits under the trailer so it does not cover the player.</p><div class="tp-loved-list">${cards}</div><p class="tp-loved-more">Didn't find your next ${esc(noun === 'movies' ? 'movie' : noun)}? <a href="${url(explore)}">Explore What's Trending →</a></p></section>`;
 }
 function whyYouMightLikeBlock(m, related){
   const ed = editorialOf(m);
@@ -3735,7 +3735,7 @@ for (const m of movies) {
     image: posterOrCard(m),   /* designed card when there is no poster or trailer thumbnail */
     body: `<main class="shell tp-page" data-video-landing><div class="crumb"><a href="${url('/')}">Home</a> / <a href="${url(listPath)}">${esc(listLabel)}</a>${genreText ? ` / <a href="${url(genrePath(m, genreText))}">${esc(genreText)}</a>` : ''} / ${esc(m.title)}</div>
   <section class="shell trailer-section" id="trailer">${trailerSection(m)}</section>
-  <section class="movie-hero" style="--movie-backdrop:url('${esc(poster(m))}')">
+  <section class="movie-hero movie-hero-compact" style="--movie-backdrop:url('${esc(poster(m))}')">
     ${image(m)}
     <div>
       <div class="hero-kicker tp-kicker-meta"><span class="type-badge tb-${typeDir}">${typeDir === 'series' ? 'SERIES' : (typeDir === 'anime' ? 'ANIME' : 'MOVIE')}</span>${m.year ? `<span>${m.year}</span>` : ''}${genreText ? `<span class="dot">·</span><span>${esc(genreText)}</span>` : ''}${runtimeLabel(m) ? `<span class="dot">·</span><span>${esc(runtimeLabel(m))}</span>` : ''}${primaryCountry(m) ? `<span class="dot">·</span><span>${esc(primaryCountry(m))}</span>` : ''}</div>
@@ -3750,6 +3750,7 @@ for (const m of movies) {
       ${SENDABLE_META[m.slug] ? sendBar(pagePath, SENDABLE_META[m.slug].title || m.title) : ''}
     </div>
   </section>
+  ${lovedBlock(m, related)}
   <section class="body">
     <article class="prose">
       ${nowTalkingBlock(m)}
@@ -3776,13 +3777,14 @@ for (const m of movies) {
         return `<h2>What ${esc(m.title)} is about</h2>` + parts.join('');
       })()}
       ${whyYouMightLikeBlock(m, related)}
+      ${relatedArticles.length ? `<section class="tp-editorial"><h2>BRYME editorial</h2><p>Only real BRYME pieces are listed here. This is not a generated review and not a claim that BRYME watched the title on your behalf.</p><div class="story-grid story-grid-title">${relatedArticles.map(a => `<a href="${url('/article/' + a.slug + '/')}"><span>${esc(a.category)}</span><h3>${esc(a.title)}</h3><p>${esc((a.description || '').slice(0, 140))}</p><b>Read article</b></a>`).join('')}</div></section>` : ''}
+      ${related.length ? `<div class="grid tp-related" hidden>${related.map(card).join('')}</div>` : ''}
+      <div class="tp-boring" id="details-more">
       ${m.facts.length ? `<h2>Notes</h2><ul>${m.facts.map(f => `<li>${esc(f)}</li>`).join('')}</ul>` : ''}
       ${(typeDir !== 'movie' && m.seasons.length) ? `<h2>Seasons</h2><div class="list">${m.seasons.map(x => `<div class="row"><div><b>${esc(x.title || ('Season ' + x.seasonNumber))}</b><span class="meta" style="font-size:12px;color:var(--muted)">${x.year ? x.year + ' · ' : ''}${x.episodeCount ? x.episodeCount + ' episodes' : 'episode count unavailable'}</span></div></div>`).join('')}</div>` : ''}
       ${whereToWatchBlock(m)}
-      ${relatedArticles.length ? `<section class="tp-editorial"><h2>BRYME editorial</h2><p>Only real BRYME pieces are listed here. This is not a generated review and not a claim that BRYME watched the title on your behalf.</p><div class="story-grid story-grid-title">${relatedArticles.map(a => `<a href="${url('/article/' + a.slug + '/')}"><span>${esc(a.category)}</span><h3>${esc(a.title)}</h3><p>${esc((a.description || '').slice(0, 140))}</p><b>Read article</b></a>`).join('')}</div></section>` : ''}
-      ${lovedBlock(m, related)}
-      ${related.length ? `<div class="grid tp-related" hidden>${related.map(card).join('')}</div>` : ''}
       ${keepExploringBlock(m, relatedArticles, yearPath)}
+      </div>
     </article>
     <aside class="aside">
       <h2>Details</h2>
@@ -4083,10 +4085,18 @@ function renderVerticalArticle(dir, verticalName, a) {
   })() : '';
   const nextSlugs = Array.isArray(a.nextOnBryme) ? a.nextOnBryme : [];
   const nextItems = nextSlugs.map(s => (VERTICAL_ARTICLES[dir] || []).find(x => x.slug === s)).filter(Boolean);
-  const nextBlock = nextItems.length ? `<section class="tp-loved" id="next"><h2>Stay on BRYME</h2><p class="tp-loved-lead">The clip is over. These pages continue the same story — not a random dump.</p><div class="tp-loved-list">${nextItems.map(x => `<a class="tp-loved-card" href="${url(articlePathFor(dir, x))}"><span><b>${esc(x.title)}</b><em>${esc(x.category || verticalName)}</em><small>${esc((x.excerpt || '').slice(0, 140))}</small></span></a>`).join('')}</div></section>` : '';
-  const body = `<main class="shell"><div class="crumb">${crumbs.slice(0, -1).map(c => `<a href="${url(c.path)}">${esc(c.name)}</a>`).join(' / ')} / ${esc(a.title)}</div>
-  <section class="article-hero article-hero-photo" style="--hero-img:url('${heroImg}')"><div class="eyebrow">${esc(cat ? cat.name : verticalName)}</div><h1>${esc(a.title)}</h1>${a.excerpt ? `<p class="lead">${esc(a.excerpt)}</p>` : ''}<div class="article-meta">${a.author ? `<span>${authorLink(a.author)}</span>` : ''}${a.publishedAt ? `<span>${esc(a.publishedAt)}${updated}</span>` : ''}${a.readingTime ? `<span>${esc(a.readingTime)}</span>` : ''}</div>${send}</section>
+  const nextBlock = nextItems.length ? `<section class="tp-loved tp-loved-under" id="next"><h2>If you like this, check these out</h2><p class="tp-loved-lead">Under the clip, not on top of it. These pages continue the same story.</p><div class="tp-loved-list">${nextItems.map(x => `<a class="tp-loved-card" href="${url(articlePathFor(dir, x))}"><span><b>${esc(x.title)}</b><em>${esc(x.category || verticalName)}</em><small>${esc((x.excerpt || '').slice(0, 140))}</small></span></a>`).join('')}</div></section>` : '';
+  const hero = `<section class="article-hero article-hero-photo" style="--hero-img:url('${heroImg}')"><div class="eyebrow">${esc(cat ? cat.name : verticalName)}</div><h1>${esc(a.title)}</h1>${a.excerpt ? `<p class="lead">${esc(a.excerpt)}</p>` : ''}<div class="article-meta">${a.author ? `<span>${authorLink(a.author)}</span>` : ''}${a.publishedAt ? `<span>${esc(a.publishedAt)}${updated}</span>` : ''}${a.readingTime ? `<span>${esc(a.readingTime)}</span>` : ''}</div>${send}</section>`;
+  const crumb = `<div class="crumb">${crumbs.slice(0, -1).map(c => `<a href="${url(c.path)}">${esc(c.name)}</a>`).join(' / ')} / ${esc(a.title)}</div>`;
+  const body = videoBlock
+    ? `<main class="shell" data-video-landing>${crumb}
   ${videoBlock}
+  ${nextBlock}
+  ${hero}
+  <article class="prose article-body">${sections}</article>
+  ${sourceBlock}${relatedBlock}</main>`
+    : `<main class="shell">${crumb}
+  ${hero}
   <article class="prose article-body">${sections}${nextBlock}</article>
   ${sourceBlock}${relatedBlock}</main>`;
 
@@ -4753,10 +4763,8 @@ fs.appendFileSync(path.join(root,'assets/site.css'), `
 [data-theme="light"] .wo-facts dd{color:#161b22}
 
 .desk-hint{
-  position:fixed;inset:0;z-index:95;
-  display:grid;place-items:end center;
-  padding:16px 12px calc(72px + env(safe-area-inset-bottom,0px));
-  background:rgba(8,9,11,.52);
+  /* Parked overlay. Recs now live under the embed as .tp-loved-under. */
+  display:none !important;
 }
 .desk-hint-card{
   width:100%;max-width:420px;
@@ -5170,6 +5178,68 @@ fs.appendFileSync(path.join(root,'assets/site.css'), `
   .trend-card, .trend-list, .trend-jump { max-width: 100%; }
   .movie-hero, .home-hero, .hero-carousel { max-width: 100%; }
   .tp-page .movie-hero { overflow: hidden; }
+}
+`);
+
+
+fs.appendFileSync(path.join(root,'assets/site.css'), `
+/* video landing: recs under the embed, compact identity, boring bits last */
+.tp-page .movie-hero,
+.tp-page .movie-hero-compact{
+  min-height:0 !important;
+  padding:14px 0 10px !important;
+  align-items:center;
+}
+.tp-page .movie-hero:before{opacity:.45}
+.tp-loved-under{
+  margin:8px 0 18px;
+  padding:14px;
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:#111419;
+  max-width:860px;
+  box-shadow:0 10px 28px rgba(0,0,0,.22);
+}
+.tp-loved-under h2{font-size:18px;line-height:1.25;margin:0 0 6px;color:#fff}
+.tp-loved-lead{font-size:13px;color:var(--muted);margin:0 0 10px;line-height:1.5}
+.tp-loved-list{display:grid;gap:8px}
+.tp-loved-card{
+  display:grid;
+  grid-template-columns:96px minmax(0,1fr);
+  gap:10px;
+  align-items:center;
+  padding:8px;
+  border:1px solid var(--line);
+  border-radius:10px;
+  background:#0e1014;
+  color:inherit;
+  text-decoration:none;
+  min-width:0;
+}
+.tp-loved-card:hover{border-color:var(--gold)}
+.tp-loved-card img{width:96px;height:54px;object-fit:cover;border-radius:6px;background:#171b20;display:block}
+.tp-loved-card b{display:block;font-size:14px;line-height:1.25}
+.tp-loved-card em{display:block;font-style:normal;font-size:11px;color:var(--gold);font-weight:800;margin-top:2px}
+.tp-loved-card small{display:block;font-size:12px;color:var(--muted);line-height:1.4;margin-top:2px}
+.tp-loved-more{font-size:13px;margin:10px 0 0}
+.tp-now,.tp-verdict{max-width:760px}
+.tp-verdict-score{font-size:22px;font-weight:900;color:var(--gold);margin:0 0 4px}
+.tp-verdict-note{font-size:12.5px;color:var(--muted);margin:0 0 10px}
+.tp-boring{margin-top:28px;padding-top:20px;border-top:1px solid var(--line)}
+[data-video-landing] .article-hero-photo{min-height:160px;padding-top:28px}
+[data-theme="light"] .tp-loved-under{background:#fff;border-color:var(--line)}
+[data-theme="light"] .tp-loved-under h2{color:#161b22}
+[data-theme="light"] .tp-loved-card{background:#fff;color:#161b22}
+[data-theme="light"] .tp-loved-card small{color:#5a6572}
+@media (min-width:761px){
+  .tp-page .movie-hero-compact{grid-template-columns:110px minmax(0,1fr);gap:18px}
+  .tp-loved-list{grid-template-columns:1fr 1fr}
+}
+@media (max-width:760px){
+  .tp-loved-under{padding:12px;margin:6px 0 14px}
+  .tp-loved-card{grid-template-columns:72px minmax(0,1fr);gap:8px}
+  .tp-loved-card img{width:72px;height:42px}
+  .tp-loved-under h2{font-size:16px}
 }
 `);
 

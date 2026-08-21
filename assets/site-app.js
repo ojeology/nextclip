@@ -123,10 +123,21 @@ document.addEventListener('error', function (e) {
 
   /* ---------- lazy trailer players (multi-candidate, failure-safe) ---------- */
   var TRAILER_WATCHDOG_MS = (typeof window.BRYME_TRAILER_TIMEOUT !== 'undefined') ? window.BRYME_TRAILER_TIMEOUT : 30000;
+  function fromWhatsApp() {
+    var ua = '';
+    try { ua = String(navigator.userAgent || navigator.vendor || ''); } catch (e) { ua = ''; }
+    if (/WhatsApp/i.test(ua)) return true;
+    try {
+      var q = String(location.search || '');
+      if (/(?:^|[?&])(?:utm_source=whatsapp|from=wa)(?:&|$)/i.test(q)) return true;
+    } catch (e2) {}
+    return false;
+  }
   function frameHtml(id, title, opts) {
     opts = opts || {};
     var iframe = document.createElement('iframe');
-    var src = 'https://www.youtube-nocookie.com/embed/' + id + '?rel=0&modestbranding=1&playsinline=1&enablejsapi=1';
+    var host = fromWhatsApp() ? 'https://www.youtube.com/embed/' : 'https://www.youtube-nocookie.com/embed/';
+    var src = host + id + '?rel=0&modestbranding=1&playsinline=1&enablejsapi=1';
     if (opts.autoplay) src += '&autoplay=1';
     src += '&mute=' + (opts.mute === false ? '0' : '1');
     if (opts.autoplay) src += '&cc_load_policy=1';
@@ -137,7 +148,7 @@ document.addEventListener('error', function (e) {
     iframe.title = title + ' trailer';
     iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
     iframe.setAttribute('allowfullscreen', '');
-    iframe.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
+    iframe.setAttribute('referrerpolicy', fromWhatsApp() ? 'origin-when-cross-origin' : 'strict-origin-when-cross-origin');
     return iframe;
   }
   document.querySelectorAll('[data-trailer-box]').forEach(function (box) {
@@ -289,7 +300,27 @@ document.addEventListener('error', function (e) {
       try { if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return false; } catch (e) {}
       return true;
     }
-    function startMuted() { play({ auto: true, mute: true }); }
+    function startMuted() {
+      play({ auto: true, mute: true });
+      if (!fromWhatsApp()) return;
+      try { document.documentElement.setAttribute('data-from-wa', '1'); } catch (e) {}
+      var frame = box.querySelector('[data-trailer-id]');
+      if (frame && frame.scrollIntoView) {
+        try { frame.scrollIntoView({ block: 'nearest', inline: 'nearest' }); } catch (e2) {}
+      }
+      var nudged = false;
+      function nudge() {
+        if (nudged) return;
+        nudged = true;
+        var ifr = box.querySelector('iframe');
+        if (!ifr || !ifr.contentWindow) return;
+        try {
+          ifr.contentWindow.postMessage(JSON.stringify({ event: 'command', func: 'playVideo', args: [] }), '*');
+        } catch (e3) {}
+      }
+      document.addEventListener('touchstart', nudge, { once: true, passive: true });
+      document.addEventListener('click', nudge, { once: true });
+    }
     if (shouldAutoplay()) {
       if (document.prerendering) document.addEventListener('prerenderingchange', startMuted, { once: true });
       else startMuted();
