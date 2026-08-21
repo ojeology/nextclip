@@ -53,3 +53,45 @@ while keeping every existing class hook, page structure, and the JS behaviour in
 - Overlay badges are pure CSS (absolute positioning inside `.tile`), so no page
   markup needed to change — including the ~2,900 generated title pages.
 - Light theme is preserved with matching light-surface overrides.
+
+---
+
+# v3 · NetMirror-style polish (2026-08-21)
+
+Applied on top of v2 per the NetMirror app blueprint. BRYME branding kept;
+visual design matches the NetMirror screens (home + details).
+
+## What changed
+
+1. **Channel pills** (every page's desk-bar): catalogue pills replaced with
+   `🔥 Trending` (active, red border + flame) · Netflix · Prime Video ·
+   Crunchyroll · Kids — each with a small brand-logo tile. Pills link to new
+   `/channels/{netflix,prime-video,crunchyroll,kids}/` landing pages
+   (movies / series / anime / kids&family catalogues, 493/81/74/44 tiles).
+2. **Mobile bottom nav**: added Movies / Series / Anime links so the
+   catalogue stays reachable on mobile now that the pills are channels.
+3. **Home hero (NetMirror)**: `🔥 TRENDING NOW` tag, HD chip, yellow star
+   rating chip, 2-line synopsis clamp, `▶ Watch Now` (white) + `More Info`
+   (translucent) buttons, `U/A` age badge bottom-right (per-slide), white
+   pill/grey dot pagination.
+4. **Top 10 Today**: trending rail header renamed with red accent bar.
+5. **Detail pages (648 title pages)**:
+   - `▶ Watch Now` (white) + `▶ Trailer` (translucent) CTAs
+   - `XX% Match` (green) + `HD` chips beside the BRYME editorial badge
+   - **Cast** carousel — circular initials avatars (JSON-LD cast data)
+   - **Audio** tabs — data-driven languages, active tab with red underline
+   - `More Like This` header (red accent bar) on the related row
+6. **Sitemap**: 4 channel URLs added.
+
+## Data honesty notes
+- `% Match` only shows where an editorial score exists (127 titles have
+  `rating.value` in `data/movies.json`) — no invented scores.
+- Cast avatars use initials because no portrait photos are stored.
+- Channel pages carry an editorial disclaimer: availability on each service
+  varies by region; links point to official destinations.
+
+## Verified
+- Full test suite: identical results to the pristine commit `3e7a4e8`
+  (15 ranking / 32 editorial / 9 titlepage / 5 sports / 4 frontend / 1 bryme /
+  1 trailer pre-existing failures — zero new).
+- Builders kept in `scripts/build-channels.js` + `scripts/nm-transform.js`.
