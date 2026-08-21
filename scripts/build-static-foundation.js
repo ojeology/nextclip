@@ -3733,7 +3733,8 @@ for (const m of movies) {
     activeNav: typeDir === 'movie' ? 'movies' : (typeDir === 'series' ? 'series' : 'anime'),
     schema: schemaList,
     image: posterOrCard(m),   /* designed card when there is no poster or trailer thumbnail */
-    body: `<main class="shell tp-page"><div class="crumb"><a href="${url('/')}">Home</a> / <a href="${url(listPath)}">${esc(listLabel)}</a>${genreText ? ` / <a href="${url(genrePath(m, genreText))}">${esc(genreText)}</a>` : ''} / ${esc(m.title)}</div>
+    body: `<main class="shell tp-page" data-video-landing><div class="crumb"><a href="${url('/')}">Home</a> / <a href="${url(listPath)}">${esc(listLabel)}</a>${genreText ? ` / <a href="${url(genrePath(m, genreText))}">${esc(genreText)}</a>` : ''} / ${esc(m.title)}</div>
+  <section class="shell trailer-section" id="trailer">${trailerSection(m)}</section>
   <section class="movie-hero" style="--movie-backdrop:url('${esc(poster(m))}')">
     ${image(m)}
     <div>
@@ -3749,7 +3750,6 @@ for (const m of movies) {
       ${SENDABLE_META[m.slug] ? sendBar(pagePath, SENDABLE_META[m.slug].title || m.title) : ''}
     </div>
   </section>
-  <section class="shell trailer-section" id="trailer">${trailerSection(m)}</section>
   <section class="body">
     <article class="prose">
       ${nowTalkingBlock(m)}
@@ -4074,19 +4074,23 @@ function renderVerticalArticle(dir, verticalName, a) {
   const updated = a.updatedAt && a.updatedAt !== a.publishedAt ? ` · updated ${esc(a.updatedAt)}` : '';
   const send = SENDABLE_META[a.slug] ? sendBar(pagePath, SENDABLE_META[a.slug].title || a.title) : '';
   const heroImg = heroFor(a.slug, dir);
+  const yt = a.youtube && /^[A-Za-z0-9_-]{11}$/.test(a.youtube.videoId || '') ? a.youtube : null;
+  const videoBlock = yt ? (function () {
+    const watch = 'https://www.youtube.com/watch?v=' + yt.videoId;
+    const candidates = JSON.stringify([{ id: yt.videoId, type: 'official-clip', label: 'Official highlights', channel: yt.channel || '', verified: true, watch }]);
+    const cap = yt.caption ? `<p class="trailer-meta">${esc(yt.caption)}</p>` : `<p class="trailer-meta">YouTube · via ${esc(yt.channel || 'official channel')}. BRYME does not host the file.</p>`;
+    return `<section class="shell trailer-section" id="video" data-video-landing><div class="trailer-section-inner" data-trailer-box data-trailer-candidates="${esc(candidates)}" data-trailer-title="${esc(a.title)}"><div class="trailer-head"><span class="eyebrow">Video</span><span class="trailer-status t-ok">🟢 Official highlights</span></div><div class="trailer-frame" data-trailer-id="${yt.videoId}"><img loading="lazy" src="https://i.ytimg.com/vi/${yt.videoId}/hqdefault.jpg" alt="${esc(a.title)} video thumbnail"><button type="button" class="trailer-play">Play video</button></div><div class="trailer-controls" data-trailer-controls hidden><button type="button" class="cta" data-trailer-unmute>Unmute</button><a class="quiet-link" href="${esc(watch)}" target="_blank" rel="noopener">Watch on YouTube</a></div>${cap}<p class="trailer-fallback">If the embedded player is unavailable, <a href="${esc(watch)}" target="_blank" rel="noopener">watch on YouTube</a>.</p></div></section>`;
+  })() : '';
+  const nextSlugs = Array.isArray(a.nextOnBryme) ? a.nextOnBryme : [];
+  const nextItems = nextSlugs.map(s => (VERTICAL_ARTICLES[dir] || []).find(x => x.slug === s)).filter(Boolean);
+  const nextBlock = nextItems.length ? `<section class="tp-loved" id="next"><h2>Stay on BRYME</h2><p class="tp-loved-lead">The clip is over. These pages continue the same story — not a random dump.</p><div class="tp-loved-list">${nextItems.map(x => `<a class="tp-loved-card" href="${url(articlePathFor(dir, x))}"><span><b>${esc(x.title)}</b><em>${esc(x.category || verticalName)}</em><small>${esc((x.excerpt || '').slice(0, 140))}</small></span></a>`).join('')}</div></section>` : '';
   const body = `<main class="shell"><div class="crumb">${crumbs.slice(0, -1).map(c => `<a href="${url(c.path)}">${esc(c.name)}</a>`).join(' / ')} / ${esc(a.title)}</div>
   <section class="article-hero article-hero-photo" style="--hero-img:url('${heroImg}')"><div class="eyebrow">${esc(cat ? cat.name : verticalName)}</div><h1>${esc(a.title)}</h1>${a.excerpt ? `<p class="lead">${esc(a.excerpt)}</p>` : ''}<div class="article-meta">${a.author ? `<span>${authorLink(a.author)}</span>` : ''}${a.publishedAt ? `<span>${esc(a.publishedAt)}${updated}</span>` : ''}${a.readingTime ? `<span>${esc(a.readingTime)}</span>` : ''}</div>${send}</section>
-  <article class="prose article-body">${sections}</article>
+  ${videoBlock}
+  <article class="prose article-body">${sections}${nextBlock}</article>
   ${sourceBlock}${relatedBlock}</main>`;
 
-  write(dir + '/' + a.slug, layout({
-    title: a.seoTitle || a.title,
-    description: a.excerpt || `${a.title} — ${verticalName} on BRYME.`,
-    path: pagePath,
-    activeNav: dir,
-    ogType: 'article',
-    image: heroImg,
-    schema: [{
+  const schemaList = [{
       '@context': 'https://schema.org', '@type': 'Article',
       headline: a.title,
       description: a.excerpt || undefined,
@@ -4101,7 +4105,21 @@ function renderVerticalArticle(dir, verticalName, a) {
       mainEntityOfPage: absUrl(pagePath),
       articleSection: cat ? cat.name : verticalName,
       image: absUrl(heroImg)
-    }, breadcrumbs(crumbs)],
+    }, breadcrumbs(crumbs)];
+    if (yt) {
+      const vo = { '@context':'https://schema.org', '@type':'VideoObject', name: yt.name || a.title, description: yt.description || a.excerpt || a.title, thumbnailUrl: 'https://i.ytimg.com/vi/' + yt.videoId + '/hqdefault.jpg', embedUrl: 'https://www.youtube-nocookie.com/embed/' + yt.videoId };
+      if (yt.uploadDate) vo.uploadDate = yt.uploadDate;
+      if (yt.channel) vo.publisher = { '@type':'Organization', name: yt.channel };
+      schemaList.push(vo);
+    }
+  write(dir + '/' + a.slug, layout({
+    title: a.seoTitle || a.title,
+    description: a.excerpt || `${a.title} — ${verticalName} on BRYME.`,
+    path: pagePath,
+    activeNav: dir,
+    ogType: 'article',
+    image: heroImg,
+    schema: schemaList,
     body
   }));
 }

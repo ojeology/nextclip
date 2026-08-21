@@ -967,7 +967,7 @@
       ],
       "status": "published",
       "publishedAt": "2026-08-16",
-      "updatedAt": "2026-08-16",
+      "updatedAt": "2026-08-21",
       "readingTime": "5 min read",
       "metaDescription": "Arsenal beat Manchester City 3-0 in the 2026 FA Community Shield at the Principality Stadium. Calafiori, Havertz and Odegaard scored in Enzo Maresca's first competitive match in charge of City.",
       "content": [
@@ -1019,7 +1019,20 @@
         }
       ],
       "sourcesCheckedOn": "2026-08-16",
-      "newsworthy": true
+      "newsworthy": true,
+      "youtube": {
+        "videoId": "IsMhKcBLVDs",
+        "channel": "The Emirates FA Cup",
+        "uploadDate": "2026-08-17",
+        "name": "GLORY for Arsenal in Cardiff | Arsenal (3-0) Manchester City | FA Community Shield 2026",
+        "description": "Official FA Community Shield 2026 highlights from The Emirates FA Cup YouTube channel. Arsenal 3-0 Manchester City at the Principality Stadium.",
+        "caption": "Highlights from The Emirates FA Cup YouTube channel (@thefacup) — The FA’s competition account, not a fan reupload and not Premier League Productions. BRYME does not host the file."
+      },
+      "nextOnBryme": [
+        "arsenal-title-defence",
+        "manchester-city-without-guardiola",
+        "premier-league-matchweek-1-guide"
+      ]
     },
     {
       "slug": "english-champions-since-1888",

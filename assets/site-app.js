@@ -284,7 +284,7 @@ document.addEventListener('error', function (e) {
     var umBtn = box.querySelector('[data-trailer-unmute]');
     if (umBtn) umBtn.addEventListener('click', function () { play({ auto: true, mute: false }); });
     function shouldAutoplay() {
-      if (!document.querySelector('.tp-page')) return false;
+      if (!document.querySelector('.tp-page, [data-video-landing]')) return false;
       if (!current || current.type === 'fan-made') return false;
       try { if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return false; } catch (e) {}
       return true;
