@@ -20,13 +20,14 @@ emb = json.load(open(os.path.join(ROOT, 'scripts/embeds.json')))
 POSTERS = {}
 for slug, (title, td, rating, year, cert) in uniq.items():
     rec = by.get(slug) or {}
-    if rec.get('poster'):
+    # Priority: committed real poster > data poster (if not a yt thumb) > yt thumb fallback
+    local = next((e for e in ('.jpg', '.png', '.webp') if os.path.exists(os.path.join(ROOT, 'assets', 'posters', slug + e))), None)
+    if local:
+        POSTERS[slug] = f'/assets/posters/{slug}{local}'
+    elif rec.get('poster') and 'i.ytimg.com' not in rec['poster']:
         POSTERS[slug] = rec['poster']
     elif emb.get(slug):
         POSTERS[slug] = f'https://i.ytimg.com/vi/{emb[slug]}/hqdefault.jpg'
-    elif any(os.path.exists(os.path.join(ROOT, 'assets', 'posters', slug + e)) for e in ('.jpg', '.png', '.webp')):
-        ext = next((e for e in ('.jpg', '.png', '.webp') if os.path.exists(os.path.join(ROOT, 'assets', 'posters', slug + e))), '.jpg')
-        POSTERS[slug] = f'/assets/posters/{slug}{ext}'
     # else: leave out -> gradient monogram fallback
 
 json.dump(POSTERS, open(os.path.join(ROOT, 'data', 'posters.json'), 'w'), indent=1)

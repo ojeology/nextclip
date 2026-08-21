@@ -432,3 +432,29 @@ the site looking like the default template ("AI dump").
 - HOME: portal hero, 4 hub cards, 2 sliding match rails with FT scores.
 - MOVIE pages: hero bar + pills + poster images intact.
 - Tests: homepage 27/0, ranking 69/0, others at baseline.
+
+---
+
+# v16.2 · More real posters + deployment checks (2026-08-21)
+
+## Posters
+- Fixed posterize.py priority: committed real poster files (assets/posters/*) now beat
+  YouTube thumbnails and data posters. Added 16 more real posters via image search
+  (Lucky, Avatar: Fire and Ash, Zootopia 2, Toy Story 5, The Odyssey, Superman, Silo,
+  Reacher, House of the Dragon, Game of Thrones, Lanterns, Spider-Man: No Way Home,
+  Deadpool & Wolverine, Inside Out 2, Spirited Away, Ted Lasso).
+- **39 real poster files** now in use; all **167/167 titles** have poster images;
+  **235/235 entertainment cards** show images (0 placeholders).
+- Fixed a src-mangling bug in my poster sync (167 title pages re-verified), and rebuilt
+  the truncated movie/lucky-2026 page (now full page: h1, hero bar, pills, trailer).
+
+## Deployment checks — all intact
+- **robots.txt**: Allow / + both sitemaps ✓
+- **sitemap.xml**: rebuilt to **1,382 URLs** (was 987 after the v16 rebuild lost channels
+  and pages) — channels, all movie/series/anime/genre/year/topic pages restored, plus
+  **109 <lastmod> entries** restored (editorial-workflow tests require them) ✓
+- **manifest.webmanifest**: name/theme/bg/start/icons ✓
+- **index.html**: unique title, canonical, OG, JSON-LD, theme-color ✓
+- **Entertainment**: 10 hero slides with embeds, 235 cards all with images ✓
+- **Tests**: all at baseline (bryme 1, editorial 30 [improved from 32], frontend 4,
+  homepage 0, ranking 69, sports 5, titlepage 9, trailer 1 — no new failures) ✓
