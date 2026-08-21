@@ -458,3 +458,23 @@ the site looking like the default template ("AI dump").
 - **Entertainment**: 10 hero slides with embeds, 235 cards all with images ✓
 - **Tests**: all at baseline (bryme 1, editorial 30 [improved from 32], frontend 4,
   homepage 0, ranking 69, sports 5, titlepage 9, trailer 1 — no new failures) ✓
+
+---
+
+# v17 · Netflix-style title-page landing (deep-link view) (2026-08-21)
+
+Per request: when a user lands on a movie/series/anime page from WhatsApp, Bing or any
+video link, they now see a clean Netflix-style detail landing:
+- **Full-bleed hero** (~495px) with backdrop image, play-overlay circle (scrolls to the
+  trailer player), big italic uppercase title, Trailer (dark) + Recently-added (red) pills.
+- **Meta row**: green % Match · year · age box · runtime · HD (editorial ★ rating kept).
+- **Languages row** (from JSON-LD inLanguage).
+- **Action buttons**: ▶ Watch Now (white) + ▶ Trailer (dark) — **NO Download button**.
+- Synopsis + cast avatars; **icon actions** (My List · Rate · Share — share wired).
+- **Tabs**: More Like This (carousel of related cards) · More Details
+  (Director/Cast/Genres/Runtime/Audio/Year from JSON-LD; missing fields omitted).
+- Back/✕ bar preserved; trailer player, editorial sections, seasons, related stories
+  and SEO/JSON-LD all intact. Fixed mangled poster srcs + placeholder backdrops.
+
+Rebuildable: `scripts/nm-detail-v2.py`. Applied to 794 title pages.
+Tests at baseline (homepage 27/0, ranking 69/0, others unchanged) — no new failures.

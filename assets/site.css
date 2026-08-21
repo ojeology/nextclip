@@ -3075,3 +3075,186 @@ main.ent .rail-t10 .tile .tile-meta{padding-left:30px}
   .sec-previews .mp-rail .mp-card{flex:0 0 78vw}
 }
 
+
+/* ==========================================================================
+   BRYME v17 · Netflix-style title-page landing (deep-link / WhatsApp view)
+   Matches the supplied reference: full-bleed hero, play overlay, meta row,
+   languages, Play (no Download), synopsis + cast, icon actions, tabs.
+   ========================================================================== */
+
+/* ---------- Hero: full-bleed backdrop, no poster column ---------- */
+body.tp-page{background:#000}
+main.tp-page{max-width:none;padding:0}
+.tp-page .movie-hero{
+  display:block !important;
+  position:relative;
+  min-height:min(55vh,500px) !important;
+  height:min(55vh,500px) !important;
+  padding:0 !important;
+  max-width:none !important;
+  background:
+    linear-gradient(to bottom, rgba(0,0,0,.1) 0%, rgba(0,0,0,.45) 62%, #000 100%),
+    var(--movie-backdrop) center/cover no-repeat;
+  isolation:isolate;
+}
+.tp-page .movie-hero:before{display:none}
+.tp-page .movie-hero > .poster{display:none}
+.tp-page .movie-hero > div:not(.nm-hero-bar){
+  position:absolute;left:0;right:0;bottom:0;z-index:2;
+  padding:60px 20px 18px;
+  max-width:900px;margin:0 auto;
+}
+.tp-page .movie-hero .hero-kicker{
+  display:flex;gap:8px;align-items:center;flex-wrap:wrap;
+  margin-bottom:10px;
+}
+.tp-page .movie-hero h1{
+  font-size:clamp(34px,8vw,56px);
+  font-weight:900;letter-spacing:-1px;
+  text-transform:uppercase;font-style:italic;
+  text-shadow:0 2px 12px rgba(0,0,0,.6);
+  margin:6px 0 10px;
+}
+.tp-page .movie-hero .lead{max-width:620px;color:#d6d6d6;text-shadow:0 1px 8px rgba(0,0,0,.6)}
+
+/* Play overlay circle */
+.nm-play-overlay{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:4;
+  width:64px;height:64px;border-radius:50%;
+  background:rgba(0,0,0,.6);border:3px solid rgba(255,255,255,.9);
+  display:flex;align-items:center;justify-content:center;cursor:pointer;
+  transition:transform .2s,background .2s;
+}
+.nm-play-overlay:hover{transform:translate(-50%,-50%) scale(1.1);background:rgba(0,0,0,.8)}
+.nm-play-overlay svg{width:26px;height:26px;fill:#fff;margin-left:4px}
+
+/* ---------- Hero pills (Trailer / Recently added) ---------- */
+.tp-page .movie-hero .hero-actions{
+  display:flex;gap:10px;margin:14px 0 6px;flex-wrap:wrap;
+}
+.tp-page .movie-hero .hero-actions .cta,
+.tp-page .movie-hero .hero-actions .cta-ghost{
+  border-radius:4px;font-size:14px;font-weight:700;letter-spacing:.3px;
+  padding:9px 16px;min-height:0;margin:0;
+}
+.tp-page .nm-trailer{
+  background:rgba(0,0,0,.7);border:1px solid rgba(255,255,255,.25);
+  color:#fff;
+}
+.tp-page .nm-watch-now{background:#fff;color:#000}
+.tp-page .movie-hero .quiet-link{display:none}
+
+/* ---------- Main content column ---------- */
+.tp-page .nm-body-wrap{
+  max-width:800px;margin:0 auto;padding:0 16px 40px;
+}
+
+/* Brandline: BRYME · FILM */
+.nm-brandline{display:flex;align-items:baseline;gap:8px;margin-bottom:4px}
+.nm-brandline .nm-bn{color:#E50914;font-size:22px;font-weight:900;letter-spacing:2px}
+.nm-brandline .nm-bt{color:#a3a3a3;font-size:12px;font-weight:600;letter-spacing:3px;text-transform:uppercase}
+
+/* Meta row */
+.tp-page .movie-hero .badges{
+  display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:4px 0 6px;
+}
+.tp-page .movie-hero .badges .badge{
+  background:transparent;border:0;padding:0;color:#a3a3a3;font-size:13px;font-weight:500;border-radius:0;
+}
+.tp-page .movie-hero .badges .nm-match{color:#46d369;font-weight:700}
+.tp-page .movie-hero .badges .nm-hd,
+.tp-page .movie-hero .badges .badge[title="Age rating"]{
+  border:1px solid #737373;color:#a3a3a3;padding:1px 6px;font-size:11px;border-radius:3px;font-weight:600;
+}
+.tp-page .movie-hero .badges .badge[title*="BRYME editorial score"]{
+  color:#F5C518;font-size:12px;font-weight:700;
+}
+
+/* ---------- Languages ---------- */
+.nm-detail-extra .nm-extra-head{display:none}
+.nm-detail-extra{max-width:800px;margin:0 auto;padding:4px 16px 0}
+.nm-detail-extra .nm-lang-tabs{display:flex;gap:14px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none}
+.nm-detail-extra .nm-lang-tabs::-webkit-scrollbar{display:none}
+.nm-detail-extra .nm-lang{
+  color:#737373;font-size:14px;white-space:nowrap;padding:0 0 4px;
+  border-bottom:2px solid transparent;border-radius:0;
+}
+.nm-detail-extra .nm-lang.is-on{color:#fff;border-bottom-color:#fff;font-weight:600}
+.nm-detail-extra .nm-cast-row{grid-auto-columns:88px}
+.nm-detail-extra .nm-avatar{width:64px;height:64px;font-size:18px}
+
+/* ---------- Synopsis + cast ---------- */
+.tp-page .movie-hero .lead{font-size:15px;line-height:1.5}
+.nm-cast-line{font-size:14px;color:#a3a3a3;margin:0 0 18px;max-width:800px;padding:0 16px}
+.nm-cast-line strong{color:#737373;font-weight:600}
+
+/* ---------- Icon actions ---------- */
+.nm-icon-actions{
+  display:flex;justify-content:space-around;max-width:800px;margin:0 auto 22px;
+  padding:0 16px;
+}
+.nm-icon-action{
+  display:flex;flex-direction:column;align-items:center;gap:6px;cursor:pointer;
+  background:none;border:0;color:#a3a3a3;font:inherit;padding:6px;
+}
+.nm-icon-action:hover{color:#fff}
+.nm-icon-action svg{width:26px;height:26px;stroke:currentColor;fill:none;stroke-width:1.8}
+.nm-icon-action span{font-size:11px;color:#737373}
+
+/* ---------- Tabs ---------- */
+.nm-tabs{max-width:800px;margin:0 auto}
+.nm-tabbar{display:flex;border-bottom:1px solid #333}
+.nm-tab{
+  flex:1;text-align:center;padding:14px 0;font-size:15px;font-weight:600;
+  color:#a3a3a3;cursor:pointer;position:relative;background:none;border:0;font:inherit;
+}
+.nm-tab.is-on{color:#fff}
+.nm-tab.is-on::after{
+  content:'';position:absolute;bottom:-1px;left:10%;right:10%;height:3px;
+  background:#E50914;border-radius:2px 2px 0 0;
+}
+.nm-panel{display:none;padding-top:16px}
+.nm-panel.is-on{display:block}
+
+/* More Like This carousel */
+.nm-panel .tp-loved{margin:0;padding:0}
+.nm-panel .tp-loved h2{display:none}
+.nm-panel .tp-loved-lead{display:none}
+.nm-panel .tp-loved-list{
+  display:flex;gap:10px;overflow-x:auto;padding-bottom:10px;scrollbar-width:none;
+}
+.nm-panel .tp-loved-list::-webkit-scrollbar{display:none}
+.nm-panel .tp-loved-card{
+  flex:0 0 132px;display:block;text-decoration:none;
+}
+.nm-panel .tp-loved-card img{
+  width:132px;height:190px;object-fit:cover;border-radius:4px;display:block;
+  transition:transform .3s;
+}
+.nm-panel .tp-loved-card:hover img{transform:scale(1.05)}
+.nm-panel .tp-loved-card span{display:block;margin-top:6px}
+.nm-panel .tp-loved-card b{font-size:12px;color:#fff;font-weight:600;display:block}
+.nm-panel .tp-loved-card em{font-size:11px;color:#a3a3a3;font-style:normal}
+.nm-panel .tp-loved-card small{display:none}
+
+/* More Details */
+.nm-details-list{display:flex;flex-direction:column}
+.nm-detail-row{display:flex;padding:12px 0;border-bottom:1px solid #222}
+.nm-detail-label{width:110px;flex-shrink:0;color:#737373;font-size:14px;font-weight:500;padding-right:10px}
+.nm-detail-value{flex:1;color:#a3a3a3;font-size:14px;line-height:1.5}
+.nm-detail-empty{color:#737373;font-size:14px}
+
+/* Trailer section styling stays clean */
+.tp-page .trailer-section{max-width:860px;margin:0 auto;padding:24px 16px}
+.tp-page .trailer-frame{border-radius:6px;border:0}
+
+/* Keep editorial/related sections below tabs tidy */
+.tp-page .tp-verdict,.tp-page .tp-why,.tp-page .tp-watch,.tp-page .tp-next{
+  max-width:800px;margin:0 auto;padding:8px 16px;
+}
+
+/* Responsive */
+@media(min-width:600px){
+  .tp-page .movie-hero > div:not(.nm-hero-bar){padding:70px 24px 20px}
+  .tp-page .nm-body-wrap{padding:0 24px 40px}
+}
