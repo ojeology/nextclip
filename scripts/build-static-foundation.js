@@ -1925,7 +1925,7 @@ function heroSlideMarkup(m, idx){
      top-level heading instead of one per slide. */
   const titleTag = idx === 0 ? 'h1' : 'h2';
   const posterSrc = m.poster || '';
-  const bg = idx === 0 && posterSrc ? ` style="background-image:url('${esc(posterSrc)}')"` : '';
+  const bg = posterSrc ? ` style="background-image:url('${esc(posterSrc)}')"` : '';
   return `<div class="hero-slide${idx === 0 ? ' is-active' : ''}" data-slide data-video="${m.youtubeId}" data-title="${esc(m.title)}" data-url="${m.url}" data-poster="${esc(posterSrc)}"${bg}><div class="hero-slide-shade"></div><div class="shell hero-slide-inner"><div class="hero-slide-kicker">${kicker}</div><${titleTag}>${esc(m.title)}</${titleTag}>${rating}<p>${desc}</p><div class="hero-actions"><button type="button" class="cta hero-watch" data-hero-watch>▶ Watch Trailer</button><a class="cta cta-ghost" href="${m.url}">View Details</a></div></div></div>`;
 }
 const heroEmbed = JSON.stringify(heroSlides.map(m => ({ t: m.title, ty: m.typeLabel, td: m.typeDir, y: m.year, g: m.genreLabel, r: m.rating, v: m.youtubeId, p: m.poster, d: (m.tagline || m.description || '').slice(0, 200), u: m.url }))).replace(/</g, '\u003c');
@@ -1935,22 +1935,16 @@ write('', layout({
   path: '/', image: poster(heroSlide), lcpImage: poster(heroSlide), activeNav: 'home',
   schema: [{ '@context':'https://schema.org', '@type':'WebSite', name:site.name, url:absUrl('/'), description:site.description, publisher:{ '@type':'Organization', name:site.name, url:absUrl('/'), logo:absUrl('/assets/icons/icon-512.png') } }, { '@context':'https://schema.org', '@type':'CollectionPage', name:'Movies, TV Series & Anime', description:'Discover what to watch on BRYME: 630+ movies, TV series and anime with verified trailers, editorial guides, plus sports, money and tech & AI coverage.', url:absUrl('/') }],
   body: `<main>
-  <section class="home-hero-static" data-hero data-hero-static role="region" aria-label="Featured titles">
-    ${(() => {
-      const m = heroSlides[0];
-      if (!m) return '';
-      const posterSrc = m.poster || '';
-      const kicker = `<span class="type-badge tb-${m.typeDir}">${m.typeLabel.toUpperCase()}</span>${m.year ? `<span>${m.year}</span>` : ''}${m.genreLabel ? `<span class="dot">·</span><span>${esc(m.genreLabel)}</span>` : ''}`;
-      const rating = m.rating != null ? `<p class="hero-slide-rating">★ ${m.rating}/10 · BRYME Editorial</p>` : '';
-      const desc = esc((m.tagline || m.description || '').slice(0, 200));
-      const picks = heroSlides.map((s, i) => {
-        const src = s.poster || url(cardImage(s));
-        return `<a class="home-hero-pick${i === 0 ? ' is-current' : ''}" href="${s.url}"><img ${i === 0 ? 'fetchpriority="high" ' : ''}loading="${i === 0 ? 'eager' : 'lazy'}" decoding="async" width="480" height="270" src="${esc(src)}" alt="${esc(s.title)} poster"><b>${esc(s.title)}</b></a>`;
-      }).join('');
-      return `<div class="home-hero-feature" data-slide data-video="${m.youtubeId || ''}" data-title="${esc(m.title)}" data-url="${m.url}" data-poster="${esc(posterSrc)}"${posterSrc ? ` style="background-image:url('${esc(posterSrc)}')"` : ''}><div class="hero-slide-shade"></div><div class="shell hero-slide-inner"><div class="hero-slide-kicker">${kicker}</div><h1>${esc(m.title)}</h1>${rating}<p>${desc}</p><div class="hero-actions"><button type="button" class="cta hero-watch" data-hero-watch>▶ Watch Trailer</button><a class="cta cta-ghost" href="${m.url}">View Details</a></div></div><div class="hero-video" data-hero-video hidden></div></div><div class="shell"><div class="home-hero-picks">${picks}</div></div>`;
-    })()}
+  <section class="hero-carousel" data-hero role="region" aria-roledescription="carousel" aria-label="Featured titles" data-interval="8000">
+    <div class="hero-slides">${heroSlides.map(heroSlideMarkup).join('')}</div>
+    <button type="button" class="hero-ctrl hero-prev" data-hero-prev aria-label="Previous featured title">&#8249;</button>
+    <button type="button" class="hero-ctrl hero-next" data-hero-next aria-label="Next featured title">&#8250;</button>
+    <div class="hero-dots" data-hero-dots role="tablist" aria-label="Featured title slides">${heroSlides.map((m, i) => `<button type="button" class="hero-dot${i === 0 ? ' is-active' : ''}" data-hero-dot="${i}" role="tab" aria-label="${esc(m.title)}" aria-selected="${i === 0}"></button>`).join('')}</div>
+    <button type="button" class="hero-vctrl hero-mute" data-hero-mute aria-label="Unmute trailer" hidden>&#128263;</button>
+    <button type="button" class="hero-vctrl hero-pause" data-hero-pause aria-label="Pause rotation" hidden>&#9208;</button>
+    <div class="hero-video" data-hero-video hidden></div>
   </section>
-  <div class="home-main">
+    <div class="home-main">
   <section class="home-section brand-strip"><div class="shell"><p class="brand-slogan">Discover what you love. Learn what you need. Find what's next.</p>${coreHubStrip('home', { title: 'Explore BRYME', lead: 'Start with a section, then follow the titles and guides inside it.', photos: ['entertainment','sports','make-money','tech'] }).replace('<section class="section core-hubs" data-core-hubs>', '<section class="core-hubs" data-core-hubs>')}</div></section>
   <section class="home-section rec-section" id="recommend">
     <div class="shell rec-inner">
