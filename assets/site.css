@@ -3292,6 +3292,9 @@ main.tp-page .nm-crumb a:hover{color:#fff}
   width:100%;max-width:none;height:100%;
 }
 .nm-trailer-embed .trailer-head{display:none}
+/* legacy editorial note + fallback line must not overlay the video */
+.nm-trailer-embed .video-context{display:none}
+.nm-trailer-embed .trailer-fallback{display:none}
 /* some pages wrap the frame in <figure class="video-figure"> — fill the hero too */
 .nm-trailer-embed .video-figure{
   width:100%;max-width:none;height:100%;margin:0;
