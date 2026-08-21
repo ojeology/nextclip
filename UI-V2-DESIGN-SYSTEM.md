@@ -408,3 +408,97 @@ on images. Old hash routing lives only in legacy/.
 ## Tests
 - ranking 69/0, homepage 27/0, sports at baseline (5 pre-existing), editorial improved
   32→30 (results render). No new failures.
+
+---
+
+# v16.1 · CRITICAL FIX — restore the design system (2026-08-21)
+
+The v16 rebuild ran `build-static-foundation.js`, which REGENERATES `assets/site.css`
+from the builder's base CSS — it wiped all 1,389 lines of the v2–v15 design layers
+(portal hero, portrait cards, channel pills, hero styling, match rails, etc.), leaving
+the site looking like the default template ("AI dump").
+
+## Fix
+1. Restored `assets/site.css` (3076 lines, full design system) from v15.
+2. Patched `scripts/build-static-foundation.js` to PRESERVE the design layer:
+   it now captures everything from the `BRYME v2` marker in the existing site.css
+   before overwriting, and re-appends it at the end of the build — so future rebuilds
+   (e.g. when adding match results) will no longer destroy the design.
+3. Re-ran the build to prove the guard works (3077 lines, all markers intact),
+   restored the custom `index.html` + `entertainment/index.html`, re-applied transforms.
+
+## Verified (headless browser)
+- ENT: 235/235 cards with images, portrait 3:5 posters, 10 hero slides, 9 channel pills.
+- HOME: portal hero, 4 hub cards, 2 sliding match rails with FT scores.
+- MOVIE pages: hero bar + pills + poster images intact.
+- Tests: homepage 27/0, ranking 69/0, others at baseline.
+
+---
+
+# v16.2 · More real posters + deployment checks (2026-08-21)
+
+## Posters
+- Fixed posterize.py priority: committed real poster files (assets/posters/*) now beat
+  YouTube thumbnails and data posters. Added 16 more real posters via image search
+  (Lucky, Avatar: Fire and Ash, Zootopia 2, Toy Story 5, The Odyssey, Superman, Silo,
+  Reacher, House of the Dragon, Game of Thrones, Lanterns, Spider-Man: No Way Home,
+  Deadpool & Wolverine, Inside Out 2, Spirited Away, Ted Lasso).
+- **39 real poster files** now in use; all **167/167 titles** have poster images;
+  **235/235 entertainment cards** show images (0 placeholders).
+- Fixed a src-mangling bug in my poster sync (167 title pages re-verified), and rebuilt
+  the truncated movie/lucky-2026 page (now full page: h1, hero bar, pills, trailer).
+
+## Deployment checks — all intact
+- **robots.txt**: Allow / + both sitemaps ✓
+- **sitemap.xml**: rebuilt to **1,382 URLs** (was 987 after the v16 rebuild lost channels
+  and pages) — channels, all movie/series/anime/genre/year/topic pages restored, plus
+  **109 <lastmod> entries** restored (editorial-workflow tests require them) ✓
+- **manifest.webmanifest**: name/theme/bg/start/icons ✓
+- **index.html**: unique title, canonical, OG, JSON-LD, theme-color ✓
+- **Entertainment**: 10 hero slides with embeds, 235 cards all with images ✓
+- **Tests**: all at baseline (bryme 1, editorial 30 [improved from 32], frontend 4,
+  homepage 0, ranking 69, sports 5, titlepage 9, trailer 1 — no new failures) ✓
+
+---
+
+# v17 · Netflix-style title-page landing (deep-link view) (2026-08-21)
+
+Per request: when a user lands on a movie/series/anime page from WhatsApp, Bing or any
+video link, they now see a clean Netflix-style detail landing:
+- **Full-bleed hero** (~495px) with backdrop image, play-overlay circle (scrolls to the
+  trailer player), big italic uppercase title, Trailer (dark) + Recently-added (red) pills.
+- **Meta row**: green % Match · year · age box · runtime · HD (editorial ★ rating kept).
+- **Languages row** (from JSON-LD inLanguage).
+- **Action buttons**: ▶ Watch Now (white) + ▶ Trailer (dark) — **NO Download button**.
+- Synopsis + cast avatars; **icon actions** (My List · Rate · Share — share wired).
+- **Tabs**: More Like This (carousel of related cards) · More Details
+  (Director/Cast/Genres/Runtime/Audio/Year from JSON-LD; missing fields omitted).
+- Back/✕ bar preserved; trailer player, editorial sections, seasons, related stories
+  and SEO/JSON-LD all intact. Fixed mangled poster srcs + placeholder backdrops.
+
+Rebuildable: `scripts/nm-detail-v2.py`. Applied to 794 title pages.
+Tests at baseline (homepage 27/0, ranking 69/0, others unchanged) — no new failures.
+
+---
+
+# v18 · Clean deep-link landing: full-screen trailer on top (2026-08-21)
+
+Per request — when a user lands via a video link (WhatsApp/Bing/etc.):
+1. **The trailer is full-screen at the very top** — nothing above it (site header
+   + pills are hidden on these pages; the Back/✕ bar overlays the video).
+2. The trailer **autoplays muted** on arrival (built-in .tp-page autoplay) and fills
+   ~55–60vh full-bleed; clicking Play loads the YouTube player.
+3. **Below: only relevant information** — BRYME·FILM brandline, title, meta row
+   (% Match · year · age · HD · ★), languages, synopsis, cast, Play/Trailer buttons,
+   My List/Rate/Share icons, More-Like-This / More-Details tabs, and editorial
+   content (rich pages). **No duplicate poster** — the movie's poster never
+   reappears below the trailer (only related-titles thumbnails in editorial).
+
+Rebuilt all 1,037 title pages cleanly from the v16 base (scripts/nm-detail-v3.py):
+- Extracts hero bar, full trailer box (keeps data-trailer-box wiring), title/meta/
+  synopsis/buttons, languages + cast, icon actions, More-Like-This list, JSON-LD
+  More-Details rows, and editorial content; rebuilds a balanced <main>.
+- 276 "has moved" redirect stubs are untouched (no title content to show).
+- Verified headless: heroTop 0, header hidden, h1 present, no own-poster below,
+  2 tabs, no download, trailer box wired, on movie/series/anime pages.
+- Tests: all suites at baseline (homepage 27/0, ranking 69/0, others unchanged).

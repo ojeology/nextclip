@@ -1105,3 +1105,38 @@ document.addEventListener('error', function (e) {
     kick();
   }
 })();
+
+/* NetMirror deep-link tabs: More Like This / More Details */
+(function () {
+  'use strict';
+  document.addEventListener('click', function (e) {
+    var t = e.target.closest ? e.target.closest('.nm-tab') : null;
+    if (!t) return;
+    var tabs = Array.prototype.slice.call(document.querySelectorAll('.nm-tab'));
+    tabs.forEach(function (x) { x.classList.remove('is-on'); });
+    t.classList.add('is-on');
+    var panels = Array.prototype.slice.call(document.querySelectorAll('.nm-panel'));
+    panels.forEach(function (p) { p.classList.remove('is-on'); });
+    var target = t.getAttribute('data-nm-tab');
+    var el = document.getElementById('nm-' + target);
+    if (el) el.classList.add('is-on');
+  });
+})();
+
+/* Deep-link trailer autoplay: if the URL carries ?play=1 or #play, click the
+   trailer play button once the frame is visible. */
+(function () {
+  'use strict';
+  if (!/play=1|#play/.test(window.location.href)) return;
+  var done = false;
+  function tryPlay() {
+    if (done) return;
+    var f = document.querySelector('.nm-video-hero .trailer-frame');
+    if (!f) return;
+    var btn = f.querySelector('.trailer-play');
+    if (btn) { btn.click(); done = true; }
+  }
+  document.addEventListener('DOMContentLoaded', function () { setTimeout(tryPlay, 800); });
+  window.addEventListener('load', function () { setTimeout(tryPlay, 600); });
+})();
+
