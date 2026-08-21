@@ -60,12 +60,16 @@ const tail = tmpl.slice(tmpl.indexOf('<nav class="mobile-nav">')); // mobile-nav
 
 function deskBar(activeSlug) {
   const pills = [
-    ['/trending/', 'tr', '🔥', 'Trending'],
-    ['/channels/netflix/', 'n', 'N', 'Netflix'],
-    ['/channels/prime-video/', 'pv', 'pv', 'Prime Video'],
-    ['/channels/crunchyroll/', 'cr', 'CR', 'Crunchyroll'],
-    ['/channels/kids/', 'k', 'K', 'Kids'],
-  ];
+  ['/trending/', 'tr', '🔥', 'Trending'],
+  ['/year/2026/', 'lr', '✨', 'Latest Release'],
+  ['/channels/netflix/', 'n', 'N', 'Netflix'],
+  ['/channels/prime-video/', 'pv', 'P', 'Prime Video'],
+  ['/genre/indian/', 'j', 'J', 'JioHotstar'],
+  ['/genre/indian/', 's', 'S', 'SonyLIV'],
+  ['/channels/crunchyroll/', 'cr', 'C', 'Crunchyroll'],
+  ['/channels/kids/', 'k', 'K', 'Kids'],
+  ['/genre/indian/', 'm', 'M', 'MX Player'],
+];
   const links = pills.map(([href, key, glyph, label]) =>
     `<a class="dpill${href === '/channels/' + activeSlug + '/' ? ' is-on' : ''}" href="${href}"><span class="plogo pl-${key}">${glyph}</span>${label}</a>`).join('');
   return `<nav class="desk-bar" aria-label="Browse channels"><div class="shell desk-bar-inner">${links}</div></nav>`;

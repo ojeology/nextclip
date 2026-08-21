@@ -31,12 +31,16 @@ function routeOf(file) {
 
 function deskBar(route) {
   const pills = [
-    ['/trending/', 'tr', '🔥', 'Trending'],
-    ['/channels/netflix/', 'n', 'N', 'Netflix'],
-    ['/channels/prime-video/', 'pv', 'pv', 'Prime Video'],
-    ['/channels/crunchyroll/', 'cr', 'CR', 'Crunchyroll'],
-    ['/channels/kids/', 'k', 'K', 'Kids'],
-  ];
+  ['/trending/', 'tr', '🔥', 'Trending'],
+  ['/year/2026/', 'lr', '✨', 'Latest Release'],
+  ['/channels/netflix/', 'n', 'N', 'Netflix'],
+  ['/channels/prime-video/', 'pv', 'P', 'Prime Video'],
+  ['/genre/indian/', 'j', 'J', 'JioHotstar'],
+  ['/genre/indian/', 's', 'S', 'SonyLIV'],
+  ['/channels/crunchyroll/', 'cr', 'C', 'Crunchyroll'],
+  ['/channels/kids/', 'k', 'K', 'Kids'],
+  ['/genre/indian/', 'm', 'M', 'MX Player'],
+];
   let active = null;
   if (route === '/' || route === '/trending/' || route === '/trending') active = '/trending/';
   else if (route.startsWith('/channels/netflix')) active = '/channels/netflix/';

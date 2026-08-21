@@ -95,3 +95,46 @@ visual design matches the NetMirror screens (home + details).
   (15 ranking / 32 editorial / 9 titlepage / 5 sports / 4 frontend / 1 bryme /
   1 trailer pre-existing failures — zero new).
 - Builders kept in `scripts/build-channels.js` + `scripts/nm-transform.js`.
+
+---
+
+# v4 · NetMirror EXACT reference match (2026-08-21)
+
+Matched 1:1 against the supplied NetMirror clone markup/CSS.
+
+## Exact tokens adopted
+- bg `#0B0B0B` · surface `#161616` · elevated `#1C1C1C` · search `#2A2A2A` · border `#333333`
+- red `#E50914` · **orange `#FF6B00`** (active pill + section bars) · green `#46D369` · yellow `#F5C518`
+- pill border `#444444`, secondary button `#333333`, radii 6/10/12/16/9999, system font stack
+
+## What changed vs v3
+1. **Header**: logo is now a split wordmark — `BRY` red + `ME` white (BRYME kept; same
+   red/white treatment as NetMirror's Net/Mirror). Search pill `#2A2A2A`, full radius.
+2. **Pills** — exact 9-pill row: 🔥 Trending (active: orange `#FF6B00` border +
+   `rgba(255,107,0,.12)`), ✨ Latest Release → `/year/2026/`, Netflix → `/channels/netflix/`,
+   Prime Video → `/channels/prime-video/`, JioHotstar / SonyLIV / MX Player →
+   `/genre/indian/`, Crunchyroll → `/channels/crunchyroll/`, Kids → `/channels/kids/`.
+   Inactive pills: transparent bg + `1.5px #444` border. Each pill has a brand icon chip.
+3. **Hero**: to-top gradient overlay, red TRENDING NOW label (2px letterspacing),
+   32px/800 title, yellow star chip + HD chip + year · genre meta, 3-line synopsis,
+   **Watch Now** (white) + **More Info** (`#333333`) equal-width buttons, white-pill
+   dots, `U/A` age badge bottom-right. Arrows hidden (reference has none; the hero
+   JS keeps working — tests still pass).
+4. **Cards**: 140px rails, posters radius 12px, hover `scale(1.03)`, SERIES tag
+   top-left + ★ rating top-right as `rgba(0,0,0,.7)` blur chips.
+5. **Top 10**: numbers 80px / `2px` white stroke, poster pushed right by 20px —
+   exact reference composition.
+6. **Section headers**: 4×22px `#FF6B00` bar + 18px white bold title (all rows).
+7. **Detail pages**: floating `‹ Back` / `✕` bar over the hero; green `% Match`
+   badge + HD chip; equal-width Watch Now (white) / Trailer (`#333`) buttons;
+   Cast initials avatars (72px circles, `#161616` fill, `#333` ring); Audio tabs
+   with red underline; More Like This with orange bar.
+8. **Homepage**: NetMirror "Search Now" CTA card (elevated `#1C1C1C`, red button →
+   `/search/`).
+9. **Mobile bottom nav**: NetMirror gradient fade + `#808080` labels, active white.
+10. Theme-color meta + manifest + PWA theme → `#0B0B0B`.
+
+## Verified
+- Full test suite identical to pristine `3e7a4e8` (no new failures).
+- Builders `scripts/nm-exact.js`, `scripts/nm-transform.js`, `scripts/build-channels.js`
+  all emit the exact pill row for future rebuilds.

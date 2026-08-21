@@ -51,7 +51,7 @@ document.addEventListener('error', function (e) {
     } else {
       document.documentElement.removeAttribute('data-theme');
       document.documentElement.style.colorScheme = '';
-      if (m) m.setAttribute('content', '#0D0E12');
+      if (m) m.setAttribute('content', '#0B0B0B');
     }
   }
   function themeBtnIcon(t) { return t === 'light' ? MOON_SVG : SUN_SVG; }
