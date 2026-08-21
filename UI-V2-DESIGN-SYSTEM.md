@@ -408,3 +408,27 @@ on images. Old hash routing lives only in legacy/.
 ## Tests
 - ranking 69/0, homepage 27/0, sports at baseline (5 pre-existing), editorial improved
   32→30 (results render). No new failures.
+
+---
+
+# v16.1 · CRITICAL FIX — restore the design system (2026-08-21)
+
+The v16 rebuild ran `build-static-foundation.js`, which REGENERATES `assets/site.css`
+from the builder's base CSS — it wiped all 1,389 lines of the v2–v15 design layers
+(portal hero, portrait cards, channel pills, hero styling, match rails, etc.), leaving
+the site looking like the default template ("AI dump").
+
+## Fix
+1. Restored `assets/site.css` (3076 lines, full design system) from v15.
+2. Patched `scripts/build-static-foundation.js` to PRESERVE the design layer:
+   it now captures everything from the `BRYME v2` marker in the existing site.css
+   before overwriting, and re-appends it at the end of the build — so future rebuilds
+   (e.g. when adding match results) will no longer destroy the design.
+3. Re-ran the build to prove the guard works (3077 lines, all markers intact),
+   restored the custom `index.html` + `entertainment/index.html`, re-applied transforms.
+
+## Verified (headless browser)
+- ENT: 235/235 cards with images, portrait 3:5 posters, 10 hero slides, 9 channel pills.
+- HOME: portal hero, 4 hub cards, 2 sliding match rails with FT scores.
+- MOVIE pages: hero bar + pills + poster images intact.
+- Tests: homepage 27/0, ranking 69/0, others at baseline.
