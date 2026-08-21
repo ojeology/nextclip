@@ -282,3 +282,28 @@ Lioness, Shameless + 27 more from data/trailers.json.
 Remaining ~82 (mostly Indian Originals + niche titles): leave a placeholder; the
 user is gathering those embeds separately — drop IDs into scripts/embeds.json and
 re-run scripts/wire-embeds.py to finish.
+
+---
+
+# v12 · Entertainment card fixes + more embeds (2026-08-21)
+
+## Card layout fixed (was overlapping / tiny on mobile)
+Root cause: legacy `!important` rules (`.rail{grid-auto-flow:column!important; grid-auto-columns:196px!important}`)
+forced horizontal-scroll columns and beat the entertainment overrides. Fixed by overriding with
+`!important` on `main.ent .rail` (grid-auto-flow:row, grid-template-columns, grid-auto-columns).
+- Mobile: cards are now ONE full-width rectangular 16:9 banner per row (8px gap).
+- Desktop: responsive grid of large 16:9 cards (3 per row), tight 10px gap.
+- Top-10 numbers moved INSIDE the poster bottom-left (overflow hidden) — zero bleed/overlap.
+- Verified headless: 235 cards, 0 overlaps, 0 horizontal overflow at 420px and 1280px.
+
+## Performance
+- `content-visibility:auto` on entertainment rows (skips layout/paint offscreen) —
+  big first-paint win on the 235-card page.
+- Poster images already lazy + async; hero uses gradients (no heavy images).
+
+## More embeds (109/167 catalog titles now play official trailers)
+Added 24 more verified official trailers: Devara, Bhool Bhulaiyaa 3, Article 370, Yodha,
+Munjya, Vikram, Pushpa: The Rise, Masters of the Universe, Colony, GOAT, Mutiny, Camp Rock 3,
+Welcome to the Jungle, Enola Holmes 3, Star Wars: Mandalorian & Grogu, The Sheep Detectives,
+War of the Worlds (2025), The Debt Collector, Greenland 2: Migration, Citizen Vigilante,
+The Devil's Mouth, Kraken, The Shadow's Edge, Shelter.

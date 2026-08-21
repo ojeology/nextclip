@@ -2868,3 +2868,75 @@ main.ent .rail-t10 .tile h3,main.ent .rail-t10 .tile .tile-meta{padding-left:44p
   main.ent .rail-t10{gap:26px 0}
   main.ent .tile .poster{aspect-ratio:16/9}
 }
+
+/* ==========================================================================
+   BRYME v12 · Entertainment card fixes
+   - full-width rectangular 16:9 cards, tight gaps (no overlap)
+   - Top-10 numbers tucked INSIDE the poster (never bleed into neighbors)
+   - render performance: content-visibility on rows, lazy images honored
+   ========================================================================== */
+
+main.ent .rail{
+  display:grid !important;
+  grid-auto-flow:row !important;
+  grid-template-columns:repeat(auto-fill,minmax(320px,1fr)) !important;
+  grid-auto-columns:auto !important;
+  gap:10px !important;
+  overflow:visible !important;
+  padding:0 0 12px !important;
+  scroll-snap-type:none !important;
+}
+main.ent .rail .tile{min-width:0;width:auto;scroll-snap-align:none}
+main.ent .tile .poster{aspect-ratio:16/9 !important}
+
+/* Top 10 — number sits inside the poster bottom-left; zero bleed */
+main.ent .rail-t10 .tile .poster{
+  margin-left:0;
+  overflow:hidden;
+  border-radius:12px;
+}
+main.ent .rail-t10 .tile .rank{
+  position:absolute;
+  left:6px;bottom:4px;top:auto;right:auto;
+  display:block;
+  width:auto;height:auto;min-width:0;padding:0;margin:0;
+  background:none;border:0;border-radius:0;
+  font-size:clamp(48px,9vw,96px);
+  font-weight:900;line-height:.72;
+  font-variant-numeric:tabular-nums;
+  color:transparent;
+  -webkit-text-stroke:3px rgba(255,255,255,.65);
+  text-shadow:0 4px 16px rgba(0,0,0,.5);
+  pointer-events:none;
+  z-index:3;
+}
+main.ent .rail-t10 .tile h3,
+main.ent .rail-t10 .tile .tile-meta{padding-left:0}
+
+
+/* mobile: full-width cards, tight 8px gap */
+@media(max-width:760px){
+  main.ent .rail{
+    grid-template-columns:1fr !important;
+    grid-auto-flow:row !important;
+    grid-auto-columns:auto !important;
+    gap:8px !important;
+    padding:0 0 8px !important;
+    overflow:visible !important;
+  }
+  main.ent .rail-t10 .tile .rank{
+    left:6px !important;bottom:4px !important;
+    font-size:clamp(44px,15vw,84px) !important;
+    -webkit-text-stroke:2.5px rgba(255,255,255,.65);
+  }
+  main.ent .tile h3{font-size:14px}
+}
+
+/* ===== v12b · performance: skip layout/paint of offscreen entertainment rows ===== */
+main.ent .home-section{
+  content-visibility:auto;
+  contain-intrinsic-size:auto 300px;
+}
+@media(max-width:760px){
+  main.ent .home-section{contain-intrinsic-size:auto 240px}
+}
