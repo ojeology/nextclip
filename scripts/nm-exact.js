@@ -10,15 +10,15 @@ const path = require('path');
 const ROOT = path.resolve(__dirname, '..');
 
 const PILLS = [
-  ['/trending/', 'tr', '🔥', 'Trending'],
-  ['/year/2026/', 'lr', '✨', 'Latest Release'],
+  ['/channels/trending/', 'tr', '🔥', 'Trending'],
+  ['/channels/latest/', 'lr', '✨', 'Latest Release'],
   ['/channels/netflix/', 'n', 'N', 'Netflix'],
-  ['/channels/prime-video/', 'pv', 'P', 'Prime Video'],
-  ['/genre/indian/', 'j', 'J', 'JioHotstar'],
-  ['/genre/indian/', 's', 'S', 'SonyLIV'],
+  ['/channels/prime/', 'pv', 'P', 'Prime Video'],
+  ['/channels/sony/', 's', 'S', 'SonyLIV'],
+  ['/channels/jio/', 'j', 'J', 'JioHotstar'],
   ['/channels/crunchyroll/', 'cr', 'C', 'Crunchyroll'],
   ['/channels/kids/', 'k', 'K', 'Kids'],
-  ['/genre/indian/', 'm', 'M', 'MX Player'],
+  ['/channels/mx/', 'm', 'M', 'MX Player'],
 ];
 
 function routeOf(file) {
@@ -28,11 +28,14 @@ function routeOf(file) {
   return '/' + rel;
 }
 function activeHref(route) {
-  if (route === '/' || route === '/trending' || route.startsWith('/trending/')) return '/trending/';
-  if (route.startsWith('/year/2026')) return '/year/2026/';
+  if (route === '/' || route === '/trending' || route.startsWith('/trending/')) return '/channels/trending/';
+  if (route.startsWith('/channels/trending')) return '/channels/trending/';
+  if (route.startsWith('/channels/latest')) return '/channels/latest/';
   if (route.startsWith('/channels/netflix')) return '/channels/netflix/';
-  if (route.startsWith('/channels/prime-video')) return '/channels/prime-video/';
-  if (route.startsWith('/genre/indian')) return '/genre/indian/';
+  if (route.startsWith('/channels/prime')) return '/channels/prime/';
+  if (route.startsWith('/channels/sony')) return '/channels/sony/';
+  if (route.startsWith('/channels/jio')) return '/channels/jio/';
+  if (route.startsWith('/channels/mx')) return '/channels/mx/';
   if (route.startsWith('/channels/crunchyroll')) return '/channels/crunchyroll/';
   if (route.startsWith('/channels/kids')) return '/channels/kids/';
   return null;

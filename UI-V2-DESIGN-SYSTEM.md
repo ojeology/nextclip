@@ -138,3 +138,27 @@ Matched 1:1 against the supplied NetMirror clone markup/CSS.
 - Full test suite identical to pristine `3e7a4e8` (no new failures).
 - Builders `scripts/nm-exact.js`, `scripts/nm-transform.js`, `scripts/build-channels.js`
   all emit the exact pill row for future rebuilds.
+
+---
+
+# v5 · NetMirror site-structure match (2026-08-21)
+
+Matched the channel/genre structure to the actual NetMirror site file tree.
+
+## What changed
+1. **9 channel pages** at `/channels/{trending,latest,netflix,prime,sony,jio,crunchyroll,kids,mx}/`
+   (replaces the old 4: `netflix, prime-video, crunchyroll, kids`; `prime-video` → `prime`,
+   added `trending, latest, sony, jio, mx`). Content from `data/movies.json`:
+   trending 40 · latest 51 · netflix 493 movies · prime 81 series · sony 113
+   drama/crime/thriller · jio 41 Indian · crunchyroll 74 anime · kids 44 family ·
+   mx 41 Indian movies.
+2. **Pills** now point at the exact slugs with brand icon chips
+   (Trending/Latest Release/Netflix/Prime Video/SonyLIV/JioHotstar/Crunchyroll/Kids/MX Player),
+   active state per page (home → Trending; each channel page → itself).
+3. **`/genre/musical/`** added (reference has it; BRYME data has no musical titles
+   yet → graceful empty state with the same layout).
+4. **Sitemap**: 9 channel URLs + musical genre added; stale `prime-video` removed.
+
+## Verified
+- Test suite identical to pristine `3e7a4e8` (no new failures).
+- Builders emit the exact 9-pill row (`scripts/build-channels.js`, `scripts/nm-exact.js`).
