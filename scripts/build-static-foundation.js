@@ -1125,7 +1125,7 @@ function trailerBoxInner(m, idx){
   const altBtn = m.trailers.length > 1 ? `<button type="button" class="trailer-alt" data-trailer-alt>Try another trailer</button>` : '';
   const watch = 'https://www.youtube.com/watch?v=' + t.videoId;
   const ed = trailerEditorial(m, t.videoId);
-  const frame = `<div class="trailer-frame" data-trailer-id="${t.videoId}"><img loading="lazy" src="https://i.ytimg.com/vi/${t.videoId}/hqdefault.jpg" alt="${esc(m.title)} trailer thumbnail"><button type="button" class="trailer-play">Play trailer</button></div>`;
+  const frame = `<div class="trailer-frame" data-trailer-id="${t.videoId}"><img loading="lazy" src="https://i.ytimg.com/vi/${t.videoId}/hqdefault.jpg" alt="${esc(m.title)} trailer thumbnail"><button type="button" class="trailer-play">Play trailer</button></div><div class="trailer-controls" data-trailer-controls hidden><button type="button" class="cta" data-trailer-unmute>Unmute</button><a class="quiet-link" href="${esc(watch)}" target="_blank" rel="noopener">Watch on YouTube</a></div>`;
   const player = ed.wrap ? `<figure class="video-figure">${frame}${ed.caption}</figure>${ed.context}` : frame;
   return `<div class="trailer-head"><span class="eyebrow">Trailer</span><span class="trailer-status ${isFan ? 't-fan' : 't-ok'}">${dot} ${esc(badge)}</span></div>
   ${player}
@@ -3462,8 +3462,80 @@ function whereToWatchBlock(m){
 }
 function nowTalkingBlock(m){
   const ed = editorialOf(m);
-  if (!ed || !Array.isArray(ed.now) || !ed.now.length) return '';
-  return `<section class="tp-now"><h2>Why people are talking about it</h2>${ed.now.map(p => `<p>${esc(p)}</p>`).join('')}</section>`;
+  if (ed && Array.isArray(ed.now) && ed.now.length) {
+    return `<section class="tp-now" id="trending-now"><h2>🔥 Why it's trending</h2>${ed.now.map(p => `<p>${esc(p)}</p>`).join('')}</section>`;
+  }
+  if (m.trending) {
+    return `<section class="tp-now" id="trending-now"><h2>🔥 Why it's trending</h2><p>${esc(m.title)} is on BRYME's current What's Trending list. That list is editorial — not TikTok, not a live search-volume score.</p></section>`;
+  }
+  return '';
+}
+function verdictBlock(m){
+  const ed = editorialOf(m);
+  const score = (m.rating && m.rating.value != null) ? m.rating.value : null;
+  const line = (ed && Array.isArray(ed.why) && ed.why[0]) ? ed.why[0] : '';
+  if (score == null && !line) return '';
+  const scoreHtml = score != null
+    ? `<p class="tp-verdict-score">★ ${esc(String(score))}/10</p><p class="tp-verdict-note">BRYME editorial opinion — not IMDb, Rotten Tomatoes, or a live audience score.</p>`
+    : '';
+  const lineHtml = line ? `<p>${esc(line)}</p>` : '';
+  return `<section class="tp-verdict" id="verdict"><h2>⭐ BRYME Quick Take</h2>${scoreHtml}${lineHtml}</section>`;
+}
+function lovedHeading(m){
+  const noun = (m.typeDir === 'series') ? 'series' : (m.typeDir === 'anime' ? 'anime' : 'movie');
+  const g = (listedGenres(m)[0] || '');
+  const c = String(m.country || '');
+  if (m.slug === 'niu-lai') return "If you loved this, try these unusual animated movies";
+  if (/korea/i.test(c) && /thriller|horror/i.test(g)) return 'If you loved this Korean thriller, try these next';
+  if ((m.typeDir || '') === 'anime') return 'If you loved this anime, try these next';
+  if (/nigeria/i.test(c)) return 'If you loved this Nollywood title, try these next';
+  if (/india/i.test(c) && (m.typeDir || 'movie') === 'movie') return 'If you loved this Indian film, try these next';
+  if (g) return 'If you loved this ' + g.toLowerCase() + ' ' + noun + ', try these next';
+  return 'If you loved ' + m.title + ", you'll probably love these";
+}
+function recReason(from, to){
+  const fg = listedGenres(from), tg = listedGenres(to);
+  const shared = fg.filter(g => tg.includes(g));
+  const fd = nameList(from.director), td = nameList(to.director).map(x => x.toLowerCase());
+  const sameDir = fd.find(d => td.includes(d.toLowerCase()));
+  if (sameDir) return 'Same director: ' + sameDir + '.';
+  const fc = countryTokens(from.country), tc = countryTokens(to.country);
+  const sameC = fc.find(c => tc.includes(c));
+  if ((from.typeDir || 'movie') === 'anime' && (to.typeDir || 'movie') === 'anime') {
+    if (shared[0]) return 'Another ' + shared[0].toLowerCase() + ' anime on BRYME.';
+    return 'Another anime title on BRYME.';
+  }
+  if (sameC && shared[0]) return sameC.replace(/\b\w/g, ch => ch.toUpperCase()) + ' ' + shared[0].toLowerCase() + ' — same lane.';
+  if (shared[0]) return 'Also listed as ' + shared[0].toLowerCase() + ' on BRYME.';
+  if (sameC) return 'Also from ' + sameC.replace(/\b\w/g, ch => ch.toUpperCase()) + '.';
+  if (from.language && to.language && from.language === to.language) return 'Same language (' + from.language + ').';
+  if (from.year && to.year && Math.abs(from.year - to.year) <= 3) return 'From the same period (' + to.year + ').';
+  return 'Next on BRYME if ' + from.title + ' is the kind of thing you want.';
+}
+function lovedPick(m, related){
+  const srcG = listedGenres(m)[0];
+  const ranked = (related || []).slice();
+  if (srcG) {
+    ranked.sort((a, b) => {
+      const ag = listedGenres(a).includes(srcG) ? 1 : 0;
+      const bg = listedGenres(b).includes(srcG) ? 1 : 0;
+      return bg - ag;
+    });
+  }
+  return ranked.slice(0, 5);
+}
+function lovedBlock(m, related){
+  const five = lovedPick(m, related);
+  if (!five.length) return '';
+  const noun = (m.typeDir === 'series') ? 'series' : (m.typeDir === 'anime' ? 'anime' : 'movies');
+  const explore = (m.typeDir === 'series') ? '/trending/#series' : (m.typeDir === 'anime' ? '/trending/#anime' : '/trending/#movies');
+  const cards = five.map(x => {
+    const img = poster(x) || url(cardImage(x));
+    const g = listedGenres(x)[0] || (x.typeDir === 'anime' ? 'Anime' : (x.typeDir === 'series' ? 'Series' : 'Movie'));
+    const href = url('/' + (x.typeDir || 'movie') + '/' + x.slug + '/');
+    return `<a class="tp-loved-card" href="${href}"><img loading="lazy" decoding="async" width="160" height="90" src="${esc(img)}" alt="${esc(x.title)} poster"><span><b>${esc(x.title)}</b><em>${esc(g)}${x.year ? ' · ' + x.year : ''}</em><small>${esc(recReason(m, x))}</small></span></a>`;
+  }).join('');
+  return `<section class="tp-loved" id="loved"><h2>🍿 ${esc(lovedHeading(m))}</h2><p class="tp-loved-lead">Five titles already on BRYME — not a random dump and not a popup.</p><div class="tp-loved-list">${cards}</div><p class="tp-loved-more">Didn't find your next ${esc(noun === 'movies' ? 'movie' : noun)}? <a href="${url(explore)}">Explore What's Trending →</a></p></section>`;
 }
 function whyYouMightLikeBlock(m, related){
   const ed = editorialOf(m);
@@ -3673,13 +3745,15 @@ for (const m of movies) {
         const hook = (ed && ed.hook) || ((m.teaser && m.description && m.teaser.trim() && m.teaser.trim() !== m.description.trim()) ? m.teaser.trim() : (m.description || m.teaser || '').trim());
         return hook ? `<p class="lead">${esc(hook)}</p>` : '';
       })()}
-      <div class="hero-actions">${m.youtubeId ? `<a class="cta" href="#trailer">Watch trailer</a>` : ''}<a class="cta cta-ghost" href="#watch">Where to watch</a>${related.length ? `<a class="quiet-link" href="#similar">Similar titles</a>` : ''}${relatedArticles.length ? `<a class="cta cta-ghost" href="${url('/article/' + relatedArticles[0].slug + '/')}">Read BRYME story</a>` : ''}<button class="quiet-link share-action" type="button" data-share-path="${pagePath}" data-share-title="${esc(m.title)}">Share</button></div>
+      <div class="hero-actions">${m.youtubeId ? `<a class="cta" href="#trailer">Watch trailer</a>` : ''}<a class="cta cta-ghost" href="#watch">Where to watch</a>${related.length ? `<a class="quiet-link" href="#loved">More like this</a>` : ''}${relatedArticles.length ? `<a class="cta cta-ghost" href="${url('/article/' + relatedArticles[0].slug + '/')}">Read BRYME story</a>` : ''}<button class="quiet-link share-action" type="button" data-share-path="${pagePath}" data-share-title="${esc(m.title)}">Share</button></div>
       ${SENDABLE_META[m.slug] ? sendBar(pagePath, SENDABLE_META[m.slug].title || m.title) : ''}
     </div>
   </section>
   <section class="shell trailer-section" id="trailer">${trailerSection(m)}</section>
   <section class="body">
     <article class="prose">
+      ${nowTalkingBlock(m)}
+      ${verdictBlock(m)}
       ${(() => {
         const ed = editorialOf(m);
         if (ed && ed.summary) return `<h2>Quick summary</h2><p>${esc(ed.summary)}</p>`;
@@ -3701,14 +3775,13 @@ for (const m of movies) {
         if (!parts.length) return '';
         return `<h2>What ${esc(m.title)} is about</h2>` + parts.join('');
       })()}
-      ${nowTalkingBlock(m)}
       ${whyYouMightLikeBlock(m, related)}
       ${m.facts.length ? `<h2>Notes</h2><ul>${m.facts.map(f => `<li>${esc(f)}</li>`).join('')}</ul>` : ''}
       ${(typeDir !== 'movie' && m.seasons.length) ? `<h2>Seasons</h2><div class="list">${m.seasons.map(x => `<div class="row"><div><b>${esc(x.title || ('Season ' + x.seasonNumber))}</b><span class="meta" style="font-size:12px;color:var(--muted)">${x.year ? x.year + ' · ' : ''}${x.episodeCount ? x.episodeCount + ' episodes' : 'episode count unavailable'}</span></div></div>`).join('')}</div>` : ''}
       ${whereToWatchBlock(m)}
       ${relatedArticles.length ? `<section class="tp-editorial"><h2>BRYME editorial</h2><p>Only real BRYME pieces are listed here. This is not a generated review and not a claim that BRYME watched the title on your behalf.</p><div class="story-grid story-grid-title">${relatedArticles.map(a => `<a href="${url('/article/' + a.slug + '/')}"><span>${esc(a.category)}</span><h3>${esc(a.title)}</h3><p>${esc((a.description || '').slice(0, 140))}</p><b>Read article</b></a>`).join('')}</div></section>` : ''}
-      <h2 id="similar">You may also like</h2>
-      ${related.length ? `<div class="grid tp-related">${related.map(card).join('')}</div>` : '<p>Related titles are not available yet.</p>'}
+      ${lovedBlock(m, related)}
+      ${related.length ? `<div class="grid tp-related" hidden>${related.map(card).join('')}</div>` : ''}
       ${keepExploringBlock(m, relatedArticles, yearPath)}
     </article>
     <aside class="aside">

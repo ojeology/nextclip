@@ -123,9 +123,13 @@ document.addEventListener('error', function (e) {
 
   /* ---------- lazy trailer players (multi-candidate, failure-safe) ---------- */
   var TRAILER_WATCHDOG_MS = (typeof window.BRYME_TRAILER_TIMEOUT !== 'undefined') ? window.BRYME_TRAILER_TIMEOUT : 30000;
-  function frameHtml(id, title) {
+  function frameHtml(id, title, opts) {
+    opts = opts || {};
     var iframe = document.createElement('iframe');
     var src = 'https://www.youtube-nocookie.com/embed/' + id + '?rel=0&modestbranding=1&playsinline=1&enablejsapi=1';
+    if (opts.autoplay) src += '&autoplay=1';
+    src += '&mute=' + (opts.mute === false ? '0' : '1');
+    if (opts.autoplay) src += '&cc_load_policy=1';
     // The origin parameter helps the IFrame API deliver events; only set it
     // when the page has a real http(s) origin (sandboxed previews don't).
     if (/^https?:\/\//i.test(window.location.origin || '')) src += '&origin=' + encodeURIComponent(window.location.origin);
@@ -163,7 +167,15 @@ document.addEventListener('error', function (e) {
       var fb = box.querySelector('.trailer-fallback');
       if (fb) fb.hidden = true;
     }
-    function play() {
+    function setControls(on, muted) {
+      var ctrls = box.querySelector('[data-trailer-controls]');
+      if (!ctrls) return;
+      ctrls.hidden = !on;
+      var um = ctrls.querySelector('[data-trailer-unmute]');
+      if (um) um.hidden = !muted;
+    }
+    function play(opts) {
+      opts = opts || {};
       if (!current || !/^[A-Za-z0-9_-]{11}$/.test(current.id)) { showError(); return; }
       var err = box.querySelector('[data-trailer-error]');
       if (err) err.hidden = true;
@@ -172,7 +184,9 @@ document.addEventListener('error', function (e) {
       frame.hidden = false;
       playerUp = false;
       frame.innerHTML = '';
-      var iframe = frameHtml(current.id, title);
+      var muted = opts.mute !== false;
+      var iframe = frameHtml(current.id, title, { autoplay: !!opts.auto, mute: muted });
+      setControls(true, muted);
       // PRIMARY readiness signal: the iframe's own load event. It fires in
       // every browser without needing the YouTube JS API, and once the
       // player page has loaded the video is in the user's hands — the
@@ -192,12 +206,12 @@ document.addEventListener('error', function (e) {
     function showAfterWatch() {
       var frame = box.querySelector('[data-trailer-id]');
       if (!frame || frame.querySelector('[data-afterwatch]')) return;
-      var related = document.querySelectorAll('.tp-related a.tile');
+      var related = document.querySelectorAll('.tp-loved-card, .tp-related a.tile');
       var links = [];
       var i;
       for (i = 0; i < related.length && links.length < 3; i++) {
         var a = related[i];
-        var nameEl = a.querySelector('h3');
+        var nameEl = a.querySelector('h3, b');
         var href = a.getAttribute('href');
         var name = nameEl ? nameEl.textContent : '';
         if (href && name) links.push('<a href="' + esc(href) + '">' + esc(name) + '</a>');
@@ -263,10 +277,23 @@ document.addEventListener('error', function (e) {
       playerUp = false;
       clearWatchdog();
       var playBtn = frame && frame.querySelector('.trailer-play');
-      if (playBtn) playBtn.addEventListener('click', play);
+      if (playBtn) playBtn.addEventListener('click', function () { play({ auto: true, mute: false }); });
     }
     var playBtn = box.querySelector('.trailer-play');
-    if (playBtn) playBtn.addEventListener('click', play);
+    if (playBtn) playBtn.addEventListener('click', function () { play({ auto: true, mute: false }); });
+    var umBtn = box.querySelector('[data-trailer-unmute]');
+    if (umBtn) umBtn.addEventListener('click', function () { play({ auto: true, mute: false }); });
+    function shouldAutoplay() {
+      if (!document.querySelector('.tp-page')) return false;
+      if (!current || current.type === 'fan-made') return false;
+      try { if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return false; } catch (e) {}
+      return true;
+    }
+    function startMuted() { play({ auto: true, mute: true }); }
+    if (shouldAutoplay()) {
+      if (document.prerendering) document.addEventListener('prerenderingchange', startMuted, { once: true });
+      else startMuted();
+    }
     var altBtn = box.querySelector('[data-trailer-alt]');
     if (altBtn) altBtn.addEventListener('click', function () { index = (index + 1) % candidates.length; render(); });
     var retryBtn = box.querySelector('[data-trailer-retry]');
