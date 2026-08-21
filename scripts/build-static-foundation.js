@@ -3816,15 +3816,34 @@ for (const m of movies) {
 }
 
 /* ---------------- Articles & topics ---------------- */
+function linkedEsc(raw) {
+  const parts = String(raw || '').split(/(\{(?:film|article):[a-z0-9-]+\})/i);
+  return parts.map(part => {
+    const m = part.match(/^\{(film|article):([a-z0-9-]+)\}$/i);
+    if (!m) return esc(part);
+    const kind = m[1].toLowerCase(), slug = m[2];
+    if (kind === 'article') {
+      const a = articles.find(x => x.slug === slug);
+      if (!a) return esc(slug);
+      return `<a href="${url('/article/' + a.slug + '/')}">${esc(a.title)}</a>`;
+    }
+    const rec = slugIndex.get(slug);
+    if (!rec) return esc(slug);
+    return `<a href="${url('/' + (rec.typeDir || 'movie') + '/' + rec.slug + '/')}">${esc(rec.title)}</a>`;
+  }).join('');
+}
 function articleBlocks(article) {
   if (article.blocks && article.blocks.length) return article.blocks.map(block => {
-    const text = esc(block.text);
-    if (block.type === 'heading') return `<h2>${text}</h2>`;
+    const text = linkedEsc(block.text);
+    if (block.type === 'heading') return `<h2>${esc(block.text)}</h2>`;
     if (block.type === 'quote') return `<blockquote>${text}</blockquote>`;
     if (block.type === 'source') return `<p class="article-source">${text}</p>`;
     return `<p>${text}</p>`;
   }).join('');
-  return (article.items || []).map(item => `<h2>${esc(item.heading)}</h2><p>${esc(item.body)}</p>`).join('');
+  return (article.items || []).map(item => {
+    const paras = String(item.body || '').split(/\n\n+/).map(p => `<p>${linkedEsc(p.trim())}</p>`).join('');
+    return `<h2>${esc(item.heading)}</h2>` + paras;
+  }).join('');
 }
 function articleWordCount(article) {
   const text = article.blocks && article.blocks.length ? article.blocks.map(b => b.text).join(' ') : (article.items || []).map(i => i.heading + ' ' + i.body).join(' ');

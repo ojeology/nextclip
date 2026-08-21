@@ -4148,109 +4148,114 @@
     "id": "christopher-nolan-movies-order",
     "slug": "christopher-nolan-movies-order",
     "title": "Christopher Nolan Movies in Order: Where to Start and What to Watch Next",
-    "description": "A practical route through Christopher Nolan's filmography — which films connect, where to begin if you are new to his work, and what each one does best.",
+    "description": "Christopher Nolan movies in order: a release-year list of the films on BRYME, a gentler watch path if you are new, and what each one actually does.",
     "category": "Movie Guides",
     "tags": [
       "christopher nolan",
       "director",
       "filmography",
-      "science fiction"
+      "science fiction",
+      "watch order"
     ],
     "emoji": "",
     "items": [
       {
-        "heading": "Why Nolan rewards any starting point",
-        "body": "Christopher Nolan makes big, intricate films that combine spectacle with ideas about memory, time and identity. You do not need to watch them in release order to enjoy them, but understanding how his work connects makes the later films richer."
+        "heading": "Christopher Nolan movies in release order",
+        "body": "There is no official Christopher Nolan watch order. Release order is the honest list of the films BRYME actually has. Years below are the catalogue years on this site. {film:memento} (2000). {film:the-prestige} (2006). {film:the-dark-knight} (2008). {film:inception} (2010). {film:the-dark-knight-rises} (2012). {film:interstellar} (2014). {film:dunkirk} (2017). {film:tenet} (2020). {film:oppenheimer} (2023). {film:the-odyssey} (2026). Following (1998), Insomnia (2002), Batman Begins (2005) and a few others exist in the world. They are not on BRYME yet, so they are not faked into this list. The Odyssey is his mythic epic currently in the catalogue for 2026 — not a recap of Homer, and not a claim about awards."
       },
       {
-        "heading": "The easiest entry point: Inception",
-        "body": "Inception is the most accessible of his mind-bending films. It has a clear heist structure with a dream-within-a-dream twist, and it moves fast. If you have never seen a Nolan film, start here."
+        "heading": "A watch order if you are new to Nolan",
+        "body": "You do not need chronological order to enjoy these. A gentler path if you have never seen one: Inception first (clear heist, then the dream stack), then The Dark Knight (real-world stakes, no sci-fi premise), then Interstellar (scale plus a father-daughter line), then Memento or The Prestige (smaller, more puzzle), then Oppenheimer or Dunkirk, leaving Tenet until you already like how he cuts time. That path is a BRYME suggestion, not a studio curriculum. Every film still stands alone."
       },
       {
-        "heading": "The emotional one: Interstellar",
-        "body": "Interstellar is Nolan's most openly emotional film. It is still full of big science ideas, but at its centre is a father-daughter story. Choose this if you want the scale with the most feeling."
+        "heading": "Inception",
+        "body": "{film:inception} is the most accessible of the mind-bending films. A heist structure, a team, then dreams stacked inside dreams. If you have never seen a Nolan film, this is the usual on-ramp. It moves."
       },
       {
-        "heading": "The mind-bending classic: Memento",
-        "body": "Memento is a tight, low-budget film told in reverse about a man who cannot form new memories. It is where Nolan's obsession with memory and narrative structure began. Best for viewers who like to work at a puzzle."
+        "heading": "The Dark Knight and The Dark Knight Rises",
+        "body": "{film:the-dark-knight} is a crime film in a cape. It is the one people mean when they say Nolan can do character and consequence without a physics lecture. {film:the-dark-knight-rises} is the later Batman film on BRYME. Watch the 2008 film first if you are doing this pair. Batman Begins is not on this site yet."
       },
       {
-        "heading": "The pure spectacle: Tenet",
-        "body": "Tenet is Nolan's most complex film — time runs backward in places and the plot is hard to follow on a first watch. Do not start here, but return to it once you are comfortable with his style. It rewards multiple viewings."
+        "heading": "Interstellar",
+        "body": "{film:interstellar} is the openly emotional one: dust, a mission, a daughter who does the waiting. Big science talk, louder father-daughter line. If that film left you hungry, {article:movies-like-interstellar-guide} and {article:interstellar-ending-explained} are the BRYME follow-ups — read the ending piece after you have watched, not before."
       },
       {
-        "heading": "The character one: The Dark Knight",
-        "body": "The Dark Knight is not a science-fiction film, but it shares Nolan's craft and sense of consequence. It works as a standalone thriller built around one of cinema's great villains, and it is a fine entry point for people who prefer real-world stakes."
+        "heading": "Memento and The Prestige",
+        "body": "{film:memento} is the reverse-order memory film. Small, mean, and the start of the time-structure habit. {film:the-prestige} is two magicians ruining each other. Watch either when you want craft without IMAX sermons."
       },
       {
-        "heading": "The historical turn: Oppenheimer",
-        "body": "Oppenheimer is a dialogue-driven historical drama with no science-fiction premise. It shows how Nolan's methods — parallel timelines, mounting tension — work on real events. A good pick if you want his technique applied to the past."
+        "heading": "Dunkirk, Tenet, Oppenheimer",
+        "body": "{film:dunkirk} is the lean war film: three timescales, almost no briefing-room chat. {film:tenet} is the one that runs time both ways; do not start here. {film:oppenheimer} is the historical drama — rooms, hearings, the bomb as hangover. Same cutting habits, no dream hallway."
       },
       {
-        "heading": "The war film: Dunkirk",
-        "body": "Dunkirk is a lean, nearly dialogue-free war film told across three timescales that slowly converge. It is Nolan's most purely sensory work. Choose it when you want tension and craft over plot twists."
+        "heading": "The Odyssey",
+        "body": "{film:the-odyssey} is the 2026 Nolan title on BRYME. Matt Damon as Odysseus, shot for IMAX, still in the theatrical conversation this year. Put it at the end of a first pass through his earlier films, or treat it as the current one if you only came for 2026. The catalogue page is the place for the trailer and the notes — this guide will not recap the voyage."
       },
       {
-        "heading": "A suggested route",
-        "body": "For most newcomers the smoothest path is Inception, then The Dark Knight, then Interstellar, then Memento, then Oppenheimer or Dunkirk, leaving Tenet for last. But there is no wrong way in — every film stands on its own."
+        "heading": "A short route",
+        "body": "Newcomers: Inception, The Dark Knight, Interstellar, then Memento or The Prestige, then Oppenheimer or Dunkirk, Tenet last, The Odyssey when you want the current one. There is no wrong door. If you only have one night, Inception or The Dark Knight."
       }
     ],
     "blocks": [],
     "relatedMovieSlugs": [
-      "inception",
-      "interstellar",
       "memento",
-      "tenet",
+      "the-prestige",
+      "the-dark-knight",
+      "inception",
+      "the-dark-knight-rises",
+      "interstellar",
       "dunkirk",
+      "tenet",
       "oppenheimer",
-      "the-dark-knight"
+      "the-odyssey"
     ],
     "status": "published",
     "author": null,
     "createdAt": null,
-    "updatedAt": null
+    "updatedAt": "2026-08-21"
   },
   {
     "id": "alien-franchise-in-order",
     "slug": "alien-franchise-in-order",
     "title": "The Alien Franchise in Order: Which Films to Watch and Why",
-    "description": "A practical guide to the Alien films — the best places to start, how the timeline actually runs, and how the series shifts between horror and action.",
+    "description": "The Alien franchise in order: release years for the films on BRYME, a simple watch path, and how the series moves between horror and action.",
     "category": "Movie Guides",
     "tags": [
       "alien",
       "horror",
       "science fiction",
-      "franchise"
+      "franchise",
+      "ridley scott"
     ],
     "emoji": "",
     "items": [
       {
-        "heading": "Two very different Alien films set the tone",
-        "body": "The Alien series really has two founding films with different identities. The first is a slow, claustrophobic horror film. The sequel is a bigger, louder action film. Most of the debate about the series is really a debate about which of those two you prefer."
+        "heading": "Alien movies in release order",
+        "body": "There is no single studio-mandated Alien watch order. Release order is the default. These are the Alien-related titles BRYME actually lists, with catalogue years: {film:alien} (1979). {film:aliens} (1986). {film:alien-3} (1992). {film:alien-resurrection} (1997). {film:prometheus} (2012). {film:alien-romulus} (2024). {film:predator} (1987) and {film:predator-2} (1990) sit next door in the wider creature-hunt lane. They are not numbered Alien films. Alien: Covenant is not on BRYME yet, so it is not invented here."
       },
       {
-        "heading": "Alien (the original)",
-        "body": "The original Alien is a haunted-house film set on a spaceship, with one creature and a tightening atmosphere. It is the best place to start because everything after it either extends or reacts to it. It is also the purest horror film in the series."
+        "heading": "Story order versus release order",
+        "body": "Story order puts Prometheus before the original Alien, because it is a prequel about the engineers and the mess that leads toward the xenomorph. Release order keeps 1979 first, which is how most people met the series. If you have never seen any of them, start with Alien (1979) in release order. If you already know the original and want the prequel thread, watch Prometheus after Alien and Aliens, not instead of them. This is a map, not a spoiler sheet."
       },
       {
-        "heading": "Aliens (the sequel)",
-        "body": "Aliens turns the horror into action, adding more creatures, soldiers and gunfire. If you found the first film too slow, this is the counterpoint. It is widely considered the other high point of the franchise."
+        "heading": "Alien (1979) and Aliens (1986)",
+        "body": "{film:alien} is a haunted-house film on a spaceship: one creature, a tightening hull, no marine squad. It is the best first film because everything after it extends or argues with it. It is also the purest horror entry on this list. {film:aliens} is the turn into action — more creatures, soldiers, volume. If the first film felt too slow, this is the counterweight. Together they are the two films most people mean by \"the Alien films.\""
       },
       {
         "heading": "Alien 3 and Alien: Resurrection",
-        "body": "Alien 3 strips the series back toward a smaller, grimmer story; Alien: Resurrection pushes it in a more stylised, almost comic direction. Both are divisive. Watch them to complete the original arc, but know they split opinion."
+        "body": "{film:alien-3} goes smaller and grimmer. {film:alien-resurrection} is stranger and more stylised. Both split opinion. Watch them if you want the original Ripley arc completed. Skip them on a first pass if you only wanted the 1979/1986 pairing. BRYME will not pretend they are secret masterpieces or secret disasters."
       },
       {
-        "heading": "Alien: Romulus",
-        "body": "Alien: Romulus is a recent return that blends the horror of the first film with callbacks across the series. It is a strong modern entry point for someone who wants a current Alien film without committing to the older ones."
+        "heading": "Prometheus and Alien: Romulus",
+        "body": "{film:prometheus} is Ridley Scott back on the myth: creators, wrecked missions, a different kind of body horror. It is slower and talkier than Aliens. Useful if you care how the universe was built. Not a replacement for the original. {film:alien-romulus} (2024) is the recent return that leans toward the first film's dread with later-series callbacks. A fair modern entry if you want one current Alien film without sitting the 1990s pair first. It still makes more sense after 1979."
       },
       {
-        "heading": "The crossover: Predator",
-        "body": "Predator shares the Alien universe in expanded media, and fans of the creature-hunting setup will find a similar tension. It is not a direct sequel, but it is the natural companion watch."
+        "heading": "Predator, on the side",
+        "body": "{film:predator} is a hunt-in-the-jungle film, not an Alien sequel. Watch it if the creature-as-hunter idea is the itch. {film:predator-2} continues that line in a city. Neither is required for the Alien numbered films."
       },
       {
         "heading": "A suggested order",
-        "body": "If you want the core experience: watch Alien, then Aliens, then Alien: Romulus. If you want the full story after that, continue with Alien 3 and Alien: Resurrection. Begin with the original — every other film makes more sense once you have seen what started it."
+        "body": "Core path: Alien, then Aliens, then Alien: Romulus. Full original arc after that: Alien 3 and Alien: Resurrection. Prequel curiosity: Prometheus after you already know 1979. Begin with the original. Every other film on this page is easier once you have seen what started it."
       }
     ],
     "blocks": [],
@@ -4259,60 +4264,65 @@
       "aliens",
       "alien-3",
       "alien-resurrection",
+      "prometheus",
       "alien-romulus",
-      "predator"
+      "predator",
+      "predator-2"
     ],
     "status": "published",
     "author": null,
     "createdAt": null,
-    "updatedAt": null
+    "updatedAt": "2026-08-21"
   },
   {
     "id": "movies-like-parasite",
     "slug": "movies-like-parasite",
     "title": "Movies Like Parasite: Class, Tension and Dark Surprises",
-    "description": "Parasite mixes class commentary with escalating tension and sharp tonal shifts. These films share at least one of those strengths and stand on their own.",
+    "description": "Looking for movies like Parasite? These films share the class tension, the con, or the sudden darkness — and they stand on their own.",
     "category": "Movie Guides",
     "tags": [
       "parasite",
       "korean cinema",
       "class",
-      "thriller"
+      "thriller",
+      "bong joon-ho"
     ],
     "emoji": "",
     "items": [
       {
-        "heading": "What makes Parasite hard to match",
-        "body": "Parasite is a class thriller that keeps changing genre — it starts as a con comedy, turns into a family drama, then becomes something darker and more violent. Few films juggle those shifts this well, so the best alternatives usually share one strong element rather than all of them."
+        "heading": "What people mean by movies like Parasite",
+        "body": "Looking for movies like Parasite usually means you want one of three things: a clever con inside a rich house, a film that turns from comedy to violence without warning, or a class story that does not lecture. {film:parasite} does all three. Almost nothing else does. The useful next watch is the film that nails the piece you actually cared about. This is a watch-next list from titles already on BRYME. It is not a ranking of Korean cinema and not a claim that any of these films is a secret remake."
       },
       {
-        "heading": "Start with other Korean class films",
-        "body": "Korean cinema has explored class and money with unusual sharpness. A good starting route is to follow the films and directors that made Korean thrillers famous internationally, watching how they turn ordinary family life into suspense."
+        "heading": "Best movies like Parasite to watch next",
+        "body": "{film:memories-of-murder} is Bong Joon-ho before the big house. A small-town murder investigation that keeps missing the point, then the cost of that miss. If you liked Parasite because of Bong — the weather, the faces, the joke that curdles — start here. {film:the-host} is Bong again, with a monster and a family that will not stay organised. It is broader and funnier than Parasite. The class bite is still there: who gets help, who gets the river. {film:the-handmaiden} is Park Chan-wook: a con, a mansion, and a plan that keeps swapping who is using whom. If the scheme in Parasite was the hook, this is the denser, more ornate version. {film:oldboy} is the other Park film people reach for. It is meaner and more enclosed. Use it if the late-film violence in Parasite is what stayed with you, not if you wanted the family satire. {film:burning} is a slow class thriller: one man, one woman, one richer man who may be lying. The tension is social and sexual. Very little of Parasite's slapstick. A lot of its unease. {film:the-housemaid} puts a worker inside an employer's house and lets the rooms do the damage. If the architecture of Parasite — stairs, basement, smell — was the point, this is the closer cousin. {film:shoplifters} is Japanese, not Korean. A found family surviving by small thefts. No basement twist. If the poverty-as-teamwork in Parasite moved you more than the blood, this is the humane fork. {film:mickey-17} is Bong in 2025, science fiction, clones, a nasty employer. It is not a street-level Seoul film. It is the same director asking who is disposable. Mentioned here because the name on the poster is the honest link, not because it repeats Parasite's plot."
       },
       {
-        "heading": "The con-and-space angle",
-        "body": "Part of Parasite's appeal is the clever scheme and the way the poorer family gradually occupies the richer family's home. Films built around a careful con, a false identity, or slowly tightening tension capture that same pull."
+        "heading": "Other Korean thrillers on BRYME",
+        "body": "If you want the same country more than the same structure, BRYME also has {film:decision-to-leave}, {film:the-chaser}, {film:i-saw-the-devil} and {film:the-wailing}. Those are crime, pursuit, and folk horror — not class comedies. They belong on a Korean-thriller shelf, not on a fake \"exactly like Parasite\" dump. For a wider mood map, use {article:korean-cinema-starter-guide-rebuilt}."
       },
       {
-        "heading": "The tonal-switch angle",
-        "body": "If the part you loved was how abruptly the film can turn dark and violent, look for films that begin in a comfortable, even comic register and then descend. The shock of that shift is a signature shared by a handful of directors."
-      },
-      {
-        "heading": "The class-commentary angle",
-        "body": "If the social message mattered most, seek out films and shows that use a single household, workplace or crisis to expose inequality. The best of these let the setting do the talking rather than lecturing."
-      },
-      {
-        "heading": "How to choose",
-        "body": "Ask what grabbed you: the clever scheme, the sudden darkness, or the social point. That single answer points to the strongest next watch. Almost no film matches all three of Parasite's tricks at once, so the goal is to find one that nails the element you care about most."
+        "heading": "How to pick the next film",
+        "body": "If the con was the pleasure, go to The Handmaiden. If Bong's tone was the pleasure, Memories of Murder or The Host. If the last-act shock was the pleasure, Oldboy — knowing it is a different kind of cruelty. If the family-and-money ache was the pleasure, Shoplifters. Almost no film matches all three of Parasite's tricks at once. That is the point of this list. For the film itself, the catalogue page is {film:parasite}."
       }
     ],
     "blocks": [],
     "relatedMovieSlugs": [
-      "parasite"
+      "parasite",
+      "memories-of-murder",
+      "the-host",
+      "mickey-17",
+      "the-handmaiden",
+      "oldboy",
+      "burning",
+      "decision-to-leave",
+      "the-housemaid",
+      "shoplifters",
+      "the-wailing"
     ],
     "status": "published",
     "author": null,
     "createdAt": null,
-    "updatedAt": null
+    "updatedAt": "2026-08-21"
   }
 ]
