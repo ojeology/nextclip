@@ -226,3 +226,34 @@ Rebuilt `/entertainment/` to match the supplied NetMirror clone 1:1:
 The hero slides and title pages are embed-ready: add `data-video="<YOUTUBE_ID>"`
 to each hero slide and/or fill the `data-trailer-candidates` on each title page;
 the player will load them automatically (builders in scripts/ are reusable).
+
+---
+
+# v10 · Full NetMirror catalog on /entertainment/ (2026-08-21)
+
+Per the complete catalog export: all titles added to their rows, full-screen
+RECTANGULAR cards, and hero embeds wired.
+
+## What changed
+1. **Catalog** (`scripts/nm_catalog.py`): all 17 rows × 235 cards from the export —
+   Top 10 Today (10) · Trending Now (13) · Latest Release (8) · Hot New Releases (10) ·
+   Bollywood (10) · South Indian Hits (6) · Indian Originals (30) · Hollywood (11) ·
+   Action Movies (17) · Drama Series (17) · Comedy (16) · Thrillers (14) · Sci-Fi (15) ·
+   Romance (17) · Horror (15) · Animation & Family (19) · Trending Globally — Coming Soon (7).
+2. **53 new title pages** created for catalog titles that had none (The Mentalist,
+   Awarapan, Indian Originals, Hollywood titles, etc.) — every one of the 235 cards
+   links to a real page (167 unique titles).
+3. **Rectangular full-screen cards**: entertainment rows are now responsive grids of
+   16:9 landscape tiles (auto-fill, full row width); on mobile each card is a
+   full-width rectangular banner. SERIES badge top-left, ★ rating top-right,
+   title below, Top-10 numbers behind the poster.
+4. **Embeds**: hero slides now carry official trailer IDs —
+   Project Hail Mary `m08TxIsFTRI`, SWAPPED `QCc8yAd64x8`,
+   Shawshank Redemption `P9mwtI82k6E`; wired the same into their title pages, plus
+   The Mentalist `nn2Q69pSC_M` and Awarapan `A3z567rXlH8`. 27 other titles already
+   have verified embeds from data/movies.json. Remaining ~130 titles: embed-ready
+   (trailer boxes wait for IDs) — paste the embed list to finish in one pass.
+
+## Verified
+- homepage-tests 27/27 (hero embed playback now fully exercised), ranking-tests 0 fails,
+  all other suites at pristine baseline (no new failures).

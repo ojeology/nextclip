@@ -2782,3 +2782,89 @@ body{
   .mobile-nav a{font-size:10px}
   .bryme-top{display:none}
 }
+
+/* ==========================================================================
+   BRYME v10 · /entertainment/ — full-screen rectangular cards
+   Cards become large 16:9 landscape tiles that fill the row width; on mobile
+   each card is a full-width rectangular banner.
+   ========================================================================== */
+
+main.ent .home-section{padding:26px 0 6px}
+main.ent .section-head h2{font-size:20px;font-weight:800}
+main.ent .section-head{margin-bottom:16px}
+
+/* Rows become responsive grids of rectangular cards (full width) */
+main.ent .rail{
+  display:grid;
+  grid-auto-flow:row;
+  grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
+  gap:20px 16px;
+  overflow:visible;
+  padding:0 0 10px;
+  scroll-snap-type:none;
+}
+main.ent .rail .tile{scroll-snap-align:none;min-width:0}
+
+/* Rectangular 16:9 poster area */
+main.ent .tile .poster{
+  aspect-ratio:16/9;
+  border-radius:12px;
+  overflow:hidden;
+  background:#161616;
+  box-shadow:0 10px 26px rgba(0,0,0,.45);
+}
+main.ent .tile .poster img{
+  width:100%;height:100%;object-fit:cover;
+  transition:transform .3s ease,filter .3s ease;
+}
+main.ent .tile:hover .poster img{transform:scale(1.04);filter:saturate(1.05)}
+main.ent .tile:hover{transform:none}
+
+/* Title + meta below the poster */
+main.ent .tile h3{
+  font-size:15px;font-weight:600;margin:10px 0 0;
+  white-space:normal;line-height:1.3;
+  display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden;
+}
+main.ent .tile-meta{display:flex;gap:6px;font-size:12px;color:#B3B3B3;margin:4px 0 0}
+main.ent .tile-rating{
+  position:static;display:inline-flex;align-items:center;gap:3px;
+  margin:6px 0 0;background:none;border:0;backdrop-filter:none;box-shadow:none;
+  padding:0;font-size:12px;font-weight:600;color:#F5C518;
+}
+main.ent .tile-rating::before{content:"";margin:0}
+
+/* Type badge overlay top-left, rating chip top-right on the poster */
+main.ent .tile .tile-meta .type-badge{
+  position:absolute;top:10px;left:10px;z-index:4;
+  background:rgba(0,0,0,.72);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);
+  border:0;border-radius:6px;padding:4px 9px;
+  color:#fff;font-size:10.5px;font-weight:700;letter-spacing:.5px;
+}
+main.ent .tile .tile-rating{
+  position:absolute;top:10px;right:10px;z-index:4;
+  background:rgba(0,0,0,.72);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);
+  border:0;border-radius:6px;padding:4px 9px;margin:0;
+  font-size:11.5px;font-weight:700;color:#F5C518;
+}
+
+/* Top 10 — big outlined number behind the bottom-left of the rectangular poster */
+main.ent .rail-t10{gap:26px 18px;padding:10px 0 30px}
+main.ent .rail-t10 .tile .poster{margin-left:44px;overflow:visible}
+main.ent .rail-t10 .tile .poster img{width:100%;height:100%;object-fit:cover;border-radius:12px}
+main.ent .rail-t10 .tile .poster .placeholder{border-radius:12px}
+main.ent .rail-t10 .tile .rank{
+  position:absolute;left:-6px;bottom:-18px;top:auto;z-index:0;
+  font-size:clamp(72px,10vw,120px);font-weight:900;line-height:.72;
+  color:transparent;-webkit-text-stroke:3px rgba(255,255,255,.6);
+  text-shadow:0 8px 24px rgba(0,0,0,.5);
+  pointer-events:none;display:block;background:none;border:0;width:auto;height:auto;min-width:0;padding:0;
+}
+main.ent .rail-t10 .tile h3,main.ent .rail-t10 .tile .tile-meta{padding-left:44px}
+
+/* Mobile: full-width rectangular cards */
+@media(max-width:760px){
+  main.ent .rail{grid-template-columns:1fr;gap:18px}
+  main.ent .rail-t10{gap:26px 0}
+  main.ent .tile .poster{aspect-ratio:16/9}
+}
