@@ -202,3 +202,27 @@ Massive landing-page redesign per request.
 ## Verified
 - Full suite: ranking 0 fails (was crash@15), homepage 0, all others at pristine baseline
   (1/32/4/5/9/1 pre-existing content mismatches — no new failures).
+
+---
+
+# v9 · /entertainment/ = exact NetMirror reference (2026-08-21)
+
+Rebuilt `/entertainment/` to match the supplied NetMirror clone 1:1:
+- **Hero**: 3 slides — Project Hail Mary (★8.7 · U/A 13+), SWAPPED (★8.9 · gold title · U/A 7+),
+  The Shawshank Redemption (★8.7 · U) — 🔥 TRENDING NOW, Watch Now (white) + More Info
+  (frosted), white-pill dots, age badges. Slide gradients match the reference.
+- **Rows (exact names/cards)**: Top 10 Today (Reacher, The Traitors, Spider-Man: Brand New Day,
+  Adaalat — numbered 1–4) · Trending Now (5) · Latest Release (4) · Hot New Releases (4) ·
+  Bollywood (3) · South Indian Hits (3) · Drama Series (3) · Comedy (3) · Horror (3) ·
+  Animation & Family (3) · Trending Globally — Coming Soon (3). 38 cards, each 140px 2:3,
+  SERIES badge top-left + ★ rating top-right, links to real BRYME title pages.
+- **Search CTA** card + 6-item bottom nav + Trending pill active.
+- Added 2 missing pages: `series/the-traitors`, `series/adaalat`.
+- Tests updated: homepage-tests now targets /entertainment/ (3 slides, graceful watch
+  until embeds arrive) + portal rec engine on home; ranking-tests checks exact rows/counts/
+  ranks — **homepage 23/23, ranking 49/49**, all others at baseline.
+
+## Official embeds
+The hero slides and title pages are embed-ready: add `data-video="<YOUTUBE_ID>"`
+to each hero slide and/or fill the `data-trailer-candidates` on each title page;
+the player will load them automatically (builders in scripts/ are reusable).

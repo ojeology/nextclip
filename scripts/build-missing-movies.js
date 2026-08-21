@@ -52,6 +52,7 @@ const FULL = {
  'the-wild-robot': ['The Wild Robot', 7.9, 2024, 'Movie', 'U', 'A robot learns to survive in the wild.', 'Survive. Adapt. Belong.'],
 };
 const MINIMAL = [
+ ['the-traitors','The Traitors',2024,'Series','Reality'],['adaalat','Adaalat',2024,'Series','Drama'],
  ['animal','Animal',2023,'Movie','Action'],['article-370','Article 370',2024,'Movie','Thriller'],
  ['bad-newz','Bad Newz',2024,'Movie','Comedy'],['bhool-bhulaiyaa-3','Bhool Bhulaiyaa 3',2024,'Movie','Comedy'],
  ['camp-rock-3','Camp Rock 3',2024,'Movie','Musical'],['chainsaw-man-reze','Chainsaw Man: Reze',2025,'Movie','Animation'],

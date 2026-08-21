@@ -1,7 +1,6 @@
 /* BRYME test suite — ranking/editorial system
    Run: NODE_PATH=/path/to/jsdom/node_modules node tests/ranking-tests.js
    (jsdom must be installed; e.g. npm install jsdom in any folder) */
-const { JSDOM } = require('jsdom');
 const fs = require('fs');
 const path = require('path');
 const ROOT = path.resolve(__dirname, '..');
@@ -25,51 +24,59 @@ const home = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');
 const ent = fs.readFileSync(path.join(ROOT, 'entertainment/index.html'), 'utf8');
 const rankings = JSON.parse(fs.readFileSync(path.join(ROOT, 'content/rankings.json'), 'utf8'));
 
-/* 1. Entertainment hub hierarchy (hero slides come first, skip them) */
+/* 1. Entertainment hub hierarchy (hero titles are h1, so Top 10 Today is the first h2) */
 section('Entertainment hub hierarchy');
 {
   const heads = Array.from(ent.matchAll(/<h2>([^<]{2,60})<\/h2>/g)).map(m => m[1]);
-  const first = heads.findIndex(h => h.includes('Top 10 Today'));
-  const order = heads.slice(first, first + 8);
-  assert(first > 0, 'Top 10 Today comes after the hero slides');
-  assert(order[0].includes('Top 10 Today'), '1st content row: 🔥 Top 10 Today (got: ' + order[0] + ')');
-  assert(order[1].includes('Popular Movies'), '2nd: ⭐ Popular Movies');
-  assert(order[2].includes('Popular Series'), '3rd: ⭐ Popular Series');
-  assert(order[3].includes('Popular Anime'), '4th: ⭐ Popular Anime');
-  assert(order[4].includes('Browse by genre'), '5th: 🎭 Browse by genre');
-  assert(order[5].includes('Start here'), '6th: Start here');
-  assert(order[6].includes('Latest articles'), '7th: 📰 Latest articles');
-  assert(order[7].includes('Watch on a licensed'), '8th: licensed-service strip');
+  const order = heads.slice(0, 11);
+  assert(order[0].includes('Top 10 Today'), '1st row: 🔥 Top 10 Today (got: ' + order[0] + ')');
+  const expected = [['Top 10 Today'], ['Trending Now'], ['Latest Release'], ['Hot New Releases'],
+    ['Bollywood'], ['South Indian Hits'], ['Drama Series'], ['Comedy'], ['Horror'],
+    ['Animation'], ['Trending Globally']];
+  expected.forEach(function (want, i) {
+    assert(order[i] && want.every(w => order[i].includes(w)), (i + 1) + ': ' + want[0] + ' (got: ' + order[i] + ')');
+  });
 }
 
-/* 2. Top 10 rail: curated, ascending ranks, real tiles */
+/* 2. Top 10 Today rail: exact reference cards, ascending ranks, real links */
 section('Top 10 Today rail');
 {
-  const t = tilesBetween(ent, '🔥 Top 10 Today', '⭐ Popular Movies');
-  assert(t.length >= 8, 'Top 10 rail has ranked tiles (got ' + t.length + ')');
+  const t = tilesBetween(ent, '🔥 Top 10 Today', 'Trending Now');
+  assert(t.length === 4, 'Top 10 rail has 4 cards (got ' + t.length + ')');
+  const names = ['Reacher', 'The Traitors', 'Spider-Man: Brand New Day', 'Adaalat'];
+  names.forEach(function (n, i) {
+    assert(t[i] && t[i].title === n, 'Top 10 #' + (i + 1) + ' = ' + n + ' (got ' + (t[i] && t[i].title) + ')');
+  });
   const ranks = t.map(x => x.rank && parseInt(x.rank, 10));
-  const asc = ranks.every((r, i) => r === i + 1);
-  assert(asc, 'ranks ascend 1..N (got ' + ranks.join(',') + ')');
-  assert(t.every(x => x.typ === 'movie'), 'Top 10 rail currently lists movies (per-type rank #1)');
-  const t10 = rankings.trending.movie.slice().sort((a, b) => a.trendingRank - b.trendingRank);
-  assert(t[0] && t[0].title === t10[0].title, 'Top 10 first tile matches trending config #1 (got ' + (t[0] && t[0].title) + ')');
+  assert(ranks.join(',') === '1,2,3,4', 'ranks ascend 1..4 (got ' + ranks.join(',') + ')');
 }
 
-/* 3. Popular: independent, per-type */
-section('Popular = independent list');
+/* 3. Row structure: split by section, count exact cards per row */
+section('Row card counts');
 {
-  const pm = tilesBetween(ent, '⭐ Popular Movies', '⭐ Popular Series');
-  const ps = tilesBetween(ent, '⭐ Popular Series', '⭐ Popular Anime');
-  const pa = tilesBetween(ent, '⭐ Popular Anime', '🎭 Browse by genre');
-  assert(pm.length >= 8, 'popular movies rail present (' + pm.length + ')');
-  assert(ps.length >= 8, 'popular series rail present (' + ps.length + ')');
-  assert(pa.length >= 8, 'popular anime rail present (' + pa.length + ')');
-  assert(pm.every(x => x.typ === 'movie'), 'popular movies rail: only movies');
-  assert(ps.every(x => x.typ === 'series'), 'popular series rail: only series');
-  assert(pa.every(x => x.typ === 'anime'), 'popular anime rail: only anime');
-  assert(pm.some(x => x.title === 'Titanic'), 'Titanic is popular');
-  assert(ps.some(x => x.title === 'Breaking Bad'), 'Breaking Bad is popular');
-  assert(pa.some(x => x.title === 'One Piece'), 'One Piece is popular');
+  const secs = ent.split(/(?=<section)/);
+  const rowCounts = {};
+  secs.forEach(function (sec) {
+    const h2 = (sec.match(/<h2>([^<]{2,60})<\/h2>/) || [])[1];
+    if (!h2) return;
+    const n = (sec.match(/class="tile"/g) || []).length;
+    rowCounts[h2.replace('🔥 ', '')] = n;
+  });
+  const want = {
+    'Top 10 Today': 4, 'Trending Now': 5, 'Latest Release': 4, 'Hot New Releases': 4,
+    'Bollywood': 3, 'South Indian Hits': 3, 'Drama Series': 3, 'Comedy': 3, 'Horror': 3,
+    'Animation &amp; Family': 3, 'Trending Globally — Coming Soon': 3,
+  };
+  Object.keys(want).forEach(function (k) {
+    const got = rowCounts[k];
+    assert(got === want[k], k + ' has ' + want[k] + ' cards (got ' + got + ')');
+  });
+  const links = Array.from(ent.matchAll(/<a class="tile" href="(\/(?:movie|series|anime)\/[^"]+)\/">/g)).map(m => m[1]);
+  const missing = links.filter(function (l) {
+    return !fs.existsSync(path.join(ROOT, l.slice(1), 'index.html'));
+  });
+  assert(links.length >= 34, 'every card links to a title page (' + links.length + ' links)');
+  assert(missing.length === 0, 'all card hrefs resolve to real pages' + (missing.length ? ' (missing: ' + missing.join(',') + ')' : ''));
 }
 
 /* 4. Title-page badges: independent concepts */
