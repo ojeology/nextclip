@@ -162,3 +162,13 @@ Matched the channel/genre structure to the actual NetMirror site file tree.
 ## Verified
 - Test suite identical to pristine `3e7a4e8` (no new failures).
 - Builders emit the exact 9-pill row (`scripts/build-channels.js`, `scripts/nm-exact.js`).
+
+---
+
+# v6 · Missing title pages (2026-08-21)
+
+Matched the NetMirror tree's movie/series pages: added 83 title pages for the
+reference slugs BRYME was missing (82 from the reference listing + Project Hail
+Mary). Full reference data (rating/year/type/age/desc/tagline) for 32 titles;
+real well-known metadata for the rest. All pages carry BRYME's SEO/legal shell,
+channel pills, Watch Now/Trailer CTAs, and More Like This. Sitemap updated.
