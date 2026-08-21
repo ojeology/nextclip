@@ -47,35 +47,32 @@
   {
     "id": "movies-like-interstellar-guide",
     "slug": "movies-like-interstellar-guide",
-    "title": "Six Movies to Watch If Interstellar Left You Wanting More",
-    "description": "A practical, spoiler-light set of follow-ups for viewers who liked Interstellar’s cosmic scale, emotional stakes and big questions.",
+    "title": "Movies Like Interstellar: Six Films If the Cosmos Wasn't Enough",
+    "description": "Looking for movies like Interstellar? These six films share the space travel, the time ache, or the family line — without copying Nolan's plot.",
     "category": "Movie Recommendations",
     "tags": [
       "interstellar",
       "science fiction",
-      "recommendations"
+      "recommendations",
+      "christopher nolan"
     ],
     "emoji": "",
     "items": [
       {
-        "heading": "Choose the part of Interstellar you want more of",
-        "body": "Interstellar can lead to very different next watches. Some viewers want the space travel, some want the time puzzle, and others want the family story underneath the spectacle. Starting with that distinction makes the recommendation more useful than a random science-fiction list."
+        "heading": "What people mean by movies like Interstellar",
+        "body": "Looking for movies like Interstellar usually means you want one of three things: the voyage, the time puzzle, or the father-daughter wait. {film:interstellar} does all three. The useful next watch is the film that nails the piece you actually sat with. This is a spoiler-light watch-next list from titles already on BRYME. It is not a ranking of science fiction and not a recap of the ending — that sits in {article:interstellar-ending-explained}, after you have watched."
       },
       {
-        "heading": "Arrival for the big question",
-        "body": "Arrival is the best next choice when the appeal was a film that trusts the audience with a difficult idea. Its pace is quieter, but its emotional payoff comes from the same willingness to connect a scientific premise to a personal choice."
+        "heading": "Best movies like Interstellar to watch next",
+        "body": "{film:arrival} is the quiet one. Aliens, language, a mother, time that does not run the way you expect. If the big idea in Interstellar mattered more than the docking, start here. {film:the-martian} is the problem-solving fork: one person, a planet, jokes that do not cancel the danger. Choose it when you wanted the science as work, not as a sermon. {film:gravity} is shorter and meaner. Orbit, debris, very little philosophy. Use it for the physical fear of space, not for Cooper and Murph. {film:dune-part-two} and {film:blade-runner-2049} are the scale-and-design pair, both Denis Villeneuve. Sand and rain, not a wormhole. If IMAX and politics were the hook, these are closer than another space-dad film. {film:2001-space-odyssey} is the older monument. Slow, cold, and the film Interstellar keeps arguing with. Not a casual Friday. Honest if you want the ancestor, not the sequel."
       },
       {
-        "heading": "The Martian for survival and problem-solving",
-        "body": "The Martian shifts the mood toward ingenuity and humour. It is a good follow-up if you enjoyed watching characters work through impossible technical constraints without losing the human stakes."
+        "heading": "If you wanted Nolan more than space",
+        "body": "If the director was the point, {article:christopher-nolan-movies-order} is the map of the films BRYME actually has — including {film:oppenheimer} and {film:the-odyssey}. Do not start that path with Tenet."
       },
       {
-        "heading": "Gravity for immediate tension",
-        "body": "Gravity is more concentrated: one person, one hostile environment and very little margin for error. Choose it when you want the physical danger of space rather than a large philosophical puzzle."
-      },
-      {
-        "heading": "Dune: Part Two and Blade Runner 2049 for atmosphere",
-        "body": "Dune: Part Two and Blade Runner 2049 are strong options for viewers who respond to scale, design and questions of power. They are not copies of Interstellar; each has a distinct world and pace."
+        "heading": "How to pick",
+        "body": "Idea and feeling: Arrival. Survival and humour: The Martian. Panic in orbit: Gravity. World and images: Dune: Part Two or Blade Runner 2049. The old argument: 2001. The catalogue page for the film itself is {film:interstellar}."
       }
     ],
     "blocks": [],
@@ -85,45 +82,48 @@
       "the-martian",
       "gravity",
       "dune-part-two",
-      "blade-runner-2049"
+      "blade-runner-2049",
+      "2001-space-odyssey",
+      "the-odyssey"
     ],
     "status": "published",
     "author": null,
     "createdAt": null,
-    "updatedAt": null
+    "updatedAt": "2026-08-21"
   },
   {
     "id": "nigerian-thrillers-worth-your-time",
     "slug": "nigerian-thrillers-worth-your-time",
     "title": "Five Nigerian Thrillers to Start With, and What Each One Does Differently",
-    "description": "A focused guide to Nigerian thrillers already in the catalogue, from political mystery to crime drama and supernatural unease.",
+    "description": "Nigerian thrillers to start with: five Nollywood titles on BRYME — political mystery, folklore, crime — and what each one actually does.",
     "category": "Nigerian / African Movies",
     "tags": [
       "nigerian cinema",
       "thrillers",
-      "nollywood"
+      "nollywood",
+      "nigerian movies"
     ],
     "emoji": "",
     "items": [
       {
-        "heading": "A useful place to begin",
-        "body": "Nigerian thriller cinema is not one fixed style. The titles in this guide use mystery, crime, folklore and political pressure in different ways. Pick the mood you want rather than treating them as interchangeable."
+        "heading": "Nigerian thrillers to start with",
+        "body": "Nigerian thriller cinema is not one style. The five below are already in the BRYME catalogue. Pick the mood. This is not a claim that Nollywood is only crime, and not a fake earnings chart. If you want the wider Lagos family-crime lane after this, {film:a-tribe-called-judah} and {film:king-of-boys} sit next door — heavier popular cinema, not interchangeable with a quiet mystery."
       },
       {
         "heading": "October 1 for historical mystery",
-        "body": "October 1 uses a murder investigation in the final days before Nigerian independence to create tension around a community already carrying political anxiety. It is the right choice when you want a measured mystery rather than nonstop action."
+        "body": "{film:october-1} is a murder investigation in a town about to become independent. Political air, a detective, a clock. Choose it when you want a measured mystery rather than a street shootout. Kunle Afolayan; the catalogue page is the place for details."
       },
       {
-        "heading": "The Figurine for supernatural uncertainty",
-        "body": "The Figurine works best for viewers who enjoy a story where belief is part of the tension. Its central question is not only what the object can do, but what fear and expectation do to the people around it."
+        "heading": "The Figurine for supernatural unease",
+        "body": "{film:the-figurine} is Afolayan in a more supernatural key. Belief is part of the tension: what the object might do, and what fear does to the people around it. Use it if folklore is the itch, not if you wanted a clean police procedural."
       },
       {
-        "heading": "The Black Book and Brotherhood for crime pressure",
-        "body": "The Black Book follows a father seeking answers inside a corrupt system, while Brotherhood places family loyalty under pressure from crime. Both are useful choices when you want a more direct contemporary thriller."
+        "heading": "The Black Book, Brotherhood, Gangs of Lagos",
+        "body": "{film:the-black-book} is a father pushing into a corrupt system. {film:brotherhood} puts family loyalty under crime pressure. {film:gangs-of-lagos} is the contemporary street-crime film. These three are the direct, present-day pressure group. They are not the same movie. Black Book is the hunt; Brotherhood is the bind; Gangs of Lagos is the city as a machine."
       },
       {
         "heading": "Where to go next",
-        "body": "Explore the Nigerian Cinema topic hub for dramas, comedies and fantasy films alongside these thrillers. The point is discovery across a cinema, not a claim that one title represents every Nigerian story."
+        "body": "{film:93-days} is not a thriller in the crime sense — it is the 2014 Lagos Ebola story, procedural fear. Mentioned so a \"Nigerian tension\" list does not pretend every tense film is a gangster picture. Start with October 1 if you want history-as-mystery. Figurine if you want unease. Black Book or Gangs of Lagos if you want now. The title pages carry trailers where BRYME has them; this guide will not invent streams."
       }
     ],
     "blocks": [],
@@ -132,45 +132,53 @@
       "the-figurine",
       "the-black-book",
       "brotherhood",
-      "gangs-of-lagos"
+      "gangs-of-lagos",
+      "93-days",
+      "king-of-boys",
+      "a-tribe-called-judah"
     ],
     "status": "published",
     "author": null,
     "createdAt": null,
-    "updatedAt": null
+    "updatedAt": "2026-08-21"
   },
   {
     "id": "korean-cinema-starter-guide-rebuilt",
     "slug": "korean-cinema-starter-guide-rebuilt",
     "title": "A Korean Cinema Starter Guide for Different Moods",
-    "description": "A spoiler-light way into Korean cinema using the actual films in the catalogue: mystery, family drama, monster horror, romance and moral tension.",
+    "description": "Korean movies to start with, by mood: class tension, a train, a mystery, a monster, a mansion. Titles already on BRYME — not a fake top-100.",
     "category": "Movie Guides",
     "tags": [
       "korean cinema",
       "movie guide",
-      "south korea"
+      "south korea",
+      "korean movies"
     ],
     "emoji": "",
     "items": [
       {
-        "heading": "Do not start with a label",
-        "body": "Korean cinema is too varied for a single starter list. A better approach is to choose a mood: social tension, fast genre storytelling, slow mystery, romance or family conflict."
+        "heading": "Korean movies to start with — pick a mood first",
+        "body": "A Korean cinema starter list that pretends one film represents the country is a lie. Better: pick a mood, then a title BRYME actually has. This is not a ranking and not a tour of every festival winner. If you already know you want films adjacent to {film:parasite}, use {article:movies-like-parasite} as well as this page."
       },
       {
-        "heading": "For sharp social observation",
-        "body": "Parasite is a natural entry point for viewers who want a story that changes tone while staying focused on class, family and ambition. It works as a conversation starter because its details keep opening up after the first watch."
+        "heading": "Class, family, a house that is not yours",
+        "body": "{film:parasite} is the usual door, and for once the usual door is fair. Class, a con, a tonal drop. If that is the mood, it is the honest start. {film:burning} is slower class unease. {film:the-housemaid} puts the worker in the employer's rooms."
       },
       {
-        "heading": "For energy and emotion",
-        "body": "Train to Busan is a strong choice when you want momentum. Its contained journey gives the action a clear emotional line, making it approachable even for viewers who do not usually choose zombie stories."
+        "heading": "Momentum: the train and the monster",
+        "body": "{film:train-to-busan} is the approachable panic film — a carriage, a family line, zombies that do not need a lecture. {film:the-host} is Bong with a river monster and a family that cannot organise. {film:the-wailing} is folk horror and patience; do not start there if you wanted popcorn."
       },
       {
-        "heading": "For mystery and atmosphere",
-        "body": "Decision to Leave and Memories of Murder reward patience. The first is a romantic mystery shaped by distance and uncertainty; the second follows investigators who cannot force a clear answer from a difficult case."
+        "heading": "Mystery and investigators who cannot force an answer",
+        "body": "{film:memories-of-murder} is the small-town case that will not close. {film:decision-to-leave} is a later Park Chan-wook mystery with weather and distance. {film:the-chaser} is pursuit, uglier and more street-level."
       },
       {
-        "heading": "For a bolder next step",
-        "body": "The Handmaiden and The Host show how far the range can stretch: one is an intricate period thriller, the other a family story wrapped in monster horror. Follow the Korean Cinema topic hub when you are ready to branch out."
+        "heading": "If you want the ornate thriller",
+        "body": "{film:the-handmaiden} is the mansion, the con, the period clothes. {film:oldboy} is the enclosed revenge film people warn you about. Different tools. Do not treat them as the same night. Bong's later {film:mickey-17} is science fiction, not Seoul streets. It belongs on a Bong shelf, not as a \"Korean starter\" unless the director was the point."
+      },
+      {
+        "heading": "How to choose",
+        "body": "Social bite: Parasite. Speed: Train to Busan. Mystery: Memories of Murder or Decision to Leave. Monster-family: The Host. Ornate: The Handmaiden. Horror that sits: The Wailing. One film will not do the whole country."
       }
     ],
     "blocks": [],
@@ -180,45 +188,50 @@
       "decision-to-leave",
       "memories-of-murder",
       "the-handmaiden",
-      "the-host"
+      "the-host",
+      "oldboy",
+      "burning",
+      "the-wailing",
+      "mickey-17"
     ],
     "status": "published",
     "author": null,
     "createdAt": null,
-    "updatedAt": null
+    "updatedAt": "2026-08-21"
   },
   {
     "id": "indian-cinema-first-five",
     "slug": "indian-cinema-first-five",
     "title": "Five Indian Films to Start With Across Five Different Moods",
-    "description": "A starter route through Indian cinema in the catalogue, from large-scale action and sports drama to quiet romance and unsettling folklore.",
+    "description": "Indian films to start with: five moods already on BRYME — scale, sport, quiet romance, folklore horror, family — not one fake \"Bollywood\" sample.",
     "category": "Movie Guides",
     "tags": [
       "indian cinema",
       "movie guide",
-      "recommendations"
+      "recommendations",
+      "bollywood"
     ],
     "emoji": "",
     "items": [
       {
-        "heading": "There is no single Indian-cinema experience",
-        "body": "The catalogue includes films in Hindi, Telugu, Kannada and Malayalam, each with different rhythms and traditions. This guide uses mood rather than language as the starting point."
+        "heading": "Indian films to start with — mood, not a single industry",
+        "body": "There is no single Indian-cinema experience. The BRYME catalogue already mixes Hindi, Telugu, Malayalam and more. This starter uses mood, not a fake tour of \"Bollywood hits.\" Five films, five jobs. {film:3-idiots} and {film:jawan} are extra doors if you want campus comedy or a contemporary Hindi action star vehicle after the five. They are not required for this route."
       },
       {
         "heading": "RRR for scale",
-        "body": "RRR is the choice when you want a large, emotionally direct action drama. Its friendship at the centre gives the spectacle a human anchor."
+        "body": "{film:rrr} is the large, emotionally direct action drama. Friendship at the centre, spectacle around it. Telugu-language film, widely seen with subtitles. Choose it when you want size without being told to \"study\" Indian cinema first."
       },
       {
-        "heading": "Dangal for a sports and family story",
-        "body": "Dangal is a useful next watch for viewers who prefer grounded pressure over fantasy scale. The film builds its tension around training, family expectations and competition."
+        "heading": "Dangal for sport and family pressure",
+        "body": "{film:dangal} is training, a father, daughters, competition. Grounded pressure. Use it if you prefer sweat to fantasy kingdoms. {film:lagaan} is the other sport-history door on BRYME if period cricket-and-colonial tension is the mood — different decade, same \"sport as story\" tool."
       },
       {
         "heading": "The Lunchbox for quiet connection",
-        "body": "The Lunchbox moves at a gentler pace. Its mistaken delivery premise becomes a way to explore routine, loneliness and what people choose to share with a stranger."
+        "body": "{film:the-lunchbox} is the mistaken tiffin, two people writing, Bombay routine. Slow on purpose. The opposite of RRR. Pick it when you want faces and food, not a war."
       },
       {
-        "heading": "Tumbbad and Kumbalangi Nights for a different route",
-        "body": "Tumbbad is for viewers who want folklore and horror, while Kumbalangi Nights is for those drawn to family dynamics. Together they show why a single label cannot capture Indian cinema."
+        "heading": "Tumbbad and Kumbalangi Nights",
+        "body": "{film:tumbbad} is folklore and greed and rain — horror, not a jump-scare franchise. {film:kumbalangi-nights} is a Malayalam family film: brothers, a house, no need for a national epic. Together they show why one label cannot cover the map. Start with RRR for scale, Dangal for family-sport, Lunchbox for quiet, Tumbbad for folk horror, Kumbalangi Nights for a household. Then stop pretending five films are the whole country."
       }
     ],
     "blocks": [],
@@ -227,12 +240,15 @@
       "dangal",
       "the-lunchbox",
       "tumbbad",
-      "kumbalangi-nights"
+      "kumbalangi-nights",
+      "3-idiots",
+      "jawan",
+      "lagaan"
     ],
     "status": "published",
     "author": null,
     "createdAt": null,
-    "updatedAt": null
+    "updatedAt": "2026-08-21"
   },
   {
     "id": "breaking-bad-two-seasons-opinion",
@@ -1969,11 +1985,11 @@
     "blocks": [
       {
         "type": "paragraph",
-        "text": "If Alice in Borderland hooked you with its deadly games, impossible decisions, psychological pressure and constant feeling that one mistake could be your last, finding something that gives you the same rush can be difficult."
+        "text": "If you want shows like Alice in Borderland, start here. {film:alice-in-borderland} hooked people with deadly games, impossible decisions, and the feeling that one mistake could be the last. Finding the same rush is difficult."
       },
       {
         "type": "paragraph",
-        "text": "Not every recommendation below is exactly like Alice in Borderland. Some focus more on deadly competition, others on strategy, survival, deception or horror. But they all share something important: the characters are never completely safe."
+        "text": "Not every recommendation below is exactly like {film:alice-in-borderland}. Some focus more on deadly competition, others on strategy, survival, deception or horror. But they all share something important: the characters are never completely safe."
       },
       {
         "type": "paragraph",
@@ -1985,7 +2001,7 @@
       },
       {
         "type": "paragraph",
-        "text": "If you've watched Alice in Borderland, Squid Game is probably the first recommendation you'll hear."
+        "text": "If you've watched {film:alice-in-borderland}, {film:squid-game} is probably the first recommendation you'll hear."
       },
       {
         "type": "paragraph",
@@ -1993,7 +2009,7 @@
       },
       {
         "type": "paragraph",
-        "text": "Squid Game puts more emphasis on desperation, money, relationships and what people are willing to do when their lives are on the line. Alice in Borderland leans more heavily into solving the games and understanding their rules."
+        "text": "{film:squid-game} puts more emphasis on desperation, money, relationships and what people are willing to do when their lives are on the line. {film:alice-in-borderland} leans more heavily into solving the games and understanding their rules."
       },
       {
         "type": "paragraph",
@@ -2013,7 +2029,7 @@
       },
       {
         "type": "paragraph",
-        "text": "If the part of Alice in Borderland you enjoyed most was watching Arisu figure out how a game works, this one deserves your attention."
+        "text": "If the part of {film:alice-in-borderland} you enjoyed most was watching Arisu figure out how a game works, this one deserves your attention."
       },
       {
         "type": "heading",
@@ -2029,7 +2045,7 @@
       },
       {
         "type": "paragraph",
-        "text": "That makes the series especially interesting for anyone who enjoys the moments in Alice in Borderland where understanding people is just as important as understanding the rules."
+        "text": "That makes the series especially interesting for anyone who enjoys the moments in {film:alice-in-borderland} where understanding people is just as important as understanding the rules."
       },
       {
         "type": "heading",
@@ -2065,7 +2081,7 @@
       },
       {
         "type": "paragraph",
-        "text": "For Alice in Borderland fans, this is particularly appealing because some of the most dangerous situations aren't necessarily caused by the game itself. They're caused by the people playing it."
+        "text": "For {film:alice-in-borderland} fans, this is particularly appealing because some of the most dangerous situations aren't necessarily caused by the game itself. They're caused by the people playing it."
       },
       {
         "type": "heading",
@@ -2093,7 +2109,7 @@
       },
       {
         "type": "paragraph",
-        "text": "If you want survival with a much more direct physical threat, All of Us Are Dead is an excellent choice."
+        "text": "If you want survival with a much more direct physical threat, {film:all-of-us-are-dead} is an excellent choice."
       },
       {
         "type": "paragraph",
@@ -2101,7 +2117,7 @@
       },
       {
         "type": "paragraph",
-        "text": "Like Alice in Borderland, the characters are thrown into a situation they never asked for and forced to adapt quickly."
+        "text": "Like {film:alice-in-borderland}, the characters are thrown into a situation they never asked for and forced to adapt quickly."
       },
       {
         "type": "paragraph",
@@ -2113,7 +2129,7 @@
       },
       {
         "type": "paragraph",
-        "text": "The 100 takes survival beyond a single location."
+        "text": "{film:the-100} takes survival beyond a single location."
       },
       {
         "type": "paragraph",
@@ -2125,7 +2141,7 @@
       },
       {
         "type": "paragraph",
-        "text": "If you enjoy survival stories that grow into something much larger, The 100 is worth watching."
+        "text": "If you enjoy survival stories that grow into something much larger, {film:the-100} is worth watching."
       },
       {
         "type": "heading",
@@ -2133,7 +2149,7 @@
       },
       {
         "type": "paragraph",
-        "text": "Sweet Home takes the survival formula into horror."
+        "text": "{film:sweet-home} takes the survival formula into horror."
       },
       {
         "type": "paragraph",
@@ -2141,11 +2157,11 @@
       },
       {
         "type": "paragraph",
-        "text": "Like Alice in Borderland, it creates the feeling that nowhere is completely safe."
+        "text": "Like {film:alice-in-borderland}, it creates the feeling that nowhere is completely safe."
       },
       {
         "type": "paragraph",
-        "text": "If you want something darker and more frightening after Alice in Borderland, Sweet Home is a strong choice."
+        "text": "If you want something darker and more frightening after {film:alice-in-borderland}, {film:sweet-home} is a strong choice."
       },
       {
         "type": "heading",
@@ -2153,7 +2169,7 @@
       },
       {
         "type": "paragraph",
-        "text": "Kingdom combines survival, horror and historical drama."
+        "text": "{film:kingdom} combines survival, horror and historical drama."
       },
       {
         "type": "paragraph",
@@ -2165,7 +2181,7 @@
       },
       {
         "type": "paragraph",
-        "text": "If you enjoy survival stories where the danger keeps expanding, Kingdom is worth adding to your list."
+        "text": "If you enjoy survival stories where the danger keeps expanding, {film:kingdom} is worth adding to your list."
       },
       {
         "type": "heading",
@@ -2173,11 +2189,11 @@
       },
       {
         "type": "paragraph",
-        "text": "That depends on what you loved about Alice in Borderland."
+        "text": "That depends on what you loved about {film:alice-in-borderland}."
       },
       {
         "type": "paragraph",
-        "text": "For deadly games: Squid Game"
+        "text": "For deadly games: {film:squid-game}"
       },
       {
         "type": "paragraph",
@@ -2189,11 +2205,11 @@
       },
       {
         "type": "paragraph",
-        "text": "For pure survival: All of Us Are Dead"
+        "text": "For pure survival: {film:all-of-us-are-dead}"
       },
       {
         "type": "paragraph",
-        "text": "For survival horror: Sweet Home or Kingdom"
+        "text": "For survival horror: {film:sweet-home} or {film:kingdom}"
       },
       {
         "type": "paragraph",
@@ -2201,11 +2217,11 @@
       },
       {
         "type": "paragraph",
-        "text": "For a bigger survival story: The 100"
+        "text": "For a bigger survival story: {film:the-100}"
       },
       {
         "type": "paragraph",
-        "text": "Alice in Borderland is difficult to replace because it combines so many things at once — games, survival, mystery, strategy and psychological pressure."
+        "text": "{film:alice-in-borderland} is difficult to replace because it combines so many things at once — games, survival, mystery, strategy and psychological pressure."
       },
       {
         "type": "paragraph",
@@ -2213,7 +2229,7 @@
       },
       {
         "type": "paragraph",
-        "text": "And if you haven't watched Alice in Borderland yet, start there."
+        "text": "And if you haven't watched {film:alice-in-borderland} yet, start there."
       }
     ],
     "relatedMovieSlugs": [
@@ -2227,7 +2243,7 @@
     "status": "published",
     "author": "Ibrahim Sodiq",
     "createdAt": null,
-    "updatedAt": null
+    "updatedAt": "2026-08-21"
   },
   {
     "id": "squid-game-season-1-why-it-became-a-global-phenomenon",
@@ -2544,7 +2560,7 @@
     "blocks": [
       {
         "type": "paragraph",
-        "text": "Finding an anime that feels exactly like Solo Leveling is harder than it sounds."
+        "text": "Finding an anime like Solo Leveling is harder than it sounds. {film:solo-leveling} pairs a weak hunter, a system, dungeons, and a climb that is supposed to feel unfair in his favour."
       },
       {
         "type": "paragraph",
@@ -2552,7 +2568,7 @@
       },
       {
         "type": "paragraph",
-        "text": "There are plenty of great anime with powerful characters, but not many give you exactly what Solo Leveling gives you."
+        "text": "There are plenty of great anime with powerful characters, but not many give you exactly what {film:solo-leveling} gives you."
       },
       {
         "type": "paragraph",
@@ -2568,7 +2584,7 @@
       },
       {
         "type": "paragraph",
-        "text": "Rimuru's journey has that same from almost nothing to an unbelievable level of power feeling that makes Solo Leveling so addictive."
+        "text": "Rimuru's journey has that same from almost nothing to an unbelievable level of power feeling that makes {film:solo-leveling} so addictive."
       },
       {
         "type": "paragraph",
@@ -2588,7 +2604,7 @@
       },
       {
         "type": "paragraph",
-        "text": "If the power progression in Solo Leveling gave you goosebumps, this one is worth your time."
+        "text": "If the power progression in {film:solo-leveling} gave you goosebumps, this one is worth your time."
       },
       {
         "type": "heading",
@@ -2596,7 +2612,7 @@
       },
       {
         "type": "paragraph",
-        "text": "Kaiju No. 8 takes a different route to the same kind of excitement."
+        "text": "{film:kaiju-no-8} takes a different route to the same kind of excitement."
       },
       {
         "type": "paragraph",
@@ -2616,7 +2632,7 @@
       },
       {
         "type": "paragraph",
-        "text": "It isn't Solo Leveling, but if you enjoyed watching Jinwoo become something nobody expected, Kaiju No. 8 should be on your list."
+        "text": "It isn't {film:solo-leveling}, but if you enjoyed watching Jinwoo become something nobody expected, {film:kaiju-no-8} should be on your list."
       },
       {
         "type": "heading",
@@ -2644,7 +2660,7 @@
       },
       {
         "type": "paragraph",
-        "text": "If you enjoyed the mysterious world-building surrounding Solo Leveling, Tower of God is worth checking out."
+        "text": "If you enjoyed the mysterious world-building surrounding {film:solo-leveling}, Tower of God is worth checking out."
       },
       {
         "type": "heading",
@@ -2664,11 +2680,11 @@
       },
       {
         "type": "paragraph",
-        "text": "The dungeon setting also gives it a connection to something Solo Leveling fans will immediately understand: going into dangerous places, fighting monsters and becoming stronger because of what you survive."
+        "text": "The dungeon setting also gives it a connection to something {film:solo-leveling} fans will immediately understand: going into dangerous places, fighting monsters and becoming stronger because of what you survive."
       },
       {
         "type": "paragraph",
-        "text": "It isn't as dark as Solo Leveling, but the progression is satisfying."
+        "text": "It isn't as dark as {film:solo-leveling}, but the progression is satisfying."
       },
       {
         "type": "heading",
@@ -2676,7 +2692,7 @@
       },
       {
         "type": "paragraph",
-        "text": "Black Clover is another classic underdog story."
+        "text": "{film:black-clover} is another classic underdog story."
       },
       {
         "type": "paragraph",
@@ -2692,7 +2708,7 @@
       },
       {
         "type": "paragraph",
-        "text": "If the underdog aspect of Solo Leveling was one of your favorite parts, Black Clover is an easy recommendation."
+        "text": "If the underdog aspect of {film:solo-leveling} was one of your favorite parts, {film:black-clover} is an easy recommendation."
       },
       {
         "type": "heading",
@@ -2700,7 +2716,7 @@
       },
       {
         "type": "paragraph",
-        "text": "Demon Slayer is different from Solo Leveling, but the journey of its protagonist is what makes it belong on this list."
+        "text": "{film:demon-slayer} is different from {film:solo-leveling}, but the journey of its protagonist is what makes it belong on this list."
       },
       {
         "type": "paragraph",
@@ -2728,7 +2744,7 @@
       },
       {
         "type": "paragraph",
-        "text": "And that zero-to-hero feeling is one of the things Solo Leveling fans can appreciate."
+        "text": "And that zero-to-hero feeling is one of the things {film:solo-leveling} fans can appreciate."
       },
       {
         "type": "heading",
@@ -2736,7 +2752,7 @@
       },
       {
         "type": "paragraph",
-        "text": "Jujutsu Kaisen brings supernatural battles, terrifying enemies and some seriously powerful characters."
+        "text": "{film:jujutsu-kaisen} brings supernatural battles, terrifying enemies and some seriously powerful characters."
       },
       {
         "type": "paragraph",
@@ -2752,7 +2768,7 @@
       },
       {
         "type": "paragraph",
-        "text": "Jujutsu Kaisen also has characters like Gojo, whose presence alone can make a scene feel completely different."
+        "text": "{film:jujutsu-kaisen} also has characters like Gojo, whose presence alone can make a scene feel completely different."
       },
       {
         "type": "paragraph",
@@ -2764,7 +2780,7 @@
       },
       {
         "type": "paragraph",
-        "text": "Hunter x Hunter isn't simply about becoming stronger as quickly as possible."
+        "text": "{film:hunter-x-hunter} isn't simply about becoming stronger as quickly as possible."
       },
       {
         "type": "paragraph",
@@ -2788,11 +2804,11 @@
       },
       {
         "type": "paragraph",
-        "text": "Hunter x Hunter also relies heavily on strategy rather than simply asking which character has the biggest power level."
+        "text": "{film:hunter-x-hunter} also relies heavily on strategy rather than simply asking which character has the biggest power level."
       },
       {
         "type": "paragraph",
-        "text": "If you enjoyed Solo Leveling's progression but want something with more depth and a longer journey, Hunter x Hunter is an excellent choice."
+        "text": "If you enjoyed {film:solo-leveling}'s progression but want something with more depth and a longer journey, {film:hunter-x-hunter} is an excellent choice."
       },
       {
         "type": "heading",
@@ -2800,7 +2816,7 @@
       },
       {
         "type": "paragraph",
-        "text": "If you love powerful transformations, big battles and characters constantly unlocking new abilities, Bleach is difficult to ignore."
+        "text": "If you love powerful transformations, big battles and characters constantly unlocking new abilities, {film:bleach} is difficult to ignore."
       },
       {
         "type": "paragraph",
@@ -2828,7 +2844,7 @@
       },
       {
         "type": "paragraph",
-        "text": "Bleach doesn't have Solo Leveling's exact leveling system, but it delivers that same feeling of \"this character just became something much more powerful.\""
+        "text": "{film:bleach} doesn't have {film:solo-leveling}'s exact leveling system, but it delivers that same feeling of \"this character just became something much more powerful.\""
       },
       {
         "type": "heading",
@@ -2836,7 +2852,7 @@
       },
       {
         "type": "paragraph",
-        "text": "Sword Art Online is another good recommendation if you enjoyed the game-like feeling of Solo Leveling."
+        "text": "{film:sword-art-online} is another good recommendation if you enjoyed the game-like feeling of {film:solo-leveling}."
       },
       {
         "type": "paragraph",
@@ -2848,7 +2864,7 @@
       },
       {
         "type": "paragraph",
-        "text": "The connection to Solo Leveling isn't perfect, but the game-world atmosphere and constant battles make it a natural recommendation for viewers who enjoy that kind of fantasy."
+        "text": "The connection to {film:solo-leveling} isn't perfect, but the game-world atmosphere and constant battles make it a natural recommendation for viewers who enjoy that kind of fantasy."
       },
       {
         "type": "heading",
@@ -2864,27 +2880,27 @@
       },
       {
         "type": "paragraph",
-        "text": "Hunter x Hunter has incredible depth."
+        "text": "{film:hunter-x-hunter} has incredible depth."
       },
       {
         "type": "paragraph",
-        "text": "Demon Slayer has spectacular animation."
+        "text": "{film:demon-slayer} has spectacular animation."
       },
       {
         "type": "paragraph",
-        "text": "Jujutsu Kaisen has incredible characters and battles."
+        "text": "{film:jujutsu-kaisen} has incredible characters and battles."
       },
       {
         "type": "paragraph",
-        "text": "Bleach has some of the most iconic transformations."
+        "text": "{film:bleach} has some of the most iconic transformations."
       },
       {
         "type": "paragraph",
-        "text": "And That Time I Got Reincarnated as a Slime gives you an incredibly satisfying power progression."
+        "text": "And {film:slime} gives you an incredibly satisfying power progression."
       },
       {
         "type": "paragraph",
-        "text": "But Solo Leveling has something special."
+        "text": "But {film:solo-leveling} has something special."
       },
       {
         "type": "paragraph",
@@ -2896,11 +2912,11 @@
       },
       {
         "type": "paragraph",
-        "text": "You don't need these anime to replace Solo Leveling."
+        "text": "You don't need these anime to replace {film:solo-leveling}."
       },
       {
         "type": "paragraph",
-        "text": "Watch them because each one gives you a different version of the things that made Solo Leveling so addictive: growth, power, battles, dangerous worlds and protagonists who become far more than anyone expected."
+        "text": "Watch them because each one gives you a different version of the things that made {film:solo-leveling} so addictive: growth, power, battles, dangerous worlds and protagonists who become far more than anyone expected."
       }
     ],
     "relatedMovieSlugs": [
@@ -2917,7 +2933,7 @@
     "status": "published",
     "author": "Ibrahim Sodiq",
     "createdAt": null,
-    "updatedAt": null
+    "updatedAt": "2026-08-21"
   },
   {
     "id": "solo-leveling-vs-hunter-x-hunter-the-similarities-and-differences",
@@ -4087,62 +4103,45 @@
     "id": "dune-sci-fi-epics-guide",
     "slug": "dune-sci-fi-epics-guide",
     "title": "Movies Like Dune: Big-Scale Science-Fiction Epics to Watch Next",
-    "description": "If Dune's scale, worldbuilding and political ambition are what you want more of, these are the sci-fi epics that come closest — with a note on what each one does differently.",
+    "description": "Looking for movies like Dune? These sci-fi epics share the scale, the politics, or the desert-myth mood — and they are already on BRYME.",
     "category": "Movie Guides",
     "tags": [
       "dune",
       "science fiction",
       "recommendations",
-      "epic"
+      "epic",
+      "denis villeneuve"
     ],
     "emoji": "",
     "items": [
       {
-        "heading": "Start with the story you loved",
-        "body": "Dune works on several levels at once: a desert planet and its ecology, a royal power struggle, a chosen-one prophecy, and enormous scale. Different viewers latch onto different parts, so the best next watch depends on which one pulled you in."
+        "heading": "What people mean by movies like Dune",
+        "body": "Looking for movies like Dune usually means you want a world that feels bigger than the hero: ecology, houses, prophecy, and a camera that does not hurry. {film:dune} (2021) is Villeneuve's first half of Frank Herbert. {film:dune-part-two} is the war that follows. {film:dune-part-three} is listed on BRYME as a 2026 title still ahead of release — not a recap, not a review of a film that is not out. This list is for the feeling of the modern Dune films, not a dump of every sand planet in cinema."
       },
       {
-        "heading": "For more of the same world: Dune: Part Two",
-        "body": "The direct sequel continues Paul Atreides's story across the desert. If you want more of the sand, the Fremen and the political fallout of the first film, this is the obvious next stop before anything else."
-      },
-      {
-        "heading": "For scale and design: Blade Runner 2049",
-        "body": "Directed by Denis Villeneuve, the same director as the modern Dune films, Blade Runner 2049 shares that patient, enormous-screen visual language. It is more of a detective story set in a rain-soaked future city, but the sense of a vast, detailed world is very similar."
-      },
-      {
-        "heading": "For the big questions: Interstellar",
-        "body": "Interstellar trades Dune's sand for space and its politics for family and time. If you responded to the sense of cosmic scale and big ideas rather than the warring houses, this is the closest match in feel."
-      },
-      {
-        "heading": "For a quieter cosmic mystery: Arrival",
-        "body": "Arrival is smaller in spectacle but just as ambitious in idea. It asks how communication and time actually work, and it trusts the audience the way Dune does. A strong pick when you want the brain of Dune without the battles."
-      },
-      {
-        "heading": "For problem-solving and survival: The Martian",
-        "body": "The Martian is Dune's opposite in tone — optimistic, funny, and built around engineering problems. If what you loved was watching a stranded protagonist survive against a hostile world through skill and cleverness, this delivers that energy."
-      },
-      {
-        "heading": "For pure tension: Gravity",
-        "body": "Gravity is the most concentrated of the group: one character, one accident, very little margin for error. Choose it when you want the physical danger of space rather than Dune's sprawling political canvas."
+        "heading": "Best movies like Dune to watch next",
+        "body": "If you have not finished the story on Arrakis, watch {film:dune-part-two} before you go shopping for cousins. Same desert, same director, the political bill coming due. {film:blade-runner-2049} is Villeneuve again: patience, huge frames, a detective instead of a duke. Rain instead of spice. The closest match in how it looks and waits. {film:interstellar} trades houses for a family and sand for a wormhole. Pick it when the cosmic scale was the hook, not the court intrigue. {film:arrival} is smaller and just as stubborn about language and time. Use it when Dune's ideas mattered more than the worms. {film:the-martian} is the opposite mood: jokes, engineering, a man who wants to live. Hostile planet, no prophecy. {film:gravity} is one accident and no empire. {film:2001-space-odyssey} is the cold ancestor — slow, and not a substitute for Herbert."
       },
       {
         "heading": "How to choose",
-        "body": "If you loved the world and politics, start with Dune: Part Two. If you loved the scale and visuals, go Blade Runner 2049. If you loved the big ideas, Interstellar or Arrival. If you loved survival against a hostile place, The Martian or Gravity. All of them are strong, and none is a copy of Dune."
+        "body": "Same world: Part Two. Same director's eye: Blade Runner 2049. Big ideas: Interstellar or Arrival. Survival without myth: The Martian. The 1968 argument: 2001. Start with {film:dune} if you skipped Part One."
       }
     ],
     "blocks": [],
     "relatedMovieSlugs": [
+      "dune",
       "dune-part-two",
       "blade-runner-2049",
       "interstellar",
       "arrival",
       "the-martian",
-      "gravity"
+      "gravity",
+      "2001-space-odyssey"
     ],
     "status": "published",
     "author": null,
     "createdAt": null,
-    "updatedAt": null
+    "updatedAt": "2026-08-21"
   },
   {
     "id": "christopher-nolan-movies-order",
