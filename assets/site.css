@@ -3288,6 +3288,10 @@ main.tp-page .nm-crumb a:hover{color:#fff}
 }
 .nm-video-hero .nm-hero-bar a:hover{background:rgba(0,0,0,.8)}
 .nm-trailer-embed{position:absolute;inset:0}
+.nm-trailer-embed .trailer-section-inner{
+  width:100%;max-width:none;height:100%;
+}
+.nm-trailer-embed .trailer-head{display:none}
 .nm-trailer-embed .trailer-frame{
   width:100%;height:100%;max-width:none;aspect-ratio:auto;
   border-radius:0;border:0;background:#000;
