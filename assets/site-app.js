@@ -33,7 +33,7 @@ document.addEventListener('error', function (e) {
     var genre = m.g || '';
     var rating = m.r != null ? '<p class="tile-rating" title="BRYME editorial score">★ ' + m.r + '/10 · Editorial</p>' : '';
     var img = m.p ? '<img loading="lazy" src="' + esc(m.p) + '" alt="' + esc(m.t) + ' trailer thumbnail">' : '<div class="placeholder">' + esc(m.t) + '</div>';
-    return '<a class="tile" href="' + BASE + '/' + typeDir + '/' + esc(m.s) + '/"><div class="poster">' + img + '</div><h3>' + esc(m.t) + '</h3><div class="tile-meta"><span class="type-badge tb-' + typeDir + '">' + label + '</span><span>' + (m.y || '') + '</span>' + (genre ? '<span class="sep">·</span><span>' + esc(genre) + '</span>' : '') + '</div>' + rating + '</a>';
+    return '<a class="tile" href="' + BASE + '/' + typeDir + '/' + esc(m.s) + '/"><div class="poster">' + img + '<span class="tile-play" aria-hidden="true"></span></div><h3>' + esc(m.t) + '</h3><div class="tile-meta"><span class="type-badge tb-' + typeDir + '">' + label + '</span><span>' + (m.y || '') + '</span>' + (genre ? '<span class="sep">·</span><span>' + esc(genre) + '</span>' : '') + '</div>' + rating + '</a>';
   }
 
   /* ---------- theme toggle, back-to-top, scroll progress, / shortcut ---------- */
@@ -831,7 +831,7 @@ document.addEventListener('error', function (e) {
       var img = it.p ? '<img loading="lazy" width="480" height="360" src="' + esc(it.p) + '" alt="' + esc(it.t) + ' poster">' : '<div class="placeholder">' + esc(it.t) + '</div>';
       var rating = it.r != null ? '<p class="tile-rating">★ ' + it.r + '/10 · Editorial</p>' : '';
       var url = BASE + '/' + it.ty + '/' + it.s + '/';
-      return '<div class="tile"><div class="poster">' + img + '</div><h3>' + esc(it.t) + '</h3><div class="tile-meta"><span class="type-badge tb-' + it.ty + '">' + it.ty.toUpperCase() + '</span><span>' + (it.y || '') + '</span></div>' + rating + '<div class="rec-actions"><a class="ra-trailer" href="' + url + '#trailer">Watch Trailer</a><a class="ra-details" href="' + url + '">View Details</a></div></div>';
+      return '<div class="tile"><div class="poster">' + img + '<span class="tile-play" aria-hidden="true"></span></div><h3>' + esc(it.t) + '</h3><div class="tile-meta"><span class="type-badge tb-' + it.ty + '">' + it.ty.toUpperCase() + '</span><span>' + (it.y || '') + '</span></div>' + rating + '<div class="rec-actions"><a class="ra-trailer" href="' + url + '#trailer">Watch Trailer</a><a class="ra-details" href="' + url + '">View Details</a></div></div>';
     }
     function recBySlug(slug) {
       var found = null;

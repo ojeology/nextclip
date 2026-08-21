@@ -1087,7 +1087,7 @@ function card(m, opts){
   const genre = m.genreLabel || m.genre || '';
   const rating = m.rating && m.rating.value != null ? `<p class="tile-rating" title="BRYME editorial score">★ ${esc(String(m.rating.value))}/10 · Editorial</p>` : '';
   const rank = opts.rank ? `<span class="rank${opts.rank <= 3 ? ' top' : ''}">${opts.rank}</span>` : '';
-  return `<a class="tile" href="${url('/' + typeDir + '/' + m.slug + '/')}"><div class="poster">${rank}${poster(m) ? `<img loading="lazy" decoding="async" width="320" height="180" src="${esc(poster(m) || posterThumb(m))}" alt="${esc(m.title)} poster">` : `<img loading="lazy" decoding="async" width="600" height="900" src="${url(cardImage(m))}" alt="${esc(m.title)} — BRYME title card">`}</div><h3>${esc(m.title)}</h3><div class="tile-meta"><span class="type-badge tb-${typeDir}">${label}</span><span>${esc(m.year || '')}</span>${genre ? `<span class="sep">·</span><span>${esc(genre)}</span>` : ''}</div>${rating}</a>`;
+  return `<a class="tile" href="${url('/' + typeDir + '/' + m.slug + '/')}"><div class="poster">${rank}${poster(m) ? `<img loading="lazy" decoding="async" width="320" height="180" src="${esc(poster(m) || posterThumb(m))}" alt="${esc(m.title)} trailer thumbnail">` : `<img loading="lazy" decoding="async" width="600" height="900" src="${url(cardImage(m))}" alt="${esc(m.title)} — BRYME title card">`}<span class="tile-play" aria-hidden="true"></span></div><h3>${esc(m.title)}</h3><div class="tile-meta"><span class="type-badge tb-${typeDir}">${label}</span><span>${esc(m.year || '')}</span>${genre ? `<span class="sep">·</span><span>${esc(genre)}</span>` : ''}</div>${rating}</a>`;
 }
 function progressiveGrid(items, initial){
   const shown = items.slice(0, initial), hidden = items.slice(initial);
@@ -1163,12 +1163,49 @@ function pageTitle(raw){
 }
 function pageDesc(raw){ return clipMeta(raw, 155); }
 
+
+const LEGAL_SERVICES = [
+  { name: 'Netflix', url: 'https://www.netflix.com' },
+  { name: 'Prime Video', url: 'https://www.primevideo.com' },
+  { name: 'Disney+', url: 'https://www.disneyplus.com' },
+  { name: 'Crunchyroll', url: 'https://www.crunchyroll.com' },
+  { name: 'Apple TV+', url: 'https://tv.apple.com' }
+];
+function legalServiceChips(){
+  return LEGAL_SERVICES.map(sv => `<a class="svc-chip" href="${esc(sv.url)}" rel="nofollow noopener" target="_blank">${esc(sv.name)}</a>`).join('');
+}
+function legalServicesStrip(opts){
+  opts = opts || {};
+  const title = opts.title || 'Watch legally';
+  const lead = opts.lead || 'BRYME does not host films or episodes. These open the licensed service — not a BRYME stream, and not a promise the title is on that service in your country.';
+  return `<section class="svc-strip"><div class="svc-copy"><h2>${esc(title)}</h2><p>${esc(lead)}</p></div><div class="svc-row">${legalServiceChips()}</div></section>`;
+}
+function deskBar(o){
+  const path = String(o.path || '');
+  const active = String(o.activeNav || '');
+  const on = /^(home|movies|series|anime|entertainment|genres)$/.test(active)
+    || path === '/'
+    || path === '/trending/' || path === '/search/' || path === '/genres/' || path === '/entertainment/'
+    || path === '/movies/' || path === '/series/' || path === '/anime/'
+    || /^\/(movie|series|anime|movies|trending|genres|search|entertainment|genre|year)\//.test(path);
+  if (!on) return '';
+  const items = [
+    { href: '/trending/', on: path.indexOf('/trending/') === 0, label: 'Trending' },
+    { href: '/movies/', on: path.indexOf('/movies/') === 0 || path.indexOf('/movie/') === 0 || path.indexOf('/year/') === 0, label: 'Movies' },
+    { href: '/series/', on: path.indexOf('/series/') === 0, label: 'Series' },
+    { href: '/anime/', on: path.indexOf('/anime/') === 0, label: 'Anime' },
+    { href: '/genres/', on: path.indexOf('/genres/') === 0 || path.indexOf('/genre/') === 0, label: 'Genres' },
+    { href: '/search/', on: path.indexOf('/search/') === 0, label: 'Search' }
+  ];
+  return `<nav class="desk-bar" aria-label="Catalogue"><div class="shell desk-bar-inner">${items.map(i => `<a href="${url(i.href)}"${i.on ? ' class="is-on"' : ''}>${i.label}</a>`).join('')}</div></nav>`;
+}
 function layout(o){
+
   const socialImage = socialMeta(o.image);
   const schema = o.schema ? `<script type="application/ld+json">${JSON.stringify(normalizeSchema(o.schema)).replace(/</g,'\\u003c')}<\/script>` : '';
   const active = o.activeNav || '';
   const themeInit = '<script>try{var t=localStorage.getItem(\'bryme-theme\');var p=(t===\'light\'||t===\'dark\')?t:(window.matchMedia&&window.matchMedia(\'(prefers-color-scheme: light)\').matches?\'light\':\'dark\');var m=document.querySelector(\'meta[name=theme-color]\');if(p===\'light\'){document.documentElement.setAttribute(\'data-theme\',\'light\');document.documentElement.style.colorScheme=\'light\';if(m)m.setAttribute(\'content\',\'#f4f5f7\');}else{document.documentElement.removeAttribute(\'data-theme\');if(m)m.setAttribute(\'content\',\'#08090b\');}}catch(e){}</script>';
-  return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#08090b"><meta name="color-scheme" content="dark light"><link rel="icon" href="${url('/assets/favicon.svg')}" type="image/svg+xml"><link rel="icon" href="${url('/assets/favicon.png')}" type="image/png" sizes="32x32"><link rel="apple-touch-icon" href="${url('/assets/icons/apple-touch-icon.png')}"><link rel="manifest" href="${url('/manifest.webmanifest')}"><link rel="preconnect" href="https://i.ytimg.com" crossorigin><link rel="preconnect" href="https://www.youtube-nocookie.com" crossorigin><link rel="preconnect" href="https://www.youtube.com" crossorigin>${themeInit}<title>${esc(pageTitle(o.title))}</title><meta name="description" content="${esc(pageDesc(o.description))}">${VERIFY_TAGS}${o.lcpImage?`<link rel="preload" as="image" href="${esc(o.lcpImage)}" fetchpriority="high">`:''}${o.noindex?'<meta name="robots" content="noindex,follow">':''}<link rel="canonical" href="${absUrl(o.canonical || o.path)}"><meta property="og:type" content="${esc(o.ogType || 'website')}"><meta property="og:site_name" content="${site.name}"><meta property="og:title" content="${esc(pageTitle(o.title))}"><meta property="og:description" content="${esc(pageDesc(o.description))}"><meta property="og:url" content="${absUrl(o.path)}">${socialImage}<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${esc(pageTitle(o.title))}"><meta name="twitter:description" content="${esc(pageDesc(o.description))}"><link rel="stylesheet" href="${url('/assets/site.css')}">${schema}</head><body data-nav="${esc(o.activeNav || '')}"><header class="top"><div class="shell"><a class="brand" href="${url('/')}">BRY<b>ME</b></a><nav class="topnav"><a href="${url('/')}"${active==='home'?' class="active"':''}>Home</a><a href="${url('/entertainment/')}"${active==='entertainment'?' class="active"':''}>🎬 Entertainment</a><a href="${url('/sports/')}"${active==='sports'?' class="active"':''}>⚽ Sports</a><a href="${url('/make-money/')}"${active==='make-money'?' class="active"':''}>💰 Make Money</a><a href="${url('/tech/')}"${active==='tech'?' class="active"':''}>🤖 Tech &amp; AI</a><a class="nav-search" href="${url('/search/')}">Search</a></nav><div class="top-tools"><a class="header-search" href="${url('/search/')}" aria-label="Search">Search</a></div></div></header>${o.body}<nav class="mobile-nav"><a href="${url('/')}"${active==='home'?' class="active"':''}><span class="mn-ico">🏠</span>Home</a><a href="${url('/entertainment/')}"${active==='entertainment'?' class="active"':''}><span class="mn-ico">🎬</span>Entertain</a><a href="${url('/sports/')}"${active==='sports'?' class="active"':''}><span class="mn-ico">⚽</span>Sports</a><a href="${url('/make-money/')}"${active==='make-money'?' class="active"':''}><span class="mn-ico">💰</span>Money</a><a href="${url('/tech/')}"${active==='tech'?' class="active"':''}><span class="mn-ico">🤖</span>Tech</a><a href="${url('/search/')}"><span class="mn-ico">🔍</span>Search</a></nav><footer class="footer"><div class="shell"><div class="footer-grid">
+  return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#08090b"><meta name="color-scheme" content="dark light"><link rel="icon" href="${url('/assets/favicon.svg')}" type="image/svg+xml"><link rel="icon" href="${url('/assets/favicon.png')}" type="image/png" sizes="32x32"><link rel="apple-touch-icon" href="${url('/assets/icons/apple-touch-icon.png')}"><link rel="manifest" href="${url('/manifest.webmanifest')}"><link rel="preconnect" href="https://i.ytimg.com" crossorigin><link rel="preconnect" href="https://www.youtube-nocookie.com" crossorigin><link rel="preconnect" href="https://www.youtube.com" crossorigin>${themeInit}<title>${esc(pageTitle(o.title))}</title><meta name="description" content="${esc(pageDesc(o.description))}">${VERIFY_TAGS}${o.lcpImage?`<link rel="preload" as="image" href="${esc(o.lcpImage)}" fetchpriority="high">`:''}${o.noindex?'<meta name="robots" content="noindex,follow">':''}<link rel="canonical" href="${absUrl(o.canonical || o.path)}"><meta property="og:type" content="${esc(o.ogType || 'website')}"><meta property="og:site_name" content="${site.name}"><meta property="og:title" content="${esc(pageTitle(o.title))}"><meta property="og:description" content="${esc(pageDesc(o.description))}"><meta property="og:url" content="${absUrl(o.path)}">${socialImage}<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${esc(pageTitle(o.title))}"><meta name="twitter:description" content="${esc(pageDesc(o.description))}"><link rel="stylesheet" href="${url('/assets/site.css')}">${schema}</head><body data-nav="${esc(o.activeNav || '')}"><header class="top"><div class="shell"><a class="brand" href="${url('/')}">BRY<b>ME</b></a><nav class="topnav"><a href="${url('/')}"${active==='home'?' class="active"':''}>Home</a><a href="${url('/entertainment/')}"${active==='entertainment'?' class="active"':''}>🎬 Entertainment</a><a href="${url('/sports/')}"${active==='sports'?' class="active"':''}>⚽ Sports</a><a href="${url('/make-money/')}"${active==='make-money'?' class="active"':''}>💰 Make Money</a><a href="${url('/tech/')}"${active==='tech'?' class="active"':''}>🤖 Tech &amp; AI</a><a class="nav-search" href="${url('/search/')}">Search</a></nav><div class="top-tools"><a class="header-search" href="${url('/search/')}" aria-label="Search">Search</a></div></div></header>${deskBar(o)}${o.body}<nav class="mobile-nav"><a href="${url('/')}"${active==='home'?' class="active"':''}><span class="mn-ico">🏠</span>Home</a><a href="${url('/entertainment/')}"${active==='entertainment'?' class="active"':''}><span class="mn-ico">🎬</span>Entertain</a><a href="${url('/sports/')}"${active==='sports'?' class="active"':''}><span class="mn-ico">⚽</span>Sports</a><a href="${url('/make-money/')}"${active==='make-money'?' class="active"':''}><span class="mn-ico">💰</span>Money</a><a href="${url('/tech/')}"${active==='tech'?' class="active"':''}><span class="mn-ico">🤖</span>Tech</a><a href="${url('/search/')}"><span class="mn-ico">🔍</span>Search</a></nav><footer class="footer"><div class="shell"><div class="footer-grid">
   <div class="footer-brand"><a class="brand" href="${url('/')}">BRY<b>ME</b></a><p>Discover what you love. Learn what you need. Find what's next.</p></div>
   <nav class="footer-col" aria-label="Explore"><h4>Verticals</h4><a href="${url('/entertainment/')}">🎬 Entertainment</a><a href="${url('/sports/')}">⚽ Sports</a><a href="${url('/make-money/')}">💰 Make Money</a><a href="${url('/tech/')}">🤖 Tech &amp; AI</a></nav>
   <nav class="footer-col" aria-label="Explore"><h4>Entertainment</h4><a href="${url('/trending/')}">What's Trending</a><a href="${url('/movies/')}">Movies</a><a href="${url('/series/')}">Series</a><a href="${url('/anime/')}">Anime</a><a href="${url('/articles/')}">Articles</a><a href="${url('/genres/')}">Genres</a></nav>
@@ -1966,6 +2003,7 @@ write('', layout({
   ${livePreviewBlock(24)}
   <section class="home-section"><div class="shell"><div class="section-head"><h2>🎭 Browse by genre</h2><a href="${url('/genres/')}">All genres</a></div><div class="genre-trio"><div class="genre-panel"><h3>🎬 Movie genres <span class="gp-count">${movies.filter(m=>m.typeDir==='movie').length} films</span></h3><div class="genre-chips">${genreChips(movies.filter(m=>m.typeDir==='movie'), 'movies', 9)}</div></div><div class="genre-panel"><h3>📺 Series genres <span class="gp-count">${movies.filter(m=>m.typeDir==='series').length} shows</span></h3><div class="genre-chips">${genreChips(movies.filter(m=>m.typeDir==='series'), 'series', 9)}</div></div><div class="genre-panel"><h3>🍥 Anime genres <span class="gp-count">${movies.filter(m=>m.typeDir==='anime').length} titles</span></h3><div class="genre-chips">${genreChips(movies.filter(m=>m.typeDir==='anime'), 'anime', 9)}</div></div></div></div></section>
   <section class="home-section"><div class="shell"><div class="section-head"><div><div class="eyebrow">From the editorial desk</div><h2>📰 Latest articles</h2></div><a href="${url('/articles/')}">All stories</a></div><div class="story-grid">${latestArticles.map(a => storyPhoto('/article/' + a.slug + '/', a.category, a.title, a.description || '', heroFor(a.slug, 'entertainment'))).join('')}</div></div></section>
+  ${legalServicesStrip({ title: 'Watch on a licensed service', lead: 'BRYME is a discovery site. Trailers are official YouTube embeds. To watch a film or series, open a licensed service — we do not host the title.' })}
   <section class="discover-cta"><div><div class="eyebrow">Full catalogue</div><h2>Pick a lane: Movies, Series or Anime.</h2><p>Each section is strictly filtered to its own content type. No mixed-up walls of posters.</p></div><a class="cta" href="${url('/search/')}">Search everything</a></div></section></div></main><script id="hero-data" type="application/json">${heroEmbed}</script>`
 }));
 
@@ -3453,12 +3491,13 @@ function watchLinkLabel(link){
 }
 function whereToWatchBlock(m){
   const links = (m.watchLinks || []).filter(l => l && l.url && isLegalWatchUrl(l.url));
-  const note = '<p class="tp-watch-note">BRYME does not host films and does not list unofficial streams. Availability changes by country — confirm on the service itself. These links are not advertisements.</p>';
+  const note = '<p class="tp-watch-note">BRYME does not host films and does not list unofficial streams. Availability changes by country — confirm on the service itself. Opening Netflix or Prime Video is not a claim that this title is on that service. These links are not advertisements.</p>';
+  const services = `<div class="svc-row">${legalServiceChips()}</div>`;
   if (!links.length) {
-    return `<section class="tp-watch" id="watch"><h2>Where to watch legally</h2><p>BRYME is not a streaming site. Look for ${esc(m.title)} on licensed services in your country — Netflix, Prime Video, Disney+, Showmax, YouTube Movies, or a cinema or rental store. If a service does not offer it, it is not listed here.</p>${note}</section>`;
+    return `<section class="tp-watch" id="watch"><h2>Where to watch legally</h2><p>BRYME is not a streaming site. Look for ${esc(m.title)} on a licensed service in your country. If they do not offer it, it is not listed as a title link here.</p>${services}${note}</section>`;
   }
   const items = links.map(l => `<a class="tp-watch-btn" href="${esc(l.url)}" rel="nofollow noopener" target="_blank">${esc(watchLinkLabel(l))}</a>`).join('');
-  return `<section class="tp-watch" id="watch"><h2>Where to watch legally</h2><p>Official platforms you can check. A search link is not a promise the title is licensed there right now.</p><div class="tp-watch-row">${items}</div>${note}</section>`;
+  return `<section class="tp-watch" id="watch"><h2>Where to watch legally</h2><p>Official platforms you can check. A search link is not a promise the title is licensed there right now.</p><div class="tp-watch-row">${items}</div>${services}${note}</section>`;
 }
 function nowTalkingBlock(m){
   const ed = editorialOf(m);
@@ -3533,7 +3572,7 @@ function lovedBlock(m, related){
     const img = poster(x) || url(cardImage(x));
     const g = listedGenres(x)[0] || (x.typeDir === 'anime' ? 'Anime' : (x.typeDir === 'series' ? 'Series' : 'Movie'));
     const href = url('/' + (x.typeDir || 'movie') + '/' + x.slug + '/');
-    return `<a class="tp-loved-card" href="${href}"><img loading="lazy" decoding="async" width="160" height="90" src="${esc(img)}" alt="${esc(x.title)} poster"><span><b>${esc(x.title)}</b><em>${esc(g)}${x.year ? ' · ' + x.year : ''}</em><small>${esc(recReason(m, x))}</small></span></a>`;
+    return `<a class="tp-loved-card" href="${href}"><img loading="lazy" decoding="async" width="320" height="180" src="${esc(img)}" alt="${esc(x.title)} thumbnail"><span><b>${esc(x.title)}</b><em>${esc(g)}${x.year ? ' · ' + x.year : ''}</em><small>${esc(recReason(m, x))}</small></span></a>`;
   }).join('');
   return `<section class="tp-loved tp-loved-under" id="loved"><h2>🍿 ${esc(lovedHeading(m))}</h2><p class="tp-loved-lead">If you like this, check these out. It sits under the trailer so it does not cover the player.</p><div class="tp-loved-list">${cards}</div><p class="tp-loved-more">Didn't find your next ${esc(noun === 'movies' ? 'movie' : noun)}? <a href="${url(explore)}">Explore What's Trending →</a></p></section>`;
 }
@@ -5241,6 +5280,178 @@ fs.appendFileSync(path.join(root,'assets/site.css'), `
   .tp-loved-card img{width:72px;height:42px}
   .tp-loved-under h2{font-size:16px}
 }
+`);
+
+
+fs.appendFileSync(path.join(root,'assets/site.css'), `
+/* BRYME cinematic catalogue — own design system, 16:9 cards, desk bar */
+:root{
+  --radius:10px;
+  --card-gap:12px;
+  --shade:linear-gradient(180deg,rgba(8,9,11,0) 42%,rgba(8,9,11,.88) 100%);
+}
+.desk-bar{
+  position:sticky;top:62px;z-index:35;
+  background:rgba(8,9,11,.92);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);
+}
+.desk-bar-inner{
+  display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;
+  padding:8px 0;
+}
+.desk-bar-inner::-webkit-scrollbar{display:none}
+.desk-bar a{
+  flex:none;
+  font-size:12.5px;font-weight:800;
+  letter-spacing:.04em;
+  padding:7px 14px;
+  border:1px solid var(--line);
+  border-radius:999px;
+  color:var(--muted);
+  background:#101318;
+}
+.desk-bar a:hover{color:#fff;border-color:#555}
+.desk-bar a.is-on{
+  color:#fff;
+  background:var(--accent);
+  border-color:var(--accent);
+}
+.top{z-index:40}
+.poster{
+  aspect-ratio:16/9 !important;
+  border-radius:var(--radius);
+  overflow:hidden;
+  border:1px solid var(--line);
+  background:#0d1014;
+}
+.movie-hero .poster,
+.movie-hero-compact .poster{
+  aspect-ratio:2/3 !important;
+}
+.tile{transition:transform .22s ease, filter .22s ease}
+.tile:hover{transform:translateY(-4px) scale(1.02);filter:brightness(1.05)}
+.tile .poster{position:relative}
+.tile .poster img{width:100%;height:100%;object-fit:cover;display:block}
+.tile-play{
+  position:absolute;left:50%;top:50%;
+  width:46px;height:46px;margin:-23px 0 0 -23px;
+  border-radius:50%;
+  background:rgba(233,75,44,.94);
+  opacity:0;
+  transform:scale(.9);
+  transition:opacity .2s, transform .2s;
+  z-index:2;
+  pointer-events:none;
+  box-shadow:0 10px 24px rgba(0,0,0,.4);
+}
+.tile-play:before{
+  content:"";
+  position:absolute;left:18px;top:14px;
+  border-left:14px solid #fff;
+  border-top:9px solid transparent;
+  border-bottom:9px solid transparent;
+}
+.tile:hover .tile-play{opacity:1;transform:scale(1)}
+.tile .poster:after{
+  content:"";
+  position:absolute;inset:0;
+  background:var(--shade);
+  pointer-events:none;
+  z-index:1;
+}
+.tile h3{font-size:13.5px;margin:8px 0 0;line-height:1.3}
+.grid{
+  grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
+  gap:16px 12px;
+}
+.rail,
+.rail-lead,.rail-wall,.rail-chart,.rail-spread{
+  display:grid !important;
+  grid-auto-flow:column !important;
+  grid-auto-columns:minmax(210px,240px) !important;
+  overflow-x:auto !important;
+  gap:12px !important;
+  padding:4px 1px 16px !important;
+  scroll-snap-type:x mandatory;
+}
+.rail .tile,.rail-lead .tile,.rail-wall .tile,.rail-chart .tile,.rail-spread .tile{
+  scroll-snap-align:start;
+}
+.rail-lead .tile .poster,
+.rail-wall .tile .poster,
+.rail-chart .tile .poster,
+.rail-spread .tile .poster{aspect-ratio:16/9 !important}
+.svc-strip{
+  margin:8px 0 28px;
+  padding:18px;
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:linear-gradient(160deg,#141820,#0e1014);
+}
+.svc-copy h2{margin:0 0 6px;font-size:18px}
+.svc-copy p{margin:0 0 12px;color:var(--muted);font-size:13.5px;line-height:1.55;max-width:720px}
+.svc-row{display:flex;flex-wrap:wrap;gap:8px}
+.svc-chip{
+  display:inline-flex;align-items:center;
+  min-height:40px;padding:8px 14px;
+  border:1px solid var(--line);
+  border-radius:999px;
+  font-size:13px;font-weight:800;
+  background:#101318;
+}
+.svc-chip:hover{border-color:var(--gold);color:#fff}
+.tp-watch .svc-row{margin:12px 0 4px}
+.tp-loved-under{max-width:100%}
+.tp-loved-list{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
+  gap:12px;
+}
+.tp-loved-card{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  padding:0;
+  background:transparent;
+  border:0;
+  align-items:stretch;
+}
+.tp-loved-card img{
+  width:100%;height:auto;
+  aspect-ratio:16/9;
+  object-fit:cover;
+  border-radius:var(--radius);
+  border:1px solid var(--line);
+}
+.tp-loved-card span{padding:0 2px 6px}
+.cta{border-radius:8px}
+.trailer-frame{border-radius:12px}
+.hero-carousel{border-radius:0}
+@media (min-width:761px){
+  .desk-bar{top:62px}
+  .grid{grid-template-columns:repeat(auto-fill,minmax(190px,1fr))}
+}
+@media (max-width:760px){
+  .desk-bar{top:56px}
+  .desk-bar a{padding:6px 12px;font-size:12px}
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr)) !important;gap:10px !important}
+  .rail,.rail-lead,.rail-wall,.rail-chart,.rail-spread{
+    grid-auto-columns:minmax(196px,70vw) !important;
+    gap:10px !important;
+  }
+  .svc-strip{padding:14px}
+  .tile:hover{transform:none;filter:none}
+  .tile-play{opacity:.9;transform:scale(1);width:36px;height:36px;margin:-18px 0 0 -18px}
+  .tile-play:before{left:14px;top:11px;border-left:11px solid #fff;border-top:7px solid transparent;border-bottom:7px solid transparent}
+}
+@media (prefers-reduced-motion:reduce){
+  .tile,.tile-play,.hero-slide{transition:none !important}
+}
+[data-theme="light"] .desk-bar{background:rgba(244,245,247,.94)}
+[data-theme="light"] .desk-bar a{background:#fff;color:#5a6572}
+[data-theme="light"] .desk-bar a.is-on{background:var(--accent);color:#fff;border-color:var(--accent)}
+[data-theme="light"] .svc-strip,[data-theme="light"] .svc-chip{background:#fff;color:#161b22}
 `);
 
 if (warnings.length) {
