@@ -3053,3 +3053,24 @@ main.ent .rail-t10 .tile .tile-meta{padding-left:30px}
 @media(max-width:760px){
   .sec-previews .mp-rail .mp-card{flex:0 0 78vw}
 }
+
+/* ===== v15 · Match previews: TWO sliding rails (PL + Rest of Europe) ===== */
+.sec-previews .mp-sub{margin-bottom:14px}
+.sec-previews .mp-sub-head{
+  display:flex;align-items:center;gap:8px;
+  font-size:13px;font-weight:800;letter-spacing:.04em;
+  color:#fff;text-transform:uppercase;margin:0 0 8px;
+}
+.sec-previews .mp-sub-dot{width:8px;height:8px;border-radius:50%;background:#3DDC84;flex:none}
+.sec-previews .mp-rail{
+  display:flex;gap:12px;
+  overflow-x:auto;overflow-y:hidden;
+  padding:2px 1px 14px;
+  scroll-snap-type:x mandatory;
+  scrollbar-width:none;-webkit-overflow-scrolling:touch;
+}
+.sec-previews .mp-rail::-webkit-scrollbar{display:none}
+.sec-previews .mp-rail .mp-card{flex:0 0 300px;min-width:0;scroll-snap-align:start}
+@media(max-width:760px){
+  .sec-previews .mp-rail .mp-card{flex:0 0 78vw}
+}

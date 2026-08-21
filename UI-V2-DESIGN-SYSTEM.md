@@ -350,3 +350,29 @@ headless: scrollWidth 8140 vs 396 visible — it slides.
 
 ## Tests
 All suites at baseline; homepage 27/27, ranking 0 fails.
+
+---
+
+# v15 · Two football rails + 33 more trailers (2026-08-21)
+
+## 1. Match previews → TWO sliding rails
+The landing-page "⚽ Match previews" section is now two horizontal-scroll rails:
+**Premier League** (8 cards) and **Rest of Europe** (16: La Liga/Ligue 1/Serie A).
+Verified headless: both slide (PL scrollW 2707, EU 5424 vs 396 visible).
+
+## 2. Trailers: 164 / 167 catalog titles now have official embeds
+Found + wired 33 more this round: CSI, NCIS, Law & Order, Law & Order: SVU, Dhurandhar,
+Subedaar, Cocktail 2, Blast, Elle, O Romeo, Made in Korea, War Machine, Lockdown, Deep Water,
+Desert Warrior, In the Grey, Obsession, Lucky, Backrooms, The Invite, Vishnu Vinyasam,
+Legend of Udham Singh, Indian Institute of Zombies, Ginny Weds Sunny 2, Main Actor Nahin
+Hoon, Gaayapadda Simham, Notes from the Last Row, See You at Work Tomorrow!, Shree Baba
+Neeb Karori Maharaj, Kissa Court Kachahari Ka, Na Jaane Kaun Aa Gaya, Teenage Sex and Death
+at Camp Miasma, Obsess. Posters auto-updated from the new trailer thumbnails → **165/167
+titles now have images** (only Resort & Ramyaa still use gradient monograms — no official
+poster/trailer indexed; Adaalat keeps its downloaded poster but has no trailer).
+
+## 3. Pre-deploy SEO verification (answering the user's question)
+The repo has ALREADY completed the SEO migration described: pre-rendered static HTML
+(movie/, series/, genre/, channels/, year/), unique <title> + meta description per page,
+canonical, Open Graph, JSON-LD, sitemap.xml (1,317 URLs), robots.txt, alt + width/height
+on images. Old hash routing lives only in legacy/.
