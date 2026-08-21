@@ -3032,3 +3032,24 @@ main.ent .rail-t10 .tile .tile-meta{padding-left:30px}
   }
   main.ent .tile h3{font-size:13px}
 }
+
+/* ===== v14 · Landing-page match previews: horizontal sliding rail ===== */
+.sec-previews .mp-rail{
+  display:flex;
+  gap:12px;
+  overflow-x:auto;
+  overflow-y:hidden;
+  padding:2px 1px 18px;
+  scroll-snap-type:x mandatory;
+  scrollbar-width:none;
+  -webkit-overflow-scrolling:touch;
+}
+.sec-previews .mp-rail::-webkit-scrollbar{display:none}
+.sec-previews .mp-rail .mp-card{
+  flex:0 0 300px;
+  min-width:0;
+  scroll-snap-align:start;
+}
+@media(max-width:760px){
+  .sec-previews .mp-rail .mp-card{flex:0 0 78vw}
+}

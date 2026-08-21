@@ -320,3 +320,33 @@ NetMirror portrait poster card, and made them TALLER:
 - SERIES badge top-left + ★ rating top-right on the poster; title + year below.
 - Top-10 outlined numbers back behind the poster, overlapping its left edge.
 - Verified headless at 420px & 1280px: 0 overlaps, 0 page overflow, rails scroll internally.
+
+---
+
+# v14 · Posters for all movies + more trailers + sliding match rail (2026-08-21)
+
+## 1. Images on all movies
+- Built `scripts/posterize.py` + `data/posters.json`: every catalog title now has a poster
+  image — official trailer thumbnails for embedded titles (i.ytimg.com hqdefault), real
+  data posters where present, and downloaded movie/series posters (assets/posters/*) for
+  ~22 more (CSI, Dhurandhar, Backrooms, Obsession, The Invite, Deep Water, Desert Warrior,
+  In the Grey, War Machine, Subedaar, Blast, Elle, O Romeo, Legend of Udham Singh, Adaalat,
+  Lockdown, Cocktail 2, Indian Institute of Zombies, Obsess, Vishnu Vinyasam, Law & Order,
+  NCIS, Made in Korea).
+- **Coverage: 222 of 235 entertainment cards (94%) now show real images**; 13 ultra-niche
+  Indian Originals ([CAM] rips with no public poster) keep gradient monograms.
+
+## 2. More official trailers (131 / 167 catalog titles)
+Added 22 more verified official trailers: The Housemaid, Avatar Aang, The Death of Robin
+Hood, Lucky Strike, The Furious, The Punisher: One Last Kill, 28 Years Later: The Bone
+Temple, Lee Cronin's The Mummy, Hungry, Hoppers, K-Pop Demon Hunters, The Devil Wears
+Prada 2, Fifty Shades Freed, The Drama, Disclosure Day, Your Heart Will Be Broken,
+One Night Only, The Last House, Hotel Desire, Leviticus, Her Private Hell, Bad Newz.
+
+## 3. Landing-page football matches now slide horizontally
+The "⚽ Match previews" section changed from a wrapping grid to a horizontal-scroll rail
+(`.mp-rail`): 300px cards (78vw on mobile) with scroll-snap, swipe left/right. Verified
+headless: scrollWidth 8140 vs 396 visible — it slides.
+
+## Tests
+All suites at baseline; homepage 27/27, ranking 0 fails.
