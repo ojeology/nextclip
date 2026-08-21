@@ -1,3 +1,22 @@
+
+/* YouTube thumbs 404 often on mqdefault — step up quality, then stop. */
+document.addEventListener('error', function (e) {
+  var img = e.target;
+  if (!img || img.tagName !== 'IMG') return;
+  var src = img.getAttribute('src') || '';
+  if (src.indexOf('i.ytimg.com/vi/') === -1) return;
+  var step = img.getAttribute('data-img-step') || '0';
+  if (step === '0' && src.indexOf('/mqdefault.jpg') !== -1) {
+    img.setAttribute('data-img-step', '1');
+    img.src = src.replace('/mqdefault.jpg', '/hqdefault.jpg');
+    return;
+  }
+  if ((step === '0' || step === '1') && src.indexOf('/hqdefault.jpg') !== -1) {
+    img.setAttribute('data-img-step', '2');
+    img.src = src.replace('/hqdefault.jpg', '/sddefault.jpg');
+  }
+}, true);
+
 /* BRYME frontend app: lazy trailers, share buttons, load-more,
    per-type category browsers (genre/year/country/language/sort) and global search.
    Written in ES5 for maximum compatibility. */
@@ -523,6 +542,7 @@
     var pauseBtn = heroEl.querySelector('[data-hero-pause]');
     var videoBox = heroEl.querySelector('[data-hero-video]');
     var idx = 0, timer = null, advanceTimer = null, playing = false, userPaused = false, heroVisible = true, muted = true;
+    var isStatic = heroEl.hasAttribute('data-hero-static');
     var interval = parseInt(heroEl.getAttribute('data-interval') || '8000', 10);
     var VIDEO_HOLD_MS = 12000; // how long an actively playing trailer holds before rotating
 
@@ -568,12 +588,14 @@
       scheduleHeroAdvance();
     }
     function scheduleHeroAdvance() {
+      if (isStatic) return;
       if (advanceTimer) { clearTimeout(advanceTimer); advanceTimer = null; }
       advanceTimer = setTimeout(function () {
         if (playing) { nextSlide(); } else { scheduleHero(); }
       }, VIDEO_HOLD_MS);
     }
     function scheduleHero() {
+      if (isStatic) return;
       clearHeroTimers();
       if (!heroVisible || userPaused) return;
       timer = setTimeout(function () {
@@ -623,7 +645,7 @@
       if (d.event === 'onStateChange') {
         var st = d.info;
         if (st === 1) { playing = true; scheduleHeroAdvance(); }
-        else if (st === 0) { nextSlide(); } // video finished -> advance
+        else if (st === 0) { if (isStatic) { hideHeroVideo(); } else { nextSlide(); } }
         else if (st === 2 || st === 5) { playing = false; scheduleHero(); } // paused/blocked -> poster rotation
       } else if (d.event === 'onError') { hideHeroVideo(); scheduleHero(); }
     });
@@ -631,6 +653,7 @@
     var touchX = null;
     heroEl.addEventListener('touchstart', function (e) { touchX = e.touches ? e.touches[0].clientX : null; }, { passive: true });
     heroEl.addEventListener('touchend', function (e) {
+      if (isStatic) return;
       if (touchX === null || !e.changedTouches) return;
       var dx = e.changedTouches[0].clientX - touchX;
       if (Math.abs(dx) > 50) { if (dx < 0) nextSlide(); else prevSlide(); }
@@ -645,7 +668,7 @@
       var heroIO = new IntersectionObserver(function (entries) {
         entries.forEach(function (en) {
           heroVisible = en.isIntersecting;
-          if (!heroVisible) { clearHeroTimers(); hideHeroVideo(); } else { scheduleHero(); }
+          if (!heroVisible) { clearHeroTimers(); hideHeroVideo(); } else if (!isStatic) { scheduleHero(); }
         });
       }, { threshold: 0.12 });
       heroIO.observe(heroEl);
@@ -655,12 +678,13 @@
       else if (heroVisible && !userPaused) { scheduleHero(); }
     });
     // Poster first. Trailer iframe loads only when the visitor taps Watch Trailer.
-    var first = slides[0];
-    if (first && !first.style.backgroundImage) {
-      var firstPoster = first.getAttribute('data-poster');
-      if (firstPoster) first.style.backgroundImage = "url('" + firstPoster + "')";
-    }
-    scheduleHero();
+    slides.forEach(function (sl) {
+      if (sl && !sl.style.backgroundImage) {
+        var posterUrl = sl.getAttribute('data-poster');
+        if (posterUrl) sl.style.backgroundImage = "url('" + posterUrl + "')";
+      }
+    });
+    if (!isStatic) scheduleHero();
   }
 
   /* ---------- sports hero carousel arrows (scroll-snap track) ---------- */

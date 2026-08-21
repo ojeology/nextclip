@@ -1087,7 +1087,7 @@ function card(m, opts){
   const genre = m.genreLabel || m.genre || '';
   const rating = m.rating && m.rating.value != null ? `<p class="tile-rating" title="BRYME editorial score">★ ${esc(String(m.rating.value))}/10 · Editorial</p>` : '';
   const rank = opts.rank ? `<span class="rank${opts.rank <= 3 ? ' top' : ''}">${opts.rank}</span>` : '';
-  return `<a class="tile" href="${url('/' + typeDir + '/' + m.slug + '/')}"><div class="poster">${rank}${poster(m) ? `<img loading="lazy" decoding="async" width="320" height="180" src="${esc(posterThumb(m) || poster(m))}" alt="${esc(m.title)} poster">` : `<img loading="lazy" decoding="async" width="600" height="900" src="${url(cardImage(m))}" alt="${esc(m.title)} — BRYME title card">`}</div><h3>${esc(m.title)}</h3><div class="tile-meta"><span class="type-badge tb-${typeDir}">${label}</span><span>${esc(m.year || '')}</span>${genre ? `<span class="sep">·</span><span>${esc(genre)}</span>` : ''}</div>${rating}</a>`;
+  return `<a class="tile" href="${url('/' + typeDir + '/' + m.slug + '/')}"><div class="poster">${rank}${poster(m) ? `<img loading="lazy" decoding="async" width="320" height="180" src="${esc(poster(m) || posterThumb(m))}" alt="${esc(m.title)} poster">` : `<img loading="lazy" decoding="async" width="600" height="900" src="${url(cardImage(m))}" alt="${esc(m.title)} — BRYME title card">`}</div><h3>${esc(m.title)}</h3><div class="tile-meta"><span class="type-badge tb-${typeDir}">${label}</span><span>${esc(m.year || '')}</span>${genre ? `<span class="sep">·</span><span>${esc(genre)}</span>` : ''}</div>${rating}</a>`;
 }
 function progressiveGrid(items, initial){
   const shown = items.slice(0, initial), hidden = items.slice(initial);
@@ -1935,14 +1935,20 @@ write('', layout({
   path: '/', image: poster(heroSlide), lcpImage: poster(heroSlide), activeNav: 'home',
   schema: [{ '@context':'https://schema.org', '@type':'WebSite', name:site.name, url:absUrl('/'), description:site.description, publisher:{ '@type':'Organization', name:site.name, url:absUrl('/'), logo:absUrl('/assets/icons/icon-512.png') } }, { '@context':'https://schema.org', '@type':'CollectionPage', name:'Movies, TV Series & Anime', description:'Discover what to watch on BRYME: 630+ movies, TV series and anime with verified trailers, editorial guides, plus sports, money and tech & AI coverage.', url:absUrl('/') }],
   body: `<main>
-  <section class="hero-carousel" data-hero role="region" aria-roledescription="carousel" aria-label="Featured titles" data-interval="8000">
-    <div class="hero-slides">${heroSlides.map(heroSlideMarkup).join('')}</div>
-    <button type="button" class="hero-ctrl hero-prev" data-hero-prev aria-label="Previous featured title">&#8249;</button>
-    <button type="button" class="hero-ctrl hero-next" data-hero-next aria-label="Next featured title">&#8250;</button>
-    <div class="hero-dots" data-hero-dots role="tablist" aria-label="Featured title slides">${heroSlides.map((m, i) => `<button type="button" class="hero-dot${i === 0 ? ' is-active' : ''}" data-hero-dot="${i}" role="tab" aria-label="${esc(m.title)}" aria-selected="${i === 0}"></button>`).join('')}</div>
-    <button type="button" class="hero-vctrl hero-mute" data-hero-mute aria-label="Unmute trailer" hidden>&#128263;</button>
-    <button type="button" class="hero-vctrl hero-pause" data-hero-pause aria-label="Pause rotation" hidden>&#9208;</button>
-    <div class="hero-video" data-hero-video hidden></div>
+  <section class="home-hero-static" data-hero data-hero-static role="region" aria-label="Featured titles">
+    ${(() => {
+      const m = heroSlides[0];
+      if (!m) return '';
+      const posterSrc = m.poster || '';
+      const kicker = `<span class="type-badge tb-${m.typeDir}">${m.typeLabel.toUpperCase()}</span>${m.year ? `<span>${m.year}</span>` : ''}${m.genreLabel ? `<span class="dot">·</span><span>${esc(m.genreLabel)}</span>` : ''}`;
+      const rating = m.rating != null ? `<p class="hero-slide-rating">★ ${m.rating}/10 · BRYME Editorial</p>` : '';
+      const desc = esc((m.tagline || m.description || '').slice(0, 200));
+      const picks = heroSlides.map((s, i) => {
+        const src = s.poster || url(cardImage(s));
+        return `<a class="home-hero-pick${i === 0 ? ' is-current' : ''}" href="${s.url}"><img ${i === 0 ? 'fetchpriority="high" ' : ''}loading="${i === 0 ? 'eager' : 'lazy'}" decoding="async" width="480" height="270" src="${esc(src)}" alt="${esc(s.title)} poster"><b>${esc(s.title)}</b></a>`;
+      }).join('');
+      return `<div class="home-hero-feature" data-slide data-video="${m.youtubeId || ''}" data-title="${esc(m.title)}" data-url="${m.url}" data-poster="${esc(posterSrc)}"${posterSrc ? ` style="background-image:url('${esc(posterSrc)}')"` : ''}><div class="hero-slide-shade"></div><div class="shell hero-slide-inner"><div class="hero-slide-kicker">${kicker}</div><h1>${esc(m.title)}</h1>${rating}<p>${desc}</p><div class="hero-actions"><button type="button" class="cta hero-watch" data-hero-watch>▶ Watch Trailer</button><a class="cta cta-ghost" href="${m.url}">View Details</a></div></div><div class="hero-video" data-hero-video hidden></div></div><div class="shell"><div class="home-hero-picks">${picks}</div></div>`;
+    })()}
   </section>
   <div class="home-main">
   <section class="home-section brand-strip"><div class="shell"><p class="brand-slogan">Discover what you love. Learn what you need. Find what's next.</p>${coreHubStrip('home', { title: 'Explore BRYME', lead: 'Start with a section, then follow the titles and guides inside it.', photos: ['entertainment','sports','make-money','tech'] }).replace('<section class="section core-hubs" data-core-hubs>', '<section class="core-hubs" data-core-hubs>')}</div></section>
@@ -3268,7 +3274,7 @@ function trendCard(m, opts){
   const blurb = clipMeta(m.description || m.teaser || '', 150);
   const lab = trendLabel(m);
   const pageHref = url('/' + typeDir + '/' + m.slug + '/');
-  const thumb = posterThumb(m) || poster(m);
+  const thumb = poster(m) || posterThumb(m);
   const img = thumb
     ? `<img loading="lazy" decoding="async" width="160" height="90" src="${esc(thumb)}" alt="${esc(m.title)} poster">`
     : `<img loading="lazy" decoding="async" width="160" height="240" src="${url(cardImage(m))}" alt="${esc(m.title)} — BRYME title card">`;
@@ -5010,6 +5016,46 @@ fs.appendFileSync(path.join(root,'assets/site.css'), `
   .bryme-afterwatch b{font-size:16px}
 }
 [data-theme="light"] .bryme-afterwatch{background:linear-gradient(0deg,rgba(8,9,11,.96) 18%,rgba(8,9,11,.72));color:#fff}
+`);
+
+
+fs.appendFileSync(path.join(root,'assets/site.css'), `
+/* static heroes + visible card photos — desktop layout width unchanged */
+.home-hero-static{position:relative;background:#0d0f13}
+.home-hero-feature{position:relative;min-height:560px;background-size:cover;background-position:center 28%;overflow:hidden;isolation:isolate}
+.home-hero-feature .hero-slide-inner{position:relative;z-index:2;padding-top:120px;padding-bottom:48px;max-width:1180px}
+.home-hero-feature h1{font-size:clamp(42px,7vw,78px);line-height:.96;max-width:760px;margin:0 0 10px}
+.home-hero-feature p{max-width:560px;color:#d2d6d9;font-size:16.5px;line-height:1.5}
+.home-hero-feature .hero-video{position:absolute;inset:0;z-index:1}
+.home-hero-feature .hero-video iframe{width:100%;height:100%;border:0;display:block}
+.home-hero-picks{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;padding:16px 0 8px}
+.home-hero-pick{display:flex;flex-direction:column;gap:8px;color:inherit;text-decoration:none;min-width:0}
+.home-hero-pick img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:8px;background:#171b20;display:block;border:1px solid var(--line)}
+.home-hero-pick b{font-size:13px;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.home-hero-pick.is-current img{outline:2px solid var(--accent);outline-offset:2px}
+.sp-hero-track{display:grid !important;grid-template-columns:repeat(3,minmax(0,1fr)) !important;grid-auto-flow:row !important;grid-auto-columns:unset !important;overflow:visible !important;scroll-snap-type:none !important}
+.sp-hero-arrow,[data-sp-hero-prev],[data-sp-hero-next]{display:none !important}
+.sp-hero-card{
+  background-image:linear-gradient(180deg,rgba(8,9,11,.25),rgba(8,9,11,.82)),var(--card-img) !important;
+  background-size:cover !important;
+  background-position:center !important;
+}
+.sp-hero-card:after{opacity:0 !important}
+.sp-hero-card > *{position:relative;z-index:1}
+.vcat-photo{
+  background-image:linear-gradient(180deg,rgba(8,9,11,.18),rgba(8,9,11,.86)),var(--card-img) !important;
+  background-size:cover !important;
+  background-position:center !important;
+}
+.vcat-photo:before{z-index:0 !important}
+.tile .poster img,.trend-poster img{background:#171b20}
+@media (max-width: 760px) {
+  .home-hero-feature{min-height:min(52svh,340px)}
+  .home-hero-feature .hero-slide-inner{padding-top:72px;padding-bottom:28px}
+  .home-hero-picks{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .sp-hero-track{grid-template-columns:1fr !important;gap:12px !important}
+  .sp-hero-card{min-height:180px}
+}
 `);
 
 fs.appendFileSync(path.join(root,'assets/site.css'), `
