@@ -4,8 +4,8 @@
   "description": "Discover what you love. Learn what you need. Find what's next. Entertainment, sports, memes, money guides and tech & AI.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#08090b",
-  "theme_color": "#08090b",
+  "background_color": "#0D0E12",
+  "theme_color": "#0D0E12",
   "orientation": "any",
   "scope": "/",
   "icons": [
