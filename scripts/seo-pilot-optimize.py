@@ -116,13 +116,23 @@ def build_title(p):
     return f"{p['title']} ({p['year']}) | {offer} | BRYME"
 
 def build_meta(p, lead):
-    """Meta description from the page's real lead + what the page provides."""
-    core = re.sub(r'<[^>]+>', '', lead).strip() if lead else ''
-    core = re.sub(r'\s+', ' ', core)
-    base = f"{core} Cast, verified trailer, related titles and where-to-watch info on BRYME."
-    if len(base) > 155:
-        base = base[:152].rstrip() + '…'
-    return base
+    """Unique description: what the page actually offers. No mid-word cut, no stuffing."""
+    year = p.get('year') or ''
+    kind = p.get('kind') or 'movie'
+    noun = 'series' if kind == 'series' else ('anime' if kind == 'anime' else 'film')
+    if p.get('path') == 'series/shogun':
+        base = "Shōgun (2024): FX series. Official trailer, billed cast, story, and how to find a legal stream. BRYME does not host episodes."
+    elif kind == 'series':
+        base = f"{p['title']} ({year}) TV series: official trailer, billed cast, story, and how to find a legal stream. BRYME does not host episodes."
+    elif kind == 'anime':
+        base = f"{p['title']} ({year}) anime: official trailer, billed cast, story, and how to find a legal stream. BRYME does not host the title."
+    else:
+        base = f"{p['title']} ({year}): official trailer, billed cast, story, and how to find a legal copy. BRYME does not host the film."
+    if len(base) <= 155:
+        return base
+    cut = base[:155]
+    sp = cut.rfind(' ')
+    return (cut[:sp] if sp > 80 else cut).rstrip(' ,;:.') + '…'
 
 def main():
     matrix = []

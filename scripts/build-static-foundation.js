@@ -1061,6 +1061,8 @@ fs.appendFileSync(path.join(root,'assets/site.css'), `
 .hero-actions .cta,.hero-actions .cta-ghost{text-transform:none;letter-spacing:0;font-size:14px;font-weight:800;min-height:44px;display:inline-flex;align-items:center;margin-top:0}
 .tp-watch{margin:28px 0;padding:18px;border:1px solid var(--line);border-radius:12px;background:linear-gradient(160deg,#161b23,#0f1216)}
 .tp-watch h2{margin-top:0}
+.tp-watch-intent{margin:28px 0 8px;padding:0}
+.tp-watch-intent h2{margin-top:0}
 .tp-watch-row{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}
 .tp-watch-btn{display:inline-flex;align-items:center;min-height:44px;padding:8px 14px;border:1px solid var(--line);border-radius:8px;font-weight:800;font-size:13.5px;background:#101318}
 .tp-watch-btn:hover{border-color:var(--gold);color:#fff}
@@ -1169,7 +1171,10 @@ function pageTitle(raw){
   let t = String(raw || '').trim();
   t = t.replace(/\s*\|\s*BRYME\s*$/i, '').trim();
   const suffix = ' | ' + site.name;
-  const budget = 60 - suffix.length;
+  // Authored intent titles already carry an offer phrase after |. Do not clip them
+  // back to 60 characters — that was eating "Where to Watch" / "Result & Analysis".
+  if (t.includes('|')) return t + suffix;
+  const budget = 70 - suffix.length;
   if (t.length > budget) t = clipMeta(t, budget);
   return t + suffix;
 }
@@ -1596,6 +1601,7 @@ function sendBar(path, title){
   </div>`;
 }
 const SENDABLE_META = {
+  'shogun': { title: 'Shōgun (2024) | Cast, Trailer, Episodes & Where to Watch', desc: 'Shōgun (2024): FX series. Official trailer, billed cast, story, and how to find a legal stream. BRYME does not host episodes.' },
   'dune-part-two': { title: 'Dune: Part Two (2024) trailer & story', desc: 'What the film is, the official trailer, and legal viewing notes. Not a download page.' },
   'a-tribe-called-judah': { title: 'A Tribe Called Judah — Lagos film', desc: 'Funke Akindele’s Lagos family crime film: what it is, who it is for, and legal watch notes.' },
   'squid-game': { title: 'Squid Game (2021) story & what next', desc: 'What Squid Game is and what to open next on BRYME. No unofficial streams.' },
@@ -3500,15 +3506,34 @@ function watchLinkLabel(link){
   } catch (e) {}
   return (isSearch ? 'Search ' : 'Check ') + name;
 }
+const WATCH_GUIDANCE = (() => {
+  const f = path.join(root, 'content', 'watch-guidance.json');
+  if (!fs.existsSync(f)) return {};
+  try { return JSON.parse(fs.readFileSync(f, 'utf8')); } catch (e) { return {}; }
+})();
 function whereToWatchBlock(m){
+  /* Do not emit generic Netflix/Crunchyroll chips. That fabricates availability
+     even with a disclaimer and is why "Shōgun watch" cannot trust this page. */
+  const g = (WATCH_GUIDANCE[m.slug] && typeof WATCH_GUIDANCE[m.slug] === 'object' && WATCH_GUIDANCE[m.slug].originalNetwork)
+    ? WATCH_GUIDANCE[m.slug] : null;
   const links = (m.watchLinks || []).filter(l => l && l.url && isLegalWatchUrl(l.url));
-  const note = '<p class="tp-watch-note">BRYME does not host films and does not list unofficial streams. Availability changes by country — confirm on the service itself. Opening Netflix or Prime Video is not a claim that this title is on that service. These links are not advertisements.</p>';
-  const services = `<div class="svc-row">${legalServiceChips()}</div>`;
-  if (!links.length) {
-    return `<section class="tp-watch" id="watch"><h2>Where to watch legally</h2><p>BRYME is not a streaming site. Look for ${esc(m.title)} on a licensed service in your country. If they do not offer it, it is not listed as a title link here.</p>${services}${note}</section>`;
+  const note = '<p class="tp-watch-note">A “Check” or “Search” link opens an official service. It is not a promise the title is on that service in your country today. BRYME does not host films or episodes. These links are not advertisements.</p>';
+  const host = `<p>BRYME is not a streaming site and does not host ${esc(m.title)}.</p>`;
+  let network = '';
+  if (g) {
+    const article = /^[AEIOU]/i.test(g.originalNetwork) ? 'an' : 'a';
+    const label = (m.typeDir === 'series') ? 'original series' : 'title';
+    const lead = g.lead || 'That tells you which licensed family to search first. Rights move by country and date.';
+    network = `<p>${esc(m.title)} is ${article} ${esc(g.originalNetwork)} ${label}. ${esc(lead)}</p>`;
   }
-  const items = links.map(l => `<a class="tp-watch-btn" href="${esc(l.url)}" rel="nofollow noopener" target="_blank">${esc(watchLinkLabel(l))}</a>`).join('');
-  return `<section class="tp-watch" id="watch"><h2>Where to watch legally</h2><p>Official platforms you can check. A search link is not a promise the title is licensed there right now.</p><div class="tp-watch-row">${items}</div>${services}${note}</section>`;
+  const how = `<p>To find a legal copy: search “${esc(m.title)}” in the licensed apps available in your country and confirm the title page on the service itself before paying or starting a trial. Skip unofficial “free watch” sites — they are not listed here.</p>`;
+  const check = (g && Array.isArray(g.check) ? g.check : [])
+    .filter(c => c && c.name && c.url)
+    .map(c => `<a class="tp-watch-btn" href="${esc(c.url)}" rel="nofollow noopener" target="_blank">Check ${esc(c.name)}</a>`);
+  const search = links.map(l => `<a class="tp-watch-btn" href="${esc(l.url)}" rel="nofollow noopener" target="_blank">${esc(watchLinkLabel(l))}</a>`);
+  const btns = check.concat(search);
+  const row = btns.length ? `<div class="tp-watch-row">${btns.join('')}</div>` : '';
+  return `<section class="tp-watch" id="watch"><h2>Where to watch legally</h2>${host}${network}${how}${row}${note}</section>`;
 }
 function nowTalkingBlock(m){
   const ed = editorialOf(m);
@@ -3778,7 +3803,7 @@ for (const m of movies) {
   const relatedArticles = articlesAboutTitle(m);
   write(`${typeDir}/${m.slug}`, layout({
     title: (SENDABLE_META[m.slug] && SENDABLE_META[m.slug].title) || seoTitle,
-    description: (SENDABLE_META[m.slug] && SENDABLE_META[m.slug].desc) || ((m.description || '').length >= 80 ? (m.description || seoDesc).slice(0, 158) : seoDesc),
+    description: (SENDABLE_META[m.slug] && SENDABLE_META[m.slug].desc) || ((m.description || '').length >= 80 ? (m.description || seoDesc) : seoDesc),
     path: pagePath,
     activeNav: typeDir === 'movie' ? 'movies' : (typeDir === 'series' ? 'series' : 'anime'),
     schema: schemaList,

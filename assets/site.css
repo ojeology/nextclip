@@ -532,6 +532,8 @@ input,select,textarea{font-size:16px}
 .hero-actions .cta,.hero-actions .cta-ghost{text-transform:none;letter-spacing:0;font-size:14px;font-weight:800;min-height:44px;display:inline-flex;align-items:center;margin-top:0}
 .tp-watch{margin:28px 0;padding:18px;border:1px solid var(--line);border-radius:12px;background:linear-gradient(160deg,#161b23,#0f1216)}
 .tp-watch h2{margin-top:0}
+.tp-watch-intent{margin:28px 0 8px;padding:0}
+.tp-watch-intent h2{margin-top:0}
 .tp-watch-row{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}
 .tp-watch-btn{display:inline-flex;align-items:center;min-height:44px;padding:8px 14px;border:1px solid var(--line);border-radius:8px;font-weight:800;font-size:13.5px;background:#101318}
 .tp-watch-btn:hover{border-color:var(--gold);color:#fff}

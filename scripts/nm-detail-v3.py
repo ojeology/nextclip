@@ -53,6 +53,15 @@ def detail_rows(ld):
 def rebuild(path):
     s = open(path, encoding='utf-8').read()
     orig = s
+    # Never turn a type-mismatch redirect stub back into a full title page.
+    # Those /movie/<series-or-anime-slug>/ copies must stay noindex + refresh.
+    if 'has moved' in s.lower() and ('noindex' in s or 'http-equiv="refresh"' in s):
+        return False
+    norm = path.replace('\\', '/')
+    if '/movie/' in norm:
+        slug = os.path.basename(os.path.dirname(path))
+        if os.path.exists(os.path.join(ROOT, 'series', slug, 'index.html')) or os.path.exists(os.path.join(ROOT, 'anime', slug, 'index.html')):
+            return False
     td = 'series' if '/series/' in path else 'anime' if '/anime/' in path else 'movie'
     type_label = 'SERIES' if td == 'series' else 'ANIME' if td == 'anime' else 'FILM'
     i = s.find('<main'); j = s.find('</main>')
