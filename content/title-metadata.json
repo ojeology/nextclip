@@ -4379,7 +4379,13 @@
     "year": 2017
   },
   "face-off": {
-    "cast": [],
+    "cast": [
+      "John Travolta",
+      "Nicolas Cage",
+      "Joan Allen",
+      "Gina Gershon",
+      "Alessandro Nivola"
+    ],
     "country": "United States",
     "director": "John Woo",
     "language": "English",
@@ -4392,7 +4398,13 @@
       "wikipedia": "https://en.wikipedia.org/wiki/Face/Off"
     },
     "title": "Face/Off",
-    "year": 1997
+    "year": 1997,
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Face/Off",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
   },
   "fairy-tail": {
     "cast": [],
@@ -16078,7 +16090,31 @@
     "description": "Butcher goes after Vought and the truth about Compound V, while a new supe arrives with a smile and a swastika underneath. The satire sharpens considerably."
   },
   "alien-resurrection": {
-    "description": "Two hundred years on, Ripley is cloned by scientists who want the thing inside her. Wetter, stranger and more grotesque than any Alien film before it."
+    "description": "Two hundred years on, Ripley is cloned by scientists who want the thing inside her. Wetter, stranger and more grotesque than any Alien film before it.",
+    "title": null,
+    "year": null,
+    "director": "Jean-Pierre Jeunet",
+    "cast": [
+      "Sigourney Weaver",
+      "Winona Ryder",
+      "Ron Perlman",
+      "Dan Hedaya",
+      "J. E. Freeman",
+      "Brad Dourif",
+      "Michael Wincott"
+    ],
+    "runtime": "109 min",
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Alien_Resurrection",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Alien_Resurrection",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
   },
   "she-hulk-attorney-at-law": {
     "description": "Jennifer Walters gets her cousin's powers and none of his angst, then discovers superhuman law is mostly paperwork. A sitcom wearing a Marvel costume."
@@ -16908,6 +16944,1308 @@
     "castSource": {
       "name": "Wikipedia",
       "url": "https://en.wikipedia.org/wiki/The_Princess_Bride_(film)",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "avatar-fire-and-ash": {
+    "title": "Avatar: Fire and Ash",
+    "year": 2025,
+    "director": "James Cameron",
+    "cast": [
+      "Sam Worthington",
+      "Zoe Saldaña",
+      "Sigourney Weaver",
+      "Stephen Lang",
+      "Kate Winslet"
+    ],
+    "runtime": "197 min",
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Avatar%3A_Fire_and_Ash",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Avatar%3A_Fire_and_Ash",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "backrooms": {
+    "title": "Backrooms",
+    "year": 2026,
+    "director": "Kane Parsons",
+    "cast": [
+      "Chiwetel Ejiofor",
+      "Renate Reinsve",
+      "Mark Duplass",
+      "Finn Bennett",
+      "Lukita Maxwell"
+    ],
+    "runtime": "110 min",
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Backrooms_%28film%29",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Backrooms_%28film%29",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "bad-newz": {
+    "title": "Bad Newz",
+    "year": 2024,
+    "director": "Anand Tiwari",
+    "cast": [
+      "Vicky Kaushal",
+      "Triptii Dimri",
+      "Ammy Virk"
+    ],
+    "runtime": "140 min",
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Bad_Newz",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Bad_Newz",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "bhool-bhulaiyaa-3": {
+    "title": "Bhool Bhulaiyaa 3",
+    "year": 2024,
+    "director": "Anees Bazmee",
+    "cast": [
+      "Kartik Aaryan",
+      "Vidya Balan",
+      "Madhuri Dixit",
+      "Triptii Dimri"
+    ],
+    "runtime": "158 min",
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Bhool_Bhulaiyaa_3",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Bhool_Bhulaiyaa_3",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "chainsaw-man-reze": {
+    "title": "Chainsaw Man: Reze",
+    "year": 2025,
+    "director": "Tatsuya Yoshihara",
+    "cast": [
+      "Kikunosuke Toya",
+      "Reina Ueda",
+      "Fairouz Ai",
+      "Tomori Kusunoki",
+      "Shogo Sakata"
+    ],
+    "runtime": "100 min",
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Chainsaw_Man_%E2%80%93_The_Movie%3A_Reze_Arc",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Chainsaw_Man_%E2%80%93_The_Movie%3A_Reze_Arc",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "citizen-vigilante": {
+    "title": "Citizen Vigilante",
+    "year": 2024,
+    "director": "Uwe Boll",
+    "cast": [
+      "Armie Hammer",
+      "Costas Mandylor"
+    ],
+    "runtime": "89 min",
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Citizen_Vigilante",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Citizen_Vigilante",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "camp-rock-3": {
+    "title": "Camp Rock 3",
+    "year": 2024,
+    "director": "Veronica Rodriguez",
+    "cast": [
+      "Liamani",
+      "Malachi Barton",
+      "Lumi Pollack",
+      "Milo Manheim",
+      "Maria Canals-Barrera",
+      "Sherry Cola",
+      "Demi Lovato",
+      "Joe Jonas"
+    ],
+    "runtime": "92 min",
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Camp_Rock_3",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Camp_Rock_3",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "freakier-friday": {
+    "title": "Freakier Friday",
+    "year": 2025,
+    "director": "Nisha Ganatra",
+    "cast": [
+      "Lindsay Lohan",
+      "Julia Butters",
+      "Sophia Hammons",
+      "Manny Jacinto",
+      "Mark Harmon",
+      "Jamie Lee Curtis"
+    ],
+    "runtime": "111 min",
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Freakier_Friday",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Freakier_Friday",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "devara-part-1": {
+    "title": "Devara: Part 1",
+    "year": 2024,
+    "director": "Koratala Siva",
+    "cast": [
+      "N. T. Rama Rao Jr.",
+      "Saif Ali Khan",
+      "Janhvi Kapoor",
+      "Prakash Raj",
+      "Srikanth (actor, born 1968)",
+      "Shine Tom Chacko"
+    ],
+    "runtime": "178 min",
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Devara%3A_Part_1",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Devara%3A_Part_1",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "greenland-2": {
+    "title": "Greenland 2",
+    "year": 2026,
+    "director": "Ric Roman Waugh",
+    "cast": [
+      "Morena Baccarin",
+      "Roman Griffin Davis",
+      "Gerard Butler"
+    ],
+    "runtime": "98 min",
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Greenland_2%3A_Migration",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Greenland_2%3A_Migration",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "disclosure-day": {
+    "title": "Disclosure Day",
+    "year": 2025,
+    "director": "Steven Spielberg",
+    "cast": [
+      "Emily Blunt",
+      "Josh O'Connor",
+      "Colin Firth",
+      "Eve Hewson",
+      "Colman Domingo"
+    ],
+    "runtime": "145 min",
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Disclosure_Day",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Disclosure_Day",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "hoppers": {
+    "title": "Hoppers",
+    "year": 2026,
+    "director": "Daniel Chong",
+    "cast": [
+      "Piper Curda",
+      "Bobby Moynihan",
+      "Jon Hamm",
+      "Kathy Najimy",
+      "Dave Franco"
+    ],
+    "runtime": "104 min",
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Hoppers_%28film%29",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Hoppers_%28film%29",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "dhurandhar": {
+    "title": "Dhurandhar",
+    "year": 2025,
+    "director": "Aditya Dhar",
+    "cast": [
+      "Ranveer Singh",
+      "Akshaye Khanna",
+      "Arjun Rampal",
+      "R. Madhavan",
+      "Sanjay Dutt",
+      "Sara Arjun",
+      "Rakesh Bedi",
+      "Gaurav Gera"
+    ],
+    "runtime": "214 min",
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Dhurandhar",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Dhurandhar",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "colony-2026": {
+    "title": "Colony",
+    "year": 2026,
+    "director": "Yeon Sang-ho",
+    "cast": [
+      "Jun Ji-hyun",
+      "Koo Kyo-hwan",
+      "Ji Chang-wook",
+      "Kim Shin-rok",
+      "Shin Hyun-been",
+      "Go Soo"
+    ],
+    "runtime": "123 min",
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Colony_%282026_film%29",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Colony_%282026_film%29",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "insidious-out-of-further": {
+    "title": "Insidious: Out of the Further",
+    "year": 2026,
+    "director": "Jacob Chase",
+    "cast": [
+      "Amelia Eve",
+      "Brandon Perea",
+      "Maisie Richardson-Sellers",
+      "Lin Shaye"
+    ],
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Insidious:_Out_of_the_Further",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Insidious:_Out_of_the_Further",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "moana-2026": {
+    "title": "Moana",
+    "year": 2026,
+    "director": "Thomas Kail",
+    "cast": [
+      "Rena Owen",
+      "John Tui",
+      "Frankie Adams",
+      "Jemaine Clement",
+      "Catherine Laga'aia",
+      "Dwayne Johnson"
+    ],
+    "runtime": "115 min",
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Moana_%282026_film%29",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Moana_%282026_film%29",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "mutiny-2026": {
+    "title": "Mutiny",
+    "year": 2026,
+    "director": "Jean-François Richet",
+    "cast": [
+      "Annabelle Wallis",
+      "Roland Møller",
+      "Adrian Lester",
+      "Jason Statham"
+    ],
+    "runtime": "95 min",
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Mutiny_%282026_film%29",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Mutiny_%282026_film%29",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "munjya": {
+    "title": "Munjya",
+    "year": 2024,
+    "director": "Aditya Sarpotdar",
+    "cast": [
+      "Abhay Verma",
+      "Sharvari",
+      "Sathyaraj",
+      "Mona Singh"
+    ],
+    "runtime": "123 min",
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Munjya_%28film%29",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Munjya_%28film%29",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "minions-monsters": {
+    "title": "Minions & Monsters",
+    "year": 2026,
+    "director": "Pierre Coffin",
+    "cast": [
+      "Trey Parker",
+      "Allison Janney",
+      "Christoph Waltz",
+      "Jesse Eisenberg",
+      "Jeff Bridges",
+      "Zoey Deutch",
+      "Bobby Moynihan",
+      "Phil LaMarr"
+    ],
+    "runtime": "90 min",
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Minions_%26_Monsters",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Minions_%26_Monsters",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "obsession-2026": {
+    "title": "Obsession",
+    "year": 2026,
+    "director": "Curry Barker",
+    "cast": [
+      "Michael Johnston",
+      "Inde Navarrette",
+      "Cooper Tomlinson",
+      "Megan Lawless",
+      "Andy Richter"
+    ],
+    "runtime": "109 min",
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Obsession_%282025_film%29",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Obsession_%282025_film%29",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "supergirl-2026": {
+    "title": "Supergirl",
+    "year": 2026,
+    "director": "Craig Gillespie",
+    "cast": [
+      "Milly Alcock",
+      "Matthias Schoenaerts",
+      "Eve Ridley",
+      "David Krumholtz",
+      "Emily Beecham",
+      "David Corenswet",
+      "Jason Momoa"
+    ],
+    "runtime": "108 min",
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Supergirl_%282026_film%29",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Supergirl_%282026_film%29",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "project-hail-mary": {
+    "title": "Project Hail Mary",
+    "year": 2026,
+    "director": "Phil Lord; Christopher Miller",
+    "cast": [
+      "Sandra Hüller",
+      "James Ortiz",
+      "Lionel Boyce",
+      "Ryan Gosling"
+    ],
+    "runtime": "156 min",
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Project_Hail_Mary_%28film%29",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Project_Hail_Mary_%28film%29",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "swapped": {
+    "title": "SWAPPED",
+    "year": 2026,
+    "director": "Nathan Greno",
+    "cast": [
+      "Michael B. Jordan",
+      "Juno Temple",
+      "Tracy Morgan",
+      "Cedric the Entertainer",
+      "Justina Machado"
+    ],
+    "runtime": "98 min",
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Swapped",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Swapped",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "scream-7": {
+    "title": "Scream 7",
+    "year": 2026,
+    "director": "Kevin Williamson",
+    "cast": [
+      "Neve Campbell",
+      "Isabel May",
+      "Jasmin Savoy Brown",
+      "Mason Gooding",
+      "Anna Camp",
+      "David Arquette",
+      "Michelle Randolph",
+      "Jimmy Tatro"
+    ],
+    "runtime": "114 min",
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Scream_7",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Scream_7",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "singham-again": {
+    "title": "Singham Again",
+    "year": 2024,
+    "director": "Rohit Shetty",
+    "cast": [
+      "Kareena Kapoor Khan",
+      "Arjun Kapoor",
+      "Jackie Shroff",
+      "Ajay Devgn"
+    ],
+    "runtime": "144 min",
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Singham_Again",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Singham_Again",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "scary-movie-2026": {
+    "title": "Scary Movie",
+    "year": 2026,
+    "director": "Michael Tiddes",
+    "cast": [
+      "Anna Faris",
+      "Regina Hall",
+      "Marlon Wayans",
+      "Shawn Wayans"
+    ],
+    "runtime": "96 min",
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Scary_Movie_%282026_film%29",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Scary_Movie_%282026_film%29",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "shelter-2026": {
+    "title": "Shelter",
+    "year": 2026,
+    "director": "Ric Roman Waugh",
+    "cast": [
+      "Bodhi Rae Breathnach",
+      "Naomi Ackie",
+      "Daniel Mays",
+      "Harriet Walter",
+      "Bill Nighy",
+      "Jason Statham"
+    ],
+    "runtime": "107 min",
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Shelter_%282026_film%29",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Shelter_%282026_film%29",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "vikram": {
+    "title": "Vikram",
+    "year": 2022,
+    "director": "Lokesh Kanagaraj",
+    "cast": [
+      "Vijay Sethupathi",
+      "Fahadh Faasil"
+    ],
+    "runtime": "174 min",
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Vikram_%282022_film%29",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Vikram_%282022_film%29",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "the-gorge": {
+    "title": "The Gorge",
+    "year": 2025,
+    "director": "Scott Derrickson",
+    "cast": [
+      "Miles Teller",
+      "Anya Taylor-Joy",
+      "Sigourney Weaver"
+    ],
+    "runtime": "127 min",
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/The_Gorge_%28film%29",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/The_Gorge_%28film%29",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "the-super-mario-galaxy-movie": {
+    "title": "The Super Mario Galaxy Movie",
+    "year": 2026,
+    "director": "Aaron Horvath; Michael Jelenic",
+    "cast": [
+      "Chris Pratt",
+      "Anya Taylor-Joy",
+      "Charlie Day",
+      "Jack Black",
+      "Keegan-Michael Key",
+      "Benny Safdie",
+      "Donald Glover",
+      "Glen Powell"
+    ],
+    "runtime": "98 min",
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/The_Super_Mario_Galaxy_Movie",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/The_Super_Mario_Galaxy_Movie",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "the-devil-wears-prada-2": {
+    "title": "The Devil Wears Prada 2",
+    "year": 2025,
+    "director": "David Frankel",
+    "cast": [
+      "Meryl Streep",
+      "Anne Hathaway",
+      "Emily Blunt",
+      "Justin Theroux",
+      "Kenneth Branagh",
+      "Stanley Tucci"
+    ],
+    "runtime": "119 min",
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/The_Devil_Wears_Prada_2",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/The_Devil_Wears_Prada_2",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "the-devils-mouth": {
+    "title": "The Devil's Mouth",
+    "year": 2026,
+    "director": "Jeff Wadlow",
+    "cast": [
+      "Kathryn Newton",
+      "Lana Condor",
+      "Gavin Casalegno",
+      "Nico Hiraga",
+      "Tayme Thapthimthong",
+      "Tommi Rose"
+    ],
+    "runtime": "104 min",
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/The_Devil%27s_Mouth",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/The_Devil%27s_Mouth",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "the-shadows-edge": {
+    "title": "The Shadow's Edge",
+    "year": 2025,
+    "director": "Larry Yang",
+    "cast": [
+      "Jackie Chan",
+      "Zhang Zifeng",
+      "Tony Leung Ka-fai",
+      "Ci Sha"
+    ],
+    "runtime": "142 min",
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/The_Shadow%27s_Edge",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/The_Shadow%27s_Edge",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "yodha": {
+    "title": "Yodha",
+    "year": 2024,
+    "cast": [
+      "Siddharth Malhotra",
+      "Raashii Khanna",
+      "Disha Patani"
+    ],
+    "runtime": "130 min",
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Yodha_%282024_film%29",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Yodha_%282024_film%29",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "die-hard-3": {
+    "title": null,
+    "year": null,
+    "director": "John McTiernan",
+    "cast": [
+      "Bruce Willis",
+      "Jeremy Irons",
+      "Samuel L. Jackson",
+      "Graham Greene",
+      "Colleen Camp",
+      "Larry Bryggman",
+      "Sam Phillips (musician, born 1962)"
+    ],
+    "runtime": "128 min",
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Die_Hard_with_a_Vengeance",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Die_Hard_with_a_Vengeance",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "departures": {
+    "title": null,
+    "year": null,
+    "director": "Yōjirō Takita",
+    "cast": [
+      "Masahiro Motoki",
+      "Ryōko Hirosue",
+      "Tsutomu Yamazaki"
+    ],
+    "runtime": "130 min",
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Departures_%282008_film%29",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Departures_%282008_film%29",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "avengers-doomsday": {
+    "title": null,
+    "year": null,
+    "director": "Anthony Russo; Joe Russo",
+    "cast": [
+      "Robert Downey Jr.",
+      "Chris Evans",
+      "Chris Hemsworth",
+      "Pedro Pascal",
+      "Paul Rudd",
+      "Anthony Mackie",
+      "Florence Pugh",
+      "Vanessa Kirby"
+    ],
+    "runtime": "165 min",
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Avengers%3A_Doomsday",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Avengers%3A_Doomsday",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "anikulapo": {
+    "title": null,
+    "year": null,
+    "director": "Kunle Afolayan",
+    "cast": [
+      "Sola Sobowale",
+      "Hakeem Kae-Kazim",
+      "Kunle Remi",
+      "Bimbo Ademoye",
+      "Taiwo Hassan"
+    ],
+    "runtime": "111 min",
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/An%C3%ADk%C3%BAl%C3%A1p%C3%B3",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/An%C3%ADk%C3%BAl%C3%A1p%C3%B3",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "dune-part-three": {
+    "title": null,
+    "year": null,
+    "director": "Denis Villeneuve",
+    "cast": [
+      "Timothée Chalamet",
+      "Zendaya",
+      "Jason Momoa",
+      "Florence Pugh",
+      "Rebecca Ferguson",
+      "Isaach de Bankolé",
+      "Charlotte Rampling",
+      "Anya Taylor-Joy"
+    ],
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Dune%3A_Part_Three",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Dune%3A_Part_Three",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "ije-the-journey": {
+    "title": null,
+    "year": null,
+    "director": "Chineze Anyaene",
+    "cast": [
+      "Genevieve Nnaji",
+      "Odalys García",
+      "Omotola Jalade Ekeinde",
+      "Clem Ohameze"
+    ],
+    "runtime": "107 min",
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Ij%C3%A9",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Ij%C3%A9",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "girl-with-dragon-tattoo": {
+    "title": null,
+    "year": null,
+    "director": "David Fincher",
+    "cast": [
+      "Daniel Craig",
+      "Rooney Mara",
+      "Christopher Plummer",
+      "Stellan Skarsgård",
+      "Steven Berkoff",
+      "Robin Wright",
+      "Yorick van Wageningen",
+      "Joely Richardson"
+    ],
+    "runtime": "158 min",
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/The_Girl_with_the_Dragon_Tattoo_%282011_film%29",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/The_Girl_with_the_Dragon_Tattoo_%282011_film%29",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "shazam": {
+    "title": null,
+    "year": null,
+    "director": "David F. Sandberg",
+    "cast": [
+      "Zachary Levi",
+      "Mark Strong",
+      "Asher Angel",
+      "Jack Dylan Grazer",
+      "Djimon Hounsou"
+    ],
+    "runtime": "132 min",
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Shazam%21_%28film%29",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Shazam%21_%28film%29",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "the-witch": {
+    "title": null,
+    "year": null,
+    "director": "Robert Eggers",
+    "cast": [
+      "Anya Taylor-Joy",
+      "Ralph Ineson",
+      "Kate Dickie",
+      "Harvey Scrimshaw",
+      "Ellie Grainger",
+      "Lucas Dawson"
+    ],
+    "runtime": "92 min",
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/The_Witch_%282015_film%29",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/The_Witch_%282015_film%29",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "kgf-2": {
+    "title": null,
+    "year": null,
+    "director": "Prashanth Neel",
+    "cast": [
+      "Yash",
+      "Sanjay Dutt",
+      "Raveena Tandon",
+      "Srinidhi Shetty",
+      "Prakash Raj",
+      "Archana Jois",
+      "Achyuth Kumar",
+      "Vasishta N. Simha"
+    ],
+    "runtime": "168 min",
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/KGF%3A_Chapter_2",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/KGF%3A_Chapter_2",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "wandering-earth-2": {
+    "title": null,
+    "year": null,
+    "director": "Frant Gwo",
+    "cast": [
+      "Andy Lau",
+      "Wu Jing",
+      "Li Xuejian"
+    ],
+    "runtime": "173 min",
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/The_Wandering_Earth_2",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/The_Wandering_Earth_2",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "the-black-book": {
+    "title": null,
+    "year": null,
+    "director": "Editi Effiong",
+    "cast": [
+      "Richard Mofe-Damijo",
+      "Ade Laoye",
+      "Sam Dede",
+      "Ireti Doyle",
+      "Shaffy Bello"
+    ],
+    "runtime": "4 min",
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/The_Black_Book_%282023_film%29",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/The_Black_Book_%282023_film%29",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "the-trade": {
+    "title": null,
+    "year": null,
+    "director": "Jadesola Osiberu",
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/The_Trade_%28film%29",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/The_Trade_%28film%29",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "return-of-the-jedi": {
+    "title": null,
+    "year": null,
+    "director": "Richard Marquand",
+    "cast": [
+      "Mark Hamill",
+      "Harrison Ford",
+      "Carrie Fisher",
+      "Billy Dee Williams",
+      "Anthony Daniels",
+      "David Prowse",
+      "Kenny Baker (English actor)",
+      "Peter Mayhew"
+    ],
+    "runtime": "132 min",
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Return_of_the_Jedi",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Return_of_the_Jedi",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "x-men-2": {
+    "title": null,
+    "year": null,
+    "director": "Bryan Singer",
+    "cast": [
+      "Patrick Stewart",
+      "Hugh Jackman",
+      "Ian McKellen",
+      "Halle Berry",
+      "Famke Janssen",
+      "James Marsden",
+      "Rebecca Romijn",
+      "Brian Cox"
+    ],
+    "runtime": "133 min",
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/X2_%28film%29",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/X2_%28film%29",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "chief-daddy": {
+    "title": null,
+    "year": null,
+    "director": "Niyi Akinmolayan",
+    "cast": [
+      "Joke Silva",
+      "Funke Akindele",
+      "Dakore Akande",
+      "Ini Edo",
+      "Kate Henshaw",
+      "Rachael Oniga",
+      "Linda Ejiofor",
+      "Shafy Bello"
+    ],
+    "runtime": "99 min",
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Chief_Daddy",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Chief_Daddy",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "the-set-up": {
+    "title": null,
+    "year": null,
+    "director": "Niyi Akinmolayan",
+    "cast": [
+      "Dakore Akande",
+      "Adesua Etomi",
+      "Kehinde Bankole"
+    ],
+    "runtime": "103 min",
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/The_Set_Up_%282019_film%29",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/The_Set_Up_%282019_film%29",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "omo-ghetto-the-saga": {
+    "title": null,
+    "year": null,
+    "director": "JJC Skillz; Funke Akindele",
+    "cast": [
+      "Funke Akindele",
+      "Chioma Akpotha",
+      "Nancy Isime",
+      "Eniola Badmus",
+      "Bimbo Thomas",
+      "Mercy Aigbe",
+      "Deyemi Okanlawon",
+      "Timini Egbuson"
+    ],
+    "runtime": "110 min",
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Omo_Ghetto%3A_The_Saga",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Omo_Ghetto%3A_The_Saga",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "king-of-boys-2": {
+    "title": null,
+    "year": null,
+    "director": "Kemi Adetiba",
+    "cast": [
+      "Sola Sobowale",
+      "Toni Tones"
+    ],
+    "runtime": "60 min",
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/King_of_Boys%3A_The_Return_of_the_King",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/King_of_Boys%3A_The_Return_of_the_King",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "ijogbon": {
+    "title": null,
+    "year": null,
+    "director": "Kunle Afolayan",
+    "cast": [
+      "Gabriel Afolayan",
+      "Adunni Ade",
+      "Femi Branch",
+      "Dorathy Bachor"
+    ],
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Ijogbon",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Ijogbon",
       "field": "infobox starring",
       "retrieved": "2026-08-22"
     }

@@ -2,7 +2,9 @@
 
 Looked at the extra `/movie/` files that were live but empty, plus famous catalogue titles missing billed cast. Wikipedia infoboxes only — original synopses, no copied plots, no fake streams.
 
-## 17 extra pages that now have real pages
+**Pass 2** filled another 34 extras and 21 catalogue-cast gaps. Catalogue `movies.json` is now **699** titles.
+
+## Extra pages that now have real pages (51 total)
 
 These URLs already existed. They now have trailer, billed cast, director, year, original synopsis, related titles, and an honest where-to-watch block.
 
@@ -27,6 +29,8 @@ These URLs already existed. They now have trailer, billed cast, director, year, 
 | `/movie/war-of-the-worlds-2025/` | 2025 | Not the 2005 Spielberg film |
 
 Wicked Lighthouse (mobile): **91 / 96 / 100 / SEO 100**. Main-body ~450 words.
+
+Pass 2 added (among others): Avatar: Fire and Ash, Backrooms, Bhool Bhulaiyaa 3, Chainsaw Man Reze, Freakier Friday, Devara, Greenland 2, Disclosure Day, Hoppers, Dhurandhar, Colony, Moana 2026, Munjya, Minions & Monsters, Supergirl 2026, Project Hail Mary, Scream 7, Singham Again, Vikram, The Gorge, Super Mario Galaxy, Devil Wears Prada 2, Insidious: Out of the Further.
 
 ## 10 same-title extras → redirects
 
