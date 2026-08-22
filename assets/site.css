@@ -3466,3 +3466,31 @@ body:has(main.tp-page){padding-top:0}
 .today-rail::-webkit-scrollbar{display:none}
 .today-rail .today-card{flex:0 0 260px;min-width:0;scroll-snap-align:start}
 @media(max-width:760px){.today-rail .today-card{flex:0 0 72vw}}
+
+/* ===== v21 · Platform Reviews — 20 legit platforms database ===== */
+.pr-toolbar{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:0 0 18px}
+.pr-count{margin-left:auto}
+.pr-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px}
+.pr-card{
+  background:#0f1216;border:1px solid var(--line);border-radius:12px;
+  padding:16px 17px;display:flex;flex-direction:column;gap:10px;
+}
+.pr-card:hover{border-color:#3DDC84}
+.pr-head{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
+.pr-head b{font-size:16.5px;color:#fff}
+.pr-owner{display:block;font-size:12px;color:var(--muted);margin-top:2px}
+.pr-cat{
+  font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:.04em;
+  color:#3DDC84;border:1px solid rgba(61,220,132,.35);border-radius:9999px;
+  padding:3px 9px;white-space:nowrap;flex:none;
+}
+.pr-card dl{margin:0;display:flex;flex-direction:column;gap:8px}
+.pr-card dl>div{display:flex;gap:10px;font-size:13px;line-height:1.5}
+.pr-card dt{flex:0 0 96px;color:#737373;font-size:12px;font-weight:700;padding-top:1px}
+.pr-card dd{margin:0;color:#c9ced4}
+.pr-card .pr-rules dd{color:#e0b45c}
+.pr-card .pr-flags{border-top:1px solid #222;padding-top:8px}
+.pr-card .pr-flags dd{color:#ff8a75}
+.pr-url{font-size:12.5px;margin:2px 0 0;color:var(--muted)}
+.pr-url a{color:#3DDC84;word-break:break-all}
+@media(max-width:560px){.pr-grid{grid-template-columns:1fr}}
