@@ -16164,6 +16164,22 @@
       "name": "Paramount Pictures official trailer",
       "retrieved": "2026-08-21",
       "url": "https://www.youtube.com/watch?v=xgI5iYmOf5Q"
+    },
+    "director": "Cal Brunker",
+    "cast": [
+      "Mckenna Grace",
+      "Carter Young",
+      "Rain Janjua",
+      "Henry Bolan",
+      "Lucien Duncan-Reid",
+      "Hayden Chamberlen"
+    ],
+    "runtime": "88 min",
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://www.hollywoodreporter.com/movies/movie-reviews/paw-patrol-the-dino-movie-review-1236669413/",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
     }
   },
   "the-end-of-oak-street": {
@@ -16199,7 +16215,22 @@
       "retrieved": "2026-08-21",
       "url": "https://www.youtube.com/watch?v=md5rZb2nEaM"
     },
-    "director": "Nadia Hallgren"
+    "director": "Nadia Hallgren",
+    "cast": [
+      "Daniela Avanzini",
+      "Manon Bannerman",
+      "Sophia Laforteza",
+      "Lara Raj",
+      "Yoonchae Jeung",
+      "Megan Skiendiel"
+    ],
+    "runtime": "84 min",
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://www.odeon.co.uk/films/katseye-wild-hearts/HO00009195/",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
   },
   "niu-lai": {
     "title": "Niu Lai",
@@ -16211,7 +16242,17 @@
       "retrieved": "2026-08-21",
       "url": "https://kfgo.com/2026/08/20/how-a-low-budget-fever-dream-sparked-a-chinese-box-office-revolt/"
     },
-    "director": "Xin Yumeng"
+    "director": "Xin Yumeng",
+    "cast": [
+      "Xin Yumeng",
+      "Sun Lifang"
+    ],
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/List_of_Chinese_films_of_2026",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
   },
   "vishwanath-and-sons": {
     "title": "Vishwanath and Sons",
@@ -18246,6 +18287,657 @@
     "castSource": {
       "name": "Wikipedia",
       "url": "https://en.wikipedia.org/wiki/Ijogbon",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "avatar-aang-2026": {
+    "title": "Avatar Aang: The Last Airbender",
+    "year": 2026,
+    "director": "Lauren Montgomery",
+    "cast": [
+      "Eric Nam",
+      "Dave Bautista",
+      "Jessica Matten",
+      "Román Zaragoza",
+      "Steven Yeun",
+      "Dionne Quan"
+    ],
+    "runtime": "99 min",
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://www.rottentomatoes.com/m/avatar_aang_the_last_airbender",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://www.rottentomatoes.com/m/avatar_aang_the_last_airbender",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "goat-2026": {
+    "title": "GOAT",
+    "year": 2026,
+    "director": "Tyree Dillihay",
+    "cast": [
+      "Caleb McLaughlin",
+      "Gabrielle Union",
+      "Aaron Pierre",
+      "Nicola Coughlan",
+      "David Harbour"
+    ],
+    "runtime": "100 min",
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Goat_(2026_film)",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Goat_(2026_film)",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "jackass-best-and-last": {
+    "title": "Jackass: Best and Last",
+    "year": 2026,
+    "director": "Jeff Tremaine",
+    "cast": [
+      "Johnny Knoxville",
+      "Steve-O",
+      "Chris Pontius",
+      "Dave England",
+      "Preston Lacy",
+      "Ehren McGhehey"
+    ],
+    "runtime": "92 min",
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Jackass:_Best_and_Last",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Jackass:_Best_and_Last",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "kraken-2026": {
+    "title": "Kraken",
+    "year": 2026,
+    "director": "Pål Øie",
+    "cast": [
+      "Sara Khorami",
+      "Mikkel Bratt Silset",
+      "Ingvild Holthe Bygdnes",
+      "Jenny Evensen"
+    ],
+    "runtime": "100 min",
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Kraken_(2026_film)",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Kraken_(2026_film)",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "the-invite": {
+    "title": "The Invite",
+    "year": 2026,
+    "director": "Olivia Wilde",
+    "cast": [
+      "Seth Rogen",
+      "Edward Norton",
+      "Penélope Cruz",
+      "Olivia Wilde"
+    ],
+    "runtime": "108 min",
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://www.imdb.com/title/tt14173636/",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://www.imdb.com/title/tt14173636/",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "the-last-house": {
+    "title": "The Last House",
+    "year": 2026,
+    "director": "Louis Leterrier",
+    "cast": [
+      "Greta Lee",
+      "Wagner Moura",
+      "Riley Chung",
+      "Noah Alexander Sosnowski"
+    ],
+    "runtime": "112 min",
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://www.hollywoodreporter.com/movies/movie-reviews/the-last-house-review-greta-lee-wagner-moura-netflix-1236666386/",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://www.hollywoodreporter.com/movies/movie-reviews/the-last-house-review-greta-lee-wagner-moura-netflix-1236666386/",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "rattle-snake-the-ahanna-story": {
+    "title": null,
+    "year": null,
+    "director": "Ramsey Nouah",
+    "cast": [
+      "Stan Nze",
+      "Osas Ighodaro",
+      "Omotola Jalade Ekeinde",
+      "Ayo Makun",
+      "Chiwetalu Agu"
+    ],
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Rattlesnake:_The_Ahanna_Story",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Rattlesnake:_The_Ahanna_Story",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "coraline": {
+    "title": "Coraline",
+    "year": 2009,
+    "director": "Henry Selick",
+    "cast": [
+      "Dakota Fanning",
+      "Teri Hatcher",
+      "Jennifer Saunders",
+      "Dawn French",
+      "Ian McShane"
+    ],
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Coraline_%28film%29",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Coraline_%28film%29",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "awarapan": {
+    "title": "Awarapan",
+    "year": 2007,
+    "director": "Mohit Suri",
+    "cast": [
+      "Emraan Hashmi",
+      "Shriya Saran",
+      "Mrinalini Sharma",
+      "Ashutosh Rana"
+    ],
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Awarapan",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Awarapan",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "deep-water": {
+    "title": "Deep Water",
+    "year": 2022,
+    "director": "Adrian Lyne",
+    "cast": [
+      "Ben Affleck",
+      "Ana de Armas"
+    ],
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Deep_Water_%282022_film%29",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Deep_Water_%282022_film%29",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "captain-america-brave-new-world": {
+    "title": "Captain America: Brave New World",
+    "year": 2025,
+    "director": "Julius Onah",
+    "cast": [
+      "Anthony Mackie",
+      "Danny Ramirez",
+      "Shira Haas",
+      "Carl Lumbly",
+      "Xosha Roquemore",
+      "Giancarlo Esposito",
+      "Liv Tyler",
+      "Tim Blake Nelson"
+    ],
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Captain_America%3A_Brave_New_World",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Captain_America%3A_Brave_New_World",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "28-years-later-the-bone-temple": {
+    "title": "28 Years Later: The Bone Temple",
+    "year": 2026,
+    "director": "Nia DaCosta",
+    "cast": [
+      "Ralph Fiennes",
+      "Jack O'Connell",
+      "Alfie Williams",
+      "Erin Kellyman",
+      "Chi Lewis-Parry"
+    ],
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/28_Years_Later%3A_The_Bone_Temple",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/28_Years_Later%3A_The_Bone_Temple",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "enola-holmes-3": {
+    "title": "Enola Holmes 3",
+    "year": 2026,
+    "director": "Philip Barantini",
+    "cast": [
+      "Louis Partridge",
+      "Himesh Patel",
+      "Sharon Duncan-Brewster",
+      "Henry Cavill",
+      "Helena Bonham Carter",
+      "Millie Bobby Brown"
+    ],
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Enola_Holmes_3",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Enola_Holmes_3",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "cocktail-2": {
+    "title": "Cocktail 2",
+    "year": 2026,
+    "director": "Homi Adajania",
+    "cast": [
+      "Shahid Kapoor",
+      "Kriti Sanon",
+      "Rashmika Mandanna"
+    ],
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Cocktail_2",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Cocktail_2",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "fifty-shades-freed": {
+    "title": "Fifty Shades Freed",
+    "year": 2018,
+    "director": "James Foley",
+    "cast": [
+      "Dakota Johnson",
+      "Jamie Dornan",
+      "Eric Johnson",
+      "Rita Ora",
+      "Luke Grimes",
+      "Jennifer Ehle"
+    ],
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Fifty_Shades_Freed_(film)",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Fifty_Shades_Freed_(film)",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "mission-impossible-the-final-reckoning": {
+    "title": "Mission: Impossible – The Final Reckoning",
+    "year": 2025,
+    "director": "Christopher McQuarrie",
+    "cast": [
+      "Hayley Atwell",
+      "Ving Rhames",
+      "Simon Pegg",
+      "Esai Morales",
+      "Henry Czerny",
+      "Angela Bassett",
+      "Tom Cruise"
+    ],
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Mission%3A_Impossible_%E2%80%93_The_Final_Reckoning",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Mission%3A_Impossible_%E2%80%93_The_Final_Reckoning",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "star-wars-the-mandalorian-and-grogu": {
+    "title": "Star Wars: The Mandalorian and Grogu",
+    "year": 2026,
+    "director": "Jon Favreau",
+    "cast": [
+      "Pedro Pascal",
+      "Jeremy Allen White",
+      "Lateef Crowder",
+      "Jonny Coyne",
+      "Martin Scorsese",
+      "Sigourney Weaver",
+      "Brendan Wayne"
+    ],
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/The_Mandalorian_and_Grogu",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/The_Mandalorian_and_Grogu",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "masters-of-the-universe": {
+    "title": "Masters of the Universe",
+    "year": 2026,
+    "director": "Travis Knight",
+    "cast": [
+      "Nicholas Galitzine",
+      "Camila Mendes",
+      "Alison Brie",
+      "James Purefoy",
+      "Morena Baccarin",
+      "Jóhannes Haukur Jóhannesson",
+      "Kristen Wiig",
+      "Jared Leto"
+    ],
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Masters_of_the_Universe_%282026_film%29",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Masters_of_the_Universe_%282026_film%29",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "my-fault": {
+    "title": "My Fault",
+    "year": 2023,
+    "cast": [
+      "Nicole Wallace",
+      "Gabriel Guevara"
+    ],
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/My_Fault_%28film%29",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/My_Fault_%28film%29",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "the-drama": {
+    "title": "The Drama",
+    "year": 2026,
+    "director": "Kristoffer Borgli",
+    "cast": [
+      "Zendaya",
+      "Robert Pattinson"
+    ],
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/The_Drama_%28film%29",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/The_Drama_%28film%29",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "lee-cronins-the-mummy": {
+    "title": "Lee Cronin's The Mummy",
+    "year": 2026,
+    "director": "Lee Cronin",
+    "cast": [
+      "Jack Reynor",
+      "Laia Costa",
+      "May Calamawy",
+      "Verónica Falcón"
+    ],
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Lee_Cronin%27s_The_Mummy",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Lee_Cronin%27s_The_Mummy",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "our-fault": {
+    "title": "Our Fault",
+    "year": 2025,
+    "cast": [
+      "Nicole Wallace",
+      "Gabriel Guevara"
+    ],
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Our_Fault",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Our_Fault",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "welcome-to-the-jungle": {
+    "title": "Welcome to the Jungle",
+    "year": 2013,
+    "director": "Rob Meltzer",
+    "cast": [
+      "Jean-Claude Van Damme",
+      "Adam Brody",
+      "Megan Boone",
+      "Rob Huebel",
+      "Kristen Schaal",
+      "Eric Edelstein",
+      "Dennis Haysbert"
+    ],
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Welcome_to_the_Jungle_%282013_film%29",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Welcome_to_the_Jungle_%282013_film%29",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "in-the-grey": {
+    "title": "In the Grey",
+    "year": 2025,
+    "director": "Guy Ritchie",
+    "cast": [
+      "Henry Cavill",
+      "Jake Gyllenhaal",
+      "Eiza Gonzalez",
+      "Fisher Stevens",
+      "Rosamund Pike",
+      "Kristofer Hivju"
+    ],
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/In_the_Grey",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/In_the_Grey",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "the-death-of-robin-hood": {
+    "title": "The Death of Robin Hood",
+    "year": 2026,
+    "director": "Michael Sarnoski",
+    "cast": [
+      "Jodie Comer",
+      "Bill Skarsgård",
+      "Murray Bartlett",
+      "Noah Jupe",
+      "Hugh Jackman"
+    ],
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/The_Death_of_Robin_Hood",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/The_Death_of_Robin_Hood",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "the-sheep-detectives": {
+    "title": "The Sheep Detectives",
+    "year": 2026,
+    "director": "Kyle Balda",
+    "cast": [
+      "Hugh Jackman",
+      "Nicholas Braun",
+      "Nicholas Galitzine",
+      "Molly Gordon",
+      "Julia Louis-Dreyfus",
+      "Bryan Cranston",
+      "Chris O'Dowd",
+      "Regina Hall"
+    ],
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/The_Sheep_Detectives",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/The_Sheep_Detectives",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "the-punisher-one-last-kill": {
+    "title": "The Punisher: One Last Kill",
+    "year": 2026,
+    "director": "Reinaldo Marcus Green",
+    "cast": [
+      "Deborah Ann Woll",
+      "Jason R. Moore",
+      "Judith Light",
+      "Jon Bernthal"
+    ],
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/The_Punisher%3A_One_Last_Kill",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/The_Punisher%3A_One_Last_Kill",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "hungry": {
+    "title": "Hungry",
+    "year": 2026,
+    "director": "James Nunn",
+    "cast": [
+      "Madison Davenport",
+      "Joaquim de Almeida",
+      "Jim Meskimen",
+      "Tracey Bonner",
+      "Michel Curiel",
+      "Samantha Coughlan",
+      "Olivia Bernstone",
+      "River Codack"
+    ],
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Hungry_%28film%29",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Hungry_%28film%29",
       "field": "infobox starring",
       "retrieved": "2026-08-22"
     }

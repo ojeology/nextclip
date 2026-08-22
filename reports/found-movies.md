@@ -2,9 +2,9 @@
 
 Looked at the extra `/movie/` files that were live but empty, plus famous catalogue titles missing billed cast. Wikipedia infoboxes only — original synopses, no copied plots, no fake streams.
 
-**Pass 2** filled another 34 extras and 21 catalogue-cast gaps. Catalogue `movies.json` is now **699** titles.
+**Pass 3** searched the leftover stubs harder (alternate Wikipedia titles, RT/Fandango/HR). Catalogue `movies.json` is now **726**. Extra pages filled: **78**. Catalogue films with no billed cast: **0**.
 
-## Extra pages that now have real pages (51 total)
+## Extra pages that now have real pages (78 total)
 
 These URLs already existed. They now have trailer, billed cast, director, year, original synopsis, related titles, and an honest where-to-watch block.
 
