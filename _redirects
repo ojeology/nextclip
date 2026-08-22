@@ -166,3 +166,11 @@
 /movie/toy-story-1995/  /movie/toy-story/  301
 /movie/pushpa-the-rise/  /movie/pushpa/  301
 /movie/the-odyssey-2026/  /movie/the-odyssey/  301
+# Broken genre crumbs → real catalogue destinations
+/movies/anime/  /anime/  301
+/movies/musical/  /genre/musical/  301
+/movies/music/  /genre/musical/  301
+/movies/mystery/  /movies/thriller/  301
+/movies/adventure/  /movies/action/  301
+/movies/sports/  /movies/  301
+/movies/shonen/  /anime/  301

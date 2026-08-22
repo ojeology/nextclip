@@ -274,15 +274,7 @@ def apply_page(rec):
                 {"@type": "ListItem", "position": 3, "name": rec["title"], "item": url},
             ],
         },
-        {
-            "@context": "https://schema.org",
-            "@type": "VideoObject",
-            "name": rec["title"] + " — Official Trailer",
-            "description": "Official trailer for " + rec["title"] + ".",
-            "thumbnailUrl": thumb,
-            "embedUrl": "https://www.youtube-nocookie.com/embed/" + rec["youtubeId"],
-            "publisher": {"@type": "Organization", "name": "YouTube"},
-        },
+
     ]
     if rec.get("country"):
         ld[0]["countryOfOrigin"] = rec["country"]

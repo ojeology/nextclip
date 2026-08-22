@@ -3796,7 +3796,9 @@ for (const m of movies) {
     const vo = { '@context':'https://schema.org', '@type':'VideoObject', name: (match && extra.name) || t0.videoTitle || (m.title + ' official trailer'), description: (match && extra.description) || ('Official trailer for ' + m.title + '.'), thumbnailUrl: (match && extra.thumbnailUrl) || ('https://i.ytimg.com/vi/' + t0.videoId + '/hqdefault.jpg'), embedUrl: 'https://www.youtube-nocookie.com/embed/' + t0.videoId };
     if (match && extra.uploadDate) vo.uploadDate = extra.uploadDate;
     if (t0.channel) vo.publisher = { '@type':'Organization', name: t0.channel };
-    schemaList.push(vo);
+    // Google Video rich results require uploadDate. Do not emit a VideoObject
+    // we cannot date — an incomplete block is a validation error, not a rich result.
+    if (vo.uploadDate) schemaList.push(vo);
   }
   crumbs.push({name:m.title, path:pagePath});
   const related = relatedFor(m);
@@ -4195,7 +4197,7 @@ function renderVerticalArticle(dir, verticalName, a) {
       const vo = { '@context':'https://schema.org', '@type':'VideoObject', name: yt.name || a.title, description: yt.description || a.excerpt || a.title, thumbnailUrl: 'https://i.ytimg.com/vi/' + yt.videoId + '/hqdefault.jpg', embedUrl: 'https://www.youtube-nocookie.com/embed/' + yt.videoId };
       if (yt.uploadDate) vo.uploadDate = yt.uploadDate;
       if (yt.channel) vo.publisher = { '@type':'Organization', name: yt.channel };
-      schemaList.push(vo);
+      if (vo.uploadDate) schemaList.push(vo);
     }
   write(dir + '/' + a.slug, layout({
     title: a.seoTitle || a.title,

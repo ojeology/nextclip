@@ -1,38 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://bryme.onrender.com/</loc></url>
   <url><loc>https://bryme.onrender.com/about/</loc></url>
   <url><loc>https://bryme.onrender.com/anime/</loc></url>
-  <url><loc>https://bryme.onrender.com/anime/1984/</loc></url>
-  <url><loc>https://bryme.onrender.com/anime/1986/</loc></url>
-  <url><loc>https://bryme.onrender.com/anime/1988/</loc></url>
-  <url><loc>https://bryme.onrender.com/anime/1989/</loc></url>
-  <url><loc>https://bryme.onrender.com/anime/1992/</loc></url>
-  <url><loc>https://bryme.onrender.com/anime/1993/</loc></url>
-  <url><loc>https://bryme.onrender.com/anime/1995/</loc></url>
-  <url><loc>https://bryme.onrender.com/anime/1997/</loc></url>
-  <url><loc>https://bryme.onrender.com/anime/1998/</loc></url>
-  <url><loc>https://bryme.onrender.com/anime/1999/</loc></url>
-  <url><loc>https://bryme.onrender.com/anime/2001/</loc></url>
-  <url><loc>https://bryme.onrender.com/anime/2002/</loc></url>
   <url><loc>https://bryme.onrender.com/anime/2004/</loc></url>
   <url><loc>https://bryme.onrender.com/anime/2006/</loc></url>
-  <url><loc>https://bryme.onrender.com/anime/2008/</loc></url>
-  <url><loc>https://bryme.onrender.com/anime/2009/</loc></url>
-  <url><loc>https://bryme.onrender.com/anime/2011/</loc></url>
   <url><loc>https://bryme.onrender.com/anime/2012/</loc></url>
-  <url><loc>https://bryme.onrender.com/anime/2013/</loc></url>
   <url><loc>https://bryme.onrender.com/anime/2014/</loc></url>
   <url><loc>https://bryme.onrender.com/anime/2015/</loc></url>
   <url><loc>https://bryme.onrender.com/anime/2016/</loc></url>
-  <url><loc>https://bryme.onrender.com/anime/2017/</loc></url>
   <url><loc>https://bryme.onrender.com/anime/2018/</loc></url>
   <url><loc>https://bryme.onrender.com/anime/2019/</loc></url>
-  <url><loc>https://bryme.onrender.com/anime/2020/</loc></url>
-  <url><loc>https://bryme.onrender.com/anime/2021/</loc></url>
   <url><loc>https://bryme.onrender.com/anime/2022/</loc></url>
   <url><loc>https://bryme.onrender.com/anime/2023/</loc></url>
   <url><loc>https://bryme.onrender.com/anime/2024/</loc></url>
-  <url><loc>https://bryme.onrender.com/anime/2025/</loc></url>
   <url><loc>https://bryme.onrender.com/anime/a-silent-voice/</loc></url>
   <url><loc>https://bryme.onrender.com/anime/action/</loc></url>
   <url><loc>https://bryme.onrender.com/anime/adventure/</loc></url>
@@ -80,11 +61,8 @@
   <url><loc>https://bryme.onrender.com/anime/kuroko-basketball/</loc></url>
   <url><loc>https://bryme.onrender.com/anime/look-back/</loc></url>
   <url><loc>https://bryme.onrender.com/anime/mashle/</loc></url>
-  <url><loc>https://bryme.onrender.com/anime/mecha/</loc></url>
   <url><loc>https://bryme.onrender.com/anime/mob-psycho-100/</loc></url>
-  <url><loc>https://bryme.onrender.com/anime/music/</loc></url>
   <url><loc>https://bryme.onrender.com/anime/my-hero-academia/</loc></url>
-  <url><loc>https://bryme.onrender.com/anime/mystery/</loc></url>
   <url><loc>https://bryme.onrender.com/anime/naruto/</loc></url>
   <url><loc>https://bryme.onrender.com/anime/nausicaa/</loc></url>
   <url><loc>https://bryme.onrender.com/anime/one-piece-film-red/</loc></url>
@@ -111,7 +89,6 @@
   <url><loc>https://bryme.onrender.com/anime/sports/</loc></url>
   <url><loc>https://bryme.onrender.com/anime/spy-x-family/</loc></url>
   <url><loc>https://bryme.onrender.com/anime/steins-gate/</loc></url>
-  <url><loc>https://bryme.onrender.com/anime/superhero/</loc></url>
   <url><loc>https://bryme.onrender.com/anime/supernatural/</loc></url>
   <url><loc>https://bryme.onrender.com/anime/suzume/</loc></url>
   <url><loc>https://bryme.onrender.com/anime/sword-art-online/</loc></url>
@@ -124,7 +101,6 @@
   <url><loc>https://bryme.onrender.com/anime/trigun/</loc></url>
   <url><loc>https://bryme.onrender.com/anime/vinland-saga/</loc></url>
   <url><loc>https://bryme.onrender.com/anime/violet-evergarden/</loc></url>
-  <url><loc>https://bryme.onrender.com/anime/war/</loc></url>
   <url><loc>https://bryme.onrender.com/anime/weathering-with-you/</loc></url>
   <url><loc>https://bryme.onrender.com/anime/whisper-heart/</loc></url>
   <url><loc>https://bryme.onrender.com/anime/your-lie-in-april/</loc></url>
@@ -152,20 +128,8 @@
   <url><loc>https://bryme.onrender.com/article/was-eren-yeager-really-the-villain/</loc></url>
   <url><loc>https://bryme.onrender.com/article/why-prison-break-season-1-is-still-one-of-the-best-tv-seasons/</loc></url>
   <url><loc>https://bryme.onrender.com/articles/</loc></url>
-  <url><loc>https://bryme.onrender.com/articles/anime-character-analysis/</loc></url>
-  <url><loc>https://bryme.onrender.com/articles/anime-opinion/</loc></url>
-  <url><loc>https://bryme.onrender.com/articles/anime-recommendation/</loc></url>
-  <url><loc>https://bryme.onrender.com/articles/anime/</loc></url>
-  <url><loc>https://bryme.onrender.com/articles/comparisons/</loc></url>
-  <url><loc>https://bryme.onrender.com/articles/movie-explainers/</loc></url>
   <url><loc>https://bryme.onrender.com/articles/movie-guides/</loc></url>
-  <url><loc>https://bryme.onrender.com/articles/movie-recommendations/</loc></url>
-  <url><loc>https://bryme.onrender.com/articles/nigerian-african-movies/</loc></url>
-  <url><loc>https://bryme.onrender.com/articles/recommendations/</loc></url>
-  <url><loc>https://bryme.onrender.com/articles/survival/</loc></url>
   <url><loc>https://bryme.onrender.com/articles/tv-series-opinion/</loc></url>
-  <url><loc>https://bryme.onrender.com/articles/tv-series-survival/</loc></url>
-  <url><loc>https://bryme.onrender.com/articles/tv-series/</loc></url>
   <url><loc>https://bryme.onrender.com/author/ibrahim-sodiq/</loc></url>
   <url><loc>https://bryme.onrender.com/channels/crunchyroll/</loc></url>
   <url><loc>https://bryme.onrender.com/channels/jio/</loc></url>
@@ -181,94 +145,79 @@
   <url><loc>https://bryme.onrender.com/disclaimer/</loc></url>
   <url><loc>https://bryme.onrender.com/editorial-policy/</loc></url>
   <url><loc>https://bryme.onrender.com/entertainment/</loc></url>
-  <url><loc>https://bryme.onrender.com/genre/action/</loc></url>
-  <url><loc>https://bryme.onrender.com/genre/animation/</loc></url>
-  <url><loc>https://bryme.onrender.com/genre/chinese/</loc></url>
-  <url><loc>https://bryme.onrender.com/genre/comedy/</loc></url>
-  <url><loc>https://bryme.onrender.com/genre/crime/</loc></url>
-  <url><loc>https://bryme.onrender.com/genre/drama/</loc></url>
-  <url><loc>https://bryme.onrender.com/genre/fantasy/</loc></url>
-  <url><loc>https://bryme.onrender.com/genre/french/</loc></url>
-  <url><loc>https://bryme.onrender.com/genre/german/</loc></url>
-  <url><loc>https://bryme.onrender.com/genre/horror/</loc></url>
-  <url><loc>https://bryme.onrender.com/genre/indian/</loc></url>
-  <url><loc>https://bryme.onrender.com/genre/korean/</loc></url>
   <url><loc>https://bryme.onrender.com/genre/musical/</loc></url>
-  <url><loc>https://bryme.onrender.com/genre/nigerian/</loc></url>
-  <url><loc>https://bryme.onrender.com/genre/romance/</loc></url>
-  <url><loc>https://bryme.onrender.com/genre/sci-fi/</loc></url>
-  <url><loc>https://bryme.onrender.com/genre/superhero/</loc></url>
-  <url><loc>https://bryme.onrender.com/genre/thriller/</loc></url>
-  <url><loc>https://bryme.onrender.com/genre/war/</loc></url>
-  <url><loc>https://bryme.onrender.com/genre/western/</loc></url>
   <url><loc>https://bryme.onrender.com/genres/</loc></url>
   <url><loc>https://bryme.onrender.com/make-money/</loc></url>
   <url><loc>https://bryme.onrender.com/make-money/beginner-guides/</loc></url>
   <url><loc>https://bryme.onrender.com/make-money/beginners-guide-to-making-money-online/</loc></url>
+  <url><loc>https://bryme.onrender.com/make-money/coding/</loc></url>
   <url><loc>https://bryme.onrender.com/make-money/freelance-platform-fees-explained/</loc></url>
   <url><loc>https://bryme.onrender.com/make-money/freelancing/</loc></url>
+  <url><loc>https://bryme.onrender.com/make-money/make-money-online-nigeria/</loc></url>
+  <url><loc>https://bryme.onrender.com/make-money/remote-work/</loc></url>
   <url><loc>https://bryme.onrender.com/make-money/website-monetization-guide/</loc></url>
   <url><loc>https://bryme.onrender.com/make-money/website-monetization/</loc></url>
   <url><loc>https://bryme.onrender.com/make-money/writing-field-notes-how-this-works/</loc></url>
-  <url><loc>https://bryme.onrender.com/make-money/writing/</loc><lastmod>2026-08-19</lastmod></url>
-  <url><loc>https://bryme.onrender.com/make-money/writing/adi-again/</loc><lastmod>2026-08-19</lastmod></url>
-  <url><loc>https://bryme.onrender.com/make-money/writing/adi-essays/</loc><lastmod>2026-08-19</lastmod></url>
-  <url><loc>https://bryme.onrender.com/make-money/writing/aeon-essays/</loc><lastmod>2026-08-19</lastmod></url>
-  <url><loc>https://bryme.onrender.com/make-money/writing/african-arguments/</loc><lastmod>2026-08-19</lastmod></url>
-  <url><loc>https://bryme.onrender.com/make-money/writing/afrolicious/</loc><lastmod>2026-08-19</lastmod></url>
-  <url><loc>https://bryme.onrender.com/make-money/writing/agbowo-essays/</loc><lastmod>2026-08-19</lastmod></url>
-  <url><loc>https://bryme.onrender.com/make-money/writing/americas-quarterly/</loc><lastmod>2026-08-19</lastmod></url>
-  <url><loc>https://bryme.onrender.com/make-money/writing/analog-fact/</loc><lastmod>2026-08-19</lastmod></url>
-  <url><loc>https://bryme.onrender.com/make-money/writing/analog-fiction/</loc><lastmod>2026-08-19</lastmod></url>
-  <url><loc>https://bryme.onrender.com/make-money/writing/asimovs-fiction/</loc><lastmod>2026-08-19</lastmod></url>
-  <url><loc>https://bryme.onrender.com/make-money/writing/beneath-ceaseless-skies/</loc><lastmod>2026-08-19</lastmod></url>
-  <url><loc>https://bryme.onrender.com/make-money/writing/brevity-essays/</loc><lastmod>2026-08-19</lastmod></url>
-  <url><loc>https://bryme.onrender.com/make-money/writing/chicken-soup/</loc><lastmod>2026-08-19</lastmod></url>
-  <url><loc>https://bryme.onrender.com/make-money/writing/clarkesworld-fiction/</loc><lastmod>2026-08-19</lastmod></url>
-  <url><loc>https://bryme.onrender.com/make-money/writing/clarkesworld-nonfiction/</loc><lastmod>2026-08-19</lastmod></url>
-  <url><loc>https://bryme.onrender.com/make-money/writing/climate-home-news/</loc><lastmod>2026-08-19</lastmod></url>
-  <url><loc>https://bryme.onrender.com/make-money/writing/conde-nast-traveler/</loc><lastmod>2026-08-19</lastmod></url>
-  <url><loc>https://bryme.onrender.com/make-money/writing/efiko/</loc><lastmod>2026-08-19</lastmod></url>
-  <url><loc>https://bryme.onrender.com/make-money/writing/electric-literature-essays/</loc><lastmod>2026-08-19</lastmod></url>
-  <url><loc>https://bryme.onrender.com/make-money/writing/griffith-review-bodies/</loc><lastmod>2026-08-19</lastmod></url>
-  <url><loc>https://bryme.onrender.com/make-money/writing/himal-southasian/</loc><lastmod>2026-08-19</lastmod></url>
-  <url><loc>https://bryme.onrender.com/make-money/writing/khoreo-fiction/</loc><lastmod>2026-08-19</lastmod></url>
-  <url><loc>https://bryme.onrender.com/make-money/writing/listverse/</loc><lastmod>2026-08-19</lastmod></url>
-  <url><loc>https://bryme.onrender.com/make-money/writing/literary-hub/</loc><lastmod>2026-08-19</lastmod></url>
-  <url><loc>https://bryme.onrender.com/make-money/writing/longreads-personal-essay/</loc><lastmod>2026-08-19</lastmod></url>
-  <url><loc>https://bryme.onrender.com/make-money/writing/longreads-reading-list/</loc><lastmod>2026-08-19</lastmod></url>
-  <url><loc>https://bryme.onrender.com/make-money/writing/longreads-reported-feature/</loc><lastmod>2026-08-19</lastmod></url>
-  <url><loc>https://bryme.onrender.com/make-money/writing/markaz-review/</loc><lastmod>2026-08-19</lastmod></url>
-  <url><loc>https://bryme.onrender.com/make-money/writing/mcsweeneys/</loc><lastmod>2026-08-19</lastmod></url>
-  <url><loc>https://bryme.onrender.com/make-money/writing/nacla/</loc><lastmod>2026-08-19</lastmod></url>
-  <url><loc>https://bryme.onrender.com/make-money/writing/new-humanitarian/</loc><lastmod>2026-08-19</lastmod></url>
-  <url><loc>https://bryme.onrender.com/make-money/writing/new-lines/</loc><lastmod>2026-08-19</lastmod></url>
-  <url><loc>https://bryme.onrender.com/make-money/writing/noema/</loc><lastmod>2026-08-19</lastmod></url>
-  <url><loc>https://bryme.onrender.com/make-money/writing/omenana/</loc><lastmod>2026-08-19</lastmod></url>
-  <url><loc>https://bryme.onrender.com/make-money/writing/oriire/</loc><lastmod>2026-08-19</lastmod></url>
-  <url><loc>https://bryme.onrender.com/make-money/writing/overland-fiction/</loc><lastmod>2026-08-19</lastmod></url>
-  <url><loc>https://bryme.onrender.com/make-money/writing/overland-online/</loc><lastmod>2026-08-19</lastmod></url>
-  <url><loc>https://bryme.onrender.com/make-money/writing/psyche-first-person/</loc><lastmod>2026-08-19</lastmod></url>
-  <url><loc>https://bryme.onrender.com/make-money/writing/rest-of-world/</loc><lastmod>2026-08-19</lastmod></url>
-  <url><loc>https://bryme.onrender.com/make-money/writing/strange-horizons-fiction/</loc><lastmod>2026-08-19</lastmod></url>
-  <url><loc>https://bryme.onrender.com/make-money/writing/the-lagos-review/</loc><lastmod>2026-08-19</lastmod></url>
-  <url><loc>https://bryme.onrender.com/make-money/writing/the-offing-wit-tea/</loc><lastmod>2026-08-19</lastmod></url>
-  <url><loc>https://bryme.onrender.com/make-money/writing/the-republic/</loc><lastmod>2026-08-19</lastmod></url>
-  <url><loc>https://bryme.onrender.com/make-money/writing/the-rumpus-el-alboroto/</loc><lastmod>2026-08-19</lastmod></url>
-  <url><loc>https://bryme.onrender.com/make-money/writing/the-rumpus-essays/</loc><lastmod>2026-08-19</lastmod></url>
-  <url><loc>https://bryme.onrender.com/make-money/writing/the-tyee/</loc><lastmod>2026-08-19</lastmod></url>
-  <url><loc>https://bryme.onrender.com/make-money/writing/uncanny-fiction/</loc><lastmod>2026-08-19</lastmod></url>
-  <url><loc>https://bryme.onrender.com/make-money/writing/uncanny-poetry/</loc><lastmod>2026-08-19</lastmod></url>
-  <url><loc>https://bryme.onrender.com/make-money/writing/undark/</loc><lastmod>2026-08-19</lastmod></url>
-  <url><loc>https://bryme.onrender.com/make-money/writing/vox-climate/</loc><lastmod>2026-08-19</lastmod></url>
-  <url><loc>https://bryme.onrender.com/make-money/writing/vox-first-person/</loc><lastmod>2026-08-19</lastmod></url>
-  <url><loc>https://bryme.onrender.com/make-money/writing/vox-future-perfect/</loc><lastmod>2026-08-19</lastmod></url>
-  <url><loc>https://bryme.onrender.com/make-money/writing/walrus-essays/</loc><lastmod>2026-08-19</lastmod></url>
-  <url><loc>https://bryme.onrender.com/make-money/writing/wasafiri-interviews/</loc><lastmod>2026-08-19</lastmod></url>
-  <url><loc>https://bryme.onrender.com/make-money/writing/words-without-borders-reviews/</loc><lastmod>2026-08-19</lastmod></url>
+  <url><loc>https://bryme.onrender.com/make-money/writing/</loc></url>
+  <url><loc>https://bryme.onrender.com/make-money/writing/adi-again/</loc></url>
+  <url><loc>https://bryme.onrender.com/make-money/writing/adi-essays/</loc></url>
+  <url><loc>https://bryme.onrender.com/make-money/writing/aeon-essays/</loc></url>
+  <url><loc>https://bryme.onrender.com/make-money/writing/african-arguments/</loc></url>
+  <url><loc>https://bryme.onrender.com/make-money/writing/afrolicious/</loc></url>
+  <url><loc>https://bryme.onrender.com/make-money/writing/agbowo-essays/</loc></url>
+  <url><loc>https://bryme.onrender.com/make-money/writing/americas-quarterly/</loc></url>
+  <url><loc>https://bryme.onrender.com/make-money/writing/analog-fact/</loc></url>
+  <url><loc>https://bryme.onrender.com/make-money/writing/analog-fiction/</loc></url>
+  <url><loc>https://bryme.onrender.com/make-money/writing/asimovs-fiction/</loc></url>
+  <url><loc>https://bryme.onrender.com/make-money/writing/beneath-ceaseless-skies/</loc></url>
+  <url><loc>https://bryme.onrender.com/make-money/writing/brevity-essays/</loc></url>
+  <url><loc>https://bryme.onrender.com/make-money/writing/chicken-soup/</loc></url>
+  <url><loc>https://bryme.onrender.com/make-money/writing/clarkesworld-fiction/</loc></url>
+  <url><loc>https://bryme.onrender.com/make-money/writing/clarkesworld-nonfiction/</loc></url>
+  <url><loc>https://bryme.onrender.com/make-money/writing/climate-home-news/</loc></url>
+  <url><loc>https://bryme.onrender.com/make-money/writing/conde-nast-traveler/</loc></url>
+  <url><loc>https://bryme.onrender.com/make-money/writing/efiko/</loc></url>
+  <url><loc>https://bryme.onrender.com/make-money/writing/electric-literature-essays/</loc></url>
+  <url><loc>https://bryme.onrender.com/make-money/writing/griffith-review-bodies/</loc></url>
+  <url><loc>https://bryme.onrender.com/make-money/writing/himal-southasian/</loc></url>
+  <url><loc>https://bryme.onrender.com/make-money/writing/khoreo-fiction/</loc></url>
+  <url><loc>https://bryme.onrender.com/make-money/writing/listverse/</loc></url>
+  <url><loc>https://bryme.onrender.com/make-money/writing/literary-hub/</loc></url>
+  <url><loc>https://bryme.onrender.com/make-money/writing/longreads-personal-essay/</loc></url>
+  <url><loc>https://bryme.onrender.com/make-money/writing/longreads-reading-list/</loc></url>
+  <url><loc>https://bryme.onrender.com/make-money/writing/longreads-reported-feature/</loc></url>
+  <url><loc>https://bryme.onrender.com/make-money/writing/markaz-review/</loc></url>
+  <url><loc>https://bryme.onrender.com/make-money/writing/mcsweeneys/</loc></url>
+  <url><loc>https://bryme.onrender.com/make-money/writing/nacla/</loc></url>
+  <url><loc>https://bryme.onrender.com/make-money/writing/new-humanitarian/</loc></url>
+  <url><loc>https://bryme.onrender.com/make-money/writing/new-lines/</loc></url>
+  <url><loc>https://bryme.onrender.com/make-money/writing/noema/</loc></url>
+  <url><loc>https://bryme.onrender.com/make-money/writing/omenana/</loc></url>
+  <url><loc>https://bryme.onrender.com/make-money/writing/oriire/</loc></url>
+  <url><loc>https://bryme.onrender.com/make-money/writing/overland-fiction/</loc></url>
+  <url><loc>https://bryme.onrender.com/make-money/writing/overland-online/</loc></url>
+  <url><loc>https://bryme.onrender.com/make-money/writing/psyche-first-person/</loc></url>
+  <url><loc>https://bryme.onrender.com/make-money/writing/rest-of-world/</loc></url>
+  <url><loc>https://bryme.onrender.com/make-money/writing/strange-horizons-fiction/</loc></url>
+  <url><loc>https://bryme.onrender.com/make-money/writing/the-lagos-review/</loc></url>
+  <url><loc>https://bryme.onrender.com/make-money/writing/the-offing-wit-tea/</loc></url>
+  <url><loc>https://bryme.onrender.com/make-money/writing/the-republic/</loc></url>
+  <url><loc>https://bryme.onrender.com/make-money/writing/the-rumpus-el-alboroto/</loc></url>
+  <url><loc>https://bryme.onrender.com/make-money/writing/the-rumpus-essays/</loc></url>
+  <url><loc>https://bryme.onrender.com/make-money/writing/the-tyee/</loc></url>
+  <url><loc>https://bryme.onrender.com/make-money/writing/uncanny-fiction/</loc></url>
+  <url><loc>https://bryme.onrender.com/make-money/writing/uncanny-poetry/</loc></url>
+  <url><loc>https://bryme.onrender.com/make-money/writing/undark/</loc></url>
+  <url><loc>https://bryme.onrender.com/make-money/writing/vox-climate/</loc></url>
+  <url><loc>https://bryme.onrender.com/make-money/writing/vox-first-person/</loc></url>
+  <url><loc>https://bryme.onrender.com/make-money/writing/vox-future-perfect/</loc></url>
+  <url><loc>https://bryme.onrender.com/make-money/writing/walrus-essays/</loc></url>
+  <url><loc>https://bryme.onrender.com/make-money/writing/wasafiri-interviews/</loc></url>
+  <url><loc>https://bryme.onrender.com/make-money/writing/words-without-borders-reviews/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/1917/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/2001-space-odyssey/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/21-jump-street/</loc></url>
+  <url><loc>https://bryme.onrender.com/movie/28-years-later-the-bone-temple/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/28-years-later/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/3-idiots/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/300/</loc></url>
@@ -312,6 +261,7 @@
   <url><loc>https://bryme.onrender.com/movie/avengers-doomsday/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/avengers-endgame/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/avengers-infinity-war/</loc></url>
+  <url><loc>https://bryme.onrender.com/movie/awarapan/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/baahubali-2/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/baahubali-the-beginning/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/baahubali/</loc></url>
@@ -350,6 +300,7 @@
   <url><loc>https://bryme.onrender.com/movie/call-me-by-your-name/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/call-of-my-life/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/camp-rock-3/</loc></url>
+  <url><loc>https://bryme.onrender.com/movie/captain-america-brave-new-world/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/captain-america-the-winter-soldier/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/captain-america/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/captain-marvel/</loc></url>
@@ -367,10 +318,12 @@
   <url><loc>https://bryme.onrender.com/movie/civil-war/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/clockwork-orange/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/cloud-atlas/</loc></url>
+  <url><loc>https://bryme.onrender.com/movie/cocktail-2/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/coco/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/colony-2026/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/con-air/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/conclave/</loc></url>
+  <url><loc>https://bryme.onrender.com/movie/coraline/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/court/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/crazy-rich-asians/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/creed/</loc></url>
@@ -380,6 +333,7 @@
   <url><loc>https://bryme.onrender.com/movie/deadpool-wolverine/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/deadpool/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/decision-to-leave/</loc></url>
+  <url><loc>https://bryme.onrender.com/movie/deep-water/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/demon-slayer-infinity-castle/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/departures/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/despicable-me-3/</loc></url>
@@ -405,6 +359,7 @@
   <url><loc>https://bryme.onrender.com/movie/elemental/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/empire-strikes-back/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/encanto/</loc></url>
+  <url><loc>https://bryme.onrender.com/movie/enola-holmes-3/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/equalizer/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/eternal-sunshine/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/eternals/</loc></url>
@@ -418,6 +373,7 @@
   <url><loc>https://bryme.onrender.com/movie/fantastic-beasts-and-where-to-find-them/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/far-from-home/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/fast-x/</loc></url>
+  <url><loc>https://bryme.onrender.com/movie/fifty-shades-freed/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/fifty-shades-of-grey/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/fight-club/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/finding-dory/</loc></url>
@@ -437,6 +393,7 @@
   <url><loc>https://bryme.onrender.com/movie/gladiator-ii/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/gladiator/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/glass-onion/</loc></url>
+  <url><loc>https://bryme.onrender.com/movie/goat-2026/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/godfather-part-ii/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/godfather-part-iii/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/godzilla-2014/</loc></url>
@@ -472,10 +429,12 @@
   <url><loc>https://bryme.onrender.com/movie/how-to-train-your-dragon-2010/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/how-to-train-your-dragon-2025/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/hulk/</loc></url>
+  <url><loc>https://bryme.onrender.com/movie/hungry/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/i-robot/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/i-saw-the-devil/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/ije-the-journey/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/ijogbon/</loc></url>
+  <url><loc>https://bryme.onrender.com/movie/in-the-grey/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/in-the-line-of-fire/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/inception/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/inside-out-2/</loc></url>
@@ -490,6 +449,7 @@
   <url><loc>https://bryme.onrender.com/movie/iron-man/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/it-follows/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/it/</loc></url>
+  <url><loc>https://bryme.onrender.com/movie/jackass-best-and-last/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/jallikattu/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/jana-nayagan/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/jawan/</loc></url>
@@ -517,6 +477,7 @@
   <url><loc>https://bryme.onrender.com/movie/knives-out/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/kong-skull-island/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/kpop-demon-hunters/</loc></url>
+  <url><loc>https://bryme.onrender.com/movie/kraken-2026/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/kumbalangi-nights/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/kung-fu-panda-3/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/kung-fu-panda/</loc></url>
@@ -525,6 +486,7 @@
   <url><loc>https://bryme.onrender.com/movie/lady-bird/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/lagaan/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/last-crusade/</loc></url>
+  <url><loc>https://bryme.onrender.com/movie/lee-cronins-the-mummy/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/let-bullets-fly/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/lethal-weapon/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/lionheart/</loc></url>
@@ -542,6 +504,7 @@
   <url><loc>https://bryme.onrender.com/movie/mami-wata/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/man-of-steel/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/masaan/</loc></url>
+  <url><loc>https://bryme.onrender.com/movie/masters-of-the-universe/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/memento/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/memories-of-murder/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/merry-men/</loc></url>
@@ -554,6 +517,7 @@
   <url><loc>https://bryme.onrender.com/movie/minority-report/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/mission-impossible-dead-reckoning/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/mission-impossible-fallout/</loc></url>
+  <url><loc>https://bryme.onrender.com/movie/mission-impossible-the-final-reckoning/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/moana-2026/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/moana/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/monsters-inc/</loc></url>
@@ -563,6 +527,7 @@
   <url><loc>https://bryme.onrender.com/movie/mulan/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/munjya/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/mutiny-2026/</loc></url>
+  <url><loc>https://bryme.onrender.com/movie/my-fault/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/napoleon-dynamite/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/ne-zha/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/night-living-dead/</loc></url>
@@ -580,6 +545,7 @@
   <url><loc>https://bryme.onrender.com/movie/omo-ghetto-the-saga/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/once-upon-time-west/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/oppenheimer/</loc></url>
+  <url><loc>https://bryme.onrender.com/movie/our-fault/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/pacific-rim/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/pan-labyrinth/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/parasite/</loc></url>
@@ -658,6 +624,7 @@
   <url><loc>https://bryme.onrender.com/movie/spider-verse-2/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/star-wars-a-new-hope/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/star-wars-the-last-jedi/</loc></url>
+  <url><loc>https://bryme.onrender.com/movie/star-wars-the-mandalorian-and-grogu/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/star-wars-the-rise-of-skywalker/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/stardust/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/step-brothers/</loc></url>
@@ -690,9 +657,11 @@
   <url><loc>https://bryme.onrender.com/movie/the-conjuring/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/the-dark-knight-rises/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/the-dark-knight/</loc></url>
+  <url><loc>https://bryme.onrender.com/movie/the-death-of-robin-hood/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/the-departed/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/the-devil-wears-prada-2/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/the-devils-mouth/</loc></url>
+  <url><loc>https://bryme.onrender.com/movie/the-drama/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/the-end-of-oak-street/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/the-exorcist/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/the-fall-guy/</loc></url>
@@ -719,9 +688,11 @@
   <url><loc>https://bryme.onrender.com/movie/the-housemaid/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/the-incredibles/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/the-intouchables/</loc></url>
+  <url><loc>https://bryme.onrender.com/movie/the-invite/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/the-iron-giant/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/the-labyrinth/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/the-last-black-man-in-san-francisco/</loc></url>
+  <url><loc>https://bryme.onrender.com/movie/the-last-house/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/the-lighthouse/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/the-lion-king/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/the-lives-of-others/</loc></url>
@@ -742,6 +713,7 @@
   <url><loc>https://bryme.onrender.com/movie/the-other-guys/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/the-prestige/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/the-princess-bride/</loc></url>
+  <url><loc>https://bryme.onrender.com/movie/the-punisher-one-last-kill/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/the-revenant/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/the-ring/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/the-road/</loc></url>
@@ -751,6 +723,7 @@
   <url><loc>https://bryme.onrender.com/movie/the-shadows-edge/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/the-shape-of-water/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/the-shawshank-redemption/</loc></url>
+  <url><loc>https://bryme.onrender.com/movie/the-sheep-detectives/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/the-shining/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/the-social-network/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/the-substance/</loc></url>
@@ -794,6 +767,7 @@
   <url><loc>https://bryme.onrender.com/movie/war-of-the-worlds-2025/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/war-of-the-worlds/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/warcraft/</loc></url>
+  <url><loc>https://bryme.onrender.com/movie/welcome-to-the-jungle/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/what-we-do-in-shadows/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/whiplash/</loc></url>
   <url><loc>https://bryme.onrender.com/movie/wicked-for-good/</loc></url>
@@ -830,23 +804,12 @@
   <url><loc>https://bryme.onrender.com/movies/war/</loc></url>
   <url><loc>https://bryme.onrender.com/now/</loc></url>
   <url><loc>https://bryme.onrender.com/privacy/</loc></url>
+  <url><loc>https://bryme.onrender.com/search/</loc></url>
   <url><loc>https://bryme.onrender.com/series/</loc></url>
-  <url><loc>https://bryme.onrender.com/series/1989/</loc></url>
-  <url><loc>https://bryme.onrender.com/series/1994/</loc></url>
-  <url><loc>https://bryme.onrender.com/series/1999/</loc></url>
-  <url><loc>https://bryme.onrender.com/series/2001/</loc></url>
-  <url><loc>https://bryme.onrender.com/series/2002/</loc></url>
-  <url><loc>https://bryme.onrender.com/series/2004/</loc></url>
-  <url><loc>https://bryme.onrender.com/series/2005/</loc></url>
-  <url><loc>https://bryme.onrender.com/series/2008/</loc></url>
   <url><loc>https://bryme.onrender.com/series/2010/</loc></url>
-  <url><loc>https://bryme.onrender.com/series/2011/</loc></url>
-  <url><loc>https://bryme.onrender.com/series/2013/</loc></url>
   <url><loc>https://bryme.onrender.com/series/2014/</loc></url>
   <url><loc>https://bryme.onrender.com/series/2015/</loc></url>
-  <url><loc>https://bryme.onrender.com/series/2016/</loc></url>
   <url><loc>https://bryme.onrender.com/series/2017/</loc></url>
-  <url><loc>https://bryme.onrender.com/series/2018/</loc></url>
   <url><loc>https://bryme.onrender.com/series/2019/</loc></url>
   <url><loc>https://bryme.onrender.com/series/2020/</loc></url>
   <url><loc>https://bryme.onrender.com/series/2021/</loc></url>
@@ -880,7 +843,6 @@
   <url><loc>https://bryme.onrender.com/series/euphoria/</loc></url>
   <url><loc>https://bryme.onrender.com/series/extraordinary-attorney-woo/</loc></url>
   <url><loc>https://bryme.onrender.com/series/fallout/</loc></url>
-  <url><loc>https://bryme.onrender.com/series/family/</loc></url>
   <url><loc>https://bryme.onrender.com/series/fantasy/</loc></url>
   <url><loc>https://bryme.onrender.com/series/fargo/</loc></url>
   <url><loc>https://bryme.onrender.com/series/friends/</loc></url>
@@ -918,7 +880,6 @@
   <url><loc>https://bryme.onrender.com/series/outer-banks/</loc></url>
   <url><loc>https://bryme.onrender.com/series/ozark/</loc></url>
   <url><loc>https://bryme.onrender.com/series/peaky-blinders/</loc></url>
-  <url><loc>https://bryme.onrender.com/series/political/</loc></url>
   <url><loc>https://bryme.onrender.com/series/prison-break/</loc></url>
   <url><loc>https://bryme.onrender.com/series/reacher/</loc></url>
   <url><loc>https://bryme.onrender.com/series/romance/</loc></url>
@@ -931,7 +892,6 @@
   <url><loc>https://bryme.onrender.com/series/sherlock/</loc></url>
   <url><loc>https://bryme.onrender.com/series/shogun/</loc></url>
   <url><loc>https://bryme.onrender.com/series/silo/</loc></url>
-  <url><loc>https://bryme.onrender.com/series/sports/</loc></url>
   <url><loc>https://bryme.onrender.com/series/squid-game/</loc></url>
   <url><loc>https://bryme.onrender.com/series/stranger-things/</loc></url>
   <url><loc>https://bryme.onrender.com/series/succession/</loc></url>
@@ -967,10 +927,9 @@
   <url><loc>https://bryme.onrender.com/series/vikings/</loc></url>
   <url><loc>https://bryme.onrender.com/series/vincenzo/</loc></url>
   <url><loc>https://bryme.onrender.com/series/wandavision/</loc></url>
-  <url><loc>https://bryme.onrender.com/series/war/</loc></url>
   <url><loc>https://bryme.onrender.com/series/wednesday/</loc></url>
   <url><loc>https://bryme.onrender.com/series/yellowjackets/</loc></url>
-  <url><loc>https://bryme.onrender.com/sports/</loc><lastmod>2026-08-22</lastmod></url>
+  <url><loc>https://bryme.onrender.com/sports/</loc></url>
   <url><loc>https://bryme.onrender.com/sports/arsenal-title-defence/</loc></url>
   <url><loc>https://bryme.onrender.com/sports/articles/</loc></url>
   <url><loc>https://bryme.onrender.com/sports/ballon-dor-2026-our-picks/</loc></url>
@@ -978,15 +937,15 @@
   <url><loc>https://bryme.onrender.com/sports/bundesliga/</loc></url>
   <url><loc>https://bryme.onrender.com/sports/bundesliga/fixtures/</loc></url>
   <url><loc>https://bryme.onrender.com/sports/bundesliga/matches/</loc></url>
-  <url><loc>https://bryme.onrender.com/sports/bundesliga/matches/augsburg-vs-schalke/</loc><lastmod>2026-08-17</lastmod></url>
-  <url><loc>https://bryme.onrender.com/sports/bundesliga/matches/bayern-vs-stuttgart/</loc><lastmod>2026-08-17</lastmod></url>
-  <url><loc>https://bryme.onrender.com/sports/bundesliga/matches/dortmund-vs-hamburg/</loc><lastmod>2026-08-17</lastmod></url>
-  <url><loc>https://bryme.onrender.com/sports/bundesliga/matches/elversberg-vs-leverkusen/</loc><lastmod>2026-08-17</lastmod></url>
-  <url><loc>https://bryme.onrender.com/sports/bundesliga/matches/freiburg-vs-werder/</loc><lastmod>2026-08-17</lastmod></url>
-  <url><loc>https://bryme.onrender.com/sports/bundesliga/matches/koln-vs-hoffenheim/</loc><lastmod>2026-08-17</lastmod></url>
-  <url><loc>https://bryme.onrender.com/sports/bundesliga/matches/leipzig-vs-gladbach/</loc><lastmod>2026-08-17</lastmod></url>
-  <url><loc>https://bryme.onrender.com/sports/bundesliga/matches/mainz-vs-paderborn/</loc><lastmod>2026-08-17</lastmod></url>
-  <url><loc>https://bryme.onrender.com/sports/bundesliga/matches/union-berlin-vs-frankfurt/</loc><lastmod>2026-08-17</lastmod></url>
+  <url><loc>https://bryme.onrender.com/sports/bundesliga/matches/augsburg-vs-schalke/</loc></url>
+  <url><loc>https://bryme.onrender.com/sports/bundesliga/matches/bayern-vs-stuttgart/</loc></url>
+  <url><loc>https://bryme.onrender.com/sports/bundesliga/matches/dortmund-vs-hamburg/</loc></url>
+  <url><loc>https://bryme.onrender.com/sports/bundesliga/matches/elversberg-vs-leverkusen/</loc></url>
+  <url><loc>https://bryme.onrender.com/sports/bundesliga/matches/freiburg-vs-werder/</loc></url>
+  <url><loc>https://bryme.onrender.com/sports/bundesliga/matches/koln-vs-hoffenheim/</loc></url>
+  <url><loc>https://bryme.onrender.com/sports/bundesliga/matches/leipzig-vs-gladbach/</loc></url>
+  <url><loc>https://bryme.onrender.com/sports/bundesliga/matches/mainz-vs-paderborn/</loc></url>
+  <url><loc>https://bryme.onrender.com/sports/bundesliga/matches/union-berlin-vs-frankfurt/</loc></url>
   <url><loc>https://bryme.onrender.com/sports/bundesliga/results/</loc></url>
   <url><loc>https://bryme.onrender.com/sports/champions-league-format-explained/</loc></url>
   <url><loc>https://bryme.onrender.com/sports/champions-league-records/</loc></url>
@@ -999,38 +958,38 @@
   <url><loc>https://bryme.onrender.com/sports/fpl/</loc></url>
   <url><loc>https://bryme.onrender.com/sports/history/</loc></url>
   <url><loc>https://bryme.onrender.com/sports/international/</loc></url>
-  <url><loc>https://bryme.onrender.com/sports/la-liga/</loc><lastmod>2026-08-22</lastmod></url>
-  <url><loc>https://bryme.onrender.com/sports/la-liga/fixtures/</loc><lastmod>2026-08-22</lastmod></url>
-  <url><loc>https://bryme.onrender.com/sports/la-liga/matches/</loc><lastmod>2026-08-22</lastmod></url>
-  <url><loc>https://bryme.onrender.com/sports/la-liga/matches/alaves-vs-getafe/</loc><lastmod>2026-08-17</lastmod></url>
-  <url><loc>https://bryme.onrender.com/sports/la-liga/matches/athletic-bilbao-vs-sevilla/</loc><lastmod>2026-08-22</lastmod></url>
-  <url><loc>https://bryme.onrender.com/sports/la-liga/matches/atletico-madrid-vs-malaga/</loc><lastmod>2026-08-21</lastmod></url>
-  <url><loc>https://bryme.onrender.com/sports/la-liga/matches/barcelona-vs-athletic-bilbao/</loc><lastmod>2026-08-17</lastmod></url>
-  <url><loc>https://bryme.onrender.com/sports/la-liga/matches/celta-vigo-vs-osasuna/</loc><lastmod>2026-08-17</lastmod></url>
-  <url><loc>https://bryme.onrender.com/sports/la-liga/matches/deportivo-vs-elche/</loc><lastmod>2026-08-17</lastmod></url>
-  <url><loc>https://bryme.onrender.com/sports/la-liga/matches/espanyol-vs-levante/</loc><lastmod>2026-08-17</lastmod></url>
-  <url><loc>https://bryme.onrender.com/sports/la-liga/matches/espanyol-vs-real-madrid/</loc><lastmod>2026-08-22</lastmod></url>
-  <url><loc>https://bryme.onrender.com/sports/la-liga/matches/racing-vs-villarreal/</loc><lastmod>2026-08-17</lastmod></url>
-  <url><loc>https://bryme.onrender.com/sports/la-liga/matches/rayo-vallecano-vs-alaves/</loc><lastmod>2026-08-21</lastmod></url>
-  <url><loc>https://bryme.onrender.com/sports/la-liga/matches/real-betis-vs-real-sociedad/</loc><lastmod>2026-08-22</lastmod></url>
-  <url><loc>https://bryme.onrender.com/sports/la-liga/matches/real-madrid-vs-real-sociedad/</loc><lastmod>2026-08-17</lastmod></url>
-  <url><loc>https://bryme.onrender.com/sports/la-liga/matches/sevilla-vs-rayo-vallecano/</loc><lastmod>2026-08-17</lastmod></url>
-  <url><loc>https://bryme.onrender.com/sports/la-liga/matches/valencia-vs-celta-vigo/</loc><lastmod>2026-08-22</lastmod></url>
-  <url><loc>https://bryme.onrender.com/sports/la-liga/matches/valencia-vs-real-betis/</loc><lastmod>2026-08-17</lastmod></url>
-  <url><loc>https://bryme.onrender.com/sports/la-liga/results/</loc><lastmod>2026-08-22</lastmod></url>
-  <url><loc>https://bryme.onrender.com/sports/ligue-1/</loc><lastmod>2026-08-22</lastmod></url>
-  <url><loc>https://bryme.onrender.com/sports/ligue-1/fixtures/</loc><lastmod>2026-08-22</lastmod></url>
+  <url><loc>https://bryme.onrender.com/sports/la-liga/</loc></url>
+  <url><loc>https://bryme.onrender.com/sports/la-liga/fixtures/</loc></url>
+  <url><loc>https://bryme.onrender.com/sports/la-liga/matches/</loc></url>
+  <url><loc>https://bryme.onrender.com/sports/la-liga/matches/alaves-vs-getafe/</loc></url>
+  <url><loc>https://bryme.onrender.com/sports/la-liga/matches/athletic-bilbao-vs-sevilla/</loc></url>
+  <url><loc>https://bryme.onrender.com/sports/la-liga/matches/atletico-madrid-vs-malaga/</loc></url>
+  <url><loc>https://bryme.onrender.com/sports/la-liga/matches/barcelona-vs-athletic-bilbao/</loc></url>
+  <url><loc>https://bryme.onrender.com/sports/la-liga/matches/celta-vigo-vs-osasuna/</loc></url>
+  <url><loc>https://bryme.onrender.com/sports/la-liga/matches/deportivo-vs-elche/</loc></url>
+  <url><loc>https://bryme.onrender.com/sports/la-liga/matches/espanyol-vs-levante/</loc></url>
+  <url><loc>https://bryme.onrender.com/sports/la-liga/matches/espanyol-vs-real-madrid/</loc></url>
+  <url><loc>https://bryme.onrender.com/sports/la-liga/matches/racing-vs-villarreal/</loc></url>
+  <url><loc>https://bryme.onrender.com/sports/la-liga/matches/rayo-vallecano-vs-alaves/</loc></url>
+  <url><loc>https://bryme.onrender.com/sports/la-liga/matches/real-betis-vs-real-sociedad/</loc></url>
+  <url><loc>https://bryme.onrender.com/sports/la-liga/matches/real-madrid-vs-real-sociedad/</loc></url>
+  <url><loc>https://bryme.onrender.com/sports/la-liga/matches/sevilla-vs-rayo-vallecano/</loc></url>
+  <url><loc>https://bryme.onrender.com/sports/la-liga/matches/valencia-vs-celta-vigo/</loc></url>
+  <url><loc>https://bryme.onrender.com/sports/la-liga/matches/valencia-vs-real-betis/</loc></url>
+  <url><loc>https://bryme.onrender.com/sports/la-liga/results/</loc></url>
+  <url><loc>https://bryme.onrender.com/sports/ligue-1/</loc></url>
+  <url><loc>https://bryme.onrender.com/sports/ligue-1/fixtures/</loc></url>
   <url><loc>https://bryme.onrender.com/sports/ligue-1/matches/</loc></url>
-  <url><loc>https://bryme.onrender.com/sports/ligue-1/matches/angers-vs-lille/</loc><lastmod>2026-08-17</lastmod></url>
-  <url><loc>https://bryme.onrender.com/sports/ligue-1/matches/le-havre-vs-monaco/</loc><lastmod>2026-08-17</lastmod></url>
-  <url><loc>https://bryme.onrender.com/sports/ligue-1/matches/le-mans-vs-brest/</loc><lastmod>2026-08-22</lastmod></url>
-  <url><loc>https://bryme.onrender.com/sports/ligue-1/matches/lens-vs-auxerre/</loc><lastmod>2026-08-22</lastmod></url>
-  <url><loc>https://bryme.onrender.com/sports/ligue-1/matches/marseille-vs-strasbourg/</loc><lastmod>2026-08-22</lastmod></url>
-  <url><loc>https://bryme.onrender.com/sports/ligue-1/matches/nice-vs-lorient/</loc><lastmod>2026-08-22</lastmod></url>
-  <url><loc>https://bryme.onrender.com/sports/ligue-1/matches/psg-vs-rennes/</loc><lastmod>2026-08-17</lastmod></url>
-  <url><loc>https://bryme.onrender.com/sports/ligue-1/matches/toulouse-vs-lyon/</loc><lastmod>2026-08-22</lastmod></url>
-  <url><loc>https://bryme.onrender.com/sports/ligue-1/matches/troyes-vs-paris-fc/</loc><lastmod>2026-08-22</lastmod></url>
-  <url><loc>https://bryme.onrender.com/sports/ligue-1/results/</loc><lastmod>2026-08-22</lastmod></url>
+  <url><loc>https://bryme.onrender.com/sports/ligue-1/matches/angers-vs-lille/</loc></url>
+  <url><loc>https://bryme.onrender.com/sports/ligue-1/matches/le-havre-vs-monaco/</loc></url>
+  <url><loc>https://bryme.onrender.com/sports/ligue-1/matches/le-mans-vs-brest/</loc></url>
+  <url><loc>https://bryme.onrender.com/sports/ligue-1/matches/lens-vs-auxerre/</loc></url>
+  <url><loc>https://bryme.onrender.com/sports/ligue-1/matches/marseille-vs-strasbourg/</loc></url>
+  <url><loc>https://bryme.onrender.com/sports/ligue-1/matches/nice-vs-lorient/</loc></url>
+  <url><loc>https://bryme.onrender.com/sports/ligue-1/matches/psg-vs-rennes/</loc></url>
+  <url><loc>https://bryme.onrender.com/sports/ligue-1/matches/toulouse-vs-lyon/</loc></url>
+  <url><loc>https://bryme.onrender.com/sports/ligue-1/matches/troyes-vs-paris-fc/</loc></url>
+  <url><loc>https://bryme.onrender.com/sports/ligue-1/results/</loc></url>
   <url><loc>https://bryme.onrender.com/sports/liverpools-next-chapter/</loc></url>
   <url><loc>https://bryme.onrender.com/sports/managers-2026-27/</loc></url>
   <url><loc>https://bryme.onrender.com/sports/manchester-city-without-guardiola/</loc></url>
@@ -1038,34 +997,34 @@
   <url><loc>https://bryme.onrender.com/sports/players/</loc></url>
   <url><loc>https://bryme.onrender.com/sports/premier-league-2026-27-season-guide/</loc></url>
   <url><loc>https://bryme.onrender.com/sports/premier-league-matchweek-1-guide/</loc></url>
-  <url><loc>https://bryme.onrender.com/sports/premier-league/</loc><lastmod>2026-08-22</lastmod></url>
-  <url><loc>https://bryme.onrender.com/sports/premier-league/fixtures/</loc><lastmod>2026-08-22</lastmod></url>
-  <url><loc>https://bryme.onrender.com/sports/premier-league/matches/</loc><lastmod>2026-08-22</lastmod></url>
-  <url><loc>https://bryme.onrender.com/sports/premier-league/matches/arsenal-vs-coventry/</loc><lastmod>2026-08-21</lastmod></url>
-  <url><loc>https://bryme.onrender.com/sports/premier-league/matches/brentford-vs-tottenham/</loc><lastmod>2026-08-22</lastmod></url>
-  <url><loc>https://bryme.onrender.com/sports/premier-league/matches/brighton-vs-aston-villa/</loc><lastmod>2026-08-17</lastmod></url>
-  <url><loc>https://bryme.onrender.com/sports/premier-league/matches/everton-vs-crystal-palace/</loc><lastmod>2026-08-17</lastmod></url>
-  <url><loc>https://bryme.onrender.com/sports/premier-league/matches/fulham-vs-chelsea/</loc><lastmod>2026-08-17</lastmod></url>
-  <url><loc>https://bryme.onrender.com/sports/premier-league/matches/hull-vs-man-united/</loc><lastmod>2026-08-22</lastmod></url>
-  <url><loc>https://bryme.onrender.com/sports/premier-league/matches/ipswich-vs-sunderland/</loc><lastmod>2026-08-17</lastmod></url>
-  <url><loc>https://bryme.onrender.com/sports/premier-league/matches/man-city-vs-bournemouth/</loc><lastmod>2026-08-17</lastmod></url>
-  <url><loc>https://bryme.onrender.com/sports/premier-league/matches/newcastle-vs-liverpool/</loc><lastmod>2026-08-17</lastmod></url>
-  <url><loc>https://bryme.onrender.com/sports/premier-league/matches/nottingham-forest-vs-leeds/</loc><lastmod>2026-08-17</lastmod></url>
-  <url><loc>https://bryme.onrender.com/sports/premier-league/results/</loc><lastmod>2026-08-22</lastmod></url>
+  <url><loc>https://bryme.onrender.com/sports/premier-league/</loc></url>
+  <url><loc>https://bryme.onrender.com/sports/premier-league/fixtures/</loc></url>
+  <url><loc>https://bryme.onrender.com/sports/premier-league/matches/</loc></url>
+  <url><loc>https://bryme.onrender.com/sports/premier-league/matches/arsenal-vs-coventry/</loc></url>
+  <url><loc>https://bryme.onrender.com/sports/premier-league/matches/brentford-vs-tottenham/</loc></url>
+  <url><loc>https://bryme.onrender.com/sports/premier-league/matches/brighton-vs-aston-villa/</loc></url>
+  <url><loc>https://bryme.onrender.com/sports/premier-league/matches/everton-vs-crystal-palace/</loc></url>
+  <url><loc>https://bryme.onrender.com/sports/premier-league/matches/fulham-vs-chelsea/</loc></url>
+  <url><loc>https://bryme.onrender.com/sports/premier-league/matches/hull-vs-man-united/</loc></url>
+  <url><loc>https://bryme.onrender.com/sports/premier-league/matches/ipswich-vs-sunderland/</loc></url>
+  <url><loc>https://bryme.onrender.com/sports/premier-league/matches/man-city-vs-bournemouth/</loc></url>
+  <url><loc>https://bryme.onrender.com/sports/premier-league/matches/newcastle-vs-liverpool/</loc></url>
+  <url><loc>https://bryme.onrender.com/sports/premier-league/matches/nottingham-forest-vs-leeds/</loc></url>
+  <url><loc>https://bryme.onrender.com/sports/premier-league/results/</loc></url>
   <url><loc>https://bryme.onrender.com/sports/records/</loc></url>
   <url><loc>https://bryme.onrender.com/sports/serie-a/</loc></url>
   <url><loc>https://bryme.onrender.com/sports/serie-a/fixtures/</loc></url>
   <url><loc>https://bryme.onrender.com/sports/serie-a/matches/</loc></url>
-  <url><loc>https://bryme.onrender.com/sports/serie-a/matches/atalanta-vs-sassuolo/</loc><lastmod>2026-08-17</lastmod></url>
-  <url><loc>https://bryme.onrender.com/sports/serie-a/matches/bologna-vs-lazio/</loc><lastmod>2026-08-17</lastmod></url>
-  <url><loc>https://bryme.onrender.com/sports/serie-a/matches/frosinone-vs-juventus/</loc><lastmod>2026-08-17</lastmod></url>
-  <url><loc>https://bryme.onrender.com/sports/serie-a/matches/genoa-vs-napoli/</loc><lastmod>2026-08-22</lastmod></url>
-  <url><loc>https://bryme.onrender.com/sports/serie-a/matches/inter-vs-monza/</loc><lastmod>2026-08-22</lastmod></url>
-  <url><loc>https://bryme.onrender.com/sports/serie-a/matches/parma-vs-cagliari/</loc><lastmod>2026-08-22</lastmod></url>
-  <url><loc>https://bryme.onrender.com/sports/serie-a/matches/roma-vs-fiorentina/</loc><lastmod>2026-08-17</lastmod></url>
-  <url><loc>https://bryme.onrender.com/sports/serie-a/matches/torino-vs-milan/</loc><lastmod>2026-08-17</lastmod></url>
-  <url><loc>https://bryme.onrender.com/sports/serie-a/matches/udinese-vs-como/</loc><lastmod>2026-08-22</lastmod></url>
-  <url><loc>https://bryme.onrender.com/sports/serie-a/matches/venezia-vs-lecce/</loc><lastmod>2026-08-17</lastmod></url>
+  <url><loc>https://bryme.onrender.com/sports/serie-a/matches/atalanta-vs-sassuolo/</loc></url>
+  <url><loc>https://bryme.onrender.com/sports/serie-a/matches/bologna-vs-lazio/</loc></url>
+  <url><loc>https://bryme.onrender.com/sports/serie-a/matches/frosinone-vs-juventus/</loc></url>
+  <url><loc>https://bryme.onrender.com/sports/serie-a/matches/genoa-vs-napoli/</loc></url>
+  <url><loc>https://bryme.onrender.com/sports/serie-a/matches/inter-vs-monza/</loc></url>
+  <url><loc>https://bryme.onrender.com/sports/serie-a/matches/parma-vs-cagliari/</loc></url>
+  <url><loc>https://bryme.onrender.com/sports/serie-a/matches/roma-vs-fiorentina/</loc></url>
+  <url><loc>https://bryme.onrender.com/sports/serie-a/matches/torino-vs-milan/</loc></url>
+  <url><loc>https://bryme.onrender.com/sports/serie-a/matches/udinese-vs-como/</loc></url>
+  <url><loc>https://bryme.onrender.com/sports/serie-a/matches/venezia-vs-lecce/</loc></url>
   <url><loc>https://bryme.onrender.com/sports/serie-a/results/</loc></url>
   <url><loc>https://bryme.onrender.com/sports/transfers/</loc></url>
   <url><loc>https://bryme.onrender.com/sports/transfers/bundesliga-2026-27/</loc></url>
@@ -1092,43 +1051,22 @@
   <url><loc>https://bryme.onrender.com/topic/space-and-big-ideas/</loc></url>
   <url><loc>https://bryme.onrender.com/topics/</loc></url>
   <url><loc>https://bryme.onrender.com/trending/</loc></url>
-  <url><loc>https://bryme.onrender.com/year/1942/</loc></url>
-  <url><loc>https://bryme.onrender.com/year/1950/</loc></url>
-  <url><loc>https://bryme.onrender.com/year/1952/</loc></url>
-  <url><loc>https://bryme.onrender.com/year/1953/</loc></url>
-  <url><loc>https://bryme.onrender.com/year/1954/</loc></url>
-  <url><loc>https://bryme.onrender.com/year/1955/</loc></url>
-  <url><loc>https://bryme.onrender.com/year/1964/</loc></url>
-  <url><loc>https://bryme.onrender.com/year/1966/</loc></url>
   <url><loc>https://bryme.onrender.com/year/1968/</loc></url>
-  <url><loc>https://bryme.onrender.com/year/1971/</loc></url>
-  <url><loc>https://bryme.onrender.com/year/1972/</loc></url>
-  <url><loc>https://bryme.onrender.com/year/1973/</loc></url>
-  <url><loc>https://bryme.onrender.com/year/1974/</loc></url>
   <url><loc>https://bryme.onrender.com/year/1975/</loc></url>
-  <url><loc>https://bryme.onrender.com/year/1976/</loc></url>
-  <url><loc>https://bryme.onrender.com/year/1977/</loc></url>
-  <url><loc>https://bryme.onrender.com/year/1978/</loc></url>
   <url><loc>https://bryme.onrender.com/year/1979/</loc></url>
   <url><loc>https://bryme.onrender.com/year/1980/</loc></url>
-  <url><loc>https://bryme.onrender.com/year/1981/</loc></url>
   <url><loc>https://bryme.onrender.com/year/1982/</loc></url>
-  <url><loc>https://bryme.onrender.com/year/1983/</loc></url>
   <url><loc>https://bryme.onrender.com/year/1984/</loc></url>
-  <url><loc>https://bryme.onrender.com/year/1985/</loc></url>
   <url><loc>https://bryme.onrender.com/year/1986/</loc></url>
   <url><loc>https://bryme.onrender.com/year/1987/</loc></url>
   <url><loc>https://bryme.onrender.com/year/1988/</loc></url>
   <url><loc>https://bryme.onrender.com/year/1989/</loc></url>
   <url><loc>https://bryme.onrender.com/year/1990/</loc></url>
-  <url><loc>https://bryme.onrender.com/year/1991/</loc></url>
   <url><loc>https://bryme.onrender.com/year/1992/</loc></url>
   <url><loc>https://bryme.onrender.com/year/1993/</loc></url>
   <url><loc>https://bryme.onrender.com/year/1994/</loc></url>
   <url><loc>https://bryme.onrender.com/year/1995/</loc></url>
-  <url><loc>https://bryme.onrender.com/year/1996/</loc></url>
   <url><loc>https://bryme.onrender.com/year/1997/</loc></url>
-  <url><loc>https://bryme.onrender.com/year/1998/</loc></url>
   <url><loc>https://bryme.onrender.com/year/1999/</loc></url>
   <url><loc>https://bryme.onrender.com/year/2000/</loc></url>
   <url><loc>https://bryme.onrender.com/year/2001/</loc></url>
@@ -1158,30 +1096,4 @@
   <url><loc>https://bryme.onrender.com/year/2025/</loc></url>
   <url><loc>https://bryme.onrender.com/year/2026/</loc></url>
   <url><loc>https://bryme.onrender.com/years/</loc></url>
-  <url><loc>https://bryme.onrender.com/movie/goat-2026/</loc></url>
-  <url><loc>https://bryme.onrender.com/movie/jackass-best-and-last/</loc></url>
-  <url><loc>https://bryme.onrender.com/movie/kraken-2026/</loc></url>
-  <url><loc>https://bryme.onrender.com/movie/the-invite/</loc></url>
-  <url><loc>https://bryme.onrender.com/movie/the-last-house/</loc></url>
-  <url><loc>https://bryme.onrender.com/movie/coraline/</loc></url>
-  <url><loc>https://bryme.onrender.com/movie/awarapan/</loc></url>
-  <url><loc>https://bryme.onrender.com/movie/deep-water/</loc></url>
-  <url><loc>https://bryme.onrender.com/movie/captain-america-brave-new-world/</loc></url>
-  <url><loc>https://bryme.onrender.com/movie/28-years-later-the-bone-temple/</loc></url>
-  <url><loc>https://bryme.onrender.com/movie/enola-holmes-3/</loc></url>
-  <url><loc>https://bryme.onrender.com/movie/cocktail-2/</loc></url>
-  <url><loc>https://bryme.onrender.com/movie/fifty-shades-freed/</loc></url>
-  <url><loc>https://bryme.onrender.com/movie/mission-impossible-the-final-reckoning/</loc></url>
-  <url><loc>https://bryme.onrender.com/movie/star-wars-the-mandalorian-and-grogu/</loc></url>
-  <url><loc>https://bryme.onrender.com/movie/masters-of-the-universe/</loc></url>
-  <url><loc>https://bryme.onrender.com/movie/my-fault/</loc></url>
-  <url><loc>https://bryme.onrender.com/movie/the-drama/</loc></url>
-  <url><loc>https://bryme.onrender.com/movie/lee-cronins-the-mummy/</loc></url>
-  <url><loc>https://bryme.onrender.com/movie/our-fault/</loc></url>
-  <url><loc>https://bryme.onrender.com/movie/welcome-to-the-jungle/</loc></url>
-  <url><loc>https://bryme.onrender.com/movie/in-the-grey/</loc></url>
-  <url><loc>https://bryme.onrender.com/movie/the-death-of-robin-hood/</loc></url>
-  <url><loc>https://bryme.onrender.com/movie/the-sheep-detectives/</loc></url>
-  <url><loc>https://bryme.onrender.com/movie/the-punisher-one-last-kill/</loc></url>
-  <url><loc>https://bryme.onrender.com/movie/hungry/</loc></url>
 </urlset>
