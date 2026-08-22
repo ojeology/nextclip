@@ -3398,7 +3398,7 @@ const searchEmbed = JSON.stringify({ movies: searchIndex.movies, articles: searc
 write('search', layout({
   title: 'Search Movies, TV Series & Anime',
   description: 'Search across BRYME — movies, TV series, anime, sports, memes, money guides and tech — every result is labelled with its vertical.',
-  path: '/search/', noindex: true,
+  path: '/search/', noindex: false,
   body: `<main class="shell"><section class="hero"><div class="eyebrow">Global search</div><h1>What are you looking for?</h1><p class="lead">Search movies, TV series, anime, sports, memes, money guides and tech & AI. Every result shows its vertical.</p></section><section class="section"><input class="searchbox" id="search-q" autocomplete="off" placeholder="Try Dune, Breaking Bad, One Piece, Horror, 2024…"><p class="searchnote" id="search-status"></p><div class="search-tabs" id="search-tabs"><button type="button" class="stabs active" data-tab="all">All</button><button type="button" class="stabs" data-tab="movie">🎬 Movies</button><button type="button" class="stabs" data-tab="series">📺 Series</button><button type="button" class="stabs" data-tab="anime">🍥 Anime</button><button type="button" class="stabs" data-tab="article">📰 Articles</button></div><div class="grid" id="search-results"></div></section><script id="search-data" type="application/json">${searchEmbed}<\/script></main>`
 }));
 
