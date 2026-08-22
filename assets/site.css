@@ -3494,3 +3494,36 @@ body:has(main.tp-page){padding-top:0}
 .pr-url{font-size:12.5px;margin:2px 0 0;color:var(--muted)}
 .pr-url a{color:#3DDC84;word-break:break-all}
 @media(max-width:560px){.pr-grid{grid-template-columns:1fr}}
+
+/* Today's Matches — per-league rails */
+.sec-today .mp-sub{margin-bottom:16px}
+.today-empty{
+  flex:0 0 100%;color:#737373;font-size:13.5px;padding:4px 2px 10px;
+}
+
+/* ===== v22 · Remote Jobs board ===== */
+.rj-toolbar{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:0 0 18px}
+.rj-count{margin-left:auto;font-size:13px;color:var(--muted);font-weight:700}
+.rj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+.rj-card{
+  background:#0f1216;border:1px solid var(--line);border-radius:12px;padding:16px 17px;
+  display:flex;flex-direction:column;gap:9px;
+}
+.rj-card:hover{border-color:#3DDC84}
+.rj-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+.rj-identity b{font-size:17px;color:#fff}
+.rj-owner{display:block;font-size:12px;color:var(--muted);margin-top:2px}
+.rj-cat{font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:.04em;color:#3DDC84;border:1px solid rgba(61,220,132,.35);border-radius:9999px;padding:3px 9px;white-space:nowrap;flex:none}
+.rj-pay{font-size:19px;font-weight:800;color:#46D369;letter-spacing:-.3px}
+.rj-pay-lbl{font-size:12px;color:var(--muted);font-weight:600}
+.rj-card p{margin:0;font-size:13px;line-height:1.5;color:#c9ced4}
+.rj-card p b,.rj-card .rj-flags b{color:#8a93a0;font-size:12px;text-transform:uppercase;letter-spacing:.04em}
+.rj-flags{font-size:12.5px;color:#ff8a75;line-height:1.5;border-top:1px solid #222;padding-top:8px}
+.rj-foot{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:auto;padding-top:4px}
+.rj-paymethod{font-size:12px;color:var(--muted)}
+.rj-apply{
+  background:#E50914;color:#fff;font-size:13px;font-weight:800;text-decoration:none;
+  border-radius:8px;padding:9px 18px;letter-spacing:.02em;
+}
+.rj-apply:hover{background:#ff1a26}
+@media(max-width:560px){.rj-grid{grid-template-columns:1fr}}
