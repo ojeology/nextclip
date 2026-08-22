@@ -90,9 +90,61 @@
         "url": "https://www.bbc.co.uk/sport/football/live/c9gk44d8egpgt"
       },
       "verifiedOn": "2026-08-21"
+    },
+    "real-betis-vs-real-sociedad": {
+      "homeScore": 1,
+      "awayScore": 0,
+      "status": "FT",
+      "playedOn": "2026-08-21",
+      "scorers": [
+        {
+          "team": "home",
+          "player": "Riquelme",
+          "minute": "63"
+        }
+      ],
+      "source": {
+        "name": "BBC Sport — Real Betis v Real Sociedad",
+        "url": "https://www.bbc.com/sport/football/live/cmz644qxd96yt"
+      },
+      "verifiedOn": "2026-08-22"
     }
   },
   "serie-a": {},
   "bundesliga": {},
-  "ligue-1": {}
+  "ligue-1": {
+    "marseille-vs-strasbourg": {
+      "homeScore": 4,
+      "awayScore": 0,
+      "status": "FT",
+      "playedOn": "2026-08-21",
+      "scorers": [
+        {
+          "team": "home",
+          "player": "Gouiri",
+          "minute": "46"
+        },
+        {
+          "team": "home",
+          "player": "Gouiri",
+          "minute": "68"
+        },
+        {
+          "team": "home",
+          "player": "Abdallah",
+          "minute": "89"
+        },
+        {
+          "team": "home",
+          "player": "Højbjerg",
+          "minute": "90+6"
+        }
+      ],
+      "source": {
+        "name": "BBC Sport — Marseille v Strasbourg",
+        "url": "https://www.bbc.com/sport/football/live/c85yvv136pr0t"
+      },
+      "verifiedOn": "2026-08-22"
+    }
+  }
 }
