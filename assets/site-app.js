@@ -930,7 +930,7 @@ document.addEventListener('error', function (e) {
 /* Persistent back control */
 (function () {
   'use strict';
-  if (location.pathname === '/' || document.querySelector('[data-bryme-back]')) return;
+  if (document.querySelector('[data-bryme-back]')) return;
   var back = document.createElement('button');
   back.type = 'button'; back.className = 'bryme-back'; back.setAttribute('data-bryme-back','');
   back.setAttribute('aria-label', 'Go back'); back.textContent = '←';

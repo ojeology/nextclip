@@ -45,6 +45,75 @@
         "url": "https://www.bbc.com/sport/football/live/cv629k5zr2jxt"
       },
       "verifiedOn": "2026-08-22"
+    },
+    "everton-vs-crystal-palace": {
+      "homeScore": 2,
+      "awayScore": 0,
+      "status": "FT",
+      "playedOn": "2026-08-22",
+      "scorers": [
+        {
+          "team": "home",
+          "player": "Dewsbury-Hall",
+          "minute": "42"
+        },
+        {
+          "team": "home",
+          "player": "Barry",
+          "minute": "53"
+        }
+      ],
+      "source": {
+        "name": "BBC Sport — Everton v Crystal Palace",
+        "url": "https://www.bbc.com/sport/football/live/cjn5nd1qr5qpt"
+      },
+      "verifiedOn": "2026-08-22"
+    },
+    "ipswich-vs-sunderland": {
+      "homeScore": 2,
+      "awayScore": 1,
+      "status": "FT",
+      "playedOn": "2026-08-22",
+      "scorers": [
+        {
+          "team": "home",
+          "player": "Emersonn",
+          "minute": "24"
+        },
+        {
+          "team": "away",
+          "player": "Angulo",
+          "minute": "39"
+        },
+        {
+          "team": "home",
+          "player": "Clarke",
+          "minute": "90"
+        }
+      ],
+      "source": {
+        "name": "BBC Sport — Ipswich Town v Sunderland",
+        "url": "https://www.bbc.com/sport/football/live/ckeqe8025qygt"
+      },
+      "verifiedOn": "2026-08-22"
+    },
+    "nottingham-forest-vs-leeds": {
+      "homeScore": 0,
+      "awayScore": 1,
+      "status": "FT",
+      "playedOn": "2026-08-22",
+      "scorers": [
+        {
+          "team": "away",
+          "player": "Stach",
+          "minute": "88"
+        }
+      ],
+      "source": {
+        "name": "BBC Sport — Nottingham Forest v Leeds United",
+        "url": "https://www.bbc.com/sport/football/live/cm4gkdpw5qq7t"
+      },
+      "verifiedOn": "2026-08-22"
     }
   },
   "la-liga": {

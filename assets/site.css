@@ -446,7 +446,7 @@ input,select,textarea{font-size:16px}
   .brand{font-size:16px}
   .header-search{display:inline-flex;align-items:center;min-height:36px}
   .theme-toggle{width:36px;height:36px}
-  .bryme-back{display:none}
+  .bryme-back{display:grid;top:auto;bottom:calc(72px + env(safe-area-inset-bottom,0px));left:12px}
   .mobile-nav{padding-bottom:env(safe-area-inset-bottom,0px);grid-auto-columns:minmax(52px,1fr);justify-content:stretch}
   .mobile-nav a{padding:8px 2px calc(8px + env(safe-area-inset-bottom,0px)/4);min-height:52px;display:flex;flex-direction:column;align-items:center;justify-content:center}
   .hero h1,.vhero h1,.article-hero h1,.home-hero h1{
