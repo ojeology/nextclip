@@ -3456,3 +3456,13 @@ body:has(main.tp-page){padding-top:0}
 @media(max-width:380px){
   .today-grid{grid-template-columns:1fr}
 }
+
+/* v20 · Today's Matches — horizontal sliding rail */
+.today-rail{
+  display:flex;gap:12px;overflow-x:auto;overflow-y:hidden;
+  padding:2px 1px 16px;scroll-snap-type:x mandatory;
+  scrollbar-width:none;-webkit-overflow-scrolling:touch;
+}
+.today-rail::-webkit-scrollbar{display:none}
+.today-rail .today-card{flex:0 0 260px;min-width:0;scroll-snap-align:start}
+@media(max-width:760px){.today-rail .today-card{flex:0 0 72vw}}
