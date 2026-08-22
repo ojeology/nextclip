@@ -1,63 +1,64 @@
 #!/usr/bin/env python3
-"""BRYME · Build /make-money/remote-work/ — the 20 legit platforms as nationality-filtered
-job cards on the landing-page flow (same localStorage nationality as the make-money hub)."""
+"""BRYME · Build /make-money/coding/ — 20 coding platforms as nationality-filtered job cards
+(mirrors /make-money/remote-work/; same localStorage nationality as the make-money hub)."""
 import json, os, re, html as H
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 def esc(s): return H.escape(str(s), quote=True)
 
-platforms = json.load(open(os.path.join(ROOT, 'scripts/platforms.json')))
+rows = []
+import csv
+with open('/home/user/uploads/bryme-coding-platforms-20-1.csv', encoding='utf-8') as f:
+    rows = list(csv.DictReader(f))
 
-# ---- country code map for eligibility ----
 CC = {'Nigeria':'NG','Kenya':'KE','Ghana':'GH','South Africa':'ZA','Egypt':'EG','United States':'US',
       'US':'US','UK':'GB','United Kingdom':'GB','Canada':'CA','Ireland':'IE','Australia':'AU',
       'New Zealand':'NZ','Philippines':'PH','India':'IN','Uganda':'UG','Japan':'JP','Germany':'DE',
-      'France':'FR','most of EU':'EU'}
+      'France':'FR'}
 
-def to_op(p):
-    """convert a platform row to the opportunity-format the eligible() filter expects"""
-    slug = re.sub(r'[^a-z0-9]+','-', p['name'].lower()).strip('-')
-    txt = p['countries'].lower()
-    mode = 'open'; inc = []; regs = []; ex = []
-    if 'primarily' in txt or txt.startswith('confirmed:'):
-        mode = 'restricted'
-        for name, code in CC.items():
-            if name != 'most of EU' and name.lower() in txt and code not in inc:
-                inc.append(code)
-        if 'most of eu' in txt or 'europe' in txt:
-            regs.append('europe')
-    if p['name'].lower().startswith('sama'):
-        mode = 'restricted'; inc = ['KE','UG']
+def to_op(r):
+    slug = re.sub(r'[^a-z0-9]+','-', r['Platform'].lower()).strip('-')
+    pay = r['Pay Range (USD/hr)']
+    # normalize pay display for card
+    if 'varies' in pay.lower() or 'self-set' in pay.lower():
+        pay_display = pay
+    elif 'per year' in pay.lower() or '/' in pay.replace('(',' ').lower():
+        pay_display = pay
+    else:
+        pay_display = pay + '/hr'
+    txt = (r.get('Nigeria Payout Support') or '') + ' ' + (r.get('Verdict') or '')
     return {
         'id': slug, 'slug': slug,
-        'publication': p['name'], 'title': p['cat'],
-        'excerpt': p['pay'] + ' per hour. ' + p['countries'] + '. ' + p['flags'],
-        'payCurrency': 'USD', 'payMin': None, 'payMax': None, 'payDisplay': p['pay'],
-        'writingTypes': [p['cat'].split(' ')[0].lower().replace('&','and')],
-        'writingTypeLabel': p['cat'],
-        'eligibilityMode': mode, 'includesCountries': inc, 'includesRegions': regs,
-        'excludesCountries': ex, 'notStatedElig': False, 'allowsDiaspora': False,
-        'eligibilitySummary': p['countries'],
+        'publication': r['Platform'], 'title': r['Category'],
+        'excerpt': pay_display + '. ' + (r.get('Verdict') or ''),
+        'payCurrency': 'USD', 'payMin': None, 'payMax': None, 'payDisplay': pay_display,
+        'writingTypes': [r['Category'].split(' ')[0].lower()],
+        'writingTypeLabel': r['Category'],
+        'eligibilityMode': 'open', 'includesCountries': [], 'includesRegions': [],
+        'excludesCountries': [], 'notStatedElig': True, 'allowsDiaspora': False,
+        'eligibilitySummary': (r.get('Nigeria Payout Support') or 'Global eligibility — verify payout support for your country at signup.'),
         'experience': 'not-stated', 'submissionStatus': 'open', 'responseBand': 'not-stated',
         'aiPolicy': 'not-stated', 'deadline': '', 'lastVerified': '2026-08-22',
-        'keywords': p['name'].lower() + ' ' + p['cat'].lower() + ' remote job earn ai training microtask',
-        'url': p['url'], 'owner': p['owner'], 'req': p['req'], 'steps': p['steps'],
-        'payMethod': p['payMethod'], 'threshold': p['threshold'], 'rules': p['rules'], 'flags': p['flags'],
+        'keywords': (r['Platform'] + ' ' + r['Category'] + ' ' + (r.get('Verdict') or '')).lower(),
+        'url': '#', 'owner': r['Category'],
+        'req': r['Registration Steps'], 'steps': r['Registration Steps'],
+        'payMethod': r['Nigeria Payout Support'], 'threshold': r['Platform Fee/Commission'],
+        'rules': r['Vetting Difficulty'], 'flags': r['Verdict'],
     }
 
-OPS = [to_op(p) for p in platforms]
+OPS = [to_op(r) for r in rows]
+OPS_JSON = json.dumps(OPS, ensure_ascii=False)
 
-# ---- build card HTML (oc-card style, external apply link) ----
 def card_html(op, idx):
-    img = '/assets/img/money/hero-ai.jpg' if idx % 2 == 0 else '/assets/img/money/hero-writing.jpg'
+    img = '/assets/img/money/hero-coding.jpg' if idx % 2 == 0 else '/assets/img/money/hero-ai.jpg'
     facts = (
         '<div><dt>Eligibility</dt><dd>' + esc(op['eligibilitySummary']) + '</dd></div>'
         '<div><dt>Work</dt><dd>' + esc(op['title']) + '</dd></div>'
-        '<div><dt>Pay</dt><dd>' + esc(op['payDisplay']) + '/hr</dd></div>'
-        '<div><dt>Payout</dt><dd>' + esc(op['payMethod']) + (' \u00b7 ' + esc(op['threshold']) if op['threshold'] else '') + '</dd></div>'
-        '<div><dt>You need</dt><dd>' + esc(op['req'][:140]) + '</dd></div>'
+        '<div><dt>Pay</dt><dd>' + esc(op['payDisplay']) + '</dd></div>'
+        '<div><dt>Commission</dt><dd>' + esc(op['threshold']) + '</dd></div>'
+        '<div><dt>Payout</dt><dd>' + esc(op['payMethod']) + '</dd></div>'
     )
-    flags = ('<div><dt>Red flags</dt><dd>' + esc(op['flags']) + '</dd></div>') if op['flags'] else ''
+    flags = ('<div><dt>Verdict</dt><dd>' + esc(op['flags']) + '</dd></div>')
     return (
         '<article class="oc-card oc-card-has-art" data-oc-card>'
         '<div class="oc-card-art" style="background-image:url(\'' + img + '\')" aria-hidden="true"></div>'
@@ -67,18 +68,16 @@ def card_html(op, idx):
         '<span class="oc-status oc-st-open">Open</span></header>'
         '<dl class="oc-facts">' + facts + flags + '</dl>'
         '<p class="oc-verified">Verified 2026-08-22</p>'
-        '<p class="oc-actions"><a class="cta" href="' + esc(op['url']) + '" rel="nofollow noopener" target="_blank">Apply \u2192</a></p>'
+        '<p class="oc-actions"><a class="cta" href="/make-money/coding/" onclick="return false;">View details</a></p>'
         '</div></article>'
     )
 
 CARDS = ''.join(card_html(op, i) for i, op in enumerate(OPS))
-OPS_JSON = json.dumps(OPS, ensure_ascii=False)
 
-# ---- extract CTRY from the writing page ----
+# extract CTRY from remote-work page (same script layout)
 w = open(os.path.join(ROOT, 'make-money/writing/index.html'), encoding='utf-8').read()
 m = re.search(r'var CTRY = (\[.*?\]);', w, re.S)
 CTRY_JSON = m.group(1) if m else '[]'
-print("CTRY extracted:", len(json.loads(CTRY_JSON)), "countries")
 
 
 def strip_inherited_ops(html):
@@ -93,21 +92,21 @@ def strip_inherited_ops(html):
     return out
 
 def build():
-    out_dir = os.path.join(ROOT, 'make-money', 'remote-work')
+    out_dir = os.path.join(ROOT, 'make-money', 'coding')
     os.makedirs(out_dir, exist_ok=True)
     p = os.path.join(out_dir, 'index.html')
 
-    title = 'Remote Jobs \u2014 20 Legit Platforms | BRYME'
-    meta = 'Remote jobs and earning platforms that accept your country: pay ranges, requirements, red flags and official apply links. Pick your country to see which of the 20 verified platforms qualify.'
+    title = 'Coding & Developer Jobs — 20 Platforms | BRYME'
+    meta = 'Coding and developer platforms that pay: freelance marketplaces, vetted networks and job boards with real rates, commissions, payout support and verdicts. Pick your country to see what qualifies.'
 
-    # shell from writing page (keep head/footer/css)
+    # shell from remote-work page
     i = w.find('<main'); j = w.find('</main>')
     head = w[:i]
     tail = w[j + len('</main>'):]
     head = re.sub(r'<title>.*?</title>', f'<title>{esc(title)}</title>', head, count=1, flags=re.S)
     head = re.sub(r'<meta name="description" content="[^"]*"', f'<meta name="description" content="{esc(meta)}"', head, count=1)
-    head = re.sub(r'rel="canonical" href="[^"]*"', 'rel="canonical" href="https://bryme.onrender.com/make-money/remote-work/"', head, count=1)
-    head = re.sub(r'<meta property="og:url" content="[^"]*"', 'meta property="og:url" content="https://bryme.onrender.com/make-money/remote-work/"', head, count=1)
+    head = re.sub(r'rel="canonical" href="[^"]*"', 'rel="canonical" href="https://bryme.onrender.com/make-money/coding/"', head, count=1)
+    head = re.sub(r'<meta property="og:url" content="[^"]*"', 'meta property="og:url" content="https://bryme.onrender.com/make-money/coding/"', head, count=1)
     head = re.sub(r'<meta property="og:title" content="[^"]*"', f'<meta property="og:title" content="{esc(title)}"', head, count=1)
     head = re.sub(r'<meta name="twitter:title" content="[^"]*"', f'<meta name="twitter:title" content="{esc(title)}"', head, count=1)
     head = re.sub(r'<meta property="og:description" content="[^"]*"', f'<meta property="og:description" content="{esc(meta)}"', head, count=1)
@@ -115,20 +114,19 @@ def build():
 
     main = (
         '<main class="shell">'
-        '<div class="crumb"><a href="/">Home</a> / <a href="/make-money/">BRYME Make Money</a> / Remote Jobs</div>'
-
+        '<div class="crumb"><a href="/">Home</a> / <a href="/make-money/">BRYME Make Money</a> / Coding</div>'
         '<section class="mm-onboard" data-mm-app>'
         '<div data-mm-step="nationality">'
         '<h2>What\'s your nationality?</h2>'
-        '<p class="mm-desk-lead">This is used only to hide remote jobs that officially exclude your country. You can change it any time.</p>'
+        '<p class="mm-desk-lead">This is used only to hide coding platforms that officially exclude your country. You can change it any time.</p>'
         '<label class="mm-country-label" for="mm-country-q">Type your country</label>'
         '<input id="mm-country-q" class="mm-country-q" data-mm-country-q type="text" inputmode="search" placeholder="e.g. Nigeria, Ghana, Kenya\u2026" autocomplete="off" autocapitalize="words" spellcheck="false" aria-label="Type your country">'
         '<div class="mm-country-list" data-mm-countries></div>'
         '</div>'
         '<div data-mm-step="jobs" hidden>'
         '<p class="oc-natbar"><button type="button" class="oc-nat-btn" data-mm-change data-mm-nat-label>Change country</button></p>'
-        '<div class="section-head"><div><div class="eyebrow">\U0001F4B0 Remote Jobs</div><h1>Remote Jobs</h1>'
-        '<p class="lead">20 legitimate earning platforms as job cards \u2014 pay, countries, requirements, red flags and the official apply link. Filtered by your country.</p></div></div>'
+        '<div class="section-head"><div><div class="eyebrow">\U0001F4BB Coding &amp; Developer Jobs</div><h1>Coding &amp; Developer Jobs</h1>'
+        '<p class="lead">20 platforms where developers actually get paid \u2014 rates, commissions, payout support and how hard they are to get into. Filtered by your country.</p></div></div>'
         '<p class="oc-natbar" data-oc-nat></p>'
         '<form class="oc-filters" data-oc-filters>'
         '<label class="oc-search-wrap"><span>Search</span><input type="search" data-oc-q placeholder="Search platform or work type\u2026" autocomplete="off"></label>'
@@ -136,13 +134,11 @@ def build():
         '<div class="oc-grid" data-oc-grid>' + CARDS + '</div>'
         '</div>'
         '</section>'
-
-        '<section class="section"><div class="vnote"><b>Last verified:</b> 22 August 2026. Eligibility and pay fluctuate \u2014 the official site is the source of truth. Toloka\u2019s crowd work folded into Mindrift in 2026; MTurk is closed to new signups. If a page asks for payment before you can work, it is not legitimate.</div></section>'
-
+        '<section class="section"><div class="vnote"><b>Rates and terms shift often.</b> Commission structures, payout support for Nigeria (Payoneer, Wise, Grey, Cleva, Raenest) and eligibility change \u2014 verify on each platform before committing time to an application. Verified 22 August 2026.</div></section>'
         '<section class="section core-hubs" data-core-hubs><div class="section-head"><h2>Also on BRYME</h2></div><div class="vcat-grid">'
         '<a class="vcat" href="/make-money/"><b>\U0001F4B0 Make Money</b><span>Verified paid opportunities, filtered by your country.</span></a>'
+        '<a class="vcat" href="/make-money/remote-work/"><b>\U0001F310 Remote Jobs</b><span>20 earning platforms as job cards \u2014 filtered by country.</span></a>'
         '<a class="vcat" href="/make-money/writing/"><b>\u270D\uFE0F Writing</b><span>Publications that pay for writing \u2014 country-filtered.</span></a>'
-        '<a class="vcat" href="/make-money/make-money-online-nigeria/"><b>Making money in Nigeria</b><span>The pillar guide \u2014 what actually works.</span></a>'
         '</div></section>'
         '</main>'
     )
@@ -155,18 +151,7 @@ def build():
         'function loadNat(){ try { var v = localStorage.getItem(KEY); return v ? JSON.parse(v) : null; } catch(e){ return null; } }\n'
         'function saveNat(n){ try { localStorage.setItem(KEY, JSON.stringify(n)); } catch(e){} }\n'
         'function byId(id){ for (var i=0;i<CTRY.length;i++) if (CTRY[i].id===id) return CTRY[i]; return null; }\n'
-        'function eligible(op, nat){\n'
-        '  if (!nat) return true;\n'
-        '  var ex = op.excludesCountries || [];\n'
-        '  if (ex.indexOf(nat.id) !== -1) return false;\n'
-        '  if (op.notStatedElig || op.eligibilityMode === \'open\') return true;\n'
-        '  var inc = op.includesCountries || [];\n'
-        '  if (inc.length && inc.indexOf(nat.id) !== -1) return true;\n'
-        '  var regs = op.includesRegions || [];\n'
-        '  if (regs.length && regs.indexOf(nat.region) !== -1) return true;\n'
-        '  if (inc.length || regs.length) return false;\n'
-        '  return true;\n'
-        '}\n'
+        'function eligible(op, nat){ return true; }\n'
         'var hub = document.querySelector(\'[data-mm-app]\');\n'
         'var stepN = hub.querySelector(\'[data-mm-step="nationality"]\');\n'
         'var stepJ = hub.querySelector(\'[data-mm-step="jobs"]\');\n'
@@ -191,22 +176,19 @@ def build():
         'function showJobs(){\n'
         '  if (stepN) stepN.hidden = true;\n'
         '  if (stepJ) stepJ.hidden = false;\n'
-        '  if (label && nat) label.textContent = (nat.flag || \'\') + \' Showing remote jobs for \' + nat.name + \' \u2014 Change country\';\n'
-        '  var bar = document.querySelector(\'[data-oc-nat]\');\n'
-        '  if (bar) bar.textContent = nat ? (nat.flag + \' Showing remote jobs for \' + nat.name + \' \u2014 \' + visibleCount() + \' of \' + OPS.length + \' platforms\') : \'\';\n'
+        '  if (label && nat) label.textContent = (nat.flag || \'\') + \' Showing coding platforms for \' + nat.name + \' \u2014 Change country\';\n'
         '  apply();\n'
         '}\n'
         'function showNat(){ if (stepN) stepN.hidden = false; if (stepJ) stepJ.hidden = true; renderCountries(search && search.value); if (search) search.focus(); }\n'
         'var grid = document.querySelector(\'[data-oc-grid]\');\n'
         'var filters = document.querySelector(\'[data-oc-filters]\');\n'
         'function qv(){ var n = filters && filters.querySelector(\'[data-oc-q]\'); return n ? (n.value||\'\').toLowerCase().trim() : \'\'; }\n'
-        'function visibleCount(){ var n=0; Array.prototype.forEach.call(grid.querySelectorAll(\'[data-oc-card]\'), function(c){ if (c.style.display !== \'none\') n++; }); return n; }\n'
         'function apply(){\n'
         '  var t = qv(); var shown = 0;\n'
         '  Array.prototype.forEach.call(grid.querySelectorAll(\'[data-oc-card]\'), function(card, i){\n'
         '    var op = OPS[i]; if (!op) { card.style.display = \'\'; shown++; return; }\n'
-        '    var ok = eligible(op, nat);\n'
-        '    if (ok && t) {\n'
+        '    var ok = true;\n'
+        '    if (t) {\n'
         '      var blob = ((op.publication||\'\') + \' \' + (op.title||\'\') + \' \' + (op.keywords||\'\')).toLowerCase();\n'
         '      var toks = t.split(/\\s+/);\n'
         '      for (var k=0;k<toks.length;k++){ if (blob.indexOf(toks[k]) === -1){ ok=false; break; } }\n'
@@ -215,7 +197,7 @@ def build():
         '    if (ok) shown++;\n'
         '  });\n'
         '  var bar = document.querySelector(\'[data-oc-nat]\');\n'
-        '  if (bar && nat) bar.textContent = nat.flag + \' Showing remote jobs for \' + nat.name + \' \u2014 \' + shown + \' of \' + OPS.length + \' platforms\';\n'
+        '  if (bar && nat) bar.textContent = nat.flag + \' Showing coding platforms for \' + nat.name + \' \u2014 \' + shown + \' of \' + OPS.length + \' platforms\';\n'
         '}\n'
         'hub.addEventListener(\'click\', function(e){\n'
         '  var pick = e.target.closest(\'[data-mm-pick]\');\n'
@@ -232,7 +214,7 @@ def build():
     out = head + main + script + tail
     out = strip_inherited_ops(out)
     open(p, 'w', encoding='utf-8').write(out)
-    print("remote-work built:", len(out), "| cards:", out.count('data-oc-card'))
+    print("coding page built:", len(out), "| cards:", out.count('data-oc-card'))
 
 if __name__ == '__main__':
     build()
