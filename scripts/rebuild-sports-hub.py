@@ -138,6 +138,21 @@ MAIN = f'''<main class="sp-desk">
       <div class="sp-lg-head"><b>Bundesliga</b><a href="/sports/bundesliga/fixtures/">Fixtures →</a></div>
       <p class="sp-empty">No Bundesliga fixtures today.</p>
     </div>
+
+    <div class="sp-lg sp-desk-previews">
+      <div class="sp-lg-head"><b>Matchday previews</b><a href="/sports/premier-league/matches/">Match Centre →</a></div>
+      <p class="sp-desk-note">Form, head-to-head and BRYME's editorial prediction — published before kickoff, updated with the result afterwards.</p>
+      <div class="sp-prev-grid">
+        <a class="sp-prev" href="/sports/premier-league/matches/arsenal-vs-coventry/"><em>Fri 21 Aug · 20:00</em><b>Arsenal 3–0 Coventry City</b><span>Premier League · result locked</span></a>
+        <a class="sp-prev" href="/sports/premier-league/matches/hull-vs-man-united/"><em>Sat 22 Aug · 12:30</em><b>Hull City 2–0 Manchester United</b><span>Premier League · result locked</span></a>
+        <a class="sp-prev" href="/sports/premier-league/matches/everton-vs-crystal-palace/"><em>Sat 22 Aug · 15:00</em><b>Everton 2–0 Crystal Palace</b><span>Premier League · result locked</span></a>
+        <a class="sp-prev" href="/sports/premier-league/matches/ipswich-vs-sunderland/"><em>Sat 22 Aug · 15:00</em><b>Ipswich Town 2–1 Sunderland</b><span>Premier League · result locked</span></a>
+        <a class="sp-prev" href="/sports/premier-league/matches/nottingham-forest-vs-leeds/"><em>Sat 22 Aug · 15:00</em><b>Nottingham Forest 0–1 Leeds United</b><span>Premier League · result locked</span></a>
+        <a class="sp-prev" href="/sports/premier-league/matches/brentford-vs-tottenham/"><em>Sat 22 Aug · 17:30</em><b>Brentford v Tottenham Hotspur</b><span>Premier League · still to finish</span></a>
+        <a class="sp-prev" href="/sports/la-liga/matches/espanyol-vs-real-madrid/"><em>Sat 22 Aug · 21:30</em><b>Espanyol v Real Madrid</b><span>La Liga · preview</span></a>
+        <a class="sp-prev" href="/sports/serie-a/matches/genoa-vs-napoli/"><em>Sat 22 Aug · 20:45</em><b>Genoa v Napoli</b><span>Serie A · preview</span></a>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -146,10 +161,10 @@ MAIN = f'''<main class="sp-desk">
     <div class="section-head"><div><div class="eyebrow">Competitions</div><h2>Pick a league</h2></div></div>
     <div class="sp-comp-grid">
       <a class="sp-comp-card sp-comp-wide" href="/sports/premier-league/" style="--card-img:url('/assets/img/sports/hero-premier-league.jpg')">
-        <em>England</em><b>Premier League</b><span>Fixtures, results, FPL, transfers and Matchweek 1 pages.</span>
+        <em>England</em><b>Premier League</b><span>The English game in one desk: fixtures, sourced results, FPL, transfers, clubs and Matchweek 1 pages.</span>
       </a>
       <a class="sp-comp-card" href="/sports/champions-league/" style="--card-img:url('/assets/img/sports/hero-ucl.jpg')">
-        <em>Europe</em><b>Champions League</b><span>Format, qualification and the nights that define it.</span>
+        <em>Europe</em><b>Champions League</b><span>Format, qualification, the knockout bracket and the nights that define the competition.</span>
       </a>
       <a class="sp-comp-card" href="/sports/la-liga/" style="--card-img:url('/assets/img/sports/hero-la-liga.jpg')">
         <em>Spain</em><b>La Liga</b><span>380 fixtures, match pages and the transfer desk.</span>
@@ -192,38 +207,21 @@ MAIN = f'''<main class="sp-desk">
   </div>
 </section>
 
-<section class="section sp-hubs">
+<section class="sp-comp sp-explore">
   <div class="shell">
-    <p class="lead" style="margin-bottom:18px">BRYME Sports is football. The Premier League, Champions League, La Liga, Serie A, Bundesliga, Ligue 1 and international football — with club histories, rivalry explainers, records, player profiles, match previews and reports. We cover one sport properly rather than several thinly.</p>
+    <p class="lead" style="margin-bottom:18px">BRYME Sports is football. Club histories, rivalry explainers, records, player profiles, match previews and reports. We cover one sport properly rather than several thinly.</p>
     <div class="vnote">Current reporting (previews, results, transfers) is always researched before publication. No result, transfer, injury, fixture or statistic is ever invented.</div>
-    <h2 style="margin:26px 0 14px">Explore Sports</h2>
-    <div class="vcat-grid">
-      <a class="vcat vcat-photo" href="/sports/football/" style="--card-img:url('/assets/img/sports/hero-premier-league.jpg')"><b>Football</b><span>Premier League, Champions League, La Liga, Serie A, Bundesliga, Ligue 1, FPL and the global game.</span></a>
-      <a class="vcat vcat-photo" href="/sports/champions-league/" style="--card-img:url('/assets/img/sports/hero-ucl.jpg')"><b>Champions League</b><span>Europe’s premier club competition: format, qualification, the knockout bracket and the nights that define it.</span></a>
-      <a class="vcat vcat-photo" href="/sports/records/" style="--card-img:url('/assets/img/sports/hero-ballon-dor.jpg')"><b>Records</b><span>Titles, streaks, milestones and the numbers behind the achievements.</span></a>
-      <a class="vcat vcat-photo" href="/sports/clubs/" style="--card-img:url('/assets/img/sports/hero-arsenal.jpg')"><b>Clubs</b><span>Club histories, identities, rivalries and how they are run.</span></a>
-      <a class="vcat vcat-photo" href="/sports/history/" style="--card-img:url('/assets/img/sports/hero-matches.jpg')"><b>Football History</b><span>Eras, turning points and the matches that changed the sport.</span></a>
-      <a class="vcat vcat-photo" href="/sports/international/" style="--card-img:url('/assets/img/sports/hero-world-cup.jpg')"><b>International</b><span>World Cup, continental championships and national-team football.</span></a>
-      <a class="vcat vcat-photo" href="/sports/players/" style="--card-img:url('/assets/img/sports/hero-ballon-dor.jpg')"><b>Players</b><span>Careers, playing styles and the athletes shaping the game.</span></a>
+    <div class="section-head" style="margin-top:26px"><div><div class="eyebrow">More from the desk</div><h2>Explore</h2></div></div>
+    <div class="sp-explore-grid">
+      <a class="sp-comp-card" href="/sports/records/" style="--card-img:url('/assets/img/sports/hero-ballon-dor.jpg')"><em>Numbers</em><b>Records</b><span>Titles, streaks, milestones and the numbers behind the achievements.</span></a>
+      <a class="sp-comp-card" href="/sports/clubs/" style="--card-img:url('/assets/img/sports/hero-arsenal.jpg')"><em>Directory</em><b>Clubs</b><span>Club histories, identities, rivalries and how they are run.</span></a>
+      <a class="sp-comp-card" href="/sports/history/" style="--card-img:url('/assets/img/sports/hero-matches.jpg')"><em>Archive</em><b>Football History</b><span>Eras, turning points and the matches that changed the sport.</span></a>
+      <a class="sp-comp-card" href="/sports/international/" style="--card-img:url('/assets/img/sports/hero-world-cup.jpg')"><em>Nations</em><b>International</b><span>World Cup, continental championships and national-team football.</span></a>
+      <a class="sp-comp-card" href="/sports/players/" style="--card-img:url('/assets/img/sports/hero-ballon-dor.jpg')"><em>People</em><b>Players</b><span>Careers, playing styles and the athletes shaping the game.</span></a>
     </div>
   </div>
 </section>
 
-<section class="home-section sec-previews">
-  <div class="shell">
-    <div class="section-head"><div><div class="eyebrow">Matchday ahead</div><h2>⚽ Match previews</h2><p class="section-note">Form, head-to-head and BRYME's editorial prediction — published before kickoff, updated with the result afterwards.</p></div><a href="/sports/premier-league/matches/">Match Centre</a></div>
-    <div class="vcat-grid">
-      <a class="vcat mp-card" href="/sports/premier-league/matches/arsenal-vs-coventry/"><span class="mp-when">Friday 21 August 2026 · 20:00</span><b>Arsenal 3–0 Coventry City</b><span>Premier League · Matchweek 1 — result locked</span></a>
-      <a class="vcat mp-card" href="/sports/premier-league/matches/hull-vs-man-united/"><span class="mp-when">Saturday 22 August · 12:30</span><b>Hull City 2–0 Manchester United</b><span>Premier League · Matchweek 1 — result locked</span></a>
-      <a class="vcat mp-card" href="/sports/premier-league/matches/everton-vs-crystal-palace/"><span class="mp-when">Saturday 22 August · 15:00</span><b>Everton 2–0 Crystal Palace</b><span>Premier League · Matchweek 1 — result locked</span></a>
-      <a class="vcat mp-card" href="/sports/premier-league/matches/ipswich-vs-sunderland/"><span class="mp-when">Saturday 22 August · 15:00</span><b>Ipswich Town 2–1 Sunderland</b><span>Premier League · Matchweek 1 — result locked</span></a>
-      <a class="vcat mp-card" href="/sports/premier-league/matches/nottingham-forest-vs-leeds/"><span class="mp-when">Saturday 22 August · 15:00</span><b>Nottingham Forest 0–1 Leeds United</b><span>Premier League · Matchweek 1 — result locked</span></a>
-      <a class="vcat mp-card" href="/sports/premier-league/matches/brentford-vs-tottenham/"><span class="mp-when">Saturday 22 August · 17:30</span><b>Brentford v Tottenham Hotspur</b><span>Premier League · Matchweek 1 — preview, still to finish</span></a>
-      <a class="vcat mp-card" href="/sports/la-liga/matches/espanyol-vs-real-madrid/"><span class="mp-when">Saturday 22 August · 21:30</span><b>Espanyol v Real Madrid</b><span>La Liga — preview, form and prediction</span></a>
-      <a class="vcat mp-card" href="/sports/serie-a/matches/genoa-vs-napoli/"><span class="mp-when">Saturday 22 August · 20:45</span><b>Genoa v Napoli</b><span>Serie A — preview, form and prediction</span></a>
-    </div>
-  </div>
-</section>
 
 <section class="section sports-teaser sp-video"><div class="shell">
   <div class="section-head"><h2>Premier League 2026/27</h2></div>

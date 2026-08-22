@@ -3753,3 +3753,82 @@ body:has(main.tp-page){padding-top:0}
 [data-theme="light"] .sp-board{background:#0b100e}
 [data-theme="light"] .sp-scorecard{background:linear-gradient(180deg,#121a16,#0d1210);color:#f2f6f3}
 [data-theme="light"] .sp-sc-club span{color:#fff}
+
+/* Sports: enlarged explore tiles + previews inside the live desk */
+.sp-explore{padding-top:10px}
+.sp-explore-grid{
+  display:grid;grid-template-columns:repeat(6,1fr);gap:12px;
+}
+.sp-explore-grid .sp-comp-card{grid-column:span 2;min-height:220px}
+.sp-explore-grid .sp-comp-card:nth-child(4),
+.sp-explore-grid .sp-comp-card:nth-child(5){grid-column:span 3;min-height:230px}
+.sp-desk-note{font-size:13px;color:#9aa8a0;margin:0 0 12px;max-width:640px}
+.sp-prev-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px;
+}
+.sp-prev{
+  display:flex;flex-direction:column;gap:4px;padding:14px 14px 12px;
+  border-radius:14px;border:1px solid rgba(255,255,255,.08);
+  background:linear-gradient(180deg,rgba(16,24,20,.88),rgba(10,14,12,.94));
+  color:#fff;text-decoration:none;min-height:108px;
+  transition:transform .18s,border-color .18s;
+}
+.sp-prev:hover{transform:translateY(-2px);border-color:rgba(61,220,132,.45)}
+.sp-prev em{font-style:normal;font-size:10.5px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:#e7bb5c}
+.sp-prev b{font-size:15px;line-height:1.25;letter-spacing:-.02em}
+.sp-prev span{font-size:12px;color:#9aa8a0}
+@media(max-width:900px){
+  .sp-explore-grid{grid-template-columns:1fr 1fr}
+  .sp-explore-grid .sp-comp-card,
+  .sp-explore-grid .sp-comp-card:nth-child(4),
+  .sp-explore-grid .sp-comp-card:nth-child(5){grid-column:span 1;min-height:190px}
+}
+@media(max-width:640px){
+  .sp-explore-grid{grid-template-columns:1fr}
+}
+
+/* Shared landing variants: money (gold) + tech (blue) */
+.sp-land.mm-land{background:#140e08}
+.sp-land.mm-land:before{
+  background:
+    linear-gradient(180deg,rgba(12,8,4,.28) 0%,rgba(12,8,4,.18) 32%,rgba(12,8,4,.9) 100%),
+    linear-gradient(90deg,rgba(16,10,4,.84) 0%,rgba(16,10,4,.32) 50%,rgba(16,10,4,.12) 100%);
+}
+.sp-land.mm-land:after{background:linear-gradient(90deg,#e7bb5c,#e94b2c 55%,#4f8ef7)}
+.sp-land.mm-land .sp-land-kicker{color:#f0d48a}
+.sp-land.mm-land .sp-land-kicker i{background:#e7bb5c;box-shadow:0 0 0 6px rgba(231,187,92,.18)}
+.sp-land.mm-land .sp-land-lead{color:#eadcc0}
+.sp-land.mm-land .cta{background:#e7bb5c;color:#1a1206}
+.sp-land.mm-land .cta-ghost:hover{border-color:#e7bb5c;color:#f0d48a}
+.sp-land.mm-land .sp-land-leagues a:hover{border-color:#e7bb5c;background:rgba(231,187,92,.14)}
+
+.sp-land.tech-land{background:#070b14}
+.sp-land.tech-land:before{
+  background:
+    linear-gradient(180deg,rgba(5,8,16,.3) 0%,rgba(5,8,16,.16) 32%,rgba(5,8,16,.9) 100%),
+    linear-gradient(90deg,rgba(6,10,20,.84) 0%,rgba(6,10,20,.32) 50%,rgba(6,10,20,.12) 100%);
+}
+.sp-land.tech-land:after{background:linear-gradient(90deg,#4f8ef7,#3ddc84 60%,#e7bb5c)}
+.sp-land.tech-land .sp-land-kicker{color:#9ec0ff}
+.sp-land.tech-land .sp-land-kicker i{background:#4f8ef7;box-shadow:0 0 0 6px rgba(79,142,247,.2)}
+.sp-land.tech-land .sp-land-lead{color:#c5d4ea}
+.sp-land.tech-land .cta{background:#4f8ef7;color:#071018}
+.sp-land.tech-land .cta-ghost:hover{border-color:#4f8ef7;color:#9ec0ff}
+.sp-land.tech-land .sp-land-leagues a:hover{border-color:#4f8ef7;background:rgba(79,142,247,.14)}
+
+.mm-desk .mm-onboard,.tech-desk .mm-onboard{
+  max-width:1180px;margin:0 auto;padding:28px 22px 8px;
+}
+.mm-land + .mm-onboard, .sp-desk .mm-onboard{
+  background:linear-gradient(180deg,#16110a,#0c0a08);
+  border-bottom:1px solid rgba(231,187,92,.16);
+}
+.hub-guides{padding:28px 0 12px}
+.mm-comp .sp-comp-card em,.mm-feat .tag{color:#f0d48a}
+.tech-comp .sp-comp-card em,.tech-feat .tag{color:#9ec0ff}
+.mm-feat .sp-feat-main:after,.mm-feat .sp-feat-side a:after{
+  background:linear-gradient(180deg,rgba(16,10,4,.05),rgba(16,10,4,.84));
+}
+.tech-feat .sp-feat-main:after,.tech-feat .sp-feat-side a:after{
+  background:linear-gradient(180deg,rgba(5,8,16,.05),rgba(5,8,16,.84));
+}
