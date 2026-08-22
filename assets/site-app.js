@@ -73,6 +73,14 @@ document.addEventListener('error', function (e) {
     });
     header.appendChild(themeBtn);
   }
+  /* apply saved theme on load (replaces the old inline head script) */
+  (function(){
+    try {
+      var t = localStorage.getItem('bryme-theme');
+      var p = (t === 'light' || t === 'dark') ? t : (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+      applyTheme(p);
+    } catch(e) {}
+  })();
   // Reading progress bar (thin gradient at the very top)
   var prog = document.createElement('div');
   prog.id = 'bryme-progress';
