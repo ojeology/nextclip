@@ -155,3 +155,14 @@
 /movie/yellowjackets/  /series/yellowjackets/  301
 /movie/your-lie-in-april/  /anime/your-lie-in-april/  301
 /movie/your-name/  /anime/your-name/  301
+# Same-title extra slugs → catalogue canonical
+/movie/furiosa/  /movie/furiosa-a-mad-max-saga/  301
+/movie/civil-war-2024/  /movie/civil-war/  301
+/movie/sinners-2025/  /movie/sinners/  301
+/movie/spider-man-into-spider-verse/  /movie/spider-man-into-the-spider-verse/  301
+/movie/the-amazing-spider-man/  /movie/amazing-spider-man/  301
+/movie/the-avengers-2012/  /movie/the-avengers/  301
+/movie/spider-man-2002/  /movie/spider-man/  301
+/movie/toy-story-1995/  /movie/toy-story/  301
+/movie/pushpa-the-rise/  /movie/pushpa/  301
+/movie/the-odyssey-2026/  /movie/the-odyssey/  301

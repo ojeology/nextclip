@@ -16293,5 +16293,623 @@
       "retrieved": "2026-08-21",
       "url": "https://www.youtube.com/watch?v=0ZFdiQwx_pM"
     }
+  },
+  "wicked": {
+    "title": "Wicked",
+    "year": 2024,
+    "director": "Jon M. Chu",
+    "cast": [
+      "Cynthia Erivo",
+      "Ariana Grande",
+      "Jonathan Bailey",
+      "Ethan Slater",
+      "Bowen Yang",
+      "Marissa Bode"
+    ],
+    "runtime": "160 min",
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Wicked_(2024_film)",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Wicked_(2024_film)",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "wicked-for-good": {
+    "title": "Wicked: For Good",
+    "year": 2025,
+    "director": "Jon M. Chu",
+    "cast": [
+      "Ariana Grande",
+      "Cynthia Erivo",
+      "Jonathan Bailey",
+      "Ethan Slater",
+      "Bowen Yang",
+      "Marissa Bode"
+    ],
+    "runtime": "137 min",
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Wicked:_For_Good",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Wicked:_For_Good",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "spider-man-homecoming": {
+    "title": "Spider-Man: Homecoming",
+    "year": 2017,
+    "director": "Jon Watts",
+    "cast": [
+      "Tom Holland",
+      "Michael Keaton",
+      "Robert Downey Jr.",
+      "Marisa Tomei",
+      "Jon Favreau",
+      "Zendaya"
+    ],
+    "runtime": "133 min",
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Spider-Man:_Homecoming",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Spider-Man:_Homecoming",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "spider-man-far-from-home": {
+    "title": "Spider-Man: Far From Home",
+    "year": 2019,
+    "director": "Jon Watts",
+    "cast": [
+      "Tom Holland",
+      "Samuel L. Jackson",
+      "Zendaya",
+      "Cobie Smulders",
+      "Jon Favreau",
+      "JB Smoove"
+    ],
+    "runtime": "129 min",
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Spider-Man:_Far_From_Home",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Spider-Man:_Far_From_Home",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "spider-man-across-spider-verse": {
+    "title": "Spider-Man: Across the Spider-Verse",
+    "year": 2023,
+    "director": "Joaquim Dos Santos; Kemp Powers; Justin K. Thompson",
+    "cast": [
+      "Shameik Moore",
+      "Hailee Steinfeld",
+      "Brian Tyree Henry",
+      "Luna Lauren Vélez",
+      "Jake Johnson",
+      "Issa Rae"
+    ],
+    "runtime": "140 min",
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Spider-Man:_Across_the_Spider-Verse",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Spider-Man:_Across_the_Spider-Verse",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "animal": {
+    "title": "Animal",
+    "year": 2023,
+    "director": "Sandeep Reddy Vanga",
+    "cast": [
+      "Ranbir Kapoor",
+      "Anil Kapoor",
+      "Bobby Deol",
+      "Rashmika Mandanna",
+      "Tripti Dimri"
+    ],
+    "runtime": "201 min",
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Animal_(2023_Indian_film)",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Animal_(2023_Indian_film)",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "article-370": {
+    "title": "Article 370",
+    "year": 2024,
+    "director": "Aditya Suhas Jambhale",
+    "cast": [
+      "Yami Gautam Dhar",
+      "Priyamani"
+    ],
+    "runtime": "158 min",
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Article_370_(film)",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Article_370_(film)",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "pushpa-2": {
+    "title": "Pushpa 2: The Rule",
+    "year": 2024,
+    "director": "Sukumar",
+    "cast": [
+      "Allu Arjun",
+      "Rashmika Mandanna",
+      "Fahadh Faasil",
+      "Jagapathi Babu"
+    ],
+    "runtime": "200 min",
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Pushpa_2:_The_Rule",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Pushpa_2:_The_Rule",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "kalki-2898-ad": {
+    "title": "Kalki 2898-AD",
+    "year": 2024,
+    "director": "Nag Ashwin",
+    "cast": [
+      "Amitabh Bachchan",
+      "Kamal Haasan",
+      "Prabhas",
+      "Deepika Padukone",
+      "Disha Patani"
+    ],
+    "runtime": "181 min",
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Kalki_2898_AD",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Kalki_2898_AD",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "stree-2": {
+    "title": "Stree 2",
+    "year": 2024,
+    "director": "Amar Kaushik",
+    "cast": [
+      "Shraddha Kapoor",
+      "Rajkummar Rao",
+      "Pankaj Tripathi",
+      "Abhishek Banerjee",
+      "Aparshakti Khurana"
+    ],
+    "runtime": "143 min",
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Stree_2",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Stree_2",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "kpop-demon-hunters": {
+    "title": "KPop Demon Hunters",
+    "year": 2025,
+    "director": "Maggie Kang; Chris Appelhans",
+    "cast": [
+      "Arden Cho",
+      "Ahn Hyo-seop",
+      "May Hong",
+      "Ji-young Yoo"
+    ],
+    "runtime": "95 min",
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/KPop_Demon_Hunters",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/KPop_Demon_Hunters",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "fifty-shades-of-grey": {
+    "title": "Fifty Shades of Grey",
+    "year": 2015,
+    "director": "Sam Taylor-Johnson",
+    "cast": [
+      "Dakota Johnson",
+      "Jamie Dornan",
+      "Jennifer Ehle",
+      "Marcia Gay Harden"
+    ],
+    "runtime": "125 min",
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Fifty_Shades_of_Grey_(film)",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Fifty_Shades_of_Grey_(film)",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "demon-slayer-infinity-castle": {
+    "title": "Demon Slayer: Infinity Castle",
+    "year": 2025,
+    "director": "Haruo Sotozaki",
+    "cast": [
+      "Natsuki Hanae",
+      "Akari Kitō",
+      "Hiro Shimono",
+      "Yoshitsugu Matsuoka"
+    ],
+    "runtime": "155 min",
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Demon_Slayer:_Kimetsu_no_Yaiba_%E2%80%93_The_Movie:_Infinity_Castle",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Demon_Slayer:_Kimetsu_no_Yaiba_%E2%80%93_The_Movie:_Infinity_Castle",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "zootopia-2": {
+    "title": "Zootopia 2",
+    "year": 2025,
+    "director": "Jared Bush; Byron Howard",
+    "cast": [
+      "Ginnifer Goodwin",
+      "Jason Bateman",
+      "Ke Huy Quan",
+      "Fortune Feimster",
+      "Andy Samberg",
+      "David Strathairn"
+    ],
+    "runtime": "108 min",
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Zootopia_2",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Zootopia_2",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "predator-badlands": {
+    "title": "Predator: Badlands",
+    "year": 2025,
+    "director": "Dan Trachtenberg",
+    "cast": [
+      "Elle Fanning",
+      "Dimitrius Schuster-Koloamatangi"
+    ],
+    "runtime": "107 min",
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Predator:_Badlands",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Predator:_Badlands",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "the-housemaid-2025": {
+    "title": "The Housemaid",
+    "year": 2025,
+    "director": "Paul Feig",
+    "cast": [
+      "Sydney Sweeney",
+      "Amanda Seyfried",
+      "Brandon Sklenar"
+    ],
+    "runtime": "131 min",
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/The_Housemaid_(2025_film)",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/The_Housemaid_(2025_film)",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "war-of-the-worlds-2025": {
+    "title": "War of the Worlds",
+    "year": 2025,
+    "director": "Rich Lee",
+    "cast": [
+      "Ice Cube",
+      "Eva Longoria",
+      "Clark Gregg"
+    ],
+    "runtime": "89 min",
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/War_of_the_Worlds_(2025_film)",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/War_of_the_Worlds_(2025_film)",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "titanic": {
+    "title": null,
+    "year": null,
+    "director": "James Cameron",
+    "cast": [
+      "Leonardo DiCaprio",
+      "Kate Winslet",
+      "Billy Zane",
+      "Kathy Bates",
+      "Frances Fisher",
+      "Gloria Stuart"
+    ],
+    "runtime": "195 min",
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Titanic_(1997_film)",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Titanic_(1997_film)",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "la-la-land": {
+    "title": null,
+    "year": null,
+    "director": "Damien Chazelle",
+    "cast": [
+      "Ryan Gosling",
+      "Emma Stone",
+      "John Legend",
+      "Rosemarie DeWitt",
+      "J. K. Simmons"
+    ],
+    "runtime": "128 min",
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/La_La_Land",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/La_La_Land",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "top-gun-maverick": {
+    "title": null,
+    "year": null,
+    "director": "Joseph Kosinski",
+    "cast": [
+      "Tom Cruise",
+      "Miles Teller",
+      "Jennifer Connelly",
+      "Jon Hamm",
+      "Glen Powell",
+      "Val Kilmer"
+    ],
+    "runtime": "130 min",
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Top_Gun:_Maverick",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Top_Gun:_Maverick",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "forrest-gump": {
+    "title": null,
+    "year": null,
+    "director": "Robert Zemeckis",
+    "cast": [
+      "Tom Hanks",
+      "Robin Wright",
+      "Gary Sinise",
+      "Mykelti Williamson",
+      "Sally Field"
+    ],
+    "runtime": "142 min",
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Forrest_Gump",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Forrest_Gump",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "toy-story": {
+    "title": null,
+    "year": null,
+    "director": "John Lasseter",
+    "cast": [
+      "Tom Hanks",
+      "Tim Allen",
+      "Don Rickles",
+      "Jim Varney",
+      "Wallace Shawn",
+      "John Ratzenberger"
+    ],
+    "runtime": "81 min",
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Toy_Story",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Toy_Story",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "taken": {
+    "title": null,
+    "year": null,
+    "director": "Pierre Morel",
+    "cast": [
+      "Liam Neeson",
+      "Maggie Grace",
+      "Famke Janssen",
+      "Leland Orser"
+    ],
+    "runtime": "90 min",
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Taken_(film)",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Taken_(film)",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "singin-in-the-rain": {
+    "title": null,
+    "year": null,
+    "director": "Gene Kelly; Stanley Donen",
+    "cast": [
+      "Gene Kelly",
+      "Donald O'Connor",
+      "Debbie Reynolds",
+      "Jean Hagen"
+    ],
+    "runtime": "103 min",
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Singin%27_in_the_Rain",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Singin%27_in_the_Rain",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "empire-strikes-back": {
+    "title": null,
+    "year": null,
+    "director": "Irvin Kershner",
+    "cast": [
+      "Mark Hamill",
+      "Harrison Ford",
+      "Carrie Fisher",
+      "Billy Dee Williams",
+      "Anthony Daniels"
+    ],
+    "runtime": "124 min",
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/The_Empire_Strikes_Back",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/The_Empire_Strikes_Back",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  "the-princess-bride": {
+    "title": null,
+    "year": null,
+    "director": "Rob Reiner",
+    "cast": [
+      "Cary Elwes",
+      "Robin Wright",
+      "Mandy Patinkin",
+      "Chris Sarandon",
+      "Christopher Guest",
+      "Wallace Shawn"
+    ],
+    "runtime": "98 min",
+    "source": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/The_Princess_Bride_(film)",
+      "retrieved": "2026-08-22"
+    },
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/The_Princess_Bride_(film)",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
   }
 }

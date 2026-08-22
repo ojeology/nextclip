@@ -119,15 +119,22 @@
     "backdrop": null,
     "trailer": "https://www.youtube.com/watch?v=qSqVVswa420",
     "youtubeId": "qSqVVswa420",
-    "cast": [],
+    "cast": [
+      "Tom Cruise",
+      "Miles Teller",
+      "Jennifer Connelly",
+      "Jon Hamm",
+      "Glen Powell",
+      "Val Kilmer"
+    ],
     "legacyCastNotes": [
       "Tom Cruise performed the jet sequences himself, enduring up to 7.5 Gs.",
       "Miles Teller spent months learning to fly so his cockpit scenes look real.",
       "The cast trained in actual F/A-18s with real Top Gun instructors.",
       "Cruise insisted the film use no CGI for flight — everything you see was filmed."
     ],
-    "director": null,
-    "runtime": null,
+    "director": "Joseph Kosinski",
+    "runtime": "130 min",
     "rating": {
       "value": 9,
       "source": "BRYME editorial score"
@@ -10583,10 +10590,16 @@
     "backdrop": null,
     "trailer": "https://www.youtube.com/watch?v=0pdqf4P9MB8",
     "youtubeId": "0pdqf4P9MB8",
-    "cast": [],
+    "cast": [
+      "Ryan Gosling",
+      "Emma Stone",
+      "John Legend",
+      "Rosemarie DeWitt",
+      "J. K. Simmons"
+    ],
     "legacyCastNotes": [],
-    "director": null,
-    "runtime": null,
+    "director": "Damien Chazelle",
+    "runtime": "128 min",
     "rating": {
       "value": 8,
       "source": "BRYME editorial score"
@@ -10647,10 +10660,17 @@
     "backdrop": null,
     "trailer": "https://www.youtube.com/watch?v=2e-eXJ6HgkQ",
     "youtubeId": "2e-eXJ6HgkQ",
-    "cast": [],
+    "cast": [
+      "Leonardo DiCaprio",
+      "Kate Winslet",
+      "Billy Zane",
+      "Kathy Bates",
+      "Frances Fisher",
+      "Gloria Stuart"
+    ],
     "legacyCastNotes": [],
-    "director": null,
-    "runtime": null,
+    "director": "James Cameron",
+    "runtime": "195 min",
     "rating": {
       "value": 9,
       "source": "BRYME editorial score"
@@ -36205,9 +36225,14 @@
     "backdrop": null,
     "trailer": "https://www.youtube.com/watch?v=_5-1qVISAKM",
     "youtubeId": "_5-1qVISAKM",
-    "cast": [],
-    "director": null,
-    "runtime": null,
+    "cast": [
+      "Gene Kelly",
+      "Donald O'Connor",
+      "Debbie Reynolds",
+      "Jean Hagen"
+    ],
+    "director": "Gene Kelly; Stanley Donen",
+    "runtime": "103 min",
     "rating": null,
     "status": "published",
     "createdAt": null,
@@ -38219,9 +38244,14 @@
     "backdrop": null,
     "trailer": "https://www.youtube.com/watch?v=XK9zL0ze9O4",
     "youtubeId": "XK9zL0ze9O4",
-    "cast": [],
-    "director": null,
-    "runtime": null,
+    "cast": [
+      "Liam Neeson",
+      "Maggie Grace",
+      "Famke Janssen",
+      "Leland Orser"
+    ],
+    "director": "Pierre Morel",
+    "runtime": "90 min",
     "rating": null,
     "status": "published",
     "createdAt": null,
@@ -42661,9 +42691,16 @@
     "backdrop": null,
     "trailer": "https://www.youtube.com/watch?v=O3CIXEAjcc8",
     "youtubeId": "O3CIXEAjcc8",
-    "cast": [],
-    "director": null,
-    "runtime": null,
+    "cast": [
+      "Cary Elwes",
+      "Robin Wright",
+      "Mandy Patinkin",
+      "Chris Sarandon",
+      "Christopher Guest",
+      "Wallace Shawn"
+    ],
+    "director": "Rob Reiner",
+    "runtime": "98 min",
     "rating": null,
     "status": "published",
     "createdAt": null,
@@ -47239,9 +47276,15 @@
     "backdrop": null,
     "trailer": "https://www.youtube.com/watch?v=bLvqoHBptjg",
     "youtubeId": "bLvqoHBptjg",
-    "cast": [],
-    "director": null,
-    "runtime": null,
+    "cast": [
+      "Tom Hanks",
+      "Robin Wright",
+      "Gary Sinise",
+      "Mykelti Williamson",
+      "Sally Field"
+    ],
+    "director": "Robert Zemeckis",
+    "runtime": "142 min",
     "rating": null,
     "status": "published",
     "createdAt": null,
@@ -47536,9 +47579,15 @@
     "backdrop": null,
     "trailer": "https://www.youtube.com/watch?v=JNwNXF9Y6kY",
     "youtubeId": "JNwNXF9Y6kY",
-    "cast": [],
-    "director": null,
-    "runtime": null,
+    "cast": [
+      "Mark Hamill",
+      "Harrison Ford",
+      "Carrie Fisher",
+      "Billy Dee Williams",
+      "Anthony Daniels"
+    ],
+    "director": "Irvin Kershner",
+    "runtime": "124 min",
     "rating": null,
     "status": "published",
     "createdAt": null,
@@ -49642,9 +49691,16 @@
     "backdrop": null,
     "trailer": "https://www.youtube.com/watch?v=v-PjgYDrg70",
     "youtubeId": "v-PjgYDrg70",
-    "cast": [],
-    "director": null,
-    "runtime": null,
+    "cast": [
+      "Tom Hanks",
+      "Tim Allen",
+      "Don Rickles",
+      "Jim Varney",
+      "Wallace Shawn",
+      "John Ratzenberger"
+    ],
+    "director": "John Lasseter",
+    "runtime": "81 min",
     "rating": null,
     "status": "published",
     "createdAt": null,
@@ -50929,5 +50985,1023 @@
     "trailerChannel": "Bluhouse Studios",
     "trailerVerified": true,
     "trailerLastChecked": "2026-08-21"
+  },
+  {
+    "id": "wicked",
+    "title": "Wicked",
+    "slug": "wicked",
+    "description": "Long before Dorothy, two witches share a school, a friendship, and a falling-out that Oz will retell as a fairy tale. Jon M. Chu’s film is the first half of the stage musical: Elphaba and Glinda, before the world decides who is wicked.",
+    "year": 2024,
+    "genre": "Musical",
+    "country": "United States",
+    "language": "English",
+    "poster": "https://i.ytimg.com/vi/6COmYeLsz4c/hqdefault.jpg",
+    "backdrop": null,
+    "trailer": "https://www.youtube.com/watch?v=6COmYeLsz4c",
+    "youtubeId": "6COmYeLsz4c",
+    "cast": [
+      "Cynthia Erivo",
+      "Ariana Grande",
+      "Jonathan Bailey",
+      "Ethan Slater",
+      "Bowen Yang",
+      "Marissa Bode"
+    ],
+    "director": "Jon M. Chu",
+    "runtime": "160 min",
+    "rating": null,
+    "status": "published",
+    "createdAt": null,
+    "updatedAt": "2026-08-22",
+    "legacyType": "movie",
+    "typeDir": "movie",
+    "teaser": "Long before Dorothy, two witches share a school, a friendship, and a falling-out that Oz will retell as a fairy tale. Jon M. Chu’s film is the first half of the stage musical: Elphaba and Glinda, before the world decides who is wicked.",
+    "facts": [],
+    "watchLinks": [],
+    "genres": [
+      "Musical",
+      "Fantasy"
+    ],
+    "typeLabel": "Movie",
+    "trending": false,
+    "popular": false,
+    "editorPick": false,
+    "isFeatured": false,
+    "isNewRelease": false,
+    "trailers": [
+      {
+        "videoId": "6COmYeLsz4c",
+        "type": "official-trailer",
+        "title": "Official Trailer",
+        "source": "YouTube",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "trailerType": "official-trailer",
+    "trailerVerified": true,
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Wicked_(2024_film)",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  {
+    "id": "wicked-for-good",
+    "title": "Wicked: For Good",
+    "slug": "wicked-for-good",
+    "description": "The second half of the Wicked story. Elphaba is in exile, Glinda is the public face of Oz, and the arrival everyone already knows is almost here. A sequel only if you already know how the first film ends.",
+    "year": 2025,
+    "genre": "Musical",
+    "country": "United States",
+    "language": "English",
+    "poster": "https://i.ytimg.com/vi/vt98AlBDI9Y/hqdefault.jpg",
+    "backdrop": null,
+    "trailer": "https://www.youtube.com/watch?v=vt98AlBDI9Y",
+    "youtubeId": "vt98AlBDI9Y",
+    "cast": [
+      "Ariana Grande",
+      "Cynthia Erivo",
+      "Jonathan Bailey",
+      "Ethan Slater",
+      "Bowen Yang",
+      "Marissa Bode"
+    ],
+    "director": "Jon M. Chu",
+    "runtime": "137 min",
+    "rating": null,
+    "status": "published",
+    "createdAt": null,
+    "updatedAt": "2026-08-22",
+    "legacyType": "movie",
+    "typeDir": "movie",
+    "teaser": "The second half of the Wicked story. Elphaba is in exile, Glinda is the public face of Oz, and the arrival everyone already knows is almost here. A sequel only if you already know how the first film ends.",
+    "facts": [],
+    "watchLinks": [],
+    "genres": [
+      "Musical",
+      "Fantasy"
+    ],
+    "typeLabel": "Movie",
+    "trending": false,
+    "popular": false,
+    "editorPick": false,
+    "isFeatured": false,
+    "isNewRelease": false,
+    "trailers": [
+      {
+        "videoId": "vt98AlBDI9Y",
+        "type": "official-trailer",
+        "title": "Official Trailer",
+        "source": "YouTube",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "trailerType": "official-trailer",
+    "trailerVerified": true,
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Wicked:_For_Good",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  {
+    "id": "spider-man-homecoming",
+    "title": "Spider-Man: Homecoming",
+    "slug": "spider-man-homecoming",
+    "description": "Peter Parker is back from Germany with a high-tech suit and a crush on being an Avenger. Homecoming keeps him in Queens: homework, a homecoming dance, and a salvage dealer who will not stay small. The MCU’s first solo Spider-Man film.",
+    "year": 2017,
+    "genre": "Superhero",
+    "country": "United States",
+    "language": "English",
+    "poster": "https://i.ytimg.com/vi/rk-dF1lIbIg/hqdefault.jpg",
+    "backdrop": null,
+    "trailer": "https://www.youtube.com/watch?v=rk-dF1lIbIg",
+    "youtubeId": "rk-dF1lIbIg",
+    "cast": [
+      "Tom Holland",
+      "Michael Keaton",
+      "Robert Downey Jr.",
+      "Marisa Tomei",
+      "Jon Favreau",
+      "Zendaya"
+    ],
+    "director": "Jon Watts",
+    "runtime": "133 min",
+    "rating": null,
+    "status": "published",
+    "createdAt": null,
+    "updatedAt": "2026-08-22",
+    "legacyType": "movie",
+    "typeDir": "movie",
+    "teaser": "Peter Parker is back from Germany with a high-tech suit and a crush on being an Avenger. Homecoming keeps him in Queens: homework, a homecoming dance, and a salvage dealer who will not stay small. The MCU’s first solo Spider-Man film.",
+    "facts": [],
+    "watchLinks": [],
+    "genres": [
+      "Superhero",
+      "Action"
+    ],
+    "typeLabel": "Movie",
+    "trending": false,
+    "popular": false,
+    "editorPick": false,
+    "isFeatured": false,
+    "isNewRelease": false,
+    "trailers": [
+      {
+        "videoId": "rk-dF1lIbIg",
+        "type": "official-trailer",
+        "title": "Official Trailer",
+        "source": "YouTube",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "trailerType": "official-trailer",
+    "trailerVerified": true,
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Spider-Man:_Homecoming",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  {
+    "id": "spider-man-far-from-home",
+    "title": "Spider-Man: Far From Home",
+    "slug": "spider-man-far-from-home",
+    "description": "A school trip across Europe is supposed to be a break after the snap. Instead Peter meets a man who can make the sky lie, and Nick Fury will not take no for an answer. The second Holland solo film, set after Endgame.",
+    "year": 2019,
+    "genre": "Superhero",
+    "country": "United States",
+    "language": "English",
+    "poster": "https://i.ytimg.com/vi/Nt9L1jCKGnE/hqdefault.jpg",
+    "backdrop": null,
+    "trailer": "https://www.youtube.com/watch?v=Nt9L1jCKGnE",
+    "youtubeId": "Nt9L1jCKGnE",
+    "cast": [
+      "Tom Holland",
+      "Samuel L. Jackson",
+      "Zendaya",
+      "Cobie Smulders",
+      "Jon Favreau",
+      "JB Smoove"
+    ],
+    "director": "Jon Watts",
+    "runtime": "129 min",
+    "rating": null,
+    "status": "published",
+    "createdAt": null,
+    "updatedAt": "2026-08-22",
+    "legacyType": "movie",
+    "typeDir": "movie",
+    "teaser": "A school trip across Europe is supposed to be a break after the snap. Instead Peter meets a man who can make the sky lie, and Nick Fury will not take no for an answer. The second Holland solo film, set after Endgame.",
+    "facts": [],
+    "watchLinks": [],
+    "genres": [
+      "Superhero",
+      "Action"
+    ],
+    "typeLabel": "Movie",
+    "trending": false,
+    "popular": false,
+    "editorPick": false,
+    "isFeatured": false,
+    "isNewRelease": false,
+    "trailers": [
+      {
+        "videoId": "Nt9L1jCKGnE",
+        "type": "official-trailer",
+        "title": "Official Trailer",
+        "source": "YouTube",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "trailerType": "official-trailer",
+    "trailerVerified": true,
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Spider-Man:_Far_From_Home",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  {
+    "id": "spider-man-across-spider-verse",
+    "title": "Spider-Man: Across the Spider-Verse",
+    "slug": "spider-man-across-spider-verse",
+    "description": "Miles Morales is a year older and still the only Spider-Man his Brooklyn knows. Then the Spider-Society arrives with rules about which lives you are allowed to save. A sequel to Into the Spider-Verse, not a recap.",
+    "year": 2023,
+    "genre": "Animation",
+    "country": "United States",
+    "language": "English",
+    "poster": "https://i.ytimg.com/vi/4InPVARmAkc/hqdefault.jpg",
+    "backdrop": null,
+    "trailer": "https://www.youtube.com/watch?v=4InPVARmAkc",
+    "youtubeId": "4InPVARmAkc",
+    "cast": [
+      "Shameik Moore",
+      "Hailee Steinfeld",
+      "Brian Tyree Henry",
+      "Luna Lauren Vélez",
+      "Jake Johnson",
+      "Issa Rae"
+    ],
+    "director": "Joaquim Dos Santos; Kemp Powers; Justin K. Thompson",
+    "runtime": "140 min",
+    "rating": null,
+    "status": "published",
+    "createdAt": null,
+    "updatedAt": "2026-08-22",
+    "legacyType": "movie",
+    "typeDir": "movie",
+    "teaser": "Miles Morales is a year older and still the only Spider-Man his Brooklyn knows. Then the Spider-Society arrives with rules about which lives you are allowed to save. A sequel to Into the Spider-Verse, not a recap.",
+    "facts": [],
+    "watchLinks": [],
+    "genres": [
+      "Animation",
+      "Superhero"
+    ],
+    "typeLabel": "Movie",
+    "trending": false,
+    "popular": false,
+    "editorPick": false,
+    "isFeatured": false,
+    "isNewRelease": false,
+    "trailers": [
+      {
+        "videoId": "4InPVARmAkc",
+        "type": "official-trailer",
+        "title": "Official Trailer",
+        "source": "YouTube",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "trailerType": "official-trailer",
+    "trailerVerified": true,
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Spider-Man:_Across_the_Spider-Verse",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  {
+    "id": "animal",
+    "title": "Animal",
+    "slug": "animal",
+    "description": "A son who cannot sit still in his father’s shadow answers a hit with a war. Sandeep Reddy Vanga’s film is long, bloody, and built around Ranbir Kapoor as a man who calls obsession love. Not a part-one teaser — this is the whole argument.",
+    "year": 2023,
+    "genre": "Action",
+    "country": "India",
+    "language": "Hindi",
+    "poster": "https://i.ytimg.com/vi/JbyyhK4E-AM/hqdefault.jpg",
+    "backdrop": null,
+    "trailer": "https://www.youtube.com/watch?v=JbyyhK4E-AM",
+    "youtubeId": "JbyyhK4E-AM",
+    "cast": [
+      "Ranbir Kapoor",
+      "Anil Kapoor",
+      "Bobby Deol",
+      "Rashmika Mandanna",
+      "Tripti Dimri"
+    ],
+    "director": "Sandeep Reddy Vanga",
+    "runtime": "201 min",
+    "rating": null,
+    "status": "published",
+    "createdAt": null,
+    "updatedAt": "2026-08-22",
+    "legacyType": "movie",
+    "typeDir": "movie",
+    "teaser": "A son who cannot sit still in his father’s shadow answers a hit with a war. Sandeep Reddy Vanga’s film is long, bloody, and built around Ranbir Kapoor as a man who calls obsession love. Not a part-one teaser — this is the whole argument.",
+    "facts": [],
+    "watchLinks": [],
+    "genres": [
+      "Action",
+      "Crime",
+      "Drama"
+    ],
+    "typeLabel": "Movie",
+    "trending": false,
+    "popular": false,
+    "editorPick": false,
+    "isFeatured": false,
+    "isNewRelease": false,
+    "trailers": [
+      {
+        "videoId": "JbyyhK4E-AM",
+        "type": "official-trailer",
+        "title": "Official Trailer",
+        "source": "YouTube",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "trailerType": "official-trailer",
+    "trailerVerified": true,
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Animal_(2023_Indian_film)",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  {
+    "id": "article-370",
+    "title": "Article 370",
+    "slug": "article-370",
+    "description": "A Delhi-based agent is sent into Kashmir around the 2019 constitutional change that ended the state’s special status. The film follows the operation, not a civics lecture. Yami Gautam Dhar leads.",
+    "year": 2024,
+    "genre": "Thriller",
+    "country": "India",
+    "language": "Hindi",
+    "poster": "https://i.ytimg.com/vi/6Pf6RUmq7S0/hqdefault.jpg",
+    "backdrop": null,
+    "trailer": "https://www.youtube.com/watch?v=6Pf6RUmq7S0",
+    "youtubeId": "6Pf6RUmq7S0",
+    "cast": [
+      "Yami Gautam Dhar",
+      "Priyamani"
+    ],
+    "director": "Aditya Suhas Jambhale",
+    "runtime": "158 min",
+    "rating": null,
+    "status": "published",
+    "createdAt": null,
+    "updatedAt": "2026-08-22",
+    "legacyType": "movie",
+    "typeDir": "movie",
+    "teaser": "A Delhi-based agent is sent into Kashmir around the 2019 constitutional change that ended the state’s special status. The film follows the operation, not a civics lecture. Yami Gautam Dhar leads.",
+    "facts": [],
+    "watchLinks": [],
+    "genres": [
+      "Thriller",
+      "Drama"
+    ],
+    "typeLabel": "Movie",
+    "trending": false,
+    "popular": false,
+    "editorPick": false,
+    "isFeatured": false,
+    "isNewRelease": false,
+    "trailers": [
+      {
+        "videoId": "6Pf6RUmq7S0",
+        "type": "official-trailer",
+        "title": "Official Trailer",
+        "source": "YouTube",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "trailerType": "official-trailer",
+    "trailerVerified": true,
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Article_370_(film)",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  {
+    "id": "pushpa-2",
+    "title": "Pushpa 2: The Rule",
+    "slug": "pushpa-2",
+    "description": "Pushpa Raj is no longer climbing. The sequel to The Rise puts him in a fight with the state, a rival syndicate, and a cop who will not drop the file. Allu Arjun returns; so does Fahadh Faasil.",
+    "year": 2024,
+    "genre": "Action",
+    "country": "India",
+    "language": "Telugu",
+    "poster": "https://i.ytimg.com/vi/1kVK0MZlbI4/hqdefault.jpg",
+    "backdrop": null,
+    "trailer": "https://www.youtube.com/watch?v=1kVK0MZlbI4",
+    "youtubeId": "1kVK0MZlbI4",
+    "cast": [
+      "Allu Arjun",
+      "Rashmika Mandanna",
+      "Fahadh Faasil",
+      "Jagapathi Babu"
+    ],
+    "director": "Sukumar",
+    "runtime": "200 min",
+    "rating": null,
+    "status": "published",
+    "createdAt": null,
+    "updatedAt": "2026-08-22",
+    "legacyType": "movie",
+    "typeDir": "movie",
+    "teaser": "Pushpa Raj is no longer climbing. The sequel to The Rise puts him in a fight with the state, a rival syndicate, and a cop who will not drop the file. Allu Arjun returns; so does Fahadh Faasil.",
+    "facts": [],
+    "watchLinks": [],
+    "genres": [
+      "Action",
+      "Crime"
+    ],
+    "typeLabel": "Movie",
+    "trending": false,
+    "popular": false,
+    "editorPick": false,
+    "isFeatured": false,
+    "isNewRelease": false,
+    "trailers": [
+      {
+        "videoId": "1kVK0MZlbI4",
+        "type": "official-trailer",
+        "title": "Official Trailer",
+        "source": "YouTube",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "trailerType": "official-trailer",
+    "trailerVerified": true,
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Pushpa_2:_The_Rule",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  {
+    "id": "kalki-2898-ad",
+    "title": "Kalki 2898-AD",
+    "slug": "kalki-2898-ad",
+    "description": "Kasi in the year 2898 is a desert city waiting for a prophecy. Nag Ashwin folds the Mahabharata into a future-war film with Prabhas, Deepika Padukone, Amitabh Bachchan and Kamal Haasan. Big-scale Indian sci-fi, not a Hollywood remake.",
+    "year": 2024,
+    "genre": "Sci-Fi",
+    "country": "India",
+    "language": "Telugu",
+    "poster": "https://i.ytimg.com/vi/BfCIPsEGAS8/hqdefault.jpg",
+    "backdrop": null,
+    "trailer": "https://www.youtube.com/watch?v=BfCIPsEGAS8",
+    "youtubeId": "BfCIPsEGAS8",
+    "cast": [
+      "Amitabh Bachchan",
+      "Kamal Haasan",
+      "Prabhas",
+      "Deepika Padukone",
+      "Disha Patani"
+    ],
+    "director": "Nag Ashwin",
+    "runtime": "181 min",
+    "rating": null,
+    "status": "published",
+    "createdAt": null,
+    "updatedAt": "2026-08-22",
+    "legacyType": "movie",
+    "typeDir": "movie",
+    "teaser": "Kasi in the year 2898 is a desert city waiting for a prophecy. Nag Ashwin folds the Mahabharata into a future-war film with Prabhas, Deepika Padukone, Amitabh Bachchan and Kamal Haasan. Big-scale Indian sci-fi, not a Hollywood remake.",
+    "facts": [],
+    "watchLinks": [],
+    "genres": [
+      "Sci-Fi",
+      "Action",
+      "Fantasy"
+    ],
+    "typeLabel": "Movie",
+    "trending": false,
+    "popular": false,
+    "editorPick": false,
+    "isFeatured": false,
+    "isNewRelease": false,
+    "trailers": [
+      {
+        "videoId": "BfCIPsEGAS8",
+        "type": "official-trailer",
+        "title": "Official Trailer",
+        "source": "YouTube",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "trailerType": "official-trailer",
+    "trailerVerified": true,
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Kalki_2898_AD",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  {
+    "id": "stree-2",
+    "title": "Stree 2",
+    "slug": "stree-2",
+    "description": "Chanderi has a new night problem, and the same group of friends who survived the first Stree are not ready. Amar Kaushik keeps the horror-comedy mix: a spirit, a town rumour, and Rajkummar Rao trying to be brave.",
+    "year": 2024,
+    "genre": "Horror",
+    "country": "India",
+    "language": "Hindi",
+    "poster": "https://i.ytimg.com/vi/VlvOgk5BHS4/hqdefault.jpg",
+    "backdrop": null,
+    "trailer": "https://www.youtube.com/watch?v=VlvOgk5BHS4",
+    "youtubeId": "VlvOgk5BHS4",
+    "cast": [
+      "Shraddha Kapoor",
+      "Rajkummar Rao",
+      "Pankaj Tripathi",
+      "Abhishek Banerjee",
+      "Aparshakti Khurana"
+    ],
+    "director": "Amar Kaushik",
+    "runtime": "143 min",
+    "rating": null,
+    "status": "published",
+    "createdAt": null,
+    "updatedAt": "2026-08-22",
+    "legacyType": "movie",
+    "typeDir": "movie",
+    "teaser": "Chanderi has a new night problem, and the same group of friends who survived the first Stree are not ready. Amar Kaushik keeps the horror-comedy mix: a spirit, a town rumour, and Rajkummar Rao trying to be brave.",
+    "facts": [],
+    "watchLinks": [],
+    "genres": [
+      "Horror",
+      "Comedy"
+    ],
+    "typeLabel": "Movie",
+    "trending": false,
+    "popular": false,
+    "editorPick": false,
+    "isFeatured": false,
+    "isNewRelease": false,
+    "trailers": [
+      {
+        "videoId": "VlvOgk5BHS4",
+        "type": "official-trailer",
+        "title": "Official Trailer",
+        "source": "YouTube",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "trailerType": "official-trailer",
+    "trailerVerified": true,
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Stree_2",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  {
+    "id": "kpop-demon-hunters",
+    "title": "KPop Demon Hunters",
+    "slug": "kpop-demon-hunters",
+    "description": "A K-pop girl group hunts demons between choreography and comeback stages. Sony Pictures Animation’s 2025 film is a musical action cartoon, not a concert film. The billed voices include Arden Cho and Ahn Hyo-seop.",
+    "year": 2025,
+    "genre": "Animation",
+    "country": "United States",
+    "language": "English",
+    "poster": "https://i.ytimg.com/vi/6aFevqIKAZg/hqdefault.jpg",
+    "backdrop": null,
+    "trailer": "https://www.youtube.com/watch?v=6aFevqIKAZg",
+    "youtubeId": "6aFevqIKAZg",
+    "cast": [
+      "Arden Cho",
+      "Ahn Hyo-seop",
+      "May Hong",
+      "Ji-young Yoo"
+    ],
+    "director": "Maggie Kang; Chris Appelhans",
+    "runtime": "95 min",
+    "rating": null,
+    "status": "published",
+    "createdAt": null,
+    "updatedAt": "2026-08-22",
+    "legacyType": "movie",
+    "typeDir": "movie",
+    "teaser": "A K-pop girl group hunts demons between choreography and comeback stages. Sony Pictures Animation’s 2025 film is a musical action cartoon, not a concert film. The billed voices include Arden Cho and Ahn Hyo-seop.",
+    "facts": [],
+    "watchLinks": [],
+    "genres": [
+      "Animation",
+      "Music",
+      "Fantasy"
+    ],
+    "typeLabel": "Movie",
+    "trending": false,
+    "popular": false,
+    "editorPick": false,
+    "isFeatured": false,
+    "isNewRelease": false,
+    "trailers": [
+      {
+        "videoId": "6aFevqIKAZg",
+        "type": "official-trailer",
+        "title": "Official Trailer",
+        "source": "YouTube",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "trailerType": "official-trailer",
+    "trailerVerified": true,
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/KPop_Demon_Hunters",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  {
+    "id": "fifty-shades-of-grey",
+    "title": "Fifty Shades of Grey",
+    "slug": "fifty-shades-of-grey",
+    "description": "A literature student interviews a Seattle billionaire and stays. Sam Taylor-Johnson’s film is the first of the E. L. James adaptations: Dakota Johnson and Jamie Dornan, a contract, and a relationship that is not a fairy tale.",
+    "year": 2015,
+    "genre": "Romance",
+    "country": "United States",
+    "language": "English",
+    "poster": "https://i.ytimg.com/vi/6FDTMRK7-24/hqdefault.jpg",
+    "backdrop": null,
+    "trailer": "https://www.youtube.com/watch?v=6FDTMRK7-24",
+    "youtubeId": "6FDTMRK7-24",
+    "cast": [
+      "Dakota Johnson",
+      "Jamie Dornan",
+      "Jennifer Ehle",
+      "Marcia Gay Harden"
+    ],
+    "director": "Sam Taylor-Johnson",
+    "runtime": "125 min",
+    "rating": null,
+    "status": "published",
+    "createdAt": null,
+    "updatedAt": "2026-08-22",
+    "legacyType": "movie",
+    "typeDir": "movie",
+    "teaser": "A literature student interviews a Seattle billionaire and stays. Sam Taylor-Johnson’s film is the first of the E. L. James adaptations: Dakota Johnson and Jamie Dornan, a contract, and a relationship that is not a fairy tale.",
+    "facts": [],
+    "watchLinks": [],
+    "genres": [
+      "Romance",
+      "Drama"
+    ],
+    "typeLabel": "Movie",
+    "trending": false,
+    "popular": false,
+    "editorPick": false,
+    "isFeatured": false,
+    "isNewRelease": false,
+    "trailers": [
+      {
+        "videoId": "6FDTMRK7-24",
+        "type": "official-trailer",
+        "title": "Official Trailer",
+        "source": "YouTube",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "trailerType": "official-trailer",
+    "trailerVerified": true,
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Fifty_Shades_of_Grey_(film)",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  {
+    "id": "demon-slayer-infinity-castle",
+    "title": "Demon Slayer: Infinity Castle",
+    "slug": "demon-slayer-infinity-castle",
+    "description": "The Corps is pulled into Muzan’s fortress of shifting rooms. Haruo Sotozaki’s theatrical continuation of Demon Slayer is a movie, not a recap episode. Tanjiro, Nezuko and the Hashira go in knowing the castle does not want them out.",
+    "year": 2025,
+    "genre": "Anime",
+    "country": "Japan",
+    "language": "Japanese",
+    "poster": "https://i.ytimg.com/vi/x7uLutVRBfI/hqdefault.jpg",
+    "backdrop": null,
+    "trailer": "https://www.youtube.com/watch?v=x7uLutVRBfI",
+    "youtubeId": "x7uLutVRBfI",
+    "cast": [
+      "Natsuki Hanae",
+      "Akari Kitō",
+      "Hiro Shimono",
+      "Yoshitsugu Matsuoka"
+    ],
+    "director": "Haruo Sotozaki",
+    "runtime": "155 min",
+    "rating": null,
+    "status": "published",
+    "createdAt": null,
+    "updatedAt": "2026-08-22",
+    "legacyType": "movie",
+    "typeDir": "movie",
+    "teaser": "The Corps is pulled into Muzan’s fortress of shifting rooms. Haruo Sotozaki’s theatrical continuation of Demon Slayer is a movie, not a recap episode. Tanjiro, Nezuko and the Hashira go in knowing the castle does not want them out.",
+    "facts": [],
+    "watchLinks": [],
+    "genres": [
+      "Anime",
+      "Action",
+      "Fantasy"
+    ],
+    "typeLabel": "Movie",
+    "trending": false,
+    "popular": false,
+    "editorPick": false,
+    "isFeatured": false,
+    "isNewRelease": false,
+    "trailers": [
+      {
+        "videoId": "x7uLutVRBfI",
+        "type": "official-trailer",
+        "title": "Official Trailer",
+        "source": "YouTube",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "trailerType": "official-trailer",
+    "trailerVerified": true,
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Demon_Slayer:_Kimetsu_no_Yaiba_%E2%80%93_The_Movie:_Infinity_Castle",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  {
+    "id": "zootopia-2",
+    "title": "Zootopia 2",
+    "slug": "zootopia-2",
+    "description": "Judy Hopps and Nick Wilde are back on a case that the city would rather file away. Disney Animation’s sequel keeps the buddy-cop shape of the 2016 film and adds a reptile the first movie barely showed.",
+    "year": 2025,
+    "genre": "Animation",
+    "country": "United States",
+    "language": "English",
+    "poster": "https://i.ytimg.com/vi/BjkIOU5PhyQ/hqdefault.jpg",
+    "backdrop": null,
+    "trailer": "https://www.youtube.com/watch?v=BjkIOU5PhyQ",
+    "youtubeId": "BjkIOU5PhyQ",
+    "cast": [
+      "Ginnifer Goodwin",
+      "Jason Bateman",
+      "Ke Huy Quan",
+      "Fortune Feimster",
+      "Andy Samberg",
+      "David Strathairn"
+    ],
+    "director": "Jared Bush; Byron Howard",
+    "runtime": "108 min",
+    "rating": null,
+    "status": "published",
+    "createdAt": null,
+    "updatedAt": "2026-08-22",
+    "legacyType": "movie",
+    "typeDir": "movie",
+    "teaser": "Judy Hopps and Nick Wilde are back on a case that the city would rather file away. Disney Animation’s sequel keeps the buddy-cop shape of the 2016 film and adds a reptile the first movie barely showed.",
+    "facts": [],
+    "watchLinks": [],
+    "genres": [
+      "Animation",
+      "Comedy",
+      "Family"
+    ],
+    "typeLabel": "Movie",
+    "trending": false,
+    "popular": false,
+    "editorPick": false,
+    "isFeatured": false,
+    "isNewRelease": false,
+    "trailers": [
+      {
+        "videoId": "BjkIOU5PhyQ",
+        "type": "official-trailer",
+        "title": "Official Trailer",
+        "source": "YouTube",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "trailerType": "official-trailer",
+    "trailerVerified": true,
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Zootopia_2",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  {
+    "id": "predator-badlands",
+    "title": "Predator: Badlands",
+    "slug": "predator-badlands",
+    "description": "Dan Trachtenberg’s next Predator film follows a young Yautja on a hunt that does not go to plan. Elle Fanning is the human the story will not drop. A franchise entry, not a remake of the 1987 film.",
+    "year": 2025,
+    "genre": "Sci-Fi",
+    "country": "United States",
+    "language": "English",
+    "poster": "https://i.ytimg.com/vi/43R9l7EkJwE/hqdefault.jpg",
+    "backdrop": null,
+    "trailer": "https://www.youtube.com/watch?v=43R9l7EkJwE",
+    "youtubeId": "43R9l7EkJwE",
+    "cast": [
+      "Elle Fanning",
+      "Dimitrius Schuster-Koloamatangi"
+    ],
+    "director": "Dan Trachtenberg",
+    "runtime": "107 min",
+    "rating": null,
+    "status": "published",
+    "createdAt": null,
+    "updatedAt": "2026-08-22",
+    "legacyType": "movie",
+    "typeDir": "movie",
+    "teaser": "Dan Trachtenberg’s next Predator film follows a young Yautja on a hunt that does not go to plan. Elle Fanning is the human the story will not drop. A franchise entry, not a remake of the 1987 film.",
+    "facts": [],
+    "watchLinks": [],
+    "genres": [
+      "Sci-Fi",
+      "Action",
+      "Horror"
+    ],
+    "typeLabel": "Movie",
+    "trending": false,
+    "popular": false,
+    "editorPick": false,
+    "isFeatured": false,
+    "isNewRelease": false,
+    "trailers": [
+      {
+        "videoId": "43R9l7EkJwE",
+        "type": "official-trailer",
+        "title": "Official Trailer",
+        "source": "YouTube",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "trailerType": "official-trailer",
+    "trailerVerified": true,
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Predator:_Badlands",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  {
+    "id": "the-housemaid-2025",
+    "title": "The Housemaid",
+    "slug": "the-housemaid-2025",
+    "description": "A woman takes a live-in job with a wealthy couple and finds the house has rules that are not in the contract. Paul Feig’s 2025 thriller is an adaptation of Freida McFadden’s novel — not the 2010 Korean film of the same name.",
+    "year": 2025,
+    "genre": "Thriller",
+    "country": "United States",
+    "language": "English",
+    "poster": "https://i.ytimg.com/vi/48CtX6OgU3s/hqdefault.jpg",
+    "backdrop": null,
+    "trailer": "https://www.youtube.com/watch?v=48CtX6OgU3s",
+    "youtubeId": "48CtX6OgU3s",
+    "cast": [
+      "Sydney Sweeney",
+      "Amanda Seyfried",
+      "Brandon Sklenar"
+    ],
+    "director": "Paul Feig",
+    "runtime": "131 min",
+    "rating": null,
+    "status": "published",
+    "createdAt": null,
+    "updatedAt": "2026-08-22",
+    "legacyType": "movie",
+    "typeDir": "movie",
+    "teaser": "A woman takes a live-in job with a wealthy couple and finds the house has rules that are not in the contract. Paul Feig’s 2025 thriller is an adaptation of Freida McFadden’s novel — not the 2010 Korean film of the same name.",
+    "facts": [],
+    "watchLinks": [],
+    "genres": [
+      "Thriller",
+      "Drama"
+    ],
+    "typeLabel": "Movie",
+    "trending": false,
+    "popular": false,
+    "editorPick": false,
+    "isFeatured": false,
+    "isNewRelease": false,
+    "trailers": [
+      {
+        "videoId": "48CtX6OgU3s",
+        "type": "official-trailer",
+        "title": "Official Trailer",
+        "source": "YouTube",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "trailerType": "official-trailer",
+    "trailerVerified": true,
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/The_Housemaid_(2025_film)",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  {
+    "id": "war-of-the-worlds-2025",
+    "title": "War of the Worlds",
+    "slug": "war-of-the-worlds-2025",
+    "description": "A 2025 invasion story told largely through screens. Ice Cube plays a DHS analyst watching the attack in real time. This is not Spielberg’s 2005 film and not a claim that the two share a story.",
+    "year": 2025,
+    "genre": "Sci-Fi",
+    "country": "United States",
+    "language": "English",
+    "poster": "https://i.ytimg.com/vi/sjlLLmURlEg/hqdefault.jpg",
+    "backdrop": null,
+    "trailer": "https://www.youtube.com/watch?v=sjlLLmURlEg",
+    "youtubeId": "sjlLLmURlEg",
+    "cast": [
+      "Ice Cube",
+      "Eva Longoria",
+      "Clark Gregg"
+    ],
+    "director": "Rich Lee",
+    "runtime": "89 min",
+    "rating": null,
+    "status": "published",
+    "createdAt": null,
+    "updatedAt": "2026-08-22",
+    "legacyType": "movie",
+    "typeDir": "movie",
+    "teaser": "A 2025 invasion story told largely through screens. Ice Cube plays a DHS analyst watching the attack in real time. This is not Spielberg’s 2005 film and not a claim that the two share a story.",
+    "facts": [],
+    "watchLinks": [],
+    "genres": [
+      "Sci-Fi",
+      "Thriller"
+    ],
+    "typeLabel": "Movie",
+    "trending": false,
+    "popular": false,
+    "editorPick": false,
+    "isFeatured": false,
+    "isNewRelease": false,
+    "trailers": [
+      {
+        "videoId": "sjlLLmURlEg",
+        "type": "official-trailer",
+        "title": "Official Trailer",
+        "source": "YouTube",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "trailerType": "official-trailer",
+    "trailerVerified": true,
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/War_of_the_Worlds_(2025_film)",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
   }
 ]
