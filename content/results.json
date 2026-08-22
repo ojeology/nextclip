@@ -22,6 +22,29 @@
         "url": "https://www.bbc.com/sport/football/live/c9drv440vlget"
       },
       "verifiedOn": "2026-08-21"
+    },
+    "hull-vs-man-united": {
+      "homeScore": 2,
+      "awayScore": 0,
+      "status": "FT",
+      "playedOn": "2026-08-22",
+      "scorers": [
+        {
+          "team": "home",
+          "player": "Ajayi",
+          "minute": "17"
+        },
+        {
+          "team": "home",
+          "player": "Mendy",
+          "minute": "38"
+        }
+      ],
+      "source": {
+        "name": "BBC Sport — Hull City v Manchester United",
+        "url": "https://www.bbc.com/sport/football/live/cv629k5zr2jxt"
+      },
+      "verifiedOn": "2026-08-22"
     }
   },
   "la-liga": {

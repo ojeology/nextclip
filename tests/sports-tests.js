@@ -266,8 +266,8 @@ section('Match centre, fixtures, results');
   assert(/class="sp-result"/.test(mp), 'match page: result block rendered');
   assert(/BBC Sport/.test(mp), 'match page: result source cited');
   assert(/Result &amp; Analysis/.test(mp), 'match page: result title state');
-  // Hull v Man United is still upcoming — must NOT present a result.
-  const mp2 = read('sports/premier-league/matches/hull-vs-man-united/index.html');
+  // Brentford v Tottenham is still upcoming (Sat 22 Aug, 17:30) — must NOT present a result.
+  const mp2 = read('sports/premier-league/matches/brentford-vs-tottenham/index.html');
   assert(/Upcoming — not yet played/.test(mp2), 'upcoming match page: honest status');
   assert(/class="sp-preview"/.test(mp2), 'upcoming match page: editorial preview rendered');
   assert((mp2.match(/class="sp-msec"/g) || []).length >= 12, 'upcoming match page: full editorial section set');
