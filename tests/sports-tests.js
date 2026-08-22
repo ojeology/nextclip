@@ -174,8 +174,8 @@ section('FPL');
   assert(/No picks, predictions or difficulty ratings are shown before they are researched/.test(gw), 'no fabricated picks');
 }
 
-/* 6. Article placeholders */
-section('Article placeholders');
+/* 6. Researched articles (formerly placeholders) */
+section('Researched articles');
 {
   for (const r of ['premier-league/matchweek-1-preview', 'premier-league/players-to-watch-matchweek-1',
                    'premier-league/injuries-matchweek-1', 'premier-league/biggest-matches-matchweek-1',
@@ -184,7 +184,7 @@ section('Article placeholders');
     assert(/<h1>/.test(s), r + ': h1');
     assert(/By BRYME Sports Editorial/.test(s), r + ': author/editorial label');
     assert(/Original report/.test(s), r + ': source section');
-    assert(/structured placeholder/.test(s), r + ': honest placeholder state');
+    assert(!/structured placeholder/.test(s), r + ': no longer a placeholder');
     assert(/rel="canonical" href="https:\/\/bryme\.onrender\.com\/sports\//.test(s), r + ': canonical has sports/ prefix');
     assert(/sp-rel/.test(s), r + ': related-content block');
     assert(JSON.parse(s.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1]).some(d => d['@type'] === 'Article'), r + ': Article schema');
