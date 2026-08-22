@@ -3334,6 +3334,12 @@ main.tp-page .nm-crumb a:hover{color:#fff}
 .nm-body .badges .nm-hd,
 .nm-body .badges .badge[title="Age rating"]{border:1px solid #737373;color:#a3a3a3;padding:1px 6px;font-size:11px;border-radius:3px;font-weight:600}
 .nm-body .badges .badge[title*="BRYME editorial score"]{color:#F5C518;font-size:12px;font-weight:700}
+.nm-page-h1{
+  font-size:clamp(26px,4.5vw,40px);font-weight:800;letter-spacing:-.5px;
+  margin:16px 0 6px;color:#fff;line-height:1.1;
+}
+.nm-body .nm-page-h1{margin:16px 0 6px}
+main.shell .nm-page-h1{font-size:clamp(28px,5vw,44px);margin:0 0 8px}
 .nm-body p.lead{font-size:15px;line-height:1.55;color:#d6d6d6;max-width:680px;margin:0 0 12px}
 
 /* Play / Trailer buttons */
