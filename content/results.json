@@ -114,6 +114,34 @@
         "url": "https://www.bbc.com/sport/football/live/cm4gkdpw5qq7t"
       },
       "verifiedOn": "2026-08-22"
+    },
+    "brentford-vs-tottenham": {
+      "homeScore": 3,
+      "awayScore": 0,
+      "status": "FT",
+      "playedOn": "2026-08-22",
+      "scorers": [
+        {
+          "team": "home",
+          "player": "Lewis-Potter",
+          "minute": "12"
+        },
+        {
+          "team": "home",
+          "player": "Janelt",
+          "minute": "33"
+        },
+        {
+          "team": "home",
+          "player": "Kayode",
+          "minute": "48"
+        }
+      ],
+      "source": {
+        "name": "BBC Sport — Brentford v Tottenham Hotspur",
+        "url": "https://www.bbc.com/sport/football/live/cj75g01qn51dt"
+      },
+      "verifiedOn": "2026-08-22"
     }
   },
   "la-liga": {
@@ -200,9 +228,177 @@
         "url": "https://www.bbc.com/sport/football/live/cmz644qxd96yt"
       },
       "verifiedOn": "2026-08-22"
+    },
+    "athletic-bilbao-vs-sevilla": {
+      "homeScore": 1,
+      "awayScore": 3,
+      "status": "FT",
+      "playedOn": "2026-08-22",
+      "scorers": [
+        {
+          "team": "away",
+          "player": "Oso",
+          "minute": "15"
+        },
+        {
+          "team": "away",
+          "player": "Ejuke",
+          "minute": "50"
+        },
+        {
+          "team": "away",
+          "player": "Isaac Romero",
+          "minute": "57"
+        },
+        {
+          "team": "home",
+          "player": "Paredes",
+          "minute": "70"
+        }
+      ],
+      "source": {
+        "name": "BBC Sport — Athletic Club v Sevilla",
+        "url": "https://www.bbc.com/sport/football/live/crd9w4ky88let"
+      },
+      "verifiedOn": "2026-08-22"
+    },
+    "valencia-vs-celta-vigo": {
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "FT",
+      "playedOn": "2026-08-22",
+      "source": {
+        "name": "BBC Sport — Valencia v Celta Vigo",
+        "url": "https://www.bbc.com/sport/football/live/cwm2gqe844yrt"
+      },
+      "verifiedOn": "2026-08-22"
+    },
+    "espanyol-vs-real-madrid": {
+      "homeScore": 1,
+      "awayScore": 2,
+      "status": "FT",
+      "playedOn": "2026-08-22",
+      "scorers": [
+        {
+          "team": "away",
+          "player": "Bellingham",
+          "minute": "9"
+        },
+        {
+          "team": "home",
+          "player": "Cala",
+          "minute": "30"
+        },
+        {
+          "team": "away",
+          "player": "Carlos Espí",
+          "minute": "90"
+        }
+      ],
+      "source": {
+        "name": "BBC Sport — Espanyol v Real Madrid",
+        "url": "https://www.bbc.com/sport/football/live/cmwyjzndv4xnt"
+      },
+      "verifiedOn": "2026-08-22"
     }
   },
-  "serie-a": {},
+  "serie-a": {
+    "inter-vs-monza": {
+      "homeScore": 4,
+      "awayScore": 1,
+      "status": "FT",
+      "playedOn": "2026-08-22",
+      "scorers": [
+        {
+          "team": "home",
+          "player": "Çalhanoğlu",
+          "minute": "6"
+        },
+        {
+          "team": "away",
+          "player": "Gustavo Varela",
+          "minute": "29"
+        },
+        {
+          "team": "home",
+          "player": "Zieliński",
+          "minute": "48"
+        },
+        {
+          "team": "home",
+          "player": "Esposito",
+          "minute": "55"
+        },
+        {
+          "team": "home",
+          "player": "Bisseck",
+          "minute": "63"
+        }
+      ],
+      "source": {
+        "name": "BBC Sport — Inter Milan v Monza",
+        "url": "https://www.bbc.com/sport/football/live/ckgjeqd1vx73t"
+      },
+      "verifiedOn": "2026-08-22"
+    },
+    "udinese-vs-como": {
+      "homeScore": 1,
+      "awayScore": 1,
+      "status": "FT",
+      "playedOn": "2026-08-22",
+      "scorers": [
+        {
+          "team": "home",
+          "player": "Kamara",
+          "minute": "29"
+        },
+        {
+          "team": "away",
+          "player": "Douvikas",
+          "minute": "54"
+        }
+      ],
+      "source": {
+        "name": "BBC Sport — Udinese v Como",
+        "url": "https://www.bbc.co.uk/sport/football/live/c5kg90kz24rwt"
+      },
+      "verifiedOn": "2026-08-22"
+    },
+    "genoa-vs-napoli": {
+      "homeScore": 0,
+      "awayScore": 2,
+      "status": "FT",
+      "playedOn": "2026-08-22",
+      "scorers": [
+        {
+          "team": "away",
+          "player": "De Bruyne",
+          "minute": "82"
+        },
+        {
+          "team": "away",
+          "player": "Vergara",
+          "minute": "87"
+        }
+      ],
+      "source": {
+        "name": "BBC Sport — Genoa v Napoli",
+        "url": "https://www.bbc.co.uk/sport/football/live/ckpd7029l3nqt"
+      },
+      "verifiedOn": "2026-08-22"
+    },
+    "parma-vs-cagliari": {
+      "homeScore": 0,
+      "awayScore": 1,
+      "status": "FT",
+      "playedOn": "2026-08-22",
+      "source": {
+        "name": "BBC Sport — Parma v Cagliari",
+        "url": "https://www.bbc.com/sport/football/live/cm2k7wpnjygnt"
+      },
+      "verifiedOn": "2026-08-22"
+    }
+  },
   "bundesliga": {},
   "ligue-1": {
     "marseille-vs-strasbourg": {
@@ -235,6 +431,120 @@
       "source": {
         "name": "BBC Sport — Marseille v Strasbourg",
         "url": "https://www.bbc.com/sport/football/live/c85yvv136pr0t"
+      },
+      "verifiedOn": "2026-08-22"
+    },
+    "lens-vs-auxerre": {
+      "homeScore": 5,
+      "awayScore": 2,
+      "status": "FT",
+      "playedOn": "2026-08-22",
+      "scorers": [
+        {
+          "team": "home",
+          "player": "Thauvin",
+          "minute": "12"
+        },
+        {
+          "team": "home",
+          "player": "Ivanović",
+          "minute": "49"
+        },
+        {
+          "team": "home",
+          "player": "Abdulhamid",
+          "minute": "54"
+        },
+        {
+          "team": "away",
+          "player": "Namaso",
+          "minute": "61"
+        },
+        {
+          "team": "home",
+          "player": "Ganiou",
+          "minute": "66"
+        },
+        {
+          "team": "away",
+          "player": "Sy",
+          "minute": "69"
+        },
+        {
+          "team": "home",
+          "player": "Thauvin",
+          "minute": "88"
+        }
+      ],
+      "source": {
+        "name": "BBC Sport — Lens v Auxerre",
+        "url": "https://www.bbc.co.uk/sport/football/live/cqvgxykv4y0zt"
+      },
+      "verifiedOn": "2026-08-22"
+    },
+    "le-mans-vs-brest": {
+      "homeScore": 2,
+      "awayScore": 2,
+      "status": "FT",
+      "playedOn": "2026-08-22",
+      "scorers": [
+        {
+          "team": "away",
+          "player": "Del Castillo",
+          "minute": "31"
+        },
+        {
+          "team": "home",
+          "player": "Gueye",
+          "minute": "45+2"
+        },
+        {
+          "team": "home",
+          "player": "Mafouta",
+          "minute": "55"
+        },
+        {
+          "team": "away",
+          "player": "Doumbia",
+          "minute": "62"
+        }
+      ],
+      "source": {
+        "name": "L'Équipe — Le Mans v Brest",
+        "url": "https://www.lequipe.fr/Football/match-direct/ligue-1/2026-2027/le-mans-brest-live/690261"
+      },
+      "verifiedOn": "2026-08-22"
+    },
+    "nice-vs-lorient": {
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "FT",
+      "playedOn": "2026-08-22",
+      "source": {
+        "name": "BBC Sport — Nice v Lorient",
+        "url": "https://www.bbc.co.uk/sport/football/live/cmn8nex37wj1t"
+      },
+      "verifiedOn": "2026-08-22"
+    },
+    "toulouse-vs-lyon": {
+      "homeScore": 0,
+      "awayScore": 2,
+      "status": "FT",
+      "playedOn": "2026-08-22",
+      "source": {
+        "name": "BBC Sport — Saturday Ligue 1 scores",
+        "url": "https://www.bbc.com/sport/football/live/cmd9w4kyd3x1t"
+      },
+      "verifiedOn": "2026-08-22"
+    },
+    "troyes-vs-paris-fc": {
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "FT",
+      "playedOn": "2026-08-22",
+      "source": {
+        "name": "BBC Sport — Troyes v Paris FC",
+        "url": "https://www.bbc.com/sport/football/live/cmd9w4kyd3x1t"
       },
       "verifiedOn": "2026-08-22"
     }
