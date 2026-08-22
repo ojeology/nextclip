@@ -1,4 +1,95 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#08090b"><meta name="color-scheme" content="dark light"><link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="icon" href="/assets/favicon.png" type="image/png" sizes="32x32"><link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png"><link rel="manifest" href="/manifest.webmanifest"><link rel="preconnect" href="https://i.ytimg.com" crossorigin><link rel="preconnect" href="https://www.youtube-nocookie.com" crossorigin><link rel="preconnect" href="https://www.youtube.com" crossorigin><title>BRYME Sports — Football Covered Properly | BRYME</title><meta name="description" content="Football covered properly: Premier League results and previews, Champions League, La Liga, Serie A, Bundesliga and Ligue 1. Sourced scores only."><link rel="canonical" href="https://bryme.onrender.com/sports/"><meta property="og:type" content="website"><meta property="og:site_name" content="BRYME"><meta property="og:title" content="BRYME Sports — Football Covered Properly | BRYME"><meta property="og:description" content="Football covered properly: Premier League results and previews, Champions League, La Liga, Serie A, Bundesliga and Ligue 1. Sourced scores only."><meta property="og:url" content="https://bryme.onrender.com/sports/"><meta property="og:image" content="https://bryme.onrender.com/assets/bryme-card.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="BRYME"><meta name="twitter:image" content="https://bryme.onrender.com/assets/bryme-card.png"><meta name="twitter:image:alt" content="BRYME"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="BRYME Sports — Football Covered Properly | BRYME"><meta name="twitter:description" content="Football covered properly: Premier League results and previews, Champions League, La Liga, Serie A, Bundesliga and Ligue 1. Sourced scores only."><link rel="stylesheet" href="/assets/site.css"><script type="application/ld+json">[{"@context":"https://schema.org","@type":"CollectionPage","name":"BRYME Sports","description":"BRYME Sports is football. The Premier League, Champions League, La Liga, Serie A, Bundesliga, Ligue 1 and international football — with club histories, rivalry explainers, records, player profiles, match previews and reports. We cover one sport properly rather than several thinly.","url":"https://bryme.onrender.com/sports/"},{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://bryme.onrender.com/"},{"@type":"ListItem","position":2,"name":"BRYME Sports","item":"https://bryme.onrender.com/sports/"}]},{"@context":"https://schema.org","@type":"VideoObject","name":"PREMIER LEAGUE 2026/27 🔥 | THE WAIT IS OVER | OFFICIAL TRAILER ⚽🔥","description":"A YouTube video about the 2026/27 Premier League season, published by Azar_kattumulla on 11 August 2026. It is not a Premier League Productions upload.","thumbnailUrl":"https://i.ytimg.com/vi/nx8rgJrmSFY/hqdefault.jpg","embedUrl":"https://www.youtube-nocookie.com/embed/nx8rgJrmSFY","uploadDate":"2026-08-11","publisher":{"@type":"Organization","name":"Azar_kattumulla"}}]</script><link rel="preload" as="image" href="/assets/img/sports/hero-landing.jpg" fetchpriority="high"></head><body data-nav="sports"><header class="top"><div class="shell"><a class="brand" href="/">BRY<b>ME</b></a><nav class="topnav"><a href="/">Home</a><a href="/entertainment/">🎬 Entertainment</a><a href="/sports/" class="active">⚽ Sports</a><a href="/make-money/">💰 Make Money</a><a href="/tech/">🤖 Tech &amp; AI</a><a class="nav-search" href="/search/">Search</a></nav><div class="top-tools"><a class="header-search" href="/search/" aria-label="Search">Search</a></div></div></header><main class="sp-desk">
+#!/usr/bin/env python3
+"""Rebuild /sports/ landing page with the v2 night-stadium hub.
+
+Surgical: keeps the existing <head> + footer/nav shell. Does not invent scores.
+Brentford v Tottenham stays a preview (in play at last check — no FT lock).
+"""
+from pathlib import Path
+import html as H
+import re
+
+ROOT = Path(__file__).resolve().parents[1]
+
+
+def esc(s):
+    return H.escape(str(s), quote=True)
+
+
+def card(href, home, away, home_crest, away_crest, status, home_score=None, away_score=None, go='Open →'):
+    ft = status == 'FT'
+    pill_cls = 'ft' if ft else 'ko'
+    pill = 'FT' if ft else status
+    hs = esc(home_score) if home_score is not None else '<span class="sp-sc-num muted">–</span>'
+    aws = esc(away_score) if away_score is not None else '<span class="sp-sc-num muted">–</span>'
+    if home_score is not None:
+        hs = f'<b class="sp-sc-num">{esc(home_score)}</b>'
+    if away_score is not None:
+        aws = f'<b class="sp-sc-num">{esc(away_score)}</b>'
+    return (
+        f'<a class="sp-scorecard" href="{esc(href)}">'
+        f'<div class="sp-sc-top"><span class="sp-sc-pill {pill_cls}">{esc(pill)}</span>'
+        f'<span class="sp-sc-go">{esc(go)}</span></div>'
+        f'<div>'
+        f'<div class="sp-sc-row"><div class="sp-sc-club"><img src="{esc(home_crest)}" alt="" width="32" height="32">'
+        f'<span>{esc(home)}</span></div>{hs}</div>'
+        f'<div class="sp-sc-row"><div class="sp-sc-club"><img src="{esc(away_crest)}" alt="" width="32" height="32">'
+        f'<span>{esc(away)}</span></div>{aws}</div>'
+        f'</div></a>'
+    )
+
+
+PL = '/assets/img/sports/pl/'
+LL = '/assets/img/sports/ll/'
+SA = '/assets/img/sports/sa/'
+L1 = '/assets/img/sports/l1/'
+
+pl_cards = ''.join([
+    card('/sports/premier-league/matches/hull-vs-man-united/', 'Hull City', 'Manchester United',
+         PL + 'hull.svg', PL + 'man-united.svg', 'FT', 2, 0, 'Result →'),
+    card('/sports/premier-league/matches/everton-vs-crystal-palace/', 'Everton', 'Crystal Palace',
+         PL + 'everton.svg', PL + 'crystal-palace.svg', 'FT', 2, 0, 'Result →'),
+    card('/sports/premier-league/matches/ipswich-vs-sunderland/', 'Ipswich Town', 'Sunderland',
+         PL + 'ipswich.svg', PL + 'sunderland.svg', 'FT', 2, 1, 'Result →'),
+    card('/sports/premier-league/matches/nottingham-forest-vs-leeds/', 'Nott\'m Forest', 'Leeds United',
+         PL + 'nottingham-forest.svg', PL + 'leeds.svg', 'FT', 0, 1, 'Result →'),
+    card('/sports/premier-league/matches/brentford-vs-tottenham/', 'Brentford', 'Tottenham',
+         PL + 'brentford.svg', PL + 'tottenham.svg', '17:30', None, None, 'Preview →'),
+])
+
+ll_cards = ''.join([
+    card('/sports/la-liga/matches/athletic-bilbao-vs-sevilla/', 'Athletic Club', 'Sevilla',
+         LL + 'athletic.png', LL + 'sevilla.png', '17:00', None, None, 'Preview →'),
+    card('/sports/la-liga/matches/valencia-vs-celta-vigo/', 'Valencia', 'Celta Vigo',
+         LL + 'valencia.png', LL + 'celta.png', '19:30', None, None, 'Preview →'),
+    card('/sports/la-liga/matches/espanyol-vs-real-madrid/', 'Espanyol', 'Real Madrid',
+         LL + 'espanyol.png', LL + 'real-madrid.png', '21:30', None, None, 'Preview →'),
+])
+
+sa_cards = ''.join([
+    card('/sports/serie-a/matches/inter-vs-monza/', 'Inter Milan', 'Monza',
+         SA + 'inter.svg', SA + 'monza.svg', '18:30', None, None, 'Preview →'),
+    card('/sports/serie-a/matches/udinese-vs-como/', 'Udinese', 'Como',
+         SA + 'udinese.svg', SA + 'como.svg', '18:30', None, None, 'Preview →'),
+    card('/sports/serie-a/matches/genoa-vs-napoli/', 'Genoa', 'Napoli',
+         SA + 'genoa.svg', SA + 'napoli.svg', '20:45', None, None, 'Preview →'),
+    card('/sports/serie-a/matches/parma-vs-cagliari/', 'Parma', 'Cagliari',
+         SA + 'parma.svg', SA + 'cagliari.svg', '20:45', None, None, 'Preview →'),
+])
+
+l1_cards = ''.join([
+    card('/sports/ligue-1/matches/lens-vs-auxerre/', 'RC Lens', 'AJ Auxerre',
+         L1 + 'lens.webp', L1 + 'auxerre.webp', '17:15', None, None, 'Preview →'),
+    card('/sports/ligue-1/matches/le-mans-vs-brest/', 'Le Mans FC', 'Stade Brestois',
+         L1 + 'le-mans.webp', L1 + 'brest.webp', '20:45', None, None, 'Preview →'),
+    card('/sports/ligue-1/matches/nice-vs-lorient/', 'OGC Nice', 'FC Lorient',
+         L1 + 'nice.webp', L1 + 'lorient.webp', '20:45', None, None, 'Preview →'),
+    card('/sports/ligue-1/matches/toulouse-vs-lyon/', 'Toulouse FC', 'Olympique Lyonnais',
+         L1 + 'toulouse.webp', L1 + 'lyon.webp', '20:45', None, None, 'Preview →'),
+    card('/sports/ligue-1/matches/troyes-vs-paris-fc/', 'ESTAC Troyes', 'Paris FC',
+         L1 + 'troyes.webp', L1 + 'paris-fc.webp', '20:45', None, None, 'Preview →'),
+])
+
+MAIN = f'''<main class="sp-desk">
 <section class="sp-land" style="--sp-hero:url('/assets/img/sports/hero-landing.jpg')" aria-label="BRYME Sports">
   <div class="sp-land-bg" aria-hidden="true"></div>
   <div class="sp-land-inner">
@@ -29,19 +120,19 @@
 
     <div class="sp-lg">
       <div class="sp-lg-head"><b>Premier League</b><a href="/sports/premier-league/results/">All results →</a></div>
-      <div class="sp-score-grid"><a class="sp-scorecard" href="/sports/premier-league/matches/hull-vs-man-united/"><div class="sp-sc-top"><span class="sp-sc-pill ft">FT</span><span class="sp-sc-go">Result →</span></div><div><div class="sp-sc-row"><div class="sp-sc-club"><img src="/assets/img/sports/pl/hull.svg" alt="" width="32" height="32"><span>Hull City</span></div><b class="sp-sc-num">2</b></div><div class="sp-sc-row"><div class="sp-sc-club"><img src="/assets/img/sports/pl/man-united.svg" alt="" width="32" height="32"><span>Manchester United</span></div><b class="sp-sc-num">0</b></div></div></a><a class="sp-scorecard" href="/sports/premier-league/matches/everton-vs-crystal-palace/"><div class="sp-sc-top"><span class="sp-sc-pill ft">FT</span><span class="sp-sc-go">Result →</span></div><div><div class="sp-sc-row"><div class="sp-sc-club"><img src="/assets/img/sports/pl/everton.svg" alt="" width="32" height="32"><span>Everton</span></div><b class="sp-sc-num">2</b></div><div class="sp-sc-row"><div class="sp-sc-club"><img src="/assets/img/sports/pl/crystal-palace.svg" alt="" width="32" height="32"><span>Crystal Palace</span></div><b class="sp-sc-num">0</b></div></div></a><a class="sp-scorecard" href="/sports/premier-league/matches/ipswich-vs-sunderland/"><div class="sp-sc-top"><span class="sp-sc-pill ft">FT</span><span class="sp-sc-go">Result →</span></div><div><div class="sp-sc-row"><div class="sp-sc-club"><img src="/assets/img/sports/pl/ipswich.svg" alt="" width="32" height="32"><span>Ipswich Town</span></div><b class="sp-sc-num">2</b></div><div class="sp-sc-row"><div class="sp-sc-club"><img src="/assets/img/sports/pl/sunderland.svg" alt="" width="32" height="32"><span>Sunderland</span></div><b class="sp-sc-num">1</b></div></div></a><a class="sp-scorecard" href="/sports/premier-league/matches/nottingham-forest-vs-leeds/"><div class="sp-sc-top"><span class="sp-sc-pill ft">FT</span><span class="sp-sc-go">Result →</span></div><div><div class="sp-sc-row"><div class="sp-sc-club"><img src="/assets/img/sports/pl/nottingham-forest.svg" alt="" width="32" height="32"><span>Nott&#x27;m Forest</span></div><b class="sp-sc-num">0</b></div><div class="sp-sc-row"><div class="sp-sc-club"><img src="/assets/img/sports/pl/leeds.svg" alt="" width="32" height="32"><span>Leeds United</span></div><b class="sp-sc-num">1</b></div></div></a><a class="sp-scorecard" href="/sports/premier-league/matches/brentford-vs-tottenham/"><div class="sp-sc-top"><span class="sp-sc-pill ko">17:30</span><span class="sp-sc-go">Preview →</span></div><div><div class="sp-sc-row"><div class="sp-sc-club"><img src="/assets/img/sports/pl/brentford.svg" alt="" width="32" height="32"><span>Brentford</span></div><span class="sp-sc-num muted">–</span></div><div class="sp-sc-row"><div class="sp-sc-club"><img src="/assets/img/sports/pl/tottenham.svg" alt="" width="32" height="32"><span>Tottenham</span></div><span class="sp-sc-num muted">–</span></div></div></a></div>
+      <div class="sp-score-grid">{pl_cards}</div>
     </div>
     <div class="sp-lg">
       <div class="sp-lg-head"><b>La Liga</b><a href="/sports/la-liga/fixtures/">Fixtures →</a></div>
-      <div class="sp-score-grid"><a class="sp-scorecard" href="/sports/la-liga/matches/athletic-bilbao-vs-sevilla/"><div class="sp-sc-top"><span class="sp-sc-pill ko">17:00</span><span class="sp-sc-go">Preview →</span></div><div><div class="sp-sc-row"><div class="sp-sc-club"><img src="/assets/img/sports/ll/athletic.png" alt="" width="32" height="32"><span>Athletic Club</span></div><span class="sp-sc-num muted">–</span></div><div class="sp-sc-row"><div class="sp-sc-club"><img src="/assets/img/sports/ll/sevilla.png" alt="" width="32" height="32"><span>Sevilla</span></div><span class="sp-sc-num muted">–</span></div></div></a><a class="sp-scorecard" href="/sports/la-liga/matches/valencia-vs-celta-vigo/"><div class="sp-sc-top"><span class="sp-sc-pill ko">19:30</span><span class="sp-sc-go">Preview →</span></div><div><div class="sp-sc-row"><div class="sp-sc-club"><img src="/assets/img/sports/ll/valencia.png" alt="" width="32" height="32"><span>Valencia</span></div><span class="sp-sc-num muted">–</span></div><div class="sp-sc-row"><div class="sp-sc-club"><img src="/assets/img/sports/ll/celta.png" alt="" width="32" height="32"><span>Celta Vigo</span></div><span class="sp-sc-num muted">–</span></div></div></a><a class="sp-scorecard" href="/sports/la-liga/matches/espanyol-vs-real-madrid/"><div class="sp-sc-top"><span class="sp-sc-pill ko">21:30</span><span class="sp-sc-go">Preview →</span></div><div><div class="sp-sc-row"><div class="sp-sc-club"><img src="/assets/img/sports/ll/espanyol.png" alt="" width="32" height="32"><span>Espanyol</span></div><span class="sp-sc-num muted">–</span></div><div class="sp-sc-row"><div class="sp-sc-club"><img src="/assets/img/sports/ll/real-madrid.png" alt="" width="32" height="32"><span>Real Madrid</span></div><span class="sp-sc-num muted">–</span></div></div></a></div>
+      <div class="sp-score-grid">{ll_cards}</div>
     </div>
     <div class="sp-lg">
       <div class="sp-lg-head"><b>Serie A</b><a href="/sports/serie-a/fixtures/">Fixtures →</a></div>
-      <div class="sp-score-grid"><a class="sp-scorecard" href="/sports/serie-a/matches/inter-vs-monza/"><div class="sp-sc-top"><span class="sp-sc-pill ko">18:30</span><span class="sp-sc-go">Preview →</span></div><div><div class="sp-sc-row"><div class="sp-sc-club"><img src="/assets/img/sports/sa/inter.svg" alt="" width="32" height="32"><span>Inter Milan</span></div><span class="sp-sc-num muted">–</span></div><div class="sp-sc-row"><div class="sp-sc-club"><img src="/assets/img/sports/sa/monza.svg" alt="" width="32" height="32"><span>Monza</span></div><span class="sp-sc-num muted">–</span></div></div></a><a class="sp-scorecard" href="/sports/serie-a/matches/udinese-vs-como/"><div class="sp-sc-top"><span class="sp-sc-pill ko">18:30</span><span class="sp-sc-go">Preview →</span></div><div><div class="sp-sc-row"><div class="sp-sc-club"><img src="/assets/img/sports/sa/udinese.svg" alt="" width="32" height="32"><span>Udinese</span></div><span class="sp-sc-num muted">–</span></div><div class="sp-sc-row"><div class="sp-sc-club"><img src="/assets/img/sports/sa/como.svg" alt="" width="32" height="32"><span>Como</span></div><span class="sp-sc-num muted">–</span></div></div></a><a class="sp-scorecard" href="/sports/serie-a/matches/genoa-vs-napoli/"><div class="sp-sc-top"><span class="sp-sc-pill ko">20:45</span><span class="sp-sc-go">Preview →</span></div><div><div class="sp-sc-row"><div class="sp-sc-club"><img src="/assets/img/sports/sa/genoa.svg" alt="" width="32" height="32"><span>Genoa</span></div><span class="sp-sc-num muted">–</span></div><div class="sp-sc-row"><div class="sp-sc-club"><img src="/assets/img/sports/sa/napoli.svg" alt="" width="32" height="32"><span>Napoli</span></div><span class="sp-sc-num muted">–</span></div></div></a><a class="sp-scorecard" href="/sports/serie-a/matches/parma-vs-cagliari/"><div class="sp-sc-top"><span class="sp-sc-pill ko">20:45</span><span class="sp-sc-go">Preview →</span></div><div><div class="sp-sc-row"><div class="sp-sc-club"><img src="/assets/img/sports/sa/parma.svg" alt="" width="32" height="32"><span>Parma</span></div><span class="sp-sc-num muted">–</span></div><div class="sp-sc-row"><div class="sp-sc-club"><img src="/assets/img/sports/sa/cagliari.svg" alt="" width="32" height="32"><span>Cagliari</span></div><span class="sp-sc-num muted">–</span></div></div></a></div>
+      <div class="sp-score-grid">{sa_cards}</div>
     </div>
     <div class="sp-lg">
       <div class="sp-lg-head"><b>Ligue 1</b><a href="/sports/ligue-1/fixtures/">Fixtures →</a></div>
-      <div class="sp-score-grid"><a class="sp-scorecard" href="/sports/ligue-1/matches/lens-vs-auxerre/"><div class="sp-sc-top"><span class="sp-sc-pill ko">17:15</span><span class="sp-sc-go">Preview →</span></div><div><div class="sp-sc-row"><div class="sp-sc-club"><img src="/assets/img/sports/l1/lens.webp" alt="" width="32" height="32"><span>RC Lens</span></div><span class="sp-sc-num muted">–</span></div><div class="sp-sc-row"><div class="sp-sc-club"><img src="/assets/img/sports/l1/auxerre.webp" alt="" width="32" height="32"><span>AJ Auxerre</span></div><span class="sp-sc-num muted">–</span></div></div></a><a class="sp-scorecard" href="/sports/ligue-1/matches/le-mans-vs-brest/"><div class="sp-sc-top"><span class="sp-sc-pill ko">20:45</span><span class="sp-sc-go">Preview →</span></div><div><div class="sp-sc-row"><div class="sp-sc-club"><img src="/assets/img/sports/l1/le-mans.webp" alt="" width="32" height="32"><span>Le Mans FC</span></div><span class="sp-sc-num muted">–</span></div><div class="sp-sc-row"><div class="sp-sc-club"><img src="/assets/img/sports/l1/brest.webp" alt="" width="32" height="32"><span>Stade Brestois</span></div><span class="sp-sc-num muted">–</span></div></div></a><a class="sp-scorecard" href="/sports/ligue-1/matches/nice-vs-lorient/"><div class="sp-sc-top"><span class="sp-sc-pill ko">20:45</span><span class="sp-sc-go">Preview →</span></div><div><div class="sp-sc-row"><div class="sp-sc-club"><img src="/assets/img/sports/l1/nice.webp" alt="" width="32" height="32"><span>OGC Nice</span></div><span class="sp-sc-num muted">–</span></div><div class="sp-sc-row"><div class="sp-sc-club"><img src="/assets/img/sports/l1/lorient.webp" alt="" width="32" height="32"><span>FC Lorient</span></div><span class="sp-sc-num muted">–</span></div></div></a><a class="sp-scorecard" href="/sports/ligue-1/matches/toulouse-vs-lyon/"><div class="sp-sc-top"><span class="sp-sc-pill ko">20:45</span><span class="sp-sc-go">Preview →</span></div><div><div class="sp-sc-row"><div class="sp-sc-club"><img src="/assets/img/sports/l1/toulouse.webp" alt="" width="32" height="32"><span>Toulouse FC</span></div><span class="sp-sc-num muted">–</span></div><div class="sp-sc-row"><div class="sp-sc-club"><img src="/assets/img/sports/l1/lyon.webp" alt="" width="32" height="32"><span>Olympique Lyonnais</span></div><span class="sp-sc-num muted">–</span></div></div></a><a class="sp-scorecard" href="/sports/ligue-1/matches/troyes-vs-paris-fc/"><div class="sp-sc-top"><span class="sp-sc-pill ko">20:45</span><span class="sp-sc-go">Preview →</span></div><div><div class="sp-sc-row"><div class="sp-sc-club"><img src="/assets/img/sports/l1/troyes.webp" alt="" width="32" height="32"><span>ESTAC Troyes</span></div><span class="sp-sc-num muted">–</span></div><div class="sp-sc-row"><div class="sp-sc-club"><img src="/assets/img/sports/l1/paris-fc.webp" alt="" width="32" height="32"><span>Paris FC</span></div><span class="sp-sc-num muted">–</span></div></div></a></div>
+      <div class="sp-score-grid">{l1_cards}</div>
     </div>
     <div class="sp-lg">
       <div class="sp-lg-head"><b>Bundesliga</b><a href="/sports/bundesliga/fixtures/">Fixtures →</a></div>
@@ -176,11 +267,47 @@
     <a class="vchip vchip-tech" href="/tech/"><span class="vchip-emoji">🤖</span><span class="vchip-name">Tech &amp; AI</span><span class="vchip-tag">Practical tools and tutorials</span></a>
   </div>
 </div></section>
-</main><nav class="mobile-nav"><a href="/"><span class="mn-ico">🏠</span>Home</a><a href="/entertainment/"><span class="mn-ico">🎬</span>Entertain</a><a href="/sports/" class="active"><span class="mn-ico">⚽</span>Sports</a><a href="/make-money/"><span class="mn-ico">💰</span>Money</a><a href="/tech/"><span class="mn-ico">🤖</span>Tech</a><a href="/search/"><span class="mn-ico">🔍</span>Search</a></nav><footer class="footer"><div class="shell"><div class="footer-grid">
-  <div class="footer-brand"><a class="brand" href="/">BRY<b>ME</b></a><p>Discover what you love. Learn what you need. Find what's next.</p></div>
-  <nav class="footer-col" aria-label="Explore"><h3>Verticals</h3><a href="/entertainment/">🎬 Entertainment</a><a href="/sports/">⚽ Sports</a><a href="/make-money/">💰 Make Money</a><a href="/tech/">🤖 Tech &amp; AI</a></nav>
-  <nav class="footer-col" aria-label="Explore"><h3>Entertainment</h3><a href="/trending/">What's Trending</a><a href="/movies/">Movies</a><a href="/series/">Series</a><a href="/anime/">Anime</a><a href="/articles/">Articles</a><a href="/genres/">Genres</a></nav>
-  <nav class="footer-col" aria-label="Information"><h3>Information</h3><a href="/about/">About</a><a href="/contact/">Contact</a><a href="/editorial-policy/">Editorial Policy</a></nav>
-  <nav class="footer-col" aria-label="Legal"><h3>Legal</h3><a href="/privacy/">Privacy Policy</a><a href="/terms/">Terms of Use</a><a href="/disclaimer/">Disclaimer</a><a href="/copyright/">Copyright / DMCA</a></nav>
-</div>
-<p class="footer-note">BRYME · Discover what you love. Learn what you need. Find what's next. Trailer links lead to YouTube and viewing links lead to third parties.<small>Trending Now is editorially curated by BRYME — it is not live traffic data. Popular and Editor's Picks are independent rankings. Real user analytics will replace trending once the site has enough traffic. · Build 2026-08-21 20:29 UTC</small></div></footer><script>window.BRYME_BASE=''</script><script src="/assets/site-app.js"></script></body></html>
+</main>'''
+
+
+def build():
+    page = ROOT / 'sports' / 'index.html'
+    raw = page.read_text(encoding='utf-8')
+    i = raw.find('<main')
+    j = raw.find('</main>')
+    if i < 0 or j < 0:
+        raise SystemExit('could not find main in sports/index.html')
+    head, tail = raw[:i], raw[j + len('</main>'):]
+    head = re.sub(
+        r'<link rel="preload" as="image" href="[^"]*" fetchpriority="high">',
+        '<link rel="preload" as="image" href="/assets/img/sports/hero-landing.jpg" fetchpriority="high">',
+        head,
+        count=1,
+    )
+    if 'hero-landing.jpg' not in head:
+        head = head.replace(
+            '</head>',
+            '<link rel="preload" as="image" href="/assets/img/sports/hero-landing.jpg" fetchpriority="high"></head>',
+            1,
+        )
+    # Tighten the sports hub title/description slightly — still honest, still the same URL.
+    head = re.sub(
+        r'<title>.*?</title>',
+        '<title>BRYME Sports — Football Covered Properly | BRYME</title>',
+        head,
+        count=1,
+        flags=re.S,
+    )
+    desc = 'Football covered properly: Premier League results and previews, Champions League, La Liga, Serie A, Bundesliga and Ligue 1. Sourced scores only.'
+    head = re.sub(r'<meta name="description" content="[^"]*"', f'<meta name="description" content="{esc(desc)}"', head, count=1)
+    head = re.sub(r'<meta property="og:title" content="[^"]*"', '<meta property="og:title" content="BRYME Sports — Football Covered Properly | BRYME"', head, count=1)
+    head = re.sub(r'<meta property="og:description" content="[^"]*"', f'<meta property="og:description" content="{esc(desc)}"', head, count=1)
+    head = re.sub(r'<meta name="twitter:title" content="[^"]*"', '<meta name="twitter:title" content="BRYME Sports — Football Covered Properly | BRYME"', head, count=1)
+    head = re.sub(r'<meta name="twitter:description" content="[^"]*"', f'<meta name="twitter:description" content="{esc(desc)}"', head, count=1)
+    out = head + MAIN + tail
+    page.write_text(out, encoding='utf-8')
+    print('sports hub rebuilt', len(out), 'scorecards', out.count('sp-scorecard'))
+
+
+if __name__ == '__main__':
+    build()

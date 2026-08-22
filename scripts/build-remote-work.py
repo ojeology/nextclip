@@ -107,7 +107,7 @@ def build():
     head = re.sub(r'<title>.*?</title>', f'<title>{esc(title)}</title>', head, count=1, flags=re.S)
     head = re.sub(r'<meta name="description" content="[^"]*"', f'<meta name="description" content="{esc(meta)}"', head, count=1)
     head = re.sub(r'rel="canonical" href="[^"]*"', 'rel="canonical" href="https://bryme.onrender.com/make-money/remote-work/"', head, count=1)
-    head = re.sub(r'<meta property="og:url" content="[^"]*"', 'meta property="og:url" content="https://bryme.onrender.com/make-money/remote-work/"', head, count=1)
+    head = re.sub(r'<meta property="og:url" content="[^"]*"', '<meta property="og:url" content="https://bryme.onrender.com/make-money/remote-work/"', head, count=1)
     head = re.sub(r'<meta property="og:title" content="[^"]*"', f'<meta property="og:title" content="{esc(title)}"', head, count=1)
     head = re.sub(r'<meta name="twitter:title" content="[^"]*"', f'<meta name="twitter:title" content="{esc(title)}"', head, count=1)
     head = re.sub(r'<meta property="og:description" content="[^"]*"', f'<meta property="og:description" content="{esc(meta)}"', head, count=1)

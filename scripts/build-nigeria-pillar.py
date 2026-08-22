@@ -116,7 +116,7 @@ def build():
     head = re.sub(r'<meta name="twitter:title" content="[^"]*"', f'<meta name="twitter:title" content="{esc(title)}"', head, count=1)
     head = re.sub(r'<meta property="og:description" content="[^"]*"', f'<meta property="og:description" content="{esc(meta)}"', head, count=1)
     head = re.sub(r'<meta name="twitter:description" content="[^"]*"', f'<meta name="twitter:description" content="{esc(meta)}"', head, count=1)
-    head = re.sub(r'<meta property="og:url" content="[^"]*"', 'meta property="og:url" content="https://bryme.onrender.com/make-money/make-money-online-nigeria/"', head, count=1)
+    head = re.sub(r'<meta property="og:url" content="[^"]*"', '<meta property="og:url" content="https://bryme.onrender.com/make-money/make-money-online-nigeria/"', head, count=1)
     # swap JSON-LD
     if '<script type="application/ld+json">' in head:
         head = re.sub(r'<script type="application/ld\+json">.*?</script>', f'<script type="application/ld+json">{ld}</script>', head, count=1, flags=re.S)
