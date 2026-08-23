@@ -661,7 +661,9 @@ def render_team_page(team: dict, ctx: dict) -> str:
                     f'<header class="mwc-story-head"><p class="eyebrow">Matchweek {mw} complete</p>'
                     f"<h3>{esc(story.get('headline') or f'Matchweek {mw}')}</h3>"
                     f'<p class="mwc-resultline">{esc(story.get("resultLine") or sub)}</p>'
-                    f'<p class="mwc-jump">Match report: <a href="{esc(done[-1]["href"])}">{esc(done[-1]["homeName"])} vs {esc(done[-1]["awayName"])}</a></p></header>'
+                    f'<p class="mwc-jump">Match report: <a href="{esc(done[-1]["href"])}">{esc(done[-1]["homeName"])} vs {esc(done[-1]["awayName"])}</a>'
+                    f'{(" · <a href=\"" + esc(story.get("comicUrl")) + "\">Open the BRYME Football Comic</a>") if story.get("comicUrl") else ""}'
+                    f"</p></header>"
                     f'{render_panels(story, art)}</article>'
                 )
                 archive.append(
