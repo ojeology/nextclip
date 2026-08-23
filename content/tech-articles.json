@@ -1072,5 +1072,93 @@
       }
     ],
     "sourcesCheckedOn": "2026-08-23"
+  },
+  {
+    "id": "signal-vs-whatsapp",
+    "slug": "signal-vs-whatsapp",
+    "title": "Signal vs WhatsApp: Free, and What That Word Means",
+    "seoTitle": "Signal vs WhatsApp: Free, No Ads, No Tracking",
+    "excerpt": "Signal’s official support page: free, no ads, no affiliate marketers, no tracking. WhatsApp is also free to message. Those are not the same product. I opened Signal’s own cost page on 23 August 2026.",
+    "category": "Android Apps",
+    "categorySlug": "android-apps",
+    "tags": [
+      "signal",
+      "whatsapp",
+      "privacy",
+      "android"
+    ],
+    "relatedMovieSlugs": [],
+    "status": "published",
+    "author": "Ibrahim Sodiq",
+    "publishedAt": "2026-08-23",
+    "updatedAt": "2026-08-23",
+    "readingTime": "6 min read",
+    "content": [
+      {
+        "heading": "Both are free. Only one writes the sentence.",
+        "body": "People ask for a WhatsApp alternative the way they ask for a Spotify alternative: they want the same job without the company attached.\n\nSignal’s official cost page, today: “Signal is free to use and there are no ads, no affiliate marketers, and no tracking in Signal.” It is an independent nonprofit, funded by grants and donations. Registration needs an SMS or call. After that it uses mobile data or Wi‑Fi, which your carrier may charge for. Signal does not charge for the app.\n\nWhatsApp is also free to install and message. I am not going to invent a WhatsApp subscription. Meta’s business is not “charge you ₦500 a month for chat.” The comparison is who sees the graph of who you talk to, and whether the app is funded by ads. Signal puts that in writing. I am not going to paraphrase WhatsApp’s privacy policy from memory."
+      },
+      {
+        "heading": "What Signal is not",
+        "body": "It is not a drop-in status-and-channels clone. If your family lives in WhatsApp groups, broadcast lists and business catalogues, Signal will feel empty until they move. Official support even has a page titled “Does my contact need Signal?” — both sides need the app.\n\nIt is not a second phone number product. You register with a number. Your carrier may bill the registration SMS.\n\nIt is not a money app. There is no official “Signal pays you” angle. This is a tech page, not a Make Money listing."
+      },
+      {
+        "heading": "How I would choose, labelled as opinion",
+        "body": "If I need one private thread with a person who will install another app, I would use Signal.\n\nIf the group is already on WhatsApp and will not move, I would stay there and stop pretending a blog post migrates a family.\n\nI would not install a “WhatsApp Plus” APK. That is how you donate the chat.\n\nI have not audited Signal’s protocol for this page. “No tracking” is their published claim. Open their cost page if that sentence is why you are switching."
+      }
+    ],
+    "sources": [
+      {
+        "name": "Signal Support — Cost to use Signal",
+        "url": "https://support.signal.org/hc/en-us/articles/5286774014362-Cost-to-use-Signal"
+      },
+      {
+        "name": "Signal — Speak Freely",
+        "url": "https://signal.org/"
+      }
+    ],
+    "sourcesCheckedOn": "2026-08-23"
+  },
+  {
+    "id": "notion-free-plan",
+    "slug": "notion-free-plan",
+    "title": "Notion’s Free Plan: $0, 5MB Files, 7-Day History",
+    "seoTitle": "Notion Free Plan: $0, 5MB Files, 7-Day History",
+    "excerpt": "Notion’s official pricing page: Free is $0 per member. Unlimited pages for one person. File uploads cap at 5MB. Page history is 7 days. Plus is $10. Business is $20. That is the cheap notes alternative I could source.",
+    "category": "Productivity",
+    "categorySlug": "productivity",
+    "tags": [
+      "notion",
+      "notes",
+      "productivity",
+      "alternatives"
+    ],
+    "relatedMovieSlugs": [],
+    "status": "published",
+    "author": "Ibrahim Sodiq",
+    "publishedAt": "2026-08-23",
+    "updatedAt": "2026-08-23",
+    "readingTime": "7 min read",
+    "content": [
+      {
+        "heading": "Free is real. Unlimited is not.",
+        "body": "Notion sells itself as the one tool to run a company. The useful question for this site is the free row.\n\nOfficial pricing page, 23 August 2026: Free is $0 per member per month, for individuals to organise personal projects. Included: a trial of Notion AI, basic forms, basic sites, Notion Calendar, databases.\n\nThe comparison table is the part listicles skip. Pages and blocks: unlimited for individuals, limited once two or more members share the workspace. File uploads on Free: up to 5MB each. Page history: 7 days. External guests: 10. Offline: you choose pages to download.\n\nPlus is $10 per member per month: unlimited collaborative blocks, unlimited file uploads, 30-day history, unlimited guests, custom sites, unlimited charts, basic connections.\n\nBusiness is $20 per member: Notion Agent, AI meeting notes, SSO, private teamspaces, premium connections.\n\nEnterprise is custom. Custom Agents: free to try, then $10 per 1,000 monthly Notion credits."
+      },
+      {
+        "heading": "What you are not buying",
+        "body": "Free Notion is not a second brain with infinite attachments. A 6MB PDF will not go up. A page you edited eight days ago will not roll back on Free.\n\nIt is also not “ChatGPT in a wiki.” AI is a trial on Free and Plus. The $20 Business plan is where Notion Agent is listed as included.\n\nGoogle Docs remains free with a Google account and a different job: documents, not databases. I am not ranking them. I am saying Notion’s free row has printed limits."
+      },
+      {
+        "heading": "How I would choose, labelled as opinion",
+        "body": "If I want a personal wiki of text pages, Free is enough.\n\nIf two people need to share a living workspace, I would read the “limited for 2+ members” line before I invited anyone. That is the upsell.\n\nIf I only need a to-do list, I would not open another SaaS account.\n\nI have not paid for Notion Plus. I am quoting their pricing table, not a month of invoices."
+      }
+    ],
+    "sources": [
+      {
+        "name": "Notion — Pricing (Free $0, Plus $10, Business $20)",
+        "url": "https://www.notion.com/pricing"
+      }
+    ],
+    "sourcesCheckedOn": "2026-08-23"
   }
 ]
