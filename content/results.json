@@ -142,6 +142,39 @@
         "url": "https://www.bbc.com/sport/football/live/cj75g01qn51dt"
       },
       "verifiedOn": "2026-08-22"
+    },
+    "brighton-vs-aston-villa": {
+      "homeScore": 4,
+      "awayScore": 0,
+      "status": "FT",
+      "playedOn": "2026-08-23",
+      "source": {
+        "name": "BBC Sport — Brighton & Hove Albion v Aston Villa",
+        "url": "https://www.bbc.com/sport/football/premier-league/scores-fixtures"
+      },
+      "verifiedOn": "2026-08-23"
+    },
+    "man-city-vs-bournemouth": {
+      "homeScore": 2,
+      "awayScore": 1,
+      "status": "FT",
+      "playedOn": "2026-08-23",
+      "source": {
+        "name": "BBC Sport — Manchester City v AFC Bournemouth",
+        "url": "https://www.bbc.com/sport/football/premier-league/scores-fixtures"
+      },
+      "verifiedOn": "2026-08-23"
+    },
+    "newcastle-vs-liverpool": {
+      "homeScore": 2,
+      "awayScore": 2,
+      "status": "FT",
+      "playedOn": "2026-08-23",
+      "source": {
+        "name": "BBC Sport — Newcastle United v Liverpool",
+        "url": "https://www.bbc.com/sport/football/premier-league/scores-fixtures"
+      },
+      "verifiedOn": "2026-08-23"
     }
   },
   "la-liga": {
@@ -300,6 +333,28 @@
         "url": "https://www.bbc.com/sport/football/live/cmwyjzndv4xnt"
       },
       "verifiedOn": "2026-08-22"
+    },
+    "atletico-madrid-vs-villarreal": {
+      "homeScore": 2,
+      "awayScore": 2,
+      "status": "FT",
+      "playedOn": "2026-08-23",
+      "source": {
+        "name": "BBC Sport — Atlético Madrid v Villarreal",
+        "url": "https://www.bbc.com/sport/football/spanish-la-liga/scores-fixtures"
+      },
+      "verifiedOn": "2026-08-23"
+    },
+    "getafe-vs-racing": {
+      "homeScore": 1,
+      "awayScore": 0,
+      "status": "FT",
+      "playedOn": "2026-08-23",
+      "source": {
+        "name": "BBC Sport — Getafe v Racing de Santander",
+        "url": "https://www.bbc.com/sport/football/spanish-la-liga/scores-fixtures"
+      },
+      "verifiedOn": "2026-08-23"
     }
   },
   "serie-a": {
@@ -397,6 +452,28 @@
         "url": "https://www.bbc.com/sport/football/live/cm2k7wpnjygnt"
       },
       "verifiedOn": "2026-08-22"
+    },
+    "frosinone-vs-juventus": {
+      "homeScore": 0,
+      "awayScore": 1,
+      "status": "FT",
+      "playedOn": "2026-08-23",
+      "source": {
+        "name": "BBC Sport — Frosinone v Juventus",
+        "url": "https://www.bbc.com/sport/football/italian-serie-a/scores-fixtures"
+      },
+      "verifiedOn": "2026-08-23"
+    },
+    "venezia-vs-lecce": {
+      "homeScore": 0,
+      "awayScore": 1,
+      "status": "FT",
+      "playedOn": "2026-08-23",
+      "source": {
+        "name": "BBC Sport — Venezia v Lecce",
+        "url": "https://www.bbc.com/sport/football/italian-serie-a/scores-fixtures"
+      },
+      "verifiedOn": "2026-08-23"
     }
   },
   "bundesliga": {},
