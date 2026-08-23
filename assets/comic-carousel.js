@@ -1,6 +1,5 @@
-/* BRYME Match Comic — FULL-BLEED cinematic carousel, 8 beats, Naija Pidgin banter.
-   ONE bubble at a time. VOICEOVER: each state narrates; sound toggle (default off).
-   BRYME fingerprint + Matchday nav. Auto-builds into #mc-hero. */
+/* BRYME Match Comic — FULL-BLEED cinematic carousel, 12 beats, Naija Pidgin banter.
+   ONE bubble at a time. VOICEOVER per beat. BRYME fingerprint + Matchday nav. */
 (function(){
   var DIR="/assets/img/sports/comics/hull-united-mw1/";
   var AUDIO_DIR="/assets/audio/comic/";
@@ -20,6 +19,16 @@
      ban:[["🎙️ Commentator","United dey find tiki-taka, Hull dey find trouble! Tzolakis catch ball like landlord wey come collect house rent!","c"],
           ["Mbeumo","How this goalkeeper take catch that one?! E be like say he get three hands!","u"],
           ["Tzolakis","Welcome to Hull, my brother. Carry your ball go front!","h"]]},
+    {img:"04.jpg",audio:"hu-c1.mp3",tag:"16' · Corner",min:"16'",h:0,a:0,st:"live",title:"Corner kick — setup dey load",
+     pos:[[28,56],[8,62],[54,60]],
+     ban:[["🎙️ Commentator","Corner kick to Hull! Setup dey load — everybody enter the box!","c"],
+          ["Slater","Make I put am for the near post, make somebody finish am!","h"],
+          ["United defender","Mark everybody tight! No space!","u"]]},
+    {img:"05.jpg",audio:"hu-c2.mp3",tag:"17' · Header",min:"17'",h:0,a:0,st:"live",title:"McBurnie head am… saved!",
+     pos:[[28,56],[8,62],[54,60]],
+     ban:[["🎙️ Commentator","McBurnie rise, head am well! But Lammens parry commot — saved!","c"],
+          ["McBurnie","I head am correct! Shey e enter? No?! Omo!","h"],
+          ["Lammens","No be today! I don save am!","u"]]},
     {img:"06.jpg",audio:"hu-04.mp3",tag:"GOAL · 17'",min:"17'",h:1,a:0,st:"live",title:"AJAYI scatter net! 1–0!",
      pos:[[28,56],[8,62],[54,60]],
      ban:[["🎙️ Commentator","GOOOAL! Ajayi run enter box like debt collector, scatter net! Hull 1–0 United!","c"],
@@ -30,6 +39,16 @@
      ban:[["🎙️ Commentator","MKM Stadium don turn mad house! Nine years of waiting, e don pay!","c"],
           ["Ajayi","I don wait my whole career for this kind night. E choke!","h"],
           ["Home fan","I don tire to shout but I no go stop. Tigers!","f"]]},
+    {img:"08.jpg",audio:"hu-c3.mp3",tag:"34' · Yellow",min:"34'",h:1,a:0,st:"live",title:"Dorgu see yellow!",
+     pos:[[28,56],[8,62],[54,60]],
+     ban:[["🎙️ Commentator","Dorgu see yellow! The boy dey complain say he no even touch am!","c"],
+          ["Dorgu","Yellow?! Ref, I no even touch am well! Abeg!","u"],
+          ["Referee","Na card be that. No begging, my friend.","r"]]},
+    {img:"09.jpg",audio:"hu-c4.mp3",tag:"37' · Free kick",min:"37'",h:1,a:0,st:"live",title:"Danger dey load!",
+     pos:[[28,56],[8,62],[54,60]],
+     ban:[["🎙️ Commentator","Free kick to Hull for dangerous area o! Danger dey load!","c"],
+          ["Slater","Make I whip am inside, make tall man do the rest!","h"],
+          ["Bruno Fernandes","Wall, jump! Everybody jump!","u"]]},
     {img:"10.jpg",audio:"hu-06.mp3",tag:"GOAL · 38'",min:"38'",h:2,a:0,st:"live",title:"MENDY fly! 2–0 o!",
      pos:[[28,56],[8,62],[54,60]],
      ban:[["🎙️ Commentator","Lightning strikes twice! Mendy rise like helicopter for set-piece—2–0 o!","c"],
@@ -48,7 +67,7 @@
   ];
   var PILL={build:"BUILD-UP",live:"LIVE",ht:"HALF TIME",ft:"FULL TIME"};
   var POS=[[28,56],[8,62],[54,60]];
-  var STEP=3700, VISIBLE=3000, LEAD=500;   // ONE bubble at a time (STEP > VISIBLE)
+  var STEP=3700, VISIBLE=3000, LEAD=500;   // ONE bubble at a time
   function init(){
     var root=document.getElementById("mc-hero"); if(!root) return;
     root.className="mc";
@@ -89,7 +108,6 @@
     var bars=[].slice.call(barsEl.children).map(function(b){return b.firstChild;});
     dots.forEach(function(b,i){b.addEventListener("click",function(){show(i,i>idx?"next":"prev");});});
 
-    // ---- audio (voiceover) ----
     var audio=document.createElement("audio"); audio.preload="auto"; audio.setAttribute("aria-hidden","true"); root.appendChild(audio);
     var muted=true, audioOK=true;
     audio.addEventListener("ended",function(){ if(playing&&!hover&&!muted&&audioOK) show(idx+1,"next"); });
