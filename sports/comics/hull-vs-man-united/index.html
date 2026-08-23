@@ -3,126 +3,142 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#08090b">
-<title>Hull City 2–0 Manchester United — BRYME Football Comic</title>
-<meta name="description" content="Original BRYME eight-panel comic of Hull City 2–0 Manchester United at the MKM Stadium, 22 August 2026. Big autoplay carousel. Plain kits — no badges, no names on shirts, no broadcast stills.">
+<meta name="theme-color" content="#070809">
+<title>Hull City 2–0 Manchester United — BRYME Match Comic</title>
+<meta name="description" content="Watch Hull City 2–0 Manchester United as an original BRYME animated match comic: Hull's arrival, Ajayi 17, Mendy 38, the siege and full time. Plain kits only — no badges, no names on shirts, 100% original.">
 <link rel="canonical" href="https://bryme.onrender.com/sports/comics/hull-vs-man-united/">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="BRYME">
-<meta property="og:title" content="Hull City 2–0 Manchester United — BRYME Football Comic">
-<meta property="og:description" content="Eight cinematic panels in a big autoplay carousel. Hull's Premier League return. Ajayi 17, Mendy 38. Original artwork only, plain kits.">
+<meta property="og:title" content="Hull City 2–0 Manchester United — BRYME Match Comic">
+<meta property="og:description" content="Watch the match as an original BRYME animated comic. Hull's arrival to full time. Plain kits, no badges, 100% original.">
 <meta property="og:url" content="https://bryme.onrender.com/sports/comics/hull-vs-man-united/">
 <meta property="og:image" content="https://bryme.onrender.com/assets/img/sports/comics/hull-united-mw1/08-aftermath.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Hull City 2–0 Manchester United — BRYME Football Comic">
-<meta name="twitter:description" content="Eight cinematic panels. Original BRYME artwork. Plain kits — no badges, no photos.">
+<meta name="twitter:title" content="Hull City 2–0 Manchester United — BRYME Match Comic">
+<meta name="twitter:description" content="Original BRYME animated match comic. Plain kits, no badges.">
 <meta name="twitter:image" content="https://bryme.onrender.com/assets/img/sports/comics/hull-united-mw1/08-aftermath.jpg">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/assets/site.css">
 <style>
-/* Self-contained comic styles (render correctly even before site.css loads) */
-.bfc{--amber:#f0b429;--amber2:#ffce4a;--tiger:#111;--red:#c81d25;--gold:#f0b429;
-  --line:rgba(255,255,255,.10);--bg:#0b0d10;--panel:#101318;--text:#e7ebf0;--muted:#9aa1a9;
-  background:var(--bg);color:var(--text)}
-.bfc *{box-sizing:border-box}
-.bfc-wrap{max-width:1100px;margin:0 auto;padding:18px 20px 80px}
-.bfc .td-crumb{font-size:13px;color:var(--muted);margin:6px 0 10px}
-.bfc .td-crumb a{color:var(--gold);text-decoration:none}
-.bfc-kicker{margin:10px 0 8px;font-size:12px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--amber)}
-.bfc-wrap h1{margin:0 0 8px;font-size:clamp(28px,6vw,52px);line-height:1.02;letter-spacing:-.03em;color:#fff}
-.bfc-score{margin:0 0 14px;font-size:clamp(20px,3vw,28px);font-weight:900;color:#fff}
-.bfc-lead{max-width:64ch;color:#c5cad1;margin:0 0 18px;line-height:1.6}
-.bfc-src{font-size:13px;color:var(--muted);margin:0 0 22px;line-height:1.6}
-.bfc-src a{color:var(--gold);font-weight:700}
-.bfc-facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin:6px 0 26px}
-.bfc-facts div{border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:var(--panel)}
-.bfc-facts b{display:block;font-size:18px;color:#fff}
-.bfc-facts span{color:var(--muted);font-size:12px}
+/* ============ Self-contained match-comic styles ============ */
+.mc{--amber:#f5a300;--amber2:#ffce4a;--red:#e23b3b;--ink:#0b0d10;--line:rgba(255,255,255,.12);
+  --txt:#eef1f5;--mut:#9aa1a9;background:var(--ink);color:var(--txt)}
+.mc *{box-sizing:border-box}
+.mc-wrap{max-width:1120px;margin:0 auto;padding:16px 18px 70px}
+.mc .td-crumb{font-size:13px;color:var(--mut);margin:6px 0 12px}
+.mc .td-crumb a{color:var(--amber);text-decoration:none}
+.mc-title{font-size:clamp(26px,5.4vw,44px);line-height:1.02;letter-spacing:-.02em;color:#fff;margin:2px 0 4px;font-weight:900}
+.mc-sub{color:var(--mut);font-size:14px;margin:0 0 16px;max-width:70ch;line-height:1.55}
+.mc-sub b{color:var(--amber2)}
 
-/* ===== Carousel ===== */
-.cc-hint{display:flex;align-items:center;gap:8px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 10px}
-.cc-hint b{color:var(--amber)}
-.cc{position:relative;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#000;
-  box-shadow:0 22px 64px rgba(0,0,0,.55);margin:0 0 6px}
-.cc-stage{position:relative;touch-action:pan-y}
-.cc-track{display:flex;transition:transform .6s cubic-bezier(.22,.61,.36,1);will-change:transform}
-.cc-slide{min-width:100%;position:relative}
-.cc-slide img{display:block;width:100%;height:auto;max-height:78vh;object-fit:contain;background:#000;user-select:none;-webkit-user-drag:none}
-.cc-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:4;width:52px;height:52px;border:0;border-radius:50%;
-  background:rgba(0,0,0,.5);color:#fff;font-size:30px;line-height:50px;text-align:center;cursor:pointer;
-  backdrop-filter:blur(4px);transition:background .2s,color .2s;display:flex;align-items:center;justify-content:center}
-.cc-arrow:hover,.cc-arrow:focus-visible{background:var(--amber);color:#000;outline:none}
-.cc-prev{left:14px}.cc-next{right:14px}
-.cc-progress{position:absolute;left:0;bottom:0;height:5px;width:100%;background:rgba(255,255,255,.12);z-index:4}
-.cc-progress span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--amber),var(--amber2))}
-.cc-count{position:absolute;top:14px;right:16px;z-index:4;background:rgba(0,0,0,.62);color:#fff;
-  font-weight:800;font-size:13px;padding:5px 12px;border-radius:20px;letter-spacing:.04em}
-.cc-tag{position:absolute;top:14px;left:16px;z-index:4;background:var(--amber);color:#000;font-weight:900;
-  font-size:12px;letter-spacing:.08em;padding:5px 12px;border-radius:20px;text-transform:uppercase}
-.cc-ctrl{display:flex;align-items:center;justify-content:center;gap:16px;padding:14px 14px;background:#0c0e12;border-top:1px solid var(--line)}
-.cc-dots{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
-.cc-dots button{width:11px;height:11px;border-radius:50%;border:0;background:rgba(255,255,255,.25);cursor:pointer;padding:0;transition:.2s}
-.cc-dots button:hover{background:rgba(255,255,255,.5)}
-.cc-dots button.on{background:var(--amber);transform:scale(1.3)}
-.cc-play{background:#1b1f26;color:#fff;border:1px solid var(--line);border-radius:30px;padding:8px 16px;
-  font-size:13px;font-weight:700;cursor:pointer;letter-spacing:.02em;white-space:nowrap}
-.cc-play:hover{border-color:var(--amber);color:var(--amber)}
+/* stories progress */
+.mc-bars{display:flex;gap:6px;margin:0 0 10px}
+.mc-bars i{flex:1;height:4px;border-radius:4px;background:rgba(255,255,255,.18);overflow:hidden}
+.mc-bars i span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--amber),var(--amber2))}
 
-/* Info synced under carousel */
-.cc-info{transition:opacity .18s ease;padding:4px 2px 0;min-height:130px}
-.cc-cap{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin:18px 0 8px}
-.cc-cap b{letter-spacing:.14em;text-transform:uppercase;font-size:12px;color:var(--amber)}
-.cc-cap span{color:var(--muted);font-size:14px}
-.cc-copy{color:var(--text);line-height:1.6;margin:0 0 12px;max-width:80ch}
-.cc-bubbles{display:flex;flex-wrap:wrap;gap:8px}
-.cc-bubbles q{display:inline-block;background:#f4f5f6;color:#111;border-radius:16px 16px 16px 4px;
-  padding:8px 13px;font-size:14px;font-weight:700;line-height:1.35;quotes:none}
-.cc-bubbles q i{display:block;font-style:normal;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#666;margin-bottom:2px}
-.bfc-note{border-top:1px solid var(--line);padding-top:16px;color:var(--muted);font-size:13px;line-height:1.6;margin-top:30px}
-.bfc-note a{color:var(--gold);font-weight:700}
-@media(max-width:640px){.cc-arrow{width:42px;height:42px;font-size:24px;line-height:42px}.cc-prev{left:8px}.cc-next{right:8px}}
+/* deck */
+.deck{position:relative;width:100%;aspect-ratio:16/9;background:#000;border-radius:18px;overflow:hidden;
+  border:1px solid var(--line);box-shadow:0 26px 70px rgba(0,0,0,.6)}
+.card{position:absolute;inset:0;opacity:0;transform:translateX(9%) scale(1.03);
+  transition:transform .62s cubic-bezier(.22,1,.36,1),opacity .5s ease;will-change:transform,opacity;pointer-events:none}
+.card.on{opacity:1;transform:translateX(0) scale(1);pointer-events:auto}
+.card.left{opacity:0;transform:translateX(-9%) scale(1.03)}
+.card.right{opacity:0;transform:translateX(9%) scale(1.03)}
+.card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
+.card.on img.kb{animation:kb 9s ease-out both}
+@keyframes kb{from{transform:scale(1.0)}to{transform:scale(1.09)}}
+.scrim-t{position:absolute;inset:0 0 auto 0;height:26%;background:linear-gradient(180deg,rgba(0,0,0,.7),transparent)}
+.scrim-b{position:absolute;inset:auto 0 0 0;height:60%;background:linear-gradient(0deg,rgba(0,0,0,.86) 8%,rgba(0,0,0,.35) 55%,transparent)}
+
+/* HUD */
+.hud-t{position:absolute;top:12px;left:12px;right:12px;z-index:3;display:flex;justify-content:space-between;align-items:flex-start;gap:10px;pointer-events:none}
+.bug{display:flex;align-items:center;gap:8px}
+.bug .lg{font-weight:900;letter-spacing:.04em;color:#fff;font-size:15px}
+.bug .lg b{color:var(--amber2)}
+.pill{display:inline-flex;align-items:center;gap:6px;background:rgba(0,0,0,.55);border:1px solid var(--line);
+  color:#fff;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:4px 9px;border-radius:20px;backdrop-filter:blur(4px)}
+.pill .dot{width:7px;height:7px;border-radius:50%;background:var(--red);box-shadow:0 0 8px var(--red)}
+.pill.live .dot{animation:blink 1s steps(2) infinite}
+.pill.ft{color:var(--amber2);border-color:var(--amber)}
+@keyframes blink{50%{opacity:.25}}
+.scorebug{display:flex;align-items:center;gap:8px;background:rgba(0,0,0,.6);border:1px solid var(--line);
+  border-radius:14px;padding:6px 10px;backdrop-filter:blur(4px);color:#fff;font-weight:900}
+.scorebug .t{font-size:11px;letter-spacing:.06em;display:flex;align-items:center;gap:5px}
+.scorebug .t.h .sw{width:9px;height:12px;border-radius:2px;background:repeating-linear-gradient(90deg,#111 0 3px,var(--amber) 3px 6px)}
+.scorebug .t.u .sw{width:9px;height:12px;border-radius:2px;background:var(--red)}
+.scorebug .s{font-size:17px;padding:0 4px}
+.scorebug .min{font-size:11px;color:var(--amber2);border-left:1px solid var(--line);padding-left:8px;letter-spacing:.04em}
+
+/* bottom meta + banter */
+.hud-b{position:absolute;left:0;right:0;bottom:0;z-index:3;padding:14px 14px 12px;pointer-events:none}
+.kick{font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--amber);margin:0 0 4px}
+.ctitle{font-size:clamp(18px,3.4vw,27px);font-weight:900;color:#fff;line-height:1.05;margin:0 0 7px;letter-spacing:-.01em;text-shadow:0 2px 12px rgba(0,0,0,.6)}
+.copy{color:#d7dbe1;font-size:13px;line-height:1.45;margin:0 0 10px;max-width:60ch}
+.ban{display:flex;flex-wrap:wrap;gap:7px}
+.ban q{display:inline-flex;flex-direction:column;background:#fff;color:#111;border-radius:14px 14px 14px 4px;
+  padding:6px 11px;font-size:13px;font-weight:700;line-height:1.3;quotes:none;max-width:80%;box-shadow:0 6px 16px rgba(0,0,0,.4)}
+.ban q i{font-style:normal;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:#888;margin-bottom:1px;font-weight:800}
+.ban q.h{background:linear-gradient(180deg,#ffce4a,#f5a300);color:#231500}
+.ban q.h i{color:#7a4a00}
+.ban q.u{background:#e23b3b;color:#fff}
+.ban q.u i{color:#ffd9d9}
+.ban q.r{background:#101318;color:#fff;border:1px solid var(--line)}
+.ban q.r i{color:var(--amber2)}
+.ban q.f{background:#fff;color:#111}
+.ban q.f i{color:#b25a00}
+
+/* arrows */
+.arr{position:absolute;top:50%;transform:translateY(-50%);z-index:4;width:46px;height:46px;border:0;border-radius:50%;
+  background:rgba(0,0,0,.45);color:#fff;font-size:24px;line-height:46px;text-align:center;cursor:pointer;backdrop-filter:blur(4px);
+  transition:.18s;display:flex;align-items:center;justify-content:center}
+.arr:hover,.arr:focus-visible{background:var(--amber);color:#000;outline:none}
+.arr.pv{left:12px}.arr.nx{right:12px}
+
+/* controls */
+.ctrl{display:flex;align-items:center;justify-content:center;gap:14px;padding:13px 8px 4px;flex-wrap:wrap}
+.dots{display:flex;gap:7px;flex-wrap:wrap;justify-content:center}
+.dots button{width:11px;height:11px;border-radius:50%;border:0;background:rgba(255,255,255,.25);cursor:pointer;padding:0;transition:.2s}
+.dots button:hover{background:rgba(255,255,255,.5)}
+.dots button.on{background:var(--amber);transform:scale(1.35)}
+.play{background:#16191e;color:#fff;border:1px solid var(--line);border-radius:30px;padding:8px 16px;font-size:13px;font-weight:800;cursor:pointer}
+.play:hover{border-color:var(--amber);color:var(--amber)}
+.cnt{font-size:12px;color:var(--mut);font-weight:800;letter-spacing:.04em}
+
+.mc-note{border-top:1px solid var(--line);margin-top:22px;padding-top:14px;color:var(--mut);font-size:13px;line-height:1.6}
+.mc-note a{color:var(--amber);font-weight:700}
+.mc-note b{color:#fff}
+@media(max-width:640px){
+  .arr{width:38px;height:38px;font-size:20px;line-height:38px}
+  .hud-b{padding:12px 12px 10px}
+  .ban q{font-size:12px;padding:5px 9px}
+  .scorebug .s{font-size:15px}
+}
 </style>
 <script type="application/ld+json">[{"@context":"https://schema.org","@type":"ComicStory","name":"Hull City 2–0 Manchester United","url":"https://bryme.onrender.com/sports/comics/hull-vs-man-united/","inLanguage":"en","about":"Hull City 2–0 Manchester United, 22 August 2026"},{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://bryme.onrender.com/"},{"@type":"ListItem","position":2,"name":"Sports","item":"https://bryme.onrender.com/sports/"},{"@type":"ListItem","position":3,"name":"Comics","item":"https://bryme.onrender.com/sports/comics/"},{"@type":"ListItem","position":4,"name":"Hull 2–0 United","item":"https://bryme.onrender.com/sports/comics/hull-vs-man-united/"}]}]</script>
 </head>
 <body data-nav="sports" class="team-desk">
 <header class="top"><div class="shell"><a class="brand" href="/">BRY<b>ME</b></a><nav class="topnav"><a href="/">Home</a><a href="/entertainment/">🎬 Entertainment</a><a href="/sports/" class="active">⚽ Sports</a><a href="/make-money/">💰 Make Money</a><a href="/tech/">🤖 Tech &amp; AI</a><a class="nav-search" href="/search/">Search</a></nav><div class="top-tools"><a class="header-search" href="/search/" aria-label="Search">Search</a></div></div></header>
-<main class="bfc-wrap bfc">
+<main class="mc-wrap mc">
   <div class="td-crumb"><a href="/">Home</a> / <a href="/sports/">Sports</a> / <a href="/sports/comics/">Comics</a> / Hull 2–0 United</div>
-  <p class="bfc-kicker">BRYME Football Comic</p>
-  <h1>The Tigers are back.</h1>
-  <p class="bfc-score">Hull City 2–0 Manchester United</p>
-  <p class="bfc-lead">MKM Stadium, Saturday 22 August 2026. Hull's first Premier League home night in nine years. Two centre-backs. Two set pieces. An original eight-panel comic in one big autoplay carousel — plain colour kits only, no badges, no names on shirts, no broadcast stills, no player photographs.</p>
-  <p class="bfc-src">Score and scorers confirmed via <a href="https://www.bbc.com/sport/football/live/cv629k5zr2jxt" rel="nofollow noopener">BBC Sport</a>. Cards, substitutions and 72% possession from the same weekend's published match records. Speech is fictional squad chatter, not quotes.</p>
 
-  <div class="bfc-facts">
-    <div><b>2–0</b><span>Full time</span></div>
-    <div><b>17'</b><span>Ajayi</span></div>
-    <div><b>38'</b><span>Mendy</span></div>
-    <div><b>72%</b><span>United possession</span></div>
-    <div><b>21</b><span>United shots</span></div>
-    <div><b>0</b><span>Red cards</span></div>
+  <h1 class="mc-title">Hull City 2–0 Manchester United</h1>
+  <p class="mc-sub"><b>Watch the match</b> as an original BRYME animated comic — from Hull's arrival to full-time pandemonium. Autoplay slides card-by-card. Plain colour kits only: no badges, no names on shirts, 100% original artwork.</p>
+
+  <div class="mc-bars" id="bars" aria-hidden="true"></div>
+
+  <div class="deck" id="deck" tabindex="0" aria-roledescription="slideshow" aria-label="Hull 2-0 Man United match comic">
+    <button class="arr pv" id="pv" aria-label="Previous">‹</button>
+    <button class="arr nx" id="nx" aria-label="Next">›</button>
+    <div id="cards"></div>
   </div>
 
-  <p class="cc-hint"><b>▶ Autoplay on</b> · tap arrows, dots or swipe · hover to pause</p>
-
-  <!-- ============ CAROUSEL ============ -->
-  <div class="cc" id="cc" tabindex="0" aria-roledescription="carousel" aria-label="Hull 2-0 Manchester United comic">
-    <div class="cc-stage" id="ccStage">
-      <span class="cc-tag" id="ccTag">Panel 1</span>
-      <span class="cc-count"><span id="ccCur">1</span> / 8</span>
-      <button class="cc-arrow cc-prev" id="ccPrev" aria-label="Previous panel">‹</button>
-      <div class="cc-track" id="ccTrack"></div>
-      <button class="cc-arrow cc-next" id="ccNext" aria-label="Next panel">›</button>
-      <div class="cc-progress" aria-hidden="true"><span id="ccProg"></span></div>
-    </div>
-    <div class="cc-ctrl">
-      <div class="cc-dots" id="ccDots"></div>
-      <button class="cc-play" id="ccPlay" aria-pressed="true">⏸ Pause</button>
-    </div>
+  <div class="ctrl">
+    <div class="dots" id="dots"></div>
+    <button class="play" id="play" aria-pressed="true">⏸ Pause</button>
+    <span class="cnt"><span id="cur">1</span> / 8</span>
   </div>
-  <div class="cc-info" id="ccInfo" aria-live="polite"></div>
 
-  <p class="bfc-note">Artwork is original BRYME illustration. Kits are <strong>plain colour only</strong> — no official badges, sponsors, manufacturer marks, league crests, names or numbers. Player names appear only in the speech bubbles, never on the shirts. Characters are fictional animated footballers, not photographs. Match facts: BBC Sport, 22 August 2026, plus published lineup and card records from the same fixture. <a href="/sports/premier-league/matches/hull-vs-man-united/">Open the match report</a> · <a href="/sports/premier-league/teams/manchester-united/">United team page</a> · <a href="/sports/premier-league/teams/hull/">Hull team page</a></p>
+  <p class="mc-note"><b>Original BRYME artwork.</b> Kits are plain colour only — no official badges, sponsors, manufacturer marks, league crests, names or numbers anywhere. Player names appear only in the speech bubbles, never on the shirts. Characters are fictional animated footballers, not photographs or real likenesses. Match facts via BBC Sport, 22 August 2026. Speech is fictional squad banter, not real quotes. <a href="/sports/premier-league/matches/hull-vs-man-united/">Open the match report</a> · <a href="/sports/comics/">All BRYME comics</a></p>
 </main>
 <nav class="mobile-nav"><a href="/"><span class="mn-ico">🏠</span>Home</a><a href="/entertainment/"><span class="mn-ico">🎬</span>Entertain</a><a href="/sports/" class="active"><span class="mn-ico">⚽</span>Sports</a><a href="/make-money/"><span class="mn-ico">💰</span>Money</a><a href="/tech/"><span class="mn-ico">🤖</span>Tech</a><a href="/search/"><span class="mn-ico">🔍</span>Search</a></nav>
 <footer class="footer"><div class="shell"><div class="footer-grid">
@@ -137,121 +153,121 @@
 <script>
 (function(){
   var DIR="/assets/img/sports/comics/hull-united-mw1/";
-  var SLIDES=[
-    {n:"Panel 1",t:"Hull's Premier League return",img:"01-return.jpg",
-     alt:"Original BRYME comic: Hull players in plain black-and-amber stripes walk out at a packed night stadium full of banners and tifo while United warm up in plain red",
-     copy:"Home tunnel. Amber flags and giant tifo everywhere. Nine years away. The inset is Hull's room only. United stay on the grass, in red, on the other side of the frame.",
-     bubbles:[["Jakirović","Nobody expects us to be here."],["Hull","Then let's give them a reason to remember us."],["Carrick","Stay calm. Move the ball. Control the game."]]},
-    {n:"Panel 2",t:"Kick-off → warning → 17' Ajayi",img:"02-opener.jpg",
-     alt:"Original BRYME comic: kick-off, a United shot, a Hull save, then a striped centre-back scoring the rebound",
-     copy:"McBurnie's effort is saved by Lammens. The rebound belongs to Semi Ajayi. First Premier League goal of the night, first of Hull's new life.",
-     bubbles:[["McBurnie","That was nearly one."],["Tzolakis","Keep going."],["United","We were supposed to control this game."]]},
-    {n:"Panel 3",t:"Dorgu booked → 38' Mendy",img:"03-second.jpg",
-     alt:"Original BRYME comic: United keep the ball, a yellow card, then a Hull header flies in",
-     copy:"United have the ball. Hull have the lead. Dorgu sees yellow on 34'. Four minutes later Slater's free-kick, Mendy's header, 2–0.",
-     bubbles:[["Dorgu","I barely touched him."],["United","Another set piece."],["Bruno","We need to wake up."]]},
-    {n:"Panel 4",t:"Half-time: two rooms",img:"04-halftime.jpg",
-     alt:"Original BRYME comic: Hull dressing room celebrating in plain stripes on the left, tense United dressing room in plain red on the right",
-     copy:"Left: only stripes. Right: only red. Carrick looks at a blank board. Rashford laces up. Second half incoming.",
-     bubbles:[["Jakirović","Nobody thinks the job is finished."],["Hull","They're going to come hard."],["Carrick","Marcus, get ready."]]},
-    {n:"Panel 5",t:"Rashford on · 72% of nothing",img:"05-rashford.jpg",
-     alt:"Original BRYME comic: a red forward enters, then United attack a compact striped Hull block",
-     copy:"Rashford replaces Dorgu at the break. United own the ball — 72% possession, 21 shots by the end. Hull own the score.",
-     bubbles:[["Hull","Fresh legs."],["United","We have 72%."],["Hull","And?"]]},
-    {n:"Panel 6",t:"The changes",img:"06-subs.jpg",
-     alt:"Original BRYME comic: Hull make calm substitutions while United send on attackers",
-     copy:"64' Ajayi and Mendy off to applause. 67' Sesko and Mainoo on for Santos and Tielemans. Hull refresh. United chase.",
-     bubbles:[["Ajayi","Finish it."],["United","We need a goal."],["Hull","You need two."]]},
-    {n:"Panel 7",t:"Late push · Millar 90+6 · FT",img:"07-fulltime.jpg",
-     alt:"Original BRYME comic: a late save, a yellow card, then Hull celebrate and United drop",
-     copy:"Tzolakis keeps Mbeumo out. Millar's yellow arrives in the sixth added minute. The whistle goes. Full time 2–0.",
-     bubbles:[["Millar","At 2–0?"],["Referee","Still a yellow."],["Millar","Fair enough."]]},
-    {n:"Panel 8",t:"Welcome back",img:"08-aftermath.jpg",
-     alt:"Original BRYME comic: striped Hull players celebrate in front of a giant tifo home end while red shirts walk toward the tunnel",
-     copy:"Ajayi 17. Mendy 38. Three yellows, no reds. Possession does not keep the points. The Tigers are back.",
-     bubbles:[["Home end","Welcome back to the Premier League."],["Home end","United probably won't forget this one."]]}
+  var S=[
+    {img:"01-return.jpg",tag:"Arrival",min:"PRE-MATCH",h:0,a:0,st:"build",
+     title:"The Tigers arrive home",copy:"MKM Stadium, 22 Aug 2026. First top-flight home night in nine years. The coach pulls in — and the place erupts.",
+     ban:[["Home fan","Nine years. NINE. Don't you dare mess this up.","f"],["Hull","We're home, lads. Breathe it in.","h"],["Hull","First night back. Let's give 'em a show.","h"]]},
+    {img:"02-opener.jpg",tag:"Goal · 17'",min:"17'",h:1,a:0,st:"live",
+     title:"Ajayi. Rebound. Bedlam.",copy:"McBurnie's effort is saved. The rebound drops. Semi Ajayi says thank you very much.",
+     ban:[["Ajayi","MINE.","h"],["McBurnie","That was MY rebound...","h"],["United","We only just got here.","u"]]},
+    {img:"03-second.jpg",tag:"Goal · 38'",min:"38'",h:2,a:0,st:"live",
+     title:"Mendy. Header. Again.",copy:"Slater's free-kick. Mendy climbs above everyone. Two-nil. The set-piece specialists strike twice.",
+     ban:[["Mendy","Again? Oh — again.","h"],["Bruno","Not ANOTHER set piece.","u"],["Hull","It's the set pieces. Always the set pieces.","h"]]},
+    {img:"04-halftime.jpg",tag:"Half-time",min:"HT",h:2,a:0,st:"ht",
+     title:"Two rooms. Two worlds.",copy:"Same scoreline. Very different conversations. Carrick erases the board. Rashford laces up.",
+     ban:[["Jakirović","2–0 is a trap. Not a trophy.","h"],["Carrick","Somebody... explain the set pieces.","u"],["Rashford","I'll fix it. Get me ready.","u"]]},
+    {img:"05-rashford.jpg",tag:"Under siege · 56'",min:"56'",h:2,a:0,st:"live",
+     title:"72% of absolutely nothing",copy:"Rashford's on. United swarm. Hull become a wall with gloves. Tzolakis is, frankly, bored.",
+     ban:[["United","We've got the ball!","u"],["Hull","Cute. We've got the lead.","h"],["Tzolakis","Keep knocking, lads. I'm bored.","h"]]},
+    {img:"06-subs.jpg",tag:"Late drama · 90+6'",min:"90+6'",h:2,a:0,st:"live",
+     title:"The wall holds. Millar smiles.",copy:"Tzolakis tips one over. Sesko can't believe it. Millar gets a yellow at 2–0 and just... shrugs.",
+     ban:[["Millar","A yellow? At 2–0?!","h"],["Referee","Still a yellow.","r"],["Sesko","How are we losing this?!","u"]]},
+    {img:"07-fulltime.jpg",tag:"Full time",min:"FT",h:2,a:0,st:"ft",
+     title:"FULL TIME. Pandemonium.",copy:"The whistle goes. Hull hit the deck, the air, each other. United's 72% possession boards exactly zero points.",
+     ban:[["Hull","FULL TIME!!!","h"],["Bruno","...","u"],["Home fan","Enjoy your 72% possession, lads.","f"]]},
+    {img:"08-aftermath.jpg",tag:"Welcome back",min:"FT",h:2,a:0,st:"ft",
+     title:"The Tigers are back.",copy:"Ajayi 17. Mendy 38. Three yellows, no reds. Nine years away — one unforgettable night home.",
+     ban:[["Home fan","Welcome back to the Premier League!","f"],["Home fan","Man United won't forget this one.","f"],["Ajayi","Tigers. ROAR.","h"]]}
   ];
-  var idx=0,DUR=6000,playing=true,hovering=false;
-  var track=document.getElementById("ccTrack"),dots=document.getElementById("ccDots"),
-      info=document.getElementById("ccInfo"),prog=document.getElementById("ccProg"),
-      cur=document.getElementById("ccCur"),tag=document.getElementById("ccTag"),
-      playBtn=document.getElementById("ccPlay");
+  var PILL={build:"BUILD-UP",live:"LIVE",ht:"HALF TIME",ft:"FULL TIME"};
+  var len=S.length,idx=0,DUR=6500,playing=true,hover=false,elapsed=0,last=0;
+  var cardsEl=document.getElementById("cards"),dotsEl=document.getElementById("dots"),
+      barsEl=document.getElementById("bars"),curEl=document.getElementById("cur"),
+      playBtn=document.getElementById("play"),deck=document.getElementById("deck");
 
-  function build(){
-    track.innerHTML=SLIDES.map(function(s,i){
-      return '<figure class="cc-slide"><img src="'+DIR+s.img+'" alt="'+s.alt+'" loading="'+(i?"lazy":"eager")+'" width="1400" height="787"></figure>';
-    }).join("");
-    dots.innerHTML=SLIDES.map(function(s,i){
-      return '<button type="button" data-i="'+i+'" aria-label="Go to panel '+(i+1)+'"></button>';
-    }).join("");
-    Array.prototype.forEach.call(dots.children,function(b,i){
-      b.addEventListener("click",function(){go(i);resetClock();});
-    });
-  }
-  function renderInfo(){
-    var s=SLIDES[idx];
-    info.style.opacity=0;
-    setTimeout(function(){
-      info.innerHTML='<div class="cc-cap"><b>'+s.n+'</b><span>'+s.t+'</span></div>'+
-        '<p class="cc-copy">'+s.copy+'</p>'+
-        '<div class="cc-bubbles">'+s.bubbles.map(function(b){
-          return '<q><i>'+b[0]+'</i>'+b[1]+'</q>';
-        }).join("")+'</div>';
-      info.style.opacity=1;
-    },150);
-  }
-  function go(i){
-    idx=(i+SLIDES.length)%SLIDES.length;
-    track.style.transform="translateX(-"+(idx*100)+"%)";
-    Array.prototype.forEach.call(dots.children,function(b,i2){b.classList.toggle("on",i2===idx);});
-    cur.textContent=String(idx+1);
-    tag.textContent=SLIDES[idx].n;
-    renderInfo();
+  // build cards
+  cardsEl.innerHTML=S.map(function(s,i){
+    return '<div class="card" data-i="'+i+'">'+
+      '<img class="kb" src="'+DIR+s.img+'" alt="Original BRYME comic frame: '+s.title+'" loading="'+(i?"lazy":"eager")+'">'+
+      '<div class="scrim-t"></div><div class="scrim-b"></div>'+
+      '<div class="hud-t">'+
+        '<div class="bug"><span class="lg">BRY<b>ME</b></span>'+
+          '<span class="pill '+(s.st==="live"?"live":s.st==="ft"?"ft":"")+'">'+
+            (s.st==="live"?'<span class="dot"></span>':'')+PILL[s.st]+'</span></div>'+
+        '<div class="scorebug"><span class="t h"><span class="sw"></span>HUL</span>'+
+          '<span class="s">'+s.h+'–'+s.a+'</span><span class="t u">UTD<span class="sw"></span></span>'+
+          '<span class="min">'+s.min+'</span></div>'+
+      '</div>'+
+      '<div class="hud-b"><p class="kick">'+s.tag+'</p><h2 class="ctitle">'+s.title+'</h2>'+
+        '<p class="copy">'+s.copy+'</p>'+
+        '<div class="ban">'+s.ban.map(function(b){return '<q class="'+b[2]+'"><i>'+b[0]+'</i>'+b[1]+'</q>';}).join("")+'</div>'+
+      '</div></div>';
+  }).join("");
+  var cards=Array.prototype.slice.call(cardsEl.children);
+
+  // dots + bars
+  dotsEl.innerHTML=S.map(function(s,i){return '<button type="button" data-i="'+i+'" aria-label="Panel '+(i+1)+'"></button>';}).join("");
+  barsEl.innerHTML=S.map(function(){return '<i><span></span></i>';}).join("");
+  var dots=Array.prototype.slice.call(dotsEl.children);
+  var bars=Array.prototype.slice.call(barsEl.children).map(function(b){return b.firstChild;});
+  dots.forEach(function(b,i){b.addEventListener("click",function(){show(i,i>idx?"next":"prev");reset();});});
+
+  function show(n,dir){
+    var old=idx; idx=((n%len)+len)%len; var c=cards[idx];
+    if(old!==idx){
+      var o=cards[old];
+      o.classList.remove("on"); o.classList.add(dir==="next"?"left":"right");
+    }
+    c.style.transition="none";
+    c.classList.remove("on","left","right"); c.classList.add(dir==="next"?"right":"left");
+    void c.offsetWidth;
+    c.style.transition=""; c.classList.remove("right","left"); c.classList.add("on");
+    dots.forEach(function(d,i){d.classList.toggle("on",i===idx);});
+    curEl.textContent=String(idx+1);
     try{history.replaceState(null,"","#p"+(idx+1));}catch(e){}
+    reset();
   }
-  function resetClock(){elapsed=0;last=performance.now();}
+  function reset(){elapsed=0;last=performance.now();}
 
-  // progress clock
-  var elapsed=0,last=performance.now();
   function loop(now){
     var dt=now-last;last=now;
-    if(playing&&!hovering){
+    if(playing&&!hover){
       elapsed+=dt;
-      prog.style.width=Math.min(100,(elapsed/DUR)*100)+"%";
-      if(elapsed>=DUR){elapsed=0;go(idx+1);}
+      if(elapsed>=DUR){show(idx+1,"next");}
+    }
+    // progress bars
+    for(var i=0;i<len;i++){
+      var w;
+      if(i<idx)w=100; else if(i===idx)w=Math.min(100,(elapsed/DUR)*100); else w=0;
+      bars[i].style.width=w+"%";
     }
     requestAnimationFrame(loop);
   }
 
-  // controls
-  document.getElementById("ccPrev").addEventListener("click",function(){go(idx-1);resetClock();});
-  document.getElementById("ccNext").addEventListener("click",function(){go(idx+1);resetClock();});
+  document.getElementById("nx").addEventListener("click",function(){show(idx+1,"next");});
+  document.getElementById("pv").addEventListener("click",function(){show(idx-1,"prev");});
   playBtn.addEventListener("click",function(){
     playing=!playing;playBtn.setAttribute("aria-pressed",String(playing));
     playBtn.textContent=playing?"⏸ Pause":"▶ Play";
-    resetClock();
   });
-  var stage=document.getElementById("ccStage");
-  stage.addEventListener("mouseenter",function(){hovering=true;});
-  stage.addEventListener("mouseleave",function(){hovering=false;last=performance.now();});
-  // touch swipe
+  deck.addEventListener("mouseenter",function(){hover=true;});
+  deck.addEventListener("mouseleave",function(){hover=false;last=performance.now();});
   var sx=null;
-  stage.addEventListener("touchstart",function(e){sx=e.touches[0].clientX;},{passive:true});
-  stage.addEventListener("touchend",function(e){
-    if(sx===null)return;var dx=e.changedTouches[0].clientX-sx;
-    if(Math.abs(dx)>44){if(dx<0)go(idx+1);else go(idx-1);resetClock();}sx=null;
-  },{passive:true});
-  // keyboard
+  deck.addEventListener("touchstart",function(e){sx=e.touches[0].clientX;},{passive:true});
+  deck.addEventListener("touchend",function(e){if(sx===null)return;var dx=e.changedTouches[0].clientX-sx;
+    if(Math.abs(dx)>44){show(dx<0?idx+1:idx-1,dx<0?"next":"prev");}sx=null;},{passive:true});
   document.addEventListener("keydown",function(e){
-    if(e.key==="ArrowLeft"){go(idx-1);resetClock();}
-    else if(e.key==="ArrowRight"){go(idx+1);resetClock();}
+    if(e.key==="ArrowRight"){show(idx+1,"next");}
+    else if(e.key==="ArrowLeft"){show(idx-1,"prev");}
   });
 
   // init
-  build();
   var m=(location.hash||"").match(/p(\d+)/);
-  go(m&&m[1]?Math.min(Math.max(+m[1]-1,0),SLIDES.length-1):0);
-  requestAnimationFrame(loop);
+  var start=m&&m[1]?Math.min(Math.max(+m[1]-1,0),len-1):0;
+  cards[start].classList.add("on");
+  dots[start].classList.add("on");
+  idx=start;curEl.textContent=String(start+1);
+  last=performance.now();requestAnimationFrame(loop);
 })();
 </script>
 <script src="/assets/site-app.js"></script>
