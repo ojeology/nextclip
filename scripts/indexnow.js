@@ -29,7 +29,11 @@ if (!fs.existsSync(keyFile)) { console.error(`Key file missing: /${key}.txt must
 if (fs.readFileSync(keyFile, 'utf8').trim() !== key) { console.error('Key file contents do not match the key.'); process.exit(1); }
 
 let urls = [];
-if (get('--url')) {
+
+if (get('--paths')) {
+  urls = get('--paths').split(',').map(s => s.trim()).filter(Boolean)
+    .map(s => s.startsWith('http') ? s : base + (s.startsWith('/') ? s : '/' + s));
+} else if (get('--url')) {
   urls = [get('--url')];
 } else {
   const since = get('--since');
