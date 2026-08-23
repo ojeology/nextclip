@@ -36,9 +36,11 @@ body{overflow-x:hidden}
 .mc-score{display:inline-flex;align-items:center;gap:7px;background:rgba(0,0,0,.6);border:1px solid var(--line);
   border-radius:11px;padding:5px 10px;color:#fff;font-weight:900;font-size:14px}
 .mc-score .t{font-size:10px;display:inline-flex;align-items:center;gap:4px}
-.mc-score .t .sw{width:8px;height:11px;border-radius:2px;display:inline-block}
-.mc-score .t.h .sw{background:repeating-linear-gradient(90deg,#111 0 3px,var(--amber) 3px 6px)}
-.mc-score .t.u .sw{background:var(--red)}
+.sw{width:8px;height:11px;border-radius:2px;display:inline-block}
+.sw-amber{background:repeating-linear-gradient(90deg,#111 0 3px,var(--amber) 3px 6px)}
+.sw-red{background:#d11}
+.sw-sky{background:#5aa9e6}
+.sw-white{background:#eee}
 .mc-score .min{font-size:10px;color:var(--amber2);border-left:1px solid var(--line);padding-left:8px}
 .mc-mark{position:absolute;right:16px;bottom:14px;z-index:6;display:flex;align-items:baseline;gap:7px;
   background:rgba(0,0,0,.45);border:1px solid rgba(245,163,0,.55);border-radius:10px;padding:5px 11px;
@@ -57,6 +59,8 @@ body{overflow-x:hidden}
 .mc-cap-card b{font-weight:800;color:#fff;font-size:14.5px;line-height:1.32;display:block}
 .mc-cap-card.h{border-left-color:var(--amber)} .mc-cap-card.h i{color:var(--amber)}
 .mc-cap-card.u{border-left-color:var(--red)} .mc-cap-card.u i{color:#ff8a8a}
+.mc-cap-card.hm{border-left-color:var(--home-c,#f5a300)} .mc-cap-card.hm i{color:var(--home-c,#f5a300)}
+.mc-cap-card.aw{border-left-color:var(--away-c,#e23b3b)} .mc-cap-card.aw i{color:var(--away-c,#e23b3b)}
 .mc-cap-card.r{border-left-color:#cfd4db} .mc-cap-card.r i{color:#eef1f5}
 .mc-cap-card.f{border-left-color:#ffd9a0} .mc-cap-card.f i{color:#ffd9a0}
 .mc-cap-card.c{border-left-color:var(--amber2)}
