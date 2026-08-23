@@ -3,29 +3,29 @@
   var DIR="/assets/img/sports/comics/hull-united-mw1/";
   var S=[
     {img:"01-return.jpg",tag:"Arrival · Build-up",min:"PRE-MATCH",h:0,a:0,st:"build",
-     title:"The Tigers arrive home",copy:"MKM Stadium, 22 Aug 2026. First top-flight home night in nine years. The coach pulls in — and the place erupts.",
-     ban:[["Home fan","Nine years. NINE. Don't you dare mess this up.","f"],["Hull","We're home, lads. Breathe it in.","h"],["Hull","First night back. Let's give 'em a show.","h"],["Mascot","Roar for the camera. Good. Now go win.","n"],["United fan","Lovely ground. We'll be taking the points though.","u"]]},
+     title:"The Tigers arrive home",copy:"MKM Stadium, 22 Aug 2026. First top-flight home night in nine years. The coach pulls in — and the place loses its mind.",
+     ban:[["Home fan","Nine years. NINE. Even my GRAN made it and she's 90.","f"],["Hull","We're home, lads. Breathe it in. Then ruin someone's evening.","h"],["Mascot","Roar for the camera. Good. I'm paid in sandwiches.","n"],["United fan","Lovely stadium. Shame about the result we're about to hand you.","u"],["Steward","Don't pitch-inv— oh, they're already crying. It's been four minutes.","n"]]},
     {img:"02-opener.jpg",tag:"Goal · 17'",min:"17'",h:1,a:0,st:"live",
      title:"Ajayi. Rebound. Bedlam.",copy:"McBurnie's effort is saved. The rebound drops. Semi Ajayi says thank you very much.",
-     ban:[["Ajayi","MINE.","h"],["McBurnie","That was MY rebound... I was RIGHT there.","h"],["Lammens","It just hit me. Through a crowd. Help.","u"],["United","We only just got here. Still doing up our laces.","u"],["Home fan","GOAL! I've waited NINE YEARS for that!","f"]]},
+     ban:[["Ajayi","MINE. Thank you. Goodnight.","h"],["McBurnie","That was MY rebound... I was LITERALLY right there, Semi!","h"],["Ajayi","Were you? Didn't see you. Ball did, though. Shame.","h"],["Bruno","WHO was marking?! Am I defending now?! AM I?!","u"],["Home fan","GOAL! I've waited nine years — worth every single one!","f"]]},
     {img:"03-second.jpg",tag:"Goal · 38'",min:"38'",h:2,a:0,st:"live",
      title:"Mendy. Header. Again.",copy:"Slater's free-kick. Mendy climbs above everyone. Two-nil. The set-piece specialists strike twice.",
-     ban:[["Mendy","Again? Oh — again. Lovely.","h"],["Bruno","Not ANOTHER set piece. Who's marking?","u"],["Hull","It's the set pieces. Always the set pieces.","h"],["Maguire","...we practiced these. We PRACTICED these.","u"],["BRYME desk","Two centre-backs. Two set pieces. Textbook chaos.","n"]]},
+     ban:[["Mendy","Again? Oh — again. Two goals, no fuss. Taxi for the defence.","h"],["Bruno","A SET PIECE. Another one! Who's on the post?!","u"],["Maguire","...there was a post? Nobody told me about a post.","u"],["Bruno","Harry. HARRY. You're six-foot-four. JUMP.","u"],["BRYME desk","Two centre-backs, two set pieces. Statues in red.","n"]]},
     {img:"04-halftime.jpg",tag:"Half-time",min:"HT",h:2,a:0,st:"ht",
      title:"Two rooms. Two worlds.",copy:"Same scoreline, very different conversations. Carrick erases the board. Rashford laces up.",
-     ban:[["Jakirović","2–0 is a trap, not a trophy. Stay switched on.","h"],["Carrick","Somebody... explain the set pieces. Use small words.","u"],["Rashford","I'll fix it. Get me ready. Now.","u"],["Kitman","Same again, lads? Boots, tape, and no conceding.","n"],["United fan","A whole half to fix this. Surely. Surely.","u"]]},
+     ban:[["Jakirović","2–0 is a trap, not a trophy. Don't you DARE blow it.","h"],["Carrick","So... we mark the tall ones. And the short ones. And basically everyone.","u"],["Bruno","I blame the wind. And the posts. And — honestly? — you.","u"],["Rashford","I'll fix it. Boots on. Send me out alone if I have to.","u"],["Kitman","Same again, lads? Tape, boots, and NO more conceding.","n"]]},
     {img:"05-rashford.jpg",tag:"Under siege · 56'",min:"56'",h:2,a:0,st:"live",
-     title:"72% of absolutely nothing",copy:"Rashford's on. United swarm. Hull become a wall with gloves. Tzolakis is, frankly, bored.",
-     ban:[["United","We've got the ball! 72%!","u"],["Hull","Cute. We've got the lead.","h"],["Tzolakis","Keep knocking, lads. I'm genuinely bored.","h"],["Bruno","PASS! Move! Somebody do SOMETHING!","u"],["Home fan","Boooo... oh, they still haven't scored. Ha.","f"]]},
+     title:"72% of absolutely nothing",copy:"Rashford's on. United swarm. Hull turn into a wall with gloves. Tzolakis has, frankly, had a little nap.",
+     ban:[["United","72% possession! We're DOMINATING!","u"],["Hull","Cute. We're WINNING. Different word — look it up.","h"],["Tzolakis","Keep knocking. I've genuinely had a nap back here.","h"],["Bruno","PASS! No — HIM. Not him. WHY is nobody where I want them?!","u"],["Home fan","Boooo— oh, they've still not scored. Every. Single. Time.","f"]]},
     {img:"06-subs.jpg",tag:"Late drama · 90+6'",min:"90+6'",h:2,a:0,st:"live",
      title:"The wall holds. Millar smiles.",copy:"Tzolakis tips one over. Sesko can't believe it. Millar gets a yellow at 2–0 and just shrugs.",
-     ban:[["Tzolakis","Over the bar. NEXT.","h"],["Sesko","How are we losing this?! HOW?!","u"],["Millar","A yellow? At 2–0?! I barely breathed on him!","h"],["Referee","Still a yellow. I don't do group discounts.","r"],["Hull sub","Fresh legs. Same wall. Good luck, lads.","h"]]},
+     ban:[["Tzolakis","Tipped over. Lovely. Next customer.","h"],["Sesko","Six chances. SIX. The man's a wall. With gloves. And an attitude.","u"],["Millar","A yellow?! At 2–0?! I barely breathed near him!","h"],["Referee","Still a yellow, son. No loyalty cards at 2–0.","r"],["Bruno","This is fine. This is FINE. (it is not fine)","u"]]},
     {img:"07-fulltime.jpg",tag:"Full time",min:"FT",h:2,a:0,st:"ft",
      title:"FULL TIME. Pandemonium.",copy:"The whistle goes. Hull hit the deck, the air, each other. United's 72% possession boards exactly zero points.",
-     ban:[["Hull","FULL TIME!!! Get in!!!","h"],["Bruno","...","u"],["Home fan","Enjoy your 72% possession, lads. Cheers.","f"],["Maguire","Longest ninety minutes of my life.","u"],["Ajayi","Nobody gave us a chance. Lovely.","h"]]},
+     ban:[["Hull","FULL TIME!!! Somebody pinch me!","h"],["Bruno","...","u"],["Maguire","I'd like the ground to swallow me now. Cheers.","u"],["Home fan","72% possession, zero points. My new favourite maths.","f"],["Ajayi","Nobody gave us a chance. Absolutely nobody. Beautiful.","h"]]},
     {img:"08-aftermath.jpg",tag:"Welcome back",min:"FT",h:2,a:0,st:"ft",
-     title:"The Tigers are back.",copy:"Ajayi 17. Mendy 38. Three yellows, no reds. Nine years away — one unforgettable night home.",
-     ban:[["Home fan","Welcome back to the Premier League!","f"],["Home fan","Man United won't forget this one. Neither will we.","f"],["Ajayi","Tigers. ROAR.","h"],["Mendy","Same time next week?","h"],["Carrick","...back to the drawing board. Literally.","u"]]}
+     title:"Red Devils? More like Crying Devils.",copy:"Ajayi 17. Mendy 38. Three yellows, no reds. Nine years away — one unforgettable night home. And the Devils are in bits.",
+     ban:[["BRYME desk","The Red Devils? Tonight they're the Crying Devils — heads down, ties loosened, dreams deleted.","n"],["Bruno","*sniff* we had 72% of the ball and 0% of the joy.","u"],["Maguire","*a single tear rolls* ...set pieces.","u"],["Home fan","Welcome back to the Premier League! Same again next week?","f"],["Ajayi","Tigers ROAR. Devils dribble. On their faces.","h"]]}
   ];
   var PILL={build:"BUILD-UP",live:"LIVE",ht:"HALF TIME",ft:"FULL TIME"};
   function init(){
