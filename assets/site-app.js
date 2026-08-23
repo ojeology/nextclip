@@ -1184,13 +1184,13 @@ document.addEventListener('error', function (e) {
   });
 })();
 
-/* BRYME Matchweek Chronicles — top slider on team pages */
+/* BRYME Matchweek Chronicles — team pages */
 (function () {
   var root = document.querySelector('[data-mwc]');
   if (!root) return;
   var track = root.querySelector('[data-mwc-track]');
-  var pills = [].slice.call(root.querySelectorAll('[data-mwc-card]'));
-  var slides = [].slice.call(root.querySelectorAll('[data-mwc-story]'));
+  var cards = [].slice.call(root.querySelectorAll('[data-mwc-card]'));
+  var stories = [].slice.call(root.querySelectorAll('[data-mwc-story]'));
   var prev = root.querySelector('[data-mwc-prev]');
   var next = root.querySelector('[data-mwc-next]');
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -1198,67 +1198,38 @@ document.addEventListener('error', function (e) {
   var hovering = false;
 
   function show(mw) {
-    pills.forEach(function (c) {
+    cards.forEach(function (c) {
       var on = c.getAttribute('data-mwc-card') === String(mw);
       c.classList.toggle('is-current', on);
       c.setAttribute('aria-pressed', on ? 'true' : 'false');
-    });
-    slides.forEach(function (s) {
-      var on = s.getAttribute('data-mwc-story') === String(mw);
-      s.classList.toggle('is-current', on);
-      if (on && track) {
-        try { track.scrollTo({ left: s.offsetLeft, behavior: reduce ? 'auto' : 'smooth' }); } catch (e) {
-          track.scrollLeft = s.offsetLeft;
-        }
+      if (on && track && c.scrollIntoView) {
+        try { c.scrollIntoView({ inline: 'nearest', block: 'nearest', behavior: reduce ? 'auto' : 'smooth' }); } catch (e) {}
       }
+    });
+    stories.forEach(function (s) {
+      s.classList.toggle('is-active', s.getAttribute('data-mwc-story') === String(mw));
     });
   }
 
   function currentMw() {
-    var cur = root.querySelector('.mwc-pill.is-current') || root.querySelector('.mwc-slide.is-current');
-    if (cur && cur.getAttribute('data-mwc-card')) return cur.getAttribute('data-mwc-card');
-    if (cur && cur.getAttribute('data-mwc-story')) return cur.getAttribute('data-mwc-story');
-    return slides[0] && slides[0].getAttribute('data-mwc-story');
+    var cur = root.querySelector('.mwc-card.is-current');
+    return cur ? cur.getAttribute('data-mwc-card') : (cards[0] && cards[0].getAttribute('data-mwc-card'));
   }
 
   function step(dir) {
-    if (!slides.length) return;
-    var ids = slides.map(function (s) { return s.getAttribute('data-mwc-story'); });
+    if (!cards.length) return;
+    var ids = cards.map(function (c) { return c.getAttribute('data-mwc-card'); });
     var i = ids.indexOf(currentMw());
     if (i < 0) i = 0;
     i = (i + dir + ids.length) % ids.length;
     show(ids[i]);
   }
 
-  pills.forEach(function (c) {
+  cards.forEach(function (c) {
     c.addEventListener('click', function () { show(c.getAttribute('data-mwc-card')); });
   });
   if (prev) prev.addEventListener('click', function () { step(-1); });
   if (next) next.addEventListener('click', function () { step(1); });
-  if (track) {
-    var snapTimer = null;
-    track.addEventListener('scroll', function () {
-      if (snapTimer) clearTimeout(snapTimer);
-      snapTimer = setTimeout(function () {
-        var left = track.scrollLeft;
-        var best = slides[0];
-        var bestD = Infinity;
-        slides.forEach(function (s) {
-          var d = Math.abs(s.offsetLeft - left);
-          if (d < bestD) { bestD = d; best = s; }
-        });
-        if (best) {
-          var mw = best.getAttribute('data-mwc-story');
-          pills.forEach(function (c) {
-            var on = c.getAttribute('data-mwc-card') === mw;
-            c.classList.toggle('is-current', on);
-            c.setAttribute('aria-pressed', on ? 'true' : 'false');
-          });
-          slides.forEach(function (s) { s.classList.toggle('is-current', s === best); });
-        }
-      }, 80);
-    });
-  }
 
   root.querySelectorAll('.mwc-archive a[href^="#mw-"]').forEach(function (a) {
     a.addEventListener('click', function (e) {
@@ -1274,7 +1245,7 @@ document.addEventListener('error', function (e) {
   function arm() {
     if (timer) clearInterval(timer);
     timer = null;
-    if (reduce || slides.length < 2) return;
+    if (reduce || cards.length < 2) return;
     timer = setInterval(function () {
       if (hovering || document.hidden) return;
       step(1);
@@ -1288,7 +1259,6 @@ document.addEventListener('error', function (e) {
     if (document.hidden && timer) { clearInterval(timer); timer = null; }
     else arm();
   });
-  show(currentMw());
   arm();
 })();
 

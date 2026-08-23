@@ -634,79 +634,62 @@ def render_team_page(team: dict, ctx: dict) -> str:
                 mws.append(m["mw"])
         carousel = mws[:6]
         current = (prev_m or next_m or matches[0])["mw"] if matches else 1
-        slides, pills = [], []
+        cards, stories_html, archive = [], [], []
         for mw in carousel:
             group = [m for m in matches if m["mw"] == mw]
             done = [m for m in group if m.get("result")]
             story = story_for(team, done[-1], comics) if done else None
             is_cur = mw == current
-            sub = (
-                f"{done[-1]['homeName']} {done[-1]['result']['hs']}–{done[-1]['result']['as']} {done[-1]['awayName']}"
-                if done else (f"{group[0]['homeName']} vs {group[0]['awayName']}" if group else "Awaiting")
-            )
-            pills.append(
-                f'<button type="button" class="mwc-pill{" is-current" if is_cur else ""}" data-mwc-card="{mw}" aria-label="Matchweek {mw}" aria-pressed="{"true" if is_cur else "false"}"></button>'
+            if done:
+                last = done[-1]
+                label = last["result"]
+                sub = f"{last['homeName']} {label['hs']}–{label['as']} {last['awayName']}"
+            elif group:
+                sub = f"{group[0]['homeName']} vs {group[0]['awayName']}"
+            else:
+                sub = "Awaiting"
+            state = "complete" if done else "awaiting"
+            cards.append(
+                f'<button type="button" class="mwc-card{" is-current" if is_cur else ""}" data-mwc-card="{mw}" aria-pressed="{"true" if is_cur else "false"}">'
+                f'<span class="mwc-card-kicker">Matchweek {mw}</span>'
+                f'<span class="mwc-card-state mwc-{state}">{"Complete" if done else "Awaiting"}</span>'
+                f'<span class="mwc-card-sub">{esc(sub)}</span></button>'
             )
             if story:
-                used = [p.get("art") for p in (story.get("panels") or [])]
-                bg_key = next((k for k in ("concede", "celebrate", "manager", "kickoff", "arrival") if k in used), "kickoff")
-                bg = art.get(bg_key) or art.get("kickoff") or ""
-                lines = []
-                for p in story.get("panels") or []:
-                    bubble = p.get("bubble") or ""
-                    title = p.get("title") or ""
-                    if not bubble and not title:
-                        continue
-                    lines.append(
-                        f"<li><b>{esc(title)}</b>"
-                        + (f"<q>{esc(bubble)}</q>" if bubble else "")
-                        + "</li>"
-                    )
-                report = (
-                    f'<a class="mwc-report" href="{esc(done[-1]["href"])}">Open the match report</a>'
-                    if done else ""
+                stories_html.append(
+                    f'<article class="mwc-story{" is-active" if is_cur else ""}" data-mwc-story="{mw}" id="mw-{mw}">'
+                    f'<header class="mwc-story-head"><p class="eyebrow">Matchweek {mw} complete</p>'
+                    f"<h3>{esc(story.get('headline') or f'Matchweek {mw}')}</h3>"
+                    f'<p class="mwc-resultline">{esc(story.get("resultLine") or sub)}</p>'
+                    f'<p class="mwc-jump">Match report: <a href="{esc(done[-1]["href"])}">{esc(done[-1]["homeName"])} vs {esc(done[-1]["awayName"])}</a></p></header>'
+                    f'{render_panels(story, art)}</article>'
                 )
-                inner = (
-                    f'<div class="mwc-hero-card" style="--mwc-art:url(\'{esc(bg)}\')">'
-                    f'<div class="mwc-hero-shade" aria-hidden="true"></div>'
-                    f'<div class="mwc-hero-copy">'
-                    f'<p class="mwc-badge">Matchweek {mw} · Complete</p>'
-                    f'<p class="mwc-score">{esc(story.get("resultLine") or sub)}</p>'
-                    f"<h2>{esc(story.get('headline') or f'Matchweek {mw}')}</h2>"
-                    f'<ol class="mwc-lines">{"".join(lines)}</ol>{report}'
-                    f"</div></div>"
+                archive.append(
+                    f'<li><a href="#mw-{mw}"><b>Matchweek {mw}</b><span>{esc(story.get("resultLine") or sub)}</span><em>Read comic</em></a></li>'
                 )
             else:
-                bg = art.get("awaiting") or ""
-                nxt = group[0] if group else None
-                detail = ""
-                if nxt:
-                    detail = (
-                        f'<p class="mwc-score">{esc(nxt["homeName"])} vs {esc(nxt["awayName"])}</p>'
-                        f'<p class="mwc-when">{esc(fmt_date(nxt["date"], nxt.get("mw")))} · {esc(fmt_time(nxt["time"]))}</p>'
-                        f'<a class="mwc-report" href="{esc(nxt["href"])}">Open the preview</a>'
-                    )
-                else:
-                    detail = '<p class="mwc-when">The comic is written after a sourced full-time result.</p>'
-                inner = (
-                    f'<div class="mwc-hero-card is-await" style="--mwc-art:url(\'{esc(bg)}\')">'
-                    f'<div class="mwc-hero-shade" aria-hidden="true"></div>'
-                    f'<div class="mwc-hero-copy">'
-                    f'<p class="mwc-badge">Matchweek {mw} · Awaiting</p>'
-                    f"<h2>Awaiting matchweek {mw}</h2>{detail}"
-                    f"</div></div>"
+                stories_html.append(
+                    f'<article class="mwc-story{" is-active" if is_cur else ""}" data-mwc-story="{mw}" id="mw-{mw}">'
+                    f'<header class="mwc-story-head"><p class="eyebrow">Matchweek {mw}</p>'
+                    f"<h3>Awaiting matchweek {mw}</h3></header>"
+                    f'{render_awaiting(art, group[0] if group else None, mw)}</article>'
                 )
-            slides.append(
-                f'<article class="mwc-slide{" is-current" if is_cur else ""}" data-mwc-story="{mw}" id="mw-{mw}">{inner}</article>'
-            )
+                archive.append(
+                    f'<li class="is-await"><span><b>Matchweek {mw}</b><span>{esc(sub)}</span></span><em>Awaiting</em></li>'
+                )
         chronicles = f"""
-<section class="mwc mwc-top" id="chronicles" data-mwc aria-label="Matchweek Chronicles">
-  <div class="mwc-stage">
-    <button type="button" class="mwc-nav mwc-nav-prev" data-mwc-prev aria-label="Previous matchweek">‹</button>
-    <div class="mwc-track" data-mwc-track>{''.join(slides)}</div>
-    <button type="button" class="mwc-nav mwc-nav-next" data-mwc-next aria-label="Next matchweek">›</button>
+<section class="mwc" id="chronicles" data-mwc>
+  <div class="section-head"><div><div class="eyebrow">Original BRYME comic</div>
+  <h2>BRYME Matchweek Chronicles</h2></div></div>
+  <p class="section-note">Cartoon storylines drawn from sourced full-time results. No broadcast stills, no player photographs. Speech bubbles are fictional squad chatter, not quotes.</p>
+  <img class="mwc-masthead" src="{esc(art.get("masthead") or "")}" alt="BRYME Matchweek Chronicles original cartoon banner" width="1200" height="669" loading="lazy" decoding="async">
+  <div class="mwc-carousel">
+    <button type="button" class="sp-hero-arrow sp-hero-prev" data-mwc-prev aria-label="Previous matchweek">‹</button>
+    <div class="mwc-track" data-mwc-track>{''.join(cards)}</div>
+    <button type="button" class="sp-hero-arrow sp-hero-next" data-mwc-next aria-label="Next matchweek">›</button>
   </div>
-  <div class="mwc-pills" role="tablist" aria-label="Matchweeks">{''.join(pills)}</div>
+  <div class="mwc-stories">{''.join(stories_html)}</div>
+  <div class="mwc-archive" id="archive"><h3>Matchweek archive</h3><ul>{''.join(archive)}</ul></div>
 </section>"""
 
     up_html = "".join(match_card(m, league, by_id) for m in upcoming) or '<p class="td-empty">No upcoming league fixture in the file.</p>'
