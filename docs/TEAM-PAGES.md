@@ -1,20 +1,25 @@
 # BRYME team pages + Matchweek Chronicles
 
-Permanent club URLs. One template, one registry, no hand-built pages.
+Every top-five club lives under its league. One template. Comics only on the big clubs.
 
 ## URLs
 
 Canonical pattern:
 
 ```
-/sports/teams/{slug}/
+/sports/{league}/teams/{slug}/
 ```
 
-Examples: `/sports/teams/manchester-united/`, `/sports/teams/arsenal/`, `/sports/teams/real-madrid/`.
+Examples:
 
-Do not invent a second URL for the same club. Fixture-id aliases (`/sports/teams/man-united/`) 301 to the pretty slug.
+- `/sports/premier-league/teams/manchester-united/`
+- `/sports/premier-league/teams/brentford/`
+- `/sports/la-liga/teams/real-madrid/`
+- `/sports/premier-league/teams/` — all 20 Premier League clubs
 
-Hub: `/sports/teams/`.
+The old flat URLs (`/sports/teams/manchester-united/`) 301 to the league path.
+
+Hub: `/sports/teams/` (clubs grouped by league).
 
 ## Rebuild
 

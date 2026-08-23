@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
-"""BRYME permanent football team pages + Matchweek Chronicles.
+"""BRYME league team pages.
 
-ONE template + content/teams.json + fixtures + sourced results = every team page.
+Canonical URL:
 
-Does not invent scores, scorers, plots or official league positions.
-Re-run after a sourced result is added:
+    /sports/{league}/teams/{slug}/
+
+Every club in the five-league fixture files gets a page.
+Matchweek comics are only written for the big clubs flagged in COMIC_TEAMS.
 
     python3 scripts/build-team-pages.py
 """
@@ -13,7 +15,6 @@ from __future__ import annotations
 import html as H
 import json
 import re
-from collections import defaultdict
 from datetime import date, datetime
 from pathlib import Path
 
@@ -28,28 +29,104 @@ FIXTURE_FILES = {
     "bundesliga": "fixtures-bundesliga.json",
     "ligue-1": "fixtures-ligue-1.json",
 }
+LEAGUE_NAME = {
+    "premier-league": "Premier League",
+    "la-liga": "La Liga",
+    "serie-a": "Serie A",
+    "bundesliga": "Bundesliga",
+    "ligue-1": "Ligue 1",
+}
+LEAGUE_ORDER = ["premier-league", "la-liga", "serie-a", "bundesliga", "ligue-1"]
+
+# Pretty public slugs. Everything else uses the fixture id.
+PRETTY = {
+    "man-united": "manchester-united",
+    "man-city": "manchester-city",
+    "newcastle": "newcastle-united",
+    "inter": "inter-milan",
+    "milan": "ac-milan",
+    "bayern": "bayern-munich",
+    "dortmund": "borussia-dortmund",
+    "leverkusen": "bayer-leverkusen",
+    "leipzig": "rb-leipzig",
+    "psg": "paris-saint-germain",
+    "gladbach": "borussia-monchengladbach",
+    "koln": "fc-koln",
+    "athletic-bilbao": "athletic-club",
+}
+
+COMIC_TEAMS = {
+    "man-united", "man-city", "liverpool", "arsenal", "chelsea", "tottenham",
+    "newcastle", "aston-villa", "real-madrid", "barcelona", "atletico-madrid",
+    "inter", "milan", "juventus", "napoli", "roma", "bayern", "dortmund",
+    "leverkusen", "leipzig", "psg", "marseille", "lyon", "monaco",
+}
+
+RELATED = {
+    "arsenal": [
+        ("/sports/arsenal-title-defence/", "Arsenal's title defence"),
+        ("/sports/community-shield-2026-arsenal-manchester-city/", "Community Shield 2026"),
+        ("/sports/premier-league-matchweek-1-guide/", "Premier League Matchweek 1 guide"),
+    ],
+    "man-city": [
+        ("/sports/manchester-city-without-guardiola/", "Manchester City after Guardiola"),
+        ("/sports/community-shield-2026-arsenal-manchester-city/", "Community Shield 2026"),
+    ],
+    "liverpool": [
+        ("/sports/liverpools-next-chapter/", "Liverpool under Andoni Iraola"),
+        ("/sports/five-matches-we-cannot-wait-to-watch/", "Five opening-weekend matches"),
+    ],
+    "man-united": [
+        ("/sports/newly-promoted-clubs-approach/", "Hull, Coventry and Ipswich: the promoted clubs"),
+        ("/sports/premier-league-matchweek-1-guide/", "Premier League Matchweek 1 guide"),
+    ],
+}
+
+COLORS = {
+    "arsenal": "#EF0107", "aston-villa": "#670E36", "bournemouth": "#DA291C",
+    "brentford": "#E30613", "brighton": "#0057B8", "chelsea": "#034694",
+    "coventry": "#77BBFF", "crystal-palace": "#C4122E", "everton": "#003399",
+    "fulham": "#9AA0A6", "hull": "#F5A12D", "ipswich": "#3A64A8",
+    "leeds": "#FFCD00", "liverpool": "#C8102E", "man-city": "#6CABDD",
+    "man-united": "#DA291C", "newcastle": "#241F20", "nottingham-forest": "#DD0000",
+    "sunderland": "#EB172B", "tottenham": "#132257",
+    "alaves": "#004FA3", "athletic-bilbao": "#EE2523", "atletico-madrid": "#CB3524",
+    "barcelona": "#A50044", "celta-vigo": "#8AC3EE", "deportivo": "#1D57A5",
+    "elche": "#007A33", "espanyol": "#1E6BB8", "getafe": "#004FA3",
+    "levante": "#9B1B30", "malaga": "#2B6CB0", "osasuna": "#D11241",
+    "racing": "#007A33", "rayo-vallecano": "#E30613", "real-betis": "#00954C",
+    "real-madrid": "#FEBE10", "real-sociedad": "#0067B1", "sevilla": "#D4A017",
+    "valencia": "#EE3524", "villarreal": "#FFE14D",
+    "atalanta": "#1E71B8", "bologna": "#1A1A6C", "cagliari": "#AE1218",
+    "como": "#1B3A6B", "fiorentina": "#482E92", "frosinone": "#0066B3",
+    "genoa": "#AD1919", "inter": "#010E80", "juventus": "#111111",
+    "lazio": "#87D8F7", "lecce": "#F7E017", "milan": "#FB090B",
+    "monza": "#C8102E", "napoli": "#12A0D7", "parma": "#FFD200",
+    "roma": "#8E1F2F", "sassuolo": "#00A651", "torino": "#8B1E1E",
+    "udinese": "#111111", "venezia": "#F07E13",
+    "augsburg": "#BA3733", "bayern": "#DC052D", "dortmund": "#FDE100",
+    "elversberg": "#E30613", "frankfurt": "#E1000F", "freiburg": "#E30613",
+    "gladbach": "#111111", "hamburg": "#1C63B7", "hoffenheim": "#1C63B7",
+    "koln": "#ED1C24", "leipzig": "#DD0741", "leverkusen": "#E32221",
+    "mainz": "#C4122E", "paderborn": "#005CA9", "schalke": "#004D9D",
+    "stuttgart": "#E30613", "union-berlin": "#EB1923", "werder": "#1A9F4B",
+    "angers": "#111111", "auxerre": "#1B4FA3", "brest": "#D21034",
+    "le-havre": "#78B7E7", "le-mans": "#E30613", "lens": "#E30613",
+    "lille": "#E01A22", "lorient": "#F07E13", "lyon": "#002F6C",
+    "marseille": "#2FAEE0", "monaco": "#E31B23", "nice": "#D21034",
+    "paris-fc": "#0033A0", "psg": "#004170", "rennes": "#E30613",
+    "strasbourg": "#1B4FA3", "toulouse": "#503291", "troyes": "#1B4FA3",
+}
 
 LL_CREST = {
-    "alaves": "alaves.png",
-    "athletic-bilbao": "athletic.png",
-    "atletico-madrid": "atletico.png",
-    "barcelona": "barcelona.png",
-    "celta-vigo": "celta.png",
-    "deportivo": "deportivo.png",
-    "elche": "elche.png",
-    "espanyol": "espanyol.png",
-    "getafe": "getafe.png",
-    "levante": "levante.png",
-    "malaga": "malaga.png",
-    "osasuna": "osasuna.png",
-    "racing": "racing.png",
-    "rayo-vallecano": "rayo.png",
-    "real-betis": "betis.png",
-    "real-madrid": "real-madrid.png",
-    "real-sociedad": "real-sociedad.png",
-    "sevilla": "sevilla.png",
-    "valencia": "valencia.png",
-    "villarreal": "villarreal.png",
+    "alaves": "alaves.png", "athletic-bilbao": "athletic.png",
+    "atletico-madrid": "atletico.png", "barcelona": "barcelona.png",
+    "celta-vigo": "celta.png", "deportivo": "deportivo.png", "elche": "elche.png",
+    "espanyol": "espanyol.png", "getafe": "getafe.png", "levante": "levante.png",
+    "malaga": "malaga.png", "osasuna": "osasuna.png", "racing": "racing.png",
+    "rayo-vallecano": "rayo.png", "real-betis": "betis.png",
+    "real-madrid": "real-madrid.png", "real-sociedad": "real-sociedad.png",
+    "sevilla": "sevilla.png", "valencia": "valencia.png", "villarreal": "villarreal.png",
 }
 
 HEADER = (
@@ -60,7 +137,6 @@ HEADER = (
     '<div class="top-tools"><a class="header-search" href="/search/" aria-label="Search">Search</a>'
     "</div></div></header>"
 )
-
 FOOTER = """<nav class="mobile-nav"><a href="/"><span class="mn-ico">🏠</span>Home</a><a href="/entertainment/"><span class="mn-ico">🎬</span>Entertain</a><a href="/sports/" class="active"><span class="mn-ico">⚽</span>Sports</a><a href="/make-money/"><span class="mn-ico">💰</span>Money</a><a href="/tech/"><span class="mn-ico">🤖</span>Tech</a><a href="/search/"><span class="mn-ico">🔍</span>Search</a></nav><footer class="footer"><div class="shell"><div class="footer-grid">
   <div class="footer-brand"><a class="brand" href="/">BRY<b>ME</b></a><p>Discover what you love. Learn what you need. Find what's next.</p></div>
   <nav class="footer-col" aria-label="Explore"><h3>Verticals</h3><a href="/entertainment/">🎬 Entertainment</a><a href="/sports/">⚽ Sports</a><a href="/make-money/">💰 Make Money</a><a href="/tech/">🤖 Tech &amp; AI</a></nav>
@@ -68,7 +144,7 @@ FOOTER = """<nav class="mobile-nav"><a href="/"><span class="mn-ico">🏠</span>
   <nav class="footer-col" aria-label="Information"><h3>Information</h3><a href="/about/">About</a><a href="/contact/">Contact</a><a href="/editorial-policy/">Editorial Policy</a></nav>
   <nav class="footer-col" aria-label="Legal"><h3>Legal</h3><a href="/privacy/">Privacy Policy</a><a href="/terms/">Terms of Use</a><a href="/disclaimer/">Disclaimer</a><a href="/copyright/">Copyright / DMCA</a></nav>
 </div>
-<p class="footer-note">BRYME · Discover what you love. Learn what you need. Find what's next. Trailer links lead to YouTube and viewing links lead to third parties.<small>Trending Now is editorially curated by BRYME — it is not live traffic data. Popular and Editor's Picks are independent rankings. Real user analytics will replace trending once the site has enough traffic. · Team pages 2026-08-23</small></div></footer><script>window.BRYME_BASE=''</script><script src="/assets/site-app.js"></script>"""
+<p class="footer-note">BRYME · Discover what you love. Learn what you need. Find what's next.<small>Team pages live under each league. Comics only on the big clubs. · 2026-08-23</small></div></footer><script>window.BRYME_BASE=''</script><script src="/assets/site-app.js"></script>"""
 
 
 def esc(s) -> str:
@@ -79,26 +155,35 @@ def load_json(rel: str):
     return json.loads((ROOT / rel).read_text(encoding="utf-8"))
 
 
+def slug_of(team_id: str) -> str:
+    return PRETTY.get(team_id, team_id)
+
+
+def team_href(league: str, team_id: str) -> str:
+    return f"/sports/{league}/teams/{slug_of(team_id)}/"
+
+
+def league_teams_href(league: str) -> str:
+    return f"/sports/{league}/teams/"
+
+
 def crest_for(league: str, team_id: str) -> str:
     if league == "premier-league":
         return f"/assets/img/sports/pl/{team_id}.svg"
     if league == "la-liga":
-        fn = LL_CREST.get(team_id, f"{team_id}.png")
-        return f"/assets/img/sports/ll/{fn}"
+        return f"/assets/img/sports/ll/{LL_CREST.get(team_id, team_id + '.png')}"
     if league == "serie-a":
         ext = ".png" if team_id == "lazio" else ".svg"
         return f"/assets/img/sports/sa/{team_id}{ext}"
     if league == "ligue-1":
         return f"/assets/img/sports/l1/{team_id}.webp"
-    if league == "bundesliga":
-        p = ROOT / f"assets/img/sports/bl/{team_id}.svg"
-        if p.exists():
-            return f"/assets/img/sports/bl/{team_id}.svg"
-        alt = ROOT / f"assets/img/sports/club-{team_id}.svg"
-        if alt.exists():
-            return f"/assets/img/sports/club-{team_id}.svg"
+    p = ROOT / f"assets/img/sports/bl/{team_id}.svg"
+    if p.exists():
         return f"/assets/img/sports/bl/{team_id}.svg"
-    return ""
+    alt = ROOT / f"assets/img/sports/club-{team_id}.svg"
+    if alt.exists():
+        return f"/assets/img/sports/club-{team_id}.svg"
+    return f"/assets/img/sports/bl/{team_id}.svg"
 
 
 def parse_date(s: str | None) -> date | None:
@@ -111,7 +196,6 @@ def parse_date(s: str | None) -> date | None:
 
 
 def season_date(raw: str | None, mw: int | None) -> date | None:
-    """Calendar date for sorting/display. 2026/27 MW19+ rows stored as Jan–May 2026 are 2027."""
     d = parse_date(raw)
     if not d:
         return None
@@ -131,9 +215,7 @@ def fmt_date(s: str | None, mw: int | None = None) -> str:
 
 
 def fmt_time(t) -> str:
-    if not t:
-        return "TBC"
-    return f"{t} UK"
+    return f"{t} UK" if t else "TBC"
 
 
 def match_slug(home_id: str, away_id: str) -> str:
@@ -148,7 +230,7 @@ def empty_row() -> dict:
     return {"p": 0, "w": 0, "d": 0, "l": 0, "gf": 0, "ga": 0, "gd": 0, "pts": 0, "form": []}
 
 
-def apply_result(table: dict, home: str, away: str, hs: int, as_: int, played: str | None):
+def apply_result(table: dict, home: str, away: str, hs: int, as_: int):
     for tid in (home, away):
         table.setdefault(tid, empty_row())
     table[home]["p"] += 1
@@ -181,24 +263,22 @@ def apply_result(table: dict, home: str, away: str, hs: int, as_: int, played: s
 
 
 def standings_for(league: str, fixtures: dict, results: dict) -> tuple[dict, list[str]]:
-    table = {}
-    names = {}
+    table, names = {}, {}
     for mw in fixtures.get("matchweeks", []):
         for m in mw.get("matches", []):
             table.setdefault(m["id"], empty_row())
             table.setdefault(m["away"], empty_row())
             names[m["id"]] = m.get("homeName") or m["id"]
             names[m["away"]] = m.get("awayName") or names.get(m["away"], m["away"])
-    league_results = results.get(league) or {}
     dated = []
-    for slug, r in league_results.items():
-        if "vs" not in slug:
+    for slug, r in (results.get(league) or {}).items():
+        if "-vs-" not in slug:
             continue
         home, away = slug.split("-vs-", 1)
         dated.append((r.get("playedOn") or "", home, away, r))
     dated.sort(key=lambda x: x[0])
     for _, home, away, r in dated:
-        apply_result(table, home, away, int(r["homeScore"]), int(r["awayScore"]), r.get("playedOn"))
+        apply_result(table, home, away, int(r["homeScore"]), int(r["awayScore"]))
     ranked = sorted(
         table.keys(),
         key=lambda tid: (-table[tid]["pts"], -table[tid]["gd"], -table[tid]["gf"], names.get(tid, tid)),
@@ -218,8 +298,6 @@ def collect_team_matches(team_id: str, fixtures: dict, results: dict, league: st
             slug = match_slug(m["id"], m["away"])
             res = league_results.get(slug)
             home = m["id"] == team_id
-            opp_id = m["away"] if home else m["id"]
-            opp_name = m["awayName"] if home else m["homeName"]
             row = {
                 "mw": num,
                 "homeId": m["id"],
@@ -228,129 +306,160 @@ def collect_team_matches(team_id: str, fixtures: dict, results: dict, league: st
                 "awayName": m["awayName"],
                 "date": m.get("date"),
                 "time": m.get("time"),
-                "timePublished": bool(m.get("timePublished")),
-                "tv": m.get("tv") or "",
                 "venue": (m.get("venue") or (venues.get(m["id"]) or {}).get("name") or ""),
                 "slug": slug,
                 "href": match_href(league, m["id"], m["away"]),
                 "home": home,
-                "oppId": opp_id,
-                "oppName": opp_name,
+                "oppId": m["away"] if home else m["id"],
+                "oppName": m["awayName"] if home else m["homeName"],
                 "result": None,
             }
             if res and "homeScore" in res and "awayScore" in res:
                 hs, aws = int(res["homeScore"]), int(res["awayScore"])
                 if hs > aws:
-                    wdl_home, wdl_away = "W", "L"
+                    wdl_h, wdl_a = "W", "L"
                 elif hs < aws:
-                    wdl_home, wdl_away = "L", "W"
+                    wdl_h, wdl_a = "L", "W"
                 else:
-                    wdl_home = wdl_away = "D"
+                    wdl_h = wdl_a = "D"
                 row["result"] = {
-                    "hs": hs,
-                    "as": aws,
+                    "hs": hs, "as": aws,
                     "status": res.get("status") or "FT",
                     "playedOn": res.get("playedOn") or m.get("date"),
-                    "scorers": res.get("scorers") or [],
-                    "source": res.get("source") or {},
-                    "wdl": wdl_home if home else wdl_away,
+                    "wdl": wdl_h if home else wdl_a,
                 }
             out.append(row)
-    # Matchweek order is the season order. Some 2026/27 second-half rows
-    # were stored as Jan–May 2026; do not let those jump ahead of August.
     out.sort(key=lambda r: (r["mw"] or 99, r["date"] or "9999", r["time"] or "99:99"))
     return out
 
 
-def blurb(team: dict) -> str:
-    return (
-        f"{team['name']} are a {team['leagueName']} club from {team['city']}. "
-        f"Founded in {team['founded']}, they play at {team['stadium']}."
-    )
+def pick_next(upcoming: list[dict]) -> dict | None:
+    future = [
+        m for m in upcoming
+        if season_date(m.get("date"), m.get("mw"))
+        and season_date(m.get("date"), m.get("mw")) >= TODAY
+    ]
+    if future:
+        return min(future, key=lambda m: (season_date(m.get("date"), m.get("mw")) or date(9999, 1, 1), m.get("time") or ""))
+    return upcoming[0] if upcoming else None
+
+
+def pick_prev(completed: list[dict]) -> dict | None:
+    if not completed:
+        return None
+    return max(completed, key=lambda m: (m["result"].get("playedOn") or m.get("date") or "", m.get("time") or ""))
 
 
 def form_html(letters: list[str]) -> str:
     if not letters:
-        return '<span class="tp-form-empty">No sourced result yet</span>'
-    bits = []
-    for ch in letters[-5:]:
-        bits.append(f'<span class="tp-pill tp-pill-{ch.lower()}">{esc(ch)}</span>')
-    return '<span class="tp-form">' + "".join(bits) + "</span>"
+        return '<span>No sourced result yet</span>'
+    bits = [f'<span class="td-pill td-pill-{ch.lower()}">{esc(ch)}</span>' for ch in letters[-5:]]
+    return '<span class="td-pills">' + "".join(bits) + "</span>"
 
 
 def gd_txt(n: int) -> str:
-    if n > 0:
-        return f"+{n}"
-    return str(n)
+    return f"+{n}" if n > 0 else str(n)
 
 
 def page_head(title: str, desc: str, url: str, extra_ld: list) -> str:
     t, d, u = esc(title), esc(desc), esc(url)
-    crumbs = extra_ld
-    ld = json.dumps(crumbs, ensure_ascii=False, separators=(",", ":"))
-    return f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#08090b"><meta name="color-scheme" content="dark light"><link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="icon" href="/assets/favicon.png" type="image/png" sizes="32x32"><link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png"><link rel="manifest" href="/manifest.webmanifest"><title>{t}</title><meta name="description" content="{d}"><link rel="canonical" href="{u}"><meta property="og:type" content="website"><meta property="og:site_name" content="BRYME"><meta property="og:title" content="{t}"><meta property="og:description" content="{d}"><meta property="og:url" content="{u}"><meta property="og:image" content="https://bryme.onrender.com/assets/bryme-card.png"><meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="BRYME"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{t}"><meta name="twitter:description" content="{d}"><meta name="twitter:image" content="https://bryme.onrender.com/assets/bryme-card.png"><meta name="twitter:image:alt" content="BRYME"><link rel="stylesheet" href="/assets/site.css"><script type="application/ld+json">{ld}</script></head>"""
+    ld = json.dumps(extra_ld, ensure_ascii=False, separators=(",", ":"))
+    return (
+        f'<!doctype html><html lang="en"><head><meta charset="utf-8">'
+        f'<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">'
+        f'<meta name="theme-color" content="#08090b"><meta name="color-scheme" content="dark light">'
+        f'<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">'
+        f'<link rel="icon" href="/assets/favicon.png" type="image/png" sizes="32x32">'
+        f'<link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">'
+        f'<link rel="manifest" href="/manifest.webmanifest">'
+        f'<title>{t}</title><meta name="description" content="{d}">'
+        f'<link rel="canonical" href="{u}">'
+        f'<meta property="og:type" content="website"><meta property="og:site_name" content="BRYME">'
+        f'<meta property="og:title" content="{t}"><meta property="og:description" content="{d}">'
+        f'<meta property="og:url" content="{u}">'
+        f'<meta property="og:image" content="https://bryme.onrender.com/assets/bryme-card.png">'
+        f'<meta property="og:image:type" content="image/png"><meta property="og:image:width" content="1200">'
+        f'<meta property="og:image:height" content="630"><meta property="og:image:alt" content="BRYME">'
+        f'<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{t}">'
+        f'<meta name="twitter:description" content="{d}">'
+        f'<meta name="twitter:image" content="https://bryme.onrender.com/assets/bryme-card.png">'
+        f'<meta name="twitter:image:alt" content="BRYME">'
+        f'<link rel="stylesheet" href="/assets/site.css">'
+        f'<script type="application/ld+json">{ld}</script></head>'
+    )
 
 
-def fallback_story(team: dict, match: dict, art: dict) -> dict:
-    res = match["result"]
-    line = f"{match['homeName']} {res['hs']}–{res['as']} {match['awayName']}"
-    wdl = res["wdl"]
-    mood = "celebrate" if wdl == "W" else ("concede" if wdl == "L" else "kickoff")
-    return {
-        "teamId": team["id"],
-        "matchweek": match["mw"],
-        "matchSlug": match["slug"],
-        "headline": f"Matchweek {match['mw']} is in the book",
-        "resultLine": line,
-        "status": "complete",
-        "panels": [
-            {
-                "art": "arrival",
-                "title": "Before kickoff",
-                "caption": f"{match['homeName']} against {match['awayName']}, matchweek {match['mw']}.",
-                "bubble": "Let's get the points and go home.",
-            },
-            {
-                "art": mood,
-                "title": "The match",
-                "caption": f"Final score {line}. Named scorers are only shown when BRYME has them sourced.",
-                "bubble": "That's the number on the board.",
-            },
-            {
-                "art": "table",
-                "title": "Full time",
-                "caption": f"{res['status']} {line}. Result sits on the team page until the next sourced match.",
-                "bubble": "File it. Next week is a different comic.",
-            },
-        ],
-    }
+def build_registry(fixtures_by_league: dict) -> list[dict]:
+    hist = {}
+    for lg in LEAGUE_ORDER:
+        data = load_json(f"content/club-history/{lg}.json")
+        for c in data["clubs"]:
+            hist[(lg, c["slug"])] = c
+    teams = []
+    for lg, fx in fixtures_by_league.items():
+        names = {}
+        for mw in fx.get("matchweeks", []):
+            for m in mw.get("matches", []):
+                names[m["id"]] = m.get("homeName") or names.get(m["id"], m["id"])
+                names[m["away"]] = m.get("awayName") or names.get(m["away"], m["away"])
+        for tid, name in sorted(names.items(), key=lambda kv: kv[1]):
+            rec = hist.get((lg, tid), {})
+            teams.append({
+                "id": tid,
+                "slug": slug_of(tid),
+                "name": rec.get("name") or name,
+                "shortName": (rec.get("name") or name),
+                "league": lg,
+                "leagueName": LEAGUE_NAME[lg],
+                "crest": crest_for(lg, tid),
+                "color": COLORS.get(tid, "#3ddc84"),
+                "founded": rec.get("founded") or "",
+                "city": rec.get("city") or "",
+                "stadium": rec.get("stadium") or "",
+                "historySource": rec.get("source") or "",
+                "comics": tid in COMIC_TEAMS,
+                "related": RELATED.get(tid, []),
+            })
+    return teams
 
 
 def story_for(team: dict, match: dict, comics: dict) -> dict | None:
-    if not match.get("result"):
+    if not match.get("result") or not team.get("comics"):
         return None
     for s in comics.get("stories") or []:
         if s.get("teamId") == team["id"] and s.get("matchSlug") == match["slug"]:
             return s
-    return fallback_story(team, match, comics.get("art") or {})
+    r = match["result"]
+    line = f"{match['homeName']} {r['hs']}–{r['as']} {match['awayName']}"
+    mood = "celebrate" if r["wdl"] == "W" else ("concede" if r["wdl"] == "L" else "kickoff")
+    return {
+        "headline": f"Matchweek {match['mw']} is in the book",
+        "resultLine": line,
+        "panels": [
+            {"art": "arrival", "title": "Before kickoff",
+             "caption": f"{match['homeName']} against {match['awayName']}.",
+             "bubble": "Get the points. Then go home."},
+            {"art": mood, "title": "The match",
+             "caption": f"Final score {line}. Scorers only appear when BRYME has them sourced.",
+             "bubble": "That's the number on the board."},
+            {"art": "table", "title": "Full time",
+             "caption": f"{r['status']} {line}.",
+             "bubble": "File it. Next week is a different comic."},
+        ],
+    }
 
 
-def render_panels(story: dict, art: dict, lazy: bool) -> str:
-    loading = "lazy" if lazy else "lazy"
+def render_panels(story: dict, art: dict) -> str:
     bits = ['<ol class="mwc-panels">']
     for i, p in enumerate(story.get("panels") or [], 1):
         src = art.get(p.get("art") or "", art.get("kickoff", ""))
         bubble = p.get("bubble") or ""
-        bubble_html = (
-            f'<p class="mwc-bubble"><span>{esc(bubble)}</span></p>' if bubble else ""
-        )
-        alt = p.get("title") or f"Matchweek comic panel {i}"
+        bubble_html = f'<p class="mwc-bubble"><span>{esc(bubble)}</span></p>' if bubble else ""
         bits.append(
-            f'<li class="mwc-panel">'
-            f'<figure><img src="{esc(src)}" alt="{esc(alt)}" width="1200" height="669" loading="{loading}" decoding="async">'
+            f'<li class="mwc-panel"><figure>'
+            f'<img src="{esc(src)}" alt="{esc(p.get("title") or f"Panel {i}")}" width="1200" height="669" loading="lazy" decoding="async">'
             f'<figcaption><b>Panel {i}: {esc(p.get("title") or "")}</b>'
-            f'<span>{esc(p.get("caption") or "")}</span></figcaption></figure>'
-            f"{bubble_html}</li>"
+            f'<span>{esc(p.get("caption") or "")}</span></figcaption></figure>{bubble_html}</li>'
         )
     bits.append("</ol>")
     return "".join(bits)
@@ -359,335 +468,259 @@ def render_panels(story: dict, art: dict, lazy: bool) -> str:
 def render_awaiting(art: dict, match: dict | None, mw: int) -> str:
     src = art.get("awaiting", "")
     if match:
-        when = f"{fmt_date(match['date'])} · {fmt_time(match['time'])}"
         body = (
-            f"<p>Matchweek {mw} has not been locked. "
-            f"Next listed fixture: <a href=\"{esc(match['href'])}\">{esc(match['homeName'])} vs {esc(match['awayName'])}</a> "
-            f"({esc(when)}). The comic is written after a sourced full-time result, not before.</p>"
+            f"<p>Matchweek {mw} has not been locked. Next listed fixture: "
+            f"<a href=\"{esc(match['href'])}\">{esc(match['homeName'])} vs {esc(match['awayName'])}</a> "
+            f"({esc(fmt_date(match['date'], match.get('mw')))} · {esc(fmt_time(match['time']))}). "
+            f"The comic is written after a sourced full-time result.</p>"
         )
     else:
-        body = f"<p>Matchweek {mw} has not been played. The chronicle stays empty until a sourced full-time result exists.</p>"
+        body = f"<p>Matchweek {mw} has not been played.</p>"
     return (
-        f'<div class="mwc-await">'
-        f'<img src="{esc(src)}" alt="Empty night pitch, awaiting the next BRYME matchweek comic" width="1200" height="669" loading="lazy" decoding="async">'
-        f"<div><p class=\"eyebrow\">Awaiting matchweek {mw}</p>{body}</div></div>"
+        f'<div class="mwc-await"><img src="{esc(src)}" alt="Empty night pitch, awaiting the next BRYME matchweek comic" width="1200" height="669" loading="lazy" decoding="async">'
+        f'<div><p class="eyebrow">Awaiting matchweek {mw}</p>{body}</div></div>'
+    )
+
+
+def ticket(kind: str, match: dict | None, league: str) -> str:
+    if not match:
+        return (
+            f'<div class="td-ticket"><div><small>{esc(kind)}</small>'
+            f'<p class="td-ticket-empty">Nothing sourced yet.</p></div></div>'
+        )
+    if match.get("result"):
+        r = match["result"]
+        score = f"{match['homeName']} {r['hs']}–{r['as']} {match['awayName']}"
+        meta = f"{fmt_date(r.get('playedOn') or match['date'], match.get('mw'))} · {r['wdl']}"
+    else:
+        score = f"{match['homeName']} vs {match['awayName']}"
+        meta = f"{fmt_date(match['date'], match.get('mw'))} · {fmt_time(match['time'])} · {'Home' if match['home'] else 'Away'}"
+    return (
+        f'<a class="td-ticket" href="{esc(match["href"])}">'
+        f'<img src="{esc(crest_for(league, match["oppId"]))}" alt="{esc(match["oppName"])} crest" width="44" height="44">'
+        f'<div><small>{esc(kind)}</small><b>{esc(score)}</b><span>{esc(meta)}</span></div></a>'
+    )
+
+
+def match_card(m: dict, league: str, by_id: dict) -> str:
+    opp = by_id.get(m["oppId"])
+    opp_name = m["oppName"]
+    if opp:
+        opp_html = f'<a href="{esc(team_href(opp["league"], opp["id"]))}">{esc(opp_name)}</a>'
+    else:
+        opp_html = esc(opp_name)
+    ha = "Home" if m["home"] else "Away"
+    if m.get("result"):
+        r = m["result"]
+        score = f"{r['hs']}–{r['as']}"
+        status = r["status"]
+    else:
+        score = "Preview"
+        status = "Today" if parse_date(m.get("date")) == TODAY else fmt_time(m.get("time"))
+    return (
+        f'<a class="td-match" href="{esc(m["href"])}">'
+        f'<div class="td-match-date"><b>{esc(fmt_date(m["date"], m.get("mw")))}</b>MW {esc(m["mw"])}</div>'
+        f'<div class="td-match-who"><img src="{esc(crest_for(league, m["oppId"]))}" alt="" width="32" height="32">'
+        f'<div><strong>{opp_html}</strong><i>{ha} · {esc(LEAGUE_NAME[league])}</i></div></div>'
+        f'<div class="td-match-score"><small>{esc(status)}</small>{esc(score)}</div></a>'
     )
 
 
 def render_team_page(team: dict, ctx: dict) -> str:
     matches = ctx["matches"]
-    table = ctx["table"]
-    ranked = ctx["ranked"]
-    comics = ctx["comics"]
+    table, ranked, comics, by_id, teams = ctx["table"], ctx["ranked"], ctx["comics"], ctx["by_id"], ctx["teams"]
     art = comics.get("art") or {}
-    by_id = ctx["by_id"]
     league = team["league"]
     stats = table.get(team["id"], empty_row())
     pos = ranked.index(team["id"]) + 1 if team["id"] in ranked else None
     completed = [m for m in matches if m.get("result")]
-    upcoming = [m for m in matches if not m.get("result")]
-    prev_m = None
-    if completed:
-        prev_m = max(
-            completed,
-            key=lambda m: (
-                m["result"].get("playedOn") or m.get("date") or "",
-                m.get("time") or "",
-            ),
-        )
-    future = [
-        m
-        for m in upcoming
-        if season_date(m.get("date"), m.get("mw"))
-        and season_date(m.get("date"), m.get("mw")) >= TODAY
-    ]
-    next_m = (
-        min(
-            future,
-            key=lambda m: (
-                season_date(m.get("date"), m.get("mw")) or date(9999, 1, 1),
-                m.get("time") or "",
-            ),
-        )
-        if future
-        else (upcoming[0] if upcoming else None)
-    )
+    upcoming_raw = [m for m in matches if not m.get("result")]
     upcoming = sorted(
-        upcoming,
-        key=lambda m: (
-            season_date(m.get("date"), m.get("mw")) or date(9999, 1, 1),
-            m.get("time") or "",
-            m.get("mw") or 99,
-        ),
+        upcoming_raw,
+        key=lambda m: (season_date(m.get("date"), m.get("mw")) or date(9999, 1, 1), m.get("time") or ""),
     )
+    next_m, prev_m = pick_next(upcoming_raw), pick_prev(completed)
 
-    title = f"{team['name']} Fixtures, Results & Matchweek Stories | BRYME"
+    title = f"{team['name']} Fixtures & Results | {team['leagueName']} | BRYME"
     desc = (
-        f"{team['name']} fixtures, results, upcoming matches, league position, "
-        f"recent form and BRYME matchweek football comics. {team['leagueName']} 2026/27."
+        f"{team['name']} fixtures, results, next match and recent form in the "
+        f"{team['leagueName']} 2026/27 season."
     )
-    url = f"{SITE}/sports/teams/{team['slug']}/"
+    if team.get("comics"):
+        title = f"{team['name']} Fixtures, Results & Matchweek Stories | BRYME"
+        desc += " Plus BRYME matchweek comics."
+    url = SITE + team_href(league, team["id"])
+    blurb = (
+        f"{team['name']} are a {team['leagueName']} club"
+        + (f" from {team['city']}" if team.get("city") else "")
+        + "."
+    )
+    if team.get("founded") and team.get("stadium"):
+        blurb += f" Founded in {team['founded']}, they play at {team['stadium']}."
     page_ld = [
-        {
-            "@context": "https://schema.org",
-            "@type": "WebPage",
-            "name": title.replace(" | BRYME", ""),
-            "description": desc,
-            "url": url,
-            "isPartOf": {"@type": "WebSite", "name": "BRYME", "url": SITE + "/"},
-        },
-        {
-            "@context": "https://schema.org",
-            "@type": "SportsTeam",
-            "name": team["name"],
-            "sport": "Soccer",
-            "url": url,
-            "logo": SITE + team["crest"],
-            "foundingDate": str(team.get("founded") or ""),
-            "location": {"@type": "Place", "name": team.get("city") or ""},
-            "memberOf": {
-                "@type": "SportsOrganization",
-                "name": team["leagueName"],
-                "url": f"{SITE}/sports/{league}/",
-            },
-        },
-        {
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            "itemListElement": [
-                {"@type": "ListItem", "position": 1, "name": "Home", "item": SITE + "/"},
-                {"@type": "ListItem", "position": 2, "name": "BRYME Sports", "item": SITE + "/sports/"},
-                {"@type": "ListItem", "position": 3, "name": "Teams", "item": SITE + "/sports/teams/"},
-                {"@type": "ListItem", "position": 4, "name": team["name"], "item": url},
-            ],
-        },
+        {"@context": "https://schema.org", "@type": "WebPage", "name": title.replace(" | BRYME", ""),
+         "description": desc, "url": url,
+         "isPartOf": {"@type": "WebSite", "name": "BRYME", "url": SITE + "/"}},
+        {"@context": "https://schema.org", "@type": "SportsTeam", "name": team["name"], "sport": "Soccer",
+         "url": url, "logo": SITE + team["crest"],
+         "memberOf": {"@type": "SportsOrganization", "name": team["leagueName"],
+                      "url": f"{SITE}/sports/{league}/"}},
+        {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": SITE + "/"},
+            {"@type": "ListItem", "position": 2, "name": "BRYME Sports", "item": SITE + "/sports/"},
+            {"@type": "ListItem", "position": 3, "name": team["leagueName"], "item": f"{SITE}/sports/{league}/"},
+            {"@type": "ListItem", "position": 4, "name": f"{team['leagueName']} teams",
+             "item": SITE + league_teams_href(league)},
+            {"@type": "ListItem", "position": 5, "name": team["name"], "item": url},
+        ]},
     ]
     if next_m:
-        page_ld.append(
-            {
-                "@context": "https://schema.org",
-                "@type": "SportsEvent",
-                "name": f"{next_m['homeName']} v {next_m['awayName']}",
-                "sport": "Soccer",
-                "startDate": f"{next_m['date']}T{(next_m['time'] or '15:00')}:00",
-                "eventStatus": "https://schema.org/EventScheduled",
-                "location": {"@type": "Place", "name": next_m.get("venue") or team["stadium"]},
-                "homeTeam": {"@type": "SportsTeam", "name": next_m["homeName"]},
-                "awayTeam": {"@type": "SportsTeam", "name": next_m["awayName"]},
-                "url": SITE + next_m["href"],
-            }
-        )
+        page_ld.append({
+            "@context": "https://schema.org", "@type": "SportsEvent",
+            "name": f"{next_m['homeName']} v {next_m['awayName']}", "sport": "Soccer",
+            "startDate": f"{next_m['date']}T{(next_m['time'] or '15:00')}:00",
+            "eventStatus": "https://schema.org/EventScheduled",
+            "homeTeam": {"@type": "SportsTeam", "name": next_m["homeName"]},
+            "awayTeam": {"@type": "SportsTeam", "name": next_m["awayName"]},
+            "url": SITE + next_m["href"],
+        })
 
-    # carousel matchweeks: first 6 involving this team
-    mws_seen = []
-    mw_first_match = {}
-    for m in matches:
-        if m["mw"] not in mw_first_match:
-            mw_first_match[m["mw"]] = m
-            mws_seen.append(m["mw"])
-    carousel_mws = mws_seen[:6]
-    current_mw = (prev_m or next_m or matches[0])["mw"] if matches else 1
-
-    cards = []
-    stories_html = []
-    archive = []
-    for i, mw in enumerate(carousel_mws):
-        mw_matches = [m for m in matches if m["mw"] == mw]
-        done = [m for m in mw_matches if m.get("result")]
-        story = story_for(team, done[-1], comics) if done else None
-        is_cur = mw == current_mw
-        state = "complete" if done else "awaiting"
-        if done:
-            last = done[-1]
-            label = last["result"]
-            sub = f"{last['homeName']} {label['hs']}–{label['as']} {last['awayName']}"
-        elif mw_matches:
-            sub = f"{mw_matches[0]['homeName']} vs {mw_matches[0]['awayName']}"
-        else:
-            sub = "Awaiting"
-        cards.append(
-            f'<button type="button" class="mwc-card{" is-current" if is_cur else ""}" data-mwc-card="{mw}" aria-pressed="{"true" if is_cur else "false"}">'
-            f'<span class="mwc-card-kicker">Matchweek {mw}</span>'
-            f'<span class="mwc-card-state mwc-{state}">{ "Complete" if done else "Awaiting" }</span>'
-            f'<span class="mwc-card-sub">{esc(sub)}</span></button>'
-        )
-        if story:
-            stories_html.append(
-                f'<article class="mwc-story{" is-active" if is_cur else ""}" data-mwc-story="{mw}" id="mw-{mw}">'
-                f'<header class="mwc-story-head"><p class="eyebrow">Matchweek {mw} complete</p>'
-                f"<h3>{esc(story.get('headline') or f'Matchweek {mw}')}</h3>"
-                f'<p class="mwc-resultline">{esc(story.get("resultLine") or sub)}</p>'
-                f'<p class="mwc-jump">Match report: <a href="{esc(done[-1]["href"])}">{esc(done[-1]["homeName"])} vs {esc(done[-1]["awayName"])}</a></p></header>'
-                f'{render_panels(story, art, lazy=not is_cur)}</article>'
-            )
-            archive.append(
-                f'<li><a href="#mw-{mw}">'
-                f"<b>Matchweek {mw}</b><span>{esc(story.get('resultLine') or sub)}</span>"
-                f"<em>Read comic</em></a></li>"
-            )
-        else:
-            stories_html.append(
-                f'<article class="mwc-story{" is-active" if is_cur else ""}" data-mwc-story="{mw}" id="mw-{mw}">'
-                f'<header class="mwc-story-head"><p class="eyebrow">Matchweek {mw}</p>'
-                f"<h3>Awaiting matchweek {mw}</h3></header>"
-                f'{render_awaiting(art, mw_matches[0] if mw_matches else None, mw)}</article>'
-            )
-            archive.append(
-                f'<li class="is-await"><span><b>Matchweek {mw}</b><span>{esc(sub)}</span></span><em>Awaiting</em></li>'
-            )
-
-    # next / prev blocks
-    def side_card(kind: str, match: dict | None) -> str:
-        if not match:
-            return (
-                f'<div class="tp-side"><p class="tp-side-k">{kind}</p>'
-                f"<p class=\"tp-side-empty\">No sourced {kind.lower()} yet.</p></div>"
-            )
-        if match.get("result"):
-            r = match["result"]
-            score = f"{match['homeName']} {r['hs']}–{r['as']} {match['awayName']}"
-            meta = f"{fmt_date(r.get('playedOn') or match['date'], match.get('mw'))} · {r['wdl']}"
-        else:
-            score = f"{match['homeName']} vs {match['awayName']}"
-            meta = f"{fmt_date(match['date'], match.get('mw'))} · {fmt_time(match['time'])} · {'Home' if match['home'] else 'Away'}"
-        opp_crest = crest_for(league, match["oppId"])
-        return (
-            f'<a class="tp-side" href="{esc(match["href"])}">'
-            f'<p class="tp-side-k">{kind}</p>'
-            f'<div class="tp-side-row"><img src="{esc(opp_crest)}" alt="{esc(match["oppName"])} crest" width="36" height="36">'
-            f"<div><b>{esc(score)}</b><span>{esc(meta)}</span></div></div></a>"
-        )
-
-    pos_txt = str(pos) if pos else "—"
     sourced_n = sum(1 for tid in table if table[tid]["p"] > 0)
+    games = sum(s["p"] for s in table.values()) // 2
     pos_note = (
-        f"BRYME table from {sum(s['p'] for s in table.values()) // 2} sourced full-time results "
-        f"across {sourced_n} clubs. Sunday 23 August matches stay as previews until a source URL exists. "
-        f"This is not an official {team['leagueName']} table."
+        f"BRYME table from {games} sourced full-time results across {sourced_n} clubs. "
+        f"Sunday 23 August matches stay as previews until a source URL exists. "
+        f"Not an official {team['leagueName']} table."
     )
+    src_link = ""
+    if team.get("historySource"):
+        src_link = f'<a href="{esc(team["historySource"])}" rel="nofollow noopener">Club history source ↗</a>'
 
-    # fixtures / results tables
-    def rows_for(items: list[dict], kind: str) -> str:
-        if not items:
-            empty = "No upcoming league fixture in the file." if kind == "up" else "No sourced full-time result yet."
-            return f'<p class="tp-empty">{empty}</p>'
-        body = []
-        for m in items:
-            ha = "Home" if m["home"] else "Away"
-            status = "Upcoming"
-            score = "–"
-            wdl = ""
-            if m.get("result"):
-                r = m["result"]
-                status = r["status"]
-                score = f"{r['hs']}–{r['as']}"
-                wdl = f'<span class="tp-pill tp-pill-{r["wdl"].lower()}">{r["wdl"]}</span>'
-            elif m.get("date") and parse_date(m["date"]) == TODAY:
-                status = f"Today · {fmt_time(m['time'])}"
-            else:
-                status = fmt_time(m["time"])
-            opp_page = by_id.get(m["oppId"])
-            opp_cell = esc(m["oppName"])
-            if opp_page:
-                label = f"{m['oppName']} fixtures" if kind == "up" else f"{m['oppName']} results"
-                opp_cell = f'<a href="/sports/teams/{esc(opp_page["slug"])}/">{esc(label)}</a>'
-            body.append(
-                f"<tr><td>{esc(fmt_date(m['date'], m.get('mw')))}</td>"
-                f"<td>MW {esc(m['mw'])}</td>"
-                f"<td>{esc(team['leagueName'])}</td>"
-                f"<td>{opp_cell}</td>"
-                f"<td>{ha}</td>"
-                f"<td>{esc(status)}</td>"
-                f"<td><a href=\"{esc(m['href'])}\">{esc(score) if m.get('result') else 'Preview'}</a> {wdl}</td></tr>"
-            )
-        head = "<thead><tr><th>Date</th><th>MW</th><th>Competition</th><th>Opponent</th><th>H/A</th><th>Status</th><th>Score</th></tr></thead>"
-        return f'<div class="sp-table-wrap"><table class="sp-table tp-table">{head}<tbody>{"".join(body)}</tbody></table></div>'
-
-    same_league = [t for t in ctx["teams"] if t["league"] == league and t["id"] != team["id"]]
-    other_links = "".join(
-        f'<a href="/sports/teams/{esc(t["slug"])}/">{esc(t["name"])} fixtures</a>' for t in same_league
-    )
-    related = "".join(
-        f'<a href="{esc(r["href"])}">{esc(r["label"])}</a>' for r in (team.get("related") or [])
-    )
-
-    color = team.get("color") or "#3ddc84"
     hero = f"""
-<section class="tp-hero" style="--tp:{esc(color)}">
-  <div class="tp-hero-id">
-    <img class="tp-crest" src="{esc(team['crest'])}" alt="{esc(team['name'])} crest" width="88" height="88">
+<section class="td-hero" style="--td:{esc(team['color'])}">
+  <div class="td-hero-top">
+    <img class="td-crest" src="{esc(team['crest'])}" alt="{esc(team['name'])} crest" width="108" height="108">
     <div>
-      <p class="eyebrow">{esc(team['leagueName'])} · 2026/27 season</p>
+      <p class="td-kicker">{esc(team['leagueName'])} · 2026/27</p>
       <h1>{esc(team['name'])}</h1>
-      <p class="tp-meta"><a href="/sports/{esc(league)}/">{esc(team['leagueName'])} desk</a>
-      · Founded {esc(team['founded'])} · {esc(team['city'])} · {esc(team['stadium'])}</p>
-      <p class="tp-blurb">{esc(blurb(team))}
-      <a class="quiet-link" href="{esc(team['historySource'])}" rel="nofollow noopener">Club history source ↗</a></p>
+      <p class="td-where">{esc(' · '.join(x for x in [team.get('city'), team.get('stadium'), ('Founded ' + team['founded']) if team.get('founded') else ''] if x))}</p>
+      <p class="td-blurb">{esc(blurb)}{src_link}</p>
     </div>
   </div>
-  <div class="tp-hero-sides">
-    {side_card("Next match", next_m)}
-    {side_card("Previous result", prev_m)}
-  </div>
+  <div class="td-tickets">{ticket("Next match", next_m, league)}{ticket("Last result", prev_m, league)}</div>
 </section>"""
 
     overview = f"""
-<section class="tp-overview" id="season">
-  <div class="section-head"><div><div class="eyebrow">Current season</div><h2>2026/27 overview</h2></div>
+<section class="td-season" id="season">
+  <div class="td-season-head"><div><p class="eyebrow">This season</p><h2>2026/27 so far</h2></div>
   <a href="/sports/{esc(league)}/">Open the {esc(team['leagueName'])} desk</a></div>
-  <p class="section-note">{esc(pos_note)}</p>
-  <ul class="tp-stats" aria-label="Season totals from sourced results">
-    <li><b>{stats['p']}</b><span>Played</span></li>
-    <li><b>{stats['w']}</b><span>Won</span></li>
-    <li><b>{stats['d']}</b><span>Drawn</span></li>
-    <li><b>{stats['l']}</b><span>Lost</span></li>
-    <li><b>{stats['gf']}</b><span>GF</span></li>
-    <li><b>{stats['ga']}</b><span>GA</span></li>
-    <li><b>{esc(gd_txt(stats['gd']))}</b><span>GD</span></li>
-    <li><b>{stats['pts']}</b><span>Points</span></li>
-    <li><b>{esc(pos_txt)}</b><span>Position</span></li>
-  </ul>
-  <p class="tp-form-row"><span>Form</span> {form_html(stats['form'])}</p>
+  <p class="td-note">{esc(pos_note)}</p>
+  <div class="td-statgrid">
+    <div class="td-stat"><b>{stats['p']}</b><em>Played</em></div>
+    <div class="td-stat"><b>{stats['w']}-{stats['d']}-{stats['l']}</b><em>W-D-L</em></div>
+    <div class="td-stat"><b>{esc(gd_txt(stats['gd']))}</b><em>Goal difference</em></div>
+    <div class="td-stat"><b>{stats['pts']}</b><em>Points</em></div>
+    <div class="td-stat"><b>{esc(pos or '—')}</b><em>Position</em></div>
+  </div>
+  <p class="td-form">Form {form_html(stats['form'])}</p>
 </section>"""
 
-    chronicles = f"""
+    chronicles = ""
+    if team.get("comics"):
+        mws, first = [], {}
+        for m in matches:
+            if m["mw"] not in first:
+                first[m["mw"]] = m
+                mws.append(m["mw"])
+        carousel = mws[:6]
+        current = (prev_m or next_m or matches[0])["mw"] if matches else 1
+        cards, stories, archive = [], [], []
+        for mw in carousel:
+            group = [m for m in matches if m["mw"] == mw]
+            done = [m for m in group if m.get("result")]
+            story = story_for(team, done[-1], comics) if done else None
+            is_cur = mw == current
+            sub = (
+                f"{done[-1]['homeName']} {done[-1]['result']['hs']}–{done[-1]['result']['as']} {done[-1]['awayName']}"
+                if done else (f"{group[0]['homeName']} vs {group[0]['awayName']}" if group else "Awaiting")
+            )
+            cards.append(
+                f'<button type="button" class="mwc-card{" is-current" if is_cur else ""}" data-mwc-card="{mw}" aria-pressed="{"true" if is_cur else "false"}">'
+                f'<span class="mwc-card-kicker">Matchweek {mw}</span>'
+                f'<span class="mwc-card-state {"mwc-complete" if done else "mwc-awaiting"}">{"Complete" if done else "Awaiting"}</span>'
+                f'<span class="mwc-card-sub">{esc(sub)}</span></button>'
+            )
+            if story:
+                stories.append(
+                    f'<article class="mwc-story{" is-active" if is_cur else ""}" data-mwc-story="{mw}" id="mw-{mw}">'
+                    f'<header class="mwc-story-head"><p class="eyebrow">Matchweek {mw} complete</p>'
+                    f"<h3>{esc(story.get('headline') or f'Matchweek {mw}')}</h3>"
+                    f'<p class="mwc-resultline">{esc(story.get("resultLine") or sub)}</p>'
+                    f'<p class="mwc-jump">Match report: <a href="{esc(done[-1]["href"])}">{esc(done[-1]["homeName"])} vs {esc(done[-1]["awayName"])}</a></p></header>'
+                    f'{render_panels(story, art)}</article>'
+                )
+                archive.append(
+                    f'<li><a href="#mw-{mw}"><b>Matchweek {mw}</b><span>{esc(story.get("resultLine") or sub)}</span><em>Read comic</em></a></li>'
+                )
+            else:
+                stories.append(
+                    f'<article class="mwc-story{" is-active" if is_cur else ""}" data-mwc-story="{mw}" id="mw-{mw}">'
+                    f'<header class="mwc-story-head"><p class="eyebrow">Matchweek {mw}</p><h3>Awaiting matchweek {mw}</h3></header>'
+                    f'{render_awaiting(art, group[0] if group else None, mw)}</article>'
+                )
+                archive.append(f'<li class="is-await"><span><b>Matchweek {mw}</b><span>{esc(sub)}</span></span><em>Awaiting</em></li>')
+        chronicles = f"""
 <section class="mwc" id="chronicles" data-mwc>
-  <div class="section-head"><div><div class="eyebrow">Original BRYME comic</div>
-  <h2>BRYME Matchweek Chronicles</h2></div></div>
-  <p class="section-note">Cartoon storylines drawn from sourced full-time results. No broadcast stills, no player photographs. Speech bubbles are fictional squad chatter, not quotes.</p>
+  <p class="eyebrow">Original BRYME comic</p>
+  <h2>Matchweek Chronicles</h2>
+  <p class="td-note">Cartoon storylines from sourced full-time results. No broadcast stills. Speech bubbles are fictional squad chatter, not quotes.</p>
+  <img class="mwc-masthead" src="{esc(art.get('masthead') or '')}" alt="BRYME Matchweek Chronicles original cartoon banner" width="1200" height="669" loading="lazy" decoding="async">
   <div class="mwc-carousel">
     <button type="button" class="sp-hero-arrow sp-hero-prev" data-mwc-prev aria-label="Previous matchweek">‹</button>
     <div class="mwc-track" data-mwc-track>{''.join(cards)}</div>
     <button type="button" class="sp-hero-arrow sp-hero-next" data-mwc-next aria-label="Next matchweek">›</button>
   </div>
-  <div class="mwc-stories">{''.join(stories_html)}</div>
-  <div class="mwc-archive" id="archive">
-    <h3>Matchweek archive</h3>
-    <ul>{''.join(archive)}</ul>
-  </div>
+  <div class="mwc-stories">{''.join(stories)}</div>
+  <div class="mwc-archive" id="archive"><h3>Matchweek archive</h3><ul>{''.join(archive)}</ul></div>
 </section>"""
 
-    body = f"""<body data-nav="sports" class="tp-page team-desk">
+    up_html = "".join(match_card(m, league, by_id) for m in upcoming) or '<p class="td-empty">No upcoming league fixture in the file.</p>'
+    res_html = "".join(match_card(m, league, by_id) for m in reversed(completed)) or '<p class="td-empty">No sourced full-time result yet.</p>'
+
+    others = [t for t in teams if t["league"] == league and t["id"] != team["id"]]
+    other_links = "".join(
+        f'<a href="{esc(team_href(t["league"], t["id"]))}"><img src="{esc(t["crest"])}" alt="" width="22" height="22">{esc(t["name"])}</a>'
+        for t in others
+    )
+    rel = "".join(f'<a href="{esc(href)}">{esc(label)}</a>' for href, label in team.get("related") or [])
+
+    crumb = (
+        f'<div class="td-crumb"><a href="/">Home</a> / <a href="/sports/">Sports</a> / '
+        f'<a href="/sports/{esc(league)}/">{esc(team["leagueName"])}</a> / '
+        f'<a href="{esc(league_teams_href(league))}">Teams</a> / {esc(team["name"])}</div>'
+    )
+    body = f"""<body data-nav="sports" class="team-desk" style="--td:{esc(team['color'])}">
 {HEADER}
-<main class="shell tp-main">
-  <div class="crumb"><a href="/">Home</a> / <a href="/sports/">BRYME Sports</a> / <a href="/sports/teams/">Teams</a> / {esc(team['name'])}</div>
-  {chronicles}
+<main class="td-wrap">
+  {crumb}
   {hero}
   {overview}
-  <section class="tp-fix" id="fixtures">
-    <div class="section-head"><div><div class="eyebrow">Calendar</div><h2>Upcoming fixtures</h2></div>
-    <a href="/sports/{esc(league)}/fixtures/">Full {esc(team['leagueName'])} fixture list</a></div>
-    {rows_for(upcoming, "up")}
+  {chronicles}
+  <section class="td-sec" id="fixtures">
+    <div class="td-sec-head"><div><p class="eyebrow">Calendar</p><h2>Upcoming fixtures</h2></div>
+    <a href="/sports/{esc(league)}/fixtures/">Full {esc(team['leagueName'])} list</a></div>
+    <div class="td-list">{up_html}</div>
   </section>
-  <section class="tp-res" id="results">
-    <div class="section-head"><div><div class="eyebrow">History</div><h2>Recent results</h2></div>
-    <a href="/sports/{esc(league)}/results/">All sourced {esc(team['leagueName'])} results</a></div>
-    {rows_for(list(reversed(completed)), "res")}
+  <section class="td-sec" id="results">
+    <div class="td-sec-head"><div><p class="eyebrow">History</p><h2>Results</h2></div>
+    <a href="/sports/{esc(league)}/results/">All sourced results</a></div>
+    <div class="td-list">{res_html}</div>
   </section>
-  <section class="tp-links" id="also">
-    <div class="section-head"><div><div class="eyebrow">Also on BRYME</div><h2>Related</h2></div></div>
-    <div class="tp-linkrow"><b>This league</b>{other_links}</div>
-    <div class="tp-linkrow"><b>Stories</b>{related}<a href="/sports/clubs/">Club directory</a><a href="/sports/">Sports hub</a></div>
+  <section class="td-sec" id="also">
+    <div class="td-sec-head"><div><p class="eyebrow">Same league</p><h2>Other {esc(team['leagueName'])} clubs</h2></div>
+    <a href="{esc(league_teams_href(league))}">All {esc(team['leagueName'])} teams</a></div>
+    <div class="td-clubs">{other_links}</div>
+    <div class="td-clubs" style="margin-top:14px">{rel}<a href="/sports/clubs/">Club directory</a><a href="/sports/">Sports hub</a></div>
   </section>
 </main>
 {FOOTER}
@@ -695,110 +728,97 @@ def render_team_page(team: dict, ctx: dict) -> str:
     return page_head(title, desc, url, page_ld) + body
 
 
-def render_hub(teams: list[dict], ctxs: dict) -> str:
-    title = "Football Team Pages — Fixtures, Results & Matchweek Comics | BRYME"
-    desc = (
-        "Permanent BRYME pages for the biggest clubs in the Premier League, La Liga, "
-        "Serie A, Bundesliga and Ligue 1. Fixtures, sourced results, form and matchweek comics."
-    )
-    url = f"{SITE}/sports/teams/"
+def render_league_dir(league: str, club: list[dict], ctxs: dict) -> str:
+    name = LEAGUE_NAME[league]
+    title = f"{name} Teams — Fixtures & Results | BRYME"
+    desc = f"Every {name} club on BRYME. Fixtures, sourced results and form for the 2026/27 season."
+    url = SITE + league_teams_href(league)
+    cards = []
+    for t in club:
+        matches = ctxs[t["id"]]["matches"]
+        nxt = pick_next([m for m in matches if not m.get("result")])
+        prev = pick_prev([m for m in matches if m.get("result")])
+        nxt_line = f"Next · {nxt['homeName']} vs {nxt['awayName']}" if nxt else "No upcoming fixture in the file"
+        prev_line = (
+            f"Last · {prev['homeName']} {prev['result']['hs']}–{prev['result']['as']} {prev['awayName']}"
+            if prev else "No sourced result yet"
+        )
+        cards.append(
+            f'<a class="td-card" href="{esc(team_href(league, t["id"]))}" style="--td:{esc(t["color"])}">'
+            f'<div class="td-card-top"><img src="{esc(t["crest"])}" alt="{esc(t["name"])} crest" width="56" height="56">'
+            f'<div><b>{esc(t["name"])}</b><span>{esc(t.get("city") or name)}</span></div></div>'
+            f'<p>{esc(nxt_line)}<br>{esc(prev_line)}</p></a>'
+        )
     ld = [
-        {
-            "@context": "https://schema.org",
-            "@type": "CollectionPage",
-            "name": "BRYME football team pages",
-            "description": desc,
-            "url": url,
-        },
-        {
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            "itemListElement": [
-                {"@type": "ListItem", "position": 1, "name": "Home", "item": SITE + "/"},
-                {"@type": "ListItem", "position": 2, "name": "BRYME Sports", "item": SITE + "/sports/"},
-                {"@type": "ListItem", "position": 3, "name": "Teams", "item": url},
-            ],
-        },
-        {
-            "@context": "https://schema.org",
-            "@type": "ItemList",
-            "name": "BRYME team pages",
-            "numberOfItems": len(teams),
-            "itemListElement": [
-                {
-                    "@type": "ListItem",
-                    "position": i,
-                    "url": f"{SITE}/sports/teams/{t['slug']}/",
-                    "name": t["name"],
-                }
-                for i, t in enumerate(teams, 1)
-            ],
-        },
+        {"@context": "https://schema.org", "@type": "CollectionPage", "name": f"{name} teams",
+         "description": desc, "url": url},
+        {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": SITE + "/"},
+            {"@type": "ListItem", "position": 2, "name": "BRYME Sports", "item": SITE + "/sports/"},
+            {"@type": "ListItem", "position": 3, "name": name, "item": f"{SITE}/sports/{league}/"},
+            {"@type": "ListItem", "position": 4, "name": f"{name} teams", "item": url},
+        ]},
+        {"@context": "https://schema.org", "@type": "ItemList", "name": f"{name} teams",
+         "numberOfItems": len(club),
+         "itemListElement": [
+             {"@type": "ListItem", "position": i, "url": SITE + team_href(league, t["id"]), "name": t["name"]}
+             for i, t in enumerate(club, 1)
+         ]},
     ]
-    groups = []
-    order = [
-        ("premier-league", "Premier League"),
-        ("la-liga", "La Liga"),
-        ("serie-a", "Serie A"),
-        ("bundesliga", "Bundesliga"),
-        ("ligue-1", "Ligue 1"),
-    ]
-    for slug, name in order:
-        club = [t for t in teams if t["league"] == slug]
+    body = f"""<body data-nav="sports" class="team-desk">
+{HEADER}
+<main class="td-wrap td-dir">
+  <div class="td-crumb"><a href="/">Home</a> / <a href="/sports/">Sports</a> / <a href="/sports/{esc(league)}/">{esc(name)}</a> / Teams</div>
+  <p class="eyebrow">{esc(name)} · 2026/27</p>
+  <h1>{esc(name)} clubs</h1>
+  <p class="lead">All {len(club)} clubs, each on its own page. Fixtures and sourced results. Matchweek comics stay on the big clubs only.</p>
+  <div class="td-grid">{''.join(cards)}</div>
+</main>
+{FOOTER}
+</body></html>"""
+    return page_head(title, desc, url, ld) + body
+
+
+def render_all_hub(teams: list[dict], ctxs: dict) -> str:
+    title = "Football Clubs by League | BRYME"
+    desc = "Every Premier League, La Liga, Serie A, Bundesliga and Ligue 1 club on BRYME — fixtures, sourced results and form."
+    url = f"{SITE}/sports/teams/"
+    blocks = []
+    for lg in LEAGUE_ORDER:
+        club = [t for t in teams if t["league"] == lg]
         cards = []
         for t in club:
             matches = ctxs[t["id"]]["matches"]
-            future = [
-                m
-                for m in matches
-                if not m.get("result")
-                and season_date(m.get("date"), m.get("mw"))
-                and season_date(m.get("date"), m.get("mw")) >= TODAY
-            ]
-            nxt = (
-                min(
-                    future,
-                    key=lambda m: (
-                        season_date(m.get("date"), m.get("mw")) or date(9999, 1, 1),
-                        m.get("time") or "",
-                    ),
-                )
-                if future
-                else next((m for m in matches if not m.get("result")), None)
-            )
-            prev = None
-            done = [m for m in matches if m.get("result")]
-            if done:
-                prev = max(done, key=lambda m: (m["result"].get("playedOn") or m.get("date") or "", m.get("time") or ""))
-            if nxt:
-                nxt_line = f"Next: {nxt['homeName']} vs {nxt['awayName']}"
-            else:
-                nxt_line = "No upcoming fixture in the file"
-            if prev:
-                r = prev["result"]
-                prev_line = f"Last: {prev['homeName']} {r['hs']}–{r['as']} {prev['awayName']}"
-            else:
-                prev_line = "No sourced result yet"
+            nxt = pick_next([m for m in matches if not m.get("result")])
+            line = f"Next · {nxt['oppName']}" if nxt else "Season list on the club page"
             cards.append(
-                f'<a class="tp-hub-card" href="/sports/teams/{esc(t["slug"])}/" style="--tp:{esc(t.get("color") or "#3ddc84")}">'
-                f'<img src="{esc(t["crest"])}" alt="{esc(t["name"])} crest" width="56" height="56">'
-                f"<div><b>{esc(t['name'])}</b><span>{esc(nxt_line)}</span><span>{esc(prev_line)}</span></div></a>"
+                f'<a class="td-card" href="{esc(team_href(lg, t["id"]))}" style="--td:{esc(t["color"])}">'
+                f'<div class="td-card-top"><img src="{esc(t["crest"])}" alt="{esc(t["name"])} crest" width="56" height="56">'
+                f'<div><b>{esc(t["name"])}</b><span>{esc(line)}</span></div></div></a>'
             )
-        groups.append(
-            f'<section class="tp-hub-lg" id="{esc(slug)}">'
-            f'<div class="section-head"><h2>{esc(name)}</h2>'
-            f'<a href="/sports/{esc(slug)}/">{esc(name)} desk</a></div>'
-            f'<div class="tp-hub-grid">{"".join(cards)}</div></section>'
+        blocks.append(
+            f'<section class="td-league-block" id="{esc(lg)}">'
+            f'<div class="section-head"><h2>{esc(LEAGUE_NAME[lg])}</h2>'
+            f'<a href="{esc(league_teams_href(lg))}">Open the {esc(LEAGUE_NAME[lg])} club list</a></div>'
+            f'<div class="td-grid">{"".join(cards)}</div></section>'
         )
-    body = f"""<body data-nav="sports" class="tp-page">
+    ld = [
+        {"@context": "https://schema.org", "@type": "CollectionPage", "name": "Football clubs by league",
+         "description": desc, "url": url},
+        {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": SITE + "/"},
+            {"@type": "ListItem", "position": 2, "name": "BRYME Sports", "item": SITE + "/sports/"},
+            {"@type": "ListItem", "position": 3, "name": "Teams", "item": url},
+        ]},
+    ]
+    body = f"""<body data-nav="sports" class="team-desk">
 {HEADER}
-<main class="shell tp-main">
-  <div class="crumb"><a href="/">Home</a> / <a href="/sports/">BRYME Sports</a> / Teams</div>
-  <section class="hero"><div class="eyebrow">⚽ BRYME Sports · Teams</div>
-  <h1>Team pages</h1>
-  <p class="lead">Permanent pages for the clubs people actually search for. Fixtures, sourced results, form, and BRYME matchweek comics. More clubs can be added without changing the URL pattern.</p></section>
-  <p class="vnote">Scores appear only after a sourced full-time result. Sunday 23 August matches stay as previews until a source URL exists. League positions on each team page are computed from those sourced results — not an official table.</p>
-  {''.join(groups)}
+<main class="td-wrap td-dir">
+  <div class="td-crumb"><a href="/">Home</a> / <a href="/sports/">Sports</a> / Teams</div>
+  <p class="eyebrow">⚽ BRYME Sports</p>
+  <h1>Clubs by league</h1>
+  <p class="lead">Each club lives under its league. Open a league list, or go straight to a team page for fixtures and sourced results.</p>
+  {''.join(blocks)}
 </main>
 {FOOTER}
 </body></html>"""
@@ -848,146 +868,105 @@ def patch_clubs_directory(teams: list[dict]) -> int:
     html = p.read_text(encoding="utf-8")
     n = 0
     for t in teams:
-        name = t["name"]
-        href = f"/sports/teams/{t['slug']}/"
-        old = f"<td><b>{H.escape(name)}</b></td>"
-        new = f'<td><b><a href="{href}">{H.escape(name)} fixtures</a></b></td>'
-        if old in html and href not in html.split(old)[0][-80:]:
-            html = html.replace(old, new, 1)
-            n += 1
-        # some rows use slightly different names
-        old2 = f"<td><b>{H.escape(name)}</b></td>"
-        if old2 not in html and f'href="{href}"' not in html:
-            # try without escaping accents already in file
-            old3 = f"<td><b>{name}</b></td>"
-            new3 = f'<td><b><a href="{href}">{name} fixtures</a></b></td>'
-            if old3 in html:
-                html = html.replace(old3, new3, 1)
+        href = team_href(t["league"], t["id"])
+        for raw in (t["name"], H.escape(t["name"])):
+            old = f"<td><b>{raw}</b></td>"
+            old2 = f'<td><b><a href="/sports/teams/{t["slug"]}/">{raw} fixtures</a></b></td>'
+            new = f'<td><b><a href="{href}">{raw}</a></b></td>'
+            if old in html:
+                html = html.replace(old, new, 1)
                 n += 1
+                break
+            if old2 in html:
+                html = html.replace(old2, new, 1)
+                n += 1
+                break
+            # already linked last round with old path
+            old3 = f'<td><b><a href="/sports/teams/{PRETTY.get(t["id"], t["id"])}/">{raw} fixtures</a></b></td>'
+            if old3 in html:
+                html = html.replace(old3, new, 1)
+                n += 1
+                break
     p.write_text(html, encoding="utf-8")
     return n
 
 
-def patch_sports_hub() -> bool:
+def patch_sports_hub() -> None:
     p = ROOT / "sports/index.html"
     html = p.read_text(encoding="utf-8")
-    card = (
-        '<a class="sp-comp-card" href="/sports/teams/" style="--card-img:url(\'/assets/img/sports/hero-arsenal.jpg\')">'
-        "<em>Clubs</em><b>Team pages</b>"
-        "<span>Fixtures, sourced results, form and BRYME matchweek comics for the biggest clubs.</span></a>"
+    html = html.replace('href="/sports/teams/"', 'href="/sports/teams/"')
+    # keep hub card, retarget copy
+    html = html.replace(
+        "<em>Clubs</em><b>Team pages</b><span>Fixtures, sourced results, form and BRYME matchweek comics for the biggest clubs.</span>",
+        "<em>Clubs</em><b>Clubs by league</b><span>Every top-five club, filed under its own league.</span>",
     )
-    if 'href="/sports/teams/"' in html:
-        return False
-    needle = '<a class="sp-comp-card" href="/sports/clubs/"'
-    if needle in html:
-        html = html.replace(needle, card + needle, 1)
-        p.write_text(html, encoding="utf-8")
-        return True
-    return False
-
-
-def patch_rebuild_hub_script() -> bool:
-    p = ROOT / "scripts/rebuild-sports-hub.py"
-    t = p.read_text(encoding="utf-8")
-    card = (
-        '      <a class="sp-comp-card" href="/sports/teams/" style="--card-img:url(\'/assets/img/sports/hero-arsenal.jpg\')">'
-        "<em>Clubs</em><b>Team pages</b>"
-        "<span>Fixtures, sourced results, form and BRYME matchweek comics for the biggest clubs.</span></a>\n"
+    p.write_text(html, encoding="utf-8")
+    s = ROOT / "scripts/rebuild-sports-hub.py"
+    t = s.read_text(encoding="utf-8")
+    t = t.replace(
+        "<em>Clubs</em><b>Team pages</b><span>Fixtures, sourced results, form and BRYME matchweek comics for the biggest clubs.</span>",
+        "<em>Clubs</em><b>Clubs by league</b><span>Every top-five club, filed under its own league.</span>",
     )
-    if 'href="/sports/teams/"' in t:
-        return False
-    needle = '      <a class="sp-comp-card" href="/sports/clubs/"'
-    if needle in t:
-        p.write_text(t.replace(needle, card + needle, 1), encoding="utf-8")
-        return True
-    return False
+    s.write_text(t, encoding="utf-8")
 
 
 def patch_league_hubs(teams: list[dict]) -> int:
     n = 0
-    by_lg = defaultdict(list)
-    for t in teams:
-        by_lg[t["league"]].append(t)
-    for league, club in by_lg.items():
-        p = ROOT / f"sports/{league}/index.html"
+    for lg in LEAGUE_ORDER:
+        p = ROOT / f"sports/{lg}/index.html"
         if not p.exists():
             continue
         html = p.read_text(encoding="utf-8")
-        if 'id="team-pages"' in html:
-            continue
-        links = "".join(
-            f'<a class="tp-lg-chip" href="/sports/teams/{esc(t["slug"])}/">'
-            f'<img src="{esc(t["crest"])}" alt="" width="22" height="22">{esc(t["shortName"])} fixtures</a>'
+        club = [t for t in teams if t["league"] == lg]
+        cards = "".join(
+            f'<a href="{esc(team_href(lg, t["id"]))}">'
+            f'<img src="{esc(t["crest"])}" alt="{esc(t["name"])} crest" width="40" height="40">'
+            f'<b>{esc(t["name"])}</b></a>'
             for t in club
         )
         block = (
-            f'<section class="tp-league-teams" id="team-pages"><div class="shell">'
-            f'<div class="section-head"><div><div class="eyebrow">Permanent pages</div>'
-            f"<h2>Team pages</h2></div>"
-            f'<a href="/sports/teams/">All team pages</a></div>'
-            f'<div class="tp-lg-chips">{links}</div></div></section>'
+            f'<section class="td-band" id="team-pages"><div class="shell">'
+            f'<div class="td-band-inner"><div><p class="eyebrow">The {len(club)} clubs</p>'
+            f'<h2>{esc(LEAGUE_NAME[lg])} teams</h2></div>'
+            f'<a class="cta-ghost" href="{esc(league_teams_href(lg))}">Open the full club list</a></div>'
+            f'<div class="td-band-grid">{cards}</div></div></section>'
         )
-        # insert before related / after first section
-        if '<section class="sp-hero"' in html:
+        if 'id="team-pages"' in html:
+            html = re.sub(r'<section class="(?:tp-league-teams|td-band)" id="team-pages">[\s\S]*?</section>', block, html, count=1)
+        elif '<section class="sp-hero"' in html:
             html = html.replace('<section class="sp-hero"', block + '<section class="sp-hero"', 1)
-        elif "</main>" in html:
-            html = html.replace("</main>", block + "</main>", 1)
         else:
-            continue
+            html = html.replace("</main>", block + "</main>", 1)
         p.write_text(html, encoding="utf-8")
         n += 1
     return n
 
 
-def patch_upgrade_league_script(teams: list[dict]) -> bool:
-    p = ROOT / "scripts/upgrade-league-hubs.py"
-    if not p.exists():
-        return False
-    t = p.read_text(encoding="utf-8")
-    if "/sports/teams/" in t:
-        return False
-    # add a Teams chip to each league's chips list — light touch
-    replacements = {
-        "('/sports/premier-league/fixtures/', 'Fixtures'),": "('/sports/teams/', 'Team pages'),\n            ('/sports/premier-league/fixtures/', 'Fixtures'),",
-        "('/sports/la-liga/fixtures/', 'Fixtures'),": "('/sports/teams/', 'Team pages'),\n            ('/sports/la-liga/fixtures/', 'Fixtures'),",
-        "('/sports/serie-a/results/', 'Results'),": "('/sports/teams/', 'Team pages'),\n            ('/sports/serie-a/results/', 'Results'),",
-    }
-    new = t
-    for a, b in replacements.items():
-        if a in new and "/sports/teams/" not in new[new.find(a) - 80 : new.find(a) + 40]:
-            new = new.replace(a, b, 1)
-    if new != t:
-        p.write_text(new, encoding="utf-8")
-        return True
-    return False
-
-
 def patch_match_pages(teams: list[dict], ctxs: dict) -> int:
     by_id = {t["id"]: t for t in teams}
     n = 0
+    seen = set()
     for t in teams:
         for m in ctxs[t["id"]]["matches"]:
             path = ROOT / f"sports/{t['league']}/matches/{m['slug']}/index.html"
-            if not path.exists():
+            if not path.exists() or str(path) in seen:
                 continue
+            seen.add(str(path))
             html = path.read_text(encoding="utf-8")
-            marker = 'class="tp-match-jump"'
-            if marker in html:
-                continue
             links = []
-            for tid, label_name in ((m["homeId"], m["homeName"]), (m["awayId"], m["awayName"])):
+            for tid, name in ((m["homeId"], m["homeName"]), (m["awayId"], m["awayName"])):
                 if tid in by_id:
                     tm = by_id[tid]
                     links.append(
-                        f'<a href="/sports/teams/{tm["slug"]}/">{H.escape(tm["name"])} fixtures</a>'
+                        f'<a href="{team_href(tm["league"], tm["id"])}">{H.escape(tm["name"])} fixtures</a>'
                     )
             if not links:
                 continue
             jump = f'<p class="tp-match-jump">Team pages: {" · ".join(links)}</p>'
-            if '<div class="sp-match-hero">' in html:
+            if 'class="tp-match-jump"' in html:
+                html = re.sub(r'<p class="tp-match-jump">[\s\S]*?</p>', jump, html, count=1)
+            elif '<div class="sp-match-hero">' in html:
                 html = html.replace('<div class="sp-match-hero">', jump + '<div class="sp-match-hero">', 1)
-            elif "<h1" in html:
-                html = re.sub(r"(</h1>)", r"\1" + jump, html, count=1)
             else:
                 continue
             path.write_text(html, encoding="utf-8")
@@ -998,26 +977,39 @@ def patch_match_pages(teams: list[dict], ctxs: dict) -> int:
 def upsert_redirects(teams: list[dict]) -> int:
     p = ROOT / "_redirects"
     text = p.read_text(encoding="utf-8")
-    block_lines = ["# Team page aliases → canonical /sports/teams/{slug}/"]
+    lines = ["# Team pages live under each league"]
     n = 0
     for t in teams:
-        canon = f"/sports/teams/{t['slug']}/"
-        aliases = list(t.get("aliases") or [])
-        # also map fixture id if it differs from slug
-        if t["id"] != t["slug"]:
-            aliases.append(t["id"])
-        for a in aliases:
-            if a == t["slug"]:
+        canon = team_href(t["league"], t["id"])
+        aliases = {f"/sports/teams/{t['slug']}/", f"/sports/teams/{t['id']}/"}
+        if t["slug"] != t["id"]:
+            aliases.add(f"/sports/{t['league']}/teams/{t['id']}/")
+        for a in sorted(aliases):
+            if a.rstrip("/") == canon.rstrip("/"):
                 continue
-            line = f"/sports/teams/{a}/  {canon}  301"
-            if line not in block_lines:
-                block_lines.append(line)
-                n += 1
-    block = "\n".join(block_lines) + "\n"
-    if "# Team page aliases" in text:
+            lines.append(f"{a}  {canon}  301")
+            n += 1
+    # leftover pretty slugs from the first 24-club hub
+    for old, lg, tid in (
+        ("manchester-united", "premier-league", "man-united"),
+        ("manchester-city", "premier-league", "man-city"),
+        ("newcastle-united", "premier-league", "newcastle"),
+        ("inter-milan", "serie-a", "inter"),
+        ("ac-milan", "serie-a", "milan"),
+        ("bayern-munich", "bundesliga", "bayern"),
+        ("borussia-dortmund", "bundesliga", "dortmund"),
+        ("bayer-leverkusen", "bundesliga", "leverkusen"),
+        ("rb-leipzig", "bundesliga", "leipzig"),
+        ("paris-saint-germain", "ligue-1", "psg"),
+        ("atletico-madrid", "la-liga", "atletico-madrid"),
+    ):
+        lines.append(f"/sports/teams/{old}/  {team_href(lg, tid)}  301")
+        n += 1
+    block = "\n".join(dict.fromkeys(lines)) + "\n"
+    if "# Team page aliases" in text or "# Team pages live under each league" in text:
         text = re.sub(
-            r"# Team page aliases[\s\S]*?(?=\n# |\Z)",
-            block.rstrip() + "\n",
+            r"# Team page(?: aliases|s live under each league)[\s\S]*?(?=\n# |\Z)",
+            block,
             text,
             count=1,
         )
@@ -1027,59 +1019,78 @@ def upsert_redirects(teams: list[dict]) -> int:
     return n
 
 
+def clear_old_flat_team_pages(teams: list[dict]):
+    root = ROOT / "sports/teams"
+    keep = {"index.html"}
+    if not root.exists():
+        return
+    for child in list(root.iterdir()):
+        if child.name in keep:
+            continue
+        if child.is_dir():
+            idx = child / "index.html"
+            if idx.exists():
+                idx.unlink()
+            try:
+                child.rmdir()
+            except OSError:
+                pass
+
+
 def main():
-    registry = load_json("content/teams.json")
     comics = load_json("content/matchweek-comics.json")
     results = load_json("content/results.json")
-    teams = registry["teams"]
+    fixtures_by_league = {lg: load_json(f"content/{fn}") for lg, fn in FIXTURE_FILES.items()}
+    teams = build_registry(fixtures_by_league)
+    (ROOT / "content/teams.json").write_text(
+        json.dumps({"season": "2026/27", "urlPattern": "/sports/{league}/teams/{slug}/",
+                    "comicsOnly": sorted(COMIC_TEAMS), "teams": teams}, ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
+    )
     by_id = {t["id"]: t for t in teams}
-
-    fixtures_by_league = {}
-    table_by_league = {}
-    ranked_by_league = {}
-    for lg, fn in FIXTURE_FILES.items():
-        fx = load_json(f"content/{fn}")
-        fixtures_by_league[lg] = fx
+    table_by, ranked_by = {}, {}
+    for lg, fx in fixtures_by_league.items():
         table, ranked = standings_for(lg, fx, results)
-        table_by_league[lg] = table
-        ranked_by_league[lg] = ranked
-
+        table_by[lg], ranked_by[lg] = table, ranked
     ctxs = {}
     for t in teams:
         lg = t["league"]
         ctxs[t["id"]] = {
             "matches": collect_team_matches(t["id"], fixtures_by_league[lg], results, lg),
-            "table": table_by_league[lg],
-            "ranked": ranked_by_league[lg],
+            "table": table_by[lg],
+            "ranked": ranked_by[lg],
             "comics": comics,
             "by_id": by_id,
             "teams": teams,
         }
 
-    out_hub = ROOT / "sports/teams/index.html"
-    out_hub.parent.mkdir(parents=True, exist_ok=True)
-    out_hub.write_text(render_hub(teams, ctxs), encoding="utf-8")
+    clear_old_flat_team_pages(teams)
+    hub = ROOT / "sports/teams/index.html"
+    hub.parent.mkdir(parents=True, exist_ok=True)
+    hub.write_text(render_all_hub(teams, ctxs), encoding="utf-8")
 
-    for t in teams:
-        dest = ROOT / "sports/teams" / t["slug"] / "index.html"
+    for lg in LEAGUE_ORDER:
+        club = [t for t in teams if t["league"] == lg]
+        dest = ROOT / "sports" / lg / "teams" / "index.html"
         dest.parent.mkdir(parents=True, exist_ok=True)
-        dest.write_text(render_team_page(t, ctxs[t["id"]]), encoding="utf-8")
+        dest.write_text(render_league_dir(lg, club, ctxs), encoding="utf-8")
+        for t in club:
+            page = ROOT / "sports" / lg / "teams" / t["slug"] / "index.html"
+            page.parent.mkdir(parents=True, exist_ok=True)
+            page.write_text(render_team_page(t, ctxs[t["id"]]), encoding="utf-8")
 
     clubs_n = patch_clubs_directory(teams)
-    hub_n = patch_sports_hub()
-    hub_script = patch_rebuild_hub_script()
+    patch_sports_hub()
     lg_n = patch_league_hubs(teams)
-    up_n = patch_upgrade_league_script(teams)
     match_n = patch_match_pages(teams, ctxs)
     redir_n = upsert_redirects(teams)
     sm = rebuild_sitemap()
-
-    print(f"Built {len(teams)} team pages + hub")
-    print(f"Patched clubs directory rows: {clubs_n}")
-    print(f"Sports hub card: {hub_n}  rebuild script: {hub_script}")
-    print(f"League hubs: {lg_n}  upgrade script: {up_n}")
+    print(f"Built {len(teams)} team pages across 5 leagues")
+    print(f"Comics on {sum(1 for t in teams if t['comics'])} clubs")
+    print(f"Clubs directory rows: {clubs_n}")
+    print(f"League hubs: {lg_n}")
     print(f"Match pages linked: {match_n}")
-    print(f"Redirect aliases: {redir_n}")
+    print(f"Redirects: {redir_n}")
     print(f"Sitemap URLs: {sm}")
 
 
