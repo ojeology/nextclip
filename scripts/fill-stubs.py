@@ -59,7 +59,7 @@ def sibling_data(slug, type_dir):
                 d = json.loads(ld.group(1))
                 items = d if isinstance(d, list) else [d]
                 for it in items:
-                    if isinstance(it, dict) and it.get('@type') in ('Movie', 'TVSeries', 'Anime'):
+                    if isinstance(it, dict) and it.get('@type') in ('Movie', 'TVSeries'):
                         return it
             except Exception:
                 pass
@@ -104,7 +104,7 @@ def build(record, slug, type_dir, live_yt):
 
     # type
     if type_dir == 'series': ld_type, label = 'TVSeries', 'SERIES'
-    elif type_dir == 'anime': ld_type, label = 'Anime', 'ANIME'
+    elif type_dir == 'anime': ld_type, label = 'TVSeries', 'ANIME'
     else: ld_type, label = 'Movie', 'FILM'
     bread = 'Series' if type_dir == 'series' else 'Anime' if type_dir == 'anime' else 'Movies'
     crumb_top = f'/series/' if type_dir == 'series' else f'/anime/' if type_dir == 'anime' else '/movies/'
@@ -277,11 +277,7 @@ def build(record, slug, type_dir, live_yt):
                    {'@type': 'ListItem', 'position': 1, 'name': 'Home', 'item': f'{SITE}/'},
                    {'@type': 'ListItem', 'position': 2, 'name': bread, 'item': f'{SITE}{crumb_top}'},
                    {'@type': 'ListItem', 'position': 3, 'name': title, 'item': f'{SITE}/{type_dir}/{slug}/'}]})
-    if live_yt:
-        ld.append({'@context': 'https://schema.org', '@type': 'VideoObject',
-                   'name': f'{title} — Official Trailer', 'description': f'Official trailer for {title}.',
-                   'thumbnailUrl': yt_thumb(live_yt), 'embedUrl': f'https://www.youtube-nocookie.com/embed/{live_yt}',
-                   'publisher': {'@type': 'Organization', 'name': 'YouTube'}})
+    # VideoObject omitted unless a verified uploadDate exists (Google required field).
 
     return {
         'title': seo_title, 'meta_desc': meta_desc, 'poster': poster,
@@ -340,7 +336,7 @@ def build_ld_only(record, slug, type_dir, live_yt, title, lead, poster):
     directors = [d.strip() for d in director.split(';') if d.strip()] if isinstance(director, str) else director
     lang = record.get('language') or ''
     country = record.get('country') or ''
-    ld_type = 'TVSeries' if type_dir == 'series' else 'Anime' if type_dir == 'anime' else 'Movie'
+    ld_type = 'TVSeries' if type_dir in ('series', 'anime') else 'Movie'
     bread = 'Series' if type_dir == 'series' else 'Anime' if type_dir == 'anime' else 'Movies'
     crumb_top = f'/{type_dir}/' if type_dir in ('series', 'anime') else '/movies/'
     ld = [{
@@ -360,11 +356,7 @@ def build_ld_only(record, slug, type_dir, live_yt, title, lead, poster):
                    {'@type': 'ListItem', 'position': 1, 'name': 'Home', 'item': f'{SITE}/'},
                    {'@type': 'ListItem', 'position': 2, 'name': bread, 'item': f'{SITE}{crumb_top}'},
                    {'@type': 'ListItem', 'position': 3, 'name': title, 'item': f'{SITE}/{type_dir}/{slug}/'}]})
-    if live_yt:
-        ld.append({'@context': 'https://schema.org', '@type': 'VideoObject',
-                   'name': f'{title} — Official Trailer', 'description': f'Official trailer for {title}.',
-                   'thumbnailUrl': yt_thumb(live_yt), 'embedUrl': f'https://www.youtube-nocookie.com/embed/{live_yt}',
-                   'publisher': {'@type': 'Organization', 'name': 'YouTube'}})
+    # VideoObject omitted unless a verified uploadDate exists (Google required field).
     return json.dumps(ld, ensure_ascii=False)
 
 def backfill_ld():

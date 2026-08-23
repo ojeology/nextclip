@@ -174,3 +174,11 @@
 /movies/adventure/  /movies/action/  301
 /movies/sports/  /movies/  301
 /movies/shonen/  /anime/  301
+# Duplicate title slugs → canonical slug
+/movie/baahubali/  /movie/baahubali-the-beginning/  301
+/movie/everything-everywhere/  /movie/everything-everywhere-all-at-once/  301
+/movie/grand-budapest/  /movie/the-grand-budapest-hotel/  301
+/movie/half-yellow-sun/  /movie/half-of-a-yellow-sun/  301
+/movie/living-in-bondage/  /movie/living-in-bondage-breaking-free/  301
+/movie/mi-final-reckoning/  /movie/mission-impossible-the-final-reckoning/  301
+/movie/spider-verse-2/  /movie/spider-man-across-spider-verse/  301
