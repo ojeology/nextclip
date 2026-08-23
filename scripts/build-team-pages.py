@@ -634,7 +634,7 @@ def render_team_page(team: dict, ctx: dict) -> str:
                 mws.append(m["mw"])
         carousel = mws[:6]
         current = (prev_m or next_m or matches[0])["mw"] if matches else 1
-        slides, pills, archive = [], [], []
+        slides, pills = [], []
         for mw in carousel:
             group = [m for m in matches if m["mw"] == mw]
             done = [m for m in group if m.get("result")]
@@ -645,46 +645,68 @@ def render_team_page(team: dict, ctx: dict) -> str:
                 if done else (f"{group[0]['homeName']} vs {group[0]['awayName']}" if group else "Awaiting")
             )
             pills.append(
-                f'<button type="button" class="mwc-pill{" is-current" if is_cur else ""}" data-mwc-card="{mw}" aria-pressed="{"true" if is_cur else "false"}">MW {mw}</button>'
+                f'<button type="button" class="mwc-pill{" is-current" if is_cur else ""}" data-mwc-card="{mw}" aria-label="Matchweek {mw}" aria-pressed="{"true" if is_cur else "false"}"></button>'
             )
             if story:
-                inner = (
-                    f'<header class="mwc-story-head"><p class="eyebrow">Matchweek {mw} complete</p>'
-                    f"<h3>{esc(story.get('headline') or f'Matchweek {mw}')}</h3>"
-                    f'<p class="mwc-resultline">{esc(story.get("resultLine") or sub)}</p>'
-                    f'<p class="mwc-jump">Match report: <a href="{esc(done[-1]["href"])}">{esc(done[-1]["homeName"])} vs {esc(done[-1]["awayName"])}</a></p></header>'
-                    f'{render_panels(story, art)}'
+                used = [p.get("art") for p in (story.get("panels") or [])]
+                bg_key = next((k for k in ("concede", "celebrate", "manager", "kickoff", "arrival") if k in used), "kickoff")
+                bg = art.get(bg_key) or art.get("kickoff") or ""
+                lines = []
+                for p in story.get("panels") or []:
+                    bubble = p.get("bubble") or ""
+                    title = p.get("title") or ""
+                    if not bubble and not title:
+                        continue
+                    lines.append(
+                        f"<li><b>{esc(title)}</b>"
+                        + (f"<q>{esc(bubble)}</q>" if bubble else "")
+                        + "</li>"
+                    )
+                report = (
+                    f'<a class="mwc-report" href="{esc(done[-1]["href"])}">Open the match report</a>'
+                    if done else ""
                 )
-                archive.append(
-                    f'<li><a href="#mw-{mw}"><b>Matchweek {mw}</b><span>{esc(story.get("resultLine") or sub)}</span><em>Read comic</em></a></li>'
+                inner = (
+                    f'<div class="mwc-hero-card" style="--mwc-art:url(\'{esc(bg)}\')">'
+                    f'<div class="mwc-hero-shade" aria-hidden="true"></div>'
+                    f'<div class="mwc-hero-copy">'
+                    f'<p class="mwc-badge">Matchweek {mw} · Complete</p>'
+                    f'<p class="mwc-score">{esc(story.get("resultLine") or sub)}</p>'
+                    f"<h2>{esc(story.get('headline') or f'Matchweek {mw}')}</h2>"
+                    f'<ol class="mwc-lines">{"".join(lines)}</ol>{report}'
+                    f"</div></div>"
                 )
             else:
+                bg = art.get("awaiting") or ""
+                nxt = group[0] if group else None
+                detail = ""
+                if nxt:
+                    detail = (
+                        f'<p class="mwc-score">{esc(nxt["homeName"])} vs {esc(nxt["awayName"])}</p>'
+                        f'<p class="mwc-when">{esc(fmt_date(nxt["date"], nxt.get("mw")))} · {esc(fmt_time(nxt["time"]))}</p>'
+                        f'<a class="mwc-report" href="{esc(nxt["href"])}">Open the preview</a>'
+                    )
+                else:
+                    detail = '<p class="mwc-when">The comic is written after a sourced full-time result.</p>'
                 inner = (
-                    f'<header class="mwc-story-head"><p class="eyebrow">Matchweek {mw}</p>'
-                    f"<h3>Awaiting matchweek {mw}</h3></header>"
-                    f'{render_awaiting(art, group[0] if group else None, mw)}'
-                )
-                archive.append(
-                    f'<li class="is-await"><span><b>Matchweek {mw}</b><span>{esc(sub)}</span></span><em>Awaiting</em></li>'
+                    f'<div class="mwc-hero-card is-await" style="--mwc-art:url(\'{esc(bg)}\')">'
+                    f'<div class="mwc-hero-shade" aria-hidden="true"></div>'
+                    f'<div class="mwc-hero-copy">'
+                    f'<p class="mwc-badge">Matchweek {mw} · Awaiting</p>'
+                    f"<h2>Awaiting matchweek {mw}</h2>{detail}"
+                    f"</div></div>"
                 )
             slides.append(
                 f'<article class="mwc-slide{" is-current" if is_cur else ""}" data-mwc-story="{mw}" id="mw-{mw}">{inner}</article>'
             )
         chronicles = f"""
-<section class="mwc mwc-top" id="chronicles" data-mwc>
-  <div class="mwc-topbar">
-    <div>
-      <p class="eyebrow">Original BRYME comic</p>
-      <h2>Matchweek Chronicles</h2>
-    </div>
-    <div class="mwc-pills" role="tablist" aria-label="Matchweeks">{''.join(pills)}</div>
-  </div>
+<section class="mwc mwc-top" id="chronicles" data-mwc aria-label="Matchweek Chronicles">
   <div class="mwc-stage">
     <button type="button" class="mwc-nav mwc-nav-prev" data-mwc-prev aria-label="Previous matchweek">‹</button>
     <div class="mwc-track" data-mwc-track>{''.join(slides)}</div>
     <button type="button" class="mwc-nav mwc-nav-next" data-mwc-next aria-label="Next matchweek">›</button>
   </div>
-  <div class="mwc-archive" id="archive"><h3>Earlier weeks</h3><ul>{''.join(archive)}</ul></div>
+  <div class="mwc-pills" role="tablist" aria-label="Matchweeks">{''.join(pills)}</div>
 </section>"""
 
     up_html = "".join(match_card(m, league, by_id) for m in upcoming) or '<p class="td-empty">No upcoming league fixture in the file.</p>'
