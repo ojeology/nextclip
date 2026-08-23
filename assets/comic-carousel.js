@@ -55,21 +55,21 @@
       dir:"/assets/img/sports/comics/brentford-tottenham-mw1/",
       home:{ab:"BRE",sw:"sw-rwstripes",clr:"#e23b3b"},away:{ab:"TOT",sw:"sw-white",clr:"#e6e8ec"},
       chapters:[
-        {imgs:["bc-01.jpg","bc-09.jpg","bc-10.jpg"],audio:"bc-ch01.mp3",tag:"Derby night",min:"PRE-MATCH",h:0,a:0,st:"build",title:"London derby — who go cry?",
+        {imgs:["bc-01.jpg","bc-09.jpg","bc-10.jpg","bc-24.jpg"],audio:"bc-ch01.mp3",tag:"Derby night",min:"PRE-MATCH",h:0,a:0,st:"build",title:"London derby — who go cry?",
          cap:[["🎙️ Commentator","London derby night for west London! Brentford dey buzz, Spurs dey carry big-boy name come — make we see who go cry!","c"],["Brentford fan","Na we be the real Bees! Any London team wey come here go collect!","hm"],["Spurs fan","Abeg, na pre-season form dem dey use. We go show dem today!","aw"]]},
-        {imgs:["bc-02.jpg","bc-11.jpg","bc-12.jpg"],audio:"bc-ch02.mp3",tag:"GOAL · 12'",min:"12'",h:1,a:0,st:"live",title:"Lewis-Potter sting dem early!",
+        {imgs:["bc-02.jpg","bc-11.jpg","bc-12.jpg","bc-25.jpg"],audio:"bc-ch02.mp3",tag:"GOAL · 12'",min:"12'",h:1,a:0,st:"live",title:"Lewis-Potter sting dem early!",
          cap:[["🎙️ Commentator","GOOOAL! Lewis-Potter don sting dem early! Brentford one nil — Spurs never even settle!","c"],["Lewis-Potter","Open am sharp-sharp! Dem think say na play!","hm"],["Spurs defender","Wait, match don start? Who mark am?!","aw"]]},
-        {imgs:["bc-03.jpg","bc-13.jpg"],audio:"bc-ch03.mp3",tag:"Press",min:"20'",h:1,a:0,st:"live",title:"Brentford press like debt!",
+        {imgs:["bc-03.jpg","bc-13.jpg","bc-21.jpg"],audio:"bc-ch03.mp3",tag:"Press",min:"20'",h:1,a:0,st:"live",title:"Brentford press like debt!",
          cap:[["🎙️ Commentator","Brentford dey press dem like say dem owe dem money! Spurs no fit breathe!","c"],["Brentford player","High press, no rest! Make dem fear!","hm"],["Spurs player","Haaa, these boys dey run two engine!","aw"]]},
         {imgs:["bc-04.jpg","bc-14.jpg","bc-15.jpg"],audio:"bc-ch04.mp3",tag:"GOAL · 33'",min:"33'",h:2,a:0,st:"live",title:"Janelt! Two nil — defense na sieve!",
          cap:[["🎙️ Commentator","Two nil! Janelt add another one! Spurs defense don turn to sieve!","c"],["Janelt","Two don enter! The bees dey sting steady!","hm"],["Spurs fan","This one na film trick! How we con dey lose like this?!","aw"]]},
-        {imgs:["bc-05.jpg","bc-16.jpg"],audio:"bc-ch05.mp3",tag:"Frustration",min:"40'",h:2,a:0,st:"live",title:"Spurs dey look themselves!",
+        {imgs:["bc-05.jpg","bc-16.jpg","bc-22.jpg"],audio:"bc-ch05.mp3",tag:"Frustration",min:"40'",h:2,a:0,st:"live",title:"Spurs dey look themselves!",
          cap:[["🎙️ Commentator","Spurs boys dey look themselves — 'we go come back from this one?' E hard o!","c"],["Spurs player","Make we just try score one, abeg!","aw"],["Brentford fan","Score one kee una! Na three we dey look for!","hm"]]},
         {imgs:["bc-06.jpg","bc-17.jpg","bc-18.jpg"],audio:"bc-ch06.mp3",tag:"GOAL · 48'",min:"48'",h:3,a:0,st:"live",title:"Kayode! Three nil — rout proper!",
          cap:[["🎙️ Commentator","THREE NIL! Kayode finish the wahala just after half! Rout proper!","c"],["Kayode","Game over! The bees don take over London tonight!","hm"],["Spurs fan","Referee, abeg blow make we go house!","aw"]]},
-        {imgs:["bc-07.jpg","bc-19.jpg"],audio:"bc-ch07.mp3",tag:"Silent away end",min:"80'",h:3,a:0,st:"live",title:"Away end quiet like cemetery!",
+        {imgs:["bc-07.jpg","bc-19.jpg","bc-23.jpg"],audio:"bc-ch07.mp3",tag:"Silent away end",min:"80'",h:3,a:0,st:"live",title:"Away end quiet like cemetery!",
          cap:[["🎙️ Commentator","The away end don quiet like cemetery. Only the home end dey make noise!","c"],["Spurs fan","I no fit shout again. Make we just go home.","aw"],["Brentford fan","Sing louder, na your town we dey!","hm"]]},
-        {imgs:["bc-08.jpg","bc-20.jpg"],audio:"bc-ch08.mp3",tag:"Full time",min:"FT",h:3,a:0,st:"ft",title:"West London na Bees own!",
+        {imgs:["bc-08.jpg","bc-20.jpg","bc-26.jpg"],audio:"bc-ch08.mp3",tag:"Full time",min:"FT",h:3,a:0,st:"ft",title:"West London na Bees own!",
          cap:[["🎙️ Commentator","Full time! Brentford three, Tottenham nil! The Bees don show say west London na their own!","c"],["Brentford fan","London is red-and-white tonight! Champions of the derby!","hm"],["Spurs fan","Long journey back across London... silent coach!","aw"]]}
       ]
     }
@@ -98,6 +98,7 @@
         '<div class="mc-dots"></div>'+
         '<button class="mc-play" aria-pressed="true">⏸ Pause</button>'+
         '<button class="mc-sound" aria-pressed="false">🔇 Sound</button>'+
+        '<button class="mc-fs-open" aria-label="Vertical TikTok view">📱 TikTok</button>'+
         '<button class="mc-nav mc-next" aria-label="Next">Next ›</button>'+
         '<span class="mc-cnt" id="mccnt"></span>'+
       '</div>'+
@@ -105,11 +106,12 @@
         '<span class="mc-md-i on"><span class="mc-md-n">● Matchday 1</span><span class="mc-md-s">BRYME Match Comic · playing now</span></span>'+
         '<a class="mc-md-i soon" href="/sports/premier-league/"><span class="lock">🔒</span><span class="mc-md-n">Matchday 2</span><span class="mc-md-s">Comic drops after full time</span></a>'+
         '<a class="mc-md-i soon" href="/sports/premier-league/"><span class="lock">🔒</span><span class="mc-md-n">Matchday 3</span><span class="mc-md-s">Coming soon</span></a>'+
-      '</div>';
+      '</div>'+
+      '<button class="mc-fs-close" id="mcfsx" aria-label="Exit vertical view">✕</button>';
     var track=root.querySelector(".mc-track"),dotsEl=root.querySelector(".mc-dots"),barsEl=root.querySelector(".mc-bars"),
         pill=root.querySelector("#mcpill"),score=root.querySelector("#mcscore"),tag=root.querySelector("#mctag"),
         title=root.querySelector("#mctitle"),cntEl=root.querySelector("#mccnt"),playBtn=root.querySelector(".mc-play"),
-        soundBtn=root.querySelector(".mc-sound"),deck=root.querySelector(".mc-deck"),capCard=root.querySelector("#mccap"),len=S.length;
+        soundBtn=root.querySelector(".mc-sound"),deck=root.querySelector(".mc-deck"),capCard=root.querySelector("#mccap"),fsBtn=root.querySelector(".mc-fs-open"),fsx=root.querySelector(".mc-fs-close"),len=S.length;
     track.innerHTML=S.map(function(s,i){
       var layers=s.imgs.map(function(g,k){return '<img class="mc-layer'+(k===0?' on':'')+'" src="'+DIR+g+'" alt="Original BRYME comic frame: '+s.title+'" loading="'+(i||k?'lazy':'eager')+'">';}).join("");
       return '<div class="mc-card">'+layers+'</div>';
@@ -178,6 +180,10 @@
     root.querySelector(".mc-prev").addEventListener("click",function(){show(idx-1,"prev");});
     playBtn.addEventListener("click",function(){playing?pause():resume();});
     soundBtn.addEventListener("click",toggleSound);
+    function enterFs(){ root.classList.add("mc-fs"); document.body.style.overflow="hidden"; if(muted) toggleSound(); }
+    function exitFs(){ root.classList.remove("mc-fs"); document.body.style.overflow=""; }
+    fsBtn.addEventListener("click",enterFs);
+    fsx.addEventListener("click",exitFs);
     deck.addEventListener("mouseenter",function(){hover=true;});
     deck.addEventListener("mouseleave",function(){hover=false;last=performance.now();});
     var sx=null;
