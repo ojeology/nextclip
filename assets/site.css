@@ -3832,3 +3832,97 @@ body:has(main.tp-page){padding-top:0}
 .tech-feat .sp-feat-main:after,.tech-feat .sp-feat-side a:after{
   background:linear-gradient(180deg,rgba(5,8,16,.05),rgba(5,8,16,.84));
 }
+
+/* ===== BRYME team pages + matchweek chronicles ===== */
+.tp-page{--tp:#3ddc84}
+.tp-main{padding-bottom:48px}
+.tp-hero{display:grid;gap:18px;margin:8px 0 28px;padding:18px;border:1px solid var(--line);border-radius:14px;background:linear-gradient(180deg,rgba(20,24,30,.95),#101318);box-shadow:inset 0 1px 0 rgba(255,255,255,.03)}
+.tp-hero-id{display:flex;gap:16px;align-items:flex-start}
+.tp-crest{width:72px;height:72px;object-fit:contain;flex:0 0 72px;filter:drop-shadow(0 6px 14px rgba(0,0,0,.45))}
+.tp-hero h1{margin:4px 0 8px;font-size:clamp(28px,5vw,44px);line-height:1.05}
+.tp-meta{color:var(--muted);font-size:13px;margin:0 0 8px}
+.tp-meta a{color:var(--gold);font-weight:700}
+.tp-blurb{margin:0;color:#d5d8dc;font-size:15px;max-width:62ch}
+.tp-blurb .quiet-link{display:inline-block;margin-left:6px;color:var(--muted);font-size:12px}
+.tp-hero-sides{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.tp-side{display:block;border:1px solid var(--line);border-radius:10px;padding:12px 14px;background:#0c0e12;min-height:92px}
+a.tp-side:hover{border-color:var(--tp)}
+.tp-side-k{margin:0 0 8px;font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--tp)}
+.tp-side-row{display:flex;gap:10px;align-items:center}
+.tp-side-row img{width:36px;height:36px;object-fit:contain}
+.tp-side-row b{display:block;font-size:14px;line-height:1.3}
+.tp-side-row span{display:block;color:var(--muted);font-size:12px}
+.tp-side-empty{margin:0;color:var(--muted);font-size:13px}
+.tp-overview,.tp-fix,.tp-res,.tp-links,.mwc{margin:8px 0 32px}
+.tp-stats{list-style:none;display:grid;grid-template-columns:repeat(9,minmax(64px,1fr));gap:8px;padding:0;margin:0 0 14px}
+.tp-stats li{border:1px solid var(--line);border-radius:10px;background:#101318;padding:10px 8px;text-align:center}
+.tp-stats b{display:block;font-size:22px;line-height:1.1}
+.tp-stats span{display:block;margin-top:4px;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.tp-form-row{display:flex;align-items:center;gap:10px;margin:0;color:var(--muted);font-size:13px}
+.tp-form{display:inline-flex;gap:6px}
+.tp-pill{display:inline-grid;place-items:center;min-width:22px;height:22px;padding:0 6px;border-radius:4px;font-size:11px;font-weight:800}
+.tp-pill-w{background:#143d28;color:#3ddc84}
+.tp-pill-d{background:#3a3420;color:#e7bb5c}
+.tp-pill-l{background:#3d1820;color:#ff6b6b}
+.tp-form-empty{color:var(--muted)}
+.tp-table a{color:var(--gold);font-weight:700}
+.tp-empty{color:var(--muted)}
+.tp-linkrow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:0 0 12px}
+.tp-linkrow b{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-right:6px}
+.tp-linkrow a{border:1px solid var(--line);border-radius:999px;padding:6px 12px;font-size:13px;font-weight:700}
+.tp-linkrow a:hover{border-color:var(--sports);color:#fff}
+.mwc-masthead{display:block;width:100%;max-height:160px;object-fit:cover;object-position:center;border-radius:12px;margin:0 0 14px;background:#111}
+.mwc-carousel{position:relative;margin:8px 0 18px}
+.mwc-track{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(200px,28%);gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 36px 14px;scrollbar-width:none;overscroll-behavior-x:contain}
+.mwc-track::-webkit-scrollbar{display:none}
+.mwc-card{scroll-snap-align:start;text-align:left;cursor:pointer;border:1px solid var(--line);border-radius:12px;background:#101318;padding:14px 14px 16px;min-height:118px;color:inherit;font:inherit}
+.mwc-card.is-current,.mwc-card[aria-pressed="true"]{border-color:var(--tp);box-shadow:0 0 0 1px var(--tp)}
+.mwc-card-kicker{display:block;font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+.mwc-card-state{display:inline-block;font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;border-radius:999px;padding:2px 8px;margin-bottom:8px}
+.mwc-complete{background:#143d28;color:#3ddc84}
+.mwc-awaiting{background:#2a2418;color:#e7bb5c}
+.mwc-card-sub{display:block;font-size:13px;color:#d5d8dc;line-height:1.35}
+.mwc-story{display:none;border:1px solid var(--line);border-radius:14px;padding:16px;background:#0c0e12}
+.mwc-story.is-active{display:block}
+.mwc-story-head h3{margin:4px 0 8px;font-size:clamp(20px,3vw,28px)}
+.mwc-resultline{margin:0 0 6px;font-weight:800}
+.mwc-jump{margin:0 0 14px;font-size:13px}
+.mwc-jump a{color:var(--gold);font-weight:700}
+.mwc-panels{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.mwc-panel figure{margin:0}
+.mwc-panel img{width:100%;height:auto;border-radius:10px;background:#111;aspect-ratio:1200/669;object-fit:cover}
+.mwc-panel figcaption{display:flex;flex-direction:column;gap:4px;margin-top:8px;font-size:13px;color:#d5d8dc}
+.mwc-panel figcaption b{color:#fff}
+.mwc-bubble{margin:8px 0 0}
+.mwc-bubble span{display:inline-block;background:#f4f5f6;color:#111;border-radius:16px 16px 16px 4px;padding:8px 12px;font-size:13px;font-weight:700;line-height:1.35}
+.mwc-await{display:grid;grid-template-columns:1.1fr .9fr;gap:16px;align-items:center}
+.mwc-await img{width:100%;height:auto;border-radius:10px}
+.mwc-archive ul{list-style:none;margin:10px 0 0;padding:0;display:grid;gap:8px}
+.mwc-archive li a,.mwc-archive li.is-await{display:flex;justify-content:space-between;gap:12px;align-items:center;border:1px solid var(--line);border-radius:10px;padding:10px 12px;background:#101318}
+.mwc-archive li a:hover{border-color:var(--sports)}
+.mwc-archive b{display:block}
+.mwc-archive span span,.mwc-archive a span{display:block;color:var(--muted);font-size:13px}
+.mwc-archive em{font-style:normal;color:var(--gold);font-size:12px;font-weight:800}
+.tp-hub-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px;margin:0 0 28px}
+.tp-hub-card{display:flex;gap:12px;align-items:center;border:1px solid var(--line);border-radius:12px;padding:12px;background:#101318}
+.tp-hub-card:hover{border-color:var(--tp)}
+.tp-hub-card img{width:48px;height:48px;object-fit:contain}
+.tp-hub-card b{display:block}
+.tp-hub-card span{display:block;font-size:12px;color:var(--muted);line-height:1.4}
+.tp-league-teams{padding:8px 0 22px}
+.tp-lg-chips{display:flex;flex-wrap:wrap;gap:8px}
+.tp-lg-chip{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:999px;padding:6px 12px;font-size:13px;font-weight:700;background:#101318}
+.tp-lg-chip img{width:22px;height:22px;object-fit:contain}
+.tp-lg-chip:hover{border-color:var(--sports)}
+.tp-match-jump{margin:8px 0 14px;font-size:13px;color:var(--muted)}
+.tp-match-jump a{color:var(--gold);font-weight:700}
+@media (max-width:860px){
+  .tp-stats{grid-template-columns:repeat(3,1fr)}
+  .tp-hero-sides{grid-template-columns:1fr}
+  .mwc-panels,.mwc-await{grid-template-columns:1fr}
+  .mwc-track{grid-auto-columns:78%;padding-left:2px;padding-right:2px}
+}
+@media (prefers-reduced-motion:reduce){
+  .mwc-track{scroll-behavior:auto}
+}
+

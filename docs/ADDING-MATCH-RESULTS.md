@@ -131,3 +131,12 @@ by a person who checked it. A feed would be faster and would also mean the site 
 a wrong scoreline without anyone having looked at it. If you want one later, the place to add
 it is a script that writes `content/results.json` in this format — everything downstream
 already works and would need no changes.
+
+After a sourced result is in, rebuild team pages so next/previous, form and
+Matchweek Chronicles stay in sync:
+
+```
+python3 scripts/build-team-pages.py
+```
+
+See `docs/TEAM-PAGES.md`.

@@ -14,6 +14,7 @@ LEAGUES = {
         'cta': ('/sports/premier-league/matches/', 'Match Centre'),
         'ghost': ('/sports/premier-league/results/', 'Results'),
         'chips': [
+            ('/sports/teams/', 'Team pages'),
             ('/sports/premier-league/fixtures/', 'Fixtures'),
             ('/sports/premier-league/results/', 'Results'),
             ('/sports/fpl/', 'FPL'),
@@ -36,6 +37,7 @@ LEAGUES = {
         'cta': ('/sports/la-liga/matches/', 'Match Centre'),
         'ghost': ('/sports/la-liga/results/', 'Results'),
         'chips': [
+            ('/sports/teams/', 'Team pages'),
             ('/sports/la-liga/fixtures/', 'Fixtures'),
             ('/sports/la-liga/results/', 'Results'),
             ('/sports/transfers/la-liga-2026-27/', 'Transfers'),
@@ -56,6 +58,7 @@ LEAGUES = {
         'cta': ('/sports/serie-a/matches/', 'Match Centre'),
         'ghost': ('/sports/serie-a/fixtures/', 'Fixtures'),
         'chips': [
+            ('/sports/teams/', 'Team pages'),
             ('/sports/serie-a/results/', 'Results'),
             ('/sports/transfers/serie-a-2026-27/', 'Transfers'),
         ],

@@ -1184,3 +1184,81 @@ document.addEventListener('error', function (e) {
   });
 })();
 
+/* BRYME Matchweek Chronicles — team pages */
+(function () {
+  var root = document.querySelector('[data-mwc]');
+  if (!root) return;
+  var track = root.querySelector('[data-mwc-track]');
+  var cards = [].slice.call(root.querySelectorAll('[data-mwc-card]'));
+  var stories = [].slice.call(root.querySelectorAll('[data-mwc-story]'));
+  var prev = root.querySelector('[data-mwc-prev]');
+  var next = root.querySelector('[data-mwc-next]');
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var timer = null;
+  var hovering = false;
+
+  function show(mw) {
+    cards.forEach(function (c) {
+      var on = c.getAttribute('data-mwc-card') === String(mw);
+      c.classList.toggle('is-current', on);
+      c.setAttribute('aria-pressed', on ? 'true' : 'false');
+      if (on && track && c.scrollIntoView) {
+        try { c.scrollIntoView({ inline: 'nearest', block: 'nearest', behavior: reduce ? 'auto' : 'smooth' }); } catch (e) {}
+      }
+    });
+    stories.forEach(function (s) {
+      s.classList.toggle('is-active', s.getAttribute('data-mwc-story') === String(mw));
+    });
+  }
+
+  function currentMw() {
+    var cur = root.querySelector('.mwc-card.is-current');
+    return cur ? cur.getAttribute('data-mwc-card') : (cards[0] && cards[0].getAttribute('data-mwc-card'));
+  }
+
+  function step(dir) {
+    if (!cards.length) return;
+    var ids = cards.map(function (c) { return c.getAttribute('data-mwc-card'); });
+    var i = ids.indexOf(currentMw());
+    if (i < 0) i = 0;
+    i = (i + dir + ids.length) % ids.length;
+    show(ids[i]);
+  }
+
+  cards.forEach(function (c) {
+    c.addEventListener('click', function () { show(c.getAttribute('data-mwc-card')); });
+  });
+  if (prev) prev.addEventListener('click', function () { step(-1); });
+  if (next) next.addEventListener('click', function () { step(1); });
+
+  root.querySelectorAll('.mwc-archive a[href^="#mw-"]').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      var id = (a.getAttribute('href') || '').replace('#mw-', '');
+      if (!id) return;
+      e.preventDefault();
+      show(id);
+      var el = document.getElementById('mw-' + id);
+      if (el) el.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+    });
+  });
+
+  function arm() {
+    if (timer) clearInterval(timer);
+    timer = null;
+    if (reduce || cards.length < 2) return;
+    timer = setInterval(function () {
+      if (hovering || document.hidden) return;
+      step(1);
+    }, 7000);
+  }
+  root.addEventListener('mouseenter', function () { hovering = true; });
+  root.addEventListener('mouseleave', function () { hovering = false; });
+  root.addEventListener('focusin', function () { hovering = true; });
+  root.addEventListener('focusout', function () { hovering = false; });
+  document.addEventListener('visibilitychange', function () {
+    if (document.hidden && timer) { clearInterval(timer); timer = null; }
+    else arm();
+  });
+  arm();
+})();
+
