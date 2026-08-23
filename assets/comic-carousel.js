@@ -1,4 +1,4 @@
-/* BRYME Match Comic — FULL-BLEED cinematic carousel, 12 beats, Naija Pidgin banter.
+/* BRYME Match Comic — FULL-BLEED cinematic carousel, 18 beats, Naija Pidgin banter.
    ONE bubble at a time. VOICEOVER per beat. BRYME fingerprint + Matchday nav. */
 (function(){
   var DIR="/assets/img/sports/comics/hull-united-mw1/";
@@ -9,11 +9,26 @@
      ban:[["🎙️ Commentator","After 9 years for relegation wilderness, the Tigers don return home! MKM Stadium dey burst!","c"],
           ["Hull fan","Omo! I don wait nine years for this night. My heart dey beat!","f"],
           ["United fan","Na wah. These people too dey hyped. Calm down na!","u"]]},
+    {img:"13.jpg",audio:"hu-n1.mp3",tag:"Tunnel",min:"PRE-MATCH",h:0,a:0,st:"build",title:"Eye dey red — nine years of hunger!",
+     pos:[[28,56],[8,62],[54,60]],
+     ban:[["🎙️ Commentator","Teams dey tunnel now! Eye dey red, chest dey beat — nine years of hunger!","c"],
+          ["Hull captain","Today, we show dem say Tigers no dey fear anybody!","h"],
+          ["United captain","Make we just calm down, play our ball. No shake.","u"]]},
     {img:"02.jpg",audio:"hu-02.mp3",tag:"Kick-off",min:"1'",h:0,a:0,st:"live",title:"Hull enter like alert!",
      pos:[[28,56],[8,62],[54,60]],
      ban:[["🎙️ Commentator","Whistle blow! Hull City enter Premier League like person wey collect alert!","c"],
           ["United player","Why these people dey run like say dem drink fuel? Calm down na!","u"],
           ["Hull player","My friend, welcome back to Premier League! No rest for the wicked today!","h"]]},
+    {img:"14.jpg",audio:"hu-n2.mp3",tag:"5' · High press",min:"5'",h:0,a:0,st:"live",title:"Hull press like no brake!",
+     pos:[[28,56],[8,62],[54,60]],
+     ban:[["🎙️ Commentator","Hull press like say dem no get brake! Tackle dey fly up and down!","c"],
+          ["Hull player","We no go give dem breathing space! Press, press, press!","h"],
+          ["United player","These boys dey run like say dem drink substance! Haaa!","u"]]},
+    {img:"15.jpg",audio:"hu-n3.mp3",tag:"10' · Near miss",min:"10'",h:0,a:0,st:"live",title:"McBurnie nearly nod am!",
+     pos:[[28,56],[8,62],[54,60]],
+     ban:[["🎙️ Commentator","Coyle whip dangerous cross! McBurnie nearly nod am inside — inches wide!","c"],
+          ["McBurnie","Ah! I suppose score that one! The grass cheat me!","h"],
+          ["Coyle","No worry, more dey come. We go chop one soon.","h"]]},
     {img:"03.jpg",audio:"hu-03.mp3",tag:"12' · Save",min:"12'",h:0,a:0,st:"live",title:"Tzolakis catch am like rent!",
      pos:[[28,56],[8,62],[54,60]],
      ban:[["🎙️ Commentator","United dey find tiki-taka, Hull dey find trouble! Tzolakis catch ball like landlord wey come collect house rent!","c"],
@@ -39,6 +54,11 @@
      ban:[["🎙️ Commentator","MKM Stadium don turn mad house! Nine years of waiting, e don pay!","c"],
           ["Ajayi","I don wait my whole career for this kind night. E choke!","h"],
           ["Home fan","I don tire to shout but I no go stop. Tigers!","f"]]},
+    {img:"16.jpg",audio:"hu-n4.mp3",tag:"20' · Bruno hot",min:"20'",h:1,a:0,st:"live",title:"Bruno dey blame everybody!",
+     pos:[[28,56],[8,62],[54,60]],
+     ban:[["🎙️ Commentator","Bruno don dey hot! He dey shout, dey point, dey blame referee, ball, even the wind!","c"],
+          ["Bruno Fernandes","Wetin be this?! Nobody dey mark! Everybody dey look!","u"],
+          ["United teammate","Baba, calm down, na only one nil. We go come back.","u"]]},
     {img:"08.jpg",audio:"hu-c3.mp3",tag:"34' · Yellow",min:"34'",h:1,a:0,st:"live",title:"Dorgu see yellow!",
      pos:[[28,56],[8,62],[54,60]],
      ban:[["🎙️ Commentator","Dorgu see yellow! The boy dey complain say he no even touch am!","c"],
@@ -59,6 +79,16 @@
      ban:[["🎙️ Commentator","Man United fans currently holding 72% possession award, while Hull fans are busy counting their 3 points.","c"],
           ["United player","Omo, we get 72% possession o! We dey dictate the pace!","u"],
           ["Hull defender","Eyah. Sorry say possession no dey inside soup. 2–0 still remains 2–0!","h"]]},
+    {img:"17.jpg",audio:"hu-n5.mp3",tag:"67' · Changes",min:"67'",h:2,a:0,st:"live",title:"Fresh legs, desperation set in!",
+     pos:[[28,56],[8,62],[54,60]],
+     ban:[["🎙️ Commentator","Carrick dey ring the changes! Fresh legs dey enter, desperation don set in!","c"],
+          ["Rashford","My time don reach. Make I enter go change this thing!","u"],
+          ["Hull defender","Make dem bring who dem want, wall no dey move.","h"]]},
+    {img:"18.jpg",audio:"hu-n6.mp3",tag:"78' · Double save",min:"78'",h:2,a:0,st:"live",title:"Tzolakis wall no dey break!",
+     pos:[[28,56],[8,62],[54,60]],
+     ban:[["🎙️ Commentator","Tzolakis don do double save o! First the shot, then the rebound! Wall no dey break!","c"],
+          ["Tzolakis","Anything wey enter my box, I go commot. Na me dey here!","h"],
+          ["Sesko","This keeper dey impossible! Wetin man go do?!","u"]]},
     {img:"12.jpg",audio:"hu-08.mp3",tag:"Full time",min:"FT",h:2,a:0,st:"ft",title:"Tigers are back — and starving!",
      pos:[[28,56],[8,62],[54,60]],
      ban:[["🎙️ Commentator","Full time! Tigers show Premier League say wetin pass you, make you leave am for owners!","c"],
@@ -67,7 +97,7 @@
   ];
   var PILL={build:"BUILD-UP",live:"LIVE",ht:"HALF TIME",ft:"FULL TIME"};
   var POS=[[28,56],[8,62],[54,60]];
-  var STEP=3700, VISIBLE=3000, LEAD=500;   // ONE bubble at a time
+  var STEP=3700, VISIBLE=3000, LEAD=500;
   function init(){
     var root=document.getElementById("mc-hero"); if(!root) return;
     root.className="mc";
