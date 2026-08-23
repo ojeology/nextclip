@@ -94,6 +94,28 @@
         {imgs:["re-08.jpg","re-18.jpg","re-26.jpg"],audio:"re-ch08.mp3",tag:"Full time",min:"FT",h:1,a:2,st:"ft",title:"The kings find a way again!",
          cap:[["🎙️ Commentator","Full time! Espanyol one, Real Madrid two! Stolen at the death — the kings find a way again!","c"],["Real Madrid fan","Champions mentality! We no dey give up!","aw"],["Espanyol fan","Heads up, boys. We play well. Next time!","hm"]]}
       ]
+    },
+    "mancity-bournemouth":{
+      dir:"/assets/img/sports/comics/mancity-bournemouth-mw1/",
+      home:{ab:"MCI",sw:"sw-sky",clr:"#5aa9e6"},away:{ab:"BOU",sw:"sw-red",clr:"#e23b3b"},
+      chapters:[
+        {imgs:["mc-01.jpg","mc-09.jpg","mc-10.jpg"],audio:"mc-ch01.mp3",tag:"Etihad night",min:"PRE-MATCH",h:0,a:0,st:"build",title:"New era — Maresca's bow!",
+         cap:[["🎙️ Commentator","Etihad night! New era begin — Maresca first home match after Guardiola! But Bournemouth no come to do birthday!","c"],["Man City fan","New boss, same expectation! Three points na must today!","hm"],["Bournemouth fan","We no fear dem! Make we cause wahala!","aw"]]},
+        {imgs:["mc-02.jpg"],audio:"mc-ch02.mp3",tag:"GOAL · Bournemouth lead",min:"38'",h:0,a:1,st:"live",title:"Shock! Bournemouth don score!",
+         cap:[["🎙️ Commentator","GOOOAL! Bournemouth don score! Etihad don quiet! The underdogs dey lead!","c"],["Bournemouth fan","E choke! We dey lead City!","aw"],["Man City fan","Wetin be this?! For our house?!","hm"]]},
+        {imgs:["mc-03.jpg"],audio:"mc-ch03.mp3",tag:"Park the bus",min:"60'",h:0,a:1,st:"live",title:"City dey press, bus no dey open!",
+         cap:[["🎙️ Commentator","City dey press, dey press, but Bournemouth dey park the bus! Door no dey open!","c"],["Man City player","Why these boys no dey tire?!","hm"],["Bournemouth defender","Hold am! Time dey go!","aw"]]},
+        {imgs:["mc-04.jpg"],audio:"mc-ch04.mp3",tag:"Maresca rings changes",min:"70'",h:0,a:1,st:"live",title:"Maresca dey hot — Cherki enter!",
+         cap:[["🎙️ Commentator","Maresca dey hot for touchline! He don ring changes — Cherki enter!","c"],["Maresca","We need goal! Go go go!","hm"],["Bournemouth fan","Make we hold small small!","aw"]]},
+        {imgs:["mc-05.jpg"],audio:"mc-ch05.mp3",tag:"GOAL · 84'",min:"84'",h:1,a:1,st:"live",title:"GUÉHI! Equalizer — VAR say goal!",
+         cap:[["🎙️ Commentator","GUÉHI! Equalizer from the corner! VAR check am... GOAL stands! Etihad don burst!","c"],["Guéhi","I don level am! We no dey lose today!","hm"],["Bournemouth fan","Ah! We hold dem till 84'! Cruel!","aw"]]},
+        {imgs:["mc-06.jpg"],audio:"mc-ch06.mp3",tag:"Smell blood",min:"88'",h:1,a:1,st:"live",title:"Equalizer don wake the giant!",
+         cap:[["🎙️ Commentator","City smell blood now! The equalizer don wake the giant!","c"],["Man City fan","One more! One more!","hm"],["Bournemouth player","Bros, defend for life!","aw"]]},
+        {imgs:["mc-07.jpg"],audio:"mc-ch07.mp3",tag:"GOAL · 90'",min:"90'",h:2,a:1,st:"live",title:"GVARDIOL! Turnaround complete!",
+         cap:[["🎙️ Commentator","GVARDIALLLL! Turnaround complete! City don win am for the death — two-one!","c"],["Gvardiol","Winner! Maresca first home win — e sweet!","hm"],["Bournemouth fan","No no no! We con lose like this?!","aw"]]},
+        {imgs:["mc-08.jpg"],audio:"mc-ch08.mp3",tag:"Full time",min:"FT",h:2,a:1,st:"ft",title:"Maresca begin with escape!",
+         cap:[["🎙️ Commentator","Full time! Man City two, Bournemouth one! Maresca begin with escape and three points!","c"],["Man City fan","Champions mentality! We no dey give up!","hm"],["Bournemouth fan","Heads up. We play well. Ref na another day.","aw"]]}
+      ]
     }
   };
   var PILL={build:"BUILD-UP",live:"LIVE",ht:"HALF TIME",ft:"FULL TIME"};
