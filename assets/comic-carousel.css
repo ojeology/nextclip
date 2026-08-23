@@ -87,6 +87,9 @@ body{overflow-x:hidden}                       /* let the 100vw deck break out wi
 .mc-dots button.on{background:var(--amber);transform:scale(1.35)}
 .mc-play{background:#16191e;color:#fff;border:1px solid var(--line);border-radius:30px;padding:8px 14px;font-size:12.5px;font-weight:800;cursor:pointer}
 .mc-play:hover{border-color:var(--amber);color:var(--amber)}
+.mc-sound{background:#16191e;color:#fff;border:1px solid var(--line);border-radius:30px;padding:8px 14px;font-size:12.5px;font-weight:800;cursor:pointer}
+.mc-sound:hover{border-color:var(--amber);color:var(--amber)}
+.mc-sound[aria-pressed="true"]{border-color:var(--amber);color:var(--amber2)}
 .mc-cnt{font-size:11.5px;color:var(--mut);font-weight:800;min-width:44px;text-align:right}
 
 /* Matchday continue-nav */
