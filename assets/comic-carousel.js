@@ -1,36 +1,44 @@
-/* BRYME Match Comic — header carousel. Transient speech bubbles over the players,
-   slide-left, autoplay, BRYME fingerprint + Matchday continue-nav. Auto-builds into #mc-hero. */
+/* BRYME Match Comic — header carousel. Transient speech bubbles that match the
+   action on screen, slide-left, autoplay, BRYME fingerprint + Matchday nav. Auto-builds into #mc-hero. */
 (function(){
   var DIR="/assets/img/sports/comics/hull-united-mw1/";
   var S=[
     {img:"01-return.jpg",tag:"Arrival · Build-up",min:"PRE-MATCH",h:0,a:0,st:"build",
      title:"The Tigers arrive home",copy:"MKM Stadium, 22 Aug 2026. First top-flight home night in nine years.",
-     ban:[["Home fan","Nine years. NINE. Even my GRAN made it.","f"],["Hull","We're home, lads. Breathe it in.","h"],["Mascot","Roar for the camera. I'm paid in sandwiches.","n"],["United fan","Lovely stadium. Shame about the result.","u"]]},
+     pos:[[10,58],[40,26],[70,18],[62,62]],
+     ban:[["Home fan","Nine years. NINE. We waited for this.","f"],["Hull captain","We're home, lads. Now ruin their evening.","h"],["Mascot","Smile for the camera. I'm paid in sandwiches.","n"],["United fan","Lovely stadium. Shame about the result, eh.","u"]]},
     {img:"02-opener.jpg",tag:"Goal · 17'",min:"17'",h:1,a:0,st:"live",
      title:"Ajayi. Rebound. Bedlam.",copy:"McBurnie's effort is saved. The rebound drops. Semi Ajayi says thank you.",
-     ban:[["Ajayi","MINE. Thank you. Goodnight.","h"],["McBurnie","That was MY rebound, Semi!","h"],["Bruno","WHO was marking?! Am I defending now?!","u"],["Home fan","GOAL! Nine years — worth every one!","f"]]},
+     pos:[[44,30],[10,52],[64,14],[12,18]],
+     ban:[["Ajayi","MINE. Thank you. Goodnight.","h"],["McBurnie","Oi! That was MY rebound, Semi!","h"],["Bruno","WHO was marking?! Am I the defender now?!","u"],["Home fan","GOAL! Nine years — worth every one!","f"]]},
     {img:"03-second.jpg",tag:"Goal · 38'",min:"38'",h:2,a:0,st:"live",
      title:"Mendy. Header. Again.",copy:"Slater's free-kick. Mendy climbs above everyone. Two-nil.",
-     ban:[["Mendy","Again? Two goals, no fuss. Taxi for the defence.","h"],["Bruno","A SET PIECE. Another one! Who's on the post?!","u"],["Maguire","...there was a post? Nobody told me.","u"],["BRYME desk","Two centre-backs, two set pieces. Statues in red.","n"]]},
+     pos:[[40,28],[64,14],[66,58],[10,16]],
+     ban:[["Mendy","Two headers. No fuss. Taxi for the lot of you.","h"],["Bruno","A SET PIECE! Who left the post empty?!","u"],["Maguire","...there was a post? Nobody told me.","u"],["BRYME desk","Two centre-backs, two set pieces. Statues in red.","n"]]},
     {img:"04-halftime.jpg",tag:"Half-time",min:"HT",h:2,a:0,st:"ht",
      title:"Two rooms. Two worlds.",copy:"Same scoreline, very different conversations. Rashford laces up.",
-     ban:[["Jakirović","2–0 is a trap, not a trophy. Don't blow it.","h"],["Carrick","Mark the tall ones. And the short ones. And everyone.","u"],["Bruno","I blame the wind. And the posts. And you.","u"],["Rashford","I'll fix it. Boots on. Send me out.","u"]]},
+     pos:[[8,28],[42,14],[62,34],[62,62]],
+     ban:[["Jakirović","2–0 is a trap, not a trophy. Stay sharp.","h"],["Carrick","Mark the tall ones. The short ones. Everyone.","u"],["Bruno","I blame the wind. The posts. And, honestly, you.","u"],["Rashford","I'll fix it. Boots on. Send me out.","u"]]},
     {img:"05-rashford.jpg",tag:"Under siege · 56'",min:"56'",h:2,a:0,st:"live",
      title:"72% of absolutely nothing",copy:"Rashford's on. United swarm. Hull turn into a wall with gloves.",
-     ban:[["United","72% possession! We're DOMINATING!","u"],["Hull","Cute. We're WINNING. Look it up.","h"],["Tzolakis","Keep knocking. I've had a nap back here.","h"],["Bruno","PASS! No— HIM. WHY is nobody where I want them?!","u"]]},
+     pos:[[8,16],[64,58],[40,54],[64,16]],
+     ban:[["United","72% possession! We're DOMINATING!","u"],["Hull defender","Cute. We're WINNING. Look it up.","h"],["Tzolakis","Keep knocking. I've had a nap back here.","h"],["Bruno","PASS! No— HIM. Why's no one where I want?!","u"]]},
     {img:"06-subs.jpg",tag:"Late drama · 90+6'",min:"90+6'",h:2,a:0,st:"live",
      title:"The wall holds. Millar smiles.",copy:"Tzolakis tips one over. Millar gets a yellow at 2–0 and shrugs.",
-     ban:[["Tzolakis","Tipped over. Lovely. Next customer.","h"],["Sesko","Six chances. SIX. The man's a wall.","u"],["Millar","A yellow?! At 2–0?! I barely breathed near him!","h"],["Referee","Still a yellow, son. No loyalty cards at 2–0.","r"]]},
+     pos:[[40,28],[64,14],[10,56],[64,58]],
+     ban:[["Tzolakis","Tipped over. Lovely. Next customer.","h"],["Sesko","Six chances. SIX. He's a wall with gloves.","u"],["Millar","A yellow?! At 2–0?! I barely touched him!","h"],["Referee","Still a yellow, son. No loyalty cards at 2–0.","r"]]},
     {img:"07-fulltime.jpg",tag:"Full time",min:"FT",h:2,a:0,st:"ft",
      title:"FULL TIME. Pandemonium.",copy:"The whistle goes. United's 72% possession boards exactly zero points.",
-     ban:[["Hull","FULL TIME!!! Somebody pinch me!","h"],["Maguire","I'd like the ground to swallow me now.","u"],["Home fan","72% possession, zero points. Favourite maths.","f"],["Ajayi","Nobody gave us a chance. Beautiful.","h"]]},
+     pos:[[10,18],[64,56],[64,16],[40,60]],
+     ban:[["Hull","FULL TIME!!! Somebody pinch me!","h"],["Maguire","I'd like the ground to swallow me now.","u"],["Home fan","72% possession, zero points. Beautiful maths.","f"],["Ajayi","Nobody gave us a chance. Nobody. Beautiful.","h"]]},
     {img:"08-aftermath.jpg",tag:"Welcome back",min:"FT",h:2,a:0,st:"ft",
      title:"Red Devils? More like Crying Devils.",copy:"Ajayi 17. Mendy 38. Nine years away — one unforgettable night home.",
-     ban:[["BRYME desk","The Red Devils? Tonight: Crying Devils.","n"],["Bruno","*sniff* 72% of the ball, 0% of the joy.","u"],["Maguire","*single tear* ...set pieces.","u"],["Ajayi","Tigers ROAR. Devils dribble. On their faces.","h"]]}
+     pos:[[8,16],[64,30],[64,58],[10,60]],
+     ban:[["BRYME desk","The Red Devils? Tonight: the CRYING Devils.","n"],["Bruno","*sniff* 72% of the ball, 0% of the joy.","u"],["Maguire","*one tear* ...set pieces.","u"],["Ajayi","Tigers ROAR. Devils dribble. On their faces.","h"]]}
   ];
   var PILL={build:"BUILD-UP",live:"LIVE",ht:"HALF TIME",ft:"FULL TIME"};
-  var POS=[[7,15],[57,11],[9,55],[56,60]];      // bubble anchor presets [left%,top%]
-  var STEP=900, VISIBLE=3200, LEAD=350;
+  var POS=[[10,30],[60,16],[12,55],[60,60]];      // fallback bubble anchors [left%,top%]
+  var STEP=1200, VISIBLE=4600, LEAD=550;           // slower: bubbles appear gradually and linger
   function init(){
     var root=document.getElementById("mc-hero"); if(!root) return;
     root.className="mc";
@@ -55,7 +63,7 @@
         title=root.querySelector("#mctitle"),cntEl=root.querySelector("#mccnt"),playBtn=root.querySelector(".mc-play"),
         deck=root.querySelector(".mc-deck"),len=S.length;
     track.innerHTML=S.map(function(s,i){
-      var bubs=s.ban.map(function(b,j){var p=POS[j%POS.length];
+      var bubs=s.ban.map(function(b,j){var p=(s.pos&&s.pos[j])||POS[j%POS.length];
         return '<div class="mc-bubble '+b[2]+'" style="left:'+p[0]+'%;top:'+p[1]+'%"><i>'+b[0]+'</i>'+b[1]+'</div>';}).join("");
       return '<div class="mc-card"><img src="'+DIR+s.img+'" alt="Original BRYME comic frame: '+s.title+'" loading="'+(i?"lazy":"eager")+'"><div class="mc-bub">'+bubs+'</div></div>';
     }).join("");
@@ -67,7 +75,7 @@
     dots.forEach(function(b,i){b.addEventListener("click",function(){show(i,i>idx?"next":"prev");});});
 
     var idx=0,playing=true,hover=false,elapsed=0,last=0,timers=[];
-    function durFor(i){return LEAD+(S[i].ban.length-1)*STEP+VISIBLE+1000;}
+    function durFor(i){return LEAD+(S[i].ban.length-1)*STEP+VISIBLE+1100;}
     function clearTimers(){timers.forEach(clearTimeout);timers=[];}
     function scheduleBubbles(c){
       clearTimers();
