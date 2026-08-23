@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
 """Rebuild /sports/ landing page with the v2 night-stadium hub.
 
-Surgical: keeps the existing <head> + footer/nav shell. Does not invent scores.
-Brentford v Tottenham stays a preview (in play at last check — no FT lock).
+Surgical: keeps the existing <head> + footer/nav shell. Does not invent scores. Sunday 23 Aug board is previews until a sourced FT exists.
 """
 from pathlib import Path
 import html as H
@@ -43,7 +42,46 @@ LL = '/assets/img/sports/ll/'
 SA = '/assets/img/sports/sa/'
 L1 = '/assets/img/sports/l1/'
 
-pl_cards = ''.join([
+# Sunday 23 Aug — previews only until FT is sourced
+pl_today = ''.join([
+    card('/sports/premier-league/matches/brighton-vs-aston-villa/', 'Brighton', 'Aston Villa',
+         PL + 'brighton.svg', PL + 'aston-villa.svg', '14:00', None, None, 'Preview →'),
+    card('/sports/premier-league/matches/man-city-vs-bournemouth/', 'Man City', 'Bournemouth',
+         PL + 'man-city.svg', PL + 'bournemouth.svg', '14:00', None, None, 'Preview →'),
+    card('/sports/premier-league/matches/newcastle-vs-liverpool/', 'Newcastle', 'Liverpool',
+         PL + 'newcastle.svg', PL + 'liverpool.svg', '16:30', None, None, 'Preview →'),
+])
+
+ll_today = ''.join([
+    card('/sports/la-liga/matches/atletico-madrid-vs-villarreal/', 'Atlético', 'Villarreal',
+         LL + 'atletico.png', LL + 'villarreal.png', '17:00', None, None, 'Preview →'),
+    card('/sports/la-liga/matches/getafe-vs-racing/', 'Getafe', 'Racing',
+         LL + 'getafe.png', LL + 'racing.png', '19:30', None, None, 'Preview →'),
+    card('/sports/la-liga/matches/elche-vs-barcelona/', 'Elche', 'Barcelona',
+         LL + 'elche.png', LL + 'barcelona.png', '21:30', None, None, 'Preview →'),
+])
+
+sa_today = ''.join([
+    card('/sports/serie-a/matches/frosinone-vs-juventus/', 'Frosinone', 'Juventus',
+         SA + 'frosinone.svg', SA + 'juventus.svg', '18:30', None, None, 'Preview →'),
+    card('/sports/serie-a/matches/venezia-vs-lecce/', 'Venezia', 'Lecce',
+         SA + 'venezia.svg', SA + 'lecce.svg', '18:30', None, None, 'Preview →'),
+    card('/sports/serie-a/matches/atalanta-vs-sassuolo/', 'Atalanta', 'Sassuolo',
+         SA + 'atalanta.svg', SA + 'sassuolo.svg', '20:45', None, None, 'Preview →'),
+    card('/sports/serie-a/matches/torino-vs-milan/', 'Torino', 'AC Milan',
+         SA + 'torino.svg', SA + 'milan.svg', '20:45', None, None, 'Preview →'),
+])
+
+l1_today = ''.join([
+    card('/sports/ligue-1/matches/angers-vs-lille/', 'Angers SCO', 'Lille',
+         L1 + 'angers.webp', L1 + 'lille.webp', '15:00', None, None, 'Preview →'),
+    card('/sports/ligue-1/matches/le-havre-vs-monaco/', 'Le Havre', 'Monaco',
+         L1 + 'le-havre.webp', L1 + 'monaco.webp', '17:15', None, None, 'Preview →'),
+    card('/sports/ligue-1/matches/psg-vs-rennes/', 'PSG', 'Rennes',
+         L1 + 'psg.webp', L1 + 'rennes.webp', '20:45', None, None, 'Preview →'),
+])
+
+pl_yday = ''.join([
     card('/sports/premier-league/matches/hull-vs-man-united/', 'Hull City', 'Manchester United',
          PL + 'hull.svg', PL + 'man-united.svg', 'FT', 2, 0, 'Result →'),
     card('/sports/premier-league/matches/everton-vs-crystal-palace/', 'Everton', 'Crystal Palace',
@@ -56,46 +94,14 @@ pl_cards = ''.join([
          PL + 'brentford.svg', PL + 'tottenham.svg', 'FT', 3, 0, 'Result →'),
 ])
 
-ll_cards = ''.join([
-    card('/sports/la-liga/matches/athletic-bilbao-vs-sevilla/', 'Athletic Club', 'Sevilla',
-         LL + 'athletic.png', LL + 'sevilla.png', 'FT', 1, 3, 'Result →'),
-    card('/sports/la-liga/matches/valencia-vs-celta-vigo/', 'Valencia', 'Celta Vigo',
-         LL + 'valencia.png', LL + 'celta.png', 'FT', 0, 0, 'Result →'),
-    card('/sports/la-liga/matches/espanyol-vs-real-madrid/', 'Espanyol', 'Real Madrid',
-         LL + 'espanyol.png', LL + 'real-madrid.png', 'FT', 1, 2, 'Result →'),
-])
-
-sa_cards = ''.join([
-    card('/sports/serie-a/matches/inter-vs-monza/', 'Inter Milan', 'Monza',
-         SA + 'inter.svg', SA + 'monza.svg', 'FT', 4, 1, 'Result →'),
-    card('/sports/serie-a/matches/udinese-vs-como/', 'Udinese', 'Como',
-         SA + 'udinese.svg', SA + 'como.svg', 'FT', 1, 1, 'Result →'),
-    card('/sports/serie-a/matches/genoa-vs-napoli/', 'Genoa', 'Napoli',
-         SA + 'genoa.svg', SA + 'napoli.svg', 'FT', 0, 2, 'Result →'),
-    card('/sports/serie-a/matches/parma-vs-cagliari/', 'Parma', 'Cagliari',
-         SA + 'parma.svg', SA + 'cagliari.svg', 'FT', 0, 1, 'Result →'),
-])
-
-l1_cards = ''.join([
-    card('/sports/ligue-1/matches/lens-vs-auxerre/', 'RC Lens', 'AJ Auxerre',
-         L1 + 'lens.webp', L1 + 'auxerre.webp', 'FT', 5, 2, 'Result →'),
-    card('/sports/ligue-1/matches/le-mans-vs-brest/', 'Le Mans FC', 'Stade Brestois',
-         L1 + 'le-mans.webp', L1 + 'brest.webp', 'FT', 2, 2, 'Result →'),
-    card('/sports/ligue-1/matches/nice-vs-lorient/', 'OGC Nice', 'FC Lorient',
-         L1 + 'nice.webp', L1 + 'lorient.webp', 'FT', 0, 0, 'Result →'),
-    card('/sports/ligue-1/matches/toulouse-vs-lyon/', 'Toulouse FC', 'Olympique Lyonnais',
-         L1 + 'toulouse.webp', L1 + 'lyon.webp', 'FT', 0, 2, 'Result →'),
-    card('/sports/ligue-1/matches/troyes-vs-paris-fc/', 'ESTAC Troyes', 'Paris FC',
-         L1 + 'troyes.webp', L1 + 'paris-fc.webp', 'FT', 0, 0, 'Result →'),
-])
 
 MAIN = f'''<main class="sp-desk">
 <section class="sp-land" style="--sp-hero:url('/assets/img/sports/hero-landing.jpg')" aria-label="BRYME Sports">
   <div class="sp-land-bg" aria-hidden="true"></div>
   <div class="sp-land-inner">
-    <p class="sp-land-kicker"><i></i> Matchday · Saturday 22 August 2026</p>
-    <h1>The season is on.</h1>
-    <p class="sp-land-lead">Saturday is done. Premier League Matchweek 1 is complete — five sourced full-time scores, including Brentford 3–0 Tottenham. Five leagues, one desk.</p>
+    <p class="sp-land-kicker"><i></i> Matchday · Sunday 23 August 2026</p>
+    <h1>Sunday is live.</h1>
+    <p class="sp-land-lead">Brighton–Villa and City–Bournemouth at 14:00. Newcastle–Liverpool at 16:30. Previews until full-time is sourced. Saturday’s scores stay on the desk below.</p>
     <div class="sp-land-actions">
       <a class="cta" href="/sports/premier-league/matches/">Match Centre</a>
       <a class="cta-ghost" href="/sports/premier-league/results/">Premier League results</a>
@@ -111,46 +117,51 @@ MAIN = f'''<main class="sp-desk">
   </div>
 </section>
 
-<section class="sp-board" aria-label="Saturday's board">
+<section class="sp-board" aria-label="Sunday's board">
   <div class="shell">
     <div class="sp-board-head">
-      <div><div class="eyebrow">Live desk</div><h2>Saturday's board</h2></div>
-      <span class="sp-board-date">22 August 2026 · sourced results only</span>
+      <div><div class="eyebrow">Live desk</div><h2>Sunday's board</h2></div>
+      <span class="sp-board-date">23 August 2026 · previews until FT is sourced</span>
     </div>
 
     <div class="sp-lg">
-      <div class="sp-lg-head"><b>Premier League</b><a href="/sports/premier-league/results/">All results →</a></div>
-      <div class="sp-score-grid">{pl_cards}</div>
+      <div class="sp-lg-head"><b>Premier League</b><a href="/sports/premier-league/matches/">Match Centre →</a></div>
+      <div class="sp-score-grid">{pl_today}</div>
     </div>
     <div class="sp-lg">
       <div class="sp-lg-head"><b>La Liga</b><a href="/sports/la-liga/fixtures/">Fixtures →</a></div>
-      <div class="sp-score-grid">{ll_cards}</div>
+      <div class="sp-score-grid">{ll_today}</div>
     </div>
     <div class="sp-lg">
       <div class="sp-lg-head"><b>Serie A</b><a href="/sports/serie-a/fixtures/">Fixtures →</a></div>
-      <div class="sp-score-grid">{sa_cards}</div>
+      <div class="sp-score-grid">{sa_today}</div>
     </div>
     <div class="sp-lg">
       <div class="sp-lg-head"><b>Ligue 1</b><a href="/sports/ligue-1/fixtures/">Fixtures →</a></div>
-      <div class="sp-score-grid">{l1_cards}</div>
+      <div class="sp-score-grid">{l1_today}</div>
     </div>
     <div class="sp-lg">
       <div class="sp-lg-head"><b>Bundesliga</b><a href="/sports/bundesliga/fixtures/">Fixtures →</a></div>
-      <p class="sp-empty">No Bundesliga fixtures today.</p>
+      <p class="sp-empty">No Bundesliga fixtures today. Spieltag 1 starts Friday 28 August.</p>
+    </div>
+
+    <div class="sp-lg">
+      <div class="sp-lg-head"><b>Yesterday — Saturday 22 Aug</b><a href="/sports/premier-league/results/">All results →</a></div>
+      <div class="sp-score-grid">{pl_yday}</div>
     </div>
 
     <div class="sp-lg sp-desk-previews">
       <div class="sp-lg-head"><b>Matchday previews</b><a href="/sports/premier-league/matches/">Match Centre →</a></div>
-      <p class="sp-desk-note">Form, head-to-head and BRYME's editorial prediction — published before kickoff, updated with the result afterwards.</p>
+      <p class="sp-desk-note">Published before kickoff. A score appears here only after it is sourced.</p>
       <div class="sp-prev-grid">
-        <a class="sp-prev" href="/sports/premier-league/matches/arsenal-vs-coventry/"><em>Fri 21 Aug · 20:00</em><b>Arsenal 3–0 Coventry City</b><span>Premier League · result locked</span></a>
-        <a class="sp-prev" href="/sports/premier-league/matches/hull-vs-man-united/"><em>Sat 22 Aug · 12:30</em><b>Hull City 2–0 Manchester United</b><span>Premier League · result locked</span></a>
-        <a class="sp-prev" href="/sports/premier-league/matches/everton-vs-crystal-palace/"><em>Sat 22 Aug · 15:00</em><b>Everton 2–0 Crystal Palace</b><span>Premier League · result locked</span></a>
-        <a class="sp-prev" href="/sports/premier-league/matches/ipswich-vs-sunderland/"><em>Sat 22 Aug · 15:00</em><b>Ipswich Town 2–1 Sunderland</b><span>Premier League · result locked</span></a>
-        <a class="sp-prev" href="/sports/premier-league/matches/nottingham-forest-vs-leeds/"><em>Sat 22 Aug · 15:00</em><b>Nottingham Forest 0–1 Leeds United</b><span>Premier League · result locked</span></a>
-        <a class="sp-prev" href="/sports/premier-league/matches/brentford-vs-tottenham/"><em>Sat 22 Aug · 17:30</em><b>Brentford 3–0 Tottenham Hotspur</b><span>Premier League · result locked</span></a>
-        <a class="sp-prev" href="/sports/la-liga/matches/espanyol-vs-real-madrid/"><em>Sat 22 Aug · 21:30</em><b>Espanyol 1–2 Real Madrid</b><span>La Liga · result locked</span></a>
-        <a class="sp-prev" href="/sports/serie-a/matches/genoa-vs-napoli/"><em>Sat 22 Aug · 20:45</em><b>Genoa 0–2 Napoli</b><span>Serie A · result locked</span></a>
+        <a class="sp-prev" href="/sports/premier-league/matches/brighton-vs-aston-villa/"><em>Sun 23 Aug · 14:00</em><b>Brighton v Aston Villa</b><span>Premier League · preview</span></a>
+        <a class="sp-prev" href="/sports/premier-league/matches/man-city-vs-bournemouth/"><em>Sun 23 Aug · 14:00</em><b>Manchester City v Bournemouth</b><span>Premier League · preview</span></a>
+        <a class="sp-prev" href="/sports/premier-league/matches/newcastle-vs-liverpool/"><em>Sun 23 Aug · 16:30</em><b>Newcastle v Liverpool</b><span>Premier League · preview</span></a>
+        <a class="sp-prev" href="/sports/la-liga/matches/elche-vs-barcelona/"><em>Sun 23 Aug · 21:30</em><b>Elche v Barcelona</b><span>La Liga · preview</span></a>
+        <a class="sp-prev" href="/sports/serie-a/matches/torino-vs-milan/"><em>Sun 23 Aug · 20:45</em><b>Torino v AC Milan</b><span>Serie A · preview</span></a>
+        <a class="sp-prev" href="/sports/ligue-1/matches/psg-vs-rennes/"><em>Sun 23 Aug · 20:45</em><b>PSG v Rennes</b><span>Ligue 1 · preview</span></a>
+        <a class="sp-prev" href="/sports/premier-league/matches/fulham-vs-chelsea/"><em>Mon 24 Aug · 20:00</em><b>Fulham v Chelsea</b><span>Premier League · tomorrow</span></a>
+        <a class="sp-prev" href="/sports/premier-league/matches/brentford-vs-tottenham/"><em>Sat 22 Aug · 17:30</em><b>Brentford 3–0 Tottenham</b><span>Premier League · result locked</span></a>
       </div>
     </div>
   </div>
