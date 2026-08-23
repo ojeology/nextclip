@@ -1,15 +1,15 @@
-/* BRYME Match Comic — header carousel (shared). Arrows live BELOW the deck (never
-   cover the image). One speech bubble at a time. BRYME fingerprint + Matchday nav. */
-.mc-hero{max-width:1080px;margin:0 auto;padding:10px 16px 0}
+/* BRYME Match Comic — FULL-BLEED cinematic carousel. Edge-to-edge image,
+   one speech bubble at a time, BRYME fingerprint + Matchday nav. */
+body{overflow-x:hidden}                       /* let the 100vw deck break out with no horizontal scroll */
+.mc-hero{max-width:1100px;margin:0 auto;padding:8px 16px 0}
 .mc{--amber:#f5a300;--amber2:#ffce4a;--red:#e23b3b;--line:rgba(255,255,255,.12);--mut:#9aa1a9;--txt:#eef1f5;
   color:var(--txt);font-family:'Trebuchet MS','Segoe UI',Helvetica,Arial,sans-serif}
 .mc *{box-sizing:border-box}
-.mc-bars{display:flex;gap:5px;margin:0 0 8px}
-.mc-bars i{flex:1;height:4px;border-radius:4px;background:rgba(255,255,255,.18);overflow:hidden}
-.mc-bars i span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--amber),var(--amber2))}
 
-.mc-deck{position:relative;width:100%;aspect-ratio:16/9;max-height:60vh;background:#000;border-radius:16px;overflow:hidden;
-  border:1px solid var(--line);box-shadow:0 22px 60px rgba(0,0,0,.55)}
+/* full-bleed deck — snaps flush to the screen edges */
+.mc-deck{position:relative;width:100vw;max-width:100vw;margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw);
+  aspect-ratio:16/9;max-height:62vh;background:#000;overflow:hidden;
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);box-shadow:0 22px 60px rgba(0,0,0,.55)}
 .mc-track{position:absolute;inset:0}
 .mc-card{position:absolute;inset:0;opacity:0;transform:translateX(9%) scale(1.03);
   transition:transform .6s cubic-bezier(.22,1,.36,1),opacity .5s ease;will-change:transform,opacity;pointer-events:none}
@@ -17,39 +17,44 @@
 .mc-card.left{opacity:0;transform:translateX(-9%) scale(1.03)}
 .mc-card.right{opacity:0;transform:translateX(9%) scale(1.03)}
 .mc-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;-webkit-user-drag:none;user-select:none}
-.mc-card.on img{animation:mckb 12s ease-out both}
-@keyframes mckb{from{transform:scale(1)}to{transform:scale(1.08)}}
+.mc-card.on img{animation:mckb 14s ease-out both}
+@keyframes mckb{from{transform:scale(1)}to{transform:scale(1.09)}}
+
+/* progress segments overlaid at the very top of the deck */
+.mc-bars{position:absolute;top:0;left:0;right:0;z-index:7;display:flex;gap:5px;padding:10px 14px}
+.mc-bars i{flex:1;height:4px;border-radius:4px;background:rgba(255,255,255,.22);overflow:hidden}
+.mc-bars i span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--amber),var(--amber2))}
 
 /* persistent HUD + BRYME fingerprint (no arrows on the image) */
-.mc-hud{position:absolute;top:10px;left:10px;right:10px;z-index:6;display:flex;justify-content:space-between;
+.mc-hud{position:absolute;top:26px;left:16px;right:16px;z-index:6;display:flex;justify-content:space-between;
   align-items:flex-start;gap:8px;pointer-events:none}
 .mc-pill{display:inline-flex;align-items:center;gap:6px;background:rgba(0,0,0,.55);border:1px solid var(--line);
-  color:#fff;font-size:10.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:4px 9px;border-radius:20px}
+  color:#fff;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:5px 10px;border-radius:20px}
 .mc-pill .d{width:7px;height:7px;border-radius:50%;background:var(--red);box-shadow:0 0 8px var(--red)}
 .mc-pill.live .d{animation:mcbl 1s steps(2) infinite}
 .mc-pill.ft{color:var(--amber2);border-color:var(--amber)}
 @keyframes mcbl{50%{opacity:.25}}
 .mc-score{display:inline-flex;align-items:center;gap:7px;background:rgba(0,0,0,.6);border:1px solid var(--line);
-  border-radius:11px;padding:4px 9px;color:#fff;font-weight:900;font-size:13px}
+  border-radius:11px;padding:5px 10px;color:#fff;font-weight:900;font-size:14px}
 .mc-score .t{font-size:10px;display:inline-flex;align-items:center;gap:4px}
 .mc-score .t .sw{width:8px;height:11px;border-radius:2px;display:inline-block}
 .mc-score .t.h .sw{background:repeating-linear-gradient(90deg,#111 0 3px,var(--amber) 3px 6px)}
 .mc-score .t.u .sw{background:var(--red)}
-.mc-score .min{font-size:10px;color:var(--amber2);border-left:1px solid var(--line);padding-left:7px}
-.mc-mark{position:absolute;right:10px;bottom:10px;z-index:6;display:flex;align-items:baseline;gap:7px;
-  background:rgba(0,0,0,.42);border:1px solid rgba(245,163,0,.55);border-radius:10px;padding:5px 10px;
+.mc-score .min{font-size:10px;color:var(--amber2);border-left:1px solid var(--line);padding-left:8px}
+.mc-mark{position:absolute;right:16px;bottom:14px;z-index:6;display:flex;align-items:baseline;gap:7px;
+  background:rgba(0,0,0,.42);border:1px solid rgba(245,163,0,.55);border-radius:10px;padding:5px 11px;
   backdrop-filter:blur(3px);pointer-events:none}
-.mc-mark b{color:var(--amber2);font-size:13px;letter-spacing:.05em}
+.mc-mark b{color:var(--amber2);font-size:14px;letter-spacing:.05em}
 .mc-mark b::before{content:"▰";margin-right:5px;color:var(--amber)}
-.mc-mark span{color:#cfd4db;font-size:10.5px;font-weight:700}
+.mc-mark span{color:#cfd4db;font-size:11px;font-weight:700}
 
-/* ONE speech bubble at a time, placed on the player */
+/* ONE speech bubble at a time, over the players */
 .mc-bub{position:absolute;inset:0;z-index:5;pointer-events:none}
-.mc-bubble{position:absolute;max-width:42%;background:#fff;color:#111;border-radius:14px;padding:8px 12px;
-  font-size:13.5px;font-weight:700;line-height:1.3;box-shadow:0 10px 24px rgba(0,0,0,.55);
-  opacity:0;transform:translateY(10px) scale(.9);transition:opacity .4s ease,transform .4s cubic-bezier(.22,1,.36,1)}
+.mc-bubble{position:absolute;max-width:46%;background:#fff;color:#111;border-radius:14px;padding:9px 13px;
+  font-size:14px;font-weight:700;line-height:1.32;box-shadow:0 12px 28px rgba(0,0,0,.6);
+  opacity:0;transform:translateY(12px) scale(.9);transition:opacity .4s ease,transform .4s cubic-bezier(.22,1,.36,1)}
 .mc-bubble.in{opacity:1;transform:none}
-.mc-bubble i{display:block;font-style:normal;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#888;margin-bottom:2px;font-weight:800}
+.mc-bubble i{display:block;font-style:normal;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#888;margin-bottom:3px;font-weight:800}
 .mc-bubble.h{background:linear-gradient(180deg,#ffce4a,#f5a300);color:#231500}
 .mc-bubble.h i{color:#7a4a00}
 .mc-bubble.u{background:#e23b3b;color:#fff}
@@ -60,15 +65,18 @@
 .mc-bubble.f i{color:#b25a00}
 .mc-bubble.n{background:#1b1f26;color:#dbe0e6;border:1px solid rgba(255,255,255,.2)}
 .mc-bubble.n i{color:var(--amber2)}
-.mc-bubble::after{content:"";position:absolute;left:20px;bottom:-7px;border:7px solid transparent;border-top-color:#fff;border-bottom:0}
+.mc-bubble.c{background:#0e1322;color:#fff;border:1px solid var(--amber)}   /* commentator */
+.mc-bubble.c i{color:var(--amber2)}
+.mc-bubble::after{content:"";position:absolute;left:22px;bottom:-7px;border:7px solid transparent;border-top-color:#fff;border-bottom:0}
 .mc-bubble.h::after{border-top-color:#f5a300}
 .mc-bubble.u::after{border-top-color:#e23b3b}
 .mc-bubble.r::after,.mc-bubble.n::after{border-top-color:#101318}
+.mc-bubble.c::after{border-top-color:#0e1322}
 
-/* caption + controls BELOW the deck (arrows here, not on the image) */
-.mc-cap{display:flex;align-items:baseline;gap:10px;padding:10px 2px 2px;flex-wrap:wrap}
+/* caption + controls BELOW the deck (arrows live here, never on the image) */
+.mc-cap{display:flex;align-items:baseline;gap:10px;padding:12px 2px 2px;flex-wrap:wrap}
 .mc-cap .mc-tag{font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--amber)}
-.mc-cap h2{margin:0;font-size:clamp(16px,2.6vw,21px);font-weight:900;color:#fff;line-height:1.1}
+.mc-cap h2{margin:0;font-size:clamp(17px,2.8vw,23px);font-weight:900;color:#fff;line-height:1.1}
 .mc-ctrl{display:flex;align-items:center;gap:10px;padding:8px 2px;flex-wrap:wrap}
 .mc-nav{background:#16191e;color:#fff;border:1px solid var(--line);border-radius:30px;padding:8px 16px;
   font-size:13px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
@@ -93,9 +101,9 @@
 .mc-md-i.soon{opacity:.72}
 .mc-md-i.soon .mc-md-n{color:var(--mut)}
 .mc-md-i .lock{position:absolute;top:8px;right:10px;font-size:12px}
-@media(max-width:680px){
-  .mc-deck{aspect-ratio:4/3;max-height:none}
-  .mc-bubble{font-size:12px;max-width:54%}
+@media(max-width:768px){
+  .mc-deck{aspect-ratio:4/3;max-height:50vh}
+  .mc-hud{top:22px;left:12px;right:12px}
+  .mc-bubble{font-size:12.5px;max-width:62%}
   .mc-md-i{min-width:120px}
-  .mc-dots{flex-basis:100%;order:3}
 }
