@@ -1,44 +1,43 @@
-/* BRYME Match Comic — header carousel. Transient speech bubbles that match the
-   action on screen, slide-left, autoplay, BRYME fingerprint + Matchday nav. Auto-builds into #mc-hero. */
+/* BRYME Match Comic — header carousel. 10 cinematic micro-beats.
+   ONE speech bubble at a time (Nigerian Pidgin banter). Arrows below the deck.
+   BRYME fingerprint + Matchday nav. Auto-builds into #mc-hero. */
 (function(){
   var DIR="/assets/img/sports/comics/hull-united-mw1/";
   var S=[
-    {img:"01-return.jpg",tag:"Arrival · Build-up",min:"PRE-MATCH",h:0,a:0,st:"build",
-     title:"The Tigers arrive home",copy:"MKM Stadium, 22 Aug 2026. First top-flight home night in nine years.",
-     pos:[[10,58],[40,26],[70,18],[62,62]],
-     ban:[["Home fan","Nine years. NINE. We waited for this.","f"],["Hull captain","We're home, lads. Now ruin their evening.","h"],["Mascot","Smile for the camera. I'm paid in sandwiches.","n"],["United fan","Lovely stadium. Shame about the result, eh.","u"]]},
-    {img:"02-opener.jpg",tag:"Goal · 17'",min:"17'",h:1,a:0,st:"live",
-     title:"Ajayi. Rebound. Bedlam.",copy:"McBurnie's effort is saved. The rebound drops. Semi Ajayi says thank you.",
-     pos:[[44,30],[10,52],[64,14],[12,18]],
-     ban:[["Ajayi","MINE. Thank you. Goodnight.","h"],["McBurnie","Oi! That was MY rebound, Semi!","h"],["Bruno","WHO was marking?! Am I the defender now?!","u"],["Home fan","GOAL! Nine years — worth every one!","f"]]},
-    {img:"03-second.jpg",tag:"Goal · 38'",min:"38'",h:2,a:0,st:"live",
-     title:"Mendy. Header. Again.",copy:"Slater's free-kick. Mendy climbs above everyone. Two-nil.",
-     pos:[[40,28],[64,14],[66,58],[10,16]],
-     ban:[["Mendy","Two headers. No fuss. Taxi for the lot of you.","h"],["Bruno","A SET PIECE! Who left the post empty?!","u"],["Maguire","...there was a post? Nobody told me.","u"],["BRYME desk","Two centre-backs, two set pieces. Statues in red.","n"]]},
-    {img:"04-halftime.jpg",tag:"Half-time",min:"HT",h:2,a:0,st:"ht",
-     title:"Two rooms. Two worlds.",copy:"Same scoreline, very different conversations. Rashford laces up.",
-     pos:[[8,28],[42,14],[62,34],[62,62]],
-     ban:[["Jakirović","2–0 is a trap, not a trophy. Stay sharp.","h"],["Carrick","Mark the tall ones. The short ones. Everyone.","u"],["Bruno","I blame the wind. The posts. And, honestly, you.","u"],["Rashford","I'll fix it. Boots on. Send me out.","u"]]},
-    {img:"05-rashford.jpg",tag:"Under siege · 56'",min:"56'",h:2,a:0,st:"live",
-     title:"72% of absolutely nothing",copy:"Rashford's on. United swarm. Hull turn into a wall with gloves.",
-     pos:[[8,16],[64,58],[40,54],[64,16]],
-     ban:[["United","72% possession! We're DOMINATING!","u"],["Hull defender","Cute. We're WINNING. Look it up.","h"],["Tzolakis","Keep knocking. I've had a nap back here.","h"],["Bruno","PASS! No— HIM. Why's no one where I want?!","u"]]},
-    {img:"06-subs.jpg",tag:"Late drama · 90+6'",min:"90+6'",h:2,a:0,st:"live",
-     title:"The wall holds. Millar smiles.",copy:"Tzolakis tips one over. Millar gets a yellow at 2–0 and shrugs.",
-     pos:[[40,28],[64,14],[10,56],[64,58]],
-     ban:[["Tzolakis","Tipped over. Lovely. Next customer.","h"],["Sesko","Six chances. SIX. He's a wall with gloves.","u"],["Millar","A yellow?! At 2–0?! I barely touched him!","h"],["Referee","Still a yellow, son. No loyalty cards at 2–0.","r"]]},
-    {img:"07-fulltime.jpg",tag:"Full time",min:"FT",h:2,a:0,st:"ft",
-     title:"FULL TIME. Pandemonium.",copy:"The whistle goes. United's 72% possession boards exactly zero points.",
-     pos:[[10,18],[64,56],[64,16],[40,60]],
-     ban:[["Hull","FULL TIME!!! Somebody pinch me!","h"],["Maguire","I'd like the ground to swallow me now.","u"],["Home fan","72% possession, zero points. Beautiful maths.","f"],["Ajayi","Nobody gave us a chance. Nobody. Beautiful.","h"]]},
-    {img:"08-aftermath.jpg",tag:"Welcome back",min:"FT",h:2,a:0,st:"ft",
-     title:"Red Devils? More like Crying Devils.",copy:"Ajayi 17. Mendy 38. Nine years away — one unforgettable night home.",
-     pos:[[8,16],[64,30],[64,58],[10,60]],
-     ban:[["BRYME desk","The Red Devils? Tonight: the CRYING Devils.","n"],["Bruno","*sniff* 72% of the ball, 0% of the joy.","u"],["Maguire","*one tear* ...set pieces.","u"],["Ajayi","Tigers ROAR. Devils dribble. On their faces.","h"]]}
+    {img:"01.jpg",tag:"Arrival",min:"PRE-MATCH",h:0,a:0,st:"build",title:"The Tigers land for home",
+     pos:[[12,40]],
+     ban:[["Home fan","Omo! Nine years! We don come back o!","f"]]},
+    {img:"02.jpg",tag:"Kick-off · 1'",min:"1'",h:0,a:0,st:"live",title:"Whistle blow! MKM dey shake",
+     pos:[[14,40],[60,38]],
+     ban:[["Commentator","Whistle blow! MKM dey shake!","n"],["United fan","Shey na three points we carry come?","u"]]},
+    {img:"03.jpg",tag:"12' · Big save",min:"12'",h:0,a:0,st:"live",title:"Tzolakis say no!",
+     pos:[[14,40],[60,42]],
+     ban:[["Tzolakis","Make dem dey shoot, I dey kampe!","h"],["Mbeumo","How I no score that one?!","u"]]},
+    {img:"04.jpg",tag:"16' · Corner",min:"16'",h:0,a:0,st:"live",title:"Corner kick… setup dey load",
+     pos:[[14,40],[58,40]],
+     ban:[["Slater","Corner kick… everybody enter box!","h"],["BRYME desk","Setup dey load…","n"]]},
+    {img:"05.jpg",tag:"17' · Header",min:"17'",h:0,a:0,st:"live",title:"McBurnie head am… saved!",
+     pos:[[14,40],[60,42]],
+     ban:[["McBurnie","I head am well! Shey e enter?","h"],["Lammens","Saved! No be today!","u"]]},
+    {img:"06.jpg",tag:"GOAL · 17'",min:"17'",h:1,a:0,st:"live",title:"AJAYI! Rebound! G-O-A-L!",
+     pos:[[40,40],[14,42]],
+     ban:[["Ajayi","REBOUND! G-O-A-L! Na me o!","h"],["Home fan","E choke!!! We don score!","f"]]},
+    {img:"07.jpg",tag:"1–0",min:"17'",h:1,a:0,st:"live",title:"Nine years wait… e sweet!",
+     pos:[[14,40],[60,42]],
+     ban:[["Ajayi","Nine years wait… e sweet to score!","h"],["Bruno","Who mark am?! Who do this?!","u"]]},
+    {img:"08.jpg",tag:"34' · Yellow",min:"34'",h:1,a:0,st:"live",title:"Dorgu see yellow",
+     pos:[[14,40],[60,42]],
+     ban:[["Dorgu","Yellow?! I no even touch am well!","u"],["Referee","Na card be that. No begging.","r"]]},
+    {img:"09.jpg",tag:"37' · Free kick",min:"37'",h:1,a:0,st:"live",title:"Free kick… danger dey load",
+     pos:[[14,40]],
+     ban:[["Slater","Free kick… make we wound dem again.","h"]]},
+    {img:"10.jpg",tag:"GOAL · 38'",min:"38'",h:2,a:0,st:"live",title:"MENDY! Header! Two-zero!",
+     pos:[[40,38],[14,44]],
+     ban:[["Mendy","Header! Two-zero! Otilo!","h"],["Maguire","Set pieces go kill me, I swear.","u"]]}
   ];
   var PILL={build:"BUILD-UP",live:"LIVE",ht:"HALF TIME",ft:"FULL TIME"};
-  var POS=[[10,30],[60,16],[12,55],[60,60]];      // fallback bubble anchors [left%,top%]
-  var STEP=1200, VISIBLE=4600, LEAD=550;           // slower: bubbles appear gradually and linger
+  var POS=[[14,40]];
+  var STEP=4200, VISIBLE=3200, LEAD=600;   // strictly ONE bubble at a time (STEP > VISIBLE)
   function init(){
     var root=document.getElementById("mc-hero"); if(!root) return;
     root.className="mc";
@@ -48,11 +47,15 @@
         '<div class="mc-track"></div>'+
         '<div class="mc-hud"><span class="mc-pill" id="mcpill"></span><span class="mc-score" id="mcscore"></span></div>'+
         '<div class="mc-mark"><b>BRYME</b><span>@bryme</span></div>'+
-        '<button class="mc-arr pv" aria-label="Previous">‹</button>'+
-        '<button class="mc-arr nx" aria-label="Next">›</button>'+
       '</div>'+
       '<div class="mc-cap"><span class="mc-tag" id="mctag"></span><h2 id="mctitle"></h2></div>'+
-      '<div class="mc-ctrl"><div class="mc-dots"></div><button class="mc-play" aria-pressed="true">⏸ Pause</button><span class="mc-cnt" id="mccnt"></span></div>'+
+      '<div class="mc-ctrl">'+
+        '<button class="mc-nav mc-prev" aria-label="Previous">‹ Prev</button>'+
+        '<div class="mc-dots"></div>'+
+        '<button class="mc-play" aria-pressed="true">⏸ Pause</button>'+
+        '<button class="mc-nav mc-next" aria-label="Next">Next ›</button>'+
+        '<span class="mc-cnt" id="mccnt"></span>'+
+      '</div>'+
       '<div class="mc-md">'+
         '<span class="mc-md-i on"><span class="mc-md-n">● Matchday 1</span><span class="mc-md-s">Hull 2–0 United · playing now</span></span>'+
         '<a class="mc-md-i soon" href="/sports/premier-league/"><span class="lock">🔒</span><span class="mc-md-n">Matchday 2</span><span class="mc-md-s">Comic drops after full time</span></a>'+
@@ -75,9 +78,9 @@
     dots.forEach(function(b,i){b.addEventListener("click",function(){show(i,i>idx?"next":"prev");});});
 
     var idx=0,playing=true,hover=false,elapsed=0,last=0,timers=[];
-    function durFor(i){return LEAD+(S[i].ban.length-1)*STEP+VISIBLE+1100;}
+    function durFor(i){return LEAD+(S[i].ban.length-1)*STEP+VISIBLE+1200;}
     function clearTimers(){timers.forEach(clearTimeout);timers=[];}
-    function scheduleBubbles(c){
+    function scheduleBubbles(c){            // strictly sequential: one appears, holds, leaves, then next
       clearTimers();
       var bubs=c.querySelectorAll(".mc-bubble");
       bubs.forEach(function(el,i){
@@ -108,12 +111,13 @@
       requestAnimationFrame(loop);
     }
     function pause(){if(!playing)return;playing=false;clearTimers();
-      cards[idx].querySelectorAll(".mc-bubble").forEach(function(e){e.classList.add("in");});
+      // keep the current bubble visible while paused
+      var b=cards[idx].querySelectorAll(".mc-bubble");if(b.length)b[b.length-1].classList.add("in");
       playBtn.setAttribute("aria-pressed","false");playBtn.textContent="▶ Play";}
     function resume(){if(playing)return;playing=true;playBtn.setAttribute("aria-pressed","true");playBtn.textContent="⏸ Pause";
       elapsed=0;last=performance.now();scheduleBubbles(cards[idx]);}
-    root.querySelector(".mc-arr.nx").addEventListener("click",function(){show(idx+1,"next");});
-    root.querySelector(".mc-arr.pv").addEventListener("click",function(){show(idx-1,"prev");});
+    root.querySelector(".mc-next").addEventListener("click",function(){show(idx+1,"next");});
+    root.querySelector(".mc-prev").addEventListener("click",function(){show(idx-1,"prev");});
     playBtn.addEventListener("click",function(){playing?pause():resume();});
     deck.addEventListener("mouseenter",function(){hover=true;});
     deck.addEventListener("mouseleave",function(){hover=false;last=performance.now();});
