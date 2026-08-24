@@ -22,7 +22,9 @@ body{overflow-x:hidden}
   opacity:0;transition:opacity 1.2s ease;-webkit-user-drag:none;user-select:none}
 .mc-layer.on{opacity:1}
 .mc-card.on .mc-layer.on{animation:mckb 14s ease-out both}
-@keyframes mckb{from{transform:scale(1)}to{transform:scale(1.09)}}
+@keyframes mckb{0%{transform:scale(1.01)}50%{transform:scale(1.1)}100%{transform:scale(1.02)}}
+.mc-card:nth-child(even) .mc-layer.on{animation-name:mckb-rev}
+@keyframes mckb-rev{0%{transform:scale(1.1)}50%{transform:scale(1.01)}100%{transform:scale(1.09)}}
 
 .mc-bars{position:absolute;top:0;left:0;right:0;z-index:7;display:flex;gap:5px;padding:10px 14px}
 .mc-bars i{flex:1;height:4px;border-radius:4px;background:rgba(255,255,255,.22);overflow:hidden}

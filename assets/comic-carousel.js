@@ -229,6 +229,37 @@
       lines(24,["City captain","Three points!","hm",[42,42,54]],["Creative midfielder","Deux assists.","hm",[57,38,54]],["Bournemouth fan","Abeg, make person no talk to me.","aw",[70,46,56]]);
       lines(25,["Manager","Anybody wey laugh go train double tomorrow.","hm",[35,30,58]],["City player","Then na everybody!","hm",[54,45,54]],["Creative midfielder","Calmez-vous. Give me jollof.","hm",[67,47,54]]);
       lines(26,["City fan","Football no get script.","hm",[22,50,58]],["Bournemouth manager","Bournemouth were minutes away from a famous win.","aw",[68,43,62]],["Narrator","Manchester City had other plans.","c",[50,28,70]]);
+      var transcripts=[
+        "Omo, new season don start! Boss, today na three points o! No excuse today. Make we collect this win. Calm down. We go handle am. New season. New manager. New assignment.",
+        "Omo, Bournemouth don land. Na City dem wan play today. Everybody dey talk about Manchester City. Make them talk. Focus. We play our football. Bournemouth no come sightseeing.",
+        "Start fast. Move the ball. Stay patient. Boss, no wahala. Easy work. Omo, everybody too confident today. Abeg, just score early. I no wan suffer. Inside the dressing room, confidence dey full ground... at least, for now.",
+        "Stay compact. Attack when we have space. Manchester City? Yes. Good. Nobody come here to admire the stadium. Omo, if we fit score first, this place go quiet. Focus. City get the name. Bournemouth get the plan.",
+        "Make we start well. Make we see. Na only ninety minutes. Three points today! Abeg, no stress us. And we don start. Matchday one. Manchester City versus Bournemouth. Na pitch go decide.",
+        "Move! Move! Go! Not today. Everybody wake up! I dey awake! Then why you dey watch ball? Na tactical observation. Five minutes in and City don already dey knock door.",
+        "How?! Not today. I dey here. Keeper! I dey here. Chai! First serious chance and Bournemouth keeper don already enter beast mode.",
+        "Ah! Almost! Clear am! Why everybody dey park bus? Na football, boss. We dey play. Na you dey chase us. City get the ball. Bournemouth get patience.",
+        "Don't let him through! Run! Omo, City don open space! Then make we use am! Abeg, slow down! I dey beg you! One second City dey attack. Next second dem dey defend. Football no get patience.",
+        "We don score! Tavernier finishes the counter! Manchester City nil, Bournemouth one. Calm down. Na one goal, but one goal fit still pain you.",
+        "Omo, how we take concede? Forget am, we go equalize. Dem get one chance and dem use am. Possession na City, goal na Bournemouth. Football get sense of humour.",
+        "Ahhhhh, that was nearly there! Nearly no count. City don change gear, but Bournemouth say no problem, we go defend.",
+        "Nooooo! That pass na invitation! I know! Thank you, says the keeper. The assist was sweet. The finish was not. Manchester City still nil, Bournemouth one.",
+        "Half-time. Bournemouth one, Manchester City nil. Boss, we get the ball, but na dem get the goal. Second half, we change the game. Bournemouth, do not relax. City will come.",
+        "We need creativity. Give me the ball. Say less. Omo, na this guy we dey wait for. Bournemouth defenders ask, who be this? New problem.",
+        "Keep pushing! Clear am! Everybody stay focused! Omo, this goal dey hide. The clock dey run, Bournemouth still holding on.",
+        "Corner delivered. Guéhi powers home the header! We are back! I told you! Manchester City one, Bournemouth one. One more! One more!",
+        "We don come back! One more! Everybody push! Cherki don enter the game, and now he don create the equaliser. Bournemouth dream win dey slip.",
+        "Eighty-eight minutes. Fresh legs, stay focused! Boss, we nearly get am. Almost no count. City don wake up. Make this game just finish.",
+        "Ninety-one minutes! Gvardiol finishes low into the corner! We don win am! Last minute! Bournemouth were winning, but Manchester City turn am around. The comeback is complete.",
+        "Abeg, make dem no cancel this one. VAR check. Goal? Goal confirmed! Manchester City two, Bournemouth one. Football no get pity today.",
+        "French boy don cook! Two assists! Je vous avais dit. Wetin he talk again? Forget am, just celebrate! Boss, you nearly collapse. Na tactical breathing.",
+        "We lead almost the whole game. Football no get pity. One corner, one pass, finish. Sometimes football fit turn sweet dream to premium breakfast in two minutes.",
+        "Full time! Manchester City two, Bournemouth one. Three points! Comeback complete! Na why we never leave stadium. Football fit disgrace you anytime.",
+        "Boss don talk say we go win! Everybody laugh. Anybody wey laugh go train double tomorrow. Then na everybody! Calmez-vous. Give the French professor jollof, e don deserve am.",
+        "Football no get script. Bournemouth were minutes away from a famous win. Manchester City had other plans. Bournemouth lead, City comeback, last-minute heartbreak. BRYME Football Comics.",
+        "One nil down and una still dey pass the ball! Boss, abeg wake up! Maresca, this your calm calm football dey give us hypertension! Bournemouth get one chance and dem use am. City fans, no panic? No panic ke!",
+        "Maresca! We roast you when we were one nil down, but you don change the game! Omo, comeback complete! Manchester City two, Bournemouth one! I tell una say we go win! Na why you watch football till ninety plus!",
+        "If you enjoy this comeback, please like, follow and share! More BRYME Football Comics dey come. Football no get script, but you fit help this story reach your people."
+      ];
       var flat=[], pi=0;
       M.chapters.forEach(function(ch){ch.imgs.forEach(function(img){
         pi++; var n=("0"+pi).slice(-2);
@@ -238,8 +269,11 @@
           h:pi<10?0:pi<17?0:pi<20?1:2,a:pi<10?0:pi<20?1:1,st:pi>=24?"ft":pi===1?"build":"live",
           scorer:pi===10?"Tavernier":pi===17?"Guéhi":pi===20?"Gvardiol":"",bubblePos:bubblePos[pi-1],
           title:pi===1?"New season. New manager. New assignment.":pi===10?"Boom. Tavernier scores first.":pi===17?"84' — Guéhi equaliser!":pi===20?"90+1' — Gvardiol winner!":pi===26?"Manchester City 2–1 Bournemouth · Tavernier 26' · Guéhi 84' · Gvardiol 90+1'":ch.title,
-          cap:panelCaps[pi-1]});
+          cap:panelCaps[pi-1],transcript:transcripts[pi-1]});
       });});
+      flat.push({imgs:["vertical/mc-27.jpg"],audio:"panels/mc-27.mp3",tag:"Fan reaction",min:"0–1",h:0,a:1,st:"live",title:"One goal down and the fans don vex!",bubblePos:[36,38,68],cap:[["City fan","Maresca, abeg wake up! This calm calm football dey give us hypertension!","hm",[36,38,68]],["City fan","No panic ke? No panic!","hm",[22,52,58]]],transcript:transcripts[26]});
+      flat.push({imgs:["vertical/mc-28.jpg"],audio:"panels/mc-28.mp3",tag:"Comeback complete",min:"FT",h:2,a:1,st:"ft",title:"The same fans don turn celebration committee!",bubblePos:[35,38,68],cap:[["City fan","Maresca, we roast you when we were one nil down!","hm",[22,52,62]],["City fan","Omo, comeback complete! Manchester City two, Bournemouth one!","hm",[44,39,68]]],transcript:transcripts[27]});
+      flat.push({imgs:["vertical/mc-29.jpg"],audio:"panels/mc-29.mp3",tag:"BRYME Football Comics",min:"END",h:2,a:1,st:"ft",title:"Please like, follow and share.",bubblePos:[50,32,76],cap:[["BRYME","Please like, follow and share! More BRYME Football Comics dey come.","c",[50,32,76]]],transcript:transcripts[28]});
       S=flat;
     }
     root.className="mc"+(slug==="mancity-bournemouth"?" mc-vertical":"");
@@ -304,7 +338,7 @@
       hideSpeech();
       capTimer=setTimeout(function(){
         capCard.className="mc-cap-card "+c[2];
-        capCard.innerHTML='<i>'+c[0]+'</i><b>'+c[1]+'</b>';
+        capCard.innerHTML='<i>'+c[0]+'</i><b></b>';
         var bp=c[3]||S[idx].bubblePos||[50,36,70];
         bubbleSlot.style.left=bp[0]+"%"; bubbleSlot.style.top=bp[1]+"%"; bubbleSlot.style.bottom="auto"; bubbleSlot.style.width=bp[2]+"%";
         bubble.className="mc-bubble "+c[2];
@@ -347,6 +381,9 @@
       var ch=S[idx];
       var prog=(!muted&&audioOK&&audio.duration)?(audio.currentTime/audio.duration):Math.min(0.999999,elapsed/durFor(idx));
       prog=Math.max(0,Math.min(0.999999,prog));
+      var transcript=ch.transcript||ch.cap.map(function(c){return c[1];}).join(" ");
+      var capWords=transcript.split(/\s+/), visibleWords=Math.max(1,Math.ceil(capWords.length*prog));
+      var capText=capCard.querySelector("b"); if(capText) capText.textContent=capWords.slice(0,visibleWords).join(" ");
       if(ch.imgs.length>1){var li=Math.floor(prog*ch.imgs.length)%ch.imgs.length; if(li!==curLayer){setLayer(cards[idx],li);curLayer=li;}}
       var ci=Math.floor(prog*ch.cap.length)%ch.cap.length;
       if(ci!==curCap){showCap(ch.cap[ci]);curCap=ci;}
