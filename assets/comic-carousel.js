@@ -161,7 +161,52 @@
     var slug=root.getAttribute("data-comic")||"hull-united";
     var M=MATCHES[slug]||MATCHES["hull-united"];
     var DIR=M.dir, S=M.chapters, home=M.home, away=M.away;
-    root.className="mc";
+    /* City–Bournemouth is delivered as 26 independent vertical sideclips.
+       Batch 1 has native 9:16 plates and panel audio; later batches fall back
+       to their existing plates/tracks until rendered. */
+    if(slug==="mancity-bournemouth"){
+      var panelText=[
+        ["City fan","Omo, new season don start! Boss, today na three points o! No excuse today. Make we collect this win.","hm"],
+        ["Bournemouth player","Everybody dey talk about Manchester City. Make them talk. Focus. We play our football.","aw"],
+        ["Manager","Start fast. Move the ball. Stay patient. Boss, no wahala. Easy work.","hm"],
+        ["Bournemouth manager","Stay compact. Attack when we have space. City get the name. Bournemouth get the plan.","aw"],
+        ["City captain","Make we start well. Na only ninety minutes. Na pitch go decide.","hm"],
+        ["City midfielder","Move! Move! Go! Five minutes in and City don already dey knock door.","hm"],
+        ["Bournemouth keeper","How?! Not today. I dey here. First serious chance and keeper don enter beast mode.","aw"],
+        ["Bournemouth defender","Clear am! City get the ball. Bournemouth get patience.","aw"],
+        ["Bournemouth attacker","Omo, City don open space! Then make we use am! Football no get patience.","aw"],
+        ["Bournemouth goalscorer","WE DON SCORE! Bournemouth strike first. Manchester City nil, Bournemouth one.","aw"],
+        ["City captain","Omo, how we take concede? Forget am. We go equalize.","hm"],
+        ["City attacker","Ahhhhh! That was nearly there! Nearly no count.","hm"],
+        ["City attacker","NOOOOO! That pass na invitation! I know!", "hm"],
+        ["City manager","Second half. We change the game. City get possession, Bournemouth get the lead.","hm"],
+        ["Creative midfielder","We need creativity? Give me the ball. Say less.","hm"],
+        ["City player","Keep pushing! Omo, this goal dey hide! The clock dey run.","hm"],
+        ["City centre-back","WE'RE BACK! One more! ONE MORE!", "hm"],
+        ["City captain","WE DON COME BACK! Everybody push! Bournemouth dream win dey slip.","hm"],
+        ["Bournemouth manager","Fresh legs! Stay focused. Almost no count. Finish the job.","aw"],
+        ["City left defender","WE DON WIN AM! LAST MINUTE! Manchester City two, Bournemouth one.","hm"],
+        ["Referee","VAR check. Goal? Goal confirmed. Manchester City two, Bournemouth one.","r"],
+        ["City player","French boy don cook! Two assists! Je vous avais dit.","hm"],
+        ["Bournemouth player","We lead almost the whole game. Football no get pity.","aw"],
+        ["City captain","Three points! Comeback complete! Full time: Manchester City two, Bournemouth one.","hm"],
+        ["Creative midfielder","Deux assists. Calmez-vous. Victory taste different when na comeback.","hm"],
+        ["Narrator","Bournemouth were minutes away from a famous win. Manchester City had other plans. Football no get script.","c"]
+      ];
+      var flat=[], pi=0;
+      M.chapters.forEach(function(ch){ch.imgs.forEach(function(img){
+        pi++; var n=("0"+pi).slice(-2);
+        flat.push({imgs:[pi<=26?"vertical/mc-"+n+".jpg":img],audio:pi<=26?"panels/mc-"+n+".mp3":ch.audio,
+          tag:pi===1?"New season":pi===10?"GOAL · 26'":pi===17?"GOAL · 84'":pi===20?"GOAL · 90+1'":pi===24?"Full time":ch.tag,
+          min:pi===1?"PRE-MATCH":pi===10?"26'":pi===17?"84'":pi===20?"90+1'":pi>=24?"FT":ch.min,
+          h:pi<10?0:pi<17?0:pi<20?1:2,a:pi<10?0:pi<20?1:1,st:pi>=24?"ft":pi===1?"build":"live",
+          scorer:pi===10?"Tavernier":pi===17?"Guéhi":pi===20?"Gvardiol":"",
+          title:pi===1?"New season. New manager. New assignment.":pi===10?"Boom. Tavernier scores first.":pi===17?"84' — Guéhi equaliser!":pi===20?"90+1' — Gvardiol winner!":pi===26?"Manchester City 2–1 Bournemouth · Tavernier 26' · Guéhi 84' · Gvardiol 90+1'":ch.title,
+          cap:[panelText[pi-1]]});
+      });});
+      S=flat;
+    }
+    root.className="mc"+(slug==="mancity-bournemouth"?" mc-vertical":"");
     root.style.setProperty("--home-c",home.clr);
     root.style.setProperty("--away-c",away.clr);
     root.innerHTML=
@@ -228,7 +273,7 @@
       var s=S[idx],st=s.st;
       pill.className="mc-pill "+(st==="live"?"live":st==="ft"?"ft":"");
       pill.innerHTML=(st==="live"?'<span class="d"></span>':'')+PILL[st];
-      score.innerHTML='<span class="t"><span class="sw '+home.sw+'"></span>'+home.ab+'</span>'+s.h+'–'+s.a+'<span class="t"><span class="sw '+away.sw+'"></span>'+away.ab+'</span><span class="min">'+s.min+'</span>';
+      score.innerHTML='<span class="t"><span class="sw '+home.sw+'"></span>'+home.ab+'</span>'+s.h+'–'+s.a+'<span class="t"><span class="sw '+away.sw+'"></span>'+away.ab+'</span><span class="min">'+s.min+'</span>'+(s.scorer?'<span class="scorer">'+s.scorer+'</span>':'');
       tag.textContent=s.tag;title.textContent=s.title;
     }
     function show(n,dir){

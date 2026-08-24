@@ -10,6 +10,9 @@ body{overflow-x:hidden}
   aspect-ratio:16/9;max-height:62vh;background:#000;overflow:hidden;
   border-top:1px solid var(--line);border-bottom:1px solid var(--line);box-shadow:0 22px 60px rgba(0,0,0,.55)}
 .mc-track{position:absolute;inset:0}
+.mc-vertical .mc-deck{width:min(100%,520px);aspect-ratio:9/16;max-height:78vh;margin:0 auto;border-radius:14px}
+.mc-vertical .mc-cap-slot{left:7%;bottom:7%;width:86%}
+.mc-vertical .mc-cap-card b{font-size:16px}
 .mc-card{position:absolute;inset:0;opacity:0;transform:translateX(9%) scale(1.03);
   transition:transform .6s cubic-bezier(.22,1,.36,1),opacity .5s ease;will-change:transform,opacity;pointer-events:none}
 .mc-card.on{opacity:1;transform:none;pointer-events:auto}
@@ -45,6 +48,7 @@ body{overflow-x:hidden}
 .sw-nwstripes{background:repeating-linear-gradient(90deg,#111 0 3px,#fff 3px 6px)}
 .sw-rwstripes{background:repeating-linear-gradient(90deg,#c8102e 0 4px,#fff 4px 8px)}
 .mc-score .min{font-size:10px;color:var(--amber2);border-left:1px solid var(--line);padding-left:8px}
+.mc-score .scorer{font-size:9px;color:#fff;border-left:1px solid var(--line);padding-left:7px;max-width:90px;white-space:nowrap}
 .mc-mark{position:absolute;right:16px;bottom:14px;z-index:6;display:flex;align-items:baseline;gap:7px;
   background:rgba(0,0,0,.45);border:1px solid rgba(245,163,0,.55);border-radius:10px;padding:5px 11px;
   backdrop-filter:blur(3px);pointer-events:none}
