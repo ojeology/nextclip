@@ -355,6 +355,17 @@
         "url": "https://www.bbc.com/sport/football/spanish-la-liga/scores-fixtures"
       },
       "verifiedOn": "2026-08-23"
+    },
+    "elche-vs-barcelona": {
+      "homeScore": 0,
+      "awayScore": 5,
+      "status": "FT",
+      "playedOn": "2026-08-23",
+      "source": {
+        "name": "BBC Sport — Elche v Barcelona",
+        "url": "https://www.bbc.com/sport/football/spanish-la-liga/scores-fixtures"
+      },
+      "verifiedOn": "2026-08-23"
     }
   },
   "serie-a": {
@@ -466,11 +477,33 @@
     },
     "venezia-vs-lecce": {
       "homeScore": 0,
-      "awayScore": 1,
+      "awayScore": 2,
       "status": "FT",
       "playedOn": "2026-08-23",
       "source": {
         "name": "BBC Sport — Venezia v Lecce",
+        "url": "https://www.bbc.com/sport/football/italian-serie-a/scores-fixtures"
+      },
+      "verifiedOn": "2026-08-23"
+    },
+    "atalanta-vs-sassuolo": {
+      "homeScore": 2,
+      "awayScore": 1,
+      "status": "FT",
+      "playedOn": "2026-08-23",
+      "source": {
+        "name": "BBC Sport — Atalanta v Sassuolo",
+        "url": "https://www.bbc.com/sport/football/italian-serie-a/scores-fixtures"
+      },
+      "verifiedOn": "2026-08-23"
+    },
+    "torino-vs-milan": {
+      "homeScore": 1,
+      "awayScore": 2,
+      "status": "FT",
+      "playedOn": "2026-08-23",
+      "source": {
+        "name": "BBC Sport — Torino v AC Milan",
         "url": "https://www.bbc.com/sport/football/italian-serie-a/scores-fixtures"
       },
       "verifiedOn": "2026-08-23"
@@ -624,6 +657,39 @@
         "url": "https://www.bbc.com/sport/football/live/cmd9w4kyd3x1t"
       },
       "verifiedOn": "2026-08-22"
+    },
+    "psg-vs-rennes": {
+      "homeScore": 2,
+      "awayScore": 2,
+      "status": "FT",
+      "playedOn": "2026-08-23",
+      "source": {
+        "name": "BBC Sport — PSG v Rennes",
+        "url": "https://www.bbc.com/sport/football/french-ligue-one/scores-fixtures"
+      },
+      "verifiedOn": "2026-08-23"
+    },
+    "angers-vs-lille": {
+      "homeScore": 0,
+      "awayScore": 2,
+      "status": "FT",
+      "playedOn": "2026-08-23",
+      "source": {
+        "name": "BBC Sport — Angers v Lille",
+        "url": "https://www.bbc.com/sport/football/french-ligue-one/scores-fixtures"
+      },
+      "verifiedOn": "2026-08-23"
+    },
+    "le-havre-vs-monaco": {
+      "homeScore": 0,
+      "awayScore": 1,
+      "status": "FT",
+      "playedOn": "2026-08-23",
+      "source": {
+        "name": "BBC Sport — Le Havre v Monaco",
+        "url": "https://www.bbc.com/sport/football/french-ligue-one/scores-fixtures"
+      },
+      "verifiedOn": "2026-08-23"
     }
   }
 }
