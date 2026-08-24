@@ -100,21 +100,21 @@
       home:{ab:"MCI",sw:"sw-sky",clr:"#5aa9e6"},away:{ab:"BOU",sw:"sw-red",clr:"#e23b3b"},
       chapters:[
         {imgs:["mc-01.jpg","mc-02.jpg","mc-03.jpg","mc-04.jpg"],imgW:[2,2,7,7],audio:"mc-ch01.mp3",tag:"New season",min:"PRE-MATCH",h:0,a:0,st:"build",title:"New season. New manager. New assignment.",
-         cap:[["City fan","Omo, new season don start! Boss, today three points o! No excuse today. Make we collect this win.","hm"],["Manager","Calm down. We go handle am.","hm"],["City fan","Omo... Bournemouth don land. Na City dem wan play today.","hm"],["Bournemouth player","Everybody dey talk about Manchester City. Make them talk. Focus. We play our football. Let's make them uncomfortable.","aw"]]},
+         cap:[["City fan","Omo, new season don start! Boss, today three points o! No excuse today. Make we collect this win.","hm"],["Enzo Maresca","Calm down. We go handle am.","hm"],["City fan","Omo... Bournemouth don land. Na City dem wan play today.","hm"],["Lewis Cook","Everybody dey talk about Manchester City. Make them talk. Focus. We play our football. Let's make them uncomfortable.","aw"]]},
         {imgs:["mc-05.jpg","mc-06.jpg","mc-07.jpg"],imgW:[2,2,3],audio:"mc-ch02.mp3",tag:"AND WE DON START",min:"5'",h:0,a:0,st:"live",title:"And we don start.",
-         cap:[["City captain","Make we start well.","hm"],["Bournemouth player","Make we see. Na only 90 minutes.","aw"],["City midfielder","Move! Move! Go!","hm"],["Bournemouth keeper","HOW?! Not today. I dey here.","aw"]]},
+         cap:[["Rúben Dias","Make we start well.","hm"],["Lewis Cook","Make we see. Na only 90 minutes.","aw"],["Elliot Anderson","Move! Move! Go!","hm"],["Djordje Petrović","HOW?! Not today. I dey here.","aw"]]},
         {imgs:["mc-08.jpg","mc-09.jpg","mc-10.jpg"],imgW:[2,2,3],audio:"mc-ch03.mp3",tag:"GOAL · Bournemouth",min:"26'",h:0,a:1,st:"live",title:"Boom. Bournemouth strike first.",
-         cap:[["City player","Ah! Almost! Why everybody dey park bus? Una no wan play?","hm"],["Bournemouth defender","Na football, boss. We dey play. Na you dey chase us. Clear am!","aw"],["Bournemouth attacker","Don't let him through! Run! Omo, City don open space! Then make we use am!","aw"],["Goalscorer","WE DON SCORE! I tell you! Una see am?!","aw"]]},
+         cap:[["City player","Ah! Almost! Why everybody dey park bus? Una no wan play?","hm"],["James Hill","Na football, boss. We dey play. Na you dey chase us. Clear am!","aw"],["Bournemouth attacker","Don't let him through! Run! Omo, City don open space! Then make we use am!","aw"],["Goalscorer","WE DON SCORE! I tell you! Una see am?!","aw"]]},
         {imgs:["mc-11.jpg","mc-12.jpg","mc-13.jpg","mc-14.jpg"],imgW:[2,2,3,7],audio:"mc-ch04.mp3",tag:"HALF TIME",min:"HT",h:0,a:1,st:"ht",title:"The assist was sweet. The finish was not.",
-         cap:[["City midfielder","Omo... how we take concede? Forget am. We go equalize.","hm"],["City attacker","Ahhhhh! That was nearly there! NOOOOO! That pass na invitation!","hm"],["Bournemouth keeper","Thank you. Nearly no count. Because you miss.","aw"],["City manager","Second half. We change the game.","hm"]]},
+         cap:[["Elliot Anderson","Omo... how we take concede? Forget am. We go equalize.","hm"],["Phil Foden","Ahhhhh! That was nearly there! NOOOOO! That pass na invitation!","hm"],["Djordje Petrović","Thank you. Nearly no count. Because you miss.","aw"],["City manager","Second half. We change the game.","hm"]]},
         {imgs:["mc-15.jpg","mc-16.jpg"],imgW:[4,2],audio:"mc-ch05.mp3",tag:"The bench",min:"75'",h:0,a:1,st:"live",title:"The game needed something different.",
-         cap:[["Manager","We need creativity. Go change the game.","hm"],["Creative midfielder","Give me the ball. Say less.","hm"],["Bournemouth defender","Who be this? New problem. Clear am!","aw"],["City attacker","Keep pushing! Omo, this goal dey hide!","hm"]]},
+         cap:[["Enzo Maresca","We need creativity. Go change the game.","hm"],["Rayan Cherki","Give me the ball. Say less.","hm"],["James Hill","Who be this? New problem. Clear am!","aw"],["Phil Foden","Keep pushing! Omo, this goal dey hide!","hm"]]},
         {imgs:["mc-17.jpg","mc-18.jpg","mc-19.jpg"],imgW:[3,3,2],audio:"mc-ch06.mp3",tag:"GOAL · 84'",min:"84'",h:1,a:1,st:"live",title:"84' — equaliser!",
-         cap:[["City goalscorer","WE'RE BACK! I TOLD YOU! One more! ONE MORE!","hm"],["City captain","WE DON COME BACK! Everybody push!","hm"],["Bournemouth defender","How we lose this lead? Abeg, just survive!","aw"],["Bournemouth manager","Fresh legs! Stay focused. Almost no count. Finish the job.","aw"]]},
+         cap:[["City goalscorer","WE'RE BACK! I TOLD YOU! One more! ONE MORE!","hm"],["Rúben Dias","WE DON COME BACK! Everybody push!","hm"],["James Hill","How we lose this lead? Abeg, just survive!","aw"],["Marco Rose","Fresh legs! Stay focused. Almost no count. Finish the job.","aw"]]},
         {imgs:["mc-20.jpg","mc-21.jpg","mc-22.jpg"],imgW:[3,4,2],audio:"mc-ch07.mp3",tag:"GOAL · 90+1'",min:"90+1'",h:2,a:1,st:"live",title:"90+1' — Gvardiol!!!",
-         cap:[["Goalscorer","WE DON WIN AM! LAST MINUTE!","hm"],["Creative midfielder","NO WAY!","hm"],["Bournemouth player","HOW?! We were winning! Check am well!","aw"],["City player","French boy don cook! Two assists! Omo! Je vous avais dit.","hm"]]},
+         cap:[["Goalscorer","WE DON WIN AM! LAST MINUTE!","hm"],["Rayan Cherki","NO WAY!","hm"],["Lewis Cook","HOW?! We were winning! Check am well!","aw"],["City player","French boy don cook! Two assists! Omo! Je vous avais dit.","hm"]]},
         {imgs:["mc-23.jpg","mc-24.jpg","mc-25.jpg","mc-26.jpg"],imgW:[2,2,7,4],audio:"mc-ch08.mp3",tag:"Full time",min:"FT",h:2,a:1,st:"ft",title:"Football no get script.",
-         cap:[["Bournemouth player","We lead almost the whole game... Football no get pity.","aw"],["City captain","Three points! Comeback complete!","hm"],["Creative midfielder","Deux assists. Calmez-vous.","hm"],["City fan","Na why you dey watch football till 90+? Because football fit disgrace you anytime!","hm"]]}
+         cap:[["Lewis Cook","We lead almost the whole game... Football no get pity.","aw"],["Rúben Dias","Three points! Comeback complete!","hm"],["Rayan Cherki","Deux assists. Calmez-vous.","hm"],["City fan","Na why you dey watch football till 90+? Because football fit disgrace you anytime!","hm"]]}
       ]
     },
     "newcastle-liverpool":{
@@ -167,30 +167,30 @@
     if(slug==="mancity-bournemouth"){
       var panelText=[
         ["City fan","Omo, new season don start! Boss, today na three points o! No excuse today. Make we collect this win.","hm"],
-        ["Bournemouth player","Everybody dey talk about Manchester City. Make them talk. Focus. We play our football.","aw"],
-        ["Manager","Start fast. Move the ball. Stay patient. Boss, no wahala. Easy work.","hm"],
-        ["Bournemouth manager","Stay compact. Attack when we have space. City get the name. Bournemouth get the plan.","aw"],
-        ["City captain","Make we start well. Na only ninety minutes. Na pitch go decide.","hm"],
-        ["City midfielder","Move! Move! Go! Five minutes in and City don already dey knock door.","hm"],
-        ["Bournemouth keeper","How?! Not today. I dey here. First serious chance and keeper don enter beast mode.","aw"],
-        ["Bournemouth defender","Clear am! City get the ball. Bournemouth get patience.","aw"],
+        ["Lewis Cook","Everybody dey talk about Manchester City. Make them talk. Focus. We play our football.","aw"],
+        ["Enzo Maresca","Start fast. Move the ball. Stay patient. Boss, no wahala. Easy work.","hm"],
+        ["Marco Rose","Stay compact. Attack when we have space. City get the name. Bournemouth get the plan.","aw"],
+        ["Rúben Dias","Make we start well. Na only ninety minutes. Na pitch go decide.","hm"],
+        ["Elliot Anderson","Move! Move! Go! Five minutes in and City don already dey knock door.","hm"],
+        ["Djordje Petrović","How?! Not today. I dey here. First serious chance and keeper don enter beast mode.","aw"],
+        ["James Hill","Clear am! City get the ball. Bournemouth get patience.","aw"],
         ["Bournemouth attacker","Omo, City don open space! Then make we use am! Football no get patience.","aw"],
-        ["Bournemouth goalscorer","WE DON SCORE! Bournemouth strike first. Manchester City nil, Bournemouth one.","aw"],
-        ["City captain","Omo, how we take concede? Forget am. We go equalize.","hm"],
-        ["City attacker","Ahhhhh! That was nearly there! Nearly no count.","hm"],
-        ["City attacker","NOOOOO! That pass na invitation! I know!", "hm"],
+        ["Marcus Tavernier","WE DON SCORE! Bournemouth strike first. Manchester City nil, Bournemouth one.","aw"],
+        ["Rúben Dias","Omo, how we take concede? Forget am. We go equalize.","hm"],
+        ["Phil Foden","Ahhhhh! That was nearly there! Nearly no count.","hm"],
+        ["Phil Foden","NOOOOO! That pass na invitation! I know!", "hm"],
         ["City manager","Second half. We change the game. City get possession, Bournemouth get the lead.","hm"],
-        ["Creative midfielder","We need creativity? Give me the ball. Say less.","hm"],
+        ["Rayan Cherki","We need creativity? Give me the ball. Say less.","hm"],
         ["City player","Keep pushing! Omo, this goal dey hide! The clock dey run.","hm"],
-        ["City centre-back","WE'RE BACK! One more! ONE MORE!", "hm"],
-        ["City captain","WE DON COME BACK! Everybody push! Bournemouth dream win dey slip.","hm"],
-        ["Bournemouth manager","Fresh legs! Stay focused. Almost no count. Finish the job.","aw"],
-        ["City left defender","WE DON WIN AM! LAST MINUTE! Manchester City two, Bournemouth one.","hm"],
+        ["Marc Guéhi","WE'RE BACK! One more! ONE MORE!", "hm"],
+        ["Rúben Dias","WE DON COME BACK! Everybody push! Bournemouth dream win dey slip.","hm"],
+        ["Marco Rose","Fresh legs! Stay focused. Almost no count. Finish the job.","aw"],
+        ["Joško Gvardiol","WE DON WIN AM! LAST MINUTE! Manchester City two, Bournemouth one.","hm"],
         ["Referee","VAR check. Goal? Goal confirmed. Manchester City two, Bournemouth one.","r"],
         ["City player","French boy don cook! Two assists! Je vous avais dit.","hm"],
-        ["Bournemouth player","We lead almost the whole game. Football no get pity.","aw"],
-        ["City captain","Three points! Comeback complete! Full time: Manchester City two, Bournemouth one.","hm"],
-        ["Creative midfielder","Deux assists. Calmez-vous. Victory taste different when na comeback.","hm"],
+        ["Lewis Cook","We lead almost the whole game. Football no get pity.","aw"],
+        ["Rúben Dias","Three points! Comeback complete! Full time: Manchester City two, Bournemouth one.","hm"],
+        ["Rayan Cherki","Deux assists. Calmez-vous. Victory taste different when na comeback.","hm"],
         ["Narrator","Bournemouth were minutes away from a famous win. Manchester City had other plans. Football no get script.","c"]
       ];
       /* Approximate head anchors for the named speaker in each vertical plate.
@@ -203,32 +203,32 @@
       ];
       var panelCaps=panelText.map(function(c){return [c];});
       function lines(i){panelCaps[i-1]=Array.prototype.slice.call(arguments,1);}
-      lines(1,["City fan","Omo, new season don start! Boss, today na three points o!","hm",[22,48,64]],["Manager","Calm down. We go handle am.","hm",[35,30,58]]);
-      lines(2,["City fan","Omo... Bournemouth don land. Na City dem wan play today.","hm",[24,48,62]],["Bournemouth player","Everybody dey talk about Manchester City. Make them talk.","aw",[58,48,62]],["Bournemouth manager","Focus. We play our football.","aw",[48,35,60]]);
-      lines(3,["Manager","Start fast. Move the ball. Stay patient.","hm",[35,30,58]],["City captain","Boss, no wahala. Easy work.","hm",[54,43,58]]);
-      lines(4,["Bournemouth manager","Stay compact. Attack when we have space.","aw",[50,32,62]],["Bournemouth captain","Nobody come here to admire the stadium. Maybe three points.","aw",[68,45,58]]);
-      lines(5,["City captain","Make we start well.","hm",[48,42,60]],["Bournemouth player","Make we see. Na only ninety minutes.","aw",[69,44,56]],["City fan","Three points today! Abeg, no stress us.","hm",[22,55,55]]);
-      lines(6,["City midfielder","Move! Move! Go!","hm",[52,37,55]],["Bournemouth defender","Everybody wake up!","aw",[68,42,52]],["Bournemouth defender","I dey awake! Then why you dey watch ball?","aw",[35,43,56]]);
-      lines(7,["City striker","How?!","hm",[48,52,50]],["Bournemouth keeper","Not today. I dey here.","aw",[29,33,54]],["City fan","Chai! First serious chance and keeper don enter beast mode.","hm",[23,58,68]]);
-      lines(8,["City player","Ah! Almost!","hm",[47,42,56]],["Bournemouth defender","Clear am!","aw",[68,40,50]],["Bournemouth player","City get the ball. Bournemouth get patience.","aw",[52,35,62]]);
-      lines(9,["Bournemouth defender","Don't let him through! Run!","aw",[67,40,54]],["Bournemouth attacker","Omo, City don open space! Then make we use am!","aw",[51,34,60]]);
-      lines(10,["Bournemouth goalscorer","WE DON SCORE!","aw",[43,42,56]],["City defender","How? We were attacking five seconds ago.","hm",[68,48,58]],["City fan","One goal fit still pain you!","hm",[23,57,60]]);
-      lines(11,["City captain","Omo, how we take concede?","hm",[43,43,56]],["City midfielder","Forget am. We go equalize.","hm",[58,40,56]],["Bournemouth player","Na the important part.","aw",[70,42,52]]);
-      lines(12,["City attacker","Ahhhhh! That was nearly there!","hm",[48,40,58]],["Bournemouth defender","Nearly no count.","aw",[66,40,52]],["City fan","Abeg, somebody shoot!","hm",[22,55,58]]);
-      lines(13,["City attacker","NOOOOO! That pass na invitation!","hm",[50,40,60]],["Bournemouth keeper","Thank you.","aw",[30,34,52]],["City fan","Chai! How you miss that one?!","hm",[22,58,58]]);
-      lines(14,["City manager","Second half. We change the game.","hm",[34,30,60],"bubbles/mc-14-1.mp3"],["City player","We get the ball, but na dem get the goal.","hm",[55,46,58],"bubbles/mc-14-2.mp3"],["Bournemouth manager","Don't relax. City will come.","aw",[70,31,58],"bubbles/mc-14-3.mp3"]);
-      lines(15,["Manager","We need creativity. Go change the game.","hm",[34,32,60]],["Creative midfielder","Give me the ball. Say less.","hm",[48,43,58]],["Bournemouth defender","Who be this? New problem.","aw",[72,45,54]]);
-      lines(16,["City player","Keep pushing! This goal dey hide!","hm",[52,37,60]],["Bournemouth keeper","Everybody stay focused!","aw",[30,34,54]],["City fan","The clock dey run.","hm",[22,56,54]]);
-      lines(17,["City centre-back","WE'RE BACK!","hm",[42,40,58],"bubbles/mc-17-1.mp3"],["Creative midfielder","I told you! One more!","hm",[57,38,58],"bubbles/mc-17-2.mp3"],["Bournemouth defender","How we lose this lead?","aw",[72,44,54]]);
-      lines(18,["City captain","WE DON COME BACK! Everybody push!","hm",[43,42,62]],["Bournemouth defender","Abeg, just survive!","aw",[70,44,55]],["Bournemouth fan","Six minutes fit be six years.","aw",[25,58,58]]);
-      lines(19,["Bournemouth manager","Fresh legs! Stay focused!","aw",[50,30,62]],["Outgoing player","Boss, we nearly get am.","aw",[32,45,54]],["Incoming player","Got it.","aw",[68,45,48]]);
-      lines(20,["Creative midfielder","NO WAY!","hm",[57,38,54]],["Gvardiol","WE DON WIN AM! Last minute!","hm",[43,38,58]],["Bournemouth player","HOW?! We were winning!","aw",[70,45,54]]);
-      lines(21,["City player","Abeg, make dem no cancel this one.","hm",[42,43,62]],["Referee","Check am well. Goal confirmed.","r",[53,32,58]],["Bournemouth player","Please VAR!","aw",[70,45,52]]);
-      lines(22,["City player","French boy don cook! Two assists!","hm",[47,40,60]],["Creative midfielder","Je vous avais dit.","hm",[58,35,54]],["Manager","Na tactical breathing.","hm",[34,30,54]]);
-      lines(23,["Bournemouth player","We lead almost the whole game...","aw",[42,44,58]],["Bournemouth keeper","One corner, one pass, finish.","aw",[70,42,54]],["Bournemouth manager","Football no get pity.","aw",[54,31,58]]);
-      lines(24,["City captain","Three points!","hm",[42,42,54]],["Creative midfielder","Deux assists.","hm",[57,38,54]],["Bournemouth fan","Abeg, make person no talk to me.","aw",[70,46,56]]);
-      lines(25,["Manager","Anybody wey laugh go train double tomorrow.","hm",[35,30,58]],["City player","Then na everybody!","hm",[54,45,54]],["Creative midfielder","Calmez-vous. Give me jollof.","hm",[67,47,54]]);
-      lines(26,["City fan","Football no get script.","hm",[22,50,58]],["Bournemouth manager","Bournemouth were minutes away from a famous win.","aw",[68,43,62]],["Narrator","Manchester City had other plans.","c",[50,28,70]]);
+      lines(1,["City fan","Omo, new season don start! Boss, today na three points o!","hm",[22,48,64]],["Enzo Maresca","Calm down. We go handle am.","hm",[35,30,58]]);
+      lines(2,["City fan","Omo... Bournemouth don land. Na City dem wan play today.","hm",[24,48,62]],["Lewis Cook","Everybody dey talk about Manchester City. Make them talk.","aw",[58,48,62]],["Marco Rose","Focus. We play our football.","aw",[48,35,60]]);
+      lines(3,["Enzo Maresca","Start fast. Move the ball. Stay patient.","hm",[35,30,58]],["Rúben Dias","Boss, no wahala. Easy work.","hm",[54,43,58]]);
+      lines(4,["Marco Rose","Stay compact. Attack when we have space.","aw",[50,32,62]],["Adam Smith","Nobody come here to admire the stadium. Maybe three points.","aw",[68,45,58]]);
+      lines(5,["Rúben Dias","Make we start well.","hm",[48,42,60]],["Lewis Cook","Make we see. Na only ninety minutes.","aw",[69,44,56]],["City fan","Three points today! Abeg, no stress us.","hm",[22,55,55]]);
+      lines(6,["Elliot Anderson","Move! Move! Go!","hm",[52,37,55]],["James Hill","Everybody wake up!","aw",[68,42,52]],["James Hill","I dey awake! Then why you dey watch ball?","aw",[35,43,56]]);
+      lines(7,["Erling Haaland","How?!","hm",[48,52,50]],["Djordje Petrović","Not today. I dey here.","aw",[29,33,54]],["City fan","Chai! First serious chance and keeper don enter beast mode.","hm",[23,58,68]]);
+      lines(8,["City player","Ah! Almost!","hm",[47,42,56]],["James Hill","Clear am!","aw",[68,40,50]],["Lewis Cook","City get the ball. Bournemouth get patience.","aw",[52,35,62]]);
+      lines(9,["James Hill","Don't let him through! Run!","aw",[67,40,54]],["Bournemouth attacker","Omo, City don open space! Then make we use am!","aw",[51,34,60]]);
+      lines(10,["Marcus Tavernier","WE DON SCORE!","aw",[43,42,56]],["City defender","How? We were attacking five seconds ago.","hm",[68,48,58]],["City fan","One goal fit still pain you!","hm",[23,57,60]]);
+      lines(11,["Rúben Dias","Omo, how we take concede?","hm",[43,43,56]],["Elliot Anderson","Forget am. We go equalize.","hm",[58,40,56]],["Lewis Cook","Na the important part.","aw",[70,42,52]]);
+      lines(12,["Phil Foden","Ahhhhh! That was nearly there!","hm",[48,40,58]],["James Hill","Nearly no count.","aw",[66,40,52]],["City fan","Abeg, somebody shoot!","hm",[22,55,58]]);
+      lines(13,["Phil Foden","NOOOOO! That pass na invitation!","hm",[50,40,60]],["Djordje Petrović","Thank you.","aw",[30,34,52]],["City fan","Chai! How you miss that one?!","hm",[22,58,58]]);
+      lines(14,["City manager","Second half. We change the game.","hm",[34,30,60],"bubbles/mc-14-1.mp3"],["City player","We get the ball, but na dem get the goal.","hm",[55,46,58],"bubbles/mc-14-2.mp3"],["Marco Rose","Don't relax. City will come.","aw",[70,31,58],"bubbles/mc-14-3.mp3"]);
+      lines(15,["Enzo Maresca","We need creativity. Go change the game.","hm",[34,32,60]],["Rayan Cherki","Give me the ball. Say less.","hm",[48,43,58]],["James Hill","Who be this? New problem.","aw",[72,45,54]]);
+      lines(16,["City player","Keep pushing! This goal dey hide!","hm",[52,37,60]],["Djordje Petrović","Everybody stay focused!","aw",[30,34,54]],["City fan","The clock dey run.","hm",[22,56,54]]);
+      lines(17,["Marc Guéhi","WE'RE BACK!","hm",[42,40,58],"bubbles/mc-17-1.mp3"],["Rayan Cherki","I told you! One more!","hm",[57,38,58],"bubbles/mc-17-2.mp3"],["James Hill","How we lose this lead?","aw",[72,44,54]]);
+      lines(18,["Rúben Dias","WE DON COME BACK! Everybody push!","hm",[43,42,62]],["James Hill","Abeg, just survive!","aw",[70,44,55]],["Bournemouth fan","Six minutes fit be six years.","aw",[25,58,58]]);
+      lines(19,["Marco Rose","Fresh legs! Stay focused!","aw",[50,30,62]],["Outgoing player","Boss, we nearly get am.","aw",[32,45,54]],["Incoming player","Got it.","aw",[68,45,48]]);
+      lines(20,["Rayan Cherki","NO WAY!","hm",[57,38,54]],["Gvardiol","WE DON WIN AM! Last minute!","hm",[43,38,58]],["Lewis Cook","HOW?! We were winning!","aw",[70,45,54]]);
+      lines(21,["City player","Abeg, make dem no cancel this one.","hm",[42,43,62]],["Referee","Check am well. Goal confirmed.","r",[53,32,58]],["Lewis Cook","Please VAR!","aw",[70,45,52]]);
+      lines(22,["City player","French boy don cook! Two assists!","hm",[47,40,60]],["Rayan Cherki","Je vous avais dit.","hm",[58,35,54]],["Enzo Maresca","Na tactical breathing.","hm",[34,30,54]]);
+      lines(23,["Lewis Cook","We lead almost the whole game...","aw",[42,44,58]],["Djordje Petrović","One corner, one pass, finish.","aw",[70,42,54]],["Marco Rose","Football no get pity.","aw",[54,31,58]]);
+      lines(24,["Rúben Dias","Three points!","hm",[42,42,54]],["Rayan Cherki","Deux assists.","hm",[57,38,54]],["Bournemouth fan","Abeg, make person no talk to me.","aw",[70,46,56]]);
+      lines(25,["Enzo Maresca","Anybody wey laugh go train double tomorrow.","hm",[35,30,58]],["City player","Then na everybody!","hm",[54,45,54]],["Rayan Cherki","Calmez-vous. Give me jollof.","hm",[67,47,54]]);
+      lines(26,["City fan","Football no get script.","hm",[22,50,58]],["Marco Rose","Bournemouth were minutes away from a famous win.","aw",[68,43,62]],["Narrator","Manchester City had other plans.","c",[50,28,70]]);
       var transcripts=[
         "Omo, new season don start! Boss, today na three points o! No excuse today. Make we collect this win. Calm down. We go handle am. New season. New manager. New assignment.",
         "Omo, Bournemouth don land. Na City dem wan play today. Everybody dey talk about Manchester City. Make them talk. Focus. We play our football. Bournemouth no come sightseeing.",
@@ -364,6 +364,7 @@
       var ch=S[i], iw=ch.imgW||ch.imgs.map(function(){return 1;}), sum=0, n;
       for(n=0;n<iw.length;n++) sum+=iw[n];
       var byImg=sum*MIN_IMG_MS;
+      if(slug==="mancity-bournemouth") byImg=Math.max(7000,sum*6000);
       var byCap=ch.cap.length*CAP_DUR+1600;
       return Math.max(byImg, byCap, ch.hold||0);
     }
@@ -382,17 +383,15 @@
       void c.offsetWidth;c.style.transition="";c.classList.remove("right","left");c.classList.add("on");
       setLayer(c,0);curLayer=0;curCap=-1;capCard.classList.remove("in");
       dots.forEach(function(d,i){d.classList.toggle("on",i===idx);});
-      cntEl.textContent=(idx+1)+" / "+len;updateHud();elapsed=0;last=performance.now();
+      cntEl.textContent=(idx+1)+" / "+len;updateHud();elapsed=0;last=performance.now();audioEnded=false;
       loadAudio(idx); if(!muted) playAudio();
     }
     function loop(now){var dt=now-last;last=now;
       if(playing&&!hover&&(muted||!audioOK)){elapsed+=dt;if(elapsed>=durFor(idx))show(idx+1,"next");}
+      if(playing&&!hover&&!muted&&audioOK&&audio.duration&&audio.currentTime>=audio.duration-0.05&&!audioEnded){audioEnded=true;show(idx+1,"next");}
       var ch=S[idx];
       var prog=(!muted&&audioOK&&audio.duration)?(audio.currentTime/audio.duration):Math.min(0.999999,elapsed/durFor(idx));
       prog=Math.max(0,Math.min(0.999999,prog));
-      var transcript=ch.transcript||ch.cap.map(function(c){return c[1];}).join(" ");
-      var capWords=transcript.split(/\s+/), visibleWords=Math.max(1,Math.ceil(capWords.length*prog));
-      var capText=capCard.querySelector("b"); if(capText) capText.textContent=capWords.slice(0,visibleWords).join(" ");
       if(ch.imgs.length>1){var li=Math.floor(prog*ch.imgs.length)%ch.imgs.length; if(li!==curLayer){setLayer(cards[idx],li);curLayer=li;}}
       var hasBubbleAudio=ch.cap.some(function(c){return c[4];});
       var ci=Math.floor(prog*ch.cap.length)%ch.cap.length;
@@ -420,7 +419,7 @@
     fsBtn.addEventListener("click",enterFs);
     fsx.addEventListener("click",exitFs);
     deck.addEventListener("mouseenter",function(){hover=true;});
-    deck.addEventListener("mouseleave",function(){hover=false;last=performance.now();});
+    deck.addEventListener("mouseleave",function(){hover=false;last=performance.now();if(audioEnded&&playing)show(idx+1,"next");});
     var sx=null;
     deck.addEventListener("touchstart",function(e){sx=e.touches[0].clientX;},{passive:true});
     deck.addEventListener("touchend",function(e){if(sx===null)return;var dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>44)show(dx<0?idx+1:idx-1,dx<0?"next":"prev");sx=null;},{passive:true});
