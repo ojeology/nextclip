@@ -216,10 +216,10 @@
       lines(11,["City captain","Omo, how we take concede?","hm",[43,43,56]],["City midfielder","Forget am. We go equalize.","hm",[58,40,56]],["Bournemouth player","Na the important part.","aw",[70,42,52]]);
       lines(12,["City attacker","Ahhhhh! That was nearly there!","hm",[48,40,58]],["Bournemouth defender","Nearly no count.","aw",[66,40,52]],["City fan","Abeg, somebody shoot!","hm",[22,55,58]]);
       lines(13,["City attacker","NOOOOO! That pass na invitation!","hm",[50,40,60]],["Bournemouth keeper","Thank you.","aw",[30,34,52]],["City fan","Chai! How you miss that one?!","hm",[22,58,58]]);
-      lines(14,["City manager","Second half. We change the game.","hm",[34,30,60]],["City player","We get the ball, but na dem get the goal.","hm",[55,46,58]],["Bournemouth manager","Don't relax. City will come.","aw",[70,31,58]]);
+      lines(14,["City manager","Second half. We change the game.","hm",[34,30,60],"bubbles/mc-14-1.mp3"],["City player","We get the ball, but na dem get the goal.","hm",[55,46,58],"bubbles/mc-14-2.mp3"],["Bournemouth manager","Don't relax. City will come.","aw",[70,31,58],"bubbles/mc-14-3.mp3"]);
       lines(15,["Manager","We need creativity. Go change the game.","hm",[34,32,60]],["Creative midfielder","Give me the ball. Say less.","hm",[48,43,58]],["Bournemouth defender","Who be this? New problem.","aw",[72,45,54]]);
       lines(16,["City player","Keep pushing! This goal dey hide!","hm",[52,37,60]],["Bournemouth keeper","Everybody stay focused!","aw",[30,34,54]],["City fan","The clock dey run.","hm",[22,56,54]]);
-      lines(17,["City centre-back","WE'RE BACK!","hm",[42,40,58]],["Creative midfielder","I told you! One more!","hm",[57,38,58]],["Bournemouth defender","How we lose this lead?","aw",[72,44,54]]);
+      lines(17,["City centre-back","WE'RE BACK!","hm",[42,40,58],"bubbles/mc-17-1.mp3"],["Creative midfielder","I told you! One more!","hm",[57,38,58],"bubbles/mc-17-2.mp3"],["Bournemouth defender","How we lose this lead?","aw",[72,44,54]]);
       lines(18,["City captain","WE DON COME BACK! Everybody push!","hm",[43,42,62]],["Bournemouth defender","Abeg, just survive!","aw",[70,44,55]],["Bournemouth fan","Six minutes fit be six years.","aw",[25,58,58]]);
       lines(19,["Bournemouth manager","Fresh legs! Stay focused!","aw",[50,30,62]],["Outgoing player","Boss, we nearly get am.","aw",[32,45,54]],["Incoming player","Got it.","aw",[68,45,48]]);
       lines(20,["Creative midfielder","NO WAY!","hm",[57,38,54]],["Gvardiol","WE DON WIN AM! Last minute!","hm",[43,38,58]],["Bournemouth player","HOW?! We were winning!","aw",[70,45,54]]);
@@ -271,9 +271,11 @@
           title:pi===1?"New season. New manager. New assignment.":pi===10?"Boom. Tavernier scores first.":pi===17?"84' — Guéhi equaliser!":pi===20?"90+1' — Gvardiol winner!":pi===26?"Manchester City 2–1 Bournemouth · Tavernier 26' · Guéhi 84' · Gvardiol 90+1'":ch.title,
           cap:panelCaps[pi-1],transcript:transcripts[pi-1]});
       });});
-      flat.push({imgs:["vertical/mc-27.jpg"],audio:"panels/mc-27.mp3",tag:"Fan reaction",min:"0–1",h:0,a:1,st:"live",title:"One goal down and the fans don vex!",bubblePos:[36,38,68],cap:[["City fan","Maresca, abeg wake up! This calm calm football dey give us hypertension!","hm",[36,38,68]],["City fan","No panic ke? No panic!","hm",[22,52,58]]],transcript:transcripts[26]});
-      flat.push({imgs:["vertical/mc-28.jpg"],audio:"panels/mc-28.mp3",tag:"Comeback complete",min:"FT",h:2,a:1,st:"ft",title:"The same fans don turn celebration committee!",bubblePos:[35,38,68],cap:[["City fan","Maresca, we roast you when we were one nil down!","hm",[22,52,62]],["City fan","Omo, comeback complete! Manchester City two, Bournemouth one!","hm",[44,39,68]]],transcript:transcripts[27]});
-      flat.push({imgs:["vertical/mc-29.jpg"],audio:"panels/mc-29.mp3",tag:"BRYME Football Comics",min:"END",h:2,a:1,st:"ft",title:"Please like, follow and share.",bubblePos:[50,32,76],cap:[["BRYME","Please like, follow and share! More BRYME Football Comics dey come.","c",[50,32,76]]],transcript:transcripts[28]});
+      flat.push({imgs:["vertical/mc-27.jpg"],audio:"panels/mc-27.mp3",tag:"Fan reaction",min:"0–1",h:0,a:1,st:"live",title:"One goal down and the fans don vex!",bubblePos:[36,38,68],cap:[["City fan","Maresca, abeg wake up! This calm calm football dey give us hypertension!","hm",[36,38,68],"bubbles/mc-27-1.mp3"],["City fan","No panic ke? No panic!","hm",[22,52,58],"bubbles/mc-27-2.mp3"]],transcript:transcripts[26]});
+      flat.push({imgs:["vertical/mc-28.jpg"],audio:"panels/mc-28.mp3",tag:"Comeback complete",min:"FT",h:2,a:1,st:"ft",title:"The same fans don turn celebration committee!",bubblePos:[35,38,68],cap:[["City fan","Maresca, we roast you when we were one nil down!","hm",[22,52,62],"bubbles/mc-28-1.mp3"],["City fan","Omo, comeback complete! Manchester City two, Bournemouth one!","hm",[44,39,68],"bubbles/mc-28-2.mp3"]],transcript:transcripts[27]});
+      flat.push({imgs:["vertical/mc-29.jpg"],audio:"panels/mc-29.mp3",tag:"BRYME Football Comics",min:"END",h:2,a:1,st:"ft",title:"Please like, follow and share.",bubblePos:[50,32,76],cap:[["BRYME","Please like, follow and share! More BRYME Football Comics dey come.","c",[50,32,76],"bubbles/mc-29-1.mp3"]],transcript:transcripts[28]});
+      var halftimeFan=flat.splice(26,1)[0];
+      flat.splice(14,0,halftimeFan);
       S=flat;
     }
     root.className="mc"+(slug==="mancity-bournemouth"?" mc-vertical":"");
@@ -320,7 +322,13 @@
     dots.forEach(function(b,i){b.addEventListener("click",function(){show(i,i>idx?"next":"prev");});});
 
     var audio=document.createElement("audio"); audio.preload="auto"; audio.setAttribute("aria-hidden","true"); root.appendChild(audio);
+    var bubbleAudio=document.createElement("audio"); bubbleAudio.preload="auto"; bubbleAudio.setAttribute("aria-hidden","true"); root.appendChild(bubbleAudio);
     var muted=true, audioOK=true;
+    bubbleAudio.addEventListener("ended",function(){
+      var ch=S[idx];
+      if(playing&&ch.cap[curCap+1]&&ch.cap[curCap+1][4]){ curCap++; showCap(ch.cap[curCap]); }
+      else hideSpeech();
+    });
     var audioEnded=false;
     audio.addEventListener("ended",function(){
       audioEnded=true;
@@ -328,7 +336,7 @@
     });
     audio.addEventListener("error",function(){ audioOK=false; });
     function loadAudio(i){ var s=S[i]; if(s.audio){ audioOK=true; audio.src=AUDIO_DIR+s.audio; audio.load(); } }
-    function playAudio(){ if(!muted&&S[idx].audio){ audio.currentTime=0; var p=audio.play(); if(p&&p.catch)p.catch(function(){audioOK=false;}); } }
+    function playAudio(){ if(!muted&&S[idx].audio&&!S[idx].cap.some(function(c){return c[4];})){ audio.currentTime=0; var p=audio.play(); if(p&&p.catch)p.catch(function(){audioOK=false;}); } }
     function stopAudio(){ try{audio.pause();}catch(e){} }
     function setLayer(card,li){ var ls=card.querySelectorAll(".mc-layer"); ls.forEach(function(l,k){l.classList.toggle("on",k===li);}); }
     var capTimer=null,bubbleTimer=null;
@@ -343,6 +351,7 @@
         bubbleSlot.style.left=bp[0]+"%"; bubbleSlot.style.top=bp[1]+"%"; bubbleSlot.style.bottom="auto"; bubbleSlot.style.width=bp[2]+"%";
         bubble.className="mc-bubble "+c[2];
         bubble.innerHTML='<b>'+c[0]+'</b><span>'+c[1]+'</span>';
+        if(c[4]&&!muted){ bubbleAudio.pause(); bubbleAudio.src=AUDIO_DIR+c[4]; bubbleAudio.currentTime=0; var bpPlay=bubbleAudio.play(); if(bpPlay&&bpPlay.catch)bpPlay.catch(function(){}); }
         void capCard.offsetWidth; void bubble.offsetWidth;
         capCard.classList.add("in"); bubble.classList.add("in");
         var speechMs=audio.duration&&isFinite(audio.duration)?audio.duration*1000/Math.max(1,S[idx].cap.length):Math.min(9000,Math.max(4500,durFor(idx)/Math.max(1,S[idx].cap.length)-400));
@@ -367,7 +376,7 @@
     }
     function show(n,dir){
       var old=idx;idx=((n%len)+len)%len;var c=cards[idx];
-      stopAudio();
+      stopAudio(); bubbleAudio.pause();
       if(old!==idx){var o=cards[old];o.classList.remove("on");o.classList.add(dir==="next"?"left":"right");}
       c.style.transition="none";c.classList.remove("on","left","right");c.classList.add(dir==="next"?"right":"left");
       void c.offsetWidth;c.style.transition="";c.classList.remove("right","left");c.classList.add("on");
@@ -385,8 +394,10 @@
       var capWords=transcript.split(/\s+/), visibleWords=Math.max(1,Math.ceil(capWords.length*prog));
       var capText=capCard.querySelector("b"); if(capText) capText.textContent=capWords.slice(0,visibleWords).join(" ");
       if(ch.imgs.length>1){var li=Math.floor(prog*ch.imgs.length)%ch.imgs.length; if(li!==curLayer){setLayer(cards[idx],li);curLayer=li;}}
+      var hasBubbleAudio=ch.cap.some(function(c){return c[4];});
       var ci=Math.floor(prog*ch.cap.length)%ch.cap.length;
-      if(ci!==curCap){showCap(ch.cap[ci]);curCap=ci;}
+      if(!hasBubbleAudio&&ci!==curCap){showCap(ch.cap[ci]);curCap=ci;}
+      if(hasBubbleAudio&&curCap<0){curCap=0;showCap(ch.cap[0]);}
       for(var i=0;i<len;i++){bars[i].style.width=(i<idx?100:i===idx?Math.min(100,prog*100):0)+"%";}
       requestAnimationFrame(loop);
     }
