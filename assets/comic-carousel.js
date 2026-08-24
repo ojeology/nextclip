@@ -99,21 +99,21 @@
       dir:"/assets/img/sports/comics/mancity-bournemouth-mw1/",
       home:{ab:"MCI",sw:"sw-sky",clr:"#5aa9e6"},away:{ab:"BOU",sw:"sw-red",clr:"#e23b3b"},
       chapters:[
-        {imgs:["mc-01.jpg","mc-02.jpg","mc-03.jpg","mc-04.jpg"],imgW:[2,2,3,3],audio:"mc-ch01.mp3",tag:"New season",min:"PRE-MATCH",h:0,a:0,st:"build",title:"New season. New manager. New assignment.",
+        {imgs:["mc-01.jpg","mc-02.jpg","mc-03.jpg","mc-04.jpg"],imgW:[2,2,5,5],audio:"mc-ch01.mp3",tag:"New season",min:"PRE-MATCH",h:0,a:0,st:"build",title:"New season. New manager. New assignment.",
          cap:[["City fan","Omo, new season don start! Boss, today three points o! No excuse today. Make we collect this win.","hm"],["Manager","Calm down. We go handle am.","hm"],["City fan","Omo... Bournemouth don land. Na City dem wan play today.","hm"],["Bournemouth player","Everybody dey talk about Manchester City. Make them talk. Focus. We play our football. Let's make them uncomfortable.","aw"]]},
         {imgs:["mc-05.jpg","mc-06.jpg","mc-07.jpg"],imgW:[2,2,3],audio:"mc-ch02.mp3",tag:"AND WE DON START",min:"5'",h:0,a:0,st:"live",title:"And we don start.",
          cap:[["City captain","Make we start well.","hm"],["Bournemouth player","Make we see. Na only 90 minutes.","aw"],["City midfielder","Move! Move! Go!","hm"],["Bournemouth keeper","HOW?! Not today. I dey here.","aw"]]},
         {imgs:["mc-08.jpg","mc-09.jpg","mc-10.jpg"],imgW:[2,2,3],audio:"mc-ch03.mp3",tag:"GOAL · Bournemouth",min:"26'",h:0,a:1,st:"live",title:"Boom. Bournemouth strike first.",
          cap:[["City player","Ah! Almost! Why everybody dey park bus? Una no wan play?","hm"],["Bournemouth defender","Na football, boss. We dey play. Na you dey chase us. Clear am!","aw"],["Bournemouth attacker","Don't let him through! Run! Omo, City don open space! Then make we use am!","aw"],["Goalscorer","WE DON SCORE! I tell you! Una see am?!","aw"]]},
-        {imgs:["mc-11.jpg","mc-12.jpg","mc-13.jpg","mc-14.jpg"],imgW:[2,2,3,3],audio:"mc-ch04.mp3",tag:"HALF TIME",min:"HT",h:0,a:1,st:"ht",title:"The assist was sweet. The finish was not.",
+        {imgs:["mc-11.jpg","mc-12.jpg","mc-13.jpg","mc-14.jpg"],imgW:[2,2,3,5],audio:"mc-ch04.mp3",tag:"HALF TIME",min:"HT",h:0,a:1,st:"ht",title:"The assist was sweet. The finish was not.",
          cap:[["City midfielder","Omo... how we take concede? Forget am. We go equalize.","hm"],["City attacker","Ahhhhh! That was nearly there! NOOOOO! That pass na invitation!","hm"],["Bournemouth keeper","Thank you. Nearly no count. Because you miss.","aw"],["City manager","Second half. We change the game.","hm"]]},
-        {imgs:["mc-15.jpg","mc-16.jpg"],imgW:[3,2],audio:"mc-ch05.mp3",tag:"The bench",min:"75'",h:0,a:1,st:"live",title:"The game needed something different.",
+        {imgs:["mc-15.jpg","mc-16.jpg"],imgW:[4,2],audio:"mc-ch05.mp3",tag:"The bench",min:"75'",h:0,a:1,st:"live",title:"The game needed something different.",
          cap:[["Manager","We need creativity. Go change the game.","hm"],["Creative midfielder","Give me the ball. Say less.","hm"],["Bournemouth defender","Who be this? New problem. Clear am!","aw"],["City attacker","Keep pushing! Omo, this goal dey hide!","hm"]]},
-        {imgs:["mc-17.jpg","mc-18.jpg","mc-19.jpg"],imgW:[3,2,2],audio:"mc-ch06.mp3",tag:"GOAL · 84'",min:"84'",h:1,a:1,st:"live",title:"84' — equaliser!",
+        {imgs:["mc-17.jpg","mc-18.jpg","mc-19.jpg"],imgW:[3,3,2],audio:"mc-ch06.mp3",tag:"GOAL · 84'",min:"84'",h:1,a:1,st:"live",title:"84' — equaliser!",
          cap:[["City goalscorer","WE'RE BACK! I TOLD YOU! One more! ONE MORE!","hm"],["City captain","WE DON COME BACK! Everybody push!","hm"],["Bournemouth defender","How we lose this lead? Abeg, just survive!","aw"],["Bournemouth manager","Fresh legs! Stay focused. Almost no count. Finish the job.","aw"]]},
-        {imgs:["mc-20.jpg","mc-21.jpg","mc-22.jpg"],imgW:[3,3,2],audio:"mc-ch07.mp3",tag:"GOAL · 90+1'",min:"90+1'",h:2,a:1,st:"live",title:"90+1' — Gvardiol!!!",
+        {imgs:["mc-20.jpg","mc-21.jpg","mc-22.jpg"],imgW:[3,4,2],audio:"mc-ch07.mp3",tag:"GOAL · 90+1'",min:"90+1'",h:2,a:1,st:"live",title:"90+1' — Gvardiol!!!",
          cap:[["Goalscorer","WE DON WIN AM! LAST MINUTE!","hm"],["Creative midfielder","NO WAY!","hm"],["Bournemouth player","HOW?! We were winning! Check am well!","aw"],["City player","French boy don cook! Two assists! Omo! Je vous avais dit.","hm"]]},
-        {imgs:["mc-23.jpg","mc-24.jpg","mc-25.jpg","mc-26.jpg"],audio:"mc-ch08.mp3",tag:"Full time",min:"FT",h:2,a:1,st:"ft",title:"Football no get script.",
+        {imgs:["mc-23.jpg","mc-24.jpg","mc-25.jpg","mc-26.jpg"],imgW:[2,2,5,4],audio:"mc-ch08.mp3",tag:"Full time",min:"FT",h:2,a:1,st:"ft",title:"Football no get script.",
          cap:[["Bournemouth player","We lead almost the whole game... Football no get pity.","aw"],["City captain","Three points! Comeback complete!","hm"],["Creative midfielder","Deux assists. Calmez-vous.","hm"],["City fan","Na why you dey watch football till 90+? Because football fit disgrace you anytime!","hm"]]}
       ]
     },
@@ -141,8 +141,8 @@
     }
   };
   var PILL={build:"BUILD-UP",live:"LIVE",ht:"HALF TIME",ft:"FULL TIME"};
-  var CAP_DUR=7000;
-  var MIN_IMG_MS=6500;
+  var CAP_DUR=12000;
+  var MIN_IMG_MS=9000;
   function weightsOf(arr, explicit){
     if(explicit&&explicit.length===arr.length) return explicit;
     return arr.map(function(item){
@@ -220,7 +220,7 @@
     function durFor(i){
       var ch=S[i], iw=ch.imgW||ch.imgs.map(function(){return 1;}), sum=0, n;
       for(n=0;n<iw.length;n++) sum+=iw[n];
-      var byImg=Math.max(ch.imgs.length,sum)*MIN_IMG_MS;
+      var byImg=sum*MIN_IMG_MS;
       var byCap=ch.cap.length*CAP_DUR+1600;
       return Math.max(byImg, byCap, ch.hold||0);
     }
