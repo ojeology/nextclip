@@ -42,6 +42,7 @@ body{overflow-x:hidden}
 .sw-sky{background:#5aa9e6}
 .sw-white{background:#eee}
 .sw-blue{background:#1c6ac4}
+.sw-nwstripes{background:repeating-linear-gradient(90deg,#111 0 3px,#fff 3px 6px)}
 .sw-rwstripes{background:repeating-linear-gradient(90deg,#c8102e 0 4px,#fff 4px 8px)}
 .mc-score .min{font-size:10px;color:var(--amber2);border-left:1px solid var(--line);padding-left:8px}
 .mc-mark{position:absolute;right:16px;bottom:14px;z-index:6;display:flex;align-items:baseline;gap:7px;
