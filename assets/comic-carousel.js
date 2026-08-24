@@ -193,6 +193,14 @@
         ["Creative midfielder","Deux assists. Calmez-vous. Victory taste different when na comeback.","hm"],
         ["Narrator","Bournemouth were minutes away from a famous win. Manchester City had other plans. Football no get script.","c"]
       ];
+      /* Approximate head anchors for the named speaker in each vertical plate.
+         Coordinates are percentages of the 9:16 deck and keep the bubble above
+         the character instead of over the action. */
+      var bubblePos=[
+        [22,48,64],[57,48,60],[35,30,60],[50,32,62],[48,42,62],[52,37,60],[30,34,58],[68,42,58],[53,35,60],
+        [42,40,64],[45,42,62],[60,39,60],[55,42,62],[35,31,64],[46,36,60],[57,37,62],[42,40,64],[55,41,64],
+        [50,30,62],[43,37,64],[50,30,66],[48,36,64],[59,40,62],[42,42,64],[46,40,64],[50,28,72]
+      ];
       var flat=[], pi=0;
       M.chapters.forEach(function(ch){ch.imgs.forEach(function(img){
         pi++; var n=("0"+pi).slice(-2);
@@ -200,7 +208,7 @@
           tag:pi===1?"New season":pi===10?"GOAL · 26'":pi===17?"GOAL · 84'":pi===20?"GOAL · 90+1'":pi===24?"Full time":ch.tag,
           min:pi===1?"PRE-MATCH":pi===10?"26'":pi===17?"84'":pi===20?"90+1'":pi>=24?"FT":ch.min,
           h:pi<10?0:pi<17?0:pi<20?1:2,a:pi<10?0:pi<20?1:1,st:pi>=24?"ft":pi===1?"build":"live",
-          scorer:pi===10?"Tavernier":pi===17?"Guéhi":pi===20?"Gvardiol":"",
+          scorer:pi===10?"Tavernier":pi===17?"Guéhi":pi===20?"Gvardiol":"",bubblePos:bubblePos[pi-1],
           title:pi===1?"New season. New manager. New assignment.":pi===10?"Boom. Tavernier scores first.":pi===17?"84' — Guéhi equaliser!":pi===20?"90+1' — Gvardiol winner!":pi===26?"Manchester City 2–1 Bournemouth · Tavernier 26' · Guéhi 84' · Gvardiol 90+1'":ch.title,
           cap:[panelText[pi-1]]});
       });});
@@ -237,7 +245,7 @@
     var track=root.querySelector(".mc-track"),dotsEl=root.querySelector(".mc-dots"),barsEl=root.querySelector(".mc-bars"),
         pill=root.querySelector("#mcpill"),score=root.querySelector("#mcscore"),tag=root.querySelector("#mctag"),
         title=root.querySelector("#mctitle"),cntEl=root.querySelector("#mccnt"),playBtn=root.querySelector(".mc-play"),
-        soundBtn=root.querySelector(".mc-sound"),deck=root.querySelector(".mc-deck"),capCard=root.querySelector("#mccap"),bubble=root.querySelector("#mcbubble"),fsBtn=root.querySelector(".mc-fs-open"),fsx=root.querySelector(".mc-fs-close"),len=S.length;
+        soundBtn=root.querySelector(".mc-sound"),deck=root.querySelector(".mc-deck"),capCard=root.querySelector("#mccap"),bubble=root.querySelector("#mcbubble"),bubbleSlot=root.querySelector(".mc-bubble-slot"),fsBtn=root.querySelector(".mc-fs-open"),fsx=root.querySelector(".mc-fs-close"),len=S.length;
     track.innerHTML=S.map(function(s,i){
       var layers=s.imgs.map(function(g,k){return '<img class="mc-layer'+(k===0?' on':'')+'" src="'+DIR+g+'" alt="Original BRYME comic frame: '+s.title+'" loading="'+(i||k?'lazy':'eager')+'">';}).join("");
       return '<div class="mc-card">'+layers+'</div>';
@@ -269,6 +277,8 @@
       capTimer=setTimeout(function(){
         capCard.className="mc-cap-card "+c[2];
         capCard.innerHTML='<i>'+c[0]+'</i><b>'+c[1]+'</b>';
+        var bp=S[idx].bubblePos||[50,36,70];
+        bubbleSlot.style.left=bp[0]+"%"; bubbleSlot.style.top=bp[1]+"%"; bubbleSlot.style.bottom="auto"; bubbleSlot.style.width=bp[2]+"%";
         bubble.className="mc-bubble "+c[2];
         bubble.innerHTML='<b>'+c[0]+'</b><span>'+c[1]+'</span>';
         void capCard.offsetWidth; void bubble.offsetWidth;
