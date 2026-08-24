@@ -215,6 +215,7 @@
         '<div class="mc-track"></div>'+
         '<div class="mc-hud"><span class="mc-pill" id="mcpill"></span><span class="mc-score" id="mcscore"></span></div>'+
         '<div class="mc-mark"><b>BRYME</b><span>@bryme</span></div>'+
+        '<div class="mc-bubble-slot"><div class="mc-bubble" id="mcbubble"></div></div>'+
         '<div class="mc-cap-slot"><div class="mc-cap-card" id="mccap"></div></div>'+
       '</div>'+
       '<div class="mc-head"><span class="mc-tag" id="mctag"></span><h2 id="mctitle"></h2></div>'+
@@ -236,7 +237,7 @@
     var track=root.querySelector(".mc-track"),dotsEl=root.querySelector(".mc-dots"),barsEl=root.querySelector(".mc-bars"),
         pill=root.querySelector("#mcpill"),score=root.querySelector("#mcscore"),tag=root.querySelector("#mctag"),
         title=root.querySelector("#mctitle"),cntEl=root.querySelector("#mccnt"),playBtn=root.querySelector(".mc-play"),
-        soundBtn=root.querySelector(".mc-sound"),deck=root.querySelector(".mc-deck"),capCard=root.querySelector("#mccap"),fsBtn=root.querySelector(".mc-fs-open"),fsx=root.querySelector(".mc-fs-close"),len=S.length;
+        soundBtn=root.querySelector(".mc-sound"),deck=root.querySelector(".mc-deck"),capCard=root.querySelector("#mccap"),bubble=root.querySelector("#mcbubble"),fsBtn=root.querySelector(".mc-fs-open"),fsx=root.querySelector(".mc-fs-close"),len=S.length;
     track.innerHTML=S.map(function(s,i){
       var layers=s.imgs.map(function(g,k){return '<img class="mc-layer'+(k===0?' on':'')+'" src="'+DIR+g+'" alt="Original BRYME comic frame: '+s.title+'" loading="'+(i||k?'lazy':'eager')+'">';}).join("");
       return '<div class="mc-card">'+layers+'</div>';
@@ -251,15 +252,31 @@
     var audio=document.createElement("audio"); audio.preload="auto"; audio.setAttribute("aria-hidden","true"); root.appendChild(audio);
     var muted=true, audioOK=true;
     var audioEnded=false;
-    audio.addEventListener("ended",function(){ audioEnded=true; });
+    audio.addEventListener("ended",function(){
+      audioEnded=true;
+      if(playing&&!hover) show(idx+1,"next");
+    });
     audio.addEventListener("error",function(){ audioOK=false; });
     function loadAudio(i){ var s=S[i]; if(s.audio){ audioOK=true; audio.src=AUDIO_DIR+s.audio; audio.load(); } }
     function playAudio(){ if(!muted&&S[idx].audio){ audio.currentTime=0; var p=audio.play(); if(p&&p.catch)p.catch(function(){audioOK=false;}); } }
     function stopAudio(){ try{audio.pause();}catch(e){} }
     function setLayer(card,li){ var ls=card.querySelectorAll(".mc-layer"); ls.forEach(function(l,k){l.classList.toggle("on",k===li);}); }
-    var capTimer=null;
-    function showCap(c){ if(capTimer)clearTimeout(capTimer); capCard.classList.remove("in");
-      capTimer=setTimeout(function(){ capCard.className="mc-cap-card "+c[2]; capCard.innerHTML='<i>'+c[0]+'</i><b>'+c[1]+'</b>'; void capCard.offsetWidth; capCard.classList.add("in"); },160); }
+    var capTimer=null,bubbleTimer=null;
+    function hideSpeech(){ bubble.classList.remove("in"); capCard.classList.remove("in"); }
+    function showCap(c){
+      if(capTimer)clearTimeout(capTimer); if(bubbleTimer)clearTimeout(bubbleTimer);
+      hideSpeech();
+      capTimer=setTimeout(function(){
+        capCard.className="mc-cap-card "+c[2];
+        capCard.innerHTML='<i>'+c[0]+'</i><b>'+c[1]+'</b>';
+        bubble.className="mc-bubble "+c[2];
+        bubble.innerHTML='<b>'+c[0]+'</b><span>'+c[1]+'</span>';
+        void capCard.offsetWidth; void bubble.offsetWidth;
+        capCard.classList.add("in"); bubble.classList.add("in");
+        var speechMs=audio.duration&&isFinite(audio.duration)?audio.duration*1000/Math.max(1,S[idx].cap.length):Math.min(9000,Math.max(4500,durFor(idx)/Math.max(1,S[idx].cap.length)-400));
+        bubbleTimer=setTimeout(hideSpeech,Math.max(3000,speechMs));
+      },160);
+    }
 
     var idx=0,playing=true,hover=false,elapsed=0,last=0,curLayer=-1,curCap=-1;
     function durFor(i){
