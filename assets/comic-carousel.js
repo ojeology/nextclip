@@ -201,6 +201,34 @@
         [42,40,64],[45,42,62],[60,39,60],[55,42,62],[35,31,64],[46,36,60],[57,37,62],[42,40,64],[55,41,64],
         [50,30,62],[43,37,64],[50,30,66],[48,36,64],[59,40,62],[42,42,64],[46,40,64],[50,28,72]
       ];
+      var panelCaps=panelText.map(function(c){return [c];});
+      function lines(i){panelCaps[i-1]=Array.prototype.slice.call(arguments,1);}
+      lines(1,["City fan","Omo, new season don start! Boss, today na three points o!","hm",[22,48,64]],["Manager","Calm down. We go handle am.","hm",[35,30,58]]);
+      lines(2,["City fan","Omo... Bournemouth don land. Na City dem wan play today.","hm",[24,48,62]],["Bournemouth player","Everybody dey talk about Manchester City. Make them talk.","aw",[58,48,62]],["Bournemouth manager","Focus. We play our football.","aw",[48,35,60]]);
+      lines(3,["Manager","Start fast. Move the ball. Stay patient.","hm",[35,30,58]],["City captain","Boss, no wahala. Easy work.","hm",[54,43,58]]);
+      lines(4,["Bournemouth manager","Stay compact. Attack when we have space.","aw",[50,32,62]],["Bournemouth captain","Nobody come here to admire the stadium. Maybe three points.","aw",[68,45,58]]);
+      lines(5,["City captain","Make we start well.","hm",[48,42,60]],["Bournemouth player","Make we see. Na only ninety minutes.","aw",[69,44,56]],["City fan","Three points today! Abeg, no stress us.","hm",[22,55,55]]);
+      lines(6,["City midfielder","Move! Move! Go!","hm",[52,37,55]],["Bournemouth defender","Everybody wake up!","aw",[68,42,52]],["Bournemouth defender","I dey awake! Then why you dey watch ball?","aw",[35,43,56]]);
+      lines(7,["City striker","How?!","hm",[48,52,50]],["Bournemouth keeper","Not today. I dey here.","aw",[29,33,54]],["City fan","Chai! First serious chance and keeper don enter beast mode.","hm",[23,58,68]]);
+      lines(8,["City player","Ah! Almost!","hm",[47,42,56]],["Bournemouth defender","Clear am!","aw",[68,40,50]],["Bournemouth player","City get the ball. Bournemouth get patience.","aw",[52,35,62]]);
+      lines(9,["Bournemouth defender","Don't let him through! Run!","aw",[67,40,54]],["Bournemouth attacker","Omo, City don open space! Then make we use am!","aw",[51,34,60]]);
+      lines(10,["Bournemouth goalscorer","WE DON SCORE!","aw",[43,42,56]],["City defender","How? We were attacking five seconds ago.","hm",[68,48,58]],["City fan","One goal fit still pain you!","hm",[23,57,60]]);
+      lines(11,["City captain","Omo, how we take concede?","hm",[43,43,56]],["City midfielder","Forget am. We go equalize.","hm",[58,40,56]],["Bournemouth player","Na the important part.","aw",[70,42,52]]);
+      lines(12,["City attacker","Ahhhhh! That was nearly there!","hm",[48,40,58]],["Bournemouth defender","Nearly no count.","aw",[66,40,52]],["City fan","Abeg, somebody shoot!","hm",[22,55,58]]);
+      lines(13,["City attacker","NOOOOO! That pass na invitation!","hm",[50,40,60]],["Bournemouth keeper","Thank you.","aw",[30,34,52]],["City fan","Chai! How you miss that one?!","hm",[22,58,58]]);
+      lines(14,["City manager","Second half. We change the game.","hm",[34,30,60]],["City player","We get the ball, but na dem get the goal.","hm",[55,46,58]],["Bournemouth manager","Don't relax. City will come.","aw",[70,31,58]]);
+      lines(15,["Manager","We need creativity. Go change the game.","hm",[34,32,60]],["Creative midfielder","Give me the ball. Say less.","hm",[48,43,58]],["Bournemouth defender","Who be this? New problem.","aw",[72,45,54]]);
+      lines(16,["City player","Keep pushing! This goal dey hide!","hm",[52,37,60]],["Bournemouth keeper","Everybody stay focused!","aw",[30,34,54]],["City fan","The clock dey run.","hm",[22,56,54]]);
+      lines(17,["City centre-back","WE'RE BACK!","hm",[42,40,58]],["Creative midfielder","I told you! One more!","hm",[57,38,58]],["Bournemouth defender","How we lose this lead?","aw",[72,44,54]]);
+      lines(18,["City captain","WE DON COME BACK! Everybody push!","hm",[43,42,62]],["Bournemouth defender","Abeg, just survive!","aw",[70,44,55]],["Bournemouth fan","Six minutes fit be six years.","aw",[25,58,58]]);
+      lines(19,["Bournemouth manager","Fresh legs! Stay focused!","aw",[50,30,62]],["Outgoing player","Boss, we nearly get am.","aw",[32,45,54]],["Incoming player","Got it.","aw",[68,45,48]]);
+      lines(20,["Creative midfielder","NO WAY!","hm",[57,38,54]],["Gvardiol","WE DON WIN AM! Last minute!","hm",[43,38,58]],["Bournemouth player","HOW?! We were winning!","aw",[70,45,54]]);
+      lines(21,["City player","Abeg, make dem no cancel this one.","hm",[42,43,62]],["Referee","Check am well. Goal confirmed.","r",[53,32,58]],["Bournemouth player","Please VAR!","aw",[70,45,52]]);
+      lines(22,["City player","French boy don cook! Two assists!","hm",[47,40,60]],["Creative midfielder","Je vous avais dit.","hm",[58,35,54]],["Manager","Na tactical breathing.","hm",[34,30,54]]);
+      lines(23,["Bournemouth player","We lead almost the whole game...","aw",[42,44,58]],["Bournemouth keeper","One corner, one pass, finish.","aw",[70,42,54]],["Bournemouth manager","Football no get pity.","aw",[54,31,58]]);
+      lines(24,["City captain","Three points!","hm",[42,42,54]],["Creative midfielder","Deux assists.","hm",[57,38,54]],["Bournemouth fan","Abeg, make person no talk to me.","aw",[70,46,56]]);
+      lines(25,["Manager","Anybody wey laugh go train double tomorrow.","hm",[35,30,58]],["City player","Then na everybody!","hm",[54,45,54]],["Creative midfielder","Calmez-vous. Give me jollof.","hm",[67,47,54]]);
+      lines(26,["City fan","Football no get script.","hm",[22,50,58]],["Bournemouth manager","Bournemouth were minutes away from a famous win.","aw",[68,43,62]],["Narrator","Manchester City had other plans.","c",[50,28,70]]);
       var flat=[], pi=0;
       M.chapters.forEach(function(ch){ch.imgs.forEach(function(img){
         pi++; var n=("0"+pi).slice(-2);
@@ -210,7 +238,7 @@
           h:pi<10?0:pi<17?0:pi<20?1:2,a:pi<10?0:pi<20?1:1,st:pi>=24?"ft":pi===1?"build":"live",
           scorer:pi===10?"Tavernier":pi===17?"Guéhi":pi===20?"Gvardiol":"",bubblePos:bubblePos[pi-1],
           title:pi===1?"New season. New manager. New assignment.":pi===10?"Boom. Tavernier scores first.":pi===17?"84' — Guéhi equaliser!":pi===20?"90+1' — Gvardiol winner!":pi===26?"Manchester City 2–1 Bournemouth · Tavernier 26' · Guéhi 84' · Gvardiol 90+1'":ch.title,
-          cap:[panelText[pi-1]]});
+          cap:panelCaps[pi-1]});
       });});
       S=flat;
     }
@@ -277,7 +305,7 @@
       capTimer=setTimeout(function(){
         capCard.className="mc-cap-card "+c[2];
         capCard.innerHTML='<i>'+c[0]+'</i><b>'+c[1]+'</b>';
-        var bp=S[idx].bubblePos||[50,36,70];
+        var bp=c[3]||S[idx].bubblePos||[50,36,70];
         bubbleSlot.style.left=bp[0]+"%"; bubbleSlot.style.top=bp[1]+"%"; bubbleSlot.style.bottom="auto"; bubbleSlot.style.width=bp[2]+"%";
         bubble.className="mc-bubble "+c[2];
         bubble.innerHTML='<b>'+c[0]+'</b><span>'+c[1]+'</span>';
