@@ -138,6 +138,20 @@ function buildReport(lg, mid, r, homeName, awayName, mw) {
             minute: String((d.clock && d.clock.displayValue) || "").replace(/\s/g, "")
           });
         }
+        if (!scorers.length) {
+          try {
+            const smr = await fetch(`https://site.api.espn.com/apis/site/v2/sports/soccer/${cfg.code}/summary?event=${ev.id}`);
+            const sm = await smr.json();
+            for (const k of (sm.keyEvents || [])) {
+              if (!k.scoringPlay || !k.participants || !k.participants[0] || !k.team) continue;
+              scorers.push({
+                team: norm(k.team.displayName) === homeNorm ? "home" : "away",
+                player: k.participants[0].athlete.displayName || k.participants[0].athlete.shortName || "",
+                minute: String((k.clock && k.clock.displayValue) || "").replace(/\s/g, "")
+              });
+            }
+          } catch (e) {}
+        }
         const link = (ev.links || []).find(l => /espn\.com/.test(l.href || ""));
         results[lg][key] = {
           homeScore: parseInt(home.score, 10) || 0,
