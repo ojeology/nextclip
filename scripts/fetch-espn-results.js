@@ -38,6 +38,37 @@ function norm(name) {
   return s;
 }
 function iso(d) { return d.toISOString().slice(0, 10); }
+
+const fsx = require("fs");
+const pathx = require("path");
+const LABELS = {
+  "premier-league": ["Premier League", "/sports/premier-league/", "Matchweek"],
+  "serie-a": ["Serie A", "/sports/serie-a/", "Matchday"],
+  "la-liga": ["La Liga", "/sports/la-liga/", "Jornada"],
+  "bundesliga": ["Bundesliga", "/sports/bundesliga/", "Matchday"],
+  "ligue-1": ["Ligue 1", "/sports/ligue-1/", "Matchday"]
+};
+function escx(t) { return String(t == null ? "" : t).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+function buildReport(lg, mid, r, homeName, awayName, mw) {
+  const L = LABELS[lg];
+  const score = r.homeScore + "-" + r.awayScore;
+  const date = r.playedOn || "";
+  const dir = pathx.join(root, "sports", lg, "reports", mid);
+  fsx.mkdirSync(dir, { recursive: true });
+  const sc = (r.scorers || []).map(s => "<tr><td>" + (s.team === "home" ? "Home" : "Away") + "</td><td>" + escx(s.player) + "</td><td>" + escx(s.minute) + "</td></tr>").join("");
+  const title = escx(homeName) + " " + score + " " + escx(awayName) + ": Result & Scorers | BRYME";
+  const desc = escx(homeName) + " " + score + " " + escx(awayName) + " (" + date + ") - full-time result, goalscorers and verified source from " + L[0] + " 2026/27.";
+  const page = '<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>' + title + '</title><meta name="description" content="' + desc + '"><link rel="canonical" href="https://bryme.onrender.com/sports/' + lg + '/reports/' + mid + '/"><link rel="stylesheet" href="/assets/site.css"><script src="/assets/analytics.js" async></script></head><body><main class="shell"><div class="crumb"><a href="/">Home</a> / <a href="/sports/">BRYME Sports</a> / <a href="' + L[1] + '">' + L[0] + '</a> / ' + escx(homeName) + ' v ' + escx(awayName) + '</div><section class="article-hero"><div class="eyebrow">' + L[0] + ' · ' + L[2] + ' ' + mw + '</div><h1>' + escx(homeName) + ' ' + score + ' ' + escx(awayName) + '</h1><p class="lead">' + desc + '</p><div class="article-meta"><span>BRYME Sports</span><span>' + date + '</span></div></section><article class="prose article-body"><div class="sp-table-wrap"><table class="sp-table"><tbody><tr><td><b>' + escx(homeName) + '</b></td><td><b>' + r.homeScore + '</b></td><td rowspan="2" style="text-align:center"><b>FT</b></td></tr><tr><td><b>' + escx(awayName) + '</b></td><td><b>' + r.awayScore + '</b></td></tr></tbody></table></div>' + (sc ? '<h2>Goals</h2><div class="sp-table-wrap"><table class="sp-table"><thead><tr><th>Team</th><th>Scorer</th><th>Minute</th></tr></thead><tbody>' + sc + '</tbody></table></div>' : '') + '<p>Played ' + date + '. <a href="' + (r.source && r.source.url ? r.source.url : "https://www.espn.com/soccer/") + '" rel="nofollow noopener" target="_blank">Verified source</a>.</p><p>More: <a href="/sports/' + lg + '/matches/' + mid + '/">Full match page</a> · <a href="' + L[1] + 'table/">Table</a> · <a href="' + L[1] + 'top-scorers/">Top scorers</a>.</p></article></main></body></html>';
+  fsx.writeFileSync(pathx.join(dir, "index.html"), page);
+  const sm = pathx.join(root, "sitemap.xml");
+  let smx = fsx.readFileSync(sm, "utf8");
+  const u = "https://bryme.onrender.com/sports/" + lg + "/reports/" + mid + "/";
+  if (smx.indexOf(u) === -1) {
+    smx = smx.replace("</urlset>", "<url><loc>" + u + "</loc><lastmod>" + date + "</lastmod></url>\n</urlset>");
+    fsx.writeFileSync(sm, smx);
+  }
+}
+
 (async () => {
   const dry = process.argv.includes("--dry");
   const resultsPath = path.join(root, "content/results.json");
@@ -88,6 +119,11 @@ function iso(d) { return d.toISOString().slice(0, 10); }
         }
         results[lg] = results[lg] || {};
         if (results[lg][key]) { skipped++; continue; }
+        let mwNum = "1";
+        try {
+          const w = fx.matchweeks.find(w => w.matches.some(m => (m.id + "-vs-" + m.away) === key));
+          if (w) mwNum = String(w.number);
+        } catch (e) {}
         const homeNorm = norm(home.team.displayName);
         const scorers = [];
         for (const d of (comp.details || [])) {
@@ -112,6 +148,7 @@ function iso(d) { return d.toISOString().slice(0, 10); }
         };
         if (scorers.length) results[lg][key].scorers = scorers;
         added++;
+        if (!dry) { try { buildReport(lg, key, results[lg][key], h.homeName, a.awayName, mwNum); } catch (e) { report.push("REPORT-FAIL " + key + ": " + e.message); } }
         report.push(`ADDED ${lg}: ${h.homeName} ${home.score}-${away.score} ${a.awayName} => ${key} (${day})`);
       }
     }
