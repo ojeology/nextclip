@@ -544,6 +544,50 @@
         "url": "https://www.bbc.com/sport/football/italian-serie-a/scores-fixtures"
       },
       "verifiedOn": "2026-08-23"
+    },
+    "bologna-vs-lazio": {
+      "homeScore": 0,
+      "awayScore": 1,
+      "status": "FT",
+      "playedOn": "2026-08-24",
+      "source": {
+        "name": "BBC Sport — Bologna v Lazio",
+        "url": "https://www.bbc.com/sport/football/live/cwddj8qerg68t"
+      },
+      "verifiedOn": "2026-08-25"
+    },
+    "roma-vs-fiorentina": {
+      "homeScore": 4,
+      "awayScore": 0,
+      "status": "FT",
+      "playedOn": "2026-08-24",
+      "scorers": [
+        {
+          "team": "home",
+          "player": "Malen",
+          "minute": "27"
+        },
+        {
+          "team": "home",
+          "player": "Malen",
+          "minute": "52"
+        },
+        {
+          "team": "home",
+          "player": "Malen",
+          "minute": "60"
+        },
+        {
+          "team": "home",
+          "player": "Pisilli",
+          "minute": "86"
+        }
+      ],
+      "source": {
+        "name": "BBC Sport — Roma v Fiorentina",
+        "url": "https://www.bbc.com/sport/football/live/cwddj8qerg68t"
+      },
+      "verifiedOn": "2026-08-25"
     }
   },
   "bundesliga": {},
