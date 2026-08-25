@@ -3,7 +3,7 @@
    Nothing loads and no data is collected until an ID is set. */
 (function () {
   "use strict";
-  var GA_ID = ""; /* <-- paste GA4 measurement ID here */
+  var GA_ID = "G-NQKHPBYFE8"; /* GA4 measurement ID */
   if (!GA_ID || !/^G-[A-Z0-9]+$/.test(GA_ID)) return;
   var s = document.createElement("script");
   s.async = true;
