@@ -52,7 +52,8 @@
   }
   function group(lg, items, results) {
     var cards = items.map(function (m) { var k = lg + "/" + m.id + "-vs-" + m.away; return card(lg, m, results[k], k); }).join("");
-    return '<div class="sp-lg"><div class="sp-lg-head"><b>' + LEAGUES[lg].label + '</b><a href="/sports/' + lg + '/matches/">Match Centre \u2192</a></div><div class="sp-score-grid">' + cards + "</div></div>";
+    var head = '<div class="sp-lg"><div class="sp-lg-head"><b>' + LEAGUES[lg].label + '</b><a href="/sports/' + lg + '/matches/">Match Centre \u2192</a></div>';
+    return head + '<div class="sp-score-rail"><div class="sp-rail-track">' + cards + cards + "</div></div></div>";
   }
   function computeTable(lg, matches, results) {
     var T = {};
@@ -169,6 +170,25 @@
   }
 
   function renderMini(kind, lg, data) {
+      if (kind === "scorers" && !lg) {
+        var GA = {};
+        data.leagues.forEach(function (L2) {
+          L2.ms.forEach(function (m) {
+            var r = data.results[L2.lg + "/" + m.id + "-vs-" + m.away];
+            if (!r || !r.scorers) return;
+            r.scorers.forEach(function (sc) {
+              if (!sc.player) return;
+              GA[sc.player] = GA[sc.player] || { t: sc.team === "home" ? m.homeName : m.awayName, g: 0 };
+              GA[sc.player].g++;
+            });
+          });
+        });
+        var listA = Object.keys(GA).map(function (k) { GA[k].p = k; return GA[k]; })
+          .sort(function (a, b) { return b.g - a.g; }).slice(0, 5);
+        return '<table class="sp-table"><tbody>' + listA.map(function (x) {
+          return '<tr><td><b>' + esc(x.p) + '</b></td><td>' + esc(x.t) + '</td><td><b>' + x.g + '</b></td></tr>';
+        }).join("") + '</tbody></table>';
+      }
       var L = data.leagues.find(function (x) { return x.lg === lg; });
       if (!L) return "";
       if (kind === "table") {
@@ -212,6 +232,21 @@
       return "";
     }
 
+  function renderMiniReportsAll(data) {
+    var played = [];
+    data.leagues.forEach(function (L) {
+      L.ms.forEach(function (m) {
+        var r = data.results[L.lg + "/" + m.id + "-vs-" + m.away];
+        if (r) played.push({ lg: L.lg, m: m, r: r });
+      });
+    });
+    played.sort(function (a, b) { return b.r.playedOn < a.r.playedOn ? -1 : 1; });
+    return played.slice(0, 5).map(function (x) {
+      return '<a class="sp-rep" href="/sports/' + x.lg + '/reports/' + x.m.id + '-vs-' + x.m.away + '/">' +
+        '<span>' + LEAGUES[x.lg].label + '</span><b>' + esc(x.m.homeName) + ' ' + x.r.homeScore + '\u2013' + x.r.awayScore + ' ' + esc(x.m.awayName) + '</b><i>' + esc(x.r.playedOn) + '</i></a>';
+    }).join("") || '<p class="sp-result-meta">No reports yet.</p>';
+  }
+
   var DATA = null;
   function load() {
     if (DATA) return DATA;
@@ -240,7 +275,10 @@
         var mini = el.getAttribute("data-sp-mini");
         if (mini) {
           var mlg = el.getAttribute("data-sp-league");
-          if (mlg && LEAGUES[mlg]) {
+          if (mini === "reports" && !mlg) {
+            el.innerHTML = renderMiniReportsAll(data);
+            el.setAttribute("data-sp-live", "1");
+          } else if (mini === "scorers" || (mlg && LEAGUES[mlg])) {
             el.innerHTML = renderMini(mini, mlg, data);
             el.setAttribute("data-sp-live", "1");
           }
