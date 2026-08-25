@@ -4079,3 +4079,10 @@ a.td-match:hover{border-color:rgba(61,220,132,.35)}
 .sp-pro .sp-scorecard:hover{box-shadow:0 0 0 1px var(--lac),0 10px 30px -16px rgba(0,0,0,.9)}
 .sp-pro .sp-board-head{border-left:3px solid;border-image:linear-gradient(180deg,#a78bfa,#22d3ee) 1}
 .sp-strip a:hover{box-shadow:0 0 0 1px var(--lac)}
+
+/* ==== PRO v4: form dots + zone legend + strip rhythm (appended) ==== */
+.sp-form-d{display:inline-block;width:18px;height:18px;line-height:18px;text-align:center;border-radius:4px;color:#fff;font-size:10px;font-weight:800;margin-right:3px}
+.sp-pro .sp-table td:nth-child(3){white-space:nowrap}
+.sp-zone-legend{margin:10px 2px 4px;font-size:11px;color:#8b93a1;text-transform:uppercase;letter-spacing:.06em;font-weight:700}
+.sp-zone-legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px}
+.sp-strip + .sp-strip{margin-top:-6px}

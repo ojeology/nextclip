@@ -86,11 +86,16 @@
     var n = lg === "bundesliga" || lg === "ligue-1" ? 18 : 20;
     var rows = computeTable(lg, matches, results).map(function (x) {
       var cls = x.pos <= z.cl ? " class=\"zcl\"" : x.pos <= z.el ? " class=\"zeu\"" : x.pos > n - (z.rel || 3) ? " class=\"zre\"" : "";
-      return "<tr" + cls + "><td>" + x.pos + "</td><td><b>" + esc(x.name) + "</b></td><td>" + x.p + "</td><td>" + x.w +
+      var dots = x.form.slice(-5).map(function (f) {
+        var r = f.split("|")[0];
+        var col = r === "W" ? "#2e9e5b" : r === "D" ? "#5d6672" : "#d84343";
+        return '<span class="sp-form-d" style="background:' + col + '">' + r + "</span>";
+      }).join("");
+      return "<tr" + cls + "><td>" + x.pos + "</td><td><b>" + esc(x.name) + "</b></td><td>" + dots + "</td><td>" + x.p + "</td><td>" + x.w +
         "</td><td>" + x.d + "</td><td>" + x.l + "</td><td>" + x.gf + ":" + x.ga + "</td><td>" +
         (x.gf - x.ga > 0 ? "+" : "") + (x.gf - x.ga) + "</td><td><b>" + x.pts + "</b></td></tr>";
     }).join("");
-    return '<div class="sp-table-wrap"><table class="sp-table"><thead><tr><th>#</th><th>Team</th><th>P</th><th>W</th><th>D</th><th>L</th><th>Goals</th><th>GD</th><th>Pts</th></tr></thead><tbody>' + rows + '</tbody></table></div><p class="sp-result-meta">Live standings — recomputed from verified results on every visit.</p>';
+    return '<div class="sp-table-wrap"><table class="sp-table"><thead><tr><th>#</th><th>Team</th><th>Form</th><th>P</th><th>W</th><th>D</th><th>L</th><th>Goals</th><th>GD</th><th>Pts</th></tr></thead><tbody>' + rows + '</tbody></table></div><p class="sp-zone-legend"><i style="background:#2f6b3a"></i>Champions League&nbsp;&nbsp;<i style="background:#7a5b1e"></i>Europa&nbsp;&nbsp;<i style="background:#8e2020"></i>Relegation</p><p class="sp-result-meta">Live standings — recomputed from verified results on every visit.</p>';
   }
   function renderScorers(lg, matches, results) {
     
