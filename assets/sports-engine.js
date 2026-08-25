@@ -149,9 +149,10 @@
     if (w.length === 2) return (w[0].slice(0, 2) + w[1][0]).toUpperCase();
     return String(name).slice(0, 3).toUpperCase();
   }
-  function renderTicker(data) {
+  function renderTicker(data, lgFilter) {
     var all = [];
     data.leagues.forEach(function (L) {
+      if (lgFilter && L.lg !== lgFilter) return;
       L.ms.forEach(function (m) {
         var r = data.results[L.lg + "/" + m.id + "-vs-" + m.away];
         if (r) all.push({ lg: L.lg, m: m, r: r });
@@ -166,6 +167,50 @@
     var half = all.map(item).join("");
     return '<div class="tk-track">' + half + half + "</div>";
   }
+
+  function renderMini(kind, lg, data) {
+      var L = data.leagues.find(function (x) { return x.lg === lg; });
+      if (!L) return "";
+      if (kind === "table") {
+        var rows = computeTable(lg, L.ms, data.results).slice(0, 5).map(function (x) {
+          var cls = x.pos <= (ZONES[lg] || {cl:4}).cl ? "zcl" : x.pos <= (ZONES[lg] || {el:6}).el ? "zeu" : "";
+          return '<tr class="' + cls + '"><td>' + x.pos + '</td><td><b>' + esc(x.name) + '</b></td><td><b>' + x.pts + '</b></td></tr>';
+        }).join("");
+        return '<table class="sp-table"><tbody>' + rows + '</tbody></table>';
+      }
+      if (kind === "scorers") {
+        var G = {};
+        L.ms.forEach(function (m) {
+          var r = data.results[lg + "/" + m.id + "-vs-" + m.away];
+          if (!r || !r.scorers) return;
+          r.scorers.forEach(function (sc) {
+            if (!sc.player) return;
+            G[sc.player] = G[sc.player] || { t: sc.team === "home" ? m.homeName : m.awayName, g: 0 };
+            G[sc.player].g++;
+          });
+        });
+        var list = Object.keys(G).map(function (k) { G[k].p = k; return G[k]; })
+          .sort(function (a, b) { return b.g - a.g; }).slice(0, 5);
+        if (!list.length) return '<p class="sp-result-meta">No goals yet — fills automatically.</p>';
+        return '<table class="sp-table"><tbody>' + list.map(function (x) {
+          return '<tr><td><b>' + esc(x.p) + '</b></td><td>' + esc(x.t) + '</td><td><b>' + x.g + '</b></td></tr>';
+        }).join("") + '</tbody></table>';
+      }
+      if (kind === "reports") {
+        var played = [];
+        L.ms.forEach(function (m) {
+          var r = data.results[lg + "/" + m.id + "-vs-" + m.away];
+          if (r) played.push({ m: m, r: r });
+        });
+        played.sort(function (a, b) { return b.r.playedOn < a.r.playedOn ? -1 : 1; });
+        return played.slice(0, 4).map(function (x) {
+          return '<a class="sp-rep" href="/sports/' + lg + '/reports/' + x.m.id + '-vs-' + x.m.away + '/">' +
+            esc(x.m.homeName) + ' ' + x.r.homeScore + '\u2013' + x.r.awayScore + ' ' + esc(x.m.awayName) +
+            '<i>' + esc(x.r.playedOn) + '</i></a>';
+        }).join("") || '<p class="sp-result-meta">No reports yet.</p>';
+      }
+      return "";
+    }
 
   var DATA = null;
   function load() {
@@ -192,8 +237,17 @@
       var today = todayStr();
       var liveLeagues = {};
       nodes.forEach(function (el) {
+        var mini = el.getAttribute("data-sp-mini");
+        if (mini) {
+          var mlg = el.getAttribute("data-sp-league");
+          if (mlg && LEAGUES[mlg]) {
+            el.innerHTML = renderMini(mini, mlg, data);
+            el.setAttribute("data-sp-live", "1");
+          }
+          return;
+        }
         if (el.hasAttribute("data-sp-ticker")) {
-          el.innerHTML = renderTicker(data);
+          el.innerHTML = renderTicker(data, el.getAttribute("data-sp-league"));
           el.setAttribute("data-sp-live", "1");
           return;
         }
