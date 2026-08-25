@@ -41,6 +41,18 @@
   function niceDate(iso) { var p = iso.split("-"); return new Date(+p[0], +p[1] - 1, +p[2]).toLocaleDateString("en-GB", { weekday: "long", day: "numeric", month: "long" }); }
   function crest(lg, id) { var dir = LEAGUES[lg].crest === "pl" ? "/assets/img/sports/pl/" : "/assets/img/sports/"; return dir + (LEAGUES[lg].crest === "pl" ? id : "club-" + id) + ".svg"; }
 
+  function nameToCrestMap(lg, ms) {
+    var map = {};
+    ms.forEach(function (m) {
+      map[norm(m.homeName)] = crest(lg, m.id);
+      map[norm(m.awayName)] = crest(lg, m.away);
+    });
+    return map;
+  }
+  function crestImg(src, size) {
+    return src ? '<img class="sp-crest" src="' + src + '" alt="" width="' + (size || 20) + '" height="' + (size || 20) + '" loading="lazy" decoding="async" onerror="this.style.display=\'none\'">' : "";
+  }
+
   function card(lg, m, r, key) {
     var url = "/sports/" + lg + "/matches/" + m.id + "-vs-" + m.away + "/";
     var pill = r ? '<span class="sp-sc-pill ft">FT</span>' : '<span class="sp-sc-pill">' + esc(m.time || "TBC") + "</span>";
@@ -92,7 +104,7 @@
         var col = r === "W" ? "#2e9e5b" : r === "D" ? "#5d6672" : "#d84343";
         return '<span class="sp-form-d" style="background:' + col + '">' + r + "</span>";
       }).join("");
-      return "<tr" + cls + "><td>" + x.pos + "</td><td><b>" + esc(x.name) + "</b></td><td>" + dots + "</td><td>" + x.p + "</td><td>" + x.w +
+      return "<tr" + cls + "><td>" + x.pos + "</td><td>" + crestImg(crest(lg, x.id)) + "<b>" + esc(x.name) + "</b></td><td>" + dots + "</td><td>" + x.p + "</td><td>" + x.w +
         "</td><td>" + x.d + "</td><td>" + x.l + "</td><td>" + x.gf + ":" + x.ga + "</td><td>" +
         (x.gf - x.ga > 0 ? "+" : "") + (x.gf - x.ga) + "</td><td><b>" + x.pts + "</b></td></tr>";
     }).join("");
@@ -115,7 +127,7 @@
       .sort(function (a, b) { return b.goals - a.goals || (a.player < b.player ? -1 : 1); }).slice(0, 20);
     if (!list.length) return '<p class="sp-result-meta">No goals recorded yet this season — updates automatically as matches are verified.</p>';
     var rows = list.map(function (x, i) {
-      return "<tr><td>" + (i + 1) + "</td><td><b>" + esc(x.player) + "</b></td><td>" + esc(x.team) + "</td><td><b>" + x.goals + "</b></td></tr>";
+      return "<tr><td>" + (i + 1) + "</td><td><b>" + esc(x.player) + "</b></td><td>" + crestImg(nameToCrestMap(lg, matches)[norm(x.team)]) + esc(x.team) + "</td><td><b>" + x.goals + "</b></td></tr>";
     }).join("");
     return '<div class="sp-table-wrap"><table class="sp-table"><thead><tr><th>#</th><th>Player</th><th>Club</th><th>Goals</th></tr></thead><tbody>' + rows + '</tbody></table></div><p class="sp-result-meta">Live list — every verified scorer counted automatically.</p>';
   }
@@ -162,8 +174,9 @@
     all.sort(function (a, b) { return b.r.playedOn < a.r.playedOn ? -1 : b.r.playedOn > a.r.playedOn ? 1 : 0; });
     all = all.slice(0, 14);
     function item(x) {
-      return '<span class="tk"><em>' + LEAGUES[x.lg].label + '</em><b>' + abbr(x.m.homeName) + ' ' +
-        x.r.homeScore + '\u2013' + x.r.awayScore + ' ' + abbr(x.m.awayName) + '</b><i>FT</i></span>';
+      return '<span class="tk"><em>' + LEAGUES[x.lg].label + '</em>' + crestImg(crest(x.lg, x.m.id), 16) +
+        '<b>' + abbr(x.m.homeName) + ' ' + x.r.homeScore + '\u2013' + x.r.awayScore + ' ' + abbr(x.m.awayName) + '</b>' +
+        crestImg(crest(x.lg, x.m.away), 16) + '<i>FT</i></span>';
     }
     var half = all.map(item).join("");
     return '<div class="tk-track">' + half + half + "</div>";
@@ -194,7 +207,7 @@
       if (kind === "table") {
         var rows = computeTable(lg, L.ms, data.results).slice(0, 5).map(function (x) {
           var cls = x.pos <= (ZONES[lg] || {cl:4}).cl ? "zcl" : x.pos <= (ZONES[lg] || {el:6}).el ? "zeu" : "";
-          return '<tr class="' + cls + '"><td>' + x.pos + '</td><td><b>' + esc(x.name) + '</b></td><td><b>' + x.pts + '</b></td></tr>';
+          return '<tr class="' + cls + '"><td>' + x.pos + '</td><td>' + crestImg(crest(lg, x.id), 18) + '<b>' + esc(x.name) + '</b></td><td><b>' + x.pts + '</b></td></tr>';
         }).join("");
         return '<table class="sp-table"><tbody>' + rows + '</tbody></table>';
       }
@@ -212,8 +225,9 @@
         var list = Object.keys(G).map(function (k) { G[k].p = k; return G[k]; })
           .sort(function (a, b) { return b.g - a.g; }).slice(0, 5);
         if (!list.length) return '<p class="sp-result-meta">No goals yet — fills automatically.</p>';
+        var cmap2 = nameToCrestMap(lg, L.ms);
         return '<table class="sp-table"><tbody>' + list.map(function (x) {
-          return '<tr><td><b>' + esc(x.p) + '</b></td><td>' + esc(x.t) + '</td><td><b>' + x.g + '</b></td></tr>';
+          return '<tr><td><b>' + esc(x.p) + '</b></td><td>' + crestImg(cmap2[norm(x.t)], 18) + esc(x.t) + '</td><td><b>' + x.g + '</b></td></tr>';
         }).join("") + '</tbody></table>';
       }
       if (kind === "reports") {

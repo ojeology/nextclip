@@ -4228,3 +4228,15 @@ body.spx .article-hero{background:rgba(255,255,255,.03);border:1px solid rgba(25
 body.spx .prose h1{letter-spacing:-.025em;font-weight:900}
 /* rails speed harmony */
 body.spx .sp-score-rail,body.spx .sp-art-rail{scroll-behavior:auto;overscroll-behavior-x:contain;touch-action:pan-x pan-y}
+
+/* ==== v8: persistent BACK control + crest alignment (appended) ==== */
+.sp-crest{width:20px;height:20px;margin-right:8px;vertical-align:-5px;object-fit:contain}
+.spx-back{position:sticky;top:10px;z-index:60;display:inline-flex;align-items:center;gap:9px;margin:4px 0 12px;
+ padding:11px 20px;border-radius:12px;text-decoration:none;font-weight:900;font-size:13px;letter-spacing:.12em;
+ text-transform:uppercase;color:#fff;background:linear-gradient(120deg,rgba(124,58,237,.92),rgba(8,145,178,.92));
+ border:1px solid rgba(255,255,255,.14);backdrop-filter:blur(10px);
+ box-shadow:0 10px 26px -12px rgba(124,58,237,.65);transition:transform .16s,filter .16s}
+.spx-back:hover{transform:translateX(-3px);filter:brightness(1.12)}
+.spx-back svg{width:16px;height:16px;stroke:#fff;stroke-width:2.6;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.tk .sp-crest{margin-right:6px;vertical-align:-4px}
+body.spx .sp-table td .sp-crest{margin-right:8px}
