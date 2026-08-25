@@ -175,6 +175,44 @@
         "url": "https://www.bbc.com/sport/football/premier-league/scores-fixtures"
       },
       "verifiedOn": "2026-08-23"
+    },
+    "fulham-vs-chelsea": {
+      "homeScore": 2,
+      "awayScore": 3,
+      "status": "FT",
+      "playedOn": "2026-08-24",
+      "scorers": [
+        {
+          "team": "home",
+          "player": "King",
+          "minute": "23"
+        },
+        {
+          "team": "away",
+          "player": "João Pedro",
+          "minute": "1"
+        },
+        {
+          "team": "away",
+          "player": "Rogers",
+          "minute": "41"
+        },
+        {
+          "team": "away",
+          "player": "Palmer",
+          "minute": "49"
+        },
+        {
+          "team": "home",
+          "player": "García",
+          "minute": "54"
+        }
+      ],
+      "source": {
+        "name": "ESPN — Fulham v Chelsea",
+        "url": "https://www.espn.com/soccer/report/_/gameId/401879318"
+      },
+      "verifiedOn": "2026-08-25"
     }
   },
   "la-liga": {
@@ -507,6 +545,50 @@
         "url": "https://www.bbc.com/sport/football/italian-serie-a/scores-fixtures"
       },
       "verifiedOn": "2026-08-23"
+    },
+    "bologna-vs-lazio": {
+      "homeScore": 0,
+      "awayScore": 1,
+      "status": "FT",
+      "playedOn": "2026-08-24",
+      "source": {
+        "name": "BBC Sport — Bologna v Lazio",
+        "url": "https://www.bbc.com/sport/football/live/cwddj8qerg68t"
+      },
+      "verifiedOn": "2026-08-25"
+    },
+    "roma-vs-fiorentina": {
+      "homeScore": 4,
+      "awayScore": 0,
+      "status": "FT",
+      "playedOn": "2026-08-24",
+      "scorers": [
+        {
+          "team": "home",
+          "player": "Malen",
+          "minute": "27"
+        },
+        {
+          "team": "home",
+          "player": "Malen",
+          "minute": "52"
+        },
+        {
+          "team": "home",
+          "player": "Malen",
+          "minute": "60"
+        },
+        {
+          "team": "home",
+          "player": "Pisilli",
+          "minute": "86"
+        }
+      ],
+      "source": {
+        "name": "BBC Sport — Roma v Fiorentina",
+        "url": "https://www.bbc.com/sport/football/live/cwddj8qerg68t"
+      },
+      "verifiedOn": "2026-08-25"
     }
   },
   "bundesliga": {},
