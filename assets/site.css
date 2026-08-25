@@ -4017,3 +4017,36 @@ a.td-match:hover{border-color:rgba(61,220,132,.35)}
 .sp-pro-mast h1{font-size:clamp(34px,6vw,54px);line-height:1;letter-spacing:-.03em;margin:0 0 10px}
 .sp-pro-mast p{color:#9aa1a9;max-width:640px;margin:0 0 16px;font-size:15px}
 @media(max-width:640px){.sp-strip{grid-template-columns:1fr 1fr}.sp-pro .sp-board-head{margin:20px 0 10px}}
+
+/* ==== BRYME SPORTS PRO v2 — league colour identity + depth (appended) ==== */
+:root{--lac:#e94b2c}
+.sp-pro[data-lg="premier-league"],[data-lg="premier-league"]{--lac:#8f4bd6}
+.sp-pro[data-lg="la-liga"],[data-lg="la-liga"]{--lac:#ef4444}
+.sp-pro[data-lg="serie-a"],[data-lg="serie-a"]{--lac:#2f7cf6}
+.sp-pro[data-lg="bundesliga"],[data-lg="bundesliga"]{--lac:#f2b705}
+.sp-pro[data-lg="ligue-1"],[data-lg="ligue-1"]{--lac:#14b8a6}
+/* accents pick up league colour */
+.sp-pro .sp-tabs a.on{background:var(--lac);border-color:var(--lac)}
+.sp-pro .sp-board-head{border-left-color:var(--lac)}
+.sp-pro .sp-scorecard:hover{border-color:var(--lac)}
+.sp-pro .sp-strip a:hover{border-color:var(--lac)}
+.sp-pro .sp-strip b{color:var(--lac)}
+.sp-pro .sp-table tbody tr:hover{background:rgba(255,255,255,.03)}
+/* depth + polish */
+.sp-pro .sp-scorecard{box-shadow:0 1px 0 rgba(0,0,0,.4),0 8px 22px -18px rgba(0,0,0,.8)}
+.sp-pro .sp-table-wrap{background:#0d1014;box-shadow:0 8px 22px -18px rgba(0,0,0,.9)}
+.sp-pro .sp-strip a{background:linear-gradient(180deg,#12161c,#0d1014);box-shadow:0 1px 0 rgba(255,255,255,.03) inset}
+.sp-pro .sp-tabs a{background:linear-gradient(180deg,#12161c,#0d1014)}
+/* LIVE pulse */
+.sp-pro .sp-sc-pill.sp-live{background:#e94b2c;color:#fff;animation:sppulse 1.8s ease-in-out infinite}
+@keyframes sppulse{0%,100%{box-shadow:0 0 0 0 rgba(233,75,44,.55)}50%{box-shadow:0 0 0 6px rgba(233,75,44,0)}}
+/* masthead: richer + stats */
+.sp-pro-mast{position:relative;background:
+ radial-gradient(60% 120% at 85% -10%,rgba(143,75,214,.16),transparent 60%),
+ radial-gradient(50% 100% at 10% -20%,rgba(233,75,44,.10),transparent 55%);
+ border-bottom:1px solid #1c2027;padding:44px 0 10px}
+.sp-pro-mast .k{color:var(--lac,#e94b2c)}
+.sp-pro-mast .k i{background:var(--lac,#e94b2c)}
+.sp-pro-stats{display:flex;flex-wrap:wrap;gap:10px 26px;margin:18px 0 8px;padding-top:14px;border-top:1px solid #1c2027}
+.sp-pro-stats span{font-size:12px;color:#8b93a1;text-transform:uppercase;letter-spacing:.07em;font-weight:700}
+.sp-pro-stats b{color:#fff;font-size:15px;margin-right:4px}
