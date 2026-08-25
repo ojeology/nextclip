@@ -813,7 +813,7 @@ function renderHome(){
   var h='';
   var feat=trending[0];
   if(feat){
-    h+='<div class="hero"><img class="back" loading="lazy" src="'+posterURL(feat)+'" alt="" onerror="this.onerror=null;this.src=posterSVG(feat,true)"><div class="ovl"></div><div class="meta">';
+    h+='<div class="hero"><img class="back" loading="lazy" src="'+posterURL(feat)+'" alt="" onerror="this.onerror=null;this.src=posterSVG(feat,true)" decoding="async"><div class="ovl"></div><div class="meta">';
     h+='<div class="tag">🔥 Featured — the best 90 seconds</div><div class="t">'+esc(feat.title)+'</div><div class="line">'+esc(feat.teaser)+'</div>';
     h+='<div class="btns"><button class="hbtn red" data-open="'+feat.id+'">▶ Watch</button><button class="hbtn" data-open="'+feat.id+'">📖 Full story</button></div>';
     h+='</div></div>';
@@ -858,7 +858,7 @@ function renderHome(){
   el.innerHTML=h;
 }
 function posterCard(m){
-  return '<button class="poster" data-open="'+m.id+'"><div class="pimg"><img loading="lazy" src="'+posterURL(m)+'" alt="'+esc(m.title)+'" onerror="this.onerror=null;this.src=posterSVG(m)"><span class="gen">'+esc(m.genre)+'</span><span class="sc">'+m.score+'</span></div><div class="pt">'+esc(m.title)+'</div><div class="py">'+m.year+'</div></button>';
+  return '<button class="poster" data-open="'+m.id+'"><div class="pimg"><img loading="lazy" src="'+posterURL(m)+'" alt="'+esc(m.title)+'" onerror="this.onerror=null;this.src=posterSVG(m)" decoding="async"><span class="gen">'+esc(m.genre)+'</span><span class="sc">'+m.score+'</span></div><div class="pt">'+esc(m.title)+'</div><div class="py">'+m.year+'</div></button>';
 }
 
 /* ============ BROWSE ============ */
@@ -947,7 +947,7 @@ function showPicks(){
   else h+='<div class="note"><b>Scored by your answers — higher match = better fit.</b></div>';
   picks.forEach(function(p){
     var m=p.m;
-    h+='<div class="pickcard" data-open="'+m.id+'"><div class="pcimg"><img loading="lazy" src="'+posterURL(m)+'" alt=""></div><div class="pci"><div class="pct">'+esc(m.title)+'</div><div class="pcm">'+esc(m.genre)+' · '+m.year+' · '+m.score+'/10 · match '+p.score+'</div><div class="pcw">'+esc(m.teaser)+'</div></div></div>';
+    h+='<div class="pickcard" data-open="'+m.id+'"><div class="pcimg"><img loading="lazy" src="'+posterURL(m)+'" alt="" decoding="async"></div><div class="pci"><div class="pct">'+esc(m.title)+'</div><div class="pcm">'+esc(m.genre)+' · '+m.year+' · '+m.score+'/10 · match '+p.score+'</div><div class="pcw">'+esc(m.teaser)+'</div></div></div>';
   });
   box.innerHTML=h;
 }
@@ -959,7 +959,7 @@ function renderAnime(){
   h+=banner("top");
   var top=anime.slice().sort(function(a,b){return b.score-a.score;})[0];
   if(top){
-    h+='<div class="hero"><img class="back" src="'+posterSVG(top,true)+'" alt=""><div class="ovl"></div><div class="meta">';
+    h+='<div class="hero"><img class="back" src="'+posterSVG(top,true)+'" alt="" decoding="async"><div class="ovl"></div><div class="meta">';
     h+='<div class="tag">🌸 Top anime</div><div class="t">'+esc(top.title)+'</div><div class="line">'+esc(top.teaser)+'</div>';
     h+='<div class="btns"><button class="hbtn red" data-open="'+top.id+'">▶ Watch</button><button class="hbtn" data-open="'+top.id+'">📖 Full story</button></div>';
     h+='</div></div>';
@@ -982,7 +982,7 @@ function renderMovie(id){
   qIdx=0;
   var el=document.getElementById("view-movie");
   var h='<button class="backbtn" data-route="#/browse">← Back</button>';
-  h+='<div class="mvhead"><img class="back" loading="lazy" src="'+posterURL(m)+'" alt="" onerror="this.onerror=null;this.src=posterSVG(m,true)"><div class="ovl"></div><div class="meta">';
+  h+='<div class="mvhead"><img class="back" loading="lazy" src="'+posterURL(m)+'" alt="" onerror="this.onerror=null;this.src=posterSVG(m,true)" decoding="async"><div class="ovl"></div><div class="meta">';
   h+='<div class="pills"><span class="pill">'+esc(m.genre)+'</span><span class="pill">'+m.year+'</span><span class="pill sc">'+m.score+'/10</span></div>';
   h+='<div class="t">'+esc(m.title)+'</div><div class="tagline">'+esc(m.teaser)+'</div>';
   h+='</div></div>';
@@ -1048,7 +1048,7 @@ function renderPlayer(m){
   var hasYt=mm.ytId&&mm.ytId.length>0;
   var h='<div class="playerwrap">';
   h+='<div class="plmeta"><span class="plbadge">Trailer highlight</span>'+(next?'<span class="plnext">next: '+esc(next.title)+'</span>':'')+'</div>';
-  h+='<div class="posterfill" id="videoBox"><img src="'+posterSVG(mm)+'" alt=""><div class="playlay" id="playLay"><div class="big">▶</div><div class="lbl">Tap to play the best 90 seconds</div></div></div>';
+  h+='<div class="posterfill" id="videoBox"><img src="'+posterSVG(mm)+'" alt="" decoding="async"><div class="playlay" id="playLay"><div class="big">▶</div><div class="lbl">Tap to play the best 90 seconds</div></div></div>';
   if(hasYt) h+='<button class="soundbtn" id="plSound" style="display:none">🔇 Tap for sound</button>';
 
   h+='</div>';
@@ -1311,5 +1311,5 @@ window.addEventListener("hashchange",navigate);
 if(!window.location.hash) window.location.hash="#/";
 navigate();
 </script>
-</body>
+<script>if('serviceWorker' in navigator){addEventListener('load',function(){navigator.serviceWorker.register('/sw.js').catch(function(){});});}</script></body>
 </html>
