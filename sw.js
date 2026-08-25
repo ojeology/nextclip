@@ -1,6 +1,6 @@
 /* BRYME service worker v2 — fast repeat visits.
    Assets: cache-first. Pages: network-first with cache fallback. */
-const VER = 'bryme-v2-2026-08-25';
+const VER = 'bryme-v3-2026-08-25-design-restore';
 const ASSETS = `${VER}-assets`;
 const PAGES = `${VER}-pages`;
 self.addEventListener('install', e => { self.skipWaiting(); });

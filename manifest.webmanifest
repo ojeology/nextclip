@@ -1,7 +1,7 @@
 {
   "name": "BRYME",
   "short_name": "BRYME",
-  "description": "Discover what you love. Learn what you need. Find what's next. Entertainment, sports, memes, money guides and tech & AI.",
+  "description": "Discover what you love. Learn what you need. Find what's next — movies, TV, anime, sports, money guides and tech & AI.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#0B0B0B",
