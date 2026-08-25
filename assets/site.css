@@ -4240,3 +4240,32 @@ body.spx .sp-score-rail,body.spx .sp-art-rail{scroll-behavior:auto;overscroll-be
 .spx-back svg{width:16px;height:16px;stroke:#fff;stroke-width:2.6;fill:none;stroke-linecap:round;stroke-linejoin:round}
 .tk .sp-crest{margin-right:6px;vertical-align:-4px}
 body.spx .sp-table td .sp-crest{margin-right:8px}
+
+/* ==== v9: SWEET COLOUR RESTORED — vivid gradient energy on PRIMETIME (appended) ==== */
+body.spx{background-image:
+ radial-gradient(60% 42% at 85% -6%,rgba(139,92,246,.22),transparent 60%),
+ radial-gradient(52% 40% at 6% 4%,rgba(34,211,238,.20),transparent 58%),
+ radial-gradient(38% 30% at 50% 110%,rgba(244,114,182,.10),transparent 65%),
+ linear-gradient(180deg,#090d18 0%,#060a13 55%,#05070d 100%)}
+.spx-hero-title{background:linear-gradient(100deg,#fff 5%,#c4b5fd 30%,#f0abfc 52%,#67e8f9 80%);
+ -webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 6px 34px rgba(139,92,246,.35))}
+.spx-hero-k{color:#f0abfc}.spx-hero-k i{background:#f0abfc;box-shadow:0 0 14px #f0abfc}
+.spx-chips span{border-image:linear-gradient(120deg,rgba(139,92,246,.5),rgba(34,211,238,.5)) 1;background:rgba(139,92,246,.08)}
+body.spx .sp-tabs a.on{background:linear-gradient(120deg,var(--lac,#8b5cf6),#22d3ee 70%,#f0abfc 130%);
+ box-shadow:0 8px 26px -8px var(--lac,#8b5cf6),0 0 22px -6px rgba(34,211,238,.4)}
+body.spx .sp-board-head h2{background:linear-gradient(95deg,#fff 40%,#c4b5fd 75%,#67e8f9);-webkit-background-clip:text;background-clip:text;color:transparent}
+body.spx .sp-board-head h2:before{background:linear-gradient(120deg,#8b5cf6,#f0abfc,#22d3ee);box-shadow:0 0 12px rgba(139,92,246,.8)}
+body.spx .sp-lg{border-top:2px solid;border-image:linear-gradient(90deg,var(--lac,#8b5cf6),rgba(34,211,238,.7),transparent) 1}
+body.spx .sp-scorecard{background:linear-gradient(160deg,rgba(139,92,246,.07),rgba(255,255,255,.02) 45%)}
+body.spx .sp-scorecard:hover{box-shadow:0 16px 40px -16px rgba(139,92,246,.5),0 0 24px -8px rgba(34,211,238,.4),inset 0 1px 0 rgba(255,255,255,.08)}
+body.spx .sp-sc-pill.ft{background:rgba(74,222,128,.16);color:#6ee7a0}
+body.spx .sp-sc-pill.sp-live{background:linear-gradient(120deg,#8b5cf6,#22d3ee);box-shadow:0 0 16px rgba(34,211,238,.5)}
+body.spx .sp-art{background:linear-gradient(160deg,rgba(139,92,246,.08),rgba(34,211,238,.04) 60%)}
+body.spx .sp-art b{color:#f0abfc}
+body.spx .sp-table-wrap{background:linear-gradient(170deg,rgba(139,92,246,.05),rgba(255,255,255,.02) 40%)}
+body.spx .sp-table th{border-bottom:1px solid transparent;border-image:linear-gradient(90deg,rgba(139,92,246,.45),rgba(34,211,238,.35),transparent) 1}
+body.spx .sp-rep span{color:#f0abfc}
+body.spx .sp-dash-more{color:#67e8f9}
+body.spx .sp-dash-col h3{color:#a5b4cf}
+.spx-chip-live i{background:#fb7185;box-shadow:0 0 12px #fb7185}
+.tk i{background:rgba(74,222,128,.2);color:#6ee7a0}
