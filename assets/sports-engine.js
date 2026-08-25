@@ -138,6 +138,30 @@
       '<span style="background:#111419;border:1px solid #272b31;border-radius:20px;padding:6px 14px">' + nextHtml + "</span></div></div>";
   }
 
+  function abbr(name) {
+    var w = String(name).replace(/[^A-Za-z ]/g, "").split(/\s+/).filter(Boolean);
+    if (w.length >= 3) return (w[0][0] + w[1][0] + w[2][0]).toUpperCase();
+    if (w.length === 2) return (w[0].slice(0, 2) + w[1][0]).toUpperCase();
+    return String(name).slice(0, 3).toUpperCase();
+  }
+  function renderTicker(data) {
+    var all = [];
+    data.leagues.forEach(function (L) {
+      L.ms.forEach(function (m) {
+        var r = data.results[L.lg + "/" + m.id + "-vs-" + m.away];
+        if (r) all.push({ lg: L.lg, m: m, r: r });
+      });
+    });
+    all.sort(function (a, b) { return b.r.playedOn < a.r.playedOn ? -1 : b.r.playedOn > a.r.playedOn ? 1 : 0; });
+    all = all.slice(0, 14);
+    function item(x) {
+      return '<span class="tk"><em>' + LEAGUES[x.lg].label + '</em><b>' + abbr(x.m.homeName) + ' ' +
+        x.r.homeScore + '\u2013' + x.r.awayScore + ' ' + abbr(x.m.awayName) + '</b><i>FT</i></span>';
+    }
+    var half = all.map(item).join("");
+    return '<div class="tk-track">' + half + half + "</div>";
+  }
+
   var DATA = null;
   function load() {
     if (DATA) return DATA;
@@ -163,6 +187,11 @@
       var today = todayStr();
       var liveLeagues = {};
       nodes.forEach(function (el) {
+        if (el.hasAttribute("data-sp-ticker")) {
+          el.innerHTML = renderTicker(data);
+          el.setAttribute("data-sp-live", "1");
+          return;
+        }
         var lgFilter = el.getAttribute("data-sp-league");
         var lgTable = el.getAttribute("data-sp-table");
         var lgScorers = el.getAttribute("data-sp-scorers");
@@ -250,11 +279,11 @@
               var nums = el.querySelectorAll(".sp-sc-num");
               if (ev.status.type.state === "in") {
                 var min = (ev.status.displayClock || "LIVE").toString();
-                if (pill) { pill.textContent = "LIVE " + min; pill.style.background = "#e94b2c"; pill.style.color = "#fff"; }
+                if (pill) { pill.textContent = "LIVE " + min; pill.classList.add("sp-live"); }
                 if (nums.length === 2) { nums[0].textContent = home.score; nums[1].textContent = away.score; }
               } else if (ev.status.type.state === "post") {
                 if (pill && pill.textContent.indexOf("FT") === -1) {
-                  pill.textContent = "FT"; pill.style.background = ""; pill.style.color = "";
+                  pill.textContent = "FT"; pill.classList.remove("sp-live");
                   if (nums.length === 2) { nums[0].textContent = home.score; nums[1].textContent = away.score; }
                 }
               }
