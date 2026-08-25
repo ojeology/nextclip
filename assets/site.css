@@ -4127,13 +4127,13 @@ a.td-match:hover{border-color:rgba(61,220,132,.35)}
 .sp-score-rail{overflow:hidden;margin:0 -2px;padding:4px 0 6px;
  -webkit-mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent);
  mask-image:linear-gradient(90deg,transparent,#000 4%,#000 96%,transparent)}
-.sp-rail-track{display:inline-flex;gap:10px;white-space:nowrap;animation:sprail 42s linear infinite;will-change:transform}
+.sp-rail-track{display:inline-flex;gap:10px;white-space:nowrap;will-change:scroll-position}
 .sp-score-rail:hover .sp-rail-track{animation-play-state:paused}
 @keyframes sprail{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 .sp-pro .sp-rail-track .sp-scorecard{flex:0 0 232px;min-width:232px}
 /* article rail — promoted to top */
 .sp-art-rail{overflow:hidden;margin:6px -2px 18px;padding:2px 0 8px}
-.sp-art-track{display:inline-flex;gap:12px;white-space:normal;animation:sprail 60s linear infinite}
+.sp-art-track{display:inline-flex;gap:12px;white-space:normal}
 .sp-art-rail:hover .sp-art-track{animation-play-state:paused}
 .sp-art{flex:0 0 285px;min-width:285px;display:flex;flex-direction:column;gap:8px;background:#0d1014;
  border:1px solid #22262c;border-radius:12px;padding:16px;text-decoration:none;transition:border-color .15s}
@@ -4227,5 +4227,4 @@ body.spx .tk b{color:#fff}
 body.spx .article-hero{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:26px;backdrop-filter:blur(8px)}
 body.spx .prose h1{letter-spacing:-.025em;font-weight:900}
 /* rails speed harmony */
-body.spx .sp-rail-track{animation-duration:36s}
-body.spx .sp-art-track{animation-duration:52s}
+body.spx .sp-score-rail,body.spx .sp-art-rail{scroll-behavior:auto;overscroll-behavior-x:contain;touch-action:pan-x pan-y}

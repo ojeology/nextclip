@@ -171,5 +171,17 @@ function buildReport(lg, mid, r, homeName, awayName, mw) {
   console.log(`\nsummary: ${added} added, ${skipped} already known, ${unmatched} unmatched`);
   if (dry || added === 0) { console.log(added === 0 ? "no changes" : "dry run — not writing"); process.exit(0); }
   fs.writeFileSync(resultsPath, JSON.stringify(results, null, 2) + "\n");
+  try {
+    const FIXF = {"premier-league":"fixtures.json","la-liga":"fixtures-la-liga.json","serie-a":"fixtures-serie-a.json","bundesliga":"fixtures-bundesliga.json","ligue-1":"fixtures-ligue-1.json"};
+    const feed = { v: 1, leagues: {}, results: {} };
+    for (const [lg2, f2] of Object.entries(FIXF)) {
+      const fx2 = JSON.parse(fs.readFileSync(path.join(root, "content", f2), "utf8"));
+      feed.leagues[lg2] = [];
+      fx2.matchweeks.forEach(w => w.matches.forEach(m => feed.leagues[lg2].push([m.id, m.away, m.homeName, m.awayName, m.date, m.time || ""])));
+      feed.results[lg2] = results[lg2] || {};
+    }
+    fs.writeFileSync(path.join(root, "content", "sports-feed.json"), JSON.stringify(feed));
+    console.log("sports-feed.json refreshed");
+  } catch (e) { console.log("feed refresh failed: " + e.message); }
   console.log("results.json updated");
 })();

@@ -250,18 +250,19 @@
   var DATA = null;
   function load() {
     if (DATA) return DATA;
-    DATA = fetch("/content/results.json", { cache: "no-cache" }).then(function (r) { return r.json(); })
-      .then(function (results) {
-        var res = {};
-        Object.keys(LEAGUES).forEach(function (lg) {
-          Object.keys(results[lg] || {}).forEach(function (k) { res[lg + "/" + k] = results[lg][k]; });
+    DATA = fetch("/content/sports-feed.json").then(function (r) { return r.json(); }).then(function (fd) {
+      var res = {};
+      var leagues = [];
+      Object.keys(fd.leagues || {}).forEach(function (lg) {
+        var ms = (fd.leagues[lg] || []).map(function (a) {
+          return { id: a[0], away: a[1], homeName: a[2], awayName: a[3], date: a[4], time: a[5] };
         });
-        return Promise.all(Object.keys(LEAGUES).map(function (lg) {
-          return fetch("/content/" + LEAGUES[lg].file, { cache: "no-cache" })
-            .then(function (r) { return r.json(); })
-            .then(function (fx) { return { lg: lg, ms: (fx.matchweeks || []).reduce(function (a, w) { return a.concat(w.matches || []); }, []) }; });
-        })).then(function (leagues) { return { results: res, leagues: leagues }; });
+        leagues.push({ lg: lg, ms: ms });
+        var r2 = (fd.results && fd.results[lg]) || {};
+        Object.keys(r2).forEach(function (k) { res[lg + "/" + k] = r2[k]; });
       });
+      return { results: res, leagues: leagues };
+    }).catch(function () { return null; });
     return DATA;
   }
 
@@ -341,6 +342,7 @@
         if (out) { el.innerHTML = out; el.setAttribute("data-sp-live", "1"); }
       });
       document.querySelectorAll("[data-sp-date]").forEach(function (s) { s.textContent = niceDate(today); });
+      initRails();
       var liveKeys = Object.keys(liveLeagues);
       if (liveKeys.length) pollLive(liveKeys);
     }).catch(function () {});
@@ -392,6 +394,45 @@
     setInterval(tick, 60000);
   }
 
-  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);
-  else boot();
+  function initRails() {
+    document.querySelectorAll(".sp-score-rail, .sp-art-rail").forEach(function (rail) {
+      var track = rail.querySelector(".sp-rail-track, .sp-art-track");
+      if (!track || rail.getAttribute("data-rail-init")) return;
+      rail.setAttribute("data-rail-init", "1");
+      rail.style.overflowX = "auto";
+      rail.style.cursor = "grab";
+      rail.style.scrollbarWidth = "none";
+      var paused = 0, last = 0, half = 0, raf;
+      function measure() { half = track.scrollWidth / 2; }
+      function step(ts) {
+        raf = 0;
+        if (!half) measure();
+        if (!paused && !rail.matches(":hover") && !document.hidden && half > rail.clientWidth) {
+          rail.scrollLeft += 0.5;
+          if (rail.scrollLeft >= half) rail.scrollLeft = 0;
+        }
+        raf = requestAnimationFrame(step);
+      }
+      function kick() { if (!raf) raf = requestAnimationFrame(step); }
+      kick();
+      ["pointerdown", "touchstart", "wheel", "keydown"].forEach(function (ev) {
+        rail.addEventListener(ev, function () { paused = 1; clearTimeout(rail._t); rail._t = setTimeout(function () { paused = 0; }, 2800); }, { passive: true });
+      });
+      rail.addEventListener("pointerdown", function () {
+        var startX = rail.scrollLeft, x0 = null;
+        function down(e) { x0 = e.clientX; rail.setPointerCapture && 0; }
+        function move(e) { if (x0 === null) return; rail.scrollLeft = startX - (e.clientX - x0); }
+        function up() { x0 = null; rail.removeEventListener("pointermove", move); rail.removeEventListener("pointerup", up); }
+        rail.addEventListener("pointermove", move);
+        rail.addEventListener("pointerup", up);
+        down.apply(null, arguments);
+      });
+      window.addEventListener("resize", measure);
+    });
+  }
+  var bootDone = false;
+  function bootSafe() { if (bootDone) return; bootDone = true; boot(); }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", bootSafe);
+  else if (window.requestIdleCallback) window.requestIdleCallback(bootSafe, { timeout: 1200 });
+  else setTimeout(bootSafe, 60);
 })();
