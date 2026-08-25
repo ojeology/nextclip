@@ -73,9 +73,20 @@
       .sort(function (a, b) { return b.pts - a.pts || (b.gf - b.ga) - (a.gf - a.ga) || b.gf - a.gf || (a.name < b.name ? -1 : 1); })
       .map(function (t, i) { t.pos = i + 1; t.form.sort(function (a, b) { return a.split("|")[1] < b.split("|")[1] ? -1 : 1; }); return t; });
   }
+  var ZONES = {
+    "premier-league": { cl: 4, el: 5, rel: 3 },
+    "la-liga":        { cl: 4, el: 6, rel: 3 },
+    "serie-a":        { cl: 4, el: 6, rel: 3 },
+    "bundesliga":     { cl: 4, el: 5, rel: 2 },
+    "ligue-1":        { cl: 3, el: 4, rel: 2 }
+  };
   function renderTable(lg, matches, results) {
+    var z = ZONES[lg] || { cl: 4, el: 6, rel: 3 };
+    var relStart = 21 - (z.rel || 3) + (lg === "bundesliga" || lg === "ligue-1" ? 2 : 0);
+    var n = lg === "bundesliga" || lg === "ligue-1" ? 18 : 20;
     var rows = computeTable(lg, matches, results).map(function (x) {
-      return "<tr><td>" + x.pos + "</td><td><b>" + esc(x.name) + "</b></td><td>" + x.p + "</td><td>" + x.w +
+      var cls = x.pos <= z.cl ? " class=\"zcl\"" : x.pos <= z.el ? " class=\"zeu\"" : x.pos > n - (z.rel || 3) ? " class=\"zre\"" : "";
+      return "<tr" + cls + "><td>" + x.pos + "</td><td><b>" + esc(x.name) + "</b></td><td>" + x.p + "</td><td>" + x.w +
         "</td><td>" + x.d + "</td><td>" + x.l + "</td><td>" + x.gf + ":" + x.ga + "</td><td>" +
         (x.gf - x.ga > 0 ? "+" : "") + (x.gf - x.ga) + "</td><td><b>" + x.pts + "</b></td></tr>";
     }).join("");
