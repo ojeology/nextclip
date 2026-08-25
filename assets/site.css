@@ -4240,3 +4240,22 @@ body.spx .sp-score-rail,body.spx .sp-art-rail{scroll-behavior:auto;overscroll-be
 .spx-back svg{width:16px;height:16px;stroke:#fff;stroke-width:2.6;fill:none;stroke-linecap:round;stroke-linejoin:round}
 .tk .sp-crest{margin-right:6px;vertical-align:-4px}
 body.spx .sp-table td .sp-crest{margin-right:8px}
+
+/* ==== v11: cinematic stadium backdrop on the PRIMETIME hero (appended) ==== */
+.spx-hero-photo{position:relative;border-radius:22px;margin-top:18px;padding:58px 28px 34px;overflow:hidden;
+ background:
+  linear-gradient(180deg,rgba(5,8,16,.40) 0%,rgba(5,8,16,.60) 46%,rgba(5,8,16,.88) 100%),
+  radial-gradient(80% 90% at 80% 10%,rgba(124,58,237,.26),transparent 60%),
+  radial-gradient(60% 80% at 12% 20%,rgba(34,211,238,.20),transparent 55%),
+  url('/assets/img/sports/hero-landing.jpg') center 30%/cover no-repeat,#070b14;
+ box-shadow:0 24px 70px -30px rgba(0,0,0,.9),inset 0 1px 0 rgba(255,255,255,.08);
+ border:1px solid rgba(255,255,255,.1)}
+.spx-hero-photo:after{content:"";position:absolute;inset:auto 0 0 0;height:36%;
+ background:linear-gradient(180deg,transparent,rgba(5,7,13,.9));pointer-events:none}
+.spx-hero-photo > *{position:relative;z-index:1}
+.spx-hero-photo .spx-hero-title{font-size:clamp(58px,12vw,132px);filter:drop-shadow(0 6px 30px rgba(0,0,0,.65))}
+.spx-hero-photo .spx-hero-sub{color:#dce4f0;text-shadow:0 2px 18px rgba(0,0,0,.75)}
+.spx-hero-photo .spx-hero-k{text-shadow:0 2px 12px rgba(0,0,0,.8)}
+.spx-hero-photo .spx-chips span{background:rgba(7,10,18,.55);border:1px solid rgba(255,255,255,.16);backdrop-filter:blur(8px)}
+.spx-hero-photo .sp-tabs a{background:rgba(7,10,18,.55);backdrop-filter:blur(8px)}
+@media(max-width:640px){.spx-hero-photo{padding:42px 18px 26px;border-radius:16px}}
