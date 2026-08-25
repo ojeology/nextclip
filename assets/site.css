@@ -4086,3 +4086,20 @@ a.td-match:hover{border-color:rgba(61,220,132,.35)}
 .sp-zone-legend{margin:10px 2px 4px;font-size:11px;color:#8b93a1;text-transform:uppercase;letter-spacing:.06em;font-weight:700}
 .sp-zone-legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px}
 .sp-strip + .sp-strip{margin-top:-6px}
+
+/* ==== PRO v5: nav UX — scroll tabs, back button, card carousels (appended) ==== */
+/* tabs: max ~3 visible, slides */
+.sp-tabs{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;scroll-snap-type:x proximity;padding-bottom:2px}
+.sp-tabs::-webkit-scrollbar{display:none}
+.sp-tabs a{flex:0 0 auto;scroll-snap-align:start;white-space:nowrap}
+/* back button: a real button now */
+.sp-back{display:inline-flex;align-items:center;gap:8px;margin:14px 0 2px;padding:9px 16px;border-radius:999px;background:linear-gradient(135deg,#161b22,#0d1014);border:1px solid #272b31;color:#c8d0d8;font-weight:800;font-size:13px;letter-spacing:.03em;text-decoration:none;transition:border-color .15s,transform .15s}
+.sp-back:hover{border-color:var(--lac,#0891b2);color:#fff;transform:translateX(-2px)}
+/* boards: 2 cards visible, slides to more */
+.sp-pro .sp-score-grid{display:flex;gap:10px;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;scroll-snap-type:x mandatory;padding:2px 2px 8px}
+.sp-pro .sp-score-grid::-webkit-scrollbar{display:none}
+.sp-pro .sp-scorecard{flex:0 0 calc(50% - 5px);scroll-snap-align:start;min-width:calc(50% - 5px)}
+@media(min-width:760px){.sp-pro .sp-scorecard{flex:0 0 calc(33.333% - 7px);min-width:calc(33.333% - 7px)}}
+@media(min-width:1100px){.sp-pro .sp-scorecard{flex:0 0 calc(25% - 8px);min-width:calc(25% - 8px)}}
+/* ticker edge fade hint for scrollables */
+.sp-pro .sp-lg{position:relative}

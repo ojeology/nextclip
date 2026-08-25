@@ -232,7 +232,7 @@
         });
         function byD(a, b) { return a.m.date < b.m.date ? -1 : a.m.date > b.m.date ? 1 : 0; }
         played.sort(function (a, b) { return -byD(a, b); }); upcoming.sort(byD);
-        played = played.slice(0, lgFilter ? 9 : 12); upcoming = upcoming.slice(0, lgFilter ? 9 : 12);
+        played = played.slice(0, lgFilter ? 6 : 8); upcoming = upcoming.slice(0, lgFilter ? 6 : 8);
         function section(title, arr, withDate) {
           if (!arr.length) return "";
           var html = '<div class="sp-board-head"><div><div class="eyebrow">Live desk</div><h2>' + title + "</h2></div>";
