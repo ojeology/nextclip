@@ -404,6 +404,39 @@
         "url": "https://www.bbc.com/sport/football/spanish-la-liga/scores-fixtures"
       },
       "verifiedOn": "2026-08-23"
+    },
+    "osasuna-vs-levante": {
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "FT",
+      "playedOn": "2026-08-24",
+      "source": {
+        "name": "BBC Sport — Osasuna v Levante",
+        "url": "https://www.bbc.com/sport/football/live/c9j3647xzkkxt"
+      },
+      "verifiedOn": "2026-08-25"
+    },
+    "malaga-vs-deportivo": {
+      "homeScore": 1,
+      "awayScore": 1,
+      "status": "FT",
+      "playedOn": "2026-08-24",
+      "source": {
+        "name": "BBC Sport — Málaga v Deportivo",
+        "url": "https://www.bbc.com/sport/football/live/c9j3647xzkkxt"
+      },
+      "verifiedOn": "2026-08-25"
+    },
+    "deportivo-vs-elche": {
+      "homeScore": 1,
+      "awayScore": 1,
+      "status": "FT",
+      "playedOn": "2026-08-17",
+      "source": {
+        "name": "BBC Sport — La Liga scores & fixtures",
+        "url": "https://www.bbc.com/sport/football/spanish-la-liga/scores-fixtures"
+      },
+      "verifiedOn": "2026-08-25"
     }
   },
   "serie-a": {
