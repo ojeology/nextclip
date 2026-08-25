@@ -175,6 +175,43 @@
         "url": "https://www.bbc.com/sport/football/premier-league/scores-fixtures"
       },
       "verifiedOn": "2026-08-23"
+    },
+    "fulham-vs-chelsea": {
+      "homeScore": 2,
+      "awayScore": 3,
+      "status": "FT",
+      "playedOn": "2026-08-24",
+      "scorers": [
+        {
+          "team": "home",
+          "player": "King",
+          "minute": "23"
+        },
+        {
+          "team": "away",
+          "player": "João Pedro",
+          "minute": "1"
+        },
+        {
+          "team": "away",
+          "player": "Rogers",
+          "minute": "41"
+        },
+        {
+          "team": "away",
+          "player": "Palmer",
+          "minute": "49"
+        },
+        {
+          "team": "home",
+          "player": "García",
+          "minute": "54"
+        }
+      ],
+      "source": {
+        "name": "ESPN — Fulham v Chelsea",
+        "url": "https://www.espn.com/soccer/report/_/gameId/401879318"
+      }
     }
   },
   "la-liga": {

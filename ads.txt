@@ -1,0 +1,2 @@
+# BRYME ads.txt — add your AdSense line here when approved, e.g.:
+# google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0
