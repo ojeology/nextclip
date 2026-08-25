@@ -4259,3 +4259,18 @@ body.spx .sp-table td .sp-crest{margin-right:8px}
 .spx-hero-photo .spx-chips span{background:rgba(7,10,18,.55);border:1px solid rgba(255,255,255,.16);backdrop-filter:blur(8px)}
 .spx-hero-photo .sp-tabs a{background:rgba(7,10,18,.55);backdrop-filter:blur(8px)}
 @media(max-width:640px){.spx-hero-photo{padding:42px 18px 26px;border-radius:16px}}
+
+/* ==== v12: FULL-BLEED pitch — no box, flows downward into the page (appended) ==== */
+.spx-hero-photo{margin:0 calc(50% - 50vw);width:100vw;border-radius:0;border:0;box-shadow:none;
+ min-height:86vh;display:flex;flex-direction:column;justify-content:center;
+ padding:64px max(24px, calc((100vw - 1180px) / 2)) 110px;
+ background:
+  linear-gradient(180deg,rgba(4,7,14,.34) 0%,rgba(4,7,14,.48) 34%,rgba(4,7,14,.72) 62%,rgba(5,7,13,.97) 88%,#05070d 100%),
+  radial-gradient(70% 60% at 78% 12%,rgba(124,58,237,.24),transparent 62%),
+  radial-gradient(55% 55% at 14% 24%,rgba(34,211,238,.18),transparent 58%),
+  url('/assets/img/sports/hero-landing.jpg') center 22%/cover no-repeat,#070b14}
+.spx-hero-photo:after{content:"";position:absolute;inset:auto 0 0 0;height:120px;
+ background:linear-gradient(180deg,transparent,#05070d);pointer-events:none;z-index:0}
+.spx-hero-photo > *{position:relative;z-index:1}
+.spx-hero-photo .spx-hero-title{font-size:clamp(64px,14vw,170px)}
+@media(max-width:640px){.spx-hero-photo{min-height:74vh;padding:44px 20px 90px}}
