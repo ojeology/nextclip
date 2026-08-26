@@ -396,38 +396,69 @@
 
   function initRails() {
     document.querySelectorAll(".sp-score-rail, .sp-art-rail").forEach(function (rail) {
+      if (rail.getAttribute("data-rail-ok")) return;
+      rail.setAttribute("data-rail-ok", "1");
       var track = rail.querySelector(".sp-rail-track, .sp-art-track");
-      if (!track || rail.getAttribute("data-rail-init")) return;
-      rail.setAttribute("data-rail-init", "1");
+      if (!track) return;
       rail.style.overflowX = "auto";
+      rail.style.overflowY = "hidden";
       rail.style.cursor = "grab";
       rail.style.scrollbarWidth = "none";
-      var paused = 0, last = 0, half = 0, raf;
-      function measure() { half = track.scrollWidth / 2; }
-      function step(ts) {
-        raf = 0;
-        if (!half) measure();
-        if (!paused && !rail.matches(":hover") && !document.hidden && half > rail.clientWidth) {
-          rail.scrollLeft += 0.5;
-          if (rail.scrollLeft >= half) rail.scrollLeft = 0;
-        }
-        raf = requestAnimationFrame(step);
+      rail.style.webkitOverflowScrolling = "touch";
+      rail.style.touchAction = "pan-x pan-y";
+      rail.style.overscrollBehaviorX = "contain";
+      var paused = false, resumeTimer = null, rafId = 0;
+      function halfWidth() {
+        return Math.max(track.scrollWidth / 2, rail.clientWidth + 1);
       }
-      function kick() { if (!raf) raf = requestAnimationFrame(step); }
-      kick();
-      ["pointerdown", "touchstart", "wheel", "keydown"].forEach(function (ev) {
-        rail.addEventListener(ev, function () { paused = 1; clearTimeout(rail._t); rail._t = setTimeout(function () { paused = 0; }, 2800); }, { passive: true });
+      function autoScroll() {
+        rafId = 0;
+        if (!paused && !document.hidden && halfWidth() > rail.clientWidth + 10) {
+          rail.scrollLeft += 0.4;
+          if (rail.scrollLeft >= halfWidth()) rail.scrollLeft = 0;
+        }
+        rafId = requestAnimationFrame(autoScroll);
+      }
+      function pause() {
+        paused = true;
+        if (resumeTimer) clearTimeout(resumeTimer);
+        resumeTimer = setTimeout(function () { paused = false; }, 3000);
+      }
+      function resume() {
+        if (resumeTimer) clearTimeout(resumeTimer);
+        resumeTimer = setTimeout(function () { paused = false; }, 2000);
+      }
+      if (!rafId) rafId = requestAnimationFrame(autoScroll);
+      rail.addEventListener("mouseenter", function () { paused = true; });
+      rail.addEventListener("mouseleave", function () { resume(); });
+      rail.addEventListener("touchstart", function () { pause(); }, { passive: true });
+      rail.addEventListener("touchend", function () { resume(); }, { passive: true });
+      rail.addEventListener("wheel", function () { pause(); }, { passive: true });
+      var drag = false, dragX = 0, dragScroll = 0, dragMoved = false;
+      rail.addEventListener("pointerdown", function (e) {
+        drag = true; dragMoved = false;
+        dragX = e.clientX; dragScroll = rail.scrollLeft;
+        rail.style.cursor = "grabbing";
+        pause();
       });
-      rail.addEventListener("pointerdown", function () {
-        var startX = rail.scrollLeft, x0 = null;
-        function down(e) { x0 = e.clientX; rail.setPointerCapture && 0; }
-        function move(e) { if (x0 === null) return; rail.scrollLeft = startX - (e.clientX - x0); }
-        function up() { x0 = null; rail.removeEventListener("pointermove", move); rail.removeEventListener("pointerup", up); }
-        rail.addEventListener("pointermove", move);
-        rail.addEventListener("pointerup", up);
-        down.apply(null, arguments);
+      document.addEventListener("pointermove", function (e) {
+        if (!drag) return;
+        var dx = e.clientX - dragX;
+        if (Math.abs(dx) > 3) dragMoved = true;
+        rail.scrollLeft = dragScroll - dx;
       });
-      window.addEventListener("resize", measure);
+      document.addEventListener("pointerup", function () {
+        if (!drag) return;
+        drag = false;
+        rail.style.cursor = "grab";
+        resume();
+      });
+      rail.addEventListener("click", function (e) {
+        if (dragMoved) { e.preventDefault(); e.stopPropagation(); }
+      }, true);
+      window.addEventListener("resize", function () {
+        halfWidth();
+      });
     });
   }
   var bootDone = false;
