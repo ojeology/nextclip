@@ -52,12 +52,15 @@ ARROW = (
     'stroke-linecap="round" stroke-linejoin="round"/></svg>'
 )
 
+TK_CREST = ('<img src="/assets/img/sports/badges/%s.png" alt="" width="16" height="16" '
+            'loading="lazy" onerror="this.style.display=\'none\'">')
+
 FALLBACK_TICKER = (
     '<div class="tk-track">'
-    '<span class="tk"><em>Premier League</em><b>MCI 2\u20131 BOU</b><i>FT</i></span>'
-    '<span class="tk"><em>Premier League</em><b>NEW 2\u20132 LIV</b><i>FT</i></span>'
-    '<span class="tk"><em>La Liga</em><b>ELC 0\u20135 BAR</b><i>FT</i></span>'
-    '<span class="tk"><em>Serie A</em><b>ROM 4\u20130 FIO</b><i>FT</i></span>'
+    '<span class="tk">' + TK_CREST % "man-city" + '<b>MCI 2\u20131 BOU</b><i>FT</i>' + TK_CREST % "bournemouth" + '</span>'
+    '<span class="tk">' + TK_CREST % "newcastle" + '<b>NEW 2\u20132 LIV</b><i>FT</i>' + TK_CREST % "liverpool" + '</span>'
+    '<span class="tk">' + TK_CREST % "elche" + '<b>ELC 0\u20135 BAR</b><i>FT</i>' + TK_CREST % "barcelona" + '</span>'
+    '<span class="tk">' + TK_CREST % "roma" + '<b>ROM 4\u20130 FIO</b><i>FT</i>' + TK_CREST % "fiorentina" + '</span>'
     '</div>'
 )
 
@@ -83,7 +86,10 @@ def build_chrome(rel):
     act = active_key(rel)
 
     ticker_attr = ' data-sp-league="%s"' % lg if lg else ""
-    cta_href = ("/sports/%s/matches/" % lg) if lg else "/sports/premier-league/matches/"
+    if lg:
+        cta_href, cta_label = "/sports/%s/matches/" % lg, "Match centre"
+    else:
+        cta_href, cta_label = "/sports/", "Sports desk"
 
     chips = []
     for key, label, note, note_cls in RAIL:
@@ -101,12 +107,12 @@ def build_chrome(rel):
         '<div class="shell bsd-scoresbar-in">\n'
         '<span class="bsd-scoresbar-tag"><i class="bsd-live-dot"></i>Results</span>\n'
         '<div data-sp-engine data-sp-ticker%s>%s</div>\n'
-        '<a class="bsd-scoresbar-cta" href="%s">Match centre %s</a>\n'
+        '<a class="bsd-scoresbar-cta" href="%s">%s %s</a>\n'
         '</div>\n</div>\n'
         '<nav class="bsd-leaguenav" aria-label="Leagues and desks">\n'
         '<div class="bsd-leaguenav-in">%s</div>\n'
         '</nav>\n</div>\n'
-    ) % (ticker_attr, FALLBACK_TICKER, cta_href, ARROW, "".join(chips))
+    ) % (ticker_attr, FALLBACK_TICKER, cta_href, cta_label, ARROW, "".join(chips))
 
 
 def patch(html, rel, is_hub):

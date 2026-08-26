@@ -48,6 +48,19 @@
     var dir = LEAGUES[lg].crest === "pl" ? "/assets/img/sports/pl/" : "/assets/img/sports/";
     return dir + (LEAGUES[lg].crest === "pl" ? id : "club-" + id) + ".svg";
   }
+  /* reusable crest <img> with badge → svg → hide fallback chain */
+  function crestImg(lg, id, sz) {
+    if (!id) return "";
+    if (!sz) sz = 18;
+    return '<img src="' + crest(lg, id) + '" data-fb="' + crestFallback(lg, id) + '" alt="" width="' + sz +
+      '" height="' + sz + '" loading="lazy" decoding="async" onerror="if(this.dataset.fb){this.src=this.dataset.fb;this.dataset.fb=\'\';}else{this.style.display=\'none\';}">';
+  }
+  /* name → id index so any surface showing a club name can show its badge */
+  var TEAMIDX = {};
+  function crestImgFor(name, sz) {
+    var t = TEAMIDX[norm(name)];
+    return t ? crestImg(t.lg, t.id, sz) : "";
+  }
 
   function card(lg, m, r, key) {
     var url = "/sports/" + lg + "/matches/" + m.id + "-vs-" + m.away + "/";
@@ -101,7 +114,7 @@
         var col = r === "W" ? "#2e9e5b" : r === "D" ? "#5d6672" : "#d84343";
         return '<span class="sp-form-d" style="background:' + col + '">' + r + "</span>";
       }).join("");
-      return "<tr" + cls + "><td>" + x.pos + "</td><td><b>" + esc(x.name) + "</b></td><td>" + dots + "</td><td>" + x.p + "</td><td>" + x.w +
+      return "<tr" + cls + "><td>" + x.pos + '</td><td class="sp-td-team">' + crestImg(lg, x.id, 18) + "<b>" + esc(x.name) + "</b></td><td>" + dots + "</td><td>" + x.p + "</td><td>" + x.w +
         "</td><td>" + x.d + "</td><td>" + x.l + "</td><td>" + x.gf + ":" + x.ga + "</td><td>" +
         (x.gf - x.ga > 0 ? "+" : "") + (x.gf - x.ga) + "</td><td><b>" + x.pts + "</b></td></tr>";
     }).join("");
@@ -124,7 +137,7 @@
       .sort(function (a, b) { return b.goals - a.goals || (a.player < b.player ? -1 : 1); }).slice(0, 20);
     if (!list.length) return '<p class="sp-result-meta">No goals recorded yet this season — updates automatically as matches are verified.</p>';
     var rows = list.map(function (x, i) {
-      return "<tr><td>" + (i + 1) + "</td><td><b>" + esc(x.player) + "</b></td><td>" + esc(x.team) + "</td><td><b>" + x.goals + "</b></td></tr>";
+      return "<tr><td>" + (i + 1) + "</td><td><b>" + esc(x.player) + "</b></td><td class=\"sp-td-team\">" + crestImgFor(x.team, 16) + esc(x.team) + "</td><td><b>" + x.goals + "</b></td></tr>";
     }).join("");
     return '<div class="sp-table-wrap"><table class="sp-table"><thead><tr><th>#</th><th>Player</th><th>Club</th><th>Goals</th></tr></thead><tbody>' + rows + '</tbody></table></div><p class="sp-result-meta">Live list — every verified scorer counted automatically.</p>';
   }
@@ -180,12 +193,12 @@
     var DAYS = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
     function day(iso) { var p = iso.split("-"); return DAYS[new Date(+p[0], +p[1] - 1, +p[2]).getDay()]; }
     function item(x) {
-      return '<span class="tk"><em>' + LEAGUES[x.lg].label + '</em><b>' + abbr(x.m.homeName) + " " +
-        x.r.homeScore + "\u2013" + x.r.awayScore + " " + abbr(x.m.awayName) + "</b><i>FT</i></span>";
+      return '<span class="tk">' + crestImg(x.lg, x.m.id, 16) + '<b>' + abbr(x.m.homeName) + " " +
+        x.r.homeScore + "\u2013" + x.r.awayScore + " " + abbr(x.m.awayName) + "</b><i>FT</i>" + crestImg(x.lg, x.m.away, 16) + "</span>";
     }
     function itemUp(x) {
-      return '<span class="tk tk-up"><em>' + LEAGUES[x.lg].label + "</em><b>" + abbr(x.m.homeName) +
-        " v " + abbr(x.m.awayName) + "</b><i>" + day(x.m.date) + " " + esc(x.m.time || "") + "</i></span>";
+      return '<span class="tk tk-up">' + crestImg(x.lg, x.m.id, 16) + "<b>" + abbr(x.m.homeName) +
+        " v " + abbr(x.m.awayName) + "</b><i>" + day(x.m.date) + " " + esc(x.m.time || "") + "</i>" + crestImg(x.lg, x.m.away, 16) + "</span>";
     }
     var list = today.slice(0, 3).map(function (x) {
       return x.r ? item(x) : itemUp({ lg: x.lg, m: x.m });
@@ -213,7 +226,7 @@
         var listA = Object.keys(GA).map(function (k) { GA[k].p = k; return GA[k]; })
           .sort(function (a, b) { return b.g - a.g; }).slice(0, 5);
         return '<table class="sp-table"><tbody>' + listA.map(function (x) {
-          return '<tr><td><b>' + esc(x.p) + '</b></td><td>' + esc(x.t) + '</td><td><b>' + x.g + '</b></td></tr>';
+          return '<tr><td><b>' + esc(x.p) + '</b></td><td class="sp-td-team">' + crestImgFor(x.t, 16) + esc(x.t) + '</td><td><b>' + x.g + '</b></td></tr>';
         }).join("") + '</tbody></table>';
       }
       var L = data.leagues.find(function (x) { return x.lg === lg; });
@@ -221,7 +234,7 @@
       if (kind === "table") {
         var rows = computeTable(lg, L.ms, data.results).slice(0, 5).map(function (x) {
           var cls = x.pos <= (ZONES[lg] || {cl:4}).cl ? "zcl" : x.pos <= (ZONES[lg] || {el:6}).el ? "zeu" : "";
-          return '<tr class="' + cls + '"><td>' + x.pos + '</td><td><b>' + esc(x.name) + '</b></td><td><b>' + x.pts + '</b></td></tr>';
+          return '<tr class="' + cls + '"><td>' + x.pos + '</td><td class="sp-td-team">' + crestImg(lg, x.id, 16) + '<b>' + esc(x.name) + '</b></td><td><b>' + x.pts + '</b></td></tr>';
         }).join("");
         return '<table class="sp-table"><tbody>' + rows + '</tbody></table>';
       }
@@ -240,7 +253,7 @@
           .sort(function (a, b) { return b.g - a.g; }).slice(0, 5);
         if (!list.length) return '<p class="sp-result-meta">No goals yet — fills automatically.</p>';
         return '<table class="sp-table"><tbody>' + list.map(function (x) {
-          return '<tr><td><b>' + esc(x.p) + '</b></td><td>' + esc(x.t) + '</td><td><b>' + x.g + '</b></td></tr>';
+          return '<tr><td><b>' + esc(x.p) + '</b></td><td class="sp-td-team">' + crestImgFor(x.t, 16) + esc(x.t) + '</td><td><b>' + x.g + '</b></td></tr>';
         }).join("") + '</tbody></table>';
       }
       if (kind === "reports") {
@@ -270,7 +283,10 @@
     played.sort(function (a, b) { return b.r.playedOn < a.r.playedOn ? -1 : 1; });
     return played.slice(0, 5).map(function (x) {
       return '<a class="sp-rep" href="/sports/' + x.lg + '/reports/' + x.m.id + '-vs-' + x.m.away + '/">' +
-        '<span>' + LEAGUES[x.lg].label + '</span><b>' + esc(x.m.homeName) + ' ' + x.r.homeScore + '\u2013' + x.r.awayScore + ' ' + esc(x.m.awayName) + '</b><i>' + esc(x.r.playedOn) + '</i></a>';
+        crestImg(x.lg, x.m.id, 22) +
+        '<span class="sp-rep-mid"><b>' + esc(x.m.homeName) + ' ' + x.r.homeScore + '\u2013' + x.r.awayScore + ' ' + esc(x.m.awayName) + '</b>' +
+        '<em>' + LEAGUES[x.lg].label + ' \u00b7 ' + esc(x.r.playedOn) + '</em></span>' +
+        crestImg(x.lg, x.m.away, 22) + '</a>';
     }).join("") || '<p class="sp-result-meta">No reports yet.</p>';
   }
 
@@ -285,6 +301,10 @@
           return { id: a[0], away: a[1], homeName: a[2], awayName: a[3], date: a[4], time: a[5] };
         });
         leagues.push({ lg: lg, ms: ms });
+        ms.forEach(function (m) {
+          TEAMIDX[norm(m.homeName)] = { lg: lg, id: m.id };
+          TEAMIDX[norm(m.awayName)] = { lg: lg, id: m.away };
+        });
         var r2 = (fd.results && fd.results[lg]) || {};
         Object.keys(r2).forEach(function (k) { res[lg + "/" + k] = r2[k]; });
       });
@@ -352,7 +372,7 @@
         });
         function byD(a, b) { return a.m.date < b.m.date ? -1 : a.m.date > b.m.date ? 1 : 0; }
         played.sort(function (a, b) { return -byD(a, b); }); upcoming.sort(byD);
-        played = played.slice(0, lgFilter ? 6 : 8); upcoming = upcoming.slice(0, lgFilter ? 6 : 8);
+        played = played.slice(0, lgFilter ? 5 : 4); upcoming = upcoming.slice(0, lgFilter ? 5 : 4);
         function section(title, arr, withDate) {
           if (!arr.length) return "";
           var html = '<div class="sp-board-head"><div><div class="eyebrow">Live desk</div><h2>' + title + "</h2></div>";

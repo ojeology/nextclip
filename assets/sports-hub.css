@@ -462,6 +462,7 @@
   text-transform: uppercase; color: var(--bsd-faint);
 }
 .tk b { font-weight: 800; font-variant-numeric: tabular-nums; letter-spacing: 0.02em; white-space: nowrap; }
+.tk img { width: 16px; height: 16px; object-fit: contain; flex: none; }
 .tk i {
   font-style: normal; font-size: 9.5px; font-weight: 700; letter-spacing: 0.06em;
   color: var(--bsd-live); text-transform: uppercase;
@@ -529,6 +530,9 @@
 /* tables */
 .sp-table-wrap { overflow-x: auto; scrollbar-width: thin; }
 .sp-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.sp-td-team { display: flex !important; align-items: center; gap: 8px; min-width: 0; }
+.sp-td-team img { flex: none; object-fit: contain; }
+.sp-td-team b, .sp-td-team { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .sp-table thead th {
   font-size: 10px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase;
   color: var(--bsd-faint); text-align: left; padding: 10px 8px 7px;
@@ -555,14 +559,19 @@
 
 /* mini widgets (aside) */
 .sp-rep {
-  display: grid; grid-template-columns: auto 1fr auto; gap: 10px; align-items: baseline;
-  padding: 10px 6px; border-bottom: 1px solid var(--bsd-line); font-size: 13px;
+  display: grid; grid-template-columns: 24px 1fr 24px; gap: 12px; align-items: center;
+  padding: 10px 6px; border-bottom: 1px solid var(--bsd-line);
 }
 .sp-rep:last-child { border-bottom: 0; }
-.sp-rep:hover b { color: var(--bsd-live); }
-.sp-rep span { font-size: 10px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--bsd-faint); }
-.sp-rep b { font-weight: 600; font-variant-numeric: tabular-nums; letter-spacing: -0.005em; transition: color 0.15s ease; }
-.sp-rep i { font-style: normal; font-size: 11px; color: var(--bsd-faint); font-variant-numeric: tabular-nums; }
+.sp-rep > img { width: 22px; height: 22px; object-fit: contain; }
+.sp-rep-mid { min-width: 0; }
+.sp-rep-mid b {
+  display: block; font-size: 13px; font-weight: 600; font-variant-numeric: tabular-nums;
+  letter-spacing: -0.005em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  transition: color 0.15s ease;
+}
+.sp-rep:hover .sp-rep-mid b { color: var(--bsd-live); }
+.sp-rep-mid em { font-style: normal; font-size: 10.5px; color: var(--bsd-faint); letter-spacing: 0.02em; }
 
 /* generic fallback rails */
 .sp-art-rail { overflow: hidden; }
