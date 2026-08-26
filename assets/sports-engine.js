@@ -39,7 +39,15 @@
   function esc(s) { return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
   function todayStr() { var d = new Date(); return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0"); }
   function niceDate(iso) { var p = iso.split("-"); return new Date(+p[0], +p[1] - 1, +p[2]).toLocaleDateString("en-GB", { weekday: "long", day: "numeric", month: "long" }); }
-  function crest(lg, id) { var dir = LEAGUES[lg].crest === "pl" ? "/assets/img/sports/pl/" : "/assets/img/sports/"; return dir + (LEAGUES[lg].crest === "pl" ? id : "club-" + id) + ".svg"; }
+  /* Real club badges (downloaded from ESPN) preferred for every league;
+     falls back to the existing local crest, then hides, so nothing breaks. */
+  function crest(lg, id) {
+    return "/assets/img/sports/badges/" + id + ".png";
+  }
+  function crestFallback(lg, id) {
+    var dir = LEAGUES[lg].crest === "pl" ? "/assets/img/sports/pl/" : "/assets/img/sports/";
+    return dir + (LEAGUES[lg].crest === "pl" ? id : "club-" + id) + ".svg";
+  }
 
   function card(lg, m, r, key) {
     var url = "/sports/" + lg + "/matches/" + m.id + "-vs-" + m.away + "/";
@@ -47,8 +55,8 @@
     var hn = r ? r.homeScore : "\u2013", an = r ? r.awayScore : "\u2013";
     return '<a class="sp-scorecard" href="' + url + '" data-mk="' + esc(key || "") + '"><div class="sp-sc-top">' + pill +
       '<span class="sp-sc-go">' + (r ? "Result \u2192" : "Preview \u2192") + "</span></div><div>" +
-      '<div class="sp-sc-row"><div class="sp-sc-club"><img src="' + crest(lg, m.id) + '" alt="" width="32" height="32" loading="lazy" decoding="async" onerror="this.style.display=\'none\'"><span>' + esc(m.homeName) + '</span></div><b class="sp-sc-num">' + hn + "</b></div>" +
-      '<div class="sp-sc-row"><div class="sp-sc-club"><img src="' + crest(lg, m.away) + '" alt="" width="32" height="32" loading="lazy" decoding="async" onerror="this.style.display=\'none\'"><span>' + esc(m.awayName) + '</span></div><b class="sp-sc-num">' + an + "</b></div></div></a>";
+      '<div class="sp-sc-row"><div class="sp-sc-club"><img src="' + crest(lg, m.id) + '" data-fb="' + crestFallback(lg, m.id) + '" alt="" width="32" height="32" loading="lazy" decoding="async" onerror="if(this.dataset.fb){this.src=this.dataset.fb;this.dataset.fb=\'\';}else{this.style.display=\'none\';}"><span>' + esc(m.homeName) + '</span></div><b class="sp-sc-num">' + hn + "</b></div>" +
+      '<div class="sp-sc-row"><div class="sp-sc-club"><img src="' + crest(lg, m.away) + '" data-fb="' + crestFallback(lg, m.away) + '" alt="" width="32" height="32" loading="lazy" decoding="async" onerror="if(this.dataset.fb){this.src=this.dataset.fb;this.dataset.fb=\'\';}else{this.style.display=\'none\';}"><span>' + esc(m.awayName) + '</span></div><b class="sp-sc-num">' + an + "</b></div></div></a>";
   }
   function group(lg, items, results) {
     var cards = items.map(function (m) { var k = lg + "/" + m.id + "-vs-" + m.away; return card(lg, m, results[k], k); }).join("");
