@@ -4314,3 +4314,84 @@ body.spx .sp-sc-club span{color:#eef2f8}
 body.spx .sp-table td{color:#e8edf5}
 body.spx .tk b{color:#fff}
 @media(max-width:640px){.spx-hero-photo{min-height:56vh;padding-bottom:84px}.sp-ticker-bridge{margin-top:-40px}}
+
+/* ==================================================================
+   BRYME SPORTS — STADIUM NIGHT (v14) · the signature layer
+   floodlight beams · pitch geometry · LED perimeter ticker · shimmer
+   ================================================================== */
+/* --- atmosphere: floodlight beams over the whole page --- */
+body.spx{background:
+ linear-gradient(115deg,rgba(120,160,255,.06) 0%,transparent 22%),
+ linear-gradient(245deg,rgba(160,120,255,.05) 0%,transparent 20%),
+ radial-gradient(50% 30% at 50% -4%,rgba(120,180,255,.10),transparent 60%),
+ radial-gradient(46% 34% at 92% 2%,rgba(99,102,241,.13),transparent 58%),
+ radial-gradient(44% 32% at 3% 8%,rgba(34,211,238,.11),transparent 58%),
+ repeating-linear-gradient(115deg,rgba(255,255,255,.012) 0 2px,transparent 2px 84px),
+ linear-gradient(180deg,#0b101b 0%,#080c14 100%);
+ background-attachment:fixed}
+/* faint pitch geometry glowing under the content */
+body.spx main{position:relative}
+body.spx main:before{content:"";position:absolute;top:-140px;right:-180px;width:640px;height:640px;border-radius:50%;
+ border:2px solid rgba(180,210,255,.05);box-shadow:0 0 0 70px rgba(180,210,255,.018),0 0 0 150px rgba(180,210,255,.012);
+ pointer-events:none;z-index:0}
+body.spx main > *{position:relative;z-index:1}
+/* --- HERO: cinematic title card --- */
+.spx-hero-photo{min-height:68vh;
+ background:
+  radial-gradient(120% 90% at 50% 0%,rgba(140,180,255,.14),transparent 55%),
+  linear-gradient(180deg,rgba(4,7,14,.10) 0%,rgba(4,7,14,.22) 38%,rgba(4,7,14,.58) 74%,rgba(6,9,16,.92) 100%),
+  url('/assets/img/sports/hero-landing.jpg') center 22%/cover no-repeat,#070b14}
+/* wordmark: shimmer sweep */
+.spx-hero-title{background:linear-gradient(100deg,#ffffff 0%,#bfd4ff 28%,#e9d5ff 46%,#7dd3fc 66%,#ffffff 92%);
+ background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;
+ animation:spshimmer 7s ease-in-out infinite;filter:drop-shadow(0 8px 40px rgba(125,160,255,.35))}
+@keyframes spshimmer{0%,100%{background-position:0% 0}50%{background-position:100% 0}}
+.spx-hero-k{font-size:12px;letter-spacing:.3em}
+.spx-chips span{border-radius:10px}
+/* --- LED PERIMETER TICKER: fused to hero, glowing like stadium advertising --- */
+.sp-led{margin:0 calc(50% - 50vw);width:100vw;margin-top:-54px;border-radius:0;border:0;z-index:6;
+ background:linear-gradient(180deg,rgba(8,12,20,.88),rgba(8,12,20,.94));
+ border-top:1px solid rgba(125,211,252,.35);border-bottom:1px solid rgba(125,211,252,.22);
+ box-shadow:0 -1px 0 rgba(125,211,252,.25),0 14px 44px -18px rgba(2,6,14,.95),0 0 34px -8px rgba(56,189,248,.16);
+ backdrop-filter:blur(14px);padding:13px 0}
+.sp-led:before{content:"LIVE DESK";position:absolute;left:max(18px,calc(50vw - 580px));top:-9px;
+ font-size:9px;font-weight:900;letter-spacing:.28em;color:#7dd3fc;background:#0a101c;
+ border:1px solid rgba(125,211,252,.4);border-radius:5px;padding:2px 9px}
+.sp-led .tk b{font-size:14px;letter-spacing:.02em}
+.sp-led .tk em{color:#7d8aa0}
+/* --- SECTION HEADERS: editorial scale --- */
+body.spx .sp-board-head h2{font-size:clamp(26px,4.6vw,38px);letter-spacing:-.03em;
+ background:linear-gradient(95deg,#ffffff 30%,#c7d6ff 70%,#8fd8f8);-webkit-background-clip:text;background-clip:text;color:transparent}
+body.spx .sp-board-head h2:after{content:"";display:block;width:64px;height:3px;margin-top:8px;border-radius:2px;
+ background:linear-gradient(90deg,#818cf8,#38bdf8,#a5f3fc)}
+body.spx .sp-board-head h2:before{display:none}
+body.spx .sp-board-date{color:#8fa0b8}
+/* --- surfaces: light-catching glass --- */
+body.spx .sp-lg{background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.12);
+ border-radius:16px;position:relative;overflow:hidden}
+body.spx .sp-lg:before{content:"";position:absolute;top:0;left:8%;right:8%;height:1px;
+ background:linear-gradient(90deg,transparent,rgba(190,220,255,.5),transparent)}
+body.spx .sp-scorecard{background:linear-gradient(165deg,rgba(255,255,255,.07),rgba(255,255,255,.03))}
+body.spx .sp-scorecard:hover{transform:translateY(-3px) scale(1.01)}
+body.spx .sp-sc-num{font-size:28px}
+body.spx .sp-art{background:linear-gradient(165deg,rgba(255,255,255,.07),rgba(255,255,255,.03))}
+body.spx .sp-side .sp-dash-col,body.spx .sp-dash-col{background:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.028))}
+body.spx .sp-table-wrap{background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.025))}
+/* --- accents pop --- */
+body.spx .sp-sc-pill.ft{background:rgba(74,222,128,.16);color:#86efac;box-shadow:0 0 12px -2px rgba(74,222,128,.35)}
+body.spx .sp-sc-pill.sp-live{box-shadow:0 0 16px rgba(56,189,248,.55)}
+body.spx .sp-tabs a.on{box-shadow:0 8px 26px -8px var(--lac,#818cf8),0 0 24px -6px rgba(56,189,248,.45)}
+body.spx .spx-chips span{box-shadow:inset 0 1px 0 rgba(255,255,255,.09)}
+/* --- rhythm --- */
+body.spx .sp-board-head{margin:30px 0 14px}
+body.spx .sp-layout{margin-top:18px}
+body.spx .shell{position:relative}
+/* --- article cards: numbered feature style --- */
+body.spx .sp-art:before{content:attr(data-n);position:absolute;top:10px;right:14px;font-size:34px;font-weight:900;
+ color:rgba(255,255,255,.07);font-style:italic}
+body.spx .sp-art{position:relative}
+@media(max-width:640px){
+ .spx-hero-photo{min-height:58vh}
+ .sp-led{margin-top:-44px}
+ .sp-led:before{left:14px}
+}
