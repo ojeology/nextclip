@@ -3969,159 +3969,170 @@ a.td-match:hover{border-color:rgba(61,220,132,.35)}
 }
 
 /* ==================================================================
-   BRYME SPORTS — CLEAN SHEET (v18) · one system, zero patches
-   stadium-cinema hero · colour-orb glassmorphism · league identities
+
+/* ==================================================================
+   THE GLASS PITCH (v19) · the whole page is a football pitch
+   grass + white lines under frosted glass panels, no dark voids
    ================================================================== */
-/* ---------- atmosphere: colour orbs behind everything ---------- */
-body.spx{background:#141b30;color:#e8edf5}
-body.spx::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
- background:
-  radial-gradient(42% 52% at 10% 4%,rgba(124,58,237,.55),transparent 62%),
-  radial-gradient(38% 46% at 92% 10%,rgba(6,182,212,.48),transparent 60%),
-  radial-gradient(36% 44% at 82% 86%,rgba(236,72,153,.34),transparent 62%),
-  radial-gradient(30% 36% at 4% 78%,rgba(16,185,129,.32),transparent 60%)}
+/* ---------- THE PITCH: grass gradient + SVG line markings ---------- */
+body.spx{background:
+  radial-gradient(ellipse 80% 50% at 50% -5%,rgba(34,197,94,.14),transparent 60%),
+  radial-gradient(ellipse 60% 40% at 85% 20%,rgba(6,182,212,.20),transparent 55%),
+  radial-gradient(ellipse 50% 40% at 8% 35%,rgba(124,58,237,.22),transparent 55%),
+  radial-gradient(ellipse 45% 35% at 92% 65%,rgba(236,72,153,.16),transparent 55%),
+  linear-gradient(180deg,
+    #0b3d2a 0%, #0e4a32 8%, #115737 20%, #0d4229 35%,
+    #0f4c31 50%, #0b3d26 65%, #0d4630 80%, #093620 100%);
+  background-attachment:fixed;color:#e8fdf0}
+/* pitch line markings overlay */
+body.spx::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.28;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='2400' viewBox='0 0 1200 2400'%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='3'%3E%3Crect x='60' y='60' width='1080' height='2280' rx='2'/%3E%3Cline x1='60' y1='1200' x2='1140' y2='1200'/%3E%3Ccircle cx='600' cy='1200' r='180'/%3E%3Ccircle cx='600' cy='1200' r='6' fill='%23ffffff'/%3E%3Crect x='340' y='60' width='520' height='300'/%3E%3Crect x='440' y='60' width='320' height='130'/%3E%3Crect x='340' y='2040' width='520' height='300'/%3E%3Crect x='440' y='2210' width='320' height='130'/%3E%3Ccircle cx='130' cy='1200' r='8'/%3E%3Ccircle cx='1070' cy='1200' r='8'/%3E%3C/g%3E%3C/svg%3E");
+  background-size:100vw auto;background-repeat:repeat-y;background-position:center top}
 body.spx main{position:relative;z-index:1}
-/* ---------- HERO: stadium cinema ---------- */
-.spx-hero-photo{margin:0 calc(50% - 50vw);width:100vw;min-height:50vh;display:flex;flex-direction:column;justify-content:center;
- padding:48px max(24px,calc((100vw - 1180px)/2)) 88px;overflow:hidden;position:relative;
- background:
-  linear-gradient(180deg,rgba(20,27,48,.05) 0%,rgba(20,27,48,.15) 40%,rgba(20,27,48,.70) 78%,#141b30 100%),
-  linear-gradient(135deg,rgba(124,58,237,.35) 0%,rgba(6,182,212,.25) 50%,rgba(236,72,153,.20) 100%),
-  url('/assets/img/sports/hero-landing.jpg') center 24%/cover no-repeat #141b30}
+/* ---------- HERO: stadium glass entry ---------- */
+.spx-hero-photo{margin:0 calc(50% - 50vw);width:100vw;min-height:46vh;display:flex;flex-direction:column;justify-content:center;
+  padding:42px max(24px,calc((100vw - 1180px)/2)) 76px;overflow:hidden;position:relative;
+  background:
+    linear-gradient(180deg,rgba(11,61,42,.03) 0%,rgba(11,61,42,.12) 35%,rgba(13,67,46,.60) 75%,rgba(11,61,42,.95) 100%),
+    linear-gradient(135deg,rgba(34,197,94,.20) 0%,rgba(6,182,212,.14) 50%,rgba(124,58,237,.16) 100%),
+    url('/assets/img/sports/hero-landing.jpg') center 22%/cover no-repeat;
+  border-bottom:1px solid rgba(74,222,128,.25)}
 .spx-hero-photo>*{position:relative;z-index:2}
-.spx-hero-k{display:inline-flex;align-items:center;gap:10px;color:#67e8f9;font-weight:900;font-size:11px;letter-spacing:.24em;text-transform:uppercase;margin:0 0 14px}
-.spx-hero-k i{width:8px;height:8px;border-radius:50%;background:#22d3ee;box-shadow:0 0 12px #22d3ee;animation:sppulse 2s infinite}
+.spx-hero-k{display:inline-flex;align-items:center;gap:10px;color:#6ee7a0;font-weight:900;font-size:11px;letter-spacing:.24em;text-transform:uppercase;margin:0 0 14px}
+.spx-hero-k i{width:8px;height:8px;border-radius:50%;background:#4ade80;box-shadow:0 0 12px #4ade80;animation:pgpulse 2s infinite}
 .spx-hero-title{margin:0;font-size:clamp(60px,11vw,130px);line-height:.88;font-weight:900;letter-spacing:-.04em;
- background:linear-gradient(100deg,#fff 10%,#a5b4fc 40%,#67e8f9 75%);-webkit-background-clip:text;background-clip:text;color:transparent;
- filter:drop-shadow(0 8px 36px rgba(99,102,241,.4))}
-.spx-hero-title span{background:linear-gradient(120deg,#7c3aed,#22d3ee);-webkit-background-clip:text;background-clip:text;color:transparent}
-.spx-hero-sub{margin:12px 0 18px;color:#cbd5e1;font-size:clamp(14px,1.8vw,17px);max-width:580px;font-weight:600;text-shadow:0 2px 14px rgba(0,0,0,.6)}
+  background:linear-gradient(100deg,#ffffff 10%,#86efac 35%,#67e8f9 65%,#c4b5fd 90%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 8px 36px rgba(74,222,128,.35))}
+.spx-hero-title span{background:linear-gradient(120deg,#22c55e,#06b6d4);-webkit-background-clip:text;background-clip:text;color:transparent}
+.spx-hero-sub{margin:12px 0 18px;color:#d1e8dc;font-size:clamp(14px,1.8vw,17px);max-width:580px;font-weight:600;text-shadow:0 2px 14px rgba(0,0,0,.5)}
+/* stat chips: green glass */
 .spx-chips{display:flex;flex-wrap:wrap;gap:9px;margin:0 0 18px}
 .spx-chips span{display:inline-flex;align-items:center;gap:7px;padding:9px 15px;border-radius:10px;font-size:11px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;
- background:rgba(10,15,28,.62);border:1px solid rgba(255,255,255,.15);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);color:#aeb9ca}
-.spx-chips b{color:#fff;font-size:14px}
-.spx-chips span:nth-child(1){border-color:rgba(167,139,250,.45);background:rgba(109,40,217,.42)}
-.spx-chips span:nth-child(2){border-color:rgba(56,189,248,.45);background:rgba(8,134,179,.40)}
-.spx-chips span:nth-child(3){border-color:rgba(244,114,182,.45);background:rgba(190,24,93,.38)}
-.spx-chip-live i{width:7px;height:7px;border-radius:50%;background:#fb7185;box-shadow:0 0 10px #fb7185;animation:sppulse 1.6s infinite}
-/* ---------- league tabs ---------- */
+  background:rgba(6,40,25,.55);border:1px solid rgba(110,231,160,.30);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);color:#a7dcbc}
+.spx-chips b{color:#86efac;font-size:14px}
+.spx-chips span:nth-child(1){border-color:rgba(110,231,160,.40);background:rgba(22,101,52,.45)}
+.spx-chips span:nth-child(2){border-color:rgba(103,232,249,.40);background:rgba(8,104,124,.40)}
+.spx-chips span:nth-child(3){border-color:rgba(196,181,253,.40);background:rgba(74,44,130,.40)}
+.spx-chip-live i{width:7px;height:7px;border-radius:50%;background:#fb7185;box-shadow:0 0 10px #fb7185;animation:pgpulse 1.6s infinite}
+/* league tabs: glass on grass */
 .sp-tabs{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
 .sp-tabs::-webkit-scrollbar{display:none}
-.sp-tabs a{padding:10px 17px;border-radius:10px;background:rgba(10,15,28,.62);border:1px solid rgba(255,255,255,.13);color:#c7d2e0;font-weight:800;font-size:12px;letter-spacing:.04em;text-transform:uppercase;text-decoration:none;white-space:nowrap;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);transition:border-color .15s,color .15s}
-.sp-tabs a:hover{border-color:rgba(34,211,238,.5);color:#fff}
-.sp-tabs a.on{background:linear-gradient(120deg,var(--lac,#7c3aed),#0891b2);border-color:transparent;color:#fff;box-shadow:0 6px 20px -6px var(--lac,#7c3aed)}
-/* ---------- LED ticker ---------- */
-.sp-led{margin:0 calc(50% - 50vw);width:100vw;margin-top:-48px;position:relative;z-index:5;padding:13px 0;overflow:hidden;
- background:linear-gradient(90deg,rgba(124,58,237,.35),rgba(14,20,40,.72) 20%,rgba(14,20,40,.72) 80%,rgba(6,182,212,.35));backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
- border-top:1px solid rgba(103,232,249,.30);border-bottom:1px solid rgba(103,232,249,.18);
- box-shadow:0 -4px 26px -6px rgba(34,211,238,.22),0 12px 36px -16px rgba(0,0,0,.9)}
-.sp-led::before{content:"LIVE DESK";position:absolute;left:max(18px,calc(50vw - 580px));top:-9px;font-size:9px;font-weight:900;letter-spacing:.26em;color:#67e8f9;background:#0a101c;border:1px solid rgba(103,232,249,.4);border-radius:5px;padding:2px 9px}
-.tk-track{display:inline-flex;gap:36px;white-space:nowrap;will-change:scroll-position}
+.sp-tabs a{padding:10px 17px;border-radius:10px;background:rgba(6,40,25,.55);border:1px solid rgba(110,231,160,.22);color:#c3decf;font-weight:800;font-size:12px;letter-spacing:.04em;text-transform:uppercase;text-decoration:none;white-space:nowrap;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);transition:border-color .15s,color .15s}
+.sp-tabs a:hover{border-color:rgba(110,231,160,.55);color:#fff}
+.sp-tabs a.on{background:linear-gradient(120deg,#16a34a,#0891b2);border-color:transparent;color:#fff;box-shadow:0 6px 20px -6px rgba(34,197,94,.55)}
+/* ---------- LED TICKER: glowing green edge ---------- */
+.sp-led{margin:0 calc(50% - 50vw);width:100vw;margin-top:-42px;position:relative;z-index:5;padding:13px 0;overflow:hidden;
+  background:linear-gradient(90deg,rgba(34,197,94,.18),rgba(6,30,20,.78) 15%,rgba(6,30,20,.78) 85%,rgba(6,182,212,.18));
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border-top:1px solid rgba(110,231,160,.35);border-bottom:1px solid rgba(110,231,160,.20);
+  box-shadow:0 -4px 26px -6px rgba(74,222,128,.25),0 12px 36px -16px rgba(0,0,0,.85)}
+.sp-led::before{content:"LIVE DESK";position:absolute;left:max(18px,calc(50vw - 580px));top:-9px;font-size:9px;font-weight:900;letter-spacing:.26em;color:#6ee7a0;background:rgba(6,40,25,.85);border:1px solid rgba(110,231,160,.45);border-radius:5px;padding:2px 9px}
+.tk-track{display:inline-flex;gap:36px;white-space:nowrap}
 .tk{display:inline-flex;align-items:center;gap:9px}
-.tk em{color:#5d6672;font-style:normal;font-size:10px;letter-spacing:.1em;text-transform:uppercase;font-weight:800}
-.tk b{color:#fff;font-size:13.5px;font-weight:800;font-variant-numeric:tabular-nums}
-.tk i{font-style:normal;font-size:9px;padding:2px 7px;border-radius:3px;background:rgba(74,222,128,.18);color:#4ade80;font-weight:800;letter-spacing:.06em}
-/* ---------- section headers ---------- */
-body.spx .sp-board-head{display:flex;align-items:center;gap:14px;border:0;padding:0;margin:26px 0 12px}
+.tk em{color:#5a8a6e;font-style:normal;font-size:10px;letter-spacing:.1em;text-transform:uppercase;font-weight:800}
+.tk b{color:#d8f5e2;font-size:13.5px;font-weight:800;font-variant-numeric:tabular-nums}
+.tk i{font-style:normal;font-size:9px;padding:2px 7px;border-radius:3px;background:rgba(74,222,128,.18);color:#6ee7a0;font-weight:800;letter-spacing:.06em}
+/* ---------- SECTION HEADERS ---------- */
+body.spx .sp-board-head{display:flex;align-items:center;gap:14px;border:0;padding:0;margin:24px 0 12px}
 body.spx .sp-board-head .eyebrow{display:none}
-body.spx .sp-board-head h2{margin:0;font-size:clamp(22px,3.8vw,30px);font-weight:900;letter-spacing:-.02em;color:#f1f5f9}
-body.spx .sp-board-head h2::before{content:"";display:inline-block;width:9px;height:9px;border-radius:2.5px;margin-right:11px;background:linear-gradient(120deg,#818cf8,#22d3ee);transform:rotate(45deg)}
-body.spx .sp-board-date{margin-left:auto;font-size:11px;color:#7c8698;text-transform:uppercase;letter-spacing:.08em}
-/* ---------- LEAGUE GLASS PANELS (the centrepiece) ---------- */
+body.spx .sp-board-head h2{margin:0;font-size:clamp(22px,3.8vw,30px);font-weight:900;letter-spacing:-.02em;color:#eefdf3}
+body.spx .sp-board-head h2::before{content:"";display:inline-block;width:9px;height:9px;border-radius:2.5px;margin-right:11px;background:linear-gradient(120deg,#4ade80,#22d3ee);transform:rotate(45deg);box-shadow:0 0 8px rgba(74,222,128,.5)}
+body.spx .sp-board-date{margin-left:auto;font-size:11px;color:#6b9a7e;text-transform:uppercase;letter-spacing:.08em}
+/* ---------- LEAGUE GLASS PANELS: the grass glows through ---------- */
 body.spx .sp-lg{position:relative;border-radius:16px;padding:14px;margin:0 0 12px;border:1px solid;
- backdrop-filter:blur(20px) saturate(160%);-webkit-backdrop-filter:blur(20px) saturate(160%);
- box-shadow:inset 0 1px 0 rgba(255,255,255,.07),0 8px 28px -18px rgba(0,0,0,.8)}
-body.spx .sp-lg-premier-league{background:linear-gradient(160deg,rgba(124,58,237,.55),rgba(255,255,255,.05) 65%);border-color:rgba(167,139,250,.42)}
-body.spx .sp-lg-la-liga{background:linear-gradient(160deg,rgba(220,38,38,.52),rgba(255,255,255,.05) 65%);border-color:rgba(248,113,113,.40)}
-body.spx .sp-lg-serie-a{background:linear-gradient(160deg,rgba(37,99,235,.52),rgba(255,255,255,.05) 65%);border-color:rgba(96,165,250,.42)}
-body.spx .sp-lg-bundesliga{background:linear-gradient(160deg,rgba(202,138,4,.50),rgba(255,255,255,.05) 65%);border-color:rgba(251,191,36,.40)}
-body.spx .sp-lg-ligue-1{background:linear-gradient(160deg,rgba(13,148,136,.52),rgba(255,255,255,.05) 65%);border-color:rgba(45,212,191,.42)}
-body.spx .sp-lg:not([class*="sp-lg-"]){background:linear-gradient(160deg,rgba(99,102,241,.40),rgba(255,255,255,.04) 65%);border-color:rgba(129,140,248,.35)}
+  backdrop-filter:blur(22px) saturate(150%);-webkit-backdrop-filter:blur(22px) saturate(150%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.10),0 10px 32px -18px rgba(0,0,0,.75)}
+body.spx .sp-lg-premier-league{background:linear-gradient(160deg,rgba(124,58,237,.32),rgba(255,255,255,.03) 65%);border-color:rgba(167,139,250,.38)}
+body.spx .sp-lg-la-liga{background:linear-gradient(160deg,rgba(220,38,38,.30),rgba(255,255,255,.03) 65%);border-color:rgba(248,113,113,.36)}
+body.spx .sp-lg-serie-a{background:linear-gradient(160deg,rgba(37,99,235,.30),rgba(255,255,255,.03) 65%);border-color:rgba(96,165,250,.38)}
+body.spx .sp-lg-bundesliga{background:linear-gradient(160deg,rgba(202,138,4,.28),rgba(255,255,255,.03) 65%);border-color:rgba(251,191,36,.36)}
+body.spx .sp-lg-ligue-1{background:linear-gradient(160deg,rgba(13,148,136,.30),rgba(255,255,255,.03) 65%);border-color:rgba(45,212,191,.38)}
+body.spx .sp-lg:not([class*="sp-lg-"]){background:linear-gradient(160deg,rgba(34,197,94,.22),rgba(255,255,255,.03) 65%);border-color:rgba(110,231,160,.30)}
 body.spx .sp-lg-head{display:flex;justify-content:space-between;align-items:center;padding:2px 4px 10px}
-body.spx .sp-lg-head b{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:#c3cddd}
+body.spx .sp-lg-head b{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:#b8d4c2}
 body.spx .sp-lg-head a{color:#67e8f9;font-size:11.5px;font-weight:800;letter-spacing:.05em;text-decoration:none}
-/* ---------- scorecards (glass inside glass) ---------- */
-body.spx .sp-scorecard{background:rgba(30,38,70,.42);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:12px 14px;
- backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);transition:transform .16s,border-color .16s,box-shadow .16s}
-body.spx .sp-scorecard:hover{transform:translateY(-2px);border-color:rgba(103,232,249,.45);box-shadow:0 12px 32px -14px rgba(34,211,238,.30)}
+/* ---------- SCORECARDS: glass you can see the pitch through ---------- */
+body.spx .sp-scorecard{background:rgba(8,32,20,.50);border:1px solid rgba(255,255,255,.14);border-radius:12px;padding:12px 14px;
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);transition:transform .16s,border-color .16s,box-shadow .16s}
+body.spx .sp-scorecard:hover{transform:translateY(-2px);border-color:rgba(110,231,160,.50);box-shadow:0 12px 32px -14px rgba(74,222,128,.30)}
 body.spx .sp-sc-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
-body.spx .sp-sc-pill{font-size:10px;font-weight:800;letter-spacing:.08em;padding:3px 8px;border-radius:4px;background:rgba(56,189,248,.14);color:#67e8f9;text-transform:uppercase}
-body.spx .sp-sc-pill.ft{background:rgba(74,222,128,.14);color:#4ade80}
-body.spx .sp-sc-pill.sp-live{background:linear-gradient(120deg,#7c3aed,#0891b2);color:#fff;animation:sppulse 1.6s infinite}
-body.spx .sp-sc-go{font-size:11px;color:#6b737d}
-body.spx .sp-sc-row{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.05)}
+body.spx .sp-sc-pill{font-size:10px;font-weight:800;letter-spacing:.08em;padding:3px 8px;border-radius:4px;background:rgba(110,231,160,.14);color:#6ee7a0;text-transform:uppercase}
+body.spx .sp-sc-pill.ft{background:rgba(74,222,128,.16);color:#86efac}
+body.spx .sp-sc-pill.sp-live{background:linear-gradient(120deg,#16a34a,#0891b2);color:#fff;animation:pgpulse 1.6s infinite}
+body.spx .sp-sc-go{font-size:11px;color:#4a7a5e}
+body.spx .sp-sc-row{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.06)}
 body.spx .sp-sc-row:last-child{border-bottom:0}
-body.spx .sp-sc-club{display:flex;align-items:center;gap:9px;font-weight:700;font-size:14px;color:#e8edf5}
-body.spx .sp-sc-num{font-size:24px;font-weight:900;min-width:22px;text-align:right;font-variant-numeric:tabular-nums;color:#fff}
-/* ---------- rails ---------- */
+body.spx .sp-sc-club{display:flex;align-items:center;gap:9px;font-weight:700;font-size:14px;color:#d8f0de}
+body.spx .sp-sc-num{font-size:24px;font-weight:900;min-width:22px;text-align:right;font-variant-numeric:tabular-nums;color:#eefdf3}
+.sp-crest{width:20px;height:20px;margin-right:8px;vertical-align:-5px;object-fit:contain}
+/* ---------- RAILS ---------- */
 body.spx .sp-score-rail{overflow-x:auto;scrollbar-width:none;cursor:grab;touch-action:pan-x pan-y;overscroll-behavior-x:contain;
- padding:2px 2px 6px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 3%,#000 97%,transparent);mask-image:linear-gradient(90deg,transparent,#000 3%,#000 97%,transparent)}
+  padding:2px 2px 6px}
 body.spx .sp-score-rail::-webkit-scrollbar{display:none}
 body.spx .sp-rail-track{display:inline-flex;gap:10px;white-space:nowrap}
 body.spx .sp-rail-track .sp-scorecard{flex:0 0 230px;min-width:230px}
-/* ---------- tables: glass + zone washes ---------- */
+/* ---------- TABLES: glass with pitch glow ---------- */
 body.spx .sp-table-wrap{overflow-x:auto;border:1px solid rgba(255,255,255,.10);border-radius:14px;
- background:rgba(20,30,60,.48);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+  background:rgba(6,36,22,.50);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
 body.spx table.sp-table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
-body.spx .sp-table th{background:rgba(255,255,255,.04);font-size:10px;letter-spacing:.10em;text-transform:uppercase;color:#8b96a8;padding:11px 14px;text-align:left;border-bottom:1px solid rgba(255,255,255,.08)}
-body.spx .sp-table td{padding:10px 14px;border-bottom:1px solid rgba(255,255,255,.045);font-size:14px;color:#dce3ee}
-body.spx .sp-table tbody tr:hover{background:rgba(255,255,255,.035)}
+body.spx .sp-table th{background:rgba(255,255,255,.04);font-size:10px;letter-spacing:.10em;text-transform:uppercase;color:#7ab894;padding:11px 14px;text-align:left;border-bottom:1px solid rgba(255,255,255,.08)}
+body.spx .sp-table td{padding:10px 14px;border-bottom:1px solid rgba(255,255,255,.045);font-size:14px;color:#cde5d4}
+body.spx .sp-table tbody tr:hover{background:rgba(110,231,160,.06)}
 body.spx .sp-table tbody tr:last-child td{border-bottom:0}
-body.spx .sp-table td:first-child{color:#7c8698;font-weight:800}
+body.spx .sp-table td:first-child{color:#6b9a7e;font-weight:800}
 body.spx .sp-table tr.zcl td:first-child{box-shadow:inset 3px 0 0 #22c55e}
 body.spx .sp-table tr.zeu td:first-child{box-shadow:inset 3px 0 0 #eab308}
 body.spx .sp-table tr.zre td:first-child{box-shadow:inset 3px 0 0 #f43f5e}
-body.spx .sp-table tr.zcl{background:linear-gradient(90deg,rgba(34,197,94,.07),transparent 72%)}
-body.spx .sp-table tr.zeu{background:linear-gradient(90deg,rgba(234,179,8,.06),transparent 72%)}
-body.spx .sp-table tr.zre{background:linear-gradient(90deg,rgba(244,63,94,.06),transparent 72%)}
-body.spx .sp-zone-legend{margin:10px 2px 4px;font-size:11px;color:#8b96a8;text-transform:uppercase;letter-spacing:.06em;font-weight:700}
+body.spx .sp-table tr.zcl{background:linear-gradient(90deg,rgba(34,197,94,.08),transparent 72%)}
+body.spx .sp-table tr.zeu{background:linear-gradient(90deg,rgba(234,179,8,.07),transparent 72%)}
+body.spx .sp-table tr.zre{background:linear-gradient(90deg,rgba(244,63,94,.07),transparent 72%)}
+body.spx .sp-zone-legend{margin:10px 2px 4px;font-size:11px;color:#6b9a7e;text-transform:uppercase;letter-spacing:.06em;font-weight:700}
 body.spx .sp-zone-legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px}
 body.spx .sp-form-d{display:inline-block;width:18px;height:18px;line-height:18px;text-align:center;border-radius:5px;color:#fff;font-size:10px;font-weight:800;margin-right:3px}
-.sp-crest{width:20px;height:20px;margin-right:8px;vertical-align:-5px;object-fit:contain}
-/* ---------- stories: colour magazine ---------- */
+/* ---------- STORIES: colour glass magazine on the pitch ---------- */
 body.spx .sp-art-rail{overflow-x:auto;scrollbar-width:none;margin:6px -2px 16px;padding:2px 2px 8px;cursor:grab}
 body.spx .sp-art-rail::-webkit-scrollbar{display:none}
 body.spx .sp-art-track{display:inline-flex;gap:12px;white-space:normal}
 body.spx .sp-art{flex:0 0 290px;min-width:290px;display:flex;flex-direction:column;gap:8px;position:relative;border-radius:14px;padding:18px;text-decoration:none;
- border:1px solid rgba(255,255,255,.14);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);transition:transform .16s,border-color .16s}
-body.spx .sp-art:hover{transform:translateY(-3px);border-color:rgba(103,232,249,.45)}
-body.spx .sp-art b{display:block;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#67e8f9;font-weight:900}
-body.spx .sp-art span{color:#eef2f8;font-weight:800;font-size:15.5px;line-height:1.35}
-body.spx .sp-art i{font-style:normal;color:#5d6672;font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;margin-top:auto}
-body.spx .sp-art::after{content:attr(data-n);position:absolute;top:8px;right:14px;font-size:36px;font-weight:900;font-style:italic;color:rgba(255,255,255,.09);pointer-events:none}
-body.spx .sp-art:nth-child(6n+1){background:linear-gradient(160deg,rgba(139,92,246,.55),rgba(255,255,255,.05) 70%);border-color:rgba(180,150,255,.24)}
-body.spx .sp-art:nth-child(6n+2){background:linear-gradient(160deg,rgba(14,165,233,.52),rgba(255,255,255,.05) 70%);border-color:rgba(110,200,245,.24)}
-body.spx .sp-art:nth-child(6n+3){background:linear-gradient(160deg,rgba(236,72,153,.50),rgba(255,255,255,.05) 70%);border-color:rgba(246,150,200,.24)}
-body.spx .sp-art:nth-child(6n+4){background:linear-gradient(160deg,rgba(16,185,129,.50),rgba(255,255,255,.05) 70%);border-color:rgba(90,215,175,.24)}
-body.spx .sp-art:nth-child(6n+5){background:linear-gradient(160deg,rgba(245,158,11,.50),rgba(255,255,255,.05) 70%);border-color:rgba(242,200,100,.24)}
-body.spx .sp-art:nth-child(6n){background:linear-gradient(160deg,rgba(99,102,241,.52),rgba(255,255,255,.05) 70%);border-color:rgba(160,170,255,.24)}
-/* ---------- dashboards ---------- */
+  border:1px solid rgba(255,255,255,.16);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);transition:transform .16s,border-color .16s}
+body.spx .sp-art:hover{transform:translateY(-3px);border-color:rgba(110,231,160,.50)}
+body.spx .sp-art b{display:block;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#6ee7a0;font-weight:900}
+body.spx .sp-art span{color:#eefdf3;font-weight:800;font-size:15.5px;line-height:1.35}
+body.spx .sp-art i{font-style:normal;color:#5a8a6e;font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;margin-top:auto}
+body.spx .sp-art::after{content:attr(data-n);position:absolute;top:8px;right:14px;font-size:36px;font-weight:900;font-style:italic;color:rgba(255,255,255,.10);pointer-events:none}
+body.spx .sp-art:nth-child(6n+1){background:linear-gradient(160deg,rgba(34,197,94,.30),rgba(255,255,255,.02) 70%)}
+body.spx .sp-art:nth-child(6n+2){background:linear-gradient(160deg,rgba(6,182,212,.28),rgba(255,255,255,.02) 70%)}
+body.spx .sp-art:nth-child(6n+3){background:linear-gradient(160deg,rgba(124,58,237,.28),rgba(255,255,255,.02) 70%)}
+body.spx .sp-art:nth-child(6n+4){background:linear-gradient(160deg,rgba(236,72,153,.26),rgba(255,255,255,.02) 70%)}
+body.spx .sp-art:nth-child(6n+5){background:linear-gradient(160deg,rgba(245,158,11,.26),rgba(255,255,255,.02) 70%)}
+body.spx .sp-art:nth-child(6n){background:linear-gradient(160deg,rgba(99,102,241,.28),rgba(255,255,255,.02) 70%)}
+/* ---------- DASHBOARDS: three colour glasses ---------- */
 body.spx .sp-dash{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin:6px 0 14px}
-body.spx .sp-dash-col{border-radius:14px;padding:14px;border:1px solid rgba(255,255,255,.12);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
-body.spx .sp-dash-col:nth-child(1){background:linear-gradient(165deg,rgba(99,102,241,.38),rgba(255,255,255,.03))}
-body.spx .sp-dash-col:nth-child(2){background:linear-gradient(165deg,rgba(6,182,212,.36),rgba(255,255,255,.03))}
-body.spx .sp-dash-col:nth-child(3){background:linear-gradient(165deg,rgba(236,72,153,.34),rgba(255,255,255,.03))}
-body.spx .sp-dash-col h3{margin:0 0 8px;font-size:11px;letter-spacing:.10em;text-transform:uppercase;color:#a5b4cf}
+body.spx .sp-dash-col{border-radius:14px;padding:14px;border:1px solid rgba(255,255,255,.12);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+body.spx .sp-dash-col:nth-child(1){background:linear-gradient(165deg,rgba(34,197,94,.24),rgba(255,255,255,.02))}
+body.spx .sp-dash-col:nth-child(2){background:linear-gradient(165deg,rgba(6,182,212,.22),rgba(255,255,255,.02))}
+body.spx .sp-dash-col:nth-child(3){background:linear-gradient(165deg,rgba(236,72,153,.20),rgba(255,255,255,.02))}
+body.spx .sp-dash-col h3{margin:0 0 8px;font-size:11px;letter-spacing:.10em;text-transform:uppercase;color:#94c4a4}
 body.spx .sp-dash-col .sp-table td{padding:7px 8px;font-size:13px}
-body.spx .sp-dash-more{display:inline-block;margin-top:8px;font-size:11.5px;font-weight:800;color:#67e8f9;text-decoration:none}
-body.spx .sp-rep{display:flex;flex-direction:column;align-items:flex-start;gap:2px;padding:8px 10px;margin:4px 0;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.10);border-radius:10px;color:#e8edf5;font-weight:700;font-size:13px;text-decoration:none}
-body.spx .sp-rep:hover{border-color:rgba(103,232,249,.45)}
-body.spx .sp-rep span{color:#67e8f9;font-size:9.5px;font-weight:900;letter-spacing:.10em;text-transform:uppercase}
-body.spx .sp-rep i{font-style:normal;color:#5d6672;font-size:10.5px;font-weight:700}
-/* ---------- two-column layout ---------- */
+body.spx .sp-dash-more{display:inline-block;margin-top:8px;font-size:11.5px;font-weight:800;color:#6ee7a0;text-decoration:none}
+body.spx .sp-rep{display:flex;flex-direction:column;align-items:flex-start;gap:2px;padding:8px 10px;margin:4px 0;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.10);border-radius:10px;color:#d8f0de;font-weight:700;font-size:13px;text-decoration:none}
+body.spx .sp-rep:hover{border-color:rgba(110,231,160,.45)}
+body.spx .sp-rep span{color:#6ee7a0;font-size:9.5px;font-weight:900;letter-spacing:.10em;text-transform:uppercase}
+body.spx .sp-rep i{font-style:normal;color:#5a8a6e;font-size:10.5px;font-weight:700}
+/* ---------- TWO-COLUMN LAYOUT ---------- */
 body.spx .sp-layout{display:grid;grid-template-columns:minmax(0,2.1fr) minmax(0,1fr);gap:18px;align-items:start;margin-top:14px}
 body.spx .sp-side{display:flex;flex-direction:column;gap:14px}
-body.spx .sp-side .sp-dash-col{border:1px solid rgba(255,255,255,.12)}
-/* ---------- misc ---------- */
-body.spx .sp-result-meta{font-size:11.5px;color:#7c8698;margin-top:8px}
+/* ---------- MISC ---------- */
+body.spx .sp-result-meta{font-size:11.5px;color:#6b9a7e;margin-top:8px}
 body.spx .prose h1{letter-spacing:-.025em;font-weight:900}
-body.spx .article-hero{background:rgba(20,30,60,.48);border:1px solid rgba(255,255,255,.10);border-radius:16px;padding:26px;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+body.spx .article-hero{background:rgba(6,36,22,.50);border:1px solid rgba(255,255,255,.10);border-radius:16px;padding:26px;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
 body.spx .crumb{display:none}
 body.spx .spx-back{display:none}
-@keyframes sppulse{0%,100%{box-shadow:0 0 0 0 rgba(34,211,238,.5)}50%{box-shadow:0 0 0 6px rgba(34,211,238,0)}}
+@keyframes pgpulse{0%,100%{box-shadow:0 0 0 0 rgba(74,222,128,.5)}50%{box-shadow:0 0 0 6px rgba(74,222,128,0)}}
 @media(max-width:640px){
- .spx-hero-photo{min-height:44vh;padding:36px 18px 76px}
- .sp-led{margin-top:-40px}
- body.spx .sp-layout{grid-template-columns:1fr}
- body.spx .sp-art{flex:0 0 250px;min-width:250px}
+  .spx-hero-photo{min-height:42vh;padding:36px 18px 66px}
+  .sp-led{margin-top:-36px}
+  body.spx .sp-layout{grid-template-columns:1fr}
+  body.spx .sp-art{flex:0 0 250px;min-width:250px}
 }
