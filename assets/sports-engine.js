@@ -64,7 +64,7 @@
   }
   function group(lg, items, results) {
     var cards = items.map(function (m) { var k = lg + "/" + m.id + "-vs-" + m.away; return card(lg, m, results[k], k); }).join("");
-    var head = '<div class="sp-lg"><div class="sp-lg-head"><b>' + LEAGUES[lg].label + '</b><a href="/sports/' + lg + '/matches/">Match Centre \u2192</a></div>';
+    var head = '<div class="sp-lg sp-lg-' + lg + '"><div class="sp-lg-head"><b>' + LEAGUES[lg].label + '</b><a href="/sports/' + lg + '/matches/">Match Centre \u2192</a></div>';
     return head + '<div class="sp-score-rail"><div class="sp-rail-track">' + cards + cards + "</div></div></div>";
   }
   function computeTable(lg, matches, results) {
