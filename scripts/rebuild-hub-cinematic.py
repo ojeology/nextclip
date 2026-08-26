@@ -4,26 +4,45 @@ Rebuilds /sports/index.html keeping EVERY existing route, data container,
 live engine, content block, semantic link and SEO mark. This is a purely
 presentation-layer upgrade scoped to body.shub (new CSS/JS files).
 """
-import re, os
+import re, os, subprocess
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SRC = os.path.join(ROOT, "sports", "index.html")
 
-html = open(SRC, encoding="utf-8").read()
+# ---- source page (original, read from git HEAD so the build is reproducible) ----
+src = (subprocess.check_output(["git", "show", "HEAD:sports/index.html"], cwd=ROOT)
+       .decode("utf-8").replace("\\r\\n", "\\n"))
 
-# ---- preserved fragments (read once) ----
-def read(n):
-    return open(os.path.join("/tmp", n), encoding="utf-8").read()
+# ---- extract reusable fragments straight from the original ----
+def extract(html, start_marker, end_marker):
+    i = html.find(start_marker)
+    if i < 0:
+        raise ValueError("marker not found: " + start_marker[:40])
+    j = html.find(end_marker, i)
+    if j < 0:
+        raise ValueError("end marker not found: " + end_marker[:40])
+    if end_marker:
+        j = j + len(end_marker)
+    return html[i:j]
 
-ARTRAIL   = read("artrail.html")
-STORIES   = read("stories.html")   # reused verbatim (its own header + story grid)
-EXPLORE   = read("explore.html")
-VIDEO     = read("video.html")
-VCAT      = read("vcat.html")
-STORIES   = read("stories.html")
-COREHUBS  = read("corehubs.html")
-FAQ       = read("faq.html")
-BOARD     = read("board.html")          # live engine board + side dashboards
+# top stories art rail (engine-managed)
+ARTRAIL = extract(src, '<div class="sp-art-rail">', '</div></div>')
+# stories grid (the real story-photo cards) — reuse the inner section only,
+# dropping the sh-sec wrapper (the build wraps it again) so tags stay balanced
+STORIES = extract(src, '<section class="section"><div class="shell">\n  <div class="section-head"><h2>BRYME Sports Stories</h2>', '</section>')
+# use optimized background variants for the story cards (lighter payload)
+STORIES = re.sub(r"--card-img:url\('/assets/img/sports/(hero-[a-z-]+)\.jpg'\)",
+                 r"--card-img:url('/assets/img/sports/\1-md.jpg')", STORIES)
+# live engine board + side dashboards (the whole sp-layout grid)
+BOARD = extract(src, '<section class="sp-board"', '</aside></div>')
+# season video section
+VIDEO = extract(src, '<!-- ============ SEASON VIDEO ============ -->', '</section>')
+# "everything else on BRYME" core hubs
+COREHUBS = extract(src, '<!-- ============ EVERYTHING ELSE ON BRYME ============ -->', '</section>')
+# FAQ
+FAQ = extract(src, '<!-- ============ FAQ ============ -->', '</section>')
+
+html = src  # the build reads fragments out of the original above
 
 # ---- head (verbatim, plus hub stylesheet + preloads) ----
 head = html[:html.find("</head>")]
@@ -79,13 +98,15 @@ comic_cards = [
 ]
 comics = "".join(
     '<a class="sh-comic" href="%s"><div class="sh-comic-media">'
-    '<img src="/assets/img/sports/comics/%s" alt="%s football comic" width="640" height="360" '
+    '<img src="/assets/img/sports/comics/%s-md.jpg" '
+    'srcset="/assets/img/sports/comics/%s-md.jpg 720w, /assets/img/sports/comics/%s.jpg 1408w" '
+    'sizes="(max-width:520px) 270px, 330px" alt="%s football comic" width="640" height="360" '
     'loading="lazy" decoding="async"><div class="sh-comic-shade"></div></div>'
     '<span class="sh-comic-tag">Match Comic</span>'
     '<div class="sh-comic-body"><div class="sh-comic-meta"><em>Original artwork</em><span>·</span>%s</div>'
     '<h3 class="sh-comic-title">%s</h3><p class="sh-comic-hook">%s</p></div>'
     '<span class="sh-comic-play"><svg viewBox="0 0 24 24" fill="none"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span></a>'
-    % (c["href"], c["img"], c["title"], c["meta"], c["title"], c["hook"]) for c in comic_cards
+    % (c["href"], c["img"][:-4], c["img"][:-4], c["img"][:-4], c["title"], c["meta"], c["title"], c["hook"]) for c in comic_cards
 )
 
 transfer_cards = [
@@ -191,10 +212,10 @@ main = ('<main class="sp-desk">\n'
         '<h2 class="sh-sec-title">Featured</h2></div>'
         '<a class="sh-sec-more" href="/sports/articles/">All stories</a></div>\n'
         '<div class="sh-comp-grid">'
-        '<a class="sh-story" href="/sports/world-cup-2026-spain-champions/" style="--card-img:url(\'/assets/img/sports/hero-world-cup.jpg\')"><span class="sh-story-em">World Cup 2026</span><h3>Spain are world champions</h3><p>Ferran Torres in the 106th minute at MetLife.</p><span class="sh-story-cta">Read the story &rarr;</span></a>'
-        '<a class="sh-story" href="/sports/ballon-dor-race/" style="--card-img:url(\'/assets/img/sports/hero-ballon-dor.jpg\')"><span class="sh-story-em">Ballon d&rsquo;Or</span><h3>London, 26 October. The winner is not decided.</h3><p>The 70th ceremony is confirmed. Last year&rsquo;s winners are confirmed. This year&rsquo;s names are not.</p><span class="sh-story-cta">Read the story &rarr;</span></a>'
-        '<a class="sh-story" href="/sports/premier-league-matchweek-1-guide/" style="--card-img:url(\'/assets/img/sports/hero-matchweek.jpg\')"><span class="sh-story-em">Premier League</span><h3>Matchweek 2: fixtures &amp; picks</h3><p>Every Friday-to-Monday fixture, kick-off and TV listing.</p><span class="sh-story-cta">Read the story &rarr;</span></a>'
-        '<a class="sh-story" href="/sports/manchester-city-without-guardiola/" style="--card-img:url(\'/assets/img/sports/hero-man-city-manager.jpg\')"><span class="sh-story-em">Football</span><h3>Manchester City after Guardiola</h3><p>Ten years, four titles and a new manager. What is officially confirmed.</p><span class="sh-story-cta">Read the story &rarr;</span></a>'
+        '<a class="sh-story" href="/sports/world-cup-2026-spain-champions/" style="--card-img:url(\'/assets/img/sports/hero-world-cup-md.jpg\')"><span class="sh-story-em">World Cup 2026</span><h3>Spain are world champions</h3><p>Ferran Torres in the 106th minute at MetLife.</p><span class="sh-story-cta">Read the story &rarr;</span></a>'
+        '<a class="sh-story" href="/sports/ballon-dor-race/" style="--card-img:url(\'/assets/img/sports/hero-ballon-dor-md.jpg\')"><span class="sh-story-em">Ballon d&rsquo;Or</span><h3>London, 26 October. The winner is not decided.</h3><p>The 70th ceremony is confirmed. Last year&rsquo;s winners are confirmed. This year&rsquo;s names are not.</p><span class="sh-story-cta">Read the story &rarr;</span></a>'
+        '<a class="sh-story" href="/sports/premier-league-matchweek-1-guide/" style="--card-img:url(\'/assets/img/sports/hero-matchweek-md.jpg\')"><span class="sh-story-em">Premier League</span><h3>Matchweek 2: fixtures &amp; picks</h3><p>Every Friday-to-Monday fixture, kick-off and TV listing.</p><span class="sh-story-cta">Read the story &rarr;</span></a>'
+        '<a class="sh-story" href="/sports/manchester-city-without-guardiola/" style="--card-img:url(\'/assets/img/sports/hero-man-city-manager-md.jpg\')"><span class="sh-story-em">Football</span><h3>Manchester City after Guardiola</h3><p>Ten years, four titles and a new manager. What is officially confirmed.</p><span class="sh-story-cta">Read the story &rarr;</span></a>'
         '</div>\n'
         '</section>\n'
 
@@ -203,12 +224,12 @@ main = ('<main class="sp-desk">\n'
         '  <div class="sh-sec-head"><div><span class="sh-sec-kick">Competitions</span>'
         '<h2 class="sh-sec-title">Pick a league</h2></div></div>\n'
         '<div class="sh-comp-grid">'
-        '<a class="sh-comp sh-comp-wide" href="/sports/premier-league/" style="--card-img:url(\'/assets/img/sports/hero-premier-league.jpg\')"><em>England</em><b>Premier League</b><span>A full desk: fixtures, sourced results, FPL, transfers, clubs and match pages.</span></a>'
-        '<a class="sh-comp" href="/sports/champions-league/" style="--card-img:url(\'/assets/img/sports/hero-ucl.jpg\')"><em>Europe</em><b>Champions League</b><span>Format, brackets and the nights that define the competition.</span></a>'
-        '<a class="sh-comp" href="/sports/la-liga/" style="--card-img:url(\'/assets/img/sports/hero-la-liga.jpg\')"><em>Spain</em><b>La Liga</b><span>380 fixtures, match pages and the transfer desk.</span></a>'
-        '<a class="sh-comp" href="/sports/serie-a/" style="--card-img:url(\'/assets/img/sports/hero-serie-a.jpg\')"><em>Italy</em><b>Serie A</b><span>The opening weeks, clubs and confirmed business.</span></a>'
-        '<a class="sh-comp" href="/sports/bundesliga/" style="--card-img:url(\'/assets/img/sports/hero-bundesliga.jpg\')"><em>Germany</em><b>Bundesliga</b><span>306 fixtures and the 2026/27 tracker.</span></a>'
-        '<a class="sh-comp" href="/sports/ligue-1/" style="--card-img:url(\'/assets/img/sports/hero-ligue-1.jpg\')"><em>France</em><b>Ligue 1</b><span>Paris, Marseille and the rest of the calendar.</span></a>'
+        '<a class="sh-comp sh-comp-wide" href="/sports/premier-league/" style="--card-img:url(\'/assets/img/sports/hero-premier-league-md.jpg\')"><em>England</em><b>Premier League</b><span>A full desk: fixtures, sourced results, FPL, transfers, clubs and match pages.</span></a>'
+        '<a class="sh-comp" href="/sports/champions-league/" style="--card-img:url(\'/assets/img/sports/hero-ucl-md.jpg\')"><em>Europe</em><b>Champions League</b><span>Format, brackets and the nights that define the competition.</span></a>'
+        '<a class="sh-comp" href="/sports/la-liga/" style="--card-img:url(\'/assets/img/sports/hero-la-liga-md.jpg\')"><em>Spain</em><b>La Liga</b><span>380 fixtures, match pages and the transfer desk.</span></a>'
+        '<a class="sh-comp" href="/sports/serie-a/" style="--card-img:url(\'/assets/img/sports/hero-serie-a-md.jpg\')"><em>Italy</em><b>Serie A</b><span>The opening weeks, clubs and confirmed business.</span></a>'
+        '<a class="sh-comp" href="/sports/bundesliga/" style="--card-img:url(\'/assets/img/sports/hero-bundesliga-md.jpg\')"><em>Germany</em><b>Bundesliga</b><span>306 fixtures and the 2026/27 tracker.</span></a>'
+        '<a class="sh-comp" href="/sports/ligue-1/" style="--card-img:url(\'/assets/img/sports/hero-ligue-1-md.jpg\')"><em>France</em><b>Ligue 1</b><span>Paris, Marseille and the rest of the calendar.</span></a>'
         '</div>\n'
         '</section>\n'
 
@@ -246,12 +267,12 @@ main = ('<main class="sp-desk">\n'
         '<h2 class="sh-sec-title">Explore</h2>'
         '<p class="sh-sec-sub">Club histories, rivalry explainers, records, player profiles, previews and reports.</p></div></div>\n'
         '<div class="sh-comp-grid">'
-        '<a class="sh-comp" href="/sports/records/" style="--card-img:url(\'/assets/img/sports/hero-ballon-dor.jpg\')"><em>Numbers</em><b>Records</b><span>Titles, streaks, milestones and the numbers behind the achievements.</span></a>'
-        '<a class="sh-comp" href="/sports/teams/" style="--card-img:url(\'/assets/img/sports/hero-arsenal.jpg\')"><em>Clubs</em><b>Clubs by league</b><span>Every top-five club, filed under its own league.</span></a>'
-        '<a class="sh-comp" href="/sports/clubs/" style="--card-img:url(\'/assets/img/sports/hero-arsenal.jpg\')"><em>Directory</em><b>Clubs</b><span>Club histories, identities, rivalries and how they are run.</span></a>'
-        '<a class="sh-comp" href="/sports/history/" style="--card-img:url(\'/assets/img/sports/hero-matches.jpg\')"><em>Archive</em><b>Football history</b><span>Eras, turning points and the matches that changed the sport.</span></a>'
-        '<a class="sh-comp" href="/sports/international/" style="--card-img:url(\'/assets/img/sports/hero-world-cup.jpg\')"><em>Nations</em><b>International</b><span>World Cup, continental championships and national-team football.</span></a>'
-        '<a class="sh-comp" href="/sports/players/" style="--card-img:url(\'/assets/img/sports/hero-ballon-dor.jpg\')"><em>People</em><b>Players</b><span>Careers, styles and the athletes shaping the game.</span></a>'
+        '<a class="sh-comp" href="/sports/records/" style="--card-img:url(\'/assets/img/sports/hero-ballon-dor-md.jpg\')"><em>Numbers</em><b>Records</b><span>Titles, streaks, milestones and the numbers behind the achievements.</span></a>'
+        '<a class="sh-comp" href="/sports/teams/" style="--card-img:url(\'/assets/img/sports/hero-arsenal-md.jpg\')"><em>Clubs</em><b>Clubs by league</b><span>Every top-five club, filed under its own league.</span></a>'
+        '<a class="sh-comp" href="/sports/clubs/" style="--card-img:url(\'/assets/img/sports/hero-arsenal-md.jpg\')"><em>Directory</em><b>Clubs</b><span>Club histories, identities, rivalries and how they are run.</span></a>'
+        '<a class="sh-comp" href="/sports/history/" style="--card-img:url(\'/assets/img/sports/hero-matches-md.jpg\')"><em>Archive</em><b>Football history</b><span>Eras, turning points and the matches that changed the sport.</span></a>'
+        '<a class="sh-comp" href="/sports/international/" style="--card-img:url(\'/assets/img/sports/hero-world-cup-md.jpg\')"><em>Nations</em><b>International</b><span>World Cup, continental championships and national-team football.</span></a>'
+        '<a class="sh-comp" href="/sports/players/" style="--card-img:url(\'/assets/img/sports/hero-ballon-dor-md.jpg\')"><em>People</em><b>Players</b><span>Careers, styles and the athletes shaping the game.</span></a>'
         '</div>\n'
         '</section>\n'
 

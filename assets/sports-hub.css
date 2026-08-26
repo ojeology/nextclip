@@ -47,7 +47,7 @@ body.shub {
   background-image:
     linear-gradient(180deg, rgba(4,6,11,.55) 0%, rgba(4,6,11,.30) 30%, rgba(4,6,11,.62) 72%, rgba(4,6,11,.96) 100%),
     linear-gradient(120deg, rgba(124,58,237,.18), rgba(6,182,212,.10) 46%, rgba(236,72,153,.10)),
-    url('/assets/img/sports/hero-landing.jpg');
+    url('/assets/img/sports/hero-landing-md.jpg');
   background-size: cover; background-position: center 28%;
   transform: translateY(0) scale(1.04);
   filter: saturate(1.05);
@@ -101,7 +101,7 @@ body.shub header.top .topnav a.active{ color:#fff; }
 .sh-hero-photo.alt{ background-image:
     linear-gradient(180deg, rgba(4,6,11,.30) 0%, rgba(4,6,11,.12) 30%, rgba(4,6,11,.50) 62%, rgba(4,6,11,.96) 100%),
     linear-gradient(115deg, rgba(6,182,212,.22), rgba(124,58,237,.14) 52%, rgba(236,72,153,.10)),
-    url('/assets/img/sports/hero-ucl.jpg');
+    url('/assets/img/sports/hero-ucl-md.jpg');
   background-position: center center; }
 .sh-hero-veil{ position:absolute; inset:0;
   background:
@@ -270,7 +270,7 @@ body.shub .sp-scorecard .sp-sc-row:last-child{ border-bottom:0; }
 body.shub .sp-table-wrap{ position:relative; overflow:hidden; background:rgba(8,12,22,.5); border:1px solid var(--sh-line);
   border-radius:16px; -webkit-backdrop-filter:blur(20px) saturate(150%); backdrop-filter:blur(20px) saturate(150%);
   box-shadow:inset 0 1px 0 rgba(255,255,255,.05); }
-body.shub .sp-table-wrap::before{ content:""; position:absolute; inset:0; opacity:.08; background:url('/assets/img/sports/hero-pitch.jpg') center/cover no-repeat; }
+body.shub .sp-table-wrap::before{ content:""; position:absolute; inset:0; opacity:.08; background:url('/assets/img/sports/hero-pitch-md.jpg') center/cover no-repeat; }
 body.shub table.sp-table{ position:relative; z-index:1; }
 body.shub .sp-table th{ background:rgba(255,255,255,.05); color:#93a0b4; }
 body.shub .sp-table td{ border-bottom:1px solid rgba(255,255,255,.05); }
@@ -305,7 +305,7 @@ body.shub .sp-art{ position:relative; overflow:hidden; background:rgba(8,12,22,.
   border-radius:18px; padding:20px; min-width:300px; flex:0 0 300px;
   -webkit-backdrop-filter:blur(20px); backdrop-filter:blur(20px);
   box-shadow:inset 0 1px 0 rgba(255,255,255,.07); transition:transform var(--sh-trans),border-color var(--sh-trans),box-shadow var(--sh-trans); }
-body.shub .sp-art::before{ content:""; position:absolute; inset:0; opacity:.16; background:url('/assets/img/sports/hero-matchweek.jpg') center/cover no-repeat; transition:opacity .3s, transform .6s ease; }
+body.shub .sp-art::before{ content:""; position:absolute; inset:0; opacity:.16; background:url('/assets/img/sports/hero-matchweek-md.jpg') center/cover no-repeat; transition:opacity .3s, transform .6s ease; }
 body.shub .sp-art:hover::before{ opacity:.26; transform:scale(1.05); }
 body.shub .sp-art > *{ position:relative; z-index:1; }
 body.shub .sp-art:hover{ transform:translateY(-4px); border-color:rgba(103,232,249,.45); box-shadow:0 24px 55px -24px rgba(0,0,0,.95), 0 0 26px -10px rgba(34,211,238,.3); }
@@ -455,20 +455,46 @@ body.shub nav.mobile-nav a.active{ color:#7ee8ff; }
 
 /* ------------------------------ responsive ------------------------------ */
 @media (max-width: 760px){
-  .sh-hero{ min-height:60vh; align-items:flex-end; padding-bottom:0; }
-  .sh-hero-in{ padding:0 18px 40px; }
+  .sh-hero{ min-height:56vh; align-items:flex-end; padding-bottom:0; }
+  .sh-hero-in{ padding:0 18px 34px; }
   .sh-hero-title{ font-size:clamp(46px,18vw,88px); }
-  .sh-sec{ padding:40px 16px 0; }
-  .sh-sec-head{ flex-wrap:wrap; gap:10px; }
-  .sh-sec-head .sh-sec-more{ align-self:flex-start; margin-top:2px; }
+  .sh-sec{ padding:34px 16px 0; }
+  .sh-sec-head{ flex-wrap:wrap; gap:8px; }
+  .sh-sec-head .sh-sec-more{ align-self:flex-start; margin-top:0; }
   .sh-cats-in{ padding:0 12px; }
   .sh-board, body.shub .sp-board{ padding:16px 12px 4px; border-radius:16px; }
   body.shub .sp-scorecard{ border-radius:13px; }
-  .sh-comp-grid{ gap:12px; }
   .sh-cats{ margin:-20px auto 0; }
+
+  /* live desk: constrain the board grid so nothing overflows the phone width,
+     then arrange the side dashboards as a compact 2-col row (not a tall stack) */
+  body.shub .sp-layout{ grid-template-columns:minmax(0,1fr) !important; }
+  body.shub .sp-main, body.shub .sp-side{ min-width:0 !important; }
+  body.shub .sp-side{
+    display:flex !important; flex-direction:row; flex-wrap:wrap; gap:12px; margin-top:2px; position:static;
+  }
+  body.shub .sp-side .sp-dash-col{ padding:12px 12px 13px; flex:1 1 calc(50% - 6px); min-width:0; width:auto; overflow:hidden; }
+  body.shub .sp-side .sp-dash-col:nth-child(3){ flex-basis:100%; }
+  body.shub .sp-side .sp-table, body.shub .sp-side *, body.shub .sp-side h3{ min-width:0 !important; overflow-wrap:break-word; }
+  body.shub .sp-side .sp-table td, body.shub .sp-side .sp-rep b{ white-space:normal !important; }
+
+  /* competition cards -> horizontal scroll chips instead of tall full tiles */
+  .sh-comp-grid{ display:flex; overflow-x:auto; gap:12px; scroll-snap-type:x proximity; padding-bottom:6px; scrollbar-width:none; -ms-overflow-style:none; }
+  .sh-comp-grid::-webkit-scrollbar{ display:none; }
+  .sh-comp{ flex:0 0 240px; min-width:240px; min-height:150px; padding:16px; border-radius:16px; scroll-snap-align:start; }
+  .sh-comp-wide{ flex:0 0 280px; min-width:280px; }
+  .sh-comp b{ font-size:17px; }
+  .sh-comp span{ font-size:12px; }
+  .sh-story{ min-height:200px; padding:16px; border-radius:16px; }
+  .sh-story h3{ font-size:16px; }
+  .sh-story p{ font-size:12px; }
+
+  /* trim heavy backdrop blur on small screens for GPU/CPU headroom */
+  body.shub header.top{ -webkit-backdrop-filter:blur(12px) saturate(140%); backdrop-filter:blur(12px) saturate(140%); }
 }
 @media (max-width: 400px){
   body.shub .sp-art{ min-width:250px; flex-basis:250px; }
+  body.shub .sp-side{ grid-template-columns:1fr; }
 }
 
 /* small parallax drift on scroll for the cinematic bg */
