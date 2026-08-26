@@ -1,0 +1,13 @@
+{
+  "name": "bryme-root",
+  "version": "1.0.0",
+  "description": "BRYME — root manifest. The deployable backend lives in /server (Root Directory: server). This file exists so a repo-root build also detects Node. The static site ignores it entirely.",
+  "private": true,
+  "scripts": {
+    "start": "node server/server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "UNLICENSED"
+}
