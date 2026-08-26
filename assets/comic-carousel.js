@@ -159,7 +159,6 @@
   function init(){
     var root=document.getElementById("mc-hero"); if(!root) return;
     var slug=root.getAttribute("data-comic")||"hull-united";
-    var watchMode=root.getAttribute("data-mode")==="watch";
     var M=MATCHES[slug]||MATCHES["hull-united"];
     var DIR=M.dir, S=M.chapters, home=M.home, away=M.away;
     /* City–Bournemouth is delivered as 26 independent vertical sideclips.
@@ -425,27 +424,6 @@
     deck.addEventListener("touchstart",function(e){sx=e.touches[0].clientX;},{passive:true});
     deck.addEventListener("touchend",function(e){if(sx===null)return;var dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>44)show(dx<0?idx+1:idx-1,dx<0?"next":"prev");sx=null;},{passive:true});
     document.addEventListener("keydown",function(e){if(e.key==="ArrowRight")show(idx+1,"next");else if(e.key==="ArrowLeft")show(idx-1,"prev");});
-    if(watchMode){
-      playing=false;
-      playBtn.setAttribute("aria-pressed","false");
-      playBtn.textContent="▶ Play";
-      var start=document.createElement("button");
-      start.type="button";
-      start.className="mc-start";
-      start.innerHTML="<i>▶</i><b>Play comic</b><span>Sound on · swipe for next clip</span>";
-      deck.appendChild(start);
-      function kickoff(){
-        if(start.parentNode) start.remove();
-        if(muted) toggleSound();
-        resume();
-      }
-      start.addEventListener("click",function(e){e.stopPropagation();kickoff();});
-      deck.addEventListener("click",function(e){
-        if(e.target.closest(".mc-start")||e.target.closest("button")) return;
-        if(root.querySelector(".mc-start")) return;
-        playing?pause():resume();
-      });
-    }
     cards[0].classList.add("on");dots[0].classList.add("on");idx=0;curLayer=0;curCap=-1;
     cntEl.textContent="1 / "+len;updateHud();loadAudio(0);
     last=performance.now();requestAnimationFrame(loop);

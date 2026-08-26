@@ -100,7 +100,7 @@ body[data-nav="tech"] .prose a{color:#a8c8ff}
 .vcat:hover{transform:translateY(-4px);border-color:rgba(255,255,255,.22);box-shadow:0 16px 34px rgba(0,0,0,.45)}
 .vcat b{font-size:15px}
 /* data tables read as content, not spreadsheets */
-.sp-table thead th{background:linear-gradient(180deg,rgba(255,255,255,.06),transparent);color:#cfd5db;border-bottom-color:rgba(255,255,255,.14)}
+.sp-table thead th{background:linear-gradient(180deg,rgba(255,255,255,.06),transparent);color:#cfd5db;border-bottom-color:rgba(255,255,255,.18)}
 .sp-table tbody tr:hover{background:rgba(255,255,255,.035)}
 .sp-table a{color:#ffcaa8}.sp-table a:hover{color:#fff}
 /* panels lift off the page */
@@ -3350,7 +3350,7 @@ main.shell .nm-page-h1{font-size:clamp(28px,5vw,44px);margin:0 0 8px}
   padding:11px 22px;min-height:0;margin:0;
 }
 .nm-body .nm-watch-now{background:#fff;color:#000}
-.nm-body .nm-trailer{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);color:#fff}
+.nm-body .nm-trailer{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.25);color:#fff}
 
 /* Languages + cast */
 .nm-lang-row{display:flex;gap:14px;overflow-x:auto;padding:2px 0 14px;scrollbar-width:none}
@@ -3968,171 +3968,189 @@ a.td-match:hover{border-color:rgba(61,220,132,.35)}
   .mwc-track{scroll-behavior:auto}
 }
 
-/* ==================================================================
+/* ════════════════════════════════════════════════════════════════
+   STADIUM SUITE v21 · vibrant glass · designed from zero
+   vivid gradient background → frosted glass panels → the photo lives in the hero
+   ════════════════════════════════════════════════════════════════ */
 
-/* ==================================================================
-   THE GLASS PITCH (v19) · the whole page is a football pitch
-   grass + white lines under frosted glass panels, no dark voids
-   ================================================================== */
-/* ---------- THE PITCH: grass gradient + SVG line markings ---------- */
-body.spx{background:
-  radial-gradient(ellipse 80% 50% at 50% -5%,rgba(34,197,94,.14),transparent 60%),
-  radial-gradient(ellipse 60% 40% at 85% 20%,rgba(6,182,212,.20),transparent 55%),
-  radial-gradient(ellipse 50% 40% at 8% 35%,rgba(124,58,237,.22),transparent 55%),
-  radial-gradient(ellipse 45% 35% at 92% 65%,rgba(236,72,153,.16),transparent 55%),
-  linear-gradient(180deg,
-    #0b3d2a 0%, #0e4a32 8%, #115737 20%, #0d4229 35%,
-    #0f4c31 50%, #0b3d26 65%, #0d4630 80%, #093620 100%);
-  background-attachment:fixed;color:#e8fdf0}
-/* pitch line markings overlay */
-body.spx::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.28;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='2400' viewBox='0 0 1200 2400'%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='3'%3E%3Crect x='60' y='60' width='1080' height='2280' rx='2'/%3E%3Cline x1='60' y1='1200' x2='1140' y2='1200'/%3E%3Ccircle cx='600' cy='1200' r='180'/%3E%3Ccircle cx='600' cy='1200' r='6' fill='%23ffffff'/%3E%3Crect x='340' y='60' width='520' height='300'/%3E%3Crect x='440' y='60' width='320' height='130'/%3E%3Crect x='340' y='2040' width='520' height='300'/%3E%3Crect x='440' y='2210' width='320' height='130'/%3E%3Ccircle cx='130' cy='1200' r='8'/%3E%3Ccircle cx='1070' cy='1200' r='8'/%3E%3C/g%3E%3C/svg%3E");
-  background-size:100vw auto;background-repeat:repeat-y;background-position:center top}
-body.spx main{position:relative;z-index:1}
-/* ---------- HERO: stadium glass entry ---------- */
-.spx-hero-photo{margin:0 calc(50% - 50vw);width:100vw;min-height:46vh;display:flex;flex-direction:column;justify-content:center;
-  padding:42px max(24px,calc((100vw - 1180px)/2)) 76px;overflow:hidden;position:relative;
+/* ---------- PAGE: vibrant gradient canvas ---------- */
+body.spx{
   background:
-    linear-gradient(180deg,rgba(11,61,42,.03) 0%,rgba(11,61,42,.12) 35%,rgba(13,67,46,.60) 75%,rgba(11,61,42,.95) 100%),
-    linear-gradient(135deg,rgba(34,197,94,.20) 0%,rgba(6,182,212,.14) 50%,rgba(124,58,237,.16) 100%),
-    url('/assets/img/sports/hero-landing.jpg') center 22%/cover no-repeat;
-  border-bottom:1px solid rgba(74,222,128,.25)}
+    radial-gradient(ellipse 50% 40% at 10% 5%,rgba(251,191,36,.45),transparent 55%),
+    radial-gradient(ellipse 45% 38% at 88% 15%,rgba(45,212,191,.35),transparent 55%),
+    radial-gradient(ellipse 40% 35% at 80% 60%,rgba(139,92,246,.30),transparent 55%),
+    linear-gradient(175deg,
+      #5c2410 0%, #6b2a10 10%, #5d2a3c 25%, #4a2260 40%, 
+      #2d1b6e 55%, #1e2a78 70%, #16265e 85%, #101c4a 100%);
+  color:#f5eed0}
+body.spx main{position:relative;z-index:1}
+
+/* ---------- HERO: photo panel floating on the canvas ---------- */
+.spx-hero-photo{
+  margin:18px auto 0;max-width:1200px;width:calc(100% - 32px);
+  min-height:40vh;display:flex;flex-direction:column;justify-content:flex-end;
+  padding:0 48px 56px;position:relative;overflow:hidden;border-radius:24px;
+  background:
+    linear-gradient(180deg,rgba(10,14,28,.05) 0%,rgba(10,14,28,.20) 35%,rgba(10,14,28,.62) 72%,rgba(12,16,30,.92) 100%),
+    radial-gradient(60% 50% at 80% 10%,rgba(245,158,11,.16),transparent 60%),
+    url('/assets/img/sports/hero-landing.jpg') center 28%/cover no-repeat;
+  border:1px solid rgba(255,255,255,.18);
+  box-shadow:0 24px 80px -30px rgba(0,0,0,.90),0 0 50px -20px rgba(245,158,11,.12),inset 0 1px 0 rgba(255,255,255,.10)}
 .spx-hero-photo>*{position:relative;z-index:2}
-.spx-hero-k{display:inline-flex;align-items:center;gap:10px;color:#6ee7a0;font-weight:900;font-size:11px;letter-spacing:.24em;text-transform:uppercase;margin:0 0 14px}
-.spx-hero-k i{width:8px;height:8px;border-radius:50%;background:#4ade80;box-shadow:0 0 12px #4ade80;animation:pgpulse 2s infinite}
-.spx-hero-title{margin:0;font-size:clamp(60px,11vw,130px);line-height:.88;font-weight:900;letter-spacing:-.04em;
-  background:linear-gradient(100deg,#ffffff 10%,#86efac 35%,#67e8f9 65%,#c4b5fd 90%);
-  -webkit-background-clip:text;background-clip:text;color:transparent;
-  filter:drop-shadow(0 8px 36px rgba(74,222,128,.35))}
-.spx-hero-title span{background:linear-gradient(120deg,#22c55e,#06b6d4);-webkit-background-clip:text;background-clip:text;color:transparent}
-.spx-hero-sub{margin:12px 0 18px;color:#d1e8dc;font-size:clamp(14px,1.8vw,17px);max-width:580px;font-weight:600;text-shadow:0 2px 14px rgba(0,0,0,.5)}
-/* stat chips: green glass */
-.spx-chips{display:flex;flex-wrap:wrap;gap:9px;margin:0 0 18px}
-.spx-chips span{display:inline-flex;align-items:center;gap:7px;padding:9px 15px;border-radius:10px;font-size:11px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;
-  background:rgba(6,40,25,.55);border:1px solid rgba(110,231,160,.30);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);color:#a7dcbc}
-.spx-chips b{color:#86efac;font-size:14px}
-.spx-chips span:nth-child(1){border-color:rgba(110,231,160,.40);background:rgba(22,101,52,.45)}
-.spx-chips span:nth-child(2){border-color:rgba(103,232,249,.40);background:rgba(8,104,124,.40)}
-.spx-chips span:nth-child(3){border-color:rgba(196,181,253,.40);background:rgba(74,44,130,.40)}
-.spx-chip-live i{width:7px;height:7px;border-radius:50%;background:#fb7185;box-shadow:0 0 10px #fb7185;animation:pgpulse 1.6s infinite}
-/* league tabs: glass on grass */
-.sp-tabs{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
+.spx-hero-k{display:inline-flex;align-items:center;gap:10px;color:#fbbf24;font-weight:900;font-size:11px;letter-spacing:.28em;text-transform:uppercase;margin:0 0 14px}
+.spx-hero-k i{width:8px;height:8px;border-radius:50%;background:#fbbf24;box-shadow:0 0 14px #f59e0b;animation:ampulse 2s infinite}
+.spx-hero-title{margin:0;font-size:clamp(52px,9vw,110px);line-height:.9;font-weight:900;letter-spacing:-.045em;color:#fff;
+  text-shadow:0 4px 40px rgba(0,0,0,.70),0 0 60px rgba(245,158,11,.18)}
+.spx-hero-title span{color:#fbbf24}
+.spx-hero-sub{margin:12px 0 18px;color:#d4c8a8;font-size:clamp(14px,1.8vw,16.5px);max-width:520px;font-weight:600}
+/* stat chips */
+.spx-chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 16px}
+.spx-chips span{display:inline-flex;align-items:center;gap:7px;padding:9px 16px;border-radius:9px;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
+  background:rgba(15,10,30,.24);border:1px solid rgba(255,255,255,.20);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);color:#d4c8a8}
+.spx-chips b{color:#fbbf24;font-size:14px}
+.spx-chips span:nth-child(1){border-color:rgba(251,191,36,.35);background:rgba(146,64,14,.35)}
+.spx-chips span:nth-child(2){border-color:rgba(45,212,191,.35);background:rgba(19,78,74,.35)}
+.spx-chips span:nth-child(3){border-color:rgba(196,181,253,.35);background:rgba(76,29,149,.35)}
+.spx-chip-live i{width:7px;height:7px;border-radius:50%;background:#f87171;box-shadow:0 0 10px #f87171;animation:ampulse 1.6s infinite}
+/* league tabs */
+.sp-tabs{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding-bottom:3px;margin:18px auto 0;max-width:1200px;width:calc(100% - 32px)}
 .sp-tabs::-webkit-scrollbar{display:none}
-.sp-tabs a{padding:10px 17px;border-radius:10px;background:rgba(6,40,25,.55);border:1px solid rgba(110,231,160,.22);color:#c3decf;font-weight:800;font-size:12px;letter-spacing:.04em;text-transform:uppercase;text-decoration:none;white-space:nowrap;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);transition:border-color .15s,color .15s}
-.sp-tabs a:hover{border-color:rgba(110,231,160,.55);color:#fff}
-.sp-tabs a.on{background:linear-gradient(120deg,#16a34a,#0891b2);border-color:transparent;color:#fff;box-shadow:0 6px 20px -6px rgba(34,197,94,.55)}
-/* ---------- LED TICKER: glowing green edge ---------- */
-.sp-led{margin:0 calc(50% - 50vw);width:100vw;margin-top:-42px;position:relative;z-index:5;padding:13px 0;overflow:hidden;
-  background:linear-gradient(90deg,rgba(34,197,94,.18),rgba(6,30,20,.78) 15%,rgba(6,30,20,.78) 85%,rgba(6,182,212,.18));
+.sp-tabs a{padding:10px 18px;border-radius:9px;background:rgba(15,10,30,.22);border:1px solid rgba(255,255,255,.16);color:#d4c8a8;font-weight:800;font-size:12px;letter-spacing:.04em;text-transform:uppercase;text-decoration:none;white-space:nowrap;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);transition:border-color .15s,color .15s}
+.sp-tabs a:hover{border-color:rgba(251,191,36,.45);color:#fff}
+.sp-tabs a.on{background:linear-gradient(120deg,#92400e,#78350f);border-color:rgba(251,191,36,.25);color:#fef3c7;box-shadow:0 6px 22px -8px rgba(245,158,11,.45)}
+
+/* ---------- LED TICKER ---------- */
+.sp-led{max-width:1200px;width:calc(100% - 32px);margin:14px auto 0;position:relative;z-index:5;padding:12px 0;overflow:hidden;border-radius:12px;
+  background:linear-gradient(90deg,rgba(245,158,11,.10),rgba(15,10,30,.30) 15%,rgba(15,10,30,.30) 85%,rgba(20,184,166,.10));
   backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
-  border-top:1px solid rgba(110,231,160,.35);border-bottom:1px solid rgba(110,231,160,.20);
-  box-shadow:0 -4px 26px -6px rgba(74,222,128,.25),0 12px 36px -16px rgba(0,0,0,.85)}
-.sp-led::before{content:"LIVE DESK";position:absolute;left:max(18px,calc(50vw - 580px));top:-9px;font-size:9px;font-weight:900;letter-spacing:.26em;color:#6ee7a0;background:rgba(6,40,25,.85);border:1px solid rgba(110,231,160,.45);border-radius:5px;padding:2px 9px}
+  border:1px solid rgba(255,255,255,.10);
+  box-shadow:0 8px 30px -14px rgba(0,0,0,.80)}
+.sp-led::before{content:"LIVE DESK";position:absolute;left:14px;top:-8px;font-size:9px;font-weight:900;letter-spacing:.24em;color:#fbbf24;background:rgba(10,14,28,.90);border:1px solid rgba(251,191,36,.35);border-radius:4px;padding:2px 9px}
 .tk-track{display:inline-flex;gap:36px;white-space:nowrap}
 .tk{display:inline-flex;align-items:center;gap:9px}
-.tk em{color:#5a8a6e;font-style:normal;font-size:10px;letter-spacing:.1em;text-transform:uppercase;font-weight:800}
-.tk b{color:#d8f5e2;font-size:13.5px;font-weight:800;font-variant-numeric:tabular-nums}
-.tk i{font-style:normal;font-size:9px;padding:2px 7px;border-radius:3px;background:rgba(74,222,128,.18);color:#6ee7a0;font-weight:800;letter-spacing:.06em}
+.tk em{color:#8a7d5e;font-style:normal;font-size:10px;letter-spacing:.10em;text-transform:uppercase;font-weight:800}
+.tk b{color:#ede9dc;font-size:13.5px;font-weight:800;font-variant-numeric:tabular-nums}
+.tk i{font-style:normal;font-size:9px;padding:2px 7px;border-radius:3px;background:rgba(74,222,128,.14);color:#86efac;font-weight:800;letter-spacing:.06em}
+
 /* ---------- SECTION HEADERS ---------- */
-body.spx .sp-board-head{display:flex;align-items:center;gap:14px;border:0;padding:0;margin:24px 0 12px}
+body.spx .sp-board-head{display:flex;align-items:center;gap:14px;border:0;padding:0;margin:28px 0 12px}
 body.spx .sp-board-head .eyebrow{display:none}
-body.spx .sp-board-head h2{margin:0;font-size:clamp(22px,3.8vw,30px);font-weight:900;letter-spacing:-.02em;color:#eefdf3}
-body.spx .sp-board-head h2::before{content:"";display:inline-block;width:9px;height:9px;border-radius:2.5px;margin-right:11px;background:linear-gradient(120deg,#4ade80,#22d3ee);transform:rotate(45deg);box-shadow:0 0 8px rgba(74,222,128,.5)}
-body.spx .sp-board-date{margin-left:auto;font-size:11px;color:#6b9a7e;text-transform:uppercase;letter-spacing:.08em}
-/* ---------- LEAGUE GLASS PANELS: the grass glows through ---------- */
-body.spx .sp-lg{position:relative;border-radius:16px;padding:14px;margin:0 0 12px;border:1px solid;
-  backdrop-filter:blur(22px) saturate(150%);-webkit-backdrop-filter:blur(22px) saturate(150%);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.10),0 10px 32px -18px rgba(0,0,0,.75)}
-body.spx .sp-lg-premier-league{background:linear-gradient(160deg,rgba(124,58,237,.32),rgba(255,255,255,.03) 65%);border-color:rgba(167,139,250,.38)}
-body.spx .sp-lg-la-liga{background:linear-gradient(160deg,rgba(220,38,38,.30),rgba(255,255,255,.03) 65%);border-color:rgba(248,113,113,.36)}
-body.spx .sp-lg-serie-a{background:linear-gradient(160deg,rgba(37,99,235,.30),rgba(255,255,255,.03) 65%);border-color:rgba(96,165,250,.38)}
-body.spx .sp-lg-bundesliga{background:linear-gradient(160deg,rgba(202,138,4,.28),rgba(255,255,255,.03) 65%);border-color:rgba(251,191,36,.36)}
-body.spx .sp-lg-ligue-1{background:linear-gradient(160deg,rgba(13,148,136,.30),rgba(255,255,255,.03) 65%);border-color:rgba(45,212,191,.38)}
-body.spx .sp-lg:not([class*="sp-lg-"]){background:linear-gradient(160deg,rgba(34,197,94,.22),rgba(255,255,255,.03) 65%);border-color:rgba(110,231,160,.30)}
-body.spx .sp-lg-head{display:flex;justify-content:space-between;align-items:center;padding:2px 4px 10px}
-body.spx .sp-lg-head b{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:#b8d4c2}
-body.spx .sp-lg-head a{color:#67e8f9;font-size:11.5px;font-weight:800;letter-spacing:.05em;text-decoration:none}
-/* ---------- SCORECARDS: glass you can see the pitch through ---------- */
-body.spx .sp-scorecard{background:rgba(8,32,20,.50);border:1px solid rgba(255,255,255,.14);border-radius:12px;padding:12px 14px;
-  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);transition:transform .16s,border-color .16s,box-shadow .16s}
-body.spx .sp-scorecard:hover{transform:translateY(-2px);border-color:rgba(110,231,160,.50);box-shadow:0 12px 32px -14px rgba(74,222,128,.30)}
-body.spx .sp-sc-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
-body.spx .sp-sc-pill{font-size:10px;font-weight:800;letter-spacing:.08em;padding:3px 8px;border-radius:4px;background:rgba(110,231,160,.14);color:#6ee7a0;text-transform:uppercase}
-body.spx .sp-sc-pill.ft{background:rgba(74,222,128,.16);color:#86efac}
-body.spx .sp-sc-pill.sp-live{background:linear-gradient(120deg,#16a34a,#0891b2);color:#fff;animation:pgpulse 1.6s infinite}
-body.spx .sp-sc-go{font-size:11px;color:#4a7a5e}
-body.spx .sp-sc-row{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.06)}
+body.spx .sp-board-head h2{margin:0;font-size:clamp(22px,3.6vw,30px);font-weight:900;letter-spacing:-.02em;color:#fff}
+body.spx .sp-board-head h2::before{content:"";display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:12px;background:linear-gradient(135deg,#f59e0b,#fbbf24);transform:rotate(45deg);box-shadow:0 0 12px rgba(245,158,11,.50)}
+body.spx .sp-board-date{margin-left:auto;font-size:11px;color:#8a7d5e;text-transform:uppercase;letter-spacing:.08em}
+
+/* ---------- ALL CONTENT WRAPPER: max-width for breathing room ---------- */
+body.spx .shell{max-width:1200px;margin:0 auto;padding:0 16px}
+
+/* ---------- LEAGUE PANELS: glass showing the vibrant orbs behind ---------- */
+body.spx .sp-lg{position:relative;border-radius:18px;padding:16px;margin:0 0 14px;
+  background:rgba(15,10,30,.18);border:1px solid rgba(255,255,255,.12);
+  backdrop-filter:blur(24px) saturate(160%);-webkit-backdrop-filter:blur(24px) saturate(160%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.10),0 14px 44px -18px rgba(0,0,0,.80)}
+body.spx .sp-lg-head{display:flex;justify-content:space-between;align-items:center;padding:0 4px 12px;margin-bottom:4px;border-bottom:1px solid rgba(255,255,255,.06)}
+body.spx .sp-lg-head b{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#fbbf24;font-weight:900}
+body.spx .sp-lg-head a{color:#d4c8a8;font-size:11px;font-weight:800;letter-spacing:.06em;text-decoration:none}
+body.spx .sp-lg-head a:hover{color:#fbbf24}
+
+/* ---------- SCORECARDS: premium glass with crests ---------- */
+body.spx .sp-scorecard{
+  background:rgba(15,10,30,.20);border:1px solid rgba(255,255,255,.18);border-radius:14px;padding:14px 16px;
+  backdrop-filter:blur(20px) saturate(150%);-webkit-backdrop-filter:blur(20px) saturate(150%);
+  transition:transform .18s,border-color .18s,box-shadow .18s}
+body.spx .sp-scorecard:hover{
+  transform:translateY(-2px);border-color:rgba(251,191,36,.40);
+  box-shadow:0 14px 40px -14px rgba(245,158,11,.30),inset 0 1px 0 rgba(255,255,255,.10)}
+body.spx .sp-sc-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+body.spx .sp-sc-pill{font-size:10px;font-weight:800;letter-spacing:.08em;padding:3px 9px;border-radius:4px;background:rgba(251,191,36,.12);color:#fbbf24;text-transform:uppercase}
+body.spx .sp-sc-pill.ft{background:rgba(74,222,128,.12);color:#86efac}
+body.spx .sp-sc-pill.sp-live{background:linear-gradient(120deg,#dc2626,#b91c1c);color:#fff;animation:ampulse 1.6s infinite}
+body.spx .sp-sc-go{font-size:11px;color:#6b6352}
+body.spx .sp-sc-row{display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.05)}
 body.spx .sp-sc-row:last-child{border-bottom:0}
-body.spx .sp-sc-club{display:flex;align-items:center;gap:9px;font-weight:700;font-size:14px;color:#d8f0de}
-body.spx .sp-sc-num{font-size:24px;font-weight:900;min-width:22px;text-align:right;font-variant-numeric:tabular-nums;color:#eefdf3}
-.sp-crest{width:20px;height:20px;margin-right:8px;vertical-align:-5px;object-fit:contain}
+body.spx .sp-sc-club{display:flex;align-items:center;gap:10px;font-weight:700;font-size:14.5px;color:#ede9dc}
+body.spx .sp-sc-club img{width:30px;height:30px;object-fit:contain}
+body.spx .sp-sc-num{font-size:28px;font-weight:900;min-width:24px;text-align:right;font-variant-numeric:tabular-nums;color:#fff}
+.sp-crest{width:22px;height:22px;margin-right:8px;vertical-align:-5px;object-fit:contain}
+
 /* ---------- RAILS ---------- */
-body.spx .sp-score-rail{overflow-x:auto;scrollbar-width:none;cursor:grab;touch-action:pan-x pan-y;overscroll-behavior-x:contain;
-  padding:2px 2px 6px}
+body.spx .sp-score-rail{overflow-x:auto;scrollbar-width:none;cursor:grab;touch-action:pan-x pan-y;overscroll-behavior-x:contain;padding:4px 2px 8px}
 body.spx .sp-score-rail::-webkit-scrollbar{display:none}
 body.spx .sp-rail-track{display:inline-flex;gap:10px;white-space:nowrap}
-body.spx .sp-rail-track .sp-scorecard{flex:0 0 230px;min-width:230px}
-/* ---------- TABLES: glass with pitch glow ---------- */
+body.spx .sp-rail-track .sp-scorecard{flex:0 0 240px;min-width:240px}
+
+/* ---------- TABLES: glass with amber zones ---------- */
 body.spx .sp-table-wrap{overflow-x:auto;border:1px solid rgba(255,255,255,.10);border-radius:14px;
-  background:rgba(6,36,22,.50);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+  background:rgba(15,10,30,.20);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px)}
 body.spx table.sp-table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
-body.spx .sp-table th{background:rgba(255,255,255,.04);font-size:10px;letter-spacing:.10em;text-transform:uppercase;color:#7ab894;padding:11px 14px;text-align:left;border-bottom:1px solid rgba(255,255,255,.08)}
-body.spx .sp-table td{padding:10px 14px;border-bottom:1px solid rgba(255,255,255,.045);font-size:14px;color:#cde5d4}
-body.spx .sp-table tbody tr:hover{background:rgba(110,231,160,.06)}
+body.spx .sp-table th{background:rgba(255,255,255,.03);font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:#8a7d5e;padding:12px 14px;text-align:left;border-bottom:1px solid rgba(255,255,255,.08)}
+body.spx .sp-table td{padding:11px 14px;border-bottom:1px solid rgba(255,255,255,.04);font-size:14.5px;color:#e2d8c0}
+body.spx .sp-table tbody tr:hover{background:rgba(251,191,36,.04)}
 body.spx .sp-table tbody tr:last-child td{border-bottom:0}
-body.spx .sp-table td:first-child{color:#6b9a7e;font-weight:800}
+body.spx .sp-table td:first-child{color:#8a7d5e;font-weight:800}
 body.spx .sp-table tr.zcl td:first-child{box-shadow:inset 3px 0 0 #22c55e}
 body.spx .sp-table tr.zeu td:first-child{box-shadow:inset 3px 0 0 #eab308}
-body.spx .sp-table tr.zre td:first-child{box-shadow:inset 3px 0 0 #f43f5e}
-body.spx .sp-table tr.zcl{background:linear-gradient(90deg,rgba(34,197,94,.08),transparent 72%)}
-body.spx .sp-table tr.zeu{background:linear-gradient(90deg,rgba(234,179,8,.07),transparent 72%)}
-body.spx .sp-table tr.zre{background:linear-gradient(90deg,rgba(244,63,94,.07),transparent 72%)}
-body.spx .sp-zone-legend{margin:10px 2px 4px;font-size:11px;color:#6b9a7e;text-transform:uppercase;letter-spacing:.06em;font-weight:700}
+body.spx .sp-table tr.zre td:first-child{box-shadow:inset 3px 0 0 #ef4444}
+body.spx .sp-table tr.zcl{background:linear-gradient(90deg,rgba(34,197,94,.06),transparent 70%)}
+body.spx .sp-table tr.zeu{background:linear-gradient(90deg,rgba(234,179,8,.05),transparent 70%)}
+body.spx .sp-table tr.zre{background:linear-gradient(90deg,rgba(239,68,68,.05),transparent 70%)}
+body.spx .sp-zone-legend{margin:10px 2px 4px;font-size:11px;color:#8a7d5e;text-transform:uppercase;letter-spacing:.06em;font-weight:700}
 body.spx .sp-zone-legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px}
 body.spx .sp-form-d{display:inline-block;width:18px;height:18px;line-height:18px;text-align:center;border-radius:5px;color:#fff;font-size:10px;font-weight:800;margin-right:3px}
-/* ---------- STORIES: colour glass magazine on the pitch ---------- */
-body.spx .sp-art-rail{overflow-x:auto;scrollbar-width:none;margin:6px -2px 16px;padding:2px 2px 8px;cursor:grab}
+
+/* ---------- STORIES: editorial colour glass ---------- */
+body.spx .sp-art-rail{overflow-x:auto;scrollbar-width:none;margin:8px -2px 16px;padding:2px 2px 8px;cursor:grab}
 body.spx .sp-art-rail::-webkit-scrollbar{display:none}
-body.spx .sp-art-track{display:inline-flex;gap:12px;white-space:normal}
-body.spx .sp-art{flex:0 0 290px;min-width:290px;display:flex;flex-direction:column;gap:8px;position:relative;border-radius:14px;padding:18px;text-decoration:none;
-  border:1px solid rgba(255,255,255,.16);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);transition:transform .16s,border-color .16s}
-body.spx .sp-art:hover{transform:translateY(-3px);border-color:rgba(110,231,160,.50)}
-body.spx .sp-art b{display:block;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#6ee7a0;font-weight:900}
-body.spx .sp-art span{color:#eefdf3;font-weight:800;font-size:15.5px;line-height:1.35}
-body.spx .sp-art i{font-style:normal;color:#5a8a6e;font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;margin-top:auto}
-body.spx .sp-art::after{content:attr(data-n);position:absolute;top:8px;right:14px;font-size:36px;font-weight:900;font-style:italic;color:rgba(255,255,255,.10);pointer-events:none}
-body.spx .sp-art:nth-child(6n+1){background:linear-gradient(160deg,rgba(34,197,94,.30),rgba(255,255,255,.02) 70%)}
-body.spx .sp-art:nth-child(6n+2){background:linear-gradient(160deg,rgba(6,182,212,.28),rgba(255,255,255,.02) 70%)}
-body.spx .sp-art:nth-child(6n+3){background:linear-gradient(160deg,rgba(124,58,237,.28),rgba(255,255,255,.02) 70%)}
-body.spx .sp-art:nth-child(6n+4){background:linear-gradient(160deg,rgba(236,72,153,.26),rgba(255,255,255,.02) 70%)}
-body.spx .sp-art:nth-child(6n+5){background:linear-gradient(160deg,rgba(245,158,11,.26),rgba(255,255,255,.02) 70%)}
-body.spx .sp-art:nth-child(6n){background:linear-gradient(160deg,rgba(99,102,241,.28),rgba(255,255,255,.02) 70%)}
-/* ---------- DASHBOARDS: three colour glasses ---------- */
-body.spx .sp-dash{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin:6px 0 14px}
-body.spx .sp-dash-col{border-radius:14px;padding:14px;border:1px solid rgba(255,255,255,.12);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
-body.spx .sp-dash-col:nth-child(1){background:linear-gradient(165deg,rgba(34,197,94,.24),rgba(255,255,255,.02))}
-body.spx .sp-dash-col:nth-child(2){background:linear-gradient(165deg,rgba(6,182,212,.22),rgba(255,255,255,.02))}
-body.spx .sp-dash-col:nth-child(3){background:linear-gradient(165deg,rgba(236,72,153,.20),rgba(255,255,255,.02))}
-body.spx .sp-dash-col h3{margin:0 0 8px;font-size:11px;letter-spacing:.10em;text-transform:uppercase;color:#94c4a4}
-body.spx .sp-dash-col .sp-table td{padding:7px 8px;font-size:13px}
-body.spx .sp-dash-more{display:inline-block;margin-top:8px;font-size:11.5px;font-weight:800;color:#6ee7a0;text-decoration:none}
-body.spx .sp-rep{display:flex;flex-direction:column;align-items:flex-start;gap:2px;padding:8px 10px;margin:4px 0;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.10);border-radius:10px;color:#d8f0de;font-weight:700;font-size:13px;text-decoration:none}
-body.spx .sp-rep:hover{border-color:rgba(110,231,160,.45)}
-body.spx .sp-rep span{color:#6ee7a0;font-size:9.5px;font-weight:900;letter-spacing:.10em;text-transform:uppercase}
-body.spx .sp-rep i{font-style:normal;color:#5a8a6e;font-size:10.5px;font-weight:700}
-/* ---------- TWO-COLUMN LAYOUT ---------- */
-body.spx .sp-layout{display:grid;grid-template-columns:minmax(0,2.1fr) minmax(0,1fr);gap:18px;align-items:start;margin-top:14px}
-body.spx .sp-side{display:flex;flex-direction:column;gap:14px}
+body.spx .sp-art-track{display:inline-flex;gap:14px;white-space:normal}
+body.spx .sp-art{flex:0 0 300px;min-width:300px;display:flex;flex-direction:column;gap:10px;position:relative;border-radius:16px;padding:22px;text-decoration:none;
+  border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);
+  transition:transform .18s,border-color .18s}
+body.spx .sp-art:hover{transform:translateY(-3px);border-color:rgba(251,191,36,.45)}
+body.spx .sp-art b{display:block;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#fbbf24;font-weight:900}
+body.spx .sp-art span{color:#ede9dc;font-weight:800;font-size:16.5px;line-height:1.32}
+body.spx .sp-art i{font-style:normal;color:#6b6352;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-top:auto}
+body.spx .sp-art::after{content:attr(data-n);position:absolute;top:10px;right:16px;font-size:38px;font-weight:900;font-style:italic;color:rgba(251,191,36,.12);pointer-events:none}
+/* six warm colour washes on glass */
+body.spx .sp-art:nth-child(6n+1){background:linear-gradient(165deg,rgba(245,158,11,.16),rgba(15,10,30,.19) 60%)}
+body.spx .sp-art:nth-child(6n+2){background:linear-gradient(165deg,rgba(45,212,191,.14),rgba(15,10,30,.19) 60%)}
+body.spx .sp-art:nth-child(6n+3){background:linear-gradient(165deg,rgba(139,92,246,.14),rgba(15,10,30,.19) 60%)}
+body.spx .sp-art:nth-child(6n+4){background:linear-gradient(165deg,rgba(236,72,153,.13),rgba(15,10,30,.19) 60%)}
+body.spx .sp-art:nth-child(6n+5){background:linear-gradient(165deg,rgba(34,197,94,.13),rgba(15,10,30,.19) 60%)}
+body.spx .sp-art:nth-child(6n){background:linear-gradient(165deg,rgba(59,130,246,.14),rgba(15,10,30,.19) 60%)}
+
+/* ---------- DASHBOARDS: accent-topped glass ---------- */
+body.spx .sp-dash{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin:6px 0 16px}
+body.spx .sp-dash-col{border-radius:16px;padding:16px;
+  background:rgba(15,10,30,.19);border:1px solid rgba(255,255,255,.10);
+  backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px)}
+body.spx .sp-dash-col:nth-child(1){border-top:2px solid rgba(251,191,36,.40)}
+body.spx .sp-dash-col:nth-child(2){border-top:2px solid rgba(45,212,191,.35)}
+body.spx .sp-dash-col:nth-child(3){border-top:2px solid rgba(139,92,246,.35)}
+body.spx .sp-dash-col h3{margin:0 0 10px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#fbbf24;font-weight:900}
+body.spx .sp-dash-col:nth-child(2) h3{color:#5eead4}
+body.spx .sp-dash-col:nth-child(3) h3{color:#c4b5fd}
+body.spx .sp-dash-col .sp-table td{padding:8px 8px;font-size:13px}
+body.spx .sp-dash-more{display:inline-block;margin-top:10px;font-size:11.5px;font-weight:800;color:#fbbf24;text-decoration:none}
+body.spx .sp-rep{display:flex;flex-direction:column;align-items:flex-start;gap:3px;padding:9px 11px;margin:5px 0;
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:10px;
+  color:#ede9dc;font-weight:700;font-size:13px;text-decoration:none}
+body.spx .sp-rep:hover{border-color:rgba(251,191,36,.35)}
+body.spx .sp-rep span{color:#fbbf24;font-size:9.5px;font-weight:900;letter-spacing:.10em;text-transform:uppercase}
+body.spx .sp-rep i{font-style:normal;color:#6b6352;font-size:10.5px;font-weight:700}
+
+/* ---------- LAYOUT ---------- */
+body.spx .sp-layout{display:grid;grid-template-columns:minmax(0,2.2fr) minmax(0,1fr);gap:20px;align-items:start;margin-top:16px}
+body.spx .sp-side{display:flex;flex-direction:column;gap:16px}
+
 /* ---------- MISC ---------- */
-body.spx .sp-result-meta{font-size:11.5px;color:#6b9a7e;margin-top:8px}
-body.spx .prose h1{letter-spacing:-.025em;font-weight:900}
-body.spx .article-hero{background:rgba(6,36,22,.50);border:1px solid rgba(255,255,255,.10);border-radius:16px;padding:26px;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+body.spx .sp-result-meta{font-size:11.5px;color:#6b6352;margin-top:8px}
+body.spx .prose h1{letter-spacing:-.025em;font-weight:900;color:#fff}
+body.spx .article-hero{background:rgba(10,14,28,.46);border:1px solid rgba(255,255,255,.10);border-radius:16px;padding:28px;backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px)}
 body.spx .crumb{display:none}
 body.spx .spx-back{display:none}
-@keyframes pgpulse{0%,100%{box-shadow:0 0 0 0 rgba(74,222,128,.5)}50%{box-shadow:0 0 0 6px rgba(74,222,128,0)}}
+@keyframes ampulse{0%,100%{box-shadow:0 0 0 0 rgba(245,158,11,.45)}50%{box-shadow:0 0 0 6px rgba(245,158,11,0)}}
 @media(max-width:640px){
-  .spx-hero-photo{min-height:42vh;padding:36px 18px 66px}
-  .sp-led{margin-top:-36px}
+  .spx-hero-photo{min-height:38vh;padding:0 20px 44px;border-radius:18px;margin-top:12px}
+  .sp-led{margin-top:10px}
   body.spx .sp-layout{grid-template-columns:1fr}
-  body.spx .sp-art{flex:0 0 250px;min-width:250px}
+  body.spx .sp-art{flex:0 0 260px;min-width:260px}
 }

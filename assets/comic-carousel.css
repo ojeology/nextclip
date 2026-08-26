@@ -127,16 +127,6 @@ body{overflow-x:hidden}
 .mc-md-i.soon{opacity:.72}
 .mc-md-i.soon .mc-md-n{color:var(--mut)}
 .mc-md-i .lock{position:absolute;top:8px;right:10px;font-size:12px}
-
-/* Watch page — big Play, no clutter */
-.mc-start{position:absolute;inset:0;z-index:18;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;border:0;background:rgba(0,0,0,.42);color:#fff;cursor:pointer}
-.mc-start i{display:grid;place-items:center;width:84px;height:84px;border-radius:50%;background:#FE2C55;font-style:normal;font-size:34px;box-shadow:0 10px 30px rgba(254,44,85,.45)}
-.mc-start b{font-size:18px;font-weight:900}
-.mc-start span{font-size:13px;color:#cfd4db}
-.mc-watch .mc-md,.mc-watch .mc-dots,.mc-watch .mc-fs-open{display:none!important}
-.mc-watch .mc-ctrl{justify-content:center;padding:12px 8px 4px}
-.mc-watch .mc-play{background:#FE2C55;border-color:#FE2C55;color:#fff}
-.mc-watch .mc-cnt{min-width:64px}
 @media(max-width:768px){
   .mc-deck{aspect-ratio:4/3;max-height:50vh}
   .mc-hud{top:22px;left:12px;right:12px}
