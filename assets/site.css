@@ -4448,3 +4448,62 @@ body.spx .spx-chips span:nth-child(3){border-color:rgba(244,114,182,.4);backgrou
 body.spx .sp-rep{background:linear-gradient(160deg,rgba(129,140,248,.10),rgba(255,255,255,.03));border-color:rgba(150,160,255,.22)}
 body.spx .sp-rep:hover{border-color:rgba(34,211,238,.5)}
 body.spx .sp-form-d{box-shadow:0 0 8px -2px currentColor}
+
+/* ==================================================================
+   TRUE GLASS (v16) — visible glassmorphism: colour behind, frost on top
+   ================================================================== */
+/* 1) vivid colour orbs behind everything (gives the glass something to blur) */
+body.spx{position:relative}
+body.spx:before{content:"";position:fixed;inset:-15%;z-index:-1;pointer-events:none;
+ background:
+  radial-gradient(34% 42% at 12% 8%,rgba(139,92,246,.32),transparent 60%),
+  radial-gradient(30% 38% at 88% 14%,rgba(34,211,238,.26),transparent 60%),
+  radial-gradient(32% 40% at 78% 88%,rgba(244,114,182,.22),transparent 62%),
+  radial-gradient(28% 34% at 6% 82%,rgba(52,211,153,.16),transparent 60%);
+ filter:blur(30px);animation:spdrift 26s ease-in-out infinite alternate}
+@keyframes spdrift{0%{transform:translate(-2%, -1%) scale(1)}100%{transform:translate(2%, 2%) scale(1.06)}}
+/* 2) league glass — SPECIFICITY FIXED (body.spx prefix wins over old rules) */
+body.spx .sp-lg-premier-league{background:linear-gradient(160deg,rgba(143,75,214,.24),rgba(255,255,255,.03) 60%)!important;border-color:rgba(178,135,240,.45)}
+body.spx .sp-lg-la-liga{background:linear-gradient(160deg,rgba(239,68,68,.22),rgba(255,255,255,.03) 60%)!important;border-color:rgba(250,140,140,.42)}
+body.spx .sp-lg-serie-a{background:linear-gradient(160deg,rgba(47,124,246,.22),rgba(255,255,255,.03) 60%)!important;border-color:rgba(120,170,250,.45)}
+body.spx .sp-lg-bundesliga{background:linear-gradient(160deg,rgba(242,183,5,.20),rgba(255,255,255,.03) 60%)!important;border-color:rgba(246,200,90,.42)}
+body.spx .sp-lg-ligue-1{background:linear-gradient(160deg,rgba(20,184,166,.22),rgba(255,255,255,.03) 60%)!important;border-color:rgba(80,205,190,.42)}
+body.spx .sp-lg{backdrop-filter:blur(22px) saturate(170%);-webkit-backdrop-filter:blur(22px) saturate(170%);
+ background:linear-gradient(160deg,rgba(129,140,248,.16),rgba(255,255,255,.03) 60%)!important;
+ border:1px solid rgba(170,180,255,.32);border-radius:18px}
+/* 3) scorecards: true frost, visible tint */
+body.spx .sp-scorecard{backdrop-filter:blur(18px) saturate(160%);-webkit-backdrop-filter:blur(18px) saturate(160%);
+ background:linear-gradient(160deg,rgba(129,140,248,.17),rgba(34,211,238,.09) 60%)!important;
+ border:1px solid rgba(180,190,255,.35)}
+body.spx .sp-scorecard:before{opacity:.9}
+body.spx .sp-scorecard:hover{background:linear-gradient(160deg,rgba(139,110,250,.28),rgba(56,200,235,.16) 60%)!important}
+/* 4) tables + dashboards: frosted */
+body.spx .sp-table-wrap{backdrop-filter:blur(18px) saturate(150%);-webkit-backdrop-filter:blur(18px) saturate(150%);
+ background:linear-gradient(170deg,rgba(129,140,248,.12),rgba(255,255,255,.03) 55%)!important;
+ border:1px solid rgba(170,180,255,.3)}
+body.spx .sp-side .sp-dash-col:nth-child(1){background:linear-gradient(165deg,rgba(129,140,248,.22),rgba(255,255,255,.03))!important;border-color:rgba(165,175,255,.42);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+body.spx .sp-side .sp-dash-col:nth-child(2){background:linear-gradient(165deg,rgba(34,211,238,.20),rgba(255,255,255,.03))!important;border-color:rgba(90,215,240,.42);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+body.spx .sp-side .sp-dash-col:nth-child(3){background:linear-gradient(165deg,rgba(244,114,182,.18),rgba(255,255,255,.03))!important;border-color:rgba(248,155,200,.42);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+/* 5) stories: bold colour glass */
+body.spx .sp-art{backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+body.spx .sp-art:nth-child(6n+1){background:linear-gradient(160deg,rgba(167,139,250,.24),rgba(255,255,255,.03))!important;border-color:rgba(190,165,255,.4)}
+body.spx .sp-art:nth-child(6n+2){background:linear-gradient(160deg,rgba(56,189,248,.22),rgba(255,255,255,.03))!important;border-color:rgba(115,205,245,.4)}
+body.spx .sp-art:nth-child(6n+3){background:linear-gradient(160deg,rgba(244,114,182,.20),rgba(255,255,255,.03))!important;border-color:rgba(247,160,205,.4)}
+body.spx .sp-art:nth-child(6n+4){background:linear-gradient(160deg,rgba(52,211,153,.20),rgba(255,255,255,.03))!important;border-color:rgba(105,218,180,.4)}
+body.spx .sp-art:nth-child(6n+5){background:linear-gradient(160deg,rgba(251,191,36,.20),rgba(255,255,255,.03))!important;border-color:rgba(244,208,110,.4)}
+body.spx .sp-art:nth-child(6n){background:linear-gradient(160deg,rgba(129,140,248,.22),rgba(255,255,255,.03))!important;border-color:rgba(165,175,255,.4)}
+/* 6) ticker: heavy frost, bright rainbow edge */
+.sp-led{backdrop-filter:blur(26px) saturate(180%);-webkit-backdrop-filter:blur(26px) saturate(180%);
+ background-image:linear-gradient(180deg,rgba(10,14,26,.62),rgba(10,14,26,.72)),
+ linear-gradient(90deg,#a78bfa,#38bdf8,#f9a8d4,#a78bfa)!important}
+/* 7) chips/tabs: glass pops */
+body.spx .spx-chips span{backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+body.spx .spx-chips span:nth-child(1){background:rgba(124,58,237,.28)!important}
+body.spx .spx-chips span:nth-child(2){background:rgba(8,145,178,.26)!important}
+body.spx .spx-chips span:nth-child(3){background:rgba(219,39,119,.24)!important}
+body.spx .sp-tabs a{backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);background:rgba(12,17,30,.5)}
+body.spx .sp-rep{backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+/* zone rows stronger */
+body.spx .sp-table tr.zcl{background:linear-gradient(90deg,rgba(34,197,94,.16),transparent 72%)}
+body.spx .sp-table tr.zeu{background:linear-gradient(90deg,rgba(234,179,8,.14),transparent 72%)}
+body.spx .sp-table tr.zre{background:linear-gradient(90deg,rgba(244,63,94,.14),transparent 72%)}
