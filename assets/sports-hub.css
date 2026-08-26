@@ -505,7 +505,8 @@
   transition: border-color 0.15s ease, background 0.15s ease;
 }
 .sp-scorecard:hover { border-color: var(--bsd-line-2); background: var(--bsd-panel-2); }
-.sp-sc-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 8px; }
+.sp-sc-top { display: flex; align-items: center; justify-content: flex-start; gap: 8px; margin-bottom: 8px; }
+.sp-sc-lg { font-size: 9.5px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--bsd-faint); white-space: nowrap; }
 .sp-sc-pill {
   font-size: 9.5px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase;
   padding: 3px 7px; border-radius: 4px; background: var(--bsd-panel-3); color: var(--bsd-muted);
@@ -513,7 +514,7 @@
 }
 .sp-sc-pill.ft { background: rgba(61, 220, 132, 0.1); color: var(--bsd-live); }
 .sp-sc-pill.sp-live { background: var(--bsd-live); color: #06220f; animation: bsd-pulse 2.4s ease-out infinite; }
-.sp-sc-go { font-size: 10.5px; font-weight: 600; color: var(--bsd-faint); }
+.sp-sc-go { font-size: 10.5px; font-weight: 600; color: var(--bsd-faint); margin-left: auto; white-space: nowrap; }
 .sp-scorecard:hover .sp-sc-go { color: var(--bsd-live); }
 .sp-sc-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 4px 0; }
 .sp-sc-club { display: flex; align-items: center; gap: 9px; min-width: 0; }

@@ -67,7 +67,7 @@
     var pill = r ? '<span class="sp-sc-pill ft">FT</span>' : '<span class="sp-sc-pill">' + esc(m.time || "TBC") + "</span>";
     var hn = r ? r.homeScore : "\u2013", an = r ? r.awayScore : "\u2013";
     return '<a class="sp-scorecard" href="' + url + '" data-mk="' + esc(key || "") + '"><div class="sp-sc-top">' + pill +
-      '<span class="sp-sc-go">' + (r ? "Result \u2192" : "Preview \u2192") + "</span></div><div>" +
+      '<span class="sp-sc-lg">' + LEAGUES[lg].label + '</span><span class="sp-sc-go">' + (r ? "Result \u2192" : "Preview \u2192") + "</span></div><div>" +
       '<div class="sp-sc-row"><div class="sp-sc-club"><img src="' + crest(lg, m.id) + '" data-fb="' + crestFallback(lg, m.id) + '" alt="" width="32" height="32" loading="lazy" decoding="async" onerror="if(this.dataset.fb){this.src=this.dataset.fb;this.dataset.fb=\'\';}else{this.style.display=\'none\';}"><span>' + esc(m.homeName) + '</span></div><b class="sp-sc-num">' + hn + "</b></div>" +
       '<div class="sp-sc-row"><div class="sp-sc-club"><img src="' + crest(lg, m.away) + '" data-fb="' + crestFallback(lg, m.away) + '" alt="" width="32" height="32" loading="lazy" decoding="async" onerror="if(this.dataset.fb){this.src=this.dataset.fb;this.dataset.fb=\'\';}else{this.style.display=\'none\';}"><span>' + esc(m.awayName) + '</span></div><b class="sp-sc-num">' + an + "</b></div></div></a>";
   }
@@ -378,9 +378,12 @@
           var html = '<div class="sp-board-head"><div><div class="eyebrow">Live desk</div><h2>' + title + "</h2></div>";
           if (withDate && arr[0].m.date) html += '<span class="sp-board-date">' + esc(niceDate(arr[0].m.date)) + "</span>";
           html += "</div>";
-          var byLg = {};
-          arr.forEach(function (b) { (byLg[b.lg] = byLg[b.lg] || []).push(b.m); });
-          html += Object.keys(byLg).map(function (lg) { return group(lg, byLg[lg], data.results); }).join("");
+          /* FLAT board: one rail per section — every card carries its own league tag */
+          var cards = arr.map(function (b) {
+            var k = b.lg + "/" + b.m.id + "-vs-" + b.m.away;
+            return card(b.lg, b.m, data.results[k], k);
+          }).join("");
+          html += '<div class="sp-score-rail"><div class="sp-rail-track">' + cards + cards + "</div></div>";
           return html;
         }
         var out = section("Today", todays, false);
