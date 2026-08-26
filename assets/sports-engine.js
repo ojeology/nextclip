@@ -397,69 +397,63 @@
 
   function initRails() {
     document.querySelectorAll(".sp-score-rail, .sp-art-rail").forEach(function (rail) {
-      if (rail.getAttribute("data-rail-ok")) return;
-      rail.setAttribute("data-rail-ok", "1");
+      if (rail.getAttribute("data-rail-live")) return;
+      rail.setAttribute("data-rail-live", "1");
       var track = rail.querySelector(".sp-rail-track, .sp-art-track");
       if (!track) return;
       rail.style.overflowX = "auto";
       rail.style.overflowY = "hidden";
       rail.style.cursor = "grab";
       rail.style.scrollbarWidth = "none";
-      rail.style.webkitOverflowScrolling = "touch";
       rail.style.touchAction = "pan-x pan-y";
       rail.style.overscrollBehaviorX = "contain";
-      var paused = false, resumeTimer = null, rafId = 0;
-      function halfWidth() {
-        return Math.max(track.scrollWidth / 2, rail.clientWidth + 1);
-      }
-      function autoScroll() {
-        rafId = 0;
-        if (!paused && !document.hidden && halfWidth() > rail.clientWidth + 10) {
-          rail.scrollLeft += 0.4;
-          if (rail.scrollLeft >= halfWidth()) rail.scrollLeft = 0;
-        }
-        rafId = requestAnimationFrame(autoScroll);
-      }
+      var isPaused = false;
+      var resumeTimer = null;
+      var scrollTimer = null;
       function pause() {
-        paused = true;
+        isPaused = true;
         if (resumeTimer) clearTimeout(resumeTimer);
-        resumeTimer = setTimeout(function () { paused = false; }, 3000);
+        resumeTimer = setTimeout(function () { isPaused = false; }, 3000);
       }
-      function resume() {
-        if (resumeTimer) clearTimeout(resumeTimer);
-        resumeTimer = setTimeout(function () { paused = false; }, 2000);
-      }
-      if (!rafId) rafId = requestAnimationFrame(autoScroll);
-      rail.addEventListener("mouseenter", function () { paused = true; });
-      rail.addEventListener("mouseleave", function () { resume(); });
-      rail.addEventListener("touchstart", function () { pause(); }, { passive: true });
-      rail.addEventListener("touchend", function () { resume(); }, { passive: true });
-      rail.addEventListener("wheel", function () { pause(); }, { passive: true });
-      var drag = false, dragX = 0, dragScroll = 0, dragMoved = false;
+      // AUTO-SCROLL: setInterval is bulletproof (no rAF throttling)
+      scrollTimer = setInterval(function () {
+        if (isPaused || document.hidden) return;
+        var half = track.scrollWidth / 2;
+        if (half < rail.clientWidth + 20) return;
+        var next = rail.scrollLeft + 0.5;
+        if (next >= half) next = 0;
+        rail.scrollLeft = next;
+      }, 16);
+      // MANUAL DRAG: pointer events on document for smooth tracking
+      var dragging = false, dragStartX = 0, dragStartScroll = 0, dragMoved = false;
       rail.addEventListener("pointerdown", function (e) {
-        drag = true; dragMoved = false;
-        dragX = e.clientX; dragScroll = rail.scrollLeft;
+        dragging = true; dragMoved = false;
+        dragStartX = e.clientX; dragStartScroll = rail.scrollLeft;
         rail.style.cursor = "grabbing";
         pause();
+        e.preventDefault();
       });
       document.addEventListener("pointermove", function (e) {
-        if (!drag) return;
-        var dx = e.clientX - dragX;
+        if (!dragging) return;
+        var dx = e.clientX - dragStartX;
         if (Math.abs(dx) > 3) dragMoved = true;
-        rail.scrollLeft = dragScroll - dx;
+        rail.scrollLeft = dragStartScroll - dx;
       });
       document.addEventListener("pointerup", function () {
-        if (!drag) return;
-        drag = false;
+        if (!dragging) return;
+        dragging = false;
         rail.style.cursor = "grab";
-        resume();
+        pause();
       });
+      // TOUCH: native scrolling + pause
+      rail.addEventListener("touchstart", function () { pause(); }, { passive: true });
+      rail.addEventListener("touchend", function () { pause(); }, { passive: true });
+      // WHEEL: pause
+      rail.addEventListener("wheel", function () { pause(); }, { passive: true });
+      // Prevent click-through after drag
       rail.addEventListener("click", function (e) {
-        if (dragMoved) { e.preventDefault(); e.stopPropagation(); }
+        if (dragMoved) { e.preventDefault(); e.stopPropagation(); dragMoved = false; }
       }, true);
-      window.addEventListener("resize", function () {
-        halfWidth();
-      });
     });
   }
   var bootDone = false;
