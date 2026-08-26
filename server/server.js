@@ -28,6 +28,7 @@ const API_BASE = process.env.TELEGRAM_API_BASE || "https://api.telegram.org";
 const MINI_APP_URL = process.env.MINI_APP_URL || "";
 
 const { createBot } = require("./bot");
+const API_PUBLIC_URL = process.env.API_PUBLIC_URL || "";
 
 /* ---------- content cache (mtime-refreshed) ---------- */
 const INDEX_PATH = path.join(ROOT, "content", "posts-index.json");
@@ -73,6 +74,7 @@ function botFor(req) {
   return createBot({
     getPosts: () => loadContent().posts,
     miniAppBase: miniBase(req),
+    apiBaseUrl: API_PUBLIC_URL || miniBase(req),
     send: telegram,
     answerCallback: (id) => telegram("answerCallbackQuery", { callback_query_id: id })
   });

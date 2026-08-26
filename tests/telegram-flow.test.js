@@ -24,19 +24,28 @@ const mock = http.createServer((req, res) => {
   });
 });
 
-const PORT = 8791, MPORT = 8792;
-const server = spawn(process.execPath, [path.join(ROOT, "server", "server.js")], {
-  env: Object.assign({}, process.env, {
-    PORT: String(PORT),
-    TELEGRAM_BOT_TOKEN: "123:TEST",
-    TELEGRAM_API_BASE: "http://localhost:" + MPORT,
-    TELEGRAM_WEBHOOK_SECRET: "s3cret",
-    MINI_APP_URL: "https://bryme-tg.example.com"
-  }),
-  stdio: ["ignore", "pipe", "pipe"]
+// pick free ports so a running dev server can't collide with the test
+const net = require("net");
+const freePort = () => new Promise((res, rej) => {
+  const srv = net.createServer();
+  srv.listen(0, "0.0.0.0", () => { const p = srv.address().port; srv.close(() => res(p)); });
+  srv.on("error", rej);
 });
-server.stdout.on("data", () => {});
-server.stderr.on("data", (d) => process.stderr.write("[srv] " + d));
+let server = null;
+function startServer(port, mport) {
+  server = spawn(process.execPath, [path.join(ROOT, "server", "server.js")], {
+    env: Object.assign({}, process.env, {
+      PORT: String(port),
+      TELEGRAM_BOT_TOKEN: "123:TEST",
+      TELEGRAM_API_BASE: "http://localhost:" + mport,
+      TELEGRAM_WEBHOOK_SECRET: "s3cret",
+      MINI_APP_URL: "https://bryme-tg.example.com"
+    }),
+    stdio: ["ignore", "pipe", "pipe"]
+  });
+  server.stdout.on("data", () => {});
+  server.stderr.on("data", (d) => process.stderr.write("[srv] " + d));
+}
 
 const req = (method, url, headers, body) => new Promise((resolve, reject) => {
   const r = http.request(url, { method, headers: headers || {} }, (res) => {
@@ -47,10 +56,11 @@ const req = (method, url, headers, body) => new Promise((resolve, reject) => {
   r.end();
 });
 
-const sent = () => req("POST", `http://localhost:${MPORT}/__dump`).then((r) => JSON.parse(r.body).filter((c) => c.method === "sendMessage").map((c) => c.payload));
-const reset = () => req("POST", `http://localhost:${MPORT}/__reset`);
+let MPORT_REF = 0, PORT_REF = 0;
+const sent = () => req("POST", `http://localhost:${MPORT_REF}/__dump`).then((r) => JSON.parse(r.body).filter((c) => c.method === "sendMessage").map((c) => c.payload));
+const reset = () => req("POST", `http://localhost:${MPORT_REF}/__reset`);
 async function webhook(update) {
-  await req("POST", `http://localhost:${PORT}/telegram/webhook`,
+  await req("POST", `http://localhost:${PORT_REF}/telegram/webhook`,
     { "content-type": "application/json", "x-telegram-bot-api-secret-token": "s3cret" }, JSON.stringify(update));
   await new Promise((r) => setTimeout(r, 350));
   const s = await sent();
@@ -65,7 +75,10 @@ function check(name, cond, extra) {
 }
 
 (async () => {
-  await new Promise((r) => mock.listen(MPORT, r));
+  const PORT = await freePort(), MPORT = await freePort();
+  startServer(PORT, MPORT);
+  PORT_REF = PORT; MPORT_REF = MPORT;
+  await new Promise((r) => mock.listen(MPORT, "0.0.0.0", r));
   await new Promise((r) => setTimeout(r, 600));
   const BASE = `http://localhost:${PORT}`;
 
@@ -134,4 +147,4 @@ function check(name, cond, extra) {
 
   console.log(`\n${pass} passed, ${fail} failed`);
   server.kill(); mock.close(); process.exit(fail ? 1 : 0);
-})().catch((e) => { console.error("HARNESS ERROR", e); server.kill(); mock.close(); process.exit(1); });
+})().catch((e) => { console.error("HARNESS ERROR", e); if (server) server.kill(); try { mock.close(); } catch (x) {} process.exit(1); });

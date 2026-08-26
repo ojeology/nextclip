@@ -20,6 +20,8 @@ services:
       - key: TELEGRAM_WEBHOOK_SECRET
         generateValue: true
       - key: MINI_APP_URL
-        sync: false        # e.g. https://bryme-telegram.onrender.com
+        sync: false        # Mode A: https://bryme.onrender.com/miniapp
+      - key: API_PUBLIC_URL
+        sync: false        # Mode A: https://bryme-telegram.onrender.com
       - key: NODE_VERSION
         value: 20.11.1

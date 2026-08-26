@@ -103,9 +103,17 @@ function articleMessage(posts, slug, miniAppBase) {
   };
 }
 
-/* Create the bot. deps: { getPosts(), miniAppBase, send(method, payload), answerCallback(id, text) } */
+/* Create the bot. deps: { getPosts(), miniAppBase, apiBaseUrl, send(method, payload), answerCallback(id, text) } */
 function createBot(deps) {
   const { getPosts, miniAppBase, send, answerCallback } = deps;
+  /* When the Mini App is hosted on the FRONTEND domain (recommended:
+   * https://bryme.onrender.com/miniapp/) it needs to be told where the
+   * backend API lives — the app reads ?api= from its URL. When the Mini App
+   * is hosted by the backend itself, no parameter is needed. */
+  const apiParam = deps.apiBaseUrl
+    ? (deps.apiBaseUrl.indexOf("?") > -1 ? "&" : "?") + "api=" + encodeURIComponent(deps.apiBaseUrl.replace(/\/+$/, ""))
+    : "";
+  const base = miniAppBase + apiParam;
 
   function deliver(chatId, msg) {
     return send("sendMessage", {
@@ -120,13 +128,13 @@ function createBot(deps) {
   function handleStart(chatId, arg) {
     const cat = (arg || "").trim().toLowerCase();
     if (cat && CAT_BY_KEY[cat]) {
-      return deliver(chatId, categoryMessage(getPosts(), cat, miniAppBase));
+      return deliver(chatId, categoryMessage(getPosts(), cat, base));
     }
-    if (cat === "latest") return deliver(chatId, latestMessage(getPosts(), miniAppBase));
+    if (cat === "latest") return deliver(chatId, latestMessage(getPosts(), base));
     const slug = cat;
     if (slug) {
       const p = getPosts().find((x) => x.slug === slug);
-      if (p) return deliver(chatId, articleMessage(getPosts(), slug, miniAppBase));
+      if (p) return deliver(chatId, articleMessage(getPosts(), slug, base));
     }
     return deliver(chatId, { text: homeText(), keyboard: homeKeyboard() });
   }
@@ -151,9 +159,9 @@ function createBot(deps) {
           const chatId = cb.message && cb.message.chat ? cb.message.chat.id : cb.from && cb.from.id;
           const done = answerCallback(cb.id).catch(() => {});
           if (cb.data === "home") return done.then(() => deliver(chatId, { text: homeText(), keyboard: homeKeyboard() }));
-          if (cb.data === "latest") return done.then(() => deliver(chatId, latestMessage(getPosts(), miniAppBase)));
-          if (cb.data.startsWith("cat:")) return done.then(() => deliver(chatId, categoryMessage(getPosts(), cb.data.slice(4), miniAppBase)));
-          if (cb.data.startsWith("art:")) return done.then(() => deliver(chatId, articleMessage(getPosts(), cb.data.slice(4), miniAppBase)));
+          if (cb.data === "latest") return done.then(() => deliver(chatId, latestMessage(getPosts(), base)));
+          if (cb.data.startsWith("cat:")) return done.then(() => deliver(chatId, categoryMessage(getPosts(), cb.data.slice(4), base)));
+          if (cb.data.startsWith("art:")) return done.then(() => deliver(chatId, articleMessage(getPosts(), cb.data.slice(4), base)));
           return done;
         }
       } catch (e) {
