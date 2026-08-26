@@ -4507,3 +4507,25 @@ body.spx .sp-rep{backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
 body.spx .sp-table tr.zcl{background:linear-gradient(90deg,rgba(34,197,94,.16),transparent 72%)}
 body.spx .sp-table tr.zeu{background:linear-gradient(90deg,rgba(234,179,8,.14),transparent 72%)}
 body.spx .sp-table tr.zre{background:linear-gradient(90deg,rgba(244,63,94,.14),transparent 72%)}
+
+/* ==================================================================
+   v17 GLASS FIX — bulletproof league colours + above-the-fold colour
+   ================================================================== */
+body.spx .sp-lg.sp-lg-premier-league{background:linear-gradient(160deg,rgba(143,75,214,.34),rgba(255,255,255,.04) 62%)!important;border-color:rgba(188,146,246,.55)!important}
+body.spx .sp-lg.sp-lg-la-liga{background:linear-gradient(160deg,rgba(239,68,68,.32),rgba(255,255,255,.04) 62%)!important;border-color:rgba(251,146,146,.52)!important}
+body.spx .sp-lg.sp-lg-serie-a{background:linear-gradient(160deg,rgba(47,124,246,.32),rgba(255,255,255,.04) 62%)!important;border-color:rgba(130,175,250,.55)!important}
+body.spx .sp-lg.sp-lg-bundesliga{background:linear-gradient(160deg,rgba(242,183,5,.30),rgba(255,255,255,.04) 62%)!important;border-color:rgba(248,205,98,.52)!important}
+body.spx .sp-lg.sp-lg-ligue-1{background:linear-gradient(160deg,rgba(20,184,166,.32),rgba(255,255,255,.04) 62%)!important;border-color:rgba(92,208,194,.52)!important}
+body.spx .sp-lg{border-radius:18px}
+.spx-hero-photo{min-height:52vh!important;padding-top:44px!important;padding-bottom:84px!important}
+.sp-led{margin-top:-44px!important}
+body.spx .sp-board-head{margin:20px 0 10px}
+body.spx .sp-layout{margin-top:12px}
+body.spx .sp-art-rail{margin:4px -2px 10px}
+body.spx .sp-scorecard{background:linear-gradient(160deg,rgba(129,140,248,.24),rgba(34,211,238,.13) 62%)!important;border-color:rgba(190,200,255,.48)!important}
+body.spx .sp-art:nth-child(6n+1){background:linear-gradient(160deg,rgba(167,139,250,.32),rgba(255,255,255,.04))!important}
+body.spx .sp-art:nth-child(6n+2){background:linear-gradient(160deg,rgba(56,189,248,.30),rgba(255,255,255,.04))!important}
+body.spx .sp-art:nth-child(6n+3){background:linear-gradient(160deg,rgba(244,114,182,.28),rgba(255,255,255,.04))!important}
+body.spx .sp-art:nth-child(6n+4){background:linear-gradient(160deg,rgba(52,211,153,.28),rgba(255,255,255,.04))!important}
+body.spx .sp-art:nth-child(6n+5){background:linear-gradient(160deg,rgba(251,191,36,.28),rgba(255,255,255,.04))!important}
+body.spx .sp-art:nth-child(6n){background:linear-gradient(160deg,rgba(129,140,248,.30),rgba(255,255,255,.04))!important}
