@@ -4341,3 +4341,25 @@ body.spx table.sp-table{position:relative;z-index:1}
 .sp-led{
   background:linear-gradient(90deg,rgba(124,58,237,.12),rgba(6,10,18,.70) 15%,rgba(6,10,18,.70) 85%,rgba(6,182,212,.12));
   backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+
+/* TRANSFORM RAILS: track moves, container clips */
+body.spx .sp-score-rail,
+body.spx .sp-art-rail{
+  overflow:hidden !important;
+  cursor:grab;
+  touch-action:pan-y;
+  user-select:none;
+  -webkit-user-select:none;
+}
+body.spx .sp-rail-track,
+body.spx .sp-art-track{
+  display:inline-flex;
+  gap:10px;
+  white-space:nowrap;
+  will-change:transform;
+  transition:none;
+}
+body.spx .sp-rail-track > *,
+body.spx .sp-art-track > *{
+  flex:0 0 auto;
+}

@@ -397,47 +397,53 @@
 
   function initRails() {
     document.querySelectorAll(".sp-score-rail, .sp-art-rail").forEach(function (rail) {
-      if (rail.getAttribute("data-rail-live")) return;
-      rail.setAttribute("data-rail-live", "1");
+      if (rail.getAttribute("data-rail-go")) return;
+      rail.setAttribute("data-rail-go", "1");
       var track = rail.querySelector(".sp-rail-track, .sp-art-track");
       if (!track) return;
-      rail.style.overflowX = "auto";
-      rail.style.overflowY = "hidden";
-      rail.style.cursor = "grab";
-      rail.style.scrollbarWidth = "none";
-      rail.style.touchAction = "pan-x pan-y";
-      rail.style.overscrollBehaviorX = "contain";
-      var isPaused = false;
+      var pos = 0;
+      var paused = false;
       var resumeTimer = null;
-      var scrollTimer = null;
+      var animId = null;
       function pause() {
-        isPaused = true;
+        paused = true;
         if (resumeTimer) clearTimeout(resumeTimer);
-        resumeTimer = setTimeout(function () { isPaused = false; }, 3000);
+        resumeTimer = setTimeout(function () { paused = false; }, 3000);
       }
-      // AUTO-SCROLL: setInterval is bulletproof (no rAF throttling)
-      scrollTimer = setInterval(function () {
-        if (isPaused || document.hidden) return;
-        var half = track.scrollWidth / 2;
-        if (half < rail.clientWidth + 20) return;
-        var next = rail.scrollLeft + 0.5;
-        if (next >= half) next = 0;
-        rail.scrollLeft = next;
-      }, 16);
-      // MANUAL DRAG: pointer events on document for smooth tracking
-      var dragging = false, dragStartX = 0, dragStartScroll = 0, dragMoved = false;
+      // AUTO-SCROLL: CSS transform (bulletproof — works everywhere)
+      function tick() {
+        if (!paused && !document.hidden) {
+          var w = track.scrollWidth || track.offsetWidth;
+          var half = w / 2;
+          if (half > 100) {
+            pos += 0.5;
+            if (pos >= half) pos = 0;
+            track.style.transform = "translateX(" + (-pos) + "px)";
+          }
+        }
+        animId = requestAnimationFrame(tick);
+      }
+      animId = requestAnimationFrame(tick);
+      rail.style.overflow = "hidden";
+      rail.style.cursor = "grab";
+      rail.style.touchAction = "pan-y";
+      rail.style.userSelect = "none";
+      rail.style.webkitUserSelect = "none";
+      // MANUAL DRAG
+      var dragging = false, startX = 0, startPos = 0, moved = false;
       rail.addEventListener("pointerdown", function (e) {
-        dragging = true; dragMoved = false;
-        dragStartX = e.clientX; dragStartScroll = rail.scrollLeft;
+        dragging = true; moved = false;
+        startX = e.clientX; startPos = pos;
         rail.style.cursor = "grabbing";
         pause();
-        e.preventDefault();
       });
       document.addEventListener("pointermove", function (e) {
         if (!dragging) return;
-        var dx = e.clientX - dragStartX;
-        if (Math.abs(dx) > 3) dragMoved = true;
-        rail.scrollLeft = dragStartScroll - dx;
+        var dx = e.clientX - startX;
+        if (Math.abs(dx) > 3) moved = true;
+        pos = startPos - dx;
+        if (pos < 0) pos = 0;
+        track.style.transform = "translateX(" + (-pos) + "px)";
       });
       document.addEventListener("pointerup", function () {
         if (!dragging) return;
@@ -445,14 +451,10 @@
         rail.style.cursor = "grab";
         pause();
       });
-      // TOUCH: native scrolling + pause
       rail.addEventListener("touchstart", function () { pause(); }, { passive: true });
-      rail.addEventListener("touchend", function () { pause(); }, { passive: true });
-      // WHEEL: pause
       rail.addEventListener("wheel", function () { pause(); }, { passive: true });
-      // Prevent click-through after drag
       rail.addEventListener("click", function (e) {
-        if (dragMoved) { e.preventDefault(); e.stopPropagation(); dragMoved = false; }
+        if (moved) { e.preventDefault(); e.stopPropagation(); moved = false; }
       }, true);
     });
   }
