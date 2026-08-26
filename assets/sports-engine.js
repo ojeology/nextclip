@@ -160,21 +160,39 @@
     return String(name).slice(0, 3).toUpperCase();
   }
   function renderTicker(data, lgFilter) {
-    var all = [];
+    /* Smart ticker — tight loop, high signal:
+       1) today's matches (live desk), 2) the 6 freshest results,
+       3) the next 3 fixtures with kickoff day. Never more than 10 chips. */
+    var played = [], upcoming = [], today = [];
+    var todayStr0 = todayStr();
     data.leagues.forEach(function (L) {
       if (lgFilter && L.lg !== lgFilter) return;
       L.ms.forEach(function (m) {
-        var r = data.results[L.lg + "/" + m.id + "-vs-" + m.away];
-        if (r) all.push({ lg: L.lg, m: m, r: r });
+        var k = L.lg + "/" + m.id + "-vs-" + m.away;
+        var r = data.results[k];
+        if (m.date === todayStr0) today.push({ lg: L.lg, m: m, r: r });
+        else if (r) played.push({ lg: L.lg, m: m, r: r });
+        else if (m.date > todayStr0) upcoming.push({ lg: L.lg, m: m });
       });
     });
-    all.sort(function (a, b) { return b.r.playedOn < a.r.playedOn ? -1 : b.r.playedOn > a.r.playedOn ? 1 : 0; });
-    all = all.slice(0, 14);
+    played.sort(function (a, b) { return b.r.playedOn < a.r.playedOn ? -1 : b.r.playedOn > a.r.playedOn ? 1 : 0; });
+    upcoming.sort(function (a, b) { return a.m.date < b.m.date ? -1 : a.m.date > b.m.date ? 1 : 0; });
+    var DAYS = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
+    function day(iso) { var p = iso.split("-"); return DAYS[new Date(+p[0], +p[1] - 1, +p[2]).getDay()]; }
     function item(x) {
-      return '<span class="tk"><em>' + LEAGUES[x.lg].label + '</em><b>' + abbr(x.m.homeName) + ' ' +
-        x.r.homeScore + '\u2013' + x.r.awayScore + ' ' + abbr(x.m.awayName) + '</b><i>FT</i></span>';
+      return '<span class="tk"><em>' + LEAGUES[x.lg].label + '</em><b>' + abbr(x.m.homeName) + " " +
+        x.r.homeScore + "\u2013" + x.r.awayScore + " " + abbr(x.m.awayName) + "</b><i>FT</i></span>";
     }
-    var half = all.map(item).join("");
+    function itemUp(x) {
+      return '<span class="tk tk-up"><em>' + LEAGUES[x.lg].label + "</em><b>" + abbr(x.m.homeName) +
+        " v " + abbr(x.m.awayName) + "</b><i>" + day(x.m.date) + " " + esc(x.m.time || "") + "</i></span>";
+    }
+    var list = today.slice(0, 3).map(function (x) {
+      return x.r ? item(x) : itemUp({ lg: x.lg, m: x.m });
+    });
+    list = list.concat(played.slice(0, 6).map(item), upcoming.slice(0, 3).map(itemUp));
+    if (!list.length) list = upcoming.slice(0, 8).map(itemUp);
+    var half = list.join("");
     return '<div class="tk-track">' + half + half + "</div>";
   }
 

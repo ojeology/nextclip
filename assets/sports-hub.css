@@ -448,7 +448,7 @@
 .sp-ticker { min-width: 0; }
 .tk-track {
   display: flex; gap: 10px; width: max-content; padding: 8px 0;
-  animation: bsd-tk 42s linear infinite; will-change: transform;
+  animation: bsd-tk 32s linear infinite; will-change: transform;
 }
 .sp-ticker:hover .tk-track, .sp-ticker:focus-within .tk-track { animation-play-state: paused; }
 @keyframes bsd-tk { from { transform: translateX(0); } to { transform: translateX(-50%); } }
