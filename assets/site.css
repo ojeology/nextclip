@@ -4228,3 +4228,31 @@ body.spx .article-hero{background:rgba(255,255,255,.03);border:1px solid rgba(25
 body.spx .prose h1{letter-spacing:-.025em;font-weight:900}
 /* rails speed harmony */
 body.spx .sp-score-rail,body.spx .sp-art-rail{scroll-behavior:auto;overscroll-behavior-x:contain;touch-action:pan-x pan-y}
+
+/* RAIL SLIDING FIX: ensure all rails are scrollable on every device */
+body.spx .sp-score-rail,
+body.spx .sp-art-rail{
+  overflow-x:auto !important;
+  overflow-y:hidden !important;
+  cursor:grab;
+  scrollbar-width:none;
+  -ms-overflow-style:none;
+  touch-action:pan-x pan-y;
+  -webkit-overflow-scrolling:touch;
+  overscroll-behavior-x:contain;
+}
+body.spx .sp-score-rail::-webkit-scrollbar,
+body.spx .sp-art-rail::-webkit-scrollbar{
+  display:none !important;
+}
+body.spx .sp-rail-track,
+body.spx .sp-art-track{
+  display:inline-flex !important;
+  gap:10px;
+  white-space:nowrap;
+  min-width:max-content;
+}
+body.spx .sp-rail-track > *,
+body.spx .sp-art-track > *{
+  flex:0 0 auto;
+}
