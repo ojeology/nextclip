@@ -1,0 +1,25 @@
+# Render blueprint for the BRYME backend + Telegram bot + Mini App service.
+#
+# IMPORTANT: this file lives in server/ so it does NOT change how the existing
+# static site (bryme.onrender.com) deploys. To create the service, either:
+#   • Render Dashboard -> New -> Web Service -> pick this repo -> Root Directory: server
+#     Build: npm install (or leave empty) | Start: node server.js
+#   • or copy this file to the repo root and sync it as a Blueprint.
+services:
+  - type: web
+    name: bryme-telegram
+    runtime: node
+    rootDir: server
+    plan: free
+    buildCommand: npm install || true
+    startCommand: node server.js
+    healthCheckPath: /healthz
+    envVars:
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false        # set in dashboard (from BotFather) — never commit
+      - key: TELEGRAM_WEBHOOK_SECRET
+        generateValue: true
+      - key: MINI_APP_URL
+        sync: false        # e.g. https://bryme-telegram.onrender.com
+      - key: NODE_VERSION
+        value: 20.11.1

@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="theme-color" content="#0a0c0f">
+<title>BRYME — Discover what you love</title>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<div id="app">
+  <!-- header -->
+  <header class="bar">
+    <a class="bar-brand" href="#/home">🔥 BRY<span>ME</span></a>
+    <button class="bar-btn" id="btn-home" type="button" aria-label="Home">☰</button>
+  </header>
+
+  <!-- menu sheet (home shortcut) -->
+  <nav class="sheet" id="sheet" hidden>
+    <button type="button" data-go="#/home">🏠 Home</button>
+    <button type="button" data-go="#/latest">🆕 Latest Posts</button>
+    <button type="button" data-go="#/money">💰 Make Money</button>
+    <button type="button" data-go="#/tech">🤖 Tech &amp; AI</button>
+    <button type="button" data-go="#/sports">⚽ Sports</button>
+    <button type="button" data-go="#/movies">🎬 Movies &amp; Anime</button>
+    <button type="button" data-go="#/trading">📈 Trading</button>
+    <button type="button" data-go="#/internet">🌐 Internet</button>
+    <button type="button" data-go="#/comics">😂 Comics</button>
+  </nav>
+
+  <main id="view" aria-live="polite"></main>
+
+  <!-- bottom category nav -->
+  <nav class="dock" id="dock">
+    <a href="#/home" data-dock="home"><span>🏠</span>Home</a>
+    <a href="#/sports" data-dock="sports"><span>⚽</span>Sports</a>
+    <a href="#/money" data-dock="money"><span>💰</span>Money</a>
+    <a href="#/tech" data-dock="tech"><span>🤖</span>Tech</a>
+    <a href="#/movies" data-dock="movies"><span>🎬</span>Movies</a>
+  </nav>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
