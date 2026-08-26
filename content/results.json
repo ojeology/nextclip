@@ -692,6 +692,23 @@
           "minute": "76'"
         }
       ]
+    },
+    "valencia-vs-real-betis": {
+      "homeScore": 0,
+      "awayScore": 1,
+      "status": "FT",
+      "playedOn": "2026-08-25",
+      "source": {
+        "name": "ESPN",
+        "url": "https://www.espn.com/soccer/match/_/gameId/401882917/real-betis-valencia"
+      },
+      "scorers": [
+        {
+          "team": "away",
+          "player": "Pablo García",
+          "minute": "83'"
+        }
+      ]
     }
   },
   "serie-a": {

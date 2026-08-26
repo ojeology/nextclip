@@ -44,12 +44,6 @@ RAIL = (
     ('international', 'International', '', ''),
     ('SEP', '', '', ''),
     ('transfers', 'Transfers', 'Live', 'is-live'),
-    ('fpl', 'Fantasy', '', ''),
-    ('comics', 'Comics', '', ''),
-    ('clubs', 'Clubs', '', ''),
-    ('players', 'Players', '', ''),
-    ('records', 'Records', '', ''),
-    ('history', 'History', '', ''),
 )
 
 ARROW = (
@@ -129,8 +123,12 @@ def patch(html, rel, is_hub):
             html = html.replace(marker, marker + "\n" + SKIN_LINKS, 1)
         changed = True
 
-    # 2. chrome (hub already has it)
-    if not is_hub and "data-bsd-chrome" not in html:
+    # 2. chrome (hub has its own; sub-pages upsert — replace stale chrome if present)
+    if not is_hub:
+        if "data-bsd-chrome" in html:
+            html = re.sub(
+                r'<div class="bsd-chrome" data-bsd-chrome>.*?</nav>\s*</div>[ \t]*\n?',
+                "", html, flags=re.S)
         m = re.search(r"</header>", html)
         if m:
             html = html[:m.end()] + "\n" + build_chrome(rel) + html[m.end():]
@@ -158,7 +156,7 @@ def main():
         if 'data-nav="sports"' not in html:
             # sports page missing its nav context — restore it so scoped styles apply
             m = re.search(r"<body([^>]*)>", html)
-            if m and "spx" in m.group(1):
+            if m and ("spx" in m.group(1) or not m.group(1).strip()):
                 html = html[:m.start()] + '<body data-nav="sports"%s>' % m.group(1) + html[m.end():]
             else:
                 stats["skipped"] += 1
