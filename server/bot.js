@@ -100,15 +100,18 @@ function welcomeMessage(users, miniAppBase) {
   return {
     text:
       "👋 Welcome to BRYME, " + who + "!\n\n" +
-      "This is the home of BRYME inside Telegram — quick, free and useful:\n\n" +
-      "💰 Make Money — verified paid markets (55 publications, real rates) and step-by-step playbooks. Start with Afrolicious: $75 per accepted article, and Nigeria qualifies.\n" +
-      "⚽ Sports — top-five league tables, scores, fixtures and top scorers, updated automatically.\n" +
-      "🤖 Tech & AI, 🎬 Movies & Anime, 😂 Comics — all inside one fast app.\n\n" +
-      "Everything opens right here in Telegram. No fees, no gurus.\n" +
-      "Tip: you can also type to me — try \"make money\" or \"sports\".",
+      "🎉 You just found the good part of Telegram — and it costs you NOTHING. No fees. No gurus. No \"pay first, earn later\" nonsense. Ever.\n\n" +
+      "⚡️ Everything BRYME offers, right here in Telegram:\n\n" +
+      "💰 MAKE MONEY — 55 verified paid markets with REAL rates. Start with Afrolicious: $75 per accepted article, and Nigeria qualifies. Full playbook inside — free.\n" +
+      "💻 20 verified remote-work platforms — real pay, real apply links.\n" +
+      "⚽ SPORTS — Premier League, La Liga, UCL tables, scores, fixtures & top scorers. Updates itself after every matchday.\n" +
+      "🤖 TECH & AI — tools that actually save (or make) you money.\n" +
+      "🎬 MOVIES & ANIME — what to watch next, no filler.\n" +
+      "😂 COMICS — the matchweek, drawn.\n\n" +
+      "🚀 Tap a button below and it all opens instantly. Go on — your first $75 playbook is one tap away:",
     keyboard: { inline_keyboard: [
-      [{ text: "🚀 Open BRYME", web_app: { url: btnUrl(miniAppBase, "home") } }],
-      [{ text: "💼 Browse paid markets", web_app: { url: btnUrl(miniAppBase, "markets") } }],
+      [{ text: "🚀 Open BRYME — FREE", web_app: { url: btnUrl(miniAppBase, "money") } }],
+      [{ text: "💼 Paid markets ($75–$580)", web_app: { url: btnUrl(miniAppBase, "markets") } }],
       [{ text: "⚽ Sports", callback_data: "cat:sports" }, { text: "🆕 Latest", callback_data: "latest" }]
     ] }
   };
