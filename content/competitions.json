@@ -1,5 +1,5 @@
 {
- "builtAt": "2026-08-27T10:49:29.479Z",
+ "builtAt": "2026-08-27T23:46:27.929Z",
  "competitions": [
   {
    "id": "premier-league",
@@ -588,6 +588,20 @@
    "flag": "🇪🇸",
    "teams": [
     {
+     "name": "Barcelona",
+     "short": "Barcelona",
+     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/83.png",
+     "p": 2,
+     "w": 2,
+     "d": 0,
+     "l": 0,
+     "gf": 7,
+     "ga": 0,
+     "gd": "0",
+     "pts": 6,
+     "pos": 1
+    },
+    {
      "name": "Real Madrid",
      "short": "Real Madrid",
      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/86.png",
@@ -599,7 +613,7 @@
      "ga": 2,
      "gd": "0",
      "pts": 6,
-     "pos": 1
+     "pos": 2
     },
     {
      "name": "Sevilla",
@@ -613,7 +627,7 @@
      "ga": 2,
      "gd": "0",
      "pts": 6,
-     "pos": 2
+     "pos": 3
     },
     {
      "name": "Real Betis",
@@ -627,7 +641,7 @@
      "ga": 0,
      "gd": "0",
      "pts": 6,
-     "pos": 3
+     "pos": 4
     },
     {
      "name": "Alavés",
@@ -641,7 +655,7 @@
      "ga": 1,
      "gd": "0",
      "pts": 4,
-     "pos": 4
+     "pos": 5
     },
     {
      "name": "Atlético Madrid",
@@ -655,21 +669,21 @@
      "ga": 2,
      "gd": "0",
      "pts": 4,
-     "pos": 5
+     "pos": 6
     },
     {
-     "name": "Barcelona",
-     "short": "Barcelona",
-     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/83.png",
-     "p": 1,
+     "name": "Osasuna",
+     "short": "Osasuna",
+     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/97.png",
+     "p": 2,
      "w": 1,
-     "d": 0,
+     "d": 1,
      "l": 0,
-     "gf": 5,
-     "ga": 0,
+     "gf": 2,
+     "ga": 1,
      "gd": "0",
-     "pts": 3,
-     "pos": 6
+     "pts": 4,
+     "pos": 7
     },
     {
      "name": "Espanyol",
@@ -683,7 +697,7 @@
      "ga": 2,
      "gd": "0",
      "pts": 3,
-     "pos": 7
+     "pos": 8
     },
     {
      "name": "Getafe",
@@ -697,7 +711,7 @@
      "ga": 3,
      "gd": "0",
      "pts": 3,
-     "pos": 8
+     "pos": 9
     },
     {
      "name": "Villarreal",
@@ -711,7 +725,7 @@
      "ga": 4,
      "gd": "0",
      "pts": 2,
-     "pos": 9
+     "pos": 10
     },
     {
      "name": "Deportivo",
@@ -725,7 +739,7 @@
      "ga": 2,
      "gd": "0",
      "pts": 2,
-     "pos": 10
+     "pos": 11
     },
     {
      "name": "Racing Santander",
@@ -739,7 +753,7 @@
      "ga": 3,
      "gd": "0",
      "pts": 1,
-     "pos": 11
+     "pos": 12
     },
     {
      "name": "Rayo Vallecano",
@@ -753,7 +767,21 @@
      "ga": 3,
      "gd": "0",
      "pts": 1,
-     "pos": 12
+     "pos": 13
+    },
+    {
+     "name": "Celta Vigo",
+     "short": "Celta Vigo",
+     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/85.png",
+     "p": 2,
+     "w": 0,
+     "d": 1,
+     "l": 1,
+     "gf": 1,
+     "ga": 2,
+     "gd": "0",
+     "pts": 1,
+     "pos": 14
     },
     {
      "name": "Elche",
@@ -767,7 +795,7 @@
      "ga": 6,
      "gd": "0",
      "pts": 1,
-     "pos": 13
+     "pos": 15
     },
     {
      "name": "Málaga",
@@ -781,21 +809,7 @@
      "ga": 3,
      "gd": "0",
      "pts": 1,
-     "pos": 14
-    },
-    {
-     "name": "Celta Vigo",
-     "short": "Celta Vigo",
-     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/85.png",
-     "p": 1,
-     "w": 0,
-     "d": 1,
-     "l": 0,
-     "gf": 0,
-     "ga": 0,
-     "gd": "0",
-     "pts": 1,
-     "pos": 15
+     "pos": 16
     },
     {
      "name": "Levante",
@@ -807,20 +821,6 @@
      "l": 1,
      "gf": 0,
      "ga": 3,
-     "gd": "0",
-     "pts": 1,
-     "pos": 16
-    },
-    {
-     "name": "Osasuna",
-     "short": "Osasuna",
-     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/97.png",
-     "p": 1,
-     "w": 0,
-     "d": 1,
-     "l": 0,
-     "gf": 0,
-     "ga": 0,
      "gd": "0",
      "pts": 1,
      "pos": 17
@@ -843,12 +843,12 @@
      "name": "Athletic Club",
      "short": "Athletic",
      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/93.png",
-     "p": 1,
+     "p": 2,
      "w": 0,
      "d": 0,
-     "l": 1,
+     "l": 2,
      "gf": 1,
-     "ga": 3,
+     "ga": 5,
      "gd": "0",
      "pts": 0,
      "pos": 19
@@ -869,6 +869,30 @@
     }
    ],
    "scores": [
+    {
+     "date": "2026-08-27",
+     "home": "Barcelona",
+     "hshort": "Barcelona",
+     "hlogo": "https://a.espncdn.com/i/teamlogos/soccer/500/83.png",
+     "away": "Athletic Club",
+     "ashort": "Athletic",
+     "alogo": "https://a.espncdn.com/i/teamlogos/soccer/500/93.png",
+     "hs": 2,
+     "as": 0,
+     "status": "FT"
+    },
+    {
+     "date": "2026-08-27",
+     "home": "Celta Vigo",
+     "hshort": "Celta Vigo",
+     "hlogo": "https://a.espncdn.com/i/teamlogos/soccer/500/85.png",
+     "away": "Osasuna",
+     "ashort": "Osasuna",
+     "alogo": "https://a.espncdn.com/i/teamlogos/soccer/500/97.png",
+     "hs": 1,
+     "as": 2,
+     "status": "FT"
+    },
     {
      "date": "2026-08-26",
      "home": "Real Madrid",
@@ -991,28 +1015,6 @@
     }
    ],
    "fixtures": [
-    {
-     "date": "2026-08-27",
-     "home": "Celta Vigo",
-     "hshort": "Celta Vigo",
-     "hlogo": "https://a.espncdn.com/i/teamlogos/soccer/500/85.png",
-     "away": "Osasuna",
-     "ashort": "Osasuna",
-     "alogo": "https://a.espncdn.com/i/teamlogos/soccer/500/97.png",
-     "time": "18:30",
-     "status": "Thu, August 27th at 2:30 PM EDT"
-    },
-    {
-     "date": "2026-08-27",
-     "home": "Barcelona",
-     "hshort": "Barcelona",
-     "hlogo": "https://a.espncdn.com/i/teamlogos/soccer/500/83.png",
-     "away": "Athletic Club",
-     "ashort": "Athletic",
-     "alogo": "https://a.espncdn.com/i/teamlogos/soccer/500/93.png",
-     "time": "19:00",
-     "status": "Thu, August 27th at 3:00 PM EDT"
-    },
     {
      "date": "2026-08-28",
      "home": "Racing Santander",

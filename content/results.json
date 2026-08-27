@@ -709,6 +709,92 @@
           "minute": "83'"
         }
       ]
+    },
+    "real-madrid-vs-real-sociedad": {
+      "homeScore": 4,
+      "awayScore": 1,
+      "status": "FT",
+      "playedOn": "2026-08-26",
+      "source": {
+        "name": "ESPN",
+        "url": "https://www.espn.com/soccer/match/_/gameId/401882919/real-sociedad-real-madrid"
+      },
+      "scorers": [
+        {
+          "team": "home",
+          "player": "Kylian Mbappé",
+          "minute": "40'"
+        },
+        {
+          "team": "away",
+          "player": "Luka Sucic",
+          "minute": "44'"
+        },
+        {
+          "team": "home",
+          "player": "Kylian Mbappé",
+          "minute": "60'"
+        },
+        {
+          "team": "home",
+          "player": "Vinícius Júnior",
+          "minute": "68'"
+        },
+        {
+          "team": "home",
+          "player": "Kylian Mbappé",
+          "minute": "80'"
+        }
+      ]
+    },
+    "celta-vigo-vs-osasuna": {
+      "homeScore": 1,
+      "awayScore": 2,
+      "status": "FT",
+      "playedOn": "2026-08-27",
+      "source": {
+        "name": "ESPN",
+        "url": "https://www.espn.com/soccer/match/_/gameId/401882924/osasuna-celta-vigo"
+      },
+      "scorers": [
+        {
+          "team": "home",
+          "player": "Iago Aspas",
+          "minute": "14'"
+        },
+        {
+          "team": "away",
+          "player": "Enrique Barja",
+          "minute": "54'"
+        },
+        {
+          "team": "away",
+          "player": "Ante Budimir",
+          "minute": "64'"
+        }
+      ]
+    },
+    "barcelona-vs-athletic-bilbao": {
+      "homeScore": 2,
+      "awayScore": 0,
+      "status": "FT",
+      "playedOn": "2026-08-27",
+      "source": {
+        "name": "ESPN",
+        "url": "https://www.espn.com/soccer/match/_/gameId/401882921/athletic-club-barcelona"
+      },
+      "scorers": [
+        {
+          "team": "home",
+          "player": "Raphinha",
+          "minute": "37'"
+        },
+        {
+          "team": "home",
+          "player": "Fermín López",
+          "minute": "82'"
+        }
+      ]
     }
   },
   "serie-a": {
