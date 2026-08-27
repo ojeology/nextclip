@@ -173,6 +173,9 @@ function publicPost(p, body) {
   };
 }
 
+/* ---------- chats the bot has seen (group admin tooling) ---------- */
+const chatsSeen = new Map();
+
 /* ---------- request router ---------- */
 const server = http.createServer(async (req, res) => {
   const url = new URL(req.url, "http://x");
@@ -181,6 +184,27 @@ const server = http.createServer(async (req, res) => {
   try {
     /* health */
     if (p === "/healthz") return json(res, 200, { ok: true, posts: loadContent().posts.length });
+
+    /* ---- admin tooling (guarded by the webhook secret header) ---- */
+    const authed = Boolean(SECRET) && req.headers["x-telegram-bot-api-secret-token"] === SECRET;
+    if (p === "/admin/chats" && authed) {
+      return json(res, 200, { chats: Array.from(chatsSeen.values()) });
+    }
+    if (p === "/admin/restrict" && authed && req.method === "POST") {
+      const body = await readBody(req);
+      const chatId = Number(JSON.parse(body || "{}").chat_id);
+      if (!chatId) return json(res, 400, { ok: false, error: "chat_id required" });
+      const r = await telegram("setChatPermissions", {
+        chat_id: chatId,
+        permissions: {
+          can_send_messages: false, can_send_media_messages: false, can_send_polls: false,
+          can_send_other_messages: false, can_add_web_page_previews: false,
+          can_invite_users: true, can_pin_messages: false, can_change_info: false
+        }
+      });
+      if (r && r.ok) await telegram("sendMessage", { chat_id: chatId, text: "🔒 This group is now announcement-only. Only admins can post — new members still get the full welcome. 🤖" });
+      return json(res, 200, r);
+    }
 
     /* ---- API ---- */
     if (p === "/api/sports/competitions") {
@@ -272,6 +296,12 @@ const server = http.createServer(async (req, res) => {
       }
       let update;
       try { update = JSON.parse(await readBody(req)); } catch (e) { return json(res, 400, { error: "bad_json" }); }
+      try {
+        const c = update.message && update.message.chat;
+        if (c && (c.type === "group" || c.type === "supergroup")) {
+          chatsSeen.set(c.id, { id: c.id, title: c.title || "", type: c.type, ts: Date.now() });
+        }
+      } catch (e) {}
       json(res, 200, { ok: true }); // ack immediately; reply goes via Bot API
       try { await botFor(req).handleUpdate(update); } catch (e) { /* logged, never leaked */ }
       return;
