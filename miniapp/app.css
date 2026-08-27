@@ -38,6 +38,7 @@ img { max-width: 100%; display: block; }
 }
 .sheet button { text-align: left; padding: 11px 12px; border-radius: 9px; font-size: 15px; font-weight: 600; color: var(--text); }
 .sheet button:active { background: var(--panel2); }
+.sheet[hidden] { display: none; }
 
 /* view */
 #view { min-height: 60vh; padding: 14px 14px calc(92px + var(--safe-bottom)); max-width: 720px; margin: 0 auto; }
