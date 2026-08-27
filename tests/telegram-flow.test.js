@@ -128,6 +128,8 @@ function check(name, cond, extra) {
   r = await req("GET", BASE + "/api/posts/" + encodeURIComponent(slug));
   const art = JSON.parse(r.body);
   check("article endpoint returns body", r.code === 200 && typeof art.body === "string");
+  const noWebLinks = !art.body.includes('href="https://bryme.onrender.com') && !/ href="\/[a-z]/i.test(art.body);
+  check("article body has no exits to the website", noWebLinks, art.body.slice(0, 80));
   r = await req("GET", BASE + "/api/posts/definitely-not-real");
   check("missing article -> 404 + fallback", r.code === 404 && JSON.parse(r.body).fallback.miniAppRoute === "#/home");
 

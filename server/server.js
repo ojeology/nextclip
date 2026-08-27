@@ -152,10 +152,16 @@ function sendFile(res, abs) {
 
 /* Article bodies may contain root-relative links (href="/..."). Inside the
  * Telegram webview those can resolve against the wrong base — absolutize. */
+/* Telegram users stay IN the Mini App:
+ *  - /article/<slug> links become in-app hash routes (the router handles them)
+ *  - every other internal website link is unwrapped to plain text
+ *  - images/assets stay absolute so they render; external citations stay live */
 function absolutizeBody(html) {
-  return String(html || "")
-    .replace(/ href="\/([a-z0-9_#-])/gi, ' href="https://bryme.onrender.com/$1')
-    .replace(/ src="\/([a-z0-9_#-])/gi, ' src="https://bryme.onrender.com/$1');
+  let h = String(html || "");
+  h = h.replace(/ src="\/([a-z0-9_#-])/gi, ' src="https://bryme.onrender.com/$1');
+  h = h.replace(/ href="(?:https:\/\/bryme\.onrender\.com)?\/article\/([a-z0-9-]+)\/?"/gi, ' href="#/article/$1"');
+  h = h.replace(/<a\b[^>]*href="(?:https:\/\/bryme\.onrender\.com)?\/[^"]*"[^>]*>([\s\S]*?)<\/a>/gi, "$1");
+  return h;
 }
 
 function publicPost(p, body) {

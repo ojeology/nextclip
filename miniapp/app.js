@@ -472,7 +472,7 @@
       '<div class="gate-card">' +
       '<span class="mkt-pay">' + esc(o.pay) + "</span>" +
       "<b>" + esc(o.publication) + "</b>" +
-      "<p>The full 3-step playbook: what they accept, word counts, how to submit — and what Nigerians should know.</p>" +
+      "<p>" + esc(o.sub || "The full 3-step playbook: what they accept, word counts, how to submit — and what Nigerians should know.") + "</p>" +
       ((window.BRYME_AD && window.BRYME_AD.configured && window.BRYME_AD.configured()) || link
         ? '<button class="btn" type="button" id="gate-go">📺 Watch &amp; unlock ' + esc(o.publication) + "</button>" +
           '<span class="fine">One short sponsored view · unlocks forever on this device · keeps BRYME free</span>'
@@ -713,14 +713,22 @@
       '<div class="kick">📚 Deepen the craft</div>' +
       (posts || []).filter(function (p) { return /writing|content-creation|field-notes/.test(p.slug) && p.slug !== "writing"; }).slice(0, 3).map(cardHtml).join("");
   }
-  function moneyTabFreelancing(posts) {
-    var list = (posts || []).filter(function (p) { return /freelanc|remote-work|platform-fees/.test(p.slug); });
+  function moneyTabFreelancing() {
+    var rwOpen = isUnlocked("remote-work");
     return '<div class="feat">' +
-      '<span class="feat-kick">💻 Skills → income</span>' +
-      '<b>What if clients paid you for what you already know how to do?</b>' +
-      "<p>No fees to start. No middleman eating your invoice. Package the skill, pitch the client, get paid — we checked the platforms so you don\'t get shortchanged.</p>" +
+      '<span class="feat-kick">🤖 Dollars for your judgment</span>' +
+      '<b>What if companies paid you to rate AI answers — no degree, no fees?</b>' +
+      "<p>AI platforms hire real people to improve their models, and they pay in dollars. Outlier is the one we checked inside and out for Nigerians: what it actually pays, how the sign-up works, and the honest truth before you spend time on it.</p>" +
+      '<a class="feat-cta" href="#/article/outlier-ai-nigeria">🤖 Start with Outlier AI — the honest truth →</a>' +
       "</div>" +
-      (list.slice(0, 4).map(cardHtml).join("") || '<div class="empty">Guides coming to this tab shortly.</div>');
+      '<a class="card row-card" href="#/article/outlier-ai-nigeria"><span class="cat">FREE</span><b>Outlier AI Nigeria: Pay, Sign-Up &amp; The Honest Truth</b><p>The full walkthrough — earnings, sign-up, and what to expect. Free.</p></a>' +
+      '<div class="kick">💻 Ready for more?</div>' +
+      (rwOpen
+        ? '<a class="card row-card" href="#/article/remote-work"><span class="cat">🔓</span><b>Remote Jobs — 20 Legit Platforms</b><p>Unlocked — the full list is yours, forever.</p></a>'
+        : '<div class="adgate"><span class="mkt-pay">🔒 20 platforms</span>' +
+          "<b>Remote Jobs — 20 Legit Platforms</b>" +
+          "<p>The verified list: what each platform pays, who can join from Nigeria, and how to start. One short sponsored view unlocks it — forever on this device.</p>" +
+          '<button class="btn" type="button" id="rw-unlock">📺 Watch &amp; unlock the 20 platforms</button></div>');
   }
   function moneyTabAI(posts) {
     var list = (posts || []).filter(function (p) { return /ai-assisted|outlier|mindrift|prolific/.test(p.slug); });
@@ -732,14 +740,15 @@
       (list.slice(0, 4).map(cardHtml).join("") || '<div class="empty">Guides coming to this tab shortly.</div>') +
       '<a class="card row-card" href="#/tech"><span class="cat">🤖</span><b>Explore Tech &amp; AI tools</b><p>Free tools that make all of this faster.</p></a>';
   }
+  var mnTab = "writing";
   function pageMoney() {
     setBack(true); markDock("money");
     view.innerHTML =
       '<h1 class="pg">💰 MAKE MONEY</h1><p class="pg-sub">Three honest paths — no gurus, no fees.</p>' +
       '<div class="seg" id="mn-seg">' +
-      '<button class="seg-b on" type="button" data-t="writing">✍️ Writing</button>' +
-      '<button class="seg-b" type="button" data-t="freelancing">💻 Freelancing</button>' +
-      '<button class="seg-b" type="button" data-t="ai">🤖 AI &amp; Tech</button>' +
+      '<button class="seg-b' + (mnTab === "writing" ? " on" : "") + '" type="button" data-t="writing">✍️ Writing</button>' +
+      '<button class="seg-b' + (mnTab === "freelancing" ? " on" : "") + '" type="button" data-t="freelancing">💻 Freelancing</button>' +
+      '<button class="seg-b' + (mnTab === "ai" ? " on" : "") + '" type="button" data-t="ai">🤖 AI &amp; Tech</button>' +
       "</div>" +
       '<div id="mn-body"></div>';
     var body = document.getElementById("mn-body");
@@ -749,12 +758,22 @@
         var opps = (res[0] && res[0].opportunities) || [];
         var posts = res[1].posts || [];
         var render = function (t) {
-          if (t === "freelancing") body.innerHTML = moneyTabFreelancing(posts);
+          mnTab = t;
+          if (t === "freelancing") body.innerHTML = moneyTabFreelancing();
           else if (t === "ai") body.innerHTML = moneyTabAI(posts);
           else body.innerHTML = moneyTabWriting(opps, posts);
+          var rw = document.getElementById("rw-unlock");
+          if (rw) rw.addEventListener("click", function () {
+            haptic();
+            showGate(
+              { slug: "remote-work", publication: "Remote Jobs — 20 platforms", pay: "20 platforms",
+                sub: "The verified list of 20 legit remote-work platforms — pay, eligibility, and how to start from Nigeria." },
+              function () { pageMoney(); }
+            );
+          });
           monetize();
         };
-        render("writing");
+        render(mnTab);
         document.getElementById("mn-seg").addEventListener("click", function (e) {
           var b = e.target.closest("button.seg-b"); if (!b) return;
           haptic();
@@ -791,8 +810,7 @@
         (p.hasBody
           ? '<div class="art-body">' + p.body + "</div>"
           : '<div class="guide-call"><p>' + esc(p.excerpt || "") + "</p>" +
-            '<p class="guide-note">📖 This is one of BRYME\'s full guides — the complete version lives on the website.</p>' +
-            '<a class="btn" href="' + esc(/^https?:/.test(p.url) ? p.url : "https://bryme.onrender.com" + p.url) + '" target="_blank" rel="noopener">Open the full guide</a></div>') +
+            '<p class="guide-note">📘 This guide is part of the BRYME library — more of it is being added to the app.</p></div>') +
         slot("article-bottom") +
         '</article><div class="kick">Keep reading</div><div id="art-more"></div>';
       var back = view.querySelector(".back");
@@ -824,7 +842,7 @@
     try {
       var box = document.createElement("div");
       box.setAttribute("style", "margin:10px 0;padding:10px;border:1px dashed #888;border-radius:8px;font:11px/1.5 monospace;color:#aaa;word-break:break-all;white-space:pre-wrap;");
-      box.textContent = "DEBUG\nhash: " + location.hash + "\nsearch: " + location.search + "\nAPI: " + (API || "(none)") + "\napp: v20260827-10";
+      box.textContent = "DEBUG\nhash: " + location.hash + "\nsearch: " + location.search + "\nAPI: " + (API || "(none)") + "\napp: v20260827-11";
       view.insertBefore(box, view.firstChild);
     } catch (e) {}
   }
