@@ -161,7 +161,6 @@
       title: "💰 MAKE MONEY", sub: "Practical ways to earn — checked by the desk.", api: "money",
       featured: "writing",
       chips: [
-        ["🔥 Opportunities", /opportunit|make-money-online|beginners-guide|income-skills|microtask|online-services|platform-review|affiliate/i],
         ["✍️ Writing", /writing|content-creation|field-notes/i],
         ["💻 Freelancing", /freelanc|remote-work/i],
         ["🤖 AI & Work", /ai-assisted|outlier|mindrift|prolific/i],
@@ -209,6 +208,7 @@
       '<p class="pg-sub">' + esc(hub.sub) + "</p>" +
       slot("hub-" + key + "-top") +
       '<div id="hub-featured"></div>' +
+      (key === "money" ? '<div class="kick green">🔥 Verified opportunities</div><div id="hub-opps"></div>' : "") +
       '<div class="chips" id="hub-chips" hidden></div>' +
       '<div id="hub-feed"></div>' + slot("hub-" + key + "-bottom");
     document.getElementById("hub-feed").innerHTML = '<div class="skel"><i style="width:50%"></i><i></i></div><div class="skel"><i style="width:40%"></i><i></i></div>';
@@ -227,6 +227,7 @@
         var pick = posts.filter(function (p) { return p.slug === hub.featured; })[0] || posts[0];
         f.innerHTML = featuredCard(pick);
       } else f.innerHTML = "";
+      if (key === "money") renderOppsRail();
 
       /* chips: only subsections that actually contain posts */
       var active = 0;
@@ -445,6 +446,77 @@
     });
   }
 
+  /* ---------- money: verified paid markets ---------- */
+  var oppsCache = null;
+  function loadOpps() {
+    if (oppsCache) return Promise.resolve(oppsCache);
+    return apiGet("/api/money/opportunities").then(function (d) {
+      if (d && d.opportunities && d.opportunities.length) oppsCache = d;
+      return d;
+    });
+  }
+  function oppCard(o) {
+    return '<a class="mkt" href="#/market/' + encodeURIComponent(o.slug) + '">' +
+      '<span class="mkt-pay">' + esc(o.pay) + "</span>" +
+      "<b>" + esc(o.publication) + "</b>" +
+      (o.types ? '<span class="mkt-type">' + esc(o.types) + "</span>" : "") + "</a>";
+  }
+  function renderOppsRail() {
+    var host = document.getElementById("hub-opps");
+    if (!host) return;
+    loadOpps().then(function (d) {
+      var list = (d && d.opportunities) || [];
+      host.innerHTML = list.slice(0, 4).map(oppCard).join("") +
+        '<a class="card row-card" href="#/markets"><span class="cat">💼</span><b>View all ' + list.length + " verified markets</b><p>Real publications, real rates — checked by the desk.</p></a>";
+    }).catch(function () { host.innerHTML = ""; });
+  }
+  function pageMarkets() {
+    setBack(true); markDock("money");
+    view.innerHTML = '<h1 class="pg">💼 VERIFIED MARKETS</h1><p class="pg-sub">Publications that pay for writing — verified by the BRYME desk.</p><div id="mk-list"></div>';
+    document.getElementById("mk-list").innerHTML = '<div class="skel"><i style="width:40%"></i><i></i></div><div class="skel"><i style="width:30%"></i><i></i></div>';
+    loadOpps().then(function (d) {
+      var list = (d && d.opportunities) || [];
+      if (!list.length) { stateBox("🌱", "No markets loaded.", "Check your connection and try again.", "Retry"); return; }
+      document.getElementById("mk-list").innerHTML = list.map(oppCard).join("") +
+        '<p class="pg-sub" style="margin-top:12px">Rates can change — always check the official page before submitting.' + (d.updatedAt ? " List updated " + esc(d.updatedAt) + "." : "") + "</p>";
+    }).catch(function () { stateBox("📡", "Couldn't load markets.", "Check your connection and try again.", "Retry"); });
+  }
+  function fmtList(v) {
+    if (Array.isArray(v)) return v.length ? "<ul>" + v.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ul>" : "";
+    return v ? "<p>" + esc(v) + "</p>" : "";
+  }
+  function pageMarket(slug) {
+    setBack(true); markDock("money");
+    view.innerHTML = '<div class="skel"><i style="width:40%"></i><i></i><i></i></div>';
+    apiGet("/api/money/opportunities/" + encodeURIComponent(slug)).then(function (o) {
+      var pay = o.pay || {};
+      view.innerHTML = backBar("#/markets", "Markets") +
+        '<article class="art">' +
+        '<div class="kick green">💼 Verified market</div>' +
+        "<h1>" + esc(o.publication) + "</h1>" +
+        '<p class="meta">' + esc(o.title || "") + (o.writingTypeLabel ? " · " + esc(o.writingTypeLabel) : "") + "</p>" +
+        (pay.display ? '<div class="pay-badge">💰 ' + esc(pay.display) + (o.deadline ? " · ⏳ " + esc(o.deadline) : "") + "</div>" : "") +
+        (o.excerpt ? '<p class="pg-sub">' + esc(o.excerpt) + "</p>" : "") +
+        (pay.timing ? '<div class="mkt-row"><b>When you get paid</b>' + fmtList(pay.timing) + "</div>" : "") +
+        (o.wordCount ? '<div class="mkt-row"><b>Word count</b>' + fmtList(o.wordCount) + "</div>" : "") +
+        (o.whatTheyWant ? '<div class="mkt-row"><b>What they want</b>' + fmtList(o.whatTheyWant) + "</div>" : "") +
+        (o.whatTheyDontWant ? '<div class="mkt-row"><b>What they don\'t want</b>' + fmtList(o.whatTheyDontWant) + "</div>" : "") +
+        (o.howToSubmit ? '<div class="mkt-row"><b>How to submit</b>' + fmtList(o.howToSubmit) + "</div>" : "") +
+        (o.response ? '<div class="mkt-row"><b>Response time</b>' + fmtList(o.response) + "</div>" : "") +
+        (o.eligibility ? '<div class="mkt-row"><b>Eligibility</b>' + fmtList(o.eligibility) + "</div>" : "") +
+        ((o.applyUrl || o.applyEmail || o.officialUrl)
+          ? '<a class="btn" href="' + esc(o.applyUrl || o.officialUrl) + '" target="_blank" rel="noopener">Submit to ' + esc(o.publication) + "</a>" +
+            (o.officialUrl && o.applyUrl !== o.officialUrl ? '<a class="btn ghost" style="margin-top:8px" href="' + esc(o.officialUrl) + '" target="_blank" rel="noopener">Official guidelines</a>' : "")
+          : "") +
+        '<p class="meta" style="margin-top:14px">Verified ' + esc(o.lastVerified || o.updatedAt || "recently") + " · rates can change</p>" +
+        (o.disclaimer ? '<p class="meta">' + esc(o.disclaimer) + "</p>" : "") +
+        "</article>";
+    }).catch(function (e) {
+      if (e.status === 404) stateBox("😕", "Market not found.", "See all verified markets.", "💼 Markets", "#/markets");
+      else stateBox("📡", "Couldn't load this market.", "Check your connection and try again.", "Retry");
+    });
+  }
+
   /* ---------- latest + article ---------- */
   function pageLatest() {
     setBack(true); markDock("");
@@ -508,6 +580,8 @@
     if (parts[0] === "latest") return pageLatest();
     if (parts[0] === "article" && parts[1]) return pageArticle(decodeURIComponent(parts[1]));
     if (parts[0] === "comp" && parts[1]) return pageComp(decodeURIComponent(parts[1]));
+    if (parts[0] === "markets") return pageMarkets();
+    if (parts[0] === "market" && parts[1]) return pageMarket(decodeURIComponent(parts[1]));
     if (parts[0] === "sports") return pageSports();
     if (parts[0] === "sports-news") return pageSportsNews();
     if (parts[0] === "home") return pageHome();

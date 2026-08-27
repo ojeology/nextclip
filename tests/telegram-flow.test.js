@@ -107,6 +107,15 @@ function check(name, cond, extra) {
   check("leagues compat endpoint serves 5 tables", r.code === 200 && Array.isArray(lg.leagues) && lg.leagues.length === 5, { n: (lg.leagues || []).length });
   check("league tables carry teams + pts", (lg.leagues || []).every((l) => Array.isArray(l.teams) && l.teams.length >= 6 && l.teams.every((t) => typeof t.pts === "number" && t.short)));
 
+  r = await req("GET", BASE + "/api/money/opportunities");
+  let ops = {};
+  try { ops = JSON.parse(r.body); } catch (e) {}
+  check("money opportunities list (50+ verified)", r.code === 200 && ops.count >= 50 && ops.opportunities.every((o) => o.publication && o.pay), { n: ops.count });
+  const topOpp = (ops.opportunities || [])[0];
+  r = await req("GET", BASE + "/api/money/opportunities/" + encodeURIComponent(topOpp ? topOpp.slug : "afrolicious"));
+  const opd = JSON.parse(r.body);
+  check("money opportunity detail", r.code === 200 && !!opd.publication && !!opd.pay && !!(opd.applyUrl || opd.officialUrl), opd.publication);
+
   r = await req("GET", BASE + "/api/posts/latest?limit=6");
   const latest = JSON.parse(r.body);
   check("latest returns published posts w/ miniAppRoute", latest.posts.every((p) => p.status === "published" && p.miniAppRoute.startsWith("#/article/")));
@@ -135,6 +144,8 @@ function check(name, cond, extra) {
   const mBtn = money && money.reply_markup ? [].concat(...money.reply_markup.inline_keyboard).find((b) => b.web_app) : null;
   check("money snippet shown", money && money.text.includes("MAKE MONEY"), money && money.text);
   check("web_app button -> #/money (dual carrier)", mBtn && mBtn.web_app.url.endsWith("#/money") && /[?&]r=money(?=#)/.test(mBtn.web_app.url), mBtn && mBtn.web_app.url);
+  const mkts = money && money.reply_markup ? [].concat(...money.reply_markup.inline_keyboard).find((b) => b.web_app && /r=markets/.test(b.web_app.url)) : null;
+  check("money message offers verified-markets button", mkts && mkts.web_app.url.endsWith("#/markets"), mkts && mkts.web_app.url);
 
   console.log("T3 · Sports category");
   sends = await webhook({ update_id: 3, callback_query: { id: "c2", from: { id: 42 }, data: "cat:sports", message: { message_id: 10, chat: { id: 42 } } } });

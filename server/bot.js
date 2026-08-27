@@ -71,14 +71,16 @@ function categoryMessage(posts, category, miniAppBase) {
   }
   const top = list[0];
   const more = list.length > 1 ? "\n\n +" + (list.length - 1) + " more in this section." : "";
+  const rows = [
+    [{ text: cat.emoji + " Open in BRYME", web_app: { url: btnUrl(miniAppBase, miniRoute(category)) } }]
+  ];
+  if (category === "money") {
+    rows.push([{ text: "💼 Verified paid markets", web_app: { url: btnUrl(miniAppBase, "markets") } }]);
+  }
+  rows.push([{ text: "🔄 Another one", callback_data: "cat:" + category }, { text: "🆕 Latest", callback_data: "latest" }]);
   return {
     text: "«" + cat.label.toUpperCase() + "»\n\n" + clip(top.title, 90) + "\n\n" + clip(top.excerpt, 220) + more,
-    keyboard: {
-      inline_keyboard: [
-        [{ text: cat.emoji + " Open in BRYME", web_app: { url: btnUrl(miniAppBase, miniRoute(category)) } }],
-        [{ text: "🔄 Another one", callback_data: "cat:" + category }, { text: "🆕 Latest", callback_data: "latest" }]
-      ]
-    }
+    keyboard: { inline_keyboard: rows }
   };
 }
 

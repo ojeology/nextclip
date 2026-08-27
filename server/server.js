@@ -67,6 +67,24 @@ function loadCompetitions() {
   return ccache.data;
 }
 
+/* ---------- money opportunities cache (mtime-refreshed) ---------- */
+const OPPORTUNITIES_PATH = path.join(ROOT, "content", "opportunities.json");
+let ocache = { data: null, mtime: 0 };
+function loadOpportunities() {
+  try {
+    const m = fs.statSync(OPPORTUNITIES_PATH).mtimeMs;
+    if (m !== ocache.mtime || !ocache.data) {
+      ocache = { data: JSON.parse(fs.readFileSync(OPPORTUNITIES_PATH, "utf8")), mtime: m };
+    }
+  } catch (e) { /* keep last good */ }
+  return ocache.data;
+}
+const FX = { USD: 1, NGN: 1 / 1500, GBP: 1.27, EUR: 1.09, CAD: 0.73, ZAR: 0.055, KES: 0.0077 };
+function usdEq(pay) {
+  if (!pay) return 0;
+  return Math.max(Number(pay.amountMin) || 0, Number(pay.amountMax) || 0) * (FX[pay.currency] || 1);
+}
+
 /* ---------- telegram sender ---------- */
 function telegram(method, payload) {
   if (!TOKEN) return Promise.reject(new Error("TELEGRAM_BOT_TOKEN not set"));
@@ -162,6 +180,38 @@ const server = http.createServer(async (req, res) => {
       const d = loadCompetitions();
       const leagues = d ? d.competitions.map((c) => ({ id: c.id, name: c.name, flag: c.flag, teams: c.teams })) : [];
       return json(res, 200, { builtAt: d ? d.builtAt : null, leagues });
+    }
+    if (p === "/api/money/opportunities") {
+      const d = loadOpportunities();
+      const list = ((d && d.opportunities) || [])
+        .filter((o) => o.status === "published" && o.pay)
+        .map((o) => ({
+          slug: o.slug, publication: o.publication, title: o.title,
+          excerpt: String(o.excerpt || "").slice(0, 180),
+          pay: o.pay.display || "", usd: Math.round(usdEq(o.pay)),
+          currency: o.pay.currency || "", types: o.writingTypeLabel || "",
+          words: o.wordCount || "", lastVerified: o.lastVerified || (d ? d.updatedAt : ""),
+          deadline: o.deadline || ""
+        }))
+        .sort((a, b) => b.usd - a.usd);
+      return json(res, 200, { updatedAt: (d && d.updatedAt) || null, count: list.length, opportunities: list });
+    }
+    if (p.startsWith("/api/money/opportunities/") && p.split("/").length === 5) {
+      const d = loadOpportunities();
+      const slug = decodeURIComponent(p.split("/")[4]);
+      const o = ((d && d.opportunities) || []).find((x) => x.slug === slug);
+      if (!o) return json(res, 404, { error: "not_found", message: "We couldn't find that market." });
+      return json(res, 200, {
+        slug: o.slug, publication: o.publication, title: o.title, excerpt: o.excerpt,
+        pay: o.pay || null, deadline: o.deadline || "", wordCount: o.wordCount || "",
+        writingTypeLabel: o.writingTypeLabel || "", experience: o.experience || "",
+        eligibility: o.eligibility || "", whatTheyWant: o.whatTheyWant || "",
+        whatTheyDontWant: o.whatTheyDontWant || "", howToSubmit: o.howToSubmit || "",
+        response: o.response || "", rights: o.rights || "", requirements: o.requirements || "",
+        applyUrl: o.applyUrl || "", applyEmail: o.applyEmail || "", officialUrl: o.officialUrl || "",
+        lastVerified: o.lastVerified || "", updatedAt: (d && d.updatedAt) || "",
+        disclaimer: (d && d.disclaimer) || ""
+      });
     }
     if (p === "/api/posts/latest") {
       const limit = Math.min(Number(url.searchParams.get("limit") || 8), 20);
