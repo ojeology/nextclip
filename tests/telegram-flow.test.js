@@ -99,7 +99,8 @@ function check(name, cond, extra) {
   try { cp = JSON.parse(r.body); } catch (e) {}
   check("competitions endpoint serves 5 competitions", r.code === 200 && Array.isArray(cp.competitions) && cp.competitions.length === 5, { n: (cp.competitions || []).length });
   check("competitions include champions-league", (cp.competitions || []).some((c) => c.id === "champions-league" && c.teams.length >= 6));
-  check("competitions carry teams/scores/fixtures arrays", (cp.competitions || []).every((c) => Array.isArray(c.teams) && Array.isArray(c.scores) && Array.isArray(c.fixtures)));
+  check("competitions carry teams/scores/fixtures/scorers arrays", (cp.competitions || []).every((c) => Array.isArray(c.teams) && Array.isArray(c.scores) && Array.isArray(c.fixtures) && Array.isArray(c.scorers)));
+  check("real goalscorers present (majority of comps)", (cp.competitions || []).filter((c) => c.scorers.length >= 5 && c.scorers[0].name && typeof c.scorers[0].goals === "number").length >= 3, (cp.competitions || []).map((c) => c.id + ":" + c.scorers.length));
   r = await req("GET", BASE + "/api/sports/leagues");
   let lg = {};
   try { lg = JSON.parse(r.body); } catch (e) {}

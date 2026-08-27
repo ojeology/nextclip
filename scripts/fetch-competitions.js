@@ -90,6 +90,23 @@ async function fetchBoard(c, from, to) {
   return evs.map(eventRow).filter(Boolean);
 }
 
+async function fetchScorers(c) {
+  const d = await getJson("https://site.api.espn.com/apis/site/v2/sports/soccer/" + c.code + "/statistics");
+  const stats = Array.isArray(d.stats) ? d.stats : [];
+  const goals = stats.filter((s) => s.name === "goalsLeaders")[0];
+  const leaders = goals && Array.isArray(goals.leaders) ? goals.leaders : [];
+  return leaders.slice(0, 10).map((l) => {
+    const a = l.athlete || {};
+    const apps = (a.statistics || []).filter((s) => s.name === "appearances")[0];
+    return {
+      name: a.displayName || "?",
+      team: (a.team && (a.team.abbreviation || a.team.shortDisplayName)) || "",
+      goals: num(l.value),
+      apps: num(apps && (apps.displayValue ?? apps.value))
+    };
+  }).filter((x) => x.name !== "?");
+}
+
 (async () => {
   const now = new Date();
   const past = new Date(now.getTime() - 5 * DAY);
@@ -101,8 +118,10 @@ async function fetchBoard(c, from, to) {
       const board = await fetchBoard(c, past, future);
       const scores = board.filter((r) => r.status === "FT").slice(-14).reverse();
       const fixtures = board.filter((r) => r.status !== "FT").slice(0, 14);
-      out.push({ id: c.id, name: c.name, flag: c.flag, teams, scores, fixtures });
-      console.log("ok  ", c.id, "(" + teams.length + " teams, " + scores.length + " scores, " + fixtures.length + " fixtures)");
+      let scorers = [];
+      try { scorers = await fetchScorers(c); } catch (e) { console.log("     scorers unavailable:", e.message); }
+      out.push({ id: c.id, name: c.name, flag: c.flag, teams, scores, fixtures, scorers });
+      console.log("ok  ", c.id, "(" + teams.length + " teams, " + scores.length + " scores, " + fixtures.length + " fixtures, " + scorers.length + " scorers)");
     } catch (e) { console.log("skip", c.id, "-", e.message); }
   }
   if (!out.length) {

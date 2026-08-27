@@ -279,8 +279,12 @@
     } else if (c.scores && c.scores.length) {
       var s = c.scores[0];
       line = s.hshort + " " + s.hs + "–" + s.as + " " + s.ashort + " · " + s.date;
-    } else {
+    } else if (c.scorers && c.scorers.length) {
+      line = "Top scorer: " + c.scorers[0].name + " · " + c.scorers[0].goals + " goals";
+    } else if (c.teams.reduce(function (n, t) { return n + (t.pts || 0); }, 0) > 0) {
       line = c.teams[0].short + " lead the table · " + (c.teams[0].pts || 0) + " pts";
+    } else {
+      line = "Season starting — table fills automatically.";
     }
     return '<a class="lg" href="#/comp/' + encodeURIComponent(c.id) + '">' +
       '<span class="lg-top">' + c.flag + " <b>" + esc(c.name) + "</b><i>→</i></span>" +
@@ -364,9 +368,13 @@
   }
   function scorersHtml(comp) {
     if (comp.scorers && comp.scorers.length) {
-      return comp.scorers.map(function (s) { return '<div class="fixt"><span class="f-when">' + esc(s.goals + " goals") + "</span><span class=\"f-teams\">" + esc(s.name) + " <i>" + esc(s.team || "") + "</i></span></div>"; }).join("");
+      return comp.scorers.map(function (s, i) {
+        return '<div class="fixt"><span class="f-when">#' + (i + 1) + " · " + s.goals + " goal" + (s.goals === 1 ? "" : "s") + "</span>" +
+          '<span class="f-teams">' + esc(s.name) + " <i>" + esc(s.team || "") + (s.apps ? " · " + s.apps + " apps" : "") + "</i></span></div>";
+      }).join("");
     }
-    return '<div class="empty">🥇 Top scorers arrive once the stats feed is live — table, scores and fixtures update automatically meanwhile.</div>';
+    if (comp.scores && comp.scores.length) return '<div class="empty">No scoring data yet for this competition.</div>';
+    return '<div class="empty">⚽ Season starting — top scorers appear here automatically once matches are played.</div>';
   }
 
   function pageComp(id) {
@@ -388,6 +396,21 @@
         var out = '<div id="comp-news"><div class="skel"><i style="width:50%"></i><i></i></div></div>';
         return out;
       }
+      function fillCompNews() {
+        apiGet("/api/posts/category/sports?limit=30").then(function (dp) {
+          var node = document.getElementById("comp-news");
+          if (!node) return;
+          var posts = dp.posts || [];
+          var news = leagueNews(posts, c).slice(0, 6);
+          if (news.length) { node.innerHTML = news.map(cardHtml).join(""); return; }
+          /* honest fallback: no club-matched stories yet — list real sports posts */
+          node.innerHTML = '<div class="empty">No ' + esc(c.name) + ' stories yet — latest from the desk:</div>' +
+            posts.slice(0, 4).map(cardHtml).join("");
+        }).catch(function () {
+          var node = document.getElementById("comp-news");
+          if (node) node.innerHTML = '<div class="empty">News will appear here momentarily.</div>';
+        });
+      }
       function mount(active) {
         view.innerHTML =
           backBar("#/sports", "Sports") +
@@ -398,17 +421,7 @@
           }).join("") + "</div>" +
           '<div class="seg-pane" id="seg-pane"></div>';
         document.getElementById("seg-pane").innerHTML = pane(active);
-        if (active === "news") {
-          apiGet("/api/posts/category/sports?limit=30").then(function (dp) {
-            var news = leagueNews(dp.posts || [], c).slice(0, 6);
-            document.getElementById("comp-news") && (document.getElementById("comp-news").innerHTML = news.length
-              ? news.map(cardHtml).join("")
-              : '<div class="empty">No ' + esc(c.name) + ' stories yet — <a href="#/sports-news">all sports news →</a></div>');
-          }).catch(function () {
-            document.getElementById("comp-news") && (document.getElementById("comp-news").innerHTML = '<div class="empty">News will appear here momentarily.</div>');
-          });
-        }
-        monetize();
+        if (active === "news") fillCompNews();
       }
       mount("table");
       view.querySelector(".seg").addEventListener("click", function (e) {
@@ -417,16 +430,7 @@
         view.querySelectorAll(".seg-b").forEach(function (x) { x.classList.remove("on"); });
         b.classList.add("on");
         document.getElementById("seg-pane").innerHTML = pane(b.getAttribute("data-tab"));
-        if (b.getAttribute("data-tab") === "news") {
-          apiGet("/api/posts/category/sports?limit=30").then(function (dp) {
-            var news = leagueNews(dp.posts || [], c).slice(0, 6);
-            document.getElementById("comp-news") && (document.getElementById("comp-news").innerHTML = news.length
-              ? news.map(cardHtml).join("")
-              : '<div class="empty">No ' + esc(c.name) + ' stories yet — <a href="#/sports-news">all sports news →</a></div>');
-          }).catch(function () {
-            document.getElementById("comp-news") && (document.getElementById("comp-news").innerHTML = '<div class="empty">News will appear here momentarily.</div>');
-          });
-        }
+        if (b.getAttribute("data-tab") === "news") fillCompNews();
       });
     }).catch(function () {
       stateBox("📡", "Couldn't load the competition.", "Check your connection and try again.", "Retry");
@@ -459,7 +463,7 @@
         (p.hasBody
           ? '<div class="art-body">' + p.body + "</div>"
           : '<p class="pg-sub">' + esc(p.excerpt || "") + "</p>" +
-            '<a class="btn" href="' + esc(p.url) + '" target="_blank" rel="noopener">Open full guide on bryme.onrender.com</a>') +
+            '<a class="btn" href="' + esc(/^https?:/.test(p.url) ? p.url : "https://bryme.onrender.com" + p.url) + '" target="_blank" rel="noopener">Open the full guide on bryme.onrender.com</a>') +
         slot("article-bottom") +
         '</article><div class="kick">Keep reading</div><div id="art-more"></div>';
       var back = view.querySelector(".back");

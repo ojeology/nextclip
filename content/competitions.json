@@ -1,5 +1,5 @@
 {
- "builtAt": "2026-08-27T08:06:48.854Z",
+ "builtAt": "2026-08-27T10:12:18.445Z",
  "competitions": [
   {
    "id": "premier-league",
@@ -507,6 +507,68 @@
      "alogo": "",
      "time": "19:00",
      "status": "Mon, August 31st at 3:00 PM EDT"
+    }
+   ],
+   "scorers": [
+    {
+     "name": "Jack Hinshelwood",
+     "team": "BHA",
+     "goals": 2,
+     "apps": 1
+    },
+    {
+     "name": "Josh King",
+     "team": "FUL",
+     "goals": 1,
+     "apps": 1
+    },
+    {
+     "name": "Anton Stach",
+     "team": "LEE",
+     "goals": 1,
+     "apps": 1
+    },
+    {
+     "name": "Josko Gvardiol",
+     "team": "MNC",
+     "goals": 1,
+     "apps": 1
+    },
+    {
+     "name": "João Pedro",
+     "team": "CHE",
+     "goals": 1,
+     "apps": 1
+    },
+    {
+     "name": "Keane Lewis-Potter",
+     "team": "BRE",
+     "goals": 1,
+     "apps": 1
+    },
+    {
+     "name": "Marc Guéhi",
+     "team": "MNC",
+     "goals": 1,
+     "apps": 1
+    },
+    {
+     "name": "Dominik Szoboszlai",
+     "team": "LIV",
+     "goals": 1,
+     "apps": 1
+    },
+    {
+     "name": "Cody Gakpo",
+     "team": "LIV",
+     "goals": 1,
+     "apps": 1
+    },
+    {
+     "name": "Marcus Tavernier",
+     "team": "BOU",
+     "goals": 1,
+     "apps": 1
     }
    ]
   },
@@ -1062,6 +1124,68 @@
      "time": "19:00",
      "status": "Thu, September 3rd at 3:00 PM EDT"
     }
+   ],
+   "scorers": [
+    {
+     "name": "Kylian Mbappé",
+     "team": "RMA",
+     "goals": 3,
+     "apps": 2
+    },
+    {
+     "name": "Roberto Fernández",
+     "team": "ESP",
+     "goals": 2,
+     "apps": 2
+    },
+    {
+     "name": "Pierre-Emerick Aubameyang",
+     "team": "DEP",
+     "goals": 2,
+     "apps": 2
+    },
+    {
+     "name": "Mariano Díaz",
+     "team": "ALA",
+     "goals": 2,
+     "apps": 2
+    },
+    {
+     "name": "Fermín López",
+     "team": "BAR",
+     "goals": 2,
+     "apps": 1
+    },
+    {
+     "name": "Raphinha",
+     "team": "BAR",
+     "goals": 2,
+     "apps": 1
+    },
+    {
+     "name": "Chupete",
+     "team": "MCF",
+     "goals": 1,
+     "apps": 2
+    },
+    {
+     "name": "Nahuel Tenaglia",
+     "team": "ALA",
+     "goals": 1,
+     "apps": 2
+    },
+    {
+     "name": "Pape Gueye",
+     "team": "VIL",
+     "goals": 1,
+     "apps": 2
+    },
+    {
+     "name": "Andrés Martín",
+     "team": "RAC",
+     "goals": 1,
+     "apps": 2
+    }
    ]
   },
   {
@@ -1583,6 +1707,68 @@
      "time": "18:45",
      "status": "Mon, August 31st at 2:45 PM EDT"
     }
+   ],
+   "scorers": [
+    {
+     "name": "Donyell Malen",
+     "team": "ROMA",
+     "goals": 3,
+     "apps": 1
+    },
+    {
+     "name": "Pio Esposito",
+     "team": "INT",
+     "goals": 1,
+     "apps": 1
+    },
+    {
+     "name": "Cas Odenthal",
+     "team": "SAS",
+     "goals": 1,
+     "apps": 1
+    },
+    {
+     "name": "Yann Bisseck",
+     "team": "INT",
+     "goals": 1,
+     "apps": 1
+    },
+    {
+     "name": "Anastasios Douvikas",
+     "team": "COMO",
+     "goals": 1,
+     "apps": 1
+    },
+    {
+     "name": "Bremer",
+     "team": "JUV",
+     "goals": 1,
+     "apps": 1
+    },
+    {
+     "name": "Hassane Kamara",
+     "team": "UDI",
+     "goals": 1,
+     "apps": 1
+    },
+    {
+     "name": "Alessandro Romano",
+     "team": "CAG",
+     "goals": 1,
+     "apps": 1
+    },
+    {
+     "name": "Gustavo Varela",
+     "team": "MON",
+     "goals": 1,
+     "apps": 1
+    },
+    {
+     "name": "Piotr Zielinski",
+     "team": "INT",
+     "goals": 1,
+     "apps": 1
+    }
    ]
   },
   {
@@ -1787,8 +1973,8 @@
      "pos": 14
     },
     {
-     "name": "SV Elversberg",
-     "short": "Elversberg",
+     "name": "SV ELVERSBERG",
+     "short": "ELVERSBERG",
      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10388.png",
      "p": 0,
      "w": 0,
@@ -1944,7 +2130,8 @@
      "time": "15:30",
      "status": "Sun, August 30th at 11:30 AM EDT"
     }
-   ]
+   ],
+   "scorers": []
   },
   {
    "id": "champions-league",
@@ -2457,7 +2644,69 @@
     }
    ],
    "scores": [],
-   "fixtures": []
+   "fixtures": [],
+   "scorers": [
+    {
+     "name": "Kylian Mbappé",
+     "team": "RMA",
+     "goals": 15,
+     "apps": 11
+    },
+    {
+     "name": "Harry Kane",
+     "team": "MUN",
+     "goals": 14,
+     "apps": 13
+    },
+    {
+     "name": "Khvicha Kvaratskhelia",
+     "team": "PSG",
+     "goals": 10,
+     "apps": 16
+    },
+    {
+     "name": "Julián Álvarez",
+     "team": "ATM",
+     "goals": 10,
+     "apps": 15
+    },
+    {
+     "name": "Anthony Gordon",
+     "team": "NEW",
+     "goals": 10,
+     "apps": 12
+    },
+    {
+     "name": "Ousmane Dembélé",
+     "team": "PSG",
+     "goals": 8,
+     "apps": 13
+    },
+    {
+     "name": "Erling Haaland",
+     "team": "MNC",
+     "goals": 8,
+     "apps": 10
+    },
+    {
+     "name": "Luis Díaz",
+     "team": "MUN",
+     "goals": 7,
+     "apps": 12
+    },
+    {
+     "name": "Victor Osimhen",
+     "team": "GAL",
+     "goals": 7,
+     "apps": 10
+    },
+    {
+     "name": "Vitinha",
+     "team": "PSG",
+     "goals": 6,
+     "apps": 17
+    }
+   ]
   }
  ]
 }
