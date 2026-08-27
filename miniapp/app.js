@@ -455,10 +455,49 @@
       return d;
     });
   }
-  function oppCard(o) {
-    return '<a class="mkt" href="#/market/' + encodeURIComponent(o.slug) + '">' +
+  var unlockedMk = (function () { try { return JSON.parse(localStorage.getItem("bryme_mk") || "[]"); } catch (e) { return []; } })();
+  function saveUnlocked() { try { localStorage.setItem("bryme_mk", JSON.stringify(unlockedMk)); } catch (e) {} }
+  function isUnlocked(slug, all, dailySlug) {
+    if (unlockedMk.indexOf(slug) > -1 || slug === dailySlug) return true;
+    if (!all) return true; /* no list loaded yet — don't block */
+    var free = all.slice(0, 2).map(function (x) { return x.slug; })
+      .concat(all.filter(function (x) { return x.ng; }).slice(0, 2).map(function (x) { return x.slug; }));
+    return free.indexOf(slug) > -1;
+  }
+  /* the ad gate: one sponsor message = one market, unlocked forever on this device */
+  function showGate(o, onUnlock) {
+    var link = (window.BRYME_AD_CONFIG && window.BRYME_AD_CONFIG.smartlink) || "";
+    var old = document.querySelector(".gate-sheet"); if (old) old.remove();
+    var sheetEl = document.createElement("div");
+    sheetEl.className = "gate-sheet";
+    sheetEl.innerHTML =
+      '<div class="gate-card">' +
       '<span class="mkt-pay">' + esc(o.pay) + "</span>" +
       "<b>" + esc(o.publication) + "</b>" +
+      "<p>The full 3-step playbook: what they accept, word counts, how to submit — and what Nigerians should know.</p>" +
+      (link
+        ? '<button class="btn" type="button" id="gate-go">📺 Watch &amp; unlock ' + esc(o.publication) + "</button>" +
+          '<span class="fine">One short sponsor message · unlocks forever on this device · keeps BRYME free</span>'
+        : '<button class="btn" type="button" id="gate-go">🎁 Unlock ' + esc(o.publication) + " — free</button>" +
+          '<span class="fine">Early users get free unlocks while sponsored access is starting. 🎉</span>') +
+      '<button class="gate-x" type="button" aria-label="Close">✕</button>' +
+      "</div>";
+    document.body.appendChild(sheetEl);
+    var close = function () { sheetEl.remove(); };
+    sheetEl.addEventListener("click", function (e) { if (e.target === sheetEl) close(); });
+    sheetEl.querySelector(".gate-x").addEventListener("click", close);
+    sheetEl.querySelector("#gate-go").addEventListener("click", function () {
+      haptic();
+      if (link) { try { window.open(link, "_blank", "noopener"); } catch (e) {} }
+      if (unlockedMk.indexOf(o.slug) === -1) { unlockedMk.push(o.slug); saveUnlocked(); }
+      close();
+      if (onUnlock) onUnlock();
+    });
+  }
+  function oppCard(o, locked) {
+    return '<a class="mkt' + (locked ? " locked" : "") + '" href="#/market/' + encodeURIComponent(o.slug) + '">' +
+      '<span class="mkt-pay">' + esc(o.pay) + "</span>" +
+      "<b>" + esc(o.publication) + (locked ? ' <span class="mkt-lock">🔒</span>' : "") + "</b>" +
       (o.types ? '<span class="mkt-type">' + esc(o.types) + "</span>" : "") + "</a>";
   }
   /* daily pick — SAME formula as the bot, so Telegram and the app agree */
@@ -484,7 +523,7 @@
       }
       if (ng.length) {
         html += '<div class="kick green">🇳🇬 Nigerian-friendly markets</div>' +
-          ng.slice(0, 4).map(oppCard).join("");
+          ng.slice(0, 4).map(function (x) { return oppCard(x, !isUnlocked(x.slug, all, today && today.slug)); }).join("");
       }
       html += '<a class="card row-card" href="#/markets"><span class="cat">💼</span><b>Browse all markets</b><p>' +
         all.length + ' verified publications — highest payers, Nigerian-first, filter by what you write.</p></a>';
@@ -518,17 +557,20 @@
 
       function render(k) {
         var body = document.getElementById("mk-body");
+        var daily = dailyPick(all);
+        var dslug = daily && daily.slug;
+        var card = function (x) { return oppCard(x, !isUnlocked(x.slug, all, dslug)); };
         if (k === "all") {
           var html = "";
-          if (ng.length) html += '<div class="kick green">🇳🇬 Nigerian &amp; African friendly — start here</div>' + ng.map(oppCard).join("");
-          html += '<div class="kick">💵 Highest verified payers</div>' + all.slice(0, 8).map(oppCard).join("");
+          if (ng.length) html += '<div class="kick green">🇳🇬 Nigerian &amp; African friendly — start here</div>' + ng.map(card).join("");
+          html += '<div class="kick">💵 Highest verified payers</div>' + all.slice(0, 8).map(card).join("");
           body.innerHTML = html;
         } else if (k === "ng") {
-          body.innerHTML = ng.map(oppCard).join("") || '<div class="empty">No matches right now.</div>';
+          body.innerHTML = ng.map(card).join("") || '<div class="empty">No matches right now.</div>';
         } else {
           var t = k.slice(5).toLowerCase();
           var list = all.filter(function (x) { return (x.writingTypes || []).some(function (w) { return String(w).toLowerCase() === t; }); });
-          body.innerHTML = list.map(oppCard).join("") || '<div class="empty">No matches right now.</div>';
+          body.innerHTML = list.map(card).join("") || '<div class="empty">No matches right now.</div>';
         }
         document.getElementById("mk-foot").innerHTML =
           '<p class="fine">Every listing verified by the desk' + (d.updatedAt ? " · list updated " + esc(d.updatedAt) : "") +
@@ -557,7 +599,37 @@
     setBack(true); markDock("money");
     view.innerHTML = '<div class="skel"><i style="width:40%"></i><i></i><i></i></div>';
     apiGet("/api/money/opportunities/" + encodeURIComponent(slug)).then(function (o) {
-      var pay = o.pay || {};
+      loadOpps().then(function (d) {
+        var all = (d && d.opportunities) || [];
+        var daily = dailyPick(all);
+        if (!isUnlocked(slug, all, daily && daily.slug)) {
+          view.innerHTML = backBar("#/markets", "Markets") +
+            '<article class="art">' +
+            '<div class="kick green">💼 Verified opportunity</div>' +
+            "<h1>" + esc(o.publication) + "</h1>" +
+            '<div class="pay-badge big">' + esc((o.pay || {}).display || "") + "</div>" +
+            (o.excerpt ? '<p class="lead">' + esc(o.excerpt) + "</p>" : "") +
+            '<div class="adgate"><b>🔒 The full playbook is one tap away</b>' +
+            "<p>3 steps · exact word counts · how to submit · 🇳🇬 notes — everything verified.</p>" +
+            '<button class="btn" type="button" id="mk-unlock">📺 Unlock this playbook</button>' +
+            '<span class="fine">One short sponsor message · unlocks forever on this device</span></div>' +
+            "</article>";
+          document.getElementById("mk-unlock").addEventListener("click", function () {
+            showGate({ slug: slug, publication: o.publication, pay: ((o.pay || {}).display || "") }, function () { pageMarket(slug); });
+          });
+          return;
+        }
+        renderPlaybook(o);
+      }).catch(function () { renderPlaybook(o); });
+    }).catch(function (e) {
+      if (e.status === 404) stateBox("😕", "Market not found.", "See all verified markets.", "💼 Markets", "#/markets");
+      else stateBox("📡", "Couldn't load this market.", "Check your connection and try again.", "Retry");
+    });
+  }
+  function renderPlaybook(o) {
+    var slug = o.slug;
+    var pay = o.pay || {};
+    {
       var eligText = o.eligibility && typeof o.eligibility === "object" ? (o.eligibility.summary || "") : String(o.eligibility || "");
       var ngNote = /nigeria|nigerian|africa|african|black|diaspora/i.test(eligText + " " + String(pay.conditions || ""));
       var stepsHtml =
@@ -601,31 +673,12 @@
         var ngFirst = all.filter(function (x) { return x.slug !== slug && (/₦/.test(x.pay) || /niger|africa/i.test(x.excerpt || "")); });
         var rest = all.filter(function (x) { return x.slug !== slug && ngFirst.indexOf(x) === -1; });
         var picks = ngFirst.slice(0, 2).concat(rest.slice(0, 2)).slice(0, 4);
-        document.getElementById("mk-more").innerHTML = picks.slice(0, 2).map(oppCard).join("");
-
-        var gate = document.getElementById("mk-gate");
-        var extra = picks.slice(2);
-        var link = (window.BRYME_AD_CONFIG && window.BRYME_AD_CONFIG.smartlink) || "";
-        function renderExtra() {
-          gate.innerHTML = '<div class="kick">🔓 Bonus markets</div>' + (extra.length ? extra.map(oppCard).join("") : "") +
-            '<p class="fine">More verified markets every week — follow the bot.</p>';
-        }
-        if (!extra.length) { gate.innerHTML = ""; return; }
-        if (!link) { renderExtra(); return; } /* no ad link configured yet → open access */
-        gate.innerHTML = '<div class="adgate"><b>📺 Want ' + extra.length + ' more verified markets?</b>' +
-          '<p>Watch a short sponsor message to unlock them. It keeps BRYME free.</p>' +
-          '<button class="btn" type="button" id="ad-unlock">Watch &amp; unlock</button>' +
-          '<span class="fine">Ad · opens in a new tab</span></div>';
-        document.getElementById("ad-unlock").addEventListener("click", function () {
-          haptic();
-          try { window.open(link, "_blank", "noopener"); } catch (e) {}
-          renderExtra();
-        });
+        var dslug2 = dailyPick(all);
+        var lcard = function (x) { return oppCard(x, !isUnlocked(x.slug, all, dslug2 && dslug2.slug)); };
+        document.getElementById("mk-more").innerHTML = picks.slice(0, 2).map(lcard).join("");
+        document.getElementById("mk-gate").innerHTML = "";
       }).catch(function () { document.getElementById("mk-more").innerHTML = ""; document.getElementById("mk-gate").innerHTML = ""; });
-    }).catch(function (e) {
-      if (e.status === 404) stateBox("😕", "Market not found.", "See all verified markets.", "💼 Markets", "#/markets");
-      else stateBox("📡", "Couldn't load this market.", "Check your connection and try again.", "Retry");
-    });
+    }
   }
 
   /* ---------- latest + article ---------- */
@@ -687,7 +740,7 @@
     try {
       var box = document.createElement("div");
       box.setAttribute("style", "margin:10px 0;padding:10px;border:1px dashed #888;border-radius:8px;font:11px/1.5 monospace;color:#aaa;word-break:break-all;white-space:pre-wrap;");
-      box.textContent = "DEBUG\nhash: " + location.hash + "\nsearch: " + location.search + "\nAPI: " + (API || "(none)") + "\napp: v20260827-4";
+      box.textContent = "DEBUG\nhash: " + location.hash + "\nsearch: " + location.search + "\nAPI: " + (API || "(none)") + "\napp: v20260827-5";
       view.insertBefore(box, view.firstChild);
     } catch (e) {}
   }

@@ -242,3 +242,13 @@ p.pg-sub { color: var(--muted); font-size: 14px; margin: 0 2px 14px; }
 /* markets discovery */
 .chip i { font-style: normal; opacity: 0.7; font-size: 11px; margin-left: 2px; }
 .feat .mkt-pay { margin-top: 2px; }
+
+/* locked markets + unlock gate */
+.mkt.locked b { color: var(--muted); }
+.mkt.locked .mkt-pay { background: #3a3325; color: var(--gold); }
+.mkt-lock { font-size: 12px; }
+.gate-sheet { position: fixed; inset: 0; z-index: 60; background: rgba(4, 6, 9, 0.72); display: flex; align-items: flex-end; justify-content: center; }
+.gate-card { position: relative; width: 100%; max-width: 720px; display: grid; gap: 8px; justify-items: start; padding: 20px 18px calc(20px + var(--safe-bottom)); background: var(--panel); border: 1px solid var(--line2); border-radius: 16px 16px 0 0; }
+.gate-card b { font-size: 18px; }
+.gate-card p { margin: 0; font-size: 14px; color: var(--muted); }
+.gate-x { position: absolute; top: 12px; right: 12px; font-size: 15px; color: var(--faint); padding: 6px; }
