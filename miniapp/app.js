@@ -490,7 +490,7 @@
       }).catch(function () { document.getElementById("art-more").style.display = "none"; });
     }).catch(function (e) {
       if (e.status === 404) {
-        stateBox("😕", "We couldn't find that article.", "Check the latest BRYME posts instead.", "🆕 Latest Posts", "#/latest");
+        stateBox("😕", "This story moved or was retired.", "Older buttons may point to retired pages — the latest posts are always fresh.", "🆕 Latest Posts", "#/latest");
       } else {
         stateBox("📡", "Couldn't load this article.", "Check your connection and try again.", "Retry");
       }

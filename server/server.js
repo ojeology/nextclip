@@ -176,7 +176,10 @@ const server = http.createServer(async (req, res) => {
       return json(res, 200, { category: cat, count: list.length, posts: list.map((x) => publicPost(x)) });
     }
     if (p.startsWith("/api/posts/") && p.split("/").length === 4) {
-      const slug = decodeURIComponent(p.split("/")[3]);
+      /* retired-slug aliases: old bot buttons / shared links keep working */
+      const SLUG_ALIASES = { "writing-opportunities": "writing" };
+      let slug = decodeURIComponent(p.split("/")[3]);
+      if (SLUG_ALIASES[slug]) slug = SLUG_ALIASES[slug];
       const { posts, bodies } = loadContent();
       const post = posts.find((x) => x.slug === slug);
       if (!post) return json(res, 404, { error: "not_found", message: "We couldn't find that article.", fallback: { miniAppRoute: "#/home", label: "Latest posts" } });
