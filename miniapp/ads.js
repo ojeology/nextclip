@@ -3,7 +3,12 @@
 window.BRYME_AD_CONFIG = {
   sdkUrl: "https://libtl.com/sdk.js",
   zoneId: 11668156,
-  smartlink: ""
+  smartlink: "",
+  /* In-App Interstitial — auto interstitials for ALL visitors.
+   * frequency 2 / capping 0.1h (6 min) / interval 30s / timeout 5s / everyPage false.
+   * Set inApp: false to switch off instantly (one deploy). */
+  inApp: true,
+  inAppSettings: { frequency: 2, capping: 0.1, interval: 30, timeout: 5, everyPage: false }
 };
 
 window.BRYME_AD = (function () {
@@ -49,4 +54,14 @@ window.BRYME_AD = (function () {
 })();
 
 /* preload the SDK immediately when configured → zero latency on the tap */
-if (window.BRYME_AD.configured()) window.BRYME_AD.preload();
+if (window.BRYME_AD.configured()) {
+  window.BRYME_AD.preload().then(function (ok) {
+    /* In-App Interstitial: initialized once per session after the SDK loads.
+     * Session persists across in-app navigation (everyPage: false), so a
+     * visitor sees at most `frequency` interstitials per 6 minutes. */
+    var cfg = window.BRYME_AD_CONFIG || {};
+    if (ok && cfg.inApp && typeof window["show_" + cfg.zoneId] === "function") {
+      try { window["show_" + cfg.zoneId]({ type: "inApp", inAppSettings: cfg.inAppSettings }); } catch (e) {}
+    }
+  });
+}
