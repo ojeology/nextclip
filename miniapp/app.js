@@ -159,7 +159,7 @@
   var HUBS = {
     money: {
       title: "💰 MAKE MONEY", sub: "Practical ways to earn — checked by the desk.", api: "money",
-      featured: "writing-opportunities",
+      featured: "writing",
       chips: [
         ["🔥 Opportunities", /opportunit|make-money-online|beginners-guide|income-skills|microtask|online-services|platform-review|affiliate/i],
         ["✍️ Writing", /writing|content-creation|field-notes/i],
@@ -273,21 +273,29 @@
 
   function compCardHtml(c) {
     var line = "";
+    var lineLogos = "";
     if (c.fixtures && c.fixtures.length) {
       var f = c.fixtures[0];
       line = "Next: " + f.hshort + " vs " + f.ashort + " · " + f.date;
+      lineLogos = (f.hlogo ? '<img src="' + esc(f.hlogo) + '" alt="" loading="lazy">' : "") +
+        '<i>vs</i>' + (f.alogo ? '<img src="' + esc(f.alogo) + '" alt="" loading="lazy">' : "");
     } else if (c.scores && c.scores.length) {
       var s = c.scores[0];
       line = s.hshort + " " + s.hs + "–" + s.as + " " + s.ashort + " · " + s.date;
+      lineLogos = (s.hlogo ? '<img src="' + esc(s.hlogo) + '" alt="" loading="lazy">' : "") +
+        '<b>' + s.hs + "–" + s.as + "</b>" + (s.alogo ? '<img src="' + esc(s.alogo) + '" alt="" loading="lazy">' : "");
     } else if (c.scorers && c.scorers.length) {
       line = "Top scorer: " + c.scorers[0].name + " · " + c.scorers[0].goals + " goals";
+      lineLogos = c.scorers[0].logo ? '<img src="' + esc(c.scorers[0].logo) + '" alt="" loading="lazy">' : "";
     } else if (c.teams.reduce(function (n, t) { return n + (t.pts || 0); }, 0) > 0) {
       line = c.teams[0].short + " lead the table · " + (c.teams[0].pts || 0) + " pts";
+      lineLogos = c.teams[0].logo ? '<img src="' + esc(c.teams[0].logo) + '" alt="" loading="lazy">' : "";
     } else {
       line = "Season starting — table fills automatically.";
     }
     return '<a class="lg" href="#/comp/' + encodeURIComponent(c.id) + '">' +
       '<span class="lg-top">' + c.flag + " <b>" + esc(c.name) + "</b><i>→</i></span>" +
+      (lineLogos ? '<span class="lg-strip">' + lineLogos + "</span>" : "") +
       '<span class="lg-next">' + esc(line) + "</span></a>";
   }
 
@@ -370,7 +378,7 @@
     if (comp.scorers && comp.scorers.length) {
       return comp.scorers.map(function (s, i) {
         return '<div class="fixt"><span class="f-when">#' + (i + 1) + " · " + s.goals + " goal" + (s.goals === 1 ? "" : "s") + "</span>" +
-          '<span class="f-teams">' + esc(s.name) + " <i>" + esc(s.team || "") + (s.apps ? " · " + s.apps + " apps" : "") + "</i></span></div>";
+          '<span class="f-teams">' + (s.logo ? '<img src="' + esc(s.logo) + '" alt="" loading="lazy">' : "") + esc(s.name) + " <i>" + esc(s.team || "") + (s.apps ? " · " + s.apps + " apps" : "") + "</i></span></div>";
       }).join("");
     }
     if (comp.scores && comp.scores.length) return '<div class="empty">No scoring data yet for this competition.</div>';

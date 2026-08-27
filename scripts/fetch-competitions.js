@@ -101,6 +101,7 @@ async function fetchScorers(c) {
     return {
       name: a.displayName || "?",
       team: (a.team && (a.team.abbreviation || a.team.shortDisplayName)) || "",
+      logo: (a.team && a.team.logos && a.team.logos[0] && a.team.logos[0].href) || "",
       goals: num(l.value),
       apps: num(apps && (apps.displayValue ?? apps.value))
     };

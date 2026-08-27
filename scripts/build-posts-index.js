@@ -63,6 +63,11 @@ function parseHtmlPage(relPath) {
   const abs = path.join(ROOT, rel);
   if (!fs.existsSync(abs) || !fs.statSync(abs).isFile()) return null;
   const html = fs.readFileSync(abs, "utf8");
+  /* moved/removed stub pages are not content — keep them out of the index
+   * (single source of truth: the real page at its canonical URL is the post) */
+  const robots = (html.match(/name="robots" content="([^"]*)"/) || [])[1] || "";
+  const stubDesc = (html.match(/name="description" content="([^"]*)"/) || [])[1] || "";
+  if (/noindex/i.test(robots) || /catalogue has moved/i.test(stubDesc)) return null;
   const title = (html.match(/<title>([^<|]+)\|?\s*BRYME/i) || html.match(/<title>([^<]+)/) || [])[1];
   const desc = (html.match(/name="description" content="([^"]*)"/) || [])[1];
   const img = (html.match(/property="og:image" content="([^"]*)"/) || [])[1];

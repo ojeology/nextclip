@@ -191,3 +191,9 @@ p.pg-sub { color: var(--muted); font-size: 14px; margin: 0 2px 14px; }
 /* empty state (inline) */
 .empty { padding: 18px 14px; border: 1px dashed var(--line2); border-radius: var(--radius); color: var(--muted); font-size: 13.5px; text-align: center; margin-bottom: 10px; }
 .empty a { color: var(--live); font-weight: 700; }
+
+/* logo strip on competition cards + scorer logos */
+.lg-strip { display: flex; align-items: center; gap: 8px; }
+.lg-strip img { width: 22px; height: 22px; object-fit: contain; }
+.lg-strip i { font-style: normal; color: var(--faint); font-size: 11px; font-weight: 700; text-transform: uppercase; }
+.lg-strip b { font-size: 14px; font-weight: 800; color: var(--gold); letter-spacing: 0.03em; }

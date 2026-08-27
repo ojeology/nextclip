@@ -126,6 +126,14 @@ function sendFile(res, abs) {
   });
 }
 
+/* Article bodies may contain root-relative links (href="/..."). Inside the
+ * Telegram webview those can resolve against the wrong base — absolutize. */
+function absolutizeBody(html) {
+  return String(html || "")
+    .replace(/ href="\/([a-z0-9_#-])/gi, ' href="https://bryme.onrender.com/$1')
+    .replace(/ src="\/([a-z0-9_#-])/gi, ' src="https://bryme.onrender.com/$1');
+}
+
 function publicPost(p, body) {
   return {
     title: p.title, slug: p.slug, category: p.category, categoryLabel: p.categoryLabel,
@@ -172,7 +180,7 @@ const server = http.createServer(async (req, res) => {
       const { posts, bodies } = loadContent();
       const post = posts.find((x) => x.slug === slug);
       if (!post) return json(res, 404, { error: "not_found", message: "We couldn't find that article.", fallback: { miniAppRoute: "#/home", label: "Latest posts" } });
-      return json(res, 200, Object.assign(publicPost(post, bodies[slug]), { body: bodies[slug] || "" }));
+      return json(res, 200, Object.assign(publicPost(post, bodies[slug]), { body: absolutizeBody(bodies[slug] || "") }));
     }
     if (p === "/api/categories") {
       const { posts } = loadContent();
