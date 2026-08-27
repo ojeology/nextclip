@@ -709,6 +709,43 @@
           "minute": "83'"
         }
       ]
+    },
+    "real-madrid-vs-real-sociedad": {
+      "homeScore": 4,
+      "awayScore": 1,
+      "status": "FT",
+      "playedOn": "2026-08-26",
+      "source": {
+        "name": "ESPN",
+        "url": "https://www.espn.com/soccer/match/_/gameId/401882919/real-sociedad-real-madrid"
+      },
+      "scorers": [
+        {
+          "team": "home",
+          "player": "Kylian Mbappé",
+          "minute": "40'"
+        },
+        {
+          "team": "away",
+          "player": "Luka Sucic",
+          "minute": "44'"
+        },
+        {
+          "team": "home",
+          "player": "Kylian Mbappé",
+          "minute": "60'"
+        },
+        {
+          "team": "home",
+          "player": "Vinícius Júnior",
+          "minute": "68'"
+        },
+        {
+          "team": "home",
+          "player": "Kylian Mbappé",
+          "minute": "80'"
+        }
+      ]
     }
   },
   "serie-a": {
