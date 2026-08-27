@@ -54,6 +54,7 @@ function loadContent() {
 }
 
 /* ---------- sports competitions cache (mtime-refreshed) ---------- */
+/* deploy-tick 9ccdab0+ */
 const COMPETITIONS_PATH = path.join(ROOT, "content", "competitions.json");
 let ccache = { data: null, mtime: 0 };
 function loadCompetitions() {
