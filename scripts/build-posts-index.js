@@ -136,9 +136,13 @@ function addHtmlSection(dir, category, categoryLabel, urlBase, skip = []) {
     if (s.status !== "complete") return;
     const slug = "comic-" + s.matchSlug;
     const art = data.art || {};
-    const panels = (s.panels || []).map((pid) => {
-      const src = art[pid] || (typeof pid === "string" && pid.startsWith("/") ? pid : "");
-      return src ? `<figure class="comic-panel"><img src="${src}" alt=""></figure>` : "";
+    const panels = (s.panels || []).map((p) => {
+      /* panels are objects: { art, title, caption } — art keys map via data.art */
+      const key = p && typeof p === "object" ? p.art : p;
+      const src = (key && art[key]) || (typeof key === "string" && key.startsWith("/") ? key : "");
+      if (!src) return "";
+      const cap = p && p.title ? `<figcaption><b>${p.title}</b>${p.caption ? " — " + p.caption : ""}</figcaption>` : "";
+      return `<figure class="comic-panel"><img src="${src}" alt="${s.headline || "BRYME comic panel"}" loading="lazy">${cap}</figure>`;
     }).join("");
     add({
       slug,

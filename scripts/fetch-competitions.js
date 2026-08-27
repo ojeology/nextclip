@@ -117,6 +117,13 @@ async function fetchScorers(c) {
     try {
       const teams = await fetchStandings(c);
       const board = await fetchBoard(c, past, future);
+      /* scoreboard events don't carry logos — backfill from standings by team name */
+      const logoBy = {};
+      teams.forEach((t) => { if (t.logo) logoBy[t.name] = t.logo; });
+      board.forEach((r) => {
+        if (!r.hlogo && logoBy[r.home]) r.hlogo = logoBy[r.home];
+        if (!r.alogo && logoBy[r.away]) r.alogo = logoBy[r.away];
+      });
       const scores = board.filter((r) => r.status === "FT").slice(-14).reverse();
       const fixtures = board.filter((r) => r.status !== "FT").slice(0, 14);
       let scorers = [];

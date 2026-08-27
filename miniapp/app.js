@@ -371,7 +371,7 @@
     return comp.fixtures.map(function (f) {
       return '<div class="fixt">' +
         '<span class="f-when">' + esc(f.date) + (f.time ? " · " + esc(f.time) : "") + "</span>" +
-        '<span class="f-teams"><img src="' + esc(f.hlogo) + '" alt="" loading="lazy">' + esc(f.hshort) + " <i>vs</i> " + esc(f.ashort) + '<img src="' + esc(f.alogo) + '" alt="" loading="lazy"></span></div>';
+        '<span class="f-teams">' + (f.hlogo ? '<img src="' + esc(f.hlogo) + '" alt="" loading="lazy">' : "") + esc(f.hshort) + " <i>vs</i> " + esc(f.ashort) + (f.alogo ? '<img src="' + esc(f.alogo) + '" alt="" loading="lazy">' : "") + "</span></div>";
     }).join("");
   }
   function scorersHtml(comp) {
@@ -470,8 +470,9 @@
         slot("article-top") +
         (p.hasBody
           ? '<div class="art-body">' + p.body + "</div>"
-          : '<p class="pg-sub">' + esc(p.excerpt || "") + "</p>" +
-            '<a class="btn" href="' + esc(/^https?:/.test(p.url) ? p.url : "https://bryme.onrender.com" + p.url) + '" target="_blank" rel="noopener">Open the full guide on bryme.onrender.com</a>') +
+          : '<div class="guide-call"><p>' + esc(p.excerpt || "") + "</p>" +
+            '<p class="guide-note">📖 This is one of BRYME\'s full guides — the complete version lives on the website.</p>' +
+            '<a class="btn" href="' + esc(/^https?:/.test(p.url) ? p.url : "https://bryme.onrender.com" + p.url) + '" target="_blank" rel="noopener">Open the full guide</a></div>') +
         slot("article-bottom") +
         '</article><div class="kick">Keep reading</div><div id="art-more"></div>';
       var back = view.querySelector(".back");
