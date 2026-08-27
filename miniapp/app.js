@@ -457,12 +457,10 @@
   }
   var unlockedMk = (function () { try { return JSON.parse(localStorage.getItem("bryme_mk") || "[]"); } catch (e) { return []; } })();
   function saveUnlocked() { try { localStorage.setItem("bryme_mk", JSON.stringify(unlockedMk)); } catch (e) {} }
+  var FREE_SLUGS = ["afrolicious"]; /* the one free on-ramp: "write your first essay" */
   function isUnlocked(slug, all, dailySlug) {
-    if (unlockedMk.indexOf(slug) > -1 || slug === dailySlug) return true;
-    if (!all) return true; /* no list loaded yet — don't block */
-    var free = all.slice(0, 2).map(function (x) { return x.slug; })
-      .concat(all.filter(function (x) { return x.ng; }).slice(0, 2).map(function (x) { return x.slug; }));
-    return free.indexOf(slug) > -1;
+    if (unlockedMk.indexOf(slug) > -1 || FREE_SLUGS.indexOf(slug) > -1) return true;
+    return false;
   }
   /* the ad gate: one sponsor message = one market, unlocked forever on this device */
   function showGate(o, onUnlock) {
@@ -664,21 +662,91 @@
           : "") +
         '<p class="fine">Verified ' + esc(o.lastVerified || o.updatedAt || "recently") + " · you never pay BRYME for this</p>" +
         "</article>" +
-        '<div class="kick">🎯 Two more places you can pitch</div><div id="mk-more"></div>' +
+        '<div class="kick">Want to write to more websites?</div><div id="mk-more"></div>' +
         '<div id="mk-gate"></div>';
 
       /* related verified pitches: 2 free, 2 more behind ad (when configured) */
       loadOpps().then(function (d) {
         var all = (d && d.opportunities) || [];
-        var ngFirst = all.filter(function (x) { return x.slug !== slug && (/₦/.test(x.pay) || /niger|africa/i.test(x.excerpt || "")); });
-        var rest = all.filter(function (x) { return x.slug !== slug && ngFirst.indexOf(x) === -1; });
-        var picks = ngFirst.slice(0, 2).concat(rest.slice(0, 2)).slice(0, 4);
-        var dslug2 = dailyPick(all);
-        var lcard = function (x) { return oppCard(x, !isUnlocked(x.slug, all, dslug2 && dslug2.slug)); };
-        document.getElementById("mk-more").innerHTML = picks.slice(0, 2).map(lcard).join("");
+        var lcard = function (x) { return oppCard(x, !isUnlocked(x.slug)); };
+        var others = all.filter(function (x) { return x.slug !== slug; });
+        document.getElementById("mk-more").innerHTML = others.slice(0, 6).map(lcard).join("") +
+          '<a class="card row-card" href="#/markets"><span class="cat">💼</span><b>Browse all ' + others.length + ' verified markets</b><p>1 short sponsor message unlocks each — forever on this device.</p></a>';
         document.getElementById("mk-gate").innerHTML = "";
       }).catch(function () { document.getElementById("mk-more").innerHTML = ""; document.getElementById("mk-gate").innerHTML = ""; });
     }
+  }
+
+  /* ---------- MONEY: Writing / Freelancing / AI & Tech ---------- */
+  function moneyTabWriting(opps, posts) {
+    var all = opps || [];
+    var locked = all.filter(function (x) { return x.slug !== "afrolicious"; });
+    var lcard = function (x) { return oppCard(x, !isUnlocked(x.slug)); };
+    return '<div class="feat">' +
+      '<span class="feat-kick">✍️ Start here — it costs nothing</span>' +
+      '<b>What if you could make $75 with your next article?</b>' +
+      "<p>You don\'t pay a dime. No gurus, no courses, no \"coaches\". If you can write a good article, publications will pay you directly. Here\'s exactly how — step by step.</p>" +
+      '<a class="feat-cta" href="#/market/afrolicious">✍️ Write your first essay on Afrolicious →</a>' +
+      "</div>" +
+      '<div class="mkt-row"><b>Why Afrolicious first?</b><p>$75 per accepted piece · 600–800 words · Black African and diaspora writers (Nigeria qualifies) · submit by email. The full playbook below walks you through everything: what they accept, word counts, how to submit, and what happens after.</p></div>' +
+      '<a class="card row-card" href="#/market/afrolicious"><span class="cat">🚀</span><b>Open the Afrolicious playbook</b><p>Everything explained, with guidance on how to submit.</p></a>' +
+      (locked.length
+        ? '<div class="kick">Want to write to more websites?</div>' + locked.slice(0, 6).map(lcard).join("") +
+          '<a class="card row-card" href="#/markets"><span class="cat">💼</span><b>All ' + locked.length + ' verified markets</b><p>Each one: 1 short sponsor message to unlock — yours forever on this device.</p></a>'
+        : "") +
+      '<div class="kick">📚 Deepen the craft</div>' +
+      (posts || []).filter(function (p) { return /writing|content-creation|field-notes/.test(p.slug); }).slice(0, 3).map(cardHtml).join("");
+  }
+  function moneyTabFreelancing(posts) {
+    var list = (posts || []).filter(function (p) { return /freelanc|remote-work|platform-fees/.test(p.slug); });
+    return '<div class="feat">' +
+      '<span class="feat-kick">💻 Skills → income</span>' +
+      '<b>What if clients paid you for what you already know how to do?</b>' +
+      "<p>No fees to start. No middleman eating your invoice. Package the skill, pitch the client, get paid — we checked the platforms so you don\'t get shortchanged.</p>" +
+      "</div>" +
+      (list.slice(0, 4).map(cardHtml).join("") || '<div class="empty">Guides coming to this tab shortly.</div>');
+  }
+  function moneyTabAI(posts) {
+    var list = (posts || []).filter(function (p) { return /ai-assisted|outlier|mindrift|prolific/.test(p.slug); });
+    return '<div class="feat">' +
+      '<span class="feat-kick">🤖 Get paid to train AI</span>' +
+      '<b>What if your judgment could earn dollars — no CS degree needed?</b>' +
+      "<p>AI platforms pay real people to rate and improve their models. We tested the ones that actually pay Nigerians — and the ones that waste your time.</p>" +
+      "</div>" +
+      (list.slice(0, 4).map(cardHtml).join("") || '<div class="empty">Guides coming to this tab shortly.</div>') +
+      '<a class="card row-card" href="#/tech"><span class="cat">🤖</span><b>Explore Tech &amp; AI tools</b><p>Free tools that make all of this faster.</p></a>';
+  }
+  function pageMoney() {
+    setBack(true); markDock("money");
+    view.innerHTML =
+      '<h1 class="pg">💰 MAKE MONEY</h1><p class="pg-sub">Three honest paths — no gurus, no fees.</p>' +
+      '<div class="seg" id="mn-seg">' +
+      '<button class="seg-b on" type="button" data-t="writing">✍️ Writing</button>' +
+      '<button class="seg-b" type="button" data-t="freelancing">💻 Freelancing</button>' +
+      '<button class="seg-b" type="button" data-t="ai">🤖 AI &amp; Tech</button>' +
+      "</div>" +
+      '<div id="mn-body"></div>';
+    var body = document.getElementById("mn-body");
+    body.innerHTML = '<div class="skel"><i style="width:50%"></i><i></i><i></i></div>';
+    Promise.all([loadOpps(), apiGet("/api/posts/category/money?limit=30").catch(function () { return { posts: [] }; })])
+      .then(function (res) {
+        var opps = (res[0] && res[0].opportunities) || [];
+        var posts = res[1].posts || [];
+        var render = function (t) {
+          if (t === "freelancing") body.innerHTML = moneyTabFreelancing(posts);
+          else if (t === "ai") body.innerHTML = moneyTabAI(posts);
+          else body.innerHTML = moneyTabWriting(opps, posts);
+          monetize();
+        };
+        render("writing");
+        document.getElementById("mn-seg").addEventListener("click", function (e) {
+          var b = e.target.closest("button.seg-b"); if (!b) return;
+          haptic();
+          view.querySelectorAll(".seg-b").forEach(function (x) { x.classList.remove("on"); });
+          b.classList.add("on");
+          render(b.getAttribute("data-t"));
+        });
+      });
   }
 
   /* ---------- latest + article ---------- */
@@ -740,7 +808,7 @@
     try {
       var box = document.createElement("div");
       box.setAttribute("style", "margin:10px 0;padding:10px;border:1px dashed #888;border-radius:8px;font:11px/1.5 monospace;color:#aaa;word-break:break-all;white-space:pre-wrap;");
-      box.textContent = "DEBUG\nhash: " + location.hash + "\nsearch: " + location.search + "\nAPI: " + (API || "(none)") + "\napp: v20260827-5";
+      box.textContent = "DEBUG\nhash: " + location.hash + "\nsearch: " + location.search + "\nAPI: " + (API || "(none)") + "\napp: v20260827-6";
       view.insertBefore(box, view.firstChild);
     } catch (e) {}
   }
@@ -762,6 +830,7 @@
     if (parts[0] === "sports") return pageSports();
     if (parts[0] === "sports-news") return pageSportsNews();
     if (parts[0] === "home") return pageHome();
+    if (parts[0] === "money") return pageMoney();
     if (HUB_KEYS.indexOf(parts[0]) > -1) return pageHub(parts[0]);
     return pageHome();
   }
