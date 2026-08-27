@@ -32,9 +32,9 @@ CTAS = {
     "tech/index.html": ("🤖", "Ask BRYME about the latest AI and tech discoveries.",
                         "tech", "Open BRYME Tech on Telegram"),
     "entertainment/index.html": ("🎬", "Get the latest movies, series and anime on Telegram.",
-                                 "movies", "Open BRYME Entertainment on Telegram"),
+                                 "entertainment", "Open BRYME Entertainment on Telegram"),
     "movies/index.html": ("🎬", "Get the latest movies, series and anime on Telegram.",
-                          "movies", "Open BRYME Entertainment on Telegram"),
+                          "entertainment", "Open BRYME Entertainment on Telegram"),
     "sports/comics/index.html": ("😂", "The weekend's storylines, drawn. Get BRYME comics on Telegram.",
                                  "comics", "Open BRYME Comics on Telegram"),
 }
