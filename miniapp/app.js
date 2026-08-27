@@ -622,7 +622,7 @@
     var hash = (location.hash || "#/home").replace(/^#\/?/, "");
     var parts = hash.split("/").filter(Boolean);
     sheet.hidden = true;
-    window.scrollTo(0, 0);
+    try { window.scrollTo(0, 0); } catch (e) {}
     if (!parts.length) return pageHome();
     if (parts[0] === "latest") return pageLatest();
     if (parts[0] === "article" && parts[1]) return pageArticle(decodeURIComponent(parts[1]));
@@ -654,6 +654,15 @@
       });
     } catch (e) {}
   }
+
+  /* never show a silent blank screen */
+  window.addEventListener("error", function () {
+    try {
+      view.innerHTML = '<div class="state"><em>📡</em><b>Something went wrong loading this screen.</b>' +
+        '<span>Close and reopen BRYME — your content is safe.</span>' +
+        '<a class="btn" href="#/home">🏠 Back to Home</a></div>';
+    } catch (e) {}
+  });
 
   /* menu sheet */
   document.getElementById("btn-home").addEventListener("click", function () { haptic(); sheet.hidden = !sheet.hidden; });

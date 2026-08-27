@@ -158,7 +158,7 @@ function createBot(deps) {
   const apiParam = deps.apiBaseUrl
     ? (deps.apiBaseUrl.indexOf("?") > -1 ? "&" : "?") + "api=" + encodeURIComponent(deps.apiBaseUrl.replace(/\/+$/, ""))
     : "";
-  const base = miniAppBase + apiParam;
+  const base = miniAppBase + apiParam + (apiParam ? "&" : "?") + "v=20260827-2";
   const opps = deps.getOpportunities ? deps.getOpportunities() : [];
 
   function deliver(chatId, msg) {
