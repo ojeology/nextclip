@@ -112,6 +112,28 @@ p.pg-sub { color: var(--muted); font-size: 14px; margin: 0 2px 14px; }
 .dock a span { font-size: 18px; }
 .dock a.on { color: var(--live); }
 
+/* leagues (sports section) */
+.back { display: inline-block; margin: 6px 2px 2px; color: var(--muted); font-size: 13px; font-weight: 600; padding: 4px 6px; }
+.lg { display: grid; gap: 8px; padding: 13px 14px; margin-bottom: 9px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--panel); }
+.lg:active { background: var(--panel2); }
+.lg-top { display: flex; align-items: center; gap: 8px; font-size: 15.5px; }
+.lg-top b { font-weight: 700; letter-spacing: -0.01em; }
+.lg-top i { margin-left: auto; font-style: normal; font-size: 11.5px; color: var(--live); font-weight: 700; white-space: nowrap; }
+.lg-row { display: grid; grid-template-columns: 22px 1fr 30px; align-items: center; gap: 8px; font-size: 13px; }
+.lg-row i { font-style: normal; color: var(--faint); font-size: 11.5px; }
+.lg-row b { font-weight: 600; color: var(--text); }
+.lg-row em { font-style: normal; text-align: right; color: var(--gold); font-weight: 700; font-size: 12.5px; }
+.tbl { border: 1px solid var(--line); border-radius: var(--radius); background: var(--panel); overflow: hidden; margin-bottom: 16px; }
+.tbl-r { display: grid; grid-template-columns: 22px 1fr 22px 56px 34px 30px; align-items: center; gap: 6px; padding: 7px 10px; font-size: 12.5px; border-top: 1px solid var(--line); }
+.tbl-r i { font-style: normal; color: var(--faint); font-size: 11px; }
+.tbl-r span { display: flex; align-items: center; gap: 7px; font-weight: 600; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.tbl-r span img { width: 17px; height: 17px; object-fit: contain; flex: none; }
+.tbl-r b { font-weight: 500; color: var(--muted); text-align: center; font-size: 11.5px; }
+.tbl-r em { font-style: normal; font-weight: 700; text-align: right; color: var(--gold); }
+.tbl-r.tbl-h { color: var(--faint); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.06em; background: var(--panel2); border-top: 0; }
+.tbl-r.tbl-h span, .tbl-r.tbl-h em, .tbl-r.tbl-h b { color: var(--faint); font-weight: 700; }
+.tbl-r.ucl { box-shadow: inset 2px 0 0 var(--live); }
+
 /* monetization slots (invisible until partner code fills them) */
 [data-monetization-slot]:empty { display: none; }
 .mslot { margin: 14px 0; }

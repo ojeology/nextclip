@@ -169,6 +169,87 @@
     });
   }
 
+  /* ---------- sports: top-five leagues ---------- */
+  var leaguesCache = null;
+  function loadLeagues() {
+    if (leaguesCache) return Promise.resolve(leaguesCache);
+    return apiGet("/api/sports/leagues").then(function (d) {
+      if (d && d.leagues && d.leagues.length) leaguesCache = d;
+      return d;
+    });
+  }
+  function leagueCardHtml(l) {
+    var rows = l.teams.slice(0, 3).map(function (t) {
+      return '<span class="lg-row"><i>' + t.pos + "</i><b>" + esc(t.short) + "</b><em>" + t.pts + "</em></span>";
+    }).join("");
+    return '<a class="lg" href="#/league/' + encodeURIComponent(l.id) + '">' +
+      '<span class="lg-top">' + l.flag + " <b>" + esc(l.name) + '</b><i>Table &amp; news →</i></span>' + rows + "</a>";
+  }
+  var KW_SKIP = { nice: 1, lens: 1, real: 1, city: 1, united: 1, monaco: 1 };
+  function leagueNews(posts, league) {
+    var kws = {};
+    league.teams.forEach(function (t) {
+      var k = (t.short || "").toLowerCase().trim();
+      if (k && k.length > 2 && !KW_SKIP[k]) kws[k] = 1;
+      k.split(/[^a-z0-9]+/).forEach(function (w) { if (w.length >= 4 && !KW_SKIP[w]) kws[w] = 1; });
+    });
+    var patterns = Object.keys(kws).map(function (k) {
+      return new RegExp("\\b" + k.replace(/[^a-z0-9 ]/g, "").replace(/ /g, "\\s+") + "\\b");
+    });
+    return posts.filter(function (p) {
+      var hay = (p.title + " " + (p.excerpt || "")).toLowerCase();
+      return patterns.some(function (re) { return re.test(hay); });
+    });
+  }
+  function pageSports() {
+    setBack(true); markDock("sports");
+    view.innerHTML =
+      '<h1 class="pg">⚽ Sports</h1><p class="pg-sub">Top-five league tables and the latest from the desk.</p>' +
+      '<div class="kick green">🏆 League tables</div><div id="lg-list"></div>' +
+      '<div class="kick">Latest sports posts</div><div id="sp-posts"></div>';
+    document.getElementById("lg-list").innerHTML = '<div class="skel"><i style="width:45%"></i><i></i></div><div class="skel"><i style="width:35%"></i><i></i></div>';
+    document.getElementById("sp-posts").innerHTML = '<div class="skel"><i style="width:55%"></i><i></i></div>';
+    loadLeagues().then(function (d) {
+      document.getElementById("lg-list").innerHTML =
+        ((d && d.leagues) || []).map(leagueCardHtml).join("") || '<p class="pg-sub">League tables will appear here shortly.</p>';
+    }).catch(function () { document.getElementById("lg-list").innerHTML = ""; });
+    apiGet("/api/posts/category/sports?limit=15").then(function (d) {
+      document.getElementById("sp-posts").innerHTML =
+        (d.posts || []).map(cardHtml).join("") || '<p class="pg-sub">Nothing new here yet — check back soon.</p>';
+    }).catch(function () { document.getElementById("sp-posts").innerHTML = '<p class="pg-sub">Posts will appear here momentarily.</p>'; });
+  }
+  function pageLeague(id) {
+    setBack(true); markDock("sports");
+    skeletons(6);
+    loadLeagues().then(function (d) {
+      var l = ((d && d.leagues) || []).filter(function (x) { return x.id === id; })[0];
+      if (!l) { stateBox("😕", "League not found.", "Back to all sports sections.", "⚽ Sports", "#/sports"); return; }
+      var when = d.builtAt ? new Date(d.builtAt) : null;
+      var whenStr = when && !isNaN(when.getTime()) ? when.toLocaleDateString(undefined, { day: "numeric", month: "short" }) : "";
+      var rows = l.teams.map(function (t) {
+        return '<div class="tbl-r' + (t.pos <= 4 ? " ucl" : "") + '"><i>' + t.pos + "</i>" +
+          "<span>" + (t.logo ? '<img src="' + esc(t.logo) + '" alt="" loading="lazy">' : "") + esc(t.short) + "</span>" +
+          "<b>" + t.p + "</b><b>" + t.w + "-" + t.d + "-" + t.l + "</b><b>" + esc(t.gd) + "</b><em>" + t.pts + "</em></div>";
+      }).join("");
+      view.innerHTML =
+        '<a class="back" href="#/sports">← Sports</a>' +
+        '<h1 class="pg">' + l.flag + " " + esc(l.name) + "</h1>" +
+        '<p class="pg-sub">Standings' + (whenStr ? " · updated " + whenStr : "") + "</p>" +
+        '<div class="tbl"><div class="tbl-r tbl-h"><i>#</i><span>Club</span><b>P</b><b>W-D-L</b><b>GD</b><em>Pts</em></div>' + rows + "</div>" +
+        '<div id="lg-news"></div>';
+      document.getElementById("lg-news").innerHTML = '<div class="skel"><i style="width:50%"></i><i></i></div>';
+      apiGet("/api/posts/category/sports?limit=30").then(function (dp) {
+        var news = leagueNews(dp.posts || [], l).slice(0, 6);
+        document.getElementById("lg-news").innerHTML = news.length
+          ? '<div class="kick green">📰 ' + esc(l.name) + " news</div>" + news.map(cardHtml).join("")
+          : '<div class="kick green">📰 More from the desk</div><a class="card" href="#/sports"><span class="cat">⚽ Sports</span><b>All the latest BRYME sports posts</b><p>Every sports story, in one feed.</p></a>';
+        monetize();
+      }).catch(function () { document.getElementById("lg-news").innerHTML = ""; });
+    }).catch(function () {
+      stateBox("📡", "Couldn't load the table.", "Check your connection and try again.", "Retry");
+    });
+  }
+
   /* ---------- router ---------- */
   function route() {
     var hash = (location.hash || "#/home").replace(/^#\/?/, "");
@@ -178,7 +259,8 @@
     if (!parts.length) return pageHome();
     if (parts[0] === "latest") return pageLatest();
     if (parts[0] === "article" && parts[1]) return pageArticle(decodeURIComponent(parts[1]));
-    if (CATS[parts[0]]) return pageCategory(parts[0]);
+    if (parts[0] === "league" && parts[1]) return pageLeague(decodeURIComponent(parts[1]));
+    if (CATS[parts[0]]) { if (parts[0] === "sports") return pageSports(); return pageCategory(parts[0]); }
     return pageHome();
   }
   window.addEventListener("hashchange", function () { haptic(); route(); });

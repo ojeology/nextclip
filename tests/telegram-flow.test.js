@@ -94,6 +94,12 @@ function check(name, cond, extra) {
   check("app.css serves", r.code === 200);
 
   console.log("API · latest / category / article / 404");
+  r = await req("GET", BASE + "/api/sports/leagues");
+  let lg = {};
+  try { lg = JSON.parse(r.body); } catch (e) {}
+  check("league tables endpoint serves 5 leagues", r.code === 200 && Array.isArray(lg.leagues) && lg.leagues.length === 5, { n: (lg.leagues || []).length });
+  check("league tables carry teams + pts", (lg.leagues || []).every((l) => Array.isArray(l.teams) && l.teams.length >= 6 && l.teams.every((t) => typeof t.pts === "number" && t.short)));
+
   r = await req("GET", BASE + "/api/posts/latest?limit=6");
   const latest = JSON.parse(r.body);
   check("latest returns published posts w/ miniAppRoute", latest.posts.every((p) => p.status === "published" && p.miniAppRoute.startsWith("#/article/")));

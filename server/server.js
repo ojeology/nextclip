@@ -53,6 +53,19 @@ function loadContent() {
   return cache;
 }
 
+/* ---------- league tables cache (mtime-refreshed) ---------- */
+const LEAGUES_PATH = path.join(ROOT, "content", "league-tables.json");
+let lcache = { data: null, mtime: 0 };
+function loadLeagues() {
+  try {
+    const m = fs.statSync(LEAGUES_PATH).mtimeMs;
+    if (m !== lcache.mtime || !lcache.data) {
+      lcache = { data: JSON.parse(fs.readFileSync(LEAGUES_PATH, "utf8")), mtime: m };
+    }
+  } catch (e) { /* keep last good */ }
+  return lcache.data;
+}
+
 /* ---------- telegram sender ---------- */
 function telegram(method, payload) {
   if (!TOKEN) return Promise.reject(new Error("TELEGRAM_BOT_TOKEN not set"));
@@ -131,6 +144,10 @@ const server = http.createServer(async (req, res) => {
     if (p === "/healthz") return json(res, 200, { ok: true, posts: loadContent().posts.length });
 
     /* ---- API ---- */
+    if (p === "/api/sports/leagues") {
+      const d = loadLeagues();
+      return json(res, 200, d || { builtAt: null, leagues: [] });
+    }
     if (p === "/api/posts/latest") {
       const limit = Math.min(Number(url.searchParams.get("limit") || 8), 20);
       const { posts } = loadContent();
