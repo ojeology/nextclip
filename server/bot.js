@@ -93,6 +93,27 @@ function marketsMessage(count, miniAppBase) {
   };
 }
 
+/* Group greeting — fired when someone joins a chat the bot administers. */
+function welcomeMessage(users, miniAppBase) {
+  const names = users.filter((u) => u && !u.is_bot).map((u) => u.first_name || "friend");
+  const who = names.length ? names.join(", ") : "friend";
+  return {
+    text:
+      "👋 Welcome to BRYME, " + who + "!\n\n" +
+      "This is the home of BRYME inside Telegram — quick, free and useful:\n\n" +
+      "💰 Make Money — verified paid markets (55 publications, real rates) and step-by-step playbooks. Start with Afrolicious: $75 per accepted article, and Nigeria qualifies.\n" +
+      "⚽ Sports — top-five league tables, scores, fixtures and top scorers, updated automatically.\n" +
+      "🤖 Tech & AI, 🎬 Movies & Anime, 😂 Comics — all inside one fast app.\n\n" +
+      "Everything opens right here in Telegram. No fees, no gurus.\n" +
+      "Tip: you can also type to me — try \"make money\" or \"sports\".",
+    keyboard: { inline_keyboard: [
+      [{ text: "🚀 Open BRYME", web_app: { url: btnUrl(miniAppBase, "home") } }],
+      [{ text: "💼 Browse paid markets", web_app: { url: btnUrl(miniAppBase, "markets") } }],
+      [{ text: "⚽ Sports", callback_data: "cat:sports" }, { text: "🆕 Latest", callback_data: "latest" }]
+    ] }
+  };
+}
+
 function categoryMessage(posts, category, miniAppBase, opps) {
   const cat = CAT_BY_KEY[category];
   if (!cat) return { text: "😕 Unknown section. Pick one below:", keyboard: homeKeyboard() };
@@ -216,6 +237,10 @@ function createBot(deps) {
       try {
         const msg = update.message;
         const cb = update.callback_query;
+        if (msg && Array.isArray(msg.new_chat_members) && msg.new_chat_members.length && !msg.text) {
+          const humans = msg.new_chat_members.filter((u) => u && !u.is_bot);
+          if (humans.length) return deliver(msg.chat.id, welcomeMessage(humans, base));
+        }
         if (msg && msg.text) {
           const parts = msg.text.split(/\s+/);
           const cmd = (parts[0] || "").replace(/@.*$/, "").toLowerCase();
