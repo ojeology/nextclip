@@ -99,19 +99,17 @@ function welcomeMessage(users, miniAppBase) {
   const who = names.length ? names.join(", ") : "friend";
   return {
     text:
-      "👋 Welcome to BRYME, " + who + "!\n\n" +
-      "🎉 You just found the good part of Telegram — and it costs you NOTHING. No fees. No gurus. No \"pay first, earn later\" nonsense. Ever.\n\n" +
-      "⚡️ Everything BRYME offers, right here in Telegram:\n\n" +
-      "💰 MAKE MONEY — 55 verified paid markets with REAL rates. Start with Afrolicious: $75 per accepted article, and Nigeria qualifies. Full playbook inside — free.\n" +
-      "💻 20 verified remote-work platforms — real pay, real apply links.\n" +
-      "⚽ SPORTS — Premier League, La Liga, UCL tables, scores, fixtures & top scorers. Updates itself after every matchday.\n" +
-      "🤖 TECH & AI — tools that actually save (or make) you money.\n" +
-      "🎬 MOVIES & ANIME — what to watch next, no filler.\n" +
-      "😂 COMICS — the matchweek, drawn.\n\n" +
-      "🚀 Tap a button below and it all opens instantly. Go on — your first $75 playbook is one tap away:",
+      "👋 " + who + " — welcome to BRYME.\n\n" +
+      "🛑 STOP SCROLLING. You just walked into the corner of Telegram that PAYS YOU.\n\n" +
+      "💰 $75 per article — real publications, verified rates, and NIGERIA QUALIFIES ✅\n" +
+      "💵 55 paid markets ($75–$580) + 20 remote platforms hiring for $15–100/hr\n" +
+      "⚽ Live PL, La Liga & UCL tables, scores, scorers — updates itself every matchday\n" +
+      "🤖 AI money tools · 🎬 what to watch next · 😂 matchweek comics\n\n" +
+      "❌ No fees. ❌ No gurus. ❌ No \"pay first, earn later\" nonsense. Ever.\n\n" +
+      "Your first $75 playbook is already open — one tap 👇",
     keyboard: { inline_keyboard: [
-      [{ text: "🚀 Open BRYME — FREE", web_app: { url: btnUrl(miniAppBase, "money") } }],
-      [{ text: "💼 Paid markets ($75–$580)", web_app: { url: btnUrl(miniAppBase, "markets") } }],
+      [{ text: "🚀 CLAIM YOUR $75 PLAYBOOK — FREE", web_app: { url: btnUrl(miniAppBase, "market/afrolicious") } }],
+      [{ text: "💼 All paid markets", web_app: { url: btnUrl(miniAppBase, "markets") } }],
       [{ text: "⚽ Sports", callback_data: "cat:sports" }, { text: "🆕 Latest", callback_data: "latest" }]
     ] }
   };
