@@ -59,7 +59,29 @@ function homeText() {
   return "🔥 BRYME\n\n«What do you want to explore?»";
 }
 
-function categoryMessage(posts, category, miniAppBase) {
+/* Daily rotating "opportunity teaser" — the Telegram money hook. */
+function opportunityMessage(opps, miniAppBase) {
+  if (!opps || !opps.length) return null;
+  const pool = opps.slice(0, 10);
+  const day = Math.floor(Date.now() / 864e5);
+  const o = pool[day % pool.length];
+  const amount = String((o.pay && o.pay.display) || "").replace(/\(.*?\)/g, "").trim().split(/\s+/).slice(0, 4).join(" ");
+  return {
+    o: o,
+    text:
+      "💰 MAKE " + amount.toUpperCase() + " WRITING?\n\n" +
+      "What if you could spend 10 minutes preparing an article and submitting it — without paying anyone a dime?\n\n" +
+      "One platform worth checking: " + o.publication + ".\n\n" +
+      "✍️ What they accept\n💵 How payment works\n🇳🇬 What Nigerian writers need to know\n📝 A simple 3-step submission process\n\n" +
+      "And no — you don't pay BRYME to access this opportunity.",
+    keyboard: { inline_keyboard: [
+      [{ text: "🚀 Open the full playbook", web_app: { url: btnUrl(miniAppBase, "market/" + o.slug) } }],
+      [{ text: "💼 All verified markets", web_app: { url: btnUrl(miniAppBase, "markets") } }]
+    ] }
+  };
+}
+
+function categoryMessage(posts, category, miniAppBase, opps) {
   const cat = CAT_BY_KEY[category];
   if (!cat) return { text: "😕 Unknown section. Pick one below:", keyboard: homeKeyboard() };
   const list = posts.filter((p) => p.category === category);
@@ -75,6 +97,16 @@ function categoryMessage(posts, category, miniAppBase) {
     [{ text: cat.emoji + " Open in BRYME", web_app: { url: btnUrl(miniAppBase, miniRoute(category)) } }]
   ];
   if (category === "money") {
+    const tease = opportunityMessage(opps, miniAppBase);
+    if (tease) {
+      return {
+        text: tease.text,
+        keyboard: { inline_keyboard: tease.keyboard.inline_keyboard.concat([
+          [{ text: "💰 Money hub", web_app: { url: btnUrl(miniAppBase, "money") } }],
+          [{ text: "🔄 Another one", callback_data: "cat:money" }, { text: "🆕 Latest", callback_data: "latest" }]
+        ]) }
+      };
+    }
     rows.push([{ text: "💼 Verified paid markets", web_app: { url: btnUrl(miniAppBase, "markets") } }]);
   }
   rows.push([{ text: "🔄 Another one", callback_data: "cat:" + category }, { text: "🆕 Latest", callback_data: "latest" }]);
@@ -127,6 +159,7 @@ function createBot(deps) {
     ? (deps.apiBaseUrl.indexOf("?") > -1 ? "&" : "?") + "api=" + encodeURIComponent(deps.apiBaseUrl.replace(/\/+$/, ""))
     : "";
   const base = miniAppBase + apiParam;
+  const opps = deps.getOpportunities ? deps.getOpportunities() : [];
 
   function deliver(chatId, msg) {
     return send("sendMessage", {
@@ -141,7 +174,7 @@ function createBot(deps) {
   function handleStart(chatId, arg) {
     const cat = (arg || "").trim().toLowerCase();
     if (cat && CAT_BY_KEY[cat]) {
-      return deliver(chatId, categoryMessage(getPosts(), cat, base));
+      return deliver(chatId, categoryMessage(getPosts(), cat, base, opps));
     }
     if (cat === "latest") return deliver(chatId, latestMessage(getPosts(), base));
     const slug = cat;
@@ -182,7 +215,7 @@ function createBot(deps) {
           if (cmd === "/latest") return handleStart(msg.chat.id, "latest");
           const intent = textIntent(msg.text);
           if (intent === "latest") return deliver(msg.chat.id, latestMessage(getPosts(), base));
-          if (intent) return deliver(msg.chat.id, categoryMessage(getPosts(), intent, base));
+          if (intent) return deliver(msg.chat.id, categoryMessage(getPosts(), intent, base, opps));
           return deliver(msg.chat.id, {
             text: "🔥 BRYME\n\n«What do you want to explore?»\n(Tip: you can also type — try “make money”, “sports” or “comics”.)",
             keyboard: homeKeyboard()
@@ -193,7 +226,7 @@ function createBot(deps) {
           const done = answerCallback(cb.id).catch(() => {});
           if (cb.data === "home") return done.then(() => deliver(chatId, { text: homeText(), keyboard: homeKeyboard() }));
           if (cb.data === "latest") return done.then(() => deliver(chatId, latestMessage(getPosts(), base)));
-          if (cb.data.startsWith("cat:")) return done.then(() => deliver(chatId, categoryMessage(getPosts(), cb.data.slice(4), base)));
+          if (cb.data.startsWith("cat:")) return done.then(() => deliver(chatId, categoryMessage(getPosts(), cb.data.slice(4), base, opps)));
           if (cb.data.startsWith("art:")) return done.then(() => deliver(chatId, articleMessage(getPosts(), cb.data.slice(4), base)));
           return done;
         }

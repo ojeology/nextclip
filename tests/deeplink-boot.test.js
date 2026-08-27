@@ -28,6 +28,7 @@ const CASES = [
   ["menu button (home)", "https://bryme.onrender.com/miniapp/?api=X#/home", "#/home"],
   ["startapp param (Telegram-appended)", "https://bryme.onrender.com/miniapp/?api=X&tgWebAppStartParam=sports", "#/sports"],
   ["?section= fallback", "https://bryme.onrender.com/miniapp?section=comics", "#/comics"],
+  ["market playbook deep link", "https://bryme.onrender.com/miniapp?api=X&r=market%2Fafrolicious", "#/market/afrolicious"],
   ["no destination -> home", "https://bryme.onrender.com/miniapp?api=X", "#/home"]
 ];
 let pass = 0;

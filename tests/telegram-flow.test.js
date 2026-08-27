@@ -141,9 +141,10 @@ function check(name, cond, extra) {
   console.log("T2 · Make Money category");
   sends = await webhook({ update_id: 2, callback_query: { id: "c1", from: { id: 42 }, data: "cat:money", message: { message_id: 9, chat: { id: 42 } } } });
   const money = sends[0];
-  const mBtn = money && money.reply_markup ? [].concat(...money.reply_markup.inline_keyboard).find((b) => b.web_app) : null;
-  check("money snippet shown", money && money.text.includes("MAKE MONEY"), money && money.text);
-  check("web_app button -> #/money (dual carrier)", mBtn && mBtn.web_app.url.endsWith("#/money") && /[?&]r=money(?=#)/.test(mBtn.web_app.url), mBtn && mBtn.web_app.url);
+  const mBtn = money && money.reply_markup ? [].concat(...money.reply_markup.inline_keyboard).find((b) => b.web_app && /r=market%2F/.test(b.web_app.url)) : null;
+  check("money teaser format", money && /MAKE .+ WRITING\?/.test(money.text) && /What they accept/.test(money.text) && /pay BRYME/i.test(money.text), money && money.text.split("\n")[0]);
+  check("money teaser headline", money && /MAKE .+ WRITING\?/.test(money.text) && /don't pay BRYME/i.test(money.text), money && money.text.split("\n")[0]);
+  check("playbook button -> #/market/<slug>", mBtn && /#\/market\/[a-z0-9-]+$/.test(mBtn.web_app.url), mBtn && mBtn.web_app.url);
   const mkts = money && money.reply_markup ? [].concat(...money.reply_markup.inline_keyboard).find((b) => b.web_app && /r=markets/.test(b.web_app.url)) : null;
   check("money message offers verified-markets button", mkts && mkts.web_app.url.endsWith("#/markets"), mkts && mkts.web_app.url);
 
@@ -173,7 +174,7 @@ function check(name, cond, extra) {
   sends = await webhook({ update_id: 8, message: { message_id: 20, from: { id: 7 }, chat: { id: 7 }, text: "make money" } });
   const tm = sends[sends.length - 1];
   const tmBtn = tm.reply_markup ? [].concat(...tm.reply_markup.inline_keyboard).find((b) => b.web_app) : null;
-  check("text 'make money' -> money section", tm.text.includes("MAKE MONEY") && tmBtn && tmBtn.web_app.url.endsWith("#/money"), tmBtn && tmBtn.web_app.url);
+  check("text make-money -> teaser + playbook", /MAKE .+ WRITING\?/.test(sends[sends.length - 1].text) && !![].concat(...sends[sends.length - 1].reply_markup.inline_keyboard).find((b) => b.web_app && /#\/market\//.test(b.web_app.url)));
   sends = await webhook({ update_id: 9, message: { message_id: 21, from: { id: 7 }, chat: { id: 7 }, text: "show me the comics" } });
   check("text 'comics' -> comics section", sends[sends.length - 1].text.includes("COMICS"));
   sends = await webhook({ update_id: 10, message: { message_id: 22, from: { id: 7 }, chat: { id: 7 }, text: "xyzzy plugh" } });

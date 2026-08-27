@@ -490,27 +490,69 @@
     view.innerHTML = '<div class="skel"><i style="width:40%"></i><i></i><i></i></div>';
     apiGet("/api/money/opportunities/" + encodeURIComponent(slug)).then(function (o) {
       var pay = o.pay || {};
+      var ngNote = /nigeria|nigerian|africa|african|black/i.test(String(o.eligibility || "") + String(pay.conditions || ""));
+      var stepsHtml =
+        '<div class="step"><em>1</em><div><b>Choose a suitable topic</b>' +
+        (fmtList(o.whatTheyWant) || '<p>Pitch within the themes this publication covers — see their guidelines for the current list.</p>') + "</div></div>" +
+        '<div class="step"><em>2</em><div><b>Write the article</b>' +
+        (o.wordCount ? fmtList(o.wordCount) : "") +
+        (o.requirements ? fmtList(o.requirements) : "") +
+        (o.whatTheyDontWant ? '<p><span class="avoid">Avoid:</span> ' + esc(String(o.whatTheyDontWant).replace(/<[^>]+>/g, "").slice(0, 400)) + "</p>" : "") +
+        "</div></div>" +
+        '<div class="step"><em>3</em><div><b>Submit it</b>' +
+        (fmtList(o.howToSubmit) || '<p>Follow the official submission route below.</p>') +
+        (o.response ? '<p><b>Afterward:</b> ' + esc(String(o.response).replace(/<[^>]+>/g, "").slice(0, 300)) + "</p>" : "") +
+        "</div></div>";
+
       view.innerHTML = backBar("#/markets", "Markets") +
         '<article class="art">' +
-        '<div class="kick green">💼 Verified market</div>' +
-        "<h1>" + esc(o.publication) + "</h1>" +
-        '<p class="meta">' + esc(o.title || "") + (o.writingTypeLabel ? " · " + esc(o.writingTypeLabel) : "") + "</p>" +
-        (pay.display ? '<div class="pay-badge">💰 ' + esc(pay.display) + (o.deadline ? " · ⏳ " + esc(o.deadline) : "") + "</div>" : "") +
-        (o.excerpt ? '<p class="pg-sub">' + esc(o.excerpt) + "</p>" : "") +
+        '<div class="kick green">💼 Verified opportunity playbook</div>' +
+        "<h1>Want to get paid to write? Start here.</h1>" +
+        '<p class="lead">You don\'t need to buy a course, pay a "writing coach", or send money to anyone promising to get you published. If you can write a good article, you can submit directly to publications that accept freelance contributors.</p>' +
+        '<p class="lead"><b>' + esc(o.publication) + "</b> is one place worth investigating. Here\'s exactly what they look for, how to submit, and what Nigerian writers should know before starting.</p>" +
+        '<div class="kick">📝 3 steps</div>' + stepsHtml +
+        '<div class="kick">💵 How much can you make?</div>' +
+        '<div class="pay-badge big">' + esc(pay.display || "See guidelines") + "</div>" +
         (pay.timing ? '<div class="mkt-row"><b>When you get paid</b>' + fmtList(pay.timing) + "</div>" : "") +
-        (o.wordCount ? '<div class="mkt-row"><b>Word count</b>' + fmtList(o.wordCount) + "</div>" : "") +
-        (o.whatTheyWant ? '<div class="mkt-row"><b>What they want</b>' + fmtList(o.whatTheyWant) + "</div>" : "") +
-        (o.whatTheyDontWant ? '<div class="mkt-row"><b>What they don\'t want</b>' + fmtList(o.whatTheyDontWant) + "</div>" : "") +
-        (o.howToSubmit ? '<div class="mkt-row"><b>How to submit</b>' + fmtList(o.howToSubmit) + "</div>" : "") +
-        (o.response ? '<div class="mkt-row"><b>Response time</b>' + fmtList(o.response) + "</div>" : "") +
-        (o.eligibility ? '<div class="mkt-row"><b>Eligibility</b>' + fmtList(o.eligibility) + "</div>" : "") +
+        (pay.conditions ? '<p class="fine">' + esc(String(pay.conditions).replace(/<[^>]+>/g, "").slice(0, 500)) + "</p>" : "") +
+        '<p class="fine">Payment depends on the publication\'s current terms and whether your submission is accepted.</p>' +
+        (o.eligibility ? '<div class="kick">' + (ngNote ? "🇳🇬 What Nigerian writers need to know" : "✅ Eligibility") + "</div>" + fmtList(o.eligibility) : "") +
         ((o.applyUrl || o.applyEmail || o.officialUrl)
-          ? '<a class="btn" href="' + esc(o.applyUrl || o.officialUrl) + '" target="_blank" rel="noopener">Submit to ' + esc(o.publication) + "</a>" +
+          ? '<a class="btn" href="' + esc(o.applyUrl || o.officialUrl) + '" target="_blank" rel="noopener">📝 Submit to ' + esc(o.publication) + "</a>" +
             (o.officialUrl && o.applyUrl !== o.officialUrl ? '<a class="btn ghost" style="margin-top:8px" href="' + esc(o.officialUrl) + '" target="_blank" rel="noopener">Official guidelines</a>' : "")
           : "") +
-        '<p class="meta" style="margin-top:14px">Verified ' + esc(o.lastVerified || o.updatedAt || "recently") + " · rates can change</p>" +
-        (o.disclaimer ? '<p class="meta">' + esc(o.disclaimer) + "</p>" : "") +
-        "</article>";
+        '<p class="fine">Verified ' + esc(o.lastVerified || o.updatedAt || "recently") + " · you never pay BRYME for this</p>" +
+        "</article>" +
+        '<div class="kick">🎯 Two more places you can pitch</div><div id="mk-more"></div>' +
+        '<div id="mk-gate"></div>';
+
+      /* related verified pitches: 2 free, 2 more behind ad (when configured) */
+      loadOpps().then(function (d) {
+        var all = (d && d.opportunities) || [];
+        var ngFirst = all.filter(function (x) { return x.slug !== slug && (/₦/.test(x.pay) || /niger|africa/i.test(x.excerpt || "")); });
+        var rest = all.filter(function (x) { return x.slug !== slug && ngFirst.indexOf(x) === -1; });
+        var picks = ngFirst.slice(0, 2).concat(rest.slice(0, 2)).slice(0, 4);
+        document.getElementById("mk-more").innerHTML = picks.slice(0, 2).map(oppCard).join("");
+
+        var gate = document.getElementById("mk-gate");
+        var extra = picks.slice(2);
+        var link = (window.BRYME_AD_CONFIG && window.BRYME_AD_CONFIG.smartlink) || "";
+        function renderExtra() {
+          gate.innerHTML = '<div class="kick">🔓 Bonus markets</div>' + (extra.length ? extra.map(oppCard).join("") : "") +
+            '<p class="fine">More verified markets every week — follow the bot.</p>';
+        }
+        if (!extra.length) { gate.innerHTML = ""; return; }
+        if (!link) { renderExtra(); return; } /* no ad link configured yet → open access */
+        gate.innerHTML = '<div class="adgate"><b>📺 Want ' + extra.length + ' more verified markets?</b>' +
+          '<p>Watch a short sponsor message to unlock them. It keeps BRYME free.</p>' +
+          '<button class="btn" type="button" id="ad-unlock">Watch &amp; unlock</button>' +
+          '<span class="fine">Ad · opens in a new tab</span></div>';
+        document.getElementById("ad-unlock").addEventListener("click", function () {
+          haptic();
+          try { window.open(link, "_blank", "noopener"); } catch (e) {}
+          renderExtra();
+        });
+      }).catch(function () { document.getElementById("mk-more").innerHTML = ""; document.getElementById("mk-gate").innerHTML = ""; });
     }).catch(function (e) {
       if (e.status === 404) stateBox("😕", "Market not found.", "See all verified markets.", "💼 Markets", "#/markets");
       else stateBox("📡", "Couldn't load this market.", "Check your connection and try again.", "Retry");

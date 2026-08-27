@@ -221,3 +221,20 @@ p.pg-sub { color: var(--muted); font-size: 14px; margin: 0 2px 14px; }
 .mkt-row p { margin: 0; font-size: 14px; color: #d6dae1; line-height: 1.6; }
 .mkt-row ul { margin: 0; padding-left: 20px; }
 .mkt-row li { font-size: 14px; color: #d6dae1; line-height: 1.6; margin-bottom: 4px; }
+
+/* opportunity playbook */
+.lead { font-size: 15.5px; line-height: 1.65; color: #d6dae1; margin: 0 2px 12px; }
+.fine { font-size: 12px; color: var(--faint); line-height: 1.55; margin: 6px 2px; }
+.pay-badge.big { font-size: 19px; padding: 12px 18px; margin: 2px 0 12px; }
+.avoid { color: var(--accent); font-weight: 700; }
+.step { display: grid; grid-template-columns: 34px 1fr; gap: 10px; padding: 13px 14px; margin-bottom: 10px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--panel); }
+.step em { font-style: normal; font-size: 17px; font-weight: 800; color: var(--live); }
+.step b { display: block; font-size: 15px; margin-bottom: 4px; }
+.step p { margin: 0 0 6px; font-size: 13.5px; color: #d6dae1; line-height: 1.6; }
+.step p:last-child { margin-bottom: 0; }
+.step ul { margin: 0 0 6px; padding-left: 18px; }
+.step li { font-size: 13.5px; color: #d6dae1; line-height: 1.6; margin-bottom: 3px; }
+.adgate { display: grid; gap: 8px; justify-items: start; padding: 16px; margin: 4px 0 14px; border: 1px dashed var(--line2); border-radius: var(--radius); background: var(--panel); }
+.adgate b { font-size: 15px; }
+.adgate p { margin: 0; font-size: 13px; color: var(--muted); }
+.adgate .btn { margin-top: 4px; }

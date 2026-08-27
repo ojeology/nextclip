@@ -107,6 +107,10 @@ function botFor(req) {
     getPosts: () => loadContent().posts,
     miniAppBase: miniBase(req),
     apiBaseUrl: API_PUBLIC_URL || miniBase(req),
+    getOpportunities: () => {
+      const d = loadOpportunities();
+      return d ? (d.opportunities || []).filter((o) => o.status === "published" && o.pay) : [];
+    },
     send: telegram,
     answerCallback: (id) => telegram("answerCallbackQuery", { callback_query_id: id })
   });
