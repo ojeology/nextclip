@@ -43,6 +43,12 @@ jobs:
       - name: Apply Sports Desk chrome to any new pages
         run: python3 scripts/apply-sports-skin.py
 
+      - name: Build tick (content changes must reach the backend service)
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "// agent tick $(date -u +%Y-%m-%dT%H:%M:%SZ)" >> server/server.js
+          fi
+
       - name: Open auto-merge pull request
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
