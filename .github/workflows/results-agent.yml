@@ -34,8 +34,8 @@ jobs:
       - name: Fetch verified results (ESPN public API, last 5 days)
         run: node scripts/fetch-espn-results.js
 
-      - name: Fetch top-five league tables (ESPN public API)
-        run: node scripts/fetch-league-tables.js
+      - name: Fetch top-five competitions — tables, scores, fixtures (ESPN public API)
+        run: node scripts/fetch-competitions.js
 
       - name: Validate every result carries a source
         run: node scripts/validate-results.js

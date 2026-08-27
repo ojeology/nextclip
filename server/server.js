@@ -53,17 +53,17 @@ function loadContent() {
   return cache;
 }
 
-/* ---------- league tables cache (mtime-refreshed) ---------- */
-const LEAGUES_PATH = path.join(ROOT, "content", "league-tables.json");
-let lcache = { data: null, mtime: 0 };
-function loadLeagues() {
+/* ---------- sports competitions cache (mtime-refreshed) ---------- */
+const COMPETITIONS_PATH = path.join(ROOT, "content", "competitions.json");
+let ccache = { data: null, mtime: 0 };
+function loadCompetitions() {
   try {
-    const m = fs.statSync(LEAGUES_PATH).mtimeMs;
-    if (m !== lcache.mtime || !lcache.data) {
-      lcache = { data: JSON.parse(fs.readFileSync(LEAGUES_PATH, "utf8")), mtime: m };
+    const m = fs.statSync(COMPETITIONS_PATH).mtimeMs;
+    if (m !== ccache.mtime || !ccache.data) {
+      ccache = { data: JSON.parse(fs.readFileSync(COMPETITIONS_PATH, "utf8")), mtime: m };
     }
   } catch (e) { /* keep last good */ }
-  return lcache.data;
+  return ccache.data;
 }
 
 /* ---------- telegram sender ---------- */
@@ -144,9 +144,15 @@ const server = http.createServer(async (req, res) => {
     if (p === "/healthz") return json(res, 200, { ok: true, posts: loadContent().posts.length });
 
     /* ---- API ---- */
+    if (p === "/api/sports/competitions") {
+      const d = loadCompetitions();
+      return json(res, 200, d || { builtAt: null, competitions: [] });
+    }
     if (p === "/api/sports/leagues") {
-      const d = loadLeagues();
-      return json(res, 200, d || { builtAt: null, leagues: [] });
+      /* compat shape: tables only */
+      const d = loadCompetitions();
+      const leagues = d ? d.competitions.map((c) => ({ id: c.id, name: c.name, flag: c.flag, teams: c.teams })) : [];
+      return json(res, 200, { builtAt: d ? d.builtAt : null, leagues });
     }
     if (p === "/api/posts/latest") {
       const limit = Math.min(Number(url.searchParams.get("limit") || 8), 20);

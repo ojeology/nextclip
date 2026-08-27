@@ -94,10 +94,16 @@ function check(name, cond, extra) {
   check("app.css serves", r.code === 200);
 
   console.log("API · latest / category / article / 404");
+  r = await req("GET", BASE + "/api/sports/competitions");
+  let cp = {};
+  try { cp = JSON.parse(r.body); } catch (e) {}
+  check("competitions endpoint serves 5 competitions", r.code === 200 && Array.isArray(cp.competitions) && cp.competitions.length === 5, { n: (cp.competitions || []).length });
+  check("competitions include champions-league", (cp.competitions || []).some((c) => c.id === "champions-league" && c.teams.length >= 6));
+  check("competitions carry teams/scores/fixtures arrays", (cp.competitions || []).every((c) => Array.isArray(c.teams) && Array.isArray(c.scores) && Array.isArray(c.fixtures)));
   r = await req("GET", BASE + "/api/sports/leagues");
   let lg = {};
   try { lg = JSON.parse(r.body); } catch (e) {}
-  check("league tables endpoint serves 5 leagues", r.code === 200 && Array.isArray(lg.leagues) && lg.leagues.length === 5, { n: (lg.leagues || []).length });
+  check("leagues compat endpoint serves 5 tables", r.code === 200 && Array.isArray(lg.leagues) && lg.leagues.length === 5, { n: (lg.leagues || []).length });
   check("league tables carry teams + pts", (lg.leagues || []).every((l) => Array.isArray(l.teams) && l.teams.length >= 6 && l.teams.every((t) => typeof t.pts === "number" && t.short)));
 
   r = await req("GET", BASE + "/api/posts/latest?limit=6");
@@ -127,19 +133,19 @@ function check(name, cond, extra) {
   const money = sends[0];
   const mBtn = money && money.reply_markup ? [].concat(...money.reply_markup.inline_keyboard).find((b) => b.web_app) : null;
   check("money snippet shown", money && money.text.includes("MAKE MONEY"), money && money.text);
-  check("web_app button -> #/money", mBtn && mBtn.web_app.url.endsWith("#/money"), mBtn);
+  check("web_app button -> #/money (dual carrier)", mBtn && mBtn.web_app.url.endsWith("#/money") && /[?&]r=money(?=#)/.test(mBtn.web_app.url), mBtn && mBtn.web_app.url);
 
   console.log("T3 · Sports category");
   sends = await webhook({ update_id: 3, callback_query: { id: "c2", from: { id: 42 }, data: "cat:sports", message: { message_id: 10, chat: { id: 42 } } } });
   const sports = sends[0];
   const sBtn = sports && sports.reply_markup ? [].concat(...sports.reply_markup.inline_keyboard).find((b) => b.web_app) : null;
-  check("sports snippet + #/sports web_app", sports && sBtn && sBtn.web_app.url.endsWith("#/sports"));
+  check("sports snippet + #/sports web_app (dual carrier)", sports && sBtn && sBtn.web_app.url.endsWith("#/sports") && /[?&]r=sports(?=#)/.test(sBtn.web_app.url));
 
   console.log("T4 · Latest posts");
   sends = await webhook({ update_id: 4, callback_query: { id: "c3", from: { id: 42 }, data: "latest", message: { message_id: 11, chat: { id: 42 } } } });
   const lat = sends[0];
   const lBtns = lat && lat.reply_markup ? [].concat(...lat.reply_markup.inline_keyboard).filter((b) => b.web_app) : [];
-  check("latest lists article buttons", lBtns.length >= 5 && lBtns.every((b) => b.web_app.url.includes("#/article/")), lBtns.length);
+  check("latest lists article buttons (dual carrier)", lBtns.length >= 5 && lBtns.every((b) => b.web_app.url.includes("#/article/") && /[?&]r=article%2F/.test(b.web_app.url)), lBtns.length);
 
   console.log("Fallbacks · bad article, unknown cat, security");
   sends = await webhook({ update_id: 5, callback_query: { id: "c4", from: { id: 42 }, data: "art:nope", message: { message_id: 12, chat: { id: 42 } } } });
@@ -150,6 +156,17 @@ function check(name, cond, extra) {
   check("webhook rejects without secret (401)", r.code === 401);
   sends = await webhook({ update_id: 7, message: { message_id: 3, from: { id: 42 }, chat: { id: 42 }, text: "/start sports" } });
   check("website deep link /start sports -> sports snippet", sends[0] && sends[0].text.includes("SPORTS"));
+
+  console.log("T5 · free-text intent");
+  sends = await webhook({ update_id: 8, message: { message_id: 20, from: { id: 7 }, chat: { id: 7 }, text: "make money" } });
+  const tm = sends[sends.length - 1];
+  const tmBtn = tm.reply_markup ? [].concat(...tm.reply_markup.inline_keyboard).find((b) => b.web_app) : null;
+  check("text 'make money' -> money section", tm.text.includes("MAKE MONEY") && tmBtn && tmBtn.web_app.url.endsWith("#/money"), tmBtn && tmBtn.web_app.url);
+  sends = await webhook({ update_id: 9, message: { message_id: 21, from: { id: 7 }, chat: { id: 7 }, text: "show me the comics" } });
+  check("text 'comics' -> comics section", sends[sends.length - 1].text.includes("COMICS"));
+  sends = await webhook({ update_id: 10, message: { message_id: 22, from: { id: 7 }, chat: { id: 7 }, text: "xyzzy plugh" } });
+  check("unknown text -> menu (not a section)", /explore/i.test(sends[sends.length - 1].text));
+
 
   console.log(`\n${pass} passed, ${fail} failed`);
   server.kill(); mock.close(); process.exit(fail ? 1 : 0);

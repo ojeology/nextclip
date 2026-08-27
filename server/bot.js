@@ -22,9 +22,20 @@ const CATEGORIES = [
 const CAT_BY_KEY = {};
 CATEGORIES.forEach((c) => (CAT_BY_KEY[c.key] = c));
 
-/* Mini App route per category */
+/* Mini App route path per category */
 function miniRoute(category) {
-  return "#/" + (category === "entertainment" ? "movies" : category);
+  return category === "entertainment" ? "movies" : category;
+}
+
+/* Destination-aware Mini App button URL.
+ * The destination rides in TWO carriers so no Telegram client quirk
+ * (fragment stripping / param injection / redirects) can drop it:
+ *   1. query param  r=<route>   (e.g. miniapp?api=X&r=money)
+ *   2. URL fragment  #/<route>  (e.g. miniapp?api=X&r=money#/money)
+ * The app reads hash first, then r, then Telegram startapp params. */
+function btnUrl(miniAppBase, route) {
+  const sep = miniAppBase.indexOf("?") > -1 ? "&" : "?";
+  return miniAppBase + sep + "r=" + encodeURIComponent(route) + "#/" + route;
 }
 
 function clip(text, n) {
@@ -64,7 +75,7 @@ function categoryMessage(posts, category, miniAppBase) {
     text: "«" + cat.label.toUpperCase() + "»\n\n" + clip(top.title, 90) + "\n\n" + clip(top.excerpt, 220) + more,
     keyboard: {
       inline_keyboard: [
-        [{ text: cat.emoji + " Open in BRYME", web_app: { url: miniAppBase + miniRoute(category) } }],
+        [{ text: cat.emoji + " Open in BRYME", web_app: { url: btnUrl(miniAppBase, miniRoute(category)) } }],
         [{ text: "🔄 Another one", callback_data: "cat:" + category }, { text: "🆕 Latest", callback_data: "latest" }]
       ]
     }
@@ -78,7 +89,7 @@ function latestMessage(posts, miniAppBase) {
   }
   const rows = list.map((p) => [{
     text: p.categoryLabel.split(" ").slice(1).join(" ") + ": " + clip(p.title, 32),
-    web_app: { url: miniAppBase + "#/article/" + p.slug }
+    web_app: { url: btnUrl(miniAppBase, "article/" + p.slug) }
   }]);
   rows.push([{ text: "🏠 Menu", callback_data: "home" }]);
   return { text: "🆕 LATEST ON BRYME\n\nTap to read inside BRYME:", keyboard: { inline_keyboard: rows } };
@@ -96,7 +107,7 @@ function articleMessage(posts, slug, miniAppBase) {
     text: "«" + clip(p.title, 90).toUpperCase() + "»\n\n" + clip(p.excerpt, 240) + "\n\n🚀 Continue reading in BRYME",
     keyboard: {
       inline_keyboard: [
-        [{ text: "🚀 Open in BRYME", web_app: { url: miniAppBase + "#/article/" + p.slug } }],
+        [{ text: "🚀 Open in BRYME", web_app: { url: btnUrl(miniAppBase, "article/" + p.slug) } }],
         [{ text: "🏠 Menu", callback_data: "home" }]
       ]
     }
@@ -139,6 +150,23 @@ function createBot(deps) {
     return deliver(chatId, { text: homeText(), keyboard: homeKeyboard() });
   }
 
+  /* Free-text intent -> section. First match wins. */
+  const TEXT_MAP = [
+    [/\b(money|make money|earn|earning|income|hustle)\b/i, "money"],
+    [/\b(sport|sports|football|soccer|score|scores|fixture|fixtures|table|league|la liga)\b/i, "sports"],
+    [/\b(tech|ai|a\.i|artificial|robot|gpt)\b/i, "tech"],
+    [/\b(movie|movies|film|films|series|serie|anime|cinema|entertainment|watch|trailer)\b/i, "entertainment"],
+    [/\b(trading|trade|trader|crypto|forex|stock|stocks|market)\b/i, "trading"],
+    [/\b(internet|website|websites|tool|tools|online)\b/i, "internet"],
+    [/\b(comic|comics|banter|funny|meme)\b/i, "comics"],
+    [/\b(latest|new|news|fresh|update|updates)\b/i, "latest"]
+  ];
+  function textIntent(t) {
+    const s = String(t || "").toLowerCase();
+    for (let i = 0; i < TEXT_MAP.length; i++) if (TEXT_MAP[i][0].test(s)) return TEXT_MAP[i][1];
+    return null;
+  }
+
   return {
     handleUpdate(update) {
       try {
@@ -150,8 +178,11 @@ function createBot(deps) {
           if (cmd === "/start") return handleStart(msg.chat.id, parts.slice(1).join(" "));
           if (cmd === "/menu" || cmd === "/help" || cmd === "/home") return handleStart(msg.chat.id);
           if (cmd === "/latest") return handleStart(msg.chat.id, "latest");
+          const intent = textIntent(msg.text);
+          if (intent === "latest") return deliver(msg.chat.id, latestMessage(getPosts(), base));
+          if (intent) return deliver(msg.chat.id, categoryMessage(getPosts(), intent, base));
           return deliver(msg.chat.id, {
-            text: "🔥 BRYME\n\n«What do you want to explore?»\n(Use the buttons below — no typing needed.)",
+            text: "🔥 BRYME\n\n«What do you want to explore?»\n(Tip: you can also type — try “make money”, “sports” or “comics”.)",
             keyboard: homeKeyboard()
           });
         }
