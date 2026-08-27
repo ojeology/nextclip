@@ -473,9 +473,9 @@
       '<span class="mkt-pay">' + esc(o.pay) + "</span>" +
       "<b>" + esc(o.publication) + "</b>" +
       "<p>The full 3-step playbook: what they accept, word counts, how to submit — and what Nigerians should know.</p>" +
-      (link
+      ((window.BRYME_AD && window.BRYME_AD.configured && window.BRYME_AD.configured()) || link
         ? '<button class="btn" type="button" id="gate-go">📺 Watch &amp; unlock ' + esc(o.publication) + "</button>" +
-          '<span class="fine">One short sponsor message · unlocks forever on this device · keeps BRYME free</span>'
+          '<span class="fine">One short sponsored view · unlocks forever on this device · keeps BRYME free</span>'
         : '<button class="btn" type="button" id="gate-go">🎁 Unlock ' + esc(o.publication) + " — free</button>" +
           '<span class="fine">Early users get free unlocks while sponsored access is starting. 🎉</span>') +
       '<button class="gate-x" type="button" aria-label="Close">✕</button>' +
@@ -486,10 +486,31 @@
     sheetEl.querySelector(".gate-x").addEventListener("click", close);
     sheetEl.querySelector("#gate-go").addEventListener("click", function () {
       haptic();
-      if (link) { try { window.open(link, "_blank", "noopener"); } catch (e) {} }
-      if (unlockedMk.indexOf(o.slug) === -1) { unlockedMk.push(o.slug); saveUnlocked(); }
-      close();
-      if (onUnlock) onUnlock();
+      var btn = sheetEl.querySelector("#gate-go");
+      if (btn) { btn.disabled = true; btn.textContent = "Opening…"; }
+      var grant = function () {
+        if (unlockedMk.indexOf(o.slug) === -1) { unlockedMk.push(o.slug); saveUnlocked(); }
+        close();
+        if (onUnlock) onUnlock();
+      };
+      var fallbackLink = function () {
+        if (link) { try { window.open(link, "_blank", "noopener"); } catch (e) {} }
+        grant(); /* ad tech failed — never punish the user for it */
+      };
+      if (window.BRYME_AD && window.BRYME_AD.configured && window.BRYME_AD.configured()) {
+        var settled = false;
+        var t = setTimeout(function () { if (!settled) { settled = true; fallbackLink(); } }, 20000);
+        window.BRYME_AD.showRewarded("market:" + o.slug).then(function (r) {
+          if (settled) return;
+          settled = true; clearTimeout(t);
+          if (r && r.ok) grant(); /* popup shown — reward delivered */
+          else fallbackLink();
+        });
+      } else if (link) {
+        fallbackLink();
+      } else {
+        grant(); /* nothing configured yet — free comp */
+      }
     });
   }
   function oppCard(o, locked) {
@@ -808,7 +829,7 @@
     try {
       var box = document.createElement("div");
       box.setAttribute("style", "margin:10px 0;padding:10px;border:1px dashed #888;border-radius:8px;font:11px/1.5 monospace;color:#aaa;word-break:break-all;white-space:pre-wrap;");
-      box.textContent = "DEBUG\nhash: " + location.hash + "\nsearch: " + location.search + "\nAPI: " + (API || "(none)") + "\napp: v20260827-6";
+      box.textContent = "DEBUG\nhash: " + location.hash + "\nsearch: " + location.search + "\nAPI: " + (API || "(none)") + "\napp: v20260827-7";
       view.insertBefore(box, view.firstChild);
     } catch (e) {}
   }
