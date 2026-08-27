@@ -192,13 +192,29 @@ function createBot(deps) {
   const base = miniAppBase + apiParam + (apiParam ? "&" : "?") + "v=20260827-12";
   const opps = deps.getOpportunities ? deps.getOpportunities() : [];
 
+  /* some chats (channels / broadcast-style supergroups) reject web_app buttons —
+   * transparently retry with plain URL buttons so the message always lands */
+  function urlFallbackKeyboard(kb) {
+    if (!kb || !kb.inline_keyboard) return kb;
+    return {
+      inline_keyboard: kb.inline_keyboard.map((row) =>
+        row.map((b) => (b.web_app ? { text: b.text, url: b.web_app.url } : b))
+      )
+    };
+  }
   function deliver(chatId, msg) {
-    return send("sendMessage", {
+    const payload = {
       chat_id: chatId,
       text: msg.text,
       parse_mode: "",
       disable_web_page_preview: true,
       reply_markup: msg.keyboard
+    };
+    return send("sendMessage", payload).then((r) => {
+      if (r && r.ok === false && /BUTTON_TYPE_INVALID/i.test(String(r.description || ""))) {
+        return send("sendMessage", Object.assign({}, payload, { reply_markup: urlFallbackKeyboard(msg.keyboard) }));
+      }
+      return r;
     }).catch(() => {});
   }
 
