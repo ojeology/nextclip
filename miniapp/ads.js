@@ -1,17 +1,11 @@
 /* BRYME ad configuration — Monetag Rewarded Popup (Telegram Mini App SDK).
- * Fill sdkUrl + zoneId from your Monetag dashboard ("Activate" on the
- * Rewarded Popup zone shows the integration snippet; the script URL goes in
- * sdkUrl and the numeric zone from show_XXXXXX() goes in zoneId).
- * Until both are set, market unlocks stay FREE (no placeholders, no dead ads). */
+ * Zone 11668156 · dashboard snippet: show_11668156('pop') */
 window.BRYME_AD_CONFIG = {
-  sdkUrl: "",   // e.g. "https:// …… /sdk.js"  (from the dashboard snippet)
-  zoneId: 0,    // e.g. 123456  (the number in show_123456)
-  smartlink: "" // optional fallback direct link
+  sdkUrl: "https://libtl.com/sdk.js",
+  zoneId: 11668156,
+  smartlink: ""
 };
 
-/* Rewarded Popup loader — called on the unlock tap (needs the user gesture).
- * Docs: show_<zone>({type:"pop"}) opens the offer; the promise resolves with
- * { reward_event_type: "valued"|"not_valued", estimated_price, ... }. */
 window.BRYME_AD = (function () {
   var loading = null;
   function loadSdk() {
@@ -22,6 +16,8 @@ window.BRYME_AD = (function () {
       try {
         var s = document.createElement("script");
         s.src = cfg.sdkUrl;
+        s.setAttribute("data-zone", String(cfg.zoneId));
+        s.setAttribute("data-sdk", "show_" + cfg.zoneId);
         s.onload = function () { resolve(true); };
         s.onerror = function () { resolve(false); };
         (document.head || document.documentElement).appendChild(s);
@@ -33,19 +29,24 @@ window.BRYME_AD = (function () {
     var cfg = window.BRYME_AD_CONFIG || {};
     return Boolean(cfg.sdkUrl && cfg.zoneId) || Boolean(cfg.smartlink);
   }
-  function showRewarded(requestVar) {
+  /* Rewarded Popup — must run inside a user gesture (our unlock tap). */
+  function showRewarded() {
     var cfg = window.BRYME_AD_CONFIG || {};
     if (!cfg.sdkUrl || !cfg.zoneId) return Promise.resolve({ ok: false, reason: "not-configured" });
     return loadSdk().then(function (loaded) {
       if (!loaded) return { ok: false, reason: "sdk-failed" };
-      var fn;
-      try { fn = window["show_" + cfg.zoneId]; } catch (e) { fn = null; }
+      var fn = window["show_" + cfg.zoneId];
       if (typeof fn !== "function") return { ok: false, reason: "no-handler" };
-      return fn({ type: "pop", request_var: requestVar || "unlock" }).then(
-        function (r) { return { ok: true, result: r || {} }; },
-        function () { return { ok: false, reason: "rejected" }; }
+      /* dashboard-canonical call: show_<zone>('pop') → resolves when the
+       * rewarded view completes; rejects on ad errors. */
+      return fn("pop").then(
+        function () { return { ok: true }; },
+        function () { return { ok: false, reason: "ad-error" }; }
       );
     });
   }
-  return { configured: configured, showRewarded: showRewarded };
+  return { configured: configured, showRewarded: showRewarded, preload: loadSdk };
 })();
+
+/* preload the SDK immediately when configured → zero latency on the tap */
+if (window.BRYME_AD.configured()) window.BRYME_AD.preload();

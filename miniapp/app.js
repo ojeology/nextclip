@@ -500,7 +500,7 @@
       if (window.BRYME_AD && window.BRYME_AD.configured && window.BRYME_AD.configured()) {
         var settled = false;
         var t = setTimeout(function () { if (!settled) { settled = true; fallbackLink(); } }, 20000);
-        window.BRYME_AD.showRewarded("market:" + o.slug).then(function (r) {
+        window.BRYME_AD.showRewarded().then(function (r) {
           if (settled) return;
           settled = true; clearTimeout(t);
           if (r && r.ok) grant(); /* popup shown — reward delivered */
@@ -829,7 +829,7 @@
     try {
       var box = document.createElement("div");
       box.setAttribute("style", "margin:10px 0;padding:10px;border:1px dashed #888;border-radius:8px;font:11px/1.5 monospace;color:#aaa;word-break:break-all;white-space:pre-wrap;");
-      box.textContent = "DEBUG\nhash: " + location.hash + "\nsearch: " + location.search + "\nAPI: " + (API || "(none)") + "\napp: v20260827-7";
+      box.textContent = "DEBUG\nhash: " + location.hash + "\nsearch: " + location.search + "\nAPI: " + (API || "(none)") + "\napp: v20260827-8";
       view.insertBefore(box, view.firstChild);
     } catch (e) {}
   }
