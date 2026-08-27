@@ -482,7 +482,11 @@
     }).catch(function () { stateBox("📡", "Couldn't load markets.", "Check your connection and try again.", "Retry"); });
   }
   function fmtList(v) {
-    if (Array.isArray(v)) return v.length ? "<ul>" + v.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ul>" : "";
+    if (Array.isArray(v)) return v.length ? "<ul>" + v.map(function (x) { return "<li>" + esc(typeof x === "object" && x ? (x.summary || x.display || x.label || "") : x) + "</li>"; }).join("") + "</ul>" : "";
+    if (v && typeof v === "object") {
+      var s = v.summary || v.display || v.label || v.note || v.text || "";
+      return s ? "<p>" + esc(s) + "</p>" : "";
+    }
     return v ? "<p>" + esc(v) + "</p>" : "";
   }
   function pageMarket(slug) {
@@ -490,18 +494,19 @@
     view.innerHTML = '<div class="skel"><i style="width:40%"></i><i></i><i></i></div>';
     apiGet("/api/money/opportunities/" + encodeURIComponent(slug)).then(function (o) {
       var pay = o.pay || {};
-      var ngNote = /nigeria|nigerian|africa|african|black/i.test(String(o.eligibility || "") + String(pay.conditions || ""));
+      var eligText = o.eligibility && typeof o.eligibility === "object" ? (o.eligibility.summary || "") : String(o.eligibility || "");
+      var ngNote = /nigeria|nigerian|africa|african|black|diaspora/i.test(eligText + " " + String(pay.conditions || ""));
       var stepsHtml =
         '<div class="step"><em>1</em><div><b>Choose a suitable topic</b>' +
         (fmtList(o.whatTheyWant) || '<p>Pitch within the themes this publication covers — see their guidelines for the current list.</p>') + "</div></div>" +
         '<div class="step"><em>2</em><div><b>Write the article</b>' +
         (o.wordCount ? fmtList(o.wordCount) : "") +
         (o.requirements ? fmtList(o.requirements) : "") +
-        (o.whatTheyDontWant ? '<p><span class="avoid">Avoid:</span> ' + esc(String(o.whatTheyDontWant).replace(/<[^>]+>/g, "").slice(0, 400)) + "</p>" : "") +
+        (o.whatTheyDontWant ? '<div><span class="avoid">Avoid:</span>' + fmtList(o.whatTheyDontWant) + "</div>" : "") +
         "</div></div>" +
         '<div class="step"><em>3</em><div><b>Submit it</b>' +
         (fmtList(o.howToSubmit) || '<p>Follow the official submission route below.</p>') +
-        (o.response ? '<p><b>Afterward:</b> ' + esc(String(o.response).replace(/<[^>]+>/g, "").slice(0, 300)) + "</p>" : "") +
+        (o.response ? '<p><b>Afterward:</b> ' + esc((o.response && (o.response.label || o.response.summary)) || String(o.response).slice(0, 200)) + "</p>" : "") +
         "</div></div>";
 
       view.innerHTML = backBar("#/markets", "Markets") +
