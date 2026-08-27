@@ -616,10 +616,23 @@
     });
   }
 
+  /* ---------- diagnostics (?debug=1 shows what the app actually received) ---------- */
+  var DBG = new URLSearchParams(location.search).get("debug") === "1";
+  function debugBox() {
+    if (!DBG) return;
+    try {
+      var box = document.createElement("div");
+      box.setAttribute("style", "margin:10px 0;padding:10px;border:1px dashed #888;border-radius:8px;font:11px/1.5 monospace;color:#aaa;word-break:break-all;white-space:pre-wrap;");
+      box.textContent = "DEBUG\nhash: " + location.hash + "\nsearch: " + location.search + "\nAPI: " + (API || "(none)") + "\napp: v20260827-3";
+      view.insertBefore(box, view.firstChild);
+    } catch (e) {}
+  }
+
   /* ---------- router (single system) ---------- */
   var HUB_KEYS = ["money", "tech", "movies", "trading", "internet", "comics"];
   function route() {
     var hash = (location.hash || "#/home").replace(/^#\/?/, "");
+    setTimeout(debugBox, 400);
     var parts = hash.split("/").filter(Boolean);
     sheet.hidden = true;
     try { window.scrollTo(0, 0); } catch (e) {}

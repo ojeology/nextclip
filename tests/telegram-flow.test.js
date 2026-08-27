@@ -146,7 +146,9 @@ function check(name, cond, extra) {
   check("money teaser headline", money && /MAKE .+ WRITING\?/.test(money.text) && /don't pay BRYME/i.test(money.text), money && money.text.split("\n")[0]);
   check("playbook button -> #/market/<slug>", mBtn && /#\/market\/[a-z0-9-]+$/.test(mBtn.web_app.url), mBtn && mBtn.web_app.url);
   const mkts = money && money.reply_markup ? [].concat(...money.reply_markup.inline_keyboard).find((b) => b.web_app && /r=markets/.test(b.web_app.url)) : null;
-  check("money message offers verified-markets button", mkts && mkts.web_app.url.endsWith("#/markets"), mkts && mkts.web_app.url);
+  check("money teaser: exactly ONE web_app button + markets callback",
+    money && [].concat(...money.reply_markup.inline_keyboard).filter((b) => b.web_app).length === 1 &&
+    !![].concat(...money.reply_markup.inline_keyboard).find((b) => b.callback_data === "markets"));
 
   console.log("T3 · Sports category");
   sends = await webhook({ update_id: 3, callback_query: { id: "c2", from: { id: 42 }, data: "cat:sports", message: { message_id: 10, chat: { id: 42 } } } });

@@ -76,7 +76,19 @@ function opportunityMessage(opps, miniAppBase) {
       "And no — you don't pay BRYME to access this opportunity.",
     keyboard: { inline_keyboard: [
       [{ text: "🚀 Open the full playbook", web_app: { url: btnUrl(miniAppBase, "market/" + o.slug) } }],
-      [{ text: "💼 All verified markets", web_app: { url: btnUrl(miniAppBase, "markets") } }]
+      [{ text: "💼 All verified markets", callback_data: "markets" }, { text: "💰 Money hub", callback_data: "cat:money" }],
+      [{ text: "🆕 Latest", callback_data: "latest" }]
+    ] }
+  };
+}
+
+/* Markets message — its own single web_app button (one web_app per message). */
+function marketsMessage(count, miniAppBase) {
+  return {
+    text: "💼 VERIFIED MARKETS\n\n" + count + " publications that pay for writing — real rates, verified by the BRYME desk. Sorted by what they pay.\n\nYou never pay to access these.",
+    keyboard: { inline_keyboard: [
+      [{ text: "💼 Open the markets list", web_app: { url: btnUrl(miniAppBase, "markets") } }],
+      [{ text: "🏠 Menu", callback_data: "home" }]
     ] }
   };
 }
@@ -102,8 +114,7 @@ function categoryMessage(posts, category, miniAppBase, opps) {
       return {
         text: tease.text,
         keyboard: { inline_keyboard: tease.keyboard.inline_keyboard.concat([
-          [{ text: "💰 Money hub", web_app: { url: btnUrl(miniAppBase, "money") } }],
-          [{ text: "🔄 Another one", callback_data: "cat:money" }, { text: "🆕 Latest", callback_data: "latest" }]
+          [{ text: "🔄 Another opportunity", callback_data: "cat:money" }]
         ]) }
       };
     }
@@ -158,7 +169,7 @@ function createBot(deps) {
   const apiParam = deps.apiBaseUrl
     ? (deps.apiBaseUrl.indexOf("?") > -1 ? "&" : "?") + "api=" + encodeURIComponent(deps.apiBaseUrl.replace(/\/+$/, ""))
     : "";
-  const base = miniAppBase + apiParam + (apiParam ? "&" : "?") + "v=20260827-2";
+  const base = miniAppBase + apiParam + (apiParam ? "&" : "?") + "v=20260827-3";
   const opps = deps.getOpportunities ? deps.getOpportunities() : [];
 
   function deliver(chatId, msg) {
@@ -226,6 +237,7 @@ function createBot(deps) {
           const done = answerCallback(cb.id).catch(() => {});
           if (cb.data === "home") return done.then(() => deliver(chatId, { text: homeText(), keyboard: homeKeyboard() }));
           if (cb.data === "latest") return done.then(() => deliver(chatId, latestMessage(getPosts(), base)));
+          if (cb.data === "markets") return done.then(() => deliver(chatId, marketsMessage(opps.length, base)));
           if (cb.data.startsWith("cat:")) return done.then(() => deliver(chatId, categoryMessage(getPosts(), cb.data.slice(4), base, opps)));
           if (cb.data.startsWith("art:")) return done.then(() => deliver(chatId, articleMessage(getPosts(), cb.data.slice(4), base)));
           return done;
