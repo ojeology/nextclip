@@ -229,6 +229,12 @@ const server = http.createServer(async (req, res) => {
         disclaimer: (d && d.disclaimer) || ""
       });
     }
+    if (p === "/api/money/remote-platforms") {
+      let d = null;
+      try { d = JSON.parse(fs.readFileSync(path.join(ROOT, "content", "remote-platforms.json"), "utf8")); }
+      catch (e) { /* optional file */ }
+      return json(res, 200, d || { count: 0, platforms: [] });
+    }
     if (p === "/api/posts/latest") {
       const limit = Math.min(Number(url.searchParams.get("limit") || 8), 20);
       const { posts } = loadContent();

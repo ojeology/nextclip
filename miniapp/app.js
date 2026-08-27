@@ -713,22 +713,73 @@
       '<div class="kick">📚 Deepen the craft</div>' +
       (posts || []).filter(function (p) { return /writing|content-creation|field-notes/.test(p.slug) && p.slug !== "writing"; }).slice(0, 3).map(cardHtml).join("");
   }
+  var rmCache = null;
+  function loadPlatforms() {
+    if (rmCache) return Promise.resolve(rmCache);
+    return apiGet("/api/money/remote-platforms").then(function (d) {
+      if (d && d.platforms && d.platforms.length) rmCache = d;
+      return d;
+    });
+  }
+  var unlockedRm = (function () { try { return JSON.parse(localStorage.getItem("bryme_rm") || "[]"); } catch (e) { return []; } })();
+  function saveRm() { try { localStorage.setItem("bryme_rm", JSON.stringify(unlockedRm)); } catch (e) {} }
+  function rmUnlocked(i) { return unlockedRm.indexOf(i) > -1; }
+
   function moneyTabFreelancing() {
-    var rwOpen = isUnlocked("remote-work");
     return '<div class="feat">' +
       '<span class="feat-kick">🤖 Dollars for your judgment</span>' +
       '<b>What if companies paid you to rate AI answers — no degree, no fees?</b>' +
       "<p>AI platforms hire real people to improve their models, and they pay in dollars. Outlier is the one we checked inside and out for Nigerians: what it actually pays, how the sign-up works, and the honest truth before you spend time on it.</p>" +
       '<a class="feat-cta" href="#/article/outlier-ai-nigeria">🤖 Start with Outlier AI — the honest truth →</a>' +
       "</div>" +
-      '<a class="card row-card" href="#/article/outlier-ai-nigeria"><span class="cat">FREE</span><b>Outlier AI Nigeria: Pay, Sign-Up &amp; The Honest Truth</b><p>The full walkthrough — earnings, sign-up, and what to expect. Free.</p></a>' +
-      '<div class="kick">💻 Ready for more?</div>' +
-      (rwOpen
-        ? '<a class="card row-card" href="#/article/remote-work"><span class="cat">🔓</span><b>Remote Jobs — 20 Legit Platforms</b><p>Unlocked — the full list is yours, forever.</p></a>'
-        : '<div class="adgate"><span class="mkt-pay">🔒 20 platforms</span>' +
-          "<b>Remote Jobs — 20 Legit Platforms</b>" +
-          "<p>The verified list: what each platform pays, who can join from Nigeria, and how to start. One short sponsored view unlocks it — forever on this device.</p>" +
-          '<button class="btn" type="button" id="rw-unlock">📺 Watch &amp; unlock the 20 platforms</button></div>');
+      '<a class="card row-card" href="#/article/outlier-ai-nigeria"><span class="cat">FREE · #1</span><b>Outlier AI Nigeria: Pay, Sign-Up &amp; The Honest Truth</b><p>The full walkthrough — earnings, sign-up, and what to expect.</p></a>' +
+      '<div class="kick">💻 The other 19 platforms — one at a time</div>' +
+      '<div id="rm-list"><div class="skel"><i style="width:40%"></i><i></i></div></div>' +
+      '<p class="fine" id="rm-count"></p>';
+  }
+  function renderRmList() {
+    var host = document.getElementById("rm-list");
+    if (!host) return;
+    loadPlatforms().then(function (d) {
+      var list = (d && d.platforms) || [];
+      if (!list.length) { host.innerHTML = '<div class="empty">Platform list will appear here shortly.</div>'; return; }
+      var html = "";
+      /* full cards for every unlocked platform (skip #1: free article above) */
+      for (var i = 1; i < list.length; i++) {
+        if (!rmUnlocked(i)) continue;
+        var p = list[i];
+        html += '<div class="fixt unlocked-plat"><span class="f-when">🔓 #' + (i + 1) + " · " + esc(p.pay || "") + (p.verified ? " · " + esc(p.verified.replace("Verified ", "verified ")) : "") + "</span>" +
+          '<span class="f-teams">' + esc(p.name) + " <i>" + esc(p.role || "") + "</i></span>" +
+          (p.payout ? '<span class="s-date">Payout: ' + esc(p.payout) + " · " + esc(p.eligibility || "") + "</span>" : "") +
+          (p.apply ? '<span class="s-date"><a href="' + esc(p.apply) + '" target="_blank" rel="noopener">Apply →</a></span>' : "") +
+          "</div>";
+      }
+      /* the next locked one — only this one is offered */
+      var next = -1;
+      for (var j = 1; j < list.length; j++) { if (!rmUnlocked(j)) { next = j; break; } }
+      if (next > -1) {
+        var n = list[next];
+        html += '<div class="adgate"><span class="mkt-pay">🔒 Next: ' + esc(n.name) + "</span>" +
+          "<b>" + esc(n.role || "Verified platform") + "</b>" +
+          "<p>" + esc(n.pay || "") + (n.eligibility ? " · " + esc(n.eligibility.slice(0, 60)) : "") + " — one short sponsored view unlocks this platform, forever on this device.</p>" +
+          '<button class="btn" type="button" id="rm-unlock">📺 Watch &amp; unlock ' + esc(n.name) + "</button></div>";
+      } else {
+        html += '<div class="empty">🎉 All 20 platforms unlocked — you built the full list.</div>';
+      }
+      host.innerHTML = html;
+      var cnt = document.getElementById("rm-count");
+      if (cnt) cnt.textContent = (unlockedRm.length + 1) + " of " + list.length + " unlocked — a new platform appears after each one.";
+      var btn = document.getElementById("rm-unlock");
+      if (btn) btn.addEventListener("click", function () {
+        haptic();
+        var idx = next;
+        showGate(
+          { slug: "rm-" + idx, publication: list[idx].name, pay: list[idx].pay || "Platform",
+            sub: "Pay, eligibility, payout method and the official apply link for " + list[idx].name + "." },
+          function () { if (!rmUnlocked(idx)) { unlockedRm.push(idx); saveRm(); } renderRmList(); }
+        );
+      });
+    }).catch(function () { host.innerHTML = '<div class="empty">Platform list will appear here momentarily.</div>'; });
   }
   function moneyTabAI(posts) {
     var list = (posts || []).filter(function (p) { return /ai-assisted|outlier|mindrift|prolific/.test(p.slug); });
@@ -762,15 +813,7 @@
           if (t === "freelancing") body.innerHTML = moneyTabFreelancing();
           else if (t === "ai") body.innerHTML = moneyTabAI(posts);
           else body.innerHTML = moneyTabWriting(opps, posts);
-          var rw = document.getElementById("rw-unlock");
-          if (rw) rw.addEventListener("click", function () {
-            haptic();
-            showGate(
-              { slug: "remote-work", publication: "Remote Jobs — 20 platforms", pay: "20 platforms",
-                sub: "The verified list of 20 legit remote-work platforms — pay, eligibility, and how to start from Nigeria." },
-              function () { pageMoney(); }
-            );
-          });
+          if (t === "freelancing") renderRmList();
           monetize();
         };
         render(mnTab);
@@ -842,7 +885,7 @@
     try {
       var box = document.createElement("div");
       box.setAttribute("style", "margin:10px 0;padding:10px;border:1px dashed #888;border-radius:8px;font:11px/1.5 monospace;color:#aaa;word-break:break-all;white-space:pre-wrap;");
-      box.textContent = "DEBUG\nhash: " + location.hash + "\nsearch: " + location.search + "\nAPI: " + (API || "(none)") + "\napp: v20260827-11";
+      box.textContent = "DEBUG\nhash: " + location.hash + "\nsearch: " + location.search + "\nAPI: " + (API || "(none)") + "\napp: v20260827-12";
       view.insertBefore(box, view.firstChild);
     } catch (e) {}
   }

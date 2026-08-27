@@ -8,7 +8,7 @@ window.BRYME_AD_CONFIG = {
    * frequency 2 / capping 0.1h (6 min) / interval 30s / timeout 5s / everyPage false.
    * Set inApp: false to switch off instantly (one deploy). */
   inApp: true,
-  inAppSettings: { frequency: 2, capping: 0.1, interval: 30, timeout: 5, everyPage: false }
+  inAppSettings: { frequency: 1, capping: 0.1, interval: 30, timeout: 15, everyPage: false }
 };
 
 window.BRYME_AD = (function () {
