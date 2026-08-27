@@ -689,10 +689,12 @@
       /* related verified pitches: 2 free, 2 more behind ad (when configured) */
       loadOpps().then(function (d) {
         var all = (d && d.opportunities) || [];
-        var lcard = function (x) { return oppCard(x, !isUnlocked(x.slug)); };
+        /* one market at a time — never dump the locked catalog */
         var others = all.filter(function (x) { return x.slug !== slug; });
-        document.getElementById("mk-more").innerHTML = others.slice(0, 6).map(lcard).join("") +
-          '<a class="card row-card" href="#/markets"><span class="cat">💼</span><b>Browse all ' + others.length + ' verified markets</b><p>1 short sponsor message unlocks each — forever on this device.</p></a>';
+        var next = others.filter(function (x) { return !isUnlocked(x.slug); })[0] || others[0];
+        var got = unlockedMk.length;
+        document.getElementById("mk-more").innerHTML = (next ? oppCard(next, !isUnlocked(next.slug)) : "") +
+          '<p class="fine">' + (next ? "Unlocked " + got + " so far — a new market appears after each one." : "You\'ve unlocked everything. 🎉") + "</p>";
         document.getElementById("mk-gate").innerHTML = "";
       }).catch(function () { document.getElementById("mk-more").innerHTML = ""; document.getElementById("mk-gate").innerHTML = ""; });
     }
@@ -700,9 +702,6 @@
 
   /* ---------- MONEY: Writing / Freelancing / AI & Tech ---------- */
   function moneyTabWriting(opps, posts) {
-    var all = opps || [];
-    var locked = all.filter(function (x) { return x.slug !== "afrolicious"; });
-    var lcard = function (x) { return oppCard(x, !isUnlocked(x.slug)); };
     return '<div class="feat">' +
       '<span class="feat-kick">✍️ Start here — it costs nothing</span>' +
       '<b>What if you could make $75 with your next article?</b>' +
@@ -710,13 +709,9 @@
       '<a class="feat-cta" href="#/market/afrolicious">✍️ Write your first essay on Afrolicious →</a>' +
       "</div>" +
       '<div class="mkt-row"><b>Why Afrolicious first?</b><p>$75 per accepted piece · 600–800 words · Black African and diaspora writers (Nigeria qualifies) · submit by email. The full playbook below walks you through everything: what they accept, word counts, how to submit, and what happens after.</p></div>' +
-      '<a class="card row-card" href="#/market/afrolicious"><span class="cat">🚀</span><b>Open the Afrolicious playbook</b><p>Everything explained, with guidance on how to submit.</p></a>' +
-      (locked.length
-        ? '<div class="kick">Want to write to more websites?</div>' + locked.slice(0, 6).map(lcard).join("") +
-          '<a class="card row-card" href="#/markets"><span class="cat">💼</span><b>All ' + locked.length + ' verified markets</b><p>Each one: 1 short sponsor message to unlock — yours forever on this device.</p></a>'
-        : "") +
+      '<a class="card row-card" href="#/market/afrolicious"><span class="cat">🚀</span><b>Open the Afrolicious playbook</b><p>Everything explained, with guidance on how to submit — and more websites inside.</p></a>' +
       '<div class="kick">📚 Deepen the craft</div>' +
-      (posts || []).filter(function (p) { return /writing|content-creation|field-notes/.test(p.slug); }).slice(0, 3).map(cardHtml).join("");
+      (posts || []).filter(function (p) { return /writing|content-creation|field-notes/.test(p.slug) && p.slug !== "writing"; }).slice(0, 3).map(cardHtml).join("");
   }
   function moneyTabFreelancing(posts) {
     var list = (posts || []).filter(function (p) { return /freelanc|remote-work|platform-fees/.test(p.slug); });
@@ -829,7 +824,7 @@
     try {
       var box = document.createElement("div");
       box.setAttribute("style", "margin:10px 0;padding:10px;border:1px dashed #888;border-radius:8px;font:11px/1.5 monospace;color:#aaa;word-break:break-all;white-space:pre-wrap;");
-      box.textContent = "DEBUG\nhash: " + location.hash + "\nsearch: " + location.search + "\nAPI: " + (API || "(none)") + "\napp: v20260827-9";
+      box.textContent = "DEBUG\nhash: " + location.hash + "\nsearch: " + location.search + "\nAPI: " + (API || "(none)") + "\napp: v20260827-10";
       view.insertBefore(box, view.firstChild);
     } catch (e) {}
   }
