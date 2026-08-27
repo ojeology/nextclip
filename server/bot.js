@@ -76,8 +76,8 @@ function opportunityMessage(opps, miniAppBase) {
       "And no — you don't pay BRYME to access this opportunity.",
     keyboard: { inline_keyboard: [
       [{ text: "🚀 Open the full playbook", web_app: { url: btnUrl(miniAppBase, "market/" + o.slug) } }],
-      [{ text: "💼 All verified markets", callback_data: "markets" }, { text: "💰 Money hub", callback_data: "cat:money" }],
-      [{ text: "🆕 Latest", callback_data: "latest" }]
+      [{ text: "💼 Browse the markets", web_app: { url: btnUrl(miniAppBase, "markets") } }],
+      [{ text: "🔄 Another opportunity", callback_data: "cat:money" }, { text: "🆕 Latest", callback_data: "latest" }]
     ] }
   };
 }
@@ -113,9 +113,7 @@ function categoryMessage(posts, category, miniAppBase, opps) {
     if (tease) {
       return {
         text: tease.text,
-        keyboard: { inline_keyboard: tease.keyboard.inline_keyboard.concat([
-          [{ text: "🔄 Another opportunity", callback_data: "cat:money" }]
-        ]) }
+        keyboard: tease.keyboard
       };
     }
     rows.push([{ text: "💼 Verified paid markets", web_app: { url: btnUrl(miniAppBase, "markets") } }]);
@@ -169,7 +167,7 @@ function createBot(deps) {
   const apiParam = deps.apiBaseUrl
     ? (deps.apiBaseUrl.indexOf("?") > -1 ? "&" : "?") + "api=" + encodeURIComponent(deps.apiBaseUrl.replace(/\/+$/, ""))
     : "";
-  const base = miniAppBase + apiParam + (apiParam ? "&" : "?") + "v=20260827-3";
+  const base = miniAppBase + apiParam + (apiParam ? "&" : "?") + "v=20260827-4";
   const opps = deps.getOpportunities ? deps.getOpportunities() : [];
 
   function deliver(chatId, msg) {

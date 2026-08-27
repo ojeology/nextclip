@@ -110,7 +110,7 @@ function check(name, cond, extra) {
   r = await req("GET", BASE + "/api/money/opportunities");
   let ops = {};
   try { ops = JSON.parse(r.body); } catch (e) {}
-  check("money opportunities list (50+ verified)", r.code === 200 && ops.count >= 50 && ops.opportunities.every((o) => o.publication && o.pay), { n: ops.count });
+  check("money opportunities list (50+ verified)", r.code === 200 && ops.count >= 50 && ops.opportunities.every((o) => o.publication && o.pay && typeof o.ng === "boolean" && Array.isArray(o.writingTypes)), { n: ops.count });
   const topOpp = (ops.opportunities || [])[0];
   r = await req("GET", BASE + "/api/money/opportunities/" + encodeURIComponent(topOpp ? topOpp.slug : "afrolicious"));
   const opd = JSON.parse(r.body);
@@ -146,9 +146,8 @@ function check(name, cond, extra) {
   check("money teaser headline", money && /MAKE .+ WRITING\?/.test(money.text) && /don't pay BRYME/i.test(money.text), money && money.text.split("\n")[0]);
   check("playbook button -> #/market/<slug>", mBtn && /#\/market\/[a-z0-9-]+$/.test(mBtn.web_app.url), mBtn && mBtn.web_app.url);
   const mkts = money && money.reply_markup ? [].concat(...money.reply_markup.inline_keyboard).find((b) => b.web_app && /r=markets/.test(b.web_app.url)) : null;
-  check("money teaser: exactly ONE web_app button + markets callback",
-    money && [].concat(...money.reply_markup.inline_keyboard).filter((b) => b.web_app).length === 1 &&
-    !![].concat(...money.reply_markup.inline_keyboard).find((b) => b.callback_data === "markets"));
+  check("money teaser: playbook + direct-markets web_app buttons",
+    money && (() => { const w = [].concat(...money.reply_markup.inline_keyboard).filter((b) => b.web_app); return w.length === 2 && /#\/market\//.test(w[0].web_app.url) && /#\/markets/.test(w[1].web_app.url); })());
 
   console.log("T3 · Sports category");
   sends = await webhook({ update_id: 3, callback_query: { id: "c2", from: { id: 42 }, data: "cat:sports", message: { message_id: 10, chat: { id: 42 } } } });

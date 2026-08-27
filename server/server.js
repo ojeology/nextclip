@@ -109,7 +109,9 @@ function botFor(req) {
     apiBaseUrl: API_PUBLIC_URL || miniBase(req),
     getOpportunities: () => {
       const d = loadOpportunities();
-      return d ? (d.opportunities || []).filter((o) => o.status === "published" && o.pay) : [];
+      return d ? (d.opportunities || [])
+        .filter((o) => o.status === "published" && o.pay)
+        .sort((a, b) => usdEq(b.pay) - usdEq(a.pay)) : [];
     },
     send: telegram,
     answerCallback: (id) => telegram("answerCallbackQuery", { callback_query_id: id })
@@ -195,7 +197,11 @@ const server = http.createServer(async (req, res) => {
           pay: o.pay.display || "", usd: Math.round(usdEq(o.pay)),
           currency: o.pay.currency || "", types: o.writingTypeLabel || "",
           words: o.wordCount || "", lastVerified: o.lastVerified || (d ? d.updatedAt : ""),
-          deadline: o.deadline || ""
+          deadline: o.deadline || "",
+          ng: o.pay.currency === "NGN" ||
+              /nigeria|nigerian|africa|african|diaspora/i.test(
+                String(o.eligibility && (o.eligibility.summary || "")) + " " + String(o.excerpt || "")),
+          writingTypes: Array.isArray(o.writingTypes) ? o.writingTypes.slice(0, 6) : []
         }))
         .sort((a, b) => b.usd - a.usd);
       return json(res, 200, { updatedAt: (d && d.updatedAt) || null, count: list.length, opportunities: list });

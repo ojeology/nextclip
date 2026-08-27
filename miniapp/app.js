@@ -208,7 +208,7 @@
       '<p class="pg-sub">' + esc(hub.sub) + "</p>" +
       slot("hub-" + key + "-top") +
       '<div id="hub-featured"></div>' +
-      (key === "money" ? '<div class="kick green">🔥 Verified opportunities</div><div id="hub-opps"></div>' : "") +
+      (key === "money" ? '<div id="hub-opps"></div>' : "") +
       '<div class="chips" id="hub-chips" hidden></div>' +
       '<div id="hub-feed"></div>' + slot("hub-" + key + "-bottom");
     document.getElementById("hub-feed").innerHTML = '<div class="skel"><i style="width:50%"></i><i></i></div><div class="skel"><i style="width:40%"></i><i></i></div>';
@@ -461,26 +461,90 @@
       "<b>" + esc(o.publication) + "</b>" +
       (o.types ? '<span class="mkt-type">' + esc(o.types) + "</span>" : "") + "</a>";
   }
+  /* daily pick — SAME formula as the bot, so Telegram and the app agree */
+  function dailyPick(list) {
+    return list && list.length ? list[Math.floor(Date.now() / 864e5) % Math.min(10, list.length)] : null;
+  }
   function renderOppsRail() {
     var host = document.getElementById("hub-opps");
     if (!host) return;
     loadOpps().then(function (d) {
-      var list = (d && d.opportunities) || [];
-      host.innerHTML = list.slice(0, 4).map(oppCard).join("") +
-        '<a class="card row-card" href="#/markets"><span class="cat">💼</span><b>View all ' + list.length + " verified markets</b><p>Real publications, real rates — checked by the desk.</p></a>";
+      var all = (d && d.opportunities) || [];
+      if (!all.length) { host.innerHTML = ""; return; }
+      var today = dailyPick(all);
+      var ng = all.filter(function (x) { return x.ng; });
+      var html = "";
+      if (today) {
+        html += '<a class="feat" href="#/market/' + encodeURIComponent(today.slug) + '">' +
+          '<span class="feat-kick">🔥 Today\'s opportunity' + (today.ng ? " · 🇳🇬" : "") + '</span>' +
+          '<span class="mkt-pay">' + esc(today.pay) + "</span>" +
+          "<b>" + esc(today.publication) + "</b>" +
+          "<p>" + esc(today.title || today.excerpt) + "</p>" +
+          '<span class="feat-cta">Open the playbook →</span></a>';
+      }
+      if (ng.length) {
+        html += '<div class="kick green">🇳🇬 Nigerian-friendly markets</div>' +
+          ng.slice(0, 4).map(oppCard).join("");
+      }
+      html += '<a class="card row-card" href="#/markets"><span class="cat">💼</span><b>Browse all markets</b><p>' +
+        all.length + ' verified publications — highest payers, Nigerian-first, filter by what you write.</p></a>';
+      host.innerHTML = html;
     }).catch(function () { host.innerHTML = ""; });
   }
   function pageMarkets() {
     setBack(true); markDock("money");
-    view.innerHTML = '<h1 class="pg">💼 VERIFIED MARKETS</h1><p class="pg-sub">Publications that pay for writing — verified by the BRYME desk.</p><div id="mk-list"></div>';
-    document.getElementById("mk-list").innerHTML = '<div class="skel"><i style="width:40%"></i><i></i></div><div class="skel"><i style="width:30%"></i><i></i></div>';
+    view.innerHTML = '<h1 class="pg">💼 MARKETS</h1><p class="pg-sub">Publications that pay for writing — verified by the BRYME desk.</p>' +
+      '<div class="chips" id="mk-chips"></div><div id="mk-body"></div><div id="mk-foot"></div>';
+    document.getElementById("mk-body").innerHTML = '<div class="skel"><i style="width:40%"></i><i></i></div><div class="skel"><i style="width:30%"></i><i></i></div>';
     loadOpps().then(function (d) {
-      var list = (d && d.opportunities) || [];
-      if (!list.length) { stateBox("🌱", "No markets loaded.", "Check your connection and try again.", "Retry"); return; }
-      document.getElementById("mk-list").innerHTML = list.map(oppCard).join("") +
-        '<p class="pg-sub" style="margin-top:12px">Rates can change — always check the official page before submitting.' + (d.updatedAt ? " List updated " + esc(d.updatedAt) + "." : "") + "</p>";
+      var all = (d && d.opportunities) || [];
+      if (!all.length) { stateBox("🌱", "No markets loaded.", "Check your connection and try again.", "Retry"); return; }
+      var ng = all.filter(function (x) { return x.ng; });
+
+      /* type filters from real data */
+      var typeCount = {};
+      all.forEach(function (x) { (x.writingTypes || []).forEach(function (t) { typeCount[t] = (typeCount[t] || 0) + 1; }); });
+      var types = Object.keys(typeCount).filter(function (t) { return typeCount[t] >= 3; }).sort(function (a, b) { return typeCount[b] - typeCount[a]; }).slice(0, 5);
+
+      var chips = [{ k: "all", label: "🔥 Featured", n: all.length }];
+      chips.push({ k: "ng", label: "🇳🇬 Nigeria", n: ng.length });
+      types.forEach(function (t) { chips.push({ k: "type:" + t, label: "✍️ " + t, n: typeCount[t] }); });
+
+      var bar = document.getElementById("mk-chips");
+      chips.forEach(function (c, i) {
+        bar.appendChild(el('<button class="chip' + (i === 0 ? " on" : "") + '" type="button" data-k="' + esc(c.k) + '">' + c.label + ' <i>' + c.n + "</i></button>"));
+      });
+      bar.hidden = false;
+
+      function render(k) {
+        var body = document.getElementById("mk-body");
+        if (k === "all") {
+          var html = "";
+          if (ng.length) html += '<div class="kick green">🇳🇬 Nigerian &amp; African friendly — start here</div>' + ng.map(oppCard).join("");
+          html += '<div class="kick">💵 Highest verified payers</div>' + all.slice(0, 8).map(oppCard).join("");
+          body.innerHTML = html;
+        } else if (k === "ng") {
+          body.innerHTML = ng.map(oppCard).join("") || '<div class="empty">No matches right now.</div>';
+        } else {
+          var t = k.slice(5).toLowerCase();
+          var list = all.filter(function (x) { return (x.writingTypes || []).some(function (w) { return String(w).toLowerCase() === t; }); });
+          body.innerHTML = list.map(oppCard).join("") || '<div class="empty">No matches right now.</div>';
+        }
+        document.getElementById("mk-foot").innerHTML =
+          '<p class="fine">Every listing verified by the desk' + (d.updatedAt ? " · list updated " + esc(d.updatedAt) : "") +
+          " · rates can change — always check the official page before submitting.</p>";
+      }
+      render("all");
+      bar.addEventListener("click", function (e) {
+        var b = e.target.closest("button.chip"); if (!b) return;
+        haptic();
+        bar.querySelectorAll(".chip").forEach(function (x) { x.classList.remove("on"); });
+        b.classList.add("on");
+        render(b.getAttribute("data-k"));
+      });
     }).catch(function () { stateBox("📡", "Couldn't load markets.", "Check your connection and try again.", "Retry"); });
   }
+
   function fmtList(v) {
     if (Array.isArray(v)) return v.length ? "<ul>" + v.map(function (x) { return "<li>" + esc(typeof x === "object" && x ? (x.summary || x.display || x.label || "") : x) + "</li>"; }).join("") + "</ul>" : "";
     if (v && typeof v === "object") {
@@ -623,7 +687,7 @@
     try {
       var box = document.createElement("div");
       box.setAttribute("style", "margin:10px 0;padding:10px;border:1px dashed #888;border-radius:8px;font:11px/1.5 monospace;color:#aaa;word-break:break-all;white-space:pre-wrap;");
-      box.textContent = "DEBUG\nhash: " + location.hash + "\nsearch: " + location.search + "\nAPI: " + (API || "(none)") + "\napp: v20260827-3";
+      box.textContent = "DEBUG\nhash: " + location.hash + "\nsearch: " + location.search + "\nAPI: " + (API || "(none)") + "\napp: v20260827-4";
       view.insertBefore(box, view.firstChild);
     } catch (e) {}
   }
