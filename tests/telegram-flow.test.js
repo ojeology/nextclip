@@ -143,13 +143,13 @@ function check(name, cond, extra) {
   console.log("T2 · Make Money category");
   sends = await webhook({ update_id: 2, callback_query: { id: "c1", from: { id: 42 }, data: "cat:money", message: { message_id: 9, chat: { id: 42 } } } });
   const money = sends[0];
-  const mBtn = money && money.reply_markup ? [].concat(...money.reply_markup.inline_keyboard).find((b) => b.web_app && /r=market%2F/.test(b.web_app.url)) : null;
+  const mBtn = money && money.reply_markup ? [].concat(...money.reply_markup.inline_keyboard).find((b) => b.web_app && /[?&]r=money(?=#)/.test(b.web_app.url)) : null;
   check("money teaser format", money && /MAKE .+ WRITING\?/.test(money.text) && /What they accept/.test(money.text) && /pay BRYME/i.test(money.text), money && money.text.split("\n")[0]);
   check("money teaser headline", money && /MAKE .+ WRITING\?/.test(money.text) && /don't pay BRYME/i.test(money.text), money && money.text.split("\n")[0]);
-  check("playbook button -> #/market/<slug>", mBtn && /#\/market\/[a-z0-9-]+$/.test(mBtn.web_app.url), mBtn && mBtn.web_app.url);
+  check("teaser button -> #/money landing", mBtn && /#\/money$/.test(mBtn.web_app.url), mBtn && mBtn.web_app.url);
   const mkts = money && money.reply_markup ? [].concat(...money.reply_markup.inline_keyboard).find((b) => b.web_app && /r=markets/.test(b.web_app.url)) : null;
-  check("money teaser: playbook + direct-markets web_app buttons",
-    money && (() => { const w = [].concat(...money.reply_markup.inline_keyboard).filter((b) => b.web_app); return w.length === 2 && /#\/market\//.test(w[0].web_app.url) && /#\/markets/.test(w[1].web_app.url); })());
+  check("money teaser: money-landing + markets web_app buttons",
+    money && (() => { const w = [].concat(...money.reply_markup.inline_keyboard).filter((b) => b.web_app); return w.length === 2 && /#\/money$/.test(w[0].web_app.url) && /#\/markets/.test(w[1].web_app.url); })());
 
   console.log("T3 · Sports category");
   sends = await webhook({ update_id: 3, callback_query: { id: "c2", from: { id: 42 }, data: "cat:sports", message: { message_id: 10, chat: { id: 42 } } } });
@@ -177,7 +177,7 @@ function check(name, cond, extra) {
   sends = await webhook({ update_id: 8, message: { message_id: 20, from: { id: 7 }, chat: { id: 7 }, text: "make money" } });
   const tm = sends[sends.length - 1];
   const tmBtn = tm.reply_markup ? [].concat(...tm.reply_markup.inline_keyboard).find((b) => b.web_app) : null;
-  check("text make-money -> teaser + playbook", /MAKE .+ WRITING\?/.test(sends[sends.length - 1].text) && !![].concat(...sends[sends.length - 1].reply_markup.inline_keyboard).find((b) => b.web_app && /#\/market\//.test(b.web_app.url)));
+  check("text make-money -> teaser with money landing", /MAKE .+ WRITING\?/.test(sends[sends.length - 1].text) && !![].concat(...sends[sends.length - 1].reply_markup.inline_keyboard).find((b) => b.web_app && /#\/money$/.test(b.web_app.url)));
   sends = await webhook({ update_id: 9, message: { message_id: 21, from: { id: 7 }, chat: { id: 7 }, text: "show me the comics" } });
   check("text 'comics' -> comics section", sends[sends.length - 1].text.includes("COMICS"));
   sends = await webhook({ update_id: 10, message: { message_id: 22, from: { id: 7 }, chat: { id: 7 }, text: "xyzzy plugh" } });

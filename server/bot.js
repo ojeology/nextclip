@@ -75,7 +75,7 @@ function opportunityMessage(opps, miniAppBase) {
       "✍️ What they accept\n💵 How payment works\n🇳🇬 What Nigerian writers need to know\n📝 A simple 3-step submission process\n\n" +
       "And no — you don't pay BRYME to access this opportunity.",
     keyboard: { inline_keyboard: [
-      [{ text: "🚀 Open the full playbook", web_app: { url: btnUrl(miniAppBase, "market/" + o.slug) } }],
+      [{ text: "🚀 Open Make Money", web_app: { url: btnUrl(miniAppBase, "money") } }],
       [{ text: "💼 Browse the markets", web_app: { url: btnUrl(miniAppBase, "markets") } }],
       [{ text: "🔄 Another opportunity", callback_data: "cat:money" }, { text: "🆕 Latest", callback_data: "latest" }]
     ] }
