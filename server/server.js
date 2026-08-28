@@ -364,3 +364,4 @@ if (!module.parent) {
 module.exports = { server, loadContent, telegram };
 // deploy-tick bb418f8+ content refresh
 // deploy-tick: teaser->money landing + fresh scores
+// deploy-tick: desk articles + batched greetings
