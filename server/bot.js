@@ -196,9 +196,18 @@ function createBot(deps) {
    * transparently retry with plain URL buttons so the message always lands */
   function urlFallbackKeyboard(kb) {
     if (!kb || !kb.inline_keyboard) return kb;
+    const bot = (deps.botUsername || "").replace(/^@/, "");
     return {
       inline_keyboard: kb.inline_keyboard.map((row) =>
-        row.map((b) => (b.web_app ? { text: b.text, url: b.web_app.url } : b))
+        row.map((b) => {
+          if (!b.web_app) return b;
+          /* prefer the bot funnel (opens native Mini App after one tap);
+           * fall back to the raw URL if the username is unknown */
+          if (!bot) return { text: b.text, url: b.web_app.url };
+          const r = new URL(b.web_app.url, "https://x.example").searchParams.get("r") || "home";
+          const start = r.startsWith("market/") ? r.slice(7) : r;
+          return { text: b.text, url: "https://t.me/" + bot + "?start=" + encodeURIComponent(start) };
+        })
       )
     };
   }
@@ -224,8 +233,11 @@ function createBot(deps) {
       return deliver(chatId, categoryMessage(getPosts(), cat, base, opps));
     }
     if (cat === "latest") return deliver(chatId, latestMessage(getPosts(), base));
+    if (cat === "markets") return deliver(chatId, marketsMessage(opps.length, base));
     const slug = cat;
     if (slug) {
+      const opp = opps.find((x) => x.slug === slug);
+      if (opp) return deliver(chatId, opportunityMessage([opp], base));
       const p = getPosts().find((x) => x.slug === slug);
       if (p) return deliver(chatId, articleMessage(getPosts(), slug, base));
     }

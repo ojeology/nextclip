@@ -107,6 +107,7 @@ function botFor(req) {
     getPosts: () => loadContent().posts,
     miniAppBase: miniBase(req),
     apiBaseUrl: API_PUBLIC_URL || miniBase(req),
+    botUsername: process.env.BOT_USERNAME || "BRYMEHUBBOT",
     getOpportunities: () => {
       const d = loadOpportunities();
       return d ? (d.opportunities || [])
