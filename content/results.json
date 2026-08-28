@@ -291,6 +291,43 @@
         "url": "https://www.espn.com/soccer/report/_/gameId/401879318"
       },
       "verifiedOn": "2026-08-25"
+    },
+    "crystal-palace-vs-man-city": {
+      "homeScore": 1,
+      "awayScore": 4,
+      "status": "FT",
+      "playedOn": "2026-08-28",
+      "source": {
+        "name": "ESPN",
+        "url": "https://www.espn.com/soccer/match/_/gameId/401879294/manchester-city-crystal-palace"
+      },
+      "scorers": [
+        {
+          "team": "away",
+          "player": "Erling Haaland",
+          "minute": "17'"
+        },
+        {
+          "team": "away",
+          "player": "Rayan Cherki",
+          "minute": "54'"
+        },
+        {
+          "team": "home",
+          "player": "Gianluigi Donnarumma",
+          "minute": "56'"
+        },
+        {
+          "team": "away",
+          "player": "Rayan Cherki",
+          "minute": "59'"
+        },
+        {
+          "team": "away",
+          "player": "Erling Haaland",
+          "minute": "84'"
+        }
+      ]
     }
   },
   "la-liga": {
@@ -709,6 +746,129 @@
           "minute": "83'"
         }
       ]
+    },
+    "real-madrid-vs-real-sociedad": {
+      "homeScore": 4,
+      "awayScore": 1,
+      "status": "FT",
+      "playedOn": "2026-08-26",
+      "source": {
+        "name": "ESPN",
+        "url": "https://www.espn.com/soccer/match/_/gameId/401882919/real-sociedad-real-madrid"
+      },
+      "scorers": [
+        {
+          "team": "home",
+          "player": "Kylian Mbappé",
+          "minute": "40'"
+        },
+        {
+          "team": "away",
+          "player": "Luka Sucic",
+          "minute": "44'"
+        },
+        {
+          "team": "home",
+          "player": "Kylian Mbappé",
+          "minute": "60'"
+        },
+        {
+          "team": "home",
+          "player": "Vinícius Júnior",
+          "minute": "68'"
+        },
+        {
+          "team": "home",
+          "player": "Kylian Mbappé",
+          "minute": "80'"
+        }
+      ]
+    },
+    "celta-vigo-vs-osasuna": {
+      "homeScore": 1,
+      "awayScore": 2,
+      "status": "FT",
+      "playedOn": "2026-08-27",
+      "source": {
+        "name": "ESPN",
+        "url": "https://www.espn.com/soccer/match/_/gameId/401882924/osasuna-celta-vigo"
+      },
+      "scorers": [
+        {
+          "team": "home",
+          "player": "Iago Aspas",
+          "minute": "14'"
+        },
+        {
+          "team": "away",
+          "player": "Enrique Barja",
+          "minute": "54'"
+        },
+        {
+          "team": "away",
+          "player": "Ante Budimir",
+          "minute": "64'"
+        }
+      ]
+    },
+    "barcelona-vs-athletic-bilbao": {
+      "homeScore": 2,
+      "awayScore": 0,
+      "status": "FT",
+      "playedOn": "2026-08-27",
+      "source": {
+        "name": "ESPN",
+        "url": "https://www.espn.com/soccer/match/_/gameId/401882921/athletic-club-barcelona"
+      },
+      "scorers": [
+        {
+          "team": "home",
+          "player": "Raphinha",
+          "minute": "37'"
+        },
+        {
+          "team": "home",
+          "player": "Fermín López",
+          "minute": "82'"
+        }
+      ]
+    },
+    "racing-vs-elche": {
+      "homeScore": 3,
+      "awayScore": 2,
+      "status": "FT",
+      "playedOn": "2026-08-28",
+      "source": {
+        "name": "ESPN",
+        "url": "https://www.espn.com/soccer/match/_/gameId/401882900/elche-racing-santander"
+      },
+      "scorers": [
+        {
+          "team": "home",
+          "player": "Yassir Zabiri",
+          "minute": "15'"
+        },
+        {
+          "team": "home",
+          "player": "Yassir Zabiri",
+          "minute": "21'"
+        },
+        {
+          "team": "home",
+          "player": "Yassir Zabiri",
+          "minute": "36'"
+        },
+        {
+          "team": "away",
+          "player": "Buba Sangaré",
+          "minute": "78'"
+        },
+        {
+          "team": "away",
+          "player": "Fernando Niño",
+          "minute": "79'"
+        }
+      ]
     }
   },
   "serie-a": {
@@ -961,9 +1121,74 @@
         "url": "https://www.bbc.com/sport/football/live/cwddj8qerg68t"
       },
       "verifiedOn": "2026-08-25"
+    },
+    "milan-vs-venezia": {
+      "homeScore": 2,
+      "awayScore": 0,
+      "status": "FT",
+      "playedOn": "2026-08-28",
+      "source": {
+        "name": "ESPN",
+        "url": "https://www.espn.com/soccer/match/_/gameId/401874758/venezia-ac-milan"
+      },
+      "scorers": [
+        {
+          "team": "home",
+          "player": "Gonçalo Ramos",
+          "minute": "69'"
+        },
+        {
+          "team": "home",
+          "player": "Redouane Halhal",
+          "minute": "89'"
+        }
+      ]
     }
   },
-  "bundesliga": {},
+  "bundesliga": {
+    "bayern-vs-stuttgart": {
+      "homeScore": 5,
+      "awayScore": 1,
+      "status": "FT",
+      "playedOn": "2026-08-28",
+      "source": {
+        "name": "ESPN",
+        "url": "https://www.espn.com/soccer/match/_/gameId/401884817/vfb-stuttgart-bayern-munich"
+      },
+      "scorers": [
+        {
+          "team": "home",
+          "player": "Dayot Upamecano",
+          "minute": "21'"
+        },
+        {
+          "team": "away",
+          "player": "Josha Vagnoman",
+          "minute": "52'"
+        },
+        {
+          "team": "home",
+          "player": "Michael Olise",
+          "minute": "55'"
+        },
+        {
+          "team": "home",
+          "player": "Josha Vagnoman",
+          "minute": "57'"
+        },
+        {
+          "team": "home",
+          "player": "Aleksandar Pavlovic",
+          "minute": "82'"
+        },
+        {
+          "team": "home",
+          "player": "Luis Díaz",
+          "minute": "90'+2'"
+        }
+      ]
+    }
+  },
   "ligue-1": {
     "marseille-vs-strasbourg": {
       "homeScore": 4,
@@ -1195,6 +1420,38 @@
           "team": "away",
           "player": "Eric Dier",
           "minute": "14'"
+        }
+      ]
+    },
+    "lille-vs-psg": {
+      "homeScore": 2,
+      "awayScore": 2,
+      "status": "FT",
+      "playedOn": "2026-08-28",
+      "source": {
+        "name": "ESPN",
+        "url": "https://www.espn.com/soccer/match/_/gameId/401876476/paris-saint-germain-lille"
+      },
+      "scorers": [
+        {
+          "team": "home",
+          "player": "Hákon Haraldsson",
+          "minute": "21'"
+        },
+        {
+          "team": "home",
+          "player": "Dilane Bakwa",
+          "minute": "84'"
+        },
+        {
+          "team": "away",
+          "player": "Vitinha",
+          "minute": "90'+1'"
+        },
+        {
+          "team": "away",
+          "player": "Marquinhos",
+          "minute": "90'+5'"
         }
       ]
     }
