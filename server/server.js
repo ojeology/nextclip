@@ -85,6 +85,35 @@ function usdEq(pay) {
   return Math.max(Number(pay.amountMin) || 0, Number(pay.amountMax) || 0) * (FX[pay.currency] || 1);
 }
 
+/* ---------- sports data watchdog ----------
+ * GitHub's scheduler once stalled for 36h and the scores froze. The server
+ * now refreshes competitions itself when data is older than 90 minutes:
+ * it spawns scripts/fetch-competitions.js (which never overwrites good data
+ * with bad), and the mtime cache picks the new file up automatically. */
+const { spawn } = require("child_process");
+let refreshing = false;
+function competitionsAgeMin() {
+  try { return (Date.now() - fs.statSync(COMPETITIONS_PATH).mtimeMs) / 60000; }
+  catch (e) { return Infinity; }
+}
+function refreshCompetitions(reason) {
+  if (refreshing) return;
+  refreshing = true;
+  console.log("[watchdog] refreshing competitions:", reason);
+  const p = spawn(process.execPath, [path.join(ROOT, "scripts", "fetch-competitions.js")], { stdio: "ignore" });
+  const done = () => { refreshing = false; };
+  p.on("exit", done);
+  p.on("error", done);
+}
+function watchdogTick() {
+  const age = competitionsAgeMin();
+  if (age > 90) refreshCompetitions(Math.round(age) + " min old");
+}
+if (process.env.WATCHDOG !== "off") {
+  setInterval(watchdogTick, 30 * 60 * 1000).unref();
+  setTimeout(watchdogTick, 45 * 1000).unref(); /* shortly after boot */
+}
+
 /* ---------- telegram sender ---------- */
 function telegram(method, payload) {
   if (!TOKEN) return Promise.reject(new Error("TELEGRAM_BOT_TOKEN not set"));
