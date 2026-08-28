@@ -244,6 +244,20 @@ function createBot(deps) {
     return deliver(chatId, { text: homeText(), keyboard: homeKeyboard() });
   }
 
+  /* batched greetings — collect joiners per chat for 90s, greet once */
+  const joinWindow = new Map();
+  function greetBatched(chatId, users) {
+    const cur = joinWindow.get(chatId) || { users: [], timer: null };
+    users.forEach((u) => { if (!cur.users.some((x) => x.id === u.id)) cur.users.push(u); });
+    clearTimeout(cur.timer);
+    cur.timer = setTimeout(() => {
+      joinWindow.delete(chatId);
+      deliver(chatId, welcomeMessage(cur.users, base));
+    }, 90000);
+    joinWindow.set(chatId, cur);
+    return Promise.resolve();
+  }
+
   /* Free-text intent -> section. First match wins. */
   const TEXT_MAP = [
     [/\b(money|make money|earn|earning|income|hustle)\b/i, "money"],
@@ -267,8 +281,9 @@ function createBot(deps) {
         const msg = update.message;
         const cb = update.callback_query;
         if (msg && Array.isArray(msg.new_chat_members) && msg.new_chat_members.length && !msg.text) {
+          /* batch greetings: many joins in a short window = ONE welcome */
           const humans = msg.new_chat_members.filter((u) => u && !u.is_bot);
-          if (humans.length) return deliver(msg.chat.id, welcomeMessage(humans, base));
+          if (humans.length) return greetBatched(msg.chat.id, humans);
         }
         if (msg && msg.text) {
           const parts = msg.text.split(/\s+/);

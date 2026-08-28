@@ -244,11 +244,25 @@ addHtmlSection("tech", "tech", "🤖 Tech & AI", "/tech/");
   }
 })();
 
+/* ---------- 6.5 BRYME DESK (editorial articles: entertainment + trading + sports) ---------- */
+(function () {
+  const d = read("content/desk-articles.json");
+  for (const a of (d.articles || [])) {
+    add({
+      slug: a.slug, title: a.title, excerpt: a.excerpt,
+      category: a.category, categoryLabel: a.categoryLabel,
+      image: "", publishedAt: a.publishedAt, author: a.author,
+      url: a.category === "sports" ? "/sports/" : a.category === "trading" ? "/sports/" : "/entertainment/",
+      body: a.body, status: "published"
+    });
+  }
+})();
+
 /* ---------- 7. TRADING (tagged from any section) ---------- */
 (function () {
   const RX = /trading|crypto|invest|forex|stock market/i;
   for (const p of posts.slice()) {
-    if (RX.test(p.title) || RX.test(p.excerpt)) {
+    if (p.category !== "trading" && (RX.test(p.title) || RX.test(p.excerpt))) {
       posts.push(Object.assign({}, p, { slug: "trd-" + p.slug, category: "trading", categoryLabel: "📈 Trading" }));
     }
   }
