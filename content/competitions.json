@@ -1,11 +1,53 @@
 {
- "builtAt": "2026-08-28T01:49:16.324Z",
+ "builtAt": "2026-08-29T17:43:11.154Z",
  "competitions": [
   {
    "id": "premier-league",
    "name": "Premier League",
    "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
    "teams": [
+    {
+     "name": "Manchester City",
+     "short": "Man City",
+     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/382.png",
+     "p": 2,
+     "w": 2,
+     "d": 0,
+     "l": 0,
+     "gf": 6,
+     "ga": 2,
+     "gd": "0",
+     "pts": 6,
+     "pos": 1
+    },
+    {
+     "name": "Hull City",
+     "short": "Hull",
+     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/306.png",
+     "p": 2,
+     "w": 2,
+     "d": 0,
+     "l": 0,
+     "gf": 3,
+     "ga": 0,
+     "gd": "0",
+     "pts": 6,
+     "pos": 2
+    },
+    {
+     "name": "Everton",
+     "short": "Everton",
+     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/368.png",
+     "p": 2,
+     "w": 1,
+     "d": 1,
+     "l": 0,
+     "gf": 3,
+     "ga": 1,
+     "gd": "0",
+     "pts": 4,
+     "pos": 3
+    },
     {
      "name": "Brighton & Hove Albion",
      "short": "Brighton",
@@ -18,7 +60,7 @@
      "ga": 0,
      "gd": "0",
      "pts": 3,
-     "pos": 1
+     "pos": 4
     },
     {
      "name": "Arsenal",
@@ -32,7 +74,7 @@
      "ga": 0,
      "gd": "0",
      "pts": 3,
-     "pos": 2
+     "pos": 5
     },
     {
      "name": "Brentford",
@@ -46,7 +88,7 @@
      "ga": 0,
      "gd": "0",
      "pts": 3,
-     "pos": 3
+     "pos": 6
     },
     {
      "name": "Chelsea",
@@ -60,54 +102,12 @@
      "ga": 2,
      "gd": "0",
      "pts": 3,
-     "pos": 4
-    },
-    {
-     "name": "Everton",
-     "short": "Everton",
-     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/368.png",
-     "p": 1,
-     "w": 1,
-     "d": 0,
-     "l": 0,
-     "gf": 2,
-     "ga": 0,
-     "gd": "0",
-     "pts": 3,
-     "pos": 5
-    },
-    {
-     "name": "Hull City",
-     "short": "Hull",
-     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/306.png",
-     "p": 1,
-     "w": 1,
-     "d": 0,
-     "l": 0,
-     "gf": 2,
-     "ga": 0,
-     "gd": "0",
-     "pts": 3,
-     "pos": 6
+     "pos": 7
     },
     {
      "name": "Ipswich Town",
      "short": "Ipswich",
      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/373.png",
-     "p": 1,
-     "w": 1,
-     "d": 0,
-     "l": 0,
-     "gf": 2,
-     "ga": 1,
-     "gd": "0",
-     "pts": 3,
-     "pos": 7
-    },
-    {
-     "name": "Manchester City",
-     "short": "Man City",
-     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/382.png",
      "p": 1,
      "w": 1,
      "d": 0,
@@ -136,15 +136,29 @@
      "name": "Liverpool",
      "short": "Liverpool",
      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/364.png",
-     "p": 1,
+     "p": 2,
+     "w": 0,
+     "d": 2,
+     "l": 0,
+     "gf": 4,
+     "ga": 4,
+     "gd": "0",
+     "pts": 2,
+     "pos": 10
+    },
+    {
+     "name": "AFC Bournemouth",
+     "short": "Bournemouth",
+     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/349.png",
+     "p": 2,
      "w": 0,
      "d": 1,
-     "l": 0,
+     "l": 1,
      "gf": 2,
-     "ga": 2,
+     "ga": 3,
      "gd": "0",
      "pts": 1,
-     "pos": 10
+     "pos": 11
     },
     {
      "name": "Newcastle United",
@@ -158,7 +172,21 @@
      "ga": 2,
      "gd": "0",
      "pts": 1,
-     "pos": 11
+     "pos": 12
+    },
+    {
+     "name": "Nottingham Forest",
+     "short": "Nottm Forest",
+     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/393.png",
+     "p": 2,
+     "w": 0,
+     "d": 1,
+     "l": 1,
+     "gf": 2,
+     "ga": 3,
+     "gd": "0",
+     "pts": 1,
+     "pos": 13
     },
     {
      "name": "Fulham",
@@ -172,21 +200,21 @@
      "ga": 3,
      "gd": "0",
      "pts": 0,
-     "pos": 12
+     "pos": 14
     },
     {
-     "name": "AFC Bournemouth",
-     "short": "Bournemouth",
-     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/349.png",
-     "p": 1,
+     "name": "Crystal Palace",
+     "short": "C Palace",
+     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/384.png",
+     "p": 2,
      "w": 0,
      "d": 0,
-     "l": 1,
+     "l": 2,
      "gf": 1,
-     "ga": 2,
+     "ga": 6,
      "gd": "0",
      "pts": 0,
-     "pos": 13
+     "pos": 15
     },
     {
      "name": "Sunderland",
@@ -200,7 +228,7 @@
      "ga": 2,
      "gd": "0",
      "pts": 0,
-     "pos": 14
+     "pos": 16
     },
     {
      "name": "Aston Villa",
@@ -214,35 +242,21 @@
      "ga": 4,
      "gd": "0",
      "pts": 0,
-     "pos": 15
+     "pos": 17
     },
     {
      "name": "Coventry City",
      "short": "Coventry",
      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/388.png",
-     "p": 1,
+     "p": 2,
      "w": 0,
      "d": 0,
-     "l": 1,
+     "l": 2,
      "gf": 0,
-     "ga": 3,
+     "ga": 4,
      "gd": "0",
      "pts": 0,
-     "pos": 16
-    },
-    {
-     "name": "Crystal Palace",
-     "short": "C Palace",
-     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/384.png",
-     "p": 1,
-     "w": 0,
-     "d": 0,
-     "l": 1,
-     "gf": 0,
-     "ga": 2,
-     "gd": "0",
-     "pts": 0,
-     "pos": 17
+     "pos": 18
     },
     {
      "name": "Manchester United",
@@ -254,20 +268,6 @@
      "l": 1,
      "gf": 0,
      "ga": 2,
-     "gd": "0",
-     "pts": 0,
-     "pos": 18
-    },
-    {
-     "name": "Nottingham Forest",
-     "short": "Nottm Forest",
-     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/393.png",
-     "p": 1,
-     "w": 0,
-     "d": 0,
-     "l": 1,
-     "gf": 0,
-     "ga": 1,
      "gd": "0",
      "pts": 0,
      "pos": 19
@@ -289,6 +289,54 @@
    ],
    "scores": [
     {
+     "date": "2026-08-29",
+     "home": "Coventry City",
+     "hshort": "Coventry",
+     "hlogo": "https://a.espncdn.com/i/teamlogos/soccer/500/388.png",
+     "away": "Hull City",
+     "ashort": "Hull",
+     "alogo": "https://a.espncdn.com/i/teamlogos/soccer/500/306.png",
+     "hs": 0,
+     "as": 1,
+     "status": "FT"
+    },
+    {
+     "date": "2026-08-29",
+     "home": "AFC Bournemouth",
+     "hshort": "Bournemouth",
+     "hlogo": "https://a.espncdn.com/i/teamlogos/soccer/500/349.png",
+     "away": "Everton",
+     "ashort": "Everton",
+     "alogo": "https://a.espncdn.com/i/teamlogos/soccer/500/368.png",
+     "hs": 1,
+     "as": 1,
+     "status": "FT"
+    },
+    {
+     "date": "2026-08-29",
+     "home": "Liverpool",
+     "hshort": "Liverpool",
+     "hlogo": "https://a.espncdn.com/i/teamlogos/soccer/500/364.png",
+     "away": "Nottingham Forest",
+     "ashort": "Nottm Forest",
+     "alogo": "https://a.espncdn.com/i/teamlogos/soccer/500/393.png",
+     "hs": 2,
+     "as": 2,
+     "status": "FT"
+    },
+    {
+     "date": "2026-08-28",
+     "home": "Crystal Palace",
+     "hshort": "C Palace",
+     "hlogo": "https://a.espncdn.com/i/teamlogos/soccer/500/384.png",
+     "away": "Manchester City",
+     "ashort": "Man City",
+     "alogo": "https://a.espncdn.com/i/teamlogos/soccer/500/382.png",
+     "hs": 1,
+     "as": 4,
+     "status": "FT"
+    },
+    {
      "date": "2026-08-24",
      "home": "Fulham",
      "hshort": "Fulham",
@@ -299,89 +347,9 @@
      "hs": 2,
      "as": 3,
      "status": "FT"
-    },
-    {
-     "date": "2026-08-23",
-     "home": "Newcastle United",
-     "hshort": "Newcastle",
-     "hlogo": "https://a.espncdn.com/i/teamlogos/soccer/500/361.png",
-     "away": "Liverpool",
-     "ashort": "Liverpool",
-     "alogo": "https://a.espncdn.com/i/teamlogos/soccer/500/364.png",
-     "hs": 2,
-     "as": 2,
-     "status": "FT"
-    },
-    {
-     "date": "2026-08-23",
-     "home": "Manchester City",
-     "hshort": "Man City",
-     "hlogo": "https://a.espncdn.com/i/teamlogos/soccer/500/382.png",
-     "away": "AFC Bournemouth",
-     "ashort": "Bournemouth",
-     "alogo": "https://a.espncdn.com/i/teamlogos/soccer/500/349.png",
-     "hs": 2,
-     "as": 1,
-     "status": "FT"
-    },
-    {
-     "date": "2026-08-23",
-     "home": "Brighton & Hove Albion",
-     "hshort": "Brighton",
-     "hlogo": "https://a.espncdn.com/i/teamlogos/soccer/500/331.png",
-     "away": "Aston Villa",
-     "ashort": "Aston Villa",
-     "alogo": "https://a.espncdn.com/i/teamlogos/soccer/500/362.png",
-     "hs": 4,
-     "as": 0,
-     "status": "FT"
     }
    ],
    "fixtures": [
-    {
-     "date": "2026-08-28",
-     "home": "Crystal Palace",
-     "hshort": "C Palace",
-     "hlogo": "https://a.espncdn.com/i/teamlogos/soccer/500/384.png",
-     "away": "Manchester City",
-     "ashort": "Man City",
-     "alogo": "https://a.espncdn.com/i/teamlogos/soccer/500/382.png",
-     "time": "19:00",
-     "status": "Fri, August 28th at 3:00 PM EDT"
-    },
-    {
-     "date": "2026-08-29",
-     "home": "Liverpool",
-     "hshort": "Liverpool",
-     "hlogo": "https://a.espncdn.com/i/teamlogos/soccer/500/364.png",
-     "away": "Nottingham Forest",
-     "ashort": "Nottm Forest",
-     "alogo": "https://a.espncdn.com/i/teamlogos/soccer/500/393.png",
-     "time": "11:30",
-     "status": "Sat, August 29th at 7:30 AM EDT"
-    },
-    {
-     "date": "2026-08-29",
-     "home": "AFC Bournemouth",
-     "hshort": "Bournemouth",
-     "hlogo": "https://a.espncdn.com/i/teamlogos/soccer/500/349.png",
-     "away": "Everton",
-     "ashort": "Everton",
-     "alogo": "https://a.espncdn.com/i/teamlogos/soccer/500/368.png",
-     "time": "14:00",
-     "status": "Sat, August 29th at 10:00 AM EDT"
-    },
-    {
-     "date": "2026-08-29",
-     "home": "Coventry City",
-     "hshort": "Coventry",
-     "hlogo": "https://a.espncdn.com/i/teamlogos/soccer/500/388.png",
-     "away": "Hull City",
-     "ashort": "Hull",
-     "alogo": "https://a.espncdn.com/i/teamlogos/soccer/500/306.png",
-     "time": "14:00",
-     "status": "Sat, August 29th at 10:00 AM EDT"
-    },
     {
      "date": "2026-08-29",
      "home": "Tottenham Hotspur",
@@ -391,7 +359,7 @@
      "ashort": "Newcastle",
      "alogo": "https://a.espncdn.com/i/teamlogos/soccer/500/361.png",
      "time": "16:30",
-     "status": "Sat, August 29th at 12:30 PM EDT"
+     "status": "57'"
     },
     {
      "date": "2026-08-30",
@@ -458,15 +426,120 @@
      "alogo": "https://a.espncdn.com/i/teamlogos/soccer/500/364.png",
      "time": "19:00",
      "status": "Fri, September 4th at 3:00 PM EDT"
+    },
+    {
+     "date": "2026-09-05",
+     "home": "Newcastle United",
+     "hshort": "Newcastle",
+     "hlogo": "https://a.espncdn.com/i/teamlogos/soccer/500/361.png",
+     "away": "AFC Bournemouth",
+     "ashort": "Bournemouth",
+     "alogo": "https://a.espncdn.com/i/teamlogos/soccer/500/349.png",
+     "time": "11:30",
+     "status": "Sat, September 5th at 7:30 AM EDT"
+    },
+    {
+     "date": "2026-09-05",
+     "home": "Brentford",
+     "hshort": "Brentford",
+     "hlogo": "https://a.espncdn.com/i/teamlogos/soccer/500/337.png",
+     "away": "Sunderland",
+     "ashort": "Sunderland",
+     "alogo": "https://a.espncdn.com/i/teamlogos/soccer/500/366.png",
+     "time": "14:00",
+     "status": "Sat, September 5th at 10:00 AM EDT"
+    },
+    {
+     "date": "2026-09-05",
+     "home": "Brighton & Hove Albion",
+     "hshort": "Brighton",
+     "hlogo": "https://a.espncdn.com/i/teamlogos/soccer/500/331.png",
+     "away": "Leeds United",
+     "ashort": "Leeds",
+     "alogo": "https://a.espncdn.com/i/teamlogos/soccer/500/357.png",
+     "time": "14:00",
+     "status": "Sat, September 5th at 10:00 AM EDT"
+    },
+    {
+     "date": "2026-09-05",
+     "home": "Fulham",
+     "hshort": "Fulham",
+     "hlogo": "https://a.espncdn.com/i/teamlogos/soccer/500/370.png",
+     "away": "Crystal Palace",
+     "ashort": "C Palace",
+     "alogo": "https://a.espncdn.com/i/teamlogos/soccer/500/384.png",
+     "time": "14:00",
+     "status": "Sat, September 5th at 10:00 AM EDT"
+    },
+    {
+     "date": "2026-09-05",
+     "home": "Manchester City",
+     "hshort": "Man City",
+     "hlogo": "https://a.espncdn.com/i/teamlogos/soccer/500/382.png",
+     "away": "Coventry City",
+     "ashort": "Coventry",
+     "alogo": "https://a.espncdn.com/i/teamlogos/soccer/500/388.png",
+     "time": "14:00",
+     "status": "Sat, September 5th at 10:00 AM EDT"
+    },
+    {
+     "date": "2026-09-05",
+     "home": "Nottingham Forest",
+     "hshort": "Nottm Forest",
+     "hlogo": "https://a.espncdn.com/i/teamlogos/soccer/500/393.png",
+     "away": "Tottenham Hotspur",
+     "ashort": "Spurs",
+     "alogo": "https://a.espncdn.com/i/teamlogos/soccer/500/367.png",
+     "time": "14:00",
+     "status": "Sat, September 5th at 10:00 AM EDT"
+    },
+    {
+     "date": "2026-09-05",
+     "home": "Hull City",
+     "hshort": "Hull",
+     "hlogo": "https://a.espncdn.com/i/teamlogos/soccer/500/306.png",
+     "away": "Aston Villa",
+     "ashort": "Aston Villa",
+     "alogo": "https://a.espncdn.com/i/teamlogos/soccer/500/362.png",
+     "time": "16:30",
+     "status": "Sat, September 5th at 12:30 PM EDT"
     }
    ],
    "scorers": [
+    {
+     "name": "Erling Haaland",
+     "team": "MNC",
+     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/382.png",
+     "goals": 2,
+     "apps": 2
+    },
+    {
+     "name": "Rayan Cherki",
+     "team": "MNC",
+     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/382.png",
+     "goals": 2,
+     "apps": 2
+    },
     {
      "name": "Jack Hinshelwood",
      "team": "BHA",
      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/331.png",
      "goals": 2,
      "apps": 1
+    },
+    {
+     "name": "Marc Guéhi",
+     "team": "MNC",
+     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/382.png",
+     "goals": 1,
+     "apps": 2
+    },
+    {
+     "name": "Josko Gvardiol",
+     "team": "MNC",
+     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/382.png",
+     "goals": 1,
+     "apps": 2
     },
     {
      "name": "Josh King",
@@ -479,13 +552,6 @@
      "name": "Anton Stach",
      "team": "LEE",
      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/357.png",
-     "goals": 1,
-     "apps": 1
-    },
-    {
-     "name": "Josko Gvardiol",
-     "team": "MNC",
-     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/382.png",
      "goals": 1,
      "apps": 1
     },
@@ -504,30 +570,9 @@
      "apps": 1
     },
     {
-     "name": "Marc Guéhi",
-     "team": "MNC",
-     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/382.png",
-     "goals": 1,
-     "apps": 1
-    },
-    {
      "name": "Dominik Szoboszlai",
      "team": "LIV",
      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/364.png",
-     "goals": 1,
-     "apps": 1
-    },
-    {
-     "name": "Cody Gakpo",
-     "team": "LIV",
-     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/364.png",
-     "goals": 1,
-     "apps": 1
-    },
-    {
-     "name": "Marcus Tavernier",
-     "team": "BOU",
-     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/349.png",
      "goals": 1,
      "apps": 1
     }
@@ -538,6 +583,20 @@
    "name": "La Liga",
    "flag": "🇪🇸",
    "teams": [
+    {
+     "name": "Alavés",
+     "short": "Alavés",
+     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/96.png",
+     "p": 3,
+     "w": 2,
+     "d": 1,
+     "l": 0,
+     "gf": 5,
+     "ga": 1,
+     "gd": "0",
+     "pts": 7,
+     "pos": 1
+    },
     {
      "name": "Barcelona",
      "short": "Barcelona",
@@ -550,7 +609,7 @@
      "ga": 0,
      "gd": "0",
      "pts": 6,
-     "pos": 1
+     "pos": 2
     },
     {
      "name": "Real Madrid",
@@ -564,7 +623,7 @@
      "ga": 2,
      "gd": "0",
      "pts": 6,
-     "pos": 2
+     "pos": 3
     },
     {
      "name": "Sevilla",
@@ -578,35 +637,49 @@
      "ga": 2,
      "gd": "0",
      "pts": 6,
-     "pos": 3
+     "pos": 4
     },
     {
      "name": "Real Betis",
      "short": "Betis",
      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/244.png",
-     "p": 2,
+     "p": 3,
      "w": 2,
      "d": 0,
-     "l": 0,
-     "gf": 2,
-     "ga": 0,
+     "l": 1,
+     "gf": 4,
+     "ga": 5,
      "gd": "0",
      "pts": 6,
-     "pos": 4
+     "pos": 5
     },
     {
-     "name": "Alavés",
-     "short": "Alavés",
-     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/96.png",
-     "p": 2,
+     "name": "Levante",
+     "short": "Levante",
+     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/1538.png",
+     "p": 3,
      "w": 1,
      "d": 1,
-     "l": 0,
-     "gf": 4,
-     "ga": 1,
+     "l": 1,
+     "gf": 5,
+     "ga": 5,
      "gd": "0",
      "pts": 4,
-     "pos": 5
+     "pos": 6
+    },
+    {
+     "name": "Racing Santander",
+     "short": "Racing",
+     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/87.png",
+     "p": 3,
+     "w": 1,
+     "d": 1,
+     "l": 1,
+     "gf": 5,
+     "ga": 5,
+     "gd": "0",
+     "pts": 4,
+     "pos": 7
     },
     {
      "name": "Atlético Madrid",
@@ -620,7 +693,7 @@
      "ga": 2,
      "gd": "0",
      "pts": 4,
-     "pos": 6
+     "pos": 8
     },
     {
      "name": "Osasuna",
@@ -634,7 +707,7 @@
      "ga": 1,
      "gd": "0",
      "pts": 4,
-     "pos": 7
+     "pos": 9
     },
     {
      "name": "Espanyol",
@@ -648,7 +721,7 @@
      "ga": 2,
      "gd": "0",
      "pts": 3,
-     "pos": 8
+     "pos": 10
     },
     {
      "name": "Getafe",
@@ -662,21 +735,21 @@
      "ga": 3,
      "gd": "0",
      "pts": 3,
-     "pos": 9
+     "pos": 11
     },
     {
      "name": "Villarreal",
      "short": "Villarreal",
      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/102.png",
-     "p": 2,
+     "p": 3,
      "w": 0,
      "d": 2,
-     "l": 0,
+     "l": 1,
      "gf": 4,
-     "ga": 4,
+     "ga": 5,
      "gd": "0",
      "pts": 2,
-     "pos": 10
+     "pos": 12
     },
     {
      "name": "Deportivo",
@@ -690,21 +763,21 @@
      "ga": 2,
      "gd": "0",
      "pts": 2,
-     "pos": 11
+     "pos": 13
     },
     {
-     "name": "Racing Santander",
-     "short": "Racing",
-     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/87.png",
-     "p": 2,
+     "name": "Elche",
+     "short": "Elche",
+     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/3751.png",
+     "p": 3,
      "w": 0,
      "d": 1,
-     "l": 1,
-     "gf": 2,
-     "ga": 3,
+     "l": 2,
+     "gf": 3,
+     "ga": 9,
      "gd": "0",
      "pts": 1,
-     "pos": 12
+     "pos": 14
     },
     {
      "name": "Rayo Vallecano",
@@ -718,7 +791,7 @@
      "ga": 3,
      "gd": "0",
      "pts": 1,
-     "pos": 13
+     "pos": 15
     },
     {
      "name": "Celta Vigo",
@@ -732,21 +805,7 @@
      "ga": 2,
      "gd": "0",
      "pts": 1,
-     "pos": 14
-    },
-    {
-     "name": "Elche",
-     "short": "Elche",
-     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/3751.png",
-     "p": 2,
-     "w": 0,
-     "d": 1,
-     "l": 1,
-     "gf": 1,
-     "ga": 6,
-     "gd": "0",
-     "pts": 1,
-     "pos": 15
+     "pos": 16
     },
     {
      "name": "Málaga",
@@ -757,20 +816,6 @@
      "d": 1,
      "l": 1,
      "gf": 1,
-     "ga": 3,
-     "gd": "0",
-     "pts": 1,
-     "pos": 16
-    },
-    {
-     "name": "Levante",
-     "short": "Levante",
-     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/1538.png",
-     "p": 2,
-     "w": 0,
-     "d": 1,
-     "l": 1,
-     "gf": 0,
      "ga": 3,
      "gd": "0",
      "pts": 1,
@@ -820,6 +865,42 @@
     }
    ],
    "scores": [
+    {
+     "date": "2026-08-29",
+     "home": "Levante",
+     "hshort": "Levante",
+     "hlogo": "https://a.espncdn.com/i/teamlogos/soccer/500/1538.png",
+     "away": "Real Betis",
+     "ashort": "Betis",
+     "alogo": "https://a.espncdn.com/i/teamlogos/soccer/500/244.png",
+     "hs": 5,
+     "as": 2,
+     "status": "FT"
+    },
+    {
+     "date": "2026-08-28",
+     "home": "Alavés",
+     "hshort": "Alavés",
+     "hlogo": "https://a.espncdn.com/i/teamlogos/soccer/500/96.png",
+     "away": "Villarreal",
+     "ashort": "Villarreal",
+     "alogo": "https://a.espncdn.com/i/teamlogos/soccer/500/102.png",
+     "hs": 1,
+     "as": 0,
+     "status": "FT"
+    },
+    {
+     "date": "2026-08-28",
+     "home": "Racing Santander",
+     "hshort": "Racing",
+     "hlogo": "https://a.espncdn.com/i/teamlogos/soccer/500/87.png",
+     "away": "Elche",
+     "ashort": "Elche",
+     "alogo": "https://a.espncdn.com/i/teamlogos/soccer/500/3751.png",
+     "hs": 3,
+     "as": 2,
+     "status": "FT"
+    },
     {
      "date": "2026-08-27",
      "home": "Barcelona",
@@ -891,78 +972,9 @@
      "hs": 0,
      "as": 0,
      "status": "FT"
-    },
-    {
-     "date": "2026-08-23",
-     "home": "Elche",
-     "hshort": "Elche",
-     "hlogo": "https://a.espncdn.com/i/teamlogos/soccer/500/3751.png",
-     "away": "Barcelona",
-     "ashort": "Barcelona",
-     "alogo": "https://a.espncdn.com/i/teamlogos/soccer/500/83.png",
-     "hs": 0,
-     "as": 5,
-     "status": "FT"
-    },
-    {
-     "date": "2026-08-23",
-     "home": "Getafe",
-     "hshort": "Getafe",
-     "hlogo": "https://a.espncdn.com/i/teamlogos/soccer/500/2922.png",
-     "away": "Racing Santander",
-     "ashort": "Racing",
-     "alogo": "https://a.espncdn.com/i/teamlogos/soccer/500/87.png",
-     "hs": 1,
-     "as": 0,
-     "status": "FT"
-    },
-    {
-     "date": "2026-08-23",
-     "home": "Atlético Madrid",
-     "hshort": "Atlético",
-     "hlogo": "https://a.espncdn.com/i/teamlogos/soccer/500/1068.png",
-     "away": "Villarreal",
-     "ashort": "Villarreal",
-     "alogo": "https://a.espncdn.com/i/teamlogos/soccer/500/102.png",
-     "hs": 2,
-     "as": 2,
-     "status": "FT"
     }
    ],
    "fixtures": [
-    {
-     "date": "2026-08-28",
-     "home": "Racing Santander",
-     "hshort": "Racing",
-     "hlogo": "https://a.espncdn.com/i/teamlogos/soccer/500/87.png",
-     "away": "Elche",
-     "ashort": "Elche",
-     "alogo": "https://a.espncdn.com/i/teamlogos/soccer/500/3751.png",
-     "time": "17:00",
-     "status": "Fri, August 28th at 1:00 PM EDT"
-    },
-    {
-     "date": "2026-08-28",
-     "home": "Alavés",
-     "hshort": "Alavés",
-     "hlogo": "https://a.espncdn.com/i/teamlogos/soccer/500/96.png",
-     "away": "Villarreal",
-     "ashort": "Villarreal",
-     "alogo": "https://a.espncdn.com/i/teamlogos/soccer/500/102.png",
-     "time": "19:30",
-     "status": "Fri, August 28th at 3:30 PM EDT"
-    },
-    {
-     "date": "2026-08-29",
-     "home": "Levante",
-     "hshort": "Levante",
-     "hlogo": "https://a.espncdn.com/i/teamlogos/soccer/500/1538.png",
-     "away": "Real Betis",
-     "ashort": "Betis",
-     "alogo": "https://a.espncdn.com/i/teamlogos/soccer/500/244.png",
-     "time": "15:00",
-     "status": "Sat, August 29th at 11:00 AM EDT"
-    },
     {
      "date": "2026-08-29",
      "home": "Real Sociedad",
@@ -972,7 +984,7 @@
      "ashort": "Espanyol",
      "alogo": "https://a.espncdn.com/i/teamlogos/soccer/500/88.png",
      "time": "17:00",
-     "status": "Sat, August 29th at 1:00 PM EDT"
+     "status": "40'"
     },
     {
      "date": "2026-08-29",
@@ -1061,15 +1073,76 @@
      "alogo": "https://a.espncdn.com/i/teamlogos/soccer/500/86.png",
      "time": "19:00",
      "status": "Fri, September 4th at 3:00 PM EDT"
+    },
+    {
+     "date": "2026-09-05",
+     "home": "Athletic Club",
+     "hshort": "Athletic",
+     "hlogo": "https://a.espncdn.com/i/teamlogos/soccer/500/93.png",
+     "away": "Atlético Madrid",
+     "ashort": "Atlético",
+     "alogo": "https://a.espncdn.com/i/teamlogos/soccer/500/1068.png",
+     "time": "14:15",
+     "status": "Sat, September 5th at 10:15 AM EDT"
+    },
+    {
+     "date": "2026-09-05",
+     "home": "Rayo Vallecano",
+     "hshort": "Rayo",
+     "hlogo": "https://a.espncdn.com/i/teamlogos/soccer/500/101.png",
+     "away": "Racing Santander",
+     "ashort": "Racing",
+     "alogo": "https://a.espncdn.com/i/teamlogos/soccer/500/87.png",
+     "time": "16:30",
+     "status": "Sat, September 5th at 12:30 PM EDT"
+    },
+    {
+     "date": "2026-09-05",
+     "home": "Villarreal",
+     "hshort": "Villarreal",
+     "hlogo": "https://a.espncdn.com/i/teamlogos/soccer/500/102.png",
+     "away": "Deportivo",
+     "ashort": "Deportivo",
+     "alogo": "https://a.espncdn.com/i/teamlogos/soccer/500/90.png",
+     "time": "19:00",
+     "status": "Sat, September 5th at 3:00 PM EDT"
     }
    ],
    "scorers": [
+    {
+     "name": "Yassir Zabiri",
+     "team": "RAC",
+     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/87.png",
+     "goals": 3,
+     "apps": 3
+    },
+    {
+     "name": "Fermín López",
+     "team": "BAR",
+     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/83.png",
+     "goals": 3,
+     "apps": 2
+    },
     {
      "name": "Kylian Mbappé",
      "team": "RMA",
      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/86.png",
      "goals": 3,
      "apps": 2
+    },
+    {
+     "name": "Raphinha",
+     "team": "BAR",
+     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/83.png",
+     "goals": 3,
+     "apps": 2
+    },
+    {
+     "name": "Mariano Díaz",
+     "team": "ALA",
+     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/96.png",
+     "goals": 2,
+     "apps": 3
     },
     {
      "name": "Roberto Fernández",
@@ -1086,53 +1159,25 @@
      "apps": 2
     },
     {
-     "name": "Mariano Díaz",
-     "team": "ALA",
-     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/96.png",
-     "goals": 2,
-     "apps": 2
-    },
-    {
-     "name": "Fermín López",
-     "team": "BAR",
-     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/83.png",
-     "goals": 2,
-     "apps": 1
-    },
-    {
-     "name": "Raphinha",
-     "team": "BAR",
-     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/83.png",
-     "goals": 2,
-     "apps": 1
-    },
-    {
-     "name": "Chupete",
-     "team": "MCF",
-     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/99.png",
-     "goals": 1,
-     "apps": 2
-    },
-    {
      "name": "Nahuel Tenaglia",
      "team": "ALA",
      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/96.png",
      "goals": 1,
-     "apps": 2
+     "apps": 3
     },
     {
      "name": "Pape Gueye",
      "team": "VIL",
      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/102.png",
      "goals": 1,
-     "apps": 2
+     "apps": 3
     },
     {
-     "name": "Andrés Martín",
-     "team": "RAC",
-     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/87.png",
+     "name": "Buba Sangaré",
+     "team": "ELC",
+     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/3751.png",
      "goals": 1,
-     "apps": 2
+     "apps": 3
     }
    ]
   },
@@ -1141,6 +1186,20 @@
    "name": "Serie A",
    "flag": "🇮🇹",
    "teams": [
+    {
+     "name": "AC Milan",
+     "short": "Milan",
+     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/103.png",
+     "p": 2,
+     "w": 2,
+     "d": 0,
+     "l": 0,
+     "gf": 4,
+     "ga": 1,
+     "gd": "0",
+     "pts": 6,
+     "pos": 1
+    },
     {
      "name": "AS Roma",
      "short": "AS Roma",
@@ -1153,7 +1212,7 @@
      "ga": 0,
      "gd": "0",
      "pts": 3,
-     "pos": 1
+     "pos": 2
     },
     {
      "name": "Internazionale",
@@ -1164,20 +1223,6 @@
      "d": 0,
      "l": 0,
      "gf": 4,
-     "ga": 1,
-     "gd": "0",
-     "pts": 3,
-     "pos": 2
-    },
-    {
-     "name": "AC Milan",
-     "short": "Milan",
-     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/103.png",
-     "p": 1,
-     "w": 1,
-     "d": 0,
-     "l": 0,
-     "gf": 2,
      "ga": 1,
      "gd": "0",
      "pts": 3,
@@ -1411,18 +1456,30 @@
      "name": "Venezia",
      "short": "Venezia",
      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/17530.png",
-     "p": 1,
+     "p": 2,
      "w": 0,
      "d": 0,
-     "l": 1,
+     "l": 2,
      "gf": 0,
-     "ga": 2,
+     "ga": 4,
      "gd": "0",
      "pts": 0,
      "pos": 20
     }
    ],
    "scores": [
+    {
+     "date": "2026-08-28",
+     "home": "AC Milan",
+     "hshort": "Milan",
+     "hlogo": "https://a.espncdn.com/i/teamlogos/soccer/500/103.png",
+     "away": "Venezia",
+     "ashort": "Venezia",
+     "alogo": "https://a.espncdn.com/i/teamlogos/soccer/500/17530.png",
+     "hs": 2,
+     "as": 0,
+     "status": "FT"
+    },
     {
      "date": "2026-08-24",
      "home": "AS Roma",
@@ -1446,68 +1503,9 @@
      "hs": 0,
      "as": 1,
      "status": "FT"
-    },
-    {
-     "date": "2026-08-23",
-     "home": "Torino",
-     "hshort": "Torino",
-     "hlogo": "https://a.espncdn.com/i/teamlogos/soccer/500/239.png",
-     "away": "AC Milan",
-     "ashort": "Milan",
-     "alogo": "https://a.espncdn.com/i/teamlogos/soccer/500/103.png",
-     "hs": 1,
-     "as": 2,
-     "status": "FT"
-    },
-    {
-     "date": "2026-08-23",
-     "home": "Atalanta",
-     "hshort": "Atalanta",
-     "hlogo": "https://a.espncdn.com/i/teamlogos/soccer/500/105.png",
-     "away": "Sassuolo",
-     "ashort": "Sassuolo",
-     "alogo": "https://a.espncdn.com/i/teamlogos/soccer/500/3997.png",
-     "hs": 2,
-     "as": 1,
-     "status": "FT"
-    },
-    {
-     "date": "2026-08-23",
-     "home": "Venezia",
-     "hshort": "Venezia",
-     "hlogo": "https://a.espncdn.com/i/teamlogos/soccer/500/17530.png",
-     "away": "Lecce",
-     "ashort": "Lecce",
-     "alogo": "https://a.espncdn.com/i/teamlogos/soccer/500/113.png",
-     "hs": 0,
-     "as": 2,
-     "status": "FT"
-    },
-    {
-     "date": "2026-08-23",
-     "home": "Frosinone",
-     "hshort": "Frosinone",
-     "hlogo": "https://a.espncdn.com/i/teamlogos/soccer/500/4057.png",
-     "away": "Juventus",
-     "ashort": "Juventus",
-     "alogo": "https://a.espncdn.com/i/teamlogos/soccer/500/111.png",
-     "hs": 0,
-     "as": 1,
-     "status": "FT"
     }
    ],
    "fixtures": [
-    {
-     "date": "2026-08-28",
-     "home": "AC Milan",
-     "hshort": "Milan",
-     "hlogo": "https://a.espncdn.com/i/teamlogos/soccer/500/103.png",
-     "away": "Venezia",
-     "ashort": "Venezia",
-     "alogo": "https://a.espncdn.com/i/teamlogos/soccer/500/17530.png",
-     "time": "18:45",
-     "status": "Fri, August 28th at 2:45 PM EDT"
-    },
     {
      "date": "2026-08-29",
      "home": "Fiorentina",
@@ -1517,7 +1515,7 @@
      "ashort": "Frosinone",
      "alogo": "https://a.espncdn.com/i/teamlogos/soccer/500/4057.png",
      "time": "16:30",
-     "status": "Sat, August 29th at 12:30 PM EDT"
+     "status": "48'"
     },
     {
      "date": "2026-08-29",
@@ -1528,7 +1526,7 @@
      "ashort": "Udinese",
      "alogo": "https://a.espncdn.com/i/teamlogos/soccer/500/118.png",
      "time": "16:30",
-     "status": "Sat, August 29th at 12:30 PM EDT"
+     "status": "51'"
     },
     {
      "date": "2026-08-29",
@@ -1539,7 +1537,7 @@
      "ashort": "Torino",
      "alogo": "https://a.espncdn.com/i/teamlogos/soccer/500/239.png",
      "time": "16:30",
-     "status": "Sat, August 29th at 12:30 PM EDT"
+     "status": "52'"
     },
     {
      "date": "2026-08-29",
@@ -1617,6 +1615,39 @@
      "alogo": "https://a.espncdn.com/i/teamlogos/soccer/500/2572.png",
      "time": "18:45",
      "status": "Fri, September 4th at 2:45 PM EDT"
+    },
+    {
+     "date": "2026-09-05",
+     "home": "Fiorentina",
+     "hshort": "Fiorentina",
+     "hlogo": "https://a.espncdn.com/i/teamlogos/soccer/500/109.png",
+     "away": "Torino",
+     "ashort": "Torino",
+     "alogo": "https://a.espncdn.com/i/teamlogos/soccer/500/239.png",
+     "time": "13:00",
+     "status": "Sat, September 5th at 9:00 AM EDT"
+    },
+    {
+     "date": "2026-09-05",
+     "home": "Internazionale",
+     "hshort": "Inter Milan",
+     "hlogo": "https://a.espncdn.com/i/teamlogos/soccer/500/110.png",
+     "away": "Napoli",
+     "ashort": "Napoli",
+     "alogo": "https://a.espncdn.com/i/teamlogos/soccer/500/114.png",
+     "time": "16:00",
+     "status": "Sat, September 5th at 12:00 PM EDT"
+    },
+    {
+     "date": "2026-09-05",
+     "home": "AS Roma",
+     "hshort": "AS Roma",
+     "hlogo": "https://a.espncdn.com/i/teamlogos/soccer/500/104.png",
+     "away": "Atalanta",
+     "ashort": "Atalanta",
+     "alogo": "https://a.espncdn.com/i/teamlogos/soccer/500/105.png",
+     "time": "18:45",
+     "status": "Sat, September 5th at 2:45 PM EDT"
     }
    ],
    "scorers": [
@@ -1626,6 +1657,27 @@
      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/104.png",
      "goals": 3,
      "apps": 1
+    },
+    {
+     "name": "Gonçalo Ramos",
+     "team": "MIL",
+     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/103.png",
+     "goals": 1,
+     "apps": 2
+    },
+    {
+     "name": "Alphadjo Cissè",
+     "team": "MIL",
+     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/103.png",
+     "goals": 1,
+     "apps": 2
+    },
+    {
+     "name": "Adrien Rabiot",
+     "team": "MIL",
+     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/103.png",
+     "goals": 1,
+     "apps": 2
     },
     {
      "name": "Pio Esposito",
@@ -1668,27 +1720,6 @@
      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/118.png",
      "goals": 1,
      "apps": 1
-    },
-    {
-     "name": "Alessandro Romano",
-     "team": "CAG",
-     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2925.png",
-     "goals": 1,
-     "apps": 1
-    },
-    {
-     "name": "Gustavo Varela",
-     "team": "MON",
-     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4007.png",
-     "goals": 1,
-     "apps": 1
-    },
-    {
-     "name": "Piotr Zielinski",
-     "team": "INT",
-     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/110.png",
-     "goals": 1,
-     "apps": 1
     }
    ]
   },
@@ -1698,46 +1729,158 @@
    "flag": "🇩🇪",
    "teams": [
     {
+     "name": "Bayern Munich",
+     "short": "Bayern",
+     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/132.png",
+     "p": 1,
+     "w": 1,
+     "d": 0,
+     "l": 0,
+     "gf": 5,
+     "ga": 1,
+     "gd": "0",
+     "pts": 3,
+     "pos": 1
+    },
+    {
+     "name": "FC Cologne",
+     "short": "Cologne",
+     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/122.png",
+     "p": 1,
+     "w": 1,
+     "d": 0,
+     "l": 0,
+     "gf": 3,
+     "ga": 2,
+     "gd": "0",
+     "pts": 3,
+     "pos": 2
+    },
+    {
+     "name": "RB Leipzig",
+     "short": "RB Leipzig",
+     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11420.png",
+     "p": 1,
+     "w": 1,
+     "d": 0,
+     "l": 0,
+     "gf": 3,
+     "ga": 0,
+     "gd": "0",
+     "pts": 3,
+     "pos": 3
+    },
+    {
+     "name": "SV Elversberg",
+     "short": "Elversberg",
+     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10388.png",
+     "p": 1,
+     "w": 1,
+     "d": 0,
+     "l": 0,
+     "gf": 3,
+     "ga": 2,
+     "gd": "0",
+     "pts": 3,
+     "pos": 4
+    },
+    {
      "name": "1. FC Union Berlin",
      "short": "Union Berlin",
      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/598.png",
-     "p": 0,
+     "p": 1,
      "w": 0,
-     "d": 0,
+     "d": 1,
+     "l": 0,
+     "gf": 3,
+     "ga": 3,
+     "gd": "0",
+     "pts": 1,
+     "pos": 5
+    },
+    {
+     "name": "Eintracht Frankfurt",
+     "short": "Frankfurt",
+     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/125.png",
+     "p": 1,
+     "w": 0,
+     "d": 1,
+     "l": 0,
+     "gf": 3,
+     "ga": 3,
+     "gd": "0",
+     "pts": 1,
+     "pos": 6
+    },
+    {
+     "name": "Mainz",
+     "short": "Mainz",
+     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2950.png",
+     "p": 1,
+     "w": 0,
+     "d": 1,
      "l": 0,
      "gf": 0,
      "ga": 0,
      "gd": "0",
-     "pts": 0,
-     "pos": 1
+     "pts": 1,
+     "pos": 7
+    },
+    {
+     "name": "SC Paderborn 07",
+     "short": "Paderborn",
+     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/3307.png",
+     "p": 1,
+     "w": 0,
+     "d": 1,
+     "l": 0,
+     "gf": 0,
+     "ga": 0,
+     "gd": "0",
+     "pts": 1,
+     "pos": 8
     },
     {
      "name": "Bayer Leverkusen",
      "short": "Leverkusen",
      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/131.png",
-     "p": 0,
+     "p": 1,
      "w": 0,
      "d": 0,
-     "l": 0,
-     "gf": 0,
-     "ga": 0,
+     "l": 1,
+     "gf": 2,
+     "ga": 3,
      "gd": "0",
      "pts": 0,
-     "pos": 2
+     "pos": 9
     },
     {
-     "name": "Bayern Munich",
-     "short": "Bayern",
-     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/132.png",
-     "p": 0,
+     "name": "TSG Hoffenheim",
+     "short": "Hoffenheim",
+     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7911.png",
+     "p": 1,
      "w": 0,
      "d": 0,
-     "l": 0,
-     "gf": 0,
-     "ga": 0,
+     "l": 1,
+     "gf": 2,
+     "ga": 3,
      "gd": "0",
      "pts": 0,
-     "pos": 3
+     "pos": 10
+    },
+    {
+     "name": "VfB Stuttgart",
+     "short": "Stuttgart",
+     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/134.png",
+     "p": 1,
+     "w": 0,
+     "d": 0,
+     "l": 1,
+     "gf": 1,
+     "ga": 5,
+     "gd": "0",
+     "pts": 0,
+     "pos": 11
     },
     {
      "name": "Borussia Dortmund",
@@ -1751,35 +1894,21 @@
      "ga": 0,
      "gd": "0",
      "pts": 0,
-     "pos": 4
+     "pos": 12
     },
     {
      "name": "Borussia Mönchengladbach",
      "short": "Gladbach",
      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/268.png",
-     "p": 0,
+     "p": 1,
      "w": 0,
      "d": 0,
-     "l": 0,
+     "l": 1,
      "gf": 0,
-     "ga": 0,
+     "ga": 3,
      "gd": "0",
      "pts": 0,
-     "pos": 5
-    },
-    {
-     "name": "Eintracht Frankfurt",
-     "short": "Frankfurt",
-     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/125.png",
-     "p": 0,
-     "w": 0,
-     "d": 0,
-     "l": 0,
-     "gf": 0,
-     "ga": 0,
-     "gd": "0",
-     "pts": 0,
-     "pos": 6
+     "pos": 13
     },
     {
      "name": "FC Augsburg",
@@ -1793,21 +1922,7 @@
      "ga": 0,
      "gd": "0",
      "pts": 0,
-     "pos": 7
-    },
-    {
-     "name": "FC Cologne",
-     "short": "Cologne",
-     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/122.png",
-     "p": 0,
-     "w": 0,
-     "d": 0,
-     "l": 0,
-     "gf": 0,
-     "ga": 0,
-     "gd": "0",
-     "pts": 0,
-     "pos": 8
+     "pos": 14
     },
     {
      "name": "Hamburg SV",
@@ -1821,35 +1936,7 @@
      "ga": 0,
      "gd": "0",
      "pts": 0,
-     "pos": 9
-    },
-    {
-     "name": "Mainz",
-     "short": "Mainz",
-     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2950.png",
-     "p": 0,
-     "w": 0,
-     "d": 0,
-     "l": 0,
-     "gf": 0,
-     "ga": 0,
-     "gd": "0",
-     "pts": 0,
-     "pos": 10
-    },
-    {
-     "name": "RB Leipzig",
-     "short": "RB Leipzig",
-     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11420.png",
-     "p": 0,
-     "w": 0,
-     "d": 0,
-     "l": 0,
-     "gf": 0,
-     "ga": 0,
-     "gd": "0",
-     "pts": 0,
-     "pos": 11
+     "pos": 15
     },
     {
      "name": "SC Freiburg",
@@ -1863,68 +1950,12 @@
      "ga": 0,
      "gd": "0",
      "pts": 0,
-     "pos": 12
-    },
-    {
-     "name": "SC Paderborn 07",
-     "short": "Paderborn",
-     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/3307.png",
-     "p": 0,
-     "w": 0,
-     "d": 0,
-     "l": 0,
-     "gf": 0,
-     "ga": 0,
-     "gd": "0",
-     "pts": 0,
-     "pos": 13
+     "pos": 16
     },
     {
      "name": "Schalke 04",
      "short": "Schalke",
      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/133.png",
-     "p": 0,
-     "w": 0,
-     "d": 0,
-     "l": 0,
-     "gf": 0,
-     "ga": 0,
-     "gd": "0",
-     "pts": 0,
-     "pos": 14
-    },
-    {
-     "name": "SV ELVERSBERG",
-     "short": "ELVERSBERG",
-     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10388.png",
-     "p": 0,
-     "w": 0,
-     "d": 0,
-     "l": 0,
-     "gf": 0,
-     "ga": 0,
-     "gd": "0",
-     "pts": 0,
-     "pos": 15
-    },
-    {
-     "name": "TSG Hoffenheim",
-     "short": "Hoffenheim",
-     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/7911.png",
-     "p": 0,
-     "w": 0,
-     "d": 0,
-     "l": 0,
-     "gf": 0,
-     "ga": 0,
-     "gd": "0",
-     "pts": 0,
-     "pos": 16
-    },
-    {
-     "name": "VfB Stuttgart",
-     "short": "Stuttgart",
-     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/134.png",
      "p": 0,
      "w": 0,
      "d": 0,
@@ -1950,51 +1981,18 @@
      "pos": 18
     }
    ],
-   "scores": [],
-   "fixtures": [
-    {
-     "date": "2026-08-28",
-     "home": "Bayern Munich",
-     "hshort": "Bayern",
-     "hlogo": "https://a.espncdn.com/i/teamlogos/soccer/500/132.png",
-     "away": "VfB Stuttgart",
-     "ashort": "Stuttgart",
-     "alogo": "https://a.espncdn.com/i/teamlogos/soccer/500/134.png",
-     "time": "18:30",
-     "status": "Fri, August 28th at 2:30 PM EDT"
-    },
+   "scores": [
     {
      "date": "2026-08-29",
-     "home": "1. FC Union Berlin",
-     "hshort": "Union Berlin",
-     "hlogo": "https://a.espncdn.com/i/teamlogos/soccer/500/598.png",
-     "away": "Eintracht Frankfurt",
-     "ashort": "Frankfurt",
-     "alogo": "https://a.espncdn.com/i/teamlogos/soccer/500/125.png",
-     "time": "13:30",
-     "status": "Sat, August 29th at 9:30 AM EDT"
-    },
-    {
-     "date": "2026-08-29",
-     "home": "FC Cologne",
-     "hshort": "Cologne",
-     "hlogo": "https://a.espncdn.com/i/teamlogos/soccer/500/122.png",
-     "away": "TSG Hoffenheim",
-     "ashort": "Hoffenheim",
-     "alogo": "https://a.espncdn.com/i/teamlogos/soccer/500/7911.png",
-     "time": "13:30",
-     "status": "Sat, August 29th at 9:30 AM EDT"
-    },
-    {
-     "date": "2026-08-29",
-     "home": "Mainz",
-     "hshort": "Mainz",
-     "hlogo": "https://a.espncdn.com/i/teamlogos/soccer/500/2950.png",
-     "away": "SC Paderborn 07",
-     "ashort": "Paderborn",
-     "alogo": "https://a.espncdn.com/i/teamlogos/soccer/500/3307.png",
-     "time": "13:30",
-     "status": "Sat, August 29th at 9:30 AM EDT"
+     "home": "SV Elversberg",
+     "hshort": "Elversberg",
+     "hlogo": "https://a.espncdn.com/i/teamlogos/soccer/500/10388.png",
+     "away": "Bayer Leverkusen",
+     "ashort": "Leverkusen",
+     "alogo": "https://a.espncdn.com/i/teamlogos/soccer/500/131.png",
+     "hs": 3,
+     "as": 2,
+     "status": "FT"
     },
     {
      "date": "2026-08-29",
@@ -2004,20 +2002,60 @@
      "away": "Borussia Mönchengladbach",
      "ashort": "Gladbach",
      "alogo": "https://a.espncdn.com/i/teamlogos/soccer/500/268.png",
-     "time": "13:30",
-     "status": "Sat, August 29th at 9:30 AM EDT"
+     "hs": 3,
+     "as": 0,
+     "status": "FT"
     },
     {
      "date": "2026-08-29",
-     "home": "SV ELVERSBERG",
-     "hshort": "ELVERSBERG",
-     "hlogo": "https://a.espncdn.com/i/teamlogos/soccer/500/10388.png",
-     "away": "Bayer Leverkusen",
-     "ashort": "Leverkusen",
-     "alogo": "https://a.espncdn.com/i/teamlogos/soccer/500/131.png",
-     "time": "13:30",
-     "status": "Sat, August 29th at 9:30 AM EDT"
+     "home": "Mainz",
+     "hshort": "Mainz",
+     "hlogo": "https://a.espncdn.com/i/teamlogos/soccer/500/2950.png",
+     "away": "SC Paderborn 07",
+     "ashort": "Paderborn",
+     "alogo": "https://a.espncdn.com/i/teamlogos/soccer/500/3307.png",
+     "hs": 0,
+     "as": 0,
+     "status": "FT"
     },
+    {
+     "date": "2026-08-29",
+     "home": "FC Cologne",
+     "hshort": "Cologne",
+     "hlogo": "https://a.espncdn.com/i/teamlogos/soccer/500/122.png",
+     "away": "TSG Hoffenheim",
+     "ashort": "Hoffenheim",
+     "alogo": "https://a.espncdn.com/i/teamlogos/soccer/500/7911.png",
+     "hs": 3,
+     "as": 2,
+     "status": "FT"
+    },
+    {
+     "date": "2026-08-29",
+     "home": "1. FC Union Berlin",
+     "hshort": "Union Berlin",
+     "hlogo": "https://a.espncdn.com/i/teamlogos/soccer/500/598.png",
+     "away": "Eintracht Frankfurt",
+     "ashort": "Frankfurt",
+     "alogo": "https://a.espncdn.com/i/teamlogos/soccer/500/125.png",
+     "hs": 3,
+     "as": 3,
+     "status": "FT"
+    },
+    {
+     "date": "2026-08-28",
+     "home": "Bayern Munich",
+     "hshort": "Bayern",
+     "hlogo": "https://a.espncdn.com/i/teamlogos/soccer/500/132.png",
+     "away": "VfB Stuttgart",
+     "ashort": "Stuttgart",
+     "alogo": "https://a.espncdn.com/i/teamlogos/soccer/500/134.png",
+     "hs": 5,
+     "as": 1,
+     "status": "FT"
+    }
+   ],
+   "fixtures": [
     {
      "date": "2026-08-29",
      "home": "Borussia Dortmund",
@@ -2027,7 +2065,7 @@
      "ashort": "Hamburg",
      "alogo": "https://a.espncdn.com/i/teamlogos/soccer/500/127.png",
      "time": "16:30",
-     "status": "Sat, August 29th at 12:30 PM EDT"
+     "status": "54'"
     },
     {
      "date": "2026-08-30",
@@ -2061,9 +2099,146 @@
      "alogo": "https://a.espncdn.com/i/teamlogos/soccer/500/122.png",
      "time": "18:30",
      "status": "Fri, September 4th at 2:30 PM EDT"
+    },
+    {
+     "date": "2026-09-05",
+     "home": "Bayer Leverkusen",
+     "hshort": "Leverkusen",
+     "hlogo": "https://a.espncdn.com/i/teamlogos/soccer/500/131.png",
+     "away": "1. FC Union Berlin",
+     "ashort": "Union Berlin",
+     "alogo": "https://a.espncdn.com/i/teamlogos/soccer/500/598.png",
+     "time": "13:30",
+     "status": "Sat, September 5th at 9:30 AM EDT"
+    },
+    {
+     "date": "2026-09-05",
+     "home": "Borussia Mönchengladbach",
+     "hshort": "Gladbach",
+     "hlogo": "https://a.espncdn.com/i/teamlogos/soccer/500/268.png",
+     "away": "SV Elversberg",
+     "ashort": "Elversberg",
+     "alogo": "https://a.espncdn.com/i/teamlogos/soccer/500/10388.png",
+     "time": "13:30",
+     "status": "Sat, September 5th at 9:30 AM EDT"
+    },
+    {
+     "date": "2026-09-05",
+     "home": "SC Paderborn 07",
+     "hshort": "Paderborn",
+     "hlogo": "https://a.espncdn.com/i/teamlogos/soccer/500/3307.png",
+     "away": "SC Freiburg",
+     "ashort": "Freiburg",
+     "alogo": "https://a.espncdn.com/i/teamlogos/soccer/500/126.png",
+     "time": "13:30",
+     "status": "Sat, September 5th at 9:30 AM EDT"
+    },
+    {
+     "date": "2026-09-05",
+     "home": "TSG Hoffenheim",
+     "hshort": "Hoffenheim",
+     "hlogo": "https://a.espncdn.com/i/teamlogos/soccer/500/7911.png",
+     "away": "Borussia Dortmund",
+     "ashort": "Dortmund",
+     "alogo": "https://a.espncdn.com/i/teamlogos/soccer/500/124.png",
+     "time": "13:30",
+     "status": "Sat, September 5th at 9:30 AM EDT"
+    },
+    {
+     "date": "2026-09-05",
+     "home": "Werder Bremen",
+     "hshort": "Bremen",
+     "hlogo": "https://a.espncdn.com/i/teamlogos/soccer/500/137.png",
+     "away": "RB Leipzig",
+     "ashort": "RB Leipzig",
+     "alogo": "https://a.espncdn.com/i/teamlogos/soccer/500/11420.png",
+     "time": "13:30",
+     "status": "Sat, September 5th at 9:30 AM EDT"
+    },
+    {
+     "date": "2026-09-05",
+     "home": "Schalke 04",
+     "hshort": "Schalke",
+     "hlogo": "https://a.espncdn.com/i/teamlogos/soccer/500/133.png",
+     "away": "Bayern Munich",
+     "ashort": "Bayern",
+     "alogo": "https://a.espncdn.com/i/teamlogos/soccer/500/132.png",
+     "time": "16:30",
+     "status": "Sat, September 5th at 12:30 PM EDT"
     }
    ],
-   "scorers": []
+   "scorers": [
+    {
+     "name": "Michael Olise",
+     "team": "MUN",
+     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/132.png",
+     "goals": 1,
+     "apps": 1
+    },
+    {
+     "name": "Josha Vagnoman",
+     "team": "VFB",
+     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/134.png",
+     "goals": 1,
+     "apps": 1
+    },
+    {
+     "name": "Luis Díaz",
+     "team": "MUN",
+     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/132.png",
+     "goals": 1,
+     "apps": 1
+    },
+    {
+     "name": "Dayot Upamecano",
+     "team": "MUN",
+     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/132.png",
+     "goals": 1,
+     "apps": 1
+    },
+    {
+     "name": "Aleksandar Pavlovic",
+     "team": "MUN",
+     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/132.png",
+     "goals": 1,
+     "apps": 1
+    },
+    {
+     "name": "Finn Jeltsch",
+     "team": "VFB",
+     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/134.png",
+     "goals": 0,
+     "apps": 1
+    },
+    {
+     "name": "Ramon Hendriks",
+     "team": "VFB",
+     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/134.png",
+     "goals": 0,
+     "apps": 1
+    },
+    {
+     "name": "Grischa Prömel",
+     "team": "VFB",
+     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/134.png",
+     "goals": 0,
+     "apps": 1
+    },
+    {
+     "name": "Maximilian Mittelstädt",
+     "team": "VFB",
+     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/134.png",
+     "goals": 0,
+     "apps": 1
+    },
+    {
+     "name": "Fabian Bredlow",
+     "team": "VFB",
+     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/134.png",
+     "goals": 0,
+     "apps": 1
+    }
+   ]
   },
   {
    "id": "champions-league",
@@ -2071,584 +2246,513 @@
    "flag": "🇪🇺",
    "teams": [
     {
-     "name": "Arsenal",
-     "short": "Arsenal",
-     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/359.png",
-     "p": 8,
-     "w": 8,
+     "name": "AEK Athens",
+     "short": "AEK Athens",
+     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/887.png",
+     "p": 0,
+     "w": 0,
      "d": 0,
      "l": 0,
-     "gf": 23,
-     "ga": 4,
+     "gf": 0,
+     "ga": 0,
      "gd": "0",
-     "pts": 24,
+     "pts": 0,
      "pos": 1
     },
     {
-     "name": "Bayern Munich",
-     "short": "Bayern",
-     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/132.png",
-     "p": 8,
-     "w": 7,
+     "name": "Arsenal",
+     "short": "Arsenal",
+     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/359.png",
+     "p": 0,
+     "w": 0,
      "d": 0,
-     "l": 1,
-     "gf": 22,
-     "ga": 8,
+     "l": 0,
+     "gf": 0,
+     "ga": 0,
      "gd": "0",
-     "pts": 21,
+     "pts": 0,
      "pos": 2
     },
     {
-     "name": "Liverpool",
-     "short": "Liverpool",
-     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/364.png",
-     "p": 8,
-     "w": 6,
+     "name": "AS Roma",
+     "short": "AS Roma",
+     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/104.png",
+     "p": 0,
+     "w": 0,
      "d": 0,
-     "l": 2,
-     "gf": 20,
-     "ga": 8,
+     "l": 0,
+     "gf": 0,
+     "ga": 0,
      "gd": "0",
-     "pts": 18,
+     "pts": 0,
      "pos": 3
     },
     {
-     "name": "Tottenham Hotspur",
-     "short": "Spurs",
-     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/367.png",
-     "p": 8,
-     "w": 5,
-     "d": 2,
-     "l": 1,
-     "gf": 17,
-     "ga": 7,
+     "name": "Aston Villa",
+     "short": "Aston Villa",
+     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/362.png",
+     "p": 0,
+     "w": 0,
+     "d": 0,
+     "l": 0,
+     "gf": 0,
+     "ga": 0,
      "gd": "0",
-     "pts": 17,
+     "pts": 0,
      "pos": 4
-    },
-    {
-     "name": "Barcelona",
-     "short": "Barcelona",
-     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/83.png",
-     "p": 8,
-     "w": 5,
-     "d": 1,
-     "l": 2,
-     "gf": 22,
-     "ga": 14,
-     "gd": "0",
-     "pts": 16,
-     "pos": 5
-    },
-    {
-     "name": "Chelsea",
-     "short": "Chelsea",
-     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/363.png",
-     "p": 8,
-     "w": 5,
-     "d": 1,
-     "l": 2,
-     "gf": 17,
-     "ga": 10,
-     "gd": "0",
-     "pts": 16,
-     "pos": 6
-    },
-    {
-     "name": "Sporting CP",
-     "short": "Sporting",
-     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2250.png",
-     "p": 8,
-     "w": 5,
-     "d": 1,
-     "l": 2,
-     "gf": 17,
-     "ga": 11,
-     "gd": "0",
-     "pts": 16,
-     "pos": 7
-    },
-    {
-     "name": "Manchester City",
-     "short": "Man City",
-     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/382.png",
-     "p": 8,
-     "w": 5,
-     "d": 1,
-     "l": 2,
-     "gf": 15,
-     "ga": 9,
-     "gd": "0",
-     "pts": 16,
-     "pos": 8
-    },
-    {
-     "name": "Real Madrid",
-     "short": "Real Madrid",
-     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/86.png",
-     "p": 8,
-     "w": 5,
-     "d": 0,
-     "l": 3,
-     "gf": 21,
-     "ga": 12,
-     "gd": "0",
-     "pts": 15,
-     "pos": 9
-    },
-    {
-     "name": "Internazionale",
-     "short": "Inter Milan",
-     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/110.png",
-     "p": 8,
-     "w": 5,
-     "d": 0,
-     "l": 3,
-     "gf": 15,
-     "ga": 7,
-     "gd": "0",
-     "pts": 15,
-     "pos": 10
-    },
-    {
-     "name": "Paris Saint-Germain",
-     "short": "PSG",
-     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/160.png",
-     "p": 8,
-     "w": 4,
-     "d": 2,
-     "l": 2,
-     "gf": 21,
-     "ga": 11,
-     "gd": "0",
-     "pts": 14,
-     "pos": 11
-    },
-    {
-     "name": "Newcastle United",
-     "short": "Newcastle",
-     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/361.png",
-     "p": 8,
-     "w": 4,
-     "d": 2,
-     "l": 2,
-     "gf": 17,
-     "ga": 7,
-     "gd": "0",
-     "pts": 14,
-     "pos": 12
     },
     {
      "name": "Atlético Madrid",
      "short": "Atlético",
      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/1068.png",
-     "p": 8,
-     "w": 4,
-     "d": 1,
-     "l": 3,
-     "gf": 17,
-     "ga": 15,
+     "p": 0,
+     "w": 0,
+     "d": 0,
+     "l": 0,
+     "gf": 0,
+     "ga": 0,
      "gd": "0",
-     "pts": 13,
-     "pos": 13
+     "pts": 0,
+     "pos": 5
     },
     {
-     "name": "Juventus",
-     "short": "Juventus",
-     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/111.png",
-     "p": 8,
-     "w": 3,
-     "d": 4,
-     "l": 1,
-     "gf": 14,
-     "ga": 10,
+     "name": "Barcelona",
+     "short": "Barcelona",
+     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/83.png",
+     "p": 0,
+     "w": 0,
+     "d": 0,
+     "l": 0,
+     "gf": 0,
+     "ga": 0,
      "gd": "0",
-     "pts": 13,
-     "pos": 14
+     "pts": 0,
+     "pos": 6
     },
     {
-     "name": "Atalanta",
-     "short": "Atalanta",
-     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/105.png",
-     "p": 8,
-     "w": 4,
-     "d": 1,
-     "l": 3,
-     "gf": 10,
-     "ga": 10,
+     "name": "Bayern Munich",
+     "short": "Bayern",
+     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/132.png",
+     "p": 0,
+     "w": 0,
+     "d": 0,
+     "l": 0,
+     "gf": 0,
+     "ga": 0,
      "gd": "0",
-     "pts": 13,
-     "pos": 15
-    },
-    {
-     "name": "Bayer Leverkusen",
-     "short": "Leverkusen",
-     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/131.png",
-     "p": 8,
-     "w": 3,
-     "d": 3,
-     "l": 2,
-     "gf": 13,
-     "ga": 14,
-     "gd": "0",
-     "pts": 12,
-     "pos": 16
-    },
-    {
-     "name": "Borussia Dortmund",
-     "short": "Dortmund",
-     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/124.png",
-     "p": 8,
-     "w": 3,
-     "d": 2,
-     "l": 3,
-     "gf": 19,
-     "ga": 17,
-     "gd": "0",
-     "pts": 11,
-     "pos": 17
-    },
-    {
-     "name": "Olympiacos",
-     "short": "Olympiacos",
-     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/435.png",
-     "p": 8,
-     "w": 3,
-     "d": 2,
-     "l": 3,
-     "gf": 10,
-     "ga": 14,
-     "gd": "0",
-     "pts": 11,
-     "pos": 18
-    },
-    {
-     "name": "Club Brugge",
-     "short": "Club Brugge",
-     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/570.png",
-     "p": 8,
-     "w": 3,
-     "d": 1,
-     "l": 4,
-     "gf": 15,
-     "ga": 17,
-     "gd": "0",
-     "pts": 10,
-     "pos": 19
-    },
-    {
-     "name": "FK Qarabag",
-     "short": "FK Qarabag",
-     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/10414.png",
-     "p": 8,
-     "w": 3,
-     "d": 1,
-     "l": 4,
-     "gf": 13,
-     "ga": 21,
-     "gd": "0",
-     "pts": 10,
-     "pos": 20
-    },
-    {
-     "name": "Galatasaray",
-     "short": "Galatasaray",
-     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/432.png",
-     "p": 8,
-     "w": 3,
-     "d": 1,
-     "l": 4,
-     "gf": 9,
-     "ga": 11,
-     "gd": "0",
-     "pts": 10,
-     "pos": 21
-    },
-    {
-     "name": "AS Monaco",
-     "short": "Monaco",
-     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/174.png",
-     "p": 8,
-     "w": 2,
-     "d": 4,
-     "l": 2,
-     "gf": 8,
-     "ga": 14,
-     "gd": "0",
-     "pts": 10,
-     "pos": 22
+     "pts": 0,
+     "pos": 7
     },
     {
      "name": "Bodo/Glimt",
      "short": "Bodo/Glimt",
      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2980.png",
-     "p": 8,
-     "w": 2,
-     "d": 3,
-     "l": 3,
-     "gf": 14,
-     "ga": 15,
-     "gd": "0",
-     "pts": 9,
-     "pos": 23
-    },
-    {
-     "name": "Marseille",
-     "short": "Marseille",
-     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/176.png",
-     "p": 8,
-     "w": 3,
+     "p": 0,
+     "w": 0,
      "d": 0,
-     "l": 5,
-     "gf": 11,
-     "ga": 14,
+     "l": 0,
+     "gf": 0,
+     "ga": 0,
      "gd": "0",
-     "pts": 9,
-     "pos": 24
+     "pts": 0,
+     "pos": 8
     },
     {
-     "name": "Benfica",
-     "short": "Benfica",
-     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/1929.png",
-     "p": 8,
-     "w": 3,
+     "name": "Borussia Dortmund",
+     "short": "Dortmund",
+     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/124.png",
+     "p": 0,
+     "w": 0,
      "d": 0,
-     "l": 5,
-     "gf": 10,
-     "ga": 12,
+     "l": 0,
+     "gf": 0,
+     "ga": 0,
      "gd": "0",
-     "pts": 9,
-     "pos": 25
+     "pts": 0,
+     "pos": 9
     },
     {
-     "name": "Pafos",
-     "short": "Pafos",
-     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/22281.png",
-     "p": 8,
-     "w": 2,
-     "d": 3,
-     "l": 3,
-     "gf": 8,
-     "ga": 11,
-     "gd": "0",
-     "pts": 9,
-     "pos": 26
-    },
-    {
-     "name": "Union St.-Gilloise",
-     "short": "Union SG",
-     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/5807.png",
-     "p": 8,
-     "w": 3,
+     "name": "Club Brugge",
+     "short": "Club Brugge",
+     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/570.png",
+     "p": 0,
+     "w": 0,
      "d": 0,
-     "l": 5,
-     "gf": 8,
-     "ga": 17,
+     "l": 0,
+     "gf": 0,
+     "ga": 0,
      "gd": "0",
-     "pts": 9,
-     "pos": 27
+     "pts": 0,
+     "pos": 10
     },
     {
-     "name": "PSV Eindhoven",
-     "short": "PSV",
-     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/148.png",
-     "p": 8,
-     "w": 2,
-     "d": 2,
-     "l": 4,
-     "gf": 16,
-     "ga": 16,
+     "name": "Como",
+     "short": "Como",
+     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2572.png",
+     "p": 0,
+     "w": 0,
+     "d": 0,
+     "l": 0,
+     "gf": 0,
+     "ga": 0,
      "gd": "0",
-     "pts": 8,
-     "pos": 28
+     "pts": 0,
+     "pos": 11
     },
     {
-     "name": "F.C. København",
-     "short": "København",
-     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/909.png",
-     "p": 8,
-     "w": 2,
-     "d": 2,
-     "l": 4,
-     "gf": 12,
-     "ga": 21,
+     "name": "FC Porto",
+     "short": "FC Porto",
+     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/437.png",
+     "p": 0,
+     "w": 0,
+     "d": 0,
+     "l": 0,
+     "gf": 0,
+     "ga": 0,
      "gd": "0",
-     "pts": 8,
-     "pos": 29
+     "pts": 0,
+     "pos": 12
     },
     {
-     "name": "Athletic Club",
-     "short": "Athletic",
-     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/93.png",
-     "p": 8,
-     "w": 2,
-     "d": 2,
-     "l": 4,
-     "gf": 9,
-     "ga": 14,
+     "name": "Fenerbahce",
+     "short": "Fenerbahce",
+     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/436.png",
+     "p": 0,
+     "w": 0,
+     "d": 0,
+     "l": 0,
+     "gf": 0,
+     "ga": 0,
      "gd": "0",
-     "pts": 8,
-     "pos": 30
+     "pts": 0,
+     "pos": 13
+    },
+    {
+     "name": "Feyenoord Rotterdam",
+     "short": "Feyenoord",
+     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/142.png",
+     "p": 0,
+     "w": 0,
+     "d": 0,
+     "l": 0,
+     "gf": 0,
+     "ga": 0,
+     "gd": "0",
+     "pts": 0,
+     "pos": 14
+    },
+    {
+     "name": "Galatasaray",
+     "short": "Galatasaray",
+     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/432.png",
+     "p": 0,
+     "w": 0,
+     "d": 0,
+     "l": 0,
+     "gf": 0,
+     "ga": 0,
+     "gd": "0",
+     "pts": 0,
+     "pos": 15
+    },
+    {
+     "name": "Internazionale",
+     "short": "Inter Milan",
+     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/110.png",
+     "p": 0,
+     "w": 0,
+     "d": 0,
+     "l": 0,
+     "gf": 0,
+     "ga": 0,
+     "gd": "0",
+     "pts": 0,
+     "pos": 16
+    },
+    {
+     "name": "LASK Linz",
+     "short": "LASK Linz",
+     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/4411.png",
+     "p": 0,
+     "w": 0,
+     "d": 0,
+     "l": 0,
+     "gf": 0,
+     "ga": 0,
+     "gd": "0",
+     "pts": 0,
+     "pos": 17
+    },
+    {
+     "name": "Lens",
+     "short": "Lens",
+     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/175.png",
+     "p": 0,
+     "w": 0,
+     "d": 0,
+     "l": 0,
+     "gf": 0,
+     "ga": 0,
+     "gd": "0",
+     "pts": 0,
+     "pos": 18
+    },
+    {
+     "name": "Lille",
+     "short": "Lille",
+     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/166.png",
+     "p": 0,
+     "w": 0,
+     "d": 0,
+     "l": 0,
+     "gf": 0,
+     "ga": 0,
+     "gd": "0",
+     "pts": 0,
+     "pos": 19
+    },
+    {
+     "name": "Liverpool",
+     "short": "Liverpool",
+     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/364.png",
+     "p": 0,
+     "w": 0,
+     "d": 0,
+     "l": 0,
+     "gf": 0,
+     "ga": 0,
+     "gd": "0",
+     "pts": 0,
+     "pos": 20
+    },
+    {
+     "name": "Manchester City",
+     "short": "Man City",
+     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/382.png",
+     "p": 0,
+     "w": 0,
+     "d": 0,
+     "l": 0,
+     "gf": 0,
+     "ga": 0,
+     "gd": "0",
+     "pts": 0,
+     "pos": 21
+    },
+    {
+     "name": "Manchester United",
+     "short": "Man United",
+     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/360.png",
+     "p": 0,
+     "w": 0,
+     "d": 0,
+     "l": 0,
+     "gf": 0,
+     "ga": 0,
+     "gd": "0",
+     "pts": 0,
+     "pos": 22
     },
     {
      "name": "Napoli",
      "short": "Napoli",
      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/114.png",
-     "p": 8,
-     "w": 2,
-     "d": 2,
-     "l": 4,
-     "gf": 9,
-     "ga": 15,
-     "gd": "0",
-     "pts": 8,
-     "pos": 31
-    },
-    {
-     "name": "Ajax Amsterdam",
-     "short": "Ajax",
-     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/139.png",
-     "p": 8,
-     "w": 2,
+     "p": 0,
+     "w": 0,
      "d": 0,
-     "l": 6,
-     "gf": 8,
-     "ga": 21,
+     "l": 0,
+     "gf": 0,
+     "ga": 0,
      "gd": "0",
-     "pts": 6,
-     "pos": 32
+     "pts": 0,
+     "pos": 23
     },
     {
-     "name": "Eintracht Frankfurt",
-     "short": "Frankfurt",
-     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/125.png",
-     "p": 8,
-     "w": 1,
-     "d": 1,
-     "l": 6,
-     "gf": 10,
-     "ga": 21,
+     "name": "Paris Saint-Germain",
+     "short": "PSG",
+     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/160.png",
+     "p": 0,
+     "w": 0,
+     "d": 0,
+     "l": 0,
+     "gf": 0,
+     "ga": 0,
      "gd": "0",
-     "pts": 4,
-     "pos": 33
+     "pts": 0,
+     "pos": 24
+    },
+    {
+     "name": "PSV Eindhoven",
+     "short": "PSV",
+     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/148.png",
+     "p": 0,
+     "w": 0,
+     "d": 0,
+     "l": 0,
+     "gf": 0,
+     "ga": 0,
+     "gd": "0",
+     "pts": 0,
+     "pos": 25
+    },
+    {
+     "name": "RB Leipzig",
+     "short": "RB Leipzig",
+     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/11420.png",
+     "p": 0,
+     "w": 0,
+     "d": 0,
+     "l": 0,
+     "gf": 0,
+     "ga": 0,
+     "gd": "0",
+     "pts": 0,
+     "pos": 26
+    },
+    {
+     "name": "Real Betis",
+     "short": "Betis",
+     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/244.png",
+     "p": 0,
+     "w": 0,
+     "d": 0,
+     "l": 0,
+     "gf": 0,
+     "ga": 0,
+     "gd": "0",
+     "pts": 0,
+     "pos": 27
+    },
+    {
+     "name": "Real Madrid",
+     "short": "Real Madrid",
+     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/86.png",
+     "p": 0,
+     "w": 0,
+     "d": 0,
+     "l": 0,
+     "gf": 0,
+     "ga": 0,
+     "gd": "0",
+     "pts": 0,
+     "pos": 28
+    },
+    {
+     "name": "Sabah FK",
+     "short": "Sabah",
+     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/21922.png",
+     "p": 0,
+     "w": 0,
+     "d": 0,
+     "l": 0,
+     "gf": 0,
+     "ga": 0,
+     "gd": "0",
+     "pts": 0,
+     "pos": 29
+    },
+    {
+     "name": "Shakhtar Donetsk",
+     "short": "Shakhtar",
+     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/493.png",
+     "p": 0,
+     "w": 0,
+     "d": 0,
+     "l": 0,
+     "gf": 0,
+     "ga": 0,
+     "gd": "0",
+     "pts": 0,
+     "pos": 30
     },
     {
      "name": "Slavia Prague",
      "short": "Slavia Prague",
      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/494.png",
-     "p": 8,
+     "p": 0,
      "w": 0,
-     "d": 3,
-     "l": 5,
-     "gf": 5,
-     "ga": 19,
+     "d": 0,
+     "l": 0,
+     "gf": 0,
+     "ga": 0,
      "gd": "0",
-     "pts": 3,
+     "pts": 0,
+     "pos": 31
+    },
+    {
+     "name": "Slovan Bratislava",
+     "short": "S Bratislava",
+     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/521.png",
+     "p": 0,
+     "w": 0,
+     "d": 0,
+     "l": 0,
+     "gf": 0,
+     "ga": 0,
+     "gd": "0",
+     "pts": 0,
+     "pos": 32
+    },
+    {
+     "name": "Sporting CP",
+     "short": "Sporting",
+     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2250.png",
+     "p": 0,
+     "w": 0,
+     "d": 0,
+     "l": 0,
+     "gf": 0,
+     "ga": 0,
+     "gd": "0",
+     "pts": 0,
+     "pos": 33
+    },
+    {
+     "name": "VfB Stuttgart",
+     "short": "Stuttgart",
+     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/134.png",
+     "p": 0,
+     "w": 0,
+     "d": 0,
+     "l": 0,
+     "gf": 0,
+     "ga": 0,
+     "gd": "0",
+     "pts": 0,
      "pos": 34
     },
     {
-     "name": "Kairat Almaty",
-     "short": "Kairat Almaty",
-     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/2528.png",
-     "p": 8,
+     "name": "Viking FK",
+     "short": "Viking FK",
+     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/510.png",
+     "p": 0,
      "w": 0,
-     "d": 1,
-     "l": 7,
-     "gf": 7,
-     "ga": 22,
+     "d": 0,
+     "l": 0,
+     "gf": 0,
+     "ga": 0,
      "gd": "0",
-     "pts": 1,
+     "pts": 0,
      "pos": 35
     },
     {
      "name": "Villarreal",
      "short": "Villarreal",
      "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/102.png",
-     "p": 8,
+     "p": 0,
      "w": 0,
-     "d": 1,
-     "l": 7,
-     "gf": 5,
-     "ga": 18,
+     "d": 0,
+     "l": 0,
+     "gf": 0,
+     "ga": 0,
      "gd": "0",
-     "pts": 1,
+     "pts": 0,
      "pos": 36
     }
    ],
    "scores": [],
    "fixtures": [],
-   "scorers": [
-    {
-     "name": "Kylian Mbappé",
-     "team": "RMA",
-     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/86.png",
-     "goals": 15,
-     "apps": 11
-    },
-    {
-     "name": "Harry Kane",
-     "team": "MUN",
-     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/132.png",
-     "goals": 14,
-     "apps": 13
-    },
-    {
-     "name": "Khvicha Kvaratskhelia",
-     "team": "PSG",
-     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/160.png",
-     "goals": 10,
-     "apps": 16
-    },
-    {
-     "name": "Julián Álvarez",
-     "team": "ATM",
-     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/1068.png",
-     "goals": 10,
-     "apps": 15
-    },
-    {
-     "name": "Anthony Gordon",
-     "team": "NEW",
-     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/361.png",
-     "goals": 10,
-     "apps": 12
-    },
-    {
-     "name": "Ousmane Dembélé",
-     "team": "PSG",
-     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/160.png",
-     "goals": 8,
-     "apps": 13
-    },
-    {
-     "name": "Erling Haaland",
-     "team": "MNC",
-     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/382.png",
-     "goals": 8,
-     "apps": 10
-    },
-    {
-     "name": "Luis Díaz",
-     "team": "MUN",
-     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/132.png",
-     "goals": 7,
-     "apps": 12
-    },
-    {
-     "name": "Victor Osimhen",
-     "team": "GAL",
-     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/432.png",
-     "goals": 7,
-     "apps": 10
-    },
-    {
-     "name": "Vitinha",
-     "team": "PSG",
-     "logo": "https://a.espncdn.com/i/teamlogos/soccer/500/160.png",
-     "goals": 6,
-     "apps": 17
-    }
-   ]
+   "scorers": []
   }
  ]
 }
