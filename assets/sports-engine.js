@@ -291,6 +291,9 @@
   }
 
   var DATA = null;
+  var OFFICIAL = null;
+  var BACKEND = "https://bryme-backend.onrender.com";
+
   function load() {
     if (DATA) return DATA;
     DATA = fetch("/content/sports-feed.json").then(function (r) { return r.json(); }).then(function (fd) {
@@ -313,16 +316,168 @@
     return DATA;
   }
 
+  function fetchJson(url, ms) {
+    var opts = { cache: "no-cache", headers: { accept: "application/json" } };
+    try { if (ms && window.AbortSignal && AbortSignal.timeout) opts.signal = AbortSignal.timeout(ms); } catch (e) {}
+    return fetch(url, opts).then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; });
+  }
+
+  function loadOfficial() {
+    if (OFFICIAL) return Promise.resolve(OFFICIAL);
+    return Promise.all([
+      fetchJson("/content/competitions.json", 8000),
+      fetchJson(BACKEND + "/api/sports/competitions", 2500)
+    ]).then(function (pair) {
+      var file = pair[0], api = pair[1];
+      var pick = null;
+      if (file && api && file.competitions && api.competitions) {
+        var tf = Date.parse(file.builtAt || 0) || 0;
+        var ta = Date.parse(api.builtAt || 0) || 0;
+        pick = ta >= tf ? api : file;
+      } else {
+        pick = (api && api.competitions) ? api : file;
+      }
+      if (pick && pick.competitions && pick.competitions.length) OFFICIAL = pick;
+      return OFFICIAL;
+    });
+  }
+
+  function findComp(official, id) {
+    if (!official || !official.competitions) return null;
+    for (var i = 0; i < official.competitions.length; i++) {
+      if (official.competitions[i].id === id) return official.competitions[i];
+    }
+    return null;
+  }
+
+  function applyOfficial(data, official) {
+    if (!data || !official) return;
+    (official.competitions || []).forEach(function (c) {
+      (c.scores || []).forEach(function (s) {
+        data.leagues.forEach(function (L) {
+          if (c.id !== "champions-league" && L.lg !== c.id) return;
+          L.ms.forEach(function (m) {
+            if (norm(m.homeName) !== norm(s.home) || norm(m.awayName) !== norm(s.away)) return;
+            var k = L.lg + "/" + m.id + "-vs-" + m.away;
+            data.results[k] = {
+              homeScore: s.hs, awayScore: s.as, playedOn: s.date,
+              source: { name: "ESPN", url: "https://www.espn.com/soccer/" }
+            };
+          });
+        });
+      });
+    });
+  }
+
+  function logoImg(url, sz) {
+    if (!url) return "";
+    return '<img src="' + esc(url) + '" alt="" width="' + (sz || 18) + '" height="' + (sz || 18) + '" loading="lazy" decoding="async" onerror="this.style.display=\'none\'">';
+  }
+
+  function renderOfficialTable(lg, comp) {
+    var z = ZONES[lg] || { cl: 4, el: 6, rel: 3 };
+    var n = (comp.teams || []).length || 20;
+    var rows = (comp.teams || []).map(function (x) {
+      var cls = x.pos <= z.cl ? " class=\"zcl\"" : x.pos <= z.el ? " class=\"zeu\"" : x.pos > n - (z.rel || 3) ? " class=\"zre\"" : "";
+      var tid = TEAMIDX[norm(x.name)];
+      var badge = tid ? crestImg(tid.lg, tid.id, 18) : logoImg(x.logo, 18);
+      return "<tr" + cls + "><td>" + x.pos + '</td><td class="sp-td-team">' + badge + "<b>" + esc(x.name) + "</b></td><td></td><td>" + x.p + "</td><td>" + x.w +
+        "</td><td>" + x.d + "</td><td>" + x.l + "</td><td>" + x.gf + ":" + x.ga + "</td><td>" +
+        esc(x.gd) + "</td><td><b>" + x.pts + "</b></td></tr>";
+    }).join("");
+    var when = officialStamp(OFFICIAL);
+    return '<div class="sp-table-wrap"><table class="sp-table"><thead><tr><th>#</th><th>Team</th><th>Form</th><th>P</th><th>W</th><th>D</th><th>L</th><th>Goals</th><th>GD</th><th>Pts</th></tr></thead><tbody>' + rows + '</tbody></table></div><p class="sp-zone-legend"><i style="background:#2f6b3a"></i>Champions League&nbsp;&nbsp;<i style="background:#7a5b1e"></i>Europa&nbsp;&nbsp;<i style="background:#8e2020"></i>Relegation</p><p class="sp-result-meta">Live table from the BRYME scores desk' + (when ? " · updated " + when : "") + ".</p>";
+  }
+
+  function renderOfficialScorers(list, limit) {
+    var rows = (list || []).slice(0, limit || 5).map(function (x, i) {
+      return "<tr><td>" + (i + 1) + "</td><td><b>" + esc(x.name) + "</b></td><td class=\"sp-td-team\">" + logoImg(x.logo, 16) + esc(x.team || "") + "</td><td><b>" + x.goals + "</b></td></tr>";
+    }).join("");
+    if (!rows) return "";
+    return '<table class="sp-table"><tbody>' + rows + "</tbody></table>";
+  }
+
+  function renderOfficialTicker(official, lgFilter) {
+    var chips = [];
+    (official.competitions || []).forEach(function (c) {
+      if (lgFilter && c.id !== lgFilter) return;
+      (c.scores || []).forEach(function (s) {
+        chips.push('<span class="tk">' + logoImg(s.hlogo, 16) + "<b>" + esc(s.hshort) + " " + s.hs + "\u2013" + s.as + " " + esc(s.ashort) + "</b><i>FT</i>" + logoImg(s.alogo, 16) + "</span>");
+      });
+    });
+    if (!chips.length) return "";
+    var half = chips.join("");
+    return '<div class="tk-track">' + half + half + "</div>";
+  }
+
+  function renderHomeScores(official) {
+    var cards = [];
+    (official.competitions || []).forEach(function (c) {
+      (c.scores || []).slice(0, 6).forEach(function (s) {
+        var href = LEAGUES[c.id] ? "/sports/" + c.id + "/matches/" : "/sports/";
+        cards.push('<a class="mp-card hl-score" href="' + href + '"><span class="mp-when">FT · ' + esc(c.name) + " · " + esc(s.date) + "</span><b>" + esc(s.home) + " " + s.hs + "\u2013" + s.as + " " + esc(s.away) + "</b><span>Latest from the scores desk</span></a>");
+      });
+    });
+    if (!cards.length) return "";
+    return '<div class="mp-sub"><div class="mp-sub-head"><span class="mp-sub-dot"></span>Live scores</div><div class="mp-rail">' + cards.join("") + "</div></div>";
+  }
+
+  function officialStamp(d) {
+    if (!d || !d.builtAt) return "";
+    var t = new Date(d.builtAt);
+    if (isNaN(t.getTime())) return "";
+    return t.toLocaleDateString("en-GB", { day: "numeric", month: "short" });
+  }
+
   function boot() {
     var nodes = document.querySelectorAll("[data-sp-engine]");
     if (!nodes.length) return;
-    load().then(function (data) {
+    Promise.all([load(), loadOfficial()]).then(function (pair) {
+      var data = pair[0];
+      var official = pair[1];
+      if (!data) data = { results: {}, leagues: [] };
+      if (official) applyOfficial(data, official);
       var today = todayStr();
       var liveLeagues = {};
       nodes.forEach(function (el) {
+        if (el.hasAttribute("data-sp-official-scores")) {
+          if (official) {
+            el.innerHTML = renderHomeScores(official);
+            el.setAttribute("data-sp-live", "1");
+          }
+          return;
+        }
         var mini = el.getAttribute("data-sp-mini");
         if (mini) {
           var mlg = el.getAttribute("data-sp-league");
+          if (mini === "scorers") {
+            var olist = [];
+            if (official) {
+              (official.competitions || []).forEach(function (c) {
+                if (mlg && c.id !== mlg) return;
+                (c.scorers || []).forEach(function (s) { olist.push(s); });
+              });
+              olist.sort(function (a, b) { return (b.goals || 0) - (a.goals || 0); });
+            }
+            var scored = olist.length ? renderOfficialScorers(olist, 5) : renderMini(mini, mlg, data);
+            if (scored) { el.innerHTML = scored; el.setAttribute("data-sp-live", "1"); }
+            return;
+          }
+          if (mini === "table" && mlg && official) {
+            var ocMini = findComp(official, mlg);
+            if (ocMini && ocMini.teams && ocMini.teams.length) {
+              var z = ZONES[mlg] || { cl: 4, el: 6 };
+              var rowsM = ocMini.teams.slice(0, 5).map(function (x) {
+                var cls = x.pos <= z.cl ? "zcl" : x.pos <= z.el ? "zeu" : "";
+                var tid = TEAMIDX[norm(x.name)];
+                var badge = tid ? crestImg(tid.lg, tid.id, 16) : logoImg(x.logo, 16);
+                return '<tr class="' + cls + '"><td>' + x.pos + '</td><td class="sp-td-team">' + badge + "<b>" + esc(x.name) + "</b></td><td><b>" + x.pts + "</b></td></tr>";
+              }).join("");
+              el.innerHTML = '<table class="sp-table"><tbody>' + rowsM + "</tbody></table>";
+              el.setAttribute("data-sp-live", "1");
+              return;
+            }
+          }
           if (mini === "reports" && !mlg) {
             el.innerHTML = renderMiniReportsAll(data);
             el.setAttribute("data-sp-live", "1");
@@ -333,7 +488,8 @@
           return;
         }
         if (el.hasAttribute("data-sp-ticker")) {
-          el.innerHTML = renderTicker(data, el.getAttribute("data-sp-league"));
+          var tick = official ? renderOfficialTicker(official, el.getAttribute("data-sp-league")) : "";
+          el.innerHTML = tick || renderTicker(data, el.getAttribute("data-sp-league"));
           el.setAttribute("data-sp-live", "1");
           return;
         }
@@ -342,11 +498,23 @@
         var lgScorers = el.getAttribute("data-sp-scorers");
         var teamAttr = el.getAttribute("data-sp-team");
         if (lgTable && LEAGUES[lgTable]) {
+          var oc = official ? findComp(official, lgTable) : null;
+          if (oc && oc.teams && oc.teams.length) {
+            el.innerHTML = renderOfficialTable(lgTable, oc);
+            el.setAttribute("data-sp-live", "1");
+            return;
+          }
           var LT = data.leagues.find(function (x) { return x.lg === lgTable; });
           if (LT) { el.innerHTML = renderTable(lgTable, LT.ms, data.results); el.setAttribute("data-sp-live", "1"); }
           return;
         }
         if (lgScorers && LEAGUES[lgScorers]) {
+          var ocS = official ? findComp(official, lgScorers) : null;
+          if (ocS && ocS.scorers && ocS.scorers.length) {
+            el.innerHTML = '<div class="sp-table-wrap">' + renderOfficialScorers(ocS.scorers, 20) + '</div><p class="sp-result-meta">Live list from the scores desk.</p>';
+            el.setAttribute("data-sp-live", "1");
+            return;
+          }
           var LS = data.leagues.find(function (x) { return x.lg === lgScorers; });
           if (LS) { el.innerHTML = renderScorers(lgScorers, LS.ms, data.results); el.setAttribute("data-sp-live", "1"); }
           return;

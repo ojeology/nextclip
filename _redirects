@@ -1,3 +1,6 @@
+# IMPORTANT — Render Static Sites ignore this file.
+# Redirects only work if you paste them in Render Dashboard → Static Site → Redirects/Rewrites.
+# Also: Render will NOT redirect a path that still has a real file (e.g. /movie/breaking-bad/).
 # Type-mismatch title URLs → canonical type. Do not delete these paths.
 /movie/a-silent-voice/  /anime/a-silent-voice/  301
 /movie/agatha/  /series/agatha/  301

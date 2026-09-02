@@ -16,6 +16,7 @@ const COMPETITIONS = [
   { id: "la-liga",          code: "esp.1",          name: "La Liga",          flag: "🇪🇸" },
   { id: "serie-a",          code: "ita.1",          name: "Serie A",          flag: "🇮🇹" },
   { id: "bundesliga",       code: "ger.1",          name: "Bundesliga",       flag: "🇩🇪" },
+  { id: "ligue-1",          code: "fra.1",          name: "Ligue 1",          flag: "🇫🇷" },
   { id: "champions-league", code: "uefa.champions", name: "Champions League", flag: "🇪🇺" }
 ];
 

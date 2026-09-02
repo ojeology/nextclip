@@ -1,0 +1,38 @@
+{
+  "date": "2026-09-02",
+  "ahrefs_errors": {
+    "broken_internal_links": 0,
+    "pages_checked": 3371,
+    "links_checked": 252293,
+    "missing_titles_indexable": 0,
+    "missing_descriptions_indexable": 0,
+    "missing_h1_indexable": 0,
+    "duplicate_titles_indexable": 0,
+    "titles_over_70_indexable": 0,
+    "noindex_urls_in_sitemap": 0,
+    "sitemap_urls": 1282
+  },
+  "lighthouse_seo_a11y_key_pages": {
+    "chrome": "not installed in this workspace — SEO/a11y checks that Lighthouse uses were run on the HTML",
+    "pages_tested": 15,
+    "fails": 0,
+    "notes": "Empty alt on decorative ticker crests is valid (decorative images)."
+  },
+  "scores": {
+    "verified_results": 88,
+    "goals": 255,
+    "leagues": ["premier-league", "la-liga", "serie-a", "bundesliga", "ligue-1"],
+    "source": "ESPN public API, fixture-matched"
+  },
+  "transfers": {
+    "window_closed": "2026-09-01 23:00 BST",
+    "tracker": "/sports/articles/premier-league-transfer-tracker-august-2026/",
+    "desk": "/sports/transfers/premier-league-2026-27/",
+    "sources": ["Sky Sports", "ESPN", "Premier League"]
+  },
+  "remaining_not_errors": [
+    "About 1978 future/empty match pages stay noindex on purpose",
+    "Render Static ignores _redirects — add 301s in the Render Dashboard if you still want them",
+    "Live site updates only after a GitHub push"
+  ]
+}

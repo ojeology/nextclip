@@ -25,7 +25,14 @@ const ALIASES = {
   "angers sco": "angers", "lille osc": "lille", "lille losc": "lille", "rc strasbourg": "strasbourg",
   "strasbourg alsace": "strasbourg", "le mans fc": "le mans", "aj auxerre": "auxerre",
   "lyon": "olympique lyonnais", "estac troyes": "troyes", "rennes": "stade rennais",
-  "hull": "hull city", "coventry": "coventry city", "ac monza": "monza"
+  "hull": "hull city", "coventry": "coventry city", "ac monza": "monza",
+  "1 fc union berlin": "union berlin", "fc union berlin": "union berlin",
+  "fc cologne": "1 fc koln", "cologne": "1 fc koln", "1 fc koln": "1 fc koln",
+  "hamburg sv": "hamburger sv", "hamburger sv": "hamburger sv",
+  "sc paderborn 07": "paderborn", "paderborn 07": "paderborn", "sc paderborn": "paderborn",
+  "mainz": "mainz 05", "fsv mainz 05": "mainz 05", "fsv mainz": "mainz 05",
+  "tsg 1899 hoffenheim": "tsg hoffenheim", "1899 hoffenheim": "tsg hoffenheim",
+  "borussia dortmund": "borussia dortmund"
 };
 const DENY = new Set(["ligue-1/rennes-vs-psg"]);
 const STRIP = /^(as|ac|sc|rc|ogc|aj|fc|usc|ss|calcio|club|deportivo de la|the)\s+/i;

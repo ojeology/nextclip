@@ -44,7 +44,11 @@
   /* ---------- API ---------- */
   var API = (function () {
     var q = new URLSearchParams(location.search).get("api");
-    return (q || window.BRYME_API_BASE || "").replace(/\/+$/, "");
+    if (q) return q.replace(/\/+$/, "");
+    if (window.BRYME_API_BASE) return String(window.BRYME_API_BASE).replace(/\/+$/, "");
+    /* Public website is a static host — scores/posts APIs live on the web service. */
+    if (location.hostname === "bryme.onrender.com") return "https://bryme-backend.onrender.com";
+    return "";
   })();
   function apiGet(path) {
     return fetch(API + path, { headers: { accept: "application/json" } }).then(function (r) {

@@ -1,0 +1,107 @@
+{
+  "fails": 0,
+  "pages": [
+    {
+      "url": "/",
+      "exists": true,
+      "fails": [],
+      "warns": []
+    },
+    {
+      "url": "/sports/",
+      "exists": true,
+      "fails": [],
+      "warns": [
+        "image-alt-empty:19"
+      ]
+    },
+    {
+      "url": "/movies/",
+      "exists": true,
+      "fails": [],
+      "warns": []
+    },
+    {
+      "url": "/entertainment/",
+      "exists": true,
+      "fails": [],
+      "warns": []
+    },
+    {
+      "url": "/make-money/",
+      "exists": true,
+      "fails": [],
+      "warns": []
+    },
+    {
+      "url": "/tech/",
+      "exists": true,
+      "fails": [],
+      "warns": []
+    },
+    {
+      "url": "/sports/transfers/",
+      "exists": true,
+      "fails": [],
+      "warns": [
+        "image-alt-empty:8"
+      ]
+    },
+    {
+      "url": "/sports/premier-league/",
+      "exists": true,
+      "fails": [],
+      "warns": [
+        "image-alt-empty:8"
+      ]
+    },
+    {
+      "url": "/sports/premier-league/matches/chelsea-vs-brighton/",
+      "exists": true,
+      "fails": [],
+      "warns": [
+        "image-alt-empty:8"
+      ]
+    },
+    {
+      "url": "/sports/articles/premier-league-transfer-tracker-august-2026/",
+      "exists": true,
+      "fails": [],
+      "warns": [
+        "image-alt-empty:8"
+      ]
+    },
+    {
+      "url": "/series/breaking-bad/",
+      "exists": true,
+      "fails": [],
+      "warns": []
+    },
+    {
+      "url": "/movie/interstellar/",
+      "exists": true,
+      "fails": [],
+      "warns": []
+    },
+    {
+      "url": "/search/",
+      "exists": true,
+      "fails": [],
+      "warns": []
+    },
+    {
+      "url": "/about/",
+      "exists": true,
+      "fails": [],
+      "warns": []
+    },
+    {
+      "url": "/sports/premier-league/matches/arsenal-vs-coventry/",
+      "exists": true,
+      "fails": [],
+      "warns": [
+        "image-alt-empty:8"
+      ]
+    }
+  ]
+}
