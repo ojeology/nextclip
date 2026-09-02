@@ -41,8 +41,10 @@
     }
     var leagues = document.getElementById("sp-leagues");
     var box = document.getElementById("sp-comp");
+    var head = document.getElementById("sp-home-head");
     if (leagues) leagues.hidden = false;
     if (box) box.hidden = true;
+    if (head) head.hidden = false;
     if (history.replaceState) history.replaceState(null, "", location.pathname);
   }
 
@@ -91,6 +93,8 @@
     tab = tab || (c.scores && c.scores.length ? "scores" : "table");
     var leagues = document.getElementById("sp-leagues");
     if (leagues) leagues.hidden = true;
+    var head = document.getElementById("sp-home-head");
+    if (head) head.hidden = true;
     var box = document.getElementById("sp-comp");
     if (!box) return;
     box.hidden = false;
