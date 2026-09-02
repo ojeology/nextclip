@@ -168,6 +168,11 @@ def main():
                 stats["skipped"] += 1
                 continue
         is_hub = rel == os.path.join("sports", "index.html")
+        # Keep FPL / transfers / comics on the simple sports layout
+        parts = rel.replace("\\", "/").split("/")
+        if len(parts) > 1 and parts[1] in ("fpl", "transfers", "comics"):
+            stats["skipped"] += 1
+            continue
         new, changed, chrome = patch(html, rel, is_hub)
         if changed and not DRY:
             open(f, "w", encoding="utf-8").write(new)
