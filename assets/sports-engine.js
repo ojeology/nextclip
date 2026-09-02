@@ -292,7 +292,6 @@
 
   var DATA = null;
   var OFFICIAL = null;
-  var BACKEND = "https://bryme-backend.onrender.com";
 
   function load() {
     if (DATA) return DATA;
@@ -324,20 +323,8 @@
 
   function loadOfficial() {
     if (OFFICIAL) return Promise.resolve(OFFICIAL);
-    return Promise.all([
-      fetchJson("/content/competitions.json", 8000),
-      fetchJson(BACKEND + "/api/sports/competitions", 2500)
-    ]).then(function (pair) {
-      var file = pair[0], api = pair[1];
-      var pick = null;
-      if (file && api && file.competitions && api.competitions) {
-        var tf = Date.parse(file.builtAt || 0) || 0;
-        var ta = Date.parse(api.builtAt || 0) || 0;
-        pick = ta >= tf ? api : file;
-      } else {
-        pick = (api && api.competitions) ? api : file;
-      }
-      if (pick && pick.competitions && pick.competitions.length) OFFICIAL = pick;
+    return fetchJson("/content/competitions.json", 8000).then(function (file) {
+      if (file && file.competitions && file.competitions.length) OFFICIAL = file;
       return OFFICIAL;
     });
   }
