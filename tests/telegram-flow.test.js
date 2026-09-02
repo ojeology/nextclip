@@ -37,6 +37,7 @@ function startServer(port, mport) {
     env: Object.assign({}, process.env, {
       PORT: String(port),
       TELEGRAM_BOT_TOKEN: "123:TEST",
+      TELEGRAM_ENABLED: "1",
       TELEGRAM_API_BASE: "http://localhost:" + mport,
       TELEGRAM_WEBHOOK_SECRET: "s3cret",
       MINI_APP_URL: "https://bryme-tg.example.com"
@@ -87,10 +88,12 @@ function check(name, cond, extra) {
   const health = JSON.parse(r.body);
   check("healthz ok with posts", r.code === 200 && health.ok && health.posts > 50, health);
   r = await req("GET", BASE + "/");
-  check("mini app html serves", r.code === 200 && r.body.includes("telegram-web-app.js") && r.body.includes("app.js"));
-  r = await req("GET", BASE + "/app.js");
+  check("website home serves", r.code === 200 && /BRYME/i.test(r.body) && !r.body.includes("telegram-web-app.js"));
+  r = await req("GET", BASE + "/miniapp/");
+  check("mini app html serves under /miniapp", r.code === 200 && r.body.includes("telegram-web-app.js"));
+  r = await req("GET", BASE + "/miniapp/app.js");
   check("app.js serves + router present", r.code === 200 && r.body.includes("#/article/"));
-  r = await req("GET", BASE + "/app.css");
+  r = await req("GET", BASE + "/miniapp/app.css");
   check("app.css serves", r.code === 200);
 
   console.log("API · latest / category / article / 404");

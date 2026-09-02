@@ -35,10 +35,15 @@ if (get('--paths')) {
     .map(s => s.startsWith('http') ? s : base + (s.startsWith('/') ? s : '/' + s));
 } else if (get('--url')) {
   urls = [get('--url')];
+} else if (has('--all')) {
+  const readSm = f => fs.existsSync(path.join(root, f)) ? fs.readFileSync(path.join(root, f), 'utf8') : '';
+  const sm = readSm('sitemap.xml') + readSm('news-sitemap.xml');
+  urls = [...sm.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m => m[1]);
+  urls = [...new Set(urls)];
 } else {
   const since = get('--since');
   if (!since || !/^\d{4}-\d{2}-\d{2}$/.test(since)) {
-    console.error('Usage: node scripts/indexnow.js --since YYYY-MM-DD [--send]   (or --url <url> --send)');
+    console.error('Usage: node scripts/indexnow.js --all [--send]  OR  --since YYYY-MM-DD [--send]  OR  --url <url> --send');
     process.exit(1);
   }
   const readSm = f => fs.existsSync(path.join(root, f)) ? fs.readFileSync(path.join(root, f), 'utf8') : '';
@@ -51,8 +56,9 @@ if (get('--paths')) {
 if (!urls.length) { console.log('Nothing changed on or after that date. Nothing to submit.'); process.exit(0); }
 if (urls.length > 10000) { console.error('IndexNow accepts at most 10,000 URLs per request.'); process.exit(1); }
 
-console.log(`${urls.length} URL(s) to submit to IndexNow (Bing / Yandex / Seznam):\n`);
-urls.forEach(u => console.log('  ' + u));
+console.log(urls.length + ' URL(s) to submit to IndexNow (Bing / Yandex / Seznam)');
+if (urls.length <= 30) urls.forEach(u => console.log('  ' + u));
+else console.log('  (list omitted — ' + urls.length + ' URLs)');
 
 if (!has('--send')) {
   console.log(`\nDry run. Add --send to actually submit.`);

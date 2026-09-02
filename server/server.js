@@ -1,17 +1,15 @@
-/* BRYME backend — one zero-dependency Node service powering:
- *   • the content API  (bot + Mini App read the same JSON index)
- *   • the Telegram bot webhook
- *   • static hosting for the Telegram Mini App
+/* BRYME website backend — zero-dependency Node service.
  *
- * Run:          PORT=8787 node server/server.js
- * Environment:  TELEGRAM_BOT_TOKEN, TELEGRAM_WEBHOOK_SECRET,
- *               MINI_APP_URL (public https URL of this service — BotFather needs it),
- *               TELEGRAM_API_BASE (optional, for tests/mocks)
+ * THIS SERVICE SERVES THE PUBLIC WEBSITE FIRST.
+ * Telegram is optional and never owns "/" — that is what dropped Bing.
  *
- * Content source of truth: content/posts-index.json + content/posts-bodies.json
- * (built by scripts/build-posts-index.js from the same files the website uses).
- * The files are watched by mtime — publishing + rebuilding propagates here
- * without a restart.
+ *   • static website from the repo root (index.html, /movie, /sports, …)
+ *   • 301s from _redirects (so /movie/breaking-bad → /series/breaking-bad)
+ *   • real HTTP 404 (not a 200 soft-404)
+ *   • content APIs the website can call
+ *
+ * Run:  PORT=8787 node server/server.js
+ * Env:  TELEGRAM_ENABLED=1 to attach the bot webhook at /telegram/webhook only
  */
 "use strict";
 
@@ -152,9 +150,13 @@ function botFor(req) {
 const MIME = {
   ".html": "text/html; charset=utf-8", ".js": "text/javascript; charset=utf-8",
   ".css": "text/css; charset=utf-8", ".json": "application/json; charset=utf-8",
-  ".png": "image/png", ".jpg": "image/jpeg", ".svg": "image/svg+xml", ".ico": "image/x-icon",
-  ".webmanifest": "application/manifest+json"
+  ".xml": "application/xml; charset=utf-8", ".txt": "text/plain; charset=utf-8",
+  ".png": "image/png", ".jpg": "image/jpeg", ".jpeg": "image/jpeg", ".webp": "image/webp",
+  ".gif": "image/gif", ".svg": "image/svg+xml", ".ico": "image/x-icon",
+  ".mp3": "audio/mpeg", ".mp4": "video/mp4", ".webm": "video/webm",
+  ".woff2": "font/woff2", ".webmanifest": "application/manifest+json"
 };
+const TELEGRAM_ON = process.env.TELEGRAM_ENABLED === "1" || process.env.TELEGRAM_ENABLED === "true";
 function json(res, code, obj) {
   const body = JSON.stringify(obj);
   res.writeHead(code, {
@@ -172,12 +174,61 @@ function readBody(req, limit) {
     req.on("error", reject);
   });
 }
-function sendFile(res, abs) {
+function sendFile(res, abs, code) {
   fs.readFile(abs, (err, buf) => {
     if (err) { res.writeHead(404, { "content-type": "text/plain" }); res.end("not found"); return; }
-    res.writeHead(200, { "content-type": MIME[path.extname(abs)] || "application/octet-stream", "cache-control": "no-cache" });
+    const ext = path.extname(abs).toLowerCase();
+    const cache = (ext === ".html" || ext === ".xml" || ext === ".txt") ? "no-cache" : "public, max-age=86400";
+    res.writeHead(code || 200, {
+      "content-type": MIME[ext] || "application/octet-stream",
+      "cache-control": cache,
+      "x-content-type-options": "nosniff"
+    });
     res.end(buf);
   });
+}
+
+function loadRedirects() {
+  const rules = [];
+  try {
+    fs.readFileSync(path.join(ROOT, "_redirects"), "utf8").split("\n").forEach((line) => {
+      const t = line.trim();
+      if (!t || t.startsWith("#")) return;
+      const parts = t.split(/\s+/);
+      if (parts.length >= 2) {
+        rules.push({ from: parts[0].replace(/\/+$/, "") || "/", to: parts[1], code: Number(parts[2]) || 301 });
+      }
+    });
+  } catch (e) { /* none */ }
+  return rules;
+}
+const REDIRECTS = loadRedirects();
+
+function blocked(rel) {
+  const r = rel.replace(/^\/+/, "");
+  return r.startsWith("server/") || r.startsWith(".git") || r.startsWith("tests/");
+}
+
+function safeAbs(reqPath) {
+  const decoded = decodeURIComponent(String(reqPath || "/").split("?")[0]);
+  const rel = decoded.replace(/^\/+/, "");
+  if (blocked(rel)) return null;
+  const abs = path.normalize(path.join(ROOT, rel));
+  if (abs !== ROOT && !abs.startsWith(ROOT + path.sep)) return null;
+  return abs;
+}
+
+function resolveWebsiteFile(pathname) {
+  const p = pathname || "/";
+  let abs = safeAbs(p);
+  if (abs && fs.existsSync(abs) && fs.statSync(abs).isFile()) return abs;
+  if (abs && fs.existsSync(abs) && fs.statSync(abs).isDirectory()) {
+    const idx = path.join(abs, "index.html");
+    if (fs.existsSync(idx)) return idx;
+  }
+  const asIndex = safeAbs((p.endsWith("/") ? p : p + "/") + "index.html");
+  if (asIndex && fs.existsSync(asIndex)) return asIndex;
+  return null;
 }
 
 /* Article bodies may contain root-relative links (href="/..."). Inside the
@@ -317,9 +368,31 @@ const server = http.createServer(async (req, res) => {
       posts.forEach((x) => (counts[x.category] = (counts[x.category] || 0) + 1));
       return json(res, 200, { categories: Object.entries(counts).map(([k, v]) => ({ key: k, count: v })) });
     }
+    if (p === "/api/search") {
+      const q = String(url.searchParams.get("q") || "").trim().toLowerCase();
+      if (q.length < 2) return json(res, 200, { q, count: 0, results: [] });
+      let cat = [];
+      try { cat = JSON.parse(fs.readFileSync(path.join(ROOT, "content", "catalogue.json"), "utf8")); }
+      catch (e) { cat = []; }
+      const hits = (Array.isArray(cat) ? cat : [])
+        .filter((x) => {
+          const blob = ((x.title || "") + " " + (x.description || "") + " " + (x.genre || "") + " " + (x.slug || "")).toLowerCase();
+          return blob.includes(q);
+        })
+        .slice(0, 20)
+        .map((x) => ({
+          title: x.title,
+          slug: x.slug,
+          year: x.year,
+          genre: x.genre,
+          url: "/movie/" + x.slug + "/"
+        }));
+      return json(res, 200, { q, count: hits.length, results: hits });
+    }
 
-    /* ---- Telegram webhook ---- */
+    /* ---- Telegram webhook (off unless TELEGRAM_ENABLED=1) ---- */
     if (p === "/telegram/webhook") {
+      if (!TELEGRAM_ON) return json(res, 404, { error: "telegram_disabled", message: "This service serves the website." });
       if (req.method !== "POST") return json(res, 405, { error: "method_not_allowed" });
       if (SECRET && req.headers["x-telegram-bot-api-secret-token"] !== SECRET) {
         return json(res, 401, { error: "unauthorized" });
@@ -337,16 +410,28 @@ const server = http.createServer(async (req, res) => {
       return;
     }
 
-    /* ---- Mini App static hosting (/ and /miniapp/*) ---- */
-    let file = null;
-    if (p === "/" || p === "/index.html" || p.startsWith("/#/")) file = "index.html";
-    else if (p.startsWith("/miniapp/")) file = p.slice("/miniapp/".length);
-    else if (p === "/app.js" || p === "/app.css" || p === "/telegram-web-app.js") file = path.basename(p);
-    if (file) {
-      const abs = path.normalize(path.join(MINIAPP_DIR, file));
-      if (abs.startsWith(MINIAPP_DIR)) return sendFile(res, abs);
+    /* ---- 301s from _redirects (duplicate movie/series URLs) ---- */
+    const from = p.replace(/\/+$/, "") || "/";
+    const rule = REDIRECTS.find((r) => r.from === from || r.from === p);
+    if (rule) {
+      res.writeHead(rule.code || 301, { location: rule.to, "cache-control": "public, max-age=86400" });
+      res.end();
+      return;
     }
 
+    /* ---- Mini App lives under /miniapp only — never at / ---- */
+    if (p === "/miniapp" || p.startsWith("/miniapp/")) {
+      let file = p === "/miniapp" || p === "/miniapp/" ? "index.html" : p.slice("/miniapp/".length);
+      const abs = path.normalize(path.join(MINIAPP_DIR, file));
+      if (abs.startsWith(MINIAPP_DIR) && fs.existsSync(abs)) return sendFile(res, abs);
+    }
+
+    /* ---- Public website (repo root) ---- */
+    const page = resolveWebsiteFile(p === "/" ? "/index.html" : p);
+    if (page) return sendFile(res, page);
+
+    const notFound = path.join(ROOT, "404.html");
+    if (fs.existsSync(notFound)) return sendFile(res, notFound, 404);
     res.writeHead(404, { "content-type": "text/plain" });
     res.end("not found");
   } catch (e) {
@@ -356,9 +441,9 @@ const server = http.createServer(async (req, res) => {
 
 if (!module.parent) {
   server.listen(PORT, "0.0.0.0", () => {
-    console.log("BRYME server on :" + PORT + " | posts:", loadContent().posts.length,
-      "| bot:", TOKEN ? "token set" : "TOKEN MISSING (webhook will 500 politely)",
-      "| mini app:", MINI_APP_URL || "derived from request host");
+    console.log("BRYME website on :" + PORT + " | posts:", loadContent().posts.length,
+      "| redirects:", REDIRECTS.length,
+      "| telegram:", TELEGRAM_ON ? "on (/telegram/webhook only)" : "off");
   });
 }
 module.exports = { server, loadContent, telegram };

@@ -1,13 +1,17 @@
-# Render blueprint for the BRYME backend + Telegram bot + Mini App service.
+# BRYME public website
 #
-# IMPORTANT: this file lives in server/ so it does NOT change how the existing
-# static site (bryme.onrender.com) deploys. To create the service, either:
-#   • Render Dashboard -> New -> Web Service -> pick this repo -> Root Directory: server
-#     Build: npm install | Start: node server.js
-#   • or copy this file to the repo root and sync it as a Blueprint.
+# This service MUST serve the website (HTML pages), not a Telegram bot.
+# Telegram is off unless you set TELEGRAM_ENABLED=1 (webhook only at /telegram/webhook).
+#
+# Render: Web Service → repo ojeology/nextclip
+#   Root Directory:  server
+#   Build command:   npm install
+#   Start command:   node server.js
+#
+# If this URL is bryme.onrender.com, crawlers get the real site again.
 services:
   - type: web
-    name: bryme-telegram
+    name: bryme-website
     runtime: node
     rootDir: server
     plan: free
@@ -15,13 +19,7 @@ services:
     startCommand: node server.js
     healthCheckPath: /healthz
     envVars:
-      - key: TELEGRAM_BOT_TOKEN
-        sync: false        # set in dashboard (from BotFather) — never commit
-      - key: TELEGRAM_WEBHOOK_SECRET
-        generateValue: true
-      - key: MINI_APP_URL
-        sync: false        # Mode A: https://bryme.onrender.com/miniapp
-      - key: API_PUBLIC_URL
-        sync: false        # Mode A: https://bryme-telegram.onrender.com
       - key: NODE_VERSION
-        value: 20.11.1
+        value: "20.11.1"
+      - key: TELEGRAM_ENABLED
+        value: "0"
