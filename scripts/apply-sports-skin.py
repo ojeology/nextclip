@@ -149,6 +149,8 @@ def patch(html, rel, is_hub):
 
 
 def main():
+    print("disabled: sports uses the simple layout now. Run scripts/strip-old-sports-chrome.py instead.")
+    return
     files = sorted(glob.glob(os.path.join(ROOT, "sports", "**", "*.html"), recursive=True))
     stats = {"patched": 0, "skipped": 0, "errors": 0}
     for f in files:
