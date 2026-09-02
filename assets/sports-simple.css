@@ -81,7 +81,9 @@ nav.sp-tabs,
 .bsd-chrome,
 .bsd-sec,
 .bsd-panel,
-.bsd-leaguenav { display: none !important; }
+.bsd-leaguenav,
+.mc-hero,
+[data-comic] { display: none !important; }
 
 .sp-tbl-r.fpl-r {
   grid-template-columns: 28px 1fr 36px 36px 40px;
