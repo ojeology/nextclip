@@ -95,3 +95,13 @@ nav.sp-tabs,
   font-size: 11px;
   color: #8d95a3;
 }
+
+.sp-easy .prose p { margin: 0 0 14px; color: #d9dde1; }
+.sp-easy .prose h2 { font-size: 18px; margin: 22px 0 8px; }
+.sp-easy .prose ul { margin: 0 0 16px; padding: 0 0 0 18px; color: #d9dde1; }
+.sp-easy .prose li { margin: 0 0 8px; }
+.sp-pick {
+  display: inline-block; margin-top: 8px; padding: 4px 10px; border-radius: 999px;
+  background: #14351f; color: #3ddc84; font-size: 12px; font-weight: 800;
+}
+.sp-fixt .why { margin: 6px 0 0; font-size: 13px; font-weight: 500; color: #8d95a3; }
