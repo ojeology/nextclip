@@ -73,7 +73,7 @@
   }
   function group(lg, items, results) {
     var cards = items.map(function (m) { var k = lg + "/" + m.id + "-vs-" + m.away; return card(lg, m, results[k], k); }).join("");
-    var head = '<div class="sp-lg sp-lg-' + lg + '" style="--lg-img:url(\'/assets/img/sports/hero-' + lg + '-md.jpg\')"><div class="sp-lg-head"><b>' + LEAGUES[lg].label + '</b><a href="/sports/' + lg + '/matches/">Match Centre \u2192</a></div>';
+    var head = '<div class="sp-lg sp-lg-' + lg + '" style="--lg-img:url(\'/assets/img/sports/hero-' + lg + '-md.jpg\')"><div class="sp-lg-head"><b>' + LEAGUES[lg].label + '</b><a href="/sports/' + lg + '/matches/">Open \u2192</a></div>';
     // ALWAYS rail — duplicate content for seamless auto-scroll loop
     return head + '<div class="sp-score-rail"><div class="sp-rail-track">' + cards + cards + "</div></div></div>";
   }
@@ -174,7 +174,7 @@
   }
   function renderTicker(data, lgFilter) {
     /* Smart ticker — tight loop, high signal:
-       1) today's matches (live desk), 2) the 6 freshest results,
+       1) today's matches, 2) the 6 freshest results,
        3) the next 3 fixtures with kickoff day. Never more than 10 chips. */
     var played = [], upcoming = [], today = [];
     var todayStr0 = todayStr();
@@ -386,7 +386,7 @@
         esc(x.gd) + "</td><td><b>" + x.pts + "</b></td></tr>";
     }).join("");
     var when = officialStamp(OFFICIAL);
-    return '<div class="sp-table-wrap"><table class="sp-table"><thead><tr><th>#</th><th>Team</th><th>Form</th><th>P</th><th>W</th><th>D</th><th>L</th><th>Goals</th><th>GD</th><th>Pts</th></tr></thead><tbody>' + rows + '</tbody></table></div><p class="sp-zone-legend"><i style="background:#2f6b3a"></i>Champions League&nbsp;&nbsp;<i style="background:#7a5b1e"></i>Europa&nbsp;&nbsp;<i style="background:#8e2020"></i>Relegation</p><p class="sp-result-meta">Live table from the BRYME scores desk' + (when ? " · updated " + when : "") + ".</p>";
+    return '<div class="sp-table-wrap"><table class="sp-table"><thead><tr><th>#</th><th>Team</th><th>Form</th><th>P</th><th>W</th><th>D</th><th>L</th><th>Goals</th><th>GD</th><th>Pts</th></tr></thead><tbody>' + rows + '</tbody></table></div><p class="sp-zone-legend"><i style="background:#2f6b3a"></i>Champions League&nbsp;&nbsp;<i style="background:#7a5b1e"></i>Europa&nbsp;&nbsp;<i style="background:#8e2020"></i>Relegation</p><p class="sp-result-meta">Live table' + (when ? " · updated " + when : "") + ".</p>";
   }
 
   function renderOfficialScorers(list, limit) {
@@ -414,8 +414,8 @@
     var cards = [];
     (official.competitions || []).forEach(function (c) {
       (c.scores || []).slice(0, 6).forEach(function (s) {
-        var href = LEAGUES[c.id] ? "/sports/" + c.id + "/matches/" : "/sports/";
-        cards.push('<a class="mp-card hl-score" href="' + href + '"><span class="mp-when">FT · ' + esc(c.name) + " · " + esc(s.date) + "</span><b>" + esc(s.home) + " " + s.hs + "\u2013" + s.as + " " + esc(s.away) + "</b><span>Latest from the scores desk</span></a>");
+        var href = "/sports/#" + c.id;
+        cards.push('<a class="mp-card hl-score" href="' + href + '"><span class="mp-when">FT · ' + esc(c.name) + " · " + esc(s.date) + "</span><b>" + esc(s.home) + " " + s.hs + "\u2013" + s.as + " " + esc(s.away) + "</b><span>Full time</span></a>");
       });
     });
     if (!cards.length) return "";
@@ -511,7 +511,7 @@
         if (lgScorers && LEAGUES[lgScorers]) {
           var ocS = official ? findComp(official, lgScorers) : null;
           if (ocS && ocS.scorers && ocS.scorers.length) {
-            el.innerHTML = '<div class="sp-table-wrap">' + renderOfficialScorers(ocS.scorers, 20) + '</div><p class="sp-result-meta">Live list from the scores desk.</p>';
+            el.innerHTML = '<div class="sp-table-wrap">' + renderOfficialScorers(ocS.scorers, 20) + '</div><p class="sp-result-meta">Live list.</p>';
             el.setAttribute("data-sp-live", "1");
             return;
           }
@@ -543,7 +543,7 @@
         played = played.slice(0, lgFilter ? 5 : 4); upcoming = upcoming.slice(0, lgFilter ? 5 : 4);
         function section(title, arr, withDate) {
           if (!arr.length) return "";
-          var html = '<div class="sp-board-head"><div><div class="eyebrow">Live desk</div><h2>' + title + "</h2></div>";
+          var html = '<div class="sp-board-head"><div><div class="eyebrow">Scores</div><h2>' + title + "</h2></div>";
           if (withDate && arr[0].m.date) html += '<span class="sp-board-date">' + esc(niceDate(arr[0].m.date)) + "</span>";
           html += "</div>";
           /* FLAT board: one rail per section — every card carries its own league tag */

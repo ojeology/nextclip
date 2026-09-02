@@ -1,4 +1,4 @@
-/* Simple sports screen — table, scores, fixtures. Same data as the old backend. */
+/* Simple sports — table, scores, fixtures, scorers. */
 (function () {
   "use strict";
   var DATA = null;
@@ -30,11 +30,20 @@
     }
     return "Season starting";
   }
+  function isSubpage() {
+    return !!view.getAttribute("data-lg");
+  }
 
   function renderHome() {
-    document.getElementById("sp-leagues").hidden = false;
-    document.getElementById("sp-comp").hidden = true;
-    history.replaceState(null, "", location.pathname);
+    if (isSubpage()) {
+      location.href = "/sports/";
+      return;
+    }
+    var leagues = document.getElementById("sp-leagues");
+    var box = document.getElementById("sp-comp");
+    if (leagues) leagues.hidden = false;
+    if (box) box.hidden = true;
+    if (history.replaceState) history.replaceState(null, "", location.pathname);
   }
 
   function tableHtml(c) {
@@ -80,8 +89,10 @@
     var c = find(id);
     if (!c) return;
     tab = tab || (c.scores && c.scores.length ? "scores" : "table");
-    document.getElementById("sp-leagues").hidden = true;
+    var leagues = document.getElementById("sp-leagues");
+    if (leagues) leagues.hidden = true;
     var box = document.getElementById("sp-comp");
+    if (!box) return;
     box.hidden = false;
     var tabs = [
       ["table", "Table"],
@@ -92,7 +103,7 @@
     box.innerHTML =
       '<button class="sp-easy-back" type="button" id="sp-back">← All leagues</button>' +
       "<h1>" + esc(c.flag || "") + " " + esc(c.name) + "</h1>" +
-      '<p class="sp-easy-sub">Tap a tab. Same scores as the BRYME sports desk.</p>' +
+      '<p class="sp-easy-sub">Tap a tab. Table, scores, fixtures, scorers.</p>' +
       '<div class="sp-seg">' + tabs.map(function (t) {
         return '<button type="button" data-tab="' + t[0] + '"' + (t[0] === tab ? ' class="on"' : "") + ">" + t[1] + "</button>";
       }).join("") + "</div>" +
@@ -104,7 +115,7 @@
       box.querySelectorAll(".sp-seg button").forEach(function (x) { x.classList.toggle("on", x === b); });
       document.getElementById("sp-pane").innerHTML = pane(c, b.getAttribute("data-tab"));
     };
-    history.replaceState(null, "", "#" + id);
+    if (!isSubpage() && history.replaceState) history.replaceState(null, "", "#" + id);
   }
 
   function fillLeagues() {
@@ -132,7 +143,13 @@
     };
   }
 
-  function bootHash() {
+  function boot() {
+    var forced = view.getAttribute("data-lg");
+    var tab = view.getAttribute("data-tab");
+    if (forced && find(forced)) {
+      openComp(forced, tab);
+      return;
+    }
     var id = (location.hash || "").replace(/^#/, "");
     if (id && find(id)) openComp(id);
     else renderHome();
@@ -143,8 +160,11 @@
     .then(function (d) {
       DATA = d;
       fillLeagues();
-      bootHash();
+      boot();
     })
     .catch(function () {});
-  window.addEventListener("hashchange", bootHash);
+  window.addEventListener("hashchange", function () {
+    if (isSubpage()) return;
+    boot();
+  });
 })();

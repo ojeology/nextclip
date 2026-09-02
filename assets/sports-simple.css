@@ -74,3 +74,11 @@
 .sp-more a:hover { border-color: #3ddc84; }
 #sp-pane { min-height: 80px; }
 #sp-leagues[hidden], #sp-comp[hidden] { display: none; }
+
+/* Leftover old sports chrome — never show it */
+.spx-back-btn,
+nav.sp-tabs,
+.bsd-chrome,
+.bsd-sec,
+.bsd-panel,
+.bsd-leaguenav { display: none !important; }
