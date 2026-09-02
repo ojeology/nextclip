@@ -4,5 +4,11 @@ Disallow: /miniapp/
 Disallow: /404.html
 Disallow: /server/
 
+User-agent: Googlebot
+Allow: /
+
+User-agent: AdsBot-Google
+Allow: /
+
 Sitemap: https://bryme.onrender.com/sitemap.xml
 Sitemap: https://bryme.onrender.com/news-sitemap.xml
