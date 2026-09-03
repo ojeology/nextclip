@@ -1216,12 +1216,58 @@ function deskBar(o){
   ];
   return `<nav class="desk-bar" aria-label="Catalogue"><div class="shell desk-bar-inner">${items.map(i => `<a href="${url(i.href)}"${i.on ? ' class="is-on"' : ''}>${i.label}</a>`).join('')}</div></nav>`;
 }
+
+/* Standing YMYL disclosure. Injected by path so every current AND future
+   Make Money / Tech page carries it without the caller remembering.
+   Deliberately not an "affiliate links" notice: the site has no affiliate or
+   referral links anywhere, so claiming otherwise would be a false disclosure. */
+const DISC_LINK = '<a href="/editorial-policy/">editorial policy</a> and <a href="/disclaimer/">disclaimer</a>';
+function disclosureFor(p){
+  const s = String(p || '');
+  if (!/^\/?(make-money|tech)(\/|$)/.test(s)) return '';
+  if (/binary|trading|forex|crypto|invest/i.test(s)) {
+    return '<aside class="bm-disc is-risk" data-bm-disclosure="risk" role="note" aria-label="Risk warning and disclosure">'
+      + '<b>Risk warning \u2014 read before acting</b>'
+      + '<p>This page is not financial advice, and nothing on BRYME is. Trading and investment products carry a real risk of losing your entire deposit. Most retail traders lose money. Never stake funds you cannot afford to lose, and be sceptical of anyone \u2014 including any app, group or \u201Cmentor\u201D \u2014 promising guaranteed or fixed returns.</p>'
+      + '<p>BRYME earns from display advertising only. We are not paid by any broker or trading platform, we use no affiliate or referral links, and we do not promote trading apps. If you need advice about your money, speak to a licensed professional. See our ' + DISC_LINK + '.</p></aside>';
+  }
+  if (/^\/?make-money\/writing\//.test(s)) {
+    return '<aside class="bm-disc" data-bm-disclosure="listing" role="note" aria-label="Disclosure">'
+      + '<b>Disclosure</b>'
+      + '<p>BRYME is not affiliated with this publication and is not paid to list it. We earn from display advertising only, and use no affiliate or referral links. Pay rates, rights terms, response times and open/closed status change without notice \u2014 always confirm against the publication\u2019s own guidelines before submitting. See our <a href="/editorial-policy/">editorial policy</a>.</p></aside>';
+  }
+  const tech = /^\/?tech\//.test(s);
+  return '<aside class="bm-disc" data-bm-disclosure="general" role="note" aria-label="Disclosure">'
+    + '<b>Disclosure</b>'
+    + (tech
+       ? '<p>BRYME earns from display advertising, not from the apps, tools or services reviewed here. No company pays us for coverage, placement or a positive verdict, and we use no affiliate or referral links \u2014 if that ever changes, this notice changes with it.</p>'
+         + '<p>Free tiers, pricing and feature limits change frequently, and what is free today may not be tomorrow. Always confirm current terms on the provider\u2019s own site. See our ' + DISC_LINK + '.</p>'
+       : '<p>BRYME makes money from display advertising, not from the companies, platforms or publications written about on this page. No one pays us for coverage, placement or a favourable review, and we use no affiliate or referral links \u2014 if that ever changes, this notice changes with it.</p>'
+         + '<p>Any amounts shown are examples of what others have reported, not a prediction of what you will earn. Rates, fees, payment methods and eligibility rules change often and vary by country. Always confirm the current terms on the provider\u2019s own site before you rely on anything here. See our ' + DISC_LINK + '.</p>')
+    + '</aside>';
+}
+
+
+/* Place the disclosure INSIDE the main content, not after it, so it is part of
+   the document outline rather than trailing chrome. */
+function withDisclosure(o){
+  const body = String(o.body || '');
+  if (body.indexOf('data-bm-disclosure') !== -1) return body;
+  const block = disclosureFor(o.path);
+  if (!block) return body;
+  const i = body.lastIndexOf('</main>');
+  if (i !== -1) return body.slice(0, i) + block + body.slice(i);
+  const j = body.lastIndexOf('</article>');
+  if (j !== -1) return body.slice(0, j + 10) + block + body.slice(j + 10);
+  return body + block;
+}
+
 function layout(o){
 
   const socialImage = socialMeta(o.image);
   const schema = o.schema ? `<script type="application/ld+json">${JSON.stringify(normalizeSchema(o.schema)).replace(/</g,'\\u003c')}<\/script>` : '';
   const active = o.activeNav || '';
-  return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#08090b"><meta name="color-scheme" content="dark light"><link rel="icon" href="${url('/assets/favicon.svg')}" type="image/svg+xml"><link rel="icon" href="${url('/assets/favicon.png')}" type="image/png" sizes="32x32"><link rel="apple-touch-icon" href="${url('/assets/icons/apple-touch-icon.png')}"><link rel="manifest" href="${url('/manifest.webmanifest')}"><link rel="preconnect" href="https://i.ytimg.com" crossorigin><link rel="preconnect" href="https://www.youtube-nocookie.com" crossorigin><link rel="preconnect" href="https://www.youtube.com" crossorigin><title>${esc(pageTitle(o.title))}</title><meta name="description" content="${esc(pageDesc(o.description))}">${VERIFY_TAGS}${o.lcpImage?`<link rel="preload" as="image" href="${esc(o.lcpImage)}" fetchpriority="high">`:''}${o.noindex?'<meta name="robots" content="noindex,follow">':''}<link rel="canonical" href="${absUrl(o.canonical || o.path)}"><meta property="og:type" content="${esc(o.ogType || 'website')}"><meta property="og:site_name" content="${site.name}"><meta property="og:title" content="${esc(pageTitle(o.title))}"><meta property="og:description" content="${esc(pageDesc(o.description))}"><meta property="og:url" content="${absUrl(o.path)}">${socialImage}<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${esc(pageTitle(o.title))}"><meta name="twitter:description" content="${esc(pageDesc(o.description))}"><link rel="stylesheet" href="${url('/assets/site.css')}">${schema}</head><body data-nav="${esc(o.activeNav || '')}"><header class="top"><div class="shell"><a class="brand" href="${url('/')}">BRY<b>ME</b></a><nav class="topnav"><a href="${url('/')}"${active==='home'?' class="active"':''}>Home</a><a href="${url('/entertainment/')}"${active==='entertainment'?' class="active"':''}>🎬 Entertainment</a><a href="${url('/sports/')}"${active==='sports'?' class="active"':''}>⚽ Sports</a><a href="${url('/make-money/')}"${active==='make-money'?' class="active"':''}>💰 Make Money</a><a href="${url('/tech/')}"${active==='tech'?' class="active"':''}>🤖 Tech &amp; AI</a><a class="nav-search" href="${url('/search/')}">Search</a></nav><div class="top-tools"><a class="header-search" href="${url('/search/')}" aria-label="Search">Search</a></div></div></header>${deskBar(o)}${o.body}<nav class="mobile-nav"><a href="${url('/')}"${active==='home'?' class="active"':''}><span class="mn-ico">🏠</span>Home</a><a href="${url('/entertainment/')}"${active==='entertainment'?' class="active"':''}><span class="mn-ico">🎬</span>Entertain</a><a href="${url('/sports/')}"${active==='sports'?' class="active"':''}><span class="mn-ico">⚽</span>Sports</a><a href="${url('/make-money/')}"${active==='make-money'?' class="active"':''}><span class="mn-ico">💰</span>Money</a><a href="${url('/tech/')}"${active==='tech'?' class="active"':''}><span class="mn-ico">🤖</span>Tech</a><a href="${url('/search/')}"><span class="mn-ico">🔍</span>Search</a></nav><footer class="footer"><div class="shell"><div class="footer-grid">
+  return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#08090b"><meta name="color-scheme" content="dark light"><link rel="icon" href="${url('/assets/favicon.svg')}" type="image/svg+xml"><link rel="icon" href="${url('/assets/favicon.png')}" type="image/png" sizes="32x32"><link rel="apple-touch-icon" href="${url('/assets/icons/apple-touch-icon.png')}"><link rel="manifest" href="${url('/manifest.webmanifest')}"><link rel="preconnect" href="https://i.ytimg.com" crossorigin><link rel="preconnect" href="https://www.youtube-nocookie.com" crossorigin><link rel="preconnect" href="https://www.youtube.com" crossorigin><title>${esc(pageTitle(o.title))}</title><meta name="description" content="${esc(pageDesc(o.description))}">${VERIFY_TAGS}${o.lcpImage?`<link rel="preload" as="image" href="${esc(o.lcpImage)}" fetchpriority="high">`:''}${o.noindex?'<meta name="robots" content="noindex,follow">':''}<link rel="canonical" href="${absUrl(o.canonical || o.path)}"><meta property="og:type" content="${esc(o.ogType || 'website')}"><meta property="og:site_name" content="${site.name}"><meta property="og:title" content="${esc(pageTitle(o.title))}"><meta property="og:description" content="${esc(pageDesc(o.description))}"><meta property="og:url" content="${absUrl(o.path)}">${socialImage}<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${esc(pageTitle(o.title))}"><meta name="twitter:description" content="${esc(pageDesc(o.description))}"><link rel="stylesheet" href="${url('/assets/site.css')}">${schema}</head><body data-nav="${esc(o.activeNav || '')}"><header class="top"><div class="shell"><a class="brand" href="${url('/')}">BRY<b>ME</b></a><nav class="topnav"><a href="${url('/')}"${active==='home'?' class="active"':''}>Home</a><a href="${url('/entertainment/')}"${active==='entertainment'?' class="active"':''}>🎬 Entertainment</a><a href="${url('/sports/')}"${active==='sports'?' class="active"':''}>⚽ Sports</a><a href="${url('/make-money/')}"${active==='make-money'?' class="active"':''}>💰 Make Money</a><a href="${url('/tech/')}"${active==='tech'?' class="active"':''}>🤖 Tech &amp; AI</a><a class="nav-search" href="${url('/search/')}">Search</a></nav><div class="top-tools"><a class="header-search" href="${url('/search/')}" aria-label="Search">Search</a></div></div></header>${deskBar(o)}${withDisclosure(o)}<nav class="mobile-nav"><a href="${url('/')}"${active==='home'?' class="active"':''}><span class="mn-ico">🏠</span>Home</a><a href="${url('/entertainment/')}"${active==='entertainment'?' class="active"':''}><span class="mn-ico">🎬</span>Entertain</a><a href="${url('/sports/')}"${active==='sports'?' class="active"':''}><span class="mn-ico">⚽</span>Sports</a><a href="${url('/make-money/')}"${active==='make-money'?' class="active"':''}><span class="mn-ico">💰</span>Money</a><a href="${url('/tech/')}"${active==='tech'?' class="active"':''}><span class="mn-ico">🤖</span>Tech</a><a href="${url('/search/')}"><span class="mn-ico">🔍</span>Search</a></nav><footer class="footer"><div class="shell"><div class="footer-grid">
   <div class="footer-brand"><a class="brand" href="${url('/')}">BRY<b>ME</b></a><p>Discover what you love. Learn what you need. Find what's next.</p></div>
   <nav class="footer-col" aria-label="Explore"><h4>Verticals</h4><a href="${url('/entertainment/')}">🎬 Entertainment</a><a href="${url('/sports/')}">⚽ Sports</a><a href="${url('/make-money/')}">💰 Make Money</a><a href="${url('/tech/')}">🤖 Tech &amp; AI</a></nav>
   <nav class="footer-col" aria-label="Explore"><h4>Entertainment</h4><a href="${url('/trending/')}">What's Trending</a><a href="${url('/movies/')}">Movies</a><a href="${url('/series/')}">Series</a><a href="${url('/anime/')}">Anime</a><a href="${url('/articles/')}">Articles</a><a href="${url('/genres/')}">Genres</a></nav>
