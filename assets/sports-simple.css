@@ -107,3 +107,28 @@ nav.sp-tabs,
   background: #14351f; color: #3ddc84; font-size: 12px; font-weight: 800;
 }
 .sp-fixt .why { margin: 6px 0 0; font-size: 13px; font-weight: 500; color: #8d95a3; }
+
+/* Light theme. Without these the hub cards keep their dark background on the
+   light page: dark panels on a near-white shell, with the card titles almost
+   invisible against them. The base rules above are dark-theme values, so each
+   one needs a light counterpart here. */
+[data-theme="light"] .sp-story,
+[data-theme="light"] .sp-more a,
+[data-theme="light"] .sp-lg,
+[data-theme="light"] .sp-tbl,
+[data-theme="light"] .sp-fixt,
+[data-theme="light"] .sp-seg button {
+  background: var(--panel, #fff);
+  border-color: var(--line, #d8dee6);
+  color: var(--text, #161b22);
+}
+[data-theme="light"] .sp-story b,
+[data-theme="light"] .sp-lg b { color: var(--text, #161b22); }
+[data-theme="light"] .sp-story span,
+[data-theme="light"] .sp-fixt i,
+[data-theme="light"] .sp-empty,
+[data-theme="light"] .sp-tbl-r:first-child { color: var(--muted, #5b6472); }
+[data-theme="light"] .sp-tbl-r:first-child { background: #f1f4f8; }
+[data-theme="light"] .sp-empty { border-color: var(--line, #d8dee6); }
+[data-theme="light"] .sp-story:hover,
+[data-theme="light"] .sp-more a:hover { border-color: var(--sports, #3ddc84); }
