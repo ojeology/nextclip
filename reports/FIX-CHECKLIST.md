@@ -7,9 +7,9 @@ Status: ⬜ not started · 🔄 in progress · ✅ done
 
 ## PHASE 1 — AdSense blockers (must clear before applying)
 
-- 🔄 **1. Cookie consent banner** — GA4 loads on 3,201 pages with no consent. GDPR exposure + documented AdSense rejection trigger. Must block analytics until the user chooses.
+- ✅ **1. Cookie consent banner** — GA4 loads on 3,201 pages with no consent. GDPR exposure + documented AdSense rejection trigger. Must block analytics until the user chooses.
 - ✅ **2. Resolve the 16 draft placeholders** — "Editorial draft — not published" pages in `/sports/articles/`. Noindexed, but a human reviewer still clicks them. Finish or delist.
-- ⬜ **3. Sitewide disclosure block** — only 1 of 80 money pages has a financial disclaimer, on YMYL content incl. binary options. Add standing risk + affiliate disclosure.
+- ✅ **3. Sitewide disclosure block** — only 1 of 80 money pages has a financial disclaimer, on YMYL content incl. binary options. Add standing risk + affiliate disclosure.
 - ⬜ **4. Author / E-E-A-T signals** — 1 author, 35 bylined pages of 3,378. Expand author page, byline everything, add "Reviewed on" dates.
 - ⬜ **5. Pre-application sweep** — empty categories, broken links, mobile check, then apply.
 
@@ -36,6 +36,32 @@ Status: ⬜ not started · 🔄 in progress · ✅ done
 ---
 
 ## Log
+
+### 3. Sitewide disclosure — DONE (commit `571ea06683`)
+115 pages (all 80 Make Money + 35 Tech) now carry a standing disclosure.
+
+**The finding that changed the approach:** the site has **no affiliate or referral links at all** —
+a grep of every outbound href in `make-money/` and `tech/` found no `ref=`, `tag=`, `partner` or
+`clickid` params. Adding the usual "this post contains affiliate links" boilerplate would have been
+a *false* disclosure: the same policy-vs-reality mismatch fixed on the privacy policy in item #1,
+and a documented AdSense rejection cause on its own. So the block discloses what is actually true —
+ad-funded via Monetag, nobody pays for coverage, no affiliate links, earnings figures are examples.
+
+Three variants by page type: `risk` (1, binary options — red, capital-loss warning), `listing`
+(56 writing markets), `general` (58 money hubs + tech reviews).
+
+Implemented as a **path-based hook in `layout()`** in `build-static-foundation.js`, not 115 hand-edits,
+so every current and future `make-money/` or `tech/` page gets the right variant automatically.
+Idempotent, and splices inside `</main>` so it is in the document outline rather than trailing chrome.
+Verified by tampering with a built page and re-running the build.
+
+**Caveat worth knowing:** running the foundation build rewrites ~2,900 unrelated pages. That drift is
+**pre-existing** — committed HTML had fallen out of sync with the generators (an unpatched build
+changes 3,006 files by itself). Substantive diffs are only the disclosures, footer `<h3>`→`<h4>`,
+and build timestamps. Worth a dedicated clean-up commit at some point so real changes are reviewable.
+
+Item #1 was also still marked 🔄 despite being complete — corrected.
+
 
 ### 2. Draft placeholders — DONE (commit `49861bf8d1`)
 All 16 finished as real articles (user chose "finish all", not delist). 800–1,019 words each,
