@@ -313,3 +313,31 @@
 /sports/five-matches-we-cannot-wait-to-watch/  /sports/articles/five-matches-we-cannot-wait-to-watch/  301
 /sports/newly-promoted-clubs-approach/  /sports/articles/newly-promoted-clubs-approach/  301
 /sports/manchester-city-without-guardiola/  /sports/articles/manchester-city-without-guardiola/  301
+
+# Legacy sports article URLs -> canonical /sports/articles/<slug>/
+/sports/biggest-spenders-and-top-five-league-predictions/  /sports/articles/biggest-spenders-and-top-five-league-predictions/  301
+/sports/deadline-day-dont-try-to-make-sense-of-it/         /sports/articles/deadline-day-dont-try-to-make-sense-of-it/  301
+/sports/elliot-anderson-man-city-record-signing/           /sports/articles/elliot-anderson-man-city-record-signing/  301
+/sports/five-biggest-transfer-winners/                     /sports/articles/five-biggest-transfer-winners/  301
+/sports/five-clubs-that-still-need-signings/               /sports/articles/five-clubs-that-still-need-signings/  301
+/sports/five-things-fans-will-talk-about-this-weekend/     /sports/articles/five-things-fans-will-talk-about-this-weekend/  301
+/sports/managers-with-most-to-prove/                       /sports/articles/managers-with-most-to-prove/  301
+/sports/manchester-united-finally-their-season/            /sports/articles/manchester-united-finally-their-season/  301
+/sports/marescas-second-attempt-in-england/                /sports/articles/marescas-second-attempt-in-england/  301
+/sports/players-to-watch-this-weekend/                     /sports/articles/players-to-watch-this-weekend/  301
+/sports/players-who-could-explode-this-season/             /sports/articles/players-who-could-explode-this-season/  301
+/sports/premier-league-banter-table/                       /sports/articles/premier-league-banter-table/  301
+/sports/premier-league-matchweek-1-guide/                  /sports/articles/premier-league-matchweek-1-guide/  301
+/sports/premier-league-matchweek-2-preview/                /sports/articles/premier-league-matchweek-2-preview/  301
+/sports/premier-league-transfer-tracker-august-2026/       /sports/articles/premier-league-transfer-tracker-august-2026/  301
+/sports/rodris-future/                                     /sports/articles/rodris-future/  301
+/sports/tactical-questions-ahead-of-matchweek-1/           /sports/articles/tactical-questions-ahead-of-matchweek-1/  301
+/sports/where-to-watch-premier-league-in-nigeria/          /sports/articles/where-to-watch-premier-league-in-nigeria/  301
+/sports/ballon-dor-2026-our-picks/                         /sports/articles/ballon-dor-2026-our-picks/  301
+/sports/ballon-dor-race/                                   /sports/articles/ballon-dor-race/  301
+/sports/champions-league-format-explained/                 /sports/articles/champions-league-format-explained/  301
+/sports/champions-league-records/                          /sports/articles/champions-league-records/  301
+/sports/community-shield-2026-arsenal-manchester-city/     /sports/articles/community-shield-2026-arsenal-manchester-city/  301
+/sports/english-champions-since-1888/                      /sports/articles/english-champions-since-1888/  301
+/sports/premier-league-2026-27-season-guide/               /sports/articles/premier-league-2026-27-season-guide/  301
+/sports/world-cup-2026-spain-champions/                    /sports/articles/world-cup-2026-spain-champions/  301

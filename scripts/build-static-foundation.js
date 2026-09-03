@@ -1331,7 +1331,29 @@ function layout(o){
 /* ------------------------------------------------------------------ */
 /* Pages                                                              */
 /* ------------------------------------------------------------------ */
-function write(dir, content){ const out = path.join(root, dir, 'index.html'); fs.mkdirSync(path.dirname(out), {recursive:true}); fs.writeFileSync(out, content); }
+/* Pages the owner deliberately simplified. The generators rebuild every page
+   from the catalogue on each run, which silently re-expanded pages that had
+   been cut back by hand — /sports/premier-league/fixtures/ went from 149 words
+   back to 6,349, refilling all 380 fixtures that had been removed. Anything
+   listed in content/frozen-pages.json is left exactly as it sits on disk.
+   Delete a line from that file to hand the page back to the build. */
+const FROZEN_PAGES = (() => {
+  try {
+    const raw = JSON.parse(fs.readFileSync(path.join(root, 'content/frozen-pages.json'), 'utf8'));
+    return new Set(Array.isArray(raw) ? raw : (raw.paths || []));
+  } catch (e) { return new Set(); }
+})();
+let frozenSkipped = 0;
+function isFrozen(dir){
+  const p = '/' + String(dir).replace(/^\/+|\/+$/g, '') + '/';
+  return FROZEN_PAGES.has(p === '//' ? '/' : p);
+}
+function write(dir, content){
+  const out = path.join(root, dir, 'index.html');
+  if (isFrozen(dir) && fs.existsSync(out)) { frozenSkipped++; return; }
+  fs.mkdirSync(path.dirname(out), {recursive:true});
+  fs.writeFileSync(out, content);
+}
 /* ================================================================
    EDITORIAL LAYOUT COMPONENTS
    The homepage was nine identical card rails stacked on top of each
@@ -1541,7 +1563,12 @@ VERTICALS.forEach(v => {
 });
 const moneyArticles = VERTICAL_ARTICLES['make-money'] || [];
 const sportsArticlesPub = VERTICAL_ARTICLES.sports || [];
-const articlePathFor = (dir, a) => '/' + dir + '/' + a.slug + '/';
+/* Sports articles live at /sports/articles/<slug>/. This used to emit
+   /sports/<slug>/ as well, producing a second, thinner copy of every article
+   at a competing URL (23 of them, all indexed, e.g. a 376-word
+   /sports/arsenal-title-defence/ against the real 1,249-word one). The old
+   URLs are 301'd to the canonical one in _redirects. */
+const articlePathFor = (dir, a) => '/' + dir + (dir === 'sports' ? '/articles' : '') + '/' + a.slug + '/';
 /* An article slug must never collide with a category/section slug at the same level. */
 VERTICALS.forEach(v => {
   const reserved = new Set(['articles'].concat((v.categories || []).map(c => c.slug)));
@@ -1964,7 +1991,7 @@ function verticalPage(v, category){
   const catArticleBlock = catArticles.length
     ? `<div class="vcat-grid">${catArticles.map(a => articleCard(v.dir, a)).join('')}</div>`
     : '';
-  const body = `<main class="${simpleHub ? 'shell sp-easy' : 'shell'}"${sportsSimpleHub ? ' id="sp-app"' : (moneySimpleHub ? ' id="mm-app"' : '')}><div class="crumb"><a href="${url('/')}">Home</a> / ${category ? `<a href="${url('/' + v.dir + '/')}">${esc(v.name)}</a> / ${esc(category.name)}` : esc(v.name)}</div>${pageHero}<section class="section">${category ? (v.dir === 'sports' && category.slug === 'football' ? (footballHub + catArticleBlock) : (clubsDirectory ? (clubsDirectory + catArticleBlock) : (catArticles.length ? writingDeskBlock + catArticleBlock : (writingDeskBlock || `<div class="vstate"><b>${esc(category.name)} — foundation ready</b><p>This section is being built. Articles will appear here as they are researched and published.</p></div>`)))) : (simpleHub ? simpleHub : `${v.dir === 'make-money' ? moneyDeskHtml() : ''}<p class="lead" style="margin-bottom:18px">${esc(v.desc)}</p><div class="vnote">${esc(v.note)}</div><h2 style="margin:26px 0 14px">${v.dir === 'make-money' ? 'Guides already published' : 'Explore ' + esc(v.short)}</h2><div class="vcat-grid">${catGrid}</div>`)}</section>${(v.dir === 'sports' && !category) ? livePreviewBlock(10) : ''}${sportsTeaserBlock}${fixturesBlock}${sportsStoriesBlock}${coreHubStrip(v.dir)}</main>`;
+  const body = `<main class="${simpleHub ? 'shell sp-easy' : 'shell'}"${sportsSimpleHub ? ' id="sp-app"' : (moneySimpleHub ? ' id="mm-app"' : '')}><div class="crumb"><a href="${url('/')}">Home</a> / ${category ? `<a href="${url('/' + v.dir + '/')}">${esc(v.name)}</a> / ${esc(category.name)}` : esc(v.name)}</div>${pageHero}<section class="section">${category ? (v.dir === 'sports' && category.slug === 'football' ? (footballHub + catArticleBlock) : (clubsDirectory ? (clubsDirectory + catArticleBlock) : (catArticles.length ? writingDeskBlock + catArticleBlock : (writingDeskBlock || `<div class="vstate"><b>${esc(category.name)} — foundation ready</b><p>This section is being built. Articles will appear here as they are researched and published.</p></div>`)))) : (simpleHub ? simpleHub : `${v.dir === 'make-money' ? moneyDeskHtml() : ''}<p class="lead" style="margin-bottom:18px">${esc(v.desc)}</p><div class="vnote">${esc(v.note)}</div><h2 style="margin:26px 0 14px">${v.dir === 'make-money' ? 'Guides already published' : 'Explore ' + esc(v.short)}</h2><div class="vcat-grid">${catGrid}</div>`)}</section>${simpleHub ? '' : `${(v.dir === 'sports' && !category) ? livePreviewBlock(10) : ''}${sportsTeaserBlock}${fixturesBlock}${sportsStoriesBlock}${coreHubStrip(v.dir)}`}</main>`;
   const emptyHub = !!category && !catArticles.length && !clubsDirectory && !(v.dir === 'sports' && category.slug === 'football');
   if (emptyHub) EMPTY_HUB_PATHS.add(catPath);
   write(v.dir + (category ? '/' + category.slug : ''), layout({
@@ -4413,7 +4440,16 @@ function renderVerticalArticle(dir, verticalName, a) {
       if (yt.channel) vo.publisher = { '@type':'Organization', name: yt.channel };
       if (vo.uploadDate) schemaList.push(vo);
     }
-  write(dir + '/' + a.slug, layout({
+  /* scripts/build-sports-articles.js owns the full-length sports articles at
+     this same path. Do not clobber a longer, finished body with the short
+     summary version this loop renders. */
+  const _out = path.join(root, dir + (dir === 'sports' ? '/articles' : ''), a.slug, 'index.html');
+  if (dir === 'sports' && fs.existsSync(_out)) {
+    const _cur = fs.readFileSync(_out, 'utf8');
+    const _curWords = _cur.replace(/<[^>]+>/g, ' ').split(/\s+/).filter(Boolean).length;
+    if (_curWords > 600 && !/Editorial draft/.test(_cur)) return;
+  }
+  write(dir + (dir === 'sports' ? '/articles' : '') + '/' + a.slug, layout({
     title: a.seoTitle || a.title,
     description: a.excerpt || `${a.title} — ${verticalName} on BRYME.`,
     path: pagePath,
@@ -5759,4 +5795,5 @@ if (BRYME_DESIGN_LAYER) {
   appendCssOnce('\n' + BRYME_DESIGN_LAYER.trim() + '\n');
 }
 
+if (frozenSkipped) console.log(`Left ${frozenSkipped} owner-simplified page(s) untouched (content/frozen-pages.json).`);
 console.log(`Built ${movies.length} normalized catalogue records (${typeCounts.movie} movies / ${typeCounts.series} series / ${typeCounts.anime} anime), ${articles.length} articles and ${[...new Set(paths)].length} indexable URLs.`);

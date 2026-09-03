@@ -77,7 +77,11 @@ def insert(html, block):
 
 
 def main():
-    targets = sorted(glob.glob('make-money/**/index.html', recursive=True))
+    # Tech pages carry the disclosure too. They used to get it from layout() in
+    # build-static-foundation.js, so restoring a tech page from an older commit
+    # silently dropped it. Cover both trees here so this script alone is enough.
+    targets = sorted(glob.glob('make-money/**/index.html', recursive=True)
+                     + glob.glob('tech/**/index.html', recursive=True))
     changed = skipped = failed = 0
     counts = {}
     for f in targets:
