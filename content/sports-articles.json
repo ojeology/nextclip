@@ -52,64 +52,35 @@
     },
     {
       "slug": "arsenal-title-defence",
-      "title": "Arsenal's Title Defence Starts Friday Against Coventry",
-      "seoTitle": "Arsenal Title Defence: Opening Fixture vs Coventry",
-      "excerpt": "Arsenal host Coventry on Friday to begin the defence of their first Premier League title since 2004. The Community Shield is already won. The league is not.",
-      "category": "Football",
-      "categorySlug": "football",
-      "author": "Ibrahim Sodiq",
+      "title": "Arsenal Begin Their Title Defence: Can Anyone Stop Them?",
+      "seoTitle": "Arsenal Title Defence 2026/27: Can Anyone Stop Them?",
+      "excerpt": "Two games, two wins, no goals conceded. Arsenal have started their title defence perfectly — but Chelsea and Manchester City are level on points, and one of them visits the Emirates on Sunday.",
+      "category": "Premier League",
+      "categorySlug": "premier-league",
+      "author": "BRYME Editorial",
       "labels": [
-        "arsenal",
         "premier-league",
-        "featured",
-        "analysis"
+        "arsenal",
+        "title-race",
+        "featured"
       ],
       "status": "published",
-      "publishedAt": "2026-08-19",
-      "updatedAt": "2026-08-19",
-      "readingTime": "5 min read",
-      "metaDescription": "Arsenal begin their 2026/27 title defence at home to Coventry City on Friday 21 August. Confirmed fixture, Community Shield result, no predictions.",
-      "content": [
-        {
-          "heading": "The fact that starts the season",
-          "body": "Arsenal are the defending Premier League champions. BBC Sport, in the official fixture coverage, recorded that Mikel Arteta led them to their first Premier League title since 2004.\n\nTheir defence begins at home to newly promoted Coventry City on Friday 21 August, 20:00 BST, live on Sky Sports. The Premier League made that the first match of 2026/27."
-        },
-        {
-          "heading": "What they have already won in August",
-          "body": "On 16 August Arsenal beat Manchester City 3–0 in the FA Community Shield at the Principality Stadium. The FA named Riccardo Calafiori, Kai Havertz and Martin Ødegaard as the scorers, timed the first goal at 24 seconds, and noted Arsenal have now won the Shield for the second time in three years.\n\nThe Community Shield is a real trophy and a real result. It is also not a Premier League match. It does not move anyone up a table that has not started."
-        },
-        {
-          "heading": "Who they open against",
-          "body": "Coventry City won the Championship. At the Premier League AGM they were entered into the share register as members. BBC Sport says Friday is their first top-flight match in 25 years.\n\nChampions against a club that has waited a quarter of a century: that is the opening night the fixture computer produced. It is not a claim about how easy or hard the afternoon will be."
-        },
-        {
-          "heading": "The rest of their opening stretch is also published",
-          "body": "The Premier League released the full opening-round list on 19 June. After Coventry, Arsenal's next published league matches sit on that same calendar — kick-off times later in the season still move for television and for Europe.\n\nThis page is about the Friday that actually starts the defence. For the whole confirmed season calendar, including who came up and who went down, use the 2026/27 season guide."
-        },
-        {
-          "heading": "The question this page will not answer",
-          "body": "The draft title asked whether anyone can stop Arsenal. That is a season question. Two days before kick-off, nobody has played a league minute.\n\nBRYME will not publish a predicted table, a 'who can stop them' ranking, or an invented injury list. The match page for Arsenal v Coventry will carry the result after full-time. Until then the confirmed record is: they are champions, they have the Shield, and they host Coventry on Friday night."
-        }
-      ],
+      "publishedAt": "2026-09-03",
+      "updatedAt": "2026-09-03",
+      "readingTime": "7 min read",
+      "metaDescription": "Arsenal have started their title defence with two wins and no goals conceded. We look at the table, the €87.5m Bruno Guimarães signing and whether Chelsea, Manchester City or anyone else can stop them.",
+      "heroImage": "/assets/img/sports/hero-arsenal.jpg",
       "sources": [
         {
-          "name": "Premier League — Fixture schedule released for season 2026/27",
-          "url": "https://www.premierleague.com/en/news/4675508/premier-league-fixture-schedulereleased-for-season-202627"
+          "name": "BRYME league tables and results (verified full-time scores)",
+          "url": "https://bryme.onrender.com/sports/"
         },
         {
-          "name": "Premier League — The 2026/27 season officially starts",
-          "url": "https://www.premierleague.com/en/news/4673099/the-202627-premier-league-season-officially-starts/"
-        },
-        {
-          "name": "BBC Sport — Premier League fixtures 2026-27",
-          "url": "https://www.bbc.com/sport/football/articles/cdx7kyv92rjo"
-        },
-        {
-          "name": "The FA — 2026 FA Community Shield report",
-          "url": "https://www.thefa.com/news/2026/aug/16/fa-community-shield-2026-report-16082026"
+          "name": "BRYME 2026/27 transfer tracker — window closed 1 September 2026",
+          "url": "https://bryme.onrender.com/sports/articles/premier-league-transfer-tracker-august-2026/"
         }
       ],
-      "sourcesCheckedOn": "2026-08-19"
+      "sourcesCheckedOn": "2026-09-03"
     },
     {
       "slug": "ballon-dor-race",
@@ -294,305 +265,316 @@
     },
     {
       "slug": "rodris-future",
-      "title": "Rodri’s Future: What Happens to Manchester City If He Leaves?",
+      "title": "The Rodri Question: How Manchester City Finally Answered It",
+      "seoTitle": "How Manchester City Solved the Rodri Succession Problem",
+      "excerpt": "City did not replace one irreplaceable midfielder. They spent £241m on Enzo Fernández and Elliot Anderson and changed the shape of the midfield instead.",
       "category": "Players",
-      "status": "draft",
+      "categorySlug": "players",
+      "author": "BRYME Editorial",
       "labels": [
-        "featured",
+        "players",
+        "manchester-city",
         "analysis"
       ],
-      "author": "BRYME Sports Editorial",
-      "publicationDate": null,
-      "lastUpdated": null,
-      "seoTitle": "Rodri’s Future: What Happens to Manchester City If He Leaves? | BRYME Sports",
-      "metaDescription": null,
-      "heroImage": null,
-      "body": [],
-      "relatedArticles": []
+      "status": "published",
+      "publishedAt": "2026-09-03",
+      "updatedAt": "2026-09-03",
+      "readingTime": "6 min read",
+      "metaDescription": "Manchester City answered the Rodri succession question by signing Enzo Fernández for £125m and Elliot Anderson for around £116m — spreading the load rather than replacing one player.",
+      "heroImage": "/assets/img/sports/hero-man-city-manager.jpg",
+      "sources": [
+        {
+          "name": "BRYME league tables and results (verified full-time scores)",
+          "url": "https://bryme.onrender.com/sports/"
+        },
+        {
+          "name": "BRYME 2026/27 transfer tracker — window closed 1 September 2026",
+          "url": "https://bryme.onrender.com/sports/articles/premier-league-transfer-tracker-august-2026/"
+        }
+      ],
+      "sourcesCheckedOn": "2026-09-03"
     },
     {
       "slug": "marescas-second-attempt-in-england",
       "title": "Maresca’s Second Attempt in England: Can He Make It Work?",
+      "seoTitle": "Enzo Maresca at Manchester City: Can He Make It Work?",
+      "excerpt": "Enzo Maresca is back in the Premier League, this time replacing Pep Guardiola. Six points from two games, £306m spent on three signings, and a defence stripped of three senior centre-backs.",
       "category": "Managers",
-      "status": "draft",
+      "categorySlug": "managers",
+      "author": "BRYME Editorial",
       "labels": [
+        "managers",
+        "manchester-city",
         "analysis"
       ],
-      "author": "BRYME Sports Editorial",
-      "publicationDate": null,
-      "lastUpdated": null,
-      "seoTitle": "Maresca’s Second Attempt in England: Can He Make It Work? | BRYME Sports",
-      "metaDescription": null,
-      "heroImage": null,
-      "body": [],
-      "relatedArticles": []
+      "status": "published",
+      "publishedAt": "2026-09-03",
+      "updatedAt": "2026-09-03",
+      "readingTime": "6 min read",
+      "metaDescription": "Enzo Maresca has replaced Pep Guardiola at Manchester City with roughly £306m of new signings. We look at what his structure needs, what could go wrong and what the first two matches showed.",
+      "heroImage": "/assets/img/sports/hero-man-city-manager.jpg",
+      "sources": [
+        {
+          "name": "BRYME league tables and results (verified full-time scores)",
+          "url": "https://bryme.onrender.com/sports/"
+        },
+        {
+          "name": "BRYME 2026/27 transfer tracker — window closed 1 September 2026",
+          "url": "https://bryme.onrender.com/sports/articles/premier-league-transfer-tracker-august-2026/"
+        }
+      ],
+      "sourcesCheckedOn": "2026-09-03"
     },
     {
       "slug": "newly-promoted-clubs-approach",
-      "title": "Coventry, Ipswich and Hull: The Three Clubs Back in the Premier League",
-      "seoTitle": "Promoted Clubs 2026/27: Coventry, Ipswich, Hull",
-      "excerpt": "The Premier League formally welcomed Coventry City, Ipswich Town and Hull City. How they came up, their opening fixtures, and what this page will not invent about their 'approach'.",
-      "category": "Football",
-      "categorySlug": "football",
-      "author": "Ibrahim Sodiq",
+      "title": "The Newly Promoted Clubs: Three Very Different Approaches",
+      "seoTitle": "Hull, Ipswich, Coventry: How the Promoted Clubs Approached 2026/27",
+      "excerpt": "Hull spent almost nothing and are fourth without conceding. Coventry spent £68.5m and have not scored. Ipswich changed manager and did both. Three promoted clubs, three strategies.",
+      "category": "Premier League",
+      "categorySlug": "premier-league",
+      "author": "BRYME Editorial",
       "labels": [
         "premier-league",
         "promoted",
         "analysis"
       ],
       "status": "published",
-      "publishedAt": "2026-08-19",
-      "updatedAt": "2026-08-19",
+      "publishedAt": "2026-09-03",
+      "updatedAt": "2026-09-03",
       "readingTime": "6 min read",
-      "metaDescription": "Coventry City, Ipswich Town and Hull City join the 2026/27 Premier League. Official membership, how they were promoted, and their opening fixtures.",
-      "content": [
-        {
-          "heading": "They are members now, not guests",
-          "body": "At the Premier League's annual general meeting the three clubs promoted from the Championship — Coventry City, Ipswich Town and Hull City — were entered into the share register and given framed share certificates.\n\nThe three clubs who went the other way, Wolverhampton Wanderers, Burnley and West Ham United, transferred those shares back. That is the administrative fact of promotion: a club is in the Premier League when the league says it is, not when a table is reset on social media."
-        },
-        {
-          "heading": "How they came up",
-          "body": "Coventry City won the Championship. The Premier League's fixture release and BBC Sport both treat them as the newly promoted champions, and BBC Sport notes that Friday's match at Arsenal is their first top-flight game in 25 years.\n\nIpswich Town were the other automatic promotee. The Premier League listed their opening fixture as their first game back in the division.\n\nHull City completed the three by winning the Championship play-offs. Their first Premier League match is at home to Manchester United on Saturday 22 August."
-        },
-        {
-          "heading": "Their opening fixtures",
-          "body": "Coventry start away at champions Arsenal on Friday 21 August, 20:00 BST, live on Sky Sports.\n\nHull start at home to Manchester United on Saturday 22 August, 12:30, live on TNT Sports — the season's first Saturday lunchtime game.\n\nIpswich start at home to Sunderland on Saturday 22 August, 15:00.\n\nThose are the confirmed dates. They are not a statement about how any of the three will play."
-        },
-        {
-          "heading": "What 'approach' this page will not invent",
-          "body": "The working title of this draft asked what the newly promoted clubs' approach to the Premier League would be. That is a tactical question, and tactics are not something BRYME invents from a press-kit paragraph.\n\nWe have not been at their training grounds. We do not have official starting XIs. Summer signings belong on the transfer tracker only when a club or a named source has confirmed them, and even then a list of arrivals is not a playing style.\n\nWhat can be said without guessing: all three clubs are now Premier League members; two of them open at home; one of them opens away against the champions after a 25-year wait. The rest has to be watched."
-        },
-        {
-          "heading": "What happens next on BRYME",
-          "body": "Each opening fixture already has a match page. Results go on those same URLs after full-time. This site will not publish a survival table in August.\n\nThe full confirmed calendar, including who came down, is on our 2026/27 season guide."
-        }
-      ],
+      "metaDescription": "Hull City, Ipswich Town and Coventry City took three different approaches to the Premier League. Two matchweeks in, the club that spent least is fourth and the club that spent most is 19th.",
+      "heroImage": "/assets/img/sports/hero-premier-league.jpg",
       "sources": [
         {
-          "name": "Premier League — The 2026/27 season officially starts",
-          "url": "https://www.premierleague.com/en/news/4673099/the-202627-premier-league-season-officially-starts/"
+          "name": "BRYME league tables and results (verified full-time scores)",
+          "url": "https://bryme.onrender.com/sports/"
         },
         {
-          "name": "Premier League — Fixture schedule released for season 2026/27",
-          "url": "https://www.premierleague.com/en/news/4675508/premier-league-fixture-schedulereleased-for-season-202627"
-        },
-        {
-          "name": "BBC Sport — Premier League fixtures 2026-27",
-          "url": "https://www.bbc.com/sport/football/articles/cdx7kyv92rjo"
+          "name": "BRYME 2026/27 transfer tracker — window closed 1 September 2026",
+          "url": "https://bryme.onrender.com/sports/articles/premier-league-transfer-tracker-august-2026/"
         }
       ],
-      "sourcesCheckedOn": "2026-08-19"
+      "sourcesCheckedOn": "2026-09-03"
     },
     {
       "slug": "manchester-city-without-guardiola",
-      "title": "Manchester City After Guardiola: What Is Officially Confirmed",
-      "seoTitle": "Manchester City After Guardiola: Maresca, What Is Confirmed",
-      "excerpt": "Pep Guardiola stepped down after ten years and 20 trophies. Enzo Maresca is the new manager. The Community Shield was 3–0 to Arsenal. That is the record. Not a forecast.",
-      "category": "Football",
-      "categorySlug": "football",
-      "author": "Ibrahim Sodiq",
+      "title": "Manchester City Without Guardiola: What Happens Next?",
+      "seoTitle": "Manchester City Without Guardiola: Maresca’s First Season",
+      "excerpt": "Pep Guardiola has gone, Enzo Maresca has arrived, and City spent roughly £306m on three midfielders to make the change invisible. Two matches in, here is what the new era looks like.",
+      "category": "Managers",
+      "categorySlug": "managers",
+      "author": "BRYME Editorial",
       "labels": [
-        "manchester-city",
         "managers",
-        "featured",
-        "analysis"
+        "manchester-city",
+        "analysis",
+        "featured"
       ],
       "status": "published",
-      "publishedAt": "2026-08-19",
-      "updatedAt": "2026-08-19",
-      "readingTime": "6 min read",
-      "metaDescription": "What Manchester City and the FA have confirmed about life after Pep Guardiola: Maresca's appointment, the Community Shield, and the first league match.",
-      "content": [
-        {
-          "heading": "What City actually announced",
-          "body": "On 22 May 2026 Manchester City said Pep Guardiola would step down as manager that summer, after ten years and 20 major trophies. The club called him the most successful manager in its history. He stays with the City Football Group as a Global Ambassador.\n\nChairman Khaldoon Al Mubarak said the right answer was for Guardiola to finish his journey as manager, and that he would remain with the group. The club said Sunday against Aston Villa would be his 593rd and final game in charge."
-        },
-        {
-          "heading": "Maresca's appointment",
-          "body": "On 29 June the club appointed Enzo Maresca on a three-year contract until summer 2029. City said it is his third spell at the club.\n\nMaresca said: “This will be my third spell here. I know this Club, I know the demands and I know the expectations.” Chief executive Ferran Soriano said Maresca had been the stand-out candidate, and named his work at Chelsea, Leicester and with City's EDS among the reasons.\n\nIn July the club also named the coaches joining him, including assistant Roberto Vitiello. Those are staffing announcements, not a prediction of how City will play."
-        },
-        {
-          "heading": "The first competitive match",
-          "body": "Maresca's first competitive fixture was the FA Community Shield on 16 August at the Principality Stadium. Arsenal won 3–0. The FA's match report timed Riccardo Calafiori's opening goal at 24 seconds, named Kai Havertz and Martin Ødegaard as the other scorers, and described the afternoon as Maresca's first competitive match in charge.\n\nA Community Shield is a curtain-raiser. It is not a Premier League result and it is not a verdict on a season that has not started."
-        },
-        {
-          "heading": "The first league match",
-          "body": "Manchester City's first 2026/27 Premier League match is at home to AFC Bournemouth on Sunday 23 August, 14:00 BST, live on Sky Sports.\n\nBournemouth also begin the season under a new head coach, Marco Rose — confirmed on the club's own site. Two new appointments, one published kick-off."
-        },
-        {
-          "heading": "What this page will not tell you",
-          "body": "It will not tell you whether City can win the league without Guardiola. It will not list a predicted XI. It will not treat transfer rumours — including anything about Rodri — as fact. Rumours stay off this page until a club confirms them.\n\nThe draft title asked what happens next. The honest answer, two days before the league starts, is: a home match against Bournemouth, under a manager City have officially appointed. Everything else is still unplayed."
-        }
-      ],
+      "publishedAt": "2026-09-03",
+      "updatedAt": "2026-09-03",
+      "readingTime": "7 min read",
+      "metaDescription": "Enzo Maresca has replaced Pep Guardiola at Manchester City, with Enzo Fernández, Elliot Anderson and Iliman Ndiaye arriving for around £306m. What the post-Guardiola side actually looks like.",
+      "heroImage": "/assets/img/sports/hero-man-city-manager.jpg",
       "sources": [
         {
-          "name": "Manchester City — Guardiola to step down",
-          "url": "https://www.mancity.com/news/mens/pep-guardiola-official-announcement-63915039"
+          "name": "BRYME league tables and results (verified full-time scores)",
+          "url": "https://bryme.onrender.com/sports/"
         },
         {
-          "name": "Manchester City — Enzo Maresca appointed manager",
-          "url": "https://www.mancity.com/news/mens/enzo-maresca-manchester-city-manager-63918331"
-        },
-        {
-          "name": "Manchester City — coaching team confirmed",
-          "url": "https://www.mancity.com/news/mens/coaching-team-enzo-maresca-confirmed-63919119"
-        },
-        {
-          "name": "The FA — 2026 FA Community Shield report",
-          "url": "https://www.thefa.com/news/2026/aug/16/fa-community-shield-2026-report-16082026"
-        },
-        {
-          "name": "Premier League — Fixture schedule released for season 2026/27",
-          "url": "https://www.premierleague.com/en/news/4675508/premier-league-fixture-schedulereleased-for-season-202627"
-        },
-        {
-          "name": "AFC Bournemouth — Who is Marco Rose?",
-          "url": "https://www.afcb.co.uk/news/2026/june/03/who-is-marco-rose--the-story-behind-afc-bournemouth-s-new-head-coach/"
+          "name": "BRYME 2026/27 transfer tracker — window closed 1 September 2026",
+          "url": "https://bryme.onrender.com/sports/articles/premier-league-transfer-tracker-august-2026/"
         }
       ],
-      "sourcesCheckedOn": "2026-08-19"
+      "sourcesCheckedOn": "2026-09-03"
     },
     {
       "slug": "liverpools-next-chapter",
-      "title": "Liverpool Under Andoni Iraola: What the Club Has Confirmed",
-      "seoTitle": "Liverpool Appoint Andoni Iraola: What Is Official",
-      "excerpt": "Liverpool appointed Andoni Iraola on 4 June. His first Premier League match is at Newcastle on Sunday. That is the chapter the club has actually written.",
-      "category": "Football",
-      "categorySlug": "football",
-      "author": "Ibrahim Sodiq",
+      "title": "Liverpool’s Next Chapter: Can They Challenge Again?",
+      "seoTitle": "Liverpool 2026/27: Life After Salah, Robertson and Konaté",
+      "excerpt": "Salah, Robertson and Konaté all left on free transfers. Arne Slot left too. Andoni Iraola has two points from two games and the biggest rebuild at Anfield in a decade.",
+      "category": "Premier League",
+      "categorySlug": "premier-league",
+      "author": "BRYME Editorial",
       "labels": [
+        "premier-league",
         "liverpool",
-        "managers",
-        "analysis"
+        "analysis",
+        "featured"
       ],
       "status": "published",
-      "publishedAt": "2026-08-19",
-      "updatedAt": "2026-08-19",
-      "readingTime": "6 min read",
-      "metaDescription": "Liverpool FC appointed Andoni Iraola as head coach on 4 June 2026. What the club confirmed, and when his first Premier League match is.",
-      "content": [
-        {
-          "heading": "The appointment",
-          "body": "On 4 June 2026 Liverpool FC said Andoni Iraola had agreed to become the club's new head coach for 2026–27, succeeding Arne Slot.\n\nThe club's own news page is the source. Liverpool said Iraola arrived after three Premier League seasons at AFC Bournemouth, and that he led Bournemouth into Europe for the first time with a sixth-placed finish."
-        },
-        {
-          "heading": "What the club said about his path",
-          "body": "Liverpool's announcement sketched the career it was hiring. Iraola, then 43, made more than 500 appearances for Athletic Club over 12 seasons, mainly as a right-back, and won seven caps for Spain. He finished his playing days at New York City FC.\n\nHis first managerial job, the club said, was AEK Larnaca in 2018. Then Mirandés, then Rayo Vallecano — whom he led to promotion to La Liga in his first season — and then Bournemouth.\n\nThe club staff page later summarised those Bournemouth seasons as consecutive finishes of 12th, ninth and sixth."
-        },
-        {
-          "heading": "What he said on the club site",
-          "body": "Iraola told Liverpoolfc.com he was “really excited”, and that Liverpool is “a big club, a massive club, one of the biggest in the world.” He talked about the atmosphere, the supporters and “the chance to fight for titles.”\n\nThat is a first-day quote on the club website. It is not a tactical plan and it is not a guarantee."
-        },
-        {
-          "heading": "The first league match",
-          "body": "Iraola's first Premier League match as Liverpool head coach is away at Newcastle United on Sunday 23 August, 16:30 BST, live on Sky Sports.\n\nThat fixture is on the official opening-round list released by the Premier League. It has not been played. There is no result, no lineup and no post-match to write."
-        },
-        {
-          "heading": "What this page leaves out",
-          "body": "It does not reconstruct last season beyond what Liverpool stated about Bournemouth. It does not list summer incomings or outgoings — those belong on the transfer tracker only when a club confirms them.\n\nThe draft title asked whether Liverpool can challenge again. That is a question for May. In August the confirmed facts are a new head coach, a public first interview, and a Sunday trip to Newcastle."
-        }
-      ],
+      "publishedAt": "2026-09-03",
+      "updatedAt": "2026-09-03",
+      "readingTime": "7 min read",
+      "metaDescription": "Liverpool lost Mohamed Salah, Andy Robertson and Ibrahima Konaté on free transfers and replaced Arne Slot with Andoni Iraola. Two draws in, we look at whether they can challenge again.",
+      "heroImage": "/assets/img/sports/hero-liverpool.jpg",
       "sources": [
         {
-          "name": "Liverpool FC — Andoni Iraola appointed head coach",
-          "url": "https://www.liverpoolfc.com/news/liverpool-fc-appoint-andoni-iraola-new-head-coach"
+          "name": "BRYME league tables and results (verified full-time scores)",
+          "url": "https://bryme.onrender.com/sports/"
         },
         {
-          "name": "Liverpool FC — Andoni Iraola staff profile",
-          "url": "https://www.liverpoolfc.com/team/mens/staff/andoni-iraola"
-        },
-        {
-          "name": "Premier League — Fixture schedule released for season 2026/27",
-          "url": "https://www.premierleague.com/en/news/4675508/premier-league-fixture-schedulereleased-for-season-202627"
+          "name": "BRYME 2026/27 transfer tracker — window closed 1 September 2026",
+          "url": "https://bryme.onrender.com/sports/articles/premier-league-transfer-tracker-august-2026/"
         }
       ],
-      "sourcesCheckedOn": "2026-08-19"
+      "sourcesCheckedOn": "2026-09-03"
     },
     {
       "slug": "manchester-united-finally-their-season",
       "title": "Manchester United: Is This Finally Their Season?",
+      "seoTitle": "Manchester United 2026/27: Is This Finally Their Season?",
+      "excerpt": "Beaten 2–0 at promoted Hull, then 5–2 winners over Ipswich. Bruno Fernandes leads the league’s scoring charts and Carrick has spent £150m on a new midfield. What it adds up to.",
       "category": "Premier League",
-      "status": "draft",
+      "categorySlug": "premier-league",
+      "author": "BRYME Editorial",
       "labels": [
-        "trending",
+        "premier-league",
+        "manchester-united",
         "analysis"
       ],
-      "author": "BRYME Sports Editorial",
-      "publicationDate": null,
-      "lastUpdated": null,
-      "seoTitle": "Manchester United: Is This Finally Their Season? | BRYME Sports",
-      "metaDescription": null,
-      "heroImage": null,
-      "body": [],
-      "relatedArticles": []
+      "status": "published",
+      "publishedAt": "2026-09-03",
+      "updatedAt": "2026-09-03",
+      "readingTime": "6 min read",
+      "metaDescription": "Manchester United have spent around £150m rebuilding midfield under Michael Carrick. After a 2–0 defeat at Hull and a 5–2 win over Ipswich, we look at whether this is finally their season.",
+      "heroImage": "/assets/img/sports/hero-premier-league.jpg",
+      "sources": [
+        {
+          "name": "BRYME league tables and results (verified full-time scores)",
+          "url": "https://bryme.onrender.com/sports/"
+        },
+        {
+          "name": "BRYME 2026/27 transfer tracker — window closed 1 September 2026",
+          "url": "https://bryme.onrender.com/sports/articles/premier-league-transfer-tracker-august-2026/"
+        }
+      ],
+      "sourcesCheckedOn": "2026-09-03"
     },
     {
       "slug": "players-who-could-explode-this-season",
       "title": "The Players Who Could Explode This Season",
+      "seoTitle": "Players Who Could Break Out in 2026/27",
+      "excerpt": "Jack Hinshelwood has two goals in one appearance. Elliot Anderson cost £116m. Donyell Malen has five in two for Roma. Seven players set for a breakout season, and the evidence for each.",
       "category": "Players",
-      "status": "draft",
+      "categorySlug": "players",
+      "author": "BRYME Editorial",
       "labels": [
-        "trending"
+        "players",
+        "analysis",
+        "featured"
       ],
-      "author": "BRYME Sports Editorial",
-      "publicationDate": null,
-      "lastUpdated": null,
-      "seoTitle": "The Players Who Could Explode This Season | BRYME Sports",
-      "metaDescription": null,
-      "heroImage": null,
-      "body": [],
-      "relatedArticles": []
+      "status": "published",
+      "publishedAt": "2026-09-03",
+      "updatedAt": "2026-09-03",
+      "readingTime": "6 min read",
+      "metaDescription": "Jack Hinshelwood, Rayan Cherki, Elliot Anderson, Carlos Baleba, Morgan Rogers, Donyell Malen and Emersonn — seven players who could break out in 2026/27, with early-season evidence.",
+      "heroImage": "/assets/img/sports/hero-breakout.jpg",
+      "sources": [
+        {
+          "name": "BRYME league tables and results (verified full-time scores)",
+          "url": "https://bryme.onrender.com/sports/"
+        },
+        {
+          "name": "BRYME 2026/27 transfer tracker — window closed 1 September 2026",
+          "url": "https://bryme.onrender.com/sports/articles/premier-league-transfer-tracker-august-2026/"
+        }
+      ],
+      "sourcesCheckedOn": "2026-09-03"
     },
     {
       "slug": "managers-with-most-to-prove",
-      "title": "The Managers With the Most to Prove",
+      "title": "The Managers With the Most to Prove in 2026/27",
+      "seoTitle": "Premier League Managers With the Most to Prove in 2026/27",
+      "excerpt": "Eight Premier League clubs changed manager this summer. Maresca replaced Guardiola, Alonso took Chelsea and Iraola inherited a Liverpool side that lost Salah for nothing.",
       "category": "Managers",
-      "status": "draft",
+      "categorySlug": "managers",
+      "author": "BRYME Editorial",
       "labels": [
+        "managers",
+        "premier-league",
         "analysis"
       ],
-      "author": "BRYME Sports Editorial",
-      "publicationDate": null,
-      "lastUpdated": null,
-      "seoTitle": "The Managers With the Most to Prove | BRYME Sports",
-      "metaDescription": null,
-      "heroImage": null,
-      "body": [],
-      "relatedArticles": []
+      "status": "published",
+      "publishedAt": "2026-09-03",
+      "updatedAt": "2026-09-03",
+      "readingTime": "7 min read",
+      "metaDescription": "Enzo Maresca at Manchester City, Xabi Alonso at Chelsea, Andoni Iraola at Liverpool and five more — the Premier League managers with the most to prove, with the early table as evidence.",
+      "heroImage": "/assets/img/sports/hero-man-city-manager.jpg",
+      "sources": [
+        {
+          "name": "BRYME league tables and results (verified full-time scores)",
+          "url": "https://bryme.onrender.com/sports/"
+        },
+        {
+          "name": "BRYME 2026/27 transfer tracker — window closed 1 September 2026",
+          "url": "https://bryme.onrender.com/sports/articles/premier-league-transfer-tracker-august-2026/"
+        }
+      ],
+      "sourcesCheckedOn": "2026-09-03"
     },
     {
       "slug": "five-biggest-transfer-winners",
-      "title": "The Five Biggest Transfer Winners",
+      "title": "The Five Biggest Transfer Winners of the 2026 Window",
+      "seoTitle": "The Five Biggest Transfer Winners of the 2026 Window",
+      "excerpt": "The window shut on 1 September. Spending big and improving are not the same thing — here are the five clubs whose squads are genuinely better, and the early evidence for each.",
       "category": "Transfer news",
-      "status": "draft",
+      "categorySlug": "transfer-news",
+      "author": "BRYME Editorial",
       "labels": [
-        "transfer"
+        "transfers",
+        "premier-league",
+        "analysis",
+        "featured"
       ],
-      "author": "BRYME Sports Editorial",
-      "publicationDate": null,
-      "lastUpdated": null,
-      "seoTitle": "The Five Biggest Transfer Winners | BRYME Sports",
-      "metaDescription": null,
-      "heroImage": null,
-      "body": [],
-      "relatedArticles": []
+      "status": "published",
+      "publishedAt": "2026-09-03",
+      "updatedAt": "2026-09-03",
+      "readingTime": "7 min read",
+      "metaDescription": "Manchester City, Arsenal, Tottenham, Nottingham Forest and Ipswich — the five clubs that won the 2026 transfer window, judged on whether the squad actually improved, with the early league table as evidence.",
+      "heroImage": "/assets/img/sports/hero-premier-league.jpg",
+      "sources": [
+        {
+          "name": "BRYME league tables and results (verified full-time scores)",
+          "url": "https://bryme.onrender.com/sports/"
+        },
+        {
+          "name": "BRYME 2026/27 transfer tracker — window closed 1 September 2026",
+          "url": "https://bryme.onrender.com/sports/articles/premier-league-transfer-tracker-august-2026/"
+        }
+      ],
+      "sourcesCheckedOn": "2026-09-03"
     },
     {
       "slug": "five-clubs-that-still-need-signings",
-      "title": "The Five Clubs That Still Need Signings",
+      "title": "Five Clubs That Still Need Signings — And Cannot Buy Until January",
+      "seoTitle": "Five Clubs That Still Need Signings After the 2026 Window",
+      "excerpt": "The window shut on 1 September. These five have holes they can no longer fill, and the league table is already showing exactly where.",
       "category": "Transfer news",
-      "status": "draft",
+      "categorySlug": "transfer-news",
+      "author": "BRYME Editorial",
       "labels": [
-        "transfer"
+        "transfers",
+        "premier-league",
+        "analysis"
       ],
-      "author": "BRYME Sports Editorial",
-      "publicationDate": null,
-      "lastUpdated": null,
-      "seoTitle": "The Five Clubs That Still Need Signings | BRYME Sports",
-      "metaDescription": null,
-      "heroImage": null,
-      "body": [],
-      "relatedArticles": []
+      "status": "published",
+      "publishedAt": "2026-09-03",
+      "updatedAt": "2026-09-03",
+      "readingTime": "6 min read",
+      "metaDescription": "Tottenham, Aston Villa, Coventry, Crystal Palace and Fulham all finished the 2026 window with obvious gaps. We use the early table — goals scored, conceded and points — to show what each is missing.",
+      "heroImage": "/assets/img/sports/hero-matchweek.jpg",
+      "sources": [
+        {
+          "name": "BRYME league tables and results (verified full-time scores)",
+          "url": "https://bryme.onrender.com/sports/"
+        },
+        {
+          "name": "BRYME 2026/27 transfer tracker — window closed 1 September 2026",
+          "url": "https://bryme.onrender.com/sports/articles/premier-league-transfer-tracker-august-2026/"
+        }
+      ],
+      "sourcesCheckedOn": "2026-09-03"
     },
     {
       "slug": "premier-league-matchweek-1-guide",
@@ -658,153 +640,162 @@
     },
     {
       "slug": "players-to-watch-this-weekend",
-      "title": "Players to Watch This Weekend",
+      "title": "Players to Watch This Weekend Across Europe",
+      "seoTitle": "Players to Watch This Weekend: Europe’s Top Five Leagues",
+      "excerpt": "Bruno Fernandes leads England with three in two. Raphinha has five in three. Donyell Malen has five in two for a Roma side yet to concede. The players in form, from the actual scoring charts.",
       "category": "Matchweek coverage",
-      "status": "draft",
+      "categorySlug": "matchweek-coverage",
+      "author": "BRYME Editorial",
       "labels": [
-        "matchweek"
+        "players",
+        "matchweek",
+        "premier-league",
+        "la-liga",
+        "serie-a"
       ],
-      "author": "BRYME Sports Editorial",
-      "publicationDate": null,
-      "lastUpdated": null,
-      "seoTitle": "Players to Watch This Weekend | BRYME Sports",
-      "metaDescription": null,
-      "heroImage": null,
-      "body": [],
-      "relatedArticles": []
+      "status": "published",
+      "publishedAt": "2026-09-03",
+      "updatedAt": "2026-09-03",
+      "readingTime": "6 min read",
+      "metaDescription": "Bruno Fernandes, Raphinha, Kylian Mbappé and Donyell Malen — the players in form across the Premier League, La Liga, Serie A, Bundesliga and Ligue 1 this weekend, taken from the current scoring charts.",
+      "heroImage": "/assets/img/sports/hero-breakout.jpg",
+      "sources": [
+        {
+          "name": "BRYME league tables and results (verified full-time scores)",
+          "url": "https://bryme.onrender.com/sports/"
+        },
+        {
+          "name": "BRYME 2026/27 transfer tracker — window closed 1 September 2026",
+          "url": "https://bryme.onrender.com/sports/articles/premier-league-transfer-tracker-august-2026/"
+        }
+      ],
+      "sourcesCheckedOn": "2026-09-03"
     },
     {
       "slug": "tactical-questions-ahead-of-matchweek-1",
-      "title": "The Biggest Tactical Questions Ahead of Matchweek 1",
+      "title": "The Five Biggest Tactical Questions of the Season So Far",
+      "seoTitle": "Five Big Tactical Questions in the Premier League Right Now",
+      "excerpt": "Chelsea are top and leaking goals. City have a £241m midfield and a thinner defence. Spurs have spent £185m and scored nothing. The five tactical problems that will define the autumn.",
       "category": "Matchweek coverage",
-      "status": "draft",
+      "categorySlug": "matchweek-coverage",
+      "author": "BRYME Editorial",
       "labels": [
         "matchweek",
-        "analysis"
+        "tactics",
+        "premier-league"
       ],
-      "author": "BRYME Sports Editorial",
-      "publicationDate": null,
-      "lastUpdated": null,
-      "seoTitle": "The Biggest Tactical Questions Ahead of Matchweek 1 | BRYME Sports",
-      "metaDescription": null,
-      "heroImage": null,
-      "body": [],
-      "relatedArticles": []
+      "status": "published",
+      "publishedAt": "2026-09-03",
+      "updatedAt": "2026-09-03",
+      "readingTime": "7 min read",
+      "metaDescription": "Chelsea conceding five in two wins, Manchester City’s £241m midfield, Tottenham’s missing goals, Hull City’s clean sheets and Liverpool’s press — five tactical questions after two matchweeks.",
+      "heroImage": "/assets/img/sports/hero-matchweek.jpg",
+      "sources": [
+        {
+          "name": "BRYME league tables and results (verified full-time scores)",
+          "url": "https://bryme.onrender.com/sports/"
+        },
+        {
+          "name": "BRYME 2026/27 transfer tracker — window closed 1 September 2026",
+          "url": "https://bryme.onrender.com/sports/articles/premier-league-transfer-tracker-august-2026/"
+        }
+      ],
+      "sourcesCheckedOn": "2026-09-03"
     },
     {
       "slug": "five-matches-we-cannot-wait-to-watch",
-      "title": "Five Opening-Weekend Matches, and Why They Matter",
-      "seoTitle": "Premier League Opening Weekend: Five Matches to Watch",
-      "excerpt": "Arsenal–Coventry, Hull–United, City–Bournemouth, Newcastle–Liverpool and Fulham–Chelsea. Why these five fixtures are the ones the calendar itself made important.",
-      "category": "Football",
-      "categorySlug": "football",
-      "author": "Ibrahim Sodiq",
+      "title": "Five Matches We Cannot Wait to Watch This Weekend",
+      "seoTitle": "Five Best Matches This Weekend: Arsenal v Chelsea, Inter v Napoli",
+      "excerpt": "Forty-eight fixtures across Europe’s top five leagues. Arsenal host Chelsea, Inter host Napoli and Monaco go to the Parc des Princes with a perfect record — these are the five that matter.",
+      "category": "Matchweek coverage",
+      "categorySlug": "matchweek-coverage",
+      "author": "BRYME Editorial",
       "labels": [
-        "premier-league",
         "matchweek",
-        "trending"
+        "premier-league",
+        "la-liga",
+        "serie-a",
+        "ligue-1"
       ],
       "status": "published",
-      "publishedAt": "2026-08-19",
-      "updatedAt": "2026-08-19",
+      "publishedAt": "2026-09-03",
+      "updatedAt": "2026-09-03",
       "readingTime": "6 min read",
-      "metaDescription": "Five Premier League opening-weekend fixtures that matter because of confirmed facts: promotion, new managers and the Community Shield — not invented storylines.",
-      "content": [
-        {
-          "heading": "The calendar chose these, not a hunch",
-          "body": "Every opening-round match is on the official list. Five of them carry a confirmed first: a first top-flight game in 25 years, a first league match after Guardiola, a first Premier League match for a new Liverpool head coach, a first league match for a new Chelsea manager, a play-off winner's first home night back.\n\nThat is why these five, and not a ranking of who is 'biggest'."
-        },
-        {
-          "heading": "Arsenal v Coventry City — Friday 21 August, 20:00, Sky Sports",
-          "body": "The season starts here. Champions against the Championship winners, at the Emirates.\n\nArsenal have already lifted one piece of August silverware: they beat Manchester City 3–0 in the Community Shield on 16 August. That is a curtain-raiser, not a league table. Coventry's fact is simpler and heavier — 25 years out of the top flight, now opening against the champions."
-        },
-        {
-          "heading": "Hull City v Manchester United — Saturday 22 August, 12:30, TNT Sports",
-          "body": "Hull came up through the play-offs. The Premier League made their home game against Manchester United the first Saturday lunchtime match of the season.\n\nUnited's manager situation is a longer story than this briefing. What is confirmed for this weekend is the fixture, the time and the broadcaster."
-        },
-        {
-          "heading": "Manchester City v AFC Bournemouth — Sunday 23 August, 14:00, Sky Sports",
-          "body": "City's first home league match without Pep Guardiola. Enzo Maresca, appointed on 29 June on a three-year contract, has already had one competitive afternoon: the Community Shield defeat.\n\nBournemouth also begin under a new head coach, Marco Rose. Two new benches, one published kick-off. That is the story. Not a projection of where either club finishes."
-        },
-        {
-          "heading": "Newcastle United v Liverpool — Sunday 23 August, 16:30, Sky Sports",
-          "body": "Liverpool appointed Andoni Iraola as head coach on 4 June, succeeding Arne Slot. The club's own announcement is the source for that, not a rumour column.\n\nHis first Premier League match is away at St James' Park. Whatever systems either side intend to play, they have not played this fixture yet."
-        },
-        {
-          "heading": "Fulham v Chelsea — Monday 24 August, 20:00, Sky Sports",
-          "body": "The opening round ends in west London. Chelsea appointed Xabi Alonso as manager on a four-year contract, to begin on 1 July 2026. Fulham appointed Álvaro Arbeloa as head coach on 7 July.\n\nA Monday-night derby between two new coaches is interesting because both appointments are official, not because anyone here has seen their league XI."
-        },
-        {
-          "heading": "The other five still exist",
-          "body": "Everton v Palace, Ipswich v Sunderland, Forest v Leeds, Brentford v Tottenham and Brighton v Villa are also Matchweek 1. They are on the same official list. This page is not a claim that they do not matter.\n\nNo scores, no lineups, no 'players to watch' invented to pad a list. When the matches are played, the results go on the match pages."
-        }
-      ],
+      "metaDescription": "Arsenal v Chelsea, Inter v Napoli, PSG v Monaco, Valencia v Barcelona and Juventus v Milan — the five best fixtures across Europe this weekend, with the form behind each.",
+      "heroImage": "/assets/img/sports/hero-matches.jpg",
       "sources": [
         {
-          "name": "Premier League — Fixture schedule released for season 2026/27",
-          "url": "https://www.premierleague.com/en/news/4675508/premier-league-fixture-schedulereleased-for-season-202627"
+          "name": "BRYME league tables and results (verified full-time scores)",
+          "url": "https://bryme.onrender.com/sports/"
         },
         {
-          "name": "The FA — 2026 FA Community Shield report",
-          "url": "https://www.thefa.com/news/2026/aug/16/fa-community-shield-2026-report-16082026"
-        },
-        {
-          "name": "Manchester City — Enzo Maresca appointed manager",
-          "url": "https://www.mancity.com/news/mens/enzo-maresca-manchester-city-manager-63918331"
-        },
-        {
-          "name": "Liverpool FC — Andoni Iraola appointed head coach",
-          "url": "https://www.liverpoolfc.com/news/liverpool-fc-appoint-andoni-iraola-new-head-coach"
-        },
-        {
-          "name": "Chelsea FC — Xabi Alonso appointed manager",
-          "url": "https://www.chelseafc.com/en/news/article/xabi-alonso-appointed-chelsea-manager"
-        },
-        {
-          "name": "Fulham FC — Álvaro Arbeloa appointed head coach",
-          "url": "https://www.fulhamfc.com/news/2026/july/07/alvaro-arbeloa-appointed-fulham-head-coach/"
-        },
-        {
-          "name": "AFC Bournemouth — Who is Marco Rose?",
-          "url": "https://www.afcb.co.uk/news/2026/june/03/who-is-marco-rose--the-story-behind-afc-bournemouth-s-new-head-coach/"
+          "name": "BRYME 2026/27 transfer tracker — window closed 1 September 2026",
+          "url": "https://bryme.onrender.com/sports/articles/premier-league-transfer-tracker-august-2026/"
         }
       ],
-      "sourcesCheckedOn": "2026-08-19"
+      "sourcesCheckedOn": "2026-09-03"
     },
     {
       "slug": "premier-league-banter-table",
-      "title": "Premier League Banter Table",
+      "title": "The Premier League Banter Table",
+      "seoTitle": "The Premier League Banter Table — 2026/27",
+      "excerpt": "The real table, the real points, and one honest sentence per club. Spurs are bottom with a £185m midfield, Hull are fourth with a £3m goalkeeper, and Aston Villa have not scored at all.",
       "category": "BRYME original/editorial pieces",
-      "status": "draft",
+      "categorySlug": "bryme-original",
+      "author": "BRYME Editorial",
       "labels": [
-        "editor-pick"
+        "premier-league",
+        "editorial",
+        "debates"
       ],
-      "author": "BRYME Sports Editorial",
-      "publicationDate": null,
-      "lastUpdated": null,
-      "seoTitle": "Premier League Banter Table | BRYME Sports",
-      "metaDescription": null,
-      "heroImage": null,
-      "body": [],
-      "relatedArticles": []
+      "status": "published",
+      "publishedAt": "2026-09-03",
+      "updatedAt": "2026-09-03",
+      "readingTime": "5 min read",
+      "metaDescription": "The real Premier League table with a verdict on every club. Tottenham bottom with a £185m midfield, Hull City fourth having conceded nothing, and Aston Villa yet to score a goal.",
+      "heroImage": "/assets/img/sports/hero-landing.jpg",
+      "sources": [
+        {
+          "name": "BRYME league tables and results (verified full-time scores)",
+          "url": "https://bryme.onrender.com/sports/"
+        },
+        {
+          "name": "BRYME 2026/27 transfer tracker — window closed 1 September 2026",
+          "url": "https://bryme.onrender.com/sports/articles/premier-league-transfer-tracker-august-2026/"
+        }
+      ],
+      "sourcesCheckedOn": "2026-09-03"
     },
     {
       "slug": "five-things-fans-will-talk-about-this-weekend",
       "title": "Five Things Football Fans Will Be Talking About This Weekend",
+      "seoTitle": "Five Things Football Fans Will Talk About This Weekend",
+      "excerpt": "Spurs have spent £185m and scored nothing, Hull City are fourth without conceding, and Chelsea sold their midfield to a title rival. The five arguments this weekend will produce.",
       "category": "Football debates",
-      "status": "draft",
+      "categorySlug": "football-debates",
+      "author": "BRYME Editorial",
       "labels": [
-        "trending",
+        "premier-league",
+        "debates",
         "matchweek"
       ],
-      "author": "BRYME Sports Editorial",
-      "publicationDate": null,
-      "lastUpdated": null,
-      "seoTitle": "Five Things Football Fans Will Be Talking About This Weekend | BRYME Sports",
-      "metaDescription": null,
-      "heroImage": null,
-      "body": [],
-      "relatedArticles": []
+      "status": "published",
+      "publishedAt": "2026-09-03",
+      "updatedAt": "2026-09-03",
+      "readingTime": "6 min read",
+      "metaDescription": "Tottenham’s goalless £185m midfield, Hull City in fourth, Chelsea selling Enzo Fernández to Manchester City, Liverpool losing three players on frees and Bruno Fernandes topping the scoring charts.",
+      "heroImage": "/assets/img/sports/hero-matchweek.jpg",
+      "sources": [
+        {
+          "name": "BRYME league tables and results (verified full-time scores)",
+          "url": "https://bryme.onrender.com/sports/"
+        },
+        {
+          "name": "BRYME 2026/27 transfer tracker — window closed 1 September 2026",
+          "url": "https://bryme.onrender.com/sports/articles/premier-league-transfer-tracker-august-2026/"
+        }
+      ],
+      "sourcesCheckedOn": "2026-09-03"
     },
     {
       "slug": "champions-league-format-explained",
