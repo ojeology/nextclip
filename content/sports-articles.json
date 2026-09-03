@@ -23,6 +23,37 @@
   ],
   "articles": [
     {
+      "slug": "biggest-spenders-and-top-five-league-predictions",
+      "title": "Football's Five Biggest Spenders — And Our Score Predictions For Europe's Top Five Leagues",
+      "seoTitle": "Biggest Transfer Spenders + Top Five League Score Predictions",
+      "excerpt": "Chelsea have spent €3.12bn in five years, more than any club on earth. The full top five, then a predicted scoreline for every fixture in England, Spain, Italy, Germany and France.",
+      "category": "Transfer news",
+      "categorySlug": "transfer-news",
+      "author": "BRYME Editorial",
+      "labels": [
+        "transfers",
+        "predictions",
+        "premier-league",
+        "la-liga",
+        "serie-a",
+        "bundesliga",
+        "ligue-1",
+        "featured"
+      ],
+      "status": "published",
+      "publishedAt": "2026-09-03",
+      "updatedAt": "2026-09-03",
+      "readingTime": "9 min read",
+      "metaDescription": "Chelsea €3.12bn, Man City €2.37bn, Man United €2.06bn, PSG €2.00bn, Juventus €1.91bn — the five biggest spenders in football, plus a scoreline prediction for every fixture across Europe's top five leagues.",
+      "sources": [
+        {
+          "name": "Transfermarkt — transfer income and expenditure",
+          "url": "https://www.transfermarkt.co.uk/statistik/einnahmenausgaben"
+        }
+      ],
+      "sourcesCheckedOn": "2026-09-03"
+    },
+    {
       "slug": "arsenal-title-defence",
       "title": "Arsenal's Title Defence Starts Friday Against Coventry",
       "seoTitle": "Arsenal Title Defence: Opening Fixture vs Coventry",
