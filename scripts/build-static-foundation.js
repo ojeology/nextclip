@@ -1,4 +1,23 @@
 #!/usr/bin/env node
+/* ============================== WARNING ==============================
+   THIS SCRIPT REWRITES ~3,000 PAGES ACROSS THE WHOLE SITE.
+
+   Its JSON/content sources have drifted out of sync with the committed
+   HTML, so a plain `node scripts/build-static-foundation.js` is currently
+   DESTRUCTIVE. On 2026-09-03 an unguarded run silently:
+     * replaced /sports/ (the "Scores, Tables & Fixtures" league hub) with
+       an unrelated editorial landing page
+     * stripped SEO titles from 2,035 pages
+       ("Naruto (2002) | Trailer & Where to Watch" -> "Naruto (2002)")
+     * overwrote 16 finished sports articles with 5-line draft stubs
+     * recreated 5 duplicate /sports/<slug>/ URLs that had been 301'd away
+     * dropped 230 URLs from sitemap.xml and 4,349 lines from data/movies.json
+
+   Before running it again, resync the sources and diff the output. To make
+   only a template change (e.g. the disclosure hook in layout()), run it,
+   then `git checkout <good-ref> -- <paths>` everything you did not intend
+   to touch and verify with `git diff --name-only <good-ref>`.
+   ==================================================================== */
 /* Build indexable static movie, series, anime, genre, year and article pages.
    The legacy hash app (legacy/index.html) remains untouched.
    Frontend architecture: types are separated (/movies, /series, /anime),
