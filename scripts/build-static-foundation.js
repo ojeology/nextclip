@@ -1166,8 +1166,9 @@ function trailerBoxInner(m, idx){
   <div class="trailer-error" data-trailer-error hidden><b>Trailer currently unavailable.</b><span>This video could not be played right now.</span><span class="trailer-error-actions"><a class="quiet-link" data-trailer-watch href="${esc(watch)}" target="_blank" rel="noopener">Watch on YouTube</a><button type="button" class="trailer-retry" data-trailer-retry>Try again</button></span></div>
   <p class="trailer-fallback">If the embedded player is unavailable, <a href="${esc(watch)}" target="_blank" rel="noopener">watch the trailer on YouTube</a>.</p>${altBtn}`;
 }
-function pageScript(){
-  return `<script>window.BRYME_BASE=''<\/script><script src="${url('/assets/site-app.js')}"><\/script>`;
+function pageScript(extra){
+  const more = (extra || []).map(src => `<script src="${url(src)}"><\/script>`).join('');
+  return `<script>window.BRYME_BASE=''<\/script><script src="${url('/assets/site-app.js')}"><\/script>${more}`;
 }
 /* Search-engine ownership verification. Codes live in site.config.json so a new
    engine is one config line, never a hand-edited HTML file that the next build
@@ -1317,14 +1318,14 @@ function layout(o){
   const socialImage = socialMeta(o.image);
   const schema = o.schema ? `<script type="application/ld+json">${JSON.stringify(normalizeSchema(o.schema)).replace(/</g,'\\u003c')}<\/script>` : '';
   const active = o.activeNav || '';
-  return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#08090b"><meta name="color-scheme" content="dark light"><link rel="icon" href="${url('/assets/favicon.svg')}" type="image/svg+xml"><link rel="icon" href="${url('/assets/favicon.png')}" type="image/png" sizes="32x32"><link rel="apple-touch-icon" href="${url('/assets/icons/apple-touch-icon.png')}"><link rel="manifest" href="${url('/manifest.webmanifest')}"><link rel="preconnect" href="https://i.ytimg.com" crossorigin><link rel="preconnect" href="https://www.youtube-nocookie.com" crossorigin><link rel="preconnect" href="https://www.youtube.com" crossorigin><title>${esc(pageTitle(o.title))}</title><meta name="description" content="${esc(pageDesc(o.description))}">${VERIFY_TAGS}${o.lcpImage?`<link rel="preload" as="image" href="${esc(o.lcpImage)}" fetchpriority="high">`:''}${o.noindex?'<meta name="robots" content="noindex,follow">':''}<link rel="canonical" href="${absUrl(o.canonical || o.path)}"><meta property="og:type" content="${esc(o.ogType || 'website')}"><meta property="og:site_name" content="${site.name}"><meta property="og:title" content="${esc(pageTitle(o.title))}"><meta property="og:description" content="${esc(pageDesc(o.description))}"><meta property="og:url" content="${absUrl(o.path)}">${socialImage}<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${esc(pageTitle(o.title))}"><meta name="twitter:description" content="${esc(pageDesc(o.description))}"><link rel="stylesheet" href="${url('/assets/site.css')}"><script src="${url('/assets/analytics.js')}" async></script><link rel="alternate" type="application/rss+xml" title="BRYME — Latest" href="${url('/feed.xml')}">${schema}</head><body data-nav="${esc(o.activeNav || '')}"><header class="top"><div class="shell"><a class="brand" href="${url('/')}">BRY<b>ME</b></a><nav class="topnav"><a href="${url('/')}"${active==='home'?' class="active"':''}>Home</a><a href="${url('/entertainment/')}"${active==='entertainment'?' class="active"':''}>🎬 Entertainment</a><a href="${url('/sports/')}"${active==='sports'?' class="active"':''}>⚽ Sports</a><a href="${url('/make-money/')}"${active==='make-money'?' class="active"':''}>💰 Make Money</a><a href="${url('/tech/')}"${active==='tech'?' class="active"':''}>🤖 Tech &amp; AI</a><a class="nav-search" href="${url('/search/')}">Search</a></nav><div class="top-tools"><a class="header-search" href="${url('/search/')}" aria-label="Search">Search</a></div></div></header>${deskBar(o)}${withDisclosure(o)}<nav class="mobile-nav"><a href="${url('/')}"${active==='home'?' class="active"':''}><span class="mn-ico">🏠</span>Home</a><a href="${url('/entertainment/')}"${active==='entertainment'?' class="active"':''}><span class="mn-ico">🎬</span>Entertain</a><a href="${url('/sports/')}"${active==='sports'?' class="active"':''}><span class="mn-ico">⚽</span>Sports</a><a href="${url('/make-money/')}"${active==='make-money'?' class="active"':''}><span class="mn-ico">💰</span>Money</a><a href="${url('/tech/')}"${active==='tech'?' class="active"':''}><span class="mn-ico">🤖</span>Tech</a><a href="${url('/search/')}"><span class="mn-ico">🔍</span>Search</a></nav><footer class="footer"><div class="shell"><div class="footer-grid">
+  return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#08090b"><meta name="color-scheme" content="dark light"><link rel="icon" href="${url('/assets/favicon.svg')}" type="image/svg+xml"><link rel="icon" href="${url('/assets/favicon.png')}" type="image/png" sizes="32x32"><link rel="apple-touch-icon" href="${url('/assets/icons/apple-touch-icon.png')}"><link rel="manifest" href="${url('/manifest.webmanifest')}"><link rel="preconnect" href="https://i.ytimg.com" crossorigin><link rel="preconnect" href="https://www.youtube-nocookie.com" crossorigin><link rel="preconnect" href="https://www.youtube.com" crossorigin><title>${esc(pageTitle(o.title))}</title><meta name="description" content="${esc(pageDesc(o.description))}">${VERIFY_TAGS}${o.lcpImage?`<link rel="preload" as="image" href="${esc(o.lcpImage)}" fetchpriority="high">`:''}${o.noindex?'<meta name="robots" content="noindex,follow">':''}<link rel="canonical" href="${absUrl(o.canonical || o.path)}"><meta property="og:type" content="${esc(o.ogType || 'website')}"><meta property="og:site_name" content="${site.name}"><meta property="og:title" content="${esc(pageTitle(o.title))}"><meta property="og:description" content="${esc(pageDesc(o.description))}"><meta property="og:url" content="${absUrl(o.path)}">${socialImage}<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${esc(pageTitle(o.title))}"><meta name="twitter:description" content="${esc(pageDesc(o.description))}"><link rel="stylesheet" href="${url('/assets/site.css')}">${(o.styles || []).map(href => `<link rel="stylesheet" href="${url(href)}">`).join('')}<script src="${url('/assets/analytics.js')}" async></script><link rel="alternate" type="application/rss+xml" title="BRYME — Latest" href="${url('/feed.xml')}">${schema}</head><body data-nav="${esc(o.activeNav || '')}"><header class="top"><div class="shell"><a class="brand" href="${url('/')}">BRY<b>ME</b></a><nav class="topnav"><a href="${url('/')}"${active==='home'?' class="active"':''}>Home</a><a href="${url('/entertainment/')}"${active==='entertainment'?' class="active"':''}>🎬 Entertainment</a><a href="${url('/sports/')}"${active==='sports'?' class="active"':''}>⚽ Sports</a><a href="${url('/make-money/')}"${active==='make-money'?' class="active"':''}>💰 Make Money</a><a href="${url('/tech/')}"${active==='tech'?' class="active"':''}>🤖 Tech &amp; AI</a><a class="nav-search" href="${url('/search/')}">Search</a></nav><div class="top-tools"><a class="header-search" href="${url('/search/')}" aria-label="Search">Search</a></div></div></header>${deskBar(o)}${withDisclosure(o)}<nav class="mobile-nav"><a href="${url('/')}"${active==='home'?' class="active"':''}><span class="mn-ico">🏠</span>Home</a><a href="${url('/entertainment/')}"${active==='entertainment'?' class="active"':''}><span class="mn-ico">🎬</span>Entertain</a><a href="${url('/sports/')}"${active==='sports'?' class="active"':''}><span class="mn-ico">⚽</span>Sports</a><a href="${url('/make-money/')}"${active==='make-money'?' class="active"':''}><span class="mn-ico">💰</span>Money</a><a href="${url('/tech/')}"${active==='tech'?' class="active"':''}><span class="mn-ico">🤖</span>Tech</a><a href="${url('/search/')}"><span class="mn-ico">🔍</span>Search</a></nav><footer class="footer"><div class="shell"><div class="footer-grid">
   <div class="footer-brand"><a class="brand" href="${url('/')}">BRY<b>ME</b></a><p>Discover what you love. Learn what you need. Find what's next.</p></div>
   <nav class="footer-col" aria-label="Explore"><h4>Verticals</h4><a href="${url('/entertainment/')}">🎬 Entertainment</a><a href="${url('/sports/')}">⚽ Sports</a><a href="${url('/make-money/')}">💰 Make Money</a><a href="${url('/tech/')}">🤖 Tech &amp; AI</a></nav>
   <nav class="footer-col" aria-label="Explore"><h4>Entertainment</h4><a href="${url('/trending/')}">What's Trending</a><a href="${url('/movies/')}">Movies</a><a href="${url('/series/')}">Series</a><a href="${url('/anime/')}">Anime</a><a href="${url('/articles/')}">Articles</a><a href="${url('/genres/')}">Genres</a></nav>
   <nav class="footer-col" aria-label="Information"><h4>Information</h4><a href="${url('/about/')}">About</a><a href="${url('/contact/')}">Contact</a><a href="${url('/editorial-policy/')}">Editorial Policy</a></nav>
   <nav class="footer-col" aria-label="Legal"><h4>Legal</h4><a href="${url('/privacy/')}">Privacy Policy</a><a href="${url('/terms/')}">Terms of Use</a><a href="${url('/disclaimer/')}">Disclaimer</a><a href="${url('/copyright/')}">Copyright / DMCA</a><a href="${url('/privacy/')}#cookies" data-cookie-settings>Cookie settings</a></nav>
 </div>
-<p class="footer-note">BRYME · Discover what you love. Learn what you need. Find what's next. Trailer links lead to YouTube and viewing links lead to third parties.<small>Trending Now is editorially curated by BRYME — it is not live traffic data. Popular and Editor's Picks are independent rankings. Real user analytics will replace trending once the site has enough traffic. · Build ${new Date().toISOString().slice(0, 10)}</small></div></footer>${pageScript()}</body></html>`;
+<p class="footer-note">BRYME · Discover what you love. Learn what you need. Find what's next. Trailer links lead to YouTube and viewing links lead to third parties.<small>Trending Now is editorially curated by BRYME — it is not live traffic data. Popular and Editor's Picks are independent rankings. Real user analytics will replace trending once the site has enough traffic. · Build ${new Date().toISOString().slice(0, 10)}</small></div></footer>${pageScript(o.scripts)}</body></html>`;
 }
 
 /* ------------------------------------------------------------------ */
@@ -1858,7 +1859,87 @@ function verticalPage(v, category){
       <a class="sp-hero-card tech-tint" href="${url('/tech/ai-assistant-data-training-settings/')}" style="--card-img:url('/assets/img/tech/hero-privacy.jpg')"><span class="sp-hero-tag">AI assistants</span><h3>What they actually do with your chats</h3><p>ChatGPT, Claude and Gemini each have a training toggle. Each one also has a way around it.</p><span class="sp-hero-go">Read the settings →</span></a>
       <a class="sp-hero-card tech-tint" href="${url('/tech/render-deployment-failures-what-they-taught-me/')}" style="--card-img:url('/assets/img/tech/hero-deploy.jpg')"><span class="sp-hero-tag">Deploy</span><h3>The site worked. The deploy didn't.</h3><p>Four real Render failures, including the package.json error on this site.</p><span class="sp-hero-go">Read the failures →</span></a>
     </div></section>` : '';
-  const pageHero = sportsRootHero || techRootHero || (defaultHero + sportsFeature);
+  /* The Tech hub is deliberately a SIMPLE LIST, not a hero landing page.
+     A build run once replaced this hand-built list with the generic
+     sp-land/sp-hero treatment, which also dropped 5 links (24 -> 19). The list
+     lives here as data so a rebuild can no longer overwrite it. */
+  const techHubSections = [
+    { kick: 'AI', items: [
+      ['/tech/chatgpt-claude-alternatives/', 'Free and cheap ChatGPT alternatives', 'Official prices. Gemini, DeepSeek, Arena.'],
+      ['/tech/ai-assistant-data-training-settings/', 'What they do with your chats', 'ChatGPT, Claude and Gemini training toggles.'],
+      ['/tech/gemini-vs-chatgpt/', 'Gemini vs ChatGPT', 'The $4.99 step, from their own pages.'],
+      ['/tech/deepseek-vs-chatgpt/', 'DeepSeek vs ChatGPT', 'Free chat, paid API.'],
+      ['/tech/arena-ai-vs-chatgpt/', 'Arena.ai vs ChatGPT', 'A free multi-model arena, not a Plus plan.'] ] },
+    { kick: 'Hosting', items: [
+      ['/tech/where-to-host-website-for-free/', 'Where to host a website for free', 'GitHub Pages, Cloudflare, Render, Vercel, Netlify.'],
+      ['/tech/render-deployment-failures-what-they-taught-me/', 'The site worked. The deploy didn\u2019t.', 'Real Render failures from this site.'],
+      ['/tech/learning-to-code-on-a-phone-termux/', 'Learning to code on a phone', 'Termux: what broke, what fixed it.'] ] },
+    { kick: 'Apps we checked', items: [
+      ['/tech/lyra-vs-spotify/', 'Lyra vs Spotify', 'A YouTube player, not a licensed catalogue.'],
+      ['/tech/plasfy-vs-canva/', 'Plasfy vs Canva', 'Lifetime deal or a real free plan.'],
+      ['/tech/pixlr-vs-canva/', 'Pixlr vs Canva', 'Photo editor or design tool.'],
+      ['/tech/polotno-studio-vs-canva/', 'Polotno vs Canva', 'Still free. Still smaller.'],
+      ['/tech/photopea-vs-photoshop/', 'Photopea vs Photoshop', 'Browser editor. Files stay local.'],
+      ['/tech/affinity-now-free/', 'Affinity is free now', 'Official $0 desktop suite.'],
+      ['/tech/bitwarden-free-password-manager/', 'Bitwarden\u2019s free plan', 'Unlimited devices, officially.'],
+      ['/tech/notion-free-plan/', 'Notion\u2019s free plan', '$0, 5MB files, 7-day history.'],
+      ['/tech/signal-vs-whatsapp/', 'Signal vs WhatsApp', 'What \u201cfree\u201d means on both sides.'],
+      ['/tech/best-streaming-apps-nigeria/', 'Streaming apps in Nigeria', 'Honest comparison, 2026.'] ] }
+  ];
+  const techTopics = [
+    ['/tech/ai-tools/', 'AI tools'], ['/tech/app-alternatives/', 'App alternatives'],
+    ['/tech/hosting/', 'Hosting'], ['/tech/android-apps/', 'Android'],
+    ['/tech/cybersecurity/', 'Security'], ['/tech/useful-websites/', 'Useful sites']
+  ];
+  const techSimpleHub = (v.dir === 'tech' && !category)
+    ? `<h1>\u{1F916} Tech</h1><p class="sp-easy-sub">What a tool can actually do. No fake top-ten lists.</p>
+       <p class="sp-kick">Topics</p><div class="sp-more">${techTopics.map(([h, n]) => `<a href="${url(h)}">${esc(n)}</a>`).join('')}</div>
+       ${techHubSections.map(sec => `<p class="sp-kick">${esc(sec.kick)}</p>${sec.items.map(([h, b, d]) => `<a class="sp-story" href="${url(h)}"><b>${esc(b)}</b><span>${esc(d)}</span></a>`).join('')}`).join('')}`
+    : '';
+  /* Sports + Make Money hubs are the same deliberate SIMPLE LIST design as Tech.
+     A build run replaced all three with generic hero landings; Make Money also
+     lost its country filter and 5 guide links. Rebuilt here as data. */
+  const sportsSimpleHub = (v.dir === 'sports' && !category) ? (() => {
+    const LG = [
+      ['premier-league', '\u{1F3F4}\u{E0067}\u{E0062}\u{E0065}\u{E006E}\u{E0067}\u{E007F}', 'Premier League'],
+      ['la-liga', '\u{1F1EA}\u{1F1F8}', 'La Liga'], ['serie-a', '\u{1F1EE}\u{1F1F9}', 'Serie A'],
+      ['bundesliga', '\u{1F1E9}\u{1F1EA}', 'Bundesliga'], ['ligue-1', '\u{1F1EB}\u{1F1F7}', 'Ligue 1'],
+      ['champions-league', '\u{1F1EA}\u{1F1FA}', 'Champions League']
+    ];
+    let MW = {};
+    try { MW = JSON.parse(fs.readFileSync(path.join(root, 'content/results-by-matchweek.json'), 'utf8')).leagues || {}; } catch (e) {}
+    const resultLinks = LG.filter(([slug]) => MW[slug] && MW[slug].resultCount).map(([slug, flag, name]) => {
+      const d = MW[slug];
+      const weeks = (d.matchweeks || []).length;
+      return `<a class="sp-story" href="${url('/sports/' + slug + '/results/')}"><b>${flag} ${esc(name)}</b><span>${d.resultCount} result${d.resultCount === 1 ? '' : 's'}${weeks ? ' across ' + weeks + ' matchweek' + (weeks === 1 ? '' : 's') : ''}</span></a>`;
+    }).join('');
+    return `<div id="sp-home-head"><h1>\u26BD Sports</h1><p class="sp-easy-sub">Tap a league. Table, scores and fixtures \u2014 that\u2019s it.</p></div>
+      <div class="sp-more" id="sp-tools"><a href="${url('/sports/transfers/')}">Transfers</a><a href="${url('/sports/teams/')}">Teams</a><a href="${url('/sports/fpl/')}">FPL</a><a href="${url('/sports/predictions/')}">Predictions</a><a href="${url('/sports/articles/')}">Articles</a></div>
+      <p class="sp-kick">Leagues</p><div id="sp-league-list">${LG.map(([slug, flag, name]) => `<a class="sp-lg" href="${url('/sports/' + slug + '/')}">${flag} ${esc(name)}</a>`).join('')}</div>
+      <p class="sp-kick">Results by league</p>${resultLinks}
+      <p class="sp-kick">More</p><div class="sp-more"><a href="${url('/sports/football/')}">Football</a><a href="${url('/sports/history/')}">History</a><a href="${url('/sports/records/')}">Records</a><a href="${url('/sports/international/')}">International</a><a href="${url('/sports/clubs/')}">Clubs</a><a href="${url('/sports/players/')}">Players</a></div>`;
+  })() : '';
+
+  const moneySimpleHub = (v.dir === 'make-money' && !category) ? `<h1>\u{1F4B0} Make Money</h1>
+    <p class="sp-easy-sub">Verified paid work. Pick your country, then a path.</p>
+    ${moneyDeskHtml()}
+    <p class="sp-kick">Paths</p>
+    <a class="sp-lg" href="${url('/make-money/writing/')}"><div class="sp-lg-top">Writing<span>Open \u2192</span></div><p class="sp-lg-next">Publications that pay. Filtered by country.</p></a>
+    <a class="sp-lg" href="${url('/make-money/remote-work/')}"><div class="sp-lg-top">Remote jobs<span>Open \u2192</span></div><p class="sp-lg-next">Platforms that pay. Filtered by country.</p></a>
+    <a class="sp-lg" href="${url('/make-money/coding/')}"><div class="sp-lg-top">Coding<span>Open \u2192</span></div><p class="sp-lg-next">Developer marketplaces and boards.</p></a>
+    <p class="sp-kick">Guides</p>
+    ${[
+      ['/make-money/binary-trading-pocket-option-expert-option-quotex-trap/', 'Pocket Option, Expert Option, Quotex', 'Why promoters push those apps. It\u2019s a trap.'],
+      ['/make-money/beginners-guide-to-making-money-online/', 'Beginner guide', 'Skills, traps, and what is not a job.'],
+      ['/make-money/make-money-online-nigeria/', 'Making money in Nigeria', 'Platforms that accept Nigerians, pay ranges, red flags.'],
+      ['/make-money/freelance-platform-fees-explained/', 'What Upwork and Fiverr take', 'From their own documentation.'],
+      ['/make-money/outlier-ai-nigeria/', 'Outlier AI in Nigeria', 'What it is, who it takes, what it pays.'],
+      ['/make-money/mindrift-vs-alignerr-vs-prolific/', 'Mindrift vs Alignerr vs Prolific', 'Three AI-task platforms, compared.'],
+      ['/make-money/website-monetization-guide/', 'Website monetization', 'How to earn from a real audience.']
+    ].map(([h, b, d]) => `<a class="sp-story" href="${url(h)}"><b>${esc(b)}</b><span>${esc(d)}</span></a>`).join('')}` : '';
+
+  const simpleHub = techSimpleHub || sportsSimpleHub || moneySimpleHub;
+  const pageHero = simpleHub ? '' : (sportsRootHero || techRootHero || (defaultHero + sportsFeature));
   const catArticles = category ? ((verticalArticleIndex[v.dir] && verticalArticleIndex[v.dir].get(category.slug)) || []) : [];
   const writingDeskBlock = (v.dir === 'make-money' && category && category.slug === 'writing')
     ? `<div class="wo-banner"><b>The live log is next door.</b><p>These are the articles about the series. Dated field notes — who I emailed, who replied, how they pay — live on <a href="${url('/make-money/writing/')}">Writing Field Notes</a>.</p></div>`
@@ -1866,10 +1947,12 @@ function verticalPage(v, category){
   const catArticleBlock = catArticles.length
     ? `<div class="vcat-grid">${catArticles.map(a => articleCard(v.dir, a)).join('')}</div>`
     : '';
-  const body = `<main class="shell"><div class="crumb"><a href="${url('/')}">Home</a> / ${category ? `<a href="${url('/' + v.dir + '/')}">${esc(v.name)}</a> / ${esc(category.name)}` : esc(v.name)}</div>${pageHero}<section class="section">${category ? (v.dir === 'sports' && category.slug === 'football' ? (footballHub + catArticleBlock) : (clubsDirectory ? (clubsDirectory + catArticleBlock) : (catArticles.length ? writingDeskBlock + catArticleBlock : (writingDeskBlock || `<div class="vstate"><b>${esc(category.name)} — foundation ready</b><p>This section is being built. Articles will appear here as they are researched and published.</p></div>`)))) : `${v.dir === 'make-money' ? moneyDeskHtml() : ''}<p class="lead" style="margin-bottom:18px">${esc(v.desc)}</p><div class="vnote">${esc(v.note)}</div><h2 style="margin:26px 0 14px">${v.dir === 'make-money' ? 'Guides already published' : 'Explore ' + esc(v.short)}</h2><div class="vcat-grid">${catGrid}</div>`}</section>${(v.dir === 'sports' && !category) ? livePreviewBlock(10) : ''}${sportsTeaserBlock}${fixturesBlock}${sportsStoriesBlock}${coreHubStrip(v.dir)}</main>`;
+  const body = `<main class="${simpleHub ? 'shell sp-easy' : 'shell'}"${sportsSimpleHub ? ' id="sp-app"' : (moneySimpleHub ? ' id="mm-app"' : '')}><div class="crumb"><a href="${url('/')}">Home</a> / ${category ? `<a href="${url('/' + v.dir + '/')}">${esc(v.name)}</a> / ${esc(category.name)}` : esc(v.name)}</div>${pageHero}<section class="section">${category ? (v.dir === 'sports' && category.slug === 'football' ? (footballHub + catArticleBlock) : (clubsDirectory ? (clubsDirectory + catArticleBlock) : (catArticles.length ? writingDeskBlock + catArticleBlock : (writingDeskBlock || `<div class="vstate"><b>${esc(category.name)} — foundation ready</b><p>This section is being built. Articles will appear here as they are researched and published.</p></div>`)))) : (simpleHub ? simpleHub : `${v.dir === 'make-money' ? moneyDeskHtml() : ''}<p class="lead" style="margin-bottom:18px">${esc(v.desc)}</p><div class="vnote">${esc(v.note)}</div><h2 style="margin:26px 0 14px">${v.dir === 'make-money' ? 'Guides already published' : 'Explore ' + esc(v.short)}</h2><div class="vcat-grid">${catGrid}</div>`)}</section>${(v.dir === 'sports' && !category) ? livePreviewBlock(10) : ''}${sportsTeaserBlock}${fixturesBlock}${sportsStoriesBlock}${coreHubStrip(v.dir)}</main>`;
   const emptyHub = !!category && !catArticles.length && !clubsDirectory && !(v.dir === 'sports' && category.slug === 'football');
   if (emptyHub) EMPTY_HUB_PATHS.add(catPath);
   write(v.dir + (category ? '/' + category.slug : ''), layout({
+    styles: simpleHub ? ['/assets/sports-simple.css'].concat(moneySimpleHub ? ['/assets/money-simple.css'] : []) : [],
+    scripts: sportsSimpleHub ? ['/assets/sports-simple.js'] : (moneySimpleHub ? ['/assets/money-simple.js'] : []),
     title: category ? `${category.name}` : v.name,
     description: category ? category.desc : (v.tagline || v.desc),
     noindex: emptyHub,
