@@ -37,6 +37,30 @@ Status: ⬜ not started · 🔄 in progress · ✅ done
 
 ## Log
 
+### Build safety + matchweek results — DONE (commit `03925655f2`)
+`scripts/build-static-foundation.js` is no longer destructive. It was silently reverting finished
+work on every run, which is why earlier fixes kept "coming undone". Five defects, all fixed at
+source, each verified:
+
+| # | Defect | Blast radius | Fix |
+|---|--------|-------------|-----|
+| 1 | Intent titles reverted (`… \| Trailer & Where to Watch` → `… \| BRYME`) | 1,938 pages | ported `seo-extend-titles.py` logic into the generator as `intentSuffix()`; 645/648 pages match the old rule, 3 diffs are intentional hand-written titles |
+| 2 | **`analytics.js` stripped — the cookie-consent gate** | 2,713 pages | emitted from `layout()` again (plus the RSS link) |
+| 3 | Sitemap listed only self-generated paths | 265 live URLs dropped | unions in indexable pages found on disk; 1,055 → 1,326 URLs |
+| 4 | `site.css` re-appended its own blocks | grew every build | `appendCssOnce()` + trimmed design layer; byte-identical across runs |
+| 5 | Minute-precision build stamp | all ~3,000 pages | date-only, so diffs show real changes |
+
+**A repeat build now changes 0 files** (was 3,006). That is the acceptance test: run it twice, the
+second run must be a no-op. Post-build integrity: 115 disclosure blocks, 2,048 sports pages,
+sitemap parses, published articles intact.
+
+Also shipped: league results are **grouped by matchweek** instead of one flat table — each round
+headed "Matchweek 2 — 9 of 10 played", newest first, in each league's own term (Jornada, Giornata,
+Spieltag, Journée). And the header reads **"BRYME SPORTS"** inside the Sports vertical (commit
+`4b1d1c3e51`), via a CSS `::after` on `[data-nav="sports"]` so it needs no HTML churn and covers
+pages added later.
+
+
 ### 3. Sitewide disclosure — DONE (commit `571ea06683`)
 115 pages (all 80 Make Money + 35 Tech) now carry a standing disclosure.
 
