@@ -1,6 +1,5 @@
 /* Simple sports — table, scores, fixtures, scorers. */
 (function () {
-  var MW = null;
   "use strict";
   var DATA = null;
   var view = document.getElementById("sp-app");
@@ -58,34 +57,14 @@
     }).join("");
     return '<div class="sp-tbl"><div class="sp-tbl-r"><i>#</i><span>Club</span><b>P</b><b>W-D-L</b><b>GD</b><em>Pts</em></div>' + rows + "</div>";
   }
-  /* Results grouped by matchweek. Falls back to the flat recent-scores list
-     from competitions.json if the matchweek file has not loaded yet. */
-  function flatScores(c) {
+  function scoresHtml(c) {
     if (!c.scores || !c.scores.length) return '<p class="sp-empty">No recent results yet.</p>';
     return c.scores.map(function (s) {
       return '<div class="sp-score"><div class="tm">' + img(s.hlogo) + esc(s.hshort) + '</div><div class="num">' +
-        s.hs + "\u2013" + s.as + '</div><div class="tm away">' + esc(s.ashort) + img(s.alogo) + '</div><div class="when">FT \u00b7 ' +
+        s.hs + "–" + s.as + '</div><div class="tm away">' + esc(s.ashort) + img(s.alogo) + '</div><div class="when">FT · ' +
         esc(s.date) + "</div></div>";
     }).join("");
   }
-  function scoreRow(m) {
-    var src = m.source && m.source.url
-      ? '<a class="sp-src" href="' + esc(m.source.url) + '" rel="nofollow noopener" target="_blank">source</a>' : '';
-    return '<div class="sp-score"><div class="tm">' + img(m.homeLogo) + esc(m.home) + '</div><div class="num">' +
-      m.homeScore + "\u2013" + m.awayScore + '</div><div class="tm away">' + esc(m.away) + img(m.awayLogo) +
-      '</div><div class="when">' + esc(m.status || "FT") + " \u00b7 " + esc(m.playedOn) + " " + src + "</div></div>";
-  }
-  function scoresHtml(c) {
-    var lg = MW && MW.leagues && MW.leagues[c.id];
-    if (!lg || !lg.matchweeks || !lg.matchweeks.length) return flatScores(c);
-    return lg.matchweeks.map(function (w) {
-      var count = w.played.length + (w.total ? " of " + w.total : "") + " played";
-      return '<section class="sp-mw"><h3 class="sp-mw-h">' + esc(w.label) +
-        '<span class="sp-mw-n">' + esc(count) + '</span></h3>' +
-        w.played.map(scoreRow).join("") + '</section>';
-    }).join("");
-  }
-
   function fixturesHtml(c) {
     if (!c.fixtures || !c.fixtures.length) return '<p class="sp-empty">No upcoming fixtures in the next week.</p>';
     return c.fixtures.map(function (f) {
@@ -180,12 +159,10 @@
     else renderHome();
   }
 
-  Promise.all([
-    fetch("/content/competitions.json", { cache: "no-cache" }).then(function (r) { return r.ok ? r.json() : null; }),
-    fetch("/content/results-by-matchweek.json", { cache: "no-cache" }).then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; })
-  ]).then(function (vals) {
-      DATA = vals[0];
-      MW = vals[1];
+  fetch("/content/competitions.json", { cache: "no-cache" })
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (d) {
+      DATA = d;
       fillLeagues();
       boot();
     })

@@ -119,15 +119,22 @@
     "backdrop": null,
     "trailer": "https://www.youtube.com/watch?v=qSqVVswa420",
     "youtubeId": "qSqVVswa420",
-    "cast": [],
+    "cast": [
+      "Tom Cruise",
+      "Miles Teller",
+      "Jennifer Connelly",
+      "Jon Hamm",
+      "Glen Powell",
+      "Val Kilmer"
+    ],
     "legacyCastNotes": [
       "Tom Cruise performed the jet sequences himself, enduring up to 7.5 Gs.",
       "Miles Teller spent months learning to fly so his cockpit scenes look real.",
       "The cast trained in actual F/A-18s with real Top Gun instructors.",
       "Cruise insisted the film use no CGI for flight — everything you see was filmed."
     ],
-    "director": null,
-    "runtime": null,
+    "director": "Joseph Kosinski",
+    "runtime": "130 min",
     "rating": {
       "value": 9,
       "source": "BRYME editorial score"
@@ -10583,10 +10590,16 @@
     "backdrop": null,
     "trailer": "https://www.youtube.com/watch?v=0pdqf4P9MB8",
     "youtubeId": "0pdqf4P9MB8",
-    "cast": [],
+    "cast": [
+      "Ryan Gosling",
+      "Emma Stone",
+      "John Legend",
+      "Rosemarie DeWitt",
+      "J. K. Simmons"
+    ],
     "legacyCastNotes": [],
-    "director": null,
-    "runtime": null,
+    "director": "Damien Chazelle",
+    "runtime": "128 min",
     "rating": {
       "value": 8,
       "source": "BRYME editorial score"
@@ -10670,17 +10683,6 @@
     "teaser": "Jack and Rose, a ship, an iceberg, and the most famous love story ever filmed. 'I'll never let go.'",
     "facts": [],
     "watchLinks": [],
-    "metaSource": {
-      "name": "Wikipedia",
-      "url": "https://en.wikipedia.org/wiki/Titanic_(1997_film)",
-      "retrieved": "2026-08-22"
-    },
-    "castSource": {
-      "name": "Wikipedia",
-      "url": "https://en.wikipedia.org/wiki/Titanic_(1997_film)",
-      "field": "infobox starring",
-      "retrieved": "2026-08-22"
-    },
     "genres": [],
     "typeLabel": "Movie",
     "trending": false,
@@ -12501,17 +12503,6 @@
     "teaser": "Ripley is cloned, and the Xenomorphs are back for the bloodiest chapter.",
     "facts": [],
     "watchLinks": [],
-    "metaSource": {
-      "name": "Wikipedia",
-      "url": "https://en.wikipedia.org/wiki/Alien_Resurrection",
-      "retrieved": "2026-08-22"
-    },
-    "castSource": {
-      "name": "Wikipedia",
-      "url": "https://en.wikipedia.org/wiki/Alien_Resurrection",
-      "field": "infobox starring",
-      "retrieved": "2026-08-22"
-    },
     "genres": [],
     "typeLabel": "Movie",
     "trending": false,
@@ -13294,17 +13285,6 @@
     "teaser": "A traveller’s search for a new life takes an unexpected turn after he encounters a power tied to death and rebirth. It is a Yoruba-language fantasy drama rooted in moral choices.",
     "facts": [],
     "watchLinks": [],
-    "metaSource": {
-      "name": "Wikipedia",
-      "url": "https://en.wikipedia.org/wiki/An%C3%ADk%C3%BAl%C3%A1p%C3%B3",
-      "retrieved": "2026-08-22"
-    },
-    "castSource": {
-      "name": "Wikipedia",
-      "url": "https://en.wikipedia.org/wiki/An%C3%ADk%C3%BAl%C3%A1p%C3%B3",
-      "field": "infobox starring",
-      "retrieved": "2026-08-22"
-    },
     "genres": [],
     "typeLabel": "Movie",
     "trending": false,
@@ -14133,17 +14113,6 @@
     "teaser": "The Multiverse Saga collides. Doctor Doom (Robert Downey Jr.) threatens three universes, and heroes from across the Marvel timelines must unite. The biggest MCU event yet.",
     "facts": [],
     "watchLinks": [],
-    "metaSource": {
-      "name": "Wikipedia",
-      "url": "https://en.wikipedia.org/wiki/Avengers%3A_Doomsday",
-      "retrieved": "2026-08-22"
-    },
-    "castSource": {
-      "name": "Wikipedia",
-      "url": "https://en.wikipedia.org/wiki/Avengers%3A_Doomsday",
-      "field": "infobox starring",
-      "retrieved": "2026-08-22"
-    },
     "genres": [],
     "typeLabel": "Movie",
     "trending": false,
@@ -19001,17 +18970,6 @@
     "teaser": "A cellist returns home and takes work preparing bodies for funerals, gradually finding dignity and purpose in an unexpected profession.",
     "facts": [],
     "watchLinks": [],
-    "metaSource": {
-      "name": "Wikipedia",
-      "url": "https://en.wikipedia.org/wiki/Departures_%282008_film%29",
-      "retrieved": "2026-08-22"
-    },
-    "castSource": {
-      "name": "Wikipedia",
-      "url": "https://en.wikipedia.org/wiki/Departures_%282008_film%29",
-      "field": "infobox starring",
-      "retrieved": "2026-08-22"
-    },
     "genres": [],
     "typeLabel": "Movie",
     "trending": false,
@@ -19304,17 +19262,6 @@
     "teaser": "McClane and a reluctant partner race across New York solving a madman's riddles to stop a bombing.",
     "facts": [],
     "watchLinks": [],
-    "metaSource": {
-      "name": "Wikipedia",
-      "url": "https://en.wikipedia.org/wiki/Die_Hard_with_a_Vengeance",
-      "retrieved": "2026-08-22"
-    },
-    "castSource": {
-      "name": "Wikipedia",
-      "url": "https://en.wikipedia.org/wiki/Die_Hard_with_a_Vengeance",
-      "field": "infobox starring",
-      "retrieved": "2026-08-22"
-    },
     "genres": [],
     "typeLabel": "Movie",
     "trending": false,
@@ -20216,7 +20163,7 @@
       "Anya Taylor-Joy"
     ],
     "director": "Denis Villeneuve",
-    "runtime": null,
+    "runtime": "",
     "rating": null,
     "status": "published",
     "createdAt": null,
@@ -20226,17 +20173,6 @@
     "teaser": "The conclusion of Denis Villeneuve's epic. Paul Atreides, now Emperor Muad'Dib, faces the holy war he started — and the terrible cost of his own prophecy.",
     "facts": [],
     "watchLinks": [],
-    "metaSource": {
-      "name": "Wikipedia",
-      "url": "https://en.wikipedia.org/wiki/Dune%3A_Part_Three",
-      "retrieved": "2026-08-22"
-    },
-    "castSource": {
-      "name": "Wikipedia",
-      "url": "https://en.wikipedia.org/wiki/Dune%3A_Part_Three",
-      "field": "infobox starring",
-      "retrieved": "2026-08-22"
-    },
     "genres": [],
     "typeLabel": "Movie",
     "trending": false,
@@ -21092,12 +21028,6 @@
       "retrieved": "2026-08-16",
       "url": "https://www.wikidata.org/wiki/Q223887",
       "wikipedia": "https://en.wikipedia.org/wiki/Face/Off"
-    },
-    "castSource": {
-      "name": "Wikipedia",
-      "url": "https://en.wikipedia.org/wiki/Face/Off",
-      "field": "infobox starring",
-      "retrieved": "2026-08-22"
     },
     "genres": [],
     "typeLabel": "Movie",
@@ -22303,17 +22233,6 @@
     "teaser": "A journalist and a brilliant hacker investigate a forty-year-old disappearance in Sweden.",
     "facts": [],
     "watchLinks": [],
-    "metaSource": {
-      "name": "Wikipedia",
-      "url": "https://en.wikipedia.org/wiki/The_Girl_with_the_Dragon_Tattoo_%282011_film%29",
-      "retrieved": "2026-08-22"
-    },
-    "castSource": {
-      "name": "Wikipedia",
-      "url": "https://en.wikipedia.org/wiki/The_Girl_with_the_Dragon_Tattoo_%282011_film%29",
-      "field": "infobox starring",
-      "retrieved": "2026-08-22"
-    },
     "genres": [],
     "typeLabel": "Movie",
     "trending": false,
@@ -25196,17 +25115,6 @@
     "teaser": "A woman travels from Nigeria to the United States to help her sister after a serious accusation. The drama explores family and justice.",
     "facts": [],
     "watchLinks": [],
-    "metaSource": {
-      "name": "Wikipedia",
-      "url": "https://en.wikipedia.org/wiki/Ij%C3%A9",
-      "retrieved": "2026-08-22"
-    },
-    "castSource": {
-      "name": "Wikipedia",
-      "url": "https://en.wikipedia.org/wiki/Ij%C3%A9",
-      "field": "infobox starring",
-      "retrieved": "2026-08-22"
-    },
     "genres": [],
     "typeLabel": "Movie",
     "trending": false,
@@ -27671,17 +27579,6 @@
     "teaser": "Rocky rises to rule the Kolar Gold Fields — and takes on the whole country. Yash.",
     "facts": [],
     "watchLinks": [],
-    "metaSource": {
-      "name": "Wikipedia",
-      "url": "https://en.wikipedia.org/wiki/KGF%3A_Chapter_2",
-      "retrieved": "2026-08-22"
-    },
-    "castSource": {
-      "name": "Wikipedia",
-      "url": "https://en.wikipedia.org/wiki/KGF%3A_Chapter_2",
-      "field": "infobox starring",
-      "retrieved": "2026-08-22"
-    },
     "genres": [],
     "typeLabel": "Movie",
     "trending": false,
@@ -35804,17 +35701,6 @@
     "teaser": "A foster kid who says one word becomes an adult superhero. The DCEU's funniest.",
     "facts": [],
     "watchLinks": [],
-    "metaSource": {
-      "name": "Wikipedia",
-      "url": "https://en.wikipedia.org/wiki/Shazam%21_%28film%29",
-      "retrieved": "2026-08-22"
-    },
-    "castSource": {
-      "name": "Wikipedia",
-      "url": "https://en.wikipedia.org/wiki/Shazam%21_%28film%29",
-      "field": "infobox starring",
-      "retrieved": "2026-08-22"
-    },
     "genres": [],
     "typeLabel": "Movie",
     "trending": false,
@@ -36435,17 +36321,6 @@
     "teaser": "A musical comedy about Hollywood’s transition from silent films to sound, told through romance, performance and studio chaos.",
     "facts": [],
     "watchLinks": [],
-    "metaSource": {
-      "name": "Wikipedia",
-      "url": "https://en.wikipedia.org/wiki/Singin%27_in_the_Rain",
-      "retrieved": "2026-08-22"
-    },
-    "castSource": {
-      "name": "Wikipedia",
-      "url": "https://en.wikipedia.org/wiki/Singin%27_in_the_Rain",
-      "field": "infobox starring",
-      "retrieved": "2026-08-22"
-    },
     "genres": [],
     "typeLabel": "Movie",
     "trending": false,
@@ -38465,17 +38340,6 @@
     "teaser": "A retired CIA operative has 96 hours to find his kidnapped daughter in Paris. 'I will find you.'",
     "facts": [],
     "watchLinks": [],
-    "metaSource": {
-      "name": "Wikipedia",
-      "url": "https://en.wikipedia.org/wiki/Taken_(film)",
-      "retrieved": "2026-08-22"
-    },
-    "castSource": {
-      "name": "Wikipedia",
-      "url": "https://en.wikipedia.org/wiki/Taken_(film)",
-      "field": "infobox starring",
-      "retrieved": "2026-08-22"
-    },
     "genres": [],
     "typeLabel": "Movie",
     "trending": false,
@@ -39246,17 +39110,6 @@
     "teaser": "A grieving father searches for the truth after his son is accused of a crime. The thriller follows his path through corruption, loss and a dangerous demand for justice.",
     "facts": [],
     "watchLinks": [],
-    "metaSource": {
-      "name": "Wikipedia",
-      "url": "https://en.wikipedia.org/wiki/The_Black_Book_%282023_film%29",
-      "retrieved": "2026-08-22"
-    },
-    "castSource": {
-      "name": "Wikipedia",
-      "url": "https://en.wikipedia.org/wiki/The_Black_Book_%282023_film%29",
-      "field": "infobox starring",
-      "retrieved": "2026-08-22"
-    },
     "genres": [],
     "typeLabel": "Movie",
     "trending": false,
@@ -42942,17 +42795,6 @@
     "teaser": "Fencing, fighting, true love and revenge — as told by a grandfather to his sick grandson.",
     "facts": [],
     "watchLinks": [],
-    "metaSource": {
-      "name": "Wikipedia",
-      "url": "https://en.wikipedia.org/wiki/The_Princess_Bride_(film)",
-      "retrieved": "2026-08-22"
-    },
-    "castSource": {
-      "name": "Wikipedia",
-      "url": "https://en.wikipedia.org/wiki/The_Princess_Bride_(film)",
-      "field": "infobox starring",
-      "retrieved": "2026-08-22"
-    },
     "genres": [],
     "typeLabel": "Movie",
     "trending": false,
@@ -43871,9 +43713,16 @@
     "backdrop": null,
     "trailer": "https://www.youtube.com/watch?v=s7tK_QGoOPo",
     "youtubeId": "s7tK_QGoOPo",
-    "cast": [],
+    "cast": [
+      "Rita Dominic",
+      "Blossom Chukwujekwu",
+      "Gideon Okeke",
+      "Stan Nze",
+      "Ali Nuhu",
+      "Nengi Adoki"
+    ],
     "director": "Jadesola Osiberu",
-    "runtime": null,
+    "runtime": "",
     "rating": null,
     "status": "published",
     "createdAt": null,
@@ -43883,11 +43732,6 @@
     "teaser": "A group of professionals plan a major kidnapping operation, but the scheme tests the limits of trust and control.",
     "facts": [],
     "watchLinks": [],
-    "metaSource": {
-      "name": "Wikipedia",
-      "url": "https://en.wikipedia.org/wiki/The_Trade_%28film%29",
-      "retrieved": "2026-08-22"
-    },
     "genres": [],
     "typeLabel": "Movie",
     "trending": false,
@@ -44688,17 +44532,6 @@
     "teaser": "A Puritan family banished from their colony is haunted by something in the woods. Robert Eggers' debut.",
     "facts": [],
     "watchLinks": [],
-    "metaSource": {
-      "name": "Wikipedia",
-      "url": "https://en.wikipedia.org/wiki/The_Witch_%282015_film%29",
-      "retrieved": "2026-08-22"
-    },
-    "castSource": {
-      "name": "Wikipedia",
-      "url": "https://en.wikipedia.org/wiki/The_Witch_%282015_film%29",
-      "field": "infobox starring",
-      "retrieved": "2026-08-22"
-    },
     "genres": [],
     "typeLabel": "Movie",
     "trending": false,
@@ -46342,17 +46175,6 @@
     "teaser": "The prequel: how the planetary engines were built before the great migration began.",
     "facts": [],
     "watchLinks": [],
-    "metaSource": {
-      "name": "Wikipedia",
-      "url": "https://en.wikipedia.org/wiki/The_Wandering_Earth_2",
-      "retrieved": "2026-08-22"
-    },
-    "castSource": {
-      "name": "Wikipedia",
-      "url": "https://en.wikipedia.org/wiki/The_Wandering_Earth_2",
-      "field": "infobox starring",
-      "retrieved": "2026-08-22"
-    },
     "genres": [],
     "typeLabel": "Movie",
     "trending": false,
@@ -47136,17 +46958,6 @@
     "teaser": "Stryker attacks the mutant school, forcing heroes and villains to unite.",
     "facts": [],
     "watchLinks": [],
-    "metaSource": {
-      "name": "Wikipedia",
-      "url": "https://en.wikipedia.org/wiki/X2_%28film%29",
-      "retrieved": "2026-08-22"
-    },
-    "castSource": {
-      "name": "Wikipedia",
-      "url": "https://en.wikipedia.org/wiki/X2_%28film%29",
-      "field": "infobox starring",
-      "retrieved": "2026-08-22"
-    },
     "genres": [],
     "typeLabel": "Movie",
     "trending": false,
@@ -47595,17 +47406,6 @@
     "teaser": "A kind-hearted man with a low IQ accidentally becomes part of every major American event of the 20th century. Tom Hanks won the Oscar for this beloved epic.",
     "facts": [],
     "watchLinks": [],
-    "metaSource": {
-      "name": "Wikipedia",
-      "url": "https://en.wikipedia.org/wiki/Forrest_Gump",
-      "retrieved": "2026-08-22"
-    },
-    "castSource": {
-      "name": "Wikipedia",
-      "url": "https://en.wikipedia.org/wiki/Forrest_Gump",
-      "field": "infobox starring",
-      "retrieved": "2026-08-22"
-    },
     "genres": [],
     "typeLabel": "Movie",
     "trending": false,
@@ -47909,17 +47709,6 @@
     "teaser": "The Empire hunts the rebels across the galaxy. Luke trains with Yoda and faces the most famous reveal in cinema history.",
     "facts": [],
     "watchLinks": [],
-    "metaSource": {
-      "name": "Wikipedia",
-      "url": "https://en.wikipedia.org/wiki/The_Empire_Strikes_Back",
-      "retrieved": "2026-08-22"
-    },
-    "castSource": {
-      "name": "Wikipedia",
-      "url": "https://en.wikipedia.org/wiki/The_Empire_Strikes_Back",
-      "field": "infobox starring",
-      "retrieved": "2026-08-22"
-    },
     "genres": [],
     "typeLabel": "Movie",
     "trending": false,
@@ -47989,17 +47778,6 @@
     "teaser": "The final chapter of the original trilogy. Luke faces Darth Vader and the Emperor as the rebels attack the second Death Star.",
     "facts": [],
     "watchLinks": [],
-    "metaSource": {
-      "name": "Wikipedia",
-      "url": "https://en.wikipedia.org/wiki/Return_of_the_Jedi",
-      "retrieved": "2026-08-22"
-    },
-    "castSource": {
-      "name": "Wikipedia",
-      "url": "https://en.wikipedia.org/wiki/Return_of_the_Jedi",
-      "field": "infobox starring",
-      "retrieved": "2026-08-22"
-    },
     "genres": [],
     "typeLabel": "Movie",
     "trending": false,
@@ -50053,17 +49831,6 @@
     "teaser": "When a new space-ranger toy threatens his place in the bedroom, cowboy Woody learns what friendship really means. The film that started Pixar.",
     "facts": [],
     "watchLinks": [],
-    "metaSource": {
-      "name": "Wikipedia",
-      "url": "https://en.wikipedia.org/wiki/Toy_Story",
-      "retrieved": "2026-08-22"
-    },
-    "castSource": {
-      "name": "Wikipedia",
-      "url": "https://en.wikipedia.org/wiki/Toy_Story",
-      "field": "infobox starring",
-      "retrieved": "2026-08-22"
-    },
     "genres": [],
     "typeLabel": "Movie",
     "trending": false,
@@ -50381,17 +50148,6 @@
     "teaser": "Twins separated at birth reunite as adults on opposite sides of the law, as a street queen and her refined sister clash with family, crime and the Lagos underworld.",
     "facts": [],
     "watchLinks": [],
-    "metaSource": {
-      "name": "Wikipedia",
-      "url": "https://en.wikipedia.org/wiki/Omo_Ghetto%3A_The_Saga",
-      "retrieved": "2026-08-22"
-    },
-    "castSource": {
-      "name": "Wikipedia",
-      "url": "https://en.wikipedia.org/wiki/Omo_Ghetto%3A_The_Saga",
-      "field": "infobox starring",
-      "retrieved": "2026-08-22"
-    },
     "genres": [],
     "typeLabel": "Movie",
     "trending": false,
@@ -50453,17 +50209,6 @@
     "teaser": "Alhaja Eniola Salami is drawn back into the dangerous game of Lagos power politics, where loyalty is short and every throne sits on a bloodstain.",
     "facts": [],
     "watchLinks": [],
-    "metaSource": {
-      "name": "Wikipedia",
-      "url": "https://en.wikipedia.org/wiki/King_of_Boys%3A_The_Return_of_the_King",
-      "retrieved": "2026-08-22"
-    },
-    "castSource": {
-      "name": "Wikipedia",
-      "url": "https://en.wikipedia.org/wiki/King_of_Boys%3A_The_Return_of_the_King",
-      "field": "infobox starring",
-      "retrieved": "2026-08-22"
-    },
     "genres": [],
     "typeLabel": "Movie",
     "trending": false,
@@ -50518,7 +50263,7 @@
       "Chiwetalu Agu"
     ],
     "director": "Ramsey Nouah",
-    "runtime": null,
+    "runtime": "",
     "rating": null,
     "status": "published",
     "createdAt": null,
@@ -50528,17 +50273,6 @@
     "teaser": "A remake of the classic Nollywood thriller — a desperate young man and his crew plan an ambitious heist, only to learn that crime comes with brutal consequences.",
     "facts": [],
     "watchLinks": [],
-    "metaSource": {
-      "name": "Wikipedia",
-      "url": "https://en.wikipedia.org/wiki/Rattlesnake:_The_Ahanna_Story",
-      "retrieved": "2026-08-22"
-    },
-    "castSource": {
-      "name": "Wikipedia",
-      "url": "https://en.wikipedia.org/wiki/Rattlesnake:_The_Ahanna_Story",
-      "field": "infobox starring",
-      "retrieved": "2026-08-22"
-    },
     "genres": [],
     "typeLabel": "Movie",
     "trending": false,
@@ -50601,17 +50335,6 @@
     "teaser": "A young drug smuggler trapped in a deadly game must think fast to survive when a routine delivery spirals into betrayal and violence.",
     "facts": [],
     "watchLinks": [],
-    "metaSource": {
-      "name": "Wikipedia",
-      "url": "https://en.wikipedia.org/wiki/The_Set_Up_%282019_film%29",
-      "retrieved": "2026-08-22"
-    },
-    "castSource": {
-      "name": "Wikipedia",
-      "url": "https://en.wikipedia.org/wiki/The_Set_Up_%282019_film%29",
-      "field": "infobox starring",
-      "retrieved": "2026-08-22"
-    },
     "genres": [],
     "typeLabel": "Movie",
     "trending": false,
@@ -50665,7 +50388,7 @@
       "Dorathy Bachor"
     ],
     "director": "Kunle Afolayan",
-    "runtime": null,
+    "runtime": "",
     "rating": null,
     "status": "published",
     "createdAt": null,
@@ -50675,17 +50398,6 @@
     "teaser": "Four teenagers from a rural South-West Nigerian village stumble on a pouch of uncut diamonds — and the fortune attracts danger that threatens to destroy their friendship and their lives.",
     "facts": [],
     "watchLinks": [],
-    "metaSource": {
-      "name": "Wikipedia",
-      "url": "https://en.wikipedia.org/wiki/Ijogbon",
-      "retrieved": "2026-08-22"
-    },
-    "castSource": {
-      "name": "Wikipedia",
-      "url": "https://en.wikipedia.org/wiki/Ijogbon",
-      "field": "infobox starring",
-      "retrieved": "2026-08-22"
-    },
     "genres": [],
     "typeLabel": "Movie",
     "trending": false,
@@ -50753,17 +50465,6 @@
     "teaser": "A flamboyant billionaire industrialist dies suddenly, and his large extended family scrambles to inherit his fortune in this sharp Nollywood comedy.",
     "facts": [],
     "watchLinks": [],
-    "metaSource": {
-      "name": "Wikipedia",
-      "url": "https://en.wikipedia.org/wiki/Chief_Daddy",
-      "retrieved": "2026-08-22"
-    },
-    "castSource": {
-      "name": "Wikipedia",
-      "url": "https://en.wikipedia.org/wiki/Chief_Daddy",
-      "field": "infobox starring",
-      "retrieved": "2026-08-22"
-    },
     "genres": [],
     "typeLabel": "Movie",
     "trending": false,
@@ -50901,17 +50602,6 @@
     "teaser": "The pups crash-land on an island of dinosaurs and have to stop Mayor Humdinger from wrecking it. Paramount and Spin Master's third PAW Patrol cinema film, in theatres August 2026.",
     "facts": [],
     "watchLinks": [],
-    "metaSource": {
-      "name": "Paramount Pictures official trailer",
-      "retrieved": "2026-08-21",
-      "url": "https://www.youtube.com/watch?v=xgI5iYmOf5Q"
-    },
-    "castSource": {
-      "name": "Wikipedia",
-      "url": "https://www.hollywoodreporter.com/movies/movie-reviews/paw-patrol-the-dino-movie-review-1236669413/",
-      "field": "infobox starring",
-      "retrieved": "2026-08-22"
-    },
     "genres": [],
     "typeLabel": "Movie",
     "trending": true,
@@ -51045,17 +50735,6 @@
     "teaser": "A cinema documentary about the global pop group KATSEYE, from Dream Academy through the run-up to their third EP. Directed by Nadia Hallgren. Limited theatrical dates from 12 August 2026.",
     "facts": [],
     "watchLinks": [],
-    "metaSource": {
-      "name": "Official trailer credits (KATSEYE YouTube)",
-      "retrieved": "2026-08-21",
-      "url": "https://www.youtube.com/watch?v=md5rZb2nEaM"
-    },
-    "castSource": {
-      "name": "Wikipedia",
-      "url": "https://www.odeon.co.uk/films/katseye-wild-hearts/HO00009195/",
-      "field": "infobox starring",
-      "retrieved": "2026-08-22"
-    },
     "genres": [],
     "typeLabel": "Movie",
     "trending": true,
@@ -51107,7 +50786,7 @@
       "Sun Lifang"
     ],
     "director": "Xin Yumeng",
-    "runtime": null,
+    "runtime": "",
     "rating": null,
     "status": "published",
     "createdAt": null,
@@ -51117,17 +50796,6 @@
     "teaser": "A tiny Chinese animation about a newborn calf, made by a son and his mother, that flopped then became a box-office meme. Also titled The Bull Comes. No official trailer has been verified.",
     "facts": [],
     "watchLinks": [],
-    "metaSource": {
-      "name": "Reuters dispatch, 20 August 2026",
-      "retrieved": "2026-08-21",
-      "url": "https://kfgo.com/2026/08/20/how-a-low-budget-fever-dream-sparked-a-chinese-box-office-revolt/"
-    },
-    "castSource": {
-      "name": "Wikipedia",
-      "url": "https://en.wikipedia.org/wiki/List_of_Chinese_films_of_2026",
-      "field": "infobox starring",
-      "retrieved": "2026-08-22"
-    },
     "genres": [],
     "typeLabel": "Movie",
     "trending": true,
@@ -51491,5 +51159,4686 @@
     "trailerChannel": "Bluhouse Studios",
     "trailerVerified": true,
     "trailerLastChecked": "2026-08-21"
+  },
+  {
+    "id": "wicked",
+    "title": "Wicked",
+    "slug": "wicked",
+    "description": "Long before Dorothy, two witches share a school, a friendship, and a falling-out that Oz will retell as a fairy tale. Jon M. Chu’s film is the first half of the stage musical: Elphaba and Glinda, before the world decides who is wicked.",
+    "year": 2024,
+    "genre": "Musical",
+    "country": "United States",
+    "language": "English",
+    "poster": "https://i.ytimg.com/vi/6COmYeLsz4c/hqdefault.jpg",
+    "backdrop": null,
+    "trailer": "https://www.youtube.com/watch?v=6COmYeLsz4c",
+    "youtubeId": "6COmYeLsz4c",
+    "cast": [
+      "Cynthia Erivo",
+      "Ariana Grande",
+      "Jonathan Bailey",
+      "Ethan Slater",
+      "Bowen Yang",
+      "Marissa Bode"
+    ],
+    "director": "Jon M. Chu",
+    "runtime": "160 min",
+    "rating": null,
+    "status": "published",
+    "createdAt": null,
+    "updatedAt": "2026-08-22",
+    "legacyType": "movie",
+    "typeDir": "movie",
+    "teaser": "Long before Dorothy, two witches share a school, a friendship, and a falling-out that Oz will retell as a fairy tale. Jon M. Chu’s film is the first half of the stage musical: Elphaba and Glinda, before the world decides who is wicked.",
+    "facts": [],
+    "watchLinks": [],
+    "genres": [
+      "Musical",
+      "Fantasy"
+    ],
+    "typeLabel": "Movie",
+    "trending": false,
+    "popular": false,
+    "editorPick": false,
+    "isFeatured": false,
+    "isNewRelease": false,
+    "trailers": [
+      {
+        "videoId": "6COmYeLsz4c",
+        "type": "official-trailer",
+        "title": "Official Trailer",
+        "source": "YouTube",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "trailerType": "official-trailer",
+    "trailerVerified": true,
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Wicked_(2024_film)",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  {
+    "id": "wicked-for-good",
+    "title": "Wicked: For Good",
+    "slug": "wicked-for-good",
+    "description": "The second half of the Wicked story. Elphaba is in exile, Glinda is the public face of Oz, and the arrival everyone already knows is almost here. A sequel only if you already know how the first film ends.",
+    "year": 2025,
+    "genre": "Musical",
+    "country": "United States",
+    "language": "English",
+    "poster": "https://i.ytimg.com/vi/vt98AlBDI9Y/hqdefault.jpg",
+    "backdrop": null,
+    "trailer": "https://www.youtube.com/watch?v=vt98AlBDI9Y",
+    "youtubeId": "vt98AlBDI9Y",
+    "cast": [
+      "Ariana Grande",
+      "Cynthia Erivo",
+      "Jonathan Bailey",
+      "Ethan Slater",
+      "Bowen Yang",
+      "Marissa Bode"
+    ],
+    "director": "Jon M. Chu",
+    "runtime": "137 min",
+    "rating": null,
+    "status": "published",
+    "createdAt": null,
+    "updatedAt": "2026-08-22",
+    "legacyType": "movie",
+    "typeDir": "movie",
+    "teaser": "The second half of the Wicked story. Elphaba is in exile, Glinda is the public face of Oz, and the arrival everyone already knows is almost here. A sequel only if you already know how the first film ends.",
+    "facts": [],
+    "watchLinks": [],
+    "genres": [
+      "Musical",
+      "Fantasy"
+    ],
+    "typeLabel": "Movie",
+    "trending": false,
+    "popular": false,
+    "editorPick": false,
+    "isFeatured": false,
+    "isNewRelease": false,
+    "trailers": [
+      {
+        "videoId": "vt98AlBDI9Y",
+        "type": "official-trailer",
+        "title": "Official Trailer",
+        "source": "YouTube",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "trailerType": "official-trailer",
+    "trailerVerified": true,
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Wicked:_For_Good",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  {
+    "id": "spider-man-homecoming",
+    "title": "Spider-Man: Homecoming",
+    "slug": "spider-man-homecoming",
+    "description": "Peter Parker is back from Germany with a high-tech suit and a crush on being an Avenger. Homecoming keeps him in Queens: homework, a homecoming dance, and a salvage dealer who will not stay small. The MCU’s first solo Spider-Man film.",
+    "year": 2017,
+    "genre": "Superhero",
+    "country": "United States",
+    "language": "English",
+    "poster": "https://i.ytimg.com/vi/rk-dF1lIbIg/hqdefault.jpg",
+    "backdrop": null,
+    "trailer": "https://www.youtube.com/watch?v=rk-dF1lIbIg",
+    "youtubeId": "rk-dF1lIbIg",
+    "cast": [
+      "Tom Holland",
+      "Michael Keaton",
+      "Robert Downey Jr.",
+      "Marisa Tomei",
+      "Jon Favreau",
+      "Zendaya"
+    ],
+    "director": "Jon Watts",
+    "runtime": "133 min",
+    "rating": null,
+    "status": "published",
+    "createdAt": null,
+    "updatedAt": "2026-08-22",
+    "legacyType": "movie",
+    "typeDir": "movie",
+    "teaser": "Peter Parker is back from Germany with a high-tech suit and a crush on being an Avenger. Homecoming keeps him in Queens: homework, a homecoming dance, and a salvage dealer who will not stay small. The MCU’s first solo Spider-Man film.",
+    "facts": [],
+    "watchLinks": [],
+    "genres": [
+      "Superhero",
+      "Action"
+    ],
+    "typeLabel": "Movie",
+    "trending": false,
+    "popular": false,
+    "editorPick": false,
+    "isFeatured": false,
+    "isNewRelease": false,
+    "trailers": [
+      {
+        "videoId": "rk-dF1lIbIg",
+        "type": "official-trailer",
+        "title": "Official Trailer",
+        "source": "YouTube",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "trailerType": "official-trailer",
+    "trailerVerified": true,
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Spider-Man:_Homecoming",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  {
+    "id": "spider-man-far-from-home",
+    "title": "Spider-Man: Far From Home",
+    "slug": "spider-man-far-from-home",
+    "description": "A school trip across Europe is supposed to be a break after the snap. Instead Peter meets a man who can make the sky lie, and Nick Fury will not take no for an answer. The second Holland solo film, set after Endgame.",
+    "year": 2019,
+    "genre": "Superhero",
+    "country": "United States",
+    "language": "English",
+    "poster": "https://i.ytimg.com/vi/Nt9L1jCKGnE/hqdefault.jpg",
+    "backdrop": null,
+    "trailer": "https://www.youtube.com/watch?v=Nt9L1jCKGnE",
+    "youtubeId": "Nt9L1jCKGnE",
+    "cast": [
+      "Tom Holland",
+      "Samuel L. Jackson",
+      "Zendaya",
+      "Cobie Smulders",
+      "Jon Favreau",
+      "JB Smoove"
+    ],
+    "director": "Jon Watts",
+    "runtime": "129 min",
+    "rating": null,
+    "status": "published",
+    "createdAt": null,
+    "updatedAt": "2026-08-22",
+    "legacyType": "movie",
+    "typeDir": "movie",
+    "teaser": "A school trip across Europe is supposed to be a break after the snap. Instead Peter meets a man who can make the sky lie, and Nick Fury will not take no for an answer. The second Holland solo film, set after Endgame.",
+    "facts": [],
+    "watchLinks": [],
+    "genres": [
+      "Superhero",
+      "Action"
+    ],
+    "typeLabel": "Movie",
+    "trending": false,
+    "popular": false,
+    "editorPick": false,
+    "isFeatured": false,
+    "isNewRelease": false,
+    "trailers": [
+      {
+        "videoId": "Nt9L1jCKGnE",
+        "type": "official-trailer",
+        "title": "Official Trailer",
+        "source": "YouTube",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "trailerType": "official-trailer",
+    "trailerVerified": true,
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Spider-Man:_Far_From_Home",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  {
+    "id": "spider-man-across-spider-verse",
+    "title": "Spider-Man: Across the Spider-Verse",
+    "slug": "spider-man-across-spider-verse",
+    "description": "Miles Morales is a year older and still the only Spider-Man his Brooklyn knows. Then the Spider-Society arrives with rules about which lives you are allowed to save. A sequel to Into the Spider-Verse, not a recap.",
+    "year": 2023,
+    "genre": "Animation",
+    "country": "United States",
+    "language": "English",
+    "poster": "https://i.ytimg.com/vi/4InPVARmAkc/hqdefault.jpg",
+    "backdrop": null,
+    "trailer": "https://www.youtube.com/watch?v=4InPVARmAkc",
+    "youtubeId": "4InPVARmAkc",
+    "cast": [
+      "Shameik Moore",
+      "Hailee Steinfeld",
+      "Brian Tyree Henry",
+      "Luna Lauren Vélez",
+      "Jake Johnson",
+      "Issa Rae"
+    ],
+    "director": "Joaquim Dos Santos; Kemp Powers; Justin K. Thompson",
+    "runtime": "140 min",
+    "rating": null,
+    "status": "published",
+    "createdAt": null,
+    "updatedAt": "2026-08-22",
+    "legacyType": "movie",
+    "typeDir": "movie",
+    "teaser": "Miles Morales is a year older and still the only Spider-Man his Brooklyn knows. Then the Spider-Society arrives with rules about which lives you are allowed to save. A sequel to Into the Spider-Verse, not a recap.",
+    "facts": [],
+    "watchLinks": [],
+    "genres": [
+      "Animation",
+      "Superhero"
+    ],
+    "typeLabel": "Movie",
+    "trending": false,
+    "popular": false,
+    "editorPick": false,
+    "isFeatured": false,
+    "isNewRelease": false,
+    "trailers": [
+      {
+        "videoId": "4InPVARmAkc",
+        "type": "official-trailer",
+        "title": "Official Trailer",
+        "source": "YouTube",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "trailerType": "official-trailer",
+    "trailerVerified": true,
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Spider-Man:_Across_the_Spider-Verse",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  {
+    "id": "animal",
+    "title": "Animal",
+    "slug": "animal",
+    "description": "A son who cannot sit still in his father’s shadow answers a hit with a war. Sandeep Reddy Vanga’s film is long, bloody, and built around Ranbir Kapoor as a man who calls obsession love. Not a part-one teaser — this is the whole argument.",
+    "year": 2023,
+    "genre": "Action",
+    "country": "India",
+    "language": "Hindi",
+    "poster": "https://i.ytimg.com/vi/JbyyhK4E-AM/hqdefault.jpg",
+    "backdrop": null,
+    "trailer": "https://www.youtube.com/watch?v=JbyyhK4E-AM",
+    "youtubeId": "JbyyhK4E-AM",
+    "cast": [
+      "Ranbir Kapoor",
+      "Anil Kapoor",
+      "Bobby Deol",
+      "Rashmika Mandanna",
+      "Tripti Dimri"
+    ],
+    "director": "Sandeep Reddy Vanga",
+    "runtime": "201 min",
+    "rating": null,
+    "status": "published",
+    "createdAt": null,
+    "updatedAt": "2026-08-22",
+    "legacyType": "movie",
+    "typeDir": "movie",
+    "teaser": "A son who cannot sit still in his father’s shadow answers a hit with a war. Sandeep Reddy Vanga’s film is long, bloody, and built around Ranbir Kapoor as a man who calls obsession love. Not a part-one teaser — this is the whole argument.",
+    "facts": [],
+    "watchLinks": [],
+    "genres": [
+      "Action",
+      "Crime",
+      "Drama"
+    ],
+    "typeLabel": "Movie",
+    "trending": false,
+    "popular": false,
+    "editorPick": false,
+    "isFeatured": false,
+    "isNewRelease": false,
+    "trailers": [
+      {
+        "videoId": "JbyyhK4E-AM",
+        "type": "official-trailer",
+        "title": "Official Trailer",
+        "source": "YouTube",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "trailerType": "official-trailer",
+    "trailerVerified": true,
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Animal_(2023_Indian_film)",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  {
+    "id": "article-370",
+    "title": "Article 370",
+    "slug": "article-370",
+    "description": "A Delhi-based agent is sent into Kashmir around the 2019 constitutional change that ended the state’s special status. The film follows the operation, not a civics lecture. Yami Gautam Dhar leads.",
+    "year": 2024,
+    "genre": "Thriller",
+    "country": "India",
+    "language": "Hindi",
+    "poster": "https://i.ytimg.com/vi/6Pf6RUmq7S0/hqdefault.jpg",
+    "backdrop": null,
+    "trailer": "https://www.youtube.com/watch?v=6Pf6RUmq7S0",
+    "youtubeId": "6Pf6RUmq7S0",
+    "cast": [
+      "Yami Gautam Dhar",
+      "Priyamani"
+    ],
+    "director": "Aditya Suhas Jambhale",
+    "runtime": "158 min",
+    "rating": null,
+    "status": "published",
+    "createdAt": null,
+    "updatedAt": "2026-08-22",
+    "legacyType": "movie",
+    "typeDir": "movie",
+    "teaser": "A Delhi-based agent is sent into Kashmir around the 2019 constitutional change that ended the state’s special status. The film follows the operation, not a civics lecture. Yami Gautam Dhar leads.",
+    "facts": [],
+    "watchLinks": [],
+    "genres": [
+      "Thriller",
+      "Drama"
+    ],
+    "typeLabel": "Movie",
+    "trending": false,
+    "popular": false,
+    "editorPick": false,
+    "isFeatured": false,
+    "isNewRelease": false,
+    "trailers": [
+      {
+        "videoId": "6Pf6RUmq7S0",
+        "type": "official-trailer",
+        "title": "Official Trailer",
+        "source": "YouTube",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "trailerType": "official-trailer",
+    "trailerVerified": true,
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Article_370_(film)",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  {
+    "id": "pushpa-2",
+    "title": "Pushpa 2: The Rule",
+    "slug": "pushpa-2",
+    "description": "Pushpa Raj is no longer climbing. The sequel to The Rise puts him in a fight with the state, a rival syndicate, and a cop who will not drop the file. Allu Arjun returns; so does Fahadh Faasil.",
+    "year": 2024,
+    "genre": "Action",
+    "country": "India",
+    "language": "Telugu",
+    "poster": "https://i.ytimg.com/vi/1kVK0MZlbI4/hqdefault.jpg",
+    "backdrop": null,
+    "trailer": "https://www.youtube.com/watch?v=1kVK0MZlbI4",
+    "youtubeId": "1kVK0MZlbI4",
+    "cast": [
+      "Allu Arjun",
+      "Rashmika Mandanna",
+      "Fahadh Faasil",
+      "Jagapathi Babu"
+    ],
+    "director": "Sukumar",
+    "runtime": "200 min",
+    "rating": null,
+    "status": "published",
+    "createdAt": null,
+    "updatedAt": "2026-08-22",
+    "legacyType": "movie",
+    "typeDir": "movie",
+    "teaser": "Pushpa Raj is no longer climbing. The sequel to The Rise puts him in a fight with the state, a rival syndicate, and a cop who will not drop the file. Allu Arjun returns; so does Fahadh Faasil.",
+    "facts": [],
+    "watchLinks": [],
+    "genres": [
+      "Action",
+      "Crime"
+    ],
+    "typeLabel": "Movie",
+    "trending": false,
+    "popular": false,
+    "editorPick": false,
+    "isFeatured": false,
+    "isNewRelease": false,
+    "trailers": [
+      {
+        "videoId": "1kVK0MZlbI4",
+        "type": "official-trailer",
+        "title": "Official Trailer",
+        "source": "YouTube",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "trailerType": "official-trailer",
+    "trailerVerified": true,
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Pushpa_2:_The_Rule",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  {
+    "id": "kalki-2898-ad",
+    "title": "Kalki 2898-AD",
+    "slug": "kalki-2898-ad",
+    "description": "Kasi in the year 2898 is a desert city waiting for a prophecy. Nag Ashwin folds the Mahabharata into a future-war film with Prabhas, Deepika Padukone, Amitabh Bachchan and Kamal Haasan. Big-scale Indian sci-fi, not a Hollywood remake.",
+    "year": 2024,
+    "genre": "Sci-Fi",
+    "country": "India",
+    "language": "Telugu",
+    "poster": "https://i.ytimg.com/vi/BfCIPsEGAS8/hqdefault.jpg",
+    "backdrop": null,
+    "trailer": "https://www.youtube.com/watch?v=BfCIPsEGAS8",
+    "youtubeId": "BfCIPsEGAS8",
+    "cast": [
+      "Amitabh Bachchan",
+      "Kamal Haasan",
+      "Prabhas",
+      "Deepika Padukone",
+      "Disha Patani"
+    ],
+    "director": "Nag Ashwin",
+    "runtime": "181 min",
+    "rating": null,
+    "status": "published",
+    "createdAt": null,
+    "updatedAt": "2026-08-22",
+    "legacyType": "movie",
+    "typeDir": "movie",
+    "teaser": "Kasi in the year 2898 is a desert city waiting for a prophecy. Nag Ashwin folds the Mahabharata into a future-war film with Prabhas, Deepika Padukone, Amitabh Bachchan and Kamal Haasan. Big-scale Indian sci-fi, not a Hollywood remake.",
+    "facts": [],
+    "watchLinks": [],
+    "genres": [
+      "Sci-Fi",
+      "Action",
+      "Fantasy"
+    ],
+    "typeLabel": "Movie",
+    "trending": false,
+    "popular": false,
+    "editorPick": false,
+    "isFeatured": false,
+    "isNewRelease": false,
+    "trailers": [
+      {
+        "videoId": "BfCIPsEGAS8",
+        "type": "official-trailer",
+        "title": "Official Trailer",
+        "source": "YouTube",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "trailerType": "official-trailer",
+    "trailerVerified": true,
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Kalki_2898_AD",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  {
+    "id": "stree-2",
+    "title": "Stree 2",
+    "slug": "stree-2",
+    "description": "Chanderi has a new night problem, and the same group of friends who survived the first Stree are not ready. Amar Kaushik keeps the horror-comedy mix: a spirit, a town rumour, and Rajkummar Rao trying to be brave.",
+    "year": 2024,
+    "genre": "Horror",
+    "country": "India",
+    "language": "Hindi",
+    "poster": "https://i.ytimg.com/vi/VlvOgk5BHS4/hqdefault.jpg",
+    "backdrop": null,
+    "trailer": "https://www.youtube.com/watch?v=VlvOgk5BHS4",
+    "youtubeId": "VlvOgk5BHS4",
+    "cast": [
+      "Shraddha Kapoor",
+      "Rajkummar Rao",
+      "Pankaj Tripathi",
+      "Abhishek Banerjee",
+      "Aparshakti Khurana"
+    ],
+    "director": "Amar Kaushik",
+    "runtime": "143 min",
+    "rating": null,
+    "status": "published",
+    "createdAt": null,
+    "updatedAt": "2026-08-22",
+    "legacyType": "movie",
+    "typeDir": "movie",
+    "teaser": "Chanderi has a new night problem, and the same group of friends who survived the first Stree are not ready. Amar Kaushik keeps the horror-comedy mix: a spirit, a town rumour, and Rajkummar Rao trying to be brave.",
+    "facts": [],
+    "watchLinks": [],
+    "genres": [
+      "Horror",
+      "Comedy"
+    ],
+    "typeLabel": "Movie",
+    "trending": false,
+    "popular": false,
+    "editorPick": false,
+    "isFeatured": false,
+    "isNewRelease": false,
+    "trailers": [
+      {
+        "videoId": "VlvOgk5BHS4",
+        "type": "official-trailer",
+        "title": "Official Trailer",
+        "source": "YouTube",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "trailerType": "official-trailer",
+    "trailerVerified": true,
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Stree_2",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  {
+    "id": "kpop-demon-hunters",
+    "title": "KPop Demon Hunters",
+    "slug": "kpop-demon-hunters",
+    "description": "A K-pop girl group hunts demons between choreography and comeback stages. Sony Pictures Animation’s 2025 film is a musical action cartoon, not a concert film. The billed voices include Arden Cho and Ahn Hyo-seop.",
+    "year": 2025,
+    "genre": "Animation",
+    "country": "United States",
+    "language": "English",
+    "poster": "https://i.ytimg.com/vi/6aFevqIKAZg/hqdefault.jpg",
+    "backdrop": null,
+    "trailer": "https://www.youtube.com/watch?v=6aFevqIKAZg",
+    "youtubeId": "6aFevqIKAZg",
+    "cast": [
+      "Arden Cho",
+      "Ahn Hyo-seop",
+      "May Hong",
+      "Ji-young Yoo"
+    ],
+    "director": "Maggie Kang; Chris Appelhans",
+    "runtime": "95 min",
+    "rating": null,
+    "status": "published",
+    "createdAt": null,
+    "updatedAt": "2026-08-22",
+    "legacyType": "movie",
+    "typeDir": "movie",
+    "teaser": "A K-pop girl group hunts demons between choreography and comeback stages. Sony Pictures Animation’s 2025 film is a musical action cartoon, not a concert film. The billed voices include Arden Cho and Ahn Hyo-seop.",
+    "facts": [],
+    "watchLinks": [],
+    "genres": [
+      "Animation",
+      "Music",
+      "Fantasy"
+    ],
+    "typeLabel": "Movie",
+    "trending": false,
+    "popular": false,
+    "editorPick": false,
+    "isFeatured": false,
+    "isNewRelease": false,
+    "trailers": [
+      {
+        "videoId": "6aFevqIKAZg",
+        "type": "official-trailer",
+        "title": "Official Trailer",
+        "source": "YouTube",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "trailerType": "official-trailer",
+    "trailerVerified": true,
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/KPop_Demon_Hunters",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  {
+    "id": "fifty-shades-of-grey",
+    "title": "Fifty Shades of Grey",
+    "slug": "fifty-shades-of-grey",
+    "description": "A literature student interviews a Seattle billionaire and stays. Sam Taylor-Johnson’s film is the first of the E. L. James adaptations: Dakota Johnson and Jamie Dornan, a contract, and a relationship that is not a fairy tale.",
+    "year": 2015,
+    "genre": "Romance",
+    "country": "United States",
+    "language": "English",
+    "poster": "https://i.ytimg.com/vi/6FDTMRK7-24/hqdefault.jpg",
+    "backdrop": null,
+    "trailer": "https://www.youtube.com/watch?v=6FDTMRK7-24",
+    "youtubeId": "6FDTMRK7-24",
+    "cast": [
+      "Dakota Johnson",
+      "Jamie Dornan",
+      "Jennifer Ehle",
+      "Marcia Gay Harden"
+    ],
+    "director": "Sam Taylor-Johnson",
+    "runtime": "125 min",
+    "rating": null,
+    "status": "published",
+    "createdAt": null,
+    "updatedAt": "2026-08-22",
+    "legacyType": "movie",
+    "typeDir": "movie",
+    "teaser": "A literature student interviews a Seattle billionaire and stays. Sam Taylor-Johnson’s film is the first of the E. L. James adaptations: Dakota Johnson and Jamie Dornan, a contract, and a relationship that is not a fairy tale.",
+    "facts": [],
+    "watchLinks": [],
+    "genres": [
+      "Romance",
+      "Drama"
+    ],
+    "typeLabel": "Movie",
+    "trending": false,
+    "popular": false,
+    "editorPick": false,
+    "isFeatured": false,
+    "isNewRelease": false,
+    "trailers": [
+      {
+        "videoId": "6FDTMRK7-24",
+        "type": "official-trailer",
+        "title": "Official Trailer",
+        "source": "YouTube",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "trailerType": "official-trailer",
+    "trailerVerified": true,
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Fifty_Shades_of_Grey_(film)",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  {
+    "id": "demon-slayer-infinity-castle",
+    "title": "Demon Slayer: Infinity Castle",
+    "slug": "demon-slayer-infinity-castle",
+    "description": "The Corps is pulled into Muzan’s fortress of shifting rooms. Haruo Sotozaki’s theatrical continuation of Demon Slayer is a movie, not a recap episode. Tanjiro, Nezuko and the Hashira go in knowing the castle does not want them out.",
+    "year": 2025,
+    "genre": "Anime",
+    "country": "Japan",
+    "language": "Japanese",
+    "poster": "https://i.ytimg.com/vi/x7uLutVRBfI/hqdefault.jpg",
+    "backdrop": null,
+    "trailer": "https://www.youtube.com/watch?v=x7uLutVRBfI",
+    "youtubeId": "x7uLutVRBfI",
+    "cast": [
+      "Natsuki Hanae",
+      "Akari Kitō",
+      "Hiro Shimono",
+      "Yoshitsugu Matsuoka"
+    ],
+    "director": "Haruo Sotozaki",
+    "runtime": "155 min",
+    "rating": null,
+    "status": "published",
+    "createdAt": null,
+    "updatedAt": "2026-08-22",
+    "legacyType": "movie",
+    "typeDir": "movie",
+    "teaser": "The Corps is pulled into Muzan’s fortress of shifting rooms. Haruo Sotozaki’s theatrical continuation of Demon Slayer is a movie, not a recap episode. Tanjiro, Nezuko and the Hashira go in knowing the castle does not want them out.",
+    "facts": [],
+    "watchLinks": [],
+    "genres": [
+      "Anime",
+      "Action",
+      "Fantasy"
+    ],
+    "typeLabel": "Movie",
+    "trending": false,
+    "popular": false,
+    "editorPick": false,
+    "isFeatured": false,
+    "isNewRelease": false,
+    "trailers": [
+      {
+        "videoId": "x7uLutVRBfI",
+        "type": "official-trailer",
+        "title": "Official Trailer",
+        "source": "YouTube",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "trailerType": "official-trailer",
+    "trailerVerified": true,
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Demon_Slayer:_Kimetsu_no_Yaiba_%E2%80%93_The_Movie:_Infinity_Castle",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  {
+    "id": "zootopia-2",
+    "title": "Zootopia 2",
+    "slug": "zootopia-2",
+    "description": "Judy Hopps and Nick Wilde are back on a case that the city would rather file away. Disney Animation’s sequel keeps the buddy-cop shape of the 2016 film and adds a reptile the first movie barely showed.",
+    "year": 2025,
+    "genre": "Animation",
+    "country": "United States",
+    "language": "English",
+    "poster": "https://i.ytimg.com/vi/BjkIOU5PhyQ/hqdefault.jpg",
+    "backdrop": null,
+    "trailer": "https://www.youtube.com/watch?v=BjkIOU5PhyQ",
+    "youtubeId": "BjkIOU5PhyQ",
+    "cast": [
+      "Ginnifer Goodwin",
+      "Jason Bateman",
+      "Ke Huy Quan",
+      "Fortune Feimster",
+      "Andy Samberg",
+      "David Strathairn"
+    ],
+    "director": "Jared Bush; Byron Howard",
+    "runtime": "108 min",
+    "rating": null,
+    "status": "published",
+    "createdAt": null,
+    "updatedAt": "2026-08-22",
+    "legacyType": "movie",
+    "typeDir": "movie",
+    "teaser": "Judy Hopps and Nick Wilde are back on a case that the city would rather file away. Disney Animation’s sequel keeps the buddy-cop shape of the 2016 film and adds a reptile the first movie barely showed.",
+    "facts": [],
+    "watchLinks": [],
+    "genres": [
+      "Animation",
+      "Comedy",
+      "Family"
+    ],
+    "typeLabel": "Movie",
+    "trending": false,
+    "popular": false,
+    "editorPick": false,
+    "isFeatured": false,
+    "isNewRelease": false,
+    "trailers": [
+      {
+        "videoId": "BjkIOU5PhyQ",
+        "type": "official-trailer",
+        "title": "Official Trailer",
+        "source": "YouTube",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "trailerType": "official-trailer",
+    "trailerVerified": true,
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Zootopia_2",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  {
+    "id": "predator-badlands",
+    "title": "Predator: Badlands",
+    "slug": "predator-badlands",
+    "description": "Dan Trachtenberg’s next Predator film follows a young Yautja on a hunt that does not go to plan. Elle Fanning is the human the story will not drop. A franchise entry, not a remake of the 1987 film.",
+    "year": 2025,
+    "genre": "Sci-Fi",
+    "country": "United States",
+    "language": "English",
+    "poster": "https://i.ytimg.com/vi/43R9l7EkJwE/hqdefault.jpg",
+    "backdrop": null,
+    "trailer": "https://www.youtube.com/watch?v=43R9l7EkJwE",
+    "youtubeId": "43R9l7EkJwE",
+    "cast": [
+      "Elle Fanning",
+      "Dimitrius Schuster-Koloamatangi"
+    ],
+    "director": "Dan Trachtenberg",
+    "runtime": "107 min",
+    "rating": null,
+    "status": "published",
+    "createdAt": null,
+    "updatedAt": "2026-08-22",
+    "legacyType": "movie",
+    "typeDir": "movie",
+    "teaser": "Dan Trachtenberg’s next Predator film follows a young Yautja on a hunt that does not go to plan. Elle Fanning is the human the story will not drop. A franchise entry, not a remake of the 1987 film.",
+    "facts": [],
+    "watchLinks": [],
+    "genres": [
+      "Sci-Fi",
+      "Action",
+      "Horror"
+    ],
+    "typeLabel": "Movie",
+    "trending": false,
+    "popular": false,
+    "editorPick": false,
+    "isFeatured": false,
+    "isNewRelease": false,
+    "trailers": [
+      {
+        "videoId": "43R9l7EkJwE",
+        "type": "official-trailer",
+        "title": "Official Trailer",
+        "source": "YouTube",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "trailerType": "official-trailer",
+    "trailerVerified": true,
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Predator:_Badlands",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  {
+    "id": "the-housemaid-2025",
+    "title": "The Housemaid",
+    "slug": "the-housemaid-2025",
+    "description": "A woman takes a live-in job with a wealthy couple and finds the house has rules that are not in the contract. Paul Feig’s 2025 thriller is an adaptation of Freida McFadden’s novel — not the 2010 Korean film of the same name.",
+    "year": 2025,
+    "genre": "Thriller",
+    "country": "United States",
+    "language": "English",
+    "poster": "https://i.ytimg.com/vi/48CtX6OgU3s/hqdefault.jpg",
+    "backdrop": null,
+    "trailer": "https://www.youtube.com/watch?v=48CtX6OgU3s",
+    "youtubeId": "48CtX6OgU3s",
+    "cast": [
+      "Sydney Sweeney",
+      "Amanda Seyfried",
+      "Brandon Sklenar"
+    ],
+    "director": "Paul Feig",
+    "runtime": "131 min",
+    "rating": null,
+    "status": "published",
+    "createdAt": null,
+    "updatedAt": "2026-08-22",
+    "legacyType": "movie",
+    "typeDir": "movie",
+    "teaser": "A woman takes a live-in job with a wealthy couple and finds the house has rules that are not in the contract. Paul Feig’s 2025 thriller is an adaptation of Freida McFadden’s novel — not the 2010 Korean film of the same name.",
+    "facts": [],
+    "watchLinks": [],
+    "genres": [
+      "Thriller",
+      "Drama"
+    ],
+    "typeLabel": "Movie",
+    "trending": false,
+    "popular": false,
+    "editorPick": false,
+    "isFeatured": false,
+    "isNewRelease": false,
+    "trailers": [
+      {
+        "videoId": "48CtX6OgU3s",
+        "type": "official-trailer",
+        "title": "Official Trailer",
+        "source": "YouTube",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "trailerType": "official-trailer",
+    "trailerVerified": true,
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/The_Housemaid_(2025_film)",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  {
+    "id": "war-of-the-worlds-2025",
+    "title": "War of the Worlds",
+    "slug": "war-of-the-worlds-2025",
+    "description": "A 2025 invasion story told largely through screens. Ice Cube plays a DHS analyst watching the attack in real time. This is not Spielberg’s 2005 film and not a claim that the two share a story.",
+    "year": 2025,
+    "genre": "Sci-Fi",
+    "country": "United States",
+    "language": "English",
+    "poster": "https://i.ytimg.com/vi/sjlLLmURlEg/hqdefault.jpg",
+    "backdrop": null,
+    "trailer": "https://www.youtube.com/watch?v=sjlLLmURlEg",
+    "youtubeId": "sjlLLmURlEg",
+    "cast": [
+      "Ice Cube",
+      "Eva Longoria",
+      "Clark Gregg"
+    ],
+    "director": "Rich Lee",
+    "runtime": "89 min",
+    "rating": null,
+    "status": "published",
+    "createdAt": null,
+    "updatedAt": "2026-08-22",
+    "legacyType": "movie",
+    "typeDir": "movie",
+    "teaser": "A 2025 invasion story told largely through screens. Ice Cube plays a DHS analyst watching the attack in real time. This is not Spielberg’s 2005 film and not a claim that the two share a story.",
+    "facts": [],
+    "watchLinks": [],
+    "genres": [
+      "Sci-Fi",
+      "Thriller"
+    ],
+    "typeLabel": "Movie",
+    "trending": false,
+    "popular": false,
+    "editorPick": false,
+    "isFeatured": false,
+    "isNewRelease": false,
+    "trailers": [
+      {
+        "videoId": "sjlLLmURlEg",
+        "type": "official-trailer",
+        "title": "Official Trailer",
+        "source": "YouTube",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "trailerType": "official-trailer",
+    "trailerVerified": true,
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/War_of_the_Worlds_(2025_film)",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  {
+    "id": "avatar-fire-and-ash",
+    "title": "Avatar: Fire and Ash",
+    "slug": "avatar-fire-and-ash",
+    "description": "The third Avatar film. Jake and Neytiri take the family into fire-clan country after the way of water. James Cameron is still in the chair; Sam Worthington and Zoe Saldaña return.",
+    "year": 2025,
+    "genre": "Sci-Fi",
+    "country": "United States",
+    "language": "English",
+    "poster": "https://i.ytimg.com/vi/nb_fFj_0rq8/hqdefault.jpg",
+    "backdrop": null,
+    "trailer": "https://www.youtube.com/watch?v=nb_fFj_0rq8",
+    "youtubeId": "nb_fFj_0rq8",
+    "cast": [
+      "Sam Worthington",
+      "Zoe Saldaña",
+      "Sigourney Weaver",
+      "Stephen Lang",
+      "Kate Winslet"
+    ],
+    "director": "James Cameron",
+    "runtime": "197 min",
+    "rating": null,
+    "status": "published",
+    "createdAt": null,
+    "updatedAt": "2026-08-22",
+    "legacyType": "movie",
+    "typeDir": "movie",
+    "teaser": "The third Avatar film. Jake and Neytiri take the family into fire-clan country after the way of water. James Cameron is still in the chair; Sam Worthington and Zoe Saldaña return.",
+    "facts": [],
+    "watchLinks": [],
+    "genres": [
+      "Sci-Fi",
+      "Adventure"
+    ],
+    "typeLabel": "Movie",
+    "trending": false,
+    "popular": false,
+    "editorPick": false,
+    "isFeatured": false,
+    "isNewRelease": false,
+    "trailers": [
+      {
+        "videoId": "nb_fFj_0rq8",
+        "type": "official-trailer",
+        "title": "Official Trailer",
+        "source": "YouTube",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "trailerType": "official-trailer",
+    "trailerVerified": true,
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Avatar%3A_Fire_and_Ash",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  {
+    "id": "backrooms",
+    "title": "Backrooms",
+    "slug": "backrooms",
+    "description": "A Kane Parsons feature built from the internet’s yellow-room creepypasta. Chiwetel Ejiofor and Renate Reinsve are the billed leads. Not a found-footage YouTube compilation.",
+    "year": 2026,
+    "genre": "Horror",
+    "country": "United States",
+    "language": "English",
+    "poster": "https://i.ytimg.com/vi/rIH8Nkb2V_c/hqdefault.jpg",
+    "backdrop": null,
+    "trailer": "https://www.youtube.com/watch?v=rIH8Nkb2V_c",
+    "youtubeId": "rIH8Nkb2V_c",
+    "cast": [
+      "Chiwetel Ejiofor",
+      "Renate Reinsve",
+      "Mark Duplass",
+      "Finn Bennett",
+      "Lukita Maxwell"
+    ],
+    "director": "Kane Parsons",
+    "runtime": "110 min",
+    "rating": null,
+    "status": "published",
+    "createdAt": null,
+    "updatedAt": "2026-08-22",
+    "legacyType": "movie",
+    "typeDir": "movie",
+    "teaser": "A Kane Parsons feature built from the internet’s yellow-room creepypasta. Chiwetel Ejiofor and Renate Reinsve are the billed leads. Not a found-footage YouTube compilation.",
+    "facts": [],
+    "watchLinks": [],
+    "genres": [
+      "Horror",
+      "Sci-Fi"
+    ],
+    "typeLabel": "Movie",
+    "trending": false,
+    "popular": false,
+    "editorPick": false,
+    "isFeatured": false,
+    "isNewRelease": false,
+    "trailers": [
+      {
+        "videoId": "rIH8Nkb2V_c",
+        "type": "official-trailer",
+        "title": "Official Trailer",
+        "source": "YouTube",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "trailerType": "official-trailer",
+    "trailerVerified": true,
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Backrooms_%28film%29",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  {
+    "id": "bad-newz",
+    "title": "Bad Newz",
+    "slug": "bad-newz",
+    "description": "A messy love triangle sold as a comedy. Vicky Kaushal, Triptii Dimri and Ammy Virk. Anand Tiwari’s 2024 Hindi film, not a news satire.",
+    "year": 2024,
+    "genre": "Comedy",
+    "country": "India",
+    "language": "Hindi",
+    "poster": "https://i.ytimg.com/vi/uV50UfcIT68/hqdefault.jpg",
+    "backdrop": null,
+    "trailer": "https://www.youtube.com/watch?v=uV50UfcIT68",
+    "youtubeId": "uV50UfcIT68",
+    "cast": [
+      "Vicky Kaushal",
+      "Triptii Dimri",
+      "Ammy Virk"
+    ],
+    "director": "Anand Tiwari",
+    "runtime": "140 min",
+    "rating": null,
+    "status": "published",
+    "createdAt": null,
+    "updatedAt": "2026-08-22",
+    "legacyType": "movie",
+    "typeDir": "movie",
+    "teaser": "A messy love triangle sold as a comedy. Vicky Kaushal, Triptii Dimri and Ammy Virk. Anand Tiwari’s 2024 Hindi film, not a news satire.",
+    "facts": [],
+    "watchLinks": [],
+    "genres": [
+      "Comedy",
+      "Romance"
+    ],
+    "typeLabel": "Movie",
+    "trending": false,
+    "popular": false,
+    "editorPick": false,
+    "isFeatured": false,
+    "isNewRelease": false,
+    "trailers": [
+      {
+        "videoId": "uV50UfcIT68",
+        "type": "official-trailer",
+        "title": "Official Trailer",
+        "source": "YouTube",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "trailerType": "official-trailer",
+    "trailerVerified": true,
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Bad_Newz",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  {
+    "id": "bhool-bhulaiyaa-3",
+    "title": "Bhool Bhulaiyaa 3",
+    "slug": "bhool-bhulaiyaa-3",
+    "description": "Kartik Aaryan walks into another haunted palace; Vidya Balan and Madhuri Dixit are already inside the joke. Anees Bazmee’s third Bhool Bhulaiyaa, still a horror-comedy.",
+    "year": 2024,
+    "genre": "Horror",
+    "country": "India",
+    "language": "Hindi",
+    "poster": "https://i.ytimg.com/vi/i9A0xDLZHtc/hqdefault.jpg",
+    "backdrop": null,
+    "trailer": "https://www.youtube.com/watch?v=i9A0xDLZHtc",
+    "youtubeId": "i9A0xDLZHtc",
+    "cast": [
+      "Kartik Aaryan",
+      "Vidya Balan",
+      "Madhuri Dixit",
+      "Triptii Dimri"
+    ],
+    "director": "Anees Bazmee",
+    "runtime": "158 min",
+    "rating": null,
+    "status": "published",
+    "createdAt": null,
+    "updatedAt": "2026-08-22",
+    "legacyType": "movie",
+    "typeDir": "movie",
+    "teaser": "Kartik Aaryan walks into another haunted palace; Vidya Balan and Madhuri Dixit are already inside the joke. Anees Bazmee’s third Bhool Bhulaiyaa, still a horror-comedy.",
+    "facts": [],
+    "watchLinks": [],
+    "genres": [
+      "Horror",
+      "Comedy"
+    ],
+    "typeLabel": "Movie",
+    "trending": false,
+    "popular": false,
+    "editorPick": false,
+    "isFeatured": false,
+    "isNewRelease": false,
+    "trailers": [
+      {
+        "videoId": "i9A0xDLZHtc",
+        "type": "official-trailer",
+        "title": "Official Trailer",
+        "source": "YouTube",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "trailerType": "official-trailer",
+    "trailerVerified": true,
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Bhool_Bhulaiyaa_3",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  {
+    "id": "chainsaw-man-reze",
+    "title": "Chainsaw Man: Reze",
+    "slug": "chainsaw-man-reze",
+    "description": "The Reze Arc, as a movie. Tatsuya Yoshihara directs; Kikunosuke Toya returns as Denji. A theatrical Chainsaw Man chapter, not a recap of the TV season.",
+    "year": 2025,
+    "genre": "Anime",
+    "country": "Japan",
+    "language": "Japanese",
+    "poster": "https://i.ytimg.com/vi/tAzAhDNdehs/hqdefault.jpg",
+    "backdrop": null,
+    "trailer": "https://www.youtube.com/watch?v=tAzAhDNdehs",
+    "youtubeId": "tAzAhDNdehs",
+    "cast": [
+      "Kikunosuke Toya",
+      "Reina Ueda",
+      "Fairouz Ai",
+      "Tomori Kusunoki",
+      "Shogo Sakata"
+    ],
+    "director": "Tatsuya Yoshihara",
+    "runtime": "100 min",
+    "rating": null,
+    "status": "published",
+    "createdAt": null,
+    "updatedAt": "2026-08-22",
+    "legacyType": "movie",
+    "typeDir": "movie",
+    "teaser": "The Reze Arc, as a movie. Tatsuya Yoshihara directs; Kikunosuke Toya returns as Denji. A theatrical Chainsaw Man chapter, not a recap of the TV season.",
+    "facts": [],
+    "watchLinks": [],
+    "genres": [
+      "Anime",
+      "Action"
+    ],
+    "typeLabel": "Movie",
+    "trending": false,
+    "popular": false,
+    "editorPick": false,
+    "isFeatured": false,
+    "isNewRelease": false,
+    "trailers": [
+      {
+        "videoId": "tAzAhDNdehs",
+        "type": "official-trailer",
+        "title": "Official Trailer",
+        "source": "YouTube",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "trailerType": "official-trailer",
+    "trailerVerified": true,
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Chainsaw_Man_%E2%80%93_The_Movie%3A_Reze_Arc",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  {
+    "id": "citizen-vigilante",
+    "title": "Citizen Vigilante",
+    "slug": "citizen-vigilante",
+    "description": "Uwe Boll’s late-period action film with Armie Hammer. A man takes the law personally. BRYME lists the billed names and the trailer — not a review of Boll’s catalogue.",
+    "year": 2024,
+    "genre": "Action",
+    "country": "Croatia",
+    "language": "English",
+    "poster": "https://i.ytimg.com/vi/d6HlaHKpl20/hqdefault.jpg",
+    "backdrop": null,
+    "trailer": "https://www.youtube.com/watch?v=d6HlaHKpl20",
+    "youtubeId": "d6HlaHKpl20",
+    "cast": [
+      "Armie Hammer",
+      "Costas Mandylor"
+    ],
+    "director": "Uwe Boll",
+    "runtime": "89 min",
+    "rating": null,
+    "status": "published",
+    "createdAt": null,
+    "updatedAt": "2026-08-22",
+    "legacyType": "movie",
+    "typeDir": "movie",
+    "teaser": "Uwe Boll’s late-period action film with Armie Hammer. A man takes the law personally. BRYME lists the billed names and the trailer — not a review of Boll’s catalogue.",
+    "facts": [],
+    "watchLinks": [],
+    "genres": [
+      "Action",
+      "Thriller"
+    ],
+    "typeLabel": "Movie",
+    "trending": false,
+    "popular": false,
+    "editorPick": false,
+    "isFeatured": false,
+    "isNewRelease": false,
+    "trailers": [
+      {
+        "videoId": "d6HlaHKpl20",
+        "type": "official-trailer",
+        "title": "Official Trailer",
+        "source": "YouTube",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "trailerType": "official-trailer",
+    "trailerVerified": true,
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Citizen_Vigilante",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  {
+    "id": "camp-rock-3",
+    "title": "Camp Rock 3",
+    "slug": "camp-rock-3",
+    "description": "Disney’s camp musical comes back with a new set of kids. Liamani, Malachi Barton and Lumi Pollack are the billed names. A sequel, not a reunion of the first two films’ whole cast.",
+    "year": 2024,
+    "genre": "Music",
+    "country": "United States",
+    "language": "English",
+    "poster": "https://i.ytimg.com/vi/mpW9-t2c990/hqdefault.jpg",
+    "backdrop": null,
+    "trailer": "https://www.youtube.com/watch?v=mpW9-t2c990",
+    "youtubeId": "mpW9-t2c990",
+    "cast": [
+      "Liamani",
+      "Malachi Barton",
+      "Lumi Pollack",
+      "Milo Manheim",
+      "Maria Canals-Barrera",
+      "Sherry Cola",
+      "Demi Lovato",
+      "Joe Jonas"
+    ],
+    "director": "Veronica Rodriguez",
+    "runtime": "92 min",
+    "rating": null,
+    "status": "published",
+    "createdAt": null,
+    "updatedAt": "2026-08-22",
+    "legacyType": "movie",
+    "typeDir": "movie",
+    "teaser": "Disney’s camp musical comes back with a new set of kids. Liamani, Malachi Barton and Lumi Pollack are the billed names. A sequel, not a reunion of the first two films’ whole cast.",
+    "facts": [],
+    "watchLinks": [],
+    "genres": [
+      "Music",
+      "Family"
+    ],
+    "typeLabel": "Movie",
+    "trending": false,
+    "popular": false,
+    "editorPick": false,
+    "isFeatured": false,
+    "isNewRelease": false,
+    "trailers": [
+      {
+        "videoId": "mpW9-t2c990",
+        "type": "official-trailer",
+        "title": "Official Trailer",
+        "source": "YouTube",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "trailerType": "official-trailer",
+    "trailerVerified": true,
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Camp_Rock_3",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  {
+    "id": "freakier-friday",
+    "title": "Freakier Friday",
+    "slug": "freakier-friday",
+    "description": "Lindsay Lohan is back in the body-swap comedy, this time with a next generation in the mix. Nisha Ganatra directs. A sequel to Freaky Friday, not a remake of the 2003 film.",
+    "year": 2025,
+    "genre": "Comedy",
+    "country": "United States",
+    "language": "English",
+    "poster": "https://i.ytimg.com/vi/IyJzhtJEtoU/hqdefault.jpg",
+    "backdrop": null,
+    "trailer": "https://www.youtube.com/watch?v=IyJzhtJEtoU",
+    "youtubeId": "IyJzhtJEtoU",
+    "cast": [
+      "Lindsay Lohan",
+      "Julia Butters",
+      "Sophia Hammons",
+      "Manny Jacinto",
+      "Mark Harmon",
+      "Jamie Lee Curtis"
+    ],
+    "director": "Nisha Ganatra",
+    "runtime": "111 min",
+    "rating": null,
+    "status": "published",
+    "createdAt": null,
+    "updatedAt": "2026-08-22",
+    "legacyType": "movie",
+    "typeDir": "movie",
+    "teaser": "Lindsay Lohan is back in the body-swap comedy, this time with a next generation in the mix. Nisha Ganatra directs. A sequel to Freaky Friday, not a remake of the 2003 film.",
+    "facts": [],
+    "watchLinks": [],
+    "genres": [
+      "Comedy",
+      "Family"
+    ],
+    "typeLabel": "Movie",
+    "trending": false,
+    "popular": false,
+    "editorPick": false,
+    "isFeatured": false,
+    "isNewRelease": false,
+    "trailers": [
+      {
+        "videoId": "IyJzhtJEtoU",
+        "type": "official-trailer",
+        "title": "Official Trailer",
+        "source": "YouTube",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "trailerType": "official-trailer",
+    "trailerVerified": true,
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Freakier_Friday",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  {
+    "id": "devara-part-1",
+    "title": "Devara: Part 1",
+    "slug": "devara-part-1",
+    "description": "N. T. Rama Rao Jr. in a coastal-action saga from Koratala Siva. Saif Ali Khan and Janhvi Kapoor are billed opposite him. Part 1 of a two-film story.",
+    "year": 2024,
+    "genre": "Action",
+    "country": "India",
+    "language": "Telugu",
+    "poster": "https://i.ytimg.com/vi/QuWUafQo3bc/hqdefault.jpg",
+    "backdrop": null,
+    "trailer": "https://www.youtube.com/watch?v=QuWUafQo3bc",
+    "youtubeId": "QuWUafQo3bc",
+    "cast": [
+      "N. T. Rama Rao Jr.",
+      "Saif Ali Khan",
+      "Janhvi Kapoor",
+      "Prakash Raj",
+      "Srikanth (actor, born 1968)",
+      "Shine Tom Chacko"
+    ],
+    "director": "Koratala Siva",
+    "runtime": "178 min",
+    "rating": null,
+    "status": "published",
+    "createdAt": null,
+    "updatedAt": "2026-08-22",
+    "legacyType": "movie",
+    "typeDir": "movie",
+    "teaser": "N. T. Rama Rao Jr. in a coastal-action saga from Koratala Siva. Saif Ali Khan and Janhvi Kapoor are billed opposite him. Part 1 of a two-film story.",
+    "facts": [],
+    "watchLinks": [],
+    "genres": [
+      "Action",
+      "Drama"
+    ],
+    "typeLabel": "Movie",
+    "trending": false,
+    "popular": false,
+    "editorPick": false,
+    "isFeatured": false,
+    "isNewRelease": false,
+    "trailers": [
+      {
+        "videoId": "QuWUafQo3bc",
+        "type": "official-trailer",
+        "title": "Official Trailer",
+        "source": "YouTube",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "trailerType": "official-trailer",
+    "trailerVerified": true,
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Devara%3A_Part_1",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  {
+    "id": "greenland-2",
+    "title": "Greenland 2",
+    "slug": "greenland-2",
+    "description": "The family that survived the comet now has to move. Gerard Butler returns in Ric Roman Waugh’s sequel to Greenland. A disaster chase, not a documentary.",
+    "year": 2026,
+    "genre": "Action",
+    "country": "",
+    "language": "French language",
+    "poster": "https://i.ytimg.com/vi/H8ieN10lX40/hqdefault.jpg",
+    "backdrop": null,
+    "trailer": "https://www.youtube.com/watch?v=H8ieN10lX40",
+    "youtubeId": "H8ieN10lX40",
+    "cast": [
+      "Morena Baccarin",
+      "Roman Griffin Davis",
+      "Gerard Butler"
+    ],
+    "director": "Ric Roman Waugh",
+    "runtime": "98 min",
+    "rating": null,
+    "status": "published",
+    "createdAt": null,
+    "updatedAt": "2026-08-22",
+    "legacyType": "movie",
+    "typeDir": "movie",
+    "teaser": "The family that survived the comet now has to move. Gerard Butler returns in Ric Roman Waugh’s sequel to Greenland. A disaster chase, not a documentary.",
+    "facts": [],
+    "watchLinks": [],
+    "genres": [
+      "Action",
+      "Thriller"
+    ],
+    "typeLabel": "Movie",
+    "trending": false,
+    "popular": false,
+    "editorPick": false,
+    "isFeatured": false,
+    "isNewRelease": false,
+    "trailers": [
+      {
+        "videoId": "H8ieN10lX40",
+        "type": "official-trailer",
+        "title": "Official Trailer",
+        "source": "YouTube",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "trailerType": "official-trailer",
+    "trailerVerified": true,
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Greenland_2%3A_Migration",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  {
+    "id": "disclosure-day",
+    "title": "Disclosure Day",
+    "slug": "disclosure-day",
+    "description": "Steven Spielberg’s UFO film. Emily Blunt and Josh O’Connor are the billed leads. A first-contact story from a director who has done this neighbourhood before.",
+    "year": 2025,
+    "genre": "Sci-Fi",
+    "country": "United States",
+    "language": "English",
+    "poster": "https://i.ytimg.com/vi/SCYT8vb2siQ/hqdefault.jpg",
+    "backdrop": null,
+    "trailer": "https://www.youtube.com/watch?v=SCYT8vb2siQ",
+    "youtubeId": "SCYT8vb2siQ",
+    "cast": [
+      "Emily Blunt",
+      "Josh O'Connor",
+      "Colin Firth",
+      "Eve Hewson",
+      "Colman Domingo"
+    ],
+    "director": "Steven Spielberg",
+    "runtime": "145 min",
+    "rating": null,
+    "status": "published",
+    "createdAt": null,
+    "updatedAt": "2026-08-22",
+    "legacyType": "movie",
+    "typeDir": "movie",
+    "teaser": "Steven Spielberg’s UFO film. Emily Blunt and Josh O’Connor are the billed leads. A first-contact story from a director who has done this neighbourhood before.",
+    "facts": [],
+    "watchLinks": [],
+    "genres": [
+      "Sci-Fi",
+      "Drama"
+    ],
+    "typeLabel": "Movie",
+    "trending": false,
+    "popular": false,
+    "editorPick": false,
+    "isFeatured": false,
+    "isNewRelease": false,
+    "trailers": [
+      {
+        "videoId": "SCYT8vb2siQ",
+        "type": "official-trailer",
+        "title": "Official Trailer",
+        "source": "YouTube",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "trailerType": "official-trailer",
+    "trailerVerified": true,
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Disclosure_Day",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  {
+    "id": "hoppers",
+    "title": "Hoppers",
+    "slug": "hoppers",
+    "description": "Pixar-adjacent creature comedy from Daniel Chong. Piper Curda, Bobby Moynihan and Jon Hamm are the billed voices. Animals with jobs; not a Zootopia clone by default.",
+    "year": 2026,
+    "genre": "Animation",
+    "country": "United States",
+    "language": "English",
+    "poster": "https://i.ytimg.com/vi/YjvMBEpe1Pc/hqdefault.jpg",
+    "backdrop": null,
+    "trailer": "https://www.youtube.com/watch?v=YjvMBEpe1Pc",
+    "youtubeId": "YjvMBEpe1Pc",
+    "cast": [
+      "Piper Curda",
+      "Bobby Moynihan",
+      "Jon Hamm",
+      "Kathy Najimy",
+      "Dave Franco"
+    ],
+    "director": "Daniel Chong",
+    "runtime": "104 min",
+    "rating": null,
+    "status": "published",
+    "createdAt": null,
+    "updatedAt": "2026-08-22",
+    "legacyType": "movie",
+    "typeDir": "movie",
+    "teaser": "Pixar-adjacent creature comedy from Daniel Chong. Piper Curda, Bobby Moynihan and Jon Hamm are the billed voices. Animals with jobs; not a Zootopia clone by default.",
+    "facts": [],
+    "watchLinks": [],
+    "genres": [
+      "Animation",
+      "Comedy"
+    ],
+    "typeLabel": "Movie",
+    "trending": false,
+    "popular": false,
+    "editorPick": false,
+    "isFeatured": false,
+    "isNewRelease": false,
+    "trailers": [
+      {
+        "videoId": "YjvMBEpe1Pc",
+        "type": "official-trailer",
+        "title": "Official Trailer",
+        "source": "YouTube",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "trailerType": "official-trailer",
+    "trailerVerified": true,
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Hoppers_%28film%29",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  {
+    "id": "dhurandhar",
+    "title": "Dhurandhar",
+    "slug": "dhurandhar",
+    "description": "Aditya Dhar’s spy-action film with Ranveer Singh. Akshaye Khanna and Arjun Rampal are billed in the opposition. A Hindi espionage picture, not a biopic claim.",
+    "year": 2025,
+    "genre": "Action",
+    "country": "India",
+    "language": "Hindi",
+    "poster": "https://i.ytimg.com/vi/BKOVzHcjEIo/hqdefault.jpg",
+    "backdrop": null,
+    "trailer": "https://www.youtube.com/watch?v=BKOVzHcjEIo",
+    "youtubeId": "BKOVzHcjEIo",
+    "cast": [
+      "Ranveer Singh",
+      "Akshaye Khanna",
+      "Arjun Rampal",
+      "R. Madhavan",
+      "Sanjay Dutt",
+      "Sara Arjun",
+      "Rakesh Bedi",
+      "Gaurav Gera"
+    ],
+    "director": "Aditya Dhar",
+    "runtime": "214 min",
+    "rating": null,
+    "status": "published",
+    "createdAt": null,
+    "updatedAt": "2026-08-22",
+    "legacyType": "movie",
+    "typeDir": "movie",
+    "teaser": "Aditya Dhar’s spy-action film with Ranveer Singh. Akshaye Khanna and Arjun Rampal are billed in the opposition. A Hindi espionage picture, not a biopic claim.",
+    "facts": [],
+    "watchLinks": [],
+    "genres": [
+      "Action",
+      "Thriller"
+    ],
+    "typeLabel": "Movie",
+    "trending": false,
+    "popular": false,
+    "editorPick": false,
+    "isFeatured": false,
+    "isNewRelease": false,
+    "trailers": [
+      {
+        "videoId": "BKOVzHcjEIo",
+        "type": "official-trailer",
+        "title": "Official Trailer",
+        "source": "YouTube",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "trailerType": "official-trailer",
+    "trailerVerified": true,
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Dhurandhar",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  {
+    "id": "colony-2026",
+    "title": "Colony",
+    "slug": "colony-2026",
+    "description": "Yeon Sang-ho’s sci-fi with Jun Ji-hyun, Koo Kyo-hwan and Ji Chang-wook. A future colony under pressure. From the director of Train to Busan, not a sequel to that film.",
+    "year": 2026,
+    "genre": "Sci-Fi",
+    "country": "South Korea",
+    "language": "Korean",
+    "poster": "https://i.ytimg.com/vi/fGnoPBe18XY/hqdefault.jpg",
+    "backdrop": null,
+    "trailer": "https://www.youtube.com/watch?v=fGnoPBe18XY",
+    "youtubeId": "fGnoPBe18XY",
+    "cast": [
+      "Jun Ji-hyun",
+      "Koo Kyo-hwan",
+      "Ji Chang-wook",
+      "Kim Shin-rok",
+      "Shin Hyun-been",
+      "Go Soo"
+    ],
+    "director": "Yeon Sang-ho",
+    "runtime": "123 min",
+    "rating": null,
+    "status": "published",
+    "createdAt": null,
+    "updatedAt": "2026-08-22",
+    "legacyType": "movie",
+    "typeDir": "movie",
+    "teaser": "Yeon Sang-ho’s sci-fi with Jun Ji-hyun, Koo Kyo-hwan and Ji Chang-wook. A future colony under pressure. From the director of Train to Busan, not a sequel to that film.",
+    "facts": [],
+    "watchLinks": [],
+    "genres": [
+      "Sci-Fi",
+      "Thriller"
+    ],
+    "typeLabel": "Movie",
+    "trending": false,
+    "popular": false,
+    "editorPick": false,
+    "isFeatured": false,
+    "isNewRelease": false,
+    "trailers": [
+      {
+        "videoId": "fGnoPBe18XY",
+        "type": "official-trailer",
+        "title": "Official Trailer",
+        "source": "YouTube",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "trailerType": "official-trailer",
+    "trailerVerified": true,
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Colony_%282026_film%29",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  {
+    "id": "insidious-out-of-further",
+    "title": "Insidious: Out of the Further",
+    "slug": "insidious-out-of-further",
+    "description": "The sixth Insidious film. Jacob Chase directs; Amelia Eve, Brandon Perea and Maisie Richardson-Sellers lead, with Lin Shaye back. A 2026 continuation, not a remake of the 2010 original.",
+    "year": 2026,
+    "genre": "Horror",
+    "country": "United States",
+    "language": "English",
+    "poster": "https://i.ytimg.com/vi/jxU8FU3o75A/hqdefault.jpg",
+    "backdrop": null,
+    "trailer": "https://www.youtube.com/watch?v=jxU8FU3o75A",
+    "youtubeId": "jxU8FU3o75A",
+    "cast": [
+      "Amelia Eve",
+      "Brandon Perea",
+      "Maisie Richardson-Sellers",
+      "Lin Shaye"
+    ],
+    "director": "Jacob Chase",
+    "runtime": "",
+    "rating": null,
+    "status": "published",
+    "createdAt": null,
+    "updatedAt": "2026-08-22",
+    "legacyType": "movie",
+    "typeDir": "movie",
+    "teaser": "The sixth Insidious film. Jacob Chase directs; Amelia Eve, Brandon Perea and Maisie Richardson-Sellers lead, with Lin Shaye back. A 2026 continuation, not a remake of the 2010 original.",
+    "facts": [],
+    "watchLinks": [],
+    "genres": [
+      "Horror"
+    ],
+    "typeLabel": "Movie",
+    "trending": false,
+    "popular": false,
+    "editorPick": false,
+    "isFeatured": false,
+    "isNewRelease": false,
+    "trailers": [
+      {
+        "videoId": "jxU8FU3o75A",
+        "type": "official-trailer",
+        "title": "Official Trailer",
+        "source": "YouTube",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "trailerType": "official-trailer",
+    "trailerVerified": true,
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Insidious:_Out_of_the_Further",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  {
+    "id": "moana-2026",
+    "title": "Moana",
+    "slug": "moana-2026",
+    "description": "Disney’s live-action Moana. Thomas Kail directs; the billed cast includes Rena Owen, John Tui and Frankie Adams. A new telling of the 2016 animation, not a shot-for-shot copy claim.",
+    "year": 2026,
+    "genre": "Adventure",
+    "country": "United States",
+    "language": "English",
+    "poster": "https://i.ytimg.com/vi/1f_dCgyk3zg/hqdefault.jpg",
+    "backdrop": null,
+    "trailer": "https://www.youtube.com/watch?v=1f_dCgyk3zg",
+    "youtubeId": "1f_dCgyk3zg",
+    "cast": [
+      "Rena Owen",
+      "John Tui",
+      "Frankie Adams",
+      "Jemaine Clement",
+      "Catherine Laga'aia",
+      "Dwayne Johnson"
+    ],
+    "director": "Thomas Kail",
+    "runtime": "115 min",
+    "rating": null,
+    "status": "published",
+    "createdAt": null,
+    "updatedAt": "2026-08-22",
+    "legacyType": "movie",
+    "typeDir": "movie",
+    "teaser": "Disney’s live-action Moana. Thomas Kail directs; the billed cast includes Rena Owen, John Tui and Frankie Adams. A new telling of the 2016 animation, not a shot-for-shot copy claim.",
+    "facts": [],
+    "watchLinks": [],
+    "genres": [
+      "Adventure",
+      "Family"
+    ],
+    "typeLabel": "Movie",
+    "trending": false,
+    "popular": false,
+    "editorPick": false,
+    "isFeatured": false,
+    "isNewRelease": false,
+    "trailers": [
+      {
+        "videoId": "1f_dCgyk3zg",
+        "type": "official-trailer",
+        "title": "Official Trailer",
+        "source": "YouTube",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "trailerType": "official-trailer",
+    "trailerVerified": true,
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Moana_%282026_film%29",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  {
+    "id": "mutiny-2026",
+    "title": "Mutiny",
+    "slug": "mutiny-2026",
+    "description": "Jean-François Richet’s shipboard thriller. Annabelle Wallis, Roland Møller and Adrian Lester are billed. A mutiny story, not a franchise reboot.",
+    "year": 2026,
+    "genre": "Thriller",
+    "country": "United Kingdom",
+    "language": "English",
+    "poster": "https://i.ytimg.com/vi/4S6lOZALd-0/hqdefault.jpg",
+    "backdrop": null,
+    "trailer": "https://www.youtube.com/watch?v=4S6lOZALd-0",
+    "youtubeId": "4S6lOZALd-0",
+    "cast": [
+      "Annabelle Wallis",
+      "Roland Møller",
+      "Adrian Lester",
+      "Jason Statham"
+    ],
+    "director": "Jean-François Richet",
+    "runtime": "95 min",
+    "rating": null,
+    "status": "published",
+    "createdAt": null,
+    "updatedAt": "2026-08-22",
+    "legacyType": "movie",
+    "typeDir": "movie",
+    "teaser": "Jean-François Richet’s shipboard thriller. Annabelle Wallis, Roland Møller and Adrian Lester are billed. A mutiny story, not a franchise reboot.",
+    "facts": [],
+    "watchLinks": [],
+    "genres": [
+      "Thriller",
+      "Action"
+    ],
+    "typeLabel": "Movie",
+    "trending": false,
+    "popular": false,
+    "editorPick": false,
+    "isFeatured": false,
+    "isNewRelease": false,
+    "trailers": [
+      {
+        "videoId": "4S6lOZALd-0",
+        "type": "official-trailer",
+        "title": "Official Trailer",
+        "source": "YouTube",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "trailerType": "official-trailer",
+    "trailerVerified": true,
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Mutiny_%282026_film%29",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  {
+    "id": "munjya",
+    "title": "Munjya",
+    "slug": "munjya",
+    "description": "A Konkan wedding, a family curse, and a spirit who will not stay in the tree. Aditya Sarpotdar’s horror-comedy with Abhay Verma and Sharvari. Hindi, 2024.",
+    "year": 2024,
+    "genre": "Horror",
+    "country": "India",
+    "language": "Hindi",
+    "poster": "https://i.ytimg.com/vi/9I25m-x9HRU/hqdefault.jpg",
+    "backdrop": null,
+    "trailer": "https://www.youtube.com/watch?v=9I25m-x9HRU",
+    "youtubeId": "9I25m-x9HRU",
+    "cast": [
+      "Abhay Verma",
+      "Sharvari",
+      "Sathyaraj",
+      "Mona Singh"
+    ],
+    "director": "Aditya Sarpotdar",
+    "runtime": "123 min",
+    "rating": null,
+    "status": "published",
+    "createdAt": null,
+    "updatedAt": "2026-08-22",
+    "legacyType": "movie",
+    "typeDir": "movie",
+    "teaser": "A Konkan wedding, a family curse, and a spirit who will not stay in the tree. Aditya Sarpotdar’s horror-comedy with Abhay Verma and Sharvari. Hindi, 2024.",
+    "facts": [],
+    "watchLinks": [],
+    "genres": [
+      "Horror",
+      "Comedy"
+    ],
+    "typeLabel": "Movie",
+    "trending": false,
+    "popular": false,
+    "editorPick": false,
+    "isFeatured": false,
+    "isNewRelease": false,
+    "trailers": [
+      {
+        "videoId": "9I25m-x9HRU",
+        "type": "official-trailer",
+        "title": "Official Trailer",
+        "source": "YouTube",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "trailerType": "official-trailer",
+    "trailerVerified": true,
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Munjya_%28film%29",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  {
+    "id": "minions-monsters",
+    "title": "Minions & Monsters",
+    "slug": "minions-monsters",
+    "description": "Pierre Coffin’s next Minions outing. Trey Parker, Allison Janney and Christoph Waltz are among the billed voices. Illumination slapstick, not a Despicable Me recap.",
+    "year": 2026,
+    "genre": "Animation",
+    "country": "United States",
+    "language": "English",
+    "poster": "https://i.ytimg.com/vi/ZSdOwt-G49w/hqdefault.jpg",
+    "backdrop": null,
+    "trailer": "https://www.youtube.com/watch?v=ZSdOwt-G49w",
+    "youtubeId": "ZSdOwt-G49w",
+    "cast": [
+      "Trey Parker",
+      "Allison Janney",
+      "Christoph Waltz",
+      "Jesse Eisenberg",
+      "Jeff Bridges",
+      "Zoey Deutch",
+      "Bobby Moynihan",
+      "Phil LaMarr"
+    ],
+    "director": "Pierre Coffin",
+    "runtime": "90 min",
+    "rating": null,
+    "status": "published",
+    "createdAt": null,
+    "updatedAt": "2026-08-22",
+    "legacyType": "movie",
+    "typeDir": "movie",
+    "teaser": "Pierre Coffin’s next Minions outing. Trey Parker, Allison Janney and Christoph Waltz are among the billed voices. Illumination slapstick, not a Despicable Me recap.",
+    "facts": [],
+    "watchLinks": [],
+    "genres": [
+      "Animation",
+      "Comedy"
+    ],
+    "typeLabel": "Movie",
+    "trending": false,
+    "popular": false,
+    "editorPick": false,
+    "isFeatured": false,
+    "isNewRelease": false,
+    "trailers": [
+      {
+        "videoId": "ZSdOwt-G49w",
+        "type": "official-trailer",
+        "title": "Official Trailer",
+        "source": "YouTube",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "trailerType": "official-trailer",
+    "trailerVerified": true,
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Minions_%26_Monsters",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  {
+    "id": "obsession-2026",
+    "title": "Obsession",
+    "slug": "obsession-2026",
+    "description": "Curry Barker’s obsession thriller. Michael Johnston and Inde Navarrette are billed. A small-cast spiral, not a remake of the 1976 De Palma film.",
+    "year": 2026,
+    "genre": "Thriller",
+    "country": "United States",
+    "language": "English",
+    "poster": "https://i.ytimg.com/vi/TaaDkbG3I7g/hqdefault.jpg",
+    "backdrop": null,
+    "trailer": "https://www.youtube.com/watch?v=TaaDkbG3I7g",
+    "youtubeId": "TaaDkbG3I7g",
+    "cast": [
+      "Michael Johnston",
+      "Inde Navarrette",
+      "Cooper Tomlinson",
+      "Megan Lawless",
+      "Andy Richter"
+    ],
+    "director": "Curry Barker",
+    "runtime": "109 min",
+    "rating": null,
+    "status": "published",
+    "createdAt": null,
+    "updatedAt": "2026-08-22",
+    "legacyType": "movie",
+    "typeDir": "movie",
+    "teaser": "Curry Barker’s obsession thriller. Michael Johnston and Inde Navarrette are billed. A small-cast spiral, not a remake of the 1976 De Palma film.",
+    "facts": [],
+    "watchLinks": [],
+    "genres": [
+      "Thriller",
+      "Drama"
+    ],
+    "typeLabel": "Movie",
+    "trending": false,
+    "popular": false,
+    "editorPick": false,
+    "isFeatured": false,
+    "isNewRelease": false,
+    "trailers": [
+      {
+        "videoId": "TaaDkbG3I7g",
+        "type": "official-trailer",
+        "title": "Official Trailer",
+        "source": "YouTube",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "trailerType": "official-trailer",
+    "trailerVerified": true,
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Obsession_%282025_film%29",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  {
+    "id": "supergirl-2026",
+    "title": "Supergirl",
+    "slug": "supergirl-2026",
+    "description": "Milly Alcock as Kara in James Gunn’s DCU. Craig Gillespie directs; Matthias Schoenaerts is billed opposite her. A new Supergirl, not a continuation of the CW show.",
+    "year": 2026,
+    "genre": "Superhero",
+    "country": "United States",
+    "language": "English",
+    "poster": "https://i.ytimg.com/vi/s1-pfiVMKAs/hqdefault.jpg",
+    "backdrop": null,
+    "trailer": "https://www.youtube.com/watch?v=s1-pfiVMKAs",
+    "youtubeId": "s1-pfiVMKAs",
+    "cast": [
+      "Milly Alcock",
+      "Matthias Schoenaerts",
+      "Eve Ridley",
+      "David Krumholtz",
+      "Emily Beecham",
+      "David Corenswet",
+      "Jason Momoa"
+    ],
+    "director": "Craig Gillespie",
+    "runtime": "108 min",
+    "rating": null,
+    "status": "published",
+    "createdAt": null,
+    "updatedAt": "2026-08-22",
+    "legacyType": "movie",
+    "typeDir": "movie",
+    "teaser": "Milly Alcock as Kara in James Gunn’s DCU. Craig Gillespie directs; Matthias Schoenaerts is billed opposite her. A new Supergirl, not a continuation of the CW show.",
+    "facts": [],
+    "watchLinks": [],
+    "genres": [
+      "Superhero",
+      "Action"
+    ],
+    "typeLabel": "Movie",
+    "trending": false,
+    "popular": false,
+    "editorPick": false,
+    "isFeatured": false,
+    "isNewRelease": false,
+    "trailers": [
+      {
+        "videoId": "s1-pfiVMKAs",
+        "type": "official-trailer",
+        "title": "Official Trailer",
+        "source": "YouTube",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "trailerType": "official-trailer",
+    "trailerVerified": true,
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Supergirl_%282026_film%29",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  {
+    "id": "project-hail-mary",
+    "title": "Project Hail Mary",
+    "slug": "project-hail-mary",
+    "description": "Phil Lord and Christopher Miller adapt Andy Weir. A lone scientist and a problem that will not wait. Sandra Hüller is among the billed names. Not a The Martian sequel.",
+    "year": 2026,
+    "genre": "Sci-Fi",
+    "country": "United States",
+    "language": "English",
+    "poster": "https://i.ytimg.com/vi/m08TxIsFTRI/hqdefault.jpg",
+    "backdrop": null,
+    "trailer": "https://www.youtube.com/watch?v=m08TxIsFTRI",
+    "youtubeId": "m08TxIsFTRI",
+    "cast": [
+      "Sandra Hüller",
+      "James Ortiz",
+      "Lionel Boyce",
+      "Ryan Gosling"
+    ],
+    "director": "Phil Lord; Christopher Miller",
+    "runtime": "156 min",
+    "rating": null,
+    "status": "published",
+    "createdAt": null,
+    "updatedAt": "2026-08-22",
+    "legacyType": "movie",
+    "typeDir": "movie",
+    "teaser": "Phil Lord and Christopher Miller adapt Andy Weir. A lone scientist and a problem that will not wait. Sandra Hüller is among the billed names. Not a The Martian sequel.",
+    "facts": [],
+    "watchLinks": [],
+    "genres": [
+      "Sci-Fi",
+      "Adventure"
+    ],
+    "typeLabel": "Movie",
+    "trending": false,
+    "popular": false,
+    "editorPick": false,
+    "isFeatured": false,
+    "isNewRelease": false,
+    "trailers": [
+      {
+        "videoId": "m08TxIsFTRI",
+        "type": "official-trailer",
+        "title": "Official Trailer",
+        "source": "YouTube",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "trailerType": "official-trailer",
+    "trailerVerified": true,
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Project_Hail_Mary_%28film%29",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  {
+    "id": "swapped",
+    "title": "SWAPPED",
+    "slug": "swapped",
+    "description": "Nathan Greno’s body-swap comedy. Michael B. Jordan, Juno Temple and Tracy Morgan are billed. A high-concept switch, not a Freaky Friday remake.",
+    "year": 2026,
+    "genre": "Comedy",
+    "country": "",
+    "language": "English",
+    "poster": "https://i.ytimg.com/vi/QCc8yAd64x8/hqdefault.jpg",
+    "backdrop": null,
+    "trailer": "https://www.youtube.com/watch?v=QCc8yAd64x8",
+    "youtubeId": "QCc8yAd64x8",
+    "cast": [
+      "Michael B. Jordan",
+      "Juno Temple",
+      "Tracy Morgan",
+      "Cedric the Entertainer",
+      "Justina Machado"
+    ],
+    "director": "Nathan Greno",
+    "runtime": "98 min",
+    "rating": null,
+    "status": "published",
+    "createdAt": null,
+    "updatedAt": "2026-08-22",
+    "legacyType": "movie",
+    "typeDir": "movie",
+    "teaser": "Nathan Greno’s body-swap comedy. Michael B. Jordan, Juno Temple and Tracy Morgan are billed. A high-concept switch, not a Freaky Friday remake.",
+    "facts": [],
+    "watchLinks": [],
+    "genres": [
+      "Comedy",
+      "Fantasy"
+    ],
+    "typeLabel": "Movie",
+    "trending": false,
+    "popular": false,
+    "editorPick": false,
+    "isFeatured": false,
+    "isNewRelease": false,
+    "trailers": [
+      {
+        "videoId": "QCc8yAd64x8",
+        "type": "official-trailer",
+        "title": "Official Trailer",
+        "source": "YouTube",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "trailerType": "official-trailer",
+    "trailerVerified": true,
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Swapped",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  {
+    "id": "scream-7",
+    "title": "Scream 7",
+    "slug": "scream-7",
+    "description": "Ghostface again. Neve Campbell returns; Kevin Williamson is billed as director. Isabel May and Jasmin Savoy Brown join. A new Scream, not a reboot of the 1996 film from zero.",
+    "year": 2026,
+    "genre": "Horror",
+    "country": "United States",
+    "language": "English",
+    "poster": "https://i.ytimg.com/vi/UJrghaPJ0RY/hqdefault.jpg",
+    "backdrop": null,
+    "trailer": "https://www.youtube.com/watch?v=UJrghaPJ0RY",
+    "youtubeId": "UJrghaPJ0RY",
+    "cast": [
+      "Neve Campbell",
+      "Isabel May",
+      "Jasmin Savoy Brown",
+      "Mason Gooding",
+      "Anna Camp",
+      "David Arquette",
+      "Michelle Randolph",
+      "Jimmy Tatro"
+    ],
+    "director": "Kevin Williamson",
+    "runtime": "114 min",
+    "rating": null,
+    "status": "published",
+    "createdAt": null,
+    "updatedAt": "2026-08-22",
+    "legacyType": "movie",
+    "typeDir": "movie",
+    "teaser": "Ghostface again. Neve Campbell returns; Kevin Williamson is billed as director. Isabel May and Jasmin Savoy Brown join. A new Scream, not a reboot of the 1996 film from zero.",
+    "facts": [],
+    "watchLinks": [],
+    "genres": [
+      "Horror",
+      "Mystery"
+    ],
+    "typeLabel": "Movie",
+    "trending": false,
+    "popular": false,
+    "editorPick": false,
+    "isFeatured": false,
+    "isNewRelease": false,
+    "trailers": [
+      {
+        "videoId": "UJrghaPJ0RY",
+        "type": "official-trailer",
+        "title": "Official Trailer",
+        "source": "YouTube",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "trailerType": "official-trailer",
+    "trailerVerified": true,
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Scream_7",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  {
+    "id": "singham-again",
+    "title": "Singham Again",
+    "slug": "singham-again",
+    "description": "Rohit Shetty’s cop-universe pile-up. Kareena Kapoor Khan, Arjun Kapoor and Jackie Shroff are billed alongside the Singham brand. A masala ensemble, not a single-hero origin.",
+    "year": 2024,
+    "genre": "Action",
+    "country": "India",
+    "language": "Hindi",
+    "poster": "https://i.ytimg.com/vi/455fogVO22k/hqdefault.jpg",
+    "backdrop": null,
+    "trailer": "https://www.youtube.com/watch?v=455fogVO22k",
+    "youtubeId": "455fogVO22k",
+    "cast": [
+      "Kareena Kapoor Khan",
+      "Arjun Kapoor",
+      "Jackie Shroff",
+      "Ajay Devgn"
+    ],
+    "director": "Rohit Shetty",
+    "runtime": "144 min",
+    "rating": null,
+    "status": "published",
+    "createdAt": null,
+    "updatedAt": "2026-08-22",
+    "legacyType": "movie",
+    "typeDir": "movie",
+    "teaser": "Rohit Shetty’s cop-universe pile-up. Kareena Kapoor Khan, Arjun Kapoor and Jackie Shroff are billed alongside the Singham brand. A masala ensemble, not a single-hero origin.",
+    "facts": [],
+    "watchLinks": [],
+    "genres": [
+      "Action",
+      "Crime"
+    ],
+    "typeLabel": "Movie",
+    "trending": false,
+    "popular": false,
+    "editorPick": false,
+    "isFeatured": false,
+    "isNewRelease": false,
+    "trailers": [
+      {
+        "videoId": "455fogVO22k",
+        "type": "official-trailer",
+        "title": "Official Trailer",
+        "source": "YouTube",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "trailerType": "official-trailer",
+    "trailerVerified": true,
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Singham_Again",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  {
+    "id": "scary-movie-2026",
+    "title": "Scary Movie",
+    "slug": "scary-movie-2026",
+    "description": "The Wayans-era names come back: Anna Faris, Regina Hall, Marlon Wayans. Michael Tiddes directs. A new Scary Movie, not a recut of the 2000 film.",
+    "year": 2026,
+    "genre": "Comedy",
+    "country": "United States",
+    "language": "English",
+    "poster": "https://i.ytimg.com/vi/DlBYE7SqoiM/hqdefault.jpg",
+    "backdrop": null,
+    "trailer": "https://www.youtube.com/watch?v=DlBYE7SqoiM",
+    "youtubeId": "DlBYE7SqoiM",
+    "cast": [
+      "Anna Faris",
+      "Regina Hall",
+      "Marlon Wayans",
+      "Shawn Wayans"
+    ],
+    "director": "Michael Tiddes",
+    "runtime": "96 min",
+    "rating": null,
+    "status": "published",
+    "createdAt": null,
+    "updatedAt": "2026-08-22",
+    "legacyType": "movie",
+    "typeDir": "movie",
+    "teaser": "The Wayans-era names come back: Anna Faris, Regina Hall, Marlon Wayans. Michael Tiddes directs. A new Scary Movie, not a recut of the 2000 film.",
+    "facts": [],
+    "watchLinks": [],
+    "genres": [
+      "Comedy",
+      "Horror"
+    ],
+    "typeLabel": "Movie",
+    "trending": false,
+    "popular": false,
+    "editorPick": false,
+    "isFeatured": false,
+    "isNewRelease": false,
+    "trailers": [
+      {
+        "videoId": "DlBYE7SqoiM",
+        "type": "official-trailer",
+        "title": "Official Trailer",
+        "source": "YouTube",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "trailerType": "official-trailer",
+    "trailerVerified": true,
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Scary_Movie_%282026_film%29",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  {
+    "id": "shelter-2026",
+    "title": "Shelter",
+    "slug": "shelter-2026",
+    "description": "Ric Roman Waugh’s survival picture. Naomi Ackie and Daniel Mays are billed. A family under a sky that has gone wrong. Not a remake of the 2010 Julianne Moore Shelter.",
+    "year": 2026,
+    "genre": "Thriller",
+    "country": "United Kingdom",
+    "language": "English",
+    "poster": "https://i.ytimg.com/vi/whOG1iwBGnM/hqdefault.jpg",
+    "backdrop": null,
+    "trailer": "https://www.youtube.com/watch?v=whOG1iwBGnM",
+    "youtubeId": "whOG1iwBGnM",
+    "cast": [
+      "Bodhi Rae Breathnach",
+      "Naomi Ackie",
+      "Daniel Mays",
+      "Harriet Walter",
+      "Bill Nighy",
+      "Jason Statham"
+    ],
+    "director": "Ric Roman Waugh",
+    "runtime": "107 min",
+    "rating": null,
+    "status": "published",
+    "createdAt": null,
+    "updatedAt": "2026-08-22",
+    "legacyType": "movie",
+    "typeDir": "movie",
+    "teaser": "Ric Roman Waugh’s survival picture. Naomi Ackie and Daniel Mays are billed. A family under a sky that has gone wrong. Not a remake of the 2010 Julianne Moore Shelter.",
+    "facts": [],
+    "watchLinks": [],
+    "genres": [
+      "Thriller",
+      "Drama"
+    ],
+    "typeLabel": "Movie",
+    "trending": false,
+    "popular": false,
+    "editorPick": false,
+    "isFeatured": false,
+    "isNewRelease": false,
+    "trailers": [
+      {
+        "videoId": "whOG1iwBGnM",
+        "type": "official-trailer",
+        "title": "Official Trailer",
+        "source": "YouTube",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "trailerType": "official-trailer",
+    "trailerVerified": true,
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Shelter_%282026_film%29",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  {
+    "id": "vikram",
+    "title": "Vikram",
+    "slug": "vikram",
+    "description": "Lokesh Kanagaraj’s Tamil action film. Kamal Haasan’s title role sits opposite Vijay Sethupathi and Fahadh Faasil. A 2022 hit, not a remake of the 1986 Vikram.",
+    "year": 2022,
+    "genre": "Action",
+    "country": "India",
+    "language": "Tamil",
+    "poster": "https://i.ytimg.com/vi/t3NTWA29Qio/hqdefault.jpg",
+    "backdrop": null,
+    "trailer": "https://www.youtube.com/watch?v=t3NTWA29Qio",
+    "youtubeId": "t3NTWA29Qio",
+    "cast": [
+      "Vijay Sethupathi",
+      "Fahadh Faasil"
+    ],
+    "director": "Lokesh Kanagaraj",
+    "runtime": "174 min",
+    "rating": null,
+    "status": "published",
+    "createdAt": null,
+    "updatedAt": "2026-08-22",
+    "legacyType": "movie",
+    "typeDir": "movie",
+    "teaser": "Lokesh Kanagaraj’s Tamil action film. Kamal Haasan’s title role sits opposite Vijay Sethupathi and Fahadh Faasil. A 2022 hit, not a remake of the 1986 Vikram.",
+    "facts": [],
+    "watchLinks": [],
+    "genres": [
+      "Action",
+      "Crime"
+    ],
+    "typeLabel": "Movie",
+    "trending": false,
+    "popular": false,
+    "editorPick": false,
+    "isFeatured": false,
+    "isNewRelease": false,
+    "trailers": [
+      {
+        "videoId": "t3NTWA29Qio",
+        "type": "official-trailer",
+        "title": "Official Trailer",
+        "source": "YouTube",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "trailerType": "official-trailer",
+    "trailerVerified": true,
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Vikram_%282022_film%29",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  {
+    "id": "the-gorge",
+    "title": "The Gorge",
+    "slug": "the-gorge",
+    "description": "Two snipers watch a valley they are not allowed to explain. Scott Derrickson directs Miles Teller and Anya Taylor-Joy. A 2025 thriller, not a war documentary.",
+    "year": 2025,
+    "genre": "Thriller",
+    "country": "",
+    "language": "English",
+    "poster": "https://i.ytimg.com/vi/n5xgbJJxYI4/hqdefault.jpg",
+    "backdrop": null,
+    "trailer": "https://www.youtube.com/watch?v=n5xgbJJxYI4",
+    "youtubeId": "n5xgbJJxYI4",
+    "cast": [
+      "Miles Teller",
+      "Anya Taylor-Joy",
+      "Sigourney Weaver"
+    ],
+    "director": "Scott Derrickson",
+    "runtime": "127 min",
+    "rating": null,
+    "status": "published",
+    "createdAt": null,
+    "updatedAt": "2026-08-22",
+    "legacyType": "movie",
+    "typeDir": "movie",
+    "teaser": "Two snipers watch a valley they are not allowed to explain. Scott Derrickson directs Miles Teller and Anya Taylor-Joy. A 2025 thriller, not a war documentary.",
+    "facts": [],
+    "watchLinks": [],
+    "genres": [
+      "Thriller",
+      "Sci-Fi"
+    ],
+    "typeLabel": "Movie",
+    "trending": false,
+    "popular": false,
+    "editorPick": false,
+    "isFeatured": false,
+    "isNewRelease": false,
+    "trailers": [
+      {
+        "videoId": "n5xgbJJxYI4",
+        "type": "official-trailer",
+        "title": "Official Trailer",
+        "source": "YouTube",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "trailerType": "official-trailer",
+    "trailerVerified": true,
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/The_Gorge_%28film%29",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  {
+    "id": "the-super-mario-galaxy-movie",
+    "title": "The Super Mario Galaxy Movie",
+    "slug": "the-super-mario-galaxy-movie",
+    "description": "Aaron Horvath and Michael Jelenic send Mario off-world. Chris Pratt, Anya Taylor-Joy and Charlie Day are billed again. A sequel to The Super Mario Bros. Movie.",
+    "year": 2026,
+    "genre": "Animation",
+    "country": "United States",
+    "language": "English",
+    "poster": "https://i.ytimg.com/vi/XYpsI7WfBtk/hqdefault.jpg",
+    "backdrop": null,
+    "trailer": "https://www.youtube.com/watch?v=XYpsI7WfBtk",
+    "youtubeId": "XYpsI7WfBtk",
+    "cast": [
+      "Chris Pratt",
+      "Anya Taylor-Joy",
+      "Charlie Day",
+      "Jack Black",
+      "Keegan-Michael Key",
+      "Benny Safdie",
+      "Donald Glover",
+      "Glen Powell"
+    ],
+    "director": "Aaron Horvath; Michael Jelenic",
+    "runtime": "98 min",
+    "rating": null,
+    "status": "published",
+    "createdAt": null,
+    "updatedAt": "2026-08-22",
+    "legacyType": "movie",
+    "typeDir": "movie",
+    "teaser": "Aaron Horvath and Michael Jelenic send Mario off-world. Chris Pratt, Anya Taylor-Joy and Charlie Day are billed again. A sequel to The Super Mario Bros. Movie.",
+    "facts": [],
+    "watchLinks": [],
+    "genres": [
+      "Animation",
+      "Adventure"
+    ],
+    "typeLabel": "Movie",
+    "trending": false,
+    "popular": false,
+    "editorPick": false,
+    "isFeatured": false,
+    "isNewRelease": false,
+    "trailers": [
+      {
+        "videoId": "XYpsI7WfBtk",
+        "type": "official-trailer",
+        "title": "Official Trailer",
+        "source": "YouTube",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "trailerType": "official-trailer",
+    "trailerVerified": true,
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/The_Super_Mario_Galaxy_Movie",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  {
+    "id": "the-devil-wears-prada-2",
+    "title": "The Devil Wears Prada 2",
+    "slug": "the-devil-wears-prada-2",
+    "description": "Miranda Priestly is not done. David Frankel returns with Meryl Streep, Anne Hathaway and Emily Blunt. A sequel to the 2006 fashion-desk film.",
+    "year": 2025,
+    "genre": "Comedy",
+    "country": "United States",
+    "language": "English",
+    "poster": "https://i.ytimg.com/vi/eqviV3cbSgI/hqdefault.jpg",
+    "backdrop": null,
+    "trailer": "https://www.youtube.com/watch?v=eqviV3cbSgI",
+    "youtubeId": "eqviV3cbSgI",
+    "cast": [
+      "Meryl Streep",
+      "Anne Hathaway",
+      "Emily Blunt",
+      "Justin Theroux",
+      "Kenneth Branagh",
+      "Stanley Tucci"
+    ],
+    "director": "David Frankel",
+    "runtime": "119 min",
+    "rating": null,
+    "status": "published",
+    "createdAt": null,
+    "updatedAt": "2026-08-22",
+    "legacyType": "movie",
+    "typeDir": "movie",
+    "teaser": "Miranda Priestly is not done. David Frankel returns with Meryl Streep, Anne Hathaway and Emily Blunt. A sequel to the 2006 fashion-desk film.",
+    "facts": [],
+    "watchLinks": [],
+    "genres": [
+      "Comedy",
+      "Drama"
+    ],
+    "typeLabel": "Movie",
+    "trending": false,
+    "popular": false,
+    "editorPick": false,
+    "isFeatured": false,
+    "isNewRelease": false,
+    "trailers": [
+      {
+        "videoId": "eqviV3cbSgI",
+        "type": "official-trailer",
+        "title": "Official Trailer",
+        "source": "YouTube",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "trailerType": "official-trailer",
+    "trailerVerified": true,
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/The_Devil_Wears_Prada_2",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  {
+    "id": "the-devils-mouth",
+    "title": "The Devil's Mouth",
+    "slug": "the-devils-mouth",
+    "description": "Jeff Wadlow’s young-adult horror. Kathryn Newton, Lana Condor and Gavin Casalegno are billed. A town with a hole it should have left closed.",
+    "year": 2026,
+    "genre": "Horror",
+    "country": "United States",
+    "language": "English",
+    "poster": "https://i.ytimg.com/vi/-2CNX-56UK0/hqdefault.jpg",
+    "backdrop": null,
+    "trailer": "https://www.youtube.com/watch?v=-2CNX-56UK0",
+    "youtubeId": "-2CNX-56UK0",
+    "cast": [
+      "Kathryn Newton",
+      "Lana Condor",
+      "Gavin Casalegno",
+      "Nico Hiraga",
+      "Tayme Thapthimthong",
+      "Tommi Rose"
+    ],
+    "director": "Jeff Wadlow",
+    "runtime": "104 min",
+    "rating": null,
+    "status": "published",
+    "createdAt": null,
+    "updatedAt": "2026-08-22",
+    "legacyType": "movie",
+    "typeDir": "movie",
+    "teaser": "Jeff Wadlow’s young-adult horror. Kathryn Newton, Lana Condor and Gavin Casalegno are billed. A town with a hole it should have left closed.",
+    "facts": [],
+    "watchLinks": [],
+    "genres": [
+      "Horror"
+    ],
+    "typeLabel": "Movie",
+    "trending": false,
+    "popular": false,
+    "editorPick": false,
+    "isFeatured": false,
+    "isNewRelease": false,
+    "trailers": [
+      {
+        "videoId": "-2CNX-56UK0",
+        "type": "official-trailer",
+        "title": "Official Trailer",
+        "source": "YouTube",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "trailerType": "official-trailer",
+    "trailerVerified": true,
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/The_Devil%27s_Mouth",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  {
+    "id": "the-shadows-edge",
+    "title": "The Shadow's Edge",
+    "slug": "the-shadows-edge",
+    "description": "Jackie Chan in a contemporary action film from Larry Yang. Zhang Zifeng and Tony Leung Ka-fai are billed. A 2025 crime-action picture, not a period kung-fu remake.",
+    "year": 2025,
+    "genre": "Action",
+    "country": "",
+    "language": "English",
+    "poster": "https://i.ytimg.com/vi/jEzDCw10S3c/hqdefault.jpg",
+    "backdrop": null,
+    "trailer": "https://www.youtube.com/watch?v=jEzDCw10S3c",
+    "youtubeId": "jEzDCw10S3c",
+    "cast": [
+      "Jackie Chan",
+      "Zhang Zifeng",
+      "Tony Leung Ka-fai",
+      "Ci Sha"
+    ],
+    "director": "Larry Yang",
+    "runtime": "142 min",
+    "rating": null,
+    "status": "published",
+    "createdAt": null,
+    "updatedAt": "2026-08-22",
+    "legacyType": "movie",
+    "typeDir": "movie",
+    "teaser": "Jackie Chan in a contemporary action film from Larry Yang. Zhang Zifeng and Tony Leung Ka-fai are billed. A 2025 crime-action picture, not a period kung-fu remake.",
+    "facts": [],
+    "watchLinks": [],
+    "genres": [
+      "Action",
+      "Crime"
+    ],
+    "typeLabel": "Movie",
+    "trending": false,
+    "popular": false,
+    "editorPick": false,
+    "isFeatured": false,
+    "isNewRelease": false,
+    "trailers": [
+      {
+        "videoId": "jEzDCw10S3c",
+        "type": "official-trailer",
+        "title": "Official Trailer",
+        "source": "YouTube",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "trailerType": "official-trailer",
+    "trailerVerified": true,
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/The_Shadow%27s_Edge",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  {
+    "id": "yodha",
+    "title": "Yodha",
+    "slug": "yodha",
+    "description": "Siddharth Malhotra in an airborne action film. Raashii Khanna and Disha Patani are billed. A 2024 Hindi thriller set around a hijack, not a mythological epic.",
+    "year": 2024,
+    "genre": "Action",
+    "country": "India",
+    "language": "Hindi",
+    "poster": "https://i.ytimg.com/vi/Kw1XrfZfs7M/hqdefault.jpg",
+    "backdrop": null,
+    "trailer": "https://www.youtube.com/watch?v=Kw1XrfZfs7M",
+    "youtubeId": "Kw1XrfZfs7M",
+    "cast": [
+      "Siddharth Malhotra",
+      "Raashii Khanna",
+      "Disha Patani"
+    ],
+    "director": "",
+    "runtime": "130 min",
+    "rating": null,
+    "status": "published",
+    "createdAt": null,
+    "updatedAt": "2026-08-22",
+    "legacyType": "movie",
+    "typeDir": "movie",
+    "teaser": "Siddharth Malhotra in an airborne action film. Raashii Khanna and Disha Patani are billed. A 2024 Hindi thriller set around a hijack, not a mythological epic.",
+    "facts": [],
+    "watchLinks": [],
+    "genres": [
+      "Action",
+      "Thriller"
+    ],
+    "typeLabel": "Movie",
+    "trending": false,
+    "popular": false,
+    "editorPick": false,
+    "isFeatured": false,
+    "isNewRelease": false,
+    "trailers": [
+      {
+        "videoId": "Kw1XrfZfs7M",
+        "type": "official-trailer",
+        "title": "Official Trailer",
+        "source": "YouTube",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "trailerType": "official-trailer",
+    "trailerVerified": true,
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Yodha_%282024_film%29",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  {
+    "id": "avatar-aang-2026",
+    "title": "Avatar Aang: The Last Airbender",
+    "slug": "avatar-aang-2026",
+    "description": "Aang is grown and the war is over, until an old power threatens the peace he already paid for. Lauren Montgomery directs the Avatar Studios feature; Eric Nam voices Aang, with Dave Bautista, Jessica Matten, Román Zaragoza and Steven Yeun billed. A new animated film, not a recut of the Nickelodeon series.",
+    "year": 2026,
+    "genre": "Animation",
+    "country": "United States",
+    "language": "English",
+    "poster": "https://i.ytimg.com/vi/7b20GRFZBFE/hqdefault.jpg",
+    "backdrop": null,
+    "trailer": "https://www.youtube.com/watch?v=7b20GRFZBFE",
+    "youtubeId": "7b20GRFZBFE",
+    "cast": [
+      "Eric Nam",
+      "Dave Bautista",
+      "Jessica Matten",
+      "Román Zaragoza",
+      "Steven Yeun",
+      "Dionne Quan"
+    ],
+    "director": "Lauren Montgomery",
+    "runtime": "99 min",
+    "rating": null,
+    "status": "published",
+    "createdAt": null,
+    "updatedAt": "2026-08-22",
+    "legacyType": "movie",
+    "typeDir": "movie",
+    "teaser": "Aang is grown and the war is over, until an old power threatens the peace he already paid for. Lauren Montgomery directs the Avatar Studios feature; Eric Nam voices Aang, with Dave Bautista, Jessica Matten, Román Zaragoza and Steven Yeun billed. A new animated film, not a recut of the Nickelodeon series.",
+    "facts": [],
+    "watchLinks": [],
+    "genres": [
+      "Animation",
+      "Adventure",
+      "Fantasy"
+    ],
+    "typeLabel": "Movie",
+    "trending": false,
+    "popular": false,
+    "editorPick": false,
+    "isFeatured": false,
+    "isNewRelease": false,
+    "trailers": [
+      {
+        "videoId": "7b20GRFZBFE",
+        "type": "official-trailer",
+        "title": "Official Trailer",
+        "source": "YouTube",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "trailerType": "official-trailer",
+    "trailerVerified": true,
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://www.rottentomatoes.com/m/avatar_aang_the_last_airbender",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  {
+    "id": "goat-2026",
+    "title": "GOAT",
+    "slug": "goat-2026",
+    "description": "A young goat wants to be the greatest at roarball. Tyree Dillihay’s Sony Pictures Animation film stars Caleb McLaughlin, with Gabrielle Union and Aaron Pierre billed. This is the 2026 American cartoon — not Vijay’s 2024 Tamil film The Greatest of All Time.",
+    "year": 2026,
+    "genre": "Animation",
+    "country": "United States",
+    "language": "English",
+    "poster": "https://i.ytimg.com/vi/mVU2dkTmdgo/hqdefault.jpg",
+    "backdrop": null,
+    "trailer": "https://www.youtube.com/watch?v=mVU2dkTmdgo",
+    "youtubeId": "mVU2dkTmdgo",
+    "cast": [
+      "Caleb McLaughlin",
+      "Gabrielle Union",
+      "Aaron Pierre",
+      "Nicola Coughlan",
+      "David Harbour"
+    ],
+    "director": "Tyree Dillihay",
+    "runtime": "100 min",
+    "rating": null,
+    "status": "published",
+    "createdAt": null,
+    "updatedAt": "2026-08-22",
+    "legacyType": "movie",
+    "typeDir": "movie",
+    "teaser": "A young goat wants to be the greatest at roarball. Tyree Dillihay’s Sony Pictures Animation film stars Caleb McLaughlin, with Gabrielle Union and Aaron Pierre billed. This is the 2026 American cartoon — not Vijay’s 2024 Tamil film The Greatest of All Time.",
+    "facts": [],
+    "watchLinks": [],
+    "genres": [
+      "Animation",
+      "Comedy",
+      "Sports"
+    ],
+    "typeLabel": "Movie",
+    "trending": false,
+    "popular": false,
+    "editorPick": false,
+    "isFeatured": false,
+    "isNewRelease": false,
+    "trailers": [
+      {
+        "videoId": "mVU2dkTmdgo",
+        "type": "official-trailer",
+        "title": "Official Trailer",
+        "source": "YouTube",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "trailerType": "official-trailer",
+    "trailerVerified": true,
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Goat_(2026_film)",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  {
+    "id": "jackass-best-and-last",
+    "title": "Jackass: Best and Last",
+    "slug": "jackass-best-and-last",
+    "description": "Jeff Tremaine’s fifth and billed-final Jackass film. Old stunts, new stunts, and the same crew talking over the wreckage. Johnny Knoxville, Steve-O and Chris Pontius are billed. Not a recut of Jackass Forever.",
+    "year": 2026,
+    "genre": "Comedy",
+    "country": "United States",
+    "language": "English",
+    "poster": "https://i.ytimg.com/vi/sNwzFhGwA94/hqdefault.jpg",
+    "backdrop": null,
+    "trailer": "https://www.youtube.com/watch?v=sNwzFhGwA94",
+    "youtubeId": "sNwzFhGwA94",
+    "cast": [
+      "Johnny Knoxville",
+      "Steve-O",
+      "Chris Pontius",
+      "Dave England",
+      "Preston Lacy",
+      "Ehren McGhehey"
+    ],
+    "director": "Jeff Tremaine",
+    "runtime": "92 min",
+    "rating": null,
+    "status": "published",
+    "createdAt": null,
+    "updatedAt": "2026-08-22",
+    "legacyType": "movie",
+    "typeDir": "movie",
+    "teaser": "Jeff Tremaine’s fifth and billed-final Jackass film. Old stunts, new stunts, and the same crew talking over the wreckage. Johnny Knoxville, Steve-O and Chris Pontius are billed. Not a recut of Jackass Forever.",
+    "facts": [],
+    "watchLinks": [],
+    "genres": [
+      "Comedy"
+    ],
+    "typeLabel": "Movie",
+    "trending": false,
+    "popular": false,
+    "editorPick": false,
+    "isFeatured": false,
+    "isNewRelease": false,
+    "trailers": [
+      {
+        "videoId": "sNwzFhGwA94",
+        "type": "official-trailer",
+        "title": "Official Trailer",
+        "source": "YouTube",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "trailerType": "official-trailer",
+    "trailerVerified": true,
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Jackass:_Best_and_Last",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  {
+    "id": "kraken-2026",
+    "title": "Kraken",
+    "slug": "kraken-2026",
+    "description": "A marine biologist is sent to a Norwegian salmon farm after the fish and the gear start dying wrong. Pål Øie directs; Sara Khorami leads. A 2026 Norwegian monster film, not a Hollywood kraken franchise.",
+    "year": 2026,
+    "genre": "Horror",
+    "country": "Norway",
+    "language": "Norwegian",
+    "poster": "https://i.ytimg.com/vi/HEhDqQTOJqs/hqdefault.jpg",
+    "backdrop": null,
+    "trailer": "https://www.youtube.com/watch?v=HEhDqQTOJqs",
+    "youtubeId": "HEhDqQTOJqs",
+    "cast": [
+      "Sara Khorami",
+      "Mikkel Bratt Silset",
+      "Ingvild Holthe Bygdnes",
+      "Jenny Evensen"
+    ],
+    "director": "Pål Øie",
+    "runtime": "100 min",
+    "rating": null,
+    "status": "published",
+    "createdAt": null,
+    "updatedAt": "2026-08-22",
+    "legacyType": "movie",
+    "typeDir": "movie",
+    "teaser": "A marine biologist is sent to a Norwegian salmon farm after the fish and the gear start dying wrong. Pål Øie directs; Sara Khorami leads. A 2026 Norwegian monster film, not a Hollywood kraken franchise.",
+    "facts": [],
+    "watchLinks": [],
+    "genres": [
+      "Horror",
+      "Thriller"
+    ],
+    "typeLabel": "Movie",
+    "trending": false,
+    "popular": false,
+    "editorPick": false,
+    "isFeatured": false,
+    "isNewRelease": false,
+    "trailers": [
+      {
+        "videoId": "HEhDqQTOJqs",
+        "type": "official-trailer",
+        "title": "Official Trailer",
+        "source": "YouTube",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "trailerType": "official-trailer",
+    "trailerVerified": true,
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Kraken_(2026_film)",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  {
+    "id": "the-invite",
+    "title": "The Invite",
+    "slug": "the-invite",
+    "description": "A marriage on thin ice invites the neighbours upstairs. Olivia Wilde directs and stars with Seth Rogen, Edward Norton and Penélope Cruz. An English-language take on Cesc Gay’s The People Upstairs — not a horror film about a cursed RSVP.",
+    "year": 2026,
+    "genre": "Comedy",
+    "country": "United States",
+    "language": "English",
+    "poster": "https://i.ytimg.com/vi/uqHXx73z1oo/hqdefault.jpg",
+    "backdrop": null,
+    "trailer": "https://www.youtube.com/watch?v=uqHXx73z1oo",
+    "youtubeId": "uqHXx73z1oo",
+    "cast": [
+      "Seth Rogen",
+      "Edward Norton",
+      "Penélope Cruz",
+      "Olivia Wilde"
+    ],
+    "director": "Olivia Wilde",
+    "runtime": "108 min",
+    "rating": null,
+    "status": "published",
+    "createdAt": null,
+    "updatedAt": "2026-08-22",
+    "legacyType": "movie",
+    "typeDir": "movie",
+    "teaser": "A marriage on thin ice invites the neighbours upstairs. Olivia Wilde directs and stars with Seth Rogen, Edward Norton and Penélope Cruz. An English-language take on Cesc Gay’s The People Upstairs — not a horror film about a cursed RSVP.",
+    "facts": [],
+    "watchLinks": [],
+    "genres": [
+      "Comedy",
+      "Drama"
+    ],
+    "typeLabel": "Movie",
+    "trending": false,
+    "popular": false,
+    "editorPick": false,
+    "isFeatured": false,
+    "isNewRelease": false,
+    "trailers": [
+      {
+        "videoId": "uqHXx73z1oo",
+        "type": "official-trailer",
+        "title": "Official Trailer",
+        "source": "YouTube",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "trailerType": "official-trailer",
+    "trailerVerified": true,
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://www.imdb.com/title/tt14173636/",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  {
+    "id": "the-last-house",
+    "title": "The Last House",
+    "slug": "the-last-house",
+    "description": "A family is sealed inside their house by a threat they cannot see yet. Louis Leterrier directs Greta Lee and Wagner Moura. A 2026 Netflix thriller — not The Last House on the Left.",
+    "year": 2026,
+    "genre": "Thriller",
+    "country": "United States",
+    "language": "English",
+    "poster": "https://i.ytimg.com/vi/MJo_J9bHM7I/hqdefault.jpg",
+    "backdrop": null,
+    "trailer": "https://www.youtube.com/watch?v=MJo_J9bHM7I",
+    "youtubeId": "MJo_J9bHM7I",
+    "cast": [
+      "Greta Lee",
+      "Wagner Moura",
+      "Riley Chung",
+      "Noah Alexander Sosnowski"
+    ],
+    "director": "Louis Leterrier",
+    "runtime": "112 min",
+    "rating": null,
+    "status": "published",
+    "createdAt": null,
+    "updatedAt": "2026-08-22",
+    "legacyType": "movie",
+    "typeDir": "movie",
+    "teaser": "A family is sealed inside their house by a threat they cannot see yet. Louis Leterrier directs Greta Lee and Wagner Moura. A 2026 Netflix thriller — not The Last House on the Left.",
+    "facts": [],
+    "watchLinks": [],
+    "genres": [
+      "Thriller",
+      "Sci-Fi"
+    ],
+    "typeLabel": "Movie",
+    "trending": false,
+    "popular": false,
+    "editorPick": false,
+    "isFeatured": false,
+    "isNewRelease": false,
+    "trailers": [
+      {
+        "videoId": "MJo_J9bHM7I",
+        "type": "official-trailer",
+        "title": "Official Trailer",
+        "source": "YouTube",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "trailerType": "official-trailer",
+    "trailerVerified": true,
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://www.hollywoodreporter.com/movies/movie-reviews/the-last-house-review-greta-lee-wagner-moura-netflix-1236666386/",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  {
+    "id": "coraline",
+    "title": "Coraline",
+    "slug": "coraline",
+    "description": "Henry Selick’s stop-motion of Neil Gaiman’s book. Dakota Fanning voices a girl who finds a better mother behind a small door. Teri Hatcher is billed. 2009, not the later stage musical.",
+    "year": 2009,
+    "genre": "Animation",
+    "country": "United States",
+    "language": "English",
+    "poster": "https://i.ytimg.com/vi/MZBDf37W3rM/hqdefault.jpg",
+    "backdrop": null,
+    "trailer": "https://www.youtube.com/watch?v=MZBDf37W3rM",
+    "youtubeId": "MZBDf37W3rM",
+    "cast": [
+      "Dakota Fanning",
+      "Teri Hatcher",
+      "Jennifer Saunders",
+      "Dawn French",
+      "Ian McShane"
+    ],
+    "director": "Henry Selick",
+    "runtime": "",
+    "rating": null,
+    "status": "published",
+    "createdAt": null,
+    "updatedAt": "2026-08-22",
+    "legacyType": "movie",
+    "typeDir": "movie",
+    "teaser": "Henry Selick’s stop-motion of Neil Gaiman’s book. Dakota Fanning voices a girl who finds a better mother behind a small door. Teri Hatcher is billed. 2009, not the later stage musical.",
+    "facts": [],
+    "watchLinks": [],
+    "genres": [
+      "Animation",
+      "Fantasy",
+      "Horror"
+    ],
+    "typeLabel": "Movie",
+    "trending": false,
+    "popular": false,
+    "editorPick": false,
+    "isFeatured": false,
+    "isNewRelease": false,
+    "trailers": [
+      {
+        "videoId": "MZBDf37W3rM",
+        "type": "official-trailer",
+        "title": "Official Trailer",
+        "source": "YouTube",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "trailerType": "official-trailer",
+    "trailerVerified": true,
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Coraline_%28film%29",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  {
+    "id": "awarapan",
+    "title": "Awarapan",
+    "slug": "awarapan",
+    "description": "Mohit Suri’s 2007 Hindi noir. Emraan Hashmi plays a man who does other people’s violence until it comes home. Shriya Saran is billed opposite him.",
+    "year": 2007,
+    "genre": "Romance",
+    "country": "India",
+    "language": "Hindi",
+    "poster": "https://i.ytimg.com/vi/A3z567rXlH8/hqdefault.jpg",
+    "backdrop": null,
+    "trailer": "https://www.youtube.com/watch?v=A3z567rXlH8",
+    "youtubeId": "A3z567rXlH8",
+    "cast": [
+      "Emraan Hashmi",
+      "Shriya Saran",
+      "Mrinalini Sharma",
+      "Ashutosh Rana"
+    ],
+    "director": "Mohit Suri",
+    "runtime": "",
+    "rating": null,
+    "status": "published",
+    "createdAt": null,
+    "updatedAt": "2026-08-22",
+    "legacyType": "movie",
+    "typeDir": "movie",
+    "teaser": "Mohit Suri’s 2007 Hindi noir. Emraan Hashmi plays a man who does other people’s violence until it comes home. Shriya Saran is billed opposite him.",
+    "facts": [],
+    "watchLinks": [],
+    "genres": [
+      "Romance",
+      "Thriller"
+    ],
+    "typeLabel": "Movie",
+    "trending": false,
+    "popular": false,
+    "editorPick": false,
+    "isFeatured": false,
+    "isNewRelease": false,
+    "trailers": [
+      {
+        "videoId": "A3z567rXlH8",
+        "type": "official-trailer",
+        "title": "Official Trailer",
+        "source": "YouTube",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "trailerType": "official-trailer",
+    "trailerVerified": true,
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Awarapan",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  {
+    "id": "deep-water",
+    "title": "Deep Water",
+    "slug": "deep-water",
+    "description": "Adrian Lyne’s erotic thriller. Ben Affleck and Ana de Armas as a marriage that has already made a dangerous deal. A 2022 film, not a diving documentary.",
+    "year": 2022,
+    "genre": "Thriller",
+    "country": "United States",
+    "language": "English",
+    "poster": "https://i.ytimg.com/vi/f0ptq0Lzdh8/hqdefault.jpg",
+    "backdrop": null,
+    "trailer": "https://www.youtube.com/watch?v=f0ptq0Lzdh8",
+    "youtubeId": "f0ptq0Lzdh8",
+    "cast": [
+      "Ben Affleck",
+      "Ana de Armas"
+    ],
+    "director": "Adrian Lyne",
+    "runtime": "",
+    "rating": null,
+    "status": "published",
+    "createdAt": null,
+    "updatedAt": "2026-08-22",
+    "legacyType": "movie",
+    "typeDir": "movie",
+    "teaser": "Adrian Lyne’s erotic thriller. Ben Affleck and Ana de Armas as a marriage that has already made a dangerous deal. A 2022 film, not a diving documentary.",
+    "facts": [],
+    "watchLinks": [],
+    "genres": [
+      "Thriller",
+      "Drama"
+    ],
+    "typeLabel": "Movie",
+    "trending": false,
+    "popular": false,
+    "editorPick": false,
+    "isFeatured": false,
+    "isNewRelease": false,
+    "trailers": [
+      {
+        "videoId": "f0ptq0Lzdh8",
+        "type": "official-trailer",
+        "title": "Official Trailer",
+        "source": "YouTube",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "trailerType": "official-trailer",
+    "trailerVerified": true,
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Deep_Water_%282022_film%29",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  {
+    "id": "captain-america-brave-new-world",
+    "title": "Captain America: Brave New World",
+    "slug": "captain-america-brave-new-world",
+    "description": "Anthony Mackie picks up the shield. Julius Onah directs the MCU’s next Captain America film. Danny Ramirez and Shira Haas are billed. Not a recut of The Winter Soldier.",
+    "year": 2025,
+    "genre": "Superhero",
+    "country": "United States",
+    "language": "English",
+    "poster": "https://i.ytimg.com/vi/O_A8HdCDaWM/hqdefault.jpg",
+    "backdrop": null,
+    "trailer": "https://www.youtube.com/watch?v=O_A8HdCDaWM",
+    "youtubeId": "O_A8HdCDaWM",
+    "cast": [
+      "Anthony Mackie",
+      "Danny Ramirez",
+      "Shira Haas",
+      "Carl Lumbly",
+      "Xosha Roquemore",
+      "Giancarlo Esposito",
+      "Liv Tyler",
+      "Tim Blake Nelson"
+    ],
+    "director": "Julius Onah",
+    "runtime": "",
+    "rating": null,
+    "status": "published",
+    "createdAt": null,
+    "updatedAt": "2026-08-22",
+    "legacyType": "movie",
+    "typeDir": "movie",
+    "teaser": "Anthony Mackie picks up the shield. Julius Onah directs the MCU’s next Captain America film. Danny Ramirez and Shira Haas are billed. Not a recut of The Winter Soldier.",
+    "facts": [],
+    "watchLinks": [],
+    "genres": [
+      "Superhero",
+      "Action"
+    ],
+    "typeLabel": "Movie",
+    "trending": false,
+    "popular": false,
+    "editorPick": false,
+    "isFeatured": false,
+    "isNewRelease": false,
+    "trailers": [
+      {
+        "videoId": "O_A8HdCDaWM",
+        "type": "official-trailer",
+        "title": "Official Trailer",
+        "source": "YouTube",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "trailerType": "official-trailer",
+    "trailerVerified": true,
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Captain_America%3A_Brave_New_World",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  {
+    "id": "28-years-later-the-bone-temple",
+    "title": "28 Years Later: The Bone Temple",
+    "slug": "28-years-later-the-bone-temple",
+    "description": "Nia DaCosta’s follow-up to 28 Years Later. Ralph Fiennes and Jack O’Connell are billed in a country that never really ended the rage. A sequel, not a remake of 28 Days Later.",
+    "year": 2026,
+    "genre": "Horror",
+    "country": "United States",
+    "language": "English",
+    "poster": "https://i.ytimg.com/vi/wyYliP8dPWU/hqdefault.jpg",
+    "backdrop": null,
+    "trailer": "https://www.youtube.com/watch?v=wyYliP8dPWU",
+    "youtubeId": "wyYliP8dPWU",
+    "cast": [
+      "Ralph Fiennes",
+      "Jack O'Connell",
+      "Alfie Williams",
+      "Erin Kellyman",
+      "Chi Lewis-Parry"
+    ],
+    "director": "Nia DaCosta",
+    "runtime": "",
+    "rating": null,
+    "status": "published",
+    "createdAt": null,
+    "updatedAt": "2026-08-22",
+    "legacyType": "movie",
+    "typeDir": "movie",
+    "teaser": "Nia DaCosta’s follow-up to 28 Years Later. Ralph Fiennes and Jack O’Connell are billed in a country that never really ended the rage. A sequel, not a remake of 28 Days Later.",
+    "facts": [],
+    "watchLinks": [],
+    "genres": [
+      "Horror",
+      "Sci-Fi"
+    ],
+    "typeLabel": "Movie",
+    "trending": false,
+    "popular": false,
+    "editorPick": false,
+    "isFeatured": false,
+    "isNewRelease": false,
+    "trailers": [
+      {
+        "videoId": "wyYliP8dPWU",
+        "type": "official-trailer",
+        "title": "Official Trailer",
+        "source": "YouTube",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "trailerType": "official-trailer",
+    "trailerVerified": true,
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/28_Years_Later%3A_The_Bone_Temple",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  {
+    "id": "enola-holmes-3",
+    "title": "Enola Holmes 3",
+    "slug": "enola-holmes-3",
+    "description": "Philip Barantini’s third Enola case. Louis Partridge returns as Tewkesbury. A Netflix mystery sequel, not a reboot of the Guy Ritchie Sherlock films.",
+    "year": 2026,
+    "genre": "Mystery",
+    "country": "United States",
+    "language": "English",
+    "poster": "https://i.ytimg.com/vi/n_pEJjq-9xQ/hqdefault.jpg",
+    "backdrop": null,
+    "trailer": "https://www.youtube.com/watch?v=n_pEJjq-9xQ",
+    "youtubeId": "n_pEJjq-9xQ",
+    "cast": [
+      "Louis Partridge",
+      "Himesh Patel",
+      "Sharon Duncan-Brewster",
+      "Henry Cavill",
+      "Helena Bonham Carter",
+      "Millie Bobby Brown"
+    ],
+    "director": "Philip Barantini",
+    "runtime": "",
+    "rating": null,
+    "status": "published",
+    "createdAt": null,
+    "updatedAt": "2026-08-22",
+    "legacyType": "movie",
+    "typeDir": "movie",
+    "teaser": "Philip Barantini’s third Enola case. Louis Partridge returns as Tewkesbury. A Netflix mystery sequel, not a reboot of the Guy Ritchie Sherlock films.",
+    "facts": [],
+    "watchLinks": [],
+    "genres": [
+      "Mystery",
+      "Adventure"
+    ],
+    "typeLabel": "Movie",
+    "trending": false,
+    "popular": false,
+    "editorPick": false,
+    "isFeatured": false,
+    "isNewRelease": false,
+    "trailers": [
+      {
+        "videoId": "n_pEJjq-9xQ",
+        "type": "official-trailer",
+        "title": "Official Trailer",
+        "source": "YouTube",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "trailerType": "official-trailer",
+    "trailerVerified": true,
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Enola_Holmes_3",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  {
+    "id": "cocktail-2",
+    "title": "Cocktail 2",
+    "slug": "cocktail-2",
+    "description": "Homi Adajania returns to the Cocktail title with Shahid Kapoor, Kriti Sanon and Rashmika Mandanna. A new triangle, not a shot-for-shot of the 2012 film.",
+    "year": 2026,
+    "genre": "Romance",
+    "country": "India",
+    "language": "Hindi",
+    "poster": "https://i.ytimg.com/vi/XXxUqLHq1xg/hqdefault.jpg",
+    "backdrop": null,
+    "trailer": "https://www.youtube.com/watch?v=XXxUqLHq1xg",
+    "youtubeId": "XXxUqLHq1xg",
+    "cast": [
+      "Shahid Kapoor",
+      "Kriti Sanon",
+      "Rashmika Mandanna"
+    ],
+    "director": "Homi Adajania",
+    "runtime": "",
+    "rating": null,
+    "status": "published",
+    "createdAt": null,
+    "updatedAt": "2026-08-22",
+    "legacyType": "movie",
+    "typeDir": "movie",
+    "teaser": "Homi Adajania returns to the Cocktail title with Shahid Kapoor, Kriti Sanon and Rashmika Mandanna. A new triangle, not a shot-for-shot of the 2012 film.",
+    "facts": [],
+    "watchLinks": [],
+    "genres": [
+      "Romance",
+      "Drama"
+    ],
+    "typeLabel": "Movie",
+    "trending": false,
+    "popular": false,
+    "editorPick": false,
+    "isFeatured": false,
+    "isNewRelease": false,
+    "trailers": [
+      {
+        "videoId": "XXxUqLHq1xg",
+        "type": "official-trailer",
+        "title": "Official Trailer",
+        "source": "YouTube",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "trailerType": "official-trailer",
+    "trailerVerified": true,
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Cocktail_2",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  {
+    "id": "fifty-shades-freed",
+    "title": "Fifty Shades Freed",
+    "slug": "fifty-shades-freed",
+    "description": "James Foley’s third Fifty Shades film. Dakota Johnson and Jamie Dornan close the contract. 2018 — the last of the trilogy, not a remake of the first.",
+    "year": 2018,
+    "genre": "Romance",
+    "country": "United States",
+    "language": "English",
+    "poster": "https://i.ytimg.com/vi/fjWbRqtkO6k/hqdefault.jpg",
+    "backdrop": null,
+    "trailer": "https://www.youtube.com/watch?v=fjWbRqtkO6k",
+    "youtubeId": "fjWbRqtkO6k",
+    "cast": [
+      "Dakota Johnson",
+      "Jamie Dornan",
+      "Eric Johnson",
+      "Rita Ora",
+      "Luke Grimes",
+      "Jennifer Ehle"
+    ],
+    "director": "James Foley",
+    "runtime": "",
+    "rating": null,
+    "status": "published",
+    "createdAt": null,
+    "updatedAt": "2026-08-22",
+    "legacyType": "movie",
+    "typeDir": "movie",
+    "teaser": "James Foley’s third Fifty Shades film. Dakota Johnson and Jamie Dornan close the contract. 2018 — the last of the trilogy, not a remake of the first.",
+    "facts": [],
+    "watchLinks": [],
+    "genres": [
+      "Romance",
+      "Drama"
+    ],
+    "typeLabel": "Movie",
+    "trending": false,
+    "popular": false,
+    "editorPick": false,
+    "isFeatured": false,
+    "isNewRelease": false,
+    "trailers": [
+      {
+        "videoId": "fjWbRqtkO6k",
+        "type": "official-trailer",
+        "title": "Official Trailer",
+        "source": "YouTube",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "trailerType": "official-trailer",
+    "trailerVerified": true,
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Fifty_Shades_Freed_(film)",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  {
+    "id": "mission-impossible-the-final-reckoning",
+    "title": "Mission: Impossible – The Final Reckoning",
+    "slug": "mission-impossible-the-final-reckoning",
+    "description": "Christopher McQuarrie’s next Ethan Hunt film. Tom Cruise returns; Hayley Atwell, Ving Rhames and Simon Pegg are billed. The 2025 follow-up to Dead Reckoning.",
+    "year": 2025,
+    "genre": "Action",
+    "country": "United States",
+    "language": "English",
+    "poster": "https://i.ytimg.com/vi/5WWGS2PwFB0/hqdefault.jpg",
+    "backdrop": null,
+    "trailer": "https://www.youtube.com/watch?v=5WWGS2PwFB0",
+    "youtubeId": "5WWGS2PwFB0",
+    "cast": [
+      "Hayley Atwell",
+      "Ving Rhames",
+      "Simon Pegg",
+      "Esai Morales",
+      "Henry Czerny",
+      "Angela Bassett",
+      "Tom Cruise"
+    ],
+    "director": "Christopher McQuarrie",
+    "runtime": "",
+    "rating": null,
+    "status": "published",
+    "createdAt": null,
+    "updatedAt": "2026-08-22",
+    "legacyType": "movie",
+    "typeDir": "movie",
+    "teaser": "Christopher McQuarrie’s next Ethan Hunt film. Tom Cruise returns; Hayley Atwell, Ving Rhames and Simon Pegg are billed. The 2025 follow-up to Dead Reckoning.",
+    "facts": [],
+    "watchLinks": [],
+    "genres": [
+      "Action",
+      "Thriller"
+    ],
+    "typeLabel": "Movie",
+    "trending": false,
+    "popular": false,
+    "editorPick": false,
+    "isFeatured": false,
+    "isNewRelease": false,
+    "trailers": [
+      {
+        "videoId": "5WWGS2PwFB0",
+        "type": "official-trailer",
+        "title": "Official Trailer",
+        "source": "YouTube",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "trailerType": "official-trailer",
+    "trailerVerified": true,
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Mission%3A_Impossible_%E2%80%93_The_Final_Reckoning",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  {
+    "id": "star-wars-the-mandalorian-and-grogu",
+    "title": "Star Wars: The Mandalorian and Grogu",
+    "slug": "star-wars-the-mandalorian-and-grogu",
+    "description": "Jon Favreau takes the Disney+ pair to theatres. Pedro Pascal is billed; Jeremy Allen White joins. A Star Wars film, not a recut of the TV series.",
+    "year": 2026,
+    "genre": "Sci-Fi",
+    "country": "United States",
+    "language": "English",
+    "poster": "https://i.ytimg.com/vi/IHWlvwu8t1w/hqdefault.jpg",
+    "backdrop": null,
+    "trailer": "https://www.youtube.com/watch?v=IHWlvwu8t1w",
+    "youtubeId": "IHWlvwu8t1w",
+    "cast": [
+      "Pedro Pascal",
+      "Jeremy Allen White",
+      "Lateef Crowder",
+      "Jonny Coyne",
+      "Martin Scorsese",
+      "Sigourney Weaver",
+      "Brendan Wayne"
+    ],
+    "director": "Jon Favreau",
+    "runtime": "",
+    "rating": null,
+    "status": "published",
+    "createdAt": null,
+    "updatedAt": "2026-08-22",
+    "legacyType": "movie",
+    "typeDir": "movie",
+    "teaser": "Jon Favreau takes the Disney+ pair to theatres. Pedro Pascal is billed; Jeremy Allen White joins. A Star Wars film, not a recut of the TV series.",
+    "facts": [],
+    "watchLinks": [],
+    "genres": [
+      "Sci-Fi",
+      "Adventure"
+    ],
+    "typeLabel": "Movie",
+    "trending": false,
+    "popular": false,
+    "editorPick": false,
+    "isFeatured": false,
+    "isNewRelease": false,
+    "trailers": [
+      {
+        "videoId": "IHWlvwu8t1w",
+        "type": "official-trailer",
+        "title": "Official Trailer",
+        "source": "YouTube",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "trailerType": "official-trailer",
+    "trailerVerified": true,
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/The_Mandalorian_and_Grogu",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  {
+    "id": "masters-of-the-universe",
+    "title": "Masters of the Universe",
+    "slug": "masters-of-the-universe",
+    "description": "Travis Knight’s live-action He-Man. Nicholas Galitzine, Camila Mendes and Alison Brie are billed. A 2026 feature, not the 1987 Dolph Lundgren film.",
+    "year": 2026,
+    "genre": "Fantasy",
+    "country": "United States",
+    "language": "English",
+    "poster": "https://i.ytimg.com/vi/X21JsHLHnY8/hqdefault.jpg",
+    "backdrop": null,
+    "trailer": "https://www.youtube.com/watch?v=X21JsHLHnY8",
+    "youtubeId": "X21JsHLHnY8",
+    "cast": [
+      "Nicholas Galitzine",
+      "Camila Mendes",
+      "Alison Brie",
+      "James Purefoy",
+      "Morena Baccarin",
+      "Jóhannes Haukur Jóhannesson",
+      "Kristen Wiig",
+      "Jared Leto"
+    ],
+    "director": "Travis Knight",
+    "runtime": "",
+    "rating": null,
+    "status": "published",
+    "createdAt": null,
+    "updatedAt": "2026-08-22",
+    "legacyType": "movie",
+    "typeDir": "movie",
+    "teaser": "Travis Knight’s live-action He-Man. Nicholas Galitzine, Camila Mendes and Alison Brie are billed. A 2026 feature, not the 1987 Dolph Lundgren film.",
+    "facts": [],
+    "watchLinks": [],
+    "genres": [
+      "Fantasy",
+      "Action"
+    ],
+    "typeLabel": "Movie",
+    "trending": false,
+    "popular": false,
+    "editorPick": false,
+    "isFeatured": false,
+    "isNewRelease": false,
+    "trailers": [
+      {
+        "videoId": "X21JsHLHnY8",
+        "type": "official-trailer",
+        "title": "Official Trailer",
+        "source": "YouTube",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "trailerType": "official-trailer",
+    "trailerVerified": true,
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Masters_of_the_Universe_%282026_film%29",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  {
+    "id": "my-fault",
+    "title": "My Fault",
+    "slug": "my-fault",
+    "description": "Nicole Wallace and Gabriel Guevara in the first Culpa mía film. A Spanish-language romance that became a streaming hit. Not a Hollywood remake.",
+    "year": 2023,
+    "genre": "Romance",
+    "country": "Spain",
+    "language": "Spanish",
+    "poster": "https://i.ytimg.com/vi/PaB7cGBuCP0/hqdefault.jpg",
+    "backdrop": null,
+    "trailer": "https://www.youtube.com/watch?v=PaB7cGBuCP0",
+    "youtubeId": "PaB7cGBuCP0",
+    "cast": [
+      "Nicole Wallace",
+      "Gabriel Guevara"
+    ],
+    "director": "",
+    "runtime": "",
+    "rating": null,
+    "status": "published",
+    "createdAt": null,
+    "updatedAt": "2026-08-22",
+    "legacyType": "movie",
+    "typeDir": "movie",
+    "teaser": "Nicole Wallace and Gabriel Guevara in the first Culpa mía film. A Spanish-language romance that became a streaming hit. Not a Hollywood remake.",
+    "facts": [],
+    "watchLinks": [],
+    "genres": [
+      "Romance",
+      "Drama"
+    ],
+    "typeLabel": "Movie",
+    "trending": false,
+    "popular": false,
+    "editorPick": false,
+    "isFeatured": false,
+    "isNewRelease": false,
+    "trailers": [
+      {
+        "videoId": "PaB7cGBuCP0",
+        "type": "official-trailer",
+        "title": "Official Trailer",
+        "source": "YouTube",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "trailerType": "official-trailer",
+    "trailerVerified": true,
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/My_Fault_%28film%29",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  {
+    "id": "the-drama",
+    "title": "The Drama",
+    "slug": "the-drama",
+    "description": "Kristoffer Borgli’s film with Zendaya and Robert Pattinson. A relationship story sold as The Drama. 2026, not a making-of documentary.",
+    "year": 2026,
+    "genre": "Drama",
+    "country": "United States",
+    "language": "English",
+    "poster": "https://i.ytimg.com/vi/6zmKcUa4Xxk/hqdefault.jpg",
+    "backdrop": null,
+    "trailer": "https://www.youtube.com/watch?v=6zmKcUa4Xxk",
+    "youtubeId": "6zmKcUa4Xxk",
+    "cast": [
+      "Zendaya",
+      "Robert Pattinson"
+    ],
+    "director": "Kristoffer Borgli",
+    "runtime": "",
+    "rating": null,
+    "status": "published",
+    "createdAt": null,
+    "updatedAt": "2026-08-22",
+    "legacyType": "movie",
+    "typeDir": "movie",
+    "teaser": "Kristoffer Borgli’s film with Zendaya and Robert Pattinson. A relationship story sold as The Drama. 2026, not a making-of documentary.",
+    "facts": [],
+    "watchLinks": [],
+    "genres": [
+      "Drama",
+      "Romance"
+    ],
+    "typeLabel": "Movie",
+    "trending": false,
+    "popular": false,
+    "editorPick": false,
+    "isFeatured": false,
+    "isNewRelease": false,
+    "trailers": [
+      {
+        "videoId": "6zmKcUa4Xxk",
+        "type": "official-trailer",
+        "title": "Official Trailer",
+        "source": "YouTube",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "trailerType": "official-trailer",
+    "trailerVerified": true,
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/The_Drama_%28film%29",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  {
+    "id": "lee-cronins-the-mummy",
+    "title": "Lee Cronin's The Mummy",
+    "slug": "lee-cronins-the-mummy",
+    "description": "Lee Cronin starts a new Mummy. Jack Reynor, Laia Costa and May Calamawy are billed. A 2026 horror film, not the 1999 Brendan Fraser adventure or the 2017 Cruise film.",
+    "year": 2026,
+    "genre": "Horror",
+    "country": "United States",
+    "language": "English",
+    "poster": "https://i.ytimg.com/vi/97VHr4LHO1Y/hqdefault.jpg",
+    "backdrop": null,
+    "trailer": "https://www.youtube.com/watch?v=97VHr4LHO1Y",
+    "youtubeId": "97VHr4LHO1Y",
+    "cast": [
+      "Jack Reynor",
+      "Laia Costa",
+      "May Calamawy",
+      "Verónica Falcón"
+    ],
+    "director": "Lee Cronin",
+    "runtime": "",
+    "rating": null,
+    "status": "published",
+    "createdAt": null,
+    "updatedAt": "2026-08-22",
+    "legacyType": "movie",
+    "typeDir": "movie",
+    "teaser": "Lee Cronin starts a new Mummy. Jack Reynor, Laia Costa and May Calamawy are billed. A 2026 horror film, not the 1999 Brendan Fraser adventure or the 2017 Cruise film.",
+    "facts": [],
+    "watchLinks": [],
+    "genres": [
+      "Horror"
+    ],
+    "typeLabel": "Movie",
+    "trending": false,
+    "popular": false,
+    "editorPick": false,
+    "isFeatured": false,
+    "isNewRelease": false,
+    "trailers": [
+      {
+        "videoId": "97VHr4LHO1Y",
+        "type": "official-trailer",
+        "title": "Official Trailer",
+        "source": "YouTube",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "trailerType": "official-trailer",
+    "trailerVerified": true,
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Lee_Cronin%27s_The_Mummy",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  {
+    "id": "our-fault",
+    "title": "Our Fault",
+    "slug": "our-fault",
+    "description": "The Culpa mía follow-up with Nicole Wallace and Gabriel Guevara again. A sequel, not a separate franchise.",
+    "year": 2025,
+    "genre": "Romance",
+    "country": "Spain",
+    "language": "Spanish",
+    "poster": "https://i.ytimg.com/vi/4ZDvKct1U4s/hqdefault.jpg",
+    "backdrop": null,
+    "trailer": "https://www.youtube.com/watch?v=4ZDvKct1U4s",
+    "youtubeId": "4ZDvKct1U4s",
+    "cast": [
+      "Nicole Wallace",
+      "Gabriel Guevara"
+    ],
+    "director": "",
+    "runtime": "",
+    "rating": null,
+    "status": "published",
+    "createdAt": null,
+    "updatedAt": "2026-08-22",
+    "legacyType": "movie",
+    "typeDir": "movie",
+    "teaser": "The Culpa mía follow-up with Nicole Wallace and Gabriel Guevara again. A sequel, not a separate franchise.",
+    "facts": [],
+    "watchLinks": [],
+    "genres": [
+      "Romance",
+      "Drama"
+    ],
+    "typeLabel": "Movie",
+    "trending": false,
+    "popular": false,
+    "editorPick": false,
+    "isFeatured": false,
+    "isNewRelease": false,
+    "trailers": [
+      {
+        "videoId": "4ZDvKct1U4s",
+        "type": "official-trailer",
+        "title": "Official Trailer",
+        "source": "YouTube",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "trailerType": "official-trailer",
+    "trailerVerified": true,
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Our_Fault",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  {
+    "id": "welcome-to-the-jungle",
+    "title": "Welcome to the Jungle",
+    "slug": "welcome-to-the-jungle",
+    "description": "Rob Meltzer’s 2013 action-comedy. Jean-Claude Van Damme, Adam Brody and Megan Boone are billed. Not The Rock’s Jumanji movie.",
+    "year": 2013,
+    "genre": "Comedy",
+    "country": "United States",
+    "language": "English",
+    "poster": "https://i.ytimg.com/vi/oWiZwmWl-sE/hqdefault.jpg",
+    "backdrop": null,
+    "trailer": "https://www.youtube.com/watch?v=oWiZwmWl-sE",
+    "youtubeId": "oWiZwmWl-sE",
+    "cast": [
+      "Jean-Claude Van Damme",
+      "Adam Brody",
+      "Megan Boone",
+      "Rob Huebel",
+      "Kristen Schaal",
+      "Eric Edelstein",
+      "Dennis Haysbert"
+    ],
+    "director": "Rob Meltzer",
+    "runtime": "",
+    "rating": null,
+    "status": "published",
+    "createdAt": null,
+    "updatedAt": "2026-08-22",
+    "legacyType": "movie",
+    "typeDir": "movie",
+    "teaser": "Rob Meltzer’s 2013 action-comedy. Jean-Claude Van Damme, Adam Brody and Megan Boone are billed. Not The Rock’s Jumanji movie.",
+    "facts": [],
+    "watchLinks": [],
+    "genres": [
+      "Comedy",
+      "Action"
+    ],
+    "typeLabel": "Movie",
+    "trending": false,
+    "popular": false,
+    "editorPick": false,
+    "isFeatured": false,
+    "isNewRelease": false,
+    "trailers": [
+      {
+        "videoId": "oWiZwmWl-sE",
+        "type": "official-trailer",
+        "title": "Official Trailer",
+        "source": "YouTube",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "trailerType": "official-trailer",
+    "trailerVerified": true,
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Welcome_to_the_Jungle_%282013_film%29",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  {
+    "id": "in-the-grey",
+    "title": "In the Grey",
+    "slug": "in-the-grey",
+    "description": "Guy Ritchie’s spy picture. Henry Cavill and Jake Gyllenhaal are billed, with Eiza González. A contemporary thriller, not a period war film.",
+    "year": 2025,
+    "genre": "Action",
+    "country": "United States",
+    "language": "English",
+    "poster": "https://i.ytimg.com/vi/nufP15iN4GE/hqdefault.jpg",
+    "backdrop": null,
+    "trailer": "https://www.youtube.com/watch?v=nufP15iN4GE",
+    "youtubeId": "nufP15iN4GE",
+    "cast": [
+      "Henry Cavill",
+      "Jake Gyllenhaal",
+      "Eiza Gonzalez",
+      "Fisher Stevens",
+      "Rosamund Pike",
+      "Kristofer Hivju"
+    ],
+    "director": "Guy Ritchie",
+    "runtime": "",
+    "rating": null,
+    "status": "published",
+    "createdAt": null,
+    "updatedAt": "2026-08-22",
+    "legacyType": "movie",
+    "typeDir": "movie",
+    "teaser": "Guy Ritchie’s spy picture. Henry Cavill and Jake Gyllenhaal are billed, with Eiza González. A contemporary thriller, not a period war film.",
+    "facts": [],
+    "watchLinks": [],
+    "genres": [
+      "Action",
+      "Thriller"
+    ],
+    "typeLabel": "Movie",
+    "trending": false,
+    "popular": false,
+    "editorPick": false,
+    "isFeatured": false,
+    "isNewRelease": false,
+    "trailers": [
+      {
+        "videoId": "nufP15iN4GE",
+        "type": "official-trailer",
+        "title": "Official Trailer",
+        "source": "YouTube",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "trailerType": "official-trailer",
+    "trailerVerified": true,
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/In_the_Grey",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  {
+    "id": "the-death-of-robin-hood",
+    "title": "The Death of Robin Hood",
+    "slug": "the-death-of-robin-hood",
+    "description": "Michael Sarnoski’s take on the end of the outlaw. Jodie Comer, Bill Skarsgård and Murray Bartlett are billed. Not a recut of the 1991 Costner film.",
+    "year": 2026,
+    "genre": "Drama",
+    "country": "United States",
+    "language": "English",
+    "poster": "https://i.ytimg.com/vi/tlSDDuWxO_0/hqdefault.jpg",
+    "backdrop": null,
+    "trailer": "https://www.youtube.com/watch?v=tlSDDuWxO_0",
+    "youtubeId": "tlSDDuWxO_0",
+    "cast": [
+      "Jodie Comer",
+      "Bill Skarsgård",
+      "Murray Bartlett",
+      "Noah Jupe",
+      "Hugh Jackman"
+    ],
+    "director": "Michael Sarnoski",
+    "runtime": "",
+    "rating": null,
+    "status": "published",
+    "createdAt": null,
+    "updatedAt": "2026-08-22",
+    "legacyType": "movie",
+    "typeDir": "movie",
+    "teaser": "Michael Sarnoski’s take on the end of the outlaw. Jodie Comer, Bill Skarsgård and Murray Bartlett are billed. Not a recut of the 1991 Costner film.",
+    "facts": [],
+    "watchLinks": [],
+    "genres": [
+      "Drama",
+      "Adventure"
+    ],
+    "typeLabel": "Movie",
+    "trending": false,
+    "popular": false,
+    "editorPick": false,
+    "isFeatured": false,
+    "isNewRelease": false,
+    "trailers": [
+      {
+        "videoId": "tlSDDuWxO_0",
+        "type": "official-trailer",
+        "title": "Official Trailer",
+        "source": "YouTube",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "trailerType": "official-trailer",
+    "trailerVerified": true,
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/The_Death_of_Robin_Hood",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  {
+    "id": "the-sheep-detectives",
+    "title": "The Sheep Detectives",
+    "slug": "the-sheep-detectives",
+    "description": "Kyle Balda’s comedy. Hugh Jackman, Nicholas Braun and Nicholas Galitzine are billed. A mystery with livestock, not a nature documentary.",
+    "year": 2026,
+    "genre": "Comedy",
+    "country": "United States",
+    "language": "English",
+    "poster": "https://i.ytimg.com/vi/pyZI5oM6hWk/hqdefault.jpg",
+    "backdrop": null,
+    "trailer": "https://www.youtube.com/watch?v=pyZI5oM6hWk",
+    "youtubeId": "pyZI5oM6hWk",
+    "cast": [
+      "Hugh Jackman",
+      "Nicholas Braun",
+      "Nicholas Galitzine",
+      "Molly Gordon",
+      "Julia Louis-Dreyfus",
+      "Bryan Cranston",
+      "Chris O'Dowd",
+      "Regina Hall"
+    ],
+    "director": "Kyle Balda",
+    "runtime": "",
+    "rating": null,
+    "status": "published",
+    "createdAt": null,
+    "updatedAt": "2026-08-22",
+    "legacyType": "movie",
+    "typeDir": "movie",
+    "teaser": "Kyle Balda’s comedy. Hugh Jackman, Nicholas Braun and Nicholas Galitzine are billed. A mystery with livestock, not a nature documentary.",
+    "facts": [],
+    "watchLinks": [],
+    "genres": [
+      "Comedy",
+      "Mystery"
+    ],
+    "typeLabel": "Movie",
+    "trending": false,
+    "popular": false,
+    "editorPick": false,
+    "isFeatured": false,
+    "isNewRelease": false,
+    "trailers": [
+      {
+        "videoId": "pyZI5oM6hWk",
+        "type": "official-trailer",
+        "title": "Official Trailer",
+        "source": "YouTube",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "trailerType": "official-trailer",
+    "trailerVerified": true,
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/The_Sheep_Detectives",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  {
+    "id": "the-punisher-one-last-kill",
+    "title": "The Punisher: One Last Kill",
+    "slug": "the-punisher-one-last-kill",
+    "description": "Reinaldo Marcus Green’s Punisher film. Deborah Ann Woll and Jason R. Moore are billed from the TV series. A Marvel crime picture, not a recut of the 2004 Thomas Jane film.",
+    "year": 2026,
+    "genre": "Action",
+    "country": "United States",
+    "language": "English",
+    "poster": "https://i.ytimg.com/vi/VqC_In3B4zY/hqdefault.jpg",
+    "backdrop": null,
+    "trailer": "https://www.youtube.com/watch?v=VqC_In3B4zY",
+    "youtubeId": "VqC_In3B4zY",
+    "cast": [
+      "Deborah Ann Woll",
+      "Jason R. Moore",
+      "Judith Light",
+      "Jon Bernthal"
+    ],
+    "director": "Reinaldo Marcus Green",
+    "runtime": "",
+    "rating": null,
+    "status": "published",
+    "createdAt": null,
+    "updatedAt": "2026-08-22",
+    "legacyType": "movie",
+    "typeDir": "movie",
+    "teaser": "Reinaldo Marcus Green’s Punisher film. Deborah Ann Woll and Jason R. Moore are billed from the TV series. A Marvel crime picture, not a recut of the 2004 Thomas Jane film.",
+    "facts": [],
+    "watchLinks": [],
+    "genres": [
+      "Action",
+      "Crime"
+    ],
+    "typeLabel": "Movie",
+    "trending": false,
+    "popular": false,
+    "editorPick": false,
+    "isFeatured": false,
+    "isNewRelease": false,
+    "trailers": [
+      {
+        "videoId": "VqC_In3B4zY",
+        "type": "official-trailer",
+        "title": "Official Trailer",
+        "source": "YouTube",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "trailerType": "official-trailer",
+    "trailerVerified": true,
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/The_Punisher%3A_One_Last_Kill",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
+  },
+  {
+    "id": "hungry",
+    "title": "Hungry",
+    "slug": "hungry",
+    "description": "James Nunn’s horror. Madison Davenport and Joaquim de Almeida are billed. A 2026 creature/appetite film, not a food documentary.",
+    "year": 2026,
+    "genre": "Horror",
+    "country": "United States",
+    "language": "English",
+    "poster": "https://i.ytimg.com/vi/aHZrv6CSTuA/hqdefault.jpg",
+    "backdrop": null,
+    "trailer": "https://www.youtube.com/watch?v=aHZrv6CSTuA",
+    "youtubeId": "aHZrv6CSTuA",
+    "cast": [
+      "Madison Davenport",
+      "Joaquim de Almeida",
+      "Jim Meskimen",
+      "Tracey Bonner",
+      "Michel Curiel",
+      "Samantha Coughlan",
+      "Olivia Bernstone",
+      "River Codack"
+    ],
+    "director": "James Nunn",
+    "runtime": "",
+    "rating": null,
+    "status": "published",
+    "createdAt": null,
+    "updatedAt": "2026-08-22",
+    "legacyType": "movie",
+    "typeDir": "movie",
+    "teaser": "James Nunn’s horror. Madison Davenport and Joaquim de Almeida are billed. A 2026 creature/appetite film, not a food documentary.",
+    "facts": [],
+    "watchLinks": [],
+    "genres": [
+      "Horror"
+    ],
+    "typeLabel": "Movie",
+    "trending": false,
+    "popular": false,
+    "editorPick": false,
+    "isFeatured": false,
+    "isNewRelease": false,
+    "trailers": [
+      {
+        "videoId": "aHZrv6CSTuA",
+        "type": "official-trailer",
+        "title": "Official Trailer",
+        "source": "YouTube",
+        "verified": true,
+        "status": "verified"
+      }
+    ],
+    "trailerType": "official-trailer",
+    "trailerVerified": true,
+    "castSource": {
+      "name": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Hungry_%28film%29",
+      "field": "infobox starring",
+      "retrieved": "2026-08-22"
+    }
   }
 ]
