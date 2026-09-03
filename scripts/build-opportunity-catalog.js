@@ -435,7 +435,11 @@ module.exports = function buildOpportunityCatalog(ctx) {
   </script>`;
 
   /* ---------- CSS ---------- */
-  fs.appendFileSync(path.join(root, 'assets/site.css'), `
+  /* Idempotent: this used to appendFileSync unconditionally, so site.css grew a
+     duplicate copy of the whole block on every single build. Skip if present. */
+  const cssPath = path.join(root, 'assets/site.css');
+  const existingCss = fs.existsSync(cssPath) ? fs.readFileSync(cssPath, 'utf8') : '';
+  if (!existingCss.includes('/* Opportunity catalog */')) fs.appendFileSync(cssPath, `
 /* Opportunity catalog */
 .mm-onboard{max-width:820px;margin:0 auto 28px}
 .mm-onboard h1{font-size:clamp(28px,6vw,44px);margin:8px 0 12px}
@@ -520,40 +524,49 @@ module.exports = function buildOpportunityCatalog(ctx) {
   ).join('');
 
   const hubCrumbs = [{ name: 'Home', path: '/' }, { name: 'BRYME Make Money', path: '/make-money/' }];
-  const hubBody = `<main class="shell">
+  /* SIMPLE LIST hub, matching Sports and Tech. This page previously used a big
+     mm-feature hero + sp-hero card rail, which replaced the hand-built list and
+     dropped 5 guide links. The country picker (data-mm-app) is kept intact --
+     it is real functionality, not decoration. */
+  const mmGuideLinks = [
+    ['/make-money/binary-trading-pocket-option-expert-option-quotex-trap/', 'Pocket Option, Expert Option, Quotex', 'Why promoters push those apps. It\u2019s a trap.'],
+    ['/make-money/beginners-guide-to-making-money-online/', 'Beginner guide', 'Skills, traps, and what is not a job.'],
+    ['/make-money/make-money-online-nigeria/', 'Making money in Nigeria', 'Platforms that accept Nigerians, pay ranges, red flags.'],
+    ['/make-money/freelance-platform-fees-explained/', 'What Upwork and Fiverr take', 'From their own documentation.'],
+    ['/make-money/outlier-ai-nigeria/', 'Outlier AI in Nigeria', 'What it is, who it takes, what it pays.'],
+    ['/make-money/mindrift-vs-alignerr-vs-prolific/', 'Mindrift vs Alignerr vs Prolific', 'Three AI-task platforms, compared.'],
+    ['/make-money/website-monetization-guide/', 'Website monetization', 'How to earn from a real audience.']
+  ].map(([h, b, d]) => `<a class="sp-story" href="${url(h)}"><b>${esc(b)}</b><span>${esc(d)}</span></a>`).join('');
+
+  const hubBody = `<main class="shell sp-easy" id="mm-app">
     <div class="crumb"><a href="${url('/')}">Home</a> / BRYME Make Money</div>
-    <section class="mm-feature"><div class="sports-feature-inner"><div class="eyebrow">💰 BRYME Make Money</div>
-      <h1>Legitimate opportunities, filtered to you.</h1>
-      <p>Find paid work that matches your country and skill. We verify listings against official guidelines. Nothing here is a guarantee of acceptance or payment.</p>
-    </div></section>
+    <h1>\u{1F4B0} Make Money</h1>
+    <p class="sp-easy-sub">Verified paid work. Pick your country, then a path.</p>
     <section class="mm-onboard" data-mm-app>
       <div data-mm-step="nationality">
-        <h2>What's your nationality?</h2>
-        <p class="mm-desk-lead">This is used only to hide opportunities that officially exclude your country. You can change it any time.</p>
-        <label class="mm-country-label" for="mm-country-q">Type your country</label>
-        <input id="mm-country-q" class="mm-country-q" data-mm-country-q type="text" inputmode="search" placeholder="e.g. Nigeria, Ghana, Kenya…" autocomplete="off" autocapitalize="words" spellcheck="false" aria-label="Type your country">
+        <label class="mm-country-label" for="mm-country-q">Type your country. We hide listings that do not take you.</label>
+        <input id="mm-country-q" class="mm-country-q" data-mm-country-q type="text" inputmode="search" placeholder="e.g. Nigeria, Ghana, Kenya…" autocomplete="off">
         <div class="mm-country-list" data-mm-countries>${countryButtons}</div>
       </div>
       <div data-mm-step="categories" hidden>
         <p class="oc-natbar"><button type="button" class="oc-nat-btn" data-mm-change data-mm-nat-label>Change country</button></p>
-        <h2>What do you want to earn from?</h2>
+        <p class="sp-kick">What do you want to earn from?</p>
         <p class="mm-desk-lead">Writing is live. Other categories stay empty until we have verified listings.</p>
         <div class="mm-cat-grid">${catCards}</div>
       </div>
     </section>
     ${disclaimer}
-    <section class="sp-hero" aria-label="Featured Make Money pages"><div class="sp-hero-track">
-      <a class="sp-hero-card sp-hero-first mm-tint" href="${url('/make-money/writing/')}" style="--card-img:url('/assets/img/money/hero-writing.jpg')"><span class="sp-hero-tag">Writing</span><h3>Markets we actually checked</h3><p>Official rates and doors. A gig is not guaranteed. Fifty-five listings, not a dump.</p><span class="sp-hero-go">Open the catalog →</span></a>
-      <a class="sp-hero-card mm-tint" href="${url('/make-money/freelance-platform-fees-explained/')}" style="--card-img:url('/assets/img/money/hero-fees.jpg')"><span class="sp-hero-tag">Fees</span><h3>What Upwork and Fiverr take in 2026</h3><p>From their own documentation, not a recycled listicle. Price so the cut does not surprise you.</p><span class="sp-hero-go">Read the fees →</span></a>
-      <a class="sp-hero-card mm-tint" href="${url('/make-money/beginners-guide-to-making-money-online/')}" style="--card-img:url('/assets/img/money/hero-beginner.jpg')"><span class="sp-hero-tag">Start here</span><h3>The beginner guide without the lie</h3><p>Skills, traps, and what is not a job. No fake income figures.</p><span class="sp-hero-go">Read the guide →</span></a>
-    </div></section>
-    <section class="section"><div class="section-head"><h2>More guides</h2></div>
-      <div class="vcat-grid">${guideCards}</div>
-    </section>
-    ${typeof coreHubStrip === 'function' ? coreHubStrip('make-money') : `<section class="section"><div class="section-head"><h2>Explore BRYME</h2></div><div class="vchips">${VERTICALS.map(verticalChip).join('')}</div></section>`}
+    <p class="sp-kick">Paths</p>
+    <a class="sp-lg" href="${url('/make-money/writing/')}"><div class="sp-lg-top">Writing<span>Open \u2192</span></div><p class="sp-lg-next">Publications that pay. Filtered by country.</p></a>
+    <a class="sp-lg" href="${url('/make-money/remote-work/')}"><div class="sp-lg-top">Remote jobs<span>Open \u2192</span></div><p class="sp-lg-next">Platforms that pay. Filtered by country.</p></a>
+    <a class="sp-lg" href="${url('/make-money/coding/')}"><div class="sp-lg-top">Coding<span>Open \u2192</span></div><p class="sp-lg-next">Developer marketplaces and boards.</p></a>
+    <p class="sp-kick">Guides</p>
+    ${mmGuideLinks}
   </main>${catalogScript}`;
 
   write('make-money', layout({
+    styles: ['/assets/sports-simple.css', '/assets/money-simple.css'],
+    scripts: ['/assets/money-simple.js'],
     title: 'BRYME Make Money – verified paid opportunities by country',
     description: 'Find legitimate paid writing and other online opportunities for your country. Listings are checked against official guidelines. Acceptance is not guaranteed.',
     path: '/make-money/',
