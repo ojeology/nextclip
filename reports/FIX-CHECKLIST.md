@@ -8,7 +8,7 @@ Status: ⬜ not started · 🔄 in progress · ✅ done
 ## PHASE 1 — AdSense blockers (must clear before applying)
 
 - 🔄 **1. Cookie consent banner** — GA4 loads on 3,201 pages with no consent. GDPR exposure + documented AdSense rejection trigger. Must block analytics until the user chooses.
-- ⬜ **2. Resolve the 16 draft placeholders** — "Editorial draft — not published" pages in `/sports/articles/`. Noindexed, but a human reviewer still clicks them. Finish or delist.
+- ✅ **2. Resolve the 16 draft placeholders** — "Editorial draft — not published" pages in `/sports/articles/`. Noindexed, but a human reviewer still clicks them. Finish or delist.
 - ⬜ **3. Sitewide disclosure block** — only 1 of 80 money pages has a financial disclaimer, on YMYL content incl. binary options. Add standing risk + affiliate disclosure.
 - ⬜ **4. Author / E-E-A-T signals** — 1 author, 35 bylined pages of 3,378. Expand author page, byline everything, add "Reviewed on" dates.
 - ⬜ **5. Pre-application sweep** — empty categories, broken links, mobile check, then apply.
@@ -36,6 +36,32 @@ Status: ⬜ not started · 🔄 in progress · ✅ done
 ---
 
 ## Log
+
+### 2. Draft placeholders — DONE (commit `49861bf8d1`)
+All 16 finished as real articles (user chose "finish all", not delist). 800–1,019 words each,
+median 858, against a 640-word Articles median.
+
+Grounded entirely in the site's own data — `competitions.json` (tables + scorers),
+`results.json` (89 sourced results), `pl-transfers.json` (2026/27 window, 20 clubs) — so the
+articles cannot contradict the rest of the site. No invented scorelines; predictions labelled
+opinion and linked to `/sports/predictions/` rather than duplicated.
+
+Three problems found that the audit had not flagged:
+1. **Duplicate content.** 6 slugs existed at both `/sports/<slug>/` and `/sports/articles/<slug>/`.
+   The `/sports/` copies were stale pre-season stubs (356–470 words) with self-canonicals.
+   Deleted the 5 we rewrote, added 301s to `_redirects`.
+2. **`build-sports-articles.js` was actively harmful.** It linked every card to `/sports/<slug>/`
+   regardless of where the page lived, and on the next run would overwrite a published body with a
+   draft stub. Patched to resolve hrefs against disk and refuse to clobber published pages.
+3. **Dark-only CSS again.** New callout/table styles had no `[data-theme="light"]` rules — same
+   class of bug as item #1. Fixed and verified in both themes.
+
+Registry now 26/26 published, 0 drafts. Sitemap: −5 dead URLs, +16 canonical (1,296 total).
+Validation: 16/16 structural checks, no broken links, no JS errors, `validate-results.js` 89/89.
+
+**Not yet pushed** — the PAT was revoked after item #1, so `git push` has no credential.
+Commit `49861bf8d1` is waiting locally.
+
 
 ### ✅ 1. Cookie consent banner — done 2026-09-03
 
