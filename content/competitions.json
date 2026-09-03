@@ -1,5 +1,5 @@
 {
- "builtAt": "2026-09-02T01:42:19.383Z",
+ "builtAt": "2026-09-03T17:50:07.976Z",
  "competitions": [
   {
    "id": "premier-league",
@@ -394,18 +394,6 @@
      "alogo": "https://a.espncdn.com/i/teamlogos/soccer/500/393.png",
      "hs": 2,
      "as": 2,
-     "status": "FT"
-    },
-    {
-     "date": "2026-08-28",
-     "home": "Crystal Palace",
-     "hshort": "C Palace",
-     "hlogo": "https://a.espncdn.com/i/teamlogos/soccer/500/384.png",
-     "away": "Manchester City",
-     "ashort": "Man City",
-     "alogo": "https://a.espncdn.com/i/teamlogos/soccer/500/382.png",
-     "hs": 1,
-     "as": 4,
      "status": "FT"
     }
    ],
@@ -974,30 +962,6 @@
      "ashort": "Betis",
      "alogo": "https://a.espncdn.com/i/teamlogos/soccer/500/244.png",
      "hs": 5,
-     "as": 2,
-     "status": "FT"
-    },
-    {
-     "date": "2026-08-28",
-     "home": "Alavés",
-     "hshort": "Alavés",
-     "hlogo": "https://a.espncdn.com/i/teamlogos/soccer/500/96.png",
-     "away": "Villarreal",
-     "ashort": "Villarreal",
-     "alogo": "https://a.espncdn.com/i/teamlogos/soccer/500/102.png",
-     "hs": 1,
-     "as": 0,
-     "status": "FT"
-    },
-    {
-     "date": "2026-08-28",
-     "home": "Racing Santander",
-     "hshort": "Racing",
-     "hlogo": "https://a.espncdn.com/i/teamlogos/soccer/500/87.png",
-     "away": "Elche",
-     "ashort": "Elche",
-     "alogo": "https://a.espncdn.com/i/teamlogos/soccer/500/3751.png",
-     "hs": 3,
      "as": 2,
      "status": "FT"
     }
@@ -1592,18 +1556,6 @@
      "hs": 0,
      "as": 3,
      "status": "FT"
-    },
-    {
-     "date": "2026-08-28",
-     "home": "AC Milan",
-     "hshort": "Milan",
-     "hlogo": "https://a.espncdn.com/i/teamlogos/soccer/500/103.png",
-     "away": "Venezia",
-     "ashort": "Venezia",
-     "alogo": "https://a.espncdn.com/i/teamlogos/soccer/500/17530.png",
-     "hs": 2,
-     "as": 0,
-     "status": "FT"
     }
    ],
    "fixtures": [
@@ -2145,18 +2097,6 @@
      "hs": 3,
      "as": 3,
      "status": "FT"
-    },
-    {
-     "date": "2026-08-28",
-     "home": "Bayern Munich",
-     "hshort": "Bayern",
-     "hlogo": "https://a.espncdn.com/i/teamlogos/soccer/500/132.png",
-     "away": "VfB Stuttgart",
-     "ashort": "Stuttgart",
-     "alogo": "https://a.espncdn.com/i/teamlogos/soccer/500/134.png",
-     "hs": 5,
-     "as": 1,
-     "status": "FT"
     }
    ],
    "fixtures": [
@@ -2686,18 +2626,6 @@
      "alogo": "https://a.espncdn.com/i/teamlogos/soccer/500/175.png",
      "hs": 2,
      "as": 1,
-     "status": "FT"
-    },
-    {
-     "date": "2026-08-28",
-     "home": "Lille",
-     "hshort": "Lille",
-     "hlogo": "https://a.espncdn.com/i/teamlogos/soccer/500/166.png",
-     "away": "Paris Saint-Germain",
-     "ashort": "PSG",
-     "alogo": "https://a.espncdn.com/i/teamlogos/soccer/500/160.png",
-     "hs": 2,
-     "as": 2,
      "status": "FT"
     }
    ],
@@ -3518,6 +3446,28 @@
      "alogo": "https://a.espncdn.com/i/teamlogos/soccer/500/432.png",
      "time": "19:00",
      "status": "Wed, September 9th at 3:00 PM EDT"
+    },
+    {
+     "date": "2026-09-10",
+     "home": "Fenerbahce",
+     "hshort": "Fenerbahce",
+     "hlogo": "https://a.espncdn.com/i/teamlogos/soccer/500/436.png",
+     "away": "AS Roma",
+     "ashort": "AS Roma",
+     "alogo": "https://a.espncdn.com/i/teamlogos/soccer/500/104.png",
+     "time": "16:45",
+     "status": "Thu, September 10th at 12:45 PM EDT"
+    },
+    {
+     "date": "2026-09-10",
+     "home": "PSV Eindhoven",
+     "hshort": "PSV",
+     "hlogo": "https://a.espncdn.com/i/teamlogos/soccer/500/148.png",
+     "away": "Shakhtar Donetsk",
+     "ashort": "Shakhtar",
+     "alogo": "https://a.espncdn.com/i/teamlogos/soccer/500/493.png",
+     "time": "16:45",
+     "status": "Thu, September 10th at 12:45 PM EDT"
     }
    ],
    "scorers": []
