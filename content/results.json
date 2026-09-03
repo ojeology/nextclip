@@ -1924,17 +1924,6 @@
         "name": "ESPN",
         "url": "https://www.espn.com/soccer/match/_/gameId/401884812/sc-paderborn-07-mainz"
       }
-    },
-    "bayern-vs-stuttgart": {
-      "homeScore": 5,
-      "awayScore": 1,
-      "status": "FT",
-      "playedOn": "2026-08-28",
-      "source": {
-        "name": "Bundesliga — official matchday 1 results",
-        "url": "https://www.bundesliga.com/en/bundesliga/matchday"
-      },
-      "verifiedOn": "2026-09-03"
     }
   },
   "ligue-1": {

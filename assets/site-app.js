@@ -951,30 +951,11 @@ document.addEventListener('error', function (e) {
 })();
 
 /* Monetag VIGNETTE only (zone 11610753). Dismissible, once per visit.
-   In-page push / tag / notification worker are not loaded.
-
-   Consent-gated: the Monetag script is a third-party advertising tag, so it
-   must not load until the visitor has accepted cookies. assets/analytics.js
-   owns the consent record; this waits for it. If consent is declined or not
-   yet given, no ad script is injected at all. */
+   In-page push / tag / notification worker are not loaded. */
 (function () {
   'use strict';
   if (window.__brymeAdsInit) return;
   window.__brymeAdsInit = true;
-
-  /* ---- consent gate ---------------------------------------------------- */
-  var CONSENT_KEY = 'bryme.consent.v1';
-  var CONSENT_MAX_AGE_DAYS = 180;
-
-  function consentAccepted() {
-    try {
-      var raw = localStorage.getItem(CONSENT_KEY);
-      if (!raw) return false;
-      var v = JSON.parse(raw);
-      if (!v || v.choice !== 'accepted' || !v.at) return false;
-      return ((Date.now() - v.at) / 86400000) <= CONSENT_MAX_AGE_DAYS;
-    } catch (e) { return false; }
-  }
 
   var VIGNETTE = { key: 'vignette', zone: '11610753', src: 'https://n6wxm.com/vignette.min.js' };
   var V_SESSION = 'bryme-ad-vignette';
@@ -1069,7 +1050,6 @@ document.addEventListener('error', function (e) {
     return true;
   }
   function startVignette() {
-    if (!consentAccepted()) return;
     if (vigStarted || skipVignetteHere()) return;
     if (!pageUsable()) return;
     if (!vignetteAllowed()) return;
@@ -1086,7 +1066,6 @@ document.addEventListener('error', function (e) {
     if (inject(VIGNETTE)) markVignette();
   }
   function armVignette() {
-    if (!consentAccepted()) return;
     if (vigStarted || skipVignetteHere() || !vignetteAllowed()) return;
     if (vigTimer) return;
     var wait = isMobile() ? 12000 : VIGNETTE_DWELL_MS;
@@ -1096,7 +1075,6 @@ document.addEventListener('error', function (e) {
     }, wait);
   }
   function onScroll() {
-    if (!consentAccepted()) return;
     if (vigStarted || skipVignetteHere() || nationalityOpen()) return;
     var y = window.pageYOffset || document.documentElement.scrollTop || 0;
     var need = isMobile() ? 280 : VIGNETTE_SCROLL_PX;
@@ -1129,12 +1107,6 @@ document.addEventListener('error', function (e) {
     boot();
   }
   window.addEventListener('scroll', onScroll, { passive: true });
-
-  /* If the visitor accepts consent during this pageview, start without a reload. */
-  window.addEventListener('bryme:consent', function (ev) {
-    if (ev && ev.detail && ev.detail.choice === 'accepted') armVignette();
-  });
-
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', kick);
   } else {
