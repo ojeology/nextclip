@@ -565,8 +565,8 @@ fs.writeFileSync(path.join(root,'assets/site.css'), css + '\n' + '.sports-featur
 @media(max-width:640px){.sp-hero-track{grid-auto-columns:calc(100% - 40px)}.sp-hero-arrow{display:none}.sp-hero-card{min-height:200px}.sp-article-head h1{font-size:30px}}
 @media(min-width:1440px){.sp-hero-track{grid-auto-columns:calc((100% - 64px)/5);grid-auto-flow:column}}
 .visually-hidden{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}@media(max-width:760px){.hero-carousel{min-height:520px}.hero-slide-inner{padding-top:150px;padding-bottom:52px}.hero-slide h1{font-size:40px}.hero-slide p{font-size:14.5px}.hero-ctrl{width:40px;height:40px;font-size:19px}.hero-prev{left:8px}.hero-next{right:8px}.rec-inner{padding:26px 18px}.rec-cta{width:100%;text-align:center}}.hero-kicker{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:12px;font-weight:800;color:var(--muted);letter-spacing:.05em;text-transform:uppercase;margin-bottom:10px}.hero-kicker .dot{opacity:.35}.cta-ghost{background:transparent;border:1px solid var(--accent);color:#fff}.cta-ghost:hover{background:var(--accent)}.take-card{margin-top:28px;border:1px solid var(--line);border-left:3px solid var(--gold);background:#101318;padding:18px 20px;border-radius:0 6px 6px 0}.take-card h3{font-size:19px;line-height:1.25;margin:6px 0}.take-card p{font-size:14px;color:var(--muted);margin:0 0 12px}.take-card .cta{margin:0}.sub-section{padding:8px 0 34px}.sub-section h2{font-size:clamp(20px,3vw,26px)}.sub-section .lead,.sub-section p.sec-note{font-size:13px;color:var(--muted);margin:0 0 14px}@media(max-width:760px){.hero-kicker{font-size:10.5px;gap:6px}.take-card{padding:15px 14px}.hero-actions .cta{min-height:44px;display:inline-flex;align-items:center}.story-grid-title{grid-template-columns:1fr}.story-grid-title a{min-height:150px}}`);
-fs.appendFileSync(path.join(root,'assets/site.css'), `\n/* Verified metadata attribution */\n.meta-source{margin:10px 0 0;font-size:12px;line-height:1.55;color:#8b93a1}.meta-source a{color:#a9b3c2;text-decoration:underline;text-underline-offset:2px}.meta-source a:hover{color:#fff}\n`);
-fs.appendFileSync(path.join(root,'assets/site.css'), `
+appendCssOnce(`\n/* Verified metadata attribution */\n.meta-source{margin:10px 0 0;font-size:12px;line-height:1.55;color:#8b93a1}.meta-source a{color:#a9b3c2;text-decoration:underline;text-underline-offset:2px}.meta-source a:hover{color:#fff}\n`);
+appendCssOnce(`
 /* ============================================================
    COLOUR & DEPTH LAYER
    Appended last so it layers over the base sheet without
@@ -815,10 +815,10 @@ body[data-nav="sports"] .mp-when{color:#3ddc84}
 .sp-artcard span:not(.sp-artcard-kicker){display:block;font-size:13px;line-height:1.5;color:var(--muted)}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 `);
-fs.appendFileSync(path.join(root,'assets/site.css'), `\n/* Persistent navigation control */\n.bryme-back{position:fixed;left:14px;top:74px;z-index:80;display:grid;place-items:center;width:34px;height:34px;border:1px solid rgba(255,255,255,.22);border-radius:50%;background:rgba(8,9,11,.88);backdrop-filter:blur(10px);color:#fff;font:900 21px/1 system-ui,sans-serif;padding:0;cursor:pointer;box-shadow:0 7px 22px rgba(0,0,0,.35)}.bryme-back:hover{border-color:var(--sports,#3ddc84);transform:translateX(-1px)}@media(max-width:760px){.bryme-back{left:10px;top:64px;width:32px;height:32px}}\n`);
+appendCssOnce(`\n/* Persistent navigation control */\n.bryme-back{position:fixed;left:14px;top:74px;z-index:80;display:grid;place-items:center;width:34px;height:34px;border:1px solid rgba(255,255,255,.22);border-radius:50%;background:rgba(8,9,11,.88);backdrop-filter:blur(10px);color:#fff;font:900 21px/1 system-ui,sans-serif;padding:0;cursor:pointer;box-shadow:0 7px 22px rgba(0,0,0,.35)}.bryme-back:hover{border-color:var(--sports,#3ddc84);transform:translateX(-1px)}@media(max-width:760px){.bryme-back{left:10px;top:64px;width:32px;height:32px}}\n`);
 
 /* UPGRADE LAYER appended in the build so it is never lost on rebuild */
-fs.appendFileSync(path.join(root,'assets/site.css'), `
+appendCssOnce(`
 /* ============================================================
    UPGRADE LAYER — interactive controls, focus & LIGHT THEME.
    Appended last (after the platform sheet). Dark remains the
@@ -903,7 +903,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 @media(max-width:760px){.hero-slide h2{font-size:40px}}
 `);
 
-fs.appendFileSync(path.join(root,'assets/site.css'), `
+appendCssOnce(`
 /* Writing Field Notes desk */
 .wo-feature-card{border-color:rgba(231,187,92,.45)!important;background:linear-gradient(160deg,rgba(231,187,92,.12),#101318)!important}
 .wo-banner{border:1px solid var(--line);border-left:3px solid var(--gold);background:#101318;padding:14px 16px;border-radius:0 8px 8px 0;margin:0 0 18px;max-width:820px}
@@ -943,7 +943,7 @@ fs.appendFileSync(path.join(root,'assets/site.css'), `
 `);
 
 
-fs.appendFileSync(path.join(root,'assets/site.css'), `
+appendCssOnce(`
 .mm-desk{margin:8px 0 28px;padding:22px 22px 18px;border:1px solid var(--line);border-radius:12px;background:linear-gradient(160deg,#161b23,#0f1216)}
 .mm-desk h2{margin:18px 0 6px}
 .mm-desk h2:first-child{margin-top:0}
@@ -970,7 +970,7 @@ fs.appendFileSync(path.join(root,'assets/site.css'), `
 `);
 
 
-fs.appendFileSync(path.join(root,'assets/site.css'), `
+appendCssOnce(`
 /* ============================================================
    MOBILE POLISH LAYER
    Keep the site visual: rows of posters, 2-up cards.
@@ -1068,7 +1068,7 @@ input,select,textarea{font-size:16px}
 `);
 
 
-fs.appendFileSync(path.join(root,'assets/site.css'), `
+appendCssOnce(`
 /* ============================================================
    TITLE PAGE — readable mini-editorial (movie / series / anime)
    Mobile first. Ads stay global; nothing here is an ad slot.
@@ -1281,19 +1281,50 @@ function withDisclosure(o){
   return body + block;
 }
 
+
+/* What a detail page can honestly advertise in its <title>. */
+function intentSuffix(m, typeDir){
+  const hasTrailer = !!(m.youtubeId || (m.trailers && m.trailers.length));
+  const hasCast    = Array.isArray(m.cast) && m.cast.length > 0;
+  const hasWatch   = true; /* every detail page renders "Where to watch legally" */
+  if (hasTrailer && hasCast && hasWatch) {
+    return typeDir === 'series' ? 'Cast, Trailer, Episodes & Where to Watch'
+         : typeDir === 'anime'  ? 'Trailer, Cast & Where to Watch'
+         :                        'Cast, Trailer & Where to Watch';
+  }
+  if (hasTrailer && hasWatch) return 'Trailer & Where to Watch';
+  if (hasTrailer && hasCast)  return 'Cast & Trailer';
+  if (hasTrailer)             return 'Trailer';
+  if (hasCast)                return 'Cast & Story';
+  return 'Overview';
+}
+
+
+/* Idempotent CSS append. These blocks used to be appended unconditionally on
+   every build, so assets/site.css accumulated duplicate copies of itself and
+   grew without bound. Keyed on a stable marker taken from the block. */
+function appendCssOnce(cssText){
+  const cssPath = path.join(root, 'assets/site.css');
+  const cur = fs.existsSync(cssPath) ? fs.readFileSync(cssPath, 'utf8') : '';
+  const marker = (String(cssText).match(/\/\*[^*]*\*\//) || [null])[0];
+  if (marker && cur.includes(marker)) return;
+  if (!marker && cur.includes(String(cssText).trim().slice(0, 60))) return;
+  fs.appendFileSync(cssPath, cssText);
+}
+
 function layout(o){
 
   const socialImage = socialMeta(o.image);
   const schema = o.schema ? `<script type="application/ld+json">${JSON.stringify(normalizeSchema(o.schema)).replace(/</g,'\\u003c')}<\/script>` : '';
   const active = o.activeNav || '';
-  return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#08090b"><meta name="color-scheme" content="dark light"><link rel="icon" href="${url('/assets/favicon.svg')}" type="image/svg+xml"><link rel="icon" href="${url('/assets/favicon.png')}" type="image/png" sizes="32x32"><link rel="apple-touch-icon" href="${url('/assets/icons/apple-touch-icon.png')}"><link rel="manifest" href="${url('/manifest.webmanifest')}"><link rel="preconnect" href="https://i.ytimg.com" crossorigin><link rel="preconnect" href="https://www.youtube-nocookie.com" crossorigin><link rel="preconnect" href="https://www.youtube.com" crossorigin><title>${esc(pageTitle(o.title))}</title><meta name="description" content="${esc(pageDesc(o.description))}">${VERIFY_TAGS}${o.lcpImage?`<link rel="preload" as="image" href="${esc(o.lcpImage)}" fetchpriority="high">`:''}${o.noindex?'<meta name="robots" content="noindex,follow">':''}<link rel="canonical" href="${absUrl(o.canonical || o.path)}"><meta property="og:type" content="${esc(o.ogType || 'website')}"><meta property="og:site_name" content="${site.name}"><meta property="og:title" content="${esc(pageTitle(o.title))}"><meta property="og:description" content="${esc(pageDesc(o.description))}"><meta property="og:url" content="${absUrl(o.path)}">${socialImage}<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${esc(pageTitle(o.title))}"><meta name="twitter:description" content="${esc(pageDesc(o.description))}"><link rel="stylesheet" href="${url('/assets/site.css')}">${schema}</head><body data-nav="${esc(o.activeNav || '')}"><header class="top"><div class="shell"><a class="brand" href="${url('/')}">BRY<b>ME</b></a><nav class="topnav"><a href="${url('/')}"${active==='home'?' class="active"':''}>Home</a><a href="${url('/entertainment/')}"${active==='entertainment'?' class="active"':''}>🎬 Entertainment</a><a href="${url('/sports/')}"${active==='sports'?' class="active"':''}>⚽ Sports</a><a href="${url('/make-money/')}"${active==='make-money'?' class="active"':''}>💰 Make Money</a><a href="${url('/tech/')}"${active==='tech'?' class="active"':''}>🤖 Tech &amp; AI</a><a class="nav-search" href="${url('/search/')}">Search</a></nav><div class="top-tools"><a class="header-search" href="${url('/search/')}" aria-label="Search">Search</a></div></div></header>${deskBar(o)}${withDisclosure(o)}<nav class="mobile-nav"><a href="${url('/')}"${active==='home'?' class="active"':''}><span class="mn-ico">🏠</span>Home</a><a href="${url('/entertainment/')}"${active==='entertainment'?' class="active"':''}><span class="mn-ico">🎬</span>Entertain</a><a href="${url('/sports/')}"${active==='sports'?' class="active"':''}><span class="mn-ico">⚽</span>Sports</a><a href="${url('/make-money/')}"${active==='make-money'?' class="active"':''}><span class="mn-ico">💰</span>Money</a><a href="${url('/tech/')}"${active==='tech'?' class="active"':''}><span class="mn-ico">🤖</span>Tech</a><a href="${url('/search/')}"><span class="mn-ico">🔍</span>Search</a></nav><footer class="footer"><div class="shell"><div class="footer-grid">
+  return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#08090b"><meta name="color-scheme" content="dark light"><link rel="icon" href="${url('/assets/favicon.svg')}" type="image/svg+xml"><link rel="icon" href="${url('/assets/favicon.png')}" type="image/png" sizes="32x32"><link rel="apple-touch-icon" href="${url('/assets/icons/apple-touch-icon.png')}"><link rel="manifest" href="${url('/manifest.webmanifest')}"><link rel="preconnect" href="https://i.ytimg.com" crossorigin><link rel="preconnect" href="https://www.youtube-nocookie.com" crossorigin><link rel="preconnect" href="https://www.youtube.com" crossorigin><title>${esc(pageTitle(o.title))}</title><meta name="description" content="${esc(pageDesc(o.description))}">${VERIFY_TAGS}${o.lcpImage?`<link rel="preload" as="image" href="${esc(o.lcpImage)}" fetchpriority="high">`:''}${o.noindex?'<meta name="robots" content="noindex,follow">':''}<link rel="canonical" href="${absUrl(o.canonical || o.path)}"><meta property="og:type" content="${esc(o.ogType || 'website')}"><meta property="og:site_name" content="${site.name}"><meta property="og:title" content="${esc(pageTitle(o.title))}"><meta property="og:description" content="${esc(pageDesc(o.description))}"><meta property="og:url" content="${absUrl(o.path)}">${socialImage}<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="${esc(pageTitle(o.title))}"><meta name="twitter:description" content="${esc(pageDesc(o.description))}"><link rel="stylesheet" href="${url('/assets/site.css')}"><script src="${url('/assets/analytics.js')}" async></script><link rel="alternate" type="application/rss+xml" title="BRYME — Latest" href="${url('/feed.xml')}">${schema}</head><body data-nav="${esc(o.activeNav || '')}"><header class="top"><div class="shell"><a class="brand" href="${url('/')}">BRY<b>ME</b></a><nav class="topnav"><a href="${url('/')}"${active==='home'?' class="active"':''}>Home</a><a href="${url('/entertainment/')}"${active==='entertainment'?' class="active"':''}>🎬 Entertainment</a><a href="${url('/sports/')}"${active==='sports'?' class="active"':''}>⚽ Sports</a><a href="${url('/make-money/')}"${active==='make-money'?' class="active"':''}>💰 Make Money</a><a href="${url('/tech/')}"${active==='tech'?' class="active"':''}>🤖 Tech &amp; AI</a><a class="nav-search" href="${url('/search/')}">Search</a></nav><div class="top-tools"><a class="header-search" href="${url('/search/')}" aria-label="Search">Search</a></div></div></header>${deskBar(o)}${withDisclosure(o)}<nav class="mobile-nav"><a href="${url('/')}"${active==='home'?' class="active"':''}><span class="mn-ico">🏠</span>Home</a><a href="${url('/entertainment/')}"${active==='entertainment'?' class="active"':''}><span class="mn-ico">🎬</span>Entertain</a><a href="${url('/sports/')}"${active==='sports'?' class="active"':''}><span class="mn-ico">⚽</span>Sports</a><a href="${url('/make-money/')}"${active==='make-money'?' class="active"':''}><span class="mn-ico">💰</span>Money</a><a href="${url('/tech/')}"${active==='tech'?' class="active"':''}><span class="mn-ico">🤖</span>Tech</a><a href="${url('/search/')}"><span class="mn-ico">🔍</span>Search</a></nav><footer class="footer"><div class="shell"><div class="footer-grid">
   <div class="footer-brand"><a class="brand" href="${url('/')}">BRY<b>ME</b></a><p>Discover what you love. Learn what you need. Find what's next.</p></div>
   <nav class="footer-col" aria-label="Explore"><h4>Verticals</h4><a href="${url('/entertainment/')}">🎬 Entertainment</a><a href="${url('/sports/')}">⚽ Sports</a><a href="${url('/make-money/')}">💰 Make Money</a><a href="${url('/tech/')}">🤖 Tech &amp; AI</a></nav>
   <nav class="footer-col" aria-label="Explore"><h4>Entertainment</h4><a href="${url('/trending/')}">What's Trending</a><a href="${url('/movies/')}">Movies</a><a href="${url('/series/')}">Series</a><a href="${url('/anime/')}">Anime</a><a href="${url('/articles/')}">Articles</a><a href="${url('/genres/')}">Genres</a></nav>
   <nav class="footer-col" aria-label="Information"><h4>Information</h4><a href="${url('/about/')}">About</a><a href="${url('/contact/')}">Contact</a><a href="${url('/editorial-policy/')}">Editorial Policy</a></nav>
   <nav class="footer-col" aria-label="Legal"><h4>Legal</h4><a href="${url('/privacy/')}">Privacy Policy</a><a href="${url('/terms/')}">Terms of Use</a><a href="${url('/disclaimer/')}">Disclaimer</a><a href="${url('/copyright/')}">Copyright / DMCA</a><a href="${url('/privacy/')}#cookies" data-cookie-settings>Cookie settings</a></nav>
 </div>
-<p class="footer-note">BRYME · Discover what you love. Learn what you need. Find what's next. Trailer links lead to YouTube and viewing links lead to third parties.<small>Trending Now is editorially curated by BRYME — it is not live traffic data. Popular and Editor's Picks are independent rankings. Real user analytics will replace trending once the site has enough traffic. · Build ${new Date().toISOString().slice(0, 16).replace('T', ' ')} UTC</small></div></footer>${pageScript()}</body></html>`;
+<p class="footer-note">BRYME · Discover what you love. Learn what you need. Find what's next. Trailer links lead to YouTube and viewing links lead to third parties.<small>Trending Now is editorially curated by BRYME — it is not live traffic data. Popular and Editor's Picks are independent rankings. Real user analytics will replace trending once the site has enough traffic. · Build ${new Date().toISOString().slice(0, 10)}</small></div></footer>${pageScript()}</body></html>`;
 }
 
 /* ------------------------------------------------------------------ */
@@ -2800,9 +2831,20 @@ function fixturesResults(){
           if (r) rows.push({ w, m, r });
         }));
         if (!rows.length) return `<div class="vstate"><b>No matches played yet</b><p>The ${esc(F.season)} ${esc(F.league)} season ${(F.matchweeks && F.matchweeks[0] && F.matchweeks[0].matches[0]) ? 'starts ' + esc(F.matchweeks[0].matches[0].dayLabel) : 'has not started'} — so as of ${esc(F.lastUpdated || 'today')} no league fixtures have been played and there are no results to show. When matches are played, the official result and match data are added here after full-time — verified only.</p></div>`;
-        rows.reverse();
-        return `<h3 class="sp-dir">Results — ${rows.length} match${rows.length === 1 ? '' : 'es'} played</h3>
-        <div class="sp-table-wrap"><table class="sp-table"><thead><tr><th>Round</th><th>Match</th><th>Score</th><th>Source</th></tr></thead><tbody>${rows.map(({w, m, r}) => `<tr><td>${esc(lg.roundLabel)} ${w.number}</td><td><a href="${url('/sports/' + lg.slug + '/matches/' + m.id + '-vs-' + m.away + '/')}">${esc(m.homeName)} v ${esc(m.awayName)}</a></td><td><b>${r.homeScore}&ndash;${r.awayScore}</b>${r.status && r.status !== 'FT' ? ` <span class="sp-pens">${esc(r.status)}</span>` : ''}</td><td><a href="${esc(r.source.url)}" rel="nofollow noopener">${esc(r.source.name || 'source')}</a></td></tr>`).join('')}</tbody></table></div>`;
+        /* Group by matchweek instead of one flat table. Readers look for
+           "matchweek 2 results", not a 380-row list, so each round gets its
+           own heading with how many of its fixtures have been played. */
+        const byWeek = new Map();
+        rows.forEach(({ w, m, r }) => {
+          if (!byWeek.has(w.number)) byWeek.set(w.number, { w, played: [] });
+          byWeek.get(w.number).played.push({ m, r });
+        });
+        const weeks = [...byWeek.values()].sort((a, b) => b.w.number - a.w.number);
+        return `<h3 class="sp-dir">Results &mdash; ${rows.length} match${rows.length === 1 ? '' : 'es'} played across ${weeks.length} matchweek${weeks.length === 1 ? '' : 's'}</h3>
+        ${weeks.map(({ w, played }) => `<section class="sp-mw">
+          <div class="sp-mw-h"><h4>${esc(lg.roundLabel)} ${w.number}</h4><span class="sp-mw-n">${played.length} of ${(w.matches || []).length} played</span></div>
+          <div class="sp-table-wrap"><table class="sp-table"><thead><tr><th>Match</th><th>Score</th><th>Source</th></tr></thead><tbody>${played.map(({ m, r }) => `<tr><td><a href="${url('/sports/' + lg.slug + '/matches/' + m.id + '-vs-' + m.away + '/')}">${esc(m.homeName)} v ${esc(m.awayName)}</a></td><td><b>${r.homeScore}&ndash;${r.awayScore}</b>${r.status && r.status !== 'FT' ? ` <span class="sp-pens">${esc(r.status)}</span>` : ''}</td><td><a href="${esc(r.source.url)}" rel="nofollow noopener">${esc(r.source.name || 'source')}</a></td></tr>`).join('')}</tbody></table></div>
+        </section>`).join('')}`;
       })()}
       ${nextBlock}
       <div class="sp-truth"><b>Truth first.</b><p>BRYME never publishes a result, scoreline or scorer before a match is played and the outcome is confirmed by the club or official league channels. If a result cannot be verified, it is not shown.</p></div>
@@ -3820,7 +3862,14 @@ for (const m of movies) {
   const label = m.typeLabel;
   const schemaType = typeDir === 'series' ? 'TVSeries' : (typeDir === 'anime' ? (animeFilms.has(m.slug) ? 'Movie' : 'TVSeries') : 'Movie');
   const typeWord = typeDir === 'series' ? 'Series Overview' : (typeDir === 'anime' ? 'Anime Overview' : 'Movie Overview');
-  const seoTitle = m.year ? `${m.title} (${m.year})` : m.title;
+  const seoBase = m.year ? `${m.title} (${m.year})` : m.title;
+  /* Intent-aware <title>. Ported from scripts/seo-extend-titles.py, which used
+     to patch these titles into the BUILT html after the fact — so every run of
+     this script silently reverted them ("Naruto (2002) | Trailer & Where to
+     Watch" -> "Naruto (2002)") and cost the pages their ranking keywords.
+     Computing it here keeps the title stable across rebuilds. Only claims what
+     the page actually contains. */
+  const seoTitle = seoBase + ' | ' + intentSuffix(m, typeDir);
   const genreText = listedGenres(m)[0] || '';
   const seoDesc = `${m.title}${m.year ? ' (' + m.year + ')' : ''} — ${m.typeLabel.toLowerCase()}${genreText ? ' ' + genreText.toLowerCase() : ''} on BRYME. Trailer, story and legal viewing options.`;
   const relatedArts = (articleToMovies.get(m.slug) || []).slice(0, 2);
@@ -4390,6 +4439,36 @@ fs.writeFileSync(path.join(root, '404.html'), layout({
   body: `<main class="shell"><section class="hero"><div class="eyebrow">404</div><h1>Looks like this one disappeared.</h1><p class="lead">Try searching the catalogue, or browse a single content type.</p><p><a class="cta" href="${url('/search/')}">Search everything</a> <a class="quiet-link" href="${url('/movies/')}">Movies</a> <a class="quiet-link" href="${url('/series/')}">Series</a> <a class="quiet-link" href="${url('/anime/')}">Anime</a> <a class="quiet-link" href="${url('/articles/')}">Latest articles</a></p></section></main>`
 }));
 if (fs.existsSync(path.join(root, '404'))) { fs.rmSync(path.join(root, '404'), {recursive:true, force:true}); }
+/* Other build scripts (sports articles, channels, tech, make-money, club
+   history...) emit real indexable pages that this script knows nothing about.
+   Listing only our own `paths` silently dropped 265 live URLs from the sitemap.
+   So union in every on-disk page that is genuinely indexable: skip anything
+   carrying noindex, any meta-refresh redirect stub, and anything already
+   deliberately excluded above (thin/placeholder/unplayed). */
+const EXCLUDED_PATHS = new Set([...EMPTY_HUB_PATHS, ...PLACEHOLDER_SPORTS_PATHS, ...UNPLAYED_MATCH_PATHS, ...THIN_LISTING_PATHS]);
+const SKIP_DIRS = new Set(['node_modules', '.git', 'assets', 'data', 'reports', 'scripts', 'content', '.github']);
+function discoverPages(dir, rel) {
+  let found = [];
+  let entries = [];
+  try { entries = fs.readdirSync(dir, { withFileTypes: true }); } catch (e) { return found; }
+  for (const ent of entries) {
+    if (ent.isDirectory()) {
+      if (SKIP_DIRS.has(ent.name) || ent.name.startsWith('.')) continue;
+      found = found.concat(discoverPages(path.join(dir, ent.name), rel + ent.name + '/'));
+    } else if (ent.name === 'index.html') {
+      const p = rel || '/';
+      if (EXCLUDED_PATHS.has(p)) continue;
+      let html = '';
+      try { html = fs.readFileSync(path.join(dir, ent.name), 'utf8'); } catch (e) { continue; }
+      if (/name="robots"[^>]*noindex/i.test(html)) continue;
+      if (/http-equiv="refresh"/i.test(html)) continue;
+      found.push(p);
+    }
+  }
+  return found;
+}
+for (const p of discoverPages(root, '/')) paths.push(p);
+
 const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${[...new Set(paths)].map(p => `  <url><loc>${absUrl(p)}</loc>${PAGE_LASTMOD.has(p) ? `<lastmod>${PAGE_LASTMOD.get(p)}</lastmod>` : ''}</url>`).join('\n')}\n</urlset>\n`;
 fs.writeFileSync(path.join(root, 'sitemap.xml'), xml);
 fs.writeFileSync(path.join(root, 'robots.txt'), `User-agent: *\nAllow: /\nSitemap: ${absUrl('/sitemap.xml')}\nSitemap: ${absUrl('/news-sitemap.xml')}\n`);
@@ -4449,7 +4528,7 @@ const report = [
 ].join('\n');
 fs.writeFileSync(path.join(root, 'reports', 'catalogue-report.md'), report);
 
-fs.appendFileSync(path.join(root,'assets/site.css'), `
+appendCssOnce(`
 
 /* ============================================================
    LIGHT MODE READABILITY
@@ -4630,7 +4709,7 @@ fs.appendFileSync(path.join(root,'assets/site.css'), `
 `);
 
 
-fs.appendFileSync(path.join(root,'assets/site.css'), `
+appendCssOnce(`
 
 /* ============================================================
    MOBILE COMPACTNESS
@@ -4872,7 +4951,7 @@ fs.appendFileSync(path.join(root,'assets/site.css'), `
 }
 `);
 
-fs.appendFileSync(path.join(root,'assets/site.css'), `
+appendCssOnce(`
 
 /* ============================================================
    LIGHT MODE INPUTS + FIRST-VISIT DESK HINT
@@ -4926,7 +5005,7 @@ fs.appendFileSync(path.join(root,'assets/site.css'), `
 }
 `);
 
-fs.appendFileSync(path.join(root,'assets/site.css'), `
+appendCssOnce(`
 
 /* ============================================================
    HUB FEATURE BANNERS — Make Money + Tech
@@ -4985,7 +5064,7 @@ fs.appendFileSync(path.join(root,'assets/site.css'), `
   .mm-feature p,.tech-feature p{font-size:13.5px;line-height:1.45}
 }
 `);
-fs.appendFileSync(path.join(root,'assets/site.css'), `
+appendCssOnce(`
 
 /* ============================================================
    MORE IMAGES — photo tiles, article heroes, hub photos,
@@ -5151,7 +5230,7 @@ a.story-photo:hover{filter:brightness(1.06)}
 }
 
 `);
-fs.appendFileSync(path.join(root,'assets/site.css'), `
+appendCssOnce(`
 
 /* ============================================================
    INSTALLED-APP LANDSCAPE
@@ -5186,14 +5265,14 @@ fs.appendFileSync(path.join(root,'assets/site.css'), `
 }
 
 `);
-fs.appendFileSync(path.join(root,'assets/site.css'), `
+appendCssOnce(`
 /* homepage performance / mobile overflow — desktop look unchanged */
 html,body{overflow-x:clip}
 .tile img{content-visibility:auto}
 .hero-video iframe{width:100%;height:100%;border:0;position:absolute;inset:0}
 `);
 
-fs.appendFileSync(path.join(root,'assets/site.css'), `
+appendCssOnce(`
 /* video figure / figcaption — target embed pages; desktop layout unchanged */
 .video-figure{margin:0 0 8px;max-width:860px}
 .video-figure .trailer-frame{max-width:100%}
@@ -5210,7 +5289,7 @@ fs.appendFileSync(path.join(root,'assets/site.css'), `
 `);
 
 
-fs.appendFileSync(path.join(root,'assets/site.css'), `
+appendCssOnce(`
 /* What's Trending desk — /trending/ only. Poster-first, no extra JS. */
 .trend-jump{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 18px}
 .trend-jump a{font-size:13px;font-weight:800;border:1px solid var(--line);border-radius:20px;padding:8px 12px;background:#101318;color:#d9dde1}
@@ -5249,7 +5328,7 @@ fs.appendFileSync(path.join(root,'assets/site.css'), `
 `);
 
 
-fs.appendFileSync(path.join(root,'assets/site.css'), `
+appendCssOnce(`
 /* post-watch CTA + desktop details stick — not an ad, not on mobile overlay nav */
 .trailer-frame{position:relative}
 .bryme-afterwatch{position:absolute;inset:0;z-index:4;display:flex;flex-direction:column;justify-content:flex-end;gap:8px;padding:16px;background:linear-gradient(0deg,rgba(8,9,11,.96) 18%,rgba(8,9,11,.72));color:#fff}
@@ -5273,7 +5352,7 @@ fs.appendFileSync(path.join(root,'assets/site.css'), `
 `);
 
 
-fs.appendFileSync(path.join(root,'assets/site.css'), `
+appendCssOnce(`
 /* static heroes + visible card photos — desktop layout width unchanged */
 .home-hero-static{position:relative;background:#0d0f13}
 .home-hero-feature{position:relative;min-height:560px;background-size:cover;background-position:center 28%;overflow:hidden;isolation:isolate}
@@ -5312,7 +5391,7 @@ fs.appendFileSync(path.join(root,'assets/site.css'), `
 }
 `);
 
-fs.appendFileSync(path.join(root,'assets/site.css'), `
+appendCssOnce(`
 /* mobile fit: 375/390 — desktop from 761px unchanged */
 @media (max-width: 760px) {
   .trailer-frame, .video-figure, .trailer-section-inner { width: 100%; max-width: 100%; }
@@ -5324,7 +5403,7 @@ fs.appendFileSync(path.join(root,'assets/site.css'), `
 `);
 
 
-fs.appendFileSync(path.join(root,'assets/site.css'), `
+appendCssOnce(`
 /* video landing: recs under the embed, compact identity, boring bits last */
 .tp-page .movie-hero,
 .tp-page .movie-hero-compact{
@@ -5386,7 +5465,7 @@ fs.appendFileSync(path.join(root,'assets/site.css'), `
 `);
 
 
-fs.appendFileSync(path.join(root,'assets/site.css'), `
+appendCssOnce(`
 /* BRYME cinematic catalogue — own design system, 16:9 cards, desk bar */
 :root{
   --radius:10px;
@@ -5572,7 +5651,9 @@ if (REJECTED_RESULTS.length) {
   process.exitCode = 1;
 }
 if (BRYME_DESIGN_LAYER) {
-  fs.appendFileSync(path.join(root, 'assets/site.css'), '\n' + BRYME_DESIGN_LAYER + '\n');
+  /* Trim first: the captured layer already ends in a newline, so wrapping it
+     in '\n' ... '\n' added one byte to site.css on every single build. */
+  appendCssOnce('\n' + BRYME_DESIGN_LAYER.trim() + '\n');
 }
 
 console.log(`Built ${movies.length} normalized catalogue records (${typeCounts.movie} movies / ${typeCounts.series} series / ${typeCounts.anime} anime), ${articles.length} articles and ${[...new Set(paths)].length} indexable URLs.`);

@@ -435,7 +435,11 @@ module.exports = function buildOpportunityCatalog(ctx) {
   </script>`;
 
   /* ---------- CSS ---------- */
-  fs.appendFileSync(path.join(root, 'assets/site.css'), `
+  /* Idempotent: this used to appendFileSync unconditionally, so site.css grew a
+     duplicate copy of the whole block on every single build. Skip if present. */
+  const cssPath = path.join(root, 'assets/site.css');
+  const existingCss = fs.existsSync(cssPath) ? fs.readFileSync(cssPath, 'utf8') : '';
+  if (!existingCss.includes('/* Opportunity catalog */')) fs.appendFileSync(cssPath, `
 /* Opportunity catalog */
 .mm-onboard{max-width:820px;margin:0 auto 28px}
 .mm-onboard h1{font-size:clamp(28px,6vw,44px);margin:8px 0 12px}
