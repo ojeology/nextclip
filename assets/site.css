@@ -4385,3 +4385,20 @@ body.spx .sp-art-track > *{
 
 
 
+
+/* ── Results grouped by matchweek ───────────────────────────────────────── */
+.sp-mw{margin:0 0 22px}
+.sp-mw-h{display:flex;align-items:baseline;justify-content:space-between;gap:12px;
+  margin:0 0 9px;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--sports,#3ddc84)}
+.sp-mw-n{font-size:11px;letter-spacing:.04em;color:var(--muted);text-transform:none;font-weight:600}
+.sp-src{color:var(--muted);text-decoration:underline;text-underline-offset:2px;font-size:11px;margin-left:6px}
+.sp-src:hover{color:var(--text)}
+
+/* ── Section-aware wordmark: "BRYME SPORTS" inside the Sports vertical ──── */
+[data-nav="sports"] .top .brand::after{content:" SPORTS";font-weight:800;font-size:.62em;
+  letter-spacing:.12em;color:var(--sports,#3ddc84);margin-left:.42em;vertical-align:.14em}
+[data-nav="sports"] .footer .brand::after{content:" SPORTS";font-weight:800;font-size:.62em;
+  letter-spacing:.12em;color:var(--sports,#3ddc84);margin-left:.42em;vertical-align:.14em}
+@media (max-width:520px){
+  [data-nav="sports"] .top .brand::after{font-size:.55em;letter-spacing:.08em;margin-left:.3em}
+}
