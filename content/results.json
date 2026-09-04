@@ -1208,6 +1208,16 @@
           "minute": "90'"
         }
       ]
+    },
+    "real-sociedad-vs-celta-vigo": {
+      "homeScore": 0,
+      "awayScore": 0,
+      "status": "FT",
+      "playedOn": "2026-09-03",
+      "source": {
+        "name": "ESPN",
+        "url": "https://www.espn.com/soccer/match/_/gameId/401882867/celta-vigo-real-sociedad"
+      }
     }
   },
   "serie-a": {
@@ -2383,6 +2393,23 @@
           "team": "home",
           "player": "Paris Brunner",
           "minute": "53'"
+        }
+      ]
+    },
+    "toulouse-vs-lille": {
+      "homeScore": 0,
+      "awayScore": 1,
+      "status": "FT",
+      "playedOn": "2026-09-03",
+      "source": {
+        "name": "ESPN",
+        "url": "https://www.espn.com/soccer/match/_/gameId/401876468/lille-toulouse"
+      },
+      "scorers": [
+        {
+          "team": "away",
+          "player": "Ayase Ueda",
+          "minute": "73'"
         }
       ]
     }
