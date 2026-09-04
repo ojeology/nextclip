@@ -76,6 +76,16 @@ def schema(data: object) -> str:
     return '<script type="application/ld+json">' + json.dumps(data, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/") + "</script>"
 
 
+# A short, consistent "what this site is for" statement shown at the top of each
+# primary navigation section so a visitor always knows what BRYME does.
+SITE_PURPOSE = "BRYME helps you find verified jobs, remote work and legitimate ways to earn — with the original source named and the limits explained."
+
+
+def section_intro(label: str, line: str) -> str:
+    """Reusable header explaining what a navigation section is for."""
+    return f'''<div class="wrap section-intro"><span class="section-intro-label">{esc(label)}</span><p>{esc(line)}</p></div>'''
+
+
 def page(*, title: str, description: str, route: str, current: str, body: str,
          schema_data: object | None = None, robots: str = "index,follow") -> str:
     canonical = BASE + route
@@ -171,6 +181,8 @@ VERIFICATION_STATES = {
     "closed": ("🔴 CLOSED", "closed", "The source or employer indicated this is no longer accepting applications."),
     "needs_recheck": ("⚠️ NEEDS RECHECK", "recheck",
         "The last check is too old or the source could not be confirmed."),
+    "board_listed": ("⚪ LISTED ON JOB BOARD", "board-listed",
+        "Sourced from a job board listing (e.g. Jobberman). BRYME did not open the employer's own page; confirm on the official board/employer page before applying."),
 }
 DEFAULT_VERIFY = ("⚪ SOURCE VERIFIED", "source-verified",
                   "BRYME recorded this from the exact source and links to it.")
@@ -193,10 +205,10 @@ def job_card(job: dict, heading: str = "h2") -> str:
 
 
 # --- Location-first discovery -----------------------------------------------
-# Country -> Region/City -> Job type. Each hub is generated from the jobs feed
-# so counts are always real. A hub with zero records is still built so the
-# browse grid is complete, but it is marked noindex until real records exist
-# (BRYME does not index empty or thin pages).
+# Country -> City -> Job type. Each hub is generated from the jobs feed so
+# counts are always real. A hub with zero records is still built so the browse
+# grid is complete, but it is marked noindex until real records exist (BRYME
+# does not index empty or thin pages).
 CITY_KEYWORDS = {
     "lagos": ("Lagos", ["lagos"]),
     "abuja": ("Abuja", ["abuja", "fct"]),
@@ -204,6 +216,59 @@ CITY_KEYWORDS = {
     "ibadan": ("Ibadan", ["ibadan"]),
     "kaduna": ("Kaduna", ["kaduna"]),
 }
+
+# Country taxonomy. BRYME is global: a country hub is generated for any country
+# that appears in a job's eligibleCountries, plus a dedicated /jobs/remote/ and
+# /jobs/by-country/ browse hub. The slug map covers the common case; unknown
+# countries are slugified generically.
+COUNTRY = {
+    "nigeria": ("Nigeria", "ng"),
+    "ghana": ("Ghana", "gh"),
+    "kenya": ("Kenya", "ke"),
+    "south-africa": ("South Africa", "za"),
+    "uganda": ("Uganda", "ug"),
+    "russia": ("Russia", "ru"),  # reserved, unused
+    "united-states": ("United States", "us"),
+    "united-kingdom": ("United Kingdom", "gb"),
+    "canada": ("Canada", "ca"),
+    "australia": ("Australia", "au"),
+    "germany": ("Germany", "de"),
+    "india": ("India", "in"),
+}
+COUNTRY_BY_NAME = {name.lower(): slug for slug, (name, _) in COUNTRY.items()}
+
+
+def country_slug_for_name(name: str) -> str:
+    slug = COUNTRY_BY_NAME.get((name or "").strip().lower())
+    if slug:
+        return slug
+    # Generic slugify for any other country name (keeps unknown countries usable).
+    slug = re.sub(r"[^a-z0-9]+", "-", (name or "").strip().lower()).strip("-")
+    return slug or "other"
+
+
+# Terms that describe a group/region rather than a single country; these should
+# not become their own country hub page.
+GROUP_FILTER_WORDS = ("other", "eligible", "remote", "worldwide", "global", "africa", "international", "various")
+
+
+def is_single_country(name: str) -> bool:
+    return not any(w in (name or "").lower() for w in GROUP_FILTER_WORDS)
+
+
+def job_country_slugs(job: dict) -> list[str]:
+    """Return a job's eligible country slugs (from eligibleCountries)."""
+    slugs = []
+    for name in (job.get("eligibleCountries") or []):
+        if not is_single_country(name):
+            continue
+        s = country_slug_for_name(name)
+        if s and s not in slugs:
+            slugs.append(s)
+    # If no country is recorded but the location text names Nigeria, treat as Nigeria.
+    if not slugs and is_nigeria_location(job.get("locationTextRaw") or ""):
+        slugs.append("nigeria")
+    return slugs
 NIGERIA_CITIES = set(CITY_KEYWORDS)
 NIGERIA_WORDS = ["nigeria", "ng", "lagos", "abuja", "port harcourt", "ibadan", "kaduna"]
 REMOTE_WORDS = ["remote", "work from home", "work-from-home", "wfh"]
@@ -274,6 +339,38 @@ def location_hub_pages() -> None:
     # by job_category_pages(); it is surfaced in the browse grid instead.
 
 
+def country_hub_pages() -> None:
+    """Build a country hub for every country that appears in the jobs feed, plus
+    a /jobs/by-country/ browse grid. BRYME is global, not Nigeria-only."""
+    country_roles: dict[str, list[dict]] = {}
+    for job in JOBS["jobs"]:
+        for slug in job_country_slugs(job):
+            country_roles.setdefault(slug, []).append(job)
+    # Write a hub per populated country.
+    for slug, roles in country_roles.items():
+        name = (COUNTRY.get(slug) or (slug.replace("-", " ").title(), ""))[0]
+        # 'remote' is a location hub too; keep native /jobs/remote/ canonical.
+        if slug == "remote":
+            continue
+        _write_hub(slug, f"Jobs in {name}", f"Roles available in {name}, sourced from employer pages and job boards BRYME tracks.",
+                   roles, noindex=False)
+    # Browse-by-country grid.
+    chips = ""
+    for slug in sorted(country_roles):
+        if slug == "remote":
+            continue
+        name = (COUNTRY.get(slug) or (slug.replace("-", " ").title(), ""))[0]
+        chips += f'<a class="chip-card" href="/jobs/{esc(slug)}/"><b>{len(country_roles[slug])}</b><span>{esc(name)}</span></a>'
+    chips += f'<a class="chip-card" href="/jobs/remote/"><b>{len([j for j in JOBS["jobs"] if job_is_remote(j)])}</b><span>Remote / work from home</span></a>'
+    body = f'''<div class="wrap"><nav class="breadcrumb"><a href="/">Home</a> / <a href="/jobs/">Jobs</a> / By country</nav>
+{section_intro("JOBS BY COUNTRY", SITE_PURPOSE)}
+<section class="page-hero"><p class="kicker"><span class="kicker-dot"></span>Choose where you can work</p>
+<h1>Jobs by country.</h1><p>BRYME is built for anyone — pick the country or region that fits. Every record names its original source and separates "listed on a board" from "checked on the employer's page."</p>
+<div class="source-line"><span><b>{len(country_roles)}</b> countries tracked</span><span>Checked <b>{TODAY_HUMAN}</b></span><span><a href="/jobs/methodology/">Read the method</a></span></div></section>
+<section class="section"><div class="chip-grid">{chips}</div><div class="actions"><a class="btn secondary" href="/jobs/remote/">Remote &amp; work-from-home</a><a class="btn secondary" href="/jobs/">Browse all jobs</a></div></section></div>'''
+    write("/jobs/by-country/", page(title="Jobs by country | BRYME", description="Browse BRYME's verified and board-listed opportunities by country and region, with the source named.", route="/jobs/by-country/", current="jobs", body=body, schema_data={"@context": "https://schema.org", "@type": "CollectionPage", "name": "Jobs by country", "url": BASE + "/jobs/by-country/", "dateModified": TODAY, "publisher": {"@type": "Organization", "name": "BRYME", "url": BASE + "/"}}))
+
+
 def type_hub_pages() -> None:
     for key, (label, description, _pred) in JOB_TYPES.items():
         roles = [j for j in JOBS["jobs"] if _pred(j)]
@@ -303,14 +400,27 @@ def _write_hub(slug: str, label: str, description: str, roles: list[dict], noind
 def home() -> None:
     jobs = JOBS["jobs"]
     featured = "".join(job_card(j, "h3") for j in jobs[:4])
+    # Country selector: every country present in the feed, plus remote.
+    country_roles: dict[str, list[dict]] = {}
+    for job in jobs:
+        for slug in job_country_slugs(job):
+            country_roles.setdefault(slug, []).append(job)
+    country_links = ""
+    for slug in sorted(country_roles):
+        if slug == "remote":
+            continue
+        name = (COUNTRY.get(slug) or (slug.replace("-", " ").title(), ""))[0]
+        country_links += f'<a class="chip-card" href="/jobs/{esc(slug)}/"><b>{len(country_roles[slug])}</b><span>{esc(name)}</span></a>'
+    country_links += f'<a class="chip-card" href="/jobs/remote/"><b>{len([j for j in jobs if job_is_remote(j)])}</b><span>Remote / WFH</span></a>'
     city_links = "".join(f'<a class="chip-card" href="/jobs/{slug}/"><b>{len([j for j in jobs if slug in job_city_slugs(j)])}</b><span>{label}</span></a>' for slug, (label, _) in CITY_KEYWORDS.items())
     body = f'''<section class="hero"><div class="wrap hero-grid"><div>
   <p class="kicker"><span class="kicker-dot"></span>We verify. We link the source.</p>
   <h1>Find verified jobs, remote work and legitimate ways to <em>earn.</em></h1>
-  <p class="hero-copy">BRYME checks employer pages, paid-writing calls and work platforms for real Nigerian and African eligibility, then explains the conditions in plain language — without inventing verification or over-promising.</p>
-  <div class="actions"><a class="btn" href="/jobs/">Search verified jobs →</a><a class="btn secondary" href="/opportunities/">Ways to make money</a><a class="btn secondary" href="/jobs/remote/">Remote work</a></div>
-</div><aside class="verify-card" aria-label="Latest verification snapshot"><div class="verify-head"><h2 class="verify-title">Latest jobs snapshot</h2><span class="live-tag">Checked</span></div><p class="verify-date">{TODAY_HUMAN} · Africa/Lagos</p><div class="metric-row"><div class="metric"><b>{len(jobs)}</b><span>Exact roles</span></div><div class="metric"><b>{len(set(j['employer'] for j in jobs))}</b><span>Sources</span></div><div class="metric"><b>{len([j for j in jobs if job_is_remote(j)])}</b><span>Remote</span></div></div><p class="verify-note">“Open when checked” is a timestamp, not a guarantee. Always confirm the employer page before applying.</p></aside></div>
-<div class="wrap location-picker"><p class="location-picker-label">Quick location browse</p><div class="chip-grid">{city_links}<a class="chip-card" href="/jobs/nigeria/"><b>{len([j for j in jobs if job_in_nigeria(j)])}</b><span>Nigeria</span></a><a class="chip-card" href="/jobs/remote/"><b>{len([j for j in jobs if job_is_remote(j)])}</b><span>Remote</span></a></div></div></section>
+  <p class="hero-copy">BRYME checks employer pages, paid-writing calls and work platforms for real eligibility, then explains the conditions in plain language — from any country. Always with the original source named and the limits made clear.</p>
+  <div class="actions"><a class="btn" href="/jobs/">Search verified jobs →</a><a class="btn secondary" href="/jobs/by-country/">Choose your country</a><a class="btn secondary" href="/jobs/remote/">Remote work</a></div>
+</div><aside class="verify-card" aria-label="Latest verification snapshot"><div class="verify-head"><h2 class="verify-title">Latest jobs snapshot</h2><span class="live-tag">Checked</span></div><p class="verify-date">{TODAY_HUMAN}</p><div class="metric-row"><div class="metric"><b>{len(jobs)}</b><span>Exact roles</span></div><div class="metric"><b>{len(set(j['employer'] for j in jobs))}</b><span>Sources</span></div><div class="metric"><b>{len([j for j in jobs if job_is_remote(j)])}</b><span>Remote</span></div></div><p class="verify-note">“Open when checked” is a timestamp, not a guarantee. Always confirm the employer page before applying.</p></aside></div>
+<div class="wrap location-picker"><p class="location-picker-label">Choose your country <span class="location-picker-hint">— BRYME works for everyone, not just one country</span></p><div class="chip-grid">{country_links}</div></div>
+<div class="wrap location-picker"><p class="location-picker-label">Popular cities</p><div class="chip-grid">{city_links}<a class="chip-card" href="/jobs/nigeria/"><b>{len([j for j in jobs if job_in_nigeria(j)])}</b><span>Nigeria</span></a></div></div></section>
 <section class="trust-strip"><div class="wrap trust-grid"><div class="trust-item"><span class="trust-icon">✓</span>Exact employer or ATS link</div><div class="trust-item"><span class="trust-icon">✓</span>Location wording checked manually</div><div class="trust-item"><span class="trust-icon">✓</span>Agency and contract work labelled</div></div></section>
 <section class="section"><div class="wrap"><div class="section-head"><div><p class="eyebrow">Choose a useful path</p><h2>Less browsing. More confidence.</h2></div><p>BRYME is being rebuilt around one promise: help people find a real opportunity and take the next practical step.</p></div><div class="card-grid">
 <a class="path-card" href="/jobs/"><span class="card-num">01 / VERIFIED JOBS</span><h3>Nigeria-relevant roles</h3><p>Dated checks of direct employer and ATS vacancies, with remote and hybrid details clarified.</p><span class="card-link">Browse the snapshot →</span></a>
@@ -326,7 +436,7 @@ def home() -> None:
 </div></div></section>'''
     structured = [{
         "@context": "https://schema.org", "@type": "WebSite", "name": "BRYME",
-        "url": BASE + "/", "description": "Verified jobs, paid-writing research and practical opportunity guides for Nigerians and Africa-based applicants."
+        "url": BASE + "/", "description": SITE["description"]
     }, {
         "@context": "https://schema.org", "@type": "Organization", "name": "BRYME", "url": BASE + "/",
         "founder": {"@type": "Person", "name": "Ibrahim Sodiq", "url": BASE + "/author/ibrahim-sodiq/"}
@@ -343,8 +453,16 @@ def jobs_index() -> None:
     remote_count = len([j for j in jobs if job_is_remote(j)])
     type_counts = {key: len([j for j in jobs if pred(j)]) for key, (_l, _d, pred) in JOB_TYPES.items()}
 
+    country_roles: dict[str, list[dict]] = {}
+    for j in jobs:
+        for slug in job_country_slugs(j):
+            country_roles.setdefault(slug, []).append(j)
+    country_cards = "".join(
+        f'<a class="chip-card" href="/jobs/{esc(slug)}/"><b>{len(items)}</b><span>{esc((COUNTRY.get(slug) or (slug.replace("-", " ").title(), ""))[0])}</span></a>'
+        for slug, items in sorted(country_roles.items()) if slug != "remote"
+    )
     loc_cards = [
-        f'<a class="chip-card" href="/jobs/nigeria/"><b>{nigeria_count}</b><span>Jobs in Nigeria</span></a>',
+        f'<a class="chip-card" href="/jobs/by-country/"><b>{len(country_roles)}</b><span>All countries</span></a>',
         f'<a class="chip-card" href="/jobs/remote/"><b>{remote_count}</b><span>Remote work</span></a>',
     ] + [f'<a class="chip-card" href="/jobs/{slug}/"><b>{n}</b><span>{label}</span></a>'
          for slug, (label, _k) in CITY_KEYWORDS.items() for n in [city_counts[slug]]]
@@ -356,9 +474,10 @@ def jobs_index() -> None:
         f'<a class="path-card" href="/jobs/{key}/"><span class="card-num">{len(jobs_for(key))} VERIFIED</span><h3>{esc(label)}</h3><p>{esc(description)}</p><span class="card-link">View this category →</span></a>'
         for key, (label, description) in JOB_CATEGORIES.items()
     )
-    body = f'''<div class="wrap"><nav class="breadcrumb"><a href="/">Home</a> / Jobs</nav><section class="page-hero"><p class="kicker"><span class="kicker-dot"></span>Human-verified source desk</p><h1>Find verified jobs you can actually pursue.</h1><p>BRYME opens the exact employer or ATS page, records what it says, and reports remote, hybrid and location restrictions instead of copying a job-board headline.</p><div class="source-line"><span><b>{len(jobs)}</b> exact roles</span><span><b>{len(companies)}</b> source organisations</span><span>Last checked <b>{TODAY_HUMAN}</b></span></div></section>
+    body = f'''<div class="wrap"><nav class="breadcrumb"><a href="/">Home</a> / Jobs</nav>{section_intro("JOBS", SITE_PURPOSE)}<section class="page-hero"><p class="kicker"><span class="kicker-dot"></span>Human-verified source desk</p><h1>Find verified jobs you can actually pursue.</h1><p>BRYME opens the exact employer or ATS page, records what it says, and reports remote, hybrid and location restrictions instead of copying a job-board headline. Roles sourced from a board are labelled separately — these are not indistinguishable.</p><div class="source-line"><span><b>{len(jobs)}</b> roles tracked</span><span><b>{len(companies)}</b> source organisations</span><span>Last checked <b>{TODAY_HUMAN}</b></span></div></section>
 <section class="section"><div class="notice"><strong>Freshness rule:</strong> these roles were open when checked. Employers can close or change them without warning. Confirm the official source before applying.</div>
-<h2 class="section-sub">Discover by location</h2><div class="chip-grid">{''.join(loc_cards)}</div>
+<h2 class="section-sub">Jobs by country</h2><div class="chip-grid">{country_cards}<a class="chip-card" href="/jobs/by-country/"><b>{len(country_roles)}</b><span>All countries</span></a><a class="chip-card" href="/jobs/remote/"><b>{remote_count}</b><span>Remote / WFH</span></a></div>
+<h2 class="section-sub">Discover by location &amp; city</h2><div class="chip-grid">{''.join(loc_cards)}</div>
 <h2 class="section-sub">Discover by job type</h2><div class="card-grid">{type_cards}</div>
 <h2 class="section-sub">Source-verified categories</h2><div class="card-grid">{cat_cards}</div></section>
 <section class="section alt"><div class="card-grid"><a class="path-card" href="/jobs/verified-2026-09-04/"><span class="card-num">DATED SNAPSHOT</span><h3>All {len(jobs)} checked roles</h3><p>One review window across Paystack, Moniepoint, SAND, M-KOPA, Swoop, Canonical, LILT and Remotasks.</p><span class="card-link">Open the roundup →</span></a><a class="path-card" href="/jobs/methodology/"><span class="card-num">METHOD</span><h3>How BRYME verifies a role</h3><p>Source hierarchy, remote-work rules, conflict handling and closure policy.</p><span class="card-link">Read the method →</span></a><a class="path-card" href="/contact/"><span class="card-num">CORRECTIONS</span><h3>Report a changed job</h3><p>Send the exact BRYME or employer URL for review.</p><span class="card-link">Contact the desk →</span></a></div></section></div>'''
@@ -432,11 +551,21 @@ def job_posting_schema(job: dict, route: str) -> dict | None:
     return posting
 
 
+def category_label_for(category: str) -> str:
+    """Return a display label for any category, including ones added beyond the
+    core source-verified set (e.g. sales, marketing, finance, operations)."""
+    if category in JOB_CATEGORIES:
+        return JOB_CATEGORIES[category][0]
+    return category.replace("-", " ").replace("_", " ").title()
+
+
 def job_detail_pages() -> None:
     all_jobs = JOBS["jobs"]
     for job in all_jobs:
         category = "remote" if job.get("remoteEligible") else job.get("category", "technology")
-        category_label = JOB_CATEGORIES[category][0]
+        category_label = category_label_for(category)
+        # Only link the breadcrumb to a category page that actually exists.
+        category_href = f"/jobs/{category}/" if (category in JOB_CATEGORIES or category in JOB_TYPES) else "/jobs/"
         compensation = job.get("compensationRaw") or "No amount was displayed in the source details BRYME recorded."
         countries = ", ".join(job.get("eligibleCountries") or []) or "Not established"
         label, vcls, vnote = verify_state(job)
@@ -460,7 +589,7 @@ def job_detail_pages() -> None:
                   "<a href='mailto:Sodiqibrahim03@gmail.com?subject=BRYME%20outdated%20job%3A%20" + urllib_quote(job['title']) + "%20%2F%20location-changed'>Location or eligibility changed</a>"
                   "<a href='mailto:Sodiqibrahim03@gmail.com?subject=BRYME%20outdated%20job%3A%20" + urllib_quote(job['title']) + "%20%2F%20link-broken'>Application link is broken</a>"
                   "<a href='mailto:Sodiqibrahim03@gmail.com?subject=BRYME%20outdated%20job%3A%20" + urllib_quote(job['title']) + "%20%2F%20other'>Other incorrect information</a></div></details>")
-        body = f'''<div class="wrap"><nav class="breadcrumb"><a href="/">Home</a> / <a href="/jobs/">Jobs</a> / <a href="/jobs/{category}/">{esc(category_label)}</a> / {esc(job['title'])}</nav>
+        body = f'''<div class="wrap"><nav class="breadcrumb"><a href="/">Home</a> / <a href="/jobs/">Jobs</a> / <a href="{esc(category_href)}">{esc(category_label)}</a> / {esc(job['title'])}</nav>
 <section class="page-hero"><p class="kicker"><span class="kicker-dot"></span>Verification record · direct source</p>
 <div class="verify-badge-lg {vcls}" title="{esc(vnote)}">{esc(label)}</div>
 <h1>{esc(job['title'])}.</h1>
@@ -531,7 +660,8 @@ def cards_for(items: list[tuple[str, str, str]]) -> str:
 
 
 def tech_hub() -> None:
-    body = f'''<div class="wrap"><nav class="breadcrumb"><a href="/">Home</a> / Guides</nav><section class="page-hero"><p class="kicker"><span class="kicker-dot"></span>Practical, task-first guidance</p><h1>Guides that help you qualify, apply and work safely.</h1><p>Useful technology, account safety, portfolio and online-work guidance—without pretending every platform or tool fits every person.</p></section><section class="section"><div class="section-head"><div><p class="eyebrow">Practical technology</p><h2>Tools for doing the work</h2></div><p>These maintained guides support applications, portfolios, safer accounts and independent online publishing.</p></div><div class="guide-grid">{cards_for(TECH_GUIDES)}</div></section><section class="section alt"><div class="section-head"><div><p class="eyebrow">Understand the opportunity</p><h2>Work and income guides</h2></div></div><div class="guide-grid">{cards_for(MONEY_GUIDES)}</div></section></div>'''
+    si = section_intro("GUIDES", "Practical, task-first guidance to help you qualify, apply, build a portfolio and work safely and honestly online.")
+    body = f'''<div class="wrap"><nav class="breadcrumb"><a href="/">Home</a> / Guides</nav>{si}<section class="page-hero"><p class="kicker"><span class="kicker-dot"></span>Practical, task-first guidance</p><h1>Guides that help you qualify, apply and work safely.</h1><p>Useful technology, account safety, portfolio and online-work guidance—without pretending every platform or tool fits every person.</p></section><section class="section"><div class="section-head"><div><p class="eyebrow">Practical technology</p><h2>Tools for doing the work</h2></div><p>These maintained guides support applications, portfolios, safer accounts and independent online publishing.</p></div><div class="guide-grid">{cards_for(TECH_GUIDES)}</div></section><section class="section alt"><div class="section-head"><div><p class="eyebrow">Understand the opportunity</p><h2>Work and income guides</h2></div></div><div class="guide-grid">{cards_for(MONEY_GUIDES)}</div></section></div>'''
     write("/guides/", page(title="Remote work and practical technology guides | BRYME", description="BRYME guides for remote applications, online-work platforms, account safety, useful tools and independent publishing.", route="/guides/", current="guides", body=body, schema_data={"@context": "https://schema.org", "@type": "CollectionPage", "name": "BRYME remote work and practical guides", "url": BASE + "/guides/", "dateModified": TODAY, "publisher": {"@type": "Organization", "name": "BRYME", "url": BASE + "/"}}))
 
 
@@ -547,18 +677,20 @@ MONEY_GUIDES = [
 
 
 def money_hub() -> None:
-    body = f'''<div class="wrap"><nav class="breadcrumb"><a href="/">Home</a> / Opportunities</nav><section class="page-hero"><p class="kicker"><span class="kicker-dot"></span>Evidence before earnings claims</p><h1>Earn through useful work—not promises.</h1><p>BRYME separates employment, contract work, freelance platforms, paid-writing calls and website income so their risks and expectations are not blurred together.</p><div class="actions"><a class="btn" href="/jobs/remote/">Open remote jobs →</a><a class="btn secondary" href="/writing/">Explore paid writing</a></div></section><section class="section"><div class="section-head"><div><p class="eyebrow">Maintained guides</p><h2>Understand the work before committing</h2></div><p>Fees, eligibility and task availability can change. Each guide states its limits.</p></div><div class="guide-grid">{cards_for(MONEY_GUIDES)}</div></section><section class="section alt"><div class="card-grid"><div class="path-card"><span class="card-num">EMPLOYMENT</span><h3>Remote and Nigeria jobs</h3><p>Defined roles from employers and applicant-tracking systems.</p></div><div class="path-card"><span class="card-num">PROJECT WORK</span><h3>Freelance and AI tasks</h3><p>Availability can fluctuate; an accepted profile is not guaranteed income.</p></div><div class="path-card"><span class="card-num">PITCHING</span><h3>Paid writing calls</h3><p>A publication guideline is an invitation to pitch, not a job offer.</p></div></div></section></div>'''
+    si = section_intro("MAKE MONEY", "Grounded guides to remote work, freelancing, writing and other legitimate ways to earn — without guaranteed-income claims.")
+    body = f'''<div class="wrap"><nav class="breadcrumb"><a href="/">Home</a> / Opportunities</nav>{si}<section class="page-hero"><p class="kicker"><span class="kicker-dot"></span>Evidence before earnings claims</p><h1>Earn through useful work—not promises.</h1><p>BRYME separates employment, contract work, freelance platforms, paid-writing calls and website income so their risks and expectations are not blurred together.</p><div class="actions"><a class="btn" href="/jobs/remote/">Open remote jobs →</a><a class="btn secondary" href="/writing/">Explore paid writing</a></div></section><section class="section"><div class="section-head"><div><p class="eyebrow">Maintained guides</p><h2>Understand the work before committing</h2></div><p>Fees, eligibility and task availability can change. Each guide states its limits.</p></div><div class="guide-grid">{cards_for(MONEY_GUIDES)}</div></section><section class="section alt"><div class="card-grid"><div class="path-card"><span class="card-num">EMPLOYMENT</span><h3>Remote and Nigeria jobs</h3><p>Defined roles from employers and applicant-tracking systems.</p></div><div class="path-card"><span class="card-num">PROJECT WORK</span><h3>Freelance and AI tasks</h3><p>Availability can fluctuate; an accepted profile is not guaranteed income.</p></div><div class="path-card"><span class="card-num">PITCHING</span><h3>Paid writing calls</h3><p>A publication guideline is an invitation to pitch, not a job offer.</p></div></div></section></div>'''
     write("/opportunities/", page(title="Online work and paid opportunities for Nigerians | BRYME", description="Grounded BRYME guides to remote work, freelancing, writing and Nigeria-relevant opportunities without guaranteed-income claims.", route="/opportunities/", current="opportunities", body=body, schema_data={"@context": "https://schema.org", "@type": "CollectionPage", "name": "BRYME work and opportunity guides", "url": BASE + "/opportunities/", "dateModified": TODAY, "publisher": {"@type": "Organization", "name": "BRYME", "url": BASE + "/"}}))
 
 
 def articles_hub() -> None:
+    si = section_intro("WRITING", "Salaried writing jobs, independent contract work and researched paid-publication calls — with their different expectations, rights and payment chances kept separate.")
     writing_jobs = jobs_for("writing")
     sample = [item for item in WRITING if item.get("submissionStatus") in {"open", "rolling"}][:8]
     research_cards = ''.join(
         f'<a class="guide-card" href="/make-money/writing/{esc(item["slug"])}/"><span class="card-num">{esc(item.get("submissionStatus", "research"))} when checked</span><h2>{esc(item["publication"])}</h2><p>{esc(item["excerpt"])}</p><span class="card-link">Read the research record →</span></a>'
         for item in sample
     )
-    body = f'''<div class="wrap"><nav class="breadcrumb"><a href="/">Home</a> / Writing</nav><section class="page-hero"><p class="kicker"><span class="kicker-dot"></span>Jobs, pitches and paid publication research</p><h1>Turn writing into a serious work path.</h1><p>BRYME separates salaried jobs, independent contracts and calls for pitches. Each has different expectations, rights, deadlines and chances of payment.</p><div class="source-line"><span><b>{len(writing_jobs)}</b> current writing/language work records</span><span><b>{len(WRITING)}</b> researched publication records</span><span>Research archive checked <b>19 August 2026</b></span></div></section>
+    body = f'''<div class="wrap"><nav class="breadcrumb"><a href="/">Home</a> / Writing</nav>{si}<section class="page-hero"><p class="kicker"><span class="kicker-dot"></span>Jobs, pitches and paid publication research</p><h1>Turn writing into a serious work path.</h1><p>BRYME separates salaried jobs, independent contracts and calls for pitches. Each has different expectations, rights, deadlines and chances of payment.</p><div class="source-line"><span><b>{len(writing_jobs)}</b> current writing/language work records</span><span><b>{len(WRITING)}</b> researched publication records</span><span>Research archive checked <b>19 August 2026</b></span></div></section>
 <section class="section"><div class="section-head"><div><p class="eyebrow">Current job records</p><h2>Writing, language and AI work</h2></div><p>These are defined contract opportunities—not publication pitches.</p></div><div class="job-list">{''.join(job_card(job) for job in writing_jobs)}</div></section>
 <section class="section alt"><div class="section-head"><div><p class="eyebrow">Paid-publication research</p><h2>Understand what a publication asks for</h2></div><p>The records below show their last human-check date. Reopen the official guidelines before pitching.</p></div><div class="notice"><strong>Freshness warning:</strong> “open when checked” is historical, not a promise that submissions remain open today. These detail records stay outside Search until their status receives a new verification pass.</div><div class="guide-grid" style="margin-top:22px">{research_cards}</div><div class="actions"><a class="btn secondary" href="/make-money/writing/">Browse all {len(WRITING)} research records</a></div></section>
 <section class="section"><div class="card-grid"><a class="path-card" href="/make-money/writing-field-notes-how-this-works/"><span class="card-num">METHOD</span><h3>How the writing field notes work</h3><p>How BRYME records pay, rights, eligibility, responses and uncertainty.</p></a><a class="path-card" href="/guides/"><span class="card-num">BUILD THE SKILL</span><h3>Portfolio and work tools</h3><p>Practical technology and publishing guidance for doing the work.</p></a><a class="path-card" href="/contact/"><span class="card-num">CORRECTIONS</span><h3>Report a changed guideline</h3><p>Send the exact official source for a fresh review.</p></a></div></section></div>'''
@@ -609,6 +741,7 @@ if __name__ == "__main__":
     jobs_roundup()
     job_category_pages()
     location_hub_pages()
+    country_hub_pages()
     type_hub_pages()
     job_detail_pages()
     jobs_method()

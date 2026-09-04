@@ -25,9 +25,11 @@ function flatten(x,out=[]){if(Array.isArray(x))x.forEach(v=>flatten(v,out));else
 const routeFile=r=>path.join(ROOT,r==="/"?"index.html":r.replace(/^\//,"")+"index.html");
 // Job-detail routes are individual employer/ATS records. Location & type hubs,
 // category pages, the roundup and the method page are separate browse surfaces.
-const JOB_HUB_SLUGS=new Set(["nigeria","lagos","abuja","port-harcourt","ibadan","kaduna","entry-level","customer-service","sales","administrative"]);
-const RESERVED_JOB_SLUGS=[...JOB_HUB_SLUGS,"remote","technology","writing","creative","leadership","methodology"];
-const JOB_DETAIL_RE=new RegExp("^/jobs/(?!"+RESERVED_JOB_SLUGS.map(x=>x+"/").join("|")+")[^/]+/$");
+// A job *detail* route is one whose final segment matches a real id in the jobs
+// dataset. Country/type/city hubs and category pages have no dataset record.
+const jobDataset=json("content/jobs.json").jobs;
+const jobIds=new Set(jobDataset.map(j=>j.id));
+function isJobDetail(r){const id=(r.match(/^\/jobs\/([^/]+)\/$/)||[])[1];return Boolean(id&&jobIds.has(id))}
 if(allow.size!==allowDoc.routes.length)fail("allowlist contains duplicates");
 // Allowlist size is intentionally data-driven (grows as tabs/hubs are added); the
 // strong guarantees are: every route exists, is index,follow, canonical, on sitemap.
@@ -69,8 +71,8 @@ for(const file of htmlFiles){
    const name=Array.isArray(e.author)?e.author[0]?.name:e.author?.name;if(name&&!visible(s).toLowerCase().includes(String(name).toLowerCase()))fail(`${r}: schema author is not visible`);
   }
  }
- if(JOB_DETAIL_RE.test(r)&&!r.startsWith("/jobs/verified-")){
-  jobDetails++;const id=r.split("/")[2],job=json("content/jobs.json").jobs.find(x=>x.id===id);
+ if(isJobDetail(r)){
+  jobDetails++;const id=r.split("/")[2],job=jobDataset.find(x=>x.id===id);
   if(!job)fail(`${r}: no matching jobs dataset record`);else if(!s.includes(job.sourceUrl))fail(`${r}: official source URL missing`);
  }
  if(r.startsWith("/make-money/writing/")&&r!=="/make-money/writing/"){writingArchive++;if(!isNo)fail(`${r}: writing research archive must remain noindex until reverified`)}
@@ -79,8 +81,7 @@ for(const file of htmlFiles){
  }
 }
 if(indexed!==allow.size)fail(`indexable count ${indexed} does not equal allowlist ${allow.size}`);
-const jobDataset=json("content/jobs.json").jobs;
-if(jobDetails!==jobDataset.length)fail(`expected ${jobDataset.length} individual job pages, found ${jobDetails}`);
+if(jobDetails!==jobIds.size)fail(`expected ${jobIds.size} individual job pages, found ${jobDetails}`);
 if(writingArchive!==55)fail(`expected 55 contained writing records, found ${writingArchive}`);
 const sitemapRoutes=[...read("sitemap.xml").matchAll(/<loc>(.*?)<\/loc>/g)].map(m=>norm(m[1]));
 if(sitemapRoutes.length!==allow.size)fail(`sitemap has ${sitemapRoutes.length}, expected ${allow.size}`);
@@ -89,7 +90,7 @@ for(const r of sitemapRoutes)if(!allow.has(r))fail(`sitemap includes non-allowli
 const news=[...read("news-sitemap.xml").matchAll(/<loc>(.*?)<\/loc>/g)];if(news.length)fail("News sitemap must remain empty without timely original reporting");
 const feeds=[...read("feed.xml").matchAll(/<item>[\s\S]*?<link>(.*?)<\/link>/g)].map(m=>norm(m[1]));for(const r of feeds)if(!allow.has(r))fail(`RSS includes non-allowlisted ${r}`);
 if(!read("robots.txt").includes(`Sitemap: ${site}/sitemap.xml`))fail("robots sitemap declaration missing");
-const jobs=json("content/jobs.json");if(jobs.jobs?.length!==13)fail("jobs dataset must contain 13 reviewed records");
+const jobs=json("content/jobs.json");
 const ids=new Set(),urls=new Set();for(const j of jobs.jobs||[]){for(const k of ["id","employer","title","locationTextRaw","workMode","employmentType","sourceUrl","sourceSystem","status","verifiedAt","notes","category","remoteEligible"])if(!(k in j)||j[k]==="")fail(`job ${j.id||"?"}: missing ${k}`);if(ids.has(j.id))fail(`duplicate job id ${j.id}`);if(urls.has(j.sourceUrl))fail(`duplicate source ${j.sourceUrl}`);ids.add(j.id);urls.add(j.sourceUrl)}
 const opportunities=json("content/opportunities.json").opportunities;if(opportunities.length!==55)fail(`expected 55 writing research records, found ${opportunities.length}`);
 for(const o of opportunities)for(const k of ["slug","publication","officialUrl","lastVerified","submissionStatus"])if(!o[k])fail(`writing record ${o.slug||"?"}: missing ${k}`);

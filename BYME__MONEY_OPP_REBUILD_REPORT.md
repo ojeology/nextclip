@@ -262,3 +262,47 @@ personal experience.
 ### AdSense (on hold as requested)
 Advertising is **not** enabled; `adsense` stays off in `site.config.json`.
 Purchasing a domain is the prerequisite (see below).
+
+---
+
+## Phase 3 — more (sourced) jobs, global-by-country, section headers, multi-engine pings
+
+### More jobs — real, source-attributed (no invented verification)
+- `content/jobs-inbox.json` + `scripts/import-jobs.py`: **22 real Jobberman listings**
+  captured from the live board with exact listing URLs, employers, locations,
+  salary ranges, categories and work types.
+- Imported into `content/jobs.json` → **35 records total** (13 BRYME-checked
+  employer/ATS + 22 board-listed).
+- New honest verification state **⚪ LISTED ON JOB BOARD** (`board_listed`) —
+  BRYME names the source (SOURCE: Jobberman) and an `Apply on Jobberman` link
+  and does **not** claim to have verified the employer's own page. This preserves
+  the "We verify" differentiator instead of pretending to check every board.
+- These are indexed (`/jobs/jobberman-*/`) and are real pages with source,
+  salary, location, category and a report-outdated control — not thin scraped
+  copies.
+
+### Global-by-country (made for everyone, not just Nigeria)
+- **Country selector on the homepage** — a "Choose your country" chip grid
+  generated live from the countries present in the feed.
+- **Country hubs** (`/jobs/canada/`, `/jobs/kenya/`, `/jobs/united-kingdom/`,
+  `/jobs/united-states/`, `/jobs/nigeria/`) plus a **`/jobs/by-country/`** browse
+  hub and a dedicated Remote/WFH hub.
+- Country taxonomy in the builder (`COUNTRY`, `job_country_slugs`) so any country
+  that appears anywhere in the feed gets a hub automatically. Non-country group
+  terms (e.g. "Other eligible African locations") are excluded so they do not
+  create bogus country pages.
+
+### Each navigation section explains what the site is for
+- Reusable **`section_intro()`** header — a short "what this is" statement shown
+  at the top of Jobs, Jobs-by-country, Remote, Make Money, Writing and Guides.
+
+### Ping every search engine possible
+- `scripts/ping-search-engines.py` (`npm run ping:engines`): **IndexNow** (a
+  single submission that notifies Bing, Yandex, Naver, Seznam, Yep and others),
+  plus best-effort sitemap pings to Google/Bing/Baidu/Naver.
+- Live-tested on the deployed site: **IndexNow returned OK**; Google/Bing/Baidu/
+  Naver sitemap pings are deprecated (404/410) — confirming IndexNow is the
+  modern multi-engine channel. Sitemap pings are kept best-effort and never fail
+  the build.
+- `.github/workflows/ping-engines.yml` — manual + weekly scheduled runs.
+- Requires a publicly reachable `SITE_URL` and the IndexNow key (committed).

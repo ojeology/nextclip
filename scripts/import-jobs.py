@@ -43,8 +43,8 @@ REQUIRED = [
     "sourceBoardUrl", "sourceSystem", "status", "verifiedAt", "notes",
     "category", "remoteEligible",
 ]
-CATEGORIES = {"technology", "writing", "creative", "leadership", "finance", "customer-service", "marketing", "operations", "other"}
-STATUSES = {"open_when_checked", "verified", "application_checked", "tested", "closed", "needs_recheck"}
+CATEGORIES = {"technology", "writing", "creative", "leadership", "finance", "customer-service", "marketing", "operations", "sales", "other"}
+STATUSES = {"open_when_checked", "verified", "application_checked", "tested", "closed", "needs_recheck", "board_listed"}
 
 TEMPLATE = """{
   "id": "employer-123456",

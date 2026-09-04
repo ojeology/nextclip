@@ -10,3 +10,5 @@ server/indexing-log.jsonl
 content/index-queue.json
 content/index-queue-state.json
 server/indexing-log.jsonl
+
+docs/search-ping-log.jsonl

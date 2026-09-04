@@ -8,7 +8,7 @@ BRYME is a focused publication for **verified jobs, remote work and legitimate w
 
 ## Publication focus
 
-- **Jobs:** exact employer/ATS records with visible verification dates, Nigeria and location-first discovery (country → city → job type).
+- **Jobs:** exact employer/ATS records plus job-board listings with visible verification dates, and global, location-first discovery (choose your country → city → job type). Board-listed roles are labelled separately (⚪ LISTED ON JOB BOARD) so they are not confused with BRYME-checked employer pages.
 - **Remote work:** a dedicated remote hub and remote-eligible roles.
 - **Make Money:** grounded platform, freelance, writing and income-opportunity guidance without guaranteed-earnings claims.
 - **Writing:** language contracts plus researched paid-publication guidelines, including BRYME's own tested journeys.

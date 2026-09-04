@@ -7,6 +7,7 @@
     "start": "node server/server.js",
     "build": "python3 scripts/build-content-css.py && python3 scripts/build-focus-site.py && python3 scripts/apply-audit-remediation.py && python3 scripts/build-discovery.py && python3 scripts/build-index-queue.py",
     "index:notify": "node scripts/index-notify.js",
+    "ping:engines": "python3 scripts/ping-search-engines.py",
     "check:domain": "python3 scripts/check-canonical-domain.py",
     "check:remediation": "python3 scripts/apply-audit-remediation.py --check",
     "validate": "node scripts/validate-site-quality.js && node scripts/validate-http.js",

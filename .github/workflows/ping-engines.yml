@@ -1,0 +1,30 @@
+name: BRYME search-engine ping
+
+# Notifies search engines (IndexNow + sitemap pings) so they discover BRYME.
+# This is a crawl *notification*, not a guarantee of indexing or ranking.
+# Requires the site to be publicly reachable at SITE_URL; a no-op / dry-run if
+# it is not. Never a release gate.
+
+on:
+  workflow_dispatch: {}
+  schedule:
+    # A gentle weekly nudge keeps the sitemap fresh with the engines.
+    - cron: "0 6 * * 0"
+
+permissions:
+  contents: read
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - name: Ping search engines (never fails the build)
+        env:
+          SITE_URL: ${{ vars.SITE_URL }}
+          INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
+        run: python3 scripts/ping-search-engines.py || true
