@@ -79,6 +79,30 @@
     return out.join("\n");
   }
 
+  // --- style-analysis helpers ---
+  var BE = /\b(?:am|is|are|was|were|been|being|be)\b/;
+  var PAST = /\b(?:written|wrote|made|done|taken|given|seen|found|used|shown|known|brought|sent|held|read|created|produced|completed|approved|decided|handled|managed|run|won|lost|built|called|said|told|asked|salvaged|reported|sent|launched|raised|caught|considered|expected|released|included|informed|ordered|removed|replaced|resolved|revealed|reviewed|selected|served|shared|signed|started|stopped|tested|transferred|visited|won)\b/;
+  function sentencesArr(s) {
+    var m = s.trim().match(/[^.!?]+[.!?]+/g);
+    return m ? m.map(function (x) { return x.trim(); }) : (s.trim() ? [s.trim()] : []);
+  }
+  function syllables(w) {
+    w = w.toLowerCase().replace(/[^a-z]/g, "");
+    if (!w) return 0;
+    w = w.replace(/(?:[^laeiouy]es|ed|[^laeiouy]e)$/, "").replace(/^y/, "");
+    var m = w.match(/[aeiouy]{1,2}/g);
+    return Math.max(1, m ? m.length : 1);
+  }
+  function readability(txt) {
+    var w = words(txt), s = Math.max(sentences(txt), 1), syl = 0;
+    (txt.toLowerCase().match(/[a-z\u00C0-\u024F]+/g) || []).forEach(function (x) { syl += syllables(x); });
+    if (!w) return { score: 0, grade: "—", words: 0 };
+    var score = 206.835 - 1.015 * (w / s) - 84.6 * (syl / w);
+    score = Math.max(0, Math.min(100, Math.round(score)));
+    var grade = score >= 80 ? "Very easy — ages 11" : score >= 60 ? "Easy — ages 13" : score >= 40 ? "Fairly easy" : score >= 30 ? "Hard to read" : "Very hard to read";
+    return { score: score, grade: grade, words: w, sentences: s };
+  }
+
   var tools = {
     "word-counter": function () {
       var input = q("ta"), out = q("out");
@@ -181,6 +205,108 @@
       function run() {
         var lines = WAT(input).split(/\n/).map(function (x) { return x.trim(); }).filter(Boolean);
         out.innerHTML = lines.length ? "<div class='tool-result'><label class='tool-check'><input type='checkbox'> " + lines.join("</label><label class='tool-check'><input type='checkbox'> ") + "</label></div>" : "<p>Enter checklist items, one per line.</p>";
+        fit(input);
+      }
+      bind(input, run); run();
+    },
+    "syllable-counter": function () {
+      var input = q("ta"), out = q("out");
+      function run() {
+        var t = WAT(input), tot = 0;
+        (t.toLowerCase().match(/[a-z\u00C0-\u024F]+/g) || []).forEach(function (x) { tot += syllables(x); });
+        out.innerHTML = "<b>" + tot + "</b> syllables &middot; <b>" + words(t) + "</b> words";
+        fit(input);
+      }
+      bind(input, run); run();
+    },
+    "readability-score": function () {
+      var input = q("ta"), out = q("out");
+      function run() {
+        var r = readability(WAT(input));
+        out.innerHTML = r.words ? "<div class='read-bar'><div class='read-fill' style='width:" + (r.score) + "%'></div><b class='read-num'>" + r.score + "/100</b></div><p><b>" + r.grade + "</b> &middot; Flesch reading ease &middot; " + r.words + " words in " + r.sentences + " sentences</p>" : "<p>Type something to see its readability score.</p>";
+        fit(input);
+      }
+      bind(input, run); run();
+    },
+    "filler-word-finder": function () {
+      var input = q("ta"), out = q("out");
+      var fillers = { "very": "unnecessary intensifier", "really": "unnecessary intensifier", "just": "often filler", "quite": "unnecessary intensifier", "actually": "often filler", "basically": "often filler", "literally": "often filler", "totally": "unnecessary intensifier", "simply": "often filler", "extremely": "unnecessary intensifier", "very very": "redundant intensifier", "in order to": "wordy for 'to'", "due to the fact that": "wordy for 'because'", "at this point in time": "wordy for 'now'", "in the event that": "wordy for 'if'", "a large number of": "wordy for 'many'", "each and every": "redundant pair", "past history": "redundant pair", "basic fundamentals": "redundant pair" };
+      function run() {
+        var t = WAT(input).toLowerCase(), rows = [], total = 0;
+        Object.keys(fillers).forEach(function (f) {
+          var m = t.match(new RegExp("\\b" + f.replace(/ /g, "\\s+") + "\\b", "g"));
+          if (m) { rows.push("<tr><td>" + f + "</td><td>" + m.length + "</td><td>" + fillers[f] + "</td></tr>"); total += m.length; }
+        });
+        out.innerHTML = "<p>" + (total ? "<b>" + total + "</b> filler/redundant phrase" + (total === 1 ? "" : "s") + " found:</p><table class='tool-table'><thead><tr><th>Phrase</th><th>Count</th><th>Why</th></tr></thead><tbody>" + rows.join("") + "</tbody></table>" : "No common filler or redundant phrases found — nice and tight.") + "</p>";
+        fit(input);
+      }
+      bind(input, run); run();
+    },
+    "passive-voice-detector": function () {
+      var input = q("ta"), out = q("out");
+      function run() {
+        var found = [], ss = sentencesArr(WAT(input));
+        ss.forEach(function (s) {
+          var words = s.match(/\b[a-z\u00C0-\u024F]+\b/gi) || [];
+          for (var i = 0; i < words.length; i++) {
+            if (/^(?:am|is|are|was|were|been|being|be)$/i.test(words[i]) && words[i + 1] && (PAST.test(words[i + 1]) || /ed\b$/i.test(words[i + 1]))) {
+              found.push(s); break;
+            }
+          }
+        });
+        out.innerHTML = found.length ? "<p><b>" + found.length + "</b> possible passive sentence" + (found.length === 1 ? "" : "s") + " — consider making the doer the subject:</p><ul class='tool-list'>" + found.slice(0, 12).map(function (s) { return "<li>" + s + "</li>"; }).join("") + "</ul>" : "<p>No obvious passive-voice sentences found — strong active writing.</p>";
+        fit(input);
+      }
+      bind(input, run); run();
+    },
+    "word-repetition-checker": function () {
+      var input = q("ta"), out = q("out");
+      function run() {
+        var d = density(WAT(input));
+        var repeated = d.top.filter(function (x) { return x.n >= 4; });
+        var rows = repeated.map(function (x) { return "<tr><td>" + x.w + "</td><td>" + x.n + "</td></tr>"; }).join("");
+        out.innerHTML = repeated.length ? "<p><b>" + repeated.length + "</b> word" + (repeated.length === 1 ? "" : "s") + " used 4+ times — check for overuse:</p><table class='tool-table'><thead><tr><th>Word</th><th>Times</th></tr></thead><tbody>" + rows + "</tbody></table>" : "<p>No content word appears 4+ times — good variety.</p>";
+        fit(input);
+      }
+      bind(input, run); run();
+    },
+    "sentence-length-checker": function () {
+      var input = q("ta"), out = q("out");
+      function run() {
+        var ss = sentencesArr(WAT(input)), long = [];
+        ss.forEach(function (s) {
+          var w = words(s);
+          if (w > 25) long.push({ s: s, w: w });
+        });
+        long.sort(function (a, b) { return b.w - a.w; });
+        out.innerHTML = long.length ? "<p><b>" + long.length + "</b> sentence" + (long.length === 1 ? "" : "s") + " over 25 words — consider splitting:</p><ul class='tool-list'>" + long.slice(0, 8).map(function (x) { return "<li><b>" + x.w + "w:</b> " + x.s + "</li>"; }).join("") + "</ul>" : "<p>No sentence over 25 words — your sentences are varied and readable.</p>";
+        fit(input);
+      }
+      bind(input, run); run();
+    },
+    "cliche-detector": function () {
+      var input = q("ta"), out = q("out");
+      var cliches = ["at the end of the day", "in this day and age", "think outside the box", "the elephant in the room", "at the touch of a button", "the tip of the iceberg", "in the nick of time", "last but not least", "a stone's throw away", "better late than never", "actions speak louder than words", "it goes without saying", "at the end of the day", "on the same page", "a win-win situation", "dive in head first", "take it to the next level", "move the needle", "game changer", "in the grand scheme of things", "with all due respect", "pull yourself up by your bootstraps", "a blessing in disguise", "due diligence", "low-hanging fruit"];
+      function run() {
+        var t = WAT(input).toLowerCase(), rows = [];
+        cliches.forEach(function (c) {
+          var m = t.match(new RegExp(c.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "g"));
+          if (m) rows.push("<tr><td>" + c + "</td><td>" + m.length + "</td></tr>");
+        });
+        out.innerHTML = rows.length ? "<p><b>" + rows.length + "</b> clich&eacute; found — replace with something specific and fresh:</p><table class='tool-table'><thead><tr><th>Clich&eacute;</th><th>Count</th></tr></thead><tbody>" + rows.join("") + "</tbody></table>" : "<p>No common clich&eacute;s found — your phrasing feels fresh.</p>";
+        fit(input);
+      }
+      bind(input, run); run();
+    },
+    "adverb-finder": function () {
+      var input = q("ta"), out = q("out");
+      function run() {
+        var t = WAT(input), m = t.match(/\b[a-z\u00C0-\u024F]+(?:ly)\b/gi) || [];
+        var counts = {}, arr = [];
+        m.forEach(function (w) { counts[w] = (counts[w] || 0) + 1; });
+        Object.keys(counts).forEach(function (w) { arr.push({ w: w, n: counts[w] }); });
+        arr.sort(function (a, b) { return b.n - a.n; });
+        out.innerHTML = arr.length ? "<p><b>" + arr.length + "</b> -ly adverb" + (arr.length === 1 ? "" : "s") + " — replace weak ones with a stronger verb where you can:</p><ul class='tool-list'>" + arr.slice(0, 15).map(function (x) { return "<li>" + x.w + " × " + x.n + "</li>"; }).join("") + "</ul>" : "<p>No -ly adverbs found.</p>";
         fit(input);
       }
       bind(input, run); run();

@@ -441,3 +441,7 @@ a:focus-visible, button:focus-visible { outline-color: var(--accent); }
 .steps-journey li:last-child::after{content:"";margin-left:0}
 .byline{margin-top:.8rem!important;color:var(--muted);font-size:.95rem}
 @media (max-width:768px){.tool-grid{grid-template-columns:1fr}.prose h2{font-size:1.35rem}}
+.read-bar{position:relative;height:14px;border-radius:8px;background:var(--panel-2);overflow:hidden;max-width:360px}
+.read-fill{height:100%;background:linear-gradient(90deg,var(--green),var(--accent))}
+.read-num{position:absolute;top:-1px;left:8px;color:var(--ink);font-size:.85rem;line-height:1.2}
+.tool-list{padding-left:1.1rem}.tool-list li{margin:.4rem 0;line-height:1.5}

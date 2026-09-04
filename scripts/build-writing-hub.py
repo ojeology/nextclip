@@ -11,7 +11,7 @@ Emits:
   /learn/                 all 20 sections grouped
   /learn/<section>/       one hub page per section (noindex while empty)
   /learn/<section>/<guide>/  one page per guide (canonical)
-  /tools/ + /tools/<id>/  the 16 in-browser tools
+  /tools/ + /tools/<id>/  the in-browser tools
   /glossary/              searchable glossary
   /templates/             template library
   /checklists/            interactive checklists
@@ -247,6 +247,35 @@ def guide_page(g: dict) -> None:
 
 def section_hub(sec: dict) -> None:
     guides = GUIDES_BY_SECTION.get(sec["id"], [])
+    # The four "utility" sections (tools, templates, checklists, glossary) are
+    # served by their own dedicated hub pages rather than guides. Render them as
+    # an indexable landing that links to the hub.
+    utility = {
+        "writing-tools": ("/tools/", len(TOOLS), "free tools", "Open the tool library"),
+        "writing-templates": ("/templates/", len(TEMPLATES), "templates", "Open the template library"),
+        "writing-checklists": ("/checklists/", len(CHECKLISTS), "checklists", "Open the checklists"),
+        "writing-glossary": ("/glossary/", len(GLOSSARY), "terms", "Open the glossary"),
+    }
+    if sec["id"] in utility:
+        href, n, noun, label = utility[sec["id"]]
+        cards = f'<a class="path-card" href="{href}"><span class="card-num">OPEN</span><h3>{esc(sec["title"])}</h3><p>{esc(sec.get("tagline", sec.get("description", "")))}</p><span class="card-link">{label} →</span></a>'
+        content = f'<section class="section"><div class="guide-grid">{cards}</div></section>'
+        # also show a few representative items
+        extra = ""
+        if sec["id"] == "writing-tools":
+            extra = '<section class="section alt"><div class="section-head"><div><p class="eyebrow">Popular</p><h2>Start with these tools.</h2></div></div><div class="guide-grid">' + "".join(f'<a class="chip-card" href="/tools/{esc(t["id"])}/"><b>🛠</b><span>{esc(t["title"])}</span></a>' for t in TOOLS[:8]) + '</div></section>'
+        elif sec["id"] == "writing-templates":
+            extra = '<section class="section alt"><div class="section-head"><div><p class="eyebrow">Popular</p><h2>Most-used templates.</h2></div></div><div class="guide-grid">' + "".join(f'<a class="guide-card" href="/templates/#{esc(t["id"])}"><span class="card-num">{esc(t["title"][:8].upper())}</span><h3>{esc(t["title"])}</h3><p>{esc(t["use"])}</p><span class="card-link">View →</span></a>' for t in TEMPLATES[:6]) + '</div></section>'
+        body = f'''<div class="wrap">{breadcrumb(("Learn", "/learn/"))}
+<section class="page-hero"><p class="kicker"><span class="kicker-dot"></span>{esc(sec['icon'])} Writing Hub</p>
+<h1>{esc(sec['title'])}.</h1>
+<p>{esc(sec.get('tagline', sec.get('description', '')))}</p>
+<div class="source-line"><span><b>{n}</b> {noun}</span></div></section>
+{content}{extra}</div>'''
+        write(f"/learn/{sec['id']}/", page_wf(
+            title=f"{sec['title']} | BRYME", description=sec.get("description", "").replace("\n", " "),
+            route=f"/learn/{sec['id']}/", current="learn", body=body, robots="index,follow"))
+        return
     if guides:
         cards = "".join(f'<a class="guide-card" href="/learn/{esc(sec["id"])}/{esc(g["slug"])}/"><span class="card-num">GUIDE</span><h2>{esc(g["title"])}</h2><p>{esc(g.get("description", ""))}</p><span class="card-link">Open the guide →</span></a>' for g in guides)
         content = f'<section class="section"><div class="guide-grid">{cards}</div></section>'
@@ -277,7 +306,7 @@ def tools_index() -> None:
 <p>{len(TOOLS)} free utilities that run right in your browser. No account, no download — type and get instant answers for counting, checking, formatting and planning your writing.</p></section>
 <section class="section"><div class="guide-grid">{''.join(grid)}</div></section></div>'''
     write("/tools/", page_wf(title="Writing tools — free word counter, character counter and more | BRYME",
-                            description="16 free in-browser writing tools: word counter, character counter, reading time, case converter, text cleaner, outline generator and more. No account needed.",
+                            description=f"{len(TOOLS)} free in-browser writing tools: word counter, character counter, reading time, readability score, case converter, text cleaner, outline generator and more. No account needed.",
                             route="/tools/", current="tools", body=body,
                             schema_data={"@context": "https://schema.org", "@type": "CollectionPage", "name": "BRYME writing tools", "url": BASE + "/tools/"}))
 
