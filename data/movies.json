@@ -228,7 +228,7 @@
       "Robert Downey Jr. wore prosthetics and grey hair to play Lewis Strauss."
     ],
     "director": "Christopher Nolan",
-    "runtime": "10809 min",
+    "runtime": "180 min",
     "rating": {
       "value": 9,
       "source": "BRYME editorial score"
@@ -305,7 +305,13 @@
     "trailerLabel": "Official Trailer",
     "trailerChannel": "Universal Pictures",
     "trailerVerified": true,
-    "trailerLastChecked": "2026-08-13"
+    "trailerLastChecked": "2026-08-13",
+    "runtimeSource": {
+      "name": "NBC Insider",
+      "url": "https://www.nbc.com/nbc-insider/how-does-oppenheimers-runtime-compare-to-the-longest-films-ever",
+      "retrieved": "2026-09-04",
+      "value": "180 min"
+    }
   },
   {
     "id": "godzilla",
@@ -39100,7 +39106,7 @@
       "Shaffy Bello"
     ],
     "director": "Editi Effiong",
-    "runtime": "4 min",
+    "runtime": "124 min",
     "rating": null,
     "status": "published",
     "createdAt": null,
@@ -39143,7 +39149,13 @@
     "trailerLabel": "Official Trailer",
     "trailerChannel": "AfricaOnNetflix",
     "trailerVerified": true,
-    "trailerLastChecked": "2026-08-13"
+    "trailerLastChecked": "2026-08-13",
+    "runtimeSource": {
+      "name": "Nollywire",
+      "url": "https://nollywire.com/titles/the-black-book/",
+      "retrieved": "2026-09-04",
+      "value": "124 min"
+    }
   },
   {
     "id": "the-boys",
@@ -54274,9 +54286,9 @@
     "trailerType": "official-trailer",
     "trailerVerified": true,
     "castSource": {
-      "name": "Wikipedia",
+      "name": "Rotten Tomatoes",
       "url": "https://www.rottentomatoes.com/m/avatar_aang_the_last_airbender",
-      "field": "infobox starring",
+      "field": "title-page credits",
       "retrieved": "2026-08-22"
     }
   },
@@ -54480,7 +54492,7 @@
       "Olivia Wilde"
     ],
     "director": "Olivia Wilde",
-    "runtime": "108 min",
+    "runtime": "107 min",
     "rating": null,
     "status": "published",
     "createdAt": null,
@@ -54513,10 +54525,21 @@
     "trailerType": "official-trailer",
     "trailerVerified": true,
     "castSource": {
-      "name": "Wikipedia",
-      "url": "https://www.imdb.com/title/tt14173636/",
-      "field": "infobox starring",
-      "retrieved": "2026-08-22"
+      "name": "A24 official title page",
+      "url": "https://a24films.com/films/the-invite",
+      "retrieved": "2026-09-04",
+      "field": "official starring credits"
+    },
+    "metaSource": {
+      "name": "A24 official title page",
+      "url": "https://a24films.com/films/the-invite",
+      "retrieved": "2026-09-04"
+    },
+    "runtimeSource": {
+      "name": "Apple TV official title page",
+      "url": "https://tv.apple.com/us/movie/the-invite/umc.cmc.3sbug5lvmkkj1z2j3myx2g7wd",
+      "retrieved": "2026-09-04",
+      "value": "107 min"
     }
   },
   {
@@ -54572,9 +54595,9 @@
     "trailerType": "official-trailer",
     "trailerVerified": true,
     "castSource": {
-      "name": "Wikipedia",
+      "name": "The Hollywood Reporter",
       "url": "https://www.hollywoodreporter.com/movies/movie-reviews/the-last-house-review-greta-lee-wagner-moura-netflix-1236666386/",
-      "field": "infobox starring",
+      "field": "review credits",
       "retrieved": "2026-08-22"
     }
   },

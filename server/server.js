@@ -83,11 +83,10 @@ function usdEq(pay) {
   return Math.max(Number(pay.amountMin) || 0, Number(pay.amountMax) || 0) * (FX[pay.currency] || 1);
 }
 
-/* ---------- sports data watchdog ----------
- * GitHub's scheduler once stalled for 36h and the scores froze. The server
- * now refreshes competitions itself when data is older than 90 minutes:
- * it spawns scripts/fetch-competitions.js (which never overwrites good data
- * with bad), and the mtime cache picks the new file up automatically. */
+/* ---------- optional sports data watchdog ----------
+ * Production serving is read-only by default. Set WATCHDOG=on only on a
+ * writable worker intentionally allowed to refresh source data; normal web
+ * deployments consume the GitHub-workflow-validated JSON committed to main. */
 const { spawn } = require("child_process");
 let refreshing = false;
 function competitionsAgeMin() {
@@ -107,7 +106,7 @@ function watchdogTick() {
   const age = competitionsAgeMin();
   if (age > 90) refreshCompetitions(Math.round(age) + " min old");
 }
-if (process.env.WATCHDOG !== "off") {
+if (process.env.WATCHDOG === "on") {
   setInterval(watchdogTick, 30 * 60 * 1000).unref();
   setTimeout(watchdogTick, 45 * 1000).unref(); /* shortly after boot */
 }
@@ -157,13 +156,41 @@ const MIME = {
   ".woff2": "font/woff2", ".webmanifest": "application/manifest+json"
 };
 const TELEGRAM_ON = process.env.TELEGRAM_ENABLED === "1" || process.env.TELEGRAM_ENABLED === "true";
+const SECURITY_HEADERS = Object.freeze({
+  "content-security-policy": [
+    "default-src 'self'",
+    "base-uri 'self'",
+    "object-src 'none'",
+    "form-action 'self'",
+    "script-src 'self' 'unsafe-inline' https://telegram.org",
+    "style-src 'self' 'unsafe-inline'",
+    "img-src 'self' data: https:",
+    "font-src 'self' data:",
+    "media-src 'self' https:",
+    "connect-src 'self' https://telegram.org https://*.telegram.org",
+    "frame-src https://www.youtube.com https://www.youtube-nocookie.com",
+    "worker-src 'self'",
+    "manifest-src 'self'",
+    "upgrade-insecure-requests"
+  ].join("; "),
+  "referrer-policy": "strict-origin-when-cross-origin",
+  "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=(), usb=(), browsing-topics=()",
+  "strict-transport-security": "max-age=31536000; includeSubDomains",
+  "x-content-type-options": "nosniff",
+  "x-dns-prefetch-control": "off",
+  "x-permitted-cross-domain-policies": "none"
+});
+function headers(extra) {
+  return Object.assign({}, SECURITY_HEADERS, extra || {});
+}
 function json(res, code, obj) {
   const body = JSON.stringify(obj);
-  res.writeHead(code, {
+  res.writeHead(code, headers({
     "content-type": "application/json; charset=utf-8",
     "access-control-allow-origin": "*",
-    "cache-control": "no-cache"
-  });
+    "cache-control": "no-store",
+    "content-length": Buffer.byteLength(body)
+  }));
   res.end(body);
 }
 function readBody(req, limit) {
@@ -174,17 +201,23 @@ function readBody(req, limit) {
     req.on("error", reject);
   });
 }
-function sendFile(res, abs, code) {
+function sendFile(res, abs, code, req) {
   fs.readFile(abs, (err, buf) => {
-    if (err) { res.writeHead(404, { "content-type": "text/plain" }); res.end("not found"); return; }
+    if (err) {
+      const body = "not found";
+      res.writeHead(404, headers({ "content-type": "text/plain; charset=utf-8", "cache-control": "no-store", "content-length": Buffer.byteLength(body) }));
+      res.end(req && req.method === "HEAD" ? undefined : body);
+      return;
+    }
     const ext = path.extname(abs).toLowerCase();
-    const cache = (ext === ".html" || ext === ".xml" || ext === ".txt") ? "no-cache" : "public, max-age=86400";
-    res.writeHead(code || 200, {
+    const mutable = ext === ".html" || ext === ".xml" || ext === ".txt" || ext === ".json" || ext === ".webmanifest" || path.basename(abs) === "sw.js";
+    const cache = mutable ? "no-cache" : "public, max-age=86400, stale-while-revalidate=604800";
+    res.writeHead(code || 200, headers({
       "content-type": MIME[ext] || "application/octet-stream",
       "cache-control": cache,
-      "x-content-type-options": "nosniff"
-    });
-    res.end(buf);
+      "content-length": buf.length
+    }));
+    res.end(req && req.method === "HEAD" ? undefined : buf);
   });
 }
 
@@ -204,31 +237,80 @@ function loadRedirects() {
 }
 const REDIRECTS = loadRedirects();
 
-function blocked(rel) {
-  const r = rel.replace(/^\/+/, "");
-  return r.startsWith("server/") || r.startsWith(".git") || r.startsWith("tests/");
+/* Only deployable public artifacts are reachable. Repository source, reports,
+ * workflows, tests, scripts and configuration are not web content. */
+const PUBLIC_HTML_DIRS = new Set([
+  "about", "anime", "article", "articles", "author", "channels", "contact",
+  "copyright", "corrections", "disclaimer", "editorial-policy", "entertainment",
+  "genre", "genres", "jobs", "make-money", "memes", "movie", "movies", "now",
+  "privacy", "search", "series", "sports", "tech", "terms", "topic", "topics",
+  "trending", "year", "years"
+]);
+const PUBLIC_ROOT_FILES = new Set([
+  "index.html", "404.html", "robots.txt", "sitemap.xml", "news-sitemap.xml",
+  "feed.xml", "manifest.webmanifest", "favicon.ico", "sw.js",
+  "google2ec8f794263d784f.html", "yandex_78fdd841f95fa2e1.html",
+  "1740cdb82c02b9af13911b38c853e85d2f708322fa0c2c55.txt"
+]);
+const PUBLIC_CONTENT_FILES = new Set([
+  "competitions.json", "countries.json", "fpl.json", "money-coding.json",
+  "money-remote.json", "money-writing.json", "sports-feed.json"
+]);
+const PUBLIC_DATA_FILES = new Set(["rec-data.json"]);
+const PUBLIC_ASSET_EXT = new Set([".css", ".js", ".jpg", ".jpeg", ".png", ".svg", ".webp", ".gif", ".ico", ".mp3", ".mp4", ".webm", ".woff2"]);
+const GONE_ROUTES = new Set([
+  "/channels/trending", "/channels/latest", "/channels/netflix", "/channels/prime",
+  "/channels/sony", "/channels/jio", "/channels/crunchyroll", "/channels/kids",
+  "/channels/mx"
+]);
+
+function publicRelAllowed(rel) {
+  const r = String(rel || "").replace(/^\/+/, "").replace(/\\/g, "/");
+  if (!r || r.includes("\0")) return false;
+  const parts = r.split("/").filter(Boolean);
+  if (!parts.length || parts.some((part) => part.startsWith("."))) return false;
+  if (parts.length === 1 && PUBLIC_ROOT_FILES.has(parts[0])) return true;
+  const top = parts[0];
+  if (top === "assets") return (parts.length === 1 || PUBLIC_ASSET_EXT.has(path.extname(parts[parts.length - 1]).toLowerCase()));
+  if (PUBLIC_HTML_DIRS.has(top)) return parts.length === 1 || path.extname(parts[parts.length - 1]).toLowerCase() === ".html" || !path.extname(parts[parts.length - 1]);
+  if (top === "content") return parts.length === 2 && PUBLIC_CONTENT_FILES.has(parts[1]);
+  if (top === "data") return parts.length === 2 && PUBLIC_DATA_FILES.has(parts[1]);
+  return false;
 }
 
 function safeAbs(reqPath) {
-  const decoded = decodeURIComponent(String(reqPath || "/").split("?")[0]);
+  let decoded;
+  try { decoded = decodeURIComponent(String(reqPath || "/").split("?")[0]); }
+  catch (e) { return null; }
   const rel = decoded.replace(/^\/+/, "");
-  if (blocked(rel)) return null;
+  if (!publicRelAllowed(rel)) return null;
   const abs = path.normalize(path.join(ROOT, rel));
   if (abs !== ROOT && !abs.startsWith(ROOT + path.sep)) return null;
   return abs;
 }
 
+function safeExistingFile(abs) {
+  try {
+    if (!abs || !fs.statSync(abs).isFile()) return null;
+    const real = fs.realpathSync(abs);
+    return real.startsWith(ROOT + path.sep) ? real : null;
+  } catch (e) { return null; }
+}
+
 function resolveWebsiteFile(pathname) {
   const p = pathname || "/";
   let abs = safeAbs(p);
-  if (abs && fs.existsSync(abs) && fs.statSync(abs).isFile()) return abs;
-  if (abs && fs.existsSync(abs) && fs.statSync(abs).isDirectory()) {
-    const idx = path.join(abs, "index.html");
-    if (fs.existsSync(idx)) return idx;
-  }
-  const asIndex = safeAbs((p.endsWith("/") ? p : p + "/") + "index.html");
-  if (asIndex && fs.existsSync(asIndex)) return asIndex;
-  return null;
+  // Extensionless public paths are route directories, never arbitrary files.
+  const direct = abs && path.extname(abs) ? safeExistingFile(abs) : null;
+  if (direct) return direct;
+  try {
+    if (abs && fs.statSync(abs).isDirectory()) {
+      const idx = safeExistingFile(path.join(abs, "index.html"));
+      if (idx) return idx;
+    }
+  } catch (e) { /* missing */ }
+  const asIndex = safeExistingFile(safeAbs((p.endsWith("/") ? p : p + "/") + "index.html"));
+  return asIndex || null;
 }
 
 /* Article bodies may contain root-relative links (href="/..."). Inside the
@@ -259,10 +341,32 @@ const chatsSeen = new Map();
 
 /* ---------- request router ---------- */
 const server = http.createServer(async (req, res) => {
-  const url = new URL(req.url, "http://x");
-  const p = url.pathname.replace(/\/+$/, "") || "/";
+  let url;
+  try {
+    const raw = String(req.url || "/");
+    if (!raw.startsWith("/") || raw.startsWith("//")) throw new Error("invalid target");
+    url = new URL(raw, "http://localhost");
+  } catch (e) {
+    return json(res, 400, { error: "bad_request" });
+  }
+  const rawPath = url.pathname;
+  const p = rawPath.replace(/\/+$/, "") || "/";
 
   try {
+    if (!new Set(["GET", "HEAD", "POST", "OPTIONS"]).has(req.method)) {
+      res.writeHead(405, headers({ "allow": "GET, HEAD, POST, OPTIONS", "cache-control": "no-store" }));
+      return res.end();
+    }
+    if (req.method === "OPTIONS" && p.startsWith("/api/")) {
+      res.writeHead(204, headers({
+        "access-control-allow-origin": "*",
+        "access-control-allow-methods": "GET, HEAD, OPTIONS",
+        "access-control-allow-headers": "content-type",
+        "cache-control": "no-store"
+      }));
+      return res.end();
+    }
+
     /* health */
     if (p === "/healthz") return json(res, 200, { ok: true, posts: loadContent().posts.length });
 
@@ -410,30 +514,60 @@ const server = http.createServer(async (req, res) => {
       return;
     }
 
-    /* ---- 301s from _redirects (duplicate movie/series URLs) ---- */
+    /* Everything below is read-only public routing. */
+    if (req.method !== "GET" && req.method !== "HEAD") {
+      res.writeHead(405, headers({ "allow": "GET, HEAD", "cache-control": "no-store" }));
+      return res.end();
+    }
+
+    /* ---- redirects from _redirects (duplicate movie/series URLs) ---- */
     const from = p.replace(/\/+$/, "") || "/";
     const rule = REDIRECTS.find((r) => r.from === from || r.from === p);
     if (rule) {
-      res.writeHead(rule.code || 301, { location: rule.to, "cache-control": "public, max-age=86400" });
-      res.end();
-      return;
+      res.writeHead(rule.code || 301, headers({
+        "location": rule.to + (url.search || ""),
+        "cache-control": "public, max-age=86400"
+      }));
+      return res.end();
+    }
+
+    /* Retired inferred-provider collections explain the removal while returning
+     * a real 410, so crawlers do not treat them as active catalogue pages. */
+    if (GONE_ROUTES.has(from)) {
+      const gone = resolveWebsiteFile(from);
+      if (gone) return sendFile(res, gone, 410, req);
+      return json(res, 410, { error: "gone" });
     }
 
     /* ---- Mini App lives under /miniapp only — never at / ---- */
     if (p === "/miniapp" || p.startsWith("/miniapp/")) {
-      let file = p === "/miniapp" || p === "/miniapp/" ? "index.html" : p.slice("/miniapp/".length);
+      const file = p === "/miniapp" || p === "/miniapp/" ? "index.html" : p.slice("/miniapp/".length);
       const abs = path.normalize(path.join(MINIAPP_DIR, file));
-      if (abs.startsWith(MINIAPP_DIR) && fs.existsSync(abs)) return sendFile(res, abs);
+      const ext = path.extname(abs).toLowerCase();
+      const real = safeExistingFile(abs);
+      if (real && real.startsWith(MINIAPP_DIR + path.sep) && new Set([".html", ".css", ".js"]).has(ext)) {
+        return sendFile(res, real, 200, req);
+      }
     }
 
     /* ---- Public website (repo root) ---- */
+    if (/\/index\.html$/i.test(rawPath)) {
+      const target = rawPath.replace(/index\.html$/i, "") || "/";
+      res.writeHead(308, headers({ "location": target + (url.search || ""), "cache-control": "public, max-age=86400" }));
+      return res.end();
+    }
     const page = resolveWebsiteFile(p === "/" ? "/index.html" : p);
-    if (page) return sendFile(res, page);
+    if (page && p !== "/" && !rawPath.endsWith("/") && path.basename(page) === "index.html") {
+      res.writeHead(308, headers({ "location": rawPath + "/" + (url.search || ""), "cache-control": "public, max-age=86400" }));
+      return res.end();
+    }
+    if (page) return sendFile(res, page, 200, req);
 
-    const notFound = path.join(ROOT, "404.html");
-    if (fs.existsSync(notFound)) return sendFile(res, notFound, 404);
-    res.writeHead(404, { "content-type": "text/plain" });
-    res.end("not found");
+    const notFound = safeExistingFile(path.join(ROOT, "404.html"));
+    if (notFound) return sendFile(res, notFound, 404, req);
+    const body = "not found";
+    res.writeHead(404, headers({ "content-type": "text/plain; charset=utf-8", "cache-control": "no-store", "content-length": Buffer.byteLength(body) }));
+    res.end(req.method === "HEAD" ? undefined : body);
   } catch (e) {
     json(res, 500, { error: "internal", message: "Something went wrong. Try again." });
   }
@@ -447,7 +581,3 @@ if (!module.parent) {
   });
 }
 module.exports = { server, loadContent, telegram };
-// deploy-tick bb418f8+ content refresh
-// deploy-tick: teaser->money landing + fresh scores
-// deploy-tick: desk articles + batched greetings
-// deploy-tick: ucl draw article

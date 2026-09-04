@@ -9746,7 +9746,7 @@
     "country": "United Kingdom; United States",
     "director": "Christopher Nolan",
     "language": "English",
-    "runtime": "10809 min",
+    "runtime": "180 min",
     "source": {
       "id": "Q108839994",
       "name": "Wikidata",
@@ -9755,7 +9755,13 @@
       "wikipedia": "https://en.wikipedia.org/wiki/Oppenheimer_(film)"
     },
     "title": "Oppenheimer",
-    "year": 2023
+    "year": 2023,
+    "runtimeSource": {
+      "name": "NBC Insider",
+      "url": "https://www.nbc.com/nbc-insider/how-does-oppenheimers-runtime-compare-to-the-longest-films-ever",
+      "retrieved": "2026-09-04",
+      "value": "180 min"
+    }
   },
   "overlord": {
     "cast": [],
@@ -18089,7 +18095,7 @@
       "Ireti Doyle",
       "Shaffy Bello"
     ],
-    "runtime": "4 min",
+    "runtime": "124 min",
     "source": {
       "name": "Wikipedia",
       "url": "https://en.wikipedia.org/wiki/The_Black_Book_%282023_film%29",
@@ -18100,6 +18106,12 @@
       "url": "https://en.wikipedia.org/wiki/The_Black_Book_%282023_film%29",
       "field": "infobox starring",
       "retrieved": "2026-08-22"
+    },
+    "runtimeSource": {
+      "name": "Nollywire",
+      "url": "https://nollywire.com/titles/the-black-book/",
+      "retrieved": "2026-09-04",
+      "value": "124 min"
     }
   },
   "the-trade": {
@@ -18305,14 +18317,14 @@
     ],
     "runtime": "99 min",
     "source": {
-      "name": "Wikipedia",
+      "name": "Rotten Tomatoes",
       "url": "https://www.rottentomatoes.com/m/avatar_aang_the_last_airbender",
       "retrieved": "2026-08-22"
     },
     "castSource": {
-      "name": "Wikipedia",
+      "name": "Rotten Tomatoes",
       "url": "https://www.rottentomatoes.com/m/avatar_aang_the_last_airbender",
-      "field": "infobox starring",
+      "field": "title-page credits",
       "retrieved": "2026-08-22"
     }
   },
@@ -18398,17 +18410,23 @@
       "Penélope Cruz",
       "Olivia Wilde"
     ],
-    "runtime": "108 min",
+    "runtime": "107 min",
     "source": {
-      "name": "Wikipedia",
-      "url": "https://www.imdb.com/title/tt14173636/",
-      "retrieved": "2026-08-22"
+      "name": "A24 official title page",
+      "url": "https://a24films.com/films/the-invite",
+      "retrieved": "2026-09-04"
     },
     "castSource": {
-      "name": "Wikipedia",
-      "url": "https://www.imdb.com/title/tt14173636/",
-      "field": "infobox starring",
-      "retrieved": "2026-08-22"
+      "name": "A24 official title page",
+      "url": "https://a24films.com/films/the-invite",
+      "retrieved": "2026-09-04",
+      "field": "official starring credits"
+    },
+    "runtimeSource": {
+      "name": "Apple TV official title page",
+      "url": "https://tv.apple.com/us/movie/the-invite/umc.cmc.3sbug5lvmkkj1z2j3myx2g7wd",
+      "retrieved": "2026-09-04",
+      "value": "107 min"
     }
   },
   "the-last-house": {
@@ -18423,14 +18441,14 @@
     ],
     "runtime": "112 min",
     "source": {
-      "name": "Wikipedia",
+      "name": "The Hollywood Reporter",
       "url": "https://www.hollywoodreporter.com/movies/movie-reviews/the-last-house-review-greta-lee-wagner-moura-netflix-1236666386/",
       "retrieved": "2026-08-22"
     },
     "castSource": {
-      "name": "Wikipedia",
+      "name": "The Hollywood Reporter",
       "url": "https://www.hollywoodreporter.com/movies/movie-reviews/the-last-house-review-greta-lee-wagner-moura-netflix-1236666386/",
-      "field": "infobox starring",
+      "field": "review credits",
       "retrieved": "2026-08-22"
     }
   },

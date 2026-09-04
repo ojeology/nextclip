@@ -4363,3 +4363,15 @@ body.spx .sp-rail-track > *,
 body.spx .sp-art-track > *{
   flex:0 0 auto;
 }
+/* AUDIT-REMEDIATION-2026-09-04: honesty, navigation and accessibility */
+body:has(main.tp-page) .top{display:block!important}
+body:has(main.tp-page){padding-top:0!important}
+.skip-link{position:fixed;z-index:1000;top:8px;left:8px;transform:translateY(-150%);padding:10px 14px;border-radius:8px;background:#c7f36b;color:#07100d;font-weight:900}
+.skip-link:focus{transform:none}
+.desk-bar{display:none!important}
+.nm-match,.nm-hd,.tile-rating,[data-nm-my-list],[data-nm-rate]{display:none!important}
+.topnav{font-size:13.5px}
+.mobile-nav a{font-size:11.5px;min-height:52px}
+.integrity-notice{position:relative;z-index:5;margin:12px auto;padding:13px 18px;max-width:1180px;border:1px solid rgba(255,190,100,.38);border-radius:8px;background:#281b0d;color:#f3d7ad;font-size:13px;line-height:1.5}
+.integrity-notice b{color:#ffd08a}
+@media(max-width:760px){.integrity-notice{margin:8px 12px}.topnav{display:none}}

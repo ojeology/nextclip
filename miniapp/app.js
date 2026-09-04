@@ -466,9 +466,9 @@
     if (unlockedMk.indexOf(slug) > -1 || FREE_SLUGS.indexOf(slug) > -1) return true;
     return false;
   }
-  /* the ad gate: one sponsor message = one market, unlocked forever on this device */
+  /* Advertising is disabled during the quality rebuild. The compatibility
+   * gate remains a free one-tap disclosure so existing navigation still works. */
   function showGate(o, onUnlock) {
-    var link = (window.BRYME_AD_CONFIG && window.BRYME_AD_CONFIG.smartlink) || "";
     var old = document.querySelector(".gate-sheet"); if (old) old.remove();
     var sheetEl = document.createElement("div");
     sheetEl.className = "gate-sheet";
@@ -477,11 +477,8 @@
       '<span class="mkt-pay">' + esc(o.pay) + "</span>" +
       "<b>" + esc(o.publication) + "</b>" +
       "<p>" + esc(o.sub || "The full 3-step playbook: what they accept, word counts, how to submit — and what Nigerians should know.") + "</p>" +
-      ((window.BRYME_AD && window.BRYME_AD.configured && window.BRYME_AD.configured()) || link
-        ? '<button class="btn" type="button" id="gate-go">📺 Watch &amp; unlock ' + esc(o.publication) + "</button>" +
-          '<span class="fine">One short sponsored view · unlocks forever on this device · keeps BRYME free</span>'
-        : '<button class="btn" type="button" id="gate-go">🎁 Unlock ' + esc(o.publication) + " — free</button>" +
-          '<span class="fine">Early users get free unlocks while sponsored access is starting. 🎉</span>') +
+      '<button class="btn" type="button" id="gate-go">🎁 Open ' + esc(o.publication) + " — free</button>" +
+      '<span class="fine">No ad or payment is required.</span>' +
       '<button class="gate-x" type="button" aria-label="Close">✕</button>' +
       "</div>";
     document.body.appendChild(sheetEl);
@@ -490,31 +487,9 @@
     sheetEl.querySelector(".gate-x").addEventListener("click", close);
     sheetEl.querySelector("#gate-go").addEventListener("click", function () {
       haptic();
-      var btn = sheetEl.querySelector("#gate-go");
-      if (btn) { btn.disabled = true; btn.textContent = "Opening…"; }
-      var grant = function () {
-        if (unlockedMk.indexOf(o.slug) === -1) { unlockedMk.push(o.slug); saveUnlocked(); }
-        close();
-        if (onUnlock) onUnlock();
-      };
-      var fallbackLink = function () {
-        if (link) { try { window.open(link, "_blank", "noopener"); } catch (e) {} }
-        grant(); /* ad tech failed — never punish the user for it */
-      };
-      if (window.BRYME_AD && window.BRYME_AD.configured && window.BRYME_AD.configured()) {
-        var settled = false;
-        var t = setTimeout(function () { if (!settled) { settled = true; fallbackLink(); } }, 20000);
-        window.BRYME_AD.showRewarded().then(function (r) {
-          if (settled) return;
-          settled = true; clearTimeout(t);
-          if (r && r.ok) grant(); /* popup shown — reward delivered */
-          else fallbackLink();
-        });
-      } else if (link) {
-        fallbackLink();
-      } else {
-        grant(); /* nothing configured yet — free comp */
-      }
+      if (unlockedMk.indexOf(o.slug) === -1) { unlockedMk.push(o.slug); saveUnlocked(); }
+      close();
+      if (onUnlock) onUnlock();
     });
   }
   function oppCard(o, locked) {
@@ -634,8 +609,8 @@
             (o.excerpt ? '<p class="lead">' + esc(o.excerpt) + "</p>" : "") +
             '<div class="adgate"><b>🔒 The full playbook is one tap away</b>' +
             "<p>3 steps · exact word counts · how to submit · 🇳🇬 notes — everything verified.</p>" +
-            '<button class="btn" type="button" id="mk-unlock">📺 Unlock this playbook</button>' +
-            '<span class="fine">One short sponsor message · unlocks forever on this device</span></div>' +
+            '<button class="btn" type="button" id="mk-unlock">🎁 Open this playbook — free</button>' +
+            '<span class="fine">No ad or payment is required.</span></div>' +
             "</article>";
           document.getElementById("mk-unlock").addEventListener("click", function () {
             showGate({ slug: slug, publication: o.publication, pay: ((o.pay || {}).display || "") }, function () { pageMarket(slug); });
@@ -765,8 +740,8 @@
         var n = list[next];
         html += '<div class="adgate"><span class="mkt-pay">🔒 Next: ' + esc(n.name) + "</span>" +
           "<b>" + esc(n.role || "Verified platform") + "</b>" +
-          "<p>" + esc(n.pay || "") + (n.eligibility ? " · " + esc(n.eligibility.slice(0, 60)) : "") + " — one short sponsored view unlocks this platform, forever on this device.</p>" +
-          '<button class="btn" type="button" id="rm-unlock">📺 Watch &amp; unlock ' + esc(n.name) + "</button></div>";
+          "<p>" + esc(n.pay || "") + (n.eligibility ? " · " + esc(n.eligibility.slice(0, 60)) : "") + " — open the verified details free.</p>" +
+          '<button class="btn" type="button" id="rm-unlock">🎁 Open ' + esc(n.name) + " — free</button></div>";
       } else {
         html += '<div class="empty">🎉 All 20 platforms unlocked — you built the full list.</div>';
       }

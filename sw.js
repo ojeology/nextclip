@@ -1,9 +1,9 @@
-/* Former Monetag in-page-push worker. Unregister so returning visitors drop it. */
-self.addEventListener('install', function (e) { self.skipWaiting(); });
-self.addEventListener('activate', function (e) {
-  e.waitUntil(self.registration.unregister().then(function () {
-    return self.clients.matchAll();
-  }).then(function (clients) {
-    clients.forEach(function (c) { if (c.navigate) c.navigate(c.url); });
-  }));
+/* BRYME no longer installs an offline cache while the focused site is rebuilt. */
+self.addEventListener('install', function () { self.skipWaiting(); });
+self.addEventListener('activate', function (event) {
+  event.waitUntil(Promise.all([
+    caches.keys().then(function (names) { return Promise.all(names.map(function (name) { return caches.delete(name); })); }),
+    self.registration.unregister(),
+    self.clients.claim()
+  ]));
 });

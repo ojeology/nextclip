@@ -1,81 +1,37 @@
-name: Results agent
+name: BRYME quality gate
 
-# BRYME's automated sports desk. Pulls verified full-time scores from
-# ESPN's public API for the five leagues, refuses anything that does not
-# match a published fixture, builds match report pages, applies the
-# Sports Desk v2 chrome, then opens a PR (auto-merged when clean).
-# Render redeploys the site after the merge lands on main.
-
+# Automated sports publishing is intentionally paused until source rights and
+# production data integrity are approved. This workflow validates; it never
+# mutates content, creates branches or deploys from a scheduled bot run.
 on:
-  schedule:
-    - cron: "10 6 * * *"    # morning catch-up (late American/Asian fixtures)
-    - cron: "10 14 * * *"   # early European kickoffs wrapped
-    - cron: "40 22 * * *"   # after the late full-time whistles
-  workflow_dispatch: {}      # manual "Run workflow" button
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch: {}
 
 permissions:
-  contents: write
-  pull-requests: write
+  contents: read
 
 concurrency:
-  group: results-agent
-  cancel-in-progress: false
+  group: bryme-quality-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
-  update:
+  validate:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
-
       - uses: actions/setup-node@v4
         with:
-          node-version: "20"
-
-      - name: Fetch verified results (ESPN public API, last 5 days)
-        run: node scripts/fetch-espn-results.js
-
-      - name: Fetch top-five competitions — tables, scores, fixtures (ESPN public API)
-        run: node scripts/fetch-competitions.js
-
-      - name: Validate every result carries a source
-        run: node scripts/validate-results.js
-
-      - name: Apply Sports Desk chrome to any new pages
-        run: python3 scripts/apply-sports-skin.py
-
-      - name: Build tick (content changes must reach the backend service)
-        run: |
-          if [ -n "$(git status --porcelain)" ]; then
-            echo "// agent tick $(date -u +%Y-%m-%dT%H:%M:%SZ)" >> server/server.js
-          fi
-
-      - name: Open auto-merge pull request
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BRANCH: agent/results-${{ github.run_id }}
-        run: |
-          git config user.name "bryme-results-agent[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          if [ -z "$(git status --porcelain)" ]; then
-            echo "### No new results — desk already up to date."
-            exit 0
-          fi
-          STAMP="$(date -u +'%A %d %B %Y, %H:%M UTC')"
-          git checkout -b "$BRANCH"
-          git add -A
-          git commit -m "Results agent: verified scores + match pages ($(date -u +%F))"
-          git push origin "$BRANCH"
-          gh pr create \
-            --base main --head "$BRANCH" \
-            --title "Results agent — $STAMP" \
-            --body "Automated update from the BRYME sports desk.
-
-          - Fetched finished matches (last 5 days) from ESPN's public API
-          - Only fixture-verified scorelines are written; every result keeps its source link
-          - Match report pages generated + Sports Desk v2 chrome applied
-          - \`content/results.json\` + \`content/sports-feed.json\` refreshed
-
-          Auto-merges once created. Reviewer can close to reject a window." \
-            --label "results-agent" 2>/dev/null || true
-          gh pr merge --auto --squash --delete-branch "$BRANCH" || \
-            gh pr merge --squash --delete-branch "$BRANCH" || true
+          node-version: "22"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Syntax-check deterministic builders
+        run: python3 -m py_compile scripts/build-content-css.py scripts/build-focus-site.py scripts/build-discovery.py scripts/apply-audit-remediation.py
+      - name: Confirm committed HTML is fully remediated
+        run: python3 scripts/apply-audit-remediation.py --check
+      - name: Run repository and HTTP release gates
+        run: npm test

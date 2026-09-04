@@ -1,14 +1,8 @@
 User-agent: *
 Allow: /
-Disallow: /miniapp/
-Disallow: /404.html
-Disallow: /server/
-
-User-agent: Googlebot
-Allow: /
-
-User-agent: AdsBot-Google
-Allow: /
+Disallow: /api/
+Disallow: /admin/
+Disallow: /telegram/
 
 Sitemap: https://bryme.onrender.com/sitemap.xml
 Sitemap: https://bryme.onrender.com/news-sitemap.xml

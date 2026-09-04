@@ -1,0 +1,1029 @@
+{
+  "generated_at": "2026-09-04",
+  "viewport": "390x844",
+  "pages": [
+    {
+      "data_layer_length": 4,
+      "deskbar_visible": true,
+      "frames": [],
+      "ga_loaded": true,
+      "h1": [
+        {
+          "text": "Discover what you love.\nLearn what you need.\nFind what’s next.",
+          "visible": true
+        }
+      ],
+      "header_visible": true,
+      "mobile_nav_visible": true,
+      "monetag_loaded": false,
+      "scripts": [
+        "https://bryme.onrender.com/assets/analytics.js",
+        "https://www.googletagmanager.com/gtag/js?id=G-NQKHPBYFE8",
+        "https://bryme.onrender.com/assets/site-app.js",
+        "https://bryme.onrender.com/assets/sports-engine.js"
+      ],
+      "status_title": "BRYME — Movies, Sports, Money & Tech",
+      "url": "https://bryme.onrender.com/",
+      "path": "/",
+      "body_visible_words": 877,
+      "main_visible_words": 748,
+      "main_dom_words": 643,
+      "top_hidden_words": 32,
+      "main_links": 77,
+      "visible_main_links": 77,
+      "empty_visible_main_links": 0,
+      "main_images": 16,
+      "visible_main_images": 16,
+      "broken_visible_images": 12,
+      "resource_requests": 21,
+      "resource_transfer_bytes": 1441926,
+      "resource_hosts": {
+        "i.ytimg.com": 4,
+        "bryme.onrender.com": 15,
+        "www.googletagmanager.com": 1,
+        "www.google-analytics.com": 1
+      },
+      "console_severe": []
+    },
+    {
+      "data_layer_length": 5,
+      "deskbar_visible": false,
+      "frames": [
+        {
+          "src": "https://www.youtube-nocookie.com/embed/PAV9YN5TEVg?rel=0&modestbranding=1&playsinline=1&enablejsapi=1&autoplay=1&mute=1&cc_load_policy=1&origin=https%3A%2F%2Fbryme.onrender.com",
+          "visible": true
+        }
+      ],
+      "ga_loaded": true,
+      "h1": [
+        {
+          "text": "Dune: Part Two",
+          "visible": true
+        }
+      ],
+      "header_visible": false,
+      "mobile_nav_visible": true,
+      "monetag_loaded": false,
+      "scripts": [
+        "https://www.youtube.com/s/player/f572e43c/www-widgetapi.vflset/www-widgetapi.js",
+        "https://www.youtube.com/iframe_api",
+        "https://bryme.onrender.com/assets/analytics.js",
+        "https://www.googletagmanager.com/gtag/js?id=G-NQKHPBYFE8",
+        "https://bryme.onrender.com/assets/site-app.js"
+      ],
+      "status_title": "Dune: Part Two (2024) | Cast, Trailer & Where to Watch | BRYME",
+      "url": "https://bryme.onrender.com/movie/dune-part-two/",
+      "path": "/movie/dune-part-two/",
+      "body_visible_words": 740,
+      "main_visible_words": 632,
+      "main_dom_words": 850,
+      "top_hidden_words": 295,
+      "main_links": 39,
+      "visible_main_links": 37,
+      "empty_visible_main_links": 0,
+      "main_images": 11,
+      "visible_main_images": 11,
+      "broken_visible_images": 3,
+      "resource_requests": 15,
+      "resource_transfer_bytes": 101450,
+      "resource_hosts": {
+        "bryme.onrender.com": 5,
+        "i.ytimg.com": 5,
+        "www.youtube-nocookie.com": 1,
+        "www.googletagmanager.com": 1,
+        "www.youtube.com": 2,
+        "www.google-analytics.com": 1
+      },
+      "console_severe": []
+    },
+    {
+      "data_layer_length": 4,
+      "deskbar_visible": false,
+      "frames": [
+        {
+          "src": "https://www.youtube-nocookie.com/embed/JOddp-nlNvQ?rel=0&modestbranding=1&playsinline=1&enablejsapi=1&autoplay=1&mute=1&cc_load_policy=1&origin=https%3A%2F%2Fbryme.onrender.com",
+          "visible": true
+        }
+      ],
+      "ga_loaded": true,
+      "h1": [
+        {
+          "text": "Thor",
+          "visible": true
+        }
+      ],
+      "header_visible": false,
+      "mobile_nav_visible": true,
+      "monetag_loaded": false,
+      "scripts": [
+        "https://www.youtube.com/s/player/f572e43c/www-widgetapi.vflset/www-widgetapi.js",
+        "https://www.youtube.com/iframe_api",
+        "https://bryme.onrender.com/assets/analytics.js",
+        "https://www.googletagmanager.com/gtag/js?id=G-NQKHPBYFE8",
+        "https://bryme.onrender.com/assets/site-app.js"
+      ],
+      "status_title": "Thor (2011) | Cast, Trailer & Where to Watch | BRYME",
+      "url": "https://bryme.onrender.com/movie/thor/",
+      "path": "/movie/thor/",
+      "body_visible_words": 487,
+      "main_visible_words": 379,
+      "main_dom_words": 413,
+      "top_hidden_words": 108,
+      "main_links": 33,
+      "visible_main_links": 31,
+      "empty_visible_main_links": 0,
+      "main_images": 11,
+      "visible_main_images": 11,
+      "broken_visible_images": 3,
+      "resource_requests": 13,
+      "resource_transfer_bytes": 90113,
+      "resource_hosts": {
+        "bryme.onrender.com": 5,
+        "www.youtube-nocookie.com": 1,
+        "i.ytimg.com": 4,
+        "www.googletagmanager.com": 1,
+        "www.youtube.com": 2
+      },
+      "console_severe": []
+    },
+    {
+      "data_layer_length": 4,
+      "deskbar_visible": false,
+      "frames": [
+        {
+          "src": "https://www.youtube-nocookie.com/embed/yAN5uspO_hk?rel=0&modestbranding=1&playsinline=1&enablejsapi=1&autoplay=1&mute=1&cc_load_policy=1&origin=https%3A%2F%2Fbryme.onrender.com",
+          "visible": true
+        }
+      ],
+      "ga_loaded": true,
+      "h1": [
+        {
+          "text": "Shōgun",
+          "visible": true
+        }
+      ],
+      "header_visible": false,
+      "mobile_nav_visible": true,
+      "monetag_loaded": false,
+      "scripts": [
+        "https://bryme.onrender.com/assets/analytics.js",
+        "https://www.googletagmanager.com/gtag/js?id=G-NQKHPBYFE8",
+        "https://bryme.onrender.com/assets/site-app.js"
+      ],
+      "status_title": "Shōgun (2024) | Cast, Trailer, Episodes & Where to Watch | BRYME",
+      "url": "https://bryme.onrender.com/series/shogun/",
+      "path": "/series/shogun/",
+      "body_visible_words": 652,
+      "main_visible_words": 544,
+      "main_dom_words": 562,
+      "top_hidden_words": 85,
+      "main_links": 31,
+      "visible_main_links": 29,
+      "empty_visible_main_links": 0,
+      "main_images": 11,
+      "visible_main_images": 11,
+      "broken_visible_images": 3,
+      "resource_requests": 12,
+      "resource_transfer_bytes": 132223,
+      "resource_hosts": {
+        "bryme.onrender.com": 5,
+        "www.googletagmanager.com": 1,
+        "i.ytimg.com": 5,
+        "www.youtube-nocookie.com": 1
+      },
+      "console_severe": []
+    },
+    {
+      "data_layer_length": 4,
+      "deskbar_visible": false,
+      "frames": [],
+      "ga_loaded": true,
+      "h1": [
+        {
+          "text": "TV Series – Discover Popular & Trending Series",
+          "visible": true
+        }
+      ],
+      "header_visible": false,
+      "mobile_nav_visible": true,
+      "monetag_loaded": false,
+      "scripts": [
+        "https://bryme.onrender.com/assets/analytics.js",
+        "https://www.googletagmanager.com/gtag/js?id=G-NQKHPBYFE8",
+        "https://bryme.onrender.com/assets/site-app.js"
+      ],
+      "status_title": "TV Series – Discover Popular & Trending Series | BRYME",
+      "url": "https://bryme.onrender.com/series/",
+      "path": "/series/",
+      "body_visible_words": 129,
+      "main_visible_words": 21,
+      "main_dom_words": 20,
+      "top_hidden_words": 4,
+      "main_links": 0,
+      "visible_main_links": 0,
+      "empty_visible_main_links": 0,
+      "main_images": 0,
+      "visible_main_images": 0,
+      "broken_visible_images": 0,
+      "resource_requests": 6,
+      "resource_transfer_bytes": 1500,
+      "resource_hosts": {
+        "bryme.onrender.com": 5,
+        "www.googletagmanager.com": 1
+      },
+      "console_severe": []
+    },
+    {
+      "data_layer_length": 4,
+      "deskbar_visible": false,
+      "frames": [],
+      "ga_loaded": true,
+      "h1": [
+        {
+          "text": "Anime – Discover Popular Anime, New Releases &",
+          "visible": true
+        }
+      ],
+      "header_visible": false,
+      "mobile_nav_visible": true,
+      "monetag_loaded": false,
+      "scripts": [
+        "https://bryme.onrender.com/assets/analytics.js",
+        "https://www.googletagmanager.com/gtag/js?id=G-NQKHPBYFE8",
+        "https://bryme.onrender.com/assets/site-app.js"
+      ],
+      "status_title": "Anime – Discover Popular Anime, New Releases &… | BRYME",
+      "url": "https://bryme.onrender.com/anime/",
+      "path": "/anime/",
+      "body_visible_words": 163,
+      "main_visible_words": 55,
+      "main_dom_words": 53,
+      "top_hidden_words": 4,
+      "main_links": 0,
+      "visible_main_links": 0,
+      "empty_visible_main_links": 0,
+      "main_images": 0,
+      "visible_main_images": 0,
+      "broken_visible_images": 0,
+      "resource_requests": 6,
+      "resource_transfer_bytes": 1500,
+      "resource_hosts": {
+        "bryme.onrender.com": 5,
+        "www.googletagmanager.com": 1
+      },
+      "console_severe": []
+    },
+    {
+      "data_layer_length": 4,
+      "deskbar_visible": true,
+      "frames": [],
+      "ga_loaded": true,
+      "h1": [
+        {
+          "text": "Movies",
+          "visible": true
+        }
+      ],
+      "header_visible": true,
+      "mobile_nav_visible": true,
+      "monetag_loaded": false,
+      "scripts": [
+        "https://bryme.onrender.com/assets/analytics.js",
+        "https://www.googletagmanager.com/gtag/js?id=G-NQKHPBYFE8",
+        "https://bryme.onrender.com/assets/site-app.js"
+      ],
+      "status_title": "Movies – Discover Popular & Trending Movies | BRYME",
+      "url": "https://bryme.onrender.com/movies/",
+      "path": "/movies/",
+      "body_visible_words": 852,
+      "main_visible_words": 723,
+      "main_dom_words": 13929,
+      "top_hidden_words": 248,
+      "main_links": 76,
+      "visible_main_links": 76,
+      "empty_visible_main_links": 0,
+      "main_images": 48,
+      "visible_main_images": 48,
+      "broken_visible_images": 31,
+      "resource_requests": 24,
+      "resource_transfer_bytes": 158903,
+      "resource_hosts": {
+        "bryme.onrender.com": 6,
+        "i.ytimg.com": 17,
+        "www.googletagmanager.com": 1
+      },
+      "console_severe": []
+    },
+    {
+      "data_layer_length": 4,
+      "deskbar_visible": true,
+      "frames": [],
+      "ga_loaded": true,
+      "h1": [
+        {
+          "text": "Movies from 1975",
+          "visible": true
+        }
+      ],
+      "header_visible": true,
+      "mobile_nav_visible": true,
+      "monetag_loaded": false,
+      "scripts": [
+        "https://bryme.onrender.com/assets/analytics.js",
+        "https://www.googletagmanager.com/gtag/js?id=G-NQKHPBYFE8",
+        "https://bryme.onrender.com/assets/site-app.js"
+      ],
+      "status_title": "Movies from 1975 | BRYME",
+      "url": "https://bryme.onrender.com/year/1975/",
+      "path": "/year/1975/",
+      "body_visible_words": 154,
+      "main_visible_words": 25,
+      "main_dom_words": 23,
+      "top_hidden_words": 6,
+      "main_links": 5,
+      "visible_main_links": 5,
+      "empty_visible_main_links": 0,
+      "main_images": 3,
+      "visible_main_images": 3,
+      "broken_visible_images": 0,
+      "resource_requests": 9,
+      "resource_transfer_bytes": 26490,
+      "resource_hosts": {
+        "bryme.onrender.com": 7,
+        "i.ytimg.com": 1,
+        "www.googletagmanager.com": 1
+      },
+      "console_severe": []
+    },
+    {
+      "data_layer_length": 4,
+      "deskbar_visible": true,
+      "frames": [],
+      "ga_loaded": true,
+      "h1": [
+        {
+          "text": "Netflix Channel",
+          "visible": true
+        }
+      ],
+      "header_visible": true,
+      "mobile_nav_visible": true,
+      "monetag_loaded": false,
+      "scripts": [
+        "https://bryme.onrender.com/assets/analytics.js",
+        "https://www.googletagmanager.com/gtag/js?id=G-NQKHPBYFE8",
+        "https://bryme.onrender.com/assets/site-app.js"
+      ],
+      "status_title": "Netflix Channel — Movies | BRYME",
+      "url": "https://bryme.onrender.com/channels/netflix/",
+      "path": "/channels/netflix/",
+      "body_visible_words": 1710,
+      "main_visible_words": 1581,
+      "main_dom_words": 1446,
+      "top_hidden_words": 986,
+      "main_links": 493,
+      "visible_main_links": 493,
+      "empty_visible_main_links": 0,
+      "main_images": 468,
+      "visible_main_images": 468,
+      "broken_visible_images": 441,
+      "resource_requests": 33,
+      "resource_transfer_bytes": 278165,
+      "resource_hosts": {
+        "bryme.onrender.com": 5,
+        "i.ytimg.com": 27,
+        "www.googletagmanager.com": 1
+      },
+      "console_severe": []
+    },
+    {
+      "data_layer_length": 5,
+      "deskbar_visible": false,
+      "frames": [],
+      "ga_loaded": true,
+      "h1": [
+        {
+          "text": "⚽ Sports",
+          "visible": true
+        }
+      ],
+      "header_visible": true,
+      "mobile_nav_visible": true,
+      "monetag_loaded": false,
+      "scripts": [
+        "https://bryme.onrender.com/assets/analytics.js",
+        "https://www.googletagmanager.com/gtag/js?id=G-NQKHPBYFE8",
+        "https://bryme.onrender.com/assets/site-app.js",
+        "https://bryme.onrender.com/assets/sports-simple.js"
+      ],
+      "status_title": "Sports — Scores, Tables & Fixtures | BRYME",
+      "url": "https://bryme.onrender.com/sports/",
+      "path": "/sports/",
+      "body_visible_words": 321,
+      "main_visible_words": 274,
+      "main_dom_words": 237,
+      "top_hidden_words": 0,
+      "main_links": 48,
+      "visible_main_links": 48,
+      "empty_visible_main_links": 0,
+      "main_images": 12,
+      "visible_main_images": 12,
+      "broken_visible_images": 0,
+      "resource_requests": 21,
+      "resource_transfer_bytes": 6156,
+      "resource_hosts": {
+        "bryme.onrender.com": 8,
+        "www.googletagmanager.com": 1,
+        "a.espncdn.com": 12
+      },
+      "console_severe": []
+    },
+    {
+      "data_layer_length": 4,
+      "deskbar_visible": false,
+      "frames": [],
+      "ga_loaded": true,
+      "h1": [
+        {
+          "text": "🏴󠁧󠁢󠁥󠁮󠁧󠁿 Premier League",
+          "visible": true
+        }
+      ],
+      "header_visible": true,
+      "mobile_nav_visible": true,
+      "monetag_loaded": false,
+      "scripts": [
+        "https://bryme.onrender.com/assets/analytics.js",
+        "https://www.googletagmanager.com/gtag/js?id=G-NQKHPBYFE8",
+        "https://bryme.onrender.com/assets/site-app.js",
+        "https://bryme.onrender.com/assets/sports-simple.js"
+      ],
+      "status_title": "Premier League Fixtures 2026/27: All 380 Matches | BRYME",
+      "url": "https://bryme.onrender.com/sports/premier-league/fixtures/",
+      "path": "/sports/premier-league/fixtures/",
+      "body_visible_words": 190,
+      "main_visible_words": 80,
+      "main_dom_words": 67,
+      "top_hidden_words": 0,
+      "main_links": 0,
+      "visible_main_links": 0,
+      "empty_visible_main_links": 0,
+      "main_images": 20,
+      "visible_main_images": 20,
+      "broken_visible_images": 0,
+      "resource_requests": 29,
+      "resource_transfer_bytes": 2400,
+      "resource_hosts": {
+        "bryme.onrender.com": 8,
+        "www.googletagmanager.com": 1,
+        "a.espncdn.com": 20
+      },
+      "console_severe": []
+    },
+    {
+      "data_layer_length": 4,
+      "deskbar_visible": false,
+      "frames": [],
+      "ga_loaded": true,
+      "h1": [
+        {
+          "text": "🏴󠁧󠁢󠁥󠁮󠁧󠁿 Premier League",
+          "visible": true
+        }
+      ],
+      "header_visible": true,
+      "mobile_nav_visible": true,
+      "monetag_loaded": false,
+      "scripts": [
+        "https://bryme.onrender.com/assets/analytics.js",
+        "https://www.googletagmanager.com/gtag/js?id=G-NQKHPBYFE8",
+        "https://bryme.onrender.com/assets/site-app.js",
+        "https://bryme.onrender.com/assets/sports-simple.js"
+      ],
+      "status_title": "Premier League Table 2026/27 — Live Standings | BRYME",
+      "url": "https://bryme.onrender.com/sports/premier-league/table/",
+      "path": "/sports/premier-league/table/",
+      "body_visible_words": 255,
+      "main_visible_words": 145,
+      "main_dom_words": 28,
+      "top_hidden_words": 0,
+      "main_links": 0,
+      "visible_main_links": 0,
+      "empty_visible_main_links": 0,
+      "main_images": 20,
+      "visible_main_images": 20,
+      "broken_visible_images": 0,
+      "resource_requests": 29,
+      "resource_transfer_bytes": 2400,
+      "resource_hosts": {
+        "bryme.onrender.com": 8,
+        "www.googletagmanager.com": 1,
+        "a.espncdn.com": 20
+      },
+      "console_severe": []
+    },
+    {
+      "data_layer_length": 4,
+      "deskbar_visible": false,
+      "frames": [],
+      "ga_loaded": true,
+      "h1": [
+        {
+          "text": "Arsenal",
+          "visible": true
+        }
+      ],
+      "header_visible": true,
+      "mobile_nav_visible": true,
+      "monetag_loaded": false,
+      "scripts": [
+        "https://bryme.onrender.com/assets/analytics.js",
+        "https://www.googletagmanager.com/gtag/js?id=G-NQKHPBYFE8",
+        "https://bryme.onrender.com/assets/site-app.js",
+        "https://bryme.onrender.com/assets/team-simple.js"
+      ],
+      "status_title": "Arsenal — scores | BRYME",
+      "url": "https://bryme.onrender.com/sports/premier-league/teams/arsenal/",
+      "path": "/sports/premier-league/teams/arsenal/",
+      "body_visible_words": 136,
+      "main_visible_words": 68,
+      "main_dom_words": 46,
+      "top_hidden_words": 0,
+      "main_links": 2,
+      "visible_main_links": 2,
+      "empty_visible_main_links": 0,
+      "main_images": 0,
+      "visible_main_images": 0,
+      "broken_visible_images": 0,
+      "resource_requests": 10,
+      "resource_transfer_bytes": 4232,
+      "resource_hosts": {
+        "bryme.onrender.com": 9,
+        "www.googletagmanager.com": 1
+      },
+      "console_severe": []
+    },
+    {
+      "data_layer_length": 4,
+      "deskbar_visible": false,
+      "frames": [],
+      "ga_loaded": true,
+      "h1": [
+        {
+          "text": "Aston Villa 0-1 Arsenal",
+          "visible": true
+        }
+      ],
+      "header_visible": true,
+      "mobile_nav_visible": true,
+      "monetag_loaded": false,
+      "scripts": [
+        "https://bryme.onrender.com/assets/analytics.js",
+        "https://www.googletagmanager.com/gtag/js?id=G-NQKHPBYFE8",
+        "https://bryme.onrender.com/assets/site-app.js",
+        "https://bryme.onrender.com/assets/sports-simple.js"
+      ],
+      "status_title": "Aston Villa 0-1 Arsenal: Result & Scorers | BRYME",
+      "url": "https://bryme.onrender.com/sports/premier-league/reports/aston-villa-vs-arsenal/",
+      "path": "/sports/premier-league/reports/aston-villa-vs-arsenal/",
+      "body_visible_words": 107,
+      "main_visible_words": 54,
+      "main_dom_words": 38,
+      "top_hidden_words": 0,
+      "main_links": 5,
+      "visible_main_links": 5,
+      "empty_visible_main_links": 0,
+      "main_images": 0,
+      "visible_main_images": 0,
+      "broken_visible_images": 0,
+      "resource_requests": 7,
+      "resource_transfer_bytes": 3360,
+      "resource_hosts": {
+        "bryme.onrender.com": 6,
+        "www.googletagmanager.com": 1
+      },
+      "console_severe": [
+        "https://bryme.onrender.com/favicon.ico - Failed to load resource: the server responded with a status of 404 ()"
+      ]
+    },
+    {
+      "data_layer_length": 5,
+      "deskbar_visible": false,
+      "frames": [],
+      "ga_loaded": true,
+      "h1": [
+        {
+          "text": "Arsenal Begin Their Title Defence: Can Anyone Stop Them?",
+          "visible": true
+        }
+      ],
+      "header_visible": true,
+      "mobile_nav_visible": false,
+      "monetag_loaded": false,
+      "scripts": [
+        "https://bryme.onrender.com/assets/analytics.js",
+        "https://www.googletagmanager.com/gtag/js?id=G-NQKHPBYFE8",
+        "https://bryme.onrender.com/assets/sports-simple.js"
+      ],
+      "status_title": "Arsenal's Title Defence: Can Anyone Stop Them? | BRYME",
+      "url": "https://bryme.onrender.com/sports/articles/arsenal-title-defence/",
+      "path": "/sports/articles/arsenal-title-defence/",
+      "body_visible_words": 57,
+      "main_visible_words": 56,
+      "main_dom_words": 50,
+      "top_hidden_words": 0,
+      "main_links": 1,
+      "visible_main_links": 1,
+      "empty_visible_main_links": 0,
+      "main_images": 0,
+      "visible_main_images": 0,
+      "broken_visible_images": 0,
+      "resource_requests": 6,
+      "resource_transfer_bytes": 1200,
+      "resource_hosts": {
+        "bryme.onrender.com": 4,
+        "www.googletagmanager.com": 1,
+        "www.google-analytics.com": 1
+      },
+      "console_severe": []
+    },
+    {
+      "data_layer_length": 4,
+      "deskbar_visible": false,
+      "frames": [],
+      "ga_loaded": true,
+      "h1": [
+        {
+          "text": "💰 Make Money",
+          "visible": true
+        }
+      ],
+      "header_visible": true,
+      "mobile_nav_visible": true,
+      "monetag_loaded": false,
+      "scripts": [
+        "https://bryme.onrender.com/assets/analytics.js",
+        "https://www.googletagmanager.com/gtag/js?id=G-NQKHPBYFE8",
+        "https://bryme.onrender.com/assets/site-app.js",
+        "https://bryme.onrender.com/assets/money-simple.js"
+      ],
+      "status_title": "Make Money | BRYME",
+      "url": "https://bryme.onrender.com/make-money/",
+      "path": "/make-money/",
+      "body_visible_words": 160,
+      "main_visible_words": 139,
+      "main_dom_words": 116,
+      "top_hidden_words": 0,
+      "main_links": 10,
+      "visible_main_links": 10,
+      "empty_visible_main_links": 0,
+      "main_images": 0,
+      "visible_main_images": 0,
+      "broken_visible_images": 0,
+      "resource_requests": 8,
+      "resource_transfer_bytes": 6529,
+      "resource_hosts": {
+        "bryme.onrender.com": 7,
+        "www.googletagmanager.com": 1
+      },
+      "console_severe": []
+    },
+    {
+      "data_layer_length": 4,
+      "deskbar_visible": false,
+      "frames": [],
+      "ga_loaded": true,
+      "h1": [
+        {
+          "text": "Microtasks",
+          "visible": true
+        }
+      ],
+      "header_visible": true,
+      "mobile_nav_visible": true,
+      "monetag_loaded": false,
+      "scripts": [
+        "https://bryme.onrender.com/assets/analytics.js",
+        "https://www.googletagmanager.com/gtag/js?id=G-NQKHPBYFE8",
+        "https://bryme.onrender.com/assets/site-app.js"
+      ],
+      "status_title": "Remote jobs | BRYME",
+      "url": "https://bryme.onrender.com/make-money/microtasks/",
+      "path": "/make-money/microtasks/",
+      "body_visible_words": 52,
+      "main_visible_words": 31,
+      "main_dom_words": 26,
+      "top_hidden_words": 0,
+      "main_links": 6,
+      "visible_main_links": 6,
+      "empty_visible_main_links": 0,
+      "main_images": 0,
+      "visible_main_images": 0,
+      "broken_visible_images": 0,
+      "resource_requests": 6,
+      "resource_transfer_bytes": 1500,
+      "resource_hosts": {
+        "bryme.onrender.com": 5,
+        "www.googletagmanager.com": 1
+      },
+      "console_severe": []
+    },
+    {
+      "data_layer_length": 4,
+      "deskbar_visible": false,
+      "frames": [],
+      "ga_loaded": true,
+      "h1": [
+        {
+          "text": "🤖 Tech",
+          "visible": true
+        }
+      ],
+      "header_visible": true,
+      "mobile_nav_visible": true,
+      "monetag_loaded": false,
+      "scripts": [
+        "https://bryme.onrender.com/assets/analytics.js",
+        "https://www.googletagmanager.com/gtag/js?id=G-NQKHPBYFE8",
+        "https://bryme.onrender.com/assets/site-app.js"
+      ],
+      "status_title": "Tech & AI | BRYME",
+      "url": "https://bryme.onrender.com/tech/",
+      "path": "/tech/",
+      "body_visible_words": 213,
+      "main_visible_words": 196,
+      "main_dom_words": 180,
+      "top_hidden_words": 0,
+      "main_links": 24,
+      "visible_main_links": 24,
+      "empty_visible_main_links": 0,
+      "main_images": 0,
+      "visible_main_images": 0,
+      "broken_visible_images": 0,
+      "resource_requests": 5,
+      "resource_transfer_bytes": 1200,
+      "resource_hosts": {
+        "bryme.onrender.com": 4,
+        "www.googletagmanager.com": 1
+      },
+      "console_severe": []
+    },
+    {
+      "data_layer_length": 4,
+      "deskbar_visible": false,
+      "frames": [],
+      "ga_loaded": true,
+      "h1": [
+        {
+          "text": "AI tools",
+          "visible": true
+        }
+      ],
+      "header_visible": true,
+      "mobile_nav_visible": true,
+      "monetag_loaded": false,
+      "scripts": [
+        "https://bryme.onrender.com/assets/analytics.js",
+        "https://www.googletagmanager.com/gtag/js?id=G-NQKHPBYFE8",
+        "https://bryme.onrender.com/assets/site-app.js"
+      ],
+      "status_title": "AI tools | BRYME",
+      "url": "https://bryme.onrender.com/tech/ai-tools/",
+      "path": "/tech/ai-tools/",
+      "body_visible_words": 63,
+      "main_visible_words": 46,
+      "main_dom_words": 41,
+      "top_hidden_words": 0,
+      "main_links": 6,
+      "visible_main_links": 6,
+      "empty_visible_main_links": 0,
+      "main_images": 0,
+      "visible_main_images": 0,
+      "broken_visible_images": 0,
+      "resource_requests": 5,
+      "resource_transfer_bytes": 1200,
+      "resource_hosts": {
+        "bryme.onrender.com": 4,
+        "www.googletagmanager.com": 1
+      },
+      "console_severe": []
+    },
+    {
+      "data_layer_length": 4,
+      "deskbar_visible": true,
+      "frames": [],
+      "ga_loaded": true,
+      "h1": [
+        {
+          "text": "What are you looking for?",
+          "visible": true
+        }
+      ],
+      "header_visible": true,
+      "mobile_nav_visible": true,
+      "monetag_loaded": false,
+      "scripts": [
+        "https://bryme.onrender.com/assets/analytics.js",
+        "https://www.googletagmanager.com/gtag/js?id=G-NQKHPBYFE8",
+        "https://bryme.onrender.com/assets/site-app.js"
+      ],
+      "status_title": "Search Movies, TV Series & Anime | BRYME",
+      "url": "https://bryme.onrender.com/search/",
+      "path": "/search/",
+      "body_visible_words": 161,
+      "main_visible_words": 32,
+      "main_dom_words": 20817,
+      "top_hidden_words": 122,
+      "main_links": 0,
+      "visible_main_links": 0,
+      "empty_visible_main_links": 0,
+      "main_images": 0,
+      "visible_main_images": 0,
+      "broken_visible_images": 0,
+      "resource_requests": 6,
+      "resource_transfer_bytes": 1500,
+      "resource_hosts": {
+        "bryme.onrender.com": 5,
+        "www.googletagmanager.com": 1
+      },
+      "console_severe": []
+    },
+    {
+      "data_layer_length": 4,
+      "deskbar_visible": false,
+      "frames": [],
+      "ga_loaded": true,
+      "h1": [
+        {
+          "text": "Christopher Nolan Movies in Order: Where to Start and What to Watch Next",
+          "visible": true
+        }
+      ],
+      "header_visible": true,
+      "mobile_nav_visible": true,
+      "monetag_loaded": false,
+      "scripts": [
+        "https://bryme.onrender.com/assets/analytics.js",
+        "https://www.googletagmanager.com/gtag/js?id=G-NQKHPBYFE8",
+        "https://bryme.onrender.com/assets/site-app.js"
+      ],
+      "status_title": "Christopher Nolan Movies in Order: Where to Start… | BRYME",
+      "url": "https://bryme.onrender.com/article/christopher-nolan-movies-order/",
+      "path": "/article/christopher-nolan-movies-order/",
+      "body_visible_words": 864,
+      "main_visible_words": 754,
+      "main_dom_words": 733,
+      "top_hidden_words": 20,
+      "main_links": 36,
+      "visible_main_links": 36,
+      "empty_visible_main_links": 0,
+      "main_images": 10,
+      "visible_main_images": 10,
+      "broken_visible_images": 6,
+      "resource_requests": 11,
+      "resource_transfer_bytes": 1800,
+      "resource_hosts": {
+        "bryme.onrender.com": 6,
+        "i.ytimg.com": 4,
+        "www.googletagmanager.com": 1
+      },
+      "console_severe": []
+    },
+    {
+      "data_layer_length": 4,
+      "deskbar_visible": false,
+      "frames": [],
+      "ga_loaded": true,
+      "h1": [
+        {
+          "text": "Privacy Policy",
+          "visible": true
+        }
+      ],
+      "header_visible": true,
+      "mobile_nav_visible": true,
+      "monetag_loaded": false,
+      "scripts": [
+        "https://bryme.onrender.com/assets/analytics.js",
+        "https://www.googletagmanager.com/gtag/js?id=G-NQKHPBYFE8",
+        "https://bryme.onrender.com/assets/site-app.js"
+      ],
+      "status_title": "Privacy Policy – BRYME | BRYME",
+      "url": "https://bryme.onrender.com/privacy/",
+      "path": "/privacy/",
+      "body_visible_words": 568,
+      "main_visible_words": 458,
+      "main_dom_words": 444,
+      "top_hidden_words": 0,
+      "main_links": 1,
+      "visible_main_links": 1,
+      "empty_visible_main_links": 0,
+      "main_images": 0,
+      "visible_main_images": 0,
+      "broken_visible_images": 0,
+      "resource_requests": 6,
+      "resource_transfer_bytes": 1500,
+      "resource_hosts": {
+        "bryme.onrender.com": 5,
+        "www.googletagmanager.com": 1
+      },
+      "console_severe": []
+    }
+  ],
+  "desktop_checks": [
+    {
+      "data_layer_length": 4,
+      "deskbar_visible": true,
+      "frames": [],
+      "ga_loaded": true,
+      "h1": [
+        {
+          "text": "Discover what you love.\nLearn what you need.\nFind what’s next.",
+          "visible": true
+        }
+      ],
+      "header_visible": true,
+      "mobile_nav_visible": false,
+      "monetag_loaded": true,
+      "scripts": [
+        "https://bryme.onrender.com/assets/analytics.js",
+        "https://www.googletagmanager.com/gtag/js?id=G-NQKHPBYFE8",
+        "https://bryme.onrender.com/assets/site-app.js",
+        "https://bryme.onrender.com/assets/sports-engine.js",
+        "https://n6wxm.com/vignette.min.js"
+      ],
+      "status_title": "BRYME — Movies, Sports, Money & Tech",
+      "url": "https://bryme.onrender.com/",
+      "path": "/",
+      "body_visible_words": 877,
+      "main_visible_words": 748,
+      "main_dom_words": 643,
+      "top_hidden_words": 32,
+      "main_links": 77,
+      "visible_main_links": 77,
+      "empty_visible_main_links": 0,
+      "main_images": 16,
+      "visible_main_images": 16,
+      "broken_visible_images": 9,
+      "resource_requests": 27,
+      "resource_transfer_bytes": 1352190,
+      "resource_hosts": {
+        "i.ytimg.com": 7,
+        "bryme.onrender.com": 15,
+        "www.googletagmanager.com": 1,
+        "www.google-analytics.com": 1,
+        "n6wxm.com": 1,
+        "my.rtmark.net": 1,
+        "ldrws.com": 1
+      },
+      "console_severe": []
+    },
+    {
+      "data_layer_length": 4,
+      "deskbar_visible": false,
+      "frames": [
+        {
+          "src": "https://www.youtube-nocookie.com/embed/PAV9YN5TEVg?rel=0&modestbranding=1&playsinline=1&enablejsapi=1&autoplay=1&mute=1&cc_load_policy=1&origin=https%3A%2F%2Fbryme.onrender.com",
+          "visible": true
+        }
+      ],
+      "ga_loaded": true,
+      "h1": [
+        {
+          "text": "Dune: Part Two",
+          "visible": true
+        }
+      ],
+      "header_visible": false,
+      "mobile_nav_visible": false,
+      "monetag_loaded": false,
+      "scripts": [
+        "https://bryme.onrender.com/assets/analytics.js",
+        "https://www.googletagmanager.com/gtag/js?id=G-NQKHPBYFE8",
+        "https://bryme.onrender.com/assets/site-app.js"
+      ],
+      "status_title": "Dune: Part Two (2024) | Cast, Trailer & Where to Watch | BRYME",
+      "url": "https://bryme.onrender.com/movie/dune-part-two/",
+      "path": "/movie/dune-part-two/",
+      "body_visible_words": 734,
+      "main_visible_words": 632,
+      "main_dom_words": 850,
+      "top_hidden_words": 295,
+      "main_links": 39,
+      "visible_main_links": 37,
+      "empty_visible_main_links": 0,
+      "main_images": 11,
+      "visible_main_images": 11,
+      "broken_visible_images": 1,
+      "resource_requests": 13,
+      "resource_transfer_bytes": 120046,
+      "resource_hosts": {
+        "bryme.onrender.com": 5,
+        "i.ytimg.com": 6,
+        "www.googletagmanager.com": 1,
+        "www.youtube-nocookie.com": 1
+      },
+      "console_severe": []
+    }
+  ]
+}

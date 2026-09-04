@@ -40,6 +40,8 @@ async function fetchStandings(c) {
   if (!Array.isArray(entries) || entries.length < 6) throw new Error(c.id + " thin standings");
   const teams = entries.map((e) => {
     const s = statMap(e); const team = e.team || {};
+    const gf = num((s.pointsFor || {}).displayValue ?? (s.pointsFor || {}).summary);
+    const ga = num((s.pointsAgainst || {}).displayValue ?? (s.pointsAgainst || {}).summary);
     return {
       name: team.displayName || "?",
       short: short(team),
@@ -48,9 +50,11 @@ async function fetchStandings(c) {
       w: num((s.wins || {}).displayValue ?? (s.wins || {}).summary),
       d: num((s.ties || {}).displayValue ?? (s.ties || {}).summary),
       l: num((s.losses || {}).displayValue ?? (s.losses || {}).summary),
-      gf: num((s.pointsFor || {}).displayValue ?? (s.pointsFor || {}).summary),
-      ga: num((s.pointsAgainst || {}).displayValue ?? (s.pointsAgainst || {}).summary),
-      gd: String((s.pointDifferential || {}).summary ?? "0"),
+      gf,
+      ga,
+      // Derive goal difference from the same goals-for/against values we publish.
+      // ESPN's pointDifferential summary has been absent/zero for soccer feeds.
+      gd: String(gf - ga),
       pts: num((s.points || {}).displayValue ?? (s.points || {}).summary)
     };
   }).filter((t) => t.name !== "?")

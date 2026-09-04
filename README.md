@@ -1,66 +1,73 @@
 # BRYME
 
-BRYME is an independent multi-category discovery platform built to help people discover things worth watching, reading, learning and exploring.
+BRYME is a source-first Nigerian publication for verified opportunities, practical technology and original entertainment editorial.
 
-🌐 **Live website:** https://bryme.onrender.com/
+**Current public host:** <https://bryme.onrender.com/>
 
-## What is BRYME?
+**Project owner:** Ojeology
 
-BRYME began as an entertainment discovery platform and has expanded into a broader discovery platform covering:
+## Editorial focus
 
-- 🎬 **Movies** — movie discovery, trailers, recommendations and editorial guides
-- 📺 **TV Series** — series discovery and viewing information
-- 🍿 **Anime** — anime discovery and related content
-- ⚽ **Sports** — football and other sports stories, previews and results
-- 💰 **Money** — practical guides and opportunities for making money
-- 🤖 **Technology & AI** — useful technology, AI tools and guides
+- **Verified jobs:** dated links to exact employer or applicant-tracking-system vacancies, with Nigeria eligibility and work-location caveats.
+- **Practical technology:** task-first guides for Nigerian and Africa-based readers.
+- **Opportunities:** researched earning and application guidance without guaranteed-income claims.
+- **Watch & Read:** original entertainment recommendations and commentary.
 
-The platform is designed around a simple idea: people often arrive looking for one thing and discover something else worth exploring.
+Legacy movie, series, anime and sports interfaces remain available only as contained archives. They are excluded from Search unless explicitly admitted by `content/index-allowlist.json`. Automated sports publishing is paused pending source-rights and production approval.
 
-## Movies & Entertainment
+## Build
 
-BRYME has a growing catalogue of movies, TV series and anime. Entertainment pages can include:
+The public site is deterministic and has no package dependencies:
 
-- Movie and series information
-- Verified trailers
-- Cast and genre information
-- Editorial recommendations
-- Related titles
-- "What to watch next" discovery
-- Where-to-watch information where available
+```bash
+npm run build
+```
 
-The catalogue is continuously expanding.
+That command builds the lean editorial stylesheet and focused pages, applies the idempotent audit remediation, then regenerates robots, sitemap, News sitemap and RSS from explicit policy files.
 
-## Sports
+Do **not** run `scripts/build-static-foundation.js` casually. It is a destructive historical generator and requires `ALLOW_DESTRUCTIVE_BUILD=1`.
 
-BRYME also publishes sports-related content, including football coverage, match previews, results and other sports stories.
+## Release gates
 
-## Money, Technology & AI
+```bash
+npm test
+python3 scripts/validate-browser.py  # requires Chromium, ChromeDriver and Selenium
+```
 
-Beyond entertainment, BRYME is developing practical content around making money, writing opportunities, technology and artificial intelligence.
+The Node gate validates indexability, canonicals, schema, titles, sports integrity, links, discovery files, jobs, provenance, deployment hardening and workflows. It also starts the production server locally and tests the HTTP contract.
 
-## SEO & Discovery
+## Server and deployment
 
-BRYME is being developed with search discovery in mind. Individual pieces of content are designed to have their own dedicated pages, descriptive metadata, structured information and internal links.
+Production should run:
 
-The goal is to make BRYME's content useful not only to visitors but also understandable and discoverable across search engines.
+```bash
+npm start
+```
 
-## Project
+`server/server.js` provides:
 
-BRYME is an actively developing independent web project by **Ojeology**.
+- an explicit public-file allowlist;
+- canonical redirects;
+- real 404 and 410 responses;
+- security headers;
+- the read-only competitions endpoint; and
+- health checking at `/healthz`.
 
-The platform is continuously being improved through:
+`render.yaml` defines the intended Node 22 Render Web Service. A generic static deployment will not enforce the same routing and security behavior.
 
-- New content and catalogue expansion
-- Search-engine optimization
-- Better content organization
-- Improved landing pages
-- Video discovery
-- Mobile and desktop improvements
-- New discovery features
+## Search and discovery policy
 
-## Website
+- `content/index-allowlist.json` — routes permitted to be indexable and included in the standard sitemap.
+- `content/news-allowlist.json` — timely, original reporting eligible for Google News discovery; intentionally empty until a route qualifies.
+- `scripts/build-discovery.py` — generates `robots.txt`, `sitemap.xml`, `news-sitemap.xml` and `feed.xml` from those policies.
 
-BRYME: https://bryme.onrender.com/
+Do not add a URL merely because a page exists. It must be useful, original, accurate, visibly sourced and maintained.
 
-BRYME is an evolving project. The catalogue, categories and features will continue to grow.
+## Privacy and monetization
+
+Third-party advertising and analytics are disabled. Trailer players load only after explicit interaction. Do not reintroduce ad or tracking code until deployed behavior, privacy disclosures and any required consent platform are reviewed together.
+
+## Audit records
+
+- `BRYME_FULL_SITE_AUDIT_2026-09-04.md` — complete baseline audit.
+- `BRYME_REMEDIATION_COMPLETION_2026-09-04.md` — implemented fixes, release evidence and owner-only next actions.

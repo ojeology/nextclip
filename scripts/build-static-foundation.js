@@ -1,4 +1,12 @@
 #!/usr/bin/env node
+/* SAFETY GUARD: this legacy generator rewrites thousands of compiled pages.
+ * Use scripts/build-focus-site.py plus scripts/apply-audit-remediation.py for
+ * normal work. A deliberate migration must set ALLOW_DESTRUCTIVE_BUILD=1 and
+ * review the resulting route-count diff before commit. */
+if (process.env.ALLOW_DESTRUCTIVE_BUILD !== '1') {
+  console.error('Refusing destructive legacy build. Set ALLOW_DESTRUCTIVE_BUILD=1 only for an explicitly reviewed migration.');
+  process.exit(2);
+}
 /* Build indexable static movie, series, anime, genre, year and article pages.
    The legacy hash app (legacy/index.html) remains untouched.
    Frontend architecture: types are separated (/movies, /series, /anime),
@@ -185,6 +193,7 @@ movies.forEach(m => {
   if (!m.director && meta.director) { m.director = clean(meta.director); used = true; }
   if ((!m.cast || !m.cast.length) && Array.isArray(meta.cast) && meta.cast.length) { m.cast = meta.cast.map(clean); used = true; }
   if (!m.runtime && meta.runtime) { m.runtime = clean(meta.runtime); used = true; }
+  if (meta.runtimeSource && meta.runtimeSource.url) m.runtimeSource = meta.runtimeSource;
   if (!m.country && meta.country) { m.country = clean(meta.country); used = true; }
   if (!m.language && meta.language) { m.language = clean(meta.language); used = true; }
   /* Description is the ONE field the overlay may overwrite. The fact merge above only
@@ -1181,21 +1190,13 @@ function pageTitle(raw){
 function pageDesc(raw){ return clipMeta(raw, 155); }
 
 
-const LEGAL_SERVICES = [
-  { name: 'Netflix', url: 'https://www.netflix.com' },
-  { name: 'Prime Video', url: 'https://www.primevideo.com' },
-  { name: 'Disney+', url: 'https://www.disneyplus.com' },
-  { name: 'Crunchyroll', url: 'https://www.crunchyroll.com' },
-  { name: 'Apple TV+', url: 'https://tv.apple.com' }
-];
-function legalServiceChips(){
-  return LEGAL_SERVICES.map(sv => `<a class="svc-chip" href="${esc(sv.url)}" rel="nofollow noopener" target="_blank">${esc(sv.name)}</a>`).join('');
-}
 function legalServicesStrip(opts){
   opts = opts || {};
   const title = opts.title || 'Watch legally';
-  const lead = opts.lead || 'BRYME does not host films or episodes. These open the licensed service — not a BRYME stream, and not a promise the title is on that service in your country.';
-  return `<section class="svc-strip"><div class="svc-copy"><h2>${esc(title)}</h2><p>${esc(lead)}</p></div><div class="svc-row">${legalServiceChips()}</div></section>`;
+  const lead = opts.lead || 'BRYME does not host films or episodes. Confirm current, country-specific availability on a licensed service before subscribing.';
+  // Do not render generic provider buttons: they looked like title availability
+  // choices without a title-specific source. Verified links belong to each record.
+  return `<section class="svc-strip"><div class="svc-copy"><h2>${esc(title)}</h2><p>${esc(lead)}</p></div></section>`;
 }
 function deskBar(o){
   const path = String(o.path || '');
@@ -3880,7 +3881,7 @@ for (const m of movies) {
         ${m.popular ? `<div><dt>Popular</dt><dd>⭐ #${m.popularRank} (editorial popular pick)</dd></div>` : ''}
         ${m.editorPick ? `<div><dt>Editor's Pick</dt><dd>👑 #${m.editorPickRank}${m.editorPickNote ? ` — ${esc(m.editorPickNote)}` : ''}</dd></div>` : ''}
       </dl>
-      ${m.metaSource ? `<p class="meta-source">Director, runtime, country and language from <a href="${esc(m.metaSource.url)}" rel="nofollow noopener">Wikidata</a>${m.castSource && m.castSource.url ? `; billed cast from <a href="${esc(m.castSource.url)}" rel="nofollow noopener">Wikipedia</a>` : ''}${m.metaSource.retrieved ? ` · retrieved ${esc(m.metaSource.retrieved)}` : ''}. BRYME's synopsis and editorial score are written in-house.</p>` : ''}
+      ${m.metaSource ? `<p class="meta-source">${m.runtimeSource ? 'Director, country and language' : 'Director, runtime, country and language'} from <a href="${esc(m.metaSource.url)}" rel="nofollow noopener">${esc(m.metaSource.name || 'Wikidata')}</a>${m.castSource && m.castSource.url ? `; billed cast from <a href="${esc(m.castSource.url)}" rel="nofollow noopener">${esc(m.castSource.name || 'Wikipedia')}</a>` : ''}${m.metaSource.retrieved ? ` · retrieved ${esc(m.metaSource.retrieved)}` : ''}.${m.runtimeSource ? ` Runtime checked against <a href="${esc(m.runtimeSource.url)}" rel="nofollow noopener">${esc(m.runtimeSource.name || 'source')}</a>${m.runtimeSource.retrieved ? ` on ${esc(m.runtimeSource.retrieved)}` : ''}.` : ''} BRYME's synopsis and editorial score are written in-house.</p>` : ''}
     </aside>
   </section></main>`
   }));
@@ -4031,7 +4032,7 @@ const legalPages = [
       { h: 'Cookies and local storage', p: ['BRYME uses local storage for preferences you choose on the site (for example theme and the Make Money country filter). A short-lived local record is also used so the interruptive ad is not shown on every page. We do not build a personal profile from that data. Advertising partners may set their own cookies or similar identifiers — see Advertising below.'] },
       { h: 'Analytics', p: ['BRYME does not currently use Google Analytics or any other analytics service. If analytics is introduced in the future, this policy will be updated to describe it.'] },
       { h: 'External services and YouTube', p: ['Trailers are embedded from YouTube using the privacy-enhanced youtube-nocookie.com domain. When you play a trailer, YouTube\'s own privacy policy and cookie practices apply. BRYME has no control over YouTube\'s data handling.', 'Links to third-party websites (such as streaming platforms) leave BRYME; those websites have their own privacy policies.'] },
-      { h: 'Advertising', p: ['BRYME shows advertising through Monetag to keep the site free to read. The only format currently used is a dismissible vignette (n6wxm.com, zone 11610753), limited to about once per visit after you have had time on the page — not on every search, filter, card or page click. Monetag — not BRYME — chooses the ads and may collect technical data such as IP address, browser type and approximate location. Their practices are described in the Monetag privacy policy. Blocking third-party scripts will also limit ads. Ads are not shown on the nationality-selection step, and legal and contact pages stay free of those page tags.'] },
+      { h: 'Advertising', p: ['BRYME does not currently load third-party advertising. Advertising will not be reintroduced until the privacy policy, consent controls and published ad experience accurately describe the deployed behavior.'] },
       { h: 'How information may be used', p: ['Information you send us is used to respond to your enquiry, improve the website and address reported issues. BRYME does not sell personal information.'] },
       { h: 'Data retention', p: ['Correspondence is kept only as long as needed to handle the enquiry. BRYME does not maintain user accounts or store visitor profiles.'] },
       { h: 'Your rights', p: ['You may contact BRYME at any time to ask what information we hold about you, to request correction or deletion, or to ask questions about this policy.'] },
@@ -4068,7 +4069,7 @@ const legalPages = [
       { h: 'Trailer availability', p: ['Trailers are provided by external platforms such as YouTube. Those platforms and their uploaders control the videos: a trailer can be removed, made private or restricted at any time. BRYME does not guarantee that any trailer will remain available, embeddable or playable.'] },
       { h: 'Third-party websites', p: ['Links to external websites lead away from BRYME. Those websites have their own terms, privacy policies and content. BRYME is not responsible for them.'] },
       { h: 'Editorial opinions', p: ['Articles on BRYME express the personal opinions of their authors. Rankings and recommendations are subjective unless explicitly stated otherwise.'] },
-      { h: 'Advertising', p: ['BRYME displays third-party ads through Monetag. We do not control those ads, their destinations or their accuracy.'] },
+      { h: 'Advertising', p: ['BRYME does not currently load third-party ads. Any future advertising must be disclosed in the privacy policy and kept separate from editorial content.'] },
       { h: 'No professional advice', p: ['Nothing on BRYME constitutes professional, financial, legal or any other form of professional advice.'] }
     ]
   },
@@ -4095,7 +4096,7 @@ const legalPages = [
       { h: 'Facts and sources', p: ['Where articles state factual information — release years, episode counts, plot basics — BRYME aims for accuracy and checks facts against reliable sources. External sources may be referenced where appropriate. If a specific fact cannot be verified, it is not invented.'] },
       { h: 'Distinguishing opinion from fact', p: ['BRYME tries to keep the distinction clear: descriptive information (what a series is about, when it aired) is presented as information, while judgments (whether it is good, which one is better) are presented as the author\'s opinion.'] },
       { h: 'Corrections', p: ['When errors are discovered — in facts, links or metadata — BRYME will correct them as soon as practical. Readers are encouraged to report errors via the Contact page.'] },
-      { h: 'Sponsored content and advertising', p: ['BRYME shows advertising through Monetag. Ads are separate from editorial pages. We do not sell article placements as news. If a piece is sponsored or paid, it will be labelled as such.'] }
+      { h: 'Sponsored content and advertising', p: ['BRYME does not currently load third-party advertising and does not sell article placements as news. If a future piece is sponsored or paid, it will be clearly labelled and kept separate from independent editorial decisions.'] }
     ]
   }
 ];

@@ -1,20 +1,20 @@
 # BRYME content and SEO readiness audit
 
-Generated: 2026-08-16
+Generated: 2026-09-04
 
 ## Catalogue coverage
 
-- Movies audited: **632**
-- COMPLETE metadata: **602**
-- PARTIAL metadata: **30**
+- Movies audited: **726**
+- COMPLETE metadata: **695**
+- PARTIAL metadata: **31**
 - MISSING metadata: **0**
-- Movies requiring editorial/media attention: **399**
+- Movies requiring editorial/media attention: **380**
 
 Complete means the currently available title, slug, year, genre, description, temporary poster source, and YouTube ID are present. It does not mean that unavailable cast, director, country, language, runtime, or backdrop data has been invented.
 
 ## Editorial inventory
 
-- Published articles: **18**
+- Published articles: **22**
 - Published topic hubs: **7**
 - Article categories: **Movie Explainers, Movie Recommendations, Nigerian / African Movies, Movie Guides, TV Series / Opinion, TV Series / Survival, Anime / Opinion, Anime / Recommendation, Anime / Character Analysis, Survival, TV Series, Recommendations, Comparisons, Anime**
 
