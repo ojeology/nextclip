@@ -22,6 +22,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import re
 import sys
 import time
 import urllib.error
@@ -80,34 +81,42 @@ def main() -> int:
     args = ap.parse_args()
 
     smp = sitemap_url()
+    # Full URL set from the committed sitemap, so IndexNow receives every route.
+    url_list = [SITE + "/"]
+    sf = ROOT / "sitemap.xml"
+    if sf.is_file():
+        for loc in re.findall(r"<loc>(.*?)</loc>", sf.read_text(encoding="utf-8", errors="replace"), re.S):
+            loc = loc.strip()
+            if loc:
+                url_list.append(loc)
+    # IndexNow caps at 10,000 URLs per call; dedupe while preserving order.
+    url_list = list(dict.fromkeys(url_list))
     print(f"BRYME search-engine ping · SITE_URL={SITE} · key={('set' if KEY else 'MISSING')}")
     print(f"  sitemap: {smp}")
+    print(f"  urls to notify: {len(url_list)}")
 
     if args.dry_run:
         print("DRY-RUN (nothing sent):")
-        print("  - IndexNow  -> https://api.indexnow.org/indexnow (key + url list)")
-        print("  - Google    -> https://www.google.com/ping?sitemap=" + smp)
-        print("  - Bing      -> https://www.bing.com/ping?sitemap=" + smp)
-        print("  - Baidu     -> https://www.baidu.com/ping?sitemap=" + smp)
-        print("  - Naver     -> https://searchadvisor.naver.com/ping?sitemap=" + smp)
+        print("  - IndexNow  -> https://api.indexnow.org/indexnow (key + url list of "
+              + str(len(url_list)) + " urls)")
         return 0
 
     # IndexNow: a single POST notifies all participating engines.
+    # We ping the full URL set from the sitemap, not just the home + sitemap.
     if KEY:
         try_ping("IndexNow", lambda: post_json("https://api.indexnow.org/indexnow", {
             "host": SITE.split("//")[-1].split("/")[0],
-            "key": KEY, "keyLocation": f"{SITE}/{KEY}.txt", "urlList": [SITE + "/", smp],
+            "key": KEY, "keyLocation": f"{SITE}/{KEY}.txt", "urlList": url_list,
         }))
     else:
         log("IndexNow", False, "no IndexNow key configured; skipping (set INDEXNOW_KEY or site.config indexNowKey)")
 
-    # Sitemap pings are largely deprecated (Google and Bing now rely on IndexNow
-    # and sitemap<lastmod>). Kept best-effort for the engines that still support
-    # them; 404/410 responses are expected and harmless.
-    try_ping("Google", lambda: get("https://www.google.com/ping?sitemap=" + smp))
-    try_ping("Bing", lambda: get("https://www.bing.com/ping?sitemap=" + smp))
-    try_ping("Baidu", lambda: get("https://www.baidu.com/ping?sitemap=" + smp))
-    try_ping("Naver", lambda: get("https://searchadvisor.naver.com/ping?sitemap=" + smp))
+    # Google/Bing/Baidu/Naver sitemap pings are DEPRECATED (Google returns
+    # "Sitemaps ping is deprecated", Bing returns 410 Gone, Baidu/Naver 404).
+    # The modern paths are IndexNow (above) and manual sitemap submission in each
+    # engine's webmaster console. We deliberately do not call the deprecated
+    # endpoints. Google submission is done via Search Console once the site has
+    # enough pages (the owner's plan is ~100-200 routes).
     return 0
 
 
