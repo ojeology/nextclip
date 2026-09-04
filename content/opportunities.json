@@ -5042,6 +5042,979 @@
       "editorExperience": {
         "status": "not-yet-submitted"
       }
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "eligibility": {
+        "summary": "Worldwide — no stated geographic restriction.",
+        "mode": "worldwide",
+        "includesGroups": [],
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": false
+      },
+      "writingTypes": [
+        "personal-essay",
+        "narrative-nonfiction"
+      ],
+      "sources": [
+        {
+          "name": "Narratively — Submissions: The Personals (official)",
+          "url": "https://narratively.submittable.com/submit/321516/submissions-the-personals"
+        }
+      ],
+      "deadline": null,
+      "aiPolicy": "not-stated",
+      "experience": "not-stated",
+      "keywords": [],
+      "whatTheyWant": [],
+      "whatTheyDontWant": [],
+      "requirements": [],
+      "howToSubmit": [],
+      "rights": "",
+      "applyUrl": "https://narratively.submittable.com/submit/321516/submissions-the-personals",
+      "applyEmail": "",
+      "applyMethod": "Submittable form (full draft)",
+      "lastVerified": "2026-09-04",
+      "publishedAt": "2026-09-04",
+      "id": "narratively-personals",
+      "slug": "narratively",
+      "publication": "Narratively (The Personals)",
+      "title": "One-moment first-person stories",
+      "seoTitle": "Narratively Personals: $300 for 1,000–1,500-word first-person stories",
+      "excerpt": "Narratively's Personals pays $300 for short, cinematic first-person stories focused on one moment, one day or one week.",
+      "officialUrl": "https://narratively.submittable.com/submit/321516/submissions-the-personals",
+      "writingTypeLabel": "First-person narrative nonfiction",
+      "pay": {
+        "currency": "USD",
+        "amountMin": 300,
+        "amountMax": 300,
+        "display": "$300",
+        "conditions": "$300 for an accepted Personals story, per the official Submittable call.",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "min": 1000,
+        "max": 2200,
+        "display": "1,000–1,500 ideal; 2,200 hard cap"
+      },
+      "response": {
+        "label": "Not publicly stated",
+        "band": "unknown",
+        "official": false
+      },
+      "submissionStatus": "open",
+      "editorExperience": {
+        "status": "submitted",
+        "applied": false,
+        "stages": {
+          "pitch_submitted": false
+        },
+        "summary": "Planned target (carved from The Republic reject); not yet submitted.",
+        "note": "Prepared but not yet submitted."
+      }
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "eligibility": {
+        "summary": "Worldwide — no stated geographic restriction.",
+        "mode": "worldwide",
+        "includesGroups": [],
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": false
+      },
+      "writingTypes": [
+        "personal-essay",
+        "critical-essay",
+        "reported-feature",
+        "reading-list"
+      ],
+      "sources": [
+        {
+          "name": "Longreads — submissions (official)",
+          "url": "https://longreads.com/submissions/"
+        }
+      ],
+      "deadline": null,
+      "aiPolicy": "strict",
+      "experience": "not-stated",
+      "keywords": [],
+      "whatTheyWant": [],
+      "whatTheyDontWant": [],
+      "requirements": [],
+      "howToSubmit": [],
+      "rights": "",
+      "applyUrl": "mailto:hello@longreads.com",
+      "applyEmail": "hello@longreads.com",
+      "applyMethod": "Email (full draft for personal essays)",
+      "lastVerified": "2026-09-04",
+      "publishedAt": "2026-09-04",
+      "id": "longreads",
+      "slug": "longreads",
+      "publication": "Longreads",
+      "title": "Personal and reported essays, reading lists",
+      "seoTitle": "Longreads: $500 for a personal essay, full draft",
+      "excerpt": "Longreads pays $500 for an accepted personal essay and commissions reported essays and reading lists. Personal essays are full drafts, not pitches.",
+      "officialUrl": "https://longreads.com/submissions/",
+      "writingTypeLabel": "Longform nonfiction",
+      "pay": {
+        "currency": "USD",
+        "amountMin": 500,
+        "amountMax": 500,
+        "display": "$500 (personal/critical essays); reading lists $350",
+        "conditions": "$500 for an accepted personal essay, $500+ for critical essays, $350 for a curated reading list, and from $0.50/word for reported features.",
+        "timing": "Net-60 (reported)"
+      },
+      "wordCount": {
+        "min": 2000,
+        "max": 6000,
+        "display": "2,000–6,000 words"
+      },
+      "response": {
+        "label": "Not publicly stated",
+        "band": "unknown",
+        "official": false
+      },
+      "submissionStatus": "open"
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "eligibility": {
+        "summary": "Worldwide — no stated geographic restriction.",
+        "mode": "worldwide",
+        "includesGroups": [],
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": false
+      },
+      "writingTypes": [
+        "humor",
+        "listicle"
+      ],
+      "sources": [
+        {
+          "name": "Cracked — Write For Cracked (official)",
+          "url": "https://www.cracked.com/article_26097_write-cracked-get-paid-heres-how.html"
+        }
+      ],
+      "deadline": null,
+      "aiPolicy": "not-stated",
+      "experience": "not-stated",
+      "keywords": [],
+      "whatTheyWant": [],
+      "whatTheyDontWant": [],
+      "requirements": [],
+      "howToSubmit": [],
+      "rights": "",
+      "applyUrl": "mailto:workshop@cracked.com",
+      "applyEmail": "workshop@cracked.com",
+      "applyMethod": "Email pitch (Cracked Comedy Workshop)",
+      "lastVerified": "2026-09-04",
+      "publishedAt": "2026-09-04",
+      "id": "cracked",
+      "slug": "cracked",
+      "publication": "Cracked",
+      "title": "Comedy list articles",
+      "seoTitle": "Cracked: $100–$150 (first 4), then $200–$250 per list article",
+      "excerpt": "Cracked pays $100–150 for your first four articles and $200–250 for later ones, plus a $100 bonus for a top-10 hit.",
+      "officialUrl": "https://www.cracked.com",
+      "writingTypeLabel": "Comedy lists",
+      "pay": {
+        "currency": "USD",
+        "amountMin": 100,
+        "amountMax": 250,
+        "display": "$100–150 (first 4) → $200–250 (5th+); $100 top-10 bonus",
+        "conditions": "$150 for your first four articles and $250 per article after that, per Cracked's own write-for-Cracked guide. A $100 bonus is awarded for the top-10 list of the month.",
+        "timing": "On publication (PayPal)"
+      },
+      "wordCount": {
+        "min": 1200,
+        "max": 600,
+        "display": "6–8 entries per list"
+      },
+      "response": {
+        "label": "Variable; editor dialogue expected",
+        "band": "unknown",
+        "official": false
+      },
+      "submissionStatus": "open",
+      "editorExperience": {
+        "status": "submitted",
+        "applied": true,
+        "summary": "Pitch v2 sent 28 Aug 2026 to workshop@cracked.com (5 entries + offer of 6–8). Nudge 11 Sep; close 9 Oct if silent.",
+        "stages": {
+          "pitch_submitted": true
+        },
+        "updatedAt": "2026-09-04",
+        "note": "Submitted; no acceptance yet."
+      }
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "eligibility": {
+        "summary": "Worldwide — no stated geographic restriction.",
+        "mode": "worldwide",
+        "includesGroups": [],
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": false
+      },
+      "writingTypes": [
+        "listicle",
+        "gallery",
+        "quiz",
+        "news"
+      ],
+      "sources": [
+        {
+          "name": "WhatCulture — Create content and get paid (official)",
+          "url": "https://whatculture.com/write-for-us"
+        }
+      ],
+      "deadline": null,
+      "aiPolicy": "no-ai",
+      "experience": "not-stated",
+      "keywords": [],
+      "whatTheyWant": [],
+      "whatTheyDontWant": [],
+      "requirements": [],
+      "howToSubmit": [],
+      "rights": "",
+      "applyUrl": "https://whatculture.com/write-for-us",
+      "applyEmail": "",
+      "applyMethod": "Register + create via their content suite",
+      "lastVerified": "2026-09-04",
+      "publishedAt": "2026-09-04",
+      "id": "whatculture",
+      "slug": "whatculture",
+      "publication": "WhatCulture",
+      "title": "Film/TV/gaming list articles",
+      "seoTitle": "WhatCulture: £40 per published list article",
+      "excerpt": "WhatCulture pays £40 per published list article (typical) and more for certain content. No limit on articles; unpaid out in the month after publication.",
+      "officialUrl": "https://whatculture.com/write-for-us",
+      "writingTypeLabel": "List-driven features",
+      "pay": {
+        "currency": "GBP",
+        "amountMin": 40,
+        "amountMax": 40,
+        "display": "£40 per list (typical); 'certain content may attract alternative rates'",
+        "conditions": "Standard list articles are typically £40. Some content may attract alternative rates. Paid at the start of the month following publication, via PayPal.",
+        "timing": "Start of month after publication"
+      },
+      "wordCount": {
+        "min": 1500,
+        "max": 1500,
+        "display": "1,500+ words (lists)"
+      },
+      "response": {
+        "label": "Editorial review on submission",
+        "band": "unknown",
+        "official": false
+      },
+      "submissionStatus": "open",
+      "editorExperience": {
+        "status": "submitted",
+        "applied": true,
+        "summary": "First content submitted 29 Aug 2026 via their creation suite (LEGO One Piece list ~1,200w). 28-day publication fuse ends 26 Sep.",
+        "stages": {
+          "pitch_submitted": true
+        },
+        "updatedAt": "2026-09-04",
+        "note": "Submitted; awaiting publication."
+      }
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "eligibility": {
+        "summary": "Worldwide — no stated geographic restriction.",
+        "mode": "worldwide",
+        "includesGroups": [],
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": false
+      },
+      "writingTypes": [
+        "listicle"
+      ],
+      "sources": [
+        {
+          "name": "WondersList — Write For Us (official)",
+          "url": "https://www.wonderslist.com/write-us/"
+        }
+      ],
+      "deadline": null,
+      "aiPolicy": "not-stated",
+      "experience": "not-stated",
+      "keywords": [],
+      "whatTheyWant": [],
+      "whatTheyDontWant": [],
+      "requirements": [],
+      "howToSubmit": [],
+      "rights": "",
+      "applyUrl": "https://www.wonderslist.com/write-us/",
+      "applyEmail": "",
+      "applyMethod": "Email (address on their write-for-us page)",
+      "lastVerified": "2026-09-04",
+      "publishedAt": "2026-09-04",
+      "id": "wonderslist",
+      "slug": "wonderslist",
+      "publication": "WondersList",
+      "title": "Top-10 list articles",
+      "seoTitle": "WondersList: $5 per published list article",
+      "excerpt": "WondersList pays $5 per published list article (1,500+ words, by PayPal) and credits you as the author. They retain the copyright after publication.",
+      "officialUrl": "https://www.wonderslist.com/write-us/",
+      "writingTypeLabel": "Top-10 lists",
+      "pay": {
+        "currency": "USD",
+        "amountMin": 5,
+        "amountMax": 5,
+        "display": "$5 per article",
+        "conditions": "$5 USD per published article, paid by PayPal. WondersList becomes the owner of the article once published.",
+        "timing": "Within 1–2 weeks per their page"
+      },
+      "wordCount": {
+        "min": 1500,
+        "max": 1500,
+        "display": "1,500+ words; 10 items"
+      },
+      "response": {
+        "label": "~48h for queries; a few days for acceptance",
+        "band": "days",
+        "official": false
+      },
+      "submissionStatus": "open",
+      "editorExperience": {
+        "status": "submitted",
+        "applied": true,
+        "summary": "Article sent 8 Aug 2026 to admin@wonderslist.com — first paid submission. Final follow-up due; close 4 Sep if silent.",
+        "stages": {
+          "pitch_submitted": true
+        },
+        "updatedAt": "2026-09-04",
+        "note": "Submitted; no acceptance yet."
+      }
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "eligibility": {
+        "summary": "Worldwide — no stated geographic restriction.",
+        "mode": "worldwide",
+        "includesGroups": [],
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": false
+      },
+      "writingTypes": [
+        "money",
+        "personal-finance"
+      ],
+      "sources": [],
+      "deadline": null,
+      "aiPolicy": "not-stated",
+      "experience": "not-stated",
+      "keywords": [],
+      "whatTheyWant": [],
+      "whatTheyDontWant": [],
+      "requirements": [],
+      "howToSubmit": [],
+      "rights": "",
+      "applyUrl": "https://incomediary.com",
+      "applyEmail": "",
+      "applyMethod": "See official site",
+      "lastVerified": "2026-09-04",
+      "publishedAt": "2026-09-04",
+      "id": "income-diary",
+      "slug": "income-diary",
+      "publication": "Income Diary",
+      "title": "Money-making and personal-finance articles",
+      "seoTitle": "Income Diary: up to $200 for a high-quality article",
+      "excerpt": "Income Diary pays up to $200 for high-quality articles ('worthy articles of the highest standard') and recommends you read the site before pitching.",
+      "officialUrl": "https://www.incomediary.com/write-for-incomediary",
+      "writingTypeLabel": "Money and freelance articles",
+      "pay": {
+        "currency": "USD",
+        "amountMin": 100,
+        "amountMax": 250,
+        "display": "Up to $200 (some assignments $100–250)",
+        "conditions": "Up to $200 for worthy articles of the highest standard; some listed assignments pay $100–250 depending on topic.",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "display": "Varies (typically 800–2,000)"
+      },
+      "response": {
+        "label": "Not publicly stated",
+        "band": "unknown",
+        "official": false
+      },
+      "submissionStatus": "unknown"
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "eligibility": {
+        "summary": "Worldwide — no stated geographic restriction.",
+        "mode": "worldwide",
+        "includesGroups": [],
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": false
+      },
+      "writingTypes": [
+        "reported-feature",
+        "analysis"
+      ],
+      "sources": [
+        {
+          "name": "Communiqué — How to pitch a story (official)",
+          "url": "https://www.readcommunique.com/p/pitch-communique"
+        }
+      ],
+      "deadline": null,
+      "aiPolicy": "not-stated",
+      "experience": "not-stated",
+      "keywords": [],
+      "whatTheyWant": [],
+      "whatTheyDontWant": [],
+      "requirements": [],
+      "howToSubmit": [],
+      "rights": "",
+      "applyUrl": "https://www.readcommunique.com/p/pitch-communique",
+      "applyEmail": "",
+      "applyMethod": "Subscribed, then the pitch form",
+      "lastVerified": "2026-09-04",
+      "publishedAt": "2026-09-04",
+      "id": "communique",
+      "slug": "communique",
+      "publication": "Communiqué",
+      "title": "Reported stories on Africa's media & creative economy",
+      "seoTitle": "Communiqué: ₦150,000 (or $100 outside Nigeria) per reported story",
+      "excerpt": "Communiqué pays ₦150,000 or $100 for writers outside Nigeria, per accepted reported story. You must be subscribed before pitching.",
+      "officialUrl": "https://www.readcommunique.com/p/pitch-communique",
+      "writingTypeLabel": "Reported analysis",
+      "pay": {
+        "currency": "NGN",
+        "amountMin": 150000,
+        "amountMax": 150000,
+        "display": "₦150,000 (or $100 outside Nigeria)",
+        "conditions": "₦150,000 or $100 for writers outside Nigeria, per the official pitch page.",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "min": 1000,
+        "max": 1500,
+        "display": "1,000–1,500 words"
+      },
+      "response": {
+        "label": "Not publicly stated",
+        "band": "unknown",
+        "official": false
+      },
+      "submissionStatus": "open"
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "eligibility": {
+        "summary": "Worldwide — no stated geographic restriction.",
+        "mode": "worldwide",
+        "includesGroups": [],
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": false
+      },
+      "writingTypes": [
+        "reported-feature",
+        "culture"
+      ],
+      "sources": [
+        {
+          "name": "STATEMENT Africa — write for us",
+          "url": "https://statementafrica.com"
+        }
+      ],
+      "deadline": null,
+      "aiPolicy": "not-stated",
+      "experience": "not-stated",
+      "keywords": [],
+      "whatTheyWant": [],
+      "whatTheyDontWant": [],
+      "requirements": [],
+      "howToSubmit": [],
+      "rights": "",
+      "applyUrl": "mailto:chisom@statementafrica.com",
+      "applyEmail": "chisom@statementafrica.com",
+      "applyMethod": "Email pitch to the managing editor",
+      "lastVerified": "2026-09-04",
+      "publishedAt": "2026-09-04",
+      "id": "statement",
+      "slug": "statement-africa",
+      "publication": "STATEMENT Africa",
+      "title": "African creators, entertainment, fashion, art",
+      "seoTitle": "STATEMENT Africa: up to $1/word for African creator stories",
+      "excerpt": "STATEMENT Africa pays up to $1/word for reported features on African creators, entertainment and culture. Two-pitch-per-email limit; direct to the managing editor.",
+      "officialUrl": "https://statementafrica.com",
+      "writingTypeLabel": "African creative-industry features",
+      "pay": {
+        "currency": "USD",
+        "amountMin": 0,
+        "amountMax": 1,
+        "display": "Up to $1/word",
+        "conditions": "Up to $1 per word depending on length and complexity; exact rate varies by story and editor approval.",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "min": 1000,
+        "max": 2000,
+        "display": "~1,000–2,000 (negotiated)"
+      },
+      "response": {
+        "label": "Not publicly stated",
+        "band": "unknown",
+        "official": false
+      },
+      "submissionStatus": "open"
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "eligibility": {
+        "summary": "Worldwide — no stated geographic restriction.",
+        "mode": "worldwide",
+        "includesGroups": [],
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": false
+      },
+      "writingTypes": [
+        "creative-nonfiction",
+        "personal-essay",
+        "poetry",
+        "translation"
+      ],
+      "sources": [
+        {
+          "name": "The Offing — submit",
+          "url": "https://theoffingmag.com/submit/"
+        }
+      ],
+      "deadline": null,
+      "aiPolicy": "not-stated",
+      "experience": "not-stated",
+      "keywords": [],
+      "whatTheyWant": [],
+      "whatTheyDontWant": [],
+      "requirements": [],
+      "howToSubmit": [],
+      "rights": "",
+      "applyUrl": "https://theoffingmag.com/submit/",
+      "applyEmail": "",
+      "applyMethod": "Submittable (no email submissions)",
+      "lastVerified": "2026-09-04",
+      "publishedAt": "2026-09-04",
+      "id": "the-offing",
+      "slug": "the-offing",
+      "publication": "The Offing",
+      "title": "Creative nonfiction, essays, poetry in translation",
+      "seoTitle": "The Offing: $25–$100, free submissions for essays & creative nonfiction",
+      "excerpt": "The Offing pays $25–$100 per accepted piece (by department and length). For 2026 submissions are fee-free, and simultaneous/hybrid work is welcome.",
+      "officialUrl": "https://theoffingmag.com",
+      "writingTypeLabel": "Creative nonfiction, essays, translation",
+      "pay": {
+        "currency": "USD",
+        "amountMin": 25,
+        "amountMax": 100,
+        "display": "$25–$100 (by department & length)",
+        "conditions": "$25–$100 for accepted contributors depending on genre and length. No submission fees for 2026.",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "min": 500,
+        "max": 5000,
+        "display": "Essays to 5,000 words"
+      },
+      "response": {
+        "label": "Up to six months",
+        "band": "months",
+        "official": false
+      },
+      "submissionStatus": "open"
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "eligibility": {
+        "summary": "Worldwide — no stated geographic restriction.",
+        "mode": "worldwide",
+        "includesGroups": [],
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": false
+      },
+      "writingTypes": [
+        "essay",
+        "reported-feature",
+        "fiction",
+        "nonfiction"
+      ],
+      "sources": [
+        {
+          "name": "Griffith Review — submissions",
+          "url": "https://www.griffithreview.com"
+        }
+      ],
+      "deadline": null,
+      "aiPolicy": "not-stated",
+      "experience": "not-stated",
+      "keywords": [],
+      "whatTheyWant": [],
+      "whatTheyDontWant": [],
+      "requirements": [],
+      "howToSubmit": [],
+      "rights": "",
+      "applyUrl": "https://www.griffithreview.com",
+      "applyEmail": "",
+      "applyMethod": "Submittable (submissions, not pitches for the general journal)",
+      "lastVerified": "2026-09-04",
+      "publishedAt": "2026-09-04",
+      "id": "griffith-review",
+      "slug": "griffith-review",
+      "publication": "Griffith Review",
+      "title": "Literary essays, reports and fiction",
+      "seoTitle": "Griffith Review: AUD $0.75/word for essays & fiction",
+      "excerpt": "Griffith Review pays AUD $0.75/word for accepted essays and fiction, on a Submittable submission manager.",
+      "officialUrl": "https://www.griffithreview.com",
+      "writingTypeLabel": "Literary essays and features",
+      "pay": {
+        "currency": "AUD",
+        "amountMin": 0,
+        "amountMax": 0.75,
+        "display": "AUD $0.75/word",
+        "conditions": "AUD $0.75/word for accepted prose. Note: their Emerging Voices competition charges an entry fee and is restricted to Australian/New Zealand citizens and residents.",
+        "timing": "21 days after final invoice (reported)"
+      },
+      "wordCount": {
+        "min": 1000,
+        "max": 4000,
+        "display": "~1,000–4,000 words"
+      },
+      "response": {
+        "label": "Not publicly stated",
+        "band": "unknown",
+        "official": false
+      },
+      "submissionStatus": "open"
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "eligibility": {
+        "summary": "Worldwide — no stated geographic restriction.",
+        "mode": "worldwide",
+        "includesGroups": [],
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": false
+      },
+      "writingTypes": [
+        "reported-feature",
+        "essay",
+        "book-review",
+        "interview"
+      ],
+      "sources": [
+        {
+          "name": "Earth Island Journal — call for pitches (official)",
+          "url": "https://www.earthisland.org/journal/index.php/page/call-for-pitches"
+        }
+      ],
+      "deadline": null,
+      "aiPolicy": "not-stated",
+      "experience": "not-stated",
+      "keywords": [],
+      "whatTheyWant": [],
+      "whatTheyDontWant": [],
+      "requirements": [],
+      "howToSubmit": [],
+      "rights": "",
+      "applyUrl": "mailto:submissions@earthisland.org",
+      "applyEmail": "submissions@earthisland.org",
+      "applyMethod": "Email pitch",
+      "lastVerified": "2026-09-04",
+      "publishedAt": "2026-09-04",
+      "id": "earth-island",
+      "slug": "earth-island-journal",
+      "publication": "Earth Island Journal",
+      "title": "Environmental journalism and essays",
+      "seoTitle": "Earth Island Journal: $400–$1,500 for features, essays and reviews",
+      "excerpt": "Earth Island Journal pays $500 for short pieces under 1,000 words, $750–$1,500 for longer reports/essays (1,500–3,000 words), $500 for interviews and $400 for book reviews.",
+      "officialUrl": "https://www.earthisland.org",
+      "writingTypeLabel": "Environment journalism",
+      "pay": {
+        "currency": "USD",
+        "amountMin": 400,
+        "amountMax": 1500,
+        "display": "$500 (short) · $750–$1,500 (long) · $500 (interview) · $400 (review)",
+        "conditions": "$500 flat for pieces under 1,000 words; $750–$1,500 for longer reports/essays of 1,500–3,000 words; $500 for interviews; $400 for book reviews.",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "min": 800,
+        "max": 3000,
+        "display": "Short pieces <1,000 words; reports 1,500–3,000 words"
+      },
+      "response": {
+        "label": "Not publicly stated",
+        "band": "unknown",
+        "official": false
+      },
+      "submissionStatus": "open"
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "eligibility": {
+        "summary": "Worldwide — no stated geographic restriction.",
+        "mode": "worldwide",
+        "includesGroups": [],
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": false
+      },
+      "writingTypes": [
+        "personal-essay",
+        "true-story",
+        "poetry"
+      ],
+      "sources": [
+        {
+          "name": "Chicken Soup for the Soul — story submissions",
+          "url": "https://www.chickensoup.com/story-submissions"
+        }
+      ],
+      "deadline": null,
+      "aiPolicy": "not-stated",
+      "experience": "not-stated",
+      "keywords": [],
+      "whatTheyWant": [],
+      "whatTheyDontWant": [],
+      "requirements": [],
+      "howToSubmit": [],
+      "rights": "",
+      "applyUrl": "https://www.chickensoup.com/story-submissions",
+      "applyEmail": "",
+      "applyMethod": "Themed anthology webform",
+      "lastVerified": "2026-09-04",
+      "publishedAt": "2026-09-04",
+      "id": "chicken-soup",
+      "slug": "chicken-soup-for-the-soul",
+      "publication": "Chicken Soup for the Soul",
+      "title": "True first-person stories and poems",
+      "seoTitle": "Chicken Soup for the Soul: $200–$250 per accepted story",
+      "excerpt": "Chicken Soup for the Soul pays $200–$250 for accepted true first-person stories and poems up to 1,200 words, per themed anthology call.",
+      "officialUrl": "https://www.chickensoup.com",
+      "writingTypeLabel": "True first-person stories",
+      "pay": {
+        "currency": "USD",
+        "amountMin": 200,
+        "amountMax": 250,
+        "display": "$200–$250 per accepted piece",
+        "conditions": "$200–$250 per accepted piece, via themed anthology calls. Each book publishes 101 stories from thousands of submissions.",
+        "timing": "6 months–2 years to publication (their note)"
+      },
+      "wordCount": {
+        "max": 1200,
+        "display": "Up to 1,200 words"
+      },
+      "response": {
+        "label": "Long; only on acceptance",
+        "band": "months",
+        "official": false
+      },
+      "submissionStatus": "open"
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "eligibility": {
+        "summary": "Open to Pan-African writers; confirm specific restriction on the official page.",
+        "mode": "unknown",
+        "includesGroups": [],
+        "includesRegions": [
+          "africa"
+        ],
+        "allowsDiaspora": true,
+        "notStated": false
+      },
+      "writingTypes": [
+        "fiction",
+        "poetry",
+        "nonfiction"
+      ],
+      "sources": [],
+      "deadline": null,
+      "aiPolicy": "not-stated",
+      "experience": "not-stated",
+      "keywords": [],
+      "whatTheyWant": [],
+      "whatTheyDontWant": [],
+      "requirements": [],
+      "howToSubmit": [],
+      "rights": "",
+      "applyUrl": "https://doeklitmag.com",
+      "applyEmail": "",
+      "applyMethod": "See official site",
+      "lastVerified": "2026-09-04",
+      "publishedAt": "2026-09-04",
+      "id": "doek",
+      "slug": "doek-literary-magazine",
+      "publication": "Doek! Literary Magazine",
+      "title": "Pan-African poetry, fiction, nonfiction",
+      "seoTitle": "Doek! Literary Magazine — Pan-African open submissions",
+      "excerpt": "Doek! is a free, independent Pan-African online literary magazine from Windhoek, Namibia. It seeks poetry, fiction and nonfiction. Payment is not publicly stated for this issue.",
+      "officialUrl": "https://doeklitmag.com",
+      "writingTypeLabel": "Pan-African literary work",
+      "pay": {
+        "currency": "",
+        "amountMin": 0,
+        "amountMax": 0,
+        "display": "Not publicly stated",
+        "conditions": "Not publicly stated for this edition — confirm on the official page.",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "display": "Varies"
+      },
+      "response": {
+        "label": "Not publicly stated",
+        "band": "unknown",
+        "official": false
+      },
+      "submissionStatus": "unknown"
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "eligibility": {
+        "summary": "Original creative work by Black women writers.",
+        "mode": "restricted",
+        "includesGroups": [
+          "black-women"
+        ],
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": false
+      },
+      "writingTypes": [
+        "fiction",
+        "poetry",
+        "essay"
+      ],
+      "sources": [],
+      "deadline": null,
+      "aiPolicy": "not-stated",
+      "experience": "not-stated",
+      "keywords": [],
+      "whatTheyWant": [],
+      "whatTheyDontWant": [],
+      "requirements": [],
+      "howToSubmit": [],
+      "rights": "",
+      "applyUrl": "https://www.torchlitararyarts.com",
+      "applyEmail": "",
+      "applyMethod": "See official site",
+      "lastVerified": "2026-09-04",
+      "publishedAt": "2026-09-04",
+      "id": "torch",
+      "slug": "torch-literary-arts",
+      "publication": "Torch Literary Arts",
+      "title": "Original work by Black women writers",
+      "seoTitle": "Torch Literary Arts: $150 for Friday Features",
+      "excerpt": "Torch Literary Arts seeks original creative work by Black women writers and pays $150 for accepted Friday Features.",
+      "officialUrl": "https://www.torchlitararyarts.com",
+      "writingTypeLabel": "Black women writers",
+      "pay": {
+        "currency": "USD",
+        "amountMin": 150,
+        "amountMax": 150,
+        "display": "$150",
+        "conditions": "$150 for accepted Friday Features (rolling).",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "display": "Varies"
+      },
+      "response": {
+        "label": "Not publicly stated",
+        "band": "unknown",
+        "official": false
+      },
+      "submissionStatus": "open"
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "eligibility": {
+        "summary": "Worldwide — no stated geographic restriction.",
+        "mode": "worldwide",
+        "includesGroups": [],
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": false
+      },
+      "writingTypes": [
+        "poetry",
+        "fiction",
+        "creative-nonfiction",
+        "essay"
+      ],
+      "sources": [],
+      "deadline": null,
+      "aiPolicy": "not-stated",
+      "experience": "not-stated",
+      "keywords": [],
+      "whatTheyWant": [],
+      "whatTheyDontWant": [],
+      "requirements": [],
+      "howToSubmit": [],
+      "rights": "",
+      "applyUrl": "https://www.chestnutreview.com/submissions/",
+      "applyEmail": "",
+      "applyMethod": "Submittable",
+      "lastVerified": "2026-09-04",
+      "publishedAt": "2026-09-04",
+      "id": "chestnut",
+      "slug": "chestnut-review",
+      "publication": "Chestnut Review",
+      "title": "Poetry, fiction, creative nonfiction",
+      "seoTitle": "Chestnut Review: $120 for accepted work",
+      "excerpt": "Chestnut Review accepts poetry, flash and short fiction, creative nonfiction, essays and visual media, paying $120 for accepted pieces.",
+      "officialUrl": "https://www.chestnutreview.com/submissions/",
+      "writingTypeLabel": "Literary work of all forms",
+      "pay": {
+        "currency": "USD",
+        "amountMin": 120,
+        "amountMax": 120,
+        "display": "$120",
+        "conditions": "$120 for accepted pieces, per its 2026 call.",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "display": "Varies"
+      },
+      "response": {
+        "label": "Not publicly stated",
+        "band": "unknown",
+        "official": false
+      },
+      "submissionStatus": "open"
     }
   ]
 }

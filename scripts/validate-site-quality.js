@@ -73,7 +73,8 @@ for(const file of htmlFiles){
  }
 }
 if(indexed!==allow.size)fail(`indexable count ${indexed} does not equal allowlist ${allow.size}`);
-if(pubRecords!==55)fail(`expected 55 indexed publication records under /writing/, found ${pubRecords}`);
+const expectedPubs=json("content/opportunities.json").opportunities.length;
+if(pubRecords!==expectedPubs)fail(`expected ${expectedPubs} indexed publication records under /writing/, found ${pubRecords}`);
 const sitemapRoutes=[...read("sitemap.xml").matchAll(/<loc>(.*?)<\/loc>/g)].map(m=>norm(m[1]));
 if(sitemapRoutes.length!==allow.size)fail(`sitemap has ${sitemapRoutes.length}, expected ${allow.size}`);
 for(const r of allow)if(!sitemapRoutes.includes(norm(r)))fail(`sitemap missing ${r}`);
@@ -81,7 +82,7 @@ for(const r of sitemapRoutes)if(!allow.has(r))fail(`sitemap includes non-allowli
 const news=[...read("news-sitemap.xml").matchAll(/<loc>(.*?)<\/loc>/g)];if(news.length)fail("News sitemap must remain empty without timely original reporting");
 const feeds=[...read("feed.xml").matchAll(/<item>[\s\S]*?<link>(.*?)<\/link>/g)].map(m=>norm(m[1]));for(const r of feeds)if(!allow.has(r))fail(`RSS includes non-allowlisted ${r}`);
 if(!read("robots.txt").includes(`Sitemap: ${site}/sitemap.xml`))fail("robots sitemap declaration missing");
-const opportunities=json("content/opportunities.json").opportunities;if(opportunities.length!==55)fail(`expected 55 writing research records, found ${opportunities.length}`);
+const opportunities=json("content/opportunities.json").opportunities;if(opportunities.length!==expectedPubs)fail(`expected ${expectedPubs} writing research records, found ${opportunities.length}`);
 for(const o of opportunities)for(const k of ["slug","publication","officialUrl","lastVerified","submissionStatus"])if(!o[k])fail(`writing record ${o.slug||"?"}: missing ${k}`);
 const server=read("server/server.js");for(const x of ["PUBLIC_HTML_DIRS","PUBLIC_ROOT_FILES","SECURITY_HEADERS","content-security-policy"])if(!server.includes(x))fail(`server hardening marker missing: ${x}`);
 if(!fs.existsSync(path.join(ROOT,"render.yaml")))fail("Render blueprint missing");

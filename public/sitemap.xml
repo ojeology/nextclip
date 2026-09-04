@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://bryme.onrender.com/</loc><lastmod>2026-09-04</lastmod></url>
   <url><loc>https://bryme.onrender.com/about/</loc><lastmod>2026-09-04</lastmod></url>
   <url><loc>https://bryme.onrender.com/author/ibrahim-sodiq/</loc><lastmod>2026-09-04</lastmod></url>
   <url><loc>https://bryme.onrender.com/contact/</loc><lastmod>2026-09-04</lastmod></url>
@@ -7,6 +8,7 @@
   <url><loc>https://bryme.onrender.com/corrections/</loc><lastmod>2026-09-04</lastmod></url>
   <url><loc>https://bryme.onrender.com/disclaimer/</loc><lastmod>2026-09-04</lastmod></url>
   <url><loc>https://bryme.onrender.com/editorial-policy/</loc><lastmod>2026-09-04</lastmod></url>
+  <url><loc>https://bryme.onrender.com/guides/</loc><lastmod>2026-09-04</lastmod></url>
   <url><loc>https://bryme.onrender.com/guides/how-african-writers-can-find-paid-publications/</loc><lastmod>2026-09-04</lastmod></url>
   <url><loc>https://bryme.onrender.com/guides/how-long-should-you-wait-for-an-editor/</loc><lastmod>2026-09-04</lastmod></url>
   <url><loc>https://bryme.onrender.com/guides/how-to-build-writing-samples/</loc><lastmod>2026-09-04</lastmod></url>
@@ -19,11 +21,10 @@
   <url><loc>https://bryme.onrender.com/guides/how-to-submit-a-freelance-article/</loc><lastmod>2026-09-04</lastmod></url>
   <url><loc>https://bryme.onrender.com/guides/how-to-write-a-pitch/</loc><lastmod>2026-09-04</lastmod></url>
   <url><loc>https://bryme.onrender.com/guides/how-to-write-a-strong-query-letter/</loc><lastmod>2026-09-04</lastmod></url>
-  <url><loc>https://bryme.onrender.com/guides/</loc><lastmod>2026-09-04</lastmod></url>
-  <url><loc>https://bryme.onrender.com/</loc><lastmod>2026-09-04</lastmod></url>
   <url><loc>https://bryme.onrender.com/privacy/</loc><lastmod>2026-09-04</lastmod></url>
   <url><loc>https://bryme.onrender.com/terms/</loc><lastmod>2026-09-04</lastmod></url>
   <url><loc>https://bryme.onrender.com/tested/</loc><lastmod>2026-09-04</lastmod></url>
+  <url><loc>https://bryme.onrender.com/writing/</loc><lastmod>2026-09-04</lastmod></url>
   <url><loc>https://bryme.onrender.com/writing/adi-again/</loc><lastmod>2026-08-19</lastmod></url>
   <url><loc>https://bryme.onrender.com/writing/adi-essays/</loc><lastmod>2026-08-19</lastmod></url>
   <url><loc>https://bryme.onrender.com/writing/aeon-essays/</loc><lastmod>2026-08-19</lastmod></url>
@@ -36,25 +37,34 @@
   <url><loc>https://bryme.onrender.com/writing/asimovs-fiction/</loc><lastmod>2026-08-19</lastmod></url>
   <url><loc>https://bryme.onrender.com/writing/beneath-ceaseless-skies/</loc><lastmod>2026-08-19</lastmod></url>
   <url><loc>https://bryme.onrender.com/writing/brevity-essays/</loc><lastmod>2026-08-19</lastmod></url>
+  <url><loc>https://bryme.onrender.com/writing/chestnut-review/</loc><lastmod>2026-09-04</lastmod></url>
+  <url><loc>https://bryme.onrender.com/writing/chicken-soup-for-the-soul/</loc><lastmod>2026-09-04</lastmod></url>
   <url><loc>https://bryme.onrender.com/writing/chicken-soup/</loc><lastmod>2026-08-19</lastmod></url>
   <url><loc>https://bryme.onrender.com/writing/clarkesworld-fiction/</loc><lastmod>2026-08-19</lastmod></url>
   <url><loc>https://bryme.onrender.com/writing/clarkesworld-nonfiction/</loc><lastmod>2026-08-19</lastmod></url>
   <url><loc>https://bryme.onrender.com/writing/climate-home-news/</loc><lastmod>2026-08-19</lastmod></url>
+  <url><loc>https://bryme.onrender.com/writing/communique/</loc><lastmod>2026-09-04</lastmod></url>
   <url><loc>https://bryme.onrender.com/writing/conde-nast-traveler/</loc><lastmod>2026-08-19</lastmod></url>
+  <url><loc>https://bryme.onrender.com/writing/cracked/</loc><lastmod>2026-09-04</lastmod></url>
+  <url><loc>https://bryme.onrender.com/writing/doek-literary-magazine/</loc><lastmod>2026-09-04</lastmod></url>
+  <url><loc>https://bryme.onrender.com/writing/earth-island-journal/</loc><lastmod>2026-09-04</lastmod></url>
   <url><loc>https://bryme.onrender.com/writing/efiko/</loc><lastmod>2026-08-19</lastmod></url>
   <url><loc>https://bryme.onrender.com/writing/electric-literature-essays/</loc><lastmod>2026-08-19</lastmod></url>
   <url><loc>https://bryme.onrender.com/writing/griffith-review-bodies/</loc><lastmod>2026-08-19</lastmod></url>
+  <url><loc>https://bryme.onrender.com/writing/griffith-review/</loc><lastmod>2026-09-04</lastmod></url>
   <url><loc>https://bryme.onrender.com/writing/himal-southasian/</loc><lastmod>2026-08-19</lastmod></url>
-  <url><loc>https://bryme.onrender.com/writing/</loc><lastmod>2026-09-04</lastmod></url>
+  <url><loc>https://bryme.onrender.com/writing/income-diary/</loc><lastmod>2026-09-04</lastmod></url>
   <url><loc>https://bryme.onrender.com/writing/khoreo-fiction/</loc><lastmod>2026-08-19</lastmod></url>
   <url><loc>https://bryme.onrender.com/writing/listverse/</loc><lastmod>2026-08-19</lastmod></url>
   <url><loc>https://bryme.onrender.com/writing/literary-hub/</loc><lastmod>2026-08-19</lastmod></url>
   <url><loc>https://bryme.onrender.com/writing/longreads-personal-essay/</loc><lastmod>2026-08-19</lastmod></url>
   <url><loc>https://bryme.onrender.com/writing/longreads-reading-list/</loc><lastmod>2026-08-19</lastmod></url>
   <url><loc>https://bryme.onrender.com/writing/longreads-reported-feature/</loc><lastmod>2026-08-19</lastmod></url>
+  <url><loc>https://bryme.onrender.com/writing/longreads/</loc><lastmod>2026-09-04</lastmod></url>
   <url><loc>https://bryme.onrender.com/writing/markaz-review/</loc><lastmod>2026-08-19</lastmod></url>
   <url><loc>https://bryme.onrender.com/writing/mcsweeneys/</loc><lastmod>2026-08-19</lastmod></url>
   <url><loc>https://bryme.onrender.com/writing/nacla/</loc><lastmod>2026-08-19</lastmod></url>
+  <url><loc>https://bryme.onrender.com/writing/narratively/</loc><lastmod>2026-09-04</lastmod></url>
   <url><loc>https://bryme.onrender.com/writing/new-humanitarian/</loc><lastmod>2026-08-19</lastmod></url>
   <url><loc>https://bryme.onrender.com/writing/new-lines/</loc><lastmod>2026-08-19</lastmod></url>
   <url><loc>https://bryme.onrender.com/writing/noema/</loc><lastmod>2026-08-19</lastmod></url>
@@ -64,13 +74,16 @@
   <url><loc>https://bryme.onrender.com/writing/overland-online/</loc><lastmod>2026-08-19</lastmod></url>
   <url><loc>https://bryme.onrender.com/writing/psyche-first-person/</loc><lastmod>2026-08-19</lastmod></url>
   <url><loc>https://bryme.onrender.com/writing/rest-of-world/</loc><lastmod>2026-08-19</lastmod></url>
+  <url><loc>https://bryme.onrender.com/writing/statement-africa/</loc><lastmod>2026-09-04</lastmod></url>
   <url><loc>https://bryme.onrender.com/writing/strange-horizons-fiction/</loc><lastmod>2026-08-19</lastmod></url>
   <url><loc>https://bryme.onrender.com/writing/the-lagos-review/</loc><lastmod>2026-08-19</lastmod></url>
   <url><loc>https://bryme.onrender.com/writing/the-offing-wit-tea/</loc><lastmod>2026-08-19</lastmod></url>
+  <url><loc>https://bryme.onrender.com/writing/the-offing/</loc><lastmod>2026-09-04</lastmod></url>
   <url><loc>https://bryme.onrender.com/writing/the-republic/</loc><lastmod>2026-08-19</lastmod></url>
   <url><loc>https://bryme.onrender.com/writing/the-rumpus-el-alboroto/</loc><lastmod>2026-08-19</lastmod></url>
   <url><loc>https://bryme.onrender.com/writing/the-rumpus-essays/</loc><lastmod>2026-08-19</lastmod></url>
   <url><loc>https://bryme.onrender.com/writing/the-tyee/</loc><lastmod>2026-08-19</lastmod></url>
+  <url><loc>https://bryme.onrender.com/writing/torch-literary-arts/</loc><lastmod>2026-09-04</lastmod></url>
   <url><loc>https://bryme.onrender.com/writing/uncanny-fiction/</loc><lastmod>2026-08-19</lastmod></url>
   <url><loc>https://bryme.onrender.com/writing/uncanny-poetry/</loc><lastmod>2026-08-19</lastmod></url>
   <url><loc>https://bryme.onrender.com/writing/undark/</loc><lastmod>2026-08-19</lastmod></url>
@@ -79,5 +92,7 @@
   <url><loc>https://bryme.onrender.com/writing/vox-future-perfect/</loc><lastmod>2026-08-19</lastmod></url>
   <url><loc>https://bryme.onrender.com/writing/walrus-essays/</loc><lastmod>2026-08-19</lastmod></url>
   <url><loc>https://bryme.onrender.com/writing/wasafiri-interviews/</loc><lastmod>2026-08-19</lastmod></url>
+  <url><loc>https://bryme.onrender.com/writing/whatculture/</loc><lastmod>2026-09-04</lastmod></url>
+  <url><loc>https://bryme.onrender.com/writing/wonderslist/</loc><lastmod>2026-09-04</lastmod></url>
   <url><loc>https://bryme.onrender.com/writing/words-without-borders-reviews/</loc><lastmod>2026-08-19</lastmod></url>
 </urlset>
