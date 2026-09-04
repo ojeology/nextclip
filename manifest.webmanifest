@@ -1,11 +1,11 @@
 {
-  "name": "BRYME",
+  "name": "BRYME — Jobs, Writing and Opportunities",
   "short_name": "BRYME",
-  "description": "Discover what you love. Learn what you need. Find what's next. Entertainment, sports, memes, money guides and tech & AI.",
+  "description": "Verified jobs, paid-writing research and practical opportunity guides.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#0B0B0B",
-  "theme_color": "#0B0B0B",
+  "background_color": "#07100d",
+  "theme_color": "#0b4f36",
   "orientation": "any",
   "scope": "/",
   "icons": [

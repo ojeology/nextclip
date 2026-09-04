@@ -1,73 +1,66 @@
 # BRYME
 
-BRYME is a source-first Nigerian publication for verified opportunities, practical technology and original entertainment editorial.
+BRYME is a focused Nigerian publication for verified jobs, paid-writing research, practical opportunities and work guides.
 
 **Current public host:** <https://bryme.onrender.com/>
 
 **Project owner:** Ojeology
 
-## Editorial focus
+## Publication focus
 
-- **Verified jobs:** dated links to exact employer or applicant-tracking-system vacancies, with Nigeria eligibility and work-location caveats.
-- **Practical technology:** task-first guides for Nigerian and Africa-based readers.
-- **Opportunities:** researched earning and application guidance without guaranteed-income claims.
-- **Watch & Read:** original entertainment recommendations and commentary.
+- **Jobs:** exact employer and ATS records with visible verification dates and Nigeria/location context.
+- **Writing:** writing and language contracts plus researched paid-publication guidelines.
+- **Opportunities:** grounded platform, freelance and income-skill guidance without guaranteed-earnings claims.
+- **Guides:** practical technology, account safety, portfolio and independent-publishing help.
 
-Legacy movie, series, anime and sports interfaces remain available only as contained archives. They are excluded from Search unless explicitly admitted by `content/index-allowlist.json`. Automated sports publishing is paused pending source-rights and production approval.
+Sports, movie, series, anime and entertainment-editorial files were extracted to the separate [`ojeology/bryme-media`](https://github.com/ojeology/bryme-media) repository. Media route families return HTTP 410 on this publication until a stable media hostname is deployed and permanent redirects can be installed.
 
 ## Build
 
-The public site is deterministic and has no package dependencies:
-
 ```bash
+npm ci
 npm run build
 ```
 
-That command builds the lean editorial stylesheet and focused pages, applies the idempotent audit remediation, then regenerates robots, sitemap, News sitemap and RSS from explicit policy files.
+The deterministic content build:
 
-Do **not** run `scripts/build-static-foundation.js` casually. It is a destructive historical generator and requires `ALLOW_DESTRUCTIVE_BUILD=1`.
+1. creates the shared forest-green stylesheets;
+2. builds the focused hubs, 13 individual job records, five populated job categories and trust pages;
+3. applies idempotent indexability, schema, navigation and performance policy; and
+4. regenerates robots, sitemap, News sitemap and RSS from explicit allowlists.
 
 ## Release gates
 
 ```bash
+npx playwright install chromium
 npm test
-python3 scripts/validate-browser.py  # requires Chromium, ChromeDriver and Selenium
 ```
 
-The Node gate validates indexability, canonicals, schema, titles, sports integrity, links, discovery files, jobs, provenance, deployment hardening and workflows. It also starts the production server locally and tests the HTTP contract.
+The release gates inspect every retained HTML file, indexability, canonicals, structured data, internal links, jobs, writing records, discovery files, media removal, HTTP status codes, redirects, public-file containment and security headers. Playwright renders all 58 Search-eligible routes at mobile, tablet and desktop sizes, then checks navigation, overflow, images, console errors, landmarks and third-party resource leakage.
+
+## Current Search policy
+
+- 58 focused routes are eligible for indexing.
+- 55 paid-publication detail records remain `noindex` until each source is individually reverified.
+- No News sitemap routes are admitted without timely original reporting.
+- No `JobPosting` structured data is published yet: the current source records do not consistently contain the complete job-description and original posting-date fields needed for responsible markup.
+
+Policy lives in:
+
+- `content/index-allowlist.json`
+- `content/news-allowlist.json`
+- `scripts/build-discovery.py`
 
 ## Server and deployment
-
-Production should run:
 
 ```bash
 npm start
 ```
 
-`server/server.js` provides:
+`server/server.js` provides a strict public-file boundary, canonical routing, 301 work-hub consolidation, 410 responses for migrated media families, real 404 responses, security headers and `/healthz`.
 
-- an explicit public-file allowlist;
-- canonical redirects;
-- real 404 and 410 responses;
-- security headers;
-- the read-only competitions endpoint; and
-- health checking at `/healthz`.
-
-`render.yaml` defines the intended Node 22 Render Web Service. A generic static deployment will not enforce the same routing and security behavior.
-
-## Search and discovery policy
-
-- `content/index-allowlist.json` — routes permitted to be indexable and included in the standard sitemap.
-- `content/news-allowlist.json` — timely, original reporting eligible for Google News discovery; intentionally empty until a route qualifies.
-- `scripts/build-discovery.py` — generates `robots.txt`, `sitemap.xml`, `news-sitemap.xml` and `feed.xml` from those policies.
-
-Do not add a URL merely because a page exists. It must be useful, original, accurate, visibly sourced and maintained.
+Use the Node 22 Web Service defined in `render.yaml`; a generic static deployment will not preserve all HTTP behavior.
 
 ## Privacy and monetization
 
-Third-party advertising and analytics are disabled. Trailer players load only after explicit interaction. Do not reintroduce ad or tracking code until deployed behavior, privacy disclosures and any required consent platform are reviewed together.
-
-## Audit records
-
-- `BRYME_FULL_SITE_AUDIT_2026-09-04.md` — complete baseline audit.
-- `BRYME_REMEDIATION_COMPLETION_2026-09-04.md` — implemented fixes, release evidence and owner-only next actions.
+Third-party advertising and analytics remain disabled. Do not reintroduce them until the final domain, consent requirements, privacy disclosures and ad placement are reviewed together. Ads must never resemble job cards or application buttons.

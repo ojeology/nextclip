@@ -1,5 +1,7 @@
 # BRYME remediation completion record
 
+> Historical pre-split release record. The later work/media architecture and current counts are documented in `BRYME_WORK_MEDIA_SPLIT_2026-09-04.md`.
+
 **Date:** 4 September 2026 (Africa/Lagos)
 **Repository baseline:** `f033af2dd4`
 **Scope:** repository-controlled remediation following the full-site audit

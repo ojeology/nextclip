@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
-"""Apply the controlled 2026-09-04 audit containment pass.
+"""Normalize every retained BRYME work page to the focused release policy.
 
-Unlike the historical foundation generator, this script does not invent or
-regenerate content. It makes narrow, idempotent policy/UX transformations:
-explicit index allowlisting, honest controls, source-first navigation,
-structured-data containment, and visible sports/archive warnings.
+The script does not invent or regenerate editorial content. It applies narrow,
+idempotent indexability, navigation, schema, accessibility and performance
+transformations to retained work and practical-guide pages.
 """
 from __future__ import annotations
 
@@ -22,10 +21,9 @@ ROOT = Path(__file__).resolve().parents[1]
 ALLOW = set(json.loads((ROOT / "content/index-allowlist.json").read_text(encoding="utf-8"))["routes"])
 STAMP = "2026-09-04"
 
-LEGACY_HEADER = '''<a class="skip-link" href="#main">Skip to content</a><header class="top"><div class="shell"><a class="brand" href="/" aria-label="BRYME home">BRY<b>ME</b></a><nav class="topnav" aria-label="Primary"><a href="/">Home</a><a href="/jobs/">Jobs</a><a href="/make-money/">Opportunities</a><a href="/tech/">Practical Tech</a><a href="/articles/">Watch &amp; Read</a><a class="nav-search" href="/about/">About</a></nav><div class="top-tools"><a class="header-search" href="/jobs/" aria-label="Verified jobs">Jobs</a></div></div></header>'''
-LEGACY_MOBILE = '''<nav class="mobile-nav" aria-label="Primary mobile"><a href="/"><span class="mn-ico">⌂</span>Home</a><a href="/jobs/"><span class="mn-ico">✓</span>Jobs</a><a href="/make-money/"><span class="mn-ico">↗</span>Work</a><a href="/tech/"><span class="mn-ico">◈</span>Tech</a><a href="/articles/"><span class="mn-ico">◇</span>Read</a><a href="/about/"><span class="mn-ico">i</span>About</a></nav>'''
-LEGACY_FOOTER = '''<footer class="footer"><div class="shell"><div class="footer-grid"><div class="footer-brand"><a class="brand" href="/">BRY<b>ME</b></a><p>Verified opportunities and practical technology for Nigerians and Africa-based applicants. Primary sources and human check dates come first.</p></div><div class="footer-col"><h4>Use BRYME</h4><a href="/jobs/">Verified jobs</a><a href="/make-money/">Opportunities</a><a href="/tech/">Practical tech</a><a href="/articles/">Watch &amp; Read</a></div><div class="footer-col"><h4>Trust</h4><a href="/jobs/methodology/">Verification method</a><a href="/editorial-policy/">Editorial policy</a><a href="/corrections/">Corrections</a><a href="/contact/">Contact</a></div><div class="footer-col"><h4>Legal</h4><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a><a href="/disclaimer/">Disclaimer</a><a href="/copyright/">Copyright</a></div></div><p class="footer-note">BRYME does not accept job applications or guarantee availability, interviews, tasks or earnings.</p><small>© 2026 BRYME · Third-party advertising and analytics are disabled during the quality rebuild.</small></div></footer>'''
-SPORTS_NOTICE = '''<aside class="integrity-notice" role="note"><b>Sports data paused.</b> This archived page is excluded from Search while BRYME repairs its data pipeline and verifies source rights. Do not rely on it for a current score, table or fixture.</aside>'''
+LEGACY_HEADER = '''<a class="skip-link" href="#main">Skip to content</a><header class="top"><div class="shell"><a class="brand" href="/" aria-label="BRYME home">BRY<b>ME</b></a><nav class="topnav" aria-label="Primary"><a href="/">Home</a><a href="/jobs/">Jobs</a><a href="/writing/">Writing</a><a href="/opportunities/">Opportunities</a><a href="/guides/">Guides</a><a class="nav-search" href="/about/">About</a></nav></div></header>'''
+LEGACY_MOBILE = '''<nav class="mobile-nav" aria-label="Primary mobile"><a href="/"><span class="mn-ico">⌂</span>Home</a><a href="/jobs/"><span class="mn-ico">✓</span>Jobs</a><a href="/writing/"><span class="mn-ico">✎</span>Writing</a><a href="/opportunities/"><span class="mn-ico">↗</span>Earn</a><a href="/guides/"><span class="mn-ico">◇</span>Guides</a><a href="/about/"><span class="mn-ico">i</span>About</a></nav>'''
+LEGACY_FOOTER = '''<footer class="footer"><div class="shell"><div class="footer-grid"><div class="footer-brand"><a class="brand" href="/">BRY<b>ME</b></a><p>Verified jobs, paid-writing research and practical opportunity guides for Nigerians and Africa-based applicants.</p></div><div class="footer-col"><h4>Use BRYME</h4><a href="/jobs/">Verified jobs</a><a href="/writing/">Writing</a><a href="/opportunities/">Opportunities</a><a href="/guides/">Guides</a></div><div class="footer-col"><h4>Trust</h4><a href="/jobs/methodology/">Verification method</a><a href="/editorial-policy/">Editorial policy</a><a href="/corrections/">Corrections</a><a href="/contact/">Contact</a></div><div class="footer-col"><h4>Legal</h4><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a><a href="/disclaimer/">Disclaimer</a><a href="/copyright/">Copyright</a></div></div><p class="footer-note">BRYME does not accept job applications or guarantee availability, interviews, tasks or earnings.</p><small>© 2026 BRYME · Third-party advertising and analytics are disabled during the quality rebuild.</small></div></footer>'''
 CSS_PATCH = r'''
 /* AUDIT-REMEDIATION-2026-09-04: honesty, navigation and accessibility */
 body:has(main.tp-page) .top{display:block!important}
@@ -51,6 +49,24 @@ def route_for(path: Path) -> str:
     if rel.endswith("/index.html"):
         return "/" + rel[:-10]
     return "/" + rel
+
+
+def legacy_shell(route: str) -> tuple[str, str]:
+    if route.startswith("/jobs/"):
+        target = "/jobs/"
+    elif route.startswith("/make-money/writing/") or route.startswith("/writing/"):
+        target = "/writing/"
+    elif route.startswith("/make-money/") or route.startswith("/opportunities/"):
+        target = "/opportunities/"
+    elif route.startswith("/tech/") or route.startswith("/guides/"):
+        target = "/guides/"
+    elif route.startswith(("/about/", "/author/", "/editorial-policy/", "/privacy/", "/corrections/", "/contact/", "/disclaimer/", "/terms/", "/copyright/")):
+        target = "/about/"
+    else:
+        target = "/"
+    marker = f'href="{target}"'
+    current = f'href="{target}" aria-current="page"'
+    return LEGACY_HEADER.replace(marker, current, 1), LEGACY_MOBILE.replace(marker, current, 1)
 
 
 def first_git_date(path: Path) -> str:
@@ -85,13 +101,16 @@ def patch_article_object(obj: dict, path: Path, text: str) -> None:
     published = obj.get("datePublished") or first_git_date(path)
     obj["datePublished"] = published
     obj["dateModified"] = modified
-    if not obj.get("author"):
+    author = obj.get("author")
+    if isinstance(author, dict) and author.get("@type") == "Person" and author.get("name") == "Ibrahim Sodiq":
+        obj["author"] = {"@type": "Person", "name": "Ibrahim Sodiq", "url": "https://bryme.onrender.com/author/ibrahim-sodiq/"}
+    elif not author:
         if re.search(r'By\s+Ibrahim\s+Sodiq', text, re.I):
             obj["author"] = {"@type": "Person", "name": "Ibrahim Sodiq", "url": "https://bryme.onrender.com/author/ibrahim-sodiq/"}
         else:
             obj["author"] = {"@type": "Organization", "name": "BRYME Editorial Desk", "url": "https://bryme.onrender.com/editorial-policy/"}
-    if not obj.get("publisher"):
-        obj["publisher"] = {"@type": "Organization", "name": "BRYME", "url": "https://bryme.onrender.com/"}
+    obj["publisher"] = {"@type": "Organization", "name": "BRYME", "url": "https://bryme.onrender.com/"}
+    obj["mainEntityOfPage"] = "https://bryme.onrender.com" + route_for(path)
 
 
 def walk_patch(obj: object, path: Path, text: str, title_route: bool) -> object | None:
@@ -111,6 +130,15 @@ def walk_patch(obj: object, path: Path, text: str, title_route: bool) -> object 
         obj.pop("sameAs", None)
     if typ == "Article":
         patch_article_object(obj, path, text)
+    if typ == "BreadcrumbList" and isinstance(obj.get("itemListElement"), list):
+        for crumb in obj["itemListElement"]:
+            if not isinstance(crumb, dict):
+                continue
+            item = str(crumb.get("item", ""))
+            if item.rstrip("/").endswith("/make-money"):
+                crumb["name"], crumb["item"] = "Opportunities", "https://bryme.onrender.com/opportunities/"
+            elif item.rstrip("/").endswith("/tech"):
+                crumb["name"], crumb["item"] = "Guides", "https://bryme.onrender.com/guides/"
     if "@graph" in obj and isinstance(obj["@graph"], list):
         obj["@graph"] = [x for x in (walk_patch(x, path, text, title_route) for x in obj["@graph"]) if x is not None]
     return obj
@@ -266,8 +294,8 @@ def patch_visible_article_byline(text: str, route: str) -> str:
 
 
 def patch_allowlisted_performance(text: str, route: str) -> str:
-    """Keep Search-eligible editorial pages lean and useful without client JS."""
-    if route not in ALLOW:
+    """Keep every retained work-publication page green, lean and static."""
+    if route.startswith("/miniapp/"):
         return text
     text = text.replace('href="/assets/site.css"', 'href="/assets/content-v2.css"')
     text = re.sub(r'<link\b[^>]*rel=["\']manifest["\'][^>]*>', '', text, flags=re.I)
@@ -278,16 +306,22 @@ def patch_allowlisted_performance(text: str, route: str) -> str:
 
 
 def patch_common(text: str, path: Path, route: str) -> str:
-    # No tracking tags or speculative preconnections in static HTML.
-    text = re.sub(r'<script\b[^>]*src=["\']/assets/analytics\.js["\'][^>]*>\s*</script>', '', text, flags=re.I)
-    text = re.sub(r'<link\b[^>]*rel=["\']preconnect["\'][^>]*youtu[^>]*>', '', text, flags=re.I)
+    # No executable client scripts, trackers or speculative third-party connections.
+    text = re.sub(r'<script\b(?![^>]*type=["\']application/ld\+json["\'])[^>]*>.*?</script>', '', text, flags=re.I | re.S)
+    text = re.sub(r'<link\b[^>]*rel=["\'](?:preconnect|dns-prefetch)["\'][^>]*>', '', text, flags=re.I)
     text = patch_allowlisted_performance(text, route)
+    text = text.replace('href="/make-money/"', 'href="/opportunities/"').replace('href="/tech/"', 'href="/guides/"')
+    text = text.replace("BRYME Make Money", "Opportunities").replace("Tech &amp; AI", "Practical technology")
+    canonical = "https://bryme.onrender.com" + route
+    text = re.sub(r'(<link\b[^>]*rel=["\']canonical["\'][^>]*href=["\'])[^"\']+', lambda m: m.group(1) + canonical, text, count=1, flags=re.I)
+    text = re.sub(r'(<meta\b[^>]*property=["\']og:url["\'][^>]*content=["\'])[^"\']+', lambda m: m.group(1) + canonical, text, count=1, flags=re.I)
 
     # Replace old global navigation and remove misleading provider navigation.
-    text = re.sub(r'(?:<a\b[^>]*class="skip-link"[^>]*>.*?</a>)?<header class="top">.*?</header>', LEGACY_HEADER, text, count=1, flags=re.I | re.S)
+    legacy_header, legacy_mobile = legacy_shell(route)
+    text = re.sub(r'(?:<a\b[^>]*class="skip-link"[^>]*>.*?</a>)?<header class="top">.*?</header>', legacy_header, text, count=1, flags=re.I | re.S)
     text = re.sub(r'<main(?![^>]*\bid=)([^>]*)>', r'<main id="main"\1>', text, count=1, flags=re.I)
     text = re.sub(r'<nav class="desk-bar".*?</nav>', '', text, flags=re.I | re.S)
-    text = re.sub(r'<nav class="mobile-nav".*?</nav>', LEGACY_MOBILE, text, count=1, flags=re.I | re.S)
+    text = re.sub(r'<nav class="mobile-nav".*?</nav>', legacy_mobile, text, count=1, flags=re.I | re.S)
     text = re.sub(r'<footer class="footer">.*?</footer>', LEGACY_FOOTER, text, count=1, flags=re.I | re.S)
 
     # Remove non-functional and unsupported title-page UI.
@@ -306,20 +340,7 @@ def patch_common(text: str, path: Path, route: str) -> str:
     text = patch_visible_article_byline(text, route)
     text = ensure_robots(text, route in ALLOW)
 
-    if route.startswith("/sports/") and "Sports data paused." not in text:
-        body = re.search(r'<body\b[^>]*>', text, re.I)
-        if body:
-            text = text[:body.end()] + SPORTS_NOTICE + text[body.end():]
     return text
-
-
-def retired_page(label: str, route: str) -> str:
-    safe = html.escape(label)
-    return f'''<!doctype html><html lang="en-NG"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Legacy collection retired | BRYME</title><meta name="description" content="This legacy BRYME collection was retired because it did not represent verified provider availability."><meta name="robots" content="noindex,follow"><link rel="canonical" href="https://bryme.onrender.com{route}"><link rel="stylesheet" href="/assets/bryme-v2.css"><link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"></head><body><main id="main"><div class="wrap"><section class="page-hero"><p class="kicker"><span class="kicker-dot"></span>Collection retired</p><h1>{safe} was not a verified availability page.</h1><p>BRYME removed this legacy collection from Search because it grouped titles by type or genre rather than confirmed, region-specific provider data.</p><div class="actions"><a class="btn" href="/articles/">Read original entertainment guides</a><a class="btn secondary" href="/">Return home</a></div></section></div></main></body></html>'''
-
-
-def paused_search_page() -> str:
-    return '''<!doctype html><html lang="en-NG"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Browse BRYME | Focused sections</title><meta name="description" content="Browse BRYME verified jobs, opportunities, practical technology and original entertainment editorial."><meta name="robots" content="noindex,follow"><link rel="canonical" href="https://bryme.onrender.com/search/"><link rel="stylesheet" href="/assets/bryme-v2.css"><link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"></head><body><main id="main"><div class="wrap"><section class="page-hero"><p class="kicker"><span class="kicker-dot"></span>Browse BRYME</p><h1>Search is being rebuilt around the useful parts.</h1><p>The old search shipped the entire catalogue into one page. Use the focused sections while a lighter search index is built.</p></section><section class="section"><div class="card-grid"><a class="path-card" href="/jobs/"><span class="card-num">JOBS</span><h3>Verified roles</h3><p>Exact employer and ATS links.</p><span class="card-link">Open jobs →</span></a><a class="path-card" href="/tech/"><span class="card-num">TECH</span><h3>Practical guides</h3><p>Task-first technology help.</p><span class="card-link">Open tech →</span></a><a class="path-card" href="/articles/"><span class="card-num">READ</span><h3>Entertainment editorial</h3><p>Original recommendations and opinion.</p><span class="card-link">Open articles →</span></a></div></section></div></main></body></html>'''
 
 
 def apply(check: bool = False) -> Counter:
@@ -334,34 +355,6 @@ def apply(check: bool = False) -> Counter:
             stats["html_changed"] += 1
             if not check:
                 path.write_text(after, encoding="utf-8")
-    labels = {
-        "trending": "Trending", "latest": "Latest releases", "netflix": "Netflix",
-        "prime": "Prime Video", "sony": "SonyLIV", "jio": "JioHotstar",
-        "crunchyroll": "Crunchyroll", "kids": "Kids", "mx": "MX Player",
-    }
-    for slug, label in labels.items():
-        path = ROOT / "channels" / slug / "index.html"
-        out = retired_page(label, f"/channels/{slug}/")
-        if not path.exists() or path.read_text(encoding="utf-8", errors="replace") != out:
-            stats["channel_pages_retired"] += 1
-            if not check:
-                path.parent.mkdir(parents=True, exist_ok=True)
-                path.write_text(out, encoding="utf-8")
-    search_path = ROOT / "search/index.html"
-    search_out = paused_search_page()
-    if search_path.read_text(encoding="utf-8", errors="replace") != search_out:
-        stats["search_page_replaced"] += 1
-        if not check:
-            search_path.write_text(search_out, encoding="utf-8")
-    css = ROOT / "assets/site.css"
-    css_text = css.read_text(encoding="utf-8")
-    marker = "/* AUDIT-REMEDIATION-2026-09-04:"
-    base_css = css_text.split(marker, 1)[0].rstrip()
-    desired_css = base_css + "\n" + CSS_PATCH.strip() + "\n"
-    if css_text != desired_css:
-        stats["css_patch_updated"] += 1
-        if not check:
-            css.write_text(desired_css, encoding="utf-8")
     if not check:
         report = {"appliedAt": STAMP, "indexAllowlistCount": len(ALLOW), **stats}
         (ROOT / "reports/remediation-apply-summary.json").write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")

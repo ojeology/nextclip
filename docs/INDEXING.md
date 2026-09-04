@@ -1,127 +1,33 @@
-# Getting new pages seen quickly
+# BRYME indexing and discovery
 
-Four mechanisms, in order of how much they actually matter for BRYME.
+BRYME does not infer Search eligibility from the existence of an HTML file. Every indexable route must be named explicitly in `content/index-allowlist.json` and pass the release validator.
 
----
+## Build outputs
 
-## 1. Sitemap — the workhorse (Google, Bing, everyone)
+`python3 scripts/build-discovery.py` generates:
 
-`sitemap.xml` is rebuilt on every build. 862 URLs, `lastmod` on anything that changed.
+- `sitemap.xml` from the index allowlist;
+- `news-sitemap.xml` from the separate News allowlist; and
+- `feed.xml` from eligible, dated editorial records.
 
-Submit **once** in Search Console → Sitemaps → `sitemap.xml`. After that Google rechecks it
-on its own schedule. Don't resubmit.
+The build rejects missing routes, noindex allowlist entries, duplicate routes and invalid dates. It does not emit `<priority>` or `<changefreq>`.
 
-Google **ignores** `<priority>` and `<changefreq>` — the build doesn't emit them. It uses
-`<lastmod>` only when it's "consistently and verifiably accurate", which ours is, because it
-comes from real content changes rather than the build clock.
+## Current policy
 
-## 2. News sitemap — time-sensitive football
+- Job hubs and individual source-check records can be indexable.
+- Maintained work and technology guides can be indexable.
+- Trust, author and legal pages can be indexable.
+- The 55 dated paid-publication research details remain `noindex` until each official guideline is rechecked individually.
+- News remains empty unless BRYME publishes timely original reporting that satisfies the News policy.
+- Migrated media families are not part of this repository's index.
 
-`news-sitemap.xml`, also rebuilt every build, advertised in `robots.txt`.
-
-Google's rules, which the build enforces:
-
-- Articles from the **last two days only** — older entries drop out automatically
-- Max **1,000** entries
-- Required tags: publication name, language, publication date, title
-- **Same file, updated** — never a new one
-- An **empty file is valid** between publishing runs. Search Console may warn; ignore it.
-
-**What goes in it:**
-
-- Match pages that gained a preview or a result in the window — automatic
-- Sports articles that explicitly opt in with `"newsworthy": true`
-
-**The opt-in matters.** Evergreen pieces — the Champions League format explainer, all-time
-records, the season guide — are reference material, not news. A news sitemap padded with
-explainers is one Google learns to distrust. Default is *excluded*; you have to mark a piece
-as news deliberately.
-
-```json
-{ "slug": "community-shield-2026-arsenal-manchester-city", "newsworthy": true }
-```
-
-Honest expectation: Google News surfaces weigh expertise, authority and a **consistent
-history of original reporting**. This file makes BRYME technically eligible. It does not
-manufacture a track record. It's plumbing laid early, not a shortcut.
-
-## 3. IndexNow — Bing, Yandex, Seznam
+## Release sequence
 
 ```bash
-node scripts/indexnow.js --since 2026-08-17          # dry run
-node scripts/indexnow.js --since 2026-08-17 --send   # submit
+npm run build
+npm test
 ```
 
-Free, no daily cap, no content-type restriction, usually fetched within hours.
+After deployment, verify the canonical production host and submit `/sitemap.xml` once in Search Console and Bing Webmaster Tools. Routine rebuilds update the same file; repeatedly resubmitting it does not force ranking or immediate crawling.
 
-**Google does not participate.** This does nothing for Google. It is worth running anyway
-because Bing traffic is real and football content is time-sensitive.
-
-URLs come from `lastmod` in both sitemaps, so only genuinely changed pages are submitted.
-The key lives at `/<key>.txt` in the site root and is recorded in `site.config.json` —
-if that file stops being served, IndexNow returns 403.
-
-## 4. Manual Request Indexing — Google, ~10/day
-
-Search Console → paste URL in the top search bar → **Request Indexing**.
-
-```bash
-node scripts/request-indexing.js --since 2026-08-17
-```
-
-Prints only genuinely changed URLs. Quota is shared between inspections and requests, so
-every URL you *look up* also counts. Spend it on pages where the delay actually costs
-something — a match preview before kickoff, a result page just after.
-
-Don't resubmit the same URL. It doesn't help and it burns tomorrow's quota.
-
----
-
-## What is NOT available
-
-**The Google Indexing API does not apply to BRYME.** Google's documentation restricts it to
-pages carrying `JobPosting` or `BroadcastEvent` structured data — job listings and
-*livestreaming video*. Match previews and reports are neither.
-
-Faking `BroadcastEvent` markup to qualify would be structured-data spam, risks a manual
-action on the whole domain, and Google states outright that abuse can have API access
-revoked. Not worth it for pages that get crawled anyway.
-
-**Google Publisher Center is not an application.** There has been no approval process since
-December 2019 — Google's own help page says "Google automatically considers all web content
-for inclusion in Google News, so you don't need to apply." Google also stopped using RSS
-feeds submitted through Publisher Center, and publication pages are now auto-generated.
-It's a branding tool for sites already being picked up, not a way in.
-
-**The sitemap ping endpoint was deprecated in 2023.** Nothing to call.
-
----
-
-## Matchday routine
-
-```bash
-# after adding a result and post-match analysis
-node scripts/build-static-foundation.js
-git add -A && git commit -m "Result: ..." && git push
-
-# once Render has deployed
-node scripts/indexnow.js --since $(date +%F) --send     # Bing, instant, free
-node scripts/request-indexing.js --since $(date +%F)    # then submit these by hand
-```
-
-The news sitemap updates itself in the same build. Nothing extra to remember.
-
----
-
-## Custom domain later (site stays on Render)
-
-Live URL today: `https://bryme.onrender.com`. Internal links are root-relative, so a domain change is one config line plus DNS.
-
-1. Buy the domain at any registrar (Namecheap, Porkbun, Google Domains, etc.).
-2. In `site.config.json`, set `"siteUrl"` to `https://yourdomain.com` (no trailing slash).
-3. Run `node scripts/build-static-foundation.js` so canonical, Open Graph, sitemap and robots use the new host.
-4. Render → the BRYME static site → **Custom Domains** → add the domain.
-5. At the registrar, add the CNAME/A records Render shows. Wait for HTTPS to issue.
-6. Push the rebuilt site. Old `onrender.com` URLs can stay as a redirect if Render offers one.
-
-Do not put a token or password in the repo. Do not change `siteUrl` until the domain actually resolves.
+Use URL Inspection for a small number of genuinely new or materially improved pages. Do not automate bulk submission of low-value or unchanged URLs.

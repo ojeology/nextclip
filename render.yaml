@@ -1,6 +1,3 @@
-# Render Blueprint for the public BRYME website.
-# The Node service provides explicit redirects, 404/410 status codes, security
-# headers and a strict public-file boundary that a generic static host cannot.
 services:
   - type: web
     name: bryme-website
@@ -14,7 +11,3 @@ services:
     envVars:
       - key: NODE_VERSION
         value: "22"
-      - key: TELEGRAM_ENABLED
-        value: "0"
-      - key: WATCHDOG
-        value: "off"

@@ -12,7 +12,11 @@
       "employerType": "direct",
       "title": "Senior Platform Security Engineer",
       "locationTextRaw": "Lagos, Nairobi, Cape Town",
-      "eligibleCountries": ["Nigeria", "Kenya", "South Africa"],
+      "eligibleCountries": [
+        "Nigeria",
+        "Kenya",
+        "South Africa"
+      ],
       "workMode": "Not stated in the careers-card summary",
       "employmentType": "Full time",
       "compensationRaw": null,
@@ -21,7 +25,9 @@
       "sourceSystem": "Paystack careers",
       "status": "open_when_checked",
       "verifiedAt": "2026-09-04T08:35:00+01:00",
-      "notes": "Paystack marked the role Ongoing and listed Lagos among the locations. Open the full role before applying."
+      "notes": "Paystack marked the role Ongoing and listed Lagos among the locations. Open the full role before applying.",
+      "category": "technology",
+      "remoteEligible": false
     },
     {
       "id": "paystack-8271121",
@@ -29,7 +35,9 @@
       "employerType": "direct",
       "title": "Senior IT Engineer",
       "locationTextRaw": "Lagos",
-      "eligibleCountries": ["Nigeria"],
+      "eligibleCountries": [
+        "Nigeria"
+      ],
       "workMode": "Not stated in the careers-card summary",
       "employmentType": "Full time",
       "compensationRaw": null,
@@ -38,7 +46,9 @@
       "sourceSystem": "Paystack careers",
       "status": "open_when_checked",
       "verifiedAt": "2026-09-04T08:35:00+01:00",
-      "notes": "Paystack marked the role Ongoing and listed Lagos."
+      "notes": "Paystack marked the role Ongoing and listed Lagos.",
+      "category": "technology",
+      "remoteEligible": false
     },
     {
       "id": "paystack-8043013",
@@ -46,7 +56,9 @@
       "employerType": "direct",
       "title": "Senior QA Engineer",
       "locationTextRaw": "Lagos",
-      "eligibleCountries": ["Nigeria"],
+      "eligibleCountries": [
+        "Nigeria"
+      ],
       "workMode": "Not stated in the careers-card summary",
       "employmentType": "Full time",
       "compensationRaw": null,
@@ -55,7 +67,9 @@
       "sourceSystem": "Paystack careers",
       "status": "open_when_checked",
       "verifiedAt": "2026-09-04T08:35:00+01:00",
-      "notes": "Paystack marked the role Ongoing and listed Lagos."
+      "notes": "Paystack marked the role Ongoing and listed Lagos.",
+      "category": "technology",
+      "remoteEligible": false
     },
     {
       "id": "moniepoint-4775383101",
@@ -63,7 +77,9 @@
       "employerType": "direct",
       "title": "Senior Quality Assurance Engineer",
       "locationTextRaw": "Lagos, Nigeria",
-      "eligibleCountries": ["Nigeria"],
+      "eligibleCountries": [
+        "Nigeria"
+      ],
       "workMode": "Location listed as Lagos",
       "employmentType": "Not stated in the board-card metadata",
       "compensationRaw": null,
@@ -73,7 +89,9 @@
       "sourceUpdatedAt": "2026-08-31T08:25:52-04:00",
       "status": "open_when_checked",
       "verifiedAt": "2026-09-04T08:35:00+01:00",
-      "notes": "The exact Greenhouse page listed Lagos, Nigeria and displayed an application form."
+      "notes": "The exact Greenhouse page listed Lagos, Nigeria and displayed an application form.",
+      "category": "technology",
+      "remoteEligible": false
     },
     {
       "id": "moniepoint-4736464101",
@@ -81,7 +99,9 @@
       "employerType": "direct",
       "title": "Data Science Manager (Credit)",
       "locationTextRaw": "Remote, Lagos, Nigeria",
-      "eligibleCountries": ["Nigeria"],
+      "eligibleCountries": [
+        "Nigeria"
+      ],
       "workMode": "Remote; Lagos, Nigeria",
       "employmentType": "Not stated in the board-card metadata",
       "compensationRaw": null,
@@ -91,7 +111,9 @@
       "sourceUpdatedAt": "2026-08-31T10:23:06-04:00",
       "status": "open_when_checked",
       "verifiedAt": "2026-09-04T08:35:00+01:00",
-      "notes": "The exact Greenhouse page listed Remote, Lagos, Nigeria and displayed an application form."
+      "notes": "The exact Greenhouse page listed Remote, Lagos, Nigeria and displayed an application form.",
+      "category": "technology",
+      "remoteEligible": true
     },
     {
       "id": "moniepoint-4958569101",
@@ -99,7 +121,9 @@
       "employerType": "direct",
       "title": "Illustrator",
       "locationTextRaw": "Remote, Nigeria",
-      "eligibleCountries": ["Nigeria"],
+      "eligibleCountries": [
+        "Nigeria"
+      ],
       "workMode": "Remote",
       "employmentType": "Not stated in the board-card metadata",
       "compensationRaw": "Employer says attractive salary but does not state an amount",
@@ -109,7 +133,9 @@
       "sourceUpdatedAt": "2026-08-21T17:55:45-04:00",
       "status": "open_when_checked",
       "verifiedAt": "2026-09-04T08:35:00+01:00",
-      "notes": "The exact page listed Remote, Nigeria and asked for 4–5 years of relevant experience plus a portfolio."
+      "notes": "The exact page listed Remote, Nigeria and asked for 4–5 years of relevant experience plus a portfolio.",
+      "category": "creative",
+      "remoteEligible": true
     },
     {
       "id": "sand-4827812101",
@@ -117,7 +143,9 @@
       "employerType": "direct",
       "title": "Country Director Nigeria",
       "locationTextRaw": "Nigeria",
-      "eligibleCountries": ["Nigeria"],
+      "eligibleCountries": [
+        "Nigeria"
+      ],
       "workMode": "Nigeria-based; inspect full role",
       "employmentType": "Not stated in the board-card metadata",
       "compensationRaw": null,
@@ -127,7 +155,9 @@
       "sourceUpdatedAt": "2026-08-12T02:55:13-04:00",
       "status": "open_when_checked",
       "verifiedAt": "2026-09-04T08:35:00+01:00",
-      "notes": "The exact employer page listed Nigeria and displayed an application path."
+      "notes": "The exact employer page listed Nigeria and displayed an application path.",
+      "category": "leadership",
+      "remoteEligible": false
     },
     {
       "id": "sand-4836497101",
@@ -135,7 +165,9 @@
       "employerType": "direct",
       "title": "Forward Deployed Engineer, Nigeria",
       "locationTextRaw": "Nigeria",
-      "eligibleCountries": ["Nigeria"],
+      "eligibleCountries": [
+        "Nigeria"
+      ],
       "workMode": "Permanently embedded, full-time in Nigeria",
       "employmentType": "Not stated in the board-card metadata",
       "compensationRaw": null,
@@ -145,7 +177,9 @@
       "sourceUpdatedAt": "2026-08-12T02:56:14-04:00",
       "status": "open_when_checked",
       "verifiedAt": "2026-09-04T08:35:00+01:00",
-      "notes": "The detail page says this is a permanently embedded position and requires willingness to relocate and remain based in Nigeria for 12–24+ months."
+      "notes": "The detail page says this is a permanently embedded position and requires willingness to relocate and remain based in Nigeria for 12–24+ months.",
+      "category": "technology",
+      "remoteEligible": false
     },
     {
       "id": "mkopa-a13017dd",
@@ -153,7 +187,9 @@
       "employerType": "direct",
       "title": "Lead People Partner – Technology",
       "locationTextRaw": "Lagos",
-      "eligibleCountries": ["Nigeria"],
+      "eligibleCountries": [
+        "Nigeria"
+      ],
       "workMode": "Hybrid: 1–2 days each week in the Lagos office",
       "employmentType": "Full time",
       "compensationRaw": null,
@@ -163,7 +199,9 @@
       "sourceUpdatedAt": "2026-09-01T13:29:10.344+00:00",
       "status": "open_when_checked",
       "verifiedAt": "2026-09-04T08:35:00+01:00",
-      "notes": "Ashby's card labels the role Remote, but the full description says hybrid with 1–2 Lagos office days weekly. BRYME reports the stricter detail-page condition."
+      "notes": "Ashby's card labels the role Remote, but the full description says hybrid with 1–2 Lagos office days weekly. BRYME reports the stricter detail-page condition.",
+      "category": "leadership",
+      "remoteEligible": false
     },
     {
       "id": "swoop-7f73a899",
@@ -171,7 +209,9 @@
       "employerType": "direct",
       "title": "Founding Marketing Designer",
       "locationTextRaw": "Lagos, Nigeria",
-      "eligibleCountries": ["Nigeria"],
+      "eligibleCountries": [
+        "Nigeria"
+      ],
       "workMode": "Hybrid: at least two days onsite each week",
       "employmentType": "Full time",
       "compensationRaw": "₦700,000–₦1,100,000 per month",
@@ -181,7 +221,9 @@
       "sourceUpdatedAt": "2026-09-03T12:59:27.113+00:00",
       "status": "open_when_checked",
       "verifiedAt": "2026-09-04T08:35:00+01:00",
-      "notes": "The exact page states Lagos, hybrid, at least two onsite days weekly, and the displayed monthly salary range."
+      "notes": "The exact page states Lagos, hybrid, at least two onsite days weekly, and the displayed monthly salary range.",
+      "category": "creative",
+      "remoteEligible": false
     },
     {
       "id": "canonical-6768925",
@@ -189,7 +231,10 @@
       "employerType": "direct",
       "title": "Distributed Systems Software Engineer, Python / Go",
       "locationTextRaw": "Home based – Africa, Lagos",
-      "eligibleCountries": ["Nigeria", "Other eligible African locations"],
+      "eligibleCountries": [
+        "Nigeria",
+        "Other eligible African locations"
+      ],
       "workMode": "Globally remote; location page is Africa, Lagos",
       "employmentType": "Not stated in the visible role summary",
       "compensationRaw": "Location- and experience-dependent; no amount displayed",
@@ -198,7 +243,9 @@
       "sourceSystem": "Canonical careers",
       "status": "open_when_checked",
       "verifiedAt": "2026-09-04T08:35:00+01:00",
-      "notes": "The role page displayed a live application form and described the role as globally remote."
+      "notes": "The role page displayed a live application form and described the role as globally remote.",
+      "category": "technology",
+      "remoteEligible": true
     },
     {
       "id": "lilt-59035d01",
@@ -206,7 +253,12 @@
       "employerType": "contractor platform",
       "title": "Content Writer – Yoruba – Remote",
       "locationTextRaw": "Nigeria (Remote); Canada (Remote); UK (Remote); USA (Remote)",
-      "eligibleCountries": ["Nigeria", "Canada", "United Kingdom", "United States"],
+      "eligibleCountries": [
+        "Nigeria",
+        "Canada",
+        "United Kingdom",
+        "United States"
+      ],
       "workMode": "Remote",
       "employmentType": "Independent contract",
       "compensationRaw": "Competitive rates claimed; no amount displayed",
@@ -216,7 +268,9 @@
       "sourceUpdatedAt": "2026-08-06T12:16:15.691+00:00",
       "status": "open_when_checked",
       "verifiedAt": "2026-09-04T08:35:00+01:00",
-      "notes": "This is supplemental contract work, not salaried full-time employment. The employer says work availability and hours are not guaranteed."
+      "notes": "This is supplemental contract work, not salaried full-time employment. The employer says work availability and hours are not guaranteed.",
+      "category": "writing",
+      "remoteEligible": true
     },
     {
       "id": "remotasks-4280170005",
@@ -224,7 +278,9 @@
       "employerType": "contributor platform",
       "title": "AI Training for Igbo Writers",
       "locationTextRaw": "Remote – Nigeria",
-      "eligibleCountries": ["Nigeria"],
+      "eligibleCountries": [
+        "Nigeria"
+      ],
       "workMode": "Remote, flexible project work",
       "employmentType": "Contract project work",
       "compensationRaw": "Up to US$17/hour; rate varies by country, experience, task and project stage",
@@ -234,7 +290,9 @@
       "sourceUpdatedAt": "2026-08-04T01:00:59-04:00",
       "status": "open_when_checked",
       "verifiedAt": "2026-09-04T08:35:00+01:00",
-      "notes": "An open application does not guarantee tasks or earnings. The page says rates vary and work duration depends on project availability."
+      "notes": "An open application does not guarantee tasks or earnings. The page says rates vary and work duration depends on project availability.",
+      "category": "writing",
+      "remoteEligible": true
     }
   ]
 }
