@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "start": "node server/server.js",
-    "build": "python3 scripts/build-content-css.py && python3 scripts/build-writing-first.py && python3 scripts/build-discovery.py && python3 scripts/build-public-dir.py || echo 'build: regeneration unavailable, using committed static output'",
+    "build": "python3 scripts/build-content-css.py && python3 scripts/build-writing-first.py && python3 scripts/build-writing-hub.py && python3 scripts/build-discovery.py && python3 scripts/build-public-dir.py || echo 'build: regeneration unavailable, using committed static output'",
     "submit:engines": "python3 scripts/ping-search-engines.py",
     "index:notify": "node scripts/index-notify.js",
 

@@ -1,0 +1,20 @@
+{
+  "tools": [
+    {"id": "word-counter", "title": "Word counter", "short": "Count words, characters and paragraphs as you type.", "category": "count", "description": "Type or paste your text and BRYME counts words and characters instantly. Great for hitting a target word count before you submit or publish."},
+    {"id": "character-counter", "title": "Character counter", "short": "Count characters for bios, headlines and limits.", "category": "count", "description": "Count the exact number of characters in your text — useful for meta descriptions, social bios, and anywhere with a character limit."},
+    {"id": "character-counter-no-spaces", "title": "Character counter (no spaces)", "short": "Count characters without counting spaces.", "category": "count", "description": "Count characters with spaces ignored, which is how many platforms count. Useful for strict limits."},
+    {"id": "sentence-counter", "title": "Sentence counter", "short": "Count sentences and paragraphs in your text.", "category": "count", "description": "See how many sentences and paragraphs your text has, so you can spot wall-of-text sections and vary your rhythm."},
+    {"id": "paragraph-counter", "title": "Paragraph counter", "short": "Count paragraphs and how readable the structure is.", "category": "count", "description": "Count paragraphs and sentences to check whether your structure is scannable or too dense."},
+    {"id": "reading-time", "title": "Reading time calculator", "short": "How long a reader takes to finish your piece.", "category": "count", "description": "Estimate the reading time of your text at a typical pace (200 words per minute), so you can match length to the format."},
+    {"id": "word-density", "title": "Word density calculator", "short": "See your most-used content words.", "category": "analyze", "description": "Find the words you repeat most, so you can spot overused terms and stale phrasing."},
+    {"id": "case-converter", "title": "Case converter", "short": "Switch between UPPER, lower, Title, sentence and camelCase.", "category": "format", "description": "Convert text to UPPERCASE, lowercase, Title Case, Sentence case or camelCase in one click."},
+    {"id": "text-cleaner", "title": "Text cleaner", "short": "Fix extra spaces, odd line breaks and whitespace.", "category": "format", "description": "Remove trailing spaces, fix awkward line breaks and tidy messy pasted text."},
+    {"id": "remove-extra-spaces", "title": "Remove extra spaces", "short": "Collapse double spaces into single ones.", "category": "format", "description": "Turn runs of spaces into single spaces and trim blank gaps left by pasting."},
+    {"id": "line-break-cleaner", "title": "Line break cleaner", "short": "Remove stray blank lines and tidy breaks.", "category": "format", "description": "Clean up inconsistent line breaks from copied text so paragraphs look right."},
+    {"id": "text-sorter", "title": "Text sorter", "short": "Sort a list alphabetically, ascending or descending.", "category": "format", "description": "Alphabetise a list of lines quickly — useful for bibliographies, references and notes."},
+    {"id": "duplicate-line-remover", "title": "Duplicate line remover", "short": "Remove repeated lines from a list.", "category": "format", "description": "Deduplicate a list of lines so each entry appears once."},
+    {"id": "writing-timer", "title": "Writing timer", "short": "A simple focus timer for your next writing session.", "category": "work", "description": "A timer to make you write for a focused stretch. Set a goal and let the timer keep you honest."},
+    {"id": "article-outline-generator", "title": "Article outline generator", "short": "Generate a structure for your next article.", "category": "work", "description": "Turn a title and a few key points into a ready-to-write outline with a suggested structure."},
+    {"id": "writing-checklist-generator", "title": "Writing checklist generator", "short": "Turn checklist items into a tickable box list.", "category": "work", "description": "Paste items, one per line, and BRYME makes them into a tickable checklist you can work through."}
+  ]
+}

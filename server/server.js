@@ -11,10 +11,10 @@ const SECURITY_HEADERS={
  "cross-origin-opener-policy":"same-origin","strict-transport-security":"max-age=31536000; includeSubDomains",
  "content-security-policy":"default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; form-action 'self' https:; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self'; upgrade-insecure-requests"
 };
-const PUBLIC_HTML_DIRS=new Set(["about","author","contact","copyright","corrections","disclaimer","editorial-policy","guides","privacy","terms","tested","writing"]);
+const PUBLIC_HTML_DIRS=new Set(["about","author","contact","copyright","corrections","disclaimer","editorial-policy","guides","privacy","terms","tested","writing","learn","tools","glossary","templates","checklists","problems","search"]);
 const PUBLIC_ROOT_FILES=new Set(["index.html","404.html","410.html","robots.txt","sitemap.xml","news-sitemap.xml","feed.xml","favicon.ico","manifest.webmanifest","sw.js","google2ec8f794263d784f.html","yandex_78fdd841f95fa2e1.html","1740cdb82c02b9af13911b38c853e85d2f708322fa0c2c55.txt"]);
 const PUBLIC_ASSET_EXT=new Set([".css",".js",".jpg",".jpeg",".png",".svg",".webp",".gif",".ico",".woff2"]);
-const MEDIA_FAMILIES=new Set(["sports","movie","movies","series","anime","article","articles","entertainment","genre","genres","year","years","trailers","trending","channels","topic","topics","now","search","legacy"]);
+const MEDIA_FAMILIES=new Set(["sports","movie","movies","series","anime","article","articles","entertainment","genre","genres","year","years","trailers","trending","channels","topic","topics","now","legacy"]);
 function loadRedirects(){const out=new Map();try{for(const line of fs.readFileSync(path.join(ROOT,"_redirects"),"utf8").split(/\r?\n/)){const clean=line.trim();if(!clean||clean.startsWith("#"))continue;const [from,to,status]=clean.split(/\s+/);if(status==="301"&&from&&to)out.set(from,to)}}catch{}return out}
 const EXACT_REDIRECTS=loadRedirects();
 function headers(extra={}){return {...SECURITY_HEADERS,...extra}}

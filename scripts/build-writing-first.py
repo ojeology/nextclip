@@ -46,10 +46,11 @@ footer = _build_focus.footer
 
 
 def footer() -> str:
-    """Writing-first footer: no jobs/opportunities/earn links."""
+    """Writing Hub footer."""
     return '''<footer class="site-foot"><div class="wrap foot-grid">
-  <div class="foot-brand"><a class="logo" href="/"><span class="logo-mark" aria-hidden="true">B</span>BRYME</a><p>BRYME helps writers find legitimate opportunities to get published and paid — verified sources, honest limits.</p></div>
-  <div class="foot-col"><b>Write</b><a href="/writing/">Writing opportunities</a><a href="/writing/afrolicious/">BRYME-tested example</a><a href="/guides/">Writing guides</a><a href="/tested/">BRYME Tested</a></div>
+  <div class="foot-brand"><a class="logo" href="/"><span class="logo-mark" aria-hidden="true">B</span>BRYME</a><p>BRYME is a free writing resource — guides, tools, and verified opportunities to get published and paid.</p></div>
+  <div class="foot-col"><b>Learn to write</b><a href="/learn/">Writing hub</a><a href="/learn/start-writing/">Start writing</a><a href="/learn/writing-basics/">Writing basics</a><a href="/learn/grammar-language/">Grammar</a><a href="/learn/editing-proofreading/">Editing</a></div>
+  <div class="foot-col"><b>Tools &amp; publish</b><a href="/tools/">Writing tools</a><a href="/templates/">Templates</a><a href="/checklists/">Checklists</a><a href="/writing/">Paid opportunities</a><a href="/tested/">BRYME Tested</a></div>
   <div class="foot-col"><b>Trust</b><a href="/about/">About</a><a href="/editorial-policy/">Editorial policy</a><a href="/corrections/">Corrections</a><a href="/privacy/">Privacy</a><a href="/contact/">Contact</a></div>
   <div class="foot-col"><b>Legal</b><a href="/terms/">Terms</a><a href="/disclaimer/">Disclaimer</a><a href="/copyright/">Copyright</a></div>
 </div><div class="wrap foot-bottom">© 2026 BRYME · Independent editorial project · No acceptance, publication or payment is guaranteed.</div></footer>'''
@@ -58,13 +59,13 @@ def footer() -> str:
 WRITING = json.loads((ROOT / "content/opportunities.json").read_text(encoding="utf-8"))["opportunities"]
 
 # ---------------------------------------------------------------------------
-# Navigation — writing-first desktop + 4-item mobile bottom bar
+# Navigation — Writing Hub desktop + 4-item mobile bottom bar
 # ---------------------------------------------------------------------------
 def nav(current: str = "") -> str:
     links = [
-        ("writing", "/writing/", "Writing Opportunities"),
-        ("guides", "/guides/", "Writing Guides"),
-        ("tested", "/tested/", "BRYME Tested"),
+        ("learn", "/learn/", "Learn to write"),
+        ("tools", "/tools/", "Writing tools"),
+        ("writing", "/writing/", "Write & get paid"),
         ("about", "/about/", "About"),
     ]
     items = []
@@ -76,15 +77,15 @@ def nav(current: str = "") -> str:
 <header class="site-head"><div class="wrap head-in">
   <a class="logo" href="/" aria-label="BRYME home"><span class="logo-mark" aria-hidden="true">B</span>BRYME</a>
   <nav class="main-nav" aria-label="Primary">{''.join(items)}</nav>
-  <form class="nav-search-form" action="/writing/" method="get" role="search"><input type="search" name="q" placeholder="Search opportunities…" aria-label="Search writing opportunities" autocomplete="off"></form>
+  <form class="nav-search-form" action="/search/" method="get" role="search"><input type="search" name="q" placeholder="Search guides, tools…" aria-label="Search BRYME" autocomplete="off"></form>
 </div></header>'''
 
 
 def mobile_nav(current: str = "") -> str:
     links = [
-        ("writing", "/writing/", "📝", "Opportunities"),
-        ("guides", "/guides/", "📚", "Guides"),
-        ("tested", "/tested/", "🧪", "Tested"),
+        ("learn", "/learn/", "📚", "Learn"),
+        ("tools", "/tools/", "🛠", "Tools"),
+        ("writing", "/writing/", "💰", "Publish"),
         ("about", "/about/", "👤", "About"),
     ]
     return '<nav class="bottom-nav bottom-nav--writing" aria-label="Primary mobile">' + ''.join(
@@ -498,7 +499,7 @@ def guides_hub() -> None:
 <section class="section alt"><div class="guide-grid">{cards}</div></section></div>'''
     write("/guides/", page_wf(title="Writing guides for pitching, submitting and getting paid | BRYME",
                              description="Practical BRYME writing guides on pitching publications, submitting articles, building samples and getting paid for freelance work.",
-                             route="/guides/", current="guides", body=body,
+                             route="/guides/", current="learn", body=body,
                              schema_data={"@context": "https://schema.org", "@type": "CollectionPage", "name": "BRYME writing guides", "url": BASE + "/guides/", "dateModified": TODAY, "publisher": {"@type": "Organization", "name": "BRYME", "url": BASE + "/"}}))
 
 
@@ -535,7 +536,7 @@ def guide_page(g: dict) -> None:
 {f'<h2>Related publications</h2><div class="guide-grid">{rel_cards}</div>' if rel_cards else ''}</div></section></div>'''
     write(f"/guides/{g['slug']}/", page_wf(title=f"{g['title']} | BRYME writing guides",
                                           description=g["description"], route=f"/guides/{g['slug']}/",
-                                          current="guides", body=body,
+                                          current="learn", body=body,
                                           schema_data={"@context": "https://schema.org", "@type": "Article",
                                                        "headline": g["title"], "description": g["description"],
                                                        "url": f"{BASE}/guides/{g['slug']}/",
@@ -570,7 +571,7 @@ def tested_page() -> None:
 <section class="section alt"><div class="section-head"><div><p class="eyebrow">Current notes</p><h2>{len(tested)} opportunity·tested</h2></div></div>{table}</section></div>'''
     write("/tested/", page_wf(title="BRYME Tested — opportunities personally verified | BRYME",
                              description="Writing opportunities BRYME has personally submitted to, been accepted by, published with, or been paid by — shown as a staggered, honest record.",
-                             route="/tested/", current="tested", body=body,
+                             route="/tested/", current="writing", body=body,
                              schema_data={"@context": "https://schema.org", "@type": "CollectionPage", "name": "BRYME Tested", "url": BASE + "/tested/", "dateModified": TODAY, "publisher": {"@type": "Organization", "name": "BRYME", "url": BASE + "/"}}))
 
 
@@ -654,7 +655,9 @@ def empty_pages() -> None:
 
 
 if __name__ == "__main__":
-    home()
+    # Homepage is owned by the Writing Hub builder (build-writing-hub.py) so the
+    # hub surface reads as one site; this builder still owns /writing/, /guides/,
+    # /tested/, /about/ and the trust/legal pages.
     writing_hub()
     for r in WRITING:
         pub_page(r)

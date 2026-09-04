@@ -19,6 +19,7 @@ PUB = ROOT / "public"
 PUBLIC_DIRS = [
     "about", "author", "contact", "copyright", "corrections", "disclaimer",
     "editorial-policy", "guides", "privacy", "terms", "tested", "writing", "assets",
+    "learn", "tools", "glossary", "templates", "checklists", "problems", "search",
 ]
 # Root-level files that belong on the published site.
 PUBLIC_FILES = [
