@@ -1,12 +1,17 @@
 services:
-  - type: web
+  - type: static
     name: bryme-website
-    runtime: node
     rootDir: .
     plan: free
-    buildCommand: npm install --omit=dev && (npm run build || echo "build: using committed static output")
-    startCommand: node server/server.js
-    healthCheckPath: /healthz
+    buildCommand: npm install --omit=dev && npm run build
+    staticPublishPath: public
+    headers:
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff
+      - path: /*
+        name: Referrer-Policy
+        value: strict-origin-when-cross-origin
     autoDeploy: true
     envVars:
       - key: NODE_VERSION
@@ -16,10 +21,7 @@ services:
       # canonicals, sitemaps, JSON-LD and internal URLs follow this value.
       - key: SITE_URL
         sync: false
-      # Shared secret guarding the Google Indexing API control endpoints.
       - key: INDEXING_API_TOKEN
         sync: false
-      # Path (relative to the service root) of a service-account JSON key
-      # authorised for the Google Indexing API. Leave empty to stay in dry-run.
       - key: GOOGLE_INDEXING_CREDENTIALS
         sync: false

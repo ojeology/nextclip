@@ -348,6 +348,7 @@ def pub_page(rec: dict) -> None:
     apply_email = rec.get("applyEmail") or ""
     method = rec.get("applyMethod") or ""
     rights = rec.get("rights") or ""
+    pub = esc(rec.get("publication") or "")
     ai = rec.get("aiPolicy") or "not-stated"
     ai_display = {"no-ai": "No / restricted (reported)", "not-stated": "Not stated in the guideline",
                   "unknown": "Unknown", "allowed": "Allowed (per guideline)"}.get(ai, ai.replace("-", " ").capitalize())
@@ -370,9 +371,9 @@ def pub_page(rec: dict) -> None:
 {f'<li>Submission email: {esc(apply_email)}</li>' if apply_email else ''}
 </ul>
 {_list('What the guideline asks you to prepare', how) if how else ''}
-{f'''<div class="notice"><strong>Safety note.</strong> Never pay to submit your work. A legitimate publication does not ask writers to pay a fee or provide identity documents to be considered. If you are asked to, do not proceed.</div>''' if True else ''}'''
+<div class="notice"><strong>Safety note.</strong> Never pay to submit your work. A legitimate publication does not ask writers to pay a fee or provide identity documents to be considered. If you are asked to, do not proceed.</div>'''
 
-    body = f'''<div class="wrap"><nav class="breadcrumb"><a href="/">Home</a> / <a href="/writing/">Writing opportunities</a> / {esc(rec['publication'])}</nav>
+    body = f'''<div class="wrap"><nav class="breadcrumb"><a href="/">Home</a> / <a href="/writing/">Writing opportunities</a> / {pub}</nav>
 <section class="page-hero"><p class="kicker"><span class="kicker-dot"></span>{esc(topic_display)}</p>
 <h1>{esc(rec['publication'])}</h1>
 <p>{esc(rec.get('excerpt') or rec.get('title') or '')}</p>
@@ -381,7 +382,7 @@ def pub_page(rec: dict) -> None:
 <div class="wrap two-col"><div>{_facts(rec)}</div><div>{_timeline(rec)}</div></div>
 <section class="section"><div class="prose">
 <h2>What this publication wants</h2>
-<p>This is BRYME's summary of the publication's focus — not a copy of their website. <em>Type of writing:</em> {esc(topic_display)}. <em>Official guideline:</em> {f'<a href="{esc(official)}">{esc(rec['publication'])} guidelines</a>' if official else 'See the official site below'}.</p>
+<p>This is BRYME's summary of the publication's focus — not a copy of their website. <em>Type of writing:</em> {esc(topic_display)}. <em>Official guideline:</em> {f'<a href="{esc(official)}">{pub} guidelines</a>' if official else 'See the official site below'}.</p>
 {_list('Topics, themes and styles they look for', what) if what else ''}
 {_list('Subjects they avoid', dont) if dont else ''}
 {_list('Key requirements', reqs) if reqs else ''}

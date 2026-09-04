@@ -1,0 +1,15 @@
+# Writing-first BRYME launch. Legacy multi-niche hubs (jobs, opportunities,
+# tech, make-money) were retired and live on the legacy-multiniche branch.
+# Keep 301s so old links land on the closest living writing-first surface.
+/opportunities  /writing/  301
+/opportunities/  /writing/  301
+/jobs  /writing/  301
+/jobs/  /writing/  301
+/tech  /guides/  301
+/tech/  /guides/  301
+/make-money/writing-opportunities/  /writing/  301
+/make-money  /writing/  301
+/make-money/  /writing/  301
+
+# Media route families are HTTP 410 in server/server.js until the separately
+# deployed BRYME Media destination has a stable public hostname.

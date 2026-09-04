@@ -12,7 +12,7 @@ const json=r=>JSON.parse(read(r));
 const site=String(json("site.config.json").siteUrl).replace(/\/$/,"");
 const allowDoc=json("content/index-allowlist.json"), allow=new Set(allowDoc.routes);
 const verification=new Set(["google2ec8f794263d784f.html","yandex_78fdd841f95fa2e1.html","1740cdb82c02b9af13911b38c853e85d2f708322fa0c2c55.txt"]);
-function walk(dir,out=[]){for(const e of fs.readdirSync(dir,{withFileTypes:true})){if([".git","node_modules","reports"].includes(e.name))continue;const p=path.join(dir,e.name);e.isDirectory()?walk(p,out):out.push(p)}return out}
+function walk(dir,out=[]){for(const e of fs.readdirSync(dir,{withFileTypes:true})){if([".git","node_modules","reports","public"].includes(e.name))continue;const p=path.join(dir,e.name);e.isDirectory()?walk(p,out):out.push(p)}return out}
 const rel=p=>path.relative(ROOT,p).replace(/\\/g,"/");
 function routeFor(p){const r=rel(p);return r==="index.html"?"/":r.endsWith("/index.html")?"/"+r.slice(0,-10):"/"+r}
 function attrs(tag){const o={};let m,r=/([:\w-]+)\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s>]+))/g;while((m=r.exec(tag)))o[m[1].toLowerCase()]=m[2]??m[3]??m[4]??"";return o}

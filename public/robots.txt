@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+Disallow: /telegram/
+
+Sitemap: https://bryme.onrender.com/sitemap.xml
+Sitemap: https://bryme.onrender.com/news-sitemap.xml
