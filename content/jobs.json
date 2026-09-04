@@ -38,6 +38,37 @@
       }
     },
     {
+      "id": "jobberman-office-tools-anchorsoft",
+      "employer": "Anchorsoft Academy",
+      "employerType": "direct",
+      "title": "Office Tools & Data Analysis Instructor",
+      "locationTextRaw": "Lagos",
+      "eligibleCountries": [
+        "Nigeria"
+      ],
+      "workMode": "Listed on Jobberman (Lagos)",
+      "employmentType": "Full Time",
+      "compensationRaw": "NGN 70,000 - 150,000",
+      "experience": "Not established from the listing; confirm on the board.",
+      "education": "Not established from the listing; confirm on the board.",
+      "deadline": "Not publicly stated",
+      "sourceUrl": "https://www.jobberman.com/listings/office-tools-data-analysis-instructor-d90vxm",
+      "sourceBoardUrl": "https://www.jobberman.com/jobs",
+      "sourceSystem": "Jobberman",
+      "status": "board_listed",
+      "verifiedAt": "2026-09-04T08:35:00+01:00",
+      "lastVerified": "2026-09-04",
+      "notes": "Listed on Jobberman at NGN 70k-150k, 1 month ago.",
+      "summary": "Listed on Jobberman at NGN 70k-150k, 1 month ago.",
+      "suitableFor": "Instructors who teach Office tools and data analysis.",
+      "category": "other",
+      "remoteEligible": false,
+      "sourceListedUrl": "https://www.jobberman.com/listings/office-tools-data-analysis-instructor-d90vxm",
+      "jobPosting": {
+        "eligible": false
+      }
+    },
+    {
       "id": "jobberman-community-partnership-engagement",
       "employer": "Anonymous Employer",
       "employerType": "direct",
@@ -69,6 +100,99 @@
       }
     },
     {
+      "id": "jobberman-creative-lead-anon",
+      "employer": "Anonymous Employer",
+      "employerType": "direct",
+      "title": "Creative Lead / Creative Assistant",
+      "locationTextRaw": "Remote (Work From Home)",
+      "eligibleCountries": [
+        "Nigeria"
+      ],
+      "workMode": "Remote (work from home)",
+      "employmentType": "Full Time",
+      "compensationRaw": "NGN 400,000 - 600,000",
+      "experience": "Not established from the listing; confirm on the board.",
+      "education": "Not established from the listing; confirm on the board.",
+      "deadline": "Not publicly stated",
+      "sourceUrl": "https://www.jobberman.com/listings/creative-lead-7jxn2d",
+      "sourceBoardUrl": "https://www.jobberman.com/jobs",
+      "sourceSystem": "Jobberman",
+      "status": "board_listed",
+      "verifiedAt": "2026-09-04T08:35:00+01:00",
+      "lastVerified": "2026-09-04",
+      "notes": "Listed on Jobberman as a remote Full Time creative lead at NGN 400k-600k, 1 week ago.",
+      "summary": "Listed on Jobberman as a remote Full Time creative lead at NGN 400k-600k, 1 week ago.",
+      "suitableFor": "Content/creative leads who can plan and execute digital content.",
+      "category": "creative",
+      "remoteEligible": true,
+      "sourceListedUrl": "https://www.jobberman.com/listings/creative-lead-7jxn2d",
+      "jobPosting": {
+        "eligible": false
+      }
+    },
+    {
+      "id": "jobberman-dev-digital-marketing-anon",
+      "employer": "Anonymous Employer",
+      "employerType": "direct",
+      "title": "Development and Digital Marketing Manager",
+      "locationTextRaw": "Remote (Work From Home)",
+      "eligibleCountries": [
+        "Nigeria"
+      ],
+      "workMode": "Remote (work from home)",
+      "employmentType": "Full Time",
+      "compensationRaw": "NGN 400,000 - 600,000",
+      "experience": "Not established from the listing; confirm on the board.",
+      "education": "Not established from the listing; confirm on the board.",
+      "deadline": "Not publicly stated",
+      "sourceUrl": "https://www.jobberman.com/listings/development-and-digital-marketing-manager-m0vrqz",
+      "sourceBoardUrl": "https://www.jobberman.com/jobs",
+      "sourceSystem": "Jobberman",
+      "status": "board_listed",
+      "verifiedAt": "2026-09-04T08:35:00+01:00",
+      "lastVerified": "2026-09-04",
+      "notes": "Listed on Jobberman as a remote development/marketing manager at NGN 400k-600k, 1 month ago.",
+      "summary": "Listed on Jobberman as a remote development/marketing manager at NGN 400k-600k, 1 month ago.",
+      "suitableFor": "Growth-focused marketing managers.",
+      "category": "marketing",
+      "remoteEligible": true,
+      "sourceListedUrl": "https://www.jobberman.com/listings/development-and-digital-marketing-manager-m0vrqz",
+      "jobPosting": {
+        "eligible": false
+      }
+    },
+    {
+      "id": "jobberman-electrical-reliability-anon",
+      "employer": "Anonymous Employer",
+      "employerType": "direct",
+      "title": "Electrical Reliability Engineer",
+      "locationTextRaw": "Remote (Work From Home)",
+      "eligibleCountries": [
+        "Nigeria"
+      ],
+      "workMode": "Remote (work from home)",
+      "employmentType": "Full Time",
+      "compensationRaw": "NGN 250,000 - 400,000",
+      "experience": "Not established from the listing; confirm on the board.",
+      "education": "Not established from the listing; confirm on the board.",
+      "deadline": "Not publicly stated",
+      "sourceUrl": "https://www.jobberman.com/listings/electrical-reliability-engineer-m0vq6d",
+      "sourceBoardUrl": "https://www.jobberman.com/jobs",
+      "sourceSystem": "Jobberman",
+      "status": "board_listed",
+      "verifiedAt": "2026-09-04T08:35:00+01:00",
+      "lastVerified": "2026-09-04",
+      "notes": "Listed on Jobberman as a remote reliability engineer role at NGN 250k-400k, 2 weeks ago.",
+      "summary": "Listed on Jobberman as a remote reliability engineer role at NGN 250k-400k, 2 weeks ago.",
+      "suitableFor": "Electrical/asset-management engineers.",
+      "category": "technology",
+      "remoteEligible": true,
+      "sourceListedUrl": "https://www.jobberman.com/listings/electrical-reliability-engineer-m0vq6d",
+      "jobPosting": {
+        "eligible": false
+      }
+    },
+    {
       "id": "jobberman-growth-community-anon",
       "employer": "Anonymous Employer",
       "employerType": "direct",
@@ -95,6 +219,99 @@
       "category": "marketing",
       "remoteEligible": false,
       "sourceListedUrl": "https://www.jobberman.com/listings/growth-community-executive-n9046g",
+      "jobPosting": {
+        "eligible": false
+      }
+    },
+    {
+      "id": "jobberman-mobile-developer-anon",
+      "employer": "Anonymous Employer",
+      "employerType": "direct",
+      "title": "Mobile Application Developer",
+      "locationTextRaw": "Lagos",
+      "eligibleCountries": [
+        "Nigeria"
+      ],
+      "workMode": "Listed on Jobberman (Lagos)",
+      "employmentType": "Full Time",
+      "compensationRaw": "Confidential",
+      "experience": "Not established from the listing; confirm on the board.",
+      "education": "Not established from the listing; confirm on the board.",
+      "deadline": "Not publicly stated",
+      "sourceUrl": "https://www.jobberman.com/listings/mobile-application-developer-2k707q",
+      "sourceBoardUrl": "https://www.jobberman.com/jobs",
+      "sourceSystem": "Jobberman",
+      "status": "board_listed",
+      "verifiedAt": "2026-09-04T08:35:00+01:00",
+      "lastVerified": "2026-09-04",
+      "notes": "Listed on Jobberman, confidential pay, 2 months ago, Software & Data.",
+      "summary": "Listed on Jobberman, confidential pay, 2 months ago, Software & Data.",
+      "suitableFor": "Mobile (Android/iOS) app developers.",
+      "category": "technology",
+      "remoteEligible": false,
+      "sourceListedUrl": "https://www.jobberman.com/listings/mobile-application-developer-2k707q",
+      "jobPosting": {
+        "eligible": false
+      }
+    },
+    {
+      "id": "jobberman-software-consultant-atib",
+      "employer": "Atib Services Ltd",
+      "employerType": "direct",
+      "title": "Software Consultant",
+      "locationTextRaw": "Lagos",
+      "eligibleCountries": [
+        "Nigeria"
+      ],
+      "workMode": "Listed on Jobberman (Lagos)",
+      "employmentType": "Full Time",
+      "compensationRaw": "NGN 150,000 - 250,000",
+      "experience": "Not established from the listing; confirm on the board.",
+      "education": "Not established from the listing; confirm on the board.",
+      "deadline": "Not publicly stated",
+      "sourceUrl": "https://www.jobberman.com/listings/software-consultant-n9745g",
+      "sourceBoardUrl": "https://www.jobberman.com/jobs",
+      "sourceSystem": "Jobberman",
+      "status": "board_listed",
+      "verifiedAt": "2026-09-04T08:35:00+01:00",
+      "lastVerified": "2026-09-04",
+      "notes": "Listed on Jobberman at NGN 150k-250k, 1 month ago, Software & Data.",
+      "summary": "Listed on Jobberman at NGN 150k-250k, 1 month ago, Software & Data.",
+      "suitableFor": "Detail-oriented software implementation/support consultants.",
+      "category": "technology",
+      "remoteEligible": false,
+      "sourceListedUrl": "https://www.jobberman.com/listings/software-consultant-n9745g",
+      "jobPosting": {
+        "eligible": false
+      }
+    },
+    {
+      "id": "jobberman-accounts-tax-bigfield",
+      "employer": "Bigfield Professional Services",
+      "employerType": "direct",
+      "title": "Accounts/Tax Senior",
+      "locationTextRaw": "Remote (Work From Home)",
+      "eligibleCountries": [
+        "Nigeria"
+      ],
+      "workMode": "Remote (work from home)",
+      "employmentType": "Full Time",
+      "compensationRaw": "Confidential",
+      "experience": "Not established from the listing; confirm on the board.",
+      "education": "Not established from the listing; confirm on the board.",
+      "deadline": "Not publicly stated",
+      "sourceUrl": "https://www.jobberman.com/listings/accountstax-senior-2k886k",
+      "sourceBoardUrl": "https://www.jobberman.com/jobs",
+      "sourceSystem": "Jobberman",
+      "status": "board_listed",
+      "verifiedAt": "2026-09-04T08:35:00+01:00",
+      "lastVerified": "2026-09-04",
+      "notes": "Listed on Jobberman as a remote accounts/tax role, confidential pay, 1 month ago.",
+      "summary": "Listed on Jobberman as a remote accounts/tax role, confidential pay, 1 month ago.",
+      "suitableFor": "Experienced accountants/tax officers.",
+      "category": "finance",
+      "remoteEligible": true,
+      "sourceListedUrl": "https://www.jobberman.com/listings/accountstax-senior-2k886k",
       "jobPosting": {
         "eligible": false
       }
@@ -148,6 +365,37 @@
       "category": "other",
       "remoteEligible": false,
       "sourceListedUrl": "https://www.jobberman.com/listings/dental-nurse-aesthetic-nurse-rrj89q",
+      "jobPosting": {
+        "eligible": false
+      }
+    },
+    {
+      "id": "jobberman-network-cloud-centre",
+      "employer": "Centre Point Multi Solutions Group",
+      "employerType": "direct",
+      "title": "Network, Cloud & Cybersecurity",
+      "locationTextRaw": "Abuja",
+      "eligibleCountries": [
+        "Nigeria"
+      ],
+      "workMode": "Listed on Jobberman (Abuja)",
+      "employmentType": "Full Time",
+      "compensationRaw": "NGN 150,000 - 250,000",
+      "experience": "Not established from the listing; confirm on the board.",
+      "education": "Not established from the listing; confirm on the board.",
+      "deadline": "Not publicly stated",
+      "sourceUrl": "https://www.jobberman.com/listings/network-cloud-cybersecurity-n9jd70",
+      "sourceBoardUrl": "https://www.jobberman.com/jobs",
+      "sourceSystem": "Jobberman",
+      "status": "board_listed",
+      "verifiedAt": "2026-09-04T08:35:00+01:00",
+      "lastVerified": "2026-09-04",
+      "notes": "Listed on Jobberman at NGN 150k-250k, new (Today), Software & Data. 4-6+ yrs experience.",
+      "summary": "Listed on Jobberman at NGN 150k-250k, new (Today), Software & Data. 4-6+ yrs experience.",
+      "suitableFor": "Network/cloud/cybersecurity professionals with 4-6+ years.",
+      "category": "technology",
+      "remoteEligible": false,
+      "sourceListedUrl": "https://www.jobberman.com/listings/network-cloud-cybersecurity-n9jd70",
       "jobPosting": {
         "eligible": false
       }
@@ -272,6 +520,99 @@
       "category": "technology",
       "remoteEligible": false,
       "sourceListedUrl": "https://www.jobberman.com/listings/geologist-pgj6nq",
+      "jobPosting": {
+        "eligible": false
+      }
+    },
+    {
+      "id": "jobberman-automation-tester-honcho",
+      "employer": "Honcho Nigeria Ltd",
+      "employerType": "direct",
+      "title": "Playwright / Postman Automation Tester",
+      "locationTextRaw": "Remote (Work From Home)",
+      "eligibleCountries": [
+        "Nigeria"
+      ],
+      "workMode": "Remote (work from home)",
+      "employmentType": "Full Time",
+      "compensationRaw": "USD 750 - 1000",
+      "experience": "Not established from the listing; confirm on the board.",
+      "education": "Not established from the listing; confirm on the board.",
+      "deadline": "Not publicly stated",
+      "sourceUrl": "https://www.jobberman.com/listings/playwright-postman-automation-tester-9k5g47",
+      "sourceBoardUrl": "https://www.jobberman.com/jobs",
+      "sourceSystem": "Jobberman",
+      "status": "board_listed",
+      "verifiedAt": "2026-09-04T08:35:00+01:00",
+      "lastVerified": "2026-09-04",
+      "notes": "Listed on Jobberman as a remote work-from-home automation tester (SDET) at USD 750-1000, 1 month ago.",
+      "summary": "Listed on Jobberman as a remote work-from-home automation tester (SDET) at USD 750-1000, 1 month ago.",
+      "suitableFor": "Automation testers (Playwright/Postman) comfortable working remotely.",
+      "category": "technology",
+      "remoteEligible": true,
+      "sourceListedUrl": "https://www.jobberman.com/listings/playwright-postman-automation-tester-9k5g47",
+      "jobPosting": {
+        "eligible": false
+      }
+    },
+    {
+      "id": "jobberman-client-acquisition-jb",
+      "employer": "Jobberman (Third Party Recruitment)",
+      "employerType": "direct",
+      "title": "Business Development/Client Acquisition Executive",
+      "locationTextRaw": "Remote (Work From Home)",
+      "eligibleCountries": [
+        "Nigeria"
+      ],
+      "workMode": "Remote (work from home)",
+      "employmentType": "Full Time",
+      "compensationRaw": "NGN 250,000 - 400,000",
+      "experience": "Not established from the listing; confirm on the board.",
+      "education": "Not established from the listing; confirm on the board.",
+      "deadline": "Not publicly stated",
+      "sourceUrl": "https://www.jobberman.com/listings/business-developmentclient-acquisition-executive-rr66eg",
+      "sourceBoardUrl": "https://www.jobberman.com/jobs",
+      "sourceSystem": "Jobberman",
+      "status": "board_listed",
+      "verifiedAt": "2026-09-04T08:35:00+01:00",
+      "lastVerified": "2026-09-04",
+      "notes": "Listed on Jobberman as a remote business-development role at NGN 250k-400k, 1 month ago.",
+      "summary": "Listed on Jobberman as a remote business-development role at NGN 250k-400k, 1 month ago.",
+      "suitableFor": "Client-acquisition and business-development executives.",
+      "category": "sales",
+      "remoteEligible": true,
+      "sourceListedUrl": "https://www.jobberman.com/listings/business-developmentclient-acquisition-executive-rr66eg",
+      "jobPosting": {
+        "eligible": false
+      }
+    },
+    {
+      "id": "jobberman-creative-designer-jb",
+      "employer": "Jobberman (Third Party Recruitment)",
+      "employerType": "direct",
+      "title": "Creative Designer",
+      "locationTextRaw": "Remote (Work From Home)",
+      "eligibleCountries": [
+        "Nigeria"
+      ],
+      "workMode": "Remote (work from home)",
+      "employmentType": "Full Time",
+      "compensationRaw": "NGN 250,000 - 400,000",
+      "experience": "Not established from the listing; confirm on the board.",
+      "education": "Not established from the listing; confirm on the board.",
+      "deadline": "Not publicly stated",
+      "sourceUrl": "https://www.jobberman.com/listings/creative-designer-rr66p5",
+      "sourceBoardUrl": "https://www.jobberman.com/jobs",
+      "sourceSystem": "Jobberman",
+      "status": "board_listed",
+      "verifiedAt": "2026-09-04T08:35:00+01:00",
+      "lastVerified": "2026-09-04",
+      "notes": "Listed on Jobberman as a remote creative designer (graphic + video) at NGN 250k-400k, 1 month ago. Recruitment agency (third-party).",
+      "summary": "Listed on Jobberman as a remote creative designer (graphic + video) at NGN 250k-400k, 1 month ago. Recruitment agency (third-party).",
+      "suitableFor": "Graphic designers who also edit video.",
+      "category": "creative",
+      "remoteEligible": true,
+      "sourceListedUrl": "https://www.jobberman.com/listings/creative-designer-rr66p5",
       "jobPosting": {
         "eligible": false
       }
@@ -417,6 +758,37 @@
       "remoteEligible": false
     },
     {
+      "id": "jobberman-ux-specialist-msport",
+      "employer": "Mobile Sport Limited (MSport)",
+      "employerType": "direct",
+      "title": "UX Specialist",
+      "locationTextRaw": "Lagos",
+      "eligibleCountries": [
+        "Nigeria"
+      ],
+      "workMode": "Listed on Jobberman (Lagos)",
+      "employmentType": "Full Time",
+      "compensationRaw": "NGN 150,000 - 250,000",
+      "experience": "Not established from the listing; confirm on the board.",
+      "education": "Not established from the listing; confirm on the board.",
+      "deadline": "Not publicly stated",
+      "sourceUrl": "https://www.jobberman.com/listings/ux-specialist-5p908x",
+      "sourceBoardUrl": "https://www.jobberman.com/jobs",
+      "sourceSystem": "Jobberman",
+      "status": "board_listed",
+      "verifiedAt": "2026-09-04T08:35:00+01:00",
+      "lastVerified": "2026-09-04",
+      "notes": "Listed on Jobberman at NGN 150k-250k, 1 month ago, Software & Data.",
+      "summary": "Listed on Jobberman at NGN 150k-250k, 1 month ago, Software & Data.",
+      "suitableFor": "UX designers for a sports/gaming platform.",
+      "category": "technology",
+      "remoteEligible": false,
+      "sourceListedUrl": "https://www.jobberman.com/listings/ux-specialist-5p908x",
+      "jobPosting": {
+        "eligible": false
+      }
+    },
+    {
       "id": "moniepoint-4736464101",
       "employer": "Moniepoint",
       "employerType": "direct",
@@ -540,6 +912,37 @@
       "category": "creative",
       "remoteEligible": true,
       "sourceListedUrl": "https://www.jobberman.com/listings/visual-storyteller-motion-designer-7j07qj",
+      "jobPosting": {
+        "eligible": false
+      }
+    },
+    {
+      "id": "jobberman-bookkeeping-packpro",
+      "employer": "PackPro Movers",
+      "employerType": "direct",
+      "title": "Virtual Bookkeeping and Reporting Specialist",
+      "locationTextRaw": "Remote (Work From Home)",
+      "eligibleCountries": [
+        "Nigeria"
+      ],
+      "workMode": "Remote (work from home)",
+      "employmentType": "Full Time",
+      "compensationRaw": "NGN 900,000 - 1,200,000",
+      "experience": "Not established from the listing; confirm on the board.",
+      "education": "Not established from the listing; confirm on the board.",
+      "deadline": "Not publicly stated",
+      "sourceUrl": "https://www.jobberman.com/listings/booking-qzwjvj",
+      "sourceBoardUrl": "https://www.jobberman.com/jobs",
+      "sourceSystem": "Jobberman",
+      "status": "board_listed",
+      "verifiedAt": "2026-09-04T08:35:00+01:00",
+      "lastVerified": "2026-09-04",
+      "notes": "Listed on Jobberman as a remote Full Time bookkeeping role at NGN 900k-1.2m, 2 weeks ago.",
+      "summary": "Listed on Jobberman as a remote Full Time bookkeeping role at NGN 900k-1.2m, 2 weeks ago.",
+      "suitableFor": "Experienced virtual bookkeepers and reporting specialists.",
+      "category": "finance",
+      "remoteEligible": true,
+      "sourceListedUrl": "https://www.jobberman.com/listings/booking-qzwjvj",
       "jobPosting": {
         "eligible": false
       }
@@ -791,6 +1194,37 @@
       "remoteEligible": false
     },
     {
+      "id": "jobberman-growth-marketing-tapam",
+      "employer": "Tap Am Ltd",
+      "employerType": "direct",
+      "title": "Strategic Growth & Marketing Lead",
+      "locationTextRaw": "Remote (Work From Home)",
+      "eligibleCountries": [
+        "Nigeria"
+      ],
+      "workMode": "Remote (work from home)",
+      "employmentType": "Full Time",
+      "compensationRaw": "NGN 150,000 - 250,000",
+      "experience": "Not established from the listing; confirm on the board.",
+      "education": "Not established from the listing; confirm on the board.",
+      "deadline": "Not publicly stated",
+      "sourceUrl": "https://www.jobberman.com/listings/strategic-growth-marketing-lead-k76n8m",
+      "sourceBoardUrl": "https://www.jobberman.com/jobs",
+      "sourceSystem": "Jobberman",
+      "status": "board_listed",
+      "verifiedAt": "2026-09-04T08:35:00+01:00",
+      "lastVerified": "2026-09-04",
+      "notes": "Listed on Jobberman as a remote growth/marketing lead at NGN 150k-250k, 3 weeks ago.",
+      "summary": "Listed on Jobberman as a remote growth/marketing lead at NGN 150k-250k, 3 weeks ago.",
+      "suitableFor": "Growth marketers for a payments/commerce startup.",
+      "category": "marketing",
+      "remoteEligible": true,
+      "sourceListedUrl": "https://www.jobberman.com/listings/strategic-growth-marketing-lead-k76n8m",
+      "jobPosting": {
+        "eligible": false
+      }
+    },
+    {
       "id": "jobberman-sales-marketing-tatafish",
       "employer": "Tatafish Foods",
       "employerType": "direct",
@@ -817,6 +1251,37 @@
       "category": "sales",
       "remoteEligible": false,
       "sourceListedUrl": "https://www.jobberman.com/listings/sales-marketing-executive-6qv75d",
+      "jobPosting": {
+        "eligible": false
+      }
+    },
+    {
+      "id": "jobberman-content-partnerships-tech1m",
+      "employer": "Tech1million Limited",
+      "employerType": "direct",
+      "title": "Content, Marketing, and Partnerships Lead",
+      "locationTextRaw": "Remote (Work From Home)",
+      "eligibleCountries": [
+        "Nigeria"
+      ],
+      "workMode": "Remote (work from home)",
+      "employmentType": "Full Time",
+      "compensationRaw": "NGN 400,000 - 600,000",
+      "experience": "Not established from the listing; confirm on the board.",
+      "education": "Not established from the listing; confirm on the board.",
+      "deadline": "Not publicly stated",
+      "sourceUrl": "https://www.jobberman.com/listings/content-marketing-and-partnerships-lead-5prr6n",
+      "sourceBoardUrl": "https://www.jobberman.com/jobs",
+      "sourceSystem": "Jobberman",
+      "status": "board_listed",
+      "verifiedAt": "2026-09-04T08:35:00+01:00",
+      "lastVerified": "2026-09-04",
+      "notes": "Listed on Jobberman as a remote content/marketing/partnerships lead at NGN 400k-600k, 1 month ago.",
+      "summary": "Listed on Jobberman as a remote content/marketing/partnerships lead at NGN 400k-600k, 1 month ago.",
+      "suitableFor": "One-person growth engine for early-stage platforms.",
+      "category": "marketing",
+      "remoteEligible": true,
+      "sourceListedUrl": "https://www.jobberman.com/listings/content-marketing-and-partnerships-lead-5prr6n",
       "jobPosting": {
         "eligible": false
       }
@@ -879,6 +1344,37 @@
       "category": "customer-service",
       "remoteEligible": false,
       "sourceListedUrl": "https://www.jobberman.com/listings/game-support-specialist-j6x47r",
+      "jobPosting": {
+        "eligible": false
+      }
+    },
+    {
+      "id": "jobberman-administrator-true-cadence",
+      "employer": "True Cadence",
+      "employerType": "direct",
+      "title": "Administrator",
+      "locationTextRaw": "Remote (Work From Home)",
+      "eligibleCountries": [
+        "Nigeria"
+      ],
+      "workMode": "Remote (work from home)",
+      "employmentType": "Contract",
+      "compensationRaw": "NGN 250,000 - 400,000",
+      "experience": "Not established from the listing; confirm on the board.",
+      "education": "Not established from the listing; confirm on the board.",
+      "deadline": "Not publicly stated",
+      "sourceUrl": "https://www.jobberman.com/listings/senior-administrator-remote-nigeria-qzwp9e",
+      "sourceBoardUrl": "https://www.jobberman.com/jobs",
+      "sourceSystem": "Jobberman",
+      "status": "board_listed",
+      "verifiedAt": "2026-09-04T08:35:00+01:00",
+      "lastVerified": "2026-09-04",
+      "notes": "Listed on Jobberman as a remote contract administrator at NGN 250k-400k, 1 week ago.",
+      "summary": "Listed on Jobberman as a remote contract administrator at NGN 250k-400k, 1 week ago.",
+      "suitableFor": "Organised leaders of administrative/documentation functions.",
+      "category": "operations",
+      "remoteEligible": true,
+      "sourceListedUrl": "https://www.jobberman.com/listings/senior-administrator-remote-nigeria-qzwp9e",
       "jobPosting": {
         "eligible": false
       }
