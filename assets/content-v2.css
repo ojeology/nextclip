@@ -288,6 +288,11 @@ h1 { max-width: 850px; margin: 0; font-size: clamp(42px, 7vw, 82px); line-height
 .byline{display:inline-block;margin:10px 0 0;color:var(--muted);font-size:14px}
 .byline a{color:var(--lime);text-decoration:underline;text-underline-offset:2px}
 
+/* Long links (raw submission URLs) must never push the page wide on mobile. */
+.prose li a, .source-line a, .wrap a { word-break: break-word; overflow-wrap: anywhere; }
+.prose li, .wrap li { overflow-wrap: anywhere; }
+.wrap, .wrap * { max-width: 100%; }
+
 /* Lean editorial compatibility layer — replaces the 263 KB legacy platform sheet. */
 .shell{width:min(calc(100% - 32px),var(--max));margin-inline:auto}
 .top{position:sticky;z-index:50;top:0;border-bottom:1px solid var(--line);background:rgba(7,16,13,.9);backdrop-filter:blur(18px)}
