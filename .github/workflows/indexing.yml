@@ -1,0 +1,39 @@
+name: BRYME Indexing API notification
+
+# Sends the Indexing API queue for genuinely qualifying JobPosting pages to the
+# deployed BRYME service. This is an optional crawler *notification*, never a
+# release gate and never a guarantee of indexing. It uses guarded endpoint
+# secrets; if they are absent the build stays green (no-op or dry-run).
+#
+# Configure (in repo Actions secrets/vars):
+#   INDEXING_API_TOKEN  secret  -> must match the service env var
+#   SITE_URL            variable -> the deployed canonical origin (e.g. https://bryme.example)
+#
+# The service itself also needs GOOGLE_INDEXING_CREDENTIALS to actually send to
+# Google; until then the endpoint is dry-run and this workflow just reports.
+
+on:
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  index:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: "22"
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - name: Build (regenerates index queue)
+        run: npm ci >/dev/null 2>&1 || true; python3 scripts/build-index-queue.py
+      - name: Notify Google (optional; never fails the build)
+        env:
+          INDEXING_API_TOKEN: ${{ secrets.INDEXING_API_TOKEN }}
+          INDEXING_ENDPOINT: ${{ vars.SITE_URL }}/api/index/notify
+        run: node scripts/index-notify.js || true

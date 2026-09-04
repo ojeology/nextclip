@@ -219,3 +219,46 @@ personal experience.
 - Sitemap: 60 indexable routes · news: 0 · RSS: 25 items · jobs dataset: 13.
 - New location/type hubs present; `/jobs/nigeria/` and `/jobs/lagos/` indexed,
   all empty hubs `noindex`.
+
+---
+
+## Phase 2 (follow-up) — added after the foundation
+
+### Job intake / verification pipeline
+- `scripts/import-jobs.py` — stages genuinely **verified** jobs from
+  `content/jobs-inbox.json` into `content/jobs.json`. Validates required fields,
+  rejects duplicates, refuses to mark `jobPosting.eligible` without a complete
+  description/date/source, and prints the routes to allowlist. Supports
+  `--dry-run`. **No scraping and no invented verification** — you confirm the
+  exact employer/ATS source first. See `docs/ADDING-JOBS.md`.
+
+### Google Indexing API — configuration + CI caller
+- `scripts/build-index-queue.py` — generates `content/index-queue.json` (with a
+  state file for diffing) containing only `jobPosting.eligible` pages, emitting
+  `published`/`updated`/`deleted` as records change and never queueing non-job
+  routes. Wired into `npm run build`.
+- `scripts/index-notify.js` + `.github/workflows/indexing.yml` — posts the queue
+  to the guarded `POST /api/index/notify` endpoint (bearer token), reports
+  sent/deduplicated/dry-run/error, and never fails the pipeline (it is an
+  optional crawler notification, never a release gate).
+- Requires `GOOGLE_INDEXING_CREDENTIALS` (service account) on the service to
+  actually reach Google; dry-run until then. See `docs/INDEXING.md`.
+
+### Custom-domain migration (ready in one command)
+- `scripts/check-canonical-domain.py` (`npm run check:domain`) — verifies no
+  generated page references the old Render host and that every canonical,
+  sitemap `<loc>` and robots `Sitemap:` uses `SITE_URL`. Fails in migration
+  mode (when `SITE_URL` is a non-Render origin) if any Render reference remains.
+- `scripts/apply-audit-remediation.py` now rewrites every baked-in old-host
+  reference (`og:image`, content links, breadcrumbs, JSON-LD) to `SITE_URL`'s
+  host, so a migration is just setting one env var and rebuilding. Proven:
+  `SITE_URL=https://jobs.bryme.com npm run build && npm run check:domain` → OK.
+- `docs/DOMAIN-MIGRATION.md` — step-by-step DNS/Render/Search-Console guide and
+  the AdSense-on-owned-TLD note.
+- New `SITE_URL`, `INDEXING_API_TOKEN`, `GOOGLE_INDEXING_CREDENTIALS` env vars in
+  `render.yaml` / `server/render.yaml`; `package.json` gains `index:notify`,
+  `check:domain`.
+
+### AdSense (on hold as requested)
+Advertising is **not** enabled; `adsense` stays off in `site.config.json`.
+Purchasing a domain is the prerequisite (see below).

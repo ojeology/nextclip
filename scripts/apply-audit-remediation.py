@@ -317,6 +317,13 @@ def patch_common(text: str, path: Path, route: str) -> str:
     text = patch_allowlisted_performance(text, route)
     text = text.replace('href="/make-money/"', 'href="/opportunities/"').replace('href="/tech/"', 'href="/guides/"')
     text = text.replace("BRYME Make Money", "Opportunities").replace("Tech &amp; AI", "Practical technology")
+    # Custom-domain ready: rewrite every baked-in old-host reference (og:image,
+    # content links, embedded breadcrumbs, JSON-LD items) to the configured SITE
+    # host so a migration needs only a SITE_URL env change, never a code edit.
+    old_host = "bryme.onrender.com"
+    new_host = (urlsplit(SITE).netloc or "").lower()
+    if new_host and new_host != old_host:
+        text = text.replace(old_host, new_host)
     canonical = SITE + route
     text = re.sub(r'(<link\b[^>]*rel=["\']canonical["\'][^>]*href=["\'])[^"\']+', lambda m: m.group(1) + canonical, text, count=1, flags=re.I)
     text = re.sub(r'(<meta\b[^>]*property=["\']og:url["\'][^>]*content=["\'])[^"\']+', lambda m: m.group(1) + canonical, text, count=1, flags=re.I)
