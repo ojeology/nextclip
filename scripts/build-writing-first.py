@@ -126,8 +126,8 @@ def page_wf(*, title: str, description: str, route: str, current: str, body: str
 <html lang="en-NG"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#07100d">
-<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#faf6ee">
+<meta name="color-scheme" content="light">
 <title>{esc(title)}</title>
 <meta name="description" content="{esc(description)}">
 <meta name="robots" content="{esc(robots)}">
