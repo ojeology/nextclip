@@ -23,8 +23,15 @@ function visible(s){return s.replace(/<script\b[\s\S]*?<\/script>/gi," ").replac
 function schema(s,route){const out=[];let m,r=/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi;while((m=r.exec(s))){try{const x=JSON.parse(m[1]);out.push(...(Array.isArray(x)?x:[x]))}catch(e){fail(`${route}: invalid JSON-LD (${e.message})`)}}return out}
 function flatten(x,out=[]){if(Array.isArray(x))x.forEach(v=>flatten(v,out));else if(x&&typeof x==="object"){if(x["@type"])out.push(x);Object.values(x).forEach(v=>{if(v&&typeof v==="object")flatten(v,out)})}return out}
 const routeFile=r=>path.join(ROOT,r==="/"?"index.html":r.replace(/^\//,"")+"index.html");
+// Job-detail routes are individual employer/ATS records. Location & type hubs,
+// category pages, the roundup and the method page are separate browse surfaces.
+const JOB_HUB_SLUGS=new Set(["nigeria","lagos","abuja","port-harcourt","ibadan","kaduna","entry-level","customer-service","sales","administrative"]);
+const RESERVED_JOB_SLUGS=[...JOB_HUB_SLUGS,"remote","technology","writing","creative","leadership","methodology"];
+const JOB_DETAIL_RE=new RegExp("^/jobs/(?!"+RESERVED_JOB_SLUGS.map(x=>x+"/").join("|")+")[^/]+/$");
 if(allow.size!==allowDoc.routes.length)fail("allowlist contains duplicates");
-if(allow.size!==58)fail(`expected 58 focused routes, found ${allow.size}`);
+// Allowlist size is intentionally data-driven (grows as tabs/hubs are added); the
+// strong guarantees are: every route exists, is index,follow, canonical, on sitemap.
+if(allow.size<1)fail("allowlist unexpectedly empty");
 for(const r of allow)if(!fs.existsSync(routeFile(r)))fail(`allowlisted route missing: ${r}`);
 for(const family of ["sports","movie","movies","series","anime","article","articles","entertainment","genre","genres","year","years","trailers","trending","channels","data","miniapp"]){if(fs.existsSync(path.join(ROOT,family)))fail(`media/legacy family still present on main: ${family}`)}
 for(const old of ["assets/site.css","assets/site-app.js","assets/sports-engine.js","content/competitions.json","content/catalogue.json"]){if(fs.existsSync(path.join(ROOT,old)))fail(`legacy media artifact still present: ${old}`)}
@@ -62,7 +69,7 @@ for(const file of htmlFiles){
    const name=Array.isArray(e.author)?e.author[0]?.name:e.author?.name;if(name&&!visible(s).toLowerCase().includes(String(name).toLowerCase()))fail(`${r}: schema author is not visible`);
   }
  }
- if(/^\/jobs\/(?!remote\/|technology\/|writing\/|creative\/|leadership\/|methodology\/|verified-)[^/]+\/$/.test(r)){
+ if(JOB_DETAIL_RE.test(r)&&!r.startsWith("/jobs/verified-")){
   jobDetails++;const id=r.split("/")[2],job=json("content/jobs.json").jobs.find(x=>x.id===id);
   if(!job)fail(`${r}: no matching jobs dataset record`);else if(!s.includes(job.sourceUrl))fail(`${r}: official source URL missing`);
  }
@@ -72,7 +79,8 @@ for(const file of htmlFiles){
  }
 }
 if(indexed!==allow.size)fail(`indexable count ${indexed} does not equal allowlist ${allow.size}`);
-if(jobDetails!==13)fail(`expected 13 individual job pages, found ${jobDetails}`);
+const jobDataset=json("content/jobs.json").jobs;
+if(jobDetails!==jobDataset.length)fail(`expected ${jobDataset.length} individual job pages, found ${jobDetails}`);
 if(writingArchive!==55)fail(`expected 55 contained writing records, found ${writingArchive}`);
 const sitemapRoutes=[...read("sitemap.xml").matchAll(/<loc>(.*?)<\/loc>/g)].map(m=>norm(m[1]));
 if(sitemapRoutes.length!==allow.size)fail(`sitemap has ${sitemapRoutes.length}, expected ${allow.size}`);

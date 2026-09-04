@@ -11,3 +11,15 @@ services:
     envVars:
       - key: NODE_VERSION
         value: "22"
+      # Custom-domain readiness: set SITE_URL to the canonical origin once the
+      # custom domain is live (e.g. https://bryme.example.com). All generated
+      # canonicals, sitemaps, JSON-LD and internal URLs follow this value.
+      - key: SITE_URL
+        sync: false
+      # Shared secret guarding the Google Indexing API control endpoints.
+      - key: INDEXING_API_TOKEN
+        sync: false
+      # Path (relative to the service root) of a service-account JSON key
+      # authorised for the Google Indexing API. Leave empty to stay in dry-run.
+      - key: GOOGLE_INDEXING_CREDENTIALS
+        sync: false

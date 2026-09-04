@@ -9,12 +9,17 @@ from __future__ import annotations
 
 import html
 import json
+import re
 from pathlib import Path
+from urllib.parse import quote as urllib_quote
+
+import bryme_config as cfg
 
 ROOT = Path(__file__).resolve().parents[1]
-BASE = "https://bryme.onrender.com"
+BASE = cfg.site_url()  # canonical origin; SITE_URL env wins over site.config.json
 TODAY = "2026-09-04"
 TODAY_HUMAN = "4 September 2026"
+SITE = {"name": cfg.site_name(), "description": cfg.site_description()}
 
 
 def esc(value: object) -> str:
@@ -25,8 +30,9 @@ def nav(current: str = "") -> str:
     links = [
         ("home", "/", "Home"),
         ("jobs", "/jobs/", "Jobs"),
+        ("remote", "/jobs/remote/", "Remote"),
+        ("money", "/opportunities/", "Make Money"),
         ("writing", "/writing/", "Writing"),
-        ("opportunities", "/opportunities/", "Opportunities"),
         ("guides", "/guides/", "Guides"),
         ("about", "/about/", "About"),
     ]
@@ -39,14 +45,16 @@ def nav(current: str = "") -> str:
 <header class="site-head"><div class="wrap head-in">
   <a class="logo" href="/" aria-label="BRYME home"><span class="logo-mark" aria-hidden="true">B</span>BRYME</a>
   <nav class="main-nav" aria-label="Primary">{''.join(items)}</nav>
+  <form class="nav-search-form" action="/jobs/" method="get" role="search"><input type="search" name="q" placeholder="Search jobs…" aria-label="Search jobs" autocomplete="off"></form>
 </div></header>'''
 
 
 def mobile_nav(current: str = "") -> str:
     links = [
         ("home", "/", "⌂", "Home"), ("jobs", "/jobs/", "✓", "Jobs"),
+        ("remote", "/jobs/remote/", "↗", "Remote"),
+        ("money", "/opportunities/", "£", "MakeMoney"),
         ("writing", "/writing/", "✎", "Writing"),
-        ("opportunities", "/opportunities/", "↗", "Earn"),
         ("guides", "/guides/", "◇", "Guides"), ("about", "/about/", "i", "About"),
     ]
     return '<nav class="bottom-nav" aria-label="Primary mobile">' + ''.join(
@@ -57,9 +65,10 @@ def mobile_nav(current: str = "") -> str:
 
 def footer() -> str:
     return '''<footer class="site-foot"><div class="wrap foot-grid">
-  <div class="foot-brand"><a class="logo" href="/"><span class="logo-mark" aria-hidden="true">B</span>BRYME</a><p>Verified jobs, paid-writing research and practical opportunity guides for Nigerians and Africa-based applicants.</p></div>
-  <div class="foot-col"><b>Use BRYME</b><a href="/jobs/">Verified jobs</a><a href="/writing/">Writing</a><a href="/opportunities/">Opportunities</a><a href="/guides/">Guides</a></div>
+  <div class="foot-brand"><a class="logo" href="/"><span class="logo-mark" aria-hidden="true">B</span>BRYME</a><p>Verified jobs, remote work and legitimate ways to earn for Nigeria and Africa-based readers.</p></div>
+  <div class="foot-col"><b>Use BRYME</b><a href="/jobs/">Verified jobs</a><a href="/jobs/remote/">Remote work</a><a href="/opportunities/">Make Money</a><a href="/writing/">Writing</a><a href="/guides/">Guides</a></div>
   <div class="foot-col"><b>Trust</b><a href="/jobs/methodology/">Verification method</a><a href="/editorial-policy/">Editorial policy</a><a href="/corrections/">Corrections</a><a href="/privacy/">Privacy</a><a href="/contact/">Contact</a></div>
+  <div class="foot-col"><b>Legal</b><a href="/terms/">Terms</a><a href="/disclaimer/">Disclaimer</a><a href="/copyright/">Copyright</a></div>
 </div><div class="wrap foot-bottom">© 2026 BRYME · Independent editorial project · No application or earning outcome is guaranteed.</div></footer>'''
 
 
@@ -70,10 +79,35 @@ def schema(data: object) -> str:
 def page(*, title: str, description: str, route: str, current: str, body: str,
          schema_data: object | None = None, robots: str = "index,follow") -> str:
     canonical = BASE + route
+    adsense = cfg.publisher_config()
+    ca_id = str(adsense.get("caId") or "").strip()
+    # Advertising stays off by default. The publisher tag is only announced (for
+    # AdSense account verification) once a real ca-pub ID is configured; ads
+    # remain disabled and must never resemble a job card or application button.
+    adsense_meta = f'<meta name="google-adsense-account" content="{esc(ca_id)}">' if ca_id else ""
     structured = schema_data or {
         "@context": "https://schema.org", "@type": "WebPage",
         "name": title.split(" | ")[0], "description": description, "url": canonical,
         "publisher": {"@type": "Organization", "name": "BRYME", "url": BASE + "/"},
+    }
+    # Site-wide Organization/WebSite graph so every page states who publishes
+    # and what it is. Kept as its own JSON-LD block so discovery/validation
+    # still finds the page-specific entities.
+    site_graph = {
+        "@context": "https://schema.org",
+        "@graph": [
+            {"@type": "Organization", "@id": BASE + "/#org", "name": SITE["name"],
+             "url": BASE + "/", "description": SITE["description"],
+             "founder": {"@type": "Person", "name": "Ibrahim Sodiq", "url": BASE + "/author/ibrahim-sodiq/"}},
+            {
+                "@type": "WebSite", "@id": BASE + "/#site", "name": SITE["name"],
+                "url": BASE + "/", "description": SITE["description"],
+                "publisher": {"@id": BASE + "/#org"},
+                "potentialAction": {"@type": "SearchAction", "target": {"@type": "EntryPoint",
+                                      "urlTemplate": BASE + "/jobs/?q={search_term_string}"},
+                                    "query-input": "required name=search_term_string"},
+            }
+        ],
     }
     return f'''<!doctype html>
 <html lang="en-NG"><head>
@@ -88,8 +122,10 @@ def page(*, title: str, description: str, route: str, current: str, body: str,
 <meta property="og:type" content="website"><meta property="og:site_name" content="BRYME">
 <meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(description)}"><meta property="og:url" content="{canonical}">
 <meta name="twitter:card" content="summary"><meta name="twitter:title" content="{esc(title)}"><meta name="twitter:description" content="{esc(description)}">
+{adsense_meta}
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="stylesheet" href="/assets/bryme-v2.css">
+{schema(site_graph)}
 {schema(structured)}
 </head><body>{nav(current)}<main id="main">{body}</main>{mobile_nav(current)}{footer()}</body></html>'''
 
@@ -121,26 +157,160 @@ def jobs_for(category: str) -> list[dict]:
     return [j for j in JOBS["jobs"] if j.get("category") == category]
 
 
+# Verification status mapping (see /jobs/methodology/). Every claim is a real,
+# source-backed state; BRYME does not invent verification.
+VERIFICATION_STATES = {
+    "open_when_checked": ("🟢 SOURCE VERIFIED", "source-verified",
+        "The exact employer or ATS page was opened and displayed an application path."),
+    "verified": ("🟢 VERIFIED", "verified",
+        "The listing and its application route were verified against the official source."),
+    "application_checked": ("🔵 APPLICATION PROCESS CHECKED", "app-checked",
+        "The application route was opened; outcome is not inferred."),
+    "tested": ("🟣 BRYME TESTED", "tested",
+        "BRYME completed a stage of this opportunity (see the journey notes)."),
+    "closed": ("🔴 CLOSED", "closed", "The source or employer indicated this is no longer accepting applications."),
+    "needs_recheck": ("⚠️ NEEDS RECHECK", "recheck",
+        "The last check is too old or the source could not be confirmed."),
+}
+DEFAULT_VERIFY = ("⚪ SOURCE VERIFIED", "source-verified",
+                  "BRYME recorded this from the exact source and links to it.")
+
+
+def verify_state(job: dict) -> tuple[str, str, str]:
+    return VERIFICATION_STATES.get(job.get("status", ""), DEFAULT_VERIFY)
+
+
 def job_card(job: dict, heading: str = "h2") -> str:
     pay = f'<span class="pill warn">{esc(job["compensationRaw"])}</span>' if job.get("compensationRaw") else ""
+    label, cls, note = verify_state(job)
     return f'''<article class="job-card">
   <div><div class="job-company">{esc(job['employer'])} · {esc(job['employerType'])}</div>
-  <{heading}>{esc(job['title'])}</{heading}>
-  <div class="job-meta"><span class="pill good">Open when checked</span><span class="pill">{esc(job['locationTextRaw'])}</span><span class="pill">{esc(job['workMode'])}</span><span class="pill">{esc(job['employmentType'])}</span>{pay}</div>
+  <{heading}><a class="job-card-title" href="/jobs/{esc(job['id'])}/">{esc(job['title'])}</a></{heading}>
+  <div class="job-card-badges"><span class="verify-badge {cls}" title="{esc(note)}">{esc(label)}</span><span class="pill">{esc(job['locationTextRaw'])}</span><span class="pill">{esc(job['workMode'])}</span><span class="pill">{esc(job['employmentType'])}</span>{pay}</div>
   <p class="job-note">{esc(job['notes'])}</p></div>
   <a class="btn secondary job-apply" href="/jobs/{esc(job['id'])}/">View verified details →</a>
 </article>'''
 
 
+# --- Location-first discovery -----------------------------------------------
+# Country -> Region/City -> Job type. Each hub is generated from the jobs feed
+# so counts are always real. A hub with zero records is still built so the
+# browse grid is complete, but it is marked noindex until real records exist
+# (BRYME does not index empty or thin pages).
+CITY_KEYWORDS = {
+    "lagos": ("Lagos", ["lagos"]),
+    "abuja": ("Abuja", ["abuja", "fct"]),
+    "port-harcourt": ("Port Harcourt", ["port harcourt", "port-harcourt", "rivers"]),
+    "ibadan": ("Ibadan", ["ibadan"]),
+    "kaduna": ("Kaduna", ["kaduna"]),
+}
+NIGERIA_CITIES = set(CITY_KEYWORDS)
+NIGERIA_WORDS = ["nigeria", "ng", "lagos", "abuja", "port harcourt", "ibadan", "kaduna"]
+REMOTE_WORDS = ["remote", "work from home", "work-from-home", "wfh"]
+
+
+def is_nigeria_location(text: str) -> bool:
+    low = (text or "").lower()
+    return any(word in low for word in NIGERIA_WORDS)
+
+
+def job_city_slugs(job: dict) -> list[str]:
+    """Return a job's known Nigerian city slugs, or [] if none is stated."""
+    text = (job.get("locationTextRaw") or "") + " " + " ".join(job.get("eligibleCountries") or [])
+    low = text.lower()
+    hits = [slug for slug, (_label, kws) in CITY_KEYWORDS.items() if any(k in low for k in kws)]
+    return hits
+
+
+def job_is_remote(job: dict) -> bool:
+    if job.get("remoteEligible"):
+        return True
+    low = ((job.get("locationTextRaw") or "") + " " + (job.get("workMode") or "")).lower()
+    return any(w in low for w in REMOTE_WORDS)
+
+
+def job_in_nigeria(job: dict) -> bool:
+    if is_nigeria_location(job.get("locationTextRaw") or ""):
+        return True
+    return is_nigeria_location(" ".join(job.get("eligibleCountries") or []))
+
+
+# Job-type filters map an on-page category to a predicate over the jobs feed.
+# These are editorial groupings, not guessed from a title alone.
+# Distinct new job-type hubs (technology and writing already have native
+# source-verified category pages generated by job_category_pages(), so they are
+# intentionally excluded here to keep a single canonical page per grouping).
+JOB_TYPES = {
+    "entry-level": ("Entry-level", "Roles whose requirements match someone starting their career.", lambda j: any(
+        k in (j.get("title") or "").lower() or k in (j.get("notes") or "").lower() for k in
+        ["entry", "graduate", "intern", "associate", "trainee", "junior", "siwes"])),
+    "customer-service": ("Customer service", "Support, helpdesk and customer-success roles.", lambda j: any(
+        k in (j.get("title") or "").lower() for k in ["customer", "support", "success", "service"])),
+    "sales": ("Sales and business development", "Revenue, growth and partnership roles.", lambda j: any(
+        k in (j.get("title") or "").lower() for k in ["sales", "growth", "business development", "partnership", "account manager"])),
+    "administrative": ("Administrative and operations", "Operations, coordination and admin roles.", lambda j: any(
+        k in (j.get("title") or "").lower() for k in ["operation", "coordinator", "administrative", "admin", "people", "office"])),
+}
+
+
+def populated_job_types() -> dict[str, list[dict]]:
+    out = {}
+    for key in JOB_TYPES:
+        label, _desc, pred = JOB_TYPES[key]
+        out[key] = [j for j in JOBS["jobs"] if pred(j)]
+    return out
+
+
+def location_hub_pages() -> None:
+    city_roles = {slug: [j for j in JOBS["jobs"] if slug in job_city_slugs(j)] for slug in CITY_KEYWORDS}
+    nigerian_roles = [j for j in JOBS["jobs"] if job_in_nigeria(j)]
+    # Country hub: Nigeria.
+    _write_hub("nigeria", "Jobs in Nigeria", "Nigeria-relevant roles verified by BRYME.",
+               nigerian_roles, noindex=True if not nigerian_roles else False)
+    for slug, (label, _kws) in CITY_KEYWORDS.items():
+        _write_hub(slug, f"{label} jobs", f"Jobs listed for {label}, Nigeria, verified by BRYME.",
+                   city_roles[slug], noindex=True if not city_roles[slug] else False)
+    # /jobs/remote/ remains the canonical native remote category page generated
+    # by job_category_pages(); it is surfaced in the browse grid instead.
+
+
+def type_hub_pages() -> None:
+    for key, (label, description, _pred) in JOB_TYPES.items():
+        roles = [j for j in JOBS["jobs"] if _pred(j)]
+        _write_hub(key, f"{label}", description, roles, noindex=True if not roles else False)
+
+
+def _write_hub(slug: str, label: str, description: str, roles: list[dict], noindex: bool) -> None:
+    cards = "".join(job_card(j) for j in roles) if roles else (
+        '<div class="notice"><strong>No verified records yet.</strong> BRYME does not create this page '
+        'until a role that genuinely fits is checked. Check the <a href="/jobs/">jobs desk</a> or the '
+        '<a href="/contact/">report</a> a role instead.</div>')
+    robots = "noindex,follow" if noindex else "index,follow"
+    body = f'''<div class="wrap"><nav class="breadcrumb"><a href="/">Home</a> / <a href="/jobs/">Jobs</a> / {esc(label)}</nav>
+<section class="page-hero"><p class="kicker"><span class="kicker-dot"></span>Discover by location &amp; type</p>
+<h1>{esc(label)}.</h1><p>{esc(description)} Every record links to the exact employer or ATS source.</p>
+<div class="source-line"><span><b>{len(roles)}</b> verified roles</span><span>Checked <b>{TODAY_HUMAN}</b></span><span><a href="/jobs/methodology/">Read the method</a></span></div></section>
+<section class="section"><div class="notice"><strong>Always recheck the source before applying.</strong> A verified record is a dated check, not a live guarantee.</div><div class="job-list">{cards}</div>
+<div class="actions"><a class="btn secondary" href="/jobs/">Browse all jobs</a><a class="btn secondary" href="/jobs/remote/">Remote work</a><a class="btn secondary" href="/opportunities/">Make Money</a></div></section></div>'''
+    structured = {"@context": "https://schema.org", "@type": "CollectionPage", "name": label,
+                  "description": description, "url": BASE + f"/jobs/{slug}/", "dateModified": TODAY,
+                  "publisher": {"@type": "Organization", "name": "BRYME", "url": BASE + "/"}}
+    write(f"/jobs/{slug}/", page(title=f"{label} | BRYME", description=description,
+                                 route=f"/jobs/{slug}/", current="jobs", body=body,
+                                 schema_data=structured, robots=robots))
+
+
 def home() -> None:
     jobs = JOBS["jobs"]
     featured = "".join(job_card(j, "h3") for j in jobs[:4])
+    city_links = "".join(f'<a class="chip-card" href="/jobs/{slug}/"><b>{len([j for j in jobs if slug in job_city_slugs(j)])}</b><span>{label}</span></a>' for slug, (label, _) in CITY_KEYWORDS.items())
     body = f'''<section class="hero"><div class="wrap hero-grid"><div>
-  <p class="kicker"><span class="kicker-dot"></span>Direct sources. Human checks. Nigeria context.</p>
-  <h1>Remote work and paid opportunities you can <em>actually pursue.</em></h1>
-  <p class="hero-copy">BRYME checks employer pages, paid-writing calls and work platforms for Nigerian eligibility, then explains the conditions in plain language.</p>
-  <div class="actions"><a class="btn" href="/jobs/">See verified jobs →</a><a class="btn secondary" href="/writing/">Explore paid writing</a></div>
-</div><aside class="verify-card" aria-label="Latest verification snapshot"><div class="verify-head"><h2 class="verify-title">Latest jobs snapshot</h2><span class="live-tag">Checked</span></div><p class="verify-date">{TODAY_HUMAN} · Africa/Lagos</p><div class="metric-row"><div class="metric"><b>{len(jobs)}</b><span>Exact roles</span></div><div class="metric"><b>{len(set(j['employer'] for j in jobs))}</b><span>Sources</span></div><div class="metric"><b>1</b><span>Conflict corrected</span></div></div><p class="verify-note">“Open when checked” is a timestamp, not a guarantee. Always confirm the employer page before applying.</p></aside></div></section>
+  <p class="kicker"><span class="kicker-dot"></span>We verify. We link the source.</p>
+  <h1>Find verified jobs, remote work and legitimate ways to <em>earn.</em></h1>
+  <p class="hero-copy">BRYME checks employer pages, paid-writing calls and work platforms for real Nigerian and African eligibility, then explains the conditions in plain language — without inventing verification or over-promising.</p>
+  <div class="actions"><a class="btn" href="/jobs/">Search verified jobs →</a><a class="btn secondary" href="/opportunities/">Ways to make money</a><a class="btn secondary" href="/jobs/remote/">Remote work</a></div>
+</div><aside class="verify-card" aria-label="Latest verification snapshot"><div class="verify-head"><h2 class="verify-title">Latest jobs snapshot</h2><span class="live-tag">Checked</span></div><p class="verify-date">{TODAY_HUMAN} · Africa/Lagos</p><div class="metric-row"><div class="metric"><b>{len(jobs)}</b><span>Exact roles</span></div><div class="metric"><b>{len(set(j['employer'] for j in jobs))}</b><span>Sources</span></div><div class="metric"><b>{len([j for j in jobs if job_is_remote(j)])}</b><span>Remote</span></div></div><p class="verify-note">“Open when checked” is a timestamp, not a guarantee. Always confirm the employer page before applying.</p></aside></div>
+<div class="wrap location-picker"><p class="location-picker-label">Quick location browse</p><div class="chip-grid">{city_links}<a class="chip-card" href="/jobs/nigeria/"><b>{len([j for j in jobs if job_in_nigeria(j)])}</b><span>Nigeria</span></a><a class="chip-card" href="/jobs/remote/"><b>{len([j for j in jobs if job_is_remote(j)])}</b><span>Remote</span></a></div></div></section>
 <section class="trust-strip"><div class="wrap trust-grid"><div class="trust-item"><span class="trust-icon">✓</span>Exact employer or ATS link</div><div class="trust-item"><span class="trust-icon">✓</span>Location wording checked manually</div><div class="trust-item"><span class="trust-icon">✓</span>Agency and contract work labelled</div></div></section>
 <section class="section"><div class="wrap"><div class="section-head"><div><p class="eyebrow">Choose a useful path</p><h2>Less browsing. More confidence.</h2></div><p>BRYME is being rebuilt around one promise: help people find a real opportunity and take the next practical step.</p></div><div class="card-grid">
 <a class="path-card" href="/jobs/"><span class="card-num">01 / VERIFIED JOBS</span><h3>Nigeria-relevant roles</h3><p>Dated checks of direct employer and ATS vacancies, with remote and hybrid details clarified.</p><span class="card-link">Browse the snapshot →</span></a>
@@ -167,12 +337,30 @@ def home() -> None:
 def jobs_index() -> None:
     jobs = JOBS["jobs"]
     companies = sorted(set(j["employer"].split(" /")[0] for j in jobs))
-    category_cards = ''.join(
+    # Live location-first browse grid (Country -> City -> Type).
+    city_counts = {slug: len([j for j in jobs if slug in job_city_slugs(j)]) for slug in CITY_KEYWORDS}
+    nigeria_count = len([j for j in jobs if job_in_nigeria(j)])
+    remote_count = len([j for j in jobs if job_is_remote(j)])
+    type_counts = {key: len([j for j in jobs if pred(j)]) for key, (_l, _d, pred) in JOB_TYPES.items()}
+
+    loc_cards = [
+        f'<a class="chip-card" href="/jobs/nigeria/"><b>{nigeria_count}</b><span>Jobs in Nigeria</span></a>',
+        f'<a class="chip-card" href="/jobs/remote/"><b>{remote_count}</b><span>Remote work</span></a>',
+    ] + [f'<a class="chip-card" href="/jobs/{slug}/"><b>{n}</b><span>{label}</span></a>'
+         for slug, (label, _k) in CITY_KEYWORDS.items() for n in [city_counts[slug]]]
+    type_cards = ''.join(
+        f'<a class="path-card" href="/jobs/{key}/"><span class="card-num">{len(jobs_for(key) if key in JOB_CATEGORIES else [j for j in jobs if pred(j)])} VERIFIED</span><h3>{esc(label)}</h3><p>{esc(description)}</p><span class="card-link">Browse {esc(label)} →</span></a>'
+        for key, (label, description, pred) in JOB_TYPES.items()
+    )
+    cat_cards = ''.join(
         f'<a class="path-card" href="/jobs/{key}/"><span class="card-num">{len(jobs_for(key))} VERIFIED</span><h3>{esc(label)}</h3><p>{esc(description)}</p><span class="card-link">View this category →</span></a>'
         for key, (label, description) in JOB_CATEGORIES.items()
     )
-    body = f'''<div class="wrap"><nav class="breadcrumb"><a href="/">Home</a> / Jobs</nav><section class="page-hero"><p class="kicker"><span class="kicker-dot"></span>Human-verified source desk</p><h1>Jobs Nigerians can evaluate with context.</h1><p>BRYME opens the exact employer or ATS page, records what it says, and reports remote, hybrid and location restrictions instead of copying a job-board headline.</p><div class="source-line"><span><b>{len(jobs)}</b> exact roles</span><span><b>{len(companies)}</b> source organisations</span><span>Last checked <b>{TODAY_HUMAN}</b></span></div></section>
-<section class="section"><div class="notice"><strong>Freshness rule:</strong> these roles were open when checked. Employers can close or change them without warning. Confirm the official source before applying.</div><div class="card-grid">{category_cards}</div></section>
+    body = f'''<div class="wrap"><nav class="breadcrumb"><a href="/">Home</a> / Jobs</nav><section class="page-hero"><p class="kicker"><span class="kicker-dot"></span>Human-verified source desk</p><h1>Find verified jobs you can actually pursue.</h1><p>BRYME opens the exact employer or ATS page, records what it says, and reports remote, hybrid and location restrictions instead of copying a job-board headline.</p><div class="source-line"><span><b>{len(jobs)}</b> exact roles</span><span><b>{len(companies)}</b> source organisations</span><span>Last checked <b>{TODAY_HUMAN}</b></span></div></section>
+<section class="section"><div class="notice"><strong>Freshness rule:</strong> these roles were open when checked. Employers can close or change them without warning. Confirm the official source before applying.</div>
+<h2 class="section-sub">Discover by location</h2><div class="chip-grid">{''.join(loc_cards)}</div>
+<h2 class="section-sub">Discover by job type</h2><div class="card-grid">{type_cards}</div>
+<h2 class="section-sub">Source-verified categories</h2><div class="card-grid">{cat_cards}</div></section>
 <section class="section alt"><div class="card-grid"><a class="path-card" href="/jobs/verified-2026-09-04/"><span class="card-num">DATED SNAPSHOT</span><h3>All {len(jobs)} checked roles</h3><p>One review window across Paystack, Moniepoint, SAND, M-KOPA, Swoop, Canonical, LILT and Remotasks.</p><span class="card-link">Open the roundup →</span></a><a class="path-card" href="/jobs/methodology/"><span class="card-num">METHOD</span><h3>How BRYME verifies a role</h3><p>Source hierarchy, remote-work rules, conflict handling and closure policy.</p><span class="card-link">Read the method →</span></a><a class="path-card" href="/contact/"><span class="card-num">CORRECTIONS</span><h3>Report a changed job</h3><p>Send the exact BRYME or employer URL for review.</p><span class="card-link">Contact the desk →</span></a></div></section></div>'''
     structured = {"@context": "https://schema.org", "@type": "CollectionPage", "name": "Verified jobs for Nigerian applicants", "description": "Dated, human-checked employer and ATS vacancies with Nigeria and remote-work context.", "url": BASE + "/jobs/", "dateModified": TODAY, "publisher": {"@type": "Organization", "name": "BRYME", "url": BASE + "/"}}
     write("/jobs/", page(title="Verified remote and Nigeria jobs | BRYME", description="Human-checked employer and ATS vacancies with Nigeria eligibility, remote conditions and direct application sources.", route="/jobs/", current="jobs", body=body, schema_data=structured))
@@ -204,22 +392,112 @@ def job_category_pages() -> None:
         write(f"/jobs/{key}/", page(title=f"{label} for Nigerian applicants | BRYME", description=description, route=f"/jobs/{key}/", current="jobs", body=body, schema_data=structured))
 
 
+CPU_RELATED = ["/make-money/make-money-online-nigeria/", "/make-money/website-monetization-guide/"]
+
+
+def job_posting_schema(job: dict, route: str) -> dict | None:
+    """Emit valid JobPosting JSON-LD ONLY for genuinely available roles where
+    BRYME can supply the rich fields Google requires. It is gated by an explicit
+    ``jobPosting.eligible`` flag on the record. closed / open_when_checked
+    historical records are intentionally excluded — BRYME never fabricates a job,
+    and never publishes JobPosting markup for a role it is not certain is open.
+    If emitted, ``hiringOrganization`` is the employer, never BRYME, and
+    ``directApply``/``url`` point at the official source."""
+    spec = job.get("jobPosting") or {}
+    if not spec.get("eligible"):
+        return None
+    employer = {"@type": "Organization", "name": str(job.get("employer", ""))}
+    date = spec.get("datePosted") or job.get("verifiedAt", TODAY)[:10]
+    valid_until = spec.get("validThrough")
+    address = spec.get("jobLocation") or {
+        "@type": "Place",
+        "address": {"@type": "PostalAddress", "addressLocality": str(job.get("locationTextRaw", ""))},
+    }
+    src_url = str(job.get("sourceUrl", ""))
+    posting = {
+        "@context": "https://schema.org", "@type": "JobPosting",
+        "title": str(job.get("title", "")),
+        "description": spec.get("description") or str(job.get("notes", "")),
+        "datePosted": date,
+        "employmentType": (job.get("employmentType") or "FULL_TIME").upper(),
+        "hiringOrganization": employer,
+        "jobLocation": address,
+        "url": src_url,
+        "directApply": bool(src_url.lower().startswith("https://")),
+    }
+    if src_url:
+        posting["applicantLocationRequirements"] = {"@type": "Country", "name": ", ".join(job.get("eligibleCountries") or [])}
+    if valid_until:
+        posting["validThrough"] = valid_until
+    return posting
+
+
 def job_detail_pages() -> None:
-    for job in JOBS["jobs"]:
+    all_jobs = JOBS["jobs"]
+    for job in all_jobs:
         category = "remote" if job.get("remoteEligible") else job.get("category", "technology")
         category_label = JOB_CATEGORIES[category][0]
         compensation = job.get("compensationRaw") or "No amount was displayed in the source details BRYME recorded."
         countries = ", ".join(job.get("eligibleCountries") or []) or "Not established"
+        label, vcls, vnote = verify_state(job)
+        employer_url = job.get("sourceUrl", "")
         remote_note = (
             "BRYME classifies this record as remote-eligible because the source explicitly connected the role with remote work in an eligible location. Remote does not mean unrestricted worldwide eligibility."
             if job.get("remoteEligible") else
             "BRYME does not classify this record as a fully remote opportunity. Use the location and work-mode wording below rather than assuming that an online application means remote work."
         )
-        body = f'''<div class="wrap"><nav class="breadcrumb"><a href="/">Home</a> / <a href="/jobs/">Jobs</a> / <a href="/jobs/{category}/">{esc(category_label)}</a> / {esc(job['title'])}</nav><section class="page-hero"><p class="kicker"><span class="kicker-dot"></span>Open when checked · direct source</p><h1>{esc(job['title'])}.</h1><p>{esc(job['employer'])} listed this opportunity for {esc(job['locationTextRaw'])}. BRYME checked the exact source on {TODAY_HUMAN}; the employer can change or close it at any time.</p><div class="source-line"><span>Employer <b>{esc(job['employer'])}</b></span><span>Work mode <b>{esc(job['workMode'])}</b></span><span>Status <b>open when checked</b></span></div><div class="actions"><a class="btn" href="{esc(job['sourceUrl'])}" target="_blank" rel="noopener external nofollow">Open the official application ↗</a><a class="btn secondary" href="/jobs/methodology/">How this was checked</a></div></section>
-<section class="section"><div class="detail-grid"><div class="detail-card"><span>Location shown</span><b>{esc(job['locationTextRaw'])}</b></div><div class="detail-card"><span>Eligible locations recorded</span><b>{esc(countries)}</b></div><div class="detail-card"><span>Employment type</span><b>{esc(job['employmentType'])}</b></div><div class="detail-card"><span>Source system</span><b>{esc(job['sourceSystem'])}</b></div></div><div class="prose"><h2>What BRYME verified</h2><p>{esc(job['notes'])}</p><p>{esc(remote_note)}</p><h2>Compensation information</h2><p>{esc(compensation)}</p><p>If no exact amount is shown, BRYME does not estimate one. Discuss compensation through the employer's legitimate process and do not rely on figures copied by an unrelated board.</p><h2>Before you apply</h2><ol><li>Open the official source and confirm it still accepts applications.</li><li>Read the complete responsibilities and requirements on that source.</li><li>Check that the location and work arrangement fit your circumstances.</li><li>Do not pay an application, interview, equipment or processing fee.</li><li>Confirm recruiter messages use the employer's legitimate domain.</li></ol><p>BRYME is not the employer and does not collect applications. This page is an independently written verification record, not a promise of an interview, contract, task allocation or income.</p></div></section>
-<section class="section alt"><div class="notice"><strong>Something changed?</strong> <a href="/contact/">Report a closed page, altered location or suspicious application route</a> with the exact URL.</div></section></div>'''
-        structured = {"@context":"https://schema.org","@type":"WebPage","name":f"{job['title']} at {job['employer']}","description":f"BRYME verification record for {job['title']} at {job['employer']}, checked {TODAY_HUMAN}.","url":BASE+f"/jobs/{job['id']}/","datePublished":TODAY,"dateModified":TODAY,"publisher":{"@type":"Organization","name":"BRYME","url":BASE+"/"}}
-        write(f"/jobs/{job['id']}/", page(title=f"{job['title']} at {job['employer']} | BRYME", description=f"Source-checked details, Nigeria eligibility and application link for {job['title']} at {job['employer']}.", route=f"/jobs/{job['id']}/", current="jobs", body=body, schema_data=structured))
+        experience = job.get("experience") or "Not established from the source BRYME recorded."
+        education = job.get("education") or "Not established from the source BRYME recorded."
+        deadline = job.get("deadline") or "Not publicly stated"
+        suitable = job.get("suitableFor") or (
+            "Someone who meets the source's stated requirements and whose circumstances match the location and work mode shown. Confirm every requirement on the official page before applying."
+        )
+        # Related jobs: same category, excluding self.
+        related = [j for j in all_jobs if (j.get("category") == job.get("category")) and j["id"] != job["id"]][:4]
+        related_cards = "".join(job_card(j, "h3") for j in related) or '<p class="muted">More records are added as BRYME checks them.</p>'
+        report = ("<details class='report-box'><summary>Report an outdated or incorrect listing</summary><div class='report-links'>"
+                  "<a href='mailto:Sodiqibrahim03@gmail.com?subject=BRYME%20outdated%20job%3A%20" + urllib_quote(job['title']) + "%20%2F%20closed'>Job is closed or filled</a>"
+                  "<a href='mailto:Sodiqibrahim03@gmail.com?subject=BRYME%20outdated%20job%3A%20" + urllib_quote(job['title']) + "%20%2F%20location-changed'>Location or eligibility changed</a>"
+                  "<a href='mailto:Sodiqibrahim03@gmail.com?subject=BRYME%20outdated%20job%3A%20" + urllib_quote(job['title']) + "%20%2F%20link-broken'>Application link is broken</a>"
+                  "<a href='mailto:Sodiqibrahim03@gmail.com?subject=BRYME%20outdated%20job%3A%20" + urllib_quote(job['title']) + "%20%2F%20other'>Other incorrect information</a></div></details>")
+        body = f'''<div class="wrap"><nav class="breadcrumb"><a href="/">Home</a> / <a href="/jobs/">Jobs</a> / <a href="/jobs/{category}/">{esc(category_label)}</a> / {esc(job['title'])}</nav>
+<section class="page-hero"><p class="kicker"><span class="kicker-dot"></span>Verification record · direct source</p>
+<div class="verify-badge-lg {vcls}" title="{esc(vnote)}">{esc(label)}</div>
+<h1>{esc(job['title'])}.</h1>
+<p>{esc(job['employer'])} listed this opportunity for {esc(job['locationTextRaw'])}. BRYME checked the exact source on {TODAY_HUMAN}; the employer can change or close it at any time.</p>
+<div class="source-line"><span>Employer <b>{esc(job['employer'])}</b></span><span>Work mode <b>{esc(job['workMode'])}</b></span><span>Last verified <time datetime="{esc(job.get('verifiedAt') or TODAY)}"><b>{TODAY_HUMAN}</b></time></span><span>Source <b>{esc(job['sourceSystem'])}</b></span></div>
+<div class="actions"><a class="btn" href="{esc(employer_url)}" target="_blank" rel="noopener external nofollow">Apply on the official source ↗</a><a class="btn secondary" href="/jobs/methodology/">How this was checked</a></div></section>
+<section class="section"><div class="detail-grid">
+<div class="detail-card"><span>Job title</span><b>{esc(job['title'])}</b></div>
+<div class="detail-card"><span>Employer</span><b>{esc(job['employer'])}</b></div>
+<div class="detail-card"><span>Location shown</span><b>{esc(job['locationTextRaw'])}</b></div>
+<div class="detail-card"><span>Eligible locations</span><b>{esc(countries)}</b></div>
+<div class="detail-card"><span>Employment type</span><b>{esc(job['employmentType'])}</b></div>
+<div class="detail-card"><span>Work mode</span><b>{esc(job['workMode'])}</b></div>
+<div class="detail-card"><span>Salary / pay</span><b>{esc(compensation)}</b></div>
+<div class="detail-card"><span>Experience</span><b>{esc(experience)}</b></div>
+<div class="detail-card"><span>Education</span><b>{esc(education)}</b></div>
+<div class="detail-card"><span>Application deadline</span><b>{esc(deadline)}</b></div>
+<div class="detail-card"><span>Source system</span><b>{esc(job['sourceSystem'])}</b></div>
+<div class="detail-card"><span>Verification status</span><b>{esc(label)}</b></div>
+</div>
+<div class="prose"><h2>Job summary</h2><p>{esc(job.get('summary') or job['notes'])}</p><p>{esc(remote_note)}</p>
+<h2>Who this job suits</h2><p>{esc(suitable)}</p>
+<h2>What BRYME verified</h2><p>{esc(job['notes'])}</p><p><b>Verification note:</b> {esc(vnote)}</p>
+<h2>How to apply</h2><ol><li>Open the official source link below.</li><li>Read the complete responsibilities and requirements on that page.</li><li>Recheck the location, work mode and closing status.</li><li>Do not pay an application, interview, equipment or processing fee.</li><li>Confirm recruiter messages use the employer's legitimate domain.</li></ol>
+<h2>Original source</h2><p><a href="{esc(employer_url)}" target="_blank" rel="noopener external nofollow">Apply on {esc(job['sourceSystem'])} →</a><br><small>SOURCE: {esc(job['sourceSystem'])} · BRYME is not the employer and does not collect applications.</small></p>
+{report}
+</div></section>
+<section class="section alt"><div class="section-head"><div><p class="eyebrow">Related</p><h2>More verified roles</h2></div><p>Same source-verified category.</p></div><div class="job-list">{related_cards}</div></section>
+<section class="section"><div class="section-head"><div><p class="eyebrow">Related guides</p><h2>Do this work safely</h2></div></div><div class="guide-grid">
+<a class="path-card" href="/jobs/methodology/"><span class="card-num">METHOD</span><h3>How BRYME verifies a job</h3><p>Understand the source hierarchy and what a dated check does—and does not—guarantee.</p></a>
+<a class="path-card" href="/guides/"><span class="card-num">GUIDES</span><h3>Build an application that works</h3><p>Practical guidance on applying, portfolios and account safety.</p></a>
+<a class="path-card" href="/opportunities/"><span class="card-num">MAKE MONEY</span><h3>Legitimate ways to earn</h3><p>Freelancing, writing and verified digital earning paths.</p></a>
+</div></section></div>'''
+        structured = {"@context": "https://schema.org", "@type": "WebPage", "name": f"{job['title']} at {job['employer']}", "description": f"BRYME verification record for {job['title']} at {job['employer']}, checked {TODAY_HUMAN}.", "url": BASE + f"/jobs/{job['id']}/", "datePublished": TODAY, "dateModified": TODAY, "publisher": {"@type": "Organization", "name": "BRYME", "url": BASE + "/"}}
+        jp = job_posting_schema(job, f"/jobs/{job['id']}/")
+        schema_data = jp if jp else structured
+        write(f"/jobs/{job['id']}/", page(title=f"{job['title']} at {job['employer']} | BRYME", description=f"Source-checked details, Nigeria eligibility and application link for {job['title']} at {job['employer']}.", route=f"/jobs/{job['id']}/", current="jobs", body=body, schema_data=schema_data))
 
 
 def jobs_method() -> None:
@@ -330,6 +608,8 @@ if __name__ == "__main__":
     jobs_index()
     jobs_roundup()
     job_category_pages()
+    location_hub_pages()
+    type_hub_pages()
     job_detail_pages()
     jobs_method()
     tech_hub()

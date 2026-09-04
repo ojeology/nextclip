@@ -1,6 +1,7 @@
 "use strict";
 /* BRYME focused work-publication server: explicit public surface, no bots or mutation. */
 const http=require("http"),fs=require("fs"),path=require("path");
+const indexing=require("./indexing-api");
 const ROOT=path.resolve(__dirname,"..");
 const PORT=Number(process.env.PORT||8787),HOST=process.env.HOST||"0.0.0.0";
 const MIME={".html":"text/html; charset=utf-8",".css":"text/css; charset=utf-8",".js":"application/javascript; charset=utf-8",".json":"application/json; charset=utf-8",".xml":"application/xml; charset=utf-8",".txt":"text/plain; charset=utf-8",".svg":"image/svg+xml",".png":"image/png",".jpg":"image/jpeg",".jpeg":"image/jpeg",".webp":"image/webp",".ico":"image/x-icon",".woff2":"font/woff2"};
@@ -32,9 +33,27 @@ function sendFile(res,file,status,method){const body=fs.readFileSync(file),ext=p
 function mediaGone(pathname){const first=pathname.split("/").filter(Boolean)[0]||"";return MEDIA_FAMILIES.has(first)}
 const server=http.createServer((req,res)=>{
  let url;try{url=new URL(req.url,"http://localhost")}catch{return send(res,400,"Bad request")}
- const method=req.method||"GET";if(!["GET","HEAD"].includes(method)){res.writeHead(405,headers({allow:"GET, HEAD","content-type":"text/plain; charset=utf-8"}));return res.end("Method not allowed")}
+ const method=req.method||"GET";
  let raw;try{raw=decodeURIComponent(url.pathname)}catch{return send(res,400,"Bad request")}
  raw=raw.replace(/\/{2,}/g,"/");
+
+ // Google Indexing API control endpoints. These must be reachable via POST so
+ // they are handled before the read-only method gate below.
+ if(raw==="/api/index/status"){return send(res,200,JSON.stringify({ok:true,configured:indexing.enabled(),site:indexing.SITE_URL})+"\n","application/json; charset=utf-8",method)}
+ if(raw==="/api/index/notify"){
+   if(method!=="POST"){res.writeHead(405,headers({allow:"POST","content-type":"application/json; charset=utf-8"}));return res.end(JSON.stringify({ok:false,error:"method not allowed"})+"\n")}
+   const auth=(req.headers.authorization||"").replace(/^Bearer\s+/i,"").trim();
+   if(!indexing.PUBLISHER_TOKEN||auth!==indexing.PUBLISHER_TOKEN){res.writeHead(401,headers({"content-type":"application/json; charset=utf-8"}));return res.end(JSON.stringify({ok:false,error:"unauthorized"})+"\n")}
+   let body="";req.on("data",c=>{body+=c;if(body.length>65536)req.destroy()});
+   req.on("end",async()=>{let payload={};try{payload=JSON.parse(body||"{}")}catch{payload={} }
+     const result=await indexing.notify(payload.url||"/", payload.type||"updated");
+     const status=result.ok?202:400;
+     res.writeHead(status,headers({"content-type":"application/json; charset=utf-8"}));res.end(JSON.stringify(result)+"\n");
+   });
+   return
+ }
+
+ if(!["GET","HEAD"].includes(method)){res.writeHead(405,headers({allow:"GET, HEAD","content-type":"text/plain; charset=utf-8"}));return res.end("Method not allowed")}
  if(raw==="/healthz")return send(res,200,JSON.stringify({ok:true,service:"bryme-work"})+"\n","application/json; charset=utf-8",method);
  if(EXACT_REDIRECTS.has(raw)){res.writeHead(301,headers({location:EXACT_REDIRECTS.get(raw),"cache-control":"public, max-age=86400"}));return res.end()}
  if(mediaGone(raw)){const gone=pageFile("410.html")||pageFile("404.html");return gone?sendFile(res,gone,410,method):send(res,410,"This media route moved out of BRYME.",undefined,method)}

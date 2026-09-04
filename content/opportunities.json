@@ -161,7 +161,21 @@
         "paid pitch"
       ],
       "editorExperience": {
-        "status": "not-yet-submitted"
+        "status": "accepted-scheduled",
+        "applied": true,
+        "result": "accepted",
+        "stage": 3,
+        "stages": {
+          "pitch_submitted": true,
+          "response_received": true,
+          "accepted": true,
+          "scheduled_for_publication": true,
+          "published": false,
+          "payment_received": false
+        },
+        "summary": "Pitch submitted, accepted, and scheduled for publication.",
+        "updatedAt": "2026-09-04",
+        "note": "Payments NOT confirmed. Update only after publication and actual payment."
       }
     },
     {

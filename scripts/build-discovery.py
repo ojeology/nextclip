@@ -12,8 +12,10 @@ from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import urlsplit
 
+import bryme_config as cfg
+
 ROOT = Path(__file__).resolve().parents[1]
-SITE = str(json.loads((ROOT / "site.config.json").read_text(encoding="utf-8"))["siteUrl"]).rstrip("/")
+SITE = cfg.site_url()  # SITE_URL env wins; otherwise site.config.json (custom-domain ready)
 POLICY = json.loads((ROOT / "content/index-allowlist.json").read_text(encoding="utf-8"))
 ROUTES = list(dict.fromkeys(POLICY["routes"]))
 REVIEWED = dt.date.fromisoformat(POLICY["reviewedAt"])

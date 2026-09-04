@@ -10,3 +10,9 @@ services:
     envVars:
       - key: NODE_VERSION
         value: "22"
+      - key: SITE_URL
+        sync: false
+      - key: INDEXING_API_TOKEN
+        sync: false
+      - key: GOOGLE_INDEXING_CREDENTIALS
+        sync: false

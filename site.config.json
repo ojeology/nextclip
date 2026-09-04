@@ -1,6 +1,11 @@
 {
   "siteName": "BRYME",
   "siteUrl": "https://bryme.onrender.com",
-  "siteDescription": "Verified jobs, paid-writing research and practical opportunity guides for Nigerians and Africa-based applicants.",
-  "indexNowKey": "1740cdb82c02b9af13911b38c853e85d2f708322fa0c2c55"
+  "siteDescription": "Verified jobs, remote work and legitimate ways to earn for Nigerians and Africa-based readers.",
+  "indexNowKey": "1740cdb82c02b9af13911b38c853e85d2f708322fa0c2c55",
+  "adsense": {
+    "caId": "",
+    "enabled": false,
+    "note": "Advertising is disabled during the quality rebuild. Set caId to a real ca-pub-... ID and review consent/privacy before enabling. Ads must never resemble job cards or application buttons."
+  }
 }

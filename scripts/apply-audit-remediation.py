@@ -17,9 +17,14 @@ from collections import Counter
 from pathlib import Path
 from urllib.parse import urlsplit
 
+import bryme_config as cfg
+
 ROOT = Path(__file__).resolve().parents[1]
 ALLOW = set(json.loads((ROOT / "content/index-allowlist.json").read_text(encoding="utf-8"))["routes"])
 STAMP = "2026-09-04"
+# Custom-domain ready: every absolute URL in schema/breadcrumbs/canonical comes
+# from SITE (SITE_URL env -> site.config.json), never a hard-coded host.
+SITE = cfg.site_url()
 
 LEGACY_HEADER = '''<a class="skip-link" href="#main">Skip to content</a><header class="top"><div class="shell"><a class="brand" href="/" aria-label="BRYME home">BRY<b>ME</b></a><nav class="topnav" aria-label="Primary"><a href="/">Home</a><a href="/jobs/">Jobs</a><a href="/writing/">Writing</a><a href="/opportunities/">Opportunities</a><a href="/guides/">Guides</a><a class="nav-search" href="/about/">About</a></nav></div></header>'''
 LEGACY_MOBILE = '''<nav class="mobile-nav" aria-label="Primary mobile"><a href="/"><span class="mn-ico">⌂</span>Home</a><a href="/jobs/"><span class="mn-ico">✓</span>Jobs</a><a href="/writing/"><span class="mn-ico">✎</span>Writing</a><a href="/opportunities/"><span class="mn-ico">↗</span>Earn</a><a href="/guides/"><span class="mn-ico">◇</span>Guides</a><a href="/about/"><span class="mn-ico">i</span>About</a></nav>'''
@@ -103,14 +108,14 @@ def patch_article_object(obj: dict, path: Path, text: str) -> None:
     obj["dateModified"] = modified
     author = obj.get("author")
     if isinstance(author, dict) and author.get("@type") == "Person" and author.get("name") == "Ibrahim Sodiq":
-        obj["author"] = {"@type": "Person", "name": "Ibrahim Sodiq", "url": "https://bryme.onrender.com/author/ibrahim-sodiq/"}
+        obj["author"] = {"@type": "Person", "name": "Ibrahim Sodiq", "url": SITE + "/author/ibrahim-sodiq/"}
     elif not author:
         if re.search(r'By\s+Ibrahim\s+Sodiq', text, re.I):
-            obj["author"] = {"@type": "Person", "name": "Ibrahim Sodiq", "url": "https://bryme.onrender.com/author/ibrahim-sodiq/"}
+            obj["author"] = {"@type": "Person", "name": "Ibrahim Sodiq", "url": SITE + "/author/ibrahim-sodiq/"}
         else:
-            obj["author"] = {"@type": "Organization", "name": "BRYME Editorial Desk", "url": "https://bryme.onrender.com/editorial-policy/"}
-    obj["publisher"] = {"@type": "Organization", "name": "BRYME", "url": "https://bryme.onrender.com/"}
-    obj["mainEntityOfPage"] = "https://bryme.onrender.com" + route_for(path)
+            obj["author"] = {"@type": "Organization", "name": "BRYME Editorial Desk", "url": SITE + "/editorial-policy/"}
+    obj["publisher"] = {"@type": "Organization", "name": "BRYME", "url": SITE + "/"}
+    obj["mainEntityOfPage"] = SITE + route_for(path)
 
 
 def walk_patch(obj: object, path: Path, text: str, title_route: bool) -> object | None:
@@ -136,9 +141,9 @@ def walk_patch(obj: object, path: Path, text: str, title_route: bool) -> object 
                 continue
             item = str(crumb.get("item", ""))
             if item.rstrip("/").endswith("/make-money"):
-                crumb["name"], crumb["item"] = "Opportunities", "https://bryme.onrender.com/opportunities/"
+                crumb["name"], crumb["item"] = "Opportunities", SITE + "/opportunities/"
             elif item.rstrip("/").endswith("/tech"):
-                crumb["name"], crumb["item"] = "Guides", "https://bryme.onrender.com/guides/"
+                crumb["name"], crumb["item"] = "Guides", SITE + "/guides/"
     if "@graph" in obj and isinstance(obj["@graph"], list):
         obj["@graph"] = [x for x in (walk_patch(x, path, text, title_route) for x in obj["@graph"]) if x is not None]
     return obj
@@ -312,7 +317,7 @@ def patch_common(text: str, path: Path, route: str) -> str:
     text = patch_allowlisted_performance(text, route)
     text = text.replace('href="/make-money/"', 'href="/opportunities/"').replace('href="/tech/"', 'href="/guides/"')
     text = text.replace("BRYME Make Money", "Opportunities").replace("Tech &amp; AI", "Practical technology")
-    canonical = "https://bryme.onrender.com" + route
+    canonical = SITE + route
     text = re.sub(r'(<link\b[^>]*rel=["\']canonical["\'][^>]*href=["\'])[^"\']+', lambda m: m.group(1) + canonical, text, count=1, flags=re.I)
     text = re.sub(r'(<meta\b[^>]*property=["\']og:url["\'][^>]*content=["\'])[^"\']+', lambda m: m.group(1) + canonical, text, count=1, flags=re.I)
 
