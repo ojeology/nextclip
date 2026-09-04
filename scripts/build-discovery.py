@@ -177,10 +177,10 @@ def build() -> None:
     (ROOT / "news-sitemap.xml").write_text(news, encoding="utf-8")
 
     feed_pages = [page for page in pages if page["article"] and page["published"]]
-    feed_pages.sort(key=lambda page: (page["published"], page["route"] == "/jobs/verified-2026-09-04/"), reverse=True)
+    feed_pages.sort(key=lambda page: page["published"], reverse=True)
     rss = '<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel>\n'
-    rss += f"  <title>BRYME — verified work, practical tech and original guides</title><link>{SITE}/</link>"
-    rss += "<description>Primary-source jobs, practical technology and original entertainment guides from BRYME.</description>"
+    rss += f"  <title>BRYME — writing opportunities, guides and verification</title><link>{SITE}/</link>"
+    rss += "<description>Legitimate paid-writing opportunities, practical guides and BRYME's firsthand verification record.</description>"
     rss += f'<language>en-ng</language><lastBuildDate>{rss_date(POLICY["reviewedAt"])}</lastBuildDate>'
     rss += f'<atom:link href="{SITE}/feed.xml" rel="self" type="application/rss+xml"/>\n'
     for page in feed_pages[:30]:

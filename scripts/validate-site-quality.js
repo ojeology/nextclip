@@ -23,13 +23,9 @@ function visible(s){return s.replace(/<script\b[\s\S]*?<\/script>/gi," ").replac
 function schema(s,route){const out=[];let m,r=/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi;while((m=r.exec(s))){try{const x=JSON.parse(m[1]);out.push(...(Array.isArray(x)?x:[x]))}catch(e){fail(`${route}: invalid JSON-LD (${e.message})`)}}return out}
 function flatten(x,out=[]){if(Array.isArray(x))x.forEach(v=>flatten(v,out));else if(x&&typeof x==="object"){if(x["@type"])out.push(x);Object.values(x).forEach(v=>{if(v&&typeof v==="object")flatten(v,out)})}return out}
 const routeFile=r=>path.join(ROOT,r==="/"?"index.html":r.replace(/^\//,"")+"index.html");
-// Job-detail routes are individual employer/ATS records. Location & type hubs,
-// category pages, the roundup and the method page are separate browse surfaces.
-// A job *detail* route is one whose final segment matches a real id in the jobs
-// dataset. Country/type/city hubs and category pages have no dataset record.
-const jobDataset=json("content/jobs.json").jobs;
-const jobIds=new Set(jobDataset.map(j=>j.id));
-function isJobDetail(r){const id=(r.match(/^\/jobs\/([^/]+)\/$/)||[])[1];return Boolean(id&&jobIds.has(id))}
+// The writing-first publication has no employer jobs on main. Individual
+// publication pages under /writing/<slug>/ are verified writing records, not
+// employer vacancies, so no JobPosting schema is ever emitted.
 if(allow.size!==allowDoc.routes.length)fail("allowlist contains duplicates");
 // Allowlist size is intentionally data-driven (grows as tabs/hubs are added); the
 // strong guarantees are: every route exists, is index,follow, canonical, on sitemap.
@@ -39,7 +35,7 @@ for(const family of ["sports","movie","movies","series","anime","article","artic
 for(const old of ["assets/site.css","assets/site-app.js","assets/sports-engine.js","content/competitions.json","content/catalogue.json"]){if(fs.existsSync(path.join(ROOT,old)))fail(`legacy media artifact still present: ${old}`)}
 const redirectSources=new Set(read("_redirects").split(/\r?\n/).map(x=>x.trim()).filter(x=>x&&!x.startsWith("#")).map(x=>norm(x.split(/\s+/)[0])));
 const htmlFiles=walk(ROOT).filter(p=>p.endsWith(".html"));
-let indexed=0,noindexed=0,writingArchive=0,jobDetails=0;
+let indexed=0,noindexed=0;let pubRecords=0;
 for(const file of htmlFiles){
  const r=routeFor(file), f=rel(file), s=fs.readFileSync(file,"utf8"), robots=meta(s,"robots").toLowerCase();
  const wanted=allow.has(r), isNo=robots.includes("noindex"), isIndex=/(?:^|,)\s*index(?:\s*,|$)/.test(robots)&&!isNo;
@@ -71,18 +67,13 @@ for(const file of htmlFiles){
    const name=Array.isArray(e.author)?e.author[0]?.name:e.author?.name;if(name&&!visible(s).toLowerCase().includes(String(name).toLowerCase()))fail(`${r}: schema author is not visible`);
   }
  }
- if(isJobDetail(r)){
-  jobDetails++;const id=r.split("/")[2],job=jobDataset.find(x=>x.id===id);
-  if(!job)fail(`${r}: no matching jobs dataset record`);else if(!s.includes(job.sourceUrl))fail(`${r}: official source URL missing`);
- }
- if(r.startsWith("/make-money/writing/")&&r!=="/make-money/writing/"){writingArchive++;if(!isNo)fail(`${r}: writing research archive must remain noindex until reverified`)}
+ if(/^\/writing\/[^/]+\/$/.test(r))pubRecords++;
  if(wanted&&!QUICK){
   let m,ar=/\b(?:href|src)=["']([^"']+)["']/gi;while((m=ar.exec(s))){const v=m[1];if(!v||/^(?:#|mailto:|tel:|javascript:|data:|https?:\/\/)/i.test(v))continue;let p;try{p=new URL(v,site+r).pathname}catch{fail(`${r}: malformed local reference ${v}`);continue}let t=path.join(ROOT,p.replace(/^\//,"")),exists=fs.existsSync(t);if(exists&&fs.statSync(t).isDirectory())exists=fs.existsSync(path.join(t,"index.html"));if(!exists&&!path.extname(p))exists=fs.existsSync(path.join(t,"index.html"));if(!exists&&!redirectSources.has(norm(p)))fail(`${r}: missing local target ${v}`)}
  }
 }
 if(indexed!==allow.size)fail(`indexable count ${indexed} does not equal allowlist ${allow.size}`);
-if(jobDetails!==jobIds.size)fail(`expected ${jobIds.size} individual job pages, found ${jobDetails}`);
-if(writingArchive!==55)fail(`expected 55 contained writing records, found ${writingArchive}`);
+if(pubRecords!==55)fail(`expected 55 indexed publication records under /writing/, found ${pubRecords}`);
 const sitemapRoutes=[...read("sitemap.xml").matchAll(/<loc>(.*?)<\/loc>/g)].map(m=>norm(m[1]));
 if(sitemapRoutes.length!==allow.size)fail(`sitemap has ${sitemapRoutes.length}, expected ${allow.size}`);
 for(const r of allow)if(!sitemapRoutes.includes(norm(r)))fail(`sitemap missing ${r}`);
@@ -90,8 +81,6 @@ for(const r of sitemapRoutes)if(!allow.has(r))fail(`sitemap includes non-allowli
 const news=[...read("news-sitemap.xml").matchAll(/<loc>(.*?)<\/loc>/g)];if(news.length)fail("News sitemap must remain empty without timely original reporting");
 const feeds=[...read("feed.xml").matchAll(/<item>[\s\S]*?<link>(.*?)<\/link>/g)].map(m=>norm(m[1]));for(const r of feeds)if(!allow.has(r))fail(`RSS includes non-allowlisted ${r}`);
 if(!read("robots.txt").includes(`Sitemap: ${site}/sitemap.xml`))fail("robots sitemap declaration missing");
-const jobs=json("content/jobs.json");
-const ids=new Set(),urls=new Set();for(const j of jobs.jobs||[]){for(const k of ["id","employer","title","locationTextRaw","workMode","employmentType","sourceUrl","sourceSystem","status","verifiedAt","notes","category","remoteEligible"])if(!(k in j)||j[k]==="")fail(`job ${j.id||"?"}: missing ${k}`);if(ids.has(j.id))fail(`duplicate job id ${j.id}`);if(urls.has(j.sourceUrl))fail(`duplicate source ${j.sourceUrl}`);ids.add(j.id);urls.add(j.sourceUrl)}
 const opportunities=json("content/opportunities.json").opportunities;if(opportunities.length!==55)fail(`expected 55 writing research records, found ${opportunities.length}`);
 for(const o of opportunities)for(const k of ["slug","publication","officialUrl","lastVerified","submissionStatus"])if(!o[k])fail(`writing record ${o.slug||"?"}: missing ${k}`);
 const server=read("server/server.js");for(const x of ["PUBLIC_HTML_DIRS","PUBLIC_ROOT_FILES","SECURITY_HEADERS","content-security-policy"])if(!server.includes(x))fail(`server hardening marker missing: ${x}`);
@@ -99,4 +88,4 @@ if(!fs.existsSync(path.join(ROOT,"render.yaml")))fail("Render blueprint missing"
 const workflow=read(".github/workflows/quality.yml");if(/\|\|\s*true/.test(workflow))fail("quality workflow suppresses failures");
 if(warnings.length){console.log(`WARNINGS (${warnings.length})`);warnings.forEach(x=>console.log("  - "+x))}
 if(failures.length){console.error(`FAIL (${failures.length})`);failures.slice(0,120).forEach(x=>console.error("  - "+x));process.exit(1)}
-console.log(JSON.stringify({ok:true,htmlFiles:htmlFiles.length,indexable:indexed,noindex:noindexed,jobs:jobs.jobs.length,jobDetailPages:jobDetails,writingResearchRecords:opportunities.length,containedWritingPages:writingArchive,sitemapUrls:sitemapRoutes.length,newsUrls:0,rssItems:feeds.length,mediaFamiliesOnMain:0,mode:QUICK?"quick":"full"},null,2));
+console.log(JSON.stringify({ok:true,htmlFiles:htmlFiles.length,indexable:indexed,noindex:noindexed,writingResearchRecords:opportunities.length,publishedPublicationPages:pubRecords,sitemapUrls:sitemapRoutes.length,newsUrls:0,rssItems:feeds.length,mediaFamiliesOnMain:0,mode:QUICK?"quick":"full"},null,2));

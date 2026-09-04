@@ -1,24 +1,15 @@
-# Canonical work-publication hubs. The Node server enforces the first four.
-/make-money  /opportunities/  301
-/make-money/  /opportunities/  301
+# Writing-first BRYME launch. Legacy multi-niche hubs (jobs, opportunities,
+# tech, make-money) were retired and live on the legacy-multiniche branch.
+# Keep 301s so old links land on the closest living writing-first surface.
+/opportunities  /writing/  301
+/opportunities/  /writing/  301
+/jobs  /writing/  301
+/jobs/  /writing/  301
 /tech  /guides/  301
 /tech/  /guides/  301
-
-# Consolidated legacy work-topic hubs.
-/make-money/beginner-guides/  /guides/  301
-/make-money/freelancing/  /opportunities/  301
-/make-money/remote-work/  /jobs/remote/  301
-/make-money/coding/  /guides/  301
 /make-money/writing-opportunities/  /writing/  301
-/make-money/website-monetization/  /make-money/website-monetization-guide/  301
-/tech/app-alternatives/  /guides/  301
-/tech/ai-assistants/  /guides/  301
-/tech/cybersecurity/  /guides/  301
-/tech/beginner-coding/  /tech/learning-to-code-on-a-phone-termux/  301
-/tech/productivity/  /guides/  301
-/tech/useful-websites/  /guides/  301
-/tech/hosting/  /tech/where-to-host-website-for-free/  301
-/tech/android-apps/  /guides/  301
+/make-money  /writing/  301
+/make-money/  /writing/  301
 
 # Media route families are HTTP 410 in server/server.js until the separately
 # deployed BRYME Media destination has a stable public hostname.
