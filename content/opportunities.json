@@ -259,7 +259,15 @@
         "paid essay"
       ],
       "editorExperience": {
-        "status": "not-yet-submitted"
+        "status": "rejected",
+        "applied": true,
+        "summary": "Declined 29 Aug 2026 via form letter (no feedback, their volume policy).",
+        "stages": {
+          "pitch_submitted": true,
+          "response_received": true
+        },
+        "updatedAt": "2026-09-04",
+        "note": "Form-letter decline; they invite reading the public submissions page. 'The Dream the Internet Sold Me' re-routed to Narratively Personals."
       }
     },
     {
@@ -368,7 +376,14 @@
         "naira"
       ],
       "editorExperience": {
-        "status": "not-yet-submitted"
+        "status": "submitted",
+        "applied": true,
+        "summary": "Submitted 29 Aug 2026 (8th edition, before 30 Aug deadline); no response yet.",
+        "stages": {
+          "pitch_submitted": true
+        },
+        "updatedAt": "2026-09-04",
+        "note": "Submission recorded; awaiting response."
       }
     },
     {
@@ -569,7 +584,14 @@
         "AI prohibited"
       ],
       "editorExperience": {
-        "status": "not-yet-submitted"
+        "status": "submitted",
+        "applied": true,
+        "summary": "Submitted 28 Aug 2026 (1,494 words) to The Lagos Review; nudge ~2 Oct if silent.",
+        "stages": {
+          "pitch_submitted": true
+        },
+        "updatedAt": "2026-09-04",
+        "note": "Submission recorded from the ledger; no acceptance."
       }
     },
     {
@@ -1409,7 +1431,15 @@
         "berggruen"
       ],
       "editorExperience": {
-        "status": "not-yet-submitted"
+        "status": "rejected",
+        "applied": true,
+        "summary": "Declined 28 Aug 2026 — 'The Accidental Developer' returned by Noema.",
+        "stages": {
+          "pitch_submitted": true,
+          "response_received": true
+        },
+        "updatedAt": "2026-09-04",
+        "note": "Rejection recorded from Noema's own reply. Material re-routed to Rest of World / Aeon."
       }
     },
     {
@@ -1490,7 +1520,14 @@
         "not currently listed"
       ],
       "editorExperience": {
-        "status": "not-yet-submitted"
+        "status": "submitted",
+        "applied": true,
+        "summary": "Submitted First Person essay 6 Aug 2026; no response yet.",
+        "stages": {
+          "pitch_submitted": true
+        },
+        "updatedAt": "2026-09-04",
+        "note": "21-day norm passed; nudge due 16 Sep if silent. This is the internet-dream material's only live home."
       }
     },
     {
@@ -2118,7 +2155,14 @@
         "pitch"
       ],
       "editorExperience": {
-        "status": "not-yet-submitted"
+        "status": "submitted",
+        "applied": true,
+        "summary": "Pitched 4 Aug 2026 to Rest of World (Ideas); no response yet.",
+        "stages": {
+          "pitch_submitted": true
+        },
+        "updatedAt": "2026-09-04",
+        "note": "Nudge window normally opens at day ~21-28; follow-up sent 28 Aug. Nothing confirmed."
       }
     },
     {
