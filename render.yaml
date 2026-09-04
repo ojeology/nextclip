@@ -2,10 +2,10 @@ services:
   - type: web
     name: bryme-website
     runtime: node
-    rootDir: server
+    rootDir: .
     plan: free
-    buildCommand: npm install --omit=dev
-    startCommand: node server.js
+    buildCommand: npm install --omit=dev && npm run build
+    startCommand: node server/server.js
     healthCheckPath: /healthz
     autoDeploy: true
     envVars:
