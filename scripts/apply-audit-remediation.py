@@ -356,7 +356,8 @@ def apply(check: bool = False) -> Counter:
             if not check:
                 path.write_text(after, encoding="utf-8")
     if not check:
-        report = {"appliedAt": STAMP, "indexAllowlistCount": len(ALLOW), **stats}
+        # Keep the tracked report deterministic; per-run change counts belong in stdout.
+        report = {"appliedAt": STAMP, "indexAllowlistCount": len(ALLOW)}
         (ROOT / "reports/remediation-apply-summary.json").write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
     return stats
 
