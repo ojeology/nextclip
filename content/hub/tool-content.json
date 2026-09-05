@@ -1,0 +1,172 @@
+{
+  "word-counter": {
+    "what": "Counts the words in your text instantly, including how it treats contractions, hyphenated words and apostrophes.",
+    "howto": "Paste or type your text into the box. The word and character counts update live, so you can trim to a target length as you write. Use it to hit a publication's word limit, a blog post length, or a word-count goal for a session.",
+    "why": "Word count is one of the few concrete, enforceable limits in writing. Editors and guidelines state a range; a word counter lets you meet it exactly instead of counting manually."
+  },
+  "character-counter": {
+    "what": "Counts the characters in your text, counting spaces.",
+    "howto": "Paste your text to see the total character count immediately. This is the number platforms use for tweet lengths, meta descriptions, SMS and other strict limits.",
+    "why": "Character limits are everywhere — social posts, form fields, headlines. Knowing your count before you paste saves you from truncation."
+  },
+  "character-counter-no-spaces": {
+    "what": "Counts the characters in your text excluding spaces.",
+    "howto": "Paste text to see the character count with spaces removed. Useful for limits that exclude whitespace, and for comparing how much actual content you have.",
+    "why": "Some application forms and database fields count only non-space characters, so knowing both numbers is useful."
+  },
+  "sentence-counter": {
+    "what": "Counts sentences and paragraphs in your text.",
+    "howto": "Paste your text to get both a sentence count and a paragraph count. Use the sentence count with the sentence-length checker to see the average length.",
+    "why": "Sentence and paragraph counts reveal the rhythm and readability of a piece. A wall of very long sentences is harder to read."
+  },
+  "paragraph-counter": {
+    "what": "Counts the paragraphs in your text.",
+    "howto": "Paste your text and the paragraph count appears instantly. A paragraph is normally split by a blank line.",
+    "why": "Paragraphs are a visual signal of readability. Short paragraphs read faster online; knowing your count helps you balance them."
+  },
+  "reading-time": {
+    "what": "Estimates how long it takes to read your text aloud at an average pace.",
+    "howto": "Paste or write your text and see the estimated reading time. Use it to match a newsletter, speech or article to the time a reader or listener will give it.",
+    "why": "Reading time sets expectations. A reader decides in seconds whether to commit, and a clear estimate respects their time."
+  },
+  "word-density": {
+    "what": "Finds the most frequent words in your text and shows how often each appears.",
+    "howto": "Paste your text to see a ranked list of your most-used words and their repetition rates. Spot a filler word you lean on and replace it.",
+    "why": "Repetitive words weaken writing. Seeing your patterns is the fastest way to notice crutch words and overused phrases."
+  },
+  "case-converter": {
+    "what": "Converts text between title case, lowercase, UPPERCASE, sentence case and camelCase.",
+    "howto": "Type or paste text, pick the case you need, and copy the result. Title case is for headings; sentence case for normal sentences.",
+    "why": "Case rules differ by context — a headline, a code comment, a database entry. Converting in one click avoids retyping."
+  },
+  "text-cleaner": {
+    "what": "Removes double spaces, stray line breaks and other messy formatting from pasted text.",
+    "howto": "Paste messy text and get clean, consistent text back with normal spaces and breaks. Useful when you copy from an email, a PDF or a website.",
+    "why": "Copied text is rarely clean. A cleaner saves you from manually fixing spacing and line breaks before you submit or publish."
+  },
+  "remove-extra-spaces": {
+    "what": "Turns runs of spaces into single spaces.",
+    "howto": "Paste text to collapse extra spaces into normal spacing. Ideal for cleaning text pasted from formatted sources.",
+    "why": "Double spaces and irregular gaps make a document look sloppy. One pass cleans the whole thing."
+  },
+  "line-break-cleaner": {
+    "what": "Fixes inconsistent line breaks in pasted text.",
+    "howto": "Paste text with stray or missing line breaks and get a clean result. Great for text pasted from PDFs or web pages.",
+    "why": "Pasted text often inherits odd breaks. Cleaning them makes a document reliable before editing."
+  },
+  "text-sorter": {
+    "what": "Sorts lines of text alphabetically, ascending or descending.",
+    "howto": "Paste a list and choose A-Z or Z-A. Useful for organising headings, a bibliography or a list of items.",
+    "why": "Alphabetical order is a common requirement in references and lists. Sorting by hand is tedious and error-prone."
+  },
+  "duplicate-line-remover": {
+    "what": "Removes repeated lines from a list, keeping one of each.",
+    "howto": "Paste a list with duplicates and get a clean, deduplicated version. Useful for cleaning data or a long list.",
+    "why": "Removing duplicates makes a list reliable and easier to read, whatever you are compiling."
+  },
+  "writing-timer": {
+    "what": "A focus timer for a writing session.",
+    "howto": "Set a goal in minutes, then write without stopping. The timer keeps you honest without nagging, and many writers find a fixed block easier than an open-ended session.",
+    "why": "A timer turns 'be good' into 'fill the time' — making it far easier to start and to keep a routine."
+  },
+  "article-outline-generator": {
+    "what": "Turns an idea into a structured article outline with an introduction, body sections and a conclusion.",
+    "howto": "Enter your topic and the tool builds a skeleton you can rewrite into a full draft. Adjust sections to your argument and fill them in.",
+    "why": "An outline removes the hardest part of starting. A clear structure means each paragraph has a job, so you write faster."
+  },
+  "writing-checklist-generator": {
+    "what": "Generates a pre-publication checklist for your writing.",
+    "howto": "Select the checks that apply and work through them before you publish or submit.",
+    "why": "A checklist catches the easy, costly mistakes — typos, weak conclusions, missing citations — before an editor does."
+  },
+  "syllable-counter": {
+    "what": "Counts the syllables in words and text.",
+    "howto": "Paste text to count syllables. Useful for poetry, songwriting and assessing rhythm.",
+    "why": "Syllables govern rhythm in poetry and verse. A syllable count helps you match a metre or a line length."
+  },
+  "readability-score": {
+    "what": "Scores how easy your text is to read using established readability formulas.",
+    "howto": "Paste your text and see readability scores such as the Flesch reading ease and grade level. Aim for clear, accessible writing for a general reader.",
+    "why": "Readability is not about dumbing down — it is about clarity. A high score means your reader can follow you on the first pass."
+  },
+  "filler-word-finder": {
+    "what": "Finds filler words and hedges like 'very', 'really' and 'in my opinion'.",
+    "howto": "Paste your text to spot filler words and cut the ones that add nothing. Removing them makes the writing sharper.",
+    "why": "Filler and hedge words dilute an argument. Cutting them is one of the fastest edits for stronger prose."
+  },
+  "passive-voice-detector": {
+    "what": "Flags sentences that may be in the passive voice.",
+    "howto": "Paste text to find candidate passive constructions. Review each and rewrite to active where the doer matters.",
+    "why": "Active voice is usually clearer and more direct. Identifying passive spots is quicker than hunting for them manually."
+  },
+  "word-repetition-checker": {
+    "what": "Finds words repeated too close together across a text.",
+    "howto": "Paste your text to see where a word repeats. Replace a repeated word with a synonym or restructure the sentence.",
+    "why": "Repeated words pull a reader's eye and sound mechanical. Varying your vocabulary keeps prose fresh."
+  },
+  "sentence-length-checker": {
+    "what": "Identifies sentences that are too long and hard to follow.",
+    "howto": "Paste text to highlight long sentences. Split them into shorter ones for clarity, or give a favourite long one a brief break.",
+    "why": "Long, unbroken sentences lose readers. Marking them is the first step to a clearer rhythm."
+  },
+  "cliche-detector": {
+    "what": "Finds overused cliches and stock phrases.",
+    "howto": "Paste text to spot cliches and replace them with fresher, more specific language.",
+    "why": "Cliches signal a writer is not thinking. Replacing them with specific, original detail is what makes writing memorable."
+  },
+  "adverb-finder": {
+    "what": "Finds adverbs, the words that often do the work a stronger verb should.",
+    "howto": "Paste text to see where adverbs appear. Consider replacing a weak verb plus adverb ('ran quickly') with one strong verb ('sprinted').",
+    "why": "Adverbs can be a sign of a lazy verb. Cutting them often forces sharper, more vivid writing."
+  },
+  "title-generator": {
+    "what": "Generates several headline options for your article or post.",
+    "howto": "Enter a topic and get multiple title options. Pick the clearest one or combine the best parts of two.",
+    "why": "Before a reader sees your content, they see your title. A strong, specific headline earns the click."
+  },
+  "meta-description-generator": {
+    "what": "Writes a meta description for your page, kept to the length search engines like.",
+    "howto": "Enter your topic and the benefit to the reader, and get a description near the recommended length. Add it to your page's markup.",
+    "why": "A meta description is the snippet shown under a search result. A clear, benefit-led one raises your click-through rate."
+  },
+  "random-writing-prompt": {
+    "what": "Gives you a fresh writing prompt to beat the blank page.",
+    "howto": "Click for a new prompt and write immediately. Don't overthink — the point is to start.",
+    "why": "Writer's block is often just not knowing where to start. A specific prompt removes that choice and gets you writing."
+  },
+  "word-document-converter": {
+    "what": "Turns your text into a Word-compatible document, or plain text.",
+    "howto": "Paste or write your text, choose the format, and download. Open it in Word, Google Docs or LibreOffice.",
+    "why": "Many submissions and clients want a document file. Creating one in the browser avoids opening a word processor."
+  },
+  "pdf-editor": {
+    "what": "Lets you edit a PDF's pages — rotate, delete, reorder — entirely in your browser.",
+    "howto": "Open a PDF, then use the controls on each page to rotate, remove or move it. Export a new PDF when you're happy. Nothing is uploaded.",
+    "why": "A quick fix to a PDF — a rotated scan, a page to drop — shouldn't need uploads or an account. Doing it client-side keeps it private."
+  },
+  "pdf-to-text": {
+    "what": "Extracts the text from a PDF so you can copy and reuse it.",
+    "howto": "Choose a PDF and the text is extracted into a box you can copy or edit. Note that scanned/image PDFs may not extract text.",
+    "why": "Sometimes a PDF's words are all you want — to quote, edit, or reuse in your own document."
+  },
+  "text-to-pdf": {
+    "what": "Turns plain text into a clean, downloadable PDF.",
+    "howto": "Paste or write text and click to create a PDF. Great for a first draft, a simple report or a shareable version of notes.",
+    "why": "PDFs preserve formatting and are easy to send. Making one from text in the browser is quick and needs no app."
+  },
+  "images-to-pdf": {
+    "what": "Combines JPG or PNG images into a single PDF, one image per page.",
+    "howto": "Choose one or more images and the tool builds a PDF with each on its own page.",
+    "why": "Combining scans, screenshots or photos into one shareable PDF is a common task an editor or client may ask for."
+  },
+  "self-plagiarism-checker": {
+    "what": "Checks your text for repeated or near-identical sentences within itself.",
+    "howto": "Paste your text to find internal duplication. Review the flagged repeats and vary or remove them.",
+    "why": "Accidental repetition reads as careless. Catching it within a single document is a fast, private quality check."
+  },
+  "ai-writing-checker": {
+    "what": "A rule-based look at formulaic phrases and AI-favoured words in your text.",
+    "howto": "Paste text to get a heuristic AI-likeness score and a list of flagged phrases. Use it to spot a 'flat', generated feel and write more naturally.",
+    "why": "This is a nudge, not a verdict. No tool can reliably tell human from AI text; it helps you notice a formulaic tone and make it your own."
+  }
+}

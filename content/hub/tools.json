@@ -195,6 +195,60 @@
       "short": "Turn your text into a downloadable Word (.doc) file.",
       "category": "work",
       "description": "Paste or write your text and download it as a Word-compatible .doc document (or a .txt file). No account, no upload — it converts right in your browser."
+    },
+    {
+      "id": "pdf-editor",
+      "title": "PDF editor",
+      "short": "Rotate, delete, reorder or merge PDF pages in your browser.",
+      "category": "work",
+      "description": "Open a PDF and rotate, delete, reorder or merge its pages, then export a new PDF. Fully client-side — nothing is uploaded.",
+      "seo_title": "PDF editor online — rotate, merge & edit PDFs in your browser | BRYME",
+      "seo_desc": "Edit a PDF right in your browser: rotate, delete, reorder or merge pages and export a new PDF. Free, private, no upload and no account."
+    },
+    {
+      "id": "pdf-to-text",
+      "title": "PDF to text",
+      "short": "Extract text from a PDF so you can copy and reuse it.",
+      "category": "work",
+      "description": "Turn a PDF's text into copyable, editable text. Runs in your browser; useful for reusing the words from a PDF you already have.",
+      "seo_title": "PDF to text converter — extract text from PDF free | BRYME",
+      "seo_desc": "Extract the text from any PDF so you can copy and reuse it. Free in-browser PDF to text converter — private, no upload, no account."
+    },
+    {
+      "id": "text-to-pdf",
+      "title": "Text to PDF",
+      "short": "Turn plain text into a clean, downloadable PDF.",
+      "category": "work",
+      "description": "Create a clean PDF from your plain text. Great for a first draft or a simple document — all done in your browser.",
+      "seo_title": "Text to PDF converter — turn text into a PDF free | BRYME",
+      "seo_desc": "Turn plain text into a clean, downloadable PDF. Free text to PDF converter that runs in your browser — no upload, no account."
+    },
+    {
+      "id": "images-to-pdf",
+      "title": "Images to PDF",
+      "short": "Turn JPG/PNG images into a single PDF, one per page.",
+      "category": "work",
+      "description": "Combine one or more JPG or PNG images into a single PDF, each on its own page, right in your browser.",
+      "seo_title": "Images to PDF converter — JPG/PNG to PDF free | BRYME",
+      "seo_desc": "Combine JPG or PNG images into a single PDF, one on each page. Free images to PDF converter in your browser — private and no account."
+    },
+    {
+      "id": "self-plagiarism-checker",
+      "title": "Repetition & self-plagiarism checker",
+      "short": "Find repeated sentences and phrasing within your own text.",
+      "category": "quality",
+      "description": "Check your text for repeated or near-identical sentences within itself. A client-side heuristic for internal duplication, not a web comparison.",
+      "seo_title": "Repetition & self-plagiarism checker — find repeated phrases | BRYME",
+      "seo_desc": "Check your writing for repeated or near-identical sentences within itself. A free client-side self-plagiarism and duplication checker."
+    },
+    {
+      "id": "ai-writing-checker",
+      "title": "AI-likeness checker",
+      "short": "A honest, rule-based look at formulaic AI-style phrasing.",
+      "category": "quality",
+      "description": "A rule-based heuristic that flags formulaic phrases and AI-favoured words. Honest by design: it nudges you to sound more natural, it does not pretend to detect AI.",
+      "seo_title": "AI writing checker — AI-likeness style checker | BRYME",
+      "seo_desc": "Spot formulaic, AI-favoured phrasing in your text. A free, honest rule-based AI-likeness checker that helps you sound more natural."
     }
   ]
 }

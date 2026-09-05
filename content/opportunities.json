@@ -8570,6 +8570,259 @@
       "vertical": "writing",
       "submissionStatus": "rolling",
       "lastVerified": "2026-09-05"
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "submissionStatus": "open",
+      "lastVerified": "2026-09-05",
+      "publishedAt": "2026-09-05",
+      "deadline": null,
+      "experience": "not-stated",
+      "aiPolicy": "not-stated",
+      "id": "the-forge",
+      "slug": "the-forge",
+      "publication": "The Forge Literary Magazine",
+      "title": "Fiction and nonfiction (short prose)",
+      "seoTitle": "The Forge submissions: $100 per piece, open the 1st of each month",
+      "excerpt": "The Forge Literary Magazine pays $100 per published piece regardless of length. Free submissions open on the 1st of each month (Jan-Nov) via Submittable and close when the 200-piece quota fills.",
+      "officialUrl": "https://forgelitmag.com/submit/",
+      "applyUrl": "https://forgelitmag.submittable.com/submit",
+      "applyMethod": "Submittable",
+      "pay": {
+        "currency": "USD",
+        "amountMin": 100,
+        "amountMax": 100,
+        "display": "$100",
+        "conditions": "Official payment page: $100 per piece regardless of length, paid upon publication or sooner, for fiction and nonfiction.",
+        "timing": "Upon publication"
+      },
+      "wordCount": {
+        "display": "under 3,000 words (up to 3,500)",
+        "min": 3000,
+        "max": 3500
+      },
+      "eligibility": {
+        "summary": "Open internationally to all voices and genres; literary excellence is the only criterion. This is a worldwide open call.",
+        "mode": "open",
+        "notStated": false,
+        "allowsDiaspora": true,
+        "includesRegions": [],
+        "includesGroups": []
+      },
+      "whatTheyWant": [
+        "Literary fiction and nonfiction of any background, race, ethnicity, gender, sexual or personal identity, from all over the world.",
+        "Strong preference for stories under 3,000 words; flash and micro are loved but only one per submission.",
+        "Only previously unpublished work. Simultaneous submissions are encouraged."
+      ],
+      "whatTheyDontWant": [
+        "The submission page says they want work written by humans (no AI-generated work).",
+        "One piece at a time (one piece per month to the free category)."
+      ],
+      "howToSubmit": [
+        "Submit via Submittable; free submissions open the 1st of each month, January-November, and close when the 200-piece quota fills.",
+        "Read anonymously - do not put your name in the file. Double-space the document. Wait four months to inquire."
+      ],
+      "requirements": [
+        "Only previously unpublished pieces",
+        "Under 3,000 words preferred",
+        "One piece at a time",
+        "No name in the file",
+        "Double-spaced document"
+      ],
+      "sources": [
+        {
+          "name": "The Forge Literary Magazine - Submit (official)",
+          "url": "https://forgelitmag.com/submit/"
+        },
+        {
+          "name": "The Forge Submittable (official)",
+          "url": "https://forgelitmag.submittable.com/submit"
+        }
+      ],
+      "keywords": [
+        "forge",
+        "literary fiction",
+        "nonfiction",
+        "flash",
+        "$100"
+      ],
+      "rights": "Exclusive worldwide English-language rights for one month, then all rights revert to the author.",
+      "response": {
+        "band": "4-months",
+        "label": "Up to four months to inquire",
+        "official": true
+      },
+      "writingTypes": [
+        "fiction",
+        "nonfiction"
+      ],
+      "writingTypeLabel": "Fiction and nonfiction"
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "submissionStatus": "open",
+      "lastVerified": "2026-09-05",
+      "publishedAt": "2026-09-05",
+      "deadline": null,
+      "experience": "not-stated",
+      "aiPolicy": "not-stated",
+      "id": "west-branch",
+      "slug": "west-branch",
+      "publication": "West Branch",
+      "title": "Poetry, fiction, creative nonfiction, translations",
+      "seoTitle": "West Branch submissions: $100 poetry, $0.10/word prose (max $200)",
+      "excerpt": "West Branch pays $100 per poetry submission and $0.10/word for prose up to a maximum of $200, plus two contributor copies and a one-year subscription. Reads unsolicited manuscripts Aug 1-Apr 1.",
+      "officialUrl": "https://westbranchsubmissions.bucknell.edu/",
+      "applyUrl": "https://westbranchsubmissions.bucknell.edu/",
+      "applyMethod": "Online submission manager",
+      "pay": {
+        "currency": "USD",
+        "amountMin": 100,
+        "amountMax": 200,
+        "display": "$100/poetry, $0.10/word up to $200 (prose)",
+        "conditions": "Official submission manager: $100 per submission of poetry and $0.10/word for prose with a maximum payment of $200. Plus two contributor copies and a one-year subscription.",
+        "timing": "On acceptance"
+      },
+      "wordCount": {
+        "display": "up to 6 poems or 30 pages of prose",
+        "min": null,
+        "max": null
+      },
+      "eligibility": {
+        "summary": "Open to submissions from any location; first North American serial rights purchased.",
+        "mode": "open",
+        "notStated": false,
+        "allowsDiaspora": true,
+        "includesRegions": [],
+        "includesGroups": []
+      },
+      "whatTheyWant": [
+        "Poetry, fiction, creative nonfiction and translation of original, unpublished work.",
+        "Up to six poems or thirty pages of a single prose piece.",
+        "Short-form fiction may be submitted as up to three pieces, so long as total pages stay under fifteen."
+      ],
+      "whatTheyDontWant": [
+        "No more than two submissions per contributor in a given reading period - extras are rejected.",
+        "Print only original, unpublished work."
+      ],
+      "howToSubmit": [
+        "Submit via the West Branch online submission manager (Bucknell). File must be paginated with the name on each page; prose double-spaced with a word count.",
+        "Wait four months before querying for a response."
+      ],
+      "requirements": [
+        "Paginated file with author name on each page",
+        "Prose double-spaced with word count",
+        "Up to 6 poems or 30 pages prose",
+        "No more than two submissions per reading period"
+      ],
+      "sources": [
+        {
+          "name": "West Branch - Submission Manager (official)",
+          "url": "https://westbranchsubmissions.bucknell.edu/"
+        }
+      ],
+      "keywords": [
+        "west branch",
+        "poetry",
+        "fiction",
+        "creative nonfiction",
+        "translation",
+        "bucknell"
+      ],
+      "rights": "First North American serial rights, plus two contributor copies and a one-year subscription.",
+      "response": {
+        "band": "4-months",
+        "label": "Query after four months",
+        "official": true
+      },
+      "writingTypes": [
+        "poetry",
+        "fiction",
+        "nonfiction",
+        "translation"
+      ],
+      "writingTypeLabel": "Poetry, fiction, creative nonfiction, translation"
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "submissionStatus": "open",
+      "lastVerified": "2026-09-05",
+      "publishedAt": "2026-09-05",
+      "deadline": null,
+      "experience": "not-stated",
+      "aiPolicy": "not-stated",
+      "id": "pulp-literature",
+      "slug": "pulp-literature",
+      "publication": "Pulp Literature Magazine",
+      "title": "Short fiction, poetry, art, sequential art",
+      "seoTitle": "Pulp Literature submissions: $0.05-$0.08/word for short stories",
+      "excerpt": "Pulp Literature pays $0.05-$0.08 per word for short stories up to 5,000 words, $0.03-$0.06 between 5,000 and 10,000 words, $0.02-$0.04 over 10,000 words, plus $25-$50 for poetry and $25-$75 a page for art.",
+      "officialUrl": "https://pulpliterature.com/submissions/submission-guidelines/",
+      "applyUrl": "https://pulpliterature.com/submissions/submission-guidelines/",
+      "applyMethod": "Editorial submissions (per guidelines)",
+      "pay": {
+        "currency": "CAD",
+        "amountMin": 20,
+        "amountMax": 800,
+        "display": "$0.05-$0.08/word (short stories)",
+        "conditions": "Official guidelines: $0.05-$0.08 per word for short stories to 5,000 words; $0.03-$0.06 per word between 5,000-10,000 words; $0.02-$0.04 per word over 10,000 words. Poetry and interior illustrations $25-$50; sequential art and illustrations $25-$75 per page.",
+        "timing": "On acceptance"
+      },
+      "wordCount": {
+        "display": "short stories to 5,000 words",
+        "min": null,
+        "max": 5000
+      },
+      "eligibility": {
+        "summary": "Open to writers; pay rates published on the official guidelines page.",
+        "mode": "open",
+        "notStated": false,
+        "allowsDiaspora": true,
+        "includesRegions": [],
+        "includesGroups": []
+      },
+      "whatTheyWant": [
+        "Short fiction in any genre, up to 5,000 words (tiers up to 10,000+ words).",
+        "Poetry and interior illustrations ($25-$50). Sequential art/graphic works ($25-$75 per page)."
+      ],
+      "whatTheyDontWant": [
+        "A limited number of reprints accepted at up to 50% of first-publication rates."
+      ],
+      "howToSubmit": [
+        "Submit per the official submission guidelines and reading windows.",
+        "Follow the length and format requirements on the guidelines page."
+      ],
+      "requirements": [
+        "Follow the reading window",
+        "Word-count and format per guidelines"
+      ],
+      "sources": [
+        {
+          "name": "Pulp Literature - Submission Guidelines (official)",
+          "url": "https://pulpliterature.com/submissions/submission-guidelines/"
+        }
+      ],
+      "keywords": [
+        "pulp literature",
+        "short fiction",
+        "poetry",
+        "art",
+        "pay per word"
+      ],
+      "rights": "As stated in the publication's guidelines (reprints accepted at reduced rates).",
+      "response": {
+        "band": "varies",
+        "label": "Varies",
+        "official": true
+      },
+      "writingTypes": [
+        "fiction",
+        "poetry"
+      ],
+      "writingTypeLabel": "Short fiction, poetry, art"
     }
   ]
 }

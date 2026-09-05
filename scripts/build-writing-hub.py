@@ -51,6 +51,7 @@ def load(name: str):
 
 
 SECTIONS = load("sections.json")
+TOOL_CONTENT = json.loads((ROOT / "content" / "hub" / "tool-content.json").read_text(encoding="utf-8"))
 GROUPS = {g["id"]: g for g in SECTIONS["groups"]}
 SECTIONS_BY_ID = {s["id"]: s for s in SECTIONS["sections"]}
 TOOLS = load("tools.json")["tools"]
@@ -315,17 +316,62 @@ def tools_index() -> None:
 
 
 def tool_page(t: dict) -> None:
+    # Substantive per-tool SEO content (how/what/why) so tool pages aren't thin.
+    tc = TOOL_CONTENT.get(t["id"], {})
+    about = ""
+    if tc:
+        about = f'''<section class="section"><div class="wrap"><div class="section-head"><div><p class="eyebrow">About this tool</p><h2>How to use the {esc(t['title'].lower())}.</h2></div></div>
+<div class="prose">
+<p><b>What it does.</b> {esc(tc.get('what', t.get('description', '')))}</p>
+<p><b>How to use it.</b> {esc(tc.get('howto', ''))}</p>
+<p><b>Why it matters.</b> {esc(tc.get('why', ''))}</p>
+</div>
+<div class="related-cta"><a class="btn secondary" href="/tools/">← All writing tools</a></div>
+</div></section>'''
     body = f'''<div class="wrap">{breadcrumb(("Writing tools", "/tools/"))}
 <section class="page-hero"><p class="kicker"><span class="kicker-dot"></span>Free tool</p>
 <h1>{esc(t['title'])}.</h1>
 <p>{esc(t['description'])}</p>
 <a class="btn secondary" href="/tools/">← All tools</a></section>
-<section class="section">{render_tool(t)}</section></div>'''
+<section class="section">{render_tool(t)}</section></div>
+{about}'''
+    st = t.get("seo_title") or f"{t['title']} — free online writing tool | BRYME"
+    sd = t.get("seo_desc") or f"Free {t['title'].lower()} from BRYME. It works instantly in your browser — no account, no upload, no download."
     write(f"/tools/{t['id']}/", page_wf(
-        title=f"{t['title']} — free writing tool | BRYME",
-        description=f"Free {t['title'].lower()} from BRYME. Works in your browser, no account or download needed.",
+        title=st,
+        description=sd,
         route=f"/tools/{t['id']}/", current="tools", body=body,
         schema_data={"@context": "https://schema.org", "@type": "WebApplication", "name": t["title"], "applicationCategory": "Utility", "url": f"{BASE}/tools/{t['id']}/", "operatingSystem": "Any", "description": t["description"], "publisher": {"@type": "Organization", "name": "BRYME", "url": BASE + "/"}}))
+
+
+def pdf_render(i: str) -> str:
+    """Markup for the in-browser PDF tools (fully client-side)."""
+    if i == "pdf-editor":
+        return '''<div class="tool-prose"><p>Open a PDF and <b>rotate, delete, reorder or merge</b> its pages, then export a new PDF. Runs entirely in your browser — nothing is uploaded.</p>
+<label for="pdf-file">Choose a PDF</label><input id="pdf-file" type="file" accept="application/pdf">
+<input id="pdf-file-src" type="file" accept="application/pdf" style="display:none">
+<div class="tool-actions"><button id="editor-export" class="btn">Export edited PDF</button></div>
+<div class="tool-note" id="editor-status"></div>
+<span class="tool-note" id="editor-count"></span>
+<div class="pdf-pages" id="pages-list"></div></div>'''
+    if i == "pdf-to-text":
+        return '''<div class="tool-prose"><p>Extract the text from a PDF so you can copy, edit or reuse it. Runs in your browser.</p>
+<label for="pdft-text-file">Choose a PDF</label><input id="pdft-text-file" type="file" accept="application/pdf">
+<textarea id="pdft-out" readonly placeholder="Extracted text appears here…"></textarea>
+<div class="tool-actions"><button id="pdft-copy" class="btn">Copy text</button></div>
+<span class="tool-note" id="pdft-count"></span>
+<div class="tool-note" id="pdft-status"></div></div>'''
+    if i == "text-to-pdf":
+        return '''<div class="tool-prose"><p>Turn plain text into a clean, downloadable PDF. Great for a first draft or a simple document. Runs in your browser.</p>
+<label>Your text</label><textarea id="txt2pdf-in" placeholder="Type or paste your text here…"></textarea>
+<div class="tool-actions"><button id="txt2pdf-go" class="btn">Create PDF</button></div>
+<div class="tool-note" id="txt2pdf-status"></div></div>'''
+    if i == "images-to-pdf":
+        return '''<div class="tool-prose"><p>Turn one or more JPG/PNG images into a single PDF, each on its own page. Runs in your browser.</p>
+<label for="img2pdf-file">Choose images</label><input id="img2pdf-file" type="file" accept="image/*" multiple>
+<div class="tool-actions"><button id="img2pdf-add" class="btn">Add images</button></div>
+<div class="tool-note" id="img2pdf-status"></div></div>'''
+    return ""
 
 
 def render_tool(t: dict) -> str:
@@ -374,6 +420,32 @@ def render_tool(t: dict) -> str:
 <div class="tool-actions"><label class="tool-select">Format <select id="format"><option value="doc">Word (.doc)</option><option value="txt">Plain text (.txt)</option></select></label><button id="download" class="btn">Download document</button></div>
 <div class="tool-result" id="out"></div></div></div>
 <script src="/assets/hub-tools.js" data-hub-tool="word-document-converter"></script>'''
+    if i == "pdf-editor":
+        # editor uses pdf.js for thumbnails and pdf-lib to rebuild the file
+        return f'''<div class="tool-box">{pdf_render(i)}</div>
+<script src="/assets/vendor/pdfjs.min.js"></script>
+<script src="/assets/vendor/pdf-lib.min.js"></script>
+<script src="/assets/pdf-tools.js" data-hub-tool="{i}"></script>'''
+    if i in ("text-to-pdf", "images-to-pdf"):
+        return f'''<div class="tool-box">{pdf_render(i)}</div>
+<script src="/assets/vendor/pdf-lib.min.js"></script>
+<script src="/assets/pdf-tools.js" data-hub-tool="{i}"></script>'''
+    if i == "pdf-to-text":
+        return f'''<div class="tool-box">{pdf_render(i)}</div>
+<script src="/assets/vendor/pdfjs.min.js"></script>
+<script src="/assets/pdf-tools.js" data-hub-tool="{i}"></script>'''
+    if i in ("self-plagiarism-checker",):
+        return f'''<div class="tool-box"><div class="tool-prose"><p>Check your text for repeated or near-identical sentences <em>within itself</em> — a self-plagiarism and internal-duplication check. Everything runs locally in your browser.</p>
+<textarea id="plag-in" placeholder="Paste your text here…"></textarea>
+<div class="tool-actions"><button id="plag-run" class="btn">Check for repetition</button></div>
+<div class="tool-result" id="plag-out"></div></div></div>
+<script src="/assets/pdf-tools.js" data-hub-tool="self-plagiarism-checker"></script>'''
+    if i in ("ai-writing-checker",):
+        return f'''<div class="tool-box"><div class="tool-prose"><p>A <b>rule-based heuristic</b> look for formulaic phrases and AI-favoured words in your text. It is an honest nudge to sound more natural — not a real AI detector (no tool can reliably do that).</p>
+<textarea id="ai-in" placeholder="Paste your text here…"></textarea>
+<div class="tool-actions"><button id="ai-run" class="btn">Analyse style</button></div>
+<div class="tool-result" id="ai-out"></div></div></div>
+<script src="/assets/pdf-tools.js" data-hub-tool="ai-writing-checker"></script>'''
     # default: single textarea with live count
     return f'''<div class="tool-box"><div class="tool-prose"><label>Your text</label><textarea id="ta" placeholder="Type or paste your text…"></textarea><div class="tool-result" id="out"></div></div></div>
 <script src="/assets/hub-tools.js" data-hub-tool="{i}"></script>'''
