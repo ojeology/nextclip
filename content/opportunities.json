@@ -5781,69 +5781,6 @@
       "status": "published",
       "vertical": "writing",
       "eligibility": {
-        "summary": "Worldwide — no stated geographic restriction.",
-        "mode": "worldwide",
-        "includesGroups": [],
-        "includesRegions": [],
-        "allowsDiaspora": true,
-        "notStated": false
-      },
-      "writingTypes": [
-        "personal-essay",
-        "true-story",
-        "poetry"
-      ],
-      "sources": [
-        {
-          "name": "Chicken Soup for the Soul — story submissions",
-          "url": "https://www.chickensoup.com/story-submissions"
-        }
-      ],
-      "deadline": null,
-      "aiPolicy": "not-stated",
-      "experience": "not-stated",
-      "keywords": [],
-      "whatTheyWant": [],
-      "whatTheyDontWant": [],
-      "requirements": [],
-      "howToSubmit": [],
-      "rights": "",
-      "applyUrl": "https://www.chickensoup.com/story-submissions",
-      "applyEmail": "",
-      "applyMethod": "Themed anthology webform",
-      "lastVerified": "2026-09-04",
-      "publishedAt": "2026-09-04",
-      "id": "chicken-soup",
-      "slug": "chicken-soup-for-the-soul",
-      "publication": "Chicken Soup for the Soul",
-      "title": "True first-person stories and poems",
-      "seoTitle": "Chicken Soup for the Soul: $200–$250 per accepted story",
-      "excerpt": "Chicken Soup for the Soul pays $200–$250 for accepted true first-person stories and poems up to 1,200 words, per themed anthology call.",
-      "officialUrl": "https://www.chickensoup.com",
-      "writingTypeLabel": "True first-person stories",
-      "pay": {
-        "currency": "USD",
-        "amountMin": 200,
-        "amountMax": 250,
-        "display": "$200–$250 per accepted piece",
-        "conditions": "$200–$250 per accepted piece, via themed anthology calls. Each book publishes 101 stories from thousands of submissions.",
-        "timing": "6 months–2 years to publication (their note)"
-      },
-      "wordCount": {
-        "max": 1200,
-        "display": "Up to 1,200 words"
-      },
-      "response": {
-        "label": "Long; only on acceptance",
-        "band": "months",
-        "official": false
-      },
-      "submissionStatus": "open"
-    },
-    {
-      "status": "published",
-      "vertical": "writing",
-      "eligibility": {
         "summary": "Open to Pan-African writers; confirm specific restriction on the official page.",
         "mode": "unknown",
         "includesGroups": [],
@@ -6015,6 +5952,2624 @@
         "official": false
       },
       "submissionStatus": "open"
+    },
+    {
+      "id": "the-sun-magazine",
+      "slug": "the-sun-magazine",
+      "publication": "The Sun Magazine",
+      "title": "Personal essays, fiction and poetry",
+      "writingTypeLabel": "Personal essays, fiction, poetry",
+      "writingTypes": [
+        "essays",
+        "fiction",
+        "poetry"
+      ],
+      "vertical": "writing",
+      "officialUrl": "https://thesunmagazine.org/submit",
+      "status": "published",
+      "excerpt": "The Sun pays $200 and up (based on page length) for emotionally honest personal essays, fiction and poetry. Submissions open year-round.",
+      "submissionStatus": "open",
+      "lastVerified": "2026-09-05",
+      "pay": {
+        "amountMin": 200,
+        "amountMax": null,
+        "currency": "USD",
+        "display": "$200+",
+        "conditions": "The official submit page states $200 and up, based on page length, paid upon publication via PayPal or direct deposit.",
+        "timing": "Upon publication"
+      },
+      "wordCount": {
+        "display": "Most pieces under 7,000 words",
+        "min": null,
+        "max": 7000
+      },
+      "eligibility": {
+        "mode": "not-stated",
+        "notStated": true,
+        "summary": "English-language writers from anywhere are welcome. The official page does not state a country restriction.",
+        "includesRegions": [],
+        "allowsDiaspora": null
+      },
+      "response": {
+        "label": "Reasonable response time; not stated precisely",
+        "band": "not-stated",
+        "official": true
+      },
+      "howToSubmit": [
+        "Submit online via Submittable (a small reading fee applies for online submissions).",
+        "The official page does not accept unsolicited submissions by email; mail submissions are free."
+      ],
+      "requirements": [
+        "Online via Submittable",
+        "Emotionally honest personal essay, fiction or poetry",
+        "Most pieces under 7,000 words"
+      ],
+      "whatTheyWant": [
+        "Work that is too personal for any other journal",
+        "Emotionally honest fiction",
+        "Poetry about the small details that reveal the larger picture"
+      ],
+      "whatTheyDontWant": [
+        "Unsolicited submissions by email",
+        "Flash fiction — they do not consider it"
+      ],
+      "rights": "Not stated in detail on the official submit page.",
+      "aiPolicy": "not-stated",
+      "applyMethod": "Submittable",
+      "applyUrl": "https://thesunmagazine.org/submit",
+      "applyEmail": null,
+      "deadline": null,
+      "sources": [
+        {
+          "name": "The Sun — submit (official)",
+          "url": "https://thesunmagazine.org/submit"
+        }
+      ],
+      "keywords": [
+        "the sun",
+        "personal essay",
+        "literary",
+        "high pay"
+      ],
+      "experience": "not-stated",
+      "editorExperience": {
+        "applied": false
+      },
+      "seoTitle": "The Sun Magazine: $200+ for essays, fiction and poetry",
+      "publishedAt": "2026-09-05"
+    },
+    {
+      "id": "black-fox-literary-magazine",
+      "slug": "black-fox-literary-magazine",
+      "publication": "Black Fox Literary Magazine",
+      "title": "Fiction, creative nonfiction, poetry and art",
+      "writingTypeLabel": "Fiction, CNF, poetry, art",
+      "writingTypes": [
+        "fiction",
+        "essays",
+        "poetry"
+      ],
+      "vertical": "writing",
+      "officialUrl": "https://blackfoxlitmag.com/submit/",
+      "status": "published",
+      "excerpt": "Black Fox pays each contributor $20. It also runs a biannual writing prize with a $325 cash award.",
+      "submissionStatus": "open",
+      "lastVerified": "2026-09-05",
+      "pay": {
+        "amountMin": 20,
+        "amountMax": 20,
+        "currency": "USD",
+        "display": "$20 per contributor",
+        "conditions": "The official submit page states $20 per contributor per issue, paid via PayPal. Prize winners receive $325 (tales contest $300).",
+        "timing": "Not stated precisely"
+      },
+      "wordCount": {
+        "display": "Not stated as a hard limit",
+        "min": null,
+        "max": null
+      },
+      "eligibility": {
+        "mode": "not-stated",
+        "notStated": true,
+        "summary": "No stated country restriction on the official submit page.",
+        "includesRegions": [],
+        "allowsDiaspora": null
+      },
+      "response": {
+        "label": "Reading periods; response within period",
+        "band": "not-stated",
+        "official": true
+      },
+      "howToSubmit": [
+        "Submit through the official submit page, following the manuscript guidelines.",
+        "No submission fee."
+      ],
+      "requirements": [
+        "Prepare the manuscript per guidelines",
+        "Late-detailed formatting for fiction, CNF, poetry or art"
+      ],
+      "whatTheyWant": [
+        "Personal essays and other creative nonfiction",
+        "Fiction",
+        "Poetry and art"
+      ],
+      "whatTheyDontWant": [
+        "Not able to supply contributor copies (issues are free online)"
+      ],
+      "rights": "Not stated in detail on the official submit page.",
+      "aiPolicy": "not-stated",
+      "applyMethod": "Online submission",
+      "applyUrl": "https://blackfoxlitmag.com/submit/",
+      "applyEmail": null,
+      "deadline": null,
+      "sources": [
+        {
+          "name": "Black Fox — Submit (official)",
+          "url": "https://blackfoxlitmag.com/submit/"
+        }
+      ],
+      "keywords": [
+        "black fox",
+        "fiction",
+        "creative nonfiction",
+        "poetry"
+      ],
+      "experience": "not-stated",
+      "editorExperience": {
+        "applied": false
+      },
+      "seoTitle": "Black Fox Literary Magazine: $20 per contributor",
+      "publishedAt": "2026-09-05"
+    },
+    {
+      "id": "the-forge-literary-magazine",
+      "slug": "the-forge-literary-magazine",
+      "publication": "The Forge Literary Magazine",
+      "title": "Prose — short stories",
+      "writingTypeLabel": "Fiction",
+      "writingTypes": [
+        "fiction"
+      ],
+      "vertical": "writing",
+      "officialUrl": "https://forgelitmag.com",
+      "status": "published",
+      "excerpt": "The Forge pays $100 for accepted prose, preferring stories under 3,000 words (up to 5,000 considered). Free submissions open each month.",
+      "submissionStatus": "open",
+      "lastVerified": "2026-09-05",
+      "pay": {
+        "amountMin": 100,
+        "amountMax": 100,
+        "currency": "USD",
+        "display": "$100",
+        "conditions": "The official site states $100 regardless of length for each accepted story.",
+        "timing": "Not stated precisely"
+      },
+      "wordCount": {
+        "display": "Prefer under 3,000 words; up to 5,000",
+        "min": null,
+        "max": 5000
+      },
+      "eligibility": {
+        "mode": "not-stated",
+        "notStated": true,
+        "summary": "No stated country restriction. Free submissions open on the 1st of each month and close when the cap is reached.",
+        "includesRegions": [],
+        "allowsDiaspora": null
+      },
+      "response": {
+        "label": "Monthly window; response within the period",
+        "band": "not-stated",
+        "official": true
+      },
+      "howToSubmit": [
+        "Submit during the monthly free-window via the official site.",
+        "Submissions close when the cap is reached, so submit early."
+      ],
+      "requirements": [
+        "A short story",
+        "Preferably under 3,000 words",
+        "Submitted in the open monthly window"
+      ],
+      "whatTheyWant": [
+        "Well-crafted prose",
+        "Short stories of any genre"
+      ],
+      "whatTheyDontWant": [
+        "Submissions outside the monthly window"
+      ],
+      "rights": "Not stated in detail on the public page.",
+      "aiPolicy": "not-stated",
+      "applyMethod": "Online submission",
+      "applyUrl": "https://forgelitmag.com",
+      "applyEmail": null,
+      "deadline": null,
+      "sources": [
+        {
+          "name": "The Forge Literary Magazine (official)",
+          "url": "https://forgelitmag.com"
+        }
+      ],
+      "keywords": [
+        "forge",
+        "short story",
+        "fiction",
+        "flat rate"
+      ],
+      "experience": "not-stated",
+      "editorExperience": {
+        "applied": false
+      },
+      "seoTitle": "The Forge Literary Magazine: $100 per story",
+      "publishedAt": "2026-09-05"
+    },
+    {
+      "id": "split-lip-magazine",
+      "slug": "split-lip-magazine",
+      "publication": "Split Lip Magazine",
+      "title": "Fiction, memoir and poetry with a pop-culture twist",
+      "writingTypeLabel": "Fiction, memoir, poetry, art",
+      "writingTypes": [
+        "fiction",
+        "essays",
+        "poetry"
+      ],
+      "vertical": "writing",
+      "officialUrl": "https://splitlipmag.com",
+      "status": "published",
+      "excerpt": "Split Lip pays $75 for poems, memoirs, flash, fiction and art; $50 for interviews/reviews; $25 for mini-reviews.",
+      "submissionStatus": "open",
+      "lastVerified": "2026-09-05",
+      "pay": {
+        "amountMin": 25,
+        "amountMax": 75,
+        "currency": "USD",
+        "display": "$25–$75",
+        "conditions": "The official site states $75 for poems, memoirs, flash, fiction and art; $50 for interviews/reviews; $25 for mini-reviews.",
+        "timing": "Not stated precisely"
+      },
+      "wordCount": {
+        "display": "Flash and short forms",
+        "min": null,
+        "max": null
+      },
+      "eligibility": {
+        "mode": "not-stated",
+        "notStated": true,
+        "summary": "No stated country restriction.",
+        "includesRegions": [],
+        "allowsDiaspora": null
+      },
+      "response": {
+        "label": "Within the reading period; closes on cap",
+        "band": "not-stated",
+        "official": true
+      },
+      "howToSubmit": [
+        "Submit via the official site during the open reading period.",
+        "Closes when they reach capacity, so submit early."
+      ],
+      "requirements": [
+        "Fiction, memoir, poetry, art, or reviews",
+        "With a pop-culture angle"
+      ],
+      "whatTheyWant": [
+        "Work with a pop-culture twist",
+        "Memoirs, flash and fiction",
+        "Submissions that feel current"
+      ],
+      "whatTheyDontWant": [
+        "Submissions outside the reading period"
+      ],
+      "rights": "Not stated in detail on the public page.",
+      "aiPolicy": "not-stated",
+      "applyMethod": "Online submission",
+      "applyUrl": "https://splitlipmag.com",
+      "applyEmail": null,
+      "deadline": null,
+      "sources": [
+        {
+          "name": "Split Lip Magazine (official)",
+          "url": "https://splitlipmag.com"
+        }
+      ],
+      "keywords": [
+        "split lip",
+        "memoir",
+        "fiction",
+        "pop culture"
+      ],
+      "experience": "not-stated",
+      "editorExperience": {
+        "applied": false
+      },
+      "seoTitle": "Split Lip Magazine: $25–$75",
+      "publishedAt": "2026-09-05"
+    },
+    {
+      "id": "cincinnati-review",
+      "slug": "cincinnati-review",
+      "publication": "The Cincinnati Review",
+      "title": "Fiction, nonfiction, poetry and drama",
+      "writingTypeLabel": "Fiction, nonfiction, poetry, drama",
+      "writingTypes": [
+        "fiction",
+        "essays",
+        "poetry",
+        "drama"
+      ],
+      "vertical": "writing",
+      "officialUrl": "https://www.cincinnatireview.com",
+      "status": "published",
+      "excerpt": "The Cincinnati Review pays $25 per page for prose, $30 per page for poetry, and $25 for miCRo posts. Opens the first of the month and closes on cap.",
+      "submissionStatus": "open",
+      "lastVerified": "2026-09-05",
+      "pay": {
+        "amountMin": 25,
+        "amountMax": 30,
+        "currency": "USD",
+        "display": "$25/page prose, $30/page poetry",
+        "conditions": "The official site states $25 per page for prose and $30 per page for poetry, plus $25 for miCRo posts.",
+        "timing": "Not stated precisely"
+      },
+      "wordCount": {
+        "display": "Prose up to ~20 pages",
+        "min": null,
+        "max": null
+      },
+      "eligibility": {
+        "mode": "not-stated",
+        "notStated": true,
+        "summary": "No stated country restriction.",
+        "includesRegions": [],
+        "allowsDiaspora": null
+      },
+      "response": {
+        "label": "Opens monthly; closes on cap",
+        "band": "not-stated",
+        "official": true
+      },
+      "howToSubmit": [
+        "Submit via the official site when open.",
+        "Opens on the first of the month and closes once the cap is reached."
+      ],
+      "requirements": [
+        "Fiction, nonfiction, poetry, drama, or art",
+        "Submitted during the open window"
+      ],
+      "whatTheyWant": [
+        "Literary nonfiction, fiction and poetry",
+        "Experimental and formal work"
+      ],
+      "whatTheyDontWant": [
+        "Submissions outside the window"
+      ],
+      "rights": "Not stated in detail on the public page.",
+      "aiPolicy": "not-stated",
+      "applyMethod": "Online submission",
+      "applyUrl": "https://www.cincinnatireview.com",
+      "applyEmail": null,
+      "deadline": null,
+      "sources": [
+        {
+          "name": "The Cincinnati Review (official)",
+          "url": "https://www.cincinnatireview.com"
+        }
+      ],
+      "keywords": [
+        "cincinnati",
+        "literary",
+        "fiction",
+        "poetry"
+      ],
+      "experience": "not-stated",
+      "editorExperience": {
+        "applied": false
+      },
+      "seoTitle": "The Cincinnati Review: $25–$30 per page",
+      "publishedAt": "2026-09-05"
+    },
+    {
+      "id": "guernica",
+      "slug": "guernica",
+      "publication": "Guernica",
+      "title": "Fiction, nonfiction and poetry",
+      "writingTypeLabel": "Fiction, nonfiction, poetry, translation",
+      "writingTypes": [
+        "fiction",
+        "essays",
+        "poetry"
+      ],
+      "vertical": "writing",
+      "officialUrl": "https://guernicamag.com",
+      "status": "published",
+      "excerpt": "Guernica offers a $100 honorarium for accepted work, payable upon publication. Accepts fiction, nonfiction, poetry, translation and visual art.",
+      "submissionStatus": "open",
+      "lastVerified": "2026-09-05",
+      "pay": {
+        "amountMin": 100,
+        "amountMax": 100,
+        "currency": "USD",
+        "display": "$100 honorarium",
+        "conditions": "The official submit page states a $100 honorarium, payable upon publication.",
+        "timing": "Upon publication"
+      },
+      "wordCount": {
+        "display": "Fiction 2,000–7,000 words; flash not considered",
+        "min": 2000,
+        "max": 7000
+      },
+      "eligibility": {
+        "mode": "not-stated",
+        "notStated": true,
+        "summary": "No stated country restriction. Works in translation especially welcome.",
+        "includesRegions": [],
+        "allowsDiaspora": null
+      },
+      "response": {
+        "label": "Aims to respond within ~6 months; current window ~8 weeks",
+        "band": "months",
+        "official": true
+      },
+      "howToSubmit": [
+        "All submissions via Submittable.",
+        "Do not submit by email or postal mail."
+      ],
+      "requirements": [
+        "Fiction (2,000–7,000 words), nonfiction, poetry, or translation",
+        "Brief cover letter with name, bio and contact",
+        "Simultaneous submissions accepted if you notify them"
+      ],
+      "whatTheyWant": [
+        "Personal essays and reportage",
+        "Fiction that takes risks",
+        "Poetry and translation"
+      ],
+      "whatTheyDontWant": [
+        "Flash fiction",
+        "Serialized longer works",
+        "Submissions by email or hard copy"
+      ],
+      "rights": "Works in translation require conveying rights to publish.",
+      "aiPolicy": "not-stated",
+      "applyMethod": "Submittable",
+      "applyUrl": "https://guernicamagazine.submittable.com/submit",
+      "applyEmail": null,
+      "deadline": null,
+      "sources": [
+        {
+          "name": "Guernica — submit (official)",
+          "url": "https://guernicamagazine.submittable.com/submit"
+        }
+      ],
+      "keywords": [
+        "guernica",
+        "honorarium",
+        "nonfiction",
+        "translation"
+      ],
+      "experience": "not-stated",
+      "editorExperience": {
+        "applied": false
+      },
+      "seoTitle": "Guernica: $100 honorarium, fiction/nonfiction/poetry",
+      "publishedAt": "2026-09-05"
+    },
+    {
+      "id": "the-stinging-fly",
+      "slug": "the-stinging-fly",
+      "publication": "The Stinging Fly",
+      "title": "Short fiction, nonfiction and poetry",
+      "writingTypeLabel": "Fiction, nonfiction, poetry",
+      "writingTypes": [
+        "fiction",
+        "essays",
+        "poetry"
+      ],
+      "vertical": "writing",
+      "officialUrl": "https://stingingfly.org",
+      "status": "published",
+      "excerpt": "The Stinging Fly pays €45 per magazine page (min €300, max €1,200) for fiction and nonfiction, €150 for flash/shorter essays, and €40 per page for poetry. Open to writers from abroad.",
+      "submissionStatus": "open",
+      "lastVerified": "2026-09-05",
+      "pay": {
+        "amountMin": 300,
+        "amountMax": 1200,
+        "currency": "EUR",
+        "display": "€45/page (min €300, max €1,200)",
+        "conditions": "The official site states €45 per magazine page for fiction/nonfiction with a min of €300 and max of €1,200; €150 for flash; €40/page for poetry.",
+        "timing": "Not stated precisely"
+      },
+      "wordCount": {
+        "display": "Page-based; flashcards 1–2 pages",
+        "min": null,
+        "max": null
+      },
+      "eligibility": {
+        "mode": "not-stated",
+        "notStated": true,
+        "summary": "Open to writers from Ireland and abroad; no stated country restriction.",
+        "includesRegions": [],
+        "allowsDiaspora": null
+      },
+      "response": {
+        "label": "Reading periods",
+        "band": "not-stated",
+        "official": true
+      },
+      "howToSubmit": [
+        "Submit only via the magazine's Submittable account during the reading period.",
+        "No submission fee; one category per period."
+      ],
+      "requirements": [
+        "Short fiction, novel extracts, nonfiction or poetry",
+        "Previously unpublished and not under consideration elsewhere",
+        "No simultaneous submissions"
+      ],
+      "whatTheyWant": [
+        "Short stories especially",
+        "Nonfiction and poetry",
+        "Work from Ireland and abroad"
+      ],
+      "whatTheyDontWant": [
+        "Simultaneous submissions",
+        "Previously published work"
+      ],
+      "rights": "Pays for first serial rights; copyright remains with the author.",
+      "aiPolicy": "not-stated",
+      "applyMethod": "Submittable",
+      "applyUrl": "https://stingingfly.org",
+      "applyEmail": null,
+      "deadline": null,
+      "sources": [
+        {
+          "name": "The Stinging Fly (official)",
+          "url": "https://stingingfly.org"
+        }
+      ],
+      "keywords": [
+        "stinging fly",
+        "fiction",
+        "irish",
+        "professional rate"
+      ],
+      "experience": "not-stated",
+      "editorExperience": {
+        "applied": false
+      },
+      "seoTitle": "The Stinging Fly: €45/page, open to writers from abroad",
+      "publishedAt": "2026-09-05"
+    },
+    {
+      "id": "the-drift",
+      "slug": "the-drift",
+      "publication": "The Drift",
+      "title": "Essays, cultural criticism, fiction and poetry",
+      "writingTypeLabel": "Essays, criticism, fiction, poetry",
+      "writingTypes": [
+        "essays",
+        "fiction",
+        "poetry"
+      ],
+      "vertical": "writing",
+      "officialUrl": "https://thedriftmag.com",
+      "status": "published",
+      "excerpt": "The Drift pays $2,000 for essays, $500–$1,000 for short stories and $150 for poems. Nonfiction requires a pitch first.",
+      "submissionStatus": "open",
+      "lastVerified": "2026-09-05",
+      "pay": {
+        "amountMin": 500,
+        "amountMax": 2000,
+        "currency": "USD",
+        "display": "$2,000 essays; $500–$1,000 stories; $150 poems",
+        "conditions": "The official site states $2,000 for essays, $500–$1,000 for short stories, $150 for poems, and $25 for Mentions.",
+        "timing": "Not stated precisely"
+      },
+      "wordCount": {
+        "display": "No stated hard length limit",
+        "min": null,
+        "max": null
+      },
+      "eligibility": {
+        "mode": "not-stated",
+        "notStated": true,
+        "summary": "No stated country restriction.",
+        "includesRegions": [],
+        "allowsDiaspora": null
+      },
+      "response": {
+        "label": "They read and respond to every pitch; may take time",
+        "band": "not-stated",
+        "official": true
+      },
+      "howToSubmit": [
+        "Pitch essays at pitches@thedriftmag.com with a 2–4 paragraph pitch.",
+        "Mentions/reviews at mentions@thedriftmag.com."
+      ],
+      "requirements": [
+        "Pitch first for nonfiction",
+        "Short fiction and poetry submitted as drafts",
+        "A clear, narrow angle"
+      ],
+      "whatTheyWant": [
+        "Longform essays and cultural criticism",
+        "New work from younger writers",
+        "Interviews, dispatches, and extremely abbreviated reviews"
+      ],
+      "whatTheyDontWant": [
+        "They prefer not to read draft nonfiction — pitch first"
+      ],
+      "rights": "Not stated in detail on the public page.",
+      "aiPolicy": "not-stated",
+      "applyMethod": "Email pitch",
+      "applyUrl": "https://thedriftmag.com",
+      "applyEmail": "pitches@thedriftmag.com",
+      "deadline": null,
+      "sources": [
+        {
+          "name": "The Drift (official)",
+          "url": "https://thedriftmag.com"
+        }
+      ],
+      "keywords": [
+        "the drift",
+        "essay",
+        "culture",
+        "politics"
+      ],
+      "experience": "not-stated",
+      "editorExperience": {
+        "applied": false
+      },
+      "seoTitle": "The Drift: $2,000 essays, $500–$1,000 stories",
+      "publishedAt": "2026-09-05"
+    },
+    {
+      "id": "new-lines-magazine",
+      "slug": "new-lines-magazine",
+      "publication": "New Lines Magazine",
+      "title": "World journalism, essays and audio",
+      "writingTypeLabel": "World journalism, essays",
+      "writingTypes": [
+        "articles",
+        "essays",
+        "reportage"
+      ],
+      "vertical": "writing",
+      "officialUrl": "https://newlinesmag.com",
+      "status": "published",
+      "excerpt": "New Lines pays $800 for most regular essays and $600 for spotlight pieces. It publishes best writing from around the globe, including Africa-focused editorial.",
+      "submissionStatus": "open",
+      "lastVerified": "2026-09-05",
+      "pay": {
+        "amountMin": 600,
+        "amountMax": 800,
+        "currency": "USD",
+        "display": "$600–$800",
+        "conditions": "The official published rates state $800 for most regular essays and $600 for spotlight pieces, according to the magazine's editors.",
+        "timing": "Not stated precisely"
+      },
+      "wordCount": {
+        "display": "Not stated as a hard limit",
+        "min": null,
+        "max": null
+      },
+      "eligibility": {
+        "mode": "not-stated",
+        "notStated": true,
+        "summary": "No stated country restriction — it publishes writers from around the globe, with Africa-focused editorial.",
+        "includesRegions": [],
+        "allowsDiaspora": null
+      },
+      "response": {
+        "label": "Not stated precisely",
+        "band": "not-stated",
+        "official": true
+      },
+      "howToSubmit": [
+        "Pitch via the relevant section editor; the magazine publishes many pitch calls.",
+        "Verify the current editor's address on the official site before pitching."
+      ],
+      "requirements": [
+        "A specific, well-reported story angle",
+        "Pitch to the relevant section editor"
+      ],
+      "whatTheyWant": [
+        "Insightful, provocative, complex stories",
+        "Long-form magazine work on politics, culture and history",
+        "Regional and diaspora reporting"
+      ],
+      "whatTheyDontWant": [
+        "Vague pitches with no specific angle"
+      ],
+      "rights": "Not stated in detail on the public page.",
+      "aiPolicy": "not-stated",
+      "applyMethod": "Editorial pitch",
+      "applyUrl": "https://newlinesmag.com",
+      "applyEmail": null,
+      "deadline": null,
+      "sources": [
+        {
+          "name": "New Lines Magazine (official)",
+          "url": "https://newlinesmag.com"
+        }
+      ],
+      "keywords": [
+        "new lines",
+        "world",
+        "journalism",
+        "essay"
+      ],
+      "experience": "not-stated",
+      "editorExperience": {
+        "applied": false
+      },
+      "seoTitle": "New Lines Magazine: $600–$800 per essay",
+      "publishedAt": "2026-09-05"
+    },
+    {
+      "id": "smashing-magazine",
+      "slug": "smashing-magazine",
+      "publication": "Smashing Magazine",
+      "title": "Web design and development articles",
+      "writingTypeLabel": "Design & dev articles",
+      "writingTypes": [
+        "articles",
+        "technical"
+      ],
+      "vertical": "writing",
+      "officialUrl": "https://www.smashingmagazine.com/write-for-us/",
+      "status": "published",
+      "excerpt": "Smashing Magazine pays roughly $200–$250 for technical articles on web design and development, and it links directly to a submission guideline.",
+      "submissionStatus": "open",
+      "lastVerified": "2026-09-05",
+      "pay": {
+        "amountMin": 200,
+        "amountMax": 250,
+        "currency": "USD",
+        "display": "~$200–$250",
+        "conditions": "The official write-for-us page states a fee for accepted articles (roughly $200, sometimes more for longer, more detailed pieces).",
+        "timing": "Not stated precisely on the official page"
+      },
+      "wordCount": {
+        "display": "~1,500+ words",
+        "min": 1500,
+        "max": null
+      },
+      "eligibility": {
+        "mode": "not-stated",
+        "notStated": true,
+        "summary": "No stated country restriction; strong technical knowledge and writing ability are expected.",
+        "includesRegions": [],
+        "allowsDiaspora": null
+      },
+      "response": {
+        "label": "Not stated precisely",
+        "band": "not-stated",
+        "official": true
+      },
+      "howToSubmit": [
+        "Submit via the official write-for-us form.",
+        "Share a link to your site or an example of your writing."
+      ],
+      "requirements": [],
+      "whatTheyWant": [
+        "A specific, practical web-design or development topic",
+        "Depth and original screenshots or examples"
+      ],
+      "whatTheyDontWant": [
+        "Vague or marketing-only pitches"
+      ],
+      "rights": "Not stated in detail.",
+      "aiPolicy": "not-stated",
+      "applyMethod": "Website form",
+      "applyUrl": "https://www.smashingmagazine.com/write-for-us/",
+      "applyEmail": null,
+      "deadline": null,
+      "sources": [
+        {
+          "name": "Smashing Magazine (official)",
+          "url": "https://www.smashingmagazine.com/write-for-us/"
+        }
+      ],
+      "keywords": [
+        "smashing magazine",
+        "web design",
+        "technical"
+      ],
+      "experience": "not-stated",
+      "editorExperience": {
+        "applied": false
+      },
+      "seoTitle": "Smashing Magazine: ~$200–$250 for technical articles",
+      "publishedAt": "2026-09-05"
+    },
+    {
+      "id": "writers-digest",
+      "slug": "writers-digest",
+      "publication": "Writer's Digest",
+      "title": "Writing-craft articles",
+      "writingTypeLabel": "Writing craft",
+      "writingTypes": [
+        "articles",
+        "essays"
+      ],
+      "vertical": "writing",
+      "officialUrl": "https://www.writersdigest.com/write-better/",
+      "status": "published",
+      "excerpt": "Writer's Digest pays roughly $0.30–$0.50 per word for writing-craft articles in the print magazine.",
+      "submissionStatus": "open",
+      "lastVerified": "2026-09-05",
+      "pay": {
+        "amountMin": 0.3,
+        "amountMax": 0.5,
+        "currency": "USD",
+        "display": "~$0.30–$0.50/word",
+        "conditions": "Writer's Digest publishes craft articles and pays a per-word rate for accepted work.",
+        "timing": "Not stated precisely on the official page"
+      },
+      "wordCount": {
+        "display": "Variable",
+        "min": null,
+        "max": null
+      },
+      "eligibility": {
+        "mode": "not-stated",
+        "notStated": true,
+        "summary": "No stated country restriction; strong craft knowledge expected.",
+        "includesRegions": [],
+        "allowsDiaspora": null
+      },
+      "response": {
+        "label": "Not stated precisely",
+        "band": "not-stated",
+        "official": true
+      },
+      "howToSubmit": [
+        "Pitch or submit per the magazine's writer guidelines."
+      ],
+      "requirements": [],
+      "whatTheyWant": [
+        "A practical writing-craft topic",
+        "A clear, useful voice"
+      ],
+      "whatTheyDontWant": [
+        "Non-craft topics"
+      ],
+      "rights": "Not stated in detail.",
+      "aiPolicy": "not-stated",
+      "applyMethod": "Editorial pitch",
+      "applyUrl": "https://www.writersdigest.com/write-better/",
+      "applyEmail": null,
+      "deadline": null,
+      "sources": [
+        {
+          "name": "Writer's Digest (official)",
+          "url": "https://www.writersdigest.com/write-better/"
+        }
+      ],
+      "keywords": [
+        "writers digest",
+        "craft",
+        "print"
+      ],
+      "experience": "not-stated",
+      "editorExperience": {
+        "applied": false
+      },
+      "seoTitle": "Writer's Digest: ~$0.30–$0.50/word",
+      "publishedAt": "2026-09-05"
+    },
+    {
+      "id": "eater",
+      "slug": "eater",
+      "publication": "Eater",
+      "title": "Food culture essays and reported stories",
+      "writingTypeLabel": "Food culture",
+      "writingTypes": [
+        "essays",
+        "reportage"
+      ],
+      "vertical": "writing",
+      "officialUrl": "https://www.eater.com/contact",
+      "status": "published",
+      "excerpt": "Eater commissions strong essays and reported food-culture stories with narrative angles and pays contributors per assignment.",
+      "submissionStatus": "open",
+      "lastVerified": "2026-09-05",
+      "pay": {
+        "amountMin": null,
+        "amountMax": null,
+        "currency": "USD",
+        "display": "Pays per assigned piece",
+        "conditions": "Eater pays for commissioned essays and reported features; the rate varies by assignment.",
+        "timing": "Not stated precisely on the official page"
+      },
+      "wordCount": {
+        "display": "Variable",
+        "min": null,
+        "max": null
+      },
+      "eligibility": {
+        "mode": "not-stated",
+        "notStated": true,
+        "summary": "No stated country restriction.",
+        "includesRegions": [],
+        "allowsDiaspora": null
+      },
+      "response": {
+        "label": "Not stated precisely",
+        "band": "not-stated",
+        "official": true
+      },
+      "howToSubmit": [
+        "Pitch a specific food-culture story to the relevant editor."
+      ],
+      "requirements": [],
+      "whatTheyWant": [
+        "A strong narrative angle",
+        "Reported, voice-y writing"
+      ],
+      "whatTheyDontWant": [
+        "Generic roundups with no angle"
+      ],
+      "rights": "Not stated in detail.",
+      "aiPolicy": "not-stated",
+      "applyMethod": "Editorial pitch",
+      "applyUrl": "https://www.eater.com/contact",
+      "applyEmail": null,
+      "deadline": null,
+      "sources": [
+        {
+          "name": "Eater (official)",
+          "url": "https://www.eater.com/contact"
+        }
+      ],
+      "keywords": [
+        "eater",
+        "food",
+        "essay"
+      ],
+      "experience": "not-stated",
+      "editorExperience": {
+        "applied": false
+      },
+      "seoTitle": "Eater: pays for food-culture essays and features",
+      "publishedAt": "2026-09-05"
+    },
+    {
+      "id": "the-kitchn",
+      "slug": "the-kitchn",
+      "publication": "The Kitchn",
+      "title": "Food and home essays",
+      "writingTypeLabel": "Food & home",
+      "writingTypes": [
+        "essays",
+        "articles"
+      ],
+      "vertical": "writing",
+      "officialUrl": "https://www.thekitchn.com/about/",
+      "status": "published",
+      "excerpt": "The Kitchn pays around $150 per assignment for food-budget diaries and other food/home essays.",
+      "submissionStatus": "open",
+      "lastVerified": "2026-09-05",
+      "pay": {
+        "amountMin": 150,
+        "amountMax": 150,
+        "currency": "USD",
+        "display": "~$150 per assignment",
+        "conditions": "The official site lists a $150 rate for assigned food-budget diary pieces.",
+        "timing": "Not stated precisely on the official page"
+      },
+      "wordCount": {
+        "display": "~600–1,000 words",
+        "min": 600,
+        "max": 1000
+      },
+      "eligibility": {
+        "mode": "not-stated",
+        "notStated": true,
+        "summary": "No stated country restriction.",
+        "includesRegions": [],
+        "allowsDiaspora": null
+      },
+      "response": {
+        "label": "Not stated precisely",
+        "band": "not-stated",
+        "official": true
+      },
+      "howToSubmit": [
+        "Pitch a specific food or home idea to the editorial team."
+      ],
+      "requirements": [],
+      "whatTheyWant": [
+        "Food-budget diaries",
+        "Narrative, useful home and food content"
+      ],
+      "whatTheyDontWant": [
+        "Items with no clear reader value"
+      ],
+      "rights": "Not stated in detail.",
+      "aiPolicy": "not-stated",
+      "applyMethod": "Editorial pitch",
+      "applyUrl": "https://www.thekitchn.com/about/",
+      "applyEmail": null,
+      "deadline": null,
+      "sources": [
+        {
+          "name": "The Kitchn (official)",
+          "url": "https://www.thekitchn.com/about/"
+        }
+      ],
+      "keywords": [
+        "kitchn",
+        "food",
+        "home"
+      ],
+      "experience": "not-stated",
+      "editorExperience": {
+        "applied": false
+      },
+      "seoTitle": "The Kitchn: ~$150 per assignment",
+      "publishedAt": "2026-09-05"
+    },
+    {
+      "id": "aarp-magazine",
+      "slug": "aarp-magazine",
+      "publication": "AARP",
+      "title": "Features, essays and reviews",
+      "writingTypeLabel": "Features & essays",
+      "writingTypes": [
+        "articles",
+        "essays"
+      ],
+      "vertical": "writing",
+      "officialUrl": "https://www.aarp.org/about-aarp/information-about-aarp/contact-aarp/",
+      "status": "published",
+      "excerpt": "AARP pays up to $1 per word for magazine features, essays and service content.",
+      "submissionStatus": "open",
+      "lastVerified": "2026-09-05",
+      "pay": {
+        "amountMin": null,
+        "amountMax": 1.0,
+        "currency": "USD",
+        "display": "Up to ~$1/word",
+        "conditions": "AARP pays up to $1 per word for accepted magazine pieces, depending on the article.",
+        "timing": "Not stated precisely on the official page"
+      },
+      "wordCount": {
+        "display": "800–1,400 words",
+        "min": 800,
+        "max": 1400
+      },
+      "eligibility": {
+        "mode": "not-stated",
+        "notStated": true,
+        "summary": "No stated country restriction; content is aimed at a 50+ US audience.",
+        "includesRegions": [],
+        "allowsDiaspora": null
+      },
+      "response": {
+        "label": "Not stated precisely",
+        "band": "not-stated",
+        "official": true
+      },
+      "howToSubmit": [
+        "Pitch a story idea to the relevant editor (interview/feature etc.)."
+      ],
+      "requirements": [],
+      "whatTheyWant": [
+        "Service, wellness and narrative features",
+        "A clear angle for the 50+ reader"
+      ],
+      "whatTheyDontWant": [
+        "Vague pitches"
+      ],
+      "rights": "Not stated in detail.",
+      "aiPolicy": "not-stated",
+      "applyMethod": "Editorial pitch",
+      "applyUrl": "https://www.aarp.org/about-aarp/information-about-aarp/contact-aarp/",
+      "applyEmail": null,
+      "deadline": null,
+      "sources": [
+        {
+          "name": "AARP (official)",
+          "url": "https://www.aarp.org/about-aarp/information-about-aarp/contact-aarp/"
+        }
+      ],
+      "keywords": [
+        "aarp",
+        "feature",
+        "wellness",
+        "service"
+      ],
+      "experience": "not-stated",
+      "editorExperience": {
+        "applied": false
+      },
+      "seoTitle": "AARP: up to ~$1/word",
+      "publishedAt": "2026-09-05"
+    },
+    {
+      "id": "wired",
+      "slug": "wired",
+      "publication": "WIRED",
+      "title": "Deeply reported features",
+      "writingTypeLabel": "Features & tech",
+      "writingTypes": [
+        "articles",
+        "reportage"
+      ],
+      "vertical": "writing",
+      "officialUrl": "https://www.wired.com/about/",
+      "status": "published",
+      "excerpt": "WIRED pays $2,500+ for deeply reported features, pitched before writing.",
+      "submissionStatus": "open",
+      "lastVerified": "2026-09-05",
+      "pay": {
+        "amountMin": 2500,
+        "amountMax": null,
+        "currency": "USD",
+        "display": "$2,500+ per feature",
+        "conditions": "WIRED pays a high per-feature rate for accepted reported pieces, often $2,500 and above.",
+        "timing": "Not stated precisely on the official page"
+      },
+      "wordCount": {
+        "display": "~5,000 words",
+        "min": null,
+        "max": 5000
+      },
+      "eligibility": {
+        "mode": "not-stated",
+        "notStated": true,
+        "summary": "No stated country restriction; strong reporting required.",
+        "includesRegions": [],
+        "allowsDiaspora": null
+      },
+      "response": {
+        "label": "Not stated precisely",
+        "band": "not-stated",
+        "official": true
+      },
+      "howToSubmit": [
+        "Pitch a reported feature on the official site."
+      ],
+      "requirements": [],
+      "whatTheyWant": [
+        "Deeply reported, original reporting",
+        "Tech, science, culture and business with a clear hook"
+      ],
+      "whatTheyDontWant": [
+        "Unreported opinion or rewritten news"
+      ],
+      "rights": "Not stated in detail.",
+      "aiPolicy": "not-stated",
+      "applyMethod": "Editorial pitch",
+      "applyUrl": "https://www.wired.com/about/",
+      "applyEmail": null,
+      "deadline": null,
+      "sources": [
+        {
+          "name": "WIRED (official)",
+          "url": "https://www.wired.com/about/"
+        }
+      ],
+      "keywords": [
+        "wired",
+        "feature",
+        "reporting",
+        "tech"
+      ],
+      "experience": "not-stated",
+      "editorExperience": {
+        "applied": false
+      },
+      "seoTitle": "WIRED: $2,500+ per reported feature",
+      "publishedAt": "2026-09-05"
+    },
+    {
+      "id": "business-insider",
+      "slug": "business-insider",
+      "publication": "Business Insider",
+      "title": "Career and money essays",
+      "writingTypeLabel": "Career & money",
+      "writingTypes": [
+        "essays",
+        "articles"
+      ],
+      "vertical": "writing",
+      "officialUrl": "https://www.businessinsider.com/",
+      "status": "published",
+      "excerpt": "Business Insider's strategy-style sections pay roughly $0.40 per word for career and money essays.",
+      "submissionStatus": "open",
+      "lastVerified": "2026-09-05",
+      "pay": {
+        "amountMin": 0.4,
+        "amountMax": 0.4,
+        "currency": "USD",
+        "display": "~$0.40/word",
+        "conditions": "Business Insider pays approximately $0.40 per word for accepted career and money essays.",
+        "timing": "Not stated precisely on the official page"
+      },
+      "wordCount": {
+        "display": "Variable",
+        "min": null,
+        "max": null
+      },
+      "eligibility": {
+        "mode": "not-stated",
+        "notStated": true,
+        "summary": "No stated country restriction.",
+        "includesRegions": [],
+        "allowsDiaspora": null
+      },
+      "response": {
+        "label": "Not stated precisely",
+        "band": "not-stated",
+        "official": true
+      },
+      "howToSubmit": [
+        "Pitch a specific career or money essay to the relevant editor."
+      ],
+      "requirements": [],
+      "whatTheyWant": [
+        "Career, money and personal-finance essays with a specific angle"
+      ],
+      "whatTheyDontWant": [
+        "Generic self-help"
+      ],
+      "rights": "Not stated in detail.",
+      "aiPolicy": "not-stated",
+      "applyMethod": "Editorial pitch",
+      "applyUrl": "https://www.businessinsider.com/",
+      "applyEmail": null,
+      "deadline": null,
+      "sources": [
+        {
+          "name": "Business Insider (official)",
+          "url": "https://www.businessinsider.com/"
+        }
+      ],
+      "keywords": [
+        "business insider",
+        "career",
+        "money",
+        "essay"
+      ],
+      "experience": "not-stated",
+      "editorExperience": {
+        "applied": false
+      },
+      "seoTitle": "Business Insider: ~$0.40/word",
+      "publishedAt": "2026-09-05"
+    },
+    {
+      "id": "slate",
+      "slug": "slate",
+      "publication": "Slate",
+      "title": "News analysis, essays and criticism",
+      "writingTypeLabel": "Essays & analysis",
+      "writingTypes": [
+        "essays",
+        "articles"
+      ],
+      "vertical": "writing",
+      "officialUrl": "https://slate.com/",
+      "status": "published",
+      "excerpt": "Slate pays for essays, news analysis and criticism; rates vary by assignment and section.",
+      "submissionStatus": "open",
+      "lastVerified": "2026-09-05",
+      "pay": {
+        "amountMin": null,
+        "amountMax": null,
+        "currency": "USD",
+        "display": "Pays per assignment",
+        "conditions": "Slate pays for accepted essays and reported pieces; the rate varies.",
+        "timing": "Not stated precisely on the official page"
+      },
+      "wordCount": {
+        "display": "Variable",
+        "min": null,
+        "max": null
+      },
+      "eligibility": {
+        "mode": "not-stated",
+        "notStated": true,
+        "summary": "No stated country restriction.",
+        "includesRegions": [],
+        "allowsDiaspora": null
+      },
+      "response": {
+        "label": "Not stated precisely",
+        "band": "not-stated",
+        "official": true
+      },
+      "howToSubmit": [
+        "Pitch to the relevant section editor."
+      ],
+      "requirements": [],
+      "whatTheyWant": [
+        "A sharp, timely angle",
+        "Strong, voice-y analysis"
+      ],
+      "whatTheyDontWant": [
+        "Unoriginal syndication"
+      ],
+      "rights": "Not stated in detail.",
+      "aiPolicy": "not-stated",
+      "applyMethod": "Editorial pitch",
+      "applyUrl": "https://slate.com/",
+      "applyEmail": null,
+      "deadline": null,
+      "sources": [
+        {
+          "name": "Slate (official)",
+          "url": "https://slate.com/"
+        }
+      ],
+      "keywords": [
+        "slate",
+        "essay",
+        "analysis"
+      ],
+      "experience": "not-stated",
+      "editorExperience": {
+        "applied": false
+      },
+      "seoTitle": "Slate: pays for essays and analysis",
+      "publishedAt": "2026-09-05"
+    },
+    {
+      "id": "rest-of-world-2",
+      "slug": "rest-of-world-2",
+      "publication": "Rest of World",
+      "title": "Tech reporting beyond the West",
+      "writingTypeLabel": "Tech & world",
+      "writingTypes": [
+        "articles",
+        "reportage"
+      ],
+      "vertical": "writing",
+      "officialUrl": "https://restofworld.org/",
+      "status": "published",
+      "excerpt": "Rest of World pays $1 per word for tech reporting from non-Western countries, and it welcomes pitches from regional writers.",
+      "submissionStatus": "open",
+      "lastVerified": "2026-09-05",
+      "pay": {
+        "amountMin": 1.0,
+        "amountMax": 1.0,
+        "currency": "USD",
+        "display": "$1/word",
+        "conditions": "Rest of World states a $1 per word rate for accepted reported pieces.",
+        "timing": "Not stated precisely on the official page"
+      },
+      "wordCount": {
+        "display": "Variable",
+        "min": null,
+        "max": null
+      },
+      "eligibility": {
+        "mode": "not-stated",
+        "notStated": true,
+        "summary": "Open to writers in non-Western countries; pitches from regional writers welcome.",
+        "includesRegions": [],
+        "allowsDiaspora": null
+      },
+      "response": {
+        "label": "Not stated precisely",
+        "band": "not-stated",
+        "official": true
+      },
+      "howToSubmit": [
+        "Pitch a specific tech story from your region."
+      ],
+      "requirements": [],
+      "whatTheyWant": [
+        "Tech reporting in non-Western contexts",
+        "Specific, well-reported angles"
+      ],
+      "whatTheyDontWant": [
+        "Western-only stories"
+      ],
+      "rights": "Not stated in detail.",
+      "aiPolicy": "not-stated",
+      "applyMethod": "Editorial pitch",
+      "applyUrl": "https://restofworld.org/",
+      "applyEmail": null,
+      "deadline": null,
+      "sources": [
+        {
+          "name": "Rest of World (official)",
+          "url": "https://restofworld.org/"
+        }
+      ],
+      "keywords": [
+        "rest of world",
+        "tech",
+        "world"
+      ],
+      "experience": "not-stated",
+      "editorExperience": {
+        "applied": false
+      },
+      "seoTitle": "Rest of World: $1/word",
+      "publishedAt": "2026-09-05"
+    },
+    {
+      "id": "kenyon-review",
+      "slug": "kenyon-review",
+      "publication": "The Kenyon Review",
+      "title": "Fiction, nonfiction and poetry",
+      "writingTypeLabel": "Fiction, nonfiction, poetry",
+      "writingTypes": [
+        "fiction",
+        "essays",
+        "poetry"
+      ],
+      "officialUrl": "https://kenyonreview.org/submit/",
+      "status": "upcoming",
+      "excerpt": "The Kenyon Review pays $0.08 per published word of prose (min $80, max $450) and $0.16 per published word of poetry (min $40, max $200).",
+      "pay": {
+        "amountMin": 0.08,
+        "amountMax": 0.16,
+        "currency": "USD",
+        "display": "$0.08/word prose, $0.16/word poetry",
+        "conditions": "The official submissions page states $0.08 per published word of prose (min $80, max $450) and $0.16 per word of poetry (min $40, max $200).",
+        "timing": "Payment upon publication"
+      },
+      "wordCount": {
+        "display": "Variable",
+        "min": null,
+        "max": null
+      },
+      "eligibility": {
+        "mode": "not-stated",
+        "notStated": true,
+        "summary": "No stated country restriction. No reading fee for general submissions.",
+        "includesRegions": [],
+        "allowsDiaspora": null
+      },
+      "response": {
+        "label": "Aims to respond within six months",
+        "band": "months",
+        "official": true
+      },
+      "howToSubmit": [
+        "Submit via the official portal when the window is open.",
+        "General submissions portal opens September 1–30 for the season."
+      ],
+      "requirements": [
+        "Fiction, nonfiction or poetry",
+        "Previously unpublished"
+      ],
+      "whatTheyWant": [
+        "Literary fiction, nonfiction and poetry",
+        "Work of the highest literary quality"
+      ],
+      "whatTheyDontWant": [
+        "Previously published work"
+      ],
+      "rights": "Authors retain copyright.",
+      "aiPolicy": "not-stated",
+      "applyMethod": "Online portal",
+      "applyUrl": "https://kenyonreview.org/submit/",
+      "applyEmail": null,
+      "deadline": null,
+      "sources": [
+        {
+          "name": "The Kenyon Review — submissions (official)",
+          "url": "https://kenyonreview.org/submit/"
+        }
+      ],
+      "keywords": [
+        "kenyon review",
+        "literary",
+        "poetry",
+        "fiction"
+      ],
+      "experience": "not-stated",
+      "editorExperience": {
+        "applied": false
+      },
+      "seoTitle": "The Kenyon Review: $0.08/word prose, $0.16/word poetry",
+      "publishedAt": "2026-09-05",
+      "vertical": "writing",
+      "lastVerified": "2026-09-05",
+      "submissionStatus": "upcoming"
+    },
+    {
+      "id": "agni",
+      "slug": "agni",
+      "publication": "AGNI",
+      "title": "Poetry and prose",
+      "writingTypeLabel": "Poetry and prose",
+      "writingTypes": [
+        "fiction",
+        "essays",
+        "poetry"
+      ],
+      "officialUrl": "https://agnimag.submittable.com/submit/",
+      "status": "open",
+      "excerpt": "AGNI pays $10 per printed page for accepted prose and $20 per page for poetry, up to $150.",
+      "pay": {
+        "amountMin": 10,
+        "amountMax": 20,
+        "currency": "USD",
+        "display": "$10/page prose, $20/page poetry (max $150)",
+        "conditions": "The official site states $10 per printed page for prose and $20 per page for poetry, up to a maximum of $150.",
+        "timing": "Not stated precisely"
+      },
+      "wordCount": {
+        "display": "Variable",
+        "min": null,
+        "max": null
+      },
+      "eligibility": {
+        "mode": "not-stated",
+        "notStated": true,
+        "summary": "No stated country restriction. Online submissions carry a fee; free by mail.",
+        "includesRegions": [],
+        "allowsDiaspora": null
+      },
+      "response": {
+        "label": "Academic-year reading cycle; response varies",
+        "band": "not-stated",
+        "official": true
+      },
+      "howToSubmit": [
+        "Submit online via Submittable (a small fee applies) or free by mail through the academic year.",
+        "Reading period runs September–May."
+      ],
+      "requirements": [
+        "Poetry or prose",
+        "Previously unpublished"
+      ],
+      "whatTheyWant": [
+        "Poetry and prose of high craft",
+        "Experimental and formally adventurous work"
+      ],
+      "whatTheyDontWant": [
+        "Previously published work"
+      ],
+      "rights": "Not stated in detail.",
+      "aiPolicy": "not-stated",
+      "applyMethod": "Submittable (fee), or by mail",
+      "applyUrl": "https://agnimag.submittable.com/submit/",
+      "applyEmail": null,
+      "deadline": null,
+      "sources": [
+        {
+          "name": "AGNI — submit (official)",
+          "url": "https://agnimag.submittable.com/submit/"
+        }
+      ],
+      "keywords": [
+        "agni",
+        "literary",
+        "poetry",
+        "prose"
+      ],
+      "experience": "not-stated",
+      "editorExperience": {
+        "applied": false
+      },
+      "seoTitle": "AGNI: $10/page prose, $20/page poetry",
+      "publishedAt": "2026-09-05",
+      "vertical": "writing",
+      "lastVerified": "2026-09-05",
+      "submissionStatus": "open"
+    },
+    {
+      "id": "litmag-online",
+      "slug": "litmag-online",
+      "publication": "LitMag Online",
+      "title": "Short fiction",
+      "writingTypeLabel": "Short fiction",
+      "writingTypes": [
+        "fiction"
+      ],
+      "officialUrl": "https://litmag.online/",
+      "status": "open",
+      "excerpt": "LitMag Online pays $100 upon acceptance for short fiction.",
+      "pay": {
+        "amountMin": 100,
+        "amountMax": 100,
+        "currency": "USD",
+        "display": "$100 on acceptance",
+        "conditions": "The official site states a $100 payment upon acceptance.",
+        "timing": "Upon acceptance"
+      },
+      "wordCount": {
+        "display": "Variable",
+        "min": null,
+        "max": null
+      },
+      "eligibility": {
+        "mode": "not-stated",
+        "notStated": true,
+        "summary": "No stated country restriction.",
+        "includesRegions": [],
+        "allowsDiaspora": null
+      },
+      "response": {
+        "label": "Not stated precisely",
+        "band": "not-stated",
+        "official": true
+      },
+      "howToSubmit": [
+        "Submit via the official site."
+      ],
+      "requirements": [
+        "A short story",
+        "Previously unpublished"
+      ],
+      "whatTheyWant": [
+        "Short fiction"
+      ],
+      "whatTheyDontWant": [
+        "Previously published work"
+      ],
+      "rights": "Not stated in detail.",
+      "aiPolicy": "not-stated",
+      "applyMethod": "Online submission",
+      "applyUrl": "https://litmag.online/",
+      "applyEmail": null,
+      "deadline": null,
+      "sources": [
+        {
+          "name": "LitMag Online (official)",
+          "url": "https://litmag.online/"
+        }
+      ],
+      "keywords": [
+        "litmag",
+        "short fiction",
+        "$100"
+      ],
+      "experience": "not-stated",
+      "editorExperience": {
+        "applied": false
+      },
+      "seoTitle": "LitMag Online: $100 on acceptance",
+      "publishedAt": "2026-09-05",
+      "vertical": "writing",
+      "lastVerified": "2026-09-05",
+      "submissionStatus": "open"
+    },
+    {
+      "id": "bombay-literary-magazine",
+      "slug": "bombay-literary-magazine",
+      "publication": "The Bombay Literary Magazine",
+      "title": "Fiction, poetry, translation and graphic fiction",
+      "writingTypeLabel": "Fiction, poetry, translation",
+      "writingTypes": [
+        "fiction",
+        "poetry",
+        "translation"
+      ],
+      "officialUrl": "https://bombayliterarymagazine.com/",
+      "status": "open",
+      "excerpt": "The Bombay Literary Magazine pays around ₹5,000 (≈$61) per contribution and is open to global voices.",
+      "pay": {
+        "amountMin": 61,
+        "amountMax": 61,
+        "currency": "INR",
+        "display": "≈₹5,000 ($61)",
+        "conditions": "The official site states ₹5,000 (approx. $61) per contribution.",
+        "timing": "Not stated precisely"
+      },
+      "wordCount": {
+        "display": "Variable",
+        "min": null,
+        "max": null
+      },
+      "eligibility": {
+        "mode": "not-stated",
+        "notStated": true,
+        "summary": "Internationally recognised; open to global voices.",
+        "includesRegions": [],
+        "allowsDiaspora": null
+      },
+      "response": {
+        "label": "Opens monthly; closes on cap",
+        "band": "not-stated",
+        "official": true
+      },
+      "howToSubmit": [
+        "Submit during the monthly open window before the cap is reached."
+      ],
+      "requirements": [
+        "Fiction, poetry, translation or graphic fiction"
+      ],
+      "whatTheyWant": [
+        "Fiction, poetry, translation and graphic fiction",
+        "Global and distinctive voices"
+      ],
+      "whatTheyDontWant": [
+        "Submissions outside the window"
+      ],
+      "rights": "Not stated in detail.",
+      "aiPolicy": "not-stated",
+      "applyMethod": "Online submission",
+      "applyUrl": "https://bombayliterarymagazine.com/",
+      "applyEmail": null,
+      "deadline": null,
+      "sources": [
+        {
+          "name": "The Bombay Literary Magazine (official)",
+          "url": "https://bombayliterarymagazine.com/"
+        }
+      ],
+      "keywords": [
+        "bombay",
+        "fiction",
+        "translation"
+      ],
+      "experience": "not-stated",
+      "editorExperience": {
+        "applied": false
+      },
+      "seoTitle": "The Bombay Literary Magazine: ≈₹5,000 per contribution",
+      "publishedAt": "2026-09-05",
+      "vertical": "writing",
+      "lastVerified": "2026-09-05",
+      "submissionStatus": "open"
+    },
+    {
+      "id": "hobart",
+      "slug": "hobart",
+      "publication": "Hobart",
+      "title": "Short prose",
+      "writingTypeLabel": "Short prose",
+      "writingTypes": [
+        "fiction",
+        "essays"
+      ],
+      "officialUrl": "https://www.hobartpulp.com/",
+      "status": "open",
+      "excerpt": "Hobart publishes short prose, essays and fiction and pays contributors per accepted piece.",
+      "pay": {
+        "amountMin": null,
+        "amountMax": null,
+        "currency": "USD",
+        "display": "Pays per accepted piece",
+        "conditions": "Hobart pays for accepted short prose and essays; the rate varies by piece.",
+        "timing": "Not stated precisely"
+      },
+      "wordCount": {
+        "display": "Short prose",
+        "min": null,
+        "max": null
+      },
+      "eligibility": {
+        "mode": "not-stated",
+        "notStated": true,
+        "summary": "No stated country restriction.",
+        "includesRegions": [],
+        "allowsDiaspora": null
+      },
+      "response": {
+        "label": "Not stated precisely",
+        "band": "not-stated",
+        "official": true
+      },
+      "howToSubmit": [
+        "Submit via the official site."
+      ],
+      "requirements": [
+        "Short prose or essay"
+      ],
+      "whatTheyWant": [
+        "Short, punchy prose and essays"
+      ],
+      "whatTheyDontWant": [
+        "Long unwieldy submissions"
+      ],
+      "rights": "Not stated in detail.",
+      "aiPolicy": "not-stated",
+      "applyMethod": "Online submission",
+      "applyUrl": "https://www.hobartpulp.com/",
+      "applyEmail": null,
+      "deadline": null,
+      "sources": [
+        {
+          "name": "Hobart (official)",
+          "url": "https://www.hobartpulp.com/"
+        }
+      ],
+      "keywords": [
+        "hobart",
+        "short prose",
+        "essay"
+      ],
+      "experience": "not-stated",
+      "editorExperience": {
+        "applied": false
+      },
+      "seoTitle": "Hobart: pays for short prose",
+      "publishedAt": "2026-09-05",
+      "vertical": "writing",
+      "lastVerified": "2026-09-05",
+      "submissionStatus": "open"
+    },
+    {
+      "id": "solarpunk-magazine",
+      "slug": "solarpunk-magazine",
+      "publication": "Solarpunk Magazine",
+      "title": "Speculative fiction, poetry and essays",
+      "writingTypeLabel": "Speculative fiction, poetry, essays",
+      "writingTypes": [
+        "fiction",
+        "poetry",
+        "essays"
+      ],
+      "officialUrl": "https://solarpunkmagazine.com/",
+      "status": "upcoming",
+      "excerpt": "Solarpunk Magazine pays $0.08/word for fiction, $40 per poem and $75 per essay.",
+      "pay": {
+        "amountMin": 40,
+        "amountMax": 75,
+        "currency": "USD",
+        "display": "$0.08/word fiction, $40 poem, $75 essay",
+        "conditions": "The official site states $0.08/word for fiction, $40 per poem, and $75 per essay.",
+        "timing": "Not stated precisely"
+      },
+      "wordCount": {
+        "display": "Variable",
+        "min": null,
+        "max": null
+      },
+      "eligibility": {
+        "mode": "not-stated",
+        "notStated": true,
+        "summary": "No stated country restriction.",
+        "includesRegions": [],
+        "allowsDiaspora": null
+      },
+      "response": {
+        "label": "Window-based",
+        "band": "not-stated",
+        "official": true
+      },
+      "howToSubmit": [
+        "Submit during the themed window."
+      ],
+      "requirements": [
+        "Solarpunk fiction, poetry or essay"
+      ],
+      "whatTheyWant": [
+        "Solarpunk fiction, poetry and essays"
+      ],
+      "whatTheyDontWant": [
+        "Non-theme work"
+      ],
+      "rights": "Not stated in detail.",
+      "aiPolicy": "not-stated",
+      "applyMethod": "Online submission",
+      "applyUrl": "https://solarpunkmagazine.com/",
+      "applyEmail": null,
+      "deadline": null,
+      "sources": [
+        {
+          "name": "Solarpunk Magazine (official)",
+          "url": "https://solarpunkmagazine.com/"
+        }
+      ],
+      "keywords": [
+        "solarpunk",
+        "speculative",
+        "fiction"
+      ],
+      "experience": "not-stated",
+      "editorExperience": {
+        "applied": false
+      },
+      "seoTitle": "Solarpunk Magazine: $0.08/word, $40 poem, $75 essay",
+      "publishedAt": "2026-09-05",
+      "vertical": "writing",
+      "lastVerified": "2026-09-05",
+      "submissionStatus": "upcoming"
+    },
+    {
+      "id": "diabolical-plots",
+      "slug": "diabolical-plots",
+      "publication": "Diabolical Plots",
+      "title": "Science fiction, fantasy and horror",
+      "writingTypeLabel": "Sci-fi, fantasy, horror",
+      "writingTypes": [
+        "fiction"
+      ],
+      "officialUrl": "https://www.diabolicalplots.com/",
+      "status": "open",
+      "excerpt": "Diabolical Plots pays $0.10 per word for science fiction, fantasy and horror up to 3,500 words.",
+      "pay": {
+        "amountMin": 0.1,
+        "amountMax": 0.1,
+        "currency": "USD",
+        "display": "$0.10/word",
+        "conditions": "The official site states 10 cents per word for original fiction up to 3,500 words.",
+        "timing": "Not stated precisely"
+      },
+      "wordCount": {
+        "display": "Up to 3,500 words",
+        "min": null,
+        "max": 3500
+      },
+      "eligibility": {
+        "mode": "not-stated",
+        "notStated": true,
+        "summary": "No stated country restriction.",
+        "includesRegions": [],
+        "allowsDiaspora": null
+      },
+      "response": {
+        "label": "Window-based",
+        "band": "not-stated",
+        "official": true
+      },
+      "howToSubmit": [
+        "Submit during the open window."
+      ],
+      "requirements": [
+        "Speculative fiction up to 3,500 words"
+      ],
+      "whatTheyWant": [
+        "Science fiction, fantasy and horror up to 3,500 words"
+      ],
+      "whatTheyDontWant": [
+        "Non-speculative work"
+      ],
+      "rights": "Not stated in detail.",
+      "aiPolicy": "not-stated",
+      "applyMethod": "Online submission",
+      "applyUrl": "https://www.diabolicalplots.com/",
+      "applyEmail": null,
+      "deadline": null,
+      "sources": [
+        {
+          "name": "Diabolical Plots (official)",
+          "url": "https://www.diabolicalplots.com/"
+        }
+      ],
+      "keywords": [
+        "diabolical plots",
+        "speculative",
+        "fiction"
+      ],
+      "experience": "not-stated",
+      "editorExperience": {
+        "applied": false
+      },
+      "seoTitle": "Diabolical Plots: $0.10/word",
+      "publishedAt": "2026-09-05",
+      "vertical": "writing",
+      "lastVerified": "2026-09-05",
+      "submissionStatus": "open"
+    },
+    {
+      "id": "haven-speculative",
+      "slug": "haven-speculative",
+      "publication": "Haven Speculative",
+      "title": "Speculative fiction and poetry",
+      "writingTypeLabel": "Speculative fiction, poetry",
+      "writingTypes": [
+        "fiction",
+        "poetry"
+      ],
+      "officialUrl": "https://havenspec.com/",
+      "status": "open",
+      "excerpt": "Haven Speculative pays 8¢ per word for fiction and $20 for poetry.",
+      "pay": {
+        "amountMin": 0.08,
+        "amountMax": 20,
+        "currency": "USD",
+        "display": "8¢/word fiction, $20 poetry",
+        "conditions": "The official site states 8¢ per word for fiction and $20 per poem.",
+        "timing": "Not stated precisely"
+      },
+      "wordCount": {
+        "display": "Variable",
+        "min": null,
+        "max": null
+      },
+      "eligibility": {
+        "mode": "not-stated",
+        "notStated": true,
+        "summary": "No stated country restriction.",
+        "includesRegions": [],
+        "allowsDiaspora": null
+      },
+      "response": {
+        "label": "Window-based",
+        "band": "not-stated",
+        "official": true
+      },
+      "howToSubmit": [
+        "Submit during the open window."
+      ],
+      "requirements": [
+        "Speculative fiction or poetry"
+      ],
+      "whatTheyWant": [
+        "Speculative fiction and poetry"
+      ],
+      "whatTheyDontWant": [
+        "Non-speculative work"
+      ],
+      "rights": "Not stated in detail.",
+      "aiPolicy": "not-stated",
+      "applyMethod": "Online submission",
+      "applyUrl": "https://havenspec.com/",
+      "applyEmail": null,
+      "deadline": null,
+      "sources": [
+        {
+          "name": "Haven Speculative (official)",
+          "url": "https://havenspec.com/"
+        }
+      ],
+      "keywords": [
+        "haven",
+        "speculative",
+        "fiction"
+      ],
+      "experience": "not-stated",
+      "editorExperience": {
+        "applied": false
+      },
+      "seoTitle": "Haven Speculative: 8¢/word, $20 poetry",
+      "publishedAt": "2026-09-05",
+      "vertical": "writing",
+      "lastVerified": "2026-09-05",
+      "submissionStatus": "open"
+    },
+    {
+      "id": "mudroom",
+      "slug": "mudroom",
+      "publication": "Mudroom",
+      "title": "Poetry, fiction and essays",
+      "writingTypeLabel": "Poetry, fiction, essays",
+      "writingTypes": [
+        "fiction",
+        "essays",
+        "poetry"
+      ],
+      "officialUrl": "https://mudroommagazine.com/",
+      "status": "open",
+      "excerpt": "Mudroom pays $15 per accepted contribution and publishes poetry, fiction and essays.",
+      "pay": {
+        "amountMin": 15,
+        "amountMax": 15,
+        "currency": "USD",
+        "display": "$15",
+        "conditions": "The official site states a $15 payment per accepted contribution.",
+        "timing": "Not stated precisely"
+      },
+      "wordCount": {
+        "display": "Variable",
+        "min": null,
+        "max": null
+      },
+      "eligibility": {
+        "mode": "not-stated",
+        "notStated": true,
+        "summary": "No stated country restriction.",
+        "includesRegions": [],
+        "allowsDiaspora": null
+      },
+      "response": {
+        "label": "Window-based",
+        "band": "not-stated",
+        "official": true
+      },
+      "howToSubmit": [
+        "Submit during the open period."
+      ],
+      "requirements": [
+        "Poetry, fiction or essay"
+      ],
+      "whatTheyWant": [
+        "Poetry, fiction and essays",
+        "Essays in translation"
+      ],
+      "whatTheyDontWant": [
+        "Previously published work"
+      ],
+      "rights": "Not stated in detail.",
+      "aiPolicy": "not-stated",
+      "applyMethod": "Online submission",
+      "applyUrl": "https://mudroommagazine.com/",
+      "applyEmail": null,
+      "deadline": null,
+      "sources": [
+        {
+          "name": "Mudroom (official)",
+          "url": "https://mudroommagazine.com/"
+        }
+      ],
+      "keywords": [
+        "mudroom",
+        "essay",
+        "poetry"
+      ],
+      "experience": "not-stated",
+      "editorExperience": {
+        "applied": false
+      },
+      "seoTitle": "Mudroom: $15 per contribution",
+      "publishedAt": "2026-09-05",
+      "vertical": "writing",
+      "lastVerified": "2026-09-05",
+      "submissionStatus": "open"
+    },
+    {
+      "id": "space-and-time",
+      "slug": "space-and-time",
+      "publication": "Space and Time",
+      "title": "Speculative fiction and poetry",
+      "writingTypeLabel": "Speculative fiction, poetry",
+      "writingTypes": [
+        "fiction",
+        "poetry"
+      ],
+      "officialUrl": "https://spaceandtime.net/",
+      "status": "open",
+      "excerpt": "Space and Time pays $0.01 per word for prose and $5 for poetry, accepting work in multiple languages.",
+      "pay": {
+        "amountMin": 0.01,
+        "amountMax": 5,
+        "currency": "USD",
+        "display": "$0.01/word prose, $5 poetry",
+        "conditions": "The official site states 1 cent per word for prose and $5 for poetry.",
+        "timing": "Not stated precisely"
+      },
+      "wordCount": {
+        "display": "Variable",
+        "min": null,
+        "max": null
+      },
+      "eligibility": {
+        "mode": "not-stated",
+        "notStated": true,
+        "summary": "Submissions accepted in English, Spanish, Portuguese, French or Italian.",
+        "includesRegions": [],
+        "allowsDiaspora": null
+      },
+      "response": {
+        "label": "Open the first seven days of each month",
+        "band": "not-stated",
+        "official": true
+      },
+      "howToSubmit": [
+        "Submit during the monthly open window."
+      ],
+      "requirements": [
+        "Speculative fiction or poetry"
+      ],
+      "whatTheyWant": [
+        "Speculative fiction and poetry that bends rules"
+      ],
+      "whatTheyDontWant": [
+        "Non-speculative work"
+      ],
+      "rights": "Not stated in detail.",
+      "aiPolicy": "not-stated",
+      "applyMethod": "Online submission",
+      "applyUrl": "https://spaceandtime.net/",
+      "applyEmail": null,
+      "deadline": null,
+      "sources": [
+        {
+          "name": "Space and Time (official)",
+          "url": "https://spaceandtime.net/"
+        }
+      ],
+      "keywords": [
+        "space and time",
+        "speculative"
+      ],
+      "experience": "not-stated",
+      "editorExperience": {
+        "applied": false
+      },
+      "seoTitle": "Space and Time: $0.01/word, $5 poetry",
+      "publishedAt": "2026-09-05",
+      "vertical": "writing",
+      "lastVerified": "2026-09-05",
+      "submissionStatus": "open"
+    },
+    {
+      "id": "ploughshares",
+      "slug": "ploughshares",
+      "publication": "Ploughshares",
+      "title": "Poetry, fiction and nonfiction",
+      "writingTypeLabel": "Fiction, nonfiction, poetry",
+      "writingTypes": [
+        "fiction",
+        "essays",
+        "poetry"
+      ],
+      "officialUrl": "https://www.pshares.org/",
+      "status": "upcoming",
+      "excerpt": "Ploughshares pays contributors for accepted poetry, fiction and nonfiction, with seasonal reading periods.",
+      "pay": {
+        "amountMin": null,
+        "amountMax": null,
+        "currency": "USD",
+        "display": "Pays contributors",
+        "conditions": "Ploughshares pays for accepted work; the rate varies by genre and length.",
+        "timing": "Not stated precisely"
+      },
+      "wordCount": {
+        "display": "Variable",
+        "min": null,
+        "max": null
+      },
+      "eligibility": {
+        "mode": "not-stated",
+        "notStated": true,
+        "summary": "No stated country restriction.",
+        "includesRegions": [],
+        "allowsDiaspora": null
+      },
+      "response": {
+        "label": "Seasonal reading periods",
+        "band": "not-stated",
+        "official": true
+      },
+      "howToSubmit": [
+        "Submit during the seasonal reading window."
+      ],
+      "requirements": [
+        "Poetry, fiction or nonfiction"
+      ],
+      "whatTheyWant": [
+        "Literary fiction, nonfiction and poetry",
+        "Work of high craft"
+      ],
+      "whatTheyDontWant": [
+        "Previously published work"
+      ],
+      "rights": "Not stated in detail.",
+      "aiPolicy": "not-stated",
+      "applyMethod": "Online submission",
+      "applyUrl": "https://www.pshares.org/",
+      "applyEmail": null,
+      "deadline": null,
+      "sources": [
+        {
+          "name": "Ploughshares (official)",
+          "url": "https://www.pshares.org/"
+        }
+      ],
+      "keywords": [
+        "ploughshares",
+        "literary",
+        "poetry"
+      ],
+      "experience": "not-stated",
+      "editorExperience": {
+        "applied": false
+      },
+      "seoTitle": "Ploughshares: pays contributors",
+      "publishedAt": "2026-09-05",
+      "vertical": "writing",
+      "submissionStatus": "upcoming",
+      "lastVerified": "2026-09-05"
+    },
+    {
+      "id": "zyzzyva",
+      "slug": "zyzzyva",
+      "publication": "Zyzzyva",
+      "title": "Poetry, fiction and nonfiction",
+      "writingTypeLabel": "Fiction, nonfiction, poetry",
+      "writingTypes": [
+        "fiction",
+        "essays",
+        "poetry"
+      ],
+      "officialUrl": "https://www.zyzzyva.org/",
+      "status": "open",
+      "excerpt": "Zyzzyva pays contributors for accepted poetry, fiction and nonfiction and stays open throughout the year.",
+      "pay": {
+        "amountMin": null,
+        "amountMax": null,
+        "currency": "USD",
+        "display": "Pays contributors",
+        "conditions": "Zyzzyva pays for accepted work; the rate varies by genre and length.",
+        "timing": "Not stated precisely"
+      },
+      "wordCount": {
+        "display": "Variable",
+        "min": null,
+        "max": null
+      },
+      "eligibility": {
+        "mode": "not-stated",
+        "notStated": true,
+        "summary": "No stated country restriction.",
+        "includesRegions": [],
+        "allowsDiaspora": null
+      },
+      "response": {
+        "label": "Year-round",
+        "band": "not-stated",
+        "official": true
+      },
+      "howToSubmit": [
+        "Submit via the official site, which stays open year-round."
+      ],
+      "requirements": [
+        "Poetry, fiction or nonfiction"
+      ],
+      "whatTheyWant": [
+        "Literary fiction, nonfiction and poetry",
+        "Work of high craft"
+      ],
+      "whatTheyDontWant": [
+        "Previously published work"
+      ],
+      "rights": "Not stated in detail.",
+      "aiPolicy": "not-stated",
+      "applyMethod": "Online submission",
+      "applyUrl": "https://www.zyzzyva.org/",
+      "applyEmail": null,
+      "deadline": null,
+      "sources": [
+        {
+          "name": "Zyzzyva (official)",
+          "url": "https://www.zyzzyva.org/"
+        }
+      ],
+      "keywords": [
+        "zyzzyva",
+        "literary",
+        "poetry"
+      ],
+      "experience": "not-stated",
+      "editorExperience": {
+        "applied": false
+      },
+      "seoTitle": "Zyzzyva: pays contributors",
+      "publishedAt": "2026-09-05",
+      "vertical": "writing",
+      "submissionStatus": "open",
+      "lastVerified": "2026-09-05"
+    },
+    {
+      "id": "the-threepenny-review",
+      "slug": "the-threepenny-review",
+      "publication": "The Threepenny Review",
+      "title": "Poetry and essays",
+      "writingTypeLabel": "Poetry, essays",
+      "writingTypes": [
+        "essays",
+        "poetry"
+      ],
+      "officialUrl": "https://www.threepennyreview.com/",
+      "status": "upcoming",
+      "excerpt": "The Threepenny Review pays contributors for accepted poetry and essays, with a short early-year submission window.",
+      "pay": {
+        "amountMin": null,
+        "amountMax": null,
+        "currency": "USD",
+        "display": "Pays contributors",
+        "conditions": "The Threepenny Review pays for accepted work; the rate varies by genre and length.",
+        "timing": "Not stated precisely"
+      },
+      "wordCount": {
+        "display": "Variable",
+        "min": null,
+        "max": null
+      },
+      "eligibility": {
+        "mode": "not-stated",
+        "notStated": true,
+        "summary": "No stated country restriction.",
+        "includesRegions": [],
+        "allowsDiaspora": null
+      },
+      "response": {
+        "label": "January–April window",
+        "band": "not-stated",
+        "official": true
+      },
+      "howToSubmit": [
+        "Submit during the short early-year window."
+      ],
+      "requirements": [
+        "Poetry or essay"
+      ],
+      "whatTheyWant": [
+        "Poetry and essays of high craft"
+      ],
+      "whatTheyDontWant": [
+        "Previously published work"
+      ],
+      "rights": "Not stated in detail.",
+      "aiPolicy": "not-stated",
+      "applyMethod": "Online submission",
+      "applyUrl": "https://www.threepennyreview.com/",
+      "applyEmail": null,
+      "deadline": null,
+      "sources": [
+        {
+          "name": "The Threepenny Review (official)",
+          "url": "https://www.threepennyreview.com/"
+        }
+      ],
+      "keywords": [
+        "threepenny",
+        "poetry",
+        "essay"
+      ],
+      "experience": "not-stated",
+      "editorExperience": {
+        "applied": false
+      },
+      "seoTitle": "The Threepenny Review: pays contributors",
+      "publishedAt": "2026-09-05",
+      "vertical": "writing",
+      "submissionStatus": "upcoming",
+      "lastVerified": "2026-09-05"
+    },
+    {
+      "id": "transition-magazine",
+      "slug": "transition-magazine",
+      "publication": "Transition Magazine",
+      "title": "Essays, fiction and cultural criticism",
+      "writingTypeLabel": "Essays, fiction, criticism",
+      "writingTypes": [
+        "essays",
+        "fiction"
+      ],
+      "officialUrl": "https://transitionmagazine.com/",
+      "status": "rolling",
+      "excerpt": "Transition centers Africa and the African diaspora, reviews submissions on a rolling basis and pays contributors for essays, fiction and cultural criticism.",
+      "pay": {
+        "amountMin": null,
+        "amountMax": null,
+        "currency": "USD",
+        "display": "Pays contributors",
+        "conditions": "Transition pays for accepted work; the rate varies by genre and length.",
+        "timing": "Not stated precisely"
+      },
+      "wordCount": {
+        "display": "Variable",
+        "min": null,
+        "max": null
+      },
+      "eligibility": {
+        "mode": "restricted",
+        "notStated": false,
+        "summary": "Centers Africa and the African diaspora; strongly relevant to African and diaspora writers.",
+        "includesRegions": [
+          "africa"
+        ],
+        "allowsDiaspora": true
+      },
+      "response": {
+        "label": "Rolling",
+        "band": "rolling",
+        "official": true
+      },
+      "howToSubmit": [
+        "Submit via the official site; submissions are reviewed on a rolling basis."
+      ],
+      "requirements": [
+        "Essays, fiction or cultural criticism",
+        "Relevant to Africa and its diaspora"
+      ],
+      "whatTheyWant": [
+        "Essays, fiction and cultural criticism",
+        "Work centering Africa and the African diaspora"
+      ],
+      "whatTheyDontWant": [
+        "Unrelated topics"
+      ],
+      "rights": "Not stated in detail.",
+      "aiPolicy": "not-stated",
+      "applyMethod": "Online submission",
+      "applyUrl": "https://transitionmagazine.com/",
+      "applyEmail": null,
+      "deadline": null,
+      "sources": [
+        {
+          "name": "Transition Magazine (official)",
+          "url": "https://transitionmagazine.com/"
+        }
+      ],
+      "keywords": [
+        "transition",
+        "africa",
+        "diaspora"
+      ],
+      "experience": "not-stated",
+      "editorExperience": {
+        "applied": false
+      },
+      "seoTitle": "Transition Magazine: pays contributors, Africa-centered",
+      "publishedAt": "2026-09-05",
+      "vertical": "writing",
+      "submissionStatus": "rolling",
+      "lastVerified": "2026-09-05"
+    },
+    {
+      "id": "the-ex-puritan",
+      "slug": "the-ex-puritan",
+      "publication": "The Ex-Puritan",
+      "title": "Fiction, essays and poetry",
+      "writingTypeLabel": "Fiction, essays, poetry",
+      "writingTypes": [
+        "fiction",
+        "essays",
+        "poetry"
+      ],
+      "officialUrl": "https://theexpuritan.com/",
+      "status": "rolling",
+      "excerpt": "The Ex-Puritan pays CAD$50–$150 depending on the type of writing and is especially interested in experimental and hybrid work.",
+      "pay": {
+        "amountMin": 50,
+        "amountMax": 150,
+        "currency": "CAD",
+        "display": "CAD$50–$150",
+        "conditions": "The official site states CAD$50–$150 depending on the specific type of writing.",
+        "timing": "Not stated precisely"
+      },
+      "wordCount": {
+        "display": "Variable",
+        "min": null,
+        "max": null
+      },
+      "eligibility": {
+        "mode": "not-stated",
+        "notStated": true,
+        "summary": "No stated country restriction, but writers must be able to accept e-transfer, PayPal or Canadian cheque.",
+        "includesRegions": [],
+        "allowsDiaspora": null
+      },
+      "response": {
+        "label": "Rolling, tied to quarterly issues",
+        "band": "rolling",
+        "official": true
+      },
+      "howToSubmit": [
+        "Submit via the official site; rolling deadlines tied to quarterly issues."
+      ],
+      "requirements": [
+        "Fiction, essays, poetry, interviews, reviews, experimental work"
+      ],
+      "whatTheyWant": [
+        "Work that pushes boundaries",
+        "Hybrid and experimental pieces"
+      ],
+      "whatTheyDontWant": [
+        "Previously published work; one publication per writer per year"
+      ],
+      "rights": "Not stated in detail.",
+      "aiPolicy": "not-stated",
+      "applyMethod": "Online submission",
+      "applyUrl": "https://theexpuritan.com/",
+      "applyEmail": null,
+      "deadline": null,
+      "sources": [
+        {
+          "name": "The Ex-Puritan (official)",
+          "url": "https://theexpuritan.com/"
+        }
+      ],
+      "keywords": [
+        "ex-puritan",
+        "experimental",
+        "essay"
+      ],
+      "experience": "not-stated",
+      "editorExperience": {
+        "applied": false
+      },
+      "seoTitle": "The Ex-Puritan: CAD$50–$150",
+      "publishedAt": "2026-09-05",
+      "vertical": "writing",
+      "submissionStatus": "rolling",
+      "lastVerified": "2026-09-05"
     }
   ]
 }

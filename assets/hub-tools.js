@@ -310,6 +310,61 @@
         fit(input);
       }
       bind(input, run); run();
+    },
+    "title-generator": function () {
+      var topic = q("topic"), audience = q("audience"), out = q("out");
+      var templates = [
+        "{A}: the complete beginner's guide", "How to {A} (when you have no idea where to start)",
+        "The only {A} guide you will ever need", "{A}, explained in plain English",
+        "Why {A} matters more than you think", "{A}: 5 things I wish I knew sooner",
+        "How {A} actually works — a practical walkthrough", "What nobody tells you about {A}",
+        "A proven way to {A} without the guesswork", "{A} for people who are short on time",
+        "The mistakes everyone makes with {A}", "How to master {A} step by step",
+        "{A}: from beginning to confident", "An honest, no-fluff guide to {A}"
+      ];
+      function run() {
+        var a = topic.value.trim().toLowerCase() || "your topic";
+        var aud = audience.value.trim();
+        var res = templates.map(function (t) {
+          var s = t.replace(/\{A\}/g, a);
+          if (aud) s = s.replace(".", " for " + aud.toLowerCase() + ".");
+          return { title: s.charAt(0).toUpperCase() + s.slice(1) };
+        });
+        out.innerHTML = "<ul class='tool-list'>" + res.map(function (x) { return "<li>" + x.title + "</li>"; }).join("") + "</ul>";
+      }
+      bind(topic, run); bind(audience, run); run();
+    },
+    "meta-description-generator": function () {
+      var topic = q("topic"), benefit = q("benefit"), out = q("out");
+      function run() {
+        var t = topic.value.trim() || "this guide";
+        var b = benefit.value.trim() || "learn the essentials quickly";
+        var base = "Learn " + t + " — " + b + ". Get practical, clear steps you can use today.";
+        out.innerHTML = "<div class='tool-result'><p class='tool-result-title'>Meta description (" + base.length + "/160 chars)</p><p>" + base + "</p></div>";
+      }
+      bind(topic, run); bind(benefit, run); run();
+    },
+    "random-writing-prompt": function () {
+      var out = q("out"), btn = q("new");
+      var prompts = [
+        "Write the scene from the point of view of someone who is afraid of telling the truth.",
+        "Describe a room you spent a lot of time in, using only sensory detail and no adjectives like 'beautiful'.",
+        "A character finds a letter addressed to them dated ten years in the future. What does it say?",
+        "Write about a small lie that grew. Start with the lie, end with its cost.",
+        "Describe your morning from the perspective of the first object you touched.",
+        "A character is about to say the thing they have been avoiding for years. Write the moment just before.",
+        "Write a short argument between two characters about something that is not really what they are arguing about.",
+        "In 150 words, capture a memory you did not know you had until just now.",
+        "Write a list of instructions for someone trying to get through a hard week.",
+        "A character discovers the one object they buried. Write the moment of finding it.",
+        "Write a paragraph in which 'dust' is the most important word.",
+        "Two old friends meet after a decade. One line of dialogue reveals why they stopped talking."
+      ];
+      function run() {
+        var p = prompts[Math.floor(Math.random() * prompts.length)];
+        out.innerHTML = "<div class='tool-result'><p>" + p + "</p></div>";
+      }
+      btn.onclick = run; run();
     }
   };
 

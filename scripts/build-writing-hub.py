@@ -353,6 +353,18 @@ def render_tool(t: dict) -> str:
     if i == "writing-checklist-generator":
         return f'''<div class="tool-box"><div class="tool-prose"><label>Checklist items (one per line)</label><textarea id="ta" placeholder="I checked the facts&#10;I proofread once&#10;I added a clear next step"></textarea><div class="tool-result" id="out"></div></div></div>
 <script src="/assets/hub-tools.js" data-hub-tool="writing-checklist-generator"></script>'''
+    if i == "title-generator":
+        return f'''<div class="tool-box"><div class="tool-prose"><p>Type your topic and get a fresh bank of headlines.</p>
+<label>Topic</label><input id="topic" type="text" placeholder="e.g. write a strong introduction" autocomplete="off"><label>Audience (optional)</label><input id="audience" type="text" placeholder="e.g. busy beginners" autocomplete="off"><div class="tool-result" id="out"></div></div></div>
+<script src="/assets/hub-tools.js" data-hub-tool="title-generator"></script>'''
+    if i == "meta-description-generator":
+        return f'''<div class="tool-box"><div class="tool-prose"><p>Draft a search-friendly description under the character limit.</p>
+<label>Page topic</label><input id="topic" type="text" placeholder="e.g. how to proofread" autocomplete="off"><label>Reader benefit</label><input id="benefit" type="text" placeholder="e.g. catch typos before you submit" autocomplete="off"><div class="tool-result" id="out"></div></div></div>
+<script src="/assets/hub-tools.js" data-hub-tool="meta-description-generator"></script>'''
+    if i == "random-writing-prompt":
+        return f'''<div class="tool-box"><div class="tool-prose"><p>Click for a fresh prompt to beat the blank page.</p>
+<div class="tool-actions"><button class="btn" id="new">New prompt</button></div><div class="tool-result" id="out"></div></div></div>
+<script src="/assets/hub-tools.js" data-hub-tool="random-writing-prompt"></script>'''
     # default: single textarea with live count
     return f'''<div class="tool-box"><div class="tool-prose"><label>Your text</label><textarea id="ta" placeholder="Type or paste your text…"></textarea><div class="tool-result" id="out"></div></div></div>
 <script src="/assets/hub-tools.js" data-hub-tool="{i}"></script>'''

@@ -167,6 +167,27 @@
       "short": "Find -ly adverbs and weak verbs.",
       "category": "analyze",
       "description": "List the -ly adverbs in your text so you can swap weak ones for stronger, active verbs."
+    },
+    {
+      "id": "title-generator",
+      "title": "Title / headline generator",
+      "short": "Get punchy headline ideas for a topic.",
+      "category": "work",
+      "description": "Generate a bank of specific, actionable headlines and titles for your article, blog post or essay."
+    },
+    {
+      "id": "meta-description-generator",
+      "title": "Meta description generator",
+      "short": "Draft a 160-character search snippet.",
+      "category": "work",
+      "description": "Write a clear meta description under the search-result character limit so your page earns the click."
+    },
+    {
+      "id": "random-writing-prompt",
+      "title": "Random writing prompt",
+      "short": "A fresh idea to write from.",
+      "category": "work",
+      "description": "Get a surprise writing prompt to beat the blank page — great for journaling and creative writing."
     }
   ]
 }
