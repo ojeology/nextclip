@@ -1,7 +1,7 @@
 ---
 title: Example of a personal essay
 description: A complete short personal essay with a breakdown of what makes it work.
-section: types-of-writing
+section: examples
 keywords: [personal essay, example, memoir, voice, creative nonfiction]
 tools: [word-document-converter]
 related: [how-to-write-a-personal-essay, how-to-write-an-essay]

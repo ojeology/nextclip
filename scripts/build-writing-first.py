@@ -49,7 +49,7 @@ def footer() -> str:
     """Writing Hub footer."""
     return '''<footer class="site-foot"><div class="wrap foot-grid">
   <div class="foot-brand"><a class="logo" href="/"><span class="logo-mark" aria-hidden="true">B</span>BRYME</a><p>BRYME is a free writing resource — guides, tools, and verified opportunities to get published and paid.</p></div>
-  <div class="foot-col"><b>Learn to write</b><a href="/learn/">Writing hub</a><a href="/learn/start-writing/">Start writing</a><a href="/learn/writing-basics/">Writing basics</a><a href="/learn/grammar-language/">Grammar</a><a href="/learn/editing-proofreading/">Editing</a></div>
+  <div class="foot-col"><b>How to write</b><a href="/learn/">Writing hub</a><a href="/learn/examples/">Examples</a><a href="/learn/dos-and-donts/">Dos &amp; don'ts</a><a href="/learn/types-of-writing/">Types of writing</a><a href="/learn/grammar-language/">Grammar</a></div>
   <div class="foot-col"><b>Tools &amp; publish</b><a href="/tools/">Writing tools</a><a href="/templates/">Templates</a><a href="/checklists/">Checklists</a><a href="/writing/">Paid opportunities</a><a href="/tested/">BRYME Tested</a></div>
   <div class="foot-col"><b>Trust</b><a href="/about/">About</a><a href="/editorial-policy/">Editorial policy</a><a href="/corrections/">Corrections</a><a href="/privacy/">Privacy</a><a href="/contact/">Contact</a></div>
   <div class="foot-col"><b>Legal</b><a href="/terms/">Terms</a><a href="/disclaimer/">Disclaimer</a><a href="/copyright/">Copyright</a></div>
@@ -63,10 +63,9 @@ WRITING = json.loads((ROOT / "content/opportunities.json").read_text(encoding="u
 # ---------------------------------------------------------------------------
 def nav(current: str = "") -> str:
     links = [
-        ("learn", "/learn/", "Learn to write"),
+        ("learn", "/learn/", "How to write"),
         ("tools", "/tools/", "Writing tools"),
         ("writing", "/writing/", "Write & get paid"),
-        ("about", "/about/", "About"),
     ]
     items = []
     for key, href, label in links:
@@ -81,12 +80,42 @@ def nav(current: str = "") -> str:
 </div></header>'''
 
 
+# How-to sub-navigation bar — a dedicated category nav shown across the
+# writing-guide library and every how-to guide page.
+HOWTO_LINKS = [
+    ("learn", "/learn/", "All how-tos"),
+    ("examples", "/learn/examples/", "Examples"),
+    ("dos-and-donts", "/learn/dos-and-donts/", "Dos & don'ts"),
+    ("types-of-writing", "/learn/types-of-writing/", "Writing types"),
+    ("start-writing", "/learn/start-writing/", "Start writing"),
+    ("writing-basics", "/learn/writing-basics/", "Basics"),
+    ("writing-process", "/learn/writing-process/", "Process"),
+    ("academic-writing", "/learn/academic-writing/", "Academic"),
+    ("professional-writing", "/learn/professional-writing/", "Professional"),
+    ("creative-writing", "/learn/creative-writing/", "Creative"),
+    ("online-writing", "/learn/online-writing/", "Online"),
+    ("journaling-personal", "/learn/journaling-personal/", "Personal"),
+    ("grammar-language", "/learn/grammar-language/", "Grammar"),
+    ("editing-proofreading", "/learn/editing-proofreading/", "Editing"),
+    ("writing-for-publication", "/learn/writing-for-publication/", "Get published"),
+]
+
+
+def howto_nav(current: str = "") -> str:
+    """Dedicated navigation bar for the how-to / writing-guide area."""
+    items = []
+    for key, href, label in HOWTO_LINKS:
+        aria = ' aria-current="page"' if key == current else ""
+        items.append(f'<a{aria} href="{href}">{label}</a>')
+    return f'''<nav class="howto-nav" aria-label="How-to guides">{"".join(items)}</nav>'''
+
+
 def mobile_nav(current: str = "") -> str:
     links = [
-        ("learn", "/learn/", "📚", "Learn"),
+        ("learn", "/learn/", "📚", "How to"),
+        ("examples", "/learn/examples/", "✳", "Examples"),
         ("tools", "/tools/", "🛠", "Tools"),
         ("writing", "/writing/", "💰", "Publish"),
-        ("about", "/about/", "👤", "About"),
     ]
     return '<nav class="bottom-nav bottom-nav--writing" aria-label="Primary mobile">' + ''.join(
         f'<a href="{href}"' + (' aria-current="page"' if key == current else '') +

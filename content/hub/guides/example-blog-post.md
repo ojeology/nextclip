@@ -1,7 +1,7 @@
 ---
 title: Example of a blog post
 description: A complete, scannable blog post with the structure explained.
-section: online-writing
+section: examples
 keywords: [blog post, example, structure, scannable]
 tools: [word-document-converter]
 related: [how-to-write-a-blog-post]

@@ -40,6 +40,9 @@ write = _bwf.write
 BASE = _bwf.BASE
 TODAY = _bwf.TODAY
 page_wf = _bwf.page_wf
+nav = _bwf.nav
+mobile_nav = _bwf.mobile_nav
+howto_nav = _bwf.howto_nav
 WRITING = _bwf.WRITING
 
 
@@ -223,7 +226,7 @@ def guide_page(g: dict) -> None:
     tool_items = g.get("tools", [])
     # Where the guide's tools live inline in prose, we render a section at the end.
     prose = render_md(g["body"])
-    body = f'''<div class="wrap">{breadcrumb(("Learn", "/learn/"), (section["title"], f"/learn/{section['id']}/"), (g["title"], ""))}
+    body = f'''{howto_nav(g['section'])}<div class="wrap">{breadcrumb(("Learn", "/learn/"), (section["title"], f"/learn/{section['id']}/"), (g["title"], ""))}
 <section class="page-hero"><p class="kicker"><span class="kicker-dot"></span>{esc(section['title'])}</p>
 <h1>{esc(g['title'])}</h1>
 <p>{esc(g.get('description', ''))}</p>
@@ -266,7 +269,7 @@ def section_hub(sec: dict) -> None:
             extra = '<section class="section alt"><div class="section-head"><div><p class="eyebrow">Popular</p><h2>Start with these tools.</h2></div></div><div class="guide-grid">' + "".join(f'<a class="chip-card" href="/tools/{esc(t["id"])}/"><b>🛠</b><span>{esc(t["title"])}</span></a>' for t in TOOLS[:8]) + '</div></section>'
         elif sec["id"] == "writing-templates":
             extra = '<section class="section alt"><div class="section-head"><div><p class="eyebrow">Popular</p><h2>Most-used templates.</h2></div></div><div class="guide-grid">' + "".join(f'<a class="guide-card" href="/templates/#{esc(t["id"])}"><span class="card-num">{esc(t["title"][:8].upper())}</span><h3>{esc(t["title"])}</h3><p>{esc(t["use"])}</p><span class="card-link">View →</span></a>' for t in TEMPLATES[:6]) + '</div></section>'
-        body = f'''<div class="wrap">{breadcrumb(("Learn", "/learn/"))}
+        body = f'''{howto_nav(sec['id'])}<div class="wrap">{breadcrumb(("Learn", "/learn/"))}
 <section class="page-hero"><p class="kicker"><span class="kicker-dot"></span>{esc(sec['icon'])} Writing Hub</p>
 <h1>{esc(sec['title'])}.</h1>
 <p>{esc(sec.get('tagline', sec.get('description', '')))}</p>
@@ -283,7 +286,7 @@ def section_hub(sec: dict) -> None:
     else:
         content = '<section class="section"><div class="prose"><p>This section is being written. Check back soon — BRYME adds new guides steadily. In the meantime, browse the <a href="/learn/">full library</a> or the <a href="/writing/">paid writing opportunities</a>.</p></div></section>'
         robots = "noindex,follow"
-    body = f'''<div class="wrap">{breadcrumb(("Learn", "/learn/"))}
+    body = f'''{howto_nav(sec['id'])}<div class="wrap">{breadcrumb(("Learn", "/learn/"))}
 <section class="page-hero"><p class="kicker"><span class="kicker-dot"></span>{esc(sec['icon'])} Writing Hub</p>
 <h1>{esc(sec['title'])}.</h1>
 <p>{esc(sec.get('tagline', sec.get('description', '')))}</p>
@@ -470,9 +473,9 @@ def learn_index() -> None:
             f'<a class="path-card" href="/learn/{esc(s["id"])}/"><span class="card-num">{esc(s["icon"])}</span><h3>{esc(s["title"])}</h3><p>{esc(s.get("tagline", s.get("description", "")))}</p><span class="card-link">Explore →</span></a>'
             for s in by_group[g["id"]])
         sections_html += f'<section class="section"><div class="wrap"><div class="section-head"><div><p class="eyebrow">{esc(g["title"])}</p><h2>{esc(g["subtitle"])}</h2></div></div><div class="card-grid">{cards}</div></div></section>'
-    body = f'''<div class="wrap"><nav class="breadcrumb"><a href="/">Home</a> / Learn to write</nav>
+    body = f'''{howto_nav('learn')}<div class="wrap"><nav class="breadcrumb"><a href="/">Home</a> / How to write</nav>
 <section class="page-hero"><p class="kicker"><span class="kicker-dot"></span>The BRYME Writing Hub</p>
-<h1>Learn to write.</h1>
+<h1>How to write.</h1>
 <p>Everything you need to write better — from the very first sentence to getting published and paid. Start where you are and follow the journey: learn, plan, write, check, improve, finish.</p>
 <div class="searchbar"><form action="/search/" method="get"><input type="search" name="q" placeholder="What do you want to learn about writing? (e.g. essay, comma, email)" aria-label="Search guides"></form></div></section>
 <div class="journey-strip"><ol class="steps-journey"><li>Learn</li><li>Plan</li><li>Write</li><li>Check</li><li>Improve</li><li>Finish</li></ol></div>
@@ -533,7 +536,27 @@ def homepage() -> None:
                        route="/", current="", body=body, schema_data=structured))
 
 
+def prune_stale_guides() -> None:
+    """Remove guide pages that no longer exist (e.g. after a guide's section
+    changes) so no stale/duplicate routes remain on disk."""
+    import shutil
+    current = {f"/learn/{g['section']}/{g['slug']}" for g in GUIDES}
+    root = ROOT / "learn"
+    if not root.is_dir():
+        return
+    for section_dir in root.iterdir():
+        if not section_dir.is_dir():
+            continue
+        for slug_dir in section_dir.iterdir():
+            if not slug_dir.is_dir():
+                continue
+            route = f"/learn/{section_dir.name}/{slug_dir.name}"
+            if route not in current:
+                shutil.rmtree(slug_dir, ignore_errors=True)
+
+
 def build() -> None:
+    prune_stale_guides()
     homepage()
     learn_index()
     for sec in SECTIONS["sections"]:

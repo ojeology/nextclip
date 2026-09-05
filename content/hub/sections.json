@@ -1,30 +1,228 @@
 {
   "groups": [
-    {"id": "learn", "title": "Learn writing", "subtitle": "Start from zero and build the foundations.", "order": 1},
-    {"id": "write", "title": "Write differently", "subtitle": "Match the form to the job: academic, professional, creative, online and personal.", "order": 2},
-    {"id": "improve", "title": "Improve your writing", "subtitle": "Grammar, editing, research and the problems that trip writers up.", "order": 3},
-    {"id": "publish", "title": "Write, publish and get paid", "subtitle": "Turn finished work into submissions, publications and paid writing.", "order": 4}
+    {
+      "id": "learn",
+      "title": "Learn writing",
+      "subtitle": "Start from zero and build the foundations.",
+      "order": 1
+    },
+    {
+      "id": "write",
+      "title": "Write differently",
+      "subtitle": "Match the form to the job: academic, professional, creative, online and personal.",
+      "order": 2
+    },
+    {
+      "id": "improve",
+      "title": "Improve your writing",
+      "subtitle": "Grammar, editing, research and the problems that trip writers up.",
+      "order": 3
+    },
+    {
+      "id": "publish",
+      "title": "Write, publish and get paid",
+      "subtitle": "Turn finished work into submissions, publications and paid writing.",
+      "order": 4
+    }
   ],
   "sections": [
-    {"id": "start-writing", "group": "learn", "order": 1, "title": "Start writing", "tagline": "Beginner-friendly guides to get from a blank page to your first finished piece.", "description": "The very first steps: how to start, what to write about, how to find ideas, and how to get past staring at a blank page.", "icon": "▶"},
-    {"id": "writing-basics", "group": "learn", "order": 2, "title": "Writing basics", "tagline": "The building blocks every kind of writing shares.", "description": "What writing is, why it matters, and the fundamentals of sentences, paragraphs, tone, voice, audience, clarity and conciseness.", "icon": "◇"},
-    {"id": "writing-process", "group": "learn", "order": 3, "title": "Writing process", "tagline": "A repeatable workflow from idea to finished work.", "description": "The full pipeline: idea, research, planning, outline, first draft, revision, editing, proofreading and final check.", "icon": "⇢"},
-    {"id": "structure-formatting", "group": "learn", "order": 4, "title": "Structure & formatting", "tagline": "Shape raw content into readable, scannable work.", "description": "Outlines, headings, paragraph length, lists, intro and conclusion, readability and long-form structure.", "icon": "☰"},
-    {"id": "types-of-writing", "group": "write", "order": 1, "title": "Types of writing", "tagline": "Understand what each form is and how to write it.", "description": "Essays, articles, blog posts, reports, stories, emails, scripts and more — what each is, who uses it, and how it's structured.", "icon": "✳"},
-    {"id": "academic-writing", "group": "write", "order": 2, "title": "Academic writing", "tagline": "Research papers, essays and theses you write yourself.", "description": "Essays, research papers, literature reviews, abstracts, citations and academic tone — always your own work.", "icon": "🎓"},
-    {"id": "professional-writing", "group": "write", "order": 3, "title": "Professional & work writing", "tagline": "Emails, reports, proposals and workplace communication.", "description": "Professional emails, reports, proposals, memos, meeting notes, job applications and a clear professional tone.", "icon": "💼"},
-    {"id": "creative-writing", "group": "write", "order": 4, "title": "Creative writing", "tagline": "Stories, characters, dialogue and voice.", "description": "Story ideas, character, setting, plot, dialogue, point of view, short stories, poetry, creative nonfiction and memoir.", "icon": "✎"},
-    {"id": "journaling-personal", "group": "write", "order": 5, "title": "Journaling & personal writing", "tagline": "Writing for yourself, not for money.", "description": "Journaling, reflection, gratitude, travel journals, personal essays and life stories — writing as a practice.", "icon": "☕"},
-    {"id": "online-writing", "group": "write", "order": 6, "title": "Online & content writing", "tagline": "Blogs, SEO, web copy and social content.", "description": "Blog posts, articles, SEO writing, landing pages, product descriptions, newsletters, headlines and calls to action.", "icon": "🌐"},
-    {"id": "grammar-language", "group": "improve", "order": 1, "title": "Grammar & language", "tagline": "A clear, beginner-friendly language reference.", "description": "Nouns, verbs, punctuation, tenses, subject-verb agreement, commonly confused words, British vs American English and more.", "icon": "Aa"},
-    {"id": "editing-proofreading", "group": "improve", "order": 2, "title": "Editing & proofreading", "tagline": "Turn a rough draft into an error-clean piece.", "description": "How to edit, how to proofread, how to find grammar errors, remove repetition, tighten sentences and do a final review.", "icon": "✓"},
-    {"id": "research-sources", "group": "improve", "order": 3, "title": "Research & sources", "tagline": "Find reliable sources and use them honestly.", "description": "Research methods, evaluating sources, primary vs secondary, notes, quoting, paraphrasing, citation and avoiding plagiarism.", "icon": "⌕"},
-    {"id": "common-problems", "group": "improve", "order": 4, "title": "Common writing problems", "tagline": "Troubleshooting for the things writers struggle with.", "description": "'I don't know what to write', 'I can't start', 'my intro is weak', 'I repeat myself' — practical fixes for real problems.", "icon": "⚑"},
-    {"id": "writing-for-publication", "group": "publish", "order": 1, "title": "Writing for publication", "tagline": "Understand how publishing actually works.", "description": "Finding publications, submission guidelines, queries, pitching, rights, revisions, rejections and building a portfolio.", "icon": "📰"},
-    {"id": "freelance-paid-writing", "group": "publish", "order": 2, "title": "Freelance & paid writing", "tagline": "Markets that pay contributors — researched and verified.", "description": "Publications accepting submissions, paying markets, freelancing platforms, eligibility, pay, word counts and how to pitch.", "icon": "💰"},
-    {"id": "writing-tools", "group": "publish", "order": 3, "title": "Writing tools", "tagline": "Free, in-browser utilities — no account needed.", "description": "Word count, character count, reading time, case converter, text cleaner, duplicate line remover and more.", "icon": "🛠"},
-    {"id": "writing-templates", "group": "publish", "order": 4, "title": "Writing templates", "tagline": "Reusable structures that teach, not just copy.", "description": "Frames for articles, essays, emails, cover letters, reports, stories and more.", "icon": "▤"},
-    {"id": "writing-checklists", "group": "publish", "order": 5, "title": "Writing checklists", "tagline": "Run through the essentials before you finish.", "description": "Research, article, essay, email, editing, proofreading, submission and final publication checklists.", "icon": "☑"},
-    {"id": "writing-glossary", "group": "publish", "order": 6, "title": "Writing glossary", "tagline": "Every writing term, explained simply.", "description": "A searchable glossary of writing terminology with plain-language definitions and examples.", "icon": "📖"}
+    {
+      "id": "examples",
+      "group": "learn",
+      "order": 1,
+      "title": "Examples of writing",
+      "tagline": "Read a complete finished piece, then see how it was built.",
+      "description": "Full worked examples — an essay, a cover letter, a query letter, a blog post and more — each with a line-by-line breakdown of what makes it work. The fastest way to learn is to see a good piece whole.",
+      "icon": "✳"
+    },
+    {
+      "id": "start-writing",
+      "group": "learn",
+      "order": 2,
+      "title": "Start writing",
+      "tagline": "Beginner-friendly guides to get from a blank page to your first finished piece.",
+      "description": "The very first steps: how to start, what to write about, how to find ideas, and how to get past staring at a blank page.",
+      "icon": "▶"
+    },
+    {
+      "id": "writing-basics",
+      "group": "learn",
+      "order": 3,
+      "title": "Writing basics",
+      "tagline": "The building blocks every kind of writing shares.",
+      "description": "What writing is, why it matters, and the fundamentals of sentences, paragraphs, tone, voice, audience, clarity and conciseness.",
+      "icon": "◇"
+    },
+    {
+      "id": "writing-process",
+      "group": "learn",
+      "order": 4,
+      "title": "Writing process",
+      "tagline": "A repeatable workflow from idea to finished work.",
+      "description": "The full pipeline: idea, research, planning, outline, first draft, revision, editing, proofreading and final check.",
+      "icon": "⇢"
+    },
+    {
+      "id": "structure-formatting",
+      "group": "learn",
+      "order": 5,
+      "title": "Structure & formatting",
+      "tagline": "Shape raw content into readable, scannable work.",
+      "description": "Outlines, headings, paragraph length, lists, intro and conclusion, readability and long-form structure.",
+      "icon": "☰"
+    },
+    {
+      "id": "dos-and-donts",
+      "group": "improve",
+      "order": 1,
+      "title": "Dos and don'ts",
+      "tagline": "Avoid the classic mistakes; do the things that work.",
+      "description": "For every key form of writing, the quick dos and don'ts — what to do, what to avoid, and why. Skimmable, practical rules you can apply immediately.",
+      "icon": "✓"
+    },
+    {
+      "id": "types-of-writing",
+      "group": "write",
+      "order": 1,
+      "title": "Types of writing",
+      "tagline": "Understand what each form is and how to write it.",
+      "description": "Essays, articles, blog posts, reports, stories, emails, scripts and more — what each is, who uses it, and how it's structured.",
+      "icon": "✳"
+    },
+    {
+      "id": "academic-writing",
+      "group": "write",
+      "order": 2,
+      "title": "Academic writing",
+      "tagline": "Research papers, essays and theses you write yourself.",
+      "description": "Essays, research papers, literature reviews, abstracts, citations and academic tone — always your own work.",
+      "icon": "🎓"
+    },
+    {
+      "id": "professional-writing",
+      "group": "write",
+      "order": 3,
+      "title": "Professional & work writing",
+      "tagline": "Emails, reports, proposals and workplace communication.",
+      "description": "Professional emails, reports, proposals, memos, meeting notes, job applications and a clear professional tone.",
+      "icon": "💼"
+    },
+    {
+      "id": "creative-writing",
+      "group": "write",
+      "order": 4,
+      "title": "Creative writing",
+      "tagline": "Stories, characters, dialogue and voice.",
+      "description": "Story ideas, character, setting, plot, dialogue, point of view, short stories, poetry, creative nonfiction and memoir.",
+      "icon": "✎"
+    },
+    {
+      "id": "journaling-personal",
+      "group": "write",
+      "order": 5,
+      "title": "Journaling & personal writing",
+      "tagline": "Writing for yourself, not for money.",
+      "description": "Journaling, reflection, gratitude, travel journals, personal essays and life stories — writing as a practice.",
+      "icon": "☕"
+    },
+    {
+      "id": "online-writing",
+      "group": "write",
+      "order": 6,
+      "title": "Online & content writing",
+      "tagline": "Blogs, SEO, web copy and social content.",
+      "description": "Blog posts, articles, SEO writing, landing pages, product descriptions, newsletters, headlines and calls to action.",
+      "icon": "🌐"
+    },
+    {
+      "id": "grammar-language",
+      "group": "improve",
+      "order": 2,
+      "title": "Grammar & language",
+      "tagline": "A clear, beginner-friendly language reference.",
+      "description": "Nouns, verbs, punctuation, tenses, subject-verb agreement, commonly confused words, British vs American English and more.",
+      "icon": "Aa"
+    },
+    {
+      "id": "editing-proofreading",
+      "group": "improve",
+      "order": 3,
+      "title": "Editing & proofreading",
+      "tagline": "Turn a rough draft into an error-clean piece.",
+      "description": "How to edit, how to proofread, how to find grammar errors, remove repetition, tighten sentences and do a final review.",
+      "icon": "✓"
+    },
+    {
+      "id": "research-sources",
+      "group": "improve",
+      "order": 4,
+      "title": "Research & sources",
+      "tagline": "Find reliable sources and use them honestly.",
+      "description": "Research methods, evaluating sources, primary vs secondary, notes, quoting, paraphrasing, citation and avoiding plagiarism.",
+      "icon": "⌕"
+    },
+    {
+      "id": "common-problems",
+      "group": "improve",
+      "order": 5,
+      "title": "Common writing problems",
+      "tagline": "Troubleshooting for the things writers struggle with.",
+      "description": "'I don't know what to write', 'I can't start', 'my intro is weak', 'I repeat myself' — practical fixes for real problems.",
+      "icon": "⚑"
+    },
+    {
+      "id": "writing-for-publication",
+      "group": "publish",
+      "order": 1,
+      "title": "Writing for publication",
+      "tagline": "Understand how publishing actually works.",
+      "description": "Finding publications, submission guidelines, queries, pitching, rights, revisions, rejections and building a portfolio.",
+      "icon": "📰"
+    },
+    {
+      "id": "freelance-paid-writing",
+      "group": "publish",
+      "order": 2,
+      "title": "Freelance & paid writing",
+      "tagline": "Markets that pay contributors — researched and verified.",
+      "description": "Publications accepting submissions, paying markets, freelancing platforms, eligibility, pay, word counts and how to pitch.",
+      "icon": "💰"
+    },
+    {
+      "id": "writing-tools",
+      "group": "publish",
+      "order": 3,
+      "title": "Writing tools",
+      "tagline": "Free, in-browser utilities — no account needed.",
+      "description": "Word count, character count, reading time, case converter, text cleaner, duplicate line remover and more.",
+      "icon": "🛠"
+    },
+    {
+      "id": "writing-templates",
+      "group": "publish",
+      "order": 4,
+      "title": "Writing templates",
+      "tagline": "Reusable structures that teach, not just copy.",
+      "description": "Frames for articles, essays, emails, cover letters, reports, stories and more.",
+      "icon": "▤"
+    },
+    {
+      "id": "writing-checklists",
+      "group": "publish",
+      "order": 5,
+      "title": "Writing checklists",
+      "tagline": "Run through the essentials before you finish.",
+      "description": "Research, article, essay, email, editing, proofreading, submission and final publication checklists.",
+      "icon": "☑"
+    },
+    {
+      "id": "writing-glossary",
+      "group": "publish",
+      "order": 6,
+      "title": "Writing glossary",
+      "tagline": "Every writing term, explained simply.",
+      "description": "A searchable glossary of writing terminology with plain-language definitions and examples.",
+      "icon": "📖"
+    }
   ]
 }
