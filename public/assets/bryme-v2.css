@@ -472,3 +472,79 @@ a:focus-visible, button:focus-visible { outline-color: var(--accent); }
 .tool-note.ok{color:var(--ink)}
 .tool-note.err{color:#a33}
 .related-cta{margin-top:1.2rem}
+
+/* ------------------------------------------------------------------ */
+/* Section nav — shared "moving" category bar (learn / tools / writing)*/
+/* ------------------------------------------------------------------ */
+.section-nav{position:sticky;top:0;z-index:40;display:flex;gap:.35rem;align-items:center;
+  overflow-x:auto;padding:.55rem 1rem;
+  background:linear-gradient(90deg,var(--bg-2),#0f221b,#0d1c16,#0f221b);
+  background-size:220% 100%;border-bottom:1px solid var(--line);
+  scrollbar-width:thin;-webkit-overflow-scrolling:touch;
+  animation:navflow 16s linear infinite}
+@keyframes navflow{0%{background-position:0% 0}50%{background-position:100% 0}100%{background-position:0% 0}}
+.section-nav a{flex:0 0 auto;white-space:nowrap;font-size:.82rem;font-weight:600;text-decoration:none;
+  color:var(--ink);padding:.35rem .7rem;border-radius:999px;border:1px solid transparent}
+.section-nav a:hover{background:var(--bg);border-color:var(--line)}
+.section-nav a[aria-current="page"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.section-nav a:first-child{font-weight:700}
+@media (max-width:640px){.section-nav{padding:.45rem .7rem}.section-nav a{font-size:.76rem;padding:.3rem .55rem}}
+/* gentle auto-scroll state (added by JS when the bar overflows) */
+.section-nav.is-moving{scroll-behavior:auto}
+.section-nav.is-paused{animation-play-state:paused}
+
+/* ------------------------------------------------------------------ */
+/* Header hamburger + easy slide-out sidebar (drawer)                  */
+/* ------------------------------------------------------------------ */
+.nav-toggle{display:inline-grid;place-items:center;width:42px;height:42px;border-radius:11px;
+  border:1px solid var(--line);background:var(--panel);color:var(--ink);cursor:pointer;
+  transition:border-color .2s,background .2s}
+.nav-toggle:hover{border-color:var(--line-strong);background:var(--panel-2)}
+.nav-toggle svg{width:20px;height:20px}
+body.drawer-open{overflow:hidden}
+#drawer-backdrop{position:fixed;inset:0;z-index:110;background:rgba(2,8,6,.55);opacity:0;
+  pointer-events:none;transition:opacity .25s;backdrop-filter:blur(2px)}
+#drawer-backdrop.show{opacity:1;pointer-events:auto}
+#site-drawer{position:fixed;top:0;right:0;bottom:0;width:min(360px,88vw);z-index:120;
+  background:var(--bg-2);border-left:1px solid var(--line);box-shadow:var(--shadow);
+  transform:translateX(102%);transition:transform .28s cubic-bezier(.2,.8,.2,1);
+  overflow-y:auto;padding:16px 16px 48px;-webkit-overflow-scrolling:touch}
+#site-drawer.open{transform:none}
+.drawer-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
+.drawer-head .logo{font-size:16px}
+.drawer-close{width:40px;height:40px;border-radius:11px;border:1px solid var(--line);background:var(--panel);
+  color:var(--ink);cursor:pointer;display:grid;place-items:center}
+.drawer-close:hover{background:var(--panel-2)}
+.drawer-group{margin:20px 0 2px}
+.drawer-group>b{display:block;color:var(--dim);font-size:11px;font-weight:800;letter-spacing:.14em;
+  text-transform:uppercase;padding:0 12px;margin-bottom:6px}
+.drawer-group a{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:11px;
+  color:var(--muted);font-size:15px;font-weight:700}
+.drawer-group a:hover,.drawer-group a[aria-current="page"]{background:var(--panel);color:var(--ink)}
+.drawer-group a span{font-size:17px}
+.drawer-sub{padding-left:12px}
+.drawer-sub a{font-size:13.5px;font-weight:600;color:var(--dim);padding:7px 12px}
+.drawer-sub a:hover{color:var(--ink)}
+.drawer-note{padding:12px;margin-top:18px;border:1px solid var(--line);border-radius:13px;
+  background:var(--panel);color:var(--muted);font-size:12.5px;line-height:1.5}
+
+/* ------------------------------------------------------------------ */
+/* Writing country filter bar + badges                                 */
+/* ------------------------------------------------------------------ */
+.writing-countrybar{align-items:center;gap:.35rem;margin:14px 0 0}
+.writing-countrybar .country-chip{flex:0 0 auto;display:inline-flex;align-items:center;gap:6px;
+  white-space:nowrap;font-size:.8rem;font-weight:700;color:var(--muted);cursor:pointer;
+  padding:.38rem .75rem;border-radius:999px;border:1px solid var(--line);background:var(--bg)}
+.writing-countrybar .country-chip:hover{color:var(--ink);border-color:var(--line-strong);background:var(--panel)}
+.writing-countrybar .country-chip.is-active,.writing-countrybar .country-chip[aria-pressed="true"]{
+  color:var(--bg);background:var(--green);border-color:var(--green)}
+.writing-countrybar .chip-count{font-weight:800;opacity:.85;color:inherit}
+.writing-countrybar .country-chip.is-active .chip-count,.writing-countrybar .country-chip[aria-pressed="true"] .chip-count{color:var(--bg)}
+.filter-status{margin:10px 24px 0;color:var(--muted);font-size:.85rem;font-weight:600}
+.filter-status b{color:var(--green)}
+.filter-status.empty{color:var(--gold)}
+.verify-badge.country{background:var(--panel);color:var(--muted);border:1px solid var(--line)}
+@media (max-width:640px){
+  .writing-countrybar{margin:12px 0 0;padding:.6rem .7rem}
+  .filter-status{margin:8px 4px 0}
+}

@@ -43,6 +43,25 @@ page_wf = _bwf.page_wf
 nav = _bwf.nav
 mobile_nav = _bwf.mobile_nav
 howto_nav = _bwf.howto_nav
+section_nav = _bwf.section_nav
+TOOLS_NAV = [
+    ("tools", "/tools/", "All tools"),
+    ("templates", "/templates/", "Templates"),
+    ("checklists", "/checklists/", "Checklists"),
+    ("writing", "/writing/", "Paid opportunities"),
+    ("guides", "/guides/", "Writing guides"),
+    ("glossary", "/glossary/", "Glossary"),
+]
+LEARN_NAV = [
+    ("learn", "/learn/", "All how-tos"),
+    ("examples", "/learn/examples/", "Examples"),
+    ("dos-and-donts", "/learn/dos-and-donts/", "Dos & don'ts"),
+    ("types-of-writing", "/learn/types-of-writing/", "Writing types"),
+    ("academic-writing", "/learn/academic-writing/", "Academic"),
+    ("creative-writing", "/learn/creative-writing/", "Creative"),
+    ("editing-proofreading", "/learn/editing-proofreading/", "Editing"),
+    ("writing-for-publication", "/learn/writing-for-publication/", "Get published"),
+]
 WRITING = _bwf.WRITING
 
 
@@ -308,6 +327,7 @@ def tools_index() -> None:
 <section class="page-hero"><p class="kicker"><span class="kicker-dot"></span>Free, in-browser</p>
 <h1>Writing tools.</h1>
 <p>{len(TOOLS)} free utilities that run right in your browser. No account, no download — type and get instant answers for counting, checking, formatting and planning your writing.</p></section>
+{section_nav(TOOLS_NAV, "Writing resources", "tools")}
 <section class="section"><div class="guide-grid">{''.join(grid)}</div></section></div>'''
     write("/tools/", page_wf(title="Writing tools — free word counter, character counter and more | BRYME",
                             description=f"{len(TOOLS)} free in-browser writing tools: word counter, character counter, reading time, readability score, case converter, text cleaner, outline generator and more. No account needed.",
@@ -474,6 +494,7 @@ def templates_page() -> None:
 <section class="page-hero"><p class="kicker"><span class="kicker-dot"></span>Blueprints</p>
 <h1>Writing templates.</h1>
 <p>{len(TEMPLATES)} reusable structures for the most common kinds of writing. Use them to see how a piece is built — then make the structure your own.</p></section>
+{section_nav(TOOLS_NAV, "Writing resources", "templates")}
 <section class="section"><div class="template-grid">{cards}</div></section></div>'''
     write("/templates/", page_wf(title="Writing templates — structures for every kind of writing | BRYME",
                                  description="Reusable writing templates for articles, essays, emails, cover letters, reports, stories and more — each teaches the structure, not just copy.",
@@ -490,6 +511,7 @@ def checklists_page() -> None:
 <section class="page-hero"><p class="kicker"><span class="kicker-dot"></span>Before you finish</p>
 <h1>Writing checklists.</h1>
 <p>{len(CHECKLISTS)} checklists to run through at each stage — research, drafting, editing, proofreading, and submission. Open one and tick it off as you go.</p></section>
+{section_nav(TOOLS_NAV, "Writing resources", "checklists")}
 <section class="section"><div class="template-grid">{cards}</div></section></div>'''
     write("/checklists/", page_wf(title="Writing checklists — research, editing, proofreading and submission | BRYME",
                                   description="Practical writing checklists to run before, during and after you write: research, article, essay, email, editing, proofreading, submission and publication.",

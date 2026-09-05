@@ -58,6 +58,23 @@ def footer() -> str:
 
 WRITING = json.loads((ROOT / "content/opportunities.json").read_text(encoding="utf-8"))["opportunities"]
 
+# Base country (where each publication is based) for the country selector.
+# "" = online / international — no single verified base country to claim.
+PUB_COUNTRIES = json.loads((ROOT / "content/hub/pub-countries.json").read_text(encoding="utf-8"))
+BASE_NAMES = {"NG": "Nigeria", "US": "United States", "UK": "United Kingdom", "CA": "Canada",
+              "AU": "Australia", "IE": "Ireland", "DE": "Germany", "ZA": "South Africa",
+              "NA": "Namibia", "NP": "Nepal", "KE": "Kenya"}
+
+
+def base_country(slug: str) -> str:
+    return (PUB_COUNTRIES.get(slug) or {}).get("base") or ""
+
+
+def open_internationally(rec: dict) -> bool:
+    """True when the publication does not restrict submissions to one country/region."""
+    el = rec.get("eligibility") or {}
+    return el.get("mode") != "restricted"
+
 # ---------------------------------------------------------------------------
 # Navigation — Writing Hub desktop + 4-item mobile bottom bar
 # ---------------------------------------------------------------------------
@@ -77,6 +94,7 @@ def nav(current: str = "") -> str:
   <a class="logo" href="/" aria-label="BRYME home"><span class="logo-mark" aria-hidden="true">B</span>BRYME</a>
   <nav class="main-nav" aria-label="Primary">{''.join(items)}</nav>
   <form class="nav-search-form" action="/search/" method="get" role="search"><input type="search" name="q" placeholder="Search guides, tools…" aria-label="Search BRYME" autocomplete="off"></form>
+  <button type="button" class="nav-toggle" data-drawer-open aria-label="Open menu" aria-expanded="false"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
 </div></header>'''
 
 
@@ -107,7 +125,61 @@ def howto_nav(current: str = "") -> str:
     for key, href, label in HOWTO_LINKS:
         aria = ' aria-current="page"' if key == current else ""
         items.append(f'<a{aria} href="{href}">{label}</a>')
-    return f'''<nav class="howto-nav" aria-label="How-to guides">{"".join(items)}</nav>'''
+    return f'''<nav class="section-nav" aria-label="How-to guides">{"".join(items)}</nav>'''
+
+
+def section_nav(links, label="Sections", current="", field=("key", "href", "text")):
+    """Generic moving category bar for any section hub."""
+    items = []
+    for link in links:
+        key, href, text = link[0], link[1], link[2]
+        aria = ' aria-current="page"' if key == current else ""
+        items.append(f'<a{aria} href="{href}">{esc(text)}</a>')
+    return f'<nav class="section-nav" aria-label="{esc(label)}">{"".join(items)}</nav>'
+
+
+# --- Country selector for the writing hub -----------------------------------
+WRITING_COUNTRIES = [
+    ("all", "All publications"),
+    ("NG", "Nigeria"),
+    ("africa", "Africa"),
+    ("US", "United States"),
+    ("UK", "United Kingdom"),
+    ("CA", "Canada"),
+    ("AU", "Australia"),
+    ("europe", "Europe"),
+    ("international", "Open worldwide"),
+]
+_FILTER_REGIONS = {
+    "africa": ["NG", "ZA", "NA", "KE", "GH", "ZW", "UG", "TZ"],
+    "europe": ["IE", "DE", "FR", "ES", "NL"],
+}
+
+
+def _filter_matches(rec: dict, flt: str) -> bool:
+    base = base_country(rec["slug"])
+    open_to = open_internationally(rec)
+    if flt == "all":
+        return True
+    if flt == "international":
+        return open_to
+    in_target = base in _FILTER_REGIONS.get(flt, [flt])
+    return in_target or open_to
+
+
+def writing_nav(current_flt: str = "") -> str:
+    """Country filter bar for the /writing/ hub — pick your country and it shows
+    publications based there plus the ones open to writers worldwide."""
+    chips = []
+    for key, label in WRITING_COUNTRIES:
+        n = sum(1 for r in WRITING if _filter_matches(r, key))
+        active = ' aria-pressed="true" class="country-chip is-active"' if key == "all" else ' class="country-chip" aria-pressed="false"'
+        chips.append(
+            f'<button type="button" data-filter="{key}"{active}>{esc(label)} <b class="chip-count">{n}</b></button>')
+    return f'''<form id="writing-filter" class="section-nav writing-countrybar" aria-label="Filter publications by country">
+{''.join(chips)}</form>
+<p id="filter-note" class="filter-status" aria-live="polite"><b id="filter-count">{len(WRITING)}</b> publications · All publications</p>
+<p id="filter-empty" class="filter-status empty" hidden>No publications match this filter yet.</p>'''
 
 
 def mobile_nav(current: str = "") -> str:
@@ -121,6 +193,58 @@ def mobile_nav(current: str = "") -> str:
         f'<a href="{href}"' + (' aria-current="page"' if key == current else '') +
         f'><span aria-hidden="true">{icon}</span>{label}</a>' for key, href, icon, label in links
     ) + '</nav>'
+
+
+def drawer(current: str = "") -> str:
+    """Easy slide-out sidebar: every section in one tappable place."""
+    def group(label, items):
+        rows = []
+        for key, href, text, icon in items:
+            aria = ' aria-current="page"' if key == current else ""
+            rows.append(f'<a{aria} href="{href}"><span aria-hidden="true">{icon}</span>{esc(text)}</a>')
+        return f'<div class="drawer-group"><b>{esc(label)}</b>{"".join(rows)}</div>'
+
+    howto = [
+        ("learn", "/learn/", "All how-tos", "📚"),
+        ("examples", "/learn/examples/", "Examples", "✳️"),
+        ("dos-and-donts", "/learn/dos-and-donts/", "Dos & don'ts", "✅"),
+        ("types-of-writing", "/learn/types-of-writing/", "Writing types", "🧩"),
+        ("start-writing", "/learn/start-writing/", "Start writing", "🚀"),
+        ("academic-writing", "/learn/academic-writing/", "Academic", "🎓"),
+        ("creative-writing", "/learn/creative-writing/", "Creative", "✍️"),
+        ("editing-proofreading", "/learn/editing-proofreading/", "Editing & proofreading", "🧹"),
+        ("writing-for-publication", "/learn/writing-for-publication/", "Get published", "📮"),
+    ]
+    tools = [("tools", "/tools/", "All tools", "🛠️"),
+             ("templates", "/templates/", "Templates", "📄"),
+             ("checklists", "/checklists/", "Checklists", "☑️"),
+             ("glossary", "/glossary/", "Glossary", "🔤")]
+    write = [("writing", "/writing/", "All publications", "💰"),
+             ("guides", "/guides/", "Writing guides", "🗺️"),
+             ("tested", "/tested/", "BRYME Tested", "🧪")]
+    country = [("writing-NG", "/writing/?country=NG", "Nigeria & open worldwide", "🇳🇬"),
+               ("writing-africa", "/writing/?country=africa", "Africa & diaspora", "🌍"),
+               ("writing-US", "/writing/?country=US", "United States", "🇺🇸"),
+               ("writing-UK", "/writing/?country=UK", "United Kingdom", "🇬🇧"),
+               ("writing-CA", "/writing/?country=CA", "Canada", "🇨🇦"),
+               ("writing-AU", "/writing/?country=AU", "Australia", "🇦🇺")]
+    trust = [("about", "/about/", "About", "ℹ️"),
+             ("editorial-policy", "/editorial-policy/", "Editorial policy", "📜"),
+             ("corrections", "/corrections/", "Corrections", "✏️"),
+             ("privacy", "/privacy/", "Privacy", "🔒"),
+             ("contact", "/contact/", "Contact", "✉️")]
+    return f'''<div id="drawer-backdrop"></div>
+<aside id="site-drawer" aria-hidden="true" aria-label="Site menu" role="dialog" aria-modal="true">
+  <div class="drawer-head"><a class="logo" href="/"><span class="logo-mark" aria-hidden="true">B</span>BRYME</a><button type="button" class="drawer-close" data-drawer-close aria-label="Close menu"><svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+  {group("How to write", howto)}
+  {group("Tools & templates", tools)}
+  {group("Write & get paid", write)}
+  <div class="drawer-group"><b>Publications by country</b>
+    <div class="drawer-sub">{"".join(f'<a href="{h}">{esc(t)}</a>' for _, h, t, _ in country)}</div>
+  </div>
+  {group("Trust & about", trust)}
+  <p class="drawer-note">BRYME is a free, independent writing resource. Guides and tools work right in your browser — no account, no charge.</p>
+</aside>'''
 
 
 def page_wf(*, title: str, description: str, route: str, current: str, body: str,
@@ -170,7 +294,7 @@ def page_wf(*, title: str, description: str, route: str, current: str, body: str
 <link rel="stylesheet" href="/assets/bryme-v2.css">
 {schema(site_graph)}
 {schema(structured)}
-</head><body>{nav(current)}<main id="main">{body}</main>{mobile_nav(current)}{footer()}</body></html>'''
+</head><body>{nav(current)}<main id="main">{body}</main>{mobile_nav(current)}{drawer(current)}<script src="/assets/site-nav.js" defer></script>{footer()}</body></html>'''
 
 
 # ---------------------------------------------------------------------------
@@ -216,8 +340,11 @@ def pub_card(rec: dict, heading: str = "h2") -> str:
     wc = (rec.get("wordCount") or {}).get("display") or "—"
     el = (rec.get("eligibility") or {}).get("summary") or "See eligibility"
     url = f"/writing/{esc(rec['slug'])}/"
-    return f'''<article class="job-card">
-  <div class="job-card-badges">{status_badge(rec)}{verify_badge(rec)}</div>
+    base = esc(base_country(rec["slug"]))
+    open_to = "international" if open_internationally(rec) else "regional"
+    region_label = esc(BASE_NAMES.get(base_country(rec["slug"]), "Open to all"))
+    return f'''<article class="job-card" data-country="{base}" data-open="{open_to}">
+  <div class="job-card-badges">{status_badge(rec)}{verify_badge(rec)}<span class="verify-badge country">{region_label}</span></div>
   <{heading} class="job-card-title"><a href="{url}">{esc(rec['publication'])}</a></{heading}>
   <p class="job-card-sub">{esc(rec.get('writingTypeLabel') or rec.get('title') or '')}</p>
   <dl class="pub-facts">
@@ -284,6 +411,7 @@ def writing_hub() -> None:
 <h1>Writing opportunities.</h1>
 <p>{len(WRITING)} publications researched by BRYME. Each permanent page shows the type of writing, the published pay, word count, who it's open to, the submission method, and the official guideline to confirm before you pitch. A listing is an invitation to pitch — not a job offer or a promise of payment.</p>
 <div class="source-line"><span><b>{len(WRITING)}</b> researched publications</span><span><b>{n_open}</b> currently accepting</span><span><b>{len([r for r in WRITING if (r.get("editorExperience") or {}).get("applied")])}</b> personally tested by BRYME</span></div></section>
+{writing_nav()}
 <section class="section"><div class="how-steps"><h2 class="section-sub">How make-money writing works with BRYME</h2><ol class="steps">
 <li><b>Pick an opportunity.</b> Each page names who it is open to — BRYME does not treat a missing country list as "open worldwide." Eligibility and diaspora rules are recorded where the publication states them.</li>
 <li><b>Read the official guideline, not just the rate card.</b> Every page links to the publication's own guidelines and shows its last human-check date.</li>
@@ -292,7 +420,8 @@ def writing_hub() -> None:
 <li><b>Pitch exactly as asked.</b> Send what the guideline requests through the official channel — a submission URL, form, or email.</li>
 <li><b>Track it honestly.</b> Where BRYME has personally tested an opportunity, the journey is shown as it happens — pitch sent, response, accepted, scheduled, published, paid — and payment is only marked confirmed once it actually lands.</li>
 </ol></div></section>
-<section class="section alt"><div class="wrap">{cards}</div></section></div>'''
+<section class="section alt"><div class="wrap" id="writing-list">{cards}</div></section>
+<script src="/assets/writing-filter.js" defer></script></div>'''
     write("/writing/", page_wf(title="Writing opportunities for African and international writers | BRYME",
                               description=f"{len(WRITING)} paid writing publications researched by BRYME — with published pay, word count, eligibility, submission method and the official guideline to confirm before pitching.",
                               route="/writing/", current="writing", body=body,
@@ -525,6 +654,7 @@ def guides_hub() -> None:
 <section class="page-hero"><p class="kicker"><span class="kicker-dot"></span>Learn the craft</p>
 <h1>Writing guides.</h1>
 <p>Practical, writer-first resources on pitching, submitting, building samples and getting paid. Each guide connects to the relevant writing opportunities.</p></section>
+{section_nav([("learn","/learn/","How to write"),("guides","/guides/","Writing guides"),("tools","/tools/","Tools"),("templates","/templates/","Templates"),("checklists","/checklists/","Checklists"),("writing","/writing/","Paid opportunities")], "Writing resources", "guides")}
 <section class="section alt"><div class="guide-grid">{cards}</div></section></div>'''
     write("/guides/", page_wf(title="Writing guides for pitching, submitting and getting paid | BRYME",
                              description="Practical BRYME writing guides on pitching publications, submitting articles, building samples and getting paid for freelance work.",

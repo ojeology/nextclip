@@ -1,0 +1,422 @@
+{
+  "afrolicious": {
+    "base": "",
+    "label": "International"
+  },
+  "the-republic": {
+    "base": "NG",
+    "label": "Nigeria"
+  },
+  "efiko": {
+    "base": "ZA",
+    "label": "South Africa"
+  },
+  "oriire": {
+    "base": "NG",
+    "label": "Nigeria"
+  },
+  "the-lagos-review": {
+    "base": "NG",
+    "label": "Nigeria"
+  },
+  "adi-again": {
+    "base": "US",
+    "label": "United States"
+  },
+  "adi-essays": {
+    "base": "US",
+    "label": "United States"
+  },
+  "longreads-personal-essay": {
+    "base": "US",
+    "label": "United States"
+  },
+  "longreads-reading-list": {
+    "base": "US",
+    "label": "United States"
+  },
+  "longreads-reported-feature": {
+    "base": "US",
+    "label": "United States"
+  },
+  "omenana": {
+    "base": "NG",
+    "label": "Nigeria"
+  },
+  "agbowo-essays": {
+    "base": "NG",
+    "label": "Nigeria"
+  },
+  "listverse": {
+    "base": "",
+    "label": "International"
+  },
+  "noema": {
+    "base": "US",
+    "label": "United States"
+  },
+  "vox-first-person": {
+    "base": "US",
+    "label": "United States"
+  },
+  "vox-future-perfect": {
+    "base": "US",
+    "label": "United States"
+  },
+  "vox-climate": {
+    "base": "US",
+    "label": "United States"
+  },
+  "aeon-essays": {
+    "base": "AU",
+    "label": "Australia"
+  },
+  "chicken-soup": {
+    "base": "US",
+    "label": "United States"
+  },
+  "new-humanitarian": {
+    "base": "KE",
+    "label": "Kenya"
+  },
+  "african-arguments": {
+    "base": "UK",
+    "label": "United Kingdom"
+  },
+  "rest-of-world": {
+    "base": "US",
+    "label": "United States"
+  },
+  "psyche-first-person": {
+    "base": "UK",
+    "label": "United Kingdom"
+  },
+  "walrus-essays": {
+    "base": "CA",
+    "label": "Canada"
+  },
+  "mcsweeneys": {
+    "base": "US",
+    "label": "United States"
+  },
+  "literary-hub": {
+    "base": "US",
+    "label": "United States"
+  },
+  "new-lines": {
+    "base": "US",
+    "label": "United States"
+  },
+  "himal-southasian": {
+    "base": "NP",
+    "label": "Nepal"
+  },
+  "climate-home-news": {
+    "base": "UK",
+    "label": "United Kingdom"
+  },
+  "clarkesworld-fiction": {
+    "base": "US",
+    "label": "United States"
+  },
+  "clarkesworld-nonfiction": {
+    "base": "US",
+    "label": "United States"
+  },
+  "uncanny-fiction": {
+    "base": "US",
+    "label": "United States"
+  },
+  "uncanny-poetry": {
+    "base": "US",
+    "label": "United States"
+  },
+  "griffith-review-bodies": {
+    "base": "AU",
+    "label": "Australia"
+  },
+  "overland-fiction": {
+    "base": "AU",
+    "label": "Australia"
+  },
+  "overland-online": {
+    "base": "AU",
+    "label": "Australia"
+  },
+  "americas-quarterly": {
+    "base": "US",
+    "label": "United States"
+  },
+  "nacla": {
+    "base": "US",
+    "label": "United States"
+  },
+  "the-tyee": {
+    "base": "CA",
+    "label": "Canada"
+  },
+  "wasafiri-interviews": {
+    "base": "UK",
+    "label": "United Kingdom"
+  },
+  "the-offing-wit-tea": {
+    "base": "US",
+    "label": "United States"
+  },
+  "the-rumpus-essays": {
+    "base": "US",
+    "label": "United States"
+  },
+  "the-rumpus-el-alboroto": {
+    "base": "US",
+    "label": "United States"
+  },
+  "words-without-borders-reviews": {
+    "base": "US",
+    "label": "United States"
+  },
+  "brevity-essays": {
+    "base": "US",
+    "label": "United States"
+  },
+  "markaz-review": {
+    "base": "",
+    "label": "International"
+  },
+  "strange-horizons-fiction": {
+    "base": "US",
+    "label": "United States"
+  },
+  "electric-literature-essays": {
+    "base": "US",
+    "label": "United States"
+  },
+  "undark": {
+    "base": "US",
+    "label": "United States"
+  },
+  "conde-nast-traveler": {
+    "base": "US",
+    "label": "United States"
+  },
+  "asimovs-fiction": {
+    "base": "US",
+    "label": "United States"
+  },
+  "analog-fiction": {
+    "base": "US",
+    "label": "United States"
+  },
+  "analog-fact": {
+    "base": "US",
+    "label": "United States"
+  },
+  "beneath-ceaseless-skies": {
+    "base": "US",
+    "label": "United States"
+  },
+  "khoreo-fiction": {
+    "base": "CA",
+    "label": "Canada"
+  },
+  "narratively": {
+    "base": "US",
+    "label": "United States"
+  },
+  "longreads": {
+    "base": "US",
+    "label": "United States"
+  },
+  "cracked": {
+    "base": "US",
+    "label": "United States"
+  },
+  "whatculture": {
+    "base": "UK",
+    "label": "United Kingdom"
+  },
+  "wonderslist": {
+    "base": "",
+    "label": "International"
+  },
+  "income-diary": {
+    "base": "",
+    "label": "International"
+  },
+  "communique": {
+    "base": "",
+    "label": "International"
+  },
+  "statement-africa": {
+    "base": "",
+    "label": "International"
+  },
+  "the-offing": {
+    "base": "US",
+    "label": "United States"
+  },
+  "griffith-review": {
+    "base": "AU",
+    "label": "Australia"
+  },
+  "earth-island-journal": {
+    "base": "US",
+    "label": "United States"
+  },
+  "doek-literary-magazine": {
+    "base": "NA",
+    "label": "Namibia"
+  },
+  "torch-literary-arts": {
+    "base": "US",
+    "label": "United States"
+  },
+  "chestnut-review": {
+    "base": "US",
+    "label": "United States"
+  },
+  "the-sun-magazine": {
+    "base": "US",
+    "label": "United States"
+  },
+  "black-fox-literary-magazine": {
+    "base": "US",
+    "label": "United States"
+  },
+  "the-forge-literary-magazine": {
+    "base": "US",
+    "label": "United States"
+  },
+  "split-lip-magazine": {
+    "base": "US",
+    "label": "United States"
+  },
+  "cincinnati-review": {
+    "base": "US",
+    "label": "United States"
+  },
+  "guernica": {
+    "base": "US",
+    "label": "United States"
+  },
+  "the-stinging-fly": {
+    "base": "IE",
+    "label": "Ireland"
+  },
+  "the-drift": {
+    "base": "US",
+    "label": "United States"
+  },
+  "new-lines-magazine": {
+    "base": "US",
+    "label": "United States"
+  },
+  "smashing-magazine": {
+    "base": "DE",
+    "label": "Germany"
+  },
+  "writers-digest": {
+    "base": "US",
+    "label": "United States"
+  },
+  "eater": {
+    "base": "US",
+    "label": "United States"
+  },
+  "the-kitchn": {
+    "base": "US",
+    "label": "United States"
+  },
+  "aarp-magazine": {
+    "base": "US",
+    "label": "United States"
+  },
+  "wired": {
+    "base": "US",
+    "label": "United States"
+  },
+  "business-insider": {
+    "base": "US",
+    "label": "United States"
+  },
+  "slate": {
+    "base": "US",
+    "label": "United States"
+  },
+  "rest-of-world-2": {
+    "base": "US",
+    "label": "United States"
+  },
+  "kenyon-review": {
+    "base": "US",
+    "label": "United States"
+  },
+  "agni": {
+    "base": "US",
+    "label": "United States"
+  },
+  "litmag-online": {
+    "base": "",
+    "label": "International"
+  },
+  "bombay-literary-magazine": {
+    "base": "US",
+    "label": "United States"
+  },
+  "hobart": {
+    "base": "US",
+    "label": "United States"
+  },
+  "solarpunk-magazine": {
+    "base": "US",
+    "label": "United States"
+  },
+  "diabolical-plots": {
+    "base": "US",
+    "label": "United States"
+  },
+  "haven-speculative": {
+    "base": "US",
+    "label": "United States"
+  },
+  "mudroom": {
+    "base": "US",
+    "label": "United States"
+  },
+  "space-and-time": {
+    "base": "US",
+    "label": "United States"
+  },
+  "ploughshares": {
+    "base": "US",
+    "label": "United States"
+  },
+  "zyzzyva": {
+    "base": "US",
+    "label": "United States"
+  },
+  "the-threepenny-review": {
+    "base": "US",
+    "label": "United States"
+  },
+  "transition-magazine": {
+    "base": "US",
+    "label": "United States"
+  },
+  "the-ex-puritan": {
+    "base": "CA",
+    "label": "Canada"
+  },
+  "the-forge": {
+    "base": "US",
+    "label": "United States"
+  },
+  "west-branch": {
+    "base": "US",
+    "label": "United States"
+  },
+  "pulp-literature": {
+    "base": "CA",
+    "label": "Canada"
+  }
+}
