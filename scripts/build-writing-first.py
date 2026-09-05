@@ -62,6 +62,133 @@ WRITING = json.loads((ROOT / "content/opportunities.json").read_text(encoding="u
 # Base country (where each publication is based) for the country selector.
 # "" = online / international — no single verified base country to claim.
 PUB_COUNTRIES = json.loads((ROOT / "content/hub/pub-countries.json").read_text(encoding="utf-8"))
+FX = json.loads((ROOT / "content/hub/fx-rates.json").read_text(encoding="utf-8"))
+
+# ---------------------------------------------------------------------------
+# Facet vocabularies.
+#
+# The raw records grew organically and use several spellings for the same
+# thing ("essays"/"essay", "interviews"/"interview", "reviews"/"book-review").
+# A filter built straight on the raw values silently splits its own results,
+# so everything is folded through these maps before it reaches the UI.
+# Nothing is discarded — the raw label is still shown on the card.
+# ---------------------------------------------------------------------------
+
+WRITING_TYPE_MAP = {
+    "essays": "essays", "essay": "essays", "critical-essay": "essays",
+    "personal-essays": "personal-essays", "personal-essay": "personal-essays",
+    "creative-nonfiction": "creative-nonfiction", "narrative-nonfiction": "creative-nonfiction",
+    "nonfiction": "creative-nonfiction",
+    "fiction": "fiction", "drama": "fiction",
+    "poetry": "poetry",
+    "journalism": "journalism", "reportage": "journalism", "news": "journalism",
+    "reported-feature": "journalism",
+    "articles": "articles", "listicle": "articles", "technical": "articles",
+    "reading-list": "articles", "quiz": "articles", "gallery": "articles",
+    "analysis": "analysis", "money": "analysis", "personal-finance": "analysis",
+    "opinion": "opinion", "humor": "opinion",
+    "reviews": "reviews", "book-review": "reviews", "culture": "reviews",
+    "interviews": "interviews", "interview": "interviews",
+    "translation": "translation",
+    "other": "other",
+}
+
+WRITING_TYPE_LABELS = {
+    "essays": "Essays", "personal-essays": "Personal essays",
+    "creative-nonfiction": "Creative nonfiction", "fiction": "Fiction",
+    "poetry": "Poetry", "journalism": "Journalism & reporting",
+    "articles": "Articles & explainers", "analysis": "Analysis",
+    "opinion": "Opinion", "reviews": "Reviews & criticism",
+    "interviews": "Interviews", "translation": "Translation", "other": "Other",
+}
+
+# Brief §3: one status vocabulary across the whole site.
+STATUS_MAP = {
+    "open": "open", "rolling": "rolling", "upcoming": "seasonal",
+    "deadline": "deadline", "closed": "closed", "unknown": "unknown",
+}
+STATUS_LABELS = {
+    "open": ("Open", "Accepting submissions now, with no stated closing date."),
+    "rolling": ("Rolling", "Reads year-round; no submission window to wait for."),
+    "seasonal": ("Seasonal", "Opens in windows. Currently between reading periods."),
+    "deadline": ("Deadline", "Open now, but closes on a stated date."),
+    "closed": ("Closed", "Not accepting submissions at the last check."),
+    "unknown": ("Unknown", "The official page does not state a current status."),
+}
+
+AI_POLICY_MAP = {
+    "prohibited": "prohibited", "no-ai": "prohibited", "strict": "prohibited",
+    "disclosure-required": "disclosure", "limited": "disclosure",
+    "not-stated": "not-stated",
+}
+AI_POLICY_LABELS = {
+    "prohibited": "AI-generated work prohibited",
+    "disclosure": "AI use must be disclosed",
+    "not-stated": "AI policy not stated",
+}
+
+
+def norm_types(rec: dict) -> list[str]:
+    """Folded, de-duplicated, order-stable writing types for one record."""
+    out = []
+    for t in rec.get("writingTypes") or []:
+        n = WRITING_TYPE_MAP.get(t, "other")
+        if n not in out:
+            out.append(n)
+    return out
+
+
+def norm_status(rec: dict) -> str:
+    return STATUS_MAP.get(rec.get("submissionStatus"), "unknown")
+
+
+def norm_ai(rec: dict) -> str:
+    return AI_POLICY_MAP.get(rec.get("aiPolicy"), "not-stated")
+
+
+def usd_amount(rec: dict):
+    """Lowest stated pay, normalised to USD, for sorting and filtering only.
+
+    Returns None when the publication states no number — never a guess. A
+    record with unstated pay must not sort as if it paid nothing.
+    """
+    pay = rec.get("pay") or {}
+    amt = pay.get("amountMin")
+    if amt is None:
+        return None
+    cur = (pay.get("currency") or "USD").upper() or "USD"
+    rate = FX["perUsd"].get(cur)
+    if rate is None:
+        return None
+    return round(amt / rate, 2)
+
+
+def usd_approx(rec: dict) -> str:
+    """Dated approximate USD, shown *beside* the publication's own figure.
+
+    The stated figure stays primary because that is the verified fact; this is
+    a convenience for comparison and is always labelled as approximate.
+    """
+    pay = rec.get("pay") or {}
+    cur = (pay.get("currency") or "").upper()
+    if not cur or cur == "USD":
+        return ""
+    lo, hi = pay.get("amountMin"), pay.get("amountMax")
+    if lo is None:
+        return ""
+    rate = FX["perUsd"].get(cur)
+    if not rate:
+        return ""
+    def fmt(v):
+        u = v / rate
+        return f"${u:,.0f}" if u >= 10 else f"${u:,.2f}"
+    span = fmt(lo) if (hi is None or hi == lo) else f"{fmt(lo)}\u2013{fmt(hi)}"
+    return f"\u2248 {span} USD"
+
+
+def pub_country(rec: dict) -> dict:
+    return PUB_COUNTRIES.get(rec.get("slug") or rec.get("id") or "", {"base": "", "label": "International"})
+
 TRUST_CONTENT = json.loads((ROOT / "content/hub/trust-pages.json").read_text(encoding="utf-8"))
 BASE_NAMES = {"NG": "Nigeria", "US": "United States", "UK": "United Kingdom", "CA": "Canada",
               "AU": "Australia", "IE": "Ireland", "DE": "Germany", "ZA": "South Africa",
@@ -220,21 +347,25 @@ def country_name(iso: str) -> str:
     return COUNTRY_NAMES.get(iso) or BASE_NAMES.get(iso) or iso
 
 
-def _filter_matches(rec: dict, flt: str) -> bool:
-    """A publication matches when it is based in the chosen country/region, or
-    when it is open to writers worldwide (so nobody is shown an empty list)."""
+def _filter_matches(rec: dict, flt: str, mode: str = "based") -> bool:
+    """Does this record match a country/region filter?
+
+    Two modes, because "which UK magazines take pitches?" and "what can I apply
+    to from Nigeria?" are different questions and the option counts have to
+    match whichever the control is set to. `based` is the default, so the
+    counts in the <select> are counts of publications actually based there —
+    the inclusive count was 98 for every country and told the user nothing.
+    """
     base = (base_country(rec["slug"]) or "").upper()
     open_to = open_internationally(rec)
     if flt == "all":
         return True
     if flt == "international":
         return open_to
-    if flt == base:
-        return True
-    # region/continent slug
-    if flt == region_slug(continent_of(base)) and base:
-        return True
-    return open_to
+    here = bool(base) and (flt == base or flt == region_slug(continent_of(base)))
+    if mode == "opento":
+        return here or open_to
+    return here
 
 
 def writing_nav(current_flt: str = "") -> str:
@@ -279,20 +410,73 @@ def writing_nav(current_flt: str = "") -> str:
             rows.append(f'<option value="{esc(iso)}">{esc(country_name(iso))} — {n}</option>')
         opts.append(f'<optgroup label="{esc(cont)}">' + "".join(rows) + "</optgroup>")
 
-    return f'''<form id="writing-filter" class="country-filter" aria-label="Filter publications by country">
-  <div class="country-filter-row">
-    <label class="country-filter-label" for="country-select">Where are you writing from?</label>
-    <div class="country-select-wrap">
-      <select id="country-select" name="country" autocomplete="country">
-{"".join(opts)}
-      </select>
-    </div>
-    <button type="button" id="country-reset" class="country-reset">Reset</button>
+    # Counts are computed from the real records so no option ever advertises
+    # results that do not exist.
+    tcount = {}
+    for r in WRITING:
+        for t in norm_types(r):
+            tcount[t] = tcount.get(t, 0) + 1
+    type_opts = "".join(
+        f'<option value="{esc(k)}">{esc(WRITING_TYPE_LABELS[k])} — {tcount[k]}</option>'
+        for k in sorted(tcount, key=lambda k: (-tcount[k], WRITING_TYPE_LABELS[k])))
+
+    scount = {}
+    for r in WRITING:
+        k = norm_status(r)
+        scount[k] = scount.get(k, 0) + 1
+    accepting = sum(scount.get(k, 0) for k in ("open", "rolling", "deadline"))
+    status_opts = f'<option value="acceptingnow">Accepting now — {accepting}</option>' + "".join(
+        f'<option value="{esc(k)}">{esc(STATUS_LABELS[k][0])} — {scount[k]}</option>'
+        for k in ("open", "rolling", "seasonal", "deadline", "closed", "unknown") if scount.get(k))
+
+    def n_at_least(v):
+        return sum(1 for r in WRITING if (usd_amount(r) or -1) >= v)
+    pay_opts = "".join(
+        f'<option value="{v}">${v}+ — {n_at_least(v)}</option>'
+        for v in (50, 100, 250, 500, 1000) if n_at_least(v))
+
+    n_global = sum(1 for r in WRITING if (r.get("eligibility") or {}).get("mode") in ("open", "worldwide"))
+
+    return f'''<form id="opp-filter" class="opp-filter" aria-label="Search and filter writing opportunities">
+  <div class="opp-filter-search">
+    <label class="sr-only" for="f-q">Search opportunities</label>
+    <input id="f-q" type="search" placeholder="Search publications, genres, topics — e.g. personal essay, poetry, Lagos" autocomplete="off">
   </div>
-  <p class="country-filter-hint">Picking a country shows publications based there <em>plus</em> every publication open to writers worldwide.</p>
+  <div class="opp-filter-grid">
+    <div class="opp-field"><label for="f-country">Country</label>
+      <select id="f-country" name="country" autocomplete="country">{"".join(opts)}</select></div>
+    <div class="opp-field"><label for="f-cmode">Country means</label>
+      <select id="f-cmode">
+        <option value="based">Publication is based there</option>
+        <option value="opento">Open to writers from there</option>
+      </select></div>
+    <div class="opp-field"><label for="f-type">Type of writing</label>
+      <select id="f-type"><option value="">Any type</option>{type_opts}</select></div>
+    <div class="opp-field"><label for="f-status">Status</label>
+      <select id="f-status"><option value="">Any status</option>{status_opts}</select></div>
+    <div class="opp-field"><label for="f-pay">Pays at least</label>
+      <select id="f-pay"><option value="">Any pay</option>{pay_opts}</select></div>
+    <div class="opp-field"><label for="f-words">Length</label>
+      <select id="f-words"><option value="">Any length</option>
+        <option value="short">Short — under 1,200 words</option>
+        <option value="medium">Medium — 800 to 3,000</option>
+        <option value="long">Long — 2,500+</option></select></div>
+    <div class="opp-field"><label for="f-sort">Sort by</label>
+      <select id="f-sort"><option value="default">BRYME order</option>
+        <option value="pay">Highest pay</option>
+        <option value="verified">Most recently verified</option>
+        <option value="deadline">Closing soonest</option>
+        <option value="name">Publication name</option></select></div>
+  </div>
+  <div class="opp-filter-row">
+    <label class="opp-check"><input type="checkbox" id="f-global"> Open to writers anywhere — {n_global}</label>
+    <button type="button" id="f-reset" class="country-reset">Reset all</button>
+  </div>
+  <p class="country-filter-hint"><b>Publication is based there</b> answers &ldquo;which UK magazines take pitches?&rdquo;. <b>Open to writers from there</b> answers &ldquo;what can I apply to from Nigeria?&rdquo; and includes everything open worldwide. A minimum-pay filter hides publications that do not state a figure &mdash; BRYME will not guess what they pay.</p>
 </form>
-<p id="filter-note" class="filter-status" aria-live="polite"><b id="filter-count">{n_all}</b> publications · All countries</p>
-<p id="filter-empty" class="filter-status empty" hidden>No publications match this filter yet. Try “Open worldwide”, or reset the filter.</p>'''
+<div id="f-chips" class="f-chips" hidden></div>
+<p id="filter-note" class="filter-status" aria-live="polite"><b id="f-count">{n_all} opportunities</b></p>
+<p id="f-empty" class="filter-status empty" hidden>Nothing matches all of those filters. Remove one — or <a href="/writing/">see all {n_all}</a>.</p>'''
 
 
 
@@ -351,7 +535,7 @@ def drawer(current: str = "") -> str:
     return f'''<div id="drawer-backdrop"></div>
 <aside id="site-drawer" aria-hidden="true" aria-label="Site menu" role="dialog" aria-modal="true">
   <div class="drawer-head"><a class="logo" href="/"><span class="logo-mark" aria-hidden="true">B</span>BRYME</a><button type="button" class="drawer-close" data-drawer-close aria-label="Close menu"><svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
-  {group("Start here", [("home", "/", "Home", "🏠"), ("start", "/start/", "Complete beginner path", "🧭"), ("find", "/find/", "What do you want to write?", "❓"), ("compare", "/compare/", "Compare formats", "⚖️"), ("regional", "/regional/", "Writing by country", "🌍"), ("search", "/search/", "Search BRYME", "🔍")])}
+  {group("Start here", [("home", "/", "Home", "🏠"), ("start", "/start/", "Complete beginner path", "🧭"), ("find", "/find/", "What do you want to write?", "❓"), ("compare", "/compare/", "Compare formats", "⚖️"), ("tracker", "/tracker/", "Submission tracker", "📋"), ("regional", "/regional/", "Writing by country", "🌍"), ("search", "/search/", "Search BRYME", "🔍")])}
   {group("How to write", howto)}
   {group("Tools & templates", tools)}
   {group("Write & get paid", write)}
@@ -462,12 +646,38 @@ def pub_card(rec: dict, heading: str = "h2") -> str:
     region = esc(region_slug(continent_of(base_country(rec["slug"]))))
     _iso = base_country(rec["slug"])
     region_label = esc(country_name(_iso) if _iso else "Open to all")
-    return f'''<article class="job-card" data-country="{base}" data-region="{region}" data-open="{open_to}">
+    # --- facet attributes (Brief §6/§7) -----------------------------------
+    # Everything the filter engine needs is emitted onto the card so filtering
+    # is pure DOM work with no fetch and no JSON payload to keep in sync.
+    st = norm_status(rec)
+    types = norm_types(rec)
+    usd = usd_amount(rec)
+    wcmin = (rec.get("wordCount") or {}).get("min")
+    wcmax = (rec.get("wordCount") or {}).get("max")
+    cur = ((rec.get("pay") or {}).get("currency") or "").upper()
+    elig = rec.get("eligibility") or {}
+    # "Can I apply from anywhere?" — the brief's first-class question.
+    globally_open = elig.get("mode") in ("open", "worldwide")
+    approx = usd_approx(rec)
+    approx_html = f'<span class="pay-approx" title="Approximate, converted at the mid-market rate on {esc(FX["fetchedAt"])}">{esc(approx)}</span>' if approx else ""
+    deadline = rec.get("deadline") or ""
+    search_blob = " ".join(filter(None, [
+        rec.get("publication", ""), rec.get("title", ""), rec.get("writingTypeLabel", ""),
+        rec.get("excerpt", ""), " ".join(rec.get("keywords") or []), region_label,
+    ])).lower()
+
+    return f'''<article class="job-card" data-country="{base}" data-region="{region}" data-open="{open_to}"
+  data-status="{esc(st)}" data-types="{esc(" ".join(types))}" data-currency="{esc(cur)}"
+  data-usd="{"" if usd is None else usd}" data-wcmin="{wcmin if wcmin is not None else ""}"
+  data-wcmax="{wcmax if wcmax is not None else ""}" data-global="{"1" if globally_open else "0"}"
+  data-ai="{esc(norm_ai(rec))}" data-deadline="{esc(deadline)}"
+  data-verified="{esc(rec.get("lastVerified") or "")}"
+  data-pub="{esc(rec.get("publication", ""))}" data-search="{esc(search_blob)}">
   <div class="job-card-badges">{status_badge(rec)}{verify_badge(rec)}<span class="verify-badge country">{region_label}</span></div>
   <{heading} class="job-card-title"><a href="{url}">{esc(rec['publication'])}</a></{heading}>
   <p class="job-card-sub">{esc(rec.get('writingTypeLabel') or rec.get('title') or '')}</p>
   <dl class="pub-facts">
-    <dt>Pay</dt><dd>{esc(pay)}</dd>
+    <dt>Pay</dt><dd>{esc(pay)}{approx_html}</dd>
     <dt>Words</dt><dd>{esc(wc)}</dd>
     <dt>Eligible</dt><dd>{esc(el.split('.')[0])}</dd>
     <dt>Verified</dt><dd>{esc((rec.get('lastVerified') or TODAY)[:7])}</dd>
@@ -522,6 +732,105 @@ def home() -> None:
 # ---------------------------------------------------------------------------
 # /writing/ hub
 # ---------------------------------------------------------------------------
+
+def tracker_page() -> None:
+    """Submission tracker (Brief §12). Local-first, no account.
+
+    Deliberately not a "coming soon" stub: it is fully functional today
+    against localStorage, with export/import so the data is portable, and the
+    stored envelope is versioned so accounts can be layered on later (§13)
+    without a migration that loses anyone's pitches."""
+    statuses = [
+        ("draft", "Draft", "Written but not sent."),
+        ("submitted", "Submitted", "Sent. Clock started."),
+        ("waiting", "Waiting", "Past the point where you would expect a fast no."),
+        ("followup", "Follow-up", "Time to nudge, once, politely."),
+        ("accepted", "Accepted", "Commissioned or taken."),
+        ("rejected", "Rejected", "A no. Log it and pitch it elsewhere."),
+        ("paid", "Paid", "Money actually received."),
+    ]
+    opts = "".join(f'<option value="{esc(k)}">{esc(l)}</option>' for k, l, _ in statuses)
+    filter_opts = '<option value="">All pitches</option>' + opts
+    flow = "".join(
+        f'<li><b>{esc(l)}</b><span>{esc(d)}</span></li>' for k, l, d in statuses)
+
+    body = f'''<div class="wrap"><nav class="breadcrumb"><a href="/">Home</a> / Submission tracker</nav>
+<section class="page-hero"><p class="kicker"><span class="kicker-dot"></span>Your pitches</p>
+<h1>Submission tracker.</h1>
+<p>Pitching is a numbers game and the numbers are impossible to hold in your head. Track what you sent, where, when, and what came back — so you know which markets to chase and which to stop pitching.</p>
+<p class="notice"><b>This stays in your browser.</b> No account, no sign-up, nothing sent to BRYME or anyone else. That also means it is tied to this browser on this device: use <b>Export</b> to keep a copy, and <b>Import</b> to move it or restore it.</p>
+</section></div>
+<section class="section"><div class="wrap">
+  <div id="tracker">
+    <div class="tk-bar">
+      <button type="button" class="btn" id="tk-add">Add a pitch</button>
+      <div class="tk-bar-right">
+        <label class="sr-only" for="tk-filter">Show</label>
+        <select id="tk-filter">{filter_opts}</select>
+        <button type="button" class="btn secondary" id="tk-export">Export</button>
+        <label class="btn secondary tk-importlabel" for="tk-import">Import
+          <input type="file" id="tk-import" accept="application/json,.json" hidden></label>
+      </div>
+    </div>
+    <p id="tk-notice" class="tk-notice" role="status" hidden></p>
+    <div id="tk-stats" class="tk-stats" aria-live="polite"></div>
+
+    <form id="tk-form" class="tk-form" hidden>
+      <div class="tk-form-grid">
+        <div class="tk-field wide"><label for="tk-f-pub">Publication <span aria-hidden="true">*</span></label>
+          <input id="tk-f-pub" type="text" required placeholder="e.g. The Republic" autocomplete="off"></div>
+        <div class="tk-field wide"><label for="tk-f-pitch">Pitch or title</label>
+          <input id="tk-f-pitch" type="text" placeholder="What you sent them" autocomplete="off"></div>
+        <div class="tk-field"><label for="tk-f-status">Status</label>
+          <select id="tk-f-status">{opts}</select></div>
+        <div class="tk-field"><label for="tk-f-submitted">Date submitted</label>
+          <input id="tk-f-submitted" type="date"></div>
+        <div class="tk-field"><label for="tk-f-expected">Reply expected by</label>
+          <input id="tk-f-expected" type="date"></div>
+        <div class="tk-field"><label for="tk-f-follow">Follow up on</label>
+          <input id="tk-f-follow" type="date"></div>
+        <div class="tk-field"><label for="tk-f-fee">Fee</label>
+          <input id="tk-f-fee" type="text" placeholder="e.g. $250 or ₦100,000" autocomplete="off"></div>
+        <div class="tk-field"><label for="tk-f-url">BRYME page</label>
+          <input id="tk-f-url" type="text" placeholder="/writing/the-republic/" autocomplete="off"></div>
+        <div class="tk-field wide"><label for="tk-f-notes">Notes</label>
+          <textarea id="tk-f-notes" rows="2" placeholder="Editor's name, what they asked for, what to try next"></textarea></div>
+      </div>
+      <div class="tk-form-actions">
+        <button type="submit" class="btn" id="tk-submit">Add pitch</button>
+        <button type="button" class="btn secondary" id="tk-cancel">Cancel</button>
+      </div>
+    </form>
+
+    <ul id="tk-list" class="tk-list"></ul>
+    <p id="tk-empty" class="filter-status empty">Nothing tracked yet. Add your first pitch — or open any opportunity and use &ldquo;Track this pitch&rdquo;.</p>
+  </div>
+</div></section>
+<section class="section alt"><div class="wrap"><div class="section-head"><div><p class="eyebrow">The stages</p>
+<h2>What each status means.</h2></div></div>
+<ol class="tk-flow">{flow}</ol>
+<p class="tool-note">A listing on BRYME is an invitation to pitch, never a promise of acceptance or payment. Mark something <b>Paid</b> only when the money has actually arrived.</p>
+</div></section>
+<section class="section"><div class="wrap"><div class="section-head"><div><p class="eyebrow">Next</p>
+<h2>While you wait.</h2></div></div>
+<div class="card-grid">
+<a class="path-card" href="/writing/?status=acceptingnow&amp;sort=pay"><span class="card-num">FIND</span><h3>Find the next market</h3><p>The best answer to one pending pitch is another pitch. Filter by pay, country and status.</p><span class="card-link">Search opportunities →</span></a>
+<a class="path-card" href="/learn/writing-for-publication/how-to-pitch-an-editor/"><span class="card-num">PITCH</span><h3>Write a better pitch</h3><p>What editors actually read, and the follow-up rule.</p><span class="card-link">Read the guide →</span></a>
+<a class="path-card" href="/learn/writing-for-publication/how-to-handle-a-rejection/"><span class="card-num">NO</span><h3>Handle a rejection</h3><p>What a no usually means, and what to do with the piece next.</p><span class="card-link">Read the guide →</span></a>
+</div></div></section>
+<script src="/assets/tracker.js" defer></script>'''
+    write("/tracker/", page_wf(
+        title="Submission tracker: track your writing pitches | BRYME",
+        description="Track every pitch you send — publication, date, status, follow-up date and fee. Free, private, stored in your browser with no account. Export any time.",
+        route="/tracker/", current="writing", body=body,
+        schema_data={"@context": "https://schema.org", "@type": "WebApplication",
+                     "name": "BRYME Submission Tracker",
+                     "applicationCategory": "BusinessApplication",
+                     "operatingSystem": "Any modern browser",
+                     "url": BASE + "/tracker/",
+                     "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}))
+
+
 def writing_hub() -> None:
     n_open = sum(1 for r in WRITING if status_of(r)[2] == "open")
     cards = "".join(pub_card(r, "h2") for r in WRITING)
@@ -539,8 +848,8 @@ def writing_hub() -> None:
 <li><b>Pitch exactly as asked.</b> Send what the guideline requests through the official channel — a submission URL, form, or email.</li>
 <li><b>Track it honestly.</b> Where BRYME has personally tested an opportunity, the journey is shown as it happens — pitch sent, response, accepted, scheduled, published, paid — and payment is only marked confirmed once it actually lands.</li>
 </ol></div></section>
-<section class="section alt"><div class="wrap" id="writing-list">{cards}</div></section>
-<script src="/assets/writing-filter.js" defer></script></div>'''
+<section class="section alt"><div class="wrap opp-list" id="opp-list">{cards}</div></section>
+<script src="/assets/opp-filter.js" defer></script></div>'''
     write("/writing/", page_wf(title="Writing opportunities for African and international writers | BRYME",
                               description=f"{len(WRITING)} paid writing publications researched by BRYME — with published pay, word count, eligibility, submission method and the official guideline to confirm before pitching.",
                               route="/writing/", current="writing", body=body,
@@ -773,7 +1082,17 @@ def pub_page(rec: dict) -> None:
     guide_links = guide_links[:3]
     guide_html = "".join(f'<a class="chip-card" href="/guides/{esc(g["slug"])}/"><b>📚</b><span>{esc(g["title"])}</span></a>' for g in guide_links)
 
-    submit_block = f'''<h3>How to submit</h3><p><b>{esc(method or "See official guideline")}</b></p>
+    # Brief §3: last-verified + official link stated in one consistent place,
+    # and §12: a one-click route into the tracker with the publication prefilled.
+    _st = norm_status(rec)
+    _stlab, _stdesc = STATUS_LABELS[_st]
+    track_href = f"/tracker/?add={quote(rec.get('publication',''))}&url=/writing/{esc(rec['slug'])}/"
+    submit_block = f'''<div class="verify-line"><span class="verify-badge {esc(_st)}">{esc(_stlab)}</span>
+<span class="verify-when">Last verified {esc(rec.get("lastVerified") or "—")}</span>
+{f'<a class="verify-official" href="{esc(official)}">Official submission page →</a>' if official else ''}</div>
+<p class="tool-note">{esc(_stdesc)}</p>
+<p><a class="btn secondary" href="{track_href}">Track this pitch</a></p>
+<h3>How to submit</h3><p><b>{esc(method or "See official guideline")}</b></p>
 <p>Apply through the <strong>official</strong> channel below. BRYME only records submission destinations it has verified.</p>
 <ul>
 <li>Official guideline: {f'<a href="{esc(official)}">opens the publication guideline (new tab)</a>' if official else 'Not recorded'}</li>
@@ -1091,6 +1410,7 @@ if __name__ == "__main__":
     # hub surface reads as one site; this builder still owns /writing/, /guides/,
     # /tested/, /about/ and the trust/legal pages.
     writing_hub()
+    tracker_page()
     for r in WRITING:
         pub_page(r)
     guides_hub()

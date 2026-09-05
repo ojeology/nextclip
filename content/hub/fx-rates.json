@@ -1,0 +1,29 @@
+{
+  "_comment": "Real mid-market rates, fetched once and pinned. NEVER hand-edit an amount: re-fetch from the source below and update fetchedAt with it. Per BRYME's standing rule, no conversion rate here is invented — every figure came from the named provider on the named date, and the site labels every converted figure as approximate and shows this date.",
+  "base": "USD",
+  "fetchedAt": "2026-09-05",
+  "source": {
+    "name": "exchangerate-api.com (open access endpoint)",
+    "url": "https://open.er-api.com/v6/latest/USD",
+    "providerUpdatedAt": "2026-09-05T00:02:32Z"
+  },
+  "crossCheck": {
+    "name": "Frankfurter (European Central Bank reference rates)",
+    "url": "https://api.frankfurter.dev/v1/latest?base=USD",
+    "date": "2026-09-04",
+    "note": "ECB does not publish an NGN reference rate. GBP, EUR, CAD, AUD and INR agreed with the primary source to within 0.4%.",
+    "rates": { "AUD": 1.3882, "CAD": 1.38, "EUR": 0.86044, "GBP": 0.7391, "INR": 94.49 }
+  },
+  "perUsd": {
+    "AUD": 1.388189,
+    "CAD": 1.382855,
+    "EUR": 0.861117,
+    "GBP": 0.739612,
+    "INR": 94.51761,
+    "NGN": 1324.205782,
+    "KES": 129.388213,
+    "GHS": 11.363793,
+    "ZAR": 15.966228,
+    "USD": 1
+  }
+}

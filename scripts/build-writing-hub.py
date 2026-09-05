@@ -305,6 +305,100 @@ def regional_note(g: dict) -> str:
             f'<p>{esc(note)} <a href="/regional/">See how conventions differ by country →</a></p></aside>')
 
 
+
+# ---------------------------------------------------------------------------
+# Brief §9: every article ends with a next step, never a dead end.
+#
+# Audit before this existed: 0 of 156 guide bodies linked into /writing/, while
+# 134 linked to a tool. The loop Google -> article -> tool -> opportunity ->
+# return was broken at exactly the opportunity step.
+#
+# The destination is chosen from the guide's own section and slug rather than
+# bolted on identically everywhere, because a generic "find opportunities"
+# button under a guide about semicolons is noise, not a next step.
+# ---------------------------------------------------------------------------
+
+NEXT_STEP_BY_SECTION = {
+    "writing-for-publication": ("/writing/?status=acceptingnow&sort=pay",
+        "Find a market for it", "Publications accepting pitches now, sorted by what they pay."),
+    "freelance-paid-writing": ("/writing/?status=acceptingnow&sort=pay",
+        "Find paid work", "Every publication BRYME has researched, filterable by pay and country."),
+    "creative-writing": ("/writing/?type=fiction&status=acceptingnow",
+        "Find somewhere to send it", "Publications currently reading fiction and poetry."),
+    "academic-writing": ("/tools/citation-formatter/",
+        "Format your references", "APA, MLA and Chicago from the details you already have."),
+    "professional-writing": ("/templates/",
+        "Start from a template", "Working templates for letters, reports, minutes and more."),
+    "online-writing": ("/tools/readability-score/",
+        "Check it reads easily", "Grade level and sentence length before you publish."),
+    "editing-proofreading": ("/tools/",
+        "Run it through the tools", "38 free checks — filler words, passive voice, clichés, repetition."),
+    "grammar-language": ("/tools/",
+        "Check your draft", "Free in-browser checks that catch what reading over it does not."),
+    "research-sources": ("/tools/citation-formatter/",
+        "Format your citations", "Turn source details into a correctly formatted reference."),
+    "writing-process": ("/tools/outline-builder/",
+        "Build the outline", "Plan the sections and budget the words before you draft."),
+    "types-of-writing": ("/templates/",
+        "Start from a template", "A working structure you can fill in."),
+    "examples": ("/find/", "Find the guide for your task",
+        "Describe what you are writing and BRYME routes you to it."),
+    "common-problems": ("/find/", "Find the right guide",
+        "Say what you are trying to write and get the guide, template and tool for it."),
+    "dos-and-donts": ("/checklists/", "Check it against a checklist",
+        "Run your draft past the list before you send it."),
+    "writing-basics": ("/start/", "Follow the beginner path",
+        "The essentials in order, so you are not guessing what to learn next."),
+    "start-writing": ("/start/", "Follow the beginner path",
+        "Twenty guides in the order that actually builds on itself."),
+    "structure-formatting": ("/tools/outline-builder/", "Build the structure",
+        "Plan your sections and budget the words before you draft."),
+    "journaling-personal": ("/tools/random-writing-prompt/", "Get a prompt",
+        "Something to write about when the page is blank."),
+}
+
+# Slug-level overrides where the section default would be wrong.
+NEXT_STEP_BY_SLUG = {
+    "how-to-pitch-an-editor": ("/writing/?status=acceptingnow&sort=pay",
+        "Pitch one of these", "Publications accepting pitches now, with pay and word count stated."),
+    "how-to-write-a-query-letter": ("/writing/?type=fiction",
+        "Find a market", "Publications currently reading fiction."),
+    "how-to-price-your-freelance-writing": ("/writing/?pay=250&sort=pay",
+        "See what markets actually pay", "Publications paying $250 or more per piece."),
+    "how-to-find-paying-publications": ("/writing/", "Search all 105",
+        "Filter by country, genre, pay, length and status."),
+    "how-to-handle-a-rejection": ("/tracker/", "Log it and move on",
+        "Track what you sent where, so a no becomes data instead of a bad day."),
+    "a-rejected-pitch-is-not-wasted": ("/tracker/", "Track the next one",
+        "Free, private, stored in your browser."),
+    "why-your-first-pitch-may-be-rejected": ("/tracker/", "Track your pitches",
+        "See which markets reply and which never do."),
+    "how-to-build-a-writing-portfolio": ("/writing/?status=acceptingnow",
+        "Get a published credit", "Publications accepting work now."),
+    "how-to-get-your-first-paid-writer-gig": ("/writing/?status=acceptingnow&sort=pay",
+        "Start here", "Open markets, smallest barrier first."),
+    "how-to-write-with-ai": ("/writing/", "Check the AI policy before you pitch",
+        "BRYME records what each publication states about AI-assisted work."),
+    "how-to-manage-a-long-writing-project": ("/tools/writing-timer/",
+        "Start a session", "A timer for the block you are about to do."),
+    "how-to-plan-a-novel": ("/tools/outline-builder/", "Build the plan",
+        "Sections, order and a word budget you can actually hold."),
+}
+
+
+def next_step(g: dict) -> str:
+    step = NEXT_STEP_BY_SLUG.get(g["slug"]) or NEXT_STEP_BY_SECTION.get(g["section"])
+    if not step:
+        return ""
+    href, title, blurb = step
+    return (f'<section class="section next-step"><div class="wrap">'
+            f'<a class="next-step-card" href="{esc(href)}">'
+            f'<span class="next-step-tag">Next step</span>'
+            f'<span class="next-step-title">{esc(title)}</span>'
+            f'<span class="next-step-blurb">{esc(blurb)}</span>'
+            f'<span class="next-step-go" aria-hidden="true">→</span></a></div></section>')
+
+
 def guide_page(g: dict) -> None:
     section = SECTIONS_BY_ID.get(g["section"])
     tool_items = g.get("tools", [])
@@ -318,7 +412,7 @@ def guide_page(g: dict) -> None:
 <p class="byline">Researched and written by <a href="/author/ibrahim-sodiq/">BRYME Editorial Desk</a>.</p>
 <a class="btn secondary" href="/learn/{esc(section['id'])}/">← All {esc(section['title'])} guides</a></section>
 <section class="section"><div class="prose">{prose}{regional_note(g)}</div></section></div>
-{tool_links(tool_items)}{related_links(g.get('related', []))}'''
+{tool_links(tool_items)}{next_step(g)}{related_links(g.get('related', []))}'''
     write(f"/learn/{g['section']}/{g['slug']}/", page_wf(
         title=f"{g['title']} | BRYME writing guides",
         description=g.get("description", ""),
@@ -696,14 +790,33 @@ def homepage() -> None:
         f'<a class="path-card" href="/learn/{esc(g["section"])}/{esc(g["slug"])}/"><span class="card-num">NEW</span><h3>{esc(g["title"])}</h3><p>{esc(g.get("description", ""))}</p><span class="card-link">Open →</span></a>'
         for g in latest)
     featured_pubs = "".join(_bwf.pub_card(r, "h3") for r in WRITING[:4])
+    n_open = sum(1 for r in WRITING
+                 if (r.get("submissionStatus") or "") in ("open", "rolling", "deadline"))
+    n_global = sum(1 for r in WRITING
+                   if (r.get("eligibility") or {}).get("mode") in ("open", "worldwide"))
     body = f'''<section class="hero"><div class="wrap hero-grid"><div>
-  <p class="kicker"><span class="kicker-dot"></span>Learn · Plan · Write · Check · Improve · Finish</p>
-  <h1>Learn to write. Write with <em>confidence.</em></h1>
-  <p class="hero-copy">BRYME is a complete writing resource — free guides, in-browser tools, and verified opportunities to get published and paid. Come as a beginner; leave with finished work.</p>
-  <div class="actions"><a class="btn" href="/learn/">Start learning →</a><a class="btn secondary" href="/tools/">Open the tools</a><a class="btn secondary" href="/writing/">Write &amp; get paid</a></div>
-</div><aside class="verify-card" aria-label="BRYME writing snapshot"><div class="verify-head"><h2 class="verify-title">BRYME snapshot</h2><span class="live-tag">Free</span></div><p class="verify-date">{TODAY}</p><div class="metric-row"><div class="metric"><b>{len(GUIDES)}</b><span>Writing guides</span></div><div class="metric"><b>{len(TOOLS)}</b><span>Free tools</span></div><div class="metric"><b>{len(WRITING)}</b><span>Opportunities</span></div></div><p class="verify-note">Guides and tools are free. Opportunities are researched and verified — a listing is an invitation to pitch, not a promise of payment.</p></aside></div>
-<div class="wrap location-picker"><p class="location-picker-label">Quick tools <span class="location-picker-hint">— no account, run in your browser</span></p><div class="chip-grid">{qtool_cards}</div></div></section>
-<section class="trust-strip"><div class="wrap trust-grid"><div class="trust-item"><span class="trust-icon">📚</span>Beginner-friendly guides</div><div class="trust-item"><span class="trust-icon">🛠</span>Free in-browser tools</div><div class="trust-item"><span class="trust-icon">✓</span>Verified opportunities</div></div></section>
+  <p class="kicker"><span class="kicker-dot"></span>Find · Pitch · Track · Get paid</p>
+  <h1>Stop pitching into the void. Find better writing opportunities in <em>seconds.</em></h1>
+  <p class="hero-copy">{len(WRITING)} publications researched by hand — what they pay, how long, who they are open to, and the official page to confirm it. Plus {len(GUIDES)} guides on how to pitch, {len(TOOLS)} free tools to write it, and a tracker for everything you send.</p>
+  <div class="actions"><a class="btn" href="/writing/">Explore writing opportunities →</a><a class="btn secondary" href="/tools/">Try the free writing tools</a></div>
+  <form class="home-search" action="/search/" method="get" role="search">
+    <label for="home-q">Already know what you are looking for? Search BRYME.</label>
+    <div class="home-search-row">
+      <input id="home-q" name="q" type="search" placeholder="Search guides, tools, publications — e.g. personal essay, poetry, invoice" autocomplete="off">
+      <button class="btn" type="submit">Search</button>
+    </div>
+  </form>
+</div><aside class="verify-card" aria-label="BRYME snapshot"><div class="verify-head"><h2 class="verify-title">BRYME snapshot</h2><span class="live-tag">Free</span></div><p class="verify-date">{TODAY}</p><div class="metric-row"><div class="metric"><b>{len(WRITING)}</b><span>Opportunities</span></div><div class="metric"><b>{n_open}</b><span>Accepting now</span></div><div class="metric"><b>{n_global}</b><span>Open worldwide</span></div></div><p class="verify-note">Every listing shows its last human-check date and links to the publication's own guideline. A listing is an invitation to pitch — never a promise of acceptance or payment.</p></aside></div>
+<div class="wrap location-picker"><p class="location-picker-label">Jump straight in <span class="location-picker-hint">— pre-filtered searches</span></p><div class="chip-grid">
+<a class="chip-card" href="/writing/?status=acceptingnow&amp;sort=pay"><b>💰</b><span>Highest paying, open now</span></a>
+<a class="chip-card" href="/writing/?global=1"><b>🌍</b><span>Open to writers anywhere</span></a>
+<a class="chip-card" href="/writing/?type=personal-essays"><b>✍️</b><span>Personal essays</span></a>
+<a class="chip-card" href="/writing/?type=fiction"><b>📖</b><span>Fiction &amp; poetry</span></a>
+<a class="chip-card" href="/tracker/"><b>📋</b><span>Track your pitches</span></a>
+</div></div></section>
+<section class="trust-strip"><div class="wrap trust-grid"><div class="trust-item"><span class="trust-icon">✓</span>Pay, word count and eligibility researched</div><div class="trust-item"><span class="trust-icon">✓</span>Official guideline linked on every listing</div><div class="trust-item"><span class="trust-icon">✓</span>Last-verified date shown, never hidden</div></div></section>
+
+<section class="section"><div class="wrap"><div class="section-head"><div><p class="eyebrow">Opportunities</p><h2>Publications that pay writers.</h2></div><a class="card-link" href="/writing/">Search all {len(WRITING)} →</a></div><div class="guide-grid">{featured_pubs}</div></div></section>
 
 <section class="section"><div class="wrap"><div class="section-head"><div><p class="eyebrow">Learn writing</p><h2>Start from the beginning.</h2></div><a class="card-link" href="/learn/">All {len(GUIDES)} guides →</a></div><div class="guide-grid">{pop_cards}</div></div></section>
 

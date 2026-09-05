@@ -240,7 +240,7 @@ async function ready(url) {
         /* ---------- 4. the country filter is a real selection control ---------- */
         if (route === "/writing/") {
           const f = await page.evaluate(() => {
-            const s = document.getElementById("country-select");
+            const s = document.getElementById("f-country") || document.getElementById("country-select");
             if (!s) return null;
             return {
               tag: s.tagName,
@@ -250,6 +250,27 @@ async function ready(url) {
             };
           });
           check(f !== null, `${label}: country filter control missing`);
+
+          // Brief §6: the whole facet panel, not just the country control.
+          const facets = await page.evaluate(() => {
+            const ids = ["f-q","f-country","f-cmode","f-type","f-status","f-pay","f-words","f-sort","f-global"];
+            return ids.map((id) => {
+              const el = document.getElementById(id);
+              if (!el) return { id, missing: true };
+              const lab = document.querySelector(`label[for="${id}"]`);
+              const named = !!(lab && lab.textContent.trim()) ||
+                            !!el.getAttribute("aria-label") ||
+                            !!el.closest("label");
+              return { id, missing: false, named, inMovingBar: !!el.closest(".section-nav") };
+            });
+          });
+          for (const fx of facets) {
+            check(!fx.missing, `${label}: facet control #${fx.id} missing`);
+            if (!fx.missing) {
+              check(fx.named, `${label}: facet control #${fx.id} has no accessible name`);
+              check(!fx.inMovingBar, `${label}: facet control #${fx.id} sits inside a scrolling nav bar`);
+            }
+          }
           if (f) {
             check(f.tag === "SELECT", `${label}: country filter is <${f.tag}>, not a selection control`);
             check(!f.insideMovingBar, `${label}: country filter sits inside a scrolling nav bar`);

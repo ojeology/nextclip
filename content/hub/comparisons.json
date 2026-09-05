@@ -60,8 +60,16 @@
           "a": "Articles, mostly. Publications pay for reporting because reporting costs time and access. Essays pay at literary magazines and a few outlets that commission opinion. Blog posts pay when they are yours and something else on the site earns."
         }
       ],
-      "guides": ["how-to-write-an-essay", "how-to-write-an-article", "how-to-write-a-blog-post", "all-types-of-writing"],
-      "tools": ["word-counter", "readability-score"],
+      "guides": [
+        "how-to-write-an-essay",
+        "how-to-write-an-article",
+        "how-to-write-a-blog-post",
+        "all-types-of-writing"
+      ],
+      "tools": [
+        "word-counter",
+        "readability-score"
+      ],
       "templates": []
     },
     {
@@ -120,8 +128,16 @@
           "a": "More than people think. `Adaeze-Okonkwo-CV.pdf` is findable in a folder of four hundred applications. `cv final FINAL v3.docx` is not, and it tells the reader something before they open it. Send PDF unless the advert asks for Word."
         }
       ],
-      "guides": ["how-to-write-a-cv-resume", "how-to-write-a-cover-letter", "how-to-write-about-yourself", "british-vs-american-english"],
-      "tools": ["word-counter", "text-cleaner"],
+      "guides": [
+        "how-to-write-a-cv-resume",
+        "how-to-write-a-cover-letter",
+        "how-to-write-about-yourself",
+        "british-vs-american-english"
+      ],
+      "tools": [
+        "word-counter",
+        "text-cleaner"
+      ],
       "templates": []
     },
     {
@@ -181,8 +197,16 @@
           "a": "Yes, and that is correct. It is not a teaser and it should not withhold the finding to keep the reader going. It has to work completely alone, because for most of your readers it will be the whole document."
         }
       ],
-      "guides": ["how-to-write-a-report", "how-to-structure-a-research-paper", "how-to-write-a-thesis", "how-to-make-writing-more-concise"],
-      "tools": ["word-counter", "readability-score"],
+      "guides": [
+        "how-to-write-a-report",
+        "how-to-structure-a-research-paper",
+        "how-to-write-a-thesis",
+        "how-to-make-writing-more-concise"
+      ],
+      "tools": [
+        "word-counter",
+        "readability-score"
+      ],
       "templates": []
     },
     {
@@ -234,8 +258,17 @@
           "a": "Reports are easier to structure and harder to write well, because the format lets you hide vagueness inside headings. Essays are harder to structure and easier to write well, because a weak argument has nowhere to hide."
         }
       ],
-      "guides": ["how-to-write-a-report", "how-to-write-an-essay", "dos-and-donts-of-report-writing", "dos-and-donts-of-an-essay", "how-to-use-headings-effectively"],
-      "tools": ["writing-checklist-generator", "readability-score"],
+      "guides": [
+        "how-to-write-a-report",
+        "how-to-write-an-essay",
+        "dos-and-donts-of-report-writing",
+        "dos-and-donts-of-an-essay",
+        "how-to-use-headings-effectively"
+      ],
+      "tools": [
+        "writing-checklist-generator",
+        "readability-score"
+      ],
       "templates": []
     },
     {
@@ -295,8 +328,18 @@
           "a": "No. The CV lists what you did; the letter explains what one or two of those things mean for this employer. If a sentence in your letter would sit comfortably on your CV, cut it and write the interpretation instead."
         }
       ],
-      "guides": ["how-to-write-a-cover-letter", "dos-and-donts-of-a-cover-letter", "how-to-write-about-yourself", "example-of-a-cover-letter", "how-to-write-a-grant-application"],
-      "tools": ["word-counter", "character-counter", "tone-checker"],
+      "guides": [
+        "how-to-write-a-cover-letter",
+        "dos-and-donts-of-a-cover-letter",
+        "how-to-write-about-yourself",
+        "example-of-a-cover-letter",
+        "how-to-write-a-grant-application"
+      ],
+      "tools": [
+        "word-counter",
+        "character-counter",
+        "tone-checker"
+      ],
       "templates": []
     },
     {
@@ -356,8 +399,17 @@
           "a": "Yes, and it is much harder. Living subjects can sue, refuse access, and pressure sources. An authorised biography buys access at the cost of independence; an unauthorised one keeps independence and loses the archive. Decide which before you start, not halfway through."
         }
       ],
-      "guides": ["how-to-write-a-memoir", "how-to-write-a-personal-essay", "how-to-develop-characters", "how-to-find-reliable-sources", "how-to-cite-sources"],
-      "tools": ["word-counter", "writing-timer"],
+      "guides": [
+        "how-to-write-a-memoir",
+        "how-to-write-a-personal-essay",
+        "how-to-develop-characters",
+        "how-to-find-reliable-sources",
+        "how-to-cite-sources"
+      ],
+      "tools": [
+        "word-counter",
+        "writing-timer"
+      ],
       "templates": []
     },
     {
@@ -408,8 +460,17 @@
           "a": "Newness, consequence, proximity to the audience, conflict, or human interest. \"We rebranded\" has none of these. \"We rebranded after losing a trademark case\" has two. If you cannot name which one you have, the release is not ready."
         }
       ],
-      "guides": ["how-to-write-a-press-release", "example-of-a-press-release", "how-to-write-an-article", "how-to-pitch-an-editor"],
-      "tools": ["word-counter", "cliche-detector", "tone-checker"],
+      "guides": [
+        "how-to-write-a-press-release",
+        "example-of-a-press-release",
+        "how-to-write-an-article",
+        "how-to-pitch-an-editor"
+      ],
+      "tools": [
+        "word-counter",
+        "cliche-detector",
+        "tone-checker"
+      ],
       "templates": []
     },
     {
@@ -470,8 +531,338 @@
           "a": "It helps and it is not a gate. Editors commission unpublished writers all the time when the idea is right and the pitch shows they can write — the pitch itself is a writing sample, which is why a sloppy one ends the conversation regardless of your credits."
         }
       ],
-      "guides": ["how-to-pitch-an-editor", "how-to-write-a-proposal", "how-to-write-a-query-letter", "how-to-write-a-grant-application", "dos-and-donts-of-pitching-editors", "why-your-first-pitch-may-be-rejected"],
-      "tools": ["word-counter", "tone-checker", "cliche-detector"],
+      "guides": [
+        "how-to-pitch-an-editor",
+        "how-to-write-a-proposal",
+        "how-to-write-a-query-letter",
+        "how-to-write-a-grant-application",
+        "dos-and-donts-of-pitching-editors",
+        "why-your-first-pitch-may-be-rejected"
+      ],
+      "tools": [
+        "word-counter",
+        "tone-checker",
+        "cliche-detector"
+      ],
+      "templates": []
+    },
+    {
+      "slug": "grammarly-alternatives",
+      "title": "Grammarly alternatives",
+      "description": "What Grammarly actually does well, where it is weak, and the free and paid tools worth using instead or alongside it.",
+      "level": "beginner",
+      "intro": "Grammarly is the default, and for a lot of people it is genuinely the right answer — it catches real errors, it works everywhere, and the free tier is useful. The reasons to look elsewhere are specific: it pushes a house style you may not want, the premium tier is expensive relative to what it adds for a confident writer, and it sends your text to a server, which is a problem for confidential or unpublished work. BRYME's own tools are listed below where they overlap, and they are free and run entirely in your browser — they are also narrower, and this page says where.",
+      "formats": [
+        {
+          "name": "Grammarly",
+          "gist": "Broad grammar, spelling and style checking across every app you use.",
+          "length": "Free tier; premium is a monthly subscription",
+          "reader": "Anyone who wants one tool that works in the browser, in Word and in email",
+          "voice": "Prescriptive. Suggests a clean, corporate register by default.",
+          "shape": "Browser extension, desktop app, web editor, Word add-in.",
+          "use": "You want one always-on checker and are comfortable with your text being processed on a server."
+        },
+        {
+          "name": "LanguageTool",
+          "gist": "Open-source-rooted checker with strong support for languages other than English.",
+          "length": "Free tier; paid tier cheaper than Grammarly",
+          "reader": "Multilingual writers, and anyone who wants a self-hostable option",
+          "voice": "Less prescriptive than Grammarly. Fewer style opinions.",
+          "shape": "Extension, add-ins, API, and a self-hosted server option.",
+          "use": "You write in more than one language, or you need the data to stay on your own infrastructure."
+        },
+        {
+          "name": "Hemingway Editor",
+          "gist": "Readability rather than correctness — sentence length, passive voice, adverbs.",
+          "length": "Free in-browser; one-off payment for the desktop app",
+          "reader": "Writers whose problem is density, not grammar",
+          "voice": "Blunt. Colour-codes anything hard to read.",
+          "shape": "Paste-in editor with a grade-level score.",
+          "use": "Your grammar is fine and your sentences are too long."
+        },
+        {
+          "name": "BRYME tools",
+          "gist": "Individual free checks that run entirely in your browser.",
+          "length": "Free, no account, nothing uploaded",
+          "reader": "Writers who want one specific check without a subscription",
+          "voice": "None imposed — they report, they do not rewrite.",
+          "shape": "Separate tools: readability, passive voice, filler words, clichés, repetition, sentence length.",
+          "use": "You want a specific diagnostic, or your text cannot leave your machine."
+        }
+      ],
+      "decide": [
+        "You want one tool that works everywhere and will pay for it → Grammarly.",
+        "You write in more than one language → LanguageTool.",
+        "Your sentences are long and dense → Hemingway, or BRYME's sentence-length checker.",
+        "The text is confidential, unpublished or under NDA → a tool that does not upload. BRYME's tools and self-hosted LanguageTool qualify; Grammarly does not.",
+        "You are on a student or Nigerian-naira budget → the free tiers plus BRYME cover most of it.",
+        "You already write well and want a diagnostic, not a rewriter → BRYME's individual checks.",
+        "You need it inside Microsoft Word → Grammarly or LanguageTool."
+      ],
+      "confusions": [
+        {
+          "q": "Does Grammarly make you a better writer?",
+          "a": "It makes your text cleaner, which is not the same thing. It reliably catches typos, agreement errors and genuinely tangled sentences. It cannot tell you that your argument does not hold, that your opening is boring, or that the piece is 400 words too long — and those are usually what stands between a draft and a commission."
+        },
+        {
+          "q": "Is it safe to paste confidential work into a checker?",
+          "a": "Read the terms for whichever you use, and assume text sent to a server may be retained. For unpublished manuscripts, client work under NDA, legal drafts or anything covered by a data-protection obligation, use a tool that processes locally. This is the single strongest argument for browser-only tools."
+        },
+        {
+          "q": "Should I accept every suggestion?",
+          "a": "No, and accepting all of them is how prose becomes flat. Style suggestions in particular reflect one register. If you write fiction, dialogue, or in a variety of English the tool was not tuned for, expect a lot of false positives — and note that most checkers are tuned to US English by default."
+        }
+      ],
+      "guides": [
+        "how-to-proofread",
+        "how-to-edit-your-own-writing",
+        "how-to-edit-for-clarity",
+        "how-to-build-a-personal-style-guide"
+      ],
+      "tools": [
+        "readability-score",
+        "passive-voice-detector",
+        "filler-word-finder",
+        "cliche-detector",
+        "sentence-length-checker"
+      ],
+      "templates": []
+    },
+    {
+      "slug": "chatgpt-alternatives-for-writers",
+      "title": "ChatGPT alternatives for writers",
+      "description": "Which AI assistants suit which writing tasks, what they all get wrong, and the disclosure rules that decide whether you can use one at all.",
+      "level": "intermediate",
+      "intro": "The honest starting point: for a working writer these tools differ far less than the marketing suggests. They are all fluent, all confidently wrong about facts, and all bad at producing the specific observation that makes a piece worth publishing. The real decision is not which one — it is what you use it for, and whether the publication you are pitching permits it at all. BRYME records the stated AI policy on every opportunity page for exactly this reason.",
+      "formats": [
+        {
+          "name": "ChatGPT",
+          "gist": "The general-purpose default. Largest ecosystem, most integrations.",
+          "length": "Free tier; paid tier for the better models",
+          "reader": "Anyone. Best documented, easiest to start with.",
+          "voice": "Fluent and slightly generic unless heavily steered.",
+          "shape": "Chat, with file upload, web browsing and custom instructions.",
+          "use": "Interrogating your own draft, brainstorming angles, mechanical reformatting."
+        },
+        {
+          "name": "Claude",
+          "gist": "Handles long documents well; tends to a more measured register.",
+          "length": "Free tier; paid tier",
+          "reader": "Writers working with long manuscripts or research documents",
+          "voice": "Less breathless. Usually needs less de-cliché-ing.",
+          "shape": "Chat with large context, file upload, projects.",
+          "use": "Feedback on a long chapter or report where the whole thing must be in view."
+        },
+        {
+          "name": "Gemini",
+          "gist": "Tied into Google's ecosystem and search.",
+          "length": "Free tier; paid tier",
+          "reader": "Writers already working in Google Docs",
+          "voice": "Similar register to ChatGPT.",
+          "shape": "Chat, plus integration into Docs and Gmail.",
+          "use": "Drafting inside documents you already keep in Google."
+        },
+        {
+          "name": "No AI at all",
+          "gist": "Required by a large share of literary markets.",
+          "length": "Free",
+          "reader": "Anyone submitting to a publication that prohibits it",
+          "voice": "Yours.",
+          "shape": "—",
+          "use": "Most literary magazines, and any market whose guideline prohibits it. Check before you use anything."
+        }
+      ],
+      "decide": [
+        "The publication's guideline prohibits AI → do not use one. This overrides every other consideration.",
+        "The guideline is silent → assume the strictest reading; a missing policy is not permission.",
+        "You need feedback on something long → a tool with a large context window.",
+        "You need facts → none of them, without independent verification. All fabricate citations.",
+        "You need your own voice → draft it yourself. This is the task they are worst at.",
+        "You need to reformat references or turn notes into an outline → any of them; this is typing you did not have to do."
+      ],
+      "confusions": [
+        {
+          "q": "Will an editor be able to tell?",
+          "a": "Often, yes. Editors read hundreds of submissions a week and have become fast at spotting the register — fluent, symmetrical, evenly weighted, and saying nothing at a consistent volume. Detection software is unreliable in both directions, but a practised human reader is not the same thing as a detector."
+        },
+        {
+          "q": "Is using AI plagiarism?",
+          "a": "Not in the traditional sense, since there is no specific source being copied. It can still breach a publication's terms, a university's academic-integrity policy or a client contract — and those are the rules that actually carry consequences. Read the policy that applies to you rather than reasoning from first principles."
+        },
+        {
+          "q": "What about AI detectors?",
+          "a": "They produce both false positives and false negatives, and they have been shown to flag second-language writers disproportionately. Do not rely on one to clear your own work, and if you are accused on the basis of one, ask what evidence exists beyond the score."
+        }
+      ],
+      "guides": [
+        "how-to-write-with-ai",
+        "how-to-avoid-plagiarism",
+        "how-to-edit-your-own-writing",
+        "tone-voice-audience"
+      ],
+      "tools": [
+        "ai-writing-checker",
+        "cliche-detector",
+        "tone-checker"
+      ],
+      "templates": []
+    },
+    {
+      "slug": "google-docs-alternatives",
+      "title": "Google Docs alternatives for writers",
+      "description": "Where Google Docs stops working for long-form and collaborative writing, and what writers actually move to.",
+      "level": "beginner",
+      "intro": "Google Docs is free, collaborative, and on every device — which is why most writing gets done in it. It also slows badly past about eighty pages, has no real concept of a project made of many documents, and keeps your work on someone else's server. Those three limits are what push writers elsewhere, and which one is biting you decides where you should go.",
+      "formats": [
+        {
+          "name": "Google Docs",
+          "gist": "Free, collaborative, everywhere.",
+          "length": "Free with a Google account",
+          "reader": "Anyone collaborating in real time",
+          "voice": "—",
+          "shape": "Cloud documents, comments, suggestions, version history.",
+          "use": "Anything under about 50 pages that more than one person touches."
+        },
+        {
+          "name": "Microsoft Word",
+          "gist": "The professional and publishing standard.",
+          "length": "Subscription, or a one-off licence",
+          "reader": "Anyone submitting to publishers, agents or corporate clients",
+          "voice": "—",
+          "shape": "Desktop and cloud, track changes, styles, references.",
+          "use": "Submissions that specify .docx, and anything with heavy tracked-changes editing."
+        },
+        {
+          "name": "Scrivener",
+          "gist": "A project made of many small pieces you can reorder.",
+          "length": "One-off payment",
+          "reader": "Novelists, thesis writers, anyone writing something long",
+          "voice": "—",
+          "shape": "Binder of scenes, corkboard, research folder, compile to any format.",
+          "use": "A book, a thesis, a multi-part series — anything where structure changes as you write."
+        },
+        {
+          "name": "Obsidian or a plain-text setup",
+          "gist": "Local Markdown files you own outright.",
+          "length": "Free for personal use",
+          "reader": "Writers who want durability and no lock-in",
+          "voice": "—",
+          "shape": "Folder of .md files, linking, plugins, git-friendly.",
+          "use": "Notes and research you intend to keep for decades, and anything that must not live on a server."
+        }
+      ],
+      "decide": [
+        "Real-time collaboration is the point → Google Docs.",
+        "A publisher, agent or client specified .docx → Word.",
+        "It is long and the structure keeps changing → Scrivener.",
+        "You want to still be able to open it in twenty years → plain text or Markdown.",
+        "It must not leave your machine → anything local. Not Docs.",
+        "You are on an unreliable connection → a desktop app that works offline properly."
+      ],
+      "confusions": [
+        {
+          "q": "Will Google Docs cope with a novel?",
+          "a": "Up to a point. Past roughly 80,000 words in one file it becomes slow to load and awkward to navigate. The usual workaround is one document per chapter, which works but means you have no single view of the whole thing — which is precisely the problem Scrivener exists to solve."
+        },
+        {
+          "q": "Do agents and publishers accept Google Docs links?",
+          "a": "Almost never. Nearly all want .docx or PDF attached, formatted to their guidelines. Docs exports to both, but check the exported file rather than assuming — export mangles some formatting, and a broken submission gets you a decline for a reason unrelated to your writing."
+        },
+        {
+          "q": "Is my writing safe in the cloud?",
+          "a": "Safe from disk failure, yes, and that alone is worth a great deal. But you are dependent on an account you can lose access to. Whatever you use, export a local copy of anything important on a schedule. Writers lose work to lost accounts more often than to broken hard drives now."
+        }
+      ],
+      "guides": [
+        "how-to-manage-a-long-writing-project",
+        "how-to-plan-a-novel",
+        "how-to-write-a-thesis",
+        "how-to-build-a-personal-style-guide"
+      ],
+      "tools": [
+        "word-counter",
+        "word-document-converter",
+        "text-to-pdf"
+      ],
+      "templates": []
+    },
+    {
+      "slug": "hemingway-editor-alternatives",
+      "title": "Hemingway Editor alternatives",
+      "description": "Readability tools compared — what a grade-level score actually measures, and why chasing it can make your writing worse.",
+      "level": "intermediate",
+      "intro": "Hemingway Editor scores your text for reading grade and highlights long sentences, passive voice and adverbs. It is genuinely useful and it is also easy to misuse, because the score is a proxy. It counts syllables and sentence lengths; it cannot tell whether you make sense. Chop every sentence into fragments and the score improves while the prose gets worse. What follows is what each tool measures and when to trust it.",
+      "formats": [
+        {
+          "name": "Hemingway Editor",
+          "gist": "Grade level plus colour-coded highlighting of dense prose.",
+          "length": "Free in-browser; one-off payment for desktop",
+          "reader": "Writers whose problem is density",
+          "voice": "Opinionated towards short, active sentences.",
+          "shape": "Paste-in editor with live scoring.",
+          "use": "You suspect your sentences are too long and want it shown to you."
+        },
+        {
+          "name": "BRYME readability score",
+          "gist": "Grade-level estimate with no rewriting pressure.",
+          "length": "Free, in-browser, nothing uploaded",
+          "reader": "Anyone wanting the number without the nagging",
+          "voice": "Neutral — reports, does not prescribe.",
+          "shape": "Paste in, get a score and the inputs behind it.",
+          "use": "A quick check on something you must keep accessible."
+        },
+        {
+          "name": "BRYME sentence-length checker",
+          "gist": "Average and distribution of sentence length.",
+          "length": "Free, in-browser",
+          "reader": "Writers editing for rhythm as well as clarity",
+          "voice": "Neutral.",
+          "shape": "Per-sentence breakdown.",
+          "use": "Finding the one 60-word sentence rather than being told the whole text is hard."
+        },
+        {
+          "name": "A human reader",
+          "gist": "The only thing that can tell you whether you were understood.",
+          "length": "Free, costs a favour",
+          "reader": "—",
+          "voice": "—",
+          "shape": "Give it to someone outside your field and ask what you were saying.",
+          "use": "Always, before anything that matters."
+        }
+      ],
+      "decide": [
+        "You want a single number for a document that must be accessible → a readability score.",
+        "You want to find the specific bad sentence → a sentence-length checker.",
+        "You are writing public-facing health, legal or government text → score it, and also test it on a person.",
+        "You are writing fiction or a literary essay → largely ignore the score. Long sentences are a legitimate tool.",
+        "Your writing is technically correct and still unclear → no tool will find this. Use a reader."
+      ],
+      "confusions": [
+        {
+          "q": "What grade level should I target?",
+          "a": "For public-facing writing, many public bodies aim at around grade 8 to 9. For a specialist audience the number matters much less than whether the terms are glossed. Treat the score as a smoke alarm, not a grade: a sudden spike usually marks a paragraph worth rereading."
+        },
+        {
+          "q": "Is passive voice always wrong?",
+          "a": "No, and tools that flag every instance are misleading. The passive is correct when the actor is unknown, irrelevant, or deliberately de-emphasised — which is why scientific method sections use it. It is a problem when it hides who is responsible, which is a different thing entirely."
+        },
+        {
+          "q": "Can I game the score?",
+          "a": "Easily, and people do. Split every sentence at the comma and the grade drops several levels while comprehension falls. That is the clearest demonstration that the metric is a proxy and not the goal."
+        }
+      ],
+      "guides": [
+        "how-to-write-in-plain-language",
+        "how-to-edit-for-clarity",
+        "how-to-make-writing-more-concise",
+        "active-vs-passive-voice"
+      ],
+      "tools": [
+        "readability-score",
+        "sentence-length-checker",
+        "passive-voice-detector",
+        "adverb-finder"
+      ],
       "templates": []
     }
   ]
