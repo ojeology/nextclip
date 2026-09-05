@@ -104,6 +104,102 @@
   }
 
   var tools = {
+    "freelance-rate-calculator": function () {
+      var mode = q("rc-mode"), out = q("out");
+      if (!out) return;
+      function n(id) { var e = q(id); return e ? parseFloat(e.value) || 0 : 0; }
+      function money(v) { return "$" + v.toLocaleString(undefined, {maximumFractionDigits: 0}); }
+
+      function calc() {
+        var target = n("rc-target"), weeks = n("rc-weeks") || 48,
+            billable = n("rc-billable") || 20, expenses = n("rc-expenses"),
+            taxPct = n("rc-tax");
+
+        if (!target) { out.innerHTML = "<p class='tool-note'>Enter what you need to earn in a year.</p>"; return; }
+
+        // Gross-up for tax and expenses: you must bill enough to cover both.
+        var needed = (target + expenses) / Math.max(0.05, 1 - taxPct / 100);
+        var hours = weeks * billable;
+        var hourly = hours ? needed / hours : 0;
+
+        var wpm = n("rc-wpm") || 500;          // words drafted per billable hour
+        var perWord = wpm ? hourly / wpm : 0;
+
+        var pieceWords = n("rc-piece") || 1200;
+        var perPiece = perWord * pieceWords;
+
+        out.innerHTML =
+          "<div class='rc-grid'>" +
+            "<div class='rc-cell'><b>" + money(needed) + "</b><span>you must invoice per year</span></div>" +
+            "<div class='rc-cell'><b>" + money(hourly) + "</b><span>per billable hour</span></div>" +
+            "<div class='rc-cell'><b>$" + perWord.toFixed(2) + "</b><span>per word</span></div>" +
+            "<div class='rc-cell'><b>" + money(perPiece) + "</b><span>for a " + pieceWords.toLocaleString() + "-word piece</span></div>" +
+          "</div>" +
+          "<p class='tool-note'><b>Why the invoice figure is higher than your target.</b> " +
+          "It has to cover " + money(expenses) + " of expenses and " + taxPct + "% tax before anything reaches you. " +
+          "It also assumes only <b>" + billable + " billable hours a week</b> — the rest goes to pitching, admin, " +
+          "invoicing and chasing payment, which are real hours nobody pays you for.</p>" +
+          "<p class='tool-note'>These are arithmetic, not market rates. What a market actually pays is on its " +
+          "<a href='/writing/'>BRYME listing</a> — compare your number against real stated rates before quoting.</p>";
+      }
+      ["rc-target","rc-weeks","rc-billable","rc-expenses","rc-tax","rc-wpm","rc-piece"].forEach(function (id) {
+        var e = q(id); if (e) e.addEventListener("input", calc);
+      });
+      if (mode) mode.addEventListener("change", calc);
+      calc();
+    },
+
+    "word-count-to-pages": function () {
+      var out = q("out"), words = q("wp-words");
+      if (!out || !words) return;
+      function val(id, d) { var e = q(id); return e ? (e.value || d) : d; }
+
+      // Pages depend entirely on the spec. These are the standard ones, and the
+      // tool states which it used rather than pretending "pages" is universal.
+      var PRESETS = {
+        "manuscript": { wpp: 250, label: "Standard manuscript (double-spaced, 12pt, 1in margins)" },
+        "double-12":  { wpp: 250, label: "Double-spaced, 12pt Times New Roman" },
+        "single-12":  { wpp: 500, label: "Single-spaced, 12pt" },
+        "double-11":  { wpp: 280, label: "Double-spaced, 11pt Arial" },
+        "single-11":  { wpp: 560, label: "Single-spaced, 11pt Arial" },
+        "a4-academic":{ wpp: 300, label: "A4 academic, 1.5 spacing, 12pt" },
+        "book":       { wpp: 300, label: "Printed book page (6x9in trade paperback)" }
+      };
+
+      function calc() {
+        var w = parseInt(String(words.value).replace(/[^0-9]/g, ""), 10) || 0;
+        var key = val("wp-format", "manuscript");
+        var p = PRESETS[key] || PRESETS.manuscript;
+        if (!w) { out.innerHTML = "<p class='tool-note'>Enter a word count.</p>"; return; }
+
+        var pages = w / p.wpp;
+        var speakMin = w / 140;   // 140 wpm is a measured speaking pace, not fast reading
+        var readMin  = w / 240;   // 240 wpm silent reading
+
+        function mins(v) {
+          if (v < 1) return "under a minute";
+          var m = Math.floor(v), s = Math.round((v - m) * 60);
+          return m + " min" + (s >= 30 ? " 30 s" : "");
+        }
+
+        out.innerHTML =
+          "<div class='rc-grid'>" +
+            "<div class='rc-cell'><b>" + (pages < 1 ? pages.toFixed(2) : pages.toFixed(1)) + "</b><span>pages</span></div>" +
+            "<div class='rc-cell'><b>" + w.toLocaleString() + "</b><span>words</span></div>" +
+            "<div class='rc-cell'><b>" + mins(readMin) + "</b><span>to read silently</span></div>" +
+            "<div class='rc-cell'><b>" + mins(speakMin) + "</b><span>to read aloud</span></div>" +
+          "</div>" +
+          "<p class='tool-note'>Using <b>" + p.label + "</b> at about " + p.wpp + " words per page.</p>" +
+          "<p class='tool-note'><b>&ldquo;Pages&rdquo; is not a fixed unit.</b> The same 1,000 words is " +
+          (1000 / 250).toFixed(1) + " double-spaced pages or " + (1000 / 500).toFixed(1) + " single-spaced. " +
+          "If a brief asks for a page count, ask which spec it means &mdash; and if you are submitting somewhere, " +
+          "give the word count too, because that is what editors actually work from.</p>";
+      }
+      words.addEventListener("input", calc);
+      var f = q("wp-format"); if (f) f.addEventListener("change", calc);
+      calc();
+    },
+
     "outline-builder": function () {
       var titleEl = q("t"), typeEl = q("otype"), listEl = q("sections"),
           addBtn = q("add"), out = q("out"), copyBtn = q("copy");

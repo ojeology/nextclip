@@ -51,7 +51,7 @@ def footer() -> str:
     """Writing Hub footer."""
     return '''<footer class="site-foot"><div class="wrap foot-grid">
   <div class="foot-brand"><a class="logo" href="/"><span class="logo-mark" aria-hidden="true">B</span>BRYME</a><p>BRYME is a free writing resource — guides, tools, and verified opportunities to get published and paid.</p></div>
-  <div class="foot-col"><b>How to write</b><a href="/start/">Beginner path</a><a href="/find/">What do you want to write?</a><a href="/compare/">Compare formats</a><a href="/regional/">Writing by country</a><a href="/learn/">Writing hub</a><a href="/learn/examples/">Examples</a><a href="/learn/dos-and-donts/">Dos &amp; don'ts</a><a href="/learn/types-of-writing/">Types of writing</a><a href="/learn/grammar-language/">Grammar</a></div>
+  <div class="foot-col"><b>How to write</b><a href="/start/">Beginner path</a><a href="/find/">What do you want to write?</a><a href="/intelligence/">Writing Intelligence</a><a href="/compare/">Compare formats</a><a href="/regional/">Writing by country</a><a href="/learn/">Writing hub</a><a href="/learn/examples/">Examples</a><a href="/learn/dos-and-donts/">Dos &amp; don'ts</a><a href="/learn/types-of-writing/">Types of writing</a><a href="/learn/grammar-language/">Grammar</a></div>
   <div class="foot-col"><b>Tools &amp; publish</b><a href="/tools/">Writing tools</a><a href="/templates/">Templates</a><a href="/checklists/">Checklists</a><a href="/writing/">Paid opportunities</a><a href="/writing-opportunities/">Browse by country</a><a href="/today/">Today&rsquo;s opportunities</a><a href="/tracker/">Submission tracker</a><a href="/tested/">BRYME Tested</a></div>
   <div class="foot-col"><b>Trust</b><a href="/about/">About</a><a href="/verification/">What statuses mean</a><a href="/editorial-policy/">Editorial policy</a><a href="/corrections/">Corrections</a><a href="/privacy/">Privacy</a><a href="/contact/">Contact</a></div>
   <div class="foot-col"><b>Legal</b><a href="/terms/">Terms</a><a href="/disclaimer/">Disclaimer</a><a href="/copyright/">Copyright</a></div>
@@ -237,6 +237,7 @@ def nav(current: str = "") -> str:
 HOWTO_LINKS = [
     ("start", "/start/", "Beginner path"),
     ("find", "/find/", "What do you want to write?"),
+    ("intelligence", "/intelligence/", "Intelligence"),
     ("compare", "/compare/", "Compare formats"),
     ("regional", "/regional/", "By country"),
     ("learn", "/learn/", "All how-tos"),
@@ -536,7 +537,7 @@ def drawer(current: str = "") -> str:
     return f'''<div id="drawer-backdrop"></div>
 <aside id="site-drawer" aria-hidden="true" aria-label="Site menu" role="dialog" aria-modal="true">
   <div class="drawer-head"><a class="logo" href="/"><span class="logo-mark" aria-hidden="true">B</span>BRYME</a><button type="button" class="drawer-close" data-drawer-close aria-label="Close menu"><svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
-  {group("Start here", [("home", "/", "Home", "🏠"), ("start", "/start/", "Complete beginner path", "🧭"), ("find", "/find/", "What do you want to write?", "❓"), ("compare", "/compare/", "Compare formats", "⚖️"), ("today", "/today/", "Today's opportunities", "📅"), ("tracker", "/tracker/", "Submission tracker", "📋"), ("regional", "/regional/", "Writing by country", "🌍"), ("search", "/search/", "Search BRYME", "🔍")])}
+  {group("Start here", [("home", "/", "Home", "🏠"), ("start", "/start/", "Complete beginner path", "🧭"), ("find", "/find/", "What do you want to write?", "❓"), ("intelligence", "/intelligence/", "Writing Intelligence", "🧭"), ("compare", "/compare/", "Compare formats", "⚖️"), ("today", "/today/", "Today's opportunities", "📅"), ("tracker", "/tracker/", "Submission tracker", "📋"), ("regional", "/regional/", "Writing by country", "🌍"), ("search", "/search/", "Search BRYME", "🔍")])}
   {group("How to write", howto)}
   {group("Tools & templates", tools)}
   {group("Write & get paid", write)}

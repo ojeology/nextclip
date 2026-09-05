@@ -277,6 +277,20 @@
       "short": "Build, reorder and cost a working outline before you draft.",
       "category": "work",
       "description": "Start from a scaffold for an essay, article, report, blog post, story or speech, then rename, reorder, delete and add sections until it is yours. Set a word target per section and BRYME totals the plan."
+    },
+    {
+      "id": "freelance-rate-calculator",
+      "title": "Freelance rate calculator",
+      "short": "Work out what you must charge per hour, per word and per piece.",
+      "category": "work",
+      "description": "Start from what you need to earn in a year, then account for tax, expenses and the hours nobody pays you for. Returns an hourly, per-word and per-piece rate."
+    },
+    {
+      "id": "word-count-to-pages",
+      "title": "Word count to pages",
+      "short": "Convert words to pages for a stated format, and back.",
+      "category": "count",
+      "description": "How many pages 2,000 words is depends entirely on spacing, point size and page size. Pick the actual spec and get the real number, plus read-aloud and silent-reading times."
     }
   ]
 }

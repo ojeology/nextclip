@@ -556,6 +556,37 @@ def pdf_render(i: str) -> str:
 
 def render_tool(t: dict) -> str:
     i = t["id"]
+    if i == "freelance-rate-calculator":
+        return f'''<div class="tool-box"><div class="tool-prose">
+<div class="tool-grid">
+<div class="tool-input"><label for="rc-target">Take-home you need per year (USD)</label><input id="rc-target" type="number" min="0" step="500" value="24000"></div>
+<div class="tool-input"><label for="rc-tax">Tax + contributions (%)</label><input id="rc-tax" type="number" min="0" max="80" step="1" value="25"></div>
+<div class="tool-input"><label for="rc-expenses">Business expenses per year (USD)</label><input id="rc-expenses" type="number" min="0" step="100" value="1200"></div>
+<div class="tool-input"><label for="rc-weeks">Weeks you will work</label><input id="rc-weeks" type="number" min="1" max="52" step="1" value="46"></div>
+<div class="tool-input"><label for="rc-billable">Billable hours per week</label><input id="rc-billable" type="number" min="1" max="60" step="1" value="20"></div>
+<div class="tool-input"><label for="rc-wpm">Words you draft per billable hour</label><input id="rc-wpm" type="number" min="50" max="3000" step="50" value="500"></div>
+<div class="tool-input"><label for="rc-piece">Typical piece length (words)</label><input id="rc-piece" type="number" min="100" step="100" value="1200"></div>
+</div>
+<div class="tool-result" id="out" aria-live="polite"></div></div></div>
+<script src="/assets/hub-tools.js" data-hub-tool="freelance-rate-calculator"></script>'''
+
+    if i == "word-count-to-pages":
+        return f'''<div class="tool-box"><div class="tool-prose">
+<div class="tool-grid">
+<div class="tool-input"><label for="wp-words">Word count</label><input id="wp-words" type="text" inputmode="numeric" value="1500" autocomplete="off"></div>
+<div class="tool-input"><label for="wp-format">Format</label><select id="wp-format">
+<option value="manuscript">Standard manuscript (double, 12pt)</option>
+<option value="double-12">Double-spaced, 12pt Times</option>
+<option value="single-12">Single-spaced, 12pt</option>
+<option value="double-11">Double-spaced, 11pt Arial</option>
+<option value="single-11">Single-spaced, 11pt Arial</option>
+<option value="a4-academic">A4 academic, 1.5 spacing</option>
+<option value="book">Printed book page (6x9in)</option>
+</select></div>
+</div>
+<div class="tool-result" id="out" aria-live="polite"></div></div></div>
+<script src="/assets/hub-tools.js" data-hub-tool="word-count-to-pages"></script>'''
+
     if i == "outline-builder":
         return f'''<div class="tool-box"><div class="tool-prose">
 <p>Pick a starting shape, then make it yours — rename, reorder, delete, add, and give each section a word budget.</p>
@@ -1126,6 +1157,194 @@ def comparison_page(c: dict) -> None:
         current="learn", body=body, schema_data=graph))
 
 
+
+# ---------------------------------------------------------------------------
+# Brief §8: Writing Intelligence hub.
+#
+# "Rework the existing articles, do not delete them." So this is a VIEW over
+# the 133 guides that already exist, not a new content silo: each guide keeps
+# its canonical /learn/<section>/<slug>/ URL and appears here under one of the
+# four categories the brief names. Nothing is duplicated and nothing moves.
+#
+# Assignment is by section first, with slug overrides where a guide clearly
+# belongs somewhere other than its section implies.
+# ---------------------------------------------------------------------------
+
+INTEL_CATEGORIES = [
+    ("skills", "\u270d\ufe0f", "Writing Skills",
+     "Openings, structure, editing, grammar \u2014 the craft the rest depends on."),
+    ("paid", "\U0001f4b0", "Getting Paid",
+     "Rates, invoicing, pricing, and how freelance money actually moves."),
+    ("pitching", "\U0001f3af", "Pitching",
+     "Pitches by country, follow-ups, subject lines, and why pitches get turned down."),
+    ("ai", "\U0001f916", "AI + Writing",
+     "Using AI without losing your voice or breaching a publication's policy."),
+]
+
+INTEL_BY_SECTION = {
+    "writing-basics": "skills", "start-writing": "skills", "writing-process": "skills",
+    "structure-formatting": "skills", "grammar-language": "skills",
+    "editing-proofreading": "skills", "dos-and-donts": "skills",
+    "types-of-writing": "skills", "examples": "skills", "common-problems": "skills",
+    "creative-writing": "skills", "academic-writing": "skills",
+    "journaling-personal": "skills", "research-sources": "skills",
+    "online-writing": "skills", "professional-writing": "skills",
+    "freelance-paid-writing": "paid",
+    "writing-for-publication": "pitching",
+}
+
+INTEL_BY_SLUG = {
+    "how-to-write-with-ai": "ai",
+    "how-plagiarism-and-ai-checkers-are-made": "ai",
+    "how-to-avoid-plagiarism": "ai",
+    "how-to-price-your-freelance-writing": "paid",
+    "how-to-get-your-first-paid-writer-gig": "paid",
+    "how-to-find-paying-publications": "paid",
+    "how-to-build-a-writing-portfolio": "paid",
+    "how-to-pitch-an-editor": "pitching",
+    "how-to-pitch-us-editors": "pitching",
+    "how-to-pitch-uk-editors": "pitching",
+    "how-to-pitch-canadian-editors": "pitching",
+    "how-to-pitch-australian-editors": "pitching",
+    "dos-and-donts-of-pitching-editors": "pitching",
+    "why-your-first-pitch-may-be-rejected": "pitching",
+    "a-rejected-pitch-is-not-wasted": "pitching",
+    "how-to-handle-a-rejection": "pitching",
+    "how-to-write-a-query-letter": "pitching",
+    "how-to-write-a-grant-application": "pitching",
+}
+
+# Brief §8 defines "AI + Writing" as including tool comparisons. Those already
+# exist as /compare/*-alternatives/ pages, so they are surfaced here rather
+# than rewritten as guides.
+INTEL_EXTRA = {
+    "ai": [("/compare/chatgpt-alternatives-for-writers/", "ChatGPT alternatives for writers"),
+           ("/compare/grammarly-alternatives/", "Grammarly alternatives"),
+           ("/compare/hemingway-editor-alternatives/", "Hemingway Editor alternatives"),
+           ("/tools/ai-writing-checker/", "AI writing checker")],
+    "paid": [("/writing/?status=acceptingnow&sort=pay", "Markets accepting work now, by pay"),
+             ("/writing-opportunities/", "Browse markets by country and genre"),
+             ("/tools/freelance-rate-calculator/", "Freelance rate calculator")],
+    "pitching": [("/tracker/", "Submission tracker"),
+                 ("/today/", "Today\u2019s opportunities"),
+                 ("/writing/", "Search all 105 publications")],
+    "skills": [("/compare/", "Compare writing formats"),
+               ("/templates/", "Writing templates"),
+               ("/checklists/", "Writing checklists")],
+}
+
+# "Writing Skills" is legitimately the biggest bucket \u2014 most writing advice is
+# craft advice. But 119 cards in one list is not navigation, so it is split by
+# the guide's own section into named sub-groups.
+INTEL_SUBGROUPS = [
+    ("Getting started", ["start-writing", "writing-basics"]),
+    ("Planning & process", ["writing-process", "structure-formatting"]),
+    ("Formats & examples", ["types-of-writing", "examples", "creative-writing"]),
+    ("Editing & grammar", ["editing-proofreading", "grammar-language", "dos-and-donts"]),
+    ("Academic & professional", ["academic-writing", "professional-writing", "research-sources"]),
+    ("Online & personal", ["online-writing", "journaling-personal"]),
+    ("Common problems", ["common-problems"]),
+]
+
+INTEL_TOOLS = {
+    "skills": ["readability-score", "passive-voice-detector", "cliche-detector", "outline-builder"],
+    "paid": ["freelance-rate-calculator", "word-counter", "writing-timer"],
+    "pitching": ["tone-checker", "word-counter", "character-counter"],
+    "ai": ["ai-writing-checker", "self-plagiarism-checker", "cliche-detector"],
+}
+
+
+def intel_cat(g: dict) -> str:
+    return INTEL_BY_SLUG.get(g["slug"]) or INTEL_BY_SECTION.get(g["section"], "skills")
+
+
+def intelligence_hub() -> None:
+    buckets: dict[str, list] = {c[0]: [] for c in INTEL_CATEGORIES}
+    for g in GUIDES:
+        buckets[intel_cat(g)].append(g)
+    for k in buckets:
+        buckets[k].sort(key=lambda g: (0 if g.get("popular") else 1, g["title"]))
+
+    blocks = []
+    for cid, icon, title, blurb in INTEL_CATEGORIES:
+        rows = buckets[cid]
+        if not rows:
+            continue
+        if cid == "skills":
+            # split into named sub-groups so 100+ guides stay navigable
+            by_sec = {}
+            for g in rows:
+                by_sec.setdefault(g["section"], []).append(g)
+            parts, seen = [], set()
+            for sub_title, secs in INTEL_SUBGROUPS:
+                items = [g for sec in secs for g in by_sec.get(sec, [])]
+                if not items:
+                    continue
+                seen.update(g["slug"] for g in items)
+                links = "".join(
+                    f'<a class="purpose-alt" href="/learn/{esc(g["section"])}/{esc(g["slug"])}/">{esc(g["title"])}</a>'
+                    for g in sorted(items, key=lambda g: g["title"]))
+                parts.append(f'<div class="intel-sub"><h3>{esc(sub_title)} '
+                             f'<span class="intel-n">{len(items)}</span></h3>'
+                             f'<div class="purpose-links">{links}</div></div>')
+            leftover = [g for g in rows if g["slug"] not in seen]
+            if leftover:
+                links = "".join(
+                    f'<a class="purpose-alt" href="/learn/{esc(g["section"])}/{esc(g["slug"])}/">{esc(g["title"])}</a>'
+                    for g in leftover)
+                parts.append(f'<div class="intel-sub"><h3>More '
+                             f'<span class="intel-n">{len(leftover)}</span></h3>'
+                             f'<div class="purpose-links">{links}</div></div>')
+            cards = f'<div class="guide-grid">{"".join(guide_card(g) for g in rows[:6])}</div>' + "".join(parts)
+            more = ""
+        else:
+            cards = f'<div class="guide-grid">{"".join(guide_card(g) for g in rows[:9])}</div>'
+            more = ""
+            if len(rows) > 9:
+                links = "".join(
+                    f'<a class="purpose-alt" href="/learn/{esc(g["section"])}/{esc(g["slug"])}/">{esc(g["title"])}</a>'
+                    for g in rows[9:])
+                more = (f'<details class="intel-more"><summary>All {len(rows)} in {esc(title)}</summary>'
+                        f'<div class="purpose-links">{links}</div></details>')
+        chips = "".join(
+            f'<a class="purpose-alt" href="/tools/{esc(t)}/">{esc(TOOLS_BY_ID[t]["title"])}</a>'
+            for t in INTEL_TOOLS.get(cid, []) if t in TOOLS_BY_ID)
+        chips += "".join(f'<a class="purpose-alt" href="{esc(h)}">{esc(lbl)}</a>'
+                         for h, lbl in INTEL_EXTRA.get(cid, []))
+        blocks.append(
+            f'<section class="section" id="{esc(cid)}"><div class="wrap">'
+            f'<div class="section-head"><div><p class="eyebrow">{icon} {esc(title)}</p>'
+            f'<h2>{esc(blurb)}</h2></div><span class="card-link">{len(rows)} guides</span></div>'
+            f'{cards}{more}'
+            f'<p class="tool-note">Tools for this: </p><div class="purpose-links">{chips}</div>'
+            f'</div></section>')
+
+    toc = "".join(
+        f'<a class="chip-card" href="#{esc(c[0])}"><b>{c[1]}</b><span>{esc(c[2])} — {len(buckets[c[0]])}</span></a>'
+        for c in INTEL_CATEGORIES)
+
+    body = f'''<div class="wrap"><nav class="breadcrumb"><a href="/">Home</a> / Writing Intelligence</nav>
+<section class="page-hero"><p class="kicker"><span class="kicker-dot"></span>Writing Intelligence</p>
+<h1>Everything BRYME knows, in four parts.</h1>
+<p>All {len(GUIDES)} guides organised by what you are actually trying to do \u2014 write better, get paid, get commissioned, or use AI without breaching a policy. Every guide keeps its own page; this is a way in, not a copy.</p>
+<div class="chip-grid">{toc}</div>
+</section></div>
+{"".join(blocks)}
+<section class="section alt"><div class="wrap"><div class="section-head"><div><p class="eyebrow">Then what</p>
+<h2>Reading is not the point.</h2></div></div>
+<div class="card-grid">
+<a class="path-card" href="/writing/?status=acceptingnow&amp;sort=pay"><span class="card-num">PITCH</span><h3>Find a market</h3><p>Publications accepting work now, sorted by what they pay.</p><span class="card-link">Search opportunities →</span></a>
+<a class="path-card" href="/tracker/"><span class="card-num">TRACK</span><h3>Track what you send</h3><p>Free, private, stays in your browser.</p><span class="card-link">Open the tracker →</span></a>
+<a class="path-card" href="/find/"><span class="card-num">FIND</span><h3>Not sure what you need?</h3><p>Describe the task and BRYME routes you to the guide.</p><span class="card-link">Open the finder →</span></a>
+</div></div></section>'''
+    write("/intelligence/", page_wf(
+        title="Writing Intelligence: skills, getting paid, pitching and AI | BRYME",
+        description=f"All {len(GUIDES)} BRYME guides organised into four practical tracks \u2014 writing skills, getting paid, pitching editors, and using AI responsibly.",
+        route="/intelligence/", current="learn", body=body,
+        schema_data={"@context": "https://schema.org", "@type": "CollectionPage",
+                     "name": "Writing Intelligence", "url": BASE + "/intelligence/"}))
+
+
 def compare_index() -> None:
     cards = "".join(
         f'<a class="guide-card" href="/compare/{esc(c["slug"])}/">'
@@ -1232,6 +1451,7 @@ def build() -> None:
         comparison_page(_c)
     compare_index()
     regional_page()
+    intelligence_hub()
     print(f"wrote hub: {len(GUIDES)} guides, {len(TOOLS)} tools, {len(SECTIONS['sections'])} sections, /search/ + /glossary/ + /templates/ + /checklists/ + /problems/")
 
 
