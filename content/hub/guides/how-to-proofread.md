@@ -3,6 +3,7 @@ title: How to proofread
 description: A step-by-step method to catch typos, punctuation errors and inconsistencies before you submit or publish.
 section: editing-proofreading
 level: beginner
+regional: Set your spellchecker to the destination's variety before the final pass. Mixing -ise and -ize, or US and UK quotation punctuation, is the most common consistency failure in international writing.
 keywords: [proofread, edit, typos, errors]
 tools: [word-counter, text-cleaner]
 related: [how-to-revise-a-draft, comma-rules]

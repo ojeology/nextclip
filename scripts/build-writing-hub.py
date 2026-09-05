@@ -291,6 +291,20 @@ def related_links(items: list[str]) -> str:
     return f'<div class="wrap"><section class="section alt"><div class="section-head"><div><p class="eyebrow">Related guides</p><h2>Go deeper</h2></div></div><div class="guide-grid">{cards}</div></section></div>' if cards else ""
 
 
+
+def regional_note(g: dict) -> str:
+    """Proposal §5: every major format guide carries a note where convention
+    genuinely differs by country, linking to the full /regional/ reference.
+
+    Only rendered when the guide declares one — a boilerplate note on every
+    guide would be noise, and the proposal asks for it "where it matters"."""
+    note = (g.get("regional") or "").strip()
+    if not note:
+        return ""
+    return (f'<aside class="regional-note"><p class="regional-tag">Regional variation</p>'
+            f'<p>{esc(note)} <a href="/regional/">See how conventions differ by country →</a></p></aside>')
+
+
 def guide_page(g: dict) -> None:
     section = SECTIONS_BY_ID.get(g["section"])
     tool_items = g.get("tools", [])
@@ -303,7 +317,7 @@ def guide_page(g: dict) -> None:
 <p class="level-line">{level_badge(g)} <span class="level-desc">{esc(LEVELS[level_of(g)][1])}</span></p>
 <p class="byline">Researched and written by <a href="/author/ibrahim-sodiq/">BRYME Editorial Desk</a>.</p>
 <a class="btn secondary" href="/learn/{esc(section['id'])}/">← All {esc(section['title'])} guides</a></section>
-<section class="section"><div class="prose">{prose}</div></section></div>
+<section class="section"><div class="prose">{prose}{regional_note(g)}</div></section></div>
 {tool_links(tool_items)}{related_links(g.get('related', []))}'''
     write(f"/learn/{g['section']}/{g['slug']}/", page_wf(
         title=f"{g['title']} | BRYME writing guides",
@@ -448,6 +462,16 @@ def pdf_render(i: str) -> str:
 
 def render_tool(t: dict) -> str:
     i = t["id"]
+    if i == "outline-builder":
+        return f'''<div class="tool-box"><div class="tool-prose">
+<p>Pick a starting shape, then make it yours — rename, reorder, delete, add, and give each section a word budget.</p>
+<label for="t">Working title</label><input id="t" type="text" placeholder="e.g. Why the 2019 figures cannot be compared" autocomplete="off">
+<div class="tool-grid"><div class="tool-input"><label for="otype">Starting shape</label>
+<select id="otype"><option value="essay">Essay</option><option value="article">Article or feature</option><option value="report">Report</option><option value="blog">Blog post or how-to</option><option value="story">Short story</option><option value="speech">Speech</option><option value="blank">Blank</option></select></div></div>
+<ol class="ob-list" id="sections"></ol>
+<div class="tool-actions"><button type="button" class="btn secondary" id="add">Add section</button><button type="button" class="btn" id="copy">Copy outline</button></div>
+<div class="tool-result" id="out" aria-live="polite"></div></div></div>
+<script src="/assets/hub-tools.js" data-hub-tool="outline-builder"></script>'''
     if i == "tone-checker":
         return f'''<div class="tool-box"><div class="tool-prose"><p>Paste a paragraph or a full draft. BRYME estimates how formal it sounds and shows you which signals produced that estimate.</p>
 <label for="ta">Your text</label><textarea id="ta" placeholder="Paste your draft here…"></textarea><div class="tool-result" id="out" aria-live="polite"></div></div></div>

@@ -3,6 +3,7 @@ title: British vs American English
 description: The main spelling, word and punctuation differences, and how to be consistent in whichever one you use.
 section: grammar-language
 level: beginner
+regional: Canada keeps -our and -re from British usage while leaning -ize like the US. Australia, New Zealand, Ireland, Nigeria, Ghana, Kenya, South Africa and India follow British convention closely.
 keywords: [spelling, british, american, english]
 tools: [text-cleaner, word-counter]
 related: [comma-rules]

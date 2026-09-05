@@ -3,6 +3,7 @@ title: How to write a formal appeal
 description: Appealing a decision — a grade, a rejection, a penalty, a refused claim — on the grounds the process actually allows.
 section: professional-writing
 level: intermediate
+regional: Permitted grounds and appeal windows are set by each institution and each jurisdiction. Never assume the deadline; find the published procedure first.
 keywords: [appeal, decision, grounds, review, penalty]
 tools: [word-counter, tone-checker, writing-checklist-generator]
 related: [how-to-write-a-formal-complaint, how-to-write-a-business-letter, how-to-write-a-professional-email]

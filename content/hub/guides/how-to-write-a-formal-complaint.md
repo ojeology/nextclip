@@ -3,6 +3,7 @@ title: How to write a formal complaint
 description: A calm, dated, factual complaint that gets acted on — to a company, a landlord, a school or a public body.
 section: professional-writing
 level: beginner
+regional: Escalation routes are national. Which ombudsman, regulator or small-claims process applies, and the statutory time limits, differ entirely by country — check yours before naming a next step.
 keywords: [complaint, letter, consumer, refund, escalation]
 tools: [text-cleaner, word-counter, tone-checker]
 related: [how-to-write-a-business-letter, how-to-write-a-professional-email, how-to-write-a-formal-appeal]

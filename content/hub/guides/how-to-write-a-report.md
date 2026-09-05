@@ -3,6 +3,7 @@ title: How to write a report
 description: Structure a clear, factual report that tells a reader what happened, what it means, and what to do next.
 section: types-of-writing
 level: intermediate
+regional: Spelling, date format and currency should follow the reader's convention throughout. Write 3 April 2026 or April 3, 2026 rather than 03/04/2026, which means different months on either side of the Atlantic.
 keywords: [report, technical, structure, findings]
 tools: [article-outline-generator]
 related: [how-to-write-an-essay]

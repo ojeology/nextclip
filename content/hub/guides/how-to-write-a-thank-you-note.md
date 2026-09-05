@@ -3,6 +3,7 @@ title: How to write a thank-you note
 description: Four sentences, sent quickly, that do more than a long one sent late. For gifts, interviews, help and hospitality.
 section: types-of-writing
 level: beginner
+regional: Handwritten notes carry more weight in the US and UK than in many other markets, but a prompt email is acceptable everywhere and beats a late card.
 keywords: [thank you note, gratitude, etiquette, interview follow-up]
 tools: [word-counter, tone-checker]
 related: [how-to-write-a-professional-email, how-to-write-a-business-letter, how-to-write-a-condolence-message]

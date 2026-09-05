@@ -3,6 +3,7 @@ title: How to write a business letter
 description: A formal letter that is clear, respectful and easy to act on.
 section: professional-writing
 level: intermediate
+regional: Title abbreviations take full stops in the US (Mr., Dr.) and none in UK and Commonwealth usage (Mr, Dr). The sender's address sits top right in UK layout and the recipient's top left in US layout.
 keywords: [business letter, formal, letter, correspondence]
 tools: [word-document-converter]
 related: [how-to-write-a-professional-email, how-to-write-a-cover-letter]

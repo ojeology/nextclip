@@ -3,6 +3,7 @@ title: How to write a work report
 description: Write a clear business or workplace report that helps a reader decide, in plain language.
 section: professional-writing
 level: intermediate
+regional: Date formats, currency notation and number separators are the most common source of misreading in reports circulated internationally. 1.234,56 and 1,234.56 mean the same thing in different places.
 keywords: [report, business, workplace, summary]
 tools: [article-outline-generator]
 related: [how-to-write-a-report, how-to-write-a-professional-email]

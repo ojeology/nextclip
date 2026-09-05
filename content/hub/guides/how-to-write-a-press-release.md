@@ -3,6 +3,7 @@ title: How to write a press release
 description: Announce something to the media in a clear, newsworthy format journalists can actually use.
 section: types-of-writing
 level: intermediate
+regional: Dateline conventions, date formats and currency notation follow the target market. Always disambiguate the dollar — US$, A$, C$ and NZ$ all appear as "$".
 keywords: [press release, announcements, media, news]
 tools: [article-outline-generator]
 related: [how-to-write-a-report, how-to-write-a-newsletter]

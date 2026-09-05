@@ -3,6 +3,7 @@ title: How to write a literature review
 description: A synthesis of what is known, organised by argument rather than by source — and the difference between reviewing and listing.
 section: academic-writing
 level: advanced
+regional: Citation style is set by your discipline and institution, and the expectations for a systematic review differ markedly between fields and countries.
 keywords: [literature review, research, synthesis, thesis, sources]
 tools: [citation-formatter, word-counter, word-repetition-checker]
 related: [how-to-structure-a-research-paper, how-to-write-a-thesis, how-to-cite-sources, how-to-find-reliable-sources]

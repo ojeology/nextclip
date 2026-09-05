@@ -3,6 +3,7 @@ title: How to write a wedding speech
 description: A short, warm, well-timed speech that sounds like you — with the structure that makes one work and the jokes that sink one.
 section: types-of-writing
 level: beginner
+regional: Who speaks, in what order, and what may be joked about are strongly cultural. Check the running order with the couple rather than assuming the pattern you have seen most.
 keywords: [wedding speech, best man, toast, maid of honour, speech]
 tools: [reading-time, word-counter, cliche-detector]
 related: [how-to-write-a-speech, example-of-a-speech, how-to-write-a-eulogy]

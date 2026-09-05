@@ -3,6 +3,7 @@ title: How to write a thesis
 description: Plan and write a long research project one clear, manageable stage at a time.
 section: academic-writing
 level: advanced
+regional: Thesis structure, length, viva format and submission requirements are set by each institution and vary widely between countries. Your university's regulations override any general guidance.
 keywords: [thesis, dissertation, research, longform, academic]
 tools: [article-outline-generator]
 related: [how-to-structure-a-research-paper, how-to-cite-sources, how-to-find-reliable-sources]

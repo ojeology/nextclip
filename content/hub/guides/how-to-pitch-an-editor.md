@@ -3,6 +3,7 @@ title: How to pitch an editor
 description: Approach editors well, pitch the right idea, and follow up without burning bridges.
 section: writing-for-publication
 level: advanced
+regional: Western editors read the first sentence and decide, so lead with the idea rather than with courtesy — a convention that runs against how correspondence is taught in much of West Africa and South Asia. Your local knowledge is usually why you get commissioned; explain the context rather than apologising for it.
 keywords: [pitch, editor, submission, freelance]
 tools: [writing-checklist-generator]
 related: [how-to-write-a-query-letter, how-to-handle-a-rejection]

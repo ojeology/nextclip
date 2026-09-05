@@ -3,6 +3,7 @@ title: How to write a grant application
 description: Make a clear, honest case for funding that shows you need it and will use it well.
 section: professional-writing
 level: advanced
+regional: Funder conventions, budget formats and currency requirements are entirely national. International funders such as Chevening, DAAD and Fulbright each publish their own structure — follow it exactly.
 keywords: [grant, funding, application, nonprofit, proposal]
 tools: [word-document-converter]
 related: [how-to-write-a-proposal, how-to-write-about-yourself]

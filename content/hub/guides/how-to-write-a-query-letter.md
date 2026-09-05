@@ -3,6 +3,7 @@ title: How to write a query letter
 description: A concise query that sells a nonfiction idea to an editor before you write it.
 section: writing-for-publication
 level: advanced
+regional: Agent conventions differ between the US and UK markets, including expected word counts by genre, whether to include sample pages in the initial approach, and attitudes to simultaneous submissions.
 keywords: [query, pitch, journalism, magazine]
 tools: [article-outline-generator, word-counter]
 related: [how-to-pitch-an-editor, how-to-handle-a-rejection]

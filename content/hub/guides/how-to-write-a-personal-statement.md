@@ -3,6 +3,7 @@ title: How to write a personal statement for university
 description: What admissions tutors are actually reading for, how to open without a cliché, and how to fit it into the character limit.
 section: academic-writing
 level: beginner
+regional: The UCAS personal statement (4,000 characters, one statement for every course, no university named) is a UK-specific form. US application essays are prompt-driven and can be personal narratives; European motivation letters must name the programme and its staff.
 keywords: [personal statement, ucas, university, admissions, application]
 tools: [character-counter, word-counter, cliche-detector]
 related: [how-to-write-about-yourself, how-to-write-a-cover-letter, how-to-write-an-introduction]

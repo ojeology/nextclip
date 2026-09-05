@@ -3,6 +3,7 @@ title: How to write a professional email
 description: A clear, polite, high-functioning email that gets a response and reflects well on you.
 section: professional-writing
 level: beginner
+regional: Openings and sign-offs carry different weight by region. "Kindly do the needful" and "Respected Sir/Madam" are standard professional English in India and Nigeria but read as templated to a US or UK reader; use the recipient's name instead.
 keywords: [email, professional, workplace, communication]
 tools: [word-counter]
 related: [tone-voice-audience, example-of-a-professional-email]

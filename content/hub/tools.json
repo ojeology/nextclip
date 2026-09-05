@@ -270,6 +270,13 @@
       "short": "Better words for the ones that weaken writing.",
       "category": "quality",
       "description": "A curated list of the words that most often flatten a sentence — said, very, good, important, in order to — with stronger alternatives, and honest advice about when to just delete them."
+    },
+    {
+      "id": "outline-builder",
+      "title": "Outline builder",
+      "short": "Build, reorder and cost a working outline before you draft.",
+      "category": "work",
+      "description": "Start from a scaffold for an essay, article, report, blog post, story or speech, then rename, reorder, delete and add sections until it is yours. Set a word target per section and BRYME totals the plan."
     }
   ]
 }

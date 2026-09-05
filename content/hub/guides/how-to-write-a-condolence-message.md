@@ -3,6 +3,7 @@ title: How to write a condolence message
 description: What to say to someone who is grieving, when everything you think of sounds wrong — and what not to say.
 section: types-of-writing
 level: beginner
+regional: Mourning periods, whether to visit, and what may be said about death vary enormously by culture and faith. When you are unsure, keep it short, name the person, and follow the family's lead.
 keywords: [condolence, sympathy, bereavement, message, card]
 tools: [word-counter, tone-checker]
 related: [how-to-write-a-eulogy, how-to-write-a-thank-you-note, how-to-write-a-business-letter]

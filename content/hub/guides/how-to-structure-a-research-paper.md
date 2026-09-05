@@ -3,6 +3,7 @@ title: How to structure a research paper
 description: The standard sections of a research paper and what each one does.
 section: academic-writing
 level: advanced
+regional: Section conventions (IMRaD versus discipline-specific structures), reference style and abstract length are set by the target journal, and journals in different countries and fields disagree.
 keywords: [research paper, structure, academic, sections]
 tools: [article-outline-generator]
 related: [academic-writing-basics, how-to-write-an-essay]

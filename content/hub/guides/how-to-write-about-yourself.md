@@ -3,6 +3,7 @@ title: How to write about yourself
 description: An honest, useful bio and personal introduction — the ones people actually read.
 section: professional-writing
 level: intermediate
+regional: Plainly stating achievements is expected in US and UK professional writing and can feel like boasting if you were raised otherwise. Facts are not boasting — and understatement is read as having nothing to report.
 keywords: [about me, bio, personal introduction, profile]
 tools: [word-document-converter]
 related: [how-to-write-a-personal-statement, tone-voice-audience]

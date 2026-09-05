@@ -183,5 +183,10 @@
     "what": "A curated set of the words and phrases that most often weaken writing, each with stronger replacements.",
     "howto": "Type a single word or short phrase — said, very, good, thing, in order to — and BRYME shows alternatives. Where the honest advice is to delete the word rather than replace it, the tool says so. Use it while editing, not while drafting.",
     "why": "This is deliberately not a full thesaurus. A general thesaurus encourages the worst habit in student writing: swapping a plain word for a longer one that does not quite mean the same thing. This list covers the handful of words that genuinely flatten a sentence, and it tells you when the plain word was right all along."
+  },
+  "outline-builder": {
+    "what": "An interactive outline you can reorder and budget, rather than a fixed list generated once.",
+    "howto": "Pick the kind of thing you are writing and BRYME loads a starting scaffold. Then argue with it: rename sections to say what yours actually does, delete the ones that do not apply, add your own, drag the order around with the arrows, and give each section a word target. The totals update as you go. Copy the outline into your document before you start drafting.",
+    "why": "The scaffold is not the value — editing it is. A generic outline tells you nothing, but a generic outline you have deliberately changed forces you to decide what each section is for and roughly how much of the piece it deserves. Budgeting words per section is also the most reliable way to catch a structural problem early: if your introduction has been allocated a third of the piece, the plan is wrong and you have found out before writing 2,000 words."
   }
 }

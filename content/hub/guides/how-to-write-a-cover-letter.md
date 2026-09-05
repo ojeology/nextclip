@@ -3,6 +3,7 @@ title: How to write a cover letter
 description: A short, targeted cover letter that connects your experience to the specific role and gets you considered.
 section: professional-writing
 level: intermediate
+regional: US business letters take a colon after the salutation (Dear Ms Okafor:); UK and Commonwealth usage takes a comma. In UK convention a named recipient closes with Yours sincerely and an unnamed one with Yours faithfully.
 keywords: [cover letter, job application, professional]
 tools: [writing-checklist-generator]
 related: [how-to-write-a-professional-email]

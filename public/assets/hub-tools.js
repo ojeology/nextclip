@@ -104,6 +104,166 @@
   }
 
   var tools = {
+    "outline-builder": function () {
+      var titleEl = q("t"), typeEl = q("otype"), listEl = q("sections"),
+          addBtn = q("add"), out = q("out"), copyBtn = q("copy");
+      if (!listEl) return;
+
+      /* Starting scaffolds. The point of the tool is that you then edit them:
+         a generic outline is worthless, a generic outline you have argued with
+         is a plan. */
+      var SCAFFOLDS = {
+        essay: ["Introduction — hook, context, thesis",
+                "Point 1 — claim, evidence, why it matters",
+                "Point 2 — claim, evidence, why it matters",
+                "Counter-argument — the strongest objection, answered",
+                "Conclusion — what follows from all this"],
+        article: ["Lead — the most surprising true thing",
+                  "Nut graf — why this, why now",
+                  "Background the reader needs",
+                  "The main reporting",
+                  "The complication or counter-view",
+                  "Close — what happens next"],
+        report: ["Executive summary — findings and recommendation",
+                 "Introduction — scope and terms of reference",
+                 "Method — how the work was done",
+                 "Findings — what the evidence shows",
+                 "Discussion — what it means",
+                 "Recommendations — what to do",
+                 "Appendices"],
+        blog: ["The answer, near the top",
+               "Who this is for and what they need first",
+               "Step 1", "Step 2", "Step 3",
+               "Common mistakes",
+               "What to do next"],
+        story: ["Opening image — the world before",
+                "Inciting incident — what breaks it",
+                "Rising complication",
+                "Midpoint — the turn",
+                "Crisis — the worst choice",
+                "Climax", "Resolution — the world after"],
+        speech: ["Who I am and why I am up here",
+                 "Opening — one concrete image",
+                 "The story",
+                 "What the story means",
+                 "The turn — the serious beat",
+                 "Close and toast"],
+        blank: ["Section 1"]
+      };
+
+      var state = [];
+
+      function esc(x) {
+        return String(x).replace(/&/g, "&amp;").replace(/</g, "&lt;")
+                        .replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+      }
+
+      function render() {
+        listEl.innerHTML = state.map(function (row, i) {
+          return '<li class="ob-row" draggable="true" data-i="' + i + '">' +
+            '<span class="ob-num">' + (i + 1) + '</span>' +
+            '<input class="ob-head" type="text" value="' + esc(row.head) + '" ' +
+              'aria-label="Section ' + (i + 1) + ' heading" placeholder="Section heading">' +
+            '<input class="ob-note" type="text" value="' + esc(row.note) + '" ' +
+              'aria-label="Section ' + (i + 1) + ' notes" placeholder="What goes in here…">' +
+            '<span class="ob-words">' +
+              '<label class="sr-only" for="ob-w' + i + '">Target words for section ' + (i + 1) + '</label>' +
+              '<input id="ob-w' + i + '" class="ob-wc" type="number" min="0" step="25" value="' + (row.words || 0) + '">' +
+            '</span>' +
+            '<span class="ob-btns">' +
+              '<button type="button" class="ob-mini" data-up="' + i + '" aria-label="Move section ' + (i + 1) + ' up"' + (i === 0 ? " disabled" : "") + '>↑</button>' +
+              '<button type="button" class="ob-mini" data-down="' + i + '" aria-label="Move section ' + (i + 1) + ' down"' + (i === state.length - 1 ? " disabled" : "") + '>↓</button>' +
+              '<button type="button" class="ob-mini ob-del" data-del="' + i + '" aria-label="Delete section ' + (i + 1) + '">×</button>' +
+            '</span></li>';
+        }).join("");
+        summarise();
+      }
+
+      function summarise() {
+        var total = state.reduce(function (n, r) { return n + (+r.words || 0); }, 0);
+        var filled = state.filter(function (r) { return r.note.trim(); }).length;
+        out.innerHTML = "<p><b>" + state.length + "</b> section" + (state.length === 1 ? "" : "s") +
+          " &middot; <b>" + total + "</b> words planned &middot; " + filled + " of " +
+          state.length + " with notes</p>" +
+          (total ? "<p class='tool-note'>At 200 words per section-minute of drafting, this is roughly " +
+            Math.max(1, Math.round(total / 200)) + " focused writing block" +
+            (Math.round(total / 200) === 1 ? "" : "s") + ".</p>" : "") +
+          "<p class='tool-note'>Nothing here leaves your browser. Copy the outline before you close the tab.</p>";
+      }
+
+      function load(kind) {
+        state = (SCAFFOLDS[kind] || SCAFFOLDS.blank).map(function (h) {
+          var bits = h.split(" — ");
+          return { head: bits[0], note: bits[1] || "", words: 0 };
+        });
+        render();
+      }
+
+      listEl.addEventListener("input", function (e) {
+        var row = e.target.closest(".ob-row"); if (!row) return;
+        var i = +row.dataset.i;
+        if (e.target.classList.contains("ob-head")) state[i].head = e.target.value;
+        else if (e.target.classList.contains("ob-note")) state[i].note = e.target.value;
+        else if (e.target.classList.contains("ob-wc")) state[i].words = +e.target.value || 0;
+        summarise();
+      });
+
+      listEl.addEventListener("click", function (e) {
+        var b = e.target.closest("button"); if (!b) return;
+        if (b.dataset.del !== undefined) { state.splice(+b.dataset.del, 1); }
+        else if (b.dataset.up !== undefined) {
+          var i = +b.dataset.up; if (i > 0) state.splice(i - 1, 0, state.splice(i, 1)[0]);
+        } else if (b.dataset.down !== undefined) {
+          var j = +b.dataset.down; if (j < state.length - 1) state.splice(j + 1, 0, state.splice(j, 1)[0]);
+        } else return;
+        if (!state.length) state = [{ head: "Section 1", note: "", words: 0 }];
+        render();
+      });
+
+      if (addBtn) addBtn.addEventListener("click", function () {
+        state.push({ head: "Section " + (state.length + 1), note: "", words: 0 });
+        render();
+        var inputs = listEl.querySelectorAll(".ob-head");
+        if (inputs.length) inputs[inputs.length - 1].focus();
+      });
+
+      if (typeEl) typeEl.addEventListener("change", function () { load(typeEl.value); });
+
+      function asText() {
+        var lines = [];
+        if (titleEl && titleEl.value.trim()) { lines.push(titleEl.value.trim()); lines.push(""); }
+        state.forEach(function (r, i) {
+          lines.push((i + 1) + ". " + (r.head || "Untitled section") +
+            (r.words ? "  (" + r.words + " words)" : ""));
+          if (r.note.trim()) lines.push("   " + r.note.trim());
+        });
+        var total = state.reduce(function (n, r) { return n + (+r.words || 0); }, 0);
+        if (total) { lines.push(""); lines.push("Target: " + total + " words"); }
+        return lines.join("\n");
+      }
+
+      if (copyBtn) copyBtn.addEventListener("click", function () {
+        var text = asText();
+        var done = function () {
+          copyBtn.textContent = "Copied";
+          setTimeout(function () { copyBtn.textContent = "Copy outline"; }, 1600);
+        };
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(done, function () { fallback(text, done); });
+        } else fallback(text, done);
+      });
+
+      function fallback(text, done) {
+        var ta = document.createElement("textarea");
+        ta.value = text; ta.setAttribute("readonly", "");
+        ta.style.position = "absolute"; ta.style.left = "-9999px";
+        document.body.appendChild(ta); ta.select();
+        try { document.execCommand("copy"); done(); } catch (e) { /* ignore */ }
+        document.body.removeChild(ta);
+      }
+
+      load(typeEl ? typeEl.value : "essay");
+    },
     "tone-checker": function () {
       var input = q("ta"), out = q("out");
       var FORMAL = ["furthermore","moreover","therefore","consequently","nevertheless","however","additionally","subsequently","accordingly","hereby","whom","shall","regarding","pursuant","utilise","utilize","commence","terminate","endeavour","endeavor","request","require","obtain","provide","assist","inform","advise","sincerely","faithfully","respectfully"];

@@ -827,3 +827,35 @@ html[data-theme="dark"] .theme-toggle .icon-sun{display:none}
   .compare-scroll{display:none}
   .compare-cards{display:grid}
 }
+
+/* ---- Interactive outline builder ---- */
+.ob-list{list-style:none;padding:0;margin:.9rem 0 0;display:grid;gap:.45rem;counter-reset:ob}
+.ob-row{display:grid;grid-template-columns:auto 1.1fr 1.6fr auto auto;gap:.45rem;align-items:center;
+  border:1px solid var(--line);border-radius:10px;background:var(--panel);padding:.45rem .55rem}
+.ob-num{width:1.6rem;text-align:center;font-weight:700;color:var(--muted);font-size:.9rem}
+.ob-row input{width:100%;padding:.4rem .55rem;font-size:.92rem;border-radius:7px;
+  border:1px solid var(--line);background:var(--bg);color:var(--ink)}
+.ob-row input:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.ob-head{font-weight:600}
+.ob-wc{width:5.2rem}
+.ob-btns{display:flex;gap:.25rem}
+.ob-mini{width:1.8rem;height:1.8rem;padding:0;line-height:1;border-radius:6px;cursor:pointer;
+  border:1px solid var(--line-strong);background:var(--bg-2);color:var(--ink);font-size:.9rem}
+.ob-mini:hover:not(:disabled){border-color:var(--accent)}
+.ob-mini:disabled{opacity:.35;cursor:not-allowed}
+.ob-mini:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.ob-del:hover{border-color:var(--red);color:var(--red)}
+@media (max-width:760px){
+  .ob-row{grid-template-columns:auto 1fr;grid-template-areas:"num head" "num note" "wc btns";row-gap:.35rem}
+  .ob-num{grid-area:num;align-self:start;padding-top:.45rem}
+  .ob-head{grid-area:head}.ob-note{grid-area:note}
+  .ob-words{grid-area:wc}.ob-btns{grid-area:btns;justify-content:flex-end}
+}
+
+/* ---- Per-guide regional variation note (Proposal §5) ---- */
+.regional-note{margin:1.6rem 0 0;padding:.9rem 1.1rem;border:1px solid var(--line);
+  border-left:3px solid var(--blue);border-radius:10px;background:var(--bg-2)}
+.regional-tag{margin:0 0 .3rem;font-size:.72rem;font-weight:700;letter-spacing:.09em;
+  text-transform:uppercase;color:var(--blue)}
+.regional-note p:last-child{margin:0;color:var(--ink);line-height:1.65;font-size:.95rem}
+.regional-note a{font-weight:600;white-space:nowrap}

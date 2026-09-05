@@ -501,6 +501,113 @@
       "q": "a better draft using feedback",
       "cat": "better",
       "guide": "how-to-get-and-use-feedback"
+    },
+    {
+      "q": "a lab report",
+      "cat": "study",
+      "guide": "how-to-write-a-lab-report"
+    },
+    {
+      "q": "an essay in an exam",
+      "cat": "study",
+      "guide": "how-to-write-an-exam-essay",
+      "tool": "writing-timer",
+      "note": "Plan for five minutes even though it feels impossible."
+    },
+    {
+      "q": "an annotated bibliography",
+      "cat": "study",
+      "guide": "how-to-write-an-annotated-bibliography",
+      "template": "annotated-bibliography",
+      "tool": "citation-formatter"
+    },
+    {
+      "q": "a peer review of someone's paper",
+      "cat": "study",
+      "guide": "how-to-write-a-peer-review"
+    },
+    {
+      "q": "minutes of a meeting",
+      "cat": "work",
+      "guide": "how-to-write-meeting-minutes",
+      "template": "meeting-minutes"
+    },
+    {
+      "q": "a meeting agenda",
+      "cat": "work",
+      "guide": "how-to-write-meeting-minutes",
+      "template": "meeting-agenda"
+    },
+    {
+      "q": "a standard operating procedure",
+      "cat": "work",
+      "guide": "how-to-write-a-standard-operating-procedure",
+      "tool": "readability-score"
+    },
+    {
+      "q": "a performance review or self-assessment",
+      "cat": "work",
+      "guide": "how-to-write-a-performance-review"
+    },
+    {
+      "q": "an apology",
+      "cat": "life",
+      "guide": "how-to-write-an-apology",
+      "tool": "tone-checker",
+      "note": "Search your draft for \"if\", \"but\" and \"you feel\" — each is a probable failure."
+    },
+    {
+      "q": "a video or YouTube script",
+      "cat": "online",
+      "guide": "how-to-write-a-video-script",
+      "tool": "reading-time"
+    },
+    {
+      "q": "a thread on X, Threads or Bluesky",
+      "cat": "online",
+      "guide": "how-to-write-a-thread",
+      "tool": "character-counter"
+    },
+    {
+      "q": "an FAQ page",
+      "cat": "online",
+      "guide": "how-to-write-an-faq-page"
+    },
+    {
+      "q": "a very short story",
+      "cat": "creative",
+      "guide": "how-to-write-flash-fiction",
+      "tool": "word-counter"
+    },
+    {
+      "q": "a novel",
+      "cat": "creative",
+      "guide": "how-to-plan-a-novel",
+      "tool": "outline-builder",
+      "note": "Six months of drafting at 500 words a day."
+    },
+    {
+      "q": "consistently, across everything I write",
+      "cat": "better",
+      "guide": "how-to-build-a-personal-style-guide"
+    },
+    {
+      "q": "something long, like a thesis or a book",
+      "cat": "better",
+      "guide": "how-to-manage-a-long-writing-project",
+      "tool": "writing-timer"
+    },
+    {
+      "q": "well in English when it is not my first language",
+      "cat": "better",
+      "guide": "writing-in-english-as-a-second-language",
+      "tool": "sentence-length-checker"
+    },
+    {
+      "q": "an outline before I start",
+      "cat": "better",
+      "guide": "how-to-turn-an-idea-into-an-outline",
+      "tool": "outline-builder"
     }
   ]
 }

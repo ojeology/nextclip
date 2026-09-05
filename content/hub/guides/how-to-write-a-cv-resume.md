@@ -3,6 +3,7 @@ title: How to write a CV or resume
 description: A clear, results-driven CV that gets read and gets you an interview.
 section: professional-writing
 level: intermediate
+regional: In the US a résumé is one page and a CV is an academic record; in the UK, Nigeria, Kenya, India, South Africa and Australia "CV" means the short document. A photo and date of birth are expected in Germany and common in Nigeria and India, and can get your application discarded in the US, UK, Canada and Australia.
 keywords: [CV, resume, job, application, skills]
 tools: [word-document-converter]
 related: [how-to-write-a-cover-letter, how-to-write-about-yourself]
