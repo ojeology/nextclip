@@ -812,6 +812,7 @@ def homepage() -> None:
 <a class="chip-card" href="/writing/?global=1"><b>🌍</b><span>Open to writers anywhere</span></a>
 <a class="chip-card" href="/writing/?type=personal-essays"><b>✍️</b><span>Personal essays</span></a>
 <a class="chip-card" href="/writing/?type=fiction"><b>📖</b><span>Fiction &amp; poetry</span></a>
+<a class="chip-card" href="/today/"><b>📅</b><span>Updated this week</span></a>
 <a class="chip-card" href="/tracker/"><b>📋</b><span>Track your pitches</span></a>
 </div></div></section>
 <section class="trust-strip"><div class="wrap trust-grid"><div class="trust-item"><span class="trust-icon">✓</span>Pay, word count and eligibility researched</div><div class="trust-item"><span class="trust-icon">✓</span>Official guideline linked on every listing</div><div class="trust-item"><span class="trust-icon">✓</span>Last-verified date shown, never hidden</div></div></section>

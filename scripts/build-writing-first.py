@@ -22,6 +22,7 @@ archived in-tree under legacy-site/ — it is not generated here and not promote
 from __future__ import annotations
 import importlib.util
 import json
+import datetime as _dt
 import sys
 from pathlib import Path
 from urllib.parse import quote
@@ -51,7 +52,7 @@ def footer() -> str:
     return '''<footer class="site-foot"><div class="wrap foot-grid">
   <div class="foot-brand"><a class="logo" href="/"><span class="logo-mark" aria-hidden="true">B</span>BRYME</a><p>BRYME is a free writing resource — guides, tools, and verified opportunities to get published and paid.</p></div>
   <div class="foot-col"><b>How to write</b><a href="/start/">Beginner path</a><a href="/find/">What do you want to write?</a><a href="/compare/">Compare formats</a><a href="/regional/">Writing by country</a><a href="/learn/">Writing hub</a><a href="/learn/examples/">Examples</a><a href="/learn/dos-and-donts/">Dos &amp; don'ts</a><a href="/learn/types-of-writing/">Types of writing</a><a href="/learn/grammar-language/">Grammar</a></div>
-  <div class="foot-col"><b>Tools &amp; publish</b><a href="/tools/">Writing tools</a><a href="/templates/">Templates</a><a href="/checklists/">Checklists</a><a href="/writing/">Paid opportunities</a><a href="/tested/">BRYME Tested</a></div>
+  <div class="foot-col"><b>Tools &amp; publish</b><a href="/tools/">Writing tools</a><a href="/templates/">Templates</a><a href="/checklists/">Checklists</a><a href="/writing/">Paid opportunities</a><a href="/writing-opportunities/">Browse by country</a><a href="/today/">Today&rsquo;s opportunities</a><a href="/tracker/">Submission tracker</a><a href="/tested/">BRYME Tested</a></div>
   <div class="foot-col"><b>Trust</b><a href="/about/">About</a><a href="/verification/">What statuses mean</a><a href="/editorial-policy/">Editorial policy</a><a href="/corrections/">Corrections</a><a href="/privacy/">Privacy</a><a href="/contact/">Contact</a></div>
   <div class="foot-col"><b>Legal</b><a href="/terms/">Terms</a><a href="/disclaimer/">Disclaimer</a><a href="/copyright/">Copyright</a></div>
 </div><div class="wrap foot-bottom">© 2026 BRYME · Independent editorial project · No acceptance, publication or payment is guaranteed.</div></footer>'''
@@ -535,7 +536,7 @@ def drawer(current: str = "") -> str:
     return f'''<div id="drawer-backdrop"></div>
 <aside id="site-drawer" aria-hidden="true" aria-label="Site menu" role="dialog" aria-modal="true">
   <div class="drawer-head"><a class="logo" href="/"><span class="logo-mark" aria-hidden="true">B</span>BRYME</a><button type="button" class="drawer-close" data-drawer-close aria-label="Close menu"><svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
-  {group("Start here", [("home", "/", "Home", "🏠"), ("start", "/start/", "Complete beginner path", "🧭"), ("find", "/find/", "What do you want to write?", "❓"), ("compare", "/compare/", "Compare formats", "⚖️"), ("tracker", "/tracker/", "Submission tracker", "📋"), ("regional", "/regional/", "Writing by country", "🌍"), ("search", "/search/", "Search BRYME", "🔍")])}
+  {group("Start here", [("home", "/", "Home", "🏠"), ("start", "/start/", "Complete beginner path", "🧭"), ("find", "/find/", "What do you want to write?", "❓"), ("compare", "/compare/", "Compare formats", "⚖️"), ("today", "/today/", "Today's opportunities", "📅"), ("tracker", "/tracker/", "Submission tracker", "📋"), ("regional", "/regional/", "Writing by country", "🌍"), ("search", "/search/", "Search BRYME", "🔍")])}
   {group("How to write", howto)}
   {group("Tools & templates", tools)}
   {group("Write & get paid", write)}
@@ -660,7 +661,12 @@ def pub_card(rec: dict, heading: str = "h2") -> str:
     globally_open = elig.get("mode") in ("open", "worldwide")
     approx = usd_approx(rec)
     approx_html = f'<span class="pay-approx" title="Approximate, converted at the mid-market rate on {esc(FX["fetchedAt"])}">{esc(approx)}</span>' if approx else ""
-    deadline = rec.get("deadline") or ""
+    # `deadline` is an object, not a string: {date?, display?, openingDate?}.
+    # Only the ISO date is machine-usable; stringifying the dict put a Python
+    # repr into the attribute and made "closing soonest" sort on punctuation.
+    _dl = rec.get("deadline") or {}
+    deadline = (_dl.get("date") or "") if isinstance(_dl, dict) else ""
+    deadline_display = (_dl.get("display") or "") if isinstance(_dl, dict) else ""
     search_blob = " ".join(filter(None, [
         rec.get("publication", ""), rec.get("title", ""), rec.get("writingTypeLabel", ""),
         rec.get("excerpt", ""), " ".join(rec.get("keywords") or []), region_label,
@@ -829,6 +835,315 @@ def tracker_page() -> None:
                      "operatingSystem": "Any modern browser",
                      "url": BASE + "/tracker/",
                      "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}))
+
+
+
+# ---------------------------------------------------------------------------
+# Brief §14: "Today's Opportunities" — a reason to come back.
+#
+# Every section here is computed from real dates and real figures. Where a
+# section would be empty or misleading it is omitted entirely rather than
+# padded, and the page says how many there were. A feed that claims "new
+# today" on a day when nothing changed teaches people to stop checking.
+# ---------------------------------------------------------------------------
+
+def _dl_date(rec: dict) -> str:
+    d = rec.get("deadline") or {}
+    return (d.get("date") or "") if isinstance(d, dict) else ""
+
+
+def _days_since(iso: str) -> int:
+    try:
+        y, m, d = (int(x) for x in iso[:10].split("-"))
+        return (_dt.date.fromisoformat(TODAY) - _dt.date(y, m, d)).days
+    except Exception:
+        return 10**6
+
+
+def _days_until(iso: str) -> int:
+    return -_days_since(iso)
+
+
+def today_feed() -> None:
+    recent = sorted((r for r in WRITING if _days_since(r.get("lastVerified") or "") <= 7),
+                    key=lambda r: r.get("lastVerified") or "", reverse=True)
+
+    closing = sorted((r for r in WRITING
+                      if _dl_date(r) and 0 <= _days_until(_dl_date(r)) <= 90
+                      and norm_status(r) not in ("closed",)),
+                     key=lambda r: _dl_date(r))
+
+    paying = sorted((r for r in WRITING
+                     if usd_amount(r) is not None
+                     and norm_status(r) in ("open", "rolling", "deadline")),
+                    key=lambda r: usd_amount(r) or 0, reverse=True)[:8]
+
+    anywhere = [r for r in WRITING
+                if (r.get("eligibility") or {}).get("mode") in ("open", "worldwide")
+                and norm_status(r) in ("open", "rolling")][:8]
+
+    opening = sorted((r for r in WRITING
+                      if isinstance(r.get("deadline"), dict)
+                      and (r["deadline"].get("openingDate") or "")
+                      and _days_until(r["deadline"]["openingDate"]) >= 0),
+                     key=lambda r: r["deadline"]["openingDate"])
+
+    def block(title, eyebrow, blurb, rows, empty_msg, limit=8):
+        if not rows:
+            return (f'<section class="section"><div class="wrap"><div class="section-head"><div>'
+                    f'<p class="eyebrow">{esc(eyebrow)}</p><h2>{esc(title)}</h2></div></div>'
+                    f'<p class="filter-status empty">{esc(empty_msg)}</p></div></section>')
+        shown = rows[:limit]
+        more = ""
+        if len(rows) > limit:
+            more = (f'<p class="tool-note">{len(rows) - limit} more not shown here — '
+                    f'<a href="/writing/">search the full list</a>.</p>')
+        return (f'<section class="section"><div class="wrap"><div class="section-head"><div>'
+                f'<p class="eyebrow">{esc(eyebrow)}</p><h2>{esc(title)}</h2></div>'
+                f'<p>{esc(blurb)}</p></div>'
+                f'<div class="opp-list">{"".join(pub_card(r, "h3") for r in shown)}</div>'
+                f'{more}</div></section>')
+
+    blocks = [
+        block("Checked in the last seven days", "Freshly verified",
+              f"{len(recent)} listings had their pay, status and guideline re-checked by hand this week.",
+              recent, "Nothing was re-checked in the last seven days."),
+        block("Closing within 90 days", "Closing soon",
+              "Dated windows that are still open. Past deadlines are excluded — they have closed, not 'closing soon'.",
+              closing, "No listing has a stated deadline inside the next 90 days."),
+        block("Highest stated pay, open now", "Best paid",
+              "Ranked on the figure the publication itself states, converted to USD only for comparison.",
+              paying, "No open listing currently states a figure."),
+        block("Open to writers anywhere", "No country restriction",
+              "Publications whose own guideline places no geographic restriction on who may submit.",
+              anywhere, "No listing is currently recorded as open worldwide."),
+    ]
+    if opening:
+        rows = "".join(
+            f'<li><b>{esc(r["deadline"]["openingDate"])}</b> — '
+            f'<a href="/writing/{esc(r["slug"])}/">{esc(r["publication"])}</a>'
+            f'{" · " + esc(r["deadline"].get("display","")) if r["deadline"].get("display") else ""}</li>'
+            for r in opening[:8])
+        blocks.append(
+            f'<section class="section alt"><div class="wrap"><div class="section-head"><div>'
+            f'<p class="eyebrow">Opens later</p><h2>Reopening on a stated date.</h2></div>'
+            f'<p>Closed today, with the publication naming when it reopens. Worth a diary note.</p></div>'
+            f'<ul class="today-open">{rows}</ul></div></section>')
+
+    n_open = sum(1 for r in WRITING if norm_status(r) in ("open", "rolling", "deadline"))
+    body = f'''<div class="wrap"><nav class="breadcrumb"><a href="/">Home</a> / Today</nav>
+<section class="page-hero"><p class="kicker"><span class="kicker-dot"></span>Updated {TODAY}</p>
+<h1>Today&rsquo;s opportunities.</h1>
+<p>What changed, what is closing, and what pays most — recomputed from the record every time BRYME rebuilds. Every figure below is the publication&rsquo;s own; nothing here is estimated.</p>
+<div class="source-line"><span><b>{len(WRITING)}</b> tracked</span><span><b>{n_open}</b> accepting now</span><span><b>{len(recent)}</b> verified this week</span><span><b>{len(closing)}</b> closing within 90 days</span></div>
+</section></div>
+{"".join(blocks)}
+<section class="section alt"><div class="wrap"><div class="section-head"><div><p class="eyebrow">Keep track</p>
+<h2>Do not rely on memory.</h2></div></div>
+<div class="card-grid">
+<a class="path-card" href="/tracker/"><span class="card-num">TRACK</span><h3>Submission tracker</h3><p>Log what you sent and when the follow-up is due. Free, private, stays in your browser.</p><span class="card-link">Open the tracker →</span></a>
+<a class="path-card" href="/writing/"><span class="card-num">SEARCH</span><h3>Search everything</h3><p>Filter all {len(WRITING)} by country, genre, pay, length and status.</p><span class="card-link">Open the search →</span></a>
+<a class="path-card" href="/learn/writing-for-publication/how-to-pitch-an-editor/"><span class="card-num">PITCH</span><h3>Write the pitch</h3><p>What editors read first, and the follow-up rule.</p><span class="card-link">Read the guide →</span></a>
+</div></div></section>'''
+    write("/today/", page_wf(
+        title=f"Today's writing opportunities: verified {TODAY} | BRYME",
+        description=f"Writing opportunities re-verified this week, windows closing within 90 days, and the highest-paying open markets — recomputed from {len(WRITING)} researched publications.",
+        route="/today/", current="writing", body=body,
+        schema_data={"@context": "https://schema.org", "@type": "CollectionPage",
+                     "name": "Today's writing opportunities", "url": BASE + "/today/",
+                     "dateModified": TODAY}))
+
+
+
+# ---------------------------------------------------------------------------
+# Brief §15: programmatic pages, "only where real data supports them".
+#
+# The guard is MIN_FOR_PAGE. A facet with three listings does not get a page,
+# because a near-empty landing page is the thin programmatic SEO the brief
+# and the earlier proposal both prohibit. Each page that IS generated carries
+# figures computed from its own subset (pay range, typical length, how many
+# are open, how many are open worldwide) plus hand-written framing — so it is
+# not merely a filtered list with a heading.
+# ---------------------------------------------------------------------------
+
+# Two thresholds, not one. A genre page is a list — under 8 entries it reads as
+# thin. A country page also carries hand-written market guidance and a second,
+# much larger "open to writers here" view, so 5 researched listings is a real
+# page. Brief §7 is explicit that Nigeria/Africa must not be sidelined while
+# expanding US/UK coverage, and a single blanket threshold would have dropped
+# Nigeria, the UK, Canada and Australia while keeping the 71-listing US page.
+MIN_COUNTRY_PAGE = 5
+MIN_TYPE_PAGE = 8
+MIN_FOR_PAGE = MIN_TYPE_PAGE
+
+PROG_COUNTRY_NOTES = {
+    "US": "The largest group in the database by a wide margin, and the most competitive. Rates are usually stated per word or per piece, and most US publications pay 30 days after publication rather than on acceptance.",
+    "NG": "Nigerian publications pay in naira and usually require a Nigerian bank account. Fees are smaller in absolute terms than US or UK markets; they are also far less competitive, reply faster, and are the most realistic first published credit for a writer based in Nigeria.",
+    "UK": "UK magazines tend to want a tight pitch rather than a finished piece, and usually state rates per 1,000 words. Follow UK spelling and punctuation conventions throughout.",
+    "CA": "Canadian markets frequently prioritise Canadian writers or Canadian subject matter — check each guideline, because BRYME does not treat a missing statement as an open call.",
+    "AU": "Australian rates are quoted in Australian dollars, and several titles add superannuation on top of the fee for contributors. Reading periods are often seasonal.",
+}
+
+PROG_TYPE_NOTES = {
+    "essays": "The broadest category here and the most competitive. An essay pitch lives or dies on the angle, not the subject — editors receive the subject constantly and the angle rarely.",
+    "personal-essays": "Personal essays sell on what the experience reveals, not on the experience itself. Most markets want the piece finished rather than pitched, because voice cannot be judged from a summary.",
+    "fiction": "Almost every fiction market wants the complete story, not a query. Read the word limits precisely: over the cap is an automatic decline at most journals.",
+    "poetry": "Submission windows matter more here than in any other category, and most journals cap the number of poems per submission. Simultaneous submissions are usually allowed if you withdraw promptly.",
+    "journalism": "Reported work needs access before it needs a pitch. Say in the pitch who you can already reach — that is often what decides a commission.",
+    "articles": "Service and explainer work is the steadiest paid writing in this list. Editors are buying reliability and structure as much as prose.",
+    "analysis": "Analysis markets want a defensible argument and sources. Say what you are claiming in the first two sentences.",
+    "opinion": "Opinion desks move fast and reject fast. Timeliness is usually the deciding factor, so pitch within a day or two of the news it hangs on.",
+    "reviews": "Most review commissions go to writers the desk already knows, so lead with your relationship to the form and any prior criticism you have published.",
+    "creative-nonfiction": "Longer-form nonfiction with a literary register. Expect slow reading periods and set your expectations accordingly.",
+    "interviews": "Interview commissions usually depend on access. If you can already reach the subject, say so first.",
+}
+
+
+def _prog_stats(rows: list) -> str:
+    amts = [usd_amount(r) for r in rows]
+    amts = [a for a in amts if a is not None]
+    n_open = sum(1 for r in rows if norm_status(r) in ("open", "rolling", "deadline"))
+    n_glob = sum(1 for r in rows if (r.get("eligibility") or {}).get("mode") in ("open", "worldwide"))
+    bits = [f"<span><b>{len(rows)}</b> publications</span>",
+            f"<span><b>{n_open}</b> accepting now</span>",
+            f"<span><b>{n_glob}</b> open worldwide</span>"]
+    if amts:
+        lo, hi = min(amts), max(amts)
+        bits.append(f"<span><b>${lo:,.0f}&ndash;${hi:,.0f}</b> stated pay (USD equiv.)</span>")
+        bits.append(f"<span><b>{len(rows) - len(amts)}</b> state no figure</span>")
+    return f'<div class="source-line">{"".join(bits)}</div>'
+
+
+def _prog_page(slug: str, h1: str, kicker: str, intro: str, note: str,
+               rows: list, filter_href: str, guides: list,
+               extra_cta: tuple | None = None) -> None:
+    rows = sorted(rows, key=lambda r: (0 if norm_status(r) in ("open", "rolling") else 1,
+                                       -(usd_amount(r) or 0)))
+    cards = "".join(pub_card(r, "h3") for r in rows)
+    glinks = "".join(
+        f'<a class="purpose-alt" href="{esc(h)}">{esc(t)}</a>' for h, t in guides)
+    body = f'''<div class="wrap"><nav class="breadcrumb"><a href="/">Home</a> / <a href="/writing/">Opportunities</a> / {esc(h1)}</nav>
+<section class="page-hero"><p class="kicker"><span class="kicker-dot"></span>{esc(kicker)}</p>
+<h1>{esc(h1)}</h1>
+<p>{esc(intro)}</p>
+{_prog_stats(rows)}
+<p class="notice">{esc(note)}</p>
+<p class="prog-ctas"><a class="btn" href="{esc(filter_href)}">Filter these by pay, length and status →</a>
+{f'<a class="btn secondary" href="{esc(extra_cta[0])}">{esc(extra_cta[1])}</a>' if extra_cta else ''}</p>
+</section></div>
+<section class="section"><div class="wrap"><div class="opp-list">{cards}</div></div></section>
+<section class="section alt"><div class="wrap"><div class="section-head"><div><p class="eyebrow">Before you pitch</p>
+<h2>Read these first.</h2></div></div><div class="purpose-links">{glinks}</div>
+<p class="tool-note">Every listing links to the publication&rsquo;s own guideline and shows the date BRYME last checked it. A listing is an invitation to pitch &mdash; never a promise of acceptance or payment.</p>
+</div></section>'''
+    write(f"/writing-opportunities/{slug}/", page_wf(
+        title=f"{h1} | BRYME",
+        description=f"{len(rows)} researched publications — {intro[:120]}",
+        route=f"/writing-opportunities/{slug}/", current="writing", body=body,
+        schema_data={"@context": "https://schema.org", "@type": "CollectionPage",
+                     "name": h1, "url": f"{BASE}/writing-opportunities/{slug}/",
+                     "dateModified": TODAY,
+                     "numberOfItems": len(rows)}))
+
+
+PROG_ROUTES: list[str] = []
+
+
+def programmatic_pages() -> None:
+    PROG_ROUTES.clear()
+    base_guides = [("/learn/writing-for-publication/how-to-pitch-an-editor/", "How to pitch an editor"),
+                   ("/learn/freelance-paid-writing/how-to-find-paying-publications/", "How to find paying publications"),
+                   ("/tracker/", "Track your pitches")]
+
+    # --- by country of publication -----------------------------------------
+    iso_slug = {"US": "usa", "NG": "nigeria", "UK": "united-kingdom",
+                "CA": "canada", "AU": "australia"}
+    groups: dict[str, list] = {}
+    for r in WRITING:
+        b = (base_country(r["slug"]) or "").upper()
+        if b:
+            groups.setdefault(b, []).append(r)
+    for iso, rows in sorted(groups.items()):
+        if len(rows) < MIN_COUNTRY_PAGE or iso not in iso_slug:
+            continue
+        name = country_name(iso)
+        _prog_page(
+            iso_slug[iso], f"Writing opportunities in {name}",
+            f"{name} publications",
+            f"Publications based in {name} that pay writers, researched by hand with their stated pay, word count, eligibility and official guideline.",
+            PROG_COUNTRY_NOTES.get(iso, "Check each guideline before pitching — BRYME does not treat a missing eligibility statement as an open call."),
+            rows, f"/writing/?country={iso}",
+            base_guides + [("/regional/", "Writing conventions by country")],
+            extra_cta=(f"/writing/?country={iso}&cmode=opento",
+                       f"{sum(1 for r in WRITING if _filter_matches(r, iso, 'opento'))} publications are open to writers in {name} \u2192"))
+        PROG_ROUTES.append(f"/writing-opportunities/{iso_slug[iso]}/")
+
+    # --- open worldwide -----------------------------------------------------
+    remote = [r for r in WRITING
+              if (r.get("eligibility") or {}).get("mode") in ("open", "worldwide")]
+    if len(remote) >= MIN_TYPE_PAGE:
+        _prog_page(
+            "remote", "Writing opportunities open to writers anywhere",
+            "No country restriction",
+            "Publications whose own guideline places no geographic restriction on who may submit — the starting point if you are writing from outside the US and UK.",
+            "BRYME only lists a publication here when its guideline actually says so. A guideline that is silent about eligibility is recorded as \u201cnot stated\u201d, not as open worldwide.",
+            remote, "/writing/?global=1",
+            base_guides + [("/regional/", "Writing conventions by country"),
+                           ("/learn/writing-for-publication/why-your-first-pitch-may-be-rejected/", "Why a first pitch gets rejected")])
+        PROG_ROUTES.append("/writing-opportunities/remote/")
+
+    # --- by type of writing --------------------------------------------------
+    tslug = {"essays": "essays", "personal-essays": "personal-essays", "fiction": "fiction",
+             "poetry": "poetry", "journalism": "journalism", "articles": "articles",
+             "analysis": "analysis", "opinion": "opinion", "reviews": "reviews",
+             "creative-nonfiction": "creative-nonfiction", "interviews": "interviews"}
+    tgroups: dict[str, list] = {}
+    for r in WRITING:
+        for t in norm_types(r):
+            tgroups.setdefault(t, []).append(r)
+    for t, rows in sorted(tgroups.items()):
+        if t not in tslug or len(rows) < MIN_TYPE_PAGE:
+            continue
+        label = WRITING_TYPE_LABELS[t]
+        _prog_page(
+            tslug[t], f"Publications that pay for {label.lower()}",
+            label,
+            f"Markets currently recorded as publishing {label.lower()}, with the pay and word count each one states.",
+            PROG_TYPE_NOTES.get(t, "Read the official guideline before pitching."),
+            rows, f"/writing/?type={t}", base_guides)
+        PROG_ROUTES.append(f"/writing-opportunities/{tslug[t]}/")
+
+    # --- index --------------------------------------------------------------
+    def li(href, label, n):
+        return (f'<a class="guide-card" href="{esc(href)}"><span class="card-num">{n}</span>'
+                f'<h3>{esc(label)}</h3><span class="card-link">Open →</span></a>')
+    country_cards = "".join(
+        li(f"/writing-opportunities/{iso_slug[i]}/", country_name(i), len(g))
+        for i, g in sorted(groups.items()) if i in iso_slug and len(g) >= MIN_COUNTRY_PAGE)
+    type_cards = "".join(
+        li(f"/writing-opportunities/{tslug[t]}/", WRITING_TYPE_LABELS[t], len(g))
+        for t, g in sorted(tgroups.items(), key=lambda kv: -len(kv[1]))
+        if t in tslug and len(g) >= MIN_TYPE_PAGE)
+    body = f'''<div class="wrap"><nav class="breadcrumb"><a href="/">Home</a> / <a href="/writing/">Opportunities</a> / Browse</nav>
+<section class="page-hero"><p class="kicker"><span class="kicker-dot"></span>Browse by</p>
+<h1>Writing opportunities by country and genre.</h1>
+<p>Ready-made views of the {len(WRITING)} publications BRYME has researched. A view is only published where there are at least {MIN_COUNTRY_PAGE} real listings behind it — thin filter pages help nobody.</p>
+</section></div>
+<section class="section"><div class="wrap"><div class="section-head"><div><p class="eyebrow">By country</p><h2>Where the publication is based.</h2></div></div>
+<div class="card-grid">{country_cards}
+{li("/writing-opportunities/remote/", "Open to writers anywhere", len(remote))}</div></div></section>
+<section class="section alt"><div class="wrap"><div class="section-head"><div><p class="eyebrow">By what you write</p><h2>Genre and form.</h2></div></div>
+<div class="card-grid">{type_cards}</div>
+<p class="tool-note">Need a combination these pages do not cover — say, poetry in Canada paying over $100? <a href="/writing/">Use the full search</a>, which filters on all nine facets at once.</p>
+</div></section>'''
+    write("/writing-opportunities/", page_wf(
+        title="Writing opportunities by country and genre | BRYME",
+        description=f"Browse {len(WRITING)} researched paid-writing publications by country (USA, Nigeria, UK, Canada, Australia) and by genre (essays, fiction, poetry, journalism and more).",
+        route="/writing-opportunities/", current="writing", body=body,
+        schema_data={"@context": "https://schema.org", "@type": "CollectionPage",
+                     "name": "Writing opportunities by country and genre",
+                     "url": BASE + "/writing-opportunities/"}))
+    PROG_ROUTES.append("/writing-opportunities/")
 
 
 def writing_hub() -> None:
@@ -1411,6 +1726,8 @@ if __name__ == "__main__":
     # /tested/, /about/ and the trust/legal pages.
     writing_hub()
     tracker_page()
+    today_feed()
+    programmatic_pages()
     for r in WRITING:
         pub_page(r)
     guides_hub()

@@ -144,11 +144,15 @@
         return (a.getAttribute("data-pub") || "").localeCompare(b.getAttribute("data-pub") || "");
       }
       if (mode === "deadline") {
+        /* Soonest FUTURE deadline first. A date already past is not "closing
+           soon" — it has closed — so those sink below the undated ones. */
+        var today = new Date().toISOString().slice(0, 10);
         var da = a.getAttribute("data-deadline") || "";
         var db = b.getAttribute("data-deadline") || "";
-        if (!da && !db) return 0;
-        if (!da) return 1;
-        if (!db) return -1;
+        var ra = !da ? 1 : (da >= today ? 0 : 2);
+        var rb = !db ? 1 : (db >= today ? 0 : 2);
+        if (ra !== rb) return ra - rb;
+        if (ra !== 0) return 0;
         return da.localeCompare(db);
       }
       return 0;
