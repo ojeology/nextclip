@@ -445,6 +445,9 @@ a:focus-visible, button:focus-visible { outline-color: var(--accent); }
 .read-fill{height:100%;background:linear-gradient(90deg,var(--green),var(--accent))}
 .read-num{position:absolute;top:-1px;left:8px;color:var(--ink);font-size:.85rem;line-height:1.2}
 .tool-list{padding-left:1.1rem}.tool-list li{margin:.4rem 0;line-height:1.5}
+.tool-box .btn{margin-right:.5rem}
+.tool-select{display:inline-block;padding:.5rem .7rem;border:1px solid var(--line);border-radius:10px;background:var(--bg-2);color:var(--ink)}
+.tool-actions{margin-top:1rem}
 
 /* Lean editorial compatibility layer — replaces the 263 KB legacy platform sheet. */
 .shell{width:min(calc(100% - 32px),var(--max));margin-inline:auto}

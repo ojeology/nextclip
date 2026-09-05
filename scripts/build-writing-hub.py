@@ -365,6 +365,12 @@ def render_tool(t: dict) -> str:
         return f'''<div class="tool-box"><div class="tool-prose"><p>Click for a fresh prompt to beat the blank page.</p>
 <div class="tool-actions"><button class="btn" id="new">New prompt</button></div><div class="tool-result" id="out"></div></div></div>
 <script src="/assets/hub-tools.js" data-hub-tool="random-writing-prompt"></script>'''
+    if i == "word-document-converter":
+        return f'''<div class="tool-box"><div class="tool-prose"><p>Paste or write your text, then download it as a Word-compatible file. Everything happens in your browser — nothing is uploaded.</p>
+<label>Your text</label><textarea id="ta" placeholder="Paste or write your document here…"></textarea>
+<div class="tool-actions"><label class="tool-select">Format <select id="format"><option value="doc">Word (.doc)</option><option value="txt">Plain text (.txt)</option></select></label><button id="download" class="btn">Download document</button></div>
+<div class="tool-result" id="out"></div></div></div>
+<script src="/assets/hub-tools.js" data-hub-tool="word-document-converter"></script>'''
     # default: single textarea with live count
     return f'''<div class="tool-box"><div class="tool-prose"><label>Your text</label><textarea id="ta" placeholder="Type or paste your text…"></textarea><div class="tool-result" id="out"></div></div></div>
 <script src="/assets/hub-tools.js" data-hub-tool="{i}"></script>'''

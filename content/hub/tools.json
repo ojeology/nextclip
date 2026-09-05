@@ -188,6 +188,13 @@
       "short": "A fresh idea to write from.",
       "category": "work",
       "description": "Get a surprise writing prompt to beat the blank page — great for journaling and creative writing."
+    },
+    {
+      "id": "word-document-converter",
+      "title": "Word document converter",
+      "short": "Turn your text into a downloadable Word (.doc) file.",
+      "category": "work",
+      "description": "Paste or write your text and download it as a Word-compatible .doc document (or a .txt file). No account, no upload — it converts right in your browser."
     }
   ]
 }

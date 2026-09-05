@@ -365,6 +365,28 @@
         out.innerHTML = "<div class='tool-result'><p>" + p + "</p></div>";
       }
       btn.onclick = run; run();
+    },
+    "word-document-converter": function () {
+      var input = q("ta"), btn = q("download"), fmt = q("format"), out = q("out");
+      function htmlFrom(text) {
+        var esc = text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+        var paras = esc.split(/\n\s*\n/).map(function (p) { return "<p>" + p.replace(/\n/g, "<br>") + "</p>"; }).join("");
+        return '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40"><head><meta charset="utf-8"><title>BRYME Writing Document</title><!--[if gte mso 9]><xml><w:WordDocument><w:View>Print</w:View><w:Zoom>100</w:Zoom></w:WordDocument></xml><![endif]--><style>body{font-family:Calibri,Arial,sans-serif;font-size:12pt;line-height:1.5}p{margin:0 0 12pt}</style></head><body>' + paras + '</body></html>';
+      }
+      btn.onclick = function () {
+        var text = WAT(input);
+        if (!text) { return; }
+        var choice = (fmt.value || "doc");
+        var blob, name;
+        if (choice === "txt") { blob = new Blob([text], { type: "text/plain;charset=utf-8" }); name = "bryme-document.txt"; }
+        else { blob = new Blob(["\ufeff" + htmlFrom(text)], { type: "application/msword" }); name = "bryme-document.doc"; }
+        var a = document.createElement("a");
+        a.href = URL.createObjectURL(blob); a.download = name;
+        document.body.appendChild(a); a.click(); document.body.removeChild(a);
+        setTimeout(function () { URL.revokeObjectURL(a.href); }, 2500);
+        out.innerHTML = "<p>Downloaded <b>" + name + "</b>. Open it in Word, Google Docs or LibreOffice.</p>";
+      };
+      fit(input);
     }
   };
 
