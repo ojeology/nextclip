@@ -2,6 +2,7 @@
 title: Dos and don'ts of pitching editors
 description: The rules that get a pitch read, considered, and maybe accepted.
 section: dos-and-donts
+level: intermediate
 keywords: [pitch, editors, publish, dos, donts, query]
 tools: [word-document-converter]
 related: [how-to-pitch-an-editor, how-to-write-a-query-letter, a-rejected-pitch-is-not-wasted]

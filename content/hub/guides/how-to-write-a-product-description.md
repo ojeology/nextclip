@@ -2,6 +2,7 @@
 title: How to write a product description
 description: Write copy that sells one product clearly, with features and benefits that help a buyer decide.
 section: types-of-writing
+level: intermediate
 keywords: [product, copywriting, ecommerce, sales]
 tools: [word-counter]
 related: [how-to-write-a-blog-post]

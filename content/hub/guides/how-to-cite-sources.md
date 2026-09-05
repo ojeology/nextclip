@@ -2,6 +2,7 @@
 title: How to cite sources
 description: Cite sources honestly and consistently — in-text citations, reference lists, and the common styles.
 section: academic-writing
+level: intermediate
 keywords: [citation, referencing, sources, apa, mla]
 tools: [word-counter]
 related: [how-to-avoid-plagiarism, academic-writing-basics]

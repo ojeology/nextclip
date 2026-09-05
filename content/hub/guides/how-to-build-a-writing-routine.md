@@ -2,6 +2,7 @@
 title: How to build a writing routine
 description: Make writing a habit you can keep — small, regular, and low-commitment.
 section: writing-process
+level: beginner
 keywords: [routine, habit, consistency, daily writing]
 tools: [writing-timer]
 related: [how-to-start-writing, how-to-overcome-writers-block]

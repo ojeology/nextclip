@@ -2,6 +2,7 @@
 title: How to write an article
 description: Write a news or feature article with a lede, a structure, and reporting that holds up.
 section: types-of-writing
+level: intermediate
 keywords: [article, journalism, feature, news, reporting]
 tools: [word-document-converter]
 related: [how-to-write-a-feature, how-to-write-a-query-letter, how-to-find-reliable-sources]

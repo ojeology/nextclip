@@ -2,6 +2,7 @@
 title: How to tell if your writing is good
 description: Move past vague self-doubt with concrete, checkable criteria that show whether a piece works.
 section: common-problems
+level: beginner
 keywords: [quality, improve, doubts, feedback]
 tools: [word-counter, reading-time]
 related: [how-to-revise-a-draft, how-to-proofread]

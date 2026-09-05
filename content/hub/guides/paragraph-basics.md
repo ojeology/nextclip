@@ -2,6 +2,7 @@
 title: Paragraph basics
 description: The one-idea-per-paragraph rule, how to build a strong paragraph, and the mistakes that make writing feel disjointed.
 section: writing-basics
+level: beginner
 keywords: [paragraph, topic sentence, coherence, cohesion]
 tools: [sentence-counter, paragraph-counter]
 related: [sentence-basics, how-to-write-an-introduction]

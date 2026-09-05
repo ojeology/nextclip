@@ -2,6 +2,7 @@
 title: How to handle a rejection
 description: Treat rejection as data — respond well, learn from it, and keep pitching without losing momentum.
 section: writing-for-publication
+level: intermediate
 keywords: [rejection, editor, persistence, portfolio]
 tools: [writing-checklist-generator]
 related: [how-to-pitch-an-editor, how-to-build-a-writing-portfolio]

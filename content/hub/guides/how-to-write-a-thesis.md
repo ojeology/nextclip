@@ -2,6 +2,7 @@
 title: How to write a thesis
 description: Plan and write a long research project one clear, manageable stage at a time.
 section: academic-writing
+level: advanced
 keywords: [thesis, dissertation, research, longform, academic]
 tools: [article-outline-generator]
 related: [how-to-structure-a-research-paper, how-to-cite-sources, how-to-find-reliable-sources]

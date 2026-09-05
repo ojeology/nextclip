@@ -2,6 +2,7 @@
 title: How to write search-friendly content
 description: Write for readers first and search engines second, without straying into keyword stuffing.
 section: online-writing
+level: intermediate
 keywords: [seo, search, keywords, headings, meta]
 tools: [word-counter, reading-time]
 related: [how-to-write-a-blog-post]

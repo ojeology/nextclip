@@ -2,6 +2,7 @@
 title: How to write a blog post
 description: A practical structure for blog posts people actually read — scannable, useful, and individual.
 section: types-of-writing
+level: beginner
 keywords: [blog, online, scannable, headlines]
 tools: [word-counter, reading-time]
 related: [how-to-write-an-introduction, how-to-write-search-friendly-content]

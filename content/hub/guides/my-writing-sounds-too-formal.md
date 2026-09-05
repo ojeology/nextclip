@@ -2,6 +2,7 @@
 title: My writing sounds too formal
 description: Loosen stiff writing so it sounds like a clear person, not a corporate document.
 section: common-problems
+level: beginner
 keywords: [formal, tone, stiffness, writing]
 tools: [filler-word-finder, word-counter]
 related: [tone-voice-audience]

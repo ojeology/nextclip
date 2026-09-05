@@ -2,6 +2,7 @@
 title: Dos and don'ts of a cover letter
 description: The rules that make a cover letter get read, and get you a response.
 section: dos-and-donts
+level: intermediate
 keywords: [cover letter, job, application, dos, donts]
 tools: [word-document-converter]
 related: [how-to-write-a-cover-letter, example-of-a-cover-letter]

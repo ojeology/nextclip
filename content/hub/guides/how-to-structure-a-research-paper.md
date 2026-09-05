@@ -2,6 +2,7 @@
 title: How to structure a research paper
 description: The standard sections of a research paper and what each one does.
 section: academic-writing
+level: advanced
 keywords: [research paper, structure, academic, sections]
 tools: [article-outline-generator]
 related: [academic-writing-basics, how-to-write-an-essay]

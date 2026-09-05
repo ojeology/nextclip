@@ -2,6 +2,7 @@
 title: Academic writing basics
 description: How to write your own academic work — the structure, the tone, and how to use sources honestly.
 section: academic-writing
+level: intermediate
 keywords: [academic, essay, research, citation, tone]
 tools: [word-counter]
 related: [how-to-write-an-essay, how-to-avoid-plagiarism]

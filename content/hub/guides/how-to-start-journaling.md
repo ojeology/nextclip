@@ -2,6 +2,7 @@
 title: How to start journaling
 description: A low-pressure way to build a journaling habit — with prompts and ideas to keep you going.
 section: journaling-personal
+level: beginner
 keywords: [journal, personal writing, reflection, habit]
 tools: [word-counter]
 related: [the-writing-process]

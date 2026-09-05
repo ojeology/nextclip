@@ -2,6 +2,7 @@
 title: How to write a CV or resume
 description: A clear, results-driven CV that gets read and gets you an interview.
 section: professional-writing
+level: intermediate
 keywords: [CV, resume, job, application, skills]
 tools: [word-document-converter]
 related: [how-to-write-a-cover-letter, how-to-write-about-yourself]

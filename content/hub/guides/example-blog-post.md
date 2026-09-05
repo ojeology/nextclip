@@ -2,6 +2,7 @@
 title: Example of a blog post
 description: A complete, scannable blog post with the structure explained.
 section: examples
+level: beginner
 keywords: [blog post, example, structure, scannable]
 tools: [word-document-converter]
 related: [how-to-write-a-blog-post]

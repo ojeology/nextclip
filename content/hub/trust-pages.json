@@ -1,0 +1,92 @@
+{
+  "editorial-policy": {
+    "kicker": "Trust standard",
+    "title": "Editorial policy",
+    "intro": "The rules BRYME holds itself to: where information comes from, who writes it, when it was checked, and what BRYME will never claim.",
+    "sections": [
+      ["Who publishes BRYME", "<p>BRYME is an independent writing resource run by Ibrahim Sodiq from Lagos, Nigeria. There is no parent company, no investor and no sponsor directing what is published. Where BRYME writes about a publication, BRYME has no commercial relationship with it unless that is stated on the page.</p>"],
+      ["Where opportunity information comes from", "<p>Every publication record is built from the publication's <b>own submission guideline</b> — not from an aggregator, a screenshot, a mailing list or another blog's summary. Each record links to that official source so you can check it yourself.</p><p>Where a detail is not stated in the guideline, BRYME records it as not stated. BRYME does not fill gaps with estimates. If a publication does not publish a rate, the page will not invent one.</p>"],
+      ["How verification works", "<p>Verification means a human at BRYME opened the official guideline and compared it, line by line, against the record. The month of that check appears on the page as “Last verified”.</p><p>It is shown to the month, not the day, because that is the honest resolution: a guideline can change the day after any check. That is exactly why every record links to the original.</p><p>A full explanation of every badge is on the <a href=\"/verification/\">verification statuses page</a>.</p>"],
+      ["Firsthand experience is labelled separately", "<p>BRYME separates two things that are often blurred elsewhere: <b>what the guideline says</b>, and <b>what happened when BRYME actually submitted</b>.</p><p>Where BRYME has personally pitched a publication, the page shows the journey step by step — submitted, responded, accepted, published, paid. Payment is only ever marked confirmed once the money has actually arrived. A promise of payment is not payment.</p><p>Where BRYME has not submitted, the page says <b>Research only</b> and makes no claim of experience.</p>"],
+      ["Authorship and AI", "<p>Guides and records on BRYME are written and edited by a human. BRYME does not mass-generate pages to fill a sitemap, and does not publish machine-written text as though a person researched it.</p><p>Where a tool assists with drafting, a human is responsible for every factual claim, every rate, every date and every link before it publishes. Responsibility for what appears here sits with the editor, not a tool.</p>"],
+      ["Corrections", "<p>BRYME would rather be corrected than wrong. Material corrections — a wrong rate, a dead link, a market recorded as open when it had closed — are fixed and logged on the <a href=\"/corrections/\">corrections page</a> with the date.</p><p>Every publication page carries a <b>Report an outdated listing</b> link. You can also <a href=\"/contact/\">contact the desk</a> directly.</p>"],
+      ["Advertising and money", "<p>BRYME does not take payment from a publication in exchange for being listed, ranked higher, or described more favourably. No listing on this site has been paid for.</p><p>If display advertising is introduced, it will be clearly distinguishable from editorial content and will never be styled to resemble an opportunity card or a submission button. Reader experience stays primary.</p>"],
+      ["What BRYME will never claim", "<ul><li>That an open submission window guarantees acceptance, publication or payment.</li><li>That a publication pays a rate it has not published.</li><li>That BRYME has been paid, before payment has arrived.</li><li>That an opportunity belongs to BRYME when it belongs to the publication.</li><li>That any writer will earn a specific amount.</li></ul>"]
+    ]
+  },
+  "privacy": {
+    "kicker": "Privacy",
+    "title": "Privacy",
+    "intro": "What BRYME collects, what it does not, and what runs in your browser.",
+    "sections": [
+      ["The short version", "<p>BRYME does not ask you to create an account, does not ask for your name or email to read anything, and does not sell data. The writing tools run entirely inside your browser.</p>"],
+      ["The tools never upload your writing", "<p>All 34 writing tools — the counters, the readability and passive-voice checkers, the PDF and document tools — process your text <b>locally in your browser using JavaScript</b>. Your draft is not transmitted to BRYME, not stored on a server, and not logged.</p><p>Close the tab and the text is gone. That is a consequence of how the tools are built, not a promise about how carefully a server is managed.</p>"],
+      ["What is collected", "<p>Standard web-server request information (the page requested, timestamp, and technical details your browser sends such as user agent) may be recorded by the hosting provider for reliability and abuse prevention. BRYME does not combine this into a profile of you.</p><p>BRYME does not set advertising cookies. Advertising is currently disabled site-wide.</p>"],
+      ["Third parties", "<p>BRYME deliberately loads no third-party fonts, scripts, trackers or embedded widgets. Every stylesheet and script on the site is served from BRYME's own domain — this is enforced by an automated check in the release process, which fails the build if a third-party resource appears.</p><p>Links out to publications are ordinary links. Once you follow one, that publication's own privacy policy applies, not this one.</p>"],
+      ["Contacting the desk", "<p>If you email BRYME, your message and email address are used to answer you and, where relevant, to correct the site. They are not added to a mailing list.</p>"],
+      ["Children", "<p>BRYME is a general-audience writing resource and is not directed at children under 13.</p>"],
+      ["Changes", "<p>If this policy changes materially, the change will be described on the <a href=\"/corrections/\">corrections page</a> rather than being made silently.</p>"]
+    ]
+  },
+  "terms": {
+    "kicker": "Terms of use",
+    "title": "Terms of use",
+    "intro": "The terms for using BRYME's guides, tools and opportunity records.",
+    "sections": [
+      ["Using the site", "<p>BRYME is free to read and free to use. No account is required. You may read the guides, use the tools and follow the opportunity records for your own writing, personal or commercial.</p>"],
+      ["What you may do with the content", "<p>You may quote short extracts from BRYME's guides with attribution and a link. You may use anything the tools produce from <b>your own</b> text however you like — that output is yours, not BRYME's.</p><p>You may not republish BRYME guides wholesale, or scrape the opportunity records to build a competing listing service.</p>"],
+      ["Opportunity records are information, not offers", "<p>A publication record on BRYME is a summary of another organisation's public submission guideline. It is <b>not</b> a job offer, not a contract, and not an invitation from BRYME.</p><p>BRYME has no authority over any publication's decisions and cannot submit, advocate or intervene on your behalf. Your relationship is with the publication.</p>"],
+      ["Accuracy and change", "<p>BRYME checks records against official guidelines and dates every check, but guidelines change without notice. Always confirm on the publication's own page before you pitch. See the <a href=\"/disclaimer/\">disclaimer</a>.</p>"],
+      ["Third-party links", "<p>BRYME links to publications' own sites. BRYME does not control them and is not responsible for their content, their terms or their decisions.</p>"],
+      ["Contact", "<p>Questions about these terms go to the <a href=\"/contact/\">contact page</a>.</p>"]
+    ]
+  },
+  "disclaimer": {
+    "kicker": "Important limits",
+    "title": "Disclaimer",
+    "intro": "What BRYME can and cannot tell you — read this before you rely on any record here.",
+    "sections": [
+      ["No guarantee of acceptance, publication or payment", "<p>Nothing on BRYME guarantees that a publication will accept your work, publish it, or pay you. An open submission window means only that submissions were open when BRYME last checked. Editors decline good work constantly, for reasons that have nothing to do with quality.</p>"],
+      ["No earnings claims", "<p>BRYME does not promise that writing will earn you any particular amount, or any amount at all. Where a rate appears, it is the rate the publication itself published — not a prediction of what you will be paid, and not an average.</p><p>Pay figures are shown in the currency the publication states. Currency values move; a rate that looked one way in your currency last month may look different today.</p>"],
+      ["Records go out of date", "<p>Every record carries the month it was last checked. Publications close, reopen, change rates and change rules without telling anyone. <b>Always open the official guideline before you pitch.</b> If you find something out of date, the <b>Report an outdated listing</b> link on each page goes straight to the desk.</p>"],
+      ["Not professional advice", "<p>BRYME's guides are practical writing help, not legal, financial, immigration or tax advice. Where a guide explains the general structure of a formal document, that is a writing explainer only. For anything with legal or financial consequence, consult a qualified professional in your own country.</p>"],
+      ["Never pay to submit", "<p>A legitimate publication does not ask a writer to pay a fee to be considered, or to hand over identity documents to be read. Some literary competitions charge an entry fee and say so openly — that is different from a market that asks for money to look at a pitch. If you are asked to pay to be considered, stop.</p><p>BRYME has no way to vet the internal conduct of any publication and does not act as a guarantor of one.</p>"],
+      ["Independence", "<p>No publication has paid to appear on BRYME, to rank higher, or to be described more favourably. See the <a href=\"/editorial-policy/\">editorial policy</a>.</p>"]
+    ]
+  },
+  "corrections": {
+    "kicker": "Corrections",
+    "title": "Corrections",
+    "intro": "BRYME's public record of material corrections — and how to report one.",
+    "sections": [
+      ["Why this page exists", "<p>A resource that never admits an error is not more accurate than one that does — it is just less honest about it. Publications change their rules constantly, and BRYME will sometimes record something wrongly or fail to notice a change. When that happens it is fixed and logged here, with the date.</p>"],
+      ["What counts as a material correction", "<p>A correction is logged when the change affects a decision a writer might make:</p><ul><li>a pay rate that was wrong or has changed;</li><li>a market recorded as open when it had closed, or the reverse;</li><li>a broken, moved or wrong official guideline link;</li><li>an eligibility or rights term recorded incorrectly;</li><li>anything that misrepresents what BRYME has personally done.</li></ul><p>Fixing a typo, tightening a sentence or improving a layout is not a correction and is not logged.</p>"],
+      ["The log", "<p>No material corrections have been logged yet. Entries will appear here with the date, the page affected, what was wrong and what it now says. Records are corrected, not quietly deleted.</p>"],
+      ["Report something", "<p>Every publication page carries a <b>Report an outdated listing</b> link that opens a pre-filled message to the desk. For anything else, use the <a href=\"/contact/\">contact page</a>. Including the official guideline URL makes a fix much faster.</p>"]
+    ]
+  },
+  "copyright": {
+    "kicker": "Rights",
+    "title": "Copyright and source use",
+    "intro": "Who owns what on BRYME, and how BRYME treats other people's material.",
+    "sections": [
+      ["BRYME's own work", "<p>The guides, tools, opportunity summaries and site design are BRYME's original work. Short quotations with attribution and a link are welcome. Wholesale republication is not.</p>"],
+      ["How BRYME treats publications' material", "<p>An opportunity record is BRYME's own <b>summary</b> of a publicly available submission guideline — written in BRYME's words, not copied from the publication. Each record names and links to the original source.</p><p>BRYME does not reproduce guidelines in full, does not copy publications' page designs, and does not present another organisation's opportunity as its own.</p>"],
+      ["Names and trademarks", "<p>Publication names and trademarks belong to their owners. They appear here for identification, so a writer knows which publication a record describes. Their presence does not imply endorsement, affiliation or a partnership.</p>"],
+      ["Quoting other people's writing", "<p>BRYME's craft guides discuss technique using original examples. Where a real text is discussed, it is quoted only as briefly as the point requires and is attributed. BRYME does not reproduce song lyrics, poems or substantial extracts of copyrighted work.</p>"],
+      ["Rights concerns", "<p>If you believe something here uses your material improperly, <a href=\"/contact/\">contact the desk</a> with the page URL and what you would like changed. Genuine rights concerns are acted on quickly rather than argued about.</p>"]
+    ]
+  },
+  "contact": {
+    "kicker": "Contact the desk",
+    "title": "Contact BRYME",
+    "intro": "Report a correction, a broken link, a closed market or a rights concern — and what to expect back.",
+    "sections": [
+      ["How to reach BRYME", "<p>Email <a href=\"mailto:sodiqibrahim03@gmail.com\">sodiqibrahim03@gmail.com</a>. It reaches the editor directly — there is no support queue and no form that disappears into nothing.</p>"],
+      ["Reporting an outdated listing", "<p>This is the most useful message you can send. Every publication page has a <b>Report an outdated listing</b> link that opens a message already filled in with the publication, the page URL and the date it was last verified.</p><p>Please include the official guideline URL if you have it. That turns a recheck from a search into a two-minute confirmation.</p>"],
+      ["What BRYME can help with", "<ul><li>A record that is out of date, wrong, or points at a dead link.</li><li>A publication that should be researched and added.</li><li>A rights or attribution concern.</li><li>A factual error in a guide.</li><li>A writing question that BRYME has no guide for yet.</li></ul>"],
+      ["What BRYME cannot do", "<p>BRYME is one person, not an agency. BRYME cannot submit your work for you, introduce you to an editor, ask a publication to reconsider a rejection, chase a payment on your behalf, or review your draft privately.</p><p>BRYME also cannot tell you whether a specific pitch will be accepted — no one can.</p>"],
+      ["Response time", "<p>Corrections are prioritised over everything else. Other messages are read, and answered where there is something useful to say, but a reply is not guaranteed.</p>"]
+    ]
+  }
+}

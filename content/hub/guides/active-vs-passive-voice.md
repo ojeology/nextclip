@@ -2,6 +2,7 @@
 title: Active vs passive voice
 description: What each voice is, and when to use one over the other for clearer, stronger writing.
 section: writing-basics
+level: beginner
 keywords: [active, passive, voice, grammar, clarity]
 tools: [passive-voice-detector]
 related: [sentence-basics]

@@ -2,6 +2,7 @@
 title: Dos and don'ts of blogging
 description: The rules that make a blog post readable, useful, and likely to be shared.
 section: dos-and-donts
+level: intermediate
 keywords: [blog, blogging, content, dos, donts]
 tools: [word-document-converter]
 related: [how-to-write-a-blog-post, example-of-a-blog-post]

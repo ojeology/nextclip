@@ -2,6 +2,7 @@
 title: How to write an introduction
 description: Open a piece so the reader knows what it is about and wants to keep reading.
 section: structure-formatting
+level: beginner
 keywords: [introduction, opening, hook, headline]
 tools: [word-counter]
 related: [how-to-turn-an-idea-into-an-outline, how-to-write-an-essay]

@@ -2,6 +2,7 @@
 title: Dos and don'ts of writing
 description: The universal rules that improve almost every kind of writing.
 section: dos-and-donts
+level: beginner
 keywords: [writing, dos, donts, general, craft]
 tools: [word-document-converter]
 related: [how-to-tell-if-your-writing-is-good, how-to-edit-for-clarity]

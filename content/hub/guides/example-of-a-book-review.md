@@ -2,6 +2,7 @@
 title: Example of a book review
 description: A complete book review with the structure that helps a reader decide.
 section: examples
+level: beginner
 keywords: [book review, criticism, example]
 tools: [word-document-converter]
 related: [how-to-write-a-book-review, how-to-write-a-review]

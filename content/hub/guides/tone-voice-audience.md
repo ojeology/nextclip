@@ -2,6 +2,7 @@
 title: Tone, voice and audience
 description: How to match your writing to the person reading it, and why tone and voice are not the same thing.
 section: writing-basics
+level: beginner
 keywords: [tone, voice, audience, style]
 tools: [word-counter]
 related: [how-to-write-a-professional-email]

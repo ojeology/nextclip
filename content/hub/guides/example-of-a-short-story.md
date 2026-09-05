@@ -2,6 +2,7 @@
 title: Example of a short story
 description: A complete short story with a breakdown of the craft behind it.
 section: examples
+level: beginner
 keywords: [short story, fiction, example, narrative]
 tools: [word-document-converter]
 related: [how-to-write-a-short-story, how-to-develop-characters]

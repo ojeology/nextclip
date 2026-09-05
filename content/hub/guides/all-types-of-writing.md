@@ -2,6 +2,7 @@
 title: All types of writing
 description: A plain-language map of every common type of writing, so you can tell them apart and pick the right one.
 section: types-of-writing
+level: beginner
 keywords: [types of writing, genres, forms, writing types]
 tools: [word-document-converter]
 related: [how-to-write-an-essay, how-to-write-a-report, how-to-write-a-short-story]

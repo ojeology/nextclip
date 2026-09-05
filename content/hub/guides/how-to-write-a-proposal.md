@@ -2,6 +2,7 @@
 title: How to write a proposal
 description: A proposal that wins approval by stating the problem, the plan and the value clearly.
 section: professional-writing
+level: intermediate
 keywords: [proposal, business, plan, persuade, client]
 tools: [word-document-converter]
 related: [how-to-write-a-report, how-to-write-copywriting, how-to-write-a-grant-application]

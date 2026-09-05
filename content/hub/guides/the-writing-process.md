@@ -2,6 +2,7 @@
 title: The writing process
 description: The repeatable ten-stage workflow that takes an idea to a published, finished piece.
 section: writing-process
+level: beginner
 keywords: [process, workflow, draft, revise, edit]
 tools: [word-counter, writing-timer]
 related: [how-to-revise-a-draft, how-to-start-writing]

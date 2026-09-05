@@ -2,6 +2,7 @@
 title: How to write a review
 description: Write an honest, useful review that balances what worked, what did not, and who it is for.
 section: types-of-writing
+level: intermediate
 keywords: [review, criticism, opinion, books, products]
 tools: [word-counter]
 related: [how-to-write-an-essay]

@@ -249,6 +249,27 @@
       "description": "A rule-based heuristic that flags formulaic phrases and AI-favoured words. Honest by design: it nudges you to sound more natural, it does not pretend to detect AI.",
       "seo_title": "AI writing checker — AI-likeness style checker | BRYME",
       "seo_desc": "Spot formulaic, AI-favoured phrasing in your text. A free, honest rule-based AI-likeness checker that helps you sound more natural."
+    },
+    {
+      "id": "tone-checker",
+      "title": "Tone checker",
+      "short": "Estimate how formal or casual your writing sounds.",
+      "category": "quality",
+      "description": "Paste your draft and BRYME estimates its formality from surface signals — connectives, contractions, casual words, exclamation marks and sentence length — so you can match the tone to your reader."
+    },
+    {
+      "id": "citation-formatter",
+      "title": "Citation formatter",
+      "short": "Build an APA, MLA or Chicago reference from the details.",
+      "category": "format",
+      "description": "Enter the author, title, year and source and BRYME assembles a reference in APA, MLA or Chicago format for a book, article or web page."
+    },
+    {
+      "id": "word-alternatives",
+      "title": "Word alternatives",
+      "short": "Better words for the ones that weaken writing.",
+      "category": "quality",
+      "description": "A curated list of the words that most often flatten a sentence — said, very, good, important, in order to — with stronger alternatives, and honest advice about when to just delete them."
     }
   ]
 }

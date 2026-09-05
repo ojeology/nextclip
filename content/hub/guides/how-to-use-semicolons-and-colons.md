@@ -2,6 +2,7 @@
 title: How to use semicolons and colons
 description: The two marks that scare writers most — and the simple rules for using them correctly.
 section: grammar-language
+level: intermediate
 keywords: [semicolon, colon, punctuation, grammar]
 tools: [text-cleaner]
 related: [comma-rules, common-grammar-mistakes]

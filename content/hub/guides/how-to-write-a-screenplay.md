@@ -2,6 +2,7 @@
 title: How to write a screenplay
 description: Write a script that a reader can follow — scene by scene, in standard format, with the visual and spoken told.
 section: types-of-writing
+level: advanced
 keywords: [screenplay, script, screenwriting, story]
 tools: [word-counter]
 related: [how-to-write-a-short-story, how-to-write-dialogue]

@@ -2,6 +2,7 @@
 title: How to revise a draft
 description: Turn a rough first draft into a sharper, clearer piece by revising big to small.
 section: writing-process
+level: intermediate
 keywords: [revision, draft, edit, improve]
 tools: [word-counter]
 related: [the-writing-process, how-to-proofread]

@@ -2,6 +2,7 @@
 title: How plagiarism checkers and AI checkers are made
 description: What actually goes on behind the scenes of a plagiarism or AI detector — and why no tool can be fully trusted.
 section: common-problems
+level: advanced
 keywords: [plagiarism checker, AI detector, how it works, technology]
 tools: [self-plagiarism-checker, ai-writing-checker]
 related: [how-to-avoid-plagiarism, how-to-tell-if-your-writing-is-good]

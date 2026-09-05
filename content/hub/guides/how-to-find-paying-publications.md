@@ -2,6 +2,7 @@
 title: How to find paying publications
 description: Find legitimate markets that pay contributors, and judge whether one is right — without falling for scams.
 section: freelance-paid-writing
+level: intermediate
 keywords: [paying, publications, legitimacy, markets]
 tools: [writing-checklist-generator]
 related: [how-to-get-your-first-paid-writer-gig, how-to-pitch-an-editor]

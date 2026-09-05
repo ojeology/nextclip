@@ -2,6 +2,7 @@
 title: How to write a work report
 description: Write a clear business or workplace report that helps a reader decide, in plain language.
 section: professional-writing
+level: intermediate
 keywords: [report, business, workplace, summary]
 tools: [article-outline-generator]
 related: [how-to-write-a-report, how-to-write-a-professional-email]

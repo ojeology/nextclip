@@ -2,6 +2,7 @@
 title: How to write travel writing
 description: Take a reader to a place through vivid detail, people and a sense of meaning.
 section: creative-writing
+level: intermediate
 keywords: [travel, travel writing, description, place]
 tools: [word-document-converter]
 related: [how-to-write-a-feature, how-to-write-a-personal-essay]

@@ -2,6 +2,7 @@
 title: How to use headings effectively
 description: Use headings to structure and guide a reader through long pieces and scannable online content.
 section: structure-formatting
+level: beginner
 keywords: [headings, structure, scannable, seo]
 tools: [word-counter]
 related: [how-to-write-a-blog-post, how-to-create-an-outline]

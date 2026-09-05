@@ -2,6 +2,7 @@
 title: How to write a feature
 description: A longer, story-driven article that explores a subject in depth with human voices.
 section: types-of-writing
+level: advanced
 keywords: [feature, magazine, narrative, journalism, longform]
 tools: [word-document-converter]
 related: [how-to-write-an-article, how-to-write-a-query-letter, how-to-pitch-an-editor]

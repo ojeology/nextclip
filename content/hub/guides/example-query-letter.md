@@ -2,6 +2,7 @@
 title: Example of a query letter
 description: A full, ready-to-adapt query letter with the reasoning behind every line.
 section: examples
+level: beginner
 keywords: [query letter, pitch, example, template]
 tools: [word-document-converter]
 related: [how-to-write-a-query-letter, how-to-pitch-an-editor]

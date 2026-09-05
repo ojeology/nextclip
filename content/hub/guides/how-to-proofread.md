@@ -2,6 +2,7 @@
 title: How to proofread
 description: A step-by-step method to catch typos, punctuation errors and inconsistencies before you submit or publish.
 section: editing-proofreading
+level: beginner
 keywords: [proofread, edit, typos, errors]
 tools: [word-counter, text-cleaner]
 related: [how-to-revise-a-draft, comma-rules]

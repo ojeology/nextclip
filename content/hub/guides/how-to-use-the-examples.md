@@ -2,6 +2,7 @@
 title: How to use these examples
 description: Read a full finished piece, then reverse-engineer it — the fastest way to learn a form.
 section: examples
+level: beginner
 keywords: [examples, learn, model, reverse-engineer]
 tools: [word-document-converter]
 related: [example-of-an-essay, how-to-read-like-a-writer]

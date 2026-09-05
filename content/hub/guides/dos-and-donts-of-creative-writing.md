@@ -2,6 +2,7 @@
 title: Dos and don'ts of creative writing
 description: The craft rules that make fiction and poetry come alive on the page.
 section: dos-and-donts
+level: intermediate
 keywords: [creative, fiction, poetry, dos, donts, craft]
 tools: [word-document-converter]
 related: [how-to-write-a-short-story, how-to-write-dialogue, how-to-develop-characters]

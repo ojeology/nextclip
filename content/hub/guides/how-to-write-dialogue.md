@@ -2,6 +2,7 @@
 title: How to write dialogue
 description: Write dialogue that reveals character, moves the story, and does not waste a line.
 section: creative-writing
+level: intermediate
 keywords: [dialogue, fiction, characters, story]
 tools: [word-counter]
 related: [how-to-develop-characters, how-to-write-a-short-story]

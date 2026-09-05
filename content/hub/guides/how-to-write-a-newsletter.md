@@ -2,6 +2,7 @@
 title: How to write a newsletter
 description: A clear, useful newsletter that people actually open and read — with a structure you can reuse.
 section: online-writing
+level: intermediate
 keywords: [newsletter, email, content, audience]
 tools: [word-counter]
 related: [how-to-write-a-professional-email, how-to-write-search-friendly-content]

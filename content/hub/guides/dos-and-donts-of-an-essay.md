@@ -2,6 +2,7 @@
 title: Dos and don'ts of an essay
 description: The quick rules that separate a clear, strong essay from a confusing one.
 section: dos-and-donts
+level: intermediate
 keywords: [essay, dos, donts, academic, structure]
 tools: [word-document-converter]
 related: [how-to-write-an-essay, example-of-an-essay]

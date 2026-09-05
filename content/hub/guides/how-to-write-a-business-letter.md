@@ -2,6 +2,7 @@
 title: How to write a business letter
 description: A formal letter that is clear, respectful and easy to act on.
 section: professional-writing
+level: intermediate
 keywords: [business letter, formal, letter, correspondence]
 tools: [word-document-converter]
 related: [how-to-write-a-professional-email, how-to-write-a-cover-letter]

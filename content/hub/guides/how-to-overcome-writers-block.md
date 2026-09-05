@@ -2,6 +2,7 @@
 title: How to overcome writer's block
 description: Practical, non-mystical ways to get unstuck when the words will not come.
 section: start-writing
+level: beginner
 keywords: [writer's block, stuck, motivation, blank page]
 tools: [word-counter, writing-timer]
 related: [how-to-start-writing, how-to-turn-an-idea-into-an-outline]

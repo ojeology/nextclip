@@ -2,6 +2,7 @@
 title: Example of a press release
 description: A complete press release with a breakdown of the inverted-pyramid structure.
 section: examples
+level: beginner
 keywords: [press release, announcement, PR, example]
 tools: [word-document-converter]
 related: [how-to-write-a-press-release]

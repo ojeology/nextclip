@@ -2,6 +2,7 @@
 title: How to edit for clarity
 description: Rewrite dense, confusing prose into sentences a reader understands on the first pass.
 section: editing-proofreading
+level: intermediate
 keywords: [clarity, edit, simplify, readability]
 tools: [readability-score, sentence-length-checker]
 related: [how-to-make-writing-more-concise, how-to-edit-your-own-writing]

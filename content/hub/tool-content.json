@@ -168,5 +168,20 @@
     "what": "A rule-based look at formulaic phrases and AI-favoured words in your text.",
     "howto": "Paste text to get a heuristic AI-likeness score and a list of flagged phrases. Use it to spot a 'flat', generated feel and write more naturally.",
     "why": "This is a nudge, not a verdict. No tool can reliably tell human from AI text; it helps you notice a formulaic tone and make it your own."
+  },
+  "tone-checker": {
+    "what": "Estimates whether a piece of writing reads as formal, neutral or conversational, and shows you which signals produced that estimate.",
+    "howto": "Paste a paragraph or a whole draft. Read the band first — Formal, Neutral or Conversational — then look at the signal table to see what is driving it. If the score is higher than you want, add a few contractions and address the reader directly. If it is lower than you want, cut the exclamation marks, replace casual words, and use connectives like however and therefore to join ideas.",
+    "why": "Most writing that fails does not fail on grammar; it fails because the register is wrong for the reader. A cover letter that sounds like a text message and an email to a friend that sounds like a contract both misfire. Tone is a deliberate choice, and it is much easier to adjust once you can see it."
+  },
+  "citation-formatter": {
+    "what": "Assembles a single reference in APA, MLA or Chicago style from the details you enter.",
+    "howto": "Choose the style your institution or publication requires, then choose whether the source is a book, an article or a web page. Fill in what you have — author, title, container (the journal, website or newspaper), year, publisher and URL. The formatted reference updates as you type; copy it into your reference list.",
+    "why": "Citation style is a mechanical rule set, and losing marks to a misplaced full stop is a waste. Formatting one reference correctly also teaches you the pattern, so the next twenty are faster. Always check the result against your own style sheet: editions differ, and the version your marker uses is the one that counts."
+  },
+  "word-alternatives": {
+    "what": "A curated set of the words and phrases that most often weaken writing, each with stronger replacements.",
+    "howto": "Type a single word or short phrase — said, very, good, thing, in order to — and BRYME shows alternatives. Where the honest advice is to delete the word rather than replace it, the tool says so. Use it while editing, not while drafting.",
+    "why": "This is deliberately not a full thesaurus. A general thesaurus encourages the worst habit in student writing: swapping a plain word for a longer one that does not quite mean the same thing. This list covers the handful of words that genuinely flatten a sentence, and it tells you when the plain word was right all along."
   }
 }

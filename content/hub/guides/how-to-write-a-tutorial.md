@@ -2,6 +2,7 @@
 title: How to write a tutorial
 description: Teach someone to finish a task, step by step, in a way they can follow without getting lost.
 section: types-of-writing
+level: intermediate
 keywords: [tutorial, how-to, steps, teaching]
 tools: [article-outline-generator, screenshot]
 related: [how-to-write-a-blog-post]

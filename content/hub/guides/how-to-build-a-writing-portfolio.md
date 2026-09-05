@@ -2,6 +2,7 @@
 title: How to build a writing portfolio
 description: Create a small, relevant set of samples that makes editors want to say yes.
 section: writing-for-publication
+level: intermediate
 keywords: [portfolio, samples, clips, freelance]
 tools: [writing-checklist-generator]
 related: [how-to-write-a-query-letter, how-to-get-your-first-paid-writer-gig]

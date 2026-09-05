@@ -2,6 +2,7 @@
 title: How to write a gratitude journal entry
 description: A simple, specific way to practise gratitude writing — with examples you can adapt.
 section: journaling-personal
+level: beginner
 keywords: [gratitude, journal, reflection, mindfulness]
 tools: [word-document-converter]
 related: [how-to-start-journaling, daily-journal-prompts]

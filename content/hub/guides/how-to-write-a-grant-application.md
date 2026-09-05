@@ -2,6 +2,7 @@
 title: How to write a grant application
 description: Make a clear, honest case for funding that shows you need it and will use it well.
 section: professional-writing
+level: advanced
 keywords: [grant, funding, application, nonprofit, proposal]
 tools: [word-document-converter]
 related: [how-to-write-a-proposal, how-to-write-about-yourself]

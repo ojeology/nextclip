@@ -2,6 +2,7 @@
 title: How to make writing more concise
 description: Cut filler and tighten sentences so your writing says more in fewer, stronger words.
 section: editing-proofreading
+level: intermediate
 keywords: [concise, tighten, edit, clarity, filler]
 tools: [word-counter, text-cleaner]
 related: [how-to-revise-a-draft, how-to-proofread]

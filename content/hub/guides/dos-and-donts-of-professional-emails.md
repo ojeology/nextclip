@@ -2,6 +2,7 @@
 title: Dos and don'ts of professional emails
 description: The short rules that make an email clear and get a reply.
 section: dos-and-donts
+level: intermediate
 keywords: [email, professional, dos, donts, workplace]
 tools: [word-document-converter]
 related: [how-to-write-a-professional-email, example-of-a-professional-email]

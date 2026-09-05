@@ -2,6 +2,7 @@
 title: Sentence basics
 description: What a sentence needs, the four main sentence types, and the two common mistakes that break them.
 section: writing-basics
+level: beginner
 keywords: [sentence, grammar, clause, fragment, run-on]
 tools: [word-counter, text-cleaner]
 related: [comma-rules]

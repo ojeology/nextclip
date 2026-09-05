@@ -2,6 +2,7 @@
 title: How to turn an idea into an outline
 description: Convert a vague topic into a structured outline you can write a full piece from.
 section: start-writing
+level: beginner
 keywords: [outline, planning, idea, structure]
 tools: [article-outline-generator]
 related: [how-to-write-an-introduction, the-writing-process]

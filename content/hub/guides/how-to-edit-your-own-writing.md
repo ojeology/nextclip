@@ -2,6 +2,7 @@
 title: How to edit your own writing
 description: A clear, non-daunting method to edit your own work — in the right order, so you do not waste effort.
 section: editing-proofreading
+level: intermediate
 keywords: [edit, self-edit, revise, workflow]
 tools: [word-counter]
 related: [how-to-revise-a-draft, how-to-proofread]

@@ -2,6 +2,7 @@
 title: Dos and don'ts of report writing
 description: The rules that make a report clear, credible and easy to act on.
 section: dos-and-donts
+level: intermediate
 keywords: [report, business, workplace, dos, donts]
 tools: [word-document-converter]
 related: [how-to-write-a-report, example-of-a-report, how-to-write-a-work-report]

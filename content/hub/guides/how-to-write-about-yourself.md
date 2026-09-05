@@ -2,6 +2,7 @@
 title: How to write about yourself
 description: An honest, useful bio and personal introduction — the ones people actually read.
 section: professional-writing
+level: intermediate
 keywords: [about me, bio, personal introduction, profile]
 tools: [word-document-converter]
 related: [how-to-write-a-personal-statement, tone-voice-audience]

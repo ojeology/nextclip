@@ -2,6 +2,7 @@
 title: Comma rules
 description: The main uses of the comma, and the four comma mistakes that most often confuse readers.
 section: grammar-language
+level: beginner
 keywords: [comma, punctuation, grammar, clauses]
 tools: [text-cleaner]
 related: [sentence-basics, british-vs-american-english]

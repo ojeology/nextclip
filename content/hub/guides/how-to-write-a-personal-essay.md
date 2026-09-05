@@ -2,6 +2,7 @@
 title: How to write a personal essay
 description: Turn a true experience into a personal essay with a voice, an idea, and a payoff the reader can feel.
 section: types-of-writing
+level: intermediate
 keywords: [personal essay, memoir, nonfiction, voice]
 tools: [word-counter]
 related: [how-to-write-an-essay, how-to-write-a-short-story]

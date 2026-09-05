@@ -2,6 +2,7 @@
 title: Example of a report
 description: A complete business report with the structure that helps a reader decide.
 section: examples
+level: beginner
 keywords: [report, business, workplace, example]
 tools: [word-document-converter]
 related: [how-to-write-a-report, how-to-write-a-work-report]

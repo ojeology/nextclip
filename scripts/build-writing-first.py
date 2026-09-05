@@ -24,6 +24,7 @@ import importlib.util
 import json
 import sys
 from pathlib import Path
+from urllib.parse import quote
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))  # scripts import `bryme_config` by name
@@ -49,9 +50,9 @@ def footer() -> str:
     """Writing Hub footer."""
     return '''<footer class="site-foot"><div class="wrap foot-grid">
   <div class="foot-brand"><a class="logo" href="/"><span class="logo-mark" aria-hidden="true">B</span>BRYME</a><p>BRYME is a free writing resource — guides, tools, and verified opportunities to get published and paid.</p></div>
-  <div class="foot-col"><b>How to write</b><a href="/learn/">Writing hub</a><a href="/learn/examples/">Examples</a><a href="/learn/dos-and-donts/">Dos &amp; don'ts</a><a href="/learn/types-of-writing/">Types of writing</a><a href="/learn/grammar-language/">Grammar</a></div>
+  <div class="foot-col"><b>How to write</b><a href="/start/">Beginner path</a><a href="/find/">What do you want to write?</a><a href="/learn/">Writing hub</a><a href="/learn/examples/">Examples</a><a href="/learn/dos-and-donts/">Dos &amp; don'ts</a><a href="/learn/types-of-writing/">Types of writing</a><a href="/learn/grammar-language/">Grammar</a></div>
   <div class="foot-col"><b>Tools &amp; publish</b><a href="/tools/">Writing tools</a><a href="/templates/">Templates</a><a href="/checklists/">Checklists</a><a href="/writing/">Paid opportunities</a><a href="/tested/">BRYME Tested</a></div>
-  <div class="foot-col"><b>Trust</b><a href="/about/">About</a><a href="/editorial-policy/">Editorial policy</a><a href="/corrections/">Corrections</a><a href="/privacy/">Privacy</a><a href="/contact/">Contact</a></div>
+  <div class="foot-col"><b>Trust</b><a href="/about/">About</a><a href="/verification/">What statuses mean</a><a href="/editorial-policy/">Editorial policy</a><a href="/corrections/">Corrections</a><a href="/privacy/">Privacy</a><a href="/contact/">Contact</a></div>
   <div class="foot-col"><b>Legal</b><a href="/terms/">Terms</a><a href="/disclaimer/">Disclaimer</a><a href="/copyright/">Copyright</a></div>
 </div><div class="wrap foot-bottom">© 2026 BRYME · Independent editorial project · No acceptance, publication or payment is guaranteed.</div></footer>'''
 
@@ -61,6 +62,7 @@ WRITING = json.loads((ROOT / "content/opportunities.json").read_text(encoding="u
 # Base country (where each publication is based) for the country selector.
 # "" = online / international — no single verified base country to claim.
 PUB_COUNTRIES = json.loads((ROOT / "content/hub/pub-countries.json").read_text(encoding="utf-8"))
+TRUST_CONTENT = json.loads((ROOT / "content/hub/trust-pages.json").read_text(encoding="utf-8"))
 BASE_NAMES = {"NG": "Nigeria", "US": "United States", "UK": "United Kingdom", "CA": "Canada",
               "AU": "Australia", "IE": "Ireland", "DE": "Germany", "ZA": "South Africa",
               "NA": "Namibia", "NP": "Nepal", "KE": "Kenya"}
@@ -97,6 +99,7 @@ def nav(current: str = "") -> str:
   </div>
   <nav class="main-nav" aria-label="Primary">{''.join(items)}</nav>
   <form class="nav-search-form" action="/search/" method="get" role="search"><input type="search" name="q" placeholder="Search guides, tools…" aria-label="Search BRYME" autocomplete="off"></form>
+  <button type="button" class="theme-toggle" data-theme-toggle aria-pressed="false" aria-label="Switch to dark theme"><svg class="icon-sun" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.2 4.2l1.6 1.6M18.2 18.2l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.2 19.8l1.6-1.6M18.2 5.8l1.6-1.6"/></svg><svg class="icon-moon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 14.3A8.6 8.6 0 0 1 9.7 3.5a8.6 8.6 0 1 0 10.8 10.8Z"/></svg><span class="sr-only theme-toggle-text">Switch to dark theme</span></button>
   <button type="button" class="nav-toggle" data-drawer-open aria-label="Open menu" aria-expanded="false"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
 </div></header>'''
 
@@ -104,6 +107,8 @@ def nav(current: str = "") -> str:
 # How-to sub-navigation bar — a dedicated category nav shown across the
 # writing-guide library and every how-to guide page.
 HOWTO_LINKS = [
+    ("start", "/start/", "Beginner path"),
+    ("find", "/find/", "What do you want to write?"),
     ("learn", "/learn/", "All how-tos"),
     ("examples", "/learn/examples/", "Examples"),
     ("dos-and-donts", "/learn/dos-and-donts/", "Dos & don'ts"),
@@ -336,6 +341,7 @@ def drawer(current: str = "") -> str:
                ("writing-CA", "/writing/?country=CA", "Canada", "🇨🇦"),
                ("writing-AU", "/writing/?country=AU", "Australia", "🇦🇺")]
     trust = [("about", "/about/", "About", "ℹ️"),
+             ("verification", "/verification/", "What statuses mean", "🏷️"),
              ("editorial-policy", "/editorial-policy/", "Editorial policy", "📜"),
              ("corrections", "/corrections/", "Corrections", "✏️"),
              ("privacy", "/privacy/", "Privacy", "🔒"),
@@ -343,7 +349,7 @@ def drawer(current: str = "") -> str:
     return f'''<div id="drawer-backdrop"></div>
 <aside id="site-drawer" aria-hidden="true" aria-label="Site menu" role="dialog" aria-modal="true">
   <div class="drawer-head"><a class="logo" href="/"><span class="logo-mark" aria-hidden="true">B</span>BRYME</a><button type="button" class="drawer-close" data-drawer-close aria-label="Close menu"><svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
-  {group("Start here", [("home", "/", "Home", "🏠"), ("search", "/search/", "Search BRYME", "🔍")])}
+  {group("Start here", [("home", "/", "Home", "🏠"), ("start", "/start/", "Complete beginner path", "🧭"), ("find", "/find/", "What do you want to write?", "❓"), ("search", "/search/", "Search BRYME", "🔍")])}
   {group("How to write", howto)}
   {group("Tools & templates", tools)}
   {group("Write & get paid", write)}
@@ -389,7 +395,8 @@ def page_wf(*, title: str, description: str, route: str, current: str, body: str
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#faf6ee">
-<meta name="color-scheme" content="light">
+<meta name="color-scheme" content="light dark">
+<script src="/assets/theme.js"></script>
 <title>{esc(title)}</title>
 <meta name="description" content="{esc(description)}">
 <meta name="robots" content="{esc(robots)}">
@@ -402,7 +409,7 @@ def page_wf(*, title: str, description: str, route: str, current: str, body: str
 <link rel="stylesheet" href="/assets/bryme-v2.css">
 {schema(site_graph)}
 {schema(structured)}
-</head><body>{nav(current)}<main id="main">{body}</main>{mobile_nav(current)}{drawer(current)}<script src="/assets/site-nav.js" defer></script>{footer()}</body></html>'''
+</head><body>{nav(current)}<main id="main">{body}</main>{mobile_nav(current)}{drawer(current)}<script src="/assets/site-nav.js" defer></script><script src="/assets/level-filter.js" defer></script><script src="/assets/purpose-finder.js" defer></script>{footer()}</body></html>'''
 
 
 # ---------------------------------------------------------------------------
@@ -599,7 +606,139 @@ def _timeline(rec: dict) -> str:
 <ul class="tl">{''.join(dots)}</ul></div>'''
 
 
+def verification_legend_page() -> None:
+    """The badge legend, reachable from every opportunity page.
+
+    Roadmap 3: readers must be able to find out what a status means from
+    wherever they meet it, and colour must never be the only signal.
+    """
+    rows = [
+        ("🟢", "Currently accepting", "accepting",
+         "The publication's own guideline said submissions were open on the date shown in “Last verified”. It is a timestamp, not a promise — always confirm on the official page before you pitch."),
+        ("🟢", "Rolling submissions", "rolling",
+         "The publication accepts work year-round rather than in windows. Still check the guideline: rolling markets close without notice."),
+        ("🟡", "Opens soon", "upcoming",
+         "A future window has been announced. Note the date and prepare the pitch now."),
+        ("🟡", "Limited window", "limited",
+         "Submissions are open only for a stated period. Check the closing date on the official guideline."),
+        ("🟡", "Information needs verification", "needs-verification",
+         "BRYME could not confirm the current state from the official guideline. Treat the details as unconfirmed until reverified."),
+        ("🔴", "Currently closed", "closed",
+         "The guideline said submissions were closed when BRYME last checked. Many publications reopen — the record stays up so you can watch for it."),
+    ]
+    exp = [
+        ("🟡", "Research only", "board-listed",
+         "BRYME researched the publication from its own guideline but has <b>not</b> submitted to it. Nothing on the page is a claim of acceptance, publication or payment."),
+        ("🔵", "Submitted", "verify",
+         "BRYME personally sent a pitch or a piece to this publication and is waiting on the outcome."),
+        ("🟢", "Accepted", "verify",
+         "BRYME pitched and the publication accepted. Payment is a separate step and is only shown once confirmed."),
+        ("📖", "Published", "verify",
+         "BRYME's work appeared in the publication."),
+        ("💰", "Paid", "verify",
+         "Payment actually landed. BRYME never marks this from a promise — only from money received."),
+        ("🔴", "Rejected", "verify",
+         "BRYME submitted and was turned down. These stay published: a rejection is useful information about a market."),
+        ("⚪", "Closed", "verify",
+         "BRYME's own journey with this publication ended without a decision — usually because the market closed."),
+    ]
+
+    def row(icon, label, cls, meaning):
+        return (f'<tr><td><span class="verify-badge {cls}">{icon} {esc(label)}</span></td>'
+                f'<td>{meaning}</td></tr>')
+
+    body = f'''<div class="wrap"><nav class="breadcrumb"><a href="/">Home</a> / <a href="/writing/">Writing opportunities</a> / What the statuses mean</nav>
+<section class="page-hero"><p class="kicker"><span class="kicker-dot"></span>Verification</p>
+<h1>What BRYME's statuses mean.</h1>
+<p>Every publication page carries two separate signals: whether the publication is <em>open</em>, and whether <em>BRYME has personally been through it</em>. They are deliberately not the same thing.</p></section>
+<section class="section"><div class="prose">
+<h2>1. Submission status — is the publication open?</h2>
+<p>This describes the <b>publication</b>, taken from its own guideline on the date in “Last verified”.</p>
+<div class="legend-table-wrap"><table class="legend-table">
+<caption class="sr-only">Submission status badges and their meanings</caption>
+<thead><tr><th scope="col">Badge</th><th scope="col">What it means</th></tr></thead>
+<tbody>{"".join(row(i, l, c, m) for i, l, c, m in rows)}</tbody>
+</table></div>
+
+<h2>2. BRYME's own record — has BRYME actually done this?</h2>
+<p>This describes <b>BRYME</b>, not the publication. It exists so you can tell researched listings apart from ones BRYME has personally tested.</p>
+<div class="legend-table-wrap"><table class="legend-table">
+<caption class="sr-only">BRYME experience badges and their meanings</caption>
+<thead><tr><th scope="col">Badge</th><th scope="col">What it means</th></tr></thead>
+<tbody>{"".join(row(i, l, c, m) for i, l, c, m in exp)}</tbody>
+</table></div>
+
+<h2>Why the emoji is never the only signal</h2>
+<p>Each badge carries its wording as text, not just a colour or an icon, so the meaning survives a screen reader, a monochrome screen and colour blindness. If you can only see the shape and not the colour, the label still tells you everything.</p>
+
+<h2>What “Last verified” means</h2>
+<p>It is the month a human at BRYME last opened the publication's official guideline and checked this record against it. It is shown to the month rather than the day because that is the honest resolution of the check — a guideline can change the day after any check, which is why every page links to the official source.</p>
+
+<h2>What BRYME will never claim</h2>
+<ul>
+<li>That an open window guarantees acceptance, publication or payment.</li>
+<li>That a rate exists when the guideline does not state one.</li>
+<li>That BRYME was paid, until the payment has actually arrived.</li>
+<li>That a vacancy or opportunity belongs to BRYME when it belongs to the publication.</li>
+</ul>
+
+<h2>Something out of date?</h2>
+<p>Publications open and close constantly, and BRYME would rather be corrected than wrong. Every publication page has a <b>Report an outdated listing</b> link, or you can <a href="/contact/">contact the desk</a> directly. Material corrections are logged on the <a href="/corrections/">corrections page</a>.</p>
+</div></section></div>'''
+    write("/verification/", page_wf(
+        title="What BRYME's verification statuses mean | BRYME",
+        description="A plain explanation of every BRYME badge: submission status, BRYME's own firsthand record, what “last verified” means, and what BRYME will never claim.",
+        route="/verification/", current="writing", body=body,
+        schema_data={"@context": "https://schema.org", "@type": "WebPage",
+                     "name": "What BRYME's verification statuses mean",
+                     "url": BASE + "/verification/",
+                     "publisher": {"@type": "Organization", "name": "BRYME", "url": BASE + "/"}}))
+
+
+def trust_block(rec: dict) -> str:
+    """Per-opportunity trust footer — roadmap 3.
+
+    Every opportunity page must expose: what the badges mean, how to report the
+    listing as outdated, and the editorial policy. Previously these lived only
+    in the site footer.
+    """
+    pub = rec.get("publication") or "this publication"
+    slug = rec.get("slug") or ""
+    verified = (rec.get("lastVerified") or TODAY)[:7]
+    subject = quote(f"Outdated listing: {pub}")
+    mail_body = quote(
+        f"Publication: {pub}\n"
+        f"BRYME page: {BASE}/writing/{slug}/\n"
+        f"Last verified on the page: {verified}\n\n"
+        "What is out of date (please include the official guideline URL if you have it):\n"
+    )
+    return f'''<section class="section"><div class="wrap"><div class="trust-actions" aria-label="Check or correct this record">
+  <div class="trust-actions-head">
+    <h2>Check, question or correct this record</h2>
+    <p>BRYME publishes its working, not just its conclusions. Last human check: <b>{esc(verified)}</b>.</p>
+  </div>
+  <div class="trust-actions-grid">
+    <a class="trust-action" href="/verification/">
+      <span class="trust-action-icon" aria-hidden="true">🏷️</span>
+      <b>What do these statuses mean?</b>
+      <span>Every badge on this page explained — open, closed, researched, tested, paid.</span>
+    </a>
+    <a class="trust-action" href="mailto:sodiqibrahim03@gmail.com?subject={subject}&amp;body={mail_body}">
+      <span class="trust-action-icon" aria-hidden="true">⚠️</span>
+      <b>Report an outdated listing</b>
+      <span>Guideline changed, link dead, or submissions closed? Tell the desk and it gets rechecked.</span>
+    </a>
+    <a class="trust-action" href="/editorial-policy/">
+      <span class="trust-action-icon" aria-hidden="true">📜</span>
+      <b>How BRYME verifies</b>
+      <span>The editorial standard behind this record: sources, dates, corrections and limits.</span>
+    </a>
+  </div>
+</div></div></section>'''
+
+
 def pub_page(rec: dict) -> None:
+
     slug = rec["slug"]
     pay = rec.get("pay") or {}
     wc = rec.get("wordCount") or {}
@@ -684,7 +823,8 @@ def pub_page(rec: dict) -> None:
 <section class="section"><div class="card-grid">
 <a class="path-card" href="{esc(rec.get('officialUrl') or '/writing/')}"><span class="card-num">OFFICIAL</span><h3>Read the official guideline</h3><p>Open the publication's own page and confirm everything on this record before you pitch.</p><span class="card-link">Open →</span></a>
 <a class="path-card" href="/guides/how-to-write-a-pitch/"><span class="card-num">GUIDE</span><h3>How to write a pitch</h3><p>A step-by-step structure for a pitch that a busy editor can act on.</p><span class="card-link">Open the guide →</span></a>
-</div></section></div>'''
+</div></section></div>
+{trust_block(rec)}'''
 
     desc = (rec.get("seoTitle") or f"{rec['publication']} writing submissions — BRYME research").split(" | ")[0]
     title = f"{desc} | BRYME"
@@ -751,8 +891,10 @@ GUIDES = [
      "description": "Legitimate remote and freelance writing opportunities you can do from anywhere.",
      "topics": ["remote", "freelance", "opportunities"], "toc": ["Separate jobs from gigs", "Use legitimate marketplaces", "Check who is hiring", "Beware of unpaid trials", "Verify before you commit"],
      "body": "Remote writing work spans two very different things: ongoing freelance contracts and one-off paid publications.\n\n**Separate jobs from gigs.** A paid publication call is not a job offer and not a promise of payment; a remote freelance contract is ongoing work. BRYME keeps them apart.\n\n**Use legitimate marketplaces and the publication's own channel.** For publication work, use the guideline. For freelance gigs, use reputable platforms — and read the terms carefully.\n\n**Check who is actually hiring.** A real remote role names a client or an agency. Vague \u201cwe need writers\u201d posts with no company need care.\n\n**Beware of unpaid trials.** A limited, clearly-scoped paid trial is one thing; a long \u201ctest\u201d you are expected to do for free is a red flag.\n\n**Verify before you commit.** Confirm the client, the pay, and how you will be paid. BRYME never invents a rate or a deadline."},
-    {"slug": "how-to-get-your-first-paid-writing-gig", "title": "How to get your first paid writing gig",
-     "description": "A starting path from writing samples to your first accepted, paid piece.",
+    {"slug": "how-to-get-your-first-paid-writing-gig", "title": "Your first paid writing gig: a five-step starting path",
+     "description": "Five concrete steps from your first sample to a pitch an editor will actually read.",
+     "deeper": ("/learn/freelance-paid-writing/how-to-get-your-first-paid-writer-gig/",
+                "The full guide: how to get your first paid writing gig"),
      "topics": ["first", "gig", "paid"], "toc": ["Write first, publish somewhere", "Pick a small, reachable target", "Pitch one specific idea", "Send under the official channel", "Treat rejection as data"],
      "body": "The first paid gig is usually small — the point is to get on the board.\n\n**Write first.** You need something to show. Write a couple of strong pieces and publish them somewhere (a blog, a platform, or a publication that accepts your work).\n\n**Pick a small, reachable target.** Aim at a modest market that publishes work like yours and that you can genuinely match. BRYME lists many such markets with their pay and word counts.\n\n**Pitch one specific idea.** Not a general capability, but one angle for one publication.\n\n**Use the official channel.** An unfamiliar or invented submission address is how opportunities go wrong.\n\n**Treat rejection as data.** Editors are busy. A pass on one pitch is not a verdict on you as a writer. Note what the market wanted and keep going."},
 ]
@@ -791,6 +933,14 @@ def guide_page(g: dict) -> None:
             import re
             body_txt = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", body_txt)
             paras.append(f"<p>{body_txt}</p>")
+    # A short overview page may point at a fuller guide elsewhere on the site.
+    if g.get("deeper"):
+        _href, _label = g["deeper"]
+        paras.append(
+            f'<p class="notice">This is the short version. '
+            f'<a href="{esc(_href)}">{esc(_label)}</a> goes further: rates, '
+            f'where to look, and what to do after the first yes.</p>'
+        )
     sections = "".join(paras)
     # Related publications by topic.
     gk = set(g.get("topics", []))
@@ -891,9 +1041,20 @@ def empty_pages() -> None:
     ]
     for route, title, kicker, ds in trust:
         key = route.strip("/")
+        page = TRUST_CONTENT.get(key) or {}
+        if page.get("sections"):
+            kicker = page.get("kicker", kicker)
+            title = page.get("title", title)
+            intro = page.get("intro", ds)
+            prose = "".join(f"<h2>{esc(h)}</h2>{html}" for h, html in page["sections"])
+        else:
+            intro = ds
+            prose = ("<p>This page will be published on the writing-first BRYME platform. For now, the "
+                     "editorial standard is: sources first, no invented facts, no fabricated experience, "
+                     "and payment only recorded once confirmed.</p>")
         body = f'''<div class="wrap"><nav class="breadcrumb"><a href="/">Home</a> / {esc(title)}</nav>
-<section class="page-hero"><p class="kicker"><span class="kicker-dot"></span>{esc(kicker)}</p><h1>{esc(title)}.</h1><p>{esc(ds)}</p></section>
-<section class="section"><div class="prose"><p>This page will be published on the writing-first BRYME platform. For now, the editorial standard is: sources first, no invented facts, no fabricated experience, and payment only recorded once confirmed.</p></div></section></div>'''
+<section class="page-hero"><p class="kicker"><span class="kicker-dot"></span>{esc(kicker)}</p><h1>{esc(title)}.</h1><p>{esc(intro)}</p></section>
+<section class="section"><div class="prose">{prose}</div></section></div>'''
         write(route, page_wf(title=f"{title} | BRYME", description=ds, route=route, current="about", body=body,
                              schema_data={"@context": "https://schema.org", "@type": "WebPage", "name": title, "url": BASE + route, "publisher": {"@type": "Organization", "name": "BRYME", "url": BASE + "/"}}))
 
@@ -934,5 +1095,6 @@ if __name__ == "__main__":
     for g in GUIDES:
         guide_page(g)
     tested_page()
+    verification_legend_page()
     about_page()
     empty_pages()

@@ -2,6 +2,7 @@
 title: How to write a cover letter
 description: A short, targeted cover letter that connects your experience to the specific role and gets you considered.
 section: professional-writing
+level: intermediate
 keywords: [cover letter, job application, professional]
 tools: [writing-checklist-generator]
 related: [how-to-write-a-professional-email]

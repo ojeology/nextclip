@@ -2,6 +2,7 @@
 title: How to write a short story
 description: Find a story, build characters and conflict, and shape a short piece that hits a single effect.
 section: creative-writing
+level: intermediate
 keywords: [story, fiction, characters, plot, dialogue]
 tools: [word-counter]
 related: [the-writing-process]

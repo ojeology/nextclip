@@ -2,6 +2,7 @@
 title: How to write social media copy
 description: Short, shareable posts that stop the scroll and say something in seconds.
 section: online-writing
+level: intermediate
 keywords: [social media, captions, engagement, shortform]
 tools: [word-document-converter]
 related: [how-to-write-copywriting, how-to-write-a-newsletter]

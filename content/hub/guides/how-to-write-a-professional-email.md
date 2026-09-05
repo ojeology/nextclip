@@ -2,6 +2,7 @@
 title: How to write a professional email
 description: A clear, polite, high-functioning email that gets a response and reflects well on you.
 section: professional-writing
+level: beginner
 keywords: [email, professional, workplace, communication]
 tools: [word-counter]
 related: [tone-voice-audience, writing-templates]

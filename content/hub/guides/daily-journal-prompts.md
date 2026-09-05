@@ -2,6 +2,7 @@
 title: Daily journal prompts
 description: A bank of prompts to start a journaling habit and keep it going when you have nothing to say.
 section: journaling-personal
+level: beginner
 keywords: [journal, prompts, reflection, habit, personal]
 tools: [writing-timer]
 related: [how-to-start-journaling]

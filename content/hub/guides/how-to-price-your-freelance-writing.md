@@ -2,6 +2,7 @@
 title: How to price your freelance writing
 description: Understand per-word and per-piece rates, what affects them, and how to set a rate you can defend.
 section: freelance-paid-writing
+level: advanced
 keywords: [pricing, rate, freelance, money]
 tools: [word-counter]
 related: [how-to-get-your-first-paid-writer-gig]

@@ -2,6 +2,7 @@
 title: Example of a speech
 description: A complete short speech with a breakdown of the structure and rhythm that make it land.
 section: examples
+level: beginner
 keywords: [speech, talk, presentation, example]
 tools: [word-document-converter]
 related: [how-to-write-a-speech]

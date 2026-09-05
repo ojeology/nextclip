@@ -2,6 +2,7 @@
 title: How to write a report
 description: Structure a clear, factual report that tells a reader what happened, what it means, and what to do next.
 section: types-of-writing
+level: intermediate
 keywords: [report, technical, structure, findings]
 tools: [article-outline-generator]
 related: [how-to-write-an-essay]

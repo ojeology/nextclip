@@ -2,6 +2,7 @@
 title: How to write a poem
 description: Find an image or feeling, shape it with language, and revise a poem into something that lands.
 section: types-of-writing
+level: intermediate
 keywords: [poetry, poem, image, form]
 tools: [word-counter]
 related: [how-to-write-a-short-story, how-to-write-a-speech]

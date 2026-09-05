@@ -2,6 +2,7 @@
 title: Example of a professional email
 description: A complete professional email — good and bad versions — with the reasoning explained.
 section: examples
+level: beginner
 keywords: [email, professional, business, example]
 tools: [word-document-converter]
 related: [how-to-write-a-professional-email, dos-and-donts-of-professional-emails]

@@ -34,6 +34,8 @@ const ROUTES = [
   "/learn/writing-basics/sentence-basics/", "/tools/word-counter/",
 ];
 
+const THEMES = ["light", "dark"];
+
 const VIEWPORTS = [
   { name: "mobile", width: 390, height: 844 },
   { name: "tablet", width: 768, height: 1024 },
@@ -89,15 +91,42 @@ async function ready(url) {
     await ready(base + "/healthz");
     browser = await chromium.launch({ headless: true });
 
+    for (const theme of THEMES)
     for (const vp of VIEWPORTS) {
       const context = await browser.newContext({
         viewport: { width: vp.width, height: vp.height }, serviceWorkers: "block",
+        colorScheme: theme,
       });
+      /* Seed the remembered choice so assets/theme.js paints the theme we
+         are auditing, before any page script or first paint. */
+      await context.addInitScript((t) => {
+        try { localStorage.setItem("bryme-theme", t); } catch (e) { /* ignore */ }
+      }, theme);
       const page = await context.newPage();
 
       for (const route of ROUTES) {
-        const label = `${vp.name} ${route}`;
+        const label = `${theme} ${vp.name} ${route}`;
         await page.goto(base + route, { waitUntil: "networkidle", timeout: 20000 });
+        const painted = await page.evaluate(() =>
+          document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light");
+        check(painted === theme,
+          `${label}: theme toggle did not apply (painted ${painted}, expected ${theme})`);
+        const toggle = await page.evaluate(() => {
+          const b = document.querySelector("[data-theme-toggle]");
+          if (!b) return null;
+          return {
+            pressed: b.getAttribute("aria-pressed"),
+            label: b.getAttribute("aria-label") || "",
+            inMainNav: !!b.closest(".main-nav"),
+          };
+        });
+        check(!!toggle, `${label}: no theme toggle in the header`);
+        if (toggle) {
+          check(toggle.pressed === (theme === "dark" ? "true" : "false"),
+            `${label}: theme toggle aria-pressed is "${toggle.pressed}"`);
+          check(/theme/i.test(toggle.label), `${label}: theme toggle has no descriptive label`);
+          check(!toggle.inMainNav, `${label}: theme toggle must sit outside .main-nav`);
+        }
 
         /* ---------- 1. contrast ---------- */
         const samples = await page.evaluate(() => {
@@ -235,6 +264,7 @@ async function ready(url) {
 
     console.log(JSON.stringify({
       ok: failures.length === 0,
+      themes: THEMES,
       routes: ROUTES.length,
       viewports: VIEWPORTS.map((v) => `${v.width}x${v.height}`),
       contrastPairsMeasured: measured,

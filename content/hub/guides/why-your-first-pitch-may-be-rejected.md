@@ -2,6 +2,7 @@
 title: Why your first pitch may be rejected
 description: The most common reasons editors say no to a first pitch — and what to do about each.
 section: writing-for-publication
+level: intermediate
 keywords: [rejection, pitch, editor, first pitch, query]
 tools: [word-document-converter]
 related: [a-rejected-pitch-is-not-wasted, how-to-pitch-an-editor, how-to-write-a-query-letter]

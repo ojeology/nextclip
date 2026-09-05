@@ -2,6 +2,7 @@
 title: Example of an essay
 description: A complete argumentative essay with a breakdown of the structure behind every paragraph.
 section: examples
+level: beginner
 keywords: [essay, academic, argument, example]
 tools: [word-document-converter]
 related: [how-to-write-an-essay, dos-and-donts-of-an-essay]

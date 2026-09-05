@@ -2,6 +2,7 @@
 title: How to write a conclusion
 description: End a piece so it lands — restate the point, give it meaning, and avoid new arguments.
 section: structure-formatting
+level: beginner
 keywords: [conclusion, ending, structure, essay]
 tools: [word-counter]
 related: [how-to-write-an-introduction, how-to-revise-a-draft]

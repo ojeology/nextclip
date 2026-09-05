@@ -2,6 +2,7 @@
 title: How to write a speech
 description: Write spoken words that sound natural, land on one message, and hold an audience.
 section: types-of-writing
+level: intermediate
 keywords: [speech, public speaking, spoken word, delivery]
 tools: [word-counter]
 related: [how-to-write-an-introduction, how-to-write-a-persuasive-essay]

@@ -77,6 +77,7 @@ TOOLS = load("tools.json")["tools"]
 TOOLS_BY_ID = {t["id"]: t for t in TOOLS}
 GLOSSARY = load("glossary.json")["terms"]
 TEMPLATES = load("templates.json")["templates"]
+PURPOSES = load("purposes.json")
 CHECKLISTS = load("checklists.json")["checklists"]
 PROBLEMS = load("problems.json")["problems"]
 
@@ -223,6 +224,53 @@ def breadcrumb(*parts: list[str]) -> str:
     return '<nav class="breadcrumb">' + " / ".join(links) + "</nav>"
 
 
+LEVELS = {
+    "beginner":     ("Beginner",     "Start here — assumes no prior knowledge."),
+    "intermediate": ("Intermediate", "Assumes you can already draft and revise a piece."),
+    "advanced":     ("Advanced",     "For longer or professional projects with higher stakes."),
+}
+
+
+def level_of(g: dict) -> str:
+    lv = (g.get("level") or "intermediate").strip().lower()
+    return lv if lv in LEVELS else "intermediate"
+
+
+def level_badge(g: dict) -> str:
+    """Skill-level tag. The word is always present, never colour alone."""
+    lv = level_of(g)
+    label, _ = LEVELS[lv]
+    return f'<span class="level-badge level-{lv}">{esc(label)}</span>'
+
+
+def guide_card(g: dict, heading: str = "h3") -> str:
+    """Shared guide card carrying its skill level, so /learn/ can filter."""
+    lv = level_of(g)
+    return (f'<a class="guide-card" data-level="{lv}" href="/learn/{esc(g["section"])}/{esc(g["slug"])}/">'
+            f'<span class="card-num">GUIDE</span>{level_badge(g)}'
+            f'<{heading}>{esc(g["title"])}</{heading}>'
+            f'<p>{esc(g.get("description", ""))}</p>'
+            f'<span class="card-link">Open the guide →</span></a>')
+
+
+def level_filter(guides: list[dict], label: str = "guides") -> str:
+    """Static skill-level filter. Radio buttons, so it works without JS and is
+    keyboard/screen-reader native; JS only hides cards."""
+    counts = {k: sum(1 for g in guides if level_of(g) == k) for k in LEVELS}
+    opts = [f'<label class="level-opt"><input type="radio" name="level" value="all" checked>'
+            f'<span>All levels <b>{len(guides)}</b></span></label>']
+    for key, (lab, _desc) in LEVELS.items():
+        if not counts[key]:
+            continue
+        opts.append(f'<label class="level-opt level-opt-{key}"><input type="radio" name="level" value="{key}">'
+                    f'<span>{esc(lab)} <b>{counts[key]}</b></span></label>')
+    return (f'<form id="level-filter" class="level-filter" aria-label="Filter {esc(label)} by skill level">'
+            f'<span class="level-filter-label">Your level</span>'
+            f'<div class="level-opts">{"".join(opts)}</div>'
+            f'<p id="level-note" class="level-note" aria-live="polite">Showing all {len(guides)} {esc(label)}.</p>'
+            f'</form>')
+
+
 def tool_links(items: list[str]) -> str:
     if not items:
         return ""
@@ -250,6 +298,7 @@ def guide_page(g: dict) -> None:
 <section class="page-hero"><p class="kicker"><span class="kicker-dot"></span>{esc(section['title'])}</p>
 <h1>{esc(g['title'])}</h1>
 <p>{esc(g.get('description', ''))}</p>
+<p class="level-line">{level_badge(g)} <span class="level-desc">{esc(LEVELS[level_of(g)][1])}</span></p>
 <p class="byline">Researched and written by <a href="/author/ibrahim-sodiq/">BRYME Editorial Desk</a>.</p>
 <a class="btn secondary" href="/learn/{esc(section['id'])}/">← All {esc(section['title'])} guides</a></section>
 <section class="section"><div class="prose">{prose}</div></section></div>
@@ -300,8 +349,9 @@ def section_hub(sec: dict) -> None:
             route=f"/learn/{sec['id']}/", current="learn", body=body, robots="index,follow"))
         return
     if guides:
-        cards = "".join(f'<a class="guide-card" href="/learn/{esc(sec["id"])}/{esc(g["slug"])}/"><span class="card-num">GUIDE</span><h2>{esc(g["title"])}</h2><p>{esc(g.get("description", ""))}</p><span class="card-link">Open the guide →</span></a>' for g in guides)
-        content = f'<section class="section"><div class="guide-grid">{cards}</div></section>'
+        cards = "".join(guide_card(g, "h2") for g in guides)
+        content = (f'<section class="section">{level_filter(guides)}'
+                   f'<div class="guide-grid">{cards}</div></section>')
         robots = "index,follow"
     else:
         content = '<section class="section"><div class="prose"><p>This section is being written. Check back soon — BRYME adds new guides steadily. In the meantime, browse the <a href="/learn/">full library</a> or the <a href="/writing/">paid writing opportunities</a>.</p></div></section>'
@@ -396,6 +446,28 @@ def pdf_render(i: str) -> str:
 
 def render_tool(t: dict) -> str:
     i = t["id"]
+    if i == "tone-checker":
+        return f'''<div class="tool-box"><div class="tool-prose"><p>Paste a paragraph or a full draft. BRYME estimates how formal it sounds and shows you which signals produced that estimate.</p>
+<label for="ta">Your text</label><textarea id="ta" placeholder="Paste your draft here…"></textarea><div class="tool-result" id="out" aria-live="polite"></div></div></div>
+<script src="/assets/hub-tools.js" data-hub-tool="tone-checker"></script>'''
+    if i == "citation-formatter":
+        return f'''<div class="tool-box"><div class="tool-prose"><p>Fill in what you have. The reference updates as you type.</p>
+<div class="tool-grid"><div class="tool-input"><label for="style">Style</label><select id="style"><option value="apa">APA (7th)</option><option value="mla">MLA (9th)</option><option value="chicago">Chicago</option></select></div>
+<div class="tool-input"><label for="ctype">Source type</label><select id="ctype"><option value="web">Web page or article</option><option value="book">Book</option></select></div></div>
+<div class="tool-grid"><div class="tool-input"><label for="author">Author</label><input id="author" type="text" placeholder="Chinua Achebe" autocomplete="off"></div>
+<div class="tool-input"><label for="year">Year</label><input id="year" type="text" placeholder="2024" autocomplete="off"></div></div>
+<label for="title">Title</label><input id="title" type="text" placeholder="Title of the book, article or page" autocomplete="off">
+<div class="tool-grid"><div class="tool-input"><label for="container">Journal, site or newspaper</label><input id="container" type="text" placeholder="The Guardian" autocomplete="off"></div>
+<div class="tool-input"><label for="publisher">Publisher</label><input id="publisher" type="text" placeholder="Heinemann" autocomplete="off"></div></div>
+<div class="tool-grid"><div class="tool-input"><label for="url">URL</label><input id="url" type="text" placeholder="https://…" autocomplete="off"></div>
+<div class="tool-input"><label for="accessed">Date accessed (MLA)</label><input id="accessed" type="text" placeholder="4 Sept. 2026" autocomplete="off"></div></div>
+<div class="tool-result" id="out" aria-live="polite"></div></div></div>
+<script src="/assets/hub-tools.js" data-hub-tool="citation-formatter"></script>'''
+    if i == "word-alternatives":
+        return f'''<div class="tool-box"><div class="tool-prose"><p>Type one overused word or phrase to see stronger options — and to be told when deleting it is the better move.</p>
+<label for="w">Word or phrase</label><input id="w" type="text" placeholder="e.g. said, very, important, in order to" autocomplete="off">
+<div class="tool-result" id="out" aria-live="polite"></div></div></div>
+<script src="/assets/hub-tools.js" data-hub-tool="word-alternatives"></script>'''
     if i in ("writing-timer",):
         return f'''<div class="tool-box"><div class="tool-prose"><p>Set a goal and write for a focused stretch. BRYME's timer keeps you honest without nagging you.</p>
 <div class="tool-grid"><div class="tool-input"><label for="goal">Goal (minutes)</label><input id="goal" type="number" value="25" min="1"></div><div class="tool-input"><button id="setgoal" class="btn">Set goal</button></div></div>
@@ -573,7 +645,13 @@ def learn_index() -> None:
 <p>Everything you need to write better — from the very first sentence to getting published and paid. Start where you are and follow the journey: learn, plan, write, check, improve, finish.</p>
 <div class="searchbar"><form action="/search/" method="get"><input type="search" name="q" placeholder="What do you want to learn about writing? (e.g. essay, comma, email)" aria-label="Search guides"></form></div></section>
 <div class="journey-strip"><ol class="steps-journey"><li>Learn</li><li>Plan</li><li>Write</li><li>Check</li><li>Improve</li><li>Finish</li></ol></div>
-{sections_html}'''
+{sections_html}
+<section class="section alt" id="all-guides"><div class="wrap">
+<div class="section-head"><div><p class="eyebrow">Every guide</p><h2>Browse all {len(GUIDES)} guides by your level.</h2></div>
+<p>Not sure where to start? Filter by how much writing experience you already have.</p></div>
+{level_filter(sorted(GUIDES, key=lambda x: x["title"]), "guides")}
+<div class="guide-grid">{"".join(guide_card(g) for g in sorted(GUIDES, key=lambda x: x["title"]))}</div>
+</div></section>'''
     write("/learn/", page_wf(title="Learn to write — writing guides for every level | BRYME",
                              description="BRYME's Writing Hub: beginner-friendly guides on starting to write, writing basics, types of writing, grammar, editing, research, and getting published and paid.",
                              route="/learn/", current="learn", body=body,
@@ -649,6 +727,155 @@ def prune_stale_guides() -> None:
                 shutil.rmtree(slug_dir, ignore_errors=True)
 
 
+# --------------------------------------------------------------------------
+# "Writing by purpose" finder + the complete beginner path
+# --------------------------------------------------------------------------
+TEMPLATES_BY_ID = {t["id"]: t for t in TEMPLATES}
+
+
+def _validate_purposes() -> None:
+    """Fail the build rather than ship a finder that routes to a 404."""
+    bad = []
+    for item in PURPOSES["purposes"]:
+        for key in ("guide", "also"):
+            slug = item.get(key)
+            if slug and slug not in GUIDES_BY_SLUG:
+                bad.append(f'{item["q"]}: {key}="{slug}" is not a guide')
+        t = item.get("template")
+        if t and t not in TEMPLATES_BY_ID:
+            bad.append(f'{item["q"]}: template="{t}" is not a template')
+        tl = item.get("tool")
+        if tl and tl not in TOOLS_BY_ID:
+            bad.append(f'{item["q"]}: tool="{tl}" is not a tool')
+        if not item.get("guide") and not item.get("template"):
+            bad.append(f'{item["q"]}: routes nowhere')
+    if bad:
+        raise SystemExit("purposes.json has broken routes:\n  - " + "\n  - ".join(bad))
+
+
+def purpose_finder_page() -> None:
+    _validate_purposes()
+    cats = {c["id"]: c for c in PURPOSES["categories"]}
+    by_cat: dict[str, list[dict]] = {}
+    for item in PURPOSES["purposes"]:
+        by_cat.setdefault(item["cat"], []).append(item)
+
+    blocks = []
+    for c in PURPOSES["categories"]:
+        items = by_cat.get(c["id"], [])
+        if not items:
+            continue
+        rows = []
+        for it in items:
+            links = []
+            g = GUIDES_BY_SLUG.get(it.get("guide", ""))
+            if g:
+                links.append(f'<a class="purpose-go" href="/learn/{esc(g["section"])}/{esc(g["slug"])}/">Read the guide →</a>')
+            a = GUIDES_BY_SLUG.get(it.get("also", ""))
+            if a:
+                links.append(f'<a class="purpose-alt" href="/learn/{esc(a["section"])}/{esc(a["slug"])}/">{esc(a["title"])}</a>')
+            t = TEMPLATES_BY_ID.get(it.get("template", ""))
+            if t:
+                links.append(f'<a class="purpose-alt" href="/templates/#{esc(t["id"])}">{esc(t["title"])} template</a>')
+            tl = TOOLS_BY_ID.get(it.get("tool", ""))
+            if tl:
+                links.append(f'<a class="purpose-alt" href="/tools/{esc(tl["id"])}/">{esc(tl["title"])}</a>')
+            lvl = f'{level_badge(g)}' if g else ""
+            note = f'<p class="purpose-note">{esc(it["note"])}</p>' if it.get("note") else ""
+            rows.append(
+                f'<li class="purpose-row" data-purpose="{esc(it["q"].lower())} {esc(c["title"].lower())}">'
+                f'<div class="purpose-q"><b>I need to write {esc(it["q"])}</b>{lvl}</div>'
+                f'{note}<div class="purpose-links">{"".join(links)}</div></li>')
+        blocks.append(
+            f'<section class="section" data-cat-block><div class="wrap">'
+            f'<div class="section-head"><div><p class="eyebrow">{esc(c["icon"])} {esc(c["title"])}</p>'
+            f'<h2>{esc(c["blurb"])}</h2></div></div>'
+            f'<ul class="purpose-list">{"".join(rows)}</ul></div></section>')
+
+    total = len(PURPOSES["purposes"])
+    body = f'''<div class="wrap"><nav class="breadcrumb"><a href="/">Home</a> / What do you want to write?</nav>
+<section class="page-hero"><p class="kicker"><span class="kicker-dot"></span>Find the right guide</p>
+<h1>What are you trying to write?</h1>
+<p>You do not need to know the name of the format to find help with it. Say what you are trying to write and BRYME points you at the guide, the template and the tool for it — {total} starting points across {len(PURPOSES["categories"])} situations.</p>
+<div class="purpose-search"><label for="purpose-q" class="sr-only">Search what you want to write</label>
+<input id="purpose-q" type="search" placeholder="Type what you need — e.g. email, essay, speech, pitch" autocomplete="off">
+<p id="purpose-count" class="purpose-count" aria-live="polite">{total} things to write</p>
+<p id="purpose-empty" class="purpose-count empty" hidden>Nothing matches that yet. Try a simpler word — “letter”, “story”, “report” — or <a href="/learn/">browse every guide</a>.</p></div>
+</section></div>
+{"".join(blocks)}
+<section class="section alt"><div class="wrap"><div class="section-head"><div><p class="eyebrow">Not listed?</p><h2>Still not sure what you need.</h2></div></div>
+<div class="card-grid">
+<a class="path-card" href="/start/"><span class="card-num">PATH</span><h3>Start from the beginning</h3><p>A guided track through the essentials, in order, for anyone starting from zero.</p><span class="card-link">Open the beginner path →</span></a>
+<a class="path-card" href="/learn/"><span class="card-num">ALL</span><h3>Browse every guide</h3><p>All {len(GUIDES)} guides, filterable by your skill level.</p><span class="card-link">Browse the library →</span></a>
+<a class="path-card" href="/contact/"><span class="card-num">ASK</span><h3>Ask BRYME</h3><p>No guide for your problem? Tell the desk and it may become one.</p><span class="card-link">Contact the desk →</span></a>
+</div></div></section>'''
+    write("/find/", page_wf(
+        title="What do you want to write? Find the right guide | BRYME",
+        description=f"Say what you are trying to write — an email, an essay, a speech, a pitch — and BRYME routes you to the right guide, template and tool. {total} starting points.",
+        route="/find/", current="learn", body=body,
+        schema_data={"@context": "https://schema.org", "@type": "CollectionPage",
+                     "name": "What do you want to write?", "url": BASE + "/find/"}))
+
+
+BEGINNER_PATH = [
+    ("what-is-writing", "Understand what writing actually is before worrying about doing it well."),
+    ("how-to-start-writing", "Get words on the page for the first time, without a plan or confidence."),
+    ("sentence-basics", "The unit everything else is built from."),
+    ("paragraph-basics", "Group sentences so a reader can follow you."),
+    ("tone-voice-audience", "Decide who you are writing for — this changes every other choice."),
+    ("how-to-brainstorm-and-find-ideas", "Find something worth saying."),
+    ("how-to-turn-an-idea-into-an-outline", "Turn a vague idea into a shape you can write."),
+    ("the-writing-process", "See the whole journey so you know which stage you are in."),
+    ("how-to-write-an-introduction", "Open in a way that makes someone keep reading."),
+    ("how-to-write-a-conclusion", "End on purpose instead of just stopping."),
+    ("how-to-use-headings-effectively", "Make a longer piece navigable."),
+    ("common-grammar-mistakes", "Fix the errors that cost you credibility fastest."),
+    ("comma-rules", "The single most misused mark in English."),
+    ("active-vs-passive-voice", "Make sentences direct."),
+    ("how-to-make-writing-more-concise", "Cut what is not earning its place."),
+    ("how-to-edit-your-own-writing", "Become your own first editor."),
+    ("how-to-proofread", "Catch what editing missed, before anyone else sees it."),
+    ("how-to-overcome-writers-block", "Keep going when it stops being fun."),
+    ("how-to-build-a-writing-routine", "Turn writing into something you do, not something you plan to do."),
+    ("how-to-tell-if-your-writing-is-good", "Judge your own work honestly and know what to fix next."),
+]
+
+
+def beginner_path_page() -> None:
+    missing = [s for s, _ in BEGINNER_PATH if s not in GUIDES_BY_SLUG]
+    if missing:
+        raise SystemExit(f"beginner path references missing guides: {missing}")
+    steps = []
+    for i, (slug, why) in enumerate(BEGINNER_PATH, 1):
+        g = GUIDES_BY_SLUG[slug]
+        steps.append(
+            f'<li class="path-step"><span class="path-num">{i:02d}</span>'
+            f'<div class="path-step-body"><h3><a href="/learn/{esc(g["section"])}/{esc(g["slug"])}/">{esc(g["title"])}</a></h3>'
+            f'<p class="path-why">{esc(why)}</p>'
+            f'<p class="path-meta">{level_badge(g)}</p></div></li>')
+    body = f'''<div class="wrap"><nav class="breadcrumb"><a href="/">Home</a> / Complete beginner path</nav>
+<section class="page-hero"><p class="kicker"><span class="kicker-dot"></span>Structured learning</p>
+<h1>The complete beginner path.</h1>
+<p>{len(BEGINNER_PATH)} guides in a deliberate order, for anyone who would rather be taught than browse. Each one assumes only what came before it. Work through them at any pace — nothing here expires, and there is nothing to sign up for.</p>
+<div class="source-line"><span><b>{len(BEGINNER_PATH)}</b> guides</span><span>Free, no account</span><span><a href="/find/">Or jump to a specific thing you need to write →</a></span></div></section>
+<section class="section"><ol class="path-list">{"".join(steps)}</ol></section>
+<section class="section alt"><div class="section-head"><div><p class="eyebrow">After the path</p><h2>Where to go next.</h2></div></div>
+<div class="card-grid">
+<a class="path-card" href="/learn/?level=intermediate"><span class="card-num">NEXT</span><h3>Intermediate guides</h3><p>Formats and craft that assume you can already draft and revise.</p><span class="card-link">Browse intermediate →</span></a>
+<a class="path-card" href="/find/"><span class="card-num">FIND</span><h3>Write a specific thing</h3><p>Jump straight to the guide for the document in front of you.</p><span class="card-link">Open the finder →</span></a>
+<a class="path-card" href="/writing/"><span class="card-num">PAID</span><h3>Get published and paid</h3><p>Researched publications that pay writers, with the pay and rules recorded.</p><span class="card-link">See opportunities →</span></a>
+</div></section></div>'''
+    write("/start/", page_wf(
+        title=f"The complete beginner path — {len(BEGINNER_PATH)} writing guides in order | BRYME",
+        description=f"A guided track through the {len(BEGINNER_PATH)} most essential BRYME writing guides, in order, for complete beginners. Free, no account needed.",
+        route="/start/", current="learn", body=body,
+        schema_data={"@context": "https://schema.org", "@type": "Course",
+                     "name": "The complete beginner writing path", "url": BASE + "/start/",
+                     "description": "A structured, ordered track through BRYME's essential writing guides for complete beginners.",
+                     "provider": {"@type": "Organization", "name": "BRYME", "url": BASE + "/"},
+                     "isAccessibleForFree": True}))
+
+
 def build() -> None:
     prune_stale_guides()
     homepage()
@@ -665,6 +892,8 @@ def build() -> None:
     checklists_page()
     problems_page()
     search_page()
+    purpose_finder_page()
+    beginner_path_page()
     print(f"wrote hub: {len(GUIDES)} guides, {len(TOOLS)} tools, {len(SECTIONS['sections'])} sections, /search/ + /glossary/ + /templates/ + /checklists/ + /problems/")
 
 

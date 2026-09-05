@@ -2,6 +2,7 @@
 title: How to pitch an editor
 description: Approach editors well, pitch the right idea, and follow up without burning bridges.
 section: writing-for-publication
+level: advanced
 keywords: [pitch, editor, submission, freelance]
 tools: [writing-checklist-generator]
 related: [how-to-write-a-query-letter, how-to-handle-a-rejection]

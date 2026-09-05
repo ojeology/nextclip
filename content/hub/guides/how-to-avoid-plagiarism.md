@@ -2,6 +2,7 @@
 title: How to avoid plagiarism
 description: Use sources honestly — quote, paraphrase and cite — and keep your work your own.
 section: research-sources
+level: intermediate
 keywords: [plagiarism, citation, quoting, paraphrasing, sources]
 tools: [word-counter]
 related: [how-to-write-search-friendly-content]

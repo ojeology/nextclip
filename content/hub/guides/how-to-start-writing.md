@@ -2,6 +2,7 @@
 title: How to start writing
 description: A beginner-friendly, step-by-step way to go from a blank page to a first finished piece — without waiting for inspiration.
 section: start-writing
+level: beginner
 keywords: [start, beginner, blank page, first draft]
 tools: [word-counter, writing-timer]
 related: [how-to-overcome-writers-block]

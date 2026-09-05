@@ -2,6 +2,7 @@
 title: My introduction is weak
 description: Open strong with a specific hook, clear subject and a promise worth reading.
 section: common-problems
+level: beginner
 keywords: [introduction, opening, hook, first line]
 tools: [word-counter]
 related: [how-to-write-an-introduction, how-to-write-a-blog-post]

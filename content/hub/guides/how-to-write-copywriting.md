@@ -2,6 +2,7 @@
 title: How to write copywriting
 description: Persuasive copy that moves a reader to act — on a page, an email or an ad.
 section: types-of-writing
+level: intermediate
 keywords: [copywriting, copy, advertising, marketing, persuasuve]
 tools: [word-document-converter]
 related: [how-to-write-a-product-description, how-to-write-a-newsletter]

@@ -2,6 +2,7 @@
 title: How to read like a writer
 description: Learn craft by noticing how good writing is built, not just what it says.
 section: writing-basics
+level: beginner
 keywords: [reading, craft, improve, analyze]
 tools: [word-counter]
 related: [how-to-build-a-writing-routine]

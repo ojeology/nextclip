@@ -2,6 +2,7 @@
 title: How to write a memo
 description: A short, direct internal message that states its point and its ask in one glance.
 section: professional-writing
+level: intermediate
 keywords: [memo, internal, workplace, communication]
 tools: [word-document-converter]
 related: [how-to-write-a-report, how-to-write-a-professional-email]

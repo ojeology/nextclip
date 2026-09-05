@@ -2,6 +2,7 @@
 title: How to write a memoir
 description: Turn your own life into a true story with a theme, scenes and a shape.
 section: creative-writing
+level: advanced
 keywords: [memoir, nonfiction, personal, life story]
 tools: [word-document-converter]
 related: [how-to-write-a-personal-essay, how-to-write-a-short-story]

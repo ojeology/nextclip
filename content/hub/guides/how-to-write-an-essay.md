@@ -2,6 +2,7 @@
 title: How to write an essay
 description: The classic essay structure — introduction, body, conclusion — explained step by step with an example.
 section: types-of-writing
+level: intermediate
 keywords: [essay, academic, argument, structure]
 tools: [article-outline-generator, word-counter]
 related: [how-to-write-an-introduction, how-to-write-a-blog-post]

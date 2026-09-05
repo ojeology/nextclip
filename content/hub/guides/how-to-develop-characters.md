@@ -2,6 +2,7 @@
 title: How to develop characters
 description: Build characters readers care about — their wants, flaws, and the change they make through the story.
 section: creative-writing
+level: intermediate
 keywords: [character, fiction, dialogue, writing]
 tools: [word-counter]
 related: [how-to-write-a-short-story]

@@ -2,6 +2,7 @@
 title: How to brainstorm and find ideas
 description: A practical way to generate, capture and choose writing ideas so you are never stuck for a topic.
 section: writing-process
+level: beginner
 keywords: [ideas, brainstorming, topic, choosing]
 tools: [article-outline-generator]
 related: [how-to-turn-an-idea-into-an-outline, how-to-overcome-writers-block]

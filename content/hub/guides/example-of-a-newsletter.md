@@ -2,6 +2,7 @@
 title: Example of a newsletter
 description: A complete newsletter with the structure that gets read to the end.
 section: examples
+level: beginner
 keywords: [newsletter, email, example, email marketing]
 tools: [word-document-converter]
 related: [how-to-write-a-newsletter]

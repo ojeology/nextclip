@@ -2,6 +2,7 @@
 title: How to write a book review
 description: A review that tells a reader whether a book is worth their time, without spoiling it.
 section: types-of-writing
+level: intermediate
 keywords: [book review, criticism, books, review]
 tools: [word-document-converter]
 related: [how-to-write-a-review]

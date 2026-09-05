@@ -2,6 +2,7 @@
 title: A rejected pitch is not wasted
 description: How to turn a rejection into research, a better pitch, and a published piece.
 section: writing-for-publication
+level: intermediate
 keywords: [rejection, pitch, grow, improve, editor]
 tools: [word-document-converter]
 related: [how-to-handle-a-rejection, how-to-write-a-query-letter]

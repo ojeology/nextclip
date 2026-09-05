@@ -2,6 +2,7 @@
 title: How to find reliable sources
 description: Search effectively and evaluate a source's credibility before you rely on it.
 section: research-sources
+level: intermediate
 keywords: [research, sources, credibility, evaluation]
 tools: [word-counter]
 related: [how-to-avoid-plagiarism, how-to-cite-sources]

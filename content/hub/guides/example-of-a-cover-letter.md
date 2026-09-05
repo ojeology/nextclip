@@ -2,6 +2,7 @@
 title: Example of a cover letter
 description: A complete, job-ready cover letter with the reasoning behind each section.
 section: examples
+level: beginner
 keywords: [cover letter, job, application, example]
 tools: [word-document-converter]
 related: [how-to-write-a-cover-letter, example-of-a-professional-email]

@@ -104,6 +104,186 @@
   }
 
   var tools = {
+    "tone-checker": function () {
+      var input = q("ta"), out = q("out");
+      var FORMAL = ["furthermore","moreover","therefore","consequently","nevertheless","however","additionally","subsequently","accordingly","hereby","whom","shall","regarding","pursuant","utilise","utilize","commence","terminate","endeavour","endeavor","request","require","obtain","provide","assist","inform","advise","sincerely","faithfully","respectfully"];
+      var CASUAL = ["really","pretty","kind of","sort of","a lot","stuff","things","guys","okay","ok","yeah","cool","awesome","huge","tons","loads","basically","actually","literally","super","gonna","wanna","kinda","totally","great","nice","big deal","no worries","cheers"];
+      var CONTRACTIONS = /\b\w+['\u2019](s|t|re|ve|ll|d|m)\b/gi;
+      function count(t, list) {
+        var n = 0;
+        list.forEach(function (w) {
+          var m = t.match(new RegExp("\\b" + w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "\\b", "gi"));
+          if (m) n += m.length;
+        });
+        return n;
+      }
+      function run() {
+        var t = WAT(input);
+        var w = words(t);
+        if (!w) { out.innerHTML = "<p class='muted'>Paste some writing to estimate its tone.</p>"; fit(input); return; }
+        var f = count(t, FORMAL);
+        var c = count(t, CASUAL);
+        var contr = (t.match(CONTRACTIONS) || []).length;
+        var excl = (t.match(/!/g) || []).length;
+        var firstPerson = (t.match(/\b(I|we|my|our|me|us)\b/g) || []).length;
+        var secondPerson = (t.match(/\b(you|your|yours)\b/g) || []).length;
+        var sents = sentences(t);
+        var avgLen = sents ? w / sents : w;
+        /* informality signals per 100 words, vs formality signals */
+        var informal = (c + contr * 1.2 + excl * 1.5 + secondPerson * 0.4) / w * 100;
+        var formal = (f * 1.4 + (avgLen > 22 ? 3 : 0)) / w * 100;
+        /* Compressive curve: keeps ordinary prose spread across the middle
+           instead of pinning everything to 0 or 100. */
+        var d = (formal - informal) / 12;
+        var tanh = (Math.exp(2 * d) - 1) / (Math.exp(2 * d) + 1);
+        var score = Math.max(0, Math.min(100, 50 + 48 * tanh));
+        var band = score >= 72 ? "Formal" : score >= 55 ? "Neutral–formal" : score >= 42 ? "Neutral" : score >= 26 ? "Conversational" : "Very informal";
+        var advice = score >= 72
+          ? "Good for academic work, official letters, reports and applications. If it feels stiff for the reader, allow a few contractions."
+          : score >= 42
+          ? "A middle register that suits most business writing, articles and general non-fiction."
+          : "Good for blogs, newsletters, social copy and personal essays. Too casual for an application, a complaint or an academic piece.";
+        out.innerHTML =
+          "<p><b>" + band + "</b> &middot; formality estimate <b>" + Math.round(score) + "/100</b></p>" +
+          "<div class='tone-bar' role='img' aria-label='Formality " + Math.round(score) + " out of 100'>" +
+            "<span class='tone-fill' style='width:" + Math.round(score) + "%'></span></div>" +
+          "<p class='tool-note'>" + advice + "</p>" +
+          "<table class='tool-table'><thead><tr><th>Signal</th><th>Found</th></tr></thead><tbody>" +
+          "<tr><td>Formal connectives (however, therefore&hellip;)</td><td>" + f + "</td></tr>" +
+          "<tr><td>Casual words (really, stuff, loads&hellip;)</td><td>" + c + "</td></tr>" +
+          "<tr><td>Contractions (don't, it's&hellip;)</td><td>" + contr + "</td></tr>" +
+          "<tr><td>Exclamation marks</td><td>" + excl + "</td></tr>" +
+          "<tr><td>Addresses the reader as &ldquo;you&rdquo;</td><td>" + secondPerson + "</td></tr>" +
+          "<tr><td>First person (I, we)</td><td>" + firstPerson + "</td></tr>" +
+          "<tr><td>Average sentence length</td><td>" + avgLen.toFixed(1) + " words</td></tr>" +
+          "</tbody></table>" +
+          "<p class='tool-note'>This is an estimate from surface signals, not a judgement of quality. Tone is a choice — match it to your reader.</p>";
+        fit(input);
+      }
+      bind(input, run); run();
+    },
+    "citation-formatter": function () {
+      var out = q("out");
+      var ids = ["author","title","container","year","publisher","url","accessed"];
+      var f = {}; ids.forEach(function (i) { f[i] = q(i); });
+      var style = q("style"), type = q("ctype");
+      function v(k) { return (f[k] && f[k].value || "").trim(); }
+      function lastFirst(name) {
+        var parts = name.trim().split(/\s+/);
+        if (parts.length < 2) return name.trim();
+        var last = parts.pop();
+        return last + ", " + parts.join(" ");
+      }
+      function initials(name) {
+        var parts = name.trim().split(/\s+/);
+        if (parts.length < 2) return name.trim();
+        var last = parts.pop();
+        return last + ", " + parts.map(function (p) { return p.charAt(0).toUpperCase() + "."; }).join(" ");
+      }
+      function italic(t) { return t ? "<em>" + t + "</em>" : ""; }
+      function run() {
+        var a = v("author"), t = v("title"), cont = v("container"), y = v("year"),
+            pub = v("publisher"), url = v("url"), acc = v("accessed");
+        if (!a && !t) { out.innerHTML = "<p class='muted'>Fill in at least an author or a title.</p>"; return; }
+        var st = style.value, ty = type.value, s = "";
+        if (st === "apa") {
+          s = (a ? initials(a) + " " : "") + (y ? "(" + y + "). " : "(n.d.). ");
+          s += ty === "book" ? italic(t) + ". " + (pub ? pub + ". " : "")
+             : t + ". " + (cont ? italic(cont) + ". " : "");
+          if (url) s += url;
+        } else if (st === "mla") {
+          s = (a ? lastFirst(a) + ". " : "");
+          s += ty === "book" ? italic(t) + ". " + (pub ? pub + ", " : "") + (y ? y + "." : "")
+             : "&ldquo;" + t + ".&rdquo; " + (cont ? italic(cont) + ", " : "") + (y ? y + ", " : "");
+          if (url) s += " " + url + ".";
+          if (acc) s += " Accessed " + acc + ".";
+        } else {
+          s = (a ? lastFirst(a) + ". " : "");
+          s += ty === "book" ? italic(t) + ". " + (pub ? pub + ", " : "") + (y ? y + "." : "")
+             : "&ldquo;" + t + ".&rdquo; " + (cont ? italic(cont) + " " : "") + (y ? "(" + y + ")." : "");
+          if (url) s += " " + url + ".";
+        }
+        s = s.replace(/\s+/g, " ").replace(/\s+\./g, ".").trim();
+        out.innerHTML = "<p class='citation-out'>" + s + "</p>" +
+          "<p class='tool-note'>Always check against your institution's own style sheet — editions differ, and a marker's version is the one that counts.</p>";
+      }
+      ids.forEach(function (i) { if (f[i]) bind(f[i], run); });
+      [style, type].forEach(function (el) { if (el) el.addEventListener("change", run); });
+      run();
+    },
+    "word-alternatives": function () {
+      var input = q("w"), out = q("out");
+      var T = {
+        "said":["noted","argued","observed","admitted","replied","explained","insisted","recalled","added","countered"],
+        "very":["(cut it — strengthen the adjective instead)","markedly","acutely","profoundly","strikingly"],
+        "really":["(usually deletable)","genuinely","distinctly","undeniably"],
+        "good":["strong","careful","effective","sound","assured","competent","valuable"],
+        "bad":["weak","careless","flawed","harmful","poor","unconvincing"],
+        "big":["substantial","considerable","sweeping","vast","significant"],
+        "small":["slight","modest","minor","narrow","marginal"],
+        "important":["central","decisive","pivotal","consequential","material"],
+        "interesting":["surprising","revealing","unexpected","telling","strange"],
+        "nice":["generous","thoughtful","warm","gracious","welcome"],
+        "thing":["(name it — 'thing' hides the noun)","factor","element","detail","feature"],
+        "get":["obtain","receive","secure","acquire","reach","become"],
+        "make":["create","produce","build","form","cause","assemble"],
+        "show":["reveal","demonstrate","indicate","expose","illustrate","suggest"],
+        "look":["examine","study","inspect","glance","scan","survey"],
+        "think":["believe","suspect","conclude","reckon","judge","suppose"],
+        "help":["support","assist","enable","ease","aid","bolster"],
+        "use":["employ","apply","deploy","draw on","harness"],
+        "start":["begin","open","launch","initiate","set out"],
+        "end":["conclude","close","finish","resolve","cease"],
+        "change":["shift","alter","revise","transform","adjust","recast"],
+        "happy":["glad","content","pleased","relieved","delighted","buoyant"],
+        "sad":["downcast","bereft","subdued","despondent","low"],
+        "angry":["furious","indignant","incensed","irritated","seething"],
+        "walk":["stride","amble","trudge","pace","wander","stroll"],
+        "run":["sprint","dash","bolt","jog","tear","race"],
+        "beautiful":["striking","elegant","lovely","radiant","handsome"],
+        "difficult":["demanding","awkward","testing","thorny","stubborn"],
+        "easy":["simple","effortless","straightforward","undemanding"],
+        "a lot":["a great deal","considerably","substantially","(or give the number)"],
+        "in order to":["to"],
+        "due to the fact that":["because"],
+        "at this point in time":["now"],
+        "in my opinion":["(usually deletable — the sentence is already yours)"],
+        "basically":["(usually deletable)"],
+        "actually":["(usually deletable)"],
+        "literally":["(only if it is literally true)"],
+        "just":["(usually deletable — it softens without adding)"],
+        "definitely":["(usually deletable)"],
+        "utilise":["use"], "utilize":["use"],
+        "commence":["start","begin"],
+        "terminate":["end","stop"],
+        "endeavour":["try"], "endeavor":["try"],
+        "ascertain":["find out","confirm"],
+        "facilitate":["help","enable"],
+        "leverage":["use"],
+        "impactful":["effective","powerful","(or say what it did)"]
+      };
+      var keys = Object.keys(T).sort();
+      function run() {
+        var t = (WAT(input) || "").toLowerCase().trim();
+        if (!t) {
+          out.innerHTML = "<p class='muted'>Type an overused word — try <b>said</b>, <b>very</b>, <b>important</b>, <b>get</b> or <b>in order to</b>.</p>" +
+            "<p class='tool-note'>" + keys.length + " words and phrases covered.</p>";
+          return;
+        }
+        var hit = T[t];
+        if (!hit) {
+          var near = keys.filter(function (k) { return k.indexOf(t) === 0 || t.indexOf(k) === 0; });
+          out.innerHTML = near.length
+            ? "<p>No exact entry. Did you mean: " + near.slice(0, 6).map(function (k) { return "<b>" + k + "</b>"; }).join(", ") + "?</p>"
+            : "<p>Not in BRYME's list. This is a curated set of the words that most often weaken writing &mdash; not a full thesaurus.</p>";
+          return;
+        }
+        out.innerHTML = "<p>Instead of <b>" + t + "</b>:</p><ul class='alt-list'>" +
+          hit.map(function (x) { return "<li>" + x + "</li>"; }).join("") + "</ul>" +
+          "<p class='tool-note'>A stronger word is not always a longer one. If the plain word is the honest one, keep it.</p>";
+      }
+      bind(input, run); run();
+    },
     "word-counter": function () {
       var input = q("ta"), out = q("out");
       function run() { var t = WAT(input); out.innerHTML = "<b>" + words(t) + "</b> words &middot; " + chars(t) + " characters"; fit(input); }

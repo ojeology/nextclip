@@ -2,6 +2,7 @@
 title: What is writing?
 description: A clear way to understand what writing actually is — and why it is a skill you can learn.
 section: writing-basics
+level: beginner
 keywords: [writing, definition, basics, purpose]
 tools: [word-counter]
 related: [sentence-basics, paragraph-basics]

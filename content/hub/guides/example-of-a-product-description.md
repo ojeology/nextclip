@@ -2,6 +2,7 @@
 title: Example of a product description
 description: A complete product description with the structure that sells without over-claiming.
 section: examples
+level: beginner
 keywords: [product description, ecommerce, copy, example]
 tools: [word-document-converter]
 related: [how-to-write-a-product-description]

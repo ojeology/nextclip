@@ -2,6 +2,7 @@
 title: Common grammar mistakes
 description: The grammar errors writers make most often — and the simple fixes for each one.
 section: grammar-language
+level: beginner
 keywords: [grammar, mistakes, errors, common]
 tools: [text-cleaner]
 related: [sentence-basics, comma-rules, how-to-use-apostrophes]

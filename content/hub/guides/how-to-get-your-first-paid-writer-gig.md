@@ -2,6 +2,7 @@
 title: How to get your first paid writing gig
 description: A realistic starting path from writing samples to your first accepted, paid piece.
 section: freelance-paid-writing
+level: intermediate
 keywords: [first gig, paid writing, freelance, samples]
 tools: [writing-checklist-generator]
 related: [how-to-build-a-writing-portfolio, how-to-find-paying-publications]

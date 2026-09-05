@@ -2,6 +2,7 @@
 title: Dos and don'ts of academic writing
 description: The conventions that make academic writing acceptable — and the mistakes that fail it.
 section: dos-and-donts
+level: intermediate
 keywords: [academic, essay, research, dos, donts, citation]
 tools: [word-document-converter]
 related: [academic-writing-basics, how-to-cite-sources, how-to-structure-a-research-paper]
