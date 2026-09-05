@@ -1,3 +1,8 @@
+# NOTE: Render does not read this file — it is not Netlify.
+# The authoritative redirect rules live in render.yaml under
+# services[0].routes. This file is kept only because the local
+# test server (server/server.js) reads it, so the dev server and
+# production stay in agreement. Update BOTH if you add a rule.
 # Writing-first BRYME launch. Legacy multi-niche hubs (jobs, opportunities,
 # tech, make-money) were retired and live on the legacy-multiniche branch.
 # Keep 301s so old links land on the closest living writing-first surface.

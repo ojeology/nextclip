@@ -13,6 +13,21 @@ services:
         name: Referrer-Policy
         value: strict-origin-when-cross-origin
     autoDeploy: true
+    # Legacy URLs from the pre-BRYME multi-niche site. These were previously
+    # kept in a Netlify-style `_redirects` file, which Render does NOT read —
+    # so /opportunities and /jobs were returning 404 to anyone arriving from
+    # an old Google result, and a stale dashboard rule was sending /make-money
+    # to /opportunities/ (a noindex page). Declared here they are honoured,
+    # version-controlled, and reviewable.
+    routes:
+      - { type: redirect, source: /opportunities, destination: /writing/ }
+      - { type: redirect, source: /opportunities/*, destination: /writing/ }
+      - { type: redirect, source: /jobs, destination: /writing/ }
+      - { type: redirect, source: /jobs/*, destination: /writing/ }
+      - { type: redirect, source: /make-money, destination: /writing/ }
+      - { type: redirect, source: /make-money/*, destination: /writing/ }
+      - { type: redirect, source: /tech, destination: /guides/ }
+      - { type: redirect, source: /tech/*, destination: /guides/ }
     envVars:
       - key: NODE_VERSION
         value: "22"
