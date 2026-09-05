@@ -45,6 +45,26 @@ npm test
 
 The release gates inspect every retained HTML file, indexability, canonicals, structured data, internal links, jobs, writing records, discovery files, media removal, HTTP status codes, redirects, public-file containment and security headers. Playwright renders all 58 Search-eligible routes at mobile, tablet and desktop sizes, then checks navigation, overflow, images, console errors, landmarks and third-party resource leakage.
 
+`npm run validate:contrast` additionally enforces the readability rules that the
+moving-navigation regression broke:
+
+- every measured text/background pair meets **WCAG 2.1 AA** (4.5:1 normal,
+  3:1 large), with translucent layers alpha-composited the way a browser paints
+  them — token changes that quietly reduce contrast now fail the build;
+- **navigation never animates or auto-scrolls on its own** (a nav that drifts
+  moves links out from under the pointer and made text unreadable);
+- the country filter is a **static selection control**, never a scrolling bar,
+  and always offers an "All countries" reset plus a worldwide option;
+- a **home link with an accessible name** is present in the header of every page.
+
+## Navigation policy
+
+Motion in navigation must be functional, never decorative. Section navs are
+static; the only scripted movement is bringing the current page's link into
+view. Any bar that scrolls text under the reader, or animates a background
+behind it, is a defect — `validate-contrast.js` will reject it.
+
+
 ## Current Search policy
 
 - 58 focused routes are eligible for indexing.

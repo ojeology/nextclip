@@ -18,7 +18,10 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"BRYME writing opportunities","url":"https://bryme.onrender.com/writing/","dateModified":"2026-09-04","publisher":{"@type":"Organization","name":"BRYME","url":"https://bryme.onrender.com/"}}</script>
 </head><body><a class="skip-link" href="#main">Skip to content</a>
 <header class="site-head"><div class="wrap head-in">
-  <a class="logo" href="/" aria-label="BRYME home"><span class="logo-mark" aria-hidden="true">B</span>BRYME</a>
+  <div class="brand-group">
+    <a class="home-link" href="/" aria-label="BRYME home"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5.5 9.5V20a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1V9.5"/><path d="M9.5 21v-6h5v6"/></svg></a>
+    <a class="logo" href="/"><span class="logo-mark" aria-hidden="true">B</span>BRYME</a>
+  </div>
   <nav class="main-nav" aria-label="Primary"><a href="/learn/">How to write</a><a href="/tools/">Writing tools</a><a class="nav-cta" aria-current="page" href="/writing/">Write & get paid</a></nav>
   <form class="nav-search-form" action="/search/" method="get" role="search"><input type="search" name="q" placeholder="Search guides, tools…" aria-label="Search BRYME" autocomplete="off"></form>
   <button type="button" class="nav-toggle" data-drawer-open aria-label="Open menu" aria-expanded="false"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
@@ -27,10 +30,20 @@
 <h1>Writing opportunities.</h1>
 <p>105 publications researched by BRYME. Each permanent page shows the type of writing, the published pay, word count, who it's open to, the submission method, and the official guideline to confirm before you pitch. A listing is an invitation to pitch — not a job offer or a promise of payment.</p>
 <div class="source-line"><span><b>105</b> researched publications</span><span><b>82</b> currently accepting</span><span><b>10</b> personally tested by BRYME</span></div></section>
-<form id="writing-filter" class="section-nav writing-countrybar" aria-label="Filter publications by country">
-<button type="button" data-filter="all" aria-pressed="true" class="country-chip is-active">All publications <b class="chip-count">105</b></button><button type="button" data-filter="NG" class="country-chip" aria-pressed="false">Nigeria <b class="chip-count">98</b></button><button type="button" data-filter="africa" class="country-chip" aria-pressed="false">Africa <b class="chip-count">99</b></button><button type="button" data-filter="US" class="country-chip" aria-pressed="false">United States <b class="chip-count">99</b></button><button type="button" data-filter="UK" class="country-chip" aria-pressed="false">United Kingdom <b class="chip-count">97</b></button><button type="button" data-filter="CA" class="country-chip" aria-pressed="false">Canada <b class="chip-count">98</b></button><button type="button" data-filter="AU" class="country-chip" aria-pressed="false">Australia <b class="chip-count">98</b></button><button type="button" data-filter="europe" class="country-chip" aria-pressed="false">Europe <b class="chip-count">97</b></button><button type="button" data-filter="international" class="country-chip" aria-pressed="false">Open worldwide <b class="chip-count">97</b></button></form>
-<p id="filter-note" class="filter-status" aria-live="polite"><b id="filter-count">105</b> publications · All publications</p>
-<p id="filter-empty" class="filter-status empty" hidden>No publications match this filter yet.</p>
+<form id="writing-filter" class="country-filter" aria-label="Filter publications by country">
+  <div class="country-filter-row">
+    <label class="country-filter-label" for="country-select">Where are you writing from?</label>
+    <div class="country-select-wrap">
+      <select id="country-select" name="country" autocomplete="country">
+<option value="all" selected>All countries — 105 publications</option><option value="international">Open worldwide (no country restriction) — 97</option><optgroup label="Regions"><option value="africa">Africa — 99</option><option value="north-america">North America — 100</option><option value="europe">Europe — 97</option><option value="asia">Asia — 97</option><option value="oceania">Oceania — 98</option></optgroup><optgroup label="Africa"><option value="KE">Kenya — 97</option><option value="NA">Namibia — 97</option><option value="NG">Nigeria — 98</option><option value="ZA">South Africa — 98</option></optgroup><optgroup label="North America"><option value="CA">Canada — 98</option><option value="US">United States — 99</option></optgroup><optgroup label="Europe"><option value="DE">Germany — 97</option><option value="IE">Ireland — 97</option><option value="UK">United Kingdom — 97</option></optgroup><optgroup label="Asia"><option value="NP">Nepal — 97</option></optgroup><optgroup label="Oceania"><option value="AU">Australia — 98</option></optgroup>
+      </select>
+    </div>
+    <button type="button" id="country-reset" class="country-reset">Reset</button>
+  </div>
+  <p class="country-filter-hint">Picking a country shows publications based there <em>plus</em> every publication open to writers worldwide.</p>
+</form>
+<p id="filter-note" class="filter-status" aria-live="polite"><b id="filter-count">105</b> publications · All countries</p>
+<p id="filter-empty" class="filter-status empty" hidden>No publications match this filter yet. Try “Open worldwide”, or reset the filter.</p>
 <section class="section"><div class="how-steps"><h2 class="section-sub">How make-money writing works with BRYME</h2><ol class="steps">
 <li><b>Pick an opportunity.</b> Each page names who it is open to — BRYME does not treat a missing country list as "open worldwide." Eligibility and diaspora rules are recorded where the publication states them.</li>
 <li><b>Read the official guideline, not just the rate card.</b> Every page links to the publication's own guidelines and shows its last human-check date.</li>
@@ -39,7 +52,7 @@
 <li><b>Pitch exactly as asked.</b> Send what the guideline requests through the official channel — a submission URL, form, or email.</li>
 <li><b>Track it honestly.</b> Where BRYME has personally tested an opportunity, the journey is shown as it happens — pitch sent, response, accepted, scheduled, published, paid — and payment is only marked confirmed once it actually lands.</li>
 </ol></div></section>
-<section class="section alt"><div class="wrap" id="writing-list"><article class="job-card" data-country="" data-open="regional">
+<section class="section alt"><div class="wrap" id="writing-list"><article class="job-card" data-country="" data-region="" data-open="regional">
   <div class="job-card-badges"><span class="verify-badge accepting">🟢 Currently accepting</span><span class="verify-badge verify">🟢 Accepted, scheduled</span><span class="verify-badge country">Open to all</span></div>
   <h2 class="job-card-title"><a href="/writing/afrolicious/">Afrolicious</a></h2>
   <p class="job-card-sub">Stories, essays, thinkpieces, rants</p>
@@ -50,7 +63,7 @@
     <dt>Verified</dt><dd>2026-08</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/afrolicious/">View publication →</a></div>
-</article><article class="job-card" data-country="NG" data-open="international">
+</article><article class="job-card" data-country="NG" data-region="africa" data-open="international">
   <div class="job-card-badges"><span class="verify-badge accepting">🟢 Currently accepting</span><span class="verify-badge verify">🔴 Rejected</span><span class="verify-badge country">Nigeria</span></div>
   <h2 class="job-card-title"><a href="/writing/the-republic/">The Republic</a></h2>
   <p class="job-card-sub">Personal Essay</p>
@@ -61,7 +74,7 @@
     <dt>Verified</dt><dd>2026-08</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/the-republic/">View publication →</a></div>
-</article><article class="job-card" data-country="ZA" data-open="regional">
+</article><article class="job-card" data-country="ZA" data-region="africa" data-open="regional">
   <div class="job-card-badges"><span class="verify-badge limited">🟡 Limited window</span><span class="verify-badge verify">🔵 Submitted</span><span class="verify-badge country">South Africa</span></div>
   <h2 class="job-card-title"><a href="/writing/efiko/">Efiko Magazine</a></h2>
   <p class="job-card-sub">Poetry, short story, essay</p>
@@ -72,7 +85,7 @@
     <dt>Verified</dt><dd>2026-08</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/efiko/">View publication →</a></div>
-</article><article class="job-card" data-country="NG" data-open="international">
+</article><article class="job-card" data-country="NG" data-region="africa" data-open="international">
   <div class="job-card-badges"><span class="verify-badge rolling">🟢 Rolling submissions</span><span class="verify-badge board-listed">🟡 Research only</span><span class="verify-badge country">Nigeria</span></div>
   <h2 class="job-card-title"><a href="/writing/oriire/">Oriire</a></h2>
   <p class="job-card-sub">Long-form, folktales, essays, interviews, heritage reviews, listicles, encounters</p>
@@ -83,7 +96,7 @@
     <dt>Verified</dt><dd>2026-08</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/oriire/">View publication →</a></div>
-</article><article class="job-card" data-country="NG" data-open="international">
+</article><article class="job-card" data-country="NG" data-region="africa" data-open="international">
   <div class="job-card-badges"><span class="verify-badge rolling">🟢 Rolling submissions</span><span class="verify-badge verify">🔵 Submitted</span><span class="verify-badge country">Nigeria</span></div>
   <h2 class="job-card-title"><a href="/writing/the-lagos-review/">The Lagos Review</a></h2>
   <p class="job-card-sub">Personal essay</p>
@@ -94,7 +107,7 @@
     <dt>Verified</dt><dd>2026-08</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/the-lagos-review/">View publication →</a></div>
-</article><article class="job-card" data-country="US" data-open="international">
+</article><article class="job-card" data-country="US" data-region="north-america" data-open="international">
   <div class="job-card-badges"><span class="verify-badge rolling">🟢 Rolling submissions</span><span class="verify-badge board-listed">🟡 Research only</span><span class="verify-badge country">United States</span></div>
   <h2 class="job-card-title"><a href="/writing/adi-again/">Adi Magazine</a></h2>
   <p class="job-card-sub">Again column (book reflection)</p>
@@ -105,7 +118,7 @@
     <dt>Verified</dt><dd>2026-08</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/adi-again/">View publication →</a></div>
-</article><article class="job-card" data-country="US" data-open="international">
+</article><article class="job-card" data-country="US" data-region="north-america" data-open="international">
   <div class="job-card-badges"><span class="verify-badge upcoming">🟡 Opens soon</span><span class="verify-badge board-listed">🟡 Research only</span><span class="verify-badge country">United States</span></div>
   <h2 class="job-card-title"><a href="/writing/adi-essays/">Adi Magazine</a></h2>
   <p class="job-card-sub">Essay</p>
@@ -116,7 +129,7 @@
     <dt>Verified</dt><dd>2026-08</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/adi-essays/">View publication →</a></div>
-</article><article class="job-card" data-country="US" data-open="international">
+</article><article class="job-card" data-country="US" data-region="north-america" data-open="international">
   <div class="job-card-badges"><span class="verify-badge accepting">🟢 Currently accepting</span><span class="verify-badge board-listed">🟡 Research only</span><span class="verify-badge country">United States</span></div>
   <h2 class="job-card-title"><a href="/writing/longreads-personal-essay/">Longreads</a></h2>
   <p class="job-card-sub">Personal essay</p>
@@ -127,7 +140,7 @@
     <dt>Verified</dt><dd>2026-08</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/longreads-personal-essay/">View publication →</a></div>
-</article><article class="job-card" data-country="US" data-open="international">
+</article><article class="job-card" data-country="US" data-region="north-america" data-open="international">
   <div class="job-card-badges"><span class="verify-badge accepting">🟢 Currently accepting</span><span class="verify-badge board-listed">🟡 Research only</span><span class="verify-badge country">United States</span></div>
   <h2 class="job-card-title"><a href="/writing/longreads-reading-list/">Longreads</a></h2>
   <p class="job-card-sub">Reading list</p>
@@ -138,7 +151,7 @@
     <dt>Verified</dt><dd>2026-08</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/longreads-reading-list/">View publication →</a></div>
-</article><article class="job-card" data-country="US" data-open="international">
+</article><article class="job-card" data-country="US" data-region="north-america" data-open="international">
   <div class="job-card-badges"><span class="verify-badge accepting">🟢 Currently accepting</span><span class="verify-badge board-listed">🟡 Research only</span><span class="verify-badge country">United States</span></div>
   <h2 class="job-card-title"><a href="/writing/longreads-reported-feature/">Longreads</a></h2>
   <p class="job-card-sub">Reported feature</p>
@@ -149,7 +162,7 @@
     <dt>Verified</dt><dd>2026-08</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/longreads-reported-feature/">View publication →</a></div>
-</article><article class="job-card" data-country="NG" data-open="regional">
+</article><article class="job-card" data-country="NG" data-region="africa" data-open="regional">
   <div class="job-card-badges"><span class="verify-badge closed">🔴 Currently closed</span><span class="verify-badge board-listed">🟡 Research only</span><span class="verify-badge country">Nigeria</span></div>
   <h2 class="job-card-title"><a href="/writing/omenana/">Omenana</a></h2>
   <p class="job-card-sub">Speculative fiction, essays, reviews</p>
@@ -160,7 +173,7 @@
     <dt>Verified</dt><dd>2026-08</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/omenana/">View publication →</a></div>
-</article><article class="job-card" data-country="NG" data-open="international">
+</article><article class="job-card" data-country="NG" data-region="africa" data-open="international">
   <div class="job-card-badges"><span class="verify-badge closed">🔴 Currently closed</span><span class="verify-badge board-listed">🟡 Research only</span><span class="verify-badge country">Nigeria</span></div>
   <h2 class="job-card-title"><a href="/writing/agbowo-essays/">Agbowó</a></h2>
   <p class="job-card-sub">Essay / nonfiction</p>
@@ -171,7 +184,7 @@
     <dt>Verified</dt><dd>2026-08</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/agbowo-essays/">View publication →</a></div>
-</article><article class="job-card" data-country="" data-open="regional">
+</article><article class="job-card" data-country="" data-region="" data-open="regional">
   <div class="job-card-badges"><span class="verify-badge accepting">🟢 Currently accepting</span><span class="verify-badge board-listed">🟡 Research only</span><span class="verify-badge country">Open to all</span></div>
   <h2 class="job-card-title"><a href="/writing/listverse/">Listverse</a></h2>
   <p class="job-card-sub">10-item fact list</p>
@@ -182,7 +195,7 @@
     <dt>Verified</dt><dd>2026-08</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/listverse/">View publication →</a></div>
-</article><article class="job-card" data-country="US" data-open="international">
+</article><article class="job-card" data-country="US" data-region="north-america" data-open="international">
   <div class="job-card-badges"><span class="verify-badge accepting">🟢 Currently accepting</span><span class="verify-badge verify">🔴 Rejected</span><span class="verify-badge country">United States</span></div>
   <h2 class="job-card-title"><a href="/writing/noema/">Noema Magazine</a></h2>
   <p class="job-card-sub">Essay, reported feature, interview, short fiction</p>
@@ -193,7 +206,7 @@
     <dt>Verified</dt><dd>2026-08</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/noema/">View publication →</a></div>
-</article><article class="job-card" data-country="US" data-open="international">
+</article><article class="job-card" data-country="US" data-region="north-america" data-open="international">
   <div class="job-card-badges"><span class="verify-badge needs-verification">🟡 Information needs verification</span><span class="verify-badge verify">🔵 Submitted</span><span class="verify-badge country">United States</span></div>
   <h2 class="job-card-title"><a href="/writing/vox-first-person/">Vox</a></h2>
   <p class="job-card-sub">Personal essay (First Person)</p>
@@ -204,7 +217,7 @@
     <dt>Verified</dt><dd>2026-08</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/vox-first-person/">View publication →</a></div>
-</article><article class="job-card" data-country="US" data-open="international">
+</article><article class="job-card" data-country="US" data-region="north-america" data-open="international">
   <div class="job-card-badges"><span class="verify-badge accepting">🟢 Currently accepting</span><span class="verify-badge board-listed">🟡 Research only</span><span class="verify-badge country">United States</span></div>
   <h2 class="job-card-title"><a href="/writing/vox-future-perfect/">Vox</a></h2>
   <p class="job-card-sub">Explainer / reported essay</p>
@@ -215,7 +228,7 @@
     <dt>Verified</dt><dd>2026-08</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/vox-future-perfect/">View publication →</a></div>
-</article><article class="job-card" data-country="US" data-open="international">
+</article><article class="job-card" data-country="US" data-region="north-america" data-open="international">
   <div class="job-card-badges"><span class="verify-badge accepting">🟢 Currently accepting</span><span class="verify-badge board-listed">🟡 Research only</span><span class="verify-badge country">United States</span></div>
   <h2 class="job-card-title"><a href="/writing/vox-climate/">Vox</a></h2>
   <p class="job-card-sub">Climate explainer / reported story</p>
@@ -226,7 +239,7 @@
     <dt>Verified</dt><dd>2026-08</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/vox-climate/">View publication →</a></div>
-</article><article class="job-card" data-country="AU" data-open="international">
+</article><article class="job-card" data-country="AU" data-region="oceania" data-open="international">
   <div class="job-card-badges"><span class="verify-badge closed">🔴 Currently closed</span><span class="verify-badge board-listed">🟡 Research only</span><span class="verify-badge country">Australia</span></div>
   <h2 class="job-card-title"><a href="/writing/aeon-essays/">Aeon</a></h2>
   <p class="job-card-sub">Longform essay</p>
@@ -237,7 +250,7 @@
     <dt>Verified</dt><dd>2026-08</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/aeon-essays/">View publication →</a></div>
-</article><article class="job-card" data-country="US" data-open="international">
+</article><article class="job-card" data-country="US" data-region="north-america" data-open="international">
   <div class="job-card-badges"><span class="verify-badge limited">🟡 Limited window</span><span class="verify-badge board-listed">🟡 Research only</span><span class="verify-badge country">United States</span></div>
   <h2 class="job-card-title"><a href="/writing/chicken-soup/">Chicken Soup for the Soul</a></h2>
   <p class="job-card-sub">True first-person story or story-poem</p>
@@ -248,7 +261,7 @@
     <dt>Verified</dt><dd>2026-08</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/chicken-soup/">View publication →</a></div>
-</article><article class="job-card" data-country="KE" data-open="international">
+</article><article class="job-card" data-country="KE" data-region="africa" data-open="international">
   <div class="job-card-badges"><span class="verify-badge accepting">🟢 Currently accepting</span><span class="verify-badge board-listed">🟡 Research only</span><span class="verify-badge country">Kenya</span></div>
   <h2 class="job-card-title"><a href="/writing/new-humanitarian/">The New Humanitarian</a></h2>
   <p class="job-card-sub">News, analysis, first person, opinion, investigations</p>
@@ -259,7 +272,7 @@
     <dt>Verified</dt><dd>2026-08</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/new-humanitarian/">View publication →</a></div>
-</article><article class="job-card" data-country="UK" data-open="international">
+</article><article class="job-card" data-country="UK" data-region="europe" data-open="international">
   <div class="job-card-badges"><span class="verify-badge accepting">🟢 Currently accepting</span><span class="verify-badge board-listed">🟡 Research only</span><span class="verify-badge country">United Kingdom</span></div>
   <h2 class="job-card-title"><a href="/writing/african-arguments/">African Arguments</a></h2>
   <p class="job-card-sub">News analysis, op-ed, features, essays, investigations</p>
@@ -270,7 +283,7 @@
     <dt>Verified</dt><dd>2026-08</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/african-arguments/">View publication →</a></div>
-</article><article class="job-card" data-country="US" data-open="international">
+</article><article class="job-card" data-country="US" data-region="north-america" data-open="international">
   <div class="job-card-badges"><span class="verify-badge accepting">🟢 Currently accepting</span><span class="verify-badge verify">🔵 Submitted</span><span class="verify-badge country">United States</span></div>
   <h2 class="job-card-title"><a href="/writing/rest-of-world/">Rest of World</a></h2>
   <p class="job-card-sub">Reported tech feature</p>
@@ -281,7 +294,7 @@
     <dt>Verified</dt><dd>2026-08</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/rest-of-world/">View publication →</a></div>
-</article><article class="job-card" data-country="UK" data-open="international">
+</article><article class="job-card" data-country="UK" data-region="europe" data-open="international">
   <div class="job-card-badges"><span class="verify-badge closed">🔴 Currently closed</span><span class="verify-badge board-listed">🟡 Research only</span><span class="verify-badge country">United Kingdom</span></div>
   <h2 class="job-card-title"><a href="/writing/psyche-first-person/">Psyche</a></h2>
   <p class="job-card-sub">First-person essay on change</p>
@@ -292,7 +305,7 @@
     <dt>Verified</dt><dd>2026-08</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/psyche-first-person/">View publication →</a></div>
-</article><article class="job-card" data-country="CA" data-open="international">
+</article><article class="job-card" data-country="CA" data-region="north-america" data-open="international">
   <div class="job-card-badges"><span class="verify-badge accepting">🟢 Currently accepting</span><span class="verify-badge board-listed">🟡 Research only</span><span class="verify-badge country">Canada</span></div>
   <h2 class="job-card-title"><a href="/writing/walrus-essays/">The Walrus</a></h2>
   <p class="job-card-sub">Essay or reported feature</p>
@@ -303,7 +316,7 @@
     <dt>Verified</dt><dd>2026-08</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/walrus-essays/">View publication →</a></div>
-</article><article class="job-card" data-country="US" data-open="international">
+</article><article class="job-card" data-country="US" data-region="north-america" data-open="international">
   <div class="job-card-badges"><span class="verify-badge accepting">🟢 Currently accepting</span><span class="verify-badge board-listed">🟡 Research only</span><span class="verify-badge country">United States</span></div>
   <h2 class="job-card-title"><a href="/writing/mcsweeneys/">McSweeney’s Internet Tendency</a></h2>
   <p class="job-card-sub">Satire / humour (lists, open letters, monologues)</p>
@@ -314,7 +327,7 @@
     <dt>Verified</dt><dd>2026-08</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/mcsweeneys/">View publication →</a></div>
-</article><article class="job-card" data-country="US" data-open="international">
+</article><article class="job-card" data-country="US" data-region="north-america" data-open="international">
   <div class="job-card-badges"><span class="verify-badge accepting">🟢 Currently accepting</span><span class="verify-badge board-listed">🟡 Research only</span><span class="verify-badge country">United States</span></div>
   <h2 class="job-card-title"><a href="/writing/literary-hub/">Literary Hub</a></h2>
   <p class="job-card-sub">Literary essay, criticism, reported literary piece</p>
@@ -325,7 +338,7 @@
     <dt>Verified</dt><dd>2026-08</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/literary-hub/">View publication →</a></div>
-</article><article class="job-card" data-country="US" data-open="international">
+</article><article class="job-card" data-country="US" data-region="north-america" data-open="international">
   <div class="job-card-badges"><span class="verify-badge accepting">🟢 Currently accepting</span><span class="verify-badge board-listed">🟡 Research only</span><span class="verify-badge country">United States</span></div>
   <h2 class="job-card-title"><a href="/writing/new-lines/">New Lines Magazine</a></h2>
   <p class="job-card-sub">Reportage, arguments, history essays, first person, reviews</p>
@@ -336,7 +349,7 @@
     <dt>Verified</dt><dd>2026-08</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/new-lines/">View publication →</a></div>
-</article><article class="job-card" data-country="NP" data-open="international">
+</article><article class="job-card" data-country="NP" data-region="asia" data-open="international">
   <div class="job-card-badges"><span class="verify-badge accepting">🟢 Currently accepting</span><span class="verify-badge board-listed">🟡 Research only</span><span class="verify-badge country">Nepal</span></div>
   <h2 class="job-card-title"><a href="/writing/himal-southasian/">Himal Southasian</a></h2>
   <p class="job-card-sub">Long-form reportage, analysis, essays, interviews, reviews, occasional fiction</p>
@@ -347,7 +360,7 @@
     <dt>Verified</dt><dd>2026-08</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/himal-southasian/">View publication →</a></div>
-</article><article class="job-card" data-country="UK" data-open="international">
+</article><article class="job-card" data-country="UK" data-region="europe" data-open="international">
   <div class="job-card-badges"><span class="verify-badge accepting">🟢 Currently accepting</span><span class="verify-badge board-listed">🟡 Research only</span><span class="verify-badge country">United Kingdom</span></div>
   <h2 class="job-card-title"><a href="/writing/climate-home-news/">Climate Home News</a></h2>
   <p class="job-card-sub">Climate news, features, investigations</p>
@@ -358,7 +371,7 @@
     <dt>Verified</dt><dd>2026-08</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/climate-home-news/">View publication →</a></div>
-</article><article class="job-card" data-country="US" data-open="international">
+</article><article class="job-card" data-country="US" data-region="north-america" data-open="international">
   <div class="job-card-badges"><span class="verify-badge accepting">🟢 Currently accepting</span><span class="verify-badge board-listed">🟡 Research only</span><span class="verify-badge country">United States</span></div>
   <h2 class="job-card-title"><a href="/writing/clarkesworld-fiction/">Clarkesworld Magazine</a></h2>
   <p class="job-card-sub">Science fiction or fantasy short story</p>
@@ -369,7 +382,7 @@
     <dt>Verified</dt><dd>2026-08</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/clarkesworld-fiction/">View publication →</a></div>
-</article><article class="job-card" data-country="US" data-open="international">
+</article><article class="job-card" data-country="US" data-region="north-america" data-open="international">
   <div class="job-card-badges"><span class="verify-badge accepting">🟢 Currently accepting</span><span class="verify-badge board-listed">🟡 Research only</span><span class="verify-badge country">United States</span></div>
   <h2 class="job-card-title"><a href="/writing/clarkesworld-nonfiction/">Clarkesworld Magazine</a></h2>
   <p class="job-card-sub">SF/F non-fiction article</p>
@@ -380,7 +393,7 @@
     <dt>Verified</dt><dd>2026-08</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/clarkesworld-nonfiction/">View publication →</a></div>
-</article><article class="job-card" data-country="US" data-open="international">
+</article><article class="job-card" data-country="US" data-region="north-america" data-open="international">
   <div class="job-card-badges"><span class="verify-badge upcoming">🟡 Opens soon</span><span class="verify-badge board-listed">🟡 Research only</span><span class="verify-badge country">United States</span></div>
   <h2 class="job-card-title"><a href="/writing/uncanny-fiction/">Uncanny Magazine</a></h2>
   <p class="job-card-sub">Speculative short fiction</p>
@@ -391,7 +404,7 @@
     <dt>Verified</dt><dd>2026-08</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/uncanny-fiction/">View publication →</a></div>
-</article><article class="job-card" data-country="US" data-open="international">
+</article><article class="job-card" data-country="US" data-region="north-america" data-open="international">
   <div class="job-card-badges"><span class="verify-badge limited">🟡 Limited window</span><span class="verify-badge board-listed">🟡 Research only</span><span class="verify-badge country">United States</span></div>
   <h2 class="job-card-title"><a href="/writing/uncanny-poetry/">Uncanny Magazine</a></h2>
   <p class="job-card-sub">Speculative poetry</p>
@@ -402,7 +415,7 @@
     <dt>Verified</dt><dd>2026-08</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/uncanny-poetry/">View publication →</a></div>
-</article><article class="job-card" data-country="AU" data-open="international">
+</article><article class="job-card" data-country="AU" data-region="oceania" data-open="international">
   <div class="job-card-badges"><span class="verify-badge limited">🟡 Limited window</span><span class="verify-badge board-listed">🟡 Research only</span><span class="verify-badge country">Australia</span></div>
   <h2 class="job-card-title"><a href="/writing/griffith-review-bodies/">Griffith Review</a></h2>
   <p class="job-card-sub">Themed fiction or non-fiction</p>
@@ -413,7 +426,7 @@
     <dt>Verified</dt><dd>2026-08</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/griffith-review-bodies/">View publication →</a></div>
-</article><article class="job-card" data-country="AU" data-open="regional">
+</article><article class="job-card" data-country="AU" data-region="oceania" data-open="regional">
   <div class="job-card-badges"><span class="verify-badge accepting">🟢 Currently accepting</span><span class="verify-badge board-listed">🟡 Research only</span><span class="verify-badge country">Australia</span></div>
   <h2 class="job-card-title"><a href="/writing/overland-fiction/">Overland</a></h2>
   <p class="job-card-sub">Short fiction</p>
@@ -424,7 +437,7 @@
     <dt>Verified</dt><dd>2026-08</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/overland-fiction/">View publication →</a></div>
-</article><article class="job-card" data-country="AU" data-open="international">
+</article><article class="job-card" data-country="AU" data-region="oceania" data-open="international">
   <div class="job-card-badges"><span class="verify-badge accepting">🟢 Currently accepting</span><span class="verify-badge board-listed">🟡 Research only</span><span class="verify-badge country">Australia</span></div>
   <h2 class="job-card-title"><a href="/writing/overland-online/">Overland</a></h2>
   <p class="job-card-sub">Online analysis / polemic</p>
@@ -435,7 +448,7 @@
     <dt>Verified</dt><dd>2026-08</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/overland-online/">View publication →</a></div>
-</article><article class="job-card" data-country="US" data-open="international">
+</article><article class="job-card" data-country="US" data-region="north-america" data-open="international">
   <div class="job-card-badges"><span class="verify-badge accepting">🟢 Currently accepting</span><span class="verify-badge board-listed">🟡 Research only</span><span class="verify-badge country">United States</span></div>
   <h2 class="job-card-title"><a href="/writing/americas-quarterly/">Americas Quarterly</a></h2>
   <p class="job-card-sub">Reported or argued piece on the Americas</p>
@@ -446,7 +459,7 @@
     <dt>Verified</dt><dd>2026-08</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/americas-quarterly/">View publication →</a></div>
-</article><article class="job-card" data-country="US" data-open="international">
+</article><article class="job-card" data-country="US" data-region="north-america" data-open="international">
   <div class="job-card-badges"><span class="verify-badge accepting">🟢 Currently accepting</span><span class="verify-badge board-listed">🟡 Research only</span><span class="verify-badge country">United States</span></div>
   <h2 class="job-card-title"><a href="/writing/nacla/">NACLA</a></h2>
   <p class="job-card-sub">Online reported analysis</p>
@@ -457,7 +470,7 @@
     <dt>Verified</dt><dd>2026-08</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/nacla/">View publication →</a></div>
-</article><article class="job-card" data-country="CA" data-open="international">
+</article><article class="job-card" data-country="CA" data-region="north-america" data-open="international">
   <div class="job-card-badges"><span class="verify-badge accepting">🟢 Currently accepting</span><span class="verify-badge board-listed">🟡 Research only</span><span class="verify-badge country">Canada</span></div>
   <h2 class="job-card-title"><a href="/writing/the-tyee/">The Tyee</a></h2>
   <p class="job-card-sub">Reported news, features, analysis, first person</p>
@@ -468,7 +481,7 @@
     <dt>Verified</dt><dd>2026-08</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/the-tyee/">View publication →</a></div>
-</article><article class="job-card" data-country="UK" data-open="international">
+</article><article class="job-card" data-country="UK" data-region="europe" data-open="international">
   <div class="job-card-badges"><span class="verify-badge accepting">🟢 Currently accepting</span><span class="verify-badge board-listed">🟡 Research only</span><span class="verify-badge country">United Kingdom</span></div>
   <h2 class="job-card-title"><a href="/writing/wasafiri-interviews/">Wasafiri</a></h2>
   <p class="job-card-sub">Interview</p>
@@ -479,7 +492,7 @@
     <dt>Verified</dt><dd>2026-08</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/wasafiri-interviews/">View publication →</a></div>
-</article><article class="job-card" data-country="US" data-open="international">
+</article><article class="job-card" data-country="US" data-region="north-america" data-open="international">
   <div class="job-card-badges"><span class="verify-badge limited">🟡 Limited window</span><span class="verify-badge board-listed">🟡 Research only</span><span class="verify-badge country">United States</span></div>
   <h2 class="job-card-title"><a href="/writing/the-offing-wit-tea/">The Offing</a></h2>
   <p class="job-card-sub">Humour / satire</p>
@@ -490,7 +503,7 @@
     <dt>Verified</dt><dd>2026-08</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/the-offing-wit-tea/">View publication →</a></div>
-</article><article class="job-card" data-country="US" data-open="international">
+</article><article class="job-card" data-country="US" data-region="north-america" data-open="international">
   <div class="job-card-badges"><span class="verify-badge upcoming">🟡 Opens soon</span><span class="verify-badge board-listed">🟡 Research only</span><span class="verify-badge country">United States</span></div>
   <h2 class="job-card-title"><a href="/writing/the-rumpus-essays/">The Rumpus</a></h2>
   <p class="job-card-sub">Essays, fiction, poetry</p>
@@ -501,7 +514,7 @@
     <dt>Verified</dt><dd>2026-08</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/the-rumpus-essays/">View publication →</a></div>
-</article><article class="job-card" data-country="US" data-open="international">
+</article><article class="job-card" data-country="US" data-region="north-america" data-open="international">
   <div class="job-card-badges"><span class="verify-badge accepting">🟢 Currently accepting</span><span class="verify-badge board-listed">🟡 Research only</span><span class="verify-badge country">United States</span></div>
   <h2 class="job-card-title"><a href="/writing/the-rumpus-el-alboroto/">The Rumpus</a></h2>
   <p class="job-card-sub">Spanish fiction, essays, criticism, comics, interviews, poetry</p>
@@ -512,7 +525,7 @@
     <dt>Verified</dt><dd>2026-08</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/the-rumpus-el-alboroto/">View publication →</a></div>
-</article><article class="job-card" data-country="US" data-open="international">
+</article><article class="job-card" data-country="US" data-region="north-america" data-open="international">
   <div class="job-card-badges"><span class="verify-badge accepting">🟢 Currently accepting</span><span class="verify-badge board-listed">🟡 Research only</span><span class="verify-badge country">United States</span></div>
   <h2 class="job-card-title"><a href="/writing/words-without-borders-reviews/">Words Without Borders</a></h2>
   <p class="job-card-sub">Book review</p>
@@ -523,7 +536,7 @@
     <dt>Verified</dt><dd>2026-08</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/words-without-borders-reviews/">View publication →</a></div>
-</article><article class="job-card" data-country="US" data-open="international">
+</article><article class="job-card" data-country="US" data-region="north-america" data-open="international">
   <div class="job-card-badges"><span class="verify-badge upcoming">🟡 Opens soon</span><span class="verify-badge board-listed">🟡 Research only</span><span class="verify-badge country">United States</span></div>
   <h2 class="job-card-title"><a href="/writing/brevity-essays/">Brevity</a></h2>
   <p class="job-card-sub">Flash creative nonfiction</p>
@@ -534,7 +547,7 @@
     <dt>Verified</dt><dd>2026-08</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/brevity-essays/">View publication →</a></div>
-</article><article class="job-card" data-country="" data-open="international">
+</article><article class="job-card" data-country="" data-region="" data-open="international">
   <div class="job-card-badges"><span class="verify-badge accepting">🟢 Currently accepting</span><span class="verify-badge board-listed">🟡 Research only</span><span class="verify-badge country">Open to all</span></div>
   <h2 class="job-card-title"><a href="/writing/markaz-review/">The Markaz Review</a></h2>
   <p class="job-card-sub">Essay, feature, fiction, poetry, review, interview</p>
@@ -545,7 +558,7 @@
     <dt>Verified</dt><dd>2026-08</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/markaz-review/">View publication →</a></div>
-</article><article class="job-card" data-country="US" data-open="international">
+</article><article class="job-card" data-country="US" data-region="north-america" data-open="international">
   <div class="job-card-badges"><span class="verify-badge upcoming">🟡 Opens soon</span><span class="verify-badge board-listed">🟡 Research only</span><span class="verify-badge country">United States</span></div>
   <h2 class="job-card-title"><a href="/writing/strange-horizons-fiction/">Strange Horizons</a></h2>
   <p class="job-card-sub">Speculative fiction</p>
@@ -556,7 +569,7 @@
     <dt>Verified</dt><dd>2026-08</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/strange-horizons-fiction/">View publication →</a></div>
-</article><article class="job-card" data-country="US" data-open="international">
+</article><article class="job-card" data-country="US" data-region="north-america" data-open="international">
   <div class="job-card-badges"><span class="verify-badge closed">🔴 Currently closed</span><span class="verify-badge board-listed">🟡 Research only</span><span class="verify-badge country">United States</span></div>
   <h2 class="job-card-title"><a href="/writing/electric-literature-essays/">Electric Literature</a></h2>
   <p class="job-card-sub">Personal narrative essay</p>
@@ -567,7 +580,7 @@
     <dt>Verified</dt><dd>2026-08</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/electric-literature-essays/">View publication →</a></div>
-</article><article class="job-card" data-country="US" data-open="international">
+</article><article class="job-card" data-country="US" data-region="north-america" data-open="international">
   <div class="job-card-badges"><span class="verify-badge accepting">🟢 Currently accepting</span><span class="verify-badge board-listed">🟡 Research only</span><span class="verify-badge country">United States</span></div>
   <h2 class="job-card-title"><a href="/writing/undark/">Undark Magazine</a></h2>
   <p class="job-card-sub">Reported feature, essay, op-ed, review</p>
@@ -578,7 +591,7 @@
     <dt>Verified</dt><dd>2026-08</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/undark/">View publication →</a></div>
-</article><article class="job-card" data-country="US" data-open="international">
+</article><article class="job-card" data-country="US" data-region="north-america" data-open="international">
   <div class="job-card-badges"><span class="verify-badge accepting">🟢 Currently accepting</span><span class="verify-badge board-listed">🟡 Research only</span><span class="verify-badge country">United States</span></div>
   <h2 class="job-card-title"><a href="/writing/conde-nast-traveler/">Condé Nast Traveler</a></h2>
   <p class="job-card-sub">Travel feature, service, first person</p>
@@ -589,7 +602,7 @@
     <dt>Verified</dt><dd>2026-08</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/conde-nast-traveler/">View publication →</a></div>
-</article><article class="job-card" data-country="US" data-open="international">
+</article><article class="job-card" data-country="US" data-region="north-america" data-open="international">
   <div class="job-card-badges"><span class="verify-badge accepting">🟢 Currently accepting</span><span class="verify-badge board-listed">🟡 Research only</span><span class="verify-badge country">United States</span></div>
   <h2 class="job-card-title"><a href="/writing/asimovs-fiction/">Asimov’s Science Fiction</a></h2>
   <p class="job-card-sub">Science fiction short story (some borderline fantasy/slipstream)</p>
@@ -600,7 +613,7 @@
     <dt>Verified</dt><dd>2026-08</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/asimovs-fiction/">View publication →</a></div>
-</article><article class="job-card" data-country="US" data-open="international">
+</article><article class="job-card" data-country="US" data-region="north-america" data-open="international">
   <div class="job-card-badges"><span class="verify-badge accepting">🟢 Currently accepting</span><span class="verify-badge board-listed">🟡 Research only</span><span class="verify-badge country">United States</span></div>
   <h2 class="job-card-title"><a href="/writing/analog-fiction/">Analog Science Fiction and Fact</a></h2>
   <p class="job-card-sub">Science fiction story</p>
@@ -611,7 +624,7 @@
     <dt>Verified</dt><dd>2026-08</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/analog-fiction/">View publication →</a></div>
-</article><article class="job-card" data-country="US" data-open="international">
+</article><article class="job-card" data-country="US" data-region="north-america" data-open="international">
   <div class="job-card-badges"><span class="verify-badge accepting">🟢 Currently accepting</span><span class="verify-badge board-listed">🟡 Research only</span><span class="verify-badge country">United States</span></div>
   <h2 class="job-card-title"><a href="/writing/analog-fact/">Analog Science Fiction and Fact</a></h2>
   <p class="job-card-sub">Science fact article</p>
@@ -622,7 +635,7 @@
     <dt>Verified</dt><dd>2026-08</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/analog-fact/">View publication →</a></div>
-</article><article class="job-card" data-country="US" data-open="international">
+</article><article class="job-card" data-country="US" data-region="north-america" data-open="international">
   <div class="job-card-badges"><span class="verify-badge accepting">🟢 Currently accepting</span><span class="verify-badge board-listed">🟡 Research only</span><span class="verify-badge country">United States</span></div>
   <h2 class="job-card-title"><a href="/writing/beneath-ceaseless-skies/">Beneath Ceaseless Skies</a></h2>
   <p class="job-card-sub">Literary adventure fantasy short story</p>
@@ -633,7 +646,7 @@
     <dt>Verified</dt><dd>2026-08</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/beneath-ceaseless-skies/">View publication →</a></div>
-</article><article class="job-card" data-country="CA" data-open="regional">
+</article><article class="job-card" data-country="CA" data-region="north-america" data-open="regional">
   <div class="job-card-badges"><span class="verify-badge upcoming">🟡 Opens soon</span><span class="verify-badge board-listed">🟡 Research only</span><span class="verify-badge country">Canada</span></div>
   <h2 class="job-card-title"><a href="/writing/khoreo-fiction/">khōréō</a></h2>
   <p class="job-card-sub">Speculative short fiction or flash</p>
@@ -644,7 +657,7 @@
     <dt>Verified</dt><dd>2026-08</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/khoreo-fiction/">View publication →</a></div>
-</article><article class="job-card" data-country="US" data-open="international">
+</article><article class="job-card" data-country="US" data-region="north-america" data-open="international">
   <div class="job-card-badges"><span class="verify-badge accepting">🟢 Currently accepting</span><span class="verify-badge board-listed">🟡 Research only</span><span class="verify-badge country">United States</span></div>
   <h2 class="job-card-title"><a href="/writing/narratively/">Narratively (The Personals)</a></h2>
   <p class="job-card-sub">First-person narrative nonfiction</p>
@@ -655,7 +668,7 @@
     <dt>Verified</dt><dd>2026-09</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/narratively/">View publication →</a></div>
-</article><article class="job-card" data-country="US" data-open="international">
+</article><article class="job-card" data-country="US" data-region="north-america" data-open="international">
   <div class="job-card-badges"><span class="verify-badge accepting">🟢 Currently accepting</span><span class="verify-badge board-listed">🟡 Research only</span><span class="verify-badge country">United States</span></div>
   <h2 class="job-card-title"><a href="/writing/longreads/">Longreads</a></h2>
   <p class="job-card-sub">Longform nonfiction</p>
@@ -666,7 +679,7 @@
     <dt>Verified</dt><dd>2026-09</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/longreads/">View publication →</a></div>
-</article><article class="job-card" data-country="US" data-open="international">
+</article><article class="job-card" data-country="US" data-region="north-america" data-open="international">
   <div class="job-card-badges"><span class="verify-badge accepting">🟢 Currently accepting</span><span class="verify-badge verify">🔵 Submitted</span><span class="verify-badge country">United States</span></div>
   <h2 class="job-card-title"><a href="/writing/cracked/">Cracked</a></h2>
   <p class="job-card-sub">Comedy lists</p>
@@ -677,7 +690,7 @@
     <dt>Verified</dt><dd>2026-09</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/cracked/">View publication →</a></div>
-</article><article class="job-card" data-country="UK" data-open="international">
+</article><article class="job-card" data-country="UK" data-region="europe" data-open="international">
   <div class="job-card-badges"><span class="verify-badge accepting">🟢 Currently accepting</span><span class="verify-badge verify">🔵 Submitted</span><span class="verify-badge country">United Kingdom</span></div>
   <h2 class="job-card-title"><a href="/writing/whatculture/">WhatCulture</a></h2>
   <p class="job-card-sub">List-driven features</p>
@@ -688,7 +701,7 @@
     <dt>Verified</dt><dd>2026-09</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/whatculture/">View publication →</a></div>
-</article><article class="job-card" data-country="" data-open="international">
+</article><article class="job-card" data-country="" data-region="" data-open="international">
   <div class="job-card-badges"><span class="verify-badge accepting">🟢 Currently accepting</span><span class="verify-badge verify">🔵 Submitted</span><span class="verify-badge country">Open to all</span></div>
   <h2 class="job-card-title"><a href="/writing/wonderslist/">WondersList</a></h2>
   <p class="job-card-sub">Top-10 lists</p>
@@ -699,7 +712,7 @@
     <dt>Verified</dt><dd>2026-09</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/wonderslist/">View publication →</a></div>
-</article><article class="job-card" data-country="" data-open="international">
+</article><article class="job-card" data-country="" data-region="" data-open="international">
   <div class="job-card-badges"><span class="verify-badge needs-verification">🟡 Information needs verification</span><span class="verify-badge board-listed">🟡 Research only</span><span class="verify-badge country">Open to all</span></div>
   <h2 class="job-card-title"><a href="/writing/income-diary/">Income Diary</a></h2>
   <p class="job-card-sub">Money and freelance articles</p>
@@ -710,7 +723,7 @@
     <dt>Verified</dt><dd>2026-09</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/income-diary/">View publication →</a></div>
-</article><article class="job-card" data-country="" data-open="international">
+</article><article class="job-card" data-country="" data-region="" data-open="international">
   <div class="job-card-badges"><span class="verify-badge accepting">🟢 Currently accepting</span><span class="verify-badge board-listed">🟡 Research only</span><span class="verify-badge country">Open to all</span></div>
   <h2 class="job-card-title"><a href="/writing/communique/">Communiqué</a></h2>
   <p class="job-card-sub">Reported analysis</p>
@@ -721,7 +734,7 @@
     <dt>Verified</dt><dd>2026-09</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/communique/">View publication →</a></div>
-</article><article class="job-card" data-country="" data-open="international">
+</article><article class="job-card" data-country="" data-region="" data-open="international">
   <div class="job-card-badges"><span class="verify-badge accepting">🟢 Currently accepting</span><span class="verify-badge board-listed">🟡 Research only</span><span class="verify-badge country">Open to all</span></div>
   <h2 class="job-card-title"><a href="/writing/statement-africa/">STATEMENT Africa</a></h2>
   <p class="job-card-sub">African creative-industry features</p>
@@ -732,7 +745,7 @@
     <dt>Verified</dt><dd>2026-09</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/statement-africa/">View publication →</a></div>
-</article><article class="job-card" data-country="US" data-open="international">
+</article><article class="job-card" data-country="US" data-region="north-america" data-open="international">
   <div class="job-card-badges"><span class="verify-badge accepting">🟢 Currently accepting</span><span class="verify-badge board-listed">🟡 Research only</span><span class="verify-badge country">United States</span></div>
   <h2 class="job-card-title"><a href="/writing/the-offing/">The Offing</a></h2>
   <p class="job-card-sub">Creative nonfiction, essays, translation</p>
@@ -743,7 +756,7 @@
     <dt>Verified</dt><dd>2026-09</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/the-offing/">View publication →</a></div>
-</article><article class="job-card" data-country="AU" data-open="international">
+</article><article class="job-card" data-country="AU" data-region="oceania" data-open="international">
   <div class="job-card-badges"><span class="verify-badge accepting">🟢 Currently accepting</span><span class="verify-badge board-listed">🟡 Research only</span><span class="verify-badge country">Australia</span></div>
   <h2 class="job-card-title"><a href="/writing/griffith-review/">Griffith Review</a></h2>
   <p class="job-card-sub">Literary essays and features</p>
@@ -754,7 +767,7 @@
     <dt>Verified</dt><dd>2026-09</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/griffith-review/">View publication →</a></div>
-</article><article class="job-card" data-country="US" data-open="international">
+</article><article class="job-card" data-country="US" data-region="north-america" data-open="international">
   <div class="job-card-badges"><span class="verify-badge accepting">🟢 Currently accepting</span><span class="verify-badge board-listed">🟡 Research only</span><span class="verify-badge country">United States</span></div>
   <h2 class="job-card-title"><a href="/writing/earth-island-journal/">Earth Island Journal</a></h2>
   <p class="job-card-sub">Environment journalism</p>
@@ -765,7 +778,7 @@
     <dt>Verified</dt><dd>2026-09</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/earth-island-journal/">View publication →</a></div>
-</article><article class="job-card" data-country="NA" data-open="international">
+</article><article class="job-card" data-country="NA" data-region="africa" data-open="international">
   <div class="job-card-badges"><span class="verify-badge needs-verification">🟡 Information needs verification</span><span class="verify-badge board-listed">🟡 Research only</span><span class="verify-badge country">Namibia</span></div>
   <h2 class="job-card-title"><a href="/writing/doek-literary-magazine/">Doek! Literary Magazine</a></h2>
   <p class="job-card-sub">Pan-African literary work</p>
@@ -776,7 +789,7 @@
     <dt>Verified</dt><dd>2026-09</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/doek-literary-magazine/">View publication →</a></div>
-</article><article class="job-card" data-country="US" data-open="regional">
+</article><article class="job-card" data-country="US" data-region="north-america" data-open="regional">
   <div class="job-card-badges"><span class="verify-badge accepting">🟢 Currently accepting</span><span class="verify-badge board-listed">🟡 Research only</span><span class="verify-badge country">United States</span></div>
   <h2 class="job-card-title"><a href="/writing/torch-literary-arts/">Torch Literary Arts</a></h2>
   <p class="job-card-sub">Black women writers</p>
@@ -787,7 +800,7 @@
     <dt>Verified</dt><dd>2026-09</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/torch-literary-arts/">View publication →</a></div>
-</article><article class="job-card" data-country="US" data-open="international">
+</article><article class="job-card" data-country="US" data-region="north-america" data-open="international">
   <div class="job-card-badges"><span class="verify-badge accepting">🟢 Currently accepting</span><span class="verify-badge board-listed">🟡 Research only</span><span class="verify-badge country">United States</span></div>
   <h2 class="job-card-title"><a href="/writing/chestnut-review/">Chestnut Review</a></h2>
   <p class="job-card-sub">Literary work of all forms</p>
@@ -798,7 +811,7 @@
     <dt>Verified</dt><dd>2026-09</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/chestnut-review/">View publication →</a></div>
-</article><article class="job-card" data-country="US" data-open="international">
+</article><article class="job-card" data-country="US" data-region="north-america" data-open="international">
   <div class="job-card-badges"><span class="verify-badge accepting">🟢 Currently accepting</span><span class="verify-badge board-listed">🟡 Research only</span><span class="verify-badge country">United States</span></div>
   <h2 class="job-card-title"><a href="/writing/the-sun-magazine/">The Sun Magazine</a></h2>
   <p class="job-card-sub">Personal essays, fiction, poetry</p>
@@ -809,7 +822,7 @@
     <dt>Verified</dt><dd>2026-09</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/the-sun-magazine/">View publication →</a></div>
-</article><article class="job-card" data-country="US" data-open="international">
+</article><article class="job-card" data-country="US" data-region="north-america" data-open="international">
   <div class="job-card-badges"><span class="verify-badge accepting">🟢 Currently accepting</span><span class="verify-badge board-listed">🟡 Research only</span><span class="verify-badge country">United States</span></div>
   <h2 class="job-card-title"><a href="/writing/black-fox-literary-magazine/">Black Fox Literary Magazine</a></h2>
   <p class="job-card-sub">Fiction, CNF, poetry, art</p>
@@ -820,7 +833,7 @@
     <dt>Verified</dt><dd>2026-09</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/black-fox-literary-magazine/">View publication →</a></div>
-</article><article class="job-card" data-country="US" data-open="international">
+</article><article class="job-card" data-country="US" data-region="north-america" data-open="international">
   <div class="job-card-badges"><span class="verify-badge accepting">🟢 Currently accepting</span><span class="verify-badge board-listed">🟡 Research only</span><span class="verify-badge country">United States</span></div>
   <h2 class="job-card-title"><a href="/writing/the-forge-literary-magazine/">The Forge Literary Magazine</a></h2>
   <p class="job-card-sub">Fiction</p>
@@ -831,7 +844,7 @@
     <dt>Verified</dt><dd>2026-09</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/the-forge-literary-magazine/">View publication →</a></div>
-</article><article class="job-card" data-country="US" data-open="international">
+</article><article class="job-card" data-country="US" data-region="north-america" data-open="international">
   <div class="job-card-badges"><span class="verify-badge accepting">🟢 Currently accepting</span><span class="verify-badge board-listed">🟡 Research only</span><span class="verify-badge country">United States</span></div>
   <h2 class="job-card-title"><a href="/writing/split-lip-magazine/">Split Lip Magazine</a></h2>
   <p class="job-card-sub">Fiction, memoir, poetry, art</p>
@@ -842,7 +855,7 @@
     <dt>Verified</dt><dd>2026-09</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/split-lip-magazine/">View publication →</a></div>
-</article><article class="job-card" data-country="US" data-open="international">
+</article><article class="job-card" data-country="US" data-region="north-america" data-open="international">
   <div class="job-card-badges"><span class="verify-badge accepting">🟢 Currently accepting</span><span class="verify-badge board-listed">🟡 Research only</span><span class="verify-badge country">United States</span></div>
   <h2 class="job-card-title"><a href="/writing/cincinnati-review/">The Cincinnati Review</a></h2>
   <p class="job-card-sub">Fiction, nonfiction, poetry, drama</p>
@@ -853,7 +866,7 @@
     <dt>Verified</dt><dd>2026-09</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/cincinnati-review/">View publication →</a></div>
-</article><article class="job-card" data-country="US" data-open="international">
+</article><article class="job-card" data-country="US" data-region="north-america" data-open="international">
   <div class="job-card-badges"><span class="verify-badge accepting">🟢 Currently accepting</span><span class="verify-badge board-listed">🟡 Research only</span><span class="verify-badge country">United States</span></div>
   <h2 class="job-card-title"><a href="/writing/guernica/">Guernica</a></h2>
   <p class="job-card-sub">Fiction, nonfiction, poetry, translation</p>
@@ -864,7 +877,7 @@
     <dt>Verified</dt><dd>2026-09</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/guernica/">View publication →</a></div>
-</article><article class="job-card" data-country="IE" data-open="international">
+</article><article class="job-card" data-country="IE" data-region="europe" data-open="international">
   <div class="job-card-badges"><span class="verify-badge accepting">🟢 Currently accepting</span><span class="verify-badge board-listed">🟡 Research only</span><span class="verify-badge country">Ireland</span></div>
   <h2 class="job-card-title"><a href="/writing/the-stinging-fly/">The Stinging Fly</a></h2>
   <p class="job-card-sub">Fiction, nonfiction, poetry</p>
@@ -875,7 +888,7 @@
     <dt>Verified</dt><dd>2026-09</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/the-stinging-fly/">View publication →</a></div>
-</article><article class="job-card" data-country="US" data-open="international">
+</article><article class="job-card" data-country="US" data-region="north-america" data-open="international">
   <div class="job-card-badges"><span class="verify-badge accepting">🟢 Currently accepting</span><span class="verify-badge board-listed">🟡 Research only</span><span class="verify-badge country">United States</span></div>
   <h2 class="job-card-title"><a href="/writing/the-drift/">The Drift</a></h2>
   <p class="job-card-sub">Essays, criticism, fiction, poetry</p>
@@ -886,7 +899,7 @@
     <dt>Verified</dt><dd>2026-09</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/the-drift/">View publication →</a></div>
-</article><article class="job-card" data-country="US" data-open="international">
+</article><article class="job-card" data-country="US" data-region="north-america" data-open="international">
   <div class="job-card-badges"><span class="verify-badge accepting">🟢 Currently accepting</span><span class="verify-badge board-listed">🟡 Research only</span><span class="verify-badge country">United States</span></div>
   <h2 class="job-card-title"><a href="/writing/new-lines-magazine/">New Lines Magazine</a></h2>
   <p class="job-card-sub">World journalism, essays</p>
@@ -897,7 +910,7 @@
     <dt>Verified</dt><dd>2026-09</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/new-lines-magazine/">View publication →</a></div>
-</article><article class="job-card" data-country="DE" data-open="international">
+</article><article class="job-card" data-country="DE" data-region="europe" data-open="international">
   <div class="job-card-badges"><span class="verify-badge accepting">🟢 Currently accepting</span><span class="verify-badge board-listed">🟡 Research only</span><span class="verify-badge country">Germany</span></div>
   <h2 class="job-card-title"><a href="/writing/smashing-magazine/">Smashing Magazine</a></h2>
   <p class="job-card-sub">Design &amp; dev articles</p>
@@ -908,7 +921,7 @@
     <dt>Verified</dt><dd>2026-09</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/smashing-magazine/">View publication →</a></div>
-</article><article class="job-card" data-country="US" data-open="international">
+</article><article class="job-card" data-country="US" data-region="north-america" data-open="international">
   <div class="job-card-badges"><span class="verify-badge accepting">🟢 Currently accepting</span><span class="verify-badge board-listed">🟡 Research only</span><span class="verify-badge country">United States</span></div>
   <h2 class="job-card-title"><a href="/writing/writers-digest/">Writer&#x27;s Digest</a></h2>
   <p class="job-card-sub">Writing craft</p>
@@ -919,7 +932,7 @@
     <dt>Verified</dt><dd>2026-09</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/writers-digest/">View publication →</a></div>
-</article><article class="job-card" data-country="US" data-open="international">
+</article><article class="job-card" data-country="US" data-region="north-america" data-open="international">
   <div class="job-card-badges"><span class="verify-badge accepting">🟢 Currently accepting</span><span class="verify-badge board-listed">🟡 Research only</span><span class="verify-badge country">United States</span></div>
   <h2 class="job-card-title"><a href="/writing/eater/">Eater</a></h2>
   <p class="job-card-sub">Food culture</p>
@@ -930,7 +943,7 @@
     <dt>Verified</dt><dd>2026-09</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/eater/">View publication →</a></div>
-</article><article class="job-card" data-country="US" data-open="international">
+</article><article class="job-card" data-country="US" data-region="north-america" data-open="international">
   <div class="job-card-badges"><span class="verify-badge accepting">🟢 Currently accepting</span><span class="verify-badge board-listed">🟡 Research only</span><span class="verify-badge country">United States</span></div>
   <h2 class="job-card-title"><a href="/writing/the-kitchn/">The Kitchn</a></h2>
   <p class="job-card-sub">Food &amp; home</p>
@@ -941,7 +954,7 @@
     <dt>Verified</dt><dd>2026-09</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/the-kitchn/">View publication →</a></div>
-</article><article class="job-card" data-country="US" data-open="international">
+</article><article class="job-card" data-country="US" data-region="north-america" data-open="international">
   <div class="job-card-badges"><span class="verify-badge accepting">🟢 Currently accepting</span><span class="verify-badge board-listed">🟡 Research only</span><span class="verify-badge country">United States</span></div>
   <h2 class="job-card-title"><a href="/writing/aarp-magazine/">AARP</a></h2>
   <p class="job-card-sub">Features &amp; essays</p>
@@ -952,7 +965,7 @@
     <dt>Verified</dt><dd>2026-09</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/aarp-magazine/">View publication →</a></div>
-</article><article class="job-card" data-country="US" data-open="international">
+</article><article class="job-card" data-country="US" data-region="north-america" data-open="international">
   <div class="job-card-badges"><span class="verify-badge accepting">🟢 Currently accepting</span><span class="verify-badge board-listed">🟡 Research only</span><span class="verify-badge country">United States</span></div>
   <h2 class="job-card-title"><a href="/writing/wired/">WIRED</a></h2>
   <p class="job-card-sub">Features &amp; tech</p>
@@ -963,7 +976,7 @@
     <dt>Verified</dt><dd>2026-09</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/wired/">View publication →</a></div>
-</article><article class="job-card" data-country="US" data-open="international">
+</article><article class="job-card" data-country="US" data-region="north-america" data-open="international">
   <div class="job-card-badges"><span class="verify-badge accepting">🟢 Currently accepting</span><span class="verify-badge board-listed">🟡 Research only</span><span class="verify-badge country">United States</span></div>
   <h2 class="job-card-title"><a href="/writing/business-insider/">Business Insider</a></h2>
   <p class="job-card-sub">Career &amp; money</p>
@@ -974,7 +987,7 @@
     <dt>Verified</dt><dd>2026-09</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/business-insider/">View publication →</a></div>
-</article><article class="job-card" data-country="US" data-open="international">
+</article><article class="job-card" data-country="US" data-region="north-america" data-open="international">
   <div class="job-card-badges"><span class="verify-badge accepting">🟢 Currently accepting</span><span class="verify-badge board-listed">🟡 Research only</span><span class="verify-badge country">United States</span></div>
   <h2 class="job-card-title"><a href="/writing/slate/">Slate</a></h2>
   <p class="job-card-sub">Essays &amp; analysis</p>
@@ -985,7 +998,7 @@
     <dt>Verified</dt><dd>2026-09</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/slate/">View publication →</a></div>
-</article><article class="job-card" data-country="US" data-open="international">
+</article><article class="job-card" data-country="US" data-region="north-america" data-open="international">
   <div class="job-card-badges"><span class="verify-badge accepting">🟢 Currently accepting</span><span class="verify-badge board-listed">🟡 Research only</span><span class="verify-badge country">United States</span></div>
   <h2 class="job-card-title"><a href="/writing/rest-of-world-2/">Rest of World</a></h2>
   <p class="job-card-sub">Tech &amp; world</p>
@@ -996,7 +1009,7 @@
     <dt>Verified</dt><dd>2026-09</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/rest-of-world-2/">View publication →</a></div>
-</article><article class="job-card" data-country="US" data-open="international">
+</article><article class="job-card" data-country="US" data-region="north-america" data-open="international">
   <div class="job-card-badges"><span class="verify-badge upcoming">🟡 Opens soon</span><span class="verify-badge board-listed">🟡 Research only</span><span class="verify-badge country">United States</span></div>
   <h2 class="job-card-title"><a href="/writing/kenyon-review/">The Kenyon Review</a></h2>
   <p class="job-card-sub">Fiction, nonfiction, poetry</p>
@@ -1007,7 +1020,7 @@
     <dt>Verified</dt><dd>2026-09</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/kenyon-review/">View publication →</a></div>
-</article><article class="job-card" data-country="US" data-open="international">
+</article><article class="job-card" data-country="US" data-region="north-america" data-open="international">
   <div class="job-card-badges"><span class="verify-badge accepting">🟢 Currently accepting</span><span class="verify-badge board-listed">🟡 Research only</span><span class="verify-badge country">United States</span></div>
   <h2 class="job-card-title"><a href="/writing/agni/">AGNI</a></h2>
   <p class="job-card-sub">Poetry and prose</p>
@@ -1018,7 +1031,7 @@
     <dt>Verified</dt><dd>2026-09</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/agni/">View publication →</a></div>
-</article><article class="job-card" data-country="" data-open="international">
+</article><article class="job-card" data-country="" data-region="" data-open="international">
   <div class="job-card-badges"><span class="verify-badge accepting">🟢 Currently accepting</span><span class="verify-badge board-listed">🟡 Research only</span><span class="verify-badge country">Open to all</span></div>
   <h2 class="job-card-title"><a href="/writing/litmag-online/">LitMag Online</a></h2>
   <p class="job-card-sub">Short fiction</p>
@@ -1029,7 +1042,7 @@
     <dt>Verified</dt><dd>2026-09</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/litmag-online/">View publication →</a></div>
-</article><article class="job-card" data-country="US" data-open="international">
+</article><article class="job-card" data-country="US" data-region="north-america" data-open="international">
   <div class="job-card-badges"><span class="verify-badge accepting">🟢 Currently accepting</span><span class="verify-badge board-listed">🟡 Research only</span><span class="verify-badge country">United States</span></div>
   <h2 class="job-card-title"><a href="/writing/bombay-literary-magazine/">The Bombay Literary Magazine</a></h2>
   <p class="job-card-sub">Fiction, poetry, translation</p>
@@ -1040,7 +1053,7 @@
     <dt>Verified</dt><dd>2026-09</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/bombay-literary-magazine/">View publication →</a></div>
-</article><article class="job-card" data-country="US" data-open="international">
+</article><article class="job-card" data-country="US" data-region="north-america" data-open="international">
   <div class="job-card-badges"><span class="verify-badge accepting">🟢 Currently accepting</span><span class="verify-badge board-listed">🟡 Research only</span><span class="verify-badge country">United States</span></div>
   <h2 class="job-card-title"><a href="/writing/hobart/">Hobart</a></h2>
   <p class="job-card-sub">Short prose</p>
@@ -1051,7 +1064,7 @@
     <dt>Verified</dt><dd>2026-09</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/hobart/">View publication →</a></div>
-</article><article class="job-card" data-country="US" data-open="international">
+</article><article class="job-card" data-country="US" data-region="north-america" data-open="international">
   <div class="job-card-badges"><span class="verify-badge upcoming">🟡 Opens soon</span><span class="verify-badge board-listed">🟡 Research only</span><span class="verify-badge country">United States</span></div>
   <h2 class="job-card-title"><a href="/writing/solarpunk-magazine/">Solarpunk Magazine</a></h2>
   <p class="job-card-sub">Speculative fiction, poetry, essays</p>
@@ -1062,7 +1075,7 @@
     <dt>Verified</dt><dd>2026-09</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/solarpunk-magazine/">View publication →</a></div>
-</article><article class="job-card" data-country="US" data-open="international">
+</article><article class="job-card" data-country="US" data-region="north-america" data-open="international">
   <div class="job-card-badges"><span class="verify-badge accepting">🟢 Currently accepting</span><span class="verify-badge board-listed">🟡 Research only</span><span class="verify-badge country">United States</span></div>
   <h2 class="job-card-title"><a href="/writing/diabolical-plots/">Diabolical Plots</a></h2>
   <p class="job-card-sub">Sci-fi, fantasy, horror</p>
@@ -1073,7 +1086,7 @@
     <dt>Verified</dt><dd>2026-09</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/diabolical-plots/">View publication →</a></div>
-</article><article class="job-card" data-country="US" data-open="international">
+</article><article class="job-card" data-country="US" data-region="north-america" data-open="international">
   <div class="job-card-badges"><span class="verify-badge accepting">🟢 Currently accepting</span><span class="verify-badge board-listed">🟡 Research only</span><span class="verify-badge country">United States</span></div>
   <h2 class="job-card-title"><a href="/writing/haven-speculative/">Haven Speculative</a></h2>
   <p class="job-card-sub">Speculative fiction, poetry</p>
@@ -1084,7 +1097,7 @@
     <dt>Verified</dt><dd>2026-09</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/haven-speculative/">View publication →</a></div>
-</article><article class="job-card" data-country="US" data-open="international">
+</article><article class="job-card" data-country="US" data-region="north-america" data-open="international">
   <div class="job-card-badges"><span class="verify-badge accepting">🟢 Currently accepting</span><span class="verify-badge board-listed">🟡 Research only</span><span class="verify-badge country">United States</span></div>
   <h2 class="job-card-title"><a href="/writing/mudroom/">Mudroom</a></h2>
   <p class="job-card-sub">Poetry, fiction, essays</p>
@@ -1095,7 +1108,7 @@
     <dt>Verified</dt><dd>2026-09</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/mudroom/">View publication →</a></div>
-</article><article class="job-card" data-country="US" data-open="international">
+</article><article class="job-card" data-country="US" data-region="north-america" data-open="international">
   <div class="job-card-badges"><span class="verify-badge accepting">🟢 Currently accepting</span><span class="verify-badge board-listed">🟡 Research only</span><span class="verify-badge country">United States</span></div>
   <h2 class="job-card-title"><a href="/writing/space-and-time/">Space and Time</a></h2>
   <p class="job-card-sub">Speculative fiction, poetry</p>
@@ -1106,7 +1119,7 @@
     <dt>Verified</dt><dd>2026-09</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/space-and-time/">View publication →</a></div>
-</article><article class="job-card" data-country="US" data-open="international">
+</article><article class="job-card" data-country="US" data-region="north-america" data-open="international">
   <div class="job-card-badges"><span class="verify-badge upcoming">🟡 Opens soon</span><span class="verify-badge board-listed">🟡 Research only</span><span class="verify-badge country">United States</span></div>
   <h2 class="job-card-title"><a href="/writing/ploughshares/">Ploughshares</a></h2>
   <p class="job-card-sub">Fiction, nonfiction, poetry</p>
@@ -1117,7 +1130,7 @@
     <dt>Verified</dt><dd>2026-09</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/ploughshares/">View publication →</a></div>
-</article><article class="job-card" data-country="US" data-open="international">
+</article><article class="job-card" data-country="US" data-region="north-america" data-open="international">
   <div class="job-card-badges"><span class="verify-badge accepting">🟢 Currently accepting</span><span class="verify-badge board-listed">🟡 Research only</span><span class="verify-badge country">United States</span></div>
   <h2 class="job-card-title"><a href="/writing/zyzzyva/">Zyzzyva</a></h2>
   <p class="job-card-sub">Fiction, nonfiction, poetry</p>
@@ -1128,7 +1141,7 @@
     <dt>Verified</dt><dd>2026-09</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/zyzzyva/">View publication →</a></div>
-</article><article class="job-card" data-country="US" data-open="international">
+</article><article class="job-card" data-country="US" data-region="north-america" data-open="international">
   <div class="job-card-badges"><span class="verify-badge upcoming">🟡 Opens soon</span><span class="verify-badge board-listed">🟡 Research only</span><span class="verify-badge country">United States</span></div>
   <h2 class="job-card-title"><a href="/writing/the-threepenny-review/">The Threepenny Review</a></h2>
   <p class="job-card-sub">Poetry, essays</p>
@@ -1139,7 +1152,7 @@
     <dt>Verified</dt><dd>2026-09</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/the-threepenny-review/">View publication →</a></div>
-</article><article class="job-card" data-country="US" data-open="regional">
+</article><article class="job-card" data-country="US" data-region="north-america" data-open="regional">
   <div class="job-card-badges"><span class="verify-badge rolling">🟢 Rolling submissions</span><span class="verify-badge board-listed">🟡 Research only</span><span class="verify-badge country">United States</span></div>
   <h2 class="job-card-title"><a href="/writing/transition-magazine/">Transition Magazine</a></h2>
   <p class="job-card-sub">Essays, fiction, criticism</p>
@@ -1150,7 +1163,7 @@
     <dt>Verified</dt><dd>2026-09</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/transition-magazine/">View publication →</a></div>
-</article><article class="job-card" data-country="CA" data-open="international">
+</article><article class="job-card" data-country="CA" data-region="north-america" data-open="international">
   <div class="job-card-badges"><span class="verify-badge rolling">🟢 Rolling submissions</span><span class="verify-badge board-listed">🟡 Research only</span><span class="verify-badge country">Canada</span></div>
   <h2 class="job-card-title"><a href="/writing/the-ex-puritan/">The Ex-Puritan</a></h2>
   <p class="job-card-sub">Fiction, essays, poetry</p>
@@ -1161,7 +1174,7 @@
     <dt>Verified</dt><dd>2026-09</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/the-ex-puritan/">View publication →</a></div>
-</article><article class="job-card" data-country="US" data-open="international">
+</article><article class="job-card" data-country="US" data-region="north-america" data-open="international">
   <div class="job-card-badges"><span class="verify-badge accepting">🟢 Currently accepting</span><span class="verify-badge board-listed">🟡 Research only</span><span class="verify-badge country">United States</span></div>
   <h2 class="job-card-title"><a href="/writing/the-forge/">The Forge Literary Magazine</a></h2>
   <p class="job-card-sub">Fiction and nonfiction</p>
@@ -1172,7 +1185,7 @@
     <dt>Verified</dt><dd>2026-09</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/the-forge/">View publication →</a></div>
-</article><article class="job-card" data-country="US" data-open="international">
+</article><article class="job-card" data-country="US" data-region="north-america" data-open="international">
   <div class="job-card-badges"><span class="verify-badge accepting">🟢 Currently accepting</span><span class="verify-badge board-listed">🟡 Research only</span><span class="verify-badge country">United States</span></div>
   <h2 class="job-card-title"><a href="/writing/west-branch/">West Branch</a></h2>
   <p class="job-card-sub">Poetry, fiction, creative nonfiction, translation</p>
@@ -1183,7 +1196,7 @@
     <dt>Verified</dt><dd>2026-09</dd>
   </dl>
   <div class="job-card-foot"><a class="card-link" href="/writing/west-branch/">View publication →</a></div>
-</article><article class="job-card" data-country="CA" data-open="international">
+</article><article class="job-card" data-country="CA" data-region="north-america" data-open="international">
   <div class="job-card-badges"><span class="verify-badge accepting">🟢 Currently accepting</span><span class="verify-badge board-listed">🟡 Research only</span><span class="verify-badge country">Canada</span></div>
   <h2 class="job-card-title"><a href="/writing/pulp-literature/">Pulp Literature Magazine</a></h2>
   <p class="job-card-sub">Short fiction, poetry, art</p>
@@ -1198,6 +1211,7 @@
 <script src="/assets/writing-filter.js" defer></script></div></main><nav class="bottom-nav bottom-nav--writing" aria-label="Primary mobile"><a href="/learn/"><span aria-hidden="true">📚</span>How to</a><a href="/learn/examples/"><span aria-hidden="true">✳</span>Examples</a><a href="/tools/"><span aria-hidden="true">🛠</span>Tools</a><a href="/writing/" aria-current="page"><span aria-hidden="true">💰</span>Publish</a></nav><div id="drawer-backdrop"></div>
 <aside id="site-drawer" aria-hidden="true" aria-label="Site menu" role="dialog" aria-modal="true">
   <div class="drawer-head"><a class="logo" href="/"><span class="logo-mark" aria-hidden="true">B</span>BRYME</a><button type="button" class="drawer-close" data-drawer-close aria-label="Close menu"><svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+  <div class="drawer-group"><b>Start here</b><a href="/"><span aria-hidden="true">🏠</span>Home</a><a href="/search/"><span aria-hidden="true">🔍</span>Search BRYME</a></div>
   <div class="drawer-group"><b>How to write</b><a href="/learn/"><span aria-hidden="true">📚</span>All how-tos</a><a href="/learn/examples/"><span aria-hidden="true">✳️</span>Examples</a><a href="/learn/dos-and-donts/"><span aria-hidden="true">✅</span>Dos &amp; don&#x27;ts</a><a href="/learn/types-of-writing/"><span aria-hidden="true">🧩</span>Writing types</a><a href="/learn/start-writing/"><span aria-hidden="true">🚀</span>Start writing</a><a href="/learn/academic-writing/"><span aria-hidden="true">🎓</span>Academic</a><a href="/learn/creative-writing/"><span aria-hidden="true">✍️</span>Creative</a><a href="/learn/editing-proofreading/"><span aria-hidden="true">🧹</span>Editing &amp; proofreading</a><a href="/learn/writing-for-publication/"><span aria-hidden="true">📮</span>Get published</a></div>
   <div class="drawer-group"><b>Tools &amp; templates</b><a href="/tools/"><span aria-hidden="true">🛠️</span>All tools</a><a href="/templates/"><span aria-hidden="true">📄</span>Templates</a><a href="/checklists/"><span aria-hidden="true">☑️</span>Checklists</a><a href="/glossary/"><span aria-hidden="true">🔤</span>Glossary</a></div>
   <div class="drawer-group"><b>Write &amp; get paid</b><a aria-current="page" href="/writing/"><span aria-hidden="true">💰</span>All publications</a><a href="/guides/"><span aria-hidden="true">🗺️</span>Writing guides</a><a href="/tested/"><span aria-hidden="true">🧪</span>BRYME Tested</a></div>

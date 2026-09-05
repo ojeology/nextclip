@@ -1,4 +1,4 @@
-/* BRYME site chrome: easy slide-out sidebar + gently auto-scrolling section navs.
+/* BRYME site chrome: slide-out sidebar + static section navs.
    External file (CSP disallows inline scripts). Progressive enhancement only. */
 (function () {
   "use strict";
@@ -40,38 +40,21 @@
     });
   }
 
-  /* ---------------- Moving section navs ---------------- */
+  /* ---------------- Section navs ----------------
+     These bars are navigation, not decoration. They no longer drift on their
+     own (that made text unreadable and moved links out from under the cursor).
+     The only motion left is functional: bring the current page's link into
+     view so "you are here" is visible on a narrow screen. */
   function setupNav(nav) {
-    if (!nav || nav.dataset.moving) return;
-    nav.dataset.moving = "1";
-    var idle = null, dir = 1;
-
-    function canScroll() { return nav.scrollWidth > nav.clientWidth + 2; }
-    function start() {
-      if (!canScroll()) return;
-      nav.classList.add("is-moving");
-      clearInterval(idle);
-      idle = setInterval(function () {
-        if (!canScroll()) return;
-        /* slowly drift; bounce at the ends for a gentle "moving" feel */
-        var next = nav.scrollLeft + dir * 0.4;
-        if (next <= 0) { dir = 1; next = 0; }
-        if (next >= nav.scrollWidth - nav.clientWidth) { dir = -1; }
-        nav.scrollLeft = next;
-      }, 24);
-    }
-    function stop() {
-      clearInterval(idle); idle = null;
-      nav.classList.remove("is-moving");
-    }
-    /* pause while the user interacts */
-    ["pointerenter", "focusin", "touchstart"].forEach(function (ev) {
-      nav.addEventListener(ev, stop, { passive: true });
-    });
-    ["pointerleave", "focusout", "touchend"].forEach(function (ev) {
-      nav.addEventListener(ev, function () { start(); }, { passive: true });
-    });
-    start();
+    if (!nav || nav.dataset.navReady) return;
+    nav.dataset.navReady = "1";
+    var current = nav.querySelector('[aria-current="page"]');
+    if (!current) return;
+    if (nav.scrollWidth <= nav.clientWidth + 2) return;
+    /* centre the active link without animating the page */
+    var target = current.offsetLeft - (nav.clientWidth - current.offsetWidth) / 2;
+    nav.scrollLeft = Math.max(0, target);
   }
   document.querySelectorAll(".section-nav").forEach(setupNav);
 })();
+

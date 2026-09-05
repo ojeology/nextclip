@@ -114,7 +114,7 @@ h1 { max-width: 850px; margin: 0; font-size: clamp(42px, 7vw, 82px); line-height
 .page-hero { padding: 72px 0 38px; }
 .page-hero h1 { max-width: 920px; font-size: clamp(38px, 7vw, 68px); }
 .page-hero p { max-width: 720px; margin: 18px 0 0; color: var(--muted); font-size: 18px; }
-.breadcrumb { padding-top: 24px; color: var(--dim); font-size: 12px; }
+.breadcrumb { padding-top: 24px; color: var(--muted); font-size: 12px; }
 .breadcrumb a:hover { color: var(--ink); }
 .source-line { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 22px; color: var(--muted); font-size: 12.5px; }
 .source-line b { color: var(--ink); }
@@ -360,7 +360,7 @@ a:focus-visible, button:focus-visible { outline-color: var(--accent); }
 .prose code { background: var(--panel-2); color: var(--accent); }
 .prose th { color: var(--dim); }
 .page-hero p { color: var(--muted); }
-.breadcrumb { color: var(--dim); }
+.breadcrumb { color: var(--muted); }
 .breadcrumb a:hover { color: var(--ink); }
 .source-line { color: var(--muted); }
 .source-line b { color: var(--ink); }
@@ -398,6 +398,8 @@ a:focus-visible, button:focus-visible { outline-color: var(--accent); }
 .byline a { color: var(--accent); }
 @media (max-width: 760px) {
   .bottom-nav { background: rgba(250, 246, 238, .97); }
+  /* --dim on the cream bar is only 3.57:1; --muted is 6.82:1 (WCAG AA). */
+  .bottom-nav a { color: var(--muted); }
 }
 
 /* ===== BRYME Writing Hub components ===== */
@@ -472,6 +474,120 @@ a:focus-visible, button:focus-visible { outline-color: var(--accent); }
 .tool-note.ok{color:var(--ink)}
 .tool-note.err{color:#a33}
 .related-cta{margin-top:1.2rem}
+
+/* ------------------------------------------------------------------ */
+/* Section nav — shared category bar (learn / tools / writing)         */
+/* Static by design: it is navigation, not decoration. The background   */
+/* is token-based so text keeps WCAG AA contrast in every theme. The    */
+/* previous animated gradient slid a near-black stop under near-black   */
+/* text (1.02:1) and is deliberately gone.                              */
+/* ------------------------------------------------------------------ */
+.section-nav{position:sticky;top:0;z-index:40;display:flex;gap:.35rem;align-items:center;
+  overflow-x:auto;padding:.55rem 1rem;
+  background:var(--bg-2);
+  border-bottom:1px solid var(--line);
+  scrollbar-width:thin;-webkit-overflow-scrolling:touch;
+  scroll-snap-type:x proximity;scroll-behavior:smooth}
+.section-nav a{flex:0 0 auto;white-space:nowrap;font-size:.82rem;font-weight:600;text-decoration:none;
+  color:var(--ink);padding:.4rem .75rem;border-radius:999px;border:1px solid transparent;
+  scroll-snap-align:start;min-height:34px;display:inline-flex;align-items:center}
+.section-nav a:hover{background:var(--panel);border-color:var(--line-strong)}
+.section-nav a[aria-current="page"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.section-nav a:first-child{font-weight:700}
+@media (max-width:640px){.section-nav{padding:.45rem .7rem}.section-nav a{font-size:.78rem;padding:.35rem .6rem}}
+
+/* ------------------------------------------------------------------ */
+/* Header hamburger + easy slide-out sidebar (drawer)                  */
+/* ------------------------------------------------------------------ */
+.nav-toggle{display:inline-grid;place-items:center;width:42px;height:42px;border-radius:11px;
+  border:1px solid var(--line);background:var(--panel);color:var(--ink);cursor:pointer;
+  transition:border-color .2s,background .2s}
+.nav-toggle:hover{border-color:var(--line-strong);background:var(--panel-2)}
+.nav-toggle svg{width:20px;height:20px}
+body.drawer-open{overflow:hidden}
+#drawer-backdrop{position:fixed;inset:0;z-index:110;background:rgba(2,8,6,.55);opacity:0;
+  pointer-events:none;transition:opacity .25s;backdrop-filter:blur(2px)}
+#drawer-backdrop.show{opacity:1;pointer-events:auto}
+#site-drawer{position:fixed;top:0;right:0;bottom:0;width:min(360px,88vw);z-index:120;
+  background:var(--bg-2);border-left:1px solid var(--line);box-shadow:var(--shadow);
+  transform:translateX(102%);transition:transform .28s cubic-bezier(.2,.8,.2,1);
+  overflow-y:auto;padding:16px 16px 48px;-webkit-overflow-scrolling:touch}
+#site-drawer.open{transform:none}
+.drawer-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
+.drawer-head .logo{font-size:16px}
+.drawer-close{width:40px;height:40px;border-radius:11px;border:1px solid var(--line);background:var(--panel);
+  color:var(--ink);cursor:pointer;display:grid;place-items:center}
+.drawer-close:hover{background:var(--panel-2)}
+.drawer-group{margin:20px 0 2px}
+.drawer-group>b{display:block;color:var(--dim);font-size:11px;font-weight:800;letter-spacing:.14em;
+  text-transform:uppercase;padding:0 12px;margin-bottom:6px}
+.drawer-group a{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:11px;
+  color:var(--muted);font-size:15px;font-weight:700}
+.drawer-group a:hover,.drawer-group a[aria-current="page"]{background:var(--panel);color:var(--ink)}
+.drawer-group a span{font-size:17px}
+.drawer-sub{padding-left:12px}
+.drawer-sub a{font-size:13.5px;font-weight:600;color:var(--dim);padding:7px 12px}
+.drawer-sub a:hover{color:var(--ink)}
+.drawer-note{padding:12px;margin-top:18px;border:1px solid var(--line);border-radius:13px;
+  background:var(--panel);color:var(--muted);font-size:12.5px;line-height:1.5}
+
+/* ------------------------------------------------------------------ */
+/* Writing country filter — static selection control, not a moving bar */
+/* ------------------------------------------------------------------ */
+.country-filter{margin:18px 0 0;padding:14px 16px;border:1px solid var(--line);
+  border-radius:14px;background:var(--panel)}
+.country-filter-row{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px}
+.country-filter-label{color:var(--ink);font-size:.9rem;font-weight:800;flex:0 0 auto}
+.country-select-wrap{position:relative;flex:1 1 260px;min-width:0}
+.country-select-wrap:after{content:"";position:absolute;right:14px;top:50%;width:9px;height:9px;
+  margin-top:-6px;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);
+  transform:rotate(45deg);pointer-events:none}
+.country-filter select{-webkit-appearance:none;appearance:none;width:100%;min-height:46px;
+  padding:11px 38px 11px 14px;border:1px solid var(--line-strong);border-radius:11px;
+  background:var(--bg);color:var(--ink);font:inherit;font-size:.95rem;font-weight:700;cursor:pointer}
+.country-filter select:hover{border-color:var(--muted)}
+.country-filter select:focus-visible{outline:3px solid var(--accent,var(--green));outline-offset:2px}
+.country-filter optgroup{color:var(--muted);font-weight:800}
+.country-filter option{color:var(--ink);background:var(--bg);font-weight:600}
+.country-reset{flex:0 0 auto;min-height:46px;padding:11px 18px;border:1px solid var(--line-strong);
+  border-radius:11px;background:var(--bg);color:var(--ink);font:inherit;font-size:.88rem;
+  font-weight:800;cursor:pointer}
+.country-reset:hover{background:var(--panel-2);border-color:var(--muted)}
+.country-reset[hidden]{display:none}
+.country-filter-hint{margin:10px 0 0;color:var(--muted);font-size:.82rem;line-height:1.5}
+.country-filter-hint em{font-style:normal;font-weight:800;color:var(--ink)}
+.filter-status{margin:10px 0 0;color:var(--muted);font-size:.85rem;font-weight:600}
+.filter-status b{color:var(--ink)}
+.filter-status.empty{color:var(--gold)}
+.verify-badge.country{background:var(--panel);color:var(--muted);border:1px solid var(--line)}
+@media (max-width:640px){
+  .country-filter{padding:12px;margin-top:14px}
+  .country-filter-row{gap:8px}
+  .country-filter-label{flex:1 1 100%}
+  .country-select-wrap{flex:1 1 100%}
+  .country-reset{flex:0 0 auto}
+}
+
+/* ------------------------------------------------------------------ */
+/* Header home icon — present on every page, before the logo           */
+/* ------------------------------------------------------------------ */
+.home-link{flex:0 0 auto;display:inline-grid;place-items:center;width:42px;height:42px;
+  border-radius:11px;border:1px solid var(--line);background:var(--panel);color:var(--ink);
+  transition:border-color .2s,background .2s}
+.home-link:hover{border-color:var(--line-strong);background:var(--panel-2)}
+.home-link svg{width:20px;height:20px}
+.home-link[aria-current="page"]{border-color:var(--accent,var(--green));color:var(--accent,var(--green))}
+.head-in .brand-group{display:flex;align-items:center;gap:10px;min-width:0;flex:0 1 auto}
+.head-in .logo{white-space:nowrap}
+@media (max-width:640px){
+  .home-link{width:38px;height:38px}.home-link svg{width:18px;height:18px}
+  /* Tighten the header so the wordmark never wraps next to the home icon. */
+  .head-in{gap:10px}
+  .head-in .brand-group{gap:8px}
+  .head-in .logo{font-size:15px;letter-spacing:.05em}
+  .head-in .logo .logo-mark{display:none}
+}
+@media (max-width:380px){.head-in .logo{font-size:0}.head-in .logo .logo-mark{display:grid;font-size:14px}}
 
 /* Lean editorial compatibility layer — replaces the 263 KB legacy platform sheet. */
 .shell{width:min(calc(100% - 32px),var(--max));margin-inline:auto}

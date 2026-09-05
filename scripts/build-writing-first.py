@@ -91,7 +91,10 @@ def nav(current: str = "") -> str:
         items.append(f'<a{cls}{aria} href="{href}">{label}</a>')
     return f'''<a class="skip-link" href="#main">Skip to content</a>
 <header class="site-head"><div class="wrap head-in">
-  <a class="logo" href="/" aria-label="BRYME home"><span class="logo-mark" aria-hidden="true">B</span>BRYME</a>
+  <div class="brand-group">
+    <a class="home-link" href="/"{' aria-current="page"' if current == "home" else ""} aria-label="BRYME home"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5.5 9.5V20a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1V9.5"/><path d="M9.5 21v-6h5v6"/></svg></a>
+    <a class="logo" href="/"><span class="logo-mark" aria-hidden="true">B</span>BRYME</a>
+  </div>
   <nav class="main-nav" aria-label="Primary">{''.join(items)}</nav>
   <form class="nav-search-form" action="/search/" method="get" role="search"><input type="search" name="q" placeholder="Search guides, tools…" aria-label="Search BRYME" autocomplete="off"></form>
   <button type="button" class="nav-toggle" data-drawer-open aria-label="Open menu" aria-expanded="false"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
@@ -139,47 +142,151 @@ def section_nav(links, label="Sections", current="", field=("key", "href", "text
 
 
 # --- Country selector for the writing hub -----------------------------------
-WRITING_COUNTRIES = [
-    ("all", "All publications"),
-    ("NG", "Nigeria"),
-    ("africa", "Africa"),
-    ("US", "United States"),
-    ("UK", "United Kingdom"),
-    ("CA", "Canada"),
-    ("AU", "Australia"),
-    ("europe", "Europe"),
-    ("international", "Open worldwide"),
-]
-_FILTER_REGIONS = {
-    "africa": ["NG", "ZA", "NA", "KE", "GH", "ZW", "UG", "TZ"],
-    "europe": ["IE", "DE", "FR", "ES", "NL"],
+# Continent map. BRYME is global, so the filter control is generated from the
+# data rather than a hand-kept list of six countries: any ISO code that turns up
+# in content/hub/pub-countries.json is placed in its continent group
+# automatically. Adding a publication from a new country needs no code change.
+CONTINENT_OF = {
+    # Africa
+    "NG": "Africa", "ZA": "Africa", "KE": "Africa", "GH": "Africa", "NA": "Africa",
+    "ZW": "Africa", "UG": "Africa", "TZ": "Africa", "EG": "Africa", "MA": "Africa",
+    "ET": "Africa", "RW": "Africa", "SN": "Africa", "CM": "Africa", "BW": "Africa",
+    "ZM": "Africa", "MW": "Africa", "CI": "Africa", "TN": "Africa", "DZ": "Africa",
+    # North America
+    "US": "North America", "CA": "North America", "MX": "North America",
+    "JM": "North America", "TT": "North America", "BB": "North America",
+    # Europe
+    "UK": "Europe", "GB": "Europe", "IE": "Europe", "DE": "Europe", "FR": "Europe",
+    "ES": "Europe", "NL": "Europe", "IT": "Europe", "PT": "Europe", "SE": "Europe",
+    "NO": "Europe", "DK": "Europe", "FI": "Europe", "PL": "Europe", "BE": "Europe",
+    "AT": "Europe", "CH": "Europe", "GR": "Europe", "CZ": "Europe", "RO": "Europe",
+    "UA": "Europe", "HU": "Europe", "IS": "Europe",
+    # Asia
+    "IN": "Asia", "PK": "Asia", "BD": "Asia", "NP": "Asia", "LK": "Asia",
+    "SG": "Asia", "MY": "Asia", "PH": "Asia", "ID": "Asia", "JP": "Asia",
+    "KR": "Asia", "CN": "Asia", "HK": "Asia", "AE": "Asia", "SA": "Asia",
+    "QA": "Asia", "IL": "Asia", "TR": "Asia", "VN": "Asia", "TH": "Asia",
+    # Oceania
+    "AU": "Oceania", "NZ": "Oceania", "FJ": "Oceania", "PG": "Oceania",
+    # South America
+    "BR": "South America", "AR": "South America", "CL": "South America",
+    "CO": "South America", "PE": "South America",
 }
+CONTINENT_ORDER = ["Africa", "North America", "Europe", "Asia", "Oceania", "South America"]
+
+COUNTRY_NAMES = {
+    "NG": "Nigeria", "US": "United States", "UK": "United Kingdom", "GB": "United Kingdom",
+    "CA": "Canada", "AU": "Australia", "IE": "Ireland", "DE": "Germany",
+    "ZA": "South Africa", "NA": "Namibia", "NP": "Nepal", "KE": "Kenya",
+    "GH": "Ghana", "ZW": "Zimbabwe", "UG": "Uganda", "TZ": "Tanzania", "EG": "Egypt",
+    "MA": "Morocco", "ET": "Ethiopia", "RW": "Rwanda", "SN": "Senegal",
+    "CM": "Cameroon", "BW": "Botswana", "ZM": "Zambia", "MW": "Malawi",
+    "CI": "Côte d'Ivoire", "TN": "Tunisia", "DZ": "Algeria",
+    "MX": "Mexico", "JM": "Jamaica", "TT": "Trinidad & Tobago", "BB": "Barbados",
+    "FR": "France", "ES": "Spain", "NL": "Netherlands", "IT": "Italy",
+    "PT": "Portugal", "SE": "Sweden", "NO": "Norway", "DK": "Denmark",
+    "FI": "Finland", "PL": "Poland", "BE": "Belgium", "AT": "Austria",
+    "CH": "Switzerland", "GR": "Greece", "CZ": "Czechia", "RO": "Romania",
+    "UA": "Ukraine", "HU": "Hungary", "IS": "Iceland",
+    "IN": "India", "PK": "Pakistan", "BD": "Bangladesh", "LK": "Sri Lanka",
+    "SG": "Singapore", "MY": "Malaysia", "PH": "Philippines", "ID": "Indonesia",
+    "JP": "Japan", "KR": "South Korea", "CN": "China", "HK": "Hong Kong",
+    "AE": "United Arab Emirates", "SA": "Saudi Arabia", "QA": "Qatar",
+    "IL": "Israel", "TR": "Türkiye", "VN": "Vietnam", "TH": "Thailand",
+    "NZ": "New Zealand", "FJ": "Fiji", "PG": "Papua New Guinea",
+    "BR": "Brazil", "AR": "Argentina", "CL": "Chile", "CO": "Colombia", "PE": "Peru",
+}
+# Kept for backwards compatibility with existing call sites.
+BASE_NAMES_EXTRA = COUNTRY_NAMES
+
+
+def region_slug(name: str) -> str:
+    return name.lower().replace(" ", "-")
+
+
+def continent_of(iso: str) -> str:
+    return CONTINENT_OF.get((iso or "").upper(), "")
+
+
+def country_name(iso: str) -> str:
+    iso = (iso or "").upper()
+    return COUNTRY_NAMES.get(iso) or BASE_NAMES.get(iso) or iso
 
 
 def _filter_matches(rec: dict, flt: str) -> bool:
-    base = base_country(rec["slug"])
+    """A publication matches when it is based in the chosen country/region, or
+    when it is open to writers worldwide (so nobody is shown an empty list)."""
+    base = (base_country(rec["slug"]) or "").upper()
     open_to = open_internationally(rec)
     if flt == "all":
         return True
     if flt == "international":
         return open_to
-    in_target = base in _FILTER_REGIONS.get(flt, [flt])
-    return in_target or open_to
+    if flt == base:
+        return True
+    # region/continent slug
+    if flt == region_slug(continent_of(base)) and base:
+        return True
+    return open_to
 
 
 def writing_nav(current_flt: str = "") -> str:
-    """Country filter bar for the /writing/ hub — pick your country and it shows
-    publications based there plus the ones open to writers worldwide."""
-    chips = []
-    for key, label in WRITING_COUNTRIES:
-        n = sum(1 for r in WRITING if _filter_matches(r, key))
-        active = ' aria-pressed="true" class="country-chip is-active"' if key == "all" else ' class="country-chip" aria-pressed="false"'
-        chips.append(
-            f'<button type="button" data-filter="{key}"{active}>{esc(label)} <b class="chip-count">{n}</b></button>')
-    return f'''<form id="writing-filter" class="section-nav writing-countrybar" aria-label="Filter publications by country">
-{''.join(chips)}</form>
-<p id="filter-note" class="filter-status" aria-live="polite"><b id="filter-count">{len(WRITING)}</b> publications · All publications</p>
-<p id="filter-empty" class="filter-status empty" hidden>No publications match this filter yet.</p>'''
+    """Static country filter for the /writing/ hub.
+
+    A real selection control — not a scrolling header. Every country present in
+    the data is inside it, grouped by continent, with an "All countries" reset
+    and an "Open worldwide" option. It is a native <select>, so it is keyboard
+    accessible, screen-reader friendly and uses the OS picker on mobile."""
+    bases = sorted({(base_country(r["slug"]) or "").upper() for r in WRITING} - {""})
+
+    # Group the countries actually present in the data by continent.
+    groups: dict[str, list[str]] = {}
+    for iso in bases:
+        groups.setdefault(continent_of(iso) or "Other regions", []).append(iso)
+
+    n_all = len(WRITING)
+    n_intl = sum(1 for r in WRITING if _filter_matches(r, "international"))
+
+    opts = [
+        f'<option value="all" selected>All countries — {n_all} publications</option>',
+        f'<option value="international">Open worldwide (no country restriction) — {n_intl}</option>',
+    ]
+
+    # Region shortcuts first, then the individual countries per continent.
+    region_opts = []
+    for cont in CONTINENT_ORDER + sorted(set(groups) - set(CONTINENT_ORDER)):
+        if cont not in groups:
+            continue
+        rslug = region_slug(cont)
+        n = sum(1 for r in WRITING if _filter_matches(r, rslug))
+        region_opts.append(f'<option value="{esc(rslug)}">{esc(cont)} — {n}</option>')
+    if region_opts:
+        opts.append('<optgroup label="Regions">' + "".join(region_opts) + "</optgroup>")
+
+    for cont in CONTINENT_ORDER + sorted(set(groups) - set(CONTINENT_ORDER)):
+        if cont not in groups:
+            continue
+        rows = []
+        for iso in sorted(groups[cont], key=country_name):
+            n = sum(1 for r in WRITING if _filter_matches(r, iso))
+            rows.append(f'<option value="{esc(iso)}">{esc(country_name(iso))} — {n}</option>')
+        opts.append(f'<optgroup label="{esc(cont)}">' + "".join(rows) + "</optgroup>")
+
+    return f'''<form id="writing-filter" class="country-filter" aria-label="Filter publications by country">
+  <div class="country-filter-row">
+    <label class="country-filter-label" for="country-select">Where are you writing from?</label>
+    <div class="country-select-wrap">
+      <select id="country-select" name="country" autocomplete="country">
+{"".join(opts)}
+      </select>
+    </div>
+    <button type="button" id="country-reset" class="country-reset">Reset</button>
+  </div>
+  <p class="country-filter-hint">Picking a country shows publications based there <em>plus</em> every publication open to writers worldwide.</p>
+</form>
+<p id="filter-note" class="filter-status" aria-live="polite"><b id="filter-count">{n_all}</b> publications · All countries</p>
+<p id="filter-empty" class="filter-status empty" hidden>No publications match this filter yet. Try “Open worldwide”, or reset the filter.</p>'''
+
 
 
 def mobile_nav(current: str = "") -> str:
@@ -236,6 +343,7 @@ def drawer(current: str = "") -> str:
     return f'''<div id="drawer-backdrop"></div>
 <aside id="site-drawer" aria-hidden="true" aria-label="Site menu" role="dialog" aria-modal="true">
   <div class="drawer-head"><a class="logo" href="/"><span class="logo-mark" aria-hidden="true">B</span>BRYME</a><button type="button" class="drawer-close" data-drawer-close aria-label="Close menu"><svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+  {group("Start here", [("home", "/", "Home", "🏠"), ("search", "/search/", "Search BRYME", "🔍")])}
   {group("How to write", howto)}
   {group("Tools & templates", tools)}
   {group("Write & get paid", write)}
@@ -340,10 +448,12 @@ def pub_card(rec: dict, heading: str = "h2") -> str:
     wc = (rec.get("wordCount") or {}).get("display") or "—"
     el = (rec.get("eligibility") or {}).get("summary") or "See eligibility"
     url = f"/writing/{esc(rec['slug'])}/"
-    base = esc(base_country(rec["slug"]))
+    base = esc((base_country(rec["slug"]) or "").upper())
     open_to = "international" if open_internationally(rec) else "regional"
-    region_label = esc(BASE_NAMES.get(base_country(rec["slug"]), "Open to all"))
-    return f'''<article class="job-card" data-country="{base}" data-open="{open_to}">
+    region = esc(region_slug(continent_of(base_country(rec["slug"]))))
+    _iso = base_country(rec["slug"])
+    region_label = esc(country_name(_iso) if _iso else "Open to all")
+    return f'''<article class="job-card" data-country="{base}" data-region="{region}" data-open="{open_to}">
   <div class="job-card-badges">{status_badge(rec)}{verify_badge(rec)}<span class="verify-badge country">{region_label}</span></div>
   <{heading} class="job-card-title"><a href="{url}">{esc(rec['publication'])}</a></{heading}>
   <p class="job-card-sub">{esc(rec.get('writingTypeLabel') or rec.get('title') or '')}</p>

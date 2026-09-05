@@ -1,76 +1,109 @@
 /* BRYME country filter for the writing-opportunities hub.
-   Each job card carries data-country (base country ISO2, or "" for online/international)
-   and data-open ("international" | "regional"). Picking a country shows that
-   country's publications PLUS everything that is open to writers worldwide. */
+
+   The control is a static <select> (not a scrolling header): every country in
+   the data is inside it, grouped by continent, plus "All countries" and
+   "Open worldwide". Each card carries data-country (ISO2 base country, "" for
+   online/international), data-region (continent slug) and data-open
+   ("international" | "regional").
+
+   Picking a country shows that country's publications PLUS everything open to
+   writers worldwide, so the list is never misleadingly empty.
+
+   Supports ?country=NG in the URL (the sidebar links use this) and keeps the
+   URL in sync so a filtered view can be shared or bookmarked. */
 (function () {
   "use strict";
+
   var form = document.getElementById("writing-filter");
   if (!form) return;
+
+  var select = document.getElementById("country-select");
+  var reset = document.getElementById("country-reset");
   var cards = Array.prototype.slice.call(document.querySelectorAll("[data-country]"));
-  var chips = Array.prototype.slice.call(form.querySelectorAll(".country-chip"));
   var countEl = document.getElementById("filter-count");
   var emptyEl = document.getElementById("filter-empty");
   var noteEl = document.getElementById("filter-note");
+  if (!select) return;
 
-  var REGIONS = {
-    africa: ["NG", "ZA", "NA", "KE", "GH", "ZW", "UG", "TZ"],
-    europe: ["IE", "DE", "FR", "ES", "NL"],
-    asia: ["NP", "IN", "PK", "SG"],
-  };
-
-  function baseOf(card) { return (card.getAttribute("data-country") || "").toUpperCase(); }
-  function openOf(card) { return (card.getAttribute("data-open") || ""); }
+  /* Never submit — this filters in place. */
+  form.addEventListener("submit", function (e) { e.preventDefault(); });
 
   function matches(card, filter) {
     if (filter === "all") return true;
-    if (filter === "international") return openOf(card) === "international";
-    var base = baseOf(card);
-    var inTarget = REGIONS[filter] ? REGIONS[filter].indexOf(base) !== -1 : base === filter;
-    /* selected country/region + everything open internationally */
-    return inTarget || openOf(card) === "international";
+    var open = card.getAttribute("data-open") === "international";
+    if (filter === "international") return open;
+    var base = (card.getAttribute("data-country") || "").toUpperCase();
+    var region = card.getAttribute("data-region") || "";
+    if (base && filter === base) return true;
+    if (region && filter === region) return true;
+    return open;
   }
 
-  function apply(chip) {
-    var filter = chip.getAttribute("data-filter") || "all";
+  function labelFor(value) {
+    var opt = select.querySelector('option[value="' + value + '"]');
+    if (!opt) return "All countries";
+    /* strip the trailing " — 12" count from the option label */
+    return opt.textContent.replace(/\s+—\s+\d+.*$/, "").trim();
+  }
+
+  function apply(value, pushUrl) {
     var shown = 0;
     cards.forEach(function (c) {
-      var on = matches(c, filter);
-      c.style.display = on ? "" : "none";
+      var on = matches(c, value);
+      c.hidden = !on;
       if (on) shown += 1;
     });
-    chips.forEach(function (c) {
-      var active = c === chip;
-      c.setAttribute("aria-pressed", active ? "true" : "false");
-      c.classList.toggle("is-active", active);
-    });
+
     if (countEl) countEl.textContent = String(shown);
     if (emptyEl) emptyEl.hidden = shown !== 0;
     if (noteEl) {
-      var label = chip && chip.textContent ? chip.textContent.trim() : "All publications";
-      noteEl.textContent = "Showing " + shown + " publication" + (shown === 1 ? "" : "s") + " · " + label;
+      noteEl.textContent = "";
+      var b = document.createElement("b");
+      b.id = "filter-count";
+      b.textContent = String(shown);
+      noteEl.appendChild(b);
+      noteEl.appendChild(document.createTextNode(
+        " publication" + (shown === 1 ? "" : "s") + " · " + labelFor(value)));
+      countEl = b;
+    }
+    if (reset) reset.hidden = value === "all";
+
+    if (pushUrl && window.history && window.history.replaceState) {
+      var url = new URL(window.location.href);
+      if (value === "all") url.searchParams.delete("country");
+      else url.searchParams.set("country", value);
+      window.history.replaceState({}, "", url);
     }
   }
 
-  chips.forEach(function (c) {
-    c.addEventListener("click", function () { apply(c); });
-  });
+  function normalise(raw) {
+    if (!raw) return "all";
+    var v = String(raw).trim();
+    /* accept ?country=ng and ?country=Africa */
+    var exact = select.querySelector('option[value="' + v + '"]');
+    if (exact) return v;
+    var upper = select.querySelector('option[value="' + v.toUpperCase() + '"]');
+    if (upper) return v.toUpperCase();
+    var lower = select.querySelector('option[value="' + v.toLowerCase() + '"]');
+    if (lower) return v.toLowerCase();
+    return "all";
+  }
 
-  /* keep each chip's count badge in sync with the live filter */
-  function refreshCounts() {
-    chips.forEach(function (c) {
-      var f = c.getAttribute("data-filter") || "all";
-      var n = cards.filter(function (card) { return matches(card, f); }).length;
-      var badge = c.querySelector(".chip-count");
-      if (badge) badge.textContent = "· " + n;
+  select.addEventListener("change", function () { apply(select.value, true); });
+
+  if (reset) {
+    reset.addEventListener("click", function () {
+      select.value = "all";
+      apply("all", true);
+      select.focus();
     });
   }
-  refreshCounts();
 
-  /* respect a ?country= param so links can deep-link to a filter */
-  var params = new URLSearchParams(window.location.search);
-  var wanted = (params.get("country") || "all").toLowerCase();
-  var target = chips.filter(function (c) {
-    return (c.getAttribute("data-filter") || "all") === wanted;
-  })[0];
-  apply(target || chips[0] || { setAttribute: function () {}, classList: { toggle: function () {} }, textContent: "" });
+  /* Deep link: /writing/?country=NG */
+  var initial = "all";
+  try {
+    initial = normalise(new URL(window.location.href).searchParams.get("country"));
+  } catch (e) { initial = "all"; }
+  select.value = initial;
+  apply(initial, false);
 })();

@@ -13,9 +13,10 @@
     "check:remediation": "python3 scripts/apply-audit-remediation.py --check",
     "validate": "node scripts/validate-site-quality.js && node scripts/validate-http.js",
     "validate:browser": "node scripts/validate-browser.js",
+    "validate:contrast": "node scripts/validate-contrast.js",
     "validate:quick": "node scripts/validate-site-quality.js --quick",
     "test:http": "node scripts/validate-http.js",
-    "test": "npm run validate && npm run validate:browser"
+    "test": "npm run validate && npm run validate:browser && npm run validate:contrast"
   },
   "engines": {
     "node": ">=20"
