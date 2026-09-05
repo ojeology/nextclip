@@ -418,5 +418,69 @@
   "pulp-literature": {
     "base": "CA",
     "label": "Canada"
+  },
+  "pellicle": {
+    "base": "UK",
+    "label": "United Kingdom"
+  },
+  "extra-teeth": {
+    "base": "UK",
+    "label": "United Kingdom"
+  },
+  "poetry-wales-features": {
+    "base": "UK",
+    "label": "United Kingdom"
+  },
+  "poetry-wales-poetry": {
+    "base": "UK",
+    "label": "United Kingdom"
+  },
+  "poetry-london": {
+    "base": "UK",
+    "label": "United Kingdom"
+  },
+  "shoreline-of-infinity": {
+    "base": "UK",
+    "label": "United Kingdom"
+  },
+  "propel-magazine": {
+    "base": "UK",
+    "label": "United Kingdom"
+  },
+  "the-fiction-desk": {
+    "base": "UK",
+    "label": "United Kingdom"
+  },
+  "the-rialto": {
+    "base": "UK",
+    "label": "United Kingdom"
+  },
+  "gutter-magazine": {
+    "base": "UK",
+    "label": "United Kingdom"
+  },
+  "fourteen-poems": {
+    "base": "UK",
+    "label": "United Kingdom"
+  },
+  "granta": {
+    "base": "UK",
+    "label": "United Kingdom"
+  },
+  "the-london-magazine": {
+    "base": "UK",
+    "label": "United Kingdom"
+  },
+  "hinterland": {
+    "base": "UK",
+    "label": "United Kingdom"
+  },
+  "mslexia": {
+    "base": "UK",
+    "label": "United Kingdom"
+  },
+  "modern-poetry-in-translation": {
+    "base": "UK",
+    "label": "United Kingdom"
   }
 }
