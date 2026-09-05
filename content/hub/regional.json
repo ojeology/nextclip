@@ -1,0 +1,84 @@
+{
+  "intro": "Most writing advice online is quietly American, or quietly British, and never says so. That is a problem if you are applying for a job in Lagos, submitting to a journal in Melbourne, or writing to a client in Toronto. This section collects the conventions that actually differ by country — the ones that make a reader think \"this wasn't written for us\" without being able to say why.",
+  "principle": "Match the destination, not your habit. Whatever variety you learned, the rule for any single piece of writing is the same: pick the convention of the place it is going, and apply it consistently from the first word to the last. A document that mixes -ise and -ize, or writes 03/04 without saying which month it means, costs the reader attention you needed for your argument.",
+  "topics": [
+    {
+      "id": "spelling",
+      "title": "Spelling",
+      "blurb": "The differences are small, systematic and easy to apply once you know the four patterns.",
+      "rows": [
+        {"item": "-ise / -ize", "us": "organize, realize, apologize", "uk": "organise, realise, apologise", "note": "Oxford University Press and most UK academic journals use -ize; UK newspapers, schools and general usage prefer -ise. Australia, New Zealand, South Africa, India, Nigeria and Kenya follow the -ise convention. Canada is split and leans -ize."},
+        {"item": "-our / -or", "us": "color, honor, labor, favor", "uk": "colour, honour, labour, favour", "note": "The Commonwealth follows the UK almost universally. Canada keeps -our, unlike its other US-leaning habits."},
+        {"item": "-re / -er", "us": "center, theater, meter, fiber", "uk": "centre, theatre, metre, fibre", "note": "Canada, Australia, Nigeria, India and Ireland follow the UK. In the US, \"theatre\" survives as a proper-noun spelling for arts venues."},
+        {"item": "Doubled consonants", "us": "traveled, canceled, modeling", "uk": "travelled, cancelled, modelling", "note": "UK doubles a final -l before a suffix regardless of stress; the US doubles it only when the last syllable is stressed. The Commonwealth follows the UK."},
+        {"item": "-ce / -se nouns", "us": "license, practice, defense", "uk": "licence (noun) / license (verb), practice (noun) / practise (verb), defence", "note": "This one carries real meaning in UK usage: a driving licence is a thing, but an authority licenses a driver. Getting it wrong in a legal or professional document is noticed."},
+        {"item": "Other single words", "us": "gray, program, check (bank), tire, plow, aluminum", "uk": "grey, programme (but computer program), cheque, tyre, plough, aluminium", "note": "\"Program\" is the software exception in UK English and always has been. Aluminium has an extra i and an extra syllable outside North America."}
+      ]
+    },
+    {
+      "id": "dates",
+      "title": "Dates and numbers",
+      "blurb": "The single most dangerous convention gap in international writing, because both readings look correct.",
+      "rows": [
+        {"item": "Numeric dates", "us": "03/04/2026 means 4 March", "uk": "03/04/2026 means 3 April", "note": "There is no way for a reader to tell which you meant. Write the month as a word — 3 April 2026 or April 3, 2026 — in anything that matters. For data and filenames use ISO 8601: 2026-04-03, which is unambiguous everywhere and sorts correctly."},
+        {"item": "Written dates", "us": "April 3, 2026 — comma required after the day", "uk": "3 April 2026 — no commas", "note": "Australia, New Zealand, Ireland, Nigeria, Kenya, South Africa and India follow the UK order. Canada accepts both, which is its own kind of hazard."},
+        {"item": "Decimal and thousands", "us": "1,234.56", "uk": "1,234.56", "note": "The English-speaking world agrees here, but much of Europe, Latin America and Indonesia writes 1.234,56 — the separators are swapped. Never assume a number will be read as you wrote it in a translated or international document."},
+        {"item": "Large numbers", "us": "1,000,000 (one million)", "uk": "1,000,000 (one million)", "note": "India and Pakistan also use lakh (100,000) and crore (10,000,000), with digit grouping as 10,00,000. Perfectly standard in Indian English; give the international figure alongside it when writing for a global audience."},
+        {"item": "Time", "us": "6:00 p.m., 12-hour clock dominant", "uk": "18:00 or 6pm — 24-hour common in transport and official contexts", "note": "The 24-hour clock is standard across most of continental Europe and in official use in much of Africa and Asia. If a meeting time can be misread by twelve hours, state the time zone too."},
+        {"item": "Currency", "us": "$1,200", "uk": "£1,200", "note": "Always disambiguate the dollar: US$1,200, A$1,200, C$1,200, NZ$1,200 all read as \"$\". BRYME's opportunity listings state pay in the currency the publication states, because converting silently would misrepresent the offer."}
+      ]
+    },
+    {
+      "id": "letters",
+      "title": "Letters and formal address",
+      "blurb": "Punctuation after a salutation, and how a letter closes, both differ — and both are visible at a glance.",
+      "rows": [
+        {"item": "Salutation punctuation", "us": "Dear Ms Okafor: — colon in business letters", "uk": "Dear Ms Okafor, — comma", "note": "The US colon is genuinely formal usage, not an error. A comma is safe almost everywhere; a colon in a UK or Commonwealth letter looks slightly foreign."},
+        {"item": "Titles", "us": "Mr., Mrs., Ms., Dr. — with full stops", "uk": "Mr, Mrs, Ms, Dr — no full stops", "note": "The UK omits the stop when the abbreviation ends with the word's last letter. The Commonwealth follows. Consistency matters more than the choice."},
+        {"item": "Unknown recipient", "us": "Dear Hiring Manager, or Dear Sir or Madam", "uk": "Dear Sir or Madam, closing with Yours faithfully", "note": "In UK convention the close depends on the opening: a named recipient takes Yours sincerely, an unnamed one takes Yours faithfully. This pairing is still taught and still noticed. Find the name if you possibly can — it beats both."},
+        {"item": "Closing", "us": "Sincerely, / Best regards, / Regards,", "uk": "Yours sincerely, / Yours faithfully, / Kind regards,", "note": "Nigeria, Kenya, Ghana, India and Pakistan generally follow the UK forms, often somewhat more formally than the UK now does."},
+        {"item": "Formality level", "us": "Warmer and quicker to first names, even in a first approach", "uk": "More reserved on first contact; first names follow the recipient's lead", "note": "Nigerian, Indian and Kenyan business correspondence tends to be more formal than either, and titles carry real weight. Erring formal costs you nothing; erring casual can cost you the reply."},
+        {"item": "Address block", "us": "Recipient address top left, then date", "uk": "Sender address top right, recipient left, then date", "note": "Largely invisible in email, which is now most correspondence — but it still matters in a formal letter, a legal notice or a scanned attachment."}
+      ]
+    },
+    {
+      "id": "punctuation",
+      "title": "Punctuation and quotation",
+      "blurb": "Quotation marks and the position of the full stop are the tells that reveal which side of the Atlantic you learned on.",
+      "rows": [
+        {"item": "Quotation marks", "us": "Double first: \"she said\"", "uk": "Single often preferred: 'she said'", "note": "UK usage is genuinely mixed and house styles vary. Doubles are safe everywhere. Whatever you pick, nest the other kind inside."},
+        {"item": "Punctuation and quotes", "us": "Inside: she said \"maybe,\" and left.", "uk": "Outside unless part of the quotation: she said 'maybe', and left.", "note": "The UK rule is logical — only punctuate inside if the punctuation belonged to the original. The US rule is typographic and applies regardless. This is the single clearest marker of which variety a text follows."},
+        {"item": "Serial (Oxford) comma", "us": "Standard in most US style guides: red, white, and blue", "uk": "Usually omitted: red, white and blue", "note": "Named after Oxford University Press, which uses it, in a country that mostly does not. Use it whenever its absence creates ambiguity — that exception is universal."},
+        {"item": "Abbreviations", "us": "e.g., i.e., etc. — with stops and often a following comma", "uk": "eg, ie, etc — stops increasingly dropped", "note": "Both are acceptable within their own conventions. Do not mix them in one document."},
+        {"item": "Collective nouns", "us": "Singular: the team is winning", "uk": "Often plural: the team are winning", "note": "The UK treats a collective as plural when the members act individually. Both are correct in their own variety; neither is an error."}
+      ]
+    },
+    {
+      "id": "documents",
+      "title": "Job and study documents",
+      "blurb": "What is expected on a CV, and what is illegal to include, changes completely across borders.",
+      "rows": [
+        {"item": "CV or résumé", "us": "Résumé, one page, non-academic", "uk": "CV, one to two pages", "note": "See the full comparison at /compare/cv-vs-resume/. Nigeria, Kenya, Ghana, India, South Africa, Australia and Ireland all say CV and mean the short document."},
+        {"item": "Photo", "us": "Never — employers may discard the application", "uk": "Never", "note": "Also avoid in Canada, Ireland, Australia and New Zealand. Conventional and often expected in Germany, much of continental Europe, and many employers in Nigeria, India and the Middle East."},
+        {"item": "Date of birth, marital status, gender", "us": "Never", "uk": "Never", "note": "Same across the anglophone West for anti-discrimination reasons. Still routinely requested on application forms in parts of West Africa, South Asia and the Gulf. Supply what the form asks and nothing more."},
+        {"item": "Referees", "us": "\"References available on request\" or omitted entirely", "uk": "Two referees named, or available on request", "note": "In Nigeria, Kenya and India it is common to name referees with full contact details on the CV itself. Ask permission first, wherever you are."},
+        {"item": "Grades", "us": "GPA out of 4.0, included if strong", "uk": "Degree classification: First, 2:1, 2:2", "note": "Nigeria and India use First Class, Second Class Upper/Lower, or a CGPA out of 5.0, 7.0 or 10.0. Always state the scale — \"3.8\" means nothing without knowing the maximum."},
+        {"item": "Personal statement", "us": "Application essay, prompt-driven, often several short ones", "uk": "One UCAS statement, 4,000 characters, sent to every course", "note": "A US application essay can be a personal narrative; a UCAS statement must be about the subject. They are not interchangeable."}
+      ]
+    },
+    {
+      "id": "cross-cultural",
+      "title": "Pitching across cultures",
+      "blurb": "For writers approaching publications outside their own country — in both directions.",
+      "rows": [
+        {"item": "Directness", "us": "Get to the idea in the first sentence. No throat-clearing.", "uk": "Slightly more preamble tolerated, but not much.", "note": "Writers trained in West African, South Asian or East Asian correspondence conventions are often taught to open with courtesy and build to the request. Western editors read the first sentence and decide. Lead with the idea; the courtesy can follow."},
+        {"item": "Self-presentation", "us": "State achievements plainly. Understatement reads as having none.", "uk": "Plain statement, less superlative. Overselling reads as insecurity.", "note": "The gap between \"do not boast\" as a cultural value and \"state your qualifications\" as a professional requirement is real. Facts are not boasting: \"I have published in three national newspapers\" is a fact."},
+        {"item": "Formality", "us": "First names quickly. \"Dear Sarah\" after one exchange is normal.", "uk": "Similar, slightly slower.", "note": "\"Respected Sir/Madam\" and \"Kindly do the needful\" are entirely standard in Indian and Nigerian professional English and are not errors — but to a US or UK editor they signal a template. Use the editor's name."},
+        {"item": "Local context", "us": "Explain non-US context; do not assume knowledge.", "uk": "Same.", "note": "Your local knowledge is an asset, not a liability — it is often the reason you get commissioned. Explain the context in one clause rather than assuming it or apologising for it."},
+        {"item": "Payment and rights", "us": "Rates in US$, payment often 30 days after publication.", "uk": "Rates in £, similar terms.", "note": "Ask which rights you are selling and how payment reaches you. International transfer fees can consume a meaningful share of a small fee — settle the method before you file, not after."},
+        {"item": "English variety", "us": "Submit in the publication's variety, consistently.", "uk": "Same.", "note": "No serious publication rejects work for being written in another variety of English, but a copy-editor will convert it and inconsistency creates work. Set your spellchecker to the destination before your final pass."}
+      ]
+    }
+  ],
+  "guides": ["british-vs-american-english", "how-to-write-a-cv-resume", "how-to-write-a-business-letter", "how-to-write-a-professional-email", "how-to-pitch-an-editor", "how-to-find-paying-publications", "tone-voice-audience", "how-to-proofread"]
+}

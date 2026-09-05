@@ -20,7 +20,7 @@ PUBLIC_DIRS = [
     "about", "author", "contact", "copyright", "corrections", "disclaimer",
     "editorial-policy", "guides", "privacy", "terms", "tested", "writing", "assets",
     "learn", "tools", "glossary", "templates", "checklists", "problems", "search",
-    "verification", "find", "start",
+    "verification", "find", "start", "compare", "regional",
 ]
 # Root-level files that belong on the published site.
 PUBLIC_FILES = [

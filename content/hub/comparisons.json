@@ -1,0 +1,478 @@
+{
+  "comparisons": [
+    {
+      "slug": "essay-vs-article-vs-blog-post",
+      "title": "Essay vs article vs blog post",
+      "description": "Three formats that look similar on the page and behave completely differently. How to tell which one you actually need to write.",
+      "level": "beginner",
+      "intro": "These three get confused more than any other formats on BRYME. All three are prose, all three can be about the same subject, and a beginner told to \"write something about climate change\" genuinely cannot tell which is wanted. The difference is not length or topic. It is who decides what counts as finished: an essay is judged on your reasoning, an article is judged on your reporting, and a blog post is judged on whether it was useful to the reader who landed on it.",
+      "formats": [
+        {
+          "name": "Essay",
+          "gist": "An argument you build and defend yourself.",
+          "length": "500–5,000 words, set by whoever assigned it",
+          "reader": "A marker, an examiner, or a reader who has chosen to think alongside you",
+          "voice": "Considered. First person allowed in personal and literary essays, usually avoided in academic ones.",
+          "shape": "Thesis, then evidence in a deliberate order, then a conclusion that has actually moved somewhere.",
+          "use": "You are being assessed on how you think, or you want to work out a position in public."
+        },
+        {
+          "name": "Article",
+          "gist": "Information gathered from outside yourself and organised for a reader.",
+          "length": "600–3,000 words, set by the publication",
+          "reader": "A publication's existing audience, arriving mid-stream",
+          "voice": "The publication's, not entirely yours. Read three of its pieces before you start.",
+          "shape": "Lead, context, the substance in descending order of importance, close.",
+          "use": "You have found something out and someone else's readers should know it."
+        },
+        {
+          "name": "Blog post",
+          "gist": "A useful answer to something a specific person is trying to do.",
+          "length": "300–2,500 words, set by how long the answer takes",
+          "reader": "One person who searched a question and clicked your result",
+          "voice": "Yours, direct, addressing the reader as \"you\".",
+          "shape": "Answer near the top, then the working. Headings that a skimmer can navigate.",
+          "use": "You know how to do something and want to be findable by people who don't."
+        }
+      ],
+      "decide": [
+        "Someone will grade it → essay.",
+        "Someone will publish it under their masthead → article.",
+        "You will publish it yourself → blog post.",
+        "The value is your reasoning → essay.",
+        "The value is your reporting → article.",
+        "The value is the reader finishing a task → blog post.",
+        "You have to convince a sceptic → essay.",
+        "You have to interest someone who wasn't looking → article.",
+        "You have to satisfy someone who was → blog post."
+      ],
+      "confusions": [
+        {
+          "q": "My lecturer said \"write an article\" — do they mean a journal article?",
+          "a": "Almost certainly, and that is a fourth thing again: an academic paper with an abstract, a literature review, a method and citations. Ask. The word \"article\" outside journalism usually means \"academic paper\", and writing a magazine feature instead will cost you badly."
+        },
+        {
+          "q": "Can a blog post be an essay?",
+          "a": "Yes, and the best personal blogs are exactly that. But then you are judged by essay standards — the argument has to hold — while still needing the blog's findability. Do not choose this because it seems easier."
+        },
+        {
+          "q": "Which one pays?",
+          "a": "Articles, mostly. Publications pay for reporting because reporting costs time and access. Essays pay at literary magazines and a few outlets that commission opinion. Blog posts pay when they are yours and something else on the site earns."
+        }
+      ],
+      "guides": ["how-to-write-an-essay", "how-to-write-an-article", "how-to-write-a-blog-post", "all-types-of-writing"],
+      "tools": ["word-counter", "readability-score"],
+      "templates": []
+    },
+    {
+      "slug": "cv-vs-resume",
+      "title": "CV vs résumé",
+      "description": "The same word means different documents in different countries. What each one is, and which to send where.",
+      "level": "beginner",
+      "intro": "This is not a style preference — it is a genuine transatlantic collision, and sending the wrong one reads as carelessness. In the United States a résumé is a short targeted summary and a CV is a long academic record. In the UK, Nigeria, Kenya, India, South Africa and much of the Commonwealth, \"CV\" means the short targeted document that Americans call a résumé. Nobody will explain this to you in the job advert.",
+      "formats": [
+        {
+          "name": "Résumé (US usage)",
+          "gist": "A one-page marketing document targeted at one specific job.",
+          "length": "One page. Two only with a decade of relevant experience.",
+          "reader": "A recruiter giving it six to twenty seconds, often after software has ranked it",
+          "voice": "Terse. Fragments, not sentences. Strong verbs, numbers wherever honest.",
+          "shape": "Contact, short summary, experience newest first, education, skills.",
+          "use": "Any non-academic job in the US or Canada."
+        },
+        {
+          "name": "CV (Commonwealth usage)",
+          "gist": "The same targeted document, under a different name.",
+          "length": "One to two pages.",
+          "reader": "A hiring manager or HR, plus applicant-tracking software",
+          "voice": "Terse, same as above. A short personal statement at the top is more common than in the US.",
+          "shape": "Contact, personal statement, experience, education, skills. Referees named or \"available on request\".",
+          "use": "Almost any job in the UK, Ireland, Nigeria, Ghana, Kenya, South Africa, India, Australia, New Zealand."
+        },
+        {
+          "name": "Academic CV",
+          "gist": "A complete record of scholarly output. Nothing is cut for length.",
+          "length": "Two pages as a doctoral student; twenty or more as a professor.",
+          "reader": "A search committee of academics in your field",
+          "voice": "Neutral and factual. No selling.",
+          "shape": "Education, appointments, publications, grants, teaching, service, conferences, references.",
+          "use": "Academic posts, postdocs, fellowships, research grants — anywhere in the world."
+        }
+      ],
+      "decide": [
+        "Job advert written in US English, non-academic → résumé, one page.",
+        "Job advert from the UK, Nigeria, Kenya, India, Australia → CV, one to two pages.",
+        "University, research institute or fellowship → academic CV, however long it needs to be.",
+        "The advert says \"CV\" but the employer is American and it is not a university → they mean a résumé. Send one page.",
+        "You genuinely cannot tell → send the short targeted version. Nobody has ever been rejected for being concise."
+      ],
+      "confusions": [
+        {
+          "q": "Do I include a photo, my age, or my marital status?",
+          "a": "It depends entirely on where you are applying, and getting it wrong is costly in both directions. US, UK, Ireland, Canada, Australia: no photo, no age, no marital status, no nationality — including them can force an employer to discard your application for legal reasons. Germany, much of continental Europe, and many employers in Nigeria and India: a photo and date of birth are conventional and their absence looks odd. Match the destination, not your habit."
+        },
+        {
+          "q": "Two pages or one?",
+          "a": "One page if you have under about eight years of relevant experience — anywhere. The one-page rule is a US convention that has quietly become near-universal for early-career applicants, because it is really a test of whether you can prioritise."
+        },
+        {
+          "q": "Does the file name matter?",
+          "a": "More than people think. `Adaeze-Okonkwo-CV.pdf` is findable in a folder of four hundred applications. `cv final FINAL v3.docx` is not, and it tells the reader something before they open it. Send PDF unless the advert asks for Word."
+        }
+      ],
+      "guides": ["how-to-write-a-cv-resume", "how-to-write-a-cover-letter", "how-to-write-about-yourself", "british-vs-american-english"],
+      "tools": ["word-counter", "text-cleaner"],
+      "templates": []
+    },
+    {
+      "slug": "summary-vs-abstract-vs-executive-summary",
+      "title": "Summary vs abstract vs executive summary",
+      "description": "Three short pieces that all sit at the front of a longer document — and do three different jobs.",
+      "level": "intermediate",
+      "intro": "All three compress a long document into a short one, so they get used interchangeably. They should not be. The test is what the reader does next. A summary reader is going to read the whole thing. An abstract reader is deciding whether to. An executive-summary reader is not going to read it at all, and has to be able to act anyway.",
+      "formats": [
+        {
+          "name": "Summary",
+          "gist": "A condensed account of what a text says.",
+          "length": "5–10% of the original",
+          "reader": "Someone who will also read the full text, or who wants the content without the detail",
+          "voice": "Neutral and faithful. Your opinion does not appear.",
+          "shape": "Follows the original's order. Main points only, no examples.",
+          "use": "Study notes, a précis exercise, the opening of a book review, briefing a colleague."
+        },
+        {
+          "name": "Abstract",
+          "gist": "A standalone miniature of a piece of research.",
+          "length": "150–300 words, hard limit set by the journal or conference",
+          "reader": "A researcher deciding whether this paper is relevant to them, often reading only this",
+          "voice": "Impersonal, precise, past tense for what was done.",
+          "shape": "Background, aim, method, results, conclusion — often one or two sentences each.",
+          "use": "Any journal article, thesis, conference submission or dissertation."
+        },
+        {
+          "name": "Executive summary",
+          "gist": "The decision, the reasoning and the ask — for someone who will read nothing else.",
+          "length": "One page, or under 10% of the report",
+          "reader": "A decision-maker with no time and the authority to say yes or no",
+          "voice": "Direct and confident. Recommendations stated, not hinted at.",
+          "shape": "The situation, what you found, what you recommend, what it costs, what happens next.",
+          "use": "Business reports, consultancy work, board papers, funding proposals, policy briefs."
+        }
+      ],
+      "decide": [
+        "The reader will read the full document too → summary.",
+        "The reader is deciding whether the document is relevant → abstract.",
+        "The reader will never read the document but must still decide → executive summary.",
+        "You must not include conclusions the document doesn't reach → summary or abstract.",
+        "You must lead with a recommendation → executive summary.",
+        "There is a word limit enforced by a submission system → abstract."
+      ],
+      "confusions": [
+        {
+          "q": "Can I write the abstract first?",
+          "a": "You can draft it first to force clarity, but write the real one last. An abstract promises results. Until the results exist, you are writing fiction, and reviewers notice when the abstract and the findings disagree."
+        },
+        {
+          "q": "Is an executive summary just a long abstract?",
+          "a": "No — the direction is opposite. An abstract is deliberately neutral and lets the reader judge. An executive summary exists to get a decision made and must say what you want to happen. A neutral executive summary has failed."
+        },
+        {
+          "q": "Does the executive summary repeat the report?",
+          "a": "Yes, and that is correct. It is not a teaser and it should not withhold the finding to keep the reader going. It has to work completely alone, because for most of your readers it will be the whole document."
+        }
+      ],
+      "guides": ["how-to-write-a-report", "how-to-structure-a-research-paper", "how-to-write-a-thesis", "how-to-make-writing-more-concise"],
+      "tools": ["word-counter", "readability-score"],
+      "templates": []
+    },
+    {
+      "slug": "report-vs-essay",
+      "title": "Report vs essay",
+      "description": "Both are long, formal, and assessed. They are built on opposite principles.",
+      "level": "beginner",
+      "intro": "Students hand in essays when reports were set, and the marks drop for reasons the feedback rarely makes clear. The difference is structural, not tonal. An essay is continuous prose that carries the reader through an argument, and its shape is invisible. A report is a navigable object with numbered sections that a reader can enter anywhere, and its shape is the point.",
+      "formats": [
+        {
+          "name": "Essay",
+          "gist": "One argument, sustained from first line to last.",
+          "length": "Set by the brief; continuous prose throughout",
+          "reader": "Reads from the beginning to the end, in order",
+          "voice": "Formal but flowing. Paragraphs linked by transitions.",
+          "shape": "Introduction with a thesis, body paragraphs each advancing it, conclusion. No headings in most disciplines.",
+          "use": "Humanities, social sciences, philosophy, literature — anywhere the question begins \"Discuss\", \"Evaluate\" or \"To what extent\"."
+        },
+        {
+          "name": "Report",
+          "gist": "Findings, organised so a reader can find any one of them.",
+          "length": "Set by the brief; broken into labelled sections",
+          "reader": "Skims the contents page and jumps to the section they need",
+          "voice": "Formal and impersonal. Short paragraphs. Bullets where bullets are clearer.",
+          "shape": "Title page, contents, executive summary, introduction, method, findings, discussion, conclusion, recommendations, references, appendices.",
+          "use": "Business, engineering, science, nursing, law, and any brief that says \"Investigate\", \"Analyse the data\" or \"Recommend\"."
+        }
+      ],
+      "decide": [
+        "The brief says discuss, argue, evaluate, or to what extent → essay.",
+        "The brief says investigate, analyse, assess, or recommend → report.",
+        "You collected or were given data → report.",
+        "You are working entirely from reading and reasoning → essay.",
+        "The reader needs to act on it afterwards → report.",
+        "Headings would break the flow → essay.",
+        "The reader might read only one section → report."
+      ],
+      "confusions": [
+        {
+          "q": "Can an essay have headings?",
+          "a": "In the sciences and in most professional writing, yes and often should. In English, history and philosophy, headings usually read as a failure to build transitions. Follow your department's marking guide over any general rule."
+        },
+        {
+          "q": "Does a report need recommendations?",
+          "a": "Only if the brief asks for them — but check carefully, because \"what should the company do\" is a request for recommendations even when the word never appears. A report that stops at findings when the reader needed a decision has done half the job."
+        },
+        {
+          "q": "Which is harder?",
+          "a": "Reports are easier to structure and harder to write well, because the format lets you hide vagueness inside headings. Essays are harder to structure and easier to write well, because a weak argument has nowhere to hide."
+        }
+      ],
+      "guides": ["how-to-write-a-report", "how-to-write-an-essay", "dos-and-donts-of-report-writing", "dos-and-donts-of-an-essay", "how-to-use-headings-effectively"],
+      "tools": ["writing-checklist-generator", "readability-score"],
+      "templates": []
+    },
+    {
+      "slug": "cover-letter-vs-personal-statement",
+      "title": "Cover letter vs personal statement vs motivation letter",
+      "description": "Three documents about yourself, sent to three different kinds of reader, doing three different jobs.",
+      "level": "beginner",
+      "intro": "Every one of these is a piece of writing about you, attached to an application, arguing that you should be chosen. That is where the similarity ends. Reuse one as another and it reads as recycled, because it is: the cover letter is about a job, the personal statement is about you, and the motivation letter is about the fit between you and one particular institution.",
+      "formats": [
+        {
+          "name": "Cover letter",
+          "gist": "Why you can do this specific job, for this specific employer.",
+          "length": "One page, three or four paragraphs",
+          "reader": "A recruiter or hiring manager reading it beside your CV",
+          "voice": "Professional, warm, specific. Business-letter conventions.",
+          "shape": "Which role and how you found it, your strongest relevant evidence, why this employer, a clear close.",
+          "use": "Job applications, almost always, even when described as optional."
+        },
+        {
+          "name": "Personal statement",
+          "gist": "Who you are, what formed your interest, and where you are going.",
+          "length": "Strictly capped — UCAS allows 4,000 characters; others 500–1,000 words",
+          "reader": "An admissions tutor reading several hundred in a sitting",
+          "voice": "Reflective and personal, but evidenced. Story in service of a claim.",
+          "shape": "Why this subject, what you have done about it, what you learned, what you bring.",
+          "use": "University applications, scholarships, some graduate schemes, professional training."
+        },
+        {
+          "name": "Motivation letter",
+          "gist": "Why this programme, at this institution, and why now.",
+          "length": "One to two pages",
+          "reader": "A selection committee comparing you against the programme's aims",
+          "voice": "Formal, structured, letter conventions. Often written in a second language.",
+          "shape": "Your background, why this field, why this specific programme and its staff, your plan afterwards.",
+          "use": "European master's and PhD applications, Erasmus, DAAD, Chevening, Fulbright and similar."
+        }
+      ],
+      "decide": [
+        "There is a job advert → cover letter.",
+        "You are applying to study → personal statement or motivation letter.",
+        "The application is UK undergraduate through UCAS → personal statement, and one statement goes to every course you list.",
+        "The application is to a named European programme → motivation letter, rewritten for each one.",
+        "You must name specific supervisors or modules → motivation letter.",
+        "A character or word limit is enforced by the form → personal statement, and the limit is the brief."
+      ],
+      "confusions": [
+        {
+          "q": "Can I reuse one letter across applications?",
+          "a": "Reuse the structure and your strongest evidence, never the paragraph explaining why them. That paragraph is the only part that cannot be recycled, it is the part committees read most closely, and a generic version is worse than none — it proves you did not look."
+        },
+        {
+          "q": "How personal should a personal statement be?",
+          "a": "Personal enough to be unmistakably yours, and always in service of a claim about your suitability. A hardship is relevant when it explains a grade or shows what you can withstand. It is not relevant as an appeal for sympathy, and admissions tutors are practised at telling the two apart."
+        },
+        {
+          "q": "Should a cover letter repeat my CV?",
+          "a": "No. The CV lists what you did; the letter explains what one or two of those things mean for this employer. If a sentence in your letter would sit comfortably on your CV, cut it and write the interpretation instead."
+        }
+      ],
+      "guides": ["how-to-write-a-cover-letter", "dos-and-donts-of-a-cover-letter", "how-to-write-about-yourself", "example-of-a-cover-letter", "how-to-write-a-grant-application"],
+      "tools": ["word-counter", "character-counter", "tone-checker"],
+      "templates": []
+    },
+    {
+      "slug": "memoir-vs-autobiography-vs-biography",
+      "title": "Memoir vs autobiography vs biography",
+      "description": "Three ways to write a life. One is a story, one is a record, one is research.",
+      "level": "intermediate",
+      "intro": "People say \"I'm writing my autobiography\" when they mean a memoir, and the difference decides the whole shape of the book. An autobiography covers a life from start to now and is organised by time. A memoir takes one thread out of a life and is organised by meaning. A biography is about somebody else and is answerable to evidence you have to go and find.",
+      "formats": [
+        {
+          "name": "Memoir",
+          "gist": "One theme from a life, shaped like a story.",
+          "length": "50,000–90,000 words",
+          "reader": "Someone who does not know you and does not need to — they are here for the theme",
+          "voice": "First person, close, literary. Scenes rather than summary.",
+          "shape": "Organised by meaning, not chronology. Time jumps freely if the theme requires it.",
+          "use": "You lived through something that will mean something to strangers."
+        },
+        {
+          "name": "Autobiography",
+          "gist": "The whole life, in order, by the person who lived it.",
+          "length": "80,000–150,000 words",
+          "reader": "Someone already interested in you — which usually means you are already known",
+          "voice": "First person, more measured, more summary than scene.",
+          "shape": "Chronological. Birth, formation, career, achievements, reflection.",
+          "use": "There is public interest in the whole arc, not just one part of it."
+        },
+        {
+          "name": "Biography",
+          "gist": "Someone else's life, built from evidence.",
+          "length": "80,000–200,000 words",
+          "reader": "Someone interested in the subject, and willing to hold you to your sources",
+          "voice": "Third person. Interpretive but accountable — claims are cited.",
+          "shape": "Usually chronological, with thematic chapters where a strand needs following.",
+          "use": "You have access to archives, letters, interviews or records, and something new to say."
+        }
+      ],
+      "decide": [
+        "Your own life, one thread → memoir.",
+        "Your own life, all of it, in order → autobiography.",
+        "Someone else's life → biography.",
+        "You need footnotes → biography.",
+        "You are writing scenes with dialogue you remember → memoir.",
+        "Nobody has heard of you yet → memoir. Autobiographies by unknown people rarely find publishers; memoirs by unknown people do, when the theme is strong."
+      ],
+      "confusions": [
+        {
+          "q": "How accurate does memoir have to be?",
+          "a": "The events must be true. Dialogue may be reconstructed — no one remembers exact words from thirty years ago, and readers accept this. What you cannot do is invent events, merge people into composites without saying so, or move things in time to improve the story. Memoirists have lost careers over exactly that."
+        },
+        {
+          "q": "What about the other people in my memoir?",
+          "a": "They did not consent to being written about, and this is the hardest part of the form. Legally, you face defamation risk for false statements of fact and privacy risk for true private ones. Practically, ask whether each person is there because the theme needs them or because you are still angry. Many memoirists change identifying details and say so in a note."
+        },
+        {
+          "q": "Can a biography be about someone living?",
+          "a": "Yes, and it is much harder. Living subjects can sue, refuse access, and pressure sources. An authorised biography buys access at the cost of independence; an unauthorised one keeps independence and loses the archive. Decide which before you start, not halfway through."
+        }
+      ],
+      "guides": ["how-to-write-a-memoir", "how-to-write-a-personal-essay", "how-to-develop-characters", "how-to-find-reliable-sources", "how-to-cite-sources"],
+      "tools": ["word-counter", "writing-timer"],
+      "templates": []
+    },
+    {
+      "slug": "press-release-vs-news-article",
+      "title": "Press release vs news article",
+      "description": "They look almost identical on the page. One is advocacy and one is journalism, and confusing them is how a release gets deleted.",
+      "level": "intermediate",
+      "intro": "A press release imitates a news article on purpose — inverted pyramid, third person, a dateline, quotes. That imitation is a courtesy: you are handing a journalist something already shaped like the thing they have to produce. But a release is written by an interested party to get coverage, and an article is written by a journalist to inform readers. Write a release that forgets it is advocacy and it reads as a press release trying to pass as news, which is the fastest route to the bin.",
+      "formats": [
+        {
+          "name": "Press release",
+          "gist": "An organisation telling journalists that something has happened.",
+          "length": "300–600 words. One page.",
+          "reader": "A journalist deciding in about eight seconds whether this is a story",
+          "voice": "Third person, neutral surface, positive intent. Opinion confined to quotes.",
+          "shape": "Headline, dateline, lead answering who/what/when/where/why, detail, quote, boilerplate, contact.",
+          "use": "A launch, a funding round, an appointment, a result, a response to events."
+        },
+        {
+          "name": "News article",
+          "gist": "A journalist telling readers what happened, having checked.",
+          "length": "200–1,200 words, set by the desk",
+          "reader": "The publication's audience",
+          "voice": "Third person, genuinely neutral. Attribution for every contested claim.",
+          "shape": "Lead, then descending importance, so a sub-editor can cut from the bottom without losing the story.",
+          "use": "You are the journalist, and something is newsworthy to your readers."
+        }
+      ],
+      "decide": [
+        "You represent the organisation in the story → press release.",
+        "You are reporting on an organisation → news article.",
+        "The piece includes a boilerplate paragraph and a press contact → press release.",
+        "The piece quotes people who disagree → news article.",
+        "Success means a journalist writes something → press release.",
+        "Success means readers are informed → news article."
+      ],
+      "confusions": [
+        {
+          "q": "Why does a press release need quotes if they are obviously arranged?",
+          "a": "Because the quote is the only place where opinion is allowed, and journalists lift quotes verbatim. That makes the quote the most valuable sentence in the release. Write it as something a person would actually say. \"We are excited to announce\" is not; it appears in tens of thousands of releases and will be cut."
+        },
+        {
+          "q": "Can a press release be published as-is?",
+          "a": "Trade press and small outlets sometimes run releases nearly untouched, which is an argument for writing yours cleanly. But do not aim for it. Aim to make the journalist's job easy — clear facts, a real contact who answers, and something genuinely new."
+        },
+        {
+          "q": "What actually makes something newsworthy?",
+          "a": "Newness, consequence, proximity to the audience, conflict, or human interest. \"We rebranded\" has none of these. \"We rebranded after losing a trademark case\" has two. If you cannot name which one you have, the release is not ready."
+        }
+      ],
+      "guides": ["how-to-write-a-press-release", "example-of-a-press-release", "how-to-write-an-article", "how-to-pitch-an-editor"],
+      "tools": ["word-counter", "cliche-detector", "tone-checker"],
+      "templates": []
+    },
+    {
+      "slug": "proposal-vs-pitch",
+      "title": "Proposal vs pitch vs query letter",
+      "description": "Three ways of asking for a yes. They differ in length, in what they promise, and in how much of the work you do before you send.",
+      "level": "intermediate",
+      "intro": "All three say: let me do this thing, and back me. The difference is how much of the thing already exists and how much detail the reader needs before deciding. A pitch is short and sells an idea. A proposal is long and specifies delivery. A query letter is a publishing-specific form with conventions so fixed that breaking them marks you as an outsider immediately.",
+      "formats": [
+        {
+          "name": "Pitch",
+          "gist": "A short, specific idea aimed at one editor or client.",
+          "length": "150–400 words. An email, not an attachment.",
+          "reader": "A commissioning editor with a full inbox",
+          "voice": "Direct and confident. No preamble, no apology.",
+          "shape": "The idea in one or two sentences, why now, why this outlet, why you, length and timing.",
+          "use": "Selling an article, a feature or a column to a publication."
+        },
+        {
+          "name": "Proposal",
+          "gist": "A detailed plan someone is being asked to fund or approve.",
+          "length": "2–50 pages depending on the money involved",
+          "reader": "A committee, a client or a funder comparing you against alternatives",
+          "voice": "Formal, structured, evidenced. Costed.",
+          "shape": "Problem, approach, deliverables, timeline, budget, team, risks, evaluation.",
+          "use": "Grants, consultancy work, book proposals for non-fiction, internal projects."
+        },
+        {
+          "name": "Query letter",
+          "gist": "A one-page approach to a literary agent about a finished book.",
+          "length": "250–400 words. One page, no exceptions.",
+          "reader": "An agent reading a hundred a week and looking for a reason to stop",
+          "voice": "Professional and controlled. The hook does the work.",
+          "shape": "Hook, a short blurb like back-cover copy, title, word count and genre, a brief bio, thank you.",
+          "use": "Approaching literary agents or publishers with a novel or memoir."
+        }
+      ],
+      "decide": [
+        "Selling an article to a magazine → pitch.",
+        "Asking for money against a plan → proposal.",
+        "Approaching a literary agent → query letter.",
+        "The work does not exist yet and shouldn't → pitch or proposal.",
+        "The work must be finished before you send → query letter, for fiction and memoir. Agents will ask for the manuscript and you must have it.",
+        "There is a budget → proposal.",
+        "There is a submission portal with fixed fields → follow the portal, and keep your pitch or query as the raw material."
+      ],
+      "confusions": [
+        {
+          "q": "Can I pitch a novel?",
+          "a": "Not to a magazine. Novels go to agents by query letter, and the manuscript must be complete if it is fiction or memoir. Non-fiction is the exception: it sells on a proposal and sample chapters, because the book's value is the argument and your authority to make it."
+        },
+        {
+          "q": "How long before I follow up?",
+          "a": "Pitches: two weeks, once, in the same thread, two lines. Queries: whatever the agent's site states, and never sooner. Proposals: whatever the call specified. Following up early is the most common self-inflicted wound in all three forms."
+        },
+        {
+          "q": "Do I need clips or credits?",
+          "a": "It helps and it is not a gate. Editors commission unpublished writers all the time when the idea is right and the pitch shows they can write — the pitch itself is a writing sample, which is why a sloppy one ends the conversation regardless of your credits."
+        }
+      ],
+      "guides": ["how-to-pitch-an-editor", "how-to-write-a-proposal", "how-to-write-a-query-letter", "how-to-write-a-grant-application", "dos-and-donts-of-pitching-editors", "why-your-first-pitch-may-be-rejected"],
+      "tools": ["word-counter", "tone-checker", "cliche-detector"],
+      "templates": []
+    }
+  ]
+}

@@ -78,6 +78,8 @@ TOOLS_BY_ID = {t["id"]: t for t in TOOLS}
 GLOSSARY = load("glossary.json")["terms"]
 TEMPLATES = load("templates.json")["templates"]
 PURPOSES = load("purposes.json")
+COMPARISONS = load("comparisons.json")["comparisons"]
+REGIONAL = load("regional.json")
 CHECKLISTS = load("checklists.json")["checklists"]
 PROBLEMS = load("problems.json")["problems"]
 
@@ -876,6 +878,199 @@ def beginner_path_page() -> None:
                      "isAccessibleForFree": True}))
 
 
+
+# ---------------------------------------------------------------------------
+# Cross-format comparison pages (/compare/) — Proposal §3.
+#
+# Beginners routinely do not know which format they have been asked for. These
+# pages put two or three neighbouring formats side by side on the axes that
+# actually decide the choice, rather than describing each one in isolation.
+# ---------------------------------------------------------------------------
+
+def _validate_comparisons() -> None:
+    """Fail the build rather than ship a comparison that links nowhere."""
+    slugs = set()
+    for c in COMPARISONS:
+        if c["slug"] in slugs:
+            raise SystemExit(f"comparisons.json: duplicate slug {c['slug']!r}")
+        slugs.add(c["slug"])
+        if len(c.get("formats", [])) < 2:
+            raise SystemExit(f"comparisons.json: {c['slug']!r} compares fewer than two formats")
+        for g in c.get("guides", []):
+            if g not in GUIDES_BY_SLUG:
+                raise SystemExit(f"comparisons.json: {c['slug']!r} references unknown guide {g!r}")
+        for t in c.get("tools", []):
+            if t not in TOOLS_BY_ID:
+                raise SystemExit(f"comparisons.json: {c['slug']!r} references unknown tool {t!r}")
+        for t in c.get("templates", []):
+            if t not in TEMPLATES_BY_ID:
+                raise SystemExit(f"comparisons.json: {c['slug']!r} references unknown template {t!r}")
+    for g in REGIONAL.get("guides", []):
+        if g not in GUIDES_BY_SLUG:
+            raise SystemExit(f"regional.json: references unknown guide {g!r}")
+
+
+def _related_block(guides: list, tools: list, templates: list) -> str:
+    out = []
+    if guides:
+        cards = "".join(guide_card(GUIDES_BY_SLUG[g]) for g in guides if g in GUIDES_BY_SLUG)
+        out.append(f'<h2>Related guides</h2><div class="card-grid">{cards}</div>')
+    chips = []
+    for t in tools:
+        tl = TOOLS_BY_ID.get(t)
+        if tl:
+            chips.append(f'<a class="purpose-alt" href="/tools/{esc(tl["id"])}/">{esc(tl["title"])}</a>')
+    for t in templates:
+        tp = TEMPLATES_BY_ID.get(t)
+        if tp:
+            chips.append(f'<a class="purpose-alt" href="/templates/#{esc(tp["id"])}">{esc(tp["title"])} template</a>')
+    if chips:
+        out.append(f'<h2>Tools that can help</h2><div class="purpose-links">{"".join(chips)}</div>')
+    return "".join(out)
+
+
+def comparison_page(c: dict) -> None:
+    names = [f["name"] for f in c["formats"]]
+
+    # Side-by-side table: the comparison axes as rows, the formats as columns.
+    axes = [("gist", "In one line"), ("length", "Typical length"), ("reader", "Who reads it"),
+            ("voice", "Voice"), ("shape", "Shape"), ("use", "Use it when")]
+    head = "".join(f"<th scope=\"col\">{esc(n)}</th>" for n in names)
+    rows = "".join(
+        f'<tr><th scope="row">{esc(label)}</th>'
+        + "".join(f"<td>{esc(f.get(key, '—'))}</td>" for f in c["formats"])
+        + "</tr>"
+        for key, label in axes)
+    table = (f'<div class="compare-scroll"><table class="compare-table">'
+             f'<caption class="sr-only">{esc(c["title"])} compared across six axes</caption>'
+             f'<thead><tr><td></td>{head}</tr></thead><tbody>{rows}</tbody></table></div>')
+
+    # The same content as stacked cards, which is what mobile actually reads.
+    cards = "".join(
+        f'<div class="compare-card"><h3>{esc(f["name"])}</h3><p class="compare-gist">{esc(f["gist"])}</p>'
+        + "".join(f'<p><b>{esc(label)}:</b> {esc(f.get(key, "—"))}</p>'
+                  for key, label in axes[1:])
+        + "</div>"
+        for f in c["formats"])
+
+    decide = "".join(f"<li>{esc(d)}</li>" for d in c.get("decide", []))
+    conf = "".join(
+        f'<div class="compare-q"><h3>{esc(x["q"])}</h3><p>{esc(x["a"])}</p></div>'
+        for x in c.get("confusions", []))
+
+    body = f'''<div class="wrap"><nav class="breadcrumb"><a href="/">Home</a> / <a href="/compare/">Compare formats</a> / {esc(c["title"])}</nav>
+<section class="page-hero"><p class="kicker"><span class="kicker-dot"></span>Which format do I need?</p>
+<h1>{esc(c["title"])}</h1>
+<p>{esc(c["description"])}</p>
+<p class="level-line">{level_badge({"level": c.get("level", "beginner")})} <span class="level-desc">{esc(LEVELS[c.get("level", "beginner")][1])}</span></p>
+</section></div>
+<section class="section"><div class="wrap"><div class="prose"><p>{esc(c["intro"])}</p></div>
+<h2>Side by side</h2>{table}
+<div class="compare-cards">{cards}</div>
+</div></section>
+<section class="section alt"><div class="wrap"><div class="section-head"><div><p class="eyebrow">Decide quickly</p>
+<h2>Which one do you actually need?</h2></div></div>
+<ul class="compare-decide">{decide}</ul></div></section>
+<section class="section"><div class="wrap"><div class="section-head"><div><p class="eyebrow">Common confusions</p>
+<h2>The questions that come up every time.</h2></div></div>
+<div class="compare-qs">{conf}</div>
+{_related_block(c.get("guides", []), c.get("tools", []), c.get("templates", []))}
+</div></section>'''
+
+    faq = [{"@type": "Question", "name": x["q"],
+            "acceptedAnswer": {"@type": "Answer", "text": x["a"]}}
+           for x in c.get("confusions", [])]
+    graph = {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": faq} if faq else None
+
+    write(f"/compare/{c['slug']}/", page_wf(
+        title=f"{c['title']}: which one do you need? | BRYME",
+        description=c["description"], route=f"/compare/{c['slug']}/",
+        current="learn", body=body, schema_data=graph))
+
+
+def compare_index() -> None:
+    cards = "".join(
+        f'<a class="guide-card" href="/compare/{esc(c["slug"])}/">'
+        f'<span class="card-num">{esc(" vs ".join(f["name"].split(" (")[0] for f in c["formats"]))}</span>'
+        f'<h3>{esc(c["title"])}</h3><p>{esc(c["description"])}</p>'
+        f'<span class="card-link">Compare →</span></a>'
+        for c in COMPARISONS)
+    body = f'''<div class="wrap"><nav class="breadcrumb"><a href="/">Home</a> / Compare formats</nav>
+<section class="page-hero"><p class="kicker"><span class="kicker-dot"></span>Compare formats</p>
+<h1>Which format do you actually need?</h1>
+<p>Being told to &ldquo;write a report&rdquo; is only useful if you know how a report differs from an essay. These {len(COMPARISONS)} pages put neighbouring formats side by side on the things that decide the choice — who reads it, how long it runs, and what counts as finished.</p>
+</section></div>
+<section class="section"><div class="wrap"><div class="card-grid">{cards}</div></div></section>
+<section class="section alt"><div class="wrap"><div class="section-head"><div><p class="eyebrow">Still unsure?</p>
+<h2>Describe it instead.</h2></div></div>
+<div class="card-grid">
+<a class="path-card" href="/find/"><span class="card-num">FIND</span><h3>Say what you want to write</h3><p>Skip the format names entirely and describe the task.</p><span class="card-link">Open the finder →</span></a>
+<a class="path-card" href="/regional/"><span class="card-num">WORLD</span><h3>Writing by country</h3><p>Spelling, dates, letters and CV conventions that change across borders.</p><span class="card-link">See the differences →</span></a>
+</div></div></section>'''
+    write("/compare/", page_wf(
+        title="Compare writing formats: essay vs article, CV vs r\u00e9sum\u00e9 and more | BRYME",
+        description=f"{len(COMPARISONS)} side-by-side comparisons of writing formats beginners confuse \u2014 essay vs article vs blog post, CV vs r\u00e9sum\u00e9, report vs essay, and more.",
+        route="/compare/", current="learn", body=body,
+        schema_data={"@context": "https://schema.org", "@type": "CollectionPage",
+                     "name": "Compare writing formats", "url": BASE + "/compare/"}))
+
+
+# ---------------------------------------------------------------------------
+# Writing by country (/regional/) — Proposal §3 and §5.
+# ---------------------------------------------------------------------------
+
+def regional_page() -> None:
+    blocks = []
+    for t in REGIONAL["topics"]:
+        rows = "".join(
+            f'<tr><th scope="row">{esc(r["item"])}</th><td>{esc(r["us"])}</td>'
+            f'<td>{esc(r["uk"])}</td><td>{esc(r["note"])}</td></tr>'
+            for r in t["rows"])
+        cards = "".join(
+            f'<div class="compare-card"><h3>{esc(r["item"])}</h3>'
+            f'<p><b>US:</b> {esc(r["us"])}</p><p><b>UK &amp; Commonwealth:</b> {esc(r["uk"])}</p>'
+            f'<p class="tool-note">{esc(r["note"])}</p></div>'
+            for r in t["rows"])
+        blocks.append(
+            f'<section class="section" id="{esc(t["id"])}"><div class="wrap">'
+            f'<div class="section-head"><div><p class="eyebrow">{esc(t["title"])}</p>'
+            f'<h2>{esc(t["blurb"])}</h2></div></div>'
+            f'<div class="compare-scroll"><table class="compare-table">'
+            f'<caption class="sr-only">{esc(t["title"])}: US and UK conventions compared</caption>'
+            f'<thead><tr><td></td><th scope="col">United States</th>'
+            f'<th scope="col">UK &amp; Commonwealth</th><th scope="col">Notes and other regions</th></tr></thead>'
+            f'<tbody>{rows}</tbody></table></div>'
+            f'<div class="compare-cards">{cards}</div></div></section>')
+
+    toc = "".join(f'<a class="purpose-alt" href="#{esc(t["id"])}">{esc(t["title"])}</a>'
+                  for t in REGIONAL["topics"])
+    body = f'''<div class="wrap"><nav class="breadcrumb"><a href="/">Home</a> / Writing by country</nav>
+<section class="page-hero"><p class="kicker"><span class="kicker-dot"></span>Writing by country</p>
+<h1>What changes when you cross a border.</h1>
+<p>{esc(REGIONAL["intro"])}</p>
+<p class="notice"><b>The rule:</b> {esc(REGIONAL["principle"])}</p>
+<p class="byline">Researched and written by <a href="/author/ibrahim-sodiq/">BRYME Editorial Desk</a>.</p>
+<div class="purpose-links">{toc}</div>
+</section></div>
+{"".join(blocks)}
+<section class="section alt"><div class="wrap">
+{_related_block(REGIONAL.get("guides", []), ["text-cleaner", "word-counter"], [])}
+</div></section>'''
+    write("/regional/", page_wf(
+        title="Writing by country: spelling, dates, letters and CV conventions | BRYME",
+        description="US, UK and Commonwealth writing conventions compared \u2014 spelling, date formats, letter salutations, punctuation, CV expectations and pitching across cultures.",
+        route="/regional/", current="learn", body=body,
+        schema_data={"@context": "https://schema.org", "@type": "Article",
+                     "headline": "Writing by country: what changes when you cross a border",
+                     "description": "US, UK and Commonwealth writing conventions compared.",
+                     "url": BASE + "/regional/",
+                     "datePublished": TODAY + "T00:00:00+01:00",
+                     "dateModified": TODAY + "T00:00:00+01:00",
+                     "author": {"@type": "Person", "name": "BRYME Editorial Desk",
+                                "url": BASE + "/author/ibrahim-sodiq/"},
+                     "publisher": {"@type": "Organization", "name": "BRYME", "url": BASE + "/"},
+                     "mainEntityOfPage": BASE + "/regional/"}))
+
 def build() -> None:
     prune_stale_guides()
     homepage()
@@ -894,6 +1089,11 @@ def build() -> None:
     search_page()
     purpose_finder_page()
     beginner_path_page()
+    _validate_comparisons()
+    for _c in COMPARISONS:
+        comparison_page(_c)
+    compare_index()
+    regional_page()
     print(f"wrote hub: {len(GUIDES)} guides, {len(TOOLS)} tools, {len(SECTIONS['sections'])} sections, /search/ + /glossary/ + /templates/ + /checklists/ + /problems/")
 
 

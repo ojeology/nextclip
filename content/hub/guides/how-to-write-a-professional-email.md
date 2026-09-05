@@ -5,7 +5,7 @@ section: professional-writing
 level: beginner
 keywords: [email, professional, workplace, communication]
 tools: [word-counter]
-related: [tone-voice-audience, writing-templates]
+related: [tone-voice-audience, example-of-a-professional-email]
 updated: 2026-09-04
 ---
 

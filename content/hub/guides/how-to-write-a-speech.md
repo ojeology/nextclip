@@ -5,7 +5,7 @@ section: types-of-writing
 level: intermediate
 keywords: [speech, public speaking, spoken word, delivery]
 tools: [word-counter]
-related: [how-to-write-an-introduction, how-to-write-a-persuasive-essay]
+related: [how-to-write-an-introduction, how-to-write-an-essay]
 updated: 2026-09-05
 ---
 

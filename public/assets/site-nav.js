@@ -51,9 +51,15 @@
     var current = nav.querySelector('[aria-current="page"]');
     if (!current) return;
     if (nav.scrollWidth <= nav.clientWidth + 2) return;
-    /* centre the active link without animating the page */
+    /* Centre the active link. This must be INSTANT, not smooth: the bar sets
+       scroll-behavior:smooth for user-initiated scrolling, and an animated
+       jump on load is exactly the drifting navigation the motion gate forbids
+       (and what made these bars unreadable in the first place). */
     var target = current.offsetLeft - (nav.clientWidth - current.offsetWidth) / 2;
+    var prev = nav.style.scrollBehavior;
+    nav.style.scrollBehavior = "auto";
     nav.scrollLeft = Math.max(0, target);
+    nav.style.scrollBehavior = prev;
   }
   document.querySelectorAll(".section-nav").forEach(setupNav);
 })();

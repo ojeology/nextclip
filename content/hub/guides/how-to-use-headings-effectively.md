@@ -5,7 +5,7 @@ section: structure-formatting
 level: beginner
 keywords: [headings, structure, scannable, seo]
 tools: [word-counter]
-related: [how-to-write-a-blog-post, how-to-create-an-outline]
+related: [how-to-write-a-blog-post, how-to-turn-an-idea-into-an-outline]
 updated: 2026-09-04
 ---
 

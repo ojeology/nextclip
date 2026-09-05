@@ -5,7 +5,7 @@ section: dos-and-donts
 level: intermediate
 keywords: [blog, blogging, content, dos, donts]
 tools: [word-document-converter]
-related: [how-to-write-a-blog-post, example-of-a-blog-post]
+related: [how-to-write-a-blog-post, example-blog-post]
 updated: 2026-09-05
 ---
 

@@ -4,7 +4,7 @@ description: Teach someone to finish a task, step by step, in a way they can fol
 section: types-of-writing
 level: intermediate
 keywords: [tutorial, how-to, steps, teaching]
-tools: [article-outline-generator, screenshot]
+tools: [article-outline-generator]
 related: [how-to-write-a-blog-post]
 updated: 2026-09-05
 ---
