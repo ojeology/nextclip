@@ -112,6 +112,29 @@ def render_md(text: str) -> str:
         if stripped.startswith("---"):
             i += 1
             continue
+        # pipe table:  | a | b |  /  |---|---|  /  | 1 | 2 |
+        if (stripped.startswith("|") and stripped.endswith("|")
+                and i + 1 < len(lines)
+                and re.match(r"^\|[\s:|-]+\|$", lines[i + 1].strip())):
+            def _cells(row: str) -> list[str]:
+                return [c.strip() for c in row.strip().strip("|").split("|")]
+            head = _cells(lines[i])
+            i += 2  # skip header and the |---| separator
+            body_rows = []
+            while i < len(lines):
+                r = lines[i].strip()
+                if not (r.startswith("|") and r.endswith("|")):
+                    break
+                body_rows.append(_cells(r))
+                i += 1
+            thead = "".join(f"<th>{inline(c)}</th>" for c in head)
+            tbody = "".join(
+                "<tr>" + "".join(f"<td>{inline(c)}</td>" for c in row) + "</tr>"
+                for row in body_rows)
+            blocks.append(
+                f'<div class="compare-scroll"><table class="compare-table">'
+                f"<thead><tr>{thead}</tr></thead><tbody>{tbody}</tbody></table></div>")
+            continue
         # blockquote
         if stripped.startswith("> "):
             q = []
@@ -153,7 +176,7 @@ def render_md(text: str) -> str:
         para = []
         while i < len(lines):
             s = lines[i].strip()
-            if not s or s.startswith(("## ", "# ", "### ", "- ", "> ", "---")):
+            if not s or s.startswith(("## ", "# ", "### ", "- ", "> ", "---", "|")):
                 break
             if re.match(r"^\d+\.\s", s):
                 break
@@ -1428,6 +1451,127 @@ def regional_page() -> None:
                      "publisher": {"@type": "Organization", "name": "BRYME", "url": BASE + "/"},
                      "mainEntityOfPage": BASE + "/regional/"}))
 
+
+# ---------------------------------------------------------------------------
+# Essays — BRYME's own editorial writing, separate from the how-to guides.
+#
+# A guide answers "how do I do this?". An essay makes an argument. They are
+# kept apart deliberately: mixing opinion into the reference library would
+# muddy both. To publish one, drop a markdown file in content/essays/ with the
+# frontmatter shown in content/essays/README.md and run the build.
+# ---------------------------------------------------------------------------
+ESSAY_DIR = ROOT / "content/essays"
+
+AUDIENCE_LABELS = {
+    "uk": "United Kingdom", "us": "United States", "ca": "Canada",
+    "au": "Australia", "ng": "Nigeria", "intl": "International",
+}
+
+
+def load_essays() -> list[dict]:
+    out = []
+    if not ESSAY_DIR.is_dir():
+        return out
+    for f in sorted(ESSAY_DIR.glob("*.md")):
+        if f.stem.lower() in {"readme", "template"}:
+            continue  # authoring docs, not essays
+        meta, body = parse_frontmatter(f.read_text(encoding="utf-8"))
+        if not meta.get("title"):
+            raise SystemExit(f"essay {f.name}: missing title")
+        if not meta.get("description"):
+            raise SystemExit(f"essay {f.name}: missing description")
+        if not meta.get("published"):
+            raise SystemExit(f"essay {f.name}: missing published date")
+        aud = str(meta.get("audience") or "intl").lower()
+        if aud not in AUDIENCE_LABELS:
+            raise SystemExit(f"essay {f.name}: audience must be one of {sorted(AUDIENCE_LABELS)}")
+        meta["audience"] = aud
+        meta["slug"] = f.stem
+        meta["body"] = body
+        out.append(meta)
+    out.sort(key=lambda e: (str(e.get("published")), e["slug"]), reverse=True)
+    return out
+
+
+ESSAYS = load_essays()
+
+
+def essay_card(e: dict) -> str:
+    label = AUDIENCE_LABELS[e["audience"]]
+    return (f'<article class="guide-card"><p class="kicker">'
+            f'<span class="kicker-dot"></span>{esc(label)}</p>'
+            f'<h3><a href="/essays/{esc(e["slug"])}/">{esc(e["title"])}</a></h3>'
+            f'<p>{esc(e.get("description", ""))}</p>'
+            f'<p class="meta"><time datetime="{esc(str(e["published"]))}">'
+            f'{esc(str(e["published"]))}</time></p></article>')
+
+
+def essays_index() -> None:
+    if ESSAYS:
+        cards = "".join(essay_card(e) for e in ESSAYS)
+        grid = f'<div class="guide-grid">{cards}</div>'
+        count_line = (f'<div class="source-line"><span><b>{len(ESSAYS)}</b> '
+                      f'{"essay" if len(ESSAYS) == 1 else "essays"} published</span>'
+                      f'<span><b>{len(GUIDES)}</b> how-to guides</span></div>')
+    else:
+        grid = ('<div class="prose"><p>The first essays are being written. '
+                'In the meantime, the <a href="/learn/">guide library</a> covers '
+                'the practical side.</p></div>')
+        count_line = ""
+    body = f'''<div class="wrap">{breadcrumb(("Essays", ""))}
+<section class="page-hero"><p class="kicker"><span class="kicker-dot"></span>Essays</p>
+<h1>Essays on writing and getting published</h1>
+<p>Arguments, not instructions. Where the <a href="/learn/">guides</a> tell you how to
+do something, these make a case about the business of writing — what markets pay,
+what editors actually want, and how the ground is shifting.</p>
+{count_line}</section>
+<section class="section">{grid}</section>
+<section class="section alt"><div class="wrap"><div class="section-head"><div>
+<p class="eyebrow">Put it to work</p><h2>Every essay points back to real, paid markets.</h2></div></div>
+<div class="actions"><a class="btn" href="/writing/">Browse paid opportunities →</a>
+<a class="btn secondary" href="/learn/">How-to guides</a></div></div></section></div>'''
+    write("/essays/", page_wf(
+        title="Essays on writing and getting published | BRYME",
+        description=("BRYME's essays on the business of writing — what publications pay, "
+                     "what editors want, and how the market is changing."),
+        route="/essays/", current="essays", body=body,
+        schema_data={"@context": "https://schema.org", "@type": "CollectionPage",
+                     "name": "BRYME Essays",
+                     "description": "Essays on writing, publishing and paid markets.",
+                     "url": BASE + "/essays/",
+                     "publisher": {"@type": "Organization", "name": "BRYME", "url": BASE + "/"}}))
+
+
+def essay_page(e: dict) -> None:
+    label = AUDIENCE_LABELS[e["audience"]]
+    published = str(e["published"])
+    updated = str(e.get("updated") or published)
+    dek = e.get("dek")
+    dek_html = f'<p class="essay-dek">{esc(dek)}</p>' if dek else ""
+    body = f'''<div class="wrap">{breadcrumb(("Essays", "/essays/"), (e["title"], ""))}
+<section class="page-hero"><p class="kicker"><span class="kicker-dot"></span>Essay · {esc(label)}</p>
+<h1>{esc(e["title"])}</h1>
+{dek_html}
+<p class="byline">By <a href="/author/ibrahim-sodiq/">Ibrahim Sodiq</a> ·
+<time datetime="{esc(published)}">{esc(published)}</time></p>
+<a class="btn secondary" href="/essays/">← All essays</a></section>
+<section class="section"><div class="prose">{render_md(e["body"])}</div></section></div>
+{related_links(e.get("related", []))}'''
+    write(f"/essays/{e['slug']}/", page_wf(
+        title=f"{e['title']} | BRYME",
+        description=e.get("description", ""),
+        route=f"/essays/{e['slug']}/",
+        current="essays", body=body,
+        schema_data={"@context": "https://schema.org", "@type": "Article",
+                     "headline": e["title"], "description": e.get("description", ""),
+                     "url": f"{BASE}/essays/{e['slug']}/",
+                     "datePublished": published + "T00:00:00+01:00",
+                     "dateModified": updated + "T00:00:00+01:00",
+                     "author": {"@type": "Person", "name": "Ibrahim Sodiq",
+                                "url": BASE + "/author/ibrahim-sodiq/"},
+                     "publisher": {"@type": "Organization", "name": "BRYME", "url": BASE + "/"},
+                     "mainEntityOfPage": f"{BASE}/essays/{e['slug']}/"}))
+
 def build() -> None:
     prune_stale_guides()
     homepage()
@@ -1452,7 +1596,10 @@ def build() -> None:
     compare_index()
     regional_page()
     intelligence_hub()
-    print(f"wrote hub: {len(GUIDES)} guides, {len(TOOLS)} tools, {len(SECTIONS['sections'])} sections, /search/ + /glossary/ + /templates/ + /checklists/ + /problems/")
+    essays_index()
+    for _e in ESSAYS:
+        essay_page(_e)
+    print(f"wrote hub: {len(GUIDES)} guides, {len(ESSAYS)} essays, {len(TOOLS)} tools, {len(SECTIONS['sections'])} sections, /search/ + /glossary/ + /templates/ + /checklists/ + /problems/")
 
 
 if __name__ == "__main__":
