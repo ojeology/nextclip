@@ -550,5 +550,21 @@
   "australian-book-review": {
     "base": "AU",
     "label": "Australia"
+  },
+  "high-country-news": {
+    "base": "US",
+    "label": "United States"
+  },
+  "one-story": {
+    "base": "US",
+    "label": "United States"
+  },
+  "ecotone": {
+    "base": "US",
+    "label": "United States"
+  },
+  "orion-magazine": {
+    "base": "US",
+    "label": "United States"
   }
 }

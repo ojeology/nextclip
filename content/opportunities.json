@@ -289,7 +289,7 @@
           "url": "https://efikomag.com/submission-guidelines/"
         }
       ],
-      "lastVerified": "2026-08-19",
+      "lastVerified": "2026-09-06",
       "publishedAt": "2026-08-19",
       "eligibility": {
         "summary": "Writers of African origin based anywhere in the world, or anyone writing about Africa.",
@@ -315,7 +315,7 @@
         "amountMin": 20000,
         "amountMax": 30000,
         "display": "₦20,000 or ₦30,000 (Nigerian bank account)",
-        "conditions": "For contributors with a Nigerian bank account: ₦30,000 for 2 or more poems, or for prose over 2,500 published words; ₦20,000 for accepted submissions below those thresholds. Paid upon publication. Contributors with non-Nigerian bank accounts currently receive a novel or nonfiction book by a selected African author if Amazon delivers to their country, value capped at $35 including processing — not a cash fee. Do not describe Efiko as paying every contributor ₦30,000.",
+        "conditions": "Official: for contributors with a Nigerian bank account, ₦30,000 for 2 or more poems and for prose over 2,500 published words. Accepted submissions below those lengths attract ₦20,000. Re-read on the guidelines page 2026-09-06.",
         "timing": "Processed upon publication."
       },
       "wordCount": {
@@ -329,12 +329,11 @@
         "band": "1-3-months",
         "official": true
       },
-      "submissionStatus": "deadline",
+      "submissionStatus": "closed",
       "deadline": {
+        "display": "The 8th-edition window closed on 30 August 2026. Efiko deletes work sent outside a submission window.",
         "date": "2026-08-30",
-        "display": "8th edition window closes 30 August 2026",
-        "windowEnd": "2026-08-30",
-        "recurring": false
+        "recurring": true
       },
       "aiPolicy": "not-stated",
       "experience": "not-stated",
@@ -3035,7 +3034,7 @@
     {
       "status": "published",
       "vertical": "writing",
-      "lastVerified": "2026-08-19",
+      "lastVerified": "2026-09-06",
       "publishedAt": "2026-08-19",
       "experience": "not-stated",
       "editorExperience": {
@@ -3071,7 +3070,7 @@
         "amountMin": 40,
         "amountMax": 40,
         "display": "$40 per poem",
-        "conditions": "Official poetry rate only.",
+        "conditions": "Official: “Payment is $40 per poem.” Re-confirmed on the submissions page 2026-09-06.",
         "timing": "Not publicly stated"
       },
       "wordCount": {
@@ -3084,13 +3083,10 @@
         "band": "1-3-months",
         "official": true
       },
-      "submissionStatus": "deadline",
+      "submissionStatus": "closed",
       "deadline": {
-        "date": "2026-08-31",
-        "display": "Poetry window 17–31 August 2026",
-        "windowStart": "2026-08-17",
-        "windowEnd": "2026-08-31",
-        "recurring": false
+        "display": "Closed. As of 6 September 2026 Uncanny is open to short fiction only (24 August – 7 September); it states it is closed to all other submissions, poetry included. Watch their newsletter for the next poetry window.",
+        "recurring": true
       },
       "aiPolicy": "prohibited",
       "whatTheyWant": [
@@ -3120,7 +3116,7 @@
     {
       "status": "published",
       "vertical": "writing",
-      "lastVerified": "2026-08-19",
+      "lastVerified": "2026-09-06",
       "publishedAt": "2026-08-19",
       "experience": "not-stated",
       "editorExperience": {
@@ -3157,10 +3153,10 @@
       "writingTypeLabel": "Themed fiction or non-fiction",
       "pay": {
         "currency": "AUD",
-        "amountMin": null,
-        "amountMax": null,
-        "display": "AUD$0.75 per word (print)",
-        "conditions": "Official: fiction and non-fiction commissioned for the print edition is paid at AUD$0.75 per word. Poetry is AUD$200 per poem. GR Online is a flat AUD$500 — that is a different door, opened only in occasional call-outs.",
+        "amountMin": 200,
+        "amountMax": 500,
+        "display": "AUD$0.75/word print · AUD$200 poetry · AUD$500 online",
+        "conditions": "Official rate card, re-read 2026-09-06: fiction and non-fiction commissioned for the print edition is paid at AUD$0.75 per word; poetry at AUD$200 per poem; online pieces at a flat AUD$500. All online content sits in front of the paywall.",
         "timing": "Not publicly stated on the For Writers page"
       },
       "wordCount": {
@@ -3173,13 +3169,11 @@
         "band": "1-3-months",
         "official": true
       },
-      "submissionStatus": "deadline",
+      "submissionStatus": "closed",
       "deadline": {
+        "display": "This call has closed. Griffith Review 95: Bodies of Work publishes February 2027. Griffith Review announces new call-outs through its news page and social channels rather than a fixed annual calendar.",
         "date": "2026-08-23",
-        "display": "Closes 11.59pm AEST, 23 August 2026",
-        "windowStart": "2026-07-13",
-        "windowEnd": "2026-08-23",
-        "recurring": false
+        "recurring": true
       },
       "aiPolicy": "disclosure-required",
       "whatTheyWant": [
@@ -4166,7 +4160,7 @@
     {
       "status": "published",
       "vertical": "writing",
-      "lastVerified": "2026-08-19",
+      "lastVerified": "2026-09-06",
       "publishedAt": "2026-08-19",
       "experience": "not-stated",
       "editorExperience": {
@@ -4209,7 +4203,7 @@
         "amountMin": null,
         "amountMax": null,
         "display": "Honorarium — amount not published",
-        "conditions": "Official FAQ: TMR pays all contributors an honorarium within 30 days of publication. The page does not state a dollar figure.",
+        "conditions": "Official: The Markaz Review is a nonprofit and pays all contributors an honorarium within 30 days of publication. No figure is published, so BRYME states none. Re-read 2026-09-06.",
         "timing": "Within 30 days of publication"
       },
       "wordCount": {
@@ -4222,12 +4216,9 @@
         "band": "not-stated",
         "official": false
       },
-      "submissionStatus": "open",
+      "submissionStatus": "rolling",
       "deadline": {
-        "date": "2026-09-01",
-        "display": "Comedy issue: 1 September 2026. Year-round submissions also invited.",
-        "windowEnd": "2026-09-01",
-        "recurring": false
+        "display": "Year-round. The Markaz Review runs six bimonthly themed issues plus regular weekly pieces, and invites submissions all year round. Individual themed calls carry their own deadlines — the humour issue closed 1 September 2026."
       },
       "aiPolicy": "prohibited",
       "whatTheyWant": [
@@ -11829,6 +11820,371 @@
         "essays",
         "criticism",
         "aud"
+      ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-06",
+      "publishedAt": "2026-09-06",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "high-country-news",
+      "slug": "high-country-news",
+      "publication": "High Country News",
+      "title": "Reported stories and essays about the American West",
+      "seoTitle": "High Country News: $1 a word for reported content",
+      "excerpt": "High Country News pays $1 per word for reported content and 50 cents per word for essays and reviews, at the same rate whether the work runs in print, online or both. It covers the American West and takes pitches year-round.",
+      "officialUrl": "https://www.hcn.org/submissions/",
+      "applyUrl": "mailto:pitches@hcn.org",
+      "applyEmail": "pitches@hcn.org",
+      "applyMethod": "Email pitch to pitches@hcn.org",
+      "sources": [
+        {
+          "name": "High Country News — Submission Guidelines (official)",
+          "url": "https://www.hcn.org/submissions/"
+        }
+      ],
+      "eligibility": {
+        "summary": "No nationality restriction stated. The subject matter is the American West, so the work needs a genuine connection to the region rather than the writer needing one.",
+        "mode": "not-stated",
+        "notStated": true
+      },
+      "writingTypes": [
+        "journalism",
+        "essays",
+        "reviews",
+        "analysis",
+        "interviews"
+      ],
+      "writingTypeLabel": "Reported stories, essays and reviews",
+      "pay": {
+        "currency": "USD",
+        "amountMin": null,
+        "amountMax": null,
+        "display": "$1/word reported · 50¢/word essays and reviews",
+        "conditions": "Official: \"HCN pays $1/word for reported content and .50/word for essays and reviews. Our rates are the same whether the material is published in print, online or both.\" Per repo convention a per-word rate carries no piece figure. For story forms other than straight text, rates are set case by case.",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "min": 600,
+        "max": 8000,
+        "display": "Short-form reported 650–2,500 · essays 600–2,500 · features 2,500–8,000"
+      },
+      "response": {
+        "label": "Not stated",
+        "band": "not-stated",
+        "official": false
+      },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "not-stated",
+      "whatTheyWant": [
+        "Short-form reported stories of 650–2,500 words on conservation, housing, wildfire, transportation, recreation, climate change and Indigenous affairs.",
+        "Essays about life in the West, 600–2,500 words. They prefer to read a full draft of an essay rather than a pitch, because essays are hard to judge from a pitch.",
+        "Features of 2,500–8,000 words that are deeply reported, with a well-researched pitch and a realistic reporting plan."
+      ],
+      "whatTheyDontWant": [
+        "Phone calls — the guidelines ask for none.",
+        "Pitches with no reporting plan behind them."
+      ],
+      "requirements": [
+        "Email pitches@hcn.org",
+        "Reporting plan for features",
+        "Full draft preferred for essays"
+      ],
+      "rights": "Not stated on the submissions page.",
+      "howToSubmit": [
+        "Read https://www.hcn.org/submissions/ and recent coverage to find the section you fit.",
+        "For essays, write the draft — they would rather read it than a pitch.",
+        "Email pitches@hcn.org. No phone calls."
+      ],
+      "keywords": [
+        "high country news",
+        "american west",
+        "reported",
+        "essays",
+        "environment",
+        "usd"
+      ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-06",
+      "publishedAt": "2026-09-06",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "one-story",
+      "slug": "one-story",
+      "publication": "One Story",
+      "title": "Literary short fiction",
+      "seoTitle": "One Story: $500 for a single short story",
+      "excerpt": "One Story publishes exactly one story per issue and pays $500 plus 25 contributor copies. It takes literary fiction of 3,000–8,000 words. The spring 2026 window hit its submission cap; the guidelines say submissions reopen in fall 2026.",
+      "officialUrl": "https://one-story.com/write/submit-a-story/",
+      "applyUrl": "https://one-story.submittable.com/submit",
+      "applyEmail": null,
+      "applyMethod": "Submittable",
+      "sources": [
+        {
+          "name": "One Story — Submission Guidelines (official)",
+          "url": "https://one-story.com/write/submit-a-story/"
+        }
+      ],
+      "eligibility": {
+        "summary": "No nationality restriction stated on the guidelines page.",
+        "mode": "not-stated",
+        "notStated": true
+      },
+      "writingTypes": [
+        "fiction"
+      ],
+      "writingTypeLabel": "Literary short fiction",
+      "pay": {
+        "currency": "USD",
+        "amountMin": 500,
+        "amountMax": 500,
+        "display": "$500 plus 25 contributor copies",
+        "conditions": "Official: \"One Story pays $500 and 25 contributors copies for First Serial North American rights. All rights will revert to the author following publication.\"",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "min": 3000,
+        "max": 8000,
+        "display": "3,000–8,000 words"
+      },
+      "response": {
+        "label": "Not stated",
+        "band": "not-stated",
+        "official": false
+      },
+      "submissionStatus": "upcoming",
+      "deadline": {
+        "display": "The guidelines state the spring 2026 submission cap was reached and that submissions reopen in fall 2026. Check their Submittable before preparing anything — caps close windows early.",
+        "recurring": true
+      },
+      "aiPolicy": "not-stated",
+      "whatTheyWant": [
+        "Literary fiction of 3,000–8,000 words, any style, any subject.",
+        "Stories that leave a reader satisfied and are strong enough to stand alone — the whole issue is your story.",
+        "A cover letter with the word count and a short biographical statement, and the story as a PDF."
+      ],
+      "whatTheyDontWant": [
+        "Work previously published online anywhere — blogs, personal sites, online magazines or forums. Work published in print outside North America will be considered.",
+        "A second story before your first has had a response.",
+        "An expectation of feedback: they state plainly that they do not send comments."
+      ],
+      "requirements": [
+        "Submittable",
+        "PDF preferred",
+        "Word count in the cover letter",
+        "One story at a time"
+      ],
+      "rights": "First Serial North American rights. All rights revert to the author following publication.",
+      "howToSubmit": [
+        "Wait for an open window — the cap closes it early.",
+        "Prepare a 3,000–8,000 word story as a PDF with a cover letter stating the word count.",
+        "Submit through Submittable."
+      ],
+      "keywords": [
+        "one story",
+        "literary fiction",
+        "short story",
+        "500",
+        "usa",
+        "usd"
+      ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-06",
+      "publishedAt": "2026-09-06",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "ecotone",
+      "slug": "ecotone",
+      "publication": "Ecotone",
+      "title": "Fiction, non-fiction and poetry about place",
+      "seoTitle": "Ecotone: honorarium with a $100 minimum",
+      "excerpt": "Ecotone, published at UNC Wilmington, pays an honorarium with a $100 minimum plus two copies and a year's subscription. Its writing is about \"reimagining place.\" The general fall 2026 window has closed, but current subscribers can submit fee-free through September.",
+      "officialUrl": "https://ecotonemagazine.org/submissions/",
+      "applyUrl": "https://ecotone.submittable.com/submit",
+      "applyEmail": null,
+      "applyMethod": "Submittable, or by post during a reading period",
+      "sources": [
+        {
+          "name": "Ecotone — Submissions (official)",
+          "url": "https://ecotonemagazine.org/submissions/"
+        }
+      ],
+      "eligibility": {
+        "summary": "No nationality restriction stated. Postal submissions are accepted from within the United States only; everyone else uses Submittable.",
+        "mode": "not-stated",
+        "notStated": true
+      },
+      "writingTypes": [
+        "fiction",
+        "creative-nonfiction",
+        "poetry"
+      ],
+      "writingTypeLabel": "Fiction, non-fiction and poetry about place",
+      "pay": {
+        "currency": "USD",
+        "amountMin": 100,
+        "amountMax": null,
+        "display": "Honorarium, $100 minimum",
+        "conditions": "Official: \"Contributors receive an honorarium upon publication, with a $100 minimum; two copies of the issue in which their work appears; and a one-year subscription beginning with the subsequent issue.\" No maximum is published.",
+        "timing": "Upon publication"
+      },
+      "wordCount": {
+        "min": null,
+        "max": null,
+        "display": "Up to 30 pages"
+      },
+      "response": {
+        "label": "Not stated",
+        "band": "not-stated",
+        "official": false
+      },
+      "submissionStatus": "deadline",
+      "deadline": {
+        "display": "The general fall 2026 window closed early due to overwhelming response. Ecotone is open to fee-free submissions from current subscribers for the month of September 2026. Two general reading periods a year begin in January/February and August/September, plus a Valentine's Day window.",
+        "windowEnd": "2026-09-30",
+        "recurring": true
+      },
+      "aiPolicy": "not-stated",
+      "whatTheyWant": [
+        "Writing that reimagines place — fiction, creative non-fiction and poetry rooted in the natural world.",
+        "One submission per reading period: one in fall, one in spring, one in the Valentine's Day window.",
+        "Postal submissions, which they keep open deliberately as a fee-free route during general reading periods."
+      ],
+      "whatTheyDontWant": [
+        "More than one submission in a reading period.",
+        "Postal submissions from outside the United States, or outside a reading period."
+      ],
+      "requirements": [
+        "Submittable or post",
+        "September 2026 is subscribers only",
+        "One submission per reading period"
+      ],
+      "rights": "Not stated on the submissions page.",
+      "howToSubmit": [
+        "Check the current window — Ecotone closes early when response is heavy.",
+        "If you subscribe, September 2026 is open to you fee-free.",
+        "Submit through Submittable, or by post from within the US during a reading period."
+      ],
+      "keywords": [
+        "ecotone",
+        "place",
+        "nature writing",
+        "unc wilmington",
+        "usa",
+        "usd"
+      ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-06",
+      "publishedAt": "2026-09-06",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "orion-magazine",
+      "slug": "orion-magazine",
+      "publication": "Orion Magazine",
+      "title": "Nonfiction pitches and poetry on nature, culture and place",
+      "seoTitle": "Orion Magazine: $200 per poem, poetry call 10–15 September 2026",
+      "excerpt": "Orion pays $200 for poems accepted into its Spring 2027 Memory and Place issue, with the call open 10–15 September 2026 or until 800 submissions arrive. It also opens twice a year for digital nonfiction pitches, and refuses AI-assisted work outright.",
+      "officialUrl": "https://orionmagazine.org/submission-guidelines/",
+      "applyUrl": "https://orion.submittable.com/submit",
+      "applyEmail": "dearorion@orionmagazine.org",
+      "applyMethod": "Submittable during an open call",
+      "sources": [
+        {
+          "name": "Orion Magazine — Submission Guidelines (official)",
+          "url": "https://orionmagazine.org/submission-guidelines/"
+        }
+      ],
+      "eligibility": {
+        "summary": "No nationality restriction stated on the guidelines page.",
+        "mode": "not-stated",
+        "notStated": true
+      },
+      "writingTypes": [
+        "poetry",
+        "essays",
+        "creative-nonfiction"
+      ],
+      "writingTypeLabel": "Nonfiction pitches and poetry",
+      "pay": {
+        "currency": "USD",
+        "amountMin": 200,
+        "amountMax": 200,
+        "display": "$200 per poem",
+        "conditions": "Official, for the 2026 poetry call: \"We will pay $200 for accepted works.\" Orion does not publish a rate for its digital or print nonfiction on this page, so BRYME states none for those.",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "min": null,
+        "max": 2000,
+        "display": "Poems max 2 pages · digital pieces unlikely over 2,000 words"
+      },
+      "response": {
+        "label": "Within three months; poetry responses by early 2027",
+        "band": "3-plus-months",
+        "official": true
+      },
+      "submissionStatus": "deadline",
+      "deadline": {
+        "date": "2026-09-15",
+        "display": "Poetry call open 10–15 September 2026, or until 800 submissions are received — whichever comes first. Digital nonfiction pitches open 1 September and 1 February each year for two weeks.",
+        "windowStart": "2026-09-10",
+        "windowEnd": "2026-09-15",
+        "recurring": true
+      },
+      "aiPolicy": "prohibited",
+      "whatTheyWant": [
+        "One poem per poet for the Spring 2027 Memory and Place issue, no longer than two single-spaced pages, guest-edited by Pádraig Ó Tuama with poetry editor Roger Reeves.",
+        "Digital nonfiction pitches of up to 400 words — short essays, food pieces, enumerations, conversations, graphic stories and art portfolios.",
+        "Full drafts for short digital pieces under 1,000 words, where a pitch is harder than just reading it.",
+        "Work that expands or challenges an understanding of nature, culture and place."
+      ],
+      "whatTheyDontWant": [
+        "AI-assisted work of any kind. Orion states this three separate times on the page, for print, digital and poetry alike.",
+        "Straight exposés of environmental catastrophe, or conceptual work stretched to fit a nature theme.",
+        "Submissions outside an open window — they state they have no capacity to consider them.",
+        "Fiction, book reviews, op-eds or press releases."
+      ],
+      "requirements": [
+        "Submittable",
+        "Open window only",
+        "One poem, max 2 pages",
+        "No AI-assisted work"
+      ],
+      "rights": "Not stated on the guidelines page.",
+      "howToSubmit": [
+        "Read https://orionmagazine.org/submission-guidelines/ and recent issues.",
+        "For the poetry call, submit one poem between 10 and 15 September 2026 — it closes at 800 submissions.",
+        "For digital nonfiction, watch the 1 September and 1 February two-week windows."
+      ],
+      "keywords": [
+        "orion",
+        "nature",
+        "place",
+        "poetry",
+        "environment",
+        "usa",
+        "usd",
+        "no ai"
       ]
     }
   ]
