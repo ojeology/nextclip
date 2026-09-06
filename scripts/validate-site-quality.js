@@ -11,6 +11,11 @@ const read=r=>fs.readFileSync(path.join(ROOT,r),"utf8");
 const json=r=>JSON.parse(read(r));
 const site=String(json("site.config.json").siteUrl).replace(/\/$/,"");
 const allowDoc=json("content/index-allowlist.json"), allow=new Set(allowDoc.routes);
+// Every page under /writing/ must be either a real publication record or an
+// explicitly declared non-record child. Declaring them here keeps the check
+// strict: an unexpected /writing/ page is now a failure, not a silent count.
+const PUB_SLUGS=new Set(json("content/opportunities.json").opportunities.map(o=>o.slug));
+const NON_PUB_WRITING=new Set(["by-country"]);
 const verification=new Set(["google2ec8f794263d784f.html","yandex_78fdd841f95fa2e1.html","1740cdb82c02b9af13911b38c853e85d2f708322fa0c2c55.txt"]);
 function walk(dir,out=[]){for(const e of fs.readdirSync(dir,{withFileTypes:true})){if([".git","node_modules","reports","public"].includes(e.name))continue;const p=path.join(dir,e.name);e.isDirectory()?walk(p,out):out.push(p)}return out}
 const rel=p=>path.relative(ROOT,p).replace(/\\/g,"/");
@@ -67,13 +72,15 @@ for(const file of htmlFiles){
    const name=Array.isArray(e.author)?e.author[0]?.name:e.author?.name;if(name&&!visible(s).toLowerCase().includes(String(name).toLowerCase()))fail(`${r}: schema author is not visible`);
   }
  }
- if(/^\/writing\/[^/]+\/$/.test(r))pubRecords++;
+ {const wm=/^\/writing\/([^/]+)\/$/.exec(r);
+  if(wm){ if(PUB_SLUGS.has(wm[1]))pubRecords++;
+          else if(!NON_PUB_WRITING.has(wm[1]))fail(`unexpected page under /writing/: ${r}`); }}
  if(wanted&&!QUICK){
   let m,ar=/\b(?:href|src)=["']([^"']+)["']/gi;while((m=ar.exec(s))){const v=m[1];if(!v||/^(?:#|mailto:|tel:|javascript:|data:|https?:\/\/)/i.test(v))continue;let p;try{p=new URL(v,site+r).pathname}catch{fail(`${r}: malformed local reference ${v}`);continue}let t=path.join(ROOT,p.replace(/^\//,"")),exists=fs.existsSync(t);if(exists&&fs.statSync(t).isDirectory())exists=fs.existsSync(path.join(t,"index.html"));if(!exists&&!path.extname(p))exists=fs.existsSync(path.join(t,"index.html"));if(!exists&&!redirectSources.has(norm(p)))fail(`${r}: missing local target ${v}`)}
  }
 }
 if(indexed!==allow.size)fail(`indexable count ${indexed} does not equal allowlist ${allow.size}`);
-const expectedPubs=json("content/opportunities.json").opportunities.length;
+const expectedPubs=PUB_SLUGS.size;
 if(pubRecords!==expectedPubs)fail(`expected ${expectedPubs} indexed publication records under /writing/, found ${pubRecords}`);
 const sitemapRoutes=[...read("sitemap.xml").matchAll(/<loc>(.*?)<\/loc>/g)].map(m=>norm(m[1]));
 if(sitemapRoutes.length!==allow.size)fail(`sitemap has ${sitemapRoutes.length}, expected ${allow.size}`);

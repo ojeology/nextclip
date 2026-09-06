@@ -1402,7 +1402,7 @@ def compare_index() -> None:
 <h2>Describe it instead.</h2></div></div>
 <div class="card-grid">
 <a class="path-card" href="/find/"><span class="card-num">FIND</span><h3>Say what you want to write</h3><p>Skip the format names entirely and describe the task.</p><span class="card-link">Open the finder →</span></a>
-<a class="path-card" href="/regional/"><span class="card-num">WORLD</span><h3>Writing by country</h3><p>Spelling, dates, letters and CV conventions that change across borders.</p><span class="card-link">See the differences →</span></a>
+<a class="path-card" href="/writing/by-country/"><span class="card-num">WORLD</span><h3>Writing by country</h3><p>Pick your country: publications based there, and publications open to you.</p><span class="card-link">Find your country →</span></a>
 </div></div></section>'''
     write("/compare/", page_wf(
         title="Compare writing formats: essay vs article, CV vs r\u00e9sum\u00e9 and more | BRYME",

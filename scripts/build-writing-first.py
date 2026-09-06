@@ -51,7 +51,7 @@ def footer() -> str:
     """Writing Hub footer."""
     return '''<footer class="site-foot"><div class="wrap foot-grid">
   <div class="foot-brand"><a class="logo" href="/"><span class="logo-mark" aria-hidden="true">B</span>BRYME</a><p>BRYME is a free writing resource — guides, tools, and verified opportunities to get published and paid.</p></div>
-  <div class="foot-col"><b>How to write</b><a href="/start/">Beginner path</a><a href="/find/">What do you want to write?</a><a href="/intelligence/">Writing Intelligence</a><a href="/compare/">Compare formats</a><a href="/regional/">Writing by country</a><a href="/learn/">Writing hub</a><a href="/learn/examples/">Examples</a><a href="/learn/dos-and-donts/">Dos &amp; don'ts</a><a href="/learn/types-of-writing/">Types of writing</a><a href="/learn/grammar-language/">Grammar</a></div>
+  <div class="foot-col"><b>How to write</b><a href="/start/">Beginner path</a><a href="/find/">What do you want to write?</a><a href="/intelligence/">Writing Intelligence</a><a href="/compare/">Compare formats</a><a href="/writing/by-country/">Writing by country</a><a href="/regional/">Writing conventions</a><a href="/learn/">Writing hub</a><a href="/learn/examples/">Examples</a><a href="/learn/dos-and-donts/">Dos &amp; don'ts</a><a href="/learn/types-of-writing/">Types of writing</a><a href="/learn/grammar-language/">Grammar</a></div>
   <div class="foot-col"><b>Tools &amp; publish</b><a href="/tools/">Writing tools</a><a href="/templates/">Templates</a><a href="/checklists/">Checklists</a><a href="/writing/">Paid opportunities</a><a href="/writing-opportunities/">Browse by country</a><a href="/today/">Today&rsquo;s opportunities</a><a href="/tracker/">Submission tracker</a><a href="/tested/">BRYME Tested</a></div>
   <div class="foot-col"><b>Trust</b><a href="/about/">About</a><a href="/verification/">What statuses mean</a><a href="/editorial-policy/">Editorial policy</a><a href="/corrections/">Corrections</a><a href="/privacy/">Privacy</a><a href="/contact/">Contact</a></div>
   <div class="foot-col"><b>Legal</b><a href="/terms/">Terms</a><a href="/disclaimer/">Disclaimer</a><a href="/copyright/">Copyright</a></div>
@@ -240,7 +240,8 @@ HOWTO_LINKS = [
     ("find", "/find/", "What do you want to write?"),
     ("intelligence", "/intelligence/", "Intelligence"),
     ("compare", "/compare/", "Compare formats"),
-    ("regional", "/regional/", "By country"),
+    ("by-country", "/writing/by-country/", "By country"),
+    ("regional", "/regional/", "Conventions"),
     ("learn", "/learn/", "All how-tos"),
     ("examples", "/learn/examples/", "Examples"),
     ("dos-and-donts", "/learn/dos-and-donts/", "Dos & don'ts"),
@@ -538,7 +539,7 @@ def drawer(current: str = "") -> str:
     return f'''<div id="drawer-backdrop"></div>
 <aside id="site-drawer" aria-hidden="true" aria-label="Site menu" role="dialog" aria-modal="true">
   <div class="drawer-head"><a class="logo" href="/"><span class="logo-mark" aria-hidden="true">B</span>BRYME</a><button type="button" class="drawer-close" data-drawer-close aria-label="Close menu"><svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
-  {group("Start here", [("home", "/", "Home", "🏠"), ("start", "/start/", "Complete beginner path", "🧭"), ("find", "/find/", "What do you want to write?", "❓"), ("intelligence", "/intelligence/", "Writing Intelligence", "🧭"), ("compare", "/compare/", "Compare formats", "⚖️"), ("essays", "/essays/", "Essays", "✍️"), ("today", "/today/", "Today's opportunities", "📅"), ("tracker", "/tracker/", "Submission tracker", "📋"), ("regional", "/regional/", "Writing by country", "🌍"), ("search", "/search/", "Search BRYME", "🔍")])}
+  {group("Start here", [("home", "/", "Home", "🏠"), ("start", "/start/", "Complete beginner path", "🧭"), ("find", "/find/", "What do you want to write?", "❓"), ("intelligence", "/intelligence/", "Writing Intelligence", "🧭"), ("compare", "/compare/", "Compare formats", "⚖️"), ("essays", "/essays/", "Essays", "✍️"), ("today", "/today/", "Today's opportunities", "📅"), ("tracker", "/tracker/", "Submission tracker", "📋"), ("by-country", "/writing/by-country/", "Writing by country", "🌍"), ("search", "/search/", "Search BRYME", "🔍")])}
   {group("How to write", howto)}
   {group("Tools & templates", tools)}
   {group("Write & get paid", write)}
@@ -1050,6 +1051,170 @@ def _prog_page(slug: str, h1: str, kicker: str, intro: str, note: str,
 
 PROG_ROUTES: list[str] = []
 
+
+
+# ---------------------------------------------------------------------------
+# Country discovery — the front door for "what can I pitch from here?"
+#
+# Everything on this page is server-rendered, including every count. The search
+# box only hides cards that are already present in the HTML, so the page is
+# complete and usable with JavaScript disabled.
+#
+# Two counts per country, deliberately not merged into one:
+#   based here    - publications headquartered in that country
+#   open to you   - publications whose OWN guideline confirms they accept you:
+#                   explicitly open/worldwide, plus anything based there, plus
+#                   restricted calls that name the writer's region.
+#
+# The "open to you" figure deliberately EXCLUDES records whose eligibility is
+# not stated. BRYME's standing rule is that silence is not an open call, and
+# counting silence would inflate every country to about 125 and tell a writer
+# nothing useful. Those records get their own separate count on each card.
+# ---------------------------------------------------------------------------
+COUNTRY_FLAGS = {"US": "\U0001F1FA\U0001F1F8", "UK": "\U0001F1EC\U0001F1E7",
+                 "CA": "\U0001F1E8\U0001F1E6", "AU": "\U0001F1E6\U0001F1FA",
+                 "NG": "\U0001F1F3\U0001F1EC", "ZA": "\U0001F1FF\U0001F1E6",
+                 "KE": "\U0001F1F0\U0001F1EA", "IE": "\U0001F1EE\U0001F1EA",
+                 "DE": "\U0001F1E9\U0001F1EA", "NA": "\U0001F1F3\U0001F1E6",
+                 "NP": "\U0001F1F3\U0001F1F5"}
+
+REGION_MEMBERS = {
+    "africa": {"NG", "KE", "ZA", "NA", "GH", "ET", "TZ", "UG", "RW", "SN", "EG", "MA"},
+    "uk": {"UK"}, "ireland": {"IE"}, "canada": {"CA"},
+    "australia": {"AU"}, "new-zealand": {"NZ"},
+}
+COUNTRY_PAGE_SLUG = {"US": "usa", "NG": "nigeria", "UK": "united-kingdom",
+                     "CA": "canada", "AU": "australia"}
+
+
+def _elig_mode(rec: dict) -> str:
+    return (rec.get("eligibility") or {}).get("mode") or "not-stated"
+
+
+def _names_your_region(rec: dict, iso: str) -> bool:
+    """True when a restricted call explicitly names the writer's region."""
+    for reg in ((rec.get("eligibility") or {}).get("includesRegions") or []):
+        if iso in REGION_MEMBERS.get(reg, set()):
+            return True
+    return False
+
+
+def country_discovery_page() -> None:
+    by_base: dict[str, list] = {}
+    for r in WRITING:
+        b = (base_country(r["slug"]) or "").upper()
+        if b:
+            by_base.setdefault(b, []).append(r)
+
+    worldwide = [r for r in WRITING if _elig_mode(r) in ("open", "worldwide")]
+    n_worldwide = len(worldwide)
+    ww_slugs = {r["slug"] for r in worldwide}
+
+    rows = []
+    for iso, based in sorted(by_base.items(), key=lambda kv: (-len(kv[1]), country_name(kv[0]))):
+        name = country_name(iso)
+        based_slugs = {r["slug"] for r in based}
+        extras = [r for r in WRITING
+                  if _elig_mode(r) == "restricted" and _names_your_region(r, iso)
+                  and r["slug"] not in based_slugs]
+        confirmed = ww_slugs | {r["slug"] for r in based} | {r["slug"] for r in extras}
+        n_conf = len(confirmed)
+        n_silent = sum(1 for r in WRITING
+                       if _elig_mode(r) in ("not-stated", "unknown")
+                       and r["slug"] not in confirmed)
+
+        # A country with only one or two publications gets links straight to
+        # those records rather than a near-empty listing page.
+        if iso in COUNTRY_PAGE_SLUG and len(based) >= MIN_COUNTRY_PAGE:
+            based_cta = ('<div class="actions"><a class="btn secondary" href='
+                         '"/writing-opportunities/' + esc(COUNTRY_PAGE_SLUG[iso]) + '/">'
+                         'See all ' + str(len(based)) + ' based in ' + esc(name)
+                         + ' &rarr;</a></div>')
+        else:
+            links = " &middot; ".join(
+                '<a href="/writing/' + esc(r["slug"]) + '/">' + esc(r["publication"]) + '</a>'
+                for r in based)
+            based_cta = '<p class="meta">Based here: ' + links + '</p>'
+
+        extra_line = ""
+        if extras:
+            named = " &middot; ".join(
+                '<a href="/writing/' + esc(r["slug"]) + '/">' + esc(r["publication"]) + '</a>'
+                for r in extras)
+            verb = 'welcomes' if len(extras) == 1 else 'welcome'
+            extra_line = ('<p class="meta"><b>+' + str(len(extras)) + '</b> that specifically '
+                          + verb + ' writers from ' + esc(name) + ' or its region: '
+                          + named + '</p>')
+
+        rows.append(
+            '<article class="guide-card" data-country="' + esc(name) + '" data-iso="' + esc(iso) + '">'
+            '<p class="kicker"><span class="kicker-dot"></span>'
+            + COUNTRY_FLAGS.get(iso, "") + " " + esc(name) + '</p>'
+            '<p class="country-counts"><b>' + str(len(based)) + '</b> based here &middot; <b>'
+            + str(n_conf) + '</b> confirmed open to you</p>'
+            + based_cta
+            + '<div class="actions"><a class="btn" href="/writing-opportunities/remote/">'
+            + str(n_worldwide) + ' open to writers anywhere &rarr;</a></div>'
+            + extra_line
+            + '<p class="meta">' + str(n_silent) + ' more do not state an eligibility rule '
+            '&mdash; read each guideline before pitching.</p></article>')
+
+    grid = "".join(rows)
+    n_all = len(WRITING)
+    body = (
+        '<div class="wrap"><nav class="breadcrumb"><a href="/">Home</a> / '
+        '<a href="/writing/">Opportunities</a> / By country</nav>'
+        '<section class="page-hero"><p class="kicker"><span class="kicker-dot"></span>By country</p>'
+        '<h1>Find publications by country</h1>'
+        '<div class="prose">'
+        '<p><b>Where a magazine is based and who it accepts are two different questions.</b> '
+        'A publication in New York may take pitches from anywhere; one in Lagos may only take '
+        'Nigerian writers. Both facts matter, and most country lists collapse them into a single '
+        'number that answers neither.</p>'
+        '<p>So this page keeps them apart. For every country you get the publications '
+        '<b>based there</b>, and separately the publications whose own guideline <b>confirms they '
+        'are open to you</b> &mdash; wherever in the world those publications happen to sit.</p>'
+        '<p>The second number counts only what a guideline actually says. Where a publication is '
+        'silent about eligibility, BRYME records that as <b>not stated</b> and counts it '
+        'separately rather than assuming a welcome. And a listing is an invitation to pitch, not '
+        'a promise: no acceptance, publication or payment is ever guaranteed.</p>'
+        '</div></section>'
+        '<section class="section"><div class="wrap">'
+        '<form class="country-search-form" role="search" onsubmit="return false;">'
+        '<label for="country-search"><b>Search your country</b></label>'
+        '<input type="search" id="country-search" name="country" autocomplete="country-name" '
+        'placeholder="Type a country &mdash; Nigeria, United States, Kenya&hellip;" '
+        'aria-describedby="country-status"></form>'
+        '<p class="filter-status" id="country-status" aria-live="polite">'
+        + str(len(by_base)) + ' countries with publications BRYME has verified</p>'
+        '<div class="guide-grid" id="country-grid">' + grid + '</div>'
+        '<p class="filter-status empty" id="country-empty" hidden>No country by that name yet '
+        '&mdash; <a href="/writing/">search all ' + str(n_all) + ' opportunities</a> instead.</p>'
+        '</div></section>'
+        '<section class="section alt"><div class="wrap"><div class="section-head"><div>'
+        '<p class="eyebrow">If yours is missing</p><h2>No country of your own on the list?</h2>'
+        '</div></div><div class="prose"><p>BRYME only names a country here once it has verified a '
+        'publication based there. A missing country does not mean you are shut out: the '
+        '<b>' + str(n_worldwide) + ' publications open to writers anywhere</b> accept submissions '
+        'regardless of where you live, and that is the right place to start.</p></div>'
+        '<div class="actions"><a class="btn" href="/writing-opportunities/remote/">'
+        'Open to writers anywhere &rarr;</a>'
+        '<a class="btn secondary" href="/writing/">Search all ' + str(n_all) + ' opportunities</a>'
+        '<a class="btn secondary" href="/regional/">Writing conventions by country</a></div>'
+        '</div></section></div>'
+        '<script src="/assets/country-filter.js" defer></script>')
+
+    write("/writing/by-country/", page_wf(
+        title="Find publications by country | BRYME",
+        description=("Pick your country and see two numbers: publications based there, and "
+                     "publications whose own guideline confirms they are open to writers "
+                     "from there."),
+        route="/writing/by-country/", current="writing", body=body,
+        schema_data={"@context": "https://schema.org", "@type": "CollectionPage",
+                     "name": "Writing opportunities by country",
+                     "description": "Paid writing publications by country of publication and by stated eligibility.",
+                     "url": BASE + "/writing/by-country/", "dateModified": TODAY,
+                     "publisher": {"@type": "Organization", "name": "BRYME", "url": BASE + "/"}}))
 
 def programmatic_pages() -> None:
     PROG_ROUTES.clear()
@@ -1727,6 +1892,7 @@ if __name__ == "__main__":
     # hub surface reads as one site; this builder still owns /writing/, /guides/,
     # /tested/, /about/ and the trust/legal pages.
     writing_hub()
+    country_discovery_page()
     tracker_page()
     today_feed()
     programmatic_pages()
