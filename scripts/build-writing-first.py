@@ -540,12 +540,16 @@ def drawer(current: str = "") -> str:
     write = [("writing", "/writing/", "All publications", "💰"),
              ("guides", "/guides/", "Writing guides", "🗺️"),
              ("tested", "/tested/", "BRYME Tested", "🧪")]
-    country = [("writing-NG", "/writing/?country=NG", "Nigeria & open worldwide", "🇳🇬"),
-               ("writing-africa", "/writing/?country=africa", "Africa & diaspora", "🌍"),
-               ("writing-US", "/writing/?country=US", "United States", "🇺🇸"),
-               ("writing-UK", "/writing/?country=UK", "United Kingdom", "🇬🇧"),
-               ("writing-CA", "/writing/?country=CA", "Canada", "🇨🇦"),
-               ("writing-AU", "/writing/?country=AU", "Australia", "🇦🇺")]
+    # Real country pages, not query-param filters. A ?country= link is a view
+    # of /writing/ with no title, meta, canonical or server-rendered content of
+    # its own; /writing-opportunities/<country>/ is an actual page.
+    country = [("writing-US", "/writing-opportunities/usa/", "United States", "🇺🇸"),
+               ("writing-UK", "/writing-opportunities/united-kingdom/", "United Kingdom", "🇬🇧"),
+               ("writing-CA", "/writing-opportunities/canada/", "Canada", "🇨🇦"),
+               ("writing-AU", "/writing-opportunities/australia/", "Australia", "🇦🇺"),
+               ("writing-NG", "/writing-opportunities/nigeria/", "Nigeria", "🇳🇬"),
+               ("writing-bycountry", "/writing/by-country/", "All countries", "🗺️"),
+               ("writing-remote", "/writing-opportunities/remote/", "Open to writers anywhere", "🌍")]
     trust = [("about", "/about/", "About", "ℹ️"),
              ("verification", "/verification/", "What statuses mean", "🏷️"),
              ("editorial-policy", "/editorial-policy/", "Editorial policy", "📜"),
