@@ -1,5 +1,5 @@
 {
-  "version": 11,
+  "version": 12,
   "policy": "BRYME Writing Hub: every indexable route is a genuine, useful writing guide (how-to, worked example, or dos & don'ts), a free in-browser tool, a research-backed paid-writing opportunity (100+ verified), a maintenance hub or a core trust/about page. No thin or filler pages.",
   "routes": [
     "/",
@@ -109,9 +109,11 @@
     "/learn/examples/how-to-use-the-examples/",
     "/learn/freelance-paid-writing/",
     "/learn/freelance-paid-writing/accounting-software-for-writers/",
+    "/learn/freelance-paid-writing/australia-tax-for-freelance-writers/",
     "/learn/freelance-paid-writing/b2b-content-writing/",
     "/learn/freelance-paid-writing/business-bank-account-for-writers/",
     "/learn/freelance-paid-writing/business-expenses-for-writers/",
+    "/learn/freelance-paid-writing/canada-tax-for-freelance-writers/",
     "/learn/freelance-paid-writing/choosing-a-grammar-checker/",
     "/learn/freelance-paid-writing/choosing-ai-writing-tools/",
     "/learn/freelance-paid-writing/choosing-long-form-writing-software/",
@@ -141,6 +143,7 @@
     "/learn/freelance-paid-writing/technical-writing-rates/",
     "/learn/freelance-paid-writing/uk-business-bank-account-for-writers/",
     "/learn/freelance-paid-writing/uk-tax-for-freelance-writers/",
+    "/learn/freelance-paid-writing/us-tax-for-freelance-writers/",
     "/learn/freelance-paid-writing/ux-writing-for-writers/",
     "/learn/freelance-paid-writing/writing-contracts-what-to-check/",
     "/learn/grammar-language/",
