@@ -482,5 +482,53 @@
   "modern-poetry-in-translation": {
     "base": "UK",
     "label": "United Kingdom"
+  },
+  "briarpatch": {
+    "base": "CA",
+    "label": "Canada"
+  },
+  "broadview": {
+    "base": "CA",
+    "label": "Canada"
+  },
+  "the-malahat-review": {
+    "base": "CA",
+    "label": "Canada"
+  },
+  "the-new-quarterly": {
+    "base": "CA",
+    "label": "Canada"
+  },
+  "prism-international": {
+    "base": "CA",
+    "label": "Canada"
+  },
+  "event-magazine": {
+    "base": "CA",
+    "label": "Canada"
+  },
+  "prairie-fire": {
+    "base": "CA",
+    "label": "Canada"
+  },
+  "augur-magazine": {
+    "base": "CA",
+    "label": "Canada"
+  },
+  "geist": {
+    "base": "CA",
+    "label": "Canada"
+  },
+  "freefall-magazine": {
+    "base": "CA",
+    "label": "Canada"
+  },
+  "the-temz-review": {
+    "base": "CA",
+    "label": "Canada"
+  },
+  "carte-blanche": {
+    "base": "CA",
+    "label": "Canada"
   }
 }

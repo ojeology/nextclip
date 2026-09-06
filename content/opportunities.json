@@ -10276,6 +10276,1098 @@
         "uk",
         "mpt"
       ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-06",
+      "publishedAt": "2026-09-06",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "briarpatch",
+      "slug": "briarpatch",
+      "publication": "Briarpatch Magazine",
+      "title": "Non-fiction pitches",
+      "seoTitle": "Briarpatch: $150–$350 per article, pitch deadline 18 September 2026",
+      "excerpt": "Briarpatch pays $150 for profiles, short essays and reviews, $250 for features and photo essays, and $350 for research-based and investigative reporting. The pitch deadline for the Winter 2027 'AI Resistance' issue is 18 September 2026.",
+      "officialUrl": "https://briarpatchmagazine.com/submissions",
+      "applyUrl": "mailto:pitch@briarpatchmagazine.com",
+      "applyEmail": "pitch@briarpatchmagazine.com",
+      "applyMethod": "Email pitch",
+      "sources": [
+        {
+          "name": "Briarpatch — Submissions (official)",
+          "url": "https://briarpatchmagazine.com/submissions"
+        }
+      ],
+      "eligibility": {
+        "summary": "No nationality restriction stated on the submissions page. Briarpatch is a Saskatchewan-based magazine of grassroots politics, labour, ecology and social justice.",
+        "mode": "not-stated",
+        "notStated": true
+      },
+      "writingTypes": [
+        "journalism",
+        "essays",
+        "reviews",
+        "analysis"
+      ],
+      "writingTypeLabel": "Reported features, essays, reviews and investigations",
+      "pay": {
+        "currency": "CAD",
+        "amountMin": 150,
+        "amountMax": 350,
+        "display": "$150–$350 per article",
+        "conditions": "Official standard rates: $150 for profiles, short essays, reviews, reading lists, online-only articles and parting shots (generally 1,500 words or less); $250 for feature stories (generally 1,500–2,000 words) and photo essays; $350 for research-based articles and investigative reporting with extensive primary research (generally 2,000–2,500 words). Online-only stories pay $150. Illustration is paid separately: $100 spot, $150 feature, $300 cover.",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "min": 700,
+        "max": 2500,
+        "display": "700–2,500 words depending on section"
+      },
+      "response": {
+        "label": "Within a week or two after the pitch deadline; assume no after three weeks",
+        "band": "2-4-weeks",
+        "official": true
+      },
+      "submissionStatus": "deadline",
+      "deadline": {
+        "date": "2026-09-18",
+        "display": "Winter 2027 'AI Resistance' issue — pitch deadline 18 September 2026. Spring 2027 (unthemed) deadline TBA.",
+        "windowEnd": "2026-09-18",
+        "recurring": true
+      },
+      "aiPolicy": "not-stated",
+      "whatTheyWant": [
+        "Pitches on grassroots activism, current events, electoral politics, economic justice, ecology, labour, food security, gender equity, Indigenous struggles and international solidarity.",
+        "Your contact information, an estimated word count, a list of recent publications if applicable, and a short writing sample.",
+        "Back-page opinion: 700–800 word thoughtful pieces and well-aimed jabs that challenge readers.",
+        "Be prepared to take your piece through two or three rewrites over the course of a month."
+      ],
+      "whatTheyDontWant": [
+        "Features much beyond 2,500 words — they occasionally accept longer only when the topic and skill warrant it.",
+        "An assumption that they will chase you. If you do not hear back within three weeks of the pitch deadline, assume it is a no."
+      ],
+      "requirements": [
+        "Email pitch",
+        "Estimated word count",
+        "Short writing sample",
+        "Expect 2–3 rewrites"
+      ],
+      "rights": "Not stated on the submissions page.",
+      "howToSubmit": [
+        "Read https://briarpatchmagazine.com/submissions and their guide to pitching Briarpatch.",
+        "Check the editorial schedule for the issue theme you want to write for.",
+        "Email your pitch to pitch@briarpatchmagazine.com before the 18 September 2026 deadline."
+      ],
+      "keywords": [
+        "briarpatch",
+        "canada",
+        "saskatchewan",
+        "investigative",
+        "social justice",
+        "cad"
+      ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-06",
+      "publishedAt": "2026-09-06",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "broadview",
+      "slug": "broadview",
+      "publication": "Broadview",
+      "title": "Opinion and reported features",
+      "seoTitle": "Broadview: 40¢ a word for opinion, 65¢ a word for reported pieces",
+      "excerpt": "Broadview, an award-winning Canadian magazine on faith, ethics and justice, pays 40 cents a word for opinion pieces and 65 cents a word for reported ones. Pitches go by email to the editor and payment lands within 30 days of invoice.",
+      "officialUrl": "https://broadview.org/submission-guidelines/",
+      "applyUrl": "mailto:j.bell@broadview.org",
+      "applyEmail": "j.bell@broadview.org",
+      "applyMethod": "Email query or manuscript to the Editor",
+      "sources": [
+        {
+          "name": "Broadview — Submission guidelines (official)",
+          "url": "https://broadview.org/submission-guidelines/"
+        }
+      ],
+      "eligibility": {
+        "summary": "No nationality restriction stated. Broadview is Canadian and follows Canadian Press style and the Canadian Oxford Dictionary, so stories are pitched to a Canadian readership.",
+        "mode": "not-stated",
+        "notStated": true
+      },
+      "writingTypes": [
+        "journalism",
+        "opinion",
+        "essays",
+        "analysis"
+      ],
+      "writingTypeLabel": "Opinion and reported features",
+      "pay": {
+        "currency": "CAD",
+        "amountMin": null,
+        "amountMax": null,
+        "display": "40¢ a word (opinion), 65¢ a word (reported)",
+        "conditions": "Official: \"We pay $.40 a word for opinion pieces and $.65 a word for reported ones.\" Digital and print pieces are both paid by the word. You are paid only for the words you were assigned, unless a revised length is agreed with your handling editor. The guidelines write the rate as $ without naming the currency; Broadview is a Canadian publication following Canadian Press style, so it is recorded here as CAD. Per repo convention a per-word rate carries no piece amount.",
+        "timing": "Within 30 days of receipt of an invoice"
+      },
+      "wordCount": {
+        "min": null,
+        "max": null,
+        "display": "Assigned per commission"
+      },
+      "response": {
+        "label": "Print issues are planned about six months ahead; online stories days to weeks ahead",
+        "band": "not-stated",
+        "official": true
+      },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "not-stated",
+      "whatTheyWant": [
+        "Crisp perspectives on faith, ethics and justice — human rights and social issues, spirituality, inspiring human interest stories, the environment, culture and mental health.",
+        "A query or manuscript by email to the Editor.",
+        "Time-sensitive ideas pitched with their lead times in mind: about six months for print, days to weeks for online."
+      ],
+      "whatTheyDontWant": [
+        "Missing your assigned deadline without telling them — they can often extend, but they get nervous in silence.",
+        "Work that is not original and unpublished."
+      ],
+      "requirements": [
+        "Email pitch to the Editor",
+        "Canadian Press style",
+        "Invoice required for payment"
+      ],
+      "rights": "Broadview buys first North American rights in English and French, plus the right to archive the story and post it on Broadview.org.",
+      "howToSubmit": [
+        "Read the full guidelines at https://broadview.org/submission-guidelines/.",
+        "Email your query or manuscript to Jocelyn Bell, Editor, at j.bell@broadview.org.",
+        "Invoice after publication — payment follows within 30 days."
+      ],
+      "keywords": [
+        "broadview",
+        "canada",
+        "faith",
+        "ethics",
+        "justice",
+        "cad"
+      ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-06",
+      "publishedAt": "2026-09-06",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "the-malahat-review",
+      "slug": "the-malahat-review",
+      "publication": "The Malahat Review",
+      "title": "Fiction, poetry and creative non-fiction",
+      "seoTitle": "The Malahat Review: CAD$70 per published page",
+      "excerpt": "The Malahat Review, based at the University of Victoria, pays CAD$70 per published page plus a one-year subscription and two copies. Submissions go through Submittable only. International submitters, including from the US, pay a CAD$7 fee.",
+      "officialUrl": "https://malahatreview.ca/submission_guidelines.html",
+      "applyUrl": "https://malahatreview.submittable.com/submit",
+      "applyEmail": null,
+      "applyMethod": "Submittable only",
+      "sources": [
+        {
+          "name": "The Malahat Review — Submission guidelines (official)",
+          "url": "https://malahatreview.ca/submission_guidelines.html"
+        }
+      ],
+      "eligibility": {
+        "summary": "Open internationally. Their four annual contests are explicitly open to Canadian and international writers alike. They note that writers of certain backgrounds and religions have been historically under-represented in Canadian literary contexts and welcome that work.",
+        "mode": "open",
+        "notStated": false
+      },
+      "writingTypes": [
+        "fiction",
+        "poetry",
+        "creative-nonfiction"
+      ],
+      "writingTypeLabel": "Fiction, poetry and creative non-fiction",
+      "pay": {
+        "currency": "CAD",
+        "amountMin": 70,
+        "amountMax": 70,
+        "display": "CAD$70 per published page",
+        "conditions": "Official: \"We pay CAD$70 per published page plus a one-year print subscription and two copies of the issue in which your work appears.\" Note a CAD$7 fee (approximately USD$5) per regular submission for international submitters, including from the US. Their four annual contests have separate guidelines and their own entry fees.",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "min": null,
+        "max": null,
+        "display": "Paid per published page"
+      },
+      "response": {
+        "label": "One to six months for poetry; up to nine months for fiction and creative non-fiction",
+        "band": "3-plus-months",
+        "official": true
+      },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "not-stated",
+      "whatTheyWant": [
+        "Fiction, poetry and creative non-fiction submitted through Submittable as a single .doc, .docx or .pdf.",
+        "A word count for prose, or a line count for poetry, listed at the beginning of each piece.",
+        "Your name and contact info included for regular submissions."
+      ],
+      "whatTheyDontWant": [
+        "Work excerpted elsewhere, or any work revised since its original publication — neither is eligible.",
+        "Simultaneous submissions to their contests.",
+        "AI-generated work — their Editorial Boards state they are not interested in it."
+      ],
+      "requirements": [
+        "Submittable only",
+        "CAD$7 fee for international submitters",
+        "Word or line count at the start"
+      ],
+      "rights": "Not fully stated on the guidelines page.",
+      "howToSubmit": [
+        "Order or read an issue first to see what they publish.",
+        "Read https://malahatreview.ca/submission_guidelines.html and check the reading period.",
+        "Submit via Submittable, paying the CAD$7 fee if you are outside Canada."
+      ],
+      "keywords": [
+        "malahat review",
+        "canada",
+        "victoria",
+        "fiction",
+        "poetry",
+        "cad"
+      ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-06",
+      "publishedAt": "2026-09-06",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "the-new-quarterly",
+      "slug": "the-new-quarterly",
+      "publication": "The New Quarterly",
+      "title": "Fiction, poetry and non-fiction",
+      "seoTitle": "The New Quarterly: $400 for prose, $100 for poetry — Canadian writers only",
+      "excerpt": "The New Quarterly pays $400 for fiction and non-fiction pieces and $100 per poem. It publishes exclusively Canadian writers and actively nurtures emerging writers who have not yet published a full book. Submission periods are fixed and responses take 6–7 months.",
+      "officialUrl": "https://tnq.ca/submit/",
+      "applyUrl": "https://tnq.ca/submit/",
+      "applyEmail": null,
+      "applyMethod": "Genre-specific submission forms during an open period",
+      "sources": [
+        {
+          "name": "The New Quarterly — Submit (official)",
+          "url": "https://tnq.ca/submit/"
+        }
+      ],
+      "eligibility": {
+        "summary": "Official and strict: The New Quarterly publishes fiction, poetry and creative non-fiction exclusively by Canadian writers. They particularly seek to nurture emerging writers — those who have not yet published a full book — alongside established names.",
+        "mode": "restricted",
+        "includesRegions": [
+          "canada"
+        ],
+        "allowsDiaspora": false,
+        "notStated": false
+      },
+      "writingTypes": [
+        "fiction",
+        "poetry",
+        "creative-nonfiction"
+      ],
+      "writingTypeLabel": "Fiction, poetry and non-fiction",
+      "pay": {
+        "currency": "CAD",
+        "amountMin": 100,
+        "amountMax": 400,
+        "display": "$400 prose / $100 poetry",
+        "conditions": "Official payment rates: \"For Fiction and Nonfiction pieces, we pay $400. For Poetry and Postscripts, we pay $100 per piece.\" Contributors also get a complimentary copy of the issue their piece appears in and a contributor discount on TNQ subscriptions.",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "min": null,
+        "max": null,
+        "display": "One piece per submission period"
+      },
+      "response": {
+        "label": "6–7 months from the time the submission period opened",
+        "band": "3-plus-months",
+        "official": true
+      },
+      "submissionStatus": "upcoming",
+      "deadline": {
+        "display": "Fiction and poetry: 1 February–30 April (response by end of June) and 1 July–30 September (response by end of January). Non-fiction runs to its own periods — check the page.",
+        "windowEnd": "2026-09-30",
+        "recurring": true
+      },
+      "aiPolicy": "not-stated",
+      "whatTheyWant": [
+        "Writing that questions, challenges and responds.",
+        "Work by Canadian writers only — with an active interest in emerging writers who have not yet published a full book.",
+        "Double-spaced work with a word count at the end, page numbers on prose or multi-page poems, and your name on every page.",
+        "One piece per submission period. They recommend submitting in the first couple of months of a period."
+      ],
+      "whatTheyDontWant": [
+        "Submissions from writers who are not Canadian.",
+        "More than one piece per period."
+      ],
+      "requirements": [
+        "Genre-specific form",
+        "Canadian writers only",
+        "One piece per period",
+        "Name on every page"
+      ],
+      "rights": "Not stated on the submit page.",
+      "howToSubmit": [
+        "Confirm you are eligible — TNQ publishes Canadian writers exclusively.",
+        "Check the submission periods at https://tnq.ca/submit/ for your genre.",
+        "Submit early in the window through the genre-specific form."
+      ],
+      "keywords": [
+        "the new quarterly",
+        "canada",
+        "canadian writers",
+        "emerging writers",
+        "cad"
+      ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-06",
+      "publishedAt": "2026-09-06",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "prism-international",
+      "slug": "prism-international",
+      "publication": "PRISM international",
+      "title": "Fiction, non-fiction, poetry and translation",
+      "seoTitle": "PRISM international: $40 per page for prose, $45 for poetry",
+      "excerpt": "PRISM international, run out of UBC, pays $40 CAD per printed page for prose and $45 CAD per printed page for poetry, plus two contributor copies. It publishes writing and translation from Canada and around the world. Reply times run six to twelve months.",
+      "officialUrl": "https://prismmagazine.ca/submit/",
+      "applyUrl": "https://prism.submittable.com/submit",
+      "applyEmail": null,
+      "applyMethod": "Submittable",
+      "sources": [
+        {
+          "name": "PRISM international — Submit (official)",
+          "url": "https://prismmagazine.ca/submit/"
+        }
+      ],
+      "eligibility": {
+        "summary": "Open internationally — their mandate is to publish \"the best in contemporary writing and translation from Canada and around the world.\" They ask for a bio of 50 words or fewer that references where you live.",
+        "mode": "open",
+        "notStated": false
+      },
+      "writingTypes": [
+        "fiction",
+        "creative-nonfiction",
+        "poetry",
+        "translation"
+      ],
+      "writingTypeLabel": "Fiction, non-fiction, poetry and translation",
+      "pay": {
+        "currency": "CAD",
+        "amountMin": 40,
+        "amountMax": 45,
+        "display": "$40 CAD/page prose, $45 CAD/page poetry",
+        "conditions": "Official: \"We purchase first North American serial rights and pay $40 CAD per printed page for prose and $45 CAD per printed page for poetry.\" Contributors also receive two copies. Translations: $45 CAD/page for poetry translation plus $30 CAD/page to the original author; $40 CAD/page for prose translation plus $25 CAD/page to the original author up to $200 CAD. Art: $300 CAD for a cover, $50 CAD per interior page up to $250 CAD. Third-party directories list $30/page — that is out of date; this is the figure on PRISM's own page.",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "min": null,
+        "max": 4000,
+        "display": "Preferred length 4,000 words or less"
+      },
+      "response": {
+        "label": "Six to twelve months; they may not be able to respond to everyone",
+        "band": "3-plus-months",
+        "official": true
+      },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "not-stated",
+      "whatTheyWant": [
+        "Fiction and creative non-fiction up to about 4,000 words, including flash.",
+        "Up to four poems for a maximum of six pages.",
+        "A cover letter with your contact information and a bio of 50 words or fewer referencing where you live.",
+        "For translations: a copy of the original work, plus confirmed permission from the original author or rights holder."
+      ],
+      "whatTheyDontWant": [
+        "More than one piece at a time, unless submitting for a specific call.",
+        "Translations without permission from the rights holder — they will ask to see it before publishing."
+      ],
+      "requirements": [
+        "Submittable",
+        "Bio of 50 words or fewer",
+        "One piece at a time",
+        "Preferred length 4,000 words"
+      ],
+      "rights": "PRISM purchases first North American serial rights.",
+      "howToSubmit": [
+        "Read https://prismmagazine.ca/submit/ and check which category is open.",
+        "Prepare a cover letter with a 50-word bio that says where you live.",
+        "Submit through Submittable."
+      ],
+      "keywords": [
+        "prism international",
+        "canada",
+        "ubc",
+        "translation",
+        "fiction",
+        "poetry",
+        "cad"
+      ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-06",
+      "publishedAt": "2026-09-06",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "event-magazine",
+      "slug": "event-magazine",
+      "publication": "EVENT",
+      "title": "Fiction, poetry and reviews",
+      "seoTitle": "EVENT: $40 per page for poetry, $35 for prose, up to $500",
+      "excerpt": "EVENT pays $40 per page for poetry and book reviews and $35 per page for prose, up to a maximum of $500, plus two copies. Fiction and poetry windows open in January, July, August and December only, and each closes early once the submission cap is hit.",
+      "officialUrl": "https://www.eventmagazine.ca/submit/",
+      "applyUrl": "https://eventmagazine.submittable.com/submit",
+      "applyEmail": null,
+      "applyMethod": "Submittable during an open month",
+      "sources": [
+        {
+          "name": "EVENT — Submit (official)",
+          "url": "https://www.eventmagazine.ca/submit/"
+        }
+      ],
+      "eligibility": {
+        "summary": "No nationality restriction stated for general submissions, though some categories carry their own eligibility requirements on Submittable — the August 2026 fiction and poetry calls were flagged as Canadian.",
+        "mode": "not-stated",
+        "notStated": true
+      },
+      "writingTypes": [
+        "fiction",
+        "poetry",
+        "reviews",
+        "creative-nonfiction"
+      ],
+      "writingTypeLabel": "Fiction, poetry and reviews",
+      "pay": {
+        "currency": "CAD",
+        "amountMin": 35,
+        "amountMax": 40,
+        "display": "$40/page poetry and reviews, $35/page prose (max $500)",
+        "conditions": "Official: \"We pay $40/page for poetry and book reviews, and $35/page for prose, up to a maximum of $500.\" All contributors receive 2 copies of the issue. Third-party directories list $25 or $30 per page — both are out of date; this is the figure on EVENT's own page.",
+        "timing": "Issued upon publication"
+      },
+      "wordCount": {
+        "min": null,
+        "max": 5000,
+        "display": "Up to six poems, or one short story to 5,000 words"
+      },
+      "response": {
+        "label": "Not stated",
+        "band": "not-stated",
+        "official": false
+      },
+      "submissionStatus": "upcoming",
+      "deadline": {
+        "display": "Fiction and poetry are accepted in January, July, August and December only. Canadian Fiction and Canadian Poetry (August 2026) hit their caps and closed. Non-fiction comes mainly through the annual Non-Fiction Contest, deadline 15 October.",
+        "openingDate": "2026-12-01",
+        "recurring": true
+      },
+      "aiPolicy": "prohibited",
+      "whatTheyWant": [
+        "Fiction: stories, moments and narratives that move them.",
+        "Poetry: arresting imagery, polished language, emotional impact, and lyricism without pretension.",
+        "Up to six poems, or one short story of maximum 5,000 words, at a time — in one genre only.",
+        "Each poem or story saved as its own separate .doc, .docx, .rtf or .txt file."
+      ],
+      "whatTheyDontWant": [
+        "Work produced with artificial intelligence tools such as ChatGPT.",
+        "PDFs.",
+        "Submissions in more than one genre at a time, or another piece before you have had a response.",
+        "Submissions after the monthly cap is reached — windows close early."
+      ],
+      "requirements": [
+        "Submittable",
+        "Open months only",
+        "One genre at a time",
+        "No PDFs"
+      ],
+      "rights": "See their Editorial Policy for rights and payment policies.",
+      "howToSubmit": [
+        "Check https://www.eventmagazine.ca/submit/ — windows are January, July, August and December, and close early when capped.",
+        "Save each poem or story as its own file, not a PDF.",
+        "Submit via Submittable in one genre only."
+      ],
+      "keywords": [
+        "event magazine",
+        "canada",
+        "british columbia",
+        "fiction",
+        "poetry",
+        "cad"
+      ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-06",
+      "publishedAt": "2026-09-06",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "prairie-fire",
+      "slug": "prairie-fire",
+      "publication": "Prairie Fire",
+      "title": "Fiction, poetry and creative non-fiction",
+      "seoTitle": "Prairie Fire: 10¢ per word for prose, $40 per poem",
+      "excerpt": "Prairie Fire, a Winnipeg quarterly, pays 10 cents per word for prose to a maximum of $250 per piece, and $40 per poem, plus a contributor's copy. AI-generated text of any kind is refused. Response takes three to six months.",
+      "officialUrl": "https://prairiefire.ca/submissions/",
+      "applyUrl": "https://prairiefire.submittable.com/submit",
+      "applyEmail": null,
+      "applyMethod": "Submittable",
+      "sources": [
+        {
+          "name": "Prairie Fire — Rates of Payment and Submissions (official)",
+          "url": "https://prairiefire.ca/rates-of-payment/"
+        }
+      ],
+      "eligibility": {
+        "summary": "No nationality restriction stated on the submissions page.",
+        "mode": "not-stated",
+        "notStated": true
+      },
+      "writingTypes": [
+        "fiction",
+        "poetry",
+        "creative-nonfiction",
+        "interviews"
+      ],
+      "writingTypeLabel": "Fiction, poetry and creative non-fiction",
+      "pay": {
+        "currency": "CAD",
+        "amountMin": 40,
+        "amountMax": 250,
+        "display": "10¢ per word prose (max $250), $40 per poem",
+        "conditions": "Official print rates: Prose $0.10 per word; Poetry $40 per poem. Maximum fee $250 for short fiction and excerpts from longer works, and $250 for articles, creative non-fiction, editorials, essays and memoirs. Interviews and profiles: subject $75. Payment includes one free contributor's copy. Anything not covered by the rate sheet is negotiated separately, and rates are subject to change without notice.",
+        "timing": "Following publication"
+      },
+      "wordCount": {
+        "min": null,
+        "max": null,
+        "display": "Maximum 5 poems per submission"
+      },
+      "response": {
+        "label": "Generally three to six months",
+        "band": "3-plus-months",
+        "official": true
+      },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "prohibited",
+      "whatTheyWant": [
+        "Fiction, poetry and creative non-fiction, with a word count at the top right of the first page and your address at the top left.",
+        "Numbered pages, a maximum of 5 poems per submission.",
+        "A twelve-month gap between submissions — once you submit, wait a year before submitting again."
+      ],
+      "whatTheyDontWant": [
+        "Work that uses AI, algorithmic, machine-learning or computer-generated text of any sort.",
+        "Work that promotes intolerance.",
+        "Revisions, replacements or substitutions once you have submitted.",
+        "Previously published work, including work published with a digital publication."
+      ],
+      "requirements": [
+        "Submittable",
+        "Word count on page one",
+        "Max 5 poems",
+        "Twelve-month gap between submissions"
+      ],
+      "rights": "Prairie Fire buys First North American Serial Rights and First Digital Publication Rights only. Rights are reassigned to the author upon publication.",
+      "howToSubmit": [
+        "Read the rate sheet at https://prairiefire.ca/rates-of-payment/ and the guidelines at /submissions/.",
+        "Format with word count top-right and address top-left of page one, pages numbered.",
+        "Submit via Submittable, then wait twelve months before submitting again."
+      ],
+      "keywords": [
+        "prairie fire",
+        "canada",
+        "winnipeg",
+        "fiction",
+        "poetry",
+        "cad",
+        "no ai"
+      ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-06",
+      "publishedAt": "2026-09-06",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "augur-magazine",
+      "slug": "augur-magazine",
+      "publication": "Augur Magazine",
+      "title": "Speculative fiction and poetry",
+      "seoTitle": "Augur Magazine: CAD $0.14 per word for fiction, $100 per poem",
+      "excerpt": "Augur Magazine pays CAD $0.14 per word for short fiction over 800 words, a flat $112 for flash fiction, and $100 CAD per poem. It publishes dreamy, speculative and surreal work, prohibits AI-generated submissions, and tracks Canadian and international quotas for its funders.",
+      "officialUrl": "https://augurmag.com/submissions/",
+      "applyUrl": "https://augur.moksha.io/publication/augur",
+      "applyEmail": null,
+      "applyMethod": "Moksha submissions portal",
+      "sources": [
+        {
+          "name": "Augur Magazine — Submissions (official)",
+          "url": "https://augurmag.com/submissions/"
+        }
+      ],
+      "eligibility": {
+        "summary": "Open internationally. Canadian granting bodies require Augur to track quotas, so submitters are asked to identify as from Canada/Turtle Island or as International — but they explicitly allow you to exempt yourself from that requirement. They invite Indigenous creators to self-identify their citizenship however feels most accurate.",
+        "mode": "open",
+        "notStated": false
+      },
+      "writingTypes": [
+        "fiction",
+        "poetry"
+      ],
+      "writingTypeLabel": "Speculative fiction and poetry",
+      "pay": {
+        "currency": "CAD",
+        "amountMin": 100,
+        "amountMax": 112,
+        "display": "CAD $0.14/word fiction, $112 flash, $100 per poem",
+        "conditions": "Official: \"We pay $0.14 cents (CAD) per word for short fiction (800+ words), and a flat fee of $112.00 per flash fiction piece (800 words and under).\" For poetry: \"We pay $100.00 CAD per poem.\" The piece figures recorded here are the two flat fees; the per-word fiction rate is not a piece amount and so carries no separate figure, per repo convention.",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "min": null,
+        "max": 5000,
+        "display": "Fiction to 5,000 words; up to 5 poems / 10 pages"
+      },
+      "response": {
+        "label": "Query if you have not heard by the end of October 2026",
+        "band": "1-3-months",
+        "official": true
+      },
+      "submissionStatus": "closed",
+      "deadline": {
+        "display": "Submissions are currently closed. Translation submissions are closed for both Augur and Tales & Feathers; Tales & Feathers is closed for all of 2026.",
+        "recurring": true
+      },
+      "aiPolicy": "prohibited",
+      "whatTheyWant": [
+        "Speculative, dreamlike and surreal fiction and poetry.",
+        "Fiction in standard manuscript format as a .doc or .docx, with no identifying information, maximum one story per call.",
+        "Poetry: up to 5 poems to a maximum of 10 pages, all in one package.",
+        "Optionally, an indication of your intersections — not required, and treated as confidential."
+      ],
+      "whatTheyDontWant": [
+        "AI-generated submissions. The text must be ideated and written by a human; an AI-written piece is a breach of contract if accepted.",
+        "Reprints, or pieces you have submitted before unless significantly revised.",
+        "Stories longer than 5,000 words for Augur.",
+        "Submissions if they have published you two years running in the same market — take a break."
+      ],
+      "requirements": [
+        "Moksha portal",
+        "No identifying information on fiction",
+        "Max 1 story or 5 poems",
+        "Human-written only"
+      ],
+      "rights": "Not stated on the submissions page.",
+      "howToSubmit": [
+        "Read https://augurmag.com/submissions/ and their published work to check the fit.",
+        "Wait for a submissions call — they are currently closed.",
+        "Submit via Moksha; you should get a verification email."
+      ],
+      "keywords": [
+        "augur",
+        "canada",
+        "speculative fiction",
+        "poetry",
+        "cad",
+        "no ai"
+      ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-06",
+      "publishedAt": "2026-09-06",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "geist",
+      "slug": "geist",
+      "publication": "Geist",
+      "title": "Non-fiction, fiction, poetry and comics",
+      "seoTitle": "Geist: up to $650 for features, $100 per page for poetry",
+      "excerpt": "Geist, a Canadian magazine of ideas and culture, pays up to $650 for longform essays, fiction and comics, $100 per page for poetry, and $100–300 for short non-fiction in Notes & Dispatches. It prioritises Canadians and permanent residents, or work with a strong Canadian connection.",
+      "officialUrl": "https://www.geist.com/submit/",
+      "applyUrl": "https://www.geist.com/submit/",
+      "applyEmail": "submit@geist.com",
+      "applyMethod": "Submission form on their site",
+      "sources": [
+        {
+          "name": "Geist — Submission Guidelines (official)",
+          "url": "https://www.geist.com/submit/"
+        }
+      ],
+      "eligibility": {
+        "summary": "Official: their priority is work from emerging and established writers and artists who are Canadian or permanent residents of Canada, or whose work has a strong connection to Canada or would be relevant to a Canadian audience. They encourage submissions from Black writers, Indigenous writers, writers of colour, writers with disabilities and LGBTQIA2S+ writers.",
+        "mode": "restricted",
+        "includesRegions": [
+          "canada"
+        ],
+        "allowsDiaspora": true,
+        "notStated": false
+      },
+      "writingTypes": [
+        "creative-nonfiction",
+        "fiction",
+        "poetry",
+        "essays"
+      ],
+      "writingTypeLabel": "Non-fiction, fiction, poetry and comics",
+      "pay": {
+        "currency": "CAD",
+        "amountMin": 100,
+        "amountMax": 650,
+        "display": "Up to $650; $100/page poetry",
+        "conditions": "Official rates by section: Longform essays up to 5,000 words, published as Features — up to $650. Fiction (short stories up to 5,000 words) — up to $650. Comics — up to $650. Poetry — $100 per page. Short non-fiction under 2,000 words for Notes & Dispatches — pay is commensurate with length, usually $100–300. Art and photography — between $50 and $120.",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "min": null,
+        "max": 5000,
+        "display": "Notes & Dispatches under 2,000 words; Features up to 5,000"
+      },
+      "response": {
+        "label": "Not stated; due to volume you may not hear back",
+        "band": "not-stated",
+        "official": true
+      },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "not-stated",
+      "whatTheyWant": [
+        "Short non-fiction under 2,000 words, typically personal narrative, for Notes & Dispatches — they are always seeking this.",
+        "Longform essays up to 5,000 words: innovative, thoughtfully researched and emotionally resonant narrative non-fiction.",
+        "Work that takes the shape of lists, letters, instructions or other unconventional structures, matching creativity with intellectual rigour.",
+        "Comics that are weird, funny, unexpected or experimental. Poetry: a maximum of 5 poems."
+      ],
+      "whatTheyDontWant": [
+        "Work with no connection to Canada or relevance to a Canadian audience.",
+        "More than your best single short story — they usually publish one per issue."
+      ],
+      "requirements": [
+        "Submission form",
+        "Canadian connection",
+        "Read several issues first"
+      ],
+      "rights": "Geist purchases first North American Serial Rights and non-exclusive electronic rights. Copyright reverts to the author after publication. They may use part of the work for promotional purposes.",
+      "howToSubmit": [
+        "Read several issues of Geist, or the archives at geist.com, before submitting.",
+        "Pick the right section — Notes & Dispatches is the most open door at under 2,000 words.",
+        "Submit through the form at https://www.geist.com/submit/."
+      ],
+      "keywords": [
+        "geist",
+        "canada",
+        "ideas",
+        "culture",
+        "essays",
+        "cad"
+      ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-06",
+      "publishedAt": "2026-09-06",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "freefall-magazine",
+      "slug": "freefall-magazine",
+      "publication": "FreeFall Magazine",
+      "title": "Prose, poetry, interviews and reviews",
+      "seoTitle": "FreeFall Magazine: $10 per page for prose, $25 per poem, $50 for reviews",
+      "excerpt": "FreeFall Magazine, based in Calgary, pays $10 per published page for prose to a maximum of $100, $25 per poem, and $50 for interviews and book reviews, plus a contributor copy. Prose runs to 4,000 words and responses take two weeks to six months.",
+      "officialUrl": "https://freefallmagazine.ca/submissions/",
+      "applyUrl": "https://freefallmagazine.ca/submissions/",
+      "applyEmail": null,
+      "applyMethod": "Online submission form",
+      "sources": [
+        {
+          "name": "FreeFall Magazine — Submissions (official)",
+          "url": "https://freefallmagazine.ca/submissions/"
+        }
+      ],
+      "eligibility": {
+        "summary": "No nationality restriction stated on the submissions page.",
+        "mode": "not-stated",
+        "notStated": true
+      },
+      "writingTypes": [
+        "fiction",
+        "poetry",
+        "creative-nonfiction",
+        "reviews",
+        "interviews"
+      ],
+      "writingTypeLabel": "Prose, poetry, interviews and reviews",
+      "pay": {
+        "currency": "CAD",
+        "amountMin": 10,
+        "amountMax": 50,
+        "display": "$10/page prose (max $100), $25/poem, $50 reviews",
+        "conditions": "Official: Prose — \"Payment is $10 per page in the magazine (to a maximum of $100) and one copy of the issue.\" Poetry — \"Payment is $25 per poem and one copy of the issue.\" Interviews and book reviews — \"Payment is $50 and one copy of the issue.\" All payments are made upon publication.",
+        "timing": "Upon publication"
+      },
+      "wordCount": {
+        "min": null,
+        "max": 4000,
+        "display": "Prose to 4,000 words; poems max 6 pages each"
+      },
+      "response": {
+        "label": "Anywhere from 2 weeks to 6 months",
+        "band": "1-3-months",
+        "official": true
+      },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "not-stated",
+      "whatTheyWant": [
+        "Prose up to 4,000 words: short stories and novel excerpts, non-fiction on writing-related or general-audience topics, creative non-fiction, plays and postcard stories.",
+        "Poetry: 1–3 poems of any style, with no individual poem exceeding 6 pages.",
+        "Interviews and book reviews: send a proposal query only — guidelines follow once the proposal is approved."
+      ],
+      "whatTheyDontWant": [
+        "Previously published work, online or digital.",
+        "Interviews or reviews submitted in full without an approved proposal first."
+      ],
+      "requirements": [
+        "Online form",
+        "Prose max 4,000 words",
+        "Proposal query for interviews and reviews"
+      ],
+      "rights": "FreeFall buys First North American Serial Rights and First Digital Publication Rights only. Copyright returns to the author after publication.",
+      "howToSubmit": [
+        "Read https://freefallmagazine.ca/submissions/ and pick your category.",
+        "For interviews or reviews, send a proposal query first.",
+        "Submit through the online form and expect anywhere from 2 weeks to 6 months."
+      ],
+      "keywords": [
+        "freefall",
+        "canada",
+        "calgary",
+        "prose",
+        "poetry",
+        "cad"
+      ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-06",
+      "publishedAt": "2026-09-06",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "the-temz-review",
+      "slug": "the-temz-review",
+      "publication": "The /tEmz/ Review",
+      "title": "Fiction, creative non-fiction and poetry",
+      "seoTitle": "The /tEmz/ Review: $20 per piece, open 1 September–31 October",
+      "excerpt": "The /tEmz/ Review pays $20 per prose piece and $20 per batch of poems. It is open for journal submissions from 1 September to 31 October 2026 and takes prose up to 10,000 words. AI use is allowed only where fully disclosed.",
+      "officialUrl": "https://thetemzreview.com/submissions",
+      "applyUrl": "https://thetemzreview.moksha.io/publication/the-temz-review",
+      "applyEmail": null,
+      "applyMethod": "Moksha submissions manager",
+      "sources": [
+        {
+          "name": "The /tEmz/ Review — Submit (official)",
+          "url": "https://thetemzreview.com/submissions"
+        }
+      ],
+      "eligibility": {
+        "summary": "No nationality restriction stated. They are looking for innovative short fiction from diverse voices and a wide range of styles and voices.",
+        "mode": "not-stated",
+        "notStated": true
+      },
+      "writingTypes": [
+        "fiction",
+        "creative-nonfiction",
+        "poetry"
+      ],
+      "writingTypeLabel": "Fiction, creative non-fiction and poetry",
+      "pay": {
+        "currency": "CAD",
+        "amountMin": 20,
+        "amountMax": 20,
+        "display": "$20 per piece",
+        "conditions": "Official: \"We pay $20 per piece\" for prose, and \"We pay $20 per batch of poems we publish.\" Reviews and interviews are handled separately and are not submitted through Moksha — contact them if you want to write one.",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "min": null,
+        "max": 10000,
+        "display": "Prose up to 10,000 words"
+      },
+      "response": {
+        "label": "Not stated",
+        "band": "not-stated",
+        "official": false
+      },
+      "submissionStatus": "deadline",
+      "deadline": {
+        "date": "2026-10-31",
+        "display": "Open for journal submissions 1 September – 31 October 2026",
+        "windowStart": "2026-09-01",
+        "windowEnd": "2026-10-31",
+        "recurring": true
+      },
+      "aiPolicy": "disclosure-required",
+      "whatTheyWant": [
+        "Innovative short fiction from diverse voices, and a wide range of styles and voices.",
+        "Prose (fiction and creative non-fiction) up to 10,000 words. They will consider longer, but it needs to earn its length.",
+        "Several short pieces at once if each is under 1,000 words — otherwise only one piece.",
+        "Full disclosure of any AI use in your cover letter: the extent of it, and the reasons for it."
+      ],
+      "whatTheyDontWant": [
+        "Undisclosed AI-generated material. They accept that there are legitimate artistic reasons to use AI, but submitting it without accurately disclosing the nature and extent will be treated seriously.",
+        "More than one submission per reading period.",
+        "Reviews or interviews through Moksha — contact them directly instead."
+      ],
+      "requirements": [
+        "Moksha",
+        "Open window only",
+        "One submission per reading period",
+        "AI use must be disclosed"
+      ],
+      "rights": "Not stated on the submit page.",
+      "howToSubmit": [
+        "Read https://thetemzreview.com/submissions and the policies in full.",
+        "If you used AI in any way, state the extent and the reasons in your cover message.",
+        "Submit through Moksha before 31 October 2026."
+      ],
+      "keywords": [
+        "temz review",
+        "canada",
+        "ontario",
+        "fiction",
+        "poetry",
+        "cad"
+      ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-06",
+      "publishedAt": "2026-09-06",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "carte-blanche",
+      "slug": "carte-blanche",
+      "publication": "carte blanche",
+      "title": "Fiction, non-fiction, poetry and translation",
+      "seoTitle": "carte blanche: pays an honorarium per published submission",
+      "excerpt": "carte blanche, published by the Quebec Writers' Federation, pays a modest honorarium per submission. It publishes fiction, non-fiction, poetry and translation, with spring and fall reading periods and no submission fee.",
+      "officialUrl": "https://carte-blanche.org/submissions/",
+      "applyUrl": "https://carte-blanche.org/submissions/",
+      "applyEmail": null,
+      "applyMethod": "Submittable",
+      "sources": [
+        {
+          "name": "carte blanche — Submissions (official)",
+          "url": "https://carte-blanche.org/submissions/"
+        }
+      ],
+      "eligibility": {
+        "summary": "No nationality restriction stated. carte blanche is published by the Quebec Writers' Federation.",
+        "mode": "not-stated",
+        "notStated": true
+      },
+      "writingTypes": [
+        "fiction",
+        "creative-nonfiction",
+        "poetry",
+        "translation"
+      ],
+      "writingTypeLabel": "Fiction, non-fiction, poetry and translation",
+      "pay": {
+        "currency": "CAD",
+        "amountMin": null,
+        "amountMax": null,
+        "display": "Modest honorarium — amount not stated",
+        "conditions": "Official: \"carte blanche pays a modest honorarium per submission.\" No figure is published, so BRYME states none rather than guessing.",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "min": null,
+        "max": null,
+        "display": "See the guidelines for each genre"
+      },
+      "response": {
+        "label": "Not stated",
+        "band": "not-stated",
+        "official": false
+      },
+      "submissionStatus": "upcoming",
+      "deadline": {
+        "display": "Spring and Fall reading periods. Check the submissions page for the current window.",
+        "recurring": true
+      },
+      "aiPolicy": "not-stated",
+      "whatTheyWant": [
+        "Fiction, creative non-fiction, poetry and translation submitted through Submittable.",
+        "Work that fits a magazine published by the Quebec Writers' Federation."
+      ],
+      "whatTheyDontWant": [
+        "Submissions outside an open reading period."
+      ],
+      "requirements": [
+        "Submittable",
+        "Open reading period"
+      ],
+      "rights": "Not stated on the submissions page.",
+      "howToSubmit": [
+        "Check https://carte-blanche.org/submissions/ for the current reading period.",
+        "Read recent issues to see the range they publish.",
+        "Submit via Submittable."
+      ],
+      "keywords": [
+        "carte blanche",
+        "canada",
+        "quebec",
+        "translation",
+        "cad"
+      ]
     }
   ]
 }
