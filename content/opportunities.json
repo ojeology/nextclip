@@ -5555,8 +5555,8 @@
       "writingTypeLabel": "African creative-industry features",
       "pay": {
         "currency": "USD",
-        "amountMin": 0,
-        "amountMax": 1,
+        "amountMin": null,
+        "amountMax": null,
         "display": "Up to $1/word",
         "conditions": "Up to $1 per word depending on length and complexity; exact rate varies by story and editor approval.",
         "timing": "Not publicly stated"
@@ -5685,8 +5685,8 @@
       "writingTypeLabel": "Literary essays and features",
       "pay": {
         "currency": "AUD",
-        "amountMin": 0,
-        "amountMax": 0.75,
+        "amountMin": null,
+        "amountMax": null,
         "display": "AUD $0.75/word",
         "conditions": "AUD $0.75/word for accepted prose. Note: their Emerging Voices competition charges an entry fee and is restricted to Australian/New Zealand citizens and residents.",
         "timing": "21 days after final invoice (reported)"
@@ -5811,8 +5811,8 @@
       "writingTypeLabel": "Pan-African literary work",
       "pay": {
         "currency": "",
-        "amountMin": 0,
-        "amountMax": 0,
+        "amountMin": null,
+        "amountMax": null,
         "display": "Not publicly stated",
         "conditions": "Not publicly stated for this edition — confirm on the official page.",
         "timing": "Not publicly stated"
@@ -6791,8 +6791,8 @@
       "submissionStatus": "open",
       "lastVerified": "2026-09-05",
       "pay": {
-        "amountMin": 0.3,
-        "amountMax": 0.5,
+        "amountMin": null,
+        "amountMax": null,
         "currency": "USD",
         "display": "~$0.30–$0.50/word",
         "conditions": "Writer's Digest publishes craft articles and pays a per-word rate for accepted work.",
@@ -7173,8 +7173,8 @@
       "submissionStatus": "open",
       "lastVerified": "2026-09-05",
       "pay": {
-        "amountMin": 0.4,
-        "amountMax": 0.4,
+        "amountMin": null,
+        "amountMax": null,
         "currency": "USD",
         "display": "~$0.40/word",
         "conditions": "Business Insider pays approximately $0.40 per word for accepted career and money essays.",
@@ -7325,8 +7325,8 @@
       "submissionStatus": "open",
       "lastVerified": "2026-09-05",
       "pay": {
-        "amountMin": 1.0,
-        "amountMax": 1.0,
+        "amountMin": null,
+        "amountMax": null,
         "currency": "USD",
         "display": "$1/word",
         "conditions": "Rest of World states a $1 per word rate for accepted reported pieces.",
@@ -7399,8 +7399,8 @@
       "status": "upcoming",
       "excerpt": "The Kenyon Review pays $0.08 per published word of prose (min $80, max $450) and $0.16 per published word of poetry (min $40, max $200).",
       "pay": {
-        "amountMin": 0.08,
-        "amountMax": 0.16,
+        "amountMin": null,
+        "amountMax": null,
         "currency": "USD",
         "display": "$0.08/word prose, $0.16/word poetry",
         "conditions": "The official submissions page states $0.08 per published word of prose (min $80, max $450) and $0.16 per word of poetry (min $40, max $200).",
@@ -7872,8 +7872,8 @@
       "status": "open",
       "excerpt": "Diabolical Plots pays $0.10 per word for science fiction, fantasy and horror up to 3,500 words.",
       "pay": {
-        "amountMin": 0.1,
-        "amountMax": 0.1,
+        "amountMin": null,
+        "amountMax": null,
         "currency": "USD",
         "display": "$0.10/word",
         "conditions": "The official site states 10 cents per word for original fiction up to 3,500 words.",
@@ -7949,7 +7949,7 @@
       "status": "open",
       "excerpt": "Haven Speculative pays 8¢ per word for fiction and $20 for poetry.",
       "pay": {
-        "amountMin": 0.08,
+        "amountMin": 20,
         "amountMax": 20,
         "currency": "USD",
         "display": "8¢/word fiction, $20 poetry",
@@ -8105,7 +8105,7 @@
       "status": "open",
       "excerpt": "Space and Time pays $0.01 per word for prose and $5 for poetry, accepting work in multiple languages.",
       "pay": {
-        "amountMin": 0.01,
+        "amountMin": 5,
         "amountMax": 5,
         "currency": "USD",
         "display": "$0.01/word prose, $5 poetry",
