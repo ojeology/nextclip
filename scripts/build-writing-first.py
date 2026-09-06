@@ -273,6 +273,7 @@ HOWTO_LINKS = [
     ("grammar-language", "/learn/grammar-language/", "Grammar"),
     ("editing-proofreading", "/learn/editing-proofreading/", "Editing"),
     ("writing-for-publication", "/learn/writing-for-publication/", "Get published"),
+    ("freelance-paid-writing", "/learn/freelance-paid-writing/", "Rates & business"),
 ]
 
 
@@ -532,6 +533,7 @@ def drawer(current: str = "") -> str:
         ("creative-writing", "/learn/creative-writing/", "Creative", "✍️"),
         ("editing-proofreading", "/learn/editing-proofreading/", "Editing & proofreading", "🧹"),
         ("writing-for-publication", "/learn/writing-for-publication/", "Get published", "📮"),
+        ("freelance-paid-writing", "/learn/freelance-paid-writing/", "Rates & business", "💷"),
     ]
     tools = [("tools", "/tools/", "All tools", "🛠️"),
              ("templates", "/templates/", "Templates", "📄"),
