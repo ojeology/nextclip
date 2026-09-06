@@ -530,5 +530,25 @@
   "carte-blanche": {
     "base": "CA",
     "label": "Canada"
+  },
+  "island-magazine": {
+    "base": "AU",
+    "label": "Australia"
+  },
+  "westerly": {
+    "base": "AU",
+    "label": "Australia"
+  },
+  "kill-your-darlings": {
+    "base": "AU",
+    "label": "Australia"
+  },
+  "aurealis": {
+    "base": "AU",
+    "label": "Australia"
+  },
+  "australian-book-review": {
+    "base": "AU",
+    "label": "Australia"
   }
 }
