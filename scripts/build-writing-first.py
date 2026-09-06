@@ -1083,8 +1083,7 @@ REGION_MEMBERS = {
     "uk": {"UK"}, "ireland": {"IE"}, "canada": {"CA"},
     "australia": {"AU"}, "new-zealand": {"NZ"},
 }
-COUNTRY_PAGE_SLUG = {"US": "usa", "NG": "nigeria", "UK": "united-kingdom",
-                     "CA": "canada", "AU": "australia"}
+# Filled from COUNTRY_PROFILES below — every country has a page.
 
 
 def _elig_mode(rec: dict) -> str:
@@ -1125,16 +1124,13 @@ def country_discovery_page() -> None:
 
         # A country with only one or two publications gets links straight to
         # those records rather than a near-empty listing page.
-        if iso in COUNTRY_PAGE_SLUG and len(based) >= MIN_COUNTRY_PAGE:
-            based_cta = ('<div class="actions"><a class="btn secondary" href='
-                         '"/writing-opportunities/' + esc(COUNTRY_PAGE_SLUG[iso]) + '/">'
-                         'See all ' + str(len(based)) + ' based in ' + esc(name)
-                         + ' &rarr;</a></div>')
-        else:
-            links = " &middot; ".join(
-                '<a href="/writing/' + esc(r["slug"]) + '/">' + esc(r["publication"]) + '</a>'
-                for r in based)
-            based_cta = '<p class="meta">Based here: ' + links + '</p>'
+        prof = COUNTRY_PROFILES.get(iso) or {}
+        cslug = prof.get("slug") or iso.lower()
+        noun = "publication" if len(based) == 1 else "publications"
+        based_cta = ('<div class="actions"><a class="btn secondary" href='
+                     '"/writing-opportunities/' + esc(cslug) + '/">'
+                     'See ' + str(len(based)) + ' ' + noun + ' in ' + esc(name)
+                     + ' &rarr;</a></div>')
 
         extra_line = ""
         if extras:
@@ -1216,6 +1212,205 @@ def country_discovery_page() -> None:
                      "url": BASE + "/writing/by-country/", "dateModified": TODAY,
                      "publisher": {"@type": "Organization", "name": "BRYME", "url": BASE + "/"}}))
 
+
+# ---------------------------------------------------------------------------
+# Per-country publication pages.
+#
+# These replace the old five country views. Every country in the data now gets
+# a page, including the ones with a single publication, because each page now
+# carries genuinely country-specific editorial content and not just a filtered
+# list: the flag, the two eligibility counts, the region-specific markets that
+# name that country, its house spelling/date/CV conventions, its currency at a
+# dated rate, and its pitching guide where one exists.
+#
+# That distinction matters. Eleven pages that differ only by a filtered list
+# would be near-duplicates; eleven pages that answer "what do I need to know to
+# pitch from here" are eleven different pages.
+#
+# Convention profiles are only asserted where BRYME has a source. Where a
+# country is not covered by content/hub/regional.json, the page says so rather
+# than inventing a profile.
+# ---------------------------------------------------------------------------
+COUNTRY_PROFILES = {
+    "US": dict(slug="usa", cur="USD", spelling="-ize and -or: organize, color, honor, labor",
+               dates="April 3, 2026 \u2014 month first, comma after the day",
+               cv="R\u00e9sum\u00e9, usually one page, never with a photo",
+               quotes="Double quotes, and commas and full stops go <em>inside</em> them",
+               guide=("/learn/writing-for-publication/how-to-pitch-us-editors/", "How to pitch US editors"),
+               note="The largest market BRYME tracks, and the one most likely to state a per-word rate up front."),
+    "UK": dict(slug="united-kingdom", cur="GBP", spelling="-ise and -our: organise, colour, honour \u2014 though Oxford University Press and most UK academic journals use -ize",
+               dates="3 April 2026 \u2014 day first, no commas",
+               cv="CV, one to two pages, never with a photo",
+               quotes="Single quotes are common, and punctuation goes <em>outside</em> unless it belonged to the quotation",
+               guide=("/learn/writing-for-publication/how-to-pitch-uk-editors/", "How to pitch UK editors"),
+               note="UK rates are usually quoted per 1,000 words rather than per word. Several UK markets charge a small submission fee."),
+    "CA": dict(slug="canada", cur="CAD", spelling="A genuine hybrid: British vowels, American endings. <b>colour</b> and <b>organize</b> in the same sentence is correct here",
+               dates="Both orders are in use, which makes numeric dates genuinely ambiguous \u2014 spell the month out",
+               cv="Both CV and r\u00e9sum\u00e9 are used; never with a photo",
+               quotes="US-style: punctuation inside the quotation marks",
+               guide=("/learn/writing-for-publication/how-to-pitch-canadian-editors/", "How to pitch Canadian editors"),
+               note="Canadian literary magazines publish their rates more openly than any other market BRYME has researched, largely because of arts-council funding norms. The authority is the Canadian Oxford Dictionary and Canadian Press style."),
+    "AU": dict(slug="australia", cur="AUD", spelling="-ise and -our, followed more strictly than in Britain. But <b>program</b>, not programme, and <b>jail</b>, not gaol",
+               dates="3 April 2026 \u2014 day first",
+               cv="CV, never with a photo",
+               quotes="Largely British usage; house styles vary",
+               guide=("/learn/writing-for-publication/how-to-pitch-australian-editors/", "How to pitch Australian editors"),
+               note="<b>Labor</b> without the u only ever refers to the Australian Labor Party \u2014 everywhere else it is labour. Getting that wrong in a political piece is an immediate tell. The authority is the Macquarie Dictionary."),
+    "NG": dict(slug="nigeria", cur="NGN", spelling="-ise and -our, following British convention",
+               dates="3 April 2026 \u2014 day first",
+               cv="CV, and a photo is conventional and often expected, unlike in the US or UK",
+               quotes="British usage",
+               guide=None,
+               note="Nigerian publications rarely publish a rate, which is why BRYME lists comparatively few. Several international markets specifically welcome African writers \u2014 they are listed below."),
+    "KE": dict(slug="kenya", cur="KES", spelling="-ise and -our, following British convention",
+               dates="3 April 2026 \u2014 day first", cv="CV", quotes="British usage", guide=None,
+               note="A small base of Kenya-based markets, but the Africa-focused international calls below are open to Kenyan writers by name."),
+    "ZA": dict(slug="south-africa", cur="ZAR", spelling="-ise and -our, following British convention",
+               dates="3 April 2026 \u2014 day first", cv="CV", quotes="British usage", guide=None,
+               note="South African writers are named in several Africa-focused international calls listed below."),
+    "IE": dict(slug="ireland", cur="EUR", spelling="-ise and -our, following British convention",
+               dates="3 April 2026 \u2014 day first", cv="CV, never with a photo",
+               quotes="British usage", guide=("/learn/writing-for-publication/how-to-pitch-uk-editors/", "How to pitch UK and Irish editors"),
+               note="Irish writers are eligible for UK-and-Ireland calls that exclude the rest of the world \u2014 see below."),
+    "DE": dict(slug="germany", cur="EUR", spelling="Publications here writing in English generally follow US or UK house style \u2014 check the publication",
+               dates="3 April 2026 in British style; 2026-04-03 ISO is common in technical writing",
+               cv="A photo is conventional on a German CV, unlike almost everywhere else BRYME covers",
+               quotes="Follow the publication's own house style", guide=None,
+               note="BRYME currently tracks one Germany-based publication that pays in English."),
+    "NA": dict(slug="namibia", cur=None, spelling=None, dates=None, cv=None, quotes=None, guide=None,
+               note="BRYME has not separately verified a Namibian house-style profile. Southern African publishing generally follows British convention, but confirm against the publication's own guideline rather than assuming."),
+    "NP": dict(slug="nepal", cur=None, spelling=None, dates=None, cv=None, quotes=None, guide=None,
+               note="BRYME has not separately verified a Nepali house-style profile. South Asian English-language publishing generally follows British convention, but confirm against the publication's own guideline."),
+}
+
+
+def _fx_line(cur: str | None) -> str:
+    """A dated, real conversion line. Never invents a rate."""
+    if not cur or cur == "USD":
+        return ""
+    try:
+        fx = json.loads((ROOT / "content/hub/fx-rates.json").read_text(encoding="utf-8"))
+        rate = (fx.get("perUsd") or {}).get(cur)
+        when = fx.get("fetchedAt", "")
+    except Exception:
+        return ""
+    if not rate:
+        return ""
+    sym = {"NGN": "\u20a6", "GBP": "\u00a3", "EUR": "\u20ac", "CAD": "CA$",
+           "AUD": "A$", "KES": "KSh", "ZAR": "R"}.get(cur, cur + " ")
+    approx = f"{sym}{rate * 100:,.0f}"
+    return ('<p class="meta">Pay below is shown exactly as each publication states it. '
+            'For scale, <b>US$100</b> is about <b>' + approx + '</b> at the mid-market rate of '
+            + esc(when) + '. BRYME never converts a stated rate \u2014 it only shows an approximation.</p>')
+
+
+def _conventions_block(iso: str, name: str) -> str:
+    p = COUNTRY_PROFILES.get(iso) or {}
+    rows = [("Spelling", p.get("spelling")), ("Dates", p.get("dates")),
+            ("CV or r\u00e9sum\u00e9", p.get("cv")), ("Quotation", p.get("quotes"))]
+    rows = [(k, v) for k, v in rows if v]
+    if not rows:
+        return ('<section class="section"><div class="wrap"><h2>House style in ' + esc(name) + '</h2>'
+                '<div class="prose"><p>' + (p.get("note") or "") + '</p></div>'
+                '<div class="actions"><a class="btn secondary" href="/regional/">'
+                'Full writing conventions reference &rarr;</a></div></div></section>')
+    body = "".join('<tr><th scope="row">' + esc(k) + "</th><td>" + v + "</td></tr>" for k, v in rows)
+    return ('<section class="section"><div class="wrap">'
+            '<h2>House style when you write for ' + esc(name) + '</h2>'
+            '<div class="prose"><p>Getting these wrong will not sink a good idea, but they are the '
+            'fastest way for an editor to tell you have not read them.</p></div>'
+            '<div class="compare-scroll"><table class="compare-table"><tbody>' + body + '</tbody></table></div>'
+            '<div class="prose"><p>' + (p.get("note") or "") + '</p></div>'
+            '<div class="actions"><a class="btn secondary" href="/regional/">'
+            'Full writing conventions reference &rarr;</a></div></div></section>')
+
+
+def country_page(iso: str, based: list) -> str:
+    """One rich page per country. Returns the route written."""
+    p = COUNTRY_PROFILES.get(iso) or {}
+    slug = p.get("slug") or iso.lower()
+    name = country_name(iso)
+    flag = COUNTRY_FLAGS.get(iso, "")
+
+    worldwide = [r for r in WRITING if _elig_mode(r) in ("open", "worldwide")]
+    based_slugs = {r["slug"] for r in based}
+    extras = [r for r in WRITING if _elig_mode(r) == "restricted"
+              and _names_your_region(r, iso) and r["slug"] not in based_slugs]
+    confirmed = {r["slug"] for r in worldwide} | based_slugs | {r["slug"] for r in extras}
+    n_silent = sum(1 for r in WRITING if _elig_mode(r) in ("not-stated", "unknown")
+                   and r["slug"] not in confirmed)
+
+    ordered = sorted(based, key=lambda r: (0 if norm_status(r) in ("open", "rolling") else 1,
+                                           -(usd_amount(r) or 0)))
+    cards = "".join(pub_card(r, "h3") for r in ordered)
+
+    extras_block = ""
+    if extras:
+        ex_cards = "".join(pub_card(r, "h3") for r in sorted(
+            extras, key=lambda r: (0 if norm_status(r) in ("open", "rolling") else 1,
+                                   -(usd_amount(r) or 0))))
+        extras_block = (
+            '<section class="section alt"><div class="wrap"><div class="section-head"><div>'
+            '<p class="eyebrow">Open to you by name</p><h2>' + str(len(extras))
+            + ' more that specifically welcome writers from ' + esc(name) + '</h2></div></div>'
+            '<div class="prose"><p>These are based elsewhere, but their own guidelines name '
+            + esc(name) + ' or its region. They are closed to most of the world and open to you.</p></div>'
+            '<div class="opp-list">' + ex_cards + '</div></div></section>')
+
+    guide = p.get("guide")
+    guide_cta = ('<a class="btn secondary" href="' + esc(guide[0]) + '">' + esc(guide[1])
+                 + ' &rarr;</a>') if guide else ""
+
+    body = (
+        '<div class="wrap"><nav class="breadcrumb"><a href="/">Home</a> / '
+        '<a href="/writing/">Opportunities</a> / <a href="/writing/by-country/">By country</a> / '
+        + esc(name) + '</nav>'
+        '<section class="page-hero"><p class="kicker"><span class="kicker-dot"></span>'
+        + flag + ' ' + esc(name) + '</p>'
+        '<h1>Writing opportunities in ' + esc(name) + '</h1>'
+        '<p><b>' + str(len(based)) + '</b> ' + ('publication is' if len(based) == 1
+          else 'publications are') + ' based in ' + esc(name)
+        + ', and <b>' + str(len(confirmed)) + '</b> in total confirm in their own guidelines that '
+        'they are open to writers from here. A further ' + str(n_silent) + ' do not state an '
+        'eligibility rule either way.</p>'
+        + _fx_line(p.get("cur")) +
+        '<p class="notice">A listing is an invitation to pitch, never a promise of acceptance or '
+        'payment. Every entry links to the publication&rsquo;s own guideline and the date BRYME '
+        'last checked it.</p>'
+        '<p class="prog-ctas"><a class="btn" href="/writing-opportunities/remote/">'
+        + str(len(worldwide)) + ' open to writers anywhere &rarr;</a>'
+        + guide_cta +
+        '<a class="btn secondary" href="/writing/by-country/">Pick another country</a></p>'
+        '</section></div>'
+        '<section class="section"><div class="wrap"><div class="section-head"><div>'
+        '<p class="eyebrow">Based here</p><h2>' + str(len(based)) + ' '
+        + ('publication' if len(based) == 1 else 'publications') + ' based in '
+        + esc(name) + '</h2></div></div><div class="opp-list">' + cards + '</div></div></section>'
+        + extras_block
+        + _conventions_block(iso, name) +
+        '<section class="section alt"><div class="wrap"><div class="section-head"><div>'
+        '<p class="eyebrow">Before you pitch</p><h2>Read these first.</h2></div></div>'
+        '<div class="purpose-links">'
+        '<a class="purpose-alt" href="/learn/writing-for-publication/how-to-pitch-an-editor/">How to pitch an editor</a>'
+        '<a class="purpose-alt" href="/learn/freelance-paid-writing/how-to-find-paying-publications/">How to find paying publications</a>'
+        '<a class="purpose-alt" href="/learn/freelance-paid-writing/how-to-price-your-freelance-writing/">How to price your writing</a>'
+        '<a class="purpose-alt" href="/tracker/">Track your pitches</a>'
+        + ('<a class="purpose-alt" href="' + esc(guide[0]) + '">' + esc(guide[1]) + '</a>' if guide else '')
+        + '</div></div></section>')
+
+    route = "/writing-opportunities/" + slug + "/"
+    write(route, page_wf(
+        title="Writing opportunities in " + name + " | BRYME",
+        description=(str(len(based)) + " publications based in " + name + " that pay writers, plus "
+                     + str(len(confirmed)) + " open to writers from " + name
+                     + " — with stated pay, eligibility and house-style conventions."),
+        route=route, current="writing", body=body,
+        schema_data={"@context": "https://schema.org", "@type": "CollectionPage",
+                     "name": "Writing opportunities in " + name,
+                     "url": BASE + route, "dateModified": TODAY,
+                     "numberOfItems": len(based)}))
+    return route
+
 def programmatic_pages() -> None:
     PROG_ROUTES.clear()
     base_guides = [("/learn/writing-for-publication/how-to-pitch-an-editor/", "How to pitch an editor"),
@@ -1223,27 +1418,19 @@ def programmatic_pages() -> None:
                    ("/tracker/", "Track your pitches")]
 
     # --- by country of publication -----------------------------------------
-    iso_slug = {"US": "usa", "NG": "nigeria", "UK": "united-kingdom",
-                "CA": "canada", "AU": "australia"}
+    # Every country now gets a page. The old MIN_COUNTRY_PAGE gate existed
+    # because a filtered list of one is a thin page; country_page() carries
+    # per-country conventions, currency, region-specific calls and a pitching
+    # guide, so a one-publication country still has a real page behind it.
     groups: dict[str, list] = {}
     for r in WRITING:
         b = (base_country(r["slug"]) or "").upper()
         if b:
             groups.setdefault(b, []).append(r)
-    for iso, rows in sorted(groups.items()):
-        if len(rows) < MIN_COUNTRY_PAGE or iso not in iso_slug:
+    for iso, rows in sorted(groups.items(), key=lambda kv: (-len(kv[1]), country_name(kv[0]))):
+        if iso not in COUNTRY_PROFILES:
             continue
-        name = country_name(iso)
-        _prog_page(
-            iso_slug[iso], f"Writing opportunities in {name}",
-            f"{name} publications",
-            f"Publications based in {name} that pay writers, researched by hand with their stated pay, word count, eligibility and official guideline.",
-            PROG_COUNTRY_NOTES.get(iso, "Check each guideline before pitching — BRYME does not treat a missing eligibility statement as an open call."),
-            rows, f"/writing/?country={iso}",
-            base_guides + [("/regional/", "Writing conventions by country")],
-            extra_cta=(f"/writing/?country={iso}&cmode=opento",
-                       f"{sum(1 for r in WRITING if _filter_matches(r, iso, 'opento'))} publications are open to writers in {name} \u2192"))
-        PROG_ROUTES.append(f"/writing-opportunities/{iso_slug[iso]}/")
+        PROG_ROUTES.append(country_page(iso, rows))
 
     # --- open worldwide -----------------------------------------------------
     remote = [r for r in WRITING
@@ -1284,9 +1471,14 @@ def programmatic_pages() -> None:
     def li(href, label, n):
         return (f'<a class="guide-card" href="{esc(href)}"><span class="card-num">{n}</span>'
                 f'<h3>{esc(label)}</h3><span class="card-link">Open →</span></a>')
+    def cli(href, flag, label, n):
+        return (f'<a class="guide-card" href="{esc(href)}"><span class="card-num">{n}</span>'
+                f'<h3>{flag} {esc(label)}</h3><span class="card-link">Open &rarr;</span></a>')
     country_cards = "".join(
-        li(f"/writing-opportunities/{iso_slug[i]}/", country_name(i), len(g))
-        for i, g in sorted(groups.items()) if i in iso_slug and len(g) >= MIN_COUNTRY_PAGE)
+        cli(f"/writing-opportunities/{(COUNTRY_PROFILES[i] or {}).get('slug') or i.lower()}/",
+            COUNTRY_FLAGS.get(i, ""), country_name(i), len(g))
+        for i, g in sorted(groups.items(), key=lambda kv: (-len(kv[1]), country_name(kv[0])))
+        if i in COUNTRY_PROFILES)
     type_cards = "".join(
         li(f"/writing-opportunities/{tslug[t]}/", WRITING_TYPE_LABELS[t], len(g))
         for t, g in sorted(tgroups.items(), key=lambda kv: -len(kv[1]))
@@ -1294,9 +1486,9 @@ def programmatic_pages() -> None:
     body = f'''<div class="wrap"><nav class="breadcrumb"><a href="/">Home</a> / <a href="/writing/">Opportunities</a> / Browse</nav>
 <section class="page-hero"><p class="kicker"><span class="kicker-dot"></span>Browse by</p>
 <h1>Writing opportunities by country and genre.</h1>
-<p>Ready-made views of the {len(WRITING)} publications BRYME has researched. A view is only published where there are at least {MIN_COUNTRY_PAGE} real listings behind it — thin filter pages help nobody.</p>
+<p>Ready-made views of the {len(WRITING)} publications BRYME has researched. Every country gets a page — each carries its own house-style conventions, currency and region-specific calls, not just a filtered list. Genre views are only published where there are at least {MIN_TYPE_PAGE} real listings behind them.</p>
 </section></div>
-<section class="section"><div class="wrap"><div class="section-head"><div><p class="eyebrow">By country</p><h2>Where the publication is based.</h2></div></div>
+<section class="section"><div class="wrap"><div class="section-head"><div><p class="eyebrow">By country</p><h2>Pick your country.</h2></div></div>
 <div class="card-grid">{country_cards}
 {li("/writing-opportunities/remote/", "Open to writers anywhere", len(remote))}</div></div></section>
 <section class="section alt"><div class="wrap"><div class="section-head"><div><p class="eyebrow">By what you write</p><h2>Genre and form.</h2></div></div>
