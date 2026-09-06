@@ -81,6 +81,15 @@ for(const file of htmlFiles){
 }
 if(indexed!==allow.size)fail(`indexable count ${indexed} does not equal allowlist ${allow.size}`);
 const expectedPubs=PUB_SLUGS.size;
+// A recorded submission window lapses on its own, with no edit to the record.
+// The build downgrades those to closed so the site is never wrong, but the
+// maintainer still needs telling that the data needs re-verifying.
+const _today=new Date().toISOString().slice(0,10);
+const staleWindows=json("content/opportunities.json").opportunities.filter(o=>{
+  const d=(o.deadline||{}); const ds=d.date||d.windowEnd; if(!ds)return false;
+  return String(ds).slice(0,10)<_today && ["open","deadline","rolling"].includes(o.submissionStatus);
+}).map(o=>o.slug);
+if(staleWindows.length)warn(`${staleWindows.length} record(s) have a passed deadline but a live status — re-verify: ${staleWindows.join(", ")}`);
 if(pubRecords!==expectedPubs)fail(`expected ${expectedPubs} indexed publication records under /writing/, found ${pubRecords}`);
 const sitemapRoutes=[...read("sitemap.xml").matchAll(/<loc>(.*?)<\/loc>/g)].map(m=>norm(m[1]));
 if(sitemapRoutes.length!==allow.size)fail(`sitemap has ${sitemapRoutes.length}, expected ${allow.size}`);

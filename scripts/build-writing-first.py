@@ -139,8 +139,24 @@ def norm_types(rec: dict) -> list[str]:
     return out
 
 
+def _deadline_past_raw(rec: dict) -> bool:
+    dl = rec.get("deadline") or {}
+    for key in ("date", "windowEnd"):
+        ds = dl.get(key)
+        if not ds:
+            continue
+        try:
+            return _dt.date.fromisoformat(str(ds)[:10]) < _dt.date.today()
+        except ValueError:
+            return False
+    return False
+
+
 def norm_status(rec: dict) -> str:
-    return STATUS_MAP.get(rec.get("submissionStatus"), "unknown")
+    st = rec.get("submissionStatus")
+    if _deadline_past_raw(rec) and st in ("open", "deadline", "rolling"):
+        st = "closed"
+    return STATUS_MAP.get(st, "unknown")
 
 
 def norm_ai(rec: dict) -> str:
@@ -615,11 +631,47 @@ STATUS_ROBOTS = {
 }
 
 
+def deadline_passed(rec: dict):
+    """Return the ISO date of a stated deadline that is already in the past.
+
+    A verification site must never present a closed window as open. Data goes
+    stale silently -- a window lapses on its own, with no edit to the record --
+    so this is enforced at render time rather than trusted to a human noticing.
+    """
+    dl = rec.get("deadline") or {}
+    for key in ("date", "windowEnd"):
+        ds = dl.get(key)
+        if not ds:
+            continue
+        try:
+            d = _dt.date.fromisoformat(str(ds)[:10])
+        except ValueError:
+            return None
+        return str(ds)[:10] if d < _dt.date.today() else None
+    return None
+
+
+def expiry_notice(rec: dict) -> str:
+    """Visible, honest notice on any record whose recorded window has passed."""
+    past = deadline_passed(rec)
+    if not past:
+        return ""
+    try:
+        pretty = _dt.date.fromisoformat(past).strftime("%-d %B %Y")
+    except ValueError:
+        pretty = past
+    return ('<p class="notice"><b>This window has closed.</b> The deadline BRYME recorded was '
+            + esc(pretty) + ', which has passed. BRYME has not yet re-checked whether a new '
+            'window has opened &mdash; read the publication&rsquo;s own guideline below before '
+            'you pitch.</p>')
+
 def status_of(rec: dict) -> tuple[str, str, str]:
     by = {"open": "open", "rolling": "open", "upcoming": "unknown",
           "deadline": "unknown", "closed": "closed", "unknown": "unknown",
           None: "unknown"}
     from_status = rec.get("submissionStatus")
+    if deadline_passed(rec) and from_status in ("open", "deadline", "rolling"):
+        from_status = "closed"   # the recorded window has lapsed
     label, cls, _ = STATUS_ROBOTS.get(from_status, STATUS_ROBOTS["unknown"])
     return label, cls, by.get(from_status, "unknown")
 
@@ -1817,6 +1869,7 @@ def pub_page(rec: dict) -> None:
 <h1>{esc(rec['publication'])}</h1>
 <p>{esc(rec.get('excerpt') or rec.get('title') or '')}</p>
 <p class="source-line">{status_badge(rec)} <span class="verify-badge {cls}">Verified {esc((rec.get('lastVerified') or TODAY)[:7])}</span> <span class="byline">Researched by <a href="/author/ibrahim-sodiq/">BRYME Editorial Desk</a>.</span></p>
+{expiry_notice(rec)}
 </section>
 <div class="wrap two-col"><div>{_facts(rec)}</div><div>{_timeline(rec)}</div></div>
 <section class="section"><div class="prose">
