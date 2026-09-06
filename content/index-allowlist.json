@@ -1,5 +1,5 @@
 {
-  "version": 14,
+  "version": 15,
   "policy": "BRYME Writing Hub: every indexable route is a genuine, useful writing guide (how-to, worked example, or dos & don'ts), a free in-browser tool, a research-backed paid-writing opportunity (100+ verified), a maintenance hub or a core trust/about page. No thin or filler pages.",
   "routes": [
     "/",
@@ -109,6 +109,7 @@
     "/learn/examples/how-to-use-the-examples/",
     "/learn/freelance-paid-writing/",
     "/learn/freelance-paid-writing/accounting-software-for-writers/",
+    "/learn/freelance-paid-writing/african-writers-international-markets/",
     "/learn/freelance-paid-writing/australia-tax-for-freelance-writers/",
     "/learn/freelance-paid-writing/b2b-content-writing/",
     "/learn/freelance-paid-writing/business-bank-account-for-writers/",
@@ -120,6 +121,7 @@
     "/learn/freelance-paid-writing/choosing-note-taking-apps/",
     "/learn/freelance-paid-writing/choosing-pdf-and-document-tools/",
     "/learn/freelance-paid-writing/choosing-research-tools/",
+    "/learn/freelance-paid-writing/cross-border-writing-business/",
     "/learn/freelance-paid-writing/do-writers-need-business-insurance/",
     "/learn/freelance-paid-writing/finance-and-insurance-copywriting/",
     "/learn/freelance-paid-writing/freelance-writing-rates-australia/",
@@ -140,6 +142,7 @@
     "/learn/freelance-paid-writing/invoicing-software-for-writers/",
     "/learn/freelance-paid-writing/legal-writing-for-freelancers/",
     "/learn/freelance-paid-writing/medical-writing-rates/",
+    "/learn/freelance-paid-writing/nigerian-writers-us-uk-markets/",
     "/learn/freelance-paid-writing/payment-platforms-for-writers/",
     "/learn/freelance-paid-writing/per-word-day-rate-or-project-fee/",
     "/learn/freelance-paid-writing/project-and-client-tools-for-writers/",
