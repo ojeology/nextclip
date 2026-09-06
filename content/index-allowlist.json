@@ -1,5 +1,5 @@
 {
-  "version": 13,
+  "version": 14,
   "policy": "BRYME Writing Hub: every indexable route is a genuine, useful writing guide (how-to, worked example, or dos & don'ts), a free in-browser tool, a research-backed paid-writing opportunity (100+ verified), a maintenance hub or a core trust/about page. No thin or filler pages.",
   "routes": [
     "/",
@@ -117,6 +117,9 @@
     "/learn/freelance-paid-writing/choosing-a-grammar-checker/",
     "/learn/freelance-paid-writing/choosing-ai-writing-tools/",
     "/learn/freelance-paid-writing/choosing-long-form-writing-software/",
+    "/learn/freelance-paid-writing/choosing-note-taking-apps/",
+    "/learn/freelance-paid-writing/choosing-pdf-and-document-tools/",
+    "/learn/freelance-paid-writing/choosing-research-tools/",
     "/learn/freelance-paid-writing/do-writers-need-business-insurance/",
     "/learn/freelance-paid-writing/finance-and-insurance-copywriting/",
     "/learn/freelance-paid-writing/freelance-writing-rates-australia/",

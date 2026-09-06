@@ -75,6 +75,8 @@ A workable method:
 3. Scope the project in deliverables (pages, endpoints, articles), not words.
 4. Quote a project fee with a defined revision count, and state what a change of scope costs.
 
+A worked example. A startup asks for a getting-started tutorial and an API reference covering twelve endpoints. Your floor says $550/day is the minimum; the EFA band says $75–$126/hour, so $600/day is defensible. Estimating honestly: one day to run the API and interview the engineer, two days to draft, half a day for one revision round — 3.5 days at $600 is a **$2,100 project fee**, with additional endpoints priced at a named unit rate so scope creep has a number attached. That quote survives the client's "can you do it for $800?" because you can show where the days went; an $800 quote built from vibes cannot.
+
 Per-word pricing actively penalises you here. The clearer your documentation gets, the shorter it becomes, and the less you would earn.
 
 ## Getting the first job
