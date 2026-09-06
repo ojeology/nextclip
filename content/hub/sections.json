@@ -186,7 +186,144 @@
       "title": "Freelance & paid writing",
       "tagline": "Markets that pay contributors — researched and verified.",
       "description": "Publications accepting submissions, paying markets, freelancing platforms, eligibility, pay, word counts and how to pitch.",
-      "icon": "💰"
+      "icon": "💰",
+      "pillars": [
+        {
+          "id": "income",
+          "icon": "💰",
+          "title": "Writing income: rates, careers & getting paid",
+          "blurb": "What writing actually pays, market by market, from survey-backed rate guides to pricing method, raising rates and getting the first gig. Start with the rate guide for your market; price everything through the calculator.",
+          "guides": [
+            "freelance-writing-rates-us",
+            "freelance-writing-rates-uk",
+            "freelance-writing-rates-canada",
+            "freelance-writing-rates-australia",
+            "saas-and-technology-writing-rates",
+            "medical-writing-rates",
+            "technical-writing-rates",
+            "high-paying-writing-niches",
+            "how-to-price-your-freelance-writing",
+            "per-word-day-rate-or-project-fee",
+            "how-to-raise-your-freelance-rates",
+            "reader-supported-writing",
+            "how-to-get-your-first-paid-writer-gig",
+            "how-to-find-paying-publications"
+          ],
+          "links": [
+            [
+              "Open the freelance rate calculator",
+              "/tools/freelance-rate-calculator/"
+            ],
+            [
+              "Browse current paid opportunities",
+              "/writing/"
+            ]
+          ]
+        },
+        {
+          "id": "business",
+          "icon": "🧾",
+          "title": "Running the business: taxes, banking & contracts",
+          "blurb": "The paperwork of a writing business, country by country — the four tax guides with the dates and thresholds that actually apply, banking, expenses, structure, insurance, contracts and invoicing.",
+          "guides": [
+            "us-tax-for-freelance-writers",
+            "uk-tax-for-freelance-writers",
+            "canada-tax-for-freelance-writers",
+            "australia-tax-for-freelance-writers",
+            "business-bank-account-for-writers",
+            "uk-business-bank-account-for-writers",
+            "business-expenses-for-writers",
+            "should-writers-form-an-llc",
+            "do-writers-need-business-insurance",
+            "writing-contracts-what-to-check",
+            "how-to-invoice-as-a-writer",
+            "invoicing-software-for-writers",
+            "accounting-software-for-writers",
+            "payment-platforms-for-writers"
+          ],
+          "links": []
+        },
+        {
+          "id": "tools",
+          "icon": "🧰",
+          "title": "Software & tools for writers",
+          "blurb": "Choosing guides for the software a writing business runs on — framed by the decision that matters and the tests to run yourself, not feature lists or ranked guesses.",
+          "guides": [
+            "choosing-a-grammar-checker",
+            "choosing-ai-writing-tools",
+            "choosing-long-form-writing-software",
+            "choosing-research-tools",
+            "choosing-note-taking-apps",
+            "choosing-pdf-and-document-tools",
+            "project-and-client-tools-for-writers"
+          ],
+          "links": [
+            [
+              "Open the free tool library",
+              "/tools/"
+            ]
+          ]
+        },
+        {
+          "id": "niches",
+          "icon": "🎯",
+          "title": "Specialised writing careers",
+          "blurb": "The niches that pay most: what each specialism does all day, what it pays, and how to break in without the credential people assume you need.",
+          "guides": [
+            "how-to-become-a-saas-writer",
+            "how-to-become-a-medical-writer",
+            "how-to-become-a-technical-writer",
+            "how-to-become-a-financial-writer",
+            "b2b-content-writing",
+            "ux-writing-for-writers",
+            "finance-and-insurance-copywriting",
+            "legal-writing-for-freelancers",
+            "real-estate-writing",
+            "healthcare-writing"
+          ],
+          "links": [
+            [
+              "What the high-paying niches actually pay",
+              "/learn/freelance-paid-writing/high-paying-writing-niches/"
+            ]
+          ]
+        },
+        {
+          "id": "international",
+          "icon": "🌍",
+          "title": "International writing markets",
+          "blurb": "Working across borders: the markets and their pitch processes, the payment rails, and the tax reality of earning from publications abroad — including the routes African and Nigerian writers use every day.",
+          "guides": [
+            "african-writers-international-markets",
+            "nigerian-writers-us-uk-markets",
+            "cross-border-writing-business",
+            "how-to-pitch-us-editors",
+            "how-to-pitch-uk-editors",
+            "how-to-pitch-canadian-editors",
+            "how-to-pitch-australian-editors"
+          ],
+          "links": [
+            [
+              "Find opportunities by country",
+              "/writing/by-country/"
+            ]
+          ]
+        },
+        {
+          "id": "emerging",
+          "icon": "🧪",
+          "title": "The emerging writing economy",
+          "blurb": "Original investigative writing on the platforms reshaping how writers get paid — researched with the platform-claim vs verified-fact discipline, not aggregated.",
+          "guides": [],
+          "essays": true,
+          "links": [
+            [
+              "All investigative essays",
+              "/essays/"
+            ]
+          ]
+        }
+      ]
     },
     {
       "id": "writing-tools",

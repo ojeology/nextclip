@@ -481,7 +481,49 @@ def section_hub(sec: dict) -> None:
             title=f"{sec['title']} | BRYME", description=sec.get("description", "").replace("\n", " "),
             route=f"/learn/{sec['id']}/", current="learn", body=body, robots="index,follow"))
         return
-    if guides:
+    pillars = sec.get("pillars") or []
+    if pillars and guides:
+        # Pillar-hub layout (Part E): the section page becomes a real hub —
+        # a chip index, then one anchored cluster per pillar with a blurb,
+        # its guide cards (any section; hubs aggregate), related links and
+        # optionally the investigative essays. Anything unassigned falls
+        # through to a catch-all so no guide is orphaned.
+        assigned = set()
+        chips = "".join(
+            f'<a class="chip-card" href="#pillar-{esc(p["id"])}"><b>{esc(p.get("icon", "▸"))}</b>'
+            f'<span>{esc(p["title"])}</span></a>' for p in pillars)
+        parts = [f'<section class="section"><div class="guide-grid">{chips}</div></section>']
+        for p in pillars:
+            p_cards = []
+            for s in p.get("guides", []):
+                g = GUIDES_BY_SLUG.get(s)
+                if g:
+                    p_cards.append(guide_card(g, "h3"))
+                    assigned.add(s)
+                else:
+                    print(f"  ! pillar '{p['id']}': no guide with slug '{s}'")
+            if p.get("essays"):
+                p_cards.extend(essay_card(e) for e in ESSAYS)
+            rel = ""
+            links = p.get("links") or []
+            if links:
+                rel = '<p class="meta">Related: ' + " &middot; ".join(
+                    f'<a href="{esc(h)}">{esc(t)}</a>' for t, h in links) + "</p>"
+            grid = f'<div class="guide-grid">{"".join(p_cards)}</div>' if p_cards else ""
+            parts.append(
+                f'<section class="section alt"><div class="section-head"><div>'
+                f'<p class="eyebrow">Pillar</p><h2 id="pillar-{esc(p["id"])}">{esc(p["title"])}</h2>'
+                f'</div></div><div class="prose"><p>{esc(p.get("blurb", ""))}</p></div>{rel}{grid}</section>')
+        rest = [g for g in guides if g["slug"] not in assigned]
+        if rest:
+            rest_cards = "".join(guide_card(g, "h3") for g in rest)
+            parts.append(
+                f'<section class="section"><div class="section-head"><div>'
+                f'<p class="eyebrow">More</p><h2>Everything else in {esc(sec["title"])}</h2>'
+                f'</div></div><div class="guide-grid">{rest_cards}</div></section>')
+        content = "".join(parts)
+        robots = "index,follow"
+    elif guides:
         cards = "".join(guide_card(g, "h2") for g in guides)
         content = (f'<section class="section">{level_filter(guides)}'
                    f'<div class="guide-grid">{cards}</div></section>')
