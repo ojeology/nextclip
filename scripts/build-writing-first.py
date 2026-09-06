@@ -489,7 +489,7 @@ def mobile_nav(current: str = "") -> str:
         ("learn", "/learn/", "📚", "How to"),
         ("essays", "/essays/", "✍️", "Essays"),
         ("tools", "/tools/", "🛠", "Tools"),
-        ("writing", "/writing/", "💰", "Publish"),
+        ("writing", "/writing/by-country/", "💰", "Publish"),
     ]
     return '<nav class="bottom-nav bottom-nav--writing" aria-label="Primary mobile">' + ''.join(
         f'<a href="{href}"' + (' aria-current="page"' if key == current else '') +
@@ -1505,6 +1505,41 @@ def programmatic_pages() -> None:
     PROG_ROUTES.append("/writing-opportunities/")
 
 
+def country_band() -> str:
+    """Country-first entry strip, shown at the top of /writing/.
+
+    The Publish surface should ask "where are you writing from?" before it
+    shows 138 cards. Server-rendered, flags included, every link a real page.
+    """
+    by_base: dict[str, list] = {}
+    for r in WRITING:
+        b = (base_country(r["slug"]) or "").upper()
+        if b:
+            by_base.setdefault(b, []).append(r)
+    n_ww = sum(1 for r in WRITING if _elig_mode(r) in ("open", "worldwide"))
+    chips = []
+    for iso, rows in sorted(by_base.items(), key=lambda kv: (-len(kv[1]), country_name(kv[0]))):
+        prof = COUNTRY_PROFILES.get(iso)
+        if not prof:
+            continue
+        chips.append('<a class="country-chip" href="/writing-opportunities/'
+                     + esc(prof["slug"]) + '/"><span class="chip-flag" aria-hidden="true">'
+                     + COUNTRY_FLAGS.get(iso, "") + '</span><span class="chip-name">'
+                     + esc(country_name(iso)) + '</span><span class="chip-n">'
+                     + str(len(rows)) + '</span></a>')
+    return ('<section class="section country-band"><div class="wrap">'
+            '<div class="section-head"><div><p class="eyebrow">Start here</p>'
+            '<h2>Where are you writing from?</h2></div>'
+            '<a class="card-link" href="/writing/by-country/">Compare all countries &rarr;</a></div>'
+            '<div class="prose"><p>Pick your country to see the publications based there, the calls '
+            'that name your region, and the house style editors there expect. Or browse all '
+            + str(len(WRITING)) + ' below.</p></div>'
+            '<div class="country-chips">' + "".join(chips)
+            + '<a class="country-chip country-chip--all" href="/writing-opportunities/remote/">'
+            '<span class="chip-flag" aria-hidden="true">\U0001F30D</span>'
+            '<span class="chip-name">Open to anyone</span><span class="chip-n">'
+            + str(n_ww) + '</span></a></div></div></section>')
+
 def writing_hub() -> None:
     n_open = sum(1 for r in WRITING if status_of(r)[2] == "open")
     cards = "".join(pub_card(r, "h2") for r in WRITING)
@@ -1513,6 +1548,7 @@ def writing_hub() -> None:
 <h1>Writing opportunities.</h1>
 <p>{len(WRITING)} publications researched by BRYME. Each permanent page shows the type of writing, the published pay, word count, who it's open to, the submission method, and the official guideline to confirm before you pitch. A listing is an invitation to pitch — not a job offer or a promise of payment.</p>
 <div class="source-line"><span><b>{len(WRITING)}</b> researched publications</span><span><b>{n_open}</b> currently accepting</span><span><b>{len([r for r in WRITING if (r.get("editorExperience") or {}).get("applied")])}</b> personally tested by BRYME</span></div></section>
+{country_band()}
 {writing_nav()}
 <section class="section"><div class="how-steps"><h2 class="section-sub">How make-money writing works with BRYME</h2><ol class="steps">
 <li><b>Pick an opportunity.</b> Each page names who it is open to — BRYME does not treat a missing country list as "open worldwide." Eligibility and diaspora rules are recorded where the publication states them.</li>
