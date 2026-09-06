@@ -227,7 +227,7 @@ def open_internationally(rec: dict) -> bool:
 def nav(current: str = "") -> str:
     links = [
         ("learn", "/learn/", "How to write"),
-        ("essays", "/essays/", "Essays"),
+        ("read", "/read/", "Articles"),
         ("tools", "/tools/", "Writing tools"),
         ("writing", "/writing/", "Write & get paid"),
     ]
@@ -504,7 +504,7 @@ def writing_nav(current_flt: str = "") -> str:
 def mobile_nav(current: str = "") -> str:
     links = [
         ("learn", "/learn/", "📚", "How to"),
-        ("essays", "/essays/", "✍️", "Essays"),
+        ("read", "/read/", "📄", "Articles"),
         ("tools", "/tools/", "🛠", "Tools"),
         ("writing", "/writing/by-country/", "💰", "Publish"),
     ]
@@ -561,7 +561,7 @@ def drawer(current: str = "") -> str:
     return f'''<div id="drawer-backdrop"></div>
 <aside id="site-drawer" aria-hidden="true" aria-label="Site menu" role="dialog" aria-modal="true">
   <div class="drawer-head"><a class="logo" href="/"><span class="logo-mark" aria-hidden="true">B</span>BRYME</a><button type="button" class="drawer-close" data-drawer-close aria-label="Close menu"><svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
-  {group("Start here", [("home", "/", "Home", "🏠"), ("start", "/start/", "Complete beginner path", "🧭"), ("find", "/find/", "What do you want to write?", "❓"), ("intelligence", "/intelligence/", "Writing Intelligence", "🧭"), ("compare", "/compare/", "Compare formats", "⚖️"), ("essays", "/essays/", "Essays", "✍️"), ("today", "/today/", "Today's opportunities", "📅"), ("tracker", "/tracker/", "Submission tracker", "📋"), ("by-country", "/writing/by-country/", "Writing by country", "🌍"), ("search", "/search/", "Search BRYME", "🔍")])}
+  {group("Start here", [("home", "/", "Home", "🏠"), ("start", "/start/", "Complete beginner path", "🧭"), ("find", "/find/", "What do you want to write?", "❓"), ("intelligence", "/intelligence/", "Writing Intelligence", "🧭"), ("compare", "/compare/", "Compare formats", "⚖️"), ("read", "/read/", "All articles", "📄"), ("essays", "/essays/", "Essays", "✍️"), ("today", "/today/", "Today's opportunities", "📅"), ("tracker", "/tracker/", "Submission tracker", "📋"), ("by-country", "/writing/by-country/", "Writing by country", "🌍"), ("search", "/search/", "Search BRYME", "🔍")])}
   {group("How to write", howto)}
   {group("Tools & templates", tools)}
   {group("Write & get paid", write)}

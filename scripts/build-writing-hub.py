@@ -1552,7 +1552,7 @@ what editors actually want, and how the ground is shifting.</p>
         title="Essays on writing and getting published | BRYME",
         description=("BRYME's essays on the business of writing — what publications pay, "
                      "what editors want, and how the market is changing."),
-        route="/essays/", current="essays", body=body,
+        route="/essays/", current="read", body=body,
         schema_data={"@context": "https://schema.org", "@type": "CollectionPage",
                      "name": "BRYME Essays",
                      "description": "Essays on writing, publishing and paid markets.",
@@ -1579,7 +1579,7 @@ def essay_page(e: dict) -> None:
         title=f"{e['title']} | BRYME",
         description=e.get("description", ""),
         route=f"/essays/{e['slug']}/",
-        current="essays", body=body,
+        current="read", body=body,
         schema_data={"@context": "https://schema.org", "@type": "Article",
                      "headline": e["title"], "description": e.get("description", ""),
                      "url": f"{BASE}/essays/{e['slug']}/",
@@ -1589,6 +1589,99 @@ def essay_page(e: dict) -> None:
                                 "url": BASE + "/author/ibrahim-sodiq/"},
                      "publisher": {"@type": "Organization", "name": "BRYME", "url": BASE + "/"},
                      "mainEntityOfPage": f"{BASE}/essays/{e['slug']}/"}))
+
+
+# ---------------------------------------------------------------------------
+# /read/ — one index for everything BRYME publishes.
+#
+# The site had two content types in two places: essays at /essays/ and 157
+# guides spread across 21 /learn/ sections. A reader looking for "the
+# articles" found nine essays and concluded the rest did not exist. This is
+# the single navigable list: every essay and every guide, newest first, with
+# the type and section labelled, and a filter that narrows without hiding
+# anything from the HTML.
+# ---------------------------------------------------------------------------
+def _all_articles() -> list[dict]:
+    items = []
+    for g in GUIDES:
+        sec = SECTIONS_BY_ID.get(g["section"]) or {}
+        items.append({
+            "title": g["title"], "desc": g.get("description", ""),
+            "href": f"/learn/{g['section']}/{g['slug']}/",
+            "kind": "Guide", "group": sec.get("title", g["section"]),
+            "date": str(g.get("updated") or ""),
+            "hay": f"{g['title']} {g.get('description','')} {sec.get('title','')} "
+                   f"{' '.join(g.get('keywords') or [])}".lower(),
+        })
+    for e in ESSAYS:
+        items.append({
+            "title": e["title"], "desc": e.get("description", ""),
+            "href": f"/essays/{e['slug']}/",
+            "kind": "Essay", "group": "Essays",
+            "date": str(e.get("updated") or e.get("published") or ""),
+            "hay": f"{e['title']} {e.get('description','')} essay "
+                   f"{' '.join(e.get('keywords') or [])}".lower(),
+        })
+    items.sort(key=lambda x: (x["date"], x["title"]), reverse=True)
+    return items
+
+
+def articles_index() -> None:
+    items = _all_articles()
+    n_g = sum(1 for i in items if i["kind"] == "Guide")
+    n_e = len(items) - n_g
+
+    groups = sorted({i["group"] for i in items})
+    chips = "".join(
+        '<button type="button" class="filter-chip" data-filter="'
+        + esc(g.lower()) + '">' + esc(g) + "</button>" for g in groups)
+
+    rows = "".join(
+        '<article class="article-row" data-kind="' + esc(i["kind"].lower())
+        + '" data-group="' + esc(i["group"].lower())
+        + '" data-hay="' + esc(i["hay"]) + '">'
+        '<p class="article-meta"><span class="article-kind article-kind--'
+        + esc(i["kind"].lower()) + '">' + esc(i["kind"]) + '</span>'
+        '<span class="article-group">' + esc(i["group"]) + '</span>'
+        + ('<time datetime="' + esc(i["date"]) + '">' + esc(i["date"]) + "</time>"
+           if i["date"] else "") + "</p>"
+        '<h3><a href="' + esc(i["href"]) + '">' + esc(i["title"]) + "</a></h3>"
+        "<p>" + esc(i["desc"]) + "</p></article>"
+        for i in items)
+
+    body = (
+        '<div class="wrap"><nav class="breadcrumb"><a href="/">Home</a> / Articles</nav>'
+        '<section class="page-hero"><p class="kicker"><span class="kicker-dot"></span>Articles</p>'
+        '<h1>Everything BRYME has published</h1>'
+        '<div class="prose"><p>One list, newest first. <b>' + str(n_g) + ' guides</b> answer a '
+        'question and get updated; <b>' + str(n_e) + ' essays</b> make an argument and carry a date. '
+        'Both are here because you should not need to know which is which to find one.</p></div>'
+        '<div class="source-line"><span><b>' + str(len(items)) + '</b> articles</span>'
+        '<span><b>' + str(n_g) + '</b> guides</span><span><b>' + str(n_e) + '</b> essays</span></div>'
+        "</section></div>"
+        '<section class="section"><div class="wrap">'
+        '<form class="country-search-form" role="search" onsubmit="return false;">'
+        '<label for="article-search"><b>Search all articles</b></label>'
+        '<input type="search" id="article-search" placeholder="Search titles, topics, sections&hellip;" '
+        'aria-describedby="article-status"></form>'
+        '<div class="filter-chips"><button type="button" class="filter-chip is-on" '
+        'data-filter="">All</button>' + chips + "</div>"
+        '<p class="filter-status" id="article-status" aria-live="polite">'
+        + str(len(items)) + " articles</p>"
+        '<div class="article-list" id="article-list">' + rows + "</div>"
+        '<p class="filter-status empty" id="article-empty" hidden>Nothing matches that. '
+        '<a href="/search/">Try the full search</a>.</p>'
+        "</div></section>"
+        '<script src="/assets/article-filter.js" defer></script>')
+
+    write("/read/", page_wf(
+        title="All articles | BRYME",
+        description=("Every guide and essay BRYME has published \u2014 "
+                     + str(len(items)) + " articles on writing, rates, markets and getting paid."),
+        route="/read/", current="read", body=body,
+        schema_data={"@context": "https://schema.org", "@type": "CollectionPage",
+                     "name": "BRYME articles", "url": BASE + "/read/",
+                     "dateModified": TODAY, "numberOfItems": len(items)}))
 
 def build() -> None:
     prune_stale_guides()
@@ -1615,6 +1708,7 @@ def build() -> None:
     regional_page()
     intelligence_hub()
     essays_index()
+    articles_index()
     for _e in ESSAYS:
         essay_page(_e)
     print(f"wrote hub: {len(GUIDES)} guides, {len(ESSAYS)} essays, {len(TOOLS)} tools, {len(SECTIONS['sections'])} sections, /search/ + /glossary/ + /templates/ + /checklists/ + /problems/")
