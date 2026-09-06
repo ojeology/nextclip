@@ -832,6 +832,22 @@ def learn_index() -> None:
                              schema_data={"@context": "https://schema.org", "@type": "CollectionPage", "name": "BRYME writing guides", "url": BASE + "/learn/", "about": "Writing"}))
 
 
+def essays_home_block() -> str:
+    """Homepage entry point for Essays.
+
+    The header hides every nav link except the CTA below 880px, so on a phone
+    the Essays link exists only in the bottom bar and the drawer. This section
+    makes it discoverable on the homepage at any width.
+    """
+    if not ESSAYS:
+        return ""
+    cards = "".join(essay_card(e) for e in ESSAYS[:3])
+    return (f'<section class="section"><div class="wrap"><div class="section-head"><div>'
+            f'<p class="eyebrow">Essays</p><h2>Arguments about the business of writing.</h2>'
+            f'</div><a class="card-link" href="/essays/">All essays &rarr;</a></div>'
+            f'<div class="guide-grid">{cards}</div></div></section>')
+
+
 def homepage() -> None:
     popular = [g for g in GUIDES if g.get("popular")][:6]
     latest = sorted(GUIDES, key=lambda g: g.get("updated", ""), reverse=True)[:6]
@@ -875,6 +891,7 @@ def homepage() -> None:
 
 <section class="section"><div class="wrap"><div class="section-head"><div><p class="eyebrow">Learn writing</p><h2>Start from the beginning.</h2></div><a class="card-link" href="/learn/">All {len(GUIDES)} guides →</a></div><div class="guide-grid">{pop_cards}</div></div></section>
 
+{essays_home_block()}
 <section class="section alt"><div class="wrap"><div class="section-head"><div><p class="eyebrow">Write differently</p><h2>Match the form to the job.</h2></div></div><div class="card-grid">
 <a class="path-card" href="/learn/academic-writing/"><span class="card-num">🎓</span><h3>Academic</h3><p>Essays, research papers, citations — done your own way.</p></a>
 <a class="path-card" href="/learn/professional-writing/"><span class="card-num">💼</span><h3>Professional</h3><p>Emails, reports, proposals and clear workplace writing.</p></a>
