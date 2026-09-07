@@ -574,7 +574,8 @@ def drawer(current: str = "") -> str:
 
 
 def page_wf(*, title: str, description: str, route: str, current: str, body: str,
-            schema_data: object | None = None, robots: str = "index,follow") -> str:
+            schema_data: object | None = None, robots: str = "index,follow",
+            head_extra: str = "") -> str:
     """Writing-first page: the shared shell with a writing-first graph + nav.
 
     (Copied from build_focus_site.page so the writing branch controls its own
@@ -618,6 +619,7 @@ def page_wf(*, title: str, description: str, route: str, current: str, body: str
 <meta name="twitter:card" content="summary"><meta name="twitter:title" content="{esc(title)}"><meta name="twitter:description" content="{esc(description)}">
 {adsense_meta}
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="icon" href="/favicon.ico" sizes="any">
+{head_extra}
 <link rel="stylesheet" href="/assets/bryme-v2.css">
 {schema(site_graph)}
 {schema(structured)}
@@ -1258,11 +1260,22 @@ def country_discovery_page() -> None:
         '</div></section></div>'
         '<script src="/assets/country-filter.js" defer></script>')
 
-    # Retired 2026-09-07: /writing/by-country/ duplicated /writing-opportunities/
-    # (two country entry points split signals and confused visitors). The single
-    # country entry point is now /writing-opportunities/; this route 301s there
-    # via the render.yaml routes. The body-building above stays only because the
-    # counts are reused by the /writing/ page; the page itself is no longer emitted.
+    # Retired 2026-09-07: /writing/by-country/ duplicated /writing-opportunities/.
+    # Render's routes: redirects proved inert on this service (the /opportunities
+    # rules have never fired live), so retirement is enforced with a static
+    # redirect stub inside the shared shell: noindex + canonical + instant
+    # meta-refresh. Google treats a root meta-refresh like a 301 over time.
+    write("/writing/by-country/", page_wf(
+        title="Writing opportunities moved | BRYME",
+        description="The country pages have moved to /writing-opportunities/.",
+        route="/writing/by-country/", current="writing", robots="noindex,follow",
+        head_extra='<meta http-equiv="refresh" content="0;url=/writing-opportunities/">',
+        schema_data={"@context": "https://schema.org", "@type": "WebPage",
+                     "name": "Writing opportunities moved", "url": BASE + "/writing/by-country/"},
+        body='<div class="wrap"><section class="page-hero"><h1>These pages moved.</h1>'
+             '<p>The country pages now live at <a href="/writing-opportunities/">'
+             'BRYME writing opportunities</a> &mdash; every country, one page each, '
+             'the same verified data.</p></section></div>'))
 
 
 

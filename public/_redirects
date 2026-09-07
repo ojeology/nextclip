@@ -15,6 +15,11 @@
 /make-money/writing-opportunities/  /writing/  301
 /make-money  /writing/  301
 /make-money/  /writing/  301
+# Retired 2026-09-07: old country discovery page — the single entry point is
+# /writing-opportunities/. (Render ignores this file, but the production page
+# itself is a noindex meta-refresh stub and render.yaml carries the route too.)
+/writing/by-country  /writing-opportunities/  301
+/writing/by-country/  /writing-opportunities/  301
 
 # Media route families are HTTP 410 in server/server.js until the separately
 # deployed BRYME Media destination has a stable public hostname.
