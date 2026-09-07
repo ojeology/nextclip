@@ -1752,13 +1752,13 @@ def essay_page(e: dict) -> None:
     dek = e.get("dek")
     dek_html = f'<p class="essay-dek">{esc(dek)}</p>' if dek else ""
     body = f'''<div class="wrap">{breadcrumb(("Essays", "/essays/"), (e["title"], ""))}
-<section class="page-hero"><p class="kicker"><span class="kicker-dot"></span>Essay · {esc(label)}</p>
+<section class="page-hero essay-hero"><p class="kicker"><span class="kicker-dot"></span>Essay · {esc(label)}</p>
 <h1>{esc(e["title"])}</h1>
 {dek_html}
 <p class="byline">By <a href="/author/ibrahim-sodiq/">Ibrahim Sodiq</a> ·
 <time datetime="{esc(published)}">{esc(published)}</time></p>
 <a class="btn secondary" href="/essays/">← All essays</a></section>
-<section class="section"><div class="prose">{render_md(e["body"])}</div></section></div>
+<section class="section"><div class="prose prose-essay">{render_md(e["body"])}</div></section></div>
 {related_links(e.get("related", []))}'''
     write(f"/essays/{e['slug']}/", page_wf(
         title=f"{e['title']} | BRYME",
