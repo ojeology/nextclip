@@ -51,7 +51,7 @@ Notes *about* sources — quotes, reactions, interview summaries — belong in w
 1. Install **Zotero** and the browser connector. Cost: zero.
 2. Capture the ten sources of your current project into it, including PDFs where legal.
 3. Run the export test once, immediately, while the library is still small.
-4. Write your next piece with the citation manager open, and let it generate the source list — compare the hour saved with the [citation basics](/learn/writing-basics/how-to-cite-sources/).
+4. Write your next piece with the citation manager open, and let it generate the source list — compare the hour saved with the [citation basics](/learn/academic-writing/how-to-cite-sources/).
 5. Only then decide whether the AI summary layer is worth adding on top.
 
 The load-bearing tool costs nothing, survives every app trend, and quietly makes your work checkable — which, on this site's editorial standards, is the entire point.
