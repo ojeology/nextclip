@@ -15,15 +15,27 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 PUB = ROOT / "public"
 
-# Top-level directories that are part of the published site (all are HTML pages).
+# Top-level directories that are part of the published site. The explicit
+# floor covers dirs without their own index.html (assets); everything else is
+# auto-discovered so a newly built page dir can never be forgotten again
+# (2026-09-07: /disclosure/ shipped while unstaged — third time this class of
+# bug bit, so the list became code).
 PUBLIC_DIRS = [
     "about", "author", "contact", "copyright", "corrections", "disclaimer",
     "editorial-policy", "guides", "privacy", "terms", "tested", "writing", "assets",
     "learn", "tools", "glossary", "templates", "checklists", "problems", "search",
     "verification", "find", "start", "compare", "regional", "intelligence", "tracker", "today", "writing-opportunities", "essays", "read",
-    # Retired-path redirect stubs + the digest page (added 2026-09-07).
     "newsletter", "opportunities", "jobs", "make-money", "tech",
 ]
+AUTO_EXCLUDE = {".git", "node_modules", "public", "content", "docs", "scripts", "server", "reports"}
+_auto = sorted(
+    d.name for d in ROOT.iterdir()
+    if d.is_dir() and d.name not in AUTO_EXCLUDE and (d / "index.html").is_file()
+)
+_auto_added = [n for n in _auto if n not in PUBLIC_DIRS]
+PUBLIC_DIRS = sorted(set(PUBLIC_DIRS) | set(_auto))
+if _auto_added:
+    print("public-dir: auto-staged new page dirs:", ", ".join(_auto_added))
 # Root-level files that belong on the published site.
 PUBLIC_FILES = [
     "index.html", "404.html", "410.html", "robots.txt", "sitemap.xml",
@@ -33,6 +45,20 @@ PUBLIC_FILES = [
 ]
 
 PUB.mkdir(exist_ok=True)
+# Assertion: every route in the sitemap must stage into public/. This turns
+# "built but never published" from a silent deploy defect into a build failure.
+import re as _re
+_sm = (ROOT / "sitemap.xml").read_text(encoding="utf-8")
+_missing = set()
+for _u in _re.findall(r"<loc>([^<]+)</loc>", _sm):
+    _path = _u.split(BASE_URL_HINT, 1)[-1] if False else _u
+    _seg = _re.sub(r"^[a-z]+://[^/]+", "", _u).strip("/")
+    if _seg and not _seg.startswith("assets/"):
+        _top = _seg.split("/", 1)[0]
+        if _top not in PUBLIC_DIRS and _top not in [f.split(".")[0] for f in PUBLIC_FILES]:
+            _missing.add(_top)
+if _missing:
+    raise SystemExit(f"public-dir: sitemap routes under un-staged top-level dirs: {sorted(_missing)}")
 copied = 0
 for name in PUBLIC_DIRS:
     src = ROOT / name
