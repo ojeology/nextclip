@@ -1,5 +1,5 @@
 {
-  "version": 18,
+  "version": 19,
   "policy": "BRYME Writing Hub: every indexable route is a genuine, useful writing guide (how-to, worked example, or dos & don'ts), a free in-browser tool, a research-backed paid-writing opportunity (100+ verified), a maintenance hub or a core trust/about page. No thin or filler pages.",
   "routes": [
     "/",
@@ -126,6 +126,9 @@
     "/learn/freelance-paid-writing/do-writers-need-business-insurance/",
     "/learn/freelance-paid-writing/finance-and-insurance-copywriting/",
     "/learn/freelance-paid-writing/freelance-writing-rates-australia/",
+    "/learn/freelance-paid-writing/freelance-writing-rates-ghana/",
+    "/learn/freelance-paid-writing/freelance-writing-rates-kenya/",
+    "/learn/freelance-paid-writing/freelance-writing-rates-south-africa/",
     "/learn/freelance-paid-writing/freelance-writing-rates-canada/",
     "/learn/freelance-paid-writing/freelance-writing-rates-uk/",
     "/learn/freelance-paid-writing/freelance-writing-rates-us/",
