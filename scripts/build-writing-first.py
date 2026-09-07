@@ -37,6 +37,9 @@ _spec = importlib.util.spec_from_file_location("build_focus_site", ROOT / "scrip
 _build_focus = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(_build_focus)
 ROOT = _build_focus.ROOT
+_SITE_CFG = json.loads((ROOT / "site.config.json").read_text(encoding="utf-8"))
+NEWSLETTER = _SITE_CFG.get("newsletter", {})
+FOLLOW = _SITE_CFG.get("follow", {})
 BASE = _build_focus.BASE
 TODAY = _build_focus.TODAY
 TODAY_HUMAN = _build_focus.TODAY_HUMAN
@@ -53,7 +56,7 @@ def footer() -> str:
     return '''<footer class="site-foot"><div class="wrap foot-grid">
   <div class="foot-brand"><a class="logo" href="/"><span class="logo-mark" aria-hidden="true">B</span>BRYME</a><p>BRYME is a free writing resource — guides, tools, and verified opportunities to get published and paid.</p></div>
   <div class="foot-col"><b>How to write</b><a href="/start/">Beginner path</a><a href="/find/">What do you want to write?</a><a href="/intelligence/">Writing Intelligence</a><a href="/compare/">Compare formats</a><a href="/regional/">Writing conventions</a><a href="/learn/">Writing hub</a><a href="/learn/examples/">Examples</a><a href="/learn/dos-and-donts/">Dos &amp; don'ts</a><a href="/learn/types-of-writing/">Types of writing</a><a href="/learn/grammar-language/">Grammar</a></div>
-  <div class="foot-col"><b>Tools &amp; publish</b><a href="/tools/">Writing tools</a><a href="/templates/">Templates</a><a href="/checklists/">Checklists</a><a href="/writing/">Paid opportunities</a><a href="/writing-opportunities/">Browse by country</a><a href="/today/">Today&rsquo;s opportunities</a><a href="/tracker/">Submission tracker</a><a href="/tested/">BRYME Tested</a></div>
+  <div class="foot-col"><b>Tools &amp; publish</b><a href="/tools/">Writing tools</a><a href="/templates/">Templates</a><a href="/checklists/">Checklists</a><a href="/writing/">Paid opportunities</a><a href="/writing-opportunities/">Browse by country</a><a href="/today/">Today&rsquo;s opportunities</a><a href="/newsletter/">Weekly digest</a><a href="/tracker/">Submission tracker</a><a href="/tested/">BRYME Tested</a></div>
   <div class="foot-col"><b>Trust</b><a href="/about/">About</a><a href="/verification/">What statuses mean</a><a href="/editorial-policy/">Editorial policy</a><a href="/corrections/">Corrections</a><a href="/privacy/">Privacy</a><a href="/contact/">Contact</a></div>
   <div class="foot-col"><b>Legal</b><a href="/terms/">Terms</a><a href="/disclaimer/">Disclaimer</a><a href="/copyright/">Copyright</a></div>
 </div><div class="wrap foot-bottom">© 2026 BRYME · Independent editorial project · No acceptance, publication or payment is guaranteed.</div></footer>'''
@@ -632,7 +635,7 @@ def page_wf(*, title: str, description: str, route: str, current: str, body: str
 <link rel="stylesheet" href="/assets/bryme-v2.css">
 {schema(site_graph)}
 {schema(structured)}{schema(schema_extra) if schema_extra else ""}
-</head><body>{nav(current)}<main id="main">{body}</main>{mobile_nav(current)}{drawer(current)}<script src="/assets/site-nav.js" defer></script><script src="/assets/level-filter.js" defer></script><script src="/assets/purpose-finder.js" defer></script>{footer()}</body></html>'''
+</head><body>{nav(current)}<main id="main">{body}</main>{mobile_nav(current)}{drawer(current)}<script src="/assets/site-nav.js" defer></script><script src="/assets/level-filter.js" defer></script><script src="/assets/purpose-finder.js" defer></script>{follow_strip()}{footer()}</body></html>'''
 
 
 # ---------------------------------------------------------------------------
@@ -1020,7 +1023,7 @@ def today_feed() -> None:
     write("/today/", page_wf(
         title=f"Today's writing opportunities: verified {TODAY} | BRYME",
         description=f"Writing opportunities re-verified this week, windows closing within 90 days, and the highest-paying open markets — recomputed from {len(WRITING)} researched publications.",
-        route="/today/", current="writing", body=body,
+        route="/today/", current="writing", body=body + digest_cta(),
         schema_data={"@context": "https://schema.org", "@type": "CollectionPage",
                      "name": "Today's writing opportunities", "url": BASE + "/today/",
                      "dateModified": TODAY}))
@@ -1165,6 +1168,83 @@ def _names_your_region(rec: dict, iso: str) -> bool:
         if iso in REGION_MEMBERS.get(reg, set()):
             return True
     return False
+
+
+def follow_strip() -> str:
+    """One-line strip above the footer: the digest plus any live channels."""
+    links = []
+    if FOLLOW.get("telegram"):
+        links.append(f'<a href="{esc(FOLLOW["telegram"])}">Telegram channel</a>')
+    if FOLLOW.get("whatsapp"):
+        links.append(f'<a href="{esc(FOLLOW["whatsapp"])}">WhatsApp channel</a>')
+    extra = (" &middot; " + " &middot; ".join(links)) if links else ""
+    return ('<div style="border-top:1px solid rgba(120,110,100,.25);padding:16px 8px;'
+            'text-align:center;font-size:.95rem">Follow along &mdash; '
+            '<a href="/newsletter/"><b>the BRYME weekly digest</b></a>' + extra + '</div>')
+
+
+def digest_cta() -> str:
+    return ('<section class="section alt"><div class="wrap"><div class="section-head"><div>'
+            '<p class="eyebrow">Weekly digest</p><h2>The week&rsquo;s verified opportunities, by email.</h2></div>'
+            '<a class="card-link" href="/newsletter/">Get the digest &rarr;</a></div>'
+            '<div class="prose"><p>One email a week: every newly verified paying opportunity, '
+            'one practical guide, and what closed or changed. Three minutes, free, no spam, '
+            'unsubscribe anytime.</p></div></section>')
+
+
+def signup_block() -> str:
+    mode = NEWSLETTER.get("mode", "")
+    mailto = NEWSLETTER.get("mailto") or ""
+    if mode == "form" and NEWSLETTER.get("endpoint"):
+        return (f'<form action="{esc(NEWSLETTER["endpoint"])}" method="post" '
+                'style="display:flex;gap:8px;flex-wrap:wrap;max-width:480px">'
+                '<input type="email" name="email" required placeholder="you@example.com" '
+                'style="flex:1;min-width:220px;padding:10px 12px;border:1px solid rgba(120,110,100,.45);'
+                'border-radius:6px;font:inherit;background:transparent">'
+                '<button type="submit" class="btn">Subscribe</button></form>'
+                '<p class="meta">A confirmation email arrives first. No spam, unsubscribe anytime.</p>')
+    if mailto:
+        link = (f"mailto:{esc(mailto)}?subject=Subscribe"
+                "&body=Send%20me%20the%20weekly%20BRYME%20digest.")
+        return (f'<a class="btn" href="{link}">Subscribe by email &rarr;</a>'
+                '<p class="meta">Your mail app opens with the subscription ready to send &mdash; '
+                'that is all it takes. A one-click form arrives when the list moves to its own provider.</p>')
+    return ('<p>The digest is launching. Check back shortly, or '
+            '<a href="/contact/">write to us</a> and ask to be added manually.</p>')
+
+
+def newsletter_page() -> None:
+    channels = []
+    if FOLLOW.get("telegram"):
+        channels.append(f'<a class="btn secondary" href="{esc(FOLLOW["telegram"])}">Telegram channel &rarr;</a>')
+    if FOLLOW.get("whatsapp"):
+        channels.append(f'<a class="btn secondary" href="{esc(FOLLOW["whatsapp"])}">WhatsApp channel &rarr;</a>')
+    ch_html = ""
+    if channels:
+        ch_html = ('<section class="section"><div class="wrap"><div class="section-head"><div>'
+                   '<p class="eyebrow">Prefer a channel?</p><h2>The same signal, where you already are.</h2>'
+                   f'</div></div><div class="actions">{"".join(channels)}</div></div></section>')
+    body = ('<div class="wrap">'
+            '<section class="page-hero"><p class="kicker"><span class="kicker-dot"></span>Weekly digest</p>'
+            '<h1>The BRYME weekly digest.</h1>'
+            '<p>Every newly verified paying opportunity, one practical guide, and what closed or '
+            'changed &mdash; in one three-minute email.</p>'
+            '<div class="source-line"><span><b>Free</b> forever</span><span><b>No</b> spam</span>'
+            '<span><b>1</b> email a week</span></div></section>'
+            '<section class="section"><div class="wrap"><div class="section-head"><div>'
+            '<p class="eyebrow">What lands each week</p><h2>Built from the verification record.</h2></div></div>'
+            '<div class="prose"><ul>'
+            '<li><b>Newly verified opportunities</b> &mdash; only records whose status BRYME re-checked this week, with the source named.</li>'
+            '<li><b>What closed or changed</b> &mdash; the maintenance layer nobody else does, so you never pitch a dead window.</li>'
+            '<li><b>One practical guide</b> &mdash; rates, pitching or the business of writing, from the hub.</li>'
+            '</ul></div></section>'
+            '<section class="section alt"><div class="wrap"><div class="section-head"><div>'
+            '<p class="eyebrow">Subscribe</p><h2>Get the digest.</h2></div></div>'
+            f'<div class="prose">{signup_block()}</div></div></section>{ch_html}</div>')
+    write("/newsletter/", page_wf(
+        title="The BRYME weekly digest — verified writing opportunities by email | BRYME",
+        description="One email a week: newly verified paying writing opportunities, what closed or changed, and one practical guide. Free, no spam, unsubscribe anytime.",
+        route="/newsletter/", current="", robots="index,follow", body=body))
 
 
 def _legacy_redirect(route: str, dest: str) -> None:
@@ -1665,7 +1745,7 @@ def writing_hub() -> None:
 <script src="/assets/opp-filter.js" defer></script></div>'''
     write("/writing/", page_wf(title="Writing opportunities for African and international writers | BRYME",
                               description=f"{len(WRITING)} paid writing publications researched by BRYME — with published pay, word count, eligibility, submission method and the official guideline to confirm before pitching.",
-                              route="/writing/", current="writing", body=body,
+                              route="/writing/", current="writing", body=body + digest_cta(),
                               schema_data={"@context": "https://schema.org", "@type": "CollectionPage",
                                            "name": "BRYME writing opportunities", "url": BASE + "/writing/",
                                            "dateModified": TODAY, "publisher": {"@type": "Organization", "name": "BRYME", "url": BASE + "/"}}))
@@ -2226,6 +2306,7 @@ if __name__ == "__main__":
     writing_hub()
     country_discovery_page()
     legacy_redirect_stubs()
+    newsletter_page()
     tracker_page()
     today_feed()
     programmatic_pages()

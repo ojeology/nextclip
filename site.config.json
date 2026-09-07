@@ -7,5 +7,16 @@
     "caId": "",
     "enabled": false,
     "note": "Advertising is disabled during the quality rebuild. Set caId to a real ca-pub-... ID and review consent/privacy before enabling. Ads must never resemble job cards or application buttons."
+  },
+  "newsletter": {
+    "mode": "mailto",
+    "mailto": "sodiqibrahim03@gmail.com",
+    "endpoint": "",
+    "note": "mode 'mailto' = prefilled subscribe email to the mailbox (bootstrap). mode 'form' = endpoint must be the provider's form POST URL (Buttondown/MailerLite/ListMonk embeds work as-is with input name=email)."
+  },
+  "follow": {
+    "telegram": "",
+    "whatsapp": "",
+    "note": "Public channel URLs. A link renders only when set."
   }
 }
