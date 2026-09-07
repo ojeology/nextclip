@@ -1127,6 +1127,86 @@ h1, h2, h3, .hero h1, .article-hero h1, .section-head h2,
 /* Mobile bar follows the paper */
 .mobile-nav { background: rgba(255, 255, 255, .98); }
 
+/* ===== v4 FRAMED EDITORIAL — the share-card language becomes the site =====
+   Paper-desk canvas, boxed sheets, ruled lines, green bars. Everything a
+   reader sees is now a framed card, exactly like the og images. */
+
+/* Canvas: desk grey-green so the white sheets pop (light + dark) */
+body { background: var(--bg-2) !important; }
+
+/* --- Masthead: solid green bar on top, newspaper double rule below --- */
+.site-head::before { content: ""; display: block; height: 8px; background: var(--accent); }
+.site-head { border-bottom: 4px double var(--line-strong); background: var(--panel) !important; }
+
+/* --- Page hero = the share card, full size: white sheet, green bar, frame --- */
+.page-hero {
+  background: var(--panel);
+  border: 1px solid var(--line-strong);
+  border-top: 8px solid var(--accent);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  padding: clamp(30px, 5vw, 60px) clamp(22px, 4.5vw, 60px);
+}
+.page-hero .kicker { color: var(--accent); text-transform: uppercase; letter-spacing: .14em; font-weight: 800; font-size: 12.5px; }
+.page-hero .byline, .page-hero .level-line { border-top: 1px solid var(--line); margin-top: 18px; padding-top: 14px; }
+
+/* Breadcrumb: thin ruled strip above the sheet */
+.breadcrumb { border-bottom: 1px solid var(--line); padding-bottom: 14px; margin-bottom: 18px; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; }
+
+/* --- THE BOXED ARTICLE: the body itself becomes a framed sheet --- */
+.prose, .legal-prose {
+  background: var(--panel);
+  border: 1px solid var(--line-strong);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  padding: clamp(22px, 4.5vw, 60px);
+}
+.prose table, .legal-prose table { display: block; width: 100%; overflow-x: auto; border: 1px solid var(--line-strong); }
+.prose th { border-bottom: 2px solid var(--ink); }
+/* every section opens under a hairline — the "lines" */
+.prose h2, .legal-prose h2 { border-top: 1px solid var(--line); padding-top: 28px; }
+.prose h2:first-child, .legal-prose h2:first-child { border-top: 0; padding-top: 0; }
+.prose h3::before, .legal-prose h3::before {
+  content: ""; display: inline-block; width: 22px; height: 4px;
+  background: var(--accent); margin-right: 12px; vertical-align: middle; border-radius: 2px;
+}
+/* pull-quotes become framed cards */
+.prose blockquote, .legal-prose blockquote {
+  border: 1px solid var(--line-strong); border-top: 4px solid var(--accent);
+  background: var(--panel-2); border-radius: 10px;
+  padding: 18px 24px; margin-left: 0; margin-right: 0;
+}
+.prose blockquote { border-left: 1px solid var(--line-strong); padding-left: 24px; }
+/* rules between scenes: short centered green bar */
+.prose hr, .legal-prose hr { border: 0; height: 3px; width: 64px; background: var(--accent); margin: 44px auto; border-radius: 2px; }
+/* magazine end mark */
+.prose::after, .legal-prose::after {
+  content: "■"; display: block; text-align: center;
+  color: var(--accent); font-size: 14px; margin-top: 52px;
+}
+
+/* --- Feed cards & tool sheets: green-topped framed cards, serif titles --- */
+.guide-card, .card, .tool-box {
+  background: var(--panel);
+  border: 1px solid var(--line-strong);
+  border-top: 3px solid var(--accent);
+  border-radius: 10px;
+}
+.guide-card h3, .card h3 { font-family: Georgia, 'Iowan Old Style', 'Palatino Linotype', serif; letter-spacing: -.01em; }
+.guide-card:hover, .card:hover { border-color: var(--accent); }
+.tool-box { padding: clamp(18px, 3.5vw, 40px); }
+
+/* Section heads get the card's eyebrow rule */
+.section-head h2::after { content: ""; display: block; width: 56px; height: 5px; background: var(--accent); margin-top: 14px; border-radius: 2px; }
+
+/* --- Chrome: squarer, print-like --- */
+.btn, .nav-cta { border-radius: 9px !important; }
+.card, .guide-card { transition: border-color .15s ease, box-shadow .15s ease, transform .15s ease; }
+.guide-card:hover, .card:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(0, 0, 0, .07); }
+
+/* --- Footer closes with the newspaper double rule --- */
+.footer { border-top: 4px double var(--line-strong) !important; }
+
 /* Lean editorial compatibility layer — replaces the 263 KB legacy platform sheet. */
 .shell{width:min(calc(100% - 32px),var(--max));margin-inline:auto}
 .top{position:sticky;z-index:50;top:0;border-bottom:1px solid var(--line);background:rgba(7,16,13,.9);backdrop-filter:blur(18px)}
