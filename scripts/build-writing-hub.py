@@ -44,6 +44,7 @@ nav = _bwf.nav
 mobile_nav = _bwf.mobile_nav
 howto_nav = _bwf.howto_nav
 section_nav = _bwf.section_nav
+affiliate_note = _bwf.affiliate_note
 TOOLS_NAV = [
     ("tools", "/tools/", "All tools"),
     ("templates", "/templates/", "Templates"),
@@ -435,7 +436,7 @@ def guide_page(g: dict) -> None:
 <p class="byline">Researched and written by <a href="/author/ibrahim-sodiq/">BRYME Editorial Desk</a>.</p>
 <a class="btn secondary" href="/learn/{esc(section['id'])}/">← All {esc(section['title'])} guides</a></section>
 <section class="section"><div class="prose">{prose}{regional_note(g)}</div></section></div>
-{tool_links(tool_items)}{next_step(g)}{related_links(g.get('related', []))}'''
+{affiliate_note() if g.get('affiliate') else ''}{tool_links(tool_items)}{next_step(g)}{related_links(g.get('related', []))}'''
     write(f"/learn/{g['section']}/{g['slug']}/", page_wf(
         title=f"{g['title']} | BRYME writing guides",
         description=g.get("description", ""),

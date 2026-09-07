@@ -18,5 +18,9 @@
     "telegram": "",
     "whatsapp": "",
     "note": "Public channel URLs. A link renders only when set."
+  },
+  "affiliate": {
+    "enabled": false,
+    "note": "No affiliate links exist yet. Flip enabled=true only after provider accounts are live AND docs/revenue-rails.md placement rules have been applied. The disclosure note renders automatically on guides tagged 'affiliate: true' in front matter."
   }
 }

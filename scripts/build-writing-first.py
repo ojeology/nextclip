@@ -58,7 +58,7 @@ def footer() -> str:
   <div class="foot-col"><b>How to write</b><a href="/start/">Beginner path</a><a href="/find/">What do you want to write?</a><a href="/intelligence/">Writing Intelligence</a><a href="/compare/">Compare formats</a><a href="/regional/">Writing conventions</a><a href="/learn/">Writing hub</a><a href="/learn/examples/">Examples</a><a href="/learn/dos-and-donts/">Dos &amp; don'ts</a><a href="/learn/types-of-writing/">Types of writing</a><a href="/learn/grammar-language/">Grammar</a></div>
   <div class="foot-col"><b>Tools &amp; publish</b><a href="/tools/">Writing tools</a><a href="/templates/">Templates</a><a href="/checklists/">Checklists</a><a href="/writing/">Paid opportunities</a><a href="/writing-opportunities/">Browse by country</a><a href="/today/">Today&rsquo;s opportunities</a><a href="/newsletter/">Weekly digest</a><a href="/tracker/">Submission tracker</a><a href="/tested/">BRYME Tested</a></div>
   <div class="foot-col"><b>Trust</b><a href="/about/">About</a><a href="/verification/">What statuses mean</a><a href="/editorial-policy/">Editorial policy</a><a href="/corrections/">Corrections</a><a href="/privacy/">Privacy</a><a href="/contact/">Contact</a></div>
-  <div class="foot-col"><b>Legal</b><a href="/terms/">Terms</a><a href="/disclaimer/">Disclaimer</a><a href="/copyright/">Copyright</a></div>
+  <div class="foot-col"><b>Legal</b><a href="/terms/">Terms</a><a href="/disclaimer/">Disclaimer</a><a href="/disclosure/">Disclosure</a><a href="/copyright/">Copyright</a></div>
 </div><div class="wrap foot-bottom">© 2026 BRYME · Independent editorial project · No acceptance, publication or payment is guaranteed.</div></footer>'''
 
 
@@ -1247,6 +1247,50 @@ def newsletter_page() -> None:
         route="/newsletter/", current="", robots="index,follow", body=body))
 
 
+def affiliate_note() -> str:
+    """Per-article disclosure line. Renders only when the config gate is on
+    AND the guide declares 'affiliate: true' in front matter."""
+    if not _SITE_CFG.get("affiliate", {}).get("enabled"):
+        return ""
+    return ('<aside style="border-left:3px solid rgba(182,84,44,.65);padding:8px 14px;'
+            'margin:18px 0" class="prose"><b>A note on links.</b> Some links in this '
+            'guide may earn BRYME a commission if you subscribe &mdash; at no extra cost '
+            'to you. Recommendations follow each guide&rsquo;s stated criteria, not '
+            'commissions. See the <a href="/disclosure/">full disclosure</a>.</aside>')
+
+
+def disclosure_page() -> None:
+    body = ('<div class="wrap">'
+            '<section class="page-hero"><p class="kicker"><span class="kicker-dot"></span>Transparency</p>'
+            '<h1>How BRYME makes money.</h1>'
+            '<p>The short version: it does not yet &mdash; and when it does, the ways are '
+            'listed here first.</p></section>'
+            '<section class="section"><div class="wrap"><div class="section-head"><div>'
+            '<p class="eyebrow">Current status</p><h2>Right now: no ads, no affiliate links, no paid placement.</h2></div></div>'
+            '<div class="prose"><ul>'
+            '<li><b>Opportunity listings cannot be bought.</b> Publications get on this site by being verified, and stay on it the same way. Nobody pays to be listed, ranked, or kept.</li>'
+            '<li><b>No affiliate links exist on the site today.</b> When that changes, every affected guide carries a visible note at the top, and this page names the programmes.</li>'
+            '<li><b>Advertising is planned, not present</b> &mdash; it follows the editorial policy: content first, never designed around ads, ads never dressed as job cards or application buttons.</li>'
+            '</ul></div></section>'
+            '<section class="section alt"><div class="wrap"><div class="section-head"><div>'
+            '<p class="eyebrow">When links are ever monetised</p><h2>The rules that will apply.</h2></div></div>'
+            '<div class="prose"><ul>'
+            '<li><b>Recommendations are criteria-first.</b> Each software guide states what it compares on; commissions do not enter the criteria, and free tools are recommended over paid ones when they serve the writer better.</li>'
+            '<li><b>Marked in context.</b> Money links are identifiable as such in the sentence, not buried in a footnote.</li>'
+            '<li><b>The verification record stays out.</b> Opportunity pages, status labels and rate data are never monetised and never influenced by any commercial relationship.</li>'
+            '<li><b>This page is updated before</b> any programme goes live, not after.</li>'
+            '</ul></div></section>'
+            '<section class="section"><div class="wrap"><div class="prose">'
+            '<p>Questions about any of this &mdash; or a report that a link looks like an exception '
+            '&mdash; go straight to <a href="/contact/">the contact page</a> and into the '
+            '<a href="/corrections/">public corrections log</a> when warranted.</p>'
+            '</div></div></section></div>')
+    write("/disclosure/", page_wf(
+        title="How BRYME makes money — disclosure | BRYME",
+        description="BRYME currently carries no ads, no affiliate links and no paid placements. How the site is funded, and the rules that apply before that ever changes.",
+        route="/disclosure/", current="", robots="index,follow", body=body))
+
+
 def _legacy_redirect(route: str, dest: str) -> None:
     write(route, page_wf(
         title="Page moved | BRYME",
@@ -2307,6 +2351,7 @@ if __name__ == "__main__":
     country_discovery_page()
     legacy_redirect_stubs()
     newsletter_page()
+    disclosure_page()
     tracker_page()
     today_feed()
     programmatic_pages()
