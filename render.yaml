@@ -28,6 +28,10 @@ services:
       - { type: redirect, source: /make-money/*, destination: /writing/ }
       - { type: redirect, source: /tech, destination: /guides/ }
       - { type: redirect, source: /tech/*, destination: /guides/ }
+      # Retired 2026-09-07: the old country-discovery page duplicated
+      # /writing-opportunities/. One country entry point; old URL 301s to it.
+      - { type: redirect, source: /writing/by-country, destination: /writing-opportunities/ }
+      - { type: redirect, source: /writing/by-country/*, destination: /writing-opportunities/ }
     envVars:
       - key: NODE_VERSION
         value: "22"

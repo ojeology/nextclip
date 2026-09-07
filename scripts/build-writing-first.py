@@ -51,7 +51,7 @@ def footer() -> str:
     """Writing Hub footer."""
     return '''<footer class="site-foot"><div class="wrap foot-grid">
   <div class="foot-brand"><a class="logo" href="/"><span class="logo-mark" aria-hidden="true">B</span>BRYME</a><p>BRYME is a free writing resource — guides, tools, and verified opportunities to get published and paid.</p></div>
-  <div class="foot-col"><b>How to write</b><a href="/start/">Beginner path</a><a href="/find/">What do you want to write?</a><a href="/intelligence/">Writing Intelligence</a><a href="/compare/">Compare formats</a><a href="/writing/by-country/">Writing by country</a><a href="/regional/">Writing conventions</a><a href="/learn/">Writing hub</a><a href="/learn/examples/">Examples</a><a href="/learn/dos-and-donts/">Dos &amp; don'ts</a><a href="/learn/types-of-writing/">Types of writing</a><a href="/learn/grammar-language/">Grammar</a></div>
+  <div class="foot-col"><b>How to write</b><a href="/start/">Beginner path</a><a href="/find/">What do you want to write?</a><a href="/intelligence/">Writing Intelligence</a><a href="/compare/">Compare formats</a><a href="/regional/">Writing conventions</a><a href="/learn/">Writing hub</a><a href="/learn/examples/">Examples</a><a href="/learn/dos-and-donts/">Dos &amp; don'ts</a><a href="/learn/types-of-writing/">Types of writing</a><a href="/learn/grammar-language/">Grammar</a></div>
   <div class="foot-col"><b>Tools &amp; publish</b><a href="/tools/">Writing tools</a><a href="/templates/">Templates</a><a href="/checklists/">Checklists</a><a href="/writing/">Paid opportunities</a><a href="/writing-opportunities/">Browse by country</a><a href="/today/">Today&rsquo;s opportunities</a><a href="/tracker/">Submission tracker</a><a href="/tested/">BRYME Tested</a></div>
   <div class="foot-col"><b>Trust</b><a href="/about/">About</a><a href="/verification/">What statuses mean</a><a href="/editorial-policy/">Editorial policy</a><a href="/corrections/">Corrections</a><a href="/privacy/">Privacy</a><a href="/contact/">Contact</a></div>
   <div class="foot-col"><b>Legal</b><a href="/terms/">Terms</a><a href="/disclaimer/">Disclaimer</a><a href="/copyright/">Copyright</a></div>
@@ -256,7 +256,7 @@ HOWTO_LINKS = [
     ("find", "/find/", "What do you want to write?"),
     ("intelligence", "/intelligence/", "Intelligence"),
     ("compare", "/compare/", "Compare formats"),
-    ("by-country", "/writing/by-country/", "By country"),
+    ("by-country", "/writing-opportunities/", "By country"),
     ("regional", "/regional/", "Conventions"),
     ("learn", "/learn/", "All how-tos"),
     ("examples", "/learn/examples/", "Examples"),
@@ -506,7 +506,7 @@ def mobile_nav(current: str = "") -> str:
         ("learn", "/learn/", "📚", "How to"),
         ("read", "/read/", "📄", "Articles"),
         ("tools", "/tools/", "🛠", "Tools"),
-        ("writing", "/writing/by-country/", "💰", "Publish"),
+        ("writing", "/writing-opportunities/", "💰", "Publish"),
     ]
     return '<nav class="bottom-nav bottom-nav--writing" aria-label="Primary mobile">' + ''.join(
         f'<a href="{href}"' + (' aria-current="page"' if key == current else '') +
@@ -550,7 +550,7 @@ def drawer(current: str = "") -> str:
                ("writing-CA", "/writing-opportunities/canada/", "Canada", "🇨🇦"),
                ("writing-AU", "/writing-opportunities/australia/", "Australia", "🇦🇺"),
                ("writing-NG", "/writing-opportunities/nigeria/", "Nigeria", "🇳🇬"),
-               ("writing-bycountry", "/writing/by-country/", "All countries", "🗺️"),
+               ("writing-bycountry", "/writing-opportunities/", "All countries", "🗺️"),
                ("writing-remote", "/writing-opportunities/remote/", "Open to writers anywhere", "🌍")]
     trust = [("about", "/about/", "About", "ℹ️"),
              ("verification", "/verification/", "What statuses mean", "🏷️"),
@@ -561,7 +561,7 @@ def drawer(current: str = "") -> str:
     return f'''<div id="drawer-backdrop"></div>
 <aside id="site-drawer" aria-hidden="true" aria-label="Site menu" role="dialog" aria-modal="true">
   <div class="drawer-head"><a class="logo" href="/"><span class="logo-mark" aria-hidden="true">B</span>BRYME</a><button type="button" class="drawer-close" data-drawer-close aria-label="Close menu"><svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
-  {group("Start here", [("home", "/", "Home", "🏠"), ("start", "/start/", "Complete beginner path", "🧭"), ("find", "/find/", "What do you want to write?", "❓"), ("intelligence", "/intelligence/", "Writing Intelligence", "🧭"), ("compare", "/compare/", "Compare formats", "⚖️"), ("read", "/read/", "All articles", "📄"), ("essays", "/essays/", "Essays", "✍️"), ("today", "/today/", "Today's opportunities", "📅"), ("tracker", "/tracker/", "Submission tracker", "📋"), ("by-country", "/writing/by-country/", "Writing by country", "🌍"), ("search", "/search/", "Search BRYME", "🔍")])}
+  {group("Start here", [("home", "/", "Home", "🏠"), ("start", "/start/", "Complete beginner path", "🧭"), ("find", "/find/", "What do you want to write?", "❓"), ("intelligence", "/intelligence/", "Writing Intelligence", "🧭"), ("compare", "/compare/", "Compare formats", "⚖️"), ("read", "/read/", "All articles", "📄"), ("essays", "/essays/", "Essays", "✍️"), ("today", "/today/", "Today's opportunities", "📅"), ("tracker", "/tracker/", "Submission tracker", "📋"), ("by-country", "/writing-opportunities/", "Writing by country", "🌍"), ("search", "/search/", "Search BRYME", "🔍")])}
   {group("How to write", howto)}
   {group("Tools & templates", tools)}
   {group("Write & get paid", write)}
@@ -1258,17 +1258,12 @@ def country_discovery_page() -> None:
         '</div></section></div>'
         '<script src="/assets/country-filter.js" defer></script>')
 
-    write("/writing/by-country/", page_wf(
-        title="Find publications by country | BRYME",
-        description=("Pick your country and see two numbers: publications based there, and "
-                     "publications whose own guideline confirms they are open to writers "
-                     "from there."),
-        route="/writing/by-country/", current="writing", body=body,
-        schema_data={"@context": "https://schema.org", "@type": "CollectionPage",
-                     "name": "Writing opportunities by country",
-                     "description": "Paid writing publications by country of publication and by stated eligibility.",
-                     "url": BASE + "/writing/by-country/", "dateModified": TODAY,
-                     "publisher": {"@type": "Organization", "name": "BRYME", "url": BASE + "/"}}))
+    # Retired 2026-09-07: /writing/by-country/ duplicated /writing-opportunities/
+    # (two country entry points split signals and confused visitors). The single
+    # country entry point is now /writing-opportunities/; this route 301s there
+    # via the render.yaml routes. The body-building above stays only because the
+    # counts are reused by the /writing/ page; the page itself is no longer emitted.
+
 
 
 # ---------------------------------------------------------------------------
@@ -1421,7 +1416,7 @@ def country_page(iso: str, based: list) -> str:
 
     body = (
         '<div class="wrap"><nav class="breadcrumb"><a href="/">Home</a> / '
-        '<a href="/writing/">Opportunities</a> / <a href="/writing/by-country/">By country</a> / '
+        '<a href="/writing/">Opportunities</a> / <a href="/writing-opportunities/">By country</a> / '
         + esc(name) + '</nav>'
         '<section class="page-hero"><p class="kicker"><span class="kicker-dot"></span>'
         + flag + ' ' + esc(name) + '</p>'
@@ -1438,7 +1433,7 @@ def country_page(iso: str, based: list) -> str:
         '<p class="prog-ctas"><a class="btn" href="/writing-opportunities/remote/">'
         + str(len(worldwide)) + ' open to writers anywhere &rarr;</a>'
         + guide_cta +
-        '<a class="btn secondary" href="/writing/by-country/">Pick another country</a></p>'
+        '<a class="btn secondary" href="/writing-opportunities/">Pick another country</a></p>'
         '</section></div>'
         '<section class="section"><div class="wrap"><div class="section-head"><div>'
         '<p class="eyebrow">Based here</p><h2>' + str(len(based)) + ' '
@@ -1588,7 +1583,7 @@ def country_band() -> str:
     return ('<section class="section country-band"><div class="wrap">'
             '<div class="section-head"><div><p class="eyebrow">Start here</p>'
             '<h2>Where are you writing from?</h2></div>'
-            '<a class="card-link" href="/writing/by-country/">Compare all countries &rarr;</a></div>'
+            '<a class="card-link" href="/writing-opportunities/">Compare all countries &rarr;</a></div>'
             '<div class="prose"><p>Pick your country to see the publications based there, the calls '
             'that name your region, and the house style editors there expect. Or browse all '
             + str(len(WRITING)) + ' below.</p></div>'

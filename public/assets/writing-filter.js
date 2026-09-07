@@ -9,7 +9,8 @@
    Picking a country shows that country's publications PLUS everything open to
    writers worldwide, so the list is never misleadingly empty.
 
-   Supports ?country=NG in the URL (the sidebar links use this) and keeps the
+   Supports ?country=NG deep links (legacy — old shares and bookmarks still
+   resolve; sidebar links now point at /writing-opportunities/<country>/) and
    URL in sync so a filtered view can be shared or bookmarked. */
 (function () {
   "use strict";
