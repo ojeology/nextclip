@@ -642,6 +642,57 @@ def render_tool(t: dict) -> str:
 <div class="tool-result" id="out" aria-live="polite"></div></div></div>
 <script src="/assets/hub-tools.js" data-hub-tool="freelance-rate-calculator"></script>'''
 
+    if i == "freelance-agreement-builder":
+        return '''<style>
+#agr-sheet{background:#fff;color:#1a1a1a;max-width:720px;margin:18px auto;padding:36px 44px;border:1px solid #d8d2c8;font-family:Georgia,'Times New Roman',serif;font-size:14px;line-height:1.55}
+#agr-sheet h2{font-size:20px;text-align:center;letter-spacing:.08em;margin:0 0 20px}
+#agr-sheet ol{padding-left:22px;margin:10px 0}
+#agr-sheet li{margin-bottom:9px}
+#agr-sheet .sig{display:flex;justify-content:space-between;gap:30px;margin-top:34px;font-size:13px}
+#agr-sheet .sig div{flex:1;border-top:1px solid #1a1a1a;padding-top:5px}
+@media print{body *{visibility:hidden}#agr-sheet,#agr-sheet *{visibility:visible}#agr-sheet{position:absolute;left:0;top:0;width:100%;border:none;margin:0;padding:24px}}
+</style><div class="tool-box"><div class="tool-prose">
+<div class="tool-grid">
+<div class="tool-input"><label for="agr-from">Writer / business name</label><input id="agr-from" placeholder="Your name or business"></div>
+<div class="tool-input"><label for="agr-fromemail">Writer email</label><input id="agr-fromemail" placeholder="you@example.com"></div>
+<div class="tool-input"><label for="agr-client">Client name</label><input id="agr-client" placeholder="The Publication Co."></div>
+<div class="tool-input"><label for="agr-clientemail">Client email</label><input id="agr-clientemail" placeholder="editor@publication.com"></div>
+<div class="tool-input"><label for="agr-project">Project (one line)</label><input id="agr-project" placeholder="Four monthly blog articles for the client's technology blog"></div>
+<div class="tool-input"><label for="agr-fee">Fee (amount)</label><input id="agr-fee" type="number" min="0" step="0.01" placeholder="1200"></div>
+<div class="tool-input"><label for="agr-currency">Currency</label><select id="agr-currency">
+<option value="USD">USD &mdash; US dollar ($)</option>
+<option value="GBP">GBP &mdash; pound sterling (&pound;)</option>
+<option value="EUR">EUR &mdash; euro (&euro;)</option>
+<option value="CAD">CAD &mdash; Canadian dollar (CA$)</option>
+<option value="AUD">AUD &mdash; Australian dollar (A$)</option>
+<option value="NGN">NGN &mdash; Nigerian naira (&#8358;)</option>
+<option value="KES">KES &mdash; Kenyan shilling (KSh)</option>
+<option value="ZAR">ZAR &mdash; South African rand (R)</option>
+<option value="GHS">GHS &mdash; Ghanaian cedi (GH&#8373;)</option>
+<option value="INR">INR &mdash; Indian rupee (&#8377;)</option>
+</select></div>
+<div class="tool-input"><label for="agr-terms">Payment terms</label><select id="agr-terms">
+<option value="50% advance, 50% on delivery of the final deliverables">50% advance, 50% on delivery</option>
+<option value="100% payable within 15 days of delivery (net 15)">On delivery, net 15</option>
+<option value="100% payable within 30 days of invoice (net 30)">On invoice, net 30</option>
+</select></div>
+<div class="tool-input"><label for="agr-revisions">Revision rounds included</label><input id="agr-revisions" type="number" min="0" max="10" step="1" value="2"></div>
+<div class="tool-input"><label for="agr-killfee">If cancelled after work starts, writer receives</label><select id="agr-killfee">
+<option value="25">25% of the fee</option>
+<option value="50" selected>50% of the fee</option>
+<option value="none">No kill fee (not recommended)</option>
+</select></div>
+<div class="tool-input"><label for="agr-law">Governing law (place)</label><input id="agr-law" placeholder="e.g. Lagos, Nigeria / England and Wales / New York"></div>
+<div class="tool-input"><label for="agr-date">Date</label><input id="agr-date" type="date"></div>
+</div>
+<p style="margin:14px 0 6px"><b>Deliverables (the agreed work)</b> &mdash; one per line:</p>
+<div class="tool-grid"><div class="tool-input"><textarea id="agr-deliverables" rows="4" placeholder="Article 1: 1,200 words on X&#10;Article 2: 1,200 words on Y&#10;A published internal link set"></textarea></div></div>
+<div class="actions" style="margin-top:14px"><button id="agr-print" class="btn" type="button">Print / save as PDF</button> <button id="agr-reset" class="btn secondary" type="button">Reset</button></div>
+<p class="meta">A general template for ordinary writing engagements &mdash; not legal advice. For high-value or unusual deals, have it reviewed locally. Everything stays in this browser.</p>
+</div></div>
+<div id="agr-sheet" aria-label="Agreement preview"></div>
+<script src="/assets/hub-tools.js" data-hub-tool="freelance-agreement-builder"></script>'''
+
     if i == "invoice-generator":
         return '''<style>
 #inv-sheet{background:#fff;color:#1a1a1a;max-width:720px;margin:18px auto;padding:36px 40px;border:1px solid #d8d2c8;font-family:Georgia,'Times New Roman',serif}

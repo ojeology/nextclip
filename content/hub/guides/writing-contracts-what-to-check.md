@@ -4,7 +4,7 @@ description: Only 55 of 142 verified publications state their rights terms at al
 section: freelance-paid-writing
 level: intermediate
 keywords: [contracts, rights, first serial, copyright, exclusivity, freelance writers, publishing]
-tools: [freelance-rate-calculator]
+tools: [freelance-agreement-builder, freelance-rate-calculator]
 related: [how-to-price-your-freelance-writing, freelance-writing-rates-us, how-to-find-paying-publications]
 updated: 2026-09-06
 ---

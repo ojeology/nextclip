@@ -298,6 +298,13 @@
       "short": "Fill in the work, print a clean invoice — nothing leaves your browser.",
       "category": "work",
       "description": "Built for freelance writers: add line items, pick your currency (nine markets, from USD to cedis), and print or save a clean, professional invoice. Everything runs in your browser — no account, nothing uploaded."
+    },
+    {
+      "id": "freelance-agreement-builder",
+      "title": "Freelance agreement builder",
+      "short": "Draft a plain-language freelance agreement — fill in, print, both sides sign.",
+      "category": "work",
+      "description": "A fill-in agreement for writing work: parties, scope, fee, payment terms, revision rounds, kill fee and governing law, rendered as a clean document to print and sign. A general template, not legal advice — and it says so on the document itself."
     }
   ]
 }

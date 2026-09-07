@@ -203,5 +203,10 @@
     "what": "A fill-in-and-print invoice built for writing work: line items by project or word count, nine currency options matching the markets this site covers, automatic totals with optional tax, and a clean document you print or save as PDF.",
     "howto": "Fill in your name and the client's details, add one line per piece of work (a feature, a content package, a day rate), and pick the currency you invoiced in. The totals compute as you type. Hit print and choose 'Save as PDF' to email it — or print it the old way. Your details stay saved on this device for next time.",
     "why": "Invoices get paid faster when they look like they came from a business, not a favour. The guide to [invoicing as a writer](/learn/freelance-paid-writing/how-to-invoice-as-a-writer/) covers what to put on it; this tool handles what it looks like. Nothing is uploaded anywhere — your rates and clients are your business, literally."
+  },
+  "freelance-agreement-builder": {
+    "what": "A plain-language freelance agreement for writing engagements: the parties, the scope, the fee and payment terms, revision rounds, a cancellation clause, rights transfer on payment, and governing law — as a printable document.",
+    "howto": "Fill in both parties, describe the project and the deliverables (one per line), set the fee and payment terms, and choose how many revision rounds are included. The agreement renders as you type. Print two copies, sign both, and each party keeps one. Save as PDF via the print dialog if you need to email it first.",
+    "why": "The guide to [writer contracts](/learn/freelance-paid-writing/writing-contracts-what-to-check/) explains what each clause is for; this tool turns those clauses into a document a small client can read and sign the same day. It is a general template — for high-value or unusual engagements, have a local professional review it. Nothing you type leaves your browser."
   }
 }

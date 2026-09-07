@@ -104,6 +104,60 @@
   }
 
   var tools = {
+    "freelance-agreement-builder": function () {
+      var SYM = { USD: "$", GBP: "\u00A3", EUR: "\u20AC", CAD: "CA$", AUD: "A$", NGN: "\u20A6", KES: "KSh ", ZAR: "R", GHS: "GH\u20B5", INR: "\u20B9" };
+      var sheet = document.getElementById("agr-sheet");
+      if (!sheet) return;
+      var FIELDS = ["agr-from", "agr-fromemail", "agr-client", "agr-clientemail", "agr-project",
+                    "agr-fee", "agr-currency", "agr-terms", "agr-revisions", "agr-killfee", "agr-law", "agr-date", "agr-deliverables"];
+      function g(id) { var e = document.getElementById(id); return e ? e.value : ""; }
+      function iso(offset) { var d = new Date(); if (offset) d.setDate(d.getDate() + offset); return d.toISOString().slice(0, 10); }
+      function esc(v) { var d = document.createElement("div"); d.appendChild(document.createTextNode(v || "")); return d.innerHTML; }
+      function money() { var n = parseFloat(g("agr-fee")) || 0; return (SYM[g("agr-currency")] || "$") + n.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
+      function render() {
+        var dels = g("agr-deliverables").split("\n").map(function (x) { return x.trim(); }).filter(Boolean);
+        var delHtml = dels.length ? "<ul><li>" + dels.map(esc).join("</li><li>") + "</li></ul>" : "<p><i>To be listed.</i></p>";
+        var kf = g("agr-killfee");
+        var kfText = kf === "none" ? "No kill fee applies under this agreement." :
+          "If the Client cancels after work has begun, the Writer receives " + kf + "% of the fee for work commissioned, covering work completed to the cancellation date.";
+        sheet.innerHTML = "<h2>FREELANCE WRITING AGREEMENT</h2>" +
+          "<ol>" +
+          "<li><b>Parties.</b> This agreement is between <b>" + esc(g("agr-from")) + "</b>" +
+            (g("agr-fromemail") ? " (" + esc(g("agr-fromemail")) + ")" : "") + " (the \u201CWriter\u201D) and <b>" + esc(g("agr-client")) + "</b>" +
+            (g("agr-clientemail") ? " (" + esc(g("agr-clientemail")) + ")" : "") + " (the \u201CClient\u201D), dated " + (esc(g("agr-date")) || "\u2014") + ".</li>" +
+          "<li><b>The work.</b> The Writer will complete the following project: " + (esc(g("agr-project")) || "<i>To be described.</i>") + "</li>" +
+          "<li><b>Deliverables.</b> The Writer will deliver: " + delHtml + "</li>" +
+          "<li><b>Fee and payment.</b> The Client pays <b>" + money() + "</b> for the work above. Terms: " + esc(g("agr-terms")) + ".</li>" +
+          "<li><b>Revisions.</b> The fee includes " + (esc(g("agr-revisions")) || "0") + " revision round(s) of the deliverables as a whole. Further revisions are new work, quoted separately.</li>" +
+          "<li><b>Cancellation.</b> " + kfText + "</li>" +
+          "<li><b>Rights.</b> On full payment, the deliverables become the Client\u2019s property for the agreed use. Until payment, they remain the Writer\u2019s. The Writer may show the work in a portfolio unless the parties agree otherwise in writing.</li>" +
+          "<li><b>Relationship.</b> The Writer is an independent contractor, not an employee, and is responsible for their own taxes.</li>" +
+          "<li><b>Governing law.</b> This agreement is governed by the law of " + (esc(g("agr-law")) || "\u2014") + ".</li>" +
+          "<li><b>Whole agreement.</b> This document is the whole agreement between the parties for this work; changes are valid only in writing, signed by both.</li>" +
+          "</ol>" +
+          "<div class='sig'><div>" + esc(g("agr-from")) + " (Writer) &mdash; signature &amp; date</div><div>" + esc(g("agr-client")) + " (Client) &mdash; signature &amp; date</div></div>" +
+          "<p style='font-size:11px;margin-top:24px;color:#666'>General template for information only &mdash; not legal advice. Adapt with a qualified professional for high-value or unusual engagements.</p>";
+        try { var data = { fields: {} }; FIELDS.forEach(function (id) { data.fields[id] = g(id); });
+          localStorage.setItem("bryme-agreement", JSON.stringify(data)); } catch (e) {}
+      }
+      function restore() {
+        var data = null;
+        try { data = JSON.parse(localStorage.getItem("bryme-agreement")); } catch (e) {}
+        if (data && data.fields) {
+          FIELDS.forEach(function (id) { if (data.fields[id] !== undefined) { var e = document.getElementById(id); if (e) e.value = data.fields[id]; } });
+        } else {
+          var d = document.getElementById("agr-date"); if (d && !d.value) d.value = iso(0);
+        }
+      }
+      FIELDS.forEach(function (id) { var e = document.getElementById(id); if (e) e.addEventListener("input", render); });
+      document.getElementById("agr-print").addEventListener("click", function () { window.print(); });
+      document.getElementById("agr-reset").addEventListener("click", function () {
+        try { localStorage.removeItem("bryme-agreement"); } catch (e) {}
+        location.reload();
+      });
+      restore();
+      render();
+    },
     "invoice-generator": function () {
       var SYM = { USD: "$", GBP: "\u00A3", EUR: "\u20AC", CAD: "CA$", AUD: "A$", NGN: "\u20A6", KES: "KSh ", ZAR: "R", GHS: "GH\u20B5" };
       var rowsEl = document.getElementById("inv-items").getElementsByTagName("tbody")[0];
