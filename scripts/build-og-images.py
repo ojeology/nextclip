@@ -32,17 +32,17 @@ except ImportError:
     sys.exit(0)
 
 W, H = 1200, 630
-BG = (255, 255, 255)        # paper white
-INK = (26, 26, 26)          # near-black
-ACCENT = (26, 137, 23)      # La Palma green (Medium brand green)
-MUTED = (107, 107, 107)     # neutral gray
-HAIRLINE = (228, 228, 225)
+BG = (246, 242, 232)        # warm paper
+INK = (29, 37, 49)          # navy ink
+ACCENT = (143, 106, 30)     # brass
+MUTED = (122, 110, 90)      # warm gray
+HAIRLINE = (214, 206, 188)
 
 FONT_BOLD = "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
 FONT_REG = "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
 FONT_SERIF_BOLD = "/usr/share/fonts/truetype/dejavu/DejaVuSerif-Bold.ttf"
 
-DESIGN_VERSION = "v3"  # bump to force regeneration of every card
+DESIGN_VERSION = "v6-brass"  # bump to force regeneration of every card
 
 
 def wrap(draw, text: str, font, max_w: int, max_lines: int = 4) -> list[str]:
@@ -72,7 +72,8 @@ def card(path: Path, title: str, eyebrow: str) -> None:
     img = Image.new("RGB", (W, H), BG)
     d = ImageDraw.Draw(img)
     # accent bar across the top + hairline frame (Substack-style inset border)
-    d.rectangle([0, 0, W, 12], fill=ACCENT)
+    d.rectangle([0, 0, W, 14], fill=(30, 58, 95))
+    d.rectangle([0, 14, W, 22], fill=ACCENT)
     d.rectangle([28, 40, W - 29, H - 41], outline=HAIRLINE, width=2)
     # wordmark
     d.rectangle([72, 76, 108, 112], fill=ACCENT)

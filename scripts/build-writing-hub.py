@@ -428,12 +428,14 @@ def guide_page(g: dict) -> None:
     tool_items = g.get("tools", [])
     # Where the guide's tools live inline in prose, we render a section at the end.
     prose = render_md(g["body"])
+    _words = len(re.sub(r"<[^>]+>", " ", prose).split())
+    read_min = max(1, round(_words / 220))
     body = f'''{howto_nav(g['section'])}<div class="wrap">{breadcrumb(("Learn", "/learn/"), (section["title"], f"/learn/{section['id']}/"), (g["title"], ""))}
 <section class="page-hero"><p class="kicker"><span class="kicker-dot"></span>{esc(section['title'])}</p>
 <h1>{esc(g['title'])}</h1>
-<p>{esc(g.get('description', ''))}</p>
+<p class="article-dek">{esc(g.get('description', ''))}</p>
 <p class="level-line">{level_badge(g)} <span class="level-desc">{esc(LEVELS[level_of(g)][1])}</span></p>
-<p class="byline">Researched and written by <a href="/author/ibrahim-sodiq/">BRYME Editorial Desk</a>.</p>
+<p class="byline">Researched &amp; written by <a href="/author/ibrahim-sodiq/">BRYME Editorial Desk</a> &middot; {read_min} min read &middot; Updated {esc(g.get('updated') or TODAY)}</p>
 <a class="btn secondary" href="/learn/{esc(section['id'])}/">← All {esc(section['title'])} guides</a></section>
 <section class="section"><div class="prose">{prose}{regional_note(g)}</div></section></div>
 {affiliate_note() if g.get('affiliate') else ''}{tool_links(tool_items)}{next_step(g)}{related_links(g.get('related', []))}'''
@@ -1044,16 +1046,49 @@ def homepage() -> None:
     latest_cards = "".join(
         f'<a class="path-card" href="/learn/{esc(g["section"])}/{esc(g["slug"])}/"><span class="card-num">NEW</span><h3>{esc(g["title"])}</h3><p>{esc(g.get("description", ""))}</p><span class="card-link">Open →</span></a>'
         for g in latest)
-    featured_pubs = "".join(_bwf.pub_card(r, "h3") for r in WRITING[:4])
-    n_open = sum(1 for r in WRITING
-                 if (r.get("submissionStatus") or "") in ("open", "rolling", "deadline"))
-    n_global = sum(1 for r in WRITING
-                   if (r.get("eligibility") or {}).get("mode") in ("open", "worldwide"))
-    body = f'''<section class="hero"><div class="wrap hero-grid"><div>
-  <p class="kicker"><span class="kicker-dot"></span>Find · Pitch · Track · Get paid</p>
-  <h1>Stop pitching into the void. Find better writing opportunities in <em>seconds.</em></h1>
-  <p class="hero-copy">{len(WRITING)} publications researched by hand — what they pay, how long, who they are open to, and the official page to confirm it. Plus {len(GUIDES)} guides on how to pitch, {len(TOOLS)} free tools to write it, and a tracker for everything you send.</p>
-  <div class="actions"><a class="btn" href="/writing/">Explore writing opportunities →</a><a class="btn secondary" href="/tools/">Try the free writing tools</a></div>
+    def short_st(r):
+        return {"accepting": "Accepting", "rolling": "Rolling", "upcoming": "Opens soon",
+                "limited": "Limited window", "closed": "Closed",
+                "needs-verification": "Unverified"}[_bwf.status_of(r)[1]]
+    def ctry(r):
+        iso = _bwf.base_country(r["slug"])
+        return _bwf.country_name(iso) if iso else "International"
+    lead = WRITING[0]
+    tested_n = [r for r in WRITING if (r.get("editorExperience") or {}).get("applied")]
+    n_open = sum(1 for r in WRITING if (r.get("submissionStatus") or "") in ("open", "rolling", "deadline"))
+    n_global = sum(1 for r in WRITING if (r.get("eligibility") or {}).get("mode") in ("open", "worldwide"))
+    lead_pay = esc((lead.get("pay") or {}).get("display") or "See page")
+    lead_el = esc((lead.get("eligibility") or {}).get("summary") or "")
+    lead_verified = esc((lead.get("lastVerified") or TODAY)[:7])
+    desk_rows = "".join(
+        f'<a class="desk-row" href="/writing/{esc(r["slug"])}/">'
+        f'<span class="desk-pub">{esc(r["publication"])}<small>{esc(ctry(r))}</small></span>'
+        f'<span class="desk-cell">{esc((r.get("pay") or {}).get("display") or "See page")}</span>'
+        f'<span class="desk-cell">{esc((r.get("wordCount") or {}).get("display") or "&mdash;")}</span>'
+        f'<span class="desk-cell st-{esc(_bwf.status_of(r)[1])}">{short_st(r)}</span></a>'
+        for r in WRITING[1:7])
+    toc = "".join(
+        f'<li><a href="{u}"><span class="toc-num">{n:02d}</span>'
+        f'<span class="toc-body"><b>{ti}</b><small>{d}</small></span>'
+        f'<span class="toc-go">&rarr;</span></a></li>'
+        for n, (u, ti, d) in enumerate([
+            ("/learn/", "Learn to write", "The guide library — craft, process, grammar and the business of freelancing."),
+            ("/writing-opportunities/", "Find places to publish", "The atlas — every researched publication, arranged by country."),
+            ("/writing/", "Write &amp; get paid", "The desk — rates, rights, invoicing, and who pays."),
+            ("/tools/", "Writing tools", "Instruments that run in your browser. No account, nothing uploaded."),
+            ("/intelligence/", "Writing intelligence", "Research notes and market watch from the editorial desk."),
+            ("/essays/", "Essays", "Arguments and investigations — the highest shelf in the library."),
+        ], 1))
+    tools_idx = "".join(
+        f'<li><a href="/tools/{esc(t["id"])}/"><b>{esc(t["title"])}</b><span>{esc(t["short"])}</span></a></li>'
+        for t in TOOLS if t["id"] in ("freelance-rate-calculator", "freelance-agreement-builder",
+                                      "invoice-generator", "late-payment-letter-builder",
+                                      "word-counter", "images-to-pdf"))
+    body = f'''<section class="cover"><div class="wrap">
+  <p class="cover-line">An independent publication for working writers</p>
+  <h1 class="cover-title">Learn to write, get published, get <em>paid.</em></h1>
+  <p class="cover-dek">{len(WRITING)} publications researched by hand — what they pay, how long, who they are open to — plus {len(GUIDES)} guides, {len(TOOLS)} free tools and the essays behind the market. Free, independent, human-verified.</p>
+  <div class="actions"><a class="btn" href="/writing/">Explore the opportunity desk &rarr;</a><a class="btn secondary" href="/learn/">Study the guides</a></div>
   <form class="home-search" action="/search/" method="get" role="search">
     <label for="home-q">Already know what you are looking for? Search BRYME.</label>
     <div class="home-search-row">
@@ -1061,41 +1096,44 @@ def homepage() -> None:
       <button class="btn" type="submit">Search</button>
     </div>
   </form>
-</div><aside class="verify-card" aria-label="BRYME snapshot"><div class="verify-head"><h2 class="verify-title">BRYME snapshot</h2><span class="live-tag">Free</span></div><p class="verify-date">{TODAY}</p><div class="metric-row"><div class="metric"><b>{len(WRITING)}</b><span>Opportunities</span></div><div class="metric"><b>{n_open}</b><span>Accepting now</span></div><div class="metric"><b>{n_global}</b><span>Open worldwide</span></div></div><p class="verify-note">Every listing shows its last human-check date and links to the publication's own guideline. A listing is an invitation to pitch — never a promise of acceptance or payment.</p></aside></div>
-<div class="wrap location-picker"><p class="location-picker-label">Jump straight in <span class="location-picker-hint">— pre-filtered searches</span></p><div class="chip-grid">
-<a class="chip-card" href="/writing/?status=acceptingnow&amp;sort=pay"><b>💰</b><span>Highest paying, open now</span></a>
-<a class="chip-card" href="/writing/?global=1"><b>🌍</b><span>Open to writers anywhere</span></a>
-<a class="chip-card" href="/writing/?type=personal-essays"><b>✍️</b><span>Personal essays</span></a>
-<a class="chip-card" href="/writing/?type=fiction"><b>📖</b><span>Fiction &amp; poetry</span></a>
-<a class="chip-card" href="/today/"><b>📅</b><span>Updated this week</span></a>
-<a class="chip-card" href="/tracker/"><b>📋</b><span>Track your pitches</span></a>
-</div></div></section>
-<section class="trust-strip"><div class="wrap trust-grid"><div class="trust-item"><span class="trust-icon">✓</span>Pay, word count and eligibility researched</div><div class="trust-item"><span class="trust-icon">✓</span>Official guideline linked on every listing</div><div class="trust-item"><span class="trust-icon">✓</span>Last-verified date shown, never hidden</div></div></section>
-
-<section class="section"><div class="wrap"><div class="section-head"><div><p class="eyebrow">Rates &amp; business</p><h2>What writing actually pays, and how to get paid.</h2></div><a class="card-link" href="/learn/freelance-paid-writing/">All rates &amp; business guides &rarr;</a></div><div class="card-grid"><a class="path-card" href="/learn/freelance-paid-writing/freelance-writing-rates-us/"><span class="card-num">US</span><h3>US writing rates</h3><p>EFA survey data against 75 verified US markets.</p><span class="card-link">See the numbers &rarr;</span></a><a class="path-card" href="/learn/freelance-paid-writing/freelance-writing-rates-uk/"><span class="card-num">UK</span><h3>UK writing rates</h3><p>Day rates, per-1,000 words, and 21 verified markets.</p><span class="card-link">See the numbers &rarr;</span></a><a class="path-card" href="/learn/freelance-paid-writing/high-paying-writing-niches/"><span class="card-num">TOP</span><h3>Highest-paying niches</h3><p>Where the survey data says the money actually is.</p><span class="card-link">Compare niches &rarr;</span></a><a class="path-card" href="/learn/freelance-paid-writing/payment-platforms-for-writers/"><span class="card-num">PAY</span><h3>Getting paid across borders</h3><p>Stripe covers 46 countries. Here is where each rail stops.</p><span class="card-link">Check your country &rarr;</span></a></div></div></section>
+  <div class="cover-facts">
+    <div><b>{len(WRITING)}</b><span>Publications researched</span></div>
+    <div><b>{n_open}</b><span>Accepting now</span></div>
+    <div><b>{n_global}</b><span>Open worldwide</span></div>
+    <div><b>{len(tested_n)}</b><span>BRYME tested</span></div>
+    <span class="asof">Snapshot {TODAY} — every entry carries its own last-checked date.</span>
+  </div>
+</div></section>
+<section class="section"><div class="wrap">
+  <header class="toc-head"><p class="eyebrow">In this publication</p><h2>Contents</h2></header>
+  <ol class="toc">{toc}</ol>
+</div></section>
+<section class="section alt"><div class="wrap">
+  <article class="feature"><div>
+    <p class="feature-kicker">Featured dossier &middot; human-verified</p>
+    <h2 class="feature-title"><a href="/writing/{esc(lead["slug"])}/">{esc(lead["publication"])}</a></h2>
+    <p class="feature-dek">{lead_el or "A full dossier: what they publish, what they pay, who they are open to, and the official guideline."}</p>
+    <p class="feature-meta">{esc(ctry(lead))} &middot; Pay {lead_pay} &middot; <b>{short_st(lead)}</b> &middot; Verified {lead_verified}</p>
+    <div class="actions"><a class="btn secondary" href="/writing/{esc(lead["slug"])}/">Read the dossier &rarr;</a></div>
+  </div>
+  <aside class="feature-side">
+    <div class="desk-head"><h3>The opportunity desk</h3><span>checked {TODAY}</span></div>
+    {desk_rows}
+    <div class="desk-foot"><a class="btn secondary" href="/writing/">All {len(WRITING)} publications &rarr;</a></div>
+  </aside>
+  </article>
+</div></section>
+<section class="section"><div class="wrap">
+  <header class="toc-head"><p class="eyebrow">The tool chest</p><h2>Instruments for the working writer</h2></header>
+  <ul class="tool-index">{tools_idx}</ul>
+  <div class="actions"><a class="btn secondary" href="/tools/">The full index of tools &rarr;</a></div>
+</div></section>
 {essays_home_block()}
-<section class="section"><div class="wrap"><div class="section-head"><div><p class="eyebrow">Opportunities</p><h2>Publications that pay writers.</h2></div><a class="card-link" href="/writing/">Search all {len(WRITING)} →</a></div><div class="guide-grid">{featured_pubs}</div></div></section>
-
-<section class="section"><div class="wrap"><div class="section-head"><div><p class="eyebrow">Learn writing</p><h2>Start from the beginning.</h2></div><a class="card-link" href="/learn/">All {len(GUIDES)} guides →</a></div><div class="guide-grid">{pop_cards}</div></div></section>
-
-<section class="section alt"><div class="wrap"><div class="section-head"><div><p class="eyebrow">Write differently</p><h2>Match the form to the job.</h2></div></div><div class="card-grid">
-<a class="path-card" href="/learn/academic-writing/"><span class="card-num">🎓</span><h3>Academic</h3><p>Essays, research papers, citations — done your own way.</p></a>
-<a class="path-card" href="/learn/professional-writing/"><span class="card-num">💼</span><h3>Professional</h3><p>Emails, reports, proposals and clear workplace writing.</p></a>
-<a class="path-card" href="/learn/creative-writing/"><span class="card-num">✎</span><h3>Creative</h3><p>Stories, characters, dialogue and voice.</p></a>
-<a class="path-card" href="/learn/online-writing/"><span class="card-num">🌐</span><h3>Online</h3><p>Blogs, SEO and content that gets read.</p></a>
-<a class="path-card" href="/learn/journaling-personal/"><span class="card-num">☕</span><h3>Personal</h3><p>Journaling and writing for yourself.</p></a>
-</div></div></section>
-
-<section class="section"><div class="wrap"><div class="section-head"><div><p class="eyebrow">Improve your writing</p><h2>Getting better on purpose.</h2></div></div><div class="guide-grid">
-<a class="path-card" href="/learn/grammar-language/"><span class="card-num">Aa</span><h3>Grammar &amp; language</h3><p>The rules, explained simply with examples.</p></a>
-<a class="path-card" href="/learn/editing-proofreading/"><span class="card-num">✓</span><h3>Editing &amp; proofreading</h3><p>From rough draft to error-clean piece.</p></a>
-<a class="path-card" href="/learn/research-sources/"><span class="card-num">⌕</span><h3>Research &amp; sources</h3><p>Find reliable sources and use them honestly.</p></a>
-<a class="path-card" href="/learn/common-problems/"><span class="card-num">⚑</span><h3>Common problems</h3><p>Fix the things that actually trip you up.</p></a>
-</div></div></section>
-
-<section class="section alt"><div class="wrap"><div class="section-head"><div><p class="eyebrow">Write &amp; publish</p><h2>Turn finished work into published, paid work.</h2></div></div><div class="guide-grid">{featured_pubs}</div><div class="actions"><a class="btn" href="/writing/">See all {len(WRITING)} opportunities →</a><a class="btn secondary" href="/templates/">Templates</a><a class="btn secondary" href="/checklists/">Checklists</a></div></div></section>
-
-<section class="section"><div class="wrap"><div class="section-head"><div><p class="eyebrow">Latest guides</p><h2>Newest from the Writing Hub.</h2></div></div><div class="guide-grid">{latest_cards}</div></div></section>'''
+<section class="section alt"><div class="wrap">
+  <header class="toc-head"><p class="eyebrow">The archive</p><h2>A library, not a feed.</h2></header>
+  <p class="archive-line">Every guide, every essay and every publication dossier is <a href="/read/">indexed and permanent</a> &mdash; researched by hand, dated when checked, and corrected in the open.</p>
+  <div class="archive-links"><a class="btn secondary" href="/read/">All articles</a><a class="btn secondary" href="/essays/">Essays</a><a class="btn secondary" href="/writing-opportunities/">By country</a><a class="btn secondary" href="/verification/">What statuses mean</a></div>
+</div></section>'''
     structured = [
         {"@context": "https://schema.org", "@type": "WebSite", "name": "BRYME", "url": BASE + "/", "description": "Learn to write, use free writing tools, and find verified paid writing opportunities."},
         {"@context": "https://schema.org", "@type": "Organization", "name": "BRYME", "url": BASE + "/", "founder": {"@type": "Person", "name": "Ibrahim Sodiq", "url": BASE + "/author/ibrahim-sodiq/"}},

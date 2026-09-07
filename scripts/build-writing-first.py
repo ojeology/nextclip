@@ -240,17 +240,20 @@ def nav(current: str = "") -> str:
         aria = ' aria-current="page"' if key == current else ""
         cls = ' class="nav-cta"' if key == "writing" else ""
         items.append(f'<a{cls}{aria} href="{href}">{label}</a>')
+    edition = _dt.datetime.now(_dt.timezone.utc).strftime("%B %Y").upper()
     return f'''<a class="skip-link" href="#main">Skip to content</a>
-<header class="site-head"><div class="wrap head-in">
-  <div class="brand-group">
-    <a class="home-link" href="/"{' aria-current="page"' if current == "home" else ""} aria-label="BRYME home"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5.5 9.5V20a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1V9.5"/><path d="M9.5 21v-6h5v6"/></svg></a>
-    <a class="logo" href="/"><span class="logo-mark" aria-hidden="true">B</span>BRYME</a>
-  </div>
-  <nav class="main-nav" aria-label="Primary">{''.join(items)}</nav>
-  <form class="nav-search-form" action="/search/" method="get" role="search"><input type="search" name="q" placeholder="Search guides, tools…" aria-label="Search BRYME" autocomplete="off"></form>
-  <button type="button" class="theme-toggle" data-theme-toggle aria-pressed="false" aria-label="Switch to dark theme"><svg class="icon-sun" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.2 4.2l1.6 1.6M18.2 18.2l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.2 19.8l1.6-1.6M18.2 5.8l1.6-1.6"/></svg><svg class="icon-moon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 14.3A8.6 8.6 0 0 1 9.7 3.5a8.6 8.6 0 1 0 10.8 10.8Z"/></svg><span class="sr-only theme-toggle-text">Switch to dark theme</span></button>
-  <button type="button" class="nav-toggle" data-drawer-open aria-label="Open menu" aria-expanded="false"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
-</div></header>'''
+<header class="site-head">
+  <div class="mast-top"><div class="wrap mast-in">
+    <a class="mast-brand" href="/"{' aria-current="page"' if current == "home" else ""} aria-label="BRYME — home">BRYME</a>
+    <div class="mast-edition"><span class="mast-date">{edition} EDITION</span><span class="mast-tag">The business, craft &amp; economics of writing — free, independent, human-verified.</span></div>
+    <div class="mast-tools">
+      <form class="nav-search-form" action="/search/" method="get" role="search"><input type="search" name="q" placeholder="Search…" aria-label="Search BRYME" autocomplete="off"></form>
+      <button type="button" class="theme-toggle" data-theme-toggle aria-pressed="false" aria-label="Switch to dark theme"><svg class="icon-sun" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.2 4.2l1.6 1.6M18.2 18.2l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.2 19.8l1.6-1.6M18.2 5.8l1.6-1.6"/></svg><svg class="icon-moon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 14.3A8.6 8.6 0 0 1 9.7 3.5a8.6 8.6 0 1 0 10.8 10.8Z"/></svg><span class="sr-only theme-toggle-text">Switch to dark theme</span></button>
+      <button type="button" class="nav-toggle" data-drawer-open aria-label="Open menu" aria-expanded="false"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    </div>
+  </div></div>
+  <nav class="main-nav" aria-label="Primary"><div class="wrap mast-nav">{''.join(items)}</div></nav>
+</header>'''
 
 
 # How-to sub-navigation bar — a dedicated category nav shown across the
@@ -618,7 +621,7 @@ def page_wf(*, title: str, description: str, route: str, current: str, body: str
 <html lang="en-NG"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#ffffff">
+<meta name="theme-color" content="#f6f2e8">
 <meta name="color-scheme" content="light dark">
 <script src="/assets/theme.js"></script>
 <title>{esc(title)}</title>
@@ -778,27 +781,88 @@ def home() -> None:
         return 0 if r.get("submissionStatus") in ("open", "rolling") else 1
     rest.sort(key=key)
     featured = tested + rest[:5]
-    cards = "".join(pub_card(r, "h3") for r in featured)
-    n_open = sum(1 for r in WRITING if status_of(r)[2] == "open")
-    body = f'''<section class="hero"><div class="wrap hero-grid"><div>
-  <p class="kicker"><span class="kicker-dot"></span>Writing + research + trust</p>
-  <h1>Find writing opportunities. Get published. Get <em>paid.</em></h1>
-  <p class="hero-copy">BRYME researches legitimate writing opportunities — the publications, the pay, the word counts and who they're open to — and gives writers practical guides for pitching, submitting and getting published.</p>
-  <div class="actions"><a class="btn" href="/writing/">Explore writing opportunities →</a><a class="btn secondary" href="/guides/">Browse writing guides</a><a class="btn secondary" href="/tested/">BRYME Tested</a></div>
-</div><aside class="verify-card" aria-label="BRYME writing snapshot"><div class="verify-head"><h2 class="verify-title">Writing research snapshot</h2><span class="live-tag">Verified</span></div><p class="verify-date">{TODAY_HUMAN}</p><div class="metric-row"><div class="metric"><b>{len(WRITING)}</b><span>Publications</span></div><div class="metric"><b>{n_open}</b><span>Accepting now</span></div><div class="metric"><b>{len(tested)}</b><span>BRYME tested</span></div></div><p class="verify-note">Every publication page shows its last human-check date. "Open" is a timestamp, not a guarantee — always confirm the official guideline before pitching.</p></aside></div>
-<div class="wrap location-picker"><p class="location-picker-label">Start with an opportunity <span class="location-picker-hint">— reviewed for pay, words and eligibility</span></p><div class="chip-grid">{''.join(f'<a class="chip-card" href="/writing/{esc(r["slug"])}/"><b>{esc((r.get("pay") or {}).get("display") or "—")}</b><span>{esc(r["publication"])}</span></a>' for r in WRITING[:6])}</div></div></section>
-<section class="trust-strip"><div class="wrap trust-grid"><div class="trust-item"><span class="trust-icon">✓</span>Official submission guideline linked</div><div class="trust-item"><span class="trust-icon">✓</span>Pay and word count researched</div><div class="trust-item"><span class="trust-icon">✓</span>Eligibility and diaspora rules recorded</div></div></section>
-<section class="section"><div class="wrap"><div class="section-head"><div><p class="eyebrow">Featured opportunities</p><h2>Publications that pay writers.</h2></div><p>Each card links to a permanent BRYME page with the full detail and the official guideline.</p></div><div class="guide-grid">{cards}</div><div class="actions"><a class="btn" href="/writing/">See all {len(WRITING)} publications →</a></div></div></section>
-<section class="section alt"><div class="wrap"><div class="section-head"><div><p class="eyebrow">Guides</p><h2>From first pitch to first payment.</h2></div><p>Practical, writer-first resources that connect to the opportunities above.</p></div><div class="card-grid">
-<a class="path-card" href="/guides/how-to-write-a-pitch/"><span class="card-num">01</span><h3>How to write a pitch</h3><p>The structure, subject line and clips that get a publication to say yes — explained plainly.</p><span class="card-link">Open the guide →</span></a>
-<a class="path-card" href="/guides/how-to-find-paid-writing-opportunities/"><span class="card-num">02</span><h3>Find paid writing opportunities</h3><p>Where to look, how to judge legitimacy, and how to read a guidelines page.</p><span class="card-link">Open the guide →</span></a>
-<a class="path-card" href="/guides/how-to-follow-up-on-a-writing-pitch/"><span class="card-num">03</span><h3>Follow up on a pitch</h3><p>When to wait, what to say, and how to treat silence without burning bridges.</p><span class="card-link">Open the guide →</span></a>
-</div></div></section>
-<section class="section"><div class="wrap"><div class="section-head"><div><p class="eyebrow">Transparent by design</p><h2>What BRYME claims — and what it will not.</h2></div></div><div class="card-grid">
-<div class="path-card"><span class="card-num">VERIFY</span><h3>Official guidelines first</h3><p>BRYME links to, and checks against, each publication's own guideline — not third-party reposts.</p></div>
-<div class="path-card"><span class="card-num">TESTED</span><h3>Marked as it happens</h3><p>Where BRYME has personally pitched, the journey is shown step by step — accepted, published, paid — never assumed.</p></div>
-<div class="path-card"><span class="card-num">LIMIT</span><h3>No guaranteed outcome</h3><p>An open submission window does not guarantee acceptance, publication or payment.</p></div>
-</div></div></section>'''
+    lead = featured[0]
+    desk = featured[1:7]
+    def short_st(r):
+        return {"accepting": "Accepting", "rolling": "Rolling", "upcoming": "Opens soon",
+                "limited": "Limited window", "closed": "Closed",
+                "needs-verification": "Unverified"}[status_of(r)[1]]
+    def ctry(r):
+        iso = base_country(r["slug"])
+        return country_name(iso) if iso else "International"
+    lead_pay = esc((lead.get("pay") or {}).get("display") or "See page")
+    lead_el = esc((lead.get("eligibility") or {}).get("summary") or "")
+    lead_verified = esc((lead.get("lastVerified") or TODAY)[:7])
+    desk_rows = "".join(
+        f'<a class="desk-row" href="/writing/{esc(r["slug"])}/">'
+        f'<span class="desk-pub">{esc(r["publication"])}<small>{esc(ctry(r))}</small></span>'
+        f'<span class="desk-cell">{esc((r.get("pay") or {}).get("display") or "See page")}</span>'
+        f'<span class="desk-cell">{esc((r.get("wordCount") or {}).get("display") or "&mdash;")}</span>'
+        f'<span class="desk-cell st-{esc(status_of(r)[1])}">{short_st(r)}</span></a>'
+        for r in desk)
+    toc = "".join(
+        f'<li><a href="{u}"><span class="toc-num">{n:02d}</span>'
+        f'<span class="toc-body"><b>{ti}</b><small>{d}</small></span>'
+        f'<span class="toc-go">&rarr;</span></a></li>'
+        for n, (u, ti, d) in enumerate([
+            ("/learn/", "Learn to write", "The guide library — craft, process, grammar and the business of freelancing."),
+            ("/writing-opportunities/", "Find places to publish", "The atlas — every researched publication, arranged by country."),
+            ("/writing/", "Write &amp; get paid", "The desk — rates, rights, invoicing, and who pays."),
+            ("/tools/", "Writing tools", "Instruments that run in your browser. No account, nothing uploaded."),
+            ("/intelligence/", "Writing intelligence", "Research notes and market watch from the editorial desk."),
+            ("/essays/", "Essays", "Arguments and investigations — the highest shelf in the library."),
+        ], 1))
+    tools_idx = "".join(
+        f'<li><a href="{u}"><b>{ti}</b><span>{d}</span></a></li>'
+        for u, ti, d in [
+            ("/tools/freelance-rate-calculator/", "The rate calculator", "What to charge — from an hourly floor to a project fee."),
+            ("/tools/freelance-agreement-builder/", "The agreement builder", "Ten plain-language clauses. Fill in, print, both sides sign."),
+            ("/tools/invoice-generator/", "The invoice generator", "Line items, tax, nine currencies; print or save as PDF."),
+            ("/tools/late-payment-letter-builder/", "Late-payment letters", "Three escalating chases — polite to firm to final."),
+            ("/tools/word-counter/", "The reading-time counter", "Words, reading time and density, as you type."),
+            ("/tools/images-to-pdf/", "Images to PDF", "Portfolio pages and scans into one clean document."),
+        ])
+    body = f'''<section class="cover"><div class="wrap">
+  <p class="cover-line">An independent publication for working writers</p>
+  <h1 class="cover-title">Find writing opportunities. Get published. Get <em>paid.</em></h1>
+  <p class="cover-dek">BRYME researches legitimate writing opportunities &mdash; the publications, the pay, the word counts and who they&rsquo;re open to &mdash; and publishes the craft: guides, tools and essays for the working writer.</p>
+  <div class="actions"><a class="btn" href="/writing/">Explore the opportunity desk &rarr;</a><a class="btn secondary" href="/learn/">Study the guides</a><a class="btn secondary" href="/tested/">BRYME Tested</a></div>
+  <div class="cover-facts">
+    <div><b>{len(WRITING)}</b><span>Publications researched</span></div>
+    <div><b>{n_open}</b><span>Accepting now</span></div>
+    <div><b>{len(tested)}</b><span>BRYME tested</span></div>
+    <span class="asof">Snapshot {TODAY_HUMAN} &mdash; every entry carries its own last-checked date.</span>
+  </div>
+</div></section>
+<section class="section"><div class="wrap">
+  <header class="toc-head"><p class="eyebrow">In this publication</p><h2>Contents</h2></header>
+  <ol class="toc">{toc}</ol>
+</div></section>
+<section class="section alt"><div class="wrap">
+  <article class="feature"><div>
+    <p class="feature-kicker">Featured dossier &middot; human-verified</p>
+    <h2 class="feature-title"><a href="/writing/{esc(lead["slug"])}/">{esc(lead["publication"])}</a></h2>
+    <p class="feature-dek">{lead_el or "A full dossier: what they publish, what they pay, who they are open to, and the official guideline."}</p>
+    <p class="feature-meta">{esc(ctry(lead))} &middot; Pay {lead_pay} &middot; <b>{short_st(lead)}</b> &middot; Verified {lead_verified}</p>
+    <div class="actions"><a class="btn secondary" href="/writing/{esc(lead["slug"])}/">Read the dossier &rarr;</a></div>
+  </div>
+  <aside class="feature-side">
+    <div class="desk-head"><h3>The opportunity desk</h3><span>checked {TODAY_HUMAN}</span></div>
+    {desk_rows}
+    <div class="desk-foot"><a class="btn secondary" href="/writing/">All {len(WRITING)} publications &rarr;</a></div>
+  </aside>
+  </article>
+</div></section>
+<section class="section"><div class="wrap">
+  <header class="toc-head"><p class="eyebrow">The tool chest</p><h2>Instruments for the working writer</h2></header>
+  <ul class="tool-index">{tools_idx}</ul>
+  <div class="actions"><a class="btn secondary" href="/tools/">The full index of tools &rarr;</a></div>
+</div></section>
+<section class="section alt"><div class="wrap">
+  <header class="toc-head"><p class="eyebrow">The archive</p><h2>A library, not a feed.</h2></header>
+  <p class="archive-line">Every guide, every essay and every publication dossier is <a href="/read/">indexed and permanent</a> &mdash; researched by hand, dated when checked, and corrected in the open.</p>
+  <div class="archive-links"><a class="btn secondary" href="/read/">All articles</a><a class="btn secondary" href="/essays/">Essays</a><a class="btn secondary" href="/writing-opportunities/">By country</a><a class="btn secondary" href="/verification/">What statuses mean</a></div>
+</div></section>'''
     structured = [
         {"@context": "https://schema.org", "@type": "WebSite", "name": "BRYME",
          "url": BASE + "/", "description": SITE["description"]},
@@ -1252,7 +1316,7 @@ def affiliate_note() -> str:
     AND the guide declares 'affiliate: true' in front matter."""
     if not _SITE_CFG.get("affiliate", {}).get("enabled"):
         return ""
-    return ('<aside style="border-left:3px solid rgba(182,84,44,.65);padding:8px 14px;'
+    return ('<aside style="border-left:3px solid rgba(143,106,30,.6);padding:8px 14px;'
             'margin:18px 0" class="prose"><b>A note on links.</b> Some links in this '
             'guide may earn BRYME a commission if you subscribe &mdash; at no extra cost '
             'to you. Recommendations follow each guide&rsquo;s stated criteria, not '
