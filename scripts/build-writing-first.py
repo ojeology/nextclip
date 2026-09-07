@@ -618,7 +618,7 @@ def page_wf(*, title: str, description: str, route: str, current: str, body: str
 <html lang="en-NG"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#faf6ee">
+<meta name="theme-color" content="#ffffff">
 <meta name="color-scheme" content="light dark">
 <script src="/assets/theme.js"></script>
 <title>{esc(title)}</title>

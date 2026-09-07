@@ -4,8 +4,8 @@
   "description": "Verified jobs, paid-writing research and practical opportunity guides.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#07100d",
-  "theme_color": "#0b4f36",
+  "background_color": "#ffffff",
+  "theme_color": "#1a8917",
   "orientation": "any",
   "scope": "/",
   "icons": [

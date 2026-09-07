@@ -31,7 +31,7 @@
     if (theme === "dark") root.setAttribute("data-theme", "dark");
     else root.removeAttribute("data-theme");
     var meta = document.querySelector('meta[name="theme-color"]');
-    if (meta) meta.setAttribute("content", theme === "dark" ? "#12100e" : "#faf6ee");
+    if (meta) meta.setAttribute("content", theme === "dark" ? "#1c1c1a" : "#ffffff");
     sync(theme);
   }
 
