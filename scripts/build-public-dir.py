@@ -21,6 +21,8 @@ PUBLIC_DIRS = [
     "editorial-policy", "guides", "privacy", "terms", "tested", "writing", "assets",
     "learn", "tools", "glossary", "templates", "checklists", "problems", "search",
     "verification", "find", "start", "compare", "regional", "intelligence", "tracker", "today", "writing-opportunities", "essays", "read",
+    # Retired-path redirect stubs + the digest page (added 2026-09-07).
+    "newsletter", "opportunities", "jobs", "make-money", "tech",
 ]
 # Root-level files that belong on the published site.
 PUBLIC_FILES = [
