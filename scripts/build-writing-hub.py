@@ -447,7 +447,13 @@ def guide_page(g: dict) -> None:
                      "datePublished": TODAY + "T00:00:00+01:00", "dateModified": (g.get("updated") or TODAY).replace("-", "-") + "T00:00:00+01:00",
                      "author": {"@type": "Person", "name": "BRYME Editorial Desk", "url": BASE + "/author/ibrahim-sodiq/"},
                      "publisher": {"@type": "Organization", "name": "BRYME", "url": BASE + "/"},
-                     "mainEntityOfPage": f"{BASE}/learn/{g['section']}/{g['slug']}/"}))
+                     "mainEntityOfPage": f"{BASE}/learn/{g['section']}/{g['slug']}/"},
+        schema_extra={"@context": "https://schema.org", "@type": "BreadcrumbList",
+                      "itemListElement": [
+                          {"@type": "ListItem", "position": 1, "name": "Home", "item": BASE + "/"},
+                          {"@type": "ListItem", "position": 2, "name": "How-tos", "item": BASE + "/learn/"},
+                          {"@type": "ListItem", "position": 3, "name": SECTIONS_BY_ID[g["section"]]["title"], "item": f"{BASE}/learn/{g['section']}/"},
+                          {"@type": "ListItem", "position": 4, "name": g["title"]}]}))
 
 
 def section_hub(sec: dict) -> None:
@@ -1630,7 +1636,12 @@ def essay_page(e: dict) -> None:
                      "author": {"@type": "Person", "name": "Ibrahim Sodiq",
                                 "url": BASE + "/author/ibrahim-sodiq/"},
                      "publisher": {"@type": "Organization", "name": "BRYME", "url": BASE + "/"},
-                     "mainEntityOfPage": f"{BASE}/essays/{e['slug']}/"}))
+                     "mainEntityOfPage": f"{BASE}/essays/{e['slug']}/"},
+        schema_extra={"@context": "https://schema.org", "@type": "BreadcrumbList",
+                      "itemListElement": [
+                          {"@type": "ListItem", "position": 1, "name": "Home", "item": BASE + "/"},
+                          {"@type": "ListItem", "position": 2, "name": "Essays", "item": BASE + "/essays/"},
+                          {"@type": "ListItem", "position": 3, "name": e["title"]}]}))
 
 
 # ---------------------------------------------------------------------------

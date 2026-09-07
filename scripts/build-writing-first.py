@@ -22,6 +22,7 @@ archived in-tree under legacy-site/ — it is not generated here and not promote
 from __future__ import annotations
 import importlib.util
 import json
+import re
 import datetime as _dt
 import sys
 from pathlib import Path
@@ -575,13 +576,20 @@ def drawer(current: str = "") -> str:
 
 def page_wf(*, title: str, description: str, route: str, current: str, body: str,
             schema_data: object | None = None, robots: str = "index,follow",
-            head_extra: str = "") -> str:
+            head_extra: str = "", schema_extra: object | None = None) -> str:
     """Writing-first page: the shared shell with a writing-first graph + nav.
 
     (Copied from build_focus_site.page so the writing branch controls its own
     SearchAction/site graph and nav while keeping the same hardened head.)
     """
     canonical = BASE + route
+    # Social card: use the generated per-page card when one exists.
+    og_image = "/assets/og/default.png"
+    m_og = re.match(r"^/learn/[a-z0-9-]+/([a-z0-9-]+)/$", route) or re.match(r"^/essays/([a-z0-9-]+)/$", route)
+    if m_og:
+        name = f"essay-{m_og.group(1)}.png" if route.startswith("/essays/") else f"{m_og.group(1)}.png"
+        if (ROOT / "assets" / "og" / name).exists():
+            og_image = f"/assets/og/{name}"
     ca_id = str(cfg.publisher_config().get("caId") or "").strip()
     adsense_meta = f'<meta name="google-adsense-account" content="{esc(ca_id)}">' if ca_id else ""
     structured = schema_data or {
@@ -616,13 +624,14 @@ def page_wf(*, title: str, description: str, route: str, current: str, body: str
 <link rel="canonical" href="{canonical}">
 <meta property="og:type" content="website"><meta property="og:site_name" content="BRYME">
 <meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(description)}"><meta property="og:url" content="{canonical}">
-<meta name="twitter:card" content="summary"><meta name="twitter:title" content="{esc(title)}"><meta name="twitter:description" content="{esc(description)}">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{esc(title)}"><meta name="twitter:description" content="{esc(description)}"><meta name="twitter:image" content="{BASE}{og_image}">
+<meta property="og:image" content="{BASE}{og_image}"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="{esc(title)}">
 {adsense_meta}
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="icon" href="/favicon.ico" sizes="any">
 {head_extra}
 <link rel="stylesheet" href="/assets/bryme-v2.css">
 {schema(site_graph)}
-{schema(structured)}
+{schema(structured)}{schema(schema_extra) if schema_extra else ""}
 </head><body>{nav(current)}<main id="main">{body}</main>{mobile_nav(current)}{drawer(current)}<script src="/assets/site-nav.js" defer></script><script src="/assets/level-filter.js" defer></script><script src="/assets/purpose-finder.js" defer></script>{footer()}</body></html>'''
 
 
@@ -1156,6 +1165,34 @@ def _names_your_region(rec: dict, iso: str) -> bool:
         if iso in REGION_MEMBERS.get(reg, set()):
             return True
     return False
+
+
+def _legacy_redirect(route: str, dest: str) -> None:
+    write(route, page_wf(
+        title="Page moved | BRYME",
+        description=f"This page has moved to {dest}.",
+        route=route, current="", robots="noindex,follow",
+        head_extra=f'<meta http-equiv="refresh" content="0;url={dest}">',
+        schema_data={"@context": "https://schema.org", "@type": "WebPage",
+                     "name": "Page moved", "url": BASE + route},
+        body=f'<div class="wrap"><section class="page-hero"><h1>This page moved.</h1>'
+             f'<p>Continue to <a href="{dest}">the current page</a>.</p></section></div>'))
+
+
+def legacy_redirect_stubs() -> None:
+    """Static redirect stubs for retired multi-niche URLs.
+
+    Render's routes: redirects are not honoured on this service (verified live
+    2026-09-07) and dashboard-level rules shadow some of these paths, so each
+    stub only wins where the file is actually served — which is still better
+    than a 404 or a stale self-canonical page.
+    """
+    _legacy_redirect("/opportunities/", "/writing/")
+    _legacy_redirect("/jobs/", "/writing/")
+    _legacy_redirect("/make-money/", "/writing/")
+    _legacy_redirect("/tech/", "/guides/")
+    _legacy_redirect("/make-money/writing/mcsweeneys/", "/writing/mcsweeneys/")
+    _legacy_redirect("/make-money/writing/longreads-personal-essay/", "/writing/longreads-personal-essay/")
 
 
 def country_discovery_page() -> None:
@@ -2188,6 +2225,7 @@ if __name__ == "__main__":
     # /tested/, /about/ and the trust/legal pages.
     writing_hub()
     country_discovery_page()
+    legacy_redirect_stubs()
     tracker_page()
     today_feed()
     programmatic_pages()

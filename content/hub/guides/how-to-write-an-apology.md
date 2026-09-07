@@ -3,7 +3,7 @@ title: How to write an apology
 description: A real apology — personal or organisational — and the six things that make one work instead of making it worse.
 section: professional-writing
 level: intermediate
-keywords: [apology, sorry, crisis, statement, accountability]
+keywords: [apology, sorry, crisis, statement, accountability, how-to-write-a-thank-you-note]
 tools: [tone-checker, word-counter, cliche-detector]
 related: [how-to-write-a-professional-email, how-to-write-a-formal-complaint, how-to-write-a-business-letter]
 popular: true

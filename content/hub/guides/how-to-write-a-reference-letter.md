@@ -4,7 +4,7 @@ description: How to write a recommendation that actually helps — including wha
 section: professional-writing
 level: intermediate
 regional: Naming referees with full contact details on a CV is normal in Nigeria, Kenya and India and unusual in the US and UK. Mentioning age, health, religion or family circumstances is legally hazardous in the UK, US, Canada and Australia.
-keywords: [reference, recommendation, referee, letter, endorsement]
+keywords: [reference, recommendation, referee, letter, endorsement, how-to-write-a-thank-you-note]
 tools: [word-counter, tone-checker]
 related: [how-to-write-a-business-letter, how-to-write-a-cover-letter, how-to-write-a-formal-complaint]
 updated: 2026-09-05
