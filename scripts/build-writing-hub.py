@@ -642,6 +642,53 @@ def render_tool(t: dict) -> str:
 <div class="tool-result" id="out" aria-live="polite"></div></div></div>
 <script src="/assets/hub-tools.js" data-hub-tool="freelance-rate-calculator"></script>'''
 
+    if i == "invoice-generator":
+        return '''<style>
+#inv-sheet{background:#fff;color:#1a1a1a;max-width:720px;margin:18px auto;padding:36px 40px;border:1px solid #d8d2c8;font-family:Georgia,'Times New Roman',serif}
+#inv-sheet h2{font-size:26px;letter-spacing:.14em;margin:0 0 18px}
+#inv-meta{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:14px;margin-bottom:18px}
+#inv-items-table{width:100%;border-collapse:collapse;font-size:14px;margin:12px 0}
+#inv-items-table th{text-align:left;border-bottom:2px solid #1a1a1a;padding:6px 4px}
+#inv-items-table td{border-bottom:1px solid #e4dfd6;padding:6px 4px;vertical-align:top}
+#inv-totals{margin-left:auto;width:240px;font-size:14px}
+#inv-totals div{display:flex;justify-content:space-between;padding:3px 0}
+#inv-totals .grand{border-top:2px solid #1a1a1a;font-weight:700;margin-top:4px;padding-top:6px}
+.inv-muted{color:#555}
+@media print{body *{visibility:hidden}#inv-sheet,#inv-sheet *{visibility:visible}#inv-sheet{position:absolute;left:0;top:0;width:100%;border:none;margin:0;padding:24px}}
+</style><div class="tool-box"><div class="tool-prose">
+<div class="tool-grid">
+<div class="tool-input"><label for="inv-from">Your name / business</label><input id="inv-from" placeholder="Ama Mensah Writing Ltd"></div>
+<div class="tool-input"><label for="inv-email">Your email</label><input id="inv-email" placeholder="you@example.com"></div>
+<div class="tool-input"><label for="inv-number">Invoice number</label><input id="inv-number" value="INV-001"></div>
+<div class="tool-input"><label for="inv-currency">Currency</label><select id="inv-currency">
+<option value="USD">USD &mdash; US dollar ($)</option>
+<option value="GBP">GBP &mdash; pound sterling (&pound;)</option>
+<option value="EUR">EUR &mdash; euro (&euro;)</option>
+<option value="CAD">CAD &mdash; Canadian dollar (CA$)</option>
+<option value="AUD">AUD &mdash; Australian dollar (A$)</option>
+<option value="NGN">NGN &mdash; Nigerian naira (&#8358;)</option>
+<option value="KES">KES &mdash; Kenyan shilling (KSh)</option>
+<option value="ZAR">ZAR &mdash; South African rand (R)</option>
+<option value="GHS">GHS &mdash; Ghanaian cedi (GH&#8373;)</option>
+</select></div>
+<div class="tool-input"><label for="inv-date">Invoice date</label><input id="inv-date" type="date"></div>
+<div class="tool-input"><label for="inv-due">Due date</label><input id="inv-due" type="date"></div>
+<div class="tool-input"><label for="inv-client">Client name</label><input id="inv-client" placeholder="The Publication Co."></div>
+<div class="tool-input"><label for="inv-clientdetails">Client address / details (optional)</label><input id="inv-clientdetails" placeholder="Commissioning editor, address&hellip;"></div>
+</div>
+<p style="margin:14px 0 6px"><b>Line items</b></p>
+<div class="compare-scroll"><table class="compare-table" id="inv-items"><thead><tr><th style="text-align:left">Description of work</th><th>Qty</th><th>Unit rate</th><th>Amount</th><th></th></tr></thead><tbody></tbody></table></div>
+<button id="inv-add" class="btn secondary" type="button">+ Add a line item</button>
+<div class="tool-grid" style="margin-top:12px">
+<div class="tool-input"><label for="inv-tax">Tax / VAT (%)</label><input id="inv-tax" type="number" min="0" max="60" step="0.5" value="0"></div>
+<div class="tool-input"><label for="inv-notes">Notes (payment terms, thank-you)</label><input id="inv-notes" value="Payment due within 30 days. Thank you for the work!"></div>
+</div>
+<div class="actions" style="margin-top:14px"><button id="inv-print" class="btn" type="button">Print / save as PDF</button> <button id="inv-reset" class="btn secondary" type="button">Reset</button></div>
+<p class="meta">Everything stays in this browser &mdash; no account, nothing uploaded. Your details stay on this device for next time.</p>
+</div></div>
+<div id="inv-sheet" aria-label="Invoice preview"></div>
+<script src="/assets/hub-tools.js" data-hub-tool="invoice-generator"></script>'''
+
     if i == "word-count-to-pages":
         return f'''<div class="tool-box"><div class="tool-prose">
 <div class="tool-grid">

@@ -198,5 +198,10 @@
     "what": "Words to pages for a specific, stated format — not a vague average.",
     "howto": "Enter your word count and pick the format the brief actually specifies. If you do not know the spec, use standard manuscript format, which is what most editors and agents mean. You also get read-aloud time, which is what you need for a speech or a video script.",
     "why": "“Pages” is not a unit of length. The same 1,000 words is four double-spaced pages or two single-spaced ones, and a printed book page holds different amounts again depending on trim size. This causes real problems: a student told to write “five pages” and a writer told “1,250 words” are being asked for the same thing, but only one of those instructions is unambiguous. If a brief gives you a page count, ask which spec it means. If you are submitting work, state the word count — that is what editors work from."
+  },
+  "invoice-generator": {
+    "what": "A fill-in-and-print invoice built for writing work: line items by project or word count, nine currency options matching the markets this site covers, automatic totals with optional tax, and a clean document you print or save as PDF.",
+    "howto": "Fill in your name and the client's details, add one line per piece of work (a feature, a content package, a day rate), and pick the currency you invoiced in. The totals compute as you type. Hit print and choose 'Save as PDF' to email it — or print it the old way. Your details stay saved on this device for next time.",
+    "why": "Invoices get paid faster when they look like they came from a business, not a favour. The guide to [invoicing as a writer](/learn/freelance-paid-writing/how-to-invoice-as-a-writer/) covers what to put on it; this tool handles what it looks like. Nothing is uploaded anywhere — your rates and clients are your business, literally."
   }
 }

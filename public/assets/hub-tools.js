@@ -104,6 +104,97 @@
   }
 
   var tools = {
+    "invoice-generator": function () {
+      var SYM = { USD: "$", GBP: "\u00A3", EUR: "\u20AC", CAD: "CA$", AUD: "A$", NGN: "\u20A6", KES: "KSh ", ZAR: "R", GHS: "GH\u20B5" };
+      var rowsEl = document.getElementById("inv-items").getElementsByTagName("tbody")[0];
+      var sheet = document.getElementById("inv-sheet");
+      if (!rowsEl || !sheet) return;
+      var FIELDS = ["inv-from", "inv-email", "inv-number", "inv-currency", "inv-date", "inv-due", "inv-client", "inv-clientdetails", "inv-tax", "inv-notes"];
+      function iso(offset) { var d = new Date(); if (offset) d.setDate(d.getDate() + offset); return d.toISOString().slice(0, 10); }
+      function esc(v) { var d = document.createElement("div"); d.appendChild(document.createTextNode(v || "")); return d.innerHTML; }
+      function sym() { return SYM[q("inv-currency").value] || "$"; }
+      function m(n) { return sym() + (Number(n) || 0).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
+      function addRow(desc, qty, rate) {
+        var tr = document.createElement("tr");
+        tr.innerHTML = '<td><input class="inv-desc" placeholder="e.g. Feature article \u2014 1,200 words"></td>' +
+          '<td><input class="inv-qty" type="number" min="0" step="0.25" value="' + (qty || 1) + '"></td>' +
+          '<td><input class="inv-rate" type="number" min="0" step="0.01" value="' + (rate === undefined ? "" : rate) + '"></td>' +
+          '<td class="inv-amt" style="text-align:right">\u2014</td>' +
+          '<td><button type="button" class="inv-del" aria-label="Remove line" style="border:none;background:none;cursor:pointer;color:#a44">\u00D7</button></td>';
+        if (desc) tr.querySelector(".inv-desc").value = desc;
+        rowsEl.appendChild(tr);
+      }
+      function readRows() {
+        var out = [];
+        [].forEach.call(rowsEl.querySelectorAll("tr"), function (tr) {
+          out.push({ d: tr.querySelector(".inv-desc").value,
+                     qty: parseFloat(tr.querySelector(".inv-qty").value) || 0,
+                     rate: parseFloat(tr.querySelector(".inv-rate").value) || 0 });
+        });
+        return out;
+      }
+      function save() {
+        try {
+          var data = { rows: readRows(), fields: {} };
+          FIELDS.forEach(function (id) { data.fields[id] = q(id).value; });
+          localStorage.setItem("bryme-invoice", JSON.stringify(data));
+        } catch (e) {}
+      }
+      function render() {
+        var g = function (id) { var e = q(id); return e ? e.value : ""; };
+        var items = readRows(), sub = 0;
+        [].forEach.call(rowsEl.querySelectorAll("tr"), function (tr, idx) {
+          var amt = items[idx].qty * items[idx].rate;
+          sub += amt;
+          tr.querySelector(".inv-amt").textContent = m(amt);
+        });
+        var taxPct = parseFloat(g("inv-tax")) || 0;
+        var tax = sub * taxPct / 100;
+        var rowsHtml = items.map(function (it) {
+          return "<tr><td>" + esc(it.d || "\u2014") + "</td><td style='text-align:right'>" + (it.qty || "") +
+            "</td><td style='text-align:right'>" + m(it.rate) + "</td><td style='text-align:right'>" + m(it.qty * it.rate) + "</td></tr>";
+        }).join("");
+        sheet.innerHTML = "<h2>INVOICE</h2>" +
+          "<div id='inv-meta'><div><b>" + esc(g("inv-from")) + "</b>" + (g("inv-email") ? "<br>" + esc(g("inv-email")) : "") + "</div>" +
+          "<div class='inv-muted' style='text-align:right'>Invoice " + esc(g("inv-number")) + "<br>Date: " + esc(g("inv-date")) + "<br>Due: " + esc(g("inv-due")) + "</div></div>" +
+          "<div style='margin-bottom:6px'><b>Bill to:</b> " + esc(g("inv-client")) +
+          (g("inv-clientdetails") ? "<br><span class='inv-muted'>" + esc(g("inv-clientdetails")) + "</span>" : "") + "</div>" +
+          "<table id='inv-items-table'><thead><tr><th>Description</th><th style='text-align:right'>Qty</th><th style='text-align:right'>Rate</th><th style='text-align:right'>Amount</th></tr></thead><tbody>" + rowsHtml + "</tbody></table>" +
+          "<div id='inv-totals'><div><span>Subtotal</span><span>" + m(sub) + "</span></div>" +
+          (taxPct ? "<div><span>Tax (" + taxPct + "%)</span><span>" + m(tax) + "</span></div>" : "") +
+          "<div class='grand'><span>Total due</span><span>" + m(sub + tax) + "</span></div></div>" +
+          (g("inv-notes") ? "<p style='font-size:13px;margin-top:22px' class='inv-muted'>" + esc(g("inv-notes")) + "</p>" : "");
+        save();
+      }
+      function restore() {
+        var data = null;
+        try { data = JSON.parse(localStorage.getItem("bryme-invoice")); } catch (e) {}
+        if (data && data.fields) {
+          FIELDS.forEach(function (id) { if (data.fields[id] !== undefined && q(id)) q(id).value = data.fields[id]; });
+          (data.rows && data.rows.length ? data.rows : [{ d: "", qty: 1, rate: "" }]).forEach(function (r) { addRow(r.d, r.qty, r.rate); });
+        } else {
+          if (!q("inv-date").value) q("inv-date").value = iso(0);
+          if (!q("inv-due").value) q("inv-due").value = iso(30);
+          addRow("", 1, "");
+        }
+      }
+      document.getElementById("inv-items").addEventListener("input", render);
+      q("inv-currency").addEventListener("change", render);
+      q("inv-add").addEventListener("click", function () { addRow("", 1, ""); render(); });
+      rowsEl.addEventListener("click", function (e) {
+        if (e.target && e.target.classList && e.target.classList.contains("inv-del")) {
+          e.target.closest("tr").parentNode.removeChild(e.target.closest("tr"));
+          render();
+        }
+      });
+      q("inv-print").addEventListener("click", function () { window.print(); });
+      q("inv-reset").addEventListener("click", function () {
+        try { localStorage.removeItem("bryme-invoice"); } catch (e) {}
+        location.reload();
+      });
+      restore();
+      render();
+    },
     "freelance-rate-calculator": function () {
       var mode = q("rc-mode"), out = q("out");
       if (!out) return;

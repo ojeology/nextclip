@@ -291,6 +291,13 @@
       "short": "Convert words to pages for a stated format, and back.",
       "category": "count",
       "description": "How many pages 2,000 words is depends entirely on spacing, point size and page size. Pick the actual spec and get the real number, plus read-aloud and silent-reading times."
+    },
+    {
+      "id": "invoice-generator",
+      "title": "Invoice generator",
+      "short": "Fill in the work, print a clean invoice — nothing leaves your browser.",
+      "category": "work",
+      "description": "Built for freelance writers: add line items, pick your currency (nine markets, from USD to cedis), and print or save a clean, professional invoice. Everything runs in your browser — no account, nothing uploaded."
     }
   ]
 }
