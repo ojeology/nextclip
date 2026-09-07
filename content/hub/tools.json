@@ -305,6 +305,13 @@
       "short": "Draft a plain-language freelance agreement — fill in, print, both sides sign.",
       "category": "work",
       "description": "A fill-in agreement for writing work: parties, scope, fee, payment terms, revision rounds, kill fee and governing law, rendered as a clean document to print and sign. A general template, not legal advice — and it says so on the document itself."
+    },
+    {
+      "id": "late-payment-letter-builder",
+      "title": "Late payment letter builder",
+      "short": "Chase an unpaid invoice in three escalating steps — polite to firm to final — without torching the relationship.",
+      "category": "work",
+      "description": "Built for freelance writers waiting on unpaid invoices: enter the invoice details once, pick how firm you need to be, and get a letter that names the amount, the days overdue and one clear next step. Print it, or copy the text straight into an email. Nothing leaves your browser."
     }
   ]
 }

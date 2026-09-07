@@ -249,6 +249,113 @@
       restore();
       render();
     },
+    "late-payment-letter-builder": function () {
+      var SYM = { USD: "$", GBP: "\u00A3", EUR: "\u20AC", CAD: "CA$", AUD: "A$", NGN: "\u20A6", KES: "KSh ", ZAR: "R", GHS: "GH\u20B5", INR: "\u20B9" };
+      var sheet = document.getElementById("ltr-sheet");
+      if (!sheet) return;
+      var FIELDS = ["ltr-from", "ltr-client", "ltr-number", "ltr-amount", "ltr-currency", "ltr-due", "ltr-stage", "ltr-work", "ltr-payhow", "ltr-extra"];
+      function esc(v) { var d = document.createElement("div"); d.appendChild(document.createTextNode(v || "")); return d.innerHTML; }
+      function m(n) { return (SYM[q("ltr-currency").value] || "$") + (Number(n) || 0).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
+      function human(v) {
+        if (!v) return "\u2026";
+        var p = String(v).split("-");
+        var MON = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        return (parseInt(p[2], 10) || "") + " " + MON[(parseInt(p[1], 10) || 1) - 1] + " " + p[0];
+      }
+      function daysOver() {
+        var v = q("ltr-due").value;
+        if (!v) return null;
+        var p = v.split("-");
+        var due = new Date(parseInt(p[0], 10), (parseInt(p[1], 10) || 1) - 1, parseInt(p[2], 10));
+        return Math.floor((new Date() - due) / 86400000);
+      }
+      function paragraphs() {
+        var g = function (id) { return q(id).value; };
+        var stage = g("ltr-stage");
+        var num = esc(g("ltr-number")) || "\u2026", client = esc(g("ltr-client")) || "\u2026", from = esc(g("ltr-from")) || "\u2026";
+        var work = g("ltr-work"), pay = g("ltr-payhow") ? " " + esc(g("ltr-payhow")) : "";
+        var amt = m(g("ltr-amount")), dueH = esc(human(g("ltr-due")));
+        var days = daysOver();
+        var dTxt = days === null ? "\u2026" : String(days);
+        if (stage === "1") {
+          return { head: "Re: Invoice " + num + " \u2014 a quick reminder", body: [
+            "Hi " + client + ",",
+            "Hope you're well. A gentle flag that invoice <b>" + num + "</b>" + (work ? " for " + esc(work) : "") + " (" + amt + ", due " + dueH + ") doesn't appear to have been paid yet \u2014 easy for these to slip through a busy inbox, so no worries if that's the case.",
+            "I've re-attached the invoice." + pay + " If it's already scheduled, a one-line confirmation would be much appreciated.",
+            "Thanks so much,<br>" + from
+          ] };
+        }
+        if (stage === "2") {
+          return { head: "Re: Invoice " + num + " \u2014 " + dTxt + " days overdue", body: [
+            "Hi " + client + ",",
+            "Following up on invoice <b>" + num + "</b> (" + amt + "), which was due on " + dueH + " and is now <b>" + dTxt + " days overdue</b>. I know requests can sit in queues, so I wanted to bring it back to the top of your inbox.",
+            "Could you confirm a payment date, in writing, within the next five working days?" + pay,
+            work ? "The work delivered: " + esc(work) + "." : "",
+            "If something is holding the payment up on your side \u2014 a missing purchase order, a query on the invoice \u2014 tell me and I'll sort it the same day.",
+            "Regards,<br>" + from
+          ] };
+        }
+        return { head: "FINAL NOTICE \u2014 Invoice " + num, body: [
+          "Dear " + client + ",",
+          "This is a final notice for invoice <b>" + num + "</b>, in the amount of <b>" + amt + "</b>, which has been outstanding since " + dueH + " \u2014 now <b>" + dTxt + " days past due</b>.",
+          "Please settle the invoice within seven days of this letter." + pay,
+          work ? "Work delivered under this invoice: " + esc(work) + "." : "",
+          "If payment is not received by then, I will pause all current and future work for you and begin formal recovery of the debt, as provided under our agreed terms.",
+          g("ltr-extra") ? esc(g("ltr-extra")) : "",
+          "I'd much rather resolve this directly \u2014 one payment closes the matter.",
+          "Regards,<br>" + from
+        ] };
+      }
+      function toText(p) {
+        var d = document.createElement("div");
+        d.innerHTML = (p.head + "\n\n" + p.body.filter(function (x) { return x; }).join("\n\n")).replace(/<br\s*\/?>/gi, "\n");
+        return d.textContent;
+      }
+      function render() {
+        var p = paragraphs();
+        var g = function (id) { return q(id).value; };
+        var days = daysOver();
+        var stat = days === null ? "" : (days < 0 ? " \u00B7 not yet due (" + (-days) + " days left)" : " \u00B7 overdue by " + days + " days");
+        var meta = "<p style=\"font-size:13px;color:#555;margin:6px 0 14px\">" + (esc(g("ltr-from")) || "\u2026") + " \u00B7 " + human(new Date().toISOString().slice(0, 10)) + " \u00B7 amount due <b>" + m(g("ltr-amount")) + "</b>" + stat + "</p>";
+        sheet.innerHTML = "<h2 style=\"font-size:19px;letter-spacing:.05em;margin:0\">" + p.head + "</h2>" + meta +
+          p.body.filter(function (x) { return x; }).map(function (x) { return "<p style=\"margin:10px 0\">" + x + "</p>"; }).join("");
+        save();
+      }
+      function save() {
+        try {
+          var d = { fields: {} };
+          FIELDS.forEach(function (id) { d.fields[id] = q(id).value; });
+          localStorage.setItem("bryme-latepay", JSON.stringify(d));
+        } catch (e) {}
+      }
+      function restore() {
+        var raw = null;
+        try { raw = localStorage.getItem("bryme-latepay"); } catch (e) {}
+        if (raw) {
+          try {
+            var d = JSON.parse(raw);
+            FIELDS.forEach(function (id) { if (d.fields && d.fields[id]) q(id).value = d.fields[id]; });
+          } catch (e) {}
+        }
+      }
+      q("ltr-stage").addEventListener("change", render);
+      [].forEach.call(document.querySelectorAll("#ltr-from, #ltr-client, #ltr-number, #ltr-amount, #ltr-currency, #ltr-due, #ltr-work, #ltr-payhow, #ltr-extra"), function (el) { el.addEventListener("input", render); });
+      q("ltr-copy").addEventListener("click", function () {
+        var btn = this, text = toText(paragraphs());
+        function done() { btn.textContent = "Copied \u2713"; setTimeout(function () { btn.textContent = "Copy letter text"; }, 1600); }
+        function fallback() {
+          var ta = document.createElement("textarea");
+          ta.value = text; document.body.appendChild(ta); ta.select();
+          try { document.execCommand("copy"); done(); } catch (e) {}
+          document.body.removeChild(ta);
+        }
+        if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(text).then(done, fallback); } else { fallback(); }
+      });
+      q("ltr-print").addEventListener("click", function () { window.print(); });
+      q("ltr-reset").addEventListener("click", function () { try { localStorage.removeItem("bryme-latepay"); } catch (e) {} location.reload(); });
+      restore();
+      render();
+    },
     "freelance-rate-calculator": function () {
       var mode = q("rc-mode"), out = q("out");
       if (!out) return;

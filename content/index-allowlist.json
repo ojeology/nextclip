@@ -1,5 +1,5 @@
 {
-  "version": 21,
+  "version": 22,
   "policy": "BRYME Writing Hub: every indexable route is a genuine, useful writing guide (how-to, worked example, or dos & don'ts), a free in-browser tool, a research-backed paid-writing opportunity (100+ verified), a maintenance hub or a core trust/about page. No thin or filler pages.",
   "routes": [
     "/",
@@ -290,6 +290,7 @@
     "/tools/freelance-rate-calculator/",
     "/tools/images-to-pdf/",
     "/tools/invoice-generator/",
+    "/tools/late-payment-letter-builder/",
     "/tools/line-break-cleaner/",
     "/tools/meta-description-generator/",
     "/tools/outline-builder/",

@@ -4,7 +4,7 @@ description: A magazine invoice needs different things from a business invoice, 
 section: freelance-paid-writing
 level: beginner
 keywords: [invoice, invoicing, freelance writers, magazines, payment, kill fee, chasing]
-tools: [invoice-generator, freelance-rate-calculator, word-count-to-pages]
+tools: [late-payment-letter-builder, invoice-generator, freelance-rate-calculator, word-count-to-pages]
 related: [invoicing-software-for-writers, payment-platforms-for-writers, writing-contracts-what-to-check]
 updated: 2026-09-06
 ---

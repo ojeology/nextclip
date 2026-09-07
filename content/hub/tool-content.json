@@ -208,5 +208,10 @@
     "what": "A plain-language freelance agreement for writing engagements: the parties, the scope, the fee and payment terms, revision rounds, a cancellation clause, rights transfer on payment, and governing law — as a printable document.",
     "howto": "Fill in both parties, describe the project and the deliverables (one per line), set the fee and payment terms, and choose how many revision rounds are included. The agreement renders as you type. Print two copies, sign both, and each party keeps one. Save as PDF via the print dialog if you need to email it first.",
     "why": "The guide to [writer contracts](/learn/freelance-paid-writing/writing-contracts-what-to-check/) explains what each clause is for; this tool turns those clauses into a document a small client can read and sign the same day. It is a general template — for high-value or unusual engagements, have a local professional review it. Nothing you type leaves your browser."
+  },
+  "late-payment-letter-builder": {
+    "what": "Three escalating letters for an unpaid invoice — a polite reminder, a firm follow-up, and a final notice — generated from the same invoice details. Days overdue compute from the due date, the amount formats in your currency, and every letter names one clear next step.",
+    "howto": "Fill in what's on the invoice — who owes you, how much, when it fell due — then pick the stage you've reached. Start at stage one and wait a few working days before escalating. Read the preview, adjust anything in the form, then print the letter or copy its text straight into an email. Your details stay on this device.",
+    "why": "Chasing money you're owed is the most awkward fifteen minutes in freelancing — which is exactly why the guide to [invoicing a publication](/learn/freelance-paid-writing/how-to-invoice-as-a-writer/) says to chase on a schedule, in writing, with a set escalation path. A letter that states facts — amount, days overdue, one clear ask — reads as administration rather than aggression, and most clients pay long before stage three."
   }
 }

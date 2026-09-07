@@ -740,6 +740,44 @@ def render_tool(t: dict) -> str:
 <div id="inv-sheet" aria-label="Invoice preview"></div>
 <script src="/assets/hub-tools.js" data-hub-tool="invoice-generator"></script>'''
 
+    if i == "late-payment-letter-builder":
+        return '''<style>
+#ltr-sheet{background:#fff;color:#1a1a1a;max-width:720px;margin:18px auto;padding:36px 44px;border:1px solid #d8d2c8;font-family:Georgia,'Times New Roman',serif;font-size:15px;line-height:1.6}
+@media print{body *{visibility:hidden}#ltr-sheet,#ltr-sheet *{visibility:visible}#ltr-sheet{position:absolute;left:0;top:0;width:100%;border:none;margin:0;padding:24px}}
+</style><div class="tool-box"><div class="tool-prose">
+<div class="tool-grid">
+<div class="tool-input"><label for="ltr-from">Your name / business</label><input id="ltr-from" placeholder="Ama Mensah Writing Ltd"></div>
+<div class="tool-input"><label for="ltr-client">Client name</label><input id="ltr-client" placeholder="The Publication Co."></div>
+<div class="tool-input"><label for="ltr-number">Invoice number</label><input id="ltr-number" value="INV-001"></div>
+<div class="tool-input"><label for="ltr-amount">Amount owed</label><input id="ltr-amount" type="number" min="0" step="0.01" placeholder="450"></div>
+<div class="tool-input"><label for="ltr-currency">Currency</label><select id="ltr-currency">
+<option value="USD">USD &mdash; US dollar ($)</option>
+<option value="GBP">GBP &mdash; pound sterling (&pound;)</option>
+<option value="EUR">EUR &mdash; euro (&euro;)</option>
+<option value="CAD">CAD &mdash; Canadian dollar (CA$)</option>
+<option value="AUD">AUD &mdash; Australian dollar (A$)</option>
+<option value="NGN">NGN &mdash; Nigerian naira (&#8358;)</option>
+<option value="KES">KES &mdash; Kenyan shilling (KSh)</option>
+<option value="ZAR">ZAR &mdash; South African rand (R)</option>
+<option value="GHS">GHS &mdash; Ghanaian cedi (GH&#8373;)</option>
+<option value="INR">INR &mdash; Indian rupee (&#8377;)</option>
+</select></div>
+<div class="tool-input"><label for="ltr-due">Due date</label><input id="ltr-due" type="date"></div>
+<div class="tool-input"><label for="ltr-stage">Letter stage</label><select id="ltr-stage">
+<option value="1" selected>1 &mdash; Polite reminder (assume oversight)</option>
+<option value="2">2 &mdash; Firm follow-up (ask for a payment date)</option>
+<option value="3">3 &mdash; Final notice (state the next step)</option>
+</select></div>
+<div class="tool-input"><label for="ltr-work">The work (one line, optional)</label><input id="ltr-work" placeholder="e.g. two features for the March issue"></div>
+<div class="tool-input"><label for="ltr-payhow">How to pay (optional)</label><input id="ltr-payhow" placeholder="e.g. bank details are on the invoice"></div>
+<div class="tool-input"><label for="ltr-extra">Anything to add (optional)</label><input id="ltr-extra" placeholder="e.g. purchase-order number, agreed late fee&hellip;"></div>
+</div>
+<div class="actions" style="margin-top:14px"><button id="ltr-print" class="btn" type="button">Print / save as PDF</button> <button id="ltr-copy" class="btn" type="button">Copy letter text</button> <button id="ltr-reset" class="btn secondary" type="button">Reset</button></div>
+<p class="meta">Most chases end at stage one. Start there, wait a few working days, then escalate to 2, then 3. These are business letters, not legal ones &mdash; a general template, not legal advice. Everything stays in this browser.</p>
+</div></div>
+<div id="ltr-sheet" aria-label="Letter preview"></div>
+<script src="/assets/hub-tools.js" data-hub-tool="late-payment-letter-builder"></script>'''
+
     if i == "word-count-to-pages":
         return f'''<div class="tool-box"><div class="tool-prose">
 <div class="tool-grid">
