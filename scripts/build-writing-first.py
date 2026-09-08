@@ -236,6 +236,8 @@ def nav(current: str = "") -> str:
         ("writing", "/writing/", "Write & get paid"),
     ]
     items = []
+    home_aria = ' aria-current="page"' if current == "home" else ""
+    items.append(f'<a class="home-link"{home_aria} href="/" aria-label="BRYME home"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5.5 9.5V20a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1V9.5"/><path d="M9.5 21v-6h5v6"/></svg></a>')
     for key, href, label in links:
         aria = ' aria-current="page"' if key == current else ""
         cls = ' class="nav-cta"' if key == "writing" else ""
