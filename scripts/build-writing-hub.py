@@ -780,6 +780,26 @@ def render_tool(t: dict) -> str:
 <div id="ltr-sheet" aria-label="Letter preview"></div>
 <script src="/assets/hub-tools.js" data-hub-tool="late-payment-letter-builder"></script>'''
 
+    if i == "pitch-checker":
+        return '''<style>
+.pc-row{display:flex;gap:10px;align-items:baseline;border-bottom:1px dotted var(--line);padding:9px 2px;font-size:14px}
+.pc-mark{font-weight:800;width:20px;flex:none;text-align:center;font-size:15px}
+.pc-ok{color:var(--green)}.pc-warn{color:var(--brass)}.pc-bad{color:var(--red)}
+.pc-sum{font:800 12px var(--sans);letter-spacing:.12em;text-transform:uppercase;margin:0 0 8px;color:var(--ink)}
+.pc-tip{color:var(--muted)}
+</style><div class="tool-box"><div class="tool-prose">
+<div class="tool-grid">
+<div class="tool-input"><label for="pc-subject">Subject line (if emailing)</label><input id="pc-subject" placeholder="Pitch: [story] &mdash; [your name]"></div>
+<div class="tool-input"><label for="pc-pub">Publication you&rsquo;re pitching</label><input id="pc-pub" placeholder="e.g. The Atlantic"></div>
+</div>
+<p style="margin:14px 0 6px"><b>The pitch</b> &mdash; paste the whole thing:</p>
+<div class="tool-grid"><div class="tool-input"><textarea id="pc-text" rows="9" placeholder="Dear editor&hellip;"></textarea></div></div>
+<div class="actions" style="margin-top:12px"><button id="pc-run" class="btn" type="button">Check my pitch</button> <button id="pc-reset" class="btn secondary" type="button">Reset</button></div>
+<p class="meta">Rule-based checks, not AI: your pitch is analysed on this device and never uploaded, and no tool here writes a word for you. These are the checks a tired editor runs in the first ten seconds.</p>
+<div id="pc-out" aria-live="polite" style="margin-top:14px"></div>
+</div></div>
+<script src="/assets/hub-tools.js" data-hub-tool="pitch-checker"></script>'''
+
     if i == "word-count-to-pages":
         return f'''<div class="tool-box"><div class="tool-prose">
 <div class="tool-grid">

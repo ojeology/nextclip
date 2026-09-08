@@ -56,7 +56,7 @@ def footer() -> str:
     return '''<footer class="site-foot"><div class="wrap foot-grid">
   <div class="foot-brand"><a class="logo" href="/"><span class="logo-mark" aria-hidden="true">B</span>BRYME</a><p>BRYME is a free writing resource — guides, tools, and verified opportunities to get published and paid.</p></div>
   <div class="foot-col"><b>How to write</b><a href="/start/">Beginner path</a><a href="/find/">What do you want to write?</a><a href="/intelligence/">Writing Intelligence</a><a href="/compare/">Compare formats</a><a href="/regional/">Writing conventions</a><a href="/learn/">Writing hub</a><a href="/learn/examples/">Examples</a><a href="/learn/dos-and-donts/">Dos &amp; don'ts</a><a href="/learn/types-of-writing/">Types of writing</a><a href="/learn/grammar-language/">Grammar</a></div>
-  <div class="foot-col"><b>Tools &amp; publish</b><a href="/tools/">Writing tools</a><a href="/templates/">Templates</a><a href="/checklists/">Checklists</a><a href="/writing/">Paid opportunities</a><a href="/writing-opportunities/">Browse by country</a><a href="/today/">Today&rsquo;s opportunities</a><a href="/newsletter/">Weekly digest</a><a href="/tracker/">Submission tracker</a><a href="/tested/">BRYME Tested</a></div>
+  <div class="foot-col"><b>Tools &amp; publish</b><a href="/tools/">Writing tools</a><a href="/templates/">Templates</a><a href="/checklists/">Checklists</a><a href="/writing/">Paid opportunities</a><a href="/writing-opportunities/">Browse by country</a><a href="/today/">Today&rsquo;s opportunities</a><a href="/newsletter/">Weekly digest</a><a href="/tracker/">Submission tracker</a><a href="/studio/">Writing Studio</a><a href="/tested/">BRYME Tested</a></div>
   <div class="foot-col"><b>Trust</b><a href="/about/">About</a><a href="/verification/">What statuses mean</a><a href="/editorial-policy/">Editorial policy</a><a href="/corrections/">Corrections</a><a href="/privacy/">Privacy</a><a href="/contact/">Contact</a></div>
   <div class="foot-col"><b>Legal</b><a href="/terms/">Terms</a><a href="/disclaimer/">Disclaimer</a><a href="/disclosure/">Disclosure</a><a href="/copyright/">Copyright</a></div>
 </div><div class="wrap foot-bottom">© 2026 BRYME · Independent editorial project · No acceptance, publication or payment is guaranteed.</div></footer>'''
@@ -233,6 +233,7 @@ def nav(current: str = "") -> str:
         ("learn", "/learn/", "How to write"),
         ("read", "/read/", "Articles"),
         ("tools", "/tools/", "Writing tools"),
+        ("studio", "/studio/", "Studio"),
         ("writing", "/writing/", "Write & get paid"),
     ]
     items = []
@@ -570,7 +571,7 @@ def drawer(current: str = "") -> str:
     return f'''<div id="drawer-backdrop"></div>
 <aside id="site-drawer" aria-hidden="true" aria-label="Site menu" role="dialog" aria-modal="true">
   <div class="drawer-head"><a class="logo" href="/"><span class="logo-mark" aria-hidden="true">B</span>BRYME</a><button type="button" class="drawer-close" data-drawer-close aria-label="Close menu"><svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
-  {group("Start here", [("home", "/", "Home", "🏠"), ("start", "/start/", "Complete beginner path", "🧭"), ("find", "/find/", "What do you want to write?", "❓"), ("intelligence", "/intelligence/", "Writing Intelligence", "🧭"), ("compare", "/compare/", "Compare formats", "⚖️"), ("read", "/read/", "All articles", "📄"), ("essays", "/essays/", "Essays", "✍️"), ("today", "/today/", "Today's opportunities", "📅"), ("tracker", "/tracker/", "Submission tracker", "📋"), ("by-country", "/writing-opportunities/", "Writing by country", "🌍"), ("search", "/search/", "Search BRYME", "🔍")])}
+  {group("Start here", [("home", "/", "Home", "🏠"), ("start", "/start/", "Complete beginner path", "🧭"), ("find", "/find/", "What do you want to write?", "❓"), ("intelligence", "/intelligence/", "Writing Intelligence", "🧭"), ("compare", "/compare/", "Compare formats", "⚖️"), ("read", "/read/", "All articles", "📄"), ("essays", "/essays/", "Essays", "✍️"), ("today", "/today/", "Today's opportunities", "📅"), ("tracker", "/tracker/", "Submission tracker", "📋"), ("studio", "/studio/", "Writing Studio", "✒️"), ("by-country", "/writing-opportunities/", "Writing by country", "🌍"), ("search", "/search/", "Search BRYME", "🔍")])}
   {group("How to write", howto)}
   {group("Tools & templates", tools)}
   {group("Write & get paid", write)}
@@ -1383,6 +1384,50 @@ def legacy_redirect_stubs() -> None:
     _legacy_redirect("/tech/", "/guides/")
     _legacy_redirect("/make-money/writing/mcsweeneys/", "/writing/mcsweeneys/")
     _legacy_redirect("/make-money/writing/longreads-personal-essay/", "/writing/longreads-personal-essay/")
+
+
+def studio_page() -> None:
+    """BRYME Writing Studio — a local-first drafting room.
+
+    Scoped per the 2.0 architecture note: an editor with autosaved drafts,
+    live stats, a session goal, export and print. localStorage only — no
+    accounts, no server, no AI writing. Anything accounts-shaped stays a
+    layering decision for later; the storage envelope is versioned JSON.
+    """
+    body = f'''<div class="wrap">
+<section class="page-hero"><p class="kicker"><span class="kicker-dot"></span>The Writing Studio</p>
+<h1>Draft here. Nothing leaves this browser.</h1>
+<p class="article-dek">A quiet room for writing: drafts save themselves on this device as you type, with live word counts, a session goal, and one-click export. No account, no upload, no sync &mdash; your words are yours, locally.</p></section>
+<section class="section" style="padding-top:26px"><div id="studio-root">
+<div class="studio-bar">
+  <div class="st-goalwrap"><label for="st-goal">Session goal</label><input id="st-goal" type="number" min="50" step="50" value="500"><div class="st-track"><div class="st-fill" id="st-meter"></div></div><span class="st-meter-txt" id="st-meter-txt"></span></div>
+  <div class="st-btns"><button id="st-new" class="btn secondary" type="button">New draft</button><button id="st-focus" class="btn secondary" type="button">Focus</button></div>
+</div>
+<div class="studio-desk">
+  <aside class="st-side" aria-label="Your drafts"><div class="st-side-head"><b>Your drafts</b></div><div id="st-list" class="st-list"></div>
+  <div class="st-export"><b>Export</b><div><button id="st-txt" class="btn secondary" type="button">.txt</button><button id="st-md" class="btn secondary" type="button">.md</button><button id="st-copy" class="btn secondary" type="button">Copy</button><button id="st-print" class="btn secondary" type="button">Print</button></div><p>Ctrl/Cmd+S saves locally.</p></div>
+  </aside>
+  <div class="st-paper">
+    <input id="st-title" placeholder="Title (optional)" aria-label="Draft title" autocomplete="off">
+    <textarea id="st-text" placeholder="Start anywhere. The middle is fine." aria-label="Draft editor"></textarea>
+    <div class="st-statusrow"><span id="st-stats" class="st-stats" aria-live="polite"></span><span id="st-status" class="st-status" role="status"></span></div>
+  </div>
+</div>
+</div></section>
+<section class="section alt"><div class="wrap"><div class="prose">
+<h2>How the Studio works</h2>
+<ul>
+<li><strong>Autosave, locally.</strong> Every pause in typing saves the draft to this browser&rsquo;s storage. No server holds a copy &mdash; which also means clearing your browser data clears your drafts, so export anything you care about.</li>
+<li><strong>Session goal.</strong> Set a word target; the meter fills as you write. Small, finished sessions beat rare heroic ones.</li>
+<li><strong>Focus mode</strong> hides the rest of the site. The keyboard shortcut Ctrl/Cmd+S saves on demand.</li>
+<li><strong>When the draft is ready</strong>, take it to the <a href="/tools/">Tool Chest</a> &mdash; the <a href="/tools/word-counter/">reading-time counter</a> for a trim, the <a href="/tools/pitch-checker/">pitch checker</a> before you submit, and the <a href="/tracker/">submission tracker</a> when it&rsquo;s gone out the door.</li>
+</ul>
+</div></div></section></div>
+<div id="st-printpage" aria-hidden="true"><h2 id="st-mirror-title"></h2><div id="st-mirror"></div></div>'''
+    write("/studio/", page_wf(
+        title="The Writing Studio — draft locally, free | BRYME",
+        description=("A free, local-first drafting room for writers: autosaved drafts, live word counts, a session goal, focus mode and one-click export. Nothing leaves your browser."),
+        route="/studio/", current="studio", body=body))
 
 
 def country_discovery_page() -> None:
@@ -2419,6 +2464,7 @@ if __name__ == "__main__":
     newsletter_page()
     disclosure_page()
     tracker_page()
+    studio_page()
     today_feed()
     programmatic_pages()
     for r in WRITING:

@@ -356,6 +356,98 @@
       restore();
       render();
     },
+    "pitch-checker": function () {
+      var sheet = document.getElementById("pc-out");
+      if (!sheet) return;
+      var FIELDS = ["pc-subject", "pc-pub", "pc-text"];
+      function esc(v) { var d = document.createElement("div"); d.appendChild(document.createTextNode(v || "")); return d.innerHTML; }
+      var FILLER = /\b(just|very|really|actually|basically|literally|quite|I think|I believe|I hope|I feel like)\b/gi;
+      var EVIDENCE = /\b(clip|clips|portfolio|published|byline|writing for|samples|my (work|essay|piece) (appears|ran)|link)\b/i;
+      var ASK = /\b(available|happy to|love to|can send|could send|would you|interested|looking forward|attached|below|best regards|sincerely)\b/i;
+      function check(subject, pub, text) {
+        var out = [];
+        var clean = (text || "").trim();
+        var words = clean ? clean.split(/\s+/).length : 0;
+        var sentences = clean ? (clean.match(/[.!?]+(\s|$)/g) || []).length || (words ? 1 : 0) : 0;
+        var paras = clean ? clean.split(/\n{2,}/).filter(function (p) { return p.trim(); }).length : 0;
+        var avg = sentences ? Math.round(words / sentences) : 0;
+        out.push(words === 0 ? { s: "bad", t: "The pitch is empty.", tip: "Paste or write your pitch first." }
+          : (words >= 120 && words <= 450) ? { s: "ok", t: words + " words \u2014 a readable length." }
+          : (words >= 80 && words <= 600) ? { s: "warn", t: words + " words \u2014 slightly outside the comfortable band.", tip: "Editors skim: aim for roughly 120\u2013450 words." }
+          : { s: "bad", t: words + " words \u2014 too " + (words < 80 ? "thin to make the case" : "long for a first pitch") + ".", tip: words < 80 ? "Add the angle, why you, and the ask." : "Cut to the strongest 450 words; the story lives in the pitch, not the draft." });
+        if (subject !== null && subject !== undefined) {
+          var s = (subject || "").trim();
+          if (!s) out.push({ s: "warn", t: "No subject line.", tip: "Email pitches live or die by it: \u201cPitch: [specific story] \u2014 [your name]\u201d." });
+          else if (s.split(/\s+/).length > 12) out.push({ s: "warn", t: "Subject line is " + s.split(/\s+/).length + " words \u2014 long.", tip: "Ten words or fewer; specifics beat summaries." });
+          else if (s === s.toUpperCase() && /\p{L}/u.test(s)) out.push({ s: "warn", t: "Subject line is ALL CAPS.", tip: "Reads as shouting in an inbox." });
+          else out.push({ s: "ok", t: "Subject line is tight." });
+        }
+        if (pub !== null && pub !== undefined) {
+          var p = (pub || "").trim();
+          if (!p) out.push({ s: "warn", t: "No publication named in the form.", tip: "Name it above, and name it in the pitch \u2014 editors check that you read them." });
+          else if (p.length > 2 && clean.toLowerCase().indexOf(p.toLowerCase().replace(/^the /, "")) === -1) out.push({ s: "bad", t: "The publication\u2019s name never appears in the pitch.", tip: "Reference something real they published \u2014 one sentence proves you read them." });
+          else out.push({ s: "ok", t: "The publication is addressed by name." });
+        }
+        if (words) {
+          out.push(avg >= 11 && avg <= 24 ? { s: "ok", t: "Average sentence length " + avg + " words \u2014 comfortable." }
+            : avg > 30 ? { s: "bad", t: "Average sentence length " + avg + " words \u2014 dense.", tip: "Split the long ones; breath matters in an inbox." }
+            : avg > 24 ? { s: "warn", t: "Average sentence length " + avg + " words \u2014 heavy.", tip: "A few short sentences will loosen it." }
+            : { s: "warn", t: "Average sentence length " + avg + " words \u2014 choppy.", tip: "Join some of them; vary the rhythm." });
+          out.push(paras >= 2 ? { s: "ok", t: paras + " paragraphs." } : { s: "warn", t: "One solid block of text.", tip: "Break it \u2014 three short paragraphs beat one wall." });
+          out.push(EVIDENCE.test(clean) ? { s: "ok", t: "Evidence of your work is mentioned." } : { s: "warn", t: "No clips, portfolio or published work mentioned.", tip: "Editors need proof you can finish: name one or two pieces, or a link." });
+          out.push(ASK.test(clean) ? { s: "ok", t: "There is a clear, courteous next step." } : { s: "warn", t: "No clear ask at the end.", tip: "Say what happens next: \u201cHappy to send the full draft\u201d beats hoping." });
+          var filler = (clean.match(FILLER) || []).length;
+          out.push(filler <= 2 ? { s: "ok", t: "Filler words: " + filler + " \u2014 lean." } : filler <= 5 ? { s: "warn", t: "Filler words: " + filler + " (just, very, really, I think\u2026).", tip: "Each one weakens the sentence it sits in. Cut what survives without loss." }
+            : { s: "bad", t: "Filler words: " + filler + ".", tip: "Hedging reads as doubt. State things plainly." });
+          var ly = (clean.match(/\b\w{4,}ly\b/g) || []).length;
+          out.push(ly / Math.max(words, 1) <= 0.04 ? { s: "ok", t: "Adverb use is restrained (" + ly + ")." } : { s: "warn", t: ly + " adverbs (-ly words).", tip: "Strong verbs do the work; keep only the ones earning their place." });
+          var passive = (clean.match(/\b(was|were|been|being)\s+\w+ed\b/g) || []).length;
+          out.push(passive <= 2 ? { s: "ok", t: "Active voice dominates." } : { s: "warn", t: passive + " passive constructions (was/were + verb).", tip: "\u201cI wrote\u201d beats \u201cit was written\u201d in a pitch about you." });
+          var bangs = (clean.match(/!/g) || []).length;
+          out.push(bangs <= 1 ? { s: "ok", t: "Exclamation marks: " + bangs + "." } : { s: "warn", t: bangs + " exclamation marks.", tip: "The excitement should be in the idea, not the punctuation." });
+        }
+        return out;
+      }
+      function render() {
+        var subject = q("pc-subject").value, pub = q("pc-pub").value, text = q("pc-text").value;
+        var rows = check(subject, pub, text);
+        var n = { ok: 0, warn: 0, bad: 0 };
+        rows.forEach(function (r) { n[r.s]++; });
+        var verdict = n.bad ? "FIX BEFORE SENDING" : n.warn ? "CLOSE \u2014 A FEW NOTES" : "READY TO SEND";
+        var ic = { ok: ["\u2713", "pc-ok"], warn: ["!", "pc-warn"], bad: ["\u00d7", "pc-bad"] };
+        sheet.innerHTML = '<p class="pc-sum">' + verdict + " \u00b7 " + n.ok + " pass \u00b7 " + n.warn + " notes \u00b7 " + n.bad + " to fix</p>" +
+          rows.map(function (r) {
+            return '<div class="pc-row"><span class="pc-mark ' + ic[r.s][1] + '">' + ic[r.s][0] + '</span><span>' + esc(r.t) +
+              (r.tip ? ' <span class="pc-tip">' + esc(r.tip) + "</span>" : "") + "</span></div>";
+          }).join("");
+        save();
+      }
+      function save() {
+        try {
+          var d = { fields: {} };
+          FIELDS.forEach(function (id) { d.fields[id] = q(id).value; });
+          localStorage.setItem("bryme-pitch", JSON.stringify(d));
+        } catch (e) {}
+      }
+      function restore() {
+        var raw = null;
+        try { raw = localStorage.getItem("bryme-pitch"); } catch (e) {}
+        if (raw) {
+          try {
+            var d = JSON.parse(raw);
+            FIELDS.forEach(function (id) { if (d.fields && d.fields[id]) q(id).value = d.fields[id]; });
+          } catch (e) {}
+        }
+      }
+      q("pc-run").addEventListener("click", render);
+      q("pc-text").addEventListener("input", render);
+      q("pc-reset").addEventListener("click", function () {
+        try { localStorage.removeItem("bryme-pitch"); } catch (e) {}
+        FIELDS.forEach(function (id) { q(id).value = ""; });
+        sheet.innerHTML = "";
+      });
+      restore();
+    },
     "freelance-rate-calculator": function () {
       var mode = q("rc-mode"), out = q("out");
       if (!out) return;

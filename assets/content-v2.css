@@ -546,6 +546,58 @@ html[data-theme="dark"] .btn.secondary { color: var(--navy); }
 .main-nav a.home-link svg { width: 17px; height: 17px; }
 .main-nav a.home-link:hover { color: var(--navy); box-shadow: inset 0 -3px 0 var(--lime-bright); }
 
+/* ---------------- the writing studio (the desk) ---------------- */
+.studio-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; margin: 4px 0 16px; }
+.st-goalwrap { display: flex; align-items: center; gap: 10px; flex: 1; min-width: 260px; }
+.st-goalwrap label { font: 750 11px var(--sans); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.st-goalwrap input { width: 90px; padding: 7px 9px; font: 14px var(--sans); color: var(--ink); background: var(--sheet); border: 1px solid var(--line); border-radius: 2px; }
+.st-track { flex: 1; max-width: 220px; height: 8px; background: var(--paper-2); border: 1px solid var(--line); }
+.st-fill { height: 100%; width: 0; background: var(--lime-bright); transition: width .3s ease; }
+.st-meter-txt { font: italic 12.5px var(--serif); color: var(--dim); }
+.st-btns { display: flex; gap: 8px; }
+.studio-desk { display: grid; grid-template-columns: 280px minmax(0, 1fr); gap: 24px; align-items: start; }
+.st-side { border: 1px solid var(--line); border-top: 3px solid var(--navy); background: var(--sheet); padding: 16px 16px 14px; }
+.st-side-head b, .st-export b { display: block; font: 800 11px var(--sans); letter-spacing: .16em; text-transform: uppercase; color: var(--brass); margin-bottom: 10px; }
+.st-list { max-height: 300px; overflow-y: auto; margin-bottom: 12px; }
+.st-draft { display: flex; align-items: center; justify-content: space-between; gap: 6px; border-bottom: 1px solid var(--line); }
+.st-draft.st-cur .st-open b { color: var(--navy); }
+.st-draft.st-cur { box-shadow: inset 3px 0 0 var(--lime-bright); }
+.st-open { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; background: none; border: 0; padding: 9px 4px; text-align: left; cursor: pointer; font-family: var(--sans); }
+.st-open b { font-family: var(--serif); font-size: 15px; color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.st-open span { font: 11.5px var(--sans); color: var(--dim); }
+.st-acts { display: flex; gap: 6px; }
+.st-ren, .st-del { background: none; border: 0; color: var(--dim); font: 11px var(--sans); cursor: pointer; padding: 4px 2px; }
+.st-ren:hover, .st-del:hover { color: var(--red); }
+.st-none { font: italic 13.5px var(--serif); color: var(--dim); padding: 8px 2px; }
+.st-export b { margin-top: 6px; }
+.st-export div { display: flex; flex-wrap: wrap; gap: 6px; }
+.st-export .btn { min-height: 34px; padding: 6px 11px; font-size: 12px; }
+.st-export p { font: italic 12px var(--serif); color: var(--dim); margin: 10px 0 0; }
+.st-paper { border: 1px solid var(--line-strong); border-top: 4px solid var(--navy); background: var(--sheet); padding: clamp(20px, 3.5vw, 44px); display: flex; flex-direction: column; }
+#st-title { font-family: var(--serif); font-size: 24px; color: var(--ink); background: transparent; border: 0; border-bottom: 1px solid var(--line); padding: 0 0 12px; margin-bottom: 16px; }
+#st-text { font-family: var(--serif); font-size: 18px; line-height: 1.85; color: var(--ink); background: transparent; border: 0; min-height: 54vh; resize: vertical; padding: 0; }
+#st-title:focus, #st-text:focus { outline: none; border-color: var(--brass); }
+.st-statusrow { display: flex; justify-content: space-between; gap: 14px; border-top: 1px solid var(--line); margin-top: 14px; padding-top: 12px; }
+.st-stats { font: 12.5px var(--sans); color: var(--muted); }
+.st-status { font: 700 12.5px var(--sans); color: var(--green); opacity: 0; transition: opacity .2s ease; }
+.st-status[data-on] { opacity: 1; }
+.st-status[data-on]::before { content: "\2713\00a0\00a0"; }
+body.studio-focus .site-head, body.studio-focus .site-foot, body.studio-focus .mobile-nav, body.studio-focus .bottom-nav, body.studio-focus .breadcrumb, body.studio-focus .page-hero, body.studio-focus .section.alt { display: none !important; }
+body.studio-focus { padding-bottom: 0; }
+#st-printpage { display: none; }
+@media print {
+  body.studio-focus .st-btns, body.studio-focus .st-statusrow { display: flex !important; }
+  .studio-desk, .studio-bar, .st-side, .st-btns, .st-statusrow { display: none !important; }
+  #st-printpage { display: block; }
+  #st-printpage h2 { font-family: var(--serif); margin: 0 0 14px; }
+  #st-printpage div { font-family: var(--serif); font-size: 12pt; line-height: 1.65; white-space: pre-wrap; }
+}
+@media (max-width: 860px) {
+  .studio-desk { grid-template-columns: 1fr; }
+  .st-list { max-height: 180px; }
+  #st-text { min-height: 40vh; }
+}
+
 /* Lean editorial compatibility layer — replaces the 263 KB legacy platform sheet. */
 .shell{width:min(calc(100% - 32px),var(--max));margin-inline:auto}
 .top{position:sticky;z-index:50;top:0;border-bottom:1px solid var(--line);background:rgba(7,16,13,.9);backdrop-filter:blur(18px)}

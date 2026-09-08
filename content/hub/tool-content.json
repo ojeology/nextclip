@@ -213,5 +213,10 @@
     "what": "Three escalating letters for an unpaid invoice — a polite reminder, a firm follow-up, and a final notice — generated from the same invoice details. Days overdue compute from the due date, the amount formats in your currency, and every letter names one clear next step.",
     "howto": "Fill in what's on the invoice — who owes you, how much, when it fell due — then pick the stage you've reached. Start at stage one and wait a few working days before escalating. Read the preview, adjust anything in the form, then print the letter or copy its text straight into an email. Your details stay on this device.",
     "why": "Chasing money you're owed is the most awkward fifteen minutes in freelancing — which is exactly why the guide to [invoicing a publication](/learn/freelance-paid-writing/how-to-invoice-as-a-writer/) says to chase on a schedule, in writing, with a set escalation path. A letter that states facts — amount, days overdue, one clear ask — reads as administration rather than aggression, and most clients pay long before stage three."
+  },
+  "pitch-checker": {
+    "what": "Ten rule-based checks — the ones a commissioning editor runs in the first ten seconds: length, sentence load, evidence of clips, the clear ask, filler, passive constructions, exclamation discipline — applied to your pasted pitch, each verdict with a one-line fix.",
+    "howto": "Paste your pitch, add the subject line and the publication's name, and press check. Green passes, amber is a note, red means fix before sending. Adjust, re-check, send.",
+    "why": "Most pitches die on rules no editor states: too long, no clips, no ask, a hedged voice. The guide to [how to write a pitch](/guides/how-to-write-a-pitch/) teaches the structure; this tool is the ten-second edit before you hit send. It is deliberately rule-based rather than generative — no AI writes for you, because a pitch must be in your voice and because publications increasingly reject machine-written submissions."
   }
 }

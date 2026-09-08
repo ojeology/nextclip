@@ -312,6 +312,13 @@
       "short": "Chase an unpaid invoice in three escalating steps — polite to firm to final — without torching the relationship.",
       "category": "work",
       "description": "Built for freelance writers waiting on unpaid invoices: enter the invoice details once, pick how firm you need to be, and get a letter that names the amount, the days overdue and one clear next step. Print it, or copy the text straight into an email. Nothing leaves your browser."
+    },
+    {
+      "id": "pitch-checker",
+      "title": "Pitch checker",
+      "short": "Paste your pitch. Ten editor-eye checks, run privately in your browser.",
+      "category": "work",
+      "description": "A pre-submission sanity check for writers: length, sentence load, evidence of clips, the clear ask, filler and passive markers — ten rule-based checks with a fix for each. Nothing is uploaded, and no AI writes a word for you."
     }
   ]
 }
