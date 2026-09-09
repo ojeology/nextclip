@@ -154,3 +154,14 @@ Historical movie catalog pages contained incidental "watch" text but **no downlo
   how-to-build-a-watchlist (three-list system; joins Start here).
 - Provenance system now on Entertainment too: Evergreen guide / Archive edition (2025) /
   Moved from the tech desk. Entertainment 30→35 pages (explainers 6→10, recs 12→13).
+
+## 2026-09-09 — Useful-content sweep: 18 new guides across three desks
+
+- **Tech (+6, 50→56):** foundations trilogy — what-is-dns (Cloudflare Learning source),
+  what-is-ssl-https (Mozilla source; the padlock-is-not-a-trust-badge warning), how-the-internet-works —
+  plus what-is-a-database (coding) and the Windows pair: screenshots, shortcuts-worth-memorising.
+- **Home & DIY (+4, 10→14):** unblock a toilet, the basic toolkit, bleed a radiator
+  (with the pressure-check step), washing machine won't drain (filter/hose/pump in order).
+- **Fitness (+2, 9→11):** walking vs running (honest trade-offs, no guilt), how to warm up
+  (raise-open-rehearse; static stretching's honest place).
+- Ecosystem: 626 indexable pages; gates green (626=626; 72,190 links / 636 pages).

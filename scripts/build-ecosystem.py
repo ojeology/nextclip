@@ -1136,6 +1136,15 @@ def fitness_pages():
     ART_SOURCES["how-many-steps-a-day"] = FIT_SOURCES + [
         ("Lee et al., JAMA Internal Medicine (2019) \u2014 Association of Step Volume and Intensity With All-Cause Mortality in Older Women",
          "https://jamanetwork.com/journals/jamainternalmedicine/fullarticle/2731911")]
+    import more_guides_data
+    FIT_ARTICLES.extend((s, ti, dek, b) for (s, _k, ti, dek, b) in more_guides_data.FIT_MORE)
+    ART_SOURCES.update((s, FIT_SOURCES) for (s, _k, ti, dek, b) in more_guides_data.FIT_MORE)
+    related_map["walking-vs-running"] = [("30-day-walking-plan", "The 30-day walking plan"),
+                                         ("how-to-warm-up", "How to warm up"),
+                                         ("how-to-start-working-out", "Starting from zero")]
+    related_map["how-to-warm-up"] = [("strength-training-for-beginners", "Strength training for beginners"),
+                                     ("walking-vs-running", "Walking or running?"),
+                                     ("rest-days-and-recovery", "Rest days and recovery")]
     arts = [art(s, ti, dek, b, ART_SOURCES[s], related_map[s])
             for (s, ti, dek, b) in FIT_ARTICLES]
 
@@ -1397,6 +1406,20 @@ def home_pages():
     plan_page = [("/seasonal-home-maintenance-checklist/", "The Once-a-Season Home Checklist | BRYME Home & DIY",
                   "A short, season-proof home maintenance checklist \u2014 water, safety devices, appliances, seals, airflow \u2014 with progress saved in your browser.", plan_body)]
 
+    import more_guides_data
+    HOME_ARTICLES.extend((s, ti, dek, b) for (s, _k, ti, dek, b) in more_guides_data.HOME_MORE)
+    related_map["how-to-unblock-a-toilet"] = [("how-to-fix-a-slow-draining-sink", "The slow-draining sink"),
+                                              ("basic-toolkit-checklist", "The basic toolkit"),
+                                              ("seasonal-home-maintenance-checklist", "The once-a-season checklist")]
+    related_map["basic-toolkit-checklist"] = [("how-to-bleed-a-radiator", "Bleeding a radiator"),
+                                              ("how-to-fix-a-dripping-tap", "A dripping tap, fixed honestly"),
+                                              ("why-does-my-circuit-breaker-keep-tripping", "The tripping breaker")]
+    related_map["how-to-bleed-a-radiator"] = [("basic-toolkit-checklist", "The basic toolkit"),
+                                              ("seasonal-home-maintenance-checklist", "The once-a-season checklist"),
+                                              ("washing-machine-wont-drain", "The machine that won't drain")]
+    related_map["washing-machine-wont-drain"] = [("how-to-clean-a-washing-machine", "Why the washing machine smells"),
+                                                 ("fridge-not-cold-enough", "Fridge not cold enough"),
+                                                 ("basic-toolkit-checklist", "The basic toolkit")]
     arts = [art(s, ti, dek, b, [], related_map[s])
             for (s, ti, dek, b) in HOME_ARTICLES]
 

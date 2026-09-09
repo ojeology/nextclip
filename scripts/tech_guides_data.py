@@ -331,4 +331,97 @@ NEW_TECH_GUIDES = [
 [("two-factor-authentication-setup", "2FA done right"),
  ("bitwarden-free-password-manager", "Bitwarden's free plan, checked"),
  ("how-to-spot-a-suspicious-link", "Spotting suspicious links")]),
+("what-is-dns", "web-and-hosting", "guide",
+"What is DNS? The internet's phonebook, explained properly",
+"Names into numbers, records into pages: what actually happens when you type an address — and why changes take time to appear.",
+"""<p>DNS &mdash; the Domain Name System &mdash; is the internet's phonebook. Computers find each other by numeric address; humans remember names. DNS is the service that translates one into the other, every single time you visit anything.</p>
+<h2>The lookup, step by step</h2>
+<p>Type a name and four quiet things happen. Your device asks a <b>resolver</b> (usually your ISP's, or a public one) to find the address. The resolver, if it does not already know, asks the <b>root servers</b>, which point it at the <b>TLD servers</b> for the ending (.com, .ng, .org), which point it at the domain's <b>nameservers</b> &mdash; the ones the domain's owner chose. The nameserver answers with the <b>record</b>: an A record holding the IPv4 address, AAAA for IPv6, CNAME for &ldquo;same as that other name&rdquo;, MX for where email goes, TXT for verification strings. The resolver caches the answer for as long as the record's <b>TTL</b> (time to live) allows, and hands it to your browser, which connects to the number.</p>
+<h2>Why this matters to you</h2>
+<p><b>Propagation is caching.</b> When you change a DNS record, the change spreads as resolvers' caches expire &mdash; usually fast, occasionally hours, depending on the old TTL. &ldquo;DNS propagation&rdquo; is not a global switch flipping; it is cached answers politely dying at different times. We lived this exact sequence moving this very site: <a href="/tech/custom-domain-dns-order/">the DNS order that avoids downtime</a> is our first-hand walkthrough. <b>Email breaks by DNS</b> &mdash; MX records are why mail stops when nameservers go wrong. And <b>&ldquo;site not found&rdquo; errors are usually DNS</b>, not the website being down.</p>
+<h2>The security angle, briefly</h2>
+<p>Because DNS is old and trusting, the industry has been adding verification: DNSSEC signs answers so they cannot be forged in transit, and browsers increasingly prefer encrypted DNS. You do not need to configure any of it to benefit &mdash; but knowing the phonebook can be tampered with explains a certain species of &ldquo;why am I on the wrong site?&rdquo; attack, the kind our <a href="/tech/how-to-spot-a-suspicious-link/">link-reading guide</a> teaches you to catch at the other end.</p>""",
+[("Cloudflare Learning — What is DNS?", "https://www.cloudflare.com/learning/dns/what-is-dns/")],
+[("custom-domain-dns-order", "The DNS order that avoids downtime"),
+ ("what-is-ssl-https", "What HTTPS actually means"),
+ ("how-the-internet-works", "How the internet works, plainly")]),
+
+("what-is-ssl-https", "web-and-hosting", "guide",
+"What the padlock really means: HTTPS and SSL, honestly",
+"Encryption, identity, and the thing the padlock does NOT tell you — which is exactly what phishers exploit.",
+"""<p>HTTPS is the encrypted version of the web's own language. The padlock in the address bar means two things: the connection between you and the site is <b>encrypted</b> (nobody on the network can read or tamper with what passes), and the site presented a <b>certificate</b> proving that the server answering is the one the address belongs to. SSL is the old name for the technology &mdash; the modern version is called TLS &mdash; but &ldquo;SSL certificate&rdquo; stuck as the everyday phrase.</p>
+<h2>How the handshake works, without maths</h2>
+<p>On connecting, the server shows its certificate &mdash; a document signed by a <b>certificate authority</b>, an organisation browsers already trust. Your browser checks the signature, the name match, and the dates. If all pass, both sides perform a key exchange and everything afterwards travels encrypted. The whole performance takes a fraction of a second, and certificate authorities such as Let's Encrypt issue the certificates free of charge, which is why the whole web finally went encrypted.</p>
+<h2>The honest warning: the padlock is not a trust badge</h2>
+<p>Here is the part most people get wrong, and phishers rely on: <b>HTTPS means the connection is private, not that the site is honest.</b> Any scammer can get a free certificate for a lookalike domain in minutes, and their fake bank page will show the same padlock as the real one. Read the <em>name</em>, not the lock &mdash; our <a href="/tech/how-to-spot-a-suspicious-link/">suspicious-link guide</a> is built around exactly that. The padlock tells you nobody is eavesdropping; it cannot tell you who is on the other end.</p>
+<h2>What HTTPS protects, in practice</h2>
+<p>Passwords, card details, messages and everything else in transit &mdash; from the coffee-shop network to the backbone. What it does not cover: a compromised device, a site that mishandles what you send it, or the fact of your visit (the network still sees you talked to that domain). For public networks specifically, our <a href="/tech/public-wifi-risks/">public Wi-Fi guide</a> separates the solved threats from the live ones.</p>""",
+[("Mozilla — What is TLS?", "https://developer.mozilla.org/en-US/docs/Glossary/TLS")],
+[("how-to-spot-a-suspicious-link", "Spotting suspicious links"),
+ ("what-is-dns", "What is DNS?"),
+ ("public-wifi-risks", "The honest public Wi-Fi guide")]),
+
+("how-the-internet-works", "web-and-hosting", "guide",
+"How the internet works, plainly",
+"Packets, addresses, protocols and one world-wide agreement on shapes: the whole machine in five minutes, no jargon held back.",
+"""<p>Strip away the mystique and the internet is one idea: <b>computers sending each other envelopes.</b> Everything else &mdash; cables, Wi-Fi, apps, this page &mdash; is agreement about how the envelopes are addressed, carried and opened.</p>
+<h2>The envelopes: packets</h2>
+<p>When you load a page, the data is chopped into small packets. Each packet carries the destination address (an <b>IP address</b> &mdash; the postal system of the network) and a fragment of the payload. Routers are the sorting offices: each one reads the address and forwards the packet one hop closer. Packets from the same page may take different routes and arrive out of order; your device reassembles them by number. If one is lost, it is re-requested. That is the internet's quiet genius: no central office, just millions of routers cooperating on a shared addressing scheme.</p>
+<h2>The three agreements that make it feel like magic</h2>
+<p><b>IP</b> is the addressing agreement &mdash; every device gets a location. <b>TCP</b> is the delivery agreement &mdash; ordered, checked, re-sent when lost. <b>HTTP/HTTPS</b> is the conversation agreement &mdash; browsers ask (&ldquo;GET me this page&rdquo;), servers answer. Names never travel; before any of this, <a href="/tech/what-is-dns/">DNS</a> translated the name you typed into the address the envelopes need. Then the server sends the page's files, your browser renders them, and &mdash; if the connection is <a href="/tech/what-is-ssl-https/">HTTPS</a> &mdash; every envelope was sealed in transit.</p>
+<h2>Where &ldquo;the cloud&rdquo; actually is</h2>
+<p>Websites live on servers &mdash; computers that stay on and answer requests &mdash; owned by hosting companies and platform providers. This very site is a static site on such a platform: when you requested this page, a server handed back the files that a build process prepared, over exactly the envelope system above. Our <a href="/tech/render-static-deploy/">Render deployment walkthrough</a> and <a href="/tech/where-to-host-website-for-free/">free-hosting comparison</a> are first-hand tours of that half of the story.</p>
+<h2>Why this is worth knowing</h2>
+<p>Because every troubleshooting decision gets easier when you know the path: no page at all is usually DNS; slow is the route or the server; broken-looking is the page itself; &ldquo;your connection is not private&rdquo; is the handshake. Diagnose by stage, not by vibes.</p>""",
+[],
+[("what-is-dns", "What is DNS?"),
+ ("what-is-ssl-https", "What HTTPS actually means"),
+ ("render-static-deploy", "Deploying a static site, first-hand")]),
+
+("what-is-a-database", "coding", "guide",
+"What is a database? From spreadsheet to system",
+"Tables, rows and the questions that make databases different from files &mdash; the mental model every beginner actually needs.",
+"""<p>A database is a program whose entire job is remembering structured data and answering questions about it quickly. The beginner's bridge to the concept: a spreadsheet. Tables with columns you define, rows you add, and the ability to sort and filter. Databases do that &mdash; at scales and with safety guarantees a spreadsheet cannot touch.</p>
+<h2>The vocabulary that unlocks everything</h2>
+<p>A <b>table</b> holds one kind of thing (users, orders, articles). Each <b>row</b> is one item; each <b>column</b> is one attribute, with a fixed type. Rows are found by <b>keys</b> &mdash; a unique ID per row (the primary key), and columns that point at rows in other tables (foreign keys), which is how &ldquo;this order belongs to that user&rdquo; is expressed. Asking questions is <b>querying</b>, most often in SQL, a language that reads almost like the question: which rows from orders where the date is this month, sorted by total.</p>
+<h2>Why not just use files?</h2>
+<p>Because files fall over exactly where apps live: two people writing at once, a crash mid-write, a question across a million rows. Databases solve those as their core competence &mdash; controlled concurrent access, transactions (a change that either fully happens or fully does not), and indexes that keep lookups fast as data grows. That is the honest one-line answer to &ldquo;why is this so complicated?&rdquo;</p>
+<h2>The SQL / NoSQL fork, honestly brief</h2>
+<p>SQL databases (PostgreSQL, MySQL, SQLite) are the classic: structured tables, strict types, powerful joins. The &ldquo;NoSQL&rdquo; family (document stores, key-value stores and friends) trades some of that structure for flexibility and different scaling shapes. Beginners should not agonise: learn one SQL database properly and the concepts &mdash; tables, keys, queries, transactions &mdash; transfer to everything.</p>
+<h2>Where this sits in an app</h2>
+<p>Apps talk to their database behind the scenes; everything you submit through an interface lands in one. The conversation between programs at scale is the <a href="/tech/what-is-an-api/">API</a> &mdash; and when that conversation misfires, it is the <a href="/tech/how-to-read-an-error-message/">error messages</a> that name which side broke. Database first, API second, interface third: that is the honest architecture of almost everything you use.</p>""",
+[],
+[("what-is-an-api", "What is an API?"),
+ ("how-to-read-an-error-message", "Reading error messages"),
+ ("git-and-github-for-beginners", "Git and GitHub for beginners")]),
+
+("how-to-take-a-screenshot-windows", "windows", "guide",
+"How to take a screenshot on Windows (all the ways, and when to use each)",
+"Win+Shift+S is the one to learn. The others, honestly ranked — including the key nobody explains.",
+"""<p>Windows has half a dozen screenshot methods; you need one for daily life and two for special occasions. Learn <b>Windows key + Shift + S</b> and you have the daily one: the screen dims, you drag a rectangle, and the capture lands on your clipboard &mdash; paste it straight into a message or document with Ctrl+V. A notification pops the image too, in case you want to mark it up first.</p>
+<h2>The full honest roster</h2>
+<p><b>Win + Shift + S</b> &mdash; region, window or full screen via the little toolbar; clipboard; the modern default. <b>Win + Print Screen</b> &mdash; grabs the whole screen and silently saves a file into Pictures → Screenshots; the move when you need the file, not the clipboard. <b>Print Screen alone</b> &mdash; whole screen to clipboard only (old school; pair with paste). <b>Alt + Print Screen</b> &mdash; only the active window, to clipboard: the politest way to screenshot without your twenty other tabs. <b>The Snipping Tool</b> &mdash; the app behind Win+Shift+S; open it directly when you want its extras, such as a delay timer for capturing menus that only appear after a hover.</p>
+<h2>Two honest tips</h2>
+<p>Screenshots of an error message are how you ask for help properly &mdash; capture the whole message, including any code, exactly as printed (our <a href="/tech/how-to-read-an-error-message/">error-reading guide</a> explains why the exact text matters). And before you paste a screenshot into a chat, glance at what else is in the frame: notification previews, open inboxes and visible passwords have embarrassed more people than any hacker.</p>
+<h2>If the keys do nothing</h2>
+<p>On some laptops Print Screen hides behind an Fn key, and a few systems route the key elsewhere &mdash; if Win+Shift+S dims nothing, search &ldquo;Snipping Tool&rdquo; from the Start menu and use it directly; the result is identical. Nothing here needs installing: it is all built into Windows 10 and 11.</p>""",
+[],
+[("why-is-my-computer-slow", "The PC triage list"),
+ ("browser-problems", "Browser problems, tamed"),
+ ("windows-keyboard-shortcuts", "Shortcuts worth knowing")]),
+
+("windows-keyboard-shortcuts", "windows", "guide",
+"The Windows shortcuts actually worth memorising",
+"Twelve keystrokes that quietly buy back hours — chosen for being durable, not exotic.",
+"""<p>Keyboard shortcuts are compound interest: each saves seconds, and you press them hundreds of times a month. This is not the exhaustive list &mdash; it is the twelve that survive every Windows version and pay for themselves in a week.</p>
+<h2>The everyday six</h2>
+<p><b>Alt + Tab</b> &mdash; hop between open windows; hold Alt and tap Tab to walk them. <b>Win + D</b> &mdash; show the desktop and back, when the window pile needs parting. <b>Win + L</b> &mdash; lock the computer, the two seconds of hygiene every desk away from your desk deserves. <b>Ctrl + Shift + Esc</b> &mdash; Task Manager, straight up, no menu journey (the <a href="/tech/why-is-my-computer-slow/">slow-PC triage</a> lives here). <b>Ctrl + Z</b> &mdash; undo, nearly everywhere, several steps deep; its partner Ctrl + Y or Ctrl + Shift + Z redoes. <b>Win + V</b> &mdash; clipboard history: the last many things you copied, ready to paste again. Enable it once and copying becomes a memory instead of a single slot.</p>
+<h2>The window-wranglers</h2>
+<p><b>Win + Left/Right arrow</b> &mdash; snap the window to half the screen; the two-document setup without a second monitor. <b>Win + Up/Down</b> &mdash; maximise, or shrink to taskbar. <b>Win + E</b> &mdash; File Explorer, instantly. <b>Win + .</b> (the full stop) &mdash; the emoji and symbols panel; genuinely useful in messages, secretly delightful.</p>
+<h2>How to actually learn them</h2>
+<p>Pick two. Use them deliberately for three days &mdash; say the keys' names in your head as you press &mdash; then add two more. Shortcuts learned in bulk evaporate; shortcuts learned as habits stay. And when a shortcut leads somewhere you do not recognise (Task Manager, say), that is a doorway into the machine's own diaries &mdash; the same reason <a href="/tech/how-to-take-a-screenshot-windows/">screenshots</a> and this list are the desk's first two recommendations for anyone settling into a Windows machine.</p>""",
+[],
+[("how-to-take-a-screenshot-windows", "Screenshots, all the ways"),
+ ("why-is-my-computer-slow", "The PC triage list"),
+ ("browser-problems", "Browser problems, tamed")]),
 ]
