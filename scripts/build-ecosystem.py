@@ -511,15 +511,21 @@ def sports_pages():
             continue
         body_html = clean_recovered(body_file.read_text())
         route = f"/{slug}/"
+        archive = slug in {"premier-league-transfer-tracker-august-2026",
+                           "premier-league-matchweek-1-guide", "premier-league-matchweek-2-preview",
+                           "deadline-day-dont-try-to-make-sense-of-it"}
+        kick = ("Season 2026-27 \u00b7 archive edition" if archive else "The desk \u00b7 2026-27 season")
+        arch_note = (" \u00b7 written during the live season window and kept as archive \u2014 "
+                     "new editions return with the season" if archive else "")
         restored.append(f'<li><a href="{route}"><span><b>{html.escape(m["title"])}</b>'
                         f'<small>From the media desk · {m["words"]} words · {TODAY}</small></span>'
                         f'<span class="meta">Read</span></a></li>')
         pbody = f"""{head("sports", "Analysis, stories and the long view \u2014 never betting.")}
 <main id="main"><div class="wrap">
 <nav class="crumb"><a href="/">Home</a> / {html.escape(m["title"])}</nav>
-<section class="cover"><p class="kicker">The desk · 2026-27 season</p>
+<section class="cover"><p class="kicker">{kick}</p>
 <h1 class="cover-title" style="font-size:clamp(30px,4.6vw,48px)">{html.escape(m["title"])}</h1>
-<p class="byline">From the BRYME media desk · recovered edition, re-typeset {TODAY}</p></section>
+<p class="byline">From the BRYME media desk · recovered edition, re-typeset {TODAY}{arch_note}</p></section>
 <section class="section"><div class="prose">{body_html}</div></section>
 </div></main>{foot("sports")}"""
         pages.append((route, f'{m["title"]} | BRYME Sport',

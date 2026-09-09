@@ -88,3 +88,16 @@ Historical movie catalog pages contained incidental "watch" text but **no downlo
   (allowlist v26, 568 routes), in robots (5 sitemaps), and on the home placeholder's live-desk list.
 - Source URLs: WHO physical-activity fact sheet, CDC Physical Activity Basics, JAMA Intern Med
   2019 (Lee et al.). Reviewed date on every page: 2026-09-09.
+
+## 2026-09-09 — Tech focus begins: UPDATE pass (batch 1)
+
+- **Verified current (9 Sept 2026):** ChatGPT Free/Go $8/Plus $20, Pro structure now documented
+  ($100 + $200 tier); Google AI Plus $4.99 / Pro $19.99; Claude Pro $20 ($17 annual), Max $100+;
+  Bitwarden Premium $1.65 / Families $3.99 — all recovered-article figures still hold.
+- **UPDATE applied:** chatgpt-claude-alternatives — the Pro-tier ambiguity is resolved in-text
+  ($100/$200 now documented); gemini-vs-chatgpt, deepseek-vs-chatgpt, arena-ai-vs-chatgpt,
+  ai-assistant-data-training-settings, bitwarden-free-password-manager — re-verified notes +
+  updatedAt 2026-09-09. Notion/other pieces keep their own explicit checked-dates by design.
+- **Sport archive stamp:** the 4 season-window editions (transfer tracker, both matchweek
+  previews, deadline-day) now carry "Season 2026-27 · archive edition" + a byline note that
+  new editions return with the season — time-sensitive coverage no longer reads as current.
