@@ -99,4 +99,10 @@ for _u in _re.findall(r"<loc>([^<]+)</loc>", _sm):
 if _missing:
     raise SystemExit(f"public-dir: sitemap routes under un-staged top-level dirs: {sorted(_missing)}")
 
+import os
+_commit = os.environ.get("RENDER_GIT_COMMIT")
+if _commit:
+    (PUB / "deploy-commit.txt").write_text(_commit + "\n", encoding="utf-8")
+    copied += 1
+
 print(f"staged public/: {copied} items")

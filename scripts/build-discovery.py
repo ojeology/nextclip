@@ -16,7 +16,14 @@ import bryme_config as cfg
 
 ROOT = Path(__file__).resolve().parents[1]
 SITE = cfg.site_url()  # SITE_URL env wins; otherwise site.config.json (custom-domain ready)
-POLICY = json.loads((ROOT / "content/index-allowlist.json").read_text(encoding="utf-8"))
+# Match the allowlist to the tree shape: a routed tree (writers/ present —
+# always true on Render, where the checkout ships the migrated layout) is
+# validated against the routed artifact; a freshly built unrouted tree uses v24.
+_routed_tree = (ROOT / "writers/learn").is_dir()
+_al = ROOT / ("content/index-allowlist.routed.json" if _routed_tree else "content/index-allowlist.json")
+if not _al.is_file():
+    _al = ROOT / "content/index-allowlist.json"
+POLICY = json.loads(_al.read_text(encoding="utf-8"))
 ROUTES = list(dict.fromkeys(POLICY["routes"]))
 REVIEWED = dt.date.fromisoformat(POLICY["reviewedAt"])
 NEWS_POLICY = json.loads((ROOT / "content/news-allowlist.json").read_text(encoding="utf-8"))
