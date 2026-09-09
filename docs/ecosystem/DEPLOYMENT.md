@@ -20,8 +20,8 @@ publications under path prefixes. Subdomains are a config flip, not a rebuild (s
 | BRYME Sports | `/sports/` | sports.thebryme.com |
 | BRYME Tech | `/tech/` | tech.thebryme.com |
 | BRYME Entertainment | `/entertainment/` | entertainment.thebryme.com |
-| BRYME Fitness | `/fitness/` (foundation, noindex) | fitness.thebryme.com |
-| BRYME Home & DIY | `/home/` (foundation, noindex) | home.thebryme.com |
+| BRYME Fitness | `/fitness/` | fitness.thebryme.com |
+| BRYME Home & DIY | `/home/` | home.thebryme.com |
 
 ## Build chain (run in this order)
 

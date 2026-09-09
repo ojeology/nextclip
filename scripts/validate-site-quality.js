@@ -91,7 +91,7 @@ const staleWindows=json("content/opportunities.json").opportunities.filter(o=>{
 }).map(o=>o.slug);
 if(staleWindows.length)warn(`${staleWindows.length} record(s) have a passed deadline but a live status — re-verify: ${staleWindows.join(", ")}`);
 if(pubRecords!==expectedPubs)fail(`expected ${expectedPubs} indexed publication records under /writing/, found ${pubRecords}`);
-const sitemapRoutes=["sitemap.xml","writers/sitemap.xml","sports/sitemap.xml","entertainment/sitemap.xml","tech/sitemap.xml","fitness/sitemap.xml"].flatMap(sf=>{if(!fs.existsSync(path.join(ROOT,sf)))return[];return[...read(sf).matchAll(/<loc>(.*?)<\/loc>/g)].map(m=>norm(m[1]))});
+const sitemapRoutes=["sitemap.xml","writers/sitemap.xml","sports/sitemap.xml","entertainment/sitemap.xml","tech/sitemap.xml","fitness/sitemap.xml","home/sitemap.xml"].flatMap(sf=>{if(!fs.existsSync(path.join(ROOT,sf)))return[];return[...read(sf).matchAll(/<loc>(.*?)<\/loc>/g)].map(m=>norm(m[1]))});
 if(sitemapRoutes.length!==allow.size)fail(`sitemap has ${sitemapRoutes.length}, expected ${allow.size}`);
 for(const r of allow)if(!sitemapRoutes.includes(norm(r)))fail(`sitemap missing ${r}`);
 for(const r of sitemapRoutes)if(!allow.has(r))fail(`sitemap includes non-allowlisted ${r}`);
