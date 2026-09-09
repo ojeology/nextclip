@@ -10,7 +10,7 @@ const fail=x=>failures.push(x), warn=x=>warnings.push(x);
 const read=r=>fs.readFileSync(path.join(ROOT,r),"utf8");
 const json=r=>JSON.parse(read(r));
 const site=String(json("site.config.json").siteUrl).replace(/\/$/,"");
-const allowDoc=json("content/index-allowlist.json"), allow=new Set(allowDoc.routes);
+const allowDoc=fs.existsSync(path.join(ROOT,"content/index-allowlist.routed.json"))?json("content/index-allowlist.routed.json"):json("content/index-allowlist.json"), allow=new Set(allowDoc.routes);
 // Every page under /writing/ must be either a real publication record or an
 // explicitly declared non-record child. Declaring them here keeps the check
 // strict: an unexpected /writing/ page is now a failure, not a silent count.

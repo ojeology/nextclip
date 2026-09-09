@@ -93,6 +93,17 @@ def main() -> int:
         shutil.copy2(ROOT / "favicon.ico", wr / "favicon.ico")  # writers pages link /writers/favicon.ico after the rewrite
     if (wr / "sw.js").exists():
         shutil.copy2(wr / "sw.js", ROOT / "sw.js")
+    if not (ROOT / "sw.js").exists():
+        # the current build ships no service worker; keep a stub at the root so
+        # visitors with the pre-ecosystem worker still get cleanly unregistered
+        (ROOT / "sw.js").write_text(
+            '// stale-SW cleanup: unregisters the legacy service worker and clears caches\n'
+            'self.addEventListener("install", () => self.skipWaiting());\n'
+            'self.addEventListener("activate", (e) => { e.waitUntil((async () => {\n'
+            '  const keys = await caches.keys(); await Promise.all(keys.map((k) => caches.delete(k)));\n'
+            '  await self.registration.unregister();\n'
+            '})()); });\n',
+            encoding="utf-8")
     if (wr / "favicon.ico").exists():
         shutil.copy2(wr / "favicon.ico", ROOT / "favicon.ico")
 
@@ -155,7 +166,7 @@ def main() -> int:
             routes.add("/" + loc.split(ORIGIN + "/", 1)[1])
     al["version"] = 25
     al["routes"] = sorted(routes)
-    (ROOT / "content" / "index-allowlist.json").write_text(
+    (ROOT / "content" / "index-allowlist.routed.json").write_text(
         json.dumps(al, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
     # 6. refresh the public/ mirror to the routed tree
@@ -163,16 +174,16 @@ def main() -> int:
     if pub.exists():
         shutil.rmtree(pub)
     pub.mkdir()
-    EXCL = {"scripts", "content", "docs", "server", "reports", "node_modules", "ecosystem", ".git"} | VERIF | {"robots.txt", "_redirects", "package.json", "package-lock.json", "render.yaml", "site.config.json", "seo-pilot-matrix.csv"}
+    EXCL_DIRS = {"scripts", "content", "docs", "server", "reports", "node_modules",
+                 "ecosystem", ".git", ".github", "public"}
+    MIRROR_FILES = {"index.html", "sitemap.xml", "robots.txt", "hub-robots.txt", "sw.js",
+                    "favicon.ico", "manifest.webmanifest", "404.html", "410.html"} | VERIF
     for e in ROOT.iterdir():
-        if e.name in EXCL or e.name in KEEP_AT_ROOT_FILES or e.name.startswith(("BRYME", "BYME", "README")):
-            continue
-        if e.name in {"index.html", "sitemap.xml", "sw.js", "hub-robots.txt"} or e.is_dir():
-            dst = pub / e.name
-            if e.is_dir():
-                shutil.copytree(e, dst)
-            else:
-                shutil.copy2(e, dst)
+        if e.is_dir():
+            if e.name not in EXCL_DIRS:
+                shutil.copytree(e, pub / e.name)
+        elif e.name in MIRROR_FILES:
+            shutil.copy2(e, pub / e.name)
 
     print(f"routing: writers moved ({moved} entries, {total} URL rewrites), "
           f"{len(PROPS)} properties at root paths, allowlist v25 ({len(routes)} routes), public/ mirrored")
