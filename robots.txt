@@ -10,3 +10,4 @@ Sitemap: https://bryme.onrender.com/writers/sitemap.xml
 Sitemap: https://bryme.onrender.com/sports/sitemap.xml
 Sitemap: https://bryme.onrender.com/entertainment/sitemap.xml
 Sitemap: https://bryme.onrender.com/tech/sitemap.xml
+Sitemap: https://bryme.onrender.com/fitness/sitemap.xml

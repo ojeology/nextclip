@@ -123,8 +123,19 @@ FAMILY = {
 FAMILY["fitness"] = dict(FAMILY["tech"])
 FAMILY["home"] = dict(FAMILY["tech"])
 
+FITNESS_CSS_EXTRA = """
+.fp-week .fp-day { display: grid; grid-template-columns: 44px 1fr auto; gap: 14px; align-items: center; }
+.fp-day .fp-num { font-family: var(--serif); font-size: 22px; color: var(--accent); text-align: right; }
+.fp-day small { display: block; color: var(--dim); font-size: 12.5px; margin-top: 2px; }
+.fp-day.done { opacity: .55; }
+.fp-day.done .fp-num::after { content: " \u2713"; color: var(--brand); }
+.fp-progressbar { height: 10px; background: var(--sheet); border: 1px solid var(--line); border-radius: 99px; overflow: hidden; }
+.fp-fill { height: 100%; width: 0%; background: var(--brand); transition: width .3s ease; }
+@media (max-width: 640px) { .fp-week .fp-day { grid-template-columns: 34px 1fr; } .fp-day .fp-done { grid-column: 2; justify-self: start; } }
+"""
+
 def css_for(pub):
-    return BASE_CSS % FAMILY[pub]
+    return BASE_CSS % FAMILY[pub] + (FITNESS_CSS_EXTRA if pub == "fitness" else "")
 
 def shell(pub, title, desc, route, body, card=None, robots="index,follow"):
     d = route  # mode-aware base URL from SUB
@@ -174,7 +185,7 @@ def write_placeholder(key, name, tagline, identity, planned):
         + '<section class="section"><div class="section-head"><p class="kicker">The plan</p><h2>What this desk will cover.</h2></div>'
         + '<ul class="list">' + items + "</ul></section>"
         + '<section class="section alt"><div class="section-head"><p class="kicker">Honest status</p><h2>Nothing to read here yet.</h2></div>'
-        + '<p class="lede">This property is at the foundation stage: the route, standards and plan exist; the guides are being built and will open when they are worth reading. In the meantime, the live desks are <a href="/writers/">BRYME Writers</a>, <a href="/tech/">BRYME Tech</a>, <a href="/sports/">BRYME Sport</a> and <a href="/entertainment/">BRYME Entertainment</a>.</p>'
+        + '<p class="lede">This property is at the foundation stage: the route, standards and plan exist; the guides are being built and will open when they are worth reading. In the meantime, the live desks are <a href="/writers/">BRYME Writers</a>, <a href="/tech/">BRYME Tech</a>, <a href="/sports/">BRYME Sport</a>, <a href="/entertainment/">BRYME Entertainment</a> and <a href="/fitness/">BRYME Fitness</a>.</p>'
         + '</section></div></main>' + foot(key))
     base = OUT / key
     base.mkdir(parents=True, exist_ok=True)
@@ -212,7 +223,7 @@ def write_service(pub, pages):
         f"User-agent: *\nAllow: /\nSitemap: {SUB[pub]}/sitemap.xml\n", encoding="utf-8")
     print(f"{pub}: {len(pages)} pages, sitemap, robots")
 
-PREFIX = {"sports": "/sports", "entertainment": "/entertainment", "tech": "/tech"}
+PREFIX = {"sports": "/sports", "entertainment": "/entertainment", "tech": "/tech", "fitness": "/fitness"}
 if MODE == "subdomain":
     SUB = {k: f"https://{v}.{DOMAIN}" for k, v in CFG["subdomains"].items() if k in PREFIX}
     SUB["writers"] = f"https://writers.{DOMAIN}"
@@ -777,6 +788,246 @@ def tech_pages():
     return pages + legal_pages("tech", "BRYME Tech", "Practical technology from people who ran the thing.")
 
 
+
+# ------------------------------------------------------------------ 5. FITNESS
+FIT_WALK_DAYS = [
+    (1, "10 minutes, easy pace. Just show up.", "The first week is about the habit, not the speed."),
+    (2, "10 minutes, easy pace.", "Same time of day as yesterday. Routine beats motivation."),
+    (3, "12 minutes.", "Add two minutes, not ten. Slow progress is progress that sticks."),
+    (4, "12 minutes, relaxed.", "Land softly, look ahead, let your arms swing."),
+    (5, "15 minutes.", "If you can talk while walking, the pace is right for now."),
+    (6, "15 minutes, anywhere new.", "A new route counts as entertainment."),
+    (7, "Rest, or 10 gentle minutes if you would miss it.", "Rest days are part of the plan, not a failure."),
+    (8, "15 minutes.", "Two weeks in: judge the calendar, not the mirror."),
+    (9, "18 minutes.", "Breathe in rhythm \u2014 steps in, steps out."),
+    (10, "18 minutes.", "Hills count double for effort. Take them slowly."),
+    (11, "15 minutes, easy.", "An easy day after a harder one is smart training."),
+    (12, "20 minutes.", "Twenty minutes is a milestone. Notice it."),
+    (13, "20 minutes.", "Drink water before you leave, not just after."),
+    (14, "Rest, or 10 gentle minutes.", "Two weeks done. Most people quit by now. You did not."),
+    (15, "22 minutes.", "The habit is forming. Protect the schedule."),
+    (16, "22 minutes, the last 5 slightly faster.", "Finish a little quicker than you started."),
+    (17, "25 minutes.", "Longer day: pick a route with some shade."),
+    (18, "20 minutes, easy.", "Recovery walks help you come back stronger."),
+    (19, "25 minutes.", "Track one thing: time, distance, or how you felt."),
+    (20, "30 minutes.", "Half an hour \u2014 the classic benchmark. You are here."),
+    (21, "Rest, or 15 gentle minutes.", "Soreness that fades in a day or two is normal. Sharp pain is not \u2014 respect it."),
+    (22, "30 minutes.", "Keep the pace conversational."),
+    (23, "30 minutes, a brisk middle 10.", "Brisk means you can talk, but not sing."),
+    (24, "25 minutes, easy.", "Easy days are what let the stronger days work."),
+    (25, "35 minutes.", "The longest walk of the month. Start unhurried."),
+    (26, "25 minutes.", "Notice the difference from Day 1."),
+    (27, "30 minutes.", "Same time, same rhythm. Almost there."),
+    (28, "20 minutes, easy.", "Taper day. Let your body bank the work."),
+    (29, "30 minutes on your favourite route.", "Pick the walk you enjoyed most this month."),
+    (30, "30+ minutes \u2014 finish, then decide what is next.", "Day 30 is a beginning: repeat week four, or try the strength basics next."),
+]
+
+FIT_SOURCES = [
+    ("WHO \u2014 Physical activity (fact sheet)", "https://www.who.int/news-room/fact-sheets/detail/physical-activity"),
+    ("CDC \u2014 Physical Activity Basics", "https://www.cdc.gov/physical-activity-basics/"),
+]
+
+FIT_ARTICLES = [
+    ("how-to-start-working-out",
+     "Starting from zero: how to begin exercising when you are out of the habit",
+     "The practical, no-miracle starting guide: begin low, progress slowly, and let the calendar \u2014 not motivation \u2014 carry you.",
+     """<p>The hardest workout of your life is the one that gets you off the sofa the first time. Not because exercise is brutal, but because the habit does not exist yet. The good news, supported by every mainstream public-health guideline, is that the first week does not need to be impressive. It needs to be repeatable.</p>
+<h2>Start low, go slow</h2>
+<p>Public-health agencies, including the WHO and the CDC, use the same phrase for returning beginners: start low and go slow. For most people that means short sessions of moderate activity \u2014 brisk walking is the classic \u2014 increasing gradually over weeks. The adult guideline worth knowing is around 150 minutes of moderate aerobic activity spread across a week, plus muscle-strengthening on two or more days. You do not start there. You build toward it.</p>
+<h2>The two-day rule</h2>
+<p>Early on, the only metric that matters is this: do not let two scheduled days pass in a row without doing the session. Ten minutes on a day you feel flat protects the habit. A heroic 90-minute session followed by ten silent days does not. Motivation is weather; the calendar is climate.</p>
+<h2>What counts as exercise</h2>
+<p>More than people assume. Brisk walking counts. Carrying shopping counts. Taking the stairs, digging a garden bed, dancing badly in your kitchen \u2014 all of it raises your breathing and counts toward the week. If a gym feels like a hostile planet, start at home. The 30-day walking plan on this desk exists precisely because walking is the most underrated entry point in fitness.</p>
+<h2>Equipment: none</h2>
+<p>A beginner needs shoes that do not hurt and a door. Everything sold as essential is optional. Buy things later, when a specific gap annoys you three sessions in a row \u2014 that is evidence, unlike advertising.</p>
+<h2>When to get professional advice first</h2>
+<p>This is general information, not medical advice. If you have a health condition, have been inactive for a long time, are pregnant, or get chest pain, dizziness or unusual breathlessness during effort, talk to a qualified health professional before starting. That is not a formality \u2014 it is the difference between a plan and a risk.</p>
+<h2>Where to begin on this desk</h2>
+<p><a href="/30-day-walking-plan/">The 30-day walking plan</a> is the structured route in. <a href="/how-many-steps-a-day/">The honest guide to step counts</a> sets realistic expectations, and <a href="/rest-days-and-recovery/">the recovery guide</a> explains the part most beginners skip.</p>"""),
+    ("how-many-steps-a-day",
+     "How many steps a day actually matter? The honest answer",
+     "Where 10,000 steps came from, what the research actually found, and the number a beginner should care about instead.",
+     """<p>Ask how many steps you should walk and you will hear one number: 10,000. It is on every fitness tracker by default. What almost nobody mentions is where the number came from \u2014 and what the research actually says.</p>
+<h2>The number was marketing, not medicine</h2>
+<p>The 10,000-step figure is often traced to a 1960s Japanese walking-club campaign around a pedometer whose name can be read as \u201c10,000-step meter\u201d. It was catchy, round and optimistic. It was not a clinical threshold. It became a default because devices shipped with it, and it spread from there.</p>
+<h2>What a large study actually found</h2>
+<p>One of the most cited step studies followed more than 16,000 older women and compared step counts with deaths over time (Lee et al., JAMA Internal Medicine, 2019). The pattern: the least active group averaged around 2,700 steps a day, mortality was lower in groups averaging around 4,400 steps, and the benefit continued as steps rose, levelling off at roughly 7,500. Two honest caveats: the participants were older women, so the exact numbers do not transfer automatically to everyone; and the study shows association, not a magic threshold you cross and lock in.</p>
+<h2>The practical takeaway for a beginner</h2>
+<p>More is generally better than less, the biggest jump in benefit is going from very few steps to a modest number, and there is no cliff at 10,000. If your normal day is 3,000 steps, aiming at 6,000 beats aiming at 10,000 and quitting in week two. That is why the <a href="/30-day-walking-plan/">30-day walking plan</a> is built around time and consistency first, with steps as a side effect.</p>
+<h2>How to count \u2014 and how not to obsess</h2>
+<p>A phone in your pocket estimates steps adequately for trends. Treat any single day as noise and the weekly average as signal. If a tracker makes you anxious, leave it home once in a while \u2014 the walk works with nobody counting.</p>
+<h2>The rest of the guideline</h2>
+<p>Steps cover the aerobic half. The other half of the adult guideline is muscle-strengthening work on two or more days a week \u2014 see <a href="/strength-training-for-beginners/">the beginner strength guide</a>.</p>"""),
+    ("strength-training-for-beginners",
+     "Strength training for beginners: six moves, two days, no gym",
+     "Why the guidelines want you lifting at least twice a week, the six patterns that cover it, and how to progress without equipment.",
+     """<p>Walking is the front door to fitness; strength is the part that keeps the house standing. Public-health guidelines are specific here: muscle-strengthening activity on two or more days a week, working the major muscle groups. It protects bone, joint function and the ability to keep doing everything else you enjoy \u2014 and it does not require a gym.</p>
+<h2>The six patterns</h2>
+<p>Nearly every useful strength exercise is a variation of six movements. Learn them with bodyweight or household load, and you have a lifetime programme:</p>
+<p>Sit down and stand back up from a chair, slowly, without using your hands. That is a squat pattern. Lie face down and push the floor away from your knees or toes \u2014 a push-up, scaled to a wall or a counter if needed. Hinge at the hips with a flat back and stand back up \u2014 the deadlift pattern, with a backpack of books when you are ready. Pull something toward you: a door-frame row, a towel row, or a backpack curl. Carry something moderately heavy from one end of the room to the other and put it down carefully \u2014 the carry, the most underrated exercise there is. Finally, hold a plank position on forearms and knees or toes, and breathe.</p>
+<h2>Two days, twenty minutes</h2>
+<p>Pick one exercise from each pattern. Do each for a number of repetitions that leaves you feeling like you could do two or three more with good form \u2014 that is what \u201cmoderate\u201d means in practice. Rest, then repeat twice. Two such sessions a week, with at least one day between them, satisfies the guideline.</p>
+<h2>Progressive overload, honestly explained</h2>
+<p>Muscle adapts to what you ask of it. When the current work feels comfortable, ask slightly more: one more repetition, a slower lowering phase, a heavier backpack, a lower surface for push-ups. Small and boring wins. Pain is not part of the plan; effort is.</p>
+<h2>Soreness is not the goal</h2>
+<p>New movements commonly cause soreness a day or two later. It fades. It is not a score. Chasing soreness is how beginners get hurt or quit \u2014 see <a href="/rest-days-and-recovery/">the recovery guide</a> for what to do instead. This page is general information, not medical advice; if something hurts sharply or persistently, stop and get qualified advice.</p>"""),
+    ("rest-days-and-recovery",
+     "Rest days and recovery: the part of training that actually builds you",
+     "Why adaptation happens between sessions, what DOMS really is, and the difference between rest and quitting.",
+     """<p>Exercise is the question. Recovery is the answer. When you walk, lift or carry, you create a small stress; your body responds during the hours and days afterwards, rebuilding slightly stronger than before. Skip the recovery and you skip the adaptation \u2014 the training was just wear.</p>
+<h2>What rest day means</h2>
+<p>A rest day is not a sofa day and it is not a failure. It means no planned training. Gentle movement \u2014 an unhurried walk, stretching while the kettle boils \u2014 is fine and often feels better than nothing. What it does not mean is swapping your schedule because enthusiasm dipped. Enthusiasm is allowed to dip. The calendar stands.</p>
+<h2>DOMS, explained honestly</h2>
+<p>Soreness that arrives a day or so after unfamiliar exercise \u2014 especially the lowering phase of movements \u2014 is called delayed-onset muscle soreness (DOMS). It commonly peaks in the first day or two and settles within several days. It is a normal response to new work, not a badge of quality: a session that leaves you unable to walk downstairs was overdone, not superior. Mechanisms are still debated in the research; the practical handling is not \u2014 move gently, hydrate, sleep, and let it pass before hitting the same muscles hard again.</p>
+<h2>Sleep is the strongest legal performance aid</h2>
+<p>Nothing sold in a shaker compares with enough sleep. It is when the bulk of recovery happens. If you must choose between an extra hour asleep and a groggy extra session, take the sleep more often than not.</p>
+<h2>When soreness is a warning</h2>
+<p>Sharp pain, pain that worsens past a few days, swelling, or soreness paired with dark urine are not DOMS and are not to be trained through. This is general information, not medical advice \u2014 a qualified professional should assess anything that fails those tests.</p>
+<h2>How the walking plan handles rest</h2>
+<p>Every seventh day of the <a href="/30-day-walking-plan/">30-day walking plan</a> is a rest day by design. That rhythm \u2014 stress, recover, repeat slightly stronger \u2014 is the whole trick behind every serious training programme ever written.</p>"""),
+]
+
+def _fit_shell(pub, kicker, title, dek, extra_disclaimer=False):
+    band = ('<section class="section alt" style="border-left:4px solid var(--brand)"><div class="wrap"><p class="lede"><b>General information, not medical advice.</b> '
+            "If you have a health condition, have been inactive for a long time, or something hurts sharply, talk to a qualified health professional first.</p></div></section>")
+    return band
+
+def fitness_pages():
+    def src_html(sources):
+        if not sources:
+            return ""
+        return ('<h2>Sources</h2><ul class="list">'
+                + "".join('<li><a href="' + u + '" rel="noopener">' + n + "</a></li>" for n, u in sources)
+                + "</ul>")
+
+    def art(slug, title, dek, body_html, sources, related, schema_type="Article"):
+        import json as _j
+        rel_html = "".join('<li><a href="/' + s + '/">' + rt + "</a></li>" for s, rt in related)
+        schema = {"@context": "https://schema.org", "@type": schema_type,
+                  "headline": title,
+                  "author": {"@type": "Organization", "name": "BRYME Fitness desk"},
+                  "publisher": {"@type": "Organization", "name": "THE BRYME"},
+                  "datePublished": TODAY, "dateModified": TODAY,
+                  "mainEntityOfPage": ORIGIN + "/fitness/" + slug + "/",
+                  "description": dek}
+        abody = (head("fitness", "Practical fitness \u2014 no miracles, no medical claims.")
+            + '<main id="main"><div class="wrap">'
+            + '<nav class="crumb"><a href="/fitness/">Fitness</a> / ' + html.escape(title) + "</nav>"
+            + '<section class="cover"><p class="kicker">' + kicker_default + "</p>"
+            + '<h1 class="cover-title" style="font-size:clamp(30px,4.6vw,48px)">' + html.escape(title) + "</h1>"
+            + '<p class="byline">BRYME Fitness desk \u00b7 reviewed ' + TODAY + " \u00b7 general information, not medical advice</p></section>"
+            + '<section class="section alt"><div class="wrap"><p class="lede"><b>In one line:</b> ' + html.escape(dek) + "</p></div></section>"
+            + '<section class="section"><div class="prose">' + body_html + src_html(sources) + "</div></section>"
+            + '<section class="section alt"><div class="section-head"><p class="kicker">Keep going</p><h2>Related on this desk.</h2></div>'
+            + '<ul class="list">' + rel_html + "</ul>"
+            + '<div class="actions"><a class="btn secondary" href="/fitness/">All of BRYME Fitness</a></div></section>'
+            + _fit_shell("fitness", "", "", "", True)
+            + '<script type="application/ld+json">' + _j.dumps(schema) + "</script>"
+            + "</div></main>" + foot("fitness"))
+        return (("/" + slug + "/"), title + " | BRYME Fitness", dek[:155], abody)
+
+    kicker_default = "Evidence-aware \u00b7 beginner-first \u00b7 no miracle claims"
+    related_map = {
+        "how-to-start-working-out": [("30-day-walking-plan", "The 30-day walking plan"),
+                                     ("how-many-steps-a-day", "How many steps a day actually matter?"),
+                                     ("rest-days-and-recovery", "Rest days and recovery")],
+        "how-many-steps-a-day": [("30-day-walking-plan", "The 30-day walking plan"),
+                                 ("how-to-start-working-out", "Starting from zero"),
+                                 ("strength-training-for-beginners", "Strength training for beginners")],
+        "strength-training-for-beginners": [("rest-days-and-recovery", "Rest days and recovery"),
+                                            ("how-to-start-working-out", "Starting from zero"),
+                                            ("30-day-walking-plan", "The 30-day walking plan")],
+        "rest-days-and-recovery": [("strength-training-for-beginners", "Strength training for beginners"),
+                                   ("how-to-start-working-out", "Starting from zero"),
+                                   ("30-day-walking-plan", "The 30-day walking plan")],
+    }
+
+    # ---- the 30-day plan page (the product) ----
+    week_rows = ""
+    for wk_start in (1, 8, 15, 22):
+        label = {1: "Week 1 \u00b7 show up", 8: "Week 2 \u00b7 rhythm",
+                 15: "Week 3 \u00b7 range", 22: "Week 4 \u00b7 finish strong"}[wk_start]
+        wk_end = wk_start + (9 if wk_start == 22 else 7)
+        rows = ""
+        for d, task, tip in FIT_WALK_DAYS:
+            if not (wk_start <= d < (wk_start + 9 if wk_start == 22 else wk_start + 7)):
+                continue
+            rows += ('<li class="fp-day" data-day="' + str(d) + '">'
+                     '<span class="fp-num">' + str(d) + "</span><span><b>" + task + "</b>"
+                     "<small>" + tip + "</small></span>"
+                     '<button type="button" class="btn secondary fp-done" aria-pressed="false">Done</button></li>')
+        week_rows += ('<section class="section"><div class="section-head"><p class="kicker">Days '
+                      + str(wk_start) + "\u2013" + str(wk_end - 1) + "</p><h2>" + label + "</h2></div>"
+                      + '<ul class="list fp-week">' + rows + "</ul></section>")
+    import json as _j
+    plan_schema = {"@context": "https://schema.org", "@type": "Article",
+                   "headline": "The 30-Day Walking Plan",
+                   "author": {"@type": "Organization", "name": "BRYME Fitness desk"},
+                   "publisher": {"@type": "Organization", "name": "THE BRYME"},
+                   "datePublished": TODAY, "dateModified": TODAY,
+                   "mainEntityOfPage": ORIGIN + "/fitness/30-day-walking-plan/",
+                   "description": "A beginner walking plan built around one honest idea: show up every day for a month. Progress is tracked in your browser \u2014 no account, nothing sent anywhere."}
+    plan_body = (head("fitness", "Practical fitness \u2014 no miracles, no medical claims.")
+        + '<main id="main"><div class="wrap">'
+        + '<nav class="crumb"><a href="/fitness/">Fitness</a> / The 30-Day Walking Plan</nav>'
+        + '<section class="cover"><p class="kicker">' + kicker_default + "</p>"
+        + '<h1 class="cover-title" style="font-size:clamp(30px,4.6vw,48px)">The 30-Day Walking Plan</h1>'
+        + '<p class="byline">BRYME Fitness desk \u00b7 reviewed ' + TODAY + " \u00b7 general information, not medical advice</p></section>"
+        + '<section class="section alt"><div class="wrap"><p class="lede"><b>One honest idea:</b> show up every day for a month. The plan is built on time, not distance, and every seventh day is a rest day by design. Progress is saved in your browser \u2014 no account, nothing sent anywhere.</p></div></section>'
+        + '<section class="section"><div class="wrap"><div class="fp-progressbar" role="img" aria-label="Plan progress"><div class="fp-fill" id="fp-fill"></div></div>'
+        + '<p class="lede" id="fp-status">Day 0 of 30 complete. Tick days off as you go \u2014 your browser will remember.</p></div></section>'
+        + week_rows
+        + '<section class="section"><div class="section-head"><p class="kicker">The fine print</p><h2>How to use this plan sensibly.</h2></div>'
+        + '<div class="prose"><p>\u201cEasy pace\u201d means you can hold a conversation; \u201cbrisk\u201d means you can talk but not sing. If a day feels too hard, repeat the previous day \u2014 the numbering is a suggestion, your body is the schedule. Sharp pain, dizziness or unusual breathlessness: stop. This is general information, not medical advice; if you have a health condition or have been inactive for a long time, see a qualified professional first.</p>'
+        + '<p>Finished? Repeat week four, move the brisk blocks earlier, or add two strength days from <a href="/strength-training-for-beginners/">the beginner strength guide</a>.</p></div></section>'
+        + '<section class="section alt">' + src_html(FIT_SOURCES) + "</section>"
+        + _fit_shell("fitness", "", "", "", True)
+        + '<script type="application/json" id="fit-plan-data">{"total": 30}</script>'
+        + '<script src="/assets/fitness-plan.js" defer></script>'
+        + '<script type="application/ld+json">' + _j.dumps(plan_schema) + "</script>"
+        + "</div></main>" + foot("fitness"))
+    plan_page = [("/30-day-walking-plan/", "The 30-Day Walking Plan | BRYME Fitness",
+                  "A beginner walking plan built on one honest idea: show up every day for a month. Time-based, rest days built in, progress saved in your browser.", plan_body)]
+
+    arts = [art(s, ti, dek, b, FIT_SOURCES, related_map[s])
+            for (s, ti, dek, b) in FIT_ARTICLES]
+
+    start_rows = ('<li><a href="/how-to-start-working-out/"><span><b>Starting from zero</b>'
+                  "<small>The practical, no-miracle guide to beginning when the habit does not exist yet.</small></span>"
+                  '<span class="meta">Start here</span></a></li>'
+                  '<li><a href="/30-day-walking-plan/"><span><b>The 30-day walking plan</b>'
+                  "<small>Show up every day for a month. Time-based, rest days built in, progress saved locally.</small></span>"
+                  '<span class="meta">The plan</span></a></li>'
+                  '<li><a href="/strength-training-for-beginners/"><span><b>Six moves, two days, no gym</b>'
+                  "<small>The strength patterns that satisfy the guideline, scaled to a door and a backpack.</small></span>"
+                  '<span class="meta">Build</span></a></li>')
+    more_rows = ('<li><a href="/how-many-steps-a-day/"><span><b>How many steps a day actually matter?</b>'
+                 "<small>Where 10,000 came from, what a 16,000-person study found, and the number to aim at instead.</small></span>"
+                 '<span class="meta">Understand</span></a></li>'
+                 '<li><a href="/rest-days-and-recovery/"><span><b>Rest days and recovery</b>'
+                 "<small>Why adaptation happens between sessions \u2014 and when soreness is a warning.</small></span>"
+                 '<span class="meta">Understand</span></a></li>')
+    index_body = (head("fitness", "Practical fitness \u2014 no miracles, no medical claims.")
+        + '<main id="main"><div class="wrap">'
+        + '<section class="cover"><p class="kicker">BRYME Fitness</p>'
+        + '<h1 class="cover-title">Build a routine you can actually keep.</h1>'
+        + '<p class="cover-dek">Practical fitness guidance for people starting from zero: programs, challenges and progress \u2014 evidence-aware, beginner-first, and clearly separated from medical advice. No \u201cshred\u201d, no \u201cmelt fat\u201d, no 30-day body promises: 30-day <em>habits</em>.</p></section>'
+        + '<section class="section"><div class="section-head"><p class="kicker">Handpicked</p><h2>Start here.</h2></div>'
+        + '<ul class="list">' + start_rows + "</ul></section>"
+        + '<section class="section alt"><div class="section-head"><p class="kicker">Understand the craft</p><h2>Read before you push.</h2></div>'
+        + '<ul class="list">' + more_rows + "</ul></section>"
+        + '<section class="section"><div class="section-head"><p class="kicker">The desk\u2019s rules</p><h2>What BRYME Fitness will never do.</h2></div>'
+        + '<div class="prose"><p>It will not promise a body in 30 days; it will not dress general information up as medical advice; it will not sell you equipment you do not need. Every guide carries its reviewed date and, where numbers are quoted, its sources. That is the whole identity: <b>practical fitness guidance, programs, challenges and progress</b> \u2014 sustainable on purpose.</p></div></section>'
+        + "</div></main>" + foot("fitness"))
+    pages = [("/", "BRYME Fitness \u2014 practical fitness, no miracle claims",
+              "Beginner-first fitness: how to start, the 30-day walking plan with in-browser progress tracking, strength basics and recovery \u2014 evidence-aware, never medical advice.", index_body)]
+    pages.extend(plan_page)
+    pages.extend(arts)
+    return pages + legal_pages("fitness", "BRYME Fitness", "Practical fitness guidance \u2014 responsible, evidence-aware, clearly separated from medical advice.")
+
+
+
 def main() -> None:
     (OUT / "hub").mkdir(parents=True, exist_ok=True)
     hp = hub_pages()
@@ -795,14 +1046,7 @@ def main() -> None:
     write_service("entertainment", entertainment_pages())
     write_service("sports", sports_pages())
     write_service("tech", tech_pages())
-    write_placeholder("fitness", "BRYME Fitness",
-        "Practical fitness guidance \u2014 programs, challenges and progress, without medical claims.",
-        "BRYME Fitness will answer one question: how do I build a fitness routine I can actually sustain? Beginner programs, walking and strength challenges, exercise and equipment guides, and 30-day plans built around one honest idea \u2014 a reason to come back tomorrow.",
-        ["Beginner programs \u2014 start-from-zero plans with sensible progression",
-         "30-day challenges \u2014 one day at a time, tracked as you go",
-         "Walking plans \u2014 the most underrated habit in fitness",
-         "Strength starters \u2014 simple, safe, progressive",
-         "Exercise & equipment guides \u2014 what it works, who it fits"])
+    write_service("fitness", fitness_pages())
     write_placeholder("home", "BRYME Home & DIY",
         "Practical help for fixing, maintaining, improving and understanding your home.",
         "BRYME Home & DIY will answer the questions every household hits: why is this not working, how do I maintain it, and can I fix it myself? Low-risk practical problems first \u2014 and clear, non-negotiable safety boundaries: electrical, gas and structural work belongs to qualified professionals.",

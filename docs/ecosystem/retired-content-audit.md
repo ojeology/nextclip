@@ -70,3 +70,21 @@ Historical movie catalog pages contained incidental "watch" text but **no downlo
   audited-out stubs stay retired and are listed transparently on /entertainment/.
 - Entertainment now 30 pages (index + 3 sections + 23 articles + legal). build-ecosystem's
   write_service now clears stale output per property (recovery store preserved).
+
+## 2026-09-09 — Phase 3: Fitness foundation → publication
+
+- **Identity live:** «Build a routine you can actually keep» — beginner-first, evidence-aware,
+  no-miracle framing; desk rules on the homepage; general-information-not-medical-advice band
+  on every guide and the plan.
+- **Content (6 pages + legal, each earning its route):** 4 sourced guides — starting from zero,
+  step counts (10k marketing origin; Lee et al. 2019 JAMA Intern Med framing stated with its
+  caveats), beginner strength (six patterns, guideline 2+/week), rest & recovery (DOMS handled
+  honestly) — plus the flagship **30-Day Walking Plan**: 30 real day entries (time-based,
+  rest day every 7th), responsible wording, no body-transformation promises.
+- **Product:** the plan page tracks completion locally (assets/fitness-plan.js, ES5, CSP-safe,
+  localStorage only, no account, nothing transmitted); all 30 days render as content for no-JS
+  visitors; progress bar + status line for JS users.
+- **Foundations replaced:** the noindex placeholder is gone; fitness is indexable, sitemap'd
+  (allowlist v26, 568 routes), in robots (5 sitemaps), and on the home placeholder's live-desk list.
+- Source URLs: WHO physical-activity fact sheet, CDC Physical Activity Basics, JAMA Intern Med
+  2019 (Lee et al.). Reviewed date on every page: 2026-09-09.

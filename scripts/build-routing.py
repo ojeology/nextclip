@@ -27,7 +27,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 PROPS = ["sports", "entertainment", "tech", "fitness", "home"]
-SITEMAP_PROPS = ["sports", "entertainment", "tech"]  # live, indexable properties only
+SITEMAP_PROPS = ["sports", "entertainment", "tech", "fitness"]  # live, indexable properties only
 KEEP_AT_ROOT_DIRS = {".git", ".github", "assets", "scripts", "content", "docs", "server", "reports",
                      "node_modules", "public", "ecosystem", ".git"} | set(PROPS) | {"writers"}
 KEEP_AT_ROOT_FILES = {"robots.txt", "_redirects", "favicon.ico", "package.json",
