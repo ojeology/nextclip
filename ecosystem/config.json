@@ -2,6 +2,13 @@
   "domain": "thebryme.com",
   "mode": "path",
   "origin": "https://bryme.onrender.com",
-  "subdomains": { "writers": "writers", "sports": "sports", "entertainment": "entertainment", "tech": "tech", "money": "money" },
+  "subdomains": {
+    "writers": "writers",
+    "sports": "sports",
+    "entertainment": "entertainment",
+    "tech": "tech",
+    "fitness": "fitness.thebryme.com",
+    "home": "home.thebryme.com"
+  },
   "notes": "mode=path: properties served at bryme.onrender.com/<prop>/, writers at /writers/. mode=subdomain: the later deployment change. PRODUCTION_DOMAIN/ROUTING_MODE/ORIGIN env vars override."
 }

@@ -9,7 +9,7 @@ publication layout:
     /sports/             -> BRYME Sport (from ecosystem/sports)
     /entertainment/      -> BRYME Entertainment (from ecosystem/entertainment)
     /tech/               -> BRYME Tech (from ecosystem/tech)
-    /money/              -> BRYME Money (from ecosystem/money)
+    /fitness/ /home/     -> foundation placeholders (noindex, from ecosystem/)
 
 Everything is config-driven: ROUTING_MODE=subdomain (later) flips the
 properties to their own hosts as a deployment change, not a rebuild.
@@ -26,7 +26,8 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-PROPS = ["sports", "entertainment", "tech", "money"]
+PROPS = ["sports", "entertainment", "tech", "fitness", "home"]
+SITEMAP_PROPS = ["sports", "entertainment", "tech"]  # live, indexable properties only
 KEEP_AT_ROOT_DIRS = {".git", ".github", "assets", "scripts", "content", "docs", "server", "reports",
                      "node_modules", "public", "ecosystem", ".git"} | set(PROPS) | {"writers"}
 KEEP_AT_ROOT_FILES = {"robots.txt", "_redirects", "favicon.ico", "package.json",
@@ -39,8 +40,8 @@ VERIF = {p.name for p in ROOT.glob("google*.html")} | {p.name for p in ROOT.glob
 ORIGIN = "https://bryme.onrender.com"
 PROP_PREFIXES = tuple(f"/{x}" for x in PROPS) + ("/writers", "/assets")
 
-ATTR_RE = re.compile(r'(\s(?:href|src|action|content)=\x22)(/(?!assets/|writers|sports|entertainment|tech|money)([^\x22]*))(\x22)')
-ABS_RE = re.compile(re.escape(ORIGIN) + r'/(?!writers|sports|entertainment|tech|money)([^"\'<\s)]*)')
+ATTR_RE = re.compile(r'(\s(?:href|src|action|content)=\x22)(/(?!assets/|writers|sports|entertainment|tech|fitness|home)([^\x22]*))(\x22)')
+ABS_RE = re.compile(re.escape(ORIGIN) + r'/(?!writers|sports|entertainment|tech|fitness|home)([^"\'<\s)]*)')
 
 
 def rewrite_writer_paths(text: str) -> tuple[str, int]:
@@ -69,6 +70,10 @@ def strip_arrows(text: str) -> str:
 
 def main() -> int:
     moved = 0
+    # guard: routing is one-shot per build; a routed tree must be rebuilt clean
+    if (ROOT / "writers/learn").is_dir() and not (ROOT / "writing").is_dir():
+        print("routing: tree is already routed - rebuild clean (rm -rf writers ...) first, aborting")
+        return 1
     # 1. move the writers tree into writers/
     wr = ROOT / "writers"
     if wr.exists():
@@ -149,7 +154,7 @@ def main() -> int:
         "User-agent: *\nAllow: /\nDisallow: /scripts/\nDisallow: /content/\n"
         "Disallow: /docs/\nDisallow: /server/\nDisallow: /ecosystem/\n\n"
         f"Sitemap: {ORIGIN}/writers/sitemap.xml\n" +
-        "".join(f"Sitemap: {ORIGIN}/{x}/sitemap.xml\n" for x in PROPS), encoding="utf-8")
+        "".join(f"Sitemap: {ORIGIN}/{x}/sitemap.xml\n" for x in SITEMAP_PROPS), encoding="utf-8")
 
     # 5. allowlist v25: writers prefixed + hub + property routes
     al = json.loads((ROOT / "content" / "index-allowlist.json").read_text())
@@ -160,11 +165,11 @@ def main() -> int:
         for r in al["routes"]:
             routes.add("/writers/" + r[1:] if r != "/" else "/writers/")
     routes.add("/")  # the hub
-    for prop in PROPS:
+    for prop in SITEMAP_PROPS:
         sm = ROOT / prop / "sitemap.xml"
         for loc in re.findall(r"<loc>(.*?)</loc>", sm.read_text()):
             routes.add("/" + loc.split(ORIGIN + "/", 1)[1])
-    al["version"] = 25
+    al["version"] = 26
     al["routes"] = sorted(routes)
     (ROOT / "content" / "index-allowlist.routed.json").write_text(
         json.dumps(al, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
@@ -186,7 +191,7 @@ def main() -> int:
             shutil.copy2(e, pub / e.name)
 
     print(f"routing: writers moved ({moved} entries, {total} URL rewrites), "
-          f"{len(PROPS)} properties at root paths, allowlist v25 ({len(routes)} routes), public/ mirrored")
+          f"{len(PROPS)} properties at root paths, allowlist v26 ({len(routes)} routes), public/ mirrored")
     return 0
 
 

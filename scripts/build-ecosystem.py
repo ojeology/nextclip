@@ -117,13 +117,15 @@ FAMILY = {
     "sports":        dict(paper="#fafaf8", sheet="#ffffff", ink="#14213d", muted="#5b6b7a", dim="#8b96a2", brand="#2f6b4f", brand_deep="#1f4d37", accent="#2f6b4f", line="20,33,61"),
     "entertainment": dict(paper="#17151a", sheet="#201d24", ink="#efe9dd", muted="#b5ad9f", dim="#8b8478", brand="#6d1832", brand_deep="#4d1023", accent="#a8752a", line="239,233,221"),
     "tech":          dict(paper="#fafaf8", sheet="#ffffff", ink="#14213d", muted="#5b6b7a", dim="#8b96a2", brand="#14213d", brand_deep="#0c1526", accent="#5b6b7a", line="20,33,61"),
-    "money":         dict(paper="#fafaf8", sheet="#ffffff", ink="#14213d", muted="#5b6b7a", dim="#8b96a2", brand="#1f4d37", brand_deep="#143526", accent="#a8752a", line="20,33,61"),
 }
+
+FAMILY["fitness"] = dict(FAMILY["tech"])
+FAMILY["home"] = dict(FAMILY["tech"])
 
 def css_for(pub):
     return BASE_CSS % FAMILY[pub]
 
-def shell(pub, title, desc, route, body, card=None):
+def shell(pub, title, desc, route, body, card=None, robots="index,follow"):
     d = route  # mode-aware base URL from SUB
     og = f"https://{route}/assets/og.png" if route else f"https://{DOMAIN}/assets/og.png"
     return f"""<!doctype html>
@@ -131,7 +133,7 @@ def shell(pub, title, desc, route, body, card=None):
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{html.escape(title)}</title>
 <meta name="description" content="{html.escape(desc)}">
-<meta name="robots" content="index,follow">
+<meta name="robots" content="{robots}">
 <link rel="canonical" href="{d}{'' if route.endswith('/') else ''}">
 <meta property="og:type" content="website"><meta property="og:site_name" content="THE BRYME">
 <meta property="og:title" content="{html.escape(title)}"><meta property="og:description" content="{html.escape(desc)}">
@@ -159,7 +161,30 @@ def foot(pub, extra=""):
 <div><a href="https://{DOMAIN}/">thebryme.com</a></div>
 </div></footer>"""
 
-PUB_NAME = {"sports": "Sport", "entertainment": "Entertainment", "tech": "Tech", "money": "Money"}
+def write_placeholder(key, name, tagline, identity, planned):
+    """Foundation-era property: one honest page + the standard legal pages, all noindex."""
+    items = "".join("<li>" + html.escape(x) + "</li>" for x in planned)
+    body = (head(key, tagline)
+        + '<main id="main"><div class="wrap">'
+        + '<nav class="crumb"><a href="/">THE BRYME</a> / ' + html.escape(name) + "</nav>"
+        + '<section class="cover"><p class="kicker">Under construction \u00b7 foundation laid</p>'
+        + '<h1 class="cover-title">' + html.escape(name) + "</h1>"
+        + '<p class="cover-dek">' + html.escape(identity) + "</p></section>"
+        + '<section class="section"><div class="section-head"><p class="kicker">The plan</p><h2>What this desk will cover.</h2></div>'
+        + '<ul class="list">' + items + "</ul></section>"
+        + '<section class="section alt"><div class="section-head"><p class="kicker">Honest status</p><h2>Nothing to read here yet.</h2></div>'
+        + '<p class="lede">This property is at the foundation stage: the route, standards and plan exist; the guides are being built and will open when they are worth reading. In the meantime, the live desks are <a href="/writers/">BRYME Writers</a>, <a href="/tech/">BRYME Tech</a>, <a href="/sports/">BRYME Sport</a> and <a href="/entertainment/">BRYME Entertainment</a>.</p>'
+        + '</section></div></main>' + foot(key))
+    base = OUT / key
+    base.mkdir(parents=True, exist_ok=True)
+    for route, title, desc, pbody in [("/", name + " | BRYME", tagline, body)] + legal_pages(key, name, tagline):
+        f = base / ("index.html" if route == "/" else route.lstrip("/") + "/index.html")
+        f.parent.mkdir(parents=True, exist_ok=True)
+        f.write_text(shell(key, title, desc, ORIGIN + "/" + key + route, pbody, robots="noindex,follow"), encoding="utf-8")
+    print(key + ": foundation page + legal (noindex, no sitemap)")
+
+
+PUB_NAME = {"sports": "Sport", "entertainment": "Entertainment", "tech": "Tech", "fitness": "Fitness", "home": "Home & DIY"}
 
 def write_service(pub, pages):
     base = OUT / pub
@@ -181,7 +206,7 @@ def write_service(pub, pages):
         f"User-agent: *\nAllow: /\nSitemap: {SUB[pub]}/sitemap.xml\n", encoding="utf-8")
     print(f"{pub}: {len(pages)} pages, sitemap, robots")
 
-PREFIX = {"sports": "/sports", "entertainment": "/entertainment", "tech": "/tech", "money": "/money"}
+PREFIX = {"sports": "/sports", "entertainment": "/entertainment", "tech": "/tech"}
 if MODE == "subdomain":
     SUB = {k: f"https://{v}.{DOMAIN}" for k, v in CFG["subdomains"].items() if k in PREFIX}
     SUB["writers"] = f"https://writers.{DOMAIN}"
@@ -235,11 +260,15 @@ HUB_PUBS = [
     ("sports", "BRYME Sport", "The desk reopens.", "Football coverage from BRYME's media desk \u2014 transfer reporting, matchweek guides and the 2026-27 season, with the archive's thin pages honestly retired. No betting content, ever.", "live"),
     ("entertainment", "BRYME Entertainment", "Recovered from the archive.", "Cinema, TV and anime \u2014 guides, explainers and opinion rebuilt from BRYME's earliest editorial research, re-typeset and honestly labelled. No download sites, no piracy \u2014 only writing about the work.", "live"),
     ("tech", "BRYME Tech", "Practical technology. No theatre.", "Deployment walkthroughs, domain and DNS specifics, token hygiene, front-end patterns \u2014 written from first-hand builds, not press releases. Evergreen on purpose.", "live"),
-    ("money", "BRYME Money", "General finance, plainly.", "Saving, budgeting and how money actually works \u2014 general education with the maths shown, never personalised advice, never a product pitch. Opening with its foundation essays.", "live"),
 ]
+WORKSHOP_PUBS = [
+    ("fitness", "BRYME Fitness", "Foundation laid.", "Practical fitness guidance \u2014 beginner programs, walking and strength challenges, and 30-day plans built around returning one day at a time. General fitness information, never medical advice. The first programs are being built now.", "foundation"),
+    ("home", "BRYME Home & DIY", "Foundation laid.", "Practical help for fixing, maintaining, improving and understanding your home \u2014 fix it, clean it, maintain it, understand it. Safe, low-risk guidance first; dangerous work belongs to qualified professionals. The first guides are being built now.", "foundation"),
+]
+
 def hub_pages():
     cards = ""
-    for key, name, tag, desc, state in HUB_PUBS:
+    for key, name, tag, desc, state in HUB_PUBS + WORKSHOP_PUBS:
         kicker = PUB_NAME.get(key, "").upper() if key != "writers" else "THE FLAGSHIP"
         if state == "live":
             cta = f'<a class="btn" href="{SUB[key]}/">Enter {name.split(" ")[1]} →</a>'
@@ -391,78 +420,6 @@ def sports_pages():
 
 
 # ---------------------------------------------------------------- 4. MONEY
-MONEY_ARTICLES = [
- ("the-emergency-fund", "The emergency fund: the simplest financial instrument there is",
-  "What it is for, how big people commonly aim, and where it lives \u2014 the quiet buffer that turns bad luck into an inconvenience.",
-  """<p>Every other piece of money advice assumes one thing: that a bad month will not become a bad year. The emergency fund is the piece that makes the rest of the advice survivable.</p>
-<h2>What counts as an emergency</h2>
-<p>A job loss, a medical bill, a failing car you need to get to work, a landlord who will not renew. The test is boring and strict: <em>urgent and necessary</em>. A sale on something you were going to buy anyway is not an emergency; it is marketing. Deciding this in advance \u2014 in writing, even one sentence \u2014 is what separates a fund from a jar.</p>
-<h2>How big</h2>
-<p>The common guidance lands between three and six months of essential spending, and the honest answer is that the right number depends on how fragile your income is. A freelancer with lumpy invoices has a stronger case for six months than a salaried employee with a stable employer. The figure that matters is <em>essential</em> spending \u2014 rent, food, transport, the bills that keep life running \u2014 not your current total spending. Calculating that number is a useful afternoon regardless.</p>
-<h2>Where it lives</h2>
-<p>Somewhere safe, boring and reachable within a day or two: a savings account, separate from the account your spending card draws on. The separation matters more than the interest rate \u2014 money you have to consciously move is money you do not spend by accident. You are trading some return for the ability to sleep; that is the product working as designed.</p>
-<h2>How to start when starting is the hard part</h2>
-<p>The first target is not three months. It is a small, slightly embarrassing first deposit \u2014 the point is to prove the pipe exists. An automatic transfer on payday, however small, beats a plan to save "whatever is left", because whatever is left is a number that has already been spent by someone.Raise the amount whenever life raises your income; never lower it when life raises your expenses \u2014 that is precisely the period the fund exists for.</p>
-<h2>The honest limitations</h2>
-<p>An emergency fund does not make you wealthy, and in inflationary years it quietly loses a little value in real terms. That is the fee. What it buys back is the ability to say no: to a bad loan, a panic sale, a desperate job. It is not an investment; it is insurance you pay yourself.</p>
-<p><em>General education, not personalised financial advice \u2014 your circumstances are specific, and a qualified adviser is the right person for specifics.</em></p>"""),
- ("budgeting-that-survives-real-life", "Budgeting that survives contact with real life",
-  "The four common frameworks, what each is actually good at, and the only rule that matters: the one you will still follow in March.",
-  """<p>Most budgets do not fail arithmetically. They fail socially \u2014 they demand a person the budget-writer is not. The frameworks below all work; the skill is choosing the one that matches your temperament, not the one that looks best in a spreadsheet.</p>
-<h2>The four you will actually meet</h2>
-<p><strong>Line-item budgeting</strong> \u2014 assign every category a number, track against it. The most precise and the most demanding; it suits people who like systems for their own sake.</p>
-<p><strong>Pay yourself first</strong> \u2014 decide what leaves for savings the moment income arrives, and spend the rest without tracking. Least effort, surprisingly effective; it suits people who hate budgets but can automate one transfer.</p>
-<p><strong>Zero-based budgeting</strong> \u2014 every unit of income gets a job until nothing is unassigned. The most intentional; it suits people with variable income who need every assignment to be conscious.</p>
-<p><strong>The 50/30/20 shape</strong> \u2014 a commonly cited starting split: roughly half of take-home to needs, some to wants, some to savings and debt. Its real value is not the exact percentages; it is the <em>distinction</em> between needs and wants, which most spending has never been forced to make.</p>
-<h2>The only rule that matters</h2>
-<p>The budget you will still follow in March beats the budget that is optimal in January. Practical consequences: automate whatever can be automated; leave a deliberate unallocated line for being human; review on payday rather than on some calendar date chosen by nobody in particular; and when you overspend a category, move money instead of moving guilt \u2014 a budget is a routing table, not a report card.</p>
-<h2>What a budget is actually for</h2>
-<p>Not restriction \u2014 <em>allocation</em>. Done honestly, it is the mechanical answer to a question most people answer by mood: is this purchase taking money from something I said mattered more? A budget you trust means the answer arrives in seconds, without a spreadsheet open.</p>
-<p><em>General education, not personalised financial advice.</em></p>"""),
- ("compound-interest-in-plain-terms", "Compound interest, explained without a single metaphor",
-  "How growth-on-growth actually works, one transparent worked example, and the two directions it can face.",
-  """<p>Compound interest is usually introduced with a snowball or a snowflake. It does not need one. It is arithmetic: growth applied to a base that includes previous growth, so the growth itself grows.</p>
-<h2>The mechanics in one paragraph</h2>
-<p>Simple interest pays only on the original amount. Compound interest pays on the original <em>plus everything already earned</em>, so each period's gain is calculated on a slightly larger base. Given enough periods, the later gains dwarf the early ones \u2014 which is why the effect is mostly a function of time, not of the size of the opening amount.</p>
-<h2>A worked example, shown rather than asserted</h2>
-<p>Take a principal of 1,000 at 10% per year, compounded annually \u2014 round numbers chosen so every step can be checked by hand. After one year: 1,100. After two: 1,210 (the second year earned 110, not 100 \u2014 that extra 10 is compounding). After ten: about 2,594. After thirty: about 17,449. The first decade roughly doubles the money; the last decade adds four times the entire starting principal. Nothing accelerates \u2014 the <em>rate</em> never changed. The base did.</p>
-<p>Run the same 1,000 at 7% \u2014 a rate closer to the long-run figures often quoted for broad equity indices, though past performance of anything guarantees nothing \u2014 and thirty years gives about 7,612. The gap between 7% and 10% over thirty years is not 30%; it is more than double the outcome. Small percentage differences compound too.</p>
-<h2>The two directions</h2>
-<p>The same arithmetic runs against you. A credit balance compounding monthly grows by the same logic, on a base that includes previous interest \u2014 which is why minimum payments on high-rate debt can feel like hauling water uphill: part of each payment covers interest that accrued simply while the balance existed. Compounding has no loyalty; it rewards whoever holds the base.</p>
-<h2>What this framework cannot tell you</h2>
-<p>It cannot tell you which asset will return what \u2014 nobody's can, in advance. It cannot tell you whether to invest or pay down debt. What it gives you is the shape of the decision: time in the market and the rate you accept or pay are not details of a plan; they <em>are</em> the plan.</p>
-<p><em>General education with an illustrative calculation \u2014 not personalised financial advice, and not a projection of any real product's returns.</em></p>"""),
-]
-
-def money_pages():
-    rows = "".join(
-        f'<li><a href="/{slug}/"><span><b>{title}</b><small>{blurb}</small></span><span class="meta">Read</span></a></li>'
-        for slug, title, blurb, _ in MONEY_ARTICLES)
-    index_body = f"""{head("money", "General finance, plainly \u2014 never personalised advice.")}
-<main id="main"><div class="wrap">
-<section class="cover"><p class="kicker">BRYME Money · the foundations</p>
-<h1 class="cover-title">Money, explained with the maths shown.</h1>
-<p class="cover-dek">Saving, budgeting and how the mechanics actually work \u2014 written as general education, with every calculation laid out so you can check it by hand. No stock tips, no product placements, no promises about returns, and never a word that pretends to know your circumstances.</p></section>
-<section class="section"><div class="section-head"><p class="kicker">Opening essays</p><h2>The foundations</h2></div>
-<ul class="list">{rows}</ul></section>
-<section class="section alt"><div class="section-head"><p class="kicker">The desk's rules</p><h2>What BRYME Money will never do.</h2></div>
-<p class="lede">It will not recommend specific products, funds or platforms; it will not quote returns without showing the arithmetic and its assumptions; it will not dress up general education as personal advice \u2014 the standing disclaimer is part of the format, not a footnote. Writer-specific money (freelance rates, invoicing, taxes) lives next door at <a href="{SUB["writers"]}/">BRYME Writers</a>, where it belongs.</p>
-</section></div></main>{foot("money")}"""
-    pages = [("/", "BRYME Money \u2014 general finance, plainly",
-              "Saving, budgeting and how money works \u2014 general education with the maths shown. Never personalised advice, never a product pitch.", index_body)]
-    for slug, title, blurb, body in MONEY_ARTICLES:
-        pbody = f"""{head("money", "General finance, plainly \u2014 never personalised advice.")}
-<main id="main"><div class="wrap">
-<nav class="crumb"><a href="/">Home</a> / {title}</nav>
-<section class="cover"><p class="kicker">Foundations · general education</p>
-<h1 class="cover-title" style="font-size:clamp(30px,4.6vw,48px)">{title}</h1>
-<p class="byline">By the BRYME Money desk · {TODAY} · general education, not personalised advice</p></section>
-<section class="section"><div class="prose">{body}</div></section>
-</div></main>{foot("money")}"""
-        pages.append((f"/{slug}/", f"{title} | BRYME Money", blurb, pbody))
-    return pages + legal_pages("money", "BRYME Money", "General personal-finance education \u2014 plainly written, maths shown, advice never personalised.")
-
-
 
 TECH_ARTICLES = [
  ("render-static-deploy", "How to deploy a static site on Render — from a site that did it",
@@ -532,36 +489,179 @@ TECH_ARTICLES = [
 <p>Never ping URLs that return 404, never submit a sitemap whose URLs contradict your canonicals, and never generate pages to fill a sitemap. The systems are designed by people who have seen every trick; the only sustainable strategy is to have the site actually be as described.</p>"""),
 ]
 
-def tech_pages():
-    rows = "".join(
-        f'<li><a href="/{slug}/"><span><b>{title}</b><small>{blurb}</small></span><span class="meta">Read →</span></a></li>'
-        for slug, title, blurb, _ in TECH_ARTICLES)
-    index_body = f"""{head("tech", "Practical technology. No theatre.")}
-<main id="main"><div class="wrap">
-<section class="cover"><p class="kicker">BRYME Tech</p>
-<h1 class="cover-title">Practical technology. No theatre.</h1>
-<p class="cover-dek">Walkthroughs written by someone who actually ran the deploy, bought the domain, rotated the token. Evergreen on purpose: the goal is that this page is still correct in a year, not that it was exciting this morning.</p></section>
-<section class="section"><div class="section-head"><p class="kicker">First-hand, dated {TODAY}</p><h2>The opening issues</h2></div>
-<ul class="list">{rows}</ul></section>
-<section class="section alt"><div class="section-head"><p class="kicker">The promise</p><h2>What "no theatre" means here.</h2></div>
-<p class="lede">No AI-tool hype cycles, no top-ten lists assembled from other top-ten lists, no benchmarks without the machine in front of us. If a piece says "first-hand", someone on this desk did the thing and wrote down what happened — including what went wrong.</p>
-</section></div></main>{foot("tech")}"""
-    pages = [("/", "BRYME Tech — practical technology, no theatre",
-              "First-hand technology walkthroughs: deploys, domains, tokens, front-end patterns. Evergreen, honest, no hype.", index_body)]
+TECH_CAT = {
+    "ai": ("AI, without the hype", "What the assistants actually do, what the free tiers really include, and where your conversations go \u2014 checked against the real products, not the press releases.", "hero-assistants.jpg"),
+    "tools": ("Free tools & real alternatives", "Free plans and alternatives we actually opened and used \u2014 what they include, what they hold back, and who each one fits.", "hero-alternatives.jpg"),
+    "web-and-hosting": ("Web & hosting", "Domains, DNS, deploys and the front end \u2014 written from first-hand builds of this very site, failures included.", "hero-hosting.jpg"),
+    "safety": ("Safety & privacy", "Passwords, messaging, tokens and your data \u2014 practical protection without the scaremongering.", "hero-privacy.jpg"),
+}
+_TECH_CAT_OF = {
+    "hosting": "web-and-hosting", "ai-assistants": "ai", "beginner-coding": "coding",
+    "app-alternatives": "tools", "useful-websites": "tools", "cybersecurity": "safety",
+    "android-apps": "safety", "productivity": "tools",
+}
+_TECH_CUR_CAT = {
+    "csp-safe-front-end": "web-and-hosting", "custom-domain-dns-order": "web-and-hosting",
+    "render-static-deploy": "web-and-hosting", "sitemap-indexnow": "web-and-hosting",
+    "github-token-hygiene": "safety",
+}
+
+def _norm_tech(rec):
+    return {
+        "slug": rec["slug"], "title": rec["title"], "excerpt": rec.get("excerpt", ""),
+        "cat": _TECH_CAT_OF.get(rec.get("categorySlug", ""), "coding"),
+        "pub": (rec.get("publishedAt") or "")[:10], "upd": (rec.get("updatedAt") or "")[:10],
+        "read": rec.get("readingTime", ""), "author": rec.get("author", "BRYME Tech desk"),
+        "blocks": rec.get("content", []), "sources": rec.get("sources", []), "recovered": True,
+    }
+
+def _load_tech():
+    arts = [_norm_tech(r) for r in json.loads(
+        (OUT.parent / "content" / "tech-articles.json").read_text(encoding="utf-8"))]
+    by_slug = {a["slug"]: a for a in arts}
     for slug, title, blurb, body in TECH_ARTICLES:
-        pbody = f"""{head("tech", "Practical technology. No theatre.")}
-<main id="main"><div class="wrap">
-<nav class="crumb"><a href="/">Home</a> / {title}</nav>
-<section class="cover"><p class="kicker">First-hand · verified on the real thing</p>
-<h1 class="cover-title" style="font-size:clamp(30px,4.6vw,48px)">{title}</h1>
-<p class="byline">By the BRYME Tech desk · {TODAY} · from a production build, not documentation</p></section>
-<section class="section"><div class="prose">{body}</div></section>
-</div></main>{foot("tech")}"""
-        pages.append((f"/{slug}/", f"{title} | BRYME Tech", blurb, pbody))
+        if slug in by_slug:
+            continue
+        arts.append({"slug": slug, "title": title, "excerpt": blurb,
+                     "cat": _TECH_CUR_CAT.get(slug, "coding"), "pub": TODAY, "upd": TODAY,
+                     "read": "", "author": "the BRYME Tech desk",
+                     "blocks": [{"heading": "", "body": body, "html": True}],
+                     "sources": [], "recovered": False})
+    return arts
+
+def _tech_blocks(a):
+    out = []
+    for b in a["blocks"]:
+        h = html.escape(b.get("heading") or "")
+        if h:
+            out.append("<h2>" + h + "</h2>")
+        body = b.get("body") or ""
+        if b.get("html"):
+            out.append(body)
+        else:
+            out.append("".join("<p>" + html.escape(pp).replace("\n", " ") + "</p>"
+                               for pp in body.split("\n\n") if pp.strip()))
+    return "".join(out)
+
+def _tech_related(a, arts, n=3):
+    same = [x for x in arts if x["cat"] == a["cat"] and x["slug"] != a["slug"]]
+    pool = ["where-to-host-website-for-free", "bitwarden-free-password-manager",
+            "learning-to-code-on-a-phone-termux", "custom-domain-dns-order"]
+    extra = [by for by in arts if by["slug"] in pool and by["slug"] != a["slug"] and by not in same]
+    return (same + extra)[:n]
+
+def tech_pages():
+    arts = _load_tech()
+    by_cat = {}
+    for a in arts:
+        by_cat.setdefault(a["cat"], []).append(a)
+    for lst in by_cat.values():
+        lst.sort(key=lambda x: x["upd"] or x["pub"], reverse=True)
+
+    cat_pages = {}
+    for cslug, (cname, cdesc, _hero) in TECH_CAT.items():
+        lst = by_cat.get(cslug, [])
+        rows = "".join(
+            '<li><a href="/' + a["slug"] + '/"><span><b>' + html.escape(a["title"]) + "</b>"
+            "<small>" + html.escape(a["excerpt"][:110]) + ("\u2026" if len(a["excerpt"]) > 110 else "") + "</small></span>"
+            '<span class="meta">' + (a["upd"] or a["pub"]) + "</span></a></li>"
+            for a in lst)
+        others = "".join('<a class="btn secondary" href="/' + c + '/">' + html.escape(TECH_CAT[c][0]) + "</a>"
+                         for c in TECH_CAT if c != cslug)
+        cbody = (head("tech", "Practical technology. No theatre.")
+            + '<main id="main"><div class="wrap">'
+            + '<nav class="crumb"><a href="/tech/">Tech</a> / ' + html.escape(cname) + "</nav>"
+            + '<section class="cover"><p class="kicker">BRYME Tech \u00b7 section</p>'
+            + '<h1 class="cover-title">' + html.escape(cname) + "</h1>"
+            + '<p class="cover-dek">' + html.escape(cdesc) + "</p></section>"
+            + '<section class="section"><div class="section-head"><p class="kicker">' + str(len(lst)) + ' guides</p><h2>Everything in ' + html.escape(cname) + '.</h2></div>'
+            + '<ul class="list">' + rows + "</ul></section>"
+            + '<section class="section alt"><div class="section-head"><p class="kicker">Keep going</p><h2>Elsewhere on this desk.</h2></div>'
+            + '<div class="actions">' + others + '</div></section></div></main>' + foot("tech"))
+        cat_pages[cslug] = [("/" + cslug + "/", cname + " | BRYME Tech", cdesc, cbody)]
+
+    def art_page(a):
+        cslug = a["cat"]
+        cname = TECH_CAT.get(cslug, ("Coding",))[0] if cslug in TECH_CAT else "Coding"
+        chref = "/tech/" if cslug not in TECH_CAT else "/tech/" + cslug + "/"
+        rel = _tech_related(a, arts)
+        rel_html = "".join('<li><a href="/' + r["slug"] + '/">' + html.escape(r["title"]) + "</a></li>" for r in rel)
+        src_html = ""
+        if a["sources"]:
+            src_html = ('<h2>Sources</h2><ul class="list">'
+                        + "".join('<li><a href="' + html.escape(s["url"]) + '" rel="noopener">' + html.escape(s["name"]) + "</a></li>"
+                                  for s in a["sources"]) + "</ul>")
+        meta_bits = ["By " + html.escape(a["author"])]
+        if a["pub"]:
+            meta_bits.append("published " + a["pub"])
+        if a["upd"] and a["upd"] != a["pub"]:
+            meta_bits.append("updated " + a["upd"])
+        if a["read"]:
+            meta_bits.append(a["read"])
+        tag = ("Recovered from the BRYME tech archive \u00b7 " if a["recovered"] else "First-hand \u00b7 ")
+        summ = ('<section class="section alt"><div class="wrap"><p class="lede"><b>In one line:</b> '
+                + html.escape(a["excerpt"]) + "</p></div></section>") if a["excerpt"] else ""
+        schema = {"@context": "https://schema.org", "@type": "TechArticle",
+                  "headline": a["title"], "author": {"@type": "Person", "name": a["author"]},
+                  "publisher": {"@type": "Organization", "name": "THE BRYME"},
+                  "datePublished": a["pub"] or None, "dateModified": a["upd"] or a["pub"] or None,
+                  "mainEntityOfPage": ORIGIN + "/tech/" + a["slug"] + "/"}
+        import json as _j
+        abody = (head("tech", "Practical technology. No theatre.")
+            + '<main id="main"><div class="wrap">'
+            + '<nav class="crumb"><a href="/tech/">Tech</a> / <a href="' + chref + '">' + html.escape(cname) + "</a> / " + html.escape(a["title"]) + "</nav>"
+            + '<section class="cover"><p class="kicker">' + tag + "verified against the real thing</p>"
+            + '<h1 class="cover-title" style="font-size:clamp(30px,4.6vw,48px)">' + html.escape(a["title"]) + "</h1>"
+            + '<p class="byline">' + " \u00b7 ".join(meta_bits) + "</p></section>"
+            + summ
+            + '<section class="section"><div class="prose">' + _tech_blocks(a) + src_html + "</div></section>"
+            + '<section class="section alt"><div class="section-head"><p class="kicker">Next</p><h2>Related on this desk.</h2></div>'
+            + '<ul class="list">' + rel_html + '</ul>'
+            + '<div class="actions"><a class="btn secondary" href="' + chref + '">All of ' + html.escape(cname) + '</a>'
+            + '<a class="btn secondary" href="/tech/">All of BRYME Tech</a></div></section>'
+            + '<script type="application/ld+json">' + _j.dumps(schema) + "</script>"
+            + "</div></main>" + foot("tech"))
+        return (("/" + a["slug"] + "/"), a["title"] + " | BRYME Tech", a["excerpt"][:155], abody)
+
+    latest = sorted(arts, key=lambda x: x["upd"] or x["pub"], reverse=True)[:5]
+    latest_rows = "".join(
+        '<li><a href="/' + a["slug"] + '/"><span><b>' + html.escape(a["title"]) + "</b><small>"
+        + html.escape(a["excerpt"][:100]) + "\u2026</small></span><span class=\"meta\">" + (a["upd"] or a["pub"]) + "</span></a></li>"
+        for a in latest)
+    start_here = ["where-to-host-website-for-free", "bitwarden-free-password-manager",
+                  "render-deployment-failures-what-they-taught-me"]
+    start_rows = "".join(
+        '<li><a href="/' + s + '/"><span><b>' + html.escape(next(a["title"] for a in arts if a["slug"] == s))
+        + "</b><small>" + html.escape(next(a["excerpt"][:110] for a in arts if a["slug"] == s))
+        + "\u2026</small></span><span class=\"meta\">Start here</span></a></li>" for s in start_here)
+    cat_cards = "".join(
+        '<article class="pub-card live" style="--pc:#1e3a5f"><p class="pc-kicker">' + str(len(by_cat.get(c, []))) + ' GUIDES</p>'
+        + "<h3>" + html.escape(TECH_CAT[c][0]) + "</h3><p>" + html.escape(TECH_CAT[c][1][:130]) + "\u2026</p>"
+        + '<a class="btn" href="/' + c + '/">Browse ' + html.escape(TECH_CAT[c][0].split(",")[0].split(" &")[0]) + ' \u2192</a></article>'
+        for c in TECH_CAT)
+    index_body = (head("tech", "Practical technology. No theatre.")
+        + '<main id="main"><div class="wrap">'
+        + '<section class="cover"><p class="kicker">BRYME Tech</p>'
+        + '<h1 class="cover-title">Practical technology. No theatre.</h1>'
+        + '<p class="cover-dek">You have a technology problem, question or decision. This desk helps you understand or solve it \u2014 with guides checked against the real products and real deploys, dated honestly, and evergreen on purpose.</p></section>'
+        + '<section class="section"><div class="section-head"><p class="kicker">Handpicked</p><h2>Start here.</h2></div>'
+        + '<ul class="list">' + start_rows + "</ul></section>"
+        + '<section class="section alt"><div class="section-head"><p class="kicker">Browse by need</p><h2>Sections of this desk.</h2></div>'
+        + '<div class="cards">' + cat_cards + "</div>"
+        + '<p class="lede" style="margin-top:18px">Coding coverage is growing from one honest piece: <a href="/learning-to-code-on-a-phone-termux/">learning to code on a phone, and what actually broke</a>.</p></section>'
+        + '<section class="section"><div class="section-head"><p class="kicker">Freshly dated</p><h2>Recently updated.</h2></div>'
+        + '<ul class="list">' + latest_rows + "</ul></section>"
+        + '<section class="section alt"><div class="section-head"><p class="kicker">The promise</p><h2>What "no theatre" means here.</h2></div>'
+        + '<p class="lede">No AI-tool hype cycles, no top-ten lists assembled from other top-ten lists, no benchmarks without the machine in front of us. If a piece says first-hand, someone on this desk did the thing and wrote down what happened \u2014 including what went wrong. Time-sensitive facts carry their verification dates and named sources.</p>'
+        + '</section></div></main>' + foot("tech"))
+    pages = [("/", "BRYME Tech \u2014 practical technology help, no theatre",
+              "Practical technology guides: AI checked against real products, free-tool alternatives, hosting and DNS from real deploys, and safety without scaremongering.", index_body)]
+    for cslug, pl in cat_pages.items():
+        pages.extend(pl)
+    pages.extend(art_page(a) for a in arts)
     return pages + legal_pages("tech", "BRYME Tech", "Practical technology from people who ran the thing.")
 
 
-# ------------------------------------------------------------------- main
 def main() -> None:
     (OUT / "hub").mkdir(parents=True, exist_ok=True)
     hp = hub_pages()
@@ -580,7 +680,22 @@ def main() -> None:
     write_service("entertainment", entertainment_pages())
     write_service("sports", sports_pages())
     write_service("tech", tech_pages())
-    write_service("money", money_pages())
+    write_placeholder("fitness", "BRYME Fitness",
+        "Practical fitness guidance \u2014 programs, challenges and progress, without medical claims.",
+        "BRYME Fitness will answer one question: how do I build a fitness routine I can actually sustain? Beginner programs, walking and strength challenges, exercise and equipment guides, and 30-day plans built around one honest idea \u2014 a reason to come back tomorrow.",
+        ["Beginner programs \u2014 start-from-zero plans with sensible progression",
+         "30-day challenges \u2014 one day at a time, tracked as you go",
+         "Walking plans \u2014 the most underrated habit in fitness",
+         "Strength starters \u2014 simple, safe, progressive",
+         "Exercise & equipment guides \u2014 what it works, who it fits"])
+    write_placeholder("home", "BRYME Home & DIY",
+        "Practical help for fixing, maintaining, improving and understanding your home.",
+        "BRYME Home & DIY will answer the questions every household hits: why is this not working, how do I maintain it, and can I fix it myself? Low-risk practical problems first \u2014 and clear, non-negotiable safety boundaries: electrical, gas and structural work belongs to qualified professionals.",
+        ["Fix it \u2014 household problems and beginner repairs",
+         "Clean it \u2014 cleaning and maintenance that actually works",
+         "Maintain it \u2014 preventive home maintenance, season by season",
+         "Understand it \u2014 appliance symbols, noises and questions",
+         "Improve it \u2014 organisation and safe DIY projects"])
     print(f"ecosystem built for {DOMAIN}")
 
 

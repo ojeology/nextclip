@@ -9,10 +9,19 @@ publications under path prefixes. Subdomains are a config flip, not a rebuild (s
 | --- | --- | --- |
 | THE BRYME (hub) | `/` | thebryme.com |
 | BRYME Writers (flagship) | `/writers/` | writers.thebryme.com |
+> **Route decision — Home & DIY lives at `/home`** (not `/diy`): it matches the planned
+> `home.thebryme.com`, and the property identity (fix/clean/maintain/understand/improve) is
+> broader than DIY. Never create both.
+>
+> **Money was removed from the ecosystem entirely** (route, nav, config, sitemaps, robots).
+> Its retired research files stay unpublished in `content/` (`make-money-articles.json`,
+> `money-*.json`). Writer-specific money content (rates, invoicing, taxes) remains in
+> BRYME Writers where it belongs.
 | BRYME Sports | `/sports/` | sports.thebryme.com |
 | BRYME Tech | `/tech/` | tech.thebryme.com |
 | BRYME Entertainment | `/entertainment/` | entertainment.thebryme.com |
-| BRYME Money | `/money/` | money.thebryme.com |
+| BRYME Fitness | `/fitness/` (foundation, noindex) | fitness.thebryme.com |
+| BRYME Home & DIY | `/home/` (foundation, noindex) | home.thebryme.com |
 
 ## Build chain (run in this order)
 

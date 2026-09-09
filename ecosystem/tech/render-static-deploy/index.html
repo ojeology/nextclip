@@ -2,11 +2,11 @@
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>How to deploy a static site on Render — from a site that did it | BRYME Tech</title>
-<meta name="description" content="Push-to-deploy, the publish directory, spooling deploys and the free-tier cold start: the whole path, written by someone whose production site runs on exactly this.">
+<meta name="description" content="Push-to-deploy, the publish directory, spooling deploys and the free-tier cold start: the whole path, written by someone whose production site runs on exac">
 <meta name="robots" content="index,follow">
 <link rel="canonical" href="https://bryme.onrender.com/tech/render-static-deploy/">
 <meta property="og:type" content="website"><meta property="og:site_name" content="THE BRYME">
-<meta property="og:title" content="How to deploy a static site on Render — from a site that did it | BRYME Tech"><meta property="og:description" content="Push-to-deploy, the publish directory, spooling deploys and the free-tier cold start: the whole path, written by someone whose production site runs on exactly this.">
+<meta property="og:title" content="How to deploy a static site on Render — from a site that did it | BRYME Tech"><meta property="og:description" content="Push-to-deploy, the publish directory, spooling deploys and the free-tier cold start: the whole path, written by someone whose production site runs on exac">
 <meta property="og:url" content="https://bryme.onrender.com/tech/render-static-deploy/"><meta property="og:image" content="https://https://bryme.onrender.com/tech/render-static-deploy//assets/og.png">
 <meta name="twitter:card" content="summary_large_image">
 <style>
@@ -88,13 +88,7 @@ h1.cover-title{font-family:var(--serif);font-weight:700;letter-spacing:-.018em;f
 <a class="mast-brand" href="/">BRYME&nbsp;<span style="color:var(--accent)">TECH</span></a>
 <span class="mast-tag">Practical technology. No theatre.</span>
 <a class="parent-link" href="https://thebryme.com/">THE BRYME</a>
-</div></header>
-<main id="main"><div class="wrap">
-<nav class="crumb"><a href="/">Home</a> / How to deploy a static site on Render — from a site that did it</nav>
-<section class="cover"><p class="kicker">First-hand · verified on the real thing</p>
-<h1 class="cover-title" style="font-size:clamp(30px,4.6vw,48px)">How to deploy a static site on Render — from a site that did it</h1>
-<p class="byline">By the BRYME Tech desk · 2026-09-09 · from a production build, not documentation</p></section>
-<section class="section"><div class="prose"><p>This site you are reading runs on Render's free static hosting, and so does its 500-page sibling. Everything below is first-hand, not documentation paraphrase.</p>
+</div></header><main id="main"><div class="wrap"><nav class="crumb"><a href="/tech/">Tech</a> / <a href="/tech/web-and-hosting/">Web &amp; hosting</a> / How to deploy a static site on Render — from a site that did it</nav><section class="cover"><p class="kicker">First-hand · verified against the real thing</p><h1 class="cover-title" style="font-size:clamp(30px,4.6vw,48px)">How to deploy a static site on Render — from a site that did it</h1><p class="byline">By the BRYME Tech desk · published 2026-09-09</p></section><section class="section alt"><div class="wrap"><p class="lede"><b>In one line:</b> Push-to-deploy, the publish directory, spooling deploys and the free-tier cold start: the whole path, written by someone whose production site runs on exactly this.</p></div></section><section class="section"><div class="prose"><p>This site you are reading runs on Render's free static hosting, and so does its 500-page sibling. Everything below is first-hand, not documentation paraphrase.</p>
 <h2>The three decisions that matter</h2>
 <p><strong>1. Build command vs publish directory.</strong> Render runs your build command, then serves whatever directory you name as the publish directory. Ours is <code>npm run build</code> publishing <code>public/</code>. The classic mistake is testing locally, deploying, and looking at a stale page — because the publish directory points at the source folder instead of the build output. Point it at generated output, always.</p>
 <p><strong>2. The build can fail and the site still serves.</strong> A static host serves the last good deploy. That is resilience, but it hides breakage: your build can be red for days while the site looks fine. Wire a status notification (Render's dashboard hooks or a simple build-badge check) — trust the build log, not the homepage.</p>
@@ -107,8 +101,7 @@ h1.cover-title{font-family:var(--serif);font-weight:700;letter-spacing:-.018em;f
 <li>Publish directory = generated output only.</li>
 <li>Custom redirects declared once, in the file the host actually reads.</li>
 <li>After the first deploy: curl every critical URL. Never sample — verify.</li>
-</ul></div></section>
-</div></main><footer class="foot"><div class="wrap foot-in">
+</ul></div></section><section class="section alt"><div class="section-head"><p class="kicker">Next</p><h2>Related on this desk.</h2></div><ul class="list"><li><a href="/where-to-host-website-for-free/">Where to Host a Website for Free — And What Free Actually Means</a></li><li><a href="/render-deployment-failures-what-they-taught-me/">The Website Worked. The Deployment Didn&#x27;t.</a></li><li><a href="/custom-domain-dns-order/">Custom domains: the DNS order that avoids downtime</a></li></ul><div class="actions"><a class="btn secondary" href="/tech/web-and-hosting/">All of Web &amp; hosting</a><a class="btn secondary" href="/tech/">All of BRYME Tech</a></div></section><script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "headline": "How to deploy a static site on Render \u2014 from a site that did it", "author": {"@type": "Person", "name": "the BRYME Tech desk"}, "publisher": {"@type": "Organization", "name": "THE BRYME"}, "datePublished": "2026-09-09", "dateModified": "2026-09-09", "mainEntityOfPage": "https://bryme.onrender.com/tech/render-static-deploy/"}</script></div></main><footer class="foot"><div class="wrap foot-in">
 <div>© 2026 THE BRYME — Tech.</div>
 <div><a href="/tech/about/">About</a> · <a href="/tech/privacy/">Privacy</a> · <a href="/tech/contact/">Contact</a></div>
 <div><a href="https://thebryme.com/">thebryme.com</a></div>

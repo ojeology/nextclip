@@ -73,7 +73,7 @@ ECO = ROOT / "ecosystem"
 if (ECO / "config.json").is_file():
     import json as _json
     if _json.loads((ECO / "config.json").read_text()).get("mode") == "path":
-        for _p in ("sports", "tech", "entertainment", "money"):
+        for _p in ("sports", "tech", "entertainment", "fitness", "home"):
             if (ECO / _p).is_dir():
                 _dst = PUB / _p
                 if _dst.exists():
@@ -88,7 +88,7 @@ if (ECO / "config.json").is_file():
 # Assertion: against the PUBLISHED sitemap (the hub's after the override).
 import re as _re
 _sm = (PUB / "sitemap.xml").read_text(encoding="utf-8")
-_staged = set(PUBLIC_DIRS) | {"sports", "tech", "entertainment", "money"} | {f.split(".")[0] for f in PUBLIC_FILES}
+_staged = set(PUBLIC_DIRS) | {"sports", "tech", "entertainment", "fitness", "home"} | {f.split(".")[0] for f in PUBLIC_FILES}
 _missing = set()
 for _u in _re.findall(r"<loc>([^<]+)</loc>", _sm):
     _seg = _re.sub(r"^[a-z]+://[^/]+", "", _u).strip("/")

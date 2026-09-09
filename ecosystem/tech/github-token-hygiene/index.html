@@ -88,13 +88,7 @@ h1.cover-title{font-family:var(--serif);font-weight:700;letter-spacing:-.018em;f
 <a class="mast-brand" href="/">BRYME&nbsp;<span style="color:var(--accent)">TECH</span></a>
 <span class="mast-tag">Practical technology. No theatre.</span>
 <a class="parent-link" href="https://thebryme.com/">THE BRYME</a>
-</div></header>
-<main id="main"><div class="wrap">
-<nav class="crumb"><a href="/">Home</a> / Personal access tokens: using them without leaking them</nav>
-<section class="cover"><p class="kicker">First-hand · verified on the real thing</p>
-<h1 class="cover-title" style="font-size:clamp(30px,4.6vw,48px)">Personal access tokens: using them without leaking them</h1>
-<p class="byline">By the BRYME Tech desk · 2026-09-09 · from a production build, not documentation</p></section>
-<section class="section"><div class="prose"><p>A GitHub personal access token in a build pipeline is a standing temptation to do the lazy thing: paste it into a script, commit, move on. Don't. Here is the discipline that works day-to-day.</p>
+</div></header><main id="main"><div class="wrap"><nav class="crumb"><a href="/tech/">Tech</a> / <a href="/tech/safety/">Safety &amp; privacy</a> / Personal access tokens: using them without leaking them</nav><section class="cover"><p class="kicker">First-hand · verified against the real thing</p><h1 class="cover-title" style="font-size:clamp(30px,4.6vw,48px)">Personal access tokens: using them without leaking them</h1><p class="byline">By the BRYME Tech desk · published 2026-09-09</p></section><section class="section alt"><div class="wrap"><p class="lede"><b>In one line:</b> Least-scope tokens, where they can and cannot appear, and the rotation habit — written after months of daily build use.</p></div></section><section class="section"><div class="prose"><p>A GitHub personal access token in a build pipeline is a standing temptation to do the lazy thing: paste it into a script, commit, move on. Don't. Here is the discipline that works day-to-day.</p>
 <h2>Scope it to the minimum</h2>
 <p>A token that only pushes to one repository needs exactly one scope: contents read/write on that repo. Fine-grained tokens (now the default in GitHub's settings) let you select the single repository and the single permission. If your token's description says "for everything", it is wrong.</p>
 <h2>Where a token may appear</h2>
@@ -106,8 +100,7 @@ h1.cover-title{font-family:var(--serif);font-weight:700;letter-spacing:-.018em;f
 <h2>The rotation habit</h2>
 <p>Rotate on a schedule you would be embarrassed to break: 90 days for personal tokens is a good default, immediately after any suspected exposure, and whenever a collaborator leaves. Rotation costs five minutes if your pipeline reads the token from one secret; it costs an evening if the token is pasted in six places.</p>
 <h2>The tell you're doing it right</h2>
-<p>Grep your repository for the token prefix right now (<code>ghp_</code> for classic tokens). The correct number of results is zero — including in history, which you can check with <code>git log -S ghp_</code>. If history is dirty and the repo is public, the token is burned: revoke first, refactor second.</p></div></section>
-</div></main><footer class="foot"><div class="wrap foot-in">
+<p>Grep your repository for the token prefix right now (<code>ghp_</code> for classic tokens). The correct number of results is zero — including in history, which you can check with <code>git log -S ghp_</code>. If history is dirty and the repo is public, the token is burned: revoke first, refactor second.</p></div></section><section class="section alt"><div class="section-head"><p class="kicker">Next</p><h2>Related on this desk.</h2></div><ul class="list"><li><a href="/bitwarden-free-password-manager/">Bitwarden’s Free Plan: Unlimited Devices, Officially</a></li><li><a href="/signal-vs-whatsapp/">Signal vs WhatsApp: Free, and What That Word Means</a></li><li><a href="/where-to-host-website-for-free/">Where to Host a Website for Free — And What Free Actually Means</a></li></ul><div class="actions"><a class="btn secondary" href="/tech/safety/">All of Safety &amp; privacy</a><a class="btn secondary" href="/tech/">All of BRYME Tech</a></div></section><script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "headline": "Personal access tokens: using them without leaking them", "author": {"@type": "Person", "name": "the BRYME Tech desk"}, "publisher": {"@type": "Organization", "name": "THE BRYME"}, "datePublished": "2026-09-09", "dateModified": "2026-09-09", "mainEntityOfPage": "https://bryme.onrender.com/tech/github-token-hygiene/"}</script></div></main><footer class="foot"><div class="wrap foot-in">
 <div>© 2026 THE BRYME — Tech.</div>
 <div><a href="/tech/about/">About</a> · <a href="/tech/privacy/">Privacy</a> · <a href="/tech/contact/">Contact</a></div>
 <div><a href="https://thebryme.com/">thebryme.com</a></div>

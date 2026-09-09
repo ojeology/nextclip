@@ -32,3 +32,20 @@ The historical `sports/` section (157 pages) is **match/data pages and badge ass
 ## Legal surface check
 
 Historical movie catalog pages contained incidental "watch" text but **no download infrastructure**. The new Entertainment property is information-only by construction (see its index promise), satisfying the plan's hard rule.
+
+
+## 2026-09-09 — ecosystem map revision + Tech archive recovery
+
+- **Money property removed** (spec order): /money/ (7 pages: index, 3 foundation essays, 3 legal)
+  pulled from build, config, nav, sitemaps, robots. No redirects mass-created; research data
+  files stay unpublished in content/. Business: never existed; confirmed absent.
+- **Old BRYME Tech recovered** from content/tech-articles.json (17 published articles, Aug 2026,
+  author Ibrahim Sodiq, named sources): all 17 RESTORED verbatim-in-content, re-typeset in the
+  current shell with honest published/updated dates, sources lists and TechArticle schema.
+  Classification: 17 RESTORE, 0 RETIRE (the archive was strong).
+- **Old tech IA retired**: 18 thin category hub pages from the old tech site replaced by 4
+  earned sections (/tech/ai/, /tech/tools/, /tech/web-and-hosting/, /tech/safety/); coding
+  waits at 1 article (no hub page until it earns one). best-streaming-apps-nigeria: MOVE
+  candidate to Entertainment at its build.
+- **Foundations added**: /fitness/ and /home/ — one honest plan page + standard legal each,
+  all noindex,follow, no sitemap entries, no fake content.
