@@ -264,6 +264,30 @@ def entertainment_pages():
     picks = ["korean-cinema-starter-guide-rebuilt", "christopher-nolan-movies-order",
              "nigerian-thrillers-worth-your-time", "indian-cinema-first-five",
              "modern-horror-starter-route", "how-to-pick-a-movie-tonight"]
+    # The full restored shelf (audit grades A+B+C): the 2025 research corpus
+    # worth keeping is back online as archive editions. True duplicates and
+    # the audited-out pieces stay retired (see retired-content-audit.md).
+    picks += [
+        "10-anime-like-solo-leveling-you-should-watch",
+        "10-shows-like-alice-in-borderland-you-should-watch-next",
+        "solo-leveling-vs-hunter-x-hunter-the-similarities-and-differences",
+        "solo-leveling-from-e-rank-hunter-to-one-of-animes-most-powerful-characters",
+        "solo-leveling-e-rank-to-s-rank",
+        "breaking-bad-two-seasons-opinion",
+        "squid-game-season-1-why-it-became-a-global-phenomenon",
+        "why-prison-break-season-1-is-still-one-of-the-best-tv-seasons",
+         "prison-break-season-1-watching-all-night", "one-piece-vs-naruto",
+        "alice-in-borderland-vs-squid-game",
+        "was-eren-yeager-really-the-villain",
+        "into-the-badlands-was-underrated",
+        "movies-like-interstellar-guide",
+        "movies-like-parasite",
+        "movies-like-deadpool-and-wolverine",
+        "5-movies-that-broke-the-internet",
+        "7-movies-we-wished-never-ended",
+    ]
+    # superseded duplicates: the rebuilt/newer edition is the one restored
+    dupes = {"korean-cinema-starter-guide", "movies-like-interstellar"}
     by_slug = {m["slug"]: m for m in manifest}
     art_rows = ""
     pages = []
@@ -284,8 +308,8 @@ def entertainment_pages():
         pages.append((route, f'{m["title"]} | BRYME Entertainment',
                       "From the BRYME archive — re-typeset and honestly labelled.", pbody))
     archive_note = "".join(
-        f'<li><span><b>{html.escape(m["title"])}</b><small>{m["words"]} words · recovered, restoration pending</small></span><span class="meta">Archive</span></li>'
-        for m in manifest if m["slug"] not in picks)
+        f'<li><span><b>{html.escape(m["title"])}</b><small>{m["words"]} words · reviewed by the audit — retired on merit</small></span><span class="meta">Retired</span></li>'
+        for m in manifest if m["slug"] not in picks and m["slug"] not in dupes)
     index_body = f"""{head("entertainment", "Cinema, TV and anime — written about, never pirated.")}
 <main id="main"><div class="wrap">
 <section class="cover"><p class="kicker">BRYME Entertainment</p>
