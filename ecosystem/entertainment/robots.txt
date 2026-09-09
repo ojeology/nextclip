@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://entertainment.thebryme.com/sitemap.xml

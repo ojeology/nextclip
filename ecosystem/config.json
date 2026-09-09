@@ -1,0 +1,5 @@
+{
+  "domain": "thebryme.com",
+  "subdomains": { "writers": "writers", "sports": "sports", "entertainment": "entertainment", "tech": "tech" },
+  "notes": "PRODUCTION_DOMAIN env var overrides domain. writers.thebryme.com serves the EXISTING main build (this repo's public/), not a dir here."
+}

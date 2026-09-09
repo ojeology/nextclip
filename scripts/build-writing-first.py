@@ -52,8 +52,13 @@ footer = _build_focus.footer
 
 
 def footer() -> str:
-    """Writing Hub footer."""
-    return '''<footer class="site-foot"><div class="wrap foot-grid">
+    """Writing Hub footer. Parent-brand line renders only when configured."""
+    parent = (json.loads((ROOT / "site.config.json").read_text(encoding="utf-8")).get("parent") or {})
+    parent_line = ""
+    if parent.get("url"):
+        parent_line = ('<div class="foot-parent"><a href="' + esc(parent["url"]) + '">'
+                       + esc(parent.get("name") or "THE BRYME") + '</a> — one of the BRYME publications.</div>')
+    return parent_line + '''<footer class="site-foot"><div class="wrap foot-grid">
   <div class="foot-brand"><a class="logo" href="/"><span class="logo-mark" aria-hidden="true">B</span>BRYME</a><p>BRYME is a free writing resource — guides, tools, and verified opportunities to get published and paid.</p></div>
   <div class="foot-col"><b>How to write</b><a href="/start/">Beginner path</a><a href="/find/">What do you want to write?</a><a href="/intelligence/">Writing Intelligence</a><a href="/compare/">Compare formats</a><a href="/regional/">Writing conventions</a><a href="/learn/">Writing hub</a><a href="/learn/examples/">Examples</a><a href="/learn/dos-and-donts/">Dos &amp; don'ts</a><a href="/learn/types-of-writing/">Types of writing</a><a href="/learn/grammar-language/">Grammar</a></div>
   <div class="foot-col"><b>Tools &amp; publish</b><a href="/tools/">Writing tools</a><a href="/templates/">Templates</a><a href="/checklists/">Checklists</a><a href="/writing/">Paid opportunities</a><a href="/writing-opportunities/">Browse by country</a><a href="/today/">Today&rsquo;s opportunities</a><a href="/newsletter/">Weekly digest</a><a href="/tracker/">Submission tracker</a><a href="/studio/">Writing Studio</a><a href="/tested/">BRYME Tested</a></div>

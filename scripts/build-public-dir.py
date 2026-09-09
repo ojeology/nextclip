@@ -27,7 +27,7 @@ PUBLIC_DIRS = [
     "verification", "find", "start", "compare", "regional", "intelligence", "tracker", "today", "writing-opportunities", "essays", "read",
     "newsletter", "opportunities", "jobs", "make-money", "tech",
 ]
-AUTO_EXCLUDE = {".git", "node_modules", "public", "content", "docs", "scripts", "server", "reports"}
+AUTO_EXCLUDE = {".git", "node_modules", "public", "content", "docs", "scripts", "server", "reports", "ecosystem"}
 _auto = sorted(
     d.name for d in ROOT.iterdir()
     if d.is_dir() and d.name not in AUTO_EXCLUDE and (d / "index.html").is_file()
