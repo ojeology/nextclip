@@ -144,3 +144,13 @@ Historical movie catalog pages contained incidental "watch" text but **no downlo
   and champions-league-new-format-explained (old groups vs new league, both cases argued).
 - No invented results, no odds, no live-scores product — house rule stated on the hubs.
   Sport 16→20 pages (7 explainers + 2 desks + 5 archive + index + legal).
+
+## 2026-09-09 — Entertainment: the evergreen layer (5 guides)
+
+- how-streaming-licensing-works (why titles vanish; check-first-not-piracy stance),
+  anime-seasons-and-cours-explained (release mechanics incl. split cours),
+  subtitles-or-dubs (honest three-trade-offs take), why-everything-is-a-remake
+  (economics stated plainly; "judge the argument, not the format"),
+  how-to-build-a-watchlist (three-list system; joins Start here).
+- Provenance system now on Entertainment too: Evergreen guide / Archive edition (2025) /
+  Moved from the tech desk. Entertainment 30→35 pages (explainers 6→10, recs 12→13).

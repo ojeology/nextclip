@@ -355,7 +355,7 @@ ENT_MERGE = {
     "solo-leveling-e-rank-to-s-rank": "solo-leveling-from-e-rank-hunter-to-one-of-animes-most-powerful-characters",
     "why-prison-break-season-1-is-still-one-of-the-best-tv-seasons": "prison-break-season-1-watching-all-night",
 }
-ENT_START = ["how-to-pick-a-movie-tonight", "christopher-nolan-movies-order",
+ENT_START = ["how-to-pick-a-movie-tonight", "how-to-build-a-watchlist", "christopher-nolan-movies-order",
              "best-streaming-apps-nigeria", "korean-cinema-starter-guide-rebuilt"]
 
 def _first_line(body_html, fallback=""):
@@ -378,12 +378,23 @@ def entertainment_pages():
         "slug": "best-streaming-apps-nigeria",
         "title": "Best Streaming Apps in Nigeria (2026), Honestly Compared",
         "words": 900, "moved": True}
+    # evergreen guides: original pieces, no archive provenance
+    import entertainment_guides_data
+    guide_bodies = {}
+    for slug, sect, title, dek, body in entertainment_guides_data.ENT_GUIDES:
+        ENT_SLUG_SECT[slug] = sect
+        by_slug[slug] = {"slug": slug, "title": title, "words": len(re.sub(r"<[^>]+>", " ", body).split()),
+                         "new": True}
+        guide_bodies[slug] = body
     shelf = sorted(ENT_SLUG_SECT)
     merged_away = set(ENT_MERGE.values())
     bodies = {}
     for slug in shelf + sorted(merged_away):
-        raw = (rec / f"{slug}.html").read_text()
-        bodies[slug] = clean_recovered(raw)
+        if slug in guide_bodies:
+            bodies[slug] = guide_bodies[slug]
+        else:
+            raw = (rec / f"{slug}.html").read_text()
+            bodies[slug] = clean_recovered(raw)
     arts = {}
     for slug in shelf:
         if slug in merged_away:
@@ -391,7 +402,12 @@ def entertainment_pages():
         m = by_slug[slug]
         sect = ENT_SLUG_SECT[slug]
         moved = m.get("moved")
-        kick = ("Moved from the BRYME tech desk \u00b7 " if moved else "Archive edition (2025) \u00b7 ")
+        if m.get("new"):
+            kick = "Evergreen guide \u00b7 "
+        elif moved:
+            kick = "Moved from the BRYME tech desk \u00b7 "
+        else:
+            kick = "Archive edition (2025) \u00b7 "
         comp_html = ""
         if slug in ENT_MERGE:
             other = ENT_MERGE[slug]
@@ -417,7 +433,9 @@ def entertainment_pages():
                   "mainEntityOfPage": ORIGIN + "/entertainment/" + slug + "/",
                   "description": summ}
         import json as _j
-        byline = ("Recovered from the archive \u00b7 " + str(m["words"]) + " words \u00b7 re-typeset and reviewed "
+        byline = ("Written by the BRYME Entertainment desk \u00b7 reviewed " + TODAY
+                  + " \u00b7 evergreen \u2014 re-checked whenever the facts move") if m.get("new") else (
+                  "Recovered from the archive \u00b7 " + str(m["words"]) + " words \u00b7 re-typeset and reviewed "
                   + TODAY + (" \u00b7 prices in older pieces change \u2014 confirm with the service" if slug == "best-streaming-apps-nigeria" else ""))
         abody = (head("entertainment", "Cinema, TV and anime \u2014 written about, never pirated.")
             + '<main id="main"><div class="wrap">'
