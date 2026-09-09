@@ -49,3 +49,24 @@ Historical movie catalog pages contained incidental "watch" text but **no downlo
   candidate to Entertainment at its build.
 - **Foundations added**: /fitness/ and /home/ — one honest plan page + standard legal each,
   all noindex,follow, no sitemap entries, no fake content.
+
+## 2026-09-09 — Phase 2: Entertainment rebuilt as a publication
+
+- **Identity live:** «What should I watch — and why?» Homepage rebuilt around it; archive-era
+  "recovered shelf" framing replaced with a real desk: 3 earned sections —
+  /entertainment/recommendations/ (12), /entertainment/explainers/ (6), /entertainment/opinion/ (5).
+- **CONSOLIDATE (2):** solo-leveling-from-e-rank-hunter-… merged into solo-leveling-e-rank-to-s-rank;
+  prison-break-season-1-watching-all-night merged into why-prison-break-season-1-is-still-one-of-
+  the-best-tv-seasons — each as a labelled "Companion piece, restored" section. Old URLs retired
+  (archive era, noindex history; no mass redirects).
+- **MOVE (1):** best-streaming-apps-nigeria moved from the old tech desk to Entertainment
+  recommendations — it is a watch-guide, not tech support. Dead link to a retired sports route
+  repointed at /sports/; its own price-caveat table preserved ("estimates as of August 2026 —
+  confirm on official pages").
+- **Article template:** section breadcrumbs, honest byline (word count + re-typeset/reviewed date),
+  "In one line" summary bar, Article schema (author/publisher/dates), related links per section.
+- **RETIRE (stays):** the 29-row seo-pilot-matrix data-page set (cast/trailer/where-to-watch
+  fixtures) remains retired — exactly the format §21 forbids rebuilding as substance. The 9
+  audited-out stubs stay retired and are listed transparently on /entertainment/.
+- Entertainment now 30 pages (index + 3 sections + 23 articles + legal). build-ecosystem's
+  write_service now clears stale output per property (recovery store preserved).
