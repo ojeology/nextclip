@@ -266,4 +266,69 @@ NEW_TECH_GUIDES = [
 [("how-to-read-an-error-message", "Reading error messages"),
  ("deepseek-vs-chatgpt", "DeepSeek vs ChatGPT, honestly"),
  ("git-and-github-for-beginners", "Git and GitHub for beginners")]),
+
+("phone-wont-connect-to-wifi", "android", "guide",
+"Phone won't connect to Wi-Fi? The checklist, in the order that works",
+"From the thirty-second fixes to the network reset, with the one setting almost nobody checks.",
+"""<p>A phone that refuses a network it used to join happily is following a short list of failure modes: the radio got stuck, the saved credentials went stale, the router moved on without it, or the phone itself drifted out of sync. Work down this list in order — the first three steps fix most cases.</p>
+<h2>1. The thirty-second pair</h2>
+<p>Toggle airplane mode on, wait ten seconds, off. Then toggle Wi-Fi off and on. This resets the radio stack, which genuinely gets wedged — especially after a day of hopping between networks. It feels too simple; it works too often to skip.</p>
+<h2>2. Forget the network, then rejoin</h2>
+<p>Tap the network's name → Forget (long-press it in the Wi-Fi list if there is no button), then rejoin from scratch, typing the password carefully. Saved networks go stale: the password was changed on the router, or the phone is holding a corrupted credential from months ago. Case matters; a trailing space from autocomplete happens more than you would think.</p>
+<h2>3. Restart the phone, then the router</h2>
+<p>Phone off and on clears its network stack properly. If that is not it, unplug the router for thirty seconds and let it fully come back — routers accumulate their own cruft, and a restart re-does their addresses and channels. Most "the Wi-Fi is broken" household emergencies end here.</p>
+<h2>4. The setting almost nobody checks: date and time</h2>
+<p>Wi-Fi security involves certificates, and certificates are date-sensitive. A phone with the wrong date — dead battery, manual clock, travel — will refuse networks that are perfectly fine, with errors that never mention time. Set the clock to automatic (Settings → System → Date & time) and try again.</p>
+<h2>5. "Connected, no internet" — whose fault is it?</h2>
+<p>If the phone says connected but nothing loads, test another device on the same network. Nobody else works either: it is the router or the line from your provider — restart the router, then call them. Only your phone fails: the problem is local, and the next step is yours.</p>
+<h2>6. The reset with a warning label</h2>
+<p>Settings → System → Reset options → Reset Wi-Fi & Bluetooth (naming varies by maker) returns all network settings to factory state: every saved network, every Bluetooth pairing, gone. It is the honest last resort before suspecting hardware — and after it, you will re-pair your earbuds too, which is fair warning to read the <a href="/tech/bluetooth-not-pairing/">Bluetooth pairing guide</a> as well.</p>
+<h2>If none of it works</h2>
+<p>Try the phone on a different network (a friend's hotspot works). If it joins fine, your router is the patient — its manual or your provider takes it from there. If it fails everywhere, the phone's Wi-Fi hardware or software is the patient: a support visit beats a new phone in almost every case. And for the networks you do join away from home, our <a href="/tech/public-wifi-risks/">public Wi-Fi guide</a> covers what is and is not worth worrying about once you are connected.</p>""",
+[],
+[("bluetooth-not-pairing", "Bluetooth not pairing?"),
+ ("public-wifi-risks", "The honest public Wi-Fi guide"),
+ ("android-battery-health", "Battery health, honestly")]),
+
+("bluetooth-not-pairing", "android", "guide",
+"Bluetooth won't pair? The ritual, done in the right order",
+"Pairing is a first-meeting protocol with rules. Most failures are one of five things — and the fix is almost always sequence, not hardware.",
+"""<p>Bluetooth pairing fails for boring reasons, which is good news: boring reasons have boring fixes. The mistake most people share is treating the accessory's power button as the whole story — power is not pairing mode, and the difference is where nearly every "my phone can't find it" begins.</p>
+<h2>1. Pairing mode, not just power</h2>
+<p>Earbuds, speakers and car kits do not advertise themselves forever — discoverability is a window, usually opened by holding the button for five-plus seconds until the light flashes (often blue-and-white, but read your model's cue). Powering on is not enough; if the phone cannot see the device, put the device back into pairing mode first, then scan.</p>
+<h2>2. One bond at a time</h2>
+<p>Most Bluetooth devices hold a handful of pairings, and older ones hold two. An accessory that quietly connects itself to a laptop across the room will ignore your phone. Turn Bluetooth off on every other device that has ever been paired with it — then try again. Multipoint devices (that advertise two-device connection) still choose one active stream; knowing which is the quirk of your model matters.</p>
+<h2>3. The stale-bond fix: unpair, then re-pair</h2>
+<p>A bond that broke mid-handshake — firmware updated on the accessory, phone updated, or the accessory factory reset — leaves both sides holding half a conversation. In the phone's Bluetooth settings, tap the device → Unpair/Forget. Re-enter pairing mode on the accessory and pair from scratch. This is Bluetooth's equivalent of the Wi-Fi "forget network" move, and it settles most stubborn cases.</p>
+<h2>4. Range and interference, honestly</h2>
+<p>Bluetooth is a ten-metre technology at best, and walls, bodies and crowded 2.4 GHz air (Wi-Fi routers, microwaves, the neighbour's earbuds) chew into that. Pair in the same room, once; afterwards the bond holds across the whole flat. If audio stutters after pairing succeeds, that is interference or distance — not a failed pairing.</p>
+<h2>5. Connected but no sound</h2>
+<p>That is usually not a Bluetooth failure at all: check the phone's media-audio toggle for that device (Settings → Bluetooth → gear icon), and the accessory's own buttons — many earbuds have a "music only" or one-ear mode that mutes the call channel. Read the pairing prompt carefully too: contacts and call-history permissions are normal for car kits and unnecessary for earbuds — our <a href="/tech/android-app-permissions/">permission-audit logic</a> applies to accessories just as it does to apps.</p>
+<h2>6. When it is genuinely the hardware</h2>
+<p>Try pairing the accessory with a different phone. If it refuses everywhere, the accessory is the patient — its factory reset (every maker documents the button combo) is the last self-service step before support. If it pairs fine elsewhere, run the phone's <a href="/tech/phone-wont-connect-to-wifi/">network-reset step</a> from the Wi-Fi guide — it clears Bluetooth bonds along with Wi-Fi, and rebuilds both cleanly.</p>""",
+[],
+[("phone-wont-connect-to-wifi", "Wi-Fi connection checklist"),
+ ("android-app-permissions", "The permission audit"),
+ ("android-battery-health", "Battery health, honestly")]),
+
+("how-to-reset-forgotten-passwords", "safety", "guide",
+"Forgot your password? The recovery playbook, done safely",
+"The order that avoids lockouts and traps: email first, official flows only, and the post-reset cleanup most people skip.",
+"""<p>Everyone forgets passwords; the systems exist for exactly this. What turns a five-minute recovery into a bad week is doing the steps in the wrong order, or through the wrong door. This is the safe sequence.</p>
+<h2>Rule zero: arrive at the door yourself</h2>
+<p>Never reset through a link in a message you did not request. "Your password was changed, click here to secure your account" is the classic phishing shape — see <a href="/tech/how-to-spot-a-suspicious-link/">how to read a link before tapping</a>. Open the service's own site or app and use its Forgot-password flow there. A real reset email, to be clear, is fine to act on — if you requested it. Unsolicited reset emails mean someone else is trying your door; ignore the link and change the password directly instead.</p>
+<h2>1. Email first, always</h2>
+<p>Your email address is the recovery key to everything else — every "reset password" flow ends in your inbox. If the forgotten account is your email itself, recover it before touching anything else, and check its recovery settings (phone number, backup address) are current while you are in there. Recovering a bank login is trivial when your email is solid, and impossible when it is not.</p>
+<h2>2. The reset itself</h2>
+<p>Use the official flow, prove identity the way the service asks, and choose a new password that is long and not reused anywhere — let a generator do it. Put it straight into your <a href="/tech/bitwarden-free-password-manager/">password manager</a> before you close the tab; "I'll write it down later" is where passwords die. If the manager itself is the forgotten account, recover it with its master-password recovery options or its emergency kit — services like Bitwarden document this precisely because it cannot be done socially.</p>
+<h2>3. The cleanup most people skip</h2>
+<p>For any account that may have been accessed by someone else — not just forgotten — the reset is step one of three. First: sign out all other sessions (most services have exactly this button in security settings). Second: check for attacker persistence — unknown forward rules in email, unknown linked devices, unknown app passwords, a changed recovery phone. Third: re-enable or refresh <a href="/tech/two-factor-authentication-setup/">two-factor authentication</a>, and regenerate backup codes if there is any chance the old list was seen.</p>
+<h2>4. Recovery codes are the spare tyre</h2>
+<p>If you enabled 2FA and have your backup codes, a lost password with a lost phone is still a five-minute recovery: use one code at the 2FA prompt, then regenerate the list (a used code is a spent code) and put the fresh list somewhere that is not the phone doing the approving.</p>
+<h2>5. When recovery simply fails</h2>
+<p>The honest limit: with no working email, no recovery codes and no 2FA fallback, some accounts cannot be recovered — and that is the system working, because the same door is open to strangers. Services with account-recovery forms (the big email providers among them) ask questions only the real owner would survive; answer them patiently from a usual device and location. Prevention beats recovery every time this happens: 2FA on the email, current recovery details, and the manager holding the rest.</p>""",
+[],
+[("two-factor-authentication-setup", "2FA done right"),
+ ("bitwarden-free-password-manager", "Bitwarden's free plan, checked"),
+ ("how-to-spot-a-suspicious-link", "Spotting suspicious links")]),
 ]

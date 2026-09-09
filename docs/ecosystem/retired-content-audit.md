@@ -113,3 +113,12 @@ Historical movie catalog pages contained incidental "watch" text but **no downlo
   notification control. **Windows/PC:** slow-PC triage, browser fix list, stuck-update path.
   **Coding:** error messages, Git/GitHub (Pro Git + GitHub docs sources), what is an API.
 - Kicker honesty system: First-hand / Practical guide / Archive edition by provenance.
+
+## 2026-09-09 — Tech batch 3: the connection & recovery trio
+
+- 3 high-volume guides, all procedural (kicker: Practical guide): phone-wont-connect-to-wifi
+  (radio → forget/rejoin → router restart → the date-and-time cause nobody checks → network
+  reset with warning), bluetooth-not-pairing (pairing-mode vs power, stale bonds, connected-
+  but-no-sound), how-to-reset-forgotten-passwords (email first, official doors only, post-reset
+  persistence cleanup, the honest recovery limit).
+- Tech: 50 pages (safety 9, android 6). No new sections needed — existing shelves absorbed them.
