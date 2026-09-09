@@ -1,106 +1,101 @@
 <!doctype html>
-<html lang="en"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>THE BRYME — a family of independent publications</title>
-<meta name="description" content="BRYME is four specialist publications — Writers, Sport, Entertainment and Tech — under one house standard. Choose your desk.">
+<html lang="en-NG"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f6f2e8">
+<meta name="color-scheme" content="light dark">
+<script src="/assets/theme.js"></script>
+<title>BRYME — learn to write, tools, and paid writing opportunities</title>
+<meta name="description" content="BRYME is a complete writing resource: free beginner-friendly guides, in-browser writing tools, and verified opportunities to get published and paid.">
 <meta name="robots" content="index,follow">
-<link rel="canonical" href="https://bryme.onrender.com">
-<meta property="og:type" content="website"><meta property="og:site_name" content="THE BRYME">
-<meta property="og:title" content="THE BRYME — a family of independent publications"><meta property="og:description" content="BRYME is four specialist publications — Writers, Sport, Entertainment and Tech — under one house standard. Choose your desk.">
-<meta property="og:url" content="https://bryme.onrender.com"><meta property="og:image" content="https://https://bryme.onrender.com/writers/assets/og.png">
-<meta name="twitter:card" content="summary_large_image">
-<style>
-:root{--paper:#fafaf8;--sheet:#ffffff;--ink:#14213d;--muted:#5b6b7a;--dim:#8b96a2;
---brand:#14213d;--brand-deep:#0c1526;--accent:#a8752a;
---line:rgba(20,33,61,.18);--line-strong:rgba(20,33,61,.4);--shadow:0 1px 2px rgba(0,0,0,.05),0 14px 38px rgba(0,0,0,.08);
---serif:Georgia,'Iowan Old Style','Palatino Linotype',serif;--sans:Inter,ui-sans-serif,system-ui,sans-serif}
-*{box-sizing:border-box}html{scroll-behavior:smooth}
-body{margin:0;min-height:100vh;color:var(--ink);background:var(--paper);font:16px/1.65 var(--sans);-webkit-font-smoothing:antialiased}
-a{color:inherit;text-decoration:none}::selection{background:rgba(176,141,87,.3)}
-.wrap{width:min(calc(100% - 48px),1080px);margin:0 auto}
-a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
-.skip-link{position:fixed;z-index:99;top:10px;left:10px;transform:translateY(-160%);padding:10px 16px;background:var(--brand);color:var(--sheet);font-weight:700}
-.skip-link:focus{transform:none}
-.head{position:sticky;z-index:50;top:0;background:var(--paper);border-bottom:1px solid var(--line-strong)}
-.head::before{content:"";display:block;height:6px;background:var(--brand)}
-.head::after{content:"";display:block;height:2px;background:var(--accent)}
-.mast{display:flex;align-items:baseline;gap:18px;padding:18px 0 12px;flex-wrap:wrap}
-.mast-brand{font-family:var(--serif);font-size:34px;line-height:.9;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
-.mast-brand span{color:var(--accent)}
-.mast-tag{font:italic 13px var(--serif);color:var(--muted);flex:1;min-width:200px}
-.parent-link{font:750 10.5px var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line);padding:7px 11px;border-radius:2px}
-.parent-link:hover{color:var(--ink);border-color:var(--line-strong)}
-.cover{padding:clamp(46px,8vw,96px) 0 clamp(36px,6vw,64px);border-bottom:3px double var(--line-strong)}
-.kicker{color:var(--accent);font:800 11.5px var(--sans);letter-spacing:.22em;text-transform:uppercase;margin:0 0 20px}
-h1.cover-title{font-family:var(--serif);font-weight:700;letter-spacing:-.018em;font-size:clamp(36px,6.4vw,70px);line-height:1.03;margin:0;max-width:15em}
-.cover-dek{font-family:var(--serif);font-size:clamp(16.5px,2.2vw,20px);line-height:1.62;color:var(--muted);max-width:58ch;margin:24px 0 0}
-.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
-.btn{min-height:46px;display:inline-flex;align-items:center;padding:11px 20px;border:1px solid var(--brand);border-radius:2px;background:var(--brand);color:var(--sheet);font:700 13.5px var(--sans);letter-spacing:.04em;cursor:pointer}
-.btn:hover{background:var(--brand-deep);border-color:var(--brand-deep)}
-.btn.secondary{background:transparent;color:var(--brand);border-color:var(--line-strong)}
-.btn.secondary:hover{border-color:var(--brand);background:transparent}
-.section{padding:clamp(42px,7vw,80px) 0}
-.section.alt{background:var(--paper-2,transparent);outline:1px solid var(--line);outline-offset:-1px}
-.section-head{margin-bottom:28px}
-.section-head h2{font-family:var(--serif);font-weight:700;font-size:clamp(23px,3.2vw,32px);line-height:1.12;margin:6px 0 0;letter-spacing:-.012em}
-.section-head h2::after{content:"";display:block;width:46px;height:4px;background:var(--accent);margin-top:14px}
-.lede{font-family:var(--serif);font-size:17.5px;line-height:1.65;color:var(--muted);max-width:60ch;margin:18px 0 0}
-.list{list-style:none;margin:0;padding:0;border-top:1px solid var(--line-strong)}
-.list li{border-bottom:1px solid var(--line)}
-.list a{display:flex;gap:22px;align-items:baseline;padding:18px 6px;transition:background .15s ease,padding-left .15s ease}
-.list a:hover{background:var(--sheet);padding-left:14px}
-.list b{font-family:var(--serif);font-size:19px;line-height:1.3}
-.list a:hover b{color:var(--brand)}
-.list small{display:block;font:13px var(--sans);color:var(--muted);margin-top:3px}
-.list .meta{margin-left:auto;flex:none;font:750 11px var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--dim)}
-.prose{max-width:720px;margin:0 auto;padding:clamp(28px,5vw,54px) 0 26px}
-.prose h2{font-family:var(--serif);font-size:clamp(22px,3vw,29px);line-height:1.16;margin:44px 0 12px;padding-top:24px;border-top:1px solid var(--line)}
-.prose h3{font-family:var(--serif);font-size:19.5px;margin:28px 0 8px}
-.prose h3::before{content:"";display:inline-block;width:20px;height:4px;background:var(--accent);margin-right:11px;vertical-align:middle}
-.prose p,.prose li{font-family:var(--serif);font-size:18px;line-height:1.78}
-.prose p{margin:0 0 19px}
-.prose ul,.prose ol{padding-left:26px;margin:0 0 19px}
-.prose li+li{margin-top:9px}
-.prose a{color:var(--brand);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
-.prose blockquote{margin:32px 0;padding:6px 0 6px 24px;border-left:4px solid var(--accent);font-family:var(--serif);font-style:italic;font-size:21px;line-height:1.5}
-.prose img{max-width:100%;border:1px solid var(--line);padding:6px;background:var(--sheet)}
-.crumb{padding:18px 0 10px;font:11.5px var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--dim)}
-.crumb a{color:var(--muted)}.crumb a:hover{color:var(--accent)}
-.byline{margin:16px 0 0;font-size:13px;color:var(--muted);border-top:1px solid var(--line);padding-top:13px}
-.foot{margin-top:44px;border-top:3px double var(--line-strong);background:var(--paper-2,transparent)}
-.foot-in{padding:34px 0 30px;display:flex;flex-wrap:wrap;gap:14px 34px;justify-content:space-between;font:13px var(--sans);color:var(--muted)}
-.foot-in a:hover{color:var(--ink)}
-.foot small{display:block;margin-top:8px;font:italic 12.5px var(--serif);color:var(--dim)}
-.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
-.pub-card{border:1px solid var(--line-strong);border-top:6px solid var(--pc);background:var(--sheet);padding:26px 26px 22px;display:flex;flex-direction:column}
-.pub-card h3{font-family:var(--serif);font-size:24px;margin:0 0 4px;letter-spacing:-.01em}
-.pub-card .pc-kicker{font:800 10.5px var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--pc);margin:0 0 12px}
-.pub-card p{font-size:14.5px;line-height:1.6;color:var(--muted);margin:0 0 18px}
-.pub-card .btn{margin-top:auto;align-self:flex-start}
-.pub-card.live{box-shadow:var(--shadow)}
-.pub-card.soon{opacity:.92}
-.soon-tag{font:800 10px var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--muted);border:1px dashed var(--line-strong);align-self:flex-start;padding:8px 12px;margin-top:auto}
-@media(max-width:820px){.cards{grid-template-columns:1fr}.mast-tag{display:none}}
-@media print{.head,.foot,.actions,.btn{display:none!important}body{background:#fff}}
-</style>
-</head><body><a class="skip-link" href="#main">Skip to content</a>
-<header class="head"><div class="wrap mast">
-<a class="mast-brand" href="/writers/">THE&nbsp;BRYME</a>
-<span class="mast-tag">Four publications. One house standard.</span>
+<link rel="canonical" href="https://bryme.onrender.com/writers/">
+<meta property="og:type" content="website"><meta property="og:site_name" content="BRYME">
+<meta property="og:title" content="BRYME — learn to write, tools, and paid writing opportunities"><meta property="og:description" content="BRYME is a complete writing resource: free beginner-friendly guides, in-browser writing tools, and verified opportunities to get published and paid."><meta property="og:url" content="https://bryme.onrender.com/writers/">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="BRYME — learn to write, tools, and paid writing opportunities"><meta name="twitter:description" content="BRYME is a complete writing resource: free beginner-friendly guides, in-browser writing tools, and verified opportunities to get published and paid."><meta name="twitter:image" content="https://bryme.onrender.com/writers/assets/og/default.png">
+<meta property="og:image" content="https://bryme.onrender.com/writers/assets/og/default.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="BRYME — learn to write, tools, and paid writing opportunities">
 
-</div></header>
-<main id="main"><div class="wrap">
-<section class="cover"><p class="kicker">A family of independent publications</p>
-<h1 class="cover-title">THE BRYME</h1>
-<p class="cover-dek">BRYME is a small ecosystem of specialist publications, each with its own focus and its own standards, held to one house rule: research before publishing, and say exactly what you know. Pick a desk.</p></section>
-<section class="section"><div class="section-head"><p class="kicker">The publications</p><h2>Choose your desk</h2></div>
-<div class="cards"><article class="pub-card live" style="--pc:#14213d"><p class="pc-kicker">THE FLAGSHIP</p><h3>BRYME Writers</h3><p>The practical digital library and workspace for writers — 191 researched guides, 44 free browser tools, a hand-verified opportunity database and the essays behind the market. Free, independent, human-verified.</p><a class="btn" href="https://bryme.onrender.com/writers/">Enter Writers</a></article><article class="pub-card live" style="--pc:#2f6b4f"><p class="pc-kicker">SPORT</p><h3>BRYME Sport</h3><p>Football coverage from BRYME's media desk — transfer reporting, matchweek guides and the 2026-27 season, with the archive's thin pages honestly retired. No betting content, ever.</p><a class="btn" href="https://bryme.onrender.com/sports/">Enter Sport</a></article><article class="pub-card live" style="--pc:#6d1832"><p class="pc-kicker">ENTERTAINMENT</p><h3>BRYME Entertainment</h3><p>Cinema, TV and anime — guides, explainers and opinion rebuilt from BRYME's earliest editorial research, re-typeset and honestly labelled. No download sites, no piracy — only writing about the work.</p><a class="btn" href="https://bryme.onrender.com/entertainment/">Enter Entertainment</a></article><article class="pub-card live" style="--pc:#14213d"><p class="pc-kicker">TECH</p><h3>BRYME Tech</h3><p>Deployment walkthroughs, domain and DNS specifics, token hygiene, front-end patterns — written from first-hand builds, not press releases. Evergreen on purpose.</p><a class="btn" href="https://bryme.onrender.com/tech/">Enter Tech</a></article><article class="pub-card live" style="--pc:#1f4d37"><p class="pc-kicker">MONEY</p><h3>BRYME Money</h3><p>Saving, budgeting and how money actually works — general education with the maths shown, never personalised advice, never a product pitch. Opening with its foundation essays.</p><a class="btn" href="https://bryme.onrender.com/money/">Enter Money</a></article></div></section>
-<section class="section alt"><div class="section-head"><p class="kicker">The house</p><h2>One standard, four voices.</h2></div>
-<p class="lede">Every BRYME publication is edited by the same desk, run on the same discipline — dates on time-sensitive claims, corrections in the open, no fabricated experience, no pages built to game a search engine — and none of them share a navigation bar. When you enter one, you are in that world.</p>
-</section></div></main>
-<footer class="foot"><div class="wrap foot-in">
-<div>© 2026 THE BRYME — the BRYME publications.</div>
-<div><a href="/writers/about/">About</a> · <a href="/writers/privacy/">Privacy</a> · <a href="/writers/contact/">Contact</a></div>
-<div><a href="https://thebryme.com/">thebryme.com</a></div>
-</div></footer>
-</body></html>
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="icon" href="/writers/favicon.ico" sizes="any">
+
+<link rel="stylesheet" href="/assets/bryme-v2.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://bryme.onrender.com/writers/#org","name":"BRYME","url":"https://bryme.onrender.com/writers/","description":"Legitimate paid-writing opportunities, practical writing guides, and BRYME's firsthand verification record.","founder":{"@type":"Person","name":"Ibrahim Sodiq","url":"https://bryme.onrender.com/writers/author/ibrahim-sodiq/"}},{"@type":"WebSite","@id":"https://bryme.onrender.com/writers/#site","name":"BRYME","url":"https://bryme.onrender.com/writers/","description":"Legitimate paid-writing opportunities, practical writing guides, and BRYME's firsthand verification record.","publisher":{"@id":"https://bryme.onrender.com/writers/#org"},"potentialAction":{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://bryme.onrender.com/writers/writing/?q={search_term_string}"},"query-input":"required name=search_term_string"}}]}</script>
+<script type="application/ld+json">[{"@context":"https://schema.org","@type":"WebSite","name":"BRYME","url":"https://bryme.onrender.com/writers/","description":"Learn to write, use free writing tools, and find verified paid writing opportunities."},{"@context":"https://schema.org","@type":"Organization","name":"BRYME","url":"https://bryme.onrender.com/writers/","founder":{"@type":"Person","name":"Ibrahim Sodiq","url":"https://bryme.onrender.com/writers/author/ibrahim-sodiq/"}}]</script>
+</head><body><a class="skip-link" href="#main">Skip to content</a>
+<header class="site-head">
+  <div class="mast-top"><div class="wrap mast-in">
+    <a class="mast-brand" href="/writers/" aria-label="BRYME — home">BRYME</a>
+    <div class="mast-edition"><span class="mast-date">SEPTEMBER 2026 EDITION</span><span class="mast-tag">The business, craft &amp; economics of writing — free, independent, human-verified.</span></div>
+    <div class="mast-tools">
+      <form class="nav-search-form" action="/writers/search/" method="get" role="search"><input type="search" name="q" placeholder="Search…" aria-label="Search BRYME" autocomplete="off"></form>
+      <button type="button" class="theme-toggle" data-theme-toggle aria-pressed="false" aria-label="Switch to dark theme"><svg class="icon-sun" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.2 4.2l1.6 1.6M18.2 18.2l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.2 19.8l1.6-1.6M18.2 5.8l1.6-1.6"/></svg><svg class="icon-moon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 14.3A8.6 8.6 0 0 1 9.7 3.5a8.6 8.6 0 1 0 10.8 10.8Z"/></svg><span class="sr-only theme-toggle-text">Switch to dark theme</span></button>
+      <button type="button" class="nav-toggle" data-drawer-open aria-label="Open menu" aria-expanded="false"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    </div>
+  </div></div>
+  <nav class="main-nav" aria-label="Primary"><div class="wrap mast-nav"><a class="home-link" href="/writers/" aria-label="BRYME home"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5.5 9.5V20a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1V9.5"/><path d="M9.5 21v-6h5v6"/></svg></a><div class="has-mega"><a href="/writers/learn/">Learn</a><div class="mega"><a href="/writers/start/">Beginner path</a><a href="/writers/find/">What do you want to write?</a><a href="/writers/learn/writing-basics/">Writing basics</a><a href="/writers/learn/writing-process/">The writing process</a><a href="/writers/learn/grammar-language/">Grammar &amp; language</a><a href="/writers/learn/editing-proofreading/">Editing &amp; proofreading</a><a href="/writers/learn/academic-writing/">Academic writing</a><a href="/writers/learn/creative-writing/">Creative writing</a><a href="/writers/learn/freelance-paid-writing/">Rates &amp; business</a><a href="/writers/learn/">All 191 guides</a></div></div><div class="has-mega"><a class="nav-cta" href="/writers/writing/">Publish</a><div class="mega"><a href="/writers/writing/">The opportunity desk</a><a href="/writers/writing-opportunities/">The atlas: by country</a><a href="/writers/today/">Updated this week</a><a href="/writers/tested/">BRYME Tested</a><a href="/writers/guides/how-to-write-a-pitch/">How to write a pitch</a><a href="/writers/tracker/">Submission tracker</a></div></div><div class="has-mega"><a href="/writers/tools/">Tools</a><div class="mega"><a href="/writers/tools/freelance-rate-calculator/">Rate calculator</a><a href="/writers/tools/freelance-agreement-builder/">Agreement builder</a><a href="/writers/tools/invoice-generator/">Invoice generator</a><a href="/writers/tools/late-payment-letter-builder/">Late-payment letters</a><a href="/writers/tools/pitch-checker/">Pitch checker</a><a href="/writers/studio/">The Writing Studio</a><a href="/writers/templates/">Templates</a><a href="/writers/checklists/">Checklists</a><a href="/writers/tools/">All 44 tools</a></div></div><div class="has-mega"><a href="/writers/essays/">Intelligence</a><div class="mega"><a href="/writers/essays/">Essays</a><a href="/writers/intelligence/">Writing intelligence</a><a href="/writers/read/">All articles</a><a href="/writers/glossary/">Glossary</a><a href="/writers/compare/">Compare formats</a></div></div></div></nav>
+</header><main id="main"><section class="cover"><div class="wrap">
+  <p class="cover-line">An independent publication for working writers</p>
+  <h1 class="cover-title">Learn to write, get published, get <em>paid.</em></h1>
+  <p class="cover-dek">142 publications researched by hand — what they pay, how long, who they are open to — plus 191 guides, 44 free tools and the essays behind the market. Free, independent, human-verified.</p>
+  <div class="actions"><a class="btn" href="/writers/writing/">Explore the opportunity desk</a><a class="btn secondary" href="/writers/learn/">Study the guides</a></div>
+  <form class="home-search" action="/writers/search/" method="get" role="search">
+    <label for="home-q">Already know what you are looking for? Search BRYME.</label>
+    <div class="home-search-row">
+      <input id="home-q" name="q" type="search" placeholder="Search guides, tools, publications — e.g. personal essay, poetry, invoice" autocomplete="off">
+      <button class="btn" type="submit">Search</button>
+    </div>
+  </form>
+  <div class="cover-facts">
+    <div><b>142</b><span>Publications researched</span></div>
+    <div><b>106</b><span>Accepting now</span></div>
+    <div><b>77</b><span>Open worldwide</span></div>
+    <div><b>10</b><span>BRYME tested</span></div>
+    <span class="asof">Snapshot 2026-09-04 — every entry carries its own last-checked date.</span>
+  </div>
+</div></section>
+<section class="section"><div class="wrap">
+  <header class="toc-head"><p class="eyebrow">In this publication</p><h2>Contents</h2></header>
+  <ol class="toc"><li><a href="/writers/learn/"><span class="toc-num">01</span><span class="toc-body"><b>Learn to write</b><small>The guide library — craft, process, grammar and the business of freelancing.</small></span><span class="toc-go">&rarr;</span></a></li><li><a href="/writers/writing-opportunities/"><span class="toc-num">02</span><span class="toc-body"><b>Find places to publish</b><small>The atlas — every researched publication, arranged by country.</small></span><span class="toc-go">&rarr;</span></a></li><li><a href="/writers/writing/"><span class="toc-num">03</span><span class="toc-body"><b>Write &amp; get paid</b><small>The desk — rates, rights, invoicing, and who pays.</small></span><span class="toc-go">&rarr;</span></a></li><li><a href="/writers/tools/"><span class="toc-num">04</span><span class="toc-body"><b>Writing tools</b><small>Instruments that run in your browser. No account, nothing uploaded.</small></span><span class="toc-go">&rarr;</span></a></li><li><a href="/writers/intelligence/"><span class="toc-num">05</span><span class="toc-body"><b>Writing intelligence</b><small>Research notes and market watch from the editorial desk.</small></span><span class="toc-go">&rarr;</span></a></li><li><a href="/writers/essays/"><span class="toc-num">06</span><span class="toc-body"><b>Essays</b><small>Arguments and investigations — the highest shelf in the library.</small></span><span class="toc-go">&rarr;</span></a></li></ol>
+</div></section>
+<section class="section alt"><div class="wrap">
+  <article class="feature"><div>
+    <p class="feature-kicker">Featured dossier &middot; human-verified</p>
+    <h2 class="feature-title"><a href="/writers/writing/afrolicious/">Afrolicious</a></h2>
+    <p class="feature-dek">Black Africans and Black African diasporas. Nigeria qualifies. This is not a worldwide open call.</p>
+    <p class="feature-meta">International &middot; Pay $75 &middot; <b>Accepting</b> &middot; Verified 2026-08</p>
+    <div class="actions"><a class="btn secondary" href="/writers/writing/afrolicious/">Read the dossier</a></div>
+  </div>
+  <aside class="feature-side">
+    <div class="desk-head"><h3>The opportunity desk</h3><span>checked 2026-09-04</span></div>
+    <a class="desk-row" href="/writers/writing/the-republic/"><span class="desk-pub">The Republic<small>Nigeria</small></span><span class="desk-cell">₦100,000</span><span class="desk-cell">2,001–3,000 words</span><span class="desk-cell st-accepting">Accepting</span></a><a class="desk-row" href="/writers/writing/efiko/"><span class="desk-pub">Efiko Magazine<small>South Africa</small></span><span class="desk-cell">₦20,000 or ₦30,000 (Nigerian bank account)</span><span class="desk-cell">Prose 1,200–5,000 words; poetry 2–5 poems / 10 pages</span><span class="desk-cell st-closed">Closed</span></a><a class="desk-row" href="/writers/writing/oriire/"><span class="desk-pub">Oriire<small>Nigeria</small></span><span class="desk-cell">₦10,000 per article; ₦5,000 per codex entry</span><span class="desk-cell">Not publicly stated</span><span class="desk-cell st-rolling">Rolling</span></a><a class="desk-row" href="/writers/writing/the-lagos-review/"><span class="desk-pub">The Lagos Review<small>Nigeria</small></span><span class="desk-cell">$250 per published essay</span><span class="desk-cell">Up to 1,500 words</span><span class="desk-cell st-rolling">Rolling</span></a><a class="desk-row" href="/writers/writing/adi-again/"><span class="desk-pub">Adi Magazine<small>United States</small></span><span class="desk-cell">$300</span><span class="desk-cell">Up to 1,500 words</span><span class="desk-cell st-rolling">Rolling</span></a><a class="desk-row" href="/writers/writing/adi-essays/"><span class="desk-pub">Adi Magazine<small>United States</small></span><span class="desk-cell">Not publicly stated on the current official page</span><span class="desk-cell">Not publicly stated on the current official page</span><span class="desk-cell st-upcoming">Opens soon</span></a>
+    <div class="desk-foot"><a class="btn secondary" href="/writers/writing/">All 142 publications</a></div>
+  </aside>
+  </article>
+</div></section>
+<section class="section"><div class="wrap">
+  <header class="toc-head"><p class="eyebrow">The tool chest</p><h2>Instruments for the working writer</h2></header>
+  <ul class="tool-index"><li><a href="/writers/tools/word-counter/"><b>Word counter</b><span>Count words, characters and paragraphs as you type.</span></a></li><li><a href="/writers/tools/images-to-pdf/"><b>Images to PDF</b><span>Turn JPG/PNG images into a single PDF, one per page.</span></a></li><li><a href="/writers/tools/freelance-rate-calculator/"><b>Freelance rate calculator</b><span>Work out what you must charge per hour, per word and per piece.</span></a></li><li><a href="/writers/tools/invoice-generator/"><b>Invoice generator</b><span>Fill in the work, print a clean invoice — nothing leaves your browser.</span></a></li><li><a href="/writers/tools/freelance-agreement-builder/"><b>Freelance agreement builder</b><span>Draft a plain-language freelance agreement — fill in, print, both sides sign.</span></a></li><li><a href="/writers/tools/late-payment-letter-builder/"><b>Late payment letter builder</b><span>Chase an unpaid invoice in three escalating steps — polite to firm to final — without torching the relationship.</span></a></li></ul>
+  <div class="actions"><a class="btn secondary" href="/writers/tools/">The full index of tools</a></div>
+</div></section>
+<section class="section"><div class="wrap"><div class="section-head"><div><p class="eyebrow">Essays</p><h2>Arguments about the business of writing.</h2></div><a class="card-link" href="/writers/essays/">All essays</a></div><div class="guide-grid"><article class="guide-card"><p class="kicker"><span class="kicker-dot"></span>International</p><h3><a href="/writers/essays/what-writing-platforms-actually-pay/">What writing platforms actually pay — the numbers, not the pitches</a></h3><p>Ream pays creators $1.3M a year across 15,000 authors. That is about $87 each. Here is the real arithmetic behind seven platforms that pay writers.</p><p class="meta"><time datetime="2026-09-06">2026-09-06</time></p></article><article class="guide-card"><p class="kicker"><span class="kicker-dot"></span>International</p><h3><a href="/writers/essays/the-ai-ban-is-spreading/">The magazine AI ban is spreading faster than writers realise</a></h3><p>Seven of the 33 publications BRYME verified in September 2026 now prohibit AI-written submissions outright — and the wording is getting stricter, not softer.</p><p class="meta"><time datetime="2026-09-06">2026-09-06</time></p></article><article class="guide-card"><p class="kicker"><span class="kicker-dot"></span>International</p><h3><a href="/writers/essays/stacker-news-review/">Stacker News review — getting paid in bitcoin for writing</a></h3><p>A platform where readers pay you directly in bitcoin, no bank or Stripe involved, the take rate is published, and the earnings are almost certainly tiny.</p><p class="meta"><time datetime="2026-09-06">2026-09-06</time></p></article></div></div></section>
+<section class="section alt"><div class="wrap">
+  <header class="toc-head"><p class="eyebrow">The archive</p><h2>A library, not a feed.</h2></header>
+  <p class="archive-line">Every guide, every essay and every publication dossier is <a href="/writers/read/">indexed and permanent</a> &mdash; researched by hand, dated when checked, and corrected in the open.</p>
+  <div class="archive-links"><a class="btn secondary" href="/writers/read/">All articles</a><a class="btn secondary" href="/writers/essays/">Essays</a><a class="btn secondary" href="/writers/writing-opportunities/">By country</a><a class="btn secondary" href="/writers/verification/">What statuses mean</a></div>
+</div></section></main><nav class="bottom-nav bottom-nav--writing" aria-label="Primary mobile"><a href="/writers/learn/"><span aria-hidden="true">📚</span>How to</a><a href="/writers/read/"><span aria-hidden="true">📄</span>Articles</a><a href="/writers/tools/"><span aria-hidden="true">🛠</span>Tools</a><a href="/writers/writing-opportunities/"><span aria-hidden="true">💰</span>Publish</a></nav><div id="drawer-backdrop"></div>
+<aside id="site-drawer" aria-hidden="true" aria-label="Site menu" role="dialog" aria-modal="true">
+  <div class="drawer-head"><a class="logo" href="/writers/"><span class="logo-mark" aria-hidden="true">B</span>BRYME</a><button type="button" class="drawer-close" data-drawer-close aria-label="Close menu"><svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+  <div class="drawer-group"><b>Start here</b><a href="/writers/"><span aria-hidden="true">🏠</span>Home</a><a href="/writers/start/"><span aria-hidden="true">🧭</span>Complete beginner path</a><a href="/writers/find/"><span aria-hidden="true">❓</span>What do you want to write?</a><a href="/writers/intelligence/"><span aria-hidden="true">🧭</span>Writing Intelligence</a><a href="/writers/compare/"><span aria-hidden="true">⚖️</span>Compare formats</a><a href="/writers/read/"><span aria-hidden="true">📄</span>All articles</a><a href="/writers/essays/"><span aria-hidden="true">✍️</span>Essays</a><a href="/writers/today/"><span aria-hidden="true">📅</span>Today&#x27;s opportunities</a><a href="/writers/tracker/"><span aria-hidden="true">📋</span>Submission tracker</a><a href="/writers/studio/"><span aria-hidden="true">✒️</span>Writing Studio</a><a href="/writers/writing-opportunities/"><span aria-hidden="true">🌍</span>Writing by country</a><a href="/writers/search/"><span aria-hidden="true">🔍</span>Search BRYME</a></div>
+  <div class="drawer-group"><b>How to write</b><a href="/writers/learn/"><span aria-hidden="true">📚</span>All how-tos</a><a href="/writers/learn/examples/"><span aria-hidden="true">✳️</span>Examples</a><a href="/writers/learn/dos-and-donts/"><span aria-hidden="true">✅</span>Dos &amp; don&#x27;ts</a><a href="/writers/learn/types-of-writing/"><span aria-hidden="true">🧩</span>Writing types</a><a href="/writers/learn/start-writing/"><span aria-hidden="true">🚀</span>Start writing</a><a href="/writers/learn/academic-writing/"><span aria-hidden="true">🎓</span>Academic</a><a href="/writers/learn/creative-writing/"><span aria-hidden="true">✍️</span>Creative</a><a href="/writers/learn/editing-proofreading/"><span aria-hidden="true">🧹</span>Editing &amp; proofreading</a><a href="/writers/learn/writing-for-publication/"><span aria-hidden="true">📮</span>Get published</a><a href="/writers/learn/freelance-paid-writing/"><span aria-hidden="true">💷</span>Rates &amp; business</a></div>
+  <div class="drawer-group"><b>Tools &amp; templates</b><a href="/writers/tools/"><span aria-hidden="true">🛠️</span>All tools</a><a href="/writers/templates/"><span aria-hidden="true">📄</span>Templates</a><a href="/writers/checklists/"><span aria-hidden="true">☑️</span>Checklists</a><a href="/writers/glossary/"><span aria-hidden="true">🔤</span>Glossary</a></div>
+  <div class="drawer-group"><b>Write &amp; get paid</b><a href="/writers/writing/"><span aria-hidden="true">💰</span>All publications</a><a href="/writers/guides/"><span aria-hidden="true">🗺️</span>Writing guides</a><a href="/writers/tested/"><span aria-hidden="true">🧪</span>BRYME Tested</a></div>
+  <div class="drawer-group"><b>Publications by country</b>
+    <div class="drawer-sub"><a href="/writers/writing-opportunities/usa/">United States</a><a href="/writers/writing-opportunities/united-kingdom/">United Kingdom</a><a href="/writers/writing-opportunities/canada/">Canada</a><a href="/writers/writing-opportunities/australia/">Australia</a><a href="/writers/writing-opportunities/nigeria/">Nigeria</a><a href="/writers/writing-opportunities/">All countries</a><a href="/writers/writing-opportunities/remote/">Open to writers anywhere</a></div>
+  </div>
+  <div class="drawer-group"><b>Trust &amp; about</b><a href="/writers/about/"><span aria-hidden="true">ℹ️</span>About</a><a href="/writers/verification/"><span aria-hidden="true">🏷️</span>What statuses mean</a><a href="/writers/editorial-policy/"><span aria-hidden="true">📜</span>Editorial policy</a><a href="/writers/corrections/"><span aria-hidden="true">✏️</span>Corrections</a><a href="/writers/privacy/"><span aria-hidden="true">🔒</span>Privacy</a><a href="/writers/contact/"><span aria-hidden="true">✉️</span>Contact</a></div>
+  <p class="drawer-note">BRYME is a free, independent writing resource. Guides and tools work right in your browser — no account, no charge.</p>
+</aside><script src="/assets/site-nav.js" defer></script><script src="/assets/level-filter.js" defer></script><script src="/assets/purpose-finder.js" defer></script><div style="border-top:1px solid rgba(120,110,100,.25);padding:16px 8px;text-align:center;font-size:.95rem">Follow along &mdash; <a href="/writers/newsletter/"><b>the BRYME weekly digest</b></a></div><footer class="site-foot"><div class="wrap foot-grid">
+  <div class="foot-brand"><a class="logo" href="/writers/"><span class="logo-mark" aria-hidden="true">B</span>BRYME</a><p>BRYME is a free writing resource — guides, tools, and verified opportunities to get published and paid.</p></div>
+  <div class="foot-col"><b>How to write</b><a href="/writers/start/">Beginner path</a><a href="/writers/find/">What do you want to write?</a><a href="/writers/intelligence/">Writing Intelligence</a><a href="/writers/compare/">Compare formats</a><a href="/writers/regional/">Writing conventions</a><a href="/writers/learn/">Writing hub</a><a href="/writers/learn/examples/">Examples</a><a href="/writers/learn/dos-and-donts/">Dos &amp; don'ts</a><a href="/writers/learn/types-of-writing/">Types of writing</a><a href="/writers/learn/grammar-language/">Grammar</a></div>
+  <div class="foot-col"><b>Tools &amp; publish</b><a href="/writers/tools/">Writing tools</a><a href="/writers/templates/">Templates</a><a href="/writers/checklists/">Checklists</a><a href="/writers/writing/">Paid opportunities</a><a href="/writers/writing-opportunities/">Browse by country</a><a href="/writers/today/">Today&rsquo;s opportunities</a><a href="/writers/newsletter/">Weekly digest</a><a href="/writers/tracker/">Submission tracker</a><a href="/writers/studio/">Writing Studio</a><a href="/writers/tested/">BRYME Tested</a></div>
+  <div class="foot-col"><b>Trust</b><a href="/writers/about/">About</a><a href="/writers/verification/">What statuses mean</a><a href="/writers/editorial-policy/">Editorial policy</a><a href="/writers/corrections/">Corrections</a><a href="/writers/privacy/">Privacy</a><a href="/writers/contact/">Contact</a></div>
+  <div class="foot-col"><b>Legal</b><a href="/writers/terms/">Terms</a><a href="/writers/disclaimer/">Disclaimer</a><a href="/writers/disclosure/">Disclosure</a><a href="/writers/copyright/">Copyright</a></div>
+</div><div class="wrap foot-bottom">© 2026 BRYME · Independent editorial project · No acceptance, publication or payment is guaranteed.</div></footer></body></html>

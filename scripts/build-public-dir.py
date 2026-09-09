@@ -27,7 +27,11 @@ PUBLIC_DIRS = [
     "verification", "find", "start", "compare", "regional", "intelligence", "tracker", "today", "writing-opportunities", "essays", "read",
     "newsletter", "opportunities", "jobs", "make-money", "tech",
 ]
-AUTO_EXCLUDE = {".git", "node_modules", "public", "content", "docs", "scripts", "server", "reports", "ecosystem"}
+_writers_children = (
+    set(d.name for d in (ROOT / "writers").iterdir() if d.is_dir())
+    if (ROOT / "writers").is_dir() else set()
+)
+AUTO_EXCLUDE = {".git", "node_modules", "public", "content", "docs", "scripts", "server", "reports", "ecosystem", "writers"} | _writers_children
 _auto = sorted(
     d.name for d in ROOT.iterdir()
     if d.is_dir() and d.name not in AUTO_EXCLUDE and (d / "index.html").is_file()
@@ -44,21 +48,6 @@ PUBLIC_FILES = [
     "1740cdb82c02b9af13911b38c853e85d2f708322fa0c2c55.txt", "_redirects",
 ]
 
-PUB.mkdir(exist_ok=True)
-# Assertion: every route in the sitemap must stage into public/. This turns
-# "built but never published" from a silent deploy defect into a build failure.
-import re as _re
-_sm = (ROOT / "sitemap.xml").read_text(encoding="utf-8")
-_missing = set()
-for _u in _re.findall(r"<loc>([^<]+)</loc>", _sm):
-    _path = _u.split(BASE_URL_HINT, 1)[-1] if False else _u
-    _seg = _re.sub(r"^[a-z]+://[^/]+", "", _u).strip("/")
-    if _seg and not _seg.startswith("assets/"):
-        _top = _seg.split("/", 1)[0]
-        if _top not in PUBLIC_DIRS and _top not in [f.split(".")[0] for f in PUBLIC_FILES]:
-            _missing.add(_top)
-if _missing:
-    raise SystemExit(f"public-dir: sitemap routes under un-staged top-level dirs: {sorted(_missing)}")
 copied = 0
 for name in PUBLIC_DIRS:
     src = ROOT / name
@@ -73,5 +62,41 @@ for name in PUBLIC_FILES:
     if src.is_file():
         shutil.copy2(src, PUB / name)
         copied += 1
+
+# Five-publication overrides: the committed ecosystem build is the routed
+# truth. Render deploys run this script at the end of `npm run build`; when the
+# python routing steps are unavailable there (blueprint buildCommand changes
+# need a manual sync), the hub, the property sites and the routed sitemap are
+# staged straight from the committed ecosystem/ output. When routing DID run,
+# it rebuilds public/ itself afterwards and these lines are irrelevant.
+ECO = ROOT / "ecosystem"
+if (ECO / "config.json").is_file():
+    import json as _json
+    if _json.loads((ECO / "config.json").read_text()).get("mode") == "path":
+        for _p in ("sports", "tech", "entertainment", "money"):
+            if (ECO / _p).is_dir():
+                _dst = PUB / _p
+                if _dst.exists():
+                    shutil.rmtree(_dst)
+                shutil.copytree(ECO / _p, _dst)
+                copied += 1
+        for _f in ("index.html", "sitemap.xml"):
+            if (ECO / "hub" / _f).is_file():
+                shutil.copy2(ECO / "hub" / _f, PUB / _f)
+                copied += 1
+
+# Assertion: against the PUBLISHED sitemap (the hub's after the override).
+import re as _re
+_sm = (PUB / "sitemap.xml").read_text(encoding="utf-8")
+_staged = set(PUBLIC_DIRS) | {"sports", "tech", "entertainment", "money"} | {f.split(".")[0] for f in PUBLIC_FILES}
+_missing = set()
+for _u in _re.findall(r"<loc>([^<]+)</loc>", _sm):
+    _seg = _re.sub(r"^[a-z]+://[^/]+", "", _u).strip("/")
+    if _seg and not _seg.startswith("assets/"):
+        _top = _seg.split("/", 1)[0]
+        if _top and _top not in _staged:
+            _missing.add(_top)
+if _missing:
+    raise SystemExit(f"public-dir: sitemap routes under un-staged top-level dirs: {sorted(_missing)}")
 
 print(f"staged public/: {copied} items")
