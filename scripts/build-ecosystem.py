@@ -569,6 +569,48 @@ def sports_pages():
         expl_rows.append('<li><a href="/' + slug + '/"><span><b>' + title + "</b><small>" + dek[:110] + "\u2026</small></span>"
                          '<span class="meta">Explainer</span></a></li>')
 
+    # the transfer desk: one hub for the window's editions and mechanics
+    transfers_hub = (head("sports", "Analysis, stories and the long view \u2014 never betting.")
+        + '<main id="main"><div class="wrap">'
+        + '<nav class="crumb"><a href="/sports/">Sport</a> / The transfer desk</nav>'
+        + '<section class="cover"><p class="kicker">The transfer desk \u00b7 the window, in one place</p>'
+        + '<h1 class="cover-title">Transfers, covered honestly.</h1>'
+        + '<p class="cover-dek">No rumour mill, no betting angles: the desk covers transfers as journalism &mdash; how deals actually happen, who makes them happen, and a tracker of what this desk could verify while the window was open. Live window coverage returns as a fresh edition every window.</p></section>'
+        + '<section class="section"><div class="section-head"><p class="kicker">The archive editions</p><h2>The 2026 summer window, as we covered it.</h2></div>'
+        + '<ul class="list">'
+        + '<li><a href="/premier-league-transfer-tracker-august-2026/"><span><b>The August 2026 transfer tracker</b><small>Archive edition &mdash; the window as it happened, kept with its date on its sleeve.</small></span><span class="meta">Archive</span></a></li>'
+        + '<li><a href="/deadline-day-dont-try-to-make-sense-of-it/"><span><b>Deadline day: don\u2019t try to make sense of it</b><small>A field guide to the window\u2019s strangest evening.</small></span><span class="meta">Archive</span></a></li>'
+        + '</ul></section>'
+        + '<section class="section alt"><div class="section-head"><p class="kicker">The mechanics</p><h2>How deals actually happen.</h2></div>'
+        + '<ul class="list">'
+        + '<li><a href="/why-football-transfers-collapse/"><span><b>Why transfers collapse</b><small>Fee, terms, medical, paperwork &mdash; four doors, and the window\u2019s favourite tragedies live in the gaps.</small></span><span class="meta">Explainer</span></a></li>'
+        + '<li><a href="/what-does-a-sporting-director-do/"><span><b>What does a sporting director actually do?</b><small>The role that builds the machine behind every deal.</small></span><span class="meta">Explainer</span></a></li>'
+        + '</ul></section>'
+        + '<section class="section"><div class="section-head"><p class="kicker">The calendar</p><h2>When the next window opens.</h2></div>'
+        + '<div class="prose"><p>In England the summer window typically closes on the evening of 1 September, and a winter window runs through January; other leagues set their own dates within FIFA\u2019s framework, confirmed window by window. When the next one opens, the tracker returns as a new dated edition &mdash; until then, the archive stands exactly as it was written.</p></div></section>'
+        + '</div></main>' + foot("sports"))
+    pages.append(("/transfers/", "The transfer desk \u2014 window coverage, honestly | BRYME Sport",
+                  "Transfer coverage without the rumour mill: archive window editions, how deals actually happen, and when live coverage returns.", transfers_hub))
+
+    # the Champions League shelf
+    ucl_hub = (head("sports", "Analysis, stories and the long view \u2014 never betting.")
+        + '<main id="main"><div class="wrap">'
+        + '<nav class="crumb"><a href="/sports/">Sport</a> / The Champions League shelf</nav>'
+        + '<section class="cover"><p class="kicker">The Champions League shelf \u00b7 understand the competition</p>'
+        + '<h1 class="cover-title">Europe\u2019s big cup, explained.</h1>'
+        + '<p class="cover-dek">The new 36-team format has been confusing people since 2024 &mdash; these explainers walk the whole journey from qualification to the final. Match-by-match coverage returns with the season as verified editions; this desk does not run a live-scores product.</p></section>'
+        + '<section class="section"><div class="section-head"><p class="kicker">The shelf</p><h2>Start here.</h2></div>'
+        + '<ul class="list">'
+        + '<li><a href="/how-the-champions-league-works/"><span><b>How the Champions League works</b><small>Who gets in, the eight-game league phase, the playoffs, one final on one night.</small></span><span class="meta">Explainer</span></a></li>'
+        + '<li><a href="/champions-league-new-format-explained/"><span><b>The new format: what actually changed</b><small>Old groups vs the 36-team league &mdash; and the honest case each side makes.</small></span><span class="meta">Explainer</span></a></li>'
+        + '<li><a href="/why-does-afcon-move-around/"><span><b>Why AFCON moves around the calendar</b><small>The other championship whose dates collide with Europe\u2019s &mdash; climate, calendars, television.</small></span><span class="meta">Explainer</span></a></li>'
+        + '</ul></section>'
+        + '<section class="section alt"><div class="section-head"><p class="kicker">The honest bit</p><h2>What this shelf will not do.</h2></div>'
+        + '<div class="prose"><p>It will not invent results, quote odds, or pretend to track live scores. During the season the desk publishes verified editions on the stories that matter; between them, the explainers keep the competition understandable. Sources: UEFA\u2019s official competition pages.</p></div></section>'
+        + '</div></main>' + foot("sports"))
+    pages.append(("/champions-league/", "The Champions League shelf \u2014 the format, explained | BRYME Sport",
+                  "How the Champions League works and what the new 36-team format changed \u2014 evergreen explainers, verified editions in season.", ucl_hub))
+
     # the /explainers/ section page
     all_rows = "".join('<li><a href="/' + s + '/"><span><b>' + ti + "</b><small>" + dek[:130] + "\u2026</small></span>"
                        '<span class="meta">Explainer</span></a></li>'
@@ -599,6 +641,11 @@ def sports_pages():
 <p class="cover-dek">Football first: the transfer window read plainly, the matchweeks reviewed, the season's stories followed as they happen. Restored from the BRYME media desk \u2014 and, as a house rule, never betting odds or gambling-adjacent tips.</p></section>
 <section class="section"><div class="section-head"><p class="kicker">Evergreen explainers</p><h2>Understand the game.</h2></div>
 <ul class="list">{''.join(expl_rows)}</ul></section>
+<section class="section"><div class="section-head"><p class="kicker">Two more shelves</p><h2>The transfer desk &amp; the Champions League.</h2></div>
+<ul class="list">
+<li><a href="/transfers/"><span><b>The transfer desk</b><small>The window in one place &mdash; archive editions, deal mechanics, and when live coverage returns.</small></span><span class="meta">Desk</span></a></li>
+<li><a href="/champions-league/"><span><b>The Champions League shelf</b><small>The 36-team format, explained honestly &mdash; with match coverage returning in season.</small></span><span class="meta">Shelf</span></a></li>
+</ul></section>
 <section class="section"><div class="section-head"><p class="kicker">The restored desk</p><h2>Recovered editions</h2></div>
 <ul class="list">{''.join(restored)}</ul></section>
 <section class="section alt"><div class="section-head"><p class="kicker">The honest bit</p><h2>What stayed retired.</h2></div>

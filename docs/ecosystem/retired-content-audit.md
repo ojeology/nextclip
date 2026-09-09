@@ -133,3 +133,14 @@ Historical movie catalog pages contained incidental "watch" text but **no downlo
   Dec 2025–Jan 2026 and 2027 East Africa as dated examples; CAF source).
 - All evergreen — no fixtures, no data rights, no invented facts; Article schema; cross-linked
   with the archived season editions. Sport 9→16 pages.
+
+## 2026-09-09 — Sport batch 2: the transfer desk + the Champions League shelf
+
+- /sports/transfers/ hub: archive window editions (tracker + deadline day), deal mechanics,
+  window-calendar facts (England summer typically closes 1 Sept; winter through January),
+  honest framing — live coverage returns as dated editions each window; no rumour aggregation.
+- /sports/champions-league/ hub + 2 UEFA-sourced explainers: how-the-champions-league-works
+  (entry, 36-team league phase, top-8 / playoffs 9-24 / 25-36 out, no EL parachute, one final)
+  and champions-league-new-format-explained (old groups vs new league, both cases argued).
+- No invented results, no odds, no live-scores product — house rule stated on the hubs.
+  Sport 16→20 pages (7 explainers + 2 desks + 5 archive + index + legal).

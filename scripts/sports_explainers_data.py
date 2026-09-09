@@ -88,4 +88,34 @@ SPORT_EXPLAINERS = [
 [("promotion-and-relegation-explained", "Promotion and relegation, explained"),
  ("how-var-works", "How VAR actually works"),
  ("the-offside-rule-explained", "The offside rule, explained")]),
+
+("how-the-champions-league-works", "How the Champions League works, from entry to the final",
+"The whole journey in one piece: who gets in, the eight-game league phase, the playoffs, and why the final is one match on one night.",
+"""<p>The UEFA Champions League is European club football's championship, and since 2024-25 it runs on a format that even regular watchers are still learning. Here is the whole journey, stage by stage.</p>
+<h2>Who gets in</h2>
+<p>Thirty-six clubs qualify each season. Most places are earned through league positions in the previous season's domestic campaigns &mdash; the strongest countries send several clubs, smaller leagues send their champions through qualifying rounds that start in high summer. The title holders qualify automatically, and UEFA publishes the exact access list every season, because slot allocation shifts with coefficient rankings and rule changes. That is why qualification night matters across the whole continent: a league position in May can be worth a Champions League summer.</p>
+<h2>The league phase: eight games, one table</h2>
+<p>Instead of the old eight groups of four, all 36 clubs now sit in one league table. Each club plays eight matches &mdash; eight different opponents, two drawn from each of four seeding pots, four home games and four away. It runs from September to late January, and every result moves you up or down one shared table, which is why a goal in the 94th minute in January can swing four clubs at once.</p>
+<h2>What the table buys</h2>
+<p>Finish in the top eight and you go straight to the round of 16. Finish 9th to 24th and you earn a two-legged knockout playoff in February against another side from that band &mdash; win it and you join the top eight in the round of 16. Finish 25th or lower and you are out of Europe entirely: under the new format there is no safety net dropping you into the Europa League, which the old third-place group stage offered. From the round of 16 on, it is the classic two-legged ties, seeded so that higher league-phase finishers avoid each other until later rounds, ending in a one-off final at a venue chosen years in advance &mdash; late May or early June, one night, no second chance.</p>
+<h2>Why this format exists</h2>
+<p>UEFA's stated aims were more guaranteed big-club meetings and a fairer route past the group stage; the trade, contested loudly, is four more matches on player calendars and a longer elite season. Our <a href="/sports/champions-league-new-format-explained/">old-versus-new comparison</a> walks through exactly what changed and why people argue about it. For the law of the game itself rather than the competition, see <a href="/sports/the-offside-rule-explained/">the offside rule explained</a>.</p>""",
+[("UEFA — UEFA Champions League", "https://www.uefa.com/uefachampionsleague/")],
+[("champions-league-new-format-explained", "The new format, old vs new"),
+ ("the-offside-rule-explained", "The offside rule, explained")]),
+
+("champions-league-new-format-explained", "The Champions League's new format: what actually changed",
+"36 teams, one table, eight games each. Here is the old format, the new one, and the honest case each side makes.",
+"""<p>In 2024-25 the Champions League replaced the format it had used for over two decades. If the new one confuses you, the fastest way in is to see what was thrown away.</p>
+<h2>The old world: eight groups of four</h2>
+<p>Thirty-two teams, eight groups, home and away against three opponents each, six matches total. Top two advanced to the round of 16; the third place dropped into the Europa League knockout rounds; the bottom two went home. The known quirks: the same six opponents every autumn, and the strange spectacle of a giant finishing third and continuing its European season in a lesser competition.</p>
+<h2>The new world: one league of 36</h2>
+<p>All 36 clubs in a single table. Eight matches, eight different opponents, two from each of four pots, four home and four away, September to January. The rewards are tiered: top eight straight to the round of 16; ninth through 24th into February playoffs for the remaining eight places; 25th onward are eliminated outright &mdash; no Europa League parachute anymore. The knockout rounds are bracketed by league position, so winning the league phase genuinely matters: it buys an easier road right up to the semi-finals.</p>
+<h2>The case for, and against &mdash; honestly</h2>
+<p>For: guaranteed meetings between the biggest clubs in the league phase (under group formats, giants could dodge each other until spring), more matches for broadcasters and fans, and a table that keeps every matchday live &mdash; no dead rubbers by week five. Against: four extra matches on calendars that players' unions already call overloaded, a format whose arithmetic (pots, brackets, seeding) is harder for a casual fan to hold, and the loss of the group stage's simple tradition: six games, three opponents, top two through. Both cases are sincere; the format is young enough that its folklore &mdash; the dramatic final-matchday table reshuffles &mdash; is still being written.</p>
+<h2>The one thing that did not change</h2>
+<p>The final: one match, one night, a venue booked years ahead. Everything before it got more complicated; the last game stayed simple. For the whole journey from qualification to that night, see <a href="/sports/how-the-champions-league-works/">how the Champions League works</a> &mdash; and for how the calendar collision works when Africa's championship meets Europe's, our <a href="/sports/why-does-afcon-move-around/">AFCON calendar explainer</a> covers the other side of that tug-of-war.</p>""",
+[("UEFA — UEFA Champions League", "https://www.uefa.com/uefachampionsleague/")],
+[("how-the-champions-league-works", "How the Champions League works"),
+ ("why-does-afcon-move-around", "Why AFCON moves around")]),
 ]
