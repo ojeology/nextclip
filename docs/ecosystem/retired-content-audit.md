@@ -122,3 +122,14 @@ Historical movie catalog pages contained incidental "watch" text but **no downlo
   but-no-sound), how-to-reset-forgotten-passwords (email first, official doors only, post-reset
   persistence cleanup, the honest recovery limit).
 - Tech: 50 pages (safety 9, android 6). No new sections needed — existing shelves absorbed them.
+
+## 2026-09-09 — Sport: the explainer shelf (batch 1)
+
+- 6 evergreen explainers + /sports/explainers/ section: offside (IFAB source, the three-ideas
+  frame + 2023 flag-delay clarification dated honestly), promotion & relegation (pyramid vs
+  closed franchises, parachute payments conceptual), how VAR works (four checkable categories,
+  the referee-decides architecture, the flow-vs-accuracy bargain), why transfers collapse
+  (four doors), what a sporting director does, why AFCON moves (climate/calendars/TV; Morocco
+  Dec 2025–Jan 2026 and 2027 East Africa as dated examples; CAF source).
+- All evergreen — no fixtures, no data rights, no invented facts; Article schema; cross-linked
+  with the archived season editions. Sport 9→16 pages.

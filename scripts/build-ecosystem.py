@@ -532,6 +532,61 @@ def sports_pages():
 </div></main>{foot("sports")}"""
         pages.append((route, f'{m["title"]} | BRYME Sport',
                       "From the BRYME media desk — recovered edition, re-typeset.", pbody))
+
+    # evergreen explainers: laws, formats and roles — no fixtures, no data rights, no betting
+    import sports_explainers_data
+    import json as _j
+    expl_rows = []
+    for slug, title, dek, body, sources, related in sports_explainers_data.SPORT_EXPLAINERS:
+        src_html = ""
+        if sources:
+            src_html = ('<h2>Sources</h2><ul class="list">'
+                        + "".join('<li><a href="' + u + '" rel="noopener">' + n + "</a></li>" for n, u in sources)
+                        + "</ul>")
+        rel_html = "".join('<li><a href="/' + s + '/">' + rt + "</a></li>" for s, rt in related)
+        schema = {"@context": "https://schema.org", "@type": "Article",
+                  "headline": title,
+                  "author": {"@type": "Organization", "name": "BRYME Sport desk"},
+                  "publisher": {"@type": "Organization", "name": "THE BRYME"},
+                  "datePublished": TODAY, "dateModified": TODAY,
+                  "mainEntityOfPage": ORIGIN + "/sports/" + slug + "/",
+                  "description": dek}
+        ebody = (head("sports", "Analysis, stories and the long view \u2014 never betting.")
+            + '<main id="main"><div class="wrap">'
+            + '<nav class="crumb"><a href="/sports/">Sport</a> / <a href="/sports/explainers/">Explainers</a> / ' + title + "</nav>"
+            + '<section class="cover"><p class="kicker">Explainer \u00b7 evergreen</p>'
+            + '<h1 class="cover-title" style="font-size:clamp(30px,4.6vw,48px)">' + title + "</h1>"
+            + '<p class="byline">BRYME Sport desk \u00b7 reviewed ' + TODAY + " \u00b7 evergreen explainer \u2014 no odds, no tips, no invented facts</p></section>"
+            + '<section class="section alt"><div class="wrap"><p class="lede"><b>In one line:</b> ' + dek + "</p></div></section>"
+            + '<section class="section"><div class="prose">' + body + src_html + "</div></section>"
+            + '<section class="section alt"><div class="section-head"><p class="kicker">Next</p><h2>More from the shelf.</h2></div>'
+            + '<ul class="list">' + rel_html + "</ul>"
+            + '<div class="actions"><a class="btn secondary" href="/sports/explainers/">All explainers</a>'
+            + '<a class="btn secondary" href="/sports/">All of BRYME Sport</a></div></section>'
+            + '<script type="application/ld+json">' + _j.dumps(schema) + "</script>"
+            + "</div></main>" + foot("sports"))
+        pages.append(("/" + slug + "/", title + " | BRYME Sport", dek[:155], ebody))
+        expl_rows.append('<li><a href="/' + slug + '/"><span><b>' + title + "</b><small>" + dek[:110] + "\u2026</small></span>"
+                         '<span class="meta">Explainer</span></a></li>')
+
+    # the /explainers/ section page
+    all_rows = "".join('<li><a href="/' + s + '/"><span><b>' + ti + "</b><small>" + dek[:130] + "\u2026</small></span>"
+                       '<span class="meta">Explainer</span></a></li>'
+                       for s, ti, dek, b, so, re in sports_explainers_data.SPORT_EXPLAINERS)
+    sect_body = (head("sports", "Analysis, stories and the long view \u2014 never betting.")
+        + '<main id="main"><div class="wrap">'
+        + '<nav class="crumb"><a href="/sports/">Sport</a> / Explainers</nav>'
+        + '<section class="cover"><p class="kicker">BRYME Sport \u00b7 the explainer shelf</p>'
+        + '<h1 class="cover-title">Understand the game.</h1>'
+        + '<p class="cover-dek">The laws, the formats and the roles of football \u2014 explained plainly, argued honestly, and evergreen: nothing here expires with the fixtures. No betting content, ever.</p></section>'
+        + '<section class="section"><div class="section-head"><p class="kicker">' + str(len(sports_explainers_data.SPORT_EXPLAINERS)) + ' explainers</p><h2>The shelf.</h2></div>'
+        + '<ul class="list">' + all_rows + "</ul></section>"
+        + '<section class="section alt"><div class="section-head"><p class="kicker">Also on this desk</p><h2>The season archive.</h2></div>'
+        + '<div class="actions"><a class="btn secondary" href="/sports/">Back to BRYME Sport</a></div></section>'
+        + "</div></main>" + foot("sports"))
+    pages.insert(1, ("/explainers/", "Football explainers \u2014 laws, formats and roles | BRYME Sport",
+                     "The offside rule, VAR, promotion and relegation, transfer mechanics, sporting directors and AFCON's calendar \u2014 football explained plainly, evergreen.", sect_body))
+
     for m in manifest:
         if m["slug"] not in REAL:
             retired.append(f'<li><span><b>{html.escape(m["title"])}</b>'
@@ -542,6 +597,8 @@ def sports_pages():
 <section class="cover"><p class="kicker">BRYME Sport · the 2026-27 desk</p>
 <h1 class="cover-title">Sport as reporting, not noise.</h1>
 <p class="cover-dek">Football first: the transfer window read plainly, the matchweeks reviewed, the season's stories followed as they happen. Restored from the BRYME media desk \u2014 and, as a house rule, never betting odds or gambling-adjacent tips.</p></section>
+<section class="section"><div class="section-head"><p class="kicker">Evergreen explainers</p><h2>Understand the game.</h2></div>
+<ul class="list">{''.join(expl_rows)}</ul></section>
 <section class="section"><div class="section-head"><p class="kicker">The restored desk</p><h2>Recovered editions</h2></div>
 <ul class="list">{''.join(restored)}</ul></section>
 <section class="section alt"><div class="section-head"><p class="kicker">The honest bit</p><h2>What stayed retired.</h2></div>
