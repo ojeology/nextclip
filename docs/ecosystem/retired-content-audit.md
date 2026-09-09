@@ -101,3 +101,15 @@ Historical movie catalog pages contained incidental "watch" text but **no downlo
 - **Sport archive stamp:** the 4 season-window editions (transfer tracker, both matchweek
   previews, deadline-day) now carry "Season 2026-27 · archive edition" + a byline note that
   new editions return with the season — time-sensitive coverage no longer reads as current.
+
+## 2026-09-09 — Tech batch 2: 14 original guides, three new sections
+
+- **Sections earned and opened:** /tech/android/ (4), /tech/windows/ (3), /tech/coding/ (4 incl.
+  the Termux archive piece). Tech homepage now seven sections; obsolete coding-note removed.
+- **Safety 3→7:** suspicious links (FTC source), 2FA done right (CISA source), public Wi-Fi
+  (myth-correcting: HTTPS fixed the old threat; evil twins/captive portals/humans remain),
+  password manager vs browser vault.
+- **Android:** storage triage, permission audit, battery health (charging myths retired),
+  notification control. **Windows/PC:** slow-PC triage, browser fix list, stuck-update path.
+  **Coding:** error messages, Git/GitHub (Pro Git + GitHub docs sources), what is an API.
+- Kicker honesty system: First-hand / Practical guide / Archive edition by provenance.

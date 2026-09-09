@@ -24,11 +24,13 @@ import html
 import shutil
 import json
 import os
+import sys
 import re
 from pathlib import Path
 from xml.sax.saxutils import escape as xesc
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "scripts"))
 OUT = ROOT / "ecosystem"
 CFG = json.loads((ROOT / "ecosystem" / "config.json").read_text(encoding="utf-8"))
 DOMAIN = os.environ.get("PRODUCTION_DOMAIN") or CFG["domain"]
@@ -626,6 +628,9 @@ TECH_CAT = {
     "tools": ("Free tools & real alternatives", "Free plans and alternatives we actually opened and used \u2014 what they include, what they hold back, and who each one fits.", "hero-alternatives.jpg"),
     "web-and-hosting": ("Web & hosting", "Domains, DNS, deploys and the front end \u2014 written from first-hand builds of this very site, failures included.", "hero-hosting.jpg"),
     "safety": ("Safety & privacy", "Passwords, messaging, tokens and your data \u2014 practical protection without the scaremongering.", "hero-privacy.jpg"),
+    "android": ("Android & mobile", "Phone storage, permissions, battery and notifications \u2014 the settings that actually matter, explained without the jargon.", ""),
+    "windows": ("Windows & PC", "Slow computers, browser trouble and update problems \u2014 triaged in the order that finds the cause fastest.", ""),
+    "coding": ("Coding", "Beginner programming explained the honest way \u2014 errors, Git and APIs \u2014 from a desk that ships code.", ""),
 }
 _TECH_CAT_OF = {
     "hosting": "web-and-hosting", "ai-assistants": "ai", "beginner-coding": "coding",
@@ -659,6 +664,13 @@ def _load_tech():
                      "read": "", "author": "the BRYME Tech desk",
                      "blocks": [{"heading": "", "body": body, "html": True}],
                      "sources": [], "recovered": False})
+    import tech_guides_data
+    for slug, cat, kind, title, dek, body, sources, related in tech_guides_data.NEW_TECH_GUIDES:
+        arts.append({"slug": slug, "title": title, "excerpt": dek, "cat": cat, "kind": kind,
+                     "pub": TODAY, "upd": TODAY, "read": "", "author": "the BRYME Tech desk",
+                     "blocks": [{"heading": "", "body": body, "html": True}],
+                     "sources": [{"name": n, "url": u} for n, u in sources],
+                     "recovered": False})
     return arts
 
 def _tech_blocks(a):
@@ -730,7 +742,9 @@ def tech_pages():
             meta_bits.append("updated " + a["upd"])
         if a["read"]:
             meta_bits.append(a["read"])
-        tag = ("Recovered from the BRYME tech archive \u00b7 " if a["recovered"] else "First-hand \u00b7 ")
+        kind_kick = {"firsthand": "First-hand \u00b7 ", "guide": "Practical guide \u00b7 "}
+        tag = ("Recovered from the BRYME tech archive \u00b7 " if a["recovered"]
+               else kind_kick.get(a.get("kind", "firsthand"), "Practical guide \u00b7 "))
         summ = ('<section class="section alt"><div class="wrap"><p class="lede"><b>In one line:</b> '
                 + html.escape(a["excerpt"]) + "</p></div></section>") if a["excerpt"] else ""
         schema = {"@context": "https://schema.org", "@type": "TechArticle",
@@ -780,7 +794,7 @@ def tech_pages():
         + '<ul class="list">' + start_rows + "</ul></section>"
         + '<section class="section alt"><div class="section-head"><p class="kicker">Browse by need</p><h2>Sections of this desk.</h2></div>'
         + '<div class="cards">' + cat_cards + "</div>"
-        + '<p class="lede" style="margin-top:18px">Coding coverage is growing from one honest piece: <a href="/learning-to-code-on-a-phone-termux/">learning to code on a phone, and what actually broke</a>.</p></section>'
+        + '</section>'
         + '<section class="section"><div class="section-head"><p class="kicker">Freshly dated</p><h2>Recently updated.</h2></div>'
         + '<ul class="list">' + latest_rows + "</ul></section>"
         + '<section class="section alt"><div class="section-head"><p class="kicker">The promise</p><h2>What "no theatre" means here.</h2></div>'
