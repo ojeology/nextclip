@@ -55,6 +55,27 @@ Notes that will bite you if skipped:
 (`SUB` map in `build-ecosystem.py`, PREFIX mode in routing). Env overrides for CI:
 `PRODUCTION_DOMAIN`, `ROUTING_MODE`, `ORIGIN`.
 
+## Render deploy behaviour (important)
+
+- `render.yaml` sets the build command to `npm install --omit=dev && npm run build &&
+  python3 scripts/build-ecosystem.py && python3 scripts/build-routing.py`. **Render only
+  re-reads `render.yaml` on a blueprint sync** — until someone syncs in the Render dashboard,
+  deploys run `npm run build` alone. The chain is built to be correct either way:
+  - `build-public-dir.py` (last npm step) stages the routed site from the committed
+    `ecosystem/` output — hub at `/`, properties at their prefixes, unprefixed duplicates of
+    `writers/` content excluded;
+  - `build-discovery.py` picks the allowlist artifact by tree shape (routed artifact when
+    `writers/` exists in the checkout — always true on Render);
+  - when the python steps DO run, `build-routing.py` rebuilds `public/` itself afterwards and
+    has the final word.
+- The npm build's `|| echo` fallback masks build failures with exit 0 — a failed build still
+  deploys the committed `public/`. That fallback is what kept the site correct while the
+  allowlist/build mismatch was being fixed; treat any "deploy succeeded but output looks
+  pre-routing" as a masked build failure and run the chain locally.
+- Cloudflare sits in front of `bryme.onrender.com` and ignores query strings for its cache key —
+  after a deploy, URL checks can return stale layers from previous deploys for a few minutes.
+  Verify with `cf-cache-status`/`age` headers before diagnosing.
+
 ## Switching to subdomains later (deployment change only)
 
 1. Set `mode: "subdomains"` in `ecosystem/config.json`.
