@@ -191,14 +191,20 @@ def build() -> None:
     rss += "</channel></rss>\n"
     (ROOT / "feed.xml").write_text(rss, encoding="utf-8")
 
+    # Five-publication era: the hub sitemap plus one sitemap per property.
+    # build-routing.py rewrites this file after the tree is migrated; this
+    # template matches it so any build path produces the same robots.txt.
     robots = (
         "User-agent: *\n"
         "Allow: /\n"
-        "Disallow: /api/\n"
-        "Disallow: /admin/\n"
-        "Disallow: /telegram/\n\n"
-        f"Sitemap: {SITE}/sitemap.xml\n"
-        f"Sitemap: {SITE}/news-sitemap.xml\n"
+        "Disallow: /scripts/\n"
+        "Disallow: /content/\n"
+        "Disallow: /docs/\n"
+        "Disallow: /server/\n"
+        "Disallow: /ecosystem/\n\n"
+        f"Sitemap: {SITE}/writers/sitemap.xml\n"
+        + "".join(f"Sitemap: {SITE}/{x}/sitemap.xml\n" for x in
+                  ("sports", "entertainment", "tech", "money"))
     )
     (ROOT / "robots.txt").write_text(robots, encoding="utf-8")
 
