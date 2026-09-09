@@ -990,7 +990,11 @@ def fitness_pages():
     plan_page = [("/30-day-walking-plan/", "The 30-Day Walking Plan | BRYME Fitness",
                   "A beginner walking plan built on one honest idea: show up every day for a month. Time-based, rest days built in, progress saved in your browser.", plan_body)]
 
-    arts = [art(s, ti, dek, b, FIT_SOURCES, related_map[s])
+    ART_SOURCES = dict((s, FIT_SOURCES) for s, _, _, _ in FIT_ARTICLES)
+    ART_SOURCES["how-many-steps-a-day"] = FIT_SOURCES + [
+        ("Lee et al., JAMA Internal Medicine (2019) \u2014 Association of Step Volume and Intensity With All-Cause Mortality in Older Women",
+         "https://jamanetwork.com/journals/jamainternalmedicine/fullarticle/2731911")]
+    arts = [art(s, ti, dek, b, ART_SOURCES[s], related_map[s])
             for (s, ti, dek, b) in FIT_ARTICLES]
 
     start_rows = ('<li><a href="/how-to-start-working-out/"><span><b>Starting from zero</b>'
