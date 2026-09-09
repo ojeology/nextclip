@@ -1,5 +1,7 @@
 {
   "domain": "thebryme.com",
-  "subdomains": { "writers": "writers", "sports": "sports", "entertainment": "entertainment", "tech": "tech" },
-  "notes": "PRODUCTION_DOMAIN env var overrides domain. writers.thebryme.com serves the EXISTING main build (this repo's public/), not a dir here."
+  "mode": "path",
+  "origin": "https://bryme.onrender.com",
+  "subdomains": { "writers": "writers", "sports": "sports", "entertainment": "entertainment", "tech": "tech", "money": "money" },
+  "notes": "mode=path: properties served at bryme.onrender.com/<prop>/, writers at /writers/. mode=subdomain: the later deployment change. PRODUCTION_DOMAIN/ROUTING_MODE/ORIGIN env vars override."
 }

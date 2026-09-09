@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://bryme.onrender.com/money/sitemap.xml

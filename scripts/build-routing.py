@@ -1,0 +1,183 @@
+#!/usr/bin/env python3
+"""STEP 3 of the ecosystem build: path-based routing on the current deployment.
+
+Transforms the built tree from "one writers site at /" into the five-
+publication layout:
+
+    /                    -> THE BRYME hub (from ecosystem/hub)
+    /writers/<route>     -> the entire existing Writers publication
+    /sports/             -> BRYME Sport (from ecosystem/sports)
+    /entertainment/      -> BRYME Entertainment (from ecosystem/entertainment)
+    /tech/               -> BRYME Tech (from ecosystem/tech)
+    /money/              -> BRYME Money (from ecosystem/money)
+
+Everything is config-driven: ROUTING_MODE=subdomain (later) flips the
+properties to their own hosts as a deployment change, not a rebuild.
+Writers' page URLs are rewritten (href/src/action/canonical/og/sitemap/
+feed/manifest/search-index); shared assets stay at /assets/. Indexing is
+explicitly out of scope at this stage (build spec STEP 8).
+"""
+from __future__ import annotations
+
+import json
+import re
+import shutil
+import sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+PROPS = ["sports", "entertainment", "tech", "money"]
+KEEP_AT_ROOT_DIRS = {".git", ".github", "assets", "scripts", "content", "docs", "server", "reports",
+                     "node_modules", "public", "ecosystem", ".git"} | set(PROPS) | {"writers"}
+KEEP_AT_ROOT_FILES = {"robots.txt", "_redirects", "favicon.ico", "package.json",
+                      "package-lock.json", "render.yaml", "site.config.json",
+                      "seo-pilot-matrix.csv"}
+# verification + provenance files stay at the domain root
+import fnmatch
+VERIF = {p.name for p in ROOT.glob("google*.html")} | {p.name for p in ROOT.glob("yandex*.html")} | {p.name for p in ROOT.glob("*.txt") if p.name.startswith("17")}
+
+ORIGIN = "https://bryme.onrender.com"
+PROP_PREFIXES = tuple(f"/{x}" for x in PROPS) + ("/writers", "/assets")
+
+ATTR_RE = re.compile(r'(\s(?:href|src|action|content)=\x22)(/(?!assets/|writers|sports|entertainment|tech|money)([^\x22]*))(\x22)')
+ABS_RE = re.compile(re.escape(ORIGIN) + r'/(?!writers|sports|entertainment|tech|money)([^"\'<\s)]*)')
+
+
+def rewrite_writer_paths(text: str) -> tuple[str, int]:
+    """Prefix root-absolute page URLs with /writers (assets stay shared)."""
+    n = 0
+    text, c = ATTR_RE.subn(r'\1/writers/\3\4', text); n += c
+    text, c = ABS_RE.subn(ORIGIN + r'/writers/\1', text); n += c
+    # bare home links
+    text, c = re.subn(r'(href|action)="/"', r'\1="/writers/"', text); n += c
+    return text, n
+
+
+def rewrite_prop_paths(text: str, prop: str) -> tuple[str, int]:
+    """Point a property's root-absolute links at its own prefix."""
+    n = 0
+    text, c = re.subn(r'href="/(?!/)(?!assets/)(?!' + "|".join(x.lstrip("/") for x in PROP_PREFIXES) + r')(.*?)(")',
+                      rf'href="/{prop}/\1\2', text); n += c
+    text, c = re.subn(r'href="/"', rf'href="/{prop}/"', text); n += c
+    return text, n
+
+
+def strip_arrows(text: str) -> str:
+    """STEP 6: no trailing -> arrows on links/buttons, anywhere."""
+    return re.sub(r"\s*(?:&rarr;|→)\s*</a>", "</a>", text)
+
+
+def main() -> int:
+    moved = 0
+    # 1. move the writers tree into writers/
+    wr = ROOT / "writers"
+    if wr.exists():
+        shutil.rmtree(wr)  # every build regenerates the root tree; re-move fresh
+    wr.mkdir()
+    for e in list(ROOT.iterdir()):
+        name = e.name
+        if e.is_dir():
+            if name in KEEP_AT_ROOT_DIRS:
+                continue
+            shutil.move(str(e), str(wr / name))
+            moved += 1
+        else:
+            if name in KEEP_AT_ROOT_FILES or name in VERIF or name.startswith(("BRYME", "BYME", "README")):
+                continue
+            if name in {"index.html", "404.html", "410.html", "sitemap.xml",
+                        "news-sitemap.xml", "feed.xml", "manifest.webmanifest", "sw.js"}:
+                shutil.move(str(e), str(wr / name))
+                moved += 1
+    # sw.js also stays at the root so old service-worker registrations get cleaned
+    if (ROOT / "favicon.ico").exists():
+        shutil.copy2(ROOT / "favicon.ico", wr / "favicon.ico")  # writers pages link /writers/favicon.ico after the rewrite
+    if (wr / "sw.js").exists():
+        shutil.copy2(wr / "sw.js", ROOT / "sw.js")
+    if (wr / "favicon.ico").exists():
+        shutil.copy2(wr / "favicon.ico", ROOT / "favicon.ico")
+
+    # 2. rewrite writers URLs
+    total = 0
+    for f in wr.rglob("*"):
+        if f.is_file() and f.suffix in (".html", ".xml", ".webmanifest", ".js", ".txt"):
+            if f.name in ("hub-tools.js", "studio.js", "theme.js", "site-nav.js",
+                          "level-filter.js", "opp-filter.js", "article-filter.js",
+                          "purpose-finder.js", "country-filter.js", "tracker.js", "sw.js"):
+                continue  # shared/inert scripts: DOM-only, no page URLs
+            s = f.read_text(encoding="utf-8")
+            s2, n = rewrite_writer_paths(s)
+            if f.name == "search-index.js":
+                s2, c = re.subn(r'"u":\s*"/(?!writers)', '"u": "/writers/', s2)
+                n += c
+            s2 = strip_arrows(s2)
+            if s2 != s:
+                f.write_text(s2, encoding="utf-8")
+                total += 1
+
+    # 3. properties + hub out of ecosystem/ to the root
+    for prop in PROPS:
+        src = ROOT / "ecosystem" / prop
+        dst = ROOT / prop
+        if dst.exists():
+            shutil.rmtree(dst)
+        shutil.copytree(src, dst,
+                        ignore=shutil.ignore_patterns("_recovered"))
+        for f in dst.rglob("*.html"):
+            s = f.read_text(encoding="utf-8")
+            s, _ = rewrite_prop_paths(s, prop)
+            f.write_text(strip_arrows(s), encoding="utf-8")
+    hub_src = ROOT / "ecosystem" / "hub" / "index.html"
+    hub_out = ROOT / "index.html"
+    s = hub_src.read_text(encoding="utf-8")
+    hub_out.write_text(strip_arrows(s), encoding="utf-8")
+    shutil.copy2(ROOT / "ecosystem" / "hub" / "sitemap.xml", ROOT / "sitemap.xml")
+    shutil.copy2(ROOT / "ecosystem" / "hub" / "robots.txt", ROOT / "hub-robots.txt")
+
+    # 4. global robots.txt: five sitemaps, no indexing work (STEP 8: untouched)
+    (ROOT / "robots.txt").write_text(
+        "User-agent: *\nAllow: /\nDisallow: /scripts/\nDisallow: /content/\n"
+        "Disallow: /docs/\nDisallow: /server/\nDisallow: /ecosystem/\n\n"
+        f"Sitemap: {ORIGIN}/writers/sitemap.xml\n" +
+        "".join(f"Sitemap: {ORIGIN}/{x}/sitemap.xml\n" for x in PROPS), encoding="utf-8")
+
+    # 5. allowlist v25: writers prefixed + hub + property routes
+    al = json.loads((ROOT / "content" / "index-allowlist.json").read_text())
+    routes = set()
+    if any(r.startswith("/writers/") for r in al["routes"]):
+        routes.update(al["routes"])  # already routed; idempotent re-run
+    else:
+        for r in al["routes"]:
+            routes.add("/writers/" + r[1:] if r != "/" else "/writers/")
+    routes.add("/")  # the hub
+    for prop in PROPS:
+        sm = ROOT / prop / "sitemap.xml"
+        for loc in re.findall(r"<loc>(.*?)</loc>", sm.read_text()):
+            routes.add("/" + loc.split(ORIGIN + "/", 1)[1])
+    al["version"] = 25
+    al["routes"] = sorted(routes)
+    (ROOT / "content" / "index-allowlist.json").write_text(
+        json.dumps(al, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+
+    # 6. refresh the public/ mirror to the routed tree
+    pub = ROOT / "public"
+    if pub.exists():
+        shutil.rmtree(pub)
+    pub.mkdir()
+    EXCL = {"scripts", "content", "docs", "server", "reports", "node_modules", "ecosystem", ".git"} | VERIF | {"robots.txt", "_redirects", "package.json", "package-lock.json", "render.yaml", "site.config.json", "seo-pilot-matrix.csv"}
+    for e in ROOT.iterdir():
+        if e.name in EXCL or e.name in KEEP_AT_ROOT_FILES or e.name.startswith(("BRYME", "BYME", "README")):
+            continue
+        if e.name in {"index.html", "sitemap.xml", "sw.js", "hub-robots.txt"} or e.is_dir():
+            dst = pub / e.name
+            if e.is_dir():
+                shutil.copytree(e, dst)
+            else:
+                shutil.copy2(e, dst)
+
+    print(f"routing: writers moved ({moved} entries, {total} URL rewrites), "
+          f"{len(PROPS)} properties at root paths, allowlist v25 ({len(routes)} routes), public/ mirrored")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

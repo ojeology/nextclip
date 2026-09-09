@@ -1,55 +1,79 @@
-# THE BRYME — Deployment Runbook (build → domain → subdomains → AdSense)
+# BRYME deployment — single service, path-based routing
 
-**Sequence (per master plan §26, unchanged):** BUILD → TEST → AUDIT → APPROVE DESIGN → BUY DOMAIN → CONNECT DNS → CONNECT SUBDOMAINS → VERIFY → SEARCH CONSOLE → SITEMAPS → INDEXING → ADSENSE.
+**Current mode: `path`** — one Render static service serves THE BRYME hub at `/` and all five
+publications under path prefixes. Subdomains are a config flip, not a rebuild (see below).
 
-**Flag resolved:** `thebryme.com` **is available** (verified against the Verisign .com registry, 8 Sep 2026). Buy it when the design is approved — not before (§23–26).
+## The five publications
 
-**Trade-off confirmed in the plan:** the AdSense application now happens *after* the four publications are built. Expect approval revenue later than the old sequence; that is the accepted cost of the ecosystem architecture.
+| Publication | Path on the Render service | Future subdomain |
+| --- | --- | --- |
+| THE BRYME (hub) | `/` | thebryme.com |
+| BRYME Writers (flagship) | `/writers/` | writers.thebryme.com |
+| BRYME Sports | `/sports/` | sports.thebryme.com |
+| BRYME Tech | `/tech/` | tech.thebryme.com |
+| BRYME Entertainment | `/entertainment/` | entertainment.thebryme.com |
+| BRYME Money | `/money/` | money.thebryme.com |
 
-## What exists in the repo today
+## Build chain (run in this order)
 
-| Publication | Directory / source | Status |
-|---|---|---|
-| THE BRYME (master homepage) | `ecosystem/hub/` | **Built** — publication directory, family cards |
-| BRYME Writers (flagship) | this repo's main build (`public/`) | **Live** — 191 guides, 44 tools, 489 routes; becomes `writers.thebryme.com` |
-| BRYME Entertainment | `ecosystem/entertainment/` | **Built** — recovered archive shelf (6 restored editions + restoration queue) |
-| BRYME Sport | `ecosystem/sports/` | **Skeleton** — opens after the archive/Bing-data audit; no betting content, ever |
-| BRYME Tech | `ecosystem/tech/` | **Built** — 5 first-hand launch articles + house promise |
-| Retired-content audit | `docs/ecosystem/retired-content-audit.md` | **Done** — every old URL classified A–E |
+```
+npm run build                        # writers site at root (hub build restores content/index-allowlist.json to v24 form)
+python3 scripts/build-ecosystem.py   # hub + sports + tech + entertainment + money into ecosystem/ (reads ecosystem/config.json)
+python3 scripts/build-routing.py     # migrates the tree: writers/ -> writers/, props to root paths, hub to index.html
+node scripts/validate-site-quality.js
+python3 scripts/check-internal-links.py
+```
 
-Each `ecosystem/*` dir is a self-contained static site (own stylesheet in its family identity, own sitemap.xml, robots.txt, about/privacy/contact). Regenerate all of them with `python3 scripts/build-ecosystem.py`. The main site build is untouched (the dir is excluded from the Writers build and its validator).
+Notes that will bite you if skipped:
 
-## Hostname configuration (no hard-coding, per plan §10–12)
+- `content/index-allowlist.json` is derived. `npm run build` regenerates it from the clean root
+  tree (489 writers routes); `build-routing.py` rewrites it to v25 (543 routes: writers-prefixed +
+  `/` + property sitemap locations). It is idempotent, but **always start a full rebuild from a
+  clean tree** (`rm -rf writers sports entertainment tech money public <root pages>` first) —
+  the build walks whatever is on disk and will happily absorb stale routed state.
+- `build-routing.py` owns: the `writers/` move, URL rewrites (63k+ hrefs, search-index `u` values,
+  sitemaps, feeds), property copies from `ecosystem/`, the hub `index.html` + root `sitemap.xml`,
+  the global `robots.txt` (5 sitemap declarations, no indexing directives), allowlist v25, the
+  `public/` mirror, and the root `sw.js`/`favicon.ico` copies. Do not run `build-public-dir.py`
+  after routing — it would clobber the mirror.
+- `.git`, `.github`, `assets/`, `scripts/`, `content/`, `docs/`, `server/`, `reports/`,
+  verification files (`google*.html`, `yandex_*.html`, `1740cdb…txt`), `package/render/site.config/BRYME*`
+  stay at the root. Shared `assets/` are NOT duplicated per property.
 
-- The Writers site's canonical origin already comes from one choke point: `site.config.json` → `SITE_URL`, and a **`SITE_URL` environment variable overrides the config on Render** — set it at migration, change nothing else.
-- The ecosystem services read `PRODUCTION_DOMAIN` (env) or `ecosystem/config.json` (default `thebryme.com`).
-- The Writers footer carries a **parent-brand hook**: set `site.config.json → parent.url = "https://thebryme.com"` at migration and the "one of the BRYME publications" line appears; until then it renders nothing.
+## Configuration
 
-## Render services to create (when you approve the design)
+`ecosystem/config.json`:
 
-1. **`thebryme-hub`** — Static site · repo `ojeology/nextclip` · publish directory `ecosystem/hub` · build command: none needed (files are committed).
-2. **`thebryme-entertainment`** — same, publish dir `ecosystem/entertainment`.
-3. **`thebryme-sports`** — publish dir `ecosystem/sports`.
-4. **`thebryme-tech`** — publish dir `ecosystem/tech`.
-5. **Writers keeps its existing service** (this one). No rebuild.
+```json
+{"domain": "thebryme.com", "mode": "path", "origin": "https://bryme.onrender.com",
+ "subdomains": {"writers": "writers.thebryme.com", "sports": "sports.thebryme.com",
+                "tech": "tech.thebryme.com", "entertainment": "entertainment.thebryme.com",
+                "money": "money.thebryme.com"}}
+```
 
-## DNS (after buying the domain)
+`mode: "subdomains"` flips the builders to emit canonical/sitemap/og URLs on the subdomains
+(`SUB` map in `build-ecosystem.py`, PREFIX mode in routing). Env overrides for CI:
+`PRODUCTION_DOMAIN`, `ROUTING_MODE`, `ORIGIN`.
 
-- At the registrar (Cloudflare/Porkbun recommended): add apex `A`/ALIAS records + `www` CNAME → master hub service; then CNAMEs for `writers`, `sports`, `entertainment`, `tech` → their services (Render shows the exact targets per custom domain).
-- Add each custom domain inside each Render service, wait for certificate issue.
-- Update Writers: set `SITE_URL=https://writers.thebryme.com` env var + `parent.url` config; run `python3 scripts/check-canonical-domain.py`.
+## Switching to subdomains later (deployment change only)
 
-## Search Console & sitemaps
+1. Set `mode: "subdomains"` in `ecosystem/config.json`.
+2. Rebuild with the chain above (pages are emitted with subdomain canonicals; routing skips
+   path-prefix rewrites).
+3. Render: add the five custom domains; DNS CNAME each subdomain at the registrar when
+   thebryme.com is purchased.
+4. Canonicals move with the config; no page rewrites by hand, ever.
 
-- Verify a **Domain property** for `thebryme.com` (DNS TXT).
-- Submit each service's own sitemap separately (`/sitemap.xml` on each subdomain — they contain only their own URLs by construction).
-- Never submit a sitemap whose URLs don't resolve on the property it's submitted to.
+## Indexing posture (FINAL spec Step 8)
 
-## AdSense (last)
+Indexing work is deliberately ON HOLD until the real domain is purchased: no noindex campaigns,
+no IndexNow, no GSC/Bing submissions against the Render URL. `robots.txt` carries only the five
+`Sitemap:` lines. The archive-recovery rule stands: recovered pages ship `noindex,follow` only
+where the allowlist excludes them (9 pages: stubs and feeds).
 
-- Apply on the flagship (Writers) after the ecosystem stabilises; approval covers subdomains automatically per the plan's verified note.
-- Ad-safety rule stays non-negotiable: ads never masquerade as navigation, tools, listings or buttons; no popups.
+## Quality gates
 
-## Repo note (plan §"Repo check")
-
-BRYME lives entirely in `ojeology/nextclip` — the name is a leftover from the pre-pivot movie site. Rename the repo to `bryme` in GitHub settings (redirects are automatic), then update the Render service's linked repo. Safe any time; do it before the domain migration to keep the runbook names clean.
+- `validate-site-quality.js` — allowlist v25 = sitemap = robots = indexable (543); per-page
+  canonical/H1/main/lang checks on every allowlisted page; writers design-system checks scoped to
+  `writers/` (property shells carry their own inline design tokens per FINAL spec Step 6).
+- `check-internal-links.py` — 70,944 internal links resolve (post-routing count, 2026-09-09).

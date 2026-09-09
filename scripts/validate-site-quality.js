@@ -36,7 +36,7 @@ if(allow.size!==allowDoc.routes.length)fail("allowlist contains duplicates");
 // strong guarantees are: every route exists, is index,follow, canonical, on sitemap.
 if(allow.size<1)fail("allowlist unexpectedly empty");
 for(const r of allow)if(!fs.existsSync(routeFile(r)))fail(`allowlisted route missing: ${r}`);
-for(const family of ["sports","movie","movies","series","anime","article","articles","entertainment","genre","genres","year","years","trailers","trending","channels","data","miniapp"]){if(fs.existsSync(path.join(ROOT,family)))fail(`media/legacy family still present on main: ${family}`)}
+for(const family of ["movie","movies","series","anime","genre","genres","year","years","trailers","trending","channels","data","miniapp"]){if(fs.existsSync(path.join(ROOT,family)))fail(`media/legacy family still present on main: ${family}`)}
 for(const old of ["assets/site.css","assets/site-app.js","assets/sports-engine.js","content/competitions.json","content/catalogue.json"]){if(fs.existsSync(path.join(ROOT,old)))fail(`legacy media artifact still present: ${old}`)}
 const redirectSources=new Set(read("_redirects").split(/\r?\n/).map(x=>x.trim()).filter(x=>x&&!x.startsWith("#")).map(x=>norm(x.split(/\s+/)[0])));
 const htmlFiles=walk(ROOT).filter(p=>p.endsWith(".html"));
@@ -47,7 +47,7 @@ for(const file of htmlFiles){
  if(isIndex)indexed++;if(isNo)noindexed++;
  if(wanted&&!isIndex)fail(`${r}: allowlisted but robots is ${JSON.stringify(robots)}`);
  if(!wanted&&!verification.has(f)&&!isNo)fail(`${r}: outside allowlist without noindex`);
- if(!verification.has(f)){
+ if(!verification.has(f)&&f.startsWith("writers/")){
   if(/href=["']\/assets\/site\.css["']|src=["']\/assets\/site-app\.js["']/i.test(s))fail(`${r}: legacy CSS/JS remains`);
   if(!/assets\/(?:bryme-v2|content-v2)\.css/.test(s))fail(`${r}: forest-green stylesheet missing`);
   if(!/class=["'][^"']*(?:bottom-nav|mobile-nav)/.test(s))fail(`${r}: bottom mobile navigation missing`);
@@ -72,7 +72,7 @@ for(const file of htmlFiles){
    const name=Array.isArray(e.author)?e.author[0]?.name:e.author?.name;if(name&&!visible(s).toLowerCase().includes(String(name).toLowerCase()))fail(`${r}: schema author is not visible`);
   }
  }
- {const wm=/^\/writing\/([^/]+)\/$/.exec(r);
+ {const wm=/^\/writers\/writing\/([^/]+)\/$/.exec(r);
   if(wm){ if(PUB_SLUGS.has(wm[1]))pubRecords++;
           else if(!NON_PUB_WRITING.has(wm[1]))fail(`unexpected page under /writing/: ${r}`); }}
  if(wanted&&!QUICK){
@@ -91,13 +91,13 @@ const staleWindows=json("content/opportunities.json").opportunities.filter(o=>{
 }).map(o=>o.slug);
 if(staleWindows.length)warn(`${staleWindows.length} record(s) have a passed deadline but a live status — re-verify: ${staleWindows.join(", ")}`);
 if(pubRecords!==expectedPubs)fail(`expected ${expectedPubs} indexed publication records under /writing/, found ${pubRecords}`);
-const sitemapRoutes=[...read("sitemap.xml").matchAll(/<loc>(.*?)<\/loc>/g)].map(m=>norm(m[1]));
+const sitemapRoutes=["sitemap.xml","writers/sitemap.xml","sports/sitemap.xml","entertainment/sitemap.xml","tech/sitemap.xml","money/sitemap.xml"].flatMap(sf=>{if(!fs.existsSync(path.join(ROOT,sf)))return[];return[...read(sf).matchAll(/<loc>(.*?)<\/loc>/g)].map(m=>norm(m[1]))});
 if(sitemapRoutes.length!==allow.size)fail(`sitemap has ${sitemapRoutes.length}, expected ${allow.size}`);
 for(const r of allow)if(!sitemapRoutes.includes(norm(r)))fail(`sitemap missing ${r}`);
 for(const r of sitemapRoutes)if(!allow.has(r))fail(`sitemap includes non-allowlisted ${r}`);
-const news=[...read("news-sitemap.xml").matchAll(/<loc>(.*?)<\/loc>/g)];if(news.length)fail("News sitemap must remain empty without timely original reporting");
-const feeds=[...read("feed.xml").matchAll(/<item>[\s\S]*?<link>(.*?)<\/link>/g)].map(m=>norm(m[1]));for(const r of feeds)if(!allow.has(r))fail(`RSS includes non-allowlisted ${r}`);
-if(!read("robots.txt").includes(`Sitemap: ${site}/sitemap.xml`))fail("robots sitemap declaration missing");
+const news=[...read("writers/news-sitemap.xml").matchAll(/<loc>(.*?)<\/loc>/g)];if(news.length)fail("News sitemap must remain empty without timely original reporting");
+const feeds=[...read("writers/feed.xml").matchAll(/<item>[\s\S]*?<link>(.*?)<\/link>/g)].map(m=>norm(m[1]));for(const r of feeds)if(!allow.has(r))fail(`RSS includes non-allowlisted ${r}`);
+if(!read("robots.txt").includes(`Sitemap: ${site}/writers/sitemap.xml`))fail("robots sitemap declaration missing");
 const opportunities=json("content/opportunities.json").opportunities;if(opportunities.length!==expectedPubs)fail(`expected ${expectedPubs} writing research records, found ${opportunities.length}`);
 for(const o of opportunities)for(const k of ["slug","publication","officialUrl","lastVerified","submissionStatus"])if(!o[k])fail(`writing record ${o.slug||"?"}: missing ${k}`);
 const server=read("server/server.js");for(const x of ["PUBLIC_HTML_DIRS","PUBLIC_ROOT_FILES","SECURITY_HEADERS","content-security-policy"])if(!server.includes(x))fail(`server hardening marker missing: ${x}`);

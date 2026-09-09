@@ -244,10 +244,31 @@ def nav(current: str = "") -> str:
     items = []
     home_aria = ' aria-current="page"' if current == "home" else ""
     items.append(f'<a class="home-link"{home_aria} href="/" aria-label="BRYME home"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5.5 9.5V20a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1V9.5"/><path d="M9.5 21v-6h5v6"/></svg></a>')
-    for key, href, label in links:
+    MEGA = [
+        ("learn", "/learn/", "Learn", [
+            ("/start/", "Beginner path"), ("/find/", "What do you want to write?"),
+            ("/learn/writing-basics/", "Writing basics"), ("/learn/writing-process/", "The writing process"),
+            ("/learn/grammar-language/", "Grammar &amp; language"), ("/learn/editing-proofreading/", "Editing &amp; proofreading"),
+            ("/learn/academic-writing/", "Academic writing"), ("/learn/creative-writing/", "Creative writing"),
+            ("/learn/freelance-paid-writing/", "Rates &amp; business"), ("/learn/", "All 191 guides")]),
+        ("writing", "/writing/", "Publish", [
+            ("/writing/", "The opportunity desk"), ("/writing-opportunities/", "The atlas: by country"),
+            ("/today/", "Updated this week"), ("/tested/", "BRYME Tested"),
+            ("/guides/how-to-write-a-pitch/", "How to write a pitch"), ("/tracker/", "Submission tracker")]),
+        ("tools", "/tools/", "Tools", [
+            ("/tools/freelance-rate-calculator/", "Rate calculator"), ("/tools/freelance-agreement-builder/", "Agreement builder"),
+            ("/tools/invoice-generator/", "Invoice generator"), ("/tools/late-payment-letter-builder/", "Late-payment letters"),
+            ("/tools/pitch-checker/", "Pitch checker"), ("/studio/", "The Writing Studio"),
+            ("/templates/", "Templates"), ("/checklists/", "Checklists"), ("/tools/", "All 44 tools")]),
+        ("read", "/essays/", "Intelligence", [
+            ("/essays/", "Essays"), ("/intelligence/", "Writing intelligence"),
+            ("/read/", "All articles"), ("/glossary/", "Glossary"), ("/compare/", "Compare formats")]),
+    ]
+    for key, href, label, children in MEGA:
         aria = ' aria-current="page"' if key == current else ""
         cls = ' class="nav-cta"' if key == "writing" else ""
-        items.append(f'<a{cls}{aria} href="{href}">{label}</a>')
+        panel = "".join(f'<a href="{ch}">{lb}</a>' for ch, lb in children)
+        items.append(f'<div class="has-mega"><a{cls}{aria} href="{href}">{label}</a><div class="mega">{panel}</div></div>')
     edition = _dt.datetime.now(_dt.timezone.utc).strftime("%B %Y").upper()
     return f'''<a class="skip-link" href="#main">Skip to content</a>
 <header class="site-head">
@@ -1826,6 +1847,28 @@ def programmatic_pages() -> None:
         li(f"/writing-opportunities/{tslug[t]}/", WRITING_TYPE_LABELS[t], len(g))
         for t, g in sorted(tgroups.items(), key=lambda kv: -len(kv[1]))
         if t in tslug and len(g) >= MIN_TYPE_PAGE)
+    _atlas_items = sorted(((country_name(iso), len(rows), (COUNTRY_PROFILES.get(iso) or {}).get("slug") or iso.lower())
+                           for iso, rows in groups.items()), key=lambda x: (-x[1], x[0]))
+    def _tier(n):
+        return "big" if n >= 15 else ("mid" if n >= 6 else "small")
+    atlas_tiles = "".join(
+        '<a class="atlas-tile ' + _tier(n) + '" href="/writing-opportunities/' + cslug + '/" data-count="' + str(n) + '">'
+        + '<b>' + esc(name) + '</b><span>' + str(n) + ' opportunity' + ('' if n == 1 else 'ies') + '</span></a>'
+        for name, n, cslug in _atlas_items)
+    import json as _json
+    atlas_open = _json.dumps([{"u": "/writing/" + esc(r["slug"]) + "/", "p": esc(r["publication"])}
+                              for r in WRITING if status_of(r)[1] in ("accepting", "rolling")])
+    atlas_html = ('<section class="section" style="padding-top:30px"><div class="wrap" id="atlas">'
+        '<header class="section-head"><div><p class="kicker"><span class="kicker-dot"></span>The atlas</p>'
+        '<h2>Every desk, sized by its shelf.</h2></div>'
+        '<p>Tiles scale with how many verified opportunities a country holds &mdash; inventory, not importance. '
+        'Pick a desk, or let the atlas pick a currently-accepting opportunity for you.</p></header>'
+        '<div class="atlas-grid">' + atlas_tiles + '</div>'
+        '<div class="actions"><button type="button" class="btn" id="atlas-surprise">Surprise me &mdash; one accepting opportunity</button>'
+        '<span class="atlas-note" id="atlas-note"></span></div>'
+        '<script type="application/json" id="atlas-open">' + atlas_open + '</script>'
+        '<script src="/assets/atlas.js"></script>'
+        '</div></section>')
     body = f'''<div class="wrap"><nav class="breadcrumb"><a href="/">Home</a> / <a href="/writing/">Opportunities</a> / Browse</nav>
 <section class="page-hero"><p class="kicker"><span class="kicker-dot"></span>Browse by</p>
 <h1>Writing opportunities by country and genre.</h1>
@@ -1837,7 +1880,7 @@ def programmatic_pages() -> None:
 <section class="section alt"><div class="wrap"><div class="section-head"><div><p class="eyebrow">By what you write</p><h2>Genre and form.</h2></div></div>
 <div class="card-grid">{type_cards}</div>
 <p class="tool-note">Need a combination these pages do not cover — say, poetry in Canada paying over $100? <a href="/writing/">Use the full search</a>, which filters on all nine facets at once.</p>
-</div></section>'''
+</div></section>{atlas_html}'''
     write("/writing-opportunities/", page_wf(
         title="Writing opportunities by country and genre | BRYME",
         description=f"Browse {len(WRITING)} researched paid-writing publications by country (USA, Nigeria, UK, Canada, Australia) and by genre (essays, fiction, poetry, journalism and more).",

@@ -1033,6 +1033,14 @@ def learn_index() -> None:
 {level_filter(sorted(GUIDES, key=lambda x: x["title"]), "guides")}
 <div class="guide-grid">{"".join(guide_card(g) for g in sorted(GUIDES, key=lambda x: x["title"]))}</div>
 </div></section>'''
+    _az = {}
+    for _g in sorted(GUIDES, key=lambda g: g["title"].lower()):
+        _az.setdefault(_g["title"][0].upper(), []).append(_g)
+    az_html = '<section class="section alt"><div class="wrap"><div class="section-head"><div><p class="kicker"><span class="kicker-dot"></span>A to Z</p><h2>The full shelf, alphabetically.</h2></div></div>' + "".join(
+        '<div class="az-row"><b>' + L + '</b><div class="az-links">' + "".join(
+            f'<a href="/learn/{esc(g["section"])}/{esc(g["slug"])}/">{esc(g["title"])}</a>' for g in gs)
+        + "</div></div>" for L, gs in sorted(_az.items())) + "</div></section>"
+    body = body + az_html
     write("/learn/", page_wf(title="Learn to write — writing guides for every level | BRYME",
                              description="BRYME's Writing Hub: beginner-friendly guides on starting to write, writing basics, types of writing, grammar, editing, research, and getting published and paid.",
                              route="/learn/", current="learn", body=body,

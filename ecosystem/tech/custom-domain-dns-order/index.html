@@ -3,15 +3,16 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Custom domains: the DNS order that avoids downtime | BRYME Tech</title>
 <meta name="description" content="Apex, www, CNAME flattening and verification order — the sequence that works, learned while moving a live site.">
-<link rel="canonical" href="https://https://tech.thebryme.com">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://bryme.onrender.com/tech/custom-domain-dns-order/">
 <meta property="og:type" content="website"><meta property="og:site_name" content="THE BRYME">
 <meta property="og:title" content="Custom domains: the DNS order that avoids downtime | BRYME Tech"><meta property="og:description" content="Apex, www, CNAME flattening and verification order — the sequence that works, learned while moving a live site.">
-<meta property="og:url" content="https://https://tech.thebryme.com"><meta property="og:image" content="https://https://tech.thebryme.com/assets/og.png">
+<meta property="og:url" content="https://bryme.onrender.com/tech/custom-domain-dns-order/"><meta property="og:image" content="https://https://bryme.onrender.com/tech/custom-domain-dns-order//assets/og.png">
 <meta name="twitter:card" content="summary_large_image">
 <style>
-:root{--paper:#f2f4f3;--sheet:#fbfcfc;--ink:#17262b;--muted:#485a60;--dim:#7e8f95;
---brand:#0f3d3a;--brand-deep:#0a2b29;--accent:#0e7c66;
---line:rgba(23,38,43,.18);--line-strong:rgba(23,38,43,.4);--shadow:0 1px 2px rgba(0,0,0,.05),0 14px 38px rgba(0,0,0,.08);
+:root{--paper:#fafaf8;--sheet:#ffffff;--ink:#14213d;--muted:#5b6b7a;--dim:#8b96a2;
+--brand:#14213d;--brand-deep:#0c1526;--accent:#5b6b7a;
+--line:rgba(20,33,61,.18);--line-strong:rgba(20,33,61,.4);--shadow:0 1px 2px rgba(0,0,0,.05),0 14px 38px rgba(0,0,0,.08);
 --serif:Georgia,'Iowan Old Style','Palatino Linotype',serif;--sans:Inter,ui-sans-serif,system-ui,sans-serif}
 *{box-sizing:border-box}html{scroll-behavior:smooth}
 body{margin:0;min-height:100vh;color:var(--ink);background:var(--paper);font:16px/1.65 var(--sans);-webkit-font-smoothing:antialiased}
@@ -92,7 +93,7 @@ h1.cover-title{font-family:var(--serif);font-weight:700;letter-spacing:-.018em;f
 <nav class="crumb"><a href="/">Home</a> / Custom domains: the DNS order that avoids downtime</nav>
 <section class="cover"><p class="kicker">First-hand · verified on the real thing</p>
 <h1 class="cover-title" style="font-size:clamp(30px,4.6vw,48px)">Custom domains: the DNS order that avoids downtime</h1>
-<p class="byline">By the BRYME Tech desk · 2026-09-08 · from a production build, not documentation</p></section>
+<p class="byline">By the BRYME Tech desk · 2026-09-09 · from a production build, not documentation</p></section>
 <section class="section"><div class="prose"><p>Moving a site to a custom domain is simple in principle and annoying in practice because the steps have an order, and doing them out of order produces hours of "why is this still showing the old site".</p>
 <h2>The order</h2>
 <p><strong>1. Buy the domain at a registrar with honest pricing</strong> (at-cost resellers like Cloudflare or Porkbun), and keep DNS hosted there. Free WHOIS privacy comes standard now; pay for it nowhere.</p>
@@ -104,7 +105,7 @@ h1.cover-title{font-family:var(--serif);font-weight:700;letter-spacing:-.018em;f
 <p>Hard-coding the staging hostname into canonicals, then migrating. Search engines index what your canonicals say; if every page declares the staging URL canonical, the new domain can sit unindexed for weeks. Centralise the hostname before you migrate — the five minutes of config refactor is the whole game.</p></div></section>
 </div></main><footer class="foot"><div class="wrap foot-in">
 <div>© 2026 THE BRYME — Tech.</div>
-<div><a href="/about/">About</a> · <a href="/privacy/">Privacy</a> · <a href="/contact/">Contact</a></div>
+<div><a href="/tech/about/">About</a> · <a href="/tech/privacy/">Privacy</a> · <a href="/tech/contact/">Contact</a></div>
 <div><a href="https://thebryme.com/">thebryme.com</a></div>
 </div></footer>
 </body></html>

@@ -597,3 +597,28 @@ body.studio-focus { padding-bottom: 0; }
   .st-list { max-height: 180px; }
   #st-text { min-height: 40vh; }
 }
+
+/* ---------------- STEP 6: atlas board, mega-menu, A-Z index ---------------- */
+.atlas-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; }
+.atlas-tile { display: flex; flex-direction: column; justify-content: flex-end; gap: 2px; padding: 14px; border: 1px solid var(--line); border-bottom: 3px solid var(--brass-bright); background: var(--sheet); min-height: 64px; transition: border-color .15s ease, transform .15s ease; }
+.atlas-tile:hover { border-color: var(--lime); transform: translateY(-2px); }
+.atlas-tile b { font-family: var(--serif); color: var(--ink); line-height: 1.15; }
+.atlas-tile span { font: 11px var(--sans); letter-spacing: .06em; text-transform: uppercase; color: var(--dim); }
+.atlas-tile.big { grid-column: span 2; grid-row: span 2; }
+.atlas-tile.big b { font-size: 24px; }
+.atlas-tile.big span { font-size: 12px; color: var(--brass); font-weight: 800; }
+.atlas-tile.mid { grid-column: span 2; }
+.atlas-tile.mid b { font-size: 18px; }
+.atlas-tile.small b { font-size: 15px; }
+.atlas-note { font: italic 13px var(--serif); color: var(--muted); align-self: center; }
+.has-mega { position: relative; }
+.mega { display: none; position: absolute; z-index: 80; left: 0; top: 100%; min-width: 300px; background: var(--paper); border: 1px solid var(--line-strong); border-top: 3px solid var(--lime-bright); box-shadow: var(--shadow); padding: 12px 0; }
+.has-mega:hover .mega, .has-mega:focus-within .mega { display: grid; }
+.mega a { display: block; padding: 9px 18px; font: 500 13.5px var(--sans); letter-spacing: 0; text-transform: none; color: var(--muted); }
+.mega a:hover { color: var(--navy); background: var(--sheet); box-shadow: none; }
+.az-row { display: grid; grid-template-columns: 42px 1fr; gap: 18px; border-bottom: 1px solid var(--line); padding: 14px 0; }
+.az-row b { font-family: var(--serif); font-size: 21px; color: var(--brass); }
+.az-links { display: flex; flex-wrap: wrap; gap: 4px 22px; }
+.az-links a { font-size: 14px; color: var(--ink); border-bottom: 1px solid var(--line); padding: 2px 0; }
+.az-links a:hover { color: var(--navy); border-color: var(--brass); }
+@media (max-width: 760px) { .atlas-grid { grid-template-columns: repeat(2, 1fr); } .atlas-tile.big { grid-column: span 2; } }
