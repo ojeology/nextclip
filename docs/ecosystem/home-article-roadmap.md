@@ -278,3 +278,25 @@ Title/fact decisions (verified 2026-09-10):
   recirculating; bathroom 15 l/s in the remodel piece; recirculating hoods don't count as extract).
 - Grout/sealant: 2-5 yr sanitary silicone window + full-removal-before-replacement as trade
   guidance; failure consequences framed via gradual-damage/maintenance-exclusion logic.
+
+## Batch 8 — Energy bills (3) + Home security (3, new "Secure it" section), built 2026-09-10
+Plus structural: 8th section "Secure it" added to the Home shell.
+
+Built (6): /home/energy-bill-high-unchanged/ · /home/uk-insulation-grants/ · /home/smart-thermostat-payback/ ·
+/home/entry-point-mistakes/ · /home/smart-locks-cameras-worth-it/ · /home/renter-security/
+
+UPDATE-class + title/fact decisions (verified 2026-09-10):
+- Price cap PINNED AND DATED: Ofgem Oct-Dec 2026 quarter £1,723 typical DD dual-fuel
+  (confirmed 26 Aug 2026; ~26p/kWh elec, ~8p/kWh gas), explicit "cap resets quarterly —
+  check Ofgem" note; not presented as evergreen.
+- GBIS CLOSED to new applications 31 Mar 2026 — stated as the trap most stale articles miss;
+  ECO4 (benefits + EPC D-G, to 31 Dec 2026), LA Flex (~£31k income criterion "common",
+  council-set), Warm Homes: Local Grant (England, to Mar 2028), Warm Home Discount,
+  BUS £7,500 — all with "checked 10 September 2026; schemes close and rename" caveat.
+- Smart thermostat savings: attributed bands (Nest independent studies 10-12%/~15%,
+  $131-145/yr; ENERGY STAR ~8%; EST-derived UK £75-150) with the decisive habit variable
+  named; payback honest (entry tier <18mo, premium 2-3yr); no "up to 30%" nonsense.
+- Security: published police prevention list only (BS 3621 named as insurance standard,
+  unlocked-door/window findings), strictly non-tactical; smart-lock-vs-insurer BS 3621
+  catch flagged (night-latch pattern suggested, check your policy); renter lock-change
+  framed via quiet-enjoyment + restore-at-end + written notice, "not legal advice".

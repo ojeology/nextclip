@@ -1337,6 +1337,7 @@ HOME_SECTIONS = [
     ("understand", "Understand it", "What the symptoms actually mean."),
     ("outside", "Outside", "Gutters, grills, sheds and the seasons \u2014 the half of the house that faces the weather."),
     ("pests", "Pests", "Unwelcome guests \u2014 prevention, honest decisions, and the aftercare that makes treatment work."),
+    ("secure", "Secure it", "Doors, windows, locks and the nightly habits that make a house a hard target."),
     ("mistakes", "Common mistakes", "The errors most homes make - and the fixes."),
 ]
 HOME_SLUG_SECT = {
@@ -1393,6 +1394,12 @@ HOME_SLUG_SECT.update({s: "pests" for s in (
 HOME_SLUG_SECT.update({s: "fix" for s in ("bathroom-remodel-mistakes",)})
 HOME_SLUG_SECT.update({s: "maintain" for s in (
     "kitchen-ventilation-damp", "grout-sealant-neglect")})
+
+HOME_SLUG_SECT.update({s: "understand" for s in (
+    "energy-bill-high-unchanged", "smart-thermostat-payback")})
+HOME_SLUG_SECT.update({s: "maintain" for s in ("uk-insulation-grants",)})
+HOME_SLUG_SECT.update({s: "secure" for s in (
+    "entry-point-mistakes", "smart-locks-cameras-worth-it", "renter-security")})
 
 
 def _home_theme_init():
@@ -1479,6 +1486,8 @@ def home_pages():
     HOME_ARTICLES.extend((s2, ti, dek, b) for (s2, _k, ti, dek, b) in home_roadmap6_data.HOME_ROADMAP_6 if s2 not in _have)
     import home_roadmap7_data
     HOME_ARTICLES.extend((s2, ti, dek, b) for (s2, _k, ti, dek, b) in home_roadmap7_data.HOME_ROADMAP_7 if s2 not in _have)
+    import home_roadmap8_data
+    HOME_ARTICLES.extend((s2, ti, dek, b) for (s2, _k, ti, dek, b) in home_roadmap8_data.HOME_ROADMAP_8 if s2 not in _have)
 
     def src_html(sources):
         if not sources:
@@ -1776,6 +1785,24 @@ def home_pages():
         "grout-sealant-neglect": [("bathroom-remodel-mistakes", "Before you remodel"),
                                   ("condensation-vs-rising-vs-penetrating-damp", "Which damp is it?"),
                                   ("small-leak-ripple-effect", "Why small leaks never stay small")],
+        "energy-bill-high-unchanged": [("uk-insulation-grants", "What the government funds"),
+                                       ("smart-thermostat-payback", "The thermostat maths"),
+                                       ("fridge-coils-twice-a-year", "Clean the coils twice a year")],
+        "uk-insulation-grants": [("energy-bill-high-unchanged", "Why bills rise anyway"),
+                                 ("condensation-ventilation-that-works", "Ventilate what you insulate"),
+                                 ("single-glazing-payback", "The window maths")],
+        "smart-thermostat-payback": [("energy-bill-high-unchanged", "Why bills rise anyway"),
+                                     ("uk-boiler-servicing", "The annual boiler service"),
+                                     ("uk-insulation-grants", "Insulation help, dated")],
+        "entry-point-mistakes": [("smart-locks-cameras-worth-it", "Smart locks & cameras"),
+                                 ("fence-shed-insurance", "Insurance small print"),
+                                 ("test-alarms-monthly", "The monthly alarm habit")],
+        "smart-locks-cameras-worth-it": [("entry-point-mistakes", "The entry-point list"),
+                                         ("smart-appliances-worth-it", "Smart appliances, honestly"),
+                                         ("renter-security", "Security for renters")],
+        "renter-security": [("entry-point-mistakes", "The entry-point list"),
+                            ("smart-locks-cameras-worth-it", "Smart locks & cameras"),
+                            ("uk-landlord-damp-mould-duties", "Report it in writing")],
     }
     for slug, ti, dek, b in HOME_ARTICLES:
         key = HOME_SLUG_SECT[slug]
