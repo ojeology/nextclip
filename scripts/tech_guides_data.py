@@ -425,3 +425,5 @@ NEW_TECH_GUIDES = [
  ("why-is-my-computer-slow", "The PC triage list"),
  ("browser-problems", "Browser problems, tamed")]),
 ]
+from tech_roadmap_data import TECH_ROADMAP_T1 as _TECH_ROADMAP_T1
+NEW_TECH_GUIDES.extend(_TECH_ROADMAP_T1)
