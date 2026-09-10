@@ -300,3 +300,25 @@ UPDATE-class + title/fact decisions (verified 2026-09-10):
   unlocked-door/window findings), strictly non-tactical; smart-lock-vs-insurer BS 3621
   catch flagged (night-latch pattern suggested, check your policy); renter lock-change
   framed via quiet-enjoyment + restore-at-end + written notice, "not legal advice".
+
+## Batch 9 (FINALE) — Moving house (3) + Budget/insurance (4) + Resale (1), built 2026-09-10
+Plus structural: 9th section "Owning it" added to the Home shell. THE ROADMAP IS NOW FULLY BUILT.
+
+Built (8): /home/pre-move-inspection/ · /home/moving-week-by-week/ · /home/secondhand-furniture-mistakes/ ·
+/home/emergency-repair-fund/ · /home/someday-maintenance-cost/ · /home/unpermitted-work-insurance/ ·
+/home/renter-vs-owner-repairs/ · /home/improvements-no-resale-value/
+
+Title/fact decisions (verified 2026-09-10):
+- "7 in 10 homeowners lack an emergency repair fund" DID NOT CHECK OUT — number dropped.
+  Replaced with verified: Bankrate 2026 (30% could cover a $1,000 emergency; ~24% zero
+  savings) + HomeServe survey (~48% of homeowners face an emergency repair/yr), attributed.
+- "Does unpermitted work void your insurance claim?" — built AGAINST the SEO consensus per
+  working-adjuster commentary: no automatic denial; the real mechanisms are the faulty-
+  workmanship exclusion (damage caused BY the work), misrepresentation at application (the
+  genuine claim-killer), code-upgrade caps, underwriting consequences. The honest answer.
+- Resale piece: NAR/NARI Remodeling Impact Report bands attributed and dated (hardwood
+  refinish 147%; roof/garage 100%; siding 82-86%; windows 63-67%; doors 60-63%; bathroom
+  addition among least recommended); "shape not price" caveat; UK conventions qualitative.
+- Renter/owner responsibility: UK LTA 1985 s.11 named; Repairing Standard + Oct 2026
+  timescales cross-linked; US habitability pattern kept honest ("state-drawn lines");
+  "withholding rent is the weak move" advice included both sides.

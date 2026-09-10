@@ -1338,6 +1338,7 @@ HOME_SECTIONS = [
     ("outside", "Outside", "Gutters, grills, sheds and the seasons \u2014 the half of the house that faces the weather."),
     ("pests", "Pests", "Unwelcome guests \u2014 prevention, honest decisions, and the aftercare that makes treatment work."),
     ("secure", "Secure it", "Doors, windows, locks and the nightly habits that make a house a hard target."),
+    ("owning", "Owning it", "Moving in, budgets, insurance, responsibility and value \u2014 the owner\u2019s ledger."),
     ("mistakes", "Common mistakes", "The errors most homes make - and the fixes."),
 ]
 HOME_SLUG_SECT = {
@@ -1400,6 +1401,11 @@ HOME_SLUG_SECT.update({s: "understand" for s in (
 HOME_SLUG_SECT.update({s: "maintain" for s in ("uk-insulation-grants",)})
 HOME_SLUG_SECT.update({s: "secure" for s in (
     "entry-point-mistakes", "smart-locks-cameras-worth-it", "renter-security")})
+
+HOME_SLUG_SECT.update({s: "owning" for s in (
+    "pre-move-inspection", "moving-week-by-week", "secondhand-furniture-mistakes",
+    "emergency-repair-fund", "someday-maintenance-cost", "unpermitted-work-insurance",
+    "renter-vs-owner-repairs", "improvements-no-resale-value")})
 
 
 def _home_theme_init():
@@ -1488,6 +1494,8 @@ def home_pages():
     HOME_ARTICLES.extend((s2, ti, dek, b) for (s2, _k, ti, dek, b) in home_roadmap7_data.HOME_ROADMAP_7 if s2 not in _have)
     import home_roadmap8_data
     HOME_ARTICLES.extend((s2, ti, dek, b) for (s2, _k, ti, dek, b) in home_roadmap8_data.HOME_ROADMAP_8 if s2 not in _have)
+    import home_roadmap9_data
+    HOME_ARTICLES.extend((s2, ti, dek, b) for (s2, _k, ti, dek, b) in home_roadmap9_data.HOME_ROADMAP_9 if s2 not in _have)
 
     def src_html(sources):
         if not sources:
@@ -1803,6 +1811,30 @@ def home_pages():
         "renter-security": [("entry-point-mistakes", "The entry-point list"),
                             ("smart-locks-cameras-worth-it", "Smart locks & cameras"),
                             ("uk-landlord-damp-mould-duties", "Report it in writing")],
+        "pre-move-inspection": [("moving-week-by-week", "The week-by-week plan"),
+                                ("inspection-checklist-gaps", "What gets missed"),
+                                ("small-leak-ripple-effect", "The meter test")],
+        "moving-week-by-week": [("pre-move-inspection", "The day-one inspection"),
+                                ("moving-cardboard-pests", "Boxes are pest vehicles"),
+                                ("deep-clean-schedule", "The deep-clean rotation")],
+        "secondhand-furniture-mistakes": [("moving-cardboard-pests", "The moving-box risk"),
+                                          ("ignore-single-pest-sighting", "The one-sighting protocol"),
+                                          ("smart-appliances-worth-it", "Buy for the long term")],
+        "emergency-repair-fund": [("someday-maintenance-cost", "The cost of someday"),
+                                  ("seasonal-home-maintenance-checklist", "The once-a-season checklist"),
+                                  ("uk-boiler-servicing", "The annual boiler service")],
+        "someday-maintenance-cost": [("small-leak-ripple-effect", "Why leaks never stay small"),
+                                     ("grout-sealant-neglect", "The five-pound tube"),
+                                     ("emergency-repair-fund", "The repair fund")],
+        "unpermitted-work-insurance": [("us-home-permits", "US permit basics"),
+                                       ("unpermitted-work-home-sale", "When it resurfaces at sale"),
+                                       ("fence-shed-insurance", "The small-print habit")],
+        "renter-vs-owner-repairs": [("uk-landlord-damp-mould-duties", "Landlord duties, dated"),
+                                    ("condensation-vs-rising-vs-penetrating-damp", "Whose damp is it?"),
+                                    ("renter-security", "Security for renters")],
+        "improvements-no-resale-value": [("single-glazing-payback", "The window maths"),
+                                         ("someday-maintenance-cost", "The cost of someday"),
+                                         ("unpermitted-work-home-sale", "Paperwork at sale")],
     }
     for slug, ti, dek, b in HOME_ARTICLES:
         key = HOME_SLUG_SECT[slug]
