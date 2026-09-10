@@ -266,3 +266,18 @@ Chain: 821 pages / 79,377 links OK (+2,793 = drawer links); validator ok; allowl
 **Verification:** full clean chain green — **825 pages / 89,464→89,468 internal links OK** (+4,320 from nav/megas), allowlist v26 815, validator ok. Needle matrix PASS on home index / article / mistakes page / fix hub / checklist page; regression spots PASS (sports index, tech article, Writers untouched). No new pages (nav links existing content only — no placeholders).
 
 **Where visible:** every one of the 99 Home pages (new masthead + nav bar + megas), home index (stat row), dark-mode toggle now actually shows Home's own palette.
+
+---
+
+## Batch 6 — Sport in-season cadence + Fitness runway — DONE 2026-09-10
+
+**Directive:** "Do whatever you can do best" (autonomous batch, closing the two content gaps from the readiness ratings: Sport B− needed in-season editions; Fitness C+ needed a runway).
+
+**What shipped:**
+- **Sport — first live desk edition of 2026-27:** `/sports/premier-league-matchweek-4-preview/` ("Matchweek 4, previewed honestly."). Written 2026-09-10 for the Sep 12–14 window. Fixtures verified against four independent sources (nbcsports.com, sportsmediawatch.com, footballfixtures.org, worldfootball.net — UK times cross-checked CET/ET); table as of Matchweek 3 corroborated across four sources (City 9, Arsenal 9, Hull City 7 unbeaten & unscored-on, Chelsea 6, Fulham/Coventry 0, Spurs/Villa 1 point & goalless). Four storylines (derby; Hull at Chelsea; Arsenal at Sunderland; the bottom three). House rules held: no odds, no predictions-as-promises, unknowns explicitly stated ("line-ups, injuries, late changes — the desk doesn't know it"). 9 internal links, all resolving.
+- **Sport wiring:** EPL mega gains "Matchweek 4 preview · live"; EPL desk dek + closer updated (live-edition callout replaces "when the season resumes"); sports index fact now "6 dated editions".
+- **Fitness — runway started (7→10 guides):** `workout-at-home-no-equipment` (six patterns, 2×20 min/week), `how-progressive-overload-works` (the honest, non-staircase version), `breathing-during-exercise` (two habits, no magic ratios). All: beginner-first, "general information, not medical advice" framing, WHO/CDC sources, JSON-LD Article, 5–6 internal links each. Fitness mega now lists 10 guides; index "Read before you push" shelf carries the three; related-map cross-wired.
+
+**Verification:** full clean chain green — **829 pages / 89,662 internal links OK** (+4 pages: 1 sports, 3 fitness), allowlist v26 819, validator ok. Needles PASS on MW4 (fixtures, dated byline, 9 links, no-odds framing), EPL desk live row, index facts, all 3 fitness guides (bodies, links, JSON-LD, sources), fitness mega/index; regressions clean (home, LaLiga desk). New URLs in both sitemaps.
+
+**Where visible:** /sports/ mega + EPL desk + new MW4 page; /fitness/ mega, index shelf, and 3 new guides.

@@ -297,6 +297,7 @@ def _nav_items(pub):
                 ("/tech/", "Start here"))
     if pub == "sports":
         epl = [("HEAD", "The Premier League desk"), ("/epl/", "The Premier League desk"),
+               ("/premier-league-matchweek-4-preview/", "Matchweek 4 preview \u00b7 live"),
                ("/premier-league-matchweek-2-preview/", "Matchweek 2 preview (archive)"),
                ("/premier-league-matchweek-1-guide/", "Matchweek 1 guide (archive)"),
                ("/premier-league-transfer-tracker-august-2026/", "The August transfer tracker (archive)"),
@@ -326,7 +327,10 @@ def _nav_items(pub):
                   ("/fitness/how-to-warm-up/", "How to warm up"),
                   ("/fitness/strength-training-for-beginners/", "Strength for beginners"),
                   ("/fitness/rest-days-and-recovery/", "Rest days and recovery"),
-                  ("/fitness/walking-vs-running/", "Walking vs running")]
+                  ("/fitness/walking-vs-running/", "Walking vs running"),
+                  ("/fitness/workout-at-home-no-equipment/", "Home workout, no equipment"),
+                  ("/fitness/how-progressive-overload-works/", "Progressive overload"),
+                  ("/fitness/breathing-during-exercise/", "Breathing basics")]
         return ([("Guides", guides)], ("/fitness/", "Desk home"))
     if pub == "entertainment":
         shelves = [("HEAD", "The entertainment shelves"), ("/entertainment/explainers/", "Explainers"),
@@ -909,13 +913,48 @@ def sports_pages():
         + '<nav class="crumb"><a href="/sports/">Sport</a> / The Premier League desk</nav>'
         + '<section class="cover"><p class="kicker">The Premier League desk \u00b7 the league, covered honestly</p>'
         + '<h1 class="cover-title">The Premier League, without the noise.</h1>'
-        + '<p class="cover-dek">The desk\u2019s England-top-flight shelf: the 2026-27 window and matchweeks as dated archive editions, plus the evergreen explainers that never stop applying. Live coverage returns in season.</p></section>'
+        + '<p class="cover-dek">The desk\u2019s England-top-flight shelf: dated editions from the live season, the archived summer window, and the evergreen explainers that never stop applying. The first live edition of 2026-27 is on the shelf below.</p></section>'
         + '<section class="section"><div class="prose"><p>House rules apply here as everywhere on the desk: no odds, no rumour mill, no invented results. The matchweek editions below were written during the live season window and kept exactly as published. The transfer mechanics behind every window live on the <a href="/sports/transfers/">transfer desk</a>, and the league\u2019s pyramid is explained in <a href="/promotion-and-relegation-explained/">promotion and relegation</a>.</p></div></section>'
         + epl_rows
-        + '<section class="section"><div class="prose"><p><em>When the season resumes, this desk publishes fresh dated editions \u2014 the archive stands exactly as written until then.</em></p></div></section>'
+        + '<section class="section"><div class="prose"><p><em>The desk is live again for 2026-27: the <a href=\"/premier-league-matchweek-4-preview/\">Matchweek 4 preview</a> is the first fresh dated edition of the season \u2014 published the Thursday before the weekend, no odds, ever. The archive stands exactly as written.</em></p></div></section>'
         + '</div></main>' + foot("sports"))
     pages.append(("/epl/", "The Premier League desk | BRYME Sport",
                   "Matchweek and transfer-window archive editions plus evergreen league explainers \u2014 the Premier League covered honestly, never betting.", epl_hub))
+    # ---- live desk edition: Matchweek 4 preview (written 2026-09-10, table as of MW3) ----
+    mw4_body = ('<section class="section"><div class="prose">'
+        + '<p>This is a live desk edition: written on Thursday 10 September 2026, before a ball is kicked this weekend. The way this desk previews is simple \u2014 verified fixtures, the table as it actually stands, and the storylines worth your time. No odds, no \u201cguaranteed bankers\u201d, no invented team news. Where we don\u2019t know something \u2014 line-ups, injuries, late changes \u2014 we say the desk doesn\u2019t know it.</p>'
+        + '<h2>The fixtures (all times UK)</h2>'
+        + '<ul>'
+        + '<li><b>Saturday 12 September, 15:00</b> \u2014 Aston Villa v Nottingham Forest \u00b7 Bournemouth v Brentford \u00b7 Chelsea v Hull City \u00b7 Crystal Palace v Ipswich \u00b7 Liverpool v Fulham</li>'
+        + '<li><b>Saturday 17:30</b> \u2014 Tottenham v Everton</li>'
+        + '<li><b>Saturday 20:00</b> \u2014 Sunderland v Arsenal</li>'
+        + '<li><b>Sunday 13 September, 14:00</b> \u2014 Coventry v Brighton</li>'
+        + '<li><b>Sunday 16:30</b> \u2014 Manchester United v Manchester City</li>'
+        + '<li><b>Monday 14 September, 20:00</b> \u2014 Leeds United v Newcastle</li>'
+        + '</ul>'
+        + '<p>The table going into the weekend, as of Matchweek 3: Manchester City and Arsenal both have nine points from nine, with City top on goals scored (seven to six). Behind them sit Hull City on seven and Chelsea on six, then a pack on five. Fulham and Coventry are still on zero; Aston Villa and Tottenham have a point each and no league goal yet. Early tables exaggerate \u2014 three games is a rumour, not a season \u2014 but they are still the facts on the wall, and the <a href="/promotion-and-relegation-explained/">promotion-and-relegation mechanics</a> are exactly why a promoted club\u2019s strong start matters.</p>'
+        + '<h2>One: the derby, with a table attached</h2>'
+        + '<p>United host City on Sunday afternoon with the league\u2019s only perfect record standing in the away dressing room. City have nine from nine; United have four from three. Derby form logic goes into hibernation every year, so the desk will simply watch the things that decide derbies: the first goal, the midfield duels, and whether the game opens up late. If a decision goes to the video room, <a href="/how-var-works/">how VAR actually works</a> explains why the wait exists before anyone melts down about it.</p>'
+        + '<h2>Two: Hull City visit Chelsea, unbeaten and unscored-on</h2>'
+        + '<p>The season\u2019s genuine surprise: promoted Hull City sit third after three games, unbeaten, and yet to concede a league goal. Now comes the stamping-ground test \u2014 away at a Chelsea side that dropped its first points of the season last time out. Whatever happens, this fixture tells us whether Hull\u2019s start is a platform or a sugar rush. The arithmetic of why it matters so much is in <a href="/promotion-and-relegation-explained/">promotion and relegation</a>, and the story of how squads like this get assembled is on <a href="/what-does-a-sporting-director-do/">what a sporting director actually does</a>.</p>'
+        + '<h2>Three: Arsenal at the Stadium of Light, Saturday 20:00</h2>'
+        + '<p>Arsenal\u2019s three games have produced six goals for and one against \u2014 the league\u2019s meanest defence. Sunderland, on four points from three, get the Saturday-night home slot. Big-stage games under lights are where intensity and crowd noise feed each other; <a href="/pressing-explained/">pressing, explained</a> gives you the vocabulary for the ten seconds after every kick-off, and <a href="/playing-out-from-the-back/">playing out from the back</a> explains what both managers are asking their goalkeepers to be brave about.</p>'
+        + '<h2>Four: the bottom shelf stirs</h2>'
+        + '<p>Three clubs are still waiting for lift-off. Fulham, on zero points, travel to Liverpool \u2014 the kind of fixture where the table says one thing and the loud predictions say another, which is one reason this desk does not do betting angles. Coventry, also on zero and without a goal, host a Brighton side that has scored eight in three. Tottenham, on one point and no league goals, host an Everton side that has started better, on five. Any of those three columns can look completely different by Monday night \u2014 that is what a matchweek is for.</p>'
+        + '<h2>What the desk will do after the weekend</h2>'
+        + '<p>Report what happened, not what we hoped. Where a number is interesting, we will say what it measures and what it misses \u2014 <a href="/xg-explained/">xG, explained</a> is the standing primer. The <a href="/sports/epl/">Premier League desk</a> holds the archive and the evergreens, and the <a href="/sports/explainers/">explainers shelf</a> has the vocabulary. The previous live editions sit alongside: the <a href="/premier-league-matchweek-2-preview/">Matchweek 2 preview</a> and the <a href="/premier-league-matchweek-1-guide/">Matchweek 1 guide</a>.</p>'
+        + '</div></section>')
+    mw4 = (head("sports", "Analysis, stories and the long view \u2014 never betting.")
+        + '<main id="main"><div class="wrap">'
+        + '<nav class="crumb"><a href="/sports/epl/">Premier League desk</a> / Matchweek 4 preview</nav>'
+        + '<section class="cover"><p class="kicker">Season 2026-27 \u00b7 Matchweek 4 \u00b7 live desk edition</p>'
+        + '<h1 class="cover-title" style="font-size:clamp(30px,4.6vw,48px)">Matchweek 4, previewed honestly.</h1>'
+        + '<p class="byline">BRYME Sport desk \u00b7 written Thursday 10 September 2026 \u00b7 table and results as of Matchweek 3 \u00b7 no odds, ever</p></section>'
+        + mw4_body
+        + '</div></main>' + foot("sports"))
+    pages.append(("/premier-league-matchweek-4-preview/", "Premier League Matchweek 4 preview \u2014 fixtures, the real table, the storylines | BRYME Sport",
+                  "The desk\u2019s first live edition of 2026-27: verified Matchweek 4 fixtures, the table as of Matchweek 3, and the four storylines worth following. No odds, ever.", mw4))
+
 
     laliga_hub = (head("sports", "Analysis, stories and the long view \u2014 never betting.")
         + '<main id="main"><div class="wrap">'
@@ -1006,7 +1045,7 @@ def sports_pages():
 <h1 class="cover-title">Sport as reporting, not noise.</h1>
 <p class="cover-dek">Football first: the transfer window read plainly, the matchweeks reviewed, the season's stories followed as they happen. Restored from the BRYME media desk \u2014 and, as a house rule, never betting odds or gambling-adjacent tips.</p><div class="cover-facts">
 <div><b>{len(sports_explainers_data.SPORT_EXPLAINERS) + len(sports_analysis_data.SPORT_ANALYSIS)}</b><span>Evergreen pieces</span></div>
-<div><b>5</b><span>Archive editions</span></div>
+<div><b>6</b><span>Dated editions</span></div>
 <div><b>3</b><span>League desks</span></div>
 <div><b>0</b><span>Odds, ever</span></div>
 </div></section>
@@ -1540,6 +1579,46 @@ FIT_ARTICLES = [
 <p>Sharp pain, pain that worsens past a few days, swelling, or soreness paired with dark urine are not DOMS and are not to be trained through. This is general information, not medical advice \u2014 a qualified professional should assess anything that fails those tests.</p>
 <h2>How the walking plan handles rest</h2>
 <p>Every seventh day of the <a href="/30-day-walking-plan/">30-day walking plan</a> is a rest day by design. That rhythm \u2014 stress, recover, repeat slightly stronger \u2014 is the whole trick behind every serious training programme ever written.</p>"""),
+    ("workout-at-home-no-equipment",
+     "A full-body starter you can do at home, with no equipment",
+     "Six patterns, one small space, zero equipment: how to build a two-day-a-week home routine that actually progresses.",
+     """<p>The fastest way to make exercise complicated is to buy things first. This guide goes the other way: a full-body routine you can run in a small room, with no equipment, built on the same principle as every good beginner plan \u2014 start easier than you think, then make it slightly harder over time. It is general information, not medical advice; if you have a health condition, are pregnant, or get pain or dizziness during effort, a qualified health professional is the right first stop.</p>
+<h2>The six patterns</h2>
+<p>Almost every useful beginner movement is a version of one of six things: pushing (wall or counter push-ups), pulling (a towel row around a sturdy door handle, or slow door-frame pulls), squatting (sit-to-stand from a chair), hinging (a hip hinge with hands on the back of a chair), carrying (grocery bags count), and getting down and up off the floor. That last one sounds like a joke and is not \u2014 it is a genuine whole-body skill that gets harder as adults stop practising it.</p>
+<h2>Two days a week, twenty minutes</h2>
+<p>Pick one movement from each pattern. Do each for a comfortable number of repetitions \u2014 the number you could do twice if you had to, not once to failure. Cycle through them twice, resting as needed. That is the session. The <a href="/strength-training-for-beginners/">strength training for beginners guide</a> explains why the guideline is muscle-strengthening on two or more days a week, and this routine satisfies it without a gym.</p>
+<h2>The progression rule that matters</h2>
+<p>When a set starts feeling easy \u2014 and only then \u2014 make one small change: one more repetition, a slower lowering phase, a wall push-up moved to a counter. One change at a time is the whole art. The principle is called progressive overload, and <a href="/how-progressive-overload-works/">how progressive overload works</a> walks through it honestly \u2014 including the weeks when you progress by doing the same thing again.</p>
+<h2>Warm up, cool down, recover</h2>
+<p>Three minutes of marching on the spot and easy arm circles is a warm-up; you do not need to sweat before you start. Afterwards, a short walk around the room and a couple of easy stretches is plenty \u2014 <a href="/how-to-warm-up/">the warm-up guide</a> has the details. And the session only works if the days between it count too: <a href="/rest-days-and-recovery/">rest days and recovery</a> explains that adaptation happens between workouts, not during them.</p>
+<h2>Where this fits the week</h2>
+<p>If you also walk, this pairs neatly with the <a href="/30-day-walking-plan/">30-day walking plan</a> \u2014 two strength days and three or four walks is a genuinely complete beginner week, in line with the roughly-150-minutes-of-moderate-activity guideline the <a href="/how-to-start-working-out/">starting from zero guide</a> explains. If the choice is between this and nothing, this wins. It needs no equipment, no commute and no perfect version of you.</p>"""),
+    ("how-progressive-overload-works",
+     "How progressive overload works: getting a little better on purpose",
+     "The quiet principle behind every real training result \u2014 and the honest version, including the weeks when you repeat yourself.",
+     """<p>Every training result you have ever seen \u2014 someone stronger, someone walking further, someone who now finds stairs boring \u2014 runs on one unglamorous principle: progressive overload. Do a little more than your body is used to, let it adapt, then ask for a little more again. This guide explains the principle and, more usefully, the honest version of it that beginners actually need.</p>
+<h2>The principle, minus the gym mythology</h2>
+<p>Your body adapts to what you repeatedly ask of it. Ask slightly more than last time, and it responds by becoming slightly more capable. Ask far too much, and it responds with injury or three weeks of not showing up. Ask for nothing new, and it stays exactly as it is. That is the entire trade-off. Public-health guidelines encode it in their own way: activity recommendations always pair a weekly amount with the instruction to increase gradually.</p>
+<h2>Overload is more than weight</h2>
+<p>Beginners hear \u201coverload\u201d and picture bigger dumbbells. But the dial has many positions: more repetitions, slower lowering phases, shorter rests, an extra set, a harder variation (wall push-up to counter to floor), a longer walk, a hillier route. The <a href="/workout-at-home-no-equipment/">no-equipment home routine</a> progresses for months on repetition counts and variations alone \u2014 no shopping required.</p>
+<h2>The honest part: it is not a staircase</h2>
+<p>Progress is not +1 every session forever. Some weeks you repeat the last week exactly \u2014 and that still counts, because holding a level while life happens <em>is</em> progress for a beginner. Sleep-poor weeks, stressful weeks and weeks after illness are for holding, not pushing. The desk\u2019s <a href="/rest-days-and-recovery/">recovery guide</a> explains why the gains land between sessions, and the <a href="/how-to-start-working-out/">starting from zero guide</a> explains the calendar-over-motivation mindset that keeps you repeating long enough for overload to work.</p>
+<h2>A simple rule to steal</h2>
+<p>Keep a note of what you did. Next session, do the same or a hair more \u2014 one repetition, one minute, one harder variation \u2014 but only when the current version feels comfortable. If it does not feel comfortable, you have found this week\u2019s session. That is the whole method. It is slow, it is boring on paper, and it is the reason results compound while bursts do not.</p>
+<h2>Where to point the principle</h2>
+<p>Any of it counts: the <a href="/30-day-walking-plan/">30-day walking plan</a> applies overload through minutes, the strength routine through repetitions and variations, and the <a href="/walking-vs-running/">walking-versus-running guide</a> explains how to add intensity without adding impact \u2014 one more way to turn the same principle for different bodies.</p>"""),
+    ("breathing-during-exercise",
+     "Breathing during exercise: the honest basics",
+     "What your breathing is actually doing when you exert yourself, when to worry about patterns, and why no breathing trick is magic.",
+     """<p>Breathing advice in fitness is mostly theatre: magic ratios, mystical nose rules, commands barked by people who have never watched a real beginner almost fall over counting. Here is the honest version of what matters, written as general information rather than medical advice \u2014 if you get chest pain, severe breathlessness, dizziness or an irregular heartbeat during effort, stop and speak to a qualified health professional.</p>
+<h2>What effort does to breathing</h2>
+<p>When you exert yourself, your muscles need more oxygen and produce more carbon dioxide, and your breathing responds automatically \u2014 faster and deeper, in proportion to how hard you are working. That is not a fault to be fixed; it is the system working. The classic beginner test on this desk \u2014 brisk means you can talk but not sing \u2014 works precisely because speech and breathing share the same equipment. The <a href="/how-to-start-working-out/">starting from zero guide</a> and the <a href="/how-many-steps-a-day/">step-count guide</a> both lean on that idea.</p>
+<h2>The only two habits worth having</h2>
+<p>First: do not hold your breath through effort. People clamp up on the hardest repetition of anything \u2014 the push-up, the chair squat, the last hill. Exhaling on the effort (out on the push, out on the up) keeps the habit of continuous breathing and tends to keep tension where it belongs. Second: let your breathing choose your intensity. If you cannot speak a short sentence, the session has crossed from moderate to hard \u2014 fine occasionally, wrong as a beginner default. The <a href="/30-day-walking-plan/">30-day walking plan</a> uses that rule every single day.</p>
+<h2>Warm-ups, breathing and going slower</h2>
+<p>A few minutes of easy movement \u2014 marching, arm circles, a gentle first stretch of the walk \u2014 lets breathing ramp up with the work instead of scrambling after it; <a href="/how-to-warm-up/">the warm-up guide</a> covers the sequence. And if you finish sessions gasping, the fix is usually pacing, not technique: start slower than feels necessary. The <a href="/walking-vs-running/">walking-versus-running guide</a> is essentially a breathing-management guide in disguise \u2014 run-walk intervals exist so breathing stays conversational.</p>
+<h2>The honest summary</h2>
+<p>Breathing during exercise mostly takes care of itself, given two habits: keep it continuous, and let it set your pace. Anything more elaborate can wait until a specific coach, for a specific sport, tells you why. If a breathing trick promises performance it cannot explain, treat it like any other claim on this desk: interesting until demonstrated.</p>"""),
 ]
 
 def _fit_shell(pub, kicker, title, dek, extra_disclaimer=False):
@@ -1657,6 +1736,15 @@ def fitness_pages():
     related_map["how-to-warm-up"] = [("strength-training-for-beginners", "Strength training for beginners"),
                                      ("walking-vs-running", "Walking or running?"),
                                      ("rest-days-and-recovery", "Rest days and recovery")]
+    related_map["workout-at-home-no-equipment"] = [("how-progressive-overload-works", "How progressive overload works"),
+                                                   ("strength-training-for-beginners", "Strength training for beginners"),
+                                                   ("how-to-warm-up", "How to warm up")]
+    related_map["how-progressive-overload-works"] = [("workout-at-home-no-equipment", "The no-equipment home routine"),
+                                                     ("strength-training-for-beginners", "Strength training for beginners"),
+                                                     ("rest-days-and-recovery", "Rest days and recovery")]
+    related_map["breathing-during-exercise"] = [("how-to-start-working-out", "Starting from zero"),
+                                                ("walking-vs-running", "Walking or running?"),
+                                                ("how-to-warm-up", "How to warm up")]
     arts = [art(s, ti, dek, b, ART_SOURCES[s], related_map[s])
             for (s, ti, dek, b) in FIT_ARTICLES]
 
@@ -1674,6 +1762,15 @@ def fitness_pages():
                  '<span class="meta">Understand</span></a></li>'
                  '<li><a href="/rest-days-and-recovery/"><span><b>Rest days and recovery</b>'
                  "<small>Why adaptation happens between sessions \u2014 and when soreness is a warning.</small></span>"
+                 '<span class="meta">Understand</span></a></li>'
+                 '<li><a href="/workout-at-home-no-equipment/"><span><b>A full-body starter at home, no equipment</b>'
+                 "<small>Six patterns, two days a week, twenty minutes \u2014 a routine that needs a door and a floor.</small></span>"
+                 '<span class="meta">Build</span></a></li>'
+                 '<li><a href="/how-progressive-overload-works/"><span><b>How progressive overload works</b>'
+                 "<small>The quiet principle behind every real result \u2014 including the weeks you repeat yourself.</small></span>"
+                 '<span class="meta">Understand</span></a></li>'
+                 '<li><a href="/breathing-during-exercise/"><span><b>Breathing during exercise</b>'
+                 "<small>The honest basics: two habits worth having, no magic ratios.</small></span>"
                  '<span class="meta">Understand</span></a></li>')
     index_body = (head("fitness", "Practical fitness \u2014 no miracles, no medical claims.")
         + '<main id="main"><div class="wrap">'
