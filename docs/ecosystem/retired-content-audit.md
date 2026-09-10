@@ -165,3 +165,27 @@ Historical movie catalog pages contained incidental "watch" text but **no downlo
 - **Fitness (+2, 9→11):** walking vs running (honest trade-offs, no guilt), how to warm up
   (raise-open-rehearse; static stretching's honest place).
 - Ecosystem: 626 indexable pages; gates green (626=626; 72,190 links / 636 pages).
+
+## 2026-09-09 — Second-chance review: the user challenged the retired shelf
+
+Re-audited every retired piece against its actual body (word counts + substance), not just titles.
+
+**Sport (16 retired, unchanged):** all are 53-60-word teaser stubs — headlines with a dek, no
+article behind them (see manifest word counts). Nothing restorable; preserved as the desk's
+story-ideas bank in this file and the recovery store. The titles are good; the articles never
+existed. When the desk next covers those angles (e.g. "a club season after a legendary manager"),
+the headlines are waiting.
+
+**Entertainment — the audit was too conservative; corrected:**
+- RESTORED (2): dune-sci-fi-epics-guide (584w, "Movies Like Dune" — evergreen recs),
+  alien-franchise-in-order (493w — evergreen watch-order).
+- MERGED into live cousins (3): interstellar-ending-explained → movies-like-interstellar-guide
+  (labelled companion, spoiler-marked explainer); 5-vampire-movies-that-changed-horror →
+  modern-horror-starter-route; why-dune-part-two-feels-large → dune-sci-fi-epics-guide.
+- Stays retired (4): 10-facts-about-agent-kim-squid-game-season-3 (release-window facts, expires),
+  best-anime-to-watch-now (time-bound framing, duplicated by the two live anime lists),
+  10-korean-movies-everyone-should-watch (superseded family of the live rebuilt starter),
+  beginners-guide-to-making-money-online (1,168w, real + authored — but niche-removed: the
+  ecosystem has no Money property per spec; archived intact in _recovered/, available if the
+  owner ever wants it moved to Writers after a rewrite).
+- Entertainment 35→37 pages.

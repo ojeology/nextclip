@@ -338,6 +338,8 @@ ENT_SLUG_SECT = {
     "nigerian-thrillers-worth-your-time": "recommendations",
     "how-to-pick-a-movie-tonight": "recommendations",
     "best-streaming-apps-nigeria": "recommendations",
+    "dune-sci-fi-epics-guide": "recommendations",
+    "alien-franchise-in-order": "recommendations",
     "squid-game-season-1-why-it-became-a-global-phenomenon": "explainers",
     "was-eren-yeager-really-the-villain": "explainers",
     "solo-leveling-e-rank-to-s-rank": "explainers",
@@ -354,6 +356,9 @@ ENT_SLUG_SECT = {
 ENT_MERGE = {
     "solo-leveling-e-rank-to-s-rank": "solo-leveling-from-e-rank-hunter-to-one-of-animes-most-powerful-characters",
     "why-prison-break-season-1-is-still-one-of-the-best-tv-seasons": "prison-break-season-1-watching-all-night",
+    "movies-like-interstellar-guide": "interstellar-ending-explained",
+    "modern-horror-starter-route": "5-vampire-movies-that-changed-horror",
+    "dune-sci-fi-epics-guide": "why-dune-part-two-feels-large",
 }
 ENT_START = ["how-to-pick-a-movie-tonight", "how-to-build-a-watchlist", "christopher-nolan-movies-order",
              "best-streaming-apps-nigeria", "korean-cinema-starter-guide-rebuilt"]
