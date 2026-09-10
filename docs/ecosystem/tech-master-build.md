@@ -329,3 +329,18 @@ Chain: 821 pages / 79,377 links OK (+2,793 = drawer links); validator ok; allowl
 **Verification:** clean chain green — **877 pages / 93,709 links OK**, allowlist 867, validator ok, 7/7 new sitemap routes, hubs now show "live table open" (Serie A/Ligue 1 honest-gap notices replaced automatically by the agent's data).
 
 **Note:** token is hard-coded per owner instruction — anyone with repo read access can see it; free-tier risk accepted by owner. Env override retained for rotation.
+
+---
+
+## Batch 11 — Data placed where it belongs: side-by-side layout — DONE 2026-09-10
+
+**Directive:** user: "top scorers should follow their respective league.. by side of the table and so much things are missing from where they're supposed to be."
+
+**Shipped:**
+- **Table pages (all 5 leagues)** now render table + a right-hand side panel column: "The scoring race" (top 6 with full-list link) and "Where next" (results / calendar / hub). PL table rows now carry club badges.
+- **Top scorers pages** carry "The table, top six" mini-table panel beside the list.
+- **Results pages** carry the mini-table + scoring race panels beside the scores.
+- **League hubs** gained explicit Results rows (table/scorers rows already live).
+- New CSS: .data-cols two-column grid (stacks under 900px), .side-panel/.sp-row/.sp-more components, 22px table badges.
+
+**Verification:** clean chain green — **877 pages / 93,762 links OK**, allowlist 867, validator ok. Needles PASS: side-by-side on all five table pages (scoring race + where-next), results/scorers pages with table panels, 20 badge images on the PL table, hub results rows, responsive stacking.

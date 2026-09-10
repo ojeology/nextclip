@@ -131,6 +131,17 @@ table.lg-table{width:100%;border-collapse:collapse;min-width:640px;font:500 14px
 .lg-table td.num,.lg-table th.num{text-align:right;font-variant-numeric:tabular-nums}
 .lg-table tr.rel td{border-top:2px solid var(--accent)}
 .lg-table .club-b{font-weight:700}
+.data-cols{display:grid;grid-template-columns:minmax(0,2.1fr) minmax(250px,1fr);gap:30px;align-items:start}
+@media (max-width:900px){.data-cols{grid-template-columns:1fr}}
+.side-panel{border:1px solid var(--line);background:var(--sheet);padding:18px 20px}
+.side-panel + .side-panel{margin-top:16px}
+.side-panel h3{font:800 10.5px var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--dim);margin:0 0 10px}
+.sp-row{display:flex;justify-content:space-between;gap:10px;padding:7px 0;border-bottom:1px solid var(--line);font-size:13.5px}
+.sp-row:last-of-type{border-bottom:none}
+.sp-row b{font-family:var(--serif)}
+.sp-row .pts{color:var(--accent);font-weight:700;white-space:nowrap}
+.sp-more{display:inline-block;margin-top:10px;font:700 11.5px var(--sans);letter-spacing:.07em;text-transform:uppercase;color:var(--brand)}
+.lg-table td.club-b .row-badge{width:22px;height:22px;border-radius:6px;padding:2px;display:inline-block;vertical-align:middle;margin-right:8px}
 .lg-table td.club-b a{color:var(--ink)}
 .fx-row{display:flex;gap:14px;justify-content:space-between;align-items:baseline;padding:13px 0;border-bottom:1px solid var(--line);flex-wrap:wrap}
 .fx-row .fx-when{font:700 11px var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--dim);min-width:190px}

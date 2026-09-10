@@ -227,6 +227,17 @@ table.lg-table{width:100%;border-collapse:collapse;min-width:640px;font:500 14px
 .lg-table td.num,.lg-table th.num{text-align:right;font-variant-numeric:tabular-nums}
 .lg-table tr.rel td{border-top:2px solid var(--accent)}
 .lg-table .club-b{font-weight:700}
+.data-cols{display:grid;grid-template-columns:minmax(0,2.1fr) minmax(250px,1fr);gap:30px;align-items:start}
+@media (max-width:900px){.data-cols{grid-template-columns:1fr}}
+.side-panel{border:1px solid var(--line);background:var(--sheet);padding:18px 20px}
+.side-panel + .side-panel{margin-top:16px}
+.side-panel h3{font:800 10.5px var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--dim);margin:0 0 10px}
+.sp-row{display:flex;justify-content:space-between;gap:10px;padding:7px 0;border-bottom:1px solid var(--line);font-size:13.5px}
+.sp-row:last-of-type{border-bottom:none}
+.sp-row b{font-family:var(--serif)}
+.sp-row .pts{color:var(--accent);font-weight:700;white-space:nowrap}
+.sp-more{display:inline-block;margin-top:10px;font:700 11.5px var(--sans);letter-spacing:.07em;text-transform:uppercase;color:var(--brand)}
+.lg-table td.club-b .row-badge{width:22px;height:22px;border-radius:6px;padding:2px;display:inline-block;vertical-align:middle;margin-right:8px}
 .lg-table td.club-b a{color:var(--ink)}
 .fx-row{display:flex;gap:14px;justify-content:space-between;align-items:baseline;padding:13px 0;border-bottom:1px solid var(--line);flex-wrap:wrap}
 .fx-row .fx-when{font:700 11px var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--dim);min-width:190px}
@@ -1007,6 +1018,28 @@ def sports_pages():
         CH[{v: k for k, v in BADGE.items()}.get(_c["slug"], _c["slug"])] = _c
     _missing_ch = [r[2] for r in sld.PL_TABLE if r[2] not in CH]
     assert not _missing_ch, "club-history missing: " + str(_missing_ch)
+    def _panel(title, rows, more):
+        m = ('<a class="sp-more" href="' + more[0] + '">' + more[1] + ' \u2192</a>') if more else ""
+        return '<div class="side-panel"><h3>' + title + '</h3>' + rows + m + '</div>'
+    def _scorers_panel(ld, lslug, n=6):
+        if not ld.get("scorers"):
+            return ""
+        rws = ""
+        for i, sc_ in enumerate(ld["scorers"][:n]):
+            gw = "goal" if sc_["g"] == 1 else "goals"
+            rws += ('<div class="sp-row"><span>' + html.escape(str(sc_["p"])) + '</span><span class="pts">' + str(sc_["g"]) + ' ' + gw + '</span></div>')
+        return _panel("The scoring race", rws, ("/" + lslug + "-top-scorers/", "Full list"))
+    def _table_panel(ld, lslug, n=6):
+        if not ld.get("table"):
+            return ""
+        rws = ""
+        for row in ld["table"][:n]:
+            rws += ('<div class="sp-row"><span>' + html.escape(str(row[1])) + '</span><span class="pts">' + str(row[9]) + '</span></div>')
+        href = "/premier-league-table/" if lslug == "premier-league" else "/" + lslug + "-table/"
+        return _panel("The table, top six", rws, (href, "Full table"))
+    def _next_panel(pairs):
+        rws = "".join('<div class="sp-row"><span><a href="' + u + '">' + t + '</a></span></div>' for u, t in pairs)
+        return _panel("Where next", rws, None)
     LIVE = _cal("sports-live.json") if (_root / "content" / "sports-live.json").exists() else {}
     def _lg_head():
         return head("sports", "Analysis, stories and the long view \u2014 never betting.")
@@ -1061,7 +1094,7 @@ def sports_pages():
         pos, name, slug, pl, w, d, l, gf, ga, gd, pts = r
         cls = ' class="rel"' if pos == 18 else ""
         gds = ("+" + str(gd)) if gd > 0 else str(gd)
-        rows_html += ('<tr' + cls + '><td class="pos">' + str(pos) + '</td><td class="club-b"><a href="/clubs/' + slug + '/">' + name + '</a></td>'
+        rows_html += ('<tr' + cls + '><td class="pos">' + str(pos) + '</td><td class="club-b"><a href="/clubs/' + slug + '/"><img class="club-badge row-badge" src="/assets/img/sports/badges/' + badge_file(slug) + '" alt="" width="22" height="22" loading="lazy">' + name + '</a></td>'
                       + '<td class="num">' + str(pl) + '</td><td class="num">' + str(w) + '</td><td class="num">' + str(d) + '</td><td class="num">' + str(l) + '</td>'
                       + '<td class="num">' + str(gf) + '</td><td class="num">' + str(ga) + '</td><td class="num">' + gds + '</td><td class="num"><b>' + str(pts) + '</b></td></tr>')
     pl_table_page = (_lg_head()
@@ -1070,9 +1103,12 @@ def sports_pages():
         + '<section class="cover"><p class="kicker">Premier League \u00b7 ' + sld.SEASON + ' \u00b7 the table</p>'
         + '<h1 class="cover-title" style="font-size:clamp(30px,4.6vw,48px)">The 2026-27 Premier League table.</h1>'
         + '<p class="byline">Last verified ' + sld.TABLE_AS_OF + ' \u00b7 sources: NBC Sports, Sports Media Watch, worldfootball, footballfixtures (agreement across all four) \u00b7 the desk updates this page only after each round is verified</p></section>'
-        + '<section class="section"><div class="lg-scroll"><table class="lg-table">'
+        + '<section class="section"><div class="data-cols"><div class="lg-scroll"><table class="lg-table">'
         + '<thead><tr><th>Pos</th><th>Club</th><th class="num">P</th><th class="num">W</th><th class="num">D</th><th class="num">L</th><th class="num">GF</th><th class="num">GA</th><th class="num">GD</th><th class="num">Pts</th></tr></thead>'
-        + '<tbody>' + rows_html + '</tbody></table></div></section>'
+        + '<tbody>' + rows_html + '</tbody></table></div>'
+        + '<div>' + _scorers_panel(LIVE.get("leagues", {}).get("premier-league", {}), "premier-league")
+        + _next_panel([("/premier-league-results/", "All verified results"), ("/premier-league-fixtures/", "The full calendar"), ("/premier-league-clubs/", "All twenty clubs")])
+        + '</div></div></section>'
         + '<section class="section alt"><div class="section-head"><p class="kicker">Reading it</p><h2>What the table means.</h2></div>'
         + '<div class="prose"><p>Three points for a win, one for a draw, none for a defeat \u2014 and at the end of May, positions decide everything. The champions and the highest finishers qualify for Europe; the exact number of Champions League places England earns can change from season to season, which <a href="/how-the-champions-league-works/">the Champions League explainer</a> breaks down. The bottom three clubs are relegated to the Championship \u2014 <a href="/promotion-and-relegation-explained/">why that system exists</a> is one of the desk\u2019s most-read pieces. If clubs finish level on points, the tiebreakers run goal difference, then goals scored \u2014 <a href="/how-the-premier-league-table-works/">how the Premier League table works</a> has the full order, including the playoff nobody has ever needed.</p>'
         + '<p>Three games is a rumour, not a season: a club 17th in September has won the title before, and a club 3rd has been relegated. That is why this page updates only when the desk can verify, and why every number carries its date.</p></div></section>'
@@ -1227,6 +1263,8 @@ def sports_pages():
         _live_rows = ""
         if _lld.get("table"):
             _live_rows += ('<li><a href="/' + lslug + '-table/"><span><b>The live table</b><small>All eighteen clubs, stamped with its verification time.</small></span><span class="meta">Live</span></a></li>')
+        if _lld.get("results"):
+            _live_rows += ('<li><a href="/' + lslug + '-results/"><span><b>Results</b><small>The latest verified scores, matchweek by matchweek.</small></span><span class="meta">Results</span></a></li>')
         if _lld.get("scorers"):
             _live_rows += ('<li><a href="/' + lslug + '-top-scorers/"><span><b>Top scorers</b><small>The scoring race, verified and dated.</small></span><span class="meta">Scorers</span></a></li>')
         if _lld.get("table"):
@@ -1285,9 +1323,12 @@ def sports_pages():
                 + '<section class="cover"><p class="kicker">' + lname + ' \u00b7 ' + sld.SEASON + ' \u00b7 the table</p>'
                 + '<h1 class="cover-title" style="font-size:clamp(30px,4.6vw,48px)">The ' + sld.SEASON + ' ' + lname + ' table.</h1>'
                 + '<p class="byline">' + html.escape(str(ld.get("table_updated", ""))) + ' \u00b7 source: ' + html.escape(str(LIVE.get("source", ""))) + ' \u00b7 the desk updates this page only after each round is verified</p></section>'
-                + '<section class="section"><div class="lg-scroll"><table class="lg-table">'
+                + '<section class="section"><div class="data-cols"><div class="lg-scroll"><table class="lg-table">'
                 + '<thead><tr><th>Pos</th><th>Club</th><th class="num">P</th><th class="num">W</th><th class="num">D</th><th class="num">L</th><th class="num">GF</th><th class="num">GA</th><th class="num">GD</th><th class="num">Pts</th></tr></thead>'
-                + '<tbody>' + trows + '</tbody></table></div></section>'
+                + '<tbody>' + trows + '</tbody></table></div>'
+                + '<div>' + _scorers_panel(ld, lslug)
+                + _next_panel([("/" + lslug + "-results/", "All verified results"), ("/" + lslug + "-fixtures/", "The full calendar"), (lhub, lname + " hub")])
+                + '</div></div></section>'
                 + '<section class="section alt"><div class="prose"><p>Three points for a win, one for a draw; tiebreakers run goal difference, then goals scored \u2014 <a href="/how-the-premier-league-table-works/">how league tables work</a> explains the full order. The relegation places are marked: <a href="/promotion-and-relegation-explained/">why the pyramid works that way</a>. Club-hub links open for this league as rounds are verified \u2014 meanwhile the <a href="' + lhub + '">' + lname + ' hub</a> and the <a href="/' + lslug + '-fixtures/">full 2026-27 calendar</a> are live.</p></div></section>'
                 + '</div></main>' + foot("sports"))
             pages.append(("/" + lslug + "-table/", lname + " table " + sld.SEASON + " \u2014 verified, dated | BRYME Sport",
@@ -1310,7 +1351,9 @@ def sports_pages():
                 + '<section class="cover"><p class="kicker">' + lname + ' \u00b7 ' + sld.SEASON + ' \u00b7 results</p>'
                 + '<h1 class="cover-title" style="font-size:clamp(30px,4.6vw,48px)">The season\u2019s results, verified.</h1>'
                 + '<p class="byline">' + html.escape(str(ld.get("results_updated", ""))) + ' \u00b7 source: ' + html.escape(str(LIVE.get("source", ""))) + ' \u00b7 a score appears here only once the desk can verify it \u2014 no guesses, ever</p></section>'
-                + rsecs
+                + '<section class="section"><div class="data-cols"><div>' + rsecs + '</div><div>'
+                + _table_panel(ld, lslug) + _scorers_panel(ld, lslug, 5)
+                + '</div></div></section>'
                 + '<section class="section alt"><div class="prose"><p>Where the table stands after these results: <a href="/' + lslug + '-table/">the live table</a>. Coming up: <a href="/' + lslug + '-fixtures/">the verified fixture card</a>. The hub: <a href="' + lhub + '">' + lname + '</a>. The vocabulary behind the numbers: <a href="/xg-explained/">xG, explained</a> and <a href="/pressing-explained/">pressing, explained</a>.</p></div></section>'
                 + '</div></main>' + foot("sports"))
             pages.append(("/" + lslug + "-results/", lname + " results " + sld.SEASON + " \u2014 every verified score | BRYME Sport",
@@ -1331,7 +1374,10 @@ def sports_pages():
                 + '<section class="cover"><p class="kicker">' + lname + ' \u00b7 ' + sld.SEASON + ' \u00b7 top scorers</p>'
                 + '<h1 class="cover-title" style="font-size:clamp(30px,4.6vw,48px)">The scoring race, verified.</h1>'
                 + '<p class="byline">Updated ' + html.escape(str(ld.get("scorers_updated", LIVE.get("generated", "")))) + ' \u00b7 sources: ' + html.escape(str(ld.get("scorers_source", LIVE.get("source", "")))) + ' \u00b7 verified season totals only</p></section>'
-                + '<section class="section">' + srows + '</section>'
+                + '<section class="section"><div class="data-cols"><div>' + srows + '</div><div>'
+                + _table_panel(ld, lslug)
+                + _next_panel([("/" + lslug + "-results/", "All verified results"), ("/" + lslug + "-fixtures/", "The full calendar"), (lhub, lname + " hub")])
+                + '</div></div></section>'
                 + '<section class="section alt"><div class="prose"><p>' + (race[0].upper() + race[1:]) + ' totals move fast in the opening weeks; this page updates only when the desk can verify. Keep going: the <a href="' + lhub + '">' + lname + ' hub</a>, the ' + tlink + ', and the <a href="/' + lslug + '-fixtures/">full calendar</a>.</p></div></section>'
                 + '</div></main>' + foot("sports"))
             pages.append(("/" + lslug + "-top-scorers/", lname + " top scorers " + sld.SEASON + " \u2014 the scoring race, verified | BRYME Sport",
