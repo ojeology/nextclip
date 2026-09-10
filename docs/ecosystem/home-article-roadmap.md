@@ -215,3 +215,24 @@ Title/fact decisions (verified 2026-09-10):
   prep deep-dive left on the existing shelf piece (cross-linked, not duplicated).
 - Electrical pieces carry the desk's strictest boundary: stop-and-switch-off advice, electrician
   for everything beyond, inspection intervals framed as "your electrician confirms".
+
+## Batch 5 — Permits & legal (5), built 2026-09-10
+
+Built (5, all in Understand it): /home/us-home-permits/ · /home/building-regs-vs-planning-permission/ ·
+/home/unpermitted-work-home-sale/ · /home/part-p-explained/ · /home/us-diy-electrical-rules/
+
+Title/fact decisions (verified 2026-09-10, heaviest YMYL batch yet):
+- No fabricated 50-state table: the US DIY-electrical piece honestly presents THREE state
+  patterns (explicit statute exemption — Oklahoma Title 59; permit+homestead — Minnesota;
+  inspector-discretion — Massachusetts) + what's universal (permits, rentals never covered).
+- UK regularisation: eligibility "post-Nov 1985" per council building-control pages; council
+  "not obliged to issue"; fee stated as range, not pinned. Indemnity-insurance caveats kept
+  (void if council aware; void after regularisation application; certifies nothing).
+- Part P: notifiable/non-notifiable split per Approved Doc P schedules; DIY-legal list kept
+  honest (like-for-like anywhere; additions outside special locations; kitchens notifiable);
+  enforcement framed qualitatively (criminal breach, open-up/remove powers) — no stale fine figure.
+- Consequences of skipping permits: stop-work/fines/insurance-denial/code-cascade/sale-derail —
+  all qualitative or range-stated; the SEO-site "$8,000 ADU fine" anecdotes NOT reused
+  (uncitable to primary sources).
+- Sale-derail piece anchored on UK mechanics (TA6, surveyor/solicitor/lender chain) with US
+  inspection/disclosure parallels kept separate.

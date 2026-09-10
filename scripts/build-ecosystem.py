@@ -1373,6 +1373,10 @@ HOME_SLUG_SECT.update({s: "fix" for s in (
 HOME_SLUG_SECT.update({s: "understand" for s in (
     "electrical-fire-warning-signs", "outlet-overloading-danger")})
 
+HOME_SLUG_SECT.update({s: "understand" for s in (
+    "us-home-permits", "building-regs-vs-planning-permission", "unpermitted-work-home-sale",
+    "part-p-explained", "us-diy-electrical-rules")})
+
 
 def _home_theme_init():
     # External file: the site CSP is script-src 'self' - inline scripts never run.
@@ -1452,6 +1456,8 @@ def home_pages():
     HOME_ARTICLES.extend((s2, ti, dek, b) for (s2, _k, ti, dek, b) in home_roadmap3_data.HOME_ROADMAP_3 if s2 not in _have)
     import home_roadmap4_data
     HOME_ARTICLES.extend((s2, ti, dek, b) for (s2, _k, ti, dek, b) in home_roadmap4_data.HOME_ROADMAP_4 if s2 not in _have)
+    import home_roadmap5_data
+    HOME_ARTICLES.extend((s2, ti, dek, b) for (s2, _k, ti, dek, b) in home_roadmap5_data.HOME_ROADMAP_5 if s2 not in _have)
 
     def src_html(sources):
         if not sources:
@@ -1681,7 +1687,22 @@ def home_pages():
                                           ("how-many-smoke-co-alarms", "How many alarms you need")],
         "outlet-overloading-danger": [("electrical-fire-warning-signs", "The warning signs"),
                                       ("why-does-my-circuit-breaker-keep-tripping", "The tripping breaker"),
-                                      ("drilling-without-checking", "Drilling without checking")],
+                                      ("mistakes/drilling-without-checking", "Drilling without checking")],
+        "us-home-permits": [("unpermitted-work-home-sale", "When unpermitted work resurfaces"),
+                            ("us-diy-electrical-rules", "US DIY electrical rules"),
+                            ("hvac-diy-warranty-rules", "DIY, warranty and the law")],
+        "building-regs-vs-planning-permission": [("part-p-explained", "Part P explained"),
+                                                 ("unpermitted-work-home-sale", "When unpermitted work resurfaces"),
+                                                 ("uk-us-plumber-rules", "UK vs US plumbing rules")],
+        "unpermitted-work-home-sale": [("building-regs-vs-planning-permission", "Building Regs vs planning"),
+                                       ("us-home-permits", "US permit basics"),
+                                       ("part-p-explained", "Part P explained")],
+        "part-p-explained": [("induction-hob-wiring", "Induction wiring rules"),
+                             ("outlet-overloading-danger", "The overloaded outlet"),
+                             ("building-regs-vs-planning-permission", "Building Regs vs planning")],
+        "us-diy-electrical-rules": [("outlet-overloading-danger", "The overloaded outlet"),
+                                    ("electrical-fire-warning-signs", "The warning signs"),
+                                    ("us-home-permits", "US permit basics")],
     }
     for slug, ti, dek, b in HOME_ARTICLES:
         key = HOME_SLUG_SECT[slug]
