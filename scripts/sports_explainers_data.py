@@ -118,6 +118,55 @@ SPORT_EXPLAINERS = [
 [("UEFA — UEFA Champions League", "https://www.uefa.com/uefachampionsleague/")],
 [("how-the-champions-league-works", "How the Champions League works"),
  ("why-does-afcon-move-around", "Why AFCON moves around")]),
+    ("how-the-premier-league-table-works",
+     "How the Premier League table works \u2014 points, tiebreakers, and the playoff nobody has needed",
+     "Three points for a win, goal difference after that, and the one scenario English football has never actually settled on the pitch.",
+     """<p>Every week from August to May, twenty clubs play, and the table turns those results into a single ranking. The mechanics are simple until the moment they suddenly are not \u2014 so here is the whole system, in order.</p>
+<h2>Points first, always</h2>
+<p>A win is worth three points, a draw one, a defeat none. Clubs are ranked by total points, and that is the entire first rule. Everything else only matters when two or more clubs finish level on points \u2014 which happens, but far less often than relegation battles and title races make it feel.</p>
+<h2>The tiebreakers, in order</h2>
+<p>If clubs finish level on points, the Premier League separates them first by <b>goal difference</b> \u2014 goals scored minus goals conceded across the whole season. If still level, by <b>goals scored</b>. The famous 2012 title was decided in the final seconds of the final day partly because both contenders kept winning; goal difference races run all season for exactly this reason. Notice what is <em>not</em> on the list: head-to-head results. Unlike many European leagues, the Premier League does not rank clubs on their meetings with each other.</p>
+<h2>The playoff nobody has ever needed</h2>
+<p>If two clubs are still inseparable \u2014 level on points, goal difference and goals scored \u2014 the rules provide for a one-off playoff at a neutral venue. It has never happened in the Premier League era. It exists so that the season can always produce a final answer on the pitch, not in a committee room.</p>
+<h2>What the positions are worth</h2>
+<p>The top of the table leads to Europe \u2014 champions and highest finishers qualify for continental competitions, and <a href="/how-the-champions-league-works/">how the Champions League works</a> explains where those places go, including why the exact number for one country can change between seasons. At the other end, the bottom three are relegated to the Championship: <a href="/promotion-and-relegation-explained/">promotion and relegation</a> is the mechanism that makes both ends of the table matter in April.</p>
+<h2>Reading a table in September</h2>
+<p>One habit worth stealing: read the columns in order. Points are the truth; goal difference is the tiebreaker waiting; goals scored breaks the next tie. A club seventh on nine points with a plus-five difference is a genuinely different animal from a club seventh on nine with minus-one \u2014 and after three games, that is the honest level of any conclusion. The desk\u2019s <a href="/premier-league-table/">live 2026-27 table</a> carries the current numbers with their verification date, and <a href="/xg-explained/">xG, explained</a> adds the layer the table cannot show.</p>""",
+     [("Premier League \u2014 official rules and handbook", "https://www.premierleague.com/"),
+      ("worldfootball.net \u2014 Premier League results & standings", "https://www.worldfootball.net/competition/co91/england-premier-league/")],
+     [("promotion-and-relegation-explained", "Promotion and relegation"), ("how-the-champions-league-works", "How the Champions League works"), ("xg-explained", "What is xG?")]),
+    ("how-do-football-clubs-make-money",
+     "How football clubs actually make money \u2014 the three engines and one wildcard",
+     "Broadcast, matchday, commercial: where the money enters a football club, and why transfer windows exist because of it.",
+     """<p>A football club is a strange business: it buys its raw material at market prices from rival businesses, pays some of the highest wages in world sport, and can still be worth billions. The way it stays alive is three income engines \u2014 plus one wildcard that bends everything.</p>
+<h2>Engine one: broadcast money</h2>
+<p>Leagues sell their television and streaming rights collectively or individually, and distribute the money to clubs \u2014 by a mix of equal shares, final position, and how often a club\u2019s games are broadcast. For a Premier League club, this is usually the largest single source of income, and it is why promotion is worth so much: <a href="/promotion-and-relegation-explained/">the drop</a> is not just sporting, it is a revenue cliff. Distribution formulas differ by league \u2014 which is why the same finish can mean very different money in England, Spain or Germany.</p>
+<h2>Engine two: matchday</h2>
+<p>Tickets, hospitality, food and drink on game days. Matchday income rewards big stadiums and full stadiums \u2014 the clubs with the largest grounds and the strongest demand earn multiples of their smaller rivals here, which is one reason stadium projects dominate club strategy. The Bundesliga\u2019s cheap-ticket culture trades some of this income for atmosphere and access; the model is a genuine choice, not an accident.</p>
+<h2>Engine three: commercial and sponsorship</h2>
+<p>Shirt sponsors, kit manufacturers, training-ground partners, naming rights, merchandising. This is the engine where global fanbases convert directly into money, and the engine the biggest clubs have stretched furthest \u2014 commercial income at the very largest clubs now rivals or beats broadcast income, which is why pre-season tours cross continents.</p>
+<h2>The wildcard: player trading</h2>
+<p>Selling a developed player for more than he cost is not a reliable business plan, but it is a real one \u2014 and it connects every engine to the <a href="/why-football-transfers-collapse/">transfer market</a>. A club\u2019s ability to buy is limited less by cash in a bank account than by rules that compare its spending to its income; the European framework is generally known as financial fair play, and England runs its own profitability version. The <a href="/what-does-a-sporting-director-do/">sporting director</a> is the person hired to make the whole machine balance.</p>
+<h2>How to read club money honestly</h2>
+<p>Any specific figure \u2014 a fee, a wage, a revenue number \u2014 deserves its source and its date, because the numbers move every season. The desk\u2019s rule: mechanisms on this page, figures only when verified. For how the buying side works, start with <a href="/what-is-a-release-clause/">what a release clause actually is</a>.</p>""",
+     [("UEFA \u2014 European Club Football Benchmark Report", "https://www.uefa.com/"),
+      ("Deloitte \u2014 Annual Review of Football Finance", "https://www.deloitte.com/")],
+     [("what-is-a-release-clause", "What is a release clause?"), ("why-football-transfers-collapse", "Why transfers collapse"), ("what-does-a-sporting-director-do", "What a sporting director does")]),
+    ("what-is-a-release-clause",
+     "What is a release clause? The buyout price written into a footballer\u2019s contract",
+     "The mechanism that lets one league\u2019s stars leave at a fixed price \u2014 and why English contracts rarely work the same way.",
+     """<p>A release clause is a number written into a player\u2019s contract that sets, in advance, exactly what it would cost to sign him: meet the number, and the selling club cannot refuse. It turns a negotiation into a transaction \u2014 which is precisely why some leagues require it and others avoid it.</p>
+<h2>The mechanism</h2>
+<p>The clause is not a price tag the club chooses to display; it is a pre-agreed exit price the club committed to when the contract was signed. If a buyer pays it \u2014 in the leagues where the mechanism runs through the league itself, the money is lodged with the competition\u2019s authorities rather than handed across the negotiating table \u2014 the contract can be bought out and the player is free to discuss terms with the buying club. The selling club keeps the money but loses the player, regardless of what it would rather do.</p>
+<h2>Why Spain is the clause league</h2>
+<p>Spanish football is the classic case: professional contracts there have been required to carry a buyout clause, so every LaLiga squad list is effectively a menu of exit prices. The amounts are often set absurdly high \u2014 hundreds of millions \u2014 precisely because a low clause is a standing invitation; the clause exists as a legal guarantee, and the club\u2019s real defence is pricing it beyond any buyer. When a genuinely enormous clause gets met, the sport stops: it happened in 2017, and the shockwaves of that one payment reshaped transfer economics for years.</p>
+<h2>Why England is different</h2>
+<p>English contracts have traditionally worked the other way: no fixed exit price, so any transfer needs the selling club\u2019s agreement, and the negotiation is live every time. The result is a different market psychology \u2014 in Spain the debate is whether a clause is affordable; in England it is what the selling club will accept. Both systems produce records; they just route the power differently.</p>
+<h2>Where the clause fits the wider machine</h2>
+<p>Release clauses, <a href="/why-football-transfers-collapse/">collapsing deals</a>, <a href="/how-do-football-clubs-make-money/">the money engines behind spending</a> and the <a href="/what-does-a-sporting-director-do/">sporting director</a> who manages the risk are all one connected system \u2014 the desk\u2019s transfer coverage explains each part, with figures only ever quoted when they can be sourced.</p>""",
+     [("LaLiga \u2014 official competition site", "https://www.laliga.com/en-GB"),
+      ("BBC Sport \u2014 football transfers coverage", "https://www.bbc.co.uk/sport/football/transfers")],
+     [("how-do-football-clubs-make-money", "How clubs make money"), ("why-football-transfers-collapse", "Why transfers collapse"), ("what-does-a-sporting-director-do", "What a sporting director does")]),
 ]
 
 # ---- league explainers (batch 4: header/league pass) -----------------

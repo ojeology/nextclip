@@ -281,3 +281,13 @@ Chain: 821 pages / 79,377 links OK (+2,793 = drawer links); validator ok; allowl
 **Verification:** full clean chain green — **829 pages / 89,662 internal links OK** (+4 pages: 1 sports, 3 fitness), allowlist v26 819, validator ok. Needles PASS on MW4 (fixtures, dated byline, 9 links, no-odds framing), EPL desk live row, index facts, all 3 fitness guides (bodies, links, JSON-LD, sources), fitness mega/index; regressions clean (home, LaLiga desk). New URLs in both sitemaps.
 
 **Where visible:** /sports/ mega + EPL desk + new MW4 page; /fitness/ mega, index shelf, and 3 new guides.
+
+---
+
+## Batch 7 — Sport master upgrade, Phase 1 (spec execution) — DONE 2026-09-10
+
+**Directive:** user-supplied spec "BRYME Sport 9.5/10 Master Upgrade" ("Do this"). Executed §1-2 audit first, then Phase 1 core per §33.
+
+**Shipped (+30 pages, sports 32→62):** permanent PL architecture (hub /premier-league/, table /premier-league-table/ with 20 verified rows + source stamps, fixtures /premier-league-fixtures/ with the verified MW4 card, clubs index + /clubs/<slug>/ x20 club hubs with data-driven facts rows); Serie A / Bundesliga / Ligue 1 hubs (verified champions Inter/Bayern/PSG, formats, honest data-desk status); 3 new explainers (table-works, clubs-make-money, release-clause) -> 13 total; sports homepage competition grid (§26); nav rebuilt to the gateway model; SPORTS_CSS_EXTRA (mobile-scrollable league table). Old-content audit (§2/§35): 6 substantial pieces already live from batch 3; 15 stubs (53-60 words) retired permanently; no logos/fixture data in the old impl. Data policy: no invented numbers; unverified = honest gap (Serie A club list withheld over a 2-3 club source discrepancy). Full report: docs/ecosystem/sport-master-upgrade-report.md (§40 format, honest score 7.5/10 with the path to 9+).
+
+**Verification:** clean chain green — **859 pages / 91,670 links OK**, allowlist v26 849, validator ok. Needles PASS on all 8 new page types + index grid + nav + 11/11 new sitemap routes.
