@@ -203,3 +203,42 @@ Honesty notes:
 - Link repair: T2 had dropped a subscription-creep-audit reference from what-free-apps body
   (target then unbuilt); T4 builds the target — forward-link debt settled by this batch's own
   cross-links (no retro-edit to the T2 body needed).
+
+## Batch T5 — FINALE: Buying (2) + Troubleshooting (2) + Privacy (2) + Email & files (3) + Remote work (2) + Streaming (2), built 2026-09-10
+
+Built (13): /tech/phone-buying-specs-that-matter/ · /tech/monitor-buying-specs/ ·
+/tech/wi-fi-router-placement/ · /tech/computer-fans-loud/ · /tech/vpn-what-it-protects/ ·
+/tech/browser-privacy-settings/ · /tech/inbox-zero-myth/ · /tech/cloud-storage-mistakes/ ·
+/tech/plain-text-passwords/ · /tech/remote-work-free-tools/ · /tech/video-call-mistakes/ ·
+/tech/cord-cutting-math/ · /tech/streaming-quality-settings/
+NEW cat: TECH_CAT +1 — "streaming" (after subscriptions) → 11 cats, new hub /tech/streaming/.
+Chain: 768 pages / 75,215 links OK; tech 101; allowlist v26 758 routes.
+
+[VERIFY] resolution (last hard gate): cord-cutting pricing, checked 2026-09-10, all
+named+dated in-text, flagged volatile/UPDATE-class:
+- CNET six-city comparison (Feb 2024): basic cable+internet avg $144/mo, premium $217/mo.
+- Cord Cutters News (Jun 2026): realistic cable bill $120-150+ vs promos $50-80; YouTube TV
+  base $82.99/mo (independently confirmed by fetv Mar 2026 AND CableCompare Jul 2026 — triple-
+  sourced, pinned).
+- CableCompare (Jul 2026): Hulu + Live TV $89.99/mo; 5-6 services + live TV = $165-185/mo,
+  comparable to or above cable — the piece's thesis case, sourced.
+- Deloitte 2025 Digital Media Trends (already verified in T4): ~4 services, ~$69/mo, +13% YoY.
+No single "average cable bill" figure pinned; ranges carry sources and years.
+
+Honesty notes:
+- Deferred-slug list from T2 is now FULLY BUILT (phone-buying-specs-that-matter,
+  browser-privacy-settings, cloud-storage-mistakes existed only as names — now live; smart-
+  speaker-privacy and subscription-creep-audit landed in T4). No forward links were ever left
+  dangling against this plan.
+- Buying/troubleshooting/privacy/email/remote pieces are engineering-reasoning or first-hand
+  protocol pieces; no external stats claimed, sources[] empty where nothing external asserted
+  (same precedent as T2's laptop-buying piece). Pixel-density figures are arithmetic.
+- plain-text-passwords reuses the NIST SP 800-63B FAQ URL already live-verified in T1.
+- Free-tier behaviours in remote-work/streaming pieces (Slack history hiding, meeting limits,
+  per-service data rates) described WITHOUT pinned numbers — they change; pieces say to check
+  current provider pages. Quality/data figures framed as orders of magnitude with the same
+  "check the provider's page" instruction.
+- T5 word counts 559-718 (shelf median 374) — among the most substantial on tech; no padding.
+
+## TECH ROADMAP COMPLETE (45 titles/16 clusters → 45 accounted: 42 live roadmap-built pieces
+across T1-T5 + dedupe skips already live per T1 receipts; 0 deferred, 0 dropped, 0 fabricated).
