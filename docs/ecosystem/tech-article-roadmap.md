@@ -139,3 +139,27 @@ Honesty notes:
   isn't enough" given its real reasons (account seizure/loss, egress, ToS).
 - No invented stats: laptop RAM/storage floors framed as current-software reality, sources[]
   left empty where no primary source verified (flagged in receipts here).
+
+## Batch T3 — Software alternatives (3) + AI tools (3) + Web & hosting (3), built 2026-09-10
+
+Built (9): /tech/free-software-alternatives/ · /tech/grammarly-alternatives-compared/ ·
+/tech/google-docs-vs-word-vs-notion/ · /tech/chatgpt-vs-claude-vs-gemini/ · /tech/ai-useful-vs-hype/ ·
+/tech/free-ai-tools-worth-using/ · /tech/free-vs-paid-hosting/ · /tech/why-your-website-is-slow/ ·
+/tech/domain-names-explained/
+
+AI-cluster refresh decisions (2026-09-10):
+- Pricing PINNED only where first-party-verified (desk check 2026-09-09, corroborated today):
+  ChatGPT Free/$8 Go/$20 Plus/$100+$200 Pro; Claude Pro $20 (~$17 annual)/Max $100+$200;
+  Google AI Plus $4.99/AI Pro $19.99/Ultra $99.99+$199.99. Sources: the three providers' own
+  pricing pages.
+- Model NAMES deliberately NOT pinned (aggregator sources conflicted — incl. evidently
+  fabricated names): pieces describe stable product lines (flagship/Opus/Sonnet/Pro/Flash)
+  and say "versions rotate quarterly — check the provider's model page".
+- Free-tier limits: providers publish no fixed numbers → pieces describe CAP BEHAVIOUR
+  (rolling windows, downgrade-vs-wall, throttle) and give a rotation strategy. No counts.
+- Grammarly alternatives: LanguageTool (free core, 30+ languages) / Hemingway / ProWritingAid
+  / QuillBot compared; free tiers "checked September 2026".
+
+Honesty notes: alternatives piece is the desk's own reviewed canon cross-linked (Photopea,
+Affinity-free, Bitwarden, Signal, Notion...); hosting pieces written first-hand (this site
+runs free-tier static hosting) and cite web.dev for the performance piece.

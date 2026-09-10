@@ -428,6 +428,8 @@ NEW_TECH_GUIDES = [
 from tech_roadmap_data import TECH_ROADMAP_T1 as _TECH_ROADMAP_T1
 from tech_roadmap2_data import TECH_ROADMAP_T2 as _TECH_ROADMAP_T2
 from tech_roadmap2_data import TECH_ROADMAP_T2B as _TECH_ROADMAP_T2B
+from tech_roadmap3_data import TECH_ROADMAP_T3 as _TECH_ROADMAP_T3
+NEW_TECH_GUIDES.extend(_TECH_ROADMAP_T3)
 NEW_TECH_GUIDES.extend(_TECH_ROADMAP_T2B)
 NEW_TECH_GUIDES.extend(_TECH_ROADMAP_T2)
 NEW_TECH_GUIDES.extend(_TECH_ROADMAP_T1)
