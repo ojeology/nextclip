@@ -227,3 +227,25 @@ Implemented (tech property, all 147 pages):
 - Bug caught pre-build: literal 102% inside the BASE_CSS %-format template broke formatting
   (TypeError) — escaped to 102%%; format verified before rebuild.
 Chain: 821 pages / 79,377 links OK (+2,793 = drawer links); validator ok; allowlist 811.
+
+---
+
+## Batch 4 — Writers header port to all properties — DONE 2026-09-10
+
+**Directive:** "brymewriters has a header that shows home, publish, tools and more and the mix of colours is superb… make sports, technology and all follow it. For sports: EPL, LaLiga, Champions League and all as movable header."
+
+**What shipped (commit this one):**
+- **Header system ported** (Writers anatomy: mast-brand + mast-edition [mast-date + tagline] + tools, then a `.main-nav` bar with CSS-only mega dropdowns on hover/focus-within + `.nav-cta`): now emitted by a generalized `head()` for tech, sports, fitness, entertainment, hub. Writers itself untouched (protected).
+- **Per-property navs:**
+  - Tech: Guides (12 sections + all) / Toolbox (all 8 tools named) / The desk (methodology, corrections, about, contact, privacy) + "Start here" cta.
+  - Sport: **EPL / LaLiga / Champions League / Desks** megas — every link a real page; "Desk home" cta.
+  - Fitness: Guides mega (7 guides) + cta. Entertainment: Shelves mega + cta. Hub: all five properties + "Start with Writers" cta.
+- **Two new real pages** so the sports megas link content: `/sports/epl/` (Premier League desk: 4 dated archive editions + 3 evergreen explainers) and `/sports/laliga/` (LaLiga desk: the 2 new explainers + 2 transfer-mechanics pieces).
+- **2 new sports explainers** (real-sourced, dated, internal-linked, disclaimered): `laliga-explained` (409 w) and `el-classico-explained` (450 w) — SPORT_EXPLAINERS now 10.
+- **Writers hero-explanation pattern mirrored:** `.cover-facts` stat rows (serif numerals, uppercase labels) added to the tech index (118 pieces / 8 tools / 12 sections / 0 fabricated claims) and sports index (16 evergreen / 5 archive / 3 desks / 0 odds, ever) — with the same "explicit tools mention" habit Writers uses.
+- **Theme + drawer scope:** dark mode (theme.js pre-paint) now on tech, sports, fitness, hub; mobile drawer + hamburger on tech + sports. Sports family accent stays green `#2f6b4f` (locked); tech/fitness brass `#a8752a`.
+- Masthead nav CSS ported verbatim from `assets/bryme-v2.css` (12px/750/.12em uppercase links, 3px accent underline hover, megas = pure CSS, responsive ≤860 scroll / ≤760 collapse to hamburger + tagline hidden).
+
+**Verification:** full clean chain green — **825 pages / 85,148 internal links OK** (+4 pages, +5,771 links), allowlist v26 815 routes, validator ok. Needle matrix PASS on: sports index (megas, facts, drawer, theme), epl/laliga/champions-league desks, both new explainers, tech article (new header + drawer intact + bsettle), tech index facts, fitness guide (theme + nav, no drawer), entertainment page (nav, no theme), hub root (all-properties nav + cta), Writers/Home protected (no new markup; Writers' own header/theme native and untouched). 5 new URLs in sports/sitemap.xml. Mega "HEAD" marker bug (first-row rendered as link) caught and fixed pre-push across all 9 megas.
+
+**Where visible:** every page of tech/sports/fitness/entertainment/hub (new masthead + nav bar); sports index + league desks (new pages, facts rows, drawer); tech/sports mobile (hamburger drawer); tech + sports indexes (stat rows); /home and /writers unchanged.

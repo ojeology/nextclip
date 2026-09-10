@@ -119,3 +119,38 @@ SPORT_EXPLAINERS = [
 [("how-the-champions-league-works", "How the Champions League works"),
  ("why-does-afcon-move-around", "Why AFCON moves around")]),
 ]
+
+# ---- league explainers (batch 4: header/league pass) -----------------
+
+SPORT_EXPLAINERS += [
+
+("laliga-explained", "LaLiga, explained: Spain's top division and how it works",
+"The league behind the Clásico: twenty clubs, the drop to Segunda, the calendar, and why Spanish football's rhythm differs from England's.",
+"""<p>LaLiga is Spain's top division and one of the two leagues the casual global fan names first — largely because for two decades its most famous fixture was, for many people, the only Spanish match they ever saw. Here is the league itself, minus the mythology.</p>
+<h2>The shape of the competition</h2>
+<p>Twenty clubs, playing each other home and away — thirty-eight matches from August to May, no playoffs at the top: the best record at the end is champion, full stop. The bottom three clubs drop to the Segunda División, Spain's second tier, and three come up in their place — the same promotion-and-relegation meritocracy that runs English football (<a href="/promotion-and-relegation-explained/">the pyramid idea, explained</a>), which is why a giant's bad season genuinely risks a fall, and why the league's last weeks matter at both ends of the table.</p>
+<h2>The fixture the world watches</h2>
+<p><strong>El Clásico</strong> — Real Madrid against Barcelona — is the league's gravitational centre: two of the most decorated clubs in the game, two cities with different political and cultural identities, and a rivalry older than most leagues. It is the fixture that made Spanish football a global broadcast product. The honest framing for a newcomer: it is a real, bitter sporting rivalry that also happens to be the biggest regular-season club match on the calendar — and the league is more than it. Atlético Madrid's sustained challenges, Athletic Club's unique Basque-only recruitment tradition, and Seville's two clubs (Sevilla and Real Betis, whose own derby is among football's fiercest) give the league its texture beyond the famous two.</p>
+<h2>How it differs from the Premier League</h2>
+<p>Three practical differences for a viewer deciding to follow. <strong>Tempo and craft:</strong> the league's reputation — earned over decades of technical, possession-based football — is patience and skill over raw pace; the honest caveat is that modern LaLiga is more varied than that reputation. <strong>Kick-off times:</strong> built partly for global television, matches spread across the day and late evening in ways the English schedule does not. <strong>Continuity:</strong> the same institutions have dominated for generations, which produces both the rivalry's weight and the recurring argument about competitive balance — an argument the league's critics and defenders have carried on for decades without either side winning.</p>
+<p><em>New to the desk's league coverage: this piece and <a href="/el-classico-explained/">the Clásico explainer</a> open the LaLiga shelf; the transfer mechanics that shape every league are in <a href="/why-football-transfers-collapse/">why transfers collapse</a>. More league shelves open as the season runs.</em></p>""",
+[],
+[("el-classico-explained", "El Clásico, explained"),
+ ("promotion-and-relegation-explained", "Promotion and relegation"),
+ ("why-football-transfers-collapse", "Why transfers collapse")]),
+
+("el-classico-explained", "El Clásico: football's loudest rivalry, explained",
+"Real Madrid against Barcelona is a sporting contest wrapped in a cultural argument. What the match is, why it carries more than ninety minutes, and how to watch it well.",
+"""<p>El Clásico — Real Madrid versus Barcelona — is the fixture people who do not watch football can still name. It is also the sport's most loaded ninety minutes: a match that carries sporting stakes, civic identity and a long political argument everywhere it is broadcast. Understanding it takes three separate ideas, and none of them require picking a side.</p>
+<h2>Idea one: two institutions, two identities</h2>
+<p>Real Madrid and Barcelona are the two most decorated clubs in Spanish football and, by most global measures, two of the biggest institutions in the sport. The rivalry's depth comes from what each represents to its own city: the capital against Catalonia, a national institution against a club whose motto literally declares it <em>més que un club</em> — more than a club. That layer is why the match is argued about with a seriousness that surprises newcomers: for many people on both sides, it has never been only sport. The honest note for a neutral: you can follow the football completely without absorbing the politics — but you will hear both, every matchday.</p>
+<h2>Idea two: the football itself</h2>
+<p>Strip the noise and the fixture delivers because of the talent it has attracted across generations — the two clubs have between them employed many of the most famous players the game has produced, and matches have regularly decided league titles. Tactically it has hosted some of the sport's defining experiments, including the Barcelona side that made <a href="/pressing-explained/">possession and pressing</a> the template a decade of coaches studied. Form matters less than usual: squads are rebuilt around this fixture, and a Clásico with nothing at stake does not really exist — there is almost always a table, a cup tie or a point of pride involved.</p>
+<h2>Idea three: how to watch it well</h2>
+<p>Three habits for the newcomer. <strong>Watch the midfield battle first</strong> — the match is usually decided there, in the contest for control rather than the highlight reels. <strong>Distrust the pre-match theatre and the post-match verdicts equally:</strong> a Clásico result is one result, and the hot takes it generates age badly. <strong>Learn the two benches:</strong> the fixture's history lives in its coaches and substitutes as much as its stars, and the tactical chess between the two dugouts is a match within the match. And when a decision goes to review, the mechanics are the same as anywhere else: <a href="/how-var-works/">how VAR actually works</a> applies to the biggest stage exactly as to the smallest.</p>
+<p><em>The desk's position on the eternal argument: both clubs' greatness is a fact; the ranking is your business. For the league they share, see <a href="/laliga-explained/">LaLiga, explained</a> — and for the transfer economy that keeps both squads renewed, <a href="/what-does-a-sporting-director-do/">what a sporting director does</a>.</em></p>""",
+[],
+[("laliga-explained", "LaLiga, explained"),
+ ("pressing-explained", "Pressing and possession"),
+ ("how-var-works", "How VAR works")]),
+]

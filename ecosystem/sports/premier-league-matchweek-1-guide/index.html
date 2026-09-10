@@ -9,7 +9,9 @@
 <meta property="og:title" content="Premier League Matchweek 1: Every Result, Reviewed | BRYME Sport"><meta property="og:description" content="From the BRYME media desk — recovered edition, re-typeset.">
 <meta property="og:url" content="https://bryme.onrender.com/sports/premier-league-matchweek-1-guide/"><meta property="og:image" content="https://https://bryme.onrender.com/sports/premier-league-matchweek-1-guide//assets/og.png">
 <meta name="twitter:card" content="summary_large_image">
-
+<script src="/assets/theme.js"></script>
+<meta name="theme-color" content="#fafaf8">
+<meta name="color-scheme" content="light dark">
 <style>
 :root{--paper:#fafaf8;--sheet:#ffffff;--ink:#14213d;--muted:#5b6b7a;--dim:#8b96a2;
 --brand:#2f6b4f;--brand-deep:#1f4d37;--accent:#2f6b4f;
@@ -112,13 +114,35 @@ html[data-theme="dark"] .icon-sun{display:none}
 body.drawer-open{overflow:hidden}
 html[data-theme="dark"]{--paper:#141a24;--sheet:#1a212c;--ink:#e7e3d8;--muted:#9aa1ad;--dim:#7b818d;--brand:#aec4e0;--brand-deep:#0f151f;--accent:#d0aa52;--line:rgba(231,227,216,.15);--line-strong:rgba(231,227,216,.34);--shadow:0 1px 2px rgba(0,0,0,.3),0 14px 38px rgba(0,0,0,.35);color-scheme:dark}
 html[data-theme="dark"] ::selection{background:rgba(208,170,82,.35)}
+/* ---- writers-mirrored masthead: edition block, nav bar, mega menus, cta ---- */
+.mast-edition{display:flex;flex-direction:column;gap:3px;flex:1;min-width:0}
+.mast-date{font-size:10.5px;font-weight:800;letter-spacing:.22em;color:var(--accent);text-transform:uppercase}
+.main-nav{border-top:1px solid var(--line);background:var(--paper)}
+.mast-nav{display:flex;align-items:center;gap:4px;min-height:46px}
+.main-nav a{padding:8px 13px;color:var(--muted);font-size:12px;font-weight:750;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap}
+.main-nav a:hover,.main-nav a[aria-current="page"]{color:var(--ink);box-shadow:inset 0 -3px 0 var(--accent)}
+.main-nav a.nav-cta{color:var(--sheet);background:var(--brand);border-radius:2px;margin-left:8px;padding:7px 14px}
+.main-nav a.nav-cta:hover{background:var(--brand-deep);color:var(--sheet);box-shadow:none}
+.has-mega{position:relative}
+.mega{display:none;position:absolute;z-index:80;left:0;top:100%;min-width:300px;background:var(--paper);border:1px solid var(--line-strong);border-top:3px solid var(--accent);box-shadow:var(--shadow);padding:12px 0}
+.has-mega:hover .mega,.has-mega:focus-within .mega{display:grid}
+.mega a{display:block;padding:9px 18px;font:500 13.5px var(--sans);letter-spacing:0;text-transform:none;color:var(--muted);white-space:normal}
+.mega a:hover{color:var(--brand);background:var(--sheet);box-shadow:none}
+.mega b{display:block;padding:9px 18px 3px;font:800 10px var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+.nav-toggle{display:none}
+.cover-facts{display:flex;gap:30px;flex-wrap:wrap;margin-top:34px;padding-top:22px;border-top:1px solid var(--line)}
+.cover-facts b{display:block;font-family:var(--serif);font-size:30px;line-height:1.15;color:var(--accent)}
+.cover-facts span{font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+@media (max-width:860px){.mast-nav{overflow-x:auto;scrollbar-width:none}.mast-nav::-webkit-scrollbar{display:none}}
+@media (max-width:760px){.mast-tag{display:none}.mast-date{font-size:9.5px}.nav-toggle{display:inline-grid}}
+
 </style>
 </head><body><a class="skip-link" href="#main">Skip to content</a>
 <header class="head"><div class="wrap mast">
-<a class="mast-brand" href="/">BRYME&nbsp;<span style="color:var(--accent)">SPORT</span></a>
-<span class="mast-tag">Analysis, stories and the long view — never betting.</span>
-<a class="parent-link" href="https://thebryme.com/">THE BRYME</a>
-</div></header>
+<a class="mast-brand" href="/sports/">BRYME&nbsp;<span style="color:var(--accent)">SPORT</span></a>
+<div class="mast-edition"><span class="mast-date">SEPTEMBER 2026 · THE 2026-27 SEASON</span><span class="mast-tag">Analysis, stories and the long view — never betting.</span></div>
+<a class="parent-link" href="https://thebryme.com/">THE BRYME</a><button type="button" class="theme-toggle" data-theme-toggle aria-pressed="false" aria-label="Switch to dark theme"><svg class="icon-sun" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.2 4.2l1.6 1.6M18.2 18.2l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.2 19.8l1.6-1.6M18.2 5.8l1.6-1.6"/></svg><svg class="icon-moon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 14.3A8.6 8.6 0 0 1 9.7 3.5a8.6 8.6 0 1 0 10.8 10.8Z"/></svg><span class="sr-only theme-toggle-text">Switch to dark theme</span></button><button type="button" class="nav-toggle" data-drawer-open aria-label="Open menu" aria-expanded="false"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+</div></header><nav class="main-nav"><div class="wrap mast-nav"><div class="has-mega"><a href="/epl/">EPL</a><div class="mega"><b>The Premier League desk</b><a href="/epl/">The Premier League desk</a><a href="/premier-league-matchweek-2-preview/">Matchweek 2 preview (archive)</a><a href="/premier-league-matchweek-1-guide/">Matchweek 1 guide (archive)</a><a href="/premier-league-transfer-tracker-august-2026/">The August transfer tracker (archive)</a><a href="/deadline-day-dont-try-to-make-sense-of-it/">Deadline day field guide (archive)</a><a href="/promotion-and-relegation-explained/">Promotion and relegation</a><a href="/the-offside-rule-explained/">The offside rule</a><a href="/how-var-works/">How VAR works</a></div></div><div class="has-mega"><a href="/laliga/">LaLiga</a><div class="mega"><b>The LaLiga desk</b><a href="/laliga/">The LaLiga desk</a><a href="/laliga-explained/">LaLiga, explained</a><a href="/el-classico-explained/">El Clásico, explained</a><a href="/why-football-transfers-collapse/">Why transfers collapse</a><a href="/what-does-a-sporting-director-do/">What a sporting director does</a></div></div><div class="has-mega"><a href="/champions-league/">Champions League</a><div class="mega"><b>The Champions League shelf</b><a href="/champions-league/">The Champions League shelf</a><a href="/how-the-champions-league-works/">How the Champions League works</a><a href="/champions-league-new-format-explained/">The new format, explained</a><a href="/why-does-afcon-move-around/">Why AFCON moves around</a></div></div><div class="has-mega"><a href="/sports/explainers/">Desks</a><div class="mega"><b>The desks</b><a href="/sports/explainers/">All explainers</a><a href="/sports/analysis/">The analysis shelf</a><a href="/sports/transfers/">The transfer desk</a></div></div><a class="nav-cta" href="/sports/">Desk home</a></div></nav>
 <main id="main"><div class="wrap">
 <nav class="crumb"><a href="/">Home</a> / Premier League Matchweek 1: Every Result, Reviewed</nav>
 <section class="cover"><p class="kicker">Season 2026-27 · archive edition</p>
@@ -131,6 +155,12 @@ html[data-theme="dark"] ::selection{background:rgba(208,170,82,.35)}
 <div><a href="/sports/about/">About</a> · <a href="/sports/privacy/">Privacy</a> · <a href="/sports/contact/">Contact</a></div>
 <div><a href="https://thebryme.com/">thebryme.com</a></div>
 </div></footer>
-
-
+<div id="drawer-backdrop"></div>
+<aside id="site-drawer" aria-hidden="true" aria-label="BRYME Sport sections">
+<div class="drawer-head"><span class="logo">BRYME&nbsp;SPORT</span><button type="button" class="drawer-close" data-drawer-close aria-label="Close menu"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 5l14 14M19 5L5 19"/></svg></button></div>
+<div class="drawer-group"><b>Leagues</b><a href="/sports/epl/">The Premier League desk</a><a href="/sports/laliga/">The LaLiga desk</a><a href="/sports/champions-league/">The Champions League shelf</a></div>
+<div class="drawer-group"><b>Desks</b><a href="/sports/">Desk home</a><a href="/sports/explainers/">Explainers</a><a href="/sports/analysis/">Analysis</a><a href="/sports/transfers/">Transfers</a></div>
+<div class="drawer-group"><b>The desk</b><a href="/sports/about/">About</a><a href="/sports/contact/">Contact</a><a href="/sports/privacy/">Privacy</a></div>
+</aside>
+<script src="/assets/site-nav.js" defer></script>
 </body></html>

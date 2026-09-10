@@ -141,6 +141,28 @@ html[data-theme="dark"] .icon-sun{display:none}
 body.drawer-open{overflow:hidden}
 html[data-theme="dark"]{--paper:#141a24;--sheet:#1a212c;--ink:#e7e3d8;--muted:#9aa1ad;--dim:#7b818d;--brand:#aec4e0;--brand-deep:#0f151f;--accent:#d0aa52;--line:rgba(231,227,216,.15);--line-strong:rgba(231,227,216,.34);--shadow:0 1px 2px rgba(0,0,0,.3),0 14px 38px rgba(0,0,0,.35);color-scheme:dark}
 html[data-theme="dark"] ::selection{background:rgba(208,170,82,.35)}
+/* ---- writers-mirrored masthead: edition block, nav bar, mega menus, cta ---- */
+.mast-edition{display:flex;flex-direction:column;gap:3px;flex:1;min-width:0}
+.mast-date{font-size:10.5px;font-weight:800;letter-spacing:.22em;color:var(--accent);text-transform:uppercase}
+.main-nav{border-top:1px solid var(--line);background:var(--paper)}
+.mast-nav{display:flex;align-items:center;gap:4px;min-height:46px}
+.main-nav a{padding:8px 13px;color:var(--muted);font-size:12px;font-weight:750;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap}
+.main-nav a:hover,.main-nav a[aria-current="page"]{color:var(--ink);box-shadow:inset 0 -3px 0 var(--accent)}
+.main-nav a.nav-cta{color:var(--sheet);background:var(--brand);border-radius:2px;margin-left:8px;padding:7px 14px}
+.main-nav a.nav-cta:hover{background:var(--brand-deep);color:var(--sheet);box-shadow:none}
+.has-mega{position:relative}
+.mega{display:none;position:absolute;z-index:80;left:0;top:100%%;min-width:300px;background:var(--paper);border:1px solid var(--line-strong);border-top:3px solid var(--accent);box-shadow:var(--shadow);padding:12px 0}
+.has-mega:hover .mega,.has-mega:focus-within .mega{display:grid}
+.mega a{display:block;padding:9px 18px;font:500 13.5px var(--sans);letter-spacing:0;text-transform:none;color:var(--muted);white-space:normal}
+.mega a:hover{color:var(--brand);background:var(--sheet);box-shadow:none}
+.mega b{display:block;padding:9px 18px 3px;font:800 10px var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+.nav-toggle{display:none}
+.cover-facts{display:flex;gap:30px;flex-wrap:wrap;margin-top:34px;padding-top:22px;border-top:1px solid var(--line)}
+.cover-facts b{display:block;font-family:var(--serif);font-size:30px;line-height:1.15;color:var(--accent)}
+.cover-facts span{font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+@media (max-width:860px){.mast-nav{overflow-x:auto;scrollbar-width:none}.mast-nav::-webkit-scrollbar{display:none}}
+@media (max-width:760px){.mast-tag{display:none}.mast-date{font-size:9.5px}.nav-toggle{display:inline-grid}}
+
 """
 
 FAMILY = {
@@ -148,7 +170,7 @@ FAMILY = {
     "hub":           dict(paper="#fafaf8", sheet="#ffffff", ink="#14213d", muted="#5b6b7a", dim="#8b96a2", brand="#14213d", brand_deep="#0c1526", accent="#a8752a", line="20,33,61"),
     "sports":        dict(paper="#fafaf8", sheet="#ffffff", ink="#14213d", muted="#5b6b7a", dim="#8b96a2", brand="#2f6b4f", brand_deep="#1f4d37", accent="#2f6b4f", line="20,33,61"),
     "entertainment": dict(paper="#17151a", sheet="#201d24", ink="#efe9dd", muted="#b5ad9f", dim="#8b8478", brand="#6d1832", brand_deep="#4d1023", accent="#a8752a", line="239,233,221"),
-    "tech":          dict(paper="#fafaf8", sheet="#ffffff", ink="#14213d", muted="#5b6b7a", dim="#8b96a2", brand="#14213d", brand_deep="#0c1526", accent="#5b6b7a", line="20,33,61"),
+    "tech":          dict(paper="#fafaf8", sheet="#ffffff", ink="#14213d", muted="#5b6b7a", dim="#8b96a2", brand="#14213d", brand_deep="#0c1526", accent="#a8752a", line="20,33,61"),
 }
 
 FAMILY["fitness"] = dict(FAMILY["tech"])
@@ -202,12 +224,17 @@ def css_for(pub):
 def shell(pub, title, desc, route, body, card=None, robots="index,follow"):
     d = route  # mode-aware base URL from SUB
     og = f"https://{route}/assets/og.png" if route else f"https://{DOMAIN}/assets/og.png"
-    is_tech = pub == "tech"
+    has_theme = pub in ("tech", "fitness", "sports", "hub")
     theme_head = ('<script src="/assets/theme.js"></script>\n'
                   '<meta name="theme-color" content="#fafaf8">\n'
-                  '<meta name="color-scheme" content="light dark">') if is_tech else ""
-    drawer = tech_drawer() if is_tech else ""
-    navjs = '<script src="/assets/site-nav.js" defer></script>' if is_tech else ""
+                  '<meta name="color-scheme" content="light dark">') if has_theme else ""
+    if pub == "tech":
+        drawer = tech_drawer()
+    elif pub == "sports":
+        drawer = sports_drawer()
+    else:
+        drawer = ""
+    navjs = '<script src="/assets/site-nav.js" defer></script>' if pub in ("tech", "sports") else ""
     return f"""<!doctype html>
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
@@ -236,31 +263,153 @@ _THEME_TOGGLE_BTN = ('<button type="button" class="theme-toggle" data-theme-togg
 _NAV_TOGGLE_BTN = ('<button type="button" class="nav-toggle" data-drawer-open aria-label="Open menu" aria-expanded="false">'
  '<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>')
 
+def _mega(items):
+    """items: list of (href, label) tuples, optionally prefixed by ("HEAD", text) group marks."""
+    rows = []
+    for href, label in items:
+        if href == "HEAD":
+            rows.append("<b>" + label + "</b>")
+        else:
+            rows.append('<a href="' + href + '">' + label + "</a>")
+    return '<div class="mega">' + "".join(rows) + "</div>"
+
+
+def _nav_items(pub):
+    """Writers-style nav per property: [(label, payload)] where payload is an href
+    (plain link) or a list of (href, label) (mega dropdown). Built lazily so
+    TECH_CAT etc. exist by call time."""
+    if pub == "tech":
+        guides = [("HEAD", "The guide shelf"), ("/tech/", "All of BRYME Tech")] + [
+            ("/tech/" + c + "/", TECH_CAT[c][0]) for c in TECH_CAT]
+        tools = [("HEAD", "The toolbox"), ("/tech/tool/", "All eight tools"),
+                 ("/tech/tool/json-formatter/", "JSON formatter"),
+                 ("/tech/tool/base64-encoder/", "Base64 encoder"),
+                 ("/tech/tool/url-encoder/", "URL encoder"),
+                 ("/tech/tool/uuid-generator/", "UUID generator"),
+                 ("/tech/tool/timestamp-converter/", "Timestamp converter"),
+                 ("/tech/tool/word-counter/", "Word counter"),
+                 ("/tech/tool/case-converter/", "Case converter"),
+                 ("/tech/tool/http-status-lookup/", "HTTP status lookup")]
+        desk = [("HEAD", "Standards and contact"), ("/tech/methodology/", "Editorial methodology"),
+                ("/tech/corrections/", "Corrections policy"), ("/tech/about/", "About"),
+                ("/tech/contact/", "Contact"), ("/tech/privacy/", "Privacy")]
+        return ([("Guides", guides), ("Toolbox", tools), ("The desk", desk)],
+                ("/tech/", "Start here"))
+    if pub == "sports":
+        epl = [("HEAD", "The Premier League desk"), ("/epl/", "The Premier League desk"),
+               ("/premier-league-matchweek-2-preview/", "Matchweek 2 preview (archive)"),
+               ("/premier-league-matchweek-1-guide/", "Matchweek 1 guide (archive)"),
+               ("/premier-league-transfer-tracker-august-2026/", "The August transfer tracker (archive)"),
+               ("/deadline-day-dont-try-to-make-sense-of-it/", "Deadline day field guide (archive)"),
+               ("/promotion-and-relegation-explained/", "Promotion and relegation"),
+               ("/the-offside-rule-explained/", "The offside rule"),
+               ("/how-var-works/", "How VAR works")]
+        laliga = [("HEAD", "The LaLiga desk"), ("/laliga/", "The LaLiga desk"),
+                  ("/laliga-explained/", "LaLiga, explained"),
+                  ("/el-classico-explained/", "El Clásico, explained"),
+                  ("/why-football-transfers-collapse/", "Why transfers collapse"),
+                  ("/what-does-a-sporting-director-do/", "What a sporting director does")]
+        ucl = [("HEAD", "The Champions League shelf"), ("/champions-league/", "The Champions League shelf"),
+               ("/how-the-champions-league-works/", "How the Champions League works"),
+               ("/champions-league-new-format-explained/", "The new format, explained"),
+               ("/why-does-afcon-move-around/", "Why AFCON moves around")]
+        desks = [("HEAD", "The desks"), ("/sports/explainers/", "All explainers"),
+                 ("/sports/analysis/", "The analysis shelf"),
+                 ("/sports/transfers/", "The transfer desk")]
+        return ([("EPL", epl), ("LaLiga", laliga), ("Champions League", ucl), ("Desks", desks)],
+                ("/sports/", "Desk home"))
+    if pub == "fitness":
+        guides = [("HEAD", "The fitness shelf"), ("/fitness/", "All fitness guides"),
+                  ("/fitness/how-to-start-working-out/", "Starting from zero"),
+                  ("/fitness/30-day-walking-plan/", "The 30-day walking plan"),
+                  ("/fitness/how-many-steps-a-day/", "How many steps a day"),
+                  ("/fitness/how-to-warm-up/", "How to warm up"),
+                  ("/fitness/strength-training-for-beginners/", "Strength for beginners"),
+                  ("/fitness/rest-days-and-recovery/", "Rest days and recovery"),
+                  ("/fitness/walking-vs-running/", "Walking vs running")]
+        return ([("Guides", guides)], ("/fitness/", "Desk home"))
+    if pub == "entertainment":
+        shelves = [("HEAD", "The entertainment shelves"), ("/entertainment/explainers/", "Explainers"),
+                   ("/entertainment/recommendations/", "Recommendations"),
+                   ("/entertainment/opinion/", "Opinion"),
+                   ("/entertainment/how-to-build-a-watchlist/", "Build a watchlist"),
+                   ("/entertainment/subtitles-or-dubs/", "Subtitles or dubs?"),
+                   ("/entertainment/anime-seasons-and-cours-explained/", "Anime seasons and cours")]
+        return ([("Shelves", shelves)], ("/entertainment/", "Desk home"))
+    if pub == "hub":
+        return ([("Writers", "/writers/"), ("Sport", "/sports/"), ("Tech", "/tech/"),
+                 ("Entertainment", "/entertainment/"), ("Fitness", "/fitness/"), ("Home & DIY", "/home/")],
+                ("/writers/", "Start with Writers"))
+    return ([], None)
+
+
 def tech_drawer():
-    cats = "".join('<a href="/tech/' + c + '/">' + html.escape(TECH_CAT[c][0]) + "</a>" for c in TECH_CAT)
     return ('<div id="drawer-backdrop"></div>\n'
         '<aside id="site-drawer" aria-hidden="true" aria-label="BRYME Tech sections">\n'
         '<div class="drawer-head"><span class="logo">BRYME&nbsp;TECH</span>'
         '<button type="button" class="drawer-close" data-drawer-close aria-label="Close menu">'
         '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 5l14 14M19 5L5 19"/></svg></button></div>\n'
-        '<div class="drawer-group"><b>Sections</b><a href="/tech/">Desk home</a>' + cats
+        '<div class="drawer-group"><b>Sections</b><a href="/tech/">Desk home</a>'
+        + "".join('<a href="/tech/' + c + '/">' + TECH_CAT[c][0] + '</a>' for c in TECH_CAT)
         + '<a href="/tech/tool/">The toolbox</a></div>\n'
-        '<div class="drawer-group"><b>The desk</b><a href="/tech/methodology/">Methodology</a>'
-        '<a href="/tech/corrections/">Corrections</a><a href="/tech/about/">About</a>'
+        '<div class="drawer-group"><b>The desk</b><a href="/tech/methodology/">Editorial methodology</a>'
+        '<a href="/tech/corrections/">Corrections policy</a><a href="/tech/about/">About</a>'
         '<a href="/tech/contact/">Contact</a><a href="/tech/privacy/">Privacy</a></div>\n'
         '</aside>')
 
+
+def sports_drawer():
+    return ('<div id="drawer-backdrop"></div>\n'
+        '<aside id="site-drawer" aria-hidden="true" aria-label="BRYME Sport sections">\n'
+        '<div class="drawer-head"><span class="logo">BRYME&nbsp;SPORT</span>'
+        '<button type="button" class="drawer-close" data-drawer-close aria-label="Close menu">'
+        '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 5l14 14M19 5L5 19"/></svg></button></div>\n'
+        '<div class="drawer-group"><b>Leagues</b><a href="/sports/epl/">The Premier League desk</a>'
+        '<a href="/sports/laliga/">The LaLiga desk</a><a href="/sports/champions-league/">The Champions League shelf</a></div>\n'
+        '<div class="drawer-group"><b>Desks</b><a href="/sports/">Desk home</a><a href="/sports/explainers/">Explainers</a>'
+        '<a href="/sports/analysis/">Analysis</a><a href="/sports/transfers/">Transfers</a></div>\n'
+        '<div class="drawer-group"><b>The desk</b><a href="/sports/about/">About</a>'
+        '<a href="/sports/contact/">Contact</a><a href="/sports/privacy/">Privacy</a></div>\n'
+        '</aside>')
+
+
 def head(pub, tagline, parent=True):
     pl = f'<a class="parent-link" href="https://{DOMAIN}/">THE BRYME</a>' if parent and pub != "hub" else ""
-    name = "THE&nbsp;BRYME" if pub == "hub" else f"{{'BRYME'}}&nbsp;<span>{PUB_NAME[pub].upper()}</span>"
-    brand = "THE&nbsp;BRYME" if pub == "hub" else f'BRYME&nbsp;<span style="color:var(--accent)">{PUB_NAME[pub].upper()}</span>'
-    brand_href = "/tech/" if pub == "tech" else "/"
-    tools = (_THEME_TOGGLE_BTN + _NAV_TOGGLE_BTN) if pub == "tech" else ""
+    if pub == "hub":
+        brand = "THE&nbsp;BRYME"; brand_href = "/"
+    else:
+        brand = f'BRYME&nbsp;<span style="color:var(--accent)">{PUB_NAME[pub].upper()}</span>'
+        brand_href = PREFIX.get(pub, "/") + "/"
+    editions = {"tech": "SEPTEMBER 2026 \u00b7 THE TOOL DESK",
+                "sports": "SEPTEMBER 2026 \u00b7 THE 2026-27 SEASON",
+                "fitness": "SEPTEMBER 2026 \u00b7 FOUNDATION SEASON",
+                "entertainment": "SEPTEMBER 2026 \u00b7 THE EVERGREEN SHELF",
+                "hub": "SEPTEMBER 2026 \u00b7 THE HOUSE DESK"}
+    edition = editions.get(pub)
+    edition_html = (f'<div class="mast-edition"><span class="mast-date">{edition}</span>'
+                    f'<span class="mast-tag">{tagline}</span></div>') if edition else f'<span class="mast-tag">{tagline}</span>'
+    tools = ""
+    if pub in ("tech", "fitness", "sports", "hub"):
+        tools += _THEME_TOGGLE_BTN
+    if pub in ("tech", "sports"):
+        tools += _NAV_TOGGLE_BTN
+    items, cta = _nav_items(pub)
+    nav = ""
+    if items:
+        parts = []
+        for label, payload in items:
+            if isinstance(payload, list):
+                parts.append('<div class="has-mega"><a href="' + payload[1][0] + '">' + label + "</a>" + _mega(payload) + "</div>")
+            else:
+                parts.append('<a href="' + payload + '">' + label + "</a>")
+        if cta:
+            parts.append('<a class="nav-cta" href="' + cta[0] + '">' + cta[1] + "</a>")
+        nav = '<nav class="main-nav"><div class="wrap mast-nav">' + "".join(parts) + "</div></nav>"
     return f"""<header class="head"><div class="wrap mast">
 <a class="mast-brand" href="{brand_href}">{brand}</a>
-<span class="mast-tag">{tagline}</span>
+{edition_html}
 {pl}{tools}
-</div></header>"""
+</div></header>{nav}"""
 
 def foot(pub, extra=""):
     _trust = (' \u00b7 <a href="/tech/methodology/">Methodology</a> \u00b7 <a href="/tech/corrections/">Corrections</a>'
@@ -738,6 +887,53 @@ def sports_pages():
         + '</div></main>' + foot("sports"))
     pages.append(("/analysis/", "The analysis shelf \u2014 how the game is played | BRYME Sport",
                   "xG, pressing, possession, the short build-up and the offside trap \u2014 the ideas behind modern football, explained honestly and evergreen.", analysis_hub))
+    epl_archive = [
+        ("/premier-league-matchweek-2-preview", "Matchweek 2 preview", "Archive", "The season's second weekend, previewed before a ball was kicked."),
+        ("/premier-league-matchweek-1-guide", "Matchweek 1 guide", "Archive", "Opening weekend: the storylines worth carrying into the season."),
+        ("/premier-league-transfer-tracker-august-2026", "The August 2026 transfer tracker", "Archive", "The summer window as this desk could verify it, deal by deal."),
+        ("/deadline-day-dont-try-to-make-sense-of-it", "Deadline day: don't try to make sense of it", "Archive", "A field guide to the window's strangest evening."),
+    ]
+    epl_evergreen = [
+        ("/promotion-and-relegation-explained", "Promotion and relegation", "Explainer", "The pyramid that makes every April matter at both ends of the table."),
+        ("/the-offside-rule-explained", "The offside rule, explained", "Explainer", "Position, timing, involvement \u2014 the three ideas that settle most arguments."),
+        ("/how-var-works", "How VAR actually works", "Explainer", "What is checkable, who decides, and why the wait exists."),
+    ]
+    epl_rows = ('<section class="section"><div class="section-head"><p class="kicker">Archive editions</p><h2>The 2026-27 season, as we covered it.</h2></div>'
+        + '<ul class="list">' + "".join('<li><a href="' + r[0] + '/"><span><b>' + r[1] + '</b><small>' + r[3] + '</small></span><span class="meta">' + r[2] + '</span></a></li>' for r in epl_archive) + '</ul></section>'
+        + '<section class="section alt"><div class="section-head"><p class="kicker">Evergreen explainers</p><h2>The laws and ideas that never expire.</h2></div>'
+        + '<ul class="list">' + "".join('<li><a href="' + r[0] + '/"><span><b>' + r[1] + '</b><small>' + r[3] + '</small></span><span class="meta">' + r[2] + '</span></a></li>' for r in epl_evergreen) + '</ul></section>')
+
+    # the league desks: EPL + LaLiga (batch 4, header/league pass)
+    epl_hub = (head("sports", "Analysis, stories and the long view \u2014 never betting.")
+        + '<main id="main"><div class="wrap">'
+        + '<nav class="crumb"><a href="/sports/">Sport</a> / The Premier League desk</nav>'
+        + '<section class="cover"><p class="kicker">The Premier League desk \u00b7 the league, covered honestly</p>'
+        + '<h1 class="cover-title">The Premier League, without the noise.</h1>'
+        + '<p class="cover-dek">The desk\u2019s England-top-flight shelf: the 2026-27 window and matchweeks as dated archive editions, plus the evergreen explainers that never stop applying. Live coverage returns in season.</p></section>'
+        + '<section class="section"><div class="prose"><p>House rules apply here as everywhere on the desk: no odds, no rumour mill, no invented results. The matchweek editions below were written during the live season window and kept exactly as published. The transfer mechanics behind every window live on the <a href="/sports/transfers/">transfer desk</a>, and the league\u2019s pyramid is explained in <a href="/promotion-and-relegation-explained/">promotion and relegation</a>.</p></div></section>'
+        + epl_rows
+        + '<section class="section"><div class="prose"><p><em>When the season resumes, this desk publishes fresh dated editions \u2014 the archive stands exactly as written until then.</em></p></div></section>'
+        + '</div></main>' + foot("sports"))
+    pages.append(("/epl/", "The Premier League desk | BRYME Sport",
+                  "Matchweek and transfer-window archive editions plus evergreen league explainers \u2014 the Premier League covered honestly, never betting.", epl_hub))
+
+    laliga_hub = (head("sports", "Analysis, stories and the long view \u2014 never betting.")
+        + '<main id="main"><div class="wrap">'
+        + '<nav class="crumb"><a href="/sports/">Sport</a> / The LaLiga desk</nav>'
+        + '<section class="cover"><p class="kicker">The LaLiga desk \u00b7 open the Spanish shelf</p>'
+        + '<h1 class="cover-title">Spain\u2019s league, explained plainly.</h1>'
+        + '<p class="cover-dek">The desk\u2019s newest shelf opens with the honest basics: what LaLiga is, how it runs, and the fixture that carries more than ninety minutes \u2014 with the transfer mechanics that shape every Spanish squad.</p></section>'
+        + '<section class="section"><div class="section-head"><p class="kicker">The shelf</p><h2>Start here.</h2></div>'
+        + '<ul class="list">'
+        + '<li><a href="/laliga-explained/"><span><b>LaLiga, explained</b><small>Twenty clubs, the drop to Segunda, the calendar \u2014 and why the league\u2019s rhythm differs from England\u2019s.</small></span><span class="meta">Explainer</span></a></li>'
+        + '<li><a href="/el-classico-explained/"><span><b>El Clásico, explained</b><small>Two institutions, two identities, one match the whole sport watches.</small></span><span class="meta">Explainer</span></a></li>'
+        + '<li><a href="/why-football-transfers-collapse/"><span><b>Why transfers collapse</b><small>The four doors between a done deal and a done deal \u2014 the same in Madrid as in Manchester.</small></span><span class="meta">Explainer</span></a></li>'
+        + '<li><a href="/what-does-a-sporting-director-do/"><span><b>What does a sporting director do?</b><small>The role that builds the machine behind every squad renewal.</small></span><span class="meta">Explainer</span></a></li>'
+        + '</ul></section>'
+        + '<section class="section alt"><div class="prose"><p><em>This shelf opens now and grows with the season \u2014 the desk adds dated editions as the year runs, under the same house rules: no odds, no rumour mill, no invented facts.</em></p></div></section>'
+        + '</div></main>' + foot("sports"))
+    pages.append(("/laliga/", "The LaLiga desk | BRYME Sport",
+                  "LaLiga and El Clásico explained plainly, plus the transfer mechanics \u2014 the Spanish shelf, covered honestly, never betting.", laliga_hub))
 
     # the transfer desk: one hub for the window's editions and mechanics
     transfers_hub = (head("sports", "Analysis, stories and the long view \u2014 never betting.")
@@ -808,12 +1004,19 @@ def sports_pages():
 <main id="main"><div class="wrap">
 <section class="cover"><p class="kicker">BRYME Sport · the 2026-27 desk</p>
 <h1 class="cover-title">Sport as reporting, not noise.</h1>
-<p class="cover-dek">Football first: the transfer window read plainly, the matchweeks reviewed, the season's stories followed as they happen. Restored from the BRYME media desk \u2014 and, as a house rule, never betting odds or gambling-adjacent tips.</p></section>
+<p class="cover-dek">Football first: the transfer window read plainly, the matchweeks reviewed, the season's stories followed as they happen. Restored from the BRYME media desk \u2014 and, as a house rule, never betting odds or gambling-adjacent tips.</p><div class="cover-facts">
+<div><b>{len(sports_explainers_data.SPORT_EXPLAINERS) + len(sports_analysis_data.SPORT_ANALYSIS)}</b><span>Evergreen pieces</span></div>
+<div><b>5</b><span>Archive editions</span></div>
+<div><b>3</b><span>League desks</span></div>
+<div><b>0</b><span>Odds, ever</span></div>
+</div></section>
 <section class="section"><div class="section-head"><p class="kicker">Evergreen explainers</p><h2>Understand the game.</h2></div>
 <ul class="list">{''.join(expl_rows)}</ul></section>
 <section class="section"><div class="section-head"><p class="kicker">The shelves</p><h2>Analysis, the transfer desk &amp; the Champions League.</h2></div>
 <ul class="list">
 <li><a href="/analysis/"><span><b>The analysis shelf</b><small>How the game is actually played &mdash; xG, pressing, possession, the build-up and the trap.</small></span><span class="meta">Shelf</span></a></li>
+<li><a href="/epl/"><span><b>The Premier League desk</b><small>Archive matchweeks and the transfer window, plus the evergreen league explainers.</small></span><span class="meta">Desk</span></a></li>
+<li><a href="/laliga/"><span><b>The LaLiga desk</b><small>Spain\u2019s league and the Clásico, explained plainly \u2014 the newest shelf.</small></span><span class="meta">Desk</span></a></li>
 <li><a href="/transfers/"><span><b>The transfer desk</b><small>The window in one place &mdash; archive editions, deal mechanics, and when live coverage returns.</small></span><span class="meta">Desk</span></a></li>
 <li><a href="/champions-league/"><span><b>The Champions League shelf</b><small>The 36-team format, explained honestly &mdash; with match coverage returning in season.</small></span><span class="meta">Shelf</span></a></li>
 </ul></section>
@@ -1210,7 +1413,13 @@ def tech_pages():
         + '<main id="main"><div class="wrap">'
         + '<section class="cover"><p class="kicker">BRYME Tech</p>'
         + '<h1 class="cover-title">Practical technology. No theatre.</h1>'
-        + '<p class="cover-dek">You have a technology problem, question or decision. This desk helps you understand or solve it \u2014 with guides checked against the real products and real deploys, dated honestly, and evergreen on purpose.</p></section>'
+        + '<p class="cover-dek">You have a technology problem, question or decision. This desk helps you understand or solve it \u2014 with guides checked against the real products and real deploys, dated honestly, and evergreen on purpose.</p>'
+        + '<div class="cover-facts">'
+        + '<div><b>' + str(len(arts)) + '</b><span>Published pieces</span></div>'
+        + '<div><b>8</b><span>Browser tools</span></div>'
+        + '<div><b>' + str(len(TECH_CAT)) + '</b><span>Sections</span></div>'
+        + '<div><b>0</b><span>Fabricated claims</span></div>'
+        + '</div></section>'
         + '<section class="section"><div class="section-head"><p class="kicker">Handpicked</p><h2>Start here.</h2></div>'
         + '<ul class="list">' + start_rows + "</ul></section>"
         + '<section class="section alt"><div class="section-head"><p class="kicker">Browse by need</p><h2>Sections of this desk.</h2></div>'
