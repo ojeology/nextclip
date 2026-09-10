@@ -206,3 +206,24 @@ Built (6, Apps & Android expansion): /tech/android-privacy-settings-checklist/ �
 FINAL REPORT: docs/ecosystem/tech-master-final-report.md (23-point §30 + verdict lists).
 Chain: tech 147 pages (+6), site 821 pages / 76,584 links OK; allowlist v26 811 routes.
 **MASTER BUILD PROGRAM COMPLETE: M1-M6.**
+
+### Design parity pass — DONE 2026-09-10 (commit follows)
+User direction: "Tech has no dark mode.. no sliding hero like the writers... fix all — design
+and layout of all mirrors the writers."
+Implemented (tech property, all 147 pages):
+- DARK MODE: assets/theme.js (Writers' own script, reused verbatim) loaded pre-paint in <head>;
+  theme-toggle button (sun/moon SVGs, aria-pressed) in the masthead; dark palette block
+  (html[data-theme="dark"]) using Writers' exact dark values (paper #141a24, sheet #1a212c,
+  ink #e7e3d8, accent gold #d0aa52, dim lines); localStorage key shared site-wide
+  ("bryme-theme"); OS-preference fallback; meta theme-color + color-scheme wired.
+- SLIDING HERO: Writers' bsettle settle-in animation on the cover (kicker/title/dek,
+  staggered delays, prefers-reduced-motion honoured).
+- SLIDING NAV: the slide-out drawer (#site-drawer + backdrop, Writers' component values) on
+  every tech page — 12 section hubs + toolbox + trust pages; hamburger + close buttons wired
+  via site-nav.js (reused verbatim, progressive enhancement).
+- Masthead: brand now targets /tech/; mast-tools (toggle + hamburger) added; sr-only utility.
+- Scope guards: theme.js/site-nav.js/drawer markup only on tech; other properties carry the
+  inert shared CSS only (no scripts, no markup) — verified. Home's own theme system untouched.
+- Bug caught pre-build: literal 102% inside the BASE_CSS %-format template broke formatting
+  (TypeError) — escaped to 102%%; format verified before rebuild.
+Chain: 821 pages / 79,377 links OK (+2,793 = drawer links); validator ok; allowlist 811.

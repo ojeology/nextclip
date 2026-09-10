@@ -112,6 +112,35 @@ h1.cover-title{font-family:var(--serif);font-weight:700;letter-spacing:-.018em;f
 .soon-tag{font:800 10px var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--muted);border:1px dashed var(--line-strong);align-self:flex-start;padding:8px 12px;margin-top:auto}
 @media(max-width:820px){.cards{grid-template-columns:1fr}.mast-tag{display:none}}
 @media print{.head,.foot,.actions,.btn{display:none!important}body{background:#fff}}
+
+/* ---- writers-mirrored chrome: theme toggle, drawer, hero settle, dark theme ---- */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.mast-tools{display:flex;align-items:center;gap:8px;margin-left:auto;align-self:center}
+.theme-toggle,.nav-toggle{display:inline-grid;place-items:center;width:36px;height:36px;background:none;border:1px solid var(--line-strong);border-radius:2px;color:var(--muted);cursor:pointer;padding:0}
+.theme-toggle:hover,.nav-toggle:hover{color:var(--ink);border-color:var(--ink)}
+.theme-toggle svg,.nav-toggle svg{width:18px;height:18px}
+.icon-moon{display:none}
+html[data-theme="dark"] .icon-moon{display:block}
+html[data-theme="dark"] .icon-sun{display:none}
+@keyframes bsettle{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.cover .kicker,.cover-title,.cover-dek{animation-name:bsettle;animation-duration:.5s;animation-fill-mode:both}
+.cover-title{animation-delay:.04s}
+.cover-dek{animation-delay:.12s}
+@media (prefers-reduced-motion:reduce){.cover .kicker,.cover-title,.cover-dek{animation:none}}
+#drawer-backdrop{position:fixed;inset:0;z-index:90;background:rgba(15,21,31,.5);opacity:0;pointer-events:none;transition:opacity .2s ease}
+#drawer-backdrop.show{opacity:1;pointer-events:auto}
+#site-drawer{position:fixed;z-index:100;top:0;right:0;bottom:0;width:min(360px,88vw);background:var(--paper);border-left:1px solid var(--line-strong);transform:translateX(102%%);transition:transform .22s ease;overflow-y:auto;padding:0 22px 30px}
+#site-drawer.open{transform:none}
+.drawer-head{display:flex;align-items:center;justify-content:space-between;padding:20px 0 14px;border-bottom:3px double var(--line-strong);margin-bottom:8px}
+.drawer-head .logo{font-family:var(--serif);font-weight:700;letter-spacing:.14em;font-size:19px}
+.drawer-close{background:none;border:1px solid var(--line);border-radius:2px;color:var(--muted);width:34px;height:34px;display:grid;place-items:center;cursor:pointer}
+.drawer-group{padding:14px 0;border-bottom:1px solid var(--line)}
+.drawer-group>b{display:block;font:800 10.5px var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+#site-drawer a{display:block;padding:7px 0;color:var(--ink);border-bottom:1px solid var(--line)}
+#site-drawer a:hover{color:var(--accent)}
+body.drawer-open{overflow:hidden}
+html[data-theme="dark"]{--paper:#141a24;--sheet:#1a212c;--ink:#e7e3d8;--muted:#9aa1ad;--dim:#7b818d;--brand:#aec4e0;--brand-deep:#0f151f;--accent:#d0aa52;--line:rgba(231,227,216,.15);--line-strong:rgba(231,227,216,.34);--shadow:0 1px 2px rgba(0,0,0,.3),0 14px 38px rgba(0,0,0,.35);color-scheme:dark}
+html[data-theme="dark"] ::selection{background:rgba(208,170,82,.35)}
 """
 
 FAMILY = {
@@ -173,6 +202,12 @@ def css_for(pub):
 def shell(pub, title, desc, route, body, card=None, robots="index,follow"):
     d = route  # mode-aware base URL from SUB
     og = f"https://{route}/assets/og.png" if route else f"https://{DOMAIN}/assets/og.png"
+    is_tech = pub == "tech"
+    theme_head = ('<script src="/assets/theme.js"></script>\n'
+                  '<meta name="theme-color" content="#fafaf8">\n'
+                  '<meta name="color-scheme" content="light dark">') if is_tech else ""
+    drawer = tech_drawer() if is_tech else ""
+    navjs = '<script src="/assets/site-nav.js" defer></script>' if is_tech else ""
     return f"""<!doctype html>
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
@@ -184,19 +219,47 @@ def shell(pub, title, desc, route, body, card=None, robots="index,follow"):
 <meta property="og:title" content="{html.escape(title)}"><meta property="og:description" content="{html.escape(desc)}">
 <meta property="og:url" content="{d}"><meta property="og:image" content="{og}">
 <meta name="twitter:card" content="summary_large_image">
+{theme_head}
 <style>{css_for(pub)}</style>
 </head><body><a class="skip-link" href="#main">Skip to content</a>
 {body}
+{drawer}
+{navjs}
 </body></html>"""
+
+_THEME_TOGGLE_BTN = ('<button type="button" class="theme-toggle" data-theme-toggle aria-pressed="false" aria-label="Switch to dark theme">'
+ '<svg class="icon-sun" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">'
+ '<circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.2 4.2l1.6 1.6M18.2 18.2l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.2 19.8l1.6-1.6M18.2 5.8l1.6-1.6"/></svg>'
+ '<svg class="icon-moon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">'
+ '<path d="M20.5 14.3A8.6 8.6 0 0 1 9.7 3.5a8.6 8.6 0 1 0 10.8 10.8Z"/></svg>'
+ '<span class="sr-only theme-toggle-text">Switch to dark theme</span></button>')
+_NAV_TOGGLE_BTN = ('<button type="button" class="nav-toggle" data-drawer-open aria-label="Open menu" aria-expanded="false">'
+ '<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>')
+
+def tech_drawer():
+    cats = "".join('<a href="/tech/' + c + '/">' + html.escape(TECH_CAT[c][0]) + "</a>" for c in TECH_CAT)
+    return ('<div id="drawer-backdrop"></div>\n'
+        '<aside id="site-drawer" aria-hidden="true" aria-label="BRYME Tech sections">\n'
+        '<div class="drawer-head"><span class="logo">BRYME&nbsp;TECH</span>'
+        '<button type="button" class="drawer-close" data-drawer-close aria-label="Close menu">'
+        '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 5l14 14M19 5L5 19"/></svg></button></div>\n'
+        '<div class="drawer-group"><b>Sections</b><a href="/tech/">Desk home</a>' + cats
+        + '<a href="/tech/tool/">The toolbox</a></div>\n'
+        '<div class="drawer-group"><b>The desk</b><a href="/tech/methodology/">Methodology</a>'
+        '<a href="/tech/corrections/">Corrections</a><a href="/tech/about/">About</a>'
+        '<a href="/tech/contact/">Contact</a><a href="/tech/privacy/">Privacy</a></div>\n'
+        '</aside>')
 
 def head(pub, tagline, parent=True):
     pl = f'<a class="parent-link" href="https://{DOMAIN}/">THE BRYME</a>' if parent and pub != "hub" else ""
     name = "THE&nbsp;BRYME" if pub == "hub" else f"{{'BRYME'}}&nbsp;<span>{PUB_NAME[pub].upper()}</span>"
     brand = "THE&nbsp;BRYME" if pub == "hub" else f'BRYME&nbsp;<span style="color:var(--accent)">{PUB_NAME[pub].upper()}</span>'
+    brand_href = "/tech/" if pub == "tech" else "/"
+    tools = (_THEME_TOGGLE_BTN + _NAV_TOGGLE_BTN) if pub == "tech" else ""
     return f"""<header class="head"><div class="wrap mast">
-<a class="mast-brand" href="/">{brand}</a>
+<a class="mast-brand" href="{brand_href}">{brand}</a>
 <span class="mast-tag">{tagline}</span>
-{pl}
+{pl}{tools}
 </div></header>"""
 
 def foot(pub, extra=""):

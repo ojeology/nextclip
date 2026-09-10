@@ -9,6 +9,7 @@
 <meta property="og:title" content="Why pre-rinsing dishes before the dishwasher backfires | BRYME Home &amp; DIY"><meta property="og:description" content="Modern detergent is built to attack food — rinse it all away first and you give it nothing to do except slowly etch your glassware.">
 <meta property="og:url" content="https://bryme.onrender.com/home/stop-pre-rinsing-dishes/"><meta property="og:image" content="https://https://bryme.onrender.com/home/stop-pre-rinsing-dishes//assets/og.png">
 <meta name="twitter:card" content="summary_large_image">
+
 <style>
 :root{--paper:#fafaf8;--sheet:#ffffff;--ink:#14213d;--muted:#5b6b7a;--dim:#8b96a2;
 --brand:#14213d;--brand-deep:#0c1526;--accent:#5b6b7a;
@@ -82,6 +83,35 @@ h1.cover-title{font-family:var(--serif);font-weight:700;letter-spacing:-.018em;f
 .soon-tag{font:800 10px var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--muted);border:1px dashed var(--line-strong);align-self:flex-start;padding:8px 12px;margin-top:auto}
 @media(max-width:820px){.cards{grid-template-columns:1fr}.mast-tag{display:none}}
 @media print{.head,.foot,.actions,.btn{display:none!important}body{background:#fff}}
+
+/* ---- writers-mirrored chrome: theme toggle, drawer, hero settle, dark theme ---- */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.mast-tools{display:flex;align-items:center;gap:8px;margin-left:auto;align-self:center}
+.theme-toggle,.nav-toggle{display:inline-grid;place-items:center;width:36px;height:36px;background:none;border:1px solid var(--line-strong);border-radius:2px;color:var(--muted);cursor:pointer;padding:0}
+.theme-toggle:hover,.nav-toggle:hover{color:var(--ink);border-color:var(--ink)}
+.theme-toggle svg,.nav-toggle svg{width:18px;height:18px}
+.icon-moon{display:none}
+html[data-theme="dark"] .icon-moon{display:block}
+html[data-theme="dark"] .icon-sun{display:none}
+@keyframes bsettle{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.cover .kicker,.cover-title,.cover-dek{animation-name:bsettle;animation-duration:.5s;animation-fill-mode:both}
+.cover-title{animation-delay:.04s}
+.cover-dek{animation-delay:.12s}
+@media (prefers-reduced-motion:reduce){.cover .kicker,.cover-title,.cover-dek{animation:none}}
+#drawer-backdrop{position:fixed;inset:0;z-index:90;background:rgba(15,21,31,.5);opacity:0;pointer-events:none;transition:opacity .2s ease}
+#drawer-backdrop.show{opacity:1;pointer-events:auto}
+#site-drawer{position:fixed;z-index:100;top:0;right:0;bottom:0;width:min(360px,88vw);background:var(--paper);border-left:1px solid var(--line-strong);transform:translateX(102%);transition:transform .22s ease;overflow-y:auto;padding:0 22px 30px}
+#site-drawer.open{transform:none}
+.drawer-head{display:flex;align-items:center;justify-content:space-between;padding:20px 0 14px;border-bottom:3px double var(--line-strong);margin-bottom:8px}
+.drawer-head .logo{font-family:var(--serif);font-weight:700;letter-spacing:.14em;font-size:19px}
+.drawer-close{background:none;border:1px solid var(--line);border-radius:2px;color:var(--muted);width:34px;height:34px;display:grid;place-items:center;cursor:pointer}
+.drawer-group{padding:14px 0;border-bottom:1px solid var(--line)}
+.drawer-group>b{display:block;font:800 10.5px var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+#site-drawer a{display:block;padding:7px 0;color:var(--ink);border-bottom:1px solid var(--line)}
+#site-drawer a:hover{color:var(--accent)}
+body.drawer-open{overflow:hidden}
+html[data-theme="dark"]{--paper:#141a24;--sheet:#1a212c;--ink:#e7e3d8;--muted:#9aa1ad;--dim:#7b818d;--brand:#aec4e0;--brand-deep:#0f151f;--accent:#d0aa52;--line:rgba(231,227,216,.15);--line-strong:rgba(231,227,216,.34);--shadow:0 1px 2px rgba(0,0,0,.3),0 14px 38px rgba(0,0,0,.35);color-scheme:dark}
+html[data-theme="dark"] ::selection{background:rgba(208,170,82,.35)}
 
 .fp-week .fp-day { display: grid; grid-template-columns: 44px 1fr auto; gap: 14px; align-items: center; }
 .fp-day .fp-num { font-family: var(--serif); font-size: 22px; color: var(--accent); text-align: right; }
@@ -208,6 +238,35 @@ h1.cover-title{font-family:var(--serif);font-weight:700;letter-spacing:-.018em;f
 @media(max-width:820px){.cards{grid-template-columns:1fr}.mast-tag{display:none}}
 @media print{.head,.foot,.actions,.btn{display:none!important}body{background:#fff}}
 
+/* ---- writers-mirrored chrome: theme toggle, drawer, hero settle, dark theme ---- */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.mast-tools{display:flex;align-items:center;gap:8px;margin-left:auto;align-self:center}
+.theme-toggle,.nav-toggle{display:inline-grid;place-items:center;width:36px;height:36px;background:none;border:1px solid var(--line-strong);border-radius:2px;color:var(--muted);cursor:pointer;padding:0}
+.theme-toggle:hover,.nav-toggle:hover{color:var(--ink);border-color:var(--ink)}
+.theme-toggle svg,.nav-toggle svg{width:18px;height:18px}
+.icon-moon{display:none}
+html[data-theme="dark"] .icon-moon{display:block}
+html[data-theme="dark"] .icon-sun{display:none}
+@keyframes bsettle{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.cover .kicker,.cover-title,.cover-dek{animation-name:bsettle;animation-duration:.5s;animation-fill-mode:both}
+.cover-title{animation-delay:.04s}
+.cover-dek{animation-delay:.12s}
+@media (prefers-reduced-motion:reduce){.cover .kicker,.cover-title,.cover-dek{animation:none}}
+#drawer-backdrop{position:fixed;inset:0;z-index:90;background:rgba(15,21,31,.5);opacity:0;pointer-events:none;transition:opacity .2s ease}
+#drawer-backdrop.show{opacity:1;pointer-events:auto}
+#site-drawer{position:fixed;z-index:100;top:0;right:0;bottom:0;width:min(360px,88vw);background:var(--paper);border-left:1px solid var(--line-strong);transform:translateX(102%);transition:transform .22s ease;overflow-y:auto;padding:0 22px 30px}
+#site-drawer.open{transform:none}
+.drawer-head{display:flex;align-items:center;justify-content:space-between;padding:20px 0 14px;border-bottom:3px double var(--line-strong);margin-bottom:8px}
+.drawer-head .logo{font-family:var(--serif);font-weight:700;letter-spacing:.14em;font-size:19px}
+.drawer-close{background:none;border:1px solid var(--line);border-radius:2px;color:var(--muted);width:34px;height:34px;display:grid;place-items:center;cursor:pointer}
+.drawer-group{padding:14px 0;border-bottom:1px solid var(--line)}
+.drawer-group>b{display:block;font:800 10.5px var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+#site-drawer a{display:block;padding:7px 0;color:var(--ink);border-bottom:1px solid var(--line)}
+#site-drawer a:hover{color:var(--accent)}
+body.drawer-open{overflow:hidden}
+html[data-theme="dark"]{--paper:#141a24;--sheet:#1a212c;--ink:#e7e3d8;--muted:#9aa1ad;--dim:#7b818d;--brand:#aec4e0;--brand-deep:#0f151f;--accent:#d0aa52;--line:rgba(231,227,216,.15);--line-strong:rgba(231,227,216,.34);--shadow:0 1px 2px rgba(0,0,0,.3),0 14px 38px rgba(0,0,0,.35);color-scheme:dark}
+html[data-theme="dark"] ::selection{background:rgba(208,170,82,.35)}
+
 .fp-week .fp-day { display: grid; grid-template-columns: 44px 1fr auto; gap: 14px; align-items: center; }
 .fp-day .fp-num { font-family: var(--serif); font-size: 22px; color: var(--accent); text-align: right; }
 .fp-day small { display: block; color: var(--dim); font-size: 12.5px; margin-top: 2px; }
@@ -263,4 +322,6 @@ html{color-scheme:light}
 <div><a href="https://thebryme.com/">thebryme.com</a></div>
 </div></footer>
 </body></html>
+
+
 </body></html>
