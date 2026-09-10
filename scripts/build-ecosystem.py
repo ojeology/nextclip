@@ -200,9 +200,12 @@ def head(pub, tagline, parent=True):
 </div></header>"""
 
 def foot(pub, extra=""):
+    _trust = (' \u00b7 <a href="/tech/methodology/">Methodology</a> \u00b7 <a href="/tech/corrections/">Corrections</a>'
+              ' \u00b7 <a href="/tech/terms/">Terms</a> \u00b7 <a href="/tech/disclaimer/">Disclaimer</a>') if pub == "tech" else ""
+    x = extra or _trust
     return f"""<footer class="foot"><div class="wrap foot-in">
 <div>© 2026 THE BRYME — {PUB_NAME[pub] if pub != 'hub' else 'the BRYME publications'}.</div>
-<div><a href="/{'writers' if pub == 'hub' else pub}/about/">About</a> · <a href="/{'writers' if pub == 'hub' else pub}/privacy/">Privacy</a> · <a href="/{'writers' if pub == 'hub' else pub}/contact/">Contact</a>{extra}</div>
+<div><a href="/{'writers' if pub == 'hub' else pub}/about/">About</a> · <a href="/{'writers' if pub == 'hub' else pub}/privacy/">Privacy</a> · <a href="/{'writers' if pub == 'hub' else pub}/contact/">Contact</a>{x}</div>
 <div><a href="https://{DOMAIN}/">thebryme.com</a></div>
 </div></footer>"""
 
@@ -843,6 +846,7 @@ TECH_CAT = {
     "android": ("Android & mobile", "Phone storage, permissions, battery and notifications \u2014 the settings that actually matter, explained without the jargon.", ""),
     "windows": ("Windows & PC", "Slow computers, browser trouble and update problems \u2014 triaged in the order that finds the cause fastest.", ""),
     "coding": ("Coding", "Beginner programming explained the honest way \u2014 errors, Git and APIs \u2014 from a desk that ships code.", ""),
+    "quant": ("Quantitative computing", "The QuantLab project: a one-person research lab in Python, and what ~140 documented experiments taught \u2014 failures included. Educational research, never investment advice.", ""),
     "buying": ("Buying guides", "Specs vs marketing, refurbished vs new \u2014 the numbers that decide whether tech is still pleasant in year three.", ""),
 }
 _TECH_CAT_OF = {
@@ -907,8 +911,98 @@ def _tech_related(a, arts, n=3):
     extra = [by for by in arts if by["slug"] in pool and by["slug"] != a["slug"] and by not in same]
     return (same + extra)[:n]
 
+def tech_trust_pages():
+    """Trust pages (master build M1): methodology, corrections, terms, disclaimer."""
+    methodology_body = """<div class="wrap"><nav class="crumb"><a href="/tech/">Tech</a> / Methodology</nav>
+<section class="cover"><p class="kicker">How we work</p><h1 class="cover-title">How BRYME Tech researches what it publishes.</h1>
+<p class="cover-dek">Every guide on this desk is written under one discipline: verify it live, name the source, date the volatile parts &mdash; or don't claim it at all.</p></section>
+<section class="section"><div class="prose">
+<h2>Two labels, and what they promise</h2>
+<p><strong>BRYME Technical Guide</strong> is general technical reference: researched from official documentation and primary sources, written for the practical question in the title. <strong>First-Hand Project Report</strong> is different in kind: the piece comes from a project we actually ran &mdash; this publication's own deployment stack (Render, DNS, token hygiene, CSP patterns) and the <a href="/tech/quantlab-project-how-built/">QuantLab research project</a> are the current examples. First-hand means we ran the thing on our own accounts and hardware; where a piece is first-hand, the label says so, and where it isn't, we don't pretend.</p>
+<h2>Where claims come from</h2>
+<p>External facts come from primary sources: official documentation, official product and pricing pages, standards bodies, regulators. Numbers get a named source and a date in the text. Where third-party aggregators disagree &mdash; common with pricing and stats &mdash; we publish the named-source range or drop the number entirely; a conflicting figure is never averaged into confidence. <code>sources</code> lists that look empty are deliberate too: it means the piece makes no external factual claims, because it's engineering reasoning or our own experience.</p>
+<h2>Verification before publish</h2>
+<p>Volatile claims carry a hard gate: nothing publishes on a remembered number. Code examples are executed in a real environment before publishing where practical. And the site itself is machine-checked every build: internal links must all resolve, thin and duplicate pages fail a quality gate, and the deployed pages are spot-checked against their source claims &mdash; we verify the built page, not the intention.</p>
+<h2>When facts age</h2>
+<p>Technology pieces rot at the edges: prices, model names, menu paths, limits. Pieces with volatile claims are stamped in-text (&ldquo;checked September 2026&rdquo;) and treated as UPDATE-class: on re-review we re-verify against the official pages, patch the text, and add an explicit dated re-verified note. Dates are never quietly refreshed.</p>
+<h2>What we refuse</h2>
+<p>Fabricated benchmarks, invented statistics, fake screenshots, imagined experience, and pages built to exist rather than to be useful. A smaller number of pages that survive their own claims is the whole business model &mdash; see <a href="/tech/corrections/">what happens when one doesn't</a>.</p>
+</div></section></div>"""
+    corrections_body = """<div class="wrap"><nav class="crumb"><a href="/tech/">Tech</a> / Corrections</nav>
+<section class="cover"><p class="kicker">Corrections policy</p><h1 class="cover-title">Corrections, handled in the open.</h1>
+<p class="cover-dek">Errors get fixed in the text, noted with a date, and never quietly. A publication that can't show its corrections is asking you to trust its averages instead of its record.</p></section>
+<section class="section"><div class="prose">
+<h2>How errors get found</h2>
+<p>Three ways, in rough order of frequency: our own scheduled re-verification passes (volatile claims &mdash; pricing, limits, legal statuses &mdash; are re-checked against official pages before any piece is republished); the automated checks that run on every build (every internal link must resolve; thin and duplicate pages fail the build); and readers, who remain the best error-finding system ever invented. <a href="/tech/contact/">If you find one, that email is the most valuable one we get.</a></p>
+<h2>What happens next</h2>
+<p><strong>Substantive corrections</strong> &mdash; a wrong number, a broken method, a claim that no longer holds &mdash; are fixed in the text and noted on the page with the date and what changed. If a claim can no longer be verified at all, it is removed rather than softened into vagueness. <strong>Re-verifications</strong> (the claim still holds, re-checked on a later date) are noted the same way, because a date that silently refreshes is worth nothing. <strong>Wording fixes</strong> &mdash; typos, unclear phrasing &mdash; are fixed directly; they change nothing you'd rely on, so they don't get a stamp.</p>
+<h2>The receipts habit</h2>
+<p>Behind the published pages, every batch of work keeps a written record: which sources were checked live, which claims were gated and how they resolved, what was deliberately left out because the evidence didn't support it. When this desk's own numbers have changed under honest re-audit &mdash; and in the QuantLab project they have, dramatically &mdash; the change is the story, not an embarrassment: <a href="/tech/lookahead-bias-explained/">a backtest result that didn't survive its own entry-bar audit became the most useful article on the shelf</a>.</p>
+<h2>The standard</h2>
+<p>No silent re-dating, no retro-fitting claims to what turned out true, no deleting the evidence of what we wrote before. The record is the product.</p>
+</div></section></div>"""
+    terms_body = """<div class="wrap"><nav class="crumb"><a href="/tech/">Tech</a> / Terms</nav>
+<section class="cover"><p class="kicker">Terms of use</p><h1 class="cover-title">The plain terms.</h1>
+<p class="cover-dek">Short version: this is a publication, not a professional service. Use it the way you'd use a good book &mdash; intelligently, and at your own discretion.</p></section>
+<section class="section"><div class="prose">
+<h2>What this site is</h2>
+<p>BRYME Tech is an independent technical publication offering general information, guides, opinion and research notes. It is not a consultancy, an agency, or a professional service, and using it does not create any professional relationship or duty of care between you and the publisher.</p>
+<h2>No warranties</h2>
+<p>The site and its content are provided &ldquo;as is&rdquo;, without warranties of any kind, express or implied, including fitness for a particular purpose or accuracy beyond what the <a href="/tech/methodology/">published methodology</a> states. Technology changes under our feet; steps that worked when written may not work when read. Check official documentation before acting on anything consequential.</p>
+<h2>Limitation of liability</h2>
+<p>To the fullest extent permitted by applicable law, the publisher is not liable for any loss or damage arising from use of, or reliance on, the site or its content &mdash; including technical steps you run on your own systems, which you do at your own discretion and risk.</p>
+<h2>The tools</h2>
+<p>Browser tools on this site run entirely in your browser. Text you paste into them is processed on your device and is not uploaded, stored, or transmitted to us. Don't paste secrets into any web tool anyway &mdash; that's not a term, it's <a href="/tech/plain-text-passwords/">the same advice we give everywhere</a>.</p>
+<h2>Ownership and trademarks</h2>
+<p>Original text and structure are &copy; THE BRYME. Product names, logos and trademarks mentioned belong to their respective owners; mention implies no affiliation, sponsorship or endorsement, and no trademark is claimed. External links are references, not endorsements; we don't control those pages.</p>
+<h2>Changes</h2>
+<p>These terms may be updated as the publication grows; material changes get dated notes on this page rather than silent edits. Questions: <a href="/tech/contact/">Contact</a>. See also the <a href="/tech/disclaimer/">disclaimer</a> and <a href="/tech/privacy/">privacy</a> pages.</p>
+</div></section></div>"""
+    disclaimer_body = """<div class="wrap"><nav class="crumb"><a href="/tech/">Tech</a> / Disclaimer</nav>
+<section class="cover"><p class="kicker">Disclaimer</p><h1 class="cover-title">What this desk is, and isn't.</h1></section>
+<section class="section"><div class="prose">
+<h2>General information, not professional advice</h2>
+<p>Everything on BRYME Tech is general technical information. Troubleshooting steps, security guides and configuration advice describe what has worked in specific situations and are not tailored advice for your systems; run them at your own discretion, and for high-stakes situations (production outages, security incidents, legal questions about technology) consult a professional who can see the whole picture.</p>
+<h2>Quantitative and trading-adjacent research</h2>
+<p>Research note: QuantLab experiments are presented for educational and research purposes. Historical backtests and simulations do not guarantee future results and should not be interpreted as investment advice.</p>
+<p>In plain words: the <a href="/tech/quantlab-project-how-built/">QuantLab pieces</a> document a research process &mdash; statistics, software engineering, validation discipline, and a lot of instructive failure. They do not recommend any strategy, signal, instrument or trade, they do not republish performance as a promise, and nothing on this desk should move you to risk money. Most of the project's rigorous conclusions are that promising edges were not real. That is the point of publishing them.</p>
+<h2>Products, names and dates</h2>
+<p>Product names and trademarks belong to their owners; mention implies no affiliation or endorsement. Claims about products carry their check-date in the text and may have changed since &mdash; the official page is always the current truth. External links are provided for verification and reference, not endorsement.</p>
+<p class="lede"><em>Last reviewed: September 2026. Found something wrong or stale? <a href="/tech/corrections/">This is how we fix it</a>.</em></p>
+</div></section></div>"""
+    def _pg(route, title, desc, body):
+        return (route, title, desc, '<main id="main">' + body + "</main>")
+    return [
+        _pg("/methodology/", "Editorial methodology | BRYME Tech",
+            "How BRYME Tech researches, verifies and labels what it publishes: primary sources, named dates, first-hand labels, and no remembered numbers.",
+            methodology_body),
+        _pg("/corrections/", "Corrections policy | BRYME Tech",
+            "How errors are found, fixed, dated and never quietly: the BRYME Tech corrections policy and re-verification discipline.",
+            corrections_body),
+        _pg("/terms/", "Terms of use | BRYME Tech",
+            "The plain terms of use for BRYME Tech: general information, no warranties, tools that run in your browser.",
+            terms_body),
+        _pg("/disclaimer/", "Disclaimer | BRYME Tech",
+            "What BRYME Tech is and isn't: general information, not professional advice; QuantLab research is educational, never investment advice.",
+            disclaimer_body),
+    ]
+
+
+_TECH_FIRSTHAND = {
+    "quantlab-project-how-built": "BRYME Technical Research \u00b7 first-hand project report",
+    "hundred-experiments-lessons": "BRYME Technical Research \u00b7 first-hand project report",
+    "lookahead-bias-explained": "BRYME Technical Research \u00b7 first-hand project report",
+    "backtest-validation-checklist": "BRYME Technical Research \u00b7 first-hand project report",
+    "why-backtests-fail": "BRYME Technical Research \u00b7 first-hand project report",
+    "paper-trading-bot-lessons": "BRYME Technical Research \u00b7 first-hand project report",
+    "overfitting-detection-guide": "BRYME Technical Research \u00b7 first-hand project report",
+}
+
 def tech_pages():
     arts = _load_tech()
+    for a in arts:
+        if a["slug"] in _TECH_FIRSTHAND:
+            a["author"] = _TECH_FIRSTHAND[a["slug"]]
     by_cat = {}
     for a in arts:
         by_cat.setdefault(a["cat"], []).append(a)
@@ -1020,7 +1114,7 @@ def tech_pages():
     for cslug, pl in cat_pages.items():
         pages.extend(pl)
     pages.extend(art_page(a) for a in arts)
-    return pages + legal_pages("tech", "BRYME Tech", "Practical technology from people who ran the thing.")
+    return pages + tech_trust_pages() + legal_pages("tech", "BRYME Tech", "Practical technology from people who ran the thing.")
 
 
 

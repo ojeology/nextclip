@@ -106,3 +106,31 @@ Each: what it means → causes → quick checks → fixes → alternatives → m
 ## Batch receipts
 
 _(appended per batch: built slugs, gates, commit, live checks)_
+
+### M1 — DONE 2026-09-10 (commit follows)
+Built (4 trust pages): /tech/methodology/ · /tech/corrections/ · /tech/terms/ · /tech/disclaimer/ —
+same visual pattern as about/privacy; linked from every tech page's footer (conditional in
+foot()); cross-linked to each other, about, contact. Disclaimer page carries the quant research
+disclaimer verbatim + "Last reviewed: September 2026". Methodology documents the two labels
+(Technical Guide vs First-Hand Project Report), named-source+date policy, verify-or-drop,
+UPDATE-class re-verification, no-quiet-re-dating.
+Authorship labels: `_TECH_FIRSTHAND` slug→label map applied in tech_pages(); label renders in
+the byline ("BRYME Technical Research · first-hand project report") and kind="firsthand" renders
+the "First-hand · verified against the real thing" kicker.
+
+### M2 — DONE 2026-09-10 (same commit)
+Built (7, new cat `quant` after coding, hub /tech/quant/):
+/tech/quantlab-project-how-built/ · /tech/hundred-experiments-lessons/ ·
+/tech/lookahead-bias-explained/ · /tech/backtest-validation-checklist/ ·
+/tech/why-backtests-fail/ · /tech/paper-trading-bot-lessons/ · /tech/overfitting-detection-guide/
+- All kind="firsthand", authorship-labelled, verbatim research disclaimer in each (machine-checked).
+- Evidence anchors = repo files inspected 2026-09-10 (README main, EXIT_MODEL_AUDIT.md,
+  blind-validation branch, ql_engine.py, demo_bot.py). Sources = repo links only.
+- Performance framing: T34 numbers appear ONLY as historical backtest results that did not
+  survive re-testing ($100→~$199 logged vs ~$106 entry-anchored); no PF/CAGR republication,
+  no champion figures as achievement. No signals, no strategy advice, bot documented as
+  paper-only-forever. FORTEBET repos excluded; Deriv appears only as the negative result.
+- Internal links: 2-4 per body (quant cross-links + learning-python-free-resources);
+  related shelf auto-fills same-cat (7 quant pieces). Word counts 442-576.
+Chain after M1+M2: tech 113 pages (+12), site 787 pages / 75,889 links OK; allowlist v26 777
+routes; validator ok. Live sweep follows push.
