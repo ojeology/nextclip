@@ -236,3 +236,23 @@ Title/fact decisions (verified 2026-09-10, heaviest YMYL batch yet):
   (uncitable to primary sources).
 - Sale-derail piece anchored on UK mechanics (TA6, surveyor/solicitor/lender chain) with US
   inspection/disclosure parallels kept separate.
+
+## Batch 6 — Garden & outdoor (4) + Windows (2) + Flooring (2) + Cleaning (1), built 2026-09-10
+Plus structural: new "Outside" section added to the Home shell (6 section cards total).
+
+Built (9): /home/gutter-cleaning-damage/ · /home/fence-shed-insurance/ · /home/outdoor-cooking-safety/ ·
+/home/inspection-checklist-gaps/ · /home/draught-proofing-mistakes/ · /home/single-glazing-payback/ ·
+/home/wet-mop-floor-warranty/ · /home/underfloor-heating-mistakes/ · /home/deep-clean-schedule/
+
+Title/fact decisions (verified 2026-09-10):
+- Grill fires: NFPA latest kept with attribution (~10,600/yr; July peak; 76% gas; failure-to-clean
+  20% leading factor; ~25% of structure fires from balconies/porches).
+- Energy figures (draught-proofing, secondary glazing, full replacement): aggregators CONFLICTED,
+  so all £ figures are EST-attributed ranges with "vary by property and publication year" —
+  no pin-point numbers. Payback-honesty framing for window replacement.
+- Floor-warranty piece grounded in ACTUAL warranty text (Pergo/Mohawk: "not designed for wet or
+  steam mopping", 30-min spill rule, jet/steam mop exclusion; Shaw/Armstrong steam prohibition).
+- Fence/shed insurance: US Coverage-B ~10% mechanics + UK conventions (storm exclusion on
+  boundary structures, shed contents caps) — framed as check-your-policy throughout.
+- Roadmap title "draught-proofing makes bills worse" kept honest: the piece covers over-sealing
+  (moisture/CO-vent risk) and wrong-gap sealing; draught-proofing itself endorsed as high-value.

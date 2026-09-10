@@ -1335,6 +1335,7 @@ HOME_SECTIONS = [
     ("maintain", "Maintain it", "Preventive care, and the kit that does it."),
     ("appliances", "Appliances", "Keep the machines honest."),
     ("understand", "Understand it", "What the symptoms actually mean."),
+    ("outside", "Outside", "Gutters, grills, sheds and the seasons \u2014 the half of the house that faces the weather."),
     ("mistakes", "Common mistakes", "The errors most homes make - and the fixes."),
 ]
 HOME_SLUG_SECT = {
@@ -1376,6 +1377,14 @@ HOME_SLUG_SECT.update({s: "understand" for s in (
 HOME_SLUG_SECT.update({s: "understand" for s in (
     "us-home-permits", "building-regs-vs-planning-permission", "unpermitted-work-home-sale",
     "part-p-explained", "us-diy-electrical-rules")})
+
+HOME_SLUG_SECT.update({s: "outside" for s in (
+    "gutter-cleaning-damage", "fence-shed-insurance", "outdoor-cooking-safety",
+    "inspection-checklist-gaps")})
+HOME_SLUG_SECT.update({s: "maintain" for s in (
+    "draught-proofing-mistakes", "wet-mop-floor-warranty", "deep-clean-schedule")})
+HOME_SLUG_SECT.update({s: "understand" for s in (
+    "single-glazing-payback", "underfloor-heating-mistakes")})
 
 
 def _home_theme_init():
@@ -1458,6 +1467,8 @@ def home_pages():
     HOME_ARTICLES.extend((s2, ti, dek, b) for (s2, _k, ti, dek, b) in home_roadmap4_data.HOME_ROADMAP_4 if s2 not in _have)
     import home_roadmap5_data
     HOME_ARTICLES.extend((s2, ti, dek, b) for (s2, _k, ti, dek, b) in home_roadmap5_data.HOME_ROADMAP_5 if s2 not in _have)
+    import home_roadmap6_data
+    HOME_ARTICLES.extend((s2, ti, dek, b) for (s2, _k, ti, dek, b) in home_roadmap6_data.HOME_ROADMAP_6 if s2 not in _have)
 
     def src_html(sources):
         if not sources:
@@ -1703,6 +1714,34 @@ def home_pages():
         "us-diy-electrical-rules": [("outlet-overloading-danger", "The overloaded outlet"),
                                     ("electrical-fire-warning-signs", "The warning signs"),
                                     ("us-home-permits", "US permit basics")],
+        "gutter-cleaning-damage": [("seasonal-home-maintenance-checklist", "The once-a-season checklist"),
+                                   ("condensation-vs-rising-vs-penetrating-damp", "Which damp is it?"),
+                                   ("small-leak-ripple-effect", "Why small leaks never stay small")],
+        "fence-shed-insurance": [("small-leak-ripple-effect", "Sudden vs gradual damage"),
+                                 ("us-home-permits", "US permit basics"),
+                                 ("building-regs-vs-planning-permission", "Building Regs vs planning"),
+                                 ("outlet-overloading-danger", "The overloaded outlet")],
+        "outdoor-cooking-safety": [("test-alarms-monthly", "The monthly alarm habit"),
+                                   ("mistakes/co-alarm-wrong-place", "The CO alarm that can't work"),
+                                   ("electrical-fire-warning-signs", "The warning signs")],
+        "inspection-checklist-gaps": [("seasonal-home-maintenance-checklist", "The once-a-season checklist"),
+                                      ("small-leak-ripple-effect", "The meter test"),
+                                      ("condensation-ventilation-that-works", "Ventilation that works")],
+        "draught-proofing-mistakes": [("condensation-ventilation-that-works", "Ventilation that works"),
+                                      ("single-glazing-payback", "The single-glazing maths"),
+                                      ("uk-boiler-servicing", "The annual boiler service")],
+        "single-glazing-payback": [("draught-proofing-mistakes", "Draught-proofing, done right"),
+                                   ("condensation-vs-rising-vs-penetrating-damp", "Which damp is it?"),
+                                   ("interior-painting-mistakes", "The painting mistakes list")],
+        "wet-mop-floor-warranty": [("underfloor-heating-mistakes", "Underfloor heating mistakes"),
+                                   ("unpermitted-work-home-sale", "Paperwork wins arguments"),
+                                   ("smart-appliances-worth-it", "Smart appliances, honestly")],
+        "underfloor-heating-mistakes": [("wet-mop-floor-warranty", "The floor-warranty rules"),
+                                        ("mistakes/drilling-without-checking", "Drilling without checking"),
+                                        ("condensation-ventilation-that-works", "Ventilation that works")],
+        "deep-clean-schedule": [("how-to-clean-a-washing-machine", "Why the washing machine smells"),
+                                ("vinegar-in-the-dishwasher", "Not with vinegar"),
+                                ("mistakes/streaky-windows-sunlight", "Streaky windows in sunlight")],
     }
     for slug, ti, dek, b in HOME_ARTICLES:
         key = HOME_SLUG_SECT[slug]
