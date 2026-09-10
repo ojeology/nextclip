@@ -199,3 +199,25 @@ the headlines are waiting.
 - The once-a-season checklist moved onto the same shell; URL and checklist JS unchanged.
 - Mistake pieces follow the fixed four-part shape (the mistake / why it backfires /
   the fix / keep it from happening); no shaming, low-risk scope, boundaries stated.
+
+## 2026-09-10 — Sport batch 3: the analysis shelf
+
+- /sports/analysis/ hub + 6 evergreen analysis pieces: xg-explained (origin VERIFIED
+  2026-09-10: first implemented by Sam Green at Opta, April 2012, adapting American-sport
+  analytics; mainstreamed by BBC Match of the Day from 2017-18; providers' models differ —
+  piece explains why numbers disagree; no win-percentage stats used), pressing-explained
+  (high/mid/low blocks, pressing triggers, gegenpressing concept — no dated claims),
+  what-shirt-numbers-mean (1-11-as-positions era → 6/8/10/9 vocabulary, false 9, inverted
+  winger — no dates pinned), possession-explained (choice not scoreboard; what to watch
+  instead), playing-out-from-the-back (1992 back-pass law VERIFIED 2026-09-10: Law 12,
+  deliberate-kick condition, throw-in inclusion, indirect free kick, trick ban; Sporting
+  Chronicle + Footymetrics cited; 1990 WC goal-average figure deliberately NOT pinned),
+  the-offside-trap (the unison bet; SAOT millimetre margins; links offside + VAR pieces).
+- Index: "Two more shelves" → "The shelves" (analysis + transfer desk + CL); explainers hub
+  gains an analysis cross-link. Routing serves everything under /sports/ (house pattern).
+- No fixtures, no data rights, no betting. Concept pieces carry sources[] empty on purpose
+  (house precedent); the two dated claims (xG origin, back-pass law) verified before build.
+- Sport 20→27 pages. Chain: 775 pages / 75,307 links OK; allowlist v26 765 routes.
+- Process note: an edit_file to the index template reported success but never landed in the
+  file — caught by needle-checking the BUILT page, re-applied via exact-match python replace
+  with assert. Always verify built output, not edit-tool success.

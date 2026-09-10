@@ -623,6 +623,56 @@ def sports_pages():
         expl_rows.append('<li><a href="/' + slug + '/"><span><b>' + title + "</b><small>" + dek[:110] + "\u2026</small></span>"
                          '<span class="meta">Explainer</span></a></li>')
 
+    # the analysis shelf: how the game is played (batch 3)
+    import sports_analysis_data
+    analysis_rows = []
+    for slug, title, dek, body, sources, related in sports_analysis_data.SPORT_ANALYSIS:
+        src_html = ""
+        if sources:
+            src_html = ('<h2>Sources</h2><ul class="list">'
+                        + "".join('<li><a href="' + u + '" rel="noopener">' + n + "</a></li>" for n, u in sources)
+                        + "</ul>")
+        rel_html = "".join('<li><a href="/' + s + '/">' + rt + "</a></li>" for s, rt in related)
+        schema = {"@context": "https://schema.org", "@type": "Article",
+                  "headline": title,
+                  "author": {"@type": "Organization", "name": "BRYME Sport desk"},
+                  "publisher": {"@type": "Organization", "name": "THE BRYME"},
+                  "datePublished": TODAY, "dateModified": TODAY,
+                  "mainEntityOfPage": ORIGIN + "/sports/" + slug + "/",
+                  "description": dek}
+        abody = (head("sports", "Analysis, stories and the long view \u2014 never betting.")
+            + '<main id="main"><div class="wrap">'
+            + '<nav class="crumb"><a href="/sports/">Sport</a> / <a href="/analysis/">Analysis</a> / ' + title + "</nav>"
+            + '<section class="cover"><p class="kicker">Analysis \u00b7 evergreen</p>'
+            + '<h1 class="cover-title" style="font-size:clamp(30px,4.6vw,48px)">' + title + "</h1>"
+            + '<p class="byline">BRYME Sport desk \u00b7 reviewed ' + TODAY + " \u00b7 evergreen analysis \u2014 no odds, no tips, no invented facts</p></section>"
+            + '<section class="section alt"><div class="wrap"><p class="lede"><b>In one line:</b> ' + dek + "</p></div></section>"
+            + '<section class="section"><div class="prose">' + body + src_html + "</div></section>"
+            + '<section class="section alt"><div class="section-head"><p class="kicker">Next</p><h2>More from the shelf.</h2></div>'
+            + '<ul class="list">' + rel_html + "</ul>"
+            + '<div class="actions"><a class="btn secondary" href="/analysis/">All analysis</a>'
+            + '<a class="btn secondary" href="/sports/">All of BRYME Sport</a></div></section>'
+            + '<script type="application/ld+json">' + _j.dumps(schema) + "</script>"
+            + "</div></main>" + foot("sports"))
+        pages.append(("/" + slug + "/", title + " | BRYME Sport", dek[:155], abody))
+        analysis_rows.append('<li><a href="/' + slug + '/"><span><b>' + title + "</b><small>" + dek[:110] + "\u2026</small></span>"
+                         '<span class="meta">Analysis</span></a></li>')
+
+    # the analysis shelf hub
+    analysis_hub = (head("sports", "Analysis, stories and the long view \u2014 never betting.")
+        + '<main id="main"><div class="wrap">'
+        + '<nav class="crumb"><a href="/sports/">Sport</a> / The analysis shelf</nav>'
+        + '<section class="cover"><p class="kicker">The analysis shelf \u00b7 how the game is played</p>'
+        + '<h1 class="cover-title">Read the game, not the noise.</h1>'
+        + '<p class="cover-dek">The ideas behind the tactics \u2014 expected goals, pressing, possession, the short build-up and the trap \u2014 explained plainly and argued honestly. Concepts only, evergreen: no odds, no tips, no invented numbers.</p></section>'
+        + '<section class="section"><div class="section-head"><p class="kicker">' + str(len(sports_analysis_data.SPORT_ANALYSIS)) + ' pieces</p><h2>The shelf.</h2></div>'
+        + '<ul class="list">' + "".join(analysis_rows) + "</ul></section>"
+        + '<section class="section alt"><div class="section-head"><p class="kicker">The honest bit</p><h2>How this desk uses numbers.</h2></div>'
+        + '<div class="prose"><p>Analysis pieces explain concepts; where a number has a model behind it, the piece says what the model measures and what it misses. No betting angles, ever &mdash; understanding the game is the product, not tipping it.</p></div></section>'
+        + '</div></main>' + foot("sports"))
+    pages.append(("/analysis/", "The analysis shelf \u2014 how the game is played | BRYME Sport",
+                  "xG, pressing, possession, the short build-up and the offside trap \u2014 the ideas behind modern football, explained honestly and evergreen.", analysis_hub))
+
     # the transfer desk: one hub for the window's editions and mechanics
     transfers_hub = (head("sports", "Analysis, stories and the long view \u2014 never betting.")
         + '<main id="main"><div class="wrap">'
@@ -678,7 +728,7 @@ def sports_pages():
         + '<section class="section"><div class="section-head"><p class="kicker">' + str(len(sports_explainers_data.SPORT_EXPLAINERS)) + ' explainers</p><h2>The shelf.</h2></div>'
         + '<ul class="list">' + all_rows + "</ul></section>"
         + '<section class="section alt"><div class="section-head"><p class="kicker">Also on this desk</p><h2>The season archive.</h2></div>'
-        + '<div class="actions"><a class="btn secondary" href="/sports/">Back to BRYME Sport</a></div></section>'
+        + '<div class="actions"><a class="btn secondary" href="/analysis/">The analysis shelf</a><a class="btn secondary" href="/sports/">Back to BRYME Sport</a></div></section>'
         + "</div></main>" + foot("sports"))
     pages.insert(1, ("/explainers/", "Football explainers \u2014 laws, formats and roles | BRYME Sport",
                      "The offside rule, VAR, promotion and relegation, transfer mechanics, sporting directors and AFCON's calendar \u2014 football explained plainly, evergreen.", sect_body))
@@ -695,8 +745,9 @@ def sports_pages():
 <p class="cover-dek">Football first: the transfer window read plainly, the matchweeks reviewed, the season's stories followed as they happen. Restored from the BRYME media desk \u2014 and, as a house rule, never betting odds or gambling-adjacent tips.</p></section>
 <section class="section"><div class="section-head"><p class="kicker">Evergreen explainers</p><h2>Understand the game.</h2></div>
 <ul class="list">{''.join(expl_rows)}</ul></section>
-<section class="section"><div class="section-head"><p class="kicker">Two more shelves</p><h2>The transfer desk &amp; the Champions League.</h2></div>
+<section class="section"><div class="section-head"><p class="kicker">The shelves</p><h2>Analysis, the transfer desk &amp; the Champions League.</h2></div>
 <ul class="list">
+<li><a href="/analysis/"><span><b>The analysis shelf</b><small>How the game is actually played &mdash; xG, pressing, possession, the build-up and the trap.</small></span><span class="meta">Shelf</span></a></li>
 <li><a href="/transfers/"><span><b>The transfer desk</b><small>The window in one place &mdash; archive editions, deal mechanics, and when live coverage returns.</small></span><span class="meta">Desk</span></a></li>
 <li><a href="/champions-league/"><span><b>The Champions League shelf</b><small>The 36-team format, explained honestly &mdash; with match coverage returning in season.</small></span><span class="meta">Shelf</span></a></li>
 </ul></section>
@@ -952,6 +1003,8 @@ def tech_pages():
         + '<section class="cover"><p class="kicker">BRYME Tech</p>'
         + '<h1 class="cover-title">Practical technology. No theatre.</h1>'
         + '<p class="cover-dek">You have a technology problem, question or decision. This desk helps you understand or solve it \u2014 with guides checked against the real products and real deploys, dated honestly, and evergreen on purpose.</p></section>'
+        + '<section class="section"><div class="section-head"><p class="kicker">Handpicked</p><h2>Start here.</h2></div>'
+        + '<ul class="list"'
         + '<section class="section"><div class="section-head"><p class="kicker">Handpicked</p><h2>Start here.</h2></div>'
         + '<ul class="list">' + start_rows + "</ul></section>"
         + '<section class="section alt"><div class="section-head"><p class="kicker">Browse by need</p><h2>Sections of this desk.</h2></div>'
