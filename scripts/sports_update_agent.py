@@ -6,24 +6,34 @@ football-data.org (v4 API, free tier) and writes content/sports-live.json,
 which the static build renders into the permanent table / results / scorers
 pages. Run automatically by .github/workflows/sports-update.yml.
 
+Throttling (per football-data.org guidance): the free tier allows a limited
+number of requests per minute. This client reads the X-Requests-Available and
+X-RequestCounter-Reset response headers, paces its calls, and backs off (and
+retries on HTTP 429) until the counter resets. It never hammers the API.
+
 House rules:
-- It NEVER invents data. If the API is unreachable or no key is configured,
-  it writes nothing and exits non-zero, leaving the last verified snapshot
-  in place. Stale-but-sourced beats fresh-but-guessed.
+- It NEVER invents data. If the API is unreachable it writes nothing for the
+  failed league and keeps the last verified snapshot. Stale-but-sourced beats
+  fresh-but-guessed.
 - Every write stamps its own source and generation time.
 
-Setup (one-time): add repository secret FOOTBALL_DATA_API_KEY with a free
-key from https://www.football-data.org/client/register
+Auth: the token below is the desk's football-data.org token (hard-coded on the
+owner's instruction, 2026-09-10). The FOOTBALL_DATA_API_KEY environment
+variable overrides it when set (e.g. as a repository secret).
 """
 import json
 import os
 import sys
+import time
+import urllib.error
 import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "content" / "sports-live.json"
+
+DEFAULT_TOKEN = "48f26447259f49f68951120631d12ae2"
 
 LEAGUES = {
     "premier-league": "PL",
@@ -48,10 +58,32 @@ NAME_FIX = {
 }
 
 
-def get(url, key):
-    req = urllib.request.Request(url, headers={"X-Auth-Token": key})
-    with urllib.request.urlopen(req, timeout=30) as r:
-        return json.loads(r.read().decode("utf-8"))
+def get(url, key, tries=4):
+    """GET with throttle-header awareness. Paces calls, honours the reset
+    window advertised by the API, and retries 429s with its backoff."""
+    for attempt in range(tries):
+        req = urllib.request.Request(url, headers={"X-Auth-Token": key})
+        try:
+            with urllib.request.urlopen(req, timeout=30) as r:
+                avail = r.headers.get("X-Requests-Available", "")
+                reset = r.headers.get("X-RequestCounter-Reset", "")
+                body = r.read().decode("utf-8")
+                if avail.isdigit() and int(avail) <= 1 and reset.isdigit():
+                    wait = int(reset) + 2
+                    print(f"  throttle: {avail} requests left, resting {wait}s")
+                    time.sleep(wait)
+                else:
+                    time.sleep(2)  # gentle default pace between calls
+                return json.loads(body)
+        except urllib.error.HTTPError as e:
+            if e.code == 429:
+                reset = (e.headers or {}).get("X-RequestCounter-Reset", "")
+                wait = int(reset) + 2 if reset.isdigit() else 60
+                print(f"  rate-limited (429): waiting {wait}s, attempt {attempt + 1}/{tries}")
+                time.sleep(wait)
+                continue
+            raise
+    raise RuntimeError("gave up after repeated rate-limiting: " + url)
 
 
 def league_data(code, key):
@@ -92,12 +124,7 @@ def league_data(code, key):
 
 
 def main():
-    key = os.environ.get("FOOTBALL_DATA_API_KEY")
-    if not key:
-        print("FOOTBALL_DATA_API_KEY is not set - no update written.")
-        print("The desk never fabricates data. Add the free key as a repository")
-        print("secret (football-data.org) and re-run, or keep the last verified snapshot.")
-        return 1
+    key = os.environ.get("FOOTBALL_DATA_API_KEY") or DEFAULT_TOKEN
 
     old = {}
     if OUT.exists():
@@ -123,7 +150,7 @@ def main():
     OUT.write_text(json.dumps({
         "_comment": "Written by scripts/sports_update_agent.py - source: football-data.org v4. The desk never publishes unverified data.",
         "generated": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC"),
-        "source": "football-data.org v4 (free tier)",
+        "source": "football-data.org v4",
         "leagues": leagues,
     }, ensure_ascii=False, indent=1))
     print(f"Wrote {OUT} ({ok}/{len(LEAGUES)} leagues updated)")

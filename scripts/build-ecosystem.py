@@ -1311,7 +1311,7 @@ def sports_pages():
                 + '<h1 class="cover-title" style="font-size:clamp(30px,4.6vw,48px)">The season\u2019s results, verified.</h1>'
                 + '<p class="byline">' + html.escape(str(ld.get("results_updated", ""))) + ' \u00b7 source: ' + html.escape(str(LIVE.get("source", ""))) + ' \u00b7 a score appears here only once the desk can verify it \u2014 no guesses, ever</p></section>'
                 + rsecs
-                + '<section class="section alt"><div class="prose"><p>Where the table stands after these results: <a href="/premier-league-table/">the live table</a>. What the weekends meant: the <a href="/premier-league-matchweek-4-preview/">Matchweek desk edition</a>. Coming up: <a href="/premier-league-fixtures/">the verified fixture card</a>. The vocabulary behind the numbers: <a href="/xg-explained/">xG, explained</a>.</p></div></section>'
+                + '<section class="section alt"><div class="prose"><p>Where the table stands after these results: <a href="/' + lslug + '-table/">the live table</a>. Coming up: <a href="/' + lslug + '-fixtures/">the verified fixture card</a>. The hub: <a href="' + lhub + '">' + lname + '</a>. The vocabulary behind the numbers: <a href="/xg-explained/">xG, explained</a> and <a href="/pressing-explained/">pressing, explained</a>.</p></div></section>'
                 + '</div></main>' + foot("sports"))
             pages.append(("/" + lslug + "-results/", lname + " results " + sld.SEASON + " \u2014 every verified score | BRYME Sport",
                           "Verified " + sld.SEASON + " " + lname + " results, matchweek by matchweek, stamped with the verification date. No invented scores, ever.", rp))

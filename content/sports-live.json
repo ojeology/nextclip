@@ -1,141 +1,2420 @@
 {
-  "_comment": "BRYME Sport live data snapshot. This file is the single source the build renders league tables/results/scorers from. Initial entries hand-verified 2026-09-10 against worldfootball.net (PL results additionally cross-checked against the desk's own four-source table verification). The GitHub agent (scripts/sports_update_agent.py, run by .github/workflows/sports-update.yml) overwrites this file from football-data.org when FOOTBALL_DATA_API_KEY is configured. The desk never publishes a number it cannot source: leagues missing data are marked pending and render honest-gap notices instead of guesses.",
-  "generated": "2026-09-10",
-  "source": "manual verification: worldfootball.net (PL results cross-checked with NBC Sports / Sports Media Watch / footballfixtures.org)",
-  "leagues": {
-    "premier-league": {
-      "name": "Premier League",
-      "table_updated": "after Matchweek 3 \u00b7 verified Thursday 10 September 2026",
-      "results_updated": "Matchweeks 1-3 \u00b7 verified Thursday 10 September 2026",
-      "scorers_updated": "after Matchweek 3 \u00b7 verified Thursday 10 September 2026",
-      "scorers_source": "The Guardian (10 Sep 2026) cross-checked with worldfootball.net",
-      "table": [
-        [1, "Manchester City", 3, 3, 0, 0, 7, 2, 5, 9],
-        [2, "Arsenal", 3, 3, 0, 0, 6, 1, 5, 9],
-        [3, "Hull City", 3, 2, 1, 0, 3, 0, 3, 7],
-        [4, "Chelsea", 3, 2, 0, 1, 8, 7, 1, 6],
-        [5, "Brentford", 3, 1, 2, 0, 5, 2, 3, 5],
-        [6, "Liverpool", 3, 1, 2, 0, 6, 4, 2, 5],
-        [7, "Newcastle United", 3, 1, 2, 0, 6, 4, 2, 5],
-        [8, "Everton", 3, 1, 2, 0, 5, 3, 2, 5],
-        [9, "Leeds United", 3, 1, 2, 0, 3, 2, 1, 5],
-        [10, "Brighton & Hove Albion", 3, 1, 1, 1, 8, 5, 3, 4],
-        [11, "Manchester United", 3, 1, 1, 1, 7, 6, 1, 4],
-        [12, "Sunderland", 3, 1, 1, 1, 3, 3, 0, 4],
-        [13, "Ipswich Town", 3, 1, 0, 2, 4, 8, -4, 3],
-        [14, "Crystal Palace", 3, 1, 0, 2, 4, 8, -4, 3],
-        [15, "AFC Bournemouth", 3, 0, 2, 1, 4, 5, -1, 2],
-        [16, "Nottingham Forest", 3, 0, 2, 1, 2, 3, -1, 2],
-        [17, "Aston Villa", 3, 0, 1, 2, 0, 5, -5, 1],
-        [18, "Tottenham Hotspur", 3, 0, 1, 2, 0, 5, -5, 1],
-        [19, "Fulham", 3, 0, 0, 3, 4, 7, -3, 0],
-        [20, "Coventry City", 3, 0, 0, 3, 0, 5, -5, 0]
-      ],
-      "results": [
-        {"mw": 1, "matches": [
-          {"d": "Friday 21 August", "h": "Arsenal", "hs": 3, "as": 0, "a": "Coventry City"},
-          {"d": "Saturday 22 August", "h": "Hull City", "hs": 2, "as": 0, "a": "Manchester United"},
-          {"d": "Saturday 22 August", "h": "Everton", "hs": 2, "as": 0, "a": "Crystal Palace"},
-          {"d": "Saturday 22 August", "h": "Ipswich Town", "hs": 2, "as": 1, "a": "Sunderland"},
-          {"d": "Saturday 22 August", "h": "Nottingham Forest", "hs": 0, "as": 1, "a": "Leeds United"},
-          {"d": "Saturday 22 August", "h": "Brentford", "hs": 3, "as": 0, "a": "Tottenham Hotspur"},
-          {"d": "Sunday 23 August", "h": "Brighton & Hove Albion", "hs": 4, "as": 0, "a": "Aston Villa"},
-          {"d": "Sunday 23 August", "h": "Manchester City", "hs": 2, "as": 1, "a": "AFC Bournemouth"},
-          {"d": "Sunday 23 August", "h": "Newcastle United", "hs": 2, "as": 2, "a": "Liverpool"},
-          {"d": "Monday 24 August", "h": "Fulham", "hs": 2, "as": 3, "a": "Chelsea"}
-        ]},
-        {"mw": 2, "matches": [
-          {"d": "Friday 28 August", "h": "Crystal Palace", "hs": 1, "as": 4, "a": "Manchester City"},
-          {"d": "Saturday 29 August", "h": "Liverpool", "hs": 2, "as": 2, "a": "Nottingham Forest"},
-          {"d": "Saturday 29 August", "h": "AFC Bournemouth", "hs": 1, "as": 1, "a": "Everton"},
-          {"d": "Saturday 29 August", "h": "Coventry City", "hs": 0, "as": 1, "a": "Hull City"},
-          {"d": "Saturday 29 August", "h": "Tottenham Hotspur", "hs": 0, "as": 2, "a": "Newcastle United"},
-          {"d": "Sunday 30 August", "h": "Chelsea", "hs": 4, "as": 3, "a": "Brighton & Hove Albion"},
-          {"d": "Sunday 30 August", "h": "Leeds United", "hs": 1, "as": 1, "a": "Brentford"},
-          {"d": "Sunday 30 August", "h": "Sunderland", "hs": 1, "as": 0, "a": "Fulham"},
-          {"d": "Sunday 30 August", "h": "Manchester United", "hs": 5, "as": 2, "a": "Ipswich Town"},
-          {"d": "Monday 31 August", "h": "Aston Villa", "hs": 0, "as": 1, "a": "Arsenal"}
-        ]},
-        {"mw": 3, "matches": [
-          {"d": "Friday 4 September", "h": "Ipswich Town", "hs": 0, "as": 2, "a": "Liverpool"},
-          {"d": "Saturday 5 September", "h": "Newcastle United", "hs": 2, "as": 2, "a": "AFC Bournemouth"},
-          {"d": "Saturday 5 September", "h": "Brentford", "hs": 1, "as": 1, "a": "Sunderland"},
-          {"d": "Saturday 5 September", "h": "Brighton & Hove Albion", "hs": 1, "as": 1, "a": "Leeds United"},
-          {"d": "Saturday 5 September", "h": "Fulham", "hs": 2, "as": 3, "a": "Crystal Palace"},
-          {"d": "Saturday 5 September", "h": "Manchester City", "hs": 1, "as": 0, "a": "Coventry City"},
-          {"d": "Saturday 5 September", "h": "Nottingham Forest", "hs": 0, "as": 0, "a": "Tottenham Hotspur"},
-          {"d": "Saturday 5 September", "h": "Hull City", "hs": 0, "as": 0, "a": "Aston Villa"},
-          {"d": "Sunday 6 September", "h": "Everton", "hs": 2, "as": 2, "a": "Manchester United"},
-          {"d": "Sunday 6 September", "h": "Arsenal", "hs": 2, "as": 1, "a": "Chelsea"}
-        ]}
-      ],
-      "scorers": [
-        {"p": "Erling Haaland", "c": "Manchester City", "g": 3},
-        {"p": "Alexander Isak", "c": "Liverpool", "g": 3},
-        {"p": "Bruno Fernandes", "c": "Manchester United", "g": 3},
-        {"p": "Rayan Cherki", "c": "Manchester City", "g": 2},
-        {"p": "Anthony Elanga", "c": "Newcastle United", "g": 2}
-      ]
+ "_comment": "Written by scripts/sports_update_agent.py - source: football-data.org v4. The desk never publishes unverified data.",
+ "generated": "2026-09-10 21:54 UTC",
+ "source": "football-data.org v4",
+ "leagues": {
+  "premier-league": {
+   "name": "Premier League",
+   "table_updated": "fetched Thursday 10 September 2026, 21:52 UTC",
+   "results_updated": "fetched Thursday 10 September 2026, 21:52 UTC",
+   "scorers_updated": "fetched Thursday 10 September 2026, 21:52 UTC",
+   "scorers_source": "The Guardian (10 Sep 2026) cross-checked with worldfootball.net",
+   "table": [
+    [
+     1,
+     "Manchester City",
+     3,
+     3,
+     0,
+     0,
+     7,
+     2,
+     5,
+     9
+    ],
+    [
+     2,
+     "Arsenal",
+     3,
+     3,
+     0,
+     0,
+     6,
+     1,
+     5,
+     9
+    ],
+    [
+     3,
+     "Hull City",
+     3,
+     2,
+     1,
+     0,
+     3,
+     0,
+     3,
+     7
+    ],
+    [
+     4,
+     "Chelsea",
+     3,
+     2,
+     0,
+     1,
+     8,
+     7,
+     1,
+     6
+    ],
+    [
+     5,
+     "Brentford",
+     3,
+     1,
+     2,
+     0,
+     5,
+     2,
+     3,
+     5
+    ],
+    [
+     6,
+     "Liverpool",
+     3,
+     1,
+     2,
+     0,
+     6,
+     4,
+     2,
+     5
+    ],
+    [
+     6,
+     "Newcastle United",
+     3,
+     1,
+     2,
+     0,
+     6,
+     4,
+     2,
+     5
+    ],
+    [
+     8,
+     "Everton",
+     3,
+     1,
+     2,
+     0,
+     5,
+     3,
+     2,
+     5
+    ],
+    [
+     9,
+     "Leeds United",
+     3,
+     1,
+     2,
+     0,
+     3,
+     2,
+     1,
+     5
+    ],
+    [
+     10,
+     "Brighton & Hove Albion FC",
+     3,
+     1,
+     1,
+     1,
+     8,
+     5,
+     3,
+     4
+    ],
+    [
+     11,
+     "Manchester United",
+     3,
+     1,
+     1,
+     1,
+     7,
+     6,
+     1,
+     4
+    ],
+    [
+     12,
+     "Sunderland",
+     3,
+     1,
+     1,
+     1,
+     3,
+     3,
+     0,
+     4
+    ],
+    [
+     13,
+     "Crystal Palace",
+     3,
+     1,
+     0,
+     2,
+     4,
+     8,
+     -4,
+     3
+    ],
+    [
+     13,
+     "Ipswich Town",
+     3,
+     1,
+     0,
+     2,
+     4,
+     8,
+     -4,
+     3
+    ],
+    [
+     15,
+     "AFC Bournemouth",
+     3,
+     0,
+     2,
+     1,
+     4,
+     5,
+     -1,
+     2
+    ],
+    [
+     16,
+     "Nottingham Forest",
+     3,
+     0,
+     2,
+     1,
+     2,
+     3,
+     -1,
+     2
+    ],
+    [
+     17,
+     "Aston Villa",
+     3,
+     0,
+     1,
+     2,
+     0,
+     5,
+     -5,
+     1
+    ],
+    [
+     17,
+     "Tottenham Hotspur",
+     3,
+     0,
+     1,
+     2,
+     0,
+     5,
+     -5,
+     1
+    ],
+    [
+     19,
+     "Fulham",
+     3,
+     0,
+     0,
+     3,
+     4,
+     7,
+     -3,
+     0
+    ],
+    [
+     20,
+     "Coventry City",
+     3,
+     0,
+     0,
+     3,
+     0,
+     5,
+     -5,
+     0
+    ]
+   ],
+   "results": [
+    {
+     "mw": 1,
+     "matches": [
+      {
+       "d": "2026-08-21",
+       "h": "Arsenal",
+       "hs": 3,
+       "as": 0,
+       "a": "Coventry City"
+      },
+      {
+       "d": "2026-08-22",
+       "h": "Hull City",
+       "hs": 2,
+       "as": 0,
+       "a": "Manchester United"
+      },
+      {
+       "d": "2026-08-22",
+       "h": "Ipswich Town",
+       "hs": 2,
+       "as": 1,
+       "a": "Sunderland"
+      },
+      {
+       "d": "2026-08-22",
+       "h": "Nottingham Forest",
+       "hs": 0,
+       "as": 1,
+       "a": "Leeds United"
+      },
+      {
+       "d": "2026-08-22",
+       "h": "Everton",
+       "hs": 2,
+       "as": 0,
+       "a": "Crystal Palace"
+      },
+      {
+       "d": "2026-08-22",
+       "h": "Brentford",
+       "hs": 3,
+       "as": 0,
+       "a": "Tottenham Hotspur"
+      },
+      {
+       "d": "2026-08-23",
+       "h": "Manchester City",
+       "hs": 2,
+       "as": 1,
+       "a": "AFC Bournemouth"
+      },
+      {
+       "d": "2026-08-23",
+       "h": "Brighton & Hove Albion FC",
+       "hs": 4,
+       "as": 0,
+       "a": "Aston Villa"
+      },
+      {
+       "d": "2026-08-23",
+       "h": "Newcastle United",
+       "hs": 2,
+       "as": 2,
+       "a": "Liverpool"
+      },
+      {
+       "d": "2026-08-24",
+       "h": "Fulham",
+       "hs": 2,
+       "as": 3,
+       "a": "Chelsea"
+      }
+     ]
     },
-    "la-liga": {
-      "name": "La Liga",
-      "table_updated": "after Matchweek 4 \u00b7 verified Thursday 10 September 2026",
-      "scorers_updated": "after Matchweek 4 \u00b7 verified Thursday 10 September 2026",
-      "table": [
-        [1, "FC Barcelona", 4, 4, 0, 0, 17, 2, 15, 12],
-        [2, "CD Alav\u00e9s", 4, 3, 1, 0, 10, 3, 7, 10],
-        [3, "Real Madrid", 4, 3, 0, 1, 10, 3, 7, 9],
-        [4, "Real Betis", 4, 3, 0, 1, 5, 5, 0, 9],
-        [5, "Deportivo A Coru\u00f1a", 4, 2, 2, 0, 8, 5, 3, 8],
-        [6, "Atl\u00e9tico Madrid", 4, 2, 1, 1, 7, 6, 1, 7],
-        [7, "Sevilla FC", 4, 2, 1, 1, 7, 6, 1, 7],
-        [8, "CA Osasuna", 4, 2, 1, 1, 5, 6, -1, 7],
-        [9, "Real Sociedad", 5, 2, 1, 2, 6, 8, -2, 7],
-        [10, "Athletic Club", 4, 2, 0, 2, 6, 5, 1, 6],
-        [11, "Levante UD", 4, 1, 2, 1, 5, 5, 0, 5],
-        [12, "RCD Espanyol", 4, 1, 1, 2, 6, 5, 1, 4],
-        [13, "Racing Santander", 4, 1, 1, 2, 7, 8, -1, 4],
-        [14, "Rayo Vallecano", 4, 1, 1, 2, 7, 10, -3, 4],
-        [15, "Getafe CF", 4, 1, 1, 2, 2, 5, -3, 4],
-        [16, "Celta de Vigo", 5, 0, 3, 2, 2, 5, -3, 3],
-        [17, "Villarreal CF", 4, 0, 2, 2, 6, 8, -2, 2],
-        [18, "M\u00e1laga CF", 4, 0, 2, 2, 1, 7, -6, 2],
-        [19, "Elche CF", 4, 0, 1, 3, 5, 12, -7, 1],
-        [20, "Valencia CF", 4, 0, 1, 3, 1, 9, -8, 1]
-      ],
-      "scorers": [
-        {"p": "Raphinha", "c": "FC Barcelona", "g": 6},
-        {"p": "Sergio Camello", "c": "Rayo Vallecano", "g": 5},
-        {"p": "Pierre-Emerick Aubameyang", "c": "Deportivo A Coru\u00f1a", "g": 4},
-        {"p": "Lucas Boy\u00e9", "c": "CD Alav\u00e9s", "g": 4},
-        {"p": "Ante Budimir", "c": "CA Osasuna", "g": 4}
-      ]
+    {
+     "mw": 2,
+     "matches": [
+      {
+       "d": "2026-08-28",
+       "h": "Crystal Palace",
+       "hs": 1,
+       "as": 4,
+       "a": "Manchester City"
+      },
+      {
+       "d": "2026-08-29",
+       "h": "Liverpool",
+       "hs": 2,
+       "as": 2,
+       "a": "Nottingham Forest"
+      },
+      {
+       "d": "2026-08-29",
+       "h": "AFC Bournemouth",
+       "hs": 1,
+       "as": 1,
+       "a": "Everton"
+      },
+      {
+       "d": "2026-08-29",
+       "h": "Coventry City",
+       "hs": 0,
+       "as": 1,
+       "a": "Hull City"
+      },
+      {
+       "d": "2026-08-29",
+       "h": "Tottenham Hotspur",
+       "hs": 0,
+       "as": 2,
+       "a": "Newcastle United"
+      },
+      {
+       "d": "2026-08-30",
+       "h": "Sunderland",
+       "hs": 1,
+       "as": 0,
+       "a": "Fulham"
+      },
+      {
+       "d": "2026-08-30",
+       "h": "Chelsea",
+       "hs": 4,
+       "as": 3,
+       "a": "Brighton & Hove Albion FC"
+      },
+      {
+       "d": "2026-08-30",
+       "h": "Leeds United",
+       "hs": 1,
+       "as": 1,
+       "a": "Brentford"
+      },
+      {
+       "d": "2026-08-30",
+       "h": "Manchester United",
+       "hs": 5,
+       "as": 2,
+       "a": "Ipswich Town"
+      },
+      {
+       "d": "2026-08-31",
+       "h": "Aston Villa",
+       "hs": 0,
+       "as": 1,
+       "a": "Arsenal"
+      }
+     ]
     },
-    "bundesliga": {
-      "name": "Bundesliga",
-      "table_updated": "after Matchweek 2 \u00b7 verified Thursday 10 September 2026",
-      "table": [
-        [1, "FC Augsburg", 2, 2, 0, 0, 7, 1, 6, 6],
-        [2, "SC Freiburg", 2, 2, 0, 0, 5, 1, 4, 6],
-        [3, "Borussia Dortmund", 2, 2, 0, 0, 5, 2, 3, 6],
-        [4, "SV 07 Elversberg", 2, 2, 0, 0, 7, 5, 2, 6],
-        [5, "1. FSV Mainz 05", 2, 1, 1, 0, 5, 0, 5, 4],
-        [6, "Bayern Munich", 2, 1, 1, 0, 5, 1, 4, 4],
-        [7, "Bayer Leverkusen", 2, 1, 0, 1, 6, 3, 3, 3],
-        [8, "RB Leipzig", 2, 1, 0, 1, 4, 3, 1, 3],
-        [9, "VfB Stuttgart", 2, 1, 0, 1, 5, 6, -1, 3],
-        [10, "Werder Bremen", 2, 1, 0, 1, 4, 5, -1, 3],
-        [11, "1. FC K\u00f6ln", 2, 1, 0, 1, 4, 6, -2, 3],
-        [12, "SC Paderborn 07", 2, 0, 1, 1, 0, 1, -1, 1],
-        [13, "Eintracht Frankfurt", 2, 0, 1, 1, 4, 7, -3, 1],
-        [14, "FC Schalke 04", 2, 0, 1, 1, 0, 3, -3, 1],
-        [15, "1. FC Union Berlin", 2, 0, 1, 1, 3, 7, -4, 1],
-        [16, "TSG Hoffenheim", 2, 0, 0, 2, 4, 6, -2, 0],
-        [17, "Bor. M\u00f6nchengladbach", 2, 0, 0, 2, 3, 7, -4, 0],
-        [18, "Hamburger SV", 2, 0, 0, 2, 0, 7, -7, 0]
-      ]
+    {
+     "mw": 3,
+     "matches": [
+      {
+       "d": "2026-09-04",
+       "h": "Ipswich Town",
+       "hs": 0,
+       "as": 2,
+       "a": "Liverpool"
+      },
+      {
+       "d": "2026-09-05",
+       "h": "Newcastle United",
+       "hs": 2,
+       "as": 2,
+       "a": "AFC Bournemouth"
+      },
+      {
+       "d": "2026-09-05",
+       "h": "Nottingham Forest",
+       "hs": 0,
+       "as": 0,
+       "a": "Tottenham Hotspur"
+      },
+      {
+       "d": "2026-09-05",
+       "h": "Manchester City",
+       "hs": 1,
+       "as": 0,
+       "a": "Coventry City"
+      },
+      {
+       "d": "2026-09-05",
+       "h": "Brighton & Hove Albion FC",
+       "hs": 1,
+       "as": 1,
+       "a": "Leeds United"
+      },
+      {
+       "d": "2026-09-05",
+       "h": "Brentford",
+       "hs": 1,
+       "as": 1,
+       "a": "Sunderland"
+      },
+      {
+       "d": "2026-09-05",
+       "h": "Fulham",
+       "hs": 2,
+       "as": 3,
+       "a": "Crystal Palace"
+      },
+      {
+       "d": "2026-09-05",
+       "h": "Hull City",
+       "hs": 0,
+       "as": 0,
+       "a": "Aston Villa"
+      },
+      {
+       "d": "2026-09-06",
+       "h": "Everton",
+       "hs": 2,
+       "as": 2,
+       "a": "Manchester United"
+      },
+      {
+       "d": "2026-09-06",
+       "h": "Arsenal",
+       "hs": 2,
+       "as": 1,
+       "a": "Chelsea"
+      }
+     ]
+    }
+   ],
+   "scorers": [
+    {
+     "p": "Erling Haaland",
+     "c": "Manchester City",
+     "g": 3
     },
-    "serie-a": {"pending": true, "note": "Table opens with the first agent-verified update. Partial standings exist (Roma, Inter and Lazio all won their opening three) but the desk publishes whole tables, not fragments."},
-    "ligue-1": {"pending": true, "note": "Table opens with the first agent-verified update. Matchweek 3 finished 6-8 September; the desk is verifying the full round before publishing."}
+    {
+     "p": "Alexander Isak",
+     "c": "Liverpool",
+     "g": 3
+    },
+    {
+     "p": "Bruno Fernandes",
+     "c": "Manchester United",
+     "g": 3
+    },
+    {
+     "p": "Kai Havertz",
+     "c": "Arsenal",
+     "g": 2
+    },
+    {
+     "p": "Bukayo Saka",
+     "c": "Arsenal",
+     "g": 2
+    },
+    {
+     "p": "Martin Ødegaard",
+     "c": "Arsenal",
+     "g": 2
+    },
+    {
+     "p": "Vitaly Janelt",
+     "c": "Brentford",
+     "g": 2
+    },
+    {
+     "p": "Marcus Tavernier",
+     "c": "AFC Bournemouth",
+     "g": 2
+    },
+    {
+     "p": "Jack Hinshelwood",
+     "c": "Brighton & Hove Albion FC",
+     "g": 2
+    },
+    {
+     "p": "Anthony Elanga",
+     "c": "Newcastle United",
+     "g": 2
+    }
+   ]
+  },
+  "la-liga": {
+   "name": "La Liga",
+   "table_updated": "fetched Thursday 10 September 2026, 21:52 UTC",
+   "scorers_updated": "fetched Thursday 10 September 2026, 21:53 UTC",
+   "table": [
+    [
+     1,
+     "FC Barcelona",
+     4,
+     4,
+     0,
+     0,
+     17,
+     2,
+     15,
+     12
+    ],
+    [
+     2,
+     "Deportivo Alavés",
+     4,
+     3,
+     1,
+     0,
+     10,
+     3,
+     7,
+     10
+    ],
+    [
+     3,
+     "Real Madrid CF",
+     4,
+     3,
+     0,
+     1,
+     10,
+     3,
+     7,
+     9
+    ],
+    [
+     4,
+     "Real Betis Balompié",
+     4,
+     3,
+     0,
+     1,
+     5,
+     5,
+     0,
+     9
+    ],
+    [
+     5,
+     "RC Deportivo La Coruña",
+     4,
+     2,
+     2,
+     0,
+     8,
+     5,
+     3,
+     8
+    ],
+    [
+     6,
+     "Club Atlético de Madrid",
+     4,
+     2,
+     1,
+     1,
+     7,
+     6,
+     1,
+     7
+    ],
+    [
+     6,
+     "Sevilla FC",
+     4,
+     2,
+     1,
+     1,
+     7,
+     6,
+     1,
+     7
+    ],
+    [
+     8,
+     "CA Osasuna",
+     4,
+     2,
+     1,
+     1,
+     5,
+     6,
+     -1,
+     7
+    ],
+    [
+     9,
+     "Real Sociedad de Fútbol",
+     5,
+     2,
+     1,
+     2,
+     6,
+     8,
+     -2,
+     7
+    ],
+    [
+     10,
+     "Athletic Club",
+     4,
+     2,
+     0,
+     2,
+     6,
+     5,
+     1,
+     6
+    ],
+    [
+     11,
+     "Levante UD",
+     4,
+     1,
+     2,
+     1,
+     5,
+     5,
+     0,
+     5
+    ],
+    [
+     12,
+     "RCD Espanyol de Barcelona",
+     4,
+     1,
+     1,
+     2,
+     6,
+     5,
+     1,
+     4
+    ],
+    [
+     13,
+     "Real Racing Club de Santander",
+     4,
+     1,
+     1,
+     2,
+     7,
+     8,
+     -1,
+     4
+    ],
+    [
+     14,
+     "Rayo Vallecano de Madrid",
+     4,
+     1,
+     1,
+     2,
+     7,
+     10,
+     -3,
+     4
+    ],
+    [
+     15,
+     "Getafe CF",
+     4,
+     1,
+     1,
+     2,
+     2,
+     5,
+     -3,
+     4
+    ],
+    [
+     16,
+     "RC Celta de Vigo",
+     5,
+     0,
+     3,
+     2,
+     2,
+     5,
+     -3,
+     3
+    ],
+    [
+     17,
+     "Villarreal CF",
+     4,
+     0,
+     2,
+     2,
+     6,
+     8,
+     -2,
+     2
+    ],
+    [
+     18,
+     "Málaga CF",
+     4,
+     0,
+     2,
+     2,
+     1,
+     7,
+     -6,
+     2
+    ],
+    [
+     19,
+     "Elche CF",
+     4,
+     0,
+     1,
+     3,
+     5,
+     12,
+     -7,
+     1
+    ],
+    [
+     20,
+     "Valencia CF",
+     4,
+     0,
+     1,
+     3,
+     1,
+     9,
+     -8,
+     1
+    ]
+   ],
+   "scorers": [
+    {
+     "p": "Raphinha",
+     "c": "FC Barcelona",
+     "g": 6
+    },
+    {
+     "p": "Sergio Camello",
+     "c": "Rayo Vallecano de Madrid",
+     "g": 5
+    },
+    {
+     "p": "Pierre-Emerick Aubameyang",
+     "c": "RC Deportivo La Coruña",
+     "g": 4
+    },
+    {
+     "p": "Fermín López",
+     "c": "FC Barcelona",
+     "g": 4
+    },
+    {
+     "p": "Kylian Mbappé",
+     "c": "Real Madrid CF",
+     "g": 4
+    },
+    {
+     "p": "Ante Budimir",
+     "c": "CA Osasuna",
+     "g": 4
+    },
+    {
+     "p": "Lucas Boyé",
+     "c": "Deportivo Alavés",
+     "g": 4
+    },
+    {
+     "p": "Lamine Yamal",
+     "c": "FC Barcelona",
+     "g": 4
+    },
+    {
+     "p": "Mariano Díaz",
+     "c": "Deportivo Alavés",
+     "g": 3
+    },
+    {
+     "p": "Roberto Fernández",
+     "c": "RCD Espanyol de Barcelona",
+     "g": 3
+    }
+   ],
+   "results": [
+    {
+     "mw": 3,
+     "matches": [
+      {
+       "d": "2026-08-28",
+       "h": "Real Racing Club de Santander",
+       "hs": 3,
+       "as": 2,
+       "a": "Elche CF"
+      },
+      {
+       "d": "2026-08-28",
+       "h": "Deportivo Alavés",
+       "hs": 1,
+       "as": 0,
+       "a": "Villarreal CF"
+      },
+      {
+       "d": "2026-08-29",
+       "h": "Levante UD",
+       "hs": 5,
+       "as": 2,
+       "a": "Real Betis Balompié"
+      },
+      {
+       "d": "2026-08-29",
+       "h": "Real Sociedad de Fútbol",
+       "hs": 2,
+       "as": 1,
+       "a": "RCD Espanyol de Barcelona"
+      },
+      {
+       "d": "2026-08-29",
+       "h": "Sevilla FC",
+       "hs": 1,
+       "as": 3,
+       "a": "Club Atlético de Madrid"
+      },
+      {
+       "d": "2026-08-30",
+       "h": "Real Madrid CF",
+       "hs": 4,
+       "as": 0,
+       "a": "Málaga CF"
+      },
+      {
+       "d": "2026-08-30",
+       "h": "RC Deportivo La Coruña",
+       "hs": 3,
+       "as": 1,
+       "a": "Valencia CF"
+      },
+      {
+       "d": "2026-08-30",
+       "h": "RC Celta de Vigo",
+       "hs": 0,
+       "as": 2,
+       "a": "Athletic Club"
+      },
+      {
+       "d": "2026-08-31",
+       "h": "CA Osasuna",
+       "hs": 1,
+       "as": 0,
+       "a": "Getafe CF"
+      },
+      {
+       "d": "2026-08-31",
+       "h": "FC Barcelona",
+       "hs": 5,
+       "as": 2,
+       "a": "Rayo Vallecano de Madrid"
+      }
+     ]
+    },
+    {
+     "mw": 4,
+     "matches": [
+      {
+       "d": "2026-09-04",
+       "h": "Real Betis Balompié",
+       "hs": 1,
+       "as": 0,
+       "a": "Real Madrid CF"
+      },
+      {
+       "d": "2026-09-05",
+       "h": "Athletic Club",
+       "hs": 3,
+       "as": 0,
+       "a": "Club Atlético de Madrid"
+      },
+      {
+       "d": "2026-09-05",
+       "h": "Rayo Vallecano de Madrid",
+       "hs": 3,
+       "as": 2,
+       "a": "Real Racing Club de Santander"
+      },
+      {
+       "d": "2026-09-05",
+       "h": "Villarreal CF",
+       "hs": 2,
+       "as": 3,
+       "a": "RC Deportivo La Coruña"
+      },
+      {
+       "d": "2026-09-06",
+       "h": "Valencia CF",
+       "hs": 0,
+       "as": 5,
+       "a": "FC Barcelona"
+      },
+      {
+       "d": "2026-09-06",
+       "h": "Deportivo Alavés",
+       "hs": 5,
+       "as": 2,
+       "a": "CA Osasuna"
+      },
+      {
+       "d": "2026-09-06",
+       "h": "Málaga CF",
+       "hs": 0,
+       "as": 0,
+       "a": "Levante UD"
+      },
+      {
+       "d": "2026-09-06",
+       "h": "RCD Espanyol de Barcelona",
+       "hs": 1,
+       "as": 1,
+       "a": "Sevilla FC"
+      },
+      {
+       "d": "2026-09-07",
+       "h": "Getafe CF",
+       "hs": 1,
+       "as": 1,
+       "a": "RC Celta de Vigo"
+      },
+      {
+       "d": "2026-09-07",
+       "h": "Elche CF",
+       "hs": 2,
+       "as": 3,
+       "a": "Real Sociedad de Fútbol"
+      }
+     ]
+    },
+    {
+     "mw": 6,
+     "matches": [
+      {
+       "d": "2026-09-03",
+       "h": "Real Sociedad de Fútbol",
+       "hs": 0,
+       "as": 0,
+       "a": "RC Celta de Vigo"
+      }
+     ]
+    }
+   ],
+   "results_updated": "fetched Thursday 10 September 2026, 21:53 UTC"
+  },
+  "bundesliga": {
+   "name": "Bundesliga",
+   "table_updated": "fetched Thursday 10 September 2026, 21:53 UTC",
+   "table": [
+    [
+     1,
+     "FC Augsburg",
+     2,
+     2,
+     0,
+     0,
+     7,
+     1,
+     6,
+     6
+    ],
+    [
+     2,
+     "SC Freiburg",
+     2,
+     2,
+     0,
+     0,
+     5,
+     1,
+     4,
+     6
+    ],
+    [
+     3,
+     "Borussia Dortmund",
+     2,
+     2,
+     0,
+     0,
+     5,
+     2,
+     3,
+     6
+    ],
+    [
+     4,
+     "SV 07 Elversberg",
+     2,
+     2,
+     0,
+     0,
+     7,
+     5,
+     2,
+     6
+    ],
+    [
+     5,
+     "1. FSV Mainz 05",
+     2,
+     1,
+     1,
+     0,
+     5,
+     0,
+     5,
+     4
+    ],
+    [
+     6,
+     "FC Bayern München",
+     2,
+     1,
+     1,
+     0,
+     5,
+     1,
+     4,
+     4
+    ],
+    [
+     7,
+     "Bayer 04 Leverkusen",
+     2,
+     1,
+     0,
+     1,
+     6,
+     3,
+     3,
+     3
+    ],
+    [
+     8,
+     "RB Leipzig",
+     2,
+     1,
+     0,
+     1,
+     4,
+     3,
+     1,
+     3
+    ],
+    [
+     9,
+     "VfB Stuttgart",
+     2,
+     1,
+     0,
+     1,
+     5,
+     6,
+     -1,
+     3
+    ],
+    [
+     10,
+     "SV Werder Bremen",
+     2,
+     1,
+     0,
+     1,
+     4,
+     5,
+     -1,
+     3
+    ],
+    [
+     11,
+     "1. FC Köln",
+     2,
+     1,
+     0,
+     1,
+     4,
+     6,
+     -2,
+     3
+    ],
+    [
+     12,
+     "SC Paderborn 07",
+     2,
+     0,
+     1,
+     1,
+     0,
+     1,
+     -1,
+     1
+    ],
+    [
+     13,
+     "Eintracht Frankfurt",
+     2,
+     0,
+     1,
+     1,
+     4,
+     7,
+     -3,
+     1
+    ],
+    [
+     14,
+     "FC Schalke 04",
+     2,
+     0,
+     1,
+     1,
+     0,
+     3,
+     -3,
+     1
+    ],
+    [
+     15,
+     "1. FC Union Berlin",
+     2,
+     0,
+     1,
+     1,
+     3,
+     7,
+     -4,
+     1
+    ],
+    [
+     16,
+     "TSG 1899 Hoffenheim",
+     2,
+     0,
+     0,
+     2,
+     4,
+     6,
+     -2,
+     0
+    ],
+    [
+     17,
+     "Borussia Mönchengladbach",
+     2,
+     0,
+     0,
+     2,
+     3,
+     7,
+     -4,
+     0
+    ],
+    [
+     18,
+     "Hamburger SV",
+     2,
+     0,
+     0,
+     2,
+     0,
+     7,
+     -7,
+     0
+    ]
+   ],
+   "results": [
+    {
+     "mw": 1,
+     "matches": [
+      {
+       "d": "2026-08-28",
+       "h": "FC Bayern München",
+       "hs": 5,
+       "as": 1,
+       "a": "VfB Stuttgart"
+      },
+      {
+       "d": "2026-08-29",
+       "h": "RB Leipzig",
+       "hs": 3,
+       "as": 0,
+       "a": "Borussia Mönchengladbach"
+      },
+      {
+       "d": "2026-08-29",
+       "h": "1. FSV Mainz 05",
+       "hs": 0,
+       "as": 0,
+       "a": "SC Paderborn 07"
+      },
+      {
+       "d": "2026-08-29",
+       "h": "1. FC Union Berlin",
+       "hs": 3,
+       "as": 3,
+       "a": "Eintracht Frankfurt"
+      },
+      {
+       "d": "2026-08-29",
+       "h": "SV 07 Elversberg",
+       "hs": 3,
+       "as": 2,
+       "a": "Bayer 04 Leverkusen"
+      },
+      {
+       "d": "2026-08-29",
+       "h": "1. FC Köln",
+       "hs": 3,
+       "as": 2,
+       "a": "TSG 1899 Hoffenheim"
+      },
+      {
+       "d": "2026-08-29",
+       "h": "Borussia Dortmund",
+       "hs": 2,
+       "as": 0,
+       "a": "Hamburger SV"
+      },
+      {
+       "d": "2026-08-30",
+       "h": "SC Freiburg",
+       "hs": 4,
+       "as": 1,
+       "a": "SV Werder Bremen"
+      },
+      {
+       "d": "2026-08-30",
+       "h": "FC Augsburg",
+       "hs": 3,
+       "as": 0,
+       "a": "FC Schalke 04"
+      }
+     ]
+    },
+    {
+     "mw": 2,
+     "matches": [
+      {
+       "d": "2026-09-04",
+       "h": "VfB Stuttgart",
+       "hs": 4,
+       "as": 1,
+       "a": "1. FC Köln"
+      },
+      {
+       "d": "2026-09-05",
+       "h": "SV Werder Bremen",
+       "hs": 3,
+       "as": 1,
+       "a": "RB Leipzig"
+      },
+      {
+       "d": "2026-09-05",
+       "h": "TSG 1899 Hoffenheim",
+       "hs": 2,
+       "as": 3,
+       "a": "Borussia Dortmund"
+      },
+      {
+       "d": "2026-09-05",
+       "h": "Bayer 04 Leverkusen",
+       "hs": 4,
+       "as": 0,
+       "a": "1. FC Union Berlin"
+      },
+      {
+       "d": "2026-09-05",
+       "h": "Borussia Mönchengladbach",
+       "hs": 3,
+       "as": 4,
+       "a": "SV 07 Elversberg"
+      },
+      {
+       "d": "2026-09-05",
+       "h": "SC Paderborn 07",
+       "hs": 0,
+       "as": 1,
+       "a": "SC Freiburg"
+      },
+      {
+       "d": "2026-09-05",
+       "h": "FC Schalke 04",
+       "hs": 0,
+       "as": 0,
+       "a": "FC Bayern München"
+      },
+      {
+       "d": "2026-09-06",
+       "h": "Hamburger SV",
+       "hs": 0,
+       "as": 5,
+       "a": "1. FSV Mainz 05"
+      },
+      {
+       "d": "2026-09-06",
+       "h": "Eintracht Frankfurt",
+       "hs": 1,
+       "as": 4,
+       "a": "FC Augsburg"
+      }
+     ]
+    }
+   ],
+   "results_updated": "fetched Thursday 10 September 2026, 21:53 UTC",
+   "scorers": [
+    {
+     "p": "Younes Ebnoutalib",
+     "c": "Eintracht Frankfurt",
+     "g": 3
+    },
+    {
+     "p": "Yuito Suzuki",
+     "c": "SC Freiburg",
+     "g": 3
+    },
+    {
+     "p": "Josha Vagnoman",
+     "c": "VfB Stuttgart",
+     "g": 2
+    },
+    {
+     "p": "Ridle Baku",
+     "c": "RB Leipzig",
+     "g": 2
+    },
+    {
+     "p": "David Mokwa Ntusu",
+     "c": "SV 07 Elversberg",
+     "g": 2
+    },
+    {
+     "p": "Patrik Schick",
+     "c": "Bayer 04 Leverkusen",
+     "g": 2
+    },
+    {
+     "p": "Thijs Dallinga",
+     "c": "1. FC Köln",
+     "g": 2
+    },
+    {
+     "p": "Sehrou Guirassy",
+     "c": "Borussia Dortmund",
+     "g": 2
+    },
+    {
+     "p": "Hugo Bolin",
+     "c": "Borussia Mönchengladbach",
+     "g": 2
+    },
+    {
+     "p": "Maurice Krattenmacher",
+     "c": "SV 07 Elversberg",
+     "g": 2
+    }
+   ],
+   "scorers_updated": "fetched Thursday 10 September 2026, 21:53 UTC"
+  },
+  "serie-a": {
+   "table": [
+    [
+     1,
+     "AS Roma",
+     3,
+     3,
+     0,
+     0,
+     10,
+     1,
+     9,
+     9
+    ],
+    [
+     2,
+     "FC Internazionale Milano",
+     3,
+     3,
+     0,
+     0,
+     8,
+     3,
+     5,
+     9
+    ],
+    [
+     3,
+     "SS Lazio",
+     3,
+     3,
+     0,
+     0,
+     4,
+     1,
+     3,
+     9
+    ],
+    [
+     4,
+     "Como 1907",
+     3,
+     2,
+     1,
+     0,
+     7,
+     3,
+     4,
+     7
+    ],
+    [
+     5,
+     "AC Milan",
+     3,
+     2,
+     1,
+     0,
+     5,
+     2,
+     3,
+     7
+    ],
+    [
+     6,
+     "Juventus FC",
+     3,
+     2,
+     1,
+     0,
+     4,
+     1,
+     3,
+     7
+    ],
+    [
+     7,
+     "Frosinone Calcio",
+     3,
+     2,
+     0,
+     1,
+     6,
+     3,
+     3,
+     6
+    ],
+    [
+     8,
+     "Atalanta BC",
+     3,
+     2,
+     0,
+     1,
+     4,
+     3,
+     1,
+     6
+    ],
+    [
+     9,
+     "Cagliari Calcio",
+     3,
+     2,
+     0,
+     1,
+     2,
+     1,
+     1,
+     6
+    ],
+    [
+     10,
+     "Udinese Calcio",
+     3,
+     1,
+     1,
+     1,
+     5,
+     5,
+     0,
+     4
+    ],
+    [
+     10,
+     "US Sassuolo Calcio",
+     3,
+     1,
+     1,
+     1,
+     5,
+     5,
+     0,
+     4
+    ],
+    [
+     12,
+     "SSC Napoli",
+     3,
+     1,
+     0,
+     2,
+     5,
+     5,
+     0,
+     3
+    ],
+    [
+     13,
+     "Torino FC",
+     3,
+     1,
+     0,
+     2,
+     4,
+     5,
+     -1,
+     3
+    ],
+    [
+     14,
+     "US Lecce",
+     3,
+     1,
+     0,
+     2,
+     2,
+     5,
+     -3,
+     3
+    ],
+    [
+     15,
+     "Bologna FC 1909",
+     3,
+     0,
+     1,
+     2,
+     2,
+     4,
+     -2,
+     1
+    ],
+    [
+     16,
+     "Parma Calcio 1913",
+     3,
+     0,
+     1,
+     2,
+     1,
+     4,
+     -3,
+     1
+    ],
+    [
+     17,
+     "AC Monza",
+     3,
+     0,
+     1,
+     2,
+     4,
+     8,
+     -4,
+     1
+    ],
+    [
+     18,
+     "Venezia FC",
+     3,
+     0,
+     0,
+     3,
+     2,
+     7,
+     -5,
+     0
+    ],
+    [
+     19,
+     "Genoa CFC",
+     3,
+     0,
+     0,
+     3,
+     1,
+     7,
+     -6,
+     0
+    ],
+    [
+     20,
+     "ACF Fiorentina",
+     3,
+     0,
+     0,
+     3,
+     1,
+     9,
+     -8,
+     0
+    ]
+   ],
+   "table_updated": "fetched Thursday 10 September 2026, 21:53 UTC",
+   "results": [
+    {
+     "mw": 1,
+     "matches": [
+      {
+       "d": "2026-08-22",
+       "h": "Udinese Calcio",
+       "hs": 1,
+       "as": 1,
+       "a": "Como 1907"
+      },
+      {
+       "d": "2026-08-22",
+       "h": "FC Internazionale Milano",
+       "hs": 4,
+       "as": 1,
+       "a": "AC Monza"
+      },
+      {
+       "d": "2026-08-22",
+       "h": "Genoa CFC",
+       "hs": 0,
+       "as": 2,
+       "a": "SSC Napoli"
+      },
+      {
+       "d": "2026-08-22",
+       "h": "Parma Calcio 1913",
+       "hs": 0,
+       "as": 1,
+       "a": "Cagliari Calcio"
+      },
+      {
+       "d": "2026-08-23",
+       "h": "Frosinone Calcio",
+       "hs": 0,
+       "as": 1,
+       "a": "Juventus FC"
+      },
+      {
+       "d": "2026-08-23",
+       "h": "Venezia FC",
+       "hs": 0,
+       "as": 2,
+       "a": "US Lecce"
+      },
+      {
+       "d": "2026-08-23",
+       "h": "Atalanta BC",
+       "hs": 2,
+       "as": 1,
+       "a": "US Sassuolo Calcio"
+      },
+      {
+       "d": "2026-08-23",
+       "h": "Torino FC",
+       "hs": 1,
+       "as": 2,
+       "a": "AC Milan"
+      },
+      {
+       "d": "2026-08-24",
+       "h": "Bologna FC 1909",
+       "hs": 0,
+       "as": 1,
+       "a": "SS Lazio"
+      },
+      {
+       "d": "2026-08-24",
+       "h": "AS Roma",
+       "hs": 4,
+       "as": 0,
+       "a": "ACF Fiorentina"
+      }
+     ]
+    },
+    {
+     "mw": 2,
+     "matches": [
+      {
+       "d": "2026-08-28",
+       "h": "AC Milan",
+       "hs": 2,
+       "as": 0,
+       "a": "Venezia FC"
+      },
+      {
+       "d": "2026-08-29",
+       "h": "US Sassuolo Calcio",
+       "hs": 2,
+       "as": 1,
+       "a": "Torino FC"
+      },
+      {
+       "d": "2026-08-29",
+       "h": "AC Monza",
+       "hs": 2,
+       "as": 3,
+       "a": "Udinese Calcio"
+      },
+      {
+       "d": "2026-08-29",
+       "h": "ACF Fiorentina",
+       "hs": 0,
+       "as": 3,
+       "a": "Frosinone Calcio"
+      },
+      {
+       "d": "2026-08-29",
+       "h": "Juventus FC",
+       "hs": 2,
+       "as": 0,
+       "a": "Parma Calcio 1913"
+      },
+      {
+       "d": "2026-08-30",
+       "h": "SSC Napoli",
+       "hs": 1,
+       "as": 2,
+       "a": "Como 1907"
+      },
+      {
+       "d": "2026-08-30",
+       "h": "SS Lazio",
+       "hs": 1,
+       "as": 0,
+       "a": "Genoa CFC"
+      },
+      {
+       "d": "2026-08-30",
+       "h": "Cagliari Calcio",
+       "hs": 0,
+       "as": 1,
+       "a": "FC Internazionale Milano"
+      },
+      {
+       "d": "2026-08-31",
+       "h": "US Lecce",
+       "hs": 0,
+       "as": 4,
+       "a": "AS Roma"
+      },
+      {
+       "d": "2026-08-31",
+       "h": "Atalanta BC",
+       "hs": 1,
+       "as": 0,
+       "a": "Bologna FC 1909"
+      }
+     ]
+    },
+    {
+     "mw": 3,
+     "matches": [
+      {
+       "d": "2026-09-04",
+       "h": "Genoa CFC",
+       "hs": 1,
+       "as": 4,
+       "a": "Como 1907"
+      },
+      {
+       "d": "2026-09-05",
+       "h": "ACF Fiorentina",
+       "hs": 1,
+       "as": 2,
+       "a": "Torino FC"
+      },
+      {
+       "d": "2026-09-05",
+       "h": "FC Internazionale Milano",
+       "hs": 3,
+       "as": 2,
+       "a": "SSC Napoli"
+      },
+      {
+       "d": "2026-09-05",
+       "h": "AS Roma",
+       "hs": 2,
+       "as": 1,
+       "a": "Atalanta BC"
+      },
+      {
+       "d": "2026-09-06",
+       "h": "Parma Calcio 1913",
+       "hs": 1,
+       "as": 1,
+       "a": "AC Monza"
+      },
+      {
+       "d": "2026-09-06",
+       "h": "Frosinone Calcio",
+       "hs": 3,
+       "as": 2,
+       "a": "Venezia FC"
+      },
+      {
+       "d": "2026-09-06",
+       "h": "Bologna FC 1909",
+       "hs": 2,
+       "as": 2,
+       "a": "US Sassuolo Calcio"
+      },
+      {
+       "d": "2026-09-06",
+       "h": "Juventus FC",
+       "hs": 1,
+       "as": 1,
+       "a": "AC Milan"
+      },
+      {
+       "d": "2026-09-07",
+       "h": "Cagliari Calcio",
+       "hs": 1,
+       "as": 0,
+       "a": "US Lecce"
+      },
+      {
+       "d": "2026-09-07",
+       "h": "Udinese Calcio",
+       "hs": 1,
+       "as": 2,
+       "a": "SS Lazio"
+      }
+     ]
+    }
+   ],
+   "results_updated": "fetched Thursday 10 September 2026, 21:53 UTC",
+   "scorers": [
+    {
+     "p": "Donyell Malen",
+     "c": "AS Roma",
+     "g": 5
+    },
+    {
+     "p": "Antonio Raimondo",
+     "c": "Frosinone Calcio",
+     "g": 4
+    },
+    {
+     "p": "Davide Frattesi",
+     "c": "SS Lazio",
+     "g": 3
+    },
+    {
+     "p": "Hassane Kamara",
+     "c": "Udinese Calcio",
+     "g": 2
+    },
+    {
+     "p": "Anastasios Douvikas",
+     "c": "Como 1907",
+     "g": 2
+    },
+    {
+     "p": "Hakan Çalhanoğlu",
+     "c": "FC Internazionale Milano",
+     "g": 2
+    },
+    {
+     "p": "Gustavo Varela",
+     "c": "AC Monza",
+     "g": 2
+    },
+    {
+     "p": "Alphadjo Cisse",
+     "c": "AC Milan",
+     "g": 2
+    },
+    {
+     "p": "Che Adams",
+     "c": "Torino FC",
+     "g": 2
+    },
+    {
+     "p": "Martin Baturina",
+     "c": "Como 1907",
+     "g": 2
+    }
+   ],
+   "scorers_updated": "fetched Thursday 10 September 2026, 21:53 UTC"
+  },
+  "ligue-1": {
+   "table": [
+    [
+     1,
+     "AS Monaco FC",
+     3,
+     3,
+     0,
+     0,
+     5,
+     1,
+     4,
+     9
+    ],
+    [
+     2,
+     "Olympique Lyonnais",
+     3,
+     2,
+     1,
+     0,
+     6,
+     2,
+     4,
+     7
+    ],
+    [
+     2,
+     "Paris FC",
+     3,
+     2,
+     1,
+     0,
+     6,
+     2,
+     4,
+     7
+    ],
+    [
+     4,
+     "Lille OSC",
+     3,
+     2,
+     1,
+     0,
+     5,
+     2,
+     3,
+     7
+    ],
+    [
+     5,
+     "Stade Rennais FC 1901",
+     3,
+     2,
+     1,
+     0,
+     7,
+     5,
+     2,
+     7
+    ],
+    [
+     6,
+     "RC Strasbourg Alsace",
+     3,
+     2,
+     0,
+     1,
+     8,
+     7,
+     1,
+     6
+    ],
+    [
+     7,
+     "Stade Brestois 29",
+     3,
+     1,
+     2,
+     0,
+     6,
+     5,
+     1,
+     5
+    ],
+    [
+     8,
+     "FC Lorient",
+     3,
+     1,
+     1,
+     1,
+     2,
+     2,
+     0,
+     4
+    ],
+    [
+     9,
+     "ES Troyes AC",
+     3,
+     1,
+     1,
+     1,
+     4,
+     7,
+     -3,
+     4
+    ],
+    [
+     10,
+     "Olympique de Marseille",
+     3,
+     1,
+     0,
+     2,
+     6,
+     5,
+     1,
+     3
+    ],
+    [
+     10,
+     "Racing Club de Lens",
+     3,
+     1,
+     0,
+     2,
+     6,
+     5,
+     1,
+     3
+    ],
+    [
+     12,
+     "Angers SCO",
+     3,
+     1,
+     0,
+     2,
+     4,
+     5,
+     -1,
+     3
+    ],
+    [
+     13,
+     "Le Mans FC",
+     3,
+     0,
+     2,
+     1,
+     5,
+     6,
+     -1,
+     2
+    ],
+    [
+     13,
+     "Paris Saint-Germain FC",
+     3,
+     0,
+     2,
+     1,
+     5,
+     6,
+     -1,
+     2
+    ],
+    [
+     15,
+     "OGC Nice",
+     3,
+     0,
+     2,
+     1,
+     1,
+     4,
+     -3,
+     2
+    ],
+    [
+     16,
+     "Le Havre AC",
+     3,
+     0,
+     1,
+     2,
+     2,
+     4,
+     -2,
+     1
+    ],
+    [
+     17,
+     "Toulouse FC",
+     3,
+     0,
+     1,
+     2,
+     2,
+     5,
+     -3,
+     1
+    ],
+    [
+     18,
+     "AJ Auxerre",
+     3,
+     0,
+     0,
+     3,
+     4,
+     11,
+     -7,
+     0
+    ]
+   ],
+   "table_updated": "fetched Thursday 10 September 2026, 21:53 UTC",
+   "results": [
+    {
+     "mw": 1,
+     "matches": [
+      {
+       "d": "2026-08-21",
+       "h": "Olympique de Marseille",
+       "hs": 4,
+       "as": 0,
+       "a": "RC Strasbourg Alsace"
+      },
+      {
+       "d": "2026-08-22",
+       "h": "Racing Club de Lens",
+       "hs": 5,
+       "as": 2,
+       "a": "AJ Auxerre"
+      },
+      {
+       "d": "2026-08-22",
+       "h": "Le Mans FC",
+       "hs": 2,
+       "as": 2,
+       "a": "Stade Brestois 29"
+      },
+      {
+       "d": "2026-08-22",
+       "h": "ES Troyes AC",
+       "hs": 0,
+       "as": 0,
+       "a": "Paris FC"
+      },
+      {
+       "d": "2026-08-22",
+       "h": "OGC Nice",
+       "hs": 0,
+       "as": 0,
+       "a": "FC Lorient"
+      },
+      {
+       "d": "2026-08-22",
+       "h": "Toulouse FC",
+       "hs": 0,
+       "as": 2,
+       "a": "Olympique Lyonnais"
+      },
+      {
+       "d": "2026-08-23",
+       "h": "Angers SCO",
+       "hs": 0,
+       "as": 2,
+       "a": "Lille OSC"
+      },
+      {
+       "d": "2026-08-23",
+       "h": "Le Havre AC",
+       "hs": 0,
+       "as": 1,
+       "a": "AS Monaco FC"
+      },
+      {
+       "d": "2026-08-23",
+       "h": "Stade Rennais FC 1901",
+       "hs": 2,
+       "as": 2,
+       "a": "Paris Saint-Germain FC"
+      }
+     ]
+    },
+    {
+     "mw": 2,
+     "matches": [
+      {
+       "d": "2026-08-28",
+       "h": "Lille OSC",
+       "hs": 2,
+       "as": 2,
+       "a": "Paris Saint-Germain FC"
+      },
+      {
+       "d": "2026-08-29",
+       "h": "RC Strasbourg Alsace",
+       "hs": 2,
+       "as": 1,
+       "a": "Racing Club de Lens"
+      },
+      {
+       "d": "2026-08-29",
+       "h": "FC Lorient",
+       "hs": 1,
+       "as": 2,
+       "a": "ES Troyes AC"
+      },
+      {
+       "d": "2026-08-29",
+       "h": "Olympique Lyonnais",
+       "hs": 1,
+       "as": 1,
+       "a": "Le Havre AC"
+      },
+      {
+       "d": "2026-08-29",
+       "h": "AJ Auxerre",
+       "hs": 1,
+       "as": 3,
+       "a": "Angers SCO"
+      },
+      {
+       "d": "2026-08-29",
+       "h": "Stade Brestois 29",
+       "hs": 2,
+       "as": 2,
+       "a": "Toulouse FC"
+      },
+      {
+       "d": "2026-08-30",
+       "h": "Paris FC",
+       "hs": 3,
+       "as": 0,
+       "a": "OGC Nice"
+      },
+      {
+       "d": "2026-08-30",
+       "h": "Stade Rennais FC 1901",
+       "hs": 3,
+       "as": 2,
+       "a": "Le Mans FC"
+      },
+      {
+       "d": "2026-08-30",
+       "h": "AS Monaco FC",
+       "hs": 2,
+       "as": 0,
+       "a": "Olympique de Marseille"
+      }
+     ]
+    },
+    {
+     "mw": 3,
+     "matches": [
+      {
+       "d": "2026-09-03",
+       "h": "Toulouse FC",
+       "hs": 0,
+       "as": 1,
+       "a": "Lille OSC"
+      },
+      {
+       "d": "2026-09-04",
+       "h": "Olympique Lyonnais",
+       "hs": 3,
+       "as": 1,
+       "a": "AJ Auxerre"
+      },
+      {
+       "d": "2026-09-04",
+       "h": "Paris Saint-Germain FC",
+       "hs": 1,
+       "as": 2,
+       "a": "AS Monaco FC"
+      },
+      {
+       "d": "2026-09-05",
+       "h": "Racing Club de Lens",
+       "hs": 0,
+       "as": 1,
+       "a": "FC Lorient"
+      },
+      {
+       "d": "2026-09-05",
+       "h": "Le Havre AC",
+       "hs": 1,
+       "as": 2,
+       "a": "Stade Brestois 29"
+      },
+      {
+       "d": "2026-09-05",
+       "h": "OGC Nice",
+       "hs": 1,
+       "as": 1,
+       "a": "Le Mans FC"
+      },
+      {
+       "d": "2026-09-06",
+       "h": "ES Troyes AC",
+       "hs": 2,
+       "as": 6,
+       "a": "RC Strasbourg Alsace"
+      },
+      {
+       "d": "2026-09-06",
+       "h": "Angers SCO",
+       "hs": 1,
+       "as": 2,
+       "a": "Stade Rennais FC 1901"
+      },
+      {
+       "d": "2026-09-06",
+       "h": "Olympique de Marseille",
+       "hs": 2,
+       "as": 3,
+       "a": "Paris FC"
+      }
+     ]
+    }
+   ],
+   "results_updated": "fetched Thursday 10 September 2026, 21:53 UTC",
+   "scorers": [
+    {
+     "p": "Amine Gouiri",
+     "c": "Olympique de Marseille",
+     "g": 4
+    },
+    {
+     "p": "Kamory Doumbia",
+     "c": "Stade Brestois 29",
+     "g": 4
+    },
+    {
+     "p": "Lassine Sinayoko",
+     "c": "Paris FC",
+     "g": 4
+    },
+    {
+     "p": "Florian Thauvin",
+     "c": "Racing Club de Lens",
+     "g": 3
+    },
+    {
+     "p": "Louis Mafouta",
+     "c": "Le Mans FC",
+     "g": 3
+    },
+    {
+     "p": "Esteban Lepaul",
+     "c": "Stade Rennais FC 1901",
+     "g": 3
+    },
+    {
+     "p": "Ferrán Torres",
+     "c": "Paris Saint-Germain FC",
+     "g": 2
+    },
+    {
+     "p": "Marquinhos",
+     "c": "Paris Saint-Germain FC",
+     "g": 2
+    },
+    {
+     "p": "Gessime Yassine",
+     "c": "RC Strasbourg Alsace",
+     "g": 2
+    },
+    {
+     "p": "Paris Brunner",
+     "c": "AS Monaco FC",
+     "g": 2
+    }
+   ],
+   "scorers_updated": "fetched Thursday 10 September 2026, 21:54 UTC"
   }
+ }
 }

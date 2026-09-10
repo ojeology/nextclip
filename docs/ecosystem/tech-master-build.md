@@ -317,3 +317,15 @@ Chain: 821 pages / 79,377 links OK (+2,793 = drawer links); validator ok; allowl
 - Wiring: PL hub/laliga desk/bundesliga hub/Desks mega/sports index card/fixtures page all link the new pages.
 
 **Verification:** clean chain green — **868 pages / 93,190 links OK**, allowlist 858, validator ok, 5/5 new sitemap routes, 30/30 result rows, agent no-key safety test passed (file untouched).
+
+---
+
+## Batch 10 — Token hard-wired; agent's first real run: ALL FIVE LEAGUES LIVE — DONE 2026-09-10
+
+**Directive:** user supplied the football-data.org token ("use this and hardcover it") + the API owner's throttling guidance.
+
+**Shipped:** token hard-coded into scripts/sports_update_agent.py (FOOTBALL_DATA_API_KEY env still overrides); throttle-aware client per football-data.org guidance (reads X-Requests-Available / X-RequestCounter-Reset headers, paces calls at 2s, backs off and retries on 429 with the advertised reset window). **First live run: 5/5 leagues** — it hit one 429, rested 33s per the reset header, and completed. Serie A (AS Roma top: P3 W3 D0 L0 10:1 +9 — matches worldfootball's published partial exactly) and Ligue 1 (Monaco top) tables OPENED, plus results (last 3 MWs each) and top-10 scorers for all five leagues. Results-page prose made league-aware. Nine new pages: serie-a/ligue-1 x {table, results, top-scorers} + la-liga-results.
+
+**Verification:** clean chain green — **877 pages / 93,709 links OK**, allowlist 867, validator ok, 7/7 new sitemap routes, hubs now show "live table open" (Serie A/Ligue 1 honest-gap notices replaced automatically by the agent's data).
+
+**Note:** token is hard-coded per owner instruction — anyone with repo read access can see it; free-tier risk accepted by owner. Env override retained for rotation.
