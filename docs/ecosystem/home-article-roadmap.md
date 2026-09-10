@@ -195,3 +195,23 @@ Title/fact decisions (verified 2026-09-10):
   RO/treatment units, RPZ, non-domestic, change of use) do. Over-claiming avoided.
 - EPA WaterSense figures kept with named source: 10,000+ gal/household/yr; 1 drip/sec = 3,000+ gal;
   meter test method. Insurance "gradual damage often excluded" framed as check-your-policy, not law.
+
+## Batch 4 — Painting & interior (3) + Electrical safety (2), built 2026-09-10
+
+Built (5): /home/interior-painting-mistakes/ · /home/humidity-and-paint/ · /home/painting-over-damp/ ·
+/home/electrical-fire-warning-signs/ · /home/outlet-overloading-danger/
+
+Title/fact decisions (verified 2026-09-10):
+- "Tens of thousands of house fires" carried by the verified US figure alone: NFPA 2015-2019
+  average ~32,620 home fires/yr involving electrical distribution/lighting, ~430 deaths, $1.3B;
+  wiring 68-69% of fires; cords/plugs 10% of fires but 28% of deaths. UK framed qualitatively
+  (ESF guidance cited for socket rules) — no unverified "half of all fires" stat used.
+- Overload piece built on ESF's published guidance: 13A/3kW socket budget, lead ratings marked,
+  no daisy-chaining, block-vs-bar adaptors, danger-sign list; US circuit math (15/20A @ 120V,
+  1,500W space heater) kept separate and labelled.
+- Humidity bands stated as manufacturer/pro convention: 40-50% RH ideal, >60-70% problem
+  territory, 10-29°C application window; no single brand's spec universalised.
+- Overlap handled honestly: "Top Interior Painting Mistakes" built as the full tour with the
+  prep deep-dive left on the existing shelf piece (cross-linked, not duplicated).
+- Electrical pieces carry the desk's strictest boundary: stop-and-switch-off advice, electrician
+  for everything beyond, inspection intervals framed as "your electrician confirms".

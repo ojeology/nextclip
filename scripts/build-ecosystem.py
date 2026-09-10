@@ -1368,6 +1368,11 @@ HOME_SLUG_SECT.update({s: "understand" for s in (
 HOME_SLUG_SECT.update({s: "fix" for s in (
     "small-leak-ripple-effect", "leaky-faucet-diy")})
 
+HOME_SLUG_SECT.update({s: "fix" for s in (
+    "interior-painting-mistakes", "humidity-and-paint", "painting-over-damp")})
+HOME_SLUG_SECT.update({s: "understand" for s in (
+    "electrical-fire-warning-signs", "outlet-overloading-danger")})
+
 
 def _home_theme_init():
     # External file: the site CSP is script-src 'self' - inline scripts never run.
@@ -1445,6 +1450,8 @@ def home_pages():
     HOME_ARTICLES.extend((s2, ti, dek, b) for (s2, _k, ti, dek, b) in home_roadmap2_data.HOME_ROADMAP_2 if s2 not in _have)
     import home_roadmap3_data
     HOME_ARTICLES.extend((s2, ti, dek, b) for (s2, _k, ti, dek, b) in home_roadmap3_data.HOME_ROADMAP_3 if s2 not in _have)
+    import home_roadmap4_data
+    HOME_ARTICLES.extend((s2, ti, dek, b) for (s2, _k, ti, dek, b) in home_roadmap4_data.HOME_ROADMAP_4 if s2 not in _have)
 
     def src_html(sources):
         if not sources:
@@ -1660,6 +1667,21 @@ def home_pages():
         "uk-us-plumber-rules": [("leaky-faucet-diy", "Fix the dripping tap"),
                                 ("induction-hob-wiring", "Induction wiring rules"),
                                 ("uk-boiler-servicing", "The annual boiler service")],
+        "interior-painting-mistakes": [("mistakes/painting-without-prep", "Skipping prep"),
+                                       ("humidity-and-paint", "Humidity and paint"),
+                                       ("painting-over-damp", "Painting over damp")],
+        "humidity-and-paint": [("interior-painting-mistakes", "The full painting mistakes list"),
+                               ("condensation-ventilation-that-works", "Ventilation that works"),
+                               ("painting-over-damp", "Painting over damp")],
+        "painting-over-damp": [("condensation-vs-rising-vs-penetrating-damp", "Which damp is it?"),
+                               ("uk-landlord-damp-mould-duties", "Landlord damp duties"),
+                               ("humidity-and-paint", "Humidity and paint")],
+        "electrical-fire-warning-signs": [("outlet-overloading-danger", "The overloaded outlet"),
+                                          ("why-does-my-circuit-breaker-keep-tripping", "The tripping breaker"),
+                                          ("how-many-smoke-co-alarms", "How many alarms you need")],
+        "outlet-overloading-danger": [("electrical-fire-warning-signs", "The warning signs"),
+                                      ("why-does-my-circuit-breaker-keep-tripping", "The tripping breaker"),
+                                      ("drilling-without-checking", "Drilling without checking")],
     }
     for slug, ti, dek, b in HOME_ARTICLES:
         key = HOME_SLUG_SECT[slug]
