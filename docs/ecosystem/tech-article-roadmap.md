@@ -240,5 +240,12 @@ Honesty notes:
   "check the provider's page" instruction.
 - T5 word counts 559-718 (shelf median 374) — among the most substantial on tech; no padding.
 
-## TECH ROADMAP COMPLETE (45 titles/16 clusters → 45 accounted: 42 live roadmap-built pieces
-across T1-T5 + dedupe skips already live per T1 receipts; 0 deferred, 0 dropped, 0 fabricated).
+## TECH ROADMAP COMPLETE — every title in the queue accounted for (0 deferred, 0 dropped, 0 fabricated)
+
+Final tally (enumerated from the queue above, 2026-09-10): 48 titles across 16 clusters →
+**41 built live** across T1-T5 (4 + 9 + 9 + 6 + 13) + **7 titles deduped to already-live
+pieces** (kept, per T1 receipts: password managers explained, 2FA, learning-to-code-no-laptop
+→ termux piece, Photoshop alternatives, phishing, public Wi-Fi, app permissions).
+Site totals at close: 768 pages / 75,215 links OK; tech 101 pages; 11 category hubs;
+allowlist v26 758 routes. Batch chain: T1 4c8298cd84 → T2 bd218ef574 → T3 2ecdd95483 →
+T4 c2e1e8452a → T5 129bb942ca.
