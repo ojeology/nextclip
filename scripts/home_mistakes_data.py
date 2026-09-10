@@ -124,4 +124,20 @@ HOME_MISTAKES = [
 [("basic-toolkit-checklist", "The basic toolkit"),
  ("why-does-my-circuit-breaker-keep-tripping", "The tripping breaker"),
  ("how-to-fix-a-slow-draining-sink", "The slow-draining sink")]),
+
+("co-alarm-wrong-place", "Safety",
+"Trusting a CO alarm that can’t do its job",
+"Carbon monoxide has no smell and no colour — the alarm is your only sense for it, and placement, position and expiry quietly decide whether it works.",
+"""<p>Carbon monoxide gives you nothing to work with: no smell, no colour, no irritation — which is why households buy a CO alarm and then file the whole subject away as handled. Two quiet mistakes undo that purchase more than any other: putting the alarm where it can’t read the gas, and keeping it past the life of its sensor.</p>
+<h2>Why it backfires</h2>
+<p>Placement is the first failure. An alarm squeezed right next to the boiler nuisance-trips — and the most dangerous outcome of a false alarm isn’t the noise, it’s the person who pulls the battery. Across the room but behind a curtain, in a shelf nook, or on the wall the door opens against, the alarm sits in dead air and reads the room late or not at all. Expiry is the second: the sensor inside a CO alarm is a consumable, with a service life manufacturers stamp on the back (commonly in the five-to-ten-year band). A test button proves the battery and the sounder — it cannot prove the sensor still detects anything. Combination smoke-and-CO units retire at the shorter of the two lives, which is almost always the CO side.</p>
+<h2>The fix</h2>
+<p>Read the alarm’s own instructions once and follow the distance band they give — UK landlord guidance commonly puts one within one to three metres of the appliance, and the same logic serves a homeowner. CO mixes evenly with the air, so ceiling or high wall is fine (it doesn’t stratify like smoke), but never behind furniture, never in a corner the air doesn’t move through, and not directly beside an extraction vent or window that would dilute a reading. If the alarm false-alarms next to the boiler, don’t disable it — move it to the far end of the same room per the manual, and book the boiler a service, because repeated nuisance alarms from a flue are a symptom, not a glitch. Then check the replace-by date printed on the unit; if it has passed, the whole alarm is replaced — on most domestic models the sensor can’t be swapped.</p>
+<h2>Keep it from happening</h2>
+<p>Buy alarms with a sealed long-life battery and an end-of-life chirp, put the expiry date in your phone calendar the day you unpack it, and fold the test into the <a href="/home/test-alarms-monthly/">monthly alarm habit</a> so a dying alarm is heard, not discovered. Have fuel-burning appliances serviced annually by a registered engineer — Gas Safe-registered in the UK — because an alarm is the last line of defence, never the maintenance. Where the law already sets the minimums, <a href="/home/uk-carbon-monoxide-alarm-law/">the UK alarm-law guide</a> has them, and <a href="/home/co-smoke-alarm-expiry/">the expiry guide</a> explains how to read the dates nobody does.</p>""",
+[("CDC — Carbon monoxide", "https://www.cdc.gov/carbon-monoxide/"),
+ ("The Smoke and Carbon Monoxide Alarm (Amendment) Regulations 2022", "https://www.legislation.gov.uk/uksi/2022/626")],
+[("test-alarms-monthly", "The monthly alarm habit"),
+ ("co-smoke-alarm-expiry", "The expiry date nobody reads"),
+ ("uk-carbon-monoxide-alarm-law", "UK CO alarm law")]),
 ]

@@ -1354,6 +1354,13 @@ HOME_SLUG_SECT.update({s: "appliances" for s in (
     "fridge-door-seal-test", "garbage-disposal-mistakes", "induction-hob-wiring",
     "smart-appliances-worth-it")})
 
+HOME_SLUG_SECT.update({s: "understand" for s in (
+    "uk-carbon-monoxide-alarm-law", "how-many-smoke-co-alarms", "co-smoke-alarm-expiry",
+    "condensation-vs-rising-vs-penetrating-damp", "uk-landlord-damp-mould-duties",
+    "gas-heaters-damp")})
+HOME_SLUG_SECT.update({s: "maintain" for s in (
+    "test-alarms-monthly", "condensation-ventilation-that-works")})
+
 
 def _home_theme_init():
     return ('<script>(function(){try{var t=localStorage.getItem("bryme-home-theme");'
@@ -1431,6 +1438,8 @@ def home_pages():
     HOME_ARTICLES.extend((s2, ti, dek, b) for (s2, _k, ti, dek, b) in more_guides_data.HOME_MORE if s2 not in _have)
     import home_roadmap_data
     HOME_ARTICLES.extend((s2, ti, dek, b) for (s2, _k, ti, dek, b) in home_roadmap_data.HOME_ROADMAP if s2 not in _have)
+    import home_roadmap2_data
+    HOME_ARTICLES.extend((s2, ti, dek, b) for (s2, _k, ti, dek, b) in home_roadmap2_data.HOME_ROADMAP_2 if s2 not in _have)
 
     def src_html(sources):
         if not sources:
@@ -1598,6 +1607,30 @@ def home_pages():
         "smart-appliances-worth-it": [("fridge-coils-twice-a-year", "Clean the coils twice a year"),
                                       ("washing-machine-heavy-items", "The load that kills machines"),
                                       ("dishwasher-loading-mistakes", "Load it so it cleans")],
+        "uk-carbon-monoxide-alarm-law": [("co-alarm-wrong-place", "The CO alarm that can't work"),
+                                         ("co-smoke-alarm-expiry", "The expiry date nobody reads"),
+                                         ("how-many-smoke-co-alarms", "How many alarms you need")],
+        "how-many-smoke-co-alarms": [("uk-carbon-monoxide-alarm-law", "UK CO alarm law"),
+                                     ("co-smoke-alarm-expiry", "The expiry date nobody reads"),
+                                     ("test-alarms-monthly", "The monthly alarm habit")],
+        "co-smoke-alarm-expiry": [("co-alarm-wrong-place", "The CO alarm that can't work"),
+                                  ("test-alarms-monthly", "The monthly alarm habit"),
+                                  ("how-many-smoke-co-alarms", "How many alarms you need")],
+        "test-alarms-monthly": [("seasonal-home-maintenance-checklist", "The once-a-season checklist"),
+                                ("dryer-lint-every-load", "The dryer lint habit"),
+                                ("co-smoke-alarm-expiry", "The expiry date nobody reads")],
+        "condensation-vs-rising-vs-penetrating-damp": [("condensation-ventilation-that-works", "Ventilation that works"),
+                                                       ("uk-landlord-damp-mould-duties", "Landlord damp duties"),
+                                                       ("drying-laundry-indoors", "Drying laundry indoors")],
+        "uk-landlord-damp-mould-duties": [("condensation-vs-rising-vs-penetrating-damp", "Which damp is it?"),
+                                          ("condensation-ventilation-that-works", "Ventilation that works"),
+                                          ("gas-heaters-damp", "Gas heat and damp")],
+        "condensation-ventilation-that-works": [("drying-laundry-indoors", "Drying laundry indoors"),
+                                                ("condensation-vs-rising-vs-penetrating-damp", "Which damp is it?"),
+                                                ("gas-heaters-damp", "Gas heat and damp")],
+        "gas-heaters-damp": [("co-alarm-wrong-place", "The CO alarm that can't work"),
+                             ("uk-carbon-monoxide-alarm-law", "UK CO alarm law"),
+                             ("condensation-ventilation-that-works", "Ventilation that works")],
     }
     for slug, ti, dek, b in HOME_ARTICLES:
         key = HOME_SLUG_SECT[slug]

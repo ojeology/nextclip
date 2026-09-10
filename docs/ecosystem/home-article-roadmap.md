@@ -156,3 +156,23 @@ Deferred (with reason):
   (CDC-sourced); duplicate in the same property, skipped per no-thin-pages rule.
 - "Seasonal Home Inspection Checklist" — overlaps the live checklist product; will be built as a
   "what gets missed" companion piece that links to the product, not a second checklist.
+
+## Batch 2 — CO & smoke safety + Damp, mould & condensation, built 2026-09-10
+
+Built (9): /home/uk-carbon-monoxide-alarm-law/ · /home/how-many-smoke-co-alarms/ ·
+/home/co-smoke-alarm-expiry/ · /home/test-alarms-monthly/ · /home/condensation-vs-rising-vs-penetrating-damp/ ·
+/home/uk-landlord-damp-mould-duties/ · /home/condensation-ventilation-that-works/ · /home/gas-heaters-damp/ ·
+plus mistakes-shelf piece #9: /home/mistakes/co-alarm-wrong-place/ (shelf now 9).
+
+Title/fact decisions (YMYL honesty pass, all verified Sept 2026):
+- "£5,000 fine" KEPT with its real mechanism: it is the penalty for failing to comply with a
+  28-day remedial notice (SI 2022/626 enforcement route) — stated explicitly, not dropped.
+- "New damp/mould duties from October 2026" RE-ANGLED: that date is SCOTLAND's commencement
+  (social + private rented, per Scottish Parliament SPICe briefing). England's Awaab's Law has
+  applied to social housing since 27 Oct 2025; the private-sector extension (Renters' Rights
+  Act 2025) is NOT yet commenced — piece says so and gives existing duties, "not legal advice".
+- Alarm counts: NFPA room-based standard (inside every sleeping room etc.) vs England's
+  per-storey legal minimum kept genuinely distinct; Scotland's interlink standard called the
+  UK benchmark. Sensor-life "5-10yr" stated as manufacturer replace-by convention.
+- Unflued-gas moisture: honest range (0.35 L/h GGF to 0.5-1 L/h building-science), named sources.
+- Rising-damp misdiagnosis warning included (independent survey before accepting injection quotes).
