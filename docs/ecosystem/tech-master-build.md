@@ -174,3 +174,18 @@ Built (6): /tech/parse-json-python/ · /tech/call-api-python/ · /tech/handle-ap
   article code unchanged and correct in real module context; (2) css append silently failed in
   bash (second occurrence of the silent-edit class) — re-applied via python + assert, mirrored.
 Chain: tech 133 pages (+6), site 807 pages / 76,292 links OK; allowlist v26 797 routes.
+
+### M5 — DONE 2026-09-10 (commit follows)
+Built (8, spec §14 structure — answer first → quick checks → causes → fix ladder →
+alternatives → mistakes → provider-side → support → related):
+/tech/dns-problems-diagnosed/ · /tech/ssl-certificate-errors-explained/ · /tech/git-errors-fixed/ ·
+/tech/app-crashes-android/ · /tech/login-problems-checklist/ · /tech/api-errors-decoded/ ·
+/tech/websocket-debugging/ · /tech/environment-variables-guide/
+- Dedupe lanes honoured (link-not-overlap): what-is-dns / custom-domain-dns-order (DNS records),
+  phone-wont-connect-to-wifi (phone layer), how-to-reset-forgotten-passwords (reset flow),
+  http-status-codes-explained (code reference), handle-api-errors-python (Python client),
+  storage-full-breaking-apps (the storage crash cause), browser-problems (browser layer).
+- No volatile claims: DNS flush commands, git error strings, WebSocket close codes (RFC 6455
+  cited), 12factor config principle (cited); browser error texts paraphrased, never quoted as
+  exact UI strings. Sources: git-scm book x2, RFC 6455, 12factor, Python os.environ docs.
+Chain: tech 141 pages (+8), site 815 pages / 76,457 links OK; allowlist v26 805 routes.
