@@ -1348,6 +1348,12 @@ HOME_SLUG_SECT = {
     "why-does-my-circuit-breaker-keep-tripping": "understand",
     "fridge-not-cold-enough": "understand",
 }
+HOME_SLUG_SECT.update({s: "appliances" for s in (
+    "washing-machine-heavy-items", "dryer-lint-every-load", "dishwasher-loading-mistakes",
+    "stop-pre-rinsing-dishes", "vinegar-in-the-dishwasher", "fridge-coils-twice-a-year",
+    "fridge-door-seal-test", "garbage-disposal-mistakes", "induction-hob-wiring",
+    "smart-appliances-worth-it")})
+
 
 def _home_theme_init():
     return ('<script>(function(){try{var t=localStorage.getItem("bryme-home-theme");'
@@ -1423,6 +1429,8 @@ def home_pages():
         return ("/home/mistakes/" + s + "/") if s in _mset else ("/home/" + s + "/")
     _have = {s2[0] for s2 in HOME_ARTICLES}
     HOME_ARTICLES.extend((s2, ti, dek, b) for (s2, _k, ti, dek, b) in more_guides_data.HOME_MORE if s2 not in _have)
+    import home_roadmap_data
+    HOME_ARTICLES.extend((s2, ti, dek, b) for (s2, _k, ti, dek, b) in home_roadmap_data.HOME_ROADMAP if s2 not in _have)
 
     def src_html(sources):
         if not sources:
@@ -1560,6 +1568,36 @@ def home_pages():
         "fridge-not-cold-enough": [("overloading-the-fridge", "Packing the fridge solid"),
                                    ("washing-machine-wont-drain", "The machine that won't drain"),
                                    ("why-does-my-circuit-breaker-keep-tripping", "The tripping breaker")],
+        "washing-machine-heavy-items": [("washing-machine-wont-drain", "The machine that won't drain"),
+                                        ("how-to-clean-a-washing-machine", "Why the washing machine smells"),
+                                        ("too-much-detergent", "Too much detergent")],
+        "dryer-lint-every-load": [("washing-machine-heavy-items", "The load that kills machines"),
+                                  ("seasonal-home-maintenance-checklist", "The once-a-season checklist"),
+                                  ("basic-toolkit-checklist", "The basic toolkit")],
+        "dishwasher-loading-mistakes": [("stop-pre-rinsing-dishes", "Skip the pre-rinse"),
+                                        ("vinegar-in-the-dishwasher", "Not with vinegar"),
+                                        ("too-much-detergent", "Too much detergent")],
+        "stop-pre-rinsing-dishes": [("dishwasher-loading-mistakes", "Load it so it cleans"),
+                                    ("vinegar-in-the-dishwasher", "Not with vinegar"),
+                                    ("too-much-detergent", "Too much detergent")],
+        "vinegar-in-the-dishwasher": [("dishwasher-loading-mistakes", "Load it so it cleans"),
+                                      ("how-to-clean-a-washing-machine", "Why the washing machine smells"),
+                                      ("mistakes/mixing-cleaning-products", "Never mix cleaners")],
+        "fridge-coils-twice-a-year": [("fridge-door-seal-test", "The dollar-bill seal test"),
+                                      ("fridge-not-cold-enough", "Fridge not cold enough"),
+                                      ("overloading-the-fridge", "Packing the fridge solid")],
+        "fridge-door-seal-test": [("fridge-coils-twice-a-year", "Clean the coils twice a year"),
+                                  ("fridge-not-cold-enough", "Fridge not cold enough"),
+                                  ("overloading-the-fridge", "Packing the fridge solid")],
+        "garbage-disposal-mistakes": [("how-to-fix-a-slow-draining-sink", "The slow-draining sink"),
+                                      ("how-to-unblock-a-toilet", "The blocked toilet"),
+                                      ("basic-toolkit-checklist", "The basic toolkit")],
+        "induction-hob-wiring": [("why-does-my-circuit-breaker-keep-tripping", "The tripping breaker"),
+                                 ("drilling-without-checking", "Drilling without checking"),
+                                 ("basic-toolkit-checklist", "The basic toolkit")],
+        "smart-appliances-worth-it": [("fridge-coils-twice-a-year", "Clean the coils twice a year"),
+                                      ("washing-machine-heavy-items", "The load that kills machines"),
+                                      ("dishwasher-loading-mistakes", "Load it so it cleans")],
     }
     for slug, ti, dek, b in HOME_ARTICLES:
         key = HOME_SLUG_SECT[slug]
