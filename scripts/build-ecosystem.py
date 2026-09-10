@@ -1361,6 +1361,13 @@ HOME_SLUG_SECT.update({s: "understand" for s in (
 HOME_SLUG_SECT.update({s: "maintain" for s in (
     "test-alarms-monthly", "condensation-ventilation-that-works")})
 
+HOME_SLUG_SECT.update({s: "maintain" for s in (
+    "hvac-filter-change-habit", "uk-boiler-servicing", "ac-outdoor-unit-care")})
+HOME_SLUG_SECT.update({s: "understand" for s in (
+    "hvac-noises-decoded", "hvac-diy-warranty-rules", "uk-us-plumber-rules")})
+HOME_SLUG_SECT.update({s: "fix" for s in (
+    "small-leak-ripple-effect", "leaky-faucet-diy")})
+
 
 def _home_theme_init():
     # External file: the site CSP is script-src 'self' - inline scripts never run.
@@ -1436,6 +1443,8 @@ def home_pages():
     HOME_ARTICLES.extend((s2, ti, dek, b) for (s2, _k, ti, dek, b) in home_roadmap_data.HOME_ROADMAP if s2 not in _have)
     import home_roadmap2_data
     HOME_ARTICLES.extend((s2, ti, dek, b) for (s2, _k, ti, dek, b) in home_roadmap2_data.HOME_ROADMAP_2 if s2 not in _have)
+    import home_roadmap3_data
+    HOME_ARTICLES.extend((s2, ti, dek, b) for (s2, _k, ti, dek, b) in home_roadmap3_data.HOME_ROADMAP_3 if s2 not in _have)
 
     def src_html(sources):
         if not sources:
@@ -1627,6 +1636,30 @@ def home_pages():
         "gas-heaters-damp": [("co-alarm-wrong-place", "The CO alarm that can't work"),
                              ("uk-carbon-monoxide-alarm-law", "UK CO alarm law"),
                              ("condensation-ventilation-that-works", "Ventilation that works")],
+        "hvac-filter-change-habit": [("ac-outdoor-unit-care", "The outdoor unit"),
+                                     ("hvac-diy-warranty-rules", "DIY, warranty and the law"),
+                                     ("seasonal-home-maintenance-checklist", "The once-a-season checklist")],
+        "hvac-noises-decoded": [("hvac-diy-warranty-rules", "DIY, warranty and the law"),
+                                ("hvac-filter-change-habit", "The filter habit"),
+                                ("uk-boiler-servicing", "The annual boiler service")],
+        "hvac-diy-warranty-rules": [("hvac-filter-change-habit", "The filter habit"),
+                                    ("uk-boiler-servicing", "The annual boiler service"),
+                                    ("mistakes/co-alarm-wrong-place", "The CO alarm that can't work")],
+        "uk-boiler-servicing": [("uk-carbon-monoxide-alarm-law", "UK CO alarm law"),
+                                ("co-smoke-alarm-expiry", "The expiry date nobody reads"),
+                                ("gas-heaters-damp", "Gas heat and damp")],
+        "ac-outdoor-unit-care": [("hvac-filter-change-habit", "The filter habit"),
+                                 ("hvac-noises-decoded", "HVAC noises decoded"),
+                                 ("fridge-coils-twice-a-year", "Clean the coils twice a year")],
+        "small-leak-ripple-effect": [("leaky-faucet-diy", "Fix the dripping tap"),
+                                     ("condensation-vs-rising-vs-penetrating-damp", "Which damp is it?"),
+                                     ("seasonal-home-maintenance-checklist", "The once-a-season checklist")],
+        "leaky-faucet-diy": [("small-leak-ripple-effect", "Why small leaks never stay small"),
+                             ("how-to-fix-a-slow-draining-sink", "The slow-draining sink"),
+                             ("basic-toolkit-checklist", "The basic toolkit")],
+        "uk-us-plumber-rules": [("leaky-faucet-diy", "Fix the dripping tap"),
+                                ("induction-hob-wiring", "Induction wiring rules"),
+                                ("uk-boiler-servicing", "The annual boiler service")],
     }
     for slug, ti, dek, b in HOME_ARTICLES:
         key = HOME_SLUG_SECT[slug]

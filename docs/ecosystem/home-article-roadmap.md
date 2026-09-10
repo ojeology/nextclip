@@ -176,3 +176,22 @@ Title/fact decisions (YMYL honesty pass, all verified Sept 2026):
   UK benchmark. Sensor-life "5-10yr" stated as manufacturer replace-by convention.
 - Unflued-gas moisture: honest range (0.35 L/h GGF to 0.5-1 L/h building-science), named sources.
 - Rising-damp misdiagnosis warning included (independent survey before accepting injection quotes).
+
+## Batch 3 — HVAC (5) + Plumbing (3), built 2026-09-10
+
+Built (8): /home/hvac-filter-change-habit/ · /home/hvac-noises-decoded/ · /home/hvac-diy-warranty-rules/ ·
+/home/uk-boiler-servicing/ · /home/ac-outdoor-unit-care/ · /home/small-leak-ripple-effect/ ·
+/home/leaky-faucet-diy/ · /home/uk-us-plumber-rules/
+
+Title/fact decisions (verified 2026-09-10):
+- "#1 reason systems fail early" → ENERGY STAR's own framing used instead (dirty filter leads to
+  "expensive maintenance and/or early system failure"); no invented failure rankings.
+- Refrigerant legality: Clean Air Act Section 608 (certification, sales restriction, no venting)
+  — penalty figure NOT pinned (inflation-adjusted annually); "five-figure federal penalties".
+- Boiler service cost: "typically advertised ~£60–£125" (2026 ranges corroborated across sources);
+  warranty-annual-service convention named to manufacturers; CP12 ≠ service distinction kept.
+- Water Fittings Regs 1999: notification scope stated CORRECTLY after checking — ordinary domestic
+  work (taps/shower/outside tap) needs NO notification; only listed categories (pumps >12 L/min,
+  RO/treatment units, RPZ, non-domestic, change of use) do. Over-claiming avoided.
+- EPA WaterSense figures kept with named source: 10,000+ gal/household/yr; 1 drip/sec = 3,000+ gal;
+  meter test method. Insurance "gradual damage often excluded" framed as check-your-policy, not law.
