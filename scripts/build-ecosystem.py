@@ -789,6 +789,7 @@ TECH_CAT = {
     "android": ("Android & mobile", "Phone storage, permissions, battery and notifications \u2014 the settings that actually matter, explained without the jargon.", ""),
     "windows": ("Windows & PC", "Slow computers, browser trouble and update problems \u2014 triaged in the order that finds the cause fastest.", ""),
     "coding": ("Coding", "Beginner programming explained the honest way \u2014 errors, Git and APIs \u2014 from a desk that ships code.", ""),
+    "buying": ("Buying guides", "Specs vs marketing, refurbished vs new \u2014 the numbers that decide whether tech is still pleasant in year three.", ""),
 }
 _TECH_CAT_OF = {
     "hosting": "web-and-hosting", "ai-assistants": "ai", "beginner-coding": "coding",

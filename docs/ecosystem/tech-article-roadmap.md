@@ -117,3 +117,25 @@ Dedupe receipts (roadmap titles skipped because already live):
   Both attributed in-text; DBIR figures shift annually — UPDATE-class on republish.
 - Security questions → NIST SP 800-63B FAQ: KBA "no longer recognized as an acceptable
   authenticator"; random answers in a password manager recommended by NIST itself.
+
+## Batch T2 — Backups & data loss (3) + Storage & device health (3) + 3 pulled forward, built 2026-09-10
+Structural: new "Buying guides" section registered in TECH_CAT (pulled forward to avoid dead links).
+
+Built (9): /tech/three-two-one-backup-rule/ · /tech/cloud-vs-local-backup/ · /tech/phone-died-no-backup/ ·
+/tech/why-phones-slow-down/ · /tech/storage-full-breaking-apps/ · /tech/laptop-buying-ram-storage/ ·
+/tech/why-restarting-fixes-problems/ (T5 pulled forward) · /tech/refurbished-vs-new-tech/ (T5) ·
+/tech/what-free-apps-do-with-your-data/ (T5, privacy cluster started)
+
+[VERIFY] resolutions (2026-09-10):
+- Phone loss/damage frequency → Asurion claims data (1-in-4/yr estimate; ~72M US phones lost/
+  stolen/damaged, 2018/19 via Forbes) + SquareTrade 2018 study (66% damaged in past year).
+  Insurer data, years published, "order of magnitude" framing.
+- 3-2-1 rule attributed (Peter Krogh) + CISA StopRansomware guidance (offline/immutable copy).
+- Apple throttling: performance-management documentation + France DGCCRF €25m decision (2020),
+  stated precisely (fined for disclosure failure, not the throttling).
+
+Honesty notes:
+- Sync-is-not-backup mechanism explained (deletion/ransomware propagation); "cloud alone
+  isn't enough" given its real reasons (account seizure/loss, egress, ToS).
+- No invented stats: laptop RAM/storage floors framed as current-software reality, sources[]
+  left empty where no primary source verified (flagged in receipts here).
