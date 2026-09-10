@@ -1,0 +1,66 @@
+name: Sports data update
+
+# The BRYME Sport data agent: fetches verified tables/results/scorers and,
+# if anything changed, rebuilds the site and pushes it (Render auto-deploys).
+# One-time setup: add a free football-data.org key as the repository secret
+# FOOTBALL_DATA_API_KEY (https://www.football-data.org/client/register).
+
+on:
+  schedule:
+    - cron: "0 6 * * *"    # 06:00 UTC daily
+    - cron: "0 22 * * *"   # 22:00 UTC daily (after evening rounds)
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sports-data-update
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Fetch live football data
+        env:
+          FOOTBALL_DATA_API_KEY: ${{ secrets.FOOTBALL_DATA_API_KEY }}
+        run: python3 scripts/sports_update_agent.py
+
+      - name: Rebuild site if data changed
+        id: build
+        run: |
+          if git diff --quiet -- content/sports-live.json; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "No data changes since last build - nothing to do."
+            exit 0
+          fi
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+          npm ci
+          npm run build
+          python3 scripts/build-ecosystem.py
+          python3 scripts/build-routing.py
+          node scripts/validate-site-quality.js
+          python3 scripts/check-internal-links.py
+
+      - name: Commit and push
+        if: steps.build.outputs.changed == 'true'
+        run: |
+          git config user.name "BRYME data agent"
+          git config user.email "agents@bryme.local"
+          git add content/sports-live.json ecosystem public sports
+          git commit -m "sports-data: auto-update $(date -u +'%Y-%m-%d %H:%M UTC')"
+          git push

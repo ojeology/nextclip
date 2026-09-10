@@ -1,0 +1,141 @@
+{
+  "_comment": "BRYME Sport live data snapshot. This file is the single source the build renders league tables/results/scorers from. Initial entries hand-verified 2026-09-10 against worldfootball.net (PL results additionally cross-checked against the desk's own four-source table verification). The GitHub agent (scripts/sports_update_agent.py, run by .github/workflows/sports-update.yml) overwrites this file from football-data.org when FOOTBALL_DATA_API_KEY is configured. The desk never publishes a number it cannot source: leagues missing data are marked pending and render honest-gap notices instead of guesses.",
+  "generated": "2026-09-10",
+  "source": "manual verification: worldfootball.net (PL results cross-checked with NBC Sports / Sports Media Watch / footballfixtures.org)",
+  "leagues": {
+    "premier-league": {
+      "name": "Premier League",
+      "table_updated": "after Matchweek 3 \u00b7 verified Thursday 10 September 2026",
+      "results_updated": "Matchweeks 1-3 \u00b7 verified Thursday 10 September 2026",
+      "scorers_updated": "after Matchweek 3 \u00b7 verified Thursday 10 September 2026",
+      "scorers_source": "The Guardian (10 Sep 2026) cross-checked with worldfootball.net",
+      "table": [
+        [1, "Manchester City", 3, 3, 0, 0, 7, 2, 5, 9],
+        [2, "Arsenal", 3, 3, 0, 0, 6, 1, 5, 9],
+        [3, "Hull City", 3, 2, 1, 0, 3, 0, 3, 7],
+        [4, "Chelsea", 3, 2, 0, 1, 8, 7, 1, 6],
+        [5, "Brentford", 3, 1, 2, 0, 5, 2, 3, 5],
+        [6, "Liverpool", 3, 1, 2, 0, 6, 4, 2, 5],
+        [7, "Newcastle United", 3, 1, 2, 0, 6, 4, 2, 5],
+        [8, "Everton", 3, 1, 2, 0, 5, 3, 2, 5],
+        [9, "Leeds United", 3, 1, 2, 0, 3, 2, 1, 5],
+        [10, "Brighton & Hove Albion", 3, 1, 1, 1, 8, 5, 3, 4],
+        [11, "Manchester United", 3, 1, 1, 1, 7, 6, 1, 4],
+        [12, "Sunderland", 3, 1, 1, 1, 3, 3, 0, 4],
+        [13, "Ipswich Town", 3, 1, 0, 2, 4, 8, -4, 3],
+        [14, "Crystal Palace", 3, 1, 0, 2, 4, 8, -4, 3],
+        [15, "AFC Bournemouth", 3, 0, 2, 1, 4, 5, -1, 2],
+        [16, "Nottingham Forest", 3, 0, 2, 1, 2, 3, -1, 2],
+        [17, "Aston Villa", 3, 0, 1, 2, 0, 5, -5, 1],
+        [18, "Tottenham Hotspur", 3, 0, 1, 2, 0, 5, -5, 1],
+        [19, "Fulham", 3, 0, 0, 3, 4, 7, -3, 0],
+        [20, "Coventry City", 3, 0, 0, 3, 0, 5, -5, 0]
+      ],
+      "results": [
+        {"mw": 1, "matches": [
+          {"d": "Friday 21 August", "h": "Arsenal", "hs": 3, "as": 0, "a": "Coventry City"},
+          {"d": "Saturday 22 August", "h": "Hull City", "hs": 2, "as": 0, "a": "Manchester United"},
+          {"d": "Saturday 22 August", "h": "Everton", "hs": 2, "as": 0, "a": "Crystal Palace"},
+          {"d": "Saturday 22 August", "h": "Ipswich Town", "hs": 2, "as": 1, "a": "Sunderland"},
+          {"d": "Saturday 22 August", "h": "Nottingham Forest", "hs": 0, "as": 1, "a": "Leeds United"},
+          {"d": "Saturday 22 August", "h": "Brentford", "hs": 3, "as": 0, "a": "Tottenham Hotspur"},
+          {"d": "Sunday 23 August", "h": "Brighton & Hove Albion", "hs": 4, "as": 0, "a": "Aston Villa"},
+          {"d": "Sunday 23 August", "h": "Manchester City", "hs": 2, "as": 1, "a": "AFC Bournemouth"},
+          {"d": "Sunday 23 August", "h": "Newcastle United", "hs": 2, "as": 2, "a": "Liverpool"},
+          {"d": "Monday 24 August", "h": "Fulham", "hs": 2, "as": 3, "a": "Chelsea"}
+        ]},
+        {"mw": 2, "matches": [
+          {"d": "Friday 28 August", "h": "Crystal Palace", "hs": 1, "as": 4, "a": "Manchester City"},
+          {"d": "Saturday 29 August", "h": "Liverpool", "hs": 2, "as": 2, "a": "Nottingham Forest"},
+          {"d": "Saturday 29 August", "h": "AFC Bournemouth", "hs": 1, "as": 1, "a": "Everton"},
+          {"d": "Saturday 29 August", "h": "Coventry City", "hs": 0, "as": 1, "a": "Hull City"},
+          {"d": "Saturday 29 August", "h": "Tottenham Hotspur", "hs": 0, "as": 2, "a": "Newcastle United"},
+          {"d": "Sunday 30 August", "h": "Chelsea", "hs": 4, "as": 3, "a": "Brighton & Hove Albion"},
+          {"d": "Sunday 30 August", "h": "Leeds United", "hs": 1, "as": 1, "a": "Brentford"},
+          {"d": "Sunday 30 August", "h": "Sunderland", "hs": 1, "as": 0, "a": "Fulham"},
+          {"d": "Sunday 30 August", "h": "Manchester United", "hs": 5, "as": 2, "a": "Ipswich Town"},
+          {"d": "Monday 31 August", "h": "Aston Villa", "hs": 0, "as": 1, "a": "Arsenal"}
+        ]},
+        {"mw": 3, "matches": [
+          {"d": "Friday 4 September", "h": "Ipswich Town", "hs": 0, "as": 2, "a": "Liverpool"},
+          {"d": "Saturday 5 September", "h": "Newcastle United", "hs": 2, "as": 2, "a": "AFC Bournemouth"},
+          {"d": "Saturday 5 September", "h": "Brentford", "hs": 1, "as": 1, "a": "Sunderland"},
+          {"d": "Saturday 5 September", "h": "Brighton & Hove Albion", "hs": 1, "as": 1, "a": "Leeds United"},
+          {"d": "Saturday 5 September", "h": "Fulham", "hs": 2, "as": 3, "a": "Crystal Palace"},
+          {"d": "Saturday 5 September", "h": "Manchester City", "hs": 1, "as": 0, "a": "Coventry City"},
+          {"d": "Saturday 5 September", "h": "Nottingham Forest", "hs": 0, "as": 0, "a": "Tottenham Hotspur"},
+          {"d": "Saturday 5 September", "h": "Hull City", "hs": 0, "as": 0, "a": "Aston Villa"},
+          {"d": "Sunday 6 September", "h": "Everton", "hs": 2, "as": 2, "a": "Manchester United"},
+          {"d": "Sunday 6 September", "h": "Arsenal", "hs": 2, "as": 1, "a": "Chelsea"}
+        ]}
+      ],
+      "scorers": [
+        {"p": "Erling Haaland", "c": "Manchester City", "g": 3},
+        {"p": "Alexander Isak", "c": "Liverpool", "g": 3},
+        {"p": "Bruno Fernandes", "c": "Manchester United", "g": 3},
+        {"p": "Rayan Cherki", "c": "Manchester City", "g": 2},
+        {"p": "Anthony Elanga", "c": "Newcastle United", "g": 2}
+      ]
+    },
+    "la-liga": {
+      "name": "La Liga",
+      "table_updated": "after Matchweek 4 \u00b7 verified Thursday 10 September 2026",
+      "scorers_updated": "after Matchweek 4 \u00b7 verified Thursday 10 September 2026",
+      "table": [
+        [1, "FC Barcelona", 4, 4, 0, 0, 17, 2, 15, 12],
+        [2, "CD Alav\u00e9s", 4, 3, 1, 0, 10, 3, 7, 10],
+        [3, "Real Madrid", 4, 3, 0, 1, 10, 3, 7, 9],
+        [4, "Real Betis", 4, 3, 0, 1, 5, 5, 0, 9],
+        [5, "Deportivo A Coru\u00f1a", 4, 2, 2, 0, 8, 5, 3, 8],
+        [6, "Atl\u00e9tico Madrid", 4, 2, 1, 1, 7, 6, 1, 7],
+        [7, "Sevilla FC", 4, 2, 1, 1, 7, 6, 1, 7],
+        [8, "CA Osasuna", 4, 2, 1, 1, 5, 6, -1, 7],
+        [9, "Real Sociedad", 5, 2, 1, 2, 6, 8, -2, 7],
+        [10, "Athletic Club", 4, 2, 0, 2, 6, 5, 1, 6],
+        [11, "Levante UD", 4, 1, 2, 1, 5, 5, 0, 5],
+        [12, "RCD Espanyol", 4, 1, 1, 2, 6, 5, 1, 4],
+        [13, "Racing Santander", 4, 1, 1, 2, 7, 8, -1, 4],
+        [14, "Rayo Vallecano", 4, 1, 1, 2, 7, 10, -3, 4],
+        [15, "Getafe CF", 4, 1, 1, 2, 2, 5, -3, 4],
+        [16, "Celta de Vigo", 5, 0, 3, 2, 2, 5, -3, 3],
+        [17, "Villarreal CF", 4, 0, 2, 2, 6, 8, -2, 2],
+        [18, "M\u00e1laga CF", 4, 0, 2, 2, 1, 7, -6, 2],
+        [19, "Elche CF", 4, 0, 1, 3, 5, 12, -7, 1],
+        [20, "Valencia CF", 4, 0, 1, 3, 1, 9, -8, 1]
+      ],
+      "scorers": [
+        {"p": "Raphinha", "c": "FC Barcelona", "g": 6},
+        {"p": "Sergio Camello", "c": "Rayo Vallecano", "g": 5},
+        {"p": "Pierre-Emerick Aubameyang", "c": "Deportivo A Coru\u00f1a", "g": 4},
+        {"p": "Lucas Boy\u00e9", "c": "CD Alav\u00e9s", "g": 4},
+        {"p": "Ante Budimir", "c": "CA Osasuna", "g": 4}
+      ]
+    },
+    "bundesliga": {
+      "name": "Bundesliga",
+      "table_updated": "after Matchweek 2 \u00b7 verified Thursday 10 September 2026",
+      "table": [
+        [1, "FC Augsburg", 2, 2, 0, 0, 7, 1, 6, 6],
+        [2, "SC Freiburg", 2, 2, 0, 0, 5, 1, 4, 6],
+        [3, "Borussia Dortmund", 2, 2, 0, 0, 5, 2, 3, 6],
+        [4, "SV 07 Elversberg", 2, 2, 0, 0, 7, 5, 2, 6],
+        [5, "1. FSV Mainz 05", 2, 1, 1, 0, 5, 0, 5, 4],
+        [6, "Bayern Munich", 2, 1, 1, 0, 5, 1, 4, 4],
+        [7, "Bayer Leverkusen", 2, 1, 0, 1, 6, 3, 3, 3],
+        [8, "RB Leipzig", 2, 1, 0, 1, 4, 3, 1, 3],
+        [9, "VfB Stuttgart", 2, 1, 0, 1, 5, 6, -1, 3],
+        [10, "Werder Bremen", 2, 1, 0, 1, 4, 5, -1, 3],
+        [11, "1. FC K\u00f6ln", 2, 1, 0, 1, 4, 6, -2, 3],
+        [12, "SC Paderborn 07", 2, 0, 1, 1, 0, 1, -1, 1],
+        [13, "Eintracht Frankfurt", 2, 0, 1, 1, 4, 7, -3, 1],
+        [14, "FC Schalke 04", 2, 0, 1, 1, 0, 3, -3, 1],
+        [15, "1. FC Union Berlin", 2, 0, 1, 1, 3, 7, -4, 1],
+        [16, "TSG Hoffenheim", 2, 0, 0, 2, 4, 6, -2, 0],
+        [17, "Bor. M\u00f6nchengladbach", 2, 0, 0, 2, 3, 7, -4, 0],
+        [18, "Hamburger SV", 2, 0, 0, 2, 0, 7, -7, 0]
+      ]
+    },
+    "serie-a": {"pending": true, "note": "Table opens with the first agent-verified update. Partial standings exist (Roma, Inter and Lazio all won their opening three) but the desk publishes whole tables, not fragments."},
+    "ligue-1": {"pending": true, "note": "Table opens with the first agent-verified update. Matchweek 3 finished 6-8 September; the desk is verifying the full round before publishing."}
+  }
+}

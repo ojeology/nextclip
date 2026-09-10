@@ -301,3 +301,19 @@ Chain: 821 pages / 79,377 links OK (+2,793 = drawer links); validator ok; allowl
 **Shipped:** PL fixtures page upgraded to the full 380-fixture official calendar (verified MW4 card on top, club-hub links, TV chips, TBC policy); 4 new league calendar pages (flat routes after the router collision was caught by the validator); club pages enriched with city + official-source links + club badge; clubs index badged; slug bridges + build-time asserts; 44 MB of unused old art pruned (recoverable on branch).
 
 **Verification:** 863 pages / 92,650 links OK, allowlist 853, validator ok, calendars in live sitemap, badges mirrored to public/. Report addendum filed; score revised 7.5 -> 8.0.
+
+---
+
+## Batch 9 — Scores, tables, top scorers + the data agent — DONE 2026-09-10
+
+**Directive:** user: "The score, table, top scorer and github agent that will update are not there."
+
+**Shipped (5 new pages + the automation):**
+- **Scores:** /premier-league-results/ — all 30 verified scores from MW1-3 (source: worldfootball.net all-matches, fetched 10 Sep; results reproduce the four-source table exactly). 
+- **Tables:** /la-liga-table/ (after MD4: Barcelona 12/12, 17:2) and /bundesliga-table/ (after MD2: Augsburg top on 7:1) — from worldfootball standings data, stamped; /premier-league-table/ already live from batch 7.
+- **Top scorers:** /premier-league-top-scorers/ (Haaland/Isak/Fernandes on 3 — Guardian 10 Sep cross-checked with worldfootball) and /la-liga-top-scorers/ (Raphinha 6, Camello 5, Aubameyang/Boyé/Budimir 4 — worldfootball, after MD4).
+- **THE AGENT:** scripts/sports_update_agent.py + .github/workflows/sports-update.yml — scheduled daily (06:00/22:00 UTC) + manual dispatch; fetches tables/results/scorers for all five leagues from football-data.org v4, writes content/sports-live.json (single data source the build renders), rebuilds and pushes if changed (Render auto-deploys). Safety: no key configured -> writes NOTHING and exits non-zero (the desk never fabricates; verified by test). One-time setup: add free football-data.org key as repo secret FOOTBALL_DATA_API_KEY.
+- **Data file architecture:** content/sports-live.json is the single source for league data pages; pages build only when data exists, so Serie A/Ligue 1 tables (marked pending in the file with honest notes — partial standings are not published) open automatically on the agent's first successful run.
+- Wiring: PL hub/laliga desk/bundesliga hub/Desks mega/sports index card/fixtures page all link the new pages.
+
+**Verification:** clean chain green — **868 pages / 93,190 links OK**, allowlist 858, validator ok, 5/5 new sitemap routes, 30/30 result rows, agent no-key safety test passed (file untouched).

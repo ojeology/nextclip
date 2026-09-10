@@ -233,6 +233,7 @@ table.lg-table{width:100%;border-collapse:collapse;min-width:640px;font:500 14px
 .fx-row .fx-tie{font-family:var(--serif);font-size:17.5px;font-weight:700}
 .fx-row .fx-where{color:var(--muted);font-size:13px}
 .fx-row .fx-tv{font:600 10.5px var(--sans);letter-spacing:.06em;text-transform:uppercase;color:var(--dim);border:1px solid var(--line);border-radius:99px;padding:2px 9px}
+.fx-score{font-family:var(--serif);font-size:19px;color:var(--accent);padding:0 8px}
 .cal-mw{font:800 11px var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin:30px 0 6px;padding-top:14px;border-top:2px solid var(--line-strong)}
 .club-badge{display:block;border:1px solid var(--line);background:var(--sheet);border-radius:12px;padding:6px}
 .cov-badge{width:76px;height:76px;margin-top:18px}
@@ -320,6 +321,8 @@ def _nav_items(pub):
     if pub == "sports":
         epl = [("HEAD", "The Premier League"), ("/premier-league/", "The Premier League hub"),
                ("/premier-league-table/", "The live table"),
+               ("/premier-league-results/", "Results \u00b7 MW1\u20133"),
+               ("/premier-league-top-scorers/", "Top scorers"),
                ("/premier-league-fixtures/", "Fixtures &amp; results"),
                ("/premier-league-clubs/", "All twenty clubs"),
                ("/premier-league-matchweek-4-preview/", "Matchweek 4 preview \u00b7 live"),
@@ -343,6 +346,7 @@ def _nav_items(pub):
         desks = [("HEAD", "The desks"), ("/sports/explainers/", "All explainers"),
                  ("/sports/analysis/", "The analysis shelf"),
                  ("/sports/transfers/", "The transfer desk"),
+                 ("/la-liga-table/", "LaLiga table"),
                  ("/serie-a/", "Serie A hub"),
                  ("/bundesliga/", "Bundesliga hub"),
                  ("/ligue-1/", "Ligue 1 hub")]
@@ -1003,6 +1007,7 @@ def sports_pages():
         CH[{v: k for k, v in BADGE.items()}.get(_c["slug"], _c["slug"])] = _c
     _missing_ch = [r[2] for r in sld.PL_TABLE if r[2] not in CH]
     assert not _missing_ch, "club-history missing: " + str(_missing_ch)
+    LIVE = _cal("sports-live.json") if (_root / "content" / "sports-live.json").exists() else {}
     def _lg_head():
         return head("sports", "Analysis, stories and the long view \u2014 never betting.")
 
@@ -1035,6 +1040,8 @@ def sports_pages():
         + '<li><a href="/premier-league-table/"><span><b>The live table</b><small>Twenty clubs after Matchweek 3 \u2014 stamped with the date and the sources, updated as rounds are verified.</small></span><span class="meta">Live</span></a></li>'
         + '<li><a href="/premier-league-fixtures/"><span><b>Fixtures &amp; results</b><small>The full 380-fixture official calendar, with the verified Matchweek 4 card on top.</small></span><span class="meta">This weekend</span></a></li>'
         + '<li><a href="/premier-league-clubs/"><span><b>All twenty clubs</b><small>Every club\u2019s hub: record, goal difference, next fixture, the story on one page.</small></span><span class="meta">Clubs</span></a></li>'
+        + '<li><a href="/premier-league-results/"><span><b>Results, MW1\u20133</b><small>Every verified score from the season\u2019s opening rounds.</small></span><span class="meta">Results</span></a></li>'
+        + '<li><a href="/premier-league-top-scorers/"><span><b>Top scorers</b><small>The Golden Boot race, verified and dated.</small></span><span class="meta">Scorers</span></a></li>'
         + '<li><a href="/premier-league-matchweek-4-preview/"><span><b>Matchweek 4, previewed honestly</b><small>The desk\u2019s live edition for the derby weekend \u2014 written Thursday, no odds.</small></span><span class="meta">This week</span></a></li>'
         + '<li><a href="/how-the-premier-league-table-works/"><span><b>How the table works</b><small>Points, goal difference, tiebreakers \u2014 and what actually happens if two clubs finish level.</small></span><span class="meta">Understand</span></a></li>'
         + '</ul></section>'
@@ -1108,6 +1115,8 @@ def sports_pages():
         + '<ul class="list">'
         + '<li><a href="/premier-league-matchweek-4-preview/"><span><b>Matchweek 4, previewed honestly</b><small>The desk\u2019s live edition: the four storylines, the real table, no odds.</small></span><span class="meta">Live</span></a></li>'
         + '<li><a href="/premier-league-table/"><span><b>The live table</b><small>Where all twenty clubs stand going into the round.</small></span><span class="meta">Live</span></a></li>'
+        + '<li><a href="/premier-league-results/"><span><b>Results, MW1\u20133</b><small>All thirty verified scores from the opening rounds.</small></span><span class="meta">Results</span></a></li>'
+        + '<li><a href="/premier-league-top-scorers/"><span><b>Top scorers</b><small>Haaland, Isak and Fernandes lead \u2014 verified list.</small></span><span class="meta">Scorers</span></a></li>'
         + '<li><a href="/premier-league-matchweek-2-preview/"><span><b>Matchweek 2 preview (archive)</b><small>The desk\u2019s pre-season window editions, kept as published.</small></span><span class="meta">Archive</span></a></li>'
         + '<li><a href="/deadline-day-dont-try-to-make-sense-of-it/"><span><b>Deadline day field guide (archive)</b><small>Why the window\u2019s last night looks the way it does.</small></span><span class="meta">Archive</span></a></li>'
         + '</ul></section>'
@@ -1214,6 +1223,16 @@ def sports_pages():
                       cname + " in the " + sld.SEASON + " Premier League: " + ground + ", founded " + str(founded) + ", this season\u2019s verified record and next fixture \u2014 the desk\u2019s club gateway.", club_page))
 
     for lslug, lf in sld.LEAGUE_FACTS.items():
+        _lld = LIVE.get("leagues", {}).get(lslug, {}) if LIVE else {}
+        _live_rows = ""
+        if _lld.get("table"):
+            _live_rows += ('<li><a href="/' + lslug + '-table/"><span><b>The live table</b><small>All eighteen clubs, stamped with its verification time.</small></span><span class="meta">Live</span></a></li>')
+        if _lld.get("scorers"):
+            _live_rows += ('<li><a href="/' + lslug + '-top-scorers/"><span><b>Top scorers</b><small>The scoring race, verified and dated.</small></span><span class="meta">Scorers</span></a></li>')
+        if _lld.get("table"):
+            status_prose = ('<div class="prose"><p>The live <a href="/' + lslug + '-table/">table</a> is open and stamped with its verification time, and the results and scoring charts join it as the desk\u2019s data agent verifies each round. The same standard the <a href="/premier-league/">Premier League hub</a> meets, league by league.</p>')
+        else:
+            status_prose = ('<div class="prose"><p>The ' + lf["name"] + ' table and fixture list open here as soon as the desk verifies this season\u2019s rounds across sources \u2014 the same standard the <a href="/premier-league/">Premier League hub</a> already meets. Until then this page will not publish unverified numbers: a wrong table is worse than an honest gap. The desk\u2019s evergreen layer applies to every league on it.</p>')
         lh = (_lg_head()
             + '<main id="main"><div class="wrap">'
             + '<nav class="crumb"><a href="/sports/">Sport</a> / ' + lf["name"] + '</nav>'
@@ -1224,9 +1243,10 @@ def sports_pages():
             + '<div class="prose"><p>' + lf["body_intro"] + '</p>'
             + '<p>The defending champions are <b>' + lf["champion"] + '</b> \u2014 ' + lf["titles_note"] + '. ' + lf["season_note"] + ' Like every league on this desk, promotion and relegation decide the edges of the table: <a href="/promotion-and-relegation-explained/">the system, explained</a>. European places flow from league position into <a href="/how-the-champions-league-works/">the Champions League</a> \u2014 and <a href="/champions-league-new-format-explained/">the new 36-team format</a> changed what qualification is worth.</p></div></section>'
             + '<section class="section alt"><div class="section-head"><p class="kicker">Data desk status</p><h2>Honest, as always.</h2></div>'
-            + '<div class="prose"><p>The ' + lf["name"] + ' table and fixture list open here as soon as the desk verifies this season\u2019s rounds across sources \u2014 the same standard the <a href="/premier-league/">Premier League hub</a> already meets. Until then this page will not publish unverified numbers: a wrong table is worse than an honest gap. The desk\u2019s evergreen layer applies to every league on it.</p></div></section>'
+            + status_prose + '</div></section>'
             + '<section class="section"><div class="section-head"><p class="kicker">While you wait</p><h2>The shelf works in any league.</h2></div>'
             + '<ul class="list">'
+            + _live_rows
             + '<li><a href="/' + lslug + '-fixtures/"><span><b>The 2026-27 calendar</b><small>Every scheduled fixture, dated and stamped \u2014 results join only once verified.</small></span><span class="meta">Calendar</span></a></li>'
             + '<li><a href="/sports/explainers/"><span><b>The explainers shelf</b><small>Offside, VAR, transfers, the pyramid \u2014 the laws are the same everywhere.</small></span><span class="meta">Understand</span></a></li>'
             + '<li><a href="/how-the-champions-league-works/"><span><b>How the Champions League works</b><small>Where every league\u2019s best clubs end up.</small></span><span class="meta">Understand</span></a></li>'
@@ -1237,6 +1257,86 @@ def sports_pages():
         pages.append(("/" + lslug + "/", "The " + lf["name"] + " hub \u2014 format, champions, coverage | BRYME Sport",
                       "The " + lf["name"] + " on BRYME Sport: " + str(lf["clubs"]) + " clubs, " + str(lf["rounds"]) + " rounds, defending champions " + lf["champion"] + " \u2014 the gateway that grows as rounds are verified.", lh))
 
+    # ---- batch 10: data-file pages (tables/results/scorers) — the agent grows these automatically ----
+    if not LIVE:
+        LIVE = _cal("sports-live.json") if (_root / "content" / "sports-live.json").exists() else {}
+    LLEAGUES = [("premier-league", "Premier League", "/premier-league/"),
+                ("la-liga", "La Liga", "/laliga/"),
+                ("bundesliga", "Bundesliga", "/bundesliga/"),
+                ("serie-a", "Serie A", "/serie-a/"),
+                ("ligue-1", "Ligue 1", "/ligue-1/")]
+    def _gd(g):
+        return ("+" + str(g)) if g > 0 else str(g)
+    for lslug, lname, lhub in LLEAGUES:
+        ld = LIVE.get("leagues", {}).get(lslug, {})
+        if ld.get("table") and lslug != "premier-league":
+            trows = ""
+            n_cl = len(ld["table"])
+            rel_at = 17 if n_cl == 20 else 16
+            for row in ld["table"]:
+                pos, name, pl_, w_, d_, l_, gf_, ga_, gd_, pts_ = row
+                cls = ' class="rel"' if pos == rel_at else ""
+                trows += ('<tr' + cls + '><td class="pos">' + str(pos) + '</td><td class="club-b">' + html.escape(str(name)) + '</td>'
+                          + "".join('<td class="num">' + str(x) + '</td>' for x in (pl_, w_, d_, l_, gf_, ga_))
+                          + '<td class="num">' + _gd(gd_) + '</td><td class="num"><b>' + str(pts_) + '</b></td></tr>')
+            tp = (_lg_head()
+                + '<main id="main"><div class="wrap">'
+                + '<nav class="crumb"><a href="/sports/">Sport</a> / <a href="' + lhub + '">' + lname + '</a> / Table</nav>'
+                + '<section class="cover"><p class="kicker">' + lname + ' \u00b7 ' + sld.SEASON + ' \u00b7 the table</p>'
+                + '<h1 class="cover-title" style="font-size:clamp(30px,4.6vw,48px)">The ' + sld.SEASON + ' ' + lname + ' table.</h1>'
+                + '<p class="byline">' + html.escape(str(ld.get("table_updated", ""))) + ' \u00b7 source: ' + html.escape(str(LIVE.get("source", ""))) + ' \u00b7 the desk updates this page only after each round is verified</p></section>'
+                + '<section class="section"><div class="lg-scroll"><table class="lg-table">'
+                + '<thead><tr><th>Pos</th><th>Club</th><th class="num">P</th><th class="num">W</th><th class="num">D</th><th class="num">L</th><th class="num">GF</th><th class="num">GA</th><th class="num">GD</th><th class="num">Pts</th></tr></thead>'
+                + '<tbody>' + trows + '</tbody></table></div></section>'
+                + '<section class="section alt"><div class="prose"><p>Three points for a win, one for a draw; tiebreakers run goal difference, then goals scored \u2014 <a href="/how-the-premier-league-table-works/">how league tables work</a> explains the full order. The relegation places are marked: <a href="/promotion-and-relegation-explained/">why the pyramid works that way</a>. Club-hub links open for this league as rounds are verified \u2014 meanwhile the <a href="' + lhub + '">' + lname + ' hub</a> and the <a href="/' + lslug + '-fixtures/">full 2026-27 calendar</a> are live.</p></div></section>'
+                + '</div></main>' + foot("sports"))
+            pages.append(("/" + lslug + "-table/", lname + " table " + sld.SEASON + " \u2014 verified, dated | BRYME Sport",
+                          "The " + sld.SEASON + " " + lname + " table, " + str(n_cl) + " clubs, stamped with its verification date and source. No odds, ever.", tp))
+        if ld.get("results"):
+            rsecs = ""
+            for blk in ld["results"]:
+                rrows = ""
+                for m in blk["matches"]:
+                    hsl = NAME_SLUG.get(m["h"]); asl = NAME_SLUG.get(m["a"])
+                    hl = ('<a href="/clubs/' + hsl + '/">' + html.escape(m["h"]) + '</a>') if hsl else html.escape(m["h"])
+                    al = ('<a href="/clubs/' + asl + '/">' + html.escape(m["a"]) + '</a>') if asl else html.escape(m["a"])
+                    rrows += ('<div class="fx-row"><span class="fx-when">' + html.escape(str(m["d"])) + '</span>'
+                              + '<span class="fx-tie">' + hl + '<b class="fx-score">' + str(m["hs"]) + '\u2013' + str(m["as"]) + '</b>' + al + '</span>'
+                              + '<span class="fx-where">Full time</span></div>')
+                rsecs += '<p class="cal-mw">Matchweek ' + str(blk["mw"]) + '</p>' + rrows
+            rp = (_lg_head()
+                + '<main id="main"><div class="wrap">'
+                + '<nav class="crumb"><a href="/sports/">Sport</a> / <a href="' + lhub + '">' + lname + '</a> / Results</nav>'
+                + '<section class="cover"><p class="kicker">' + lname + ' \u00b7 ' + sld.SEASON + ' \u00b7 results</p>'
+                + '<h1 class="cover-title" style="font-size:clamp(30px,4.6vw,48px)">The season\u2019s results, verified.</h1>'
+                + '<p class="byline">' + html.escape(str(ld.get("results_updated", ""))) + ' \u00b7 source: ' + html.escape(str(LIVE.get("source", ""))) + ' \u00b7 a score appears here only once the desk can verify it \u2014 no guesses, ever</p></section>'
+                + rsecs
+                + '<section class="section alt"><div class="prose"><p>Where the table stands after these results: <a href="/premier-league-table/">the live table</a>. What the weekends meant: the <a href="/premier-league-matchweek-4-preview/">Matchweek desk edition</a>. Coming up: <a href="/premier-league-fixtures/">the verified fixture card</a>. The vocabulary behind the numbers: <a href="/xg-explained/">xG, explained</a>.</p></div></section>'
+                + '</div></main>' + foot("sports"))
+            pages.append(("/" + lslug + "-results/", lname + " results " + sld.SEASON + " \u2014 every verified score | BRYME Sport",
+                          "Verified " + sld.SEASON + " " + lname + " results, matchweek by matchweek, stamped with the verification date. No invented scores, ever.", rp))
+        if ld.get("scorers"):
+            srows = ""
+            for i, sc_ in enumerate(ld["scorers"]):
+                gword = "goal</b></span></div>" if sc_["g"] == 1 else "goals</b></span></div>"
+                srows += ('<div class="fx-row"><span class="fx-when">#' + str(i + 1) + '</span>'
+                          + '<span class="fx-tie">' + html.escape(str(sc_["p"])) + '</span>'
+                          + '<span class="fx-where">' + html.escape(str(sc_.get("c", ""))) + ' \u00b7 <b>' + str(sc_["g"]) + ' ' + gword)
+            has_t = bool(ld.get("table")) or lslug == "premier-league"
+            tlink = ('<a href="/' + lslug + '-table/">live table</a>' if lslug != "premier-league" else '<a href="/premier-league-table/">live table</a>') if has_t else "full calendar"
+            race = {"premier-league": "the Golden Boot race", "la-liga": "the Pichichi race"}.get(lslug, "the scoring race")
+            sp = (_lg_head()
+                + '<main id="main"><div class="wrap">'
+                + '<nav class="crumb"><a href="/sports/">Sport</a> / <a href="' + lhub + '">' + lname + '</a> / Top scorers</nav>'
+                + '<section class="cover"><p class="kicker">' + lname + ' \u00b7 ' + sld.SEASON + ' \u00b7 top scorers</p>'
+                + '<h1 class="cover-title" style="font-size:clamp(30px,4.6vw,48px)">The scoring race, verified.</h1>'
+                + '<p class="byline">Updated ' + html.escape(str(ld.get("scorers_updated", LIVE.get("generated", "")))) + ' \u00b7 sources: ' + html.escape(str(ld.get("scorers_source", LIVE.get("source", "")))) + ' \u00b7 verified season totals only</p></section>'
+                + '<section class="section">' + srows + '</section>'
+                + '<section class="section alt"><div class="prose"><p>' + (race[0].upper() + race[1:]) + ' totals move fast in the opening weeks; this page updates only when the desk can verify. Keep going: the <a href="' + lhub + '">' + lname + ' hub</a>, the ' + tlink + ', and the <a href="/' + lslug + '-fixtures/">full calendar</a>.</p></div></section>'
+                + '</div></main>' + foot("sports"))
+            pages.append(("/" + lslug + "-top-scorers/", lname + " top scorers " + sld.SEASON + " \u2014 the scoring race, verified | BRYME Sport",
+                          "The " + sld.SEASON + " " + lname + " scoring race: verified season totals, dated and sourced. No guesses, ever.", sp))
+
 
     laliga_hub = (head("sports", "Analysis, stories and the long view \u2014 never betting.")
         + '<main id="main"><div class="wrap">'
@@ -1246,6 +1346,8 @@ def sports_pages():
         + '<p class="cover-dek">The desk\u2019s newest shelf opens with the honest basics: what LaLiga is, how it runs, and the fixture that carries more than ninety minutes \u2014 with the transfer mechanics that shape every Spanish squad.</p></section>'
         + '<section class="section"><div class="section-head"><p class="kicker">The shelf</p><h2>Start here.</h2></div>'
         + '<ul class="list">'
+        + '<li><a href="/la-liga-table/"><span><b>The live table</b><small>Twenty clubs after Matchweek 4 \u2014 Barcelona perfect, stamped and sourced.</small></span><span class="meta">Live</span></a></li>'
+        + '<li><a href="/la-liga-top-scorers/"><span><b>Top scorers</b><small>The Pichichi race, verified: Raphinha leads.</small></span><span class="meta">Scorers</span></a></li>'
         + '<li><a href="/la-liga-fixtures/"><span><b>The 2026-27 calendar</b><small>Every scheduled LaLiga fixture \u2014 the official calendar, dated and stamped.</small></span><span class="meta">Calendar</span></a></li>\n<li><a href="/laliga-explained/"><span><b>LaLiga, explained</b><small>Twenty clubs, the drop to Segunda, the calendar \u2014 and why the league\u2019s rhythm differs from England\u2019s.</small></span><span class="meta">Explainer</span></a></li>'
         + '<li><a href="/el-classico-explained/"><span><b>El Clásico, explained</b><small>Two institutions, two identities, one match the whole sport watches.</small></span><span class="meta">Explainer</span></a></li>'
         + '<li><a href="/why-football-transfers-collapse/"><span><b>Why transfers collapse</b><small>The four doors between a done deal and a done deal \u2014 the same in Madrid as in Manchester.</small></span><span class="meta">Explainer</span></a></li>'
@@ -1329,7 +1431,7 @@ def sports_pages():
 <div><b>{len(sports_explainers_data.SPORT_EXPLAINERS) + len(sports_analysis_data.SPORT_ANALYSIS)}</b><span>Evergreen pieces</span></div>
 <div><b>6</b><span>Dated editions</span></div>
 <div><b>6</b><span>Competitions</span></div>
-</div></section><section class="section"><div class="section-head"><p class="kicker">Six competitions, one desk</p><h2>The league system.</h2></div><ul class="list"><li><a href="/premier-league/"><span><b>Premier League</b><small>Table | Fixtures | Clubs | Matchweek | Desk \u2014 the full gateway, live.</small></span><span class="meta">England</span></a></li><li><a href="/laliga/"><span><b>LaLiga</b><small>The Spanish desk: LaLiga and El Clásico, explained plainly.</small></span><span class="meta">Spain</span></a></li><li><a href="/serie-a/"><span><b>Serie A</b><small>Italy\u2019s tactician\u2019s league \u2014 format, champions, history.</small></span><span class="meta">Italy</span></a></li><li><a href="/bundesliga/"><span><b>Bundesliga</b><small>Germany\u2019s 18 clubs and the 50+1 model.</small></span><span class="meta">Germany</span></a></li><li><a href="/ligue-1/"><span><b>Ligue 1</b><small>France, the academy superpower \u2014 and PSG\u2019s project.</small></span><span class="meta">France</span></a></li><li><a href="/champions-league/"><span><b>Champions League</b><small>The 36-team format, explained from every angle.</small></span><span class="meta">Europe</span></a></li></ul></section>
+</div></section><section class="section"><div class="section-head"><p class="kicker">Six competitions, one desk</p><h2>The league system.</h2></div><ul class="list"><li><a href="/premier-league/"><span><b>Premier League</b><small>Table | Fixtures | Results | Clubs | Scorers \u2014 the full gateway, live.</small></span><span class="meta">England</span></a></li><li><a href="/laliga/"><span><b>LaLiga</b><small>The Spanish desk: LaLiga and El Clásico, explained plainly.</small></span><span class="meta">Spain</span></a></li><li><a href="/serie-a/"><span><b>Serie A</b><small>Italy\u2019s tactician\u2019s league \u2014 format, champions, history.</small></span><span class="meta">Italy</span></a></li><li><a href="/bundesliga/"><span><b>Bundesliga</b><small>Germany\u2019s 18 clubs and the 50+1 model.</small></span><span class="meta">Germany</span></a></li><li><a href="/ligue-1/"><span><b>Ligue 1</b><small>France, the academy superpower \u2014 and PSG\u2019s project.</small></span><span class="meta">France</span></a></li><li><a href="/champions-league/"><span><b>Champions League</b><small>The 36-team format, explained from every angle.</small></span><span class="meta">Europe</span></a></li></ul></section>
 <section class="section"><div class="section-head"><p class="kicker">Evergreen explainers</p><h2>Understand the game.</h2></div>
 <ul class="list">{''.join(expl_rows)}</ul></section>
 <section class="section"><div class="section-head"><p class="kicker">The shelves</p><h2>Analysis, the transfer desk &amp; the Champions League.</h2></div>
