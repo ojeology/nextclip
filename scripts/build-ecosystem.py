@@ -998,6 +998,51 @@ _TECH_FIRSTHAND = {
     "overfitting-detection-guide": "BRYME Technical Research \u00b7 first-hand project report",
 }
 
+_TOOL_JS = {"json-formatter": "json", "base64-encoder": "base64", "url-encoder": "url",
+            "uuid-generator": "uuid", "timestamp-converter": "timestamp", "word-counter": "wordcount",
+            "case-converter": "case", "http-status-lookup": "status"}
+
+def tech_tool_pages():
+    """BRYME Tools (master build M3): client-side tools at /tech/tool/<slug>/, CSP-safe."""
+    import tech_tools_data
+    tools = tech_tools_data.TOOLS
+    pages = []
+    for slug, name, title, dek, art, what, ui in tools:
+        sibs = [t for t in tools if t[0] != slug]
+        sib_btns = "".join('<a class="btn secondary" href="/tool/' + t[0] + '/">' + t[1].split(" (")[0].split(" / ")[0] + '</a>'
+                           for t in (sibs[0], sibs[2], sibs[4], sibs[6]))
+        guide_btn = ('<a class="btn secondary" href="/' + art + '/">Read the guide</a>') if art else ""
+        tbody = (head("tech", "Practical technology. No theatre.")
+            + '<main id="main"><div class="wrap">'
+            + '<nav class="crumb"><a href="/tech/">Tech</a> / <a href="/tool/">Toolbox</a> / ' + name + "</nav>"
+            + '<section class="cover"><p class="kicker">BRYME Tools \u00b7 runs entirely in your browser</p>'
+            + '<h1 class="cover-title" style="font-size:clamp(30px,4.6vw,48px)">' + title + "</h1>"
+            + '<p class="cover-dek">' + dek + "</p></section>"
+            + '<section class="section"><div class="wrap"><link rel="stylesheet" href="/assets/tech-tools.css">' + ui + "</div></section>"
+            + '<section class="section alt"><div class="prose">' + what + "</div></section>"
+            + '<section class="section"><div class="prose"><p><b>Privacy note:</b> every tool on this desk processes your input on your device, in this page \u2014 nothing is uploaded, stored or sent anywhere. The same policy the <a href="/tech/terms/">terms</a> and <a href="/tech/privacy/">privacy</a> pages promise.</p></div>'
+            + '<div class="actions">' + guide_btn + sib_btns + '<a class="btn secondary" href="/tech/">All of BRYME Tech</a></div></section>'
+            + '<script src="/assets/tool-' + _TOOL_JS[slug] + '.js" defer></script>'
+            + "</div></main>" + foot("tech"))
+        pages.append(("/tool/" + slug + "/", title + " | BRYME Tools", dek, tbody))
+    hub_rows = "".join('<li><a href="/tool/' + slug + '/"><span><b>' + title + "</b><small>" + dek + "</small></span>"
+                       '<span class="meta">Tool</span></a></li>' for slug, name, title, dek, art, what, ui in tools)
+    hub = (head("tech", "Practical technology. No theatre.")
+        + '<main id="main"><div class="wrap">'
+        + '<nav class="crumb"><a href="/tech/">Tech</a> / The toolbox</nav>'
+        + '<section class="cover"><p class="kicker">BRYME Tools \u00b7 the toolbox</p>'
+        + '<h1 class="cover-title">Small tools, zero strings.</h1>'
+        + '<p class="cover-dek">Developer and writer utilities that run entirely in your browser: no accounts, no uploads, no data collection \u2014 open the page, use the tool, close the page. Each one has a companion guide explaining the format behind it.</p></section>'
+        + '<section class="section"><div class="section-head"><p class="kicker">' + str(len(tools)) + ' tools</p><h2>The shelf.</h2></div>'
+        + '<ul class="list">' + hub_rows + "</ul></section>"
+        + '<section class="section alt"><div class="section-head"><p class="kicker">The honest bit</p><h2>What "runs in your browser" means.</h2></div>'
+        + '<div class="prose"><p>Every tool here is a small script served with this page and executed by <em>your</em> browser on <em>your</em> device. There is no backend to send your text to, no logging, no account. The <a href="/tech/disclaimer/">disclaimer</a> applies: general-purpose utilities, provided as-is \u2014 and the standing advice holds everywhere: do not paste secrets into web tools, including these.</p></div></section>'
+        + '</div></main>' + foot("tech"))
+    pages.insert(0, ("/tool/", "BRYME Tools \u2014 browser tools, zero data collection | BRYME Tech",
+                     "Eight free browser tools \u2014 JSON formatter, Base64, URL encoding, UUID generator, timestamps, word counter, case converter, HTTP status lookup. Client-side, no data collection.", hub))
+    return pages
+
+
 def tech_pages():
     arts = _load_tech()
     for a in arts:
@@ -1098,11 +1143,12 @@ def tech_pages():
         + '<h1 class="cover-title">Practical technology. No theatre.</h1>'
         + '<p class="cover-dek">You have a technology problem, question or decision. This desk helps you understand or solve it \u2014 with guides checked against the real products and real deploys, dated honestly, and evergreen on purpose.</p></section>'
         + '<section class="section"><div class="section-head"><p class="kicker">Handpicked</p><h2>Start here.</h2></div>'
-        + '<ul class="list"'
-        + '<section class="section"><div class="section-head"><p class="kicker">Handpicked</p><h2>Start here.</h2></div>'
         + '<ul class="list">' + start_rows + "</ul></section>"
         + '<section class="section alt"><div class="section-head"><p class="kicker">Browse by need</p><h2>Sections of this desk.</h2></div>'
         + '<div class="cards">' + cat_cards + "</div>"
+        + '</section>'
+        + '<section class="section"><div class="section-head"><p class="kicker">Interactive</p><h2>The toolbox.</h2></div>'
+        + '<p class="lede">Eight small tools that run entirely in your browser &mdash; nothing you type or paste is sent anywhere: <a href="/tool/json-formatter/">JSON formatter</a> &middot; <a href="/tool/base64-encoder/">Base64 encoder</a> &middot; <a href="/tool/url-encoder/">URL encoder</a> &middot; <a href="/tool/uuid-generator/">UUID generator</a> &middot; <a href="/tool/timestamp-converter/">timestamp converter</a> &middot; <a href="/tool/word-counter/">word counter</a> &middot; <a href="/tool/case-converter/">case converter</a> &middot; <a href="/tool/http-status-lookup/">HTTP status lookup</a>. Each has a <a href="/tech/what-is-json/">companion guide</a> explaining the underlying format.</p>'
         + '</section>'
         + '<section class="section"><div class="section-head"><p class="kicker">Freshly dated</p><h2>Recently updated.</h2></div>'
         + '<ul class="list">' + latest_rows + "</ul></section>"
@@ -1114,6 +1160,7 @@ def tech_pages():
     for cslug, pl in cat_pages.items():
         pages.extend(pl)
     pages.extend(art_page(a) for a in arts)
+    pages.extend(tech_tool_pages())
     return pages + tech_trust_pages() + legal_pages("tech", "BRYME Tech", "Practical technology from people who ran the thing.")
 
 

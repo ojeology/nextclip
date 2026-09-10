@@ -134,3 +134,23 @@ Built (7, new cat `quant` after coding, hub /tech/quant/):
   related shelf auto-fills same-cat (7 quant pieces). Word counts 442-576.
 Chain after M1+M2: tech 113 pages (+12), site 787 pages / 75,889 links OK; allowlist v26 777
 routes; validator ok. Live sweep follows push.
+
+### M3 — DONE 2026-09-10 (commit follows)
+Built: /tech/tool/ hub + 8 client-side tools — /tech/tool/json-formatter/ · base64-encoder ·
+url-encoder · uuid-generator · timestamp-converter · word-counter · case-converter ·
+http-status-lookup — plus 5 companion articles: /tech/what-is-json/ · /tech/base64-explained/ ·
+/tech/uuid-guide/ · /tech/unix-time-explained/ · /tech/http-status-codes-explained/.
+- CSP-safe: behaviour in 8 external files assets/tool-*.js (script-src 'self'; node --check on
+  each), styles in assets/tech-tools.css (theme-agnostic: inherit + rgba, no dark-mode break);
+  no inline JS anywhere; status table works with JS disabled (filter is the only dynamic part).
+- Privacy: zero network calls, zero storage; privacy note on every tool page; "don't paste
+  secrets" stated on hub + terms (already promised in privacy page pre-tool language).
+- Sources: primary standards only — RFC 8259, RFC 4648, RFC 9562 (+4122), IANA HTTP registry,
+  RFC 9110. UUID piece covers the 2024 revision honestly; unix-time covers 2038 + leap seconds
+  qualitatively; no volatile claims anywhere in M3.
+- BUG FIXED (pre-existing): tech index had a malformed duplicated "Handpicked" section
+  (unclosed <ul class="list" fragment) — removed; verified via built-output needle.
+- Tool JS filename map (_TOOL_JS) — word-counter→wordcount, http-status-lookup→status; a
+  slug-prefix derivation bug was caught pre-build and fixed.
+Chain: tech 127 pages (+14), site 801 pages / 76,175 links OK; allowlist v26 791 routes;
+public/assets mirror verified (9 files). Live sweep follows push.

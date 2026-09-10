@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>HTTP status code lookup | BRYME Tools</title>
+<meta name="description" content="The HTTP status codes that actually matter, grouped by class, with plain-language meanings. Type to filter.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://bryme.onrender.com/tech/tool/http-status-lookup/">
+<meta property="og:type" content="website"><meta property="og:site_name" content="THE BRYME">
+<meta property="og:title" content="HTTP status code lookup | BRYME Tools"><meta property="og:description" content="The HTTP status codes that actually matter, grouped by class, with plain-language meanings. Type to filter.">
+<meta property="og:url" content="https://bryme.onrender.com/tech/tool/http-status-lookup/"><meta property="og:image" content="https://https://bryme.onrender.com/tech/tool/http-status-lookup//assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+:root{--paper:#fafaf8;--sheet:#ffffff;--ink:#14213d;--muted:#5b6b7a;--dim:#8b96a2;
+--brand:#14213d;--brand-deep:#0c1526;--accent:#5b6b7a;
+--line:rgba(20,33,61,.18);--line-strong:rgba(20,33,61,.4);--shadow:0 1px 2px rgba(0,0,0,.05),0 14px 38px rgba(0,0,0,.08);
+--serif:Georgia,'Iowan Old Style','Palatino Linotype',serif;--sans:Inter,ui-sans-serif,system-ui,sans-serif}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;min-height:100vh;color:var(--ink);background:var(--paper);font:16px/1.65 var(--sans);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}::selection{background:rgba(176,141,87,.3)}
+.wrap{width:min(calc(100% - 48px),1080px);margin:0 auto}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.skip-link{position:fixed;z-index:99;top:10px;left:10px;transform:translateY(-160%);padding:10px 16px;background:var(--brand);color:var(--sheet);font-weight:700}
+.skip-link:focus{transform:none}
+.head{position:sticky;z-index:50;top:0;background:var(--paper);border-bottom:1px solid var(--line-strong)}
+.head::before{content:"";display:block;height:6px;background:var(--brand)}
+.head::after{content:"";display:block;height:2px;background:var(--accent)}
+.mast{display:flex;align-items:baseline;gap:18px;padding:18px 0 12px;flex-wrap:wrap}
+.mast-brand{font-family:var(--serif);font-size:34px;line-height:.9;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.mast-brand span{color:var(--accent)}
+.mast-tag{font:italic 13px var(--serif);color:var(--muted);flex:1;min-width:200px}
+.parent-link{font:750 10.5px var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line);padding:7px 11px;border-radius:2px}
+.parent-link:hover{color:var(--ink);border-color:var(--line-strong)}
+.cover{padding:clamp(46px,8vw,96px) 0 clamp(36px,6vw,64px);border-bottom:3px double var(--line-strong)}
+.kicker{color:var(--accent);font:800 11.5px var(--sans);letter-spacing:.22em;text-transform:uppercase;margin:0 0 20px}
+h1.cover-title{font-family:var(--serif);font-weight:700;letter-spacing:-.018em;font-size:clamp(36px,6.4vw,70px);line-height:1.03;margin:0;max-width:15em}
+.cover-dek{font-family:var(--serif);font-size:clamp(16.5px,2.2vw,20px);line-height:1.62;color:var(--muted);max-width:58ch;margin:24px 0 0}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.btn{min-height:46px;display:inline-flex;align-items:center;padding:11px 20px;border:1px solid var(--brand);border-radius:2px;background:var(--brand);color:var(--sheet);font:700 13.5px var(--sans);letter-spacing:.04em;cursor:pointer}
+.btn:hover{background:var(--brand-deep);border-color:var(--brand-deep)}
+.btn.secondary{background:transparent;color:var(--brand);border-color:var(--line-strong)}
+.btn.secondary:hover{border-color:var(--brand);background:transparent}
+.section{padding:clamp(42px,7vw,80px) 0}
+.section.alt{background:var(--paper-2,transparent);outline:1px solid var(--line);outline-offset:-1px}
+.section-head{margin-bottom:28px}
+.section-head h2{font-family:var(--serif);font-weight:700;font-size:clamp(23px,3.2vw,32px);line-height:1.12;margin:6px 0 0;letter-spacing:-.012em}
+.section-head h2::after{content:"";display:block;width:46px;height:4px;background:var(--accent);margin-top:14px}
+.lede{font-family:var(--serif);font-size:17.5px;line-height:1.65;color:var(--muted);max-width:60ch;margin:18px 0 0}
+.list{list-style:none;margin:0;padding:0;border-top:1px solid var(--line-strong)}
+.list li{border-bottom:1px solid var(--line)}
+.list a{display:flex;gap:22px;align-items:baseline;padding:18px 6px;transition:background .15s ease,padding-left .15s ease}
+.list a:hover{background:var(--sheet);padding-left:14px}
+.list b{font-family:var(--serif);font-size:19px;line-height:1.3}
+.list a:hover b{color:var(--brand)}
+.list small{display:block;font:13px var(--sans);color:var(--muted);margin-top:3px}
+.list .meta{margin-left:auto;flex:none;font:750 11px var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--dim)}
+.prose{max-width:720px;margin:0 auto;padding:clamp(28px,5vw,54px) 0 26px}
+.prose h2{font-family:var(--serif);font-size:clamp(22px,3vw,29px);line-height:1.16;margin:44px 0 12px;padding-top:24px;border-top:1px solid var(--line)}
+.prose h3{font-family:var(--serif);font-size:19.5px;margin:28px 0 8px}
+.prose h3::before{content:"";display:inline-block;width:20px;height:4px;background:var(--accent);margin-right:11px;vertical-align:middle}
+.prose p,.prose li{font-family:var(--serif);font-size:18px;line-height:1.78}
+.prose p{margin:0 0 19px}
+.prose ul,.prose ol{padding-left:26px;margin:0 0 19px}
+.prose li+li{margin-top:9px}
+.prose a{color:var(--brand);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+.prose blockquote{margin:32px 0;padding:6px 0 6px 24px;border-left:4px solid var(--accent);font-family:var(--serif);font-style:italic;font-size:21px;line-height:1.5}
+.prose img{max-width:100%;border:1px solid var(--line);padding:6px;background:var(--sheet)}
+.crumb{padding:18px 0 10px;font:11.5px var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--dim)}
+.crumb a{color:var(--muted)}.crumb a:hover{color:var(--accent)}
+.byline{margin:16px 0 0;font-size:13px;color:var(--muted);border-top:1px solid var(--line);padding-top:13px}
+.foot{margin-top:44px;border-top:3px double var(--line-strong);background:var(--paper-2,transparent)}
+.foot-in{padding:34px 0 30px;display:flex;flex-wrap:wrap;gap:14px 34px;justify-content:space-between;font:13px var(--sans);color:var(--muted)}
+.foot-in a:hover{color:var(--ink)}
+.foot small{display:block;margin-top:8px;font:italic 12.5px var(--serif);color:var(--dim)}
+.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+.pub-card{border:1px solid var(--line-strong);border-top:6px solid var(--pc);background:var(--sheet);padding:26px 26px 22px;display:flex;flex-direction:column}
+.pub-card h3{font-family:var(--serif);font-size:24px;margin:0 0 4px;letter-spacing:-.01em}
+.pub-card .pc-kicker{font:800 10.5px var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--pc);margin:0 0 12px}
+.pub-card p{font-size:14.5px;line-height:1.6;color:var(--muted);margin:0 0 18px}
+.pub-card .btn{margin-top:auto;align-self:flex-start}
+.pub-card.live{box-shadow:var(--shadow)}
+.pub-card.soon{opacity:.92}
+.soon-tag{font:800 10px var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--muted);border:1px dashed var(--line-strong);align-self:flex-start;padding:8px 12px;margin-top:auto}
+@media(max-width:820px){.cards{grid-template-columns:1fr}.mast-tag{display:none}}
+@media print{.head,.foot,.actions,.btn{display:none!important}body{background:#fff}}
+</style>
+</head><body><a class="skip-link" href="#main">Skip to content</a>
+<header class="head"><div class="wrap mast">
+<a class="mast-brand" href="/">BRYME&nbsp;<span style="color:var(--accent)">TECH</span></a>
+<span class="mast-tag">Practical technology. No theatre.</span>
+<a class="parent-link" href="https://thebryme.com/">THE BRYME</a>
+</div></header><main id="main"><div class="wrap"><nav class="crumb"><a href="/tech/">Tech</a> / <a href="/tool/">Toolbox</a> / HTTP status code lookup</nav><section class="cover"><p class="kicker">BRYME Tools · runs entirely in your browser</p><h1 class="cover-title" style="font-size:clamp(30px,4.6vw,48px)">HTTP status code lookup</h1><p class="cover-dek">The HTTP status codes that actually matter, grouped by class, with plain-language meanings. Type to filter.</p></section><section class="section"><div class="wrap"><link rel="stylesheet" href="/assets/tech-tools.css"><label class="tt-label" for="tt-q">Filter — a code (404) or a word (timeout)</label>
+<div class="tt-btnrow"><input type="input" id="tt-q" class="tt-input" placeholder="404" aria-label="Filter status codes">
+<button type="button" id="tt-look" class="btn">Filter</button></div>
+<p id="tt-msg" class="tt-msg" aria-live="polite"></p>
+<div style="overflow-x:auto"><table class="tt-table" id="tt-table">
+<thead><tr><th>Code</th><th>Name</th><th>What it means in practice</th></tr></thead>
+<tbody>
+<tr data-code="100 continue"><td>100</td><td>Continue</td><td>The client can go ahead and send the request body.</td></tr>
+<tr data-code="101 switching protocols websocket"><td>101</td><td>Switching Protocols</td><td>Agreed to switch — this is how a WebSocket connection upgrades.</td></tr>
+<tr data-code="103 early hints"><td>103</td><td>Early Hints</td><td>Preliminary headers before the real response; a performance trick.</td></tr>
+<tr data-code="200 ok success"><td>200</td><td>OK</td><td>Worked. The body holds what you asked for.</td></tr>
+<tr data-code="201 created post"><td>201</td><td>Created</td><td>Success that made something new — the classic POST response.</td></tr>
+<tr data-code="202 accepted queued"><td>202</td><td>Accepted</td><td>Received and queued, not finished yet.</td></tr>
+<tr data-code="204 no content delete"><td>204</td><td>No Content</td><td>Success with an empty body — common after DELETE or a save.</td></tr>
+<tr data-code="206 partial content range video"><td>206</td><td>Partial Content</td><td>A range was served — video scrubbing and resumable downloads.</td></tr>
+<tr data-code="301 moved permanently redirect seo"><td>301</td><td>Moved Permanently</td><td>The address changed for good; update links — search engines transfer rankings.</td></tr>
+<tr data-code="302 found temporary redirect"><td>302</td><td>Found</td><td>A temporary redirect; the original URL remains the real one.</td></tr>
+<tr data-code="304 not modified cache"><td>304</td><td>Not Modified</td><td>The cached copy is still fresh — the quiet workhorse of fast browsing.</td></tr>
+<tr data-code="307 temporary redirect method"><td>307</td><td>Temporary Redirect</td><td>Temporary, but the HTTP method must not change.</td></tr>
+<tr data-code="308 permanent redirect method"><td>308</td><td>Permanent Redirect</td><td>Permanent, but the HTTP method must not change.</td></tr>
+<tr data-code="400 bad request malformed"><td>400</td><td>Bad Request</td><td>The request itself is malformed; the server refuses to parse it.</td></tr>
+<tr data-code="401 unauthorized authentication login"><td>401</td><td>Unauthorized</td><td>"Who are you?" — credentials missing or failed. Log in properly and retry.</td></tr>
+<tr data-code="403 forbidden permission"><td>403</td><td>Forbidden</td><td>"I know who you are — still no." A permissions problem, not a login one.</td></tr>
+<tr data-code="404 not found"><td>404</td><td>Not Found</td><td>No resource at this URL. The most famous error on the web.</td></tr>
+<tr data-code="405 method not allowed"><td>405</td><td>Method Not Allowed</td><td>A GET where only POST is accepted, and similar mismatches.</td></tr>
+<tr data-code="409 conflict duplicate"><td>409</td><td>Conflict</td><td>The request fights the resource's current state — often a duplicate.</td></tr>
+<tr data-code="410 gone permanently removed"><td>410</td><td>Gone</td><td>Removed on purpose, permanently. Tell search engines it's final.</td></tr>
+<tr data-code="413 content too large payload"><td>413</td><td>Content Too Large</td><td>The request body exceeds the server's limit.</td></tr>
+<tr data-code="414 uri too long url"><td>414</td><td>URI Too Long</td><td>The URL exceeds limits — usually a query string gone rogue.</td></tr>
+<tr data-code="415 unsupported media type content-type"><td>415</td><td>Unsupported Media Type</td><td>Wrong payload format for this endpoint (check Content-Type).</td></tr>
+<tr data-code="429 too many requests rate limit"><td>429</td><td>Too Many Requests</td><td>Rate limit hit — slow down; the response often says when to retry.</td></tr>
+<tr data-code="431 request header fields too large cookies"><td>431</td><td>Request Header Fields Too Large</td><td>Headers too big — an oversized cookie is the usual suspect.</td></tr>
+<tr data-code="451 unavailable legal reasons"><td>451</td><td>Unavailable For Legal Reasons</td><td>Blocked by a legal demand rather than a technical one.</td></tr>
+<tr data-code="500 internal server error crash"><td>500</td><td>Internal Server Error</td><td>The server's own code crashed. The cause lives in its logs.</td></tr>
+<tr data-code="501 not implemented"><td>501</td><td>Not Implemented</td><td>The server doesn't support this action at all.</td></tr>
+<tr data-code="502 bad gateway upstream proxy"><td>502</td><td>Bad Gateway</td><td>A middleman server got garbage from the server behind it.</td></tr>
+<tr data-code="503 service unavailable maintenance overloaded"><td>503</td><td>Service Unavailable</td><td>Overloaded or down for maintenance — often temporary.</td></tr>
+<tr data-code="504 gateway timeout upstream"><td>504</td><td>Gateway Timeout</td><td>The server behind the middleman took too long to answer.</td></tr>
+<tr data-code="511 network authentication required captive portal wifi"><td>511</td><td>Network Authentication Required</td><td>The Wi-Fi wants a login page first — a captive portal.</td></tr>
+</tbody></table></div></div></section><section class="section alt"><div class="prose"><h2>What this does</h2>
+<p>A filterable table of the HTTP response codes you meet in real work, grouped by class: <code>1xx</code> informational, <code>2xx</code> success, <code>3xx</code> redirects, <code>4xx</code> the client's problem, <code>5xx</code> the server's problem. Type a code (<code>404</code>) or a word (<code>timeout</code>) and the table narrows as you type.</p>
+<h2>Notes</h2>
+<p>The descriptions are deliberately plain rather than quotable-spec: what the code <em>means in practice</em> and what usually caused it. The formal definitions live in the IANA registry linked from <a href="/tech/http-status-codes-explained/">the full guide to HTTP status codes</a>. This table is static and complete in the page &mdash; it works with JavaScript disabled too (the typing filter is the only dynamic part).</p></div></section><section class="section"><div class="prose"><p><b>Privacy note:</b> every tool on this desk processes your input on your device, in this page — nothing is uploaded, stored or sent anywhere. The same policy the <a href="/tech/terms/">terms</a> and <a href="/tech/privacy/">privacy</a> pages promise.</p></div><div class="actions"><a class="btn secondary" href="/http-status-codes-explained/">Read the guide</a><a class="btn secondary" href="/tool/json-formatter/">JSON formatter & validator</a><a class="btn secondary" href="/tool/url-encoder/">URL encoder</a><a class="btn secondary" href="/tool/timestamp-converter/">Unix timestamp converter</a><a class="btn secondary" href="/tool/case-converter/">Text case converter</a><a class="btn secondary" href="/tech/">All of BRYME Tech</a></div></section><script src="/assets/tool-status.js" defer></script></div></main><footer class="foot"><div class="wrap foot-in">
+<div>© 2026 THE BRYME — Tech.</div>
+<div><a href="/tech/about/">About</a> · <a href="/tech/privacy/">Privacy</a> · <a href="/tech/contact/">Contact</a> · <a href="/tech/methodology/">Methodology</a> · <a href="/tech/corrections/">Corrections</a> · <a href="/tech/terms/">Terms</a> · <a href="/tech/disclaimer/">Disclaimer</a></div>
+<div><a href="https://thebryme.com/">thebryme.com</a></div>
+</div></footer>
+</body></html>

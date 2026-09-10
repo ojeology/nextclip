@@ -1,0 +1,13 @@
+/* BRYME Tools — shared UI (theme-agnostic: inherits colour, works in light and dark) */
+.tt-label{display:block;font-weight:600;margin:14px 0 6px;font-size:15px}
+.tt-box,.tt-input{background:rgba(127,127,127,.07);color:inherit;border:1px solid rgba(127,127,127,.35);border-radius:10px;padding:12px;font:15px/1.55 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;box-sizing:border-box;width:100%}
+.tt-input{max-width:260px;display:inline-block}
+.tt-out{background:rgba(127,127,127,.07);color:inherit;border:1px dashed rgba(127,127,127,.35);border-radius:10px;padding:12px;font:15px/1.55 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;white-space:pre-wrap;word-break:break-word;min-height:52px;margin:10px 0 4px}
+.tt-btnrow{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 4px}
+.tt-msg{min-height:1.5em;font-size:14px;color:inherit;opacity:.85}
+.tt-msg.ok{opacity:1;color:#1c7c3c}.tt-msg.err{opacity:1;color:#b3261e}
+.tt-table{width:100%;border-collapse:collapse;font-size:14.5px;margin-top:8px}
+.tt-table th{text-align:left;padding:8px 10px;border-bottom:2px solid rgba(127,127,127,.4)}
+.tt-table td{padding:8px 10px;border-bottom:1px solid rgba(127,127,127,.18);vertical-align:top}
+.tt-table td:first-child{font-family:ui-monospace,Menlo,Consolas,monospace;font-weight:700;white-space:nowrap}
+@media (max-width:640px){.tt-table td,.tt-table th{padding:6px 7px}}
