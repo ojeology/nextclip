@@ -249,3 +249,20 @@ Chain: 821 pages / 79,377 links OK (+2,793 = drawer links); validator ok; allowl
 **Verification:** full clean chain green — **825 pages / 85,148 internal links OK** (+4 pages, +5,771 links), allowlist v26 815 routes, validator ok. Needle matrix PASS on: sports index (megas, facts, drawer, theme), epl/laliga/champions-league desks, both new explainers, tech article (new header + drawer intact + bsettle), tech index facts, fitness guide (theme + nav, no drawer), entertainment page (nav, no theme), hub root (all-properties nav + cta), Writers/Home protected (no new markup; Writers' own header/theme native and untouched). 5 new URLs in sports/sitemap.xml. Mega "HEAD" marker bug (first-row rendered as link) caught and fixed pre-push across all 9 megas.
 
 **Where visible:** every page of tech/sports/fitness/entertainment/hub (new masthead + nav bar); sports index + league desks (new pages, facts rows, drawer); tech/sports mobile (hamburger drawer); tech + sports indexes (stat rows); /home and /writers unchanged.
+
+---
+
+## Batch 5 — Home & DIY readiness pass — DONE 2026-09-10
+
+**Directive:** "Make home and diy ready" (per readiness ratings: Home was B+, one parity pass short).
+
+**What shipped (commit this one):**
+- **Writers header ported to Home's own builder** (`_home_page` — home never used the shared `head()`): masthead upgraded to the Writers anatomy (mast-brand + mast-edition block with mast-date "SEPTEMBER 2026 · THE FIX-IT DESK" + tagline; theme button wrapped in mast-tools), plus a full `.main-nav` bar with 5 CSS megas + cta:
+  - **Fix it** (7 fixes) / **Maintain** (8 incl. the seasonal checklist) / **Appliances** (7) / **Understand** (8 legal+damp+payback explainers) / **Mistakes & safety** (7, routed set-aware through HOME_MISTAKES so hrefs match real paths) + cta "Once-a-season checklist".
+  - All 37 nav hrefs resolve (check-internal-links green). Megas = pure CSS hover/focus-within, shipped via BASE_CSS header block. Sidebar desk-map kept (top nav = quick jump, sidebar = section map).
+- **Home's own dark palette restored** — real regression fixed: since the tech dark-mode batch, BASE_CSS's `html[data-theme="dark"]` (specificity 0-1-1) was silently beating Home's `[data-theme="dark"]` (0-1-0) var-for-var, so Home's custom night palette (#131318 / blue brand / #c9994e accent) never rendered. All 4 HOME_CSS_EXTRA dark selectors bumped to `html[data-theme=...]` (later + equal specificity wins). home-theme.js and its toggle untouched (Home keeps its own theme system).
+- **Writers attention pattern mirrored:** cover-facts row on the home index — **76 guides & fixes · 9 sections · 9 common mistakes · 0 upsells** (counts computed from data at build time) — plus the explicit "everything on this desk" nav mentions.
+
+**Verification:** full clean chain green — **825 pages / 89,464→89,468 internal links OK** (+4,320 from nav/megas), allowlist v26 815, validator ok. Needle matrix PASS on home index / article / mistakes page / fix hub / checklist page; regression spots PASS (sports index, tech article, Writers untouched). No new pages (nav links existing content only — no placeholders).
+
+**Where visible:** every one of the 99 Home pages (new masthead + nav bar + megas), home index (stat row), dark-mode toggle now actually shows Home's own palette.

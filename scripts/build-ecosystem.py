@@ -178,10 +178,10 @@ FAMILY["home"] = dict(FAMILY["tech"])
 
 HOME_CSS_EXTRA = """
 html{color-scheme:light}
-[data-theme="dark"]{--paper:#131318;--sheet:#1b1b23;--ink:#e9e6df;--muted:#a7a29a;--dim:#7e7970;--brand:#4a7aa8;--brand-deep:#3a628c;--accent:#c9994e;--line:rgba(233,230,223,.14);--line-strong:rgba(233,230,223,.32);--shadow:0 1px 2px rgba(0,0,0,.45),0 14px 38px rgba(0,0,0,.5);color-scheme:dark}
-[data-theme="dark"] .btn{color:#fff}
-[data-theme="dark"] .skip-link{color:#fff}
-[data-theme="dark"] ::selection{background:rgba(201,153,78,.35)}
+html[data-theme="dark"]{--paper:#131318;--sheet:#1b1b23;--ink:#e9e6df;--muted:#a7a29a;--dim:#7e7970;--brand:#4a7aa8;--brand-deep:#3a628c;--accent:#c9994e;--line:rgba(233,230,223,.14);--line-strong:rgba(233,230,223,.32);--shadow:0 1px 2px rgba(0,0,0,.45),0 14px 38px rgba(0,0,0,.5);color-scheme:dark}
+html[data-theme="dark"] .btn{color:#fff}
+html[data-theme="dark"] .skip-link{color:#fff}
+html[data-theme="dark"] ::selection{background:rgba(201,153,78,.35)}
 .theme-btn{margin-left:auto;flex:none;align-self:center;border:1px solid var(--line-strong);background:transparent;color:var(--muted);border-radius:99px;width:44px;height:36px;cursor:pointer;font-size:15px;line-height:1}
 .theme-btn:hover{color:var(--ink);border-color:var(--accent)}
 .h-layout{display:grid;grid-template-columns:236px minmax(0,1fr);gap:48px;align-items:start}
@@ -1895,10 +1895,64 @@ def _home_toggle_js():
 
 def _home_mast():
     return ('<header class="head"><div class="wrap mast">'
-            '<a class="mast-brand" href="/home/">BRYME&nbsp;<span>HOME &amp; DIY</span></a>'
-            '<span class="mast-tag">Fix it. Clean it. Maintain it. Understand it.</span>'
+            '<a class="mast-brand" href="/home/">BRYME&nbsp;<span style="color:var(--accent)">HOME&nbsp;&amp;&nbsp;DIY</span></a>'
+            '<div class="mast-edition"><span class="mast-date">SEPTEMBER 2026 \u00b7 THE FIX-IT DESK</span>'
+            '<span class="mast-tag">Fix it. Clean it. Maintain it. Understand it.</span></div>'
+            '<div class="mast-tools">'
             '<button type="button" class="theme-btn" id="home-theme" aria-pressed="false" aria-label="Toggle dark mode" title="Toggle dark mode">&#9789;</button>'
-            '</div></header>')
+            '</div></div></header>')
+
+
+def _home_nav():
+    import home_mistakes_data
+    _mset = {m[0] for m in home_mistakes_data.HOME_MISTAKES}
+    def mh(slug):
+        return ("/home/mistakes/" + slug + "/") if slug in _mset else ("/home/" + slug + "/")
+    fix = [("HEAD", "The fix shelf"), ("/home/fix/", "All fixes"),
+           ("/home/how-to-fix-a-dripping-tap/", "Dripping tap"),
+           ("/home/how-to-unblock-a-toilet/", "Unblock a toilet"),
+           ("/home/how-to-fix-a-slow-draining-sink/", "Slow-draining sink"),
+           ("/home/washing-machine-wont-drain/", "Washer won\u2019t drain"),
+           ("/home/fridge-not-cold-enough/", "Fridge not cold"),
+           ("/home/why-does-my-circuit-breaker-keep-tripping/", "Breaker keeps tripping"),
+           ("/home/how-to-bleed-a-radiator/", "Bleed a radiator")]
+    maintain = [("HEAD", "The care shelf"), ("/home/maintain/", "All maintenance"),
+                ("/home/seasonal-home-maintenance-checklist/", "The seasonal checklist"),
+                ("/home/deep-clean-schedule/", "Deep-clean schedule"),
+                ("/home/how-to-clean-a-washing-machine/", "Clean a washing machine"),
+                ("/home/fridge-coils-twice-a-year/", "Fridge coils, twice a year"),
+                ("/home/dryer-lint-every-load/", "Dryer lint, every load"),
+                ("/home/hvac-filter-change-habit/", "HVAC filter habit"),
+                ("/home/test-alarms-monthly/", "Test alarms monthly")]
+    appliances = [("HEAD", "The appliance shelf"), ("/home/appliances/", "All appliances"),
+                  ("/home/dishwasher-loading-mistakes/", "Dishwasher loading"),
+                  ("/home/stop-pre-rinsing-dishes/", "Stop pre-rinsing dishes"),
+                  ("/home/vinegar-in-the-dishwasher/", "Vinegar in the dishwasher"),
+                  ("/home/smart-appliances-worth-it/", "Smart appliances, worth it?"),
+                  ("/home/washing-machine-heavy-items/", "Heavy items in the washer"),
+                  ("/home/garbage-disposal-mistakes/", "Garbage disposal")]
+    understand = [("HEAD", "The knowledge shelf"), ("/home/understand/", "All explainers"),
+                  ("/home/condensation-vs-rising-vs-penetrating-damp/", "The three damp types"),
+                  ("/home/building-regs-vs-planning-permission/", "Building regs vs planning"),
+                  ("/home/renter-vs-owner-repairs/", "Renter vs owner repairs"),
+                  ("/home/part-p-explained/", "Part P, explained (UK)"),
+                  ("/home/us-home-permits/", "US home permits"),
+                  ("/home/uk-us-plumber-rules/", "UK vs US plumber rules"),
+                  ("/home/smart-thermostat-payback/", "Smart thermostat payback")]
+    mistakes = [("HEAD", "Avoid these"), ("/home/mistakes/", "All mistakes"),
+                (mh("electrical-fire-warning-signs"), "Electrical fire warning signs"),
+                (mh("outlet-overloading-danger"), "Outlet overloading"),
+                (mh("co-smoke-alarm-expiry"), "Alarm expiry dates"),
+                (mh("how-many-smoke-co-alarms"), "How many alarms"),
+                (mh("painting-over-damp"), "Painting over damp"),
+                (mh("bathroom-remodel-mistakes"), "Bathroom remodel mistakes"),
+                (mh("grout-sealant-neglect"), "Grout &amp; sealant neglect")]
+    parts = []
+    for label, payload in [("Fix it", fix), ("Maintain", maintain), ("Appliances", appliances),
+                           ("Understand", understand), ("Mistakes &amp; safety", mistakes)]:
+        parts.append('<div class="has-mega"><a href="' + payload[1][0] + '">' + label + "</a>" + _mega(payload) + "</div>")
+    parts.append('<a class="nav-cta" href="/home/seasonal-home-maintenance-checklist/">Once-a-season checklist</a>')
+    return '<nav class="main-nav"><div class="wrap mast-nav">' + "".join(parts) + "</div></nav>"
 
 def _home_sidebar(current):
     import home_mistakes_data
@@ -1941,7 +1995,7 @@ def _home_page(title, desc, route, cover_html, main_html, sidebar_current):
         '<meta name="twitter:card" content="summary_large_image">\n'
         + _home_theme_init() + "\n<style>" + css_for("home") + "</style>\n</head>"
         '<body><a class="skip-link" href="#main">Skip to content</a>\n'
-        + _home_mast()
+        + _home_mast() + _home_nav()
         + '<div class="wrap h-layout">' + _home_sidebar(sidebar_current)
         + '<main id="main" class="h-main">' + cover_html + main_html + "</main></div>\n"
         + foot("home") + "\n" + _home_toggle_js() + "</body></html>")
@@ -2020,7 +2074,13 @@ def home_pages():
 
     icover = ('<section class="cover"><p class="kicker">BRYME Home &amp; DIY</p>'
         + '<h1 class="cover-title">Fix it. Clean it. Maintain it. Understand it.</h1>'
-        + '<p class="cover-dek">Practical help for the problems every household hits \u2014 written for low-risk work, with the boundaries stated plainly: electrical panels, gas, structure and height belong to qualified professionals, and every guide here says exactly where that line is.</p></section>')
+        + '<p class="cover-dek">Practical help for the problems every household hits \u2014 written for low-risk work, with the boundaries stated plainly: electrical panels, gas, structure and height belong to qualified professionals, and every guide here says exactly where that line is.</p>'
+        + '<div class="cover-facts">'
+        + '<div><b>' + str(len(HOME_ARTICLES)) + '</b><span>Guides &amp; fixes</span></div>'
+        + '<div><b>9</b><span>Sections of the desk</span></div>'
+        + '<div><b>' + str(len(home_mistakes_data.HOME_MISTAKES)) + '</b><span>Common mistakes</span></div>'
+        + '<div><b>0</b><span>Upsells, ever</span></div>'
+        + '</div></section>')
     sec_cards = "".join(
         '<div class="h-sec-card"><p class="kicker" style="margin:0">'
         + str(len([s2 for s2, k2 in HOME_SLUG_SECT.items() if k2 == key]) if key != "mistakes" else len(home_mistakes_data.HOME_MISTAKES))
