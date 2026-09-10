@@ -154,3 +154,23 @@ http-status-lookup — plus 5 companion articles: /tech/what-is-json/ · /tech/b
   slug-prefix derivation bug was caught pre-build and fixed.
 Chain: tech 127 pages (+14), site 801 pages / 76,175 links OK; allowlist v26 791 routes;
 public/assets mirror verified (9 files). Live sweep follows push.
+
+### M4 — DONE 2026-09-10 (commit follows)
+Built (6): /tech/parse-json-python/ · /tech/call-api-python/ · /tech/handle-api-errors-python/ ·
+/tech/store-api-data-python/ · /tech/schedule-python-scripts/ · /tech/deploy-python-app/ (first-hand).
+- HARD GATE PASSED: every executable code block extracted from the data file and RUN before
+  publish (Python 3.13): JSON parse + .get + dumps (fixtures), JSONDecodeError line/col proof,
+  BOTH urllib calls live against api.github.com (200 + real results), the retry ladder against
+  a local 429-then-200 server (Retry-After: 0, exactly 2 attempts, correct payload), sqlite
+  create/insert/upsert/query in a temp dir, sched job run to completion (3 runs), Flask app via
+  test_client (exact JSON asserted), gunicorn --version real (26.2.0), os.environ read with key
+  set. Cron lines and the gunicorn start command validated as config (not executed) + flake8-free.
+- stdlib-first teaching (urllib before requests) = code that runs anywhere; requests covered
+  honestly as the popular third-party option. Sources: official Python docs + RFC 9110 + primary
+  product docs (requests, Flask, gunicorn, Render).
+- Additive CSS: pre/code styling added to assets/content-v2.css (none existed) + mirrored.
+  deploy-python-app added to _TECH_FIRSTHAND (byline label).
+- Two process catches: (1) harness artifact (Flask root-path under exec) fixed harness-side —
+  article code unchanged and correct in real module context; (2) css append silently failed in
+  bash (second occurrence of the silent-edit class) — re-applied via python + assert, mirrored.
+Chain: tech 133 pages (+6), site 807 pages / 76,292 links OK; allowlist v26 797 routes.

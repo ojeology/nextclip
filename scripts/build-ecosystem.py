@@ -989,6 +989,7 @@ def tech_trust_pages():
 
 
 _TECH_FIRSTHAND = {
+    "deploy-python-app": "BRYME Technical Research \u00b7 first-hand project report",
     "quantlab-project-how-built": "BRYME Technical Research \u00b7 first-hand project report",
     "hundred-experiments-lessons": "BRYME Technical Research \u00b7 first-hand project report",
     "lookahead-bias-explained": "BRYME Technical Research \u00b7 first-hand project report",
