@@ -189,3 +189,13 @@ the headlines are waiting.
   ecosystem has no Money property per spec; archived intact in _recovered/, available if the
   owner ever wants it moved to Writers after a rewrite).
 - Entertainment 35→37 pages.
+
+## Home & DIY v2 re-shell (2026-09-10)
+
+- Nothing retired. All 9 existing home guides kept their URLs and bodies; they were
+  re-shelled onto the new Writers-grade layout (sidebar, dark/light mode, section hub).
+- 14 pages added: 4 section hubs (fix / maintain / appliances / understand), the
+  common-mistakes shelf (/home/mistakes/) and 8 mistake pieces under it.
+- The once-a-season checklist moved onto the same shell; URL and checklist JS unchanged.
+- Mistake pieces follow the fixed four-part shape (the mistake / why it backfires /
+  the fix / keep it from happening); no shaming, low-risk scope, boundaries stated.

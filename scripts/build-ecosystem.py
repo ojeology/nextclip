@@ -125,6 +125,37 @@ FAMILY = {
 FAMILY["fitness"] = dict(FAMILY["tech"])
 FAMILY["home"] = dict(FAMILY["tech"])
 
+HOME_CSS_EXTRA = """
+html{color-scheme:light}
+[data-theme="dark"]{--paper:#131318;--sheet:#1b1b23;--ink:#e9e6df;--muted:#a7a29a;--dim:#7e7970;--brand:#4a7aa8;--brand-deep:#3a628c;--accent:#c9994e;--line:rgba(233,230,223,.14);--line-strong:rgba(233,230,223,.32);--shadow:0 1px 2px rgba(0,0,0,.45),0 14px 38px rgba(0,0,0,.5);color-scheme:dark}
+[data-theme="dark"] .btn{color:#fff}
+[data-theme="dark"] .skip-link{color:#fff}
+[data-theme="dark"] ::selection{background:rgba(201,153,78,.35)}
+.theme-btn{margin-left:auto;flex:none;align-self:center;border:1px solid var(--line-strong);background:transparent;color:var(--muted);border-radius:99px;width:44px;height:36px;cursor:pointer;font-size:15px;line-height:1}
+.theme-btn:hover{color:var(--ink);border-color:var(--accent)}
+.h-layout{display:grid;grid-template-columns:236px minmax(0,1fr);gap:48px;align-items:start}
+.h-side{position:sticky;top:112px;padding:28px 0}
+.h-side-title{font:800 10.5px var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--dim);margin:0 0 10px;padding-left:10px}
+.h-side nav{display:block}
+.h-side nav a{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:9px 10px;border-left:2px solid transparent;font:600 13.5px var(--sans);color:var(--muted)}
+.h-side nav a:hover{color:var(--ink);background:var(--sheet)}
+.h-side nav a.active{color:var(--brand);border-left-color:var(--brand);background:var(--sheet)}
+.h-side nav a.flag{color:var(--accent)}
+.h-side nav a.active.flag{color:var(--accent)}
+.h-side nav a .n{font:700 10.5px var(--sans);color:var(--dim);border:1px solid var(--line);padding:1px 7px;border-radius:99px;flex:none}
+.h-main .cover{padding:clamp(30px,5vw,58px) 0 clamp(26px,4vw,44px)}
+.h-main h1.cover-title{font-size:clamp(30px,4.8vw,52px)}
+.h-sec-card{border:1px solid var(--line);padding:20px 22px;background:var(--sheet)}
+.h-sec-card h3{font-family:var(--serif);font-size:21px;margin:6px 0 6px}
+.h-sec-card p{margin:0;color:var(--muted);font-size:14.5px}
+.h-sec-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+@media (max-width:920px){.h-layout{display:block}.h-side{position:static;padding:16px 0;border-bottom:1px solid var(--line)}
+.h-side nav{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px}
+.h-side nav a{border:1px solid var(--line);border-radius:99px;padding:7px 14px;white-space:nowrap;border-left-width:1px}
+.h-side nav a.active{border-color:var(--brand)}
+.h-sec-grid{grid-template-columns:1fr}}
+"""
+
 FITNESS_CSS_EXTRA = """
 .fp-week .fp-day { display: grid; grid-template-columns: 44px 1fr auto; gap: 14px; align-items: center; }
 .fp-day .fp-num { font-family: var(--serif); font-size: 22px; color: var(--accent); text-align: right; }
@@ -137,7 +168,7 @@ FITNESS_CSS_EXTRA = """
 """
 
 def css_for(pub):
-    return BASE_CSS % FAMILY[pub] + (FITNESS_CSS_EXTRA if pub == "fitness" else "")
+    return BASE_CSS % FAMILY[pub] + (FITNESS_CSS_EXTRA if pub in ("fitness", "home") else "") + (HOME_CSS_EXTRA if pub == "home" else "")
 
 def shell(pub, title, desc, route, body, card=None, robots="index,follow"):
     d = route  # mode-aware base URL from SUB
@@ -1299,8 +1330,100 @@ HOME_ARTICLES = [
 <p>\u201cCompressor runs continuously, cabinet at 10\u00b0C, coils cleaned, seal tested\u201d gets a better visit than \u201cit\u2019s warm\u201d \u2014 and sometimes a better answer: knowing the checks were done may save you the call-out entirely.</p>"""),
 ]
 
+HOME_SECTIONS = [
+    ("fix", "Fix it", "Household problems and beginner repairs, honestly ordered."),
+    ("maintain", "Maintain it", "Preventive care, and the kit that does it."),
+    ("appliances", "Appliances", "Keep the machines honest."),
+    ("understand", "Understand it", "What the symptoms actually mean."),
+    ("mistakes", "Common mistakes", "The errors most homes make - and the fixes."),
+]
+HOME_SLUG_SECT = {
+    "how-to-fix-a-slow-draining-sink": "fix",
+    "how-to-fix-a-dripping-tap": "fix",
+    "how-to-unblock-a-toilet": "fix",
+    "how-to-bleed-a-radiator": "maintain",
+    "basic-toolkit-checklist": "maintain",
+    "how-to-clean-a-washing-machine": "appliances",
+    "washing-machine-wont-drain": "appliances",
+    "why-does-my-circuit-breaker-keep-tripping": "understand",
+    "fridge-not-cold-enough": "understand",
+}
+
+def _home_theme_init():
+    return ('<script>(function(){try{var t=localStorage.getItem("bryme-home-theme");'
+            'if(t==="dark"||(!t&&window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches))'
+            '{document.documentElement.setAttribute("data-theme","dark")}}catch(e){}})();</script>')
+
+def _home_toggle_js():
+    return ('<script>(function(){var b=document.getElementById("home-theme");if(!b)return;'
+            'b.addEventListener("click",function(){var d=document.documentElement;'
+            'var dark=d.getAttribute("data-theme")==="dark";'
+            'if(dark){d.removeAttribute("data-theme");}else{d.setAttribute("data-theme","dark");}'
+            'try{localStorage.setItem("bryme-home-theme",dark?"light":"dark")}catch(e){}'
+            'b.setAttribute("aria-pressed",String(!dark))});})();</script>')
+
+def _home_mast():
+    return ('<header class="head"><div class="wrap mast">'
+            '<a class="mast-brand" href="/home/">BRYME&nbsp;<span>HOME &amp; DIY</span></a>'
+            '<span class="mast-tag">Fix it. Clean it. Maintain it. Understand it.</span>'
+            '<button type="button" class="theme-btn" id="home-theme" aria-pressed="false" aria-label="Toggle dark mode" title="Toggle dark mode">&#9789;</button>'
+            '</div></header>')
+
+def _home_sidebar(current):
+    import home_mistakes_data
+    counts = {}
+    for s in HOME_SLUG_SECT.values():
+        counts[s] = counts.get(s, 0) + 1
+
+    def a(href, label, key, n=None, flag=False):
+        cls = ""
+        if key == current:
+            cls = 'active'
+        if flag:
+            cls += ' flag'
+        cls_attr = ' class="' + cls.strip() + '"' if cls else ''
+        nn = '<span class="n">' + str(n) + '</span>' if n is not None else ''
+        return '<a' + cls_attr + ' href="' + href + '">' + label + nn + '</a>'
+
+    items = (a("/home/", "Desk home", "home")
+        + a("/home/fix/", "Fix it", "fix", counts.get("fix", 0))
+        + a("/home/maintain/", "Maintain it", "maintain", counts.get("maintain", 0))
+        + a("/home/appliances/", "Appliances", "appliances", counts.get("appliances", 0))
+        + a("/home/understand/", "Understand it", "understand", counts.get("understand", 0))
+        + a("/home/mistakes/", "Common mistakes", "mistakes", len(home_mistakes_data.HOME_MISTAKES), True)
+        + a("/home/seasonal-home-maintenance-checklist/", "The seasonal checklist", "checklist", None, True))
+    return ('<aside class="h-side"><p class="h-side-title">The desk</p>'
+            '<nav aria-label="Home and DIY sections">' + items + "</nav></aside>")
+
+def _home_page(title, desc, route, cover_html, main_html, sidebar_current):
+    canonical = ORIGIN + "/home" + route
+    og = "https://" + DOMAIN + "/assets/og.png"
+    return ('<!doctype html>\n<html lang="en"><head>\n'
+        '<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">\n'
+        "<title>" + html.escape(title) + "</title>\n"
+        '<meta name="description" content="' + html.escape(desc) + '">\n'
+        '<meta name="robots" content="index,follow">\n'
+        '<link rel="canonical" href="' + canonical + '">\n'
+        '<meta property="og:type" content="website"><meta property="og:site_name" content="THE BRYME">\n'
+        '<meta property="og:title" content="' + html.escape(title) + '"><meta property="og:description" content="' + html.escape(desc) + '">\n'
+        '<meta property="og:url" content="' + canonical + '"><meta property="og:image" content="' + og + '">\n'
+        '<meta name="twitter:card" content="summary_large_image">\n'
+        + _home_theme_init() + "\n<style>" + css_for("home") + "</style>\n</head>"
+        '<body><a class="skip-link" href="#main">Skip to content</a>\n'
+        + _home_mast()
+        + '<div class="wrap h-layout">' + _home_sidebar(sidebar_current)
+        + '<main id="main" class="h-main">' + cover_html + main_html + "</main></div>\n"
+        + foot("home") + "\n" + _home_toggle_js() + "</body></html>")
+
 def home_pages():
-    import json as _j
+    import home_mistakes_data
+    import more_guides_data
+    _mset = {m2[0] for m2 in home_mistakes_data.HOME_MISTAKES}
+    def _hurl(s):
+        return ("/home/mistakes/" + s + "/") if s in _mset else ("/home/" + s + "/")
+    _have = {s2[0] for s2 in HOME_ARTICLES}
+    HOME_ARTICLES.extend((s2, ti, dek, b) for (s2, _k, ti, dek, b) in more_guides_data.HOME_MORE if s2 not in _have)
+
     def src_html(sources):
         if not sources:
             return ""
@@ -1312,155 +1435,205 @@ def home_pages():
         return ('<section class="section alt" style="border-left:4px solid var(--brand)"><div class="wrap"><p class="lede">'
                 + text + "</p></div></section>")
 
-    SAFETY_BAND = band("<b>Safety boundary.</b> Electrical panel work, gas, structural changes and anything at height belong to qualified professionals. Every guide here stops where that line starts.")
     DISCLAIMER = band("<b>General information, not professional advice.</b> Homes differ \u2014 if a job is beyond your confidence or the guide\u2019s boundary, that is what tradespeople are for.")
+    SAFETY = band("<b>Safety boundary.</b> Electrical panel work, gas, structural changes and anything at height belong to qualified professionals. Every guide here stops where that line starts.")
 
-    def art(slug, title, dek, body_html, sources, related):
-        rel_html = "".join('<li><a href="/' + s + '/">' + rt + "</a></li>" for s, rt in related)
-        schema = {"@context": "https://schema.org", "@type": "Article",
-                  "headline": title,
-                  "author": {"@type": "Organization", "name": "BRYME Home & DIY desk"},
-                  "publisher": {"@type": "Organization", "name": "THE BRYME"},
-                  "datePublished": TODAY, "dateModified": TODAY,
-                  "mainEntityOfPage": ORIGIN + "/home/" + slug + "/",
-                  "description": dek}
-        abody = (head("home", "Practical help for fixing, maintaining and understanding your home.")
-            + '<main id="main"><div class="wrap">'
-            + '<nav class="crumb"><a href="/home/">Home & DIY</a> / ' + html.escape(title) + "</nav>"
-            + '<section class="cover"><p class="kicker">Low-risk help \u00b7 boundaries stated \u00b7 no theatre</p>'
-            + '<h1 class="cover-title" style="font-size:clamp(30px,4.6vw,48px)">' + html.escape(title) + "</h1>"
-            + '<p class="byline">BRYME Home & DIY desk \u00b7 reviewed ' + TODAY + " \u00b7 general information, not professional advice</p></section>"
-            + '<section class="section alt"><div class="wrap"><p class="lede"><b>In one line:</b> ' + html.escape(dek) + "</p></div></section>"
-            + '<section class="section"><div class="prose">' + body_html + src_html(sources) + "</div></section>"
+    def sec_label(key):
+        for k2, l2, _d in HOME_SECTIONS:
+            if k2 == key:
+                return l2
+        return key
+
+    out = []
+
+    # ---------- index ----------
+    mistake_rows = []
+    mistake_pages = []
+    for n2, (slug, theme, mtitle, one_liner, mbody, sources, related) in enumerate(home_mistakes_data.HOME_MISTAKES, 1):
+        mistake_rows.append('<li><a href="/mistakes/' + slug + '/"><span><b>' + html.escape(mtitle) + "</b><small>"
+                            + html.escape(one_liner) + "</small></span>"
+                            '<span class="meta">' + html.escape(theme) + "</span></a></li>")
+        rel_html = "".join('<li><a href="' + _hurl(s) + '">' + rt + "</a></li>" for s, rt in related)
+        mcover = ('<nav class="crumb" style="padding-top:22px"><a href="/home/">Home &amp; DIY</a> / '
+                  '<a href="/home/mistakes/">Common mistakes</a> / ' + html.escape(mtitle) + "</nav>"
+            + '<section class="cover"><p class="kicker">Common mistake ' + str(n2) + ' of ' + str(len(home_mistakes_data.HOME_MISTAKES)) + " \u00b7 " + html.escape(theme) + "</p>"
+            + '<h1 class="cover-title" style="font-size:clamp(30px,4.8vw,52px)">' + html.escape(mtitle) + "</h1>"
+            + '<p class="byline">BRYME Home &amp; DIY desk \u00b7 reviewed ' + TODAY + " \u00b7 general information, not professional advice</p></section>")
+        mmain = ('<section class="section alt"><div class="wrap"><p class="lede"><b>The mistake:</b> ' + html.escape(one_liner) + "</p></div></section>"
+            + '<section class="section"><div class="prose">' + mbody + src_html(sources) + "</div></section>"
             + '<section class="section alt"><div class="section-head"><p class="kicker">Next</p><h2>Related on this desk.</h2></div>'
             + '<ul class="list">' + rel_html + "</ul>"
-            + '<div class="actions"><a class="btn secondary" href="/home/">All of BRYME Home & DIY</a></div></section>'
-            + DISCLAIMER
-            + '<script type="application/ld+json">' + _j.dumps(schema) + "</script>"
-            + "</div></main>" + foot("home"))
-        return (("/" + slug + "/"), title + " | BRYME Home & DIY", dek[:155], abody)
+            + '<div class="actions"><a class="btn secondary" href="/home/mistakes/">All common mistakes</a>'
+            + '<a class="btn secondary" href="/home/">Desk home</a></div></section>'
+            + DISCLAIMER)
+        mistake_pages.append(("/mistakes/" + slug + "/", mtitle + " | BRYME Home & DIY", one_liner[:155],
+                              _home_page(mtitle + " | BRYME Home & DIY", one_liner[:155], "/mistakes/" + slug + "/", mcover, mmain, "mistakes")))
 
+    icover = ('<section class="cover"><p class="kicker">BRYME Home &amp; DIY</p>'
+        + '<h1 class="cover-title">Fix it. Clean it. Maintain it. Understand it.</h1>'
+        + '<p class="cover-dek">Practical help for the problems every household hits \u2014 written for low-risk work, with the boundaries stated plainly: electrical panels, gas, structure and height belong to qualified professionals, and every guide here says exactly where that line is.</p></section>')
+    sec_cards = "".join(
+        '<div class="h-sec-card"><p class="kicker" style="margin:0">'
+        + str(len([s2 for s2, k2 in HOME_SLUG_SECT.items() if k2 == key]) if key != "mistakes" else len(home_mistakes_data.HOME_MISTAKES))
+        + " PIECES</p><h3>" + label + "</h3><p>" + sdek + '</p><a class="btn secondary" style="margin-top:12px" href="/home/' + key + '/">Open ' + label + "</a></div>"
+        for key, label, sdek in HOME_SECTIONS)
+    imain = ('<section class="section"><div class="section-head"><p class="kicker">Start with the classics</p><h2>The common mistakes shelf.</h2></div>'
+        + '<ul class="list">' + "".join(mistake_rows[:4]) + "</ul>"
+        + '<div class="actions"><a class="btn" href="/home/mistakes/">All ' + str(len(home_mistakes_data.HOME_MISTAKES)) + " common mistakes</a></div></section>"
+        + '<section class="section alt"><div class="section-head"><p class="kicker">Browse the desk</p><h2>Sections.</h2></div>'
+        + '<div class="h-sec-grid">' + sec_cards + "</div></section>"
+        + '<section class="section"><div class="section-head"><p class="kicker">The product</p><h2>The once-a-season checklist.</h2></div>'
+        + '<div class="prose"><p><a href="/seasonal-home-maintenance-checklist/"><b>The once-a-season home checklist</b></a> \u2014 ten checks across water, safety devices, appliances and airflow, with progress your browser remembers. Homes fail slowly, then suddenly; this catches the slow part.</p></div></section>'
+        + SAFETY)
+    out.append(("/", "BRYME Home & DIY \u2014 fix, clean, maintain, understand",
+                "Low-risk home repairs and maintenance, honestly explained \u2014 with sections, a common-mistakes shelf and the once-a-season checklist.",
+                _home_page("BRYME Home & DIY \u2014 fix, clean, maintain, understand",
+                           "Low-risk home repairs and maintenance, honestly explained.", "/",
+                           icover, imain, "home")))
+
+    # ---------- section pages ----------
+    data_by_slug = {s2[0]: s2 for s2 in HOME_ARTICLES}
+    for key, label, sdek in HOME_SECTIONS:
+        if key == "mistakes":
+            continue
+        slugs = [s for s, k2 in HOME_SLUG_SECT.items() if k2 == key]
+        rows = ""
+        for s in slugs:
+            _s2, ti, dek, _b = data_by_slug[s]
+            rows += ('<li><a href="' + _hurl(s) + '"><span><b>' + html.escape(ti) + "</b><small>" + html.escape(dek) + "</small></span>"
+                     '<span class="meta">Guide</span></a></li>')
+        others = "".join('<a class="btn secondary" href="/home/' + k2 + '/">' + l2 + "</a>"
+                         for k2, l2, _d in HOME_SECTIONS if k2 != key)
+        cover = ('<nav class="crumb" style="padding-top:22px"><a href="/home/">Home &amp; DIY</a> / ' + label + "</nav>"
+            + '<section class="cover"><p class="kicker">BRYME Home &amp; DIY \u00b7 section</p>'
+            + '<h1 class="cover-title">' + label + "</h1>"
+            + '<p class="cover-dek">' + sdek + "</p></section>")
+        main = ('<section class="section"><div class="section-head"><p class="kicker">' + str(len(slugs)) + ' guides</p><h2>Everything in ' + label + '.</h2></div>'
+            + '<ul class="list">' + rows + "</ul>"
+            + '<div class="actions">' + others
+            + '<a class="btn secondary" href="/home/">Desk home</a></div></section>')
+        out.append(("/" + key + "/", label + " | BRYME Home & DIY", sdek,
+                    _home_page(label + " | BRYME Home & DIY", sdek, "/" + key + "/", cover, main, key)))
+
+    # ---------- mistakes hub ----------
+    mcover = ('<nav class="crumb" style="padding-top:22px"><a href="/home/">Home &amp; DIY</a> / Common mistakes</nav>'
+        + '<section class="cover"><p class="kicker">The most-visited shelf on this desk</p>'
+        + '<h1 class="cover-title">Common mistakes, and how to fix them.</h1>'
+        + '<p class="cover-dek">The errors most homes make \u2014 with too much soap, the wrong cleaner combo, a watering can on a schedule, a drill in the dark. Every piece follows the same honest shape: the mistake, why it backfires, the fix, and how to keep it from happening again.</p></section>')
+    mmain = ('<section class="section"><div class="section-head"><p class="kicker">'
+             + str(len(home_mistakes_data.HOME_MISTAKES)) + ' mistakes, no shaming</p><h2>The shelf.</h2></div>'
+        + '<ul class="list">' + "".join(mistake_rows) + "</ul></section>"
+        + SAFETY)
+    out.append(("/mistakes/", "Common home mistakes \u2014 and how to fix them | BRYME Home & DIY",
+                "The errors most homes make: too much detergent, mixed cleaners, overwatering, blind drilling \u2014 why they backfire and the honest fixes.",
+                _home_page("Common home mistakes \u2014 and how to fix them | BRYME Home & DIY",
+                           "The errors most homes make, why they backfire and the honest fixes.", "/mistakes/",
+                           mcover, mmain, "mistakes")))
+    out.extend(mistake_pages)
+
+    # ---------- guides ----------
     related_map = {
-        "how-to-fix-a-slow-draining-sink": [("how-to-fix-a-dripping-tap", "A dripping tap, fixed honestly"),
-                                            ("how-to-clean-a-washing-machine", "Why the washing machine smells"),
+        "how-to-fix-a-slow-draining-sink": [("how-to-unblock-a-toilet", "The blocked toilet"),
+                                            ("how-to-fix-a-dripping-tap", "A dripping tap, fixed honestly"),
                                             ("seasonal-home-maintenance-checklist", "The once-a-season checklist")],
         "how-to-fix-a-dripping-tap": [("how-to-fix-a-slow-draining-sink", "The slow-draining sink"),
-                                      ("why-does-my-circuit-breaker-keep-tripping", "The tripping breaker"),
+                                      ("basic-toolkit-checklist", "The basic toolkit"),
                                       ("seasonal-home-maintenance-checklist", "The once-a-season checklist")],
-        "why-does-my-circuit-breaker-keep-tripping": [("seasonal-home-maintenance-checklist", "The once-a-season checklist"),
-                                                      ("fridge-not-cold-enough", "Fridge not cold enough"),
-                                                      ("how-to-fix-a-dripping-tap", "A dripping tap, fixed honestly")],
-        "how-to-clean-a-washing-machine": [("fridge-not-cold-enough", "Fridge not cold enough"),
-                                           ("how-to-fix-a-slow-draining-sink", "The slow-draining sink"),
+        "how-to-unblock-a-toilet": [("how-to-fix-a-slow-draining-sink", "The slow-draining sink"),
+                                    ("basic-toolkit-checklist", "The basic toolkit"),
+                                    ("seasonal-home-maintenance-checklist", "The once-a-season checklist")],
+        "how-to-bleed-a-radiator": [("basic-toolkit-checklist", "The basic toolkit"),
+                                    ("seasonal-home-maintenance-checklist", "The once-a-season checklist"),
+                                    ("washing-machine-wont-drain", "The machine that won't drain")],
+        "basic-toolkit-checklist": [("how-to-bleed-a-radiator", "Bleeding a radiator"),
+                                    ("drilling-without-checking", "Drilling without checking"),
+                                    ("why-does-my-circuit-breaker-keep-tripping", "The tripping breaker")],
+        "how-to-clean-a-washing-machine": [("washing-machine-wont-drain", "The machine that won't drain"),
+                                           ("too-much-detergent", "Too much detergent"),
                                            ("seasonal-home-maintenance-checklist", "The once-a-season checklist")],
-        "fridge-not-cold-enough": [("how-to-clean-a-washing-machine", "Why the washing machine smells"),
-                                   ("why-does-my-circuit-breaker-keep-tripping", "The tripping breaker"),
-                                   ("seasonal-home-maintenance-checklist", "The once-a-season checklist")],
+        "washing-machine-wont-drain": [("how-to-clean-a-washing-machine", "Why the washing machine smells"),
+                                       ("fridge-not-cold-enough", "Fridge not cold enough"),
+                                       ("basic-toolkit-checklist", "The basic toolkit")],
+        "why-does-my-circuit-breaker-keep-tripping": [("drilling-without-checking", "Drilling without checking"),
+                                                      ("seasonal-home-maintenance-checklist", "The once-a-season checklist"),
+                                                      ("fridge-not-cold-enough", "Fridge not cold enough")],
+        "fridge-not-cold-enough": [("overloading-the-fridge", "Packing the fridge solid"),
+                                   ("washing-machine-wont-drain", "The machine that won't drain"),
+                                   ("why-does-my-circuit-breaker-keep-tripping", "The tripping breaker")],
     }
+    for slug, ti, dek, b in HOME_ARTICLES:
+        key = HOME_SLUG_SECT[slug]
+        rel_html = "".join('<li><a href="' + _hurl(s2) + '">' + rt + "</a></li>" for s2, rt in related_map[slug])
+        cover = ('<nav class="crumb" style="padding-top:22px"><a href="/home/">Home &amp; DIY</a> / '
+                 '<a href="/home/' + key + '/">' + sec_label(key) + "</a> / " + html.escape(ti) + "</nav>"
+            + '<section class="cover"><p class="kicker">' + sec_label(key) + " \u00b7 practical guide</p>"
+            + '<h1 class="cover-title" style="font-size:clamp(30px,4.8vw,52px)">' + html.escape(ti) + "</h1>"
+            + '<p class="byline">BRYME Home &amp; DIY desk \u00b7 reviewed ' + TODAY + " \u00b7 general information, not professional advice</p></section>")
+        main = ('<section class="section alt"><div class="wrap"><p class="lede"><b>In one line:</b> ' + html.escape(dek) + "</p></div></section>"
+            + '<section class="section"><div class="prose">' + b + "</div></section>"
+            + '<section class="section alt"><div class="section-head"><p class="kicker">Next</p><h2>Related on this desk.</h2></div>'
+            + '<ul class="list">' + rel_html + "</ul>"
+            + '<div class="actions"><a class="btn secondary" href="/home/' + key + '/">All of ' + sec_label(key) + "</a>"
+            + '<a class="btn secondary" href="/home/mistakes/">Common mistakes</a></div></section>'
+            + DISCLAIMER)
+        out.append(("/" + slug + "/", ti + " | BRYME Home & DIY", dek[:155],
+                    _home_page(ti + " | BRYME Home & DIY", dek[:155], "/" + slug + "/", cover, main, key)))
 
-    # ---- the seasonal checklist (the product) ----
+    # ---------- the checklist product ----------
     groups = []
     seen = []
-    for g, task, why in HOME_CHECK:
-        if g not in seen:
-            seen.append(g)
+    for g2, task, why in HOME_CHECK:
+        if g2 not in seen:
+            seen.append(g2)
     cur = ""
     items = ""
-    n = 0
-    for g, task, why in HOME_CHECK:
-        if g != cur:
+    n3 = 0
+    for g2, task, why in HOME_CHECK:
+        if g2 != cur:
             if items:
                 groups.append((cur, items))
-            cur = g
+            cur = g2
             items = ""
-        n += 1
+        n3 += 1
         items += ('<li class="fp-day" data-item="' + html.escape(task[:40]) + '">'
-                  '<span class="fp-num">' + str(n) + "</span>"
+                  '<span class="fp-num">' + str(n3) + "</span>"
                   "<span><b>" + html.escape(task) + "</b><small>" + html.escape(why) + "</small></span>"
                   '<button type="button" class="btn secondary fp-done" aria-pressed="false">Done</button></li>')
     if items:
         groups.append((cur, items))
     weeks_html = "".join(
-        '<section class="section"><div class="section-head"><p class="kicker">The checks</p><h2>' + html.escape(g) + '</h2></div>'
-        + '<ul class="list fp-week">' + rows + "</ul></section>" for g, rows in groups)
+        '<section class="section"><div class="section-head"><p class="kicker">The checks</p><h2>' + html.escape(g2) + "</h2></div>"
+        + '<ul class="list fp-week">' + rows2 + "</ul></section>" for g2, rows2 in groups)
     import json as _j
-    schema = {"@context": "https://schema.org", "@type": "Article",
-              "headline": "The Once-a-Season Home Checklist",
-              "author": {"@type": "Organization", "name": "BRYME Home & DIY desk"},
-              "publisher": {"@type": "Organization", "name": "THE BRYME"},
-              "datePublished": TODAY, "dateModified": TODAY,
-              "mainEntityOfPage": ORIGIN + "/home/seasonal-home-maintenance-checklist/",
-              "description": "A short, season-proof home maintenance checklist \u2014 water, safety devices, appliances, seals and airflow \u2014 with progress saved in your browser."}
-    plan_body = (head("home", "Practical help for fixing, maintaining and understanding your home.")
-        + '<main id="main"><div class="wrap">'
-        + '<nav class="crumb"><a href="/home/">Home & DIY</a> / The Once-a-Season Checklist</nav>'
-        + '<section class="cover"><p class="kicker">Preventive maintenance \u00b7 season-proof \u00b7 no hemisphere assumptions</p>'
-        + '<h1 class="cover-title" style="font-size:clamp(30px,4.6vw,48px)">The Once-a-Season Home Checklist</h1>'
-        + '<p class="byline">BRYME Home & DIY desk \u00b7 reviewed ' + TODAY + " \u00b7 general information, not professional advice</p></section>"
-        + '<section class="section alt"><div class="wrap"><p class="lede"><b>One honest idea:</b> homes fail slowly, then suddenly. A short list of checks every season \u2014 whatever \u201cseason\u201d means where you live \u2014 catches the slow failures while they are still cheap. Progress is saved in your browser: no account, nothing sent anywhere.</p></div></section>'
+    cschema = {"@context": "https://schema.org", "@type": "Article",
+               "headline": "The Once-a-Season Home Checklist",
+               "author": {"@type": "Organization", "name": "BRYME Home & DIY desk"},
+               "publisher": {"@type": "Organization", "name": "THE BRYME"},
+               "datePublished": TODAY, "dateModified": TODAY,
+               "mainEntityOfPage": ORIGIN + "/home/seasonal-home-maintenance-checklist/",
+               "description": "A short, season-proof home maintenance checklist with progress saved in your browser."}
+    ccover = ('<nav class="crumb" style="padding-top:22px"><a href="/home/">Home &amp; DIY</a> / The Once-a-Season Checklist</nav>'
+        + '<section class="cover"><p class="kicker">The desk\u2019s product \u00b7 season-proof \u00b7 no hemisphere assumptions</p>'
+        + '<h1 class="cover-title" style="font-size:clamp(30px,4.8vw,52px)">The Once-a-Season Home Checklist</h1>'
+        + '<p class="byline">BRYME Home &amp; DIY desk \u00b7 reviewed ' + TODAY + " \u00b7 general information, not professional advice</p></section>")
+    cmain = ('<section class="section alt"><div class="wrap"><p class="lede"><b>One honest idea:</b> homes fail slowly, then suddenly. '
+             + "A short list of checks every season catches the slow failures while they are still cheap. Progress is saved in your browser \u2014 no account, nothing sent anywhere.</p></div></section>"
         + '<section class="section"><div class="wrap"><div class="fp-progressbar" role="img" aria-label="Checklist progress"><div class="fp-fill" id="fp-fill"></div></div>'
         + '<p class="lede" id="fp-status">Nothing ticked yet. Tick items as you do them \u2014 your browser will remember.</p></div></section>'
         + weeks_html
         + '<section class="section"><div class="section-head"><p class="kicker">Boundaries</p><h2>What is deliberately not on this list.</h2></div>'
-        + '<div class="prose"><p>Nothing on this checklist asks you near an electrical panel, a gas supply, a roof or a structure. Those are the qualified professional\u2019s territory \u2014 the checklist proves your protective devices work, and their visit proves the rest does. If any check reveals damage you cannot see the edge of, stop and get it assessed.</p></div></section>'
+        + '<div class="prose"><p>Nothing here asks you near an electrical panel, a gas supply, a roof or a structure. Those are the qualified professional\u2019s territory \u2014 the checklist proves your protective devices work, and their visit proves the rest does.</p></div></section>'
         + '<section class="section alt">' + src_html(HOME_SOURCES) + "</section>"
         + '<script type="application/json" id="fit-plan-data">{"total": ' + str(len(HOME_CHECK)) + "}</script>"
         + '<script src="/assets/home-checklist.js" defer></script>'
-        + '<script type="application/ld+json">' + _j.dumps(schema) + "</script>"
-        + "</div></main>" + foot("home"))
-    plan_page = [("/seasonal-home-maintenance-checklist/", "The Once-a-Season Home Checklist | BRYME Home & DIY",
-                  "A short, season-proof home maintenance checklist \u2014 water, safety devices, appliances, seals, airflow \u2014 with progress saved in your browser.", plan_body)]
+        + '<script type="application/ld+json">' + _j.dumps(cschema) + "</script>")
+    out.append(("/seasonal-home-maintenance-checklist/", "The Once-a-Season Home Checklist | BRYME Home & DIY",
+                "A short, season-proof home maintenance checklist \u2014 water, safety devices, appliances, seals, airflow \u2014 with progress saved in your browser.",
+                _home_page("The Once-a-Season Home Checklist | BRYME Home & DIY",
+                           "A short, season-proof home maintenance checklist with progress saved in your browser.",
+                           "/seasonal-home-maintenance-checklist/", ccover, cmain, "checklist")))
 
-    import more_guides_data
-    HOME_ARTICLES.extend((s, ti, dek, b) for (s, _k, ti, dek, b) in more_guides_data.HOME_MORE)
-    related_map["how-to-unblock-a-toilet"] = [("how-to-fix-a-slow-draining-sink", "The slow-draining sink"),
-                                              ("basic-toolkit-checklist", "The basic toolkit"),
-                                              ("seasonal-home-maintenance-checklist", "The once-a-season checklist")]
-    related_map["basic-toolkit-checklist"] = [("how-to-bleed-a-radiator", "Bleeding a radiator"),
-                                              ("how-to-fix-a-dripping-tap", "A dripping tap, fixed honestly"),
-                                              ("why-does-my-circuit-breaker-keep-tripping", "The tripping breaker")]
-    related_map["how-to-bleed-a-radiator"] = [("basic-toolkit-checklist", "The basic toolkit"),
-                                              ("seasonal-home-maintenance-checklist", "The once-a-season checklist"),
-                                              ("washing-machine-wont-drain", "The machine that won't drain")]
-    related_map["washing-machine-wont-drain"] = [("how-to-clean-a-washing-machine", "Why the washing machine smells"),
-                                                 ("fridge-not-cold-enough", "Fridge not cold enough"),
-                                                 ("basic-toolkit-checklist", "The basic toolkit")]
-    arts = [art(s, ti, dek, b, [], related_map[s])
-            for (s, ti, dek, b) in HOME_ARTICLES]
-
-    fix_rows = ('<li><a href="/how-to-fix-a-slow-draining-sink/"><span><b>How to fix a slow-draining sink</b>'
-                "<small>Plunger, trap, and the honest ranking of everything else \u2014 chemicals last, if at all.</small></span>"
-                '<span class="meta">Fix it</span></a></li>'
-                '<li><a href="/how-to-fix-a-dripping-tap/"><span><b>A dripping tap (faucet)</b>'
-                "<small>Washer or cartridge \u2014 the ten-minute test that tells you which, and when to stop.</small></span>"
-                '<span class="meta">Fix it</span></a></li>')
-    understand_rows = ('<li><a href="/why-does-my-circuit-breaker-keep-tripping/"><span><b>Why the breaker keeps tripping</b>'
-                       "<small>Overload, short or earth leak \u2014 read the clue safely, and know the hard boundary.</small></span>"
-                       '<span class="meta">Understand it</span></a></li>'
-                       '<li><a href="/fridge-not-cold-enough/"><span><b>Fridge not cold enough</b>'
-                       "<small>Five checks before you pay for a repair \u2014 and the words that make the technician\u2019s visit count.</small></span>"
-                       '<span class="meta">Understand it</span></a></li>'
-                       '<li><a href="/how-to-clean-a-washing-machine/"><span><b>Why the washing machine smells</b>'
-                       "<small>Gasket, drawer, filter \u2014 the three places smell actually lives, and the rhythm that prevents it.</small></span>"
-                       '<span class="meta">Clean & maintain</span></a></li>')
-    index_body = (head("home", "Practical help for fixing, maintaining and understanding your home.")
-        + '<main id="main"><div class="wrap">'
-        + '<section class="cover"><p class="kicker">BRYME Home & DIY</p>'
-        + '<h1 class="cover-title">Fix it. Clean it. Maintain it. Understand it.</h1>'
-        + '<p class="cover-dek">Practical help for the problems every household hits \u2014 written for low-risk work, with the boundaries stated plainly: electrical panels, gas, structure and height belong to qualified professionals, and every guide here says exactly where that line is.</p></section>'
-        + '<section class="section"><div class="section-head"><p class="kicker">The product</p><h2>The once-a-season checklist.</h2></div>'
-        + '<div class="prose"><p><a href="/seasonal-home-maintenance-checklist/"><b>The once-a-season home checklist</b></a> \u2014 ten checks across water, safety devices, appliances and airflow, with progress your browser remembers. Homes fail slowly, then suddenly; this catches the slow part.</p></div></section>'
-        + '<section class="section alt"><div class="section-head"><p class="kicker">Fix it</p><h2>Problems you can honestly fix yourself.</h2></div>'
-        + '<ul class="list">' + fix_rows + "</ul></section>"
-        + '<section class="section"><div class="section-head"><p class="kicker">Understand & maintain</p><h2>What the symptoms mean.</h2></div>'
-        + '<ul class="list">' + understand_rows + "</ul></section>"
-        + SAFETY_BAND.replace('<section class="section alt"', '<section class="section"').replace('border-left:4px solid var(--brand)', '')
-        + "</div></main>" + foot("home"))
-    pages = [("/", "BRYME Home & DIY \u2014 fix, clean, maintain, understand",
-              "Low-risk home repairs and maintenance, honestly explained: the slow sink, the dripping tap, the tripping breaker, and the once-a-season checklist with in-browser progress.", index_body)]
-    pages.extend(plan_page)
-    pages.extend(arts)
-    return pages + legal_pages("home", "BRYME Home & DIY", "Practical help for fixing, maintaining, improving and understanding your home \u2014 safe, low-risk guidance with clear professional boundaries.")
+    return out + legal_pages("home", "BRYME Home & DIY", "Practical help for fixing, maintaining, improving and understanding your home \u2014 safe, low-risk guidance with clear professional boundaries.")
 
 
 
