@@ -163,3 +163,43 @@ AI-cluster refresh decisions (2026-09-10):
 Honesty notes: alternatives piece is the desk's own reviewed canon cross-linked (Photopea,
 Affinity-free, Bitwarden, Signal, Notion...); hosting pieces written first-hand (this site
 runs free-tier static hosting) and cite web.dev for the performance piece.
+
+## Batch T4 — Smart home (3) + Subscriptions & digital declutter (3), built 2026-09-10
+
+Built (6): /tech/smart-home-worth-it/ · /tech/smart-speaker-privacy/ · /tech/wi-fi-setup-mistakes/ ·
+/tech/subscription-creep/ · /tech/subscription-creep-audit/ · /tech/free-trial-traps/
+NEW cats: TECH_CAT +2 — "smart-home" (after safety) and "subscriptions" (after tools) → 10 cats,
+2 new auto hubs /tech/smart-home/ + /tech/subscriptions/. Chain: 754 pages / 74,974 links OK;
+tech 87; allowlist v26 744 routes.
+
+[VERIFY] resolutions (both hard gates, 2026-09-10):
+- smart-speaker-privacy (manufacturer data policies): 2019 human-review revelations documented
+  via BBC (Amazon "extremely small sample" statement) and Wired (opt-out flows; Siri human
+  grading opt-in from iOS 13.2). 2025 change double-sourced: Amazon discontinued the
+  "Do Not Send Voice Recordings" device-processing option effective March 28, 2025 (US English:
+  Echo Dot 4th gen, Echo Show 10/15), reason quoted from Amazon's customer email via Malwarebytes
+  (generative-AI/Alexa+ needs cloud processing); Amazon says recordings deleted after processing
+  and "don't save recordings" remains. In-piece note that newer hardware's choice is about
+  storage/improvement, not transmission.
+- subscription-creep (avg-spend stat): C+R Research 2022 (n=1,004 US adults) $86 estimated vs
+  $219 itemised/month (~2.5x), corroborated across independent writeups; West Monroe 89%
+  underestimate (year CONFLICTS across aggregators → no year pinned); Deloitte 2025 Digital
+  Media Trends ~4 streaming services/~$69/mo/+13% YoY (two independent summaries). The $273
+  figure DROPPED — aggregators attribute it to both C+R and West Monroe (unresolvable). Pieces
+  present figures as named-source ranges with a "trackers disagree; the stable finding is that
+  almost everyone underestimates" framing.
+
+Added gate (free-trial-traps): FTC click-to-cancel rule VACATED by 8th Circuit July 8, 2025
+(Custom Communications v. FTC, procedural), never took effect; ROSCA (15 U.S.C. § 8403) still in
+force; state ARLs (California amended, eff. Jul 1 2025); FTC enforcement continues (Sept 2025
+Amazon Prime settlement ~$2.5B reported). Piece labels jurisdiction + "current as of September
+2026" + general-information disclaimer.
+
+Honesty notes:
+- wi-fi-setup-mistakes and subscription-creep-audit are first-hand/protocol pieces — no external
+  stats claimed, sources[] left empty deliberately (same precedent as laptop-buying-ram-storage).
+- subscription-creep piece contains desk-checked arithmetic only ($9.99/mo ≈ $120/yr); an
+  aggregator's "$1,439/yr for twelve $9.99 subs" error was caught and NOT reproduced.
+- Link repair: T2 had dropped a subscription-creep-audit reference from what-free-apps body
+  (target then unbuilt); T4 builds the target — forward-link debt settled by this batch's own
+  cross-links (no retro-edit to the T2 body needed).

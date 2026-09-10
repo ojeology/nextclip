@@ -784,8 +784,10 @@ TECH_ARTICLES = [
 TECH_CAT = {
     "ai": ("AI, without the hype", "What the assistants actually do, what the free tiers really include, and where your conversations go \u2014 checked against the real products, not the press releases.", "hero-assistants.jpg"),
     "tools": ("Free tools & real alternatives", "Free plans and alternatives we actually opened and used \u2014 what they include, what they hold back, and who each one fits.", "hero-alternatives.jpg"),
+    "subscriptions": ("Subscriptions & clutter", "Recurring charges, free trials and the audit \u2014 keeping what you pay for fewer, cheaper and actually used.", ""),
     "web-and-hosting": ("Web & hosting", "Domains, DNS, deploys and the front end \u2014 written from first-hand builds of this very site, failures included.", "hero-hosting.jpg"),
     "safety": ("Safety & privacy", "Passwords, messaging, tokens and your data \u2014 practical protection without the scaremongering.", "hero-privacy.jpg"),
+    "smart-home": ("Smart home", "Devices worth owning, speakers that listen, and the Wi-Fi that quietly decides whether any of it works \u2014 setup honesty, not showroom promises.", ""),
     "android": ("Android & mobile", "Phone storage, permissions, battery and notifications \u2014 the settings that actually matter, explained without the jargon.", ""),
     "windows": ("Windows & PC", "Slow computers, browser trouble and update problems \u2014 triaged in the order that finds the cause fastest.", ""),
     "coding": ("Coding", "Beginner programming explained the honest way \u2014 errors, Git and APIs \u2014 from a desk that ships code.", ""),
