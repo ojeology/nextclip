@@ -43,3 +43,19 @@ Unique titles/descriptions and single-H1 structure on every new page; breadcrumb
 
 ## QUALITY SCORE
 **7.5/10 — not 9.0 yet, by the spec's own standard.** The architecture (hubs, tables, clubs, matchweek system, gateway model, data integrity) now matches the 9+ blueprint, and everything published is verified. What separates 7.5 from 9.0–9.5 is cadence and depth: weekly verified results/reviews, live data for the other five competitions, and the full evergreen library. Those are next batches, and the system is built to absorb them without structural change.
+
+
+## ADDENDUM — 2026-09-10, later: the detached old backend found and integrated (spec §2/§35 fulfilled in full)
+
+The user pointed to the old Sport implementation on a detached branch (origin/agent-work-2026-09-03). Audit found the complete old backend and it is now integrated:
+
+- **RECOVERED: official fixture calendars** — content/fixtures.json (all 380 PL matches, sourced to the official 19 June 2026 premierleague.com release, kickoff policy + change policy included) and four league calendars (LaLiga 380, Serie A 380, Bundesliga 306, Ligue 1 306, each with named sources, TBC policy for unpublished kick-off times).
+- **NEW PAGES:** /premier-league-fixtures/ upgraded to the full 380-fixture calendar (verified MW4 card on top, every club linked to its hub, TV chips, TBC handling); four new permanent calendar pages /la-liga-fixtures/ /serie-a-fixtures/ /bundesliga-fixtures/ /ligue-1-fixtures/ (flat URLs — the router collapses nested sports paths, so nesting was rejected for robustness). All stamped with source + last-updated + change policy.
+- **RECOVERED: club identity data** — content/club-history/*.json (already in-tree; 20 clubs with city + official source URLs, written source policy) now enriches every club page (city in byline, "official club history" source link) and the clubs index gained club badges.
+- **RECOVERED: club badges** — 96 badge PNGs + five per-league SVG sets (PL/LaLiga/Serie A/Bundesliga/Ligue 1) extracted from the old branch into assets/img/sports/ (4.5 MB kept; 44 MB of unused hero/comic art pruned — remains recoverable on the origin branch). Badges live on club pages and the clubs index with lazy-loading, alt text and an identification note.
+- **Slug bridges:** old short slugs (hull, man-city, coventry…) mapped to the current scheme at build time, with build-time assertions so a future data edit cannot silently break links.
+- **Route conflict caught by gates:** validator flagged the nested-route collision and the /laliga/ vs /la-liga/ hub mismatch before push — fixed via flat routes + hub aliases.
+
+**Site after integration:** 863 pages / 92,650 internal links OK, allowlist 853, validator ok, all four calendars in the live sitemap.
+
+**REVISED QUALITY SCORE: 8/10.** The data spine the spec demanded (fixtures for all five league hubs, permanent calendar URLs, club gateways with sourced facts and badges) is now real and stamped. The remaining distance to 9+ is cadence (results/reviews after each verified round) and the evergreen library scale-up.

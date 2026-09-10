@@ -291,3 +291,13 @@ Chain: 821 pages / 79,377 links OK (+2,793 = drawer links); validator ok; allowl
 **Shipped (+30 pages, sports 32→62):** permanent PL architecture (hub /premier-league/, table /premier-league-table/ with 20 verified rows + source stamps, fixtures /premier-league-fixtures/ with the verified MW4 card, clubs index + /clubs/<slug>/ x20 club hubs with data-driven facts rows); Serie A / Bundesliga / Ligue 1 hubs (verified champions Inter/Bayern/PSG, formats, honest data-desk status); 3 new explainers (table-works, clubs-make-money, release-clause) -> 13 total; sports homepage competition grid (§26); nav rebuilt to the gateway model; SPORTS_CSS_EXTRA (mobile-scrollable league table). Old-content audit (§2/§35): 6 substantial pieces already live from batch 3; 15 stubs (53-60 words) retired permanently; no logos/fixture data in the old impl. Data policy: no invented numbers; unverified = honest gap (Serie A club list withheld over a 2-3 club source discrepancy). Full report: docs/ecosystem/sport-master-upgrade-report.md (§40 format, honest score 7.5/10 with the path to 9+).
 
 **Verification:** clean chain green — **859 pages / 91,670 links OK**, allowlist v26 849, validator ok. Needles PASS on all 8 new page types + index grid + nav + 11/11 new sitemap routes.
+
+---
+
+## Batch 8 — Old Sport backend recovered + integrated — DONE 2026-09-10
+
+**Directive:** user: former sports fixtures/tables "is there… check the backend i detached". Found origin/agent-work-2026-09-03 carrying the full old backend: official 2026-27 calendars (PL 380 + LaLiga/Serie A/Bundesliga/Ligue 1), 96 club badges + 5 league SVG sets, club-history data.
+
+**Shipped:** PL fixtures page upgraded to the full 380-fixture official calendar (verified MW4 card on top, club-hub links, TV chips, TBC policy); 4 new league calendar pages (flat routes after the router collision was caught by the validator); club pages enriched with city + official-source links + club badge; clubs index badged; slug bridges + build-time asserts; 44 MB of unused old art pruned (recoverable on branch).
+
+**Verification:** 863 pages / 92,650 links OK, allowlist 853, validator ok, calendars in live sitemap, badges mirrored to public/. Report addendum filed; score revised 7.5 -> 8.0.
