@@ -1363,17 +1363,13 @@ HOME_SLUG_SECT.update({s: "maintain" for s in (
 
 
 def _home_theme_init():
-    return ('<script>(function(){try{var t=localStorage.getItem("bryme-home-theme");'
-            'if(t==="dark"||(!t&&window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches))'
-            '{document.documentElement.setAttribute("data-theme","dark")}}catch(e){}})();</script>')
+    # External file: the site CSP is script-src 'self' - inline scripts never run.
+    # Loaded blocking in <head> so the theme applies before first paint (no flash).
+    return '<script src="/assets/home-theme.js"></script>'
 
 def _home_toggle_js():
-    return ('<script>(function(){var b=document.getElementById("home-theme");if(!b)return;'
-            'b.addEventListener("click",function(){var d=document.documentElement;'
-            'var dark=d.getAttribute("data-theme")==="dark";'
-            'if(dark){d.removeAttribute("data-theme");}else{d.setAttribute("data-theme","dark");}'
-            'try{localStorage.setItem("bryme-home-theme",dark?"light":"dark")}catch(e){}'
-            'b.setAttribute("aria-pressed",String(!dark))});})();</script>')
+    # wiring lives in /assets/home-theme.js (CSP: script-src self)
+    return ""
 
 def _home_mast():
     return ('<header class="head"><div class="wrap mast">'
