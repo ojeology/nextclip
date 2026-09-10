@@ -256,3 +256,25 @@ Title/fact decisions (verified 2026-09-10):
   boundary structures, shed contents caps) — framed as check-your-policy throughout.
 - Roadmap title "draught-proofing makes bills worse" kept honest: the piece covers over-sealing
   (moisture/CO-vent risk) and wrong-gap sealing; draught-proofing itself endorsed as high-value.
+
+## Batch 7 — Pest control (5, new "Pests" section) + Kitchen & bathroom (3), built 2026-09-10
+Plus structural: new "Pests" section (7 section cards total in the Home shell).
+
+Built (8): /home/clean-home-pests-myth/ · /home/ignore-single-pest-sighting/ · /home/moving-cardboard-pests/ ·
+/home/after-pest-treatment/ · /home/diy-vs-professional-pests/ · /home/bathroom-remodel-mistakes/ ·
+/home/kitchen-ventilation-damp/ · /home/grout-sealant-neglect/
+
+Title/fact decisions (verified 2026-09-10):
+- Clean-home myth grounded in EPA IPM/Do's-and-Don'ts: food-water-shelter model, clutter incl.
+  cardboard named as harborage, entry-sealing. Pest arithmetic kept QUALITATIVE (egg cases carry
+  dozens; mice litters-per-year) — no invented multiplication tables.
+- After-treatment piece: re-entry windows, leave-treated-edges/gel ~2 weeks, clean-before-not-after,
+  no retail spray over professional residual; "label directions carry the force of law" (US FIFRA
+  convention) attributed; operator's written instructions override the guide.
+- DIY vs pro: bed bugs / established German roaches / wasp nests at height / multi-unit / health-
+  pressure named as professional territory; 3-6 week honest-DIY failure threshold stated as
+  professional-association convention; UK professional-use-only product restrictions noted.
+- Kitchen ventilation: ADF rates quoted precisely (30 l/s ducted hood over hob; 60 l/s elsewhere/
+  recirculating; bathroom 15 l/s in the remodel piece; recirculating hoods don't count as extract).
+- Grout/sealant: 2-5 yr sanitary silicone window + full-removal-before-replacement as trade
+  guidance; failure consequences framed via gradual-damage/maintenance-exclusion logic.

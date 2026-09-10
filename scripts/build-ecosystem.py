@@ -1336,6 +1336,7 @@ HOME_SECTIONS = [
     ("appliances", "Appliances", "Keep the machines honest."),
     ("understand", "Understand it", "What the symptoms actually mean."),
     ("outside", "Outside", "Gutters, grills, sheds and the seasons \u2014 the half of the house that faces the weather."),
+    ("pests", "Pests", "Unwelcome guests \u2014 prevention, honest decisions, and the aftercare that makes treatment work."),
     ("mistakes", "Common mistakes", "The errors most homes make - and the fixes."),
 ]
 HOME_SLUG_SECT = {
@@ -1385,6 +1386,13 @@ HOME_SLUG_SECT.update({s: "maintain" for s in (
     "draught-proofing-mistakes", "wet-mop-floor-warranty", "deep-clean-schedule")})
 HOME_SLUG_SECT.update({s: "understand" for s in (
     "single-glazing-payback", "underfloor-heating-mistakes")})
+
+HOME_SLUG_SECT.update({s: "pests" for s in (
+    "clean-home-pests-myth", "ignore-single-pest-sighting", "moving-cardboard-pests",
+    "after-pest-treatment", "diy-vs-professional-pests")})
+HOME_SLUG_SECT.update({s: "fix" for s in ("bathroom-remodel-mistakes",)})
+HOME_SLUG_SECT.update({s: "maintain" for s in (
+    "kitchen-ventilation-damp", "grout-sealant-neglect")})
 
 
 def _home_theme_init():
@@ -1469,6 +1477,8 @@ def home_pages():
     HOME_ARTICLES.extend((s2, ti, dek, b) for (s2, _k, ti, dek, b) in home_roadmap5_data.HOME_ROADMAP_5 if s2 not in _have)
     import home_roadmap6_data
     HOME_ARTICLES.extend((s2, ti, dek, b) for (s2, _k, ti, dek, b) in home_roadmap6_data.HOME_ROADMAP_6 if s2 not in _have)
+    import home_roadmap7_data
+    HOME_ARTICLES.extend((s2, ti, dek, b) for (s2, _k, ti, dek, b) in home_roadmap7_data.HOME_ROADMAP_7 if s2 not in _have)
 
     def src_html(sources):
         if not sources:
@@ -1742,6 +1752,30 @@ def home_pages():
         "deep-clean-schedule": [("how-to-clean-a-washing-machine", "Why the washing machine smells"),
                                 ("vinegar-in-the-dishwasher", "Not with vinegar"),
                                 ("mistakes/streaky-windows-sunlight", "Streaky windows in sunlight")],
+        "clean-home-pests-myth": [("ignore-single-pest-sighting", "The one-sighting protocol"),
+                                  ("moving-cardboard-pests", "Boxes are pest vehicles"),
+                                  ("seasonal-home-maintenance-checklist", "The once-a-season checklist")],
+        "ignore-single-pest-sighting": [("diy-vs-professional-pests", "DIY vs professional"),
+                                        ("clean-home-pests-myth", "The clean-home myth"),
+                                        ("small-leak-ripple-effect", "Why small leaks never stay small")],
+        "moving-cardboard-pests": [("clean-home-pests-myth", "The clean-home myth"),
+                                   ("ignore-single-pest-sighting", "The one-sighting protocol"),
+                                   ("diy-vs-professional-pests", "DIY vs professional")],
+        "after-pest-treatment": [("diy-vs-professional-pests", "DIY vs professional"),
+                                 ("mistakes/mixing-cleaning-products", "Never mix cleaning products"),
+                                 ("deep-clean-schedule", "The deep-clean rotation")],
+        "diy-vs-professional-pests": [("after-pest-treatment", "After the treatment"),
+                                      ("ignore-single-pest-sighting", "The one-sighting protocol"),
+                                      ("clean-home-pests-myth", "The clean-home myth")],
+        "bathroom-remodel-mistakes": [("grout-sealant-neglect", "Grout and sealant care"),
+                                      ("condensation-ventilation-that-works", "Ventilation that works"),
+                                      ("part-p-explained", "Part P explained")],
+        "kitchen-ventilation-damp": [("condensation-ventilation-that-works", "Ventilation that works"),
+                                     ("condensation-vs-rising-vs-penetrating-damp", "Which damp is it?"),
+                                     ("induction-hob-wiring", "Induction wiring rules")],
+        "grout-sealant-neglect": [("bathroom-remodel-mistakes", "Before you remodel"),
+                                  ("condensation-vs-rising-vs-penetrating-damp", "Which damp is it?"),
+                                  ("small-leak-ripple-effect", "Why small leaks never stay small")],
     }
     for slug, ti, dek, b in HOME_ARTICLES:
         key = HOME_SLUG_SECT[slug]
