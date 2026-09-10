@@ -189,3 +189,20 @@ alternatives → mistakes → provider-side → support → related):
   cited), 12factor config principle (cited); browser error texts paraphrased, never quoted as
   exact UI strings. Sources: git-scm book x2, RFC 6455, 12factor, Python os.environ docs.
 Chain: tech 141 pages (+8), site 815 pages / 76,457 links OK; allowlist v26 805 routes.
+
+### M6 — DONE 2026-09-10 (commit follows)
+Built (6, Apps & Android expansion): /tech/android-privacy-settings-checklist/ ·
+/tech/android-notifications-not-arriving/ · /tech/mobile-data-not-working/ ·
+/tech/how-to-tell-if-an-app-is-safe/ · /tech/android-backup-guide/ · /tech/android-find-lost-phone/
+- Lanes carved vs existing shelf (documented in file header): per-app audit vs device-wide pass,
+  notification tuning vs failure mode, wifi/bt vs mobile-data lane, stats piece vs backup mechanics.
+- Internal-link hardening (Phase 9): _tech_related reworked — one rotating cross-category related
+  link per article (8-slug pool incl. 4 previously underlinked pieces); pool slugs lifted off the
+  floor; mean inbound 8.8/guide across 130 guides; remaining 14-slug floor queue listed in the
+  final report as next-pass targets.
+- Technical SEO/UX audit (Phases 10-11): titles 147/147 unique; h1==1 everywhere; viewport +
+  canonical on all checked; zero noindex; sitemap == 147; TechArticle schema present; trust links
+  site-wide. All green.
+FINAL REPORT: docs/ecosystem/tech-master-final-report.md (23-point §30 + verdict lists).
+Chain: tech 147 pages (+6), site 821 pages / 76,584 links OK; allowlist v26 811 routes.
+**MASTER BUILD PROGRAM COMPLETE: M1-M6.**

@@ -907,9 +907,14 @@ def _tech_blocks(a):
 def _tech_related(a, arts, n=3):
     same = [x for x in arts if x["cat"] == a["cat"] and x["slug"] != a["slug"]]
     pool = ["where-to-host-website-for-free", "bitwarden-free-password-manager",
-            "learning-to-code-on-a-phone-termux", "custom-domain-dns-order"]
-    extra = [by for by in arts if by["slug"] in pool and by["slug"] != a["slug"] and by not in same]
-    return (same + extra)[:n]
+            "learning-to-code-on-a-phone-termux", "custom-domain-dns-order",
+            "git-errors-fixed", "api-errors-decoded", "computer-fans-loud",
+            "how-the-internet-works"]
+    pick = pool[sum(map(ord, a["slug"])) % len(pool)]
+    extra = [by for by in arts if by["slug"] == pick and by["slug"] != a["slug"] and by not in same]
+    if not extra:
+        return same[:n]
+    return (same[:n - 1] + extra)[:n]
 
 def tech_trust_pages():
     """Trust pages (master build M1): methodology, corrections, terms, disclaimer."""

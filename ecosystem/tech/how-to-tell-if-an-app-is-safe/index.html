@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>How to tell if an app is safe before you install it | BRYME Tech</title>
+<meta name="description" content="The pre-install check: what the developer listing, the permissions, the reviews and the install source each tell you — and the red flags that end the conve">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://bryme.onrender.com/tech/how-to-tell-if-an-app-is-safe/">
+<meta property="og:type" content="website"><meta property="og:site_name" content="THE BRYME">
+<meta property="og:title" content="How to tell if an app is safe before you install it | BRYME Tech"><meta property="og:description" content="The pre-install check: what the developer listing, the permissions, the reviews and the install source each tell you — and the red flags that end the conve">
+<meta property="og:url" content="https://bryme.onrender.com/tech/how-to-tell-if-an-app-is-safe/"><meta property="og:image" content="https://https://bryme.onrender.com/tech/how-to-tell-if-an-app-is-safe//assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+:root{--paper:#fafaf8;--sheet:#ffffff;--ink:#14213d;--muted:#5b6b7a;--dim:#8b96a2;
+--brand:#14213d;--brand-deep:#0c1526;--accent:#5b6b7a;
+--line:rgba(20,33,61,.18);--line-strong:rgba(20,33,61,.4);--shadow:0 1px 2px rgba(0,0,0,.05),0 14px 38px rgba(0,0,0,.08);
+--serif:Georgia,'Iowan Old Style','Palatino Linotype',serif;--sans:Inter,ui-sans-serif,system-ui,sans-serif}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;min-height:100vh;color:var(--ink);background:var(--paper);font:16px/1.65 var(--sans);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}::selection{background:rgba(176,141,87,.3)}
+.wrap{width:min(calc(100% - 48px),1080px);margin:0 auto}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.skip-link{position:fixed;z-index:99;top:10px;left:10px;transform:translateY(-160%);padding:10px 16px;background:var(--brand);color:var(--sheet);font-weight:700}
+.skip-link:focus{transform:none}
+.head{position:sticky;z-index:50;top:0;background:var(--paper);border-bottom:1px solid var(--line-strong)}
+.head::before{content:"";display:block;height:6px;background:var(--brand)}
+.head::after{content:"";display:block;height:2px;background:var(--accent)}
+.mast{display:flex;align-items:baseline;gap:18px;padding:18px 0 12px;flex-wrap:wrap}
+.mast-brand{font-family:var(--serif);font-size:34px;line-height:.9;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.mast-brand span{color:var(--accent)}
+.mast-tag{font:italic 13px var(--serif);color:var(--muted);flex:1;min-width:200px}
+.parent-link{font:750 10.5px var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line);padding:7px 11px;border-radius:2px}
+.parent-link:hover{color:var(--ink);border-color:var(--line-strong)}
+.cover{padding:clamp(46px,8vw,96px) 0 clamp(36px,6vw,64px);border-bottom:3px double var(--line-strong)}
+.kicker{color:var(--accent);font:800 11.5px var(--sans);letter-spacing:.22em;text-transform:uppercase;margin:0 0 20px}
+h1.cover-title{font-family:var(--serif);font-weight:700;letter-spacing:-.018em;font-size:clamp(36px,6.4vw,70px);line-height:1.03;margin:0;max-width:15em}
+.cover-dek{font-family:var(--serif);font-size:clamp(16.5px,2.2vw,20px);line-height:1.62;color:var(--muted);max-width:58ch;margin:24px 0 0}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.btn{min-height:46px;display:inline-flex;align-items:center;padding:11px 20px;border:1px solid var(--brand);border-radius:2px;background:var(--brand);color:var(--sheet);font:700 13.5px var(--sans);letter-spacing:.04em;cursor:pointer}
+.btn:hover{background:var(--brand-deep);border-color:var(--brand-deep)}
+.btn.secondary{background:transparent;color:var(--brand);border-color:var(--line-strong)}
+.btn.secondary:hover{border-color:var(--brand);background:transparent}
+.section{padding:clamp(42px,7vw,80px) 0}
+.section.alt{background:var(--paper-2,transparent);outline:1px solid var(--line);outline-offset:-1px}
+.section-head{margin-bottom:28px}
+.section-head h2{font-family:var(--serif);font-weight:700;font-size:clamp(23px,3.2vw,32px);line-height:1.12;margin:6px 0 0;letter-spacing:-.012em}
+.section-head h2::after{content:"";display:block;width:46px;height:4px;background:var(--accent);margin-top:14px}
+.lede{font-family:var(--serif);font-size:17.5px;line-height:1.65;color:var(--muted);max-width:60ch;margin:18px 0 0}
+.list{list-style:none;margin:0;padding:0;border-top:1px solid var(--line-strong)}
+.list li{border-bottom:1px solid var(--line)}
+.list a{display:flex;gap:22px;align-items:baseline;padding:18px 6px;transition:background .15s ease,padding-left .15s ease}
+.list a:hover{background:var(--sheet);padding-left:14px}
+.list b{font-family:var(--serif);font-size:19px;line-height:1.3}
+.list a:hover b{color:var(--brand)}
+.list small{display:block;font:13px var(--sans);color:var(--muted);margin-top:3px}
+.list .meta{margin-left:auto;flex:none;font:750 11px var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--dim)}
+.prose{max-width:720px;margin:0 auto;padding:clamp(28px,5vw,54px) 0 26px}
+.prose h2{font-family:var(--serif);font-size:clamp(22px,3vw,29px);line-height:1.16;margin:44px 0 12px;padding-top:24px;border-top:1px solid var(--line)}
+.prose h3{font-family:var(--serif);font-size:19.5px;margin:28px 0 8px}
+.prose h3::before{content:"";display:inline-block;width:20px;height:4px;background:var(--accent);margin-right:11px;vertical-align:middle}
+.prose p,.prose li{font-family:var(--serif);font-size:18px;line-height:1.78}
+.prose p{margin:0 0 19px}
+.prose ul,.prose ol{padding-left:26px;margin:0 0 19px}
+.prose li+li{margin-top:9px}
+.prose a{color:var(--brand);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+.prose blockquote{margin:32px 0;padding:6px 0 6px 24px;border-left:4px solid var(--accent);font-family:var(--serif);font-style:italic;font-size:21px;line-height:1.5}
+.prose img{max-width:100%;border:1px solid var(--line);padding:6px;background:var(--sheet)}
+.crumb{padding:18px 0 10px;font:11.5px var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--dim)}
+.crumb a{color:var(--muted)}.crumb a:hover{color:var(--accent)}
+.byline{margin:16px 0 0;font-size:13px;color:var(--muted);border-top:1px solid var(--line);padding-top:13px}
+.foot{margin-top:44px;border-top:3px double var(--line-strong);background:var(--paper-2,transparent)}
+.foot-in{padding:34px 0 30px;display:flex;flex-wrap:wrap;gap:14px 34px;justify-content:space-between;font:13px var(--sans);color:var(--muted)}
+.foot-in a:hover{color:var(--ink)}
+.foot small{display:block;margin-top:8px;font:italic 12.5px var(--serif);color:var(--dim)}
+.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+.pub-card{border:1px solid var(--line-strong);border-top:6px solid var(--pc);background:var(--sheet);padding:26px 26px 22px;display:flex;flex-direction:column}
+.pub-card h3{font-family:var(--serif);font-size:24px;margin:0 0 4px;letter-spacing:-.01em}
+.pub-card .pc-kicker{font:800 10.5px var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--pc);margin:0 0 12px}
+.pub-card p{font-size:14.5px;line-height:1.6;color:var(--muted);margin:0 0 18px}
+.pub-card .btn{margin-top:auto;align-self:flex-start}
+.pub-card.live{box-shadow:var(--shadow)}
+.pub-card.soon{opacity:.92}
+.soon-tag{font:800 10px var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--muted);border:1px dashed var(--line-strong);align-self:flex-start;padding:8px 12px;margin-top:auto}
+@media(max-width:820px){.cards{grid-template-columns:1fr}.mast-tag{display:none}}
+@media print{.head,.foot,.actions,.btn{display:none!important}body{background:#fff}}
+</style>
+</head><body><a class="skip-link" href="#main">Skip to content</a>
+<header class="head"><div class="wrap mast">
+<a class="mast-brand" href="/">BRYME&nbsp;<span style="color:var(--accent)">TECH</span></a>
+<span class="mast-tag">Practical technology. No theatre.</span>
+<a class="parent-link" href="https://thebryme.com/">THE BRYME</a>
+</div></header><main id="main"><div class="wrap"><nav class="crumb"><a href="/tech/">Tech</a> / <a href="/tech/android/">Android &amp; mobile</a> / How to tell if an app is safe before you install it</nav><section class="cover"><p class="kicker">Practical guide · verified against the real thing</p><h1 class="cover-title" style="font-size:clamp(30px,4.6vw,48px)">How to tell if an app is safe before you install it</h1><p class="byline">By the BRYME Tech desk · published 2026-09-09</p></section><section class="section alt"><div class="wrap"><p class="lede"><b>In one line:</b> The pre-install check: what the developer listing, the permissions, the reviews and the install source each tell you — and the red flags that end the conversation.</p></div></section><section class="section"><div class="prose"><p>App safety is decided before the install screen, not after. The good news: the evidence is all visible in five minutes, and the red flags are consistent across platforms. This is the check, in the order that catches the most problems fastest — it answers the "is this app safe?" question the only honest way: as a risk assessment, not a guarantee.</p>
+<h2>1. The install source is half the answer</h2>
+<p>The official Play Store vets apps continuously (automated scanning plus policy enforcement) and can remotely remove bad actors after the fact. That makes it the safest <em>channel</em> — not a guarantee, a distribution with recourse. Sideloaded APKs from websites and link-shortened "download" pages have none of that: no vetting, no removal mechanism, no update path — the entire <a href="/tech/how-to-spot-a-suspicious-link/">suspicious-link threat model</a> in an installer. The rule: if an app isn't on an official store, the burden of proof inverts, and "the modded premium version, free" is proof of the opposite — pirated-app repackaging is a classic malware costume, and the same reasoning as <a href="/tech/what-free-apps-do-with-your-data/">why free has a business model</a> applies double when the "business model" is your bank credentials.</p>
+<h2>2. The developer listing: who is actually asking</h2>
+<p>Scroll past the icon to the developer line. A named company with a track record and other published apps is checkable in two taps (tap the name: their other apps, their website, how long they've existed). Brand-new developer + popular-app impersonation (the second "WhatsApp" with 50k installs) is the single most reliable red flag in the store. Impersonators survive on search typos — open store listings from the developer's official website link when the stakes are any higher than a torch app.</p>
+<h2>3. The permissions, asked in context</h2>
+<p>A torch app requesting contacts, a calculator wanting location, a game that must read SMS: permission-to-purpose mismatch is the loudest signal available, and Android shows the permission list right on the install page. Judge it the way the <a href="/tech/android-app-permissions/">permission audit</a> does: does this permission serve the app's actual job? Some mismatches have honest explanations (a camera app needing storage); most don't. And remember the install-page list is only the opening bid — apps accumulate permissions later, which is why the audit is a habit, not a ceremony.</p>
+<h2>4. Reviews, read for forensics</h2>
+<p>Ignore the star average; read the recent one-star reviews for the words that matter: "charged", "subscription", "permissions", "ads on lock screen", "my battery". A pattern of surprise-charging reviews on a flashlight is a business model, not a bug. Equally telling: a wall of five-star reviews posted within days, vague and grammatically uncanny — that's a review farm, and stores are imperfect at catching it. Review <em>velocity</em> against app age tells you whether popularity was earned.</p>
+<h2>5. After install: the confirmation checks</h2>
+<p>First launch is evidence too: an app that immediately demands account creation before showing any function, or floods full-screen ads in its first minute, has told you what it is — uninstall while the decision is cheap. Confirm Play Protect is on (it scans continuously), and give the app its first week under the <a href="/tech/android-privacy-settings-checklist/">privacy pass</a>: check what permissions it actually claimed versus what the install page promised. The strongest safety tool in the whole piece is the one nobody markets: willingness to delete. Apps earn their place on the phone the same sources earn their place in an article — by behaving.</p></div></section><section class="section alt"><div class="section-head"><p class="kicker">Next</p><h2>Related on this desk.</h2></div><ul class="list"><li><a href="/free-up-storage-android/">Free up storage on Android without deleting your life</a></li><li><a href="/android-app-permissions/">Android app permissions: the ten-minute audit that matters</a></li><li><a href="/how-the-internet-works/">How the internet works, plainly</a></li></ul><div class="actions"><a class="btn secondary" href="/tech/android/">All of Android &amp; mobile</a><a class="btn secondary" href="/tech/">All of BRYME Tech</a></div></section><script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "headline": "How to tell if an app is safe before you install it", "author": {"@type": "Person", "name": "the BRYME Tech desk"}, "publisher": {"@type": "Organization", "name": "THE BRYME"}, "datePublished": "2026-09-09", "dateModified": "2026-09-09", "mainEntityOfPage": "https://bryme.onrender.com/tech/how-to-tell-if-an-app-is-safe/"}</script></div></main><footer class="foot"><div class="wrap foot-in">
+<div>© 2026 THE BRYME — Tech.</div>
+<div><a href="/tech/about/">About</a> · <a href="/tech/privacy/">Privacy</a> · <a href="/tech/contact/">Contact</a> · <a href="/tech/methodology/">Methodology</a> · <a href="/tech/corrections/">Corrections</a> · <a href="/tech/terms/">Terms</a> · <a href="/tech/disclaimer/">Disclaimer</a></div>
+<div><a href="https://thebryme.com/">thebryme.com</a></div>
+</div></footer>
+</body></html>
