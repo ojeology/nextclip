@@ -1043,6 +1043,9 @@ def sports_pages():
         rws = "".join('<div class="sp-row"><span><a href="' + u + '">' + t + '</a></span></div>' for u, t in pairs)
         return _panel("Where next", rws, None)
     LIVE = _cal("sports-live.json") if (_root / "content" / "sports-live.json").exists() else {}
+    PL_TR = _cal("pl-transfers.json")
+    LG_TR = {v["id"]: v for v in _cal("league-transfers.json")["leagues"]}
+    PMGR = {c["id"]: c for c in PL_TR.get("clubs", [])}
     def _lg_head():
         return head("sports", "Analysis, stories and the long view \u2014 never betting.")
 
@@ -1079,6 +1082,7 @@ def sports_pages():
         + '<li><a href="/premier-league-clubs/"><span><b>All twenty clubs</b><small>Every club\u2019s hub: record, goal difference, next fixture, the story on one page.</small></span><span class="meta">Clubs</span></a></li>'
         + '<li><a href="/premier-league-results/"><span><b>Results, MW1\u20133</b><small>Every verified score from the season\u2019s opening rounds.</small></span><span class="meta">Results</span></a></li>'
         + '<li><a href="/premier-league-top-scorers/"><span><b>Top scorers</b><small>The Golden Boot race, verified and dated.</small></span><span class="meta">Scorers</span></a></li>'
+        + '<li><a href="/premier-league-transfers/"><span><b>The transfer centre</b><small>Summer 2026, deal by deal \u2014 statuses strict, rumours excluded.</small></span><span class="meta">Transfers</span></a></li>'
         + '<li><a href="/premier-league-matchweek-4-preview/"><span><b>Matchweek 4, previewed honestly</b><small>The desk\u2019s live edition for the derby weekend \u2014 written Thursday, no odds.</small></span><span class="meta">This week</span></a></li>'
         + '<li><a href="/how-the-premier-league-table-works/"><span><b>How the table works</b><small>Points, goal difference, tiebreakers \u2014 and what actually happens if two clubs finish level.</small></span><span class="meta">Understand</span></a></li>'
         + '</ul></section>'
@@ -1264,6 +1268,7 @@ def sports_pages():
         chcity = (' \u00b7 ' + html.escape(ch["city"])) if ch.get("city") else ""
         chsrc = (' <em>Club facts source: <a href="' + ch["source"] + '" rel="noopener">official club history</a>.</em>') if ch.get("source") else ""
         sqd = SQ.get(name) or next((v for k, v in SQ.items() if k.startswith(name) or name.startswith(k)), None)
+        _pmgr = (PMGR.get(slug) or {}).get("manager", "")
         fx = next((f for f in sld.PL_MW4 if slug in (f[1], f[3])), None)
         story = STORY_FOR.get(slug)
         gds = ("+" + str(gd)) if gd > 0 else str(gd)
@@ -1280,6 +1285,7 @@ def sports_pages():
             + '<div><b>' + str(pts) + '</b><span>Points</span></div>'
             + '<div><b>' + gds + '</b><span>Goal difference</span></div>'
             + '<div><b>' + rec + '</b><span>W-D-L</span></div>'
+            + ('<div><b style="font-size:20px">' + html.escape(_pmgr) + '</b><span>Manager</span></div>' if _pmgr else "")
             + '</div></section>'
             + '<section class="section"><div class="prose"><p>' + blurb + chsrc + '</p>'
             + '<p>' + _club_now_text(r, fx) + ' <a href="/how-the-premier-league-table-works/">How to read the table</a> \u00b7 <a href="/xg-explained/">what xG adds</a>.</p></div></section>'
@@ -1288,6 +1294,7 @@ def sports_pages():
             + '<ul class="list">'
             + ('<li><a href="' + story[0] + '"><span><b>' + story[1] + '</b><small>From the desk\u2019s archive.</small></span><span class="meta">Read</span></a></li>' if story else "")
             + '<li><a href="/premier-league-fixtures/"><span><b>Fixtures &amp; results</b><small>The verified weekend card, with this club\u2019s next game.</small></span><span class="meta">Next</span></a></li>'
+            + '<li><a href="/premier-league-transfers/"><span><b>The verified transfer tracker</b><small>Every listed deal for this club \u2014 statuses and fees as recorded, never rumours.</small></span><span class="meta">Transfers</span></a></li>'
             + '<li><a href="/premier-league-table/"><span><b>The live table</b><small>Where every club stands, stamped and sourced.</small></span><span class="meta">Live</span></a></li>'
             + '<li><a href="/premier-league/"><span><b>The Premier League hub</b><small>The whole competition, one gateway.</small></span><span class="meta">Hub</span></a></li>'
             + '<li><a href="/premier-league-matchweek-4-preview/"><span><b>Matchweek 4, previewed honestly</b><small>This weekend\u2019s live desk edition.</small></span><span class="meta">This week</span></a></li>'
@@ -1296,6 +1303,56 @@ def sports_pages():
             + '</div></main>' + foot("sports"))
         pages.append(("/clubs/" + slug + "/", cname + " \u2014 club hub, " + sld.SEASON + " | BRYME Sport",
                       cname + " in the " + sld.SEASON + " Premier League: " + ground + ", founded " + str(founded) + ", this season\u2019s verified record and next fixture \u2014 the desk\u2019s club gateway.", club_page))
+
+    # ---- batch 14: the transfer centre (recovered owner-verified trackers, spec s12) ----
+    def _tr_rows(items):
+        out = ""
+        for t in items:
+            other = html.escape(str(t.get("from", t.get("to", ""))))
+            typ = html.escape(str(t.get("type", "")))
+            det = html.escape(str(t.get("detail", "") or ""))
+            right = typ + (" \u00b7 " + det if det else "")
+            out += ('<div class="sp-row"><span>' + html.escape(str(t.get("player", ""))) + '</span><span class="pts">' + other + ' \u00b7 ' + right + '</span></div>')
+        return out
+    def _tr_page(tr, lname, lhub, tlug, midwin):
+        clubs = tr.get("clubs", [])
+        nin = sum(len(c.get("playersIn", [])) for c in clubs)
+        nout = sum(len(c.get("playersOut", [])) for c in clubs)
+        secs = ""
+        for c in clubs:
+            mgr = c.get("manager") or ""
+            mnote = c.get("managerNote") or ""
+            kick = html.escape(c.get("name", ""))
+            if mgr:
+                kick += ' \u00b7 manager: <b>' + html.escape(mgr) + '</b>' + (' (' + html.escape(mnote) + ')' if mnote else "")
+            ins = _tr_rows(c.get("playersIn", [])) or '<div class="sp-row"><span>No listed deals \u2014 listed is not the same as none; the tracker only carries verified entries.</span></div>'
+            outs = _tr_rows(c.get("playersOut", [])) or ""
+            secs += ('<section class="section"><div class="section-head"><p class="kicker">' + kick + '</p><h2>' + c.get("name", "") + '</h2></div>'
+                + '<div class="data-cols"><div>' + _panel("Players in", ins, None)
+                + (_panel("Players out", outs, None) if outs else "") + '</div></div></section>')
+        srcs = " \u00b7 ".join(html.escape(x) for x in tr.get("sources", []))
+        note = ""
+        if midwin:
+            note = ('<section class="section alt"><div class="prose"><p><b>Dating note, stated plainly:</b> this tracker was recorded on '
+                + html.escape(str(tr.get("lastUpdated", ""))) + ' \u2014 before the window closed on ' + html.escape(str(tr.get("windowClose", "")))
+                + '. Deal statuses reflect that moment. The desk re-verifies before every update and never guesses what happened next. Reported/rumoured moves are deliberately not listed.</p></div></section>')
+        tp = (_lg_head()
+            + '<main id="main"><div class="wrap">'
+            + '<nav class="crumb"><a href="/sports/">Sport</a> / ' + ('<a href="' + lhub + '">' + lname + '</a>' if lhub else lname) + ' / Transfers</nav>'
+            + '<section class="cover"><p class="kicker">The transfer centre \u00b7 ' + lname + ' \u00b7 summer window 2026</p>'
+            + '<h1 class="cover-title" style="font-size:clamp(30px,4.6vw,48px)">Every listed deal, club by club.</h1>'
+            + '<p class="byline">' + str(nin) + ' players in \u00b7 ' + str(nout) + ' players out \u00b7 tracker updated ' + html.escape(str(tr.get("lastUpdated", ""))) + ' \u00b7 window closed ' + html.escape(str(tr.get("windowClose", ""))) + ' \u00b7 statuses only: Confirmed / Loan / Free / Released / Departed / Retired \u2014 rumours are never listed as deals \u00b7 sources: ' + srcs + '</p></section>'
+            + secs + note
+            + '<section class="section alt"><div class="prose"><p>Carry on: the ' + lname + ' <a href="' + lhub + '">hub</a>, the <a href="/' + tlug + '-table/">live table</a>, the <a href="/' + tlug + '-fixtures/">fixture calendar</a> and <a href="/' + tlug + '-top-scorers/">the scoring race</a>.</p></div></section>'
+            + '</div></main>' + foot("sports"))
+        return tp
+    pages.append(("/premier-league-transfers/", "Premier League transfers 2026 \u2014 every listed deal | BRYME Sport",
+                  "The verified Premier League summer 2026 transfer tracker: every listed deal club by club, with statuses and fees \u2014 never rumours.", _tr_page(PL_TR, "Premier League", "/premier-league/", "premier-league", False)))
+    _thubs = {"la-liga": "/laliga/", "serie-a": "/serie-a/", "bundesliga": "/bundesliga/", "ligue-1": "/ligue-1/"}
+    _tnames = {"la-liga": "La Liga", "serie-a": "Serie A", "bundesliga": "Bundesliga", "ligue-1": "Ligue 1"}
+    for _tg, _tv in LG_TR.items():
+        pages.append(("/" + _tg + "-transfers/", _tnames.get(_tg, _tg) + " transfers 2026 \u2014 every listed deal | BRYME Sport",
+                      "The verified " + _tnames.get(_tg, _tg) + " summer 2026 transfer tracker: every listed deal club by club, statuses and fees as recorded \u2014 never rumours.", _tr_page(_tv, _tnames.get(_tg, _tg), _thubs.get(_tg, "/" + _tg + "/"), _tg, True)))
 
     for lslug, lf in sld.LEAGUE_FACTS.items():
         _lld = LIVE.get("leagues", {}).get(lslug, {}) if LIVE else {}
@@ -1637,7 +1694,8 @@ def sports_pages():
         + '<div>' + _panel("Six competitions, live", comp_rows, None)
         + _panel("New on the desk", '<div class="sp-row"><span><a href="/the-weekend-ahead/">The weekend ahead \u2014 fixtures + forecast</a></span></div>'
                                      '<div class="sp-row"><span><a href="/fpl/">FPL, explained properly</a></span></div>'
-                                     '<div class="sp-row"><span><a href="/champions-league-table/">The Champions League table</a></span></div>', None)
+                                     '<div class="sp-row"><span><a href="/champions-league-table/">The Champions League table</a></span></div>'
+                                     '<div class="sp-row"><span><a href="/premier-league-transfers/">The transfer centre \u2014 every listed deal</a></span></div>', None)
         + '</div></div></section>')
     _b6 = [("Premier League", [("/premier-league-table/", "Table"), ("/premier-league-fixtures/", "Fixtures"), ("/premier-league-results/", "Results"), ("/premier-league-top-scorers/", "Scorers"), ("/premier-league-clubs/", "Clubs")]),
            ("La Liga", [("/laliga/", "Hub"), ("/la-liga-table/", "Table"), ("/la-liga-fixtures/", "Fixtures"), ("/la-liga-results/", "Results"), ("/la-liga-top-scorers/", "Scorers")]),

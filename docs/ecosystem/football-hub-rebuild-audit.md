@@ -42,9 +42,9 @@
 ## Honest "not available from the source" list (spec §5/§13/§38 compliance)
 
 - **Assists leaderboard** — no API endpoint; only assists of the top-10 scorers are published. Not fabricated.
-- **Manager/coach data** — the `coach` field returns empty. Club pages make no manager claims (trophy-cabinet/manager research batch planned with cited sources instead).
+- **Manager/coach data** — the API `coach` field returns empty; managers now come from the owner-verified trackers (dated) on all 20 PL club hubs.
 - **Injuries & suspensions** — no API coverage; per §13 nothing is invented. Not built.
-- **Transfers** — no API coverage; a transfer centre (§12) requires editorially verified deals (CONFIRMED/REPORTED labelling). Planned as its own researched batch; the August tracker archive shows the format.
+- **Transfers** — RESOLVED: owner-verified trackers recovered from the retired branch and published (see CORRECTION below). Rumours stay unlisted.
 - **Per-player season stats** — not in the free tier; player pages stay unbuilt (§11 anti-thin rule).
 
 ## Remaining phase plan (spec §48 order)
@@ -56,3 +56,21 @@
 - **Phase 7:** evergreen scale-up (~70 listed topics, prioritised by search value: records/milestones as living pages, CL format family, transfer-market rules, PSR/FFP family).
 - **Phase 8–10:** news/analysis labels audit; SEO re-check; mobile/perf QA rerun.
 - **International (§30):** after the six are unquestionably strong.
+
+## CORRECTION (11 Sep 2026, later): §19 deep inspection was incomplete — now done
+
+The first version of this audit claimed Batch 8 discharged the old-hub inspection. Against the new spec's wider §19 checklist that was wrong: **transfer data and manager data existed on the retired branch and were not recovered.** Found by file-level inspection of `origin/agent-work-2026-09-03` (4,318 files):
+
+| §19 item | Found on old branch | Classification → action taken |
+|---|---|---|
+| Transfer information | `content/pl-transfers.json` (owner-supplied 13 Aug, updated 2 Sep: 20 clubs, 99 in / 83 out, strict statuses Confirmed/Loan/Free/Released/Departed/Retired, fee details, sources, rumours quarantined) + `content/league-transfers.json` (4 leagues, 120 in / 91 out, dated 13 Aug, compositionVerified) | **KEEP+IMPROVE → RECOVERED & PUBLISHED.** Five permanent pages: `/sports/premier-league-transfers/`, `/sports/{la-liga,serie-a,bundesliga,ligue-1}-transfers/` — statuses only, rumours never listed, mid-window dating note stated plainly on the four pre-deadline trackers |
+| Manager information | `manager` + `managerNote` per club in both trackers | **KEEP → PUBLISHED.** Manager cell on all 20 PL club hubs + manager line per club on transfer pages, dated by tracker |
+| Trophies | no files (0 hits) | nothing to recover — will be built from cited research, not invented |
+| Stadium data | no dedicated files; ground names already live on club hubs from Batch 8 recovery | KEEP as-is |
+| Player info | edition pages only (`players-to-watch…`, FPL gameweek page) — thin, dated editions | NOINDEX/retire (not resurrected); player pages remain gated on a real stats source (§11) |
+| Injuries | one edition page (`injuries-matchweek-1`) | retire; no data source ⇒ §13 honoured, nothing invented |
+| Old transfer HUB pages (5 league pages + hub) | presentation shells around the same JSON | MERGED into the new permanent pages (better layout + honesty notes) |
+| Existing API code / DB | `server/` (express bot/backend), `data/*.json` (movie/entertainment domain, not sport) | DELETE-superseded (static build replaced it; non-sport data out of scope) |
+| Assets | comics/hero art pruned in Batch 8 with receipts (recoverable on branch) | unchanged |
+
+**Process note:** this correction exists because the audit-first rule was applied to the OLD spec's scope, not the new file's. The missing inspection is now done and every item above is classified per §42.

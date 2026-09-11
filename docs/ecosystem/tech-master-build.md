@@ -373,3 +373,15 @@ Chain: 821 pages / 79,377 links OK (+2,793 = drawer links); validator ok; allowl
 5. **BIG SIX quick-nav** on `/sports/` — six panels × Table/Fixtures/Results/Scorers (+Clubs).
 
 **Verification:** chain green — 883 pages / 93,445 links OK, allowlist v26 (873), validator ok. Live agent run: 6/6 leagues + 19/20 squads (one transient SSL skip; Brighton key normalised via NAME_FIX + fuzzy club-page fallback). Needles PASS: scorers rows show "3 apps · 1 assist"; Chelsea 28, Brighton 30, Hull 34 squad rows; Villa page renders fine without squad; BIG SIX panel present.
+
+## Batch 14 receipt — §19 remediation: the transfer centre recovered & published (11 Sep 2026)
+
+**Driver (user):** "Did you follow the file rules at all??" — audit found the new spec's §19 checklist (transfer info, manager info) had NOT been fully inspected against the retired branch before Batch 13. Remediation shipped in the same batch:
+
+1. **Recovered** `content/pl-transfers.json` (20 clubs, 99 in / 83 out, strict statuses, fees, sources, 2 Sep 2026) + `content/league-transfers.json` (4 leagues, 120 in / 91 out, 13 Aug 2026, compositionVerified) from `origin/agent-work-2026-09-03`.
+2. **Published 5 permanent pages:** `/sports/premier-league-transfers/` + `/sports/{la-liga,serie-a,bundesliga,ligue-1}-transfers/` — every listed deal club by club (player, from/to, status, fee detail), per-club manager + note, sources named, "rumours are never listed as deals" in the byline, and a plain mid-window dating note on the four pre-deadline trackers.
+3. **Manager cell** (spec §9) added to all 20 PL club hubs from the tracker.
+4. **Wiring:** sports index "New on the desk" + PL hub shelf + every club hub's Where-next list link the transfer centre.
+5. **Audit doc corrected** with the full §19 classification matrix (KEEP/IMPROVE/MERGE/REDIRECT/NOINDEX/DELETE per item) and an explicit process note about what was missed and why it is now fixed.
+
+**Verification:** chain green — 888 pages (+5) / 94,662 links OK, allowlist v26 (878), validator ok. Needles PASS: 99/83 counts, ~€87.5m fee detail, Mourinho/Arsenal/Chelsea manager lines, 13 Aug dating note, wiring ×3.
