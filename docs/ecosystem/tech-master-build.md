@@ -424,3 +424,18 @@ Chain: 821 pages / 79,377 links OK (+2,793 = drawer links); validator ok; allowl
 6. **Scores automation question answered** (user): yes — twice-daily GitHub Actions runs (06:00/22:00 UTC) re-fetch all six leagues, squads and rewrite all live pages in place; BUT the workflow needs the `FOOTBALL_DATA_API_KEY` repository secret (old token rotated out in Batch 13). Until the secret is set, cron runs keyless and pages hold their last verified state.
 
 **Verification:** chain green — **898 pages / 97,969 internal links OK** (+7 pages), allowlist v26 (888), validator ok. Needles PASS: features board directly after hero; Ronaldo 978/22 facts; Ballon d'Or London facts; Liverpool trophy cabinet with 6 European Cups; Palace "first major trophy"; explainer "5 English clubs… Four earned it through the Premier League"; LaLiga reads ×2; transfers-hub centre links; UCL + PL feature rows.
+
+## Batch 18 receipt — API continuity + the Fitness upgrade (11 Sep 2026)
+
+**Driver (user):** "I will add the api key later but use the one i gave you as fall back" + "now fitness, let's work on it".
+
+**1. API continuity (owner-authorized):** `FALLBACK_TOKEN` restored as the agent's last-resort key source, explicitly dated and commented; resolution order: env secret → untracked keyfile → fallback. The twice-daily desk keeps updating on Actions even before the repository secret lands; the comment instructs rotation once the secret is configured (the token already lives in git history).
+
+**2. Fitness audit (before building):** 10 guides, WHO/CDC/JAMA sources, YMYL disclaimers present, one genuinely interactive product (the 30-day plan tracker with browser-saved progress). Weakness: the hub landing was a link list — no intent routing, no data, and the interactive plan was buried in a list.
+
+**3. Shipped:**
+- **Hub rebuilt info-first:** new hero kicker ("start where you are"); **"Where are you starting from?"** intent router (3 touch-cards: starting from zero / get stronger / keep quitting → the right guide journey); a **plan module** that sells the interactive 30-day plan properly ("tick days off — your browser remembers"); **"Your week, the honest minimum"** data panel (150 min · 2 strength days · 7+ hours, each tagged WHO/CDC).
+- **Two new researched guides (YMYL protocol):** `/fitness/how-much-protein-do-you-need/` (official 0.8 g/kg RDA; the 1.2–2.0 training band; food-first; explicit no-go lines for health conditions; sources: NIH/NCBI RDA review, AHA, UC Davis) and `/fitness/sleep-and-exercise-performance/` (the 7-hour floor, documented short-sleep risks, boring-habits section, the two-way training-sleep relationship; sources: CDC MMWR + CDC release).
+- **Wiring:** both guides in the nav guides list, the hub's Understand section, and cross-linked into the rest of the desk (rest-days and strength guides gained rows to them; both new guides link back into the journey).
+
+**Verification:** chain green — **900 pages / 98,056 internal links OK** (+2 pages), allowlist v26 (890), validator ok. Needles PASS: hub router/plan/week modules; protein page with 0.8 g/kg + 1.2–2.0 + both sources; sleep page with the seven-hour floor + CDC sources; nav rows present.

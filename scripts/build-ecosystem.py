@@ -371,7 +371,9 @@ def _nav_items(pub):
                   ("/fitness/walking-vs-running/", "Walking vs running"),
                   ("/fitness/workout-at-home-no-equipment/", "Home workout, no equipment"),
                   ("/fitness/how-progressive-overload-works/", "Progressive overload"),
-                  ("/fitness/breathing-during-exercise/", "Breathing basics")]
+                  ("/fitness/breathing-during-exercise/", "Breathing basics"),
+                  ("/fitness/how-much-protein-do-you-need/", "Protein, honestly"),
+                  ("/fitness/sleep-and-exercise-performance/", "Sleep &amp; recovery")]
         return ([("Guides", guides)], ("/fitness/", "Desk home"))
     if pub == "entertainment":
         shelves = [("HEAD", "The entertainment shelves"), ("/entertainment/explainers/", "Explainers"),
@@ -2623,6 +2625,13 @@ def fitness_pages():
     import more_guides_data
     FIT_ARTICLES.extend((s, ti, dek, b) for (s, _k, ti, dek, b) in more_guides_data.FIT_MORE)
     ART_SOURCES.update((s, FIT_SOURCES) for (s, _k, ti, dek, b) in more_guides_data.FIT_MORE)
+    ART_SOURCES["how-much-protein-do-you-need"] = FIT_SOURCES + [
+        ("NIH/NCBI \u2014 Recommended Dietary Allowances: protein 0.8 g/kg for adults", "https://www.ncbi.nlm.nih.gov/books/NBK234929/"),
+        ("American Heart Association \u2014 Protein: what\u2019s enough?", "https://www.heart.org/en/healthy-living/healthy-eating/eat-smart/nutrition-basics/protein-and-heart-health"),
+        ("UC Davis Nutrition Dept \u2014 protein requirements for health professionals", "https://nutrition.ucdavis.edu/outreach/nutr-health-info-sheets/pro-protein-requirements")]
+    ART_SOURCES["sleep-and-exercise-performance"] = FIT_SOURCES + [
+        ("CDC (MMWR) \u2014 adults 18\u201360 recommended at least 7 hours; short-sleep risks", "https://www.cdc.gov/mmwr/volumes/65/wr/mm6506a1.htm"),
+        ("CDC \u2014 1 in 3 adults don\u2019t get enough sleep (AASM/SRS recommendation)", "https://archive.cdc.gov/www_cdc_gov/media/releases/2016/p0215-enough-sleep.html")]
     related_map["walking-vs-running"] = [("30-day-walking-plan", "The 30-day walking plan"),
                                          ("how-to-warm-up", "How to warm up"),
                                          ("how-to-start-working-out", "Starting from zero")]
@@ -2638,6 +2647,14 @@ def fitness_pages():
     related_map["breathing-during-exercise"] = [("how-to-start-working-out", "Starting from zero"),
                                                 ("walking-vs-running", "Walking or running?"),
                                                 ("how-to-warm-up", "How to warm up")]
+    related_map["how-much-protein-do-you-need"] = [("strength-training-for-beginners", "Strength training for beginners"),
+                                                   ("sleep-and-exercise-performance", "Sleep: the recovery tool you cannot buy"),
+                                                   ("how-progressive-overload-works", "How progressive overload works")]
+    related_map["sleep-and-exercise-performance"] = [("rest-days-and-recovery", "Rest days and recovery"),
+                                                     ("how-much-protein-do-you-need", "How much protein do you need?"),
+                                                     ("30-day-walking-plan", "The 30-day walking plan")]
+    related_map["rest-days-and-recovery"].append(("sleep-and-exercise-performance", "Sleep: the recovery tool"))
+    related_map["strength-training-for-beginners"].append(("how-much-protein-do-you-need", "Protein, honestly"))
     arts = [art(s, ti, dek, b, ART_SOURCES[s], related_map[s])
             for (s, ti, dek, b) in FIT_ARTICLES]
 
@@ -2664,12 +2681,34 @@ def fitness_pages():
                  '<span class="meta">Understand</span></a></li>'
                  '<li><a href="/breathing-during-exercise/"><span><b>Breathing during exercise</b>'
                  "<small>The honest basics: two habits worth having, no magic ratios.</small></span>"
+                 '<span class="meta">Understand</span></a></li>'
+                 '<li><a href="/how-much-protein-do-you-need/"><span><b>How much protein do you need?</b>'
+                 "<small>The official 0.8 g/kg, why trainers say more, and food before powders.</small></span>"
+                 '<span class="meta">Understand</span></a></li>'
+                 '<li><a href="/sleep-and-exercise-performance/"><span><b>Sleep: the recovery tool you cannot buy</b>'
+                 "<small>Seven hours is the floor \u2014 what short sleep costs your training.</small></span>"
                  '<span class="meta">Understand</span></a></li>')
     index_body = (head("fitness", "Practical fitness \u2014 no miracles, no medical claims.")
         + '<main id="main"><div class="wrap">'
-        + '<section class="cover"><p class="kicker">BRYME Fitness</p>'
+        + '<section class="cover"><p class="kicker">BRYME Fitness \u00b7 start where you are</p>'
         + '<h1 class="cover-title">Build a routine you can actually keep.</h1>'
         + '<p class="cover-dek">Practical fitness guidance for people starting from zero: programs, challenges and progress \u2014 evidence-aware, beginner-first, and clearly separated from medical advice. No \u201cshred\u201d, no \u201cmelt fat\u201d, no 30-day body promises: 30-day <em>habits</em>.</p></section>'
+        + '<section class="section"><div class="section-head"><p class="kicker">Find your door</p><h2>Where are you starting from?</h2></div>'
+        + '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px">'
+        + '<a class="btn secondary" style="display:block;padding:20px 18px;text-align:left" href="/how-to-start-working-out/"><b>I\u2019m starting from zero</b><small style="display:block;color:var(--dim);margin-top:6px;text-transform:none;letter-spacing:0;font-size:13px">The no-miracle guide, then the 30-day walking plan \u2014 ten minutes a day to begin.</small></a>'
+        + '<a class="btn secondary" style="display:block;padding:20px 18px;text-align:left" href="/strength-training-for-beginners/"><b>I want to get stronger</b><small style="display:block;color:var(--dim);margin-top:6px;text-transform:none;letter-spacing:0;font-size:13px">Six movement patterns, two days a week, zero equipment \u2014 plus the protein arithmetic.</small></a>'
+        + '<a class="btn secondary" style="display:block;padding:20px 18px;text-align:left" href="/rest-days-and-recovery/"><b>I keep quitting</b><small style="display:block;color:var(--dim);margin-top:6px;text-transform:none;letter-spacing:0;font-size:13px">Recovery, sleep and the two-day rule \u2014 why the calendar beats motivation.</small></a>'
+        + '</div></section>'
+        + '<section class="section"><div class="data-cols" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px">'
+        + '<div class="section" style="border:1px solid var(--line);padding:22px"><p class="kicker">The plan \u00b7 interactive</p><h2 style="font-size:22px">The 30-Day Walking Plan.</h2>'
+        + '<p style="color:var(--dim);font-size:14px">Show up every day for a month. Time-based, rest days built in \u2014 tick days off and your browser remembers. No account, nothing sent anywhere.</p>'
+        + '<div class="actions"><a class="btn" href="/30-day-walking-plan/">Open the plan \u2192</a></div></div>'
+        + '<div class="section" style="border:1px solid var(--line);padding:22px"><p class="kicker">Your week \u00b7 the honest minimum</p><h2 style="font-size:22px">What the guidelines actually say.</h2>'
+        + '<ul class="list">'
+        + '<li><span><b>150 minutes</b> of moderate movement across the week \u2014 brisk walking counts.</span><span class="meta">WHO</span></li>'
+        + '<li><span><b>2 days</b> that challenge the major muscles \u2014 the six patterns cover it.</span><span class="meta">CDC</span></li>'
+        + '<li><span><b>7+ hours</b> of sleep \u2014 the recovery tool you cannot buy.</span><span class="meta">CDC</span></li>'
+        + '</ul></div></div></section>'
         + '<section class="section"><div class="section-head"><p class="kicker">Handpicked</p><h2>Start here.</h2></div>'
         + '<ul class="list">' + start_rows + "</ul></section>"
         + '<section class="section alt"><div class="section-head"><p class="kicker">Understand the craft</p><h2>Read before you push.</h2></div>'

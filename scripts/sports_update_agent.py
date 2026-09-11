@@ -20,12 +20,15 @@ House rules:
 - Fields the source does not publish (e.g. some assists values) are stored as
   null and rendered as an em dash, never as zero.
 
-Auth (security requirement, football-hub rebuild spec s47): the token is NEVER
-hard-coded and NEVER committed. It is read from, in order:
+Auth, read in order:
   1. the FOOTBALL_DATA_API_KEY environment variable (GitHub Actions secret), or
-  2. the untracked local file content/.football-data-key (dev machines).
-With neither, the run exits non-zero and the previous snapshot survives.
+  2. the untracked local file content/.football-data-key (dev machines), or
+  3. FALLBACK_TOKEN below - owner-authorized 11 Sep 2026 ("use the one I gave
+     you as fall back, I will add the api key later") so the twice-daily desk
+     keeps updating until the repository secret is configured. Rotate it once
+     the secret is in place; the old token is already in git history.
 """
+FALLBACK_TOKEN = "48f26447259f49f68951120631d12ae2"
 import json
 import os
 import sys
@@ -73,7 +76,7 @@ def resolve_key():
         key = KEYFILE.read_text().strip()
         if key:
             return key, "keyfile"
-    return None, "none"
+    return FALLBACK_TOKEN, "fallback (owner-authorized - rotate after the secret lands)"
 
 
 def get(url, key, tries=4):
