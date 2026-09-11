@@ -234,6 +234,12 @@ FITNESS_CSS_EXTRA = """
 .fp-day small { display: block; color: var(--dim); font-size: 12.5px; margin-top: 2px; }
 .fp-day.done { opacity: .55; }
 .fp-day.done .fp-num::after { content: " \u2713"; color: var(--brand); }
+.wp-grid { display: grid; gap: 10px; }
+.wp-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.wp-day { width: 96px; flex: none; font-weight: 700; font-size: 14px; }
+.wp-chip { border: 1px solid var(--line); background: var(--paper); border-radius: 99px; padding: 9px 16px; font: 600 13px var(--sans); color: var(--muted); cursor: pointer; }
+.wp-chip.on { border-color: var(--brand); color: var(--brand); }
+.wp-chip.on::after { content: " \u2713"; font-weight: 700; }
 .fp-progressbar { height: 10px; background: var(--sheet); border: 1px solid var(--line); border-radius: 99px; overflow: hidden; }
 .fp-fill { height: 100%; width: 0%; background: var(--brand); transition: width .3s ease; }
 @media (max-width: 640px) { .fp-week .fp-day { grid-template-columns: 34px 1fr; } .fp-day .fp-done { grid-column: 2; justify-self: start; } }
@@ -394,7 +400,8 @@ def _nav_items(pub):
                   ("/fitness/how-progressive-overload-works/", "Progressive overload"),
                   ("/fitness/breathing-during-exercise/", "Breathing basics"),
                   ("/fitness/how-much-protein-do-you-need/", "Protein, honestly"),
-                  ("/fitness/sleep-and-exercise-performance/", "Sleep &amp; recovery")]
+                  ("/fitness/sleep-and-exercise-performance/", "Sleep &amp; recovery"),
+                  ("/fitness/weekly-planner/", "The weekly planner")]
         return ([("Guides", guides)], ("/fitness/", "Desk home"))
     if pub == "entertainment":
         shelves = [("HEAD", "The entertainment shelves"), ("/entertainment/explainers/", "Explainers"),
@@ -2633,7 +2640,7 @@ def fitness_pages():
         + week_rows
         + '<section class="section"><div class="section-head"><p class="kicker">The fine print</p><h2>How to use this plan sensibly.</h2></div>'
         + '<div class="prose"><p>\u201cEasy pace\u201d means you can hold a conversation; \u201cbrisk\u201d means you can talk but not sing. If a day feels too hard, repeat the previous day \u2014 the numbering is a suggestion, your body is the schedule. Sharp pain, dizziness or unusual breathlessness: stop. This is general information, not medical advice; if you have a health condition or have been inactive for a long time, see a qualified professional first.</p>'
-        + '<p>Finished? Repeat week four, move the brisk blocks earlier, or add two strength days from <a href="/strength-training-for-beginners/">the beginner strength guide</a>.</p></div></section>'
+        + '<p>Finished? Repeat week four, move the brisk blocks earlier, or add two strength days from <a href="/strength-training-for-beginners/">the beginner strength guide</a> \u2014 and run the whole system from <a href="/weekly-planner/">the weekly planner</a>, one card for the honest week.</p></div></section>'
         + '<section class="section alt">' + src_html(FIT_SOURCES) + "</section>"
         + _fit_shell("fitness", "", "", "", True)
         + '<script type="application/json" id="fit-plan-data">{"total": 30}</script>'
@@ -2728,6 +2735,9 @@ def fitness_pages():
         + '<div class="section" style="border:1px solid var(--line);padding:22px"><p class="kicker">The plan \u00b7 interactive</p><h2 style="font-size:22px">The 30-Day Walking Plan.</h2>'
         + '<p style="color:var(--dim);font-size:14px">Show up every day for a month. Time-based, rest days built in \u2014 tick days off and your browser remembers. No account, nothing sent anywhere.</p>'
         + '<div class="actions"><a class="btn" href="/30-day-walking-plan/">Open the plan \u2192</a></div></div>'
+        + '<div class="section" style="border:1px solid var(--line);padding:22px"><p class="kicker">The tool \u00b7 interactive</p><h2 style="font-size:22px">The Weekly Planner.</h2>'
+        + '<p style="color:var(--dim);font-size:14px">One card for the honest week \u2014 move \u00b7 strength \u00b7 on-time nights. Tick what happened; it scores itself against the real targets and resets each Monday.</p>'
+        + '<div class="actions"><a class="btn" href="/weekly-planner/">Open the planner \u2192</a></div></div>'
         + '<div class="section" style="border:1px solid var(--line);padding:22px"><p class="kicker">Your week \u00b7 the honest minimum</p><h2 style="font-size:22px">What the guidelines actually say.</h2>'
         + '<ul class="list">'
         + '<li><span><b>150 minutes</b> of moderate movement across the week \u2014 brisk walking counts.</span><span class="meta">WHO</span></li>'
@@ -2743,6 +2753,47 @@ def fitness_pages():
         + "</div></main>" + foot("fitness"))
     pages = [("/", "BRYME Fitness \u2014 practical fitness, no miracle claims",
               "Beginner-first fitness: how to start, the 30-day walking plan with in-browser progress tracking, strength basics and recovery \u2014 evidence-aware, never medical advice.", index_body)]
+    # ---- batch 20: the weekly planner (second interactive tool) ----
+    import json as _j2
+    _DAYS7 = [("mon", "Monday"), ("tue", "Tuesday"), ("wed", "Wednesday"), ("thu", "Thursday"),
+              ("fri", "Friday"), ("sat", "Saturday"), ("sun", "Sunday")]
+    _wp_rows = ""
+    for _dk, _dn in _DAYS7:
+        _wp_rows += ('<div class="wp-row"><span class="wp-day">' + _dn + '</span>'
+            + '<button type="button" class="wp-chip" data-day="' + _dk + '" data-kind="move" aria-pressed="false">Move 30</button>'
+            + '<button type="button" class="wp-chip" data-day="' + _dk + '" data-kind="strength" aria-pressed="false">Strength</button>'
+            + '<button type="button" class="wp-chip" data-day="' + _dk + '" data-kind="wind" aria-pressed="false">On-time night</button></div>')
+    _wp_schema = {"@context": "https://schema.org", "@type": "Article",
+        "headline": "The BRYME Weekly Planner",
+        "author": {"@type": "Organization", "name": "BRYME Fitness desk"},
+        "publisher": {"@type": "Organization", "name": "THE BRYME"},
+        "datePublished": TODAY, "dateModified": TODAY,
+        "mainEntityOfPage": ORIGIN + "/fitness/weekly-planner/",
+        "description": "One card for the honest fitness week: movement most days, two strength days, on-time evenings. Ticks are saved in your browser only and the card resets each Monday."}
+    planner_body = (head("fitness", "Practical fitness \u2014 no miracles, no medical claims.")
+        + '<main id="main"><div class="wrap">'
+        + '<nav class="crumb"><a href="/fitness/">Fitness</a> / The Weekly Planner</nav>'
+        + '<section class="cover"><p class="kicker">The tool \u00b7 interactive \u00b7 resets every Monday</p>'
+        + '<h1 class="cover-title" style="font-size:clamp(30px,4.6vw,48px)">Your week, on one card.</h1>'
+        + '<p class="byline">BRYME Fitness desk \u00b7 general information, not medical advice \u00b7 ticks are saved in <em>your</em> browser\u2019s local storage \u2014 no account, nothing sent anywhere</p></section>'
+        + '<section class="section alt"><div class="wrap"><p class="lede"><b>One honest week:</b> move on most days, challenge the muscles twice, protect the evenings. Tick what actually happened \u2014 the card scores the week against the public-health targets, then starts fresh on Monday.</p></div></section>'
+        + '<section class="section"><div class="section-head"><p class="kicker">The card</p><h2>Tap what happened.</h2></div>'
+        + '<div id="wp-grid" class="wp-grid">' + _wp_rows + '</div>'
+        + '<p class="lede" id="wp-status" style="margin-top:18px"></p>'
+        + '<div class="actions"><button type="button" class="btn secondary" id="wp-reset">Reset the week</button></div></section>'
+        + '<section class="section"><div class="section-head"><p class="kicker">What counts</p><h2>Keep it honest, keep it easy.</h2></div>'
+        + '<div class="prose">'
+        + '<p><b>Move 30</b> \u2014 about thirty minutes of anything that lifts your breathing: a brisk walk (a day of <a href="/30-day-walking-plan/">the 30-day plan</a> counts by definition), cycling, a long swim, vigorous gardening. Five ticked days is the path to the 150-minute weekly guideline \u2014 not a rule, a route.</p>'
+        + '<p><b>Strength</b> \u2014 one of the two weekly sessions from <a href="/strength-training-for-beginners/">the six patterns</a> or <a href="/workout-at-home-no-equipment/">the home routine</a>. Two ticks meets the muscle-strengthening guideline. Two, not seven: recovery days are where adaptation happens \u2014 <a href="/rest-days-and-recovery/">the recovery guide</a> explains why.</p>'
+        + '<p><b>On-time night</b> \u2014 the evening you got to bed in time for seven-plus hours (<a href="/sleep-and-exercise-performance/">why sleep is the recovery multiplier</a>). The habit lives or dies at night, so the card tracks nights, not mornings.</p>'
+        + '<p><b>Scoring, stated plainly:</b> the card reads 5 moves \u00b7 2 strength \u00b7 5 on-time nights as a complete honest week. It is a mirror, not a judge \u2014 a bad week is data for next week, and the card resets itself every Monday either way.</p>'
+        + '</div></section>'
+        + _fit_shell("fitness", "", "", "", True)
+        + '<script src="/assets/fitness-planner.js" defer></script>'
+        + '<script type="application/ld+json">' + _j2.dumps(_wp_schema) + "</script>"
+        + "</div></main>" + foot("fitness"))
+    plan_page.append(("/weekly-planner/", "The Weekly Planner | BRYME Fitness",
+                      "One card for the honest fitness week: move most days, two strength days, on-time evenings. Saved in your browser, resets each Monday, nothing sent anywhere.", planner_body))
     pages.extend(plan_page)
     pages.extend(arts)
     return pages + legal_pages("fitness", "BRYME Fitness", "Practical fitness guidance \u2014 responsible, evidence-aware, clearly separated from medical advice.")

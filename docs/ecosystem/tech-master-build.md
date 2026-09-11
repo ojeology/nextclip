@@ -451,3 +451,13 @@ Chain: 821 pages / 79,377 links OK (+2,793 = drawer links); validator ok; allowl
 4. **`docs/ecosystem/revenue-readiness.md`** — the dashboard: AdSense flip-day checklist (incl. the certified-CMP decision for EEA/UK), per-niche ratings with the explicit gap to 9–10, revenue levers per niche, and the owner's domain-gate policy recorded.
 
 **Verification:** chain green — **904 pages / 98,298 links OK** (+4 pages), allowlist v26 (894), validator ok. Needles PASS: 4 new entertainment links on the hub + directories; new disclosure on sports/entertainment/tech/fitness/home privacy pages; ads-off state clean (no ad markup, no stale ads.txt).
+
+## Batch 20 receipt — the Weekly Planner (fitness tool #2) + the "in build" diagnosis (11 Sep 2026)
+
+**Driver (user):** "Why is the fitness page still showing in build.. Keep working."
+
+**1. Diagnosis:** /fitness/ is NOT in build — verified 200 OK in 0.07–0.17s with the latest Batch-18 content live at bryme.onrender.com. The "in build" appearance is a Render free-tier artefact: (a) the dashboard shows build/queue badges after each push (several pushes today queue serially on the free tier), (b) the instance spins down after ~15 min idle, so a first visit after a gap waits while it wakes, (c) thebryme.com remains NXDOMAIN, so any custom-domain check shows a registrar error, not the site. No code action needed; the registrar + the eventual paid/CDN tier remain the structural fixes.
+
+**2. Shipped — `/fitness/weekly-planner/`:** the second interactive tool, house pattern (browser localStorage only, resets each Monday automatically): a 7-day card with three honest ticks per day — **Move 30** (path to the 150-min week), **Strength** (the 2-day guideline), **On-time night** (the 7-hour floor's evening gate). Live summary line scores the week ("The honest week, complete." at 5/2/5), reset button, plain-language "what counts" sections linking the guides, medical-advice band, Article schema. Wired: fitness hub (planner card beside the 30-day plan card), nav ("The weekly planner"), and the 30-day plan's fine print now points to it.
+
+**Verification:** chain green — **905 pages / 98,340 internal links OK** (+1 page), allowlist v26 (895), validator ok. Needles PASS: chips ×7 days ×3 kinds, reset, status line, planner script tag; hub card + plan-page pointer + nav row.
