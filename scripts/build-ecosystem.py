@@ -2321,6 +2321,12 @@ def _load_tech():
                      "read": "", "author": "the BRYME Tech desk",
                      "blocks": [{"heading": "", "body": body, "html": True}],
                      "sources": [], "recovered": False})
+    import tech_troubleshooting_data
+    for slug, cat, kind, title, dek, body in tech_troubleshooting_data.TROUBLESHOOTING_GUIDES:
+        arts.append({"slug": slug, "title": title, "excerpt": dek, "cat": cat, "kind": kind,
+                     "pub": TODAY, "upd": TODAY, "read": "", "author": "the BRYME Tech desk",
+                     "blocks": [{"heading": "", "body": body, "html": True}],
+                     "sources": [], "recovered": False})
     import tech_guides_data
     for slug, cat, kind, title, dek, body, sources, related in tech_guides_data.NEW_TECH_GUIDES:
         arts.append({"slug": slug, "title": title, "excerpt": dek, "cat": cat, "kind": kind,

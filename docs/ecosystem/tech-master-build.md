@@ -511,3 +511,10 @@ Chain: 922 pages / 99,128 internal links OK; validator ok; allowlist v26 (912 ro
 - B9 journeys: 6/7 PASS. J7 fixed: all six living features now carry the §1.3 label strip ("How this page is labelled") + explicit BRYME ANALYSIS tags on interpretive sections. J4 (injuries) honestly deferred = B5 (no sourced feed; desk won't print unsourced statuses).
 - URL-structure note: sport property nests under /sports/ (e.g. /sports/laliga/, /sports/clubs/manchester-city/) — root-style probes 404 by design, not a defect.
 - Chain: 947 pages / 101,880 internal links OK; allowlist v26 (937); validators pass; ads still OFF.
+
+## Batch 28 — 11 Sep 2026 (Tech troubleshooting library — Pack §3.1.2 top 4)
+- +4 diagnostic guides in tech_troubleshooting_data.py, strict §4.1 template (symptom → ordered causes with frequency labels → safe diagnosis → fix → when it won't work → escalation → official docs, checked 11 Sep 2026):
+  website-wont-deploy-fix (3 failure families; first-hand: our own Render builds), dns-not-working-propagation (5 layers; first-hand: the registry NXDOMAIN saga), ssl-certificate-not-issuing (5 causes incl. CAA + mixed content), website-not-indexing-google (9-step Search Console order; first-hand: our machine-checked sitemap promise).
+- All cross-linked to the desk's existing explainers (what-is-dns, custom-domain-dns-order, render-static-deploy, render-deployment-failures, what-is-ssl-https, ssl-certificate-errors-explained, check-if-google-indexed, sitemap-indexnow). Two dead-link slips caught by the checker (robots.txt/sitemap.xml are served FILES under /tech/, not articles) — fixed, 0 broken.
+- Pack §6 honesty note: indexability page says plainly that new domains take time and nobody sells instant indexing.
+- Chain: 951 pages / 102,155 internal links OK; allowlist v26 (941); validators pass; ads still OFF.
