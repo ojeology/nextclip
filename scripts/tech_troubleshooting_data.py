@@ -57,7 +57,7 @@ TROUBLESHOOTING_GUIDES = [
 <h2>When this fix will not work</h2>
 <p>Hosted names that cannot get public certificates (internal <code>.local</code>-style names); free hosting tiers with per-domain issuance limits; and browser-trust problems on very old devices — where the certificate is valid but the device's trust store is a decade stale. The last one is the environment's problem, not yours.</p>
 <p><b>Official documentation (checked 11 September 2026):</b> Let's Encrypt's docs on rate limits and CAA (letsencrypt.org/docs), MDN on mixed content (developer.mozilla.org), and your host's certificate/HTTPS reference. For what the certificate actually asserts, see <a href="/tech/what-is-ssl-https/">what SSL/TLS and HTTPS really are</a>; for the errors browsers show, <a href="/tech/ssl-certificate-errors-explained/">certificate errors, explained</a>.</p>"""),
-("website-not-indexing-google", "explainers", "troubleshooting",
+("website-not-indexing-google", "web-and-hosting", "troubleshooting",
 "Why is my site not on Google? An indexing diagnostic",
 "From 'site:' to Search Console: the nine checks in the order that finds the blocker — and the honest truth about new sites.",
 """<p><b>The symptom:</b> the site (or one page) is live, loads fine in a browser, and simply does not appear on Google. Indexing is where most site-owners lose weeks to the wrong fixes. The diagnostic order below finds the actual blocker, from hardest block to softest.</p>
