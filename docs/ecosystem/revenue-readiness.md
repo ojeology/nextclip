@@ -40,3 +40,6 @@
 - Browse-the-movies catalogue (40 titles, 63 verified links) = AdSense "helpful inventory": deep internal linking from a browse surface, zero thin pages.
 - Entertainment + Fitness now carry the full site chrome (drawer nav, dark mode) — UX parity across all six niches; nothing for an AdSense reviewer to flag as half-built.
 - Entertainment holds at A−; next levers: Writers depth, Sport content wave.
+
+## Batch 23 (11 Sep 2026) — catalogue 40→69 titles, 4→8 shelves
+Browse surface now carries 103 verified coverage links over 69 titles — a genuine genre-browse hub (fantasy, anime, kdrama + horror, Nolan, superhero, TV, world cinema). Entertainment A− → A case strengthens next push.

@@ -474,3 +474,9 @@ Chain: 922 pages / 99,128 internal links OK; validator ok; allowlist v26 (912 ro
 - ENT_MERGE now supports multiple companions per page (values normalised to lists); restored `interstellar-ending-explained` to the Interstellar guide (it had been orphaned by a b21 dict-key collision — second-chance rule).
 - Sidebar/dark parity: ENT + Fitness get the slide-out drawer (aside + open/close buttons + site-nav.js) and Entertainment also gets theme.js + the dark toggle (was dead — zero JS). Home already had its own persistent sidebar + working dark mode; Writers/Tech/Sport already complete.
 - Chain: 923 pages / 100,171 internal links OK; allowlist v26 (913 routes); ads still OFF.
+
+## Batch 23 — 11 Sep 2026 (catalogue deepened 40→69 titles, 4→8 shelves)
+- Deep-mined every ENT page (dictionary scan + prose verification) for real coverage: +29 titles, +40 links. Catalogue now 69 titles / 103 build-verified links across 8 shelves: Fantasy & Sci-Fi (7), Anime (14), K-Drama & Korean screen (12), Mind-benders & Nolan (7), Horror & the undead (10), Superhero & spectacle (7), Box-set & binge TV (6), World cinema — Indian/Nigerian (6).
+- New verified coverage mapped: Kaiju No. 8, Slime, Tower of God, Chainsaw Man (anime lists); Sweet Home, Liar Game, Money Heist (TV recs); Logan, The Suicide Squad, Free Guy, No Way Home (Deadpool-like); The Martian, Gravity (Interstellar-like); Decision to Leave, A Taxi Driver (Korean); The Menu, Nope, Scream (horror/pop); Tumbbad (Indian); The Black Book, October 1, Brotherhood (Nigerian).
+- Truth-check assert caught: footer link to merged-away 5-vampire page → swapped to live page. Build still fails on any dishonest link.
+- Chain: 923 pages / 100,222 internal links OK; allowlist v26 (913 routes).
