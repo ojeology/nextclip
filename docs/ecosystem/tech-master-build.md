@@ -518,3 +518,8 @@ Chain: 922 pages / 99,128 internal links OK; validator ok; allowlist v26 (912 ro
 - All cross-linked to the desk's existing explainers (what-is-dns, custom-domain-dns-order, render-static-deploy, render-deployment-failures, what-is-ssl-https, ssl-certificate-errors-explained, check-if-google-indexed, sitemap-indexnow). Two dead-link slips caught by the checker (robots.txt/sitemap.xml are served FILES under /tech/, not articles) — fixed, 0 broken.
 - Pack §6 honesty note: indexability page says plainly that new domains take time and nobody sells instant indexing.
 - Chain: 951 pages / 102,155 internal links OK; allowlist v26 (941); validators pass; ads still OFF.
+
+## Batch 29 — 11 Sep 2026 (Tech troubleshooting #5–8 + Home seasonal system)
+- TECH §3.1.2 wave 2 (+4, library now 8): github-pages-not-showing-changes (branch/cache/base-path trap), firebase-deployment-failing (auth/project/rules/indexes/quota — honestly researched from official docs, not dressed as first-hand per §1.5), api-returns-error-diagnostic (401→5xx tree + the CORS illusion), works-locally-fails-online (the six differences). All dated-source lines (checked 11 Sep 2026).
+- HOME §3.2.5 seasonal system (+4, roadmap 11): spring-home-reset · summer-cooling-checklist · autumn-home-preparation · winter-home-preparation — interior/exterior/appliances/energy/safety each, Northern calendar + explicit six-month Southern offset (no duplicate pages, §7 international rule). 18 °C WHO-baseline line carries its checked date. Linked into the interactive seasonal checklist + existing desk pages.
+- Chain: 959 pages / 102,755 internal links OK; allowlist v26 (949); validators pass; ads still OFF.

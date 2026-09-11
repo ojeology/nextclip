@@ -3165,7 +3165,9 @@ HOME_SLUG_SECT.update({s: "appliances" for s in (
     "fridge-temperature-setting")})
 HOME_SLUG_SECT.update({s: "fix" for s in ("how-to-clear-a-slow-shower-drain",)})
 HOME_SLUG_SECT.update({s: "maintain" for s in (
-    "how-to-clean-and-care-for-a-mattress", "season-cast-iron-pan")})
+    "how-to-clean-and-care-for-a-mattress", "season-cast-iron-pan",
+    "spring-home-reset", "summer-cooling-checklist",
+    "autumn-home-preparation", "winter-home-preparation")})
 
 HOME_SLUG_SECT.update({s: "maintain" for s in (
     "hvac-filter-change-habit", "uk-boiler-servicing", "ac-outdoor-unit-care")})
@@ -3354,6 +3356,8 @@ def home_pages():
     HOME_ARTICLES.extend((s2, ti, dek, b) for (s2, _k, ti, dek, b) in home_roadmap9_data.HOME_ROADMAP_9 if s2 not in _have)
     import home_roadmap10_data
     HOME_ARTICLES.extend((s2, ti, dek, b) for (s2, _k, ti, dek, b) in home_roadmap10_data.HOME_ROADMAP_10 if s2 not in _have)
+    import home_roadmap11_data
+    HOME_ARTICLES.extend((s2, ti, dek, b) for (s2, _k, ti, dek, b) in home_roadmap11_data.HOME_ROADMAP_11 if s2 not in _have)
 
     def src_html(sources):
         if not sources:
@@ -3723,6 +3727,18 @@ def home_pages():
         "fridge-temperature-setting": [("fridge-coils-twice-a-year", "The coil ritual"),
                                        ("fridge-door-seal-test", "The seal test"),
                                        ("fridge-not-cold-enough", "The warm-fridge triage")],
+        "spring-home-reset": [("seasonal-home-maintenance-checklist", "The seasonal checklist"),
+                              ("ac-outdoor-unit-care", "The AC outdoor unit"),
+                              ("co-smoke-alarm-expiry", "Alarm expiry dates")],
+        "summer-cooling-checklist": [("hvac-filter-change-habit", "The filter habit"),
+                                     ("ac-outdoor-unit-care", "The outdoor unit"),
+                                     ("energy-bill-high-unchanged", "Why the bill is high")],
+        "autumn-home-preparation": [("uk-boiler-servicing", "The boiler service"),
+                                    ("how-to-bleed-a-radiator", "Bleeding radiators"),
+                                    ("condensation-ventilation-that-works", "Condensation, solved")],
+        "winter-home-preparation": [("small-leak-ripple-effect", "The ripple effect"),
+                                    ("fridge-temperature-setting", "The 4°C rule"),
+                                    ("emergency-repair-fund", "The repair fund")],
     }
     for slug, ti, dek, b in HOME_ARTICLES:
         key = HOME_SLUG_SECT[slug]
