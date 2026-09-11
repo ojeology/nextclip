@@ -385,3 +385,16 @@ Chain: 821 pages / 79,377 links OK (+2,793 = drawer links); validator ok; allowl
 5. **Audit doc corrected** with the full §19 classification matrix (KEEP/IMPROVE/MERGE/REDIRECT/NOINDEX/DELETE per item) and an explicit process note about what was missed and why it is now fixed.
 
 **Verification:** chain green — 888 pages (+5) / 94,662 links OK, allowlist v26 (878), validator ok. Needles PASS: 99/83 counts, ~€87.5m fee detail, Mourinho/Arsenal/Chelsea manager lines, 13 Aug dating note, wiring ×3.
+
+## Batch 15 receipt — "infos before articles": tables embedded on hubs, six leagues in the header, latest-scores grid (11 Sep 2026)
+
+**Driver (user):** "The infos should come before articles… the top five leagues — some are missing in the header… clicking on a league lands you on the table, articles stay in the bottom… Sports should be more infos."
+
+**Shipped:**
+1. **Real tables on every league hub.** New `_league_module` renders the actual live `<table>` (Pos/Club/P/W/D/L/GF/GA/GD/Pts, scroll-wrapped, stamped with fetch time + source) with scorers + where-next panels beside it. Embedded directly under the hero on all six hubs — verified `TABLE FIRST` (table tag precedes every shelf/editorial section). The PL hub, LaLiga hub (retitled "Spain's league, on one page"), Serie A, Bundesliga and Ligue 1 hubs, and the UCL hub (retitled "Europe's big cup, tracked live") all open on data now; shelves and archive follow; editorial stays at the bottom.
+2. **Header rebuilt — all six competitions present.** Desktop nav is now Premier League | La Liga | Champions League | Serie A | Bundesliga | Ligue 1 | The desk — each league's mega lists Table / Results / Top scorers / Fixtures (+ Transfer centre, + PL's clubs & MW preview); CTA became "This weekend". Previously Serie A/Bundesliga/Ligue 1 were buried hub-only rows and LaLiga/UCL columns had no data links at all.
+3. **Drawer rebuilt** — Leagues (6 hubs), Live data (6 tables + weekend forecast + FPL), The desk (transfer centre, explainers, analysis). Legacy `/sports/epl/` `/sports/laliga/` drawer links replaced with current URLs.
+4. **"Sports should be more infos"** — new **Last verified scores** grid on `/sports/`: the latest completed round of all six leagues as compact score panels (dates + scores + per-league "All results" links), placed right after the live module.
+5. UCL "honest bit" reworded (the old line claimed the desk doesn't track scores — no longer true); UCL live-data links de-duplicated.
+
+**Verification:** chain green — 888 pages / 96,845 links OK (nav expansion added ~2,200 verified links), allowlist v26 (878), validator ok. Order needles PASS on all six hubs; drawer groups present; scores grid present (Premier League · MW3, La Liga · MD6, Champions League · MD1…).
