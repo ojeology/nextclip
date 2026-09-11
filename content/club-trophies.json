@@ -1,0 +1,174 @@
+{
+ "_comment": "Compiled from official club honours records and UEFA archives; counts confirmed against published records 11 September 2026. Omitted fields = not confidently verified, never guessed.",
+ "as_of": "11 September 2026",
+ "clubs": {
+  "manchester-city": {
+   "lg": 10,
+   "fa": 7,
+   "lc": 8,
+   "eu": "1 Champions League (2023) · 1 Cup Winners' Cup (1970)",
+   "w": "Club World Cup 2023",
+   "note": "Four straight titles, 2021–24"
+  },
+  "arsenal": {
+   "lg": 13,
+   "fa": 14,
+   "lc": 2,
+   "eu": "1 Cup Winners' Cup (1994) · 1 Inter-Cities Fairs Cup (1970)",
+   "w": "",
+   "note": "Record 14 FA Cups; beaten European finalists, May 2026"
+  },
+  "liverpool": {
+   "lg": 20,
+   "fa": 8,
+   "lc": 10,
+   "eu": "6 European Cups (English record) · 3 UEFA Cups · 4 Super Cups",
+   "w": "Club World Cup 2019",
+   "note": "Champions 2024–25 — the record 20th title, shared with United"
+  },
+  "manchester-united": {
+   "lg": 20,
+   "fa": 13,
+   "lc": 6,
+   "eu": "3 European Cups (1968, 1999, 2008) · 1 Europa League (2017) · 1 Cup Winners' Cup (1991)",
+   "w": "Club World Cup 2008",
+   "note": ""
+  },
+  "chelsea": {
+   "lg": 6,
+   "fa": 8,
+   "lc": 5,
+   "eu": "2 Champions League (2012, 2021) · 2 Europa League · 2 Cup Winners' Cups · 1 Conference League (2025)",
+   "w": "Club World Cup 2022, 2025",
+   "note": "The complete European set"
+  },
+  "tottenham-hotspur": {
+   "lg": 2,
+   "fa": 8,
+   "lc": 4,
+   "eu": "3 UEFA Cups/Europa League (1972, 1984, 2025) · 1 Cup Winners' Cup (1963)",
+   "w": "",
+   "note": "The 2025 Europa League — first European trophy since 1984"
+  },
+  "newcastle-united": {
+   "lg": 4,
+   "fa": 6,
+   "lc": 0,
+   "eu": "1 Inter-Cities Fairs Cup (1969)",
+   "w": "",
+   "note": "Waiting since 1955 for the next domestic cup"
+  },
+  "aston-villa": {
+   "lg": 7,
+   "fa": 7,
+   "lc": 5,
+   "eu": "1 European Cup (1982) · 1 Europa League (2026)",
+   "w": "",
+   "note": "European champions again — the 2026 Europa League bought this season's Champions League place"
+  },
+  "everton": {
+   "lg": 9,
+   "fa": null,
+   "lc": 0,
+   "eu": "1 Cup Winners' Cup (1985)",
+   "w": "",
+   "note": ""
+  },
+  "west-ham-united": {
+   "lg": 0,
+   "fa": 3,
+   "lc": 0,
+   "eu": "1 Cup Winners' Cup (1965) · 1 Conference League (2023)",
+   "w": "",
+   "note": ""
+  },
+  "sunderland": {
+   "lg": 6,
+   "fa": 2,
+   "lc": 0,
+   "eu": "",
+   "w": "",
+   "note": "The 1973 FA Cup final, won against the odds"
+  },
+  "leeds-united": {
+   "lg": 3,
+   "fa": 1,
+   "lc": 1,
+   "eu": "2 Inter-Cities Fairs Cups (1968, 1971)",
+   "w": "",
+   "note": ""
+  },
+  "nottingham-forest": {
+   "lg": 1,
+   "fa": 2,
+   "lc": 4,
+   "eu": "2 European Cups (1979, 1980) — back to back",
+   "w": "",
+   "note": "The Clough miracle"
+  },
+  "wolverhampton-wanderers": {
+   "lg": 3,
+   "fa": 4,
+   "lc": 2,
+   "eu": "",
+   "w": "",
+   "note": ""
+  },
+  "crystal-palace": {
+   "lg": 0,
+   "fa": 1,
+   "lc": 0,
+   "eu": "",
+   "w": "",
+   "note": "The 2025 FA Cup — the club's first major trophy"
+  },
+  "brighton": {
+   "lg": 0,
+   "fa": 0,
+   "lc": 0,
+   "eu": "Europa League last 16, 2023–24",
+   "w": "",
+   "note": ""
+  },
+  "brentford": {
+   "lg": 0,
+   "fa": 0,
+   "lc": 0,
+   "eu": "",
+   "w": "",
+   "note": "The 2021 promotion was the first top-flight return since 1947"
+  },
+  "fulham": {
+   "lg": 0,
+   "fa": 0,
+   "lc": 0,
+   "eu": "2010 Europa League finalists",
+   "w": "",
+   "note": ""
+  },
+  "bournemouth": {
+   "lg": 0,
+   "fa": 0,
+   "lc": 0,
+   "eu": "",
+   "w": "",
+   "note": "The climb from the brink of extinction to the top flight"
+  },
+  "hull-city": {
+   "lg": 0,
+   "fa": 0,
+   "lc": 0,
+   "eu": "",
+   "w": "",
+   "note": "Founded 1904; the top flight arrived for the first time in 2008"
+  },
+  "coventry-city": {
+   "lg": 0,
+   "fa": 1,
+   "lc": 0,
+   "eu": "",
+   "w": "",
+   "note": "The 1987 FA Cup final — Spurs beaten 3–2"
+  }
+ }
+}

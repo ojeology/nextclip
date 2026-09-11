@@ -856,6 +856,7 @@ def sports_pages():
 
     # evergreen explainers: laws, formats and roles — no fixtures, no data rights, no betting
     import sports_explainers_data
+    import sports_features_data
     import json as _j
     expl_rows = []
     for slug, title, dek, body, sources, related in sports_explainers_data.SPORT_EXPLAINERS:
@@ -1098,6 +1099,7 @@ def sports_pages():
         + '<ul class="list">'
         + '<li><a href="/premier-league-table/"><span><b>The live table</b><small>Twenty clubs after Matchweek 3 \u2014 stamped with the date and the sources, updated as rounds are verified.</small></span><span class="meta">Live</span></a></li>'
         + '<li><a href="/form-board/"><span><b>The Form Board</b><small>Who is actually in form right now \u2014 real points-per-game arithmetic on verified results.</small></span><span class="meta">Live</span></a></li>'
+        + '<li><a href="/who-will-win-the-2026-27-premier-league/"><span><b>Who wins the league?</b><small>The living title-race page \u2014 updated as rounds are verified.</small></span><span class="meta">Feature</span></a></li>'
         + '<li><a href="/premier-league-fixtures/"><span><b>Fixtures &amp; results</b><small>The full 380-fixture official calendar, with the verified Matchweek 4 card on top.</small></span><span class="meta">This weekend</span></a></li>'
         + '<li><a href="/the-weekend-ahead/"><span><b>The weekend ahead</b><small>This weekend\u2019s fixtures and the desk\u2019s labelled forecast.</small></span><span class="meta">Forecast</span></a></li>'
         + '<li><a href="/fpl/"><span><b>FPL, explained properly</b><small>Scoring, chips, transfers \u2014 the fantasy desk, no tips sold.</small></span><span class="meta">Fantasy</span></a></li>'
@@ -1273,6 +1275,27 @@ def sports_pages():
         return ('<section class="section"><div class="section-head"><p class="kicker">The squad \u00b7 ' + str(shown) + ' players</p><h2>Who is in the building.</h2></div>'
                 + ('<p class="byline">As listed by our data source \u00b7 ' + html.escape(str(upd)) + ' \u00b7 ages as at listing</p>' if upd else "")
                 + '<div class="data-cols">' + panels + '</div></section>')
+    TROPH = _cal("club-trophies.json")
+    def _trophy_sec(slug):
+        t = TROPH.get("clubs", {}).get(slug)
+        if not t:
+            return ""
+        rows1 = ""
+        if t.get("lg") is not None:
+            rows1 += '<div class="sp-row"><span>League titles</span><span class="pts"><b>' + str(t["lg"]) + '</b></span></div>'
+        if t.get("fa") is not None:
+            rows1 += '<div class="sp-row"><span>FA Cups</span><span class="pts"><b>' + str(t["fa"]) + '</b></span></div>'
+        if t.get("lc"):
+            rows1 += '<div class="sp-row"><span>League Cups</span><span class="pts"><b>' + str(t["lc"]) + '</b></span></div>'
+        rows2 = ""
+        if t.get("eu"):
+            rows2 += '<div class="sp-row"><span>' + t["eu"] + '</span></div>'
+        if t.get("w"):
+            rows2 += '<div class="sp-row"><span>' + t["w"] + '</span></div>'
+        note = ('<div class="sp-row"><span><em>' + t["note"] + '</em></span></div>') if t.get("note") else ""
+        srcnote = ('<p class="byline">Compiled from official club honours records \u00b7 correct as of ' + html.escape(str(TROPH.get("as_of", ""))) + ' \u00b7 counts the desk could not verify are simply not shown</p>')
+        return ('<section class="section"><div class="section-head"><p class="kicker">Trophy cabinet</p><h2>The honours, counted.</h2></div>'
+            + '<div class="data-cols"><div>' + _panel("Domestic", rows1, None) + _panel("Europe &amp; world", rows2, None) + '</div><div>' + _panel("The story", note + '<div class="sp-row"><span>The evergreen context: <a href="/promotion-and-relegation-explained/">the pyramid</a> and <a href="/how-the-premier-league-table-works/">the table</a> these trophies hang from.</span></div>', None) + '</div></div></section>' + srcnote)
     STORY_FOR = {
         "manchester-city": ("/elliot-anderson-man-city-record-signing/", "Why City paid a record for a midfielder"),
         "liverpool": ("/premier-league-transfer-tracker-august-2026/", "The summer window, deal by deal"),
@@ -1312,6 +1335,7 @@ def sports_pages():
             + '<section class="section"><div class="prose"><p>' + blurb + chsrc + '</p>'
             + '<p>' + _club_now_text(r, fx) + ' <a href="/how-the-premier-league-table-works/">How to read the table</a> \u00b7 <a href="/xg-explained/">what xG adds</a>.</p></div></section>'
             + _squad_secs(sqd, SQUPD)
+            + _trophy_sec(slug)
             + '<section class="section alt"><div class="section-head"><p class="kicker">Where next</p><h2>Keep exploring.</h2></div>'
             + '<ul class="list">'
             + ('<li><a href="' + story[0] + '"><span><b>' + story[1] + '</b><small>From the desk\u2019s archive.</small></span><span class="meta">Read</span></a></li>' if story else "")
@@ -1409,6 +1433,9 @@ def sports_pages():
             + '<li><a href="/how-the-champions-league-works/"><span><b>How the Champions League works</b><small>Where every league\u2019s best clubs end up.</small></span><span class="meta">Understand</span></a></li>'
             + '<li><a href="/laliga-explained/"><span><b>LaLiga, explained</b><small>The Spanish league\u2019s structure, for comparison.</small></span><span class="meta">Read</span></a></li>'
             + '<li><a href="/what-does-a-sporting-director-do/"><span><b>What a sporting director does</b><small>The role that builds squads in every league on this desk.</small></span><span class="meta">Read</span></a></li>'
+            + '<li><a href="/who-will-win-the-2026-ballon-dor/"><span><b>Who wins the Ballon d\u2019Or?</b><small>The living race \u2014 the award this league\u2019s stars keep winning.</small></span><span class="meta">Feature</span></a></li>'
+            + '<li><a href="/best-football-players-in-the-world-2026/"><span><b>The best players in the world</b><small>The BRYME ranking, method printed \u2014 argued over weekly.</small></span><span class="meta">Feature</span></a></li>'
+            + '<li><a href="/sports/transfers/"><span><b>The transfer desk</b><small>How deals happen across every league on this desk \u2014 and the centre for the listed deals.</small></span><span class="meta">Transfers</span></a></li>'
             + '</ul></section>'
             + '</div></main>' + foot("sports"))
         pages.append(("/" + lslug + "/", "The " + lf["name"] + " hub \u2014 format, champions, coverage | BRYME Sport",
@@ -1552,6 +1579,9 @@ def sports_pages():
         + '<li><a href="/el-classico-explained/"><span><b>El Clásico, explained</b><small>Two institutions, two identities, one match the whole sport watches.</small></span><span class="meta">Explainer</span></a></li>'
         + '<li><a href="/why-football-transfers-collapse/"><span><b>Why transfers collapse</b><small>The four doors between a done deal and a done deal \u2014 the same in Madrid as in Manchester.</small></span><span class="meta">Explainer</span></a></li>'
         + '<li><a href="/what-does-a-sporting-director-do/"><span><b>What does a sporting director do?</b><small>The role that builds the machine behind every squad renewal.</small></span><span class="meta">Explainer</span></a></li>'
+        + '<li><a href="/who-will-win-the-2026-ballon-dor/"><span><b>Who wins the Ballon d\u2019Or?</b><small>The living race page \u2014 Yamal, Rodri and the field, updated in place.</small></span><span class="meta">Feature</span></a></li>'
+        + '<li><a href="/what-the-2026-world-cup-changed/"><span><b>What the World Cup changed</b><small>Spain\u2019s one-goal tournament and Ferr\u00e1n\u2019s 106th-minute winner, six weeks on.</small></span><span class="meta">Feature</span></a></li>'
+        + '<li><a href="/sports/transfers/"><span><b>The transfer desk</b><small>How deals happen, the mechanics, the window\u2019s archive \u2014 and the centre for every listed deal.</small></span><span class="meta">Transfers</span></a></li>'
         + '</ul></section>'
         + '<section class="section alt"><div class="prose"><p><em>This shelf opens now and grows with the season \u2014 the desk adds dated editions as the year runs, under the same house rules: no odds, no rumour mill, no invented facts.</em></p></div></section>'
         + '</div></main>' + foot("sports"))
@@ -1565,6 +1595,14 @@ def sports_pages():
         + '<section class="cover"><p class="kicker">The transfer desk \u00b7 the window, in one place</p>'
         + '<h1 class="cover-title">Transfers, covered honestly.</h1>'
         + '<p class="cover-dek">No rumour mill, no betting angles: the desk covers transfers as journalism &mdash; how deals actually happen, who makes them happen, and a tracker of what this desk could verify while the window was open. Live window coverage returns as a fresh edition every window.</p></section>'
+        + '<section class="section"><div class="section-head"><p class="kicker">The transfer centre</p><h2>Every listed deal, five leagues.</h2></div>'
+        + '<ul class="list">'
+        + '<li><a href="/premier-league-transfers/"><span><b>Premier League \u00b7 summer 2026</b><small>99 players in, 83 out \u2014 statuses strict, rumours never listed.</small></span><span class="meta">Centre</span></a></li>'
+        + '<li><a href="/la-liga-transfers/"><span><b>La Liga \u00b7 summer 2026</b><small>Every listed deal, club by club \u2014 fees and statuses as recorded.</small></span><span class="meta">Centre</span></a></li>'
+        + '<li><a href="/serie-a-transfers/"><span><b>Serie A \u00b7 summer 2026</b><small>The Italian window\u2019s verified tracker.</small></span><span class="meta">Centre</span></a></li>'
+        + '<li><a href="/bundesliga-transfers/"><span><b>Bundesliga \u00b7 summer 2026</b><small>The German window\u2019s verified tracker.</small></span><span class="meta">Centre</span></a></li>'
+        + '<li><a href="/ligue-1-transfers/"><span><b>Ligue 1 \u00b7 summer 2026</b><small>The French window\u2019s verified tracker.</small></span><span class="meta">Centre</span></a></li>'
+        + '</ul></section>'
         + '<section class="section"><div class="section-head"><p class="kicker">The archive editions</p><h2>The 2026 summer window, as we covered it.</h2></div>'
         + '<ul class="list">'
         + '<li><a href="/premier-league-transfer-tracker-august-2026/"><span><b>The August 2026 transfer tracker</b><small>Archive edition &mdash; the window as it happened, kept with its date on its sleeve.</small></span><span class="meta">Archive</span></a></li>'
@@ -1595,6 +1633,7 @@ def sports_pages():
         + '<li><a href="/champions-league-results/"><span><b>Results</b><small>Every verified score, matchday by matchday.</small></span><span class="meta">Results</span></a></li>'
         + '<li><a href="/champions-league-fixtures/"><span><b>Fixtures</b><small>The next matchdays, verified as the desk receives them.</small></span><span class="meta">Fixtures</span></a></li>'
         + '<li><a href="/champions-league-top-scorers/"><span><b>Top scorers</b><small>The scoring race across the league phase.</small></span><span class="meta">Scorers</span></a></li>'
+        + '<li><a href="/who-will-win-the-2026-27-champions-league/"><span><b>Who wins it?</b><small>The living prediction page \u2014 PSG, Arsenal and the chasing field, updated as rounds land.</small></span><span class="meta">Feature</span></a></li>'
         + '</ul></section>'
         + '<section class="section alt"><div class="section-head"><p class="kicker">Understand the format</p><h2>Start here.</h2></div>'
         + '<ul class="list">'
@@ -1739,6 +1778,30 @@ def sports_pages():
         pages.append(("/form-board/", "The Form Board \u2014 who is actually in form | BRYME Sport",
                       "All six leagues ranked by real recent form: points per game over the verified results window, computed from the same verified scores as the results pages. Nothing modelled, nothing invented.", _fb_page))
 
+    # ---- batch 17: the six living features + the big-questions board ----
+    _feat_rows = ""
+    for _fslug, _fk, _ft, _fd, _fb, _fbody, _fsrc, _flinks in sports_features_data.FEATURES:
+        src_html = ""
+        if _fsrc:
+            src_html = ('<section class="section alt"><div class="section-head"><p class="kicker">Sources</p><h2>Where the facts came from.</h2></div><ul class="list">'
+                + "".join('<li><a href="' + html.escape(u) + '" rel="noopener"><span><b>' + html.escape(n) + '</b></span><span class="meta">Source</span></a></li>' for n, u in _fsrc) + '</ul></section>')
+        rel_html = "".join('<div class="sp-row"><span><a href="/' + f2[0] + '/">' + html.escape(f2[2]) + '</a></span></div>' for f2 in sports_features_data.FEATURES if f2[0] != _fslug)
+        links_html = "".join('<div class="sp-row"><span><a href="' + u + '">' + html.escape(t) + '</a></span></div>' for u, t in _flinks)
+        fp = (_lg_head()
+            + '<main id="main"><div class="wrap">'
+            + '<nav class="crumb"><a href="/sports/">Sport</a> / Big questions</nav>'
+            + '<section class="cover"><p class="kicker">' + _fk + '</p>'
+            + '<h1 class="cover-title" style="font-size:clamp(30px,4.6vw,48px)">' + _ft + '</h1>'
+            + '<p class="byline">' + _fb + '</p></section>'
+            + '<section class="section"><div class="prose">' + _fbody + '</div></section>'
+            + '<section class="section"><div class="data-cols"><div>' + _panel("Carry on", links_html, None) + '</div><div>' + _panel("The other big questions", rel_html, None) + '</div></div></section>'
+            + src_html
+            + '</div></main>' + foot("sports"))
+        pages.append(("/" + _fslug + "/", _ft + " | BRYME Sport", _fd, fp))
+        _feat_rows += ('<li><a href="/' + _fslug + '/"><span><b>' + _ft + '</b><small>' + _fd[:110] + '</small></span><span class="meta">Feature</span></a></li>')
+    feat_secs = ('<section class="section"><div class="section-head"><p class="kicker">Big football questions</p><h2>The six living stories.</h2></div>'
+        + '<ul class="list">' + _feat_rows + '</ul></section>')
+
     # ---- batch 12: the weekend ahead + FPL hub ----
     _wk = (head("sports", "Analysis, stories and the long view \u2014 never betting.")
         + '<main id="main"><div class="wrap">'
@@ -1878,7 +1941,7 @@ def sports_pages():
 <div><b>{len(sports_explainers_data.SPORT_EXPLAINERS) + len(sports_analysis_data.SPORT_ANALYSIS)}</b><span>Evergreen pieces</span></div>
 <div><b>6</b><span>Dated editions</span></div>
 <div><b>6</b><span>Competitions</span></div>
-</div></section>""" + weekend_secs + portal_secs + latest_secs + big6_secs + f"""<section class="section"><div class="section-head"><p class="kicker">The competitions, in depth.</p><h2>The league system.</h2></div><ul class="list"><li><a href="/premier-league/"><span><b>Premier League</b><small>Table | Fixtures | Results | Clubs | Scorers \u2014 the full gateway, live.</small></span><span class="meta">England</span></a></li><li><a href="/laliga/"><span><b>LaLiga</b><small>The Spanish desk: LaLiga and El Clásico, explained plainly.</small></span><span class="meta">Spain</span></a></li><li><a href="/serie-a/"><span><b>Serie A</b><small>Italy\u2019s tactician\u2019s league \u2014 format, champions, history.</small></span><span class="meta">Italy</span></a></li><li><a href="/bundesliga/"><span><b>Bundesliga</b><small>Germany\u2019s 18 clubs and the 50+1 model.</small></span><span class="meta">Germany</span></a></li><li><a href="/ligue-1/"><span><b>Ligue 1</b><small>France, the academy superpower \u2014 and PSG\u2019s project.</small></span><span class="meta">France</span></a></li><li><a href="/champions-league/"><span><b>Champions League</b><small>The 36-team format, explained from every angle.</small></span><span class="meta">Europe</span></a></li></ul></section>
+</div></section>""" + feat_secs + weekend_secs + portal_secs + latest_secs + big6_secs + f"""<section class="section"><div class="section-head"><p class="kicker">The competitions, in depth.</p><h2>The league system.</h2></div><ul class="list"><li><a href="/premier-league/"><span><b>Premier League</b><small>Table | Fixtures | Results | Clubs | Scorers \u2014 the full gateway, live.</small></span><span class="meta">England</span></a></li><li><a href="/laliga/"><span><b>LaLiga</b><small>The Spanish desk: LaLiga and El Clásico, explained plainly.</small></span><span class="meta">Spain</span></a></li><li><a href="/serie-a/"><span><b>Serie A</b><small>Italy\u2019s tactician\u2019s league \u2014 format, champions, history.</small></span><span class="meta">Italy</span></a></li><li><a href="/bundesliga/"><span><b>Bundesliga</b><small>Germany\u2019s 18 clubs and the 50+1 model.</small></span><span class="meta">Germany</span></a></li><li><a href="/ligue-1/"><span><b>Ligue 1</b><small>France, the academy superpower \u2014 and PSG\u2019s project.</small></span><span class="meta">France</span></a></li><li><a href="/champions-league/"><span><b>Champions League</b><small>The 36-team format, explained from every angle.</small></span><span class="meta">Europe</span></a></li></ul></section>
 <section class="section"><div class="section-head"><p class="kicker">Evergreen explainers</p><h2>Understand the game.</h2></div>
 <ul class="list">{''.join(expl_rows)}</ul></section>
 <section class="section"><div class="section-head"><p class="kicker">The shelves</p><h2>Analysis, the transfer desk &amp; the Champions League.</h2></div>

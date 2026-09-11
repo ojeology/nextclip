@@ -203,3 +203,26 @@ SPORT_EXPLAINERS += [
  ("pressing-explained", "Pressing and possession"),
  ("how-var-works", "How VAR works")]),
 ]
+
+# ---- batch 17: the European-spots explainer (user request: why four per country, why England more) ----
+SPORT_EXPLAINERS.extend([
+("how-many-english-teams-champions-league",
+"How many English teams get into the Champions League \u2014 and why it can be more than four",
+"The coefficient rule that gives the big leagues four seats, plus the three extra doors that let England send five \u2014 explained with this season's real field.",
+"""<p>The short version: <b>four is the norm, five is earned, and every now and then a trophy buys a seat of its own.</b> Here is how the doors work \u2014 and who walked through them this season.</p>
+<h2>Door one: the coefficient four</h2>
+<p>UEFA does not hand out Champions League places per country by sentiment; it ranks associations (the leagues) by ten years of results in Europe. The current access list gives <b>four automatic league-phase places to the top two associations</b> \u2014 in practice England and Spain almost always \u2014 three places to the next pair, two to the leagues below them, and one to the rest. So the "four clubs per country" you grew up with is really "four for the best two leagues, fewer for the others."</p>
+<h2>Door two: the trophy door</h2>
+<p>Since the format change, <b>the Europa League winners go straight into the next Champions League league phase</b>, whether or not their league position earned it. That is the door Aston Villa walked through: they won the 2025\u201326 Europa League, so they are in this season's league phase \u2014 alongside the four who earned it in the Premier League.</p>
+<h2>Door three: the performance bonus</h2>
+<p>For the 2024\u201327 cycle UEFA also awards two <b>European Performance Spots</b> each season to the two associations whose clubs collectively perform best across that season's Champions League, Europa League and Conference League. Those bonus seats go to the <i>leagues</i>, which pass them to their highest-placed clubs who have not already qualified \u2014 which is why in a good English year you can see talk of "fifth place might be enough". The bonus is not automatic for anyone: it is won by results across all three competitions.</p>
+<h2>So who is actually in, this season?</h2>
+<p>From the desk's verified league-phase table, <b>5 English clubs</b> are in the 2026\u201327 league phase: <b>Manchester United, Manchester City, Aston Villa, Liverpool, Arsenal</b>. Four earned it through the Premier League; Aston Villa joined them through the Europa League door. Manchester United are in it for the first time since 2023\u201324. Chelsea, Tottenham and Newcastle are in UEFA's other two competitions this season \u2014 the Conference and Europa Leagues have their own, similar access logic.</p>
+<h2>Why the system looks like this</h2>
+<p>Because UEFA wants two things at once: the best clubs playing each other as often as possible (hence coefficient rewards for leagues, not just clubs), and a league phase big enough \u2014 36 teams, eight games each \u2014 to sell to broadcasters. The old 32-team group stage was replaced in 2024\u201325 exactly because a single league table of 36 creates more big matches earlier. If that sounds like the club game drifting toward a closed super-league with extra steps, you are not the first to notice \u2014 the counterweight is that qualification still runs through domestic league position. The format itself is explained further in <a href="/how-the-champions-league-works/">how the Champions League works</a> and <a href="/champions-league-new-format-explained/">the new format, explained</a>.</p>""",
+[("Wikipedia \u2014 2026 UEFA Champions League final (Villa as EL winners into the Super Cup)", "https://en.wikipedia.org/wiki/2026_UEFA_Champions_League_final"),
+ ("UEFA \u2014 2025/26 Champions League, all the results", "https://www.uefa.com/uefachampionsleague/news/029c-1e9a2f63fe2d-ebf9ad643892-1000--2025-26-champions-league-all-the-results/")],
+[("how-the-champions-league-works", "How the Champions League works"),
+ ("champions-league-new-format-explained", "The new format, explained"),
+ ("promotion-and-relegation-explained", "Promotion and relegation")]),
+])
