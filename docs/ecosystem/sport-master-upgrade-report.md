@@ -59,3 +59,40 @@ The user pointed to the old Sport implementation on a detached branch (origin/ag
 **Site after integration:** 863 pages / 92,650 internal links OK, allowlist 853, validator ok, all four calendars in the live sitemap.
 
 **REVISED QUALITY SCORE: 8/10.** The data spine the spec demanded (fixtures for all five league hubs, permanent calendar URLs, club gateways with sourced facts and badges) is now real and stamped. The remaining distance to 9+ is cadence (results/reviews after each verified round) and the evergreen library scale-up.
+
+
+## ADDENDUM — 2026-09-11: Batches 9–12 (live data spine → the sports portal)
+
+**Batch 9 — the live data engine.** `scripts/sports_update_agent.py` fetches standings, last-three-matchweeks results and top-10 scorers per league from football-data.org v4 (`X-Auth-Token`; throttle headers `X-Requests-Available`/`X-RequestCounter-Reset` honoured, 429 backoff, 2s pacing) into `content/sports-live.json` — every number stamped with fetch time and source. Build emits permanent live pages per league: `/sports/<lg>-table/`, `-results/`, `-top-scorers/` (one URL per league, updated in place, never re-dated). GitHub Actions runs it 06:00/22:00 UTC daily and commits only on data diff. A no-key/no-API run keeps the prior snapshot (tested). PL table rows carry club badges. 5/5 leagues verified live on first run.
+
+**Batch 10 — all five league desks opened.** Serie A and Ligue 1 tables/results/scorers went live (+9 pages) after worldfootball proved unscrapable at table depth — football-data.org became the single source. Results prose is now league-aware. Owner decision recorded: the free-tier API token is hard-coded as `DEFAULT_TOKEN` (env `FOOTBALL_DATA_API_KEY` overrides for rotation); exposure accepted by the site owner.
+
+**Batch 11 — the data pages rebuilt for scanning.** Side-by-side layout (`.data-cols`, stacks under 900px): table + scorers panels, results + next-fixtures panels; hub Results rows; verified badge rendering (22 count gate). Chain 877 pages / 93,762 links OK.
+
+**Batch 12 — the sports portal (answers the 1/10).** Three user complaints, three responses:
+1. *"`/sports/` isn't screaming sports — cards cards cards"* → index rebuilt as a portal: live hero kicker ("the 2026-27 season is live · six competitions · no odds, ever"), a **This weekend** strip (four verified MW4 fixtures incl. Sunday's derby + a live-fetched LaLiga headliner), and a two-column live module: PL table (top 6) + scorers + where-next, the **Six competitions, live** status card (each league's next matchday, auto-derived) and **New on the desk**.
+2. *"Champions League matches and tables are not there"* → CL became the agent's 6th league; four new auto-pages: `/sports/champions-league-table/` (36-row league phase, no relegation marker), `-results/` (18 verified MD1 scores), `-top-scorers/`, `-fixtures/` (grouped by matchday; MD2 from 13 Oct 2026). The CL shelf's "does not run a live-scores product" line is gone, replaced by a **Live data desk** section.
+3. *"Weekend news and forecast, fpl"* → `/sports/the-weekend-ahead/` (verified fixtures, desk outlooks explicitly labelled "BRYME forecast, not a tip", no odds anywhere) and `/sports/fpl/` ("FPL, explained properly" — evergreen rules from the game's published rules: scoring by position, captaincy, transfers, the four chips; **no player prices invented**, no tips sold). Wired into the PL hub and the global Desks menu.
+
+**Verification:** chain 883 pages / 93,431 internal links OK, routed allowlist v26 (873 routes, all six new URLs in), validator ok. Live sweep 8/8 URLs 200 with per-page content needles on the Render origin. UCL snapshot at capture: PSG/Bayern/Barça/ManUtd/Como 3pts after MD1; Demirović & Ferrán Torres 3 goals; Inter v Club Brugge MD2 13 Oct.
+
+**Readiness (Sport row):** hub portal live · 6/6 competitions with live tables/results/scorers, CL + five leagues · fixtures calendars for all five leagues + CL fixtures page · 20 PL club hubs · weekend forecast + FPL · auto-update 2×/day · no betting content anywhere · every changing number stamped with source + time.
+
+**Known issues / corrections (honest):**
+- **(a) thebryme.com went NXDOMAIN on 11 Sep 2026** — confirmed at the .com registry level via Cloudflare, Google and Quad9 DoH (Status 3). This is registrar-side (expiry, hold, or mid-transfer), not a deploy issue: the Render origin `bryme.onrender.com` serves everything (all sweeps this batch ran against it). Owner action at the registrar; the site is fully live there and this repo pushes cleanly.
+- **(b) Sports pages are not in sitemap.xml** — established routing state since Batch 9 (sitemaps cover the root properties; sports routes are in the routed index allowlist and internally linked from the hub). Listed here deliberately; revisit if indexing of sports URLs lags.
+- **(c) Football-data.org account email must be verified** — the API owner warns unverified accounts auto-delete on inactivity, which would freeze the daily agent. Owner-side, two-minute task.
+- **(d) UCL results rows are date-labelled, not "Matchday"-labelled** (checked; the shared league nav retains PL archive links by design — all links resolve).
+- **(e) The FPL page carries rules, not prices** — player valuations change with the game's own repricing; nothing unverifiable is stated. An official-API price/feed integration is the natural next batch.
+- **(f) Forecasts are editorial and labelled as such** — the weekend page's outlook paragraphs carry "BRYME forecast, not a tip" inline; the no-betting rule is restated on-page.
+
+**REVISED QUALITY SCORE (Sport): 8.5/10** — the spec's structural demands are now all real: six competitions live, permanent one-URL-per-league data pages updated in place, fixtures calendars, 20 club hubs, a portal-grade hub, forecast + fantasy, twice-daily automation, and zero invented data. The remaining distance to 9+ is cadence history (weeks of verified updates proving the loop) and the evergreen library scale-up (§14–17), both in flight.
+
+## REMAINING WORK (updated — supersedes items 2–3 above)
+1. Weekly cadence: matchweek reviews + results verification after every round (system fully automated for tables/results/scorers/fixtures; editorial editions remain manual).
+2. ~~LaLiga/Serie A/Bundesliga/Ligue 1/UCL live data desks~~ **DONE (Batches 9–12).**
+3. ~~Results pages with completed scores~~ **DONE (auto results pages, last 3 matchweeks, all six competitions).**
+4. Football Explained scale-up (~30 evergreen pieces at spec depth) — unchanged.
+5. Player pages (§11) — unchanged.
+6. FPL official API integration (verified prices/scoreboard) — new.
+7. Serie A promoted-club discrepancy — unchanged, still gated.
