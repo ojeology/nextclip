@@ -28,3 +28,10 @@
 2. Choose CMP vs non-personalised for EEA/UK; document the choice on the privacy pages.
 3. Review first-week placements against the config note; kill anything resembling nav/cards.
 4. Only then consider `affiliate.enabled=true` per `docs/revenue-rails.md`.
+
+## Batch 21 (11 Sep 2026) — fitness card live, old host purged, ENT ×11, Home ×8
+- Fitness landing card: WORKSHOP_PUBS flipped to "live" → real anchor on the hub ("Enter Fitness →"); hub meta now "Six publications. One house standard."
+- Old GitHub Pages links: clean_recovered() now rewrites ANY ojeology.github.io/nextclip/* URL to /entertainment/ and keeps /entertainment/ anchors live when stripping site-relative links. Site-wide old-host references: 0.
+- Entertainment: +6 evergreen guides (box office mechanics, shorter seasons, canon vs filler, K-drama starter route, cult classics, reading reviews) + 3 recovered gems published (10 Korean movies, best anime now, Agent Kim/Squid Game S3) + 2 archive merges (Interstellar pair, Korean-cinema pair). 43 pages: recommendations 18, explainers 19, opinion 6. `beginners-guide-to-making-money-online` stays retired permanently (Money removed + YMYL/AdSense risk).
+- Home & DIY: roadmap batch 10 (+8 kitchen & bedroom classics: oven, shower drain, freezer defrost, mattress, washer seal mould, kettle descale, cast iron, fridge temperature). Home property: 107 pages.
+- Chain: 922 pages / 99,128 links OK; allowlist v26 (912 routes). Ratings moved: Home A−→A, Fitness B+→A−, Entertainment B+→A−.

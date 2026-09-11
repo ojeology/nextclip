@@ -613,7 +613,7 @@ HUB_PUBS = [
     ("tech", "BRYME Tech", "Practical technology. No theatre.", "Deployment walkthroughs, domain and DNS specifics, token hygiene, front-end patterns \u2014 written from first-hand builds, not press releases. Evergreen on purpose.", "live"),
 ]
 WORKSHOP_PUBS = [
-    ("fitness", "BRYME Fitness", "Foundation laid.", "Practical fitness guidance \u2014 beginner programs, walking and strength challenges, and 30-day plans built around returning one day at a time. General fitness information, never medical advice. The first programs are being built now.", "foundation"),
+    ("fitness", "BRYME Fitness", "Now open.", "Practical fitness, built to keep: two interactive tools \u2014 the 30-day walking plan and the weekly planner \u2014 plus a dozen honest, sourced guides on starting, strength, protein, sleep and recovery. General fitness information, never medical advice.", "live"),
     ("home", "BRYME Home & DIY", "Now open.", "Practical help for fixing, maintaining and understanding your home \u2014 low-risk repairs explained honestly, an in-browser seasonal checklist, and safety boundaries stated without apology.", "live"),
 ]
 
@@ -628,14 +628,14 @@ def hub_pages():
             cta = '<span class="soon-tag">In build — opens soon</span>'
             cls = "pub-card soon"
         cards += f'<article class="{cls}" style="--pc:{FAMILY[key]["brand"] if key!="hub" else "#1e3a5f"}"><p class="pc-kicker">{kicker}</p><h3>{name}</h3><p>{desc}</p>{cta}</article>'
-    body = f"""{head("hub", "Five publications. One house standard.", parent=False)}
+    body = f"""{head("hub", "Six publications. One house standard.", parent=False)}
 <main id="main"><div class="wrap">
 <section class="cover"><p class="kicker">A family of independent publications</p>
 <h1 class="cover-title">THE BRYME</h1>
 <p class="cover-dek">BRYME is a small ecosystem of specialist publications, each with its own focus and its own standards, held to one house rule: research before publishing, and say exactly what you know. Pick a desk.</p></section>
 <section class="section"><div class="section-head"><p class="kicker">The publications</p><h2>Choose your desk</h2></div>
 <div class="cards">{cards}</div></section>
-<section class="section alt"><div class="section-head"><p class="kicker">The house</p><h2>One standard, five voices.</h2></div>
+<section class="section alt"><div class="section-head"><p class="kicker">The house</p><h2>One standard, six voices.</h2></div>
 <p class="lede">Every BRYME publication is edited by the same desk, run on the same discipline — dates on time-sensitive claims, corrections in the open, no fabricated experience, no pages built to game a search engine — and none of them share a navigation bar. When you enter one, you are in that world.</p>
 </section></div></main>
 {foot("hub")}"""
@@ -646,9 +646,13 @@ def hub_pages():
 
 # ------------------------------------------------------- 2. ENTERTAINMENT
 def clean_recovered(raw):
+    # the archive predates the ecosystem: absolute links to the retired GitHub Pages
+    # host come home to the entertainment shelf instead of leaving the site
+    raw = re.sub(r"https?://ojeology\.github\.io/nextclip/[^\"<> ]*", "/entertainment/", raw)
     raw = re.sub(r"<h1\b[^>]*>[\s\S]*?</h1>", "", raw, count=1)
     # strip links to the retired catalog (dead routes) — keep external http(s)
-    raw = re.sub(r'<a\s[^>]*href="(/[^"]*)"[^>]*>(.*?)</a>', r"\2", raw, flags=re.S)
+    raw = re.sub(r'<a\s[^>]*href="(/(?!entertainment/?\')[^"]*)"[^>]*>(.*?)</a>', r"\2", raw, flags=re.S)
+    raw = re.sub(r'<a\s[^>]*href="(/(?!entertainment/?)[^"]*)"[^>]*>(.*?)</a>', r"\2", raw, flags=re.S)
     raw = re.sub(r"<img[^>]*>", "", raw)
     return raw
 
@@ -679,6 +683,9 @@ ENT_SLUG_SECT = {
     "one-piece-vs-naruto": "explainers",
     "solo-leveling-vs-hunter-x-hunter-the-similarities-and-differences": "explainers",
     "breaking-bad-two-seasons-opinion": "opinion",
+    "10-korean-movies-everyone-should-watch": "recommendations",
+    "best-anime-to-watch-now": "recommendations",
+    "10-facts-about-agent-kim-squid-game-season-3": "explainers",
     "5-movies-that-broke-the-internet": "opinion",
     "7-movies-we-wished-never-ended": "opinion",
     "into-the-badlands-was-underrated": "opinion",
@@ -691,6 +698,8 @@ ENT_MERGE = {
     "movies-like-interstellar-guide": "interstellar-ending-explained",
     "modern-horror-starter-route": "5-vampire-movies-that-changed-horror",
     "dune-sci-fi-epics-guide": "why-dune-part-two-feels-large",
+    "movies-like-interstellar-guide": "movies-like-interstellar",
+    "korean-cinema-starter-guide-rebuilt": "korean-cinema-starter-guide",
 }
 ENT_START = ["how-to-pick-a-movie-tonight", "how-to-build-a-watchlist", "christopher-nolan-movies-order",
              "best-streaming-apps-nigeria", "korean-cinema-starter-guide-rebuilt"]
@@ -2945,6 +2954,13 @@ HOME_SLUG_SECT.update({s: "understand" for s in (
     "gas-heaters-damp")})
 HOME_SLUG_SECT.update({s: "maintain" for s in (
     "test-alarms-monthly", "condensation-ventilation-that-works")})
+HOME_SLUG_SECT.update({s: "appliances" for s in (
+    "how-to-deep-clean-an-oven", "how-to-defrost-a-freezer-properly",
+    "washing-machine-mould-door-seal", "how-to-descale-a-kettle",
+    "fridge-temperature-setting")})
+HOME_SLUG_SECT.update({s: "fix" for s in ("how-to-clear-a-slow-shower-drain",)})
+HOME_SLUG_SECT.update({s: "maintain" for s in (
+    "how-to-clean-and-care-for-a-mattress", "season-cast-iron-pan")})
 
 HOME_SLUG_SECT.update({s: "maintain" for s in (
     "hvac-filter-change-habit", "uk-boiler-servicing", "ac-outdoor-unit-care")})
@@ -3131,6 +3147,8 @@ def home_pages():
     HOME_ARTICLES.extend((s2, ti, dek, b) for (s2, _k, ti, dek, b) in home_roadmap8_data.HOME_ROADMAP_8 if s2 not in _have)
     import home_roadmap9_data
     HOME_ARTICLES.extend((s2, ti, dek, b) for (s2, _k, ti, dek, b) in home_roadmap9_data.HOME_ROADMAP_9 if s2 not in _have)
+    import home_roadmap10_data
+    HOME_ARTICLES.extend((s2, ti, dek, b) for (s2, _k, ti, dek, b) in home_roadmap10_data.HOME_ROADMAP_10 if s2 not in _have)
 
     def src_html(sources):
         if not sources:
@@ -3476,6 +3494,30 @@ def home_pages():
         "improvements-no-resale-value": [("single-glazing-payback", "The window maths"),
                                          ("someday-maintenance-cost", "The cost of someday"),
                                          ("unpermitted-work-home-sale", "Paperwork at sale")],
+        "how-to-deep-clean-an-oven": [("how-to-clean-a-washing-machine", "Cleaning the washing machine"),
+                                      ("vinegar-in-the-dishwasher", "Vinegar in the dishwasher?"),
+                                      ("fridge-coils-twice-a-year", "The coil ritual")],
+        "how-to-clear-a-slow-shower-drain": [("how-to-fix-a-slow-draining-sink", "The slow sink guide"),
+                                             ("how-to-unblock-a-toilet", "Unblocking a toilet"),
+                                             ("small-leak-ripple-effect", "The ripple effect")],
+        "how-to-defrost-a-freezer-properly": [("fridge-not-cold-enough", "The warm-fridge triage"),
+                                              ("fridge-door-seal-test", "The seal test"),
+                                              ("fridge-coils-twice-a-year", "The coil ritual")],
+        "how-to-clean-and-care-for-a-mattress": [("how-to-clean-a-washing-machine", "Cleaning the washing machine"),
+                                                 ("condensation-ventilation-that-works", "Condensation and ventilation"),
+                                                 ("secondhand-furniture-mistakes", "Secondhand furniture, safely")],
+        "washing-machine-mould-door-seal": [("how-to-clean-a-washing-machine", "The full washer clean"),
+                                            ("washing-machine-heavy-items", "Load discipline"),
+                                            ("condensation-ventilation-that-works", "Condensation and ventilation")],
+        "how-to-descale-a-kettle": [("fridge-coils-twice-a-year", "The coil ritual"),
+                                    ("washing-machine-heavy-items", "Load discipline"),
+                                    ("someday-maintenance-cost", "The someday-cost rule")],
+        "season-cast-iron-pan": [("basic-toolkit-checklist", "The basic toolkit"),
+                                 ("emergency-repair-fund", "The repair-fund rule"),
+                                 ("someday-maintenance-cost", "The someday-cost rule")],
+        "fridge-temperature-setting": [("fridge-coils-twice-a-year", "The coil ritual"),
+                                       ("fridge-door-seal-test", "The seal test"),
+                                       ("fridge-not-cold-enough", "The warm-fridge triage")],
     }
     for slug, ti, dek, b in HOME_ARTICLES:
         key = HOME_SLUG_SECT[slug]
