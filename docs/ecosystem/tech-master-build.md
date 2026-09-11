@@ -480,3 +480,9 @@ Chain: 922 pages / 99,128 internal links OK; validator ok; allowlist v26 (912 ro
 - New verified coverage mapped: Kaiju No. 8, Slime, Tower of God, Chainsaw Man (anime lists); Sweet Home, Liar Game, Money Heist (TV recs); Logan, The Suicide Squad, Free Guy, No Way Home (Deadpool-like); The Martian, Gravity (Interstellar-like); Decision to Leave, A Taxi Driver (Korean); The Menu, Nope, Scream (horror/pop); Tumbbad (Indian); The Black Book, October 1, Brotherhood (Nigerian).
 - Truth-check assert caught: footer link to merged-away 5-vampire page → swapped to live page. Build still fails on any dishonest link.
 - Chain: 923 pages / 100,222 internal links OK; allowlist v26 (913 routes).
+
+## Batch 24 — 11 Sep 2026 (catalogue fills out: 212 titles, quick-picks layer)
+- Browse page now carries 69 argued titles (103 build-verified links) + 143 desk-curated quick picks = 212 titles across the same 8 shelves. Quick picks are labelled as starters (no fake review links) — honest recommendation surface, AdSense-safe.
+- Anchor chip nav (#shelf-*) added at top; per-shelf "Quick picks / More to start with tonight" blocks with one-line honest blurbs; stats line discloses the split.
+- Coverage truth-check unchanged (build still fails on dishonest links). Fixed a data typo (Vincenzo blurb).
+- Chain: 923 pages / 100,222 internal links OK; allowlist v26 (913); validators pass.

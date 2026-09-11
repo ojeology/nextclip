@@ -915,20 +915,32 @@ def entertainment_pages():
                       + ('<div style="font-size:13px;padding:2px 0 10px">Also in: ' + more.rstrip(" · ") + "</div>" if more else "")
                       + "</li>")
         footers = "".join('<a class="btn secondary" href="/' + fs + '/">' + fl + "</a>" for fs, fl in _cat.CATALOGUE_SHELF_FOOTERS[cs])
-        shelf_html += ('<section class="' + ("section" if n2 % 2 == 0 else "section alt") + '"><div class="section-head"><p class="kicker">Shelf ' + str(n2 + 1) + "</p><h2>" + clabel + "</h2></div>"
+        picks = _cat.CATALOGUE_STARTERS.get(cs, [])
+        picks_html = ""
+        if picks:
+            rows = "".join('<li><span><b>' + t + '</b> <span class="meta">(' + yr + ")</span><small>" + kind + " — " + blurb + "</small></span></li>" for t, yr, kind, blurb in picks)
+            picks_html = ('<div class="section-head" style="margin-top:8px"><p class="kicker">Quick picks</p><h3>More to start with tonight.</h3></div>'
+                + '<p class="lede" style="font-size:15px">Desk-curated starters — canonical, evergreen, and safe to press play on. No dedicated review yet; coverage grows every batch.</p>'
+                + '<ul class="list" style="font-size:15px">' + rows + "</ul>")
+        shelf_html += ('<section id="shelf-' + cs + '" class="' + ("section" if n2 % 2 == 0 else "section alt") + '"><div class="section-head"><p class="kicker">Shelf ' + str(n2 + 1) + "</p><h2>" + clabel + "</h2></div>"
             + '<p class="lede">' + cdek + "</p>"
             + '<ul class="list">' + tiles + "</ul>"
+            + picks_html
             + '<div class="actions">' + footers + "</div></section>")
     n_titles = sum(len(e[4]) for sh in _cat.CATALOGUE_SHELVES for e in sh[3])
+    n_picks = sum(len(v) for v in _cat.CATALOGUE_STARTERS.values())
     browse_body = (head("entertainment", "The catalogue — every title the desk covers, shelved.")
         + '<main id="main"><div class="wrap">'
         + '<nav class="crumb"><a href="/entertainment/">Entertainment</a> / Browse the movies</nav>'
         + '<section class="cover"><p class="kicker">BRYME Entertainment · the catalogue</p>'
         + '<h1 class="cover-title">Browse the movies.</h1>'
         + '<p class="cover-dek">Every title below is covered somewhere on this desk — no database padding, no empty entries. Pick a shelf; each tile links to the page where the argument actually lives.</p></section>'
+        + '<nav class="actions" style="justify-content:center;padding:0 0 8px">'
+        + "".join('<a class="btn secondary" href="#shelf-' + cs + '">' + cl.replace("&amp;", "&") + "</a>" for cs, cl, _d, _e in _cat.CATALOGUE_SHELVES)
+        + "</nav>"
         + shelf_html
         + '<section class="section"><div class="section-head"><p class="kicker">The house rule</p><h2>Links that go somewhere.</h2></div>'
-        + '<p class="lede">This catalogue lists ' + str(len([e for sh in _cat.CATALOGUE_SHELVES for e in sh[3]])) + " titles with " + str(n_titles) + " verified coverage links. If a title is not here, the desk has not written about it yet — and we do not pretend otherwise.</p>"
+        + '<p class="lede">This catalogue lists ' + str(len([e for sh in _cat.CATALOGUE_SHELVES for e in sh[3]])) + " titles argued on this desk with " + str(n_titles) + " verified coverage links, plus " + str(n_picks) + " desk-curated quick picks — " + str(len([e for sh in _cat.CATALOGUE_SHELVES for e in sh[3]]) + n_picks) + " ways to start tonight. Covered titles link to where the argument lives; quick picks are labelled as such. If a title is missing, we have not written about it yet — and we do not pretend otherwise.</p>"
         + "</section></div></main>" + foot("entertainment"))
     pages = [("/", "BRYME Entertainment — what to watch, and why",
               "Film, TV and anime recommendations with reasons, explainers and opinion — written about the work, never piracy.", index_body),
