@@ -529,3 +529,9 @@ Chain: 922 pages / 99,128 internal links OK; validator ok; allowlist v26 (912 ro
 - §3.1.2 #10 SHIPPED: private-dns-not-working (hostname formatting, port-853 network blocking, captive portals, provider outages, VPN conflicts; automatic-vs-strict honest trade-offs). Tech library: 9/11 (only #11-style Phase-2 depth remains).
 - §3.4.2 decision pages (+3): what-to-watch-in-90-minutes (argued by mood, runtime promise kept honestly — flagged Your Name/A Silent Voice as overruns), what-to-watch-mystery-night (whodunit/procedural/puzzle-box/obsession taxonomy), where-to-start-with-ghibli (three doors: Spirited Away/Totoro/Mononoke). All entries argued, links genuine; one garbled draft paragraph self-caught and rewritten before build.
 - Chain: 963 pages / 102,982 internal links OK; allowlist v26 (953); validators pass; ads still OFF.
+
+## Batch 31 — 11 Sep 2026 (§6 audit + house assets + group-night page)
+- §6 AdSense-readiness audit executed and logged (docs/ecosystem/adsense-readiness-audit.md): 20/20 pipeline-verifiable boxes PASS with evidence; consent handling = flip-day item by design.
+- Fixed two real gaps the audit surfaced: (1) /assets/og.png was referenced but MISSING → generated in-repo (PIL brand card, scripts/make_og_image.py, 34 KB); (2) no root 404 → branded house 404 (noindex, desk links) written post-mirror in build-routing (first attempt got rmtree'd — order fixed, needle-verified).
+- +1 decision page (§3.4.2): best-films-for-a-group — safe-but-excellent / argue-afterwards / family-blend tiers + the host's method. Pack log corrected: §3.1.2 Tech troubleshooting library COMPLETE (10 built + Render/API pre-existing + #9 covered = 11/11).
+- Chain: 965 pages / 103,044 internal links OK; allowlist v26 (954); validators pass; ads still OFF.

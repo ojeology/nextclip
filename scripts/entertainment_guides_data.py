@@ -219,3 +219,18 @@ ENT_GUIDES.extend([
 <h2>After the three doors</h2>
 <p>From there the catalogue opens by taste: Howl's for romance-and-chaos, Kiki for coming-of-age comfort, Grave of the Fireflies only when you are ready for the saddest film ever animated (that is not hyperbole; budget the evening accordingly). The method for what next: <a href="/how-to-pick-a-movie-tonight/">mood first, title second</a> — and the long-form reasoning behind animation's place in the craft conversation is in <a href="/how-anime-production-committees-work/">how anime actually gets made</a>.</p>"""),
 ])
+
+ENT_GUIDES.extend([
+("best-films-for-a-group", "recommendations",
+"The best films for a group night (that nobody will hate)",
+"The group-night problem solved: crowd-pleasers with craft, argued so the host can decide in two minutes and defend the choice afterwards.",
+"""<p>Group night has a paradox: the more people in the room, the worse the film gets — because everyone compromises down to the least objectionable option, and "least objectionable" is a low bar. The desk's answer: pick films with <b>craft that reads at volume</b> — clear stories, big set pieces, jokes that land across ages — none of which means dumb. Every pick here has been argued somewhere on this desk; the full shelf is <a href="/entertainment/browse/">the catalogue</a>.</p>
+<h2>The safe-but-excellent tier</h2>
+<p><b>Top Gun: Maverick</b> (2022) — the group pick that started as a joke and won the room: practical jets, a simple story told at full sincerity, and zero dead patches (<a href="/7-movies-we-wished-never-ended/">the legacy-sequel argument</a>). <b>Mad Max: Fury Road</b> (2015) — two hours of forward momentum that requires no pre-knowledge and rewards the loudest room in the house. <b>Spider-Man: No Way Home</b> (2021) — calibrated for a mixed crowd: the fans get the multiverse, everyone else gets the pitch (<a href="/5-movies-that-broke-the-internet/">why it broke the internet</a>).</p>
+<h2>The everyone-argues-afterwards tier</h2>
+<p><b>Get Out</b> (2017) — the group horror experience: funny-scary-angry in rotation, and the post-film argument is the second feature (<a href="/modern-horror-starter-route/">the horror route's smart door</a>). <b>Knives Out</b> (2019) — the whodunit crowd love: everyone theorises out loud, everyone is wrong, the room wins anyway. <b>Parasite</b> (2019) — for the group that claims subtitled films are a hard sell: it converts them, every time (<a href="/10-korean-movies-everyone-should-watch/">the Korean shelf</a>).</p>
+<h2>The family-blend tier</h2>
+<p>Mixed ages? <b>Spirited Away</b> (2001) holds children and cinephiles at once (<a href="/where-to-start-with-ghibli/">the Ghibli route</a>); <b>Free Guy</b> (2021) plays as bright comedy to the kids and an IP joke to the adults; <b>Deadpool &amp; Wolverine</b> (2024) is the adults-only version of the same trick — know your room (<a href="/movies-like-deadpool-and-wolverine/">the shelf</a>).</p>
+<h2>The host's two-minute method</h2>
+<p>Rule one: pick by the room, not by your own taste — the <a href="/how-to-pick-a-movie-tonight/">mood-first method</a> applies to crowds too. Rule two: never offer open choice; offer two titles, take votes, done — a group choosing from infinity chooses nothing. Rule three: whatever wins, defend it afterwards with the arguments on this desk; a film night that ends in a good argument is the successful version of the format.</p>"""),
+])

@@ -150,6 +150,8 @@ def main() -> int:
     _sm = (ROOT / "ecosystem" / "hub" / "sitemap.xml").read_text(encoding="utf-8")
     _sm = _re.sub(r"<lastmod>[^<]*</lastmod>", "<lastmod>" + _dt.date.today().isoformat() + "</lastmod>", _sm)
     (ROOT / "sitemap.xml").write_text(_sm, encoding="utf-8")
+
+
     shutil.copy2(ROOT / "ecosystem" / "hub" / "robots.txt", ROOT / "hub-robots.txt")
 
     # 4. global robots.txt: five sitemaps, no indexing work (STEP 8: untouched)
@@ -195,6 +197,33 @@ def main() -> int:
 
     print(f"routing: writers moved ({moved} entries, {total} URL rewrites), "
           f"{len(PROPS)} properties at root paths, allowlist v26 ({len(routes)} routes), public/ mirrored")
+    # house 404: branded, desk links, noindex (batch 31) - written AFTER the mirror
+    _404 = """<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Page not found | THE BRYME</title>
+<meta name="robots" content="noindex,follow">
+<style>
+body{margin:0;font-family:Georgia,'Times New Roman',serif;background:#101a2b;color:#f5f1e8;display:flex;min-height:100vh;align-items:center;justify-content:center}
+main{max-width:640px;padding:40px 24px;text-align:center}
+p.kick{letter-spacing:.18em;font-size:12px;color:#c8a24a;text-transform:uppercase;margin:0 0 10px}
+h1{font-size:clamp(34px,6vw,54px);margin:0 0 14px}
+p{color:#d8d4c8;line-height:1.6;margin:0 0 28px}
+nav a{display:inline-block;margin:6px;padding:10px 18px;border:1px solid #3a4a63;border-radius:999px;color:#f5f1e8;text-decoration:none;font-size:15px}
+nav a:hover{border-color:#c8a24a}
+small{display:block;margin-top:30px;color:#8a94a6}
+</style></head>
+<body><main>
+<p class="kick">Error 404 \u00b7 the page does not exist</p>
+<h1>Wrong desk, right house.</h1>
+<p>This page either moved or never existed \u2014 and we do not publish fake placeholders in its place. Pick a desk:</p>
+<nav>
+<a href="/">THE BRYME</a><a href="/writers/">Writers</a><a href="/sports/">Sport</a>
+<a href="/entertainment/">Entertainment</a><a href="/tech/">Tech</a><a href="/fitness/">Fitness</a><a href="/home/">Home &amp; DIY</a>
+</nav>
+<small>THE BRYME \u00b7 research before publishing, and say exactly what you know.</small>
+</main></body></html>"""
+    (ROOT / "public" / "404.html").write_text(_404, encoding="utf-8")
     return 0
 
 
