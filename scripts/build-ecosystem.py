@@ -1262,7 +1262,20 @@ def sports_pages():
             + '<div class="lg-scroll"><table class="lg-table">'
             + '<thead><tr><th>Pos</th><th>Club</th><th class="num">P</th><th class="num">W</th><th class="num">D</th><th class="num">L</th><th class="num">GF</th><th class="num">GA</th><th class="num">GD</th><th class="num">Pts</th></tr></thead>'
             + '<tbody>' + trows + '</tbody></table></div>')
+        _ups = ""
+        for _m2 in (ld.get("upcoming") or [])[:5]:
+            _ups += ('<div class="sp-row"><span>' + html.escape(str(_m2["d"][5:])) + ' &#183; ' + html.escape(str(_m2["h"])) + ' <b>v</b> ' + html.escape(str(_m2["a"])) + '</span></div>')
+        if _ups:
+            _ups += '<p class="byline">fixtures last verified ' + html.escape(str(ld.get("upcoming_updated", ""))) + '</p>'
+        _lastb = (ld.get("results") or [None])[-1]
+        _lrs = ""
+        if _lastb:
+            for _m3 in _lastb["matches"][:4]:
+                _lrs += ('<div class="sp-row"><span>' + html.escape(str(_m3["d"][5:])) + ' &#183; ' + html.escape(str(_m3["h"])) + ' <b>' + str(_m3["hs"]) + '\u2013' + str(_m3["as"]) + '</b> ' + html.escape(str(_m3["a"])) + '</span></div>')
+            _lrs += '<p class="byline">scores last verified ' + html.escape(str(ld.get("results_updated", ""))) + ' \u2014 a score appears only once verified</p>'
         side = (_scorers_panel(ld, lslug, 6)
+            + (_panel("Next up", _ups, ("/" + lslug + "-fixtures/", "The full calendar")) if _ups else "")
+            + (_panel("Last round", _lrs, ("/" + lslug + "-results/", "All verified results")) if _lrs else "")
             + _next_panel([("/" + lslug + "-table/", "The full table page"), ("/" + lslug + "-results/", "All verified results"),
                            ("/" + lslug + "-fixtures/", "The fixture calendar"), ("/" + lslug + "-top-scorers/", "The scoring race")]))
         return ('<section class="section"><div class="section-head"><p class="kicker">' + lname + ' \u00b7 live</p><h2>The table, right now.</h2></div>'

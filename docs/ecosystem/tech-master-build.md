@@ -504,3 +504,10 @@ Chain: 922 pages / 99,128 internal links OK; validator ok; allowlist v26 (912 ro
 - C1: Fitness launch gate recorded PASSED (two working tools, sourced guides, disclaimers, complete nav, validators green); homepage state ACTIVE.
 - B4–B9 (hub depth §4.4 ×6, injuries index, transfer tiering audit, club/player audits, mobile tests, journey tests) scheduled as the next sport waves.
 - Chain: 947 pages / 101,868 internal links OK; allowlist v26 (937); validators pass; ads still OFF.
+
+## Batch 27 — 11 Sep 2026 (Sport wave: B4, B6–B9 + living-feature labels)
+- B4: league hubs (laliga/serie-a/bundesliga/ligue-1/champions-league) gained "Next up" (5 fixtures + verified stamp) and "Last round" (4 verified scores + stamp) panels beside scorers — §3.3.2 data-first spec complete on all six hubs. Two patch-script bugs caught and fixed en route (stray D variable; quote mismatch) — needles rerun after.
+- B6 VERIFIED: transfer trackers show per-deal statuses + sources + "rumours are never listed as deals" (stricter than pack minimum). B7 PASS: 20 PL club hubs, ~1,130 words each (squad/fixtures/trophies/facts), no thin shells. B8 PASS: .lg-scroll overflow-x + primary columns.
+- B9 journeys: 6/7 PASS. J7 fixed: all six living features now carry the §1.3 label strip ("How this page is labelled") + explicit BRYME ANALYSIS tags on interpretive sections. J4 (injuries) honestly deferred = B5 (no sourced feed; desk won't print unsourced statuses).
+- URL-structure note: sport property nests under /sports/ (e.g. /sports/laliga/, /sports/clubs/manchester-city/) — root-style probes 404 by design, not a defect.
+- Chain: 947 pages / 101,880 internal links OK; allowlist v26 (937); validators pass; ads still OFF.

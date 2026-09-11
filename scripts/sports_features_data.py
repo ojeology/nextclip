@@ -95,3 +95,30 @@ FEATURES = [
  ("CNBC \u2014 the final in context (20 Jul 2026)", "https://www.cnbc.com/2026/07/20/world-cup-2026-final-spain-argentina-messi-bts-shakira.html")],
 [("/who-will-win-the-2026-ballon-dor/", "The Ballon d'Or race"), ("/champions-league-top-scorers/", "Ferr\u00e1n's scoring chart"), ("/best-football-players-in-the-world-2026/", "The world's best, ranked")]),
 ]
+
+# ---- §1.3 fact-label strips (Master Pack compliance, batch 27, 11 Sep 2026) ----
+# Every living feature carries the standing label block and tags its interpretive
+# sections explicitly. Sections stay separated; labels never blur.
+_LABEL_STRIP = (
+'<section class="section alt"><div class="section-head"><p class="kicker">The BRYME standard</p>'
+'<h2>How this page is labelled.</h2></div><div class="prose"><ul>'
+'<li><b>CONFIRMED FACT</b> \u2014 dates, venues, figures and official announcements on this page, checked 11 September 2026; sources listed below.</li>'
+'<li><b>REPORTED</b> \u2014 carried by credible media but not yet official. Where a claim is only reported, the page says so next to the claim.</li>'
+'<li><b>RUMOURED</b> \u2014 never printed as fact on this page; speculation stays out of the argument.</li>'
+'<li><b>BRYME ANALYSIS</b> \u2014 the sections that read the race, the field or the board are the desk\u2019s interpretation, attributed to us.</li>'
+'<li><b>BRYME PREDICTION</b> \u2014 where the desk names a likely outcome, it is our projection, never official data, and the page says what would change it.</li>'
+'</ul><p>Living page: updated in place as facts move, never re-dated silently \u2014 the checked date above moves only with a real re-verification.</p></div></section>')
+
+def _label_features():
+    out = []
+    for (slug, kicker, title, dek, byline, body, sources, league_links) in FEATURES:
+        body = body.replace("<h2>The rate, honestly stated</h2>", "<h2>The rate, honestly stated \u00b7 BRYME ANALYSIS</h2>")
+        body = body.replace("<h2>The board</h2>", "<h2>The board \u00b7 BRYME ANALYSIS</h2>")
+        body = body.replace("<h2>The field, read honestly</h2>", "<h2>The field, read honestly \u00b7 BRYME ANALYSIS</h2>")
+        body = body.replace("<h2>The race as the desk reads it \u00b7 BRYME analysis, not a prediction machine</h2>",
+                            "<h2>The race as the desk reads it \u00b7 BRYME ANALYSIS, not a prediction machine</h2>")
+        body = body + _LABEL_STRIP
+        out.append((slug, kicker, title, dek, byline, body, sources, league_links))
+    return out
+
+FEATURES = _label_features()
