@@ -1,13 +1,13 @@
 {
  "_comment": "Written by scripts/sports_update_agent.py - source: football-data.org v4. The desk never publishes unverified data.",
- "generated": "2026-09-11 07:24 UTC",
+ "generated": "2026-09-11 09:25 UTC",
  "source": "football-data.org v4",
  "leagues": {
   "premier-league": {
    "name": "Premier League",
-   "table_updated": "fetched Friday 11 September 2026, 07:21 UTC",
-   "results_updated": "fetched Friday 11 September 2026, 07:21 UTC",
-   "scorers_updated": "fetched Friday 11 September 2026, 07:21 UTC",
+   "table_updated": "fetched Friday 11 September 2026, 09:21 UTC",
+   "results_updated": "fetched Friday 11 September 2026, 09:21 UTC",
+   "scorers_updated": "fetched Friday 11 September 2026, 09:21 UTC",
    "scorers_source": "The Guardian (10 Sep 2026) cross-checked with worldfootball.net",
    "table": [
     [
@@ -120,7 +120,7 @@
     ],
     [
      10,
-     "Brighton & Hove Albion FC",
+     "Brighton & Hove Albion",
      3,
      1,
      1,
@@ -306,7 +306,7 @@
       },
       {
        "d": "2026-08-23",
-       "h": "Brighton & Hove Albion FC",
+       "h": "Brighton & Hove Albion",
        "hs": 4,
        "as": 0,
        "a": "Aston Villa"
@@ -377,7 +377,7 @@
        "h": "Chelsea",
        "hs": 4,
        "as": 3,
-       "a": "Brighton & Hove Albion FC"
+       "a": "Brighton & Hove Albion"
       },
       {
        "d": "2026-08-30",
@@ -435,7 +435,7 @@
       },
       {
        "d": "2026-09-05",
-       "h": "Brighton & Hove Albion FC",
+       "h": "Brighton & Hove Albion",
        "hs": 1,
        "as": 1,
        "a": "Leeds United"
@@ -537,7 +537,7 @@
     },
     {
      "p": "Jack Hinshelwood",
-     "c": "Brighton & Hove Albion FC",
+     "c": "Brighton & Hove Albion",
      "g": 2,
      "a": null,
      "pm": 1
@@ -596,7 +596,7 @@
     {
      "d": "2026-09-13 13:00",
      "h": "Coventry City",
-     "a": "Brighton & Hove Albion FC",
+     "a": "Brighton & Hove Albion",
      "mw": 4
     },
     {
@@ -624,7 +624,7 @@
      "mw": 5
     }
    ],
-   "upcoming_updated": "fetched Friday 11 September 2026, 07:21 UTC",
+   "upcoming_updated": "fetched Friday 11 September 2026, 09:21 UTC",
    "squads": {
     "Manchester City": {
      "id": 65,
@@ -2364,7 +2364,7 @@
       ]
      ]
     },
-    "Brighton & Hove Albion FC": {
+    "Brighton & Hove Albion": {
      "id": 397,
      "founded": 1898,
      "venue": "The American Express Community Stadium",
@@ -3820,6 +3820,203 @@
       ]
      ]
     },
+    "Aston Villa": {
+     "id": 58,
+     "founded": 1872,
+     "venue": "Villa Park",
+     "colors": "Claret / Sky Blue",
+     "players": [
+      [
+       "Marco Bizot",
+       "Goalkeeper",
+       "Netherlands",
+       "1991-03-10",
+       null
+      ],
+      [
+       "Zion Suzuki",
+       "Goalkeeper",
+       "Japan",
+       "2002-08-21",
+       null
+      ],
+      [
+       "Victor Nilsson-Lindelöf",
+       "Defence",
+       "Sweden",
+       "1994-07-17",
+       null
+      ],
+      [
+       "Aaron Wan-Bissaka",
+       "Defence",
+       "Congo DR",
+       "1997-11-26",
+       null
+      ],
+      [
+       "Tyrone Mings",
+       "Defence",
+       "England",
+       "1993-03-13",
+       null
+      ],
+      [
+       "Matty Cash",
+       "Defence",
+       "Poland",
+       "1997-08-07",
+       null
+      ],
+      [
+       "Pau Torres",
+       "Defence",
+       "Spain",
+       "1997-01-16",
+       null
+      ],
+      [
+       "Taylor Harwood-Bellis",
+       "Defence",
+       "England",
+       "2002-01-30",
+       null
+      ],
+      [
+       "Ian Maatsen",
+       "Defence",
+       "Netherlands",
+       "2002-03-10",
+       null
+      ],
+      [
+       "Matteo Ruggeri",
+       "Defence",
+       "Italy",
+       "2002-07-11",
+       null
+      ],
+      [
+       "Modou Keba Cisse",
+       "Defence",
+       "Senegal",
+       "2005-08-04",
+       null
+      ],
+      [
+       "Leon Goretzka",
+       "Midfield",
+       "Germany",
+       "1995-02-06",
+       null
+      ],
+      [
+       "Ross Barkley",
+       "Midfield",
+       "England",
+       "1993-12-05",
+       null
+      ],
+      [
+       "Boubacar Kamara",
+       "Midfield",
+       "France",
+       "1999-11-23",
+       null
+      ],
+      [
+       "Emiliano Buendía",
+       "Midfield",
+       "Argentina",
+       "1996-12-25",
+       null
+      ],
+      [
+       "John McGinn",
+       "Midfield",
+       "Scotland",
+       "1994-10-18",
+       null
+      ],
+      [
+       "Amadou Onana",
+       "Midfield",
+       "Belgium",
+       "2001-08-16",
+       null
+      ],
+      [
+       "João Gomes",
+       "Midfield",
+       "Brazil",
+       "2001-02-12",
+       null
+      ],
+      [
+       "Lamare Bogarde",
+       "Midfield",
+       "Netherlands",
+       "2004-01-05",
+       null
+      ],
+      [
+       "Johan Manzambi",
+       "Midfield",
+       "Switzerland",
+       "2005-10-14",
+       null
+      ],
+      [
+       "Tammy Abraham",
+       "Offence",
+       "England",
+       "1997-10-02",
+       null
+      ],
+      [
+       "Nicolas Jackson",
+       "Offence",
+       "Senegal",
+       "2001-06-20",
+       null
+      ],
+      [
+       "Alejandro Garnacho",
+       "Offence",
+       "Argentina",
+       "2004-07-01",
+       null
+      ],
+      [
+       "Alysson",
+       "Offence",
+       "Brazil",
+       "2006-05-05",
+       null
+      ],
+      [
+       "Ibrahim M'Baye",
+       "Offence",
+       "Senegal",
+       "2008-01-24",
+       null
+      ],
+      [
+       "Brian Madjo",
+       "Offence",
+       "Luxembourg",
+       "2009-01-12",
+       null
+      ],
+      [
+       "George Hemmings",
+       "Offence",
+       "England",
+       "2007-03-04",
+       null
+      ]
+     ]
+    },
     "Tottenham Hotspur": {
      "id": 73,
      "founded": 1882,
@@ -4426,12 +4623,12 @@
      ]
     }
    },
-   "squads_updated": "fetched Friday 11 September 2026, 07:24 UTC (19/20 clubs listed)"
+   "squads_updated": "fetched Friday 11 September 2026, 09:25 UTC (20/20 clubs listed)"
   },
   "la-liga": {
    "name": "La Liga",
-   "table_updated": "fetched Friday 11 September 2026, 07:21 UTC",
-   "scorers_updated": "fetched Friday 11 September 2026, 07:21 UTC",
+   "table_updated": "fetched Friday 11 September 2026, 09:21 UTC",
+   "scorers_updated": "fetched Friday 11 September 2026, 09:22 UTC",
    "table": [
     [
      1,
@@ -4748,6 +4945,156 @@
    ],
    "results": [
     {
+     "mw": 1,
+     "matches": [
+      {
+       "d": "2026-08-15",
+       "h": "Deportivo Alavés",
+       "hs": 3,
+       "as": 0,
+       "a": "Getafe CF"
+      },
+      {
+       "d": "2026-08-15",
+       "h": "Sevilla FC",
+       "hs": 2,
+       "as": 1,
+       "a": "Rayo Vallecano de Madrid"
+      },
+      {
+       "d": "2026-08-16",
+       "h": "Real Racing Club de Santander",
+       "hs": 2,
+       "as": 2,
+       "a": "Villarreal CF"
+      },
+      {
+       "d": "2026-08-16",
+       "h": "RCD Espanyol de Barcelona",
+       "hs": 3,
+       "as": 0,
+       "a": "Levante UD"
+      },
+      {
+       "d": "2026-08-17",
+       "h": "RC Deportivo La Coruña",
+       "hs": 1,
+       "as": 1,
+       "a": "Elche CF"
+      },
+      {
+       "d": "2026-08-19",
+       "h": "Club Atlético de Madrid",
+       "hs": 2,
+       "as": 0,
+       "a": "Málaga CF"
+      },
+      {
+       "d": "2026-08-25",
+       "h": "Valencia CF",
+       "hs": 0,
+       "as": 1,
+       "a": "Real Betis Balompié"
+      },
+      {
+       "d": "2026-08-26",
+       "h": "Real Madrid CF",
+       "hs": 4,
+       "as": 1,
+       "a": "Real Sociedad de Fútbol"
+      },
+      {
+       "d": "2026-08-27",
+       "h": "RC Celta de Vigo",
+       "hs": 1,
+       "as": 2,
+       "a": "CA Osasuna"
+      },
+      {
+       "d": "2026-08-27",
+       "h": "FC Barcelona",
+       "hs": 2,
+       "as": 0,
+       "a": "Athletic Club"
+      }
+     ]
+    },
+    {
+     "mw": 2,
+     "matches": [
+      {
+       "d": "2026-08-20",
+       "h": "Rayo Vallecano de Madrid",
+       "hs": 1,
+       "as": 1,
+       "a": "Deportivo Alavés"
+      },
+      {
+       "d": "2026-08-21",
+       "h": "Real Betis Balompié",
+       "hs": 1,
+       "as": 0,
+       "a": "Real Sociedad de Fútbol"
+      },
+      {
+       "d": "2026-08-22",
+       "h": "Athletic Club",
+       "hs": 1,
+       "as": 3,
+       "a": "Sevilla FC"
+      },
+      {
+       "d": "2026-08-22",
+       "h": "Valencia CF",
+       "hs": 0,
+       "as": 0,
+       "a": "RC Celta de Vigo"
+      },
+      {
+       "d": "2026-08-22",
+       "h": "RCD Espanyol de Barcelona",
+       "hs": 1,
+       "as": 2,
+       "a": "Real Madrid CF"
+      },
+      {
+       "d": "2026-08-23",
+       "h": "Club Atlético de Madrid",
+       "hs": 2,
+       "as": 2,
+       "a": "Villarreal CF"
+      },
+      {
+       "d": "2026-08-23",
+       "h": "Getafe CF",
+       "hs": 1,
+       "as": 0,
+       "a": "Real Racing Club de Santander"
+      },
+      {
+       "d": "2026-08-23",
+       "h": "Elche CF",
+       "hs": 0,
+       "as": 5,
+       "a": "FC Barcelona"
+      },
+      {
+       "d": "2026-08-24",
+       "h": "CA Osasuna",
+       "hs": 0,
+       "as": 0,
+       "a": "Levante UD"
+      },
+      {
+       "d": "2026-08-24",
+       "h": "Málaga CF",
+       "hs": 1,
+       "as": 1,
+       "a": "RC Deportivo La Coruña"
+      }
+     ]
+    },
+    {
      "mw": 3,
      "matches": [
       {
@@ -4910,7 +5257,7 @@
      ]
     }
    ],
-   "results_updated": "fetched Friday 11 September 2026, 07:21 UTC",
+   "results_updated": "fetched Friday 11 September 2026, 09:22 UTC",
    "upcoming": [
     {
      "d": "2026-09-11 19:00",
@@ -4985,11 +5332,11 @@
      "mw": 6
     }
    ],
-   "upcoming_updated": "fetched Friday 11 September 2026, 07:21 UTC"
+   "upcoming_updated": "fetched Friday 11 September 2026, 09:22 UTC"
   },
   "bundesliga": {
    "name": "Bundesliga",
-   "table_updated": "fetched Friday 11 September 2026, 07:22 UTC",
+   "table_updated": "fetched Friday 11 September 2026, 09:22 UTC",
    "table": [
     [
      1,
@@ -5346,7 +5693,7 @@
      ]
     }
    ],
-   "results_updated": "fetched Friday 11 September 2026, 07:22 UTC",
+   "results_updated": "fetched Friday 11 September 2026, 09:22 UTC",
    "scorers": [
     {
      "p": "Younes Ebnoutalib",
@@ -5419,7 +5766,7 @@
      "pm": 2
     }
    ],
-   "scorers_updated": "fetched Friday 11 September 2026, 07:22 UTC",
+   "scorers_updated": "fetched Friday 11 September 2026, 09:22 UTC",
    "upcoming": [
     {
      "d": "2026-09-11 18:30",
@@ -5494,7 +5841,7 @@
      "mw": 4
     }
    ],
-   "upcoming_updated": "fetched Friday 11 September 2026, 07:22 UTC"
+   "upcoming_updated": "fetched Friday 11 September 2026, 09:22 UTC"
   },
   "serie-a": {
    "table": [
@@ -5739,7 +6086,7 @@
      0
     ]
    ],
-   "table_updated": "fetched Friday 11 September 2026, 07:21 UTC",
+   "table_updated": "fetched Friday 11 September 2026, 09:22 UTC",
    "results": [
     {
      "mw": 1,
@@ -5967,7 +6314,7 @@
      ]
     }
    ],
-   "results_updated": "fetched Friday 11 September 2026, 07:21 UTC",
+   "results_updated": "fetched Friday 11 September 2026, 09:22 UTC",
    "scorers": [
     {
      "p": "Donyell Malen",
@@ -6040,7 +6387,7 @@
      "pm": 3
     }
    ],
-   "scorers_updated": "fetched Friday 11 September 2026, 07:22 UTC",
+   "scorers_updated": "fetched Friday 11 September 2026, 09:22 UTC",
    "upcoming": [
     {
      "d": "2026-09-11 18:45",
@@ -6115,7 +6462,7 @@
      "mw": 5
     }
    ],
-   "upcoming_updated": "fetched Friday 11 September 2026, 07:21 UTC"
+   "upcoming_updated": "fetched Friday 11 September 2026, 09:22 UTC"
   },
   "ligue-1": {
    "table": [
@@ -6336,7 +6683,7 @@
      0
     ]
    ],
-   "table_updated": "fetched Friday 11 September 2026, 07:22 UTC",
+   "table_updated": "fetched Friday 11 September 2026, 09:22 UTC",
    "results": [
     {
      "mw": 1,
@@ -6543,7 +6890,7 @@
      ]
     }
    ],
-   "results_updated": "fetched Friday 11 September 2026, 07:22 UTC",
+   "results_updated": "fetched Friday 11 September 2026, 09:23 UTC",
    "scorers": [
     {
      "p": "Amine Gouiri",
@@ -6616,7 +6963,7 @@
      "pm": 3
     }
    ],
-   "scorers_updated": "fetched Friday 11 September 2026, 07:22 UTC",
+   "scorers_updated": "fetched Friday 11 September 2026, 09:23 UTC",
    "upcoming": [
     {
      "d": "2026-09-11 18:45",
@@ -6691,7 +7038,7 @@
      "mw": 5
     }
    ],
-   "upcoming_updated": "fetched Friday 11 September 2026, 07:22 UTC"
+   "upcoming_updated": "fetched Friday 11 September 2026, 09:23 UTC"
   },
   "champions-league": {
    "table": [
@@ -7128,7 +7475,7 @@
      0
     ]
    ],
-   "table_updated": "fetched Friday 11 September 2026, 07:22 UTC",
+   "table_updated": "fetched Friday 11 September 2026, 09:23 UTC",
    "results": [
     {
      "mw": 1,
@@ -7262,7 +7609,7 @@
      ]
     }
    ],
-   "results_updated": "fetched Friday 11 September 2026, 07:22 UTC",
+   "results_updated": "fetched Friday 11 September 2026, 09:23 UTC",
    "upcoming": [
     {
      "d": "2026-10-13 16:45",
@@ -7337,7 +7684,7 @@
      "mw": 2
     }
    ],
-   "upcoming_updated": "fetched Friday 11 September 2026, 07:23 UTC",
+   "upcoming_updated": "fetched Friday 11 September 2026, 09:23 UTC",
    "scorers": [
     {
      "p": "Ermedin Demirovic",
@@ -7410,7 +7757,7 @@
      "pm": 1
     }
    ],
-   "scorers_updated": "fetched Friday 11 September 2026, 07:23 UTC"
+   "scorers_updated": "fetched Friday 11 September 2026, 09:23 UTC"
   }
  }
 }

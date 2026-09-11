@@ -449,3 +449,39 @@ NEW_TECH_GUIDES.extend(_TECH_MASTER_M6)
 NEW_TECH_GUIDES.extend(_TECH_ROADMAP_T2B)
 NEW_TECH_GUIDES.extend(_TECH_ROADMAP_T2)
 NEW_TECH_GUIDES.extend(_TECH_ROADMAP_T1)
+
+# ---- batch 16: the IdeaWave steals - two evergreen search-visibility guides ----
+NEW_TECH_GUIDES.extend([
+("check-if-google-indexed-your-page", "web-and-hosting", "guide",
+"How to check if Google has indexed a page",
+"The ten-second test, the definitive test, and the five reasons a page stays out of Google even when everything looks fine.",
+"""<p>Every site owner eventually plays this game: you publish a page, search a phrase from it, and nothing comes back. Before assuming the worst, work down this list &mdash; it is ordered by speed, and it is the same order we use on this very site.</p>
+<h2>The ten-second test: the <code>site:</code> operator</h2>
+<p>Search <code>site:yourdomain.com/your-page/</code>. If the URL appears, the page <b>is indexed</b>. Two honest caveats: the number of results <code>site:</code> reports is a fuzzy filter, not a reliable count, and appearing under <code>site:</code> says nothing about <i>where</i> the page ranks. It answers "is it in?", never "is it visible?"</p>
+<h2>The definitive test: URL Inspection</h2>
+<p>Google Search Console's URL Inspection tool is the only authoritative answer. Paste the full URL and read the verdict: <b>"URL is on Google"</b> means indexed; <b>"URL is not on Google"</b> comes with a reason &mdash; noindex, crawl blocked, duplicate (Google chose another canonical), or simply not crawled/processed yet. That reason field is the whole game; it converts guessing into a todo.</p>
+<h2>The five usual suspects</h2>
+<p><b>1. The page says noindex.</b> Check the <code>&lt;meta name="robots"&gt;</code> tag and the <code>X-Robots-Tag</code> HTTP header &mdash; either can block indexing, and a staging-to-production slip is the classic cause. <b>2. robots.txt blocks crawling.</b> Subtle but real: a blocked page can still appear in Google "without content" because a link gave Google the URL; blocking is not noindexing, and combining both is a well-known trap. <b>3. The canonical points elsewhere.</b> If the page declares (or Google infers) a preferred version, duplicates get consolidated &mdash; Search Console says "Google chose a different canonical". <b>4. It is simply new.</b> Crawling and processing take time on young sites; patience plus a submitted sitemap beats frantic republishing. <b>5. Google saw it and declined.</b> "Crawled &mdash; currently not indexed" and "Discovered &mdash; currently not indexed" in the Pages report usually mean quality/thinness signals, not a penalty. The fix is honest: make the page substantially useful and linked from your own navigation.</p>
+<h2>Indexed is not ranked</h2>
+<p>Indexing is entry to the library, not a seat at the front. Once a page is "on Google", ranking is a separate, slower contest &mdash; which is why we track indexing in batches on this site rather than refreshing hourly, and why our <a href="/tech/sitemap-indexnow/">sitemap and IndexNow routine</a> is about speed of discovery, not about rank.</p>
+<h2>Quick hygiene that prevents the mystery</h2>
+<p>Keep one canonical domain (decide www vs non-www and redirects once); never ship noindex on templates; submit sitemaps and read the Pages report monthly; and check that staging subdomains are blocked <i>at the server</i>, not just unlinked. For how the domain and DNS layer underneath works, see <a href="/tech/custom-domain-dns-order/">custom domains and DNS order</a> &mdash; and if your pages are fine in Google but invisible in AI answers, that is a different (newer) problem: <a href="/how-to-get-cited-by-ai-search/">how to get cited by AI search tools</a>.</p>""",
+[("Google Search Central: block indexing (noindex)", "https://developers.google.com/search/docs/crawling-indexing/block-indexing"),
+ ("Google Search Central: URL Inspection", "https://support.google.com/webmasters/answer/9012289")],
+[("sitemap-indexnow", "Sitemaps and IndexNow"), ("custom-domain-dns-order", "Custom domains, DNS order"), ("how-to-get-cited-by-ai-search", "Cited by AI search")]),
+("how-to-get-cited-by-ai-search", "ai", "guide",
+"How to get your site cited by AI search tools",
+"What is actually known about being quoted by chatbots and AI search &mdash; and the honesty to spot what nobody can guarantee.",
+"""<p>A growing share of answers now comes from AI tools that fetch, read and summarise the web. Publishers naturally want to be the source being quoted. Here is the desk's honest brief &mdash; including which parts are evidence and which are practice.</p>
+<h2>How the tools actually find answers</h2>
+<p>Most AI answers that reference the web work in two steps: retrieve (search or fetch live pages) then summarise. That means the first gate is not "AI optimisation" &mdash; it is boring crawlability: your pages must be fetchable, fast, and not blocked from the crawlers you choose to allow. Each vendor runs its own crawler with a name in robots.txt (OpenAI's GPTBot, Anthropic's ClaudeBot, Google-Extended for Gemini training among others); allowing or blocking them is a publisher decision, not a technical default. If you block them, do not expect to be cited by them.</p>
+<h2>What genuinely helps (the evidence-backed part)</h2>
+<p><b>Answer-shaped writing.</b> Tools lift passages that directly answer a question &mdash; a clear heading, a definition or number early in the section, and a date. <b>Entity clarity.</b> Say what a thing is, plainly, on the page; consistent naming across your site helps machines know what your pages are about. <b>Freshness you can prove.</b> Visible last-updated stamps and dated corrections &mdash; the practice this whole desk runs on &mdash; make a page safer to quote than an undated one. <b>Being referenced elsewhere.</b> Retrieval favours sources the wider web already trusts; citations in your niche flow to pages that earn ordinary links and mentions. <b>Technical health.</b> The checks in <a href="/tech/check-if-google-indexed-your-page/">how to check if Google indexed a page</a> matter here too: a page that is confused about its own canonical or blocked by accident will not be anyone's source.</p>
+<h2>What nobody can guarantee (the honest part)</h2>
+<p>There is no submission form, no paid inclusion, and no known trick that forces a citation &mdash; anyone selling "guaranteed AI rankings" is selling. The <code>llms.txt</code> file convention exists but is not a documented requirement of any major assistant; treat it as optional, unproven, and harmless at best. And measurement is genuinely hard: many chatbot visits arrive without usable referral data, so expect small, manual checks (ask the tools the questions your pages answer and note what gets quoted) rather than precise dashboards.</p>
+<h2>The boring conclusion</h2>
+<p>Everything that reliably improves AI citations overlaps almost perfectly with good publishing: be clear, be sourced, be dated, be crawlable, be genuinely useful. That is why this desk treats AI visibility as an <i>outcome</i> of the editorial standard, not a separate channel &mdash; the same discipline behind our <a href="/tech/sitemap-indexnow/">sitemap and IndexNow routine</a> and our correction policies. Do those well, keep the robots decisions deliberate, and check manually now and then. Anything more precise being promised to you is theatre.</p>""",
+[("OpenAI: crawlers and bots documentation", "https://platform.openai.com/docs/bots"),
+ ("Google Search Central: Google crawlers (incl. Google-Extended)", "https://developers.google.com/search/docs/crawling-indexing/overview-google-crawlers")],
+[("check-if-google-indexed-your-page", "Check if Google indexed a page"), ("sitemap-indexnow", "Sitemaps and IndexNow"), ("github-token-hygiene", "Token hygiene")]),
+])

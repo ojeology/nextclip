@@ -353,6 +353,7 @@ def _nav_items(pub):
             navs.append((_n, rows))
         desk = [("HEAD", "The desk"), ("/sports/", "Desk home"),
                 ("/the-weekend-ahead/", "The weekend forecast"),
+                ("/form-board/", "The Form Board"),
                 ("/fpl/", "FPL, explained properly"),
                 ("/sports/explainers/", "All explainers"),
                 ("/sports/analysis/", "The analysis shelf"),
@@ -416,7 +417,7 @@ def sports_drawer():
         '<a href="/premier-league-table/">Premier League table</a><a href="/la-liga-table/">La Liga table</a>'
         '<a href="/serie-a-table/">Serie A table</a><a href="/bundesliga-table/">Bundesliga table</a>'
         '<a href="/ligue-1-table/">Ligue 1 table</a><a href="/champions-league-table/">Champions League table</a>'
-        '<a href="/the-weekend-ahead/">The weekend forecast</a><a href="/fpl/">FPL guide</a></div>\n'
+        '<a href="/the-weekend-ahead/">The weekend forecast</a><a href="/form-board/">The Form Board</a><a href="/fpl/">FPL guide</a></div>\n'
         '<div class="drawer-group"><b>The desk</b><a href="/sports/">Desk home</a><a href="/premier-league-transfers/">Transfer centre</a><a href="/sports/explainers/">Explainers</a>'
         '<a href="/sports/analysis/">Analysis</a></div>\n'
         '<div class="drawer-group"><b>The desk</b><a href="/sports/about/">About</a>'
@@ -1096,6 +1097,7 @@ def sports_pages():
         + '<section class="section alt"><div class="section-head"><p class="kicker">The essentials</p><h2>Check the state of play.</h2></div>'
         + '<ul class="list">'
         + '<li><a href="/premier-league-table/"><span><b>The live table</b><small>Twenty clubs after Matchweek 3 \u2014 stamped with the date and the sources, updated as rounds are verified.</small></span><span class="meta">Live</span></a></li>'
+        + '<li><a href="/form-board/"><span><b>The Form Board</b><small>Who is actually in form right now \u2014 real points-per-game arithmetic on verified results.</small></span><span class="meta">Live</span></a></li>'
         + '<li><a href="/premier-league-fixtures/"><span><b>Fixtures &amp; results</b><small>The full 380-fixture official calendar, with the verified Matchweek 4 card on top.</small></span><span class="meta">This weekend</span></a></li>'
         + '<li><a href="/the-weekend-ahead/"><span><b>The weekend ahead</b><small>This weekend\u2019s fixtures and the desk\u2019s labelled forecast.</small></span><span class="meta">Forecast</span></a></li>'
         + '<li><a href="/fpl/"><span><b>FPL, explained properly</b><small>Scoring, chips, transfers \u2014 the fantasy desk, no tips sold.</small></span><span class="meta">Fantasy</span></a></li>'
@@ -1453,7 +1455,7 @@ def sports_pages():
                           "The " + sld.SEASON + " " + lname + " table, " + str(n_cl) + " clubs, stamped with its verification date and source. No odds, ever.", tp))
         if ld.get("results"):
             rsecs = ""
-            for blk in ld["results"]:
+            for blk in ld["results"][-3:]:
                 rrows = ""
                 for m in blk["matches"]:
                     hsl = NAME_SLUG.get(m["h"]); asl = NAME_SLUG.get(m["a"])
@@ -1629,6 +1631,114 @@ def sports_pages():
             retired.append(f'<li><span><b>{html.escape(m["title"])}</b>'
                            f'<small>{m["words"]} words · reviewed \u2014 retired: teaser stub, not an article</small></span>'
                            f'<span class="meta">Retired</span></li>')
+    # ---- batch 16: the form board (pure arithmetic on verified results; spec s7/s45) ----
+    _PL_SLUGS = {}
+    for _r in sld.PL_TABLE:
+        _PL_SLUGS[_r[1]] = _r[2]
+    def _form_compute(ld):
+        blocks = ld.get("results", [])
+        if not blocks:
+            return None, ""
+        st = {}
+        mws = []
+        for blk in blocks:
+            mws.append(int(blk["mw"]))
+            for m in blk["matches"]:
+                for nm, gf, ga in ((m["h"], m["hs"], m["as"]), (m["a"], m["as"], m["hs"])):
+                    q = st.setdefault(nm, {"p": 0, "w": 0, "d": 0, "l": 0, "gf": 0, "ga": 0, "pts": 0, "f": []})
+                    q["p"] += 1
+                    q["gf"] += gf
+                    q["ga"] += ga
+                    if gf > ga:
+                        q["w"] += 1; q["pts"] += 3; q["f"].append("W")
+                    elif gf == ga:
+                        q["d"] += 1; q["pts"] += 1; q["f"].append("D")
+                    else:
+                        q["l"] += 1; q["f"].append("L")
+        season = {row[1]: row for row in ld.get("table", [])}
+        for nm, q in st.items():
+            q["gd"] = q["gf"] - q["ga"]
+            q["ppg"] = (q["pts"] / float(q["p"])) if q["p"] else 0.0
+            q["spts"] = season[nm][9] if nm in season else 0
+        rows = sorted(st.items(), key=lambda kv: (-kv[1]["ppg"], -kv[1]["gd"], -kv[1]["gf"], -kv[1]["spts"], kv[0]))
+        if len(mws) == 1:
+            wl = "Matchweek " + str(mws[0])
+        elif max(mws) - min(mws) + 1 == len(mws):
+            wl = "Matchweeks " + str(min(mws)) + "\u2013" + str(max(mws))
+        else:
+            wl = "Matchweeks " + ", ".join(str(x) for x in sorted(mws))
+        return rows, wl
+    def _form_deltas(rows, ld):
+        season = ld.get("table", [])
+        climbs, slips = [], []
+        for i, (nm, q) in enumerate(rows, 1):
+            sr = next((j + 1 for j, row in enumerate(season) if row[1] == nm), None)
+            if sr is None:
+                continue
+            d = sr - i
+            if d > 0:
+                climbs.append((nm, d))
+            elif d < 0:
+                slips.append((nm, d))
+        climbs.sort(key=lambda x: -x[1])
+        slips.sort(key=lambda x: x[1])
+        return climbs[:3], slips[:3]
+    def _form_table(rows, lslug, with_badges):
+        trs = ""
+        for i, (nm, q) in enumerate(rows, 1):
+            if with_badges and nm in _PL_SLUGS:
+                club_cell = '<a href="/clubs/' + _PL_SLUGS[nm] + '/"><img class="club-badge row-badge" src="/assets/img/sports/badges/' + badge_file(_PL_SLUGS[nm]) + '" alt="" width="22" height="22" loading="lazy">' + html.escape(nm) + '</a>'
+            else:
+                club_cell = html.escape(nm)
+            form = " ".join(('<b>' + x + '</b>') if x == "W" else x for x in q["f"])
+            trs += ('<tr><td class="pos">' + str(i) + '</td><td class="club-b">' + club_cell + '</td>'
+                    + '<td>' + form + '</td><td class="num">' + str(q["p"]) + '</td>'
+                    + '<td class="num">' + str(q["w"]) + '-' + str(q["d"]) + '-' + str(q["l"]) + '</td>'
+                    + '<td class="num">' + str(q["gf"]) + ':' + str(q["ga"]) + '</td>'
+                    + '<td class="num"><b>' + ("%.2f" % q["ppg"]) + '</b></td>'
+                    + '<td class="num">' + str(q["spts"]) + '</td></tr>')
+        return ('<div class="lg-scroll"><table class="lg-table">'
+            + '<thead><tr><th>#</th><th>Club</th><th>Form</th><th class="num">P</th><th class="num">W-D-L</th><th class="num">GF:GA</th><th class="num">PPG</th><th class="num">Ssn</th></tr></thead>'
+            + '<tbody>' + trs + '</tbody></table></div>')
+    _fb_secs = ""
+    _fb_pl_rows, _fb_pl_wl = (None, "")
+    _fb_order = [("premier-league", "Premier League", True), ("la-liga", "La Liga", False),
+                 ("serie-a", "Serie A", False), ("bundesliga", "Bundesliga", False),
+                 ("ligue-1", "Ligue 1", False), ("champions-league", "Champions League", False)]
+    for _fl, _fn, _fb in _fb_order:
+        _fld = LIVE.get("leagues", {}).get(_fl, {})
+        _rows, _wl = _form_compute(_fld)
+        if not _rows:
+            continue
+        if _fl == "premier-league":
+            _fb_pl_rows, _fb_pl_wl = _rows, _wl
+        _cl, _sl = _form_deltas(_rows, _fld)
+        _sides = ""
+        if _cl:
+            _sides += _panel("Climbing fastest", "".join('<div class="sp-row"><span>' + html.escape(n) + '</span><span class="pts">+' + str(d) + '</span></div>' for n, d in _cl), None)
+        if _sl:
+            _sides += _panel("Slipping", "".join('<div class="sp-row"><span>' + html.escape(n) + '</span><span class="pts">' + str(d) + '</span></div>' for n, d in _sl), None)
+        _tlab = "/premier-league-table/" if _fl == "premier-league" else "/" + _fl + "-table/"
+        _sides += _panel("Context", '<div class="sp-row"><span><a href="' + _tlab + '">The season table</a></span></div><div class="sp-row"><span><a href="/' + _fl + '-results/">The results behind it</a></span></div>', None)
+        _fb_secs += ('<section class="section"><div class="section-head"><p class="kicker">' + _fn + ' \u00b7 form over ' + _wl + '</p><h2>' + _fn + ', by actual form.</h2></div>'
+            + '<div class="data-cols"><div>' + _form_table(_rows, _fl, _fb) + '</div><div>' + _sides + '</div></div></section>')
+    if _fb_secs:
+        _fb_method = ('<section class="section alt"><div class="section-head"><p class="kicker">The method</p><h2>How the board is computed.</h2></div>'
+            + '<div class="prose"><p>Every number here is arithmetic on the same verified results the results pages publish \u2014 nothing is modelled, predicted or scored by opinion. Clubs are ranked by <b>points per game</b> across the desk\u2019s current results window'
+            + (' (' + _fb_pl_wl + ' for the Premier League)' if _fb_pl_wl else '')
+            + '; ties break by window goal difference, then window goals scored, then season points. <b>Form</b> lists the window\u2019s results oldest to newest. <b>Ssn</b> is the club\u2019s real season points, shown for context \u2014 early in a season, three good weeks are a story, not yet a verdict. The board is a BRYME desk table, clearly labelled as ours: it is not an official competition standing, and it refreshes only when the data agent verifies a new round (' + html.escape(str(LIVE.get("generated", ""))) + ').</p></div></section>')
+        _fb_page = (_lg_head()
+            + '<main id="main"><div class="wrap">'
+            + '<nav class="crumb"><a href="/sports/">Sport</a> / The Form Board</nav>'
+            + '<section class="cover"><p class="kicker">The Form Board \u00b7 a BRYME desk table</p>'
+            + '<h1 class="cover-title" style="font-size:clamp(30px,4.6vw,48px)">Who is actually in form.</h1>'
+            + '<p class="byline">The league table says who has the most points; the Form Board says who is earning them right now \u00b7 computed from verified results only \u00b7 refreshed with every data run \u00b7 never betting</p></section>'
+            + _fb_secs + _fb_method
+            + '<section class="section"><div class="prose"><p>Carry on: the <a href="/sports/">live data desk</a>, the <a href="/the-weekend-ahead/">weekend forecast</a> for what the form means for the next round, and the season-long story in <a href="/premier-league-table/">the real tables</a>.</p></div></section>'
+            + '</div></main>' + foot("sports"))
+        pages.append(("/form-board/", "The Form Board \u2014 who is actually in form | BRYME Sport",
+                      "All six leagues ranked by real recent form: points per game over the verified results window, computed from the same verified scores as the results pages. Nothing modelled, nothing invented.", _fb_page))
+
     # ---- batch 12: the weekend ahead + FPL hub ----
     _wk = (head("sports", "Analysis, stories and the long view \u2014 never betting.")
         + '<main id="main"><div class="wrap">'
@@ -1720,7 +1830,8 @@ def sports_pages():
         + _panel("New on the desk", '<div class="sp-row"><span><a href="/the-weekend-ahead/">The weekend ahead \u2014 fixtures + forecast</a></span></div>'
                                      '<div class="sp-row"><span><a href="/fpl/">FPL, explained properly</a></span></div>'
                                      '<div class="sp-row"><span><a href="/champions-league-table/">The Champions League table</a></span></div>'
-                                     '<div class="sp-row"><span><a href="/premier-league-transfers/">The transfer centre \u2014 every listed deal</a></span></div>', None)
+                                     '<div class="sp-row"><span><a href="/premier-league-transfers/">The transfer centre \u2014 every listed deal</a></span></div>'
+                                     '<div class="sp-row"><span><a href="/form-board/">The Form Board \u2014 who is actually in form</a></span></div>', None)
         + '</div></div></section>')
     _b6 = [("Premier League", [("/premier-league-table/", "Table"), ("/premier-league-fixtures/", "Fixtures"), ("/premier-league-results/", "Results"), ("/premier-league-top-scorers/", "Scorers"), ("/premier-league-clubs/", "Clubs")]),
            ("La Liga", [("/laliga/", "Hub"), ("/la-liga-table/", "Table"), ("/la-liga-fixtures/", "Fixtures"), ("/la-liga-results/", "Results"), ("/la-liga-top-scorers/", "Scorers")]),

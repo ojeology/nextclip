@@ -398,3 +398,15 @@ Chain: 821 pages / 79,377 links OK (+2,793 = drawer links); validator ok; allowl
 5. UCL "honest bit" reworded (the old line claimed the desk doesn't track scores — no longer true); UCL live-data links de-duplicated.
 
 **Verification:** chain green — 888 pages / 96,845 links OK (nav expansion added ~2,200 verified links), allowlist v26 (878), validator ok. Order needles PASS on all six hubs; drawer groups present; scores grid present (Premier League · MW3, La Liga · MD6, Champions League · MD1…).
+
+## Batch 16 receipt — the IdeaWave steals: the Form Board + two search-visibility guides (11 Sep 2026)
+
+**Driver (user):** "Do all" — build everything proposed from the IdeaWave analysis: the form-board format applied to real football data, plus the two adjacent evergreen Tech guides. Nothing purchased, nothing invented.
+
+**Shipped:**
+1. **`/sports/form-board/` — the Form Board (spec §7/§45):** all six leagues ranked by **points per game over the verified results window**, computed purely from the same verified scores the results pages publish (PPG → window GD → window GF → season points; methodology printed on the page; window labelled per league — including La Liga's real 1,2,3,4,6 gap while MD5 is in progress). W-D-L form strings, GF:GA, season-points context column ("Ssn"), **Climbing/Slipping** delta panels (form rank vs season rank), PL rows with badges + club-hub links. Labelled a BRYME desk table — not an official standing; refreshes with every data run. Agent extended to store a **5-matchweek window** (results pages still render 3); squads run reached **20/20 clubs** (Villa fixed itself).
+2. **`/tech/check-if-google-indexed-your-page/`** — site: test → URL Inspection verdicts → the five usual suspects (noindex tag/header, robots-block≠noindex trap, canonical consolidation, newness, "crawled — not indexed" quality signals); indexed≠ranked; first-hand from running this site. Sources: Google Search Central.
+3. **`/tech/how-to-get-cited-by-ai-search/`** — how AI answers retrieve+summarise, publisher robots choices (GPTBot/ClaudeBot/Google-Extended), what helps (answer-shaped writing, entity clarity, provable freshness, ordinary links), what nobody can guarantee (llms.txt unproven; "guaranteed AI rankings" = theatre), how to check manually. Sources: OpenAI/Google crawler docs.
+4. **Wiring:** Form Board in the sports index (New on the desk), PL hub essentials, drawer Live-data group, and the header desk menu.
+
+**Verification:** chain green — **891 pages / 97,283 links OK** (+3 pages), allowlist v26 (881), validator ok. Needles PASS: 6 form tables, "Matchweeks 1, 2, 3, 4, 6" honest label, club links + badges on the PL board, Villa 27-player squad (20/20), both guides titled + sitemapped (public/tech/sitemap.xml; sports sitemap carries form-board — the earlier "sports not sitemapped" note is obsolete).

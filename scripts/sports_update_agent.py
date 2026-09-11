@@ -130,7 +130,7 @@ def league_data(code, key):
             "hs": ft["home"], "as": ft["away"],
             "a": NAME_FIX.get(m["awayTeam"]["name"], m["awayTeam"]["name"]),
         })
-    recent = sorted(by_mw)[-3:]
+    recent = sorted(by_mw)[-5:]  # last 5: the form board window (results pages render the last 3)
     d["results"] = [{"mw": mw, "matches": by_mw[mw]} for mw in recent]
     d["results_updated"] = _stamp()
 
