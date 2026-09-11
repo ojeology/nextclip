@@ -344,3 +344,19 @@ Chain: 821 pages / 79,377 links OK (+2,793 = drawer links); validator ok; allowl
 - New CSS: .data-cols two-column grid (stacks under 900px), .side-panel/.sp-row/.sp-more components, 22px table badges.
 
 **Verification:** clean chain green — **877 pages / 93,762 links OK**, allowlist 867, validator ok. Needles PASS: side-by-side on all five table pages (scoring race + where-next), results/scorers pages with table panels, 20 badge images on the PL table, hub results rows, responsive stacking.
+
+## Batch 12 receipt — the sports portal + Champions League live desk (11 Sep 2026)
+
+**Driver (user, rated Sport 1/10):** "The sport hub isn't screaming sports yet… cards cards cards… champions league matches and tables are not there, Weekend news and forecast, fpl."
+
+**Shipped (all live URLs under thebryme.com):**
+1. **Champions League live desk (6th agent league).** `content/sports-live.json` now carries CL from football-data.org v4 (league-phase table 36 rows post-MD1; MD1 results 18 matches; top scorers; next-12 fixtures). Auto-pages: `/sports/champions-league-table/` (36 rows, no relegation marker), `/sports/champions-league-results/` (18 verified MD1 scores), `/sports/champions-league-top-scorers/` (Demirović 3, Ferrán Torres 3, Haaland 2…), `/sports/champions-league-fixtures/` (Matchday 2 from 13 Oct 2026, grouped by matchday).
+2. **CL shelf flipped** on `/sports/champions-league/`: "does not run a live-scores product" removed; new **Live data desk** section linking the four live pages.
+3. **`/sports/` rebuilt as a portal:** hero kicker now "the 2026-27 season is live · six competitions · no odds, ever"; new **This weekend** strip (four MW4 fixtures incl. the Sunday derby + a live-fetched LaLiga headliner) linking the forecast; new two-column live module — PL table panel (top 6), PL scorers panel, Where-next panel, **Six competitions, live** status card (each league's next matchday), and **New on the desk** card (forecast, FPL, CL table).
+4. **`/sports/the-weekend-ahead/`** — 12–14 Sep: verified MW4 fixture list, desk forecasts explicitly labelled "BRYME forecast, not a tip", the rest of the weekend across five competitions, and the no-betting rule restated.
+5. **`/sports/fpl/`** — "FPL, explained properly": evergreen rules (scoring by position, captaincy, transfers, the four chips) from the game's published rules; no prices invented, no tips sold; wired to the desk's verified fixtures/table/scorers pages.
+6. **Wiring:** PL hub gained Forecast + Fantasy rows; global sports Desks mega-menu gained Weekend forecast + FPL guide; agent workflow now refreshes six leagues twice daily (06:00/22:00 UTC).
+
+**Verification:** chain green — 883 pages, 93,431 internal links OK, allowlist routed v26 (873 routes incl. all six new), validator ok. Needles PASS (PSG top of CL table; 18 MD1 rows; Inter v Club Brugge on 2026-10-13; index strip shows Man United v Man City; old CL dek phrase gone).
+
+**Data integrity:** every live number stamped with its `*_updated` fetch time and sourced "football-data.org v4"; forecasts labelled as editorial outlook; FPL page contains no player prices (not verified) — rules only.

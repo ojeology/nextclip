@@ -41,6 +41,7 @@ LEAGUES = {
     "serie-a": "SA",
     "bundesliga": "BL1",
     "ligue-1": "FL1",
+    "champions-league": "CL",
 }
 
 # normalise API club names onto the desk's naming (used for PL club-hub links)
@@ -111,6 +112,16 @@ def league_data(code, key):
     recent = sorted(by_mw)[-3:]
     d["results"] = [{"mw": mw, "matches": by_mw[mw]} for mw in recent]
     d["results_updated"] = "fetched " + datetime.now(timezone.utc).strftime("%A %d %B %Y, %H:%M UTC")
+
+    ms2 = get(f"https://api.football-data.org/v4/competitions/{code}/matches?status=SCHEDULED", key)
+    up = []
+    for m in ms2.get("matches", []):
+        up.append({"d": (m.get("utcDate") or "")[:16].replace("T", " "),
+                   "h": NAME_FIX.get(m["homeTeam"]["name"], m["homeTeam"]["name"]),
+                   "a": NAME_FIX.get(m["awayTeam"]["name"], m["awayTeam"]["name"]),
+                   "mw": m.get("matchday", 0)})
+    d["upcoming"] = up[:12]
+    d["upcoming_updated"] = "fetched " + datetime.now(timezone.utc).strftime("%A %d %B %Y, %H:%M UTC")
 
     try:
         sc = get(f"https://api.football-data.org/v4/competitions/{code}/scorers", key)
