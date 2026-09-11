@@ -12,3 +12,6 @@ content/index-queue-state.json
 server/indexing-log.jsonl
 
 docs/search-ping-log.jsonl
+
+# untracked dev secret (football-data.org token) - never commit (spec s47)
+content/.football-data-key

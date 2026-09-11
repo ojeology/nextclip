@@ -1214,6 +1214,39 @@ def sports_pages():
     pages.append(("/premier-league-clubs/", "Premier League clubs 2026-27 \u2014 all twenty club hubs | BRYME Sport",
                   "Every 2026-27 Premier League club on one gateway: twenty club hubs with grounds, history, verified records and next fixtures.", pl_clubs_page))
 
+    _PLD = LIVE.get("leagues", {}).get("premier-league", {}) if LIVE else {}
+    SQ = _PLD.get("squads", {})
+    SQUPD = _PLD.get("squads_updated", "")
+    def _age(dob):
+        try:
+            y, m, dd = (int(x) for x in dob.split("-"))
+            t = datetime.now(timezone.utc).date()
+            return t.year - y - ((t.month, t.day) < (m, dd))
+        except Exception:
+            return None
+    def _squad_secs(sqd, upd):
+        if not sqd or not sqd.get("players"):
+            return ""
+        groups = [("Goalkeeper", "Goalkeepers"), ("Defence", "Defenders"), ("Midfield", "Midfielders"), ("Offence", "Forwards")]
+        panels = ""
+        shown = 0
+        for gkey, glabel in groups:
+            ps = sorted([q for q in sqd["players"] if q[1] == gkey], key=lambda x: x[0])
+            if not ps:
+                continue
+            rows = ""
+            for q in ps:
+                nm = html.escape(str(q[0]))
+                num = ('#' + str(q[4]) + ' ') if q[4] else ""
+                meta = " \u00b7 ".join([x for x in [html.escape(str(q[2])) if q[2] else "", (lambda a: (str(a) + " yrs") if a else "")(_age(q[3]))] if x])
+                rows += '<div class="sp-row"><span>' + num + nm + '</span><span class="pts">' + meta + '</span></div>'
+            panels += '<div class="side-panel"><h3>' + glabel + '</h3>' + rows + '</div>'
+            shown += len(ps)
+        if not shown:
+            return ""
+        return ('<section class="section"><div class="section-head"><p class="kicker">The squad \u00b7 ' + str(shown) + ' players</p><h2>Who is in the building.</h2></div>'
+                + ('<p class="byline">As listed by our data source \u00b7 ' + html.escape(str(upd)) + ' \u00b7 ages as at listing</p>' if upd else "")
+                + '<div class="data-cols">' + panels + '</div></section>')
     STORY_FOR = {
         "manchester-city": ("/elliot-anderson-man-city-record-signing/", "Why City paid a record for a midfielder"),
         "liverpool": ("/premier-league-transfer-tracker-august-2026/", "The summer window, deal by deal"),
@@ -1230,6 +1263,7 @@ def sports_pages():
         ch = CH.get(slug, {})
         chcity = (' \u00b7 ' + html.escape(ch["city"])) if ch.get("city") else ""
         chsrc = (' <em>Club facts source: <a href="' + ch["source"] + '" rel="noopener">official club history</a>.</em>') if ch.get("source") else ""
+        sqd = SQ.get(name) or next((v for k, v in SQ.items() if k.startswith(name) or name.startswith(k)), None)
         fx = next((f for f in sld.PL_MW4 if slug in (f[1], f[3])), None)
         story = STORY_FOR.get(slug)
         gds = ("+" + str(gd)) if gd > 0 else str(gd)
@@ -1249,6 +1283,7 @@ def sports_pages():
             + '</div></section>'
             + '<section class="section"><div class="prose"><p>' + blurb + chsrc + '</p>'
             + '<p>' + _club_now_text(r, fx) + ' <a href="/how-the-premier-league-table-works/">How to read the table</a> \u00b7 <a href="/xg-explained/">what xG adds</a>.</p></div></section>'
+            + _squad_secs(sqd, SQUPD)
             + '<section class="section alt"><div class="section-head"><p class="kicker">Where next</p><h2>Keep exploring.</h2></div>'
             + '<ul class="list">'
             + ('<li><a href="' + story[0] + '"><span><b>' + story[1] + '</b><small>From the desk\u2019s archive.</small></span><span class="meta">Read</span></a></li>' if story else "")
@@ -1366,7 +1401,17 @@ def sports_pages():
         if ld.get("scorers"):
             srows = ""
             for i, sc_ in enumerate(ld["scorers"]):
-                gword = "goal</b></span></div>" if sc_["g"] == 1 else "goals</b></span></div>"
+                extras = ""
+                pm = sc_.get("pm")
+                av = sc_.get("a")
+                if pm:
+                    extras += ' \u00b7 ' + str(pm) + (" app" if pm == 1 else " apps")
+                if av is not None:
+                    extras += ' \u00b7 ' + str(av) + (" assist" if av == 1 else " assists")
+                if sc_["g"] == 1:
+                    gword = "goal</b>" + extras + "</span></div>"
+                else:
+                    gword = "goals</b>" + extras + "</span></div>"
                 srows += ('<div class="fx-row"><span class="fx-when">#' + str(i + 1) + '</span>'
                           + '<span class="fx-tie">' + html.escape(str(sc_["p"])) + '</span>'
                           + '<span class="fx-where">' + html.escape(str(sc_.get("c", ""))) + ' \u00b7 <b>' + str(sc_["g"]) + ' ' + gword)
@@ -1383,7 +1428,7 @@ def sports_pages():
                 + _table_panel(ld, lslug)
                 + _next_panel([("/" + lslug + "-results/", "All verified results"), ("/" + lslug + "-fixtures/", "The full calendar"), (lhub, lname + " hub")])
                 + '</div></div></section>'
-                + '<section class="section alt"><div class="prose"><p>' + (race[0].upper() + race[1:]) + ' totals move fast in the opening weeks; this page updates only when the desk can verify. Keep going: the <a href="' + lhub + '">' + lname + ' hub</a>, the ' + tlink + ', and the <a href="/' + lslug + '-fixtures/">full calendar</a>.</p></div></section>'
+                + '<section class="section alt"><div class="prose"><p>' + (race[0].upper() + race[1:]) + ' totals move fast in the opening weeks; this page updates only when the desk can verify. Our source records assists and appearances only for the players listed here \u2014 they appear as published, never estimated. Keep going: the <a href="' + lhub + '">' + lname + ' hub</a>, the ' + tlink + ', and the <a href="/' + lslug + '-fixtures/">full calendar</a>.</p></div></section>'
                 + '</div></main>' + foot("sports"))
             pages.append(("/" + lslug + "-top-scorers/", lname + " top scorers " + sld.SEASON + " \u2014 the scoring race, verified | BRYME Sport",
                           "The " + sld.SEASON + " " + lname + " scoring race: verified season totals, dated and sourced. No guesses, ever.", sp))
@@ -1594,6 +1639,22 @@ def sports_pages():
                                      '<div class="sp-row"><span><a href="/fpl/">FPL, explained properly</a></span></div>'
                                      '<div class="sp-row"><span><a href="/champions-league-table/">The Champions League table</a></span></div>', None)
         + '</div></div></section>')
+    _b6 = [("Premier League", [("/premier-league-table/", "Table"), ("/premier-league-fixtures/", "Fixtures"), ("/premier-league-results/", "Results"), ("/premier-league-top-scorers/", "Scorers"), ("/premier-league-clubs/", "Clubs")]),
+           ("La Liga", [("/laliga/", "Hub"), ("/la-liga-table/", "Table"), ("/la-liga-fixtures/", "Fixtures"), ("/la-liga-results/", "Results"), ("/la-liga-top-scorers/", "Scorers")]),
+           ("Serie A", [("/serie-a/", "Hub"), ("/serie-a-table/", "Table"), ("/serie-a-fixtures/", "Fixtures"), ("/serie-a-results/", "Results"), ("/serie-a-top-scorers/", "Scorers")]),
+           ("Bundesliga", [("/bundesliga/", "Hub"), ("/bundesliga-table/", "Table"), ("/bundesliga-fixtures/", "Fixtures"), ("/bundesliga-results/", "Results"), ("/bundesliga-top-scorers/", "Scorers")]),
+           ("Ligue 1", [("/ligue-1/", "Hub"), ("/ligue-1-table/", "Table"), ("/ligue-1-fixtures/", "Fixtures"), ("/ligue-1-results/", "Results"), ("/ligue-1-top-scorers/", "Scorers")]),
+           ("Champions League", [("/champions-league/", "Hub"), ("/champions-league-table/", "Table"), ("/champions-league-fixtures/", "Fixtures"), ("/champions-league-results/", "Results"), ("/champions-league-top-scorers/", "Scorers")])]
+    _left, _right = "", ""
+    for _i, (_bn, _links) in enumerate(_b6):
+        _rows = "".join('<div class="sp-row"><span><a href="' + u + '">' + t + '</a></span></div>' for u, t in _links)
+        _pn = _panel(_bn, _rows, None)
+        if _i < 3:
+            _left += _pn
+        else:
+            _right += _pn
+    big6_secs = ('<section class="section alt"><div class="section-head"><p class="kicker">The big six</p><h2>Every competition, one click in.</h2></div>'
+        + '<div class="data-cols"><div>' + _left + '</div><div>' + _right + '</div></div></section>')
     index_body = f"""{head("sports", "Analysis, stories and the long view \u2014 never betting.")}
 <main id="main"><div class="wrap">
 <section class="cover"><p class="kicker">BRYME Sport · the 2026-27 season is live · six competitions · no odds, ever</p>
@@ -1602,7 +1663,7 @@ def sports_pages():
 <div><b>{len(sports_explainers_data.SPORT_EXPLAINERS) + len(sports_analysis_data.SPORT_ANALYSIS)}</b><span>Evergreen pieces</span></div>
 <div><b>6</b><span>Dated editions</span></div>
 <div><b>6</b><span>Competitions</span></div>
-</div></section>""" + weekend_secs + portal_secs + f"""<section class="section"><div class="section-head"><p class="kicker">The competitions, in depth.</p><h2>The league system.</h2></div><ul class="list"><li><a href="/premier-league/"><span><b>Premier League</b><small>Table | Fixtures | Results | Clubs | Scorers \u2014 the full gateway, live.</small></span><span class="meta">England</span></a></li><li><a href="/laliga/"><span><b>LaLiga</b><small>The Spanish desk: LaLiga and El Clásico, explained plainly.</small></span><span class="meta">Spain</span></a></li><li><a href="/serie-a/"><span><b>Serie A</b><small>Italy\u2019s tactician\u2019s league \u2014 format, champions, history.</small></span><span class="meta">Italy</span></a></li><li><a href="/bundesliga/"><span><b>Bundesliga</b><small>Germany\u2019s 18 clubs and the 50+1 model.</small></span><span class="meta">Germany</span></a></li><li><a href="/ligue-1/"><span><b>Ligue 1</b><small>France, the academy superpower \u2014 and PSG\u2019s project.</small></span><span class="meta">France</span></a></li><li><a href="/champions-league/"><span><b>Champions League</b><small>The 36-team format, explained from every angle.</small></span><span class="meta">Europe</span></a></li></ul></section>
+</div></section>""" + weekend_secs + portal_secs + big6_secs + f"""<section class="section"><div class="section-head"><p class="kicker">The competitions, in depth.</p><h2>The league system.</h2></div><ul class="list"><li><a href="/premier-league/"><span><b>Premier League</b><small>Table | Fixtures | Results | Clubs | Scorers \u2014 the full gateway, live.</small></span><span class="meta">England</span></a></li><li><a href="/laliga/"><span><b>LaLiga</b><small>The Spanish desk: LaLiga and El Clásico, explained plainly.</small></span><span class="meta">Spain</span></a></li><li><a href="/serie-a/"><span><b>Serie A</b><small>Italy\u2019s tactician\u2019s league \u2014 format, champions, history.</small></span><span class="meta">Italy</span></a></li><li><a href="/bundesliga/"><span><b>Bundesliga</b><small>Germany\u2019s 18 clubs and the 50+1 model.</small></span><span class="meta">Germany</span></a></li><li><a href="/ligue-1/"><span><b>Ligue 1</b><small>France, the academy superpower \u2014 and PSG\u2019s project.</small></span><span class="meta">France</span></a></li><li><a href="/champions-league/"><span><b>Champions League</b><small>The 36-team format, explained from every angle.</small></span><span class="meta">Europe</span></a></li></ul></section>
 <section class="section"><div class="section-head"><p class="kicker">Evergreen explainers</p><h2>Understand the game.</h2></div>
 <ul class="list">{''.join(expl_rows)}</ul></section>
 <section class="section"><div class="section-head"><p class="kicker">The shelves</p><h2>Analysis, the transfer desk &amp; the Champions League.</h2></div>

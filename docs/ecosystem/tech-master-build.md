@@ -360,3 +360,16 @@ Chain: 821 pages / 79,377 links OK (+2,793 = drawer links); validator ok; allowl
 **Verification:** chain green — 883 pages, 93,431 internal links OK, allowlist routed v26 (873 routes incl. all six new), validator ok. Needles PASS (PSG top of CL table; 18 MD1 rows; Inter v Club Brugge on 2026-10-13; index strip shows Man United v Man City; old CL dek phrase gone).
 
 **Data integrity:** every live number stamped with its `*_updated` fetch time and sourced "football-data.org v4"; forecasts labelled as editorial outlook; FPL page contains no player prices (not verified) — rules only.
+
+## Batch 13 receipt — rebuild-spec Phase 1: audit, security, squads, assists, BIG SIX (11 Sep 2026)
+
+**Driver:** new binding spec `bryme-sport-football-hub-rebuild-spec.md` (51 sections, target 9.5–10/10), archived at `docs/ecosystem/bryme-sport-football-hub-rebuild-spec.md`. Spec order honoured: audit first.
+
+**Shipped:**
+1. **Phase-1 audit + gap matrix** → `docs/ecosystem/football-hub-rebuild-audit.md` (all 51 sections mapped: DONE/PARTIAL/deferred-with-reason + honest "not available from source" list + phase plan).
+2. **Security (§47):** API token de-hardcoded — env secret or untracked `content/.football-data-key` only; workflow passes `secrets.FOOTBALL_DATA_API_KEY`; no-key run tested (exit 1, snapshot preserved); grep confirms zero token occurrences in tracked files. Owner must regenerate the token (old one is in git history) and add the repo secret.
+3. **Squads:** agent fetches 20 PL club squads from `/v4/teams/{id}` (19/20 first run; per-club failures absent-safe); club hubs gained a grouped squad section (GK/DF/MF/FW, nationality, age-at-listing, shirt numbers) stamped with fetch time.
+4. **Assists + appearances** on all six scorers pages, exactly as the source publishes (em dash when unpublished); honesty note added; no fake assist leaderboards (no endpoint exists).
+5. **BIG SIX quick-nav** on `/sports/` — six panels × Table/Fixtures/Results/Scorers (+Clubs).
+
+**Verification:** chain green — 883 pages / 93,445 links OK, allowlist v26 (873), validator ok. Live agent run: 6/6 leagues + 19/20 squads (one transient SSL skip; Brighton key normalised via NAME_FIX + fuzzy club-page fallback). Needles PASS: scorers rows show "3 apps · 1 assist"; Chelsea 28, Brighton 30, Hull 34 squad rows; Villa page renders fine without squad; BIG SIX panel present.

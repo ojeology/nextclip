@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 """BRYME Sport data agent.
 
-Fetches verified league tables, recent results and top scorers from
+Fetches verified league tables, recent results, top scorers (with assists and
+appearances where published) and Premier League club squads from
 football-data.org (v4 API, free tier) and writes content/sports-live.json,
-which the static build renders into the permanent table / results / scorers
-pages. Run automatically by .github/workflows/sports-update.yml.
+which the static build renders into the permanent table / results / scorers /
+club pages. Run automatically by .github/workflows/sports-update.yml.
 
 Throttling (per football-data.org guidance): the free tier allows a limited
 number of requests per minute. This client reads the X-Requests-Available and
@@ -16,10 +17,14 @@ House rules:
   failed league and keeps the last verified snapshot. Stale-but-sourced beats
   fresh-but-guessed.
 - Every write stamps its own source and generation time.
+- Fields the source does not publish (e.g. some assists values) are stored as
+  null and rendered as an em dash, never as zero.
 
-Auth: the token below is the desk's football-data.org token (hard-coded on the
-owner's instruction, 2026-09-10). The FOOTBALL_DATA_API_KEY environment
-variable overrides it when set (e.g. as a repository secret).
+Auth (security requirement, football-hub rebuild spec s47): the token is NEVER
+hard-coded and NEVER committed. It is read from, in order:
+  1. the FOOTBALL_DATA_API_KEY environment variable (GitHub Actions secret), or
+  2. the untracked local file content/.football-data-key (dev machines).
+With neither, the run exits non-zero and the previous snapshot survives.
 """
 import json
 import os
@@ -32,8 +37,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "content" / "sports-live.json"
-
-DEFAULT_TOKEN = "48f26447259f49f68951120631d12ae2"
+KEYFILE = ROOT / "content" / ".football-data-key"
 
 LEAGUES = {
     "premier-league": "PL",
@@ -52,11 +56,24 @@ NAME_FIX = {
     "Nottingham Forest FC": "Nottingham Forest", "Tottenham Hotspur FC": "Tottenham Hotspur",
     "West Ham United FC": "West Ham United", "Wolverhampton Wanderers FC": "Wolverhampton Wanderers",
     "Brighton and Hove Albion": "Brighton & Hove Albion", "Brighton & Hove Albion": "Brighton & Hove Albion",
+    "Brighton & Hove Albion FC": "Brighton & Hove Albion",
     "AFC Bournemouth": "AFC Bournemouth", "Leeds United FC": "Leeds United",
     "Sunderland AFC": "Sunderland", "Hull City AFC": "Hull City", "Coventry City FC": "Coventry City",
     "Ipswich Town FC": "Ipswich Town", "Crystal Palace FC": "Crystal Palace",
     "Brentford FC": "Brentford", "Aston Villa FC": "Aston Villa",
 }
+
+
+def resolve_key():
+    """Env var first, then the untracked dev keyfile. Never a committed secret."""
+    key = os.environ.get("FOOTBALL_DATA_API_KEY", "").strip()
+    if key:
+        return key, "env"
+    if KEYFILE.exists():
+        key = KEYFILE.read_text().strip()
+        if key:
+            return key, "keyfile"
+    return None, "none"
 
 
 def get(url, key, tries=4):
@@ -87,6 +104,10 @@ def get(url, key, tries=4):
     raise RuntimeError("gave up after repeated rate-limiting: " + url)
 
 
+def _stamp():
+    return "fetched " + datetime.now(timezone.utc).strftime("%A %d %B %Y, %H:%M UTC")
+
+
 def league_data(code, key):
     d = {}
     st = get(f"https://api.football-data.org/v4/competitions/{code}/standings", key)
@@ -95,7 +116,7 @@ def league_data(code, key):
                    row["playedGames"], row["won"], row["draw"], row["lost"],
                    row["goalsFor"], row["goalsAgainst"], row["goalDifference"], row["points"]]
                   for row in table]
-    d["table_updated"] = "fetched " + datetime.now(timezone.utc).strftime("%A %d %B %Y, %H:%M UTC")
+    d["table_updated"] = _stamp()
 
     ms = get(f"https://api.football-data.org/v4/competitions/{code}/matches?status=FINISHED", key)
     by_mw = {}
@@ -111,7 +132,7 @@ def league_data(code, key):
         })
     recent = sorted(by_mw)[-3:]
     d["results"] = [{"mw": mw, "matches": by_mw[mw]} for mw in recent]
-    d["results_updated"] = "fetched " + datetime.now(timezone.utc).strftime("%A %d %B %Y, %H:%M UTC")
+    d["results_updated"] = _stamp()
 
     ms2 = get(f"https://api.football-data.org/v4/competitions/{code}/matches?status=SCHEDULED", key)
     up = []
@@ -121,21 +142,56 @@ def league_data(code, key):
                    "a": NAME_FIX.get(m["awayTeam"]["name"], m["awayTeam"]["name"]),
                    "mw": m.get("matchday", 0)})
     d["upcoming"] = up[:12]
-    d["upcoming_updated"] = "fetched " + datetime.now(timezone.utc).strftime("%A %d %B %Y, %H:%M UTC")
+    d["upcoming_updated"] = _stamp()
 
     try:
         sc = get(f"https://api.football-data.org/v4/competitions/{code}/scorers", key)
         d["scorers"] = [{"p": s["player"]["name"],
                          "c": NAME_FIX.get((s.get("team") or {}).get("name", ""), (s.get("team") or {}).get("name", "")),
-                         "g": s["goals"]} for s in sc.get("scorers", [])[:10]]
-        d["scorers_updated"] = "fetched " + datetime.now(timezone.utc).strftime("%A %d %B %Y, %H:%M UTC")
+                         "g": s["goals"],
+                         "a": s.get("assists"),
+                         "pm": s.get("playedMatches")} for s in sc.get("scorers", [])[:10]]
+        d["scorers_updated"] = _stamp()
     except Exception as e:  # scorers are optional; table+results are the core
         print(f"  scorers unavailable for {code}: {e}")
     return d
 
 
+def fetch_squads(key):
+    """Premier League club squads from /v4/teams/{id}. One standings call for
+    the team ids, one call per club. Per-club failure tolerated."""
+    st = get("https://api.football-data.org/v4/competitions/PL/standings", key)
+    teams = [(NAME_FIX.get(row["team"]["name"], row["team"]["name"]), row["team"]["id"])
+             for row in st["standings"][0]["table"]]
+    squads, ok = {}, 0
+    for name, tid in teams:
+        try:
+            t = get(f"https://api.football-data.org/v4/teams/{tid}", key)
+            players = [[p.get("name", ""), p.get("position") or "", p.get("nationality") or "",
+                        (p.get("dateOfBirth") or ""), p.get("shirtNumber")]
+                       for p in (t.get("squad") or [])]
+            squads[name] = {"id": tid,
+                            "founded": t.get("founded"),
+                            "venue": t.get("venue") or "",
+                            "colors": t.get("clubColors") or "",
+                            "players": players}
+            ok += 1
+            print(f"  squad {name}: {len(players)} players")
+        except Exception as e:
+            print(f"  squad {name}: FAILED ({e}) - skipped this run")
+    if not ok:
+        return None
+    return {"squads": squads,
+            "updated": _stamp() + f" ({ok}/{len(teams)} clubs listed)"}
+
+
 def main():
-    key = os.environ.get("FOOTBALL_DATA_API_KEY") or DEFAULT_TOKEN
+    key, where = resolve_key()
+    if not key:
+        print("No API key: set FOOTBALL_DATA_API_KEY (or write content/.football-data-key). "
+              "Nothing fetched - keeping the previous verified snapshot.")
+        return 1
+    print(f"API key source: {where}")
 
     old = {}
     if OUT.exists():
@@ -157,6 +213,15 @@ def main():
     if not ok:
         print("All leagues failed - nothing written.")
         return 1
+
+    if "premier-league" in leagues and leagues["premier-league"].get("table"):
+        try:
+            sq = fetch_squads(key)
+            if sq:
+                leagues["premier-league"]["squads"] = sq["squads"]
+                leagues["premier-league"]["squads_updated"] = sq["updated"]
+        except Exception as e:
+            print(f"  squads unavailable this run ({e}) - keeping any previous list")
 
     OUT.write_text(json.dumps({
         "_comment": "Written by scripts/sports_update_agent.py - source: football-data.org v4. The desk never publishes unverified data.",
