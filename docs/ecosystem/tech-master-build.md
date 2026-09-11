@@ -439,3 +439,15 @@ Chain: 821 pages / 79,377 links OK (+2,793 = drawer links); validator ok; allowl
 - **Wiring:** both guides in the nav guides list, the hub's Understand section, and cross-linked into the rest of the desk (rest-days and strength guides gained rows to them; both new guides link back into the journey).
 
 **Verification:** chain green — **900 pages / 98,056 internal links OK** (+2 pages), allowlist v26 (890), validator ok. Needles PASS: hub router/plan/week modules; protein page with 0.8 g/kg + 1.2–2.0 + both sources; sleep page with the seven-hour floor + CDC sources; nav rows present.
+
+## Batch 19 receipt — AdSense rails + entertainment depth (11 Sep 2026)
+
+**Driver (user):** "We only buy the domain once all niches are 9 or 10/10. Keep working and don't forget our main target is adsense revenue."
+
+**Shipped:**
+1. **AdSense rail wired into the main build (off by default):** `shell()` now injects the google-adsense-account meta + auto-ads script on **every page** when `site.config.json → adsense` has a real `ca-pub-…` id AND `enabled: true`; responsive `_ads_slot()` helper in the build; **ads.txt auto-emitted** (root + ecosystem) on enable, deleted when off. Zero visual change today — verified: no adsbygoogle markup anywhere in the built site.
+2. **Privacy pages upgraded to approval grade** on all five properties: third-party vendor cookies (Google), personalised-ads opt-outs (Google Ads Settings / aboutads.info), EEA+UK consent gate with non-personalised fallback, house separation rules — dated 11 Sep 2026.
+3. **Entertainment +4 evergreen industry-mechanics guides** (information-only, no invented figures): `/entertainment/how-movie-release-windows-work/`, `/entertainment/why-streaming-services-raise-prices/`, `/entertainment/how-anime-production-committees-work/`, `/entertainment/how-award-season-actually-works/` — desk total now 9 guides; nav + hub wired.
+4. **`docs/ecosystem/revenue-readiness.md`** — the dashboard: AdSense flip-day checklist (incl. the certified-CMP decision for EEA/UK), per-niche ratings with the explicit gap to 9–10, revenue levers per niche, and the owner's domain-gate policy recorded.
+
+**Verification:** chain green — **904 pages / 98,298 links OK** (+4 pages), allowlist v26 (894), validator ok. Needles PASS: 4 new entertainment links on the hub + directories; new disclosure on sports/entertainment/tech/fitness/home privacy pages; ads-off state clean (no ad markup, no stale ads.txt).

@@ -38,6 +38,27 @@ MODE = os.environ.get("ROUTING_MODE") or CFG.get("mode", "path")
 ORIGIN = os.environ.get("ORIGIN") or CFG.get("origin", "https://bryme.onrender.com")
 TODAY = "2026-09-09"
 
+# ---- AdSense rail (batch 19): driven by site.config.json "adsense" block. ----
+# Renders NOTHING unless caId is a real ca-pub-... id AND enabled=true. The note in
+# the config stands: ads must never resemble job cards, application buttons or nav.
+try:
+    _ADS_CFG = (json.loads((ROOT / "site.config.json").read_text(encoding="utf-8")).get("adsense") or {})
+except Exception:
+    _ADS_CFG = {}
+ADSENSE_ID = str(_ADS_CFG.get("caId") or "").strip()
+ADSENSE_ON = bool(_ADS_CFG.get("enabled")) and ADSENSE_ID.startswith("ca-pub-")
+ADS_HEAD = ""
+if ADSENSE_ON:
+    ADS_HEAD = ('<meta name="google-adsense-account" content="' + ADSENSE_ID + '">\n'
+                + '<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=' + ADSENSE_ID + '" crossorigin="anonymous"></script>\n')
+def _ads_slot(pos):
+    """One responsive unit. Only when enabled; auto ads handle the rest."""
+    if not ADSENSE_ON:
+        return ""
+    return ('<div class="ad-slot" data-pos="' + pos + '" aria-label="Advertisement">'
+            + '<ins class="adsbygoogle" style="display:block" data-ad-client="' + ADSENSE_ID + '" data-ad-format="auto" data-full-width-responsive="true"></ins>'
+            + '<script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div>')
+
 # ---------------------------------------------------------------- family css
 BASE_CSS = """
 :root{--paper:%(paper)s;--sheet:%(sheet)s;--ink:%(ink)s;--muted:%(muted)s;--dim:%(dim)s;
@@ -280,7 +301,7 @@ def shell(pub, title, desc, route, body, card=None, robots="index,follow"):
 <meta property="og:title" content="{html.escape(title)}"><meta property="og:description" content="{html.escape(desc)}">
 <meta property="og:url" content="{d}"><meta property="og:image" content="{og}">
 <meta name="twitter:card" content="summary_large_image">
-{theme_head}
+{ADS_HEAD}{theme_head}
 <style>{css_for(pub)}</style>
 </head><body><a class="skip-link" href="#main">Skip to content</a>
 {body}
@@ -381,7 +402,11 @@ def _nav_items(pub):
                    ("/entertainment/opinion/", "Opinion"),
                    ("/entertainment/how-to-build-a-watchlist/", "Build a watchlist"),
                    ("/entertainment/subtitles-or-dubs/", "Subtitles or dubs?"),
-                   ("/entertainment/anime-seasons-and-cours-explained/", "Anime seasons and cours")]
+                   ("/entertainment/anime-seasons-and-cours-explained/", "Anime seasons and cours"),
+                   ("/entertainment/how-movie-release-windows-work/", "Release windows"),
+                   ("/entertainment/why-streaming-services-raise-prices/", "Why prices rise"),
+                   ("/entertainment/how-anime-production-committees-work/", "Production committees"),
+                   ("/entertainment/how-award-season-actually-works/", "How award season works")]
         return ([("Shelves", shelves)], ("/entertainment/", "Desk home"))
     if pub == "hub":
         return ([("Writers", "/writers/"), ("Sport", "/sports/"), ("Tech", "/tech/"),
@@ -554,7 +579,7 @@ def legal_pages(pub, name, tagline):
 <section class="section"><div class="prose">
 <p>{name} is a static publication. It sets no tracking cookies, runs no analytics on these pages, and asks for no personal information. Reading it is between you and your browser.</p>
 <p>If interactive tools are added later, any data they store will stay in <em>your</em> browser's local storage on <em>your</em> device — the standing BRYME pattern — and this page will be updated before that changes.</p>
-<p>Advertising, when introduced, will follow Google AdSense policies: clearly separated from content and navigation, never covering text, never encouraging clicks. Ad partners may set their own cookies under their own policies.</p>
+<p><b>Advertising &amp; cookies (updated 11 September 2026):</b> BRYME plans to show advertising, including through Google AdSense. Third-party vendors, including Google, use cookies to serve ads based on a user's prior visits to this and other websites. Google's use of advertising cookies enables it and its partners to serve ads based on your visits to this site and/or other sites on the internet. You may opt out of personalised advertising by visiting Google's Ads Settings (adssettings.google.com), or opt out of some third-party vendors' uses of cookies at aboutads.info. Visitors in the EEA and UK will be asked for consent before personalised advertising; without consent, only non-personalised ads are eligible to serve. Whatever serves, our standing rules apply: ads are clearly separated from content and navigation, never cover text, and never resemble our buttons, cards or links.</p>
 <p>Questions: see <a href="/contact/">Contact</a>.</p>
 </div></section></div>"""
     contact_body = f"""<div class="wrap"><nav class="crumb"><a href="/">Home</a> / Contact</nav>
@@ -3497,6 +3522,14 @@ def main() -> None:
     write_service("tech", tech_pages())
     write_service("fitness", fitness_pages())
     write_service("home", home_pages())
+    if ADSENSE_ON:
+        _adstxt = "google.com, " + ADSENSE_ID + ", DIRECT, f08c47fec0942fa0\n"
+        (ROOT / "ecosystem" / "ads.txt").write_text(_adstxt, encoding="utf-8")
+        (ROOT / "ads.txt").write_text(_adstxt, encoding="utf-8")
+    else:
+        for _f in [(ROOT / "ecosystem" / "ads.txt"), (ROOT / "ads.txt")]:
+            if _f.exists():
+                _f.unlink()
     print(f"ecosystem built for {DOMAIN}")
 
 
