@@ -486,3 +486,10 @@ Chain: 922 pages / 99,128 internal links OK; validator ok; allowlist v26 (912 ro
 - Anchor chip nav (#shelf-*) added at top; per-shelf "Quick picks / More to start with tonight" blocks with one-line honest blurbs; stats line discloses the split.
 - Coverage truth-check unchanged (build still fails on dishonest links). Fixed a data typo (Vincenzo blurb).
 - Chain: 923 pages / 100,222 internal links OK; allowlist v26 (913); validators pass.
+
+## Batch 25 — 11 Sep 2026 (high-CPC where-to-watch & kit wave, US/UK targeting)
+- +6 keyword-targeted guides (~1,100 words each) in entertainment_watch_guides_data.py, wired through the guide pipeline (ENT guides 15→21):
+  best-streaming-service-us-uk ("best streaming service 2026"), how-to-watch-movies-online-free-and-legal ("watch movies online free"), cheapest-way-to-stream-movies (rotation/bundle money cluster), what-you-need-for-4k-streaming (Mbps/device intent), projector-or-tv-for-movie-nights + soundbar-guide-movie-nights (home-cinema commercial intent).
+- Facts verified 11 Sep 2026 vs multiple sources: Disney+/Hulu/Max bundle $19.99 with ads; Netflix ad band ~$7–9, premium 4K ~$23; Netflix 15 Mbps / Disney+ 25 Mbps 4K guidance; free-legal set (Tubi/Pluto/Roku/Plex/Xumo/Sling Freestream/YouTube official/Prime free/Kanopy/Hoopla/Internet Archive/BBC iPlayer UK). Prices printed as dated bands + "confirm current" caveats — no invented exact figures.
+- Wiring: ENT nav rows + drawer gain the two strongest money guides; sections list all six; cross-linked to browse/catalogue + NG streaming guide.
+- Chain: 929 pages / 100,755 links OK; allowlist v26 (919 routes); validators pass; ads still OFF.

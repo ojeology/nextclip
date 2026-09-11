@@ -43,3 +43,6 @@
 
 ## Batch 23 (11 Sep 2026) — catalogue 40→69 titles, 4→8 shelves
 Browse surface now carries 103 verified coverage links over 69 titles — a genuine genre-browse hub (fantasy, anime, kdrama + horror, Nolan, superhero, TV, world cinema). Entertainment A− → A case strengthens next push.
+
+## Batch 25 (11 Sep 2026) — high-CPC article wave (US/UK/CA/AU intent)
+Entertainment now fields the commercial-intent cluster advertisers bid hardest on: best streaming service, free legal streaming, cheapest way to stream, 4K requirements, projector vs TV, soundbars — all US/UK-framed, dated price bands, honest disclosures (AdSense-safe by design). This is the desk's RPM lever while display ads stay off.

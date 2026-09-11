@@ -408,7 +408,7 @@ def _nav_items(pub):
                   ("/fitness/weekly-planner/", "The weekly planner")]
         return ([("Guides", guides)], ("/fitness/", "Desk home"))
     if pub == "entertainment":
-        shelves = [("HEAD", "The entertainment shelves"), ("/entertainment/browse/", "Browse movies"), ("/entertainment/explainers/", "Explainers"),
+        shelves = [("HEAD", "The entertainment shelves"), ("/entertainment/browse/", "Browse movies"), ("/entertainment/best-streaming-service-us-uk/", "Best streaming service"), ("/entertainment/how-to-watch-movies-online-free-and-legal/", "Watch free, legally"), ("/entertainment/explainers/", "Explainers"),
                    ("/entertainment/recommendations/", "Recommendations"),
                    ("/entertainment/opinion/", "Opinion"),
                    ("/entertainment/how-to-build-a-watchlist/", "Build a watchlist"),
@@ -475,6 +475,9 @@ def ent_drawer():
         '<a href="/entertainment/explainers/">Explainers</a><a href="/entertainment/opinion/">Opinion</a></div>\n'
         '<div class="drawer-group"><b>Guides</b><a href="/entertainment/how-to-pick-a-movie-tonight/">Pick a movie tonight</a>'
         '<a href="/entertainment/how-to-build-a-watchlist/">Build a watchlist</a>'
+        '<a href="/entertainment/best-streaming-service-us-uk/">Best streaming service</a>'
+        '<a href="/entertainment/how-to-watch-movies-online-free-and-legal/">Watch free, legally</a>'
+        '<a href="/entertainment/cheapest-way-to-stream-movies/">Cheapest way to stream</a>'
         '<a href="/entertainment/best-kdramas-to-start-with/">K-drama starter route</a>'
         '<a href="/entertainment/subtitles-or-dubs/">Subtitles or dubs?</a>'
         '<a href="/entertainment/anime-seasons-and-cours-explained/">Seasons &amp; cours</a></div>\n'
@@ -775,6 +778,12 @@ def entertainment_pages():
     import entertainment_guides_data
     guide_bodies = {}
     for slug, sect, title, dek, body in entertainment_guides_data.ENT_GUIDES:
+        ENT_SLUG_SECT[slug] = sect
+        by_slug[slug] = {"slug": slug, "title": title, "words": len(re.sub(r"<[^>]+>", " ", body).split()),
+                         "new": True}
+        guide_bodies[slug] = body
+    import entertainment_watch_guides_data
+    for slug, sect, title, dek, body in entertainment_watch_guides_data.WATCH_GUIDES:
         ENT_SLUG_SECT[slug] = sect
         by_slug[slug] = {"slug": slug, "title": title, "words": len(re.sub(r"<[^>]+>", " ", body).split()),
                          "new": True}
