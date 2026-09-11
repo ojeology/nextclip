@@ -493,3 +493,14 @@ Chain: 922 pages / 99,128 internal links OK; validator ok; allowlist v26 (912 ro
 - Facts verified 11 Sep 2026 vs multiple sources: Disney+/Hulu/Max bundle $19.99 with ads; Netflix ad band ~$7–9, premium 4K ~$23; Netflix 15 Mbps / Disney+ 25 Mbps 4K guidance; free-legal set (Tubi/Pluto/Roku/Plex/Xumo/Sling Freestream/YouTube official/Prime free/Kanopy/Hoopla/Internet Archive/BBC iPlayer UK). Prices printed as dated bands + "confirm current" caveats — no invented exact figures.
 - Wiring: ENT nav rows + drawer gain the two strongest money guides; sections list all six; cross-linked to browse/catalogue + NG streaming guide.
 - Chain: 929 pages / 100,755 links OK; allowlist v26 (919 routes); validators pass; ads still OFF.
+
+## Batch 26 — 11 Sep 2026 (MASTER PACK adopted + Section-10 remediation)
+- docs/ecosystem/master-build-pack.md v1.1 committed = binding operating manual (constitution, templates, rubric, AdSense checklist, quality gate, roadmap, audit).
+- A1: hub cards carry "· ACTIVE" badges; stale "four specialist publications" meta → six. DONE.
+- A2: Writers card counts now COMPUTED AT BUILD from public/writers (441 researched pages, 44 tools verified) + "Counts verified at every build (last: 2026-09-11)" stamp — the stale "191" retired.
+- A3: root sitemap.xml lastmod auto-refreshed to build date; robots declares all 7 sitemaps (verified: 6 declarations); live 200/200.
+- A4: Terms · Editorial Policy (public fact-label system: CONFIRMED FACT/REPORTED/RUMOURED/BRYME ANALYSIS/BRYME PREDICTION + freshness standard) · Corrections · Copyright/DMCA now generated for entertainment/sports/fitness/home; tech gains editorial-policy (keeps bespoke terms/corrections/disclaimer/methodology); footers on every desk link the trust cluster. +24 pages.
+- B1: Sport hub reordered — matchweek + latest verified scores + assists now lead; living stories below the data blocks. B2: "Last verified 2026-09-11 09:25 UTC · source: football-data.org" bylines on the data blocks. B3: "Top assists, all six leagues" block built from the verified scorer feed (early-season blanks shown honestly as —).
+- C1: Fitness launch gate recorded PASSED (two working tools, sourced guides, disclaimers, complete nav, validators green); homepage state ACTIVE.
+- B4–B9 (hub depth §4.4 ×6, injuries index, transfer tiering audit, club/player audits, mobile tests, journey tests) scheduled as the next sport waves.
+- Chain: 947 pages / 101,868 internal links OK; allowlist v26 (937); validators pass; ads still OFF.

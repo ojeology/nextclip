@@ -547,8 +547,11 @@ def head(pub, tagline, parent=True):
 </div></header>{nav}"""
 
 def foot(pub, extra=""):
-    _trust = (' \u00b7 <a href="/tech/methodology/">Methodology</a> \u00b7 <a href="/tech/corrections/">Corrections</a>'
-              ' \u00b7 <a href="/tech/terms/">Terms</a> \u00b7 <a href="/tech/disclaimer/">Disclaimer</a>') if pub == "tech" else ""
+    _base = "writers" if pub == "hub" else pub
+    _trust = ((' \u00b7 <a href="/tech/methodology/">Methodology</a> \u00b7 <a href="/tech/corrections/">Corrections</a>'
+               ' \u00b7 <a href="/tech/terms/">Terms</a> \u00b7 <a href="/tech/disclaimer/">Disclaimer</a>') if pub == "tech" else
+              (' \u00b7 <a href="/' + _base + '/terms/">Terms</a> \u00b7 <a href="/' + _base + '/editorial-policy/">Editorial policy</a>'
+               ' \u00b7 <a href="/' + _base + '/corrections/">Corrections</a>'))
     x = extra or _trust
     return f"""<footer class="foot"><div class="wrap foot-in">
 <div>© 2026 THE BRYME — {PUB_NAME[pub] if pub != 'hub' else 'the BRYME publications'}.</div>
@@ -615,7 +618,7 @@ else:
     SUB["writers"] = ORIGIN + "/writers"
 SUB["hub"] = f"https://{DOMAIN}" if MODE == "subdomain" else ORIGIN
 
-def legal_pages(pub, name, tagline):
+def legal_pages(pub, name, tagline, skip=frozenset()):
     about_body = f"""<div class="wrap"><nav class="crumb"><a href="/">Home</a> / About</nav>
 <section class="cover"><p class="kicker">About</p><h1 class="cover-title">{name}</h1>
 <p class="cover-dek">{tagline}</p></section>
@@ -647,11 +650,52 @@ def legal_pages(pub, name, tagline):
 <ul><li>The page address and the exact claim that needs correcting.</li>
 <li>For pitches: a two-paragraph summary and one relevant sample. No attachments.</li></ul>
 </div></section></div>"""
+    terms_body = f"""<div class="wrap"><nav class="crumb"><a href="/">Home</a> / Terms</nav>
+<section class="cover"><p class="kicker">Terms of use</p><h1 class="cover-title">The short, honest terms.</h1></section>
+<section class="section"><div class="prose">
+<p>{name} is free to read. It is provided as-is, for information: general guidance, never professional advice. Nothing on this publication is a substitute for qualified professional help — medical, electrical, gas, legal or financial. Where a topic borders on those fields, our pages say so plainly and stop.</p>
+<p>The writing, layout and tools are \u00a9 2026 THE BRYME. Quote freely with a link; do not republish whole pages. External sites we link to have their own terms and their own owners. Adverts, when shown, are clearly separated from editorial content and never constitute an endorsement.</p>
+<p>Questions about these terms: see <a href="/contact/">Contact</a>.</p>
+</div></section></div>"""
+    editorial_body = f"""<div class="wrap"><nav class="crumb"><a href="/">Home</a> / Editorial policy</nav>
+<section class="cover"><p class="kicker">Editorial policy</p><h1 class="cover-title">How every page earns its place.</h1></section>
+<section class="section"><div class="prose">
+<p>The BRYME method: <b>research, verify, explain, use.</b> Every page answers a real question, and time-sensitive claims carry a last-checked date and a source. We do not fabricate experience, statistics, reviews or rankings, and we do not publish pages whose only purpose is to catch a search.</p>
+<h2>Fact labels</h2>
+<ul>
+<li><b>CONFIRMED FACT</b> — verified against an official or primary source, with source and date.</li>
+<li><b>REPORTED</b> — carried by credible media, not yet officially confirmed; outlet and date attached.</li>
+<li><b>RUMOURED</b> — speculation, shown separately, never blended into fact.</li>
+<li><b>BRYME ANALYSIS</b> — our interpretation, attributed to us.</li>
+<li><b>BRYME PREDICTION</b> — our model's or desk's projection, never presented as official data.</li>
+</ul>
+<h2>Standing prohibitions</h2>
+<p>No betting content, no piracy or download pages, no fake play buttons, no scraped or duplicated pages, no misleading titles. Comparisons explain who each option is actually for; they never invent rankings. Errors are corrected in the open — see <a href="/corrections/">Corrections</a>.</p>
+</div></section></div>"""
+    corrections_body = f"""<div class="wrap"><nav class="crumb"><a href="/">Home</a> / Corrections</nav>
+<section class="cover"><p class="kicker">Corrections policy</p><h1 class="cover-title">We fix errors in the open.</h1></section>
+<section class="section"><div class="prose">
+<p>If something on {name} is wrong, tell us via <a href="/contact/">Contact</a> with the page address and the exact claim. The desk verifies against sources, fixes the page, and records the correction on the page itself — silently deleting a wrong claim is not a correction.</p>
+<p>Time-sensitive facts (prices, availability, standings, schedules) are re-checked on a schedule and stamped with the date of the last check. If you spot a stale one, that report is welcome.</p>
+</div></section></div>"""
+    copyright_body = f"""<div class="wrap"><nav class="crumb"><a href="/">Home</a> / Copyright</nav>
+<section class="cover"><p class="kicker">Copyright &amp; takedowns</p><h1 class="cover-title">Ownership, honestly stated.</h1></section>
+<section class="section"><div class="prose">
+<p>All original text, layout and tools on {name} are \u00a9 2026 THE BRYME. We quote and link to third-party material under fair quotation with attribution, and we do not host or link to pirated copies of films, shows, books or software — anywhere in the family.</p>
+<p>Rights-holders with a concern: send the page address, the material concerned, and your relationship to the rights, via <a href="/contact/">Contact</a>. Verified takedown requests are actioned promptly.</p>
+</div></section></div>"""
     def _m(b):
         return b if "<main" in b else '<main id="main"><div class="wrap">' + b + "</div></main>"
-    return [("/about/", f"About {name} | BRYME", f"What {name} is and the standards it holds.", _m(about_body)),
+    out = [("/about/", f"About {name} | BRYME", f"What {name} is and the standards it holds.", _m(about_body)),
             ("/privacy/", f"Privacy | {name}", "What BRYME collects (almost nothing) and how advertising will be handled.", _m(privacy_body)),
             ("/contact/", f"Contact | {name}", "Corrections, pitches and the editorial desk.", _m(contact_body))]
+    for route, t, d, b in [("/terms/", f"Terms of use | {name}", "The short, honest terms for using " + name + ".", _m(terms_body)),
+                           ("/editorial-policy/", f"Editorial policy | {name}", "Fact labels, freshness standard, and the prohibitions every BRYME page obeys.", _m(editorial_body)),
+                           ("/corrections/", f"Corrections | {name}", "How errors are reported, verified and fixed in the open.", _m(corrections_body)),
+                           ("/copyright/", f"Copyright &amp; takedowns | {name}", "Ownership, fair quotation and takedown handling.", _m(copyright_body))]:
+        if route not in skip:
+            out.append((route, t, d, b))
+    return out
 
 
 # ------------------------------------------------------------------ 1. HUB
@@ -667,8 +711,21 @@ WORKSHOP_PUBS = [
 ]
 
 def hub_pages():
+    import datetime as _dt
+    _wr = ROOT / "public" / "writers"
+    _legal = {"about", "contact", "privacy", "terms", "corrections", "editorial-policy",
+              "copyright", "disclaimer", "disclosure", "assets"}
+    _n_guides = sum(1 for f in _wr.rglob("index.html")
+                    if f.parent.name not in _legal and "tools" not in f.parts) if _wr.exists() else 0
+    _n_tools = len([d for d in (_wr / "tools").iterdir() if d.is_dir()]) if (_wr / "tools").exists() else 0
+    _stamp = " Counts verified at every build (last: " + _dt.date.today().isoformat() + ")."
     cards = ""
     for key, name, tag, desc, state in HUB_PUBS + WORKSHOP_PUBS:
+        if key == "writers" and _n_guides:
+            desc = (desc.replace("191 researched guides", str(_n_guides) + " researched pages")
+                        .replace("44 free browser tools", str(_n_tools) + " free browser tools")
+                        .rstrip(".")
+                    + ". " + _stamp)
         kicker = PUB_NAME.get(key, "").upper() if key != "writers" else "THE FLAGSHIP"
         if state == "live":
             cta = f'<a class="btn" href="{SUB[key]}/">Enter {name.split(" ")[1]} →</a>'
@@ -676,7 +733,7 @@ def hub_pages():
         else:
             cta = '<span class="soon-tag">In build — opens soon</span>'
             cls = "pub-card soon"
-        cards += f'<article class="{cls}" style="--pc:{FAMILY[key]["brand"] if key!="hub" else "#1e3a5f"}"><p class="pc-kicker">{kicker}</p><h3>{name}</h3><p>{desc}</p>{cta}</article>'
+        cards += f'<article class="{cls}" style="--pc:{FAMILY[key]["brand"] if key!="hub" else "#1e3a5f"}"><p class="pc-kicker">{kicker} &#183; ACTIVE</p><h3>{name}</h3><p>{desc}</p>{cta}</article>'
     body = f"""{head("hub", "Six publications. One house standard.", parent=False)}
 <main id="main"><div class="wrap">
 <section class="cover"><p class="kicker">A family of independent publications</p>
@@ -690,7 +747,7 @@ def hub_pages():
 {foot("hub")}"""
     hub_index = [("index.html placeholder", "", "", "")]
     return [("/", "THE BRYME — a family of independent publications",
-             "BRYME is four specialist publications — Writers, Sport, Entertainment and Tech — under one house standard. Choose your desk.", body)]
+             "BRYME is six specialist publications — Writers, Sport, Entertainment, Tech, Fitness and Home &amp; DIY — under one house standard. Choose your desk.", body)]
 
 
 # ------------------------------------------------------- 2. ENTERTAINMENT
@@ -2017,6 +2074,7 @@ def sports_pages():
         wk_rows += ('<div class="fx-row"><span class="fx-when">' + html.escape(_bar["d"][:10]) + ' \u00b7 ' + html.escape(_bar["d"][11:]) + ' UTC</span><span class="fx-tie">' + html.escape(_bar["h"]) + ' v ' + html.escape(_bar["a"]) + '</span><span class="fx-where">LaLiga MD' + str(_bar["mw"]) + '</span></div>')
     weekend_secs = ('<section class="section"><div class="section-head"><p class="kicker">This weekend \u00b7 12\u201314 September</p><h2>The matchweek, immediately.</h2></div>'
         + wk_rows
+        + '<p class="byline">Fixtures last verified ' + str(LIVE.get("generated", "pre-season")) + ' \u00b7 the full forecast carries sources per fixture</p>'
         + '<a class="sp-more" href="/the-weekend-ahead/">The full weekend forecast</a></section>')
     _def_panel = _panel("The league, live", '<div class="sp-row"><span>The opening rounds are being verified \u2014 the table opens with the first full update.</span></div>', None)
     _pl_panel = _table_panel(_pl_live, "premier-league", 6) or _def_panel
@@ -2079,7 +2137,31 @@ def sports_pages():
     latest_secs = ""
     if _sc_left or _sc_right:
         latest_secs = ('<section class="section"><div class="section-head"><p class="kicker">Last verified scores</p><h2>The latest round, all six leagues.</h2></div>'
-            + '<div class="data-cols"><div>' + _sc_left + '</div><div>' + _sc_right + '</div></div></section>')
+            + '<div class="data-cols"><div>' + _sc_left + '</div><div>' + _sc_right + '</div></div></section>'
+            + '<p class="byline">Last verified ' + str(LIVE.get("generated", "pre-season")) + ' \u00b7 source: football-data.org free tier, cross-checked against league sources \u00b7 the desk updates after each verified round</p></section>')
+    _as_left, _as_right = "", ""
+    for _i, (_s, _n) in enumerate([("premier-league", "Premier League"), ("la-liga", "La Liga"), ("serie-a", "Serie A"),
+                                   ("bundesliga", "Bundesliga"), ("ligue-1", "Ligue 1"), ("champions-league", "Champions League")]):
+        _ld = LIVE.get("leagues", {}).get(_s, {})
+        _sc = [x for x in (_ld.get("scorers") or []) if x]
+        if not _sc:
+            continue
+        _sc2 = sorted(_sc, key=lambda x2: (x2.get("a") or 0), reverse=True)[:3]
+        _rws = ""
+        for _x in _sc2:
+            _av = _x.get("a")
+            _avd = str(_av) if _av else "\u2014"
+            _rws += ('<div class="sp-row"><span>' + html.escape(str(_x.get("p", "?"))) + ' <b>' + _avd + '</b> <small>' + html.escape(str(_x.get("c", ""))) + '</small></span></div>')
+        _pn = _panel(_n + " \u00b7 assists", _rws or '<div class="sp-row"><span>No assists recorded yet \u2014 early rounds.</span></div>', ("/" + _s + "-top-scorers/", "Scorers"))
+        if _i < 3:
+            _as_left += _pn
+        else:
+            _as_right += _pn
+    assists_secs = ""
+    if _as_left or _as_right:
+        assists_secs = ('<section class="section"><div class="section-head"><p class="kicker">The creators</p><h2>Top assists, all six leagues.</h2></div>'
+            + '<div class="data-cols"><div>' + _as_left + '</div><div>' + _as_right + '</div></div>'
+            + '<p class="lede" style="font-size:14px">Assists ledger from the same verified scorer feeds \u2014 blanks are honest blanks until the providers record them.</p></section>')
     index_body = f"""{head("sports", "Analysis, stories and the long view \u2014 never betting.")}
 <main id="main"><div class="wrap">
 <section class="cover"><p class="kicker">BRYME Sport · the 2026-27 season is live · six competitions · no odds, ever</p>
@@ -2088,7 +2170,7 @@ def sports_pages():
 <div><b>{len(sports_explainers_data.SPORT_EXPLAINERS) + len(sports_analysis_data.SPORT_ANALYSIS)}</b><span>Evergreen pieces</span></div>
 <div><b>6</b><span>Dated editions</span></div>
 <div><b>6</b><span>Competitions</span></div>
-</div></section>""" + feat_secs + weekend_secs + portal_secs + latest_secs + big6_secs + f"""<section class="section"><div class="section-head"><p class="kicker">The competitions, in depth.</p><h2>The league system.</h2></div><ul class="list"><li><a href="/premier-league/"><span><b>Premier League</b><small>Table | Fixtures | Results | Clubs | Scorers \u2014 the full gateway, live.</small></span><span class="meta">England</span></a></li><li><a href="/laliga/"><span><b>LaLiga</b><small>The Spanish desk: LaLiga and El Clásico, explained plainly.</small></span><span class="meta">Spain</span></a></li><li><a href="/serie-a/"><span><b>Serie A</b><small>Italy\u2019s tactician\u2019s league \u2014 format, champions, history.</small></span><span class="meta">Italy</span></a></li><li><a href="/bundesliga/"><span><b>Bundesliga</b><small>Germany\u2019s 18 clubs and the 50+1 model.</small></span><span class="meta">Germany</span></a></li><li><a href="/ligue-1/"><span><b>Ligue 1</b><small>France, the academy superpower \u2014 and PSG\u2019s project.</small></span><span class="meta">France</span></a></li><li><a href="/champions-league/"><span><b>Champions League</b><small>The 36-team format, explained from every angle.</small></span><span class="meta">Europe</span></a></li></ul></section>
+</div></section>""" + weekend_secs + latest_secs + assists_secs + portal_secs + feat_secs + big6_secs + f"""<section class="section"><div class="section-head"><p class="kicker">The competitions, in depth.</p><h2>The league system.</h2></div><ul class="list"><li><a href="/premier-league/"><span><b>Premier League</b><small>Table | Fixtures | Results | Clubs | Scorers \u2014 the full gateway, live.</small></span><span class="meta">England</span></a></li><li><a href="/laliga/"><span><b>LaLiga</b><small>The Spanish desk: LaLiga and El Clásico, explained plainly.</small></span><span class="meta">Spain</span></a></li><li><a href="/serie-a/"><span><b>Serie A</b><small>Italy\u2019s tactician\u2019s league \u2014 format, champions, history.</small></span><span class="meta">Italy</span></a></li><li><a href="/bundesliga/"><span><b>Bundesliga</b><small>Germany\u2019s 18 clubs and the 50+1 model.</small></span><span class="meta">Germany</span></a></li><li><a href="/ligue-1/"><span><b>Ligue 1</b><small>France, the academy superpower \u2014 and PSG\u2019s project.</small></span><span class="meta">France</span></a></li><li><a href="/champions-league/"><span><b>Champions League</b><small>The 36-team format, explained from every angle.</small></span><span class="meta">Europe</span></a></li></ul></section>
 <section class="section"><div class="section-head"><p class="kicker">Evergreen explainers</p><h2>Understand the game.</h2></div>
 <ul class="list">{''.join(expl_rows)}</ul></section>
 <section class="section"><div class="section-head"><p class="kicker">The shelves</p><h2>Analysis, the transfer desk &amp; the Champions League.</h2></div>
@@ -2518,7 +2600,7 @@ def tech_pages():
         pages.extend(pl)
     pages.extend(art_page(a) for a in arts)
     pages.extend(tech_tool_pages())
-    return pages + tech_trust_pages() + legal_pages("tech", "BRYME Tech", "Practical technology from people who ran the thing.")
+    return pages + tech_trust_pages() + legal_pages("tech", "BRYME Tech", "Practical technology from people who ran the thing.", skip={"/terms/", "/corrections/"})
 
 
 

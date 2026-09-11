@@ -146,7 +146,10 @@ def main() -> int:
     hub_out = ROOT / "index.html"
     s = hub_src.read_text(encoding="utf-8")
     hub_out.write_text(strip_arrows(s), encoding="utf-8")
-    shutil.copy2(ROOT / "ecosystem" / "hub" / "sitemap.xml", ROOT / "sitemap.xml")
+    import re as _re, datetime as _dt
+    _sm = (ROOT / "ecosystem" / "hub" / "sitemap.xml").read_text(encoding="utf-8")
+    _sm = _re.sub(r"<lastmod>[^<]*</lastmod>", "<lastmod>" + _dt.date.today().isoformat() + "</lastmod>", _sm)
+    (ROOT / "sitemap.xml").write_text(_sm, encoding="utf-8")
     shutil.copy2(ROOT / "ecosystem" / "hub" / "robots.txt", ROOT / "hub-robots.txt")
 
     # 4. global robots.txt: five sitemaps, no indexing work (STEP 8: untouched)
