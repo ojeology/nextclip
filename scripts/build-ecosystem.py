@@ -285,7 +285,7 @@ def css_for(pub):
 def shell(pub, title, desc, route, body, card=None, robots="index,follow"):
     d = route  # mode-aware base URL from SUB
     og = f"https://{route}/assets/og.png" if route else f"https://{DOMAIN}/assets/og.png"
-    has_theme = pub in ("tech", "fitness", "sports", "hub")
+    has_theme = pub in ("tech", "fitness", "sports", "hub", "entertainment")
     theme_head = ('<script src="/assets/theme.js"></script>\n'
                   '<meta name="theme-color" content="#fafaf8">\n'
                   '<meta name="color-scheme" content="light dark">') if has_theme else ""
@@ -293,9 +293,13 @@ def shell(pub, title, desc, route, body, card=None, robots="index,follow"):
         drawer = tech_drawer()
     elif pub == "sports":
         drawer = sports_drawer()
+    elif pub == "entertainment":
+        drawer = ent_drawer()
+    elif pub == "fitness":
+        drawer = fitness_drawer()
     else:
         drawer = ""
-    navjs = '<script src="/assets/site-nav.js" defer></script>' if pub in ("tech", "sports") else ""
+    navjs = '<script src="/assets/site-nav.js" defer></script>' if pub in ("tech", "sports", "entertainment", "fitness") else ""
     return f"""<!doctype html>
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
@@ -404,7 +408,7 @@ def _nav_items(pub):
                   ("/fitness/weekly-planner/", "The weekly planner")]
         return ([("Guides", guides)], ("/fitness/", "Desk home"))
     if pub == "entertainment":
-        shelves = [("HEAD", "The entertainment shelves"), ("/entertainment/explainers/", "Explainers"),
+        shelves = [("HEAD", "The entertainment shelves"), ("/entertainment/browse/", "Browse movies"), ("/entertainment/explainers/", "Explainers"),
                    ("/entertainment/recommendations/", "Recommendations"),
                    ("/entertainment/opinion/", "Opinion"),
                    ("/entertainment/how-to-build-a-watchlist/", "Build a watchlist"),
@@ -459,6 +463,48 @@ def sports_drawer():
         '</aside>')
 
 
+def ent_drawer():
+    return ('<div id="drawer-backdrop"></div>\n'
+        '<aside id="site-drawer" aria-hidden="true" aria-label="BRYME Entertainment sections">\n'
+        '<div class="drawer-head"><span class="logo">BRYME&nbsp;ENTERTAINMENT</span>'
+        '<button type="button" class="drawer-close" data-drawer-close aria-label="Close menu">'
+        '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 5l14 14M19 5L5 19"/></svg></button></div>\n'
+        '<div class="drawer-group"><b>Browse</b><a href="/entertainment/">Desk home</a>'
+        '<a href="/entertainment/browse/">Browse the movies</a>'
+        '<a href="/entertainment/recommendations/">Recommendations</a>'
+        '<a href="/entertainment/explainers/">Explainers</a><a href="/entertainment/opinion/">Opinion</a></div>\n'
+        '<div class="drawer-group"><b>Guides</b><a href="/entertainment/how-to-pick-a-movie-tonight/">Pick a movie tonight</a>'
+        '<a href="/entertainment/how-to-build-a-watchlist/">Build a watchlist</a>'
+        '<a href="/entertainment/best-kdramas-to-start-with/">K-drama starter route</a>'
+        '<a href="/entertainment/subtitles-or-dubs/">Subtitles or dubs?</a>'
+        '<a href="/entertainment/anime-seasons-and-cours-explained/">Seasons &amp; cours</a></div>\n'
+        '<div class="drawer-group"><b>The desk</b><a href="/entertainment/about/">About</a>'
+        '<a href="/entertainment/contact/">Contact</a><a href="/entertainment/privacy/">Privacy</a></div>\n'
+        '</aside>')
+
+
+def fitness_drawer():
+    return ('<div id="drawer-backdrop"></div>\n'
+        '<aside id="site-drawer" aria-hidden="true" aria-label="BRYME Fitness sections">\n'
+        '<div class="drawer-head"><span class="logo">BRYME&nbsp;FITNESS</span>'
+        '<button type="button" class="drawer-close" data-drawer-close aria-label="Close menu">'
+        '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 5l14 14M19 5L5 19"/></svg></button></div>\n'
+        '<div class="drawer-group"><b>Tools</b><a href="/fitness/30-day-walking-plan/">The 30-day walking plan</a>'
+        '<a href="/fitness/weekly-planner/">The weekly planner</a></div>\n'
+        '<div class="drawer-group"><b>Guides</b><a href="/fitness/how-to-start-working-out/">How to start working out</a>'
+        '<a href="/fitness/how-to-warm-up/">How to warm up</a>'
+        '<a href="/fitness/strength-training-for-beginners/">Strength for beginners</a>'
+        '<a href="/fitness/walking-vs-running/">Walking vs running</a>'
+        '<a href="/fitness/workout-at-home-no-equipment/">Home workout, no equipment</a>'
+        '<a href="/fitness/how-progressive-overload-works/">Progressive overload</a>'
+        '<a href="/fitness/rest-days-and-recovery/">Rest days &amp; recovery</a>'
+        '<a href="/fitness/how-much-protein-do-you-need/">Protein, honestly</a>'
+        '<a href="/fitness/sleep-and-exercise-performance/">Sleep &amp; performance</a></div>\n'
+        '<div class="drawer-group"><b>The desk</b><a href="/fitness/about/">About</a>'
+        '<a href="/fitness/contact/">Contact</a><a href="/fitness/privacy/">Privacy</a></div>\n'
+        '</aside>')
+
+
 def head(pub, tagline, parent=True):
     pl = f'<a class="parent-link" href="https://{DOMAIN}/">THE BRYME</a>' if parent and pub != "hub" else ""
     if pub == "hub":
@@ -475,9 +521,9 @@ def head(pub, tagline, parent=True):
     edition_html = (f'<div class="mast-edition"><span class="mast-date">{edition}</span>'
                     f'<span class="mast-tag">{tagline}</span></div>') if edition else f'<span class="mast-tag">{tagline}</span>'
     tools = ""
-    if pub in ("tech", "fitness", "sports", "hub"):
+    if pub in ("tech", "fitness", "sports", "hub", "entertainment"):
         tools += _THEME_TOGGLE_BTN
-    if pub in ("tech", "sports"):
+    if pub in ("tech", "sports", "entertainment", "fitness"):
         tools += _NAV_TOGGLE_BTN
     items, cta = _nav_items(pub)
     nav = ""
@@ -695,12 +741,13 @@ ENT_SLUG_SECT = {
 ENT_MERGE = {
     "solo-leveling-e-rank-to-s-rank": "solo-leveling-from-e-rank-hunter-to-one-of-animes-most-powerful-characters",
     "why-prison-break-season-1-is-still-one-of-the-best-tv-seasons": "prison-break-season-1-watching-all-night",
-    "movies-like-interstellar-guide": "interstellar-ending-explained",
+    "movies-like-interstellar-guide": ["interstellar-ending-explained", "movies-like-interstellar"],
     "modern-horror-starter-route": "5-vampire-movies-that-changed-horror",
     "dune-sci-fi-epics-guide": "why-dune-part-two-feels-large",
-    "movies-like-interstellar-guide": "movies-like-interstellar",
     "korean-cinema-starter-guide-rebuilt": "korean-cinema-starter-guide",
 }
+# values may be a single slug or a list — normalise to lists
+ENT_MERGE = {k: (v if isinstance(v, list) else [v]) for k, v in ENT_MERGE.items()}
 ENT_START = ["how-to-pick-a-movie-tonight", "how-to-build-a-watchlist", "christopher-nolan-movies-order",
              "best-streaming-apps-nigeria", "korean-cinema-starter-guide-rebuilt"]
 
@@ -733,7 +780,7 @@ def entertainment_pages():
                          "new": True}
         guide_bodies[slug] = body
     shelf = sorted(ENT_SLUG_SECT)
-    merged_away = set(ENT_MERGE.values())
+    merged_away = {o for vs in ENT_MERGE.values() for o in vs}
     bodies = {}
     for slug in shelf + sorted(merged_away):
         if slug in guide_bodies:
@@ -755,9 +802,8 @@ def entertainment_pages():
         else:
             kick = "Archive edition (2025) \u00b7 "
         comp_html = ""
-        if slug in ENT_MERGE:
-            other = ENT_MERGE[slug]
-            comp_html = ('<h2>Companion piece, restored: ' + html.escape(by_slug[other]["title"]) + "</h2>"
+        for other in ENT_MERGE.get(slug, []):
+            comp_html += ('<h2>Companion piece, restored: ' + html.escape(by_slug[other]["title"]) + "</h2>"
                          + "<p><em>Merged from the archive so the whole argument lives on one page.</em></p>"
                          + bodies[other])
         summ = _first_line(bodies[slug])
@@ -831,10 +877,12 @@ def entertainment_pages():
         + "<h3>" + html.escape(ENT_SECTIONS[c][0]) + "</h3><p>" + html.escape(ENT_SECTIONS[c][1][:130]) + "\u2026</p>"
         + '<a class="btn" href="/entertainment/' + c + '/">Browse ' + html.escape(ENT_SECTIONS[c][0]) + " \u2192</a></article>"
         for c in ENT_SECTIONS)
+    cat_cards = ('<article class="pub-card live" style="--pc:#6d1832"><p class="pc-kicker">THE CATALOGUE</p><h3>Browse the movies</h3><p>Every film and series the desk covers, shelved: fantasy &amp; sci-fi, anime, K-drama and more — each entry links to where the argument actually lives.</p><a class="btn" href="/entertainment/browse/">Open the catalogue →</a></article>'
+        + cat_cards)
     retired_rows = "".join(
         '<li><span><b>' + html.escape(m["title"]) + "</b><small>" + str(m["words"]) + " words \u00b7 reviewed by the audit \u2014 retired on merit</small></span>"
         '<span class="meta">Retired</span></li>'
-        for m in manifest if m["slug"] not in ENT_SLUG_SECT and m["slug"] not in set(ENT_MERGE.values())
+        for m in manifest if m["slug"] not in ENT_SLUG_SECT and m["slug"] not in merged_away
         and m["slug"] not in {"korean-cinema-starter-guide", "movies-like-interstellar"})
     index_body = (head("entertainment", "Cinema, TV and anime \u2014 written about, never pirated.")
         + '<main id="main"><div class="wrap">'
@@ -849,8 +897,43 @@ def entertainment_pages():
         + '<p class="lede">BRYME Entertainment does not stream, host, link or hint at pirated copies. External trailers may support a piece; the value on the page is the argument. Restored editions say so plainly, carry their word counts, and were re-typeset \u2014 not quietly re-scraped.</p>'
         + '<ul class="list" style="margin-top:14px">' + retired_rows + "</ul>"
         + "</section></div></main>" + foot("entertainment"))
-    pages = [("/", "BRYME Entertainment \u2014 what to watch, and why",
-              "Film, TV and anime recommendations with reasons, explainers and opinion \u2014 written about the work, never piracy.", index_body)]
+    import entertainment_catalogue_data as _cat
+    body_text = {s2: html.unescape(re.sub(r"<[^>]+>", " ", b2)).lower().replace("\u2019", chr(39)) for s2, b2 in bodies.items()}
+    shelf_html = ""
+    for n2, (cs, clabel, cdek, entries) in enumerate(_cat.CATALOGUE_SHELVES):
+        tiles = ""
+        for (t, yr, kind, blurb, slugs) in entries:
+            low = t.lower().replace("&amp;", "&").replace("\u2019", chr(39))
+            for s3 in slugs:
+                composed = body_text[s3] + " ".join(body_text[o] for o in ENT_MERGE.get(s3, []))
+                assert low in composed, f"catalogue truth check: '{t}' not found in {s3}"
+            primary = slugs[0]
+            more = "".join('<a href="/' + s3 + '/">' + html.escape(by_slug[s3]["title"]) + "</a> · " for s3 in slugs[1:])
+            tiles += ('<li style="display:block"><a href="/' + primary + '/"><span><b>' + t
+                      + " <span class=\"meta\">(" + yr + ")</span></b><small>" + kind + " \u2014 " + blurb + "</small></span>"
+                      + '<span class="meta">' + str(len(slugs)) + " link" + ("s" if len(slugs) > 1 else "") + "</span></a>"
+                      + ('<div style="font-size:13px;padding:2px 0 10px">Also in: ' + more.rstrip(" · ") + "</div>" if more else "")
+                      + "</li>")
+        footers = "".join('<a class="btn secondary" href="/' + fs + '/">' + fl + "</a>" for fs, fl in _cat.CATALOGUE_SHELF_FOOTERS[cs])
+        shelf_html += ('<section class="' + ("section" if n2 % 2 == 0 else "section alt") + '"><div class="section-head"><p class="kicker">Shelf ' + str(n2 + 1) + "</p><h2>" + clabel + "</h2></div>"
+            + '<p class="lede">' + cdek + "</p>"
+            + '<ul class="list">' + tiles + "</ul>"
+            + '<div class="actions">' + footers + "</div></section>")
+    n_titles = sum(len(e[4]) for sh in _cat.CATALOGUE_SHELVES for e in sh[3])
+    browse_body = (head("entertainment", "The catalogue — every title the desk covers, shelved.")
+        + '<main id="main"><div class="wrap">'
+        + '<nav class="crumb"><a href="/entertainment/">Entertainment</a> / Browse the movies</nav>'
+        + '<section class="cover"><p class="kicker">BRYME Entertainment · the catalogue</p>'
+        + '<h1 class="cover-title">Browse the movies.</h1>'
+        + '<p class="cover-dek">Every title below is covered somewhere on this desk — no database padding, no empty entries. Pick a shelf; each tile links to the page where the argument actually lives.</p></section>'
+        + shelf_html
+        + '<section class="section"><div class="section-head"><p class="kicker">The house rule</p><h2>Links that go somewhere.</h2></div>'
+        + '<p class="lede">This catalogue lists ' + str(len([e for sh in _cat.CATALOGUE_SHELVES for e in sh[3]])) + " titles with " + str(n_titles) + " verified coverage links. If a title is not here, the desk has not written about it yet — and we do not pretend otherwise.</p>"
+        + "</section></div></main>" + foot("entertainment"))
+    pages = [("/", "BRYME Entertainment — what to watch, and why",
+              "Film, TV and anime recommendations with reasons, explainers and opinion — written about the work, never piracy.", index_body),
+             ("/browse/", "Browse the movies — the BRYME Entertainment catalogue",
+              "Every film, series and anime the desk covers, shelved under fantasy & sci-fi, anime, K-drama and more — each entry links to real coverage.", browse_body)]
     for pl in sect_pages.values():
         pages.extend(pl)
     pages.extend(arts[s] for s in shelf if s not in merged_away)

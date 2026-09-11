@@ -468,3 +468,9 @@ Old-host leak: 24+ absolute `ojeology.github.io/nextclip/...` links survived `cl
 Builder data-model traps hit and fixed: roadmap4 was an EXISTING module (overwrite → KeyError interior-painting-mistakes; restored from git), classics shipped as home_roadmap10_data.py instead; home pages require HOME_SLUG_SECT entry AND related_map entry per slug (both added for the 8).
 ENT: ENT_SLUG_SECT +3 recovered slugs; ENT_MERGE +2 (movies-like-interstellar-guide ← movies-like-interstellar; korean-cinema-starter-guide-rebuilt ← korean-cinema-starter-guide); entertainment_guides_data.py → 15 guides. Money guide remains retired.
 Chain: 922 pages / 99,128 internal links OK; validator ok; allowlist v26 (912 routes); ads still OFF (0 ad markup, no ads.txt).
+
+## Batch 22 — 11 Sep 2026 (Entertainment catalogue, sidebar/dark parity)
+- NEW `/entertainment/browse/` — the catalogue: 40 titles across 4 shelves (Fantasy & Sci-Fi, Anime, K-Drama & Korean screen, Thrillers/horror & more), 63 coverage links, every entry build-time-verified against real page text (assert in builder — build fails if a link lies; entities + curly-apostrophe normalised, companion bodies included in the check). Wired: desk-home card, header nav, drawer.
+- ENT_MERGE now supports multiple companions per page (values normalised to lists); restored `interstellar-ending-explained` to the Interstellar guide (it had been orphaned by a b21 dict-key collision — second-chance rule).
+- Sidebar/dark parity: ENT + Fitness get the slide-out drawer (aside + open/close buttons + site-nav.js) and Entertainment also gets theme.js + the dark toggle (was dead — zero JS). Home already had its own persistent sidebar + working dark mode; Writers/Tech/Sport already complete.
+- Chain: 923 pages / 100,171 internal links OK; allowlist v26 (913 routes); ads still OFF.

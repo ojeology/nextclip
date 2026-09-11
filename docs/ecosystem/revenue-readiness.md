@@ -35,3 +35,8 @@
 - Entertainment: +6 evergreen guides (box office mechanics, shorter seasons, canon vs filler, K-drama starter route, cult classics, reading reviews) + 3 recovered gems published (10 Korean movies, best anime now, Agent Kim/Squid Game S3) + 2 archive merges (Interstellar pair, Korean-cinema pair). 43 pages: recommendations 18, explainers 19, opinion 6. `beginners-guide-to-making-money-online` stays retired permanently (Money removed + YMYL/AdSense risk).
 - Home & DIY: roadmap batch 10 (+8 kitchen & bedroom classics: oven, shower drain, freezer defrost, mattress, washer seal mould, kettle descale, cast iron, fridge temperature). Home property: 107 pages.
 - Chain: 922 pages / 99,128 links OK; allowlist v26 (912 routes). Ratings moved: Home A−→A, Fitness B+→A−, Entertainment B+→A−.
+
+## Batch 22 (11 Sep 2026) — catalogue + chrome parity
+- Browse-the-movies catalogue (40 titles, 63 verified links) = AdSense "helpful inventory": deep internal linking from a browse surface, zero thin pages.
+- Entertainment + Fitness now carry the full site chrome (drawer nav, dark mode) — UX parity across all six niches; nothing for an AdSense reviewer to flag as half-built.
+- Entertainment holds at A−; next levers: Writers depth, Sport content wave.
