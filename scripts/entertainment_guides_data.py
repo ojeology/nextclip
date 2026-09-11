@@ -176,3 +176,46 @@ ENT_GUIDES.extend([
 <h2>The trick that actually works: pick your people</h2>
 <p>Scores are crowds; crowds are averages; you are not an average. The reliable move is finding one or two reviewers whose taste has repeatedly matched yours — past tense, verified against your own watches — and reading their reasoning rather than their verdict. Over a few months you will know: when they love the things you love and name the flaws you would name, their praise is a buy signal and their shrug is a pass, regardless of the tomato. That is also why this desk writes <a href="/how-to-pick-a-movie-tonight/">mood-first picking guides</a> instead of scores: the useful question is never "is this film good?" but "is this film good <em>for the evening you actually have</em>?" — and the <a href="/how-to-build-a-watchlist/">watchlist</a> is where those decisions live.</p>"""),
 ])
+
+# ---- batch 30: what-to-watch decision pages (Master Pack §3.4.2) ----
+# Every entry carries a reason; links point to genuine coverage or the catalogue.
+ENT_GUIDES.extend([
+("what-to-watch-in-90-minutes", "recommendations",
+"What to watch if you have 90 minutes",
+"Short, complete, satisfying — films that respect the school night, argued by mood so the choice takes two minutes, not forty.",
+"""<p>A 90-minute film is a promise: a complete experience with nothing padded, over before midnight. The desk's picks below are argued by the evening you are actually having — and every one lands under or near the two-hour mark, most far under. For the wider system, <a href="/how-to-pick-a-movie-tonight/">how to pick a movie tonight</a> is the method; this page is the shortlist.</p>
+<h2>Tense and tight</h2>
+<p><b>A Quiet Place</b> (2018) — barely a word spoken, and the tautest 90 minutes of mainstream horror in years: silence as the engine, family as the stakes (<a href="/modern-horror-starter-route/">the horror route's contained-tension door</a>). If you want procedure instead of monsters, the first half of any heist procedural will do; if you want dread with ideas on top, <b>Coherence</b> (2013) — a dinner party, a comet, and the best micro-budget mind-bender of its decade.</p>
+<h2>Funny and warm</h2>
+<p><b>Free Guy</b> (2021) — an NPC wakes up, and the joke turns out to have a heart: the rare studio comedy with craft in its action and a genuinely sweet thesis (<a href="/movies-like-deadpool-and-wolverine/">the fun-blockbuster shelf</a>). For warmth in animation form, <b>My Neighbor Totoro</b> (1988) is the gentlest 86 minutes in cinema — the film equivalent of a deep breath, and proof that "nothing happens" can be the whole point.</p>
+<h2>Big feelings, short runtime</h2>
+<p>The honest warning first: the desk's big-feelings heavyweights — <b>Your Name</b> (106 minutes) and <b>A Silent Voice</b> (130) — both overrun the promise, gloriously (<a href="/7-movies-we-wished-never-ended/">why some endings refuse to let go</a>). The true sub-100-minute play for feelings: <b>Let the Right One In</b> (2008) — a lonely-child vampire film that is somehow the tenderest thing on this page (<a href="/modern-horror-starter-route/">the horror route's quietest door</a>). And if none of tonight's moods fit, three episodes of anything on <a href="/entertainment/browse/">the TV shelves</a> is a legitimate 90 minutes too — the promise is a complete experience, not a feature film.</p>
+<h2>The two-minute decision method</h2>
+<p>Pick by energy, not by plot summary: drained → Totoro; wired → A Quiet Place; social → Free Guy; thoughtful → Coherence; and if none of those moods fit, the full <a href="/entertainment/browse/">catalogue</a> is sorted for exactly this. The runtime promise matters more than the title: a 90-minute film you finish beats a three-hour epic you abandon at the half.</p>"""),
+("what-to-watch-mystery-night", "recommendations",
+"What to watch when you want a mystery",
+"Six mysteries argued by the kind of puzzle you want: the whodunit, the howdunit, the slow-burn and the one that plays fair.",
+"""<p>Mystery night has a rule the desk takes seriously: a mystery should play fair — show you the clues, then out-think you. The picks below are sorted by the kind of puzzle you want tonight, and every one is argued, not just listed. The general picking method lives in <a href="/how-to-pick-a-movie-tonight/">pick a movie tonight</a>.</p>
+<h2>The drawing-room whodunit</h2>
+<p><b>Knives Out</b> (2019) — the modern master of the form: every clue shown, every misdirection earned, and Rian Johnson playing the genre with visible delight. If it lands, the watchlist habit it creates is real (<a href="/how-to-build-a-watchlist/">build the watchlist</a>).</p>
+<h2>The procedural that keeps you honest</h2>
+<p><b>Memories of Murder</b> (2003) — the serial-killings procedural that invented the modern grammar: the detectives chase, the audience chases, nobody is allowed to feel clever (<a href="/10-korean-movies-everyone-should-watch/">the Korean shelf</a>). Its descendant for a lighter night: <b>Decision to Leave</b> (2022), where the mystery is real but the detective's attention drifts somewhere the case forbids.</p>
+<h2>The puzzle box</h2>
+<p><b>Andhadhun</b> (2018) — the blind pianist who witnesses a murder, and 140 minutes of escalations that keep re-defining who is playing whom (<a href="/indian-cinema-first-five/">the Indian starter five</a>). For the pure twist experience, <b>Gone Girl</b> (2014) dismantles its own mystery at the midpoint and becomes a different, colder thriller — the rare film where the reveal is the middle, not the end.</p>
+<h2>The obsession mystery</h2>
+<p><b>Zodiac</b> (2007) — the case that eats its hunters: the mystery is never "who" so much as "what obsession costs". Pair it honestly: it is the longest night here, and worth the commitment. For the mystery that is really about a place, <b>Get Out</b> (2017) plays its clues in plain sight — the rewatch proves it (<a href="/modern-horror-starter-route/">the horror route</a>).</p>
+<h2>How to choose in two minutes</h2>
+<p>Want to solve it? Knives Out. Want to be haunted by it? Memories of Murder. Want to be out-played? Andhadhun. Want to watch the investigators break? Zodiac. The full shelf of everything argued here, sorted, is <a href="/entertainment/browse/">the catalogue</a> — and the vocabulary of the form is in <a href="/how-award-season-actually-works/">how award season rewards these very films</a>.</p>"""),
+("where-to-start-with-ghibli", "recommendations",
+"Where to start with Studio Ghibli: an honest route",
+"Three doors into the world's most beloved animation house — and why the 'obvious' first film is not always the right one.",
+"""<p>Studio Ghibli's catalogue is deep enough that the wrong first film can mis-sell the whole house: start with the slowest and you may decide the studio is boring; start with the strangest and you may decide it is not for you. The desk's route runs through three doors, each a genuine argument for the house. The films themselves get their coverage there too — <a href="/entertainment/browse/">see the anime shelf</a> for everything the desk tracks.</p>
+<h2>Door one: the universal entry — Spirited Away (2001)</h2>
+<p>The Oscar winner remains the right first film for most people: a complete world (the bathhouse for spirits), a child protagonist who earns every change in her, and imagery — the train across the water — that explains in one shot why hand-drawn animation matters. It is the film that converts sceptics, and it anchors <a href="/7-movies-we-wished-never-ended/">the endings-you-wish-continued shelf</a> for a reason.</p>
+<h2>Door two: the gentle entry — My Neighbor Totoro (1988)</h2>
+<p>For viewers who want warmth over spectacle — families, tired adults, anyone recovering from a heavy film — Totoro is 86 minutes of rural summer with a forest spirit. Nothing threatens; everything blooms. It is the shortest route into understanding what Ghibli actually is: a studio that believes quiet is not the absence of story.</p>
+<h2>Door three: the fierce entry — Princess Mononoke (1997)</h2>
+<p>For viewers who found Totoro too gentle and want the argument: gods versus industry, a cursed prince, and the most honest villain work in the studio's shelf — nobody in Mononoke is wrong, which is why it cuts. It is the route that proves Ghibli is not "just for kids" to anyone who still thinks so.</p>
+<h2>After the three doors</h2>
+<p>From there the catalogue opens by taste: Howl's for romance-and-chaos, Kiki for coming-of-age comfort, Grave of the Fireflies only when you are ready for the saddest film ever animated (that is not hyperbole; budget the evening accordingly). The method for what next: <a href="/how-to-pick-a-movie-tonight/">mood first, title second</a> — and the long-form reasoning behind animation's place in the craft conversation is in <a href="/how-anime-production-committees-work/">how anime actually gets made</a>.</p>"""),
+])
