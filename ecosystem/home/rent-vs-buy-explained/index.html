@@ -1,0 +1,493 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Rent vs buy: the real math (and a calculator that runs it) | BRYME Home &amp; DIY</title>
+<meta name="description" content="Renting is cheaper month-to-month in all 50 largest US metros in 2026 — but tenure and the price-to-rent ratio decide. The full ledger both ways, with an i">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://bryme.onrender.com/home/rent-vs-buy-explained/">
+<meta property="og:type" content="website"><meta property="og:site_name" content="THE BRYME">
+<meta property="og:title" content="Rent vs buy: the real math (and a calculator that runs it) | BRYME Home &amp; DIY"><meta property="og:description" content="Renting is cheaper month-to-month in all 50 largest US metros in 2026 — but tenure and the price-to-rent ratio decide. The full ledger both ways, with an i">
+<meta property="og:url" content="https://bryme.onrender.com/home/rent-vs-buy-explained/"><meta property="og:image" content="https://https://bryme.onrender.com/home/rent-vs-buy-explained//assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+
+<style>
+:root{--paper:#fafaf8;--sheet:#ffffff;--ink:#14213d;--muted:#5b6b7a;--dim:#8b96a2;
+--brand:#14213d;--brand-deep:#0c1526;--accent:#a8752a;
+--line:rgba(20,33,61,.18);--line-strong:rgba(20,33,61,.4);--shadow:0 1px 2px rgba(0,0,0,.05),0 14px 38px rgba(0,0,0,.08);
+--serif:Georgia,'Iowan Old Style','Palatino Linotype',serif;--sans:Inter,ui-sans-serif,system-ui,sans-serif}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;min-height:100vh;color:var(--ink);background:var(--paper);font:16px/1.65 var(--sans);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}::selection{background:rgba(176,141,87,.3)}
+.wrap{width:min(calc(100% - 48px),1080px);margin:0 auto}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.skip-link{position:fixed;z-index:99;top:10px;left:10px;transform:translateY(-160%);padding:10px 16px;background:var(--brand);color:var(--sheet);font-weight:700}
+.skip-link:focus{transform:none}
+.head{position:sticky;z-index:50;top:0;background:var(--paper);border-bottom:1px solid var(--line-strong)}
+.head::before{content:"";display:block;height:6px;background:var(--brand)}
+.head::after{content:"";display:block;height:2px;background:var(--accent)}
+.mast{display:flex;align-items:baseline;gap:18px;padding:18px 0 12px;flex-wrap:wrap}
+.mast-brand{font-family:var(--serif);font-size:34px;line-height:.9;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.mast-brand span{color:var(--accent)}
+.mast-tag{font:italic 13px var(--serif);color:var(--muted);flex:1;min-width:200px}
+.parent-link{font:750 10.5px var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line);padding:7px 11px;border-radius:2px}
+.parent-link:hover{color:var(--ink);border-color:var(--line-strong)}
+.cover{padding:clamp(46px,8vw,96px) 0 clamp(36px,6vw,64px);border-bottom:3px double var(--line-strong)}
+.kicker{color:var(--accent);font:800 11.5px var(--sans);letter-spacing:.22em;text-transform:uppercase;margin:0 0 20px}
+h1.cover-title{font-family:var(--serif);font-weight:700;letter-spacing:-.018em;font-size:clamp(36px,6.4vw,70px);line-height:1.03;margin:0;max-width:15em}
+.cover-dek{font-family:var(--serif);font-size:clamp(16.5px,2.2vw,20px);line-height:1.62;color:var(--muted);max-width:58ch;margin:24px 0 0}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.btn{min-height:46px;display:inline-flex;align-items:center;padding:11px 20px;border:1px solid var(--brand);border-radius:2px;background:var(--brand);color:var(--sheet);font:700 13.5px var(--sans);letter-spacing:.04em;cursor:pointer}
+.btn:hover{background:var(--brand-deep);border-color:var(--brand-deep)}
+.btn.secondary{background:transparent;color:var(--brand);border-color:var(--line-strong)}
+.btn.secondary:hover{border-color:var(--brand);background:transparent}
+.section{padding:clamp(42px,7vw,80px) 0}
+.section.alt{background:var(--paper-2,transparent);outline:1px solid var(--line);outline-offset:-1px}
+.section-head{margin-bottom:28px}
+.section-head h2{font-family:var(--serif);font-weight:700;font-size:clamp(23px,3.2vw,32px);line-height:1.12;margin:6px 0 0;letter-spacing:-.012em}
+.section-head h2::after{content:"";display:block;width:46px;height:4px;background:var(--accent);margin-top:14px}
+.lede{font-family:var(--serif);font-size:17.5px;line-height:1.65;color:var(--muted);max-width:60ch;margin:18px 0 0}
+.list{list-style:none;margin:0;padding:0;border-top:1px solid var(--line-strong)}
+.list li{border-bottom:1px solid var(--line)}
+.list a{display:flex;gap:22px;align-items:baseline;padding:18px 6px;transition:background .15s ease,padding-left .15s ease}
+.list a:hover{background:var(--sheet);padding-left:14px}
+.list b{font-family:var(--serif);font-size:19px;line-height:1.3}
+.list a:hover b{color:var(--brand)}
+.list small{display:block;font:13px var(--sans);color:var(--muted);margin-top:3px}
+.list .meta{margin-left:auto;flex:none;font:750 11px var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--dim)}
+.prose{max-width:720px;margin:0 auto;padding:clamp(28px,5vw,54px) 0 26px}
+.prose h2{font-family:var(--serif);font-size:clamp(22px,3vw,29px);line-height:1.16;margin:44px 0 12px;padding-top:24px;border-top:1px solid var(--line)}
+.prose h3{font-family:var(--serif);font-size:19.5px;margin:28px 0 8px}
+.prose h3::before{content:"";display:inline-block;width:20px;height:4px;background:var(--accent);margin-right:11px;vertical-align:middle}
+.prose p,.prose li{font-family:var(--serif);font-size:18px;line-height:1.78}
+.prose p{margin:0 0 19px}
+.prose ul,.prose ol{padding-left:26px;margin:0 0 19px}
+.prose li+li{margin-top:9px}
+.prose a{color:var(--brand);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+.prose blockquote{margin:32px 0;padding:6px 0 6px 24px;border-left:4px solid var(--accent);font-family:var(--serif);font-style:italic;font-size:21px;line-height:1.5}
+.prose img{max-width:100%;border:1px solid var(--line);padding:6px;background:var(--sheet)}
+.crumb{padding:18px 0 10px;font:11.5px var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--dim)}
+.crumb a{color:var(--muted)}.crumb a:hover{color:var(--accent)}
+.byline{margin:16px 0 0;font-size:13px;color:var(--muted);border-top:1px solid var(--line);padding-top:13px}
+.foot{margin-top:44px;border-top:3px double var(--line-strong);background:var(--paper-2,transparent)}
+.foot-in{padding:34px 0 30px;display:flex;flex-wrap:wrap;gap:14px 34px;justify-content:space-between;font:13px var(--sans);color:var(--muted)}
+.foot-in a:hover{color:var(--ink)}
+.foot small{display:block;margin-top:8px;font:italic 12.5px var(--serif);color:var(--dim)}
+.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+.pub-card{border:1px solid var(--line-strong);border-top:6px solid var(--pc);background:var(--sheet);padding:26px 26px 22px;display:flex;flex-direction:column}
+.pub-card h3{font-family:var(--serif);font-size:24px;margin:0 0 4px;letter-spacing:-.01em}
+.pub-card .pc-kicker{font:800 10.5px var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--pc);margin:0 0 12px}
+.pub-card p{font-size:14.5px;line-height:1.6;color:var(--muted);margin:0 0 18px}
+.pub-card .btn{margin-top:auto;align-self:flex-start}
+.pub-card.live{box-shadow:var(--shadow)}
+.pub-card.soon{opacity:.92}
+.soon-tag{font:800 10px var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--muted);border:1px dashed var(--line-strong);align-self:flex-start;padding:8px 12px;margin-top:auto}
+@media(max-width:820px){.cards{grid-template-columns:1fr}.mast-tag{display:none}}
+@media print{.head,.foot,.actions,.btn{display:none!important}body{background:#fff}}
+
+/* ---- writers-mirrored chrome: theme toggle, drawer, hero settle, dark theme ---- */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.mast-tools{display:flex;align-items:center;gap:8px;margin-left:auto;align-self:center}
+.theme-toggle,.nav-toggle{display:inline-grid;place-items:center;width:36px;height:36px;background:none;border:1px solid var(--line-strong);border-radius:2px;color:var(--muted);cursor:pointer;padding:0}
+.theme-toggle:hover,.nav-toggle:hover{color:var(--ink);border-color:var(--ink)}
+.theme-toggle svg,.nav-toggle svg{width:18px;height:18px}
+.icon-moon{display:none}
+html[data-theme="dark"] .icon-moon{display:block}
+html[data-theme="dark"] .icon-sun{display:none}
+@keyframes bsettle{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.cover .kicker,.cover-title,.cover-dek{animation-name:bsettle;animation-duration:.5s;animation-fill-mode:both}
+.cover-title{animation-delay:.04s}
+.cover-dek{animation-delay:.12s}
+@media (prefers-reduced-motion:reduce){.cover .kicker,.cover-title,.cover-dek{animation:none}}
+#drawer-backdrop{position:fixed;inset:0;z-index:90;background:rgba(15,21,31,.5);opacity:0;pointer-events:none;transition:opacity .2s ease}
+#drawer-backdrop.show{opacity:1;pointer-events:auto}
+#site-drawer{position:fixed;z-index:100;top:0;right:0;bottom:0;width:min(360px,88vw);background:var(--paper);border-left:1px solid var(--line-strong);transform:translateX(102%);transition:transform .22s ease;overflow-y:auto;padding:0 22px 30px}
+#site-drawer.open{transform:none}
+.drawer-head{display:flex;align-items:center;justify-content:space-between;padding:20px 0 14px;border-bottom:3px double var(--line-strong);margin-bottom:8px}
+.drawer-head .logo{font-family:var(--serif);font-weight:700;letter-spacing:.14em;font-size:19px}
+.drawer-close{background:none;border:1px solid var(--line);border-radius:2px;color:var(--muted);width:34px;height:34px;display:grid;place-items:center;cursor:pointer}
+.drawer-group{padding:14px 0;border-bottom:1px solid var(--line)}
+.drawer-group>b{display:block;font:800 10.5px var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+#site-drawer a{display:block;padding:7px 0;color:var(--ink);border-bottom:1px solid var(--line)}
+#site-drawer a:hover{color:var(--accent)}
+body.drawer-open{overflow:hidden}
+html[data-theme="dark"]{--paper:#141a24;--sheet:#1a212c;--ink:#e7e3d8;--muted:#9aa1ad;--dim:#7b818d;--brand:#aec4e0;--brand-deep:#0f151f;--accent:#d0aa52;--line:rgba(231,227,216,.15);--line-strong:rgba(231,227,216,.34);--shadow:0 1px 2px rgba(0,0,0,.3),0 14px 38px rgba(0,0,0,.35);color-scheme:dark}
+html[data-theme="dark"] ::selection{background:rgba(208,170,82,.35)}
+/* ---- writers-mirrored masthead: edition block, nav bar, mega menus, cta ---- */
+.mast-edition{display:flex;flex-direction:column;gap:3px;flex:1;min-width:0}
+.mast-date{font-size:10.5px;font-weight:800;letter-spacing:.22em;color:var(--accent);text-transform:uppercase}
+.main-nav{border-top:1px solid var(--line);background:var(--paper)}
+.mast-nav{display:flex;align-items:center;gap:4px;min-height:46px}
+.main-nav a{padding:8px 13px;color:var(--muted);font-size:12px;font-weight:750;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap}
+.main-nav a:hover,.main-nav a[aria-current="page"]{color:var(--ink);box-shadow:inset 0 -3px 0 var(--accent)}
+.main-nav a.nav-cta{color:var(--sheet);background:var(--brand);border-radius:2px;margin-left:8px;padding:7px 14px}
+.main-nav a.nav-cta:hover{background:var(--brand-deep);color:var(--sheet);box-shadow:none}
+.has-mega{position:relative}
+.mega{display:none;position:absolute;z-index:80;left:0;top:100%;min-width:300px;background:var(--paper);border:1px solid var(--line-strong);border-top:3px solid var(--accent);box-shadow:var(--shadow);padding:12px 0}
+.has-mega:hover .mega,.has-mega:focus-within .mega{display:grid}
+.mega a{display:block;padding:9px 18px;font:500 13.5px var(--sans);letter-spacing:0;text-transform:none;color:var(--muted);white-space:normal}
+.mega a:hover{color:var(--brand);background:var(--sheet);box-shadow:none}
+.mega b{display:block;padding:9px 18px 3px;font:800 10px var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+.nav-toggle{display:none}
+.cover-facts{display:flex;gap:30px;flex-wrap:wrap;margin-top:34px;padding-top:22px;border-top:1px solid var(--line)}
+.cover-facts b{display:block;font-family:var(--serif);font-size:30px;line-height:1.15;color:var(--accent)}
+.cover-facts span{font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+@media (max-width:860px){.mast-nav{overflow-x:auto;scrollbar-width:none}.mast-nav::-webkit-scrollbar{display:none}}
+@media (max-width:760px){.mast-tag{display:none}.mast-date{font-size:9.5px}.nav-toggle{display:inline-grid}}
+
+
+.fp-week .fp-day { display: grid; grid-template-columns: 44px 1fr auto; gap: 14px; align-items: center; }
+.fp-day .fp-num { font-family: var(--serif); font-size: 22px; color: var(--accent); text-align: right; }
+.fp-day small { display: block; color: var(--dim); font-size: 12.5px; margin-top: 2px; }
+.fp-day.done { opacity: .55; }
+.fp-day.done .fp-num::after { content: " ✓"; color: var(--brand); }
+.wp-grid { display: grid; gap: 10px; }
+.wp-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.wp-day { width: 96px; flex: none; font-weight: 700; font-size: 14px; }
+.wp-chip { border: 1px solid var(--line); background: var(--paper); border-radius: 99px; padding: 9px 16px; font: 600 13px var(--sans); color: var(--muted); cursor: pointer; }
+.wp-chip.on { border-color: var(--brand); color: var(--brand); }
+.wp-chip.on::after { content: " ✓"; font-weight: 700; }
+.fp-progressbar { height: 10px; background: var(--sheet); border: 1px solid var(--line); border-radius: 99px; overflow: hidden; }
+.fp-fill { height: 100%; width: 0%; background: var(--brand); transition: width .3s ease; }
+@media (max-width: 640px) { .fp-week .fp-day { grid-template-columns: 34px 1fr; } .fp-day .fp-done { grid-column: 2; justify-self: start; } }
+
+html{color-scheme:light}
+html[data-theme="dark"]{--paper:#131318;--sheet:#1b1b23;--ink:#e9e6df;--muted:#a7a29a;--dim:#7e7970;--brand:#4a7aa8;--brand-deep:#3a628c;--accent:#c9994e;--line:rgba(233,230,223,.14);--line-strong:rgba(233,230,223,.32);--shadow:0 1px 2px rgba(0,0,0,.45),0 14px 38px rgba(0,0,0,.5);color-scheme:dark}
+html[data-theme="dark"] .btn{color:#fff}
+html[data-theme="dark"] .skip-link{color:#fff}
+html[data-theme="dark"] ::selection{background:rgba(201,153,78,.35)}
+.theme-btn{margin-left:auto;flex:none;align-self:center;border:1px solid var(--line-strong);background:transparent;color:var(--muted);border-radius:99px;width:44px;height:36px;cursor:pointer;font-size:15px;line-height:1}
+.theme-btn:hover{color:var(--ink);border-color:var(--accent)}
+.h-layout{display:grid;grid-template-columns:236px minmax(0,1fr);gap:48px;align-items:start}
+.h-side{position:sticky;top:112px;padding:28px 0}
+.h-side-title{font:800 10.5px var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--dim);margin:0 0 10px;padding-left:10px}
+.h-side nav{display:block}
+.h-side nav a{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:9px 10px;border-left:2px solid transparent;font:600 13.5px var(--sans);color:var(--muted)}
+.h-side nav a:hover{color:var(--ink);background:var(--sheet)}
+.h-side nav a.active{color:var(--brand);border-left-color:var(--brand);background:var(--sheet)}
+.h-side nav a.flag{color:var(--accent)}
+.h-side nav a.active.flag{color:var(--accent)}
+.h-side nav a .n{font:700 10.5px var(--sans);color:var(--dim);border:1px solid var(--line);padding:1px 7px;border-radius:99px;flex:none}
+.h-main .cover{padding:clamp(30px,5vw,58px) 0 clamp(26px,4vw,44px)}
+.h-main h1.cover-title{font-size:clamp(30px,4.8vw,52px)}
+.h-sec-card{border:1px solid var(--line);padding:20px 22px;background:var(--sheet)}
+.h-sec-card h3{font-family:var(--serif);font-size:21px;margin:6px 0 6px}
+.h-sec-card p{margin:0;color:var(--muted);font-size:14.5px}
+.h-sec-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+@media (max-width:920px){.h-layout{display:block}.h-side{position:static;padding:16px 0;border-bottom:1px solid var(--line)}
+.h-side nav{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px}
+.h-side nav a{border:1px solid var(--line);border-radius:99px;padding:7px 14px;white-space:nowrap;border-left-width:1px}
+.h-side nav a.active{border-color:var(--brand)}
+.h-sec-grid{grid-template-columns:1fr}}
+</style>
+</head><body><a class="skip-link" href="#main">Skip to content</a>
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Rent vs buy: the real math (and a calculator that runs it) | BRYME Home &amp; DIY</title>
+<meta name="description" content="Renting is cheaper month-to-month in all 50 largest US metros in 2026 — but tenure and the price-to-rent ratio decide. The full ledger both ways, with an i">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://bryme.onrender.com/home/rent-vs-buy-explained/">
+<meta property="og:type" content="website"><meta property="og:site_name" content="THE BRYME">
+<meta property="og:title" content="Rent vs buy: the real math (and a calculator that runs it) | BRYME Home &amp; DIY"><meta property="og:description" content="Renting is cheaper month-to-month in all 50 largest US metros in 2026 — but tenure and the price-to-rent ratio decide. The full ledger both ways, with an i">
+<meta property="og:url" content="https://bryme.onrender.com/home/rent-vs-buy-explained/"><meta property="og:image" content="https://thebryme.com/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<script src="/assets/home-theme.js"></script>
+<style>
+:root{--paper:#fafaf8;--sheet:#ffffff;--ink:#14213d;--muted:#5b6b7a;--dim:#8b96a2;
+--brand:#14213d;--brand-deep:#0c1526;--accent:#a8752a;
+--line:rgba(20,33,61,.18);--line-strong:rgba(20,33,61,.4);--shadow:0 1px 2px rgba(0,0,0,.05),0 14px 38px rgba(0,0,0,.08);
+--serif:Georgia,'Iowan Old Style','Palatino Linotype',serif;--sans:Inter,ui-sans-serif,system-ui,sans-serif}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;min-height:100vh;color:var(--ink);background:var(--paper);font:16px/1.65 var(--sans);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}::selection{background:rgba(176,141,87,.3)}
+.wrap{width:min(calc(100% - 48px),1080px);margin:0 auto}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.skip-link{position:fixed;z-index:99;top:10px;left:10px;transform:translateY(-160%);padding:10px 16px;background:var(--brand);color:var(--sheet);font-weight:700}
+.skip-link:focus{transform:none}
+.head{position:sticky;z-index:50;top:0;background:var(--paper);border-bottom:1px solid var(--line-strong)}
+.head::before{content:"";display:block;height:6px;background:var(--brand)}
+.head::after{content:"";display:block;height:2px;background:var(--accent)}
+.mast{display:flex;align-items:baseline;gap:18px;padding:18px 0 12px;flex-wrap:wrap}
+.mast-brand{font-family:var(--serif);font-size:34px;line-height:.9;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.mast-brand span{color:var(--accent)}
+.mast-tag{font:italic 13px var(--serif);color:var(--muted);flex:1;min-width:200px}
+.parent-link{font:750 10.5px var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line);padding:7px 11px;border-radius:2px}
+.parent-link:hover{color:var(--ink);border-color:var(--line-strong)}
+.cover{padding:clamp(46px,8vw,96px) 0 clamp(36px,6vw,64px);border-bottom:3px double var(--line-strong)}
+.kicker{color:var(--accent);font:800 11.5px var(--sans);letter-spacing:.22em;text-transform:uppercase;margin:0 0 20px}
+h1.cover-title{font-family:var(--serif);font-weight:700;letter-spacing:-.018em;font-size:clamp(36px,6.4vw,70px);line-height:1.03;margin:0;max-width:15em}
+.cover-dek{font-family:var(--serif);font-size:clamp(16.5px,2.2vw,20px);line-height:1.62;color:var(--muted);max-width:58ch;margin:24px 0 0}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.btn{min-height:46px;display:inline-flex;align-items:center;padding:11px 20px;border:1px solid var(--brand);border-radius:2px;background:var(--brand);color:var(--sheet);font:700 13.5px var(--sans);letter-spacing:.04em;cursor:pointer}
+.btn:hover{background:var(--brand-deep);border-color:var(--brand-deep)}
+.btn.secondary{background:transparent;color:var(--brand);border-color:var(--line-strong)}
+.btn.secondary:hover{border-color:var(--brand);background:transparent}
+.section{padding:clamp(42px,7vw,80px) 0}
+.section.alt{background:var(--paper-2,transparent);outline:1px solid var(--line);outline-offset:-1px}
+.section-head{margin-bottom:28px}
+.section-head h2{font-family:var(--serif);font-weight:700;font-size:clamp(23px,3.2vw,32px);line-height:1.12;margin:6px 0 0;letter-spacing:-.012em}
+.section-head h2::after{content:"";display:block;width:46px;height:4px;background:var(--accent);margin-top:14px}
+.lede{font-family:var(--serif);font-size:17.5px;line-height:1.65;color:var(--muted);max-width:60ch;margin:18px 0 0}
+.list{list-style:none;margin:0;padding:0;border-top:1px solid var(--line-strong)}
+.list li{border-bottom:1px solid var(--line)}
+.list a{display:flex;gap:22px;align-items:baseline;padding:18px 6px;transition:background .15s ease,padding-left .15s ease}
+.list a:hover{background:var(--sheet);padding-left:14px}
+.list b{font-family:var(--serif);font-size:19px;line-height:1.3}
+.list a:hover b{color:var(--brand)}
+.list small{display:block;font:13px var(--sans);color:var(--muted);margin-top:3px}
+.list .meta{margin-left:auto;flex:none;font:750 11px var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--dim)}
+.prose{max-width:720px;margin:0 auto;padding:clamp(28px,5vw,54px) 0 26px}
+.prose h2{font-family:var(--serif);font-size:clamp(22px,3vw,29px);line-height:1.16;margin:44px 0 12px;padding-top:24px;border-top:1px solid var(--line)}
+.prose h3{font-family:var(--serif);font-size:19.5px;margin:28px 0 8px}
+.prose h3::before{content:"";display:inline-block;width:20px;height:4px;background:var(--accent);margin-right:11px;vertical-align:middle}
+.prose p,.prose li{font-family:var(--serif);font-size:18px;line-height:1.78}
+.prose p{margin:0 0 19px}
+.prose ul,.prose ol{padding-left:26px;margin:0 0 19px}
+.prose li+li{margin-top:9px}
+.prose a{color:var(--brand);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+.prose blockquote{margin:32px 0;padding:6px 0 6px 24px;border-left:4px solid var(--accent);font-family:var(--serif);font-style:italic;font-size:21px;line-height:1.5}
+.prose img{max-width:100%;border:1px solid var(--line);padding:6px;background:var(--sheet)}
+.crumb{padding:18px 0 10px;font:11.5px var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--dim)}
+.crumb a{color:var(--muted)}.crumb a:hover{color:var(--accent)}
+.byline{margin:16px 0 0;font-size:13px;color:var(--muted);border-top:1px solid var(--line);padding-top:13px}
+.foot{margin-top:44px;border-top:3px double var(--line-strong);background:var(--paper-2,transparent)}
+.foot-in{padding:34px 0 30px;display:flex;flex-wrap:wrap;gap:14px 34px;justify-content:space-between;font:13px var(--sans);color:var(--muted)}
+.foot-in a:hover{color:var(--ink)}
+.foot small{display:block;margin-top:8px;font:italic 12.5px var(--serif);color:var(--dim)}
+.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+.pub-card{border:1px solid var(--line-strong);border-top:6px solid var(--pc);background:var(--sheet);padding:26px 26px 22px;display:flex;flex-direction:column}
+.pub-card h3{font-family:var(--serif);font-size:24px;margin:0 0 4px;letter-spacing:-.01em}
+.pub-card .pc-kicker{font:800 10.5px var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--pc);margin:0 0 12px}
+.pub-card p{font-size:14.5px;line-height:1.6;color:var(--muted);margin:0 0 18px}
+.pub-card .btn{margin-top:auto;align-self:flex-start}
+.pub-card.live{box-shadow:var(--shadow)}
+.pub-card.soon{opacity:.92}
+.soon-tag{font:800 10px var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--muted);border:1px dashed var(--line-strong);align-self:flex-start;padding:8px 12px;margin-top:auto}
+@media(max-width:820px){.cards{grid-template-columns:1fr}.mast-tag{display:none}}
+@media print{.head,.foot,.actions,.btn{display:none!important}body{background:#fff}}
+
+/* ---- writers-mirrored chrome: theme toggle, drawer, hero settle, dark theme ---- */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.mast-tools{display:flex;align-items:center;gap:8px;margin-left:auto;align-self:center}
+.theme-toggle,.nav-toggle{display:inline-grid;place-items:center;width:36px;height:36px;background:none;border:1px solid var(--line-strong);border-radius:2px;color:var(--muted);cursor:pointer;padding:0}
+.theme-toggle:hover,.nav-toggle:hover{color:var(--ink);border-color:var(--ink)}
+.theme-toggle svg,.nav-toggle svg{width:18px;height:18px}
+.icon-moon{display:none}
+html[data-theme="dark"] .icon-moon{display:block}
+html[data-theme="dark"] .icon-sun{display:none}
+@keyframes bsettle{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.cover .kicker,.cover-title,.cover-dek{animation-name:bsettle;animation-duration:.5s;animation-fill-mode:both}
+.cover-title{animation-delay:.04s}
+.cover-dek{animation-delay:.12s}
+@media (prefers-reduced-motion:reduce){.cover .kicker,.cover-title,.cover-dek{animation:none}}
+#drawer-backdrop{position:fixed;inset:0;z-index:90;background:rgba(15,21,31,.5);opacity:0;pointer-events:none;transition:opacity .2s ease}
+#drawer-backdrop.show{opacity:1;pointer-events:auto}
+#site-drawer{position:fixed;z-index:100;top:0;right:0;bottom:0;width:min(360px,88vw);background:var(--paper);border-left:1px solid var(--line-strong);transform:translateX(102%);transition:transform .22s ease;overflow-y:auto;padding:0 22px 30px}
+#site-drawer.open{transform:none}
+.drawer-head{display:flex;align-items:center;justify-content:space-between;padding:20px 0 14px;border-bottom:3px double var(--line-strong);margin-bottom:8px}
+.drawer-head .logo{font-family:var(--serif);font-weight:700;letter-spacing:.14em;font-size:19px}
+.drawer-close{background:none;border:1px solid var(--line);border-radius:2px;color:var(--muted);width:34px;height:34px;display:grid;place-items:center;cursor:pointer}
+.drawer-group{padding:14px 0;border-bottom:1px solid var(--line)}
+.drawer-group>b{display:block;font:800 10.5px var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+#site-drawer a{display:block;padding:7px 0;color:var(--ink);border-bottom:1px solid var(--line)}
+#site-drawer a:hover{color:var(--accent)}
+body.drawer-open{overflow:hidden}
+html[data-theme="dark"]{--paper:#141a24;--sheet:#1a212c;--ink:#e7e3d8;--muted:#9aa1ad;--dim:#7b818d;--brand:#aec4e0;--brand-deep:#0f151f;--accent:#d0aa52;--line:rgba(231,227,216,.15);--line-strong:rgba(231,227,216,.34);--shadow:0 1px 2px rgba(0,0,0,.3),0 14px 38px rgba(0,0,0,.35);color-scheme:dark}
+html[data-theme="dark"] ::selection{background:rgba(208,170,82,.35)}
+/* ---- writers-mirrored masthead: edition block, nav bar, mega menus, cta ---- */
+.mast-edition{display:flex;flex-direction:column;gap:3px;flex:1;min-width:0}
+.mast-date{font-size:10.5px;font-weight:800;letter-spacing:.22em;color:var(--accent);text-transform:uppercase}
+.main-nav{border-top:1px solid var(--line);background:var(--paper)}
+.mast-nav{display:flex;align-items:center;gap:4px;min-height:46px}
+.main-nav a{padding:8px 13px;color:var(--muted);font-size:12px;font-weight:750;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap}
+.main-nav a:hover,.main-nav a[aria-current="page"]{color:var(--ink);box-shadow:inset 0 -3px 0 var(--accent)}
+.main-nav a.nav-cta{color:var(--sheet);background:var(--brand);border-radius:2px;margin-left:8px;padding:7px 14px}
+.main-nav a.nav-cta:hover{background:var(--brand-deep);color:var(--sheet);box-shadow:none}
+.has-mega{position:relative}
+.mega{display:none;position:absolute;z-index:80;left:0;top:100%;min-width:300px;background:var(--paper);border:1px solid var(--line-strong);border-top:3px solid var(--accent);box-shadow:var(--shadow);padding:12px 0}
+.has-mega:hover .mega,.has-mega:focus-within .mega{display:grid}
+.mega a{display:block;padding:9px 18px;font:500 13.5px var(--sans);letter-spacing:0;text-transform:none;color:var(--muted);white-space:normal}
+.mega a:hover{color:var(--brand);background:var(--sheet);box-shadow:none}
+.mega b{display:block;padding:9px 18px 3px;font:800 10px var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+.nav-toggle{display:none}
+.cover-facts{display:flex;gap:30px;flex-wrap:wrap;margin-top:34px;padding-top:22px;border-top:1px solid var(--line)}
+.cover-facts b{display:block;font-family:var(--serif);font-size:30px;line-height:1.15;color:var(--accent)}
+.cover-facts span{font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+@media (max-width:860px){.mast-nav{overflow-x:auto;scrollbar-width:none}.mast-nav::-webkit-scrollbar{display:none}}
+@media (max-width:760px){.mast-tag{display:none}.mast-date{font-size:9.5px}.nav-toggle{display:inline-grid}}
+
+
+.fp-week .fp-day { display: grid; grid-template-columns: 44px 1fr auto; gap: 14px; align-items: center; }
+.fp-day .fp-num { font-family: var(--serif); font-size: 22px; color: var(--accent); text-align: right; }
+.fp-day small { display: block; color: var(--dim); font-size: 12.5px; margin-top: 2px; }
+.fp-day.done { opacity: .55; }
+.fp-day.done .fp-num::after { content: " ✓"; color: var(--brand); }
+.wp-grid { display: grid; gap: 10px; }
+.wp-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.wp-day { width: 96px; flex: none; font-weight: 700; font-size: 14px; }
+.wp-chip { border: 1px solid var(--line); background: var(--paper); border-radius: 99px; padding: 9px 16px; font: 600 13px var(--sans); color: var(--muted); cursor: pointer; }
+.wp-chip.on { border-color: var(--brand); color: var(--brand); }
+.wp-chip.on::after { content: " ✓"; font-weight: 700; }
+.fp-progressbar { height: 10px; background: var(--sheet); border: 1px solid var(--line); border-radius: 99px; overflow: hidden; }
+.fp-fill { height: 100%; width: 0%; background: var(--brand); transition: width .3s ease; }
+@media (max-width: 640px) { .fp-week .fp-day { grid-template-columns: 34px 1fr; } .fp-day .fp-done { grid-column: 2; justify-self: start; } }
+
+html{color-scheme:light}
+html[data-theme="dark"]{--paper:#131318;--sheet:#1b1b23;--ink:#e9e6df;--muted:#a7a29a;--dim:#7e7970;--brand:#4a7aa8;--brand-deep:#3a628c;--accent:#c9994e;--line:rgba(233,230,223,.14);--line-strong:rgba(233,230,223,.32);--shadow:0 1px 2px rgba(0,0,0,.45),0 14px 38px rgba(0,0,0,.5);color-scheme:dark}
+html[data-theme="dark"] .btn{color:#fff}
+html[data-theme="dark"] .skip-link{color:#fff}
+html[data-theme="dark"] ::selection{background:rgba(201,153,78,.35)}
+.theme-btn{margin-left:auto;flex:none;align-self:center;border:1px solid var(--line-strong);background:transparent;color:var(--muted);border-radius:99px;width:44px;height:36px;cursor:pointer;font-size:15px;line-height:1}
+.theme-btn:hover{color:var(--ink);border-color:var(--accent)}
+.h-layout{display:grid;grid-template-columns:236px minmax(0,1fr);gap:48px;align-items:start}
+.h-side{position:sticky;top:112px;padding:28px 0}
+.h-side-title{font:800 10.5px var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--dim);margin:0 0 10px;padding-left:10px}
+.h-side nav{display:block}
+.h-side nav a{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:9px 10px;border-left:2px solid transparent;font:600 13.5px var(--sans);color:var(--muted)}
+.h-side nav a:hover{color:var(--ink);background:var(--sheet)}
+.h-side nav a.active{color:var(--brand);border-left-color:var(--brand);background:var(--sheet)}
+.h-side nav a.flag{color:var(--accent)}
+.h-side nav a.active.flag{color:var(--accent)}
+.h-side nav a .n{font:700 10.5px var(--sans);color:var(--dim);border:1px solid var(--line);padding:1px 7px;border-radius:99px;flex:none}
+.h-main .cover{padding:clamp(30px,5vw,58px) 0 clamp(26px,4vw,44px)}
+.h-main h1.cover-title{font-size:clamp(30px,4.8vw,52px)}
+.h-sec-card{border:1px solid var(--line);padding:20px 22px;background:var(--sheet)}
+.h-sec-card h3{font-family:var(--serif);font-size:21px;margin:6px 0 6px}
+.h-sec-card p{margin:0;color:var(--muted);font-size:14.5px}
+.h-sec-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+@media (max-width:920px){.h-layout{display:block}.h-side{position:static;padding:16px 0;border-bottom:1px solid var(--line)}
+.h-side nav{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px}
+.h-side nav a{border:1px solid var(--line);border-radius:99px;padding:7px 14px;white-space:nowrap;border-left-width:1px}
+.h-side nav a.active{border-color:var(--brand)}
+.h-sec-grid{grid-template-columns:1fr}}
+</style>
+</head><body><a class="skip-link" href="#main">Skip to content</a>
+<header class="head"><div class="wrap mast"><a class="mast-brand" href="/home/">BRYME&nbsp;<span style="color:var(--accent)">HOME&nbsp;&amp;&nbsp;DIY</span></a><div class="mast-edition"><span class="mast-date">SEPTEMBER 2026 · THE FIX-IT DESK</span><span class="mast-tag">Fix it. Clean it. Maintain it. Understand it.</span></div><div class="mast-tools"><button type="button" class="theme-btn" id="home-theme" aria-pressed="false" aria-label="Toggle dark mode" title="Toggle dark mode">&#9789;</button></div></div></header><nav class="main-nav"><div class="wrap mast-nav"><div class="has-mega"><a href="/home/fix/">Fix it</a><div class="mega"><b>The fix shelf</b><a href="/home/fix/">All fixes</a><a href="/home/how-to-fix-a-dripping-tap/">Dripping tap</a><a href="/home/how-to-unblock-a-toilet/">Unblock a toilet</a><a href="/home/how-to-fix-a-slow-draining-sink/">Slow-draining sink</a><a href="/home/washing-machine-wont-drain/">Washer won’t drain</a><a href="/home/fridge-not-cold-enough/">Fridge not cold</a><a href="/home/why-does-my-circuit-breaker-keep-tripping/">Breaker keeps tripping</a><a href="/home/how-to-bleed-a-radiator/">Bleed a radiator</a></div></div><div class="has-mega"><a href="/home/maintain/">Maintain</a><div class="mega"><b>The care shelf</b><a href="/home/maintain/">All maintenance</a><a href="/home/water-damage-insurance-coverage/">Water damage & insurance</a><a href="/home/seasonal-home-maintenance-checklist/">The seasonal checklist</a><a href="/home/deep-clean-schedule/">Deep-clean schedule</a><a href="/home/how-to-clean-a-washing-machine/">Clean a washing machine</a><a href="/home/fridge-coils-twice-a-year/">Fridge coils, twice a year</a><a href="/home/dryer-lint-every-load/">Dryer lint, every load</a><a href="/home/hvac-filter-change-habit/">HVAC filter habit</a><a href="/home/test-alarms-monthly/">Test alarms monthly</a></div></div><div class="has-mega"><a href="/home/appliances/">Appliances</a><div class="mega"><b>The appliance shelf</b><a href="/home/appliances/">All appliances</a><a href="/home/dishwasher-loading-mistakes/">Dishwasher loading</a><a href="/home/stop-pre-rinsing-dishes/">Stop pre-rinsing dishes</a><a href="/home/vinegar-in-the-dishwasher/">Vinegar in the dishwasher</a><a href="/home/smart-appliances-worth-it/">Smart appliances, worth it?</a><a href="/home/washing-machine-heavy-items/">Heavy items in the washer</a><a href="/home/garbage-disposal-mistakes/">Garbage disposal</a></div></div><div class="has-mega"><a href="/home/understand/">Understand</a><div class="mega"><b>The knowledge shelf</b><a href="/home/understand/">All explainers</a><a href="/home/condensation-vs-rising-vs-penetrating-damp/">The three damp types</a><a href="/home/building-regs-vs-planning-permission/">Building regs vs planning</a><a href="/home/renter-vs-owner-repairs/">Renter vs owner repairs</a><a href="/home/part-p-explained/">Part P, explained (UK)</a><a href="/home/us-home-permits/">US home permits</a><a href="/home/uk-us-plumber-rules/">UK vs US plumber rules</a><a href="/home/smart-thermostat-payback/">Smart thermostat payback</a><a href="/home/mortgage-payments-explained/">Mortgage, explained</a><a href="/home/rent-vs-buy-explained/">Rent vs buy, the math</a></div></div><div class="has-mega"><a href="/home/mistakes/">Mistakes &amp; safety</a><div class="mega"><b>Avoid these</b><a href="/home/mistakes/">All mistakes</a><a href="/home/electrical-fire-warning-signs/">Electrical fire warning signs</a><a href="/home/outlet-overloading-danger/">Outlet overloading</a><a href="/home/co-smoke-alarm-expiry/">Alarm expiry dates</a><a href="/home/how-many-smoke-co-alarms/">How many alarms</a><a href="/home/painting-over-damp/">Painting over damp</a><a href="/home/bathroom-remodel-mistakes/">Bathroom remodel mistakes</a><a href="/home/grout-sealant-neglect/">Grout &amp; sealant neglect</a></div></div><a class="nav-cta" href="/home/seasonal-home-maintenance-checklist/">Once-a-season checklist</a></div></nav><div class="wrap h-layout"><aside class="h-side"><p class="h-side-title">The desk</p><nav aria-label="Home and DIY sections"><a href="/home/">Desk home</a><a href="/home/fix/">Fix it<span class="n">10</span></a><a href="/home/maintain/">Maintain it<span class="n">19</span></a><a href="/home/appliances/">Appliances<span class="n">20</span></a><a href="/home/understand/">Understand it<span class="n">22</span></a><a class="flag" href="/home/mistakes/">Common mistakes<span class="n">9</span></a><a class="flag" href="/home/seasonal-home-maintenance-checklist/">The seasonal checklist</a></nav></aside><main id="main" class="h-main"><nav class="crumb" style="padding-top:22px"><a href="/home/">Home &amp; DIY</a> / <a href="/home/owning/">Owning it</a> / Rent vs buy: the real math (and a calculator that runs it)</nav><section class="cover"><p class="kicker">Owning it · practical guide</p><h1 class="cover-title" style="font-size:clamp(30px,4.8vw,52px)">Rent vs buy: the real math (and a calculator that runs it)</h1><p class="byline">BRYME Home &amp; DIY desk · reviewed 2026-09-09 · general information, not professional advice</p></section><section class="section alt"><div class="wrap"><p class="lede"><b>In one line:</b> Renting is cheaper month-to-month in all 50 largest US metros in 2026 — but tenure and the price-to-rent ratio decide. The full ledger both ways, with an in-page calculator.</p></div></section><section class="section"><div class="prose"><div class="prose">
+<p class="byline" style="margin-top:18px">By <b>Ibrahim Sodiq</b> · published 12 September 2026 · general information, never financial advice — your market and your horizon decide</p>
+<p><b>The 60-second answer.</b> In 2026’s market, the monthly math genuinely favors renting in most of America: a March 2026 Realtor.com analysis found renting a starter home cheaper than buying one in <b>all 50 of the largest US metros</b>, saving renters about <b>$920 a month on average (≈55%)</b>. The gap runs from $64/month in Pittsburgh to $2,425 in San Jose. But that is the <em>monthly</em> snapshot — the full-math answer adds two more variables: <b>how long you’ll stay</b> (transaction costs eat short tenures alive) and your market’s <b>price-to-rent ratio</b> (the US national sits around 16 in mid-2026 — the middle zone, where neither side wins by default).</p>
+<p>The honest headline nobody’s selling: <b>renting wins the short term almost everywhere; buying wins the long term in balanced markets — and the crossover is later than it has been in decades.</b> The calculator below runs your actual numbers instead of a slogan.</p>
+<p>New here? Two pages pair with this one: <a href="/home/mortgage-payments-explained/">what a mortgage payment really contains</a>, and <a href="/home/renter-vs-owner-repairs/">which repairs are actually yours as a renter vs an owner</a>.</p>
+
+<h2 id="true-costs">Section 1 · What each side really pays</h2>
+<p>The “buying is competitive” headlines usually compare rent against principal + interest only. Add the rest of the truth and — per the Realtor.com analysis — the monthly cost of owning moves by <b>30% or more</b>:</p>
+<table class="lg-table lg-scroll">
+<thead><tr><th>Buying really costs</th><th>Renting really costs</th></tr></thead>
+<tbody>
+<tr><td>Principal &amp; interest (the only part headlines quote)</td><td>Rent (often rising yearly — you assume an inflation rate, it’s editable)</td></tr>
+<tr><td>Property taxes · home insurance · PMI under 20% down (<a href="/home/mortgage-payments-explained/">the payment, itemized</a>)</td><td>Renter’s insurance (cheap, but real)</td></tr>
+<tr><td>Maintenance — NAHB operating-cost research puts routine upkeep near <b>0.5% of home value a year</b>; the common budgeting rule of thumb is 1–2% (newer homes at the bottom, 20-year-old homes at the top)</td><td>Zero maintenance exposure — the landlord eats the boiler</td></tr>
+<tr><td>Transaction costs both doors: buying ~2–5% closing (commonly quoted range; your Loan Estimate states yours), selling ~5–6% in agent + fees</td><td>Security deposit + moving costs, both recoverable-ish</td></tr>
+<tr><td>Equity: part of every payment buys an asset that (historically) appreciates</td><td>Zero equity — but every dollar NOT sunk in a house can be invested elsewhere</td></tr>
+</tbody></table>
+<p>Neither ledger is “wasted money.” Rent buys flexibility and zero risk; a mortgage buys forced savings and fixed housing costs — with real exposure attached.</p>
+
+<h2 id="ratio">Section 2 · The price-to-rent ratio: one number, first pass</h2>
+<p>Divide the home price by one year of rent for a comparable place. The common interpretation bands:</p>
+<table class="lg-table lg-scroll">
+<thead><tr><th>Ratio</th><th>Reading</th></tr></thead>
+<tbody>
+<tr><td><b>Below 15</b></td><td>Buy-leaning territory — prices are low relative to rent</td></tr>
+<tr><td><b>15–20</b></td><td>The middle zone — rates and how long you’ll stay decide</td></tr>
+<tr><td><b>Above 20</b></td><td>Rent-leaning territory — buying the same home costs a lot more than renting it</td></tr>
+</tbody></table>
+<p>The US national ratio sat around <b>16 in mid-2026</b> (typical home value ≈$372,000 against ≈$1,965/month typical rent) — meaning the average American metro is genuinely in the toss-up zone, and the market math is done by metro, not by nation. A $400,000 home against a $2,000/month rental is a ratio of 16.7: the calculator below prints your exact number and band.</p>
+
+<h2 id="breakeven">Section 3 · The horizon: why staying put is the hidden down payment</h2>
+<p>Transaction costs are charged at the doors, so tenure is the lever that decides everything:</p>
+<ul>
+<li><b>Under ~3 years:</b> renting is almost always the better deal — closing + selling costs on a bought home typically consume most of the equity a short tenure builds.</li>
+<li><b>3–5 years:</b> genuinely market-dependent — this is the zone where you run your real numbers (the calculator’s whole job).</li>
+<li><b>5+ years:</b> buying’s home turf — fixed payments vs rising rents, equity compounding, transaction costs amortized thin.</li>
+</ul>
+<p>And 2026’s twist, from the same analysis: the <b>cost of entry</b> to buy the median home has roughly doubled since 2020 (from ~$66,000 to over $120,000 in cash to close), while national rents have fallen for most of two years. That combination — expensive doors, softening rents — pushes the crossover year later than it’s been in a generation.</p>
+
+<h2 id="calculator">Section 4 · The buy-vs-rent calculator</h2>
+<style>
+.bvr-grid{display:flex;flex-wrap:wrap;gap:22px;border:1px solid var(--line-strong);border-radius:12px;padding:18px 20px;background:var(--sheet);max-width:820px}
+.bvr-fields{flex:1;min-width:260px;display:flex;flex-direction:column;gap:9px;font-size:14px}
+.bvr-fields b{margin-top:6px}
+.bvr-fields label{font-size:13px;display:flex;flex-direction:column;gap:3px}
+.bvr-fields input,.bvr-fields select{padding:7px 9px;border:1px solid var(--line-strong);border-radius:8px;font:inherit;font-size:14px;background:var(--card)}
+.bvr-out{flex:1;min-width:260px}
+.bvr-out table{width:100%;border-collapse:collapse}
+.bvr-out td{padding:6px;border-bottom:1px solid var(--line);font-size:13px;vertical-align:top}
+.bvr-out p{font-size:14px;margin:10px 0 0}
+.bvr-disc{font-size:13px;color:var(--line-strong);max-width:820px;margin-top:10px}
+</style>
+<div id="buy-vs-rent-calc"></div>
+<noscript><p><b>Static version:</b> compute your price-to-rent ratio (price ÷ 12 months of comparable rent). Below 15 leans buy, 15–20 is the middle zone, above 20 leans rent. Then weigh your honest tenure: under ~3 years, renting usually wins; 5+ years, buying usually wins; in between — run the monthly ledgers both ways including tax, insurance and maintenance.</p></noscript>
+<p class="bvr-disc" style="margin-top:6px">The simulation runs entirely in your browser: it recovers the owner’s equity (appreciation minus selling costs, minus remaining loan balance) and credits the renter with the invested monthly difference. Every assumption is an input, not an opinion — the appreciation and investment-return fields are where you disagree with it. General guidance, never financial advice.</p>
+
+<h2 id="beyond">Section 5 · What the math can’t know</h2>
+<ul>
+<li><b>Mobility:</b> a job, a partner, or a school district three years away outranks any ratio — the calculator prices a horizon; only you know it.</li>
+<li><b>Forced savings vs illiquidity:</b> a mortgage makes you wealthier on autopilot and poorer on demand — equity isn’t cash until you sell or borrow against it. The renter’s invested difference is liquid; the discipline isn’t automatic.</li>
+<li><b>Concentration:</b> buying puts your savings, your shelter and your local job market in one asset on one street. That’s a portfolio question, not a payment question.</li>
+<li><b>The maintenance reality:</b> the 1% line in the model is an average; real houses send lumpy bills — the <a href="/home/someday-maintenance-cost/">someday-cost rule</a> and an <a href="/home/emergency-repair-fund/">emergency repair fund</a> are what make the owner’s column survivable.</li>
+</ul>
+
+<h2 id="regional">Section 6 · Regional differences (US · UK · CA)</h2>
+<table class="lg-table lg-scroll">
+<thead><tr><th>Country</th><th>The structure</th><th>What it does to the math</th></tr></thead>
+<tbody>
+<tr><td><b>United States</b></td><td>The 30-year fixed mortgage, refinancable</td><td>Owning can lock housing costs for decades — and a rate drop is a re-trade, not a move. Few markets match this stability.</td></tr>
+<tr><td><b>United Kingdom</b></td><td>Short fixed deals (commonly 2–5 years) that then re-rate; first-time-buyer stamp duty relief to £300,000</td><td>Ownership payments re-set on a cycle — the “fixed forever” advantage is weaker, and the rate you renew into matters as much as the one you bought at.</td></tr>
+<tr><td><b>Canada</b></td><td>Typically ~5-year terms amortized over 25 years; insured borrowers stress-tested at contract +2% (5.25% floor); several provinces cap annual rent increases</td><td>Both sides are regulated: owning is harder to qualify for (the stress test), renting is more predictable (rent controls). The horizon math still decides — the calculator’s inputs just start from different numbers.</td></tr>
+</tbody></table>
+<p>Structures checked 12 September 2026 — thresholds and controls move; re-verify yours before relying on them.</p>
+
+<h2 id="wrong">Section 7 · If the decision went wrong</h2>
+<ul>
+<li><b>Bought, and the payment is eating you:</b> a <a href="/home/mortgage-payments-explained/#wrong">recast, refinance, or early-extra-principal reset</a> before anything drastic — and a room rented out beats a “For Sale” sign in a weak market.</li>
+<li><b>Bought, and you must leave:</b> rent the home out rather than sell into the loss — if the rent covers the owner’s column, time does the rest. If it doesn’t, price the shortfall honestly against selling now.</li>
+<li><b>Renting, and priced out of buying:</b> the disciplined version of “waiting” is investing the difference and watching your market’s ratio — not waiting for a rate that, when it arrives, may drag prices up with it (the same analysis’s warning about the sidelines crowd).</li>
+</ul>
+
+<h2 id="faq">FAQ</h2>
+<p><b>Is it cheaper to rent or buy in 2026?</b><br>
+Month-to-month, renting is cheaper in every one of the 50 largest US metros (Realtor.com, March 2026 — about $920/month on average). The full-math answer adds your tenure and local ratio: stay 5+ years in a buy-leaning market and the picture can flip.</p>
+<p><b>What is the price-to-rent ratio?</b><br>
+Home price divided by one year of rent for a comparable property. Below 15 leans buy, 15–20 is the middle zone, above 20 leans rent. The US national ratio was around 16 in mid-2026.</p>
+<p><b>How many years do you need to stay for buying to make sense?</b><br>
+Commonly cited breakevens: under ~3 years renting almost always wins; 3–5 years depends on the market; 5+ years favors buying. Transaction costs at both doors are why short tenures lose.</p>
+<p><b>Does renting really build wealth, though?</b><br>
+It can — but only the disciplined version: the money you don’t sink into a down payment and the monthly difference actually invested. Renting plus spending the difference builds nothing.</p>
+<p><b>What’s the biggest hidden cost of buying?</b><br>
+The doors: roughly 2–5% of the price to buy (closing costs) and around 5–6% to sell — charged regardless of how the market treated you in between. Maintenance running ~0.5–2% of the home’s value yearly is the other quiet one.</p>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"Article","headline":"Rent vs buy: the real math (and a calculator that runs it)",
+"description":"Renting is cheaper month-to-month in all 50 largest US metros in 2026 - but tenure and the price-to-rent ratio decide. The full ledger both ways, with an in-page buy-vs-rent calculator.",
+"author":{"@type":"Person","name":"Ibrahim Sodiq"},
+"publisher":{"@type":"Organization","name":"THE BRYME"},
+"datePublished":"2026-09-12","dateModified":"2026-09-12"},
+{"@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Is it cheaper to rent or buy in 2026?","acceptedAnswer":{"@type":"Answer","text":"Month to month, renting is cheaper in every one of the 50 largest US metros (Realtor.com, March 2026 - about $920 per month on average). The full-math answer adds your tenure and local price-to-rent ratio: stay five or more years in a buy-leaning market and the picture can flip."}},
+{"@type":"Question","name":"What is the price-to-rent ratio?","acceptedAnswer":{"@type":"Answer","text":"Home price divided by one year of rent for a comparable property. Below 15 leans buy, 15 to 20 is the middle zone, above 20 leans rent. The US national ratio was around 16 in mid-2026."}},
+{"@type":"Question","name":"How many years do you need to stay for buying to make sense?","acceptedAnswer":{"@type":"Answer","text":"Commonly cited breakevens: under about 3 years renting almost always wins; 3 to 5 years depends on the market; 5 or more years favors buying. Transaction costs at both doors are why short tenures lose."}},
+{"@type":"Question","name":"Does renting really build wealth, though?","acceptedAnswer":{"@type":"Answer","text":"It can - but only the disciplined version: the money not sunk into a down payment and the monthly difference actually invested. Renting plus spending the difference builds nothing."}},
+{"@type":"Question","name":"What's the biggest hidden cost of buying?","acceptedAnswer":{"@type":"Answer","text":"The doors: roughly 2 to 5 percent of the price to buy (closing costs) and around 5 to 6 percent to sell. Maintenance running roughly 0.5 to 2 percent of the home's value yearly is the other quiet one."}}]}]}
+</script>
+
+<h2>Sources (all checked 12 September 2026)</h2>
+<ul>
+<li>Realtor.com March 2026 analysis (renting cheaper than buying starter homes in all 50 largest US metros; ≈$920/month average savings ≈55%; range $64 Pittsburgh – $2,425 San Jose; full ownership costs add 30%+ over P&amp;I; median rent $1,686 May 2026; entry cash ~$66k (2020) → $120k+ (2026)) — as reported by Stacker syndication, 1 September 2026.</li>
+<li>Price-to-rent ratio bands (&lt;15 buy / 15–20 middle / &gt;20 rent) — rent.com dictionary; mid-2026 national ratio ≈16 (typical value $372,057 vs typical rent $1,965/mo) — lofty.ai data, July 2026.</li>
+<li>Breakeven horizons (&lt;3 / 3–5 / 5+ years) — the same Stacker/Realtor.com 2026 analysis, “break-even point like a financial advisor” framing.</li>
+<li>Maintenance: NAHB operating-cost research cited via HomeKeep (routine maintenance ≈0.54% of home value/yr); the 1–2%-of-value rule of thumb as current industry guidance (2026) — directional, age-dependent.</li>
+<li>Closing costs 2–5% and selling costs ~5–6% — commonly quoted industry ranges — directional; your Loan Estimate states yours.</li>
+<li>Freddie Mac Primary Mortgage Market Survey, 10 September 2026 — 30-year FRM average 6.76% (the calculator’s prefilled rate).</li>
+</ul>
+<p class="byline">Reviewed 12 September 2026 · market stats carry their checked dates · no professional reviewer is claimed: this page is general information, not financial advice.</p>
+</div>
+<script src="/assets/buy-vs-rent-calculator.js" defer></script></div></section><section class="section alt"><div class="section-head"><p class="kicker">Next</p><h2>Related on this desk.</h2></div><ul class="list"><li><a href="/home/mortgage-payments-explained/">Mortgage, explained</a></li><li><a href="/home/renter-vs-owner-repairs/">Renter vs owner repairs</a></li><li><a href="/home/someday-maintenance-cost/">The someday-cost rule</a></li></ul><div class="actions"><a class="btn secondary" href="/home/owning/">All of Owning it</a><a class="btn secondary" href="/home/mistakes/">Common mistakes</a></div></section><section class="section alt" style="border-left:4px solid var(--brand)"><div class="wrap"><p class="lede"><b>General information, not professional advice.</b> Homes differ — if a job is beyond your confidence or the guide’s boundary, that is what tradespeople are for.</p></div></section></main></div>
+<footer class="foot"><div class="wrap foot-in">
+<div>© 2026 THE BRYME — Home & DIY.</div>
+<div><a href="/home/about/">About</a> · <a href="/home/privacy/">Privacy</a> · <a href="/home/contact/">Contact</a> · <a href="/home/terms/">Terms</a> · <a href="/home/editorial-policy/">Editorial policy</a> · <a href="/home/corrections/">Corrections</a></div>
+<div><a href="https://thebryme.com/">thebryme.com</a></div>
+</div></footer>
+</body></html>
+
+
+</body></html>

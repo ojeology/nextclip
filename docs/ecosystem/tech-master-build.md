@@ -557,3 +557,11 @@ Chain: 922 pages / 99,128 internal links OK; validator ok; allowlist v26 (912 ro
 - Wiring: owning section; related_map ×3; knowledge-shelf nav row ("Mortgage, explained"); internal links only to existing pages (repair fund, someday-cost, water-damage guide).
 - Chain: 974 pages / 103,836 internal links OK; allowlist v26 (963); validators pass; ads OFF.
 - Next in queue: buy-vs-rent calculator, repair-cost estimator, moving-cost estimator, interactive seasonal checklist.
+
+## Batch 35 — 12 Sep 2026 (Directive tool queue #2: buy-vs-rent calculator + carrier article)
+- TOOLS FIRST: /assets/buy-vs-rent-calculator.js (CSP-safe IIFE, node --check clean) — full monthly simulation: owner column (P&I + tax + maintenance + insurance, equity recovered on sale = appreciation − selling costs − remaining balance) vs renter column (rent inflating at an assumed rate, upfront + monthly difference invested at an assumed return). Prints price-to-rent ratio + band, cash to close, owner's monthly, rent start→end, net cost both ways, and a verdict that scans the FULL 30-year schedule for the crossover year (sim verified standalone: prefills → rent ahead at 3/7/15yr, buy ahead at 30yr, crossover ≈ yr 23 — consistent with the article's own thesis). Visible disclaimer + PMMS rate stamp.
+- ARTICLE SHIPPED: /home/rent-vs-buy-explained/ — structure standard: 60-second answer (Realtor.com Mar 2026: renting cheaper in all 50 largest metros, ~$920/mo ≈55% avg; entry cash ~$66k→$120k+ since 2020), true-cost ledger both ways, price-to-rent bands (<15/15–20/>20; national ≈16 mid-2026), breakeven horizons (<3/3–5/5+), calculator §4, what-math-can't-know, US/UK/CA structure table, if-decision-wrong, FAQ + FAQPage JSON-LD (5/5 mirrored), sources with dates.
+- DIRECTIONAL LABELS APPLIED: closing 2–5% / selling ~5–6% / maintenance 1–2% rule flagged as commonly-quoted ranges (NAHB ~0.54% research anchor cited); appreciation + investment return + rent inflation = explicit editable assumptions.
+- Wiring: owning section; related_map ×3 (mortgage page, renter-vs-owner-repairs, someday-cost); knowledge-shelf nav row ("Rent vs buy, the math").
+- Chain: 975 pages / 104,027 internal links OK; allowlist v26 (964); validators pass; ads OFF.
+- Next in queue: repair-cost estimator, moving-cost estimator, interactive seasonal checklist.
