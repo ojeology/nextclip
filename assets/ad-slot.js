@@ -38,6 +38,22 @@
     slot.appendChild(label);
     slot.appendChild(frame);
 
+    /* In-Page Push unit (owner authorization "any ads", 12 Sep 2026): the supplied
+       invoke.js + container pair, embedded exactly as provided. On-page format -
+       no popunder, no redirect, no new tabs; adult ads remain OFF. */
+    var ippScr = document.createElement("script");
+    ippScr.async = true;
+    ippScr.setAttribute("data-cfasync", "false");
+    ippScr.src = "https://pl31304018.profitableratecpmnetwork.com/ba9b1b5b135e5f465955aadf88ed0ad5/invoke.js";
+    slot.appendChild(ippScr);
+    var ipp = document.createElement("div");
+    ipp.id = "container-ba9b1b5b135e5f465955aadf88ed0ad5";
+    ipp.className = "bryme-ad-ipp";
+    slot.appendChild(ipp);
+    var css2 = document.createElement("style");
+    css2.textContent = ".bryme-ad-ipp{margin-top:8px;min-height:0}";
+    document.head.appendChild(css2);
+
     /* content ↓ ad ↓ more content: before the 3rd h2 when the page has one,
        before the 2nd on shorter pages, above the footer otherwise. */
     var h2s = main.querySelectorAll("h2");
@@ -82,7 +98,9 @@
       var empty = false;
       try {
         var b = frame.contentDocument && frame.contentDocument.body;
-        empty = !b || b.children.length === 0;
+        var ippBox = document.getElementById("container-ba9b1b5b135e5f465955aadf88ed0ad5");
+        var ippFilled = ippBox && ippBox.children.length > 0;
+        empty = (!b || b.children.length === 0) && !ippFilled;
       } catch (e) { return; }
       if (!empty) return;
       tries++;
