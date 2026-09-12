@@ -57,6 +57,7 @@
 
     var d = frame.contentDocument || (frame.contentWindow && frame.contentWindow.document);
     if (!d) return;
+    function fill() {
     d.open();
     /* CSP-clean: the provider's atOptions lives in an EXTERNAL same-origin file
        (assets/ad-300x250-config.js, values unaltered) because the site's
@@ -69,15 +70,26 @@
       "</body></html>"
     );
     d.close();
+    }
 
-    /* Failsafe: if the invoke script never rendered anything (blocked or down),
-       collapse the slot. If the creative loaded cross-origin, leave it alone. */
-    setTimeout(function () {
+    fill();
+
+    /* Failsafe: slow networks and empty fills get two retries (7s, 15s, 23s)
+       before the slot collapses. Once the creative lands, its document turns
+       cross-origin and the checks stop touching it. */
+    var tries = 0;
+    function check() {
+      var empty = false;
       try {
         var b = frame.contentDocument && frame.contentDocument.body;
-        if (b && b.children.length === 0) slot.style.display = "none";
-      } catch (e) { /* cross-origin access failure = creative is live */ }
-    }, 5000);
+        empty = !b || b.children.length === 0;
+      } catch (e) { return; }
+      if (!empty) return;
+      tries++;
+      if (tries <= 2) { fill(); setTimeout(check, 8000); }
+      else slot.style.display = "none";
+    }
+    setTimeout(check, 7000);
   }
 
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);

@@ -582,3 +582,7 @@ Chain: 922 pages / 99,128 internal links OK; validator ok; allowlist v26 (912 ro
 - Deploy dep-dail1e1594qs7396lprg (commit ecb1a68e) LIVE in ~30s; new CSP verified in served headers.
 - Ad pipeline now fully unblocked end-to-end: 934 pages carry the component → config file same-origin (200, key byte-identical) → provider invoke allowed by CSP → provider endpoint alive. Owner should hard-refresh to see the labelled 300x250 slot; fill is subject to the network's geo/fill.
 - API key hygiene: owner instructed to DELETE the key now that the change is verified.
+
+## Batch 36d — 12 Sep 2026 (suspended duplicate deleted + ad retries widened)
+- Owner instruction executed: suspended static site srv-d9v64eou01pc73b8gpng (bryme-ss75, same repo, showing "Service Suspended") DELETED via Render API (204, verified 404). Live site srv-d9v6125g1s2s73fq18ag untouched.
+- ad-banner.js failsafe reworked: single 5s check → check at 7s + up to 2 refills 8s apart (~23s total) before collapsing the slot — mobile/slow-network tolerant; cross-origin (creative loaded) stops all checks.
