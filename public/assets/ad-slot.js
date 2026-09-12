@@ -1,4 +1,4 @@
-/* BRYME advertising component v3 (ad-slot.js twin). */
+/* BRYME advertising component v4 (ad-slot.js twin). */
 (function () {
   "use strict";
   if (window.__BRYME_AD__) return;
@@ -55,11 +55,27 @@
     else if (f1) f1.parentNode.insertBefore(s2, f1);
     else main.appendChild(s2);
 
+    /* placement 3: fixed desktop rail (wide screens only, never over content) */
+    var s3 = makeSlot("Advertisement");
+    s3.className = "bryme-ad bryme-ad-side";
+    var rail = document.createElement("iframe");
+    rail.id = "bryme-ad-side-300x250";
+    rail.width = "300";
+    rail.height = "250";
+    rail.setAttribute("scrolling", "no");
+    rail.setAttribute("frameborder", "0");
+    rail.setAttribute("title", "Advertisement");
+    rail.setAttribute("loading", "lazy");
+    s3.appendChild(rail);
+    document.body.appendChild(s3);
+
     var css = document.createElement("style");
     css.textContent =
       ".bryme-ad{margin:30px auto;max-width:300px;text-align:center;overflow:hidden}" +
       ".bryme-ad-label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#8a94a6;margin-bottom:6px}" +
       ".bryme-ad-ipp{margin-top:8px;min-height:0}" +
+      ".bryme-ad-side{display:none}" +
+      "@media(min-width:1420px){.bryme-ad-side{display:block;position:fixed;right:10px;top:50%;transform:translateY(-50%);margin:0;z-index:50}}" +
       "@media(max-width:340px){.bryme-ad iframe{transform:scale(.9);transform-origin:top center}}";
     document.head.appendChild(css);
 
@@ -92,6 +108,29 @@
         else s1.style.display = "none";
       }
       setTimeout(check, 7000);
+    }
+
+    /* rail fill (same zone, own document) + self-clean if empty */
+    var rd = rail.contentDocument || (rail.contentWindow && rail.contentWindow.document);
+    if (rd) {
+      rfill();
+      function rfill() {
+        rd.open();
+        rd.write(
+          '<!doctype html><html><head><meta name="viewport" content="width=device-width,initial-scale=1">' +
+          '<style>html,body{margin:0;padding:0;overflow:hidden}</style></head><body>' +
+          '<script src="/assets/ad-300x250-config.js?v=3"><\/script>' +
+          '<script src="https://www.highrevenueformat.com/51fc16f82ddc690721deee07bcd8bccd/invoke.js"><\/script>' +
+          "</body></html>"
+        );
+        rd.close();
+      }
+      setTimeout(function () {
+        try {
+          var b = rd.body;
+          if (!b || b.children.length === 0) { s3.remove(); return; }
+        } catch (e) { /* cross-origin = creative live */ }
+      }, 9000);
     }
 
     /* IPP self-clean: if nothing filled by ~25s, retire the bottom slot */

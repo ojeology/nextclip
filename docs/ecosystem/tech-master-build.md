@@ -601,3 +601,10 @@ Chain: 922 pages / 99,128 internal links OK; validator ok; allowlist v26 (912 ro
 - Stamp-script lesson (fixed twice): twin generation must anchor on '"use strict";' — '(function () {' matches setInterval/setTimeout lines too.
 - Chain: 977 pages / 104,812 links OK; allowlist v26 (965); validators pass; AdSense still OFF.
 - NEXT (proposed, not yet built): ① desktop-only sticky sidebar unit (highest clean-RPM lever; needs per-desk grid CSS — do as its own batch); ② cookieless analytics (GoatCounter/Cloudflare Insights/Plausible) so placement RPM is measurable AND the domain-decision "traffic data" exists; ③ at AdSense flip: strip IPP (push-style), keep clean banners, add ads.txt+ca-pub.
+
+## Batch 38 — 12 Sep 2026 (layout v4: fixed desktop rail + analytics handoff)
+- Owner double-continue on the maximise plan → v4 shipped: PLACEMENT 3 = fixed right rail, 300x250, same zone, own lazy iframe, hidden below 1420px viewports (margin math guarantees zero content overlap), body-mounted, self-collapses at 9s if empty. In-content + end-of-content unchanged. Zones: mid=banner, bottom=IPP, rail=banner. jsdom proof: 3 slots, rail in body, exactly 1 in-content banner + 1 IPP.
+- Pack §12 amended: one-unit-per-AREA decision recorded (§1 Standard), §5 bans absolute.
+- Chain: 977 pages / 104,812 links OK; validators pass.
+- ANALYTICS (the measurement leg): requires an owner-created free account (agent cannot create third-party accounts). Recommended: Cloudflare Web Analytics (free, cookieless, one script tag, CSP-compatible). Waiting on the owner's CF beacon token; wire-in is a 10-minute batch on receipt. (GoatCounter = paid for commercial use; Plausible = paid.)
+- Next up after analytics: back to the directive tool queue (repair-cost estimator).
