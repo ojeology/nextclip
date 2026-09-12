@@ -615,3 +615,8 @@ Chain: 922 pages / 99,128 internal links OK; validator ok; allowlist v26 (912 ro
 - Green diagnostic overlay REMOVED entirely (served its purpose: confirmed the pipeline + pointed at zone behaviour).
 - "Only the bottom shows" explained: the 300x250 banner zone bids low/zero for Nigerian traffic; In-Page Push fills almost everywhere. With v5, pages now look clean: only genuinely filled units render. On wide desktop screens the rail may still fill (US/UK visitors most likely).
 - Chain: 977 pages / 104,812 links OK; validators pass; three byte-identical twins (asset law).
+
+## Batch 39b — 12 Sep 2026 (indexing push + green-box proof + format advice)
+- Green-box proof: independent-network fetch of /assets/ad-slot.js = ZERO bryme-ad-debug bytes (v5 live worldwide, deploy 1371bf9e7, last-modified 19:50Z); sandbox POP still pinned on v4 (known pattern). Any green box on the owner's device = stale browser/proxy copy — hard refresh / clear cache / wait out the TTL.
+- PINGS: Bing sitemap ping ×7 → 203 (accepted/queued). IndexNow POST api.indexnow.org → HTTP 200 with ALL 965 allowlisted URLs (host bryme.onrender.com, key 1740cd…, key file verified 200). Google: no ping endpoint exists (deprecated) — discovery via robots.txt sitemaps (already live); exact indexed counts require owner's Search Console property (free, 2 min) — the only source of truth for "are all pages indexed."
+- FORMAT ADVICE (pending owner): add Adsterra NATIVE BANNER zone (site = bryme.onrender.com) — clean, high-fill, blends as content; plan = replace the low-fill 300x250 mid-content unit with it (keeps IPP bottom + 300x250 rail). NO popunder/social-bar/direct-link auto-injection (§5 + AdSense endgame). 728x90 leaderboard optional for the desktop rail later.
