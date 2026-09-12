@@ -1,4 +1,4 @@
-/* BRYME advertising component v4 (ad-banner.js twin - legacy path kept alive for cached HTML; asset law). */
+/* BRYME advertising component v5 (ad-banner.js twin - legacy path kept alive for cached HTML; asset law). */
 (function () {
   "use strict";
   if (window.__BRYME_AD__) return;
@@ -100,7 +100,7 @@
         var empty = false;
         try {
           var b = frame.contentDocument && frame.contentDocument.body;
-          empty = !b || b.children.length === 0;
+          empty = !b || Array.prototype.filter.call(b.children || [], function (c) { return c.tagName !== "SCRIPT"; }).length === 0;
         } catch (e) { return; }
         if (!empty) return;
         tries++;
@@ -128,7 +128,8 @@
       setTimeout(function () {
         try {
           var b = rd.body;
-          if (!b || b.children.length === 0) { s3.remove(); return; }
+          var real = b ? Array.prototype.filter.call(b.children || [], function (c) { return c.tagName !== "SCRIPT"; }).length : 0;
+          if (!real) { s3.remove(); return; }
         } catch (e) { /* cross-origin = creative live */ }
       }, 9000);
     }
@@ -139,42 +140,6 @@
       if (ic && ic.children.length === 0) s2.style.display = "none";
     }, 25000);
 
-    /* diagnostics (always-on during the confirmation window; self-remove) */
-    var dbg = document.createElement("div");
-    dbg.id = "bryme-ad-debug";
-    dbg.style.cssText = "position:fixed;left:8px;bottom:8px;z-index:99999;background:#101a2b;color:#7fff9e;font:11px/1.5 monospace;padding:10px 12px;border-radius:8px;max-width:340px;box-shadow:0 4px 14px rgba(0,0,0,.4)";
-    var dlog = function (m) {
-      var p = document.createElement("div");
-      p.textContent = new Date().toTimeString().slice(0, 8) + "  " + m;
-      dbg.appendChild(p);
-    };
-    document.body.appendChild(dbg);
-    dlog("v3: banner mid-content + IPP end-of-content");
-    window.addEventListener("securitypolicyviolation", function (e) {
-      dlog("CSP BLOCKED: " + e.violatedDirective + " " + String(e.blockedURL).slice(0, 70));
-    });
-    var ippLoaded = false, ippErrored = false;
-    ippScr.addEventListener("load", function () { ippLoaded = true; dlog("IPP invoke.js LOADED"); });
-    ippScr.addEventListener("error", function () { ippErrored = true; dlog("IPP invoke.js FAILED TO LOAD"); });
-    var dbgTimer = setInterval(function () {
-      var ib = 0;
-      try {
-        ib = frame.contentDocument && frame.contentDocument.body ? frame.contentDocument.body.children.length : -1;
-      } catch (e) { dlog("banner: CROSS-ORIGIN = creative live"); clearInterval(dbgTimer); return; }
-      var ic = document.getElementById(IPP_CONTAINER);
-      var ippN = ic ? ic.children.length : 0;
-      dlog("banner children:" + ib + " | IPP children:" + ippN);
-      if (ib > 0 || ippN > 0) { window.__BRYME_AD_FILLED__ = true; dlog(">>> FILL DETECTED - ADS ARE WORKING <<<"); clearInterval(dbgTimer); }
-    }, 4000);
-    setTimeout(function () {
-      clearInterval(dbgTimer);
-      if (!window.__BRYME_AD_FILLED__) {
-        if (ippErrored) dlog("VERDICT: Adsterra's server UNREACHABLE from your network.");
-        else if (ippLoaded) dlog("VERDICT: reachable but NO ad sent - check each zone's SITE DOMAIN (must be bryme.onrender.com) or moderation status.");
-        else dlog("VERDICT: provider script stalled - slow network.");
-      }
-      dbg.remove();
-    }, 52000);
   }
 
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);

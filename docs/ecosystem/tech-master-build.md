@@ -608,3 +608,10 @@ Chain: 922 pages / 99,128 internal links OK; validator ok; allowlist v26 (912 ro
 - Chain: 977 pages / 104,812 links OK; validators pass.
 - ANALYTICS (the measurement leg): requires an owner-created free account (agent cannot create third-party accounts). Recommended: Cloudflare Web Analytics (free, cookieless, one script tag, CSP-compatible). Waiting on the owner's CF beacon token; wire-in is a 10-minute batch on receipt. (GoatCounter = paid for commercial use; Plausible = paid.)
 - Next up after analytics: back to the directive tool queue (repair-cost estimator).
+
+## Batch 39 — 12 Sep 2026 (v5: placeholder bug fixed + diagnostic overlay removed)
+- Owner: "remove the ad placeholder, the green screen, why is only the bottom showing."
+- ROOT CAUSE of the permanent placeholder: the unfilled-slot detector counted the iframe's LOADER SCRIPT TAGS as content → `children.length` never hit 0 → the mid-content banner box never self-collapsed (looked like a stuck labelled placeholder). FIX (v5): true content test = non-SCRIPT children only (banner loop + rail check). An unfilled unit now properly vanishes; IPP's container check was already sound.
+- Green diagnostic overlay REMOVED entirely (served its purpose: confirmed the pipeline + pointed at zone behaviour).
+- "Only the bottom shows" explained: the 300x250 banner zone bids low/zero for Nigerian traffic; In-Page Push fills almost everywhere. With v5, pages now look clean: only genuinely filled units render. On wide desktop screens the rail may still fill (US/UK visitors most likely).
+- Chain: 977 pages / 104,812 links OK; validators pass; three byte-identical twins (asset law).
