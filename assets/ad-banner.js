@@ -82,8 +82,8 @@
     d.write(
       '<!doctype html><html><head><meta name="viewport" content="width=device-width,initial-scale=1">' +
       '<style>html,body{margin:0;padding:0;overflow:hidden}</style></head><body>' +
-      '<script src="/assets/ad-300x250-config.js"><\/script>' +
-      '<script src="' + INVOKE_SRC + '"><\/script>' +
+      '<script src="/assets/ad-300x250-config.js?v=3"><\/script>' +
+      '<script src="https://www.highrevenueformat.com/51fc16f82ddc690721deee07bcd8bccd/invoke.js"><\/script>' +
       "</body></html>"
     );
     d.close();
@@ -93,7 +93,7 @@
 
     /* DEBUG MODE: visit any page with ?addebug=1 to see the live ad-chain report
        (loads, failures, CSP blocks, fill counts) directly on the page. */
-    if (/\baddebug\b/.test(window.location.search)) {
+    if (true) { /* DEBUG ALWAYS-ON during the fill-confirmation window (owner, 12 Sep 2026) */
       var dbg = document.createElement("div");
       dbg.id = "bryme-ad-debug";
       dbg.style.cssText = "position:fixed;left:8px;bottom:8px;z-index:99999;background:#101a2b;color:#7fff9e;font:11px/1.5 monospace;padding:10px 12px;border-radius:8px;max-width:340px;box-shadow:0 4px 14px rgba(0,0,0,.4)";
@@ -120,7 +120,7 @@
         dlog("banner children:" + ib + " | IPP children:" + (ic ? ic.children.length : "?"));
         if (ib > 0 || (ic && ic.children.length > 0)) { dlog(">>> FILL DETECTED <<<"); clearInterval(dbgTimer); }
       }, 4000);
-      setTimeout(function () { clearInterval(dbgTimer); }, 60000);
+      setTimeout(function () { clearInterval(dbgTimer); dbg.remove(); }, 75000);
     }
 
     /* Failsafe: slow networks and empty fills get two retries (7s, 15s, 23s)
