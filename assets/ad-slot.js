@@ -90,6 +90,38 @@
 
     fill();
 
+    /* DEBUG MODE: visit any page with ?addebug=1 to see the live ad-chain report
+       (loads, failures, CSP blocks, fill counts) directly on the page. */
+    if (/\baddebug\b/.test(window.location.search)) {
+      var dbg = document.createElement("div");
+      dbg.id = "bryme-ad-debug";
+      dbg.style.cssText = "position:fixed;left:8px;bottom:8px;z-index:99999;background:#101a2b;color:#7fff9e;font:11px/1.5 monospace;padding:10px 12px;border-radius:8px;max-width:340px;box-shadow:0 4px 14px rgba(0,0,0,.4)";
+      var dlog = function (m) {
+        var p = document.createElement("div");
+        p.textContent = new Date().toTimeString().slice(0, 8) + "  " + m;
+        dbg.appendChild(p);
+      };
+      document.body.appendChild(dbg);
+      dlog("slot created (banner+IPP)");
+      window.addEventListener("securitypolicyviolation", function (e) {
+        dlog("CSP BLOCKED: " + e.violatedDirective + " " + String(e.blockedURL).slice(0, 70));
+      });
+      ippScr.addEventListener("load", function () { dlog("IPP invoke.js LOADED"); });
+      ippScr.addEventListener("error", function () { dlog("IPP invoke.js FAILED TO LOAD"); });
+      frame.addEventListener("load", function () { dlog("banner iframe fired load"); });
+      var dbgTimer = setInterval(function () {
+        if (!document.getElementById("bryme-ad-slot")) { dlog("slot gone from DOM"); clearInterval(dbgTimer); return; }
+        var ib = 0;
+        try {
+          ib = frame.contentDocument && frame.contentDocument.body ? frame.contentDocument.body.children.length : -1;
+        } catch (e) { dlog("banner: CROSS-ORIGIN = creative live"); clearInterval(dbgTimer); return; }
+        var ic = document.getElementById("container-ba9b1b5b135e5f465955aadf88ed0ad5");
+        dlog("banner children:" + ib + " | IPP children:" + (ic ? ic.children.length : "?"));
+        if (ib > 0 || (ic && ic.children.length > 0)) { dlog(">>> FILL DETECTED <<<"); clearInterval(dbgTimer); }
+      }, 4000);
+      setTimeout(function () { clearInterval(dbgTimer); }, 60000);
+    }
+
     /* Failsafe: slow networks and empty fills get two retries (7s, 15s, 23s)
        before the slot collapses. Once the creative lands, its document turns
        cross-origin and the checks stop touching it. */
