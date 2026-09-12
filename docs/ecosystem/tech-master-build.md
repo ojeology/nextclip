@@ -549,3 +549,11 @@ Chain: 922 pages / 99,128 internal links OK; validator ok; allowlist v26 (912 ro
 - FAQ visible + FAQPage/Article JSON-LD inline (CSP-safe data block).
 - Pending from the directive's tool queue: mortgage calc, buy-vs-rent, repair cost estimator, moving cost estimator → next batches, tools-before-traffic.
 - Chain: 973 pages / 103,650 internal links OK; allowlist v26 (962); validators pass; ads still OFF.
+
+## Batch 34 — 12 Sep 2026 (Directive tool queue #1: mortgage calculator + carrier article)
+- TOOLS FIRST: /assets/mortgage-calculator.js (CSP-safe IIFE, node --check clean) — price/down%/rate/term + optional tax·insurance·PMI/HOA lines; outputs loan amount, P&I, monthly total, total interest, total of payments; under-20%-down PMI hint; visible general-guidance disclaimer + prefilled PMMS rate stamped with its checked date. Embedded in §4 of the carrier page; noscript static version (per-$1,000 rule of thumb) for no-JS.
+- ARTICLE SHIPPED: /home/mortgage-payments-explained/ — water-damage structure standard: 60-second answer, PITI table, amortization table (86%→4% interest share, computed from the tool's own formula), 28/36 rule (CFPB), regional table US/UK/CA, what-if-wrong (refi/recast/early extra principal/servicer-first), FAQ + matching FAQPage/Article JSON-LD (5/5 visible items in schema), sources block with checked dates.
+- VERIFIED FIGURES: Freddie Mac PMMS 10 Sep 2026 — 30yr 6.76% / 15yr 6.09% (primary, same-week); worked examples $350k: $2,272/mo (30y), $2,663 (20y), $2,971 (15y @6.09%), interest $468,071 / $289,205 / $184,698; ±0.5% ≈ ∓$115–118/mo; UK SDLT FTB nil-rate £300k (from 1 Apr 2025); CA stress test contract+2% (5.25% floor), GDS 39/TDS 44, CMHC 4.00/3.10/2.80 bands, $1.5M insurability cutoff. PMI 0.5–1%/yr labelled industry-directional range.
+- Wiring: owning section; related_map ×3; knowledge-shelf nav row ("Mortgage, explained"); internal links only to existing pages (repair fund, someday-cost, water-damage guide).
+- Chain: 974 pages / 103,836 internal links OK; allowlist v26 (963); validators pass; ads OFF.
+- Next in queue: buy-vs-rent calculator, repair-cost estimator, moving-cost estimator, interactive seasonal checklist.
