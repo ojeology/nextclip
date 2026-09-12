@@ -106,8 +106,9 @@
       window.addEventListener("securitypolicyviolation", function (e) {
         dlog("CSP BLOCKED: " + e.violatedDirective + " " + String(e.blockedURL).slice(0, 70));
       });
-      ippScr.addEventListener("load", function () { dlog("IPP invoke.js LOADED"); });
-      ippScr.addEventListener("error", function () { dlog("IPP invoke.js FAILED TO LOAD"); });
+      var ippLoaded = false, ippErrored = false;
+      ippScr.addEventListener("load", function () { ippLoaded = true; dlog("IPP invoke.js LOADED"); });
+      ippScr.addEventListener("error", function () { ippErrored = true; dlog("IPP invoke.js FAILED TO LOAD"); });
       frame.addEventListener("load", function () { dlog("banner iframe fired load"); });
       var dbgTimer = setInterval(function () {
         if (!document.getElementById("bryme-ad-slot")) { dlog("slot gone from DOM"); clearInterval(dbgTimer); return; }
@@ -117,9 +118,15 @@
         } catch (e) { dlog("banner: CROSS-ORIGIN = creative live"); clearInterval(dbgTimer); return; }
         var ic = document.getElementById("container-ba9b1b5b135e5f465955aadf88ed0ad5");
         dlog("banner children:" + ib + " | IPP children:" + (ic ? ic.children.length : "?"));
-        if (ib > 0 || (ic && ic.children.length > 0)) { dlog(">>> FILL DETECTED <<<"); clearInterval(dbgTimer); }
+        if (ib > 0 || (ic && ic.children.length > 0)) { window.__BRYME_AD_FILLED__ = true; dlog(">>> FILL DETECTED - ADS ARE WORKING <<<"); clearInterval(dbgTimer); }
       }, 4000);
-      setTimeout(function () { clearInterval(dbgTimer); dbg.remove(); }, 75000);
+      setTimeout(function () {
+        if (window.__BRYME_AD_FILLED__) return;
+        if (ippErrored) dlog("VERDICT: Adsterra's server is UNREACHABLE from your network - tell support invoke.js returns an error.");
+        else if (ippLoaded) dlog("VERDICT: Adsterra is reachable but sent NO ad. Most likely cause: each zone's SITE DOMAIN in your Adsterra dashboard must be bryme.onrender.com (not thebryme.com). Geo/bidding can also throttle new zones.");
+        else dlog("VERDICT: the ad script never finished loading - slow network or the provider is stalling.");
+      }, 50000);
+      setTimeout(function () { clearInterval(dbgTimer); dbg.remove(); }, 80000);
     }
 
     /* Failsafe: slow networks and empty fills get two retries (7s, 15s, 23s)
