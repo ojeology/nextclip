@@ -575,3 +575,10 @@ Chain: 922 pages / 99,128 internal links OK; validator ok; allowlist v26 (912 ro
 - FAMILY /about/ CREATED: root /about/ = THE BRYME family page (six desks, house standard, corrections policy) — hub footer About no longer routes to the writers about; /writers/about/ unchanged for the writers desk. In allowlist (v26, 965) + root sitemap.
 - og:image scheme bug FIXED site-wide (was "https://https://…"; now ORIGIN + /assets/og.png). Privacy page advertising disclosure updated (third-party networks, was AdSense-only plan wording).
 - Chain: 976 pages / 104,811 internal links OK; allowlist v26 (965); validators pass; AdSense OFF.
+
+## Batch 36c — 12 Sep 2026 (CSP unblocked via Render API — ad experiment LIVE)
+- Owner approved with a Render API key (approval link = dashboard settings/api-keys). Key used for: GET services (4 found: 2 static, 2 web), identified LIVE static site srv-d9v6125g1s2s73fq18ag (slug "bryme" = bryme.onrender.com; its header set matched the served CSP; repo ojeology/nextclip). NOTE: second static site srv-d9v64eou01pc73b8gpng (bryme-ss75) = Service Suspended — flagged to owner for cleanup.
+- PUT /v1/services/{id}/headers: all 5 existing rules preserved (COOP same-origin, XFO SAMEORIGIN, Permissions-Policy, Referrer-Policy) and CSP updated to: script-src 'self' https:; connect-src 'self' https:; frame-src/child-src 'self' https:; media-src 'self' https: (https wildcards because ad creatives rotate provider hosts; frame-ancestors 'self', object-src 'none', base-uri 'self' untouched = clickjacking protection intact).
+- Deploy dep-dail1e1594qs7396lprg (commit ecb1a68e) LIVE in ~30s; new CSP verified in served headers.
+- Ad pipeline now fully unblocked end-to-end: 934 pages carry the component → config file same-origin (200, key byte-identical) → provider invoke allowed by CSP → provider endpoint alive. Owner should hard-refresh to see the labelled 300x250 slot; fill is subject to the network's geo/fill.
+- API key hygiene: owner instructed to DELETE the key now that the change is verified.
