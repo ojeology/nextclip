@@ -161,7 +161,7 @@ def main() -> int:
     (ROOT / "robots.txt").write_text(
         "User-agent: *\nAllow: /\nDisallow: /scripts/\nDisallow: /content/\n"
         "Disallow: /docs/\nDisallow: /server/\nDisallow: /ecosystem/\n\n"
-        f"Sitemap: {ORIGIN}/writers/sitemap.xml\n" +
+        f"Sitemap: {ORIGIN}/sitemap.xml\nSitemap: {ORIGIN}/writers/sitemap.xml\n" +
         "".join(f"Sitemap: {ORIGIN}/{x}/sitemap.xml\n" for x in SITEMAP_PROPS), encoding="utf-8")
 
     # 5. allowlist v25: writers prefixed + hub + property routes

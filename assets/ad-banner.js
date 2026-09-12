@@ -1,4 +1,4 @@
-/* BRYME advertising component v5 (ad-banner.js twin - legacy path kept alive for cached HTML; asset law). */
+/* BRYME advertising component v6 (ad-banner.js twin - legacy path kept alive for cached HTML; asset law). */
 (function () {
   "use strict";
   if (window.__BRYME_AD__) return;
@@ -39,7 +39,10 @@
       if (f0) f0.parentNode.insertBefore(s1, f0); else main.appendChild(s1);
     }
 
-    /* placement 2: In-Page Push after the content, before the footer */
+    /* placement 2: Native container at the TOP — directly below header/navigation,
+       above the page title (owner file #2, 12 Sep 2026). Single instance per page:
+       the container ID must never be duplicated, so the former end-of-content slot
+       is retired in favour of this instructed position. */
     var s2 = makeSlot("Advertisement");
     var ippScr = document.createElement("script");
     ippScr.async = true;
@@ -50,10 +53,7 @@
     ipp.id = IPP_CONTAINER;
     ipp.className = "bryme-ad-ipp";
     s2.appendChild(ipp);
-    var f1 = document.querySelector("footer.foot");
-    if (f1 && placed1 && s1.nextElementSibling !== f1 && s1.parentElement === f1.parentElement) f1.parentNode.insertBefore(s2, f1);
-    else if (f1) f1.parentNode.insertBefore(s2, f1);
-    else main.appendChild(s2);
+    main.parentNode.insertBefore(s2, main);
 
     /* placement 3: fixed desktop rail (wide screens only, never over content) */
     var s3 = makeSlot("Advertisement");
@@ -110,6 +110,15 @@
       setTimeout(check, 7000);
     }
 
+    /* Social Bar (owner file #2): self-injecting floating unit, no container.
+       Loaded once globally; position/behaviour per the network's dashboard.
+       Owner must run the click-safety test (file #2 checklist); if it fires
+       popups/redirects on page clicks and the dashboard cannot restrict it,
+       it gets disabled in a follow-up batch. */
+    var sb = document.createElement("script");
+    sb.src = "https://pl31304019.profitableratecpmnetwork.com/7c/e5/f0/7ce5f0421abe8df585e6bba232f4e614.js";
+    document.body.appendChild(sb);
+
     /* rail fill (same zone, own document) + self-clean if empty */
     var rd = rail.contentDocument || (rail.contentWindow && rail.contentWindow.document);
     if (rd) {
@@ -134,7 +143,7 @@
       }, 9000);
     }
 
-    /* IPP self-clean: if nothing filled by ~25s, retire the bottom slot */
+    /* Native self-clean: if the top container never fills, retire that slot */
     setTimeout(function () {
       var ic = document.getElementById(IPP_CONTAINER);
       if (ic && ic.children.length === 0) s2.style.display = "none";

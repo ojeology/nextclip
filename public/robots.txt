@@ -6,6 +6,7 @@ Disallow: /docs/
 Disallow: /server/
 Disallow: /ecosystem/
 
+Sitemap: https://bryme.onrender.com/sitemap.xml
 Sitemap: https://bryme.onrender.com/writers/sitemap.xml
 Sitemap: https://bryme.onrender.com/sports/sitemap.xml
 Sitemap: https://bryme.onrender.com/entertainment/sitemap.xml

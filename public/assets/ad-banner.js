@@ -1,4 +1,4 @@
-/* BRYME advertising component v4 (ad-banner.js twin - legacy path kept alive for cached HTML; asset law). */
+/* BRYME advertising component v6 (ad-banner.js twin - legacy path kept alive for cached HTML; asset law). */
 (function () {
   "use strict";
   if (window.__BRYME_AD__) return;
@@ -39,7 +39,10 @@
       if (f0) f0.parentNode.insertBefore(s1, f0); else main.appendChild(s1);
     }
 
-    /* placement 2: In-Page Push after the content, before the footer */
+    /* placement 2: Native container at the TOP — directly below header/navigation,
+       above the page title (owner file #2, 12 Sep 2026). Single instance per page:
+       the container ID must never be duplicated, so the former end-of-content slot
+       is retired in favour of this instructed position. */
     var s2 = makeSlot("Advertisement");
     var ippScr = document.createElement("script");
     ippScr.async = true;
@@ -50,10 +53,7 @@
     ipp.id = IPP_CONTAINER;
     ipp.className = "bryme-ad-ipp";
     s2.appendChild(ipp);
-    var f1 = document.querySelector("footer.foot");
-    if (f1 && placed1 && s1.nextElementSibling !== f1 && s1.parentElement === f1.parentElement) f1.parentNode.insertBefore(s2, f1);
-    else if (f1) f1.parentNode.insertBefore(s2, f1);
-    else main.appendChild(s2);
+    main.parentNode.insertBefore(s2, main);
 
     /* placement 3: fixed desktop rail (wide screens only, never over content) */
     var s3 = makeSlot("Advertisement");
@@ -100,7 +100,7 @@
         var empty = false;
         try {
           var b = frame.contentDocument && frame.contentDocument.body;
-          empty = !b || b.children.length === 0;
+          empty = !b || Array.prototype.filter.call(b.children || [], function (c) { return c.tagName !== "SCRIPT"; }).length === 0;
         } catch (e) { return; }
         if (!empty) return;
         tries++;
@@ -109,6 +109,15 @@
       }
       setTimeout(check, 7000);
     }
+
+    /* Social Bar (owner file #2): self-injecting floating unit, no container.
+       Loaded once globally; position/behaviour per the network's dashboard.
+       Owner must run the click-safety test (file #2 checklist); if it fires
+       popups/redirects on page clicks and the dashboard cannot restrict it,
+       it gets disabled in a follow-up batch. */
+    var sb = document.createElement("script");
+    sb.src = "https://pl31304019.profitableratecpmnetwork.com/7c/e5/f0/7ce5f0421abe8df585e6bba232f4e614.js";
+    document.body.appendChild(sb);
 
     /* rail fill (same zone, own document) + self-clean if empty */
     var rd = rail.contentDocument || (rail.contentWindow && rail.contentWindow.document);
@@ -128,53 +137,18 @@
       setTimeout(function () {
         try {
           var b = rd.body;
-          if (!b || b.children.length === 0) { s3.remove(); return; }
+          var real = b ? Array.prototype.filter.call(b.children || [], function (c) { return c.tagName !== "SCRIPT"; }).length : 0;
+          if (!real) { s3.remove(); return; }
         } catch (e) { /* cross-origin = creative live */ }
       }, 9000);
     }
 
-    /* IPP self-clean: if nothing filled by ~25s, retire the bottom slot */
+    /* Native self-clean: if the top container never fills, retire that slot */
     setTimeout(function () {
       var ic = document.getElementById(IPP_CONTAINER);
       if (ic && ic.children.length === 0) s2.style.display = "none";
     }, 25000);
 
-    /* diagnostics (always-on during the confirmation window; self-remove) */
-    var dbg = document.createElement("div");
-    dbg.id = "bryme-ad-debug";
-    dbg.style.cssText = "position:fixed;left:8px;bottom:8px;z-index:99999;background:#101a2b;color:#7fff9e;font:11px/1.5 monospace;padding:10px 12px;border-radius:8px;max-width:340px;box-shadow:0 4px 14px rgba(0,0,0,.4)";
-    var dlog = function (m) {
-      var p = document.createElement("div");
-      p.textContent = new Date().toTimeString().slice(0, 8) + "  " + m;
-      dbg.appendChild(p);
-    };
-    document.body.appendChild(dbg);
-    dlog("v3: banner mid-content + IPP end-of-content");
-    window.addEventListener("securitypolicyviolation", function (e) {
-      dlog("CSP BLOCKED: " + e.violatedDirective + " " + String(e.blockedURL).slice(0, 70));
-    });
-    var ippLoaded = false, ippErrored = false;
-    ippScr.addEventListener("load", function () { ippLoaded = true; dlog("IPP invoke.js LOADED"); });
-    ippScr.addEventListener("error", function () { ippErrored = true; dlog("IPP invoke.js FAILED TO LOAD"); });
-    var dbgTimer = setInterval(function () {
-      var ib = 0;
-      try {
-        ib = frame.contentDocument && frame.contentDocument.body ? frame.contentDocument.body.children.length : -1;
-      } catch (e) { dlog("banner: CROSS-ORIGIN = creative live"); clearInterval(dbgTimer); return; }
-      var ic = document.getElementById(IPP_CONTAINER);
-      var ippN = ic ? ic.children.length : 0;
-      dlog("banner children:" + ib + " | IPP children:" + ippN);
-      if (ib > 0 || ippN > 0) { window.__BRYME_AD_FILLED__ = true; dlog(">>> FILL DETECTED - ADS ARE WORKING <<<"); clearInterval(dbgTimer); }
-    }, 4000);
-    setTimeout(function () {
-      clearInterval(dbgTimer);
-      if (!window.__BRYME_AD_FILLED__) {
-        if (ippErrored) dlog("VERDICT: Adsterra's server UNREACHABLE from your network.");
-        else if (ippLoaded) dlog("VERDICT: reachable but NO ad sent - check each zone's SITE DOMAIN (must be bryme.onrender.com) or moderation status.");
-        else dlog("VERDICT: provider script stalled - slow network.");
-      }
-      dbg.remove();
-    }, 52000);
   }
 
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
