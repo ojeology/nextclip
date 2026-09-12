@@ -146,6 +146,9 @@ def main() -> int:
     hub_out = ROOT / "index.html"
     s = hub_src.read_text(encoding="utf-8")
     hub_out.write_text(strip_arrows(s), encoding="utf-8")
+    _hub_about = ROOT / "ecosystem" / "hub" / "about"
+    if _hub_about.exists():
+        shutil.copytree(_hub_about, ROOT / "about", dirs_exist_ok=True)
     import re as _re, datetime as _dt
     _sm = (ROOT / "ecosystem" / "hub" / "sitemap.xml").read_text(encoding="utf-8")
     _sm = _re.sub(r"<lastmod>[^<]*</lastmod>", "<lastmod>" + _dt.date.today().isoformat() + "</lastmod>", _sm)
@@ -170,6 +173,7 @@ def main() -> int:
         for r in al["routes"]:
             routes.add("/writers/" + r[1:] if r != "/" else "/writers/")
     routes.add("/")  # the hub
+    routes.add("/about/")  # family about page (b36)
     for prop in SITEMAP_PROPS:
         sm = ROOT / prop / "sitemap.xml"
         for loc in re.findall(r"<loc>(.*?)</loc>", sm.read_text()):

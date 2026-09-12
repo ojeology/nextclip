@@ -46,8 +46,8 @@ FEATURES = [
 <h2>What each needs to prove</h2>
 <p>City need a response away at the champion-class clubs; Arsenal need to turn dominance into the big-margins wins that decided 2023\u201324; Liverpool need their defence to match their attack; Hull need to survive the first dip without losing the plot. The desk updates this page as rounds are verified \u2014 the table below the fold never lies about who is actually ahead.</p>
 <p><b>BRYME's call, labelled ours:</b> City and Arsenal are the two real ones, and the May arithmetic favours the squad that handles the winter fixture pile-up \u2014 which, right now, is the case for Arsenal by a nose. Ask again after Matchweek 10.</p>""",
-[("BRYME Sport \u2014 the verified Matchweek 3 table", "https://thebryme.com/sports/premier-league-table/"),
- ("BRYME Sport \u2014 the Form Board", "https://thebryme.com/sports/form-board/")],
+[("BRYME Sport \u2014 the verified Matchweek 3 table", "https://bryme.onrender.com/sports/premier-league-table/"),
+ ("BRYME Sport \u2014 the Form Board", "https://bryme.onrender.com/sports/form-board/")],
 [("/premier-league-table/", "The live table"), ("/form-board/", "Who is actually in form"), ("/premier-league-matchweek-4-preview/", "Matchweek 4, previewed")]),
 
 ("best-football-players-in-the-world-2026", "Big question \u00b7 the BRYME ranking",

@@ -34,6 +34,6 @@ for name, color in cols:
     d.text((x + 18, y + 12), name, font=f_desk, fill="#f5f1e8")
     x += w + 62
 
-d.text((80, H - 60), "thebryme.com", font=font(24), fill="#8a94a6")
+d.text((80, H - 60), "bryme.onrender.com", font=font(24), fill="#8a94a6")
 img.save("public/assets/og.png", optimize=True)
 print("og.png written:", os.path.getsize("public/assets/og.png"), "bytes")

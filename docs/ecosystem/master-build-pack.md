@@ -116,6 +116,9 @@ eventStatus on changes; validate. Rules: IFAB Laws of the Game current edition. 
 ## SECTION 11 — PRODUCTION DIRECTIVE (12 Sep 2026) — SUPERSEDES §8 PRIORITIES
 Owner directive (docs/ecosystem/production-directive-2026-09-12.md): Sport/Entertainment/Fitness production PAUSED (live as-is, no edits); all writing+dev effort on Home & Property (expanded: repairs→improvement→services→renting→buying→moving→property), Tech & AI, Writers+Freelance Business. Reference standard: the water damage insurance article (shipped b33 with verified stats + embedded quiz). Tool queue per directive §3, tools-before-traffic, disclaimers mandatory (YMYL). Flag-don't-guess; no fabricated credentials; open corrections. Desk ratings per owner: Home 10, Tech 9, Writers 8.5.
 
+# SECTION 12 — OWNER AD EXPERIMENT (12 Sep 2026, later same day) — PHASE OVERRIDE
+Owner instruction (uploads/bryme-ad-integration-instructions.md): site STAYS on bryme.onrender.com (no custom domain, no .com canonicals — the domain purchase is deferred until traffic data exists). A controlled advertising experiment is live: ONE 300x250 unit per page via assets/ad-banner.js (iframe-isolated, exact provider code, mid-content, labelled), aggressive formats and adult ads banned, unknown provider scripts left disabled, no AdSense. This supersedes the §6 AdSense-flip ordering for the current phase; the §6 discipline (ads never resemble job cards/content, indexing intact) still applies. Canonical domain = https://bryme.onrender.com/ until the owner says otherwise.
+
 # SECTION 10 — LIVE AUDIT (2026-09-11) AND REMEDIATION LOG
 Findings A1–A4 (house), B1–B9 (sport), C1 (fitness gate). Remediation status (updated each batch):
 - **A1 states:** hub cards now carry `· ACTIVE` badges; "six publications" meta fixed (was "four"). DONE b26.

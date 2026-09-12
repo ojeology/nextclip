@@ -2,11 +2,11 @@
 """Build THE BRYME ecosystem — the four publications + master homepage.
 
 Per the Master Ecosystem Rebuild plan:
-  thebryme.com            -> ecosystem/hub/            (parent homepage)
-  writers.thebryme.com    -> the existing site (this repo's main build)
-  sports.thebryme.com     -> ecosystem/sports/        (newsroom identity)
-  entertainment.thebryme.com -> ecosystem/entertainment/ (cinematic identity)
-  tech.thebryme.com       -> ecosystem/tech/          (modern-technical identity)
+  bryme.onrender.com      -> ecosystem/hub/            (parent homepage)
+  bryme.onrender.com/writers -> the existing site (this repo's main build)
+  bryme.onrender.com/sports  -> ecosystem/sports/        (newsroom identity)
+  bryme.onrender.com/entertainment -> ecosystem/entertainment/ (cinematic identity)
+  bryme.onrender.com/tech     -> ecosystem/tech/          (modern-technical identity)
 
 Each directory is a self-contained static service (own css, sitemap,
 robots). The production hostname comes from the PRODUCTION_DOMAIN env
@@ -284,7 +284,7 @@ def css_for(pub):
 
 def shell(pub, title, desc, route, body, card=None, robots="index,follow"):
     d = route  # mode-aware base URL from SUB
-    og = f"https://{route}/assets/og.png" if route else f"https://{DOMAIN}/assets/og.png"
+    og = f"{ORIGIN}/assets/og.png"  # real root card; route may already be a full URL (b36 fix)
     has_theme = pub in ("tech", "fitness", "sports", "hub", "entertainment")
     theme_head = ('<script src="/assets/theme.js"></script>\n'
                   '<meta name="theme-color" content="#fafaf8">\n'
@@ -555,9 +555,9 @@ def foot(pub, extra=""):
     x = extra or _trust
     return f"""<footer class="foot"><div class="wrap foot-in">
 <div>© 2026 THE BRYME — {PUB_NAME[pub] if pub != 'hub' else 'the BRYME publications'}.</div>
-<div><a href="/{'writers' if pub == 'hub' else pub}/about/">About</a> · <a href="/{'writers' if pub == 'hub' else pub}/privacy/">Privacy</a> · <a href="/{'writers' if pub == 'hub' else pub}/contact/">Contact</a>{x}</div>
-<div><a href="https://{DOMAIN}/">thebryme.com</a></div>
-</div></footer>"""
+<div><a href="{'/about/' if pub == 'hub' else '/' + pub + '/about/'}">About</a> · <a href="/{'writers' if pub == 'hub' else pub}/privacy/">Privacy</a> · <a href="/{'writers' if pub == 'hub' else pub}/contact/">Contact</a>{x}</div>
+<div><a href="{ORIGIN}/">bryme.onrender.com</a></div>
+</div></footer><script src="/assets/ad-banner.js" defer></script>"""
 
 def write_placeholder(key, name, tagline, identity, planned):
     """Foundation-era property: one honest page + the standard legal pages, all noindex."""
@@ -638,14 +638,14 @@ def legal_pages(pub, name, tagline, skip=frozenset()):
 <section class="section"><div class="prose">
 <p>{name} is a static publication. It sets no tracking cookies, runs no analytics on these pages, and asks for no personal information. Reading it is between you and your browser.</p>
 <p>If interactive tools are added later, any data they store will stay in <em>your</em> browser's local storage on <em>your</em> device — the standing BRYME pattern — and this page will be updated before that changes.</p>
-<p><b>Advertising &amp; cookies (updated 11 September 2026):</b> BRYME plans to show advertising, including through Google AdSense. Third-party vendors, including Google, use cookies to serve ads based on a user's prior visits to this and other websites. Google's use of advertising cookies enables it and its partners to serve ads based on your visits to this site and/or other sites on the internet. You may opt out of personalised advertising by visiting Google's Ads Settings (adssettings.google.com), or opt out of some third-party vendors' uses of cookies at aboutads.info. Visitors in the EEA and UK will be asked for consent before personalised advertising; without consent, only non-personalised ads are eligible to serve. Whatever serves, our standing rules apply: ads are clearly separated from content and navigation, never cover text, and never resemble our buttons, cards or links.</p>
+<p><b>Advertising &amp; cookies (updated 11 September 2026):</b> BRYME shows advertising through third-party networks (which may include Google AdSense) to keep the publications free. Third-party vendors use cookies to serve ads based on a user's prior visits to this and other websites. Google's use of advertising cookies enables it and its partners to serve ads based on your visits to this site and/or other sites on the internet. You may opt out of personalised advertising by visiting Google's Ads Settings (adssettings.google.com), or opt out of some third-party vendors' uses of cookies at aboutads.info. Visitors in the EEA and UK will be asked for consent before personalised advertising; without consent, only non-personalised ads are eligible to serve. Whatever serves, our standing rules apply: ads are clearly separated from content and navigation, never cover text, and never resemble our buttons, cards or links.</p>
 <p>Questions: see <a href="/contact/">Contact</a>.</p>
 </div></section></div>"""
     contact_body = f"""<div class="wrap"><nav class="crumb"><a href="/">Home</a> / Contact</nav>
 <section class="cover"><p class="kicker">Contact</p><h1 class="cover-title">Reach the desk.</h1>
 <p class="cover-dek">Corrections first: if something on {name} is wrong, that is the most valuable email in the world to us.</p></section>
 <section class="section"><div class="prose">
-<p>Editorial contact details go live with the publication's domain launch. Until then, {name} is reached through <a href="https://writers.thebryme.com/contact/">the BRYME Writers contact page</a>, which routes to the same editorial desk.</p>
+<p>Editorial contact details go live with the publication's domain launch. Until then, {name} is reached through <a href="/writers/contact/">the BRYME Writers contact page</a>, which routes to the same editorial desk.</p>
 <h2>What to include</h2>
 <ul><li>The page address and the exact claim that needs correcting.</li>
 <li>For pitches: a two-paragraph summary and one relevant sample. No attachments.</li></ul>
@@ -3860,11 +3860,34 @@ def main() -> None:
         f.write_text(shell("hub", title, desc, SUB["hub"], body), encoding="utf-8")
     (base / "sitemap.xml").write_text(
         '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
-        f"<url><loc>https://{DOMAIN}/</loc><lastmod>{TODAY}</lastmod></url>\n</urlset>\n", encoding="utf-8")
+        f"<url><loc>https://{DOMAIN}/</loc><lastmod>{TODAY}</lastmod></url>\n"
+        f"<url><loc>https://{DOMAIN}/about/</loc><lastmod>{TODAY}</lastmod></url>\n</urlset>\n", encoding="utf-8")
     (base / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: https://{DOMAIN}/sitemap.xml\n", encoding="utf-8")
     (base / "assets").mkdir(parents=True, exist_ok=True)
     (base / "assets" / "site.css").write_text(css_for("hub"), encoding="utf-8")
-    print("hub: built (thebryme.com homepage)")
+    _about_d = base / "about"
+    _about_d.mkdir(parents=True, exist_ok=True)
+    _about_body = (
+        '<main id="main"><div class="wrap"><nav class="crumb"><a href="/">Home</a> / About</nav>'
+        '<section class="cover"><p class="kicker">About</p><h1 class="cover-title">THE BRYME</h1>'
+        '<p class="cover-dek">A family of independent, specialist publications \u2014 one house standard.</p></section>'
+        '<section class="section"><div class="prose">'
+        '<p>THE BRYME is a family of independent publications under one editorial house. Each desk has its own focus, voice and standards \u2014 what they share is the discipline: research before publishing, a date on anything time-sensitive, and no fabricated experience or statistics.</p>'
+        '<p><b>The publications:</b> <a href="/writers/">BRYME Writers</a> (writing careers and research) \u00b7 <a href="/tech/">BRYME Tech</a> (practical technology) \u00b7 <a href="/sports/">BRYME Sport</a> (verified football reference) \u00b7 <a href="/entertainment/">BRYME Entertainment</a> (film, TV and anime) \u00b7 <a href="/fitness/">BRYME Fitness</a> (evidence-led training) \u00b7 <a href="/home/">BRYME Home &amp; DIY</a> (fixing, maintaining and understanding a home).</p>'
+        '<p>The family is edited from Lagos, Nigeria, and written for a global readership. Corrections are made in the open, on the page that made the claim \u2014 the <a href="/writers/corrections/">corrections policy</a> explains how.</p>'
+        '<h2>The house standard</h2>'
+        '<ul>'
+        '<li>Evergreen, genuinely useful work over volume.</li>'
+        '<li>First-hand experience where we have it; clearly labelled research where we don\u2019t.</li>'
+        '<li>Every calculator and quiz is general guidance, never professional advice.</li>'
+        '<li>No betting content, no piracy, no fabricated data \u2014 anywhere in the family.</li>'
+        '</ul>'
+        '</div></section></div></main>')
+    (_about_d / "index.html").write_text(
+        shell("hub", "About THE BRYME | the BRYME publications",
+              "THE BRYME is a family of independent specialist publications \u2014 Writers, Tech, Sport, Entertainment, Fitness and Home & DIY \u2014 under one editorial standard.",
+              SUB["hub"] + "/about/", _about_body + foot("hub")), encoding="utf-8")
+    print("hub: built (bryme.onrender.com homepage + family /about/)")
     write_service("entertainment", entertainment_pages())
     write_service("sports", sports_pages())
     write_service("tech", tech_pages())
