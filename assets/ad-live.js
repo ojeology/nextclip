@@ -1,6 +1,5 @@
-/* BRYME advertising experiment — single 300x250 placement per page (12 Sep 2026).
-   v2, DUAL-FILE: identical to ad-slot.js — this path is kept alive because caches worldwide
-   still hold pre-rename HTML that points here. Never delete while cached HTML exists.
+/* BRYME /ad-test/ copy — third twin under a NEVER-SERVED-BEFORE filename:
+   v2 (ad-slot.js): new filename to defeat a stale CDN object; 7s/15s/23s retry fill.
    Design rules (owner instruction, 12 Sep 2026):
    - ONE placement per page, inserted between content sections, never over content,
      navigation, forms or calculators.

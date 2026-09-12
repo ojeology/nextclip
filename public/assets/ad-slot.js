@@ -38,6 +38,22 @@
     slot.appendChild(label);
     slot.appendChild(frame);
 
+    /* In-Page Push unit (owner authorization "any ads", 12 Sep 2026): the supplied
+       invoke.js + container pair, embedded exactly as provided. On-page format -
+       no popunder, no redirect, no new tabs; adult ads remain OFF. */
+    var ippScr = document.createElement("script");
+    ippScr.async = true;
+    ippScr.setAttribute("data-cfasync", "false");
+    ippScr.src = "https://pl31304018.profitableratecpmnetwork.com/ba9b1b5b135e5f465955aadf88ed0ad5/invoke.js";
+    slot.appendChild(ippScr);
+    var ipp = document.createElement("div");
+    ipp.id = "container-ba9b1b5b135e5f465955aadf88ed0ad5";
+    ipp.className = "bryme-ad-ipp";
+    slot.appendChild(ipp);
+    var css2 = document.createElement("style");
+    css2.textContent = ".bryme-ad-ipp{margin-top:8px;min-height:0}";
+    document.head.appendChild(css2);
+
     /* content ↓ ad ↓ more content: before the 3rd h2 when the page has one,
        before the 2nd on shorter pages, above the footer otherwise. */
     var h2s = main.querySelectorAll("h2");
@@ -65,14 +81,53 @@
     d.write(
       '<!doctype html><html><head><meta name="viewport" content="width=device-width,initial-scale=1">' +
       '<style>html,body{margin:0;padding:0;overflow:hidden}</style></head><body>' +
-      '<script src="/assets/ad-300x250-config.js"><\/script>' +
-      '<script src="' + INVOKE_SRC + '"><\/script>' +
+      '<script src="/assets/ad-300x250-config.js?v=3"><\/script>' +
+      '<script src="https://www.highrevenueformat.com/51fc16f82ddc690721deee07bcd8bccd/invoke.js"><\/script>' +
       "</body></html>"
     );
     d.close();
     }
 
     fill();
+
+    /* DEBUG MODE: visit any page with ?addebug=1 to see the live ad-chain report
+       (loads, failures, CSP blocks, fill counts) directly on the page. */
+    if (true) { /* DEBUG ALWAYS-ON during the fill-confirmation window (owner, 12 Sep 2026) */
+      var dbg = document.createElement("div");
+      dbg.id = "bryme-ad-debug";
+      dbg.style.cssText = "position:fixed;left:8px;bottom:8px;z-index:99999;background:#101a2b;color:#7fff9e;font:11px/1.5 monospace;padding:10px 12px;border-radius:8px;max-width:340px;box-shadow:0 4px 14px rgba(0,0,0,.4)";
+      var dlog = function (m) {
+        var p = document.createElement("div");
+        p.textContent = new Date().toTimeString().slice(0, 8) + "  " + m;
+        dbg.appendChild(p);
+      };
+      document.body.appendChild(dbg);
+      dlog("slot created (banner+IPP)");
+      window.addEventListener("securitypolicyviolation", function (e) {
+        dlog("CSP BLOCKED: " + e.violatedDirective + " " + String(e.blockedURL).slice(0, 70));
+      });
+      var ippLoaded = false, ippErrored = false;
+      ippScr.addEventListener("load", function () { ippLoaded = true; dlog("IPP invoke.js LOADED"); });
+      ippScr.addEventListener("error", function () { ippErrored = true; dlog("IPP invoke.js FAILED TO LOAD"); });
+      frame.addEventListener("load", function () { dlog("banner iframe fired load"); });
+      var dbgTimer = setInterval(function () {
+        if (!document.getElementById("bryme-ad-slot")) { dlog("slot gone from DOM"); clearInterval(dbgTimer); return; }
+        var ib = 0;
+        try {
+          ib = frame.contentDocument && frame.contentDocument.body ? frame.contentDocument.body.children.length : -1;
+        } catch (e) { dlog("banner: CROSS-ORIGIN = creative live"); clearInterval(dbgTimer); return; }
+        var ic = document.getElementById("container-ba9b1b5b135e5f465955aadf88ed0ad5");
+        dlog("banner children:" + ib + " | IPP children:" + (ic ? ic.children.length : "?"));
+        if (ib > 0 || (ic && ic.children.length > 0)) { window.__BRYME_AD_FILLED__ = true; dlog(">>> FILL DETECTED - ADS ARE WORKING <<<"); clearInterval(dbgTimer); }
+      }, 4000);
+      setTimeout(function () {
+        if (window.__BRYME_AD_FILLED__) return;
+        if (ippErrored) dlog("VERDICT: Adsterra's server is UNREACHABLE from your network - tell support invoke.js returns an error.");
+        else if (ippLoaded) dlog("VERDICT: Adsterra is reachable but sent NO ad. Most likely cause: each zone's SITE DOMAIN in your Adsterra dashboard must be bryme.onrender.com (not thebryme.com). Geo/bidding can also throttle new zones.");
+        else dlog("VERDICT: the ad script never finished loading - slow network or the provider is stalling.");
+      }, 50000);
+      setTimeout(function () { clearInterval(dbgTimer); dbg.remove(); }, 80000);
+    }
 
     /* Failsafe: slow networks and empty fills get two retries (7s, 15s, 23s)
        before the slot collapses. Once the creative lands, its document turns
@@ -82,7 +137,9 @@
       var empty = false;
       try {
         var b = frame.contentDocument && frame.contentDocument.body;
-        empty = !b || b.children.length === 0;
+        var ippBox = document.getElementById("container-ba9b1b5b135e5f465955aadf88ed0ad5");
+        var ippFilled = ippBox && ippBox.children.length > 0;
+        empty = (!b || b.children.length === 0) && !ippFilled;
       } catch (e) { return; }
       if (!empty) return;
       tries++;

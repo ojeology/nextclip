@@ -228,6 +228,38 @@ small{display:block;margin-top:30px;color:#8a94a6}
 <small>THE BRYME \u00b7 research before publishing, and say exactly what you know.</small>
 </main></body></html>"""
     (ROOT / "public" / "404.html").write_text(_404, encoding="utf-8")
+
+    # /ad-test/: owner's ad-confirmation page (b36k). Fresh path + fresh asset
+    # filename = no cache layer anywhere can serve a stale byte of it.
+    _at = ROOT / "public" / "ad-test"
+    _at.mkdir(parents=True, exist_ok=True)
+    (_at / "index.html").write_text(
+        """<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Ad confirmation test | THE BRYME</title>
+<style>
+body{margin:0;font-family:Georgia,serif;background:#fafaf8;color:#1d2735;display:flex;min-height:100vh;align-items:center;justify-content:center}
+main{max-width:560px;padding:32px 22px;text-align:center}
+p.kick{letter-spacing:.16em;font-size:12px;color:#a4762c;text-transform:uppercase;margin:0 0 8px}
+h1{font-size:30px;margin:0 0 12px}
+p{line-height:1.6;color:#3d4a5f}
+code{background:#efece4;padding:2px 6px;border-radius:4px;font-size:13px}
+a{color:#a4762c}
+#ad-slot-here{margin:26px auto 8px;min-height:40px}
+</style></head>
+<body><main>
+<p class="kick">Owner tool \u00b7 12 September 2026</p>
+<h1>Ad confirmation test</h1>
+<p>This page exists only to prove the advertising pipeline on your device. If the system works you will see, within about 30 seconds: a labelled ad slot below \u2014 and a small dark <b>diagnostic box with green text</b> in the bottom-left corner ending in a plain-English verdict.</p>
+<div id="ad-slot-here"></div>
+<p>If the green box says \u201cFILL DETECTED\u201d \u2014 ads work. If it says the provider sent no ad \u2014 the zones are the issue. If <b>no box appears at all</b>, something on this device or network is blocking the site\u2019s scripts (ad blocker, AdGuard DNS, or a proxy browser such as Opera Mini).</p>
+<p><a href="/">Back to THE BRYME</a></p>
+</main>
+<script src="/assets/ad-live.js" defer></script>
+</body></html>
+""", encoding="utf-8")
     return 0
 
 
