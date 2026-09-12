@@ -3168,6 +3168,7 @@ HOME_SLUG_SECT.update({s: "maintain" for s in (
     "how-to-clean-and-care-for-a-mattress", "season-cast-iron-pan",
     "spring-home-reset", "summer-cooling-checklist",
     "autumn-home-preparation", "winter-home-preparation")})
+HOME_SLUG_SECT.update({s: "owning" for s in ("water-damage-insurance-coverage",)})
 HOME_SLUG_SECT.update({s: "appliances" for s in (
     "microwave-oven-care-and-safety", "water-heater-explained",
     "vacuum-cleaner-care-guide")})
@@ -3248,6 +3249,7 @@ def _home_nav():
            ("/home/why-does-my-circuit-breaker-keep-tripping/", "Breaker keeps tripping"),
            ("/home/how-to-bleed-a-radiator/", "Bleed a radiator")]
     maintain = [("HEAD", "The care shelf"), ("/home/maintain/", "All maintenance"),
+                ("/home/water-damage-insurance-coverage/", "Water damage & insurance"),
                 ("/home/seasonal-home-maintenance-checklist/", "The seasonal checklist"),
                 ("/home/deep-clean-schedule/", "Deep-clean schedule"),
                 ("/home/how-to-clean-a-washing-machine/", "Clean a washing machine"),
@@ -3363,6 +3365,9 @@ def home_pages():
     HOME_ARTICLES.extend((s2, ti, dek, b) for (s2, _k, ti, dek, b) in home_roadmap11_data.HOME_ROADMAP_11 if s2 not in _have)
     import home_roadmap12_data
     HOME_ARTICLES.extend((s2, ti, dek, b) for (s2, _k, ti, dek, b) in home_roadmap12_data.HOME_ROADMAP_12 if s2 not in _have)
+    import home_insurance_data
+    HOME_ARTICLES.extend((s2, ti, dek, b) for (s2, _ti2, ti, dek, b) in
+                         [(g[0], None, g[2], g[3], g[4]) for g in home_insurance_data.HOME_INSURANCE] if s2 not in _have)
 
     def src_html(sources):
         if not sources:
@@ -3753,6 +3758,9 @@ def home_pages():
         "vacuum-cleaner-care-guide": [("condensation-ventilation-that-works", "Condensation, solved"),
                                       ("season-cast-iron-pan", "The cast-iron philosophy"),
                                       ("someday-maintenance-cost", "The someday-cost rule")],
+        "water-damage-insurance-coverage": [("small-leak-ripple-effect", "How small leaks ripple"),
+                                            ("winter-home-preparation", "Frozen-pipe season prep"),
+                                            ("seasonal-home-maintenance-checklist", "The seasonal checklist")],
     }
     for slug, ti, dek, b in HOME_ARTICLES:
         key = HOME_SLUG_SECT[slug]
