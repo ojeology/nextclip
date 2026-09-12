@@ -1,0 +1,98 @@
+/* BRYME advertising experiment — single 300x250 placement per page (12 Sep 2026).
+   v2, DUAL-FILE: identical to ad-slot.js — this path is kept alive because caches worldwide
+   still hold pre-rename HTML that points here. Never delete while cached HTML exists.
+   Design rules (owner instruction, 12 Sep 2026):
+   - ONE placement per page, inserted between content sections, never over content,
+     navigation, forms or calculators.
+   - The unit runs inside a fixed 300x250 iframe, so it cannot cover anything,
+     overflow the viewport, or reflow editorial content.
+   - Provider code embedded EXACTLY as supplied: key, format, dimensions, params
+     and invoke URL are unaltered.
+   - Failsafe: if the provider script is blocked (CSP or network), the slot
+     removes itself so pages stay clean and fast.
+   - No popunders, no redirects, no aggressive formats are created here. */
+(function () {
+  "use strict";
+  if (window.__BRYME_AD__) return; /* duplicate-load guard */
+  window.__BRYME_AD__ = true;
+
+  var PROVIDER_KEY = "51fc16f82ddc690721deee07bcd8bccd";
+  var INVOKE_SRC = "https://www.highrevenueformat.com/" + PROVIDER_KEY + "/invoke.js";
+
+  function init() {
+    if (document.getElementById("bryme-ad-slot")) return;
+    var main = document.querySelector("main") || document.body;
+
+    var slot = document.createElement("div");
+    slot.id = "bryme-ad-slot";
+    slot.className = "bryme-ad";
+    var label = document.createElement("div");
+    label.className = "bryme-ad-label";
+    label.textContent = "Advertisement";
+    var frame = document.createElement("iframe");
+    frame.id = "bryme-ad-300x250";
+    frame.width = "300";
+    frame.height = "250";
+    frame.setAttribute("scrolling", "no");
+    frame.setAttribute("frameborder", "0");
+    frame.setAttribute("title", "Advertisement");
+    slot.appendChild(label);
+    slot.appendChild(frame);
+
+    /* content ↓ ad ↓ more content: before the 3rd h2 when the page has one,
+       before the 2nd on shorter pages, above the footer otherwise. */
+    var h2s = main.querySelectorAll("h2");
+    if (h2s.length >= 3) h2s[2].parentNode.insertBefore(slot, h2s[2]);
+    else if (h2s.length === 2) h2s[1].parentNode.insertBefore(slot, h2s[1]);
+    else {
+      var f = document.querySelector("footer.foot");
+      if (f) f.parentNode.insertBefore(slot, f); else main.appendChild(slot);
+    }
+
+    var css = document.createElement("style");
+    css.textContent =
+      ".bryme-ad{margin:30px auto;max-width:300px;text-align:center;overflow:hidden}" +
+      ".bryme-ad-label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#8a94a6;margin-bottom:6px}" +
+      "@media(max-width:340px){.bryme-ad iframe{transform:scale(.9);transform-origin:top center}}";
+    document.head.appendChild(css);
+
+    var d = frame.contentDocument || (frame.contentWindow && frame.contentWindow.document);
+    if (!d) return;
+    function fill() {
+    d.open();
+    /* CSP-clean: the provider's atOptions lives in an EXTERNAL same-origin file
+       (assets/ad-300x250-config.js, values unaltered) because the site's
+       Content-Security-Policy forbids inline scripts. No inline code here. */
+    d.write(
+      '<!doctype html><html><head><meta name="viewport" content="width=device-width,initial-scale=1">' +
+      '<style>html,body{margin:0;padding:0;overflow:hidden}</style></head><body>' +
+      '<script src="/assets/ad-300x250-config.js"><\/script>' +
+      '<script src="' + INVOKE_SRC + '"><\/script>' +
+      "</body></html>"
+    );
+    d.close();
+    }
+
+    fill();
+
+    /* Failsafe: slow networks and empty fills get two retries (7s, 15s, 23s)
+       before the slot collapses. Once the creative lands, its document turns
+       cross-origin and the checks stop touching it. */
+    var tries = 0;
+    function check() {
+      var empty = false;
+      try {
+        var b = frame.contentDocument && frame.contentDocument.body;
+        empty = !b || b.children.length === 0;
+      } catch (e) { return; }
+      if (!empty) return;
+      tries++;
+      if (tries <= 2) { fill(); setTimeout(check, 8000); }
+      else slot.style.display = "none";
+    }
+    setTimeout(check, 7000);
+  }
+
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
+  else init();
+})();
