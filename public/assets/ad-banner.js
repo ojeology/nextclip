@@ -58,16 +58,13 @@
     var d = frame.contentDocument || (frame.contentWindow && frame.contentWindow.document);
     if (!d) return;
     d.open();
+    /* CSP-clean: the provider's atOptions lives in an EXTERNAL same-origin file
+       (assets/ad-300x250-config.js, values unaltered) because the site's
+       Content-Security-Policy forbids inline scripts. No inline code here. */
     d.write(
       '<!doctype html><html><head><meta name="viewport" content="width=device-width,initial-scale=1">' +
       '<style>html,body{margin:0;padding:0;overflow:hidden}</style></head><body>' +
-      "<script>atOptions = {\n" +
-      "  'key' : '" + PROVIDER_KEY + "',\n" +
-      "  'format' : 'iframe',\n" +
-      "  'height' : 250,\n" +
-      "  'width' : 300,\n" +
-      "  'params' : {}\n" +
-      "};<\/script>" +
+      '<script src="/assets/ad-300x250-config.js"><\/script>' +
       '<script src="' + INVOKE_SRC + '"><\/script>' +
       "</body></html>"
     );
