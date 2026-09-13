@@ -260,6 +260,15 @@ a{color:#a4762c}
 <script src="/assets/ad-live.js?v=8" defer></script>
 </body></html>
 """, encoding="utf-8")
+    # sitemap index: one submission URL for GSC pointing at all seven sitemaps
+    _si = ['<?xml version="1.0" encoding="UTF-8"?>\n'
+           '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n']
+    for _x in ["sitemap.xml", "writers/sitemap.xml", "sports/sitemap.xml",
+               "entertainment/sitemap.xml", "tech/sitemap.xml",
+               "fitness/sitemap.xml", "home/sitemap.xml"]:
+        _si.append(f"<sitemap><loc>{ORIGIN}/{_x}</loc></sitemap>\n")
+    _si.append("</sitemapindex>\n")
+    (ROOT / "public" / "sitemap_index.xml").write_text("".join(_si), encoding="utf-8")
     return 0
 
 

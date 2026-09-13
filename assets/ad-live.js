@@ -110,6 +110,26 @@
     sb.src = SOCIAL_SRC;
     document.body.appendChild(sb);
 
+    /* 5. BOTTOM: a second native zone (owner creates "Native Banner 2" in the
+       Adsterra dashboard and pastes it; I write assets/ad-bottom-config.js with
+       window.BRYME_BOTTOM = {invoke, container}). Until that config exists this
+       slot simply never renders - zero cost, zero placeholder risk. */
+    var B = window.BRYME_BOTTOM;
+    if (B && B.invoke && B.container) {
+      var bot = makeSlot("Advertisement");
+      var bscr = document.createElement("script");
+      bscr.async = true;
+      bscr.setAttribute("data-cfasync", "false");
+      bscr.src = B.invoke;
+      bot.appendChild(bscr);
+      var bbox = document.createElement("div");
+      bbox.id = B.container;
+      bot.appendChild(bbox);
+      var f1 = document.querySelector("footer.foot");
+      if (f1) f1.parentNode.insertBefore(bot, f1); else main.appendChild(bot);
+      setTimeout(function () { if (!realKids(bbox)) bot.remove(); }, 25000);
+    }
+
     var css = document.createElement("style");
     css.textContent =
       ".bryme-ad{margin:30px auto;max-width:340px;text-align:center;overflow:hidden}" +

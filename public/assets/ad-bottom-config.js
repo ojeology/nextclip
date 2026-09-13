@@ -1,0 +1,1 @@
+/* BRYME bottom native slot - DISABLED until zone #2 exists.\n   When the owner creates a second Native Banner zone (site: bryme.onrender.com),\n   this file gets: window.BRYME_BOTTOM = { invoke: '<invoke.js URL>', container: '<container-...>' }; */\n
