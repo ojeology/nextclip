@@ -333,6 +333,13 @@
       "short": "Log payments as they land and see the year, the month and who actually pays.",
       "category": "work",
       "description": "Record every payment, invoice and pending fee. Totals for the year and month, average per piece, your top clients, a tax set-aside hint and a CSV export - all stored privately in your browser."
+    },
+    {
+      "id": "structure-quiz",
+      "title": "Writing structure quiz",
+      "short": "Eight quick questions on what makes writing hold together.",
+      "category": "quality",
+      "description": "Ledes, nut grafs, the inverted pyramid, three-act bones, show-don't-tell - test your structural instincts and get a straight score with one-line explanations."
     }
   ]
 }

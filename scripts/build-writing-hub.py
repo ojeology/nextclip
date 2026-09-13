@@ -642,7 +642,7 @@ def render_tool(t: dict) -> str:
 <div class="tool-input"><label for="rc-piece">Typical piece length (words)</label><input id="rc-piece" type="number" min="100" step="100" value="1200"></div>
 </div>
 <div class="tool-result" id="out" aria-live="polite"></div></div></div>
-<script src="/assets/hub-tools.js?v=3" data-hub-tool="freelance-rate-calculator"></script>'''
+<script src="/assets/hub-tools.js?v=4" data-hub-tool="freelance-rate-calculator"></script>'''
 
     if i == "tax-estimator":
         return '''<div class="tool-box"><div class="tool-prose">
@@ -653,7 +653,7 @@ def render_tool(t: dict) -> str:
 <div class="tool-input"><label for="te-already">Already set aside so far (USD)</label><input id="te-already" type="number" min="0" step="100" value="0"></div>
 </div>
 <div class="tool-result" id="te-out" aria-live="polite"></div></div></div>
-<script src="/assets/hub-tools.js?v=3" data-hub-tool="tax-estimator"></script>'''
+<script src="/assets/hub-tools.js?v=4" data-hub-tool="tax-estimator"></script>'''
 
     if i == "income-tracker":
         return '''<div class="tool-box"><div class="tool-prose">
@@ -668,7 +668,25 @@ def render_tool(t: dict) -> str:
 <div id="it-list"></div>
 <div class="tool-actions"><button id="it-export" class="btn secondary">Export CSV</button> <button id="it-clear" class="btn secondary">Clear all</button></div>
 <p class="tool-note">Stored only in this browser (localStorage) - export a CSV now and then so a cleared cache never costs you your records.</p></div></div>
-<script src="/assets/hub-tools.js?v=3" data-hub-tool="income-tracker"></script>'''
+<script src="/assets/hub-tools.js?v=4" data-hub-tool="income-tracker"></script>'''
+
+    if i == "structure-quiz":
+        return '''<style>
+.sq-q{font-size:15.5px;margin:16px 0 8px}
+.sq-step{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin:12px 0 0}
+.sq-opts{display:flex;flex-direction:column;gap:8px;max-width:640px}
+.sq-opt{border:1px solid var(--line-strong);border-radius:10px;padding:10px 14px;font:inherit;font-size:14.5px;background:var(--card);cursor:pointer;text-align:left}
+.sq-opt:hover{border-color:var(--accent)}
+.sq-ok{border-color:#2e7d32;background:rgba(46,125,50,.08);font-weight:700}
+.sq-no{border-color:#b3402e;background:rgba(179,64,46,.08)}
+.sq-why{border-left:3px solid var(--accent);padding:8px 12px;font-size:13.5px;color:var(--dim);max-width:640px;margin:10px 0}
+.sq-next{border:1px solid var(--line-strong);background:var(--card);border-radius:8px;padding:8px 18px;font:inherit;font-size:14px;cursor:pointer}
+.sq-score{font-size:30px;font-weight:800;margin:10px 0 4px}
+</style><div class="tool-box"><div class="tool-prose">
+<div id="structure-quiz-calc"></div>
+<noscript><p><b>The short static version:</b> an opening earns the next sentence; the inverted pyramid puts the least important news last; a nut graf says what the piece is and why now; Act One sets hero, world and problem; show feelings through action, not labels; a skimmable skeleton should carry the argument alone; meaning is a thread, not a conclusion-slot; and professionals outline the point plus three-to-five proving moves before drafting.</p></noscript>
+</div></div>
+<script src="/assets/hub-tools.js?v=4" data-hub-tool="structure-quiz"></script>'''
 
     if i == "freelance-agreement-builder":
         return '''<style>
@@ -719,7 +737,7 @@ def render_tool(t: dict) -> str:
 <p class="meta">A general template for ordinary writing engagements &mdash; not legal advice. For high-value or unusual deals, have it reviewed locally. Everything stays in this browser.</p>
 </div></div>
 <div id="agr-sheet" aria-label="Agreement preview"></div>
-<script src="/assets/hub-tools.js?v=3" data-hub-tool="freelance-agreement-builder"></script>'''
+<script src="/assets/hub-tools.js?v=4" data-hub-tool="freelance-agreement-builder"></script>'''
 
     if i == "invoice-generator":
         return '''<style>
@@ -766,7 +784,7 @@ def render_tool(t: dict) -> str:
 <p class="meta">Everything stays in this browser &mdash; no account, nothing uploaded. Your details stay on this device for next time.</p>
 </div></div>
 <div id="inv-sheet" aria-label="Invoice preview"></div>
-<script src="/assets/hub-tools.js?v=3" data-hub-tool="invoice-generator"></script>'''
+<script src="/assets/hub-tools.js?v=4" data-hub-tool="invoice-generator"></script>'''
 
     if i == "late-payment-letter-builder":
         return '''<style>
@@ -804,7 +822,7 @@ def render_tool(t: dict) -> str:
 <p class="meta">Most chases end at stage one. Start there, wait a few working days, then escalate to 2, then 3. These are business letters, not legal ones &mdash; a general template, not legal advice. Everything stays in this browser.</p>
 </div></div>
 <div id="ltr-sheet" aria-label="Letter preview"></div>
-<script src="/assets/hub-tools.js?v=3" data-hub-tool="late-payment-letter-builder"></script>'''
+<script src="/assets/hub-tools.js?v=4" data-hub-tool="late-payment-letter-builder"></script>'''
 
     if i == "pitch-checker":
         return '''<style>
@@ -824,7 +842,7 @@ def render_tool(t: dict) -> str:
 <p class="meta">Rule-based checks, not AI: your pitch is analysed on this device and never uploaded, and no tool here writes a word for you. These are the checks a tired editor runs in the first ten seconds.</p>
 <div id="pc-out" aria-live="polite" style="margin-top:14px"></div>
 </div></div>
-<script src="/assets/hub-tools.js?v=3" data-hub-tool="pitch-checker"></script>'''
+<script src="/assets/hub-tools.js?v=4" data-hub-tool="pitch-checker"></script>'''
 
     if i == "word-count-to-pages":
         return f'''<div class="tool-box"><div class="tool-prose">
@@ -841,7 +859,7 @@ def render_tool(t: dict) -> str:
 </select></div>
 </div>
 <div class="tool-result" id="out" aria-live="polite"></div></div></div>
-<script src="/assets/hub-tools.js?v=3" data-hub-tool="word-count-to-pages"></script>'''
+<script src="/assets/hub-tools.js?v=4" data-hub-tool="word-count-to-pages"></script>'''
 
     if i == "outline-builder":
         return f'''<div class="tool-box"><div class="tool-prose">
@@ -852,11 +870,11 @@ def render_tool(t: dict) -> str:
 <ol class="ob-list" id="sections"></ol>
 <div class="tool-actions"><button type="button" class="btn secondary" id="add">Add section</button><button type="button" class="btn" id="copy">Copy outline</button></div>
 <div class="tool-result" id="out" aria-live="polite"></div></div></div>
-<script src="/assets/hub-tools.js?v=3" data-hub-tool="outline-builder"></script>'''
+<script src="/assets/hub-tools.js?v=4" data-hub-tool="outline-builder"></script>'''
     if i == "tone-checker":
         return f'''<div class="tool-box"><div class="tool-prose"><p>Paste a paragraph or a full draft. BRYME estimates how formal it sounds and shows you which signals produced that estimate.</p>
 <label for="ta">Your text</label><textarea id="ta" placeholder="Paste your draft here…"></textarea><div class="tool-result" id="out" aria-live="polite"></div></div></div>
-<script src="/assets/hub-tools.js?v=3" data-hub-tool="tone-checker"></script>'''
+<script src="/assets/hub-tools.js?v=4" data-hub-tool="tone-checker"></script>'''
     if i == "citation-formatter":
         return f'''<div class="tool-box"><div class="tool-prose"><p>Fill in what you have. The reference updates as you type.</p>
 <div class="tool-grid"><div class="tool-input"><label for="style">Style</label><select id="style"><option value="apa">APA (7th)</option><option value="mla">MLA (9th)</option><option value="chicago">Chicago</option></select></div>
@@ -869,56 +887,56 @@ def render_tool(t: dict) -> str:
 <div class="tool-grid"><div class="tool-input"><label for="url">URL</label><input id="url" type="text" placeholder="https://…" autocomplete="off"></div>
 <div class="tool-input"><label for="accessed">Date accessed (MLA)</label><input id="accessed" type="text" placeholder="4 Sept. 2026" autocomplete="off"></div></div>
 <div class="tool-result" id="out" aria-live="polite"></div></div></div>
-<script src="/assets/hub-tools.js?v=3" data-hub-tool="citation-formatter"></script>'''
+<script src="/assets/hub-tools.js?v=4" data-hub-tool="citation-formatter"></script>'''
     if i == "word-alternatives":
         return f'''<div class="tool-box"><div class="tool-prose"><p>Type one overused word or phrase to see stronger options — and to be told when deleting it is the better move.</p>
 <label for="w">Word or phrase</label><input id="w" type="text" placeholder="e.g. said, very, important, in order to" autocomplete="off">
 <div class="tool-result" id="out" aria-live="polite"></div></div></div>
-<script src="/assets/hub-tools.js?v=3" data-hub-tool="word-alternatives"></script>'''
+<script src="/assets/hub-tools.js?v=4" data-hub-tool="word-alternatives"></script>'''
     if i in ("writing-timer",):
         return f'''<div class="tool-box"><div class="tool-prose"><p>Set a goal and write for a focused stretch. BRYME's timer keeps you honest without nagging you.</p>
 <div class="tool-grid"><div class="tool-input"><label for="goal">Goal (minutes)</label><input id="goal" type="number" value="25" min="1"></div><div class="tool-input"><button id="setgoal" class="btn">Set goal</button></div></div>
 <div class="timer-display" id="time" aria-live="polite">25:00</div>
 <div class="tool-actions"><button id="start" class="btn">Start</button><button id="reset" class="btn secondary">Reset</button></div></div></div>
-<script src="/assets/hub-tools.js?v=3" data-hub-tool="writing-timer"></script>'''
+<script src="/assets/hub-tools.js?v=4" data-hub-tool="writing-timer"></script>'''
     if i in ("case-converter", "text-sorter"):
         extra = '<div class="tool-grid"><div class="tool-input"><label>Input</label><textarea id="ta" placeholder="Type or paste your text…"></textarea></div><div class="tool-input"><label>Output</label><textarea id="out" readonly placeholder="Result appears here…"></textarea></div></div>'
         ctl = '<div class="tool-grid"><div class="tool-input"><label for="mode">Mode</label>' + ('<select id="mode"><option value="title">Title Case</option><option value="lower">lowercase</option><option value="upper">UPPERCASE</option><option value="sentence">Sentence case</option><option value="camel">camelCase</option></select>' if i == "case-converter" else '<select id="dir"><option value="asc">A–Z</option><option value="desc">Z–A</option></select>') + '</div></div>' if i == "case-converter" else ''
         if i == "text-sorter":
             ctl = '<div class="tool-grid"><div class="tool-input"><label for="dir">Direction</label><select id="dir"><option value="asc">A–Z</option><option value="desc">Z–A</option></select></div></div>'
         return f'''<div class="tool-box"><div class="tool-prose"><p>Type or paste your text below — the result updates as you go.</p>{ctl}{extra}</div></div>
-<script src="/assets/hub-tools.js?v=3" data-hub-tool="{i}"></script>'''
+<script src="/assets/hub-tools.js?v=4" data-hub-tool="{i}"></script>'''
     if i in ("text-cleaner", "remove-extra-spaces", "line-break-cleaner", "duplicate-line-remover"):
         return f'''<div class="tool-box"><div class="tool-prose"><p>Paste messy text and get clean text back.</p>
 <div class="tool-grid"><div class="tool-input"><label>Input</label><textarea id="ta" placeholder="Paste your text…"></textarea></div><div class="tool-input"><label>Output</label><textarea id="out" readonly placeholder="Cleaned text…"></textarea></div></div></div>
-<script src="/assets/hub-tools.js?v=3" data-hub-tool="{i}"></script>'''
+<script src="/assets/hub-tools.js?v=4" data-hub-tool="{i}"></script>'''
     if i == "word-density":
         return f'''<div class="tool-box"><div class="tool-prose"><p>Paste your text to see the words you use most.</p><label>Your text</label><textarea id="ta" placeholder="Type or paste…"></textarea><div class="tool-result" id="out"></div></div></div>
-<script src="/assets/hub-tools.js?v=3" data-hub-tool="word-density"></script>'''
+<script src="/assets/hub-tools.js?v=4" data-hub-tool="word-density"></script>'''
     if i == "article-outline-generator":
         return f'''<div class="tool-box"><div class="tool-prose"><label>Working title</label><input id="t" type="text" placeholder="e.g. How to write a strong introduction"><label>Your key points (one per line)</label><textarea id="p" placeholder="The hook&#10;Who it's for&#10;The proof"></textarea><button class="btn" id="go">Generate outline</button><div class="tool-result" id="out"></div></div></div>
-<script src="/assets/hub-tools.js?v=3" data-hub-tool="article-outline-generator"></script>'''
+<script src="/assets/hub-tools.js?v=4" data-hub-tool="article-outline-generator"></script>'''
     if i == "writing-checklist-generator":
         return f'''<div class="tool-box"><div class="tool-prose"><label>Checklist items (one per line)</label><textarea id="ta" placeholder="I checked the facts&#10;I proofread once&#10;I added a clear next step"></textarea><div class="tool-result" id="out"></div></div></div>
-<script src="/assets/hub-tools.js?v=3" data-hub-tool="writing-checklist-generator"></script>'''
+<script src="/assets/hub-tools.js?v=4" data-hub-tool="writing-checklist-generator"></script>'''
     if i == "title-generator":
         return f'''<div class="tool-box"><div class="tool-prose"><p>Type your topic and get a fresh bank of headlines.</p>
 <label>Topic</label><input id="topic" type="text" placeholder="e.g. write a strong introduction" autocomplete="off"><label>Audience (optional)</label><input id="audience" type="text" placeholder="e.g. busy beginners" autocomplete="off"><div class="tool-result" id="out"></div></div></div>
-<script src="/assets/hub-tools.js?v=3" data-hub-tool="title-generator"></script>'''
+<script src="/assets/hub-tools.js?v=4" data-hub-tool="title-generator"></script>'''
     if i == "meta-description-generator":
         return f'''<div class="tool-box"><div class="tool-prose"><p>Draft a search-friendly description under the character limit.</p>
 <label>Page topic</label><input id="topic" type="text" placeholder="e.g. how to proofread" autocomplete="off"><label>Reader benefit</label><input id="benefit" type="text" placeholder="e.g. catch typos before you submit" autocomplete="off"><div class="tool-result" id="out"></div></div></div>
-<script src="/assets/hub-tools.js?v=3" data-hub-tool="meta-description-generator"></script>'''
+<script src="/assets/hub-tools.js?v=4" data-hub-tool="meta-description-generator"></script>'''
     if i == "random-writing-prompt":
         return f'''<div class="tool-box"><div class="tool-prose"><p>Click for a fresh prompt to beat the blank page.</p>
 <div class="tool-actions"><button class="btn" id="new">New prompt</button></div><div class="tool-result" id="out"></div></div></div>
-<script src="/assets/hub-tools.js?v=3" data-hub-tool="random-writing-prompt"></script>'''
+<script src="/assets/hub-tools.js?v=4" data-hub-tool="random-writing-prompt"></script>'''
     if i == "word-document-converter":
         return f'''<div class="tool-box"><div class="tool-prose"><p>Paste or write your text, then download it as a Word-compatible file. Everything happens in your browser — nothing is uploaded.</p>
 <label>Your text</label><textarea id="ta" placeholder="Paste or write your document here…"></textarea>
 <div class="tool-actions"><label class="tool-select">Format <select id="format"><option value="doc">Word (.doc)</option><option value="txt">Plain text (.txt)</option></select></label><button id="download" class="btn">Download document</button></div>
 <div class="tool-result" id="out"></div></div></div>
-<script src="/assets/hub-tools.js?v=3" data-hub-tool="word-document-converter"></script>'''
+<script src="/assets/hub-tools.js?v=4" data-hub-tool="word-document-converter"></script>'''
     if i == "pdf-editor":
         # editor uses pdf.js for thumbnails and pdf-lib to rebuild the file
         return f'''<div class="tool-box">{pdf_render(i)}</div>
@@ -947,7 +965,7 @@ def render_tool(t: dict) -> str:
 <script src="/assets/pdf-tools.js" data-hub-tool="ai-writing-checker"></script>'''
     # default: single textarea with live count
     return f'''<div class="tool-box"><div class="tool-prose"><label>Your text</label><textarea id="ta" placeholder="Type or paste your text…"></textarea><div class="tool-result" id="out"></div></div></div>
-<script src="/assets/hub-tools.js?v=3" data-hub-tool="{i}"></script>'''
+<script src="/assets/hub-tools.js?v=4" data-hub-tool="{i}"></script>'''
 
 
 def glossary_page() -> None:
@@ -958,7 +976,7 @@ def glossary_page() -> None:
 <p>{len(GLOSSARY)} writing terms explained in plain language, with examples. Use the search box to find a term.</p>
 <div class="searchbar"><input id="gsearch" type="search" placeholder="Search the glossary… (e.g. pitch, thesis, tone)" aria-label="Search the glossary"></div></section>
 <section class="section"><dl class="glossary" id="glossary">{items}</dl></section></div>
-<script src="/assets/hub-tools.js?v=3" data-hub-glossary></script>'''
+<script src="/assets/hub-tools.js?v=4" data-hub-glossary></script>'''
     write("/glossary/", page_wf(title="Writing glossary — every writing term explained | BRYME",
                                 description="A plain-language glossary of writing terms: pitch, thesis, tone, voice, draft, paraphrase and more, with simple examples.",
                                 route="/glossary/", current="learn", body=body,
@@ -1028,7 +1046,7 @@ def search_page() -> None:
 <p>Search all our writing guides and tools. Try "how to write an essay", "comma rules", "word counter", or "how to submit an article".</p>
 <div class="searchbar"><input id="q" type="search" placeholder="What do you want to learn about writing?" aria-label="Search" autocomplete="off"></div></section>
 <section class="section"><div class="guide-grid" id="results"></div></section></div>
-<script src="/assets/search-index.js"></script><script src="/assets/hub-tools.js?v=3" data-hub-search></script>'''
+<script src="/assets/search-index.js"></script><script src="/assets/hub-tools.js?v=4" data-hub-search></script>'''
     write("/search/", page_wf(title="Search BRYME — writing guides and tools | BRYME",
                               description="Search BRYME's writing guides, tools and resources. Find how to write an essay, comma rules, how to write a work email, how to write a short story and more.",
                               route="/search/", current="learn", body=body))

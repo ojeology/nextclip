@@ -739,3 +739,10 @@ Chain: 922 pages / 99,128 internal links OK; validator ok; allowlist v26 (912 ro
 - jsdom proof: add 400+150 paid + 900 invoiced → totals 550 ✓ avg 275 ✓ outstanding 900 ✓ top clients ✓ set-aside hint $138 + estimator link ✓ 3 rows ✓ localStorage persisted ✓ delete removes 900 ✓ export/clear buttons ✓. Chain: 986 pages / 105,818 links / ok:true.
 - (NameError hiccup mid-wiring: ast not imported in one heredoc — write had landed before the parse; verified + continued.)
 - Writers queue remaining: structure quiz only.
+
+## Batch 55 — 14 Sep 2026 (structure quiz — 47th tool; WRITERS TOOLS DIRECTIVE COMPLETE)
+- RUNTIME-LINK BUG FIXED (introduced b53/b54): JS-injected links bypass build-routing's HTML rewrites — the tax/income handlers linked /tools/tax-estimator/ and /tools/freelance-rate-calculator/, both LIVE 404s (verified by curl). Fixed to /writers/... paths in hub-tools.js; LAW: any link injected at runtime by JS must use the FINAL routed path (/writers/tools/..., /writers/guides/...), never the pre-routing build path.
+- TOOL: /tools/structure-quiz/ — 8 MCQs (lede's job, inverted pyramid, nut graf, three-act Act One, show-don't-tell, skimmable skeleton, meaning-as-thread, outlining-first); instant correct/wrong marking + one-line why per question; final score /8 with straight verdict bands; Try again; guidance links (pitch checker, outline generator, pitch guide) at /writers/ paths; noscript static version.
+- Wiring: tools.json 47 (category quality), tool-content, render_tool block (sq-* styles), hub-tools.js "structure-quiz" handler; ALL hub-tools tags ?v=3→?v=4 (25); nav "All 47 tools"; allowlist 975 routes.
+- jsdom proof 9/9: start, correct marking, wrong marking + why, final 7/8 exact, verdict, retry, guide+tool links. Chain: 987 pages / 105,942 links OK / ok:true.
+- **DIRECTIVE TOOLS COMPLETE — all properties:** Home 6/6 ✓ · Tech 5+wave ✓ (b47–b52) · Writers 5/5 ✓ (rate calc + invoice gen pre-existing; tax estimator b53; income tracker b54; structure quiz b55). Remaining: minor b46 docs entry; owner Adsterra zone codes (middle 300×250 + bottom native) to wire on arrival; ENT/sport/fitness PAUSED; domain flip last.

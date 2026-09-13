@@ -125,7 +125,7 @@
           "<div class='rc-cell'><b>" + money(takeHome) + "</b><span>left after set-aside and expenses</span></div>" +
           "</div>" +
           "<p class='tool-note'><b>How this works.</b> Your taxable base is what clients pay you (" + money(income) + ") minus deductible business expenses (" + money(expenses) + "). At a " + rate + "% set-aside that is <b>" + money(setAside) + "</b> — about " + money(setAside / 12) + " a month if you save monthly. Common bands on your base: 20% ≈ " + money(base * 0.20) + " · 25% ≈ " + money(base * 0.25) + " · 30% ≈ " + money(base * 0.30) + " · 35% ≈ " + money(base * 0.35) + ".</p>" +
-          "<p class='tool-note'><b>Honest limits.</b> A planning estimate, not tax advice. Rules, deductions and rates differ by country — confirm your rate with your tax authority or an accountant, and revisit whenever your income jumps. Pair it with the <a href='/tools/freelance-rate-calculator/'>rate calculator</a>, which grosses your target up by this same percentage.</p>";
+          "<p class='tool-note'><b>Honest limits.</b> A planning estimate, not tax advice. Rules, deductions and rates differ by country — confirm your rate with your tax authority or an accountant, and revisit whenever your income jumps. Pair it with the <a href='/writers/tools/freelance-rate-calculator/'>rate calculator</a>, which grosses your target up by this same percentage.</p>";
       }
       ["te-income", "te-expenses", "te-rate", "te-already"].forEach(function (id) {
         var e = q(id); if (e) e.addEventListener("input", calc);
@@ -161,7 +161,7 @@
           "<div class='rc-cell'><b>" + (avg ? "$" + avg.toFixed(0) : "—") + "</b><span>average per payment</span></div>" +
           "<div class='rc-cell'><b>" + money(outs) + "</b><span>invoiced + pending</span></div>" +
           "</div>";
-        if (tot > 0) h += "<p class='tool-note'>At a 25% set-aside that is <b>" + money(tot * 0.25) + "</b> for tax - check your own rate with the <a href='/tools/tax-estimator/'>tax set-aside estimator</a>.</p>";
+        if (tot > 0) h += "<p class='tool-note'>At a 25% set-aside that is <b>" + money(tot * 0.25) + "</b> for tax - check your own rate with the <a href='/writers/tools/tax-estimator/'>tax set-aside estimator</a>.</p>";
         if (top.length) {
           var dep = byClient[top[0]] / tot;
           h += "<p class='tool-note'><b>Top clients (paid):</b> " + top.slice(0, 3).map(function (c) { return esc(c) + " " + money(byClient[c]); }).join(" · ") + (top.length > 1 && dep > 0.5 ? "<br><b>Concentration flag:</b> " + Math.round(dep * 100) + "% of paid income comes from one client - worth diversifying." : "") + "</p>";
@@ -207,6 +207,78 @@
       var dt = q("it-date");
       if (dt && !dt.value) dt.value = new Date().toISOString().slice(0, 10);
       calc();
+    },
+        "structure-quiz": function () {
+      var root = q("structure-quiz-calc");
+      if (!root) return;
+      var QS = [
+        { q: "The main job of an opening paragraph (the lede) is to…",
+          o: ["Show off your vocabulary", "Earn the reader\u2019s next sentence", "Summarise the whole piece", "Introduce yourself"], a: 1,
+          why: "Openings don\u2019t inform first \u2014 they hire. Every line has to re-earn the attention the last one won." },
+        { q: "In the inverted pyramid, the least important information goes\u2026",
+          o: ["First", "In the middle", "Last", "In the headline"], a: 2,
+          why: "Most important first, in descending order \u2014 so an editor can cut from the bottom and a reader can stop anywhere." },
+        { q: "A \u201cnut graf\u201d is\u2026",
+          o: ["The paragraph that says what the piece is about and why it matters now", "A punchy quote", "The final paragraph", "A type of headline"], a: 0,
+          why: "It pays off the lede\u2019s promise \u2014 the story in a nutshell, plus the stakes." },
+        { q: "In three-act structure, Act One must establish\u2026",
+          o: ["The theme, stated outright", "The hero, their world, and the problem", "The ending", "The villain\u2019s whole backstory"], a: 1,
+          why: "Act One is the promise: who we follow, what normal looks like, and the moment that normal breaks." },
+        { q: "\u201cShow, don\u2019t tell\u201d in practice means\u2026",
+          o: ["Never state a feeling \u2014 render it through action, detail and dialogue", "Only write dialogue", "Add more adjectives", "Include images with the text"], a: 0,
+          why: "\u201cShe was nervous\u201d is a fact. \u201cShe re-read the message four times\u201d is an experience." },
+        { q: "The strongest sign an article\u2019s structure works:",
+          o: ["Every paragraph is the same length", "A skimmer reading only the first lines of each section still gets the argument", "Long, flowing sentences", "No heading repeats a word"], a: 1,
+          why: "Structure is for the impatient reader too \u2014 the skeleton should carry the argument on its own." },
+        { q: "Where does a feature\u2019s \u201cso what?\u201d belong?",
+          o: ["Only in the conclusion", "Teased in the lede, earned in the middle, landed at the end", "In the headline only", "In a pull quote"], a: 1,
+          why: "Meaning isn\u2019t a slot at the end \u2014 it\u2019s a thread the whole piece keeps tightening." },
+        { q: "The best first move when structuring a long piece:",
+          o: ["Start writing and see where it goes", "Write a one-line point, then the 3\u20135 moves that prove it", "Perfect the introduction first", "Collect quotes and arrange them"], a: 1,
+          why: "An outline is a promise you can test in one screen \u2014 before you spend 2,000 words searching for your point." }
+      ];
+      var idx = 0, score = 0;
+      function esc(x) { var d = document.createElement("div"); d.textContent = x; return d.innerHTML; }
+      function verdict(n) {
+        if (n === 8) return "Structural instincts: pro-level. You already think in promises and payoffs \u2014 the quiz just confirmed it.";
+        if (n >= 6) return "Strong bones. A couple of instincts to sharpen \u2014 and the explanations above show you exactly which.";
+        if (n >= 3) return "The foundations are there \u2014 now name them. One more read of the explanations above is worth an hour of writing.";
+        return "Good news: structure is the most learnable skill in writing. Start with the inverted pyramid and the nut graf \u2014 today\u2019s explanations are your first lesson.";
+      }
+      function render() {
+        if (idx >= QS.length) {
+          root.innerHTML =
+            "<p class='sq-step'>Your result</p><div class='sq-score'>" + score + "/8</div>" +
+            "<p class='sq-why' style='border-left-color:var(--line-strong)'>" + esc(verdict(score)) + "</p>" +
+            "<p class='tool-note'>Keep sharpening: the <a href='/writers/tools/pitch-checker/'>pitch checker</a>, the <a href='/writers/tools/article-outline-generator/'>outline generator</a>, and the guide on <a href='/writers/guides/how-to-write-a-pitch/'>writing a magazine pitch</a> all build on these mechanics.</p>" +
+            "<button type='button' class='sq-next' id='sq-retry'>Try again</button>";
+          var rt = q("sq-retry");
+          if (rt) rt.addEventListener("click", function () { idx = 0; score = 0; render(); });
+          return;
+        }
+        var item = QS[idx];
+        var h = "<p class='sq-step'>Question " + (idx + 1) + " of " + QS.length + " \u00b7 score " + score + "</p>" +
+                "<p class='sq-q'>" + esc(item.q) + "</p><div class='sq-opts'>";
+        for (var i = 0; i < item.o.length; i++) {
+          h += "<button type='button' class='sq-opt' data-i='" + i + "'>" + esc(item.o[i]) + "</button>";
+        }
+        h += "</div><div id='sq-fb'></div>";
+        root.innerHTML = h;
+        var btns = root.querySelectorAll(".sq-opt");
+        for (var b = 0; b < btns.length; b++) {
+          btns[b].addEventListener("click", function () {
+            var pick = +this.getAttribute("data-i");
+            for (var k = 0; k < btns.length; k++) { btns[k].disabled = true; }
+            btns[item.a].classList.add("sq-ok");
+            if (pick === item.a) score++;
+            else btns[pick].classList.add("sq-no");
+            q("sq-fb").innerHTML = "<p class='sq-why'><b>" + (pick === item.a ? "Correct." : "Not quite.") + "</b> " + esc(item.why) + "</p>" +
+              "<button type='button' class='sq-next' id='sq-go'>" + (idx === QS.length - 1 ? "See your score" : "Next question") + "</button>";
+            q("sq-go").addEventListener("click", function () { idx++; render(); });
+          });
+        }
+      }
+      render();
     },
     "freelance-agreement-builder": function () {
       var SYM = { USD: "$", GBP: "\u00A3", EUR: "\u20AC", CAD: "CA$", AUD: "A$", NGN: "\u20A6", KES: "KSh ", ZAR: "R", GHS: "GH\u20B5", INR: "\u20B9" };

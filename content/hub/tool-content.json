@@ -228,5 +228,10 @@
     "what": "A private running ledger for your writing money: log every payment, invoice and pending fee, and it keeps the year's total, this month, your average per piece, and which clients actually pay (and how much of your income depends on each).",
     "howto": "After any payment lands - or you send an invoice - add the client, amount, date and status. Export to CSV whenever you want a backup or your accountant's favourite file. Everything stays in your browser; nothing is uploaded.",
     "why": "Writers who track every payment spot the patterns that change businesses: which client is quietly becoming 60% of your income, which months run thin, and exactly how much to set aside before tax. What gets measured gets negotiated."
+  },
+  "structure-quiz": {
+    "what": "Eight multiple-choice questions on the mechanics that hold writing together: the lede's real job, the inverted pyramid, the nut graf, three-act structure, show-don't-tell, skimmability, the through-line of meaning, and how professionals start a long piece.",
+    "howto": "Pick an answer for each question - you get the correct answer and a one-line why immediately. Eight questions, about two minutes. Your score comes with a straight verdict, and Try again reruns the ones you missed.",
+    "why": "Most writing problems are structure problems wearing a disguise. A piece that 'doesn't flow' usually has an unkept promise in its opening or moves that arrive in the wrong order. Name the mechanics and they become tools instead of luck."
   }
 }
