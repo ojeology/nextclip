@@ -1,4 +1,4 @@
-/* BRYME advertising component v15 (ad-slot.js twin).
+/* BRYME advertising component v16 (ad-slot.js twin).
    v15 (owner OVERRIDE "placement swap" — supersedes ALL earlier placements):
      FINAL LAYOUT: header/nav → [300x250 at TOP + Social Bar renders top-area]
        → page title → content → [Native Banner at BOTTOM].
@@ -15,7 +15,13 @@
        it without a new written instruction.
    Owner's binding definition of "working": VISIBLY RENDERING on the live page
    in a real browser (incognito, no blocker). Code presence alone is not
-   "working" and must never be reported as such. */
+   "working" and must never be reported as such.
+   v16 (15 Sep, owner report: top 300x250 shows a WHITE box = Adsterra serves
+   an empty creative frame for the 51fc zone; cross-origin code cannot tell a
+   white frame from a filled one, so per the no-empty-box rule the TOP unit is
+   REMOVED until the owner supplies a new 300x250 zone code - restore = re-add
+   the top-slot block + bannerDoc, swap the key, bump the carrier version.
+   Owner-confirmed WORKING: the BOTTOM native (visible below the content). */
 (function () {
   "use strict";
   if (window.__BRYME_AD__) return;
@@ -49,52 +55,15 @@
     return false;
   }
 
-  function bannerDoc(frame) {
-    var d = frame.contentDocument || (frame.contentWindow && frame.contentWindow.document);
-    if (!d) return null;
-    d.open();
-    d.write(
-      '<!doctype html><html><head><meta name="viewport" content="width=device-width,initial-scale=1">' +
-      '<style>html,body{margin:0;padding:0;overflow:hidden}</style></head><body>' +
-      '<script src="/assets/ad-300x250-config.js?v=3"></script>' +
-      '<script src="' + BANNER_INVOKE + '"></script>' +
-      "</body></html>"
-    );
-    d.close();
-    return d;
-  }
-
   function init() {
     var main = document.querySelector("main") || document.body;
     var foot = document.querySelector("footer.foot");
 
-    /* ZONE TOP: 300x250 banner - directly below the header, above the title.
-       Hidden until a real ad iframe exists; 2 retries, then removes itself. */
-    var top = makeSlot("Advertisement");
-    var frame = document.createElement("iframe");
-    frame.id = "bryme-ad-300x250";
-    frame.width = "300";
-    frame.height = "250";
-    frame.setAttribute("scrolling", "no");
-    frame.setAttribute("frameborder", "0");
-    frame.setAttribute("title", "Advertisement");
-    top.appendChild(frame);
-    top.style.display = "none"; /* invisible until a real ad fills it */
-    main.parentNode.insertBefore(top, main);
-    var bd = bannerDoc(frame);
-    if (bd) {
-      var tries = 0;
-      function bcheck() {
-        var doc = null;
-        try { doc = frame.contentDocument; } catch (e) { return; }
-        if (!doc || !doc.body) return;
-        if (doc.querySelector("iframe")) { top.style.display = ""; return; } /* filled: reveal */
-        tries++;
-        if (tries <= 2) { bannerDoc(frame); setTimeout(bcheck, 8000); }
-        else top.remove();
-      }
-      setTimeout(bcheck, 7000);
-    } else { top.remove(); }
+    /* ZONE TOP: EMPTY BY DESIGN (v16) - the 51fc zone serves white frames.
+       RESTORE HERE when the owner supplies a NEW 300x250 zone code: re-add the
+       iframe loader (ad-300x250-config.js + new invoke URL), hidden-until-fill,
+       inserted before <main>. Keep the no-empty-box rule. */
+
 
     /* ZONE BOTTOM: Native Banner - after the content, before the footer.
        Exactly one container per page; self-cleans when not visibly filled. */
