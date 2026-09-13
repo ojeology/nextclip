@@ -764,3 +764,9 @@ Chain: 922 pages / 99,128 internal links OK; validator ok; allowlist v26 (912 ro
 ## Batch 46 — 12 Sep 2026 (entry RECONSTRUCTED 15 Sep from session records)
 - Sitemap consolidation: sitemap_index.xml (7 entries) + 5-sitemap robots.txt set + hub-robots; sitemap URLs origin-absolute.
 - Owner reported "definitely sure there are errors": forensics found the live sitemap_index 404 was a CDN propagation gap, not a code fault — later verified 200 from multiple vantages; owner handed the one-URL GSC submission + URL-Inspection self-test. (This entry backfills lost notes; no code change accompanies it.)
+
+## Batch 56 — 15 Sep 2026 (indexing push + housekeeping)
+- INDEXNOW: key 7c58863f801147c1be0d5ea74889fb22 hosted at site root (MIRROR_FILES += key file in build-routing; live 200 verified). Key VALIDATED by api.indexnow.org AND bing GET (both 200). 11 priority submissions accepted (3 new writers tools, 5 tech articles incl. re-ping, sitemap_index). Bulk JSON POST of all 975 URLs → 403 from this sandbox (endpoint pickiness/IP) — key + keyLocation stand; Bing discovers the rest via robots-listed sitemaps.
+- Bing /ping?sitemap= → 410 Gone (endpoint RETIRED by Bing) — do not use again; IndexNow is the Bing path. Google = GSC only (owner's one-URL action stands).
+- b46 docs entry backfilled (reconstructed, flagged as such).
+- Health sweep: all 10 recent tools/articles + sitemap_index = 200 live.
