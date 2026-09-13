@@ -635,3 +635,10 @@ Chain: 922 pages / 99,128 internal links OK; validator ok; allowlist v26 (912 ro
 - CACHE LAW UPGRADE: component URL now versioned in carriers (/assets/ad-slot.js?v=7 in foot() + writers shell; ad-live.js?v=7 on /ad-test/) — browser caches cannot serve an old component after this.
 - GSC "couldn't fetch" diagnosis: sitemaps fetched AS GOOGLEBOT → 200 + application/xml both tested (server side perfect). GSC "Couldn't fetch" right after submission = the well-known processing lag (can persist days). Guidance: wait 24–48h, resubmit; truth lands in the Pages report. IndexNow 965/965 already accepted (39b).
 - Chain: 977 pages / 104,812 links OK; validators pass; 3 twins byte-identical (v7).
+
+## Batch 42 — 12 Sep 2026 (directive queue: repair-cost estimator + carrier article)
+- TOOLS FIRST: /assets/repair-cost-estimator.js (CSP-safe, node --check clean) — 12 common repairs, every low/high/qty EDITABLE (directional 2026 US defaults from fixhomecosts/joinbreasy/Angi), urgency multiplier (×1/×1.25/×1.5), per-row + total ranges, DIY ~30–40% line with safety line, "not a quote" disclaimer visible. jsdom proof: 12 rows, urgency select, tick → range renders.
+- ARTICLE SHIPPED: /home/home-repair-costs-explained/ — structure standard: 60-second answer, cost table (source-stamped, directional), what-moves-price (urgency/access/callout/grade/market), two-quote rule + repair-vs-replace ~50% threshold, US/UK/CA notes (VAT 20%, HST, Gas Safe), DIY-vs-pro honest line (always-pro: gas/panel/structural/roof), if-quote-looks-wrong, FAQ + FAQPage JSON-LD (5/5), sources w/ dates. Ad slot: end-of-content native (v7) via foot.
+- Wiring: owning section; related_map ×3; knowledge-shelf nav row ("Repair costs, estimated"); internal links to existing pages only.
+- Chain: 978 pages / 105,005 internal links OK; allowlist v26 (966); validators pass; ads = v7 single-format.
+- Queue remaining: moving-cost estimator → interactive seasonal checklist → then Tech/Writers tools per directive §3.
