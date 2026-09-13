@@ -684,3 +684,10 @@ Chain: 922 pages / 99,128 internal links OK; validator ok; allowlist v26 (912 ro
 - ARTICLE: /tech/best-password-manager-for-you/ (cat safety) — 60-sec (Bitwarden default free; Apple Passwords all-Apple; 1Password best-paid no-free; KeePassXC control; Proton privacy; Dashlane 10 seats), 7-manager matrix w/ 2026 prices (itechguides/guptadeepak/usecarly, dated), what-matters (zero-knowledge/tested export/2FA/audits), switching-without-pain (CSV warning), FAQ 5/5 schema, links: password-manager-or-browser + 2FA-setup (verified existing).
 - Chain: 982 pages / 105,413 links OK; allowlist v26 (970); validators pass.
 - Tech queue remaining: VPN/password table, security checklist → Writers tools.
+
+## Batch 50 — 12 Sep 2026 (Tech queue: VPN & password safety table + carrier)
+- OWNER re-sent file #2 (bryme-native-banner-social-bar-instructions-1.md) — VERIFIED byte-identical to the earlier file (same ba9b container). No new native code exists in it; owner's verbal placement correction (container→bottom) remains the standing rule; top slot stays config-gated for a genuinely different zone code (different container-<ID>).
+- TOOL: /assets/safety-table.js — 6-scenario protection matrix (public Wi-Fi/home/banking/travel/sharing/work): VPN verdict per scenario, "what helps more", the 2FA call, the password move; every scenario links an existing desk guide. jsdom proof: 6 chips, banking → "Not really", 2FA row, internal link renders.
+- ARTICLE: /tech/vpn-and-password-safety-table/ (cat safety) — 60-sec map by scenario, VPN what-it-is/what-it-can't, the two universal controls (manager + 2FA), three myths retired (anonymity/public-wifi/strong-passwords-suffice), FAQ 5/5 schema. Links: vpn-what-it-protects, public-wifi-risks, 2fa-setup, manager-or-browser, best-pm-for-you, how-to-spot-a-suspicious-link (all existing). Desk-firsthand, no rotting stats by design.
+- Chain: 983 pages / 105,488 links OK; allowlist v26 (971); validators pass; ads v10.
+- Tech queue remaining: security checklist → Writers tools (rate calc, tax estimator, invoice generator, income tracker).
