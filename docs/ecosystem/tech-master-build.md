@@ -655,3 +655,10 @@ Chain: 922 pages / 99,128 internal links OK; validator ok; allowlist v26 (912 ro
 - Wiring: owning section; related_map ×3; knowledge-shelf row ("Moving costs, estimated").
 - Chain: 979 pages / 105,196 links OK; allowlist v26 (967); validators pass; ads = v8 full stack.
 - Queue: interactive seasonal checklist (LAST Home tool) → then Tech tools (AI comparison matrix, hosting cost calc, PM quiz, VPN/password table, security checklist) → Writers tools (rate calc, tax estimator, invoice generator, income tracker, structure quiz).
+
+## Batch 45 — 12 Sep 2026 (directive queue COMPLETE for Home: interactive seasonal checklist)
+- TOOL SHIPPED: /assets/seasonal-tool.js (CSP-safe ES5, localStorage only) — season engine on the existing checklist page: auto-detects the visitor's season (hemisphere toggle remembered), renders "Your season right now" panel with 4 season-specific focus tasks (each linked to an existing desk guide — winter/autumn: pipe-freeze prep, water heater, radiators; spring: washing machine, coils, HVAC filter, damp walk; summer: fridge-in-heat, door-seal mould, breaker-under-load, dishwasher habits), progress keyed by season+year+hemi, next-season preview, self-rotating. Upgrades the existing URL (no duplicates); the 10-task once-a-season list + its saved progress unchanged below.
+- jsdom proof: September → Autumn, 4 tasks, links all /home/-relative + existing, progress text renders, hemisphere toggle present, 10 fp-day tasks intact.
+- HOME TOOL QUEUE COMPLETE per directive §3: mortgage ✓ buy-vs-rent ✓ repair-cost ✓ moving-cost ✓ seasonal checklist ✓ (water-damage quiz ✓ b33).
+- NEXT DESK: Tech tools (AI comparison matrix, hosting cost calculator, PM quiz, VPN/password table, security checklist) → Writers tools (rate calc, tax estimator, invoice generator, income tracker, structure quiz).
+- Chain: 979 pages / 105,196 links OK; allowlist v26 (967); validators pass; ads v8.

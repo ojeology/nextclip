@@ -3844,6 +3844,7 @@ def home_pages():
     cmain = ('<section class="section alt"><div class="wrap"><p class="lede"><b>One honest idea:</b> homes fail slowly, then suddenly. '
              + "A short list of checks every season catches the slow failures while they are still cheap. Progress is saved in your browser \u2014 no account, nothing sent anywhere.</p></div></section>"
         + '<section class="section"><div class="wrap"><div class="fp-progressbar" role="img" aria-label="Checklist progress"><div class="fp-fill" id="fp-fill"></div></div>'
+        + '<section class="section" id="your-season"><div class="wrap"><div id="seasonal-tool"></div></div></section>'
         + '<p class="lede" id="fp-status">Nothing ticked yet. Tick items as you do them \u2014 your browser will remember.</p></div></section>'
         + weeks_html
         + '<section class="section"><div class="section-head"><p class="kicker">Boundaries</p><h2>What is deliberately not on this list.</h2></div>'
@@ -3851,6 +3852,7 @@ def home_pages():
         + '<section class="section alt">' + src_html(HOME_SOURCES) + "</section>"
         + '<script type="application/json" id="fit-plan-data">{"total": ' + str(len(HOME_CHECK)) + "}</script>"
         + '<script src="/assets/home-checklist.js" defer></script>'
+        + '<script src="/assets/seasonal-tool.js?v=1" defer></script>'
         + '<script type="application/ld+json">' + _j.dumps(cschema) + "</script>")
     out.append(("/seasonal-home-maintenance-checklist/", "The Once-a-Season Home Checklist | BRYME Home & DIY",
                 "A short, season-proof home maintenance checklist \u2014 water, safety devices, appliances, seals, airflow \u2014 with progress saved in your browser.",
