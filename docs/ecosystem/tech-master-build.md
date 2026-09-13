@@ -790,3 +790,11 @@ Chain: 922 pages / 99,128 internal links OK; validator ok; allowlist v26 (912 ro
 - WRONG-CWD incident #3 this week: a full patch+build chain ran from /home/user — fail-fast FileNotFound on the FIRST open meant ZERO writes (no damage); law re-proven: EVERY chain cwd=/home/user/nextclip.
 - Ecosystem anchor count lesson: the 3.4k-line builder has TWO head shells — assert count==1 tripped; replaced all occurrences.
 - Chain: 987pp / 105,942 links / ok:true.
+
+## Batch 57 — 15 Sep 2026 (Monetag deployed site-wide; HilltopAds fully removed; Adsterra bottom kept)
+- OWNER file "Final Setup - Remove HilltopAds, Deploy Monetag Site-Wide" (overrides conflicts).
+- HILLTOP REMOVED: meta tag stripped from all 3 head templates; BOTH verification files deleted (git rm) + MIRROR_FILES lines removed. Repo-wide residue check (hilltop/817501c2/8a2ac043/shameful-farm): ZERO in source AND built public (we never had a hilltop script — only the tag/files, now gone).
+- ADSTERRA BOTTOM KEPT: file says "the 300x250 at the bottom is working well — leave exactly where it is". Interpretation documented: the working bottom Adsterra unit ON THE SITE is the NATIVE banner (51fc was removed as a white-box dead zone in v16). Operative rule honored: the working bottom unit is untouched. If the owner literally wants the 51fc iframe re-added, one flip away (restore hook in git history).
+- MONETAG LIVE site-wide: assets/monetag.js v1 (guard __BRYME_MONETAG__) — zone 11610753 vignette (n6wxm.com) + zone 11610749 (nap5k.com), owner logic verbatim, adapted only from inline→external file (CSP script-src 'self' https: blocks inline). Carriers: ecosystem foot + writing-first foot ?v=1 → 946 pages incl. homepage. Static MPA = no route-change double-fire (jsdom: second eval → no dup).
+- OWNER DASHBOARD TO-DOS (their own file): confirm zone 11610749 format = non-intrusive (In-Page Push/Banner, NOT popunder/interstitial/push); set frequency caps on BOTH zones (vignette 1-2/session; smart/adaptive as default). Agent-side deploy complete; these two are dashboard-only.
+- jsdom coexistence proof: adsterra native container 1 + monetag scripts 1+1 + no hilltop strings. Chain: 987pp / 105,942 links / ok:true.

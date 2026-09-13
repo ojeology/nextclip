@@ -649,7 +649,6 @@ def page_wf(*, title: str, description: str, route: str, current: str, body: str
     return f'''<!doctype html>
 <html lang="en-NG"><head>
 <meta charset="utf-8">
-<meta name="817501c2f29481101e068a2ac043261f50e861a8" content="817501c2f29481101e068a2ac043261f50e861a8" /> <!-- HilltopAds site verification (owner-supplied, byte-exact) -->
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#f6f2e8">
 <meta name="color-scheme" content="light dark">
@@ -668,7 +667,7 @@ def page_wf(*, title: str, description: str, route: str, current: str, body: str
 <link rel="stylesheet" href="/assets/bryme-v2.css">
 {schema(site_graph)}
 {schema(structured)}{schema(schema_extra) if schema_extra else ""}
-</head><body>{nav(current)}<main id="main">{body}</main>{mobile_nav(current)}{drawer(current)}<script src="/assets/site-nav.js" defer></script><script src="/assets/ad-slot.js?v=17" defer></script><script src="/assets/level-filter.js" defer></script><script src="/assets/purpose-finder.js" defer></script>{follow_strip()}{footer()}</body></html>'''
+</head><body>{nav(current)}<main id="main">{body}</main>{mobile_nav(current)}{drawer(current)}<script src="/assets/site-nav.js" defer></script><script src="/assets/ad-slot.js?v=17" defer></script><script src="/assets/monetag.js?v=1" defer></script><script src="/assets/level-filter.js" defer></script><script src="/assets/purpose-finder.js" defer></script>{follow_strip()}{footer()}</body></html>'''
 
 
 # ---------------------------------------------------------------------------

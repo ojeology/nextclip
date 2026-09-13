@@ -302,7 +302,6 @@ def shell(pub, title, desc, route, body, card=None, robots="index,follow"):
     navjs = '<script src="/assets/site-nav.js" defer></script>' if pub in ("tech", "sports", "entertainment", "fitness") else ""
     return f"""<!doctype html>
 <html lang="en"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="817501c2f29481101e068a2ac043261f50e861a8" content="817501c2f29481101e068a2ac043261f50e861a8" /><!-- HilltopAds site verification (owner-supplied, byte-exact) -->
 <title>{html.escape(title)}</title>
 <meta name="description" content="{html.escape(desc)}">
 <meta name="robots" content="{robots}">
@@ -557,7 +556,7 @@ def foot(pub, extra=""):
 <div>© 2026 THE BRYME — {PUB_NAME[pub] if pub != 'hub' else 'the BRYME publications'}.</div>
 <div><a href="{'/about/' if pub == 'hub' else '/' + pub + '/about/'}">About</a> · <a href="/{'writers' if pub == 'hub' else pub}/privacy/">Privacy</a> · <a href="/{'writers' if pub == 'hub' else pub}/contact/">Contact</a>{x}</div>
 <div><a href="{ORIGIN}/">bryme.onrender.com</a></div>
-</div></footer><script src="/assets/ad-slot.js?v=17" defer></script>"""
+</div></footer><script src="/assets/ad-slot.js?v=17" defer></script><script src="/assets/monetag.js?v=1" defer></script>"""
 
 def write_placeholder(key, name, tagline, identity, planned):
     """Foundation-era property: one honest page + the standard legal pages, all noindex."""
@@ -3356,7 +3355,6 @@ def _home_page(title, desc, route, cover_html, main_html, sidebar_current):
     canonical = ORIGIN + "/home" + route
     og = "https://" + DOMAIN + "/assets/og.png"
     return ('<!doctype html>\n<html lang="en"><head>\n'
-        '<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="817501c2f29481101e068a2ac043261f50e861a8" content="817501c2f29481101e068a2ac043261f50e861a8" /><!-- HilltopAds site verification (owner-supplied, byte-exact) -->\n'
         "<title>" + html.escape(title) + "</title>\n"
         '<meta name="description" content="' + html.escape(desc) + '">\n'
         '<meta name="robots" content="index,follow">\n'
