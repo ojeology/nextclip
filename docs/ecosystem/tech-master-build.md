@@ -726,3 +726,9 @@ Chain: 922 pages / 99,128 internal links OK; validator ok; allowlist v26 (912 ro
 - Twins ad-slot/ad-banner/ad-live byte-identical v13; carriers ad-slot.js?v=13 (944pp) + ad-live.js?v=13 (ad-test); ZERO ad-top-config tags, ZERO v12 tags remain; old asset URLs still resolve (ASSET LAW).
 - jsdom proof (11/11): top zone below nav with invoke+container; container exactly once; mid before 3rd h2; inner doc has config+invoke; nothing below footer; social once; no gate.
 - Chain: 985 pages / 105,693 links OK / allowlist v26 (973 incl. tax-estimator) / validators pass.
+
+## Batch 53c — 14 Sep 2026 (ads v14: top native OWNER-FROZEN + mid hidden-until-fill)
+- OWNER: top native rendering and approved ("freeze it, it's so good there") → placement locked, marked OWNER-FROZEN in engine header. Social Bar still invisible (zone-side). Owner asked WHICH zones to create for middle/bottom → checklist delivered (middle: Banner 300×250; bottom: second Native Banner zone; social: existing zone status/frequency caps).
+- v14: mid 300×250 slot starts display:none and only REVEALS when a real ad iframe exists in its inner document; still self-removes if never filled → unfilled zones are invisible (no empty "Advertisement" boxes, even briefly). Top zone behavior untouched (frozen).
+- NOTE: edit_file partial-apply incident — 2 of 3 edits acked but not written; caught by restamp assert (would have hidden filled ads forever); re-applied via python replaces with ASCII anchors + in-file verification. LAW: after edit_file on load-bearing files, verify markers in the SAME command that uses them.
+- jsdom proof 7/7 (top frozen+once+above main; mid hidden+in-content; nothing below footer; social once). Chain: 985pp / 105,693 links / 973 routes / ok:true; carriers ?v=14 (944pp + ad-test).

@@ -257,7 +257,7 @@ a{color:#a4762c}
 <p>If the green box says \u201cFILL DETECTED\u201d \u2014 ads work. If it says the provider sent no ad \u2014 the zones are the issue. If <b>no box appears at all</b>, something on this device or network is blocking the site\u2019s scripts (ad blocker, AdGuard DNS, or a proxy browser such as Opera Mini).</p>
 <p><a href="/">Back to THE BRYME</a></p>
 </main>
-<script src="/assets/ad-live.js?v=13" defer></script>
+<script src="/assets/ad-live.js?v=14" defer></script>
 </body></html>
 """, encoding="utf-8")
     # sitemap index: one submission URL for GSC pointing at all seven sitemaps

@@ -1,6 +1,10 @@
 /* BRYME advertising component v13 (ad-live.js twin).
    v13 (13 Sep 2026, owner order "delete them all, follow the file - three ad
    zones"): complete rebuild from the owner's master instructions.
+   *** OWNER-FROZEN 14 Sep 2026: the TOP native is confirmed rendering and approved
+   in place ("freeze it, it is so good there") - its placement must never change.
+   v14: the mid 300x250 is HIDDEN until a real ad fills it (owner saw an empty
+   "Advertisement" box on an unfilled zone). ***
    ZONE 1 - Native Banner (ba9b container): TOP of page, directly below the
      header/navigation, above the title/content; script once, container div
      exactly once per page; self-cleans if the zone serves nothing visible.
@@ -92,6 +96,7 @@
     frame.setAttribute("title", "Advertisement");
     frame.setAttribute("loading", "lazy");
     mid.appendChild(frame);
+    mid.style.display = "none"; /* v14: invisible until a real ad fills it */
     var h2s = main.querySelectorAll("h2"), placed = false;
     if (h2s.length >= 3) { h2s[2].parentNode.insertBefore(mid, h2s[2]); placed = true; }
     else if (h2s.length === 2) { h2s[1].parentNode.insertBefore(mid, h2s[1]); placed = true; }
@@ -103,7 +108,7 @@
         var doc = null;
         try { doc = frame.contentDocument; } catch (e) { return; }
         if (!doc || !doc.body) return;
-        if (doc.querySelector("iframe")) return; /* real ad frame = filled */
+        if (doc.querySelector("iframe")) { mid.style.display = ""; return; } /* filled: reveal */
         tries++;
         if (tries <= 2) { bannerDoc(frame); setTimeout(bcheck, 8000); }
         else mid.remove();
