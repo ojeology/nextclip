@@ -670,3 +670,9 @@ Chain: 922 pages / 99,128 internal links OK; validator ok; allowlist v26 (912 ro
 - Wiring: tech_hosting_data NEW_HOSTING_GUIDES → arts append (desk byline per tech convention).
 - Chain: 980 pages / 105,269 links OK; allowlist v26 (968); validators pass; ads v9.
 - Tech queue remaining: AI comparison matrix, PM quiz, VPN/password table, security checklist → Writers tools.
+
+## Batch 48 — 12 Sep 2026 (Tech queue: AI assistant comparison matrix + carrier)
+- TOOL FIRST: /assets/ai-matrix.js (CSP-safe, node --check clean) — needs-based chooser (9 chips: writing/code/research-sources/images/google/microsoft/free/EU-residency/cheapest-paid) over a 9-assistant dated market table; ranks top matches by tag hits then cheapest paid step; names the gap when no single tool covers the combination; links to the free-tier deep dive + head-to-head. Prices directional, "change monthly" stamped. jsdom proof: chips render, ranking fires, gap note works.
+- ARTICLE SHIPPED: /tech/ai-assistants-compared/ (cat ai, kind guide) — 60-second answer (every major assistant has a real free tier; $20 buys cap relief; cheapest step = Gemini $4.99; Claude docs/code; Perplexity sourced research; Copilot M365; Mistral EU), FULL static crawlable matrix table (9 assistants × free/paid/best-for/caps), which-for-which-job, caps economics (3h resets vs 5h windows vs 5 searches/day; power tiers $100–200 mostly buy limits), when-to-actually-pay, FAQ + FAQPage JSON-LD 5/5, sources ×3 with dates + monthly-change warning. Internal links: free-ai-tools-worth-using, ai-useful-vs-hype, how-to-get-cited-by-ai-search, chatgpt-vs-claude-vs-gemini (all existing; note: tech builder discards the `related` field — links go in body).
+- Chain: 981 pages / 105,341 links OK; allowlist v26 (969); validators pass; ads v9.
+- Tech queue remaining: PM quiz, VPN/password table, security checklist → Writers tools (rate calc, tax estimator, invoice generator, income tracker, structure quiz).
