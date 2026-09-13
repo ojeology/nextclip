@@ -1,28 +1,25 @@
-/* BRYME advertising component v12 (ad-live.js twin).
-   v12 (13 Sep 2026): reconciled with the owner's master instructions.
-   - The 300x250 banner (51fc... / highrevenueformat) returns to the BOTTOM of
-     the page (master Unit 1: "already implemented and confirmed working
-     (bottom of page)" ... "do not duplicate this exact unit elsewhere"), stacked
-     above the native container. Exactly one instance per page.
-   - New fill-safety: the banner unit counts real ad <iframe> elements (not
-     wrapper nodes) - if the zone serves no iframe after two retries the unit
-     removes itself, so a dead zone can no longer leave an empty placeholder
-     box (owner order, 13 Sep: placeholders removed).
-   - The native container (ba9b...) stays at the BOTTOM per the owner's verbal
-     correction of 12 Sep ("annoying at the top, supposed to be at the bottom");
-     the master file's TOP line for it is consciously overridden by that verbal
-     ruling and reported as a tradeoff (master's own priority rule).
-   - TOP slot stays config-gated: activates only when assets/ad-top-config.js
-     defines window.BRYME_TOP (owner's single-widget native, still awaited).
-   - Social Bar unchanged: once per page, self-injecting (renders nothing and
-     leaves no artifact while its zone is dormant). */
+/* BRYME advertising component v13 (ad-live.js twin).
+   v13 (13 Sep 2026, owner order "delete them all, follow the file - three ad
+   zones"): complete rebuild from the owner's master instructions.
+   ZONE 1 - Native Banner (ba9b container): TOP of page, directly below the
+     header/navigation, above the title/content; script once, container div
+     exactly once per page; self-cleans if the zone serves nothing visible.
+   ZONE 2 - 300x250 banner (51fc / highrevenueformat): IN-BETWEEN content
+     (before the 3rd section heading; falls back to the end of the article
+     body - never below the footer); CSP-safe iframe loader with literal
+     script closers (the v12 fix) and a real-ad-iframe fill check that
+     removes the unit if the zone serves nothing.
+   ZONE 3 - Social Bar: self-injecting script once per page; renders nothing
+     and leaves no artifact while its zone is dormant.
+   Nothing renders at the bottom of the page. No config gates. */
 (function () {
   "use strict";
   if (window.__BRYME_AD__) return;
   window.__BRYME_AD__ = true;
 
-  var BOTTOM_INVOKE = "https://pl31304018.profitableratecpmnetwork.com/ba9b1b5b135e5f465955aadf88ed0ad5/invoke.js";
-  var BOTTOM_CONTAINER = "container-ba9b1b5b135e5f465955aadf88ed0ad5";
+  /* Verbatim zone identifiers from the owner's master instructions. */
+  var NATIVE_INVOKE = "https://pl31304018.profitableratecpmnetwork.com/ba9b1b5b135e5f465955aadf88ed0ad5/invoke.js";
+  var NATIVE_CONTAINER = "container-ba9b1b5b135e5f465955aadf88ed0ad5";
   var BANNER_INVOKE = "https://www.highrevenueformat.com/51fc16f82ddc690721deee07bcd8bccd/invoke.js";
   var SOCIAL_SRC = "https://pl31304019.profitableratecpmnetwork.com/7c/e5/f0/7ce5f0421abe8df585e6bba232f4e614.js";
 
@@ -35,9 +32,19 @@
     slot.appendChild(label);
     return slot;
   }
-  function realKids(el) {
-    return Array.prototype.filter.call((el && el.children) || [], function (c) { return c.tagName !== "SCRIPT"; }).length;
+
+  function nativeFilled(box) {
+    var els = box.querySelectorAll("*");
+    for (var i = 0; i < els.length; i++) {
+      var el = els[i];
+      if (el.tagName === "SCRIPT") continue;
+      if (el.tagName === "IFRAME" || el.tagName === "IMG") return true;
+      var r = el.getBoundingClientRect ? el.getBoundingClientRect() : null;
+      if (r && r.width > 8 && r.height > 8) return true;
+    }
+    return false;
   }
+
   function bannerDoc(frame) {
     var d = frame.contentDocument || (frame.contentWindow && frame.contentWindow.document);
     if (!d) return null;
@@ -54,37 +61,28 @@
   }
 
   function init() {
-    var foot = document.querySelector("footer.foot");
     var main = document.querySelector("main") || document.body;
 
-    /* 1. TOP: reserved for the owner's single-widget native (config-driven). */
-    var T = window.BRYME_TOP;
-    if (T && T.invoke && T.container) {
-      var top = makeSlot("Advertisement");
-      var nscr = document.createElement("script");
-      nscr.async = true;
-      nscr.setAttribute("data-cfasync", "false");
-      nscr.src = T.invoke;
-      top.appendChild(nscr);
-      var native = document.createElement("div");
-      native.id = T.container;
-      native.className = "bryme-ad-ipp";
-      top.appendChild(native);
-      main.parentNode.insertBefore(top, main);
-      setTimeout(function () { if (!realKids(native)) top.remove(); }, 25000);
-    }
+    /* ZONE 1: Native Banner - top of page, below nav, above title/content. */
+    var top = makeSlot("Advertisement");
+    var nscr = document.createElement("script");
+    nscr.async = true;
+    nscr.setAttribute("data-cfasync", "false");
+    nscr.src = NATIVE_INVOKE;
+    top.appendChild(nscr);
+    var nbox = document.createElement("div");
+    nbox.id = NATIVE_CONTAINER;
+    nbox.className = "bryme-ad-ipp";
+    top.appendChild(nbox);
+    main.parentNode.insertBefore(top, main);
+    setTimeout(function () {
+      if (!nativeFilled(nbox)) setTimeout(function () {
+        if (!nativeFilled(nbox)) top.remove();
+      }, 15000);
+    }, 25000);
 
-    /* 2. SOCIAL BAR: once per page (self-injecting; owner keeps least-intrusive
-       dashboard settings; owner click-test governs whether it stays). If the
-       zone is off or unfilled it renders nothing and leaves no box. */
-    var sb = document.createElement("script");
-    sb.src = SOCIAL_SRC;
-    document.body.appendChild(sb);
-
-    /* 3. BOTTOM-1: the 300x250 banner - back where it was confirmed working
-       (master Unit 1: bottom of page, once per page). Self-cleaning: kept only
-       while a real ad <iframe> exists in the inner document. */
-    var botb = makeSlot("Advertisement");
+    /* ZONE 2: 300x250 banner - in-between content, before the 3rd heading. */
+    var mid = makeSlot("Advertisement");
     var frame = document.createElement("iframe");
     frame.id = "bryme-ad-300x250";
     frame.width = "300";
@@ -93,35 +91,30 @@
     frame.setAttribute("frameborder", "0");
     frame.setAttribute("title", "Advertisement");
     frame.setAttribute("loading", "lazy");
-    botb.appendChild(frame);
-    if (foot) foot.parentNode.insertBefore(botb, foot); else main.appendChild(botb);
+    mid.appendChild(frame);
+    var h2s = main.querySelectorAll("h2"), placed = false;
+    if (h2s.length >= 3) { h2s[2].parentNode.insertBefore(mid, h2s[2]); placed = true; }
+    else if (h2s.length === 2) { h2s[1].parentNode.insertBefore(mid, h2s[1]); placed = true; }
+    if (!placed) main.appendChild(mid);
     var bd = bannerDoc(frame);
     if (bd) {
       var tries = 0;
       function bcheck() {
-        var none = true;
-        try { none = !bd.querySelector("iframe"); } catch (e) { return; }
-        if (!none) return;
+        var doc = null;
+        try { doc = frame.contentDocument; } catch (e) { return; }
+        if (!doc || !doc.body) return;
+        if (doc.querySelector("iframe")) return; /* real ad frame = filled */
         tries++;
         if (tries <= 2) { bannerDoc(frame); setTimeout(bcheck, 8000); }
-        else botb.remove();
+        else mid.remove();
       }
       setTimeout(bcheck, 7000);
-    } else { botb.remove(); }
+    } else { mid.remove(); }
 
-    /* 4. BOTTOM-2: the owner's container native unit - below the banner,
-       still below the page (owner, 12 Sep: it belongs at the bottom). */
-    var bot = makeSlot("Advertisement");
-    var bscr = document.createElement("script");
-    bscr.async = true;
-    bscr.setAttribute("data-cfasync", "false");
-    bscr.src = BOTTOM_INVOKE;
-    bot.appendChild(bscr);
-    var bbox = document.createElement("div");
-    bbox.id = BOTTOM_CONTAINER;
-    bot.appendChild(bbox);
-    if (foot) foot.parentNode.insertBefore(bot, foot); else main.appendChild(bot);
-    setTimeout(function () { if (!realKids(bbox)) bot.remove(); }, 25000);
+    /* ZONE 3: Social Bar - once per page, self-injecting. */
+    var sb = document.createElement("script");
+    sb.src = SOCIAL_SRC;
+    document.body.appendChild(sb);
 
     var css = document.createElement("style");
     css.textContent =

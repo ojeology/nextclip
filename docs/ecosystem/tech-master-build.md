@@ -715,3 +715,14 @@ Chain: 922 pages / 99,128 internal links OK; validator ok; allowlist v26 (912 ro
 - GATES: jsdom proof (mounted via __HUB_TOOL; 24000 income − 1000 expenses @25% = 5,750 set-aside / 1,438 per quarter / 17,250 take-home — exact); allowlist route added beside rate-calculator (972→973); validators ok:true; 985 pages / 105,693 links.
 - INCIDENTS: .git drop #27 (recovered init→fetch→reset b9acb351; checkout restored clobbered allowlist). scripts/fix-allowlist.py is a LEGACY CLOBBERER (rewrites allowlist to 540 /jobs/ routes — NEVER run it; recovered via checkout).
 - Writers queue remaining: income tracker, structure quiz. (Rate calc + invoice generator already live.)
+
+## Batch 53b — 13 Sep 2026 (ads v13: FULL REBUILD from the master file, owner order "delete them all")
+- OWNER (frustrated): "the ad at the bottom is now a single one with no widget — that one is supposed to be at the top or in-between pages; the one with multiple widgets I can't find anymore; delete them all and read the file again, it has three ad zones."
+- v13 = complete rebuild, three zones ONLY (all prior machinery deleted: bottom stack, BRYME_TOP gate, ad-top-config carrier tag):
+  ① NATIVE (ba9b invoke + container-ba9b…): TOP of page, below nav, above title — exactly the master file's Unit 2; once per page; self-cleans (25s+40s visible-fill check) if the zone serves nothing.
+  ② 300×250 (51fc): IN-BETWEEN content — before the 3rd h2 (fallback end of article body, never below footer) — the owner's "top or in-between" choice applied to the single creative; v12's literal-closer write + real-iframe fill check + 2-retry self-remove.
+  ③ SOCIAL BAR: once per page, unchanged.
+  NOTHING renders below the footer anymore.
+- Twins ad-slot/ad-banner/ad-live byte-identical v13; carriers ad-slot.js?v=13 (944pp) + ad-live.js?v=13 (ad-test); ZERO ad-top-config tags, ZERO v12 tags remain; old asset URLs still resolve (ASSET LAW).
+- jsdom proof (11/11): top zone below nav with invoke+container; container exactly once; mid before 3rd h2; inner doc has config+invoke; nothing below footer; social once; no gate.
+- Chain: 985 pages / 105,693 links OK / allowlist v26 (973 incl. tax-estimator) / validators pass.
