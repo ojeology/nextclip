@@ -648,3 +648,10 @@ Chain: 922 pages / 99,128 internal links OK; validator ok; allowlist v26 (912 ro
 - Carriers bumped ?v=8 (component URL versioning; browser caches forced fresh). jsdom proof: top-native ×1, mid-banner, rail-in-body, social ×1, zero debug bytes.
 - Chain: 978 pages / 105,005 links OK; validators pass; 3 twins byte-identical.
 - GSC "couldn't fetch" (only fitness processed): server-side verified perfect (Googlebot UA → 200 + application/xml). Pattern = GSC's async fetcher backlog; fitness simply got fetched first. Guidance: property must be URL-prefix https://bryme.onrender.com exactly; resubmit the 6 pending sitemaps one at a time; expect days; the Pages report is the truth. Nothing server-side remains to fix.
+
+## Batch 44 — 12 Sep 2026 (directive queue: moving-cost estimator + carrier article)
+- TOOLS FIRST: /assets/moving-cost-estimator.js (CSP-safe, node --check clean) — home size (studio→4BR+ sets crew/hours/weight), miles (auto-switches local hourly model ↔ long-distance weight-distance model at 100mi), editable rate ($50/mover-hr default, US 2026 $40–100 band), extras (packing/stairs/storage/materials), pro range vs full-DIY range, assumptions line shown. jsdom proof: long-distance recompute works; "not a quote" disclaimer.
+- ARTICLE SHIPPED: /home/moving-costs-explained/ — structure standard: 60-second answer ($3,020 all-moves avg [This Old House survey], $1,250 local avg, $4,500–5,000 LD avg, $15,000 top end), cost table, season/access/weight/packing drivers, three-quote rule + scam radar (hostage-fee, deposits, FMCSA check), US/UK/CA notes (VAT 20%, BAR, interprovincial), FAQ + FAQPage JSON-LD (5/5), sources w/ dates.
+- Wiring: owning section; related_map ×3; knowledge-shelf row ("Moving costs, estimated").
+- Chain: 979 pages / 105,196 links OK; allowlist v26 (967); validators pass; ads = v8 full stack.
+- Queue: interactive seasonal checklist (LAST Home tool) → then Tech tools (AI comparison matrix, hosting cost calc, PM quiz, VPN/password table, security checklist) → Writers tools (rate calc, tax estimator, invoice generator, income tracker, structure quiz).

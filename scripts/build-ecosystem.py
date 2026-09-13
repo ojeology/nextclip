@@ -3168,7 +3168,7 @@ HOME_SLUG_SECT.update({s: "maintain" for s in (
     "how-to-clean-and-care-for-a-mattress", "season-cast-iron-pan",
     "spring-home-reset", "summer-cooling-checklist",
     "autumn-home-preparation", "winter-home-preparation")})
-HOME_SLUG_SECT.update({s: "owning" for s in ("water-damage-insurance-coverage", "mortgage-payments-explained", "rent-vs-buy-explained", "home-repair-costs-explained")})
+HOME_SLUG_SECT.update({s: "owning" for s in ("water-damage-insurance-coverage", "mortgage-payments-explained", "rent-vs-buy-explained", "home-repair-costs-explained", "moving-costs-explained")})
 HOME_SLUG_SECT.update({s: "appliances" for s in (
     "microwave-oven-care-and-safety", "water-heater-explained",
     "vacuum-cleaner-care-guide")})
@@ -3274,7 +3274,8 @@ def _home_nav():
                   ("/home/smart-thermostat-payback/", "Smart thermostat payback"),
                   ("/home/mortgage-payments-explained/", "Mortgage, explained"),
                   ("/home/rent-vs-buy-explained/", "Rent vs buy, the math"),
-                  ("/home/home-repair-costs-explained/", "Repair costs, estimated")]
+                  ("/home/home-repair-costs-explained/", "Repair costs, estimated"),
+                  ("/home/moving-costs-explained/", "Moving costs, estimated")]
     mistakes = [("HEAD", "Avoid these"), ("/home/mistakes/", "All mistakes"),
                 (mh("electrical-fire-warning-signs"), "Electrical fire warning signs"),
                 (mh("outlet-overloading-danger"), "Outlet overloading"),
@@ -3377,6 +3378,8 @@ def home_pages():
     HOME_ARTICLES.extend((g[0], g[2], g[3], g[4]) for g in home_buyvsrent_data.HOME_BUYRENT if g[0] not in _have)
     import home_repaircost_data
     HOME_ARTICLES.extend((g[0], g[2], g[3], g[4]) for g in home_repaircost_data.HOME_REPAIRCOST if g[0] not in _have)
+    import home_moving_data
+    HOME_ARTICLES.extend((g[0], g[2], g[3], g[4]) for g in home_moving_data.HOME_MOVING if g[0] not in _have)
 
     def src_html(sources):
         if not sources:
@@ -3779,6 +3782,9 @@ def home_pages():
         "home-repair-costs-explained": [("emergency-repair-fund", "The emergency repair fund"),
                                         ("someday-maintenance-cost", "The someday-cost rule"),
                                         ("water-heater-explained", "The water heater, explained")],
+        "moving-costs-explained": [("rent-vs-buy-explained", "Rent vs buy, the math"),
+                                   ("home-repair-costs-explained", "Repair costs, estimated"),
+                                   ("someday-maintenance-cost", "The someday-cost rule")],
     }
     for slug, ti, dek, b in HOME_ARTICLES:
         key = HOME_SLUG_SECT[slug]
