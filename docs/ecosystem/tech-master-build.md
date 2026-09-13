@@ -760,3 +760,7 @@ Chain: 922 pages / 99,128 internal links OK; validator ok; allowlist v26 (912 ro
 - v16: TOP 300×250 unit REMOVED (cross-origin code can't distinguish a white frame from a filled one → per the no-empty-box rule, out until a NEW 300×250 zone code arrives; restore hook marked "EMPTY BY DESIGN" in engine). BOTTOM native (working) + Social Bar script unchanged. Twins v16; carriers ?v=16 (946pp).
 - Harness note (recurring inversion): nodeA.compareDocumentPosition(nodeB) = position of B relative to A — two harness false-alarms this week came from reading it backwards.
 - edit_file note: the earlier partial-apply assert hit again (header comment mentioned 'bannerDoc' → over-strict absence assert) — twins/carrier writes initially skipped, caught and completed before ship.
+
+## Batch 46 — 12 Sep 2026 (entry RECONSTRUCTED 15 Sep from session records)
+- Sitemap consolidation: sitemap_index.xml (7 entries) + 5-sitemap robots.txt set + hub-robots; sitemap URLs origin-absolute.
+- Owner reported "definitely sure there are errors": forensics found the live sitemap_index 404 was a CDN propagation gap, not a code fault — later verified 200 from multiple vantages; owner handed the one-URL GSC submission + URL-Inspection self-test. (This entry backfills lost notes; no code change accompanies it.)
