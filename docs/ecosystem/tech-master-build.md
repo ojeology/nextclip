@@ -777,3 +777,8 @@ Chain: 922 pages / 99,128 internal links OK; validator ok; allowlist v26 (912 ro
 - PLAN (owner-approved in principle, awaiting codes): owner creates MORE Native Banner zones (Adsterra allows multiple; each has its own container ID): code #2 → TOP slot (below nav), code #3 → MIDDLE (before 3rd h2). Same code cannot appear twice on one page (duplicate container IDs break rendering — owner's own file rule). Wiring is same-day on paste.
 - Adsterra = TEST phase for real earnings before AdSense + domain purchase (owner) — matches the standing endgame (on AdSense: strip social/IPP, keep clean units, ads.txt + ca-pub). Keep footprint minimal; time goes to the real build.
 - jsdom proof 5/5 (one slot, bottom, before footer; no ad above main; no social script; no dead strings). Chain: 987pp / 105,942 links / ok:true.
+
+## Batch 56c — 15 Sep 2026 (HilltopAds pivot: site verification file live; Adsterra retained until confirmed)
+- OWNER: Adsterra limits them to ONE native banner → pivoting to HilltopAds. Do NOT delete Adsterra until Hilltop is confirmed. Token supplied: 8a2ac043261f50e861a8.
+- HilltopAds verification (their docs: txt-file-at-root OR meta-tag-in-head, then "Verify site" auto-check): hosted /8a2ac043261f50e861a8.txt at site root (MIRROR_FILES += ; live 200 verified). Meta-tag alternative available the moment the owner pastes the exact generated tag (meta NAME not guessed).
+- Adsterra v17 bottom native UNTOUCHED (explicit owner instruction). On Hilltop approval: owner creates zones → paste codes → wire TOP + MIDDLE same-day (slots ready in engine patterns).
