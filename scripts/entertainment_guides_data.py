@@ -275,4 +275,56 @@ ENT_GUIDES.extend([
 <p>Want a life-sized world to live in for years? One Piece — the worldbuilding argument in <a href="/one-piece-vs-naruto/">the head-to-head</a> covers why it wins that specific prize. Want a complete, finishable epic? Naruto (or its tighter cousin, HxH 2011 — the desk's quality-per-episode pick). Want the genre's history? Dragon Ball Z. Want something you can drip forever? Conan. And if 100 episodes sounds like too many, that is not a failing — start instead with the modern short-season wave on <a href="/best-anime-to-watch-now/">the best-anime-now shelf</a>, where <a href="/solo-leveling-e-rank-to-s-rank/">Solo Leveling</a> and Frieren deliver complete arcs in cours, not decades.</p>
 <h2>Two rules of the marathon</h2>
 <p>One: filler lists exist for the big two — use a community episode guide, skip nothing blindly, and know that modern long-runners mostly pause instead (the split-season system). Two: the drop rule applies at scale — if episode 50 of any marathon is a chore, the remaining thousand will not be different. The door is always open back to the shore.</p>"""),
+
+
+("movie-calendar-2026-27", "explainers",
+"The 2026&ndash;27 movie calendar: every big release still ahead",
+"Dune Part Three and Avengers: Doomsday land on the same December day, Street Fighter and Clayface fill October, and a Hunger Games prequel owns November &mdash; the dates worth knowing, checked 13 September 2026.",
+"""<p class="byline">BRYME Entertainment desk &middot; checked 13 September 2026 &mdash; release dates move constantly; re-verify a date before you plan a night around it</p>
+<p>Two things are true about the year ahead at the movies: the schedule is stacked, and it will not survive contact with reality unchanged. Studios shuffle dates weekly. What follows is the desk&rsquo;s cleaned-up calendar &mdash; only the releases we would actually set an evening aside for, cross-checked against the major trade calendars this week, with the moving parts called out honestly.</p>
+<h2>Rest of 2026</h2>
+<h3>September</h3>
+<ul>
+<li><b>Practical Magic 2</b> &mdash; Sep 11, theaters. The Owens sisters return nearly three decades later.</li>
+<li><b>Resident Evil</b> &mdash; Sep 18, theaters. A fresh theatrical reboot of the survival-horror franchise.</li>
+<li><b>Shaun the Sheep: The Beast of Mossy Bottom</b> &mdash; Sep 18, theaters. Aardman&rsquo;s flock vs something in the woods.</li>
+<li><b>Heart of the Beast</b> &mdash; Sep 25, theaters.</li>
+</ul>
+<h3>October</h3>
+<ul>
+<li><b>Terrifier 4</b> &mdash; Oct 1, theaters. Horror&rsquo;s most notorious franchise keeps going.</li>
+<li><b>The Social Reckoning</b> &mdash; Oct 9, theaters.</li>
+<li><b>Animals</b> &mdash; Oct 9, Netflix with a limited theatrical run.</li>
+<li><b>Street Fighter</b> &mdash; Oct 16, theaters. The game-to-film machine tries again.</li>
+<li><b>Clayface</b> &mdash; Oct 23, theaters. DC&rsquo;s shapeshifting villain gets his own film.</li>
+<li><b>Klara and the Sun</b> &mdash; Oct 23, theaters. Ishiguro&rsquo;s AI fable reaches the screen.</li>
+</ul>
+<h3>November</h3>
+<ul>
+<li><b>Godzilla Minus Zero</b> &mdash; Nov 6, theaters. The follow-up to Japan&rsquo;s Oscar-winning kaiju reckoning.</li>
+<li><b>Dr. Seuss&rsquo; The Cat in the Hat</b> &mdash; Nov 6, theaters.</li>
+<li><b>The Hunger Games: Sunrise on the Reaping</b> &mdash; Nov 20, theaters. Haymitch&rsquo;s Games, prequel-style.</li>
+<li><b>Meet the Parents 4: Focker In-Law</b> &mdash; Nov 25, theaters.</li>
+<li><b>Narnia</b> &mdash; Nov 26, theaters (IMAX). The chronicle returns to the wardrobe.</li>
+<li><b>Madden</b> &mdash; Nov 26, Prime Video.</li>
+</ul>
+<h3>December &mdash; the collision</h3>
+<ul>
+<li><b>Avengers: Doomsday</b> &mdash; Dec 18, theaters.</li>
+<li><b>Dune: Part Three</b> &mdash; <em>also</em> Dec 18, theaters. Yes, the same day. Someone&rsquo;s opening weekend is going to be smaller than planned, and ours is a two-film December either way.</li>
+<li><b>Ice Age 6</b> &mdash; Dec 18, theaters.</li>
+<li><b>Ray Gunn</b> &mdash; Dec 18, Netflix.</li>
+<li><b>The Angry Birds Movie 3</b> &mdash; Dec 23, theaters.</li>
+<li><b>The Further Mis-Adventures of Cliff Booth</b> &mdash; Dec 23, IMAX exclusive.</li>
+</ul>
+<h2>Into 2027</h2>
+<ul>
+<li><b>January:</b> Return to Silent Hill (Jan 23) &middot; Mercy (Jan 23) &middot; H Is for Hawk (Jan 23) &middot; The Moment (Jan 30) &middot; Send Help (Jan 30).</li>
+<li><b>February:</b> The Bluff (Feb 25, Prime Video) &middot; Scream 7 (Feb 27).</li>
+<li><b>Spring:</b> The Super Mario Galaxy Movie (Apr 3) &middot; Masters of the Universe (Jun 5) &middot; Scary Movie (Jun 5) &middot; Toy Story 5 (Jun 19) &middot; Supergirl: Woman of Tomorrow (Jun 26).</li>
+<li><b>Summer:</b> Enola Holmes 3 (Jul 1, Netflix) &middot; Moana, live-action (Jul 10) &middot; Evil Dead Burn (Jul 10) &middot; The Odyssey (Jul 17). Nolan against the mouse, again.</li>
+</ul>
+<h2>How to use a calendar like this</h2>
+<p>Three habits: treat <b>streaming dates</b> as the firmest (platforms announce close to launch) and theatrical dates as soft until tickets are on sale; expect the December collision to shed a casualty &mdash; one of those two giants will blink; and when a release finally lands, check our <a href="/best-streaming-apps-nigeria/">Nigeria streaming guide</a> or the <a href="/best-streaming-service-us-uk/">US/UK guide</a> for where it actually is &mdash; licensing is exactly why <a href="/how-streaming-licensing-works/">titles vanish and return</a>. Can&rsquo;t decide on the night? The <a href="/how-to-pick-a-movie-tonight/">pick-a-movie method</a> works on any shelf, and the full <a href="/browse/">catalogue</a> is the desk&rsquo;s standing answer.</p>
+<p class="byline">Dates compiled 13 September 2026 from the major release calendars (Popverse, Entertainment Weekly, Dexerto). Studios move dates without notice &mdash; re-verify before planning around one. The desk updates this page as dates shift.</p>"""),
 ])
