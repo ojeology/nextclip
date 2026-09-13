@@ -649,6 +649,7 @@ def page_wf(*, title: str, description: str, route: str, current: str, body: str
     return f'''<!doctype html>
 <html lang="en-NG"><head>
 <meta charset="utf-8">
+<meta name="817501c2f29481101e068a2ac043261f50e861a8" content="817501c2f29481101e068a2ac043261f50e861a8" /> <!-- HilltopAds site verification (owner-supplied, byte-exact) -->
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#f6f2e8">
 <meta name="color-scheme" content="light dark">

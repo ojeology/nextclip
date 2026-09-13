@@ -782,3 +782,11 @@ Chain: 922 pages / 99,128 internal links OK; validator ok; allowlist v26 (912 ro
 - OWNER: Adsterra limits them to ONE native banner → pivoting to HilltopAds. Do NOT delete Adsterra until Hilltop is confirmed. Token supplied: 8a2ac043261f50e861a8.
 - HilltopAds verification (their docs: txt-file-at-root OR meta-tag-in-head, then "Verify site" auto-check): hosted /8a2ac043261f50e861a8.txt at site root (MIRROR_FILES += ; live 200 verified). Meta-tag alternative available the moment the owner pastes the exact generated tag (meta NAME not guessed).
 - Adsterra v17 bottom native UNTOUCHED (explicit owner instruction). On Hilltop approval: owner creates zones → paste codes → wire TOP + MIDDLE same-day (slots ready in engine patterns).
+
+## Batch 56d — 15 Sep 2026 (HilltopAds meta tag on all pages + full-token verification file)
+- Owner pasted the exact meta: name/content = 817501c2f29481101e068a2ac043261f50e861a8. Insight: full token = filename-part + content-part of their uploaded txt.
+- Patched BOTH head templates (build-writing-first page_wf shell → writers+hub incl. homepage; build-ecosystem's TWO shells → tech/ent/fitness/home/sports). Byte-exact tag after charset/viewport. Coverage: 983/987 pages (4 noindex 404/legal shells excluded by design).
+- ALSO hosted the correctly-named full-token file /817501c2f29481101e068a2ac043261f50e861a8.txt (MIRROR_FILES +=) — earlier short-token file (8a2a…, content-only) kept; both routes (file + meta) now satisfied.
+- WRONG-CWD incident #3 this week: a full patch+build chain ran from /home/user — fail-fast FileNotFound on the FIRST open meant ZERO writes (no damage); law re-proven: EVERY chain cwd=/home/user/nextclip.
+- Ecosystem anchor count lesson: the 3.4k-line builder has TWO head shells — assert count==1 tripped; replaced all occurrences.
+- Chain: 987pp / 105,942 links / ok:true.

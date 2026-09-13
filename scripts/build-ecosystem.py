@@ -302,7 +302,7 @@ def shell(pub, title, desc, route, body, card=None, robots="index,follow"):
     navjs = '<script src="/assets/site-nav.js" defer></script>' if pub in ("tech", "sports", "entertainment", "fitness") else ""
     return f"""<!doctype html>
 <html lang="en"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="817501c2f29481101e068a2ac043261f50e861a8" content="817501c2f29481101e068a2ac043261f50e861a8" /><!-- HilltopAds site verification (owner-supplied, byte-exact) -->
 <title>{html.escape(title)}</title>
 <meta name="description" content="{html.escape(desc)}">
 <meta name="robots" content="{robots}">
@@ -3356,7 +3356,7 @@ def _home_page(title, desc, route, cover_html, main_html, sidebar_current):
     canonical = ORIGIN + "/home" + route
     og = "https://" + DOMAIN + "/assets/og.png"
     return ('<!doctype html>\n<html lang="en"><head>\n'
-        '<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">\n'
+        '<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="817501c2f29481101e068a2ac043261f50e861a8" content="817501c2f29481101e068a2ac043261f50e861a8" /><!-- HilltopAds site verification (owner-supplied, byte-exact) -->\n'
         "<title>" + html.escape(title) + "</title>\n"
         '<meta name="description" content="' + html.escape(desc) + '">\n'
         '<meta name="robots" content="index,follow">\n'

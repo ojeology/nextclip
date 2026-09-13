@@ -194,6 +194,7 @@ def main() -> int:
                     "favicon.ico", "manifest.webmanifest", "404.html", "410.html"} | VERIF
     MIRROR_FILES.add("7c58863f801147c1be0d5ea74889fb22.txt")  # IndexNow key file (b56) - must serve at site root
     MIRROR_FILES.add("8a2ac043261f50e861a8.txt")  # HilltopAds site-verification file (owner request) - serve at root
+    MIRROR_FILES.add("817501c2f29481101e068a2ac043261f50e861a8.txt")  # HilltopAds full-token verification file (matches meta name)
     for e in ROOT.iterdir():
         if e.is_dir():
             if e.name not in EXCL_DIRS:
