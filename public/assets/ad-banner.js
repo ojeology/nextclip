@@ -1,37 +1,21 @@
-/* BRYME advertising component v16 (ad-banner.js twin).
-   v15 (owner OVERRIDE "placement swap" — supersedes ALL earlier placements):
-     FINAL LAYOUT: header/nav → [300x250 at TOP + Social Bar renders top-area]
-       → page title → content → [Native Banner at BOTTOM].
-     ZONE TOP: the 300x250 banner (51fc / highrevenueformat), directly below
-       the header/navigation, above the title. Snippet untouched. HIDDEN until
-       a real ad iframe fills it; removes itself if the zone never fills —
-       an unfilled zone shows nothing (no empty "Advertisement" boxes, owner rule).
-     ZONE BOTTOM: the Native Banner (ba9b invoke + container), after the main
-       content, where the 300x250 used to sit; exactly one container per page;
-       self-cleans if the zone serves nothing visible.
-     ZONE SOCIAL: self-injecting script once per page; its render position is
-       network-controlled (expected top area).
-     SMART LINK: PAUSED by the owner — never implement, link, or redirect to
-       it without a new written instruction.
-   Owner's binding definition of "working": VISIBLY RENDERING on the live page
-   in a real browser (incognito, no blocker). Code presence alone is not
-   "working" and must never be reported as such.
-   v16 (15 Sep, owner report: top 300x250 shows a WHITE box = Adsterra serves
-   an empty creative frame for the 51fc zone; cross-origin code cannot tell a
-   white frame from a filled one, so per the no-empty-box rule the TOP unit is
-   REMOVED until the owner supplies a new 300x250 zone code - restore = re-add
-   the top-slot block + bannerDoc, swap the key, bump the carrier version.
-   Owner-confirmed WORKING: the BOTTOM native (visible below the content). */
+/* BRYME advertising component v17 (ad-banner.js twin).
+   v17 (15 Sep, owner: "forget the social bar... delete the not working ones;
+   Adsterra is just a test before AdSense and buying the domain"):
+   the engine carries ONLY the owner-confirmed WORKING unit - the Native
+   Banner at the BOTTOM (after content, before footer), one instance per page,
+   self-cleaning when its zone serves nothing visible.
+   Everything else (Social Bar, dead 300x250, Smart Link) is gone - full
+   history in git. Next (owner-approved): owner creates MORE Native Banner
+   zones (one code for TOP, one for MIDDLE of content) and pastes them here;
+   each gets wired the same day with its own container ID. */
 (function () {
   "use strict";
   if (window.__BRYME_AD__) return;
   window.__BRYME_AD__ = true;
 
   /* Verbatim zone identifiers from the owner's instructions. */
-  var BANNER_INVOKE = "https://www.highrevenueformat.com/51fc16f82ddc690721deee07bcd8bccd/invoke.js";
   var NATIVE_INVOKE = "https://pl31304018.profitableratecpmnetwork.com/ba9b1b5b135e5f465955aadf88ed0ad5/invoke.js";
   var NATIVE_CONTAINER = "container-ba9b1b5b135e5f465955aadf88ed0ad5";
-  var SOCIAL_SRC = "https://pl31304019.profitableratecpmnetwork.com/7c/e5/f0/7ce5f0421abe8df585e6bba232f4e614.js";
 
   function makeSlot(labelText) {
     var slot = document.createElement("div");
@@ -59,12 +43,6 @@
     var main = document.querySelector("main") || document.body;
     var foot = document.querySelector("footer.foot");
 
-    /* ZONE TOP: EMPTY BY DESIGN (v16) - the 51fc zone serves white frames.
-       RESTORE HERE when the owner supplies a NEW 300x250 zone code: re-add the
-       iframe loader (ad-300x250-config.js + new invoke URL), hidden-until-fill,
-       inserted before <main>. Keep the no-empty-box rule. */
-
-
     /* ZONE BOTTOM: Native Banner - after the content, before the footer.
        Exactly one container per page; self-cleans when not visibly filled. */
     var bot = makeSlot("Advertisement");
@@ -83,12 +61,6 @@
         if (!nativeFilled(nbox)) bot.remove();
       }, 15000);
     }, 25000);
-
-    /* ZONE SOCIAL: once per page, self-injecting; render position is
-       controlled by the network (expected in the top area). */
-    var sb = document.createElement("script");
-    sb.src = SOCIAL_SRC;
-    document.body.appendChild(sb);
 
     var css = document.createElement("style");
     css.textContent =

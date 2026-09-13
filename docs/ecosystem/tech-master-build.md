@@ -770,3 +770,10 @@ Chain: 922 pages / 99,128 internal links OK; validator ok; allowlist v26 (912 ro
 - Bing /ping?sitemap= → 410 Gone (endpoint RETIRED by Bing) — do not use again; IndexNow is the Bing path. Google = GSC only (owner's one-URL action stands).
 - b46 docs entry backfilled (reconstructed, flagged as such).
 - Health sweep: all 10 recent tools/articles + sitemap_index = 200 live.
+
+## Batch 56b — 15 Sep 2026 (ads v17: ONLY the working native remains; Social Bar deleted)
+- OWNER: "forget the social bar... paste the working native up/down/middle... delete the not working ones; Adsterra is just a test for real earnings before AdSense and buying the domain. Adsterra shouldn't take our time."
+- v17: engine stripped to ONE unit — the bottom native (ba9b, owner-confirmed). Social Bar script REMOVED entirely; dead 300×250 hook + BANNER_INVOKE removed; header rewritten clean. Twins v17; carriers ?v=17 (946pp); mirrored twins verified clean (no 51fc/7ce5/smart-link strings anywhere in engine).
+- PLAN (owner-approved in principle, awaiting codes): owner creates MORE Native Banner zones (Adsterra allows multiple; each has its own container ID): code #2 → TOP slot (below nav), code #3 → MIDDLE (before 3rd h2). Same code cannot appear twice on one page (duplicate container IDs break rendering — owner's own file rule). Wiring is same-day on paste.
+- Adsterra = TEST phase for real earnings before AdSense + domain purchase (owner) — matches the standing endgame (on AdSense: strip social/IPP, keep clean units, ads.txt + ca-pub). Keep footprint minimal; time goes to the real build.
+- jsdom proof 5/5 (one slot, bottom, before footer; no ad above main; no social script; no dead strings). Chain: 987pp / 105,942 links / ok:true.
