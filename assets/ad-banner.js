@@ -1,11 +1,15 @@
-/* BRYME advertising component v9 (ad-banner.js twin - legacy path kept alive for cached HTML; asset law). */
+/* BRYME advertising component v10 (ad-banner.js twin - legacy path kept alive for cached HTML; asset law). */
 (function () {
   "use strict";
   if (window.__BRYME_AD__) return;
   window.__BRYME_AD__ = true;
 
-  var NATIVE_INVOKE = "https://pl31304018.profitableratecpmnetwork.com/ba9b1b5b135e5f465955aadf88ed0ad5/invoke.js";
-  var NATIVE_CONTAINER = "container-ba9b1b5b135e5f465955aadf88ed0ad5";
+  /* The owner's multi-widget container unit (ba9b...) renders at the BOTTOM
+     (owner, 12 Sep 2026: it is annoying at the top; it belongs below the page).
+     The TOP slot is reserved for the owner's single-widget native unit - it
+     activates the moment assets/ad-top-config.js defines window.BRYME_TOP. */
+  var BOTTOM_INVOKE = "https://pl31304018.profitableratecpmnetwork.com/ba9b1b5b135e5f465955aadf88ed0ad5/invoke.js";
+  var BOTTOM_CONTAINER = "container-ba9b1b5b135e5f465955aadf88ed0ad5";
   var BANNER_INVOKE = "https://www.highrevenueformat.com/51fc16f82ddc690721deee07bcd8bccd/invoke.js";
   var SOCIAL_SRC = "https://pl31304019.profitableratecpmnetwork.com/7c/e5/f0/7ce5f0421abe8df585e6bba232f4e614.js";
 
@@ -37,20 +41,23 @@
   }
 
   function init() {
-    /* 1. TOP: native container */
-    var top = makeSlot("Advertisement");
-    var nscr = document.createElement("script");
-    nscr.async = true;
-    nscr.setAttribute("data-cfasync", "false");
-    nscr.src = NATIVE_INVOKE;
-    top.appendChild(nscr);
-    var native = document.createElement("div");
-    native.id = NATIVE_CONTAINER;
-    native.className = "bryme-ad-ipp";
-    top.appendChild(native);
+    /* 1. TOP: reserved for the owner's single-widget native (config-driven). */
     var main = document.querySelector("main") || document.body;
-    main.parentNode.insertBefore(top, main);
-    setTimeout(function () { if (!realKids(native)) top.remove(); }, 25000);
+    var T = window.BRYME_TOP;
+    if (T && T.invoke && T.container) {
+      var top = makeSlot("Advertisement");
+      var nscr = document.createElement("script");
+      nscr.async = true;
+      nscr.setAttribute("data-cfasync", "false");
+      nscr.src = T.invoke;
+      top.appendChild(nscr);
+      var native = document.createElement("div");
+      native.id = T.container;
+      native.className = "bryme-ad-ipp";
+      top.appendChild(native);
+      main.parentNode.insertBefore(top, main);
+      setTimeout(function () { if (!realKids(native)) top.remove(); }, 25000);
+    }
 
     /* 2. MID: 300x250 in-content */
     var mid = makeSlot("Advertisement");
@@ -110,25 +117,19 @@
     sb.src = SOCIAL_SRC;
     document.body.appendChild(sb);
 
-    /* 5. BOTTOM: a second native zone (owner creates "Native Banner 2" in the
-       Adsterra dashboard and pastes it; I write assets/ad-bottom-config.js with
-       window.BRYME_BOTTOM = {invoke, container}). Until that config exists this
-       slot simply never renders - zero cost, zero placeholder risk. */
-    var B = window.BRYME_BOTTOM;
-    if (B && B.invoke && B.container) {
-      var bot = makeSlot("Advertisement");
-      var bscr = document.createElement("script");
-      bscr.async = true;
-      bscr.setAttribute("data-cfasync", "false");
-      bscr.src = B.invoke;
-      bot.appendChild(bscr);
-      var bbox = document.createElement("div");
-      bbox.id = B.container;
-      bot.appendChild(bbox);
-      var f1 = document.querySelector("footer.foot");
-      if (f1) f1.parentNode.insertBefore(bot, f1); else main.appendChild(bot);
-      setTimeout(function () { if (!realKids(bbox)) bot.remove(); }, 25000);
-    }
+    /* 5. BOTTOM: the owner's container unit - below the page, where it belongs. */
+    var bot = makeSlot("Advertisement");
+    var bscr = document.createElement("script");
+    bscr.async = true;
+    bscr.setAttribute("data-cfasync", "false");
+    bscr.src = BOTTOM_INVOKE;
+    bot.appendChild(bscr);
+    var bbox = document.createElement("div");
+    bbox.id = BOTTOM_CONTAINER;
+    bot.appendChild(bbox);
+    var f1 = document.querySelector("footer.foot");
+    if (f1) f1.parentNode.insertBefore(bot, f1); else main.appendChild(bot);
+    setTimeout(function () { if (!realKids(bbox)) bot.remove(); }, 25000);
 
     var css = document.createElement("style");
     css.textContent =

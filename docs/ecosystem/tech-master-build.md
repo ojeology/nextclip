@@ -677,3 +677,10 @@ Chain: 922 pages / 99,128 internal links OK; validator ok; allowlist v26 (912 ro
 - Chain: 981 pages / 105,341 links OK; allowlist v26 (969); validators pass; ads v9.
 - Tech queue remaining: PM quiz, VPN/password table, security checklist → Writers tools (rate calc, tax estimator, invoice generator, income tracker, structure quiz).
 - (48 cont.) head-to-head link: first patch failed on apostrophe-escape needle (b32 law bit again — write_file stores real Unicode chars; heredoc needles must not contain \uXXXX). Index-splice with ASCII anchor + numeric entity fixed it. Amendment shipped.
+
+## Batch 49 — 12 Sep 2026 (ads v10: container→bottom, top awaits owner's single-widget native + PM quiz)
+- OWNER PLACEMENT CORRECTION: the multi-widget container unit (ba9b...) is ANNOYING at the top → moved to the BOTTOM permanently (their earlier endorsement re-confirmed). TOP slot now config-gated: assets/ad-top-config.js ships DISABLED; activates the moment the owner sends their single-widget native code (window.BRYME_TOP = {invoke, container}). Carriers ?v=10 + top config loaded first. Structure proof: ba9b container exists ONLY in the bottom branch; top never renders without config (no placeholder possible).
+- TOOL: /assets/pm-quiz.js — 3-question chooser (platform/budget/style) tag-scored over 7 managers; harness caught a REAL pre-ship bug (render() never called on init → buttons unreachable) — fixed, proven: 3 clicks → correct verdict path (Apple Passwords for all-Apple+free+simple).
+- ARTICLE: /tech/best-password-manager-for-you/ (cat safety) — 60-sec (Bitwarden default free; Apple Passwords all-Apple; 1Password best-paid no-free; KeePassXC control; Proton privacy; Dashlane 10 seats), 7-manager matrix w/ 2026 prices (itechguides/guptadeepak/usecarly, dated), what-matters (zero-knowledge/tested export/2FA/audits), switching-without-pain (CSV warning), FAQ 5/5 schema, links: password-manager-or-browser + 2FA-setup (verified existing).
+- Chain: 982 pages / 105,413 links OK; allowlist v26 (970); validators pass.
+- Tech queue remaining: VPN/password table, security checklist → Writers tools.
