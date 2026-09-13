@@ -2334,6 +2334,13 @@ def _load_tech():
                      "blocks": [{"heading": "", "body": body, "html": True}],
                      "sources": [{"name": n, "url": u} for n, u in sources],
                      "recovered": False})
+    import tech_hosting_data
+    for slug, cat, kind, title, dek, body, sources, related in tech_hosting_data.NEW_HOSTING_GUIDES:
+        arts.append({"slug": slug, "title": title, "excerpt": dek, "cat": cat, "kind": kind,
+                     "pub": TODAY, "upd": TODAY, "read": "", "author": "the BRYME Tech desk",
+                     "blocks": [{"heading": "", "body": body, "html": True}],
+                     "sources": [{"name": n, "url": u} for n, u in sources],
+                     "recovered": False})
     return arts
 
 def _tech_blocks(a):

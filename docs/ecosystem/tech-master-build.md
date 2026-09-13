@@ -662,3 +662,11 @@ Chain: 922 pages / 99,128 internal links OK; validator ok; allowlist v26 (912 ro
 - HOME TOOL QUEUE COMPLETE per directive §3: mortgage ✓ buy-vs-rent ✓ repair-cost ✓ moving-cost ✓ seasonal checklist ✓ (water-damage quiz ✓ b33).
 - NEXT DESK: Tech tools (AI comparison matrix, hosting cost calculator, PM quiz, VPN/password table, security checklist) → Writers tools (rate calc, tax estimator, invoice generator, income tracker, structure quiz).
 - Chain: 979 pages / 105,196 links OK; allowlist v26 (967); validators pass; ads v8.
+
+## Batch 47 — 12 Sep 2026 (Tech queue opens: hosting true-cost calculator + carrier)
+- TOOL FIRST: /assets/hosting-cost-calculator.js (CSP-safe, node --check clean) — presets (shared/WP/VPS/cloud/dedicated 2026 rates), intro $/mo × term (12–48mo) vs renewal $/mo, domain $/yr, mailboxes × $/mo, one-offs → Year 1/2/3 + true 3-year total + true monthly average + THE TRAP (renewal ÷ intro multiplier). Editable everywhere; "not a quote" disclaimer; firsthand note (this site = $0 static hosting). jsdom proof: Year 2 + 3-year total + multiplier render.
+- ARTICLE SHIPPED: /tech/web-hosting-costs-explained/ (cat web-and-hosting, kind guide) — 60-second answer ($2.79 homepage = 48mo prepay; renews 2–5×; shared really $9–16 renew), band table, why-the-trap-exists + 3 neutralising habits, sizing (incl. static-free firsthand), add-ons (domain $15/yr, email $0.39–1.99/mailbox, migration), renewal-day negotiation, FAQ + FAQPage JSON-LD 5/5, sources w/ dates (ahosting Aug 2026, bearhost Aug 2026, prestigetechnologies Sep 2026). Internal links: free-vs-paid-hosting, domain-names-explained, why-your-website-is-slow, what-is-ssl-https (all existing).
+- sitemap_index.xml: local clean build generates correctly (7 listed); live 404 immediately post-deploy = CDN cached the pre-propagation gap (established pattern; ages out ≤300s).
+- Wiring: tech_hosting_data NEW_HOSTING_GUIDES → arts append (desk byline per tech convention).
+- Chain: 980 pages / 105,269 links OK; allowlist v26 (968); validators pass; ads v9.
+- Tech queue remaining: AI comparison matrix, PM quiz, VPN/password table, security checklist → Writers tools.
