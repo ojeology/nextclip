@@ -557,7 +557,7 @@ def foot(pub, extra=""):
 <div>© 2026 THE BRYME — {PUB_NAME[pub] if pub != 'hub' else 'the BRYME publications'}.</div>
 <div><a href="{'/about/' if pub == 'hub' else '/' + pub + '/about/'}">About</a> · <a href="/{'writers' if pub == 'hub' else pub}/privacy/">Privacy</a> · <a href="/{'writers' if pub == 'hub' else pub}/contact/">Contact</a>{x}</div>
 <div><a href="{ORIGIN}/">bryme.onrender.com</a></div>
-</div></footer><script src="/assets/ad-slot.js?v=17" defer></script><script src="/assets/monetag.js?v=1" defer></script>"""
+</div></footer><script src="/assets/ad-slot.js?v=17" defer></script><script src="/assets/monetag.js?v=2" defer></script>"""
 
 def write_placeholder(key, name, tagline, identity, planned):
     """Foundation-era property: one honest page + the standard legal pages, all noindex."""

@@ -1,89 +1,125 @@
 {
  "_comment": "Written by scripts/sports_update_agent.py - source: football-data.org v4. The desk never publishes unverified data.",
- "generated": "2026-09-11 09:25 UTC",
+ "generated": "2026-09-13 22:24 UTC",
  "source": "football-data.org v4",
  "leagues": {
   "premier-league": {
    "name": "Premier League",
-   "table_updated": "fetched Friday 11 September 2026, 09:21 UTC",
-   "results_updated": "fetched Friday 11 September 2026, 09:21 UTC",
-   "scorers_updated": "fetched Friday 11 September 2026, 09:21 UTC",
+   "table_updated": "fetched Sunday 13 September 2026, 22:20 UTC",
+   "results_updated": "fetched Sunday 13 September 2026, 22:20 UTC",
+   "scorers_updated": "fetched Sunday 13 September 2026, 22:20 UTC",
    "scorers_source": "The Guardian (10 Sep 2026) cross-checked with worldfootball.net",
    "table": [
     [
      1,
-     "Manchester City",
-     3,
-     3,
+     "Arsenal",
+     4,
+     4,
      0,
      0,
+     8,
+     1,
      7,
-     2,
-     5,
-     9
+     12
     ],
     [
      2,
-     "Arsenal",
-     3,
-     3,
+     "Manchester City",
+     4,
+     4,
      0,
      0,
+     8,
+     2,
      6,
-     1,
-     5,
-     9
+     12
     ],
     [
      3,
      "Hull City",
+     4,
+     2,
+     2,
+     0,
+     5,
+     2,
      3,
+     8
+    ],
+    [
+     4,
+     "Brighton & Hove Albion",
+     4,
      2,
      1,
-     0,
-     3,
-     0,
-     3,
+     1,
+     13,
+     5,
+     8,
      7
     ],
     [
-     4,
+     5,
      "Chelsea",
-     3,
+     4,
      2,
+     1,
+     1,
+     10,
+     9,
+     1,
+     7
+    ],
+    [
+     6,
+     "Brentford",
+     4,
+     1,
+     3,
      0,
-     1,
-     8,
      7,
-     1,
+     4,
+     3,
      6
     ],
     [
-     5,
-     "Brentford",
-     3,
-     1,
-     2,
-     0,
-     5,
-     2,
-     3,
-     5
-    ],
-    [
-     6,
+     7,
      "Liverpool",
-     3,
+     4,
      1,
-     2,
+     3,
      0,
      6,
      4,
      2,
-     5
+     6
     ],
     [
-     6,
+     8,
+     "Everton",
+     4,
+     1,
+     3,
+     0,
+     5,
+     3,
+     2,
+     6
+    ],
+    [
+     9,
+     "Ipswich Town",
+     4,
+     2,
+     0,
+     2,
+     7,
+     10,
+     -3,
+     6
+    ],
+    [
+     10,
      "Newcastle United",
      3,
      1,
@@ -95,19 +131,7 @@
      5
     ],
     [
-     8,
-     "Everton",
-     3,
-     1,
-     2,
-     0,
-     5,
-     3,
-     2,
-     5
-    ],
-    [
-     9,
+     11,
      "Leeds United",
      3,
      1,
@@ -119,135 +143,111 @@
      5
     ],
     [
-     10,
-     "Brighton & Hove Albion",
-     3,
-     1,
-     1,
-     1,
-     8,
-     5,
-     3,
-     4
-    ],
-    [
-     11,
-     "Manchester United",
-     3,
-     1,
-     1,
-     1,
-     7,
-     6,
-     1,
-     4
-    ],
-    [
      12,
-     "Sunderland",
-     3,
+     "Nottingham Forest",
+     4,
+     1,
+     2,
+     1,
+     4,
+     4,
+     0,
+     5
+    ],
+    [
+     13,
+     "Manchester United",
+     4,
      1,
      1,
-     1,
-     3,
-     3,
+     2,
+     7,
+     7,
      0,
      4
     ],
     [
-     13,
-     "Crystal Palace",
-     3,
-     1,
-     0,
-     2,
+     14,
+     "Sunderland",
      4,
-     8,
-     -4,
-     3
-    ],
-    [
-     13,
-     "Ipswich Town",
-     3,
      1,
-     0,
+     1,
      2,
-     4,
-     8,
-     -4,
-     3
+     3,
+     5,
+     -2,
+     4
     ],
     [
      15,
      "AFC Bournemouth",
-     3,
-     0,
-     2,
-     1,
      4,
-     5,
+     0,
+     3,
+     1,
+     6,
+     7,
      -1,
-     2
+     3
     ],
     [
      16,
-     "Nottingham Forest",
-     3,
-     0,
-     2,
+     "Crystal Palace",
+     4,
      1,
-     2,
-     3,
-     -1,
-     2
-    ],
-    [
-     17,
-     "Aston Villa",
-     3,
      0,
-     1,
-     2,
-     0,
-     5,
+     3,
+     6,
+     11,
      -5,
-     1
+     3
     ],
     [
      17,
      "Tottenham Hotspur",
-     3,
+     4,
      0,
-     1,
+     2,
      2,
      0,
      5,
      -5,
-     1
+     2
     ],
     [
-     19,
+     18,
      "Fulham",
-     3,
+     4,
      0,
-     0,
+     1,
      3,
      4,
      7,
      -3,
-     0
+     1
+    ],
+    [
+     19,
+     "Aston Villa",
+     4,
+     0,
+     1,
+     3,
+     1,
+     7,
+     -6,
+     1
     ],
     [
      20,
      "Coventry City",
-     3,
+     4,
      0,
      0,
-     3,
+     4,
      0,
-     5,
-     -5,
+     10,
+     -10,
      0
     ]
    ],
@@ -476,135 +476,149 @@
        "a": "Chelsea"
       }
      ]
+    },
+    {
+     "mw": 4,
+     "matches": [
+      {
+       "d": "2026-09-12",
+       "h": "Crystal Palace",
+       "hs": 2,
+       "as": 3,
+       "a": "Ipswich Town"
+      },
+      {
+       "d": "2026-09-12",
+       "h": "Liverpool",
+       "hs": 0,
+       "as": 0,
+       "a": "Fulham"
+      },
+      {
+       "d": "2026-09-12",
+       "h": "Aston Villa",
+       "hs": 1,
+       "as": 2,
+       "a": "Nottingham Forest"
+      },
+      {
+       "d": "2026-09-12",
+       "h": "AFC Bournemouth",
+       "hs": 2,
+       "as": 2,
+       "a": "Brentford"
+      },
+      {
+       "d": "2026-09-12",
+       "h": "Chelsea",
+       "hs": 2,
+       "as": 2,
+       "a": "Hull City"
+      },
+      {
+       "d": "2026-09-12",
+       "h": "Tottenham Hotspur",
+       "hs": 0,
+       "as": 0,
+       "a": "Everton"
+      },
+      {
+       "d": "2026-09-12",
+       "h": "Sunderland",
+       "hs": 0,
+       "as": 2,
+       "a": "Arsenal"
+      },
+      {
+       "d": "2026-09-13",
+       "h": "Coventry City",
+       "hs": 0,
+       "as": 5,
+       "a": "Brighton & Hove Albion"
+      },
+      {
+       "d": "2026-09-13",
+       "h": "Manchester United",
+       "hs": 0,
+       "as": 1,
+       "a": "Manchester City"
+      }
+     ]
     }
    ],
    "scorers": [
     {
      "p": "Erling Haaland",
      "c": "Manchester City",
+     "g": 4,
+     "a": null,
+     "pm": 4
+    },
+    {
+     "p": "Bukayo Saka",
+     "c": "Arsenal",
      "g": 3,
      "a": null,
-     "pm": 3
+     "pm": 4
+    },
+    {
+     "p": "Marcus Tavernier",
+     "c": "AFC Bournemouth",
+     "g": 3,
+     "a": null,
+     "pm": 4
+    },
+    {
+     "p": "João Pedro",
+     "c": "Chelsea",
+     "g": 3,
+     "a": 3,
+     "pm": 4
+    },
+    {
+     "p": "Morgan Rogers",
+     "c": "Chelsea",
+     "g": 3,
+     "a": 1,
+     "pm": 4
     },
     {
      "p": "Alexander Isak",
      "c": "Liverpool",
      "g": 3,
      "a": null,
-     "pm": 3
+     "pm": 4
+    },
+    {
+     "p": "Kevin Schade",
+     "c": "Brentford",
+     "g": 3,
+     "a": null,
+     "pm": 4
     },
     {
      "p": "Bruno Fernandes",
      "c": "Manchester United",
      "g": 3,
      "a": 1,
-     "pm": 3
+     "pm": 4
     },
     {
      "p": "Kai Havertz",
      "c": "Arsenal",
      "g": 2,
      "a": null,
-     "pm": 3
-    },
-    {
-     "p": "Bukayo Saka",
-     "c": "Arsenal",
-     "g": 2,
-     "a": null,
-     "pm": 3
+     "pm": 4
     },
     {
      "p": "Martin Ødegaard",
      "c": "Arsenal",
      "g": 2,
      "a": null,
-     "pm": 3
-    },
-    {
-     "p": "Vitaly Janelt",
-     "c": "Brentford",
-     "g": 2,
-     "a": null,
-     "pm": 3
-    },
-    {
-     "p": "Marcus Tavernier",
-     "c": "AFC Bournemouth",
-     "g": 2,
-     "a": null,
-     "pm": 3
-    },
-    {
-     "p": "Jack Hinshelwood",
-     "c": "Brighton & Hove Albion",
-     "g": 2,
-     "a": null,
-     "pm": 1
-    },
-    {
-     "p": "Anthony Elanga",
-     "c": "Newcastle United",
-     "g": 2,
-     "a": null,
-     "pm": 3
+     "pm": 4
     }
    ],
    "upcoming": [
-    {
-     "d": "2026-09-12 14:00",
-     "h": "Crystal Palace",
-     "a": "Ipswich Town",
-     "mw": 4
-    },
-    {
-     "d": "2026-09-12 14:00",
-     "h": "Liverpool",
-     "a": "Fulham",
-     "mw": 4
-    },
-    {
-     "d": "2026-09-12 14:00",
-     "h": "Aston Villa",
-     "a": "Nottingham Forest",
-     "mw": 4
-    },
-    {
-     "d": "2026-09-12 14:00",
-     "h": "AFC Bournemouth",
-     "a": "Brentford",
-     "mw": 4
-    },
-    {
-     "d": "2026-09-12 14:00",
-     "h": "Chelsea",
-     "a": "Hull City",
-     "mw": 4
-    },
-    {
-     "d": "2026-09-12 16:30",
-     "h": "Tottenham Hotspur",
-     "a": "Everton",
-     "mw": 4
-    },
-    {
-     "d": "2026-09-12 19:00",
-     "h": "Sunderland",
-     "a": "Arsenal",
-     "mw": 4
-    },
-    {
-     "d": "2026-09-13 13:00",
-     "h": "Coventry City",
-     "a": "Brighton & Hove Albion",
-     "mw": 4
-    },
-    {
-     "d": "2026-09-13 15:30",
-     "h": "Manchester United",
-     "a": "Manchester City",
-     "mw": 4
-    },
     {
      "d": "2026-09-14 19:00",
      "h": "Leeds United",
@@ -622,10 +636,240 @@
      "h": "Tottenham Hotspur",
      "a": "Aston Villa",
      "mw": 5
+    },
+    {
+     "d": "2026-09-19 14:00",
+     "h": "Everton",
+     "a": "Ipswich Town",
+     "mw": 5
+    },
+    {
+     "d": "2026-09-19 14:00",
+     "h": "Brighton & Hove Albion",
+     "a": "Arsenal",
+     "mw": 5
+    },
+    {
+     "d": "2026-09-19 14:00",
+     "h": "Newcastle United",
+     "a": "Hull City",
+     "mw": 5
+    },
+    {
+     "d": "2026-09-19 16:30",
+     "h": "Nottingham Forest",
+     "a": "Coventry City",
+     "mw": 5
+    },
+    {
+     "d": "2026-09-20 13:00",
+     "h": "AFC Bournemouth",
+     "a": "Liverpool",
+     "mw": 5
+    },
+    {
+     "d": "2026-09-20 13:00",
+     "h": "Leeds United",
+     "a": "Crystal Palace",
+     "mw": 5
+    },
+    {
+     "d": "2026-09-20 13:00",
+     "h": "Manchester City",
+     "a": "Sunderland",
+     "mw": 5
+    },
+    {
+     "d": "2026-09-20 15:30",
+     "h": "Fulham",
+     "a": "Manchester United",
+     "mw": 5
+    },
+    {
+     "d": "2026-10-10 11:30",
+     "h": "Arsenal",
+     "a": "Leeds United",
+     "mw": 6
     }
    ],
-   "upcoming_updated": "fetched Friday 11 September 2026, 09:21 UTC",
+   "upcoming_updated": "fetched Sunday 13 September 2026, 22:20 UTC",
    "squads": {
+    "Arsenal": {
+     "id": 57,
+     "founded": 1886,
+     "venue": "Emirates Stadium",
+     "colors": "Red / White",
+     "players": [
+      [
+       "Kepa Arrizabalaga",
+       "Goalkeeper",
+       "Spain",
+       "1994-10-03",
+       null
+      ],
+      [
+       "David Raya",
+       "Goalkeeper",
+       "Spain",
+       "1995-09-15",
+       null
+      ],
+      [
+       "Illan Meslier",
+       "Goalkeeper",
+       "France",
+       "2000-03-02",
+       null
+      ],
+      [
+       "Ben White",
+       "Defence",
+       "England",
+       "1997-10-08",
+       null
+      ],
+      [
+       "Ezri Konsa",
+       "Defence",
+       "England",
+       "1997-10-23",
+       null
+      ],
+      [
+       "Gabriel Magalhães",
+       "Defence",
+       "Brazil",
+       "1997-12-19",
+       null
+      ],
+      [
+       "William Saliba",
+       "Defence",
+       "France",
+       "2001-03-24",
+       null
+      ],
+      [
+       "Jurrien Timber",
+       "Defence",
+       "Netherlands",
+       "2001-06-17",
+       null
+      ],
+      [
+       "Piero Hincapié",
+       "Defence",
+       "Ecuador",
+       "2002-01-09",
+       null
+      ],
+      [
+       "Riccardo Calafiori",
+       "Defence",
+       "Italy",
+       "2002-05-19",
+       null
+      ],
+      [
+       "Cristhian Mosquera",
+       "Defence",
+       "Spain",
+       "2004-06-27",
+       null
+      ],
+      [
+       "Myles Lewis-Skelly",
+       "Defence",
+       "England",
+       "2006-09-26",
+       null
+      ],
+      [
+       "Bruno Guimarães",
+       "Midfield",
+       "Brazil",
+       "1997-11-16",
+       null
+      ],
+      [
+       "Eberechi Eze",
+       "Midfield",
+       "England",
+       "1998-06-29",
+       null
+      ],
+      [
+       "Martin Ødegaard",
+       "Midfield",
+       "Norway",
+       "1998-12-17",
+       null
+      ],
+      [
+       "Mikel Merino",
+       "Midfield",
+       "Spain",
+       "1996-06-22",
+       null
+      ],
+      [
+       "Declan Rice",
+       "Midfield",
+       "England",
+       "1999-01-14",
+       null
+      ],
+      [
+       "Martín Zubimendi",
+       "Midfield",
+       "Spain",
+       "1999-02-02",
+       null
+      ],
+      [
+       "Kai Havertz",
+       "Offence",
+       "Germany",
+       "1999-06-11",
+       null
+      ],
+      [
+       "Viktor Gyökeres",
+       "Offence",
+       "Sweden",
+       "1998-06-04",
+       null
+      ],
+      [
+       "Bukayo Saka",
+       "Offence",
+       "England",
+       "2001-09-05",
+       null
+      ],
+      [
+       "Christos Tzolis",
+       "Offence",
+       "Greece",
+       "2002-01-30",
+       null
+      ],
+      [
+       "Noni Madueke",
+       "Offence",
+       "England",
+       "2002-03-10",
+       null
+      ],
+      [
+       "Max Dowman",
+       "Offence",
+       "England",
+       "2009-12-31",
+       null
+      ]
+     ]
+    },
     "Manchester City": {
      "id": 65,
      "founded": 1880,
@@ -805,182 +1049,6 @@
        "Offence",
        "England",
        "2008-06-24",
-       null
-      ]
-     ]
-    },
-    "Arsenal": {
-     "id": 57,
-     "founded": 1886,
-     "venue": "Emirates Stadium",
-     "colors": "Red / White",
-     "players": [
-      [
-       "Kepa Arrizabalaga",
-       "Goalkeeper",
-       "Spain",
-       "1994-10-03",
-       null
-      ],
-      [
-       "David Raya",
-       "Goalkeeper",
-       "Spain",
-       "1995-09-15",
-       null
-      ],
-      [
-       "Illan Meslier",
-       "Goalkeeper",
-       "France",
-       "2000-03-02",
-       null
-      ],
-      [
-       "Ben White",
-       "Defence",
-       "England",
-       "1997-10-08",
-       null
-      ],
-      [
-       "Ezri Konsa",
-       "Defence",
-       "England",
-       "1997-10-23",
-       null
-      ],
-      [
-       "Gabriel Magalhães",
-       "Defence",
-       "Brazil",
-       "1997-12-19",
-       null
-      ],
-      [
-       "William Saliba",
-       "Defence",
-       "France",
-       "2001-03-24",
-       null
-      ],
-      [
-       "Jurrien Timber",
-       "Defence",
-       "Netherlands",
-       "2001-06-17",
-       null
-      ],
-      [
-       "Piero Hincapié",
-       "Defence",
-       "Ecuador",
-       "2002-01-09",
-       null
-      ],
-      [
-       "Riccardo Calafiori",
-       "Defence",
-       "Italy",
-       "2002-05-19",
-       null
-      ],
-      [
-       "Cristhian Mosquera",
-       "Defence",
-       "Spain",
-       "2004-06-27",
-       null
-      ],
-      [
-       "Myles Lewis-Skelly",
-       "Defence",
-       "England",
-       "2006-09-26",
-       null
-      ],
-      [
-       "Bruno Guimarães",
-       "Midfield",
-       "Brazil",
-       "1997-11-16",
-       null
-      ],
-      [
-       "Eberechi Eze",
-       "Midfield",
-       "England",
-       "1998-06-29",
-       null
-      ],
-      [
-       "Martin Ødegaard",
-       "Midfield",
-       "Norway",
-       "1998-12-17",
-       null
-      ],
-      [
-       "Mikel Merino",
-       "Midfield",
-       "Spain",
-       "1996-06-22",
-       null
-      ],
-      [
-       "Declan Rice",
-       "Midfield",
-       "England",
-       "1999-01-14",
-       null
-      ],
-      [
-       "Martín Zubimendi",
-       "Midfield",
-       "Spain",
-       "1999-02-02",
-       null
-      ],
-      [
-       "Kai Havertz",
-       "Offence",
-       "Germany",
-       "1999-06-11",
-       null
-      ],
-      [
-       "Viktor Gyökeres",
-       "Offence",
-       "Sweden",
-       "1998-06-04",
-       null
-      ],
-      [
-       "Bukayo Saka",
-       "Offence",
-       "England",
-       "2001-09-05",
-       null
-      ],
-      [
-       "Christos Tzolis",
-       "Offence",
-       "Greece",
-       "2002-01-30",
-       null
-      ],
-      [
-       "Noni Madueke",
-       "Offence",
-       "England",
-       "2002-03-10",
-       null
-      ],
-      [
-       "Max Dowman",
-       "Offence",
-       "England",
-       "2009-12-31",
        null
       ]
      ]
@@ -1227,6 +1295,231 @@
        "Offence",
        "Algeria",
        "2002-06-01",
+       null
+      ]
+     ]
+    },
+    "Brighton & Hove Albion": {
+     "id": 397,
+     "founded": 1898,
+     "venue": "The American Express Community Stadium",
+     "colors": "Blue / White",
+     "players": [
+      [
+       "Jason Steele",
+       "Goalkeeper",
+       "England",
+       "1990-08-18",
+       null
+      ],
+      [
+       "Bart Verbruggen",
+       "Goalkeeper",
+       "Netherlands",
+       "2002-08-18",
+       null
+      ],
+      [
+       "Thomas McGill",
+       "Goalkeeper",
+       "England",
+       "2000-03-25",
+       null
+      ],
+      [
+       "Olivier Boscagli",
+       "Defence",
+       "France",
+       "1997-11-18",
+       null
+      ],
+      [
+       "Pascal Struijk",
+       "Defence",
+       "Netherlands",
+       "1999-08-11",
+       null
+      ],
+      [
+       "Lewis Dunk",
+       "Defence",
+       "England",
+       "1991-11-21",
+       null
+      ],
+      [
+       "Ferdi Kadıoğlu",
+       "Defence",
+       "Turkey",
+       "1999-10-07",
+       null
+      ],
+      [
+       "Michael Svoboda",
+       "Defence",
+       "Austria",
+       "1998-10-15",
+       null
+      ],
+      [
+       "Mats Wieffer",
+       "Defence",
+       "Netherlands",
+       "1999-11-16",
+       null
+      ],
+      [
+       "Maxim De Cuyper",
+       "Defence",
+       "Belgium",
+       "2000-12-22",
+       null
+      ],
+      [
+       "Jaouen Hadjam",
+       "Defence",
+       "Algeria",
+       "2003-03-26",
+       null
+      ],
+      [
+       "Costinha",
+       "Defence",
+       "Portugal",
+       "2000-03-26",
+       null
+      ],
+      [
+       "Luka Vušković",
+       "Defence",
+       "Croatia",
+       "2007-02-24",
+       null
+      ],
+      [
+       "Matt O'Riley",
+       "Midfield",
+       "Denmark",
+       "2000-11-21",
+       null
+      ],
+      [
+       "Pascal Groß",
+       "Midfield",
+       "Germany",
+       "1991-06-15",
+       null
+      ],
+      [
+       "Femi Azeez",
+       "Midfield",
+       "England",
+       "2001-06-05",
+       null
+      ],
+      [
+       "Yasin Ayari",
+       "Midfield",
+       "Sweden",
+       "2003-10-06",
+       null
+      ],
+      [
+       "Diego Gómez",
+       "Midfield",
+       "Paraguay",
+       "2003-03-27",
+       null
+      ],
+      [
+       "Jack Hinshelwood",
+       "Midfield",
+       "England",
+       "2005-04-11",
+       null
+      ],
+      [
+       "Malick Yalcouyé",
+       "Midfield",
+       "Mali",
+       "2005-11-18",
+       null
+      ],
+      [
+       "Chema Andrés",
+       "Midfield",
+       "Spain",
+       "2005-04-25",
+       null
+      ],
+      [
+       "Georginio Rutter",
+       "Offence",
+       "France",
+       "2002-04-20",
+       null
+      ],
+      [
+       "Evan Ferguson",
+       "Offence",
+       "Ireland",
+       "2004-10-19",
+       null
+      ],
+      [
+       "Kaoru Mitoma",
+       "Offence",
+       "Japan",
+       "1997-05-20",
+       null
+      ],
+      [
+       "Yankubah Minteh",
+       "Offence",
+       "Gambia",
+       "2004-07-22",
+       null
+      ],
+      [
+       "Ibrahim Osman",
+       "Offence",
+       "Ghana",
+       "2004-12-14",
+       null
+      ],
+      [
+       "Stefanos Tzimas",
+       "Offence",
+       "Greece",
+       "2006-01-06",
+       null
+      ],
+      [
+       "Promise Akinpelu",
+       "Offence",
+       "Canada",
+       "2001-07-03",
+       null
+      ],
+      [
+       "Charalampos Kostoulas",
+       "Offence",
+       "Greece",
+       "2007-05-30",
+       null
+      ],
+      [
+       "Zadok Yohanna",
+       "Offence",
+       "Nigeria",
+       "2007-06-29",
+       null
+      ],
+      [
+       "Younes Ibrahim",
+       "",
+       "Australia",
+       "2008-02-16",
        null
       ]
      ]
@@ -1843,6 +2136,365 @@
       ]
      ]
     },
+    "Everton": {
+     "id": 62,
+     "founded": 1878,
+     "venue": "Goodison Park",
+     "colors": "Blue / White",
+     "players": [
+      [
+       "Jordan Pickford",
+       "Goalkeeper",
+       "England",
+       "1994-03-07",
+       null
+      ],
+      [
+       "Thomas King",
+       "Goalkeeper",
+       "Wales",
+       "1995-03-09",
+       null
+      ],
+      [
+       "Mark Travers",
+       "Goalkeeper",
+       "Ireland",
+       "1999-05-18",
+       null
+      ],
+      [
+       "James Tarkowski",
+       "Defence",
+       "England",
+       "1992-11-19",
+       null
+      ],
+      [
+       "Ainsley Maitland-Niles",
+       "Defence",
+       "England",
+       "1997-08-29",
+       null
+      ],
+      [
+       "Michael Keane",
+       "Defence",
+       "England",
+       "1993-01-11",
+       null
+      ],
+      [
+       "Vitalii Mykolenko",
+       "Defence",
+       "Ukraine",
+       "1999-05-29",
+       null
+      ],
+      [
+       "Jarrad Branthwaite",
+       "Defence",
+       "England",
+       "2002-06-27",
+       null
+      ],
+      [
+       "Jake O'Brien",
+       "Defence",
+       "Ireland",
+       "2001-05-15",
+       null
+      ],
+      [
+       "Christian Nørgaard",
+       "Midfield",
+       "Denmark",
+       "1994-03-10",
+       null
+      ],
+      [
+       "James Garner",
+       "Midfield",
+       "England",
+       "2001-03-13",
+       null
+      ],
+      [
+       "Hayden Hackney",
+       "Midfield",
+       "England",
+       "2002-06-26",
+       null
+      ],
+      [
+       "Kiernan Dewsbury Hall",
+       "Midfield",
+       "England",
+       "1998-09-06",
+       null
+      ],
+      [
+       "Carlos Alcaraz",
+       "Midfield",
+       "Argentina",
+       "2002-11-30",
+       null
+      ],
+      [
+       "Merlin Röhl",
+       "Midfield",
+       "Germany",
+       "2002-07-05",
+       null
+      ],
+      [
+       "Harrison Armstrong",
+       "Midfield",
+       "England",
+       "2007-01-19",
+       null
+      ],
+      [
+       "Jack Grealish",
+       "Offence",
+       "England",
+       "1995-09-10",
+       null
+      ],
+      [
+       "Brennan Johnson",
+       "Offence",
+       "Wales",
+       "2001-05-23",
+       null
+      ],
+      [
+       "Thierno Barry",
+       "Offence",
+       "France",
+       "2000-01-12",
+       null
+      ],
+      [
+       "Tyler Dibling",
+       "Offence",
+       "England",
+       "2006-02-17",
+       null
+      ],
+      [
+       "Tyrique George",
+       "Offence",
+       "England",
+       "2006-02-04",
+       null
+      ]
+     ]
+    },
+    "Ipswich Town": {
+     "id": 349,
+     "founded": 1887,
+     "venue": "Portman Road Stadium",
+     "colors": "Blue / White",
+     "players": [
+      [
+       "David Button",
+       "Goalkeeper",
+       "England",
+       "1989-02-27",
+       null
+      ],
+      [
+       "Christian Walton",
+       "Goalkeeper",
+       "England",
+       "1995-11-09",
+       null
+      ],
+      [
+       "Alex Palmer",
+       "Goalkeeper",
+       "England",
+       "1996-08-10",
+       null
+      ],
+      [
+       "Kjell Scherpen",
+       "Goalkeeper",
+       "Netherlands",
+       "2000-01-23",
+       null
+      ],
+      [
+       "Darnell Furlong",
+       "Defence",
+       "England",
+       "1995-10-31",
+       null
+      ],
+      [
+       "Issa Diop",
+       "Defence",
+       "France",
+       "1997-01-09",
+       null
+      ],
+      [
+       "Dara O'Shea",
+       "Defence",
+       "Ireland",
+       "1999-03-04",
+       null
+      ],
+      [
+       "Cédric Kipré",
+       "Defence",
+       "Ivory Coast",
+       "1996-12-09",
+       null
+      ],
+      [
+       "Leif Davis",
+       "Defence",
+       "England",
+       "1999-12-31",
+       null
+      ],
+      [
+       "Jacob Greaves",
+       "Defence",
+       "England",
+       "2000-09-12",
+       null
+      ],
+      [
+       "Abdoul Ouattara",
+       "Defence",
+       "Ivory Coast",
+       "2005-10-22",
+       null
+      ],
+      [
+       "Jack Taylor",
+       "Midfield",
+       "Ireland",
+       "1998-06-23",
+       null
+      ],
+      [
+       "Azor Matusiwa",
+       "Midfield",
+       "Netherlands",
+       "1998-04-28",
+       null
+      ],
+      [
+       "Exequiel Palacios",
+       "Midfield",
+       "Argentina",
+       "1998-10-05",
+       null
+      ],
+      [
+       "Saša Lukić",
+       "Midfield",
+       "Serbia",
+       "1996-08-13",
+       null
+      ],
+      [
+       "Florentino",
+       "Midfield",
+       "Portugal",
+       "1999-08-19",
+       null
+      ],
+      [
+       "Marcelino Núñez",
+       "Midfield",
+       "Chile",
+       "2000-03-01",
+       null
+      ],
+      [
+       "Anis Mehmeti",
+       "Midfield",
+       "Albania",
+       "2001-01-09",
+       null
+      ],
+      [
+       "Julio Enciso",
+       "Midfield",
+       "Paraguay",
+       "2004-01-23",
+       null
+      ],
+      [
+       "Kasey McAteer",
+       "Midfield",
+       "Ireland",
+       "2001-11-22",
+       null
+      ],
+      [
+       "Jack Clarke",
+       "Offence",
+       "England",
+       "2000-11-23",
+       null
+      ],
+      [
+       "Chuba Akpom",
+       "Offence",
+       "England",
+       "1995-10-09",
+       null
+      ],
+      [
+       "Daizen Maeda",
+       "Offence",
+       "Japan",
+       "1997-10-20",
+       null
+      ],
+      [
+       "Zian Flemming",
+       "Offence",
+       "Netherlands",
+       "1998-08-01",
+       null
+      ],
+      [
+       "Jaden Philogene-Bidace",
+       "Offence",
+       "England",
+       "2002-02-08",
+       null
+      ],
+      [
+       "Emersonn",
+       "Offence",
+       "Brazil",
+       "2004-07-16",
+       null
+      ],
+      [
+       "Abdul Issahaku",
+       "Offence",
+       "Ghana",
+       "2004-03-08",
+       null
+      ],
+      [
+       "Sindre Egeli",
+       "Offence",
+       "Norway",
+       "2006-06-21",
+       null
+      ]
+     ]
+    },
     "Newcastle United": {
      "id": 67,
      "founded": 1881,
@@ -2033,161 +2685,6 @@
       ]
      ]
     },
-    "Everton": {
-     "id": 62,
-     "founded": 1878,
-     "venue": "Goodison Park",
-     "colors": "Blue / White",
-     "players": [
-      [
-       "Jordan Pickford",
-       "Goalkeeper",
-       "England",
-       "1994-03-07",
-       null
-      ],
-      [
-       "Thomas King",
-       "Goalkeeper",
-       "Wales",
-       "1995-03-09",
-       null
-      ],
-      [
-       "Mark Travers",
-       "Goalkeeper",
-       "Ireland",
-       "1999-05-18",
-       null
-      ],
-      [
-       "James Tarkowski",
-       "Defence",
-       "England",
-       "1992-11-19",
-       null
-      ],
-      [
-       "Ainsley Maitland-Niles",
-       "Defence",
-       "England",
-       "1997-08-29",
-       null
-      ],
-      [
-       "Michael Keane",
-       "Defence",
-       "England",
-       "1993-01-11",
-       null
-      ],
-      [
-       "Vitalii Mykolenko",
-       "Defence",
-       "Ukraine",
-       "1999-05-29",
-       null
-      ],
-      [
-       "Jarrad Branthwaite",
-       "Defence",
-       "England",
-       "2002-06-27",
-       null
-      ],
-      [
-       "Jake O'Brien",
-       "Defence",
-       "Ireland",
-       "2001-05-15",
-       null
-      ],
-      [
-       "Christian Nørgaard",
-       "Midfield",
-       "Denmark",
-       "1994-03-10",
-       null
-      ],
-      [
-       "James Garner",
-       "Midfield",
-       "England",
-       "2001-03-13",
-       null
-      ],
-      [
-       "Hayden Hackney",
-       "Midfield",
-       "England",
-       "2002-06-26",
-       null
-      ],
-      [
-       "Kiernan Dewsbury Hall",
-       "Midfield",
-       "England",
-       "1998-09-06",
-       null
-      ],
-      [
-       "Carlos Alcaraz",
-       "Midfield",
-       "Argentina",
-       "2002-11-30",
-       null
-      ],
-      [
-       "Merlin Röhl",
-       "Midfield",
-       "Germany",
-       "2002-07-05",
-       null
-      ],
-      [
-       "Harrison Armstrong",
-       "Midfield",
-       "England",
-       "2007-01-19",
-       null
-      ],
-      [
-       "Jack Grealish",
-       "Offence",
-       "England",
-       "1995-09-10",
-       null
-      ],
-      [
-       "Brennan Johnson",
-       "Offence",
-       "Wales",
-       "2001-05-23",
-       null
-      ],
-      [
-       "Thierno Barry",
-       "Offence",
-       "France",
-       "2000-01-12",
-       null
-      ],
-      [
-       "Tyler Dibling",
-       "Offence",
-       "England",
-       "2006-02-17",
-       null
-      ],
-      [
-       "Tyrique George",
-       "Offence",
-       "England",
-       "2006-02-04",
-       null
-      ]
-     ]
-    },
     "Leeds United": {
      "id": 341,
      "founded": 1904,
@@ -2364,220 +2861,178 @@
       ]
      ]
     },
-    "Brighton & Hove Albion": {
-     "id": 397,
-     "founded": 1898,
-     "venue": "The American Express Community Stadium",
-     "colors": "Blue / White",
+    "Nottingham Forest": {
+     "id": 351,
+     "founded": 1865,
+     "venue": "The City Ground",
+     "colors": "Red / White",
      "players": [
       [
-       "Jason Steele",
+       "John",
        "Goalkeeper",
-       "England",
-       "1990-08-18",
+       "Brazil",
+       "1996-02-13",
        null
       ],
       [
-       "Bart Verbruggen",
+       "Matz Sels",
        "Goalkeeper",
-       "Netherlands",
-       "2002-08-18",
-       null
-      ],
-      [
-       "Thomas McGill",
-       "Goalkeeper",
-       "England",
-       "2000-03-25",
-       null
-      ],
-      [
-       "Olivier Boscagli",
-       "Defence",
-       "France",
-       "1997-11-18",
-       null
-      ],
-      [
-       "Pascal Struijk",
-       "Defence",
-       "Netherlands",
-       "1999-08-11",
-       null
-      ],
-      [
-       "Lewis Dunk",
-       "Defence",
-       "England",
-       "1991-11-21",
-       null
-      ],
-      [
-       "Ferdi Kadıoğlu",
-       "Defence",
-       "Turkey",
-       "1999-10-07",
-       null
-      ],
-      [
-       "Michael Svoboda",
-       "Defence",
-       "Austria",
-       "1998-10-15",
-       null
-      ],
-      [
-       "Mats Wieffer",
-       "Defence",
-       "Netherlands",
-       "1999-11-16",
-       null
-      ],
-      [
-       "Maxim De Cuyper",
-       "Defence",
        "Belgium",
-       "2000-12-22",
+       "1992-02-26",
        null
       ],
       [
-       "Jaouen Hadjam",
-       "Defence",
-       "Algeria",
-       "2003-03-26",
-       null
-      ],
-      [
-       "Costinha",
-       "Defence",
-       "Portugal",
-       "2000-03-26",
-       null
-      ],
-      [
-       "Luka Vušković",
-       "Defence",
-       "Croatia",
-       "2007-02-24",
-       null
-      ],
-      [
-       "Matt O'Riley",
-       "Midfield",
-       "Denmark",
-       "2000-11-21",
-       null
-      ],
-      [
-       "Pascal Groß",
-       "Midfield",
+       "Steven Benda",
+       "Goalkeeper",
        "Germany",
-       "1991-06-15",
+       "1998-10-01",
        null
       ],
       [
-       "Femi Azeez",
+       "Nikola Milenković",
+       "Defence",
+       "Serbia",
+       "1997-10-12",
+       null
+      ],
+      [
+       "Ola Aina",
+       "Defence",
+       "Nigeria",
+       "1996-10-08",
+       null
+      ],
+      [
+       "Daniel Muñoz",
+       "Defence",
+       "Colombia",
+       "1996-05-26",
+       null
+      ],
+      [
+       "Neco Williams",
+       "Defence",
+       "Wales",
+       "2001-04-13",
+       null
+      ],
+      [
+       "Luca Netz",
+       "Defence",
+       "Germany",
+       "2003-05-15",
+       null
+      ],
+      [
+       "Jair Paula",
+       "Defence",
+       "Brazil",
+       "2005-03-07",
+       null
+      ],
+      [
+       "Ousmane Diomande",
+       "Defence",
+       "Cote d'Ivoire",
+       "2004-11-16",
+       null
+      ],
+      [
+       "Nicolò Savona",
+       "Defence",
+       "Italy",
+       "2003-03-19",
+       null
+      ],
+      [
+       "Murillo",
+       "Defence",
+       "Brazil",
+       "2002-07-04",
+       null
+      ],
+      [
+       "Morgan Gibbs-White",
        "Midfield",
        "England",
-       "2001-06-05",
+       "2000-01-27",
        null
       ],
       [
-       "Yasin Ayari",
-       "Midfield",
-       "Sweden",
-       "2003-10-06",
-       null
-      ],
-      [
-       "Diego Gómez",
-       "Midfield",
-       "Paraguay",
-       "2003-03-27",
-       null
-      ],
-      [
-       "Jack Hinshelwood",
+       "Ryan Yates",
        "Midfield",
        "England",
-       "2005-04-11",
+       "1997-11-21",
        null
       ],
       [
-       "Malick Yalcouyé",
+       "Ibrahim Sangaré",
        "Midfield",
-       "Mali",
-       "2005-11-18",
+       "Ivory Coast",
+       "1997-12-02",
        null
       ],
       [
-       "Chema Andrés",
+       "Xaver Schlager",
        "Midfield",
-       "Spain",
-       "2005-04-25",
+       "Austria",
+       "1997-09-28",
        null
       ],
       [
-       "Georginio Rutter",
+       "Nicolás Domínguez",
+       "Midfield",
+       "Argentina",
+       "1998-06-28",
+       null
+      ],
+      [
+       "James McAtee",
+       "Midfield",
+       "England",
+       "2002-10-18",
+       null
+      ],
+      [
+       "Callum Hudson-Odoi",
+       "Offence",
+       "England",
+       "2000-11-07",
+       null
+      ],
+      [
+       "Chris Wood",
+       "Offence",
+       "New Zealand",
+       "1991-12-07",
+       null
+      ],
+      [
+       "Dan Ndoye",
+       "Offence",
+       "Switzerland",
+       "2000-10-25",
+       null
+      ],
+      [
+       "Arnaud Kalimuendo",
        "Offence",
        "France",
-       "2002-04-20",
+       "2002-01-20",
        null
       ],
       [
-       "Evan Ferguson",
+       "Liam Delap",
        "Offence",
-       "Ireland",
-       "2004-10-19",
+       "England",
+       "2003-02-08",
        null
       ],
       [
-       "Kaoru Mitoma",
+       "Igor Jesus",
        "Offence",
-       "Japan",
-       "1997-05-20",
-       null
-      ],
-      [
-       "Yankubah Minteh",
-       "Offence",
-       "Gambia",
-       "2004-07-22",
-       null
-      ],
-      [
-       "Ibrahim Osman",
-       "Offence",
-       "Ghana",
-       "2004-12-14",
-       null
-      ],
-      [
-       "Stefanos Tzimas",
-       "Offence",
-       "Greece",
-       "2006-01-06",
-       null
-      ],
-      [
-       "Promise Akinpelu",
-       "Offence",
-       "Canada",
-       "2001-07-03",
-       null
-      ],
-      [
-       "Charalampos Kostoulas",
-       "Offence",
-       "Greece",
-       "2007-05-30",
-       null
-      ],
-      [
-       "Zadok Yohanna",
-       "Offence",
-       "Nigeria",
-       "2007-06-29",
+       "Brazil",
+       "2001-02-25",
        null
       ]
      ]
@@ -3011,6 +3466,217 @@
       ]
      ]
     },
+    "AFC Bournemouth": {
+     "id": 1044,
+     "founded": 1890,
+     "venue": "Vitality Stadium",
+     "colors": "Red / Black",
+     "players": [
+      [
+       "Fraser Forster",
+       "Goalkeeper",
+       "England",
+       "1988-03-17",
+       null
+      ],
+      [
+       "Michele Di Gregorio",
+       "Goalkeeper",
+       "Italy",
+       "1997-07-27",
+       null
+      ],
+      [
+       "Đorđe Petrović",
+       "Goalkeeper",
+       "Serbia",
+       "1999-10-08",
+       null
+      ],
+      [
+       "Adam Smith",
+       "Defence",
+       "England",
+       "1991-04-29",
+       null
+      ],
+      [
+       "Max Aarons",
+       "Defence",
+       "England",
+       "2000-01-04",
+       null
+      ],
+      [
+       "James Hill",
+       "Defence",
+       "England",
+       "2002-01-10",
+       null
+      ],
+      [
+       "Bafodé Diakité",
+       "Defence",
+       "France",
+       "2001-01-06",
+       null
+      ],
+      [
+       "Julian Araujo",
+       "Defence",
+       "USA",
+       "2001-08-13",
+       null
+      ],
+      [
+       "Adrien Truffert",
+       "Defence",
+       "France",
+       "2001-11-20",
+       null
+      ],
+      [
+       "Juanlu",
+       "Defence",
+       "Spain",
+       "2003-08-15",
+       null
+      ],
+      [
+       "Julio Soler",
+       "Defence",
+       "Argentina",
+       "2005-02-16",
+       null
+      ],
+      [
+       "Antonio Silva",
+       "Defence",
+       "Portugal",
+       "2003-10-31",
+       null
+      ],
+      [
+       "Veljko Milosavljević",
+       "Defence",
+       "Serbia",
+       "2007-06-28",
+       null
+      ],
+      [
+       "Lewis Cook",
+       "Midfield",
+       "England",
+       "1997-02-03",
+       null
+      ],
+      [
+       "Marcus Tavernier",
+       "Midfield",
+       "England",
+       "1999-03-22",
+       null
+      ],
+      [
+       "Justin Kluivert",
+       "Midfield",
+       "Netherlands",
+       "1999-05-05",
+       null
+      ],
+      [
+       "Ryan Christie",
+       "Midfield",
+       "Scotland",
+       "1995-02-22",
+       null
+      ],
+      [
+       "Tyler Adams",
+       "Midfield",
+       "USA",
+       "1999-02-14",
+       null
+      ],
+      [
+       "Alex Scott",
+       "Midfield",
+       "England",
+       "2003-08-21",
+       null
+      ],
+      [
+       "Alex Toth",
+       "Midfield",
+       "Hungary",
+       "2005-10-23",
+       null
+      ],
+      [
+       "Ben Winterburn",
+       "Midfield",
+       "England",
+       "2004-09-04",
+       null
+      ],
+      [
+       "David Brooks",
+       "Offence",
+       "Wales",
+       "1997-07-08",
+       null
+      ],
+      [
+       "Evanilson",
+       "Offence",
+       "Brazil",
+       "1999-10-06",
+       null
+      ],
+      [
+       "Amine Adli",
+       "Offence",
+       "Morocco",
+       "2000-05-10",
+       null
+      ],
+      [
+       "Daniel Jebbison",
+       "Offence",
+       "Canada",
+       "2003-07-11",
+       null
+      ],
+      [
+       "Ben Doak",
+       "Offence",
+       "Scotland",
+       "2005-11-11",
+       null
+      ],
+      [
+       "Alvaro Rodriguez",
+       "Offence",
+       "Spain",
+       "2004-07-14",
+       null
+      ],
+      [
+       "Rayan",
+       "Offence",
+       "Brazil",
+       "2006-08-03",
+       null
+      ],
+      [
+       "Eli Kroupi",
+       "Offence",
+       "France",
+       "2006-06-23",
+       null
+      ]
+     ]
+    },
     "Crystal Palace": {
      "id": 354,
      "founded": 1905,
@@ -3225,794 +3891,6 @@
        "Offence",
        "USA",
        "2007-03-22",
-       null
-      ]
-     ]
-    },
-    "Ipswich Town": {
-     "id": 349,
-     "founded": 1887,
-     "venue": "Portman Road Stadium",
-     "colors": "Blue / White",
-     "players": [
-      [
-       "David Button",
-       "Goalkeeper",
-       "England",
-       "1989-02-27",
-       null
-      ],
-      [
-       "Christian Walton",
-       "Goalkeeper",
-       "England",
-       "1995-11-09",
-       null
-      ],
-      [
-       "Alex Palmer",
-       "Goalkeeper",
-       "England",
-       "1996-08-10",
-       null
-      ],
-      [
-       "Kjell Scherpen",
-       "Goalkeeper",
-       "Netherlands",
-       "2000-01-23",
-       null
-      ],
-      [
-       "Darnell Furlong",
-       "Defence",
-       "England",
-       "1995-10-31",
-       null
-      ],
-      [
-       "Issa Diop",
-       "Defence",
-       "France",
-       "1997-01-09",
-       null
-      ],
-      [
-       "Dara O'Shea",
-       "Defence",
-       "Ireland",
-       "1999-03-04",
-       null
-      ],
-      [
-       "Cédric Kipré",
-       "Defence",
-       "Ivory Coast",
-       "1996-12-09",
-       null
-      ],
-      [
-       "Leif Davis",
-       "Defence",
-       "England",
-       "1999-12-31",
-       null
-      ],
-      [
-       "Jacob Greaves",
-       "Defence",
-       "England",
-       "2000-09-12",
-       null
-      ],
-      [
-       "Abdoul Ouattara",
-       "Defence",
-       "Ivory Coast",
-       "2005-10-22",
-       null
-      ],
-      [
-       "Jack Taylor",
-       "Midfield",
-       "Ireland",
-       "1998-06-23",
-       null
-      ],
-      [
-       "Azor Matusiwa",
-       "Midfield",
-       "Netherlands",
-       "1998-04-28",
-       null
-      ],
-      [
-       "Exequiel Palacios",
-       "Midfield",
-       "Argentina",
-       "1998-10-05",
-       null
-      ],
-      [
-       "Saša Lukić",
-       "Midfield",
-       "Serbia",
-       "1996-08-13",
-       null
-      ],
-      [
-       "Florentino",
-       "Midfield",
-       "Portugal",
-       "1999-08-19",
-       null
-      ],
-      [
-       "Marcelino Núñez",
-       "Midfield",
-       "Chile",
-       "2000-03-01",
-       null
-      ],
-      [
-       "Anis Mehmeti",
-       "Midfield",
-       "Albania",
-       "2001-01-09",
-       null
-      ],
-      [
-       "Julio Enciso",
-       "Midfield",
-       "Paraguay",
-       "2004-01-23",
-       null
-      ],
-      [
-       "Kasey McAteer",
-       "Midfield",
-       "Ireland",
-       "2001-11-22",
-       null
-      ],
-      [
-       "Jack Clarke",
-       "Offence",
-       "England",
-       "2000-11-23",
-       null
-      ],
-      [
-       "Chuba Akpom",
-       "Offence",
-       "England",
-       "1995-10-09",
-       null
-      ],
-      [
-       "Daizen Maeda",
-       "Offence",
-       "Japan",
-       "1997-10-20",
-       null
-      ],
-      [
-       "Zian Flemming",
-       "Offence",
-       "Netherlands",
-       "1998-08-01",
-       null
-      ],
-      [
-       "Jaden Philogene-Bidace",
-       "Offence",
-       "England",
-       "2002-02-08",
-       null
-      ],
-      [
-       "Emersonn",
-       "Offence",
-       "Brazil",
-       "2004-07-16",
-       null
-      ],
-      [
-       "Abdul Issahaku",
-       "Offence",
-       "Ghana",
-       "2004-03-08",
-       null
-      ],
-      [
-       "Sindre Egeli",
-       "Offence",
-       "Norway",
-       "2006-06-21",
-       null
-      ]
-     ]
-    },
-    "AFC Bournemouth": {
-     "id": 1044,
-     "founded": 1890,
-     "venue": "Vitality Stadium",
-     "colors": "Red / Black",
-     "players": [
-      [
-       "Fraser Forster",
-       "Goalkeeper",
-       "England",
-       "1988-03-17",
-       null
-      ],
-      [
-       "Michele Di Gregorio",
-       "Goalkeeper",
-       "Italy",
-       "1997-07-27",
-       null
-      ],
-      [
-       "Đorđe Petrović",
-       "Goalkeeper",
-       "Serbia",
-       "1999-10-08",
-       null
-      ],
-      [
-       "Adam Smith",
-       "Defence",
-       "England",
-       "1991-04-29",
-       null
-      ],
-      [
-       "Max Aarons",
-       "Defence",
-       "England",
-       "2000-01-04",
-       null
-      ],
-      [
-       "James Hill",
-       "Defence",
-       "England",
-       "2002-01-10",
-       null
-      ],
-      [
-       "Bafodé Diakité",
-       "Defence",
-       "France",
-       "2001-01-06",
-       null
-      ],
-      [
-       "Julian Araujo",
-       "Defence",
-       "USA",
-       "2001-08-13",
-       null
-      ],
-      [
-       "Adrien Truffert",
-       "Defence",
-       "France",
-       "2001-11-20",
-       null
-      ],
-      [
-       "Juanlu",
-       "Defence",
-       "Spain",
-       "2003-08-15",
-       null
-      ],
-      [
-       "Julio Soler",
-       "Defence",
-       "Argentina",
-       "2005-02-16",
-       null
-      ],
-      [
-       "Antonio Silva",
-       "Defence",
-       "Portugal",
-       "2003-10-31",
-       null
-      ],
-      [
-       "Veljko Milosavljević",
-       "Defence",
-       "Serbia",
-       "2007-06-28",
-       null
-      ],
-      [
-       "Lewis Cook",
-       "Midfield",
-       "England",
-       "1997-02-03",
-       null
-      ],
-      [
-       "Marcus Tavernier",
-       "Midfield",
-       "England",
-       "1999-03-22",
-       null
-      ],
-      [
-       "Justin Kluivert",
-       "Midfield",
-       "Netherlands",
-       "1999-05-05",
-       null
-      ],
-      [
-       "Ryan Christie",
-       "Midfield",
-       "Scotland",
-       "1995-02-22",
-       null
-      ],
-      [
-       "Tyler Adams",
-       "Midfield",
-       "USA",
-       "1999-02-14",
-       null
-      ],
-      [
-       "Alex Scott",
-       "Midfield",
-       "England",
-       "2003-08-21",
-       null
-      ],
-      [
-       "Alex Toth",
-       "Midfield",
-       "Hungary",
-       "2005-10-23",
-       null
-      ],
-      [
-       "Ben Winterburn",
-       "Midfield",
-       "England",
-       "2004-09-04",
-       null
-      ],
-      [
-       "David Brooks",
-       "Offence",
-       "Wales",
-       "1997-07-08",
-       null
-      ],
-      [
-       "Evanilson",
-       "Offence",
-       "Brazil",
-       "1999-10-06",
-       null
-      ],
-      [
-       "Amine Adli",
-       "Offence",
-       "Morocco",
-       "2000-05-10",
-       null
-      ],
-      [
-       "Daniel Jebbison",
-       "Offence",
-       "Canada",
-       "2003-07-11",
-       null
-      ],
-      [
-       "Ben Doak",
-       "Offence",
-       "Scotland",
-       "2005-11-11",
-       null
-      ],
-      [
-       "Alvaro Rodriguez",
-       "Offence",
-       "Spain",
-       "2004-07-14",
-       null
-      ],
-      [
-       "Rayan",
-       "Offence",
-       "Brazil",
-       "2006-08-03",
-       null
-      ],
-      [
-       "Eli Kroupi",
-       "Offence",
-       "France",
-       "2006-06-23",
-       null
-      ]
-     ]
-    },
-    "Nottingham Forest": {
-     "id": 351,
-     "founded": 1865,
-     "venue": "The City Ground",
-     "colors": "Red / White",
-     "players": [
-      [
-       "John",
-       "Goalkeeper",
-       "Brazil",
-       "1996-02-13",
-       null
-      ],
-      [
-       "Matz Sels",
-       "Goalkeeper",
-       "Belgium",
-       "1992-02-26",
-       null
-      ],
-      [
-       "Steven Benda",
-       "Goalkeeper",
-       "Germany",
-       "1998-10-01",
-       null
-      ],
-      [
-       "Nikola Milenković",
-       "Defence",
-       "Serbia",
-       "1997-10-12",
-       null
-      ],
-      [
-       "Ola Aina",
-       "Defence",
-       "Nigeria",
-       "1996-10-08",
-       null
-      ],
-      [
-       "Daniel Muñoz",
-       "Defence",
-       "Colombia",
-       "1996-05-26",
-       null
-      ],
-      [
-       "Neco Williams",
-       "Defence",
-       "Wales",
-       "2001-04-13",
-       null
-      ],
-      [
-       "Luca Netz",
-       "Defence",
-       "Germany",
-       "2003-05-15",
-       null
-      ],
-      [
-       "Jair Paula",
-       "Defence",
-       "Brazil",
-       "2005-03-07",
-       null
-      ],
-      [
-       "Ousmane Diomande",
-       "Defence",
-       "Cote d'Ivoire",
-       "2004-11-16",
-       null
-      ],
-      [
-       "Nicolò Savona",
-       "Defence",
-       "Italy",
-       "2003-03-19",
-       null
-      ],
-      [
-       "Murillo",
-       "Defence",
-       "Brazil",
-       "2002-07-04",
-       null
-      ],
-      [
-       "Morgan Gibbs-White",
-       "Midfield",
-       "England",
-       "2000-01-27",
-       null
-      ],
-      [
-       "Ryan Yates",
-       "Midfield",
-       "England",
-       "1997-11-21",
-       null
-      ],
-      [
-       "Ibrahim Sangaré",
-       "Midfield",
-       "Ivory Coast",
-       "1997-12-02",
-       null
-      ],
-      [
-       "Xaver Schlager",
-       "Midfield",
-       "Austria",
-       "1997-09-28",
-       null
-      ],
-      [
-       "Nicolás Domínguez",
-       "Midfield",
-       "Argentina",
-       "1998-06-28",
-       null
-      ],
-      [
-       "James McAtee",
-       "Midfield",
-       "England",
-       "2002-10-18",
-       null
-      ],
-      [
-       "Callum Hudson-Odoi",
-       "Offence",
-       "England",
-       "2000-11-07",
-       null
-      ],
-      [
-       "Chris Wood",
-       "Offence",
-       "New Zealand",
-       "1991-12-07",
-       null
-      ],
-      [
-       "Dan Ndoye",
-       "Offence",
-       "Switzerland",
-       "2000-10-25",
-       null
-      ],
-      [
-       "Arnaud Kalimuendo",
-       "Offence",
-       "France",
-       "2002-01-20",
-       null
-      ],
-      [
-       "Liam Delap",
-       "Offence",
-       "England",
-       "2003-02-08",
-       null
-      ],
-      [
-       "Igor Jesus",
-       "Offence",
-       "Brazil",
-       "2001-02-25",
-       null
-      ]
-     ]
-    },
-    "Aston Villa": {
-     "id": 58,
-     "founded": 1872,
-     "venue": "Villa Park",
-     "colors": "Claret / Sky Blue",
-     "players": [
-      [
-       "Marco Bizot",
-       "Goalkeeper",
-       "Netherlands",
-       "1991-03-10",
-       null
-      ],
-      [
-       "Zion Suzuki",
-       "Goalkeeper",
-       "Japan",
-       "2002-08-21",
-       null
-      ],
-      [
-       "Victor Nilsson-Lindelöf",
-       "Defence",
-       "Sweden",
-       "1994-07-17",
-       null
-      ],
-      [
-       "Aaron Wan-Bissaka",
-       "Defence",
-       "Congo DR",
-       "1997-11-26",
-       null
-      ],
-      [
-       "Tyrone Mings",
-       "Defence",
-       "England",
-       "1993-03-13",
-       null
-      ],
-      [
-       "Matty Cash",
-       "Defence",
-       "Poland",
-       "1997-08-07",
-       null
-      ],
-      [
-       "Pau Torres",
-       "Defence",
-       "Spain",
-       "1997-01-16",
-       null
-      ],
-      [
-       "Taylor Harwood-Bellis",
-       "Defence",
-       "England",
-       "2002-01-30",
-       null
-      ],
-      [
-       "Ian Maatsen",
-       "Defence",
-       "Netherlands",
-       "2002-03-10",
-       null
-      ],
-      [
-       "Matteo Ruggeri",
-       "Defence",
-       "Italy",
-       "2002-07-11",
-       null
-      ],
-      [
-       "Modou Keba Cisse",
-       "Defence",
-       "Senegal",
-       "2005-08-04",
-       null
-      ],
-      [
-       "Leon Goretzka",
-       "Midfield",
-       "Germany",
-       "1995-02-06",
-       null
-      ],
-      [
-       "Ross Barkley",
-       "Midfield",
-       "England",
-       "1993-12-05",
-       null
-      ],
-      [
-       "Boubacar Kamara",
-       "Midfield",
-       "France",
-       "1999-11-23",
-       null
-      ],
-      [
-       "Emiliano Buendía",
-       "Midfield",
-       "Argentina",
-       "1996-12-25",
-       null
-      ],
-      [
-       "John McGinn",
-       "Midfield",
-       "Scotland",
-       "1994-10-18",
-       null
-      ],
-      [
-       "Amadou Onana",
-       "Midfield",
-       "Belgium",
-       "2001-08-16",
-       null
-      ],
-      [
-       "João Gomes",
-       "Midfield",
-       "Brazil",
-       "2001-02-12",
-       null
-      ],
-      [
-       "Lamare Bogarde",
-       "Midfield",
-       "Netherlands",
-       "2004-01-05",
-       null
-      ],
-      [
-       "Johan Manzambi",
-       "Midfield",
-       "Switzerland",
-       "2005-10-14",
-       null
-      ],
-      [
-       "Tammy Abraham",
-       "Offence",
-       "England",
-       "1997-10-02",
-       null
-      ],
-      [
-       "Nicolas Jackson",
-       "Offence",
-       "Senegal",
-       "2001-06-20",
-       null
-      ],
-      [
-       "Alejandro Garnacho",
-       "Offence",
-       "Argentina",
-       "2004-07-01",
-       null
-      ],
-      [
-       "Alysson",
-       "Offence",
-       "Brazil",
-       "2006-05-05",
-       null
-      ],
-      [
-       "Ibrahim M'Baye",
-       "Offence",
-       "Senegal",
-       "2008-01-24",
-       null
-      ],
-      [
-       "Brian Madjo",
-       "Offence",
-       "Luxembourg",
-       "2009-01-12",
-       null
-      ],
-      [
-       "George Hemmings",
-       "Offence",
-       "England",
-       "2007-03-04",
        null
       ]
      ]
@@ -4418,6 +4296,203 @@
       ]
      ]
     },
+    "Aston Villa": {
+     "id": 58,
+     "founded": 1872,
+     "venue": "Villa Park",
+     "colors": "Claret / Sky Blue",
+     "players": [
+      [
+       "Marco Bizot",
+       "Goalkeeper",
+       "Netherlands",
+       "1991-03-10",
+       null
+      ],
+      [
+       "Zion Suzuki",
+       "Goalkeeper",
+       "Japan",
+       "2002-08-21",
+       null
+      ],
+      [
+       "Victor Nilsson-Lindelöf",
+       "Defence",
+       "Sweden",
+       "1994-07-17",
+       null
+      ],
+      [
+       "Aaron Wan-Bissaka",
+       "Defence",
+       "Congo DR",
+       "1997-11-26",
+       null
+      ],
+      [
+       "Tyrone Mings",
+       "Defence",
+       "England",
+       "1993-03-13",
+       null
+      ],
+      [
+       "Matty Cash",
+       "Defence",
+       "Poland",
+       "1997-08-07",
+       null
+      ],
+      [
+       "Pau Torres",
+       "Defence",
+       "Spain",
+       "1997-01-16",
+       null
+      ],
+      [
+       "Taylor Harwood-Bellis",
+       "Defence",
+       "England",
+       "2002-01-30",
+       null
+      ],
+      [
+       "Ian Maatsen",
+       "Defence",
+       "Netherlands",
+       "2002-03-10",
+       null
+      ],
+      [
+       "Matteo Ruggeri",
+       "Defence",
+       "Italy",
+       "2002-07-11",
+       null
+      ],
+      [
+       "Modou Keba Cisse",
+       "Defence",
+       "Senegal",
+       "2005-08-04",
+       null
+      ],
+      [
+       "Leon Goretzka",
+       "Midfield",
+       "Germany",
+       "1995-02-06",
+       null
+      ],
+      [
+       "Ross Barkley",
+       "Midfield",
+       "England",
+       "1993-12-05",
+       null
+      ],
+      [
+       "Boubacar Kamara",
+       "Midfield",
+       "France",
+       "1999-11-23",
+       null
+      ],
+      [
+       "Emiliano Buendía",
+       "Midfield",
+       "Argentina",
+       "1996-12-25",
+       null
+      ],
+      [
+       "John McGinn",
+       "Midfield",
+       "Scotland",
+       "1994-10-18",
+       null
+      ],
+      [
+       "Amadou Onana",
+       "Midfield",
+       "Belgium",
+       "2001-08-16",
+       null
+      ],
+      [
+       "João Gomes",
+       "Midfield",
+       "Brazil",
+       "2001-02-12",
+       null
+      ],
+      [
+       "Lamare Bogarde",
+       "Midfield",
+       "Netherlands",
+       "2004-01-05",
+       null
+      ],
+      [
+       "Johan Manzambi",
+       "Midfield",
+       "Switzerland",
+       "2005-10-14",
+       null
+      ],
+      [
+       "Tammy Abraham",
+       "Offence",
+       "England",
+       "1997-10-02",
+       null
+      ],
+      [
+       "Nicolas Jackson",
+       "Offence",
+       "Senegal",
+       "2001-06-20",
+       null
+      ],
+      [
+       "Alejandro Garnacho",
+       "Offence",
+       "Argentina",
+       "2004-07-01",
+       null
+      ],
+      [
+       "Alysson",
+       "Offence",
+       "Brazil",
+       "2006-05-05",
+       null
+      ],
+      [
+       "Ibrahim M'Baye",
+       "Offence",
+       "Senegal",
+       "2008-01-24",
+       null
+      ],
+      [
+       "Brian Madjo",
+       "Offence",
+       "Luxembourg",
+       "2009-01-12",
+       null
+      ],
+      [
+       "George Hemmings",
+       "Offence",
+       "England",
+       "2007-03-04",
+       null
+      ]
+     ]
+    },
     "Coventry City": {
      "id": 1076,
      "founded": 1883,
@@ -4623,51 +4698,87 @@
      ]
     }
    },
-   "squads_updated": "fetched Friday 11 September 2026, 09:25 UTC (20/20 clubs listed)"
+   "squads_updated": "fetched Sunday 13 September 2026, 22:24 UTC (20/20 clubs listed)"
   },
   "la-liga": {
    "name": "La Liga",
-   "table_updated": "fetched Friday 11 September 2026, 09:21 UTC",
-   "scorers_updated": "fetched Friday 11 September 2026, 09:22 UTC",
+   "table_updated": "fetched Sunday 13 September 2026, 22:20 UTC",
+   "scorers_updated": "fetched Sunday 13 September 2026, 22:20 UTC",
    "table": [
     [
      1,
      "FC Barcelona",
-     4,
-     4,
+     5,
+     5,
      0,
      0,
+     21,
+     4,
      17,
+     15
+    ],
+    [
      2,
-     15,
+     "Real Madrid CF",
+     5,
+     4,
+     0,
+     1,
+     14,
+     4,
+     10,
      12
     ],
     [
-     2,
+     3,
      "Deportivo Alavés",
-     4,
+     5,
      3,
      1,
-     0,
-     10,
-     3,
-     7,
+     1,
+     11,
+     5,
+     6,
      10
     ],
     [
-     3,
-     "Real Madrid CF",
      4,
+     "Club Atlético de Madrid",
+     5,
      3,
-     0,
+     1,
      1,
      10,
+     6,
+     4,
+     10
+    ],
+    [
+     5,
+     "Sevilla FC",
+     5,
      3,
-     7,
+     1,
+     1,
+     8,
+     6,
+     2,
+     10
+    ],
+    [
+     6,
+     "RC Deportivo La Coruña",
+     5,
+     2,
+     3,
+     0,
+     9,
+     6,
+     3,
      9
     ],
     [
-     4,
+     7,
      "Real Betis Balompié",
      4,
      3,
@@ -4679,151 +4790,127 @@
      9
     ],
     [
+     8,
+     "RCD Espanyol de Barcelona",
      5,
-     "RC Deportivo La Coruña",
-     4,
      2,
+     1,
      2,
-     0,
      8,
      5,
      3,
-     8
-    ],
-    [
-     6,
-     "Club Atlético de Madrid",
-     4,
-     2,
-     1,
-     1,
-     7,
-     6,
-     1,
-     7
-    ],
-    [
-     6,
-     "Sevilla FC",
-     4,
-     2,
-     1,
-     1,
-     7,
-     6,
-     1,
-     7
-    ],
-    [
-     8,
-     "CA Osasuna",
-     4,
-     2,
-     1,
-     1,
-     5,
-     6,
-     -1,
      7
     ],
     [
      9,
-     "Real Sociedad de Fútbol",
+     "Athletic Club",
      5,
      2,
      1,
      2,
+     7,
      6,
-     8,
-     -2,
+     1,
      7
     ],
     [
      10,
-     "Athletic Club",
-     4,
-     2,
-     0,
-     2,
-     6,
+     "Real Racing Club de Santander",
      5,
+     2,
      1,
-     6
+     2,
+     9,
+     9,
+     0,
+     7
     ],
     [
      11,
-     "Levante UD",
-     4,
-     1,
+     "CA Osasuna",
+     5,
      2,
      1,
+     2,
      5,
-     5,
-     0,
-     5
+     8,
+     -3,
+     7
     ],
     [
      12,
-     "RCD Espanyol de Barcelona",
-     4,
-     1,
-     1,
-     2,
+     "Real Sociedad de Fútbol",
      6,
-     5,
+     2,
      1,
-     4
+     3,
+     6,
+     11,
+     -5,
+     7
     ],
     [
      13,
-     "Real Racing Club de Santander",
-     4,
-     1,
+     "Levante UD",
+     5,
      1,
      2,
+     2,
      7,
-     8,
-     -1,
-     4
+     9,
+     -2,
+     5
     ],
     [
      14,
-     "Rayo Vallecano de Madrid",
-     4,
-     1,
+     "Getafe CF",
+     5,
      1,
      2,
-     7,
-     10,
+     2,
+     3,
+     6,
      -3,
-     4
+     5
     ],
     [
      15,
-     "Getafe CF",
+     "RC Celta de Vigo",
+     6,
+     0,
      4,
-     1,
-     1,
      2,
-     2,
-     5,
+     3,
+     6,
      -3,
      4
     ],
     [
      16,
-     "RC Celta de Vigo",
+     "Rayo Vallecano de Madrid",
+     5,
+     1,
+     1,
+     3,
+     8,
+     14,
+     -6,
+     4
+    ],
+    [
+     17,
+     "Málaga CF",
      5,
      0,
      3,
      2,
      2,
-     5,
-     -3,
+     8,
+     -6,
      3
     ],
     [
-     17,
+     18,
      "Villarreal CF",
      4,
      0,
@@ -4835,190 +4922,103 @@
      2
     ],
     [
-     18,
-     "Málaga CF",
-     4,
-     0,
-     2,
-     2,
-     1,
-     7,
-     -6,
-     2
-    ],
-    [
      19,
      "Elche CF",
-     4,
-     0,
-     1,
-     3,
      5,
-     12,
+     0,
+     2,
+     3,
+     6,
+     13,
      -7,
-     1
+     2
     ],
     [
      20,
      "Valencia CF",
-     4,
+     5,
      0,
      1,
-     3,
+     4,
      1,
-     9,
-     -8,
+     10,
+     -9,
      1
     ]
    ],
    "scorers": [
     {
+     "p": "Sergio Camello",
+     "c": "Rayo Vallecano de Madrid",
+     "g": 6,
+     "a": 1,
+     "pm": 5
+    },
+    {
      "p": "Raphinha",
      "c": "FC Barcelona",
      "g": 6,
-     "a": null,
-     "pm": 4
+     "a": 2,
+     "pm": 5
     },
     {
-     "p": "Sergio Camello",
-     "c": "Rayo Vallecano de Madrid",
-     "g": 5,
+     "p": "Kylian Mbappé",
+     "c": "Real Madrid CF",
+     "g": 6,
      "a": 1,
-     "pm": 4
+     "pm": 5
+    },
+    {
+     "p": "Lamine Yamal",
+     "c": "FC Barcelona",
+     "g": 6,
+     "a": null,
+     "pm": 5
+    },
+    {
+     "p": "Roberto Fernández",
+     "c": "RCD Espanyol de Barcelona",
+     "g": 5,
+     "a": null,
+     "pm": 5
     },
     {
      "p": "Pierre-Emerick Aubameyang",
      "c": "RC Deportivo La Coruña",
-     "g": 4,
+     "g": 5,
      "a": 2,
-     "pm": 4
+     "pm": 5
+    },
+    {
+     "p": "Yassir Zabiri",
+     "c": "Real Racing Club de Santander",
+     "g": 5,
+     "a": null,
+     "pm": 5
     },
     {
      "p": "Fermín López",
      "c": "FC Barcelona",
      "g": 4,
      "a": 2,
-     "pm": 4
-    },
-    {
-     "p": "Kylian Mbappé",
-     "c": "Real Madrid CF",
-     "g": 4,
-     "a": null,
-     "pm": 4
+     "pm": 5
     },
     {
      "p": "Ante Budimir",
      "c": "CA Osasuna",
      "g": 4,
      "a": null,
-     "pm": 4
+     "pm": 5
     },
     {
      "p": "Lucas Boyé",
      "c": "Deportivo Alavés",
      "g": 4,
      "a": null,
-     "pm": 3
-    },
-    {
-     "p": "Lamine Yamal",
-     "c": "FC Barcelona",
-     "g": 4,
-     "a": null,
-     "pm": 4
-    },
-    {
-     "p": "Mariano Díaz",
-     "c": "Deportivo Alavés",
-     "g": 3,
-     "a": 3,
-     "pm": 4
-    },
-    {
-     "p": "Roberto Fernández",
-     "c": "RCD Espanyol de Barcelona",
-     "g": 3,
-     "a": null,
      "pm": 4
     }
    ],
    "results": [
-    {
-     "mw": 1,
-     "matches": [
-      {
-       "d": "2026-08-15",
-       "h": "Deportivo Alavés",
-       "hs": 3,
-       "as": 0,
-       "a": "Getafe CF"
-      },
-      {
-       "d": "2026-08-15",
-       "h": "Sevilla FC",
-       "hs": 2,
-       "as": 1,
-       "a": "Rayo Vallecano de Madrid"
-      },
-      {
-       "d": "2026-08-16",
-       "h": "Real Racing Club de Santander",
-       "hs": 2,
-       "as": 2,
-       "a": "Villarreal CF"
-      },
-      {
-       "d": "2026-08-16",
-       "h": "RCD Espanyol de Barcelona",
-       "hs": 3,
-       "as": 0,
-       "a": "Levante UD"
-      },
-      {
-       "d": "2026-08-17",
-       "h": "RC Deportivo La Coruña",
-       "hs": 1,
-       "as": 1,
-       "a": "Elche CF"
-      },
-      {
-       "d": "2026-08-19",
-       "h": "Club Atlético de Madrid",
-       "hs": 2,
-       "as": 0,
-       "a": "Málaga CF"
-      },
-      {
-       "d": "2026-08-25",
-       "h": "Valencia CF",
-       "hs": 0,
-       "as": 1,
-       "a": "Real Betis Balompié"
-      },
-      {
-       "d": "2026-08-26",
-       "h": "Real Madrid CF",
-       "hs": 4,
-       "as": 1,
-       "a": "Real Sociedad de Fútbol"
-      },
-      {
-       "d": "2026-08-27",
-       "h": "RC Celta de Vigo",
-       "hs": 1,
-       "as": 2,
-       "a": "CA Osasuna"
-      },
-      {
-       "d": "2026-08-27",
-       "h": "FC Barcelona",
-       "hs": 2,
-       "as": 0,
-       "a": "Athletic Club"
-      }
-     ]
-    },
     {
      "mw": 2,
      "matches": [
@@ -5245,6 +5245,74 @@
      ]
     },
     {
+     "mw": 5,
+     "matches": [
+      {
+       "d": "2026-09-11",
+       "h": "Sevilla FC",
+       "hs": 1,
+       "as": 0,
+       "a": "Valencia CF"
+      },
+      {
+       "d": "2026-09-12",
+       "h": "Real Racing Club de Santander",
+       "hs": 2,
+       "as": 1,
+       "a": "Deportivo Alavés"
+      },
+      {
+       "d": "2026-09-12",
+       "h": "CA Osasuna",
+       "hs": 0,
+       "as": 2,
+       "a": "RCD Espanyol de Barcelona"
+      },
+      {
+       "d": "2026-09-12",
+       "h": "Athletic Club",
+       "hs": 1,
+       "as": 1,
+       "a": "Elche CF"
+      },
+      {
+       "d": "2026-09-12",
+       "h": "Real Madrid CF",
+       "hs": 4,
+       "as": 1,
+       "a": "Rayo Vallecano de Madrid"
+      },
+      {
+       "d": "2026-09-13",
+       "h": "RC Celta de Vigo",
+       "hs": 1,
+       "as": 1,
+       "a": "Málaga CF"
+      },
+      {
+       "d": "2026-09-13",
+       "h": "Levante UD",
+       "hs": 2,
+       "as": 4,
+       "a": "FC Barcelona"
+      },
+      {
+       "d": "2026-09-13",
+       "h": "Getafe CF",
+       "hs": 1,
+       "as": 1,
+       "a": "RC Deportivo La Coruña"
+      },
+      {
+       "d": "2026-09-13",
+       "h": "Real Sociedad de Fútbol",
+       "hs": 0,
+       "as": 3,
+       "a": "Club Atlético de Madrid"
+      }
+     ]
+    },
+    {
      "mw": 6,
      "matches": [
       {
@@ -5257,301 +5325,301 @@
      ]
     }
    ],
-   "results_updated": "fetched Friday 11 September 2026, 09:22 UTC",
+   "results_updated": "fetched Sunday 13 September 2026, 22:20 UTC",
    "upcoming": [
     {
-     "d": "2026-09-11 19:00",
-     "h": "Sevilla FC",
-     "a": "Valencia CF",
-     "mw": 5
-    },
-    {
-     "d": "2026-09-12 12:00",
-     "h": "Real Racing Club de Santander",
-     "a": "Deportivo Alavés",
-     "mw": 5
-    },
-    {
-     "d": "2026-09-12 14:15",
-     "h": "CA Osasuna",
-     "a": "RCD Espanyol de Barcelona",
-     "mw": 5
-    },
-    {
-     "d": "2026-09-12 16:30",
-     "h": "Athletic Club",
-     "a": "Elche CF",
-     "mw": 5
-    },
-    {
-     "d": "2026-09-12 19:00",
-     "h": "Real Madrid CF",
-     "a": "Rayo Vallecano de Madrid",
-     "mw": 5
-    },
-    {
-     "d": "2026-09-13 12:00",
-     "h": "RC Celta de Vigo",
-     "a": "Málaga CF",
-     "mw": 5
-    },
-    {
-     "d": "2026-09-13 14:15",
-     "h": "Levante UD",
-     "a": "FC Barcelona",
-     "mw": 5
-    },
-    {
-     "d": "2026-09-13 16:30",
-     "h": "Getafe CF",
-     "a": "RC Deportivo La Coruña",
-     "mw": 5
-    },
-    {
-     "d": "2026-09-13 19:00",
-     "h": "Real Sociedad de Fútbol",
-     "a": "Club Atlético de Madrid",
-     "mw": 5
-    },
-    {
-     "d": "2026-09-14 19:00",
-     "h": "Villarreal CF",
-     "a": "Real Betis Balompié",
-     "mw": 5
-    },
-    {
-     "d": "2026-09-15 17:00",
+     "d": "2026-10-25 00:00",
      "h": "Rayo Vallecano de Madrid",
-     "a": "RCD Espanyol de Barcelona",
-     "mw": 6
+     "a": "Elche CF",
+     "mw": 10
     },
     {
-     "d": "2026-09-15 18:00",
+     "d": "2026-10-25 00:00",
      "h": "Deportivo Alavés",
-     "a": "Valencia CF",
-     "mw": 6
+     "a": "Málaga CF",
+     "mw": 10
+    },
+    {
+     "d": "2026-10-25 00:00",
+     "h": "Athletic Club",
+     "a": "Getafe CF",
+     "mw": 10
+    },
+    {
+     "d": "2026-10-25 00:00",
+     "h": "Sevilla FC",
+     "a": "CA Osasuna",
+     "mw": 10
+    },
+    {
+     "d": "2026-10-25 00:00",
+     "h": "Valencia CF",
+     "a": "Villarreal CF",
+     "mw": 10
+    },
+    {
+     "d": "2026-10-25 00:00",
+     "h": "FC Barcelona",
+     "a": "Real Madrid CF",
+     "mw": 10
+    },
+    {
+     "d": "2026-10-25 00:00",
+     "h": "Club Atlético de Madrid",
+     "a": "RC Deportivo La Coruña",
+     "mw": 10
+    },
+    {
+     "d": "2026-10-25 00:00",
+     "h": "RC Celta de Vigo",
+     "a": "Real Betis Balompié",
+     "mw": 10
+    },
+    {
+     "d": "2026-10-25 00:00",
+     "h": "Real Sociedad de Fútbol",
+     "a": "Levante UD",
+     "mw": 10
+    },
+    {
+     "d": "2026-10-25 00:00",
+     "h": "Real Racing Club de Santander",
+     "a": "RCD Espanyol de Barcelona",
+     "mw": 10
+    },
+    {
+     "d": "2026-11-01 00:00",
+     "h": "Real Betis Balompié",
+     "a": "Málaga CF",
+     "mw": 11
+    },
+    {
+     "d": "2026-11-01 00:00",
+     "h": "Villarreal CF",
+     "a": "RCD Espanyol de Barcelona",
+     "mw": 11
     }
    ],
-   "upcoming_updated": "fetched Friday 11 September 2026, 09:22 UTC"
+   "upcoming_updated": "fetched Sunday 13 September 2026, 22:20 UTC"
   },
   "bundesliga": {
    "name": "Bundesliga",
-   "table_updated": "fetched Friday 11 September 2026, 09:22 UTC",
+   "table_updated": "fetched Sunday 13 September 2026, 22:21 UTC",
    "table": [
     [
      1,
-     "FC Augsburg",
-     2,
-     2,
-     0,
-     0,
-     7,
-     1,
-     6,
-     6
-    ],
-    [
-     2,
      "SC Freiburg",
-     2,
-     2,
+     3,
+     3,
      0,
      0,
-     5,
+     10,
      1,
-     4,
-     6
+     9,
+     9
     ],
     [
-     3,
+     2,
      "Borussia Dortmund",
-     2,
-     2,
-     0,
-     0,
-     5,
-     2,
      3,
-     6
+     3,
+     0,
+     0,
+     8,
+     2,
+     6,
+     9
+    ],
+    [
+     3,
+     "FC Augsburg",
+     3,
+     2,
+     1,
+     0,
+     9,
+     3,
+     6,
+     7
     ],
     [
      4,
-     "SV 07 Elversberg",
+     "FC Bayern München",
+     3,
      2,
-     2,
-     0,
+     1,
      0,
      7,
-     5,
      2,
-     6
+     5,
+     7
     ],
     [
      5,
-     "1. FSV Mainz 05",
+     "RB Leipzig",
+     3,
      2,
-     1,
-     1,
      0,
-     5,
-     0,
-     5,
-     4
+     1,
+     9,
+     3,
+     6,
+     6
     ],
     [
      6,
-     "FC Bayern München",
+     "SV 07 Elversberg",
+     3,
      2,
-     1,
-     1,
      0,
-     5,
      1,
-     4,
-     4
+     8,
+     7,
+     1,
+     6
     ],
     [
      7,
      "Bayer 04 Leverkusen",
-     2,
-     1,
-     0,
-     1,
-     6,
      3,
+     1,
+     1,
+     1,
+     8,
+     5,
      3,
-     3
+     4
     ],
     [
      8,
-     "RB Leipzig",
-     2,
-     1,
-     0,
-     1,
-     4,
+     "1. FSV Mainz 05",
      3,
      1,
-     3
+     1,
+     1,
+     6,
+     3,
+     3,
+     4
     ],
     [
      9,
-     "VfB Stuttgart",
-     2,
+     "Eintracht Frankfurt",
+     3,
      1,
-     0,
      1,
-     5,
-     6,
+     1,
+     7,
+     8,
      -1,
-     3
+     4
     ],
     [
      10,
      "SV Werder Bremen",
-     2,
+     3,
+     1,
+     1,
+     1,
+     5,
+     6,
+     -1,
+     4
+    ],
+    [
+     11,
+     "FC Schalke 04",
+     3,
+     1,
+     1,
+     1,
+     3,
+     4,
+     -1,
+     4
+    ],
+    [
+     12,
+     "1. FC Köln",
+     3,
+     1,
+     1,
+     1,
+     5,
+     7,
+     -2,
+     4
+    ],
+    [
+     13,
+     "TSG 1899 Hoffenheim",
+     3,
      1,
      0,
-     1,
-     4,
-     5,
+     2,
+     6,
+     7,
      -1,
      3
     ],
     [
-     11,
-     "1. FC Köln",
-     2,
+     14,
+     "VfB Stuttgart",
+     3,
      1,
      0,
-     1,
-     4,
+     2,
      6,
+     8,
      -2,
      3
     ],
     [
-     12,
-     "SC Paderborn 07",
-     2,
-     0,
-     1,
-     1,
-     0,
-     1,
-     -1,
-     1
-    ],
-    [
-     13,
-     "Eintracht Frankfurt",
-     2,
-     0,
-     1,
-     1,
-     4,
-     7,
-     -3,
-     1
-    ],
-    [
-     14,
-     "FC Schalke 04",
-     2,
-     0,
-     1,
-     1,
-     0,
-     3,
-     -3,
-     1
-    ],
-    [
      15,
-     "1. FC Union Berlin",
-     2,
+     "SC Paderborn 07",
+     3,
      0,
      1,
-     1,
-     3,
-     7,
+     2,
+     0,
+     4,
      -4,
      1
     ],
     [
      16,
-     "TSG 1899 Hoffenheim",
-     2,
+     "1. FC Union Berlin",
+     3,
      0,
-     0,
+     1,
      2,
      4,
-     6,
-     -2,
-     0
+     10,
+     -6,
+     1
     ],
     [
      17,
      "Borussia Mönchengladbach",
-     2,
-     0,
-     0,
-     2,
      3,
-     7,
-     -4,
+     0,
+     0,
+     3,
+     3,
+     12,
+     -9,
      0
     ],
     [
      18,
      "Hamburger SV",
-     2,
+     3,
      0,
      0,
-     2,
+     3,
      0,
-     7,
-     -7,
+     12,
+     -12,
      0
     ]
    ],
@@ -5691,137 +5759,151 @@
        "a": "FC Augsburg"
       }
      ]
+    },
+    {
+     "mw": 3,
+     "matches": [
+      {
+       "d": "2026-09-11",
+       "h": "1. FC Union Berlin",
+       "hs": 1,
+       "as": 3,
+       "a": "FC Schalke 04"
+      },
+      {
+       "d": "2026-09-12",
+       "h": "TSG 1899 Hoffenheim",
+       "hs": 2,
+       "as": 1,
+       "a": "VfB Stuttgart"
+      },
+      {
+       "d": "2026-09-12",
+       "h": "Borussia Dortmund",
+       "hs": 3,
+       "as": 0,
+       "a": "SC Paderborn 07"
+      },
+      {
+       "d": "2026-09-12",
+       "h": "FC Augsburg",
+       "hs": 2,
+       "as": 2,
+       "a": "Bayer 04 Leverkusen"
+      },
+      {
+       "d": "2026-09-12",
+       "h": "1. FSV Mainz 05",
+       "hs": 1,
+       "as": 3,
+       "a": "Eintracht Frankfurt"
+      },
+      {
+       "d": "2026-09-12",
+       "h": "SC Freiburg",
+       "hs": 5,
+       "as": 0,
+       "a": "Borussia Mönchengladbach"
+      },
+      {
+       "d": "2026-09-12",
+       "h": "1. FC Köln",
+       "hs": 1,
+       "as": 1,
+       "a": "SV Werder Bremen"
+      },
+      {
+       "d": "2026-09-13",
+       "h": "RB Leipzig",
+       "hs": 5,
+       "as": 0,
+       "a": "Hamburger SV"
+      },
+      {
+       "d": "2026-09-13",
+       "h": "SV 07 Elversberg",
+       "hs": 1,
+       "as": 2,
+       "a": "FC Bayern München"
+      }
+     ]
     }
    ],
-   "results_updated": "fetched Friday 11 September 2026, 09:22 UTC",
+   "results_updated": "fetched Sunday 13 September 2026, 22:21 UTC",
    "scorers": [
     {
      "p": "Younes Ebnoutalib",
      "c": "Eintracht Frankfurt",
      "g": 3,
      "a": 1,
-     "pm": 2
+     "pm": 3
+    },
+    {
+     "p": "Patrik Schick",
+     "c": "Bayer 04 Leverkusen",
+     "g": 3,
+     "a": 1,
+     "pm": 3
     },
     {
      "p": "Yuito Suzuki",
      "c": "SC Freiburg",
      "g": 3,
      "a": null,
-     "pm": 2
+     "pm": 3
+    },
+    {
+     "p": "Igor Matanovic",
+     "c": "SC Freiburg",
+     "g": 3,
+     "a": 1,
+     "pm": 3
+    },
+    {
+     "p": "Michael Gregoritsch",
+     "c": "FC Augsburg",
+     "g": 3,
+     "a": null,
+     "pm": 3
+    },
+    {
+     "p": "Maurice Krattenmacher",
+     "c": "SV 07 Elversberg",
+     "g": 3,
+     "a": null,
+     "pm": 3
+    },
+    {
+     "p": "Phillip Tietz",
+     "c": "1. FSV Mainz 05",
+     "g": 3,
+     "a": null,
+     "pm": 3
     },
     {
      "p": "Josha Vagnoman",
      "c": "VfB Stuttgart",
      "g": 2,
      "a": 1,
-     "pm": 2
+     "pm": 3
     },
     {
      "p": "Ridle Baku",
      "c": "RB Leipzig",
      "g": 2,
      "a": null,
-     "pm": 2
+     "pm": 3
     },
     {
-     "p": "David Mokwa Ntusu",
-     "c": "SV 07 Elversberg",
+     "p": "Antonio Nusa",
+     "c": "RB Leipzig",
      "g": 2,
-     "a": null,
-     "pm": 2
-    },
-    {
-     "p": "Patrik Schick",
-     "c": "Bayer 04 Leverkusen",
-     "g": 2,
-     "a": 1,
-     "pm": 2
-    },
-    {
-     "p": "Thijs Dallinga",
-     "c": "1. FC Köln",
-     "g": 2,
-     "a": null,
-     "pm": 1
-    },
-    {
-     "p": "Sehrou Guirassy",
-     "c": "Borussia Dortmund",
-     "g": 2,
-     "a": 1,
-     "pm": 2
-    },
-    {
-     "p": "Hugo Bolin",
-     "c": "Borussia Mönchengladbach",
-     "g": 2,
-     "a": null,
-     "pm": 2
-    },
-    {
-     "p": "Maurice Krattenmacher",
-     "c": "SV 07 Elversberg",
-     "g": 2,
-     "a": null,
-     "pm": 2
+     "a": 2,
+     "pm": 3
     }
    ],
-   "scorers_updated": "fetched Friday 11 September 2026, 09:22 UTC",
+   "scorers_updated": "fetched Sunday 13 September 2026, 22:21 UTC",
    "upcoming": [
-    {
-     "d": "2026-09-11 18:30",
-     "h": "1. FC Union Berlin",
-     "a": "FC Schalke 04",
-     "mw": 3
-    },
-    {
-     "d": "2026-09-12 13:30",
-     "h": "TSG 1899 Hoffenheim",
-     "a": "VfB Stuttgart",
-     "mw": 3
-    },
-    {
-     "d": "2026-09-12 13:30",
-     "h": "Borussia Dortmund",
-     "a": "SC Paderborn 07",
-     "mw": 3
-    },
-    {
-     "d": "2026-09-12 13:30",
-     "h": "FC Augsburg",
-     "a": "Bayer 04 Leverkusen",
-     "mw": 3
-    },
-    {
-     "d": "2026-09-12 13:30",
-     "h": "1. FSV Mainz 05",
-     "a": "Eintracht Frankfurt",
-     "mw": 3
-    },
-    {
-     "d": "2026-09-12 13:30",
-     "h": "SC Freiburg",
-     "a": "Borussia Mönchengladbach",
-     "mw": 3
-    },
-    {
-     "d": "2026-09-12 16:30",
-     "h": "1. FC Köln",
-     "a": "SV Werder Bremen",
-     "mw": 3
-    },
-    {
-     "d": "2026-09-13 13:30",
-     "h": "RB Leipzig",
-     "a": "Hamburger SV",
-     "mw": 3
-    },
-    {
-     "d": "2026-09-13 15:30",
-     "h": "SV 07 Elversberg",
-     "a": "FC Bayern München",
-     "mw": 3
-    },
     {
      "d": "2026-09-18 18:30",
      "h": "FC Bayern München",
@@ -5839,14 +5921,80 @@
      "h": "Borussia Mönchengladbach",
      "a": "1. FSV Mainz 05",
      "mw": 4
+    },
+    {
+     "d": "2026-09-19 13:30",
+     "h": "SV Werder Bremen",
+     "a": "FC Augsburg",
+     "mw": 4
+    },
+    {
+     "d": "2026-09-19 13:30",
+     "h": "Eintracht Frankfurt",
+     "a": "SC Freiburg",
+     "mw": 4
+    },
+    {
+     "d": "2026-09-19 16:30",
+     "h": "VfB Stuttgart",
+     "a": "Borussia Dortmund",
+     "mw": 4
+    },
+    {
+     "d": "2026-09-20 13:30",
+     "h": "Bayer 04 Leverkusen",
+     "a": "RB Leipzig",
+     "mw": 4
+    },
+    {
+     "d": "2026-09-20 15:30",
+     "h": "FC Schalke 04",
+     "a": "SV 07 Elversberg",
+     "mw": 4
+    },
+    {
+     "d": "2026-09-20 17:30",
+     "h": "SC Paderborn 07",
+     "a": "TSG 1899 Hoffenheim",
+     "mw": 4
+    },
+    {
+     "d": "2026-10-09 18:30",
+     "h": "Borussia Dortmund",
+     "a": "SV Werder Bremen",
+     "mw": 5
+    },
+    {
+     "d": "2026-10-10 13:30",
+     "h": "1. FSV Mainz 05",
+     "a": "Bayer 04 Leverkusen",
+     "mw": 5
+    },
+    {
+     "d": "2026-10-10 13:30",
+     "h": "SC Paderborn 07",
+     "a": "VfB Stuttgart",
+     "mw": 5
     }
    ],
-   "upcoming_updated": "fetched Friday 11 September 2026, 09:22 UTC"
+   "upcoming_updated": "fetched Sunday 13 September 2026, 22:21 UTC"
   },
   "serie-a": {
    "table": [
     [
      1,
+     "SS Lazio",
+     4,
+     3,
+     1,
+     0,
+     6,
+     3,
+     3,
+     10
+    ],
+    [
+     2,
      "AS Roma",
      3,
      3,
@@ -5858,7 +6006,7 @@
      9
     ],
     [
-     2,
+     3,
      "FC Internazionale Milano",
      3,
      3,
@@ -5870,19 +6018,31 @@
      9
     ],
     [
-     3,
-     "SS Lazio",
-     3,
-     3,
-     0,
-     0,
      4,
-     1,
+     "Cagliari Calcio",
+     4,
      3,
+     0,
+     1,
+     4,
+     2,
+     2,
      9
     ],
     [
+     5,
+     "AC Milan",
      4,
+     2,
+     2,
+     0,
+     7,
+     4,
+     3,
+     8
+    ],
+    [
+     6,
      "Como 1907",
      3,
      2,
@@ -5894,67 +6054,79 @@
      7
     ],
     [
-     5,
-     "AC Milan",
-     3,
-     2,
-     1,
-     0,
-     5,
-     2,
-     3,
-     7
-    ],
-    [
-     6,
-     "Juventus FC",
-     3,
-     2,
-     1,
-     0,
-     4,
-     1,
-     3,
-     7
-    ],
-    [
      7,
      "Frosinone Calcio",
-     3,
+     4,
      2,
-     0,
      1,
-     6,
+     1,
+     7,
+     4,
      3,
-     3,
-     6
+     7
     ],
     [
      8,
-     "Atalanta BC",
-     3,
-     2,
-     0,
-     1,
+     "Juventus FC",
      4,
-     3,
+     2,
      1,
-     6
+     1,
+     6,
+     4,
+     2,
+     7
     ],
     [
      9,
-     "Cagliari Calcio",
-     3,
+     "US Sassuolo Calcio",
+     4,
+     2,
+     1,
+     1,
+     8,
+     7,
+     1,
+     7
+    ],
+    [
+     10,
+     "SSC Napoli",
+     4,
      2,
      0,
-     1,
      2,
-     1,
+     6,
+     5,
      1,
      6
     ],
     [
-     10,
+     11,
+     "Atalanta BC",
+     4,
+     2,
+     0,
+     2,
+     5,
+     5,
+     0,
+     6
+    ],
+    [
+     12,
+     "US Lecce",
+     4,
+     2,
+     0,
+     2,
+     5,
+     7,
+     -2,
+     6
+    ],
+    [
+     13,
      "Udinese Calcio",
      3,
      1,
@@ -5966,31 +6138,7 @@
      4
     ],
     [
-     10,
-     "US Sassuolo Calcio",
-     3,
-     1,
-     1,
-     1,
-     5,
-     5,
-     0,
-     4
-    ],
-    [
-     12,
-     "SSC Napoli",
-     3,
-     1,
-     0,
-     2,
-     5,
-     5,
-     0,
-     3
-    ],
-    [
-     13,
+     14,
      "Torino FC",
      3,
      1,
@@ -6002,31 +6150,31 @@
      3
     ],
     [
-     14,
-     "US Lecce",
-     3,
+     15,
+     "ACF Fiorentina",
+     4,
      1,
      0,
-     2,
-     2,
+     3,
      5,
-     -3,
+     11,
+     -6,
      3
     ],
     [
-     15,
+     16,
      "Bologna FC 1909",
-     3,
+     4,
      0,
      1,
+     3,
      2,
-     2,
-     4,
-     -2,
+     5,
+     -3,
      1
     ],
     [
-     16,
+     17,
      "Parma Calcio 1913",
      3,
      0,
@@ -6038,55 +6186,43 @@
      1
     ],
     [
-     17,
+     18,
      "AC Monza",
-     3,
+     4,
      0,
      1,
-     2,
-     4,
-     8,
-     -4,
-     1
-    ],
-    [
-     18,
-     "Venezia FC",
      3,
-     0,
-     0,
-     3,
-     2,
-     7,
+     6,
+     11,
      -5,
-     0
+     1
     ],
     [
      19,
      "Genoa CFC",
-     3,
+     4,
      0,
-     0,
-     3,
      1,
-     7,
+     3,
+     2,
+     8,
      -6,
-     0
+     1
     ],
     [
      20,
-     "ACF Fiorentina",
-     3,
+     "Venezia FC",
+     4,
      0,
      0,
-     3,
-     1,
-     9,
-     -8,
+     4,
+     4,
+     11,
+     -7,
      0
     ]
    ],
-   "table_updated": "fetched Friday 11 September 2026, 09:22 UTC",
+   "table_updated": "fetched Sunday 13 September 2026, 22:20 UTC",
    "results": [
     {
      "mw": 1,
@@ -6312,9 +6448,63 @@
        "a": "SS Lazio"
       }
      ]
+    },
+    {
+     "mw": 4,
+     "matches": [
+      {
+       "d": "2026-09-11",
+       "h": "Venezia FC",
+       "hs": 2,
+       "as": 4,
+       "a": "ACF Fiorentina"
+      },
+      {
+       "d": "2026-09-12",
+       "h": "Genoa CFC",
+       "hs": 1,
+       "as": 1,
+       "a": "Frosinone Calcio"
+      },
+      {
+       "d": "2026-09-12",
+       "h": "SS Lazio",
+       "hs": 2,
+       "as": 2,
+       "a": "AC Milan"
+      },
+      {
+       "d": "2026-09-12",
+       "h": "Atalanta BC",
+       "hs": 1,
+       "as": 2,
+       "a": "Cagliari Calcio"
+      },
+      {
+       "d": "2026-09-13",
+       "h": "US Lecce",
+       "hs": 3,
+       "as": 2,
+       "a": "AC Monza"
+      },
+      {
+       "d": "2026-09-13",
+       "h": "SSC Napoli",
+       "hs": 1,
+       "as": 0,
+       "a": "Bologna FC 1909"
+      },
+      {
+       "d": "2026-09-13",
+       "h": "US Sassuolo Calcio",
+       "hs": 3,
+       "as": 2,
+       "a": "Juventus FC"
+      }
+     ]
     }
    ],
-   "results_updated": "fetched Friday 11 September 2026, 09:22 UTC",
+   "results_updated": "fetched Sunday 13 September 2026, 22:20 UTC",
    "scorers": [
     {
      "p": "Donyell Malen",
@@ -6328,14 +6518,21 @@
      "c": "Frosinone Calcio",
      "g": 4,
      "a": null,
-     "pm": 3
+     "pm": 4
     },
     {
      "p": "Davide Frattesi",
      "c": "SS Lazio",
      "g": 3,
      "a": null,
-     "pm": 3
+     "pm": 4
+    },
+    {
+     "p": "Franco Mastantuono",
+     "c": "ACF Fiorentina",
+     "g": 3,
+     "a": null,
+     "pm": 4
     },
     {
      "p": "Hassane Kamara",
@@ -6363,74 +6560,25 @@
      "c": "AC Monza",
      "g": 2,
      "a": null,
-     "pm": 2
+     "pm": 3
+    },
+    {
+     "p": "Tiago Gabriel",
+     "c": "US Lecce",
+     "g": 2,
+     "a": null,
+     "pm": 4
     },
     {
      "p": "Alphadjo Cisse",
      "c": "AC Milan",
      "g": 2,
      "a": null,
-     "pm": 3
-    },
-    {
-     "p": "Che Adams",
-     "c": "Torino FC",
-     "g": 2,
-     "a": null,
-     "pm": 3
-    },
-    {
-     "p": "Martin Baturina",
-     "c": "Como 1907",
-     "g": 2,
-     "a": 1,
-     "pm": 3
+     "pm": 4
     }
    ],
-   "scorers_updated": "fetched Friday 11 September 2026, 09:22 UTC",
+   "scorers_updated": "fetched Sunday 13 September 2026, 22:21 UTC",
    "upcoming": [
-    {
-     "d": "2026-09-11 18:45",
-     "h": "Venezia FC",
-     "a": "ACF Fiorentina",
-     "mw": 4
-    },
-    {
-     "d": "2026-09-12 13:00",
-     "h": "Genoa CFC",
-     "a": "Frosinone Calcio",
-     "mw": 4
-    },
-    {
-     "d": "2026-09-12 16:00",
-     "h": "SS Lazio",
-     "a": "AC Milan",
-     "mw": 4
-    },
-    {
-     "d": "2026-09-12 18:45",
-     "h": "Atalanta BC",
-     "a": "Cagliari Calcio",
-     "mw": 4
-    },
-    {
-     "d": "2026-09-13 13:00",
-     "h": "US Lecce",
-     "a": "AC Monza",
-     "mw": 4
-    },
-    {
-     "d": "2026-09-13 16:00",
-     "h": "SSC Napoli",
-     "a": "Bologna FC 1909",
-     "mw": 4
-    },
-    {
-     "d": "2026-09-13 18:45",
-     "h": "US Sassuolo Calcio",
-     "a": "Juventus FC",
-     "mw": 4
-    },
     {
      "d": "2026-09-14 16:30",
      "h": "Como 1907",
@@ -6460,230 +6608,272 @@
      "h": "Bologna FC 1909",
      "a": "Torino FC",
      "mw": 5
+    },
+    {
+     "d": "2026-09-19 13:00",
+     "h": "Udinese Calcio",
+     "a": "Cagliari Calcio",
+     "mw": 5
+    },
+    {
+     "d": "2026-09-19 16:00",
+     "h": "AS Roma",
+     "a": "FC Internazionale Milano",
+     "mw": 5
+    },
+    {
+     "d": "2026-09-19 18:45",
+     "h": "Venezia FC",
+     "a": "SS Lazio",
+     "mw": 5
+    },
+    {
+     "d": "2026-09-20 10:30",
+     "h": "ACF Fiorentina",
+     "a": "SSC Napoli",
+     "mw": 5
+    },
+    {
+     "d": "2026-09-20 13:00",
+     "h": "Frosinone Calcio",
+     "a": "Como 1907",
+     "mw": 5
+    },
+    {
+     "d": "2026-09-20 13:00",
+     "h": "Parma Calcio 1913",
+     "a": "Genoa CFC",
+     "mw": 5
+    },
+    {
+     "d": "2026-09-20 16:00",
+     "h": "Juventus FC",
+     "a": "Atalanta BC",
+     "mw": 5
     }
    ],
-   "upcoming_updated": "fetched Friday 11 September 2026, 09:22 UTC"
+   "upcoming_updated": "fetched Sunday 13 September 2026, 22:20 UTC"
   },
   "ligue-1": {
    "table": [
     [
      1,
-     "AS Monaco FC",
-     3,
-     3,
-     0,
-     0,
-     5,
-     1,
-     4,
-     9
-    ],
-    [
-     2,
-     "Olympique Lyonnais",
-     3,
-     2,
-     1,
-     0,
-     6,
-     2,
-     4,
-     7
-    ],
-    [
-     2,
-     "Paris FC",
-     3,
-     2,
-     1,
-     0,
-     6,
-     2,
-     4,
-     7
-    ],
-    [
-     4,
      "Lille OSC",
+     4,
      3,
-     2,
-     1,
-     0,
-     5,
-     2,
-     3,
-     7
-    ],
-    [
-     5,
-     "Stade Rennais FC 1901",
-     3,
-     2,
      1,
      0,
      7,
-     5,
      2,
-     7
+     5,
+     10
+    ],
+    [
+     2,
+     "AS Monaco FC",
+     4,
+     3,
+     1,
+     0,
+     6,
+     2,
+     4,
+     10
+    ],
+    [
+     3,
+     "Stade Rennais FC 1901",
+     4,
+     3,
+     1,
+     0,
+     8,
+     5,
+     3,
+     10
+    ],
+    [
+     4,
+     "Olympique Lyonnais",
+     4,
+     2,
+     2,
+     0,
+     6,
+     2,
+     4,
+     8
+    ],
+    [
+     4,
+     "Paris FC",
+     4,
+     2,
+     2,
+     0,
+     6,
+     2,
+     4,
+     8
     ],
     [
      6,
      "RC Strasbourg Alsace",
-     3,
+     4,
      2,
-     0,
      1,
+     1,
+     9,
      8,
-     7,
      1,
-     6
+     7
+    ],
+    [
+     7,
+     "Paris Saint-Germain FC",
+     4,
+     1,
+     2,
+     1,
+     6,
+     6,
+     0,
+     5
     ],
     [
      7,
      "Stade Brestois 29",
-     3,
+     4,
      1,
      2,
-     0,
-     6,
-     5,
      1,
+     6,
+     6,
+     0,
      5
     ],
     [
-     8,
-     "FC Lorient",
-     3,
-     1,
-     1,
-     1,
-     2,
-     2,
-     0,
-     4
-    ],
-    [
      9,
-     "ES Troyes AC",
-     3,
+     "FC Lorient",
+     4,
      1,
-     1,
+     2,
      1,
      4,
-     7,
-     -3,
-     4
-    ],
-    [
-     10,
-     "Olympique de Marseille",
-     3,
-     1,
+     4,
      0,
-     2,
-     6,
-     5,
-     1,
-     3
+     5
     ],
     [
      10,
      "Racing Club de Lens",
-     3,
+     4,
      1,
-     0,
+     1,
      2,
-     6,
-     5,
+     8,
+     7,
      1,
-     3
+     4
+    ],
+    [
+     11,
+     "Angers SCO",
+     4,
+     1,
+     1,
+     2,
+     4,
+     5,
+     -1,
+     4
     ],
     [
      12,
-     "Angers SCO",
-     3,
+     "ES Troyes AC",
+     4,
      1,
-     0,
+     1,
      2,
      4,
-     5,
+     9,
+     -5,
+     4
+    ],
+    [
+     13,
+     "Olympique de Marseille",
+     4,
+     1,
+     0,
+     3,
+     6,
+     6,
+     0,
+     3
+    ],
+    [
+     14,
+     "Le Mans FC",
+     4,
+     0,
+     3,
+     1,
+     7,
+     8,
      -1,
      3
     ],
     [
-     13,
-     "Le Mans FC",
-     3,
-     0,
-     2,
-     1,
-     5,
-     6,
-     -1,
-     2
-    ],
-    [
-     13,
-     "Paris Saint-Germain FC",
-     3,
-     0,
-     2,
-     1,
-     5,
-     6,
-     -1,
-     2
-    ],
-    [
      15,
-     "OGC Nice",
-     3,
-     0,
-     2,
-     1,
-     1,
+     "AJ Auxerre",
      4,
-     -3,
-     2
+     1,
+     0,
+     3,
+     5,
+     11,
+     -6,
+     3
     ],
     [
      16,
      "Le Havre AC",
-     3,
+     4,
      0,
-     1,
+     2,
      2,
      2,
      4,
      -2,
-     1
+     2
     ],
     [
      17,
      "Toulouse FC",
-     3,
+     4,
      0,
-     1,
      2,
      2,
-     5,
+     4,
+     7,
      -3,
-     1
+     2
     ],
     [
      18,
-     "AJ Auxerre",
-     3,
-     0,
-     0,
-     3,
+     "OGC Nice",
      4,
-     11,
-     -7,
-     0
+     0,
+     2,
+     2,
+     1,
+     5,
+     -4,
+     2
     ]
    ],
-   "table_updated": "fetched Friday 11 September 2026, 09:22 UTC",
+   "table_updated": "fetched Sunday 13 September 2026, 22:21 UTC",
    "results": [
     {
      "mw": 1,
@@ -6888,137 +7078,151 @@
        "a": "Paris FC"
       }
      ]
+    },
+    {
+     "mw": 4,
+     "matches": [
+      {
+       "d": "2026-09-11",
+       "h": "Stade Rennais FC 1901",
+       "hs": 1,
+       "as": 0,
+       "a": "Olympique de Marseille"
+      },
+      {
+       "d": "2026-09-12",
+       "h": "RC Strasbourg Alsace",
+       "hs": 1,
+       "as": 1,
+       "a": "AS Monaco FC"
+      },
+      {
+       "d": "2026-09-12",
+       "h": "FC Lorient",
+       "hs": 2,
+       "as": 2,
+       "a": "Toulouse FC"
+      },
+      {
+       "d": "2026-09-12",
+       "h": "AJ Auxerre",
+       "hs": 1,
+       "as": 0,
+       "a": "OGC Nice"
+      },
+      {
+       "d": "2026-09-12",
+       "h": "Le Havre AC",
+       "hs": 0,
+       "as": 0,
+       "a": "Angers SCO"
+      },
+      {
+       "d": "2026-09-12",
+       "h": "Paris FC",
+       "hs": 0,
+       "as": 0,
+       "a": "Olympique Lyonnais"
+      },
+      {
+       "d": "2026-09-13",
+       "h": "Lille OSC",
+       "hs": 2,
+       "as": 0,
+       "a": "ES Troyes AC"
+      },
+      {
+       "d": "2026-09-13",
+       "h": "Le Mans FC",
+       "hs": 2,
+       "as": 2,
+       "a": "Racing Club de Lens"
+      },
+      {
+       "d": "2026-09-13",
+       "h": "Stade Brestois 29",
+       "hs": 0,
+       "as": 1,
+       "a": "Paris Saint-Germain FC"
+      }
+     ]
     }
    ],
-   "results_updated": "fetched Friday 11 September 2026, 09:23 UTC",
+   "results_updated": "fetched Sunday 13 September 2026, 22:21 UTC",
    "scorers": [
     {
      "p": "Amine Gouiri",
      "c": "Olympique de Marseille",
      "g": 4,
      "a": null,
-     "pm": 3
+     "pm": 4
     },
     {
      "p": "Kamory Doumbia",
      "c": "Stade Brestois 29",
      "g": 4,
      "a": 1,
-     "pm": 3
+     "pm": 4
     },
     {
      "p": "Lassine Sinayoko",
      "c": "Paris FC",
      "g": 4,
      "a": null,
-     "pm": 3
+     "pm": 4
     },
     {
      "p": "Florian Thauvin",
      "c": "Racing Club de Lens",
      "g": 3,
-     "a": 1,
-     "pm": 3
+     "a": 2,
+     "pm": 4
     },
     {
      "p": "Louis Mafouta",
      "c": "Le Mans FC",
      "g": 3,
      "a": null,
-     "pm": 3
+     "pm": 4
     },
     {
      "p": "Esteban Lepaul",
      "c": "Stade Rennais FC 1901",
      "g": 3,
      "a": null,
-     "pm": 3
+     "pm": 4
     },
     {
      "p": "Ferrán Torres",
      "c": "Paris Saint-Germain FC",
-     "g": 2,
+     "g": 3,
      "a": null,
-     "pm": 3
-    },
-    {
-     "p": "Marquinhos",
-     "c": "Paris Saint-Germain FC",
-     "g": 2,
-     "a": null,
-     "pm": 3
-    },
-    {
-     "p": "Gessime Yassine",
-     "c": "RC Strasbourg Alsace",
-     "g": 2,
-     "a": 1,
-     "pm": 3
+     "pm": 4
     },
     {
      "p": "Paris Brunner",
      "c": "AS Monaco FC",
+     "g": 3,
+     "a": null,
+     "pm": 4
+    },
+    {
+     "p": "Franjo Ivanovic",
+     "c": "Racing Club de Lens",
      "g": 2,
      "a": null,
-     "pm": 3
+     "pm": 4
+    },
+    {
+     "p": "Tiago Santos",
+     "c": "Lille OSC",
+     "g": 2,
+     "a": null,
+     "pm": 4
     }
    ],
-   "scorers_updated": "fetched Friday 11 September 2026, 09:23 UTC",
+   "scorers_updated": "fetched Sunday 13 September 2026, 22:21 UTC",
    "upcoming": [
-    {
-     "d": "2026-09-11 18:45",
-     "h": "Stade Rennais FC 1901",
-     "a": "Olympique de Marseille",
-     "mw": 4
-    },
-    {
-     "d": "2026-09-12 15:15",
-     "h": "RC Strasbourg Alsace",
-     "a": "AS Monaco FC",
-     "mw": 4
-    },
-    {
-     "d": "2026-09-12 18:45",
-     "h": "FC Lorient",
-     "a": "Toulouse FC",
-     "mw": 4
-    },
-    {
-     "d": "2026-09-12 18:45",
-     "h": "AJ Auxerre",
-     "a": "OGC Nice",
-     "mw": 4
-    },
-    {
-     "d": "2026-09-12 18:45",
-     "h": "Le Havre AC",
-     "a": "Angers SCO",
-     "mw": 4
-    },
-    {
-     "d": "2026-09-12 18:45",
-     "h": "Paris FC",
-     "a": "Olympique Lyonnais",
-     "mw": 4
-    },
-    {
-     "d": "2026-09-13 13:00",
-     "h": "Lille OSC",
-     "a": "ES Troyes AC",
-     "mw": 4
-    },
-    {
-     "d": "2026-09-13 15:15",
-     "h": "Le Mans FC",
-     "a": "Racing Club de Lens",
-     "mw": 4
-    },
-    {
-     "d": "2026-09-13 18:45",
-     "h": "Stade Brestois 29",
-     "a": "Paris Saint-Germain FC",
-     "mw": 4
-    },
     {
      "d": "2026-09-18 18:45",
      "h": "AS Monaco FC",
@@ -7036,9 +7240,63 @@
      "h": "Le Mans FC",
      "a": "FC Lorient",
      "mw": 5
+    },
+    {
+     "d": "2026-09-19 18:45",
+     "h": "Toulouse FC",
+     "a": "Le Havre AC",
+     "mw": 5
+    },
+    {
+     "d": "2026-09-19 18:45",
+     "h": "Angers SCO",
+     "a": "ES Troyes AC",
+     "mw": 5
+    },
+    {
+     "d": "2026-09-19 18:45",
+     "h": "Olympique Lyonnais",
+     "a": "Stade Rennais FC 1901",
+     "mw": 5
+    },
+    {
+     "d": "2026-09-20 13:00",
+     "h": "AJ Auxerre",
+     "a": "Stade Brestois 29",
+     "mw": 5
+    },
+    {
+     "d": "2026-09-20 15:15",
+     "h": "OGC Nice",
+     "a": "Lille OSC",
+     "mw": 5
+    },
+    {
+     "d": "2026-09-20 18:45",
+     "h": "Olympique de Marseille",
+     "a": "Paris Saint-Germain FC",
+     "mw": 5
+    },
+    {
+     "d": "2026-10-09 18:45",
+     "h": "Racing Club de Lens",
+     "a": "Olympique Lyonnais",
+     "mw": 6
+    },
+    {
+     "d": "2026-10-10 15:15",
+     "h": "Lille OSC",
+     "a": "Le Havre AC",
+     "mw": 6
+    },
+    {
+     "d": "2026-10-10 18:45",
+     "h": "Stade Brestois 29",
+     "a": "Angers SCO",
+     "mw": 6
     }
    ],
-   "upcoming_updated": "fetched Friday 11 September 2026, 09:23 UTC"
+   "upcoming_updated": "fetched Sunday 13 September 2026, 22:21 UTC"
   },
   "champions-league": {
    "table": [
@@ -7475,7 +7733,7 @@
      0
     ]
    ],
-   "table_updated": "fetched Friday 11 September 2026, 09:23 UTC",
+   "table_updated": "fetched Sunday 13 September 2026, 22:21 UTC",
    "results": [
     {
      "mw": 1,
@@ -7609,7 +7867,7 @@
      ]
     }
    ],
-   "results_updated": "fetched Friday 11 September 2026, 09:23 UTC",
+   "results_updated": "fetched Sunday 13 September 2026, 22:21 UTC",
    "upcoming": [
     {
      "d": "2026-10-13 16:45",
@@ -7684,7 +7942,7 @@
      "mw": 2
     }
    ],
-   "upcoming_updated": "fetched Friday 11 September 2026, 09:23 UTC",
+   "upcoming_updated": "fetched Sunday 13 September 2026, 22:22 UTC",
    "scorers": [
     {
      "p": "Ermedin Demirovic",
@@ -7757,7 +8015,7 @@
      "pm": 1
     }
    ],
-   "scorers_updated": "fetched Friday 11 September 2026, 09:23 UTC"
+   "scorers_updated": "fetched Sunday 13 September 2026, 22:22 UTC"
   }
  }
 }

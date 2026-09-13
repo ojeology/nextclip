@@ -818,3 +818,10 @@ Chain: 922 pages / 99,128 internal links OK; validator ok; allowlist v26 (912 ro
 - OWNER: sports has news, movies uncovered, make a roadmap, start working. Recon: SPORTS IS A FULL PROPERTY (~90pp: 5 leagues tables/fixtures/results/top-scorers/transfers, FPL, explainers) — needs DATA REFRESH = blocked on owner's football-data.org API key (no fabricated scores law). ENT calendar SHIPPED: /entertainment/movie-calendar-2026-27/ (explainers) — Sep-Dec 2026 + 2027 confident dates only (popverse/ew/dexerto cross-check; conflicting/stale entries skipped; Dec 18 Doomsday-vs-Dune-3 collision called out; dated disclaimer; links: streaming guides NG+USUK, licensing, pick-tonight, browse — all verified pre-ship).
 - Allowlist auto-synced via ENT sitemap (985 routes). Chain: 997pp / 107,243 links / ok:true.
 - ROADMAP file delivered to owner (BRYME-ROADMAP.md): ads state + Monetag dashboard steps, readiness verdict, sports plan (needs key), ENT plan, cadence, owner actions.
+
+## Batch 61 — 15 Sep 2026 (SPORTS PIPELINE RUN + Monetag v2 code-side caps; incident #6 recovered)
+- OWNER: GSC sitemap submitted; football key = FALLBACK_TOKEN in sports_update_agent.py (owner-authorized); Monetag dashboard has NO capping option.
+- RAN sports_update_agent.py: 6/6 leagues (generated 2026-09-13 22:24 UTC; PL: Arsenal 12/12 after 4 games; throttling self-managed; squads fetched). Rebuild renders fresh data across sports pages.
+- MONETAG v2: allow() localStorage caps in monetag.js — vignette 1/12h (bryme-mt-vig), zone2 4/24h (bryme-mt-z2); capped = script never injected. Carriers ?v=2 (2,364-file ripple = carrier lines on every carrying page). Owner file bands honored in code.
+- INCIDENT #6 (same root, my explicit cwd error): ship call ran at /home/user → accident repo pushed garbage 0f09324b to origin/main AGAIN (docs append failed-first this time, saved the repo from mixing). Recovered: /home/user/.git deleted; nextclip .git rebuilt (#29) reset 8c34cf51; verified 2,364-file diff = legitimate batch-61 footprint; committed real batch; force-push.
+- Chain: 997pp / 107,241 links / ok:true.
