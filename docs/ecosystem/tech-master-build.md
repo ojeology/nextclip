@@ -825,3 +825,10 @@ Chain: 922 pages / 99,128 internal links OK; validator ok; allowlist v26 (912 ro
 - MONETAG v2: allow() localStorage caps in monetag.js — vignette 1/12h (bryme-mt-vig), zone2 4/24h (bryme-mt-z2); capped = script never injected. Carriers ?v=2 (2,364-file ripple = carrier lines on every carrying page). Owner file bands honored in code.
 - INCIDENT #6 (same root, my explicit cwd error): ship call ran at /home/user → accident repo pushed garbage 0f09324b to origin/main AGAIN (docs append failed-first this time, saved the repo from mixing). Recovered: /home/user/.git deleted; nextclip .git rebuilt (#29) reset 8c34cf51; verified 2,364-file diff = legitimate batch-61 footprint; committed real batch; force-push.
 - Chain: 997pp / 107,241 links / ok:true.
+
+## Batch 62 — 15 Sep 2026 (two evergreen sports explainers)
+- New: /sports/how-football-loans-work/ (FIFA loan rules: 6-loan international cap since 2024-25, phased 8-7-6; two-year loans banned; sub-loans banned; U21 + club-trained exempt — facts verified via Athletic/iNews FIFA regs reporting) + /sports/how-the-fa-cup-works (replays scrapped from 2024-25, FA decision April 2024, final moved to penultimate PL weekend — verified via Independent/Yahoo; winner gets UEL league-phase spot).
+- Collision check clean (no loan/cup pages existed); entries appended to sports_explainers_data.py via extend-block tail anchor (ast-verified); 5 internal link targets pre-verified.
+- Chain: 999pp / 107,432 links / ok:true / allowlist v26 987 routes. Commit 4a6f728c push MATCH; live 200 x2 + hub cross-links verified; IndexNow pinged.
+- INCIDENT #7: .git drop #31 between turns (sandbox habit). Recovery text-book: init-fetch-reset 00dc241c (b61), audited 17-file dirty = pure b62 footprint, committed real batch. Zero losses.
+- Pings after b61 completed this turn: 23 more league pages (all 6 leagues' tables/fixtures/results/scorers/hubs), including corrected La Liga hub slug (laliga, not la-liga — the wrong slug 404s but IndexNow 200s it anyway; existence-check-first law reinforced).
