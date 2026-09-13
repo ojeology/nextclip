@@ -104,6 +104,34 @@
   }
 
   var tools = {
+        "tax-estimator": function () {
+      var out = q("te-out");
+      if (!out) return;
+      function n(id) { var e = q(id); return e ? parseFloat(e.value) || 0 : 0; }
+      function money(v) { return "$" + v.toLocaleString(undefined, {maximumFractionDigits: 0}); }
+      function calc() {
+        var income = n("te-income"), expenses = n("te-expenses"),
+            rate = Math.min(90, Math.max(0, n("te-rate"))), already = n("te-already");
+        if (!income) { out.innerHTML = "<p class='tool-note'>Enter what you expect to be paid this year.</p>"; return; }
+        var base = Math.max(0, income - expenses);
+        var setAside = base * rate / 100;
+        var remaining = Math.max(0, setAside - already);
+        var takeHome = base - setAside;
+        out.innerHTML =
+          "<div class='rc-grid'>" +
+          "<div class='rc-cell'><b>" + money(setAside) + "</b><span>to set aside at " + rate + "%</span></div>" +
+          "<div class='rc-cell'><b>" + money(remaining) + "</b><span>still to put away</span></div>" +
+          "<div class='rc-cell'><b>" + money(setAside / 4) + "</b><span>per quarter if you pay quarterly</span></div>" +
+          "<div class='rc-cell'><b>" + money(takeHome) + "</b><span>left after set-aside and expenses</span></div>" +
+          "</div>" +
+          "<p class='tool-note'><b>How this works.</b> Your taxable base is what clients pay you (" + money(income) + ") minus deductible business expenses (" + money(expenses) + "). At a " + rate + "% set-aside that is <b>" + money(setAside) + "</b> — about " + money(setAside / 12) + " a month if you save monthly. Common bands on your base: 20% ≈ " + money(base * 0.20) + " · 25% ≈ " + money(base * 0.25) + " · 30% ≈ " + money(base * 0.30) + " · 35% ≈ " + money(base * 0.35) + ".</p>" +
+          "<p class='tool-note'><b>Honest limits.</b> A planning estimate, not tax advice. Rules, deductions and rates differ by country — confirm your rate with your tax authority or an accountant, and revisit whenever your income jumps. Pair it with the <a href='/tools/freelance-rate-calculator/'>rate calculator</a>, which grosses your target up by this same percentage.</p>";
+      }
+      ["te-income", "te-expenses", "te-rate", "te-already"].forEach(function (id) {
+        var e = q(id); if (e) e.addEventListener("input", calc);
+      });
+      calc();
+    },
     "freelance-agreement-builder": function () {
       var SYM = { USD: "$", GBP: "\u00A3", EUR: "\u20AC", CAD: "CA$", AUD: "A$", NGN: "\u20A6", KES: "KSh ", ZAR: "R", GHS: "GH\u20B5", INR: "\u20B9" };
       var sheet = document.getElementById("agr-sheet");

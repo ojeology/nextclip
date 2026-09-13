@@ -218,5 +218,10 @@
     "what": "Ten rule-based checks — the ones a commissioning editor runs in the first ten seconds: length, sentence load, evidence of clips, the clear ask, filler, passive constructions, exclamation discipline — applied to your pasted pitch, each verdict with a one-line fix.",
     "howto": "Paste your pitch, add the subject line and the publication's name, and press check. Green passes, amber is a note, red means fix before sending. Adjust, re-check, send.",
     "why": "Most pitches die on rules no editor states: too long, no clips, no ask, a hedged voice. The guide to [how to write a pitch](/guides/how-to-write-a-pitch/) teaches the structure; this tool is the ten-second edit before you hit send. It is deliberately rule-based rather than generative — no AI writes for you, because a pitch must be in your voice and because publications increasingly reject machine-written submissions."
+  },
+  "tax-estimator": {
+    "what": "It turns one number writers avoid - what do I owe? - into a plan: your taxable base after deductible expenses, the total to set aside at your chosen rate, the per-quarter amount if you pay quarterly, and what actually stays yours.",
+    "howto": "Enter what clients will pay you this year, your deductible business expenses, a set-aside percentage (25% is a common starting point) and anything you have already put away. Update it whenever a big payment lands.",
+    "why": "Freelance income arrives gross - no employer withheld anything. The writers who get hurt are not the ones who owe tax; they are the ones who spent it. A fixed set-aside rate, applied the moment payment lands, removes the cliff entirely."
   }
 }

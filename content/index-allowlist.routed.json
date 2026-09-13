@@ -792,6 +792,7 @@
     "/writers/tools/sentence-counter/",
     "/writers/tools/sentence-length-checker/",
     "/writers/tools/syllable-counter/",
+    "/writers/tools/tax-estimator/",
     "/writers/tools/text-cleaner/",
     "/writers/tools/text-sorter/",
     "/writers/tools/text-to-pdf/",

@@ -319,6 +319,13 @@
       "short": "Paste your pitch. Ten editor-eye checks, run privately in your browser.",
       "category": "work",
       "description": "A pre-submission sanity check for writers: length, sentence load, evidence of clips, the clear ask, filler and passive markers — ten rule-based checks with a fix for each. Nothing is uploaded, and no AI writes a word for you."
+    },
+    {
+      "id": "tax-estimator",
+      "title": "Freelance tax set-aside estimator",
+      "short": "Know what to put aside from every payment before tax is due.",
+      "category": "work",
+      "description": "Enter expected income and deductible expenses, get the set-aside total, the per-quarter amount and what actually stays yours. A planning estimate, not tax advice."
     }
   ]
 }
