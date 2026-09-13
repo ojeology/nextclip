@@ -642,3 +642,9 @@ Chain: 922 pages / 99,128 internal links OK; validator ok; allowlist v26 (912 ro
 - Wiring: owning section; related_map ×3; knowledge-shelf nav row ("Repair costs, estimated"); internal links to existing pages only.
 - Chain: 978 pages / 105,005 internal links OK; allowlist v26 (966); validators pass; ads = v7 single-format.
 - Queue remaining: moving-cost estimator → interactive seasonal checklist → then Tech/Writers tools per directive §3.
+
+## Batch 43 — 12 Sep 2026 (v8 FULL-STACK layout by owner directive "everything possible, not annoying")
+- LAYOUT v8: ① TOP native container (file #2 position, single instance) ② MID 300x250 before 3rd h2 ③ RAIL fixed ≥1420px ④ SOCIAL BAR once/page (owner directive re-added; dashboard least-intrusive settings advised; owner click-test governs; removed again if misbehaves). ANTI-ANNOYANCE: every unit labelled + TRUE self-collapse when unfilled (loader scripts never count) → no placeholders possible; nothing overlays content; no diagnostics (permanently gone).
+- Carriers bumped ?v=8 (component URL versioning; browser caches forced fresh). jsdom proof: top-native ×1, mid-banner, rail-in-body, social ×1, zero debug bytes.
+- Chain: 978 pages / 105,005 links OK; validators pass; 3 twins byte-identical.
+- GSC "couldn't fetch" (only fitness processed): server-side verified perfect (Googlebot UA → 200 + application/xml). Pattern = GSC's async fetcher backlog; fitness simply got fetched first. Guidance: property must be URL-prefix https://bryme.onrender.com exactly; resubmit the 6 pending sitemaps one at a time; expect days; the Pages report is the truth. Nothing server-side remains to fix.
