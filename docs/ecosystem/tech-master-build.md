@@ -732,3 +732,10 @@ Chain: 922 pages / 99,128 internal links OK; validator ok; allowlist v26 (912 ro
 - v14: mid 300×250 slot starts display:none and only REVEALS when a real ad iframe exists in its inner document; still self-removes if never filled → unfilled zones are invisible (no empty "Advertisement" boxes, even briefly). Top zone behavior untouched (frozen).
 - NOTE: edit_file partial-apply incident — 2 of 3 edits acked but not written; caught by restamp assert (would have hidden filled ads forever); re-applied via python replaces with ASCII anchors + in-file verification. LAW: after edit_file on load-bearing files, verify markers in the SAME command that uses them.
 - jsdom proof 7/7 (top frozen+once+above main; mid hidden+in-content; nothing below footer; social once). Chain: 985pp / 105,693 links / 973 routes / ok:true; carriers ?v=14 (944pp + ad-test).
+
+## Batch 54 — 14 Sep 2026 (income tracker — 46th writing tool)
+- TOOL: /tools/income-tracker/ — add entry (client, amount, date auto-today, status paid/invoiced/pending); year paid total + count, this-month, avg per payment, invoiced+pending outstanding; top-3 clients by paid + concentration flag (>50% single client); 25%-set-aside hint linking the tax estimator; per-row delete; CSV export (Blob download); clear-all with confirm; localStorage "bryme-income-tracker" (private, browser-only).
+- Wiring: tools.json 46, sections pair "Track your writing income", tool-content (what/howto/why), render_tool block, hub-tools.js "income-tracker" handler; ALL hub-tools tags ?v=2→?v=3 (24); nav "All 46 tools"; allowlist /tools/income-tracker/ (974 routes).
+- jsdom proof: add 400+150 paid + 900 invoiced → totals 550 ✓ avg 275 ✓ outstanding 900 ✓ top clients ✓ set-aside hint $138 + estimator link ✓ 3 rows ✓ localStorage persisted ✓ delete removes 900 ✓ export/clear buttons ✓. Chain: 986 pages / 105,818 links / ok:true.
+- (NameError hiccup mid-wiring: ast not imported in one heredoc — write had landed before the parse; verified + continued.)
+- Writers queue remaining: structure quiz only.

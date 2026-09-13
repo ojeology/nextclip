@@ -132,6 +132,82 @@
       });
       calc();
     },
+        "income-tracker": function () {
+      var out = q("it-out"), list = q("it-list"), add = q("it-add");
+      if (!out || !add) return;
+      var KEY = "bryme-income-tracker";
+      var state = [];
+      try { state = JSON.parse(localStorage.getItem(KEY) || "[]") || []; } catch (e) { state = []; }
+      function save() { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {} }
+      function money(v) { return "$" + (+v).toLocaleString(undefined, {maximumFractionDigits: 0}); }
+      function esc(x) { var d = document.createElement("div"); d.textContent = x == null ? "" : String(x); return d.innerHTML; }
+      function yearOf(iso) { return (iso || "").slice(0, 4) === String(new Date().getFullYear()); }
+
+      function calc() {
+        var yr = state.filter(function (r) { return yearOf(r.d); });
+        var paid = yr.filter(function (r) { return r.s === "paid"; });
+        var outstanding = yr.filter(function (r) { return r.s !== "paid"; });
+        var tot = paid.reduce(function (a, r) { return a + (+r.a || 0); }, 0);
+        var outs = outstanding.reduce(function (a, r) { return a + (+r.a || 0); }, 0);
+        var avg = paid.length ? tot / paid.length : 0;
+        var byClient = {};
+        paid.forEach(function (r) { byClient[r.c || "Unnamed client"] = (byClient[r.c || "Unnamed client"] || 0) + (+r.a || 0); });
+        var top = Object.keys(byClient).sort(function (a, b) { return byClient[b] - byClient[a]; });
+        var month = String(new Date().getMonth() + 1).padStart(2, "0");
+        var mTot = paid.filter(function (r) { return (r.d || "").slice(5, 7) === month; }).reduce(function (a, r) { return a + (+r.a || 0); }, 0);
+        var h = "<div class='rc-grid'>" +
+          "<div class='rc-cell'><b>" + money(tot) + "</b><span>paid this year (" + paid.length + " payments)</span></div>" +
+          "<div class='rc-cell'><b>" + money(mTot) + "</b><span>this month</span></div>" +
+          "<div class='rc-cell'><b>" + (avg ? "$" + avg.toFixed(0) : "—") + "</b><span>average per payment</span></div>" +
+          "<div class='rc-cell'><b>" + money(outs) + "</b><span>invoiced + pending</span></div>" +
+          "</div>";
+        if (tot > 0) h += "<p class='tool-note'>At a 25% set-aside that is <b>" + money(tot * 0.25) + "</b> for tax - check your own rate with the <a href='/tools/tax-estimator/'>tax set-aside estimator</a>.</p>";
+        if (top.length) {
+          var dep = byClient[top[0]] / tot;
+          h += "<p class='tool-note'><b>Top clients (paid):</b> " + top.slice(0, 3).map(function (c) { return esc(c) + " " + money(byClient[c]); }).join(" · ") + (top.length > 1 && dep > 0.5 ? "<br><b>Concentration flag:</b> " + Math.round(dep * 100) + "% of paid income comes from one client - worth diversifying." : "") + "</p>";
+        }
+        out.innerHTML = h;
+        var rows = state.slice().reverse().slice(0, 8).map(function (r, i) {
+          var idx = state.length - 1 - i;
+          return "<tr><td>" + esc(r.c || "Unnamed") + "</td><td>" + money(r.a) + "</td><td>" + esc(r.d || "") + "</td><td>" + esc(r.s) + "</td><td><button type='button' class='it-del' data-i='" + idx + "'>×</button></td></tr>";
+        });
+        var more = state.length > 8 ? "<p class='tool-note'>Showing the latest 8 of " + state.length + " entries - export for the full history.</p>" : "";
+        list.innerHTML = state.length ? "<table class='it-table'><tr><th>Client</th><th>Amount</th><th>Date</th><th>Status</th><th></th></tr>" + rows.join("") + "</table>" + more : "";
+      }
+
+      add.addEventListener("click", function () {
+        var c = q("it-client"), a = q("it-amount"), d = q("it-date"), st = q("it-status");
+        var amt = parseFloat(a && a.value);
+        if (!amt || amt <= 0) { out.innerHTML = "<p class='tool-note'>Enter an amount first.</p>"; return; }
+        state.push({ c: c && c.value.trim() || "", a: amt, d: d && d.value || new Date().toISOString().slice(0, 10), s: st && st.value || "paid" });
+        save();
+        if (c) c.value = ""; if (a) a.value = "";
+        calc();
+      });
+      list.addEventListener("click", function (e) {
+        if (!e.target || !e.target.classList.contains("it-del")) return;
+        state.splice(+e.target.getAttribute("data-i"), 1);
+        save(); calc();
+      });
+      var ex = q("it-export");
+      if (ex) ex.addEventListener("click", function () {
+        var csv = "client,amount,date,status\n" + state.map(function (r) { return '"' + (r.c || "").replace(/"/g, '""') + '",' + r.a + ',' + r.d + ',' + r.s; }).join("\n");
+        var b = new Blob([csv], { type: "text/csv" });
+        var u = URL.createObjectURL(b);
+        var link = document.createElement("a");
+        link.href = u; link.download = "writing-income.csv";
+        document.body.appendChild(link); link.click(); link.remove();
+        setTimeout(function () { URL.revokeObjectURL(u); }, 2000);
+      });
+      var cl = q("it-clear");
+      if (cl) cl.addEventListener("click", function () {
+        if (!state.length) return;
+        if (confirm("Delete all " + state.length + " entries? Export first if you need them.")) { state = []; save(); calc(); }
+      });
+      var dt = q("it-date");
+      if (dt && !dt.value) dt.value = new Date().toISOString().slice(0, 10);
+      calc();
+    },
     "freelance-agreement-builder": function () {
       var SYM = { USD: "$", GBP: "\u00A3", EUR: "\u20AC", CAD: "CA$", AUD: "A$", NGN: "\u20A6", KES: "KSh ", ZAR: "R", GHS: "GH\u20B5", INR: "\u20B9" };
       var sheet = document.getElementById("agr-sheet");

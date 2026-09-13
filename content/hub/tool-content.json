@@ -223,5 +223,10 @@
     "what": "It turns one number writers avoid - what do I owe? - into a plan: your taxable base after deductible expenses, the total to set aside at your chosen rate, the per-quarter amount if you pay quarterly, and what actually stays yours.",
     "howto": "Enter what clients will pay you this year, your deductible business expenses, a set-aside percentage (25% is a common starting point) and anything you have already put away. Update it whenever a big payment lands.",
     "why": "Freelance income arrives gross - no employer withheld anything. The writers who get hurt are not the ones who owe tax; they are the ones who spent it. A fixed set-aside rate, applied the moment payment lands, removes the cliff entirely."
+  },
+  "income-tracker": {
+    "what": "A private running ledger for your writing money: log every payment, invoice and pending fee, and it keeps the year's total, this month, your average per piece, and which clients actually pay (and how much of your income depends on each).",
+    "howto": "After any payment lands - or you send an invoice - add the client, amount, date and status. Export to CSV whenever you want a backup or your accountant's favourite file. Everything stays in your browser; nothing is uploaded.",
+    "why": "Writers who track every payment spot the patterns that change businesses: which client is quietly becoming 60% of your income, which months run thin, and exactly how much to set aside before tax. What gets measured gets negotiated."
   }
 }

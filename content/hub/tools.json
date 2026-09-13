@@ -326,6 +326,13 @@
       "short": "Know what to put aside from every payment before tax is due.",
       "category": "work",
       "description": "Enter expected income and deductible expenses, get the set-aside total, the per-quarter amount and what actually stays yours. A planning estimate, not tax advice."
+    },
+    {
+      "id": "income-tracker",
+      "title": "Freelance income tracker",
+      "short": "Log payments as they land and see the year, the month and who actually pays.",
+      "category": "work",
+      "description": "Record every payment, invoice and pending fee. Totals for the year and month, average per piece, your top clients, a tax set-aside hint and a CSV export - all stored privately in your browser."
     }
   ]
 }

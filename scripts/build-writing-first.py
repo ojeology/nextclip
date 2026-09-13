@@ -259,7 +259,7 @@ def nav(current: str = "") -> str:
             ("/tools/freelance-rate-calculator/", "Rate calculator"), ("/tools/freelance-agreement-builder/", "Agreement builder"),
             ("/tools/invoice-generator/", "Invoice generator"), ("/tools/late-payment-letter-builder/", "Late-payment letters"),
             ("/tools/pitch-checker/", "Pitch checker"), ("/studio/", "The Writing Studio"),
-            ("/templates/", "Templates"), ("/checklists/", "Checklists"), ("/tools/", "All 45 tools")]),
+            ("/templates/", "Templates"), ("/checklists/", "Checklists"), ("/tools/", "All 46 tools")]),
         ("read", "/essays/", "Intelligence", [
             ("/essays/", "Essays"), ("/intelligence/", "Writing intelligence"),
             ("/read/", "All articles"), ("/glossary/", "Glossary"), ("/compare/", "Compare formats")]),
