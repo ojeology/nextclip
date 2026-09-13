@@ -44,7 +44,7 @@ AI_BODY = """<div class="prose">
 
 <h2 id="job">Which assistant for which job</h2>
 <ul>
-<li><b>Writing and code:</b> Claude\u2019s editorial quality and long-document handling keep winning comparisons; ChatGPT is the broader all-rounder if you also want images and data analysis in one place.</li>
+<li><b>Writing and code:</b> Claude\u2019s editorial quality and long-document handling keep winning comparisons; ChatGPT is the broader all-rounder if you also want images and data analysis in one place. &#8212; the three-way breakdown lives in <a href="/tech/chatgpt-vs-claude-vs-gemini/">ChatGPT vs Claude vs Gemini</a></li>
 <li><b>Research where sources matter:</b> Perplexity \u2014 the citations are the product. For getting <em>your</em> site into those answers, that\u2019s a different game (<a href="/tech/how-to-get-cited-by-ai-search/">getting cited by AI search</a>).</li>
 <li><b>Google-centric work:</b> Gemini \u2014 and its $4.99 AI Plus is the sensible first paid experiment for anyone.</li>
 <li><b>Microsoft 365 shops:</b> Copilot \u2014 but check the licence requirement before assuming the $20 buys everything.</li>
