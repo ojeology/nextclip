@@ -3160,6 +3160,10 @@ def fitness_pages():
     related_map["caffeine-side-effects"] = [("benefits-of-sleeping-well", "The benefits of sleeping well"),
                                    ("benefits-of-morning-water", "Morning water"),
                                    ("how-to-start-working-out", "Starting from zero")]
+    related_map["30-day-core-programme"] = [("bodyweight-moves-that-matter", "The eight moves"),
+                                   ("how-to-plank", "The plank, honestly"),
+                                   ("30-day-plank-challenge", "The plank challenge"),
+                                   ("rest-days-and-recovery", "Rest days and recovery")]
     related_map["30-day-plank-challenge"] = [("how-to-plank", "The plank, honestly"),
                                    ("bodyweight-moves-that-matter", "The eight moves"),
                                    ("30-day-weight-loss-programme", "The 30-day programme")]
@@ -3238,7 +3242,10 @@ def fitness_pages():
                  '<span class="meta">Fuel</span></a></li>'
                  '<li><a href="/benefits-of-walking-after-meals/"><span><b>The walk after meals</b>'
                  "<small>Steadier blood sugar, comfortable digestion, quiet steps - ten to fifteen easy minutes.</small></span>"
-                 '<span class="meta">Move</span></a></li>')
+                 '<span class="meta">Move</span></a></li>'
+                 '<li><a href="/30-day-core-programme/"><span><b>The 30-day core programme</b>'
+                 "<small>Dead bugs, bridges, bird dogs and planks: four weeks for the deep midsection - no crunches required.</small></span>"
+                 '<span class="meta">Program</span></a></li>')
     index_body = (head("fitness", "Practical fitness \u2014 no miracles, no medical claims.")
         + '<main id="main"><div class="wrap">'
         + '<section class="cover"><p class="kicker">BRYME Fitness \u00b7 start where you are</p>'

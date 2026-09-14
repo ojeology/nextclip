@@ -238,3 +238,18 @@ FIT_MORE.extend([
 <h2>The keepable version</h2>
 <p>Ten to fifteen easy minutes after the biggest meal of the day (for most people, dinner), within the first half hour or so. Pair it with something you already do - the evening call, the podcast, the dog. For the morning half of the day, <a href="/benefits-of-morning-water/">the water habit</a> starts things; for the training tier above walking, <a href="/bodyweight-moves-that-matter/">the eight moves</a> and <a href="/how-to-start-working-out/">starting from zero</a> are the doors - and <a href="/30-day-weight-loss-programme/">the 30-day programme</a> folds the after-meal walk straight into week one.</p>"""),
 ])
+
+# ---- batch 69: third programme - 30-day core. Same laws: form over reps,
+# approximate numbers, disclaimers, no spot-reduction myths. ----
+FIT_MORE.extend([
+("30-day-core-programme", "guide",
+"The 30-day core programme (no crunches required)",
+"Four weeks of dead bugs, bridges, bird dogs and planks - the deep-midsection work that carries shopping, posture and every other exercise.",
+"""<p><b>First, the honest frame:</b> general information, not medical advice, and results are not guaranteed. This month builds the deep midsection muscles - the ones that hold your posture, protect your back under real loads, and make every other movement stronger. It is not a spot-reduction plan: no exercise chooses where your body loses fat, whatever the adverts say.</p>
+<h2>Why these four moves</h2>
+<p>The programme runs on four patterns, all from <a href="/bodyweight-moves-that-matter/">the eight moves</a> and <a href="/how-to-plank/">the plank family</a>: the <b>dead bug</b> (deep stomach control, the safest start there is), the <b>glute bridge</b> (the back side of the core - the part crunching ignores), the <b>bird dog</b> (steady spine while limbs move - the skill your back actually uses), and the <b>plank</b> (bracing under load). Crunches are optional and honestly overrated: they train a small slice of the midsection through a motion most backs see rarely.</p>
+<h2>The four weeks</h2>
+<p>Three sessions a week, about ten minutes each, on non-consecutive days. <b>Week 1:</b> two rounds - dead bug 6 per side, bird dog 5 per side, glute bridge 10, plank 20 seconds. <b>Week 2:</b> three rounds; plank to 30 seconds. <b>Week 3:</b> three rounds, slow everything down (the dead bug and bird dog get harder the slower you go - that is the point); plank to 35-40 seconds or a side plank per side. <b>Week 4:</b> three rounds plus one: bridge 15, plank 45+ in honest form, and add a 30-second carry if you have anything heavy and safe to hold (a loaded bag works). Breathe through every rep - <a href="/breathing-during-exercise/">held breath is the first form failure</a>.</p>
+<h2>What to expect and where it fits</h2>
+<p>What a month of honest core work reliably buys: less back ache from sitting, sturdier posture, and stronger sets of everything else - squats, carries, even the <a href="/30-day-plank-challenge/">plank challenge</a> and the <a href="/30-day-weight-loss-programme/">weight-loss programme</a> both ride on this foundation. What it does not buy: visible abs on a deadline (that conversation is food, sleep and months - see <a href="/what-fruit-does-to-your-body/">the fruit page</a> and <a href="/benefits-of-sleeping-well/">the sleep page</a>). Stop for pain, not effort; get a professional's sign-off if you have a back condition. When the month ends, repeat harder or fold the work into the eight-move sessions as <a href="/how-progressive-overload-works/">overload</a> marches on.</p>"""),
+])
