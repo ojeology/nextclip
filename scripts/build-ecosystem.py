@@ -3592,6 +3592,8 @@ HOME_SLUG_SECT.update({s: "fix" for s in (
 
 HOME_SLUG_SECT.update({s: "fix" for s in (
     "interior-painting-mistakes", "humidity-and-paint", "painting-over-damp")})
+HOME_SLUG_SECT.update({s: "fix" for s in ("paint-calculator", "why-is-my-home-doing-that")})
+HOME_SLUG_SECT.update({s: "owning" for s in ("renter-friendly-fixes",)})
 HOME_SLUG_SECT.update({s: "understand" for s in (
     "electrical-fire-warning-signs", "outlet-overloading-danger")})
 
@@ -3651,6 +3653,8 @@ def _home_nav():
     def mh(slug):
         return ("/home/mistakes/" + slug + "/") if slug in _mset else ("/home/" + slug + "/")
     fix = [("HEAD", "The fix shelf"), ("/home/fix/", "All fixes"),
+           ("/home/why-is-my-home-doing-that/", "Symptom finder"),
+           ("/home/paint-calculator/", "Paint calculator"),
            ("/home/how-to-fix-a-dripping-tap/", "Dripping tap"),
            ("/home/how-to-unblock-a-toilet/", "Unblock a toilet"),
            ("/home/how-to-fix-a-slow-draining-sink/", "Slow-draining sink"),
@@ -3678,6 +3682,7 @@ def _home_nav():
                   ("/home/condensation-vs-rising-vs-penetrating-damp/", "The three damp types"),
                   ("/home/building-regs-vs-planning-permission/", "Building regs vs planning"),
                   ("/home/renter-vs-owner-repairs/", "Renter vs owner repairs"),
+                  ("/home/renter-friendly-fixes/", "Renter-friendly fixes"),
                   ("/home/part-p-explained/", "Part P, explained (UK)"),
                   ("/home/us-home-permits/", "US home permits"),
                   ("/home/uk-us-plumber-rules/", "UK vs US plumber rules"),
@@ -3778,6 +3783,8 @@ def home_pages():
     HOME_ARTICLES.extend((s2, ti, dek, b) for (s2, _k, ti, dek, b) in home_roadmap11_data.HOME_ROADMAP_11 if s2 not in _have)
     import home_roadmap12_data
     HOME_ARTICLES.extend((s2, ti, dek, b) for (s2, _k, ti, dek, b) in home_roadmap12_data.HOME_ROADMAP_12 if s2 not in _have)
+    import home_roadmap13_data
+    HOME_ARTICLES.extend((s2, ti, dek, b) for (s2, _k, ti, dek, b) in home_roadmap13_data.HOME_ROADMAP_13 if s2 not in _have)
     import home_insurance_data
     HOME_ARTICLES.extend((s2, ti, dek, b) for (s2, _ti2, ti, dek, b) in
                          [(g[0], None, g[2], g[3], g[4]) for g in home_insurance_data.HOME_INSURANCE] if s2 not in _have)
@@ -4194,6 +4201,15 @@ def home_pages():
         "moving-costs-explained": [("rent-vs-buy-explained", "Rent vs buy, the math"),
                                    ("home-repair-costs-explained", "Repair costs, estimated"),
                                    ("someday-maintenance-cost", "The someday-cost rule")],
+        "paint-calculator": [("interior-painting-mistakes", "Painting mistakes to skip"),
+                             ("painting-over-damp", "Painting over damp"),
+                             ("humidity-and-paint", "Humidity and paint")],
+        "renter-friendly-fixes": [("renter-vs-owner-repairs", "Renter vs owner repairs"),
+                                  ("renter-security", "Renter security"),
+                                  ("condensation-ventilation-that-works", "Damp and mould basics")],
+        "why-is-my-home-doing-that": [("how-to-fix-a-dripping-tap", "The dripping tap"),
+                                      ("why-does-my-circuit-breaker-keep-tripping", "The tripping breaker"),
+                                      ("emergency-repair-fund", "The emergency repair fund")],
     }
     for slug, ti, dek, b in HOME_ARTICLES:
         key = HOME_SLUG_SECT[slug]
