@@ -2936,6 +2936,15 @@ def fitness_pages():
                                                      ("30-day-walking-plan", "The 30-day walking plan")]
     related_map["rest-days-and-recovery"].append(("sleep-and-exercise-performance", "Sleep: the recovery tool"))
     related_map["strength-training-for-beginners"].append(("how-much-protein-do-you-need", "Protein, honestly"))
+    related_map["how-to-plank"] = [("bodyweight-moves-that-matter", "The eight moves"),
+                                   ("workout-at-home-no-equipment", "Home workout, no equipment"),
+                                   ("how-to-warm-up", "The honest warm-up")]
+    related_map["bodyweight-moves-that-matter"] = [("how-to-plank", "The plank, honestly"),
+                                                   ("how-progressive-overload-works", "Progressive overload"),
+                                                   ("workout-at-home-no-equipment", "Ready-made home sessions")]
+    related_map["what-fruit-does-to-your-body"] = [("how-much-protein-do-you-need", "Protein, honestly"),
+                                                   ("bodyweight-moves-that-matter", "The eight moves"),
+                                                   ("30-day-walking-plan", "The 30-day walking plan")]
     arts = [art(s, ti, dek, b, ART_SOURCES[s], related_map[s])
             for (s, ti, dek, b) in FIT_ARTICLES]
 

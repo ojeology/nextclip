@@ -103,6 +103,21 @@ CATALOGUE_SHELVES = [
  ("The Black Book", "2023", "Nollywood", "Lagos conspiracy thriller — the Nigerian shelf's modern calling card.", ["nigerian-thrillers-worth-your-time"]),
  ("October 1", "2014", "Nollywood", "Period procedural — colonial Nigeria on the trail of a killer.", ["nigerian-thrillers-worth-your-time"]),
  ("Brotherhood", "2022", "Nollywood", "Twin brothers on opposite sides of the law — action with family stakes.", ["nigerian-thrillers-worth-your-time"]),
+ ("The Figurine", "2009", "Film", "The supernatural-uncertainty landmark of new Nigerian cinema \u2014 where the desk says start when you want mystery over gore.", ["nigerian-thrillers-worth-your-time"]),
+ ("Gangs of Lagos", "2022", "Film", "Crime pressure in Isale Eko \u2014 the streamer-era Nollywood blockbuster that proved the appetite.", ["nigerian-thrillers-worth-your-time"]),
+ ("The Lunchbox", "2013", "Film", "A mistaken tiffin, a quiet connection \u2014 the gentle entry point the Indian shelf keeps recommending.", ["indian-cinema-first-five"]),
+ ("Kumbalangi Nights", "2019", "Film", "Four brothers, one coastal house, zero villains \u2014 the different route the Indian five argues for.", ["indian-cinema-first-five"]),
+]),
+("action", "Action &amp; franchises",
+"Gunfire, gears and getaway cars \u2014 and the order guides that make the long series make sense.",
+[
+ ("Mission: Impossible", "1996", "Film", "The one that started the spy franchise \u2014 the vault scene still holds up, and the desk has the whole run in order.", ["mission-impossible-watch-order"]),
+ ("Mission: Impossible - Fallout", "2018", "Film", "The consensus peak of the series: the best stunts and the best argument for watching them in order.", ["mission-impossible-watch-order"]),
+ ("Casino Royale", "2006", "Film", "The Bond restart \u2014 the film the start-with-Bond guide calls the actual beginning.", ["where-to-start-with-james-bond"]),
+ ("Fast Five", "2011", "Film", "Where the street-racing series became the heist family \u2014 the pivot point of the watch order.", ["fast-and-furious-watch-order"]),
+ ("The Fast and the Furious: Tokyo Drift", "2006", "Film", "The entry everyone skips and the watch order defends: drift culture and a late-series payoff.", ["fast-and-furious-watch-order"]),
+ ("Aliens", "1986", "Film", "The haunted house in space became a war film \u2014 the sequels debate starts at the franchise-in-order piece.", ["alien-franchise-in-order"]),
+ ("Mad Max: Fury Road", "2015", "Film", "Two hours of pure momentum \u2014 the group-night pick when nobody can agree on plot.", ["best-films-for-a-group"]),
 ]),
 ]
 
@@ -116,6 +131,9 @@ CATALOGUE_SHELF_FOOTERS = {
  "spectacle": [("movies-like-deadpool-and-wolverine", "Movies like Deadpool & Wolverine"), ("5-movies-that-broke-the-internet", "Five that broke the internet")],
  "tv": [("why-prison-break-season-1-is-still-one-of-the-best-tv-seasons", "Prison Break S1, defended"), ("breaking-bad-two-seasons-opinion", "Breaking Bad at two seasons"), ("10-shows-like-alice-in-borderland-you-should-watch-next", "Shows like Alice in Borderland")],
  "world": [("indian-cinema-first-five", "Indian cinema: first five"), ("nigerian-thrillers-worth-your-time", "Nigerian thrillers"), ("best-streaming-apps-nigeria", "Where to stream in Nigeria")],
+ "action": [("mission-impossible-watch-order", "Mission: Impossible in order"),
+            ("where-to-start-with-james-bond", "Where to start with Bond"),
+            ("fast-and-furious-watch-order", "Fast &amp; Furious in order")],
 }
 
 # ---- quick-picks layer (batch 23): desk-curated recommendation starters ----
