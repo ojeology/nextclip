@@ -3160,6 +3160,15 @@ def fitness_pages():
     related_map["caffeine-side-effects"] = [("benefits-of-sleeping-well", "The benefits of sleeping well"),
                                    ("benefits-of-morning-water", "Morning water"),
                                    ("how-to-start-working-out", "Starting from zero")]
+    related_map["30-day-plank-challenge"] = [("how-to-plank", "The plank, honestly"),
+                                   ("bodyweight-moves-that-matter", "The eight moves"),
+                                   ("30-day-weight-loss-programme", "The 30-day programme")]
+    related_map["how-much-water-to-drink-a-day"] = [("benefits-of-morning-water", "Morning water"),
+                                   ("what-fruit-does-to-your-body", "What fruit does"),
+                                   ("caffeine-side-effects", "Caffeine, honestly")]
+    related_map["benefits-of-walking-after-meals"] = [("30-day-walking-plan", "The walking plan"),
+                                   ("benefits-of-morning-water", "Morning water"),
+                                   ("30-day-weight-loss-programme", "The 30-day programme")]
     related_map["30-day-weight-loss-programme"] = [("30-day-walking-plan", "The walking plan"),
                                    ("bodyweight-moves-that-matter", "The eight moves"),
                                    ("what-fruit-does-to-your-body", "What fruit does"),
@@ -3220,7 +3229,16 @@ def fitness_pages():
                  '<span class="meta">Fuel</span></a></li>'
                  '<li><a href="/30-day-weight-loss-programme/"><span><b>The 30-day weight-loss programme</b>'
                  "<small>Four weeks of walking, simple strength and food habits - results not guaranteed, structure guaranteed.</small></span>"
-                 '<span class="meta">Program</span></a></li>')
+                 '<span class="meta">Program</span></a></li>'
+                 '<li><a href="/30-day-plank-challenge/"><span><b>The 30-day plank challenge</b>'
+                 "<small>Twenty honest seconds to a strong minute: four weeks, rest days built in, no fake promises.</small></span>"
+                 '<span class="meta">Program</span></a></li>'
+                 '<li><a href="/how-much-water-to-drink-a-day/"><span><b>How much water a day?</b>'
+                 "<small>Where eight glasses came from, what guidance says, and why thirst works.</small></span>"
+                 '<span class="meta">Fuel</span></a></li>'
+                 '<li><a href="/benefits-of-walking-after-meals/"><span><b>The walk after meals</b>'
+                 "<small>Steadier blood sugar, comfortable digestion, quiet steps - ten to fifteen easy minutes.</small></span>"
+                 '<span class="meta">Move</span></a></li>')
     index_body = (head("fitness", "Practical fitness \u2014 no miracles, no medical claims.")
         + '<main id="main"><div class="wrap">'
         + '<section class="cover"><p class="kicker">BRYME Fitness \u00b7 start where you are</p>'

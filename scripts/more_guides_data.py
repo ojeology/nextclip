@@ -196,3 +196,45 @@ FIT_MORE.extend([
 <h2>What to expect, honestly</h2>
 <p>Commonly cited safe guidance puts steady loss around a quarter to half a kilo a week - some lose faster, some slower, and some weeks the scale moves not at all while inches change. <b>No result is guaranteed.</b> Sleep (<a href="/benefits-of-sleeping-well/">the sleep page</a>) and stress move the same numbers as food does. If the month ends and you keep two habits, the programme worked; if you want a next month, repeat the structure at your current level. Stop any exercise that causes pain, and get medical sign-off when in doubt.</p>"""),
 ])
+
+# ---- batch 68: fitness hub round 2 (plank challenge programme, daily water,
+# walking after meals). Same honesty laws: approximate numbers labelled,
+# general-information disclaimers, programme page carries not-guaranteed. ----
+FIT_MORE.extend([
+("30-day-plank-challenge", "guide",
+"The 30-day plank challenge (form first, clock second)",
+"A four-week progression from twenty honest seconds to a strong minute-plus, with rest days, harder variants, and no fake promises about abs.",
+"""<p><b>Read this first:</b> general information, not medical advice, and results are not guaranteed - a stronger midsection is the realistic prize here, not visible abs (those depend far more on what is covering them, see the honest note at the end). Stop if anything hurts rather than burns.</p>
+<h2>The rules of the month</h2>
+<p>Five days on, one rest day, repeat - roughly. Hold the plank with the best form you can keep for the whole time; the moment the hips sag or the breath stops, the set ends, even if the clock does not agree. That is the entire challenge, and it is why <a href="/how-to-plank/">the plank page</a> is required reading before day one.</p>
+<h2>The four weeks</h2>
+<p><b>Week 1 - the floor.</b> Two sets of 20-25 honest seconds a day (knee plank is a perfectly honourable starting point). <b>Week 2 - volume.</b> Three sets of 30 seconds; add 5 seconds where form allows. <b>Week 3 - variety.</b> Three sets of 35-40 seconds, one of them a <b>side plank</b> each side, one with <b>shoulder taps</b>. <b>Week 4 - the step up.</b> Three to four sets of 45-60 seconds, finishing with a long-lever set (elbows further forward) if the line stays straight. Miss a day? Resume, do not double up - <a href="/rest-days-and-recovery/">rest is part of the programme</a>, not a failure of it.</p>
+<h2>How to progress when the month ends</h2>
+<p>The same ladder that built the month: more time, then a harder variant, then more sets - one change at a time, the <a href="/how-progressive-overload-works/">progressive overload</a> principle applied to a hold. When all of it feels easy, the plank has done its job as a standalone challenge and becomes one player in fuller sessions: <a href="/bodyweight-moves-that-matter/">the eight moves</a> assemble it into whole-body work, and <a href="/30-day-weight-loss-programme/">the 30-day programme</a> wraps it in the wider month.</p>
+<h2>The honest note about abs</h2>
+<p>Planks strengthen the muscles; visibility depends mostly on the layer over them - which is food, sleep and months, not thirty days of holds (<a href="/what-fruit-does-to-your-body/">the fruit page</a> and <a href="/benefits-of-sleeping-well/">the sleep page</a> carry their share of that work). What thirty honest days reliably buys: a midsection that holds under real loads, better posture under fatigue, and the proof that you keep promises to yourself. All three are worth the month.</p>"""),
+
+("how-much-water-to-drink-a-day", "guide",
+"How much water should you actually drink in a day?",
+"Where the eight-glasses rule came from, what official guidance says, why thirst works, and the honest signs of drinking enough - all as general information.",
+"""<p>The famous answer is eight glasses a day. The honest answer is that there was never a strong scientific birth certificate for that number - it survives because it is simple, memorable, and roughly right for many people. Here is the version worth keeping.</p>
+<h2>What the guidance actually says</h2>
+<p>Reference bodies put total daily fluid needs for most adults somewhere around <b>2 to 3.7 litres</b> - a wide range, on purpose. Two honest complications: that is <b>total water</b>, including the water inside food (fruit, soup, porridge, vegetables - roughly a fifth to a third of intake for many people), and needs swing enormously with body size, climate and activity. Someone walking outdoors in Lagos heat needs far more than someone in an air-conditioned office. Treat any single number, including these, as orientation rather than prescription.</p>
+<h2>Thirst is a better instrument than a tally</h2>
+<p>For most healthy people, thirst is a well-tuned signal - drink when thirsty, a little more than feels strictly necessary, and the day takes care of itself. The two useful checks: <b>thirst through the day</b> (frequent thirst means earlier sips) and <b>urine colour</b> (pale yellow is the target; dark means drink, completely clear usually means you are overshooting). Athletes, pregnant women, older adults (whose thirst blunts) and anyone in heat or illness should lean on schedule rather than thirst - that is the one group where counting earns its keep.</p>
+<h2>Can you drink too much?</h2>
+<p>Rarely, but yes - extreme water intake in short windows can dilute the blood's sodium dangerously. It is essentially unheard of at ordinary drinking paces; the risk belongs to hours-long endurance events and dares. Spreading intake across the day, as <a href="/benefits-of-morning-water/">the morning-water habit</a> starts naturally, is all the engineering required.</p>
+<h2>The keepable version</h2>
+<p>A glass on waking, water with meals, a bottle within reach, thirst as the day's guide, pale-yellow as the check. That is the whole practice - no app required. It pairs with the rest of the plate: <a href="/what-fruit-does-to-your-body/">fruit is water-rich food</a>, and <a href="/caffeine-side-effects/">caffeine timing</a> matters more for how you feel than the water-cooler myths admit. General information, not medical advice - kidney, heart or medication questions belong with a professional.</p>"""),
+
+("benefits-of-walking-after-meals", "guide",
+"A walk after meals: the honest benefits",
+"Steadier blood sugar, comfortable digestion and quiet step accumulation - what the research actually supports and how long the walk needs to be.",
+"""<p>Walking after a meal is one of the oldest habits in the book - the post-dinner stroll exists in a hundred cultures - and modern research has been politely confirming what grandmothers assumed. Here is what the walk does, honestly.</p>
+<h2>The three real benefits</h2>
+<p><b>Blood sugar steadiness.</b> Muscles use glucose when they move, and studies of light post-meal walking consistently find a flatter blood-sugar curve afterwards compared with sitting - even short walks of around <b>ten to fifteen minutes</b> show it, and some research finds starting within half an hour of eating works well. Exact numbers vary study to study; the direction is consistent. <b>Comfortable digestion.</b> Gentle movement encourages the stomach's work to proceed; many people report less of the heavy, stuffed feeling. Brisk is not better here - this is a stroll, not training. <b>Quiet step accumulation.</b> The practical benefit hiding in plain sight: two or three short post-meal walks can be a third of a day's steps without feeling like exercise - which is exactly how the <a href="/30-day-walking-plan/">walking plans</a> get kept.</p>
+<h2>What it does not do</h2>
+<p>It is not a fat-burning trick - the walk's modest energy cost does not cancel the meal, and claims beyond steadiness and comfort outrun the evidence. It is also not medical therapy: for anyone managing blood-sugar conditions, a professional's plan comes first, and this page is general information only.</p>
+<h2>The keepable version</h2>
+<p>Ten to fifteen easy minutes after the biggest meal of the day (for most people, dinner), within the first half hour or so. Pair it with something you already do - the evening call, the podcast, the dog. For the morning half of the day, <a href="/benefits-of-morning-water/">the water habit</a> starts things; for the training tier above walking, <a href="/bodyweight-moves-that-matter/">the eight moves</a> and <a href="/how-to-start-working-out/">starting from zero</a> are the doors - and <a href="/30-day-weight-loss-programme/">the 30-day programme</a> folds the after-meal walk straight into week one.</p>"""),
+])
