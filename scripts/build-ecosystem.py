@@ -822,6 +822,24 @@ def _first_line(body_html, fallback=""):
 def _strip_tags(s):
     return re.sub(r"<[^>]+>", "", s)
 
+def _trailer_facade(t):
+    import entertainment_catalogue_data as _catd
+    tr = _catd.TRAILERS.get(t)
+    if not tr:
+        return ""
+    yid, ytitle = tr
+    return ('<div class="trailer-facade">'
+            + '<button type="button" class="trailer-play" data-yt="' + yid
+            + '" data-title="' + html.escape(ytitle) + '" '
+            + 'aria-label="Play the official trailer - loads YouTube in this page" '
+            + "style=\"background-image:url('https://i.ytimg.com/vi/" + yid + "/hqdefault.jpg')\">"
+            + '<span class="tf-badge">Play trailer</span>'
+            + '<span class="tf-src">Official trailer &middot; YouTube</span>'
+            + "</button>"
+            + '<noscript><a href="https://www.youtube.com/watch?v=' + yid
+            + '" rel="noopener">Watch the official trailer on YouTube</a></noscript></div>')
+
+
 def entertainment_pages():
     rec = OUT / "entertainment" / "_recovered"
     manifest = json.loads((rec / "manifest.json").read_text())
@@ -979,6 +997,7 @@ def entertainment_pages():
                       + " <span class=\"meta\">(" + yr + ")</span></b><small>" + kind + " \u2014 " + blurb + "</small></span>"
                       + '<span class="meta">' + str(len(slugs)) + " link" + ("s" if len(slugs) > 1 else "") + "</span></a>"
                       + ('<div style="font-size:13px;padding:2px 0 10px">Also in: ' + more.rstrip(" · ") + "</div>" if more else "")
+                      + _trailer_facade(t)
                       + "</li>")
         footers = "".join('<a class="btn secondary" href="/' + fs + '/">' + fl + "</a>" for fs, fl in _cat.CATALOGUE_SHELF_FOOTERS[cs])
         picks = _cat.CATALOGUE_STARTERS.get(cs, [])
@@ -996,6 +1015,7 @@ def entertainment_pages():
     n_titles = sum(len(e[4]) for sh in _cat.CATALOGUE_SHELVES for e in sh[3])
     n_picks = sum(len(v) for v in _cat.CATALOGUE_STARTERS.values())
     browse_body = (head("entertainment", "The catalogue — every title the desk covers, shelved.")
+        + '<style>.trailer-facade{position:relative;margin:8px 0 4px;width:100%;max-width:340px;height:191px}.trailer-play{position:relative;display:block;width:100%;height:100%;border:1px solid rgba(255,255,255,.14);border-radius:10px;overflow:hidden;cursor:pointer;padding:0;background:#101018 center/cover no-repeat;font:inherit}.trailer-play:hover{border-color:rgba(255,255,255,.35)}.tf-badge{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,.72);color:#fff;font-weight:800;font-size:13px;padding:8px 14px;border-radius:999px}.tf-src{position:absolute;left:8px;bottom:8px;background:rgba(0,0,0,.72);color:#d8d8e2;font-size:11px;padding:3px 8px;border-radius:6px}.trailer-facade iframe{position:absolute;inset:0;width:100%;height:100%;border:0}</style><script src="/assets/trailer-facade.js?v=1" defer></script>'
         + '<main id="main"><div class="wrap">'
         + '<nav class="crumb"><a href="/entertainment/">Entertainment</a> / Browse the movies</nav>'
         + '<section class="cover"><p class="kicker">BRYME Entertainment · the catalogue</p>'

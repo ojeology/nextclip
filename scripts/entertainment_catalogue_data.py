@@ -300,3 +300,20 @@ CATALOGUE_STARTERS = {
  ("Roma", "2018", "World cinema", "A year with a household in 1970s Mexico City — the memory masterpiece."),
 ],
 }
+
+# ---- trailer facades (batch 65). EVERY id verified 2026-09-15 via YouTube oEmbed:
+# title + channel checked by hand; only studio/distributor/platform channels kept.
+# REJECTED by verification (reupload channels, do not add without re-checking):
+# Get Out (NOW SCARING / RT Trailers), Oppenheimer (OnePress TV), Spirited Away
+# (Crunchyroll Store AU / cosmo111687), Alien 1979 (KinoCheck), RRR (ZEE5 cut only).
+TRAILERS = {
+ "Mission: Impossible - Fallout": ("wb49-oV0F78", "Mission: Impossible - Fallout (2018) | Official Trailer - Paramount Pictures"),
+ "Interstellar": ("2LqzF5WauAw", "Interstellar (2014) | Original Theatrical Trailer 1 - Paramount Movies"),
+ "Dune: Part Two": ("WUBQdC__fC4", "Dune: Part Two - Official Trailer - Warner Bros. UK & Ireland"),
+ "Squid Game": ("oqxAJKy0ii4", "Squid Game | Official Trailer | Netflix"),
+ "Parasite": ("isOGD_7hNIY", "PARASITE - Official Trailer - NEON"),
+ "Mad Max: Fury Road": ("hEJnMQG9ev8", "Mad Max: Fury Road - Official Main Trailer - Warner Bros."),
+ "Spider-Man: No Way Home": ("JfVOs4VSpmA", "SPIDER-MAN: NO WAY HOME - Official Trailer - Sony Pictures Entertainment"),
+ "Casino Royale": ("GV_18deeAXk", "CASINO ROYALE - FIRST FULL TRAILER - James Bond 007"),
+ "The Black Book": ("6PPH4SOm9gk", "The Black Book | Official Trailer - AfricaOnNetflix"),
+}
