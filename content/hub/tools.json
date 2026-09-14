@@ -340,6 +340,13 @@
       "short": "Eight quick questions on what makes writing hold together.",
       "category": "quality",
       "description": "Ledes, nut grafs, the inverted pyramid, three-act bones, show-don't-tell - test your structural instincts and get a straight score with one-line explanations."
+    },
+    {
+      "id": "deadline-tracker",
+      "title": "Deadline tracker",
+      "short": "Every commission and filing date in one calm list - saved in your browser.",
+      "description": "Add what is due and when; the tracker sorts by urgency and counts the days left. Everything stays on this device.",
+      "category": "work"
     }
   ]
 }

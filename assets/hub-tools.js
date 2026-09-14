@@ -1348,6 +1348,45 @@
 
   function q(id) { return document.getElementById(id); }
   function bind(el, fn) { if (el) el.addEventListener("input", fn); }
+  tools["deadline-tracker"] = function () {
+    var KEY = "bryme-deadlines-v1";
+    var name = q("dt-name"), date = q("dt-date"), add = q("dt-add"),
+        list = q("dt-list"), status = q("dt-status");
+    if (!name || !date || !add || !list) return;
+    function esc(s) { return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;"); }
+    function load() { try { return JSON.parse(localStorage.getItem(KEY) || "[]"); } catch (e) { return []; } }
+    function save(v) { try { localStorage.setItem(KEY, JSON.stringify(v)); } catch (e) {} }
+    function daysLeft(due) {
+      var t = new Date(); t.setHours(0, 0, 0, 0);
+      return Math.round((new Date(due + "T00:00:00") - t) / 86400000);
+    }
+    function render() {
+      var items = load().sort(function (a, b) { return a.due < b.due ? -1 : 1; });
+      if (!items.length) { list.innerHTML = '<p class="tool-note">Nothing tracked yet. Add the next thing that is due.</p>'; return; }
+      list.innerHTML = items.map(function (x, k) {
+        var n = daysLeft(x.due), badge;
+        if (n < 0) badge = "<b>" + (-n) + " day" + (-n === 1 ? "" : "s") + " overdue</b>";
+        else if (n === 0) badge = "<b>Due today</b>";
+        else badge = n + " day" + (n === 1 ? "" : "s") + " left";
+        return '<p><b>' + esc(x.name) + "</b> - " + x.due + " - " + badge +
+          ' <button class="btn" type="button" data-dt="' + k + '">Remove</button></p>';
+      }).join("");
+    }
+    add.addEventListener("click", function () {
+      var nm = name.value.trim(), dd = date.value;
+      if (!nm || !dd) { status.textContent = "Give the deadline a name and a date."; return; }
+      var items = load(); items.push({ name: nm, due: dd }); save(items);
+      name.value = ""; status.textContent = "Added. It stays in this browser.";
+      render();
+    });
+    list.addEventListener("click", function (e) {
+      var b = e.target && e.target.closest ? e.target.closest("[data-dt]") : null;
+      if (!b) return;
+      var items = load(); items.splice(parseInt(b.getAttribute("data-dt"), 10), 1); save(items); render();
+    });
+    render();
+  };
+
   function boot(id) { if (id && tools[id]) tools[id](); }
   function glossaryBoot() {
     var i = q("gsearch"), d = q("glossary");
