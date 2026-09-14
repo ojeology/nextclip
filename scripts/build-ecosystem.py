@@ -2977,7 +2977,16 @@ def fitness_pages():
                  '<span class="meta">Understand</span></a></li>'
                  '<li><a href="/sleep-and-exercise-performance/"><span><b>Sleep: the recovery tool you cannot buy</b>'
                  "<small>Seven hours is the floor \u2014 what short sleep costs your training.</small></span>"
-                 '<span class="meta">Understand</span></a></li>')
+            '<span class="meta">Understand</span></a></li>'
+                 '<li><a href="/how-to-plank/"><span><b>The plank, honestly</b>'
+                 "<small>Form first, thirty honest seconds, and the progressions that actually progress.</small></span>"
+                 '<span class="meta">Move</span></a></li>'
+                 '<li><a href="/bodyweight-moves-that-matter/"><span><b>Eight bodyweight moves that matter</b>'
+                 "<small>The patterns that carry a whole programme at home \u2014 and how to string them together.</small></span>"
+                 '<span class="meta">Build</span></a></li>'
+                 '<li><a href="/what-fruit-does-to-your-body/"><span><b>What fruit actually does for your body</b>'
+                 "<small>Fibre, water, vitamins and the honest word on fruit sugar, juice and the apple-a-day saying.</small></span>"
+                 '<span class="meta">Fuel</span></a></li>')
     index_body = (head("fitness", "Practical fitness \u2014 no miracles, no medical claims.")
         + '<main id="main"><div class="wrap">'
         + '<section class="cover"><p class="kicker">BRYME Fitness \u00b7 start where you are</p>'
