@@ -265,3 +265,39 @@ SPORT_EXPLAINERS.extend([
  ("how-the-champions-league-works", "How the Champions League works"),
  ("how-many-english-teams-champions-league", "English teams in the Champions League")]),
 ])
+
+# ---- batch 63: transfer windows + playoffs (collision-checked 15 Sep; stable-rule facts, no odds, no betting) ----
+SPORT_EXPLAINERS.extend([
+("how-the-transfer-window-works",
+"How the transfer window works: two doors, one deadline day",
+"Why signings only happen in two parts of the year, what deadline day actually is, who can still move when the window is shut, and why football agreed to this at all.",
+"""<p>A transfer window is exactly what it sounds like: a stretch of weeks in which clubs may buy and sell players. Outside it, transfers simply are not allowed. Football runs two. The <b>summer window</b> opens after the season ends and shuts in the first days of September; the <b>winter window</b> runs through January and shuts at the start of February. The exact dates are set fresh each season by each country's federation, so treat any deadline you remember from last year as a guess until the calendar is published.</p>
+<h2>Why football agreed to limit itself</h2>
+<p>Before windows, players could be approached and moved almost whenever, and the biggest clubs spent whole seasons unsettling rivals' squads. FIFA's answer, made mandatory from the 2002-03 season, was the two-window system: clubs plan squads in defined periods, and once the season is under way the sporting side takes over from the lawyers. It also protects players from being destabilised mid-season by a bid they cannot escape.</p>
+<h2>What deadline day actually is</h2>
+<p>The final day is the market's closing bell, and it behaves like one: months of polite negotiation compressed into hours, medicals scheduled against the clock, deals submitted to the league in the last minutes, and the famous fax-machine-era images now replaced by lawyers emailing PDFs at 22:58. Most of it is theatre \u2014 but real money really does move, and the deals that miss the deadline do not slip to tomorrow; they die until the next window. Our <a href="/deadline-day-dont-try-to-make-sense-of-it/">deadline day survival piece</a> covers the carnival itself.</p>
+<h2>Who can still move when the window is shut</h2>
+<p>More people than you would think. <b>Free agents</b> \u2014 players without a club \u2014 can sign at any time of the year, which is why a veteran joins a club in October after training alone all summer. <b>Loan deals</b> are done inside windows like any transfer, but recall arrangements can bring a loaned player back early if the agreement allows it. Emergency provisions exist for goalkeepers in some leagues when a squad is wiped out by injury. And a player <i>agreed</i> before the deadline but announced after it is nothing mysterious: the fee was agreed in time, the paperwork just finished late \u2014 which is exactly how a <a href="/why-football-transfers-collapse/">transfer collapses</a> at the last fence, and why some contracts are pre-agreed to trigger months later.</p>
+<h2>The quiet mechanics most fans miss</h2>
+<p>Signing is not the same as playing: a player must also be <b>registered</b> with the league to be eligible, and registration has its own rules and deadlines \u2014 one reason deals announced at 23:01 officially never happened. Squads have size and composition rules (in England, the Premier League squad is capped at 25 over-21 players with a homegrown quota \u2014 see <a href="/how-many-english-teams-champions-league/">how European places work</a> for why squad-building has a European shadow too). Agreements with <a href="/what-is-a-release-clause/">release clauses</a> and buy-back options are negotiated inside windows but can reshape clubs for years. And loans, capped at <a href="/how-football-loans-work/">six international moves per club per season</a> since the 2024-25 rules, are now a strategic act rather than a dumping ground.</p>""",
+[],
+[("why-football-transfers-collapse", "Why transfers collapse"),
+ ("deadline-day-dont-try-to-make-sense-of-it", "Deadline day, made sense of"),
+ ("how-football-loans-work", "How loans work"),
+ ("what-is-a-release-clause", "What a release clause is")]),
+
+("how-football-playoffs-work",
+"How football playoffs work: the most valuable (and cruellest) games in the pyramid",
+"Who qualifies, why third place can be the worst seat in the house, the two-legged semi-final format, and why the final is called the richest game in football.",
+"""<p>In most of English football, promotion is not only decided by the table. Below the Premier League, a second door exists: the <b>playoffs</b> \u2014 a small knockout at the end of the season among the clubs that just missed automatic promotion. The table decides who is close; the playoffs decide who actually goes up.</p>
+<h2>The format</h2>
+<p>Take the Championship (the division under the Premier League): the top two clubs go up automatically, and the clubs finishing <b>third to sixth</b> enter the playoffs. Third plays sixth and fourth plays fifth over <b>two legs</b> \u2014 home and away, aggregate score decides. The higher finisher hosts the second leg, a real edge: the away-goals rule is gone from English football, so an aggregate lead is an aggregate lead, and extra time and penalties settle ties that stay level. The winners meet in a single final, normally at Wembley, winner takes the last promotion place. The divisions below (League One and League Two) run the same machinery with three automatic places, so their playoffs run from <b>fourth to seventh</b>. Non-league's National League has its own playoff for the second promotion spot to the Football League \u2014 the same idea all the way down the <a href="/promotion-and-relegation-explained/">pyramid</a>.</p>
+<h2>Why third place can be the worst seat in the house</h2>
+<p>Finish third in the Championship and you have just missed the two automatic spots \u2014 then you must beat three straight playoff opponents, one of them possibly a team that finished fifteen points behind you and has nothing to fear. The seed's only advantage is the second leg at home. History is blunt about this: plenty of third-placed teams have watched the final from their sofas. That is the design's genius and its cruelty at once \u2014 it keeps half the league meaningful until the last weeks of the season, at the price of real heartbreak.</p>
+<h2>The richest game in football</h2>
+<p>The Championship playoff final is called the most valuable single match in the game because promotion to the Premier League is worth a colossal sum \u2014 broadcast money alone dwarfs the Championship's, never mind matchday and commercial growth, and relegated clubs even get cushion payments on the way down. One game, one jackpot, ninety minutes plus maybe penalties. No final in any cup carries stakes shaped quite like that; even continental qualification is spread across a season \u2014 see <a href="/how-many-english-teams-champions-league/">how many English teams reach the Champions League</a> for how Europe's places are earned by table, not by a single shoot-out.</p>""",
+[],
+[("promotion-and-relegation-explained", "Promotion and relegation, explained"),
+ ("how-many-english-teams-champions-league", "English teams in the Champions League"),
+ ("how-the-premier-league-table-works", "How the Premier League table works")]),
+])

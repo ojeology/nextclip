@@ -327,4 +327,20 @@ ENT_GUIDES.extend([
 <h2>How to use a calendar like this</h2>
 <p>Three habits: treat <b>streaming dates</b> as the firmest (platforms announce close to launch) and theatrical dates as soft until tickets are on sale; expect the December collision to shed a casualty &mdash; one of those two giants will blink; and when a release finally lands, check our <a href="/best-streaming-apps-nigeria/">Nigeria streaming guide</a> or the <a href="/best-streaming-service-us-uk/">US/UK guide</a> for where it actually is &mdash; licensing is exactly why <a href="/how-streaming-licensing-works/">titles vanish and return</a>. Can&rsquo;t decide on the night? The <a href="/how-to-pick-a-movie-tonight/">pick-a-movie method</a> works on any shelf, and the full <a href="/browse/">catalogue</a> is the desk&rsquo;s standing answer.</p>
 <p class="byline">Dates compiled 13 September 2026 from the major release calendars (Popverse, Entertainment Weekly, Dexerto). Studios move dates without notice &mdash; re-verify before planning around one. The desk updates this page as dates shift.</p>"""),
+
+("what-to-watch-october-2026", "explainers",
+"October 2026 at the movies: the four releases worth planning around",
+"Terrifier 4 kicks things off, Street Fighter rounds out mid-month, and October 23 brings a double bill: DC's Clayface and the sci-fi drama Klara and the Sun.",
+"""<p>October is the quiet month before the December collision \u2014 and it is not actually quiet. Four releases carry the month, and they could not be more different from each other.</p>
+<h2>The month, date by date</h2>
+<ul>
+<li><b>Terrifier 4</b> \u2014 Oct 1, theaters. The horror phenomenon hits its fourth chapter and opens the month the way this series does everything: loudly.</li>
+<li><b>Street Fighter</b> \u2014 Oct 16, theaters. The game adaptation takes its second swing at cinema, with the whole roster in tow.</li>
+<li><b>Clayface</b> \u2014 Oct 23, theaters. DC's shape-shifting villain gets his own film \u2014 the studio's horror-tinged side project that suddenly everyone is curious about.</li>
+<li><b>Klara and the Sun</b> \u2014 Oct 23, theaters. The adaptation of Kazuo Ishiguro's novel about an artificial friend with a big heart: the month's prestige counterweight to everything else on this list.</li>
+</ul>
+<h2>How to play the month</h2>
+<p>Two honest tips. First, October 23 is a built-in double bill \u2014 monster movie and literary science fiction on the same day is exactly the kind of split your group chat will fight over, so settle it with our <a href="/how-to-pick-a-movie-tonight/">pick-a-movie method</a>. Second, these are theatrical dates: streaming homes get announced later, and licensing is why titles land on different platforms in different countries \u2014 the background is in <a href="/how-streaming-licensing-works/">how streaming licensing works</a>, and when they do land, <a href="/best-streaming-apps-nigeria/">our Nigeria streaming guide</a> tracks where to actually watch.</p>
+<p>Looking further out? The full <a href="/movie-calendar-2026-27/">2026-27 movie calendar</a> has every date that matters, including the December 18 collision nobody is pretending is fine.</p>
+<p class="byline">Dates compiled 13 September 2026 from the major release calendars (Popverse, Entertainment Weekly, Dexerto). Studios move dates without notice \u2014 re-verify before planning around one.</p>"""),
 ])
