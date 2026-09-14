@@ -70,6 +70,17 @@ def strip_arrows(text: str) -> str:
 
 def main() -> int:
     moved = 0
+    # pre-clean: root dirs left by the PREVIOUS routing run's legacy forwards
+    # (marker: meta-refresh to /entertainment/) must not be swept into writers
+    for _d in list(ROOT.iterdir()):
+        if _d.is_dir():
+            _ix = _d / "index.html"
+            if _ix.is_file():
+                try:
+                    if '0;url=/entertainment/' in _ix.read_text(encoding="utf-8", errors="replace")[:600]:
+                        shutil.rmtree(_d)
+                except OSError:
+                    pass
     # guard: routing is one-shot per build; a routed tree must be rebuilt clean
     if (ROOT / "writers/learn").is_dir() and not (ROOT / "writing").is_dir():
         print("routing: tree is already routed - rebuild clean (rm -rf writers ...) first, aborting")
@@ -83,6 +94,13 @@ def main() -> int:
         name = e.name
         if e.is_dir():
             if name in KEEP_AT_ROOT_DIRS:
+                continue
+            if name in PROPS:
+                # property trees staged at root by earlier builders are junk
+                # here: step 3 re-copies the real ones from ecosystem/. Delete
+                # rather than sweep (b67: a sweep page-clone leaked into the
+                # writers tree and failed validation).
+                shutil.rmtree(e)
                 continue
             shutil.move(str(e), str(wr / name))
             moved += 1
@@ -214,6 +232,32 @@ def main() -> int:
                 encoding="utf-8")
             _fw_count += 1
     print("legacy forwards: " + str(_fw_count) + " root stubs -> /entertainment/...")
+    # retired catalogue path: /entertainment/browse/ now forwards to the
+    # shelves landing at /entertainment/ (b67: shelves are the landing page)
+    _browse = ROOT / "entertainment" / "browse"
+    _browse.mkdir(parents=True, exist_ok=True)
+    if True:
+        (_browse / "index.html").write_text(
+            '<!doctype html><html lang="en"><head><meta charset="utf-8">'
+            '<meta name="viewport" content="width=device-width,initial-scale=1">'
+            '<title>The shelves moved | THE BRYME</title>'
+            '<meta name="robots" content="noindex,follow">'
+            '<meta http-equiv="refresh" content="0;url=/entertainment/">'
+            '<link rel="canonical" href="https://bryme.onrender.com/entertainment/"></head>'
+            '<body><p>The shelves now live at the desk home. Continue to <a href="/entertainment/">the shelves</a>.</p></body></html>',
+            encoding="utf-8")
+        print("browse forward: /entertainment/browse/ -> /entertainment/")
+    # sweep: every remaining /entertainment/browse/ href becomes the root
+    # (the shelves landing) so no page carries a link into the retired path
+    _sw = 0
+    for _h in ROOT.rglob("*.html"):
+        if (_h.parent / "index.html") != _h and _h.name != "index.html":
+            continue
+        _t = _h.read_text(encoding="utf-8", errors="replace")
+        if '/entertainment/browse/' in _t:
+            _h.write_text(_t.replace('href="/entertainment/browse/"', 'href="/entertainment/"'), encoding="utf-8")
+            _sw += 1
+    print("browse href sweep: " + str(_sw) + " files updated")
 
     # 6. refresh the public/ mirror to the routed tree
     pub = ROOT / "public"

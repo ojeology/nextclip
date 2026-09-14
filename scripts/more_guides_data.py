@@ -139,3 +139,60 @@ FIT_MORE.extend([
 <h2>The practical version</h2>
 <p>Keep fruit where the biscuits used to be; eat it whole rather than juiced; variety beats quantity of any single kind \u2014 the apple is excellent precisely because it is easy, not because it is unique. If you train, fruit's slow carbohydrates pair well with the meals around your sessions, and the protein side of that plate is covered in <a href="/how-much-protein-do-you-need/">how much protein you actually need</a>. For the movement half of the bargain, <a href="/how-to-start-working-out/">starting from zero</a> and <a href="/30-day-walking-plan/">the 30-day walking plan</a> are the desk's honest on-ramps.</p>"""),
 ])
+
+# ---- batch 67: owner wellness-hub brief (water, sleep, caffeine, 30-day programme).
+# Facts kept to widely-used general guidance, all numbers labelled approximate,
+# every page carries the general-information disclaimer. Weight-loss page carries
+# the owner-required "results not guaranteed" notice. ----
+FIT_MORE.extend([
+("benefits-of-morning-water", "guide",
+"A glass of water in the morning: what it actually does",
+"The honest version: rehydration after the night, a gentler start for digestion, and a habit anchor - without the magic claims.",
+"""<p>Morning water is one of the few wellness habits with almost no downside and modest, honest benefits. What it does not do is match the mythology - it does not "flush toxins" in any special way, and it is not a weight-loss trick. Here is the version worth keeping.</p>
+<h2>What it genuinely does</h2>
+<p><b>Rehydrates you.</b> You lose water overnight through breath and sweat - often around half a litre to a litre by morning (a rough range, not a rule). A glass or two of water on waking replaces part of that, which is why it tends to feel clearing rather than dramatic. <b>Wakes the gut gently.</b> Fluid in the stomach starts the digestive system's morning movements; many people find it helps the first trip to the bathroom happen on schedule. <b>Anchors the habit.</b> Water before coffee is easiest to keep because it attaches to something you already do every day - and hydration habits that survive are the ones with a fixed trigger.</p>
+<h2>The honest limits</h2>
+<p>Your kidneys do the "cleaning" around the clock; morning water supports them, it does not unlock a special cleaning window. There is no strong evidence that room-temperature water is dramatically better than cold for most people - drink the temperature you will actually drink. And more is not better: thirst, pale-yellow urine, and steady sips through the day are better guides than any fixed number of glasses.</p>
+<h2>The simple version to keep</h2>
+<p>One or two glasses on waking, then keep a bottle nearby through the day. That is the entire practice - and it pairs naturally with the food side of the desk: <a href="/what-fruit-does-to-your-body/">what fruit does for your body</a> (fruit is water-rich too) and <a href="/how-much-protein-do-you-need/">how much protein you need</a> cover the rest of the plate. This page is general information, not medical advice - kidney or heart conditions deserve a professional's guidance on fluids.</p>"""),
+
+("benefits-of-sleeping-well", "guide",
+"The benefits of sleeping well (the whole list, honestly)",
+"Recovery, appetite, mood, focus and immunity - what good sleep actually buys, how much is worth aiming at, and the two habits that move the needle.",
+"""<p>Sleep is the one recovery tool you cannot buy, and the evidence for it is not subtle: across nearly every health measure researchers track, people who sleep well do better. The widely used adult guidance is <b>seven to nine hours</b> - a range, not a prescription, and a small number of people genuinely thrive just outside it.</p>
+<h2>What good sleep buys</h2>
+<p><b>Physical recovery.</b> Muscle repair and adaptation after training run largely on sleep - the reason <a href="/sleep-and-exercise-performance/">sleep and exercise performance</a> belong in the same sentence, and why a hard training week with short nights is a wasted week. <b>Appetite control.</b> Short sleep nudges the hormones that manage hunger and fullness in the unhelpful direction; the practical effect everyone recognises is that tired days are snack days. <b>Mood and focus.</b> Reaction time, patience and memory all measurably dip on short sleep - and stack badly across consecutive short nights. <b>Immune function.</b> Sleep is when a large share of immune maintenance happens; the tired-before-the-cold pattern is real for a reason.</p>
+<h2>The two habits that matter most</h2>
+<p><b>A consistent wake time</b> - seven days a week if you can manage it; the body's clock loves regularity more than duration. <b>Caffeine timing</b> - caffeine's effects linger for hours after the pleasant buzz fades, and an afternoon cup can still be working at midnight; <a href="/caffeine-side-effects/">the caffeine page</a> has the honest timing table. Beyond those two: a cool, dark, quiet room beats any gadget, and the bed is for sleeping, not scrolling.</p>
+<h2>The honest disclaimer</h2>
+<p>This is general information, not medical advice. Long-term trouble sleeping - or loud snoring with daytime exhaustion - deserves a professional, not a blog. For the training side of recovery, <a href="/rest-days-and-recovery/">rest days and recovery</a> and the <a href="/30-day-weight-loss-programme/">30-day programme</a> both assume sleep is in place; it is the foundation under every other habit on this desk.</p>"""),
+
+("caffeine-side-effects", "guide",
+"Caffeine: the side effects, honestly",
+"The buzz has a bill: sleep interference, jitters, dependence and the afternoon crash - who feels it most, and the timing rules that fix most of it.",
+"""<p>Caffeine is the world's most used drug and mostly a friendly one. But "mostly" is doing work in that sentence, and anyone who has had two late coffees and a 1 a.m. ceiling-stare knows the bill exists. This page is the honest list.</p>
+<h2>The four real side effects</h2>
+<p><b>Sleep interference.</b> The big one. Caffeine's effects fade slowly - a useful approximation is that a quarter of it can still be working five to six hours later, which is why a 4 p.m. cup is a 10 p.m. problem for many people. You can fall asleep caffeinated; the sleep is just lighter and less restorative. <b>Jitters and anxiety.</b> Larger doses bring the shaky hands, racing thoughts and a heartbeat you can hear - sensitivity varies enormously person to person, mostly by genetics and habit. <b>Dependence and withdrawal.</b> Daily use builds tolerance; skipping it brings headaches and fog for a day or two. Not dangerous, but honest. <b>Digestive effects.</b> Coffee gets the gut moving - helpful for some, urgent for others - and can aggravate reflux in sensitive stomachs.</p>
+<h2>Sensible limits, stated as guidance</h2>
+<p>Many health bodies converge on roughly <b>400 mg a day</b> - about three to four cups of brewed coffee - as a level not associated with problems for most healthy adults, with much lower advice during pregnancy. Treat that as orientation, not a target: your best dose is the smallest one that feels good, and strength varies wildly between a tea and a large café latte. Numbers on cups are approximations; check yours when it matters.</p>
+<h2>The timing rules that fix most of it</h2>
+<p>Stop caffeine six to eight hours before bedtime (earlier if you are sensitive). Front-load it: most of the day's caffeine before noon handles both the wake-up and the sleep. If you are cutting back, step down over a week rather than stopping dead - the withdrawal headache is real but avoidable. And pair the cut with the thing that actually restores energy: <a href="/benefits-of-sleeping-well/">real sleep</a>. For training on caffeine, the honest summary is in <a href="/breathing-during-exercise/">breathing basics</a> territory: it helps effort feel easier, it does not replace fitness - <a href="/how-to-start-working-out/">starting from zero</a> does that.</p>
+<p class="note">General information, not medical advice. Heart conditions, anxiety disorders, pregnancy and medications all change the picture - a professional's word beats this page's.</p>"""),
+
+("30-day-weight-loss-programme", "guide",
+"The 30-day weight-loss programme (honest version, no guarantees)",
+"A four-week structure of walking, simple strength and food habits - with the promise stated plainly at the start: results are not guaranteed and this is not medical advice.",
+"""<p><b>Read this first:</b> this programme is general information, not medical advice. <b>Results are not guaranteed.</b> Bodies differ, scales lie in the short term, and anyone with a health condition, a lot of weight to lose, or an injury should see a professional first. What this page guarantees is a clear, safe-shaped structure - not a number on the scale.</p>
+<h2>The shape of the month</h2>
+<p>Four weeks, three moving parts, nothing exotic: <b>daily walking</b> that grows slowly, <b>three short strength sessions a week</b> using your bodyweight, and <b>one food habit per week</b> instead of a diet. The goal is a month you could repeat - crash results that vanish in September are not the product here.</p>
+<h2>Week 1 - establish the floor</h2>
+<p>Walk <b>20 minutes every day</b> (one 20-minute walk or two 10s - all of it counts, as <a href="/30-day-walking-plan/">the walking plan</a> explains). Two strength sessions using <a href="/bodyweight-moves-that-matter/">the eight moves</a>: ten easy minutes each. Food habit: <b>water before meals</b> - one glass, <a href="/benefits-of-morning-water/">starting in the morning</a>.</p>
+<h2>Week 2 - add a notch</h2>
+<p>Walk 25-30 minutes daily. Three strength sessions, adding one set to each. Food habit: <b>protein at breakfast</b> - eggs, yoghurt or whatever version fits; it steadies the morning (<a href="/how-much-protein-do-you-need/">the protein page</a> has the amounts).</p>
+<h2>Week 3 - the honest middle</h2>
+<p>Walk 30-35 minutes daily; keep three strength sessions. Food habit: <b>fruit instead of dessert</b> once a day (<a href="/what-fruit-does-to-your-body/">why fruit works</a>: fibre, water, and it arrives slowly). Expect motivation to dip here - that is normal and exactly why the sessions are short.</p>
+<h2>Week 4 - consolidate</h2>
+<p>Walk 35-40 minutes or add hills. Three strength sessions with the hardest version you can do in honest form. Food habit: keep whichever of the three previous habits stuck best - one kept habit beats three abandoned ones.</p>
+<h2>What to expect, honestly</h2>
+<p>Commonly cited safe guidance puts steady loss around a quarter to half a kilo a week - some lose faster, some slower, and some weeks the scale moves not at all while inches change. <b>No result is guaranteed.</b> Sleep (<a href="/benefits-of-sleeping-well/">the sleep page</a>) and stress move the same numbers as food does. If the month ends and you keep two habits, the programme worked; if you want a next month, repeat the structure at your current level. Stop any exercise that causes pain, and get medical sign-off when in doubt.</p>"""),
+])

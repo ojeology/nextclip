@@ -34,7 +34,7 @@
     try { localStorage.setItem(key, JSON.stringify(d)); } catch (e) {}
     return true;
   }
-  var VIGNETTE_MAX = 1, VIGNETTE_HOURS = 12;   /* owner file: 1-2 per session */
+  var VIGNETTE_MAX = 2, VIGNETTE_HOURS = 12;   /* owner file: 1-2 per session; b67: relaxed to 2 (balance) */
   var SECOND_MAX = 4, SECOND_HOURS = 24;       /* owner file: limited per day */
 
   /* Zone 11610753 - Vignette Banner (owner logic, frequency-capped). */

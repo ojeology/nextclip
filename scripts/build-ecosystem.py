@@ -408,7 +408,7 @@ def _nav_items(pub):
                   ("/fitness/weekly-planner/", "The weekly planner")]
         return ([("Guides", guides)], ("/fitness/", "Desk home"))
     if pub == "entertainment":
-        shelves = [("HEAD", "The entertainment shelves"), ("/entertainment/browse/", "Browse movies"), ("/entertainment/best-streaming-service-us-uk/", "Best streaming service"), ("/entertainment/how-to-watch-movies-online-free-and-legal/", "Watch free, legally"), ("/entertainment/explainers/", "Explainers"),
+        shelves = [("HEAD", "The entertainment shelves"), ("/entertainment/", "Browse movies"), ("/entertainment/best-streaming-service-us-uk/", "Best streaming service"), ("/entertainment/how-to-watch-movies-online-free-and-legal/", "Watch free, legally"), ("/entertainment/explainers/", "Explainers"),
                    ("/entertainment/recommendations/", "Recommendations"),
                    ("/entertainment/opinion/", "Opinion"),
                    ("/entertainment/how-to-build-a-watchlist/", "Build a watchlist"),
@@ -470,7 +470,7 @@ def ent_drawer():
         '<button type="button" class="drawer-close" data-drawer-close aria-label="Close menu">'
         '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 5l14 14M19 5L5 19"/></svg></button></div>\n'
         '<div class="drawer-group"><b>Browse</b><a href="/entertainment/">Desk home</a>'
-        '<a href="/entertainment/browse/">Browse the movies</a>'
+        '<a href="/entertainment/">Browse the movies</a>'
         '<a href="/entertainment/recommendations/">Recommendations</a>'
         '<a href="/entertainment/explainers/">Explainers</a><a href="/entertainment/opinion/">Opinion</a></div>\n'
         '<div class="drawer-group"><b>Guides</b><a href="/entertainment/how-to-pick-a-movie-tonight/">Pick a movie tonight</a>'
@@ -523,6 +523,16 @@ def head(pub, tagline, parent=True):
     edition = editions.get(pub)
     edition_html = (f'<div class="mast-edition"><span class="mast-date">{edition}</span>'
                     f'<span class="mast-tag">{tagline}</span></div>') if edition else f'<span class="mast-tag">{tagline}</span>'
+    slim = ""
+    if pub == "entertainment":
+        slim = ('<style>/* b67 slim mast */'
+                '.mast{padding-top:12px;padding-bottom:10px}'
+                '.mast-brand{font-size:clamp(19px,3vw,24px);letter-spacing:.01em;white-space:nowrap}'
+                '.mast-brand span{font-size:.92em}'
+                '.drawer-head .logo{font-size:15px}'
+                '@media(max-width:700px){.mast-edition{display:none}.mast-brand{font-size:20px}}'
+                '@media(max-width:480px){.mast-brand > span{display:none}}'
+                '</style>')
     tools = ""
     if pub in ("tech", "fitness", "sports", "hub", "entertainment"):
         tools += _THEME_TOGGLE_BTN
@@ -540,7 +550,7 @@ def head(pub, tagline, parent=True):
         if cta:
             parts.append('<a class="nav-cta" href="' + cta[0] + '">' + cta[1] + "</a>")
         nav = '<nav class="main-nav"><div class="wrap mast-nav">' + "".join(parts) + "</div></nav>"
-    return f"""<header class="head"><div class="wrap mast">
+    return f"""{slim}<header class="head"><div class="wrap mast">
 <a class="mast-brand" href="{brand_href}">{brand}</a>
 {edition_html}
 {pl}{tools}
@@ -557,7 +567,7 @@ def foot(pub, extra=""):
 <div>© 2026 THE BRYME — {PUB_NAME[pub] if pub != 'hub' else 'the BRYME publications'}.</div>
 <div><a href="{'/about/' if pub == 'hub' else '/' + pub + '/about/'}">About</a> · <a href="/{'writers' if pub == 'hub' else pub}/privacy/">Privacy</a> · <a href="/{'writers' if pub == 'hub' else pub}/contact/">Contact</a>{x}</div>
 <div><a href="{ORIGIN}/">bryme.onrender.com</a></div>
-</div></footer><script src="/assets/ad-slot.js?v=17" defer></script><script src="/assets/monetag.js?v=2" defer></script>"""
+</div></footer><script src="/assets/ad-slot.js?v=17" defer></script><script src="/assets/monetag.js?v=3" defer></script>"""
 
 def write_placeholder(key, name, tagline, identity, planned):
     """Foundation-era property: one honest page + the standard legal pages, all noindex."""
@@ -1191,7 +1201,7 @@ def entertainment_pages():
             + '<main id="main">'
             + '<section class="nx-movie-hero" style="--nx-backdrop:url(\'https://i.ytimg.com/vi/' + (m.get("yt") or "") + '/hqdefault.jpg\')">'
             + '<div class="nx-shell nx-movie-hero-inner">' + _nx_poster(m)
-            + '<div><nav class="nx-crumb"><a href="/browse/">Catalogue</a> / ' + html.escape(m.get("genre") or "Film") + '</nav>'
+            + '<div><nav class="nx-crumb"><a href="/entertainment/">Catalogue</a> / ' + html.escape(m.get("genre") or "Film") + '</nav>'
             + '<h1>' + html.escape(m["title"]) + '</h1>'
             + '<div class="nx-badges">' + badges_html + '</div>'
             + '<p class="nx-lead">' + html.escape(m.get("teaser") or "") + '</p></div></div></section>'
@@ -1200,7 +1210,7 @@ def entertainment_pages():
             + '<h2>The story</h2><p>' + desc + '</p>'
             + ('<h2>Details the desk keeps</h2><ul class="nx-facts">' + facts_html + '</ul>' if facts_html else "")
             + wl_html + rel_html
-            + '<p class="nx-backlink"><a href="/browse/">&#8592; Back to the full catalogue</a></p>'
+            + '<p class="nx-backlink"><a href="/entertainment/">&#8592; Back to the full catalogue</a></p>'
             + '</div><aside class="nx-aside"><dl>' + aside_html + '</dl>'
             + '<p class="nx-verified">Trailer link verified ' + _nx_ver + ' via YouTube oEmbed (title and channel checked). Nothing loads from YouTube until you press play.</p>'
             + '</aside></div></main>' + foot("entertainment"))
@@ -1208,10 +1218,8 @@ def entertainment_pages():
                 (m.get("teaser") or m.get("description") or "")[:155], body)
     movie_pages = [_nx_movie_page(m) for m in _nx.MOVIES]
 
-    pages = [("/", "BRYME Entertainment — what to watch, and why",
-              "Film, TV and anime recommendations with reasons, explainers and opinion — written about the work, never piracy.", index_body),
-             ("/browse/", "Browse the movies — the BRYME Entertainment catalogue",
-              "726 films with verified trailers, shelved by genre - the platform the desk built, restored.", browse_body)]
+    pages = [("/", "The shelves — every film the desk covers | BRYME Entertainment",
+              "726 films with hand-verified official trailers, shelved by genre - the platform, restored and beautiful.", browse_body)]
     pages.extend(movie_pages)
     for pl in sect_pages.values():
         pages.extend(pl)
@@ -3143,6 +3151,19 @@ def fitness_pages():
     related_map["bodyweight-moves-that-matter"] = [("how-to-plank", "The plank, honestly"),
                                                    ("how-progressive-overload-works", "Progressive overload"),
                                                    ("workout-at-home-no-equipment", "Ready-made home sessions")]
+    related_map["benefits-of-morning-water"] = [("what-fruit-does-to-your-body", "What fruit does"),
+                                   ("how-much-protein-do-you-need", "Protein, honestly"),
+                                   ("30-day-weight-loss-programme", "The 30-day programme")]
+    related_map["benefits-of-sleeping-well"] = [("sleep-and-exercise-performance", "Sleep and performance"),
+                                   ("caffeine-side-effects", "Caffeine, honestly"),
+                                   ("rest-days-and-recovery", "Rest days and recovery")]
+    related_map["caffeine-side-effects"] = [("benefits-of-sleeping-well", "The benefits of sleeping well"),
+                                   ("benefits-of-morning-water", "Morning water"),
+                                   ("how-to-start-working-out", "Starting from zero")]
+    related_map["30-day-weight-loss-programme"] = [("30-day-walking-plan", "The walking plan"),
+                                   ("bodyweight-moves-that-matter", "The eight moves"),
+                                   ("what-fruit-does-to-your-body", "What fruit does"),
+                                   ("how-much-protein-do-you-need", "Protein, honestly")]
     related_map["what-fruit-does-to-your-body"] = [("how-much-protein-do-you-need", "Protein, honestly"),
                                                    ("bodyweight-moves-that-matter", "The eight moves"),
                                                    ("30-day-walking-plan", "The 30-day walking plan")]
@@ -3187,7 +3208,19 @@ def fitness_pages():
                  '<span class="meta">Build</span></a></li>'
                  '<li><a href="/what-fruit-does-to-your-body/"><span><b>What fruit actually does for your body</b>'
                  "<small>Fibre, water, vitamins and the honest word on fruit sugar, juice and the apple-a-day saying.</small></span>"
-                 '<span class="meta">Fuel</span></a></li>')
+                 '<span class="meta">Fuel</span></a></li>'
+                 '<li><a href="/benefits-of-morning-water/"><span><b>Water in the morning: what it does</b>'
+                 "<small>The honest benefits of the simplest habit on the desk - no magic claims.</small></span>"
+                 '<span class="meta">Fuel</span></a></li>'
+                 '<li><a href="/benefits-of-sleeping-well/"><span><b>The benefits of sleeping well</b>'
+                 "<small>Recovery, appetite, mood, focus - what seven to nine hours actually buys.</small></span>"
+                 '<span class="meta">Recover</span></a></li>'
+                 '<li><a href="/caffeine-side-effects/"><span><b>Caffeine: the side effects, honestly</b>'
+                 "<small>Sleep interference, jitters, dependence - and the timing rules that fix most of it.</small></span>"
+                 '<span class="meta">Fuel</span></a></li>'
+                 '<li><a href="/30-day-weight-loss-programme/"><span><b>The 30-day weight-loss programme</b>'
+                 "<small>Four weeks of walking, simple strength and food habits - results not guaranteed, structure guaranteed.</small></span>"
+                 '<span class="meta">Program</span></a></li>')
     index_body = (head("fitness", "Practical fitness \u2014 no miracles, no medical claims.")
         + '<main id="main"><div class="wrap">'
         + '<section class="cover"><p class="kicker">BRYME Fitness \u00b7 start where you are</p>'
