@@ -397,3 +397,123 @@ ENT_GUIDES.extend([
 <h2>If you only watch one</h2>
 <p>Fullmetal Alchemist: Brotherhood. It is the recommendation the desk makes when it is only allowed one. From there the branches are on the shelf: current favourites in <a href="/best-anime-to-watch-now/">best anime to watch now</a>, Solo Leveling's wave in <a href="/10-anime-like-solo-leveling-you-should-watch/">anime like Solo Leveling</a>, and the vocabulary to argue about all of it in <a href="/anime-canon-and-filler-explained/">canon and filler, explained</a>.</p>"""),
 ])
+
+
+# ---- batch 72: the discovery machine - "shows like" routers, a short-series
+# list, the boredom algorithm, and a heist shelf. Every page answers a real
+# question in the searcher's words and links three ways out.
+ENT_GUIDES.extend([
+("shows-like-stranger-things", "recommendations",
+ "Shows like Stranger Things: eight next watches, honestly picked",
+ "The same itch - small towns, secrets, kids on bikes, impossible doors - scratched eight different ways, from Twin Peaks to Paper Girls.",
+ """<p>Stranger Things works because it stacks four things at once: an ensemble you would follow anywhere, a small town hiding a locked door, a mystery that opens one layer per episode, and real warmth under the fright. Almost nothing else stacks all four - but each of these eight gets close in its own way, and several get close enough to binge twice.</p>
+<h2>The eight</h2>
+<h3>Dark (Netflix, 2017-2020)</h3>
+<p>A German town, a cave, and children who vanish - then time itself folds and the show becomes the most meticulously plotted puzzle on television. Three seasons, planned end to end, no loose threads. It also opens our <a href="/supernatural-shows-to-watch/">supernatural list</a> - it earns both spots.</p>
+<h3>Paper Girls (Prime Video, 2022)</h3>
+<p>Four 12-year-old newspaper deliverers in 1988 ride straight into a war between time travellers. The kids-on-bikes energy is the closest here to the real thing, plus a genuinely moving story about who you grow up to be. One perfect season; cancelled early, worth it anyway.</p>
+<h3>Tales from the Loop (Prime Video, 2020)</h3>
+<p>A town lives above a machine that makes the impossible possible - and each episode asks what a person would actually do with it. Slow, melancholy, beautiful. Watch it when you want the wonder without the monsters.</p>
+<h3>The OA (Netflix, 2016-2019)</h3>
+<p>A blind woman returns after seven years missing, sight restored, and gathers five strangers to hear her story. The most committed mystery-box ever aired; the fandom that exploded when it was cancelled tells you how deeply it lands. Two seasons, one of television's great baton-pass finales.</p>
+<h3>Locke &amp; Key (Netflix, 2020-2022)</h3>
+<p>Three kids move into a house full of keys that do impossible things - and something in the well wants them. Family adventure first, horror second. Three seasons, properly finished, endlessly rewatchable.</p>
+<h3>The Society (Netflix, 2019)</h3>
+<p>Teens return from a failed trip to find their town copied, empty of adults, and cut off from everything. Lord of the Flies with a mall. Cancelled after one season for pandemic budget reasons - the cliffhanger still stings, the season still earns its place.</p>
+<h3>The Umbrella Academy (Netflix, 2017-2024)</h3>
+<p>Seven adopted siblings with powers, a dead father, and an apocalypse to argue about. It has the ensemble chemistry and the needle-drop soundtracks, and unlike most on this list it got a real ending: four seasons.</p>
+<h3>Twin Peaks (1990-1991, revived 2017)</h3>
+<p>The granddaddy of them all - the small town with a supernatural wound, the ensemble of oddballs, the red room. Stranger Things is a love letter to it. Watch the original two seasons and let the 2017 return be dessert.</p>
+<h2>Where to go next</h2>
+<p>Want the fright turned up? The <a href="/supernatural-shows-to-watch/">supernatural starters list</a> is the horror-forward cousin of this page. Animated deep cuts live on <a href="/evergreen-anime/">evergreen anime</a>. The full catalogue, with verified trailers, is on <a href="/entertainment/">the browse desk</a>, and if you cannot decide between these, the <a href="/how-to-pick-a-movie-tonight/">sixty-second picking method</a> works on shows too.</p>"""),
+("shows-like-squid-game", "recommendations",
+ "Shows like Squid Game: eight games with rules you cannot afford to lose",
+ "Death games, debt and dignity - eight series that hit the same nerve, from Alice in Borderland to 3%.",
+ """<p>Squid Game was never really about the games. It was about rules everyone knows are rigged and players who cannot afford to lose - which is why it became the biggest show on earth. These eight hit the same nerve from different angles; some play the games straight, some swap blood for money or zombies, all of them understand the assignment.</p>
+<h2>The eight</h2>
+<h3>Alice in Borderland (Netflix, Japan)</h3>
+<p>A gaming-obsessed slacker and his friends wake in a Tokyo where districts are arenas and survival depends on clearing numbered games - each testing a different vice. The closest thing to Squid Game's actual format, with bigger set pieces and a ruthless streak of its own.</p>
+<h3>The 8 Show (Netflix, 2024)</h3>
+<p>Eight players, eight floors of a sealed tower; the money stacks by the minute and the higher your floor, the more you earn - and the more you can buy from the people below. Squid Game's class rage in a single building.</p>
+<h3>All of Us Are Dead (Netflix, 2022)</h3>
+<p>A zombie outbreak seals a high school with the students inside. The game here is survival politics - alliances, sacrifices and who deserves the last energy bar. Renewed for a second season; the first is a complete juggernaut.</p>
+<h3>Sweet Home (Netflix, 2020-2024)</h3>
+<p>Residents of a condemned apartment block hold the doors as neighbours turn into monsters shaped by their own desires. Three seasons of siege logistics and moral rot - the game is holding the line without becoming a monster yourself.</p>
+<h3>3% (Netflix, 2016-2020)</h3>
+<p>In a divided future, every 20-year-old gets one chance to pass the Process and join the 3% who live on the good side of the wall. Brazilian, four seasons, and the closest in spirit: the competition is the social order itself.</p>
+<h3>Kakegurui (Netflix)</h3>
+<p>A academy where hierarchy is set by gambling, and a transfer student bets her life for fun. Anime or the live-action version - both are unhinged. The games are wagers, but the stakes curve bends just as hard.</p>
+<h3>Liar Game (2007, Japan)</h3>
+<p>A penniless student is drafted into a televised game of manipulation where every round can drown her in debt. The thinking person's death game: no gore, pure psychological judo, and a hero who wins by trusting people.</p>
+<h3>Snowpiercer (2013 film; TV series 2020-2024)</h3>
+<p>The last humans live on a train frozen in class order - tail to front. Start with the film, then the series runs the premise for four seasons of revolution. The rules are rigged here too; the passengers simply stop agreeing to them.</p>
+<h2>Where to go next</h2>
+<p>The 2000 film <em>Battle Royale</em> is the genre's granddaddy - one class, one island, one survivor, and every death game since owes it rent. For what is hot this month, the <a href="/hottest-movies-right-now/">sixty-second answer</a>; for dates ahead, the <a href="/movie-calendar-2026-27/">2026-27 calendar</a>. The full catalogue with verified trailers waits on <a href="/entertainment/">the browse desk</a>.</p>"""),
+("short-series-eight-episodes-or-fewer", "recommendations",
+ "Great short series: ten shows, eight episodes or fewer",
+ "Ten limited series that respect your time - five to eight episodes each, a real ending, and not a filler season among them.",
+ """<p>The modern streaming trap is the ten-episode season that needed six. The limited series is the antidote: a story with a planned end, a cast that goes home when it is done, and a runway short enough that nothing can afford to drag. These ten are the best arguments for the form - every one is eight episodes or fewer, and every one sticks the landing.</p>
+<h2>The ten</h2>
+<h3>Chernobyl (HBO/Sky, 2019) - 5 episodes</h3>
+<p>The reactor explodes in episode one; the series is about what a system does when the truth is radioactive. Five of the most concentrated hours ever televised.</p>
+<h3>The Queen's Gambit (Netflix, 2020) - 7 episodes</h3>
+<p>An orphan chess prodigy battles the grandmasters, the pills and herself. Made chess appointment viewing for a hundred million people - and the tournaments play like heist set pieces.</p>
+<h3>Sharp Objects (HBO, 2018) - 7 episodes</h3>
+<p>A reporter returns to her small hometown to cover a child's murder, and the house she grew up in is the second crime scene. A slow poison of a show with a finale that recolours everything.</p>
+<h3>Big Little Lies (HBO, 2017) - season 1, 7 episodes</h3>
+<p>Three mothers, one glamorous school, one body at the bottom of the stairs. Season one is a complete novel - the (unnecessary, optional) second season exists but owes you nothing.</p>
+<h3>Godless (Netflix, 2017) - 7 episodes</h3>
+<p>A mining town made entirely of women, an outlaw hunting his ex-mentor, and a magnificent slow build to one of television's great shootouts. The western for people who think they do not like westerns.</p>
+<h3>Unbelievable (Netflix, 2019) - 8 episodes</h3>
+<p>A young woman reports an assault and is not believed; two detectives hundreds of miles away start patterning the same attacks. Devastating, procedural, and impossible to forget. Kaitlyn Dever and Merritt Wevers give two of the decade's best performances.</p>
+<h3>The Night Of (HBO, 2016) - 8 episodes</h3>
+<p>One bad night, one murder charge, and the machine that grinds a nice kid into a case number. The best courtroom-adjacent miniseries since the form was invented.</p>
+<h3>Escape at Dannemora (Showtime, 2018) - 7 episodes</h3>
+<p>The true 2015 prison break that charmed a whole town. Benicio del Toro and Paul Dold (and Patricia Arquette, unrecognisable) turn an escape plan into a love triangle with power tools.</p>
+<h3>Generation Kill (HBO, 2008) - 7 episodes</h3>
+<p>Marines rolling into Iraq in 2003, filmed like a road trip nobody can get off. From the The Wire team; funnier and angrier than war dramas are supposed to be.</p>
+<h3>Pride and Prejudice (BBC, 1995) - 6 episodes</h3>
+<p>The blueprint adaptation: six hours, one smouldering Darcy, and the most satisfying slow burn in screen history. Proof that "limited series" was never a new idea, just a good one.</p>
+<h2>Where to go next</h2>
+<p>The movie version of this idea lives on <a href="/what-to-watch-in-90-minutes/">what to watch in 90 minutes</a>. If you are choosing for a group, <a href="/best-films-for-a-group/">films for a group</a> settles the vote. Everything else - shelves, catalogues, verified trailers - is on <a href="/entertainment/">the browse desk</a>, and the boredom algorithm on <a href="/what-to-watch-when-bored/">what to watch when you are bored</a> will route you in two minutes.</p>"""),
+("what-to-watch-when-bored", "recommendations",
+ "What to watch when you are bored: the two-minute answer",
+ "You are not out of things to watch - you are out of decisions. Match your attention span to the right door and walk through it.",
+ """<p>Boredom is rarely the problem. Decision fatigue is: forty minutes of scrolling, three half-started trailers, and somehow you are watching your home screen. This page skips the scroll. Answer one question - how much attention do you actually have tonight? - and take the matching door.</p>
+<h2>Door 1: full attention</h2>
+<p>Tonight is for starting something properly. Take a whole story in one bite from <a href="/short-series-eight-episodes-or-fewer/">great short series (eight episodes or fewer)</a> - Chernobyl is five hours that feel like one. Prefer a feature? Work the <a href="/how-to-pick-a-movie-tonight/">sixty-second picking method</a> and let the method choose for you. New releases this month are on <a href="/hottest-movies-right-now/">what is hottest right now</a>.</p>
+<h2>Door 2: half attention</h2>
+<p>You want competence, comfort, and no homework. Two reliable shelves: the great heists, where watching smart people execute a plan requires nothing but admiration - start with <a href="/best-heist-movies/">the best heist movies</a> - and comfort animation, where <a href="/evergreen-anime/">evergreen anime</a> holds up the "watch with your brain off" flag proudly. Action franchises and world cinema live on <a href="/entertainment/">the browse desk</a> shelves.</p>
+<h2>Door 3: no attention at all</h2>
+<p>You have already seen everything and you want it to say so. This is rewatch permission, freely given - or the next best thing: something short, warm and new-adjacent. <a href="/what-to-watch-in-90-minutes/">What to watch in 90 minutes</a> specialises in films that fit the last window of the day, and <a href="/best-films-for-a-group/">films for a group</a> works when the boredom is a couch of people.</p>
+<h2>The rules that make it work</h2>
+<p><b>The 20-minute rule.</b> Whatever you choose, you may quit at 20 minutes, guilt-free, and pick again. The point is not finishing - it is starting. <b>The queue is a buffet, not homework.</b> Nothing on your list is assigned; the saved-for-later pile has no feelings. <b>Boredom loves a format.</b> If one episode of a <a href="/what-to-watch-mystery-night/">mystery night</a> hits, you have a whole evening pre-decided.</p>
+<p>And when even this page is too much: <a href="/supernatural-shows-to-watch/">supernatural shows</a> if you want to be gripped, the <a href="/movie-calendar-2026-27/">2026-27 calendar</a> if you want to look forward instead, or the door you always regret not taking sooner - the one where the screen stays off.</p>"""),
+("best-heist-movies", "recommendations",
+ "The best heist movies: ten perfectly planned nights",
+ "Competence is the genre: ten heist films where the plan is the star - and the twists stay in the vault where they belong.",
+ """<p>The heist film is the purest competence fiction there is: assemble specialists, define the impossible job, and let us watch professionals work the problem. The great ones share four parts - a crew with chemistry, a plan you can half-follow, one complication nobody planned, and respect for the audience. These ten have all four. No spoilers below; the twists stay in the vault.</p>
+<h2>The ten</h2>
+<h3>The Killing (1956)</h3>
+<p>Stanley Kubrick, age 28, already in full command: a racetrack robbery planned with clockwork precision, narrated like a countdown. Every modern heist film is standing on this one's shoulders.</p>
+<h3>Ocean's Eleven (2001)</h3>
+<p>The vibe blueprint. Soderbergh assembles the coolest crew ever filmed, robs three Las Vegas casinos at once, and makes it look effortless - which was always the point. The definition of rewatchable.</p>
+<h3>Heat (1995)</h3>
+<p>Michael Mann's epic: the planner (De Niro) and the detective (Pacino) circling each other across a Los Angeles that has never looked better. The downtown shootout and the bank job are two of the most studied sequences ever shot - and the coffee-shop scene outdraws both.</p>
+<h3>Ronin (1998)</h3>
+<p>Hired specialists in Nice chase a briefcase nobody will open, and trust turns out to be the rarest commodity on screen. The car chases are still the benchmark - real cars, real streets, real fear.</p>
+<h3>The Italian Job (1969 - and honestly, the 2003 remake)</h3>
+<p>The original robs Turin with three Mini Coopers and a traffic jam; the remake moves the job to Los Angeles and keeps the cheek. Different heists, same rule: the getaway IS the job.</p>
+<h3>Dog Day Afternoon (1975)</h3>
+<p>A Brooklyn bank robbery that goes wrong in the first hour and becomes a street carnival. Based on a true story; Al Pacino at full voltage. The heist movie that insists the plans never survive contact with people.</p>
+<h3>Inside Man (2006)</h3>
+<p>Spike Lee's cleanest puzzle: a bank robbery with no visible robbery, a detective (Denzel Washington) who smells a script, and an ending that re-deals the whole hand. The modern classic of the form.</p>
+<h3>The Town (2010)</h3>
+<p>Charlestown, Boston - the bank-robbery capital of America - and one last job for a crew that cannot stop being themselves. Ben Affleck directs with a documentary eye; the Fenway Park job is a stomping set piece.</p>
+<h3>Baby Driver (2017)</h3>
+<p>Edgar Wright builds the entire film inside the getaway driver's headphones: every stunt, gunshot and gear-change lands on the beat. The heist film as musical, and somehow it all works.</p>
+<h3>Logan Lucky (2017)</h3>
+<p>Soderbergh returns to the form with a NASCAR heist run by the least glamorous crew imaginable - two brothers, a hairdresser, and a convict who plans jobs from memory. The funniest heist film ever made, and sneaky-smart with it.</p>
+<h2>Where to go next</h2>
+<p>More crews, cars and controlled chaos live on the action shelf at <a href="/entertainment/">the browse desk</a>, and the puzzle-plot cousin of this list sits with the mind-benders on the same shelves. Planning a group screening? <a href="/best-films-for-a-group/">Films for a group</a> settles the vote, and the <a href="/how-to-pick-a-movie-tonight/">sixty-second method</a> picks between these ten in one pass.</p>"""),
+])
