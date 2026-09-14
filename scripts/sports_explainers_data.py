@@ -301,3 +301,71 @@ SPORT_EXPLAINERS.extend([
  ("how-many-english-teams-champions-league", "English teams in the Champions League"),
  ("how-the-premier-league-table-works", "How the Premier League table works")]),
 ])
+
+
+# ---- batch 75: the evergreen rules layer - positions, discipline, extra time
+# and shootouts, set pieces. Law-stable facts only; competition-specific rules
+# are hedged as such; no scores, no betting angles.
+SPORT_EXPLAINERS.extend([
+("football-positions-explained",
+ "Football positions, explained: every role on the pitch, in plain language",
+ "Goalkeeper to false nine: what each position is actually for, how formations name themselves, and why the modern game keeps blurring the lines.",
+ """<p>Eleven players, four broad jobs: keep it out of the net, stop it reaching the net, move it forward, put it in the net. Every position is a variation on those jobs - and once you can name the jobs, the game slows down and starts making sense.</p>
+<h2>The goalkeeper</h2>
+<p>The only player allowed to use hands (inside the own penalty area) and the only position with its own separate skill tree: shot-stopping, positioning, and now distribution - modern keepers start more attacks than ever. A keeper mistake is expensive and a keeper save is worth more than any other single act on the pitch, which is why the position gets judged differently.</p>
+<h2>The defence</h2>
+<p><b>Centre-backs</b> defend the central corridor - heading, tackling, and playing out from the back in the modern game. <b>Full-backs</b> (or wing-backs) own the flanks: defend the wingers, overlap in attack. It is the most physically demanding tour on the pitch - the touchline is the longest road.</p>
+<h2>The midfield</h2>
+<p><b>Defensive midfielder</b> (the number 6): the screen in front of the defence, the first passer, the one who breaks up counters. <b>Central midfielders</b> (the 8s) connect defence to attack - box-to-box players cover the most ground. <b>Attacking midfielders</b> (the 10) operate between the lines: the creators, the ones who receive with their back to goal and find the pass nobody else sees.</p>
+<h2>The attack</h2>
+<p><b>Wingers</b> hug the touchlines to stretch the pitch - the inverted winger cuts inside onto their stronger foot, which is why so many right-footed players now play on the left. <b>Strikers</b> (the 9) finish moves; the <b>false nine</b> starts there but drops into midfield, dragging defenders out of the line and opening space for others. The role names shift; the spaces never do.</p>
+<h2>How formations name themselves</h2>
+<p>Defenders-midfielders-forwards, goalkeeper not counted: 4-4-2, 4-3-3, 3-5-2. The numbers describe the starting shape, not the game - a team that starts 4-3-3 often defends in 4-5-1 and attacks in 2-3-5. Formations are starting points; the modern game is about spaces and transitions. The vocabulary of those spaces lives in <a href="/sports/pressing-explained/">pressing, explained</a>, <a href="/sports/possession-explained/">possession, explained</a> and <a href="/sports/playing-out-from-the-back/">playing out from the back</a> - and the shirt numbers behind the roles are on <a href="/sports/what-shirt-numbers-mean/">what shirt numbers mean</a>.</p>""",
+ [('IFAB - Laws of the Game', 'https://www.theifab.com/laws/latest/the-laws-of-the-game/')],
+ [('what-shirt-numbers-mean', 'What shirt numbers mean'), ('pressing-explained', 'Pressing, explained'), ('possession-explained', 'Possession, explained')]),
+("yellow-and-red-cards-explained",
+ "Yellow cards, red cards and bans: the discipline rules, explained",
+ "What earns each card, what happens after it, and the line where a bad tackle becomes a sending-off - the laws, without the shouting.",
+ """<p>The card system is simple and universally understood, which is exactly why every disagreement about it is loud. Here is what the laws actually say.</p>
+<h2>The yellow card: a caution</h2>
+<p>A yellow is a formal caution for unsporting behaviour - the catch-all list includes reckless tackles, delaying the restart, dissent, simulation, entering or leaving without permission, and unsporting celebrations. One yellow changes nothing in the match itself. Two yellows in the same match is a sending-off: the second yellow is shown, then the red.</p>
+<h2>The red card: a sending-off</h2>
+<p>A straight red is for the serious end of the list: serious foul play, violent conduct, spitting at or towards someone, denying an obvious goal-scoring chance by handling the ball or by an offence, and offensive or abusive language or gestures. The punished team plays the rest of the match with ten players - there is no way to substitute the player back in, and in most competitions the player cannot be replaced at all.</p>
+<h2>What happens after the match</h2>
+<p>Suspensions are where the laws hand over to each competition: accumulation rules (how many yellows across a season earn a ban), whether a red brings a one-match or longer ban, and appeals processes all belong to the league or tournament, not to the Laws of the Game. That is why the same tackle can cost one player a match and another three - the framework is universal, the sentencing is local.</p>
+<h2>The arguments, settled by the law's own words</h2>
+<p><b>Was it a yellow or a red?</b> The laws draw the line between <em>careless</em> (a free kick, no card), <em>reckless</em> (a yellow) and <em>using excessive force</em> (a red). It is a judgement ladder, not a formula - which is exactly why it argues. <b>Did VAR review it?</b> VAR can correct clear errors on red cards and mistaken identity - the mechanics are on <a href="/sports/how-var-works/">how VAR actually works</a>. <b>Denying a goal by hand in the box:</b> red card plus a penalty - the double punishment is built into the law.</p>
+<p>The discipline table is the quiet ladder underneath every league season - and the points it decides are the same ones counted on <a href="/sports/how-the-premier-league-table-works/">how the table works</a>. The laws themselves, maintained by IFAB, live at the source: <a href="https://www.theifab.com/laws/latest/fouls-and-misconduct/" rel="noopener">Fouls and Misconduct, Law 12</a>.</p>""",
+ [('IFAB - Laws of the Game (Law 12, Fouls and Misconduct)', 'https://www.theifab.com/laws/latest/fouls-and-misconduct/')],
+ [('how-var-works', 'How VAR actually works'), ('how-the-premier-league-table-works', 'How the table works'), ('the-offside-rule-explained', 'The offside rule')]),
+("how-extra-time-and-penalty-shootouts-work",
+ "Extra time and penalty shootouts, explained: how knockout football splits a draw",
+ "Stoppage time versus extra time, the two halves of fifteen, and the shootout procedure - what the laws say, step by step.",
+ """<p>A knockout match needs a winner, and football has a two-step ritual for finding one. Here is exactly how it works - and where each commonly confused term actually belongs.</p>
+<h2>Stoppage time is not extra time</h2>
+<p><b>Stoppage time</b> (added time) happens in every match: the referee adds minutes at the end of each half for substitutions, injuries, celebrations and time-wasting. It tops the 90 up to what it should have been. <b>Extra time</b> happens only in knockout matches that must produce a winner on the day: two additional halves of <b>15 minutes each</b>, played in full - there is no sudden-death golden goal in the modern laws; a goal in extra time does not end the match early.</p>
+<h2>Step two: kicks from the penalty mark</h2>
+<p>If the score is still level after extra time, the match goes to a <b>penalty shootout</b>. The procedure the laws set out: teams take <b>five kicks each, alternating</b>; if one team has scored more after both have taken their five, it ends there. If still level, it goes to <b>sudden death</b> - one kick each per round, and the first round where one scores and the other does not decides it. Only players on the pitch at the end of extra time may take a kick, and every kick is taken from the penalty mark with the goalkeeper on the line until the ball is struck.</p>
+<h2>The two-legged wrinkle</h2>
+<p>In two-legged ties (football's best-of-two), the tie is decided on aggregate score. The old <b>away-goals rule</b> - which valued an away goal double - was abolished by UEFA in 2021, so level aggregates now go straight to extra time and, if needed, the shootout. That is why commentary from before 2021 sounds different from modern coverage.</p>
+<h2>Why the shootout survives</h2>
+<p>Every alternative has been tried and retired: golden goal, silver goal, replays on demand. The shootout endures because it is decisive, quick, and brutal in a way the laws have learned to accept - a contest that is technically not football, resolving a football match. The players know it, the laws admit it, and nobody who has watched one forgets it.</p>
+<p>The offside law does not apply differently in extra time, and neither does anything else - the laws run unchanged through all 120 minutes. The three-ideas explanation of that law is on <a href="/sports/the-offside-rule-explained/">the offside rule, explained</a>, and the knockout structures that trigger all of this are mapped in <a href="/sports/how-football-playoffs-work/">how playoffs work</a> and <a href="/sports/how-the-champions-league-works/">how the Champions League works</a>.</p>""",
+ [('IFAB - Laws of the Game (Law 10, Determining the Outcome of a Match)', 'https://www.theifab.com/laws/latest/determining-the-outcome-of-a-match/')],
+ [('how-football-playoffs-work', 'How playoffs work'), ('how-the-champions-league-works', 'How the Champions League works'), ('the-offside-rule-explained', 'The offside rule')]),
+("set-pieces-explained",
+ "Set pieces, explained: corners, free kicks and every way the game restarts",
+ "The eight ways play restarts, the direct-versus-indirect free kick, and the offside exceptions nobody remembers until they matter.",
+ """<p>Every match is 90 minutes of play stitched together by restarts. Learn the restarts and the game stops having confusing pauses - each one has a name, a rule, and a reason.</p>
+<h2>The restarts, all of them</h2>
+<p><b>Kick-off</b> starts each half and follows every goal. <b>Throw-in</b> returns the ball when it crosses a touchline - both feet on or behind the line, two hands, from behind the head. <b>Goal kick</b> when the attacking team touches it last over the byline; <b>corner kick</b> when the defending team does. <b>Free kick</b> after a foul; <b>penalty kick</b> when that foul happens inside the offender's own box. That is the complete set - everything else is a dropped ball for a stoppage the laws did not foresee.</p>
+<h2>Direct versus indirect free kicks</h2>
+<p>A <b>direct</b> free kick can score directly (most fouls: trips, pushes, handballs). An <b>indirect</b> free kick must touch another player before a goal counts - given for the non-physical offences, such as dangerous play or the goalkeeper picking up a back-pass. The referee signals it by raising an arm and keeping it up until the kick is taken and touched. This is the single most-forgotten rule in amateur football.</p>
+<h2>The offside exceptions</h2>
+<p>There is <b>no offside directly from a throw-in, a goal kick or a corner</b> - Law 11 names all three exceptions. It is why the long throw remains a weapon and why corners turn defences around. Everywhere else on the pitch, the three ideas of the offside law apply exactly as explained in <a href="/sports/the-offside-rule-explained/">the offside rule, explained</a>.</p>
+<h2>Why set pieces decide so much</h2>
+<p>A corner or a wide free kick is the only moment in open play when the defending team must stand still and the attacking side may plan - eleven drilled movements against ten static defenders (the goalkeeper excepted). That is why clubs hire set-piece coaches, why near-post routines and blockers are studied frame by frame, and why a meaningful share of goals at every level of the game begin life as a dead ball. The delivery is rehearsed; the rest is appetite.</p>
+<p>The full laws for each restart are maintained by IFAB - <a href="https://www.theifab.com/laws/latest/" rel="noopener">the Laws of the Game</a> - and the tactics that grow around restarts sit with <a href="/sports/pressing-explained/">pressing, explained</a> and <a href="/sports/the-offside-trap/">the offside trap</a>.</p>""",
+ [('IFAB - Laws of the Game (restarts: Laws 8, 13-17)', 'https://www.theifab.com/laws/latest/')],
+ [('the-offside-rule-explained', 'The offside rule'), ('the-offside-trap', 'The offside trap'), ('pressing-explained', 'Pressing, explained')]),
+])
