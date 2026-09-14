@@ -183,6 +183,38 @@ def main() -> int:
     (ROOT / "content" / "index-allowlist.routed.json").write_text(
         json.dumps(al, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
+    # 5b. legacy-path forwards (batch 66c): older cached vintages of the
+    # entertainment catalogue link to root-style URLs (/slug/). Forward every
+    # content slug to its /entertainment/ home (noindex, instant meta-refresh)
+    # so no visitor meets a 404 from a stale copy. Never overwrites existing
+    # root pages; legal/about dirs already exist at root and are skipped.
+    _fw_skip = {"assets", "_recovered", "movie", "about", "contact", "privacy",
+                "terms", "copyright", "corrections", "editorial-policy"}
+    _ent_tree = ROOT / "entertainment"
+    _fw_count = 0
+    if _ent_tree.is_dir():
+        for _d in sorted(_ent_tree.iterdir()):
+            if not _d.is_dir() or _d.name in _fw_skip:
+                continue
+            if not (_d / "index.html").is_file():
+                continue
+            _dest = "/entertainment/" + _d.name + "/"
+            _root_dir = ROOT / _d.name
+            if (_root_dir / "index.html").is_file():
+                continue
+            _root_dir.mkdir(exist_ok=True)
+            (_root_dir / "index.html").write_text(
+                '<!doctype html><html lang="en"><head><meta charset="utf-8">'
+                '<meta name="viewport" content="width=device-width,initial-scale=1">'
+                '<title>' + _d.name + ' moved | THE BRYME</title>'
+                '<meta name="robots" content="noindex,follow">'
+                '<meta http-equiv="refresh" content="0;url=' + _dest + '">'
+                '<link rel="canonical" href="https://bryme.onrender.com' + _dest + '"></head>'
+                '<body><p>This page moved. Continue to <a href="' + _dest + '">the current page</a>.</p></body></html>',
+                encoding="utf-8")
+            _fw_count += 1
+    print("legacy forwards: " + str(_fw_count) + " root stubs -> /entertainment/...")
+
     # 6. refresh the public/ mirror to the routed tree
     pub = ROOT / "public"
     if pub.exists():

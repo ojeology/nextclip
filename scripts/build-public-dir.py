@@ -74,11 +74,15 @@ if (ECO / "config.json").is_file():
     import json as _json
     if _json.loads((ECO / "config.json").read_text()).get("mode") == "path":
         for _p in ("sports", "tech", "entertainment", "fitness", "home"):
-            if (ECO / _p).is_dir():
+            # Prefer the routed root tree when it exists: it carries the
+            # property-prefixed links. The raw ecosystem tree is pre-routing
+            # and must never reach public/ after a completed routing run.
+            _src = ROOT / _p if (ROOT / _p / "index.html").is_file() else (ECO / _p if (ECO / _p).is_dir() else None)
+            if _src:
                 _dst = PUB / _p
                 if _dst.exists():
                     shutil.rmtree(_dst)
-                shutil.copytree(ECO / _p, _dst)
+                shutil.copytree(_src, _dst)
                 copied += 1
         for _f in ("index.html", "sitemap.xml"):
             if (ECO / "hub" / _f).is_file():
