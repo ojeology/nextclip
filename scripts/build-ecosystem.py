@@ -1166,14 +1166,14 @@ def entertainment_pages():
     }
     def _nx_movie_page(m):
         badges = [str(m.get("year") or ""), m.get("genre") or "", m.get("language") or "",
-                  (str(m.get("runtime")) + " min") if m.get("runtime") else ""]
+                  (str(m.get("runtime")) if m.get("runtime") else "")]
         if m.get("score"):
             badges.append("BRYME editorial score " + str(m["score"]) + "/10")
         badges_html = "".join('<span class="nx-badge">' + html.escape(b) + '</span>' for b in badges if b)
         facts_html = "".join("<li>" + html.escape(str(f)) + "</li>" for f in (m.get("facts") or []))
         rows = [("Director", m.get("director")), ("Genre", m.get("genre")), ("Year", m.get("year")),
                 ("Language", m.get("language")), ("Country", m.get("country")),
-                ("Runtime", (str(m.get("runtime")) + " min") if m.get("runtime") else None),
+                ("Runtime", str(m.get("runtime")) if m.get("runtime") else None),
                 ("Starring", ", ".join(m.get("cast")[:5]) if m.get("cast") else None),
                 ("BRYME editorial score", (str(m["score"]) + " / 10") if m.get("score") else None)]
         aside_html = "".join("<dt>" + k + "</dt><dd>" + html.escape(str(v)) + "</dd>" for k, v in rows if v)
