@@ -1197,6 +1197,8 @@ def entertainment_pages():
         + '<a href="/short-series-eight-episodes-or-fewer/"><b>Great short series</b><span>Ten shows, eight episodes or fewer</span></a>'
         + '<a href="/what-to-watch-when-bored/"><b>What to watch when bored</b><span>The two-minute answer</span></a>'
         + '<a href="/best-heist-movies/"><b>The best heist movies</b><span>Ten perfectly planned nights</span></a>'
+        + '<a href="/comfort-movies-to-rewatch/"><b>Comfort movies</b><span>Ten films built for the hundredth watch</span></a>'
+        + '<a href="/scariest-horror-movies-tonight/"><b>Scariest horror tonight</b><span>Sorted by the kind of fear</span></a>'
         + '<a href="/how-streaming-licensing-works/"><b>How streaming licensing works</b><span>Why titles vanish and return</span></a>'
         + '</div></section>'
         + '<section class="nx-cta-band"><div><div class="nx-eyebrow">The house rule</div><h2>Every trailer verified by hand.</h2>'
@@ -3333,7 +3335,7 @@ def fitness_pages():
                  "<small>Dead bugs, bridges, bird dogs and planks: four weeks for the deep midsection - no crunches required.</small></span>"
                  '<span class="meta">Program</span></a></li>'
                  '<li><a href="/exercise-library/"><span><b>The exercise library</b>'
-                 "<small>53 moves across five taught pages: push, pull, legs, core, conditioning - cues, mistakes, easier and harder.</small></span>"
+                 "<small>75 moves across five taught pages: push, pull, legs, core, conditioning - cues, mistakes, easier and harder.</small></span>"
                  '<span class="meta">Learn</span></a></li>'
                  '<li><a href="/fitness-calculators/"><span><b>Fitness calculators</b>'
                  "<small>BMI, water, protein and barbell plate maths - ten seconds, nothing leaves your browser.</small></span>"

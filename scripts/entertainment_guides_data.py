@@ -517,3 +517,50 @@ ENT_GUIDES.extend([
 <h2>Where to go next</h2>
 <p>More crews, cars and controlled chaos live on the action shelf at <a href="/entertainment/">the browse desk</a>, and the puzzle-plot cousin of this list sits with the mind-benders on the same shelves. Planning a group screening? <a href="/best-films-for-a-group/">Films for a group</a> settles the vote, and the <a href="/how-to-pick-a-movie-tonight/">sixty-second method</a> picks between these ten in one pass.</p>"""),
 ])
+
+
+# ---- batch 77: the finale pair - two more question-shaped answers, taking the
+# entertainment desk to ten. Opinion lists built from well-known, stable titles.
+ENT_GUIDES.extend([
+("comfort-movies-to-rewatch", "recommendations",
+ "Comfort movies: ten films built for the hundredth watch",
+ "The rewatch is its own genre: familiar, warm, impossible to ruin - ten films engineered by accident for comfort.",
+ """<p>A comfort movie is not a great film the way a trophy is a great film - it is a great film the way a familiar chair is a great chair. You know every line, nothing can surprise you into sadness, and it plays perfectly at quarter attention with a phone in one hand. These ten are the ones people actually rewatch, which is the only chart that matters here.</p>
+<h2>The ten</h2>
+<h3>Groundhog Day (1993)</h3>
+<p>The ur-comfort text: a man relives the same day until he gets it - and himself - right. It gets funnier and wiser every single viewing, which is the opposite of how rewatches usually go.</p>
+<h3>The Princess Bride (1987)</h3>
+<p>Sword fights, giants, true love and the most quotable script of its decade. As you wish.</p>
+<h3>Paddington 2 (2017)</h3>
+<p>The politest film ever made and somehow also one of the best: a bear, a marmalade sandwich, and a prison that learns to bake. Guaranteed to improve the day it is played in.</p>
+<h3>My Neighbor Totoro (1988)</h3>
+<p>Two sisters, a forest spirit, and no villain anywhere - Studio Ghibli at its warmest. The bus stop scene in the rain is cinema's deepest exhale. More where that came from on <a href="/where-to-start-with-ghibli/">where to start with Ghibli</a>.</p>
+<h3>School of Rock (2003)</h3>
+<p>Fake teacher, real rock. Jack Black's most rewatchable hour and a half, and the final song still lands on the hundredth play.</p>
+<h3>Chef (2014)</h3>
+<p>A chef rebuilds his life from a food truck, and the cooking scenes are filmed like love letters. Watch fed, or suffer deliciously.</p>
+<h3>The Grand Budapest Hotel (2014)</h3>
+<p>Wes Anderson's most perfect clockwork: a concierge, a lobby boy, a stolen painting, and a cake delivery that outwits a war. Symmetry as comfort food.</p>
+<h3>Sing Street (2016)</h3>
+<p>1980s Dublin, a girl on a staircase, and a school band that grows into a real band because the story needs it to. Every song is a hit in the film's own universe, and in yours by the third listen.</p>
+<h3>The Secret Life of Walter Mitty (2013)</h3>
+<p>A daydreamer steps into his own adventures. Gorgeously shot, kind-hearted, and the definition of a film that wants the viewer to feel better.</p>
+<h3>Ferris Bueller's Day Off (1986)</h3>
+<p>The best day off ever schemed, and the film that proved a character talking to the audience could feel like a friend doing it. Life moves pretty fast.</p>
+<h2>Where to go next</h2>
+<p>Want the same warmth in series form? The <a href="/evergreen-anime/">evergreen anime list</a> has Totoro's cousins by the season, and the <a href="/short-series-eight-episodes-or-fewer/">short series shelf</a> respects a tired week. If even choosing feels heavy, <a href="/what-to-watch-when-bored/">the boredom router</a> decides in two minutes flat.</p>"""),
+("scariest-horror-movies-tonight", "recommendations",
+ "The scariest horror movies to watch tonight - sorted by the kind of fear you want",
+ "There is no objectively scariest film - there is your scariest film. Dread, jump scares, claustrophobia or the void: pick the flavour, get the list.",
+ """<p>Ask for "the scariest movie ever" and you will get ten confident answers, because fear is personal: one viewer's masterpiece of dread is another's boring Tuesday. The honest way to find your scariest film is to pick the kind of fear you are actually shopping for. Four kinds below; each with the films people name most.</p>
+<h2>If you want dread - the slow, sinking kind</h2>
+<p><b>Hereditary (2018)</b> - a family grief story that curdles into something worse; the dread starts early and never leaves the room. <b>The Witch (2015)</b> - 1630s exiles, a forest, and religious terror played at a whisper. <b>The Babadook (2014)</b> - grief as a monster in the house, and the monster is patient. These are the films that feel wrong in the chest for hours afterwards.</p>
+<h2>If you want jump scares, honestly</h2>
+<p><b>The Conjuring (2013)</b> - the modern template: clean craft, ruthless timing, and hands over eyes guaranteed. <b>Insidious (2010)</b> - the further, the red door, and one of the great mid-film scare reveals. <b>Sinister (2012)</b> - found footage inside the fiction, and a soundtrack designed to make you flinch at nothing.</p>
+<h2>If you want claustrophobia</h2>
+<p><b>The Descent (2005)</b> - an all-female caving trip, a collapse, and then what lives down there. Cave-tight framing that makes the room you watch it in feel smaller. <b>Alien (1979)</b> - the haunted house in space, still the genre's masterclass in not showing the monster. <b>REC (2007)</b> - found footage sealed inside one apartment building after dark.</p>
+<h2>If you want the void - ideas that stay scary</h2>
+<p><b>The Shining (1980)</b> - the Overlook Hotel does not scare you in scenes; it scares you in the gaps between them. <b>The Ring (2002)</b> - the tape you should not have watched, and the countdown that starts afterwards. <b>Get Out (2017)</b> - social horror so precise it is frightening twice: once as a thriller, once as a mirror.</p>
+<h2>The rules of the night</h2>
+<p>Volume low is volume wasted - horror is engineered in the sound mix, and half the fear lives there. The first film of the night should be the weakest; save the dread king for last, when the house is quiet. And the honest get-out clause: any of these can be paused at 20 minutes, guilt-free - <a href="/what-to-watch-when-bored/">the boredom router</a> will reroute you to something kinder, <a href="/comfort-movies-to-rewatch/">the comfort shelf</a> will unclench your shoulders afterwards, and the <a href="/supernatural-shows-to-watch/">supernatural shows list</a> keeps the mood across a whole week instead of one night.</p>"""),
+])
