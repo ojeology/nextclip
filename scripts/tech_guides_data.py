@@ -436,6 +436,9 @@ from tech_roadmap5_data import TECH_ROADMAP_T5 as _TECH_ROADMAP_T5
 NEW_TECH_GUIDES.extend(_TECH_ROADMAP_T5)
 from tech_roadmap5b_data import TECH_ROADMAP_T5B as _TECH_ROADMAP_T5B
 NEW_TECH_GUIDES.extend(_TECH_ROADMAP_T5B)
+import tech_roadmap6_data
+_TECH_ROADMAP_T6 = tech_roadmap6_data.TECH_ROADMAP_T6
+NEW_TECH_GUIDES.extend(_TECH_ROADMAP_T6)
 from tech_master_m2_data import TECH_MASTER_M2 as _TECH_MASTER_M2
 NEW_TECH_GUIDES.extend(_TECH_MASTER_M2)
 from tech_master_m3_data import TECH_MASTER_M3 as _TECH_MASTER_M3

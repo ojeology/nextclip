@@ -2736,7 +2736,8 @@ _TECH_FIRSTHAND = {
 
 _TOOL_JS = {"json-formatter": "json", "base64-encoder": "base64", "url-encoder": "url",
             "uuid-generator": "uuid", "timestamp-converter": "timestamp", "word-counter": "wordcount",
-            "case-converter": "case", "http-status-lookup": "status"}
+            "case-converter": "case", "http-status-lookup": "status",
+            "data-usage-estimator": "datausage"}
 
 def tech_tool_pages():
     """BRYME Tools (master build M3): client-side tools at /tech/tool/<slug>/, CSP-safe."""

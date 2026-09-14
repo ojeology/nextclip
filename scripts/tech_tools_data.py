@@ -176,4 +176,22 @@ None,
 <tr data-code="504 gateway timeout upstream"><td>504</td><td>Gateway Timeout</td><td>The server behind the middleman took too long to answer.</td></tr>
 <tr data-code="511 network authentication required captive portal wifi"><td>511</td><td>Network Authentication Required</td><td>The Wi-Fi wants a login page first — a captive portal.</td></tr>
 </tbody></table></div>"""),
+("data-usage-estimator", "Data usage estimator", "Will my mobile data last the month?",
+ "Bundle size, your daily video, music and social hours - get the pace, the projected month, and an honest verdict. Runs entirely in your browser.",
+ "use-less-mobile-data",
+ """<h2>What this does</h2>
+<p>Most data bundles die on a predictable pattern: video on the commute, a hotspot left on, auto-updates over mobile. Enter your bundle and an honest day's usage and this tool projects the whole cycle - pace, whether the bundle lasts, and how many days short it falls if it does not. The rates are the streaming industry's usual rough averages (standard-definition video around 0.7 GB an hour, high definition around 3, music 50-150 MB, social feeds 100-200 MB) - approximations, not quotations.</p>
+<h2>Notes</h2>
+<p>The honest inputs are the ones from your phone's own data-usage screen, not your intentions. If the verdict comes back tight, the fixes are on <a href="/tech/use-less-mobile-data/">use less mobile data</a> - and when data refuses to work at all, that is a different problem with its own fix list. Nothing you enter leaves this page: the tool runs entirely in your browser.</p>""",
+ """<div class="tt-grid">
+<div class="tt-field"><label class="tt-label" for="tt-bundle">Bundle size (GB)</label><input id="tt-bundle" type="number" inputmode="decimal" min="1" max="2000" step="0.5" placeholder="10"></div>
+<div class="tt-field"><label class="tt-label" for="tt-cycle">Cycle length (days)</label><input id="tt-cycle" type="number" inputmode="numeric" min="1" max="120" step="1" placeholder="30"></div>
+<div class="tt-field"><label class="tt-label" for="tt-used">Days already used</label><input id="tt-used" type="number" inputmode="numeric" min="0" max="119" step="1" placeholder="10"></div>
+<div class="tt-field"><label class="tt-label" for="tt-quality">Video quality</label><select id="tt-quality"><option value="sd" selected="selected">Standard (SD)</option><option value="hd">High (HD)</option></select></div>
+<div class="tt-field"><label class="tt-label" for="tt-video">Video hours per day</label><input id="tt-video" type="number" inputmode="decimal" min="0" max="24" step="0.5" placeholder="1"></div>
+<div class="tt-field"><label class="tt-label" for="tt-music">Music hours per day</label><input id="tt-music" type="number" inputmode="decimal" min="0" max="24" step="0.5" placeholder="1"></div>
+<div class="tt-field"><label class="tt-label" for="tt-social">Social hours per day</label><input id="tt-social" type="number" inputmode="decimal" min="0" max="24" step="0.5" placeholder="1"></div>
+</div>
+<div class="tt-btnrow"><button type="button" id="tt-est" class="btn">Estimate my month</button></div>
+<pre id="tt-out" class="tt-out" aria-live="polite"></pre>"""),
 ]
