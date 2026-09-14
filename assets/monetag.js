@@ -34,8 +34,8 @@
     try { localStorage.setItem(key, JSON.stringify(d)); } catch (e) {}
     return true;
   }
-  var VIGNETTE_MAX = 2, VIGNETTE_HOURS = 12;   /* owner file: 1-2 per session; b67: relaxed to 2 (balance) */
-  var SECOND_MAX = 4, SECOND_HOURS = 24;       /* owner file: limited per day */
+  var VIGNETTE_MAX = 4, VIGNETTE_HOURS = 4;    /* b69: LOOSENED by owner directive (earn-first); generous guardrail */
+  var SECOND_MAX = 12, SECOND_HOURS = 12;      /* b69: LOOSENED by owner - IPP is a corner unit, 12/12h stays sane */
 
   /* Zone 11610753 - Vignette Banner (owner logic, frequency-capped). */
   if (allow("bryme-mt-vig", VIGNETTE_MAX, VIGNETTE_HOURS))
