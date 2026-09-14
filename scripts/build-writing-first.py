@@ -1407,7 +1407,8 @@ def legacy_redirect_stubs() -> None:
     _legacy_redirect("/opportunities/", "/writing/")
     _legacy_redirect("/jobs/", "/writing/")
     _legacy_redirect("/make-money/", "/writing/")
-    _legacy_redirect("/tech/", "/guides/")
+    # /tech/ stub REMOVED 2026-09-15: Tech is a live 156-page property again; the old
+    # redirect noindexed an allowlisted route and crashed build-discovery (order-dependent).
     _legacy_redirect("/make-money/writing/mcsweeneys/", "/writing/mcsweeneys/")
     _legacy_redirect("/make-money/writing/longreads-personal-essay/", "/writing/longreads-personal-essay/")
 

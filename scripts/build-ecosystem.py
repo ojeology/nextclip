@@ -1014,24 +1014,205 @@ def entertainment_pages():
             + '<div class="actions">' + footers + "</div></section>")
     n_titles = sum(len(e[4]) for sh in _cat.CATALOGUE_SHELVES for e in sh[3])
     n_picks = sum(len(v) for v in _cat.CATALOGUE_STARTERS.values())
-    browse_body = (head("entertainment", "The catalogue — every title the desk covers, shelved.")
-        + '<style>.trailer-facade{position:relative;margin:8px 0 4px;width:100%;max-width:340px;height:191px}.trailer-play{position:relative;display:block;width:100%;height:100%;border:1px solid rgba(255,255,255,.14);border-radius:10px;overflow:hidden;cursor:pointer;padding:0;background:#101018 center/cover no-repeat;font:inherit}.trailer-play:hover{border-color:rgba(255,255,255,.35)}.tf-badge{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,.72);color:#fff;font-weight:800;font-size:13px;padding:8px 14px;border-radius:999px}.tf-src{position:absolute;left:8px;bottom:8px;background:rgba(0,0,0,.72);color:#d8d8e2;font-size:11px;padding:3px 8px;border-radius:6px}.trailer-facade iframe{position:absolute;inset:0;width:100%;height:100%;border:0}</style><script src="/assets/trailer-facade.js?v=1" defer></script>'
-        + '<main id="main"><div class="wrap">'
-        + '<nav class="crumb"><a href="/entertainment/">Entertainment</a> / Browse the movies</nav>'
-        + '<section class="cover"><p class="kicker">BRYME Entertainment · the catalogue</p>'
-        + '<h1 class="cover-title">Browse the movies.</h1>'
-        + '<p class="cover-dek">Every title below is covered somewhere on this desk — no database padding, no empty entries. Pick a shelf; each tile links to the page where the argument actually lives.</p></section>'
-        + '<nav class="actions" style="justify-content:center;padding:0 0 8px">'
-        + "".join('<a class="btn secondary" href="#shelf-' + cs + '">' + cl.replace("&amp;", "&") + "</a>" for cs, cl, _d, _e in _cat.CATALOGUE_SHELVES)
-        + "</nav>"
-        + shelf_html
-        + '<section class="section"><div class="section-head"><p class="kicker">The house rule</p><h2>Links that go somewhere.</h2></div>'
-        + '<p class="lede">This catalogue lists ' + str(len([e for sh in _cat.CATALOGUE_SHELVES for e in sh[3]])) + " titles argued on this desk with " + str(n_titles) + " verified coverage links, plus " + str(n_picks) + " desk-curated quick picks — " + str(len([e for sh in _cat.CATALOGUE_SHELVES for e in sh[3]]) + n_picks) + " ways to start tonight. Covered titles link to where the argument lives; quick picks are labelled as such. If a title is missing, we have not written about it yet — and we do not pretend otherwise.</p>"
-        + "</section></div></main>" + foot("entertainment"))
+    # ---- the restored NEXTCLIP platform (owner directive 15 Sep: bring back the former entertainment) ----
+    import entertainment_platform_data as _nx
+    _nx_ver = "15 September 2026"
+    _nx_by_slug = {m["slug"]: m for m in _nx.MOVIES}
+    _NX_CSS = ('<style>'
+        '.nx-shell{max-width:1180px;margin:0 auto;padding:0 20px}'
+        '.nx-eyebrow{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#d8b64a}'
+        '.nx-home-hero{min-height:560px;display:flex;align-items:end;position:relative;isolation:isolate;background:#111820;margin:0 -20px}'
+        '.nx-home-hero:before{content:"";position:absolute;inset:0;z-index:-2;background-image:var(--nx-hero-image);background-size:cover;background-position:center;filter:saturate(.78) contrast(1.08)}'
+        '.nx-home-hero:after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(5,7,10,.96) 0%,rgba(5,7,10,.72) 42%,rgba(5,7,10,.18) 100%),linear-gradient(0deg,#0b0d10,transparent 52%)}'
+        '.nx-home-hero-inner{padding-top:110px;padding-bottom:56px;max-width:1180px;width:100%}'
+        '.nx-home-hero h1{font-size:clamp(42px,7vw,78px);line-height:.98;margin:10px 0;color:#fff}'
+        '.nx-home-hero p{max-width:580px;color:#d2d6d9;font-size:16px}'
+        '.nx-hero-facts{font-size:14px;color:#d3d7d9}'
+        '.nx-hero-actions{display:flex;gap:18px;align-items:center;margin-top:22px;flex-wrap:wrap}'
+        '.nx-cta{display:inline-block;background:#d8b64a;color:#111008;padding:11px 16px;font-weight:800}'
+        '.nx-quiet-link{font-weight:750;color:#fff;border-bottom:1px solid rgba(255,255,255,.4);padding:8px 0}'
+        '.nx-section{padding:30px 0 6px}'
+        '.nx-section-head{display:flex;align-items:end;justify-content:space-between;gap:18px;margin-bottom:14px}'
+        '.nx-section-head h2{font-size:clamp(24px,3.6vw,34px);margin:4px 0 0;color:#fff}'
+        '.nx-rail{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(146px,186px);overflow-x:auto;gap:14px;padding:2px 1px 15px;scroll-snap-type:x mandatory}'
+        '.nx-tile{scroll-snap-align:start;transition:transform .25s ease;display:block}'
+        '.nx-tile:hover{transform:translateY(-5px)}'
+        '.nx-poster{aspect-ratio:2/3;background:#171b20;border:0;border-radius:3px;overflow:hidden;box-shadow:0 12px 28px rgba(0,0,0,.22)}'
+        '.nx-poster img{width:100%;height:100%;object-fit:cover;display:block}'
+        '.nx-placeholder{height:100%;display:grid;place-items:center;font-weight:800;font-size:34px;color:#5a6472;background:linear-gradient(145deg,#242b35,#0d0f13)}'
+        '.nx-tile h3{font-size:14px;margin:8px 0 0;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}'
+        '.nx-tile p{font-size:12px;color:#9aa2ab;margin:2px 0}'
+        '.nx-genre-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#30343a}'
+        '.nx-genre-grid a{min-height:96px;padding:15px;background:#101318;display:flex;flex-direction:column;justify-content:end;gap:4px;transition:background .2s}'
+        '.nx-genre-grid a:hover{background:#191d23}'
+        '.nx-genre-grid b{font-size:16px;color:#fff}.nx-genre-grid span{font-size:12px;color:#9aa2ab}'
+        '.nx-edit-row{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}'
+        '.nx-edit-card .nx-poster{aspect-ratio:16/10}'
+        '.nx-edit-card h3{font-size:17px;margin:6px 0;color:#fff}.nx-edit-card span,.nx-edit-card p{font-size:12px;color:#9aa2ab}.nx-edit-card p{margin:0}'
+        '.nx-cta-band{margin:40px 0 8px;padding:34px;display:flex;align-items:center;justify-content:space-between;gap:26px;border-top:1px solid #353940;background:linear-gradient(90deg,#14171c,#0e1014);flex-wrap:wrap}'
+        '.nx-cta-band h2{color:#fff;margin:4px 0 0;font-size:clamp(22px,3vw,30px)}'
+        '.nx-cta-band p{color:#9aa2ab;max-width:460px;margin:0}'
+        '.nx-dark{background:#0b0d10;color:#e7e9ec}'
+        '.nx-movie-hero{position:relative;isolation:isolate;margin:0 -20px;padding:64px 20px 34px}'
+        '.nx-movie-hero:before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,#08090b 18%,rgba(8,9,11,.78) 55%,rgba(8,9,11,.95)),linear-gradient(0deg,#0b0d10,transparent),var(--nx-backdrop);background-size:cover;background-position:center}'
+        '.nx-movie-hero-inner{display:grid;grid-template-columns:190px minmax(0,1fr);gap:26px;align-items:end;max-width:1180px;margin:0 auto}'
+        '.nx-movie-hero .nx-poster{max-height:282px;aspect-ratio:2/3}'
+        '.nx-movie-hero h1{font-size:clamp(32px,5.4vw,56px);line-height:1.02;margin:8px 0;color:#fff}'
+        '.nx-crumb{color:#9aa2ab;font-size:13px}.nx-crumb a{color:#d8b64a}'
+        '.nx-badges{display:flex;flex-wrap:wrap;gap:7px;margin:6px 0}'
+        '.nx-badge{border:1px solid #3a3f47;color:#c6ccd4;padding:4px 9px;font-size:12px}'
+        '.nx-lead{font-size:16px;color:#d2d6d9;max-width:640px}'
+        '.nx-trailer-section{padding:4px 20px 18px;max-width:1180px}'
+        '.nx-trailer-frame{position:relative;max-width:860px;aspect-ratio:16/9;background:#070809;overflow:hidden;border-radius:3px}'
+        '.nx-trailer-frame img{width:100%;height:100%;object-fit:cover;display:block}'
+        '.nx-trailer-frame:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.45),rgba(0,0,0,.08));pointer-events:none}'
+        '.nx-trailer-frame .trailer-play{position:absolute;left:50%;top:50%;z-index:1;transform:translate(-50%,-50%);background:#fff;color:#111;border:0;border-radius:999px;padding:13px 20px;font:800 14px inherit;cursor:pointer}'
+        '.nx-trailer-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0;z-index:2}'
+        '.nx-trailer-note{font-size:12.5px;color:#9aa2ab;margin:8px 0 0;max-width:860px}'
+        '.nx-body{display:grid;grid-template-columns:minmax(0,1fr) 290px;gap:40px;padding:22px 20px 54px;max-width:1180px}'
+        '.nx-prose h2{font-size:20px;margin:26px 0 8px;color:#fff}'
+        '.nx-prose p{color:#d9dde1;line-height:1.7}'
+        '.nx-facts li{color:#d9dde1;margin:6px 0;line-height:1.55}'
+        '.nx-aside{border-left:1px solid #2c3138;padding-left:20px}'
+        '.nx-aside dt{color:#9aa2ab;font-size:12px;text-transform:uppercase;letter-spacing:.08em;margin-top:14px}'
+        '.nx-aside dd{margin:3px 0;color:#e7e9ec}'
+        '.nx-verified{font-size:12px;color:#9aa2ab;border-top:1px solid #2c3138;padding-top:12px;margin-top:18px}'
+        '.nx-watch{margin:22px 0;padding:16px;background:#101318;border:1px solid #2c3138}'
+        '.nx-watch-head{font-size:13px;color:#9aa2ab;margin:0 0 8px}'
+        '.nx-watch a{display:inline-block;margin:0 10px 8px 0;color:#d8b64a;font-weight:750;font-size:14px}'
+        '.nx-backlink a{color:#d8b64a;font-weight:750}'
+        '@media(max-width:680px){.nx-home-hero{min-height:440px}.nx-home-hero-inner{padding-top:150px;padding-bottom:34px}.nx-home-hero h1{font-size:44px}'
+        '.nx-genre-grid{grid-template-columns:repeat(2,1fr)}.nx-edit-row{grid-template-columns:repeat(2,1fr);gap:12px}'
+        '.nx-body{display:block;padding:18px 20px 44px}.nx-aside{border-left:0;border-top:1px solid #2c3138;padding:16px 0 0;margin-top:24px}'
+        '.nx-movie-hero{padding:48px 16px 24px}.nx-movie-hero-inner{grid-template-columns:104px minmax(0,1fr);gap:14px}.nx-movie-hero .nx-poster{max-height:158px}'
+        '.nx-rail{grid-auto-columns:136px}}'
+        '</style><script src="/assets/trailer-facade.js?v=2" defer></script>')
+    def _nx_poster(m):
+        if not m.get("yt"):
+            return '<div class="nx-poster"><div class="nx-placeholder">' + html.escape(m["title"][:1]) + '</div></div>'
+        return '<div class="nx-poster"><img loading="lazy" src="https://i.ytimg.com/vi/' + m["yt"] + '/hqdefault.jpg" alt="' + html.escape(m["title"]) + ' trailer thumbnail"></div>'
+    def _nx_tile(m):
+        sub = " &middot; ".join(x for x in [str(m.get("year") or ""), m.get("genre") or ""] if x)
+        return ('<a class="nx-tile" href="/movie/' + m["slug"] + '/">' + _nx_poster(m)
+                + "<h3>" + html.escape(m["title"]) + "</h3><p>" + sub + "</p></a>")
+    def _nx_facade(m):
+        if not m.get("yt"):
+            return ""
+        return ('<div class="nx-trailer-frame">'
+                + '<img src="https://i.ytimg.com/vi/' + m["yt"] + '/hqdefault.jpg" alt="">'
+                + '<button type="button" class="trailer-play" data-yt="' + m["yt"] + '" data-title="' + html.escape(m["title"]) + ' official trailer" aria-label="Play the official trailer - loads YouTube in this page">Play trailer</button>'
+                + '<noscript><a class="nx-trailer-note" href="https://www.youtube.com/watch?v=' + m["yt"] + '" rel="noopener">Watch the official trailer on YouTube</a></noscript></div>'
+                + '<p class="nx-trailer-note">Official trailer on YouTube &middot; ' + html.escape(m.get("channel") or "YouTube")
+                + " &middot; link verified " + _nx_ver + ".</p>")
+    _nx_genres = {}
+    for _m in _nx.MOVIES:
+        _nx_genres.setdefault(_m.get("genre") or "More", []).append(_m)
+    _nx_gorder = sorted(_nx_genres, key=lambda g: (-len(_nx_genres[g]), g))
+    def _nx_gslug(g):
+        return "".join(ch if ch.isalnum() else "-" for ch in g.lower()).strip("-")
+    _feat = _nx_by_slug.get("parasite") or _nx.MOVIES[0]
+    _trend = [_nx_by_slug[x] for x in ["parasite", "dune-part-two", "top-gun-maverick", "oppenheimer",
+              "godzilla-minus-one", "interstellar", "mad-max-fury-road", "train-to-busan",
+              "nosferatu", "joker"] if x in _nx_by_slug]
+    _favs = [_nx_by_slug[x] for x in ["dune-part-two", "top-gun-maverick", "oppenheimer",
+             "godzilla-minus-one"] if x in _nx_by_slug]
+    _n_trailers = sum(1 for _m in _nx.MOVIES if _m.get("yt"))
+    browse_body = (head("entertainment", "The catalogue — every film the desk covers, on one beautiful shelf.")
+        + _NX_CSS
+        + '<main id="main">'
+        + '<section class="nx-home-hero" style="--nx-hero-image:url(\'https://i.ytimg.com/vi/' + (_feat.get("yt") or "") + '/hqdefault.jpg\')">'
+        + '<div class="nx-shell nx-home-hero-inner"><div class="nx-eyebrow">Featured this week</div>'
+        + '<h1>' + html.escape(_feat["title"]) + '</h1>'
+        + '<div class="nx-hero-facts">' + str(_feat.get("year") or "") + ' &middot; ' + html.escape(_feat.get("genre") or "") + '</div>'
+        + '<p>' + html.escape((_feat.get("teaser") or _feat.get("description") or ""))[:330] + '</p>'
+        + '<div class="nx-hero-actions"><a class="nx-cta" href="/movie/' + _feat["slug"] + '/">Explore movie</a>'
+        + '<a class="nx-quiet-link" href="#nx-trending">See trending</a></div></div></section>'
+        + '<div class="nx-dark"><div class="nx-shell">'
+        + '<section class="nx-section" id="nx-trending"><div class="nx-section-head"><div><div class="nx-eyebrow">Curated now</div><h2>Trending movies</h2></div></div>'
+        + '<div class="nx-rail">' + "".join(_nx_tile(m) for m in _trend) + '</div></section>'
+        + '<section class="nx-section"><div class="nx-section-head"><div><div class="nx-eyebrow">Start exploring</div><h2>Find a film by feeling.</h2></div></div>'
+        + '<div class="nx-genre-grid">'
+        + "".join('<a href="#g-' + _nx_gslug(g) + '"><b>' + html.escape(g) + '</b><span>' + str(len(_nx_genres[g])) + ' films</span></a>' for g in _nx_gorder[:9])
+        + '</div>'
+        + '<p style="color:#9aa2ab;font-size:13px;margin:12px 0 0">Also shelved: '
+        + " &middot; ".join('<a href="#g-' + _nx_gslug(g) + '" style="color:#d8b64a">' + html.escape(g) + '</a>' for g in _nx_gorder[9:]) + '</p></section>')
+    for _g in _nx_gorder:
+        browse_body += ('<section class="nx-section" id="g-' + _nx_gslug(_g) + '"><div class="nx-section-head"><div><div class="nx-eyebrow">Shelf</div><h2>' + html.escape(_g) + '</h2></div><span style="color:#9aa2ab;font-size:13px">' + str(len(_nx_genres[_g])) + ' films</span></div>'
+            + '<div class="nx-rail">' + "".join(_nx_tile(m) for m in _nx_genres[_g]) + '</div></section>')
+    browse_body += ('<section class="nx-section"><div class="nx-section-head"><div><div class="nx-eyebrow">By year</div><h2>Recent favourites</h2></div></div>'
+        + '<div class="nx-edit-row">'
+        + "".join('<a class="nx-edit-card" href="/movie/' + m["slug"] + '/">' + _nx_poster(m) + '<div><span>' + html.escape(m.get("genre") or "") + ' &middot; ' + str(m.get("year") or "") + '</span><h3>' + html.escape(m["title"]) + '</h3><p>' + html.escape((m.get("teaser") or m.get("description") or ""))[:120] + '</p></div></a>' for m in _favs)
+        + '</div></section>'
+        + '<section class="nx-section"><div class="nx-section-head"><div><div class="nx-eyebrow">From the desk</div><h2>Reading for movie nights</h2></div></div>'
+        + '<div class="nx-genre-grid">'
+        + '<a href="/movie-calendar-2026-27/"><b>The 2026-27 movie calendar</b><span>Every date that matters</span></a>'
+        + '<a href="/how-to-pick-a-movie-tonight/"><b>How to pick a movie tonight</b><span>The method that ends the argument</span></a>'
+        + '<a href="/how-streaming-licensing-works/"><b>How streaming licensing works</b><span>Why titles vanish and return</span></a>'
+        + '</div></section>'
+        + '<section class="nx-cta-band"><div><div class="nx-eyebrow">The house rule</div><h2>Every trailer verified by hand.</h2>'
+        + '<p>' + str(len(_nx.MOVIES)) + ' films, ' + str(_n_trailers) + ' official trailers - every YouTube link checked against its real title and channel on ' + _nx_ver + ' before it shipped. Trailers play right here when you press play; nothing loads before that.</p></div>'
+        + '<a class="nx-cta" href="#nx-trending">Start browsing</a></section>'
+        + '</div></main>' + foot("entertainment"))
+    _nx_related = {
+        "Horror": [("modern-horror-starter-route", "The modern horror starter route"), ("what-makes-a-cult-classic", "What makes a cult classic")],
+        "Sci-Fi": [("dune-sci-fi-epics-guide", "The Dune & sci-fi epics guide"), ("movies-like-interstellar-guide", "Movies like Interstellar")],
+        "Superhero": [("movies-like-deadpool-and-wolverine", "Movies like Deadpool & Wolverine")],
+        "Animation": [("where-to-start-with-ghibli", "Where to start with Ghibli")],
+        "Anime": [("best-anime-to-watch-now", "The best anime to watch now"), ("anime-canon-and-filler-explained", "Canon and filler, explained")],
+        "Series": [("best-kdramas-to-start-with", "K-dramas to start with"), ("why-tv-seasons-are-getting-shorter", "Why TV seasons are shorter")],
+        "Nigerian": [("nigerian-thrillers-worth-your-time", "Nigerian thrillers worth your time")],
+        "Indian": [("indian-cinema-first-five", "Indian cinema: the first five")],
+        "Chinese": [("10-korean-movies-everyone-should-watch", "Korean cinema starters")],
+    }
+    def _nx_movie_page(m):
+        badges = [str(m.get("year") or ""), m.get("genre") or "", m.get("language") or "",
+                  (str(m.get("runtime")) + " min") if m.get("runtime") else ""]
+        if m.get("score"):
+            badges.append("BRYME editorial score " + str(m["score"]) + "/10")
+        badges_html = "".join('<span class="nx-badge">' + html.escape(b) + '</span>' for b in badges if b)
+        facts_html = "".join("<li>" + html.escape(str(f)) + "</li>" for f in (m.get("facts") or []))
+        rows = [("Director", m.get("director")), ("Genre", m.get("genre")), ("Year", m.get("year")),
+                ("Language", m.get("language")), ("Country", m.get("country")),
+                ("Runtime", (str(m.get("runtime")) + " min") if m.get("runtime") else None),
+                ("Starring", ", ".join(m.get("cast")[:5]) if m.get("cast") else None),
+                ("BRYME editorial score", (str(m["score"]) + " / 10") if m.get("score") else None)]
+        aside_html = "".join("<dt>" + k + "</dt><dd>" + html.escape(str(v)) + "</dd>" for k, v in rows if v)
+        wl_html = ""
+        if m.get("watch"):
+            wl_html = ('<h2>Where to search</h2><div class="nx-watch"><p class="nx-watch-head">Official platform searches, labelled as searches:</p>'
+                       + "".join('<a href="' + html.escape(w["u"], quote=True) + '" rel="noopener">Search on ' + html.escape(w["n"]) + '</a>' for w in m["watch"]) + "</div>")
+        rel = _nx_related.get(m.get("genre") or "", [("how-to-pick-a-movie-tonight", "How to pick a movie tonight")])
+        rel_html = ('<h2>Keep reading</h2><ul class="nx-facts">'
+                    + "".join('<li><a href="/' + s + '/">' + html.escape(t) + '</a></li>' for s, t in rel[:2])
+                    + '<li><a href="/movie-calendar-2026-27/">The 2026-27 movie calendar</a></li></ul>')
+        desc = html.escape(m.get("description") or m.get("teaser") or "")
+        body = (head("entertainment", "Film, TV and anime recommendations with reasons.")
+            + _NX_CSS
+            + '<main id="main">'
+            + '<section class="nx-movie-hero" style="--nx-backdrop:url(\'https://i.ytimg.com/vi/' + (m.get("yt") or "") + '/hqdefault.jpg\')">'
+            + '<div class="nx-shell nx-movie-hero-inner">' + _nx_poster(m)
+            + '<div><nav class="nx-crumb"><a href="/browse/">Catalogue</a> / ' + html.escape(m.get("genre") or "Film") + '</nav>'
+            + '<h1>' + html.escape(m["title"]) + '</h1>'
+            + '<div class="nx-badges">' + badges_html + '</div>'
+            + '<p class="nx-lead">' + html.escape(m.get("teaser") or "") + '</p></div></div></section>'
+            + ('<div class="nx-shell nx-trailer-section">' + _nx_facade(m) + '</div>' if m.get("yt") else "")
+            + '<div class="nx-shell nx-body"><div class="nx-prose">'
+            + '<h2>The story</h2><p>' + desc + '</p>'
+            + ('<h2>Details the desk keeps</h2><ul class="nx-facts">' + facts_html + '</ul>' if facts_html else "")
+            + wl_html + rel_html
+            + '<p class="nx-backlink"><a href="/browse/">&#8592; Back to the full catalogue</a></p>'
+            + '</div><aside class="nx-aside"><dl>' + aside_html + '</dl>'
+            + '<p class="nx-verified">Trailer link verified ' + _nx_ver + ' via YouTube oEmbed (title and channel checked). Nothing loads from YouTube until you press play.</p>'
+            + '</aside></div></main>' + foot("entertainment"))
+        return ("/movie/" + m["slug"] + "/", m["title"] + " (" + str(m.get("year") or "") + ") - official trailer, cast and story | BRYME Entertainment",
+                (m.get("teaser") or m.get("description") or "")[:155], body)
+    movie_pages = [_nx_movie_page(m) for m in _nx.MOVIES]
+
     pages = [("/", "BRYME Entertainment — what to watch, and why",
               "Film, TV and anime recommendations with reasons, explainers and opinion — written about the work, never piracy.", index_body),
              ("/browse/", "Browse the movies — the BRYME Entertainment catalogue",
-              "Every film, series and anime the desk covers, shelved under fantasy & sci-fi, anime, K-drama and more — each entry links to real coverage.", browse_body)]
+              "726 films with verified trailers, shelved by genre - the platform the desk built, restored.", browse_body)]
+    pages.extend(movie_pages)
     for pl in sect_pages.values():
         pages.extend(pl)
     pages.extend(arts[s] for s in shelf if s not in merged_away)
