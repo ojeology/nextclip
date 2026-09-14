@@ -609,6 +609,18 @@ LIB_BODY = """<p>This is the desk's gym: 75 moves across five taught pages, cove
 <p><b>Counting calories too?</b> The <a href="/fitness-calculators/">fitness calculators</a> do BMI, water, protein and barbell plate maths in ten seconds.</p>"""
 
 
+import os as _os
+_IMG_DIR = _os.path.join(_os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))), "assets", "fitness", "img")
+
+
+def _img_html(x):
+    """Form illustration when one exists at assets/fitness/img/<id>.png."""
+    if _os.path.isfile(_os.path.join(_IMG_DIR, x["id"] + ".png")):
+        return ('<img class="lib-img" src="/assets/fitness/img/' + x["id"] + '.png" '
+                'alt="Form illustration: ' + x["name"].replace("The ", "") + ', side view" loading="lazy" width="1408" height="768">')
+    return ""
+
+
 def library_pages():
     """B71: the 5 category pages, in FIT_MORE tuple shape (slug, kind, title, dek, body)."""
     pages = []
@@ -621,8 +633,8 @@ def library_pages():
         for x in ms:
             cues = "".join("<li>" + c + "</li>" for c in x["cues"])
             body += ('<div class="lib-move" id="' + x["id"] + '">'
-                     "<h3>" + x["name"] + "</h3>"
-                     '<p class="lib-meta"><b>Works:</b> ' + x["muscles"]
+                     "<h3>" + x["name"] + "</h3>" + _img_html(x)
+                     + '<p class="lib-meta"><b>Works:</b> ' + x["muscles"]
                      + " &middot; <b>Kit:</b> " + x["equip"] + "</p>"
                      "<p><b>Setup and cues:</b></p><ul>" + cues + "</ul>"
                      "<p><b>The mistake everyone makes:</b> " + x["mistake"] + "</p>"
