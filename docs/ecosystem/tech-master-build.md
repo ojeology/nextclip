@@ -854,3 +854,8 @@ Chain: 922 pages / 99,128 internal links OK; validator ok; allowlist v26 (912 ro
 - INCIDENT #8: .git drop #32 mid-turn -> text-book recovery (init-fetch-reset 378ed760, 7-file dirty audited = exact b65 footprint).
 - Chain: 1009pp / 108,405 links / ok:true / 997. Commit 0facb155 push MATCH; live: browse 200 + 9/9 facades + js 200 + thumbs 200; ping 200.
 - GROWTH PATH: next trailer batches = verify more official channels (Disney/GKIDS for Ghibli, Universal for Get Out, Universal for Oppenheimer when found, RTL/official Bollywood channels for RRR) and add to TRAILERS dict only after oEmbed.
+
+## Batch 69 — 15 Sep 2026 (third programme + trailer-hunt upgrades)
+- TRAILER HUNT round 2: verified via oEmbed - Oppenheimer dhOGY-0XIo0 (Universal Pictures Latam, original audio - the "Doblado" variant rejected) + Spirited Away fDUFP7EeXLE (GKIDS Films, official English). Platform data patched for both movies (channel + verified shown on page). STILL no official channel: Get Out, Alien 1979, RRR (remain rejected; re-hunt another time - try Blumhouse/20th Century Studios/DVV channels directly).
+- FITNESS: third programme /fitness/30-day-core-programme/ (dead bug, bird dog, glute bridge, plank; 3x10min weekly, 4 weeks; no-crunches doctrine; not-guaranteed + not-medical-advice disclaimers; anti-spot-reduction honesty). related_map + hub row.
+- Chain: 1,805pp / 142,431 links / ok:true / v26 1729. Commit 8c52b05290 push MATCH (.git drop #37 mid-ship: recovery via mixed reset kept working tree, dirty audited = b69 files). Live + pings verified.
