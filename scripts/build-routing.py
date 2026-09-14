@@ -57,7 +57,8 @@ def rewrite_writer_paths(text: str) -> tuple[str, int]:
 def rewrite_prop_paths(text: str, prop: str) -> tuple[str, int]:
     """Point a property's root-absolute links at its own prefix."""
     n = 0
-    text, c = re.subn(r'href="/(?!/)(?!assets/)(?!' + "|".join(x.lstrip("/") for x in PROP_PREFIXES) + r')(.*?)(")',
+    # b70 fix: alternation needs the trailing slash - bare words blocked slugs like /fitness-calculators/
+    text, c = re.subn(r'href="/(?!/)(?!assets/)(?!' + "|".join(x.strip("/") + "/" for x in PROP_PREFIXES) + r')(.*?)(")',
                       rf'href="/{prop}/\1\2', text); n += c
     text, c = re.subn(r'href="/"', rf'href="/{prop}/"', text); n += c
     return text, n

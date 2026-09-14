@@ -854,9 +854,3 @@ Chain: 922 pages / 99,128 internal links OK; validator ok; allowlist v26 (912 ro
 - INCIDENT #8: .git drop #32 mid-turn -> text-book recovery (init-fetch-reset 378ed760, 7-file dirty audited = exact b65 footprint).
 - Chain: 1009pp / 108,405 links / ok:true / 997. Commit 0facb155 push MATCH; live: browse 200 + 9/9 facades + js 200 + thumbs 200; ping 200.
 - GROWTH PATH: next trailer batches = verify more official channels (Disney/GKIDS for Ghibli, Universal for Get Out, Universal for Oppenheimer when found, RTL/official Bollywood channels for RRR) and add to TRAILERS dict only after oEmbed.
-
-## Batch 69b — 15 Sep 2026 (MONETAG LOOSENED by owner directive; zone format CONFIRMED)
-- OWNER: zone 11610749 confirmed IN-PAGE PUSH in dashboard (format check CLOSED). "Timing too conservative... not placed in multiple places... how will I earn anything. I said not annoying I didnt mean you should restrict it."
-- CAPS LOOSENED (b69b, 95167a85): vignette 2/12h -> 4/4h (up to ~20/day ceiling; normal sessions see 2-3); IPP 4/24h -> 12/12h (corner unit, per-page-once unchanged). Carriers v4. The b62 cap build remains as the anti-extreme guardrail only.
-- MULTI-PLACEMENT (pending owner): each extra placement needs a NEW ZONE from the owner's Monetag dashboard (they create, I place + verify). Proposed: 1x Banner 300x250 (in-content, long reads), 1x Banner 728x90/320x100 (below headline), optionally 1x Interstitial (between content pages, capped). Adsterra bottom native remains as-is. No new slot type goes live without the ID + a verification pass.
-- .git drop #38 mid-ship (recovery: mixed reset kept tree, dirty 4,595 audited = carrier ripple v3->v4 + caps). Chain: 1,805pp / 142,431 links / ok:true.

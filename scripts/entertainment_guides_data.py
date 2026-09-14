@@ -344,3 +344,56 @@ ENT_GUIDES.extend([
 <p>Looking further out? The full <a href="/movie-calendar-2026-27/">2026-27 movie calendar</a> has every date that matters, including the December 18 collision nobody is pretending is fine.</p>
 <p class="byline">Dates compiled 13 September 2026 from the major release calendars (Popverse, Entertainment Weekly, Dexerto). Studios move dates without notice \u2014 re-verify before planning around one.</p>"""),
 ])
+
+# ---- batch 70: question-shaped discovery pages (owner: the movie hub must ANSWER:
+# "which supernatural shows", "what's hottest right now", "evergreen anime"). ----
+ENT_GUIDES.extend([
+("supernatural-shows-to-watch", "recommendations",
+"Which supernatural shows should I watch? A starter shelf",
+"Ghost stories, small-town mysteries and things that should not exist: eight supernatural series worth your nights, each with an honest reason and a starting point.",
+"""<p>"Supernatural" covers a lot of ground: ghosts, small towns with secrets, things crawling out of closets. The eight shows below are the desk's honest starters - each earns its place with a reason, not a rating. All are long-finished or safely deep into their runs, so you will not be left waiting on a cliffhanger that never resolves.</p>
+<h2>The shelf</h2>
+<ul>
+<li><b>Stranger Things</b> - the gateway. Eighties kids, a government lab, and something underneath the town. If you have never watched a supernatural series, start here; if you have, you already know.</li>
+<li><b>The Haunting of Hill House</b> - the family drama wearing a ghost story. The scariest series on this shelf and the saddest at once; the description rarely does it justice.</li>
+<li><b>Midnight Mass</b> - slow-burn dread on an isolated island. From the same creator as Hill House; patience is required and repaid.</li>
+<li><b>Supernatural</b> - two brothers, a Chevy, and fifteen seasons of monsters-of-the-week. The comfort food of the genre: enormous, uneven in places, endlessly watchable.</li>
+<li><b>Dark</b> - the German time-loop mystery. Supernatural by way of a puzzle box; the most demanding show here and the most rewarding if you keep notes.</li>
+<li><b>Buffy the Vampire Slayer</b> - the template. Twenty-five years old and still the genre's best character writing; forgive the effects, keep the wit.</li>
+<li><b>The Witcher</b> - monster-hunting with swords and a ledger of debts. Fantasy-forward supernatural for viewers who want action with their dread.</li>
+<li><b>Alchemy of Souls</b> - the Korean entry: magic, body-swapping and a rich fantasy world. The bridge to the desk's <a href="/best-kdramas-to-start-with/">K-drama starters</a>.</li>
+</ul>
+<h2>How to choose tonight</h2>
+<p>Want to be scared? Hill House or Midnight Mass. Want fun? Buffy or Stranger Things. Want to think? Dark. Want comfort food for months? Supernatural. Can't decide between anything on any shelf? The <a href="/how-to-pick-a-movie-tonight/">pick-a-movie method</a> works for series too. And when one of these hooks you, the <a href="/browse/">catalogue shelves</a> hold the desk's wider coverage - or jump genres entirely with the <a href="/evergreen-anime/">evergreen anime list</a>.</p>"""),
+
+("hottest-movies-right-now", "explainers",
+"What is the hottest movie right now? How to know, and what is hot this month",
+"What 'hot' actually means at the box office and on the streams, where to check it in sixty seconds, and what is carrying autumn 2026.",
+"""<p>"What's the hottest movie right now" has two honest answers: what is selling the most tickets (the box office) and what everyone you know is actually watching (the conversation). They overlap less than you would think. This page gives you both, plus the sixty-second method, and tells you what is carrying this exact month.</p>
+<h2>The sixty-second method</h2>
+<p>Box office: a search for "weekend box office" returns the current top ten within seconds - the ranking that decides what Hollywood calls hot. Streaming: every platform's own "Top 10" row is measured, current and honest about your country. The two lists disagree constantly - a film can top streaming for weeks while the cinemas move on, and the biggest cinema opener of a month can vanish from the conversation by the next. That gap is normal; it is how the business now works (<a href="/how-box-office-works/">how the box office works</a> explains the mechanics).</p>
+<h2>What is hot this autumn, 2026</h2>
+<p>The season's heat map, from the desk's verified release calendar (<a href="/what-to-watch-october-2026/">the October guide</a> has the details): <b>Terrifier 4</b> opened October with the horror crowd out in force; <b>Street Fighter</b> lands October 16 and owns the game-adaptation conversation; <b>October 23</b> is the date circled twice - DC's <b>Clayface</b> and the Ishiguro adaptation <b>Klara and the Sun</b> on the same day. And the whole autumn is really a runway to <b>December 18</b>, when Avengers: Doomsday and Dune: Part Three open against each other - the kind of collision that decides the year's conversation (<a href="/movie-calendar-2026-27/">the full calendar</a> has every date).</p>
+<h2>The honest caveat</h2>
+<p>Hotness expires. This page was written in mid-September 2026 from the release calendar, and it will age - the method above never does. When December's giants actually land, the answer to "hottest right now" will be one of two titles and a very loud month; check the calendar, check the top-ten rows, and you will never be more than a minute behind the conversation. Then pick something with the <a href="/how-to-pick-a-movie-tonight/">method</a> and press play - the <a href="/browse/">shelves</a> are the standing answer to the rest of the week.</p>"""),
+
+("evergreen-anime", "recommendations",
+"Evergreen anime: the series that never age",
+"No seasonal hype, no filler traps: ten anime that will be worth starting in ten years, with the honest reason each earns its place.",
+"""<p>Seasonal anime expires by design - every quarter buries the last one. The ten below are the opposite: series the desk recommends to someone who has never watched anime and to someone arguing about their tenth rewatch. No hype cycles, no "you had to be there" - each holds up on story alone.</p>
+<h2>The ten</h2>
+<ul>
+<li><b>Fullmetal Alchemist: Brotherhood</b> - the genre's most complete story. Two brothers, one forbidden act, and a plot that pays off every single thread it plants. The safest recommendation on this page.</li>
+<li><b>Death Note</b> - a student finds a notebook that kills anyone whose name is written in it. A cat-and-mouse thriller first, an anime second; the standard gateway for people who "don't watch cartoons".</li>
+<li><b>Hunter x Hunter</b> - the adventure that grows teeth. Starts as a friendly tournament story and builds to the genre's most respected long arc; the <a href="/where-to-start-with-long-running-anime/">long-runner's guide</a> covers the pace.</li>
+<li><b>Attack on Titan</b> - the mystery-box epic. Walls, titans, and a question behind every answer; the desk's <a href="/was-eren-yeager-really-the-villain/">Eren essay</a> exists because of how this one lands.</li>
+<li><b>Cowboy Bebop</b> - jazz, bounty hunters, twenty-six perfect episodes. The proof that "old" was never the barrier.</li>
+<li><b>One Piece</b> - the marathon. More than a thousand episodes and still the genre's biggest heart; not a starting point, a life choice - the <a href="/one-piece-vs-naruto/">head-to-head</a> covers the debate.</li>
+<li><b>Steins;Gate</b> - time travel with a phone microwave and consequences. Slow first half, devastating second; the purest "trust me" on this list.</li>
+<li><b>Code Geass</b> - chess played with armies and a masked genius. Every plan lands on schedule.</li>
+<li><b>Spirited Away</b> - and Ghibli generally: the film side of evergreen. The <a href="/where-to-start-with-ghibli/">Ghibli starter</a> handles the order.</li>
+<li><b>Frieren: Beyond Journey's End</b> - the newest entry and already evergreen: what the hero's journey looks like <em>after</em> it ends. Quiet, enormous.</li>
+</ul>
+<h2>If you only watch one</h2>
+<p>Fullmetal Alchemist: Brotherhood. It is the recommendation the desk makes when it is only allowed one. From there the branches are on the shelf: current favourites in <a href="/best-anime-to-watch-now/">best anime to watch now</a>, Solo Leveling's wave in <a href="/10-anime-like-solo-leveling-you-should-watch/">anime like Solo Leveling</a>, and the vocabulary to argue about all of it in <a href="/anime-canon-and-filler-explained/">canon and filler, explained</a>.</p>"""),
+])

@@ -229,6 +229,14 @@ html[data-theme="dark"] ::selection{background:rgba(201,153,78,.35)}
 """
 
 FITNESS_CSS_EXTRA = """
+/* b70: fitness calculators */
+.calc{border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:14px 0;background:rgba(127,127,127,.05)}
+.calc label{display:block;font-size:14px;margin:8px 0}
+.calc input{width:120px;padding:8px 10px;margin-left:8px;border:1px solid var(--line);border-radius:8px;font:inherit;background:transparent;color:inherit}
+.calc input:focus{outline:2px solid var(--accent);outline-offset:1px}
+.calc-go{margin-top:6px;padding:9px 14px;border:0;border-radius:8px;background:var(--accent);color:#fff;font-weight:800;cursor:pointer}
+.calc-out{font-weight:700;margin:8px 0 0;min-height:1.2em}
+.calc-hint{font-size:13.5px;color:var(--muted)}
 .fp-week .fp-day { display: grid; grid-template-columns: 44px 1fr auto; gap: 14px; align-items: center; }
 .fp-day .fp-num { font-family: var(--serif); font-size: 22px; color: var(--accent); text-align: right; }
 .fp-day small { display: block; color: var(--dim); font-size: 12.5px; margin-top: 2px; }
@@ -523,6 +531,17 @@ def head(pub, tagline, parent=True):
     edition = editions.get(pub)
     edition_html = (f'<div class="mast-edition"><span class="mast-date">{edition}</span>'
                     f'<span class="mast-tag">{tagline}</span></div>') if edition else f'<span class="mast-tag">{tagline}</span>'
+    pol = ('<style>/* b70 polish: rhythm + response, additive only */'
+           '.prose p{line-height:1.68}'
+           '.prose h2{margin-top:30px;font-size:22px;letter-spacing:-.01em}'
+           '.prose ul li{margin:6px 0}'
+           '.list li{border-radius:8px}'
+           'a{transition:color .15s ease}'
+           '.btn,.nav-cta{transition:transform .15s ease,box-shadow .15s ease}'
+           '.btn:hover,.nav-cta:hover{transform:translateY(-1px)}'
+           'table tbody tr:nth-child(even){background:rgba(127,127,127,.07)}'
+           'input:focus,select:focus,textarea:focus{outline:2px solid var(--accent);outline-offset:1px}'
+           '</style>')
     slim = ""
     if pub == "entertainment":
         slim = ('<style>/* b67 slim mast */'
@@ -550,7 +569,7 @@ def head(pub, tagline, parent=True):
         if cta:
             parts.append('<a class="nav-cta" href="' + cta[0] + '">' + cta[1] + "</a>")
         nav = '<nav class="main-nav"><div class="wrap mast-nav">' + "".join(parts) + "</div></nav>"
-    return f"""{slim}<header class="head"><div class="wrap mast">
+    return f"""{pol}{slim}<header class="head"><div class="wrap mast">
 <a class="mast-brand" href="{brand_href}">{brand}</a>
 {edition_html}
 {pl}{tools}
@@ -1157,6 +1176,9 @@ def entertainment_pages():
         + '<div class="nx-genre-grid">'
         + '<a href="/movie-calendar-2026-27/"><b>The 2026-27 movie calendar</b><span>Every date that matters</span></a>'
         + '<a href="/how-to-pick-a-movie-tonight/"><b>How to pick a movie tonight</b><span>The method that ends the argument</span></a>'
+        + '<a href="/supernatural-shows-to-watch/"><b>Which supernatural shows?</b><span>Eight starters, honestly chosen</span></a>'
+        + '<a href="/hottest-movies-right-now/"><b>What is hottest right now?</b><span>The sixty-second answer</span></a>'
+        + '<a href="/evergreen-anime/"><b>Evergreen anime</b><span>Ten series that never age</span></a>'
         + '<a href="/how-streaming-licensing-works/"><b>How streaming licensing works</b><span>Why titles vanish and return</span></a>'
         + '</div></section>'
         + '<section class="nx-cta-band"><div><div class="nx-eyebrow">The house rule</div><h2>Every trailer verified by hand.</h2>'
@@ -3164,6 +3186,12 @@ def fitness_pages():
                                    ("how-to-plank", "The plank, honestly"),
                                    ("30-day-plank-challenge", "The plank challenge"),
                                    ("rest-days-and-recovery", "Rest days and recovery")]
+    related_map["exercise-library"] = [("bodyweight-moves-that-matter", "The eight moves"),
+                                   ("fitness-calculators", "The fitness calculators"),
+                                   ("30-day-weight-loss-programme", "The 30-day programme")]
+    related_map["fitness-calculators"] = [("exercise-library", "The exercise library"),
+                                   ("how-much-water-to-drink-a-day", "How much water a day"),
+                                   ("how-much-protein-do-you-need", "Protein, honestly")]
     related_map["30-day-plank-challenge"] = [("how-to-plank", "The plank, honestly"),
                                    ("bodyweight-moves-that-matter", "The eight moves"),
                                    ("30-day-weight-loss-programme", "The 30-day programme")]
@@ -3245,7 +3273,13 @@ def fitness_pages():
                  '<span class="meta">Move</span></a></li>'
                  '<li><a href="/30-day-core-programme/"><span><b>The 30-day core programme</b>'
                  "<small>Dead bugs, bridges, bird dogs and planks: four weeks for the deep midsection - no crunches required.</small></span>"
-                 '<span class="meta">Program</span></a></li>')
+                 '<span class="meta">Program</span></a></li>'
+                 '<li><a href="/exercise-library/"><span><b>The exercise library</b>'
+                 "<small>Fifteen moves taught honestly: setup, the one cue that matters, and the sets - the gym in your pocket.</small></span>"
+                 '<span class="meta">Learn</span></a></li>'
+                 '<li><a href="/fitness-calculators/"><span><b>Fitness calculators</b>'
+                 "<small>BMI, daily water and protein targets - ten seconds, nothing leaves your browser.</small></span>"
+                 '<span class="meta">Tools</span></a></li>')
     index_body = (head("fitness", "Practical fitness \u2014 no miracles, no medical claims.")
         + '<main id="main"><div class="wrap">'
         + '<section class="cover"><p class="kicker">BRYME Fitness \u00b7 start where you are</p>'

@@ -253,3 +253,48 @@ FIT_MORE.extend([
 <h2>What to expect and where it fits</h2>
 <p>What a month of honest core work reliably buys: less back ache from sitting, sturdier posture, and stronger sets of everything else - squats, carries, even the <a href="/30-day-plank-challenge/">plank challenge</a> and the <a href="/30-day-weight-loss-programme/">weight-loss programme</a> both ride on this foundation. What it does not buy: visible abs on a deadline (that conversation is food, sleep and months - see <a href="/what-fruit-does-to-your-body/">the fruit page</a> and <a href="/benefits-of-sleeping-well/">the sleep page</a>). Stop for pain, not effort; get a professional's sign-off if you have a back condition. When the month ends, repeat harder or fold the work into the eight-move sessions as <a href="/how-progressive-overload-works/">overload</a> marches on.</p>"""),
 ])
+
+# ---- batch 70: the gym-on-the-phone layer (exercise library + calculators tool page).
+# Same laws: form over reps, disclaimers, no medical claims. ----
+FIT_MORE.extend([
+("exercise-library", "guide",
+"The exercise library: fifteen moves, taught honestly",
+"Every move the desk's programmes use - grouped by push, pull, legs, core and cardio, each with setup, steps, sets and the one form cue that matters most.",
+"""<p>This is the desk's gym: fifteen bodyweight moves that cover every session on this site, each taught the way a good coach cues it - setup, one line of technique that matters most, and the sets to aim for. General information, not medical advice; pain means stop, always.</p>
+<h2>Push (chest, shoulders, triceps)</h2>
+<p><b>1. Incline push-up</b> (beginner) - hands on a counter or chair. The scaling that makes full push-ups reachable: the higher the hands, the easier. 3 sets of 8-12.<br><b>2. Push-up</b> (intermediate) - hands under shoulders, one straight line, chest to the floor. The single cue: <em>squeeze everything and move as one plank</em>. 3 sets of 5-15.<br><b>3. Pike push-up</b> (advanced) - hips high, crown of the head toward the floor. Builds the shoulders push-ups neglect. 3 sets of 4-10.</p>
+<h2>Pull (back, biceps - the hardest pattern without equipment)</h2>
+<p><b>4. Towel row</b> - loop a towel around a sturdy post, lean back, pull your chest to your hands. The cue: <em>pull with the elbows, not the hands</em>. 3 sets of 8-12.<br><b>5. Doorway row</b> - hold a doorframe, feet close to it, lean and pull. Test the frame first. 3 sets of 8-12.</p>
+<h2>Legs (quads, glutes, calves)</h2>
+<p><b>6. Squat</b> - sit back like there is a chair behind you, heels down, knees over toes. Cue: <em>spread the floor with your feet</em>. 3 sets of 10-20.<br><b>7. Lunge</b> - one foot forward, both knees to ninety. Hold a doorframe for balance without shame. 3 sets of 6-10 per leg.<br><b>8. Glute bridge</b> - lying, feet flat, drive hips up and squeeze. The friendliest hinge there is. 3 sets of 12-20.<br><b>9. Calf raise</b> - up on the toes, slow down. 3 sets of 15-25.<br><b>10. Wall sit</b> - thighs parallel to the floor, back flat on the wall. Hold 20-45 seconds.</p>
+<h2>Core (the deep midsection)</h2>
+<p><b>11. Plank</b> - one straight line, breathe. 2-3 sets of 20-45 honest seconds (<a href="/how-to-plank/">full teaching</a>).<br><b>12. Dead bug</b> - on your back, opposite arm and leg lowering slowly. Cue: <em>press the lower back into the floor</em>. 3 sets of 6-10 per side.<br><b>13. Bird dog</b> - on all fours, opposite arm and leg extend. Slow is the difficulty. 3 sets of 5-8 per side.<br><b>14. Side plank</b> - one line, shoulder over elbow. 2 sets of 15-30 seconds per side.</p>
+<h2>Conditioning (lungs and legs)</h2>
+<p><b>15. Jumping jacks / high knees / marching</b> - the same idea at three intensities; marching is the no-impact version and counts completely. 30-60 seconds on, rest, repeat.</p>
+<h2>How to use the library</h2>
+<p>Pick one move per pattern, do the sessions described in <a href="/bodyweight-moves-that-matter/">the eight moves</a> or the <a href="/30-day-weight-loss-programme/">programmes</a>, and progress by the ladder: more reps first, slower tempo second, harder version last (<a href="/how-progressive-overload-works/">the principle</a>). Pair the training with the numbers side: the <a href="/fitness-calculators/">fitness calculators</a> turn your body stats into BMI, water and protein targets in ten seconds. Warm up first - <a href="/how-to-warm-up/">six honest minutes</a> - and let <a href="/rest-days-and-recovery/">rest days</a> do their share.</p>"""),
+
+("fitness-calculators", "guide",
+"Fitness calculators: BMI, water and protein in ten seconds",
+"Three honest calculators that run in your browser - nothing is uploaded anywhere - plus the honest limits of each number.",
+"""<p>Three numbers do most of the useful work in a beginner's fitness plan: roughly where your weight sits for your height, roughly how much water to drink, and roughly how much protein to eat. Enter them below - the calculators run entirely in <em>your</em> browser, and nothing is sent or stored anywhere. The numbers are general guidance, not medical advice.</p>
+<div class="calc"><h3>1. BMI - where your weight sits</h3>
+<p class="calc-hint">Height in centimetres, weight in kilograms. BMI is a rough population screen, not a verdict on any individual - muscular people read "overweight" on it all the time.</p>
+<label>Height (cm) <input type="number" id="bmi-h" placeholder="170" min="100" max="230"></label>
+<label>Weight (kg) <input type="number" id="bmi-w" placeholder="70" min="30" max="250"></label>
+<button type="button" class="calc-go" data-calc="bmi">Calculate BMI</button>
+<p class="calc-out" id="bmi-out">Your BMI appears here.</p></div>
+<div class="calc"><h3>2. Daily water target</h3>
+<p class="calc-hint">A common guide is about 30-35 ml of fluid per kilogram of body weight, more in heat or training. Food covers a share of it (<a href="/how-much-water-to-drink-a-day/">the full picture</a>).</p>
+<label>Weight (kg) <input type="number" id="h2o-w" placeholder="70" min="30" max="250"></label>
+<button type="button" class="calc-go" data-calc="h2o">Calculate water</button>
+<p class="calc-out" id="h2o-out">Your target appears here.</p></div>
+<div class="calc"><h3>3. Daily protein target</h3>
+<p class="calc-hint">Common guidance for active people sits around 1.2-2.0 g per kilogram. This shows the range (<a href="/how-much-protein-do-you-need/">the honest protein page</a>).</p>
+<label>Weight (kg) <input type="number" id="pro-w" placeholder="70" min="30" max="250"></label>
+<button type="button" class="calc-go" data-calc="pro">Calculate protein</button>
+<p class="calc-out" id="pro-out">Your range appears here.</p></div>
+<noscript><p class="note">JavaScript is off, so the calculators cannot run - here are the honest rules of thumb: BMI = weight (kg) divided by height in metres squared (18.5-24.9 is the usual "healthy band"); water = about 30-35 ml per kilogram per day; protein = about 1.2-2.0 g per kilogram per day if you train.</p></noscript>
+<h2>What to do with the numbers</h2>
+<p>The BMI band is a starting marker, not a goal - how you feel, move and sleep carry more truth (<a href="/benefits-of-sleeping-well/">the sleep page</a> and <a href="/how-to-start-working-out/">starting from zero</a> outrank any calculator). Use the water and protein targets as daily rails, and let the training side come from the <a href="/exercise-library/">exercise library</a> and the <a href="/30-day-weight-loss-programme/">programmes</a>. If a number worries you, a professional reads it better than any website.</p><script src="/assets/fitness-tools.js?v=1" defer></script>"""),
+])
