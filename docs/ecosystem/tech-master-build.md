@@ -885,3 +885,8 @@ Chain: 922 pages / 99,128 internal links OK; validator ok; allowlist v26 (912 ro
 - ROUTING HARDENING: (1) pre-clean deletes previous run's root forwards before the sweep (a sweep leak had cloned 62 junk pages into writers/ - FAIL 186 root-caused); (2) step 1 deletes root property dirs instead of sweeping them.
 - WILD TURN: .git drops #34/#35; one failed push (non-fast-forward vs 83c0d634 docs commit) resolved via soft-reset + docs-file restore -> e3da3499 push MATCH. Transient assert during re-edit (partial-apply caught by per-anchor asserts; completed idempotently).
 - Chain: 1,801pp / 142,223 links / ok:true / v26 1726. Live verified: root shelves 200 + slim mast, 4 fitness pages 200 with disclaimers, v3 vig=2 live, browse forward 200, pings x6 200.
+
+## Batch 68 — 15 Sep 2026 (fitness hub round 2)
+- +3 pages via FIT_MORE: /fitness/30-day-plank-challenge/ (4-week hold progression 20s->60s+, side/taps/long-lever variants, honest-abs note, not-guaranteed disclaimer) + /fitness/how-much-water-to-drink-a-day/ (8-glasses origins, 2-3.7L total-fluid orientation, thirst + pale-yellow checks, overhydration honesty) + /fitness/benefits-of-walking-after-meals/ (10-15 min post-meal walks, blood-sugar steadiness stated with honest limits).
+- Wiring: related_map x3 + 3 curated hub rows (Program/Fuel/Move). Chain: 1,804pp / 142,376 links / ok:true / v26 1729. Commit 315e3f78 push MATCH. Live + pings verified.
+- Note: turn opened with a fossil working tree after .git drop #36 (stale docs file + 180 build files) - resolved by hard reset + clean to origin (all shipped content lives on origin; working tree is disposable).
