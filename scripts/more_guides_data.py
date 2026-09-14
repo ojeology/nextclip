@@ -296,5 +296,83 @@ FIT_MORE.extend([
 <p class="calc-out" id="pro-out">Your range appears here.</p></div>
 <noscript><p class="note">JavaScript is off, so the calculators cannot run - here are the honest rules of thumb: BMI = weight (kg) divided by height in metres squared (18.5-24.9 is the usual "healthy band"); water = about 30-35 ml per kilogram per day; protein = about 1.2-2.0 g per kilogram per day if you train.</p></noscript>
 <h2>What to do with the numbers</h2>
-<p>The BMI band is a starting marker, not a goal - how you feel, move and sleep carry more truth (<a href="/benefits-of-sleeping-well/">the sleep page</a> and <a href="/how-to-start-working-out/">starting from zero</a> outrank any calculator). Use the water and protein targets as daily rails, and let the training side come from the <a href="/exercise-library/">exercise library</a> and the <a href="/30-day-weight-loss-programme/">programmes</a>. If a number worries you, a professional reads it better than any website.</p><script src="/assets/fitness-tools.js?v=1" defer></script>"""),
+<p>The BMI band is a starting marker, not a goal - how you feel, move and sleep carry more truth (<a href="/benefits-of-sleeping-well/">the sleep page</a> and <a href="/how-to-start-working-out/">starting from zero</a> outrank any calculator). Use the water and protein targets as daily rails, and let the training side come from the <a href="/exercise-library/">exercise library</a> and the <a href="/30-day-weight-loss-programme/">programmes</a>. If a number worries you, a professional reads it better than any website.</p><h2>The plate loader</h2><p>Barbells only move in jumps: the bar itself, then pairs of plates. Tell this tool what you want on the bar and it does the maths - which plates, which side, how close you can get to the number.</p><div class="calc"><label>Target total weight (kg) <input id="pl-t" type="number" inputmode="decimal" min="1" max="599" step="0.5"></label><label>Bar weight (kg) <select id="pl-bar"><option value="20">20 - Olympic bar</option><option value="15">15 - lighter bar</option><option value="7.5">7.5 - fixed straight bar</option><option value="0">0 - dumbbell or machine</option></select></label><button class="calc-go" data-calc="plates">Load the bar</button><p class="calc-out" id="plates-out" aria-live="polite"></p></div><script src="/assets/fitness-tools.js?v=2" defer></script>"""),
+])
+
+
+# ---- batch 71: tools (1RM + workout builder) + beginner question pages.
+FIT_MORE.extend([
+("1rm-calculator", "guide",
+ "The one-rep max calculator: what your reps say about your strength",
+ "Enter a weight and how many times you lifted it - get an estimated one-rep max and a full training-weight table. Nothing leaves your browser.",
+ """<p>Every strength plan speaks one language: percentages of your one-rep max, or 1RM - the most weight you could lift for a single, honest rep. Testing it for real is risky and exhausting. Estimating it from a normal set takes ten seconds and is accurate enough to programme with.</p>
+<div class="calc"><h2>The calculator</h2>
+<label>Weight you lifted (kg) <input id="rm-w" type="number" inputmode="decimal" min="1" max="499" step="0.5"></label>
+<label>Reps you completed (1-12) <input id="rm-r" type="number" inputmode="numeric" min="1" max="12" step="1"></label>
+<button class="calc-go" data-calc="rm" data-html="1">Estimate my 1RM</button>
+<p class="calc-out" id="rm-out" aria-live="polite"></p></div>
+<h2>How to read the table</h2>
+<p>The estimate arrives with a table of training weights. The usual map: sets of 3-6 reps around 85-93% build maximal strength, sets of 6-12 around 67-85% build muscle size almost as well, and anything lighter builds endurance. You do not need to be precious about it - two or three percent either way changes nothing.</p>
+<p><b>The honest caveats.</b> The estimate uses the Epley formula, one of several respectable formulas: 1RM = weight x (1 + reps/30). It is an estimate, not a measurement, and it drifts above 10 reps - which is why the input stops at 12. Rounding to the nearest 2.5 kg is deliberate: barbells move in 2.5 kg jumps anyway.</p>
+<p><b>Do you need to test a true max?</b> Almost never, and not as a beginner. Training at 75-85% for 3-8 reps builds the same strength with a fraction of the injury risk. If you ever do test, it is with a spotter, after weeks of practice on the lift - not on a dare.</p>
+<p>Numbers here are approximate and for healthy adults building general strength - not medical advice, and results are not guaranteed. Pair the table with the <a href="/exercise-library/">exercise library</a>; the <a href="/workout-builder/">workout builder</a> turns it into a week. More arithmetic lives on the <a href="/fitness-calculators/">fitness calculators</a> page.</p>
+<script src="/assets/fitness-tools.js?v=2" defer></script>"""),
+("workout-builder", "guide",
+ "The workout builder: pick a goal and a week, get your plan",
+ "Choose a goal - feel better, build muscle or build strength - and how many days you can train. The builder assembles a full week from the exercise library, links included.",
+ """<p>Plans fail in the planning, not the doing: too many days, too many exercises, no progression rule. This builder gives you the opposite - a small number of proven moves, a weekly structure that fits the days you actually have, and one rule for getting stronger. Every exercise links to its taught page in the <a href="/exercise-library/">exercise library</a>.</p>
+<div class="calc"><h2>Build it</h2>
+<label>Your goal <select id="wb-goal"><option value="health">Feel better and move more</option><option value="muscle">Build muscle</option><option value="strength">Build strength</option></select></label>
+<label>Days you can train <select id="wb-days"><option value="3">Three days a week</option><option value="4">Four days a week</option></select></label>
+<button class="calc-go" data-calc="builder" data-html="1">Build my week</button>
+<p class="calc-out" id="builder-out" aria-live="polite" style="display:block"></p></div>
+<h2>How the plans work</h2>
+<p><b>Feel better (3 days)</b> - three full-body days you can keep forever: one squat pattern, one push, one pull, one hinge or core move, and easy conditioning. The habit is the goal; the fitness follows it.</p>
+<p><b>Build muscle (4 days)</b> - upper/lower split, two of each, 8-15 rep sets taken close to tired. Muscle grows from steady work near the edge, not from annihilating yourself once a month.</p>
+<p><b>Build strength (3 days)</b> - heavier fives on the big patterns, longer rests, harder variations as you progress. Strength is a skill: frequent, crisp practice beats occasional heroics.</p>
+<p><b>The progression rule is always the same.</b> When the top of a rep range feels easy two sessions in a row, add one rep or a little weight. That is the entire secret, and it works for years.</p>
+<p>This is a starting template for healthy adults, not medical advice; numbers are approximate and results are not guaranteed. New to training entirely? Read <a href="/how-to-start-working-out/">starting from zero</a> first, then come back. The warm-up routine lives on <a href="/how-to-warm-up/">how to warm up</a>; the plate maths lives with the <a href="/fitness-calculators/">calculators</a>.</p>
+<script src="/assets/fitness-tools.js?v=2" defer></script>"""),
+("how-to-start-going-to-the-gym", "guide",
+ "How to start going to the gym: your first visit, planned hour by hour",
+ "The fear, the floor plan, and a 45-minute first session anyone can walk in and do - plus what weeks one to four actually look like.",
+ """<p>The hardest part of the gym is the door. Not the weights - the door. This page walks you through it: what to expect, exactly what to do in your first 45 minutes, and what the first month looks like. Written for the person who has never touched a barbell.</p>
+<h2>First, the truth nobody tells you</h2>
+<p><b>Nobody is watching you.</b> Regulars are locked in on their own sets, their playlists, their rest timers. The spotlight you feel does not exist - every lifter in that room was once the new person who did not know where the plates were. Ask any of them; most will light up to help.</p>
+<h2>Your first visit, hour by hour</h2>
+<p><b>Minutes 0-10: the tour.</b> Walk the floor slowly with your phone in your pocket and your eyes open. Find the stretching area, the dumbbells, the machines, the water. You are not training yet; you are mapping territory. Ask the front desk for a walkthrough - that is literally part of their job.</p>
+<p><b>Minutes 10-20: warm up.</b> Five to ten easy minutes on any cardio machine, then the routine from <a href="/how-to-warm-up/">how to warm up</a>. Nobody remembers the new person warming up. They remember nothing about you - that is the point.</p>
+<p><b>Minutes 20-45: the first session.</b> Do exactly three machine exercises, two light sets of ten each: a chest press, a seated row, a leg press. Machines are the beginner's friend - they guide the path, they are labelled with instructions, and they cannot fall on you. Then stretch, drink water, leave. That is a real workout. You went to the gym and trained. Week one is complete.</p>
+<h2>Weeks one to four</h2>
+<p><b>Week 1:</b> three visits, machines only, two light sets per exercise. Learn the geography. <b>Week 2:</b> same machines, three sets now, note the weights - the numbers are yours, nobody else's. <b>Week 3:</b> add one dumbbell exercise per visit - a <a href="/exercise-library-legs/#goblet-squat">goblet squat</a> is the traditional gateway. <b>Week 4:</b> you are a person who goes to the gym. The <a href="/workout-builder/">workout builder</a> now has something to build on.</p>
+<h2>What to bring</h2>
+<p>Trainers or flat shoes, a water bottle, a small towel, and clothes you can move in. That is the entire list. Everything else is marketing.</p>
+<p>Unwritten rules for not annoying the regulars are on <a href="/gym-etiquette-for-first-timers/">gym etiquette for first timers</a>. Not ready for the gym at all? <a href="/how-to-start-working-out/">Starting from zero</a> and the <a href="/exercise-library/">exercise library</a> work with a floor and a door frame. Numbers and timelines here are general guidance, not medical advice.</p>"""),
+("how-long-to-see-workout-results", "guide",
+ "How long does it take to see workout results? The honest timeline",
+ "Weeks 1-2 you feel different, weeks 3-6 you see it, weeks 8-12 everyone does - what actually happens when, and what makes it faster.",
+ """<p>Everyone asks it in week one, and the honest answer disappoints: visible change takes weeks, real change takes months - but it arrives on a schedule, and knowing the schedule is what keeps people going. Here it is, mapped.</p>
+<h2>The four stages, honestly</h2>
+<p><b>Weeks 1-2: you feel different before you look different.</b> Sleep deepens, stairs get easier, mood lifts. None of it shows in a mirror. Strength jumps fast here - that is your nervous system learning, not muscle yet. Enjoy it; it is free progress.</p>
+<p><b>Weeks 3-6: you notice.</b> Clothes sit differently. The same workout that wrecked you in week one now feels like Tuesday. A friend who sees you daily will not spot it yet - daily change is invisible to daily eyes.</p>
+<p><b>Weeks 8-12: other people notice.</b> This is where the comments start, if the work was consistent. Muscle that shows takes roughly this long even under perfect conditions; fat loss that shows depends heavily on the kitchen.</p>
+<p><b>Month 6+: a different baseline.</b> The person who trained twice a week for six months is genuinely, measurably different - stronger, leaner, harder to tire. This is the stage nobody regrets earning.</p>
+<h2>What makes it faster</h2>
+<p>Consistency beats intensity: two honest sessions every week beat five heroic ones for a fortnight followed by quitting. Protein helps - the <a href="/fitness-calculators/">calculators</a> give you a target in ten seconds. Sleep is when the change is actually built. That is the whole list; there is no fourth thing.</p>
+<h2>Why the scale lies</h2>
+<p>Early training adds muscle and water while it may remove fat - the scale can sit still while your body changes shape. Better instruments: a monthly photo in the same light, a tape around the waist, and your training log - weights going up while the waist holds steady is the transformation happening in real time.</p>
+<p>Timelines here are typical patterns for healthy adults, not promises - genetics, sleep, stress and food all move the dates. Results are not guaranteed; showing up is the only variable you own. Start with <a href="/how-to-start-working-out/">starting from zero</a>, pick a plan from the <a href="/workout-builder/">workout builder</a>, and let the <a href="/30-day-weight-loss-programme/">30-day programme</a> carry the first month. For where your strength numbers could land, the <a href="/1rm-calculator/">one-rep max calculator</a> gives honest context.</p>"""),
+("gym-etiquette-for-first-timers", "guide",
+ "Gym etiquette for first timers: the unwritten rules, written down",
+ "Re-rack your weights, wipe the bench, ask to work in - every rule the regulars follow, so you can walk in like you have always belonged.",
+ """<p>Every gym has rules nobody says out loud. New members break about five of them in week one, feel mortified, and learn. Here they all are instead - the whole unwritten book, written down, so you skip the mortified part.</p>
+<h2>The big five</h2>
+<p><b>1. Re-rack your plates and dumbbells.</b> The one universal law. Leaving plates on the bar or dumbbells scattered is the gym equivalent of not flushing. If you loaded it, you unload it - every time, including the last set.</p>
+<p><b>2. Wipe what you sweat on.</b> Bench, machine pad, mat. Every gym has spray and paper towels somewhere obvious; find them on day one.</p>
+<p><b>3. Do not sit on the machine between sets at busy times.</b> Rest standing, let others rotate in during your rests. Supersets on two machines at 6pm is a small war crime.</p>
+<p><b>4. Ask to work in.</b> Someone is using what you need? "Mind if I work in?" is a sentence every lifter has said a thousand times. The answer is essentially always yes, and you just made a gym friend.</p>
+<p><b>5. Do not film other people.</b> Form-check videos are normal and fine - point the camera at yourself and check the frame. If a stranger is in the background, retake it.</p>
+<h2>The smaller ones, quickly</h2>
+<p><b>Grunting and dropping:</b> a loud exhale on a heavy set is normal; theatrical screaming is not. Dropping is for genuine failure on barbell lifts - a dumbbell lowered with control never needs to be thrown. <b>Mirrors:</b> they are for checking form, and standing still while someone uses one is basic courtesy. <b>Phone calls:</b> take them in the lobby; nobody wants your half of a conversation at weight-drop distance. <b>The squat rack at peak time:</b> if all racks are taken and you only need one, doing curls in it will be noticed.</p>
+<p><b>Asking for help is etiquette too.</b> "Can you show me how this works?" directed at staff or a resting regular is respected everywhere - it is the people who guess with a loaded barbell who worry everyone. The taught pages in the <a href="/exercise-library/">exercise library</a> exist so you walk in already knowing the moves; pair them with <a href="/how-to-start-going-to-the-gym/">your first visit, planned</a> and you will look like a regular by week three.</p>"""),
 ])

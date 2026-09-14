@@ -236,6 +236,17 @@ FITNESS_CSS_EXTRA = """
 .calc input:focus{outline:2px solid var(--accent);outline-offset:1px}
 .calc-go{margin-top:6px;padding:9px 14px;border:0;border-radius:8px;background:var(--accent);color:#fff;font-weight:800;cursor:pointer}
 .calc-out{font-weight:700;margin:8px 0 0;min-height:1.2em}
+/* b71: exercise library, 1RM table, workout builder */
+.lib-move{border:1px solid var(--line);border-radius:10px;padding:4px 18px 12px;margin:16px 0;scroll-margin-top:90px}
+.lib-move h3{margin:14px 0 4px}
+.lib-meta{color:var(--dim);font-size:13.5px;margin:6px 0}
+.rm-table{width:100%;max-width:420px;border-collapse:collapse;margin:10px 0;font-size:14px}
+.rm-table th,.rm-table td{border:1px solid var(--line);padding:6px 10px;text-align:left}
+.rm-table th{background:rgba(127,127,127,.08)}
+.wb-day{border:1px solid var(--line);border-radius:10px;padding:4px 16px 10px;margin:12px 0}
+.wb-day ul{margin:8px 0}
+.wb-note{color:var(--dim);font-size:14px;border-top:1px solid var(--line);padding-top:10px;margin-top:12px}
+.calc select{padding:8px 10px;margin-left:8px;border:1px solid var(--line);border-radius:8px;font:inherit;background:transparent;color:inherit}
 .calc-hint{font-size:13.5px;color:var(--muted)}
 .fp-week .fp-day { display: grid; grid-template-columns: 44px 1fr auto; gap: 14px; align-items: center; }
 .fp-day .fp-num { font-family: var(--serif); font-size: 22px; color: var(--accent); text-align: right; }
@@ -501,7 +512,9 @@ def fitness_drawer():
         '<button type="button" class="drawer-close" data-drawer-close aria-label="Close menu">'
         '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 5l14 14M19 5L5 19"/></svg></button></div>\n'
         '<div class="drawer-group"><b>Tools</b><a href="/fitness/30-day-walking-plan/">The 30-day walking plan</a>'
-        '<a href="/fitness/weekly-planner/">The weekly planner</a></div>\n'
+        '<a href="/fitness/weekly-planner/">The weekly planner</a>'
+        '<a href="/fitness/workout-builder/">The workout builder</a>'
+        '<a href="/fitness/1rm-calculator/">The 1RM calculator</a></div>\n'
         '<div class="drawer-group"><b>Guides</b><a href="/fitness/how-to-start-working-out/">How to start working out</a>'
         '<a href="/fitness/how-to-warm-up/">How to warm up</a>'
         '<a href="/fitness/strength-training-for-beginners/">Strength for beginners</a>'
@@ -3137,6 +3150,15 @@ def fitness_pages():
     import more_guides_data
     FIT_ARTICLES.extend((s, ti, dek, b) for (s, _k, ti, dek, b) in more_guides_data.FIT_MORE)
     ART_SOURCES.update((s, FIT_SOURCES) for (s, _k, ti, dek, b) in more_guides_data.FIT_MORE)
+    # b71: the exercise library hub + 5 category pages from fitness_library_data
+    import fitness_library_data
+    _lib_pages = fitness_library_data.library_pages()
+    FIT_ARTICLES.extend((s, ti, dek, b) for (s, _k, ti, dek, b) in _lib_pages)
+    ART_SOURCES.update((s, FIT_SOURCES) for (s, _k, ti, dek, b) in _lib_pages)
+    _lib_i = [i for i, a in enumerate(FIT_ARTICLES) if a[0] == "exercise-library"]
+    assert len(_lib_i) == 1, "exercise-library entry not unique: %d" % len(_lib_i)
+    _lt, _ld, _lb = fitness_library_data.hub_override()
+    FIT_ARTICLES[_lib_i[0]] = ("exercise-library", _lt, _ld, _lb)
     ART_SOURCES["how-much-protein-do-you-need"] = FIT_SOURCES + [
         ("NIH/NCBI \u2014 Recommended Dietary Allowances: protein 0.8 g/kg for adults", "https://www.ncbi.nlm.nih.gov/books/NBK234929/"),
         ("American Heart Association \u2014 Protein: what\u2019s enough?", "https://www.heart.org/en/healthy-living/healthy-eating/eat-smart/nutrition-basics/protein-and-heart-health"),
@@ -3186,9 +3208,39 @@ def fitness_pages():
                                    ("how-to-plank", "The plank, honestly"),
                                    ("30-day-plank-challenge", "The plank challenge"),
                                    ("rest-days-and-recovery", "Rest days and recovery")]
-    related_map["exercise-library"] = [("bodyweight-moves-that-matter", "The eight moves"),
-                                   ("fitness-calculators", "The fitness calculators"),
-                                   ("30-day-weight-loss-programme", "The 30-day programme")]
+    related_map["exercise-library"] = [("exercise-library-push", "Push moves, taught"),
+                                   ("exercise-library-legs", "Leg moves, taught"),
+                                   ("workout-builder", "The workout builder")]
+    related_map["exercise-library-push"] = [("exercise-library-pull", "Pull moves, taught"),
+                                   ("exercise-library-legs", "Leg moves, taught"),
+                                   ("workout-builder", "The workout builder")]
+    related_map["exercise-library-pull"] = [("exercise-library-push", "Push moves, taught"),
+                                   ("exercise-library-core", "Core moves, taught"),
+                                   ("1rm-calculator", "The 1RM calculator")]
+    related_map["exercise-library-legs"] = [("exercise-library-push", "Push moves, taught"),
+                                   ("exercise-library-core", "Core moves, taught"),
+                                   ("workout-builder", "The workout builder")]
+    related_map["exercise-library-core"] = [("exercise-library-cond", "Conditioning moves, taught"),
+                                   ("exercise-library-legs", "Leg moves, taught"),
+                                   ("fitness-calculators", "The fitness calculators")]
+    related_map["exercise-library-cond"] = [("exercise-library-core", "Core moves, taught"),
+                                   ("exercise-library-push", "Push moves, taught"),
+                                   ("workout-builder", "The workout builder")]
+    related_map["1rm-calculator"] = [("fitness-calculators", "The fitness calculators"),
+                                   ("workout-builder", "The workout builder"),
+                                   ("how-long-to-see-workout-results", "The honest results timeline")]
+    related_map["workout-builder"] = [("exercise-library", "The exercise library"),
+                                   ("1rm-calculator", "The 1RM calculator"),
+                                   ("how-to-warm-up", "How to warm up")]
+    related_map["how-to-start-going-to-the-gym"] = [("gym-etiquette-for-first-timers", "Gym etiquette, written down"),
+                                   ("how-to-start-working-out", "Starting from zero"),
+                                   ("exercise-library", "The exercise library")]
+    related_map["how-long-to-see-workout-results"] = [("how-to-start-working-out", "Starting from zero"),
+                                   ("workout-builder", "The workout builder"),
+                                   ("1rm-calculator", "The 1RM calculator")]
+    related_map["gym-etiquette-for-first-timers"] = [("how-to-start-going-to-the-gym", "Your first visit, planned"),
+                                   ("strength-training-for-beginners", "Six moves, no gym"),
+                                   ("exercise-library", "The exercise library")]
     related_map["fitness-calculators"] = [("exercise-library", "The exercise library"),
                                    ("how-much-water-to-drink-a-day", "How much water a day"),
                                    ("how-much-protein-do-you-need", "Protein, honestly")]
@@ -3275,10 +3327,16 @@ def fitness_pages():
                  "<small>Dead bugs, bridges, bird dogs and planks: four weeks for the deep midsection - no crunches required.</small></span>"
                  '<span class="meta">Program</span></a></li>'
                  '<li><a href="/exercise-library/"><span><b>The exercise library</b>'
-                 "<small>Fifteen moves taught honestly: setup, the one cue that matters, and the sets - the gym in your pocket.</small></span>"
+                 "<small>53 moves across five taught pages: push, pull, legs, core, conditioning - cues, mistakes, easier and harder.</small></span>"
                  '<span class="meta">Learn</span></a></li>'
                  '<li><a href="/fitness-calculators/"><span><b>Fitness calculators</b>'
-                 "<small>BMI, daily water and protein targets - ten seconds, nothing leaves your browser.</small></span>"
+                 "<small>BMI, water, protein and barbell plate maths - ten seconds, nothing leaves your browser.</small></span>"
+                 '<span class="meta">Tools</span></a></li>'
+                 '<li><a href="/1rm-calculator/"><span><b>The 1RM calculator</b>'
+                 "<small>What your reps say about your strength: an honest estimate plus a full training-weight table.</small></span>"
+                 '<span class="meta">Tools</span></a></li>'
+                 '<li><a href="/workout-builder/"><span><b>The workout builder</b>'
+                 "<small>Pick a goal and your days - it assembles the week from the library, links included.</small></span>"
                  '<span class="meta">Tools</span></a></li>')
     index_body = (head("fitness", "Practical fitness \u2014 no miracles, no medical claims.")
         + '<main id="main"><div class="wrap">'
@@ -3290,6 +3348,7 @@ def fitness_pages():
         + '<a class="btn secondary" style="display:block;padding:20px 18px;text-align:left" href="/how-to-start-working-out/"><b>I\u2019m starting from zero</b><small style="display:block;color:var(--dim);margin-top:6px;text-transform:none;letter-spacing:0;font-size:13px">The no-miracle guide, then the 30-day walking plan \u2014 ten minutes a day to begin.</small></a>'
         + '<a class="btn secondary" style="display:block;padding:20px 18px;text-align:left" href="/strength-training-for-beginners/"><b>I want to get stronger</b><small style="display:block;color:var(--dim);margin-top:6px;text-transform:none;letter-spacing:0;font-size:13px">Six movement patterns, two days a week, zero equipment \u2014 plus the protein arithmetic.</small></a>'
         + '<a class="btn secondary" style="display:block;padding:20px 18px;text-align:left" href="/rest-days-and-recovery/"><b>I keep quitting</b><small style="display:block;color:var(--dim);margin-top:6px;text-transform:none;letter-spacing:0;font-size:13px">Recovery, sleep and the two-day rule \u2014 why the calendar beats motivation.</small></a>'
+        + '<a class="btn secondary" style="display:block;padding:20px 18px;text-align:left" href="/how-to-start-going-to-the-gym/"><b>I want to train at the gym</b><small style="display:block;color:var(--dim);margin-top:6px;text-transform:none;letter-spacing:0;font-size:13px">Your first visit, planned hour by hour \u2014 then etiquette, then the library.</small></a>'
         + '</div></section>'
         + '<section class="section"><div class="data-cols" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px">'
         + '<div class="section" style="border:1px solid var(--line);padding:22px"><p class="kicker">The plan \u00b7 interactive</p><h2 style="font-size:22px">The 30-Day Walking Plan.</h2>'
