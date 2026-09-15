@@ -3,7 +3,19 @@ services:
     name: bryme-website
     rootDir: .
     plan: free
-    buildCommand: npm install --omit=dev && npm run build && python3 scripts/build-ecosystem.py && python3 scripts/build-routing.py
+    # `npm run build` already runs build-routing.py and build-public-dir.py, in the
+    # order that works: build-writing-first regenerates an unrouted writers tree,
+    # then routing prefixes it into /writers/, then public/ is published.
+    #
+    # The two extra steps that used to follow were removed because they cannot
+    # succeed here. Verified on a pristine clone at 7f3e0f2:
+    #   - build-routing.py re-run on an already-routed tree hits its own guard and
+    #     exits 1 ("tree is already routed - rebuild clean (rm -rf writers ...)
+    #     first, aborting"), which failed the whole && chain on every deploy.
+    #   - build-ecosystem.py re-run rewrites 186 files under ecosystem/ that are
+    #     not then propagated to public/ (routing has already aborted), so it
+    #     added churn and no output.
+    buildCommand: npm install --omit=dev && npm run build
     staticPublishPath: public
     headers:
       - path: /*
@@ -26,8 +38,13 @@ services:
       - { type: redirect, source: /jobs/*, destination: /writing/ }
       - { type: redirect, source: /make-money, destination: /writing/ }
       - { type: redirect, source: /make-money/*, destination: /writing/ }
-      - { type: redirect, source: /tech, destination: /guides/ }
-      - { type: redirect, source: /tech/*, destination: /guides/ }
+      # Removed 2026-09-15: `/tech` and `/tech/*` used to 301 to `/guides/`.
+      # That predates Tech becoming a live property — /tech/ now serves 182
+      # indexable pages (see tech/sitemap.xml), so the rule only ever fired for
+      # a /tech/ URL with no committed file, silently soft-redirecting a missing
+      # page to /guides/ instead of letting it 404. Verified live: /tech/ and
+      # /tech/<article>/ already return 200 because static files take precedence,
+      # so removing these changes nothing that works and stops the soft-404s.
       # Retired 2026-09-07: the old country-discovery page duplicated
       # /writing-opportunities/. One country entry point; old URL 301s to it.
       - { type: redirect, source: /writing/by-country, destination: /writing-opportunities/ }
