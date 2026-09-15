@@ -2820,7 +2820,7 @@ def tech_pages():
         cname = TECH_CAT.get(cslug, ("Coding",))[0] if cslug in TECH_CAT else "Coding"
         chref = "/tech/" if cslug not in TECH_CAT else "/tech/" + cslug + "/"
         rel = _tech_related(a, arts)
-        rel_html = "".join('<li><a href="/' + r["slug"] + '/">' + html.escape(r["title"]) + "</a></li>" for r in rel)
+        rel_html = "".join('<li><a href="/tech/' + r["slug"] + '/">' + html.escape(r["title"]) + "</a></li>" for r in rel)
         src_html = ""
         if a["sources"]:
             src_html = ('<h2>Sources</h2><ul class="list">'
@@ -3064,7 +3064,7 @@ def fitness_pages():
 
     def art(slug, title, dek, body_html, sources, related, schema_type="Article"):
         import json as _j
-        rel_html = "".join('<li><a href="/' + s + '/">' + rt + "</a></li>" for s, rt in related)
+        rel_html = "".join('<li><a href="/fitness/' + s + '/">' + rt + "</a></li>" for s, rt in related)
         schema = {"@context": "https://schema.org", "@type": schema_type,
                   "headline": title,
                   "author": {"@type": "Organization", "name": "BRYME Fitness desk"},
@@ -3334,16 +3334,16 @@ def fitness_pages():
                  '<li><a href="/30-day-core-programme/"><span><b>The 30-day core programme</b>'
                  "<small>Dead bugs, bridges, bird dogs and planks: four weeks for the deep midsection - no crunches required.</small></span>"
                  '<span class="meta">Program</span></a></li>'
-                 '<li><a href="/exercise-library/"><span><b>The exercise library</b>'
+                 '<li><a href="/fitness/exercise-library/"><span><b>The exercise library</b>'
                  "<small>75 moves across five taught pages: push, pull, legs, core, conditioning - cues, mistakes, easier and harder.</small></span>"
                  '<span class="meta">Learn</span></a></li>'
-                 '<li><a href="/fitness-calculators/"><span><b>Fitness calculators</b>'
+                 '<li><a href="/fitness/fitness-calculators/"><span><b>Fitness calculators</b>'
                  "<small>BMI, water, protein and barbell plate maths - ten seconds, nothing leaves your browser.</small></span>"
                  '<span class="meta">Tools</span></a></li>'
-                 '<li><a href="/1rm-calculator/"><span><b>The 1RM calculator</b>'
+                 '<li><a href="/fitness/1rm-calculator/"><span><b>The 1RM calculator</b>'
                  "<small>What your reps say about your strength: an honest estimate plus a full training-weight table.</small></span>"
                  '<span class="meta">Tools</span></a></li>'
-                 '<li><a href="/workout-builder/"><span><b>The workout builder</b>'
+                 '<li><a href="/fitness/workout-builder/"><span><b>The workout builder</b>'
                  "<small>Pick a goal and your days - it assembles the week from the library, links included.</small></span>"
                  '<span class="meta">Tools</span></a></li>')
     index_body = (head("fitness", "Practical fitness \u2014 no miracles, no medical claims.")

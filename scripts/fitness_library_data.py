@@ -621,8 +621,42 @@ def _img_html(x):
     return ""
 
 
+def missing_illustrations():
+    """Every move id whose assets/fitness/img/<id>.png is absent."""
+    return [x["id"] for x in EXERCISES
+            if not _os.path.isfile(_os.path.join(_IMG_DIR, x["id"] + ".png"))]
+
+
+def assert_illustrations_complete():
+    """Gate the build on the 75 form illustrations actually being present.
+
+    _img_html() returns "" for a missing PNG, so a build run anywhere the
+    assets are absent used to emit every exercise card with no illustration
+    and no error at all - and package.json's "|| echo ... using committed
+    static output" would swallow it. Deployed, that silently strips all 75
+    images from the library.
+
+    Loud by default. Set BRYME_ALLOW_MISSING_ILLUSTRATIONS=1 to downgrade to a
+    warning for environments that legitimately hold no binary assets (CI
+    caches, partial checkouts); that variable is an explicit opt-out, so a
+    green build can never mean "images quietly dropped".
+    """
+    missing = missing_illustrations()
+    if not missing:
+        return
+    detail = (f"{len(missing)} of {len(EXERCISES)} exercise illustrations missing from "
+              f"{_IMG_DIR}\n  " + ", ".join(missing))
+    if _os.environ.get("BRYME_ALLOW_MISSING_ILLUSTRATIONS") == "1":
+        print("fitness-library: WARNING - " + detail)
+        return
+    raise SystemExit("fitness-library: refusing to build - " + detail + "\n"
+                     "Every exercise card must ship illustrated. Restore the PNGs, or set "
+                     "BRYME_ALLOW_MISSING_ILLUSTRATIONS=1 to build without them deliberately.")
+
+
 def library_pages():
     """B71: the 5 category pages, in FIT_MORE tuple shape (slug, kind, title, dek, body)."""
+    assert_illustrations_complete()
     pages = []
     for cid, ctitle, cdek, cintro in CATS:
         ms = moves_for(cid)
