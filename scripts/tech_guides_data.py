@@ -488,3 +488,5 @@ NEW_TECH_GUIDES.extend([
  ("Google Search Central: Google crawlers (incl. Google-Extended)", "https://developers.google.com/search/docs/crawling-indexing/overview-google-crawlers")],
 [("check-if-google-indexed-your-page", "Check if Google indexed a page"), ("sitemap-indexnow", "Sitemaps and IndexNow"), ("github-token-hygiene", "Token hygiene")]),
 ])
+from tech_1010_batch1_data import TECH_1010_BATCH1 as _TECH_1010_B1
+NEW_TECH_GUIDES.extend(_TECH_1010_B1)
