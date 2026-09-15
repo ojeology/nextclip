@@ -959,3 +959,9 @@ Chain: 922 pages / 99,128 internal links OK; validator ok; allowlist v26 (912 ro
 - DISTRIBUTION: 74 of 75. legs 14, push 15, pull 16, core 14, cond 11 (+ shared refs).
 - QA: programmatic 10/10 PASS; REVIEW-SHEET in staging per house law.
 - TWO REMAIN for batch 78i: jumping-lunge, sprint-intervals (image cap).
+
+## Batch 78i (FINALE) - 15 Sep 2026 (form illustrations: 75 of 75 — LIBRARY COMPLETE)
+- FINAL TWO IMAGES: jumping-lunge (mid-air switch lunge, front thigh parallel, arms pumping, torso tall), sprint-intervals (full sprint stride: knee punch, opposite arm drive, lean from ankles, push-off leg extended, subtle speed lines).
+- THE FULL LIBRARY IS NOW ILLUSTRATED: 75 of 75 moves across legs, push, pull, core and conditioning — every exercise card in the BRYME fitness library carries a form illustration. Series: navy #14213d kit, bronze #a8752a equipment, paper #fafaf8 background, flat vector, 1376x768.
+- The owner's original ask ("the fitness need ai images so people know actually positions") is fully delivered: 51 images shipped across batches 78d-78i (24 pre-existing), zero code changes needed beyond the auto-wiring designed in 78a, validate:quick green on every batch.
+- QA LAW held throughout: programmatic checks every batch (dimensions/palette/non-blank), REVIEW-SHEETs produced for owner review, two-layer QA documented where vision was unavailable.
