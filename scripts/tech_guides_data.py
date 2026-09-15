@@ -498,3 +498,5 @@ from tech_1010_batch4_data import BATCH_1010_B4 as _B_1010_B4
 NEW_TECH_GUIDES.extend(_B_1010_B4)
 from tech_1010_batch5_data import BATCH_1010_B5 as _B_1010_B5
 NEW_TECH_GUIDES.extend(_B_1010_B5)
+from tech_1010_batch6_data import BATCH_1010_B6 as _B_1010_B6
+NEW_TECH_GUIDES.extend(_B_1010_B6)
