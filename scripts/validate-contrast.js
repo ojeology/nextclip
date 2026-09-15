@@ -27,11 +27,17 @@ const ROOT = path.resolve(__dirname, "..");
 const failures = [];
 const check = (ok, msg) => { if (!ok) failures.push(msg); };
 
+/* Routed scheme: the writers' pages live under /writers/. The family hub at "/"
+   is not sampled here because it carries the family navigation rather than the
+   writers' one; validate-http.js asserts it instead. All 16 verified present
+   under public/writers/ at 563f734. */
 const ROUTES = [
-  "/", "/writing/", "/learn/", "/tools/", "/glossary/", "/templates/",
-  "/checklists/", "/problems/", "/search/", "/guides/", "/tested/", "/about/",
-  "/writing/the-republic/", "/guides/how-to-write-a-pitch/",
-  "/learn/writing-basics/sentence-basics/", "/tools/word-counter/",
+  "/writers/", "/writers/writing/", "/writers/learn/", "/writers/tools/",
+  "/writers/glossary/", "/writers/templates/", "/writers/checklists/",
+  "/writers/problems/", "/writers/search/", "/writers/guides/",
+  "/writers/tested/", "/writers/about/", "/writers/writing/the-republic/",
+  "/writers/guides/how-to-write-a-pitch/",
+  "/writers/learn/writing-basics/sentence-basics/", "/writers/tools/word-counter/",
 ];
 
 const THEMES = ["light", "dark"];
@@ -231,14 +237,16 @@ async function ready(url) {
         });
         check(home !== null, `${label}: no home link in header`);
         if (home) {
-          check(home.href === "/", `${label}: home link points to ${home.href}`);
+          /* Routed scheme: on a writers' page the home link points at the writers'
+             homepage, not the family hub. Asserting "/" here predates routing. */
+          check(home.href === "/writers/", `${label}: home link points to ${home.href}`);
           check(home.svg, `${label}: home link has no icon`);
           check(home.label && home.label.trim().length > 0, `${label}: home link has no accessible name`);
           check(home.w >= 24 && home.h >= 24, `${label}: home tap target ${Math.round(home.w)}x${Math.round(home.h)} < 24px`);
         }
 
         /* ---------- 4. the country filter is a real selection control ---------- */
-        if (route === "/writing/") {
+        if (route === "/writers/writing/") {
           const f = await page.evaluate(() => {
             const s = document.getElementById("f-country") || document.getElementById("country-select");
             if (!s) return null;
@@ -290,7 +298,7 @@ async function ready(url) {
       viewports: VIEWPORTS.map((v) => `${v.width}x${v.height}`),
       contrastPairsMeasured: measured,
       standard: "WCAG 2.1 AA (4.5:1 normal, 3:1 large)",
-      failures: failures.slice(0, 100),
+      failures: failures.slice(0, 5000),
     }, null, 2));
     if (failures.length) process.exitCode = 1;
   } catch (e) {

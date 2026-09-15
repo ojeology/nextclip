@@ -17,12 +17,12 @@
   /* ink */
   --ink: #1d2531;
   --muted: #49525f;
-  --dim: #878d99;
+  --dim: #626773;
   /* structure */
   --navy: #16324f;
   --navy-deep: #0f2438;
   /* the accent */
-  --brass: #a1761b;
+  --brass: #856116;
   --brass-bright: #c39a2e;
   --lime: #7fa814; --lime-bright: #a4c62c;
   /* status — used for nothing else */
@@ -50,7 +50,7 @@ html[data-theme="dark"] {
   --sheet: #1a212c;
   --ink: #e7e3d8;
   --muted: #9aa1ad;
-  --dim: #7b818d;
+  --dim: #838994;
   --navy: #aec4e0;
   --navy-deep: #0f151f;
   --brass: #d0aa52;
@@ -542,7 +542,7 @@ html[data-theme="dark"] .btn.secondary { color: var(--navy); }
 }
 
 /* masthead home icon */
-.main-nav a.home-link { display: inline-grid; place-items: center; padding: 8px 10px; color: var(--brass); }
+.main-nav a.home-link { display: inline-grid; place-items: center; min-width: 24px; padding: 8px 10px; color: var(--brass); }
 .main-nav a.home-link svg { width: 17px; height: 17px; }
 .main-nav a.home-link:hover { color: var(--navy); box-shadow: inset 0 -3px 0 var(--lime-bright); }
 

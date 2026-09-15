@@ -31,13 +31,18 @@ services:
     # an old Google result, and a stale dashboard rule was sending /make-money
     # to /opportunities/ (a noindex page). Declared here they are honoured,
     # version-controlled, and reviewable.
+    # Destinations updated 2026-09-15 to the routed scheme. The writers' pages
+    # moved under /writers/, so the previous targets (/writing/,
+    # /writing-opportunities/) no longer exist in the published artifact and
+    # each of these rules was sending old links to a 404. Kept in step with the
+    # _redirects file, which server/server.js reads for local tests.
     routes:
-      - { type: redirect, source: /opportunities, destination: /writing/ }
-      - { type: redirect, source: /opportunities/*, destination: /writing/ }
-      - { type: redirect, source: /jobs, destination: /writing/ }
-      - { type: redirect, source: /jobs/*, destination: /writing/ }
-      - { type: redirect, source: /make-money, destination: /writing/ }
-      - { type: redirect, source: /make-money/*, destination: /writing/ }
+      - { type: redirect, source: /opportunities, destination: /writers/writing/ }
+      - { type: redirect, source: /opportunities/*, destination: /writers/writing/ }
+      - { type: redirect, source: /jobs, destination: /writers/writing/ }
+      - { type: redirect, source: /jobs/*, destination: /writers/writing/ }
+      - { type: redirect, source: /make-money, destination: /writers/writing/ }
+      - { type: redirect, source: /make-money/*, destination: /writers/writing/ }
       # Removed 2026-09-15: `/tech` and `/tech/*` used to 301 to `/guides/`.
       # That predates Tech becoming a live property — /tech/ now serves 182
       # indexable pages (see tech/sitemap.xml), so the rule only ever fired for
@@ -47,8 +52,8 @@ services:
       # so removing these changes nothing that works and stops the soft-404s.
       # Retired 2026-09-07: the old country-discovery page duplicated
       # /writing-opportunities/. One country entry point; old URL 301s to it.
-      - { type: redirect, source: /writing/by-country, destination: /writing-opportunities/ }
-      - { type: redirect, source: /writing/by-country/*, destination: /writing-opportunities/ }
+      - { type: redirect, source: /writing/by-country, destination: /writers/writing-opportunities/ }
+      - { type: redirect, source: /writing/by-country/*, destination: /writers/writing-opportunities/ }
     envVars:
       - key: NODE_VERSION
         value: "22"
