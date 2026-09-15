@@ -953,3 +953,9 @@ Chain: 922 pages / 99,128 internal links OK; validator ok; allowlist v26 (912 ro
 - QA: programmatic 10/10 PASS (1376x768, series palette, non-blank); REVIEW-SHEET.jpg in staging for owner.
 - IMAGE CAP hit again mid-78h (10/turn): 12 remain — band-shoulder-press, arnold-press, dumbbell-floor-press, band-row, concentration-curl, band-curl, donkey-calf-raise, hollow-rock, plank-shoulder-tap, side-plank-dip, jumping-lunge, sprint-intervals. Final batch 78h (10) + 78i (2) next turn.
 - PUSH NOTE: batches 78d-78f were restored from the durable git bundle (pending-push/) after the token revocation; new token live from this batch forward.
+
+## Batch 78h - 15 Sep 2026 (form illustrations part eight: 74 of 75)
+- TEN IMAGES: band-shoulder-press (one arm overhead, band taut, ribs down), arnold-press (mid-rotation: one dumbbell up palm-forward, one at shoulder palm-in), dumbbell-floor-press (flat on floor, arms extended, wrists straight), band-row (hinged, elbows past ribs, band to lower stomach), concentration-curl (elbow braced inside thigh, palm up), band-curl (band under feet, elbow pinned, top of curl), donkey-calf-raise (leaned on bench, flat back, heels high), hollow-rock (banana shape, gentle rock arc), plank-shoulder-tap (high plank, hand to opposite shoulder, hips level), side-plank-dip (forearm under shoulder, hips dipped a few inches, feet stacked).
+- DISTRIBUTION: 74 of 75. legs 14, push 15, pull 16, core 14, cond 11 (+ shared refs).
+- QA: programmatic 10/10 PASS; REVIEW-SHEET in staging per house law.
+- TWO REMAIN for batch 78i: jumping-lunge, sprint-intervals (image cap).
