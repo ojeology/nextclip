@@ -494,3 +494,5 @@ from tech_1010_batch2b_data import HOSTING_1010_B2 as _H_1010_B2
 NEW_TECH_GUIDES.extend(_H_1010_B2)
 from smarthome_1010_data import SMARTHOME_1010_A as _SH_1010_A
 NEW_TECH_GUIDES.extend(_SH_1010_A)
+from tech_1010_batch4_data import BATCH_1010_B4 as _B_1010_B4
+NEW_TECH_GUIDES.extend(_B_1010_B4)

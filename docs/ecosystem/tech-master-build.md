@@ -980,3 +980,10 @@ Chain: 922 pages / 99,128 internal links OK; validator ok; allowlist v26 (912 ro
   3. smart-plug-going-offline — the 5-cause diagnostic order (2.4 GHz band-steering → DHCP lease expiry with the static-reservation fix → congestion → power-interrupt reconnect → cloud dependency, the honest limitation local Matter control solves). Symptom signatures named (weekly cadence = DHCP; after-storm = power; simultaneous mass reports = cloud).
 - Receipts: CSA + Thread Group as first-party sources; no vendor superiority claims; the brief's factual-language rule applied (no "all plugs", no "hubs make everything faster").
 - Chain: tech 176 pages × 3 copies, sitemaps 176, allowlist 1774, validate:quick green.
+
+## 10/10 research brief — batch 4 (Tier 2 tech trio), 15 Sep 2026
+- SSD-VS-HDD: interface arithmetic (SATA ~600 MB/s ceiling, PCIe gens) + manufacturer TBW datasheet conventions (1TB consumer tier ~300-600 TBW) + the sixteen-year maths at 100GB/day; Backblaze field data with THEIR own small-sample caveat stated (not buried); HDD repositioned honestly as capacity-per-currency choice; failure modes (sudden vs gradual, unpowered flash retention per JEDEC) covered.
+- HOW-MUCH-RAM: Microsoft's official 4GB minimum framed as install-floor; workload tiers (8 light / 16 default / 32 video+local-AI / 64 measured-demand) as consensus bands not vendor claims; the Task Manager reading skill (cache ≠ problem, committed+paging = problem); SSD-vs-RAM upgrade-priority cross-link.
+- MICROSOFT-365-FREE-VS-PAID: built on Microsoft's own support comparison page (fetched 15 Sep 2026) — free web apps structure, Basic-as-storage-plan, Family arithmetic, AI no-sharing caveat from Microsoft's own table; prices deliberately NOT pinned (readers pointed at official page; Classic plan variants noted); cross-linked to subscription audit + cloud storage + Docs-vs-Word pieces.
+- Receipts: all three pieces follow the factual-language rule; no universal claims; first-party sources where reachable (Microsoft support page fetched directly; Backblaze/JEDEC named).
+- Chain: tech 179 pages × 3 copies, sitemaps 179, allowlist 1777, validate:quick green.
