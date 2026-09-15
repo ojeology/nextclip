@@ -490,3 +490,5 @@ NEW_TECH_GUIDES.extend([
 ])
 from tech_1010_batch1_data import TECH_1010_BATCH1 as _TECH_1010_B1
 NEW_TECH_GUIDES.extend(_TECH_1010_B1)
+from tech_1010_batch2b_data import HOSTING_1010_B2 as _H_1010_B2
+NEW_TECH_GUIDES.extend(_H_1010_B2)

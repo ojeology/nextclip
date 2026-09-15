@@ -164,3 +164,6 @@ TROUBLESHOOTING_GUIDES.extend([
 <p>Networks that force their own DNS through a login gateway you cannot bypass (some ISPs' hardware, some enterprises); older Android versions whose Private DNS implementation predates certain resolvers' TLS requirements; and managed/work-profile devices where policy overrides user settings entirely. On those, the honest answer is a VPN with encrypted DNS — a different tool, honestly labelled as one.</p>
 <p><b>Official documentation (checked 11 September 2026):</b> Google's Android Private DNS support notes (support.google.com), Cloudflare and Google Public DNS resolver documentation (one.one.one.one/docs, developers.google.com/speed/public-dns), and your provider's own hostname reference.</p>"""),
 ])
+
+from tech_1010_batch2_data import TROUBLESHOOTING_1010_B2 as _T_1010_B2
+TROUBLESHOOTING_GUIDES.extend(_T_1010_B2)
