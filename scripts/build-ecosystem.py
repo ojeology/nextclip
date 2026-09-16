@@ -3138,7 +3138,8 @@ def fitness_pages():
 
     kicker_default = "Evidence-aware \u00b7 beginner-first \u00b7 no miracle claims"
     related_map = {
-        "how-to-start-working-out": [("30-day-walking-plan", "The 30-day walking plan"),
+        "how-to-start-working-out": [("cardio-machine-worth-buying", "Rower, bike or treadmill: which cardio machine deserves the corner?"),
+                                     ("30-day-walking-plan", "The 30-day walking plan"),
                                      ("how-many-steps-a-day", "How many steps a day actually matter?"),
                                      ("rest-days-and-recovery", "Rest days and recovery")],
         "how-many-steps-a-day": [("30-day-walking-plan", "The 30-day walking plan"),
@@ -3206,6 +3207,12 @@ def fitness_pages():
     import more_guides_data
     FIT_ARTICLES.extend((s, ti, dek, b) for (s, _k, ti, dek, b) in more_guides_data.FIT_MORE)
     ART_SOURCES.update((s, FIT_SOURCES) for (s, _k, ti, dek, b) in more_guides_data.FIT_MORE)
+    ART_SOURCES["cardio-machine-worth-buying"] = FIT_SOURCES + [
+        ("Concept2 \u2014 RowErg product page (US$990, PM5 monitor included, 14in/20in seat heights, 38in inseam limit, two-piece storage, 30-day money-back guarantee, 2-year and 5-year warranty; read 16 September 2026)", "https://www.concept2.com/ergs/rowerg"),
+        ("pacompendium.com \u2014 2024 Adult Compendium of Physical Activities tracking guide (MET codes: stationary rowing 5.0 / 7.3 / 7.5 / 11.0 / 14.0 by watt tier; treadmill walking 4.8 at 3.5-3.9 mph and 5.8 at 4.0-4.4 mph; curved-treadmill running 12.0 at 7.0-7.9 mph; interactive virtual cycling and cycle HIIT 8.8)", "https://pacompendium.com/wp-content/uploads/2024/03/4_2024_adult-compendium-tracking-guide-1-2024.pdf"),
+        ("Clinical Tools Library \u2014 rowing-machine MET cross-chart, 28 June 2026 (secondary cross-table: stationary cycling moderate about 6.8 METs, elliptical 5.0 light and 7.0 vigorous, treadmill jogging about 9.8 at 6 mph)", "https://clinicaltoolslibrary.com/calories-burned-rowing-machine/"),
+        ("BarBend \u2014 best exercise equipment for bad knees, trainer-tested (impact ranking: recumbent bike safest, upright bike and elliptical low, controlled treadmill walking moderate, rower conditional on knee flexion; Concept2 RowErg US$990 cross-check)", "https://barbend.com/best-exercise-equipment-for-bad-knees/"),
+    ]
     # b71: the exercise library hub + 5 category pages from fitness_library_data
     import fitness_library_data
     _lib_pages = fitness_library_data.library_pages()
@@ -3222,7 +3229,8 @@ def fitness_pages():
     ART_SOURCES["sleep-and-exercise-performance"] = FIT_SOURCES + [
         ("CDC (MMWR) \u2014 adults 18\u201360 recommended at least 7 hours; short-sleep risks", "https://www.cdc.gov/mmwr/volumes/65/wr/mm6506a1.htm"),
         ("CDC \u2014 1 in 3 adults don\u2019t get enough sleep (AASM/SRS recommendation)", "https://archive.cdc.gov/www_cdc_gov/media/releases/2016/p0215-enough-sleep.html")]
-    related_map["walking-vs-running"] = [("30-day-walking-plan", "The 30-day walking plan"),
+    related_map["walking-vs-running"] = [("cardio-machine-worth-buying", "Rower, bike or treadmill: which cardio machine deserves the corner?"),
+                                     ("30-day-walking-plan", "The 30-day walking plan"),
                                          ("how-to-warm-up", "How to warm up"),
                                          ("how-to-start-working-out", "Starting from zero")]
     related_map["how-to-warm-up"] = [("strength-training-for-beginners", "Strength training for beginners"),
@@ -3316,6 +3324,9 @@ def fitness_pages():
     related_map["what-fruit-does-to-your-body"] = [("how-much-protein-do-you-need", "Protein, honestly"),
                                                    ("bodyweight-moves-that-matter", "The eight moves"),
                                                    ("30-day-walking-plan", "The 30-day walking plan")]
+    related_map["cardio-machine-worth-buying"] = [("walking-vs-running", "Walking or running: the honest comparison for beginners"),
+                                              ("how-to-start-working-out", "Starting from zero: how to begin exercising"),
+                                              ("fitness-calculators", "The desk's fitness calculators")]
     arts = [art(s, ti, dek, b, ART_SOURCES[s], related_map[s])
             for (s, ti, dek, b) in FIT_ARTICLES]
 
