@@ -266,6 +266,17 @@ FITNESS_CSS_EXTRA = """
 .wb-day{border:1px solid var(--line);border-radius:10px;padding:4px 16px 10px;margin:12px 0}
 .wb-day ul{margin:8px 0}
 .wb-note{color:var(--dim);font-size:14px;border-top:1px solid var(--line);padding-top:10px;margin-top:12px}
+/* b72: the exercise library entry point on the desk homepage. The
+   illustrations are 1408x768 and were previously reachable only from the
+   five library pages themselves, so nothing on /fitness/ showed an image. */
+.fit-lib-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(0,1fr));gap:14px;margin:16px 0 0}
+.fit-lib-card{display:block;min-width:0;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--sheet);text-decoration:none;color:inherit}
+.fit-lib-card:hover{border-color:var(--accent)}
+.fit-lib-card img{display:block;width:100%;height:auto;aspect-ratio:1408/768;object-fit:cover;border:0;padding:0;background:var(--sheet)}
+.fit-lib-card b{display:block;padding:11px 13px 2px;font:700 14px var(--sans);color:var(--ink)}
+.fit-lib-card small{display:block;padding:0 13px 12px;color:var(--dim);font-size:12.5px;line-height:1.45}
+@media (max-width:820px){.fit-lib-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:430px){.fit-lib-grid{grid-template-columns:minmax(0,1fr)}}
 .calc select{padding:8px 10px;margin-left:8px;border:1px solid var(--line);border-radius:8px;font:inherit;background:transparent;color:inherit}
 .calc-hint{font-size:13.5px;color:var(--muted)}
 .fp-week .fp-day { display: grid; grid-template-columns: 44px 1fr auto; gap: 14px; align-items: center; }
@@ -432,6 +443,7 @@ def _nav_items(pub):
         return (navs, ("/the-weekend-ahead/", "This weekend"))
     if pub == "fitness":
         guides = [("HEAD", "The fitness shelf"), ("/fitness/", "All fitness guides"),
+("/fitness/exercise-library/", "The exercise library"),
                   ("/fitness/how-to-start-working-out/", "Starting from zero"),
                   ("/fitness/30-day-walking-plan/", "The 30-day walking plan"),
                   ("/fitness/how-many-steps-a-day/", "How many steps a day"),
@@ -535,6 +547,13 @@ def fitness_drawer():
         '<a href="/fitness/weekly-planner/">The weekly planner</a>'
         '<a href="/fitness/workout-builder/">The workout builder</a>'
         '<a href="/fitness/1rm-calculator/">The 1RM calculator</a></div>\n'
+        '<div class="drawer-group"><b>The Library</b>'
+        '<a href="/fitness/exercise-library/">All 75 illustrated moves</a>'
+        '<a href="/fitness/exercise-library-push/">Push day</a>'
+        '<a href="/fitness/exercise-library-pull/">Pull day</a>'
+        '<a href="/fitness/exercise-library-legs/">Leg day</a>'
+        '<a href="/fitness/exercise-library-core/">Core</a>'
+        '<a href="/fitness/exercise-library-cond/">Conditioning</a></div>\n'
         '<div class="drawer-group"><b>Guides</b><a href="/fitness/how-to-start-working-out/">How to start working out</a>'
         '<a href="/fitness/how-to-warm-up/">How to warm up</a>'
         '<a href="/fitness/strength-training-for-beginners/">Strength for beginners</a>'
@@ -3383,6 +3402,16 @@ def fitness_pages():
         + '<a class="btn secondary" style="display:block;padding:20px 18px;text-align:left" href="/rest-days-and-recovery/"><b>I keep quitting</b><small style="display:block;color:var(--dim);margin-top:6px;text-transform:none;letter-spacing:0;font-size:13px">Recovery, sleep and the two-day rule \u2014 why the calendar beats motivation.</small></a>'
         + '<a class="btn secondary" style="display:block;padding:20px 18px;text-align:left" href="/how-to-start-going-to-the-gym/"><b>I want to train at the gym</b><small style="display:block;color:var(--dim);margin-top:6px;text-transform:none;letter-spacing:0;font-size:13px">Your first visit, planned hour by hour \u2014 then etiquette, then the library.</small></a>'
         + '</div></section>'
+        + '<section class="section"><div class="section-head"><p class="kicker">The library &middot; 75 illustrated moves</p><h2>Every exercise, shown.</h2></div>'
+        + '<p style="color:var(--dim);font-size:14.5px;max-width:62ch">Five shelves. Each move carries a form illustration, the muscles it works and the kit it needs &mdash; no account, nothing to install.</p>'
+        + '<div class="fit-lib-grid">'
+        + '<a class="fit-lib-card" href="/fitness/exercise-library-push/"><img src="/assets/fitness/img/push-up.png" alt="Form illustration: push-up, side view" loading="lazy" width="1408" height="768"><b>Push day</b><small>16 chest, shoulder and tricep moves</small></a>'
+        + '<a class="fit-lib-card" href="/fitness/exercise-library-pull/"><img src="/assets/fitness/img/towel-row.png" alt="Form illustration: towel row, side view" loading="lazy" width="1408" height="768"><b>Pull day</b><small>16 back and bicep moves</small></a>'
+        + '<a class="fit-lib-card" href="/fitness/exercise-library-legs/"><img src="/assets/fitness/img/bodyweight-squat.png" alt="Form illustration: bodyweight squat, side view" loading="lazy" width="1408" height="768"><b>Leg day</b><small>16 squat, lunge and hinge moves</small></a>'
+        + '<a class="fit-lib-card" href="/fitness/exercise-library-core/"><img src="/assets/fitness/img/forearm-plank.png" alt="Form illustration: forearm plank, side view" loading="lazy" width="1408" height="768"><b>Core</b><small>14 ab and stability moves</small></a>'
+        + '<a class="fit-lib-card" href="/fitness/exercise-library-cond/"><img src="/assets/fitness/img/marching-in-place.png" alt="Form illustration: Marching in place, side view" loading="lazy" width="1408" height="768"><b>Conditioning</b><small>13 heart-pumping moves</small></a>'
+        + '</div>'
+        + '<div class="actions" style="margin-top:16px"><a class="btn" href="/fitness/exercise-library/">Open the full library &rarr;</a></div></section>'
         + '<section class="section"><div class="data-cols" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px">'
         + '<div class="section" style="border:1px solid var(--line);padding:22px"><p class="kicker">The plan \u00b7 interactive</p><h2 style="font-size:22px">The 30-Day Walking Plan.</h2>'
         + '<p style="color:var(--dim);font-size:14px">Show up every day for a month. Time-based, rest days built in \u2014 tick days off and your browser remembers. No account, nothing sent anywhere.</p>'
