@@ -30,6 +30,14 @@
 /writing/by-country  /writers/writing-opportunities/  301
 /writing/by-country/  /writers/writing-opportunities/  301
 
+# 2026-09-16: kept from the dashboard-era edge rules - the only two whose
+# sources have no published page or stub twin and whose destinations are live
+# articles (verified 200). These now live in the Render service routes too
+# (synced via API 2026-09-16) and in render.yaml; mirrored here so the local
+# test server agrees with production.
+/tech/beginner-coding/  /tech/learning-to-code-on-a-phone-termux/  301
+/tech/hosting/  /tech/where-to-host-website-for-free/  301
+
 # Removed 2026-09-15: `/tech` and `/tech/*` -> `/guides/`. Tech is a live
 # property serving 182 indexable pages (tech/sitemap.xml), and /guides/ is not
 # in the published artifact either, so the rule could only ever fire for a

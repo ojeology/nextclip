@@ -4,18 +4,22 @@
 Why this script exists (investigation of 2026-09-16, after a report that
 "/tech returns 404"):
 
-1. The live Render static site does NOT apply the routes declared in
-   render.yaml. Production still runs dashboard-era rules from before that
-   file existed: bare /tech 301s to /guides/ and /make-money 301s to
-   /opportunities/ - neither destination matches any render.yaml rule, and
-   NONE of the 104 declared rules fire (/opportunities, /jobs, /author,
-   /guides all return bare 404 in production). The file is version-controlled
-   intent that the deployed service has never been synced to. A chain then
-   explains the "/tech 404" report: /tech -> 301 -> /guides/ -> agents that
-   normalise the trailing slash request /guides -> 404.
+1. RESOLVED 2026-09-16 via the Render API: the live service now runs
+   exactly the render.yaml routes (PUT /v1/services/{id}/routes). Before the
+   sync it ran 18 dashboard-era rules from before that file existed: bare
+   /tech 301ed to /guides/, /make-money 301ed to /opportunities/, and NONE
+   of the 104 declared rules fired. The stale rules are only visible through
+   the dedicated /routes endpoint - the service-details API does not expose
+   them, which is how the drift hid. The old chain that explained the
+   "/tech 404" report: /tech -> 301 -> /guides/ -> agents that normalise the
+   trailing slash request /guides -> 404. This script stays: published files
+   outrank edge rules, so the stubs remain the enforcement of record and the
+   insurance against future config drift.
 
 2. The buildCommand's `git clean -xdf public/` never ran on Render (its
-   `|| echo` fallback swallowed the failure), so Render's cached build
+   `|| echo` fallback swallowed the failure) until 2026-09-16, when the live
+   buildCommand was synced to the render.yaml version via the Render API;
+   before that, Render's cached build
    workspace kept republishing the 2026-09-14 vintage of the pre-routing
    public/ tree: 18 root directories (guides, writing, learn, tools, today,
    tested, templates, checklists, compare, contact, copyright, corrections,

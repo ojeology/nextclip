@@ -47,18 +47,18 @@ services:
     # /writing-opportunities/) no longer exist in the published artifact and
     # each of these rules was sending old links to a 404. Kept in step with the
     # _redirects file, which server/server.js reads for local tests.
-    # 2026-09-16 finding: the live service does NOT apply this routes block.
-    # Production still runs dashboard-era rules that predate this file (/tech
-    # 301s to /guides/, /make-money 301s to /opportunities/) and none of the
-    # rules below fire (/opportunities, /jobs, /author, /guides return bare
-    # 404 live). Until the site is re-synced to this blueprint (or the stale
-    # dashboard rules are deleted), scripts/purge-stale-publish.py enforces
-    # the same scheme at file level inside `npm run build`: it purges the
-    # stale 2026-09-14 root directories from the cached publish workspace
-    # (the buildCommand git-clean below never ran on Render - its || echo
-    # fallback swallowed the failure) and ships noindex meta-refresh stubs
-    # for every legacy URL these rules cover. Keep this block and that
-    # script's parsed destinations in step: it reads this file.
+    # 2026-09-16: SYNCED. The live service now runs exactly these routes
+    # (plus the two /tech/ article rules below): applied via the Render API,
+    # PUT /v1/services/{id}/routes, replacing 18 dashboard-era rules that
+    # predated this file (/tech 301ed to /guides/, /make-money 301ed to
+    # /opportunities/). Those rules are only visible through the dedicated
+    # /routes endpoint - the service-details API does not expose them, which
+    # is why this drift went unnoticed. The live buildCommand and NODE_VERSION
+    # were likewise synced to this file's values via the API on the same day.
+    # scripts/purge-stale-publish.py still enforces the same scheme at file
+    # level inside `npm run build` (published files outrank edge rules; the
+    # stubs are the belt-and-braces against future config drift). Keep this
+    # block and that script's parsed destinations in step: it reads this file.
     routes:
       - { type: redirect, source: /opportunities, destination: /writers/writing/ }
       - { type: redirect, source: /opportunities/*, destination: /writers/writing/ }
@@ -77,6 +77,13 @@ services:
       # /writing-opportunities/. One country entry point; old URL 301s to it.
       - { type: redirect, source: /writing/by-country, destination: /writers/writing-opportunities/ }
       - { type: redirect, source: /writing/by-country/*, destination: /writers/writing-opportunities/ }
+      # 2026-09-16: kept from the dashboard-era set - the only two stale rules
+      # whose sources have no published page or stub twin and whose
+      # destinations are live articles (both verified 200). purge-stale-publish
+      # skips nested sources, so these are edge-only; _redirects mirrors them
+      # for the local test server.
+      - { type: redirect, source: /tech/beginner-coding/, destination: /tech/learning-to-code-on-a-phone-termux/ }
+      - { type: redirect, source: /tech/hosting/, destination: /tech/where-to-host-website-for-free/ }
       # Pre-routing writers' scheme (batch 32). These 32 path segments held the
       # writers' publication before the routing migration moved it under
       # /writers/. Render supports wildcard capture in the destination, so each

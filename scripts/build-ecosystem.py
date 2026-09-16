@@ -1336,7 +1336,7 @@ def entertainment_pages():
     movie_pages = [_nx_movie_page(m) for m in _nx.MOVIES]
 
     pages = [("/", "The shelves — every film the desk covers | BRYME Entertainment",
-              "726 films with hand-verified official trailers, shelved by genre - the platform, restored and beautiful.", browse_body)]
+              str(len(_nx.MOVIES)) + " films with hand-verified official trailers, shelved by genre - the platform, restored and beautiful.", browse_body)]
     pages.extend(movie_pages)
     for pl in sect_pages.values():
         pages.extend(pl)
