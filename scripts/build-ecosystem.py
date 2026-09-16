@@ -182,7 +182,27 @@ html[data-theme="dark"] ::selection{background:rgba(208,170,82,.35)}
 .cover-facts b{display:block;font-family:var(--serif);font-size:30px;line-height:1.15;color:var(--accent)}
 .cover-facts span{font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
 @media (max-width:860px){.mast-nav{overflow-x:auto;scrollbar-width:none}.mast-nav::-webkit-scrollbar{display:none}}
-@media (max-width:760px){.mast-tag{display:none}.mast-date{font-size:9.5px}.nav-toggle{display:inline-grid}}
+@media (max-width:760px){.mast-tag{display:none}.mast-date{font-size:9.5px}.nav-toggle{display:inline-grid}
+/* At its desktop 34px/.14em the brand measured 314px of the 342px available
+   and squeezed .mast-edition until its text overflowed, so every property page
+   scrolled sideways: tech 438px, home 505px at a 390px viewport. */
+.mast{gap:10px}
+.mast-brand{font-size:clamp(19px,5.2vw,24px);letter-spacing:.05em}
+.mast-edition{overflow:hidden;min-width:0}}
+
+/* .lg-scroll/.lg-table were defined only in SPORTS_CSS_EXTRA, so tech guides
+   using them shipped unstyled tables that set their own width (606px at 390px).
+   overflow on a display:table box is ignored, so a table carrying both classes
+   has to become the scrolling block itself. */
+.lg-scroll,.compare-scroll{overflow-x:auto;overflow-y:hidden;max-width:100%%;-webkit-overflow-scrolling:touch;scrollbar-width:thin}
+table.lg-table,table.compare-table{width:100%%;border-collapse:collapse;font:500 14px var(--sans)}
+table.lg-table.lg-scroll,table.compare-table.compare-scroll{display:block;min-width:0}
+.lg-table th,.compare-table th{font:800 10.5px var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--dim);text-align:left;padding:10px 12px;border-bottom:2px solid var(--line-strong)}
+.lg-table td,.compare-table td{padding:9px 12px;border-bottom:1px solid var(--line);color:var(--ink);vertical-align:top}
+.lg-table tr:last-child td,.compare-table tr:last-child td{border-bottom:none}
+.lg-table td.num,.lg-table th.num,.compare-table td.num,.compare-table th.num{text-align:right;font-variant-numeric:tabular-nums}
+.compare-scroll>.compare-table{min-width:520px}
+.lg-table caption,.compare-table caption{caption-side:top;text-align:left;font:600 12px var(--sans);color:var(--dim);padding:0 0 8px}
 
 """
 
@@ -1063,7 +1083,12 @@ def entertainment_pages():
     _NX_CSS = ('<style>'
         '.nx-shell{max-width:1180px;margin:0 auto;padding:0 20px}'
         '.nx-eyebrow{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#d8b64a}'
-        '.nx-home-hero{min-height:560px;display:flex;align-items:end;position:relative;isolation:isolate;background:#111820;margin:0 -20px}'
+        '.nx-home-hero{min-height:560px;display:flex;align-items:end;position:relative;isolation:isolate;background:#111820;margin:0}'
+        # margin:0 -20px bled the hero past a padded parent, but its parent is
+        # <main>, which has no padding, and the hero already contains its own
+        # .nx-shell (padding:0 20px). The bleed therefore overshot the viewport
+        # by 20px on each side at every width: /entertainment/ measured 410px
+        # on a 390px screen.
         '.nx-home-hero:before{content:"";position:absolute;inset:0;z-index:-2;background-image:var(--nx-hero-image);background-size:cover;background-position:center;filter:saturate(.78) contrast(1.08)}'
         '.nx-home-hero:after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(5,7,10,.96) 0%,rgba(5,7,10,.72) 42%,rgba(5,7,10,.18) 100%),linear-gradient(0deg,#0b0d10,transparent 52%)}'
         '.nx-home-hero-inner{padding-top:110px;padding-bottom:56px;max-width:1180px;width:100%}'

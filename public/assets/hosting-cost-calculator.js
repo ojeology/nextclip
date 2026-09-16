@@ -55,10 +55,16 @@
       ["Year 3 (renewal)", money(y3)],
       ["<b>True 3-year total</b>", "<b>" + money(total3) + "</b>"],
       ["True average per month", money(total3 / 36)],
-      ["The trap: renewal ÷ intro", mult > 0 ? "<b>" + mult.toFixed(1) + "×</b> (the homepage showed $" + intro.toFixed(2) + "/mo; years 2+ cost $" + renew.toFixed(2) + "/mo)" : "—"]
+      ["The trap: renewal ÷ intro", mult > 0 ? "<b>" + mult.toFixed(1) + "×</b>" : "—"]
     ];
     var t = "<table>";
     for (var i = 0; i < rows.length; i++) t += "<tr><td>" + rows[i][0] + "</td><td style=\"text-align:right;white-space:nowrap\">" + rows[i][1] + "</td></tr>";
+    /* The trap row used to carry its whole explanation inside the nowrap value
+       cell, which is unbreakable: the table's min-content width reached 561px
+       inside a 300px panel and the page measured 606px at a 390px viewport.
+       The multiplier stays in the numeric column and the sentence gets its own
+       full-width row, where it can wrap. */
+    if (mult > 0) t += "<tr><td colspan=\"2\" class=\"hc-trap-note\">the homepage showed $" + intro.toFixed(2) + "/mo; years 2+ cost $" + renew.toFixed(2) + "/mo</td></tr>";
     t += "</table>";
     if (mult >= 2) t += '<p class="hc-note">A ' + mult.toFixed(1) + '× renewal jump is typical — budget from the renewal column, not the homepage.</p>';
     t += '<p class="hc-note">Before you pay: hosting this very site costs $0/mo on a static host — match the plan to the site, not the marketing (<a href="/tech/free-vs-paid-hosting/">free vs paid, honestly</a>).</p>';

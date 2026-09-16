@@ -32,9 +32,10 @@ HOSTING_BODY = """<div class="prose">
 .hc-fields label{display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}
 .hc-fields input,.hc-fields select{padding:7px 9px;border:1px solid var(--line-strong);border-radius:8px;font:inherit;font-size:14px;background:var(--card);width:110px}
 .hc-fields select{width:auto}
-.hc-out{flex:1;min-width:250px}
+.hc-out{flex:1;min-width:250px;overflow-x:auto}
 .hc-out table{width:100%;border-collapse:collapse}
 .hc-out td{padding:7px 6px;border-bottom:1px solid var(--line);font-size:14px}
+.hc-out td.hc-trap-note{font-size:12.5px;color:var(--dim);text-align:left;white-space:normal;overflow-wrap:break-word;padding-top:2px}
 .hc-disc{font-size:13px;color:var(--dim);max-width:760px;margin-top:10px}
 </style>
 <div id="hosting-cost-calc"></div>

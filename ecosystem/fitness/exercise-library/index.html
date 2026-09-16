@@ -134,7 +134,27 @@ html[data-theme="dark"] ::selection{background:rgba(208,170,82,.35)}
 .cover-facts b{display:block;font-family:var(--serif);font-size:30px;line-height:1.15;color:var(--accent)}
 .cover-facts span{font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
 @media (max-width:860px){.mast-nav{overflow-x:auto;scrollbar-width:none}.mast-nav::-webkit-scrollbar{display:none}}
-@media (max-width:760px){.mast-tag{display:none}.mast-date{font-size:9.5px}.nav-toggle{display:inline-grid}}
+@media (max-width:760px){.mast-tag{display:none}.mast-date{font-size:9.5px}.nav-toggle{display:inline-grid}
+/* At its desktop 34px/.14em the brand measured 314px of the 342px available
+   and squeezed .mast-edition until its text overflowed, so every property page
+   scrolled sideways: tech 438px, home 505px at a 390px viewport. */
+.mast{gap:10px}
+.mast-brand{font-size:clamp(19px,5.2vw,24px);letter-spacing:.05em}
+.mast-edition{overflow:hidden;min-width:0}}
+
+/* .lg-scroll/.lg-table were defined only in SPORTS_CSS_EXTRA, so tech guides
+   using them shipped unstyled tables that set their own width (606px at 390px).
+   overflow on a display:table box is ignored, so a table carrying both classes
+   has to become the scrolling block itself. */
+.lg-scroll,.compare-scroll{overflow-x:auto;overflow-y:hidden;max-width:100%;-webkit-overflow-scrolling:touch;scrollbar-width:thin}
+table.lg-table,table.compare-table{width:100%;border-collapse:collapse;font:500 14px var(--sans)}
+table.lg-table.lg-scroll,table.compare-table.compare-scroll{display:block;min-width:0}
+.lg-table th,.compare-table th{font:800 10.5px var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--dim);text-align:left;padding:10px 12px;border-bottom:2px solid var(--line-strong)}
+.lg-table td,.compare-table td{padding:9px 12px;border-bottom:1px solid var(--line);color:var(--ink);vertical-align:top}
+.lg-table tr:last-child td,.compare-table tr:last-child td{border-bottom:none}
+.lg-table td.num,.lg-table th.num,.compare-table td.num,.compare-table th.num{text-align:right;font-variant-numeric:tabular-nums}
+.compare-scroll>.compare-table{min-width:520px}
+.lg-table caption,.compare-table caption{caption-side:top;text-align:left;font:600 12px var(--sans);color:var(--dim);padding:0 0 8px}
 
 
 /* b70: fitness calculators */
@@ -201,7 +221,7 @@ html[data-theme="dark"] ::selection{background:rgba(208,170,82,.35)}
 <p><b>Learn first, train second.</b> Read a move's cues, do one easy set, and check yourself in a mirror or phone camera. The mistake notes exist because they are what coaches correct a hundred times.</p>
 <p><b>Let the builder assemble your week.</b> The <a href="/workout-builder/">workout builder</a> turns this library into a three- or four-day plan for your goal, with links back to every move it prescribes.</p>
 <p><b>Progress on purpose.</b> When the top of a rep range feels easy for two sessions in a row, move to that exercise's harder version - that is the whole game. Numbers stay approximate: this is guidance, not a medical plan, and results are not guaranteed.</p>
-<p><b>Counting calories too?</b> The <a href="/fitness-calculators/">fitness calculators</a> do BMI, water, protein and barbell plate maths in ten seconds.</p><h2>Sources</h2><ul class="list"><li><a href="https://www.who.int/news-room/fact-sheets/detail/physical-activity" rel="noopener">WHO — Physical activity (fact sheet)</a></li><li><a href="https://www.cdc.gov/physical-activity-basics/" rel="noopener">CDC — Physical Activity Basics</a></li></ul></div></section><section class="section alt"><div class="section-head"><p class="kicker">Keep going</p><h2>Related on this desk.</h2></div><ul class="list"><li><a href="/exercise-library-push/">Push moves, taught</a></li><li><a href="/exercise-library-legs/">Leg moves, taught</a></li><li><a href="/workout-builder/">The workout builder</a></li></ul><div class="actions"><a class="btn secondary" href="/fitness/">All of BRYME Fitness</a></div></section><section class="section alt" style="border-left:4px solid var(--brand)"><div class="wrap"><p class="lede"><b>General information, not medical advice.</b> If you have a health condition, have been inactive for a long time, or something hurts sharply, talk to a qualified health professional first.</p></div></section><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "The exercise library: 75 moves, taught honestly", "author": {"@type": "Organization", "name": "BRYME Fitness desk"}, "publisher": {"@type": "Organization", "name": "THE BRYME"}, "datePublished": "2026-09-09", "dateModified": "2026-09-09", "mainEntityOfPage": "https://bryme.onrender.com/fitness/exercise-library/", "description": "A real coach's card for every move: muscles, kit, setup cues, the common mistake, the sets, and an easier and harder version. The gym in your pocket."}</script></div></main><footer class="foot"><div class="wrap foot-in">
+<p><b>Counting calories too?</b> The <a href="/fitness-calculators/">fitness calculators</a> do BMI, water, protein and barbell plate maths in ten seconds.</p><h2>Sources</h2><ul class="list"><li><a href="https://www.who.int/news-room/fact-sheets/detail/physical-activity" rel="noopener">WHO — Physical activity (fact sheet)</a></li><li><a href="https://www.cdc.gov/physical-activity-basics/" rel="noopener">CDC — Physical Activity Basics</a></li></ul></div></section><section class="section alt"><div class="section-head"><p class="kicker">Keep going</p><h2>Related on this desk.</h2></div><ul class="list"><li><a href="/fitness/exercise-library-push/">Push moves, taught</a></li><li><a href="/fitness/exercise-library-legs/">Leg moves, taught</a></li><li><a href="/fitness/workout-builder/">The workout builder</a></li></ul><div class="actions"><a class="btn secondary" href="/fitness/">All of BRYME Fitness</a></div></section><section class="section alt" style="border-left:4px solid var(--brand)"><div class="wrap"><p class="lede"><b>General information, not medical advice.</b> If you have a health condition, have been inactive for a long time, or something hurts sharply, talk to a qualified health professional first.</p></div></section><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "The exercise library: 75 moves, taught honestly", "author": {"@type": "Organization", "name": "BRYME Fitness desk"}, "publisher": {"@type": "Organization", "name": "THE BRYME"}, "datePublished": "2026-09-09", "dateModified": "2026-09-09", "mainEntityOfPage": "https://bryme.onrender.com/fitness/exercise-library/", "description": "A real coach's card for every move: muscles, kit, setup cues, the common mistake, the sets, and an easier and harder version. The gym in your pocket."}</script></div></main><footer class="foot"><div class="wrap foot-in">
 <div>© 2026 THE BRYME — Fitness.</div>
 <div><a href="/fitness/about/">About</a> · <a href="/fitness/privacy/">Privacy</a> · <a href="/fitness/contact/">Contact</a> · <a href="/fitness/terms/">Terms</a> · <a href="/fitness/editorial-policy/">Editorial policy</a> · <a href="/fitness/corrections/">Corrections</a></div>
 <div><a href="https://bryme.onrender.com/">bryme.onrender.com</a></div>
