@@ -1841,8 +1841,8 @@
       },
       "submissionStatus": "deadline",
       "deadline": {
-        "date": "2026-09-15",
-        "display": "Current official topics (check the page — they change): Count your blessings 15 Sept 2026; Random acts of kindness 30 Sept 2026; Humorous stories 15 Oct 2026; Married/couples 30 Nov 2026",
+        "date": "2026-09-30",
+        "display": "Re-checked on the official Possible Book Topics page 16 September 2026: Count your blessings closed 15 September 2026. Next open deadlines: Random acts of kindness 30 September 2026; Humorous stories 15 October 2026; Married/couples 30 November 2026; Positive thinking 28 February 2027; Pets 31 January 2027; Dogs 31 March 2027; Cats and Holiday stories 30 May 2027. The publisher extends deadlines often - the topic page is the authority.",
         "windowEnd": "2026-11-30",
         "recurring": false
       },
@@ -12143,13 +12143,11 @@
         "band": "3-plus-months",
         "official": true
       },
-      "submissionStatus": "deadline",
+      "submissionStatus": "closed",
       "deadline": {
-        "date": "2026-09-15",
-        "display": "Poetry call open 10–15 September 2026, or until 800 submissions are received — whichever comes first. Digital nonfiction pitches open 1 September and 1 February each year for two weeks.",
-        "windowStart": "2026-09-10",
-        "windowEnd": "2026-09-15",
-        "recurring": true
+        "openingDate": "2027-02-01",
+        "recurring": true,
+        "display": "Re-checked on the official Submission Guidelines page 16 September 2026: all windows are closed. The 10-15 September poetry call hit its 800-submission cap within hours of opening (the page carries an official closed notice). The fall digital open-pitch window (opens 1 September, runs two weeks) has also ended; the next digital window opens 1 February 2027. Print themes for 2027 are unannounced - the page hints at raptors and endings. Orion cannot consider anything outside an open window; poetry, fiction, book reviews and AI-assisted work are never read."
       },
       "aiPolicy": "prohibited",
       "whatTheyWant": [
