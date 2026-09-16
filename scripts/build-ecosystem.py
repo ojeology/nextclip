@@ -433,7 +433,7 @@ def _nav_items(pub):
                 rows.append(("/" + _sl + "-transfers/", "Transfer centre"))
             if _is_pl:
                 rows += [("/premier-league-clubs/", "All twenty clubs"),
-                         ("/premier-league-matchweek-4-preview/", "Matchweek 4 preview \u00b7 live")]
+                         ("/premier-league-matchweek-4-preview/", "Matchweek 4 preview \u00b7 archive")]
             navs.append((_n, rows))
         desk = [("HEAD", "The desk"), ("/sports/", "Desk home"),
                 ("/the-weekend-ahead/", "The weekend forecast"),
@@ -443,7 +443,7 @@ def _nav_items(pub):
                 ("/sports/analysis/", "The analysis shelf"),
                 ("/sports/transfers/", "The transfer desk (archive)")]
         navs.append(("The desk", desk))
-        return (navs, ("/the-weekend-ahead/", "This weekend"))
+        return (navs, ("/the-weekend-ahead/", "The weekend ahead"))
     if pub == "fitness":
         guides = [("HEAD", "The fitness shelf"), ("/fitness/", "All fitness guides"),
 ("/fitness/exercise-library/", "The exercise library"),
