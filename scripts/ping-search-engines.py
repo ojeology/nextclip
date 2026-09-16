@@ -83,12 +83,16 @@ def main() -> int:
     smp = sitemap_url()
     # Full URL set from the committed sitemap, so IndexNow receives every route.
     url_list = [SITE + "/"]
-    sf = ROOT / "sitemap.xml"
-    if sf.is_file():
-        for loc in re.findall(r"<loc>(.*?)</loc>", sf.read_text(encoding="utf-8", errors="replace"), re.S):
-            loc = loc.strip()
-            if loc:
-                url_list.append(loc)
+    # M1 (audit 2026-09-16): root sitemap.xml is a sitemap index now; IndexNow
+    # needs page URLs, so take the union of the six committed property sitemaps.
+    for _child in ("writers/sitemap.xml", "sports/sitemap.xml", "entertainment/sitemap.xml",
+                   "tech/sitemap.xml", "fitness/sitemap.xml", "home/sitemap.xml"):
+        sf = ROOT / _child
+        if sf.is_file():
+            for loc in re.findall(r"<loc>(.*?)</loc>", sf.read_text(encoding="utf-8", errors="replace"), re.S):
+                loc = loc.strip()
+                if loc:
+                    url_list.append(loc)
     # IndexNow caps at 10,000 URLs per call; dedupe while preserving order.
     url_list = list(dict.fromkeys(url_list))
     print(f"BRYME search-engine ping · SITE_URL={SITE} · key={('set' if KEY else 'MISSING')}")

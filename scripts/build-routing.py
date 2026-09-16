@@ -345,15 +345,47 @@ a{color:#a4762c}
 <script src="/assets/ad-live.js?v=17" defer></script>
 </body></html>
 """, encoding="utf-8")
-    # sitemap index: one submission URL for GSC pointing at all seven sitemaps
+    # M1 (audit 2026-09-16): sitemap architecture un-inverted. Root /sitemap.xml
+    # becomes a sitemap index over exactly the six property sitemaps; the writers
+    # sitemap is trimmed to writers-only routes (it used to enumerate the entire
+    # routed allowlist, double-declaring 1,144 property URLs); the two hub URLs
+    # (/, /about/) join home/sitemap.xml so the union of the six children still
+    # equals the routed allowlist exactly, with zero overlap. sitemap_index.xml
+    # keeps working as an alias of the root index (no self-reference now).
+    import datetime as _dt2, os as _os2
+    _ep = _os2.environ.get("SOURCE_DATE_EPOCH", "")
+    _td = (_dt2.datetime.fromtimestamp(int(_ep), _dt2.timezone.utc).date()
+           if _ep.isdigit() else _dt2.date.today()).isoformat()
+    _al = json.loads((ROOT / "content" / "index-allowlist.routed.json").read_text(encoding="utf-8"))
+    _rts = _al["routes"] if isinstance(_al, dict) else _al
+    _children = ["writers/sitemap.xml", "sports/sitemap.xml", "entertainment/sitemap.xml",
+                 "tech/sitemap.xml", "fitness/sitemap.xml", "home/sitemap.xml"]
     _si = ['<?xml version="1.0" encoding="UTF-8"?>\n'
            '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n']
-    for _x in ["sitemap.xml", "writers/sitemap.xml", "sports/sitemap.xml",
-               "entertainment/sitemap.xml", "tech/sitemap.xml",
-               "fitness/sitemap.xml", "home/sitemap.xml"]:
-        _si.append(f"<sitemap><loc>{ORIGIN}/{_x}</loc></sitemap>\n")
+    for _x in _children:
+        _si.append(f"<sitemap><loc>{ORIGIN}/{_x}</loc><lastmod>{_td}</lastmod></sitemap>\n")
     _si.append("</sitemapindex>\n")
-    (ROOT / "public" / "sitemap_index.xml").write_text("".join(_si), encoding="utf-8")
+    _sidx = "".join(_si)
+    (ROOT / "sitemap.xml").write_text(_sidx, encoding="utf-8")
+    (ROOT / "public" / "sitemap.xml").write_text(_sidx, encoding="utf-8")
+    (ROOT / "public" / "sitemap_index.xml").write_text(_sidx, encoding="utf-8")
+    _wurls = sorted({r for r in _rts if str(r).startswith("/writers/")})
+    _wsm = ('<?xml version="1.0" encoding="UTF-8"?>\n'
+            '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n')
+    for _r in _wurls:
+        _wsm += f"<url><loc>{ORIGIN}{_r}</loc><lastmod>{_td}</lastmod></url>\n"
+    _wsm += "</urlset>\n"
+    (ROOT / "writers" / "sitemap.xml").write_text(_wsm, encoding="utf-8")
+    (ROOT / "public" / "writers" / "sitemap.xml").write_text(_wsm, encoding="utf-8")
+    for _hp in (ROOT / "home" / "sitemap.xml", ROOT / "public" / "home" / "sitemap.xml"):
+        if not _hp.is_file():
+            continue
+        _hsm = _hp.read_text(encoding="utf-8")
+        _add = "".join(f"<url><loc>{ORIGIN}{_r}</loc><lastmod>{_td}</lastmod></url>\n"
+                       for _r in sorted(r for r in _rts if r in ("/", "/about/"))
+                       if f"<loc>{ORIGIN}{_r}</loc>" not in _hsm)
+        if _add:
+            _hp.write_text(_hsm.replace("</urlset>", _add + "</urlset>"), encoding="utf-8")
     return 0
 
 

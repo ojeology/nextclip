@@ -84,7 +84,11 @@ if (ECO / "config.json").is_file():
                     shutil.rmtree(_dst)
                 shutil.copytree(_src, _dst)
                 copied += 1
-        for _f in ("index.html", "sitemap.xml"):
+        # M1 (audit 2026-09-16): only the homepage comes from the hub now. The
+        # root sitemap.xml is the sitemap index written by build-routing (and
+        # committed); re-copying the hub's 2-URL sitemap over it would restore
+        # the inverted architecture (root = 2 URLs, writers = everything).
+        for _f in ("index.html",):
             if (ECO / "hub" / _f).is_file():
                 shutil.copy2(ECO / "hub" / _f, PUB / _f)
                 copied += 1
