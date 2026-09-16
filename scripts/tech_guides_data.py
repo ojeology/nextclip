@@ -504,3 +504,5 @@ from tech_1010_batch7_data import BATCH_1010_B7 as _B_1010_B7
 NEW_TECH_GUIDES.extend(_B_1010_B7)
 from tech_1010_batch8_data import BATCH_1010_B8 as _B_1010_B8
 NEW_TECH_GUIDES.extend(_B_1010_B8)
+from tech_1010_batch9_data import BATCH_1010_B9 as _B_1010_B9
+NEW_TECH_GUIDES.extend(_B_1010_B9)
