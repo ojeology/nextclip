@@ -248,6 +248,20 @@ html[data-theme="dark"] ::selection{background:rgba(201,153,78,.35)}
 .h-sec-grid{grid-template-columns:1fr}}
 """
 
+FITNESS_ONLY_CSS_EXTRA = """
+/* b72: the exercise library entry point on the desk homepage. The
+   illustrations are 1408x768 and were previously reachable only from the
+   five library pages themselves, so nothing on /fitness/ showed an image. */
+.fit-lib-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(0,1fr));gap:14px;margin:16px 0 0}
+.fit-lib-card{display:block;min-width:0;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--sheet);text-decoration:none;color:inherit}
+.fit-lib-card:hover{border-color:var(--accent)}
+.fit-lib-card img{display:block;width:100%;height:auto;aspect-ratio:1408/768;object-fit:cover;border:0;padding:0;background:var(--sheet)}
+.fit-lib-card b{display:block;padding:11px 13px 2px;font:700 14px var(--sans);color:var(--ink)}
+.fit-lib-card small{display:block;padding:0 13px 12px;color:var(--dim);font-size:12.5px;line-height:1.45}
+@media (max-width:820px){.fit-lib-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:430px){.fit-lib-grid{grid-template-columns:minmax(0,1fr)}}
+"""
+
 FITNESS_CSS_EXTRA = """
 /* b70: fitness calculators */
 .calc{border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:14px 0;background:rgba(127,127,127,.05)}
@@ -266,17 +280,6 @@ FITNESS_CSS_EXTRA = """
 .wb-day{border:1px solid var(--line);border-radius:10px;padding:4px 16px 10px;margin:12px 0}
 .wb-day ul{margin:8px 0}
 .wb-note{color:var(--dim);font-size:14px;border-top:1px solid var(--line);padding-top:10px;margin-top:12px}
-/* b72: the exercise library entry point on the desk homepage. The
-   illustrations are 1408x768 and were previously reachable only from the
-   five library pages themselves, so nothing on /fitness/ showed an image. */
-.fit-lib-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(0,1fr));gap:14px;margin:16px 0 0}
-.fit-lib-card{display:block;min-width:0;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--sheet);text-decoration:none;color:inherit}
-.fit-lib-card:hover{border-color:var(--accent)}
-.fit-lib-card img{display:block;width:100%;height:auto;aspect-ratio:1408/768;object-fit:cover;border:0;padding:0;background:var(--sheet)}
-.fit-lib-card b{display:block;padding:11px 13px 2px;font:700 14px var(--sans);color:var(--ink)}
-.fit-lib-card small{display:block;padding:0 13px 12px;color:var(--dim);font-size:12.5px;line-height:1.45}
-@media (max-width:820px){.fit-lib-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:430px){.fit-lib-grid{grid-template-columns:minmax(0,1fr)}}
 .calc select{padding:8px 10px;margin-left:8px;border:1px solid var(--line);border-radius:8px;font:inherit;background:transparent;color:inherit}
 .calc-hint{font-size:13.5px;color:var(--muted)}
 .fp-week .fp-day { display: grid; grid-template-columns: 44px 1fr auto; gap: 14px; align-items: center; }
@@ -330,7 +333,7 @@ table.lg-table{width:100%;border-collapse:collapse;min-width:640px;font:500 14px
 """
 
 def css_for(pub):
-    return BASE_CSS % FAMILY[pub] + (FITNESS_CSS_EXTRA if pub in ("fitness", "home") else "") + (HOME_CSS_EXTRA if pub == "home" else "") + (SPORTS_CSS_EXTRA if pub == "sports" else "")
+    return BASE_CSS % FAMILY[pub] + (FITNESS_CSS_EXTRA if pub in ("fitness", "home") else "") + (FITNESS_ONLY_CSS_EXTRA if pub == "fitness" else "") + (HOME_CSS_EXTRA if pub == "home" else "") + (SPORTS_CSS_EXTRA if pub == "sports" else "")
 
 def shell(pub, title, desc, route, body, card=None, robots="index,follow"):
     d = route  # mode-aware base URL from SUB
