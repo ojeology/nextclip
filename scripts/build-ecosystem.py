@@ -702,7 +702,14 @@ else:
     SUB["writers"] = ORIGIN + "/writers"
 SUB["hub"] = f"https://{DOMAIN}" if MODE == "subdomain" else ORIGIN
 
-def legal_pages(pub, name, tagline, skip=frozenset()):
+def legal_pages(pub, name, tagline, skip=frozenset(), desk=None):
+    # M2 (audit 2026-09-16): desk carries publication-specific, true facts.
+    # Each block is inserted as its own section in the relevant document, so
+    # the five property legal sets stop being near-identical copies.
+    desk = desk or {}
+    def _desk_sec(key, heading):
+        t = desk.get(key)
+        return ("<h2>" + heading + "</h2><p>" + t + "</p>") if t else ""
     about_body = f"""<div class="wrap"><nav class="crumb"><a href="/">Home</a> / About</nav>
 <section class="cover"><p class="kicker">About</p><h1 class="cover-title">{name}</h1>
 <p class="cover-dek">{tagline}</p></section>
@@ -716,6 +723,7 @@ def legal_pages(pub, name, tagline, skip=frozenset()):
 <li>Corrections in the open, on the page that made the claim.</li>
 <li>No betting content, no piracy, no fabricated data — the house rules, applying everywhere.</li>
 </ul>
+{_desk_sec("about", "What this desk covers")}
 </div></section></div>"""
     privacy_body = f"""<div class="wrap"><nav class="crumb"><a href="/">Home</a> / Privacy</nav>
 <section class="cover"><p class="kicker">Privacy</p><h1 class="cover-title">What we collect: almost nothing.</h1></section>
@@ -723,6 +731,7 @@ def legal_pages(pub, name, tagline, skip=frozenset()):
 <p>{name} is a static publication. It sets no tracking cookies, runs no analytics on these pages, and asks for no personal information. Reading it is between you and your browser.</p>
 <p>If interactive tools are added later, any data they store will stay in <em>your</em> browser's local storage on <em>your</em> device — the standing BRYME pattern — and this page will be updated before that changes.</p>
 <p><b>Advertising &amp; cookies (updated 11 September 2026):</b> BRYME shows advertising through third-party networks (which may include Google AdSense) to keep the publications free. Third-party vendors use cookies to serve ads based on a user's prior visits to this and other websites. Google's use of advertising cookies enables it and its partners to serve ads based on your visits to this site and/or other sites on the internet. You may opt out of personalised advertising by visiting Google's Ads Settings (adssettings.google.com), or opt out of some third-party vendors' uses of cookies at aboutads.info. Visitors in the EEA and UK will be asked for consent before personalised advertising; without consent, only non-personalised ads are eligible to serve. Whatever serves, our standing rules apply: ads are clearly separated from content and navigation, never cover text, and never resemble our buttons, cards or links.</p>
+{_desk_sec("privacy", "What this publication actually touches")}
 <p>Questions: see <a href="/contact/">Contact</a>.</p>
 </div></section></div>"""
     contact_body = f"""<div class="wrap"><nav class="crumb"><a href="/">Home</a> / Contact</nav>
@@ -739,6 +748,7 @@ def legal_pages(pub, name, tagline, skip=frozenset()):
 <section class="section"><div class="prose">
 <p>{name} is free to read. It is provided as-is, for information: general guidance, never professional advice. Nothing on this publication is a substitute for qualified professional help — medical, electrical, gas, legal or financial. Where a topic borders on those fields, our pages say so plainly and stop.</p>
 <p>The writing, layout and tools are \u00a9 2026 THE BRYME. Quote freely with a link; do not republish whole pages. External sites we link to have their own terms and their own owners. Adverts, when shown, are clearly separated from editorial content and never constitute an endorsement.</p>
+{_desk_sec("terms", "Specific to this desk")}
 <p>Questions about these terms: see <a href="/contact/">Contact</a>.</p>
 </div></section></div>"""
     editorial_body = f"""<div class="wrap"><nav class="crumb"><a href="/">Home</a> / Editorial policy</nav>
@@ -761,6 +771,7 @@ def legal_pages(pub, name, tagline, skip=frozenset()):
 <section class="section"><div class="prose">
 <p>If something on {name} is wrong, tell us via <a href="/contact/">Contact</a> with the page address and the exact claim. The desk verifies against sources, fixes the page, and records the correction on the page itself — silently deleting a wrong claim is not a correction.</p>
 <p>Time-sensitive facts (prices, availability, standings, schedules) are re-checked on a schedule and stamped with the date of the last check. If you spot a stale one, that report is welcome.</p>
+{_desk_sec("corrections", "What gets re-checked here")}
 </div></section></div>"""
     copyright_body = f"""<div class="wrap"><nav class="crumb"><a href="/">Home</a> / Copyright</nav>
 <section class="cover"><p class="kicker">Copyright &amp; takedowns</p><h1 class="cover-title">Ownership, honestly stated.</h1></section>
@@ -770,13 +781,13 @@ def legal_pages(pub, name, tagline, skip=frozenset()):
 </div></section></div>"""
     def _m(b):
         return b if "<main" in b else '<main id="main"><div class="wrap">' + b + "</div></main>"
-    out = [("/about/", f"About {name} | BRYME", f"What {name} is and the standards it holds.", _m(about_body)),
-            ("/privacy/", f"Privacy | {name}", "What BRYME collects (almost nothing) and how advertising will be handled.", _m(privacy_body)),
-            ("/contact/", f"Contact | {name}", "Corrections, pitches and the editorial desk.", _m(contact_body))]
-    for route, t, d, b in [("/terms/", f"Terms of use | {name}", "The short, honest terms for using " + name + ".", _m(terms_body)),
-                           ("/editorial-policy/", f"Editorial policy | {name}", "Fact labels, freshness standard, and the prohibitions every BRYME page obeys.", _m(editorial_body)),
-                           ("/corrections/", f"Corrections | {name}", "How errors are reported, verified and fixed in the open.", _m(corrections_body)),
-                           ("/copyright/", f"Copyright &amp; takedowns | {name}", "Ownership, fair quotation and takedown handling.", _m(copyright_body))]:
+    out = [("/about/", f"About {name} | BRYME", f"What {name} is, the standards it holds, and what this desk covers.", _m(about_body)),
+            ("/privacy/", f"Privacy | {name}", f"Privacy on {name}: what BRYME collects (almost nothing), how advertising is handled, and what this publication actually touches.", _m(privacy_body)),
+            ("/contact/", f"Contact | {name}", f"Corrections, pitches and the editorial desk behind {name}.", _m(contact_body))]
+    for route, t, d, b in [("/terms/", f"Terms of use | {name}", "The short, honest terms for using " + name + ", including what this desk covers and what it never does.", _m(terms_body)),
+                           ("/editorial-policy/", f"Editorial policy | {name}", f"Fact labels, freshness standards and the prohibitions every {name} page obeys.", _m(editorial_body)),
+                           ("/corrections/", f"Corrections | {name}", f"How errors on {name} are reported, verified and fixed in the open, and what this desk re-checks on a schedule.", _m(corrections_body)),
+                           ("/copyright/", f"Copyright &amp; takedowns | {name}", f"Ownership, fair quotation and takedown handling for {name}.", _m(copyright_body))]:
         if route not in skip:
             out.append((route, t, d, b))
     return out
@@ -1347,7 +1358,12 @@ def entertainment_pages():
     for pl in sect_pages.values():
         pages.extend(pl)
     pages.extend(arts[s] for s in shelf if s not in merged_away)
-    return pages + legal_pages("entertainment", "BRYME Entertainment", "Writing about film, TV and anime for people who love the work.")
+    return pages + legal_pages("entertainment", "BRYME Entertainment", "Writing about film, TV and anime for people who love the work.", desk={
+        "about": "The catalogue: " + str(len(_nx.MOVIES)) + " films with hand-verified official trailers, editorial scores, cast and credits, shelved by genre - plus the guides and explainers around them.",
+        "privacy": "Trailer playback uses a YouTube no-cookie facade: nothing loads from YouTube until you press play, and poster frames come from YouTube's thumbnail CDN. &ldquo;Where to search&rdquo; links go to official platform search pages and are labelled as searches, never as availability claims.",
+        "terms": "Editorial scores are BRYME's opinion, clearly labelled. No availability or pricing claims are made - platform links are searches, and every trailer link is checked against YouTube's oEmbed record.",
+        "corrections": "Every trailer link is re-checked against YouTube's oEmbed (title and channel) and the verification date is printed on the page. Film facts carry their sources.",
+    })
 
 
 
@@ -1622,18 +1638,19 @@ def sports_pages():
     def ordinal(n):
         return "th" if 11 <= n <= 13 else {1: "st", 2: "nd", 3: "rd"}.get(n % 10, "th")
 
-    def _club_now_text(row, fx):
+    def _club_now_text(row, fx, rounds=None):
         pos, name, slug, pl, w, d, l, gf, ga, gd, pts = row
         rec = str(w) + "-" + str(d) + "-" + str(l)
+        _rn = ("after " + str(rounds) + " round" + ("" if rounds == 1 else "s")) if rounds else "after three rounds"
         if fx:
             when, hslug, hname, aslug, aname, venue = fx
             side = "home" if hslug == slug else "away"
             opp = aname if side == "home" else hname
-            return ("The table after three rounds: <b>" + str(pos) + ordinal(pos) + " place, "
+            return ("The table " + _rn + ": <b>" + str(pos) + ordinal(pos) + " place, "
                     + str(pts) + " point" + ("" if pts == 1 else "s") + " from a " + rec
                     + " record, " + str(gf) + " goals scored, " + str(ga) + " conceded. Next up: "
                     + opp + " (" + ("H" if side == "home" else "A") + "), " + when.lower() + ", " + venue + ".</b>")
-        return ("The table after three rounds: <b>" + str(pos) + ordinal(pos) + " place, "
+        return ("The table " + _rn + ": <b>" + str(pos) + ordinal(pos) + " place, "
                 + str(pts) + " points from a " + rec + " record.</b>")
 
 
@@ -1671,19 +1688,43 @@ def sports_pages():
                   "The Premier League gateway for 2026-27: the live table, verified fixtures, twenty club hubs, matchweek editions and the evergreen explainers. No odds, ever.", pl_hub))
 
     rows_html = ""
-    for r in sld.PL_TABLE:
+    # Table-drift fix (audit 2026-09-16): the full-table page reads the
+    # agent-fed live standings (same field order as sld.PL_TABLE plus a slug
+    # lookup) and only falls back to the static snapshot when the feed is
+    # missing, malformed, or a club name fails to map.
+    _lt_rows = None
+    try:
+        _ltt = ((LIVE.get("leagues") or {}).get("premier-league") or {}).get("table")
+        if isinstance(_ltt, list) and len(_ltt) == 20:
+            _cand = []
+            for _x in _ltt:
+                _sl = NAME_SLUG.get(str(_x[1]), "")
+                if not _sl or len(_x) < 10:
+                    _cand = None
+                    break
+                _cand.append((int(_x[0]), str(_x[1]), _sl, int(_x[2]), int(_x[3]), int(_x[4]),
+                              int(_x[5]), int(_x[6]), int(_x[7]), int(_x[8]), int(_x[9])))
+            _lt_rows = _cand
+    except Exception:
+        _lt_rows = None
+    for r in (_lt_rows if _lt_rows is not None else sld.PL_TABLE):
         pos, name, slug, pl, w, d, l, gf, ga, gd, pts = r
         cls = ' class="rel"' if pos == 18 else ""
         gds = ("+" + str(gd)) if gd > 0 else str(gd)
         rows_html += ('<tr' + cls + '><td class="pos">' + str(pos) + '</td><td class="club-b"><a href="/clubs/' + slug + '/"><img class="club-badge row-badge" src="/assets/img/sports/badges/' + badge_file(slug) + '" alt="" width="22" height="22" loading="lazy">' + name + '</a></td>'
                       + '<td class="num">' + str(pl) + '</td><td class="num">' + str(w) + '</td><td class="num">' + str(d) + '</td><td class="num">' + str(l) + '</td>'
                       + '<td class="num">' + str(gf) + '</td><td class="num">' + str(ga) + '</td><td class="num">' + gds + '</td><td class="num"><b>' + str(pts) + '</b></td></tr>')
+    _tb_stamp = str(((LIVE.get("leagues") or {}).get("premier-league") or {}).get("table_updated") or "").replace("fetched ", "verified ")
+    if _lt_rows is not None and _tb_stamp:
+        _tb_byline = ('Live standings \u00b7 ' + _tb_stamp + ' \u00b7 football-data.org via the BRYME Sport desk feed \u00b7 the desk updates this page only after each round is verified')
+    else:
+        _tb_byline = ('Last verified ' + sld.TABLE_AS_OF + ' \u00b7 sources: NBC Sports, Sports Media Watch, worldfootball, footballfixtures (agreement across all four) \u00b7 the desk updates this page only after each round is verified')
     pl_table_page = (_lg_head()
         + '<main id="main"><div class="wrap">'
         + '<nav class="crumb"><a href="/sports/">Sport</a> / <a href="/premier-league/">Premier League</a> / Table</nav>'
         + '<section class="cover"><p class="kicker">Premier League \u00b7 ' + sld.SEASON + ' \u00b7 the table</p>'
         + '<h1 class="cover-title" style="font-size:clamp(30px,4.6vw,48px)">The 2026-27 Premier League table.</h1>'
-        + '<p class="byline">Last verified ' + sld.TABLE_AS_OF + ' \u00b7 sources: NBC Sports, Sports Media Watch, worldfootball, footballfixtures (agreement across all four) \u00b7 the desk updates this page only after each round is verified</p></section>'
+        + '<p class="byline">' + _tb_byline + '</p></section>'
         + '<section class="section"><div class="data-cols"><div class="lg-scroll"><table class="lg-table">'
         + '<thead><tr><th>Pos</th><th>Club</th><th class="num">P</th><th class="num">W</th><th class="num">D</th><th class="num">L</th><th class="num">GF</th><th class="num">GA</th><th class="num">GD</th><th class="num">Pts</th></tr></thead>'
         + '<tbody>' + rows_html + '</tbody></table></div>'
@@ -1883,15 +1924,48 @@ def sports_pages():
         "leeds-united": ("/promotion-and-relegation-explained/", "The arithmetic of a promoted start"),
         "fulham": ("/premier-league-transfer-tracker-august-2026/", "The summer window, deal by deal"),
     }
+    # Club-drift fix (audit 2026-09-16): season numbers, the next fixture and
+    # the byline stamp come from the agent-fed live feed when present; the
+    # static MW3 snapshot in sports_leagues_data is the fallback so club hubs
+    # still build if the feed is ever missing.
+    import datetime as _dtc
+    _pld = ((LIVE.get("leagues") or {}).get("premier-league") or {})
+    _livetab = {}
+    for _lrow in (_pld.get("table") or []):
+        _lslug = NAME_SLUG.get(str(_lrow[1]))
+        if _lslug:
+            _livetab[_lslug] = (_lrow[0], _lrow[2], _lrow[3], _lrow[4], _lrow[5],
+                                _lrow[6], _lrow[7], _lrow[8], _lrow[9])
+    _done_mw = ((_pld.get("results") or [{}])[-1] or {}).get("mw")
+    _upall = _pld.get("upcoming") or []
+    _tab_stamp = str(_pld.get("table_updated") or "").replace("fetched ", "verified ")
+    def _fmt_when(ds):
+        try:
+            return _dtc.datetime.strptime(str(ds), "%Y-%m-%d %H:%M").strftime("%A %-d %B, %H:%M")
+        except Exception:
+            return str(ds)
     for r in sld.PL_TABLE:
         pos, name, slug, pl, w, d, l, gf, ga, gd, pts = r
+        _lt = _livetab.get(slug)
+        if _lt:
+            pos, pl, w, d, l, gf, ga, gd, pts = _lt
+        _r_eff = (pos, name, slug, pl, w, d, l, gf, ga, gd, pts)
         cname, ground, founded, blurb = sld.PL_CLUBS[slug]
         ch = CH.get(slug, {})
         chcity = (' \u00b7 ' + html.escape(ch["city"])) if ch.get("city") else ""
         chsrc = (' <em>Club facts source: <a href="' + ch["source"] + '" rel="noopener">official club history</a>.</em>') if ch.get("source") else ""
         sqd = SQ.get(name) or next((v for k, v in SQ.items() if k.startswith(name) or name.startswith(k)), None)
         _pmgr = (PMGR.get(slug) or {}).get("manager", "")
-        fx = next((f for f in sld.PL_MW4 if slug in (f[1], f[3])), None)
+        fx = None
+        for _u in _upall:
+            _uh = NAME_SLUG.get(str(_u.get("h", "")))
+            _ua = NAME_SLUG.get(str(_u.get("a", "")))
+            if slug in (_uh, _ua):
+                fx = (_fmt_when(_u.get("d", "")), _uh or "", str(_u.get("h", "")),
+                      _ua or "", str(_u.get("a", "")), "UK time")
+                break
+        if fx is None:
+            fx = next((f for f in sld.PL_MW4 if slug in (f[1], f[3])), None)
         story = STORY_FOR.get(slug)
         gds = ("+" + str(gd)) if gd > 0 else str(gd)
         rec = str(w) + "-" + str(d) + "-" + str(l)
@@ -1900,7 +1974,7 @@ def sports_pages():
             + '<nav class="crumb"><a href="/sports/">Sport</a> / <a href="/premier-league/">Premier League</a> / <a href="/premier-league-clubs/">Clubs</a> / ' + cname + '</nav>'
             + '<section class="cover"><p class="kicker">Premier League \u00b7 ' + sld.SEASON + ' \u00b7 club hub</p>'
             + '<h1 class="cover-title" style="font-size:clamp(30px,4.6vw,48px)">' + cname + '</h1>'
-            + '<p class="byline">' + ground + ' \u00b7 founded ' + str(founded) + chcity + ' \u00b7 season numbers as of Matchweek 3, verified ' + sld.FIXTURES_AS_OF[9:] + '</p>'
+            + '<p class="byline">' + ground + ' \u00b7 founded ' + str(founded) + chcity + ' \u00b7 season numbers as of Matchweek ' + str(_done_mw or 3) + ', ' + (_tab_stamp or ('verified ' + sld.FIXTURES_AS_OF[9:])) + '</p>'
             + '<img class="club-badge cov-badge" src="/assets/img/sports/badges/' + badge_file(slug) + '" alt="' + cname + ' club badge" width="76" height="76" loading="lazy">'
             + '<div class="cover-facts">'
             + '<div><b>' + str(pos) + '</b><span>' + ordinal(pos) + ' in the table</span></div>'
@@ -1910,7 +1984,7 @@ def sports_pages():
             + ('<div><b style="font-size:20px">' + html.escape(_pmgr) + '</b><span>Manager</span></div>' if _pmgr else "")
             + '</div></section>'
             + '<section class="section"><div class="prose"><p>' + blurb + chsrc + '</p>'
-            + '<p>' + _club_now_text(r, fx) + ' <a href="/how-the-premier-league-table-works/">How to read the table</a> \u00b7 <a href="/xg-explained/">what xG adds</a>.</p></div></section>'
+            + '<p>' + _club_now_text(_r_eff, fx, _done_mw) + ' <a href="/how-the-premier-league-table-works/">How to read the table</a> \u00b7 <a href="/xg-explained/">what xG adds</a>.</p></div></section>'
             + _squad_secs(sqd, SQUPD)
             + _trophy_sec(slug)
             + '<section class="section alt"><div class="section-head"><p class="kicker">Where next</p><h2>Keep exploring.</h2></div>'
@@ -1920,7 +1994,7 @@ def sports_pages():
             + '<li><a href="/premier-league-transfers/"><span><b>The verified transfer tracker</b><small>Every listed deal for this club \u2014 statuses and fees as recorded, never rumours.</small></span><span class="meta">Transfers</span></a></li>'
             + '<li><a href="/premier-league-table/"><span><b>The live table</b><small>Where every club stands, stamped and sourced.</small></span><span class="meta">Live</span></a></li>'
             + '<li><a href="/premier-league/"><span><b>The Premier League hub</b><small>The whole competition, one gateway.</small></span><span class="meta">Hub</span></a></li>'
-            + '<li><a href="/premier-league-matchweek-4-preview/"><span><b>Matchweek 4, previewed honestly</b><small>This weekend\u2019s live desk edition.</small></span><span class="meta">This week</span></a></li>'
+            + '<li><a href="/premier-league-matchweek-4-preview/"><span><b>Matchweek 4, previewed honestly (archive)</b><small>The desk\u2019s pre-round edition, kept as published.</small></span><span class="meta">Archive</span></a></li>'
             + '<li><a href="/premier-league-clubs/"><span><b>All twenty clubs</b><small>The other nineteen hubs, one list.</small></span><span class="meta">Clubs</span></a></li>'
             + '</ul></section>'
             + '</div></main>' + foot("sports"))
@@ -2562,7 +2636,12 @@ def sports_pages():
 </section></div></main>{foot("sports")}"""
     pages.insert(0, ("/", "BRYME Sport \u2014 football reporting, never betting",
               "Transfer reporting, matchweek guides and season stories from the BRYME media desk. Independent, checkable, strictly no gambling content.", index_body))
-    return pages + legal_pages("sports", "BRYME Sport", "Analysis, stories and the long view of sport \u2014 checkable, and never betting.")
+    return pages + legal_pages("sports", "BRYME Sport", "Analysis, stories and the long view of sport \u2014 checkable, and never betting.", desk={
+        "about": "The desk covers the 2026-27 season across six competitions with dated, sourced numbers - tables, results, scorers and squads - and no betting content, ever.",
+        "privacy": "Live tables, results and scorers are fetched from football-data.org by the desk's own scheduled agent; no reader data is sent to that source. Fetch times are printed on every panel.",
+        "terms": "Season numbers come from named data sources with fetch stamps. Previews and predictions are labelled as the desk's opinion, never as certainty.",
+        "corrections": "Tables, results and scorers re-fetch automatically twice a day and every panel carries its stamp; the transfer tracker is re-verified against club and league sources window by window.",
+    })
 
 
 # ---------------------------------------------------------------- 4. MONEY
@@ -3016,7 +3095,10 @@ def tech_pages():
         pages.extend(pl)
     pages.extend(art_page(a) for a in arts)
     pages.extend(tech_tool_pages())
-    return pages + tech_trust_pages() + legal_pages("tech", "BRYME Tech", "Practical technology from people who ran the thing.", skip={"/terms/", "/corrections/"})
+    return pages + tech_trust_pages() + legal_pages("tech", "BRYME Tech", "Practical technology from people who ran the thing.", skip={"/terms/", "/corrections/"}, desk={
+        "about": "Deployment walkthroughs, domain and DNS specifics, token hygiene and front-end patterns - written from first-hand runs, including what went wrong.",
+        "privacy": "The browser tools run entirely on your device; nothing you type into them is sent to us or to anyone else.",
+    })
 
 
 
@@ -3554,7 +3636,12 @@ def fitness_pages():
                       "One card for the honest fitness week: move most days, two strength days, on-time evenings. Saved in your browser, resets each Monday, nothing sent anywhere.", planner_body))
     pages.extend(plan_page)
     pages.extend(arts)
-    return pages + legal_pages("fitness", "BRYME Fitness", "Practical fitness guidance \u2014 responsible, evidence-aware, clearly separated from medical advice.")
+    return pages + legal_pages("fitness", "BRYME Fitness", "Practical fitness guidance \u2014 responsible, evidence-aware, clearly separated from medical advice.", desk={
+        "about": "The 30-day walking plan, the weekly planner and an exercise library - general guidance, evidence-aware, clearly separated from medical advice.",
+        "privacy": "The walking plan and the weekly planner store your entries only in your browser's local storage, on your device.",
+        "terms": "Nothing here is medical advice; the desk says so on every plan page, and readers are pointed to professionals before starting a new programme.",
+        "corrections": "Exercise cues and plan maths are re-checked against the sources cited on each page.",
+    })
 
 
 
@@ -4419,7 +4506,12 @@ def home_pages():
                            "A short, season-proof home maintenance checklist with progress saved in your browser.",
                            "/seasonal-home-maintenance-checklist/", ccover, cmain, "checklist")))
 
-    return out + legal_pages("home", "BRYME Home & DIY", "Practical help for fixing, maintaining, improving and understanding your home \u2014 safe, low-risk guidance with clear professional boundaries.")
+    return out + legal_pages("home", "BRYME Home & DIY", "Practical help for fixing, maintaining, improving and understanding your home \u2014 safe, low-risk guidance with clear professional boundaries.", desk={
+        "about": "Low-risk repairs explained honestly, with an in-built rule: gas, structural and high-voltage work goes to qualified trades.",
+        "privacy": "Interactive tools such as the buy-vs-rent calculator keep their inputs in your browser only.",
+        "terms": "Guidance covers low-risk DIY; anything involving gas, structural work or high-voltage electrics is signposted to qualified professionals.",
+        "corrections": "Cost figures and standards references are re-checked against the cited sources and stamped with the date.",
+    })
 
 
 
