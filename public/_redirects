@@ -1,0 +1,43 @@
+# NOTE: Render does not read this file — it is not Netlify.
+# The authoritative redirect rules live in render.yaml under
+# services[0].routes. This file is kept only because the local
+# test server (server/server.js) reads it, so the dev server and
+# production stay in agreement. Update BOTH if you add a rule.
+#
+# Destinations updated 2026-09-15 to the routed URL scheme. Since the routing
+# migration the writers' pages live under /writers/, so the previous targets
+# (/writing/, /writing-opportunities/) do not exist in the published artifact
+# and every rule below was 301ing to a 404. Verified against public/ at
+# 563f734: public/writing/ and public/writing-opportunities/ are absent, while
+# public/writers/writing/ and public/writers/writing-opportunities/ are present
+# and index,follow. scripts/validate-http.js now asserts that each redirect
+# destination resolves, so this cannot silently regress again.
+#
+# Writing-first BRYME launch. Legacy multi-niche hubs (jobs, opportunities,
+# make-money) were retired and live on the legacy-multiniche branch.
+# Keep 301s so old links land on the closest living writing-first surface.
+/opportunities  /writers/writing/  301
+/opportunities/  /writers/writing/  301
+/jobs  /writers/writing/  301
+/jobs/  /writers/writing/  301
+/make-money/writing-opportunities/  /writers/writing-opportunities/  301
+/make-money  /writers/writing/  301
+/make-money/  /writers/writing/  301
+# Retired 2026-09-07: old country discovery page — the single entry point is
+# /writers/writing-opportunities/. (Render ignores this file, but render.yaml
+# carries the same rule.)
+/writing/by-country  /writers/writing-opportunities/  301
+/writing/by-country/  /writers/writing-opportunities/  301
+
+# Removed 2026-09-15: `/tech` and `/tech/*` -> `/guides/`. Tech is a live
+# property serving 182 indexable pages (tech/sitemap.xml), and /guides/ is not
+# in the published artifact either, so the rule could only ever fire for a
+# /tech/ URL with no file and send it to a 404. Removed from render.yaml too.
+
+# Retired media families (movie, movies, series, anime, genre, year, trailers,
+# trending, channels, articles) answer 404 in the published artifact: there is
+# no 410.html to serve a Gone body from. server/server.js only answers 410 when
+# the publish directory actually contains a 410.html, which keeps the test
+# server in agreement with production — /movie/the-invite/ returns 404 live.
+# "sports" and "entertainment" are no longer treated as retired media at all:
+# both are live properties (111 and 806 sitemap URLs) and serve 200.
