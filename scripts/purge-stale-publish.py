@@ -1,0 +1,142 @@
+#!/usr/bin/env python3
+"""batch 66e: enforce the legacy-route scheme at FILE level, and purge the stale publish.
+
+Why this script exists (investigation of 2026-09-16, after a report that
+"/tech returns 404"):
+
+1. The live Render static site does NOT apply the routes declared in
+   render.yaml. Production still runs dashboard-era rules from before that
+   file existed: bare /tech 301s to /guides/ and /make-money 301s to
+   /opportunities/ - neither destination matches any render.yaml rule, and
+   NONE of the 104 declared rules fire (/opportunities, /jobs, /author,
+   /guides all return bare 404 in production). The file is version-controlled
+   intent that the deployed service has never been synced to. A chain then
+   explains the "/tech 404" report: /tech -> 301 -> /guides/ -> agents that
+   normalise the trailing slash request /guides -> 404.
+
+2. The buildCommand's `git clean -xdf public/` never ran on Render (its
+   `|| echo` fallback swallowed the failure), so Render's cached build
+   workspace kept republishing the 2026-09-14 vintage of the pre-routing
+   public/ tree: 18 root directories (guides, writing, learn, tools, today,
+   tested, templates, checklists, compare, contact, copyright, corrections,
+   disclaimer, editorial-policy, essays, find, glossary, intelligence) with
+   ~500 index,follow pages, each self-canonical, duplicating the identical
+   /writers/ pages that have been the canonical home since the routing
+   migration.
+
+This script is the enforcement layer that does not depend on the dashboard or
+on git being available in the build image. It runs as the final step of
+`npm run build` (which the deployed buildCommand invokes whatever else it
+does):
+
+  a. PURGE: deletes public/<segment>/ for every legacy segment whose root
+     scheme is not live (guard: the routed allowlist must contain no route at
+     /<segment>/... - a segment that ever becomes a real property is skipped
+     loudly instead of purged).
+  b. STUB: regenerates, byte-stably, the file-level equivalents of the
+     dormant render.yaml rules, using the exact batch-66c stub shape already
+     proven in this repo (noindex,follow; instant meta-refresh; canonical to
+     the destination; a visible link for no-JS visitors):
+       - one root stub per legacy segment  (/<seg>/  -> destination)
+       - one stub per routed sub-page      (/<seg>/<rest>/ -> /writers/<seg>/<rest>/)
+     Flat-mapped segments (jobs, make-money, opportunities - whose wildcard
+     rules collapse to /writers/writing/ without capture) get the root stub
+     only, exactly like the rules they mirror.
+
+The segment table and destinations are parsed from render.yaml at runtime -
+one source of truth, no duplicated list to drift. Output carries no dates, so
+regeneration is byte-identical and the CI reproducibility diff stays clean.
+"""
+from __future__ import annotations
+
+import json
+import re
+import shutil
+import sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
+PUBLIC = ROOT / "public"
+RENDER_YAML = ROOT / "render.yaml"
+ALLOWLIST = ROOT / "content" / "index-allowlist.routed.json"
+
+RULE_RE = re.compile(
+    r"\{\s*type:\s*redirect,\s*source:\s*(?P<src>[^,]+?),\s*destination:\s*(?P<dst>[^}]+?)\s*\}"
+)
+
+
+def parse_rules() -> dict[str, str]:
+    """Return the bare legacy-segment -> destination map declared in render.yaml."""
+    text = RENDER_YAML.read_text(encoding="utf-8")
+    bare: dict[str, str] = {}
+    for m in RULE_RE.finditer(text):
+        src, dst = m.group("src").strip(), m.group("dst").strip()
+        if "*" in src or "/" in src.strip("/"):
+            continue                   # wildcards and nested sources (by-country)
+        seg = src.strip("/")
+        if seg and not src.endswith("/"):
+            bare[seg] = dst
+    return bare
+
+
+def stub_html(dest: str, label: str) -> str:
+    return (
+        '<!doctype html><html lang="en"><head><meta charset="utf-8">'
+        '<meta name="viewport" content="width=device-width,initial-scale=1">'
+        "<title>" + label + " moved | THE BRYME</title>"
+        '<meta name="robots" content="noindex,follow">'
+        '<meta http-equiv="refresh" content="0;url=' + dest + '">'
+        '<link rel="canonical" href="https://bryme.onrender.com' + dest + '"></head>'
+        '<body><p>This page moved. Continue to <a href="' + dest + '">the current page</a>.</p></body></html>'
+    )
+
+
+def main() -> int:
+    bare = parse_rules()
+    if not bare:
+        print("purge-stale-publish: no redirect rules parsed from render.yaml", file=sys.stderr)
+        return 1
+
+    al = json.loads(ALLOWLIST.read_text(encoding="utf-8"))
+    routes = al["routes"] if isinstance(al, dict) else al
+
+    purged = skipped = root_stubs = sub_stubs = 0
+    for seg in sorted(bare):
+        dest = bare[seg]
+        # Guard: never touch a segment that is a live root property.
+        live = [r for r in routes if r == f"/{seg}/" or r.startswith(f"/{seg}/")]
+        if live:
+            print(f"purge-stale-publish: SKIP /{seg}/ - live root property ({len(live)} allowlisted routes)")
+            skipped += 1
+            continue
+
+        d = PUBLIC / seg
+        if d.exists():
+            shutil.rmtree(d)
+            purged += 1
+
+        d.mkdir(parents=True, exist_ok=True)
+        (d / "index.html").write_text(stub_html(dest, seg), encoding="utf-8")
+        root_stubs += 1
+
+        # Sub-stubs: the file-level twin of the dormant `/<seg>/* -> /writers/<seg>/*`
+        # rule. Flat-mapped hubs (jobs, make-money, opportunities) need no special
+        # case: they have no routes under /writers/<seg>/, so this loop writes
+        # nothing for them and the root stub above is their whole coverage.
+        prefix = f"/writers/{seg}/"
+        for r in routes:
+            if not r.startswith(prefix) or r == prefix:
+                continue
+            rel = r[len(prefix):].strip("/")
+            sub = PUBLIC / seg / rel
+            sub.mkdir(parents=True, exist_ok=True)
+            (sub / "index.html").write_text(stub_html(r, rel.split("/")[-1]), encoding="utf-8")
+            sub_stubs += 1
+
+    print(f"purge-stale-publish: purged {purged} stale dirs, skipped {skipped} live, "
+          f"wrote {root_stubs} root stubs + {sub_stubs} sub-stubs")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

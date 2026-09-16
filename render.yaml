@@ -47,6 +47,18 @@ services:
     # /writing-opportunities/) no longer exist in the published artifact and
     # each of these rules was sending old links to a 404. Kept in step with the
     # _redirects file, which server/server.js reads for local tests.
+    # 2026-09-16 finding: the live service does NOT apply this routes block.
+    # Production still runs dashboard-era rules that predate this file (/tech
+    # 301s to /guides/, /make-money 301s to /opportunities/) and none of the
+    # rules below fire (/opportunities, /jobs, /author, /guides return bare
+    # 404 live). Until the site is re-synced to this blueprint (or the stale
+    # dashboard rules are deleted), scripts/purge-stale-publish.py enforces
+    # the same scheme at file level inside `npm run build`: it purges the
+    # stale 2026-09-14 root directories from the cached publish workspace
+    # (the buildCommand git-clean below never ran on Render - its || echo
+    # fallback swallowed the failure) and ships noindex meta-refresh stubs
+    # for every legacy URL these rules cover. Keep this block and that
+    # script's parsed destinations in step: it reads this file.
     routes:
       - { type: redirect, source: /opportunities, destination: /writers/writing/ }
       - { type: redirect, source: /opportunities/*, destination: /writers/writing/ }
@@ -76,8 +88,8 @@ services:
       # fire once the stale cached copies are gone (see buildCommand above),
       # because a published file takes precedence over a rule. Listed after the
       # specific /writing/by-country rules so those keep matching first.
-      - { type: redirect, source: /author, destination: /writers/author/ }
-      - { type: redirect, source: /author/, destination: /writers/author/ }
+      - { type: redirect, source: /author, destination: /writers/author/ibrahim-sodiq/ }
+      - { type: redirect, source: /author/, destination: /writers/author/ibrahim-sodiq/ }
       - { type: redirect, source: /author/*, destination: /writers/author/* }
       - { type: redirect, source: /checklists, destination: /writers/checklists/ }
       - { type: redirect, source: /checklists/, destination: /writers/checklists/ }

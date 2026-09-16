@@ -16,13 +16,14 @@
 # Writing-first BRYME launch. Legacy multi-niche hubs (jobs, opportunities,
 # make-money) were retired and live on the legacy-multiniche branch.
 # Keep 301s so old links land on the closest living writing-first surface.
-/opportunities  /writers/writing/  301
-/opportunities/  /writers/writing/  301
-/jobs  /writers/writing/  301
-/jobs/  /writers/writing/  301
+# 2026-09-16: the three retired hub roots (/opportunities, /jobs, /make-money)
+# are no longer rules — they are file-level stubs generated into public/ by
+# scripts/purge-stale-publish.py (noindex + meta-refresh to /writers/writing/).
+# Render never read this file, and the live service's dashboard-era rules were
+# never synced from render.yaml, so the stubs are the enforcement that actually
+# ships; a published file also wins over any rule, so keeping both was moot.
+# The nested legacy path below has no stub twin and stays a rule.
 /make-money/writing-opportunities/  /writers/writing-opportunities/  301
-/make-money  /writers/writing/  301
-/make-money/  /writers/writing/  301
 # Retired 2026-09-07: old country discovery page — the single entry point is
 # /writers/writing-opportunities/. (Render ignores this file, but render.yaml
 # carries the same rule.)

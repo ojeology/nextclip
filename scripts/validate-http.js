@@ -17,7 +17,10 @@
  * ignore the build.
  *
  * Every assertion below was verified against public/ and against production
- * (https://bryme.onrender.com) on 2026-09-15 rather than carried over.
+ * (https://bryme.onrender.com) on 2026-09-15 rather than carried over; the
+ * legacy-scheme assertions in check 5 were re-founded on 2026-09-16 after
+ * production was found to ignore both render.yaml's routes and its buildCommand
+ * purge (see the comment there).
  */
 const fs=require("fs"),path=require("path");
 const {server}=require("../server/server.js");
@@ -89,18 +92,38 @@ server.listen(0,"127.0.0.1",async()=>{const base=`http://127.0.0.1:${server.addr
    r=await get(base,p);check(r.status===200,`${p}: ${r.status}`);await r.arrayBuffer();
  }
 
- /* 5. The unprefixed legacy scheme must NOT resolve in the artifact. Production
-       served these as duplicate index,follow copies of the /writers/ pages because
-       Render caches the build workspace and untracked output from the 2026-09-14
-       vintage kept being published (REPORT.md 10.5 and 12). render.yaml now runs
-       `git clean -xdf public/` after the build to drop those stale files, and declares
-       wildcard 301s so legacy URLs land on their exact routed twin. The artifact stays
-       free of them, and this asserts it stays that way. */
+ /* 5. The unprefixed legacy scheme resolves ONLY as noindex redirect stubs.
+       Policy change 2026-09-16, forced by production findings: the check here
+       used to require bare 404s in the artifact because the redirect rules were
+       "declared in render.yaml and honoured". They are not honoured: the live
+       Render service was never synced to this repo's render.yaml (it still runs
+       dashboard-era rules - /tech 301s to /guides/, /make-money 301s to
+       /opportunities/ - and none of the 104 declared rules fire), and the
+       buildCommand's `git clean -xdf public/` never ran there either (its
+       `|| echo` fallback swallowed the failure), so Render's cached workspace
+       kept republishing the 2026-09-14 vintage: ~500 index,follow, self-
+       canonical duplicates of the /writers/ pages at the unprefixed roots.
+       Rules that the host does not apply protect nothing. The enforcement that
+       actually ships is now file-level: scripts/purge-stale-publish.py (final
+       step of `npm run build`, which the deployed buildCommand invokes whatever
+       else it does) purges those stale directories from the artifact and
+       regenerates byte-stable stubs - noindex,follow, instant meta-refresh and
+       canonical to the exact routed twin - for every legacy root and every
+       legacy sub-page. If the blueprint is ever synced, the published stubs
+       win over the rules on Render and serve the same destinations; if the
+       stale dashboard rules are ever deleted, bare /tech serves the tech shelf
+       directly again. These assertions keep the stub shape honest. */
  for(const p of ["/writing/","/guides/","/tools/","/learn/","/glossary/","/templates/","/checklists/",
-   "/problems/","/search/","/writing-opportunities/"]){
+   "/problems/","/search/","/writing-opportunities/","/opportunities/","/jobs/","/make-money/",
+   "/today/","/tested/","/author/",
+   "/guides/how-to-write-a-pitch/","/writing/afrolicious/","/learn/start-writing/"]){
    r=await get(base,p);
-   check(r.status===404,`legacy unprefixed ${p} should be 404 in the artifact, got ${r.status}`);
-   check(/noindex/i.test(await r.text()),`legacy unprefixed ${p}: 404 body lacks noindex`);
+   check(r.status===200,`legacy stub ${p}: expected 200 stub, got ${r.status}`);
+   const b=await r.text();
+   check(/noindex/i.test(b),`legacy stub ${p}: lacks noindex`);
+   check(!/index,follow/i.test(b.replace(/noindex,follow/g,"")),`legacy stub ${p}: looks indexable`);
+   check(/http-equiv="refresh" content="0;url=\/writers\//i.test(b),`legacy stub ${p}: no instant meta-refresh to a /writers/ twin`);
+   check(/rel="canonical" href="https:\/\/bryme\.onrender\.com\/writers\//.test(b),`legacy stub ${p}: canonical is not the routed twin`);
  }
 
  /* 6. Retired media families. There is no 410.html in the published artifact, so
@@ -139,5 +162,5 @@ server.listen(0,"127.0.0.1",async()=>{const base=`http://127.0.0.1:${server.addr
  const health=await r.json();check(health.service==="bryme-work","health service mismatch");
  }catch(e){failures.push(e.stack||String(e))}finally{server.close(()=>{
   if(failures.length){console.error(`FAIL (${failures.length})`);failures.forEach(x=>console.error("  - "+x));process.exitCode=1}
-  else console.log(JSON.stringify({ok:true,redirectRules:rules.length,checks:"published artifact, routed routes, redirect destinations, legacy 404, containment, headers, HEAD/POST, health"},null,2));
+  else console.log(JSON.stringify({ok:true,redirectRules:rules.length,checks:"published artifact, routed routes, redirect destinations, legacy stubs, containment, headers, HEAD/POST, health"},null,2));
  })}});
