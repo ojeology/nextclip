@@ -1,13 +1,13 @@
 {
  "_comment": "Written by scripts/sports_update_agent.py - source: football-data.org v4. The desk never publishes unverified data.",
- "generated": "2026-09-14 06:40 UTC",
+ "generated": "2026-09-16 15:45 UTC",
  "source": "football-data.org v4",
  "leagues": {
   "premier-league": {
    "name": "Premier League",
-   "table_updated": "fetched Monday 14 September 2026, 06:35 UTC",
-   "results_updated": "fetched Monday 14 September 2026, 06:35 UTC",
-   "scorers_updated": "fetched Monday 14 September 2026, 06:36 UTC",
+   "table_updated": "fetched Wednesday 16 September 2026, 15:41 UTC",
+   "results_updated": "fetched Wednesday 16 September 2026, 15:41 UTC",
+   "scorers_updated": "fetched Wednesday 16 September 2026, 15:41 UTC",
    "scorers_source": "The Guardian (10 Sep 2026) cross-checked with worldfootball.net",
    "table": [
     [
@@ -36,6 +36,18 @@
     ],
     [
      3,
+     "Leeds United",
+     4,
+     2,
+     2,
+     0,
+     7,
+     3,
+     4,
+     8
+    ],
+    [
+     4,
      "Hull City",
      4,
      2,
@@ -47,7 +59,7 @@
      8
     ],
     [
-     4,
+     5,
      "Brighton & Hove Albion",
      4,
      2,
@@ -59,7 +71,7 @@
      7
     ],
     [
-     5,
+     6,
      "Chelsea",
      4,
      2,
@@ -71,7 +83,7 @@
      7
     ],
     [
-     6,
+     7,
      "Brentford",
      4,
      1,
@@ -83,7 +95,7 @@
      6
     ],
     [
-     7,
+     8,
      "Liverpool",
      4,
      1,
@@ -95,7 +107,7 @@
      6
     ],
     [
-     8,
+     9,
      "Everton",
      4,
      1,
@@ -107,7 +119,7 @@
      6
     ],
     [
-     9,
+     10,
      "Ipswich Town",
      4,
      2,
@@ -119,31 +131,7 @@
      6
     ],
     [
-     10,
-     "Newcastle United",
-     3,
-     1,
-     2,
-     0,
-     6,
-     4,
-     2,
-     5
-    ],
-    [
      11,
-     "Leeds United",
-     3,
-     1,
-     2,
-     0,
-     3,
-     2,
-     1,
-     5
-    ],
-    [
-     12,
      "Nottingham Forest",
      4,
      1,
@@ -152,6 +140,18 @@
      4,
      4,
      0,
+     5
+    ],
+    [
+     12,
+     "Newcastle United",
+     4,
+     1,
+     2,
+     1,
+     7,
+     8,
+     -1,
      5
     ],
     [
@@ -542,6 +542,13 @@
        "hs": 0,
        "as": 1,
        "a": "Manchester City"
+      },
+      {
+       "d": "2026-09-14",
+       "h": "Leeds United",
+       "hs": 4,
+       "as": 1,
+       "a": "Newcastle United"
       }
      ]
     }
@@ -620,12 +627,6 @@
    ],
    "upcoming": [
     {
-     "d": "2026-09-14 19:00",
-     "h": "Leeds United",
-     "a": "Newcastle United",
-     "mw": 4
-    },
-    {
      "d": "2026-09-18 19:00",
      "h": "Brentford",
      "a": "Chelsea",
@@ -690,9 +691,15 @@
      "h": "Arsenal",
      "a": "Leeds United",
      "mw": 6
+    },
+    {
+     "d": "2026-10-10 14:00",
+     "h": "Sunderland",
+     "a": "Brighton & Hove Albion",
+     "mw": 6
     }
    ],
-   "upcoming_updated": "fetched Monday 14 September 2026, 06:35 UTC",
+   "upcoming_updated": "fetched Wednesday 16 September 2026, 15:41 UTC",
    "squads": {
     "Arsenal": {
      "id": 57,
@@ -1049,6 +1056,182 @@
        "Offence",
        "England",
        "2008-06-24",
+       null
+      ]
+     ]
+    },
+    "Leeds United": {
+     "id": 341,
+     "founded": 1904,
+     "venue": "Elland Road",
+     "colors": "White / Blue",
+     "players": [
+      [
+       "Alex Cairns",
+       "Goalkeeper",
+       "England",
+       "1993-01-04",
+       null
+      ],
+      [
+       "Michael Zetterer",
+       "Goalkeeper",
+       "Germany",
+       "1995-07-12",
+       null
+      ],
+      [
+       "James Trafford",
+       "Goalkeeper",
+       "England",
+       "2002-10-10",
+       null
+      ],
+      [
+       "Nico Elvedi",
+       "Defence",
+       "Switzerland",
+       "1996-09-30",
+       null
+      ],
+      [
+       "Jayden Bogle",
+       "Defence",
+       "England",
+       "2000-07-27",
+       null
+      ],
+      [
+       "James Justin",
+       "Defence",
+       "England",
+       "1998-02-23",
+       null
+      ],
+      [
+       "Joe Rodon",
+       "Defence",
+       "Wales",
+       "1997-10-22",
+       null
+      ],
+      [
+       "Gabriel Gudmundsson",
+       "Defence",
+       "Sweden",
+       "1999-04-29",
+       null
+      ],
+      [
+       "Jaka Bijol",
+       "Defence",
+       "Slovenia",
+       "1999-02-05",
+       null
+      ],
+      [
+       "Melvin Bard",
+       "Defence",
+       "France",
+       "2000-11-06",
+       null
+      ],
+      [
+       "Tarik Muharemović",
+       "Defence",
+       "Bosnia-Herzegovina",
+       "2003-02-28",
+       null
+      ],
+      [
+       "Sean Longstaff",
+       "Midfield",
+       "England",
+       "1997-10-30",
+       null
+      ],
+      [
+       "Ethan Ampadu",
+       "Midfield",
+       "Wales",
+       "2000-09-14",
+       null
+      ],
+      [
+       "Ao Tanaka",
+       "Midfield",
+       "Japan",
+       "1998-09-10",
+       null
+      ],
+      [
+       "Anton Stach",
+       "Midfield",
+       "Germany",
+       "1998-11-15",
+       null
+      ],
+      [
+       "Ilia Gruev",
+       "Midfield",
+       "Bulgaria",
+       "2000-05-06",
+       null
+      ],
+      [
+       "Brenden Aaronson",
+       "Midfield",
+       "USA",
+       "2000-10-22",
+       null
+      ],
+      [
+       "Dominic Calvert-Lewin",
+       "Offence",
+       "England",
+       "1997-03-16",
+       null
+      ],
+      [
+       "Lukas Nmecha",
+       "Offence",
+       "Germany",
+       "1998-12-14",
+       null
+      ],
+      [
+       "Daniel James",
+       "Offence",
+       "Wales",
+       "1997-11-10",
+       null
+      ],
+      [
+       "Harry Wilson",
+       "Offence",
+       "Wales",
+       "1997-03-22",
+       null
+      ],
+      [
+       "Noah Okafor",
+       "Offence",
+       "Switzerland",
+       "2000-05-24",
+       null
+      ],
+      [
+       "Mateo Fernandez",
+       "Offence",
+       "Spain",
+       "2003-10-19",
+       null
+      ],
+      [
+       "Jean Bahoya",
+       "Offence",
+       "France",
+       "2005-05-07",
        null
       ]
      ]
@@ -2495,6 +2678,182 @@
       ]
      ]
     },
+    "Nottingham Forest": {
+     "id": 351,
+     "founded": 1865,
+     "venue": "The City Ground",
+     "colors": "Red / White",
+     "players": [
+      [
+       "John",
+       "Goalkeeper",
+       "Brazil",
+       "1996-02-13",
+       null
+      ],
+      [
+       "Matz Sels",
+       "Goalkeeper",
+       "Belgium",
+       "1992-02-26",
+       null
+      ],
+      [
+       "Steven Benda",
+       "Goalkeeper",
+       "Germany",
+       "1998-10-01",
+       null
+      ],
+      [
+       "Nikola Milenković",
+       "Defence",
+       "Serbia",
+       "1997-10-12",
+       null
+      ],
+      [
+       "Ola Aina",
+       "Defence",
+       "Nigeria",
+       "1996-10-08",
+       null
+      ],
+      [
+       "Daniel Muñoz",
+       "Defence",
+       "Colombia",
+       "1996-05-26",
+       null
+      ],
+      [
+       "Neco Williams",
+       "Defence",
+       "Wales",
+       "2001-04-13",
+       null
+      ],
+      [
+       "Luca Netz",
+       "Defence",
+       "Germany",
+       "2003-05-15",
+       null
+      ],
+      [
+       "Jair Paula",
+       "Defence",
+       "Brazil",
+       "2005-03-07",
+       null
+      ],
+      [
+       "Ousmane Diomande",
+       "Defence",
+       "Cote d'Ivoire",
+       "2004-11-16",
+       null
+      ],
+      [
+       "Nicolò Savona",
+       "Defence",
+       "Italy",
+       "2003-03-19",
+       null
+      ],
+      [
+       "Murillo",
+       "Defence",
+       "Brazil",
+       "2002-07-04",
+       null
+      ],
+      [
+       "Morgan Gibbs-White",
+       "Midfield",
+       "England",
+       "2000-01-27",
+       null
+      ],
+      [
+       "Ryan Yates",
+       "Midfield",
+       "England",
+       "1997-11-21",
+       null
+      ],
+      [
+       "Ibrahim Sangaré",
+       "Midfield",
+       "Ivory Coast",
+       "1997-12-02",
+       null
+      ],
+      [
+       "Xaver Schlager",
+       "Midfield",
+       "Austria",
+       "1997-09-28",
+       null
+      ],
+      [
+       "Nicolás Domínguez",
+       "Midfield",
+       "Argentina",
+       "1998-06-28",
+       null
+      ],
+      [
+       "James McAtee",
+       "Midfield",
+       "England",
+       "2002-10-18",
+       null
+      ],
+      [
+       "Callum Hudson-Odoi",
+       "Offence",
+       "England",
+       "2000-11-07",
+       null
+      ],
+      [
+       "Chris Wood",
+       "Offence",
+       "New Zealand",
+       "1991-12-07",
+       null
+      ],
+      [
+       "Dan Ndoye",
+       "Offence",
+       "Switzerland",
+       "2000-10-25",
+       null
+      ],
+      [
+       "Arnaud Kalimuendo",
+       "Offence",
+       "France",
+       "2002-01-20",
+       null
+      ],
+      [
+       "Liam Delap",
+       "Offence",
+       "England",
+       "2003-02-08",
+       null
+      ],
+      [
+       "Igor Jesus",
+       "Offence",
+       "Brazil",
+       "2001-02-25",
+       null
+      ]
+     ]
+    },
     "Newcastle United": {
      "id": 67,
      "founded": 1881,
@@ -2682,357 +3041,12 @@
        "Ivory Coast",
        "2006-03-02",
        null
-      ]
-     ]
-    },
-    "Leeds United": {
-     "id": 341,
-     "founded": 1904,
-     "venue": "Elland Road",
-     "colors": "White / Blue",
-     "players": [
+      ],
       [
-       "Alex Cairns",
-       "Goalkeeper",
+       "Mason Miley",
+       "",
        "England",
-       "1993-01-04",
-       null
-      ],
-      [
-       "Michael Zetterer",
-       "Goalkeeper",
-       "Germany",
-       "1995-07-12",
-       null
-      ],
-      [
-       "James Trafford",
-       "Goalkeeper",
-       "England",
-       "2002-10-10",
-       null
-      ],
-      [
-       "Nico Elvedi",
-       "Defence",
-       "Switzerland",
-       "1996-09-30",
-       null
-      ],
-      [
-       "Jayden Bogle",
-       "Defence",
-       "England",
-       "2000-07-27",
-       null
-      ],
-      [
-       "James Justin",
-       "Defence",
-       "England",
-       "1998-02-23",
-       null
-      ],
-      [
-       "Joe Rodon",
-       "Defence",
-       "Wales",
-       "1997-10-22",
-       null
-      ],
-      [
-       "Gabriel Gudmundsson",
-       "Defence",
-       "Sweden",
-       "1999-04-29",
-       null
-      ],
-      [
-       "Jaka Bijol",
-       "Defence",
-       "Slovenia",
-       "1999-02-05",
-       null
-      ],
-      [
-       "Melvin Bard",
-       "Defence",
-       "France",
-       "2000-11-06",
-       null
-      ],
-      [
-       "Tarik Muharemović",
-       "Defence",
-       "Bosnia-Herzegovina",
-       "2003-02-28",
-       null
-      ],
-      [
-       "Sean Longstaff",
-       "Midfield",
-       "England",
-       "1997-10-30",
-       null
-      ],
-      [
-       "Ethan Ampadu",
-       "Midfield",
-       "Wales",
-       "2000-09-14",
-       null
-      ],
-      [
-       "Ao Tanaka",
-       "Midfield",
-       "Japan",
-       "1998-09-10",
-       null
-      ],
-      [
-       "Anton Stach",
-       "Midfield",
-       "Germany",
-       "1998-11-15",
-       null
-      ],
-      [
-       "Ilia Gruev",
-       "Midfield",
-       "Bulgaria",
-       "2000-05-06",
-       null
-      ],
-      [
-       "Brenden Aaronson",
-       "Midfield",
-       "USA",
-       "2000-10-22",
-       null
-      ],
-      [
-       "Dominic Calvert-Lewin",
-       "Offence",
-       "England",
-       "1997-03-16",
-       null
-      ],
-      [
-       "Lukas Nmecha",
-       "Offence",
-       "Germany",
-       "1998-12-14",
-       null
-      ],
-      [
-       "Daniel James",
-       "Offence",
-       "Wales",
-       "1997-11-10",
-       null
-      ],
-      [
-       "Harry Wilson",
-       "Offence",
-       "Wales",
-       "1997-03-22",
-       null
-      ],
-      [
-       "Noah Okafor",
-       "Offence",
-       "Switzerland",
-       "2000-05-24",
-       null
-      ],
-      [
-       "Mateo Fernandez",
-       "Offence",
-       "Spain",
-       "2003-10-19",
-       null
-      ],
-      [
-       "Jean Bahoya",
-       "Offence",
-       "France",
-       "2005-05-07",
-       null
-      ]
-     ]
-    },
-    "Nottingham Forest": {
-     "id": 351,
-     "founded": 1865,
-     "venue": "The City Ground",
-     "colors": "Red / White",
-     "players": [
-      [
-       "John",
-       "Goalkeeper",
-       "Brazil",
-       "1996-02-13",
-       null
-      ],
-      [
-       "Matz Sels",
-       "Goalkeeper",
-       "Belgium",
-       "1992-02-26",
-       null
-      ],
-      [
-       "Steven Benda",
-       "Goalkeeper",
-       "Germany",
-       "1998-10-01",
-       null
-      ],
-      [
-       "Nikola Milenković",
-       "Defence",
-       "Serbia",
-       "1997-10-12",
-       null
-      ],
-      [
-       "Ola Aina",
-       "Defence",
-       "Nigeria",
-       "1996-10-08",
-       null
-      ],
-      [
-       "Daniel Muñoz",
-       "Defence",
-       "Colombia",
-       "1996-05-26",
-       null
-      ],
-      [
-       "Neco Williams",
-       "Defence",
-       "Wales",
-       "2001-04-13",
-       null
-      ],
-      [
-       "Luca Netz",
-       "Defence",
-       "Germany",
-       "2003-05-15",
-       null
-      ],
-      [
-       "Jair Paula",
-       "Defence",
-       "Brazil",
-       "2005-03-07",
-       null
-      ],
-      [
-       "Ousmane Diomande",
-       "Defence",
-       "Cote d'Ivoire",
-       "2004-11-16",
-       null
-      ],
-      [
-       "Nicolò Savona",
-       "Defence",
-       "Italy",
-       "2003-03-19",
-       null
-      ],
-      [
-       "Murillo",
-       "Defence",
-       "Brazil",
-       "2002-07-04",
-       null
-      ],
-      [
-       "Morgan Gibbs-White",
-       "Midfield",
-       "England",
-       "2000-01-27",
-       null
-      ],
-      [
-       "Ryan Yates",
-       "Midfield",
-       "England",
-       "1997-11-21",
-       null
-      ],
-      [
-       "Ibrahim Sangaré",
-       "Midfield",
-       "Ivory Coast",
-       "1997-12-02",
-       null
-      ],
-      [
-       "Xaver Schlager",
-       "Midfield",
-       "Austria",
-       "1997-09-28",
-       null
-      ],
-      [
-       "Nicolás Domínguez",
-       "Midfield",
-       "Argentina",
-       "1998-06-28",
-       null
-      ],
-      [
-       "James McAtee",
-       "Midfield",
-       "England",
-       "2002-10-18",
-       null
-      ],
-      [
-       "Callum Hudson-Odoi",
-       "Offence",
-       "England",
-       "2000-11-07",
-       null
-      ],
-      [
-       "Chris Wood",
-       "Offence",
-       "New Zealand",
-       "1991-12-07",
-       null
-      ],
-      [
-       "Dan Ndoye",
-       "Offence",
-       "Switzerland",
-       "2000-10-25",
-       null
-      ],
-      [
-       "Arnaud Kalimuendo",
-       "Offence",
-       "France",
-       "2002-01-20",
-       null
-      ],
-      [
-       "Liam Delap",
-       "Offence",
-       "England",
-       "2003-02-08",
-       null
-      ],
-      [
-       "Igor Jesus",
-       "Offence",
-       "Brazil",
-       "2001-02-25",
+       "2008-09-29",
        null
       ]
      ]
@@ -4698,12 +4712,12 @@
      ]
     }
    },
-   "squads_updated": "fetched Monday 14 September 2026, 06:40 UTC (20/20 clubs listed)"
+   "squads_updated": "fetched Wednesday 16 September 2026, 15:45 UTC (20/20 clubs listed)"
   },
   "la-liga": {
    "name": "La Liga",
-   "table_updated": "fetched Monday 14 September 2026, 06:36 UTC",
-   "scorers_updated": "fetched Monday 14 September 2026, 06:36 UTC",
+   "table_updated": "fetched Wednesday 16 September 2026, 15:41 UTC",
+   "scorers_updated": "fetched Wednesday 16 September 2026, 15:42 UTC",
    "table": [
     [
      1,
@@ -4720,29 +4734,41 @@
     [
      2,
      "Real Madrid CF",
+     6,
+     5,
+     0,
+     1,
+     17,
+     6,
+     11,
+     15
+    ],
+    [
+     3,
+     "Real Betis Balompié",
      5,
      4,
      0,
      1,
-     14,
-     4,
-     10,
+     7,
+     6,
+     1,
      12
     ],
     [
-     3,
+     4,
      "Deportivo Alavés",
-     5,
+     6,
      3,
      1,
-     1,
+     2,
      11,
-     5,
      6,
+     5,
      10
     ],
     [
-     4,
+     5,
      "Club Atlético de Madrid",
      5,
      3,
@@ -4754,7 +4780,7 @@
      10
     ],
     [
-     5,
+     6,
      "Sevilla FC",
      5,
      3,
@@ -4766,7 +4792,7 @@
      10
     ],
     [
-     6,
+     7,
      "RC Deportivo La Coruña",
      5,
      2,
@@ -4778,27 +4804,15 @@
      9
     ],
     [
-     7,
-     "Real Betis Balompié",
-     4,
-     3,
-     0,
-     1,
-     5,
-     5,
-     0,
-     9
-    ],
-    [
      8,
      "RCD Espanyol de Barcelona",
-     5,
+     6,
      2,
      1,
-     2,
-     8,
-     5,
      3,
+     9,
+     7,
+     2,
      7
     ],
     [
@@ -4839,6 +4853,18 @@
     ],
     [
      12,
+     "Rayo Vallecano de Madrid",
+     6,
+     2,
+     1,
+     3,
+     10,
+     15,
+     -5,
+     7
+    ],
+    [
+     13,
      "Real Sociedad de Fútbol",
      6,
      2,
@@ -4850,7 +4876,7 @@
      7
     ],
     [
-     13,
+     14,
      "Levante UD",
      5,
      1,
@@ -4862,7 +4888,7 @@
      5
     ],
     [
-     14,
+     15,
      "Getafe CF",
      5,
      1,
@@ -4874,7 +4900,7 @@
      5
     ],
     [
-     15,
+     16,
      "RC Celta de Vigo",
      6,
      0,
@@ -4886,19 +4912,19 @@
      4
     ],
     [
-     16,
-     "Rayo Vallecano de Madrid",
-     5,
+     17,
+     "Valencia CF",
+     6,
      1,
      1,
-     3,
-     8,
-     14,
-     -6,
+     4,
+     2,
+     10,
+     -8,
      4
     ],
     [
-     17,
+     18,
      "Málaga CF",
      5,
      0,
@@ -4910,49 +4936,51 @@
      3
     ],
     [
-     18,
-     "Villarreal CF",
-     4,
-     0,
-     2,
-     2,
-     6,
-     8,
-     -2,
-     2
-    ],
-    [
      19,
-     "Elche CF",
+     "Villarreal CF",
      5,
      0,
      2,
      3,
-     6,
-     13,
-     -7,
+     7,
+     10,
+     -3,
      2
     ],
     [
      20,
-     "Valencia CF",
-     5,
+     "Elche CF",
+     6,
      0,
-     1,
+     2,
      4,
-     1,
-     10,
-     -9,
-     1
+     8,
+     16,
+     -8,
+     2
     ]
    ],
    "scorers": [
+    {
+     "p": "Kylian Mbappé",
+     "c": "Real Madrid CF",
+     "g": 7,
+     "a": 2,
+     "pm": 6
+    },
+    {
+     "p": "Roberto Fernández",
+     "c": "RCD Espanyol de Barcelona",
+     "g": 6,
+     "a": null,
+     "pm": 6
+    },
     {
      "p": "Sergio Camello",
      "c": "Rayo Vallecano de Madrid",
      "g": 6,
      "a": 1,
-     "pm": 5
+     "pm": 6
     },
     {
      "p": "Raphinha",
@@ -4962,23 +4990,9 @@
      "pm": 5
     },
     {
-     "p": "Kylian Mbappé",
-     "c": "Real Madrid CF",
-     "g": 6,
-     "a": 1,
-     "pm": 5
-    },
-    {
      "p": "Lamine Yamal",
      "c": "FC Barcelona",
      "g": 6,
-     "a": null,
-     "pm": 5
-    },
-    {
-     "p": "Roberto Fernández",
-     "c": "RCD Espanyol de Barcelona",
-     "g": 5,
      "a": null,
      "pm": 5
     },
@@ -5015,7 +5029,7 @@
      "c": "Deportivo Alavés",
      "g": 4,
      "a": null,
-     "pm": 4
+     "pm": 5
     }
    ],
    "results": [
@@ -5309,6 +5323,13 @@
        "hs": 0,
        "as": 3,
        "a": "Club Atlético de Madrid"
+      },
+      {
+       "d": "2026-09-14",
+       "h": "Villarreal CF",
+       "hs": 1,
+       "as": 2,
+       "a": "Real Betis Balompié"
       }
      ]
     },
@@ -5321,36 +5342,33 @@
        "hs": 0,
        "as": 0,
        "a": "RC Celta de Vigo"
+      },
+      {
+       "d": "2026-09-15",
+       "h": "Rayo Vallecano de Madrid",
+       "hs": 2,
+       "as": 1,
+       "a": "RCD Espanyol de Barcelona"
+      },
+      {
+       "d": "2026-09-15",
+       "h": "Deportivo Alavés",
+       "hs": 0,
+       "as": 1,
+       "a": "Valencia CF"
+      },
+      {
+       "d": "2026-09-15",
+       "h": "Elche CF",
+       "hs": 2,
+       "as": 3,
+       "a": "Real Madrid CF"
       }
      ]
     }
    ],
-   "results_updated": "fetched Monday 14 September 2026, 06:36 UTC",
+   "results_updated": "fetched Wednesday 16 September 2026, 15:41 UTC",
    "upcoming": [
-    {
-     "d": "2026-09-14 19:00",
-     "h": "Villarreal CF",
-     "a": "Real Betis Balompié",
-     "mw": 5
-    },
-    {
-     "d": "2026-09-15 17:00",
-     "h": "Rayo Vallecano de Madrid",
-     "a": "RCD Espanyol de Barcelona",
-     "mw": 6
-    },
-    {
-     "d": "2026-09-15 18:00",
-     "h": "Deportivo Alavés",
-     "a": "Valencia CF",
-     "mw": 6
-    },
-    {
-     "d": "2026-09-15 19:30",
-     "h": "Elche CF",
-     "a": "Real Madrid CF",
-     "mw": 6
-    },
     {
      "d": "2026-09-16 17:00",
      "h": "RC Deportivo La Coruña",
@@ -5398,13 +5416,37 @@
      "h": "CA Osasuna",
      "a": "Rayo Vallecano de Madrid",
      "mw": 7
+    },
+    {
+     "d": "2026-09-19 14:15",
+     "h": "Athletic Club",
+     "a": "Deportivo Alavés",
+     "mw": 7
+    },
+    {
+     "d": "2026-09-19 16:30",
+     "h": "RC Celta de Vigo",
+     "a": "Real Racing Club de Santander",
+     "mw": 7
+    },
+    {
+     "d": "2026-09-19 19:00",
+     "h": "Sevilla FC",
+     "a": "FC Barcelona",
+     "mw": 7
+    },
+    {
+     "d": "2026-09-20 12:00",
+     "h": "Getafe CF",
+     "a": "Málaga CF",
+     "mw": 7
     }
    ],
-   "upcoming_updated": "fetched Monday 14 September 2026, 06:36 UTC"
+   "upcoming_updated": "fetched Wednesday 16 September 2026, 15:41 UTC"
   },
   "bundesliga": {
    "name": "Bundesliga",
-   "table_updated": "fetched Monday 14 September 2026, 06:36 UTC",
+   "table_updated": "fetched Wednesday 16 September 2026, 15:42 UTC",
    "table": [
     [
      1,
@@ -5829,7 +5871,7 @@
      ]
     }
    ],
-   "results_updated": "fetched Monday 14 September 2026, 06:37 UTC",
+   "results_updated": "fetched Wednesday 16 September 2026, 15:42 UTC",
    "scorers": [
     {
      "p": "Younes Ebnoutalib",
@@ -5902,7 +5944,7 @@
      "pm": 3
     }
    ],
-   "scorers_updated": "fetched Monday 14 September 2026, 06:37 UTC",
+   "scorers_updated": "fetched Wednesday 16 September 2026, 15:42 UTC",
    "upcoming": [
     {
      "d": "2026-09-18 18:30",
@@ -5977,12 +6019,48 @@
      "mw": 5
     }
    ],
-   "upcoming_updated": "fetched Monday 14 September 2026, 06:37 UTC"
+   "upcoming_updated": "fetched Wednesday 16 September 2026, 15:42 UTC"
   },
   "serie-a": {
    "table": [
     [
      1,
+     "AS Roma",
+     4,
+     4,
+     0,
+     0,
+     12,
+     1,
+     11,
+     12
+    ],
+    [
+     2,
+     "FC Internazionale Milano",
+     4,
+     4,
+     0,
+     0,
+     13,
+     6,
+     7,
+     12
+    ],
+    [
+     3,
+     "Como 1907",
+     4,
+     3,
+     1,
+     0,
+     9,
+     4,
+     5,
+     10
+    ],
+    [
+     4,
      "SS Lazio",
      4,
      3,
@@ -5994,31 +6072,7 @@
      10
     ],
     [
-     2,
-     "AS Roma",
-     3,
-     3,
-     0,
-     0,
-     10,
-     1,
-     9,
-     9
-    ],
-    [
-     3,
-     "FC Internazionale Milano",
-     3,
-     3,
-     0,
-     0,
-     8,
-     3,
      5,
-     9
-    ],
-    [
-     4,
      "Cagliari Calcio",
      4,
      3,
@@ -6030,7 +6084,7 @@
      9
     ],
     [
-     5,
+     6,
      "AC Milan",
      4,
      2,
@@ -6040,18 +6094,6 @@
      4,
      3,
      8
-    ],
-    [
-     6,
-     "Como 1907",
-     3,
-     2,
-     1,
-     0,
-     7,
-     3,
-     4,
-     7
     ],
     [
      7,
@@ -6128,25 +6170,25 @@
     [
      13,
      "Udinese Calcio",
-     3,
+     4,
      1,
      1,
-     1,
-     5,
-     5,
-     0,
+     2,
+     8,
+     10,
+     -2,
      4
     ],
     [
      14,
      "Torino FC",
-     3,
+     4,
      1,
      0,
-     2,
+     3,
      4,
-     5,
-     -1,
+     7,
+     -3,
      3
     ],
     [
@@ -6176,13 +6218,13 @@
     [
      17,
      "Parma Calcio 1913",
-     3,
+     4,
      0,
      1,
+     3,
      2,
-     1,
-     4,
-     -3,
+     6,
+     -4,
      1
     ],
     [
@@ -6222,7 +6264,7 @@
      0
     ]
    ],
-   "table_updated": "fetched Monday 14 September 2026, 06:36 UTC",
+   "table_updated": "fetched Wednesday 16 September 2026, 15:42 UTC",
    "results": [
     {
      "mw": 1,
@@ -6500,18 +6542,39 @@
        "hs": 3,
        "as": 2,
        "a": "Juventus FC"
+      },
+      {
+       "d": "2026-09-14",
+       "h": "Como 1907",
+       "hs": 2,
+       "as": 1,
+       "a": "Parma Calcio 1913"
+      },
+      {
+       "d": "2026-09-14",
+       "h": "Torino FC",
+       "hs": 0,
+       "as": 2,
+       "a": "AS Roma"
+      },
+      {
+       "d": "2026-09-14",
+       "h": "FC Internazionale Milano",
+       "hs": 5,
+       "as": 3,
+       "a": "Udinese Calcio"
       }
      ]
     }
    ],
-   "results_updated": "fetched Monday 14 September 2026, 06:36 UTC",
+   "results_updated": "fetched Wednesday 16 September 2026, 15:42 UTC",
    "scorers": [
     {
      "p": "Donyell Malen",
      "c": "AS Roma",
-     "g": 5,
+     "g": 6,
      "a": null,
-     "pm": 3
+     "pm": 4
     },
     {
      "p": "Antonio Raimondo",
@@ -6539,14 +6602,14 @@
      "c": "Udinese Calcio",
      "g": 2,
      "a": 1,
-     "pm": 3
+     "pm": 4
     },
     {
      "p": "Anastasios Douvikas",
      "c": "Como 1907",
      "g": 2,
      "a": null,
-     "pm": 3
+     "pm": 4
     },
     {
      "p": "Hakan Çalhanoğlu",
@@ -6563,40 +6626,22 @@
      "pm": 3
     },
     {
+     "p": "Francesco Esposito",
+     "c": "FC Internazionale Milano",
+     "g": 2,
+     "a": 1,
+     "pm": 4
+    },
+    {
      "p": "Tiago Gabriel",
      "c": "US Lecce",
      "g": 2,
      "a": null,
      "pm": 4
-    },
-    {
-     "p": "Alphadjo Cisse",
-     "c": "AC Milan",
-     "g": 2,
-     "a": null,
-     "pm": 4
     }
    ],
-   "scorers_updated": "fetched Monday 14 September 2026, 06:36 UTC",
+   "scorers_updated": "fetched Wednesday 16 September 2026, 15:42 UTC",
    "upcoming": [
-    {
-     "d": "2026-09-14 16:30",
-     "h": "Como 1907",
-     "a": "Parma Calcio 1913",
-     "mw": 4
-    },
-    {
-     "d": "2026-09-14 16:30",
-     "h": "Torino FC",
-     "a": "AS Roma",
-     "mw": 4
-    },
-    {
-     "d": "2026-09-14 18:45",
-     "h": "FC Internazionale Milano",
-     "a": "Udinese Calcio",
-     "mw": 4
-    },
     {
      "d": "2026-09-18 18:45",
      "h": "AC Monza",
@@ -6650,9 +6695,27 @@
      "h": "Juventus FC",
      "a": "Atalanta BC",
      "mw": 5
+    },
+    {
+     "d": "2026-09-20 18:45",
+     "h": "AC Milan",
+     "a": "US Lecce",
+     "mw": 5
+    },
+    {
+     "d": "2026-10-10 13:00",
+     "h": "Genoa CFC",
+     "a": "ACF Fiorentina",
+     "mw": 6
+    },
+    {
+     "d": "2026-10-10 16:00",
+     "h": "FC Internazionale Milano",
+     "a": "Parma Calcio 1913",
+     "mw": 6
     }
    ],
-   "upcoming_updated": "fetched Monday 14 September 2026, 06:36 UTC"
+   "upcoming_updated": "fetched Wednesday 16 September 2026, 15:42 UTC"
   },
   "ligue-1": {
    "table": [
@@ -6873,7 +6936,7 @@
      2
     ]
    ],
-   "table_updated": "fetched Monday 14 September 2026, 06:37 UTC",
+   "table_updated": "fetched Wednesday 16 September 2026, 15:42 UTC",
    "results": [
     {
      "mw": 1,
@@ -7148,7 +7211,7 @@
      ]
     }
    ],
-   "results_updated": "fetched Monday 14 September 2026, 06:37 UTC",
+   "results_updated": "fetched Wednesday 16 September 2026, 15:42 UTC",
    "scorers": [
     {
      "p": "Amine Gouiri",
@@ -7221,7 +7284,7 @@
      "pm": 4
     }
    ],
-   "scorers_updated": "fetched Monday 14 September 2026, 06:37 UTC",
+   "scorers_updated": "fetched Wednesday 16 September 2026, 15:42 UTC",
    "upcoming": [
     {
      "d": "2026-09-18 18:45",
@@ -7296,7 +7359,7 @@
      "mw": 6
     }
    ],
-   "upcoming_updated": "fetched Monday 14 September 2026, 06:37 UTC"
+   "upcoming_updated": "fetched Wednesday 16 September 2026, 15:42 UTC"
   },
   "champions-league": {
    "table": [
@@ -7733,7 +7796,7 @@
      0
     ]
    ],
-   "table_updated": "fetched Monday 14 September 2026, 06:37 UTC",
+   "table_updated": "fetched Wednesday 16 September 2026, 15:42 UTC",
    "results": [
     {
      "mw": 1,
@@ -7867,7 +7930,7 @@
      ]
     }
    ],
-   "results_updated": "fetched Monday 14 September 2026, 06:37 UTC",
+   "results_updated": "fetched Wednesday 16 September 2026, 15:43 UTC",
    "upcoming": [
     {
      "d": "2026-10-13 16:45",
@@ -7942,7 +8005,7 @@
      "mw": 2
     }
    ],
-   "upcoming_updated": "fetched Monday 14 September 2026, 06:37 UTC",
+   "upcoming_updated": "fetched Wednesday 16 September 2026, 15:43 UTC",
    "scorers": [
     {
      "p": "Ermedin Demirovic",
@@ -8015,7 +8078,7 @@
      "pm": 1
     }
    ],
-   "scorers_updated": "fetched Monday 14 September 2026, 06:38 UTC"
+   "scorers_updated": "fetched Wednesday 16 September 2026, 15:43 UTC"
   }
  }
 }
