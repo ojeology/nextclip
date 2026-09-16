@@ -2786,7 +2786,8 @@ _TECH_FIRSTHAND = {
 _TOOL_JS = {"json-formatter": "json", "base64-encoder": "base64", "url-encoder": "url",
             "uuid-generator": "uuid", "timestamp-converter": "timestamp", "word-counter": "wordcount",
             "case-converter": "case", "http-status-lookup": "status",
-            "data-usage-estimator": "datausage"}
+            "data-usage-estimator": "datausage",
+            "vpn-cost-calculator": "vpncost"}
 
 def tech_tool_pages():
     """BRYME Tools (master build M3): client-side tools at /tech/tool/<slug>/, CSP-safe."""
@@ -2825,7 +2826,7 @@ def tech_tool_pages():
         + '<div class="prose"><p>Every tool here is a small script served with this page and executed by <em>your</em> browser on <em>your</em> device. There is no backend to send your text to, no logging, no account. The <a href="/tech/disclaimer/">disclaimer</a> applies: general-purpose utilities, provided as-is \u2014 and the standing advice holds everywhere: do not paste secrets into web tools, including these.</p></div></section>'
         + '</div></main>' + foot("tech"))
     pages.insert(0, ("/tool/", "BRYME Tools \u2014 browser tools, zero data collection | BRYME Tech",
-                     "Eight free browser tools \u2014 JSON formatter, Base64, URL encoding, UUID generator, timestamps, word counter, case converter, HTTP status lookup. Client-side, no data collection.", hub))
+                     "Ten free browser tools \u2014 JSON formatter, Base64, URL encoding, UUID generator, timestamps, word counter, case converter, HTTP status lookup, a data-usage estimator and a VPN true-cost calculator. Client-side, no data collection.", hub))
     return pages
 
 

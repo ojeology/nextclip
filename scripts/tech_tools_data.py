@@ -194,4 +194,21 @@ None,
 </div>
 <div class="tt-btnrow"><button type="button" id="tt-est" class="btn">Estimate my month</button></div>
 <pre id="tt-out" class="tt-out" aria-live="polite"></pre>"""),
+
+("vpn-cost-calculator", "VPN true-cost calculator", "What will this VPN deal really cost?",
+ "Intro lump sum, months it buys, annual renewal, how long you'll keep it: the 36-month truth, the effective monthly rate and the renewal jump. Runs entirely in your browser.",
+ "which-vpn-subscription-is-worth-it",
+ """<h2>What this does</h2>
+<p>VPN pricing pages advertise an instalment figure (&ldquo;$2.99/mo&rdquo;) that is really a lump sum divided by a long first term, followed by a higher renewal. Enter the four numbers from the checkout page &mdash; the introductory charge, how many months it covers, the annual renewal price, and how long you realistically expect to keep the service &mdash; and the tool returns the total cost over that period, the effective monthly rate, the renewal jump as a multiple of the introductory rate, and, if you supply the provider's month-to-month price, the point at which paying monthly would have been cheaper. Add the optional monthly price to see the break-even for short needs such as a single trip.</p>
+<h2>Notes</h2>
+<p>Renewals are prorated across the months you keep the service after the introductory term ends; providers bill them annually in advance, so your actual invoice lands in yearly chunks rather than the smoothed figure shown here. Taxes, currency conversion and bank markups are excluded &mdash; for a Nigerian card paying a USD charge, your bank's conversion rate on the day is part of the real price. The companion read is <a href="/tech/which-vpn-subscription-is-worth-it/">Which VPN subscription is worth paying for?</a>, where the five current contracts are compared on their own published terms.</p>""",
+ """<div class="tt-grid">
+<div class="tt-field"><label class="tt-label" for="tt-intro">Introductory charge (total, e.g. 83.72)</label><input id="tt-intro" type="number" inputmode="decimal" min="0" max="2000" step="0.01" placeholder="83.72"></div>
+<div class="tt-field"><label class="tt-label" for="tt-introm">Months the intro charge covers</label><input id="tt-introm" type="number" inputmode="numeric" min="1" max="60" step="1" placeholder="28"></div>
+<div class="tt-field"><label class="tt-label" for="tt-renew">Renewal price per year</label><input id="tt-renew" type="number" inputmode="decimal" min="0" max="2000" step="0.01" placeholder="99.95"></div>
+<div class="tt-field"><label class="tt-label" for="tt-keep">Months you expect to keep it</label><input id="tt-keep" type="number" inputmode="numeric" min="1" max="120" step="1" placeholder="36"></div>
+<div class="tt-field"><label class="tt-label" for="tt-monthly">Month-to-month price (optional)</label><input id="tt-monthly" type="number" inputmode="decimal" min="0" max="200" step="0.01" placeholder="14.99"></div>
+</div>
+<div class="tt-btnrow"><button type="button" id="tt-calc" class="btn">Calculate the true cost</button></div>
+<pre id="tt-out" class="tt-out" aria-live="polite"></pre>"""),
 ]
