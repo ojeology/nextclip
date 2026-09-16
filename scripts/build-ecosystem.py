@@ -255,7 +255,7 @@ FITNESS_ONLY_CSS_EXTRA = """
 .fit-lib-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(0,1fr));gap:14px;margin:16px 0 0}
 .fit-lib-card{display:block;min-width:0;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--sheet);text-decoration:none;color:inherit}
 .fit-lib-card:hover{border-color:var(--accent)}
-.fit-lib-card img{display:block;width:100%;height:auto;aspect-ratio:1408/768;object-fit:cover;border:0;padding:0;background:var(--sheet)}
+.fit-lib-card img{display:block;width:100%;height:auto;aspect-ratio:640/349;object-fit:cover;border:0;padding:0;background:var(--sheet)}
 .fit-lib-card b{display:block;padding:11px 13px 2px;font:700 14px var(--sans);color:var(--ink)}
 .fit-lib-card small{display:block;padding:0 13px 12px;color:var(--dim);font-size:12.5px;line-height:1.45}
 @media (max-width:820px){.fit-lib-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
@@ -3408,11 +3408,11 @@ def fitness_pages():
         + '<section class="section"><div class="section-head"><p class="kicker">The library &middot; 75 illustrated moves</p><h2>Every exercise, shown.</h2></div>'
         + '<p style="color:var(--dim);font-size:14.5px;max-width:62ch">Five shelves. Each move carries a form illustration, the muscles it works and the kit it needs &mdash; no account, nothing to install.</p>'
         + '<div class="fit-lib-grid">'
-        + '<a class="fit-lib-card" href="/fitness/exercise-library-push/"><img src="/assets/fitness/img/push-up.png" alt="Form illustration: push-up, side view" loading="lazy" width="1408" height="768"><b>Push day</b><small>16 chest, shoulder and tricep moves</small></a>'
-        + '<a class="fit-lib-card" href="/fitness/exercise-library-pull/"><img src="/assets/fitness/img/towel-row.png" alt="Form illustration: towel row, side view" loading="lazy" width="1408" height="768"><b>Pull day</b><small>16 back and bicep moves</small></a>'
-        + '<a class="fit-lib-card" href="/fitness/exercise-library-legs/"><img src="/assets/fitness/img/bodyweight-squat.png" alt="Form illustration: bodyweight squat, side view" loading="lazy" width="1408" height="768"><b>Leg day</b><small>16 squat, lunge and hinge moves</small></a>'
-        + '<a class="fit-lib-card" href="/fitness/exercise-library-core/"><img src="/assets/fitness/img/forearm-plank.png" alt="Form illustration: forearm plank, side view" loading="lazy" width="1408" height="768"><b>Core</b><small>14 ab and stability moves</small></a>'
-        + '<a class="fit-lib-card" href="/fitness/exercise-library-cond/"><img src="/assets/fitness/img/marching-in-place.png" alt="Form illustration: Marching in place, side view" loading="lazy" width="1408" height="768"><b>Conditioning</b><small>13 heart-pumping moves</small></a>'
+        + '<a class="fit-lib-card" href="/fitness/exercise-library-push/"><img src="/assets/fitness/img/thumb/push-up.webp" alt="Form illustration: push-up, side view" loading="lazy" width="640" height="349"><b>Push day</b><small>16 chest, shoulder and tricep moves</small></a>'
+        + '<a class="fit-lib-card" href="/fitness/exercise-library-pull/"><img src="/assets/fitness/img/thumb/towel-row.webp" alt="Form illustration: towel row, side view" loading="lazy" width="640" height="349"><b>Pull day</b><small>16 back and bicep moves</small></a>'
+        + '<a class="fit-lib-card" href="/fitness/exercise-library-legs/"><img src="/assets/fitness/img/thumb/bodyweight-squat.webp" alt="Form illustration: bodyweight squat, side view" loading="lazy" width="640" height="349"><b>Leg day</b><small>16 squat, lunge and hinge moves</small></a>'
+        + '<a class="fit-lib-card" href="/fitness/exercise-library-core/"><img src="/assets/fitness/img/thumb/forearm-plank.webp" alt="Form illustration: forearm plank, side view" loading="lazy" width="640" height="349"><b>Core</b><small>14 ab and stability moves</small></a>'
+        + '<a class="fit-lib-card" href="/fitness/exercise-library-cond/"><img src="/assets/fitness/img/thumb/marching-in-place.webp" alt="Form illustration: Marching in place, side view" loading="lazy" width="640" height="349"><b>Conditioning</b><small>13 heart-pumping moves</small></a>'
         + '</div>'
         + '<div class="actions" style="margin-top:16px"><a class="btn" href="/fitness/exercise-library/">Open the full library &rarr;</a></div></section>'
         + '<section class="section"><div class="data-cols" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px">'
