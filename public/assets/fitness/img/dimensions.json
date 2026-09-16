@@ -1,0 +1,302 @@
+{
+ "arnold-press": [
+  1376,
+  768
+ ],
+ "band-chest-press": [
+  1376,
+  768
+ ],
+ "band-curl": [
+  1376,
+  768
+ ],
+ "band-face-pull": [
+  1408,
+  768
+ ],
+ "band-good-morning": [
+  1376,
+  768
+ ],
+ "band-pull-apart": [
+  1408,
+  768
+ ],
+ "band-pulldown": [
+  1376,
+  768
+ ],
+ "band-row": [
+  1376,
+  768
+ ],
+ "band-shoulder-press": [
+  1376,
+  768
+ ],
+ "bear-crawl": [
+  1376,
+  768
+ ],
+ "bench-dip": [
+  1376,
+  768
+ ],
+ "bicycle-crunch": [
+  1376,
+  768
+ ],
+ "bird-dog": [
+  1408,
+  768
+ ],
+ "bodyweight-squat": [
+  1408,
+  768
+ ],
+ "bulgarian-split-squat": [
+  1376,
+  768
+ ],
+ "calf-raise": [
+  1408,
+  768
+ ],
+ "cat-cow": [
+  1376,
+  768
+ ],
+ "concentration-curl": [
+  1376,
+  768
+ ],
+ "cossack-squat": [
+  1376,
+  768
+ ],
+ "dead-bug": [
+  1408,
+  768
+ ],
+ "dead-hang": [
+  1376,
+  768
+ ],
+ "decline-push-up": [
+  1376,
+  768
+ ],
+ "diamond-push-up": [
+  1376,
+  768
+ ],
+ "donkey-calf-raise": [
+  1376,
+  768
+ ],
+ "doorway-row": [
+  1408,
+  768
+ ],
+ "dumbbell-bench-press": [
+  1376,
+  768
+ ],
+ "dumbbell-chest-fly": [
+  1376,
+  768
+ ],
+ "dumbbell-curl": [
+  1376,
+  768
+ ],
+ "dumbbell-floor-press": [
+  1376,
+  768
+ ],
+ "dumbbell-lateral-raise": [
+  1376,
+  768
+ ],
+ "dumbbell-shoulder-press": [
+  1376,
+  768
+ ],
+ "dumbbell-shrug": [
+  1376,
+  768
+ ],
+ "forearm-plank": [
+  1408,
+  768
+ ],
+ "glute-bridge": [
+  1408,
+  768
+ ],
+ "goblet-squat": [
+  1408,
+  768
+ ],
+ "hammer-curl": [
+  1376,
+  768
+ ],
+ "high-knees": [
+  1408,
+  768
+ ],
+ "hip-thrust": [
+  1376,
+  768
+ ],
+ "hollow-hold": [
+  1376,
+  768
+ ],
+ "hollow-rock": [
+  1376,
+  768
+ ],
+ "incline-push-up": [
+  1408,
+  768
+ ],
+ "inverted-row": [
+  1376,
+  768
+ ],
+ "jump-burpee": [
+  1376,
+  768
+ ],
+ "jump-rope": [
+  1376,
+  768
+ ],
+ "jumping-jack": [
+  1408,
+  768
+ ],
+ "jumping-lunge": [
+  1376,
+  768
+ ],
+ "lying-leg-raise": [
+  1376,
+  768
+ ],
+ "marching-in-place": [
+  1408,
+  768
+ ],
+ "mountain-climber": [
+  1408,
+  768
+ ],
+ "one-arm-dumbbell-row": [
+  1408,
+  768
+ ],
+ "overhead-tricep-extension": [
+  1376,
+  768
+ ],
+ "pallof-press": [
+  1376,
+  768
+ ],
+ "pike-push-up": [
+  1376,
+  768
+ ],
+ "plank-shoulder-tap": [
+  1376,
+  768
+ ],
+ "push-up": [
+  1408,
+  768
+ ],
+ "reverse-fly": [
+  1376,
+  768
+ ],
+ "reverse-lunge": [
+  1408,
+  768
+ ],
+ "romanian-deadlift": [
+  1408,
+  768
+ ],
+ "shadow-boxing": [
+  1376,
+  768
+ ],
+ "side-plank": [
+  1408,
+  768
+ ],
+ "side-plank-dip": [
+  1376,
+  768
+ ],
+ "single-leg-glute-bridge": [
+  1376,
+  768
+ ],
+ "skater-bound": [
+  1376,
+  768
+ ],
+ "sprint-intervals": [
+  1376,
+  768
+ ],
+ "squat-to-stand": [
+  1376,
+  768
+ ],
+ "stair-climb": [
+  1376,
+  768
+ ],
+ "step-through-burpee": [
+  1376,
+  768
+ ],
+ "step-up": [
+  1408,
+  768
+ ],
+ "suitcase-carry": [
+  1408,
+  768
+ ],
+ "sumo-squat": [
+  1376,
+  768
+ ],
+ "superman-hold": [
+  1408,
+  768
+ ],
+ "towel-row": [
+  1376,
+  768
+ ],
+ "walking-lunge": [
+  1376,
+  768
+ ],
+ "wall-handstand-hold": [
+  1376,
+  768
+ ],
+ "wall-sit": [
+  1408,
+  768
+ ]
+}

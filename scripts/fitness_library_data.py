@@ -612,19 +612,54 @@ LIB_BODY = """<p>This is the desk's gym: 75 moves across five taught pages, cove
 import os as _os
 _IMG_DIR = _os.path.join(_os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))), "assets", "fitness", "img")
 
+_DIMS_PATH = _os.path.join(_IMG_DIR, "dimensions.json")
+try:
+    with open(_DIMS_PATH, encoding="utf-8") as _fh:
+        import json as _json
+        _DIMS = _json.load(_fh)
+except Exception:
+    _DIMS = {}
+
 
 def _img_html(x):
-    """Form illustration when one exists at assets/fitness/img/<id>.png."""
-    if _os.path.isfile(_os.path.join(_IMG_DIR, x["id"] + ".png")):
-        return ('<img class="lib-img" src="/assets/fitness/img/' + x["id"] + '.png" '
-                'alt="Form illustration: ' + x["name"].replace("The ", "") + ', side view" loading="lazy" width="1408" height="768">')
-    return ""
+    """Form illustration when one exists at assets/fitness/img/.
+
+    Serves the WebP derivative at assets/fitness/img/full/<id>.webp - quality 92,
+    method 6, 4% of the PNG's weight - and falls back to the committed PNG when
+    the derivative is absent, so a partially migrated asset tree still renders.
+    The width/height attributes come from dimensions.json: the set mixes
+    1376x768 (51 moves) with 1408x768 (24), and a single hardcoded ratio gave
+    two thirds of the cards the wrong intrinsic size.
+    """
+    i = x["id"]
+    if _os.path.isfile(_os.path.join(_IMG_DIR, "full", i + ".webp")):
+        src = "/assets/fitness/img/full/" + i + ".webp"
+    elif _os.path.isfile(_os.path.join(_IMG_DIR, i + ".png")):
+        src = "/assets/fitness/img/" + i + ".png"
+    else:
+        return ""
+    w, h = _DIMS.get(i, [1408, 768])
+    return ('<img class="lib-img" src="' + src + '" '
+            'alt="Form illustration: ' + x["name"].replace("The ", "") + ', side view" '
+            'loading="lazy" width="' + str(w) + '" height="' + str(h) + '">')
 
 
 def missing_illustrations():
-    """Every move id whose assets/fitness/img/<id>.png is absent."""
-    return [x["id"] for x in EXERCISES
-            if not _os.path.isfile(_os.path.join(_IMG_DIR, x["id"] + ".png"))]
+    """Every move id whose illustration assets are incomplete.
+
+    An id counts as missing when either artefact is absent: the committed PNG
+    original, or its WebP derivative at full/<id>.webp that _img_html() prefers.
+    A tree holding only one of the two would either fall back to a 772 KB PNG or
+    render a bare card, and neither is a state the guard should pass silently.
+    """
+    out = []
+    for x in EXERCISES:
+        i = x["id"]
+        if not _os.path.isfile(_os.path.join(_IMG_DIR, i + ".png")):
+            out.append(i)
+        elif not _os.path.isfile(_os.path.join(_IMG_DIR, "full", i + ".webp")):
+            out.append(i)
+    return out
 
 
 def assert_illustrations_complete():
@@ -650,7 +685,8 @@ def assert_illustrations_complete():
         print("fitness-library: WARNING - " + detail)
         return
     raise SystemExit("fitness-library: refusing to build - " + detail + "\n"
-                     "Every exercise card must ship illustrated. Restore the PNGs, or set "
+                     "Every exercise card must ship illustrated. Restore the PNGs and the " 
+                    "full/*.webp derivatives, or set "
                      "BRYME_ALLOW_MISSING_ILLUSTRATIONS=1 to build without them deliberately.")
 
 
