@@ -1331,7 +1331,13 @@ def entertainment_pages():
             + '</div><aside class="nx-aside"><dl>' + aside_html + '</dl>'
             + '<p class="nx-verified">Trailer link verified ' + _nx_ver + ' via YouTube oEmbed (title and channel checked). Nothing loads from YouTube until you press play.</p>'
             + '</aside></div></main>' + foot("entertainment"))
-        return ("/movie/" + m["slug"] + "/", m["title"] + " (" + str(m.get("year") or "") + ") - official trailer, cast and story | BRYME Entertainment",
+        # H3 (audit 2026-09-16): SERP title budget - shortest form that fits 60 chars.
+        _nx_y = str(m.get("year") or "")
+        _nx_cands = ([m["title"] + " (" + _nx_y + ") - official trailer, cast and story | BRYME Entertainment",
+                      m["title"] + " (" + _nx_y + ") - trailer and cast | BRYME",
+                      m["title"] + " (" + _nx_y + ") | BRYME"] if _nx_y else []) + [m["title"] + " | BRYME"]
+        _nx_ttl = next((c for c in _nx_cands if len(c) <= 60), _nx_cands[-1])
+        return ("/movie/" + m["slug"] + "/", _nx_ttl,
                 (m.get("teaser") or m.get("description") or "")[:155], body)
     movie_pages = [_nx_movie_page(m) for m in _nx.MOVIES]
 
@@ -1640,17 +1646,17 @@ def sports_pages():
         + _league_module(LIVE.get("leagues", {}).get("premier-league", {}), "premier-league", "Premier League")
         + '<section class="section alt"><div class="section-head"><p class="kicker">The essentials</p><h2>Check the state of play.</h2></div>'
         + '<ul class="list">'
-        + '<li><a href="/premier-league-table/"><span><b>The live table</b><small>Twenty clubs after Matchweek 3 \u2014 stamped with the date and the sources, updated as rounds are verified.</small></span><span class="meta">Live</span></a></li>'
+        + '<li><a href="/premier-league-table/"><span><b>The live table</b><small>Twenty clubs, updated automatically \u2014 stamped with the date and the sources as rounds are verified.</small></span><span class="meta">Live</span></a></li>'
         + '<li><a href="/form-board/"><span><b>The Form Board</b><small>Who is actually in form right now \u2014 real points-per-game arithmetic on verified results.</small></span><span class="meta">Live</span></a></li>'
         + '<li><a href="/who-will-win-the-2026-27-premier-league/"><span><b>Who wins the league?</b><small>The living title-race page \u2014 updated as rounds are verified.</small></span><span class="meta">Feature</span></a></li>'
-        + '<li><a href="/premier-league-fixtures/"><span><b>Fixtures &amp; results</b><small>The full 380-fixture official calendar, with the verified Matchweek 4 card on top.</small></span><span class="meta">This weekend</span></a></li>'
-        + '<li><a href="/the-weekend-ahead/"><span><b>The weekend ahead</b><small>This weekend\u2019s fixtures and the desk\u2019s labelled forecast.</small></span><span class="meta">Forecast</span></a></li>'
+        + '<li><a href="/premier-league-fixtures/"><span><b>Fixtures &amp; results</b><small>The full 380-fixture official calendar, with the live-verified round ahead on top.</small></span><span class="meta">Calendar</span></a></li>'
+        + '<li><a href="/the-weekend-ahead/"><span><b>The weekend ahead (archive)</b><small>The desk\u2019s labelled forecast for the Matchweek 4 weekend, written 10 September \u2014 kept as published.</small></span><span class="meta">Archive</span></a></li>'
         + '<li><a href="/fpl/"><span><b>FPL, explained properly</b><small>Scoring, chips, transfers \u2014 the fantasy desk, no tips sold.</small></span><span class="meta">Fantasy</span></a></li>'
         + '<li><a href="/premier-league-clubs/"><span><b>All twenty clubs</b><small>Every club\u2019s hub: record, goal difference, next fixture, the story on one page.</small></span><span class="meta">Clubs</span></a></li>'
-        + '<li><a href="/premier-league-results/"><span><b>Results, MW1\u20133</b><small>Every verified score from the season\u2019s opening rounds.</small></span><span class="meta">Results</span></a></li>'
+        + '<li><a href="/premier-league-results/"><span><b>Every verified result</b><small>All the season\u2019s scores so far, stamped when checked.</small></span><span class="meta">Results</span></a></li>'
         + '<li><a href="/premier-league-top-scorers/"><span><b>Top scorers</b><small>The Golden Boot race, verified and dated.</small></span><span class="meta">Scorers</span></a></li>'
         + '<li><a href="/premier-league-transfers/"><span><b>The transfer centre</b><small>Summer 2026, deal by deal \u2014 statuses strict, rumours excluded.</small></span><span class="meta">Transfers</span></a></li>'
-        + '<li><a href="/premier-league-matchweek-4-preview/"><span><b>Matchweek 4, previewed honestly</b><small>The desk\u2019s live edition for the derby weekend \u2014 written Thursday, no odds.</small></span><span class="meta">This week</span></a></li>'
+        + '<li><a href="/premier-league-matchweek-4-preview/"><span><b>Matchweek 4, previewed honestly (archive)</b><small>The desk\u2019s pre-round edition for the derby weekend, kept as published.</small></span><span class="meta">Archive</span></a></li>'
         + '<li><a href="/how-the-premier-league-table-works/"><span><b>How the table works</b><small>Points, goal difference, tiebreakers \u2014 and what actually happens if two clubs finish level.</small></span><span class="meta">Understand</span></a></li>'
         + '</ul></section>'
         + '<section class="section alt"><div class="section-head"><p class="kicker">Desk &amp; archive</p><h2>The editorial layer.</h2></div>'
@@ -1690,13 +1696,41 @@ def sports_pages():
         + '<section class="section"><div class="prose"><p>Every club on this table has its own hub on the desk: start at <a href="/premier-league-clubs/">all twenty clubs</a>, or go straight to the leaders \u2014 <a href="/clubs/manchester-city/">Manchester City</a> and <a href="/clubs/arsenal/">Arsenal</a> \u2014 or the surprise of the season so far, <a href="/clubs/hull-city/">Hull City</a>.</p></div></section>'
         + '</div></main>' + foot("sports"))
     pages.append(("/premier-league-table/", "Premier League table 2026-27 \u2014 verified, dated, no odds | BRYME Sport",
-                  "The 2026-27 Premier League table as of Matchweek 3: position, played, goals, goal difference, points \u2014 verified across four sources and stamped with the date.", pl_table_page))
+                  "The 2026-27 Premier League table as of Matchweek " + str((((LIVE.get("leagues", {}).get("premier-league", {}) or {}).get("results") or [{"mw": 3}])[-1]).get("mw", 3)) + ": position, played, goals, goal difference, points \u2014 verified across four sources and stamped with the date.", pl_table_page))
 
+    # M-fixtures (audit 2026-09-16): the round-ahead card is derived from the
+    # agent-fed live data (content/sports-live.json) instead of a hardcoded
+    # matchweek that went stale the moment the round was played. The official
+    # calendar file supplies kick-off times and TV notes for the live-determined
+    # next round; fallbacks keep the section honest if either source is missing.
+    _livef = LIVE  # agent-fed data, loaded once at the top of sports_pages()
+    _plf = (_livef.get("leagues") or {}).get("premier-league") or {}
+    _pl_up = _plf.get("upcoming") or []
+    _calx = _cal("fixtures.json")
+    _next_mw = min((int(x["mw"]) for x in _pl_up if x.get("mw")), default=None)
+    _cal_mw = next((w for w in _calx["matchweeks"] if _next_mw is not None and w["number"] == _next_mw), None)
     fx_rows = ""
-    for when, hslug, hname, aslug, aname, venue in sld.PL_MW4:
-        fx_rows += ('<div class="fx-row"><span class="fx-when">' + when + '</span>'
-                    + '<span class="fx-tie"><a href="/clubs/' + hslug + '/">' + hname + '</a> v <a href="/clubs/' + aslug + '/">' + aname + '</a></span>'
-                    + '<span class="fx-where">' + venue + '</span></div>')
+    if _cal_mw:
+        for m in _cal_mw["matches"]:
+            h = NAME_SLUG.get(m["homeName"], ""); a = NAME_SLUG.get(m["awayName"], "")
+            t = m["time"] if m.get("timePublished") else "TBC"
+            tv = ('<span class="fx-tv">' + html.escape(m["tv"]) + '</span>') if m.get("tv") else ""
+            fx_rows += ('<div class="fx-row"><span class="fx-when">' + html.escape(m["dayLabel"]) + ' \u00b7 ' + t + '</span>'
+                        + '<span class="fx-tie"><a href="/clubs/' + h + '/">' + html.escape(m["homeName"]) + '</a> v <a href="/clubs/' + a + '/">' + html.escape(m["awayName"]) + '</a></span>'
+                        + '<span class="fx-where">' + tv + '</span></div>')
+    else:
+        for _m in _pl_up[:10]:
+            h = NAME_SLUG.get(_m.get("h", ""), ""); a = NAME_SLUG.get(_m.get("a", ""), "")
+            fx_rows += ('<div class="fx-row"><span class="fx-when">' + html.escape(str(_m.get("d", ""))) + ' \u00b7 UK time</span>'
+                        + '<span class="fx-tie"><a href="/clubs/' + h + '/">' + html.escape(str(_m.get("h", ""))) + '</a> v <a href="/clubs/' + a + '/">' + html.escape(str(_m.get("a", ""))) + '</a></span>'
+                        + '<span class="fx-where"></span></div>')
+    if not fx_rows:  # season over or feed empty: fall back to the last desk-verified round
+        for when, hslug, hname, aslug, aname, venue in sld.PL_MW4:
+            fx_rows += ('<div class="fx-row"><span class="fx-when">' + when + '</span>'
+                        + '<span class="fx-tie"><a href="/clubs/' + hslug + '/">' + hname + '</a> v <a href="/clubs/' + aslug + '/">' + aname + '</a></span>'
+                        + '<span class="fx-where">' + venue + '</span></div>')
+    _mw_label = ("Matchweek " + str(_next_mw)) if _next_mw else "The next round"
+    _round_stamp = html.escape(str(_plf.get("upcoming_updated") or "").replace("fetched ", "kick-offs checked ") or "from the official calendar")
     # ---- recovered official calendars (old backend): PL list rendered above; four league calendars open their data desks ----
     cal_pl = _cal("fixtures.json")
     cal_secs = ""
@@ -1716,18 +1750,18 @@ def sports_pages():
         + '<nav class="crumb"><a href="/sports/">Sport</a> / <a href="/premier-league/">Premier League</a> / Fixtures</nav>'
         + '<section class="cover"><p class="kicker">Premier League \u00b7 ' + sld.SEASON + ' \u00b7 fixtures &amp; results</p>'
         + '<h1 class="cover-title" style="font-size:clamp(30px,4.6vw,48px)">The 2026-27 fixture calendar.</h1>'
-        + '<p class="byline">Calendar: ' + html.escape(cal_pl["source"]) + ' \u00b7 <a href="' + cal_pl["sourceUrl"] + '" rel="noopener">official release</a> \u00b7 desk file last updated ' + cal_pl["lastUpdated"] + ' \u00b7 kick-off times UK \u00b7 ' + html.escape(cal_pl["kickoffNote"]) + '</p></section>'
-        + '<section class="section"><div class="section-head"><p class="kicker">This weekend \u00b7 verified ' + sld.FIXTURES_AS_OF[9:] + '</p><h2>Matchweek 4, cross-checked.</h2></div>'
+        + '<p class="byline">Calendar: ' + html.escape(cal_pl["source"]) + ' \u00b7 <a href="' + cal_pl["sourceUrl"] + '" rel="noopener">official release</a> \u00b7 season-calendar file last updated ' + cal_pl["lastUpdated"] + ' (full-season snapshot \u2014 the round ahead above comes from the live data feed) \u00b7 kick-off times UK \u00b7 ' + html.escape(cal_pl["kickoffNote"]) + '</p></section>'
+        + '<section class="section"><div class="section-head"><p class="kicker">The round ahead \u00b7 ' + _round_stamp + '</p><h2>' + _mw_label + ', from the official calendar.</h2></div>'
         + fx_rows + '</section>'
         + '<section class="section alt"><div class="section-head"><p class="kicker">The full season</p><h2>All 380 fixtures, as officially released.</h2></div>'
-        + '<div class="prose"><p>' + html.escape(cal_pl["subjectToChange"]) + ' The desk marks a round as played only after its results are verified \u2014 until then, every entry below is a scheduled fixture, not a result.</p></div>'
+        + '<div class="prose"><p>' + html.escape(cal_pl["subjectToChange"]) + ' The desk marks a round as played only after its results are verified \u2014 until then, every entry below is a scheduled fixture, not a result. The league hub, table, results and scorers pages update automatically from the live feed; this calendar is re-checked when broadcasters move kick-offs.</p></div>'
         + cal_secs + '</section>'
         + '<section class="section alt"><div class="section-head"><p class="kicker">Before the weekend</p><h2>Read the round first.</h2></div>'
         + '<ul class="list">'
-        + '<li><a href="/premier-league-matchweek-4-preview/"><span><b>Matchweek 4, previewed honestly</b><small>The desk\u2019s live edition: the four storylines, the real table, no odds.</small></span><span class="meta">Live</span></a></li>'
+        + '<li><a href="/premier-league-matchweek-4-preview/"><span><b>Matchweek 4, previewed honestly (archive)</b><small>The desk\u2019s pre-round edition: the four storylines, the real table, no odds.</small></span><span class="meta">Archive</span></a></li>'
         + '<li><a href="/premier-league-table/"><span><b>The live table</b><small>Where all twenty clubs stand going into the round.</small></span><span class="meta">Live</span></a></li>'
-        + '<li><a href="/premier-league-results/"><span><b>Results, MW1\u20133</b><small>All thirty verified scores from the opening rounds.</small></span><span class="meta">Results</span></a></li>'
-        + '<li><a href="/premier-league-top-scorers/"><span><b>Top scorers</b><small>Haaland, Isak and Fernandes lead \u2014 verified list.</small></span><span class="meta">Scorers</span></a></li>'
+        + '<li><a href="/premier-league-results/"><span><b>Every verified result</b><small>All the season\u2019s scores so far, stamped when checked.</small></span><span class="meta">Results</span></a></li>'
+        + '<li><a href="/premier-league-top-scorers/"><span><b>Top scorers</b><small>The Golden Boot race, verified and dated.</small></span><span class="meta">Scorers</span></a></li>'
         + '<li><a href="/premier-league-matchweek-2-preview/"><span><b>Matchweek 2 preview (archive)</b><small>The desk\u2019s pre-season window editions, kept as published.</small></span><span class="meta">Archive</span></a></li>'
         + '<li><a href="/deadline-day-dont-try-to-make-sense-of-it/"><span><b>Deadline day field guide (archive)</b><small>Why the window\u2019s last night looks the way it does.</small></span><span class="meta">Archive</span></a></li>'
         + '</ul></section>'
@@ -1760,7 +1794,7 @@ def sports_pages():
             + '<section class="cover"><p class="kicker">' + lname + ' \u00b7 ' + sld.SEASON + ' \u00b7 the calendar</p>'
             + '<h1 class="cover-title" style="font-size:clamp(30px,4.6vw,48px)">' + ltitle + '</h1>'
             + '<p class="byline">Calendar: ' + html.escape(cd["source"]) + ' \u00b7 <a href="' + cd["sourceUrl"] + '" rel="noopener">official source</a> \u00b7 desk file last updated ' + cd["lastUpdated"] + ' \u00b7 ' + html.escape(cd["kickoffNote"]) + '</p></section>'
-            + '<section class="section"><div class="prose"><p>' + html.escape(cd["subjectToChange"]) + ' Rounds appear here as scheduled fixtures; results are added only after the desk verifies them \u2014 an unverified result is never published.</p></div>'
+            + '<section class="section"><div class="prose"><p>' + html.escape(cd["subjectToChange"]) + ' Rounds appear here as scheduled fixtures; results are added only after the desk verifies them \u2014 an unverified result is never published. The league hub, table, results and scorers pages update automatically from the live feed; this calendar is re-checked when kick-offs move.</p></div>'
             + secs + '</section>'
             + '<section class="section alt"><div class="prose"><p>The ' + lname + ' hub holds the competition\u2019s format, champions and desk coverage: <a href="' + HUBHREF.get(lslug, "/" + lslug + "/") + '">the ' + lname + ' hub</a>. The desk\u2019s evergreen layer \u2014 <a href="/sports/explainers/">explainers</a>, <a href="/promotion-and-relegation-explained/">the pyramid</a>, <a href="/how-the-champions-league-works/">European qualification</a> \u2014 applies to every league on it.</p></div></section>'
             + '</div></main>' + foot("sports"))
