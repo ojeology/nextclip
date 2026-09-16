@@ -39,13 +39,22 @@ try{await ready(base+"/healthz");browser=await chromium.launch({headless:true});
    if(routeErrors.length)failures.push(`${label}: ${routeErrors[0]}`);rendered++}catch(e){failures.push(`${label}: ${e.name}: ${e.message}`)}
   }await context.close()}
  const context=await browser.newContext({viewport:{width:390,height:844},serviceWorkers:"block"});const page=await context.newPage();/* Live properties render 200. Retired media families, unknown paths and the
-    unprefixed legacy scheme all answer 404 with the noindex 404 page: the
+    retired media answer 404 with the noindex 404 page (the unprefixed legacy
+    roots moved to stub assertions below on 2026-09-16): the
     published artifact has no 410.html, so nothing answers 410 -- which matches
     production, where /movie/the-invite/ returns 404. /sports/ and /entertainment/
     were asserted as 410 here until 2026-09-15; both are live properties serving
     200 (111 and 806 sitemap URLs). domcontentloaded, not networkidle, so the
     YouTube thumbnails on /entertainment/ cannot stall the probe. */
    for(const route of ["/","/writers/","/sports/","/entertainment/","/tech/","/fitness/","/home/"]){const r=await page.goto(base+route,{waitUntil:"domcontentloaded"});check(r.status()===200,`${route}: browser HTTP ${r.status()}`)}
-   for(const route of ["/movie/example/","/anime/","/not-a-page/","/writing/","/guides/"]){const r=await page.goto(base+route,{waitUntil:"domcontentloaded"});check(r.status()===404,`${route}: browser HTTP ${r.status()}`);const t404=(await page.textContent("body"))||"";check(/404/.test(t404)&&/(?:does not exist|never existed|page not found)/i.test(t404),`${route}: 404 explanation missing`)}await context.close();
+   for(const route of ["/movie/example/","/anime/","/not-a-page/"]){const r=await page.goto(base+route,{waitUntil:"domcontentloaded"});check(r.status()===404,`${route}: browser HTTP ${r.status()}`);const t404=(await page.textContent("body"))||"";check(/404/.test(t404)&&/(?:does not exist|never existed|page not found)/i.test(t404),`${route}: 404 explanation missing`)}
+   /* Unprefixed legacy roots 2026-09-16: noindex meta-refresh stubs, not 404s.
+      Production ignores the redirect rules declared in render.yaml (the live
+      service was never synced to it and still runs dashboard-era rules), so
+      scripts/purge-stale-publish.py ships the file-level equivalent: a stub per
+      legacy root and per legacy sub-page, noindex,follow with an instant
+      meta-refresh and canonical to the exact routed twin. Assert the stub shape
+      and that a real browser lands on the twin. */
+   for(const [route,twin] of [["/writing/","/writers/writing/"],["/guides/","/writers/guides/"],["/tools/","/writers/tools/"],["/today/","/writers/today/"]]){const sr=await page.request.get(base+route);check(sr.status()===200,`legacy stub ${route}: HTTP ${sr.status()}`);const th=await sr.text();check(/noindex/i.test(th),`legacy stub ${route}: lacks noindex`);check(!/index,follow/i.test(th.replace(/noindex,follow/g,"")),`legacy stub ${route}: looks indexable`);check(/http-equiv="refresh" content="0;url=\/writers\//i.test(th),`legacy stub ${route}: no instant meta-refresh to a /writers/ twin`);await page.goto(base+route,{waitUntil:"domcontentloaded"});await page.waitForURL(u=>u.pathname===twin,{timeout:5000}).catch(()=>{});check(page.url().endsWith(twin),`legacy stub ${route}: meta-refresh did not land on ${twin} (at ${page.url()})`)}await context.close();
  console.log(JSON.stringify({ok:failures.length===0,routes:routes.length,viewports:viewports.map(v=>`${v.width}x${v.height}`),renderedCases:rendered,failures:failures.slice(0,5000)},null,2));if(failures.length)process.exitCode=1;
 }catch(e){console.error(e.stack||e);process.exitCode=1}finally{if(browser)await browser.close();child.kill("SIGTERM")}})();
