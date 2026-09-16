@@ -54,7 +54,7 @@ This is the three-tier reading every new platform deserves, and the reason this 
 
 Notice which tier is the biggest. That is normal for a months-old platform — and it is precisely why the honest verdict is "worth a five-dollar experiment, not a business plan."
 
-One entry in the unknown tier deserves its own paragraph: the platform says its AI agent **learns from your posting history**. For some writers that is a feature they will never think about again; for others — anyone under client confidentiality, or building paid work on material they license exclusively — feeding it to a third-party platform's model is a genuine cost. The same caution this site applies to AI research tools applies here: [reliable-sources discipline](/learn/how-to-find-reliable-sources/) extends to what you hand over, not just what you take in.
+One entry in the unknown tier deserves its own paragraph: the platform says its AI agent **learns from your posting history**. For some writers that is a feature they will never think about again; for others — anyone under client confidentiality, or building paid work on material they license exclusively — feeding it to a third-party platform's model is a genuine cost. The same caution this site applies to AI research tools applies here: [reliable-sources discipline](/learn/research-sources/how-to-find-reliable-sources/) extends to what you hand over, not just what you take in.
 
 ## The nine-question checklist for any emerging platform
 

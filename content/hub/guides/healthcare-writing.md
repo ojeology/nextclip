@@ -21,7 +21,7 @@ Three forces shape every sentence:
 - **Errors reach patients.** A wrong drug-interaction sentence is not a typo; it is a potential harm. This is why the premium exists, and why it is deserved.
 - **Patient data is radioactive.** Case studies and testimonials that touch real patients run into HIPAA in the US (and equivalents elsewhere). The healthcare writer's rule: no patient detail without documented authorisation, and de-identify everything you are given before it enters a draft.
 
-Writers from other niches underestimate how much of the job is *claims discipline*: every assertion traceable to a guideline, a primary study or an authority source — the [reliable-sources habit](/learn/freelance-paid-writing/how-to-find-reliable-sources/) is not optional polish here, it is the product.
+Writers from other niches underestimate how much of the job is *claims discipline*: every assertion traceable to a guideline, a primary study or an authority source — the [reliable-sources habit](/learn/research-sources/how-to-find-reliable-sources/) is not optional polish here, it is the product.
 
 ## The review chain — and why it is your invoice
 

@@ -90,9 +90,12 @@ server.listen(0,"127.0.0.1",async()=>{const base=`http://127.0.0.1:${server.addr
  }
 
  /* 5. The unprefixed legacy scheme must NOT resolve in the artifact. Production
-       currently serves these as duplicate index,follow copies of the /writers/
-       pages (see REPORT.md 10.5); the repo artifact is correct and this asserts
-       it stays that way. */
+       served these as duplicate index,follow copies of the /writers/ pages because
+       Render caches the build workspace and untracked output from the 2026-09-14
+       vintage kept being published (REPORT.md 10.5 and 12). render.yaml now runs
+       `git clean -xdf public/` after the build to drop those stale files, and declares
+       wildcard 301s so legacy URLs land on their exact routed twin. The artifact stays
+       free of them, and this asserts it stays that way. */
  for(const p of ["/writing/","/guides/","/tools/","/learn/","/glossary/","/templates/","/checklists/",
    "/problems/","/search/","/writing-opportunities/"]){
    r=await get(base,p);

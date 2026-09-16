@@ -12,7 +12,7 @@ const SECURITY_HEADERS={
  "x-content-type-options":"nosniff","x-frame-options":"SAMEORIGIN","referrer-policy":"strict-origin-when-cross-origin",
  "permissions-policy":"camera=(), microphone=(), geolocation=(), payment=(), usb=()",
  "cross-origin-opener-policy":"same-origin","strict-transport-security":"max-age=31536000; includeSubDomains",
- "content-security-policy":"default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; form-action 'self' https:; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self'; upgrade-insecure-requests"
+ "content-security-policy":"default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; form-action 'self' https:; script-src 'self' https:; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https:; frame-src 'self' https:; child-src 'self' https:; media-src 'self' https:; upgrade-insecure-requests"
 };
 /* A static host serves whatever sits in the publish directory, so this is
    derived from it rather than hardcoded. The previous list named only the

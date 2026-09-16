@@ -15,7 +15,18 @@ services:
     #   - build-ecosystem.py re-run rewrites 186 files under ecosystem/ that are
     #     not then propagated to public/ (routing has already aborted), so it
     #     added churn and no output.
-    buildCommand: npm install --omit=dev && npm run build
+    # The trailing `git clean` is the duplicate-content fix. Render caches the
+    # build workspace between deploys and `npm run build` never deletes, so
+    # untracked output from an older vintage (public/writing/, public/guides/,
+    # public/learn/, ... from 2026-09-14) kept being published as index,follow
+    # duplicates of the identical /writers/ pages - and because a published
+    # file wins over a redirect rule, the 301s below could never fire for them.
+    # Verified: `rm -rf public && npm run build` regenerates all 2,728 tracked
+    # files with 0 deletions and 0 untracked additions, so removing untracked
+    # files from the publish directory after a successful build is safe. It runs
+    # AFTER the build because `npm run build` swallows failures with `|| echo`,
+    # and deleting public/ first would then deploy an empty site.
+    buildCommand: npm install --omit=dev && npm run build && (git -c safe.directory='*' clean -xdf public/ || echo 'clean - git clean unavailable, untracked publish files may persist')
     staticPublishPath: public
     headers:
       - path: /*
@@ -54,6 +65,113 @@ services:
       # /writing-opportunities/. One country entry point; old URL 301s to it.
       - { type: redirect, source: /writing/by-country, destination: /writers/writing-opportunities/ }
       - { type: redirect, source: /writing/by-country/*, destination: /writers/writing-opportunities/ }
+      # Pre-routing writers' scheme (batch 32). These 32 path segments held the
+      # writers' publication before the routing migration moved it under
+      # /writers/. Render supports wildcard capture in the destination, so each
+      # legacy URL 301s to its exact routed twin (/writing/the-republic/ ->
+      # /writers/writing/the-republic/) rather than flattening to a hub. All 508
+      # legacy routes were checked against content/index-allowlist.routed.json:
+      # every destination resolves, so no rule can 301 to a 404. /about/ is
+      # deliberately absent - it is a live indexable root page. These rules only
+      # fire once the stale cached copies are gone (see buildCommand above),
+      # because a published file takes precedence over a rule. Listed after the
+      # specific /writing/by-country rules so those keep matching first.
+      - { type: redirect, source: /author, destination: /writers/author/ }
+      - { type: redirect, source: /author/, destination: /writers/author/ }
+      - { type: redirect, source: /author/*, destination: /writers/author/* }
+      - { type: redirect, source: /checklists, destination: /writers/checklists/ }
+      - { type: redirect, source: /checklists/, destination: /writers/checklists/ }
+      - { type: redirect, source: /checklists/*, destination: /writers/checklists/* }
+      - { type: redirect, source: /compare, destination: /writers/compare/ }
+      - { type: redirect, source: /compare/, destination: /writers/compare/ }
+      - { type: redirect, source: /compare/*, destination: /writers/compare/* }
+      - { type: redirect, source: /contact, destination: /writers/contact/ }
+      - { type: redirect, source: /contact/, destination: /writers/contact/ }
+      - { type: redirect, source: /contact/*, destination: /writers/contact/* }
+      - { type: redirect, source: /copyright, destination: /writers/copyright/ }
+      - { type: redirect, source: /copyright/, destination: /writers/copyright/ }
+      - { type: redirect, source: /copyright/*, destination: /writers/copyright/* }
+      - { type: redirect, source: /corrections, destination: /writers/corrections/ }
+      - { type: redirect, source: /corrections/, destination: /writers/corrections/ }
+      - { type: redirect, source: /corrections/*, destination: /writers/corrections/* }
+      - { type: redirect, source: /disclaimer, destination: /writers/disclaimer/ }
+      - { type: redirect, source: /disclaimer/, destination: /writers/disclaimer/ }
+      - { type: redirect, source: /disclaimer/*, destination: /writers/disclaimer/* }
+      - { type: redirect, source: /disclosure, destination: /writers/disclosure/ }
+      - { type: redirect, source: /disclosure/, destination: /writers/disclosure/ }
+      - { type: redirect, source: /disclosure/*, destination: /writers/disclosure/* }
+      - { type: redirect, source: /editorial-policy, destination: /writers/editorial-policy/ }
+      - { type: redirect, source: /editorial-policy/, destination: /writers/editorial-policy/ }
+      - { type: redirect, source: /editorial-policy/*, destination: /writers/editorial-policy/* }
+      - { type: redirect, source: /essays, destination: /writers/essays/ }
+      - { type: redirect, source: /essays/, destination: /writers/essays/ }
+      - { type: redirect, source: /essays/*, destination: /writers/essays/* }
+      - { type: redirect, source: /find, destination: /writers/find/ }
+      - { type: redirect, source: /find/, destination: /writers/find/ }
+      - { type: redirect, source: /find/*, destination: /writers/find/* }
+      - { type: redirect, source: /glossary, destination: /writers/glossary/ }
+      - { type: redirect, source: /glossary/, destination: /writers/glossary/ }
+      - { type: redirect, source: /glossary/*, destination: /writers/glossary/* }
+      - { type: redirect, source: /guides, destination: /writers/guides/ }
+      - { type: redirect, source: /guides/, destination: /writers/guides/ }
+      - { type: redirect, source: /guides/*, destination: /writers/guides/* }
+      - { type: redirect, source: /intelligence, destination: /writers/intelligence/ }
+      - { type: redirect, source: /intelligence/, destination: /writers/intelligence/ }
+      - { type: redirect, source: /intelligence/*, destination: /writers/intelligence/* }
+      - { type: redirect, source: /learn, destination: /writers/learn/ }
+      - { type: redirect, source: /learn/, destination: /writers/learn/ }
+      - { type: redirect, source: /learn/*, destination: /writers/learn/* }
+      - { type: redirect, source: /newsletter, destination: /writers/newsletter/ }
+      - { type: redirect, source: /newsletter/, destination: /writers/newsletter/ }
+      - { type: redirect, source: /newsletter/*, destination: /writers/newsletter/* }
+      - { type: redirect, source: /privacy, destination: /writers/privacy/ }
+      - { type: redirect, source: /privacy/, destination: /writers/privacy/ }
+      - { type: redirect, source: /privacy/*, destination: /writers/privacy/* }
+      - { type: redirect, source: /problems, destination: /writers/problems/ }
+      - { type: redirect, source: /problems/, destination: /writers/problems/ }
+      - { type: redirect, source: /problems/*, destination: /writers/problems/* }
+      - { type: redirect, source: /read, destination: /writers/read/ }
+      - { type: redirect, source: /read/, destination: /writers/read/ }
+      - { type: redirect, source: /read/*, destination: /writers/read/* }
+      - { type: redirect, source: /regional, destination: /writers/regional/ }
+      - { type: redirect, source: /regional/, destination: /writers/regional/ }
+      - { type: redirect, source: /regional/*, destination: /writers/regional/* }
+      - { type: redirect, source: /search, destination: /writers/search/ }
+      - { type: redirect, source: /search/, destination: /writers/search/ }
+      - { type: redirect, source: /search/*, destination: /writers/search/* }
+      - { type: redirect, source: /start, destination: /writers/start/ }
+      - { type: redirect, source: /start/, destination: /writers/start/ }
+      - { type: redirect, source: /start/*, destination: /writers/start/* }
+      - { type: redirect, source: /studio, destination: /writers/studio/ }
+      - { type: redirect, source: /studio/, destination: /writers/studio/ }
+      - { type: redirect, source: /studio/*, destination: /writers/studio/* }
+      - { type: redirect, source: /templates, destination: /writers/templates/ }
+      - { type: redirect, source: /templates/, destination: /writers/templates/ }
+      - { type: redirect, source: /templates/*, destination: /writers/templates/* }
+      - { type: redirect, source: /terms, destination: /writers/terms/ }
+      - { type: redirect, source: /terms/, destination: /writers/terms/ }
+      - { type: redirect, source: /terms/*, destination: /writers/terms/* }
+      - { type: redirect, source: /tested, destination: /writers/tested/ }
+      - { type: redirect, source: /tested/, destination: /writers/tested/ }
+      - { type: redirect, source: /tested/*, destination: /writers/tested/* }
+      - { type: redirect, source: /today, destination: /writers/today/ }
+      - { type: redirect, source: /today/, destination: /writers/today/ }
+      - { type: redirect, source: /today/*, destination: /writers/today/* }
+      - { type: redirect, source: /tools, destination: /writers/tools/ }
+      - { type: redirect, source: /tools/, destination: /writers/tools/ }
+      - { type: redirect, source: /tools/*, destination: /writers/tools/* }
+      - { type: redirect, source: /tracker, destination: /writers/tracker/ }
+      - { type: redirect, source: /tracker/, destination: /writers/tracker/ }
+      - { type: redirect, source: /tracker/*, destination: /writers/tracker/* }
+      - { type: redirect, source: /verification, destination: /writers/verification/ }
+      - { type: redirect, source: /verification/, destination: /writers/verification/ }
+      - { type: redirect, source: /verification/*, destination: /writers/verification/* }
+      - { type: redirect, source: /writing, destination: /writers/writing/ }
+      - { type: redirect, source: /writing/, destination: /writers/writing/ }
+      - { type: redirect, source: /writing/*, destination: /writers/writing/* }
+      - { type: redirect, source: /writing-opportunities, destination: /writers/writing-opportunities/ }
+      - { type: redirect, source: /writing-opportunities/, destination: /writers/writing-opportunities/ }
+      - { type: redirect, source: /writing-opportunities/*, destination: /writers/writing-opportunities/* }
     envVars:
       - key: NODE_VERSION
         value: "22"

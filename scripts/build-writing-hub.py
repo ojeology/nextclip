@@ -190,6 +190,13 @@ def render_md(text: str) -> str:
 
 def inline(t: str) -> str:
     t = esc(t)
+    # [label](href) - rendered before emphasis so a link inside *...* still works
+    # (two published articles were shipping the literal markdown). The href class
+    # excludes * so a stray asterisk in a URL can never become an <em> inside the
+    # attribute. esc() has already run, so & and " are safe in the href. Plain
+    # <a href>, no rel and no target: that is the convention every other external
+    # link on the site follows.
+    t = re.sub(r"\[([^\]]+)\]\(([^)\s*]+)\)", r'<a href="\2">\1</a>', t)
     t = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", t)
     t = re.sub(r"(?<!\*)\*([^*]+)\*(?!\*)", r"<em>\1</em>", t)
     return t
@@ -576,9 +583,9 @@ def tool_page(t: dict) -> None:
     if tc:
         about = f'''<section class="section"><div class="wrap"><div class="section-head"><div><p class="eyebrow">About this tool</p><h2>How to use the {esc(t['title'].lower())}.</h2></div></div>
 <div class="prose">
-<p><b>What it does.</b> {esc(tc.get('what', t.get('description', '')))}</p>
-<p><b>How to use it.</b> {esc(tc.get('howto', ''))}</p>
-<p><b>Why it matters.</b> {esc(tc.get('why', ''))}</p>
+<p><b>What it does.</b> {inline(tc.get('what', t.get('description', '')))}</p>
+<p><b>How to use it.</b> {inline(tc.get('howto', ''))}</p>
+<p><b>Why it matters.</b> {inline(tc.get('why', ''))}</p>
 </div>
 <div class="related-cta"><a class="btn secondary" href="/tools/">← All writing tools</a></div>
 </div></section>'''

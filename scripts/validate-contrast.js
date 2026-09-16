@@ -27,6 +27,20 @@ const ROOT = path.resolve(__dirname, "..");
 const failures = [];
 const check = (ok, msg) => { if (!ok) failures.push(msg); };
 
+/* Owner-mandated monetisation; intercepted so a contrast audit measures the
+   site's own paint rather than whatever creative an ad network served. */
+const AD_HOSTS = /(?:profitableratecpmnetwork|monetag|highperformanceformat|n6wxm|nap5k|propellerads)\./i;
+/* Answer ad requests with a benign empty payload rather than aborting them. An
+   abort makes Chromium log a failed request, which surfaces as a net::ERR_FAILED
+   console error on every page - an artifact of the harness, not a defect in the
+   site, and validate-browser fails on any console error. Fulfilling with an empty
+   body of the right type keeps the run clean, deterministic and offline-safe
+   while still never letting the ad network's own code execute. Images get a real
+   1x1 transparent GIF so nothing reports a broken-image decode error. */
+const AD_BLANK_GIF=Buffer.from("R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7","base64");
+function adFulfill(rt){const image=rt.request().resourceType()==="image";
+ return rt.fulfill({status:200,contentType:image?"image/gif":"application/javascript",body:image?AD_BLANK_GIF:""});}
+
 /* Routed scheme: the writers' pages live under /writers/. The family hub at "/"
    is not sampled here because it carries the family navigation rather than the
    writers' one; validate-http.js asserts it instead. All 16 verified present
@@ -103,6 +117,7 @@ async function ready(url) {
         viewport: { width: vp.width, height: vp.height }, serviceWorkers: "block",
         colorScheme: theme,
       });
+      await context.route(AD_HOSTS, adFulfill);
       /* Seed the remembered choice so assets/theme.js paints the theme we
          are auditing, before any page script or first paint. */
       await context.addInitScript((t) => {

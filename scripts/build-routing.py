@@ -168,9 +168,16 @@ def main() -> int:
     _hub_about = ROOT / "ecosystem" / "hub" / "about"
     if _hub_about.exists():
         shutil.copytree(_hub_about, ROOT / "about", dirs_exist_ok=True)
-    import re as _re, datetime as _dt
+    import re as _re, datetime as _dt, os as _os
+    # SOURCE_DATE_EPOCH pins this, exactly as _build_now() does in
+    # build-writing-first.py. Without it every <lastmod> became the real current
+    # date on every build, so `git diff --exit-code` failed the day after any
+    # commit. Unset in production, where lastmod should carry the deploy date.
+    _epoch = _os.environ.get("SOURCE_DATE_EPOCH", "")
+    _today = (_dt.datetime.fromtimestamp(int(_epoch), _dt.timezone.utc).date()
+              if _epoch.isdigit() else _dt.date.today())
     _sm = (ROOT / "ecosystem" / "hub" / "sitemap.xml").read_text(encoding="utf-8")
-    _sm = _re.sub(r"<lastmod>[^<]*</lastmod>", "<lastmod>" + _dt.date.today().isoformat() + "</lastmod>", _sm)
+    _sm = _re.sub(r"<lastmod>[^<]*</lastmod>", "<lastmod>" + _today.isoformat() + "</lastmod>", _sm)
     (ROOT / "sitemap.xml").write_text(_sm, encoding="utf-8")
 
 

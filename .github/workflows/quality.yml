@@ -25,6 +25,15 @@ jobs:
           python-version: "3.12"
       - run: npm ci
       - run: npx playwright install --with-deps chromium
+      # Pin the build date to the commit (reproducible builds). The generators
+      # derive the deadline->closed flips, the "%B %Y" edition line and every
+      # sitemap <lastmod> from the current date, so without this the diff below
+      # fails on any day after the commit was made - ten status flips are already
+      # scheduled between 2026-09-18 and 2026-12-31, and lastmod alone broke it
+      # daily. Production deploys do not set this, so the live site stays
+      # date-fresh; only CI needs the pin, to compare like with like.
+      - name: Pin the build date to the commit
+        run: echo "SOURCE_DATE_EPOCH=$(git log -1 --format=%ct)" >> "$GITHUB_ENV"
       - run: npm run build
       - name: Confirm deterministic output
         run: git diff --exit-code

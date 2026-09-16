@@ -40,7 +40,7 @@ The rest — Roam, Craft, Reflect, Tana, Capacities — are variations with real
 
 Writers move their notes between apps the way other people reorganise a desk. The symptom is building a *system* — tags, databases, dashboards — instead of producing drafts. Two structural defences:
 
-1. **One inbox, reviewed weekly.** Every idea lands in one place; processing is a scheduled habit, not a background anxiety. (If the ideas are the problem rather than the storage, the fix is the [brainstorming discipline](/learn/how-to-brainstorm-and-find-ideas/), not new software.)
+1. **One inbox, reviewed weekly.** Every idea lands in one place; processing is a scheduled habit, not a background anxiety. (If the ideas are the problem rather than the storage, the fix is the [brainstorming discipline](/learn/writing-process/how-to-brainstorm-and-find-ideas/), not new software.)
 2. **Notes end in drafts or they are compost.** A note that never becomes a pitch, an essay or a book section has a role — but a note app that only ever accumulates is a diary with a subscription fee. Journaling writers should be honest that that is what they are doing; the [journaling guides](/learn/journaling-personal/how-to-start-journaling/) serve that purpose without a PKM learning curve.
 
 ## The three tests to run

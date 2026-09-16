@@ -34,7 +34,7 @@ If you have ever written "I know I read this somewhere" into a drafts folder, yo
 
 For one-off bibliographies, **ZoteroBib** generates a formatted list in a browser tab with no account at all.
 
-**The AI research assistants** — the Elicit-and-Consensus category — sit one layer up: they summarise and compare papers, which is genuinely useful for scoping a subject. Treat them as **research organisers, not sources**. Their summaries occasionally misstate a paper's findings, and a citation suggested from memory rather than retrieved from a database is exactly the fabricated-source failure this site's editorial rules prohibit. Verify against the actual paper, always — the [reliable-sources discipline](/learn/how-to-find-reliable-sources/) applies to tools, not just articles.
+**The AI research assistants** — the Elicit-and-Consensus category — sit one layer up: they summarise and compare papers, which is genuinely useful for scoping a subject. Treat them as **research organisers, not sources**. Their summaries occasionally misstate a paper's findings, and a citation suggested from memory rather than retrieved from a database is exactly the fabricated-source failure this site's editorial rules prohibit. Verify against the actual paper, always — the [reliable-sources discipline](/learn/research-sources/how-to-find-reliable-sources/) applies to tools, not just articles.
 
 ## The three tests before you commit
 

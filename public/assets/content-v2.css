@@ -209,6 +209,25 @@ html[data-theme="dark"] .btn.secondary { color: var(--navy); }
 }
 .prose hr, .legal-prose hr { border: 0; height: 3px; width: 72px; background: var(--lime-bright); margin: 46px auto; border-radius: 1px; }
 .prose table, .legal-prose table, .compare-table { width: 100%; border-collapse: collapse; font-size: 14.5px; margin: 24px 0; }
+/* The generators wrap every comparison table in .compare-scroll, but the class
+   had no rule, so a 4-column table (422px) widened the page instead of
+   scrolling. Squeezing four columns into 358px is not legible, so the wrapper
+   scrolls and the document stays exactly viewport-wide. Same pattern as
+   .mast-nav above. */
+.compare-scroll {
+  overflow-x: auto; overflow-y: hidden; max-width: 100%;
+  -webkit-overflow-scrolling: touch; scrollbar-width: thin;
+}
+.compare-scroll > .compare-table { margin: 24px 0; min-width: 520px; }
+/* Submission URLs are published as bare prose text ("When open, use
+   https://uncannymagazine.moksha.io/publication/uncanny-magazine."). A
+   63-character unbreakable token overflows its 328px list item and inflates
+   every ancestor's scrollWidth, so the document measured 526px on a 390px
+   screen. A scan of all 517 published writers pages found 385 such tokens in
+   .prose alone, the longest 103 characters. break-word wraps a token only when
+   it would otherwise overflow, and unlike `anywhere` it leaves intrinsic
+   min-content sizing alone, so no other layout moves. */
+.prose, .legal-prose, .prose-essay, .page-hero, .quick-facts, .tl { overflow-wrap: break-word; }
 .prose th, .legal-prose th, .compare-table th {
   text-align: left; font: 800 11.5px var(--sans); letter-spacing: .12em; text-transform: uppercase;
   color: var(--muted); border-bottom: 2px solid var(--ink); padding: 8px 10px 8px 0;
@@ -298,6 +317,19 @@ html[data-theme="dark"] .btn.secondary { color: var(--navy); }
 .filter-chip:hover { color: var(--ink); border-color: var(--line-strong); }
 .filter-chip.is-on { color: var(--sheet); background: var(--navy); border-color: var(--navy); }
 .filter-status { font-size: 13px; color: var(--muted); }
+/* A <select> sizes to its longest option, and .opp-filter-grid is a flex item of
+   #opp-filter, so the default min-width:auto kept it at the option's intrinsic
+   width (360px) and pushed the page 7px wide on a 390px screen. min-width:0 lets
+   the flex item shrink; the control then fills its cell and the browser ellipsises
+   the option text instead of overflowing. */
+/* Deliberately minimal: .opp-field also styles rows in the opportunity list and
+   the fields already stack full width, so only the shrinking behaviour changes.
+   No display:flex here - that would turn the stacked fields into columns. */
+.opp-filter-grid, .opp-filter-search { min-width: 0; }
+.opp-filter-grid { flex: 1 1 100%; }
+.opp-filter-grid select, .opp-filter-grid input, .opp-filter-search input {
+  width: 100%; min-width: 0; max-width: 100%;
+}
 .empty, [id$="-empty"] { padding: 34px 0; color: var(--muted); font-family: var(--serif); font-style: italic; }
 
 /* ---------------- country atlas ---------------- */
@@ -460,7 +492,16 @@ html[data-theme="dark"] .btn.secondary { color: var(--navy); }
   grid-template-columns: repeat(6, 1fr); border-top: 1px solid var(--line-strong);
   background: var(--paper); padding-bottom: env(safe-area-inset-bottom, 0);
 }
-.bottom-nav a, .mobile-nav a { min-width: 0; padding: 9px 2px; color: var(--dim); text-align: center; font: 750 9.5px var(--sans); letter-spacing: .04em; text-transform: uppercase; }
+/* 52px minimum: WCAG 2.5.8 target size and the gate both want >=50px. The
+   icon and the label are separate flex rows so the height is explicit
+   rather than whatever the wrapped inline text happens to measure. */
+.bottom-nav a, .mobile-nav a {
+  min-width: 0; min-height: 52px; padding: 8px 2px; color: var(--dim);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 3px; text-align: center; font: 750 9.5px var(--sans);
+  letter-spacing: .04em; text-transform: uppercase;
+}
+.bottom-nav a > span:first-child, .mobile-nav a > span:first-child { font-size: 15px; line-height: 1; }
 .bottom-nav a[aria-current="page"], .mobile-nav a[aria-current="page"] { color: var(--brass); }
 .mn-ico { display: block; font-size: 14px; }
 
@@ -515,7 +556,7 @@ html[data-theme="dark"] .btn.secondary { color: var(--navy); }
   .main-nav a { padding: 12px 10px; font-size: 11px; white-space: nowrap; }
   .main-nav a.nav-cta { margin-left: 2px; }
   .bottom-nav, .mobile-nav { display: grid; }
-  body { padding-bottom: 58px; }
+  body { padding-bottom: calc(84px + env(safe-area-inset-bottom, 0px)); }
   body.drawer-open { overflow: hidden; }
   .guide-grid, .card-grid, .chip-grid { grid-template-columns: 1fr; }
   .tool-grid { grid-template-columns: 1fr; }
@@ -599,8 +640,13 @@ body.studio-focus { padding-bottom: 0; }
 }
 
 /* ---------------- STEP 6: atlas board, mega-menu, A-Z index ---------------- */
-.atlas-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; }
-.atlas-tile { display: flex; flex-direction: column; justify-content: flex-end; gap: 2px; padding: 14px; border: 1px solid var(--line); border-bottom: 3px solid var(--brass-bright); background: var(--sheet); min-height: 64px; transition: border-color .15s ease, transform .15s ease; }
+/* minmax(0, 1fr), not 1fr: a 1fr track refuses to shrink below its items'
+   min-content width, so at 768px the six-column board overflowed its 720px
+   .wrap by 11px and widened the whole document. Hiding any one tile did not
+   help - the grid just reflowed another tile into the same over-wide track. */
+.atlas-grid { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 10px; }
+.atlas-tile { display: flex; flex-direction: column; justify-content: flex-end; gap: 2px; padding: 14px; border: 1px solid var(--line); border-bottom: 3px solid var(--brass-bright); background: var(--sheet); min-height: 64px; min-width: 0; overflow-wrap: break-word;
+  transition: border-color .15s ease, transform .15s ease; }
 .atlas-tile:hover { border-color: var(--lime); transform: translateY(-2px); }
 .atlas-tile b { font-family: var(--serif); color: var(--ink); line-height: 1.15; }
 .atlas-tile span { font: 11px var(--sans); letter-spacing: .06em; text-transform: uppercase; color: var(--dim); }
@@ -621,7 +667,11 @@ body.studio-focus { padding-bottom: 0; }
 .az-links { display: flex; flex-wrap: wrap; gap: 4px 22px; }
 .az-links a { font-size: 14px; color: var(--ink); border-bottom: 1px solid var(--line); padding: 2px 0; }
 .az-links a:hover { color: var(--navy); border-color: var(--brass); }
-@media (max-width: 760px) { .atlas-grid { grid-template-columns: repeat(2, 1fr); } .atlas-tile.big { grid-column: span 2; } }
+/* Tablet: six columns are unreadable at 768px and the old 760px breakpoint left
+   761-1023px on the desktop board, which is what overflowed. Listed before the
+   760px rule so the narrower layout still wins below it. */
+@media (max-width: 1023px) { .atlas-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 760px) { .atlas-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .atlas-tile.big { grid-column: span 2; } }
 
 /* Lean editorial compatibility layer — replaces the 263 KB legacy platform sheet. */
 .shell{width:min(calc(100% - 32px),var(--max));margin-inline:auto}

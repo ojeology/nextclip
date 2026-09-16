@@ -22,6 +22,7 @@ archived in-tree under legacy-site/ — it is not generated here and not promote
 from __future__ import annotations
 import importlib.util
 import json
+import os
 import re
 import datetime as _dt
 import sys
@@ -148,6 +149,34 @@ def norm_types(rec: dict) -> list[str]:
     return out
 
 
+def _build_now() -> "_dt.datetime":
+    """The moment this build should believe it is.
+
+    build-focus-site.py pins TODAY = "2026-09-04" so that the 24 call sites which
+    inherit it reproduce byte for byte. These four clock reads escaped that pin and
+    made `npm run build && git diff --exit-code` fail on any day after the build:
+    the deadline->closed flips below, the "%B %Y" edition line, and the sitemap
+    <lastmod> rewrite in build-routing.py.
+
+    SOURCE_DATE_EPOCH is the standard reproducible-builds convention. CI sets it to
+    the commit timestamp, so any commit can be rebuilt on any later day and still
+    match. Production deploys leave it unset and get the real current date, which is
+    what the published site needs: deadlines are recomputed from the record on every
+    deploy rather than frozen at the last commit.
+    """
+    epoch = os.environ.get("SOURCE_DATE_EPOCH", "")
+    if epoch.isdigit():
+        try:
+            return _dt.datetime.fromtimestamp(int(epoch), _dt.timezone.utc)
+        except (OverflowError, OSError, ValueError):
+            pass
+    return _dt.datetime.now(_dt.timezone.utc)
+
+
+def _build_today() -> "_dt.date":
+    return _build_now().date()
+
+
 def _deadline_past_raw(rec: dict) -> bool:
     dl = rec.get("deadline") or {}
     for key in ("date", "windowEnd"):
@@ -155,7 +184,7 @@ def _deadline_past_raw(rec: dict) -> bool:
         if not ds:
             continue
         try:
-            return _dt.date.fromisoformat(str(ds)[:10]) < _dt.date.today()
+            return _dt.date.fromisoformat(str(ds)[:10]) < _build_today()
         except ValueError:
             return False
     return False
@@ -269,7 +298,7 @@ def nav(current: str = "") -> str:
         cls = ' class="nav-cta"' if key == "writing" else ""
         panel = "".join(f'<a href="{ch}">{lb}</a>' for ch, lb in children)
         items.append(f'<div class="has-mega"><a{cls}{aria} href="{href}">{label}</a><div class="mega">{panel}</div></div>')
-    edition = _dt.datetime.now(_dt.timezone.utc).strftime("%B %Y").upper()
+    edition = _build_now().strftime("%B %Y").upper()
     return f'''<a class="skip-link" href="#main">Skip to content</a>
 <header class="site-head">
   <div class="mast-top"><div class="wrap mast-in">
@@ -699,7 +728,7 @@ def deadline_passed(rec: dict):
             d = _dt.date.fromisoformat(str(ds)[:10])
         except ValueError:
             return None
-        return str(ds)[:10] if d < _dt.date.today() else None
+        return str(ds)[:10] if d < _build_today() else None
     return None
 
 
@@ -1854,7 +1883,7 @@ def programmatic_pages() -> None:
         return "big" if n >= 15 else ("mid" if n >= 6 else "small")
     atlas_tiles = "".join(
         '<a class="atlas-tile ' + _tier(n) + '" href="/writing-opportunities/' + cslug + '/" data-count="' + str(n) + '">'
-        + '<b>' + esc(name) + '</b><span>' + str(n) + ' opportunity' + ('' if n == 1 else 'ies') + '</span></a>'
+        + '<b>' + esc(name) + '</b><span>' + str(n) + (' opportunity' if n == 1 else ' opportunities') + '</span></a>'
         for name, n, cslug in _atlas_items)
     import json as _json
     atlas_open = _json.dumps([{"u": "/writing/" + esc(r["slug"]) + "/", "p": esc(r["publication"])}
