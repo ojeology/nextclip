@@ -28,7 +28,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
+          python-version: "3.12"
 
       - name: Set up Node
         uses: actions/setup-node@v4
@@ -50,9 +50,8 @@ jobs:
           fi
           echo "changed=true" >> "$GITHUB_OUTPUT"
           npm ci
-          npm run build
           python3 scripts/build-ecosystem.py
-          python3 scripts/build-routing.py
+          npm run build
           node scripts/validate-site-quality.js
           python3 scripts/check-internal-links.py
 
