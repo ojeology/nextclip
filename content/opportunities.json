@@ -7586,7 +7586,8 @@
         "official": true
       },
       "howToSubmit": [
-        "Submit via the official site."
+        "Submit via the official site.",
+        "As of 16 September 2026 litmag.online does not resolve (DNS dead); the desk lists this market as closed until it returns."
       ],
       "requirements": [
         "A short story",
@@ -7622,8 +7623,8 @@
       "seoTitle": "LitMag Online: $100 on acceptance",
       "publishedAt": "2026-09-05",
       "vertical": "writing",
-      "lastVerified": "2026-09-05",
-      "submissionStatus": "open"
+      "lastVerified": "2026-09-16",
+      "submissionStatus": "closed"
     },
     {
       "id": "bombay-literary-magazine",

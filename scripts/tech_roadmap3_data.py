@@ -158,7 +158,7 @@ TECH_ROADMAP_T3 = [
 <h2>The discipline that beats guessing</h2>
 <p>Measure (PageSpeed Insights), read the biggest items in its report, fix exactly those, measure again. Three cycles of that beats any amount of performance folklore — and the site that emerges usually costs less to run than the slow one did, because the real fixes are subtractions (<a href="/tech/csp-safe-front-end/">the same subtraction discipline hardened this site's own front end</a>).</p>
 <p><em>Sources: Google web.dev performance guidance (Core Web Vitals measurement methodology). Reviewed September 2026.</em></p>""",
-[("web.dev — Why performance matters", "https://web.dev/learn/performance/why-performance-matters-2"),
+[("web.dev — Learn performance", "https://web.dev/learn/performance/"),
  ("Google PageSpeed Insights", "https://pagespeed.web.dev/")],
 [("free-vs-paid-hosting", "Free vs paid hosting"),
  ("csp-safe-front-end", "Hardening the front end"),

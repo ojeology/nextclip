@@ -1100,7 +1100,7 @@ def entertainment_pages():
     n_picks = sum(len(v) for v in _cat.CATALOGUE_STARTERS.values())
     # ---- the restored NEXTCLIP platform (owner directive 15 Sep: bring back the former entertainment) ----
     import entertainment_platform_data as _nx
-    _nx_ver = "15 September 2026"
+    _nx_ver = "16 September 2026"
     _nx_by_slug = {m["slug"]: m for m in _nx.MOVIES}
     _NX_CSS = ('<style>'
         '.nx-shell{max-width:1180px;margin:0 auto;padding:0 20px}'
@@ -1263,6 +1263,33 @@ def entertainment_pages():
         "Indian": [("indian-cinema-first-five", "Indian cinema: the first five")],
         "Chinese": [("10-korean-movies-everyone-should-watch", "Korean cinema starters")],
     }
+    def _nx_movie_ld(m):
+        # H4 (audit 2026-09-16): Movie structured data, built only from fields the desk keeps.
+        ld = {"@context": "https://schema.org", "@type": "Movie", "name": m["title"],
+              "url": "https://bryme.onrender.com/entertainment/movie/" + m["slug"] + "/",
+              "description": (m.get("description") or m.get("teaser") or "")[:300]}
+        if m.get("year"):
+            ld["datePublished"] = str(m["year"])
+        if m.get("genre"):
+            ld["genre"] = m["genre"]
+        if m.get("director"):
+            ld["director"] = [{"@type": "Person", "name": x.strip()} for x in str(m["director"]).split(";") if x.strip()]
+        if m.get("cast"):
+            ld["actor"] = [{"@type": "Person", "name": x} for x in list(m["cast"])[:8]]
+        if m.get("language"):
+            ld["inLanguage"] = m["language"]
+        if m.get("country"):
+            ld["countryOfOrigin"] = [{"@type": "Country", "name": x.strip()} for x in str(m["country"]).split(";") if x.strip()][:3]
+        _rt = re.match(r"\s*(\d+)", str(m.get("runtime") or ""))
+        if _rt:
+            ld["duration"] = "PT" + _rt.group(1) + "M"
+        if m.get("yt"):
+            ld["trailer"] = {"@type": "VideoObject", "name": m["title"] + " - official trailer",
+                             "url": "https://www.youtube.com/watch?v=" + m["yt"],
+                             "embedUrl": "https://www.youtube-nocookie.com/embed/" + m["yt"],
+                             "thumbnailUrl": "https://i.ytimg.com/vi/" + m["yt"] + "/hqdefault.jpg"}
+        return '<script type="application/ld+json">' + json.dumps(ld, ensure_ascii=False) + '</script>'
+
     def _nx_movie_page(m):
         badges = [str(m.get("year") or ""), m.get("genre") or "", m.get("language") or "",
                   (str(m.get("runtime")) if m.get("runtime") else "")]
@@ -1287,6 +1314,7 @@ def entertainment_pages():
         desc = html.escape(m.get("description") or m.get("teaser") or "")
         body = (head("entertainment", "Film, TV and anime recommendations with reasons.")
             + _NX_CSS
+            + _nx_movie_ld(m)
             + '<main id="main">'
             + '<section class="nx-movie-hero" style="--nx-backdrop:url(\'https://i.ytimg.com/vi/' + (m.get("yt") or "") + '/hqdefault.jpg\')">'
             + '<div class="nx-shell nx-movie-hero-inner">' + _nx_poster(m)
@@ -4400,6 +4428,31 @@ def main() -> None:
               SUB["hub"] + "/about/", _about_body + foot("hub")), encoding="utf-8")
     print("hub: built (bryme.onrender.com homepage + family /about/)")
     write_service("entertainment", entertainment_pages())
+    # H2 (audit 2026-09-16): duplicate film pages were merged; old slugs keep a redirect stub.
+    import entertainment_platform_data as _nxm
+    MOVIE_MERGES = {
+        "baahubali": "baahubali-the-beginning",
+        "everything-everywhere": "everything-everywhere-all-at-once",
+        "grand-budapest": "the-grand-budapest-hotel",
+        "half-yellow-sun": "half-of-a-yellow-sun",
+        "living-in-bondage": "living-in-bondage-breaking-free",
+        "mi-final-reckoning": "mission-impossible-the-final-reckoning",
+        "spider-verse-2": "spider-man-across-spider-verse",
+    }
+    _mm_titles = {m["slug"]: m["title"] for m in _nxm.MOVIES}
+    for _old, _new in MOVIE_MERGES.items():
+        _t = html.escape(_mm_titles.get(_new, _new.replace("-", " ").title()))
+        _d = OUT / "entertainment" / "movie" / _old
+        _d.mkdir(parents=True, exist_ok=True)
+        (_d / "index.html").write_text(
+            '<!doctype html><html lang="en"><head><meta charset="utf-8">'
+            '<meta name="robots" content="noindex,follow">'
+            '<link rel="canonical" href="https://bryme.onrender.com/entertainment/movie/' + _new + '/">'
+            '<meta http-equiv="refresh" content="0; url=/entertainment/movie/' + _new + '/">'
+            '<title>Moved: ' + _t + ' | BRYME</title></head>'
+            '<body><p>This film entry was merged into <a href="/entertainment/movie/' + _new + '/">'
+            + _t + '</a>. You are being redirected.</p></body></html>', encoding="utf-8")
+
     write_service("sports", sports_pages())
     write_service("tech", tech_pages())
     write_service("fitness", fitness_pages())

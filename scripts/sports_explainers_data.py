@@ -41,7 +41,7 @@ SPORT_EXPLAINERS = [
 <p>The threshold for intervention is &ldquo;clear and obvious error&rdquo;, and judgement calls (was that enough contact for a penalty?) are deliberately hard to overturn, which produces long pauses that end in the original decision. Offside is different: it is factual, and at the biggest competitions semi-automated technology generates the lines from tracking data, which is why offside reviews can be quicker than judgement reviews &mdash; and why a goal can be cancelled by a toe. For the law those lines are measuring, see <a href="/the-offside-rule-explained/">the offside rule explained</a>.</p>
 <h2>The honest trade-off</h2>
 <p>VAR traded flow for accuracy, and everyone agrees both halves of that sentence. More decisions are correct; every decision now arrives with a pause and a debate about the process. The leagues keep tuning the experience &mdash; faster checks, more transparency in stadiums &mdash; but the core bargain stands: the moments that decide matches now get a second look, and the second look is here to stay.</p>""",
-[("IFAB — Laws of the Game (Video match officials)", "https://www.theifab.com/laws/latest/law-5-the-referee/")],
+[("IFAB — Laws of the Game (Video match officials)", "https://www.theifab.com/laws/latest/the-referee/")],
 [("the-offside-rule-explained", "The offside rule, explained"),
  ("promotion-and-relegation-explained", "Promotion and relegation, explained")]),
 
@@ -321,7 +321,7 @@ SPORT_EXPLAINERS.extend([
 <p><b>Wingers</b> hug the touchlines to stretch the pitch - the inverted winger cuts inside onto their stronger foot, which is why so many right-footed players now play on the left. <b>Strikers</b> (the 9) finish moves; the <b>false nine</b> starts there but drops into midfield, dragging defenders out of the line and opening space for others. The role names shift; the spaces never do.</p>
 <h2>How formations name themselves</h2>
 <p>Defenders-midfielders-forwards, goalkeeper not counted: 4-4-2, 4-3-3, 3-5-2. The numbers describe the starting shape, not the game - a team that starts 4-3-3 often defends in 4-5-1 and attacks in 2-3-5. Formations are starting points; the modern game is about spaces and transitions. The vocabulary of those spaces lives in <a href="/sports/pressing-explained/">pressing, explained</a>, <a href="/sports/possession-explained/">possession, explained</a> and <a href="/sports/playing-out-from-the-back/">playing out from the back</a> - and the shirt numbers behind the roles are on <a href="/sports/what-shirt-numbers-mean/">what shirt numbers mean</a>.</p>""",
- [('IFAB - Laws of the Game', 'https://www.theifab.com/laws/latest/the-laws-of-the-game/')],
+ [('IFAB - Laws of the Game', 'https://www.theifab.com/laws/latest/about-the-laws/')],
  [('what-shirt-numbers-mean', 'What shirt numbers mean'), ('pressing-explained', 'Pressing, explained'), ('possession-explained', 'Possession, explained')]),
 ("yellow-and-red-cards-explained",
  "Yellow cards, red cards and bans: the discipline rules, explained",
@@ -365,7 +365,7 @@ SPORT_EXPLAINERS.extend([
 <p>There is <b>no offside directly from a throw-in, a goal kick or a corner</b> - Law 11 names all three exceptions. It is why the long throw remains a weapon and why corners turn defences around. Everywhere else on the pitch, the three ideas of the offside law apply exactly as explained in <a href="/sports/the-offside-rule-explained/">the offside rule, explained</a>.</p>
 <h2>Why set pieces decide so much</h2>
 <p>A corner or a wide free kick is the only moment in open play when the defending team must stand still and the attacking side may plan - eleven drilled movements against ten static defenders (the goalkeeper excepted). That is why clubs hire set-piece coaches, why near-post routines and blockers are studied frame by frame, and why a meaningful share of goals at every level of the game begin life as a dead ball. The delivery is rehearsed; the rest is appetite.</p>
-<p>The full laws for each restart are maintained by IFAB - <a href="https://www.theifab.com/laws/latest/" rel="noopener">the Laws of the Game</a> - and the tactics that grow around restarts sit with <a href="/sports/pressing-explained/">pressing, explained</a> and <a href="/sports/the-offside-trap/">the offside trap</a>.</p>""",
+<p>The full laws for each restart are maintained by IFAB - <a href="https://www.theifab.com/laws/latest/about-the-laws/" rel="noopener">the Laws of the Game</a> - and the tactics that grow around restarts sit with <a href="/sports/pressing-explained/">pressing, explained</a> and <a href="/sports/the-offside-trap/">the offside trap</a>.</p>""",
  [('IFAB - Laws of the Game (restarts: Laws 8, 13-17)', 'https://www.theifab.com/laws/latest/')],
  [('the-offside-rule-explained', 'The offside rule'), ('the-offside-trap', 'The offside trap'), ('pressing-explained', 'Pressing, explained')]),
 ])
