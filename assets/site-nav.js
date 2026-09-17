@@ -15,6 +15,7 @@
     if (backdrop) backdrop.classList.add("show");
     document.body.classList.add("drawer-open");
     drawer.setAttribute("aria-hidden", "false");
+    setExpanded(true);
     var first = drawer.querySelector("a,button");
     if (first && window.innerWidth > 640) first.focus();
   }
@@ -24,6 +25,13 @@
     if (backdrop) backdrop.classList.remove("show");
     document.body.classList.remove("drawer-open");
     drawer.setAttribute("aria-hidden", "true");
+    setExpanded(false);
+  }
+  /* Batch 14g (pre-domain gate §24): keep every toggle's aria-expanded in
+     sync with the drawer state — the visual state changed but the ARIA
+     state never did, so assistive tech always heard "collapsed". */
+  function setExpanded(v) {
+    toggles.forEach(function (b) { b.setAttribute("aria-expanded", v ? "true" : "false"); });
   }
 
   toggles.forEach(function (b) { b.addEventListener("click", openDrawer); });
