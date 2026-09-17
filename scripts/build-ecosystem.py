@@ -336,8 +336,36 @@ table.lg-table{width:100%;border-collapse:collapse;min-width:640px;font:500 14px
 def css_for(pub):
     return BASE_CSS % FAMILY[pub] + (FITNESS_CSS_EXTRA if pub in ("fitness", "home") else "") + (FITNESS_ONLY_CSS_EXTRA if pub == "fitness" else "") + (HOME_CSS_EXTRA if pub == "home" else "") + (SPORTS_CSS_EXTRA if pub == "sports" else "")
 
+def _page_ld(title, desc, route):
+    # H4 (audit 2026-09-16): every page that does not bring its own JSON-LD
+    # gets an honest minimal graph - WebPage (AboutPage/ContactPage where the
+    # route says so), the site-level Organization, and WebSite on the hub
+    # homepage. Nothing is invented: name/description are the page's own.
+    url = str(route) if str(route).startswith("http") else ORIGIN + str(route)
+    name = str(title).split(" | ")[0].strip()
+    rp = str(route).rstrip("/")
+    ptype = ("AboutPage" if rp.endswith("/about") else
+             "ContactPage" if rp.endswith("/contact") else "WebPage")
+    graph = [
+        {"@type": ptype, "@id": url + "#webpage", "url": url, "name": name,
+         "description": str(desc), "inLanguage": "en",
+         "isPartOf": {"@id": ORIGIN + "/#website"},
+         "publisher": {"@id": ORIGIN + "/#organization"}},
+        {"@type": "Organization", "@id": ORIGIN + "/#organization",
+         "name": "THE BRYME", "url": ORIGIN + "/"},
+    ]
+    if url.rstrip("/") + "/" == ORIGIN.rstrip("/") + "/":
+        graph.append({"@type": "WebSite", "@id": ORIGIN + "/#website",
+                      "url": ORIGIN + "/", "name": "THE BRYME",
+                      "publisher": {"@id": ORIGIN + "/#organization"}})
+    return ('<script type="application/ld+json">'
+            + json.dumps({"@context": "https://schema.org", "@graph": graph})
+            + "</script>")
+
+
 def shell(pub, title, desc, route, body, card=None, robots="index,follow"):
     title = budget_title(title)  # H3 batch 7: keep <title>/og:title inside the SERP window
+    ld_html = "" if "application/ld+json" in body else _page_ld(title, desc, route)  # H4 batch 8
     d = route  # mode-aware base URL from SUB
     og = f"{ORIGIN}/assets/og.png"  # real root card; route may already be a full URL (b36 fix)
     has_theme = pub in ("tech", "fitness", "sports", "hub", "entertainment")
@@ -368,6 +396,7 @@ def shell(pub, title, desc, route, body, card=None, robots="index,follow"):
 <meta name="twitter:card" content="summary_large_image">
 {ADS_HEAD}{theme_head}
 <style>{css_for(pub)}</style>
+{ld_html}
 </head><body><a class="skip-link" href="#main">Skip to content</a>
 {body}
 {drawer}
@@ -1709,8 +1738,11 @@ def sports_pages():
             _lt_rows = _cand
     except Exception:
         _lt_rows = None
+    _ld_rows = []
     for r in (_lt_rows if _lt_rows is not None else sld.PL_TABLE):
         pos, name, slug, pl, w, d, l, gf, ga, gd, pts = r
+        _ld_rows.append({"@type": "ListItem", "position": int(pos), "name": str(name),
+                         "url": ORIGIN + PREFIX["sports"] + "/clubs/" + slug + "/"})
         cls = ' class="rel"' if pos == 18 else ""
         gds = ("+" + str(gd)) if gd > 0 else str(gd)
         rows_html += ('<tr' + cls + '><td class="pos">' + str(pos) + '</td><td class="club-b"><a href="/clubs/' + slug + '/"><img class="club-badge row-badge" src="/assets/img/sports/badges/' + badge_file(slug) + '" alt="" width="22" height="22" loading="lazy">' + name + '</a></td>'
@@ -1737,6 +1769,7 @@ def sports_pages():
         + '<div class="prose"><p>Three points for a win, one for a draw, none for a defeat \u2014 and at the end of May, positions decide everything. The champions and the highest finishers qualify for Europe; the exact number of Champions League places England earns can change from season to season, which <a href="/how-the-champions-league-works/">the Champions League explainer</a> breaks down. The bottom three clubs are relegated to the Championship \u2014 <a href="/promotion-and-relegation-explained/">why that system exists</a> is one of the desk\u2019s most-read pieces. If clubs finish level on points, the tiebreakers run goal difference, then goals scored \u2014 <a href="/how-the-premier-league-table-works/">how the Premier League table works</a> has the full order, including the playoff nobody has ever needed.</p>'
         + '<p>Three games is a rumour, not a season: a club 17th in September has won the title before, and a club 3rd has been relegated. That is why this page updates only when the desk can verify, and why every number carries its date.</p></div></section>'
         + '<section class="section"><div class="prose"><p>Every club on this table has its own hub on the desk: start at <a href="/premier-league-clubs/">all twenty clubs</a>, or go straight to the leaders \u2014 <a href="/clubs/manchester-city/">Manchester City</a> and <a href="/clubs/arsenal/">Arsenal</a> \u2014 or the surprise of the season so far, <a href="/clubs/hull-city/">Hull City</a>.</p></div></section>'
+        + '<script type="application/ld+json">' + json.dumps({"@context": "https://schema.org", "@type": "ItemList", "name": str(sld.SEASON) + " Premier League table", "description": "Every club in the " + str(sld.SEASON) + " Premier League, in current table order.", "numberOfItems": len(_ld_rows), "itemListElement": _ld_rows}) + '</script>'
         + '</div></main>' + foot("sports"))
     pages.append(("/premier-league-table/", "Premier League table 2026-27 \u2014 verified, dated, no odds | BRYME Sport",
                   "The 2026-27 Premier League table as of Matchweek " + str((((LIVE.get("leagues", {}).get("premier-league", {}) or {}).get("results") or [{"mw": 3}])[-1]).get("mw", 3)) + ": position, played, goals, goal difference, points \u2014 verified across four sources and stamped with the date.", pl_table_page))
@@ -1752,6 +1785,18 @@ def sports_pages():
     _calx = _cal("fixtures.json")
     _next_mw = min((int(x["mw"]) for x in _pl_up if x.get("mw")), default=None)
     _cal_mw = next((w for w in _calx["matchweeks"] if _next_mw is not None and w["number"] == _next_mw), None)
+    # H4 batch 8: SportsEvent graph for the featured round. Date-only
+    # startDate on purpose - the calendar publishes UK dates and the desk
+    # will not invent a timezone offset.
+    _ld_ev = []
+    if _cal_mw:
+        for _m in _cal_mw["matches"]:
+            _ld_ev.append({"@type": "SportsEvent",
+                           "name": str(_m.get("homeName", "")) + " v " + str(_m.get("awayName", "")),
+                           "startDate": str(_m.get("date", "")),
+                           "eventStatus": "https://schema.org/EventScheduled",
+                           "homeTeam": {"@type": "SportsTeam", "name": str(_m.get("homeName", ""))},
+                           "awayTeam": {"@type": "SportsTeam", "name": str(_m.get("awayName", ""))}})
     fx_rows = ""
     if _cal_mw:
         for m in _cal_mw["matches"]:
@@ -1809,9 +1854,12 @@ def sports_pages():
         + '<li><a href="/deadline-day-dont-try-to-make-sense-of-it/"><span><b>Deadline day field guide (archive)</b><small>Why the window\u2019s last night looks the way it does.</small></span><span class="meta">Archive</span></a></li>'
         + '</ul></section>'
         + '<section class="section"><div class="prose"><p><em>Results return the same way: after each round, once verified across sources \u2014 usually inside the desk\u2019s matchweek review. Until then this page will not guess. A full-season calendar lands when the desk has verified the feed for it; a wrong fixture list is worse than an honest gap.</em></p></div></section>'
+        + (('<script type="application/ld+json">' + json.dumps({"@context": "https://schema.org", "@graph": _ld_ev}) + '</script>') if _ld_ev else "")
         + '</div></main>' + foot("sports"))
-    pages.append(("/premier-league-fixtures/", "Premier League fixtures 2026-27 \u2014 Matchweek 4, verified | BRYME Sport",
-                  "Matchweek 4 fixtures with UK kick-off times and venues, verified 10 September 2026 \u2014 plus how the desk handles results, postponements and the season calendar.", pl_fixtures))
+    _fx_mwn = str(_next_mw or 4)
+    _fx_when = re.sub(r"^fetched [A-Za-z]+ ", "", str(_plf.get("upcoming_updated") or "")).split(",")[0].strip() or "10 September 2026"
+    pages.append(("/premier-league-fixtures/", "Premier League fixtures 2026-27 \u2014 Matchweek " + _fx_mwn + ", verified | BRYME Sport",
+                  "Matchweek " + _fx_mwn + " fixtures with UK kick-off times and venues, verified " + _fx_when + " \u2014 plus how the desk handles results, postponements and the season calendar.", pl_fixtures))
 
 
     HUBHREF = {"la-liga": "/laliga/"}
@@ -1999,6 +2047,7 @@ def sports_pages():
             + '<li><a href="/premier-league-matchweek-4-preview/"><span><b>Matchweek 4, previewed honestly (archive)</b><small>The desk\u2019s pre-round edition, kept as published.</small></span><span class="meta">Archive</span></a></li>'
             + '<li><a href="/premier-league-clubs/"><span><b>All twenty clubs</b><small>The other nineteen hubs, one list.</small></span><span class="meta">Clubs</span></a></li>'
             + '</ul></section>'
+            + '<script type="application/ld+json">' + json.dumps({"@context": "https://schema.org", "@type": "SportsTeam", "name": cname, "url": ORIGIN + PREFIX["sports"] + "/clubs/" + slug + "/", "foundingDate": str(founded), "homeLocation": {"@type": "Place", "name": ground}, "sport": "Association football", "description": re.sub(r"<[^>]+>", "", str(blurb))[:200]}) + '</script>'
             + '</div></main>' + foot("sports"))
         pages.append(("/clubs/" + slug + "/", cname + " \u2014 club hub, " + sld.SEASON + " | BRYME Sport",
                       cname + " in the " + sld.SEASON + " Premier League: " + ground + ", founded " + str(founded) + ", this season\u2019s verified record and next fixture \u2014 the desk\u2019s club gateway.", club_page))
@@ -2953,6 +3002,7 @@ def tech_tool_pages():
             + '<section class="section"><div class="prose"><p><b>Privacy note:</b> every tool on this desk processes your input on your device, in this page \u2014 nothing is uploaded, stored or sent anywhere. The same policy the <a href="/tech/terms/">terms</a> and <a href="/tech/privacy/">privacy</a> pages promise.</p></div>'
             + '<div class="actions">' + guide_btn + sib_btns + '<a class="btn secondary" href="/tech/">All of BRYME Tech</a></div></section>'
             + '<script src="/assets/tool-' + _TOOL_JS[slug] + '.js" defer></script>'
+            + '<script type="application/ld+json">' + json.dumps({"@context": "https://schema.org", "@type": "WebApplication", "name": title, "url": ORIGIN + PREFIX["tech"] + "/tool/" + slug + "/", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Any modern web browser", "description": re.sub(r"<[^>]+>", "", str(dek))[:200], "offers": {"@type": "Offer", "price": "0", "priceCurrency": "GBP"}}) + '</script>'
             + "</div></main>" + foot("tech"))
         pages.append(("/tool/" + slug + "/", title + " | BRYME Tools", dek, tbody))
     hub_rows = "".join('<li><a href="/tool/' + slug + '/"><span><b>' + title + "</b><small>" + dek + "</small></span>"
@@ -3968,7 +4018,8 @@ def _home_page(title, desc, route, cover_html, main_html, sidebar_current):
         '<meta property="og:title" content="' + html.escape(title) + '"><meta property="og:description" content="' + html.escape(desc) + '">\n'
         '<meta property="og:url" content="' + canonical + '"><meta property="og:image" content="' + og + '">\n'
         '<meta name="twitter:card" content="summary_large_image">\n'
-        + _home_theme_init() + "\n<style>" + css_for("home") + "</style>\n</head>"
+        + _home_theme_init() + "\n<style>" + css_for("home") + "</style>\n"
+        + _page_ld(title, desc, canonical) + "\n</head>"
         '<body><a class="skip-link" href="#main">Skip to content</a>\n'
         + _home_mast() + _home_nav()
         + '<div class="wrap h-layout">' + _home_sidebar(sidebar_current)
