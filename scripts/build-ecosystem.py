@@ -1023,6 +1023,9 @@ def _trailer_facade(t):
             + '" rel="noopener">Watch the official trailer on YouTube</a></noscript></div>')
 
 
+_NX_LAZY_PAYLOAD = ""  # batch 12: shelf sidecar payload; set in entertainment_pages(), written after write_service()
+
+
 def entertainment_pages():
     rec = ROOT / "content" / "entertainment-recovered"  # batch 11: sources moved out of the published tree
     manifest = json.loads((rec / "manifest.json").read_text())
@@ -1325,9 +1328,31 @@ def entertainment_pages():
         + '</div>'
         + '<p style="color:#9aa2ab;font-size:13px;margin:12px 0 0">Also shelved: '
         + " &middot; ".join('<a href="#g-' + _nx_gslug(g) + '" style="color:#d8b64a">' + html.escape(g) + '</a>' for g in _nx_gorder[9:]) + '</p></section>')
+    # Batch 12 (audit LOW: heavy DOM): the hub used to inline every tile of every
+    # shelf (734 movie links, 221KB). Each shelf now renders its first _NX_KEEP
+    # tiles; the rest ride in nx-shelves.json and expand on demand via
+    # assets/lazy-grid.js. Discovery is unaffected: every film URL is in the
+    # entertainment sitemap. JSON tiles carry the routed /entertainment/ prefix
+    # because rewrite_prop_paths only rewrites .html files.
+    _NX_KEEP = 6
+    _nx_lazy = {}
+    global _NX_LAZY_PAYLOAD
     for _g in _nx_gorder:
+        _tiles = [_nx_tile(m) for m in _nx_genres[_g]]
+        _rest = _tiles[_NX_KEEP:]
+        if _rest:
+            _nx_lazy[_nx_gslug(_g)] = [t.replace('href="/', 'href="/entertainment/') for t in _rest]
+        _more = ('<button class="nx-more" type="button" data-shelf="' + _nx_gslug(_g)
+                 + '" style="margin:14px 0 0;padding:9px 16px;border:1px solid #3a4149;border-radius:2px;'
+                 + 'background:#1b2027;color:#d8b64a;font-family:inherit;font-size:13px;font-weight:600;'
+                 + 'cursor:pointer">Show ' + str(len(_rest)) + ' more ' + html.escape(_g)
+                 + ' films</button>') if _rest else ""
         browse_body += ('<section class="nx-section" id="g-' + _nx_gslug(_g) + '"><div class="nx-section-head"><div><div class="nx-eyebrow">Shelf</div><h2>' + html.escape(_g) + '</h2></div><span style="color:#9aa2ab;font-size:13px">' + str(len(_nx_genres[_g])) + ' films</span></div>'
-            + '<div class="nx-rail">' + "".join(_nx_tile(m) for m in _nx_genres[_g]) + '</div></section>')
+            + '<div class="nx-rail">' + "".join(_tiles[:_NX_KEEP]) + '</div>' + _more + '</section>')
+    if _nx_lazy:
+        _NX_LAZY_PAYLOAD = json.dumps(_nx_lazy, separators=(",", ":"), sort_keys=True)
+        browse_body += '<script src="/assets/lazy-grid.js?v=1" data-nx-shelves="nx-shelves.json" defer></script>'
+
     browse_body += ('<section class="nx-section"><div class="nx-section-head"><div><div class="nx-eyebrow">By year</div><h2>Recent favourites</h2></div></div>'
         + '<div class="nx-edit-row">'
         + "".join('<a class="nx-edit-card" href="/movie/' + m["slug"] + '/">' + _nx_poster(m) + '<div><span>' + html.escape(m.get("genre") or "") + ' &middot; ' + str(m.get("year") or "") + '</span><h3>' + html.escape(m["title"]) + '</h3><p>' + html.escape((m.get("teaser") or m.get("description") or ""))[:120] + '</p></div></a>' for m in _favs)
@@ -4687,6 +4712,8 @@ def main() -> None:
               SUB["hub"] + "/about/", _about_body + foot("hub")), encoding="utf-8")
     print("hub: built (bryme.onrender.com homepage + family /about/)")
     write_service("entertainment", entertainment_pages())
+    if _NX_LAZY_PAYLOAD:  # batch 12: sidecar must survive write_service's stale-output wipe
+        (OUT / "entertainment" / "nx-shelves.json").write_text(_NX_LAZY_PAYLOAD, encoding="utf-8")
     # H2 (audit 2026-09-16): duplicate film pages were merged; old slugs keep a redirect stub.
     import entertainment_platform_data as _nxm
     MOVIE_MERGES = {
