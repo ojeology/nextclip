@@ -1245,7 +1245,12 @@ def entertainment_pages():
         '.nx-cta-band h2{color:#fff;margin:4px 0 0;font-size:clamp(22px,3vw,30px)}'
         '.nx-cta-band p{color:#9aa2ab;max-width:460px;margin:0}'
         '.nx-dark{background:#0b0d10;color:#e7e9ec}'
-        '.nx-movie-hero{position:relative;isolation:isolate;margin:0 -20px;padding:64px 20px 34px}'
+        # Batch 14f: same bleed bug the .nx-home-hero fix above documents — <main>
+        # has no padding, so margin:0 -20px overshot the viewport by 20px per
+        # side (desktop movie pages measured scrollWidth 1460 at 1440). margin:0
+        # is pixel-identical: gradient was viewport-clipped anyway, inner grid
+        # stays centred, the hero's own 20px padding remains the gutter.
+        '.nx-movie-hero{position:relative;isolation:isolate;margin:0;padding:64px 20px 34px}'
         '.nx-movie-hero:before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,#08090b 18%,rgba(8,9,11,.78) 55%,rgba(8,9,11,.95)),linear-gradient(0deg,#0b0d10,transparent),var(--nx-backdrop);background-size:cover;background-position:center}'
         '.nx-movie-hero-inner{display:grid;grid-template-columns:190px minmax(0,1fr);gap:26px;align-items:end;max-width:1180px;margin:0 auto}'
         '.nx-movie-hero .nx-poster{max-height:282px;aspect-ratio:2/3}'
