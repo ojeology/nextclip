@@ -610,7 +610,7 @@ def pdf_render(i: str) -> str:
     if i == "pdf-editor":
         return '''<div class="tool-prose"><p>Open a PDF and <b>rotate, delete, reorder or merge</b> its pages, then export a new PDF. Runs entirely in your browser — nothing is uploaded.</p>
 <label for="pdf-file">Choose a PDF</label><input id="pdf-file" type="file" accept="application/pdf">
-<input id="pdf-file-src" type="file" accept="application/pdf" style="display:none">
+<input id="pdf-file-src" type="file" accept="application/pdf" aria-label="Choose a PDF file" style="display:none">
 <div class="tool-actions"><button id="editor-export" class="btn">Export edited PDF</button></div>
 <div class="tool-note" id="editor-status"></div>
 <span class="tool-note" id="editor-count"></span>
@@ -618,13 +618,13 @@ def pdf_render(i: str) -> str:
     if i == "pdf-to-text":
         return '''<div class="tool-prose"><p>Extract the text from a PDF so you can copy, edit or reuse it. Runs in your browser.</p>
 <label for="pdft-text-file">Choose a PDF</label><input id="pdft-text-file" type="file" accept="application/pdf">
-<textarea id="pdft-out" readonly placeholder="Extracted text appears here…"></textarea>
+<textarea id="pdft-out" readonly aria-label="Extracted text (read-only)" placeholder="Extracted text appears here…"></textarea>
 <div class="tool-actions"><button id="pdft-copy" class="btn">Copy text</button></div>
 <span class="tool-note" id="pdft-count"></span>
 <div class="tool-note" id="pdft-status"></div></div>'''
     if i == "text-to-pdf":
         return '''<div class="tool-prose"><p>Turn plain text into a clean, downloadable PDF. Great for a first draft or a simple document. Runs in your browser.</p>
-<label>Your text</label><textarea id="txt2pdf-in" placeholder="Type or paste your text here…"></textarea>
+<label for="txt2pdf-in">Your text</label><textarea id="txt2pdf-in" placeholder="Type or paste your text here…"></textarea>
 <div class="tool-actions"><button id="txt2pdf-go" class="btn">Create PDF</button></div>
 <div class="tool-note" id="txt2pdf-status"></div></div>'''
     if i == "images-to-pdf":
@@ -752,7 +752,7 @@ def render_tool(t: dict) -> str:
 <div class="tool-input"><label for="agr-date">Date</label><input id="agr-date" type="date"></div>
 </div>
 <p style="margin:14px 0 6px"><b>Deliverables (the agreed work)</b> &mdash; one per line:</p>
-<div class="tool-grid"><div class="tool-input"><textarea id="agr-deliverables" rows="4" placeholder="Article 1: 1,200 words on X&#10;Article 2: 1,200 words on Y&#10;A published internal link set"></textarea></div></div>
+<div class="tool-grid"><div class="tool-input"><textarea id="agr-deliverables" aria-label="Deliverables, one per line" rows="4" placeholder="Article 1: 1,200 words on X&#10;Article 2: 1,200 words on Y&#10;A published internal link set"></textarea></div></div>
 <div class="actions" style="margin-top:14px"><button id="agr-print" class="btn" type="button">Print / save as PDF</button> <button id="agr-reset" class="btn secondary" type="button">Reset</button></div>
 <p class="meta">A general template for ordinary writing engagements &mdash; not legal advice. For high-value or unusual deals, have it reviewed locally. Everything stays in this browser.</p>
 </div></div>
@@ -857,7 +857,7 @@ def render_tool(t: dict) -> str:
 <div class="tool-input"><label for="pc-pub">Publication you&rsquo;re pitching</label><input id="pc-pub" placeholder="e.g. The Atlantic"></div>
 </div>
 <p style="margin:14px 0 6px"><b>The pitch</b> &mdash; paste the whole thing:</p>
-<div class="tool-grid"><div class="tool-input"><textarea id="pc-text" rows="9" placeholder="Dear editor&hellip;"></textarea></div></div>
+<div class="tool-grid"><div class="tool-input"><textarea id="pc-text" aria-label="Your pitch text" rows="9" placeholder="Dear editor&hellip;"></textarea></div></div>
 <div class="actions" style="margin-top:12px"><button id="pc-run" class="btn" type="button">Check my pitch</button> <button id="pc-reset" class="btn secondary" type="button">Reset</button></div>
 <p class="meta">Rule-based checks, not AI: your pitch is analysed on this device and never uploaded, and no tool here writes a word for you. These are the checks a tired editor runs in the first ten seconds.</p>
 <div id="pc-out" aria-live="polite" style="margin-top:14px"></div>
@@ -920,7 +920,7 @@ def render_tool(t: dict) -> str:
 <div class="tool-actions"><button id="start" class="btn">Start</button><button id="reset" class="btn secondary">Reset</button></div></div></div>
 <script src="/assets/hub-tools.js?v=5" data-hub-tool="writing-timer"></script>'''
     if i in ("case-converter", "text-sorter"):
-        extra = '<div class="tool-grid"><div class="tool-input"><label>Input</label><textarea id="ta" placeholder="Type or paste your text…"></textarea></div><div class="tool-input"><label>Output</label><textarea id="out" readonly placeholder="Result appears here…"></textarea></div></div>'
+        extra = '<div class="tool-grid"><div class="tool-input"><label for="ta">Input</label><textarea id="ta" placeholder="Type or paste your text…"></textarea></div><div class="tool-input"><label for="out">Output</label><textarea id="out" readonly placeholder="Result appears here…"></textarea></div></div>'
         ctl = '<div class="tool-grid"><div class="tool-input"><label for="mode">Mode</label>' + ('<select id="mode"><option value="title">Title Case</option><option value="lower">lowercase</option><option value="upper">UPPERCASE</option><option value="sentence">Sentence case</option><option value="camel">camelCase</option></select>' if i == "case-converter" else '<select id="dir"><option value="asc">A–Z</option><option value="desc">Z–A</option></select>') + '</div></div>' if i == "case-converter" else ''
         if i == "text-sorter":
             ctl = '<div class="tool-grid"><div class="tool-input"><label for="dir">Direction</label><select id="dir"><option value="asc">A–Z</option><option value="desc">Z–A</option></select></div></div>'
@@ -928,24 +928,24 @@ def render_tool(t: dict) -> str:
 <script src="/assets/hub-tools.js?v=5" data-hub-tool="{i}"></script>'''
     if i in ("text-cleaner", "remove-extra-spaces", "line-break-cleaner", "duplicate-line-remover"):
         return f'''<div class="tool-box"><div class="tool-prose"><p>Paste messy text and get clean text back.</p>
-<div class="tool-grid"><div class="tool-input"><label>Input</label><textarea id="ta" placeholder="Paste your text…"></textarea></div><div class="tool-input"><label>Output</label><textarea id="out" readonly placeholder="Cleaned text…"></textarea></div></div></div>
+<div class="tool-grid"><div class="tool-input"><label for="ta">Input</label><textarea id="ta" placeholder="Paste your text…"></textarea></div><div class="tool-input"><label for="out">Output</label><textarea id="out" readonly placeholder="Cleaned text…"></textarea></div></div></div>
 <script src="/assets/hub-tools.js?v=5" data-hub-tool="{i}"></script>'''
     if i == "word-density":
-        return f'''<div class="tool-box"><div class="tool-prose"><p>Paste your text to see the words you use most.</p><label>Your text</label><textarea id="ta" placeholder="Type or paste…"></textarea><div class="tool-result" id="out"></div></div></div>
+        return f'''<div class="tool-box"><div class="tool-prose"><p>Paste your text to see the words you use most.</p><label for="ta">Your text</label><textarea id="ta" placeholder="Type or paste…"></textarea><div class="tool-result" id="out"></div></div></div>
 <script src="/assets/hub-tools.js?v=5" data-hub-tool="word-density"></script>'''
     if i == "article-outline-generator":
-        return f'''<div class="tool-box"><div class="tool-prose"><label>Working title</label><input id="t" type="text" placeholder="e.g. How to write a strong introduction"><label>Your key points (one per line)</label><textarea id="p" placeholder="The hook&#10;Who it's for&#10;The proof"></textarea><button class="btn" id="go">Generate outline</button><div class="tool-result" id="out"></div></div></div>
+        return f'''<div class="tool-box"><div class="tool-prose"><label for="t">Working title</label><input id="t" type="text" placeholder="e.g. How to write a strong introduction"><label for="p">Your key points (one per line)</label><textarea id="p" placeholder="The hook&#10;Who it's for&#10;The proof"></textarea><button class="btn" id="go">Generate outline</button><div class="tool-result" id="out"></div></div></div>
 <script src="/assets/hub-tools.js?v=5" data-hub-tool="article-outline-generator"></script>'''
     if i == "writing-checklist-generator":
-        return f'''<div class="tool-box"><div class="tool-prose"><label>Checklist items (one per line)</label><textarea id="ta" placeholder="I checked the facts&#10;I proofread once&#10;I added a clear next step"></textarea><div class="tool-result" id="out"></div></div></div>
+        return f'''<div class="tool-box"><div class="tool-prose"><label for="ta">Checklist items (one per line)</label><textarea id="ta" placeholder="I checked the facts&#10;I proofread once&#10;I added a clear next step"></textarea><div class="tool-result" id="out"></div></div></div>
 <script src="/assets/hub-tools.js?v=5" data-hub-tool="writing-checklist-generator"></script>'''
     if i == "title-generator":
         return f'''<div class="tool-box"><div class="tool-prose"><p>Type your topic and get a fresh bank of headlines.</p>
-<label>Topic</label><input id="topic" type="text" placeholder="e.g. write a strong introduction" autocomplete="off"><label>Audience (optional)</label><input id="audience" type="text" placeholder="e.g. busy beginners" autocomplete="off"><div class="tool-result" id="out"></div></div></div>
+<label for="topic">Topic</label><input id="topic" type="text" placeholder="e.g. write a strong introduction" autocomplete="off"><label for="audience">Audience (optional)</label><input id="audience" type="text" placeholder="e.g. busy beginners" autocomplete="off"><div class="tool-result" id="out"></div></div></div>
 <script src="/assets/hub-tools.js?v=5" data-hub-tool="title-generator"></script>'''
     if i == "meta-description-generator":
         return f'''<div class="tool-box"><div class="tool-prose"><p>Draft a search-friendly description under the character limit.</p>
-<label>Page topic</label><input id="topic" type="text" placeholder="e.g. how to proofread" autocomplete="off"><label>Reader benefit</label><input id="benefit" type="text" placeholder="e.g. catch typos before you submit" autocomplete="off"><div class="tool-result" id="out"></div></div></div>
+<label for="topic">Page topic</label><input id="topic" type="text" placeholder="e.g. how to proofread" autocomplete="off"><label for="benefit">Reader benefit</label><input id="benefit" type="text" placeholder="e.g. catch typos before you submit" autocomplete="off"><div class="tool-result" id="out"></div></div></div>
 <script src="/assets/hub-tools.js?v=5" data-hub-tool="meta-description-generator"></script>'''
     if i == "random-writing-prompt":
         return f'''<div class="tool-box"><div class="tool-prose"><p>Click for a fresh prompt to beat the blank page.</p>
@@ -953,7 +953,7 @@ def render_tool(t: dict) -> str:
 <script src="/assets/hub-tools.js?v=5" data-hub-tool="random-writing-prompt"></script>'''
     if i == "word-document-converter":
         return f'''<div class="tool-box"><div class="tool-prose"><p>Paste or write your text, then download it as a Word-compatible file. Everything happens in your browser — nothing is uploaded.</p>
-<label>Your text</label><textarea id="ta" placeholder="Paste or write your document here…"></textarea>
+<label for="ta">Your text</label><textarea id="ta" placeholder="Paste or write your document here…"></textarea>
 <div class="tool-actions"><label class="tool-select">Format <select id="format"><option value="doc">Word (.doc)</option><option value="txt">Plain text (.txt)</option></select></label><button id="download" class="btn">Download document</button></div>
 <div class="tool-result" id="out"></div></div></div>
 <script src="/assets/hub-tools.js?v=5" data-hub-tool="word-document-converter"></script>'''
@@ -973,18 +973,18 @@ def render_tool(t: dict) -> str:
 <script src="/assets/pdf-tools.js" data-hub-tool="{i}"></script>'''
     if i in ("self-plagiarism-checker",):
         return f'''<div class="tool-box"><div class="tool-prose"><p>Check your text for repeated or near-identical sentences <em>within itself</em> — a self-plagiarism and internal-duplication check. Everything runs locally in your browser.</p>
-<textarea id="plag-in" placeholder="Paste your text here…"></textarea>
+<textarea id="plag-in" aria-label="Your text" placeholder="Paste your text here…"></textarea>
 <div class="tool-actions"><button id="plag-run" class="btn">Check for repetition</button></div>
 <div class="tool-result" id="plag-out"></div></div></div>
 <script src="/assets/pdf-tools.js" data-hub-tool="self-plagiarism-checker"></script>'''
     if i in ("ai-writing-checker",):
         return f'''<div class="tool-box"><div class="tool-prose"><p>A <b>rule-based heuristic</b> look for formulaic phrases and AI-favoured words in your text. It is an honest nudge to sound more natural — not a real AI detector (no tool can reliably do that).</p>
-<textarea id="ai-in" placeholder="Paste your text here…"></textarea>
+<textarea id="ai-in" aria-label="Your text" placeholder="Paste your text here…"></textarea>
 <div class="tool-actions"><button id="ai-run" class="btn">Analyse style</button></div>
 <div class="tool-result" id="ai-out"></div></div></div>
 <script src="/assets/pdf-tools.js" data-hub-tool="ai-writing-checker"></script>'''
     # default: single textarea with live count
-    return f'''<div class="tool-box"><div class="tool-prose"><label>Your text</label><textarea id="ta" placeholder="Type or paste your text…"></textarea><div class="tool-result" id="out"></div></div></div>
+    return f'''<div class="tool-box"><div class="tool-prose"><label for="ta">Your text</label><textarea id="ta" placeholder="Type or paste your text…"></textarea><div class="tool-result" id="out"></div></div></div>
 <script src="/assets/hub-tools.js?v=5" data-hub-tool="{i}"></script>'''
 
 

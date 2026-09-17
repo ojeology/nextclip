@@ -39,6 +39,14 @@ _spec = importlib.util.spec_from_file_location("build_focus_site", ROOT / "scrip
 _build_focus = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(_build_focus)
 ROOT = _build_focus.ROOT
+
+# Batch 14 (pre-domain gate §3): the mega-nav used to hardcode stale
+# guide/tool counts (191/47) while the page bodies counted content/hub
+# (197 guide .md files, 48 tools.json entries) — the numbers disagreed
+# on all 517 writers pages. The nav now reads the same single source of
+# truth, so nav and body can never drift apart again.
+_NAV_GUIDE_COUNT = len(list((ROOT / "content" / "hub" / "guides").glob("*.md")))
+_NAV_TOOL_COUNT = len(json.loads((ROOT / "content" / "hub" / "tools.json").read_text(encoding="utf-8"))["tools"])
 _SITE_CFG = json.loads((ROOT / "site.config.json").read_text(encoding="utf-8"))
 NEWSLETTER = _SITE_CFG.get("newsletter", {})
 FOLLOW = _SITE_CFG.get("follow", {})
@@ -61,7 +69,7 @@ def footer() -> str:
         parent_line = ('<div class="foot-parent"><a href="' + esc(parent["url"]) + '">'
                        + esc(parent.get("name") or "THE BRYME") + '</a> — one of the BRYME publications.</div>')
     return parent_line + '''<footer class="site-foot"><div class="wrap foot-grid">
-  <div class="foot-brand"><a class="logo" href="/"><span class="logo-mark" aria-hidden="true">B</span>BRYME</a><p>BRYME is a free writing resource — guides, tools, and verified opportunities to get published and paid.</p></div>
+  <div class="foot-brand"><a class="logo" href="/"><span class="logo-mark" aria-hidden="true"></span>BRYME</a><p>BRYME is a free writing resource — guides, tools, and verified opportunities to get published and paid.</p></div>
   <div class="foot-col"><b>How to write</b><a href="/start/">Beginner path</a><a href="/find/">What do you want to write?</a><a href="/intelligence/">Writing Intelligence</a><a href="/compare/">Compare formats</a><a href="/regional/">Writing conventions</a><a href="/learn/">Writing hub</a><a href="/learn/examples/">Examples</a><a href="/learn/dos-and-donts/">Dos &amp; don'ts</a><a href="/learn/types-of-writing/">Types of writing</a><a href="/learn/grammar-language/">Grammar</a></div>
   <div class="foot-col"><b>Tools &amp; publish</b><a href="/tools/">Writing tools</a><a href="/templates/">Templates</a><a href="/checklists/">Checklists</a><a href="/writing/">Paid opportunities</a><a href="/writing-opportunities/">Browse by country</a><a href="/today/">Today&rsquo;s opportunities</a><a href="/newsletter/">Weekly digest</a><a href="/tracker/">Submission tracker</a><a href="/studio/">Writing Studio</a><a href="/tested/">BRYME Tested</a></div>
   <div class="foot-col"><b>Trust</b><a href="/about/">About</a><a href="/verification/">What statuses mean</a><a href="/editorial-policy/">Editorial policy</a><a href="/corrections/">Corrections</a><a href="/privacy/">Privacy</a><a href="/contact/">Contact</a></div>
@@ -280,7 +288,7 @@ def nav(current: str = "") -> str:
             ("/learn/writing-basics/", "Writing basics"), ("/learn/writing-process/", "The writing process"),
             ("/learn/grammar-language/", "Grammar &amp; language"), ("/learn/editing-proofreading/", "Editing &amp; proofreading"),
             ("/learn/academic-writing/", "Academic writing"), ("/learn/creative-writing/", "Creative writing"),
-            ("/learn/freelance-paid-writing/", "Rates &amp; business"), ("/learn/", "All 191 guides")]),
+            ("/learn/freelance-paid-writing/", "Rates &amp; business"), ("/learn/", f"All {_NAV_GUIDE_COUNT} guides")]),
         ("writing", "/writing/", "Publish", [
             ("/writing/", "The opportunity desk"), ("/writing-opportunities/", "The atlas: by country"),
             ("/today/", "Updated this week"), ("/tested/", "BRYME Tested"),
@@ -289,7 +297,7 @@ def nav(current: str = "") -> str:
             ("/tools/freelance-rate-calculator/", "Rate calculator"), ("/tools/freelance-agreement-builder/", "Agreement builder"),
             ("/tools/invoice-generator/", "Invoice generator"), ("/tools/late-payment-letter-builder/", "Late-payment letters"),
             ("/tools/pitch-checker/", "Pitch checker"), ("/studio/", "The Writing Studio"),
-            ("/templates/", "Templates"), ("/checklists/", "Checklists"), ("/tools/", "All 47 tools")]),
+            ("/templates/", "Templates"), ("/checklists/", "Checklists"), ("/tools/", f"All {_NAV_TOOL_COUNT} tools")]),
         ("read", "/essays/", "Intelligence", [
             ("/essays/", "Essays"), ("/intelligence/", "Writing intelligence"),
             ("/read/", "All articles"), ("/glossary/", "Glossary"), ("/compare/", "Compare formats")]),
@@ -626,7 +634,7 @@ def drawer(current: str = "") -> str:
              ("contact", "/contact/", "Contact", "✉️")]
     return f'''<div id="drawer-backdrop"></div>
 <aside id="site-drawer" aria-hidden="true" aria-label="Site menu" role="dialog" aria-modal="true">
-  <div class="drawer-head"><a class="logo" href="/"><span class="logo-mark" aria-hidden="true">B</span>BRYME</a><button type="button" class="drawer-close" data-drawer-close aria-label="Close menu"><svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+  <div class="drawer-head"><a class="logo" href="/"><span class="logo-mark" aria-hidden="true"></span>BRYME</a><button type="button" class="drawer-close" data-drawer-close aria-label="Close menu"><svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
   {group("Start here", [("home", "/", "Home", "🏠"), ("start", "/start/", "Complete beginner path", "🧭"), ("find", "/find/", "What do you want to write?", "❓"), ("intelligence", "/intelligence/", "Writing Intelligence", "🧭"), ("compare", "/compare/", "Compare formats", "⚖️"), ("read", "/read/", "All articles", "📄"), ("essays", "/essays/", "Essays", "✍️"), ("today", "/today/", "Today's opportunities", "📅"), ("tracker", "/tracker/", "Submission tracker", "📋"), ("studio", "/studio/", "Writing Studio", "✒️"), ("by-country", "/writing-opportunities/", "Writing by country", "🌍"), ("search", "/search/", "Search BRYME", "🔍")])}
   {group("How to write", howto)}
   {group("Tools & templates", tools)}

@@ -487,6 +487,11 @@ html[data-theme="dark"] .btn.secondary { color: var(--navy); }
   background: var(--navy); color: var(--sheet);
   font: 700 15px var(--serif); border-radius: 2px;
 }
+/* Batch 14b: the badge letter lives in CSS, not in the DOM — an aria-hidden
+   "B" text node next to the "BRYME" wordmark still concatenated into a
+   doubled-B artifact in innerText/scrapers. Pseudo-content never enters
+   text extraction. */
+.logo-mark::before { content: "B"; }
 .bottom-nav, .mobile-nav {
   position: fixed; z-index: 60; left: 0; right: 0; bottom: 0; display: none;
   grid-template-columns: repeat(6, 1fr); border-top: 1px solid var(--line-strong);

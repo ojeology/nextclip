@@ -44,7 +44,7 @@ def nav(current: str = "") -> str:
         items.append(f'<a{cls}{aria} href="{href}">{label}</a>')
     return f'''<a class="skip-link" href="#main">Skip to content</a>
 <header class="site-head"><div class="wrap head-in">
-  <a class="logo" href="/" aria-label="BRYME home"><span class="logo-mark" aria-hidden="true">B</span>BRYME</a>
+  <a class="logo" href="/" aria-label="BRYME home"><span class="logo-mark" aria-hidden="true"></span>BRYME</a>
   <nav class="main-nav" aria-label="Primary">{''.join(items)}</nav>
   <form class="nav-search-form" action="/jobs/" method="get" role="search"><input type="search" name="q" placeholder="Search jobs…" aria-label="Search jobs" autocomplete="off"></form>
 </div></header>'''
@@ -66,7 +66,7 @@ def mobile_nav(current: str = "") -> str:
 
 def footer() -> str:
     return '''<footer class="site-foot"><div class="wrap foot-grid">
-  <div class="foot-brand"><a class="logo" href="/"><span class="logo-mark" aria-hidden="true">B</span>BRYME</a><p>Verified jobs, remote work and legitimate ways to earn for Nigeria and Africa-based readers.</p></div>
+  <div class="foot-brand"><a class="logo" href="/"><span class="logo-mark" aria-hidden="true"></span>BRYME</a><p>Verified jobs, remote work and legitimate ways to earn for Nigeria and Africa-based readers.</p></div>
   <div class="foot-col"><b>Use BRYME</b><a href="/jobs/">Verified jobs</a><a href="/jobs/remote/">Remote work</a><a href="/opportunities/">Make Money</a><a href="/writing/">Writing</a><a href="/guides/">Guides</a></div>
   <div class="foot-col"><b>Trust</b><a href="/jobs/methodology/">Verification method</a><a href="/editorial-policy/">Editorial policy</a><a href="/corrections/">Corrections</a><a href="/privacy/">Privacy</a><a href="/contact/">Contact</a></div>
   <div class="foot-col"><b>Legal</b><a href="/terms/">Terms</a><a href="/disclaimer/">Disclaimer</a><a href="/copyright/">Copyright</a></div>
