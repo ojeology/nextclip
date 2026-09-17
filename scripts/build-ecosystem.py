@@ -1049,6 +1049,7 @@ def entertainment_pages():
         else:
             raw = (rec / f"{slug}.html").read_text()
             bodies[slug] = clean_recovered(raw)
+    _depth_notes = getattr(entertainment_guides_data, "ENT_DEPTH_NOTES", {})
     arts = {}
     for slug in shelf:
         if slug in merged_away:
@@ -1089,7 +1090,7 @@ def entertainment_pages():
         byline = ("Written by the BRYME Entertainment desk \u00b7 reviewed " + TODAY
                   + " \u00b7 evergreen \u2014 re-checked whenever the facts move") if m.get("new") else (
                   "Recovered from the archive \u00b7 " + str(m["words"]) + " words \u00b7 re-typeset and reviewed "
-                  + TODAY + (" \u00b7 prices in older pieces change \u2014 confirm with the service" if slug == "best-streaming-apps-nigeria" else ""))
+                  + TODAY + (" \u00b7 desk notes added September 2026" if slug in _depth_notes else "") + (" \u00b7 prices in older pieces change \u2014 confirm with the service" if slug == "best-streaming-apps-nigeria" else ""))
         abody = (head("entertainment", "Cinema, TV and anime \u2014 written about, never pirated.")
             + '<main id="main"><div class="wrap">'
             + '<nav class="crumb"><a href="/entertainment/">Entertainment</a> / <a href="/entertainment/' + sect + '/">'
@@ -1098,7 +1099,7 @@ def entertainment_pages():
             + '<h1 class="cover-title" style="font-size:clamp(30px,4.6vw,48px)">' + html.escape(m["title"]) + "</h1>"
             + '<p class="byline">BRYME Entertainment desk \u00b7 ' + html.escape(byline) + "</p></section>"
             + ('<section class="section alt"><div class="wrap"><p class="lede"><b>In one line:</b> ' + html.escape(summ) + "</p></div></section>" if summ else "")
-            + '<section class="section"><div class="prose">' + bodies[slug] + comp_html + "</div></section>"
+            + '<section class="section"><div class="prose">' + bodies[slug] + comp_html + _depth_notes.get(slug, "") + "</div></section>"
             + '<section class="section alt"><div class="section-head"><p class="kicker">Next</p><h2>More from ' + html.escape(ENT_SECTIONS[sect][0]) + '.</h2></div>'
             + '<ul class="list">' + rel_html + "</ul>"
             + '<div class="actions"><a class="btn secondary" href="/entertainment/' + sect + '/">All of ' + html.escape(ENT_SECTIONS[sect][0]) + '</a>'
@@ -4667,6 +4668,12 @@ def main() -> None:
         '<li>Every calculator and quiz is general guidance, never professional advice.</li>'
         '<li>No betting content, no piracy, no fabricated data \u2014 anywhere in the family.</li>'
         '</ul>'
+        '<h2>How the house works</h2>'
+        '<p>Every desk is human-edited. Where data moves fast — fixtures, standings, release calendars — scheduled data agents fetch it from named sources on a published cadence, and every automated update passes the full quality gate (content validation, link checks, browser and contrast tests) before it reaches the site. Dated editions stay dated: a preview written for one weekend is labelled as an archive edition the moment it passes, never silently rewritten to look current.</p>'
+        '<h2>How it is funded</h2>'
+        '<p>Advertising is announced for publisher-account verification but stays off by default. There are no sponsored placements inside editorial, affiliate links are labelled where they are used, and no desk publishes betting content or odds — the house rule, not a per-desk choice. Readers never need an account: the tools (calculators, quizzes, watchlist builders) run entirely in your browser, and no reader data is sold, because none is collected to sell.</p>'
+        '<h2>What we verify, and what happens when we are wrong</h2>'
+        '<p>Film trailers are hand-checked against YouTube’s oEmbed service and carry the verification date on the page. Fixture data is fetched on schedule and stamped with when it last moved. Corrections are published in the open, on the page that made the error, and logged at the corrections desk — the same standard for automated pages and human ones.</p>'
         '</div></section></div></main>')
     (_about_d / "index.html").write_text(
         shell("hub", "About THE BRYME | the BRYME publications",
