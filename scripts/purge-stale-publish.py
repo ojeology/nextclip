@@ -153,9 +153,45 @@ def main() -> int:
                 shutil.rmtree(d)
                 stale_rec += 1
 
+    # Batch 11d: Render static-site deploys OVERLAY files - deletions never reach the
+    # serving side (the 2026-09-14 vintage of public/*/_recovered/ still answered 200
+    # after the store moved to content/). The only proven way to retire a served path
+    # is to overwrite it, exactly like the root stubs did for the 18 stale 2026-09-14
+    # root dirs. Write noindex tombstones for every recovery-store name (the Sep-14
+    # listing is byte-identical to today's - verified via GitHub API against 0473ead981).
+    # Committed as ordinary tracked public/ files AND regenerated here on every build,
+    # so they survive both the regeneration-runs and committed-output-fallback paths.
+    tomb = 0
+    for prop, store in (("entertainment", ROOT / "content" / "entertainment-recovered"),
+                        ("sports", ROOT / "content" / "sports-recovered")):
+        if not store.is_dir():
+            continue
+        d = PUBLIC / prop / "_recovered"
+        d.mkdir(parents=True, exist_ok=True)
+        for sp in sorted(store.iterdir()):
+            if not sp.is_file():
+                continue
+            p = d / sp.name
+            if sp.name.endswith(".json"):
+                p.write_text('{"moved": "the recovery store relocated to content/ on 2026-09-17; this path is retired"}\n', encoding="utf-8")
+            else:
+                p.write_text(
+                    '<!doctype html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n'
+                    '<meta name="viewport" content="width=device-width, initial-scale=1">\n'
+                    '<meta name="robots" content="noindex,nofollow">\n'
+                    '<title>Retired source file: ' + sp.name + ' | THE BRYME</title>\n</head>\n'
+                    '<body>\n<main id="main">\n<h1>Retired archive source file</h1>\n'
+                    '<p>This URL served a raw recovery-store fragment while the store lived inside the '
+                    'published tree. The store moved to a private source directory on 2026-09-17, and the '
+                    'articles rebuilt from it live under <a href="/entertainment/">BRYME Entertainment</a> '
+                    'and <a href="/sports/">BRYME Sport</a>. This noindex tombstone overwrites the stale '
+                    'copy because static-site deploys overlay files without deleting them.</p>\n'
+                    '</main>\n</body>\n</html>\n', encoding="utf-8")
+            tomb += 1
+
     print(f"purge-stale-publish: purged {purged} stale dirs, skipped {skipped} live, "
           f"wrote {root_stubs} root stubs + {sub_stubs} sub-stubs, "
-          f"removed {stale_rec} stale _recovered dirs")
+          f"removed {stale_rec} stale _recovered dirs, wrote {tomb} _recovered tombstones")
     return 0
 
 
