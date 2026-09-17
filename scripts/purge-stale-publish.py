@@ -137,6 +137,29 @@ def main() -> int:
             (sub / "index.html").write_text(stub_html(r, rel.split("/")[-1]), encoding="utf-8")
             sub_stubs += 1
 
+        # Batch 14i (audit 2026-09-17): some tools live under /tech/tool/, not
+        # /writers/tools/ (base64-encoder, json-formatter, uuid-generator, ...).
+        # The dormant /tools/* -> /writers/tools/* wildcard 301s their legacy
+        # /tools/<slug>/ URLs to a path that 404s. Mirror them from the routed
+        # allowlist (single source of truth: the tech sitemap) so file-level
+        # stubs outrank the wildcard and land on the real page. Never overwrite
+        # a writers sub-stub written above - case-converter and word-counter
+        # exist in both trees and the writers destination stays canonical for
+        # the legacy /tools/ path, exactly as before this batch.
+        if seg == "tools":
+            for r in routes:
+                if not r.startswith("/tech/tool/"):
+                    continue
+                slug = r[len("/tech/tool/"):].strip("/")
+                if not slug or "/" in slug:
+                    continue
+                sub = PUBLIC / seg / slug
+                if (sub / "index.html").exists():
+                    continue
+                sub.mkdir(parents=True, exist_ok=True)
+                (sub / "index.html").write_text(stub_html(r, slug), encoding="utf-8")
+                sub_stubs += 1
+
     # Batch 11 (audit 2026-09-17): the served tree is public/ (server.js PUBLISH_DIR),
     # and Render's cached build workspace keeps UNTRACKED files across deploys while
     # the buildCommand's `git clean -xdf public/` demonstrably does not run (its
