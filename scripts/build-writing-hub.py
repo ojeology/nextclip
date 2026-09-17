@@ -1069,7 +1069,8 @@ def search_page() -> None:
 <script src="/assets/search-index.js"></script><script src="/assets/hub-tools.js?v=5" data-hub-search></script>'''
     write("/search/", page_wf(title="Search BRYME — writing guides and tools | BRYME",
                               description="Search BRYME's writing guides, tools and resources. Find how to write an essay, comma rules, how to write a work email, how to write a short story and more.",
-                              route="/search/", current="learn", body=body))
+                              route="/search/", current="learn", body=body,
+                              robots="noindex,follow"))
 
 
 def learn_index() -> None:
