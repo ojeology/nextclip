@@ -6,6 +6,12 @@ on:
   pull_request:
     branches: [main]
   workflow_dispatch: {}
+  # The data agent pushes with GITHUB_TOKEN, which never triggers the push
+  # event - so the gate also re-runs on a schedule shortly after each
+  # sports-update window (06:00 / 22:00 UTC) on whatever HEAD is.
+  schedule:
+    - cron: "30 7 * * *"
+    - cron: "30 23 * * *"
 
 permissions:
   contents: read

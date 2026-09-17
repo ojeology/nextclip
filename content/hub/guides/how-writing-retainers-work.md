@@ -1,5 +1,6 @@
 ---
 title: How retainers work for freelance writers
+seo_title: How writing retainers work: the full guide
 description: Monthly client agreements explained — what to include, how to price the capacity, and the traps that turn a retainer into a discount.
 section: freelance-paid-writing
 level: intermediate

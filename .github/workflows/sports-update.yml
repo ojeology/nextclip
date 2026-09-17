@@ -50,9 +50,10 @@ jobs:
           fi
           echo "changed=true" >> "$GITHUB_OUTPUT"
           npm ci
+          npx playwright install --with-deps chromium
           python3 scripts/build-ecosystem.py
           npm run build
-          node scripts/validate-site-quality.js
+          npm test
           python3 scripts/check-internal-links.py
 
       - name: Commit and push

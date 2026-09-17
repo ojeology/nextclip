@@ -1,5 +1,6 @@
 ---
 title: Track your writing income like a business
+seo_title: Track your writing income: the full guide
 description: What to log, why the pending column matters, and the client-concentration warning that changes careers.
 section: freelance-paid-writing
 level: foundational

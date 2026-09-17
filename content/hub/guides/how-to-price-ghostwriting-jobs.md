@@ -1,5 +1,6 @@
 ---
 title: How to price ghostwriting jobs
+seo_title: How to price ghostwriting jobs: the full guide
 description: Pricing ghostwriting when your name goes nowhere - why the rate sits above your bylined rate, how to quote per project, and the contract clauses that protect you.
 section: freelance-paid-writing
 level: intermediate

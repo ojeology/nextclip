@@ -1,5 +1,6 @@
 ---
 title: The tax set-aside habit for freelance writers
+seo_title: Tax set-aside for freelance writers: the full guide
 description: Freelance income arrives gross. A fixed percentage moved on payment day keeps the tax bill from ever being a surprise.
 section: freelance-paid-writing
 level: foundational

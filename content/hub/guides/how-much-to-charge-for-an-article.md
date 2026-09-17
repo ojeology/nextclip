@@ -1,5 +1,6 @@
 ---
 title: How much to charge for an article
+seo_title: How much to charge for an article: the full guide
 description: Per-word, per-hour or flat fee — how to land on a number you can say out loud, with the 2026 bands and the maths that protects you.
 section: freelance-paid-writing
 level: intermediate

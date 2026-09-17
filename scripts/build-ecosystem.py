@@ -336,6 +336,57 @@ table.lg-table{width:100%;border-collapse:collapse;min-width:640px;font:500 14px
 def css_for(pub):
     return BASE_CSS % FAMILY[pub] + (FITNESS_CSS_EXTRA if pub in ("fitness", "home") else "") + (FITNESS_ONLY_CSS_EXTRA if pub == "fitness" else "") + (HOME_CSS_EXTRA if pub == "home" else "") + (SPORTS_CSS_EXTRA if pub == "sports" else "")
 
+def _uk_from_utc(ds):
+    """Feed kick-off times are UTC (football-data.org utcDate). Convert to UK
+    civil time with the exact BST/GMT rule (last Sunday of March 01:00 UTC to
+    last Sunday of October 01:00 UTC). Deterministic - no tz database, no
+    now() - so CI's pinned-date reproducibility check is unaffected.
+    Accepts 'YYYY-MM-DD HH:MM' or a naive datetime; returns naive UK datetime
+    or None when the input cannot be parsed."""
+    import datetime as _dtt
+    dt = ds if isinstance(ds, _dtt.datetime) else None
+    if dt is None:
+        try:
+            dt = _dtt.datetime.strptime(str(ds), "%Y-%m-%d %H:%M")
+        except Exception:
+            return None
+    def _last_sunday(y, m):
+        d = _dtt.date(y, m, 31)
+        while d.weekday() != 6:
+            d -= _dtt.timedelta(days=1)
+        return d
+    bst_start = _dtt.datetime.combine(_last_sunday(dt.year, 3), _dtt.time(1, 0))
+    bst_end = _dtt.datetime.combine(_last_sunday(dt.year, 10), _dtt.time(1, 0))
+    if bst_start <= dt < bst_end:
+        dt += _dtt.timedelta(hours=1)
+    return dt
+
+
+_ED_CACHE = []
+
+
+def desk_edition():
+    """Current-edition pointer (audit 2026-09-16): the sports nav and desk
+    panels follow the newest written matchweek edition and label it archive
+    once the live feed says that round has been played. When the desk writes
+    the next edition, add its (mw, href, label) tuple below - the nav, the
+    EPL desk line and the FPL pointer all follow automatically."""
+    if _ED_CACHE:
+        return _ED_CACHE[0]
+    try:
+        with open(ROOT / "content" / "sports-live.json") as _f:
+            _pl = (json.load(_f).get("leagues") or {}).get("premier-league") or {}
+        done = ((_pl.get("results") or [{}])[-1] or {}).get("mw") or 0
+        up = min((int(x.get("mw", 99)) for x in (_pl.get("upcoming") or []) if x.get("mw")), default=None)
+    except Exception:
+        done, up = 0, None
+    editions = [(4, "/premier-league-matchweek-4-preview/", "Matchweek 4 preview")]
+    mw, href, label = max(editions)
+    current = (mw > done) if done else (up is None or mw >= up)
+    _ED_CACHE.append({"mw": mw, "href": href, "label": label, "current": bool(current)})
+    return _ED_CACHE[0]
+
+
 def _page_ld(title, desc, route):
     # H4 (audit 2026-09-16): every page that does not bring its own JSON-LD
     # gets an honest minimal graph - WebPage (AboutPage/ContactPage where the
@@ -464,17 +515,17 @@ def _nav_items(pub):
                 rows.append(("/" + _sl + "-transfers/", "Transfer centre"))
             if _is_pl:
                 rows += [("/premier-league-clubs/", "All twenty clubs"),
-                         ("/premier-league-matchweek-4-preview/", "Matchweek 4 preview \u00b7 archive")]
+                         (desk_edition()["href"], desk_edition()["label"] + ("" if desk_edition()["current"] else " \u00b7 archive"))]
             navs.append((_n, rows))
         desk = [("HEAD", "The desk"), ("/sports/", "Desk home"),
-                ("/the-weekend-ahead/", "The weekend forecast"),
+                ("/the-weekend-ahead/", "The weekend forecast \u00b7 10 Sep edition"),
                 ("/form-board/", "The Form Board"),
                 ("/fpl/", "FPL, explained properly"),
                 ("/sports/explainers/", "All explainers"),
                 ("/sports/analysis/", "The analysis shelf"),
                 ("/sports/transfers/", "The transfer desk (archive)")]
         navs.append(("The desk", desk))
-        return (navs, ("/the-weekend-ahead/", "The weekend ahead"))
+        return (navs, ("/premier-league-fixtures/", "Fixtures & results"))
     if pub == "fitness":
         guides = [("HEAD", "The fitness shelf"), ("/fitness/", "All fitness guides"),
 ("/fitness/exercise-library/", "The exercise library"),
@@ -540,7 +591,7 @@ def sports_drawer():
         '<a href="/premier-league-table/">Premier League table</a><a href="/la-liga-table/">La Liga table</a>'
         '<a href="/serie-a-table/">Serie A table</a><a href="/bundesliga-table/">Bundesliga table</a>'
         '<a href="/ligue-1-table/">Ligue 1 table</a><a href="/champions-league-table/">Champions League table</a>'
-        '<a href="/the-weekend-ahead/">The weekend forecast</a><a href="/form-board/">The Form Board</a><a href="/fpl/">FPL guide</a></div>\n'
+        '<a href="/the-weekend-ahead/">The weekend forecast (10 Sep edition)</a><a href="/form-board/">The Form Board</a><a href="/fpl/">FPL guide</a></div>\n'
         '<div class="drawer-group"><b>The desk</b><a href="/sports/">Desk home</a><a href="/premier-league-transfers/">Transfer centre</a><a href="/sports/explainers/">Explainers</a>'
         '<a href="/sports/analysis/">Analysis</a></div>\n'
         '<div class="drawer-group"><b>The desk</b><a href="/sports/about/">About</a>'
@@ -1548,7 +1599,7 @@ def sports_pages():
         + '<p class="cover-dek">The desk\u2019s England-top-flight shelf: dated editions from the live season, the archived summer window, and the evergreen explainers that never stop applying. The first live edition of 2026-27 is on the shelf below.</p></section>'
         + '<section class="section"><div class="prose"><p>House rules apply here as everywhere on the desk: no odds, no rumour mill, no invented results. The matchweek editions below were written during the live season window and kept exactly as published. The transfer mechanics behind every window live on the <a href="/sports/transfers/">transfer desk</a>, and the league\u2019s pyramid is explained in <a href="/promotion-and-relegation-explained/">promotion and relegation</a>.</p></div></section>'
         + epl_rows
-        + '<section class="section"><div class="prose"><p><em>The desk is live again for 2026-27: the <a href=\"/premier-league-matchweek-4-preview/\">Matchweek 4 preview</a> is the first fresh dated edition of the season \u2014 published the Thursday before the weekend, no odds, ever. The archive stands exactly as written.</em></p></div></section>'
+        + '<section class="section"><div class="prose"><p><em>' + ("The desk is live again for 2026-27: the " if desk_edition()["current"] else "The desk\u2019s latest dated edition for 2026-27: the ") + '<a href="' + desk_edition()["href"] + '">' + desk_edition()["label"] + '</a>' + (" is the first fresh dated edition of the season" if desk_edition()["current"] else " (archive)") + ' \u2014 published the Thursday before the weekend, no odds, ever. The archive stands exactly as written.</em></p></div></section>'
         + '</div></main>' + foot("sports"))
     pages.append(("/epl/", "The Premier League desk | BRYME Sport",
                   "Matchweek and transfer-window archive editions plus evergreen league explainers \u2014 the Premier League covered honestly, never betting.", epl_hub))
@@ -1643,7 +1694,8 @@ def sports_pages():
             + '<tbody>' + trows + '</tbody></table></div>')
         _ups = ""
         for _m2 in (ld.get("upcoming") or [])[:5]:
-            _ups += ('<div class="sp-row"><span>' + html.escape(str(_m2["d"][5:])) + ' &#183; ' + html.escape(str(_m2["h"])) + ' <b>v</b> ' + html.escape(str(_m2["a"])) + '</span></div>')
+            _u2d = _uk_from_utc(str(_m2["d"]))
+            _ups += ('<div class="sp-row"><span>' + html.escape(_u2d.strftime("%m-%d %H:%M UK") if _u2d else str(_m2["d"][5:])) + ' &#183; ' + html.escape(str(_m2["h"])) + ' <b>v</b> ' + html.escape(str(_m2["a"])) + '</span></div>')
         if _ups:
             _ups += '<p class="byline">fixtures last verified ' + html.escape(str(ld.get("upcoming_updated", ""))) + '</p>'
         _lastb = (ld.get("results") or [None])[-1]
@@ -1990,8 +2042,10 @@ def sports_pages():
     _upall = _pld.get("upcoming") or []
     _tab_stamp = str(_pld.get("table_updated") or "").replace("fetched ", "verified ")
     def _fmt_when(ds):
+        # Feed times are UTC; convert to UK civil time before labelling "UK time".
+        _k = _uk_from_utc(str(ds))
         try:
-            return _dtc.datetime.strptime(str(ds), "%Y-%m-%d %H:%M").strftime("%A %-d %B, %H:%M")
+            return (_k or _dtc.datetime.strptime(str(ds), "%Y-%m-%d %H:%M")).strftime("%A %-d %B, %H:%M")
         except Exception:
             return str(ds)
     for r in sld.PL_TABLE:
@@ -2508,13 +2562,13 @@ def sports_pages():
     _wk = (head("sports", "Analysis, stories and the long view \u2014 never betting.")
         + '<main id="main"><div class="wrap">'
         + '<nav class="crumb"><a href="/sports/">Sport</a> / The weekend ahead</nav>'
-        + '<section class="cover"><p class="kicker">The weekend ahead \u00b7 12\u201314 September 2026</p>'
+        + '<section class="cover"><p class="kicker">The weekend ahead \u00b7 12\u201314 September 2026 \u00b7 archive edition</p>'
         + '<h1 class="cover-title" style="font-size:clamp(30px,4.6vw,48px)">This weekend, on one page.</h1>'
         + '<p class="byline">Written Thursday 10 September 2026 \u00b7 fixtures verified \u00b7 the forecast is BRYME\u2019s editorial outlook, clearly labelled \u2014 never betting tips, no odds, ever</p></section>'
         + '<section class="section"><div class="section-head"><p class="kicker">Premier League \u00b7 Matchweek 4</p><h2>The fixtures.</h2></div>'
         + '<ul class="list">'
         + '<li><a href="/premier-league-fixtures/"><span><b>All ten fixtures, verified</b><small>Every kick-off time and venue for the round, on the calendar page.</small></span><span class="meta">Fixtures</span></a></li>'
-        + '<li><a href="/premier-league-matchweek-4-preview/"><span><b>Matchweek 4, previewed honestly</b><small>The desk\u2019s full live edition: the four storylines and the real table.</small></span><span class="meta">Preview</span></a></li>'
+        + '<li><a href="/premier-league-matchweek-4-preview/"><span><b>Matchweek 4, previewed honestly (archive)</b><small>The desk\u2019s full live edition: the four storylines and the real table.</small></span><span class="meta">Preview</span></a></li>'
         + '<li><a href="/premier-league-table/"><span><b>The table going in</b><small>City and Arsenal perfect, Hull third and unscored-on.</small></span><span class="meta">Live</span></a></li>'
         + '</ul></section>'
         + '<section class="section alt"><div class="section-head"><p class="kicker">The forecast</p><h2>What the desk expects \u2014 labelled as ours.</h2></div>'
@@ -2533,8 +2587,8 @@ def sports_pages():
         + '</ul></section>'
         + '<section class="section alt"><div class="prose"><p>Playing fantasy? <a href="/fpl/">Gameweek 4 and the FPL desk\u2019s honest guide</a> is aligned with this weekend. And the standing rule: <a href="/sports/">BRYME Sport never runs betting content</a> \u2014 the forecast is analysis, labelled as opinion.</p></div></section>'
         + '</div></main>' + foot("sports"))
-    pages.append(("/the-weekend-ahead/", "The weekend ahead \u2014 fixtures, forecast, no odds | BRYME Sport",
-                  "This weekend\u2019s verified fixtures across the six competitions with BRYME\u2019s clearly-labelled editorial outlook. Never betting tips.", _wk))
+    pages.append(("/the-weekend-ahead/", "The weekend ahead \u2014 Matchweek 4 edition (archive) | BRYME Sport",
+                  "Archive edition, written 10 September 2026: that weekend\u2019s verified fixtures across the six competitions with BRYME\u2019s clearly-labelled editorial outlook. Never betting tips.", _wk))
 
     _fpl = (head("sports", "Analysis, stories and the long view \u2014 never betting.")
         + '<main id="main"><div class="wrap">'
@@ -2553,32 +2607,44 @@ def sports_pages():
         + '<h2>The desk\u2019s angle: fixtures first</h2>'
         + '<p>FPL is a fixtures game wearing a football costume. The tools on this desk map directly: <a href="/premier-league-fixtures/">the verified fixture list</a> for the next round, <a href="/premier-league-table/">the table</a> for who is actually good, <a href="/the-weekend-ahead/">the weekend forecast</a> for the storylines, and the <a href="/premier-league-top-scorers/">scoring charts</a> for who is finishing moves. Use them together \u2014 and remember the house rule applies here too: analysis and information, never gambling.</p>'
         + '</div></section>'
-        + '<section class="section alt"><div class="prose"><p>This gameweek: <a href="/premier-league-matchweek-4-preview/">Matchweek 4, previewed honestly</a> \u2014 the derby, Hull\u2019s test, and Arsenal under the lights. The desk\u2019s <a href="/how-the-premier-league-table-works/">table mechanics guide</a> doubles as a tiebreaker explainer for your mini-leagues.</p></div></section>'
+        + '<section class="section alt"><div class="prose"><p>' + ("This gameweek: " if desk_edition()["current"] else "The desk\u2019s latest written edition: ") + '<a href="' + desk_edition()["href"] + '">' + desk_edition()["label"] + '</a>' + ("" if desk_edition()["current"] else " (archive)") + '. The desk\u2019s <a href="/how-the-premier-league-table-works/">table mechanics guide</a> doubles as a tiebreaker explainer for your mini-leagues.</p></div></section>'
         + '</div></main>' + foot("sports"))
     pages.append(("/fpl/", "FPL, explained properly \u2014 scoring, chips, transfers | BRYME Sport",
                   "How Fantasy Premier League actually works: scoring by position, captaincy, transfers and the four chips \u2014 evergreen rules, no tips sold, no odds, ever.", _fpl))
 
     # ---- batch 12: the sports-portal index blocks ----
     _pl_live = LIVE.get("leagues", {}).get("premier-league", {})
+    # Live-driven portal card (audit 2026-09-16): rows come from the agent-fed
+    # upcoming fixtures with UTC->UK converted kick-off times; the hardcoded
+    # Matchweek-4 weekend only remains as a no-feed fallback.
     wk_rows = ""
-    for _w in [("/clubs/chelsea/", "Chelsea", "Hull City", "Sat \u00b7 15:00 UK"),
-               ("/clubs/sunderland/", "Sunderland", "Arsenal", "Sat \u00b7 20:00 UK"),
-               ("/clubs/manchester-united/", "Man United", "Man City", "Sun \u00b7 16:30 UK"),
-               ("/clubs/leeds-united/", "Leeds United", "Newcastle", "Mon \u00b7 20:00 UK")]:
-        wk_rows += ('<div class="fx-row"><span class="fx-when">' + _w[3] + '</span><span class="fx-tie"><a href="' + _w[0] + '">' + _w[1] + '</a> v ' + _w[2] + '</span><span class="fx-where">Matchweek 4</span></div>')
+    _pl_up4 = (_pl_live.get("upcoming") or [])[:4]
+    for _u in _pl_up4:
+        _uk = _uk_from_utc(_u.get("d", ""))
+        _when = (_uk.strftime("%a %-d %b \u00b7 %H:%M UK") if _uk else html.escape(str(_u.get("d", ""))))
+        _hslug = NAME_SLUG.get(str(_u.get("h", "")), "")
+        _tie = (('<a href="/clubs/' + _hslug + '/">' + html.escape(str(_u.get("h", ""))) + '</a>') if _hslug else html.escape(str(_u.get("h", ""))))
+        wk_rows += ('<div class="fx-row"><span class="fx-when">' + _when + '</span><span class="fx-tie">' + _tie + ' v ' + html.escape(str(_u.get("a", ""))) + '</span><span class="fx-where">Matchweek ' + str(_u.get("mw", "")) + '</span></div>')
+    if not _pl_up4:
+        for _w in [("/clubs/chelsea/", "Chelsea", "Hull City", "Sat \u00b7 15:00 UK"),
+                   ("/clubs/sunderland/", "Sunderland", "Arsenal", "Sat \u00b7 20:00 UK"),
+                   ("/clubs/manchester-united/", "Man United", "Man City", "Sun \u00b7 16:30 UK"),
+                   ("/clubs/leeds-united/", "Leeds United", "Newcastle", "Mon \u00b7 20:00 UK")]:
+            wk_rows += ('<div class="fx-row"><span class="fx-when">' + _w[3] + '</span><span class="fx-tie"><a href="' + _w[0] + '">' + _w[1] + '</a> v ' + _w[2] + '</span><span class="fx-where">Matchweek 4</span></div>')
     _ll_up = LIVE.get("leagues", {}).get("la-liga", {}).get("upcoming", [])
     _bar = next((u for u in _ll_up if "Barcelona" in (u["h"] + " " + u["a"])), None)
     if _bar:
-        wk_rows += ('<div class="fx-row"><span class="fx-when">' + html.escape(_bar["d"][:10]) + ' \u00b7 ' + html.escape(_bar["d"][11:]) + ' UTC</span><span class="fx-tie">' + html.escape(_bar["h"]) + ' v ' + html.escape(_bar["a"]) + '</span><span class="fx-where">LaLiga MD' + str(_bar["mw"]) + '</span></div>')
-    weekend_secs = ('<section class="section"><div class="section-head"><p class="kicker">This weekend \u00b7 12\u201314 September</p><h2>The matchweek, immediately.</h2></div>'
+        _buk = _uk_from_utc(_bar["d"])
+        wk_rows += ('<div class="fx-row"><span class="fx-when">' + ((_buk.strftime("%Y-%m-%d \u00b7 %H:%M UK")) if _buk else (html.escape(_bar["d"][:10]) + ' \u00b7 ' + html.escape(_bar["d"][11:]) + ' UTC')) + '</span><span class="fx-tie">' + html.escape(_bar["h"]) + ' v ' + html.escape(_bar["a"]) + '</span><span class="fx-where">LaLiga MD' + str(_bar["mw"]) + '</span></div>')
+    weekend_secs = ('<section class="section"><div class="section-head"><p class="kicker">' + ("The round ahead \u00b7 Matchweek " + str(_pl_up4[0].get("mw", "")) if _pl_up4 else "The round ahead") + '</p><h2>The matchweek, immediately.</h2></div>'
         + wk_rows
         + '<p class="byline">Fixtures last verified ' + str(LIVE.get("generated", "pre-season")) + ' \u00b7 the full forecast carries sources per fixture</p>'
-        + '<a class="sp-more" href="/the-weekend-ahead/">The full weekend forecast</a></section>')
+        + '<a class="sp-more" href="/the-weekend-ahead/">The full weekend forecast (10 Sep edition)</a></section>')
     _def_panel = _panel("The league, live", '<div class="sp-row"><span>The opening rounds are being verified \u2014 the table opens with the first full update.</span></div>', None)
     _pl_panel = _table_panel(_pl_live, "premier-league", 6) or _def_panel
     _sc_panel = _scorers_panel(_pl_live, "premier-league", 5)
     _nx_panel = _panel("Where next", "".join('<div class="sp-row"><span><a href="' + u + '">' + t + '</a></span></div>' for u, t in
-        [("/premier-league-results/", "All verified scores"), ("/the-weekend-ahead/", "The weekend forecast"), ("/fpl/", "Fantasy Premier League")]), None)
+        [("/premier-league-results/", "All verified scores"), ("/the-weekend-ahead/", "The weekend forecast \u00b7 10 Sep edition"), ("/fpl/", "Fantasy Premier League")]), None)
     comp_rows = ""
     for _s, _n, _h in [("premier-league", "Premier League", "/premier-league/"), ("la-liga", "La Liga", "/laliga/"),
                        ("serie-a", "Serie A", "/serie-a/"), ("bundesliga", "Bundesliga", "/bundesliga/"),
@@ -2587,13 +2653,13 @@ def sports_pages():
         _up = _ld.get("upcoming", [])
         if _up:
             _lab = ("MW" if _s == "premier-league" else "MD") + str(_up[0]["mw"])
-            _lab += ", this weekend" if _up[0]["d"][:10] <= "2026-09-14" else " \u00b7 from " + _up[0]["d"][:10]
+            _lab += " \u00b7 from " + _up[0]["d"][:10]
         else:
             _lab = "season under way"
         comp_rows += ('<div class="sp-row"><span><a href="' + _h + '">' + _n + '</a></span><span class="pts">' + _lab + '</span></div>')
     portal_secs = ('<section class="section"><div class="data-cols"><div>' + _pl_panel + _sc_panel + _nx_panel + '</div>'
         + '<div>' + _panel("Six competitions, live", comp_rows, None)
-        + _panel("New on the desk", '<div class="sp-row"><span><a href="/the-weekend-ahead/">The weekend ahead \u2014 fixtures + forecast</a></span></div>'
+        + _panel("New on the desk", '<div class="sp-row"><span><a href="/the-weekend-ahead/">The weekend ahead \u2014 10 Sep edition (archive)</a></span></div>'
                                      '<div class="sp-row"><span><a href="/fpl/">FPL, explained properly</a></span></div>'
                                      '<div class="sp-row"><span><a href="/champions-league-table/">The Champions League table</a></span></div>'
                                      '<div class="sp-row"><span><a href="/premier-league-transfers/">The transfer centre \u2014 every listed deal</a></span></div>'

@@ -1,5 +1,6 @@
 ---
 title: When to follow up on a pitch (and when to stop)
+seo_title: When to follow up on a pitch: the full guide
 description: The timing rules for following up on a pitch to an editor - how long to wait, what to send, how many times, and the signals that say move on.
 section: freelance-paid-writing
 level: beginner

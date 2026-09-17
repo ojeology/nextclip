@@ -447,7 +447,7 @@ def guide_page(g: dict) -> None:
 <section class="section"><div class="prose">{prose}{regional_note(g)}</div></section></div>
 {affiliate_note() if g.get('affiliate') else ''}{tool_links(tool_items)}{next_step(g)}{related_links(g.get('related', []))}'''
     write(f"/learn/{g['section']}/{g['slug']}/", page_wf(
-        title=f"{g['title']} | BRYME writing guides",
+        title=f"{g.get('seo_title') or g['title']} | BRYME writing guides",
         description=g.get("description", ""),
         route=f"/learn/{g['section']}/{g['slug']}/",
         current="learn", body=body,
@@ -494,7 +494,7 @@ def section_hub(sec: dict) -> None:
 <div class="source-line"><span><b>{n}</b> {noun}</span></div></section>
 {content}{extra}</div>'''
         write(f"/learn/{sec['id']}/", page_wf(
-            title=f"{sec['title']} | BRYME", description=sec.get("description", "").replace("\n", " "),
+            title=f"{sec['title']}: the learn index | BRYME", description=sec.get("description", "").replace("\n", " "),
             route=f"/learn/{sec['id']}/", current="learn", body=body, robots="index,follow"))
         return
     pillars = sec.get("pillars") or []
