@@ -28,6 +28,7 @@ import sys
 import re
 from pathlib import Path
 from xml.sax.saxutils import escape as xesc
+from title_budget import budget_title  # H3 batch 7: SERP title budget (<=60 chars)
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
@@ -336,6 +337,7 @@ def css_for(pub):
     return BASE_CSS % FAMILY[pub] + (FITNESS_CSS_EXTRA if pub in ("fitness", "home") else "") + (FITNESS_ONLY_CSS_EXTRA if pub == "fitness" else "") + (HOME_CSS_EXTRA if pub == "home" else "") + (SPORTS_CSS_EXTRA if pub == "sports" else "")
 
 def shell(pub, title, desc, route, body, card=None, robots="index,follow"):
+    title = budget_title(title)  # H3 batch 7: keep <title>/og:title inside the SERP window
     d = route  # mode-aware base URL from SUB
     og = f"{ORIGIN}/assets/og.png"  # real root card; route may already be a full URL (b36 fix)
     has_theme = pub in ("tech", "fitness", "sports", "hub", "entertainment")
@@ -3954,6 +3956,7 @@ def _home_sidebar(current):
             '<nav aria-label="Home and DIY sections">' + items + "</nav></aside>")
 
 def _home_page(title, desc, route, cover_html, main_html, sidebar_current):
+    title = budget_title(title)  # H3 batch 7: keep <title>/og:title inside the SERP window
     canonical = ORIGIN + "/home" + route
     og = "https://" + DOMAIN + "/assets/og.png"
     return ('<!doctype html>\n<html lang="en"><head>\n\n<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">\n'

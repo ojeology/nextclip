@@ -31,6 +31,7 @@ from urllib.parse import quote
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))  # scripts import `bryme_config` by name
+from title_budget import budget_title  # H3 batch 7: SERP title budget (<=60 chars)
 
 # Reuse the working focused-site shell (not a fork): page(), esc(), schema(),
 # write(), BASE, SITE, cfg, TODAY, TODAY_HUMAN, footer().
@@ -646,6 +647,7 @@ def page_wf(*, title: str, description: str, route: str, current: str, body: str
     (Copied from build_focus_site.page so the writing branch controls its own
     SearchAction/site graph and nav while keeping the same hardened head.)
     """
+    title = budget_title(title)  # H3 batch 7: keep <title>/og:title inside the SERP window
     canonical = BASE + route
     # Social card: use the generated per-page card when one exists.
     og_image = "/assets/og/default.png"

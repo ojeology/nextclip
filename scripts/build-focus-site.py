@@ -14,6 +14,7 @@ from pathlib import Path
 from urllib.parse import quote as urllib_quote
 
 import bryme_config as cfg
+from title_budget import budget_title  # H3 batch 7: SERP title budget (<=60 chars)
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE = cfg.site_url()  # canonical origin; SITE_URL env wins over site.config.json
@@ -88,6 +89,7 @@ def section_intro(label: str, line: str) -> str:
 
 def page(*, title: str, description: str, route: str, current: str, body: str,
          schema_data: object | None = None, robots: str = "index,follow") -> str:
+    title = budget_title(title)  # H3 batch 7: keep <title>/og:title inside the SERP window
     canonical = BASE + route
     adsense = cfg.publisher_config()
     ca_id = str(adsense.get("caId") or "").strip()
