@@ -1485,6 +1485,27 @@ def entertainment_pages():
 def sports_pages():
     rec = ROOT / "content" / "sports-recovered"  # batch 11: sources moved out of the published tree
     manifest = json.loads((rec / "manifest.json").read_text())
+    # Batch 13 (re-audit): per-article meta descriptions. The five REAL pages
+    # used to share one generic description, which read as duplicate meta
+    # content across five indexable articles. Each line below is drawn from
+    # that article's own published deck/lede - factual, no new claims.
+    _REAL_DESC = {
+        "deadline-day-dont-try-to-make-sense-of-it":
+            "Monaco needed a sale, Chelsea a replacement, Everton a striker. "
+            "By 23:00 on deadline day all three had nothing \u2014 one chain of deals, reconstructed.",
+        "elliot-anderson-man-city-record-signing":
+            "Rodri left for Barcelona; City answered with a reported \u00a3135m for Elliot Anderson. "
+            "What he brings, what the fee means, and why Friday at Palace matters.",
+        "premier-league-matchweek-1-guide":
+            "Ten results, ten reads: the weekend that gave Brighton a statement, Hull a shock "
+            "and Chelsea a new-manager bounce. Matchweek 1 of 2026-27, reviewed.",
+        "premier-league-matchweek-2-preview":
+            "Ten fixtures, four days, and kick-off times that read the same in Lagos as in London. "
+            "Every Matchweek 2 game, its storyline and what to watch first.",
+        "premier-league-transfer-tracker-august-2026":
+            "The summer window closed at 23:00 BST on 1 September 2026; City landed Enzo Fern\u00e1ndez "
+            "for a British record-equalling \u00a3125m. Every big done deal, sourced.",
+    }
     REAL = {"premier-league-transfer-tracker-august-2026", "premier-league-matchweek-2-preview",
             "elliot-anderson-man-city-record-signing", "deadline-day-dont-try-to-make-sense-of-it",
             "premier-league-matchweek-1-guide"}
@@ -1518,7 +1539,7 @@ def sports_pages():
 <section class="section"><div class="prose">{body_html}</div></section>
 </div></main>{foot("sports")}"""
         pages.append((route, f'{m["title"]} | BRYME Sport',
-                      "From the BRYME media desk — recovered edition, re-typeset.", pbody))
+                      _REAL_DESC.get(slug, "From the BRYME media desk \u2014 " + m["title"] + " (recovered edition, re-typeset)."), pbody))
 
     # evergreen explainers: laws, formats and roles — no fixtures, no data rights, no betting
     import sports_explainers_data

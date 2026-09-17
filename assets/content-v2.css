@@ -681,6 +681,15 @@ body.studio-focus { padding-bottom: 0; }
 .job-card { content-visibility: auto; contain-intrinsic-size: auto 260px; }
 .article-row { content-visibility: auto; contain-intrinsic-size: auto 150px; }
 
+/* Batch 13 (re-audit): the facet filters (opp-filter.js, writing-filter.js,
+   article-filter.js, level-filter.js, country-filter.js, tracker.js,
+   purpose-finder.js) hide matches by setting the hidden ATTRIBUTE. Author
+   display rules like `.job-card { display: flex }` override the UA default
+   `[hidden] { display: none }`, so filtering updated the result count but
+   never actually hid a card. This restore is global and !important so every
+   component's hidden toggle works regardless of its own display rule. */
+[hidden] { display: none !important; }
+
 /* Lean editorial compatibility layer — replaces the 263 KB legacy platform sheet. */
 .shell{width:min(calc(100% - 32px),var(--max));margin-inline:auto}
 .top{position:sticky;z-index:50;top:0;border-bottom:1px solid var(--line);background:rgba(7,16,13,.9);backdrop-filter:blur(18px)}

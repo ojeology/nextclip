@@ -680,3 +680,12 @@ body.studio-focus { padding-bottom: 0; }
    the document, JS-off still shows everything, nothing is hidden by default. */
 .job-card { content-visibility: auto; contain-intrinsic-size: auto 260px; }
 .article-row { content-visibility: auto; contain-intrinsic-size: auto 150px; }
+
+/* Batch 13 (re-audit): the facet filters (opp-filter.js, writing-filter.js,
+   article-filter.js, level-filter.js, country-filter.js, tracker.js,
+   purpose-finder.js) hide matches by setting the hidden ATTRIBUTE. Author
+   display rules like `.job-card { display: flex }` override the UA default
+   `[hidden] { display: none }`, so filtering updated the result count but
+   never actually hid a card. This restore is global and !important so every
+   component's hidden toggle works regardless of its own display rule. */
+[hidden] { display: none !important; }
