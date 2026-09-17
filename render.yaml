@@ -26,7 +26,10 @@ services:
     # files from the publish directory after a successful build is safe. It runs
     # AFTER the build because `npm run build` swallows failures with `|| echo`,
     # and deleting public/ first would then deploy an empty site.
-    buildCommand: npm install --omit=dev && npm run build && (git -c safe.directory='*' clean -xdf public/ || echo 'clean - git clean unavailable, untracked publish files may persist')
+    # batch 11c: the _recovered sweep is shell-level on purpose - python regeneration and
+    # git clean both demonstrably fail in Render's static-site build env (no .git, python
+    # optional), while the cached workspace keeps untracked stale files across deploys.
+    buildCommand: npm install --omit=dev && npm run build && (find . -maxdepth 4 -type d -name _recovered -not -path './content/*' -not -path './node_modules/*' -exec rm -rf {} + || echo 'stale _recovered sweep unavailable') && (git -c safe.directory='*' clean -xdf public/ || echo 'clean - git clean unavailable, untracked publish files may persist')
     staticPublishPath: public
     headers:
       - path: /*
