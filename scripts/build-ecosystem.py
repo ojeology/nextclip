@@ -944,6 +944,12 @@ ENT_SECTIONS = {
     "explainers": ("Explainers & comparisons", "Why a show became a phenomenon, what a character\u2019s choice really meant, and the head-to-heads fans actually argue about."),
     "opinion": ("Opinion & lists", "Reviews with a spine, cult favourites defended, and lists with a reason behind every entry \u2014 labelled as opinion, written as argument."),
 }
+# Batch 11 (audit H1 close-out): labelled desk-policy prose at the top of each section hub
+ENT_SECTION_NOTES = {
+    "recommendations": "<p>Everything on this shelf is picked by the desk against stated criteria \u2014 tone, structure, how easy a thing is to watch \u2014 never against a licensing deal or a commission. We deliberately do not claim where something is streaming: catalogues rotate by country and month, so the desk\u2019s job is to tell you why a title is worth your night, and the where is a search you run on the evening. Rankings here are arguments, not queues; skip to the entry that matches your mood.</p>",
+    "explainers": "<p>Explainers are written by the desk and re-checked against the primary source whenever the mechanism they describe changes \u2014 season structures, licensing, production committees, release economics. Numbers carry dates, mechanisms carry sources, and anything that is judgement rather than fact is labelled as such. When the desk gets something wrong, the correction runs on the page that made the error and is logged at the corrections desk.</p>",
+    "opinion": "<p>Opinion pieces live under this shelf\u2019s label and are never mixed into news, guides or explainers. The house expectation is a spine: a claim, the evidence for it, and the strongest counter-argument stated fairly enough that its author would recognise it. A ranking is allowed to be personal \u2014 that is the point of the shelf \u2014 but a personal pick still owes you a reason.</p><p>Some of these pieces will age badly; that is the nature of opinion written in a moment. When one does, an update says so on the page rather than quietly rewriting the record, and every correction is logged at the corrections desk. If a piece got something wrong about you or your work, write to the desk \u2014 the same page that made the error carries the fix.</p>",
+}
 ENT_SLUG_SECT = {
     "10-anime-like-solo-leveling-you-should-watch": "recommendations",
     "10-shows-like-alice-in-borderland-you-should-watch-next": "recommendations",
@@ -1018,7 +1024,7 @@ def _trailer_facade(t):
 
 
 def entertainment_pages():
-    rec = OUT / "entertainment" / "_recovered"
+    rec = ROOT / "content" / "entertainment-recovered"  # batch 11: sources moved out of the published tree
     manifest = json.loads((rec / "manifest.json").read_text())
     by_slug = {m["slug"]: m for m in manifest}
     # the moved piece joins the manifest with its own record
@@ -1124,7 +1130,7 @@ def entertainment_pages():
             + '<section class="cover"><p class="kicker">BRYME Entertainment \u00b7 section</p>'
             + '<h1 class="cover-title">' + html.escape(cname) + "</h1>"
             + '<p class="cover-dek">' + html.escape(cdesc) + "</p></section>"
-            + '<section class="section"><div class="section-head"><p class="kicker">' + str(len(lst)) + ' pieces</p><h2>Everything in ' + html.escape(cname) + '.</h2></div>'
+            + '<section class="section"><div class="prose">' + ENT_SECTION_NOTES.get(cslug, "") + '</div><div class="section-head"><p class="kicker">' + str(len(lst)) + ' pieces</p><h2>Everything in ' + html.escape(cname) + '.</h2></div>'
             + '<ul class="list">' + rows + "</ul></section>"
             + '<section class="section alt"><div class="section-head"><p class="kicker">Keep watching</p><h2>Elsewhere on this desk.</h2></div>'
             + '<div class="actions">' + others + "</div></section></div></main>" + foot("entertainment"))
@@ -1452,7 +1458,7 @@ def entertainment_pages():
 
 # ------------------------------------------------------------- 3. SPORTS
 def sports_pages():
-    rec = Path(OUT / "sports" / "_recovered")
+    rec = ROOT / "content" / "sports-recovered"  # batch 11: sources moved out of the published tree
     manifest = json.loads((rec / "manifest.json").read_text())
     REAL = {"premier-league-transfer-tracker-august-2026", "premier-league-matchweek-2-preview",
             "elliot-anderson-man-city-record-signing", "deadline-day-dont-try-to-make-sense-of-it",
