@@ -137,8 +137,25 @@ def main() -> int:
             (sub / "index.html").write_text(stub_html(r, rel.split("/")[-1]), encoding="utf-8")
             sub_stubs += 1
 
+    # Batch 11 (audit 2026-09-17): the served tree is public/ (server.js PUBLISH_DIR),
+    # and Render's cached build workspace keeps UNTRACKED files across deploys while
+    # the buildCommand's `git clean -xdf public/` demonstrably does not run (its
+    # `|| echo` fallback swallows the failure). Pre-2026-09-14 builds copied the
+    # _recovered/ archive source store into public/{entertainment,sports}/, where it
+    # stayed publicly served (duplicate content, dead legacy breadcrumbs) long after
+    # the sources moved to content/*-recovered/. Purge any _recovered/ dir under the
+    # publish workspace by name class - deterministic, idempotent, no git needed.
+    stale_rec = 0
+    for base in (PUBLIC, ROOT, ROOT / "ecosystem"):
+        for prop in ("sports", "entertainment", "tech", "fitness", "home", "writers"):
+            d = base / prop / "_recovered"
+            if d.is_dir():
+                shutil.rmtree(d)
+                stale_rec += 1
+
     print(f"purge-stale-publish: purged {purged} stale dirs, skipped {skipped} live, "
-          f"wrote {root_stubs} root stubs + {sub_stubs} sub-stubs")
+          f"wrote {root_stubs} root stubs + {sub_stubs} sub-stubs, "
+          f"removed {stale_rec} stale _recovered dirs")
     return 0
 
 
