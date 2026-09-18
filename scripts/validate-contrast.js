@@ -29,7 +29,7 @@ const check = (ok, msg) => { if (!ok) failures.push(msg); };
 
 /* Owner-mandated monetisation; intercepted so a contrast audit measures the
    site's own paint rather than whatever creative an ad network served. */
-const AD_HOSTS = /(?:profitableratecpmnetwork|monetag|highperformanceformat|n6wxm|nap5k|propellerads)\./i;
+const AD_HOSTS = /(?:profitableratecpmnetwork|highrevenueformat|monetag|highperformanceformat|n6wxm|nap5k|propellerads)\./i;
 /* Answer ad requests with a benign empty payload rather than aborting them. An
    abort makes Chromium log a failed request, which surfaces as a net::ERR_FAILED
    console error on every page - an artifact of the harness, not a defect in the

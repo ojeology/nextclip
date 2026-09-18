@@ -722,11 +722,11 @@ def foot(pub, extra=""):
               (' \u00b7 <a href="/' + _base + '/terms/">Terms</a> \u00b7 <a href="/' + _base + '/editorial-policy/">Editorial policy</a>'
                ' \u00b7 <a href="/' + _base + '/corrections/">Corrections</a>'))
     x = extra or _trust
-    return f"""<footer class="foot"><div class="wrap foot-in">
+    return f"""<script src="/assets/ad-300x250.js?v=1"></script><footer class="foot"><div class="wrap foot-in">
 <div>© 2026 THE BRYME — {PUB_NAME[pub] if pub != 'hub' else 'the BRYME publications'}.</div>
 <div><a href="{'/about/' if pub == 'hub' else '/' + pub + '/about/'}">About</a> · <a href="/{'writers' if pub == 'hub' else pub}/privacy/">Privacy</a> · <a href="/{'writers' if pub == 'hub' else pub}/contact/">Contact</a>{x}</div>
 <div><a href="{ORIGIN}/">{ORIGIN_HOST}</a></div>
-</div></footer><script src="/assets/ad-slot.js?v=17" defer></script>"""
+</div></footer><script src="/assets/ad-slot.js?v=17" defer></script><script src="/assets/ad-socialbar.js?v=1" defer></script>"""
 
 def write_placeholder(key, name, tagline, identity, planned):
     """Foundation-era property: one honest page + the standard legal pages, all noindex."""
