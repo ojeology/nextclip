@@ -1,13 +1,13 @@
 {
  "_comment": "Written by scripts/sports_update_agent.py - source: football-data.org v4. The desk never publishes unverified data.",
- "generated": "2026-09-17 11:18 UTC",
+ "generated": "2026-09-17 23:59 UTC",
  "source": "football-data.org v4",
  "leagues": {
   "premier-league": {
    "name": "Premier League",
-   "table_updated": "fetched Thursday 17 September 2026, 11:14 UTC",
-   "results_updated": "fetched Thursday 17 September 2026, 11:14 UTC",
-   "scorers_updated": "fetched Thursday 17 September 2026, 11:14 UTC",
+   "table_updated": "fetched Thursday 17 September 2026, 23:55 UTC",
+   "results_updated": "fetched Thursday 17 September 2026, 23:55 UTC",
+   "scorers_updated": "fetched Thursday 17 September 2026, 23:55 UTC",
    "scorers_source": "The Guardian (10 Sep 2026) cross-checked with worldfootball.net",
    "table": [
     [
@@ -699,7 +699,7 @@
      "mw": 6
     }
    ],
-   "upcoming_updated": "fetched Thursday 17 September 2026, 11:14 UTC",
+   "upcoming_updated": "fetched Thursday 17 September 2026, 23:55 UTC",
    "squads": {
     "Arsenal": {
      "id": 57,
@@ -4712,12 +4712,12 @@
      ]
     }
    },
-   "squads_updated": "fetched Thursday 17 September 2026, 11:18 UTC (20/20 clubs listed)"
+   "squads_updated": "fetched Thursday 17 September 2026, 23:59 UTC (20/20 clubs listed)"
   },
   "la-liga": {
    "name": "La Liga",
-   "table_updated": "fetched Thursday 17 September 2026, 11:14 UTC",
-   "scorers_updated": "fetched Thursday 17 September 2026, 11:14 UTC",
+   "table_updated": "fetched Thursday 17 September 2026, 23:55 UTC",
+   "scorers_updated": "fetched Thursday 17 September 2026, 23:55 UTC",
    "table": [
     [
      1,
@@ -4745,6 +4745,18 @@
     ],
     [
      3,
+     "Real Betis Balompié",
+     6,
+     5,
+     0,
+     1,
+     8,
+     6,
+     2,
+     15
+    ],
+    [
+     4,
      "Club Atlético de Madrid",
      6,
      4,
@@ -4756,7 +4768,7 @@
      13
     ],
     [
-     4,
+     5,
      "Sevilla FC",
      6,
      4,
@@ -4766,18 +4778,6 @@
      6,
      3,
      13
-    ],
-    [
-     5,
-     "Real Betis Balompié",
-     5,
-     4,
-     0,
-     1,
-     7,
-     6,
-     1,
-     12
     ],
     [
      6,
@@ -4877,6 +4877,18 @@
     ],
     [
      14,
+     "Villarreal CF",
+     6,
+     1,
+     2,
+     3,
+     10,
+     11,
+     -1,
+     5
+    ],
+    [
+     15,
      "Levante UD",
      5,
      1,
@@ -4888,19 +4900,19 @@
      5
     ],
     [
-     15,
+     16,
      "Getafe CF",
-     5,
+     6,
      1,
      2,
-     2,
      3,
-     6,
-     -3,
+     3,
+     7,
+     -4,
      5
     ],
     [
-     16,
+     17,
      "RC Celta de Vigo",
      6,
      0,
@@ -4912,7 +4924,7 @@
      4
     ],
     [
-     17,
+     18,
      "Valencia CF",
      6,
      1,
@@ -4924,28 +4936,16 @@
      4
     ],
     [
-     18,
-     "Málaga CF",
-     5,
-     0,
-     3,
-     2,
-     2,
-     8,
-     -6,
-     3
-    ],
-    [
      19,
-     "Villarreal CF",
-     5,
+     "Málaga CF",
+     6,
      0,
-     2,
      3,
-     7,
-     10,
-     -3,
-     2
+     3,
+     3,
+     11,
+     -8,
+     3
     ],
     [
      20,
@@ -5384,24 +5384,26 @@
        "hs": 7,
        "as": 2,
        "a": "Real Racing Club de Santander"
+      },
+      {
+       "d": "2026-09-17",
+       "h": "Real Betis Balompié",
+       "hs": 1,
+       "as": 0,
+       "a": "Getafe CF"
+      },
+      {
+       "d": "2026-09-17",
+       "h": "Málaga CF",
+       "hs": 1,
+       "as": 3,
+       "a": "Villarreal CF"
       }
      ]
     }
    ],
-   "results_updated": "fetched Thursday 17 September 2026, 11:14 UTC",
+   "results_updated": "fetched Thursday 17 September 2026, 23:55 UTC",
    "upcoming": [
-    {
-     "d": "2026-09-17 17:00",
-     "h": "Real Betis Balompié",
-     "a": "Getafe CF",
-     "mw": 6
-    },
-    {
-     "d": "2026-09-17 19:30",
-     "h": "Málaga CF",
-     "a": "Villarreal CF",
-     "mw": 6
-    },
     {
      "d": "2026-09-18 19:00",
      "h": "RCD Espanyol de Barcelona",
@@ -5461,13 +5463,25 @@
      "h": "Valencia CF",
      "a": "Real Sociedad de Fútbol",
      "mw": 7
+    },
+    {
+     "d": "2026-10-09 19:00",
+     "h": "Málaga CF",
+     "a": "RCD Espanyol de Barcelona",
+     "mw": 8
+    },
+    {
+     "d": "2026-10-10 12:00",
+     "h": "Rayo Vallecano de Madrid",
+     "a": "Athletic Club",
+     "mw": 8
     }
    ],
-   "upcoming_updated": "fetched Thursday 17 September 2026, 11:14 UTC"
+   "upcoming_updated": "fetched Thursday 17 September 2026, 23:55 UTC"
   },
   "bundesliga": {
    "name": "Bundesliga",
-   "table_updated": "fetched Thursday 17 September 2026, 11:15 UTC",
+   "table_updated": "fetched Thursday 17 September 2026, 23:56 UTC",
    "table": [
     [
      1,
@@ -5892,7 +5906,7 @@
      ]
     }
    ],
-   "results_updated": "fetched Thursday 17 September 2026, 11:15 UTC",
+   "results_updated": "fetched Thursday 17 September 2026, 23:56 UTC",
    "scorers": [
     {
      "p": "Younes Ebnoutalib",
@@ -5965,7 +5979,7 @@
      "pm": 3
     }
    ],
-   "scorers_updated": "fetched Thursday 17 September 2026, 11:15 UTC",
+   "scorers_updated": "fetched Thursday 17 September 2026, 23:56 UTC",
    "upcoming": [
     {
      "d": "2026-09-18 18:30",
@@ -6040,7 +6054,7 @@
      "mw": 5
     }
    ],
-   "upcoming_updated": "fetched Thursday 17 September 2026, 11:15 UTC"
+   "upcoming_updated": "fetched Thursday 17 September 2026, 23:56 UTC"
   },
   "serie-a": {
    "table": [
@@ -6285,7 +6299,7 @@
      0
     ]
    ],
-   "table_updated": "fetched Thursday 17 September 2026, 11:14 UTC",
+   "table_updated": "fetched Thursday 17 September 2026, 23:56 UTC",
    "results": [
     {
      "mw": 1,
@@ -6588,7 +6602,7 @@
      ]
     }
    ],
-   "results_updated": "fetched Thursday 17 September 2026, 11:14 UTC",
+   "results_updated": "fetched Thursday 17 September 2026, 23:56 UTC",
    "scorers": [
     {
      "p": "Donyell Malen",
@@ -6661,7 +6675,7 @@
      "pm": 4
     }
    ],
-   "scorers_updated": "fetched Thursday 17 September 2026, 11:15 UTC",
+   "scorers_updated": "fetched Thursday 17 September 2026, 23:56 UTC",
    "upcoming": [
     {
      "d": "2026-09-18 18:45",
@@ -6736,7 +6750,7 @@
      "mw": 6
     }
    ],
-   "upcoming_updated": "fetched Thursday 17 September 2026, 11:14 UTC"
+   "upcoming_updated": "fetched Thursday 17 September 2026, 23:56 UTC"
   },
   "ligue-1": {
    "table": [
@@ -6957,7 +6971,7 @@
      2
     ]
    ],
-   "table_updated": "fetched Thursday 17 September 2026, 11:15 UTC",
+   "table_updated": "fetched Thursday 17 September 2026, 23:56 UTC",
    "results": [
     {
      "mw": 1,
@@ -7232,7 +7246,7 @@
      ]
     }
    ],
-   "results_updated": "fetched Thursday 17 September 2026, 11:15 UTC",
+   "results_updated": "fetched Thursday 17 September 2026, 23:56 UTC",
    "scorers": [
     {
      "p": "Amine Gouiri",
@@ -7305,7 +7319,7 @@
      "pm": 4
     }
    ],
-   "scorers_updated": "fetched Thursday 17 September 2026, 11:15 UTC",
+   "scorers_updated": "fetched Thursday 17 September 2026, 23:57 UTC",
    "upcoming": [
     {
      "d": "2026-09-18 18:45",
@@ -7380,7 +7394,7 @@
      "mw": 6
     }
    ],
-   "upcoming_updated": "fetched Thursday 17 September 2026, 11:15 UTC"
+   "upcoming_updated": "fetched Thursday 17 September 2026, 23:57 UTC"
   },
   "champions-league": {
    "table": [
@@ -7817,7 +7831,7 @@
      0
     ]
    ],
-   "table_updated": "fetched Thursday 17 September 2026, 11:15 UTC",
+   "table_updated": "fetched Thursday 17 September 2026, 23:57 UTC",
    "results": [
     {
      "mw": 1,
@@ -7951,7 +7965,7 @@
      ]
     }
    ],
-   "results_updated": "fetched Thursday 17 September 2026, 11:15 UTC",
+   "results_updated": "fetched Thursday 17 September 2026, 23:57 UTC",
    "upcoming": [
     {
      "d": "2026-10-13 16:45",
@@ -8026,7 +8040,7 @@
      "mw": 2
     }
    ],
-   "upcoming_updated": "fetched Thursday 17 September 2026, 11:16 UTC",
+   "upcoming_updated": "fetched Thursday 17 September 2026, 23:57 UTC",
    "scorers": [
     {
      "p": "Ermedin Demirovic",
@@ -8099,7 +8113,7 @@
      "pm": 1
     }
    ],
-   "scorers_updated": "fetched Thursday 17 September 2026, 11:16 UTC"
+   "scorers_updated": "fetched Thursday 17 September 2026, 23:57 UTC"
   }
  }
 }
