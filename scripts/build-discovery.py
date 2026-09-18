@@ -183,7 +183,13 @@ def build() -> None:
     news += "\n</urlset>\n"
     (ROOT / "news-sitemap.xml").write_text(news, encoding="utf-8")
 
-    feed_pages = [page for page in pages if page["article"] and page["published"]]
+    # The feed is the writers-property feed (its channel title says so).
+    # When this build pass used the routed allowlist, the full site is in
+    # `pages`, so restrict membership to /writers/ routes; the writers-only
+    # v24 allowlist is already exactly that set. Same feed in every build
+    # context (ritual rebuild vs CI/Render checkout) - run 336 drift fix.
+    feed_pages = [page for page in pages if page["article"] and page["published"]
+                  and (not _routed_tree or page["route"].startswith("/writers/"))]
     # Total order (date, then url): without the url tiebreak, same-day
     # items sorted by input order, which differed between a full ritual
     # rebuild and CI's npm-build-only regeneration -> unstable feed.
