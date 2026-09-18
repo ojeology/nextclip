@@ -184,7 +184,10 @@ def build() -> None:
     (ROOT / "news-sitemap.xml").write_text(news, encoding="utf-8")
 
     feed_pages = [page for page in pages if page["article"] and page["published"]]
-    feed_pages.sort(key=lambda page: page["published"], reverse=True)
+    # Total order (date, then url): without the url tiebreak, same-day
+    # items sorted by input order, which differed between a full ritual
+    # rebuild and CI's npm-build-only regeneration -> unstable feed.
+    feed_pages.sort(key=lambda page: (page["published"], page["url"]), reverse=True)
     rss = '<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel>\n'
     rss += f"  <title>BRYME — writing opportunities, guides and verification</title><link>{SITE}/</link>"
     rss += "<description>Legitimate paid-writing opportunities, practical guides and BRYME's firsthand verification record.</description>"
