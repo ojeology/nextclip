@@ -38,8 +38,23 @@ jobs:
       # scheduled between 2026-09-18 and 2026-12-31, and lastmod alone broke it
       # daily. Production deploys do not set this, so the live site stays
       # date-fresh; only CI needs the pin, to compare like with like.
-      - name: Pin the build date to the commit
-        run: echo "SOURCE_DATE_EPOCH=$(git log -1 --format=%ct)" >> "$GITHUB_ENV"
+      # Pin the build date to the tree's OWN date of record, not the commit
+      # timestamp. The generators derive the deadline->closed flips, the
+      # "%B %Y" edition line, the "Counts verified (last: ...)" stamp and
+      # every sitemap <lastmod> from the current date. The sports data agent
+      # builds on wall clock and commits ~20 minutes later; when the run
+      # crosses midnight UTC (the 2026-09-18 00:15 commit did), a ct pin
+      # diffs hundreds of date-only lines and skips audit + npm test. The
+      # committed root sitemap's <lastmod> is the tree's date of record;
+      # fallback is the commit's own date. Production deploys set no pin,
+      # so the live site stays date-fresh; only CI pins, to compare like
+      # with like.
+      - name: Pin the build date to the tree
+        run: |
+          D=$(git show HEAD:public/sitemap.xml | grep -oE '<lastmod>[0-9]{4}-[0-9]{2}-[0-9]{2}' | head -1 | sed 's/<lastmod>//')
+          [ -n "$D" ] || D=$(git log -1 --format=%cd --date=short)
+          echo "pinned build date: $D"
+          echo "SOURCE_DATE_EPOCH=$(date -u -d "$D" +%s)" >> "$GITHUB_ENV"
       - run: npm run build
       - name: Confirm deterministic output
         run: git diff --exit-code

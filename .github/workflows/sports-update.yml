@@ -40,6 +40,17 @@ jobs:
           FOOTBALL_DATA_API_KEY: ${{ secrets.FOOTBALL_DATA_API_KEY }}
         run: python3 scripts/sports_update_agent.py
 
+      # Pin the build date once for the whole rebuild: fetch, build-ecosystem
+      # and npm run build together can cross midnight UTC (the 2026-09-17
+      # 22:00 run committed at 00:15 with the source tree stamped the
+      # previous day and public/ stamped the next - an internally mixed tree
+      # that no single-date rebuild can reproduce, which failed the quality
+      # gate's determinism check and skipped npm test). With the pin every
+      # build step stamps the same UTC date, so the committed tree is always
+      # reproducible by the gate.
+      - name: Pin the build date for this run
+        run: echo "SOURCE_DATE_EPOCH=$(date -u -d "$(date -u +%Y-%m-%d)" +%s)" >> "$GITHUB_ENV"
+
       - name: Rebuild site if data changed
         id: build
         run: |
