@@ -1,4 +1,6 @@
-/* BRYME static display unit v1 (19 Sep 2026, owner file bryme-ad-scripts.md §1).
+/* BRYME static display unit v2 (19 Sep: re-enabled alone - the two-unit
+   deploy broke real-visitor clicks, Social Bar stays OFF as prime suspect.
+   This unit is an in-flow box: structurally cannot cover buttons.)
    Owner-confirmed Adsterra 300x250 banner (key 51fc16f82ddc690721deee07bcd8bccd).
    Placement: bottom of page content, just above the footer - directly above the
    Native Banner mounted by ad-slot.js. Rules from the owner's brief: standard
