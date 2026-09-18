@@ -25,6 +25,8 @@ import shutil
 import sys
 from pathlib import Path
 
+import bryme_config as cfg  # batch 15: canonical origin single source
+
 ROOT = Path(__file__).resolve().parents[1]
 PROPS = ["sports", "entertainment", "tech", "fitness", "home"]
 SITEMAP_PROPS = ["sports", "entertainment", "tech", "fitness", "home"]  # live, indexable properties only
@@ -37,7 +39,7 @@ KEEP_AT_ROOT_FILES = {"robots.txt", "_redirects", "favicon.ico", "package.json",
 import fnmatch
 VERIF = {p.name for p in ROOT.glob("google*.html")} | {p.name for p in ROOT.glob("yandex*.html")} | {p.name for p in ROOT.glob("*.txt") if p.name.startswith("17")}
 
-ORIGIN = "https://bryme.onrender.com"
+ORIGIN = cfg.site_url()  # batch 15: SITE_URL env > site.config.json (was hardcoded)
 PROP_PREFIXES = tuple(f"/{x}" for x in PROPS) + ("/writers", "/assets")
 
 ATTR_RE = re.compile(r'(\s(?:href|src|action|content)=\x22)(/(?!assets/|writers|sports|entertainment|tech|fitness|home)([^\x22]*))(\x22)')
@@ -235,7 +237,7 @@ def main() -> int:
                 '<title>' + _d.name + ' moved | THE BRYME</title>'
                 '<meta name="robots" content="noindex,follow">'
                 '<meta http-equiv="refresh" content="0;url=' + _dest + '">'
-                '<link rel="canonical" href="https://bryme.onrender.com' + _dest + '"></head>'
+                '<link rel="canonical" href="' + ORIGIN + _dest + '"></head>'
                 '<body><p>This page moved. Continue to <a href="' + _dest + '">the current page</a>.</p></body></html>',
                 encoding="utf-8")
             _fw_count += 1
@@ -251,7 +253,7 @@ def main() -> int:
             '<title>The shelves moved | THE BRYME</title>'
             '<meta name="robots" content="noindex,follow">'
             '<meta http-equiv="refresh" content="0;url=/entertainment/">'
-            '<link rel="canonical" href="https://bryme.onrender.com/entertainment/"></head>'
+            '<link rel="canonical" href="' + ORIGIN + '/entertainment/"></head>'
             '<body><p>The shelves now live at the desk home. Continue to <a href="/entertainment/">the shelves</a>.</p></body></html>',
             encoding="utf-8")
         print("browse forward: /entertainment/browse/ -> /entertainment/")

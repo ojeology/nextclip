@@ -21,6 +21,9 @@ import hashlib
 import re
 import sys
 from pathlib import Path
+from urllib.parse import urlparse
+
+import bryme_config as cfg  # batch 15: OG footer domain follows the canonical origin
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "assets" / "og"
@@ -93,7 +96,7 @@ def card(path: Path, title: str, eyebrow: str) -> None:
             break
     # footer — domain left, tagline right, hairline above
     d.line([72, H - 116, W - 72, H - 116], fill=HAIRLINE, width=2)
-    d.text((72, H - 94), "bryme.onrender.com",
+    d.text((72, H - 94), urlparse(cfg.site_url()).netloc,
            font=ImageFont.truetype(FONT_BOLD, 27), fill=INK)
     tag = "For writers, about writing."
     tag_f = ImageFont.truetype(FONT_REG, 25)

@@ -59,10 +59,13 @@ import shutil
 import sys
 from pathlib import Path
 
+import bryme_config as cfg  # batch 15: canonical origin single source
+
 ROOT = Path(__file__).resolve().parent.parent
 PUBLIC = ROOT / "public"
 RENDER_YAML = ROOT / "render.yaml"
 ALLOWLIST = ROOT / "content" / "index-allowlist.routed.json"
+SITE = cfg.site_url()  # batch 15
 
 RULE_RE = re.compile(
     r"\{\s*type:\s*redirect,\s*source:\s*(?P<src>[^,]+?),\s*destination:\s*(?P<dst>[^}]+?)\s*\}"
@@ -90,7 +93,7 @@ def stub_html(dest: str, label: str) -> str:
         "<title>" + label + " moved | THE BRYME</title>"
         '<meta name="robots" content="noindex,follow">'
         '<meta http-equiv="refresh" content="0;url=' + dest + '">'
-        '<link rel="canonical" href="https://bryme.onrender.com' + dest + '"></head>'
+        '<link rel="canonical" href="' + SITE + dest + '"></head>'
         '<body><p>This page moved. Continue to <a href="' + dest + '">the current page</a>.</p></body></html>'
     )
 

@@ -1,6 +1,9 @@
 """Generate the house social card (1200x630) - batch 31, 11 Sep 2026."""
 from PIL import Image, ImageDraw, ImageFont
 import os
+from urllib.parse import urlparse
+
+import bryme_config as cfg  # batch 15
 
 W, H = 1200, 630
 img = Image.new("RGB", (W, H), "#101a2b")
@@ -34,6 +37,6 @@ for name, color in cols:
     d.text((x + 18, y + 12), name, font=f_desk, fill="#f5f1e8")
     x += w + 62
 
-d.text((80, H - 60), "bryme.onrender.com", font=font(24), fill="#8a94a6")
+d.text((80, H - 60), urlparse(cfg.site_url()).netloc, font=font(24), fill="#8a94a6")
 img.save("public/assets/og.png", optimize=True)
 print("og.png written:", os.path.getsize("public/assets/og.png"), "bytes")

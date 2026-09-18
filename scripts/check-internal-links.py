@@ -18,9 +18,11 @@ import sys
 from pathlib import Path
 from urllib.parse import unquote, urlparse
 
+import bryme_config as cfg  # batch 15
+
 ROOT = Path(__file__).resolve().parent.parent
 PUBLIC = ROOT / "public"
-CANONICAL_HOST = "bryme.onrender.com"
+CANONICAL_HOST = urlparse(cfg.site_url()).netloc  # batch 15
 
 HREF = re.compile(r"""href=["']([^"']+)["']""")
 

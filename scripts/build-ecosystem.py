@@ -27,6 +27,8 @@ import os
 import sys
 import re
 from pathlib import Path
+
+import bryme_config as sitecfg  # batch 15: origin fallback follows site.config.json
 from xml.sax.saxutils import escape as xesc
 from title_budget import budget_title  # H3 batch 7: SERP title budget (<=60 chars)
 
@@ -36,7 +38,8 @@ OUT = ROOT / "ecosystem"
 CFG = json.loads((ROOT / "ecosystem" / "config.json").read_text(encoding="utf-8"))
 DOMAIN = os.environ.get("PRODUCTION_DOMAIN") or CFG["domain"]
 MODE = os.environ.get("ROUTING_MODE") or CFG.get("mode", "path")
-ORIGIN = os.environ.get("ORIGIN") or CFG.get("origin", "https://bryme.onrender.com")
+ORIGIN = os.environ.get("ORIGIN") or CFG.get("origin") or sitecfg.site_url()
+ORIGIN_HOST = ORIGIN.split("//", 1)[-1].rstrip("/")  # batch 15: display host
 TODAY = "2026-09-09"
 
 # ---- AdSense rail (batch 19): driven by site.config.json "adsense" block. ----
@@ -722,7 +725,7 @@ def foot(pub, extra=""):
     return f"""<footer class="foot"><div class="wrap foot-in">
 <div>© 2026 THE BRYME — {PUB_NAME[pub] if pub != 'hub' else 'the BRYME publications'}.</div>
 <div><a href="{'/about/' if pub == 'hub' else '/' + pub + '/about/'}">About</a> · <a href="/{'writers' if pub == 'hub' else pub}/privacy/">Privacy</a> · <a href="/{'writers' if pub == 'hub' else pub}/contact/">Contact</a>{x}</div>
-<div><a href="{ORIGIN}/">bryme.onrender.com</a></div>
+<div><a href="{ORIGIN}/">{ORIGIN_HOST}</a></div>
 </div></footer><script src="/assets/ad-slot.js?v=17" defer></script><script src="/assets/monetag.js?v=4" defer></script>"""
 
 def write_placeholder(key, name, tagline, identity, planned):
@@ -1396,7 +1399,7 @@ def entertainment_pages():
     def _nx_movie_ld(m):
         # H4 (audit 2026-09-16): Movie structured data, built only from fields the desk keeps.
         ld = {"@context": "https://schema.org", "@type": "Movie", "name": m["title"],
-              "url": "https://bryme.onrender.com/entertainment/movie/" + m["slug"] + "/",
+              "url": ORIGIN + "/entertainment/movie/" + m["slug"] + "/",
               "description": (m.get("description") or m.get("teaser") or "")[:300]}
         if m.get("year"):
             ld["datePublished"] = str(m["year"])
@@ -4759,7 +4762,7 @@ def main() -> None:
         (_d / "index.html").write_text(
             '<!doctype html><html lang="en"><head><meta charset="utf-8">'
             '<meta name="robots" content="noindex,follow">'
-            '<link rel="canonical" href="https://bryme.onrender.com/entertainment/movie/' + _new + '/">'
+            '<link rel="canonical" href="' + ORIGIN + '/entertainment/movie/' + _new + '/">'
             '<meta http-equiv="refresh" content="0; url=/entertainment/movie/' + _new + '/">'
             '<title>Moved: ' + _t + ' | BRYME</title></head>'
             '<body><p>This film entry was merged into <a href="/entertainment/movie/' + _new + '/">'
