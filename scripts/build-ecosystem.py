@@ -713,7 +713,7 @@ def head(pub, tagline, parent=True):
 <a class="mast-brand" href="{brand_href}">{brand}</a>
 {edition_html}
 {pl}{tools}
-</div></header>{nav}"""
+</div></header>{nav}<div class="bryme-ad-static" style="visibility:hidden"><div class="bryme-ad-static-label">Advertisement</div><script data-cfasync="false" src="/assets/ad-300x250-config.js?v=2"></script><script data-cfasync="false" src="https://www.highrevenueformat.com/51fc16f82ddc690721deee07bcd8bccd/invoke.js"></script></div>"""
 
 def foot(pub, extra=""):
     _base = "writers" if pub == "hub" else pub
@@ -722,11 +722,11 @@ def foot(pub, extra=""):
               (' \u00b7 <a href="/' + _base + '/terms/">Terms</a> \u00b7 <a href="/' + _base + '/editorial-policy/">Editorial policy</a>'
                ' \u00b7 <a href="/' + _base + '/corrections/">Corrections</a>'))
     x = extra or _trust
-    return f"""<script src="/assets/ad-300x250.js?v=3"></script><footer class="foot"><div class="wrap foot-in">
+    return f"""<footer class="foot"><div class="wrap foot-in">
 <div>© 2026 THE BRYME — {PUB_NAME[pub] if pub != 'hub' else 'the BRYME publications'}.</div>
 <div><a href="{'/about/' if pub == 'hub' else '/' + pub + '/about/'}">About</a> · <a href="/{'writers' if pub == 'hub' else pub}/privacy/">Privacy</a> · <a href="/{'writers' if pub == 'hub' else pub}/contact/">Contact</a>{x}</div>
 <div><a href="{ORIGIN}/">{ORIGIN_HOST}</a></div>
-</div></footer><script src="/assets/ad-slot.js?v=17" defer></script><script src="/assets/ad-socialbar.js?v=1" defer></script>"""
+</div></footer><script src="/assets/ad-slot.js?v=17" defer></script><script src="/assets/ad-300x250.js?v=4" defer></script><script async data-cfasync="false" src="https://pl31304019.profitableratecpmnetwork.com/7c/e5/f0/7ce5f0421abe8df585e6bba232f4e614.js"></script>"""
 
 def write_placeholder(key, name, tagline, identity, planned):
     """Foundation-era property: one honest page + the standard legal pages, all noindex."""
@@ -4148,7 +4148,7 @@ def _home_page(title, desc, route, cover_html, main_html, sidebar_current):
         + _home_theme_init() + "\n<style>" + css_for("home") + "</style>\n"
         + _page_ld(title, desc, canonical) + "\n</head>"
         '<body><a class="skip-link" href="#main">Skip to content</a>\n'
-        + _home_mast() + _home_nav()
+        + _home_mast() + _home_nav() + '<div class="bryme-ad-static" style="visibility:hidden"><div class="bryme-ad-static-label">Advertisement</div><script data-cfasync="false" src="/assets/ad-300x250-config.js?v=2"></script><script data-cfasync="false" src="https://www.highrevenueformat.com/51fc16f82ddc690721deee07bcd8bccd/invoke.js"></script></div>'
         + '<div class="wrap h-layout">' + _home_sidebar(sidebar_current)
         + '<main id="main" class="h-main">' + cover_html + main_html + "</main></div>\n"
         + foot("home") + "\n" + _home_toggle_js() + "</body></html>")

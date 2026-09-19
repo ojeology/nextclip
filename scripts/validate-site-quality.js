@@ -53,7 +53,7 @@ for(const file of htmlFiles){
   if(!/class=["'][^"']*(?:bottom-nav|mobile-nav)/.test(s))fail(`${r}: bottom mobile navigation missing`);
   if(/href=["']\/(?:sports|movie|movies|series|anime|article|articles|entertainment|trailers)(?:\/|["'])/i.test(s))fail(`${r}: local media link remains on main publication`);
  }
- if(/googletagmanager|google-analytics|n6wxm\.com|profitableratecpm|highperformanceformat|monetag\.com/i.test(s))fail(`${r}: tracking/advertising endpoint remains`);
+ if(/googletagmanager|google-analytics|n6wxm\.com|nap5k\.com|propellerads|monetag\.com/i.test(s))fail(`${r}: disallowed advertising endpoint remains`); /* Adsterra family owner-approved 19 Sep */
  if(wanted){
   if(norm(canonical(s))!==norm(r))fail(`${r}: canonical mismatch (${canonical(s)||"missing"})`);
   if((s.match(/<h1\b/gi)||[]).length!==1)fail(`${r}: expected exactly one H1`);
