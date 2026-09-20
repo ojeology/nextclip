@@ -1225,6 +1225,16 @@ def entertainment_pages():
         ("japanese-cinema", "Japan", "Japanese cinema", "Animation and live action on one shelf, tracked by studio and era."),
         ("indian-cinema", "India", "Indian cinema", "Many industries, many languages \u2014 the largest film output on earth."),
     ]
+    def _clip(t, limit=160):
+        t = t.strip()
+        if len(t) <= limit:
+            return t
+        cut = t[:limit]
+        dot = max(cut.rfind(". "), cut.rfind("! "), cut.rfind("? "))
+        if dot >= 60:
+            return cut[:dot + 1]
+        sp = cut.rfind(" ")
+        return (cut[:sp] if sp > 0 else cut).rstrip() + "\u2026"
     route_pages = []
     route_rows = ""
     for rslug, country, rname, lede in _ROUTES:
@@ -1242,7 +1252,7 @@ def entertainment_pages():
         cards = "".join('<li><a href="/movie/' + m["slug"] + '/"><b>' + html.escape(m["title"]) + "</b></a>"
                         + ' <span class="meta">(' + html.escape(str(m.get("year") or "")) + ") \u00b7 " + html.escape(m.get("genre") or "")
                         + ("" if not m.get("score") else " \u00b7 BRYME " + html.escape(str(m["score"])) + "/10") + "</span>"
-                        + ("<br><small>" + html.escape((m.get("teaser") or "")[:160]) + "</small>" if m.get("teaser") else "") + "</li>" for m in ms)
+                        + ("<br><small>" + html.escape(_clip(m.get("teaser") or "")) + "</small>" if m.get("teaser") else "") + "</li>" for m in ms)
         rbody = (head("entertainment", "Four industries the catalogue tracks, route by route.")
                  + '<main id="main"><div class="wrap"><section class="cover"><p class="kicker">INDUSTRY ROUTE \u00b7 ' + html.escape(country).upper()
                  + '</p><h1 class="cover-title">' + html.escape(rname) + "</h1>" + intro + '</section>'
