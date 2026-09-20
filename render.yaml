@@ -3,6 +3,11 @@ services:
     name: bryme-website
     rootDir: .
     plan: free
+    # Custom domain (blueprint-managed): Render syncs this list. If the service was
+    # NOT created from this blueprint, this line is inert and the domain must be
+    # added in dashboard Settings -> Custom Domains instead.
+    domains:
+      - thebryme.com
     # `npm run build` already runs build-routing.py and build-public-dir.py, in the
     # order that works: build-writing-first regenerates an unrouted writers tree,
     # then routing prefixes it into /writers/, then public/ is published.
