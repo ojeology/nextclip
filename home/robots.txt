@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://bryme.onrender.com/home/sitemap.xml
+Sitemap: https://thebryme.com/home/sitemap.xml

@@ -706,7 +706,7 @@ def page_wf(*, title: str, description: str, route: str, current: str, body: str
 <link rel="stylesheet" href="/assets/bryme-v2.css">
 {schema(site_graph)}
 {schema(structured)}{schema(schema_extra) if schema_extra else ""}
-</head><body>{nav(current)}<main id="main"><div class="bryme-ad-static" style="visibility:hidden"><div class="bryme-ad-static-label">Advertisement</div><script data-cfasync="false" src="/assets/ad-300x250-config.js?v=2"></script><script data-cfasync="false" src="https://www.highrevenueformat.com/51fc16f82ddc690721deee07bcd8bccd/invoke.js"></script></div>{body}</main>{mobile_nav(current)}{drawer(current)}<script src="/assets/site-nav.js" defer></script><script src="/assets/ad-slot.js?v=17" defer></script><script src="/assets/ad-300x250.js?v=4" defer></script><script async data-cfasync="false" src="https://pl31304019.profitableratecpmnetwork.com/7c/e5/f0/7ce5f0421abe8df585e6bba232f4e614.js"></script><script src="/assets/level-filter.js" defer></script><script src="/assets/purpose-finder.js" defer></script>{follow_strip()}{footer()}</body></html>'''
+</head><body>{nav(current)}<main id="main">{body}</main>{mobile_nav(current)}{drawer(current)}<script src="/assets/site-nav.js" defer></script><script src="/assets/level-filter.js" defer></script><script src="/assets/purpose-finder.js" defer></script>{follow_strip()}{footer()}</body></html>'''
 
 
 # ---------------------------------------------------------------------------

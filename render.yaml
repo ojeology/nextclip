@@ -8,6 +8,9 @@ services:
     # added in dashboard Settings -> Custom Domains instead.
     domains:
       - thebryme.com
+    # Clean-start per owner (20 Sep): the .onrender.com subdomain stops serving
+    # entirely — no redirects, the site exists at exactly one address.
+    renderSubdomainPolicy: disabled
     # `npm run build` already runs build-routing.py and build-public-dir.py, in the
     # order that works: build-writing-first regenerates an unrouted writers tree,
     # then routing prefixes it into /writers/, then public/ is published.

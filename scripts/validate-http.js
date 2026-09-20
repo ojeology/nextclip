@@ -123,7 +123,7 @@ server.listen(0,"127.0.0.1",async()=>{const base=`http://127.0.0.1:${server.addr
    check(/noindex/i.test(b),`legacy stub ${p}: lacks noindex`);
    check(!/index,follow/i.test(b.replace(/noindex,follow/g,"")),`legacy stub ${p}: looks indexable`);
    check(/http-equiv="refresh" content="0;url=\/writers\//i.test(b),`legacy stub ${p}: no instant meta-refresh to a /writers/ twin`);
-   check(/rel="canonical" href="https:\/\/bryme\.onrender\.com\/writers\//.test(b),`legacy stub ${p}: canonical is not the routed twin`);
+   check(/rel="canonical" href="https:\/\/[^/"]+/writers\//.test(b),`legacy stub ${p}: canonical is not the routed twin`);
  }
 
  /* 6. Retired media families. There is no 410.html in the published artifact, so

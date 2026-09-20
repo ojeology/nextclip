@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://bryme.onrender.com/sports/sitemap.xml
+Sitemap: https://thebryme.com/sports/sitemap.xml

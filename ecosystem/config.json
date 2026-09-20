@@ -1,7 +1,7 @@
 {
-  "domain": "bryme.onrender.com",
+  "domain": "thebryme.com",
   "mode": "path",
-  "origin": "https://bryme.onrender.com",
+  "origin": "https://thebryme.com",
   "subdomains": {
     "writers": "writers",
     "sports": "sports",
