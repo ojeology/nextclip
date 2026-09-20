@@ -1,13 +1,13 @@
 {
  "_comment": "Written by scripts/sports_update_agent.py - source: football-data.org v4. The desk never publishes unverified data.",
- "generated": "2026-09-19 23:59 UTC",
+ "generated": "2026-09-20 10:57 UTC",
  "source": "football-data.org v4",
  "leagues": {
   "premier-league": {
    "name": "Premier League",
-   "table_updated": "fetched Saturday 19 September 2026, 23:54 UTC",
-   "results_updated": "fetched Saturday 19 September 2026, 23:55 UTC",
-   "scorers_updated": "fetched Saturday 19 September 2026, 23:55 UTC",
+   "table_updated": "fetched Sunday 20 September 2026, 10:53 UTC",
+   "results_updated": "fetched Sunday 20 September 2026, 10:53 UTC",
+   "scorers_updated": "fetched Sunday 20 September 2026, 10:53 UTC",
    "scorers_source": "The Guardian (10 Sep 2026) cross-checked with worldfootball.net",
    "table": [
     [
@@ -746,7 +746,7 @@
      "mw": 6
     }
    ],
-   "upcoming_updated": "fetched Saturday 19 September 2026, 23:55 UTC",
+   "upcoming_updated": "fetched Sunday 20 September 2026, 10:53 UTC",
    "squads": {
     "Manchester City": {
      "id": 65,
@@ -4780,12 +4780,12 @@
      ]
     }
    },
-   "squads_updated": "fetched Saturday 19 September 2026, 23:59 UTC (20/20 clubs listed)"
+   "squads_updated": "fetched Sunday 20 September 2026, 10:57 UTC (20/20 clubs listed)"
   },
   "la-liga": {
    "name": "La Liga",
-   "table_updated": "fetched Saturday 19 September 2026, 23:55 UTC",
-   "scorers_updated": "fetched Saturday 19 September 2026, 23:55 UTC",
+   "table_updated": "fetched Sunday 20 September 2026, 10:53 UTC",
+   "scorers_updated": "fetched Sunday 20 September 2026, 10:53 UTC",
    "table": [
     [
      1,
@@ -5435,7 +5435,7 @@
      ]
     }
    ],
-   "results_updated": "fetched Saturday 19 September 2026, 23:55 UTC",
+   "results_updated": "fetched Sunday 20 September 2026, 10:53 UTC",
    "upcoming": [
     {
      "d": "2026-09-20 12:00",
@@ -5510,11 +5510,11 @@
      "mw": 8
     }
    ],
-   "upcoming_updated": "fetched Saturday 19 September 2026, 23:55 UTC"
+   "upcoming_updated": "fetched Sunday 20 September 2026, 10:53 UTC"
   },
   "bundesliga": {
    "name": "Bundesliga",
-   "table_updated": "fetched Saturday 19 September 2026, 23:56 UTC",
+   "table_updated": "fetched Sunday 20 September 2026, 10:54 UTC",
    "table": [
     [
      1,
@@ -5986,7 +5986,7 @@
      ]
     }
    ],
-   "results_updated": "fetched Saturday 19 September 2026, 23:56 UTC",
+   "results_updated": "fetched Sunday 20 September 2026, 10:54 UTC",
    "scorers": [
     {
      "p": "Michael Olise",
@@ -6059,7 +6059,7 @@
      "pm": 4
     }
    ],
-   "scorers_updated": "fetched Saturday 19 September 2026, 23:56 UTC",
+   "scorers_updated": "fetched Sunday 20 September 2026, 10:54 UTC",
    "upcoming": [
     {
      "d": "2026-09-20 13:30",
@@ -6134,7 +6134,7 @@
      "mw": 5
     }
    ],
-   "upcoming_updated": "fetched Saturday 19 September 2026, 23:56 UTC"
+   "upcoming_updated": "fetched Sunday 20 September 2026, 10:54 UTC"
   },
   "serie-a": {
    "table": [
@@ -6236,6 +6236,18 @@
     ],
     [
      9,
+     "SSC Napoli",
+     5,
+     2,
+     1,
+     2,
+     6,
+     5,
+     1,
+     7
+    ],
+    [
+     10,
      "US Sassuolo Calcio",
      5,
      2,
@@ -6245,18 +6257,6 @@
      9,
      0,
      7
-    ],
-    [
-     10,
-     "SSC Napoli",
-     4,
-     2,
-     0,
-     2,
-     6,
-     5,
-     1,
-     6
     ],
     [
      11,
@@ -6321,14 +6321,14 @@
     [
      16,
      "ACF Fiorentina",
-     4,
+     5,
      1,
-     0,
+     1,
      3,
      5,
      11,
      -6,
-     3
+     4
     ],
     [
      17,
@@ -6379,7 +6379,7 @@
      0
     ]
    ],
-   "table_updated": "fetched Saturday 19 September 2026, 23:55 UTC",
+   "table_updated": "fetched Sunday 20 September 2026, 10:53 UTC",
    "results": [
     {
      "mw": 1,
@@ -6722,7 +6722,7 @@
      ]
     }
    ],
-   "results_updated": "fetched Saturday 19 September 2026, 23:55 UTC",
+   "results_updated": "fetched Sunday 20 September 2026, 10:53 UTC",
    "scorers": [
     {
      "p": "Donyell Malen",
@@ -6778,7 +6778,7 @@
      "c": "ACF Fiorentina",
      "g": 3,
      "a": null,
-     "pm": 4
+     "pm": 5
     },
     {
      "p": "Hassane Kamara",
@@ -6795,14 +6795,8 @@
      "pm": 4
     }
    ],
-   "scorers_updated": "fetched Saturday 19 September 2026, 23:56 UTC",
+   "scorers_updated": "fetched Sunday 20 September 2026, 10:54 UTC",
    "upcoming": [
-    {
-     "d": "2026-09-20 10:30",
-     "h": "ACF Fiorentina",
-     "a": "SSC Napoli",
-     "mw": 5
-    },
     {
      "d": "2026-09-20 13:00",
      "h": "Frosinone Calcio",
@@ -6868,9 +6862,15 @@
      "h": "US Sassuolo Calcio",
      "a": "AC Milan",
      "mw": 6
+    },
+    {
+     "d": "2026-10-11 18:45",
+     "h": "Cagliari Calcio",
+     "a": "Juventus FC",
+     "mw": 6
     }
    ],
-   "upcoming_updated": "fetched Saturday 19 September 2026, 23:55 UTC"
+   "upcoming_updated": "fetched Sunday 20 September 2026, 10:53 UTC"
   },
   "ligue-1": {
    "table": [
@@ -7091,7 +7091,7 @@
      2
     ]
    ],
-   "table_updated": "fetched Saturday 19 September 2026, 23:56 UTC",
+   "table_updated": "fetched Sunday 20 September 2026, 10:54 UTC",
    "results": [
     {
      "mw": 1,
@@ -7413,7 +7413,7 @@
      ]
     }
    ],
-   "results_updated": "fetched Saturday 19 September 2026, 23:56 UTC",
+   "results_updated": "fetched Sunday 20 September 2026, 10:54 UTC",
    "scorers": [
     {
      "p": "Amine Gouiri",
@@ -7486,7 +7486,7 @@
      "pm": 5
     }
    ],
-   "scorers_updated": "fetched Saturday 19 September 2026, 23:56 UTC",
+   "scorers_updated": "fetched Sunday 20 September 2026, 10:54 UTC",
    "upcoming": [
     {
      "d": "2026-09-20 13:00",
@@ -7561,7 +7561,7 @@
      "mw": 6
     }
    ],
-   "upcoming_updated": "fetched Saturday 19 September 2026, 23:56 UTC"
+   "upcoming_updated": "fetched Sunday 20 September 2026, 10:54 UTC"
   },
   "champions-league": {
    "table": [
@@ -7998,7 +7998,7 @@
      0
     ]
    ],
-   "table_updated": "fetched Saturday 19 September 2026, 23:56 UTC",
+   "table_updated": "fetched Sunday 20 September 2026, 10:54 UTC",
    "results": [
     {
      "mw": 1,
@@ -8132,7 +8132,7 @@
      ]
     }
    ],
-   "results_updated": "fetched Saturday 19 September 2026, 23:56 UTC",
+   "results_updated": "fetched Sunday 20 September 2026, 10:54 UTC",
    "upcoming": [
     {
      "d": "2026-10-13 16:45",
@@ -8207,7 +8207,7 @@
      "mw": 2
     }
    ],
-   "upcoming_updated": "fetched Saturday 19 September 2026, 23:57 UTC",
+   "upcoming_updated": "fetched Sunday 20 September 2026, 10:55 UTC",
    "scorers": [
     {
      "p": "Ermedin Demirovic",
@@ -8280,7 +8280,7 @@
      "pm": 1
     }
    ],
-   "scorers_updated": "fetched Saturday 19 September 2026, 23:57 UTC"
+   "scorers_updated": "fetched Sunday 20 September 2026, 10:55 UTC"
   }
  }
 }
