@@ -188,7 +188,8 @@ def main() -> int:
     # 4. global robots.txt: five sitemaps, no indexing work (STEP 8: untouched)
     (ROOT / "robots.txt").write_text(
         "User-agent: *\nAllow: /\nDisallow: /scripts/\nDisallow: /content/\n"
-        "Disallow: /docs/\nDisallow: /server/\nDisallow: /ecosystem/\n\n"
+        "Disallow: /docs/\nDisallow: /server/\nDisallow: /ecosystem/\n"
+        "Disallow: /entertainment/_recovered/\n\n"
         f"Sitemap: {ORIGIN}/sitemap.xml\nSitemap: {ORIGIN}/writers/sitemap.xml\n" +
         "".join(f"Sitemap: {ORIGIN}/{x}/sitemap.xml\n" for x in SITEMAP_PROPS), encoding="utf-8")
 

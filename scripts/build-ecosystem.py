@@ -133,6 +133,13 @@ h1.cover-title{font-family:var(--serif);font-weight:700;letter-spacing:-.018em;f
 .pub-card p{font-size:14.5px;line-height:1.6;color:var(--muted);margin:0 0 18px}
 .pub-card .btn{margin-top:auto;align-self:flex-start}
 .pub-card.live{box-shadow:var(--shadow)}
+.pub-card .pc-art{width:100%%;aspect-ratio:16/9;object-fit:cover;display:block;border-bottom:1px solid var(--line-strong);margin:0 0 18px}
+.picks{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:6px}
+.pick{display:block;border:1px solid var(--line-strong);background:var(--sheet)}
+.pick img{width:100%%;aspect-ratio:16/9;object-fit:cover;display:block}
+.pick b{display:block;font:600 13px var(--sans);color:var(--ink);padding:9px 11px 2px}
+.pick span{display:block;font:11px var(--sans);color:var(--dim);padding:0 11px 10px}
+@media(max-width:820px){.picks{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .pub-card.soon{opacity:.92}
 .soon-tag{font:800 10px var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--muted);border:1px dashed var(--line-strong);align-self:flex-start;padding:8px 12px;margin-top:auto}
 @media(max-width:820px){.cards{grid-template-columns:1fr}.mast-tag{display:none}}
@@ -899,6 +906,9 @@ def hub_pages():
                     if f.parent.name not in _legal and "tools" not in f.parts) if _wr.exists() else 0
     _n_tools = len([d for d in (_wr / "tools").iterdir() if d.is_dir()]) if (_wr / "tools").exists() else 0
     _stamp = " Counts verified at every build (last: " + _dt.date.today().isoformat() + ")."
+    _DESK_ART = {"writers": "desk-writers.jpg", "sports": "desk-sport.jpg",
+                 "entertainment": "desk-entertainment.jpg", "tech": "desk-tech.jpg",
+                 "fitness": "desk-fitness.jpg", "home": "desk-home.jpg"}
     cards = ""
     for key, name, tag, desc, state in HUB_PUBS + WORKSHOP_PUBS:
         if key == "writers" and _n_guides:
@@ -913,13 +923,29 @@ def hub_pages():
         else:
             cta = '<span class="soon-tag">In build — opens soon</span>'
             cls = "pub-card soon"
-        cards += f'<article class="{cls}" style="--pc:{FAMILY[key]["brand"] if key!="hub" else "#1e3a5f"}"><p class="pc-kicker">{kicker} &#183; ACTIVE</p><h3>{name}</h3><p>{desc}</p>{cta}</article>'
+        _art = _DESK_ART.get(key)
+        _art_img = (f'<img class="pc-art" loading="lazy" width="1024" height="572" src="/assets/desk/{_art}" alt="">' if _art else "")
+        cards += f'<article class="{cls}" style="--pc:{FAMILY[key]["brand"] if key!="hub" else "#1e3a5f"}">{_art_img}<p class="pc-kicker">{kicker} &#183; ACTIVE</p><h3>{name}</h3><p>{desc}</p>{cta}</article>'
+    try:
+        import entertainment_platform_data as _hp
+        _pk = sorted([x for x in _hp.MOVIES if x.get("yt") and x.get("score") is not None],
+                     key=lambda x: (-int(x["score"]), x["slug"]))[:4]
+        _picks = ('<section class="section"><div class="section-head"><p class="kicker">From the entertainment desk</p>'
+                  '<h2>Now showing &mdash; four the desk stands behind</h2></div><div class="picks">'
+                  + "".join('<a class="pick" href="/entertainment/movie/' + q["slug"] + '/">'
+                             '<img loading="lazy" width="160" height="120" src="https://i.ytimg.com/vi/' + q["yt"] + '/hqdefault.jpg" alt="">'
+                             '<b>' + html.escape(q["title"]) + '</b><span>' + str(q.get("year") or "") + ' \u00b7 score ' + str(q["score"]) + '/10</span></a>'
+                             for q in _pk)
+                  + '</div><p class="lede" style="margin-top:14px">Every card carries the official trailer, cast and credits, and a score with a published method - '
+                    '<a href="/entertainment/scoring/">here is the method</a>. Then browse <a href="/entertainment/">the full catalogue</a>.</p></section>')
+    except Exception:
+        _picks = ""
     body = f"""{head("hub", "Six publications. One house standard.", parent=False)}
 <main id="main"><div class="wrap">
 <section class="cover"><p class="kicker">A family of independent publications</p>
 <h1 class="cover-title">THE BRYME</h1>
 <p class="cover-dek">BRYME is a small ecosystem of specialist publications, each with its own focus and its own standards, held to one house rule: research before publishing, and say exactly what you know. Pick a desk.</p></section>
-<section class="section"><div class="section-head"><p class="kicker">The publications</p><h2>Choose your desk</h2></div>
+{_picks}<section class="section"><div class="section-head"><p class="kicker">The publications</p><h2>Choose your desk</h2></div>
 <div class="cards">{cards}</div></section>
 <section class="section alt"><div class="section-head"><p class="kicker">The house</p><h2>One standard, six voices.</h2></div>
 <p class="lede">Every BRYME publication is edited by the same desk, run on the same discipline — dates on time-sensitive claims, corrections in the open, no fabricated experience, no pages built to game a search engine — and none of them share a navigation bar. When you enter one, you are in that world.</p>
@@ -1494,8 +1520,8 @@ def entertainment_pages():
                 ("Language", m.get("language")), ("Country", m.get("country")),
                 ("Runtime", str(m.get("runtime")) if m.get("runtime") else None),
                 ("Starring", ", ".join(m.get("cast")[:5]) if m.get("cast") else None),
-                ("BRYME editorial score", (str(m["score"]) + " / 10") if m.get("score") else None)]
-        aside_html = "".join("<dt>" + k + "</dt><dd>" + html.escape(str(v)) + "</dd>" for k, v in rows if v)
+                ("BRYME editorial score", ('<a href="/entertainment/scoring/">' + str(m["score"]) + " / 10</a> \u00b7 <a href=\"/entertainment/scoring/\">method</a>") if m.get("score") else None)]
+        aside_html = "".join("<dt>" + k + "</dt><dd>" + (str(v) if str(v).startswith("<a") else html.escape(str(v))) + "</dd>" for k, v in rows if v)
         wl_html = ""
         if m.get("watch"):
             wl_html = ('<h2>Where to search</h2><div class="nx-watch"><p class="nx-watch-head">Official platform searches, labelled as searches:</p>'
@@ -1503,8 +1529,17 @@ def entertainment_pages():
         rel = _nx_related.get(m.get("genre") or "", [("how-to-pick-a-movie-tonight", "How to pick a movie tonight")])
         rel_html = ('<h2>Keep reading</h2><ul class="nx-facts">'
                     + "".join('<li><a href="/' + s + '/">' + html.escape(t) + '</a></li>' for s, t in rel[:2])
-                    + '<li><a href="/movie-calendar-2026-27/">The 2026-27 movie calendar</a></li></ul>')
+                    + '<li><a href="/movie-calendar-2026-27/">The 2026-27 movie calendar</a></li>'
+                    + '<li><a href="/entertainment/scoring/">How we score films</a></li></ul>')
         desc = html.escape(m.get("description") or m.get("teaser") or "")
+        if desc == html.escape(m.get("teaser") or ""):
+            _cr = []
+            if m.get("director"):
+                _cr.append("Directed by " + html.escape(str(m["director"])) + ".")
+            if m.get("cast"):
+                _cr.append("With " + ", ".join(html.escape(str(c)) for c in m["cast"][:3]) + ".")
+            if _cr:
+                desc = desc + " " + " ".join(_cr)
         body = (head("entertainment", "Film, TV and anime recommendations with reasons.")
             + _NX_CSS
             + _nx_movie_ld(m)
@@ -1526,18 +1561,55 @@ def entertainment_pages():
             + '</aside></div></main>' + foot("entertainment"))
         # H3 (audit 2026-09-16): SERP title budget - shortest form that fits 60 chars.
         _nx_y = str(m.get("year") or "")
-        _nx_cands = ([m["title"] + " (" + _nx_y + ") - official trailer, cast and story | BRYME Entertainment",
-                      m["title"] + " (" + _nx_y + ") - trailer and cast | BRYME",
-                      m["title"] + " (" + _nx_y + ") | BRYME"] if _nx_y else []) + [m["title"] + " | BRYME"]
+        if _nx_y and m.get("cast"):
+            _nx_cands = [m["title"] + " (" + _nx_y + ") - official trailer, cast and story | BRYME Entertainment",
+                         m["title"] + " (" + _nx_y + ") - trailer and cast | BRYME"]
+        elif _nx_y:
+            _nx_cands = [m["title"] + " (" + _nx_y + ") - trailer, story and score | BRYME",
+                         m["title"] + " (" + _nx_y + ") | BRYME"]
+        else:
+            _nx_cands = []
+        _nx_cands = _nx_cands + [m["title"] + " | BRYME"]
         _nx_ttl = next((c for c in _nx_cands if len(c) <= 60), _nx_cands[-1])
         return ("/movie/" + m["slug"] + "/", _nx_ttl,
                 (m.get("teaser") or m.get("description") or "")[:155], body)
     movie_pages = [_nx_movie_page(m) for m in _nx.MOVIES]
+    _sc_dist = {}
+    for _m0 in _nx.MOVIES:
+        _s0 = _m0.get("score")
+        if _s0 is not None:
+            _sc_dist[int(_s0)] = _sc_dist.get(int(_s0), 0) + 1
+    _sc_rows = "".join('<tr><td style="padding:5px 14px;border:1px solid var(--line-strong)">' + str(_k)
+                       + ' &middot; band</td><td style="padding:5px 14px;border:1px solid var(--line-strong)">'
+                       + str(_sc_dist[_k]) + " films</td></tr>" for _k in sorted(_sc_dist, reverse=True))
+    _sc_body = (head("entertainment", "How the BRYME film desk scores, and what a number is not.")
+        + _NX_CSS
+        + '<main id="main"><div class="nx-shell nx-body"><div class="nx-prose">'
+        + '<nav class="nx-crumb"><a href="/entertainment/">Catalogue</a> / Scoring method</nav>'
+        + '<h1>How we score films</h1>'
+        + '<p class="nx-lead">Every score on this desk is one number with a published method behind it, on a page that says who checked what and when. Here is the method - and what the number refuses to be.</p>'
+        + '<h2>The four axes</h2><p>Each film is read on four axes: <b>story and structure</b>, <b>performance and craft</b>, <b>direction and technical vision</b>, and <b>cultural weight</b> - what the work means to the people it was made by and made for. Each axis runs 0-10; the printed score is the rounded average and half-points are allowed.</p>'
+        + '<h2>What the bands mean</h2><ul class="nx-facts">'
+        + '<li><b>9-10</b> &mdash; essential. The desk would press this on anyone, genre fan or not.</li>'
+        + '<li><b>8</b> &mdash; strong and specific: excellent inside exactly what it attempts.</li>'
+        + '<li><b>7</b> &mdash; good: worth tonight if the premise or the cast pulls you in.</li>'
+        + '<li><b>5-6</b> &mdash; mixed: fun for fans of the genre, skippable if you are not one.</li>'
+        + '<li><b>4 and below</b> &mdash; honestly not for most people. We say so instead of burying it.</li></ul>'
+        + '<h2>What a score is not</h2><p>It is not an aggregate of other publications, not a popularity ranking, and not negotiable. No studio, distributor or platform sees these scores before publication; no advertising relationship has ever moved one; and none will - the site runs no ad network whose rates could be traded for placement. If the desk revises a score, the film page records the revision and its date.</p>'
+        + '<h2>The distribution, shown honestly</h2><p>Across all ' + str(sum(_sc_dist.values()))
+        + ' scored films the current spread is (every film is shelved on merit, not pushed to a flattering band):</p>'
+        + '<table style="border-collapse:collapse;margin:14px 0"><tbody>' + _sc_rows + '</tbody></table>'
+        + '<p class="nx-verified">Scores sit on film pages next to a verification date for the trailer and credits. Disagree? <a href="/corrections/">Corrections and disputes</a> is a real page.</p>'
+        + '</div><aside class="nx-aside"><dl><dt>Scale</dt><dd>0-10, half-points</dd><dt>Axes</dt>'
+        + '<dd>Story &middot; Craft &middot; Vision &middot; Weight</dd><dt>Influence</dt><dd>None. No preview scores to studios, no ads sold against placement.</dd><dt>Revisions</dt><dd>Recorded on the film page with a date.</dd></dl></aside></div></main>'
+        + foot("entertainment"))
 
     pages = [("/", "The shelves — every film the desk covers | BRYME Entertainment",
               str(len(_nx.MOVIES)) + " films with hand-verified official trailers, shelved by genre - the platform, restored and beautiful.", browse_body)]
     pages.extend(movie_pages)
     pages.extend(route_pages)
+    pages.append(("/scoring/", "How the BRYME film desk scores - the method | BRYME",
+                  "Four axes, honest bands, and the exact score distribution across the catalogue. What a BRYME score is - and what it refuses to be.", _sc_body))
     for pl in sect_pages.values():
         pages.extend(pl)
     pages.extend(arts[s] for s in shelf if s not in merged_away)
@@ -4769,7 +4841,7 @@ def main() -> None:
         '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
         f"<url><loc>https://{DOMAIN}/</loc><lastmod>{TODAY}</lastmod></url>\n"
         f"<url><loc>https://{DOMAIN}/about/</loc><lastmod>{TODAY}</lastmod></url>\n</urlset>\n", encoding="utf-8")
-    (base / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: https://{DOMAIN}/sitemap.xml\n", encoding="utf-8")
+    (base / "robots.txt").write_text(f"User-agent: *\nAllow: /\nDisallow: /entertainment/_recovered/\nSitemap: https://{DOMAIN}/sitemap.xml\n", encoding="utf-8")
     (base / "assets").mkdir(parents=True, exist_ok=True)
     (base / "assets" / "site.css").write_text(css_for("hub"), encoding="utf-8")
     _about_d = base / "about"

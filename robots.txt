@@ -5,6 +5,7 @@ Disallow: /content/
 Disallow: /docs/
 Disallow: /server/
 Disallow: /ecosystem/
+Disallow: /entertainment/_recovered/
 
 Sitemap: https://thebryme.com/sitemap.xml
 Sitemap: https://thebryme.com/writers/sitemap.xml

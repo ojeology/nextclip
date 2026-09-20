@@ -217,6 +217,7 @@ def build() -> None:
         "Disallow: /content/\n"
         "Disallow: /docs/\n"
         "Disallow: /server/\n"
+        "Disallow: /entertainment/_recovered/\n"
         "Disallow: /ecosystem/\n\n"
         f"Sitemap: {SITE}/writers/sitemap.xml\n"
         + "".join(f"Sitemap: {SITE}/{x}/sitemap.xml\n" for x in
