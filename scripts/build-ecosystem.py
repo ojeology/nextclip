@@ -1015,15 +1015,10 @@ def _trailer_facade(t):
         return ""
     yid, ytitle = tr
     return ('<div class="trailer-facade">'
-            + '<button type="button" class="trailer-play" data-yt="' + yid
-            + '" data-title="' + html.escape(ytitle) + '" '
-            + 'aria-label="Play the official trailer - loads YouTube in this page" '
-            + "style=\"background-image:url('https://i.ytimg.com/vi/" + yid + "/hqdefault.jpg')\">"
-            + '<span class="tf-badge">Play trailer</span>'
-            + '<span class="tf-src">Official trailer &middot; YouTube</span>'
-            + "</button>"
-            + '<noscript><a href="https://www.youtube.com/watch?v=' + yid
-            + '" rel="noopener">Watch the official trailer on YouTube</a></noscript></div>')
+            + '<iframe title="' + html.escape(ytitle) + '" src="https://www.youtube-nocookie.com/embed/' + yid
+            + '" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"'
+            + ' allow="accelerometer; clipboard-write; encrypted-media; picture-in-picture"'
+            + ' allowfullscreen></iframe></div>')
 
 
 _NX_LAZY_PAYLOAD = ""  # batch 12: shelf sidecar payload; set in entertainment_pages(), written after write_service()
@@ -1266,7 +1261,7 @@ def entertainment_pages():
         '.nx-trailer-frame{position:relative;max-width:860px;aspect-ratio:16/9;background:#070809;overflow:hidden;border-radius:3px}'
         '.nx-trailer-frame img{width:100%;height:100%;object-fit:cover;display:block}'
         '.nx-trailer-frame:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.45),rgba(0,0,0,.08));pointer-events:none}'
-        '.nx-trailer-frame .trailer-play{position:absolute;left:50%;top:50%;z-index:1;transform:translate(-50%,-50%);background:#fff;color:#111;border:0;border-radius:999px;padding:13px 20px;font:800 14px inherit;cursor:pointer}'
+        '.trailer-facade{position:relative;aspect-ratio:16/9;max-width:560px;background:#070809;border-radius:3px;overflow:hidden;margin:10px 0 4px}.trailer-facade iframe{position:absolute;inset:0;width:100%;height:100%;border:0}'
         '.nx-trailer-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0;z-index:2}'
         '.nx-trailer-note{font-size:12.5px;color:#9aa2ab;margin:8px 0 0;max-width:860px}'
         '.nx-body{display:grid;grid-template-columns:minmax(0,1fr) 290px;gap:40px;padding:22px 20px 54px;max-width:1180px}'
@@ -1286,7 +1281,7 @@ def entertainment_pages():
         '.nx-body{display:block;padding:18px 20px 44px}.nx-aside{border-left:0;border-top:1px solid #2c3138;padding:16px 0 0;margin-top:24px}'
         '.nx-movie-hero{padding:48px 16px 24px}.nx-movie-hero-inner{grid-template-columns:104px minmax(0,1fr);gap:14px}.nx-movie-hero .nx-poster{max-height:158px}'
         '.nx-rail{grid-auto-columns:136px}}'
-        '</style><script src="/assets/trailer-facade.js?v=2" defer></script>')
+        '</style>')
     def _nx_poster(m):
         if not m.get("yt"):
             return '<div class="nx-poster"><div class="nx-placeholder">' + html.escape(m["title"][:1]) + '</div></div>'
@@ -1299,9 +1294,10 @@ def entertainment_pages():
         if not m.get("yt"):
             return ""
         return ('<div class="nx-trailer-frame">'
-                + '<img src="https://i.ytimg.com/vi/' + m["yt"] + '/hqdefault.jpg" alt="">'
-                + '<button type="button" class="trailer-play" data-yt="' + m["yt"] + '" data-title="' + html.escape(m["title"]) + ' official trailer" aria-label="Play the official trailer - loads YouTube in this page">Play trailer</button>'
-                + '<noscript><a class="nx-trailer-note" href="https://www.youtube.com/watch?v=' + m["yt"] + '" rel="noopener">Watch the official trailer on YouTube</a></noscript></div>'
+                + '<iframe title="' + html.escape(m["title"] + " - official trailer") + '" src="https://www.youtube-nocookie.com/embed/' + m["yt"]
+                + '" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"'
+                + ' allow="accelerometer; clipboard-write; encrypted-media; picture-in-picture"'
+                + ' allowfullscreen></iframe></div>'
                 + '<p class="nx-trailer-note">Official trailer on YouTube &middot; ' + html.escape(m.get("channel") or "YouTube")
                 + " &middot; link verified " + _nx_ver + ".</p>")
     _nx_genres = {}
@@ -1418,9 +1414,11 @@ def entertainment_pages():
             ld["duration"] = "PT" + _rt.group(1) + "M"
         if m.get("yt"):
             ld["trailer"] = {"@type": "VideoObject", "name": m["title"] + " - official trailer",
+                             "description": "Official trailer for " + m["title"] + ".",
                              "url": "https://www.youtube.com/watch?v=" + m["yt"],
                              "embedUrl": "https://www.youtube-nocookie.com/embed/" + m["yt"],
-                             "thumbnailUrl": "https://i.ytimg.com/vi/" + m["yt"] + "/hqdefault.jpg"}
+                             "thumbnailUrl": "https://i.ytimg.com/vi/" + m["yt"] + "/hqdefault.jpg",
+                             "width": 1280, "height": 720}
         return '<script type="application/ld+json">' + json.dumps(ld, ensure_ascii=False) + '</script>'
 
     def _nx_movie_page(m):
