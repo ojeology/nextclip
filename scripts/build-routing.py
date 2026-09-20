@@ -282,7 +282,7 @@ def main() -> int:
     for e in ROOT.iterdir():
         if e.is_dir():
             if e.name not in EXCL_DIRS:
-                shutil.copytree(e, pub / e.name)
+                shutil.copytree(e, pub / e.name, ignore=shutil.ignore_patterns("_recovered"))
         elif e.name in MIRROR_FILES:
             shutil.copy2(e, pub / e.name)
 

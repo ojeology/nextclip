@@ -1203,6 +1203,57 @@ def entertainment_pages():
     import entertainment_platform_data as _nx
     _nx_ver = "16 September 2026"
     _nx_by_slug = {m["slug"]: m for m in _nx.MOVIES}
+    # AUDIT-2026-09-20 expansion: industry routes. Pure slices of the curated
+    # catalogue (counts/years/directors computed from the data itself), so every
+    # claim is true by construction. Country strings normalised first: the data
+    # carried both "Korea" and "South Korea".
+    _by_country = {}
+    for _m in _nx.MOVIES:
+        for _c in str(_m.get("country") or "").split(";"):
+            _c = "South Korea" if _c.strip() == "Korea" else _c.strip()
+            if _c: _by_country.setdefault(_c, []).append(_m)
+    def _yr(ms):
+        ys = sorted(int(str(m.get("year") or "0")) for m in ms if str(m.get("year") or "").isdigit() and int(str(m.get("year") or "0")) > 1900)
+        return (str(ys[0]) + " to " + str(ys[-1])) if ys else "dates varied"
+    def _top_dirs(ms, k=3):
+        import collections as _cl
+        cn = _cl.Counter(str(m.get("director") or "").strip() for m in ms if m.get("director"))
+        return [d for d, c in cn.most_common(k + 2) if c >= 2][:k]
+    _ROUTES = [
+        ("nigerian-cinema", "Nigeria", "Nigerian cinema", "This shelf is BRYME\u2019s home ground \u2014 a Lagos desk reading Nollywood first."),
+        ("korean-cinema", "South Korea", "Korean cinema", "The global surge that turned a national industry into an export."),
+        ("japanese-cinema", "Japan", "Japanese cinema", "Animation and live action on one shelf, tracked by studio and era."),
+        ("indian-cinema", "India", "Indian cinema", "Many industries, many languages \u2014 the largest film output on earth."),
+    ]
+    route_pages = []
+    route_rows = ""
+    for rslug, country, rname, lede in _ROUTES:
+        ms = [m for m in _by_country.get(country, [])]
+        ms.sort(key=lambda x: -(int(str(x.get("year") or "0")) if str(x.get("year") or "").isdigit() else 0))
+        if not ms:
+            continue
+        dirs = _top_dirs(ms)
+        _rtitle = rname + " \u2014 BRYME Entertainment"
+        _rdesc = ("BRYME\u2019s shelf of " + str(len(ms)) + " " + country + " titles (catalogue years " + _yr(ms)
+                  + ") \u2014 each with a hand-verified official trailer.")
+        intro = ("<p>" + lede + "</p><p>" + str(len(ms)) + " titles from this industry are in the hand-verified BRYME catalogue, years " + _yr(ms)
+                 + ", each entry carrying an official trailer checked against YouTube\u2019s oEmbed record. This is a shelf, not an encyclopedia: what is listed here is what the desk has actually verified."
+                 + ("<p>Directors appearing more than once: " + ", ".join(html.escape(d) for d in dirs) + ".</p>" if dirs else "") + "</p>")
+        cards = "".join('<li><a href="/movie/' + m["slug"] + '/"><b>' + html.escape(m["title"]) + "</b></a>"
+                        + ' <span class="meta">(' + html.escape(str(m.get("year") or "")) + ") \u00b7 " + html.escape(m.get("genre") or "")
+                        + ("" if not m.get("score") else " \u00b7 BRYME " + html.escape(str(m["score"])) + "/10") + "</span>"
+                        + ("<br><small>" + html.escape((m.get("teaser") or "")[:160]) + "</small>" if m.get("teaser") else "") + "</li>" for m in ms)
+        rbody = (head("entertainment", "Four industries the catalogue tracks, route by route.")
+                 + '<main id="main"><div class="wrap"><section class="cover"><p class="kicker">INDUSTRY ROUTE \u00b7 ' + html.escape(country).upper()
+                 + '</p><h1 class="cover-title">' + html.escape(rname) + "</h1>" + intro + '</section>'
+                 + '<section class="section"><div class="section-head"><p class="kicker">The shelf</p><h2>Every title, newest first</h2></div>'
+                 + '<ul class="list" style="font-size:15px">' + cards + '</ul></section>'
+                 + '<p class="nx-backlink"><a href="/browse/">&larr; Back to the full catalogue</a></p>'
+                 + '</div></main>' + foot("entertainment"))
+        route_pages.append(("/routes/" + rslug + "/", _rtitle, _rdesc, rbody))
+        route_rows += ('<li><a href="/routes/' + rslug + '/"><b>' + html.escape(rname) + "</b> <span class=\"meta\">"
+                       + str(len(ms)) + " titles \u00b7 " + _yr(ms) + "</span></a></li>")
+
     _NX_CSS = ('<style>'
         '.nx-shell{max-width:1180px;margin:0 auto;padding:0 20px}'
         '.nx-eyebrow{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#d8b64a}'
@@ -1378,8 +1429,9 @@ def entertainment_pages():
         + '<a href="/how-streaming-licensing-works/"><b>How streaming licensing works</b><span>Why titles vanish and return</span></a>'
         + '</div></section>'
         + '<section class="nx-cta-band"><div><div class="nx-eyebrow">The house rule</div><h2>Every trailer verified by hand.</h2>'
-        + '<p>' + str(len(_nx.MOVIES)) + ' films, ' + str(_n_trailers) + ' official trailers - every YouTube link checked against its real title and channel on ' + _nx_ver + ' before it shipped. Trailers play right here when you press play; nothing loads before that.</p></div>'
+        + '<p>' + str(len(_nx.MOVIES)) + ' films, ' + str(_n_trailers) + ' official trailers - every YouTube link checked against its real title and channel on ' + _nx_ver + ' before it shipped. Trailers are embedded right here from YouTube\u2019s no-cookie player and load lazily as the section nears your viewport.</p></div>'
         + '<a class="nx-cta" href="#nx-trending">Start browsing</a></section>'
+        + '<section class="nx-section"><div class="nx-section-head"><div><div class="nx-eyebrow">By industry</div><h2>Industry routes</h2></div></div><ul class="list" style="font-size:15px">' + route_rows + '</ul></section>'
         + '</div></main>' + foot("entertainment"))
     _nx_related = {
         "Horror": [("modern-horror-starter-route", "The modern horror starter route"), ("what-makes-a-cult-classic", "What makes a cult classic")],
@@ -1460,7 +1512,7 @@ def entertainment_pages():
             + wl_html + rel_html
             + '<p class="nx-backlink"><a href="/entertainment/">&#8592; Back to the full catalogue</a></p>'
             + '</div><aside class="nx-aside"><dl>' + aside_html + '</dl>'
-            + '<p class="nx-verified">Trailer link verified ' + _nx_ver + ' via YouTube oEmbed (title and channel checked). Nothing loads from YouTube until you press play.</p>'
+            + '<p class="nx-verified">Trailer link verified ' + _nx_ver + ' via YouTube oEmbed (title and channel checked). The player loads lazily from YouTube’s no-cookie domain when the trailer nears your viewport.</p>'
             + '</aside></div></main>' + foot("entertainment"))
         # H3 (audit 2026-09-16): SERP title budget - shortest form that fits 60 chars.
         _nx_y = str(m.get("year") or "")
@@ -1475,12 +1527,13 @@ def entertainment_pages():
     pages = [("/", "The shelves — every film the desk covers | BRYME Entertainment",
               str(len(_nx.MOVIES)) + " films with hand-verified official trailers, shelved by genre - the platform, restored and beautiful.", browse_body)]
     pages.extend(movie_pages)
+    pages.extend(route_pages)
     for pl in sect_pages.values():
         pages.extend(pl)
     pages.extend(arts[s] for s in shelf if s not in merged_away)
     return pages + legal_pages("entertainment", "BRYME Entertainment", "Writing about film, TV and anime for people who love the work.", desk={
         "about": "The catalogue: " + str(len(_nx.MOVIES)) + " films with hand-verified official trailers, editorial scores, cast and credits, shelved by genre - plus the guides and explainers around them.",
-        "privacy": "Trailer playback uses a YouTube no-cookie facade: nothing loads from YouTube until you press play, and poster frames come from YouTube's thumbnail CDN. &ldquo;Where to search&rdquo; links go to official platform search pages and are labelled as searches, never as availability claims.",
+        "privacy": "Trailers are embedded from YouTube's no-cookie domain and lazy-loaded: the player only requests data once the trailer section approaches your viewport while scrolling. &ldquo;Where to search&rdquo; links go to official platform search pages and are labelled as searches, never as availability claims.",
         "terms": "Editorial scores are BRYME's opinion, clearly labelled. No availability or pricing claims are made - platform links are searches, and every trailer link is checked against YouTube's oEmbed record.",
         "corrections": "Every trailer link is re-checked against YouTube's oEmbed (title and channel) and the verification date is printed on the page. Film facts carry their sources.",
     })

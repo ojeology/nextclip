@@ -55,7 +55,7 @@ for name in PUBLIC_DIRS:
         dst = PUB / name
         if dst.exists():
             shutil.rmtree(dst)
-        shutil.copytree(src, dst)
+        shutil.copytree(src, dst, ignore=shutil.ignore_patterns("_recovered"))
         copied += 1
 for name in PUBLIC_FILES:
     src = ROOT / name
@@ -82,7 +82,7 @@ if (ECO / "config.json").is_file():
                 _dst = PUB / _p
                 if _dst.exists():
                     shutil.rmtree(_dst)
-                shutil.copytree(_src, _dst)
+                shutil.copytree(_src, _dst, ignore=shutil.ignore_patterns("_recovered"))
                 copied += 1
         # M1 (audit 2026-09-16): only the homepage comes from the hub now. The
         # root sitemap.xml is the sitemap index written by build-routing (and
