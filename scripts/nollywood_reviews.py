@@ -174,6 +174,33 @@ dict(
      "The weight: a film about female self-determination that ban-happers in its own country tried to strangle at the festival stage — and that won Cannes' Un Certain Regard prize anyway, then changed the vocabulary of a real legislative argument. No African film of its era does more with less; no review shelf on this desk may skip it.",
     ],
 ),
+
+dict(
+    slug="yeelen", title="Yeelen (Brightness)", year=1987,
+    director="Souleymane Cissé", country="Mali", language="Bambara",
+    runtime=None, axes=dict(story=7.0, craft=8.0, vision=10.0, weight=10.0),
+    score=8.75, date="2026-09-22",
+    verdict="The film that made world cinema treat African cinema as cinema: Cissé's creation-epic duel is a masterclass in severity, light and refusal to explain itself.",
+    body=[
+     "A sorcerer father hunts his son to death across the Bambara world to forestall a prophecy; the son, raised in exile, gathers the knowledge to return and finish the duel. Yeelen takes the creation mythology Malian audiences inherited orally and refuses every tourist accommodation: names are not glossed, rituals are not subtitled into meaning, the camera keeps its distance and lets the light do the argument. Four decades on, that refusal remains the most radical choice an African epic has made - the film trusts you to arrive at its level.",
+     "The vision is untouchable. Cissé and his photographers compose the desert, the river and the final cave confrontation like scripture painted in hard sun and ember-dark; the restored print - the film's second life in the 2020s - proved how deliberate the palette always was: sand, indigo, copper, blood at the edges. Sound design works the same severity: chants placed like stones, silence where a festival crowd would expect a score.",
+     "The craft walks a knife-edge a Western cast would fail: ritual acting risks ethnographic blankness in unfamiliar hands; Issiagu Barry and the company find instead a controlled grandeur, faces doing exposition the dialogue refuses. The final duel is staged as physics and fate at once - two men collapsing the world's balance with their own hands.",
+     "Its weight is the entire shelf this desk sits on: the first sub-Saharan African feature to win Cannes' jury prize, the film that moved a continent's cinema from ethnography to art history. Every later Malian, Burkinabè and Nigerian epic negotiating budgets in Europe's offices cites the year Yeelen made it a line item. Watch it the way it demands: undistracted, unbothered by what you miss on the first pass - the balance reveals itself on the second, and it is brightness either way.",
+    ],
+),
+dict(
+    slug="supa-modo", title="Supa Modo", year=2018,
+    director="Likarion Wainaina", country="Kenya", language="Swahili / Kikuyu / English",
+    runtime=None, axes=dict(story=6.0, craft=8.0, vision=7.0, weight=9.0),
+    score=7.5, date="2026-09-22",
+    verdict="A village becomes a film school so a dying girl can become a superhero: sentimental in its premise, incorruptible in its practice.",
+    body=[
+     "Nine-year-old Jo is sent from the city hospital back to her grandmother's village - the family cannot afford the treatment, and everyone speaks around the fact by talking about a film instead. Jo, who has never stopped watching matatu-poster heroes, declares she is a superhero, and the village plays along so completely that it makes a movie for her before the ending comes. Supa Modo has the most dangerous premise in commercial cinema - childhood illness plus community warmth - and it survives only because its method is the opposite of exploitation.",
+     "The method is the review: this was shot in the Kikuyu community that performs it, with non-professional neighbours who were trained on set as the story they tell is exactly that of neighbours building a film together. That double frame - a family acting out their own story while the film credits them as the collaborators they are - is what keeps the tears honest. The village's tin-roof cinematography glows by accident and by hour; the flying sequences, staged with rope, dust and total conviction, are the best child's-eye spectacle since the bicycle in E.T. - the whole movie is a make-believe that never asks you to stop believing.",
+     "The story's concession is its third act: the disease's paperwork arrives when the film needs it, and a scene of hospital machinery explains a loss the film had earned the right to leave in grace. It is the only stretch where Supa Modo behaves like a campaign instead of a community - and it still has the nerve to end on flight.",
+     "The weight: Kenya's Oscar submission in the Foreign Language Film year it won an audience prize circuit across two continents, and proof that a national film industry can be built from a village outward, with the skills left behind on set as the real export. For this desk's shelf, it sits where the canon needed a corner: cinema that treats its own audience's children as the crew.",
+    ],
+),
 ]
 
 REVIEWS_BY_SLUG = {r["slug"]: r for r in REVIEWS}
