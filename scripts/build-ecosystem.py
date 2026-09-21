@@ -472,6 +472,10 @@ def shell(pub, title, desc, route, body, card=None, robots="index,follow"):
     ld_html = "" if "application/ld+json" in body else _page_ld(title, desc, route)  # H4 batch 8
     d = route  # mode-aware base URL from SUB
     og = f"{ORIGIN}/assets/og.png"  # real root card; route may already be a full URL (b36 fix)
+    if pub in ("tech", "home"):
+        _gsl = route.strip("/").split("/")[-1]
+        if (ROOT / "assets" / "guides" / pub / (_gsl + ".jpg")).exists():
+            og = f"{ORIGIN}/assets/guides/{pub}/{_gsl}.jpg"
     has_theme = pub in ("tech", "fitness", "sports", "hub", "entertainment")
     theme_head = ('<script src="/assets/theme.js"></script>\n'
                   '<meta name="theme-color" content="#fafaf8">\n'
@@ -3459,6 +3463,18 @@ def tech_tool_pages():
     return pages
 
 
+def _guide_cover_img(pub, slug, title):
+    """Optional locally-generated illustration for a guide page (assets/guides/<pub>/<slug>.jpg).
+    Files live in the tracked source tree; build-public-dir mirrors them into public/assets."""
+    if not (ROOT / "assets" / "guides" / pub / (slug + ".jpg")).exists():
+        return ""
+    return ('<figure class="gcover" style="margin:0 0 26px">'
+            '<img src="/assets/guides/' + pub + '/' + slug + '.jpg" alt="' + html.escape("Illustration: " + title) + '"'
+            ' width="1200" height="675" loading="eager" decoding="async"'
+            ' style="width:100%;height:auto;display:block;border-radius:14px">'
+            '</figure>')
+
+
 def tech_pages():
     arts = _load_tech()
     for a in arts:
@@ -3527,6 +3543,7 @@ def tech_pages():
             + '<section class="cover"><p class="kicker">' + tag + "verified against the real thing</p>"
             + '<h1 class="cover-title" style="font-size:clamp(30px,4.6vw,48px)">' + html.escape(a["title"]) + "</h1>"
             + '<p class="byline">' + " \u00b7 ".join(meta_bits) + "</p></section>"
+            + _guide_cover_img("tech", a["slug"], a["title"])
             + summ
             + '<section class="section"><div class="prose">' + _tech_blocks(a) + src_html + "</div></section>"
             + '<section class="section alt"><div class="section-head"><p class="kicker">Next</p><h2>Related on this desk.</h2></div>'
@@ -4375,6 +4392,9 @@ HOME_SLUG_SECT.update({s: "understand" for s in ("bedbugs-first-signs", "mosquit
 HOME_SLUG_SECT.update({s: "fix" for s in ("running-toilet-cistern-fix",)})
 HOME_SLUG_SECT.update({s: "maintain" for s in ("washing-machine-smell-and-filter", "freezer-frost-buildup", "septic-tank-emptying-routine")})
 HOME_SLUG_SECT.update({s: "fix" for s in ("bath-silicone-reseal", "ceiling-light-flicker-fix", "gas-cooker-wont-ignite")})
+HOME_SLUG_SECT.update({s: "fix" for s in ("dripping-tap-cartridge-fix", "vacuum-lost-suction-fix")})
+HOME_SLUG_SECT.update({s: "maintain" for s in ("electric-iron-steam-care", "wash-curtains-blinds-care", "wall-hole-anchors-by-type")})
+HOME_SLUG_SECT.update({s: "understand" for s in ("hidden-water-leak-meter-test",)})
 
 
 def _home_theme_init():
@@ -4485,6 +4505,9 @@ def _home_page(title, desc, route, cover_html, main_html, sidebar_current):
     title = budget_title(title)  # H3 batch 7: keep <title>/og:title inside the SERP window
     canonical = ORIGIN + "/home" + route
     og = "https://" + DOMAIN + "/assets/og.png"
+    _gsl = route.strip("/").split("/")[-1]
+    if (ROOT / "assets" / "guides" / "home" / (_gsl + ".jpg")).exists():
+        og = "https://" + DOMAIN + "/assets/guides/home/" + _gsl + ".jpg"
     return ('<!doctype html>\n<html lang="en"><head>\n\n<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">\n'
         "<title>" + html.escape(title) + "</title>\n"
         '<meta name="description" content="' + html.escape(desc) + '">\n'
@@ -5192,6 +5215,12 @@ def home_pages():
         "ceiling-light-flicker-fix": [("burning-plastic-smell-socket", "The socket burn smell"),("wiring-red-flags-in-your-home", "Wiring red flags"),("circuit-breaker-tripped-not-mystery", "Breaker tripped, decoded")],
         "septic-tank-emptying-routine": [("soakaway-filling-up-signs", "Soakaway signs"),("grease-trap-yard-clean", "The yard grease trap"),("sewer-smell-after-trip", "Sewer smell after a trip")],
         "gas-cooker-wont-ignite": [("gas-cylinder-change-safely", "Cylinder swap, safely"),("gas-cylinder-safety", "Gas cylinder safety"),("cooking-oil-fire-plan", "The oil-fire plan")],
+        "dripping-tap-cartridge-fix": [("sink-trap-clean-smell", "Sink trap smells"),("running-toilet-cistern-fix", "Running cistern"),("hidden-water-leak-meter-test", "Hidden-leak meter test")],
+        "electric-iron-steam-care": [("towels-smell-fresh", "Towels that smell sour"),("washing-machine-smell-and-filter", "Washing machine care"),("indoor-drying-rainy-season", "Indoor drying")],
+        "vacuum-lost-suction-fix": [("harmattan-and-your-electronics", "Harmattan dust"),("sofa-leather-vinyl-care", "Sofa & vinyl care"),("mattress-humidity-care", "Mattress care")],
+        "wash-curtains-blinds-care": [("indoor-drying-rainy-season", "Indoor drying"),("musty-wardrobe-clothes-rainy", "The musty wardrobe"),("electric-iron-steam-care", "Iron & steam care")],
+        "wall-hole-anchors-by-type": [("how-to-paint-a-room-right", "Paint a room right"),("tv-mount-on-block-wall", "Mounting on block walls"),("wall-cracks-when-serious", "Cracks: when serious")],
+        "hidden-water-leak-meter-test": [("running-toilet-cistern-fix", "Running cistern"),("water-storage-safety", "Safe water storage"),("soakaway-filling-up-signs", "Soakaway signs")],
     }
     for slug, ti, dek, b in HOME_ARTICLES:
         key = HOME_SLUG_SECT[slug]
@@ -5201,7 +5230,8 @@ def home_pages():
             + '<section class="cover"><p class="kicker">' + sec_label(key) + " \u00b7 practical guide</p>"
             + '<h1 class="cover-title" style="font-size:clamp(30px,4.8vw,52px)">' + html.escape(ti) + "</h1>"
             + '<p class="byline">BRYME Home &amp; DIY desk \u00b7 reviewed ' + TODAY + " \u00b7 general information, not professional advice</p></section>")
-        main = ('<section class="section alt"><div class="wrap"><p class="lede"><b>In one line:</b> ' + html.escape(dek) + "</p></div></section>"
+        main = (_guide_cover_img("home", slug, ti)
+            + '<section class="section alt"><div class="wrap"><p class="lede"><b>In one line:</b> ' + html.escape(dek) + "</p></div></section>"
             + '<section class="section"><div class="prose">' + b + "</div></section>"
             + '<section class="section alt"><div class="section-head"><p class="kicker">Next</p><h2>Related on this desk.</h2></div>'
             + '<ul class="list">' + rel_html + "</ul>"
