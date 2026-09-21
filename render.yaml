@@ -32,8 +32,11 @@ services:
     # Verified: `rm -rf public && npm run build` regenerates all 2,728 tracked
     # files with 0 deletions and 0 untracked additions, so removing untracked
     # files from the publish directory after a successful build is safe. It runs
-    # AFTER the build because `npm run build` swallows failures with `|| echo`,
-    # and deleting public/ first would then deploy an empty site.
+    # AFTER the build: `npm run build` used to swallow generator failures with
+    # `|| echo`, so deleting public/ first could deploy an empty site. The build
+    # now runs under `set -e` and fails hard (changed 21 Sep 2026), so the &&
+    # chain simply stops before this clean if any generator dies. The ordering is
+    # now safe by construction rather than by workaround, and is kept as-is.
     # batch 11f: the stale-_recovered sweep must run BEFORE npm run build, and must not
     # touch public/: purge-stale-publish (final build step) writes noindex tombstones into
     # public/{entertainment,sports}/_recovered/ to overwrite the stale 2026-09-14 copies

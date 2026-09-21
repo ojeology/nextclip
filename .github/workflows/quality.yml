@@ -55,6 +55,12 @@ jobs:
           [ -n "$D" ] || D=$(git log -1 --format=%cd --date=short)
           echo "pinned build date: $D"
           echo "SOURCE_DATE_EPOCH=$(date -u -d "$D" +%s)" >> "$GITHUB_ENV"
+      # `npm run build` runs under `set -e`: if any generator dies, this step
+      # fails. It used to end in `|| echo '... using committed static output'`,
+      # which exited 0 on a crashed generator - and because the committed output
+      # was then left untouched, `git diff --exit-code` below PASSED on an empty
+      # diff and `npm test` audited stale pages. A fully green run on a broken
+      # build. Fixed 21 Sep 2026.
       - run: npm run build
       - name: Confirm deterministic output
         run: git diff --exit-code
