@@ -42,6 +42,33 @@ ORIGIN = os.environ.get("ORIGIN") or CFG.get("origin") or sitecfg.site_url()
 ORIGIN_HOST = ORIGIN.split("//", 1)[-1].rstrip("/")  # batch 15: display host
 TODAY = "2026-09-09"
 
+
+def _build_now():
+    """Current build timestamp, honouring SOURCE_DATE_EPOCH.
+
+    This script used to read the wall clock directly (`_dt.date.today()` in the
+    "Counts verified at every build (last: ...)" stamp), so its output changed
+    every single day. That is why it was excluded from `npm run build` as
+    non-deterministic and marked do-not-run.
+
+    SOURCE_DATE_EPOCH is the standard reproducible-builds convention and is
+    exactly what build-writing-first.py and build-routing.py already use: CI
+    pins it to the tree's own date of record so any commit rebuilds byte-for-byte
+    on any later day, while production deploys leave it unset and get the real
+    current date - which is what the published site needs.
+
+    Behaviour is therefore UNCHANGED wherever the variable is unset.
+    """
+    import datetime as _dtn
+    epoch = os.environ.get("SOURCE_DATE_EPOCH", "")
+    if epoch.isdigit():
+        try:
+            return _dtn.datetime.fromtimestamp(int(epoch), _dtn.timezone.utc)
+        except (OverflowError, OSError, ValueError):
+            pass
+    return _dtn.datetime.now(_dtn.timezone.utc)
+
+
 # ---- AdSense rail (batch 19): driven by site.config.json "adsense" block. ----
 # Renders NOTHING unless caId is a real ca-pub-... id AND enabled=true. The note in
 # the config stands: ads must never resemble job cards, application buttons or nav.
@@ -951,7 +978,9 @@ def hub_pages():
     _n_guides = sum(1 for f in _wr.rglob("index.html")
                     if f.parent.name not in _legal and "tools" not in f.parts) if _wr.exists() else 0
     _n_tools = len([d for d in (_wr / "tools").iterdir() if d.is_dir()]) if (_wr / "tools").exists() else 0
-    _stamp = " Counts verified at every build (last: " + _dt.date.today().isoformat() + ")."
+    # was _dt.date.today() - the wall-clock read that made this script's output
+    # change daily and got it excluded from the deterministic build chain.
+    _stamp = " Counts verified at every build (last: " + _build_now().date().isoformat() + ")."
     _DESK_ART = {"writers": "desk-writers.jpg", "sports": "desk-sport.jpg",
                  "entertainment": "desk-entertainment.jpg", "tech": "desk-tech.jpg",
                  "fitness": "desk-fitness.jpg", "home": "desk-home.jpg"}
@@ -2333,6 +2362,19 @@ def sports_pages():
     SQ = _PLD.get("squads", {})
     SQUPD = _PLD.get("squads_updated", "")
     def _age(dob):
+        # KNOWN BUG, deliberately left as-is (21 Sep 2026): `datetime` and
+        # `timezone` are NOT imported at module level in this script - the only
+        # datetime imports are function-local aliases (_dtt/_dt/_dtc). So this
+        # raises NameError on every call, the bare `except Exception` swallows it,
+        # and _age() has always returned None. Effect: squad rows at the call site
+        # below never render the "NN yrs" suffix, only the position.
+        # Fixing it would add ages to every player row on the Sports desk, which
+        # the production directive holds at "live as-is, no edits" while paused -
+        # so it needs an owner decision, not a drive-by fix. Note this is also
+        # INERT non-determinism: it crashes before ever reading the clock, so it
+        # does not block the SOURCE_DATE_EPOCH work above. When it is fixed, it
+        # must use _build_now() rather than datetime.now(), or ages will drift
+        # daily and re-break reproducible builds.
         try:
             y, m, dd = (int(x) for x in dob.split("-"))
             t = datetime.now(timezone.utc).date()
