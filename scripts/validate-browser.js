@@ -14,8 +14,20 @@ const failures=[];const check=(ok,msg)=>{if(!ok)failures.push(msg)};
    ec1329042, caps loosened per owner in 95167a850). Production's CSP is
    `script-src 'self' https:` so these load in production. They are intercepted
    here: the gate must not depend on a third-party network being reachable,
-   fast, or serving the same creative twice. */
-const AD_HOSTS=/(?:profitableratecpmnetwork|highrevenueformat|monetag|highperformanceformat|n6wxm|nap5k|propellerads)\./i;
+   fast, or serving the same creative twice.
+
+   Google AdSense was added when site.config.json -> adsense.enabled was flipped
+   to true with an owner-supplied ca-pub id (3fec0e6247): that injects the
+   pagead2.googlesyndication.com loader into <head> on every page, so all 1,527
+   render cases failed "unexpected scripts" + "third-party resource", and the
+   AdSense iframe to www.google.com tripped the report-only frame-ancestors CSP
+   on 11 routes. Fulfilling the loader with an empty body stops adsbygoogle from
+   ever running, which removes the iframe and the CSP reports too - www.google.com
+   is deliberately NOT listed here, so a genuine google.com leak would still
+   fail the gate. googleadservices/doubleclick are AdSense's companion origins.
+   Ad UNITS are still unwired (_ads_slot has no call sites), so this intercepts
+   the verification loader only. */
+const AD_HOSTS=/(?:profitableratecpmnetwork|highrevenueformat|monetag|highperformanceformat|n6wxm|nap5k|propellerads|googlesyndication|googleadservices|doubleclick)\./i;
 /* Answer ad requests with a benign empty payload rather than aborting them. An
    abort makes Chromium log a failed request, which surfaces as a net::ERR_FAILED
    console error on every page - an artifact of the harness, not a defect in the

@@ -105,4 +105,11 @@ Job cards and detail pages show a verification badge (🟢 SOURCE VERIFIED, 🔵
 
 ## Privacy and monetization
 
-Advertising and analytics remain disabled. `site.config.json` → `adsense` is the single switch: set `caId` (a real `ca-pub-...`), review consent/privacy, and enable only after the release gates pass. Ads must never resemble job cards or application buttons (see `docs/ADS.md`).
+**AdSense account verification is live; ad units are not.** `site.config.json` → `adsense` is the single switch, and it is currently `enabled: true` with an owner-supplied `caId` (`ca-pub-1881426210393009`). That injects the account meta tag and the `pagead2.googlesyndication.com` loader into `<head>` on every page, and emits `ads.txt` — which is what Google's verification check needs. **No ad unit renders**: `_ads_slot` has no call sites, so nothing is placed until the owner wires them. Keep Google-dashboard Auto ads **off** until then. Analytics remain disabled.
+
+Two consequences worth knowing:
+
+- The browser gate intercepts the AdSense loader (`AD_HOSTS` in `scripts/validate-browser.js`) so the 1,527 render cases stay offline-safe and deterministic. `www.google.com` is deliberately *not* in that list, so a real Google leak would still fail the gate.
+- EEA/UK personalised ads require a **certified CMP**. That decision is still open and must be made, and documented on the privacy pages, before ad units are wired. See `docs/ecosystem/revenue-readiness.md`.
+
+Ads must never resemble job cards or application buttons (see `docs/ADS.md`).

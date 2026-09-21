@@ -1411,7 +1411,14 @@ def newsletter_page() -> None:
         write("/what-changed/", page_wf(
             title="What changed on the desk - BRYME verification log | BRYME",
             description="The newest human re-checks across the paid-writing database: status, pay and last-verified dates, newest first. Never scraped, never sold.",
-            route="/what-changed/", current="", robots="index,follow", body=_wc_body))
+            # current="writing", not "": this page is the opportunity desk's own
+            # re-verification log, the sibling of /today/ (which passes
+            # current="writing"). With an empty value no nav item received
+            # aria-current="page", so validate-browser failed this route at both
+            # mobile ("no current bottom-navigation item") and desktop ("no
+            # current desktop-navigation item") - the only two non-AdSense
+            # failures in the 1,527-case render gate.
+            route="/what-changed/", current="writing", robots="index,follow", body=_wc_body))
 
 
 def affiliate_note() -> str:
