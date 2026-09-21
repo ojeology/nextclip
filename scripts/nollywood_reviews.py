@@ -234,6 +234,28 @@ dict(
 "The story's weakness is also its thesis: the drama here is that nobody gets a movie moment, because the outbreak was stopped by ordinary people doing the unglamorous thing at the right hour. The desk will take that trade once a year, at least; a Nigerian film that argues for public health systems instead of individual great men is doing something genre cinema rarely attempts.",
 "Weight, unambiguously: 93 Days is the film Nigeria's Ebola response produced against all forecasts - the containment Lagos achieved became the WHO's case study, and this film is the country's own record of it, released while the memory was still a policy argument. Every subsequent outbreak film in the industry borrows its premise: that the thriller is in the contact list. That is a shelf entry for life.",
          ]),
+    dict(slug="the-figurine", title="The Figurine", year=2009,
+         director="Kunle Afolayan", country="Nigeria", language="English", runtime=None,
+         axes=dict(story=7.5, craft=8.0, vision=8.0, weight=8.0), score=7.875,
+         date="2026-09-24",
+         verdict="The supernatural thriller that told the industry a Nigerian film could be dread - and dressed the dread like a museum piece",
+         body=[
+"A statue with an appetite, a village's curse, and a decade of grudges arriving in Lagos wearing European tailoring: The Figurine is what Nollywood's theatrical era sounded like when it decided to compete on atmosphere instead of exposition. Two couples, one archaeological crime, and a horror logic that the script trusts the audience to keep up with - a trust the industry spent years being denied.",
+"The craft is where the landmark sits: the lighting treats shadow as a character, the Osun-state location work gives the curse geography, and the score - genuinely scored, with motifs - does the dread-doing that most contemporary videos left to jump-cut and scream. For a desk that catalogues this industry's production values like wine lists, 2009 is a vintage year because of this film's existence.",
+"Held honestly to account: the mystery front-loads its clues and then asks for patience mid-film while the couples' subplots dilute the case, and the resolution prefers the supernatural's word over the detective's - a choice that reads as bold or as a dodge depending on the night. Neither charge ruins the rewatch; the dread keeps its appointment.",
+"Weight decides this shelf's finals, and it is simple: every serious genre budget the industry has mounted since traces its green light to what The Figurine proved about cinemas taking a Nigerian supernatural film seriously, and about international platforms paying for one. It is not the best horror this desk has reviewed; it is the one that made the next ten possible, which on this scale is worth more.",
+         ]),
+    dict(slug="phone-swap", title="Phone Swap", year=2012,
+         director="Kunle Afolayan", country="Nigeria", language="English", runtime=None,
+         axes=dict(story=7.0, craft=6.5, vision=7.0, weight=7.0), score=6.875,
+         date="2026-09-24",
+         verdict="A princess, a mechanic and a swapped handset - the rom-com this industry needed before it needed awards",
+         body=[
+"The setup is a device from silent comedy - a spoiled influencer loses her phone, a village-adjacent mechanic finds it, and the identity swap that follows forces both to live one week in the other's SIM slot - and the film earns it by taking both lives seriously. The Lagos-versus-the-road contrast is the actual subject; the phone is the courier.",
+"The craft is warm rather than showy: location sound that occasionally loses fights, a cut that trusts its comedy pairs, and a lead performance (Omotola as the princess forced to competence) that the desk would happily teach as the moment Nollywood rom-coms started being acted rather than delivered. The screenplay itself - a craft Nollywood rarely let be discussed before this film - is the desk's early, loud argument for treating writers as the production's first star.",
+"What ages it, honestly: the middle's moral arithmetic - suffering as character education - resolves a privilege gap with a handshake, and the film would rather charm you than argue. It charms you anyway, which is the rom-com contract, and this one honours it better than most with bigger budgets did.",
+"Weight, on this desk's ledger: Phone Swap is the proof that the comedy-of-class engine could fill cinemas outside the Yoruba-comedy lane, and its writer's next film - the one about a wedding - ran the playbook the industry still copies. Two shelf entries, one lineage; that is a film changing its market by being watchable, which is how taste moves.",
+         ]),
 ]
 
 REVIEWS_BY_SLUG = {r["slug"]: r for r in REVIEWS}

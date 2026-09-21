@@ -4369,6 +4369,9 @@ HOME_SLUG_SECT.update({s: "understand" for s in ("water-storage-safety",)})
 HOME_SLUG_SECT.update({s: "fix" for s in ("fridge-not-cooling", "ceiling-fan-mounting-right", "tank-overflow-pump-dry")})
 HOME_SLUG_SECT.update({s: "maintain" for s in ("gutters-and-downpipes", "gas-cylinder-safety")})
 HOME_SLUG_SECT.update({s: "understand" for s in ("kitchen-hygiene-routine",)})
+HOME_SLUG_SECT.update({s: "fix" for s in ("floor-drain-backflow", "ceiling-plaster-sagging-repair")})
+HOME_SLUG_SECT.update({s: "maintain" for s in ("mattress-humidity-care", "how-to-paint-a-room-right", "grills-and-bars-rust-care")})
+HOME_SLUG_SECT.update({s: "understand" for s in ("borehole-water-taste-smell",)})
 
 
 def _home_theme_init():
@@ -5048,6 +5051,24 @@ def home_pages():
         "tank-overflow-pump-dry": [("borehole-pump-no-water", "Pump runs, no water"),
                                     ("gentle-low-flow-fixes", "Thin-flow tap fixes"),
                                     ("borehole-water-and-your-kettle", "Borehole water, handled")],
+        "mattress-humidity-care": [("condensation-ventilation-that-works", "Damp & ventilation"),
+                                     ("mould-after-a-flooded-room", "Mould after a flooded room"),
+                                     ("rainy-season-home-checklist", "The pre-rains checklist")],
+        "floor-drain-backflow": [("how-to-clear-a-slow-shower-drain", "The slow shower drain"),
+                                  ("gutters-and-downpipes", "Gutters & downpipes"),
+                                  ("rainy-season-home-checklist", "The pre-rains checklist")],
+        "how-to-paint-a-room-right": [("paint-calculator", "The paint calculator"),
+                                      ("harmattan-and-your-electronics", "Harmattan and your electronics"),
+                                      ("bathroom-remodel-mistakes", "Bathroom remodel mistakes")],
+        "grills-and-bars-rust-care": [("rainy-season-home-checklist", "The pre-rains checklist"),
+                                      ("gutters-and-downpipes", "Gutters & downpipes"),
+                                      ("harmattan-fire-safety-house", "Harmattan fire safety")],
+        "ceiling-plaster-sagging-repair": [("ceiling-water-stain-removal", "Reading a ceiling stain"),
+                                            ("ceiling-leak-11pm", "The 11pm leak protocol"),
+                                            ("rainy-season-home-checklist", "The pre-rains checklist")],
+        "borehole-water-taste-smell": [("borehole-water-and-your-kettle", "Borehole water, handled"),
+                                       ("water-storage-safety", "Water storage, the rules"),
+                                       ("tank-overflow-pump-dry", "Tank overflow & dry-run")],
     }
     for slug, ti, dek, b in HOME_ARTICLES:
         key = HOME_SLUG_SECT[slug]
