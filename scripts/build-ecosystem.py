@@ -174,7 +174,15 @@ h1.cover-title{font-family:var(--serif);font-weight:700;letter-spacing:-.018em;f
 .rev-c h3{margin:0;font-family:var(--serif);font-size:21px}
 .rev-c p{font-family:var(--serif);font-style:italic;font-size:14.5px;line-height:1.6;color:var(--muted);margin:0}
 .rev-c b{margin-top:auto;font:800 11px var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--ink)}
-@media(max-width:820px){.hub-hero .hh-inner{grid-template-columns:1fr;gap:0}.hh-collage{display:none}.cards{grid-template-columns:1fr}.pub-card,.pc-writers,.pc-entertainment,.pc-home{grid-column:auto;grid-row:auto}.pc-body p{display:none}.hub-stats{grid-template-columns:repeat(2,1fr)}.hub-stats>div:nth-child(3){border-left:0}.rev-3{grid-template-columns:1fr}}
+.desk-qa{display:grid;grid-template-columns:repeat(3,1fr);gap:24px 34px;margin:4px 0 0}
+.desk-qa h3{font-family:var(--serif,Georgia);font-size:19px;margin:0 0 4px;color:var(--ink,#141414)}
+.desk-qa h3 a{color:inherit;text-decoration:none;border-bottom:2px solid var(--brass,#b98a2f)}
+.desk-qa .dq-scope{font-size:14px;line-height:1.5;margin:0 0 8px;color:#4a4a46}
+.desk-qa ul{margin:0;padding:0;list-style:none}
+.desk-qa li{font-size:14px;line-height:1.4;margin:6px 0}
+.desk-qa li a{text-decoration:none;color:var(--ink,#141414);border-bottom:1px solid var(--line,#ddd)}
+.desk-qa li a:hover{border-bottom-color:var(--brass,#b98a2f)}
+@media(max-width:820px){.hub-hero .hh-inner{grid-template-columns:1fr;gap:0}.hh-collage{display:none}.cards{grid-template-columns:1fr}.pub-card,.pc-writers,.pc-entertainment,.pc-home{grid-column:auto;grid-row:auto}.pc-body p{display:none}.hub-stats{grid-template-columns:repeat(2,1fr)}.desk-qa{grid-template-columns:1fr;gap:18px}.hub-stats>div:nth-child(3){border-left:0}.rev-3{grid-template-columns:1fr}}
 .pub-card.soon{opacity:.92}
 .soon-tag{font:800 10px var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--muted);border:1px dashed var(--line-strong);align-self:flex-start;padding:8px 12px;margin-top:auto}
 @media(max-width:820px){.cards{grid-template-columns:1fr}.mast-tag{display:none}}
@@ -1001,6 +1009,43 @@ def hub_pages():
                   '<div><b>0</b><span>pop-ups. ever.</span></div></section>')
     except Exception:
         _stats = ""
+    _dq = [("entertainment", "Entertainment", "/entertainment/",
+            "Nollywood and world-cinema criticism with reasons behind every score, plus the practical layer: what to watch and how to watch it legally.",
+            [("/entertainment/how-to-pick-a-movie-tonight/", "What to watch when you can't decide"),
+             ("/entertainment/korean-cinema-starter-guide-rebuilt/", "Where to start with Korean film"),
+             ("/entertainment/best-streaming-apps-nigeria/", "The cheapest legal streaming, Nigeria")]),
+           ("writers", "Writers", "/writers/",
+            "The paid side of freelance writing: who buys, at what rate, and how a pitch gets accepted - tracked with dated changes, not folklore.",
+            [("/writers/what-changed/", "What changed in paying markets this month"),
+             ("/writers/writing-opportunities/", "Verified magazines and their rates"),
+             ("/writers/tools/", "Free tools that do the drudgery")]),
+           ("tech", "Tech", "/tech/",
+            "Device and software advice tested on machines we own, for budgets that are real - first-hand notes, invented prices nowhere.",
+            [("/tech/student-laptop-spec-floor-2026/", "The honest spec floor for a student laptop"),
+             ("/tech/dell-vs-hp-refurbished-laptops-nigeria/", "Refurbished Dell vs HP: which survives"),
+             ("/tech/usb-c-fast-charge-not-working/", "Why your USB-C charges so slowly")]),
+           ("home", "Home & DIY", "/home/",
+            "Nigerian home maintenance in plain language - power, water, harmattan and repair: what to attempt, what to call a licensed person for.",
+            [("/home/generator-vs-inverter-nigeria/", "Generator or inverter, sized by your actual load"),
+             ("/home/wiring-red-flags-in-your-home/", "Wiring red flags you can spot yourself"),
+             ("/home/harmattan-fire-safety-house/", "The harmattan fire walk-through")]),
+           ("fitness", "Fitness", "/fitness/",
+            "Training that needs no gym and no supplements - plans, form and warm-ups explained from first principles, with browser tools that run the maths.",
+            [("/fitness/how-to-warm-up/", "A warm-up that actually covers you"),
+             ("/fitness/walking-vs-running/", "Walking or running for getting fit"),
+             ("/fitness/30-day-walking-plan/", "The 30-day walking plan")]),
+           ("sports", "Sport", "/sports/",
+            "The deadline-day archive: the transfer window and matchweek notes, graded after the noise settles instead of adding to it.",
+            [("/sports/how-the-transfer-window-works/", "How the transfer window really works"),
+             ("/sports/premier-league-transfer-tracker-august-2026/", "August 2026: tracker closed and graded"),
+             ("/sports/", "Inside the archive")]),
+           ]
+    _desk_band = ('<section class="section"><div class="section-head"><p class="kicker">In plain words</p>'
+                  '<h2>What each desk answers</h2></div><div class="desk-qa">'
+                  + "".join('<div><h3><a href="' + u + '">' + n + '</a></h3><p class="dq-scope">' + sc + '</p><ul>'
+                            + "".join('<li><a href="' + hu + '">' + ht + '</a></li>' for hu, ht in qs) + '</ul></div>'
+                            for _, n, u, sc, qs in _dq)
+                  + '</div></section>')
     body = f"""{head("hub", "Six publications. One house standard.", parent=False)}
 <main id="main">
 <section class="hub-hero"><div class="hh-inner"><div>
@@ -1014,13 +1059,14 @@ def hub_pages():
 {_stats}
 {_rev_band}<section class="section"><div class="section-head"><p class="kicker">The publications</p><h2>Choose your desk</h2></div>
 <div class="cards">{cards}</div></section>
+{_desk_band}
 <section class="section alt"><div class="section-head"><p class="kicker">The house</p><h2>One standard, six voices.</h2></div>
 <p class="lede">Every BRYME publication is edited by the same desk, run on the same discipline — dates on time-sensitive claims, corrections in the open, no fabricated experience, no pages built to game a search engine — and none of them share a navigation bar. When you enter one, you are in that world.</p>
 </section></div></main>
 {foot("hub")}"""
     hub_index = [("index.html placeholder", "", "", "")]
     return [("/", "THE BRYME — a family of independent publications",
-             "BRYME is six specialist publications — Writers, Sport, Entertainment, Tech, Fitness and Home &amp; DIY — under one house standard. Choose your desk.", body)]
+             "Nollywood and film reviews, freelance-writing rates, honest tech buying advice, Nigerian home care, no-gym fitness plans and a football transfers archive \u2014 six desks, one house standard.", body)]
 
 
 # ------------------------------------------------------- 2. ENTERTAINMENT
