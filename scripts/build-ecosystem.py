@@ -4366,6 +4366,9 @@ HOME_SLUG_SECT.update({s: "maintain" for s in ("solar-panel-care-nigeria", "gate
 HOME_SLUG_SECT.update({s: "fix" for s in ("sewer-smell-after-trip", "ceiling-leak-11pm", "borehole-pump-no-water")})
 HOME_SLUG_SECT.update({s: "maintain" for s in ("the-battery-room", "harmattan-and-wood")})
 HOME_SLUG_SECT.update({s: "understand" for s in ("water-storage-safety",)})
+HOME_SLUG_SECT.update({s: "fix" for s in ("fridge-not-cooling", "ceiling-fan-mounting-right", "tank-overflow-pump-dry")})
+HOME_SLUG_SECT.update({s: "maintain" for s in ("gutters-and-downpipes", "gas-cylinder-safety")})
+HOME_SLUG_SECT.update({s: "understand" for s in ("kitchen-hygiene-routine",)})
 
 
 def _home_theme_init():
@@ -5027,6 +5030,24 @@ def home_pages():
         "borehole-pump-no-water": [("borehole-water-and-your-kettle", "Borehole water, handled"),
                                    ("water-heater-no-hot-water", "No hot water, five checks"),
                                    ("gentle-low-flow-fixes", "Thin-flow tap fixes")],
+        "kitchen-hygiene-routine": [("water-storage-safety", "Water storage, the rules"),
+                                     ("fridge-not-cooling", "The fridge temperature check"),
+                                     ("borehole-water-and-your-kettle", "Borehole water, handled")],
+        "fridge-not-cooling": [("energy-bill-high-unchanged", "Why the bill is high"),
+                                 ("water-heater-no-hot-water", "Appliance fault ladders"),
+                                 ("kitchen-hygiene-routine", "The kitchen's four hand-offs")],
+        "ceiling-fan-mounting-right": [("wall-fan-making-noise", "The noisy ceiling fan"),
+                                        ("circuit-breaker-tripped-not-mystery", "The breaker that keeps tripping"),
+                                        ("harmattan-fire-safety-house", "Harmattan fire safety")],
+        "gutters-and-downpipes": [("rainy-season-home-checklist", "The pre-rains checklist"),
+                                   ("ceiling-water-stain-removal", "Reading a ceiling stain"),
+                                   ("small-leak-ripple-effect", "How small leaks ripple")],
+        "gas-cylinder-safety": [("harmattan-fire-safety-house", "Harmattan fire safety"),
+                                 ("wiring-red-flags-in-your-home", "Wiring red flags"),
+                                 ("generator-vs-inverter-nigeria", "Generator vs inverter")],
+        "tank-overflow-pump-dry": [("borehole-pump-no-water", "Pump runs, no water"),
+                                    ("gentle-low-flow-fixes", "Thin-flow tap fixes"),
+                                    ("borehole-water-and-your-kettle", "Borehole water, handled")],
     }
     for slug, ti, dek, b in HOME_ARTICLES:
         key = HOME_SLUG_SECT[slug]

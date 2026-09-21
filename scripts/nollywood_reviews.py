@@ -212,6 +212,28 @@ dict(
 "What it risks, it mostly wins: the ending refuses the tidy case, the suspect list outlives its novelty deliberately, and the film trusts an audience to sit with an unresolved question about who the new nation is actually for. Where it drifts is in the middle - the hotel's subplots need the tightening the first and last acts have.",
 "Weight, on this desk's scale, means what a film changed or proved possible: October 1 proved the industry's biggest budgets could aim at history and ambiguity instead of present-day spectacle, and it remains the standard the period-Nollywood attempts since have been measured against. Stream it for the craft, argue about the ending, keep the date in mind - the 1st of October is the joke and the thesis.",
          ]),
+    dict(slug="gangs-of-lagos", title="Gangs of Lagos", year=2023,
+         director="Jade Osiberu", country="Nigeria", language="English", runtime=None,
+         axes=dict(story=7.5, craft=7.5, vision=7.5, weight=8.5), score=7.75,
+         date="2026-09-23",
+         verdict="Four friends, one campus and the cult of the 'arean' - the film that made the street epic fashionable again, and earned it",
+         body=[
+"The 1990s Lagos campus as the industry has never quite filmed it: not the comedic hustle, not the village morality play, but a period gang epic with a Greek tragedy's engine - boys in love with their own legend, a city that needs the legend more than they need it. Osiberu adapted Jikena Jones's novel with a producer's instinct for spectacle and a writer's patience for the slow turn from brotherhood to blood feud, and the result is the closest Nollywood has come to a genre crowd-film for a multiplex generation.",
+"The craft is the argument: the '68-era costumes and yellow Mazda menace, the choreography of a crowd where every fist has a reason, and a cast - most of them new - who are directed to the frame rather than to the camera. The desk notes for the record that the period Lagos of this film is a stylised Lagos, a music-video memory of the streets; what the film does with the stylisation is the argument, not whether the paint was that bright.",
+"The story pays for its spectacle unevenly: the middle loses a thread between the boys, the female characters exist mostly as consequence rather than cause, and the ending earns its grief while rushing the step that caused it. What it does at full power is the cult itself - the way a campus becomes a recruiting ground because nobody offers the boys a better story about themselves.",
+"Weight is where this shelf keeps its scorecards honest, and here the ledger is simple: this film minted the 'street epic' cycle the industry chased for two years, proved the period-action genre could fill cinemas outside the comedy lane, and launched a cast whose names now headline slate announcements. A flawed genre piece that changed the slate is exactly what a five-axis scale exists to score - craft and weight up, story's loose middle down.",
+         ]),
+    dict(slug="93-days", title="93 Days", year=2016,
+         director="Steve Gukas", country="Nigeria", language="English", runtime=None,
+         axes=dict(story=7.0, craft=7.0, vision=7.5, weight=8.5), score=7.5,
+         date="2026-09-23",
+         verdict="The Ebola outbreak thriller that Nigeria needed before it knew it needed it - procedural, unshowy and all the braver for it",
+         body=[
+"July 2014: a traveller arrives in Lagos from Abidjan, already dying of Ebola, and the film follows the 93 days the city's containment took - not through a hero's arc but through contact lists, quarantines, a doctor who knew first and the machinery of a state deciding not to collapse. Gukas made the rare Nigerian film whose subject is competence, and made it thrilling by insisting on the paperwork.",
+"The craft is procedural-clean: an ensemble pulled between the heroic and the bureaucratic, a script that trusts the timeline, and an honesty about Lagos's density that turns the city itself into the infection's best ally. What it cannot fully escape is the docudrama's pull - speeches arrive where scenes could have carried the same truth, and the villains are the ones the newsreels already provided.",
+"The story's weakness is also its thesis: the drama here is that nobody gets a movie moment, because the outbreak was stopped by ordinary people doing the unglamorous thing at the right hour. The desk will take that trade once a year, at least; a Nigerian film that argues for public health systems instead of individual great men is doing something genre cinema rarely attempts.",
+"Weight, unambiguously: 93 Days is the film Nigeria's Ebola response produced against all forecasts - the containment Lagos achieved became the WHO's case study, and this film is the country's own record of it, released while the memory was still a policy argument. Every subsequent outbreak film in the industry borrows its premise: that the thriller is in the contact list. That is a shelf entry for life.",
+         ]),
 ]
 
 REVIEWS_BY_SLUG = {r["slug"]: r for r in REVIEWS}
