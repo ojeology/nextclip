@@ -201,6 +201,17 @@ dict(
      "The weight: Kenya's Oscar submission in the Foreign Language Film year it won an audience prize circuit across two continents, and proof that a national film industry can be built from a village outward, with the skills left behind on set as the real export. For this desk's shelf, it sits where the canon needed a corner: cinema that treats its own audience's children as the crew.",
     ],
 ),
+    dict(slug="october-1", title="October 1", year=2014,
+         director="Kunle Afolayan", country="Nigeria", language="English", runtime=None,
+         axes=dict(story=7.5, craft=8.0, vision=8.0, weight=8.5), score=8.0,
+         date="2026-09-22",
+         verdict="A murder in a colonial hotel becomes a nation holding its breath - period Nollywood with the nerve to be ambiguous",
+         body=[
+"Northern Nigeria, on the eve of independence, and the whole film happens in and around a hotel where the empire's last party is being arranged. A body appears; a constable from the village - honest, out of his depth - has to hold the line until the British hand over. It is a whodunit only in the way the best of them are: the mystery is a doorway into who gets to define order when the people defining it are leaving.",
+"The period work is not decoration; it is the argument. Afolayan builds 1960 with the patience of someone who knows that independence is being staged as a hotel's menu, uniform and dance floor, and the cinematography lets the emptiness of those props speak. The constable's dilemma - law as an imported instrument he has genuinely come to respect - is the kind of paradox Nollywood thrillers had barely touched before, and still rarely touch as well.",
+"What it risks, it mostly wins: the ending refuses the tidy case, the suspect list outlives its novelty deliberately, and the film trusts an audience to sit with an unresolved question about who the new nation is actually for. Where it drifts is in the middle - the hotel's subplots need the tightening the first and last acts have.",
+"Weight, on this desk's scale, means what a film changed or proved possible: October 1 proved the industry's biggest budgets could aim at history and ambiguity instead of present-day spectacle, and it remains the standard the period-Nollywood attempts since have been measured against. Stream it for the craft, argue about the ending, keep the date in mind - the 1st of October is the joke and the thesis.",
+         ]),
 ]
 
 REVIEWS_BY_SLUG = {r["slug"]: r for r in REVIEWS}
