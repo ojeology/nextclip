@@ -4389,6 +4389,9 @@ HOME_SLUG_SECT.update({s: "understand" for s in ("electric-shock-first-response"
 HOME_SLUG_SECT.update({s: "maintain" for s in ("grease-trap-yard-clean", "rainwater-harvest-drum", "changeover-switch-care")})
 HOME_SLUG_SECT.update({s: "maintain" for s in ("air-cooler-vs-fan-care", "wet-waste-bin-smell", "towels-smell-fresh", "gas-cylinder-change-safely")})
 HOME_SLUG_SECT.update({s: "understand" for s in ("barred-windows-and-fire-escape", "extension-cords-temporary-power")})
+HOME_SLUG_SECT.update({s: "maintain" for s in ("jerrycan-fuel-storage-safely", "bathroom-grout-mould", "rats-in-the-house")})
+HOME_SLUG_SECT.update({s: "understand" for s in ("bedbugs-first-signs", "mosquito-coils-and-plug-ins")})
+HOME_SLUG_SECT.update({s: "fix" for s in ("running-toilet-cistern-fix",)})
 
 
 def _home_theme_init():
@@ -5194,6 +5197,12 @@ def home_pages():
         "gas-cylinder-change-safely": [("gas-cylinder-safety", "Gas cylinder safety"),
                                         ("cooking-oil-fire-plan", "The oil-fire plan"),
                                         ("harmattan-fire-safety-house", "Harmattan fire safety")],
+        "jerrycan-fuel-storage-safely": [("generator-service-calendar", "Generator service calendar"),("generator-rainy-season-safety", "Generator in the rain"),("cooking-oil-fire-plan", "The oil-fire plan")],
+        "running-toilet-cistern-fix": [("toilet-clog-how-to-plunge", "Plunge & clear"),("pump-short-cycling-waterhammer", "Short cycling"),("water-storage-safety", "Safe water storage")],
+        "bedbugs-first-signs": [("mattress-humidity-care", "Mattress humidity care"),("cockroach-fridge-motor-bay", "Roaches in the motor bay"),("sofa-leather-vinyl-care", "Sofa & vinyl care")],
+        "bathroom-grout-mould": [("paint-peeling-walls-bathroom", "Bathroom paint & peel"),("mould-after-a-flooded-room", "Mould after flooding"),("musty-wardrobe-clothes-rainy", "The musty wardrobe")],
+        "rats-in-the-house": [("weevils-in-rice-and-beans", "Weevils in the store"),("cockroach-fridge-motor-bay", "Roaches in the motor bay"),("generator-rainy-season-safety", "Generator in the rain")],
+        "mosquito-coils-and-plug-ins": [("compound-mosquito-control-night", "Compound mosquito control"),("gutters-and-downpipes", "Gutters & downpipes"),("jerrycan-fuel-storage-safely", "Fuel storage safely")],
     }
     for slug, ti, dek, b in HOME_ARTICLES:
         key = HOME_SLUG_SECT[slug]
