@@ -4373,6 +4373,8 @@ HOME_SLUG_SECT.update({s: "understand" for s in ("barred-windows-and-fire-escape
 HOME_SLUG_SECT.update({s: "maintain" for s in ("jerrycan-fuel-storage-safely", "bathroom-grout-mould", "rats-in-the-house")})
 HOME_SLUG_SECT.update({s: "understand" for s in ("bedbugs-first-signs", "mosquito-coils-and-plug-ins")})
 HOME_SLUG_SECT.update({s: "fix" for s in ("running-toilet-cistern-fix",)})
+HOME_SLUG_SECT.update({s: "maintain" for s in ("washing-machine-smell-and-filter", "freezer-frost-buildup", "septic-tank-emptying-routine")})
+HOME_SLUG_SECT.update({s: "fix" for s in ("bath-silicone-reseal", "ceiling-light-flicker-fix", "gas-cooker-wont-ignite")})
 
 
 def _home_theme_init():
@@ -5184,6 +5186,12 @@ def home_pages():
         "bathroom-grout-mould": [("paint-peeling-walls-bathroom", "Bathroom paint & peel"),("mould-after-a-flooded-room", "Mould after flooding"),("musty-wardrobe-clothes-rainy", "The musty wardrobe")],
         "rats-in-the-house": [("weevils-in-rice-and-beans", "Weevils in the store"),("cockroach-fridge-motor-bay", "Roaches in the motor bay"),("generator-rainy-season-safety", "Generator in the rain")],
         "mosquito-coils-and-plug-ins": [("compound-mosquito-control-night", "Compound mosquito control"),("gutters-and-downpipes", "Gutters & downpipes"),("jerrycan-fuel-storage-safely", "Fuel storage safely")],
+        "washing-machine-smell-and-filter": [("towels-smell-fresh", "Towels that smell sour"),("sink-trap-clean-smell", "Sink trap smells"),("floor-drain-backflow", "Drain smells outdoors")],
+        "bath-silicone-reseal": [("bathroom-grout-mould", "Grout mould, killed not hidden"),("paint-peeling-walls-bathroom", "Bathroom paint & peel"),("condensation-ventilation-that-works", "Damp & ventilation")],
+        "freezer-frost-buildup": [("fridge-not-cooling", "Fridge not cooling"),("fridge-food-safety-power-cut", "Outage food rules"),("weevils-in-rice-and-beans", "Pantry pests")],
+        "ceiling-light-flicker-fix": [("burning-plastic-smell-socket", "The socket burn smell"),("wiring-red-flags-in-your-home", "Wiring red flags"),("circuit-breaker-tripped-not-mystery", "Breaker tripped, decoded")],
+        "septic-tank-emptying-routine": [("soakaway-filling-up-signs", "Soakaway signs"),("grease-trap-yard-clean", "The yard grease trap"),("sewer-smell-after-trip", "Sewer smell after a trip")],
+        "gas-cooker-wont-ignite": [("gas-cylinder-change-safely", "Cylinder swap, safely"),("gas-cylinder-safety", "Gas cylinder safety"),("cooking-oil-fire-plan", "The oil-fire plan")],
     }
     for slug, ti, dek, b in HOME_ARTICLES:
         key = HOME_SLUG_SECT[slug]
