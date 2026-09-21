@@ -279,6 +279,29 @@ dict(
 "Weight decides the finals on this shelf and 76's is simple to state: before it, the first republic's end was a topic Nigerian cinema handled through allegory or ignored; after it, a whole generation's entry point to 1966 is a film two of them cried in, and the historiography argument it started has not finished running in the country's newspapers. Judged as cinema it is very good; judged as the moment a film industry agreed its own past was worth the research, it is a landmark - which is exactly the arithmetic that puts it on this shelf at this number.",
          ]),
 
+    dict(slug="isoken", title="Isoken", year=2017,
+         director="Jadesola Osiberu", country="Nigeria", language="English", runtime=None,
+         axes=dict(story=7.0, craft=7.0, vision=7.0, weight=6.5), score=6.875,
+         date="2026-09-26",
+         verdict="The rom-com that made a title a thesis: a princess who refuses the crown of the wedding industry, played at a full human tempo",
+         body=[
+"A young Edo woman who has spent a lifetime being addressed as royalty by strangers and being scheduled for marriage by relatives goes home for a family wedding with one refusal on her lips - the desk calls this the most quietly radical premise the Nigerian rom-com produced in its streaming decade: the rebellion is not against the groom candidates, it is against the noun. The princess problem is that the title is a leash, and the film takes the leash seriously while keeping its comedy light.",
+"The craft is warm precision: the family compound scenes are blocked like actual families - everyone talking, nobody waiting their turn - the dialogue carries the bilingual music of Benin City drawing-room English, and the leads sell romance as negotiation rather than destiny, which is the harder trick. The direction's signature is restraint at the moments a lesser film would swell the score; this desk files the funerals and the family conferences among the best-directed scenes in the shelf's modern wing.",
+"Entered honestly against the ledger: the third act buys the convention it spent two hours dodging - the grand gesture arrives on schedule, and the family subplots resolve a little faster than their messes allowed. The film's Lagos-side fashion gloss also thins its texture next to the Benin sequences, where it is most itself. None of this is fatal; a rom-com is judged by whether the couple earns the close, and these two mostly do.",
+"Weight on this shelf is the industry's own memory, and Isoken's entry is real in two directions: it proved the mid-budget romantic comedy could travel the world through streaming shelves and carry a specifically Nigerian - specifically Edo - cultural argument doing it, and it made 'the princess' a running phrase in the country's comedy about what families do to their successful daughters. Judged as a film, a good one with a rushed ending; judged as a moment, the one that let a hundred lighter films argue with nouns after it.",
+         ]),
+    dict(slug="the-black-book", title="The Black Book", year=2023,
+         director="Editi Effiong", country="Nigeria", language="English", runtime=None,
+         axes=dict(story=6.5, craft=7.0, vision=7.5, weight=6.0), score=6.75,
+         date="2026-09-26",
+         verdict="A grief thriller with a thesis stapled to it: the system is not broken, it was built this way - and the film trusts its working-class ensemble more than its own plot does",
+         body=[
+"A teenager's life ends in a compound with gates, money moves through the machinery of police files and court papers, and a mother with money and a father with access discover the difference between grieving and prosecuting. The Black Book opens as a revenge thriller and keeps interrupting itself with the quieter, angrier observation that revenge would require a system capable of being satisfied - the desk's shorthand for the whole film: a heist plot in service of an audit of who the country's laws protect.",
+"The craft is the film's strongest argument. The camera treats Lagos as architecture - power corridors photographed as corridors, the courts as a building where cruelty is procedural rather than personal - and the direction's best decision is the tonal casting of the ensemble: the fixers, drivers and beauticians who carry the second half are played with a working-day realism that keeps the thriller from becoming cosplay. The writing around them - the film's actual engine room - is where this desk would put the grade: the plan is assembled like a community, and the community is shot like it means it.",
+"The ledger's debits belong to the first half: the thriller scaffolding leans on reveals the audience is allowed to see coming, and the pivot from procedural grief to vigilante operation asks more coincidence than the story's realism can afford. There is also a temptation, in a film about bought justice, to let its own villains be bought too cheaply - a few cardboard turns that its leads' committed faces cannot quite sell. The film survives its shortcuts because it never sells the mother's grief as a genre beat; that spine is straight even when the plot bends.",
+"Weight, measured as what a film moved: The Black Book became the country's loudest argument that its crime thrillers are one long case file on impunity - critics, lawyers and the phrase 'black book' entered the street's vocabulary for the ledger of purchased files, and its global streaming debut made that vocabulary everyone's. Judged as cinema, a gripping second-half film; as a document of a national mood in 2023, the shelf's most quotable entry in years, which is precisely the kind of weight this desk keeps a column for.",
+         ]),
+
 ]
 
 REVIEWS_BY_SLUG = {r["slug"]: r for r in REVIEWS}

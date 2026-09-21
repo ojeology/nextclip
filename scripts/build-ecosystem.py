@@ -4375,6 +4375,9 @@ HOME_SLUG_SECT.update({s: "understand" for s in ("borehole-water-taste-smell",)}
 HOME_SLUG_SECT.update({s: "maintain" for s in ("window-weep-holes", "doors-sticking-rainy-season")})
 HOME_SLUG_SECT.update({s: "understand" for s in ("soakaway-filling-up-signs", "fridge-food-safety-power-cut")})
 HOME_SLUG_SECT.update({s: "fix" for s in ("cockroach-fridge-motor-bay", "tv-mount-on-block-wall")})
+HOME_SLUG_SECT.update({s: "fix" for s in ("burning-plastic-smell-socket", "toilet-clog-how-to-plunge")})
+HOME_SLUG_SECT.update({s: "maintain" for s in ("water-tank-annual-clean", "generator-rainy-season-safety")})
+HOME_SLUG_SECT.update({s: "understand" for s in ("cooking-oil-fire-plan", "wall-cracks-when-serious")})
 
 
 def _home_theme_init():
@@ -5090,6 +5093,24 @@ def home_pages():
         "tv-mount-on-block-wall": [("wiring-red-flags-in-your-home", "Wiring red flags"),
                                     ("ceiling-fan-mounting-right", "Mounting a ceiling fan right"),
                                     ("harmattan-and-your-electronics", "Harmattan and your electronics")],
+        "burning-plastic-smell-socket": [("wiring-red-flags-in-your-home", "Wiring red flags"),
+                                          ("circuit-breaker-tripped-not-mystery", "Breaker tripped, decoded"),
+                                          ("gas-cylinder-safety", "Gas cylinder safety")],
+        "water-tank-annual-clean": [("water-storage-safety", "Water storage, the rules"),
+                                     ("borehole-water-and-your-kettle", "Borehole water, handled"),
+                                     ("tank-overflow-pump-dry", "Tank overflow & dry-run")],
+        "toilet-clog-how-to-plunge": [("toilet-weak-flush-fixes", "Weak flush, fixed"),
+                                       ("floor-drain-backflow", "Drain backflow"),
+                                       ("sewer-smell-after-trip", "Sewer smell after a trip")],
+        "generator-rainy-season-safety": [("the-battery-room", "The battery room"),
+                                            ("generator-vs-inverter-nigeria", "Generator vs inverter"),
+                                            ("rainy-season-home-checklist", "The pre-rains checklist")],
+        "cooking-oil-fire-plan": [("gas-cylinder-safety", "Gas cylinder safety"),
+                                    ("harmattan-fire-safety-house", "Harmattan fire safety"),
+                                    ("kitchen-hygiene-routine", "Kitchen hygiene routine")],
+        "wall-cracks-when-serious": [("doors-sticking-rainy-season", "Sticky doors in the rains"),
+                                       ("ceiling-plaster-sagging-repair", "Plaster sag & re-screw"),
+                                       ("paint-peeling-walls-bathroom", "Peeling bathroom paint")],
     }
     for slug, ti, dek, b in HOME_ARTICLES:
         key = HOME_SLUG_SECT[slug]
