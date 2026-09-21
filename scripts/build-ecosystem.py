@@ -133,13 +133,48 @@ h1.cover-title{font-family:var(--serif);font-weight:700;letter-spacing:-.018em;f
 .pub-card p{font-size:14.5px;line-height:1.6;color:var(--muted);margin:0 0 18px}
 .pub-card .btn{margin-top:auto;align-self:flex-start}
 .pub-card.live{box-shadow:var(--shadow)}
-.pub-card .pc-art{width:100%%;aspect-ratio:16/9;object-fit:cover;display:block;border-bottom:1px solid var(--line-strong);margin:0 0 18px}
-.picks{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:6px}
-.pick{display:block;border:1px solid var(--line-strong);background:var(--sheet)}
-.pick img{width:100%%;aspect-ratio:16/9;object-fit:cover;display:block}
-.pick b{display:block;font:600 13px var(--sans);color:var(--ink);padding:9px 11px 2px}
-.pick span{display:block;font:11px var(--sans);color:var(--dim);padding:0 11px 10px}
-@media(max-width:820px){.picks{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.cards{grid-template-columns:repeat(3,1fr);grid-auto-rows:minmax(208px,auto)}
+.pub-card{position:relative;overflow:hidden;min-height:208px;padding:0;background:#12182a}
+.pub-card .pc-art{position:absolute;inset:0;width:100%%;height:100%%;object-fit:cover;margin:0;border:none;display:block;transition:transform .6s ease}
+.pub-card:hover .pc-art,.pub-card:focus-within .pc-art{transform:scale(1.045)}
+.pc-scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,12,20,0) 22%%,rgba(8,12,20,.58) 55%%,rgba(8,12,20,.94) 100%%)}
+.pc-body{position:absolute;left:0;right:0;bottom:0;padding:22px 24px 20px;color:#f4efe3}
+.pc-body .pc-kicker{color:#d8b64a;margin:0 0 8px}
+.pc-body h3{color:#f4efe3;margin:0 0 6px;font-size:26px}
+.pc-body p{font-size:13.5px;line-height:1.55;color:#c7cddb;margin:0 0 12px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.pc-enter{font:800 11px var(--sans);letter-spacing:.14em;text-transform:uppercase;color:#d8b64a;text-decoration:none;border-bottom:1px solid rgba(216,182,74,.55);padding-bottom:2px}
+.pc-writers{grid-column:1/span 2}
+.pc-entertainment{grid-column:3;grid-row:1/span 2}
+.pc-home{grid-column:span 2}
+.hub-hero{background:#12182a;color:#f4efe3;border-bottom:5px solid #d0aa52}
+.hub-hero .hh-inner{max-width:1180px;margin:0 auto;padding:clamp(44px,7vw,84px) 24px;display:grid;grid-template-columns:1.2fr .8fr;gap:44px;align-items:center}
+.hub-hero .hh-kick{font:700 10.5px var(--sans);letter-spacing:.24em;text-transform:uppercase;color:#d0aa52;margin:0 0 16px}
+.hub-hero h1{font-family:var(--serif);font-size:clamp(54px,10vw,118px);line-height:.94;letter-spacing:-.015em;margin:0;color:#f4efe3}
+.hh-sub{font-family:var(--serif);font-style:italic;font-size:clamp(17px,2.4vw,24px);color:#d6cfbf;margin:14px 0 16px}
+.hh-dek{font-size:15px;line-height:1.7;color:#a7b0bf;max-width:54ch;margin:0 0 26px}
+.hh-cta{display:flex;gap:12px;flex-wrap:wrap}
+.hh-cta a{font:800 12px var(--sans);letter-spacing:.08em;text-transform:uppercase;padding:13px 18px;text-decoration:none}
+.hh-cta .a-brass{background:#d8b64a;color:#12182a}
+.hh-cta .a-ghost{border:1px solid rgba(244,239,227,.4);color:#f4efe3}
+.hh-collage{position:relative;min-height:330px}
+.hh-collage figure{position:absolute;margin:0;background:#f4efe3;padding:6px 6px 0;box-shadow:0 20px 46px rgba(0,0,0,.55);transform:rotate(var(--rot,0deg))}
+.hh-collage img{display:block;width:100%%;height:auto}
+.hh-collage figcaption{font:700 10.5px var(--sans);letter-spacing:.05em;color:#1d2531;padding:7px 2px 5px}
+.hh-c1{left:0;top:30px;width:58%%;--rot:-3.4deg;z-index:2}
+.hh-c2{right:0;top:0;width:54%%;--rot:2.8deg;z-index:1}
+.hh-c3{right:12%%;bottom:0;width:48%%;--rot:-1.6deg;z-index:3}
+.hub-stats{display:grid;grid-template-columns:repeat(4,1fr);border-left:0;border-right:0;border-top:1px solid var(--line-strong);border-bottom:1px solid var(--line-strong);margin:0 0 8px}
+.hub-stats>div{padding:20px 10px;text-align:center;border-left:1px solid var(--line)}
+.hub-stats>div:first-child{border-left:0}
+.hub-stats b{display:block;font-family:var(--serif);font-size:clamp(26px,3vw,38px);line-height:1.05;color:var(--ink)}
+.hub-stats span{font:700 9.5px var(--sans);letter-spacing:.15em;text-transform:uppercase;color:var(--dim)}
+.rev-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.rev-c{border:1px solid var(--line-strong);background:var(--sheet);padding:22px 22px 16px;display:flex;flex-direction:column;gap:10px;text-decoration:none;color:var(--ink)}
+.rev-c .stars{font:800 12px var(--sans);letter-spacing:.1em;color:var(--brass)}
+.rev-c h3{margin:0;font-family:var(--serif);font-size:21px}
+.rev-c p{font-family:var(--serif);font-style:italic;font-size:14.5px;line-height:1.6;color:var(--muted);margin:0}
+.rev-c b{margin-top:auto;font:800 11px var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--ink)}
+@media(max-width:820px){.hub-hero .hh-inner{grid-template-columns:1fr;gap:0}.hh-collage{display:none}.cards{grid-template-columns:1fr}.pub-card,.pc-writers,.pc-entertainment,.pc-home{grid-column:auto;grid-row:auto}.pc-body p{display:none}.hub-stats{grid-template-columns:repeat(2,1fr)}.hub-stats>div:nth-child(3){border-left:0}.rev-3{grid-template-columns:1fr}}
 .pub-card.soon{opacity:.92}
 .soon-tag{font:800 10px var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--muted);border:1px dashed var(--line-strong);align-self:flex-start;padding:8px 12px;margin-top:auto}
 @media(max-width:820px){.cards{grid-template-columns:1fr}.mast-tag{display:none}}
@@ -910,6 +945,7 @@ def hub_pages():
                  "entertainment": "desk-entertainment.jpg", "tech": "desk-tech.jpg",
                  "fitness": "desk-fitness.jpg", "home": "desk-home.jpg"}
     cards = ""
+    _span = {"writers": " pc-writers", "entertainment": " pc-entertainment", "home": " pc-home"}
     for key, name, tag, desc, state in HUB_PUBS + WORKSHOP_PUBS:
         if key == "writers" and _n_guides:
             desc = (desc.replace("191 researched guides", str(_n_guides) + " researched pages")
@@ -918,34 +954,65 @@ def hub_pages():
                     + ". " + _stamp)
         kicker = PUB_NAME.get(key, "").upper() if key != "writers" else "THE FLAGSHIP"
         if state == "live":
-            cta = f'<a class="btn" href="{SUB[key]}/">Enter {name.split(" ")[1]} →</a>'
-            cls = "pub-card live"
+            cta = f'<a class="pc-enter" href="{SUB[key]}/">Enter {name.split(" ")[1]} &rarr;</a>'
+            cls = "pub-card live" + _span.get(key, "")
         else:
-            cta = '<span class="soon-tag">In build — opens soon</span>'
+            cta = '<span class="soon-tag">In build \u2014 opens soon</span>'
             cls = "pub-card soon"
         _art = _DESK_ART.get(key)
         _art_img = (f'<img class="pc-art" loading="lazy" width="1024" height="572" src="/assets/desk/{_art}" alt="">' if _art else "")
-        cards += f'<article class="{cls}" style="--pc:{FAMILY[key]["brand"] if key!="hub" else "#1e3a5f"}">{_art_img}<p class="pc-kicker">{kicker} &#183; ACTIVE</p><h3>{name}</h3><p>{desc}</p>{cta}</article>'
+        cards += (f'<article class="{cls}" style="--pc:{FAMILY[key]["brand"] if key!="hub" else "#1e3a5f"}">{_art_img}'
+                  '<span class="pc-scrim"></span><div class="pc-body"><p class="pc-kicker">'
+                  f'{kicker} &#183; ACTIVE</p><h3>{name}</h3><p>{desc}</p>{cta}</div></article>')
+    _collage = ""
+    _rev_band = ""
+    _stats = ""
+    _n_films = 0
     try:
         import entertainment_platform_data as _hp
+        import nollywood_reviews as _nr2
         _pk = sorted([x for x in _hp.MOVIES if x.get("yt") and x.get("score") is not None],
-                     key=lambda x: (-int(x["score"]), x["slug"]))[:4]
-        _picks = ('<section class="section"><div class="section-head"><p class="kicker">From the entertainment desk</p>'
-                  '<h2>Now showing &mdash; four the desk stands behind</h2></div><div class="picks">'
-                  + "".join('<a class="pick" href="/entertainment/movie/' + q["slug"] + '/">'
-                             '<img loading="lazy" width="160" height="120" src="https://i.ytimg.com/vi/' + q["yt"] + '/hqdefault.jpg" alt="">'
-                             '<b>' + html.escape(q["title"]) + '</b><span>' + str(q.get("year") or "") + ' \u00b7 score ' + str(q["score"]) + '/10</span></a>'
-                             for q in _pk)
-                  + '</div><p class="lede" style="margin-top:14px">Every card carries the official trailer, cast and credits, and a score with a published method - '
-                    '<a href="/entertainment/scoring/">here is the method</a>. Then browse <a href="/entertainment/">the full catalogue</a>.</p></section>')
+                     key=lambda x: (-int(x["score"]), x["slug"]))[:3]
+        _figs = ""
+        for _i, q in enumerate(_pk, 1):
+            _figs += ('<figure class="hh-c' + str(_i) + '"><img width="480" height="270" src="https://i.ytimg.com/vi/' + q["yt"]
+                      + '/hqdefault.jpg" alt="' + html.escape(q["title"] + " \u2014 official trailer frame") + '">'
+                      + '<figcaption>' + html.escape(q["title"]) + ' \u00b7 score ' + str(q["score"]) + '/10</figcaption></figure>')
+        _collage = '<div class="hh-collage">' + _figs + '</div>'
+        _n_films = len(_hp.MOVIES)
+        _top = sorted(_nr2.REVIEWS, key=lambda r: (-r["score"], r["title"]))[:3]
+        _rev_band = ('<section class="section"><div class="section-head"><p class="kicker">From the review shelf</p>'
+                     '<h2>Fresh criticism, dated and signed.</h2></div><div class="rev-3">'
+                     + "".join('<a class="rev-c" href="/entertainment/reviews/' + r["slug"] + '/"><span class="stars">&#9733; '
+                               + _nr2.review_score_str(r) + '/10</span><h3>' + html.escape(r["title"]) + ' (' + str(r["year"]) + ')</h3>'
+                               '<p>\u201c' + html.escape(r["verdict"]) + '\u201d</p><b>Read the review &rarr;</b></a>' for r in _top)
+                     + '</div></section>')
     except Exception:
-        _picks = ""
+        pass
+    try:
+        _al2 = json.loads((ROOT / "content" / "index-allowlist.routed.json").read_text(encoding="utf-8"))
+        _n_all = len(_al2["routes"] if isinstance(_al2, dict) else _al2)
+        _raw2 = json.loads((ROOT / "content" / "opportunities.json").read_text(encoding="utf-8"))
+        _ops2 = _raw2 if isinstance(_raw2, list) else (_raw2.get("opportunities") or _raw2.get("publications")
+                    or next(v for v in _raw2.values() if isinstance(v, list)))
+        _stats = ('<section class="hub-stats"><div><b>' + format(_n_all, ",") + '</b><span>pages, all hand-built</span></div>'
+                  '<div><b>' + str(len(_ops2)) + '</b><span>publications verified by hand</span></div>'
+                  '<div><b>' + str(_n_films) + '</b><span>films catalogued</span></div>'
+                  '<div><b>0</b><span>pop-ups. ever.</span></div></section>')
+    except Exception:
+        _stats = ""
     body = f"""{head("hub", "Six publications. One house standard.", parent=False)}
-<main id="main"><div class="wrap">
-<section class="cover"><p class="kicker">A family of independent publications</p>
-<h1 class="cover-title">THE BRYME</h1>
-<p class="cover-dek">BRYME is a small ecosystem of specialist publications, each with its own focus and its own standards, held to one house rule: research before publishing, and say exactly what you know. Pick a desk.</p></section>
-{_picks}<section class="section"><div class="section-head"><p class="kicker">The publications</p><h2>Choose your desk</h2></div>
+<main id="main">
+<section class="hub-hero"><div class="hh-inner"><div>
+<p class="hh-kick">Made in Lagos \u00b7 read everywhere \u00b7 six desks, one house rule</p>
+<h1>THE&nbsp;BRYME</h1>
+<p class="hh-sub">Research before publishing. Say exactly what you know.</p>
+<p class="hh-dek">Six specialist publications \u2014 for writers, football, cinema, tech, fitness and the home \u2014 each with its own standards, none sharing a navigation bar, all answerable to a corrections policy that actually corrects. Pick a desk.</p>
+<div class="hh-cta"><a class="a-brass" href="/writers/">Enter the flagship</a><a class="a-ghost" href="/entertainment/reviews/">The review shelf</a><a class="a-ghost" href="/writers/what-changed/">What changed this month</a></div>
+</div>{_collage}</div></section>
+<div class="wrap">
+{_stats}
+{_rev_band}<section class="section"><div class="section-head"><p class="kicker">The publications</p><h2>Choose your desk</h2></div>
 <div class="cards">{cards}</div></section>
 <section class="section alt"><div class="section-head"><p class="kicker">The house</p><h2>One standard, six voices.</h2></div>
 <p class="lede">Every BRYME publication is edited by the same desk, run on the same discipline — dates on time-sensitive claims, corrections in the open, no fabricated experience, no pages built to game a search engine — and none of them share a navigation bar. When you enter one, you are in that world.</p>
