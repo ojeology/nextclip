@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- bryme-build hygiene: force content-hash change so the static overlay re-publishes this file -->
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel>
   <title>BRYME — writing opportunities, guides and verification</title><link>https://thebryme.com/</link><description>Legitimate paid-writing opportunities, practical guides and BRYME's firsthand verification record.</description><language>en-ng</language><lastBuildDate>Wed, 16 Sep 2026 12:00:00 +0000</lastBuildDate><atom:link href="https://thebryme.com/feed.xml" rel="self" type="application/rss+xml"/>
   <item><title>Westerly: $250 per poem, $500 for prose, $620 for comics</title><link>https://thebryme.com/writers/writing/westerly/</link><guid isPermaLink="true">https://thebryme.com/writers/writing/westerly/</guid><pubDate>Sun, 06 Sep 2026 12:00:00 +0000</pubDate><description>Westerly: $250 per poem, $500 for prose, $620 for comics</description></item>
