@@ -371,6 +371,29 @@ dict(
 "Weight on this desk's ledger counts what a film did for its industry's conversation: Something Necessary became the Kenyan feature the international festival circuit used to argue the country had a mature cinema beyond aid-agency documentary, its funding model - locally produced with regional co-production muscle - became the sentence other East African producers quoted for years, and its survivor's-gaze framing quietly taught the region's film schools a way to film the 2008 aftermath that journalism could not reach. A small, exact, load-bearing film - which is the shelf's highest compliment for the films that never asked to be big.",
          ]),
 
+    dict(slug="citation", title="Citation", year=2020,
+         director="Kunle Afolayan", country="Nigeria / Ghana", language="English", runtime=None,
+         axes=dict(story=7.0, craft=7.0, vision=7.0, weight=6.5), score=6.875,
+         date="2026-09-30",
+         verdict="A diploma as a hostage: the blackmail chamber as West African allegory, and the director's streaming-era film that trusts silence over speeches",
+         body=[
+"A young woman arrives at a university gate with everything her family spent behind her - and finds the gate guarded not by standards but by appetite: someone with a pen decides whether her future is real, and the negotiation that follows is the whole film. Citation takes the most institutional kind of corruption, the kind no one prosecutes because everyone pays it, and builds a chamber drama out of one question: what does a person surrender to be allowed in?",
+"The craft is Afolayan's controlled streaming-era mode: frames composed like documents - doors, desks, certificates and the glass partitions of authority - score held low, and a lead performance built on refusal rather than pleading, which lets the film dramatize the quiet violence of bureaucracy without a single shout. The desk files the campus night work among the most patient light the shelf has graded this era; the production design never lets the audience forget the building is the antagonist.",
+"The honest ledger: the middle hour withholds its turn a scene too long, one supporting figure resolves his arc on a convenience the script should have earned, and the finale's speech states in words what the images had already proved - the temptation of the message film to explain itself. Held fairly: these are the flaws of a director choosing restraint over courtroom heat, and the restraint is also why the ending lands in the chest rather than the pulse.",
+"Weight: the film entered the conversation the platform's West African slate was supposed to be about - who gets to tell whom a story, in what language, at what budget - and it made a corruption that every graduate of the region recognises into an internationally-legible thriller without a single lecture. As cinema, a taut chamber film with two soft scenes; as the industry's proof that a story about a forged letter can stand next to any import on the same shelf - which, in 2020, was worth the score.",
+         ]),
+    dict(slug="felcite", title="Félicité", year=2017,
+         director="Alain Gomis", country="France / Senegal", language="French / Lingala", runtime=None,
+         axes=dict(story=7.5, craft=8.0, vision=8.5, weight=7.0), score=7.75,
+         date="2026-09-30",
+         verdict="Kinshasa by night as a mother's single errand: one injury, one sum of money, one city refused to be scenery - African arthouse at its most unsentimental and most musical",
+         body=[
+"A singer at a Kinshasa club, a motorcycle accident on a wet night, and a hospital that asks for a deposit before it asks for insurance: Félicité reduces its plot to a mother spending one night assembling the money her son's leg costs, and in that reduction finds an entire city - its noise, its grace, its arithmetic of favors. The desk puts this on the shelf against the grain of every drama it resembles: nothing is explained about Congo to anyone, and the explanation's absence is the film's respect.",
+"The craft is a music film in disguise: the club's sets are not interludes but the story's own engine - Félicité sings her waiting, and the city's soundscape is cut with a sound designer's precision - while the camera moves through Kinshasa like it belongs to no one and everyone. Véro Tshanda Beya's lead performance carries the film's hardest trick, dignity without defiance, grief without petition; the direction finds the one register the subject deserves and refuses to leave it.",
+"The ledger's debits are the ones the arthouse label warns about: a few late-night encounters strain toward parable, and a visitor's subplot with a foreign aid worker reads as the film's one borrowed gaze - the desk's own caveat is that the sequence is short and the city reclaims the picture immediately, but it is a seam. Otherwise: patience some viewers will feel as slowness, and slowness others will feel as the only honest tempo for a woman with one night and no money.",
+"Weight: a film from Senegal and France shot in Congo with a non-professional lead that took a major international jury's second prize and turned a Kinshasa club into the decade's most rewatched African screen space - the shelf's entry for the proof that African art cinema travels on its craft, not its geography, and the one the desk quotes when someone asks what 'world cinema' was actually for. Judged as cinema: eight-point craft, a singer's poise; judged as a night in one city told without pity - which is its own argument in a festival ecosystem that often asked for pity.",
+         ]),
+
 ]
 
 REVIEWS_BY_SLUG = {r["slug"]: r for r in REVIEWS}

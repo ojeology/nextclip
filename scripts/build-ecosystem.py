@@ -1049,10 +1049,10 @@ def hub_pages():
     body = f"""{head("hub", "Six publications. One house standard.", parent=False)}
 <main id="main">
 <section class="hub-hero"><div class="hh-inner"><div>
-<p class="hh-kick">Made in Lagos \u00b7 read everywhere \u00b7 six desks, one house rule</p>
+<p class="hh-kick">Written in Lagos \u00b7 read everywhere \u00b7 six desks, one house rule</p>
 <h1>THE&nbsp;BRYME</h1>
 <p class="hh-sub">Research before publishing. Say exactly what you know.</p>
-<p class="hh-dek">Six specialist publications \u2014 for writers, football, cinema, tech, fitness and the home \u2014 each with its own standards, none sharing a navigation bar, all answerable to a corrections policy that actually corrects. Pick a desk.</p>
+<p class="hh-dek">Six specialist publications \u2014 film, technology, fitness, home care, football and the working writer\u2019s desk. Each keeps its own shelf and its own standards; all share one discipline: research before publishing, dates on anything that can go stale, and corrections made in the open. Pick a desk.</p>
 <div class="hh-cta"><a class="a-brass" href="/writers/">Enter the flagship</a><a class="a-ghost" href="/entertainment/reviews/">The review shelf</a><a class="a-ghost" href="/writers/what-changed/">What changed this month</a></div>
 </div>{_collage}</div></section>
 <div class="wrap">
@@ -1066,7 +1066,7 @@ def hub_pages():
 {foot("hub")}"""
     hub_index = [("index.html placeholder", "", "", "")]
     return [("/", "THE BRYME — a family of independent publications",
-             "Nollywood and film reviews, freelance-writing rates, honest tech buying advice, Nigerian home care, no-gym fitness plans and a football transfers archive \u2014 six desks, one house standard.", body)]
+             "Six independent editorial desks \u2014 film, tech, fitness, home care, football and professional writing. Dated claims, open corrections, zero filler. Made in Lagos; written for everyone.", body)]
 
 
 # ------------------------------------------------------- 2. ENTERTAINMENT
@@ -4387,6 +4387,8 @@ HOME_SLUG_SECT.update({s: "understand" for s in ("hot-top-floor-ceiling",)})
 HOME_SLUG_SECT.update({s: "fix" for s in ("sink-trap-clean-smell", "gate-motor-wont-move")})
 HOME_SLUG_SECT.update({s: "understand" for s in ("electric-shock-first-response",)})
 HOME_SLUG_SECT.update({s: "maintain" for s in ("grease-trap-yard-clean", "rainwater-harvest-drum", "changeover-switch-care")})
+HOME_SLUG_SECT.update({s: "maintain" for s in ("air-cooler-vs-fan-care", "wet-waste-bin-smell", "towels-smell-fresh", "gas-cylinder-change-safely")})
+HOME_SLUG_SECT.update({s: "understand" for s in ("barred-windows-and-fire-escape", "extension-cords-temporary-power")})
 
 
 def _home_theme_init():
@@ -5174,6 +5176,24 @@ def home_pages():
         "changeover-switch-care": [("generator-rainy-season-safety", "Generator in the rain"),
                                       ("generator-vs-inverter-nigeria", "Generator vs inverter"),
                                       ("circuit-breaker-tripped-not-mystery", "Breaker tripped, decoded")],
+        "air-cooler-vs-fan-care": [("condensation-ventilation-that-works", "Damp & ventilation"),
+                                     ("window-weep-holes", "Window weep holes"),
+                                     ("rainy-season-home-checklist", "The pre-rains checklist")],
+        "barred-windows-and-fire-escape": [("grills-and-bars-rust-care", "Grills & rust care"),
+                                             ("harmattan-fire-safety-house", "Harmattan fire safety"),
+                                             ("window-weep-holes", "Window weep holes")],
+        "wet-waste-bin-smell": [("kitchen-hygiene-routine", "Kitchen hygiene routine"),
+                                 ("cockroach-fridge-motor-bay", "Roaches in the motor bay"),
+                                 ("fridge-food-safety-power-cut", "Outage food rules")],
+        "towels-smell-fresh": [("musty-wardrobe-clothes-rainy", "The musty wardrobe"),
+                                 ("indoor-drying-rainy-season", "Indoor drying in the rains"),
+                                 ("condensation-ventilation-that-works", "Damp & ventilation")],
+        "extension-cords-temporary-power": [("burning-plastic-smell-socket", "The socket burn smell"),
+                                               ("generator-rainy-season-safety", "Generator in the rain"),
+                                               ("changeover-switch-care", "Changeover switch care")],
+        "gas-cylinder-change-safely": [("gas-cylinder-safety", "Gas cylinder safety"),
+                                        ("cooking-oil-fire-plan", "The oil-fire plan"),
+                                        ("harmattan-fire-safety-house", "Harmattan fire safety")],
     }
     for slug, ti, dek, b in HOME_ARTICLES:
         key = HOME_SLUG_SECT[slug]
