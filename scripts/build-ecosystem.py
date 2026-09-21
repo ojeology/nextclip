@@ -4372,6 +4372,9 @@ HOME_SLUG_SECT.update({s: "understand" for s in ("kitchen-hygiene-routine",)})
 HOME_SLUG_SECT.update({s: "fix" for s in ("floor-drain-backflow", "ceiling-plaster-sagging-repair")})
 HOME_SLUG_SECT.update({s: "maintain" for s in ("mattress-humidity-care", "how-to-paint-a-room-right", "grills-and-bars-rust-care")})
 HOME_SLUG_SECT.update({s: "understand" for s in ("borehole-water-taste-smell",)})
+HOME_SLUG_SECT.update({s: "maintain" for s in ("window-weep-holes", "doors-sticking-rainy-season")})
+HOME_SLUG_SECT.update({s: "understand" for s in ("soakaway-filling-up-signs", "fridge-food-safety-power-cut")})
+HOME_SLUG_SECT.update({s: "fix" for s in ("cockroach-fridge-motor-bay", "tv-mount-on-block-wall")})
 
 
 def _home_theme_init():
@@ -5069,6 +5072,24 @@ def home_pages():
         "borehole-water-taste-smell": [("borehole-water-and-your-kettle", "Borehole water, handled"),
                                        ("water-storage-safety", "Water storage, the rules"),
                                        ("tank-overflow-pump-dry", "Tank overflow & dry-run")],
+        "window-weep-holes": [("rainy-season-home-checklist", "The pre-rains checklist"),
+                              ("ceiling-leak-11pm", "The 11pm leak protocol"),
+                              ("how-to-paint-a-room-right", "Painting, in the right order")],
+        "soakaway-filling-up-signs": [("sewer-smell-after-trip", "Sewer smell after a trip"),
+                                      ("borehole-water-taste-smell", "Borehole taste & smell"),
+                                      ("tank-overflow-pump-dry", "Tank overflow & dry-run")],
+        "fridge-food-safety-power-cut": [("fridge-not-cooling", "When the fridge stops cooling"),
+                                          ("generator-vs-inverter-nigeria", "Generator vs inverter"),
+                                          ("water-storage-safety", "Water storage, the rules")],
+        "cockroach-fridge-motor-bay": [("kitchen-hygiene-routine", "Kitchen hygiene routine"),
+                                        ("fridge-not-cooling", "When the fridge stops cooling"),
+                                        ("compound-mosquito-control-night", "Mosquito control at night")],
+        "doors-sticking-rainy-season": [("harmattan-and-wood", "Harmattan and your wood"),
+                                          ("how-to-paint-a-room-right", "Painting, in the right order"),
+                                          ("rainy-season-home-checklist", "The pre-rains checklist")],
+        "tv-mount-on-block-wall": [("wiring-red-flags-in-your-home", "Wiring red flags"),
+                                    ("ceiling-fan-mounting-right", "Mounting a ceiling fan right"),
+                                    ("harmattan-and-your-electronics", "Harmattan and your electronics")],
     }
     for slug, ti, dek, b in HOME_ARTICLES:
         key = HOME_SLUG_SECT[slug]
