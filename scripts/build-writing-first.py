@@ -71,7 +71,7 @@ def footer() -> str:
     return parent_line + '''<footer class="site-foot"><div class="wrap foot-grid">
   <div class="foot-brand"><a class="logo" href="/"><span class="logo-mark" aria-hidden="true"></span>BRYME</a><p>BRYME is a free writing resource — guides, tools, and verified opportunities to get published and paid.</p></div>
   <div class="foot-col"><b>How to write</b><a href="/start/">Beginner path</a><a href="/find/">What do you want to write?</a><a href="/intelligence/">Writing Intelligence</a><a href="/compare/">Compare formats</a><a href="/regional/">Writing conventions</a><a href="/learn/">Writing hub</a><a href="/learn/examples/">Examples</a><a href="/learn/dos-and-donts/">Dos &amp; don'ts</a><a href="/learn/types-of-writing/">Types of writing</a><a href="/learn/grammar-language/">Grammar</a></div>
-  <div class="foot-col"><b>Tools &amp; publish</b><a href="/tools/">Writing tools</a><a href="/templates/">Templates</a><a href="/checklists/">Checklists</a><a href="/writing/">Paid opportunities</a><a href="/writing-opportunities/">Browse by country</a><a href="/today/">Today&rsquo;s opportunities</a><a href="/newsletter/">Weekly digest</a><a href="/tracker/">Submission tracker</a><a href="/studio/">Writing Studio</a><a href="/tested/">BRYME Tested</a></div>
+  <div class="foot-col"><b>Tools &amp; publish</b><a href="/tools/">Writing tools</a><a href="/templates/">Templates</a><a href="/checklists/">Checklists</a><a href="/writing/">Paid opportunities</a><a href="/writing-opportunities/">Browse by country</a><a href="/today/">Today&rsquo;s opportunities</a><a href="/what-changed/">What changed</a><a href="/newsletter/">Weekly digest</a><a href="/tracker/">Submission tracker</a><a href="/studio/">Writing Studio</a><a href="/tested/">BRYME Tested</a></div>
   <div class="foot-col"><b>Trust</b><a href="/about/">About</a><a href="/verification/">What statuses mean</a><a href="/editorial-policy/">Editorial policy</a><a href="/corrections/">Corrections</a><a href="/privacy/">Privacy</a><a href="/contact/">Contact</a></div>
   <div class="foot-col"><b>Legal</b><a href="/terms/">Terms</a><a href="/disclaimer/">Disclaimer</a><a href="/disclosure/">Disclosure</a><a href="/copyright/">Copyright</a></div>
 </div><div class="wrap foot-bottom">© 2026 BRYME · Independent editorial project · No acceptance, publication or payment is guaranteed.</div></footer>'''
@@ -635,7 +635,7 @@ def drawer(current: str = "") -> str:
     return f'''<div id="drawer-backdrop"></div>
 <aside id="site-drawer" aria-hidden="true" aria-label="Site menu" role="dialog" aria-modal="true">
   <div class="drawer-head"><a class="logo" href="/"><span class="logo-mark" aria-hidden="true"></span>BRYME</a><button type="button" class="drawer-close" data-drawer-close aria-label="Close menu"><svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
-  {group("Start here", [("home", "/", "Home", "🏠"), ("start", "/start/", "Complete beginner path", "🧭"), ("find", "/find/", "What do you want to write?", "❓"), ("intelligence", "/intelligence/", "Writing Intelligence", "🧭"), ("compare", "/compare/", "Compare formats", "⚖️"), ("read", "/read/", "All articles", "📄"), ("essays", "/essays/", "Essays", "✍️"), ("today", "/today/", "Today's opportunities", "📅"), ("tracker", "/tracker/", "Submission tracker", "📋"), ("studio", "/studio/", "Writing Studio", "✒️"), ("by-country", "/writing-opportunities/", "Writing by country", "🌍"), ("search", "/search/", "Search BRYME", "🔍")])}
+  {group("Start here", [("home", "/", "Home", "🏠"), ("start", "/start/", "Complete beginner path", "🧭"), ("find", "/find/", "What do you want to write?", "❓"), ("intelligence", "/intelligence/", "Writing Intelligence", "🧭"), ("compare", "/compare/", "Compare formats", "⚖️"), ("read", "/read/", "All articles", "📄"), ("essays", "/essays/", "Essays", "✍️"), ("today", "/today/", "Today's opportunities", "📅"), ("changed", "/what-changed/", "What changed on the desk", "🗓"), ("tracker", "/tracker/", "Submission tracker", "📋"), ("studio", "/studio/", "Writing Studio", "✒️"), ("by-country", "/writing-opportunities/", "Writing by country", "🌍"), ("search", "/search/", "Search BRYME", "🔍")])}
   {group("How to write", howto)}
   {group("Tools & templates", tools)}
   {group("Write & get paid", write)}
@@ -1377,6 +1377,39 @@ def newsletter_page() -> None:
         title="The BRYME weekly digest — verified writing opportunities by email | BRYME",
         description="One email a week: newly verified paying writing opportunities, what closed or changed, and one practical guide. Free, no spam, unsubscribe anytime.",
         route="/newsletter/", current="", robots="index,follow", body=body))
+
+    # ---- What changed: the desk's verification log (Phase 1 T8, 21 Sep) ----
+    _opps_p = ROOT / "content" / "opportunities.json"
+    if _opps_p.is_file():
+        _raw = json.loads(_opps_p.read_text(encoding="utf-8"))
+        _ops = _raw if isinstance(_raw, list) else (_raw.get("opportunities") or _raw.get("publications")
+                or next(v for v in _raw.values() if isinstance(v, list)))
+        _recent = sorted(_ops, key=lambda o: str(o.get("lastVerified") or ""), reverse=True)[:36]
+        _wc_rows = "".join(
+            '<tr><td style="padding:8px 12px;border-bottom:1px solid var(--line)"><a href="/writing/'
+            + esc(str(o.get("slug") or "")) + '/"><b>' + esc(str(o.get("publication") or o.get("title") or "")) + '</b></a></td>'
+            '<td style="padding:8px 12px;border-bottom:1px solid var(--line)">' + esc(str(o.get("status") or chr(8212))) + '</td>'
+            '<td style="padding:8px 12px;border-bottom:1px solid var(--line)">' + esc(str(o.get("pay") or "Not stated")) + '</td>'
+            '<td style="padding:8px 12px;border-bottom:1px solid var(--line)">' + esc(str(o.get("lastVerified") or chr(8212))) + '</td></tr>'
+            for o in _recent)
+        _wc_body = ('<div class="wrap"><section class="page-hero"><p class="kicker"><span class="kicker-dot"></span>Verification log</p>'
+            '<h1>What changed on the desk.</h1>'
+            '<p>The most recent human checks across the ' + str(len(_ops)) + '-publication database, newest first. A date here means an editor opened the '
+            'publication\u2019s own page and re-read it \u2014 pay, openness, guidelines, the AI policy. Nothing here is scraped; when a listing closes, it stays '
+            'visible and says so in its own words.</p>'
+            '</section><section class="section"><div class="section-head"><div>'
+            '<p class="eyebrow">Newest 36 checks</p><h2>Re-verified, in order.</h2></div></div>'
+            '<div class="panel" style="overflow-x:auto"><table style="width:100%;border-collapse:collapse;font:14px var(--sans)">'
+            '<thead><tr><th style="text-align:left;padding:8px 12px">Publication</th><th style="text-align:left;padding:8px 12px">Status</th>'
+            '<th style="text-align:left;padding:8px 12px">Pay</th><th style="text-align:left;padding:8px 12px">Last verified</th></tr></thead>'
+            '<tbody>' + _wc_rows + '</tbody></table></div>'
+            '<div class="actions"><a class="btn" href="/writing/">The full desk</a>'
+            '<a class="btn ghost" href="/newsletter/">Get it by email instead</a></div>'
+            '</section></div>')
+        write("/what-changed/", page_wf(
+            title="What changed on the desk - BRYME verification log | BRYME",
+            description="The newest human re-checks across the paid-writing database: status, pay and last-verified dates, newest first. Never scraped, never sold.",
+            route="/what-changed/", current="", robots="index,follow", body=_wc_body))
 
 
 def affiliate_note() -> str:

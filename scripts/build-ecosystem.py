@@ -1227,6 +1227,11 @@ def entertainment_pages():
     n_picks = sum(len(v) for v in _cat.CATALOGUE_STARTERS.values())
     # ---- the restored NEXTCLIP platform (owner directive 15 Sep: bring back the former entertainment) ----
     import entertainment_platform_data as _nx
+    try:
+        import nollywood_reviews as _nr
+        _nr.backfill_card(_nx.MOVIES)
+    except Exception:
+        _nr = None
     _nx_ver = "16 September 2026"
     _nx_by_slug = {m["slug"]: m for m in _nx.MOVIES}
     # AUDIT-2026-09-20 expansion: industry routes. Pure slices of the curated
@@ -1409,7 +1414,8 @@ def entertainment_pages():
         + '<div class="nx-hero-facts">' + str(_feat.get("year") or "") + ' &middot; ' + html.escape(_feat.get("genre") or "") + '</div>'
         + '<p>' + html.escape((_feat.get("teaser") or _feat.get("description") or ""))[:330] + '</p>'
         + '<div class="nx-hero-actions"><a class="nx-cta" href="/movie/' + _feat["slug"] + '/">Explore movie</a>'
-        + '<a class="nx-quiet-link" href="#nx-trending">See trending</a></div></div></section>'
+        + '<a class="nx-quiet-link" href="#nx-trending">See trending</a>'
+        + '<a class="nx-quiet-link" href="/entertainment/reviews/">The review shelf</a></div></div></section>'
         + '<div class="nx-dark"><div class="nx-shell">'
         + '<section class="nx-section" id="nx-trending"><div class="nx-section-head"><div><div class="nx-eyebrow">Curated now</div><h2>Trending movies</h2></div></div>'
         + '<div class="nx-rail">' + "".join(_nx_tile(m) for m in _trend) + '</div></section>'
@@ -1531,6 +1537,10 @@ def entertainment_pages():
                     + "".join('<li><a href="/' + s + '/">' + html.escape(t) + '</a></li>' for s, t in rel[:2])
                     + '<li><a href="/movie-calendar-2026-27/">The 2026-27 movie calendar</a></li>'
                     + '<li><a href="/entertainment/scoring/">How we score films</a></li></ul>')
+        _rv_chip = _nr.REVIEWS_BY_SLUG.get(m["slug"]) if _nr else None
+        _chip_html = ('<p style="background:rgba(216,182,74,.10);border:1px solid #d8b64a;padding:13px 15px;margin:0 0 22px">'
+                      '<a href="/entertainment/reviews/' + m["slug"] + '/" style="text-decoration:none"><b>Read the desk review</b> &#8212; '
+                      + html.escape(_rv_chip["verdict"]) + ' (score ' + _nr.review_score_str(_rv_chip) + '/10)</a></p>') if _rv_chip else ""
         desc = html.escape(m.get("description") or m.get("teaser") or "")
         if desc == html.escape(m.get("teaser") or ""):
             _cr = []
@@ -1552,7 +1562,7 @@ def entertainment_pages():
             + '<p class="nx-lead">' + html.escape(m.get("teaser") or "") + '</p></div></div></section>'
             + ('<div class="nx-shell nx-trailer-section">' + _nx_facade(m) + '</div>' if m.get("yt") else "")
             + '<div class="nx-shell nx-body"><div class="nx-prose">'
-            + '<h2>The story</h2><p>' + desc + '</p>'
+            + _chip_html + '<h2>The story</h2><p>' + desc + '</p>'
             + ('<h2>Details the desk keeps</h2><ul class="nx-facts">' + facts_html + '</ul>' if facts_html else "")
             + wl_html + rel_html
             + '<p class="nx-backlink"><a href="/entertainment/">&#8592; Back to the full catalogue</a></p>'
@@ -1610,6 +1620,71 @@ def entertainment_pages():
     pages.extend(route_pages)
     pages.append(("/scoring/", "How the BRYME film desk scores - the method | BRYME",
                   "Four axes, honest bands, and the exact score distribution across the catalogue. What a BRYME score is - and what it refuses to be.", _sc_body))
+    _rev_pages = []
+    if _nr:
+        _cat_slugs = {x["slug"] for x in _nx.MOVIES}
+        _td = ""
+        for _rv in _nr.REVIEWS:
+            _ax = _rv["axes"]
+            _ld = json.dumps({"@context": "https://schema.org", "@type": "Review",
+                 "name": _rv["title"] + " - BRYME Entertainment desk review",
+                 "reviewBody": _rv["body"][0][:480], "datePublished": _rv["date"],
+                 "author": {"@type": "Organization", "name": _nr.REVIEWED_BY},
+                 "publisher": {"@type": "Organization", "name": "THE BRYME"},
+                 "itemReviewed": {"@type": "Movie", "name": _rv["title"], "datePublished": str(_rv["year"]),
+                     "director": {"@type": "Person", "name": _rv["director"]}},
+                 "reviewRating": {"@type": "Rating", "ratingValue": _rv["score"], "bestRating": "10", "worstRating": "0"}},
+                ensure_ascii=False)
+            _cells = {"story": "Story & structure", "craft": "Performance & craft",
+                      "vision": "Direction & technical vision", "weight": "Cultural weight"}
+            _ax_rows = "".join('<tr><td style="padding:5px 14px;border:1px solid var(--line-strong)">' + lbl
+                               + '</td><td style="padding:5px 14px;border:1px solid var(--line-strong);text-align:right">'
+                               + str(_ax[k]) + '</td></tr>' for k, lbl in _cells.items())
+            _href = ('<p><a href="/entertainment/movie/' + _rv["slug"] + '/">Catalogue card &mdash; trailer, cast and credits &rarr;</a></p>'
+                     if _rv["slug"] in _cat_slugs else "")
+            _rb = (head("entertainment", "BRYME Entertainment desk review.")
+                + _NX_CSS
+                + '<main id="main"><div class="nx-shell nx-body"><div class="nx-prose">'
+                + '<script type="application/ld+json">' + _ld.replace("<", chr(92) + "u003c") + '</script>'
+                + '<nav class="nx-crumb"><a href="/entertainment/reviews/">Review shelf</a> / ' + html.escape(_rv["title"]) + '</nav>'
+                + '<h1>' + html.escape(_rv["title"]) + '</h1>'
+                + '<div class="nx-badges"><span>' + str(_rv["year"]) + '</span><span>' + html.escape(_rv["country"])
+                + '</span><span>' + html.escape(_rv["language"]) + '</span><span>Directed by ' + html.escape(_rv["director"])
+                + '</span><span>BRYME editorial score ' + _nr.review_score_str(_rv) + '/10</span></div>'
+                + '<p class="nx-lead">' + html.escape(_rv["verdict"]) + '</p>'
+                + "".join('<p>' + html.escape(_pp) + '</p>' for _pp in _rv["body"])
+                + '<h2>The axes</h2><table style="border-collapse:collapse;margin:6px 0 18px"><tbody>' + _ax_rows
+                + '<tr><td style="padding:5px 14px;border:1px solid var(--line-strong)"><b>Average &mdash; printed score</b></td>'
+                + '<td style="padding:5px 14px;border:1px solid var(--line-strong);text-align:right"><b>' + _nr.review_score_str(_rv) + '</b></td></tr>'
+                + '</tbody></table>'
+                + '<p class="nx-verified">Reviewed by ' + html.escape(_nr.REVIEWED_BY) + ' on ' + _rv["date"]
+                + '. Scores follow <a href="/entertainment/scoring/">the published method</a>; they are never sold and never previewed to rights-holders. '
+                + '<a href="/entertainment/corrections/">Disagree? The corrections door is open.</a></p>' + _href
+                + '<p class="nx-backlink"><a href="/entertainment/reviews/">&rarr; More from the review shelf</a></p>'
+                + '</div></div></main>' + foot("entertainment"))
+            _ttl = _rv["title"] + " (" + str(_rv["year"]) + ") - BRYME review | BRYME Entertainment"
+            if len(_ttl) > 60:
+                _ttl = _rv["title"] + " (" + str(_rv["year"]) + ") - BRYME review"
+            _rev_pages.append(("/reviews/" + _rv["slug"] + "/", _ttl, _rv["verdict"][:155], _rb))
+        _idx_rows = "".join('<li><a href="/entertainment/reviews/' + r["slug"] + '/"><b>' + html.escape(r["title"])
+                            + ' (' + str(r["year"]) + ')</b> &#9733; ' + _nr.review_score_str(r) + '/10 &mdash; '
+                            + html.escape(r["verdict"]) + '</a></li>'
+                            for r in sorted(_nr.REVIEWS, key=lambda r: (-r["score"], r["title"])))
+        _idx_body = (head("entertainment", "The review shelf - full criticism from the desk.")
+            + _NX_CSS
+            + '<main id="main"><div class="nx-shell nx-body"><div class="nx-prose">'
+            + '<nav class="nx-crumb"><a href="/entertainment/">Catalogue</a> / Reviews</nav>'
+            + '<h1>The review shelf</h1>'
+            + '<p class="nx-lead">Full criticism from the entertainment desk: ' + str(len(_nr.REVIEWS))
+            + ' films reviewed on four published axes, with the score shown as the average of the axes - no mystery numbers. '
+            + 'The <a href="/entertainment/scoring/">method is public</a>; new reviews land as the desk finishes them, and every review is dated.</p>'
+            + '<ul class="nx-facts">' + _idx_rows + '</ul>'
+            + '<p class="nx-backlink"><a href="/entertainment/">&larr; Back to the full catalogue</a></p>'
+            + '</div></div></main>' + foot("entertainment"))
+        _rev_pages.append(("/reviews/", "The review shelf - BRYME Entertainment desk reviews",
+            "Full reviews of African and diaspora cinema on four published axes, dated and revisable. No star inflation, no sold scores.",
+            _idx_body))
+    pages.extend(_rev_pages)
     for pl in sect_pages.values():
         pages.extend(pl)
     pages.extend(arts[s] for s in shelf if s not in merged_away)
