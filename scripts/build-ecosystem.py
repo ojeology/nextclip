@@ -4384,6 +4384,9 @@ HOME_SLUG_SECT.update({s: "understand" for s in ("standby-power-real-numbers-you
 HOME_SLUG_SECT.update({s: "fix" for s in ("window-ac-clatter-and-filter", "weevils-in-rice-and-beans")})
 HOME_SLUG_SECT.update({s: "maintain" for s in ("generator-service-calendar", "indoor-drying-rainy-season", "water-dispenser-jar-pump")})
 HOME_SLUG_SECT.update({s: "understand" for s in ("hot-top-floor-ceiling",)})
+HOME_SLUG_SECT.update({s: "fix" for s in ("sink-trap-clean-smell", "gate-motor-wont-move")})
+HOME_SLUG_SECT.update({s: "understand" for s in ("electric-shock-first-response",)})
+HOME_SLUG_SECT.update({s: "maintain" for s in ("grease-trap-yard-clean", "rainwater-harvest-drum", "changeover-switch-care")})
 
 
 def _home_theme_init():
@@ -5153,6 +5156,24 @@ def home_pages():
         "water-dispenser-jar-pump": [("water-storage-safety", "Water storage, the rules"),
                                        ("borehole-water-taste-smell", "Borehole taste & smell"),
                                        ("kitchen-hygiene-routine", "Kitchen hygiene routine")],
+        "sink-trap-clean-smell": [("floor-drain-backflow", "Drain backflow"),
+                                    ("how-to-clear-a-slow-shower-drain", "The slow shower drain"),
+                                    ("sewer-smell-after-trip", "Sewer smell after a trip")],
+        "gate-motor-wont-move": [("gate-motor-solar-light-care", "Gate motor care"),
+                                  ("doors-sticking-rainy-season", "Doors sticking in the rains"),
+                                  ("grills-and-bars-rust-care", "Grills & rust care")],
+        "electric-shock-first-response": [("wiring-red-flags-in-your-home", "Wiring red flags"),
+                                            ("burning-plastic-smell-socket", "The socket burn smell"),
+                                            ("circuit-breaker-tripped-not-mystery", "Breaker tripped, decoded")],
+        "grease-trap-yard-clean": [("sewer-smell-after-trip", "Sewer smell after a trip"),
+                                     ("soakaway-filling-up-signs", "Soakaway diagnosis"),
+                                     ("kitchen-hygiene-routine", "Kitchen hygiene routine")],
+        "rainwater-harvest-drum": [("gutters-and-downpipes", "Gutters & downpipes"),
+                                     ("water-storage-safety", "Water storage, the rules"),
+                                     ("rainy-season-home-checklist", "The pre-rains checklist")],
+        "changeover-switch-care": [("generator-rainy-season-safety", "Generator in the rain"),
+                                      ("generator-vs-inverter-nigeria", "Generator vs inverter"),
+                                      ("circuit-breaker-tripped-not-mystery", "Breaker tripped, decoded")],
     }
     for slug, ti, dek, b in HOME_ARTICLES:
         key = HOME_SLUG_SECT[slug]

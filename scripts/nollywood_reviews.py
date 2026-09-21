@@ -348,6 +348,29 @@ dict(
 "Weight: this is the commission the industry's premium era had been gestating toward - one of the most expensive swings by its most platform-proven director, in a national language, on the world's shelves, and every Yoruba-genre budget that gets greenlit now walks in its precedent. Judged as a film, a magnificent second-act problem; judged as the industry's bid to compete on scale without apologising on language, it is a landmark - and this desk's ledger has always made room for the films that move the market as much as the ones that perfect their form.",
          ]),
 
+    dict(slug="oloture", title="Oloture", year=2019,
+         director="Jeta Amata", country="Nigeria", language="English", runtime=None,
+         axes=dict(story=7.5, craft=7.0, vision=7.0, weight=8.0), score=7.375,
+         date="2026-09-29",
+         verdict="The trafficking film the industry did not want to make: a corps girl, a modelling promise, and the desert ledger between Libya and the Mediterranean",
+         body=[
+"A national-service graduate answering an advert that flatters her, a debt paper signed in a house that was never a casting office, and the long road that follows the Edo-to-Mediterranean corridor: Oloture is the trade route dramatized, and the desk notes immediately what the film risked by choosing it - this is the story Nigerian cinema prefers to keep in journalism, because the customers of such stories do not want to buy a ticket for it. The film sells the ticket anyway.",
+"The craft is deliberately unglamorous where the subject demands glamour's lie be stripped: the agent scenes play in daylight and kitchen tones, the desert crossing is edited as arithmetic - water, phone credit, waiting - and the Mediterranean sequences carry the numbness of survivor testimony rather than spectacle, which is the right and the harder choice. The lead's casting against type gives the desk the sentence it files for the year: a film where the performance strategy is to look ordinary until the ending makes ordinary unbearable.",
+"The ledger's debits: a middle hour that repeats its route beats, a few turns of plot where the villains are typed as monsters rather than as economics, and the courtroom finale compresses a justice system the film elsewhere documents as slow into one scene - the desk holds all of it against the script while conceding the edit had no other shape available at this budget.",
+"Weight, measured in what a country does with a film: Oloture put the trafficking corridor's human mechanics into multiplexes and streaming shelves, became the reference clip in policy conversations the industry rarely influences, and proved a Nigerian director could be trusted with the story journalism had already told - the shelf's entry for the film that made the industry look at its own export economy's ugliest line item without flinching. Rougher cinema than Eyimofe's quiet evidence; same continent-grade courage, older industry, earlier argument - and this ledger counts the argument.",
+         ]),
+    dict(slug="something-necessary", title="Something Necessary", year=2013,
+         director="Judy Kibinge", country="Kenya", language="English / Swahili", runtime=None,
+         axes=dict(story=7.5, craft=7.0, vision=7.0, weight=7.5), score=7.25,
+         date="2026-09-29",
+         verdict="A pastor's widow rebuilds a life while the country pretends the fires are over: Kenyan cinema's gentlest and most exact account of surviving a peace that did not come",
+         body=[
+"A teacher in a Nairobi school compound, the memory of the election-burn season still smoking behind every kindness, a husband killed for hiding neighbours, a child asking why nothing has changed: Something Necessary tells the post-violence story through the woman the tribunal years describe as the statistics - and the desk has reviewed grief films from four continents that try this move, with almost none holding so still while doing it. The title's argument arrives quietly: survival has duties, and the necessary things are the plain ones, done anyway.",
+"The craft is restrained to the point of discipline: natural light, performances pitched below melodrama's register, a score that withholds more than it gives, and the school setting used as a country-in-miniature with none of the essay's heaviness - the direction is a debut by anyone's reckoning that this desk grades as a second or third film's control. The script trusts silence where the region's TV drama would explain, and the edit lets scenes end before the tears are over, which is precisely how memory behaves.",
+"Entered honestly against the ledger: the political thread - the deal-making conference where survivors are thanked in hotel ballrooms - sketches its cynicism in broader strokes than the family material earns, and one late confrontation gives a character a speech the film had better used restraint on. The desk also prints the shelf's standing caveat for cross-border viewing: the film's English-and-Swahili cadence carries courtroom and church vocabulary the subtitles flatten for non-East-African readers - the loss is real and worth the footnote, and the local audiences will not have it.",
+"Weight on this desk's ledger counts what a film did for its industry's conversation: Something Necessary became the Kenyan feature the international festival circuit used to argue the country had a mature cinema beyond aid-agency documentary, its funding model - locally produced with regional co-production muscle - became the sentence other East African producers quoted for years, and its survivor's-gaze framing quietly taught the region's film schools a way to film the 2008 aftermath that journalism could not reach. A small, exact, load-bearing film - which is the shelf's highest compliment for the films that never asked to be big.",
+         ]),
+
 ]
 
 REVIEWS_BY_SLUG = {r["slug"]: r for r in REVIEWS}
