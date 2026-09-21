@@ -1571,4 +1571,78 @@ HOME_LOCAL = [
 <h2>The timing, because the desk has watched it fail</h2>
 <p>Do the sort and the seal two weeks before the rains, not after the first wet patch - fresh sealant and fresh paint need their cure week dry, and the June version of this job is a rainy-day version of the leak chapter. The moss and the dark green streak in a hairline are the map legend for where water parks: they grow in the damp line before the plaster fails, and the honest summary the desk repeats: <b>a sealed 1mm crack costs the tube; an unsealed 1mm crack costs the room.</b></p>"""),
 
+ ("sink-drain-slow-unclog",
+  "FIX",
+  "The sink that drains slowly: trap, plughole, plunger, then the pipe",
+  "Clear the food and hair at the top before you attack the pipe, know when a trap clean is enough, and stop before chemical drain cleaner makes the next repair dangerous.",
+  """<p>A slow sink is a blockage ladder, not an invitation to pour every bottle under the sink into one another. Food, hair and grease usually collect at the plughole or in the trap before the wall pipe; each location has a different safe fix. The water level tells you how far to go: a sink that drains after a minute is a small restriction, while several fixtures backing up points beyond this basin.</p>
+<h2>The clean order</h2>
+<ol><li><b>Remove the visible plug.</b> Lift the strainer, wipe the underside, and pull out the material you can see. In a kitchen, scrape fats and starch into waste rather than rinsing them into the pipe; hot water can move grease farther down before it cools again.</li>
+<li><b>Plunge with a seal.</b> Add enough water to cover the plunger cup, block the overflow opening with a wet cloth, and use firm strokes. A double sink needs the second bowl sealed or the pressure escapes there. Do not plunge after pouring caustic cleaner, because a splash makes the next step a skin and eye injury.</li>
+<li><b>Clean the trap.</b> Put a bowl under the U-shaped section, undo the slip nuts by hand or with light tool help, and let the water fall into the bowl. Clean the trap, check its washer, and refit it squarely. A trap packed with sludge is a cheap, visible win; overtightening the plastic threads is how the leak begins.</li>
+<li><b>Use a hand snake if needed.</b> Feed a small flexible auger into the open pipe slowly, turn it, withdraw it, and flush with warm water. If resistance is deep, the cable returns dirty without improving flow, or another fixture rises when this sink drains, stop and move the diagnosis to the branch or main line.</li></ol>
+<h2>The line that saves the house</h2>
+<p>Never mix drain chemicals, never reach into a pipe whose cleaner you cannot identify, and never assume a strong smell means a strong solution is working. Chemical products can damage old seals and leave a caustic puddle for the person who opens the trap next. If the sink is slow only when the washing machine or another large fixture discharges, the branch needs a proper inspection. Once clear, keep the strainer fitted, wipe pans before washing, and clean the trap as a maintenance job rather than waiting for the basin to become a small pond.</p>"""),
+ ("toilet-runs-after-flush",
+  "FIX",
+  "The toilet that runs after flushing: flapper, chain, float, overflow",
+  "A dye test tells you whether water is escaping through the bowl, while the tank level and refill valve show whether the supply side is wasting it.",
+  """<p>A toilet that hisses after the flush is usually losing tank water in one of two directions: past the flush seal into the bowl, or through the overflow because the fill valve is not stopping at the set level. Both faults are visible with the lid off and both are cheaper to diagnose before replacing the entire mechanism.</p>
+<h2>The ten-minute test</h2>
+<ol><li><b>Watch the overflow.</b> Lift the cistern lid while it refills. The water should stop below the top of the overflow tube. If it continues to pour into the tube, adjust or replace the float and fill valve according to the mechanism's instructions; do not bend an unfamiliar plastic arm until it cracks.</li>
+<li><b>Do the dye test.</b> Put a few drops of food colouring into the tank without flushing and wait. Colour appearing in the bowl means the flush seal or flapper is leaking. A chain that is too tight, a warped seal or scale on the seat can hold it open by a fraction that the eye cannot see.</li>
+<li><b>Check the chain and handle.</b> The handle should return freely and the chain should have a little slack. A chain caught under the flapper, a loose handle or a button that stays pressed keeps the seal from seating. Shut the small supply valve before putting hands deep into the tank.</li>
+<li><b>Replace like for like.</b> Take the old seal or valve to the parts counter and match its shape and connection. Universal parts exist, but the tank's thread, button and overflow arrangement still need to agree. Keep the old pieces until the new flush has been tested for leaks.</li></ol>
+<h2>When the tank is not the problem</h2>
+<p>A toilet that refills after another fixture runs may be responding to low supply pressure, a shared tank or a valve elsewhere. A bowl that rises, drains slowly or gurgles moves this page into the blockage and drain branch chapter; do not keep changing the flapper while the waste line is restricted. Close the supply valve if the toilet cannot stop running and the overflow is near its limit. The small leak is not harmless because it is hidden: the dye test turns the sound into a location, and the location tells you whether a seal, a valve or a drain professional owns the next move.</p>"""),
+ ("fridge-door-not-sealing",
+  "MAINTAIN",
+  "The fridge door that will not seal: gasket, shelves, hinges, then level",
+  "Warm edges, condensation and a compressor that never rests often begin with a door gasket blocked by a jar or pulled out of shape - check the simple geometry first.",
+  """<p>A refrigerator door does not need a heroic slam; it needs a continuous magnetic seal. When the gasket misses the cabinet by a small gap, warm humid air enters all day, the cabinet forms condensation, and the compressor works longer to remove heat that should never have arrived. The repair order is a visual one: obstruction, clean gasket, fit, hinge, level.</p>
+<h2>Find the gap</h2>
+<ul><li><b>Empty the door shelf.</b> A tall bottle or overloaded rack can hold one corner open while the rest looks closed. Close the door slowly and look for the point where the gasket folds instead of touching the cabinet.</li>
+<li><b>Clean the mating surfaces.</b> Warm water and mild detergent remove sticky food and dust from the gasket and the cabinet face. Dry both. Grease or a hard crumb makes a surprisingly good air channel.</li>
+<li><b>Use paper as a witness.</b> Close the door on a strip of paper at several points. It should resist being pulled out with similar firmness around the whole perimeter. A loose corner is more useful information than a general feeling that the door is cold.</li>
+<li><b>Warm and reshape gently.</b> If the gasket is curled from storage or a door has been left open, warm water and time can let the rubber relax into its groove. Do not use a heat gun or open flame. A split, hard or permanently flattened seal is a replacement job.</li>
+<li><b>Check hinges and level.</b> A sagging door can miss the cabinet at the top or latch side. Tighten accessible hinge fasteners without stripping them, and adjust the appliance so the doors close under their own gentle weight. Do not tip a refrigerator recklessly; get help for a heavy unit.</li></ul>
+<h2>What a good seal cannot cure</h2>
+<p>Food packed against the rear air path, a failed fan, heavy frost, a dirty condenser area or a refrigerant fault can all leave the cabinet warm after the door is fixed. A compressor that runs almost continuously, a burnt smell, repeated trips or a cabinet that stays warm belongs to an appliance technician, not a gasket replacement spree. Keep the door closed while testing, leave air passages clear, and treat the gasket as a maintenance part: wipe it during the same quiet clean that keeps jars from becoming the reason the cold has to work twice.</p>"""),
+ ("door-lock-sticks-fix",
+  "FIX",
+  "The door lock that sticks: alignment before oil, key before force",
+  "A latch rubbing the strike is a door-frame problem, a dry cylinder is a lock problem, and forcing either one turns a five-minute adjustment into a trapped-key repair.",
+  """<p>A key that works with the door open but jams when the door is closed has already told you the diagnosis: the lock is being loaded by the frame. A key that remains stiff with the door open points to the cylinder, key, dirt or internal wear. Test that difference before spraying anything into the lock or reaching for a bigger key.</p>
+<h2>The split diagnosis</h2>
+<ol><li><b>Try the key with the door open.</b> Turn it gently in the cylinder. If it moves freely, inspect the latch and strike plate for a bright rub mark, loose screws or a door that has dropped. Tighten the hinge screws, then adjust the strike in small steps so the latch enters without being pushed sideways.</li>
+<li><b>Try a spare key.</b> A bent or worn copy can bind even when the cylinder is sound. Keep the key straight and never twist harder because it is nearly home; a broken key in the cylinder is a locksmith job.</li>
+<li><b>Clean and lubricate correctly.</b> Blow loose dirt away and use the lock maker's recommended dry lubricant or a small amount of suitable lock lubricant. Heavy oily sprays collect dust and can make a precision cylinder worse. Do not flood the keyway.</li>
+<li><b>Inspect the weather side.</b> Swelling after rain, a shifted frame or paint inside the strike can change the alignment. Remove only the obstruction that is clearly rubbing; do not file away security hardware until the frame movement is understood.</li></ol>
+<h2>The boundary between adjustment and replacement</h2>
+<p>If the lock turns with the door open but the latch will not retract, the mechanism may be worn. If the key turns but the deadbolt stops halfway, keep the door open and inspect the bolt for a misaligned strike before assuming the cylinder has failed. A lock that is loose, cracked, tampered with or protecting an exterior entry deserves a proper replacement rather than a temporary shim. The small habit that prevents a night-time lockout is to lubricate the correct way, tighten hinge screws before they loosen the geometry, and never force the key when the frame is asking for alignment.</p>"""),
+ ("roof-gutter-leak-joint",
+  "MAINTAIN",
+  "The gutter that overflows or leaks at the joint: clean, slope, seal, discharge",
+  "Rain exposes four failures at once - leaves, a sagging run, a failed joint, or a downpipe that cannot carry the water away - so start at the roof edge and follow the water.",
+  """<p>A gutter is a small roof, and the repair principle is the same: water must have a clear path, a continuous surface and somewhere safe to go. Overflow at one point does not always mean that point is blocked. A sag between brackets, a joint that has opened, or a downpipe full of leaves can all make the same brown waterfall on the wall.</p>
+<h2>Follow the wet route</h2>
+<ol><li><b>Clean from the ground up.</b> Use a stable ladder with someone footing it, keep your body between the rails, and remove leaves by hand or with a tool rather than leaning sideways. Never work on a wet roof. Rinse the run gently and watch where the water stops.</li>
+<li><b>Check the fall.</b> A gutter should carry water toward its outlet, not hold a permanent pond between brackets. Loose or broken hangers let a run belly; refit or replace them and keep the gutter edge below the roof covering so water enters instead of jumping over it.</li>
+<li><b>Test the joint.</b> Dry, clean joint surfaces are the start of a lasting repair. Re-seat the connector or replace its seal according to the gutter system, then apply an exterior sealant only where the product is intended to bond. Sealant over dust, standing water or a moving gap is a short truce.</li>
+<li><b>Clear the downpipe and outlet.</b> A blocked shoe, underground connection or narrow outlet sends clean water back up the run. Flush from the top, then check the discharge point during rain so the water is not eroding the wall base or pooling beside the foundation.</li></ol>
+<h2>When a gutter is not the answer</h2>
+<p>Water staining under a parapet, a cracked roof edge, a failed flashing or a wall that stays wet after the gutter is clear belongs to the roof and wall junctions, not a tube of caulk. Do not seal weep paths or cover rotten fascia before the timber is repaired. Photograph the run during the first heavy rain after the work; a gutter that looks straight on a dry Sunday can reveal its one low bracket in ten minutes of water. Maintenance is the cheap version of this job: clear leaves before the rains, keep the outlet visible, and make the discharge point part of the inspection rather than the place the water disappears from view.</p>"""),
+ ("bathroom-fan-condensation",
+  "UNDERSTAND",
+  "The bathroom that stays wet: fan path, door gap, mould, and the cold wall",
+  "A noisy fan that exhausts into the ceiling is not ventilation, and a clean grille cannot cure a blocked duct or a room with nowhere for replacement air to enter.",
+  """<p>Steam on the mirror is normal for a hot shower; mouldy corners, peeling paint and a ceiling that stays damp for hours mean the moisture is not leaving. The fan has to move air out of the room, the duct has to reach outdoors, and replacement air has to enter through a door gap or another planned opening. Remove one of those three and the fan only stirs the problem.</p>
+<h2>Trace the air</h2>
+<ul><li><b>Start with the grille.</b> Switch off the fan circuit, remove dust from the grille, and check that the flap or shutter is not glued shut by grime. A fan that hums but barely moves air may have a blocked impeller or a tired motor.</li>
+<li><b>Find the outlet.</b> The duct should discharge outside, not into a roof void, ceiling cavity or closed service cupboard. Warm wet air left above the ceiling condenses on cold surfaces and creates the hidden mould story the bathroom cannot see.</li>
+<li><b>Give the room replacement air.</b> Close the door and the fan tries to pull against a vacuum. A modest under-door gap or transfer grille lets the fan move the wet air it is designed to move. Keep the bathroom door open after bathing when privacy and the house layout allow it.</li>
+<li><b>Run it for the moisture, not the switch.</b> Turn the fan on before or at the start of the shower and leave it running afterward. A timer or humidity control can help, but it does not replace a clear duct and a working outlet.</li></ul>
+<h2>The cold-surface problem</h2>
+<p>If the air path works and one outside corner still grows mould, the cause may be a cold bridge, a roof leak or water entering around a window rather than shower steam. Clean visible mould with the correct product and protection, let the surface dry, and repair the moisture source before painting. Do not put wet hands near a fan switch or open a mains fan housing as a first test; electrical isolation and fixed wiring are an electrician's job. The useful rule is not that a bigger fan solves everything. It is that air must leave the room, the replacement path must exist, and the surface that stays wet needs its own diagnosis.</p>"""),
+
 ]

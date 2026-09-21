@@ -4,9 +4,10 @@ Disallow: /scripts/
 Disallow: /content/
 Disallow: /docs/
 Disallow: /server/
-Disallow: /entertainment/_recovered/
 Disallow: /ecosystem/
+Disallow: /entertainment/_recovered/
 
+Sitemap: https://thebryme.com/sitemap.xml
 Sitemap: https://thebryme.com/writers/sitemap.xml
 Sitemap: https://thebryme.com/sports/sitemap.xml
 Sitemap: https://thebryme.com/entertainment/sitemap.xml

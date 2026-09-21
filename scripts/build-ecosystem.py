@@ -4398,6 +4398,9 @@ HOME_SLUG_SECT.update({s: "understand" for s in ("hidden-water-leak-meter-test",
 HOME_SLUG_SECT.update({s: "fix" for s in ("blender-wont-run-smells-hot", "washing-machine-walks-and-shakes")})
 HOME_SLUG_SECT.update({s: "maintain" for s in ("cabinet-hinge-adjustment", "stain-ladder-household", "external-wall-crack-seal")})
 HOME_SLUG_SECT.update({s: "understand" for s in ("electric-shower-tingle",)})
+HOME_SLUG_SECT.update({s: "fix" for s in ("sink-drain-slow-unclog", "toilet-runs-after-flush", "door-lock-sticks-fix")})
+HOME_SLUG_SECT.update({s: "maintain" for s in ("fridge-door-not-sealing", "roof-gutter-leak-joint")})
+HOME_SLUG_SECT.update({s: "understand" for s in ("bathroom-fan-condensation",)})
 
 
 def _home_theme_init():
@@ -5230,6 +5233,12 @@ def home_pages():
         "cabinet-hinge-adjustment": [("doors-sticking-rainy-season", "Doors that stick"),("kitchen-hygiene-routine", "Kitchen hygiene routine"),("how-to-paint-a-room-right", "Paint a room right")],
         "stain-ladder-household": [("electric-iron-steam-care", "Iron & steam care"),("towels-smell-fresh", "Towels that smell sour"),("wash-curtains-blinds-care", "Curtains & blinds care")],
         "external-wall-crack-seal": [("wall-cracks-when-serious", "Cracks: when serious"),("flat-roof-ponding-and-leaks", "Flat roof & ponding"),("rainy-season-home-checklist", "The pre-rains checklist")],
+        "sink-drain-slow-unclog": [("sink-trap-clean-smell", "Sink trap smells"),("floor-drain-backflow", "Drain smells outdoors"),("grease-trap-yard-clean", "The yard grease trap")],
+        "toilet-runs-after-flush": [("running-toilet-cistern-fix", "Running cistern"),("toilet-clog-how-to-plunge", "Plunge & clear"),("water-storage-safety", "Safe water storage")],
+        "fridge-door-not-sealing": [("fridge-not-cooling", "Fridge not cooling"),("fridge-food-safety-power-cut", "Outage food rules"),("cockroach-fridge-motor-bay", "Roaches in the motor bay")],
+        "door-lock-sticks-fix": [("doors-sticking-rainy-season", "Doors that stick"),("gate-intercom-not-working", "Gate intercom"),("gate-motor-wont-move", "Gate motor")],
+        "roof-gutter-leak-joint": [("gutters-and-downpipes", "Gutters & downpipes"),("flat-roof-ponding-and-leaks", "Flat roof & ponding"),("rainy-season-home-checklist", "The pre-rains checklist")],
+        "bathroom-fan-condensation": [("bathroom-grout-mould", "Grout mould"),("mould-after-a-flooded-room", "Mould after flooding"),("indoor-drying-rainy-season", "Indoor drying")],
     }
     for slug, ti, dek, b in HOME_ARTICLES:
         key = HOME_SLUG_SECT[slug]
