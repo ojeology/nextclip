@@ -2,7 +2,14 @@
 
 BRYME is a focused publication for **verified jobs, remote work and legitimate ways to earn** — primarily for Nigerians and Africa-based readers.
 
-**Current public host:** <https://bryme.onrender.com/>
+**Current public host:** <https://thebryme.com/>
+
+> The former `bryme.onrender.com` origin is **retired and unreachable**: Render
+> blocks the subdomain (`x-render-routing: blocked-render-subdomain`) and every
+> URL there returns a plain-text 404, so it cannot serve redirects, a 410, or an
+> IndexNow key file. Those URLs decay on recrawl. Nothing in the published
+> artifact links to that host; it survives only inside the dated audit snapshots
+> under `reports/`, which are historical records and are deliberately immutable.
 
 **Project owner:** Ojeology
 
@@ -18,7 +25,7 @@ BRYME **verifies opportunities** — it distinguishes the original source, BRYME
 
 ## Custom-domain readiness
 
-Every generated absolute URL (canonical, sitemap, JSON-LD, Open Graph, robots) comes from a single source of truth: the `SITE_URL` environment variable, falling back to `site.config.json` → `siteUrl`. Set `SITE_URL` to the custom domain to repoint the whole site without touching code. No `bryme.onrender.com` host is hard-coded in the build (`scripts/bryme_config.py`).
+Every generated absolute URL (canonical, sitemap, JSON-LD, Open Graph, robots) comes from a single source of truth: the `SITE_URL` environment variable, falling back to `site.config.json` → `siteUrl`. Set `SITE_URL` to the custom domain to repoint the whole site without touching code. No origin is hard-coded in the build (`scripts/bryme_config.py`). The retired `bryme.onrender.com` string now survives in exactly two places: the dated audit snapshots under `reports/` (historical records, deliberately immutable), and the body prose of `/tech/render-deployment-failures-what-they-taught-me/`, which is an article *about* that incident. No generated link, canonical, sitemap or Open Graph URL points at it.
 
 Sports, movie, series, anime and entertainment-editorial files were extracted to the separate [`ojeology/bryme-media`](https://github.com/ojeology/bryme-media) repository. Media route families return HTTP 410 on this publication until a stable media hostname is deployed and permanent redirects can be installed.
 
@@ -43,7 +50,7 @@ npx playwright install chromium
 npm test
 ```
 
-The release gates inspect every retained HTML file, indexability, canonicals, structured data, internal links, jobs, writing records, discovery files, media removal, HTTP status codes, redirects, public-file containment and security headers. Playwright renders all 58 Search-eligible routes at mobile, tablet and desktop sizes, then checks navigation, overflow, images, console errors, landmarks and third-party resource leakage.
+The release gates inspect every retained HTML file, indexability, canonicals, structured data, internal links, jobs, writing records, discovery files, media removal, HTTP status codes, redirects, public-file containment and security headers. Playwright renders all 509 allowlisted Writers routes at mobile, tablet and desktop sizes (1,527 render cases), then checks navigation, overflow, images, console errors, landmarks and third-party resource leakage.
 
 `npm run validate:contrast` additionally enforces the readability rules that the
 moving-navigation regression broke:
@@ -67,8 +74,8 @@ behind it, is a defect — `validate-contrast.js` will reject it.
 
 ## Current Search policy
 
-- 58 focused routes are eligible for indexing.
-- 55 paid-publication detail records remain `noindex` until each source is individually reverified.
+- 2,032 routes are eligible for indexing (routed allowlist v26). Of the 2,640 published `index.html` files, 608 stay `noindex`.
+- All 142 paid-publication detail records under `/writers/writing/` are indexable — the 55 held back for re-verification have since been reverified. The only `noindex` page in that tree is `/writers/writing/by-country/`, a navigational filter rather than a record.
 - No News sitemap routes are admitted without timely original reporting.
 - No `JobPosting` structured data is published yet: the current source records do not consistently contain the complete job-description and original posting-date fields needed for responsible markup.
 

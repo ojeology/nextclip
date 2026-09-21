@@ -23,7 +23,7 @@ The hub is designed for writers at every level, from the very first draft to get
 
 "Most writers lose time to guessing whether a magazine is actually open and what it pays," said Ibrahim Sodiq, BRYME's founder. "We built BRYME to answer that with verified information, so writers can spend their energy on the writing."
 
-The hub is available at no cost at bryme.onrender.com and can be accessed from any browser. BRYME is an independent, reader-supported editorial project; it does not charge writers to submit and receives no payment from any listed publication.
+The hub is available at no cost at thebryme.com and can be accessed from any browser. BRYME is an independent, reader-supported editorial project; it does not charge writers to submit and receives no payment from any listed publication.
 
 **About BRYME**
 
