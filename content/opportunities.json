@@ -10272,7 +10272,7 @@
     {
       "status": "published",
       "vertical": "writing",
-      "lastVerified": "2026-09-06",
+      "lastVerified": "2026-09-21",
       "publishedAt": "2026-09-06",
       "experience": "not-stated",
       "editorExperience": {
@@ -10282,8 +10282,8 @@
       "slug": "briarpatch",
       "publication": "Briarpatch Magazine",
       "title": "Non-fiction pitches",
-      "seoTitle": "Briarpatch: $150–$350 per article, pitch deadline 18 September 2026",
-      "excerpt": "Briarpatch pays $150 for profiles, short essays and reviews, $250 for features and photo essays, and $350 for research-based and investigative reporting. The pitch deadline for the Winter 2027 'AI Resistance' issue is 18 September 2026.",
+      "seoTitle": "Briarpatch: $150–$350 per article, pitches welcome",
+      "excerpt": "Briarpatch pays $150 for profiles, short essays and reviews, $250 for features and photo essays, and $350 for research-based and investigative reporting. The Winter 2027 'AI Resistance' pitch deadline closed on 18 September 2026 and the Spring 2027 (unthemed) deadline is not yet stated; unsolicited pitches are welcome year-round.",
       "officialUrl": "https://briarpatchmagazine.com/submissions",
       "applyUrl": "mailto:pitch@briarpatchmagazine.com",
       "applyEmail": "pitch@briarpatchmagazine.com",
@@ -10324,10 +10324,10 @@
         "band": "2-4-weeks",
         "official": true
       },
-      "submissionStatus": "deadline",
+      "submissionStatus": "upcoming",
       "deadline": {
         "date": "2026-09-18",
-        "display": "Winter 2027 'AI Resistance' issue — pitch deadline 18 September 2026. Spring 2027 (unthemed) deadline TBA.",
+        "display": "Winter 2027 'AI Resistance' pitch deadline closed 18 September 2026 (re-verified on the official submissions page 21 September 2026). Spring 2027 (unthemed) pitch deadline is TBA - the page states no date. Briarpatch welcomes unsolicited pitches year-round at pitch@briarpatchmagazine.com.",
         "windowEnd": "2026-09-18",
         "recurring": true
       },
@@ -11364,7 +11364,7 @@
     {
       "status": "published",
       "vertical": "writing",
-      "lastVerified": "2026-09-06",
+      "lastVerified": "2026-09-21",
       "publishedAt": "2026-09-06",
       "experience": "not-stated",
       "editorExperience": {
@@ -11374,8 +11374,8 @@
       "slug": "island-magazine",
       "publication": "Island",
       "title": "Poetry, fiction, nonfiction and graphic narratives",
-      "seoTitle": "Island: submissions close 18 September 2026",
-      "excerpt": "Island, a Tasmanian literary and arts magazine, has three calls closing 18 September 2026 — print poetry for Island 180, and nonfiction and fiction for Island Online. It pays contributor fees and explicitly refuses AI-written work. Open to Australia, New Zealand and Australians abroad.",
+      "seoTitle": "Island: closed 18 Sep 2026; graphic narratives open",
+      "excerpt": "Island, a Tasmanian literary and arts magazine, closed its 18 September 2026 windows: print poetry (Island 180), print fiction and nonfiction, and all three Island Online categories are now closed. The one open route is graphic narrative pitches for print in 2027, with no formal cut-off. Island pays contributor fees and explicitly refuses AI-written work. Open to Australia, New Zealand and Australians abroad.",
       "officialUrl": "https://islandmag.com/submit",
       "applyUrl": "https://island.submittable.com/submit",
       "applyEmail": "jane@islandmag.com",
@@ -11421,10 +11421,10 @@
         "band": "not-stated",
         "official": false
       },
-      "submissionStatus": "deadline",
+      "submissionStatus": "closed",
       "deadline": {
         "date": "2026-09-18",
-        "display": "Print poetry (Island 180), Island Online nonfiction and Island Online fiction all close 18 September 2026. Print nonfiction is currently closed. Graphic narrative pitches for 2027 are open with no formal cut-off.",
+        "display": "Re-verified on the official submissions page 21 September 2026: print poetry (Island 180), print fiction, print nonfiction and all three Island Online categories (poetry, fiction, nonfiction) are closed - the 18 September 2026 window has passed. The one open route is graphic narrative pitches for print in 2027, with no formal cut-off.",
         "windowEnd": "2026-09-18",
         "recurring": true
       },

@@ -18,3 +18,13 @@ content/.football-data-key
 
 # retired-source stubs: never publish (local build artifacts only)
 public/entertainment/_recovered/
+public/sports/_recovered/
+
+# transient root redirect stubs: build-routing.py writes ~74 of these per build
+# ("legacy forwards: N root stubs -> /entertainment/...") and its own pre-clean
+# deletes them at the start of the next run. They are regenerated identically
+# every time, so they are build artifacts, not source. They are NOT committed.
+# Deliberately not globbed (e.g. /*/index.html) - a genuinely new article dir
+# at the root must still show up in `git status`, because build-public-dir.py
+# auto-stages new page dirs and a silent gitignore rule would let an author
+# forget to `git add` a new page.

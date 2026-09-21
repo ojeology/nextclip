@@ -112,7 +112,25 @@ def main() -> int:
                 continue
             if name in {"index.html", "404.html", "410.html", "sitemap.xml",
                         "news-sitemap.xml", "feed.xml", "manifest.webmanifest", "sw.js"}:
-                shutil.move(str(e), str(wr / name))
+                if name in {"news-sitemap.xml", "feed.xml"}:
+                    # COPY, do not move. These two are the site-root discovery
+                    # files and four independent contracts expect them at /:
+                    #   - server.js PUBLIC_ROOT_FILES whitelists both
+                    #   - build-public-dir.py PUBLIC_FILES lists both (it only
+                    #     copies files that exist, so a missing root copy made
+                    #     public/feed.xml vanish silently)
+                    #   - 20 published pages link href="/feed.xml"
+                    #   - build-discovery.py writes them here byte-for-byte
+                    # Moving them into writers/ left /feed.xml and
+                    # /news-sitemap.xml 404 on the live site, and because the
+                    # committed tree still held the root copies, `git diff
+                    # --exit-code` failed CI at "Confirm deterministic output"
+                    # on every run - which skipped npm audit and the whole
+                    # npm test release gate. Step 2 still rewrites the writers/
+                    # copy to /writers/ URLs, so both feeds stay correct.
+                    shutil.copy2(str(e), str(wr / name))
+                else:
+                    shutil.move(str(e), str(wr / name))
                 moved += 1
     # sw.js also stays at the root so old service-worker registrations get cleaned
     if (ROOT / "favicon.ico").exists():

@@ -10,5 +10,5 @@
     "fitness": "fitness.thebryme.com",
     "home": "home.thebryme.com"
   },
-  "notes": "mode=path: properties served at bryme.onrender.com/<prop>/, writers at /writers/. mode=subdomain: the later deployment change. PRODUCTION_DOMAIN/ROUTING_MODE/ORIGIN env vars override."
+  "notes": "mode=path: properties served at <origin>/<prop>/, writers at /writers/ (origin comes from SITE_URL / site.config.json; the retired bryme.onrender.com host is no longer used). mode=subdomain: the later deployment change. PRODUCTION_DOMAIN/ROUTING_MODE/ORIGIN env vars override."
 }
