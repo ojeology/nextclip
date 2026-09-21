@@ -302,6 +302,29 @@ dict(
 "Weight, measured as what a film moved: The Black Book became the country's loudest argument that its crime thrillers are one long case file on impunity - critics, lawyers and the phrase 'black book' entered the street's vocabulary for the ledger of purchased files, and its global streaming debut made that vocabulary everyone's. Judged as cinema, a gripping second-half film; as a document of a national mood in 2023, the shelf's most quotable entry in years, which is precisely the kind of weight this desk keeps a column for.",
          ]),
 
+    dict(slug="lionheart", title="Lionheart", year=2018,
+         director="Genevieve Nnaji", country="Nigeria", language="English / Igbo", runtime=None,
+         axes=dict(story=6.5, craft=6.5, vision=6.0, weight=7.5), score=6.625,
+         date="2026-09-27",
+         verdict="A corporate succession comedy shot in family colours: the film's real plot was the argument it started about what a foreign-language film is",
+         body=[
+"The eldest daughter of a shipping magnate, a stroke that hands her the company mid-fight, a brother waiting in the wings and a father who conducts half of his life in Igbo: on paper Lionheart is a comedy of corporate succession dressed in Lagos tailoring, and it plays that way - competently, warmly, a little safely. Its actual historical subject was waiting outside the frame, in the fine print of an awards rulebook.",
+"The craft is solid television-grade raised a class by its lead: blocking that keeps family scenes in the same room instead of cross-cutting them, an office comedy rhythm that mostly trusts its silences, and a physical, lived-in warehouse world that the desk files as the film's best design choice - a shipping company shot as a working body, not a set. The score and cut never embarrass themselves; nor do they reach for the one register, risk, that would make the middle hour unforgettable rather than agreeable.",
+"The ledger's debits are the script's: the antagonist is a scheduling problem, the resolution arrives wearing a family-unity speech, and the business-logic of the succession would not survive a board meeting. Held honestly: this is a film that likes its characters more than it challenges them, which is a valid genre contract - the desk simply refuses to grade it as if the contract were bold.",
+"Weight is where Lionheart vaults its own shelf position. As the first Netflix original from its country's industry it changed what a platform deal meant for the slate economics here, and its exclusion from a foreign-language race on the technicality of its English submission rules had the industry, the diaspora and the rulebook's owners arguing in public about what a 'foreign-language' film from a multilingual country even is. Films are judged by what they do on screen; this one is also remembered for what it did to a form - and on this desk's ledger, that Igbo argument at the edge of the frame outlived most of the plot inside it.",
+         ]),
+    dict(slug="eyimofe", title="Eyimofe (This Is My Desire)", year=2020,
+         director="Arie & Chuko Esiri", country="Nigeria", language="English / Igbo", runtime=None,
+         axes=dict(story=7.5, craft=8.5, vision=8.0, weight=7.5), score=7.875,
+         date="2026-09-27",
+         verdict="Two lives, one departure economy, and a Lagos shot like evidence: the self-financed debut that out-classed the industry's funded productions on their own turf",
+         body=[
+"A welder keeping two women's households alive across a city he cannot afford; a hairdresser whose passport queue is the only door she can see - Eyimofe follows the economics of going anywhere else as a day-by-day grind rather than a montage, and its title's desire is priced in ferry tickets, hospital bills and funeral money. The desk has reviewed this industry's migration stories for years; almost none of them had a script this patient or a camera this unwilling to look away.",
+"The craft is the debut that embarrassed budgets twice its size: framing that composes Lagos like a witness statement rather than a postcard, sound design that keeps the city at working distance, and performances conducted at the volume of people who cannot afford drama in public. The decision to shoot on film stock in a market that had digitised everything reads on screen as seriousness - grain as a moral choice, a period the industry was not asked to look at this closely before.",
+"Entered honestly: the two strands share a city and a theme but not equal gravity - the desk finds the second movement slightly the stronger, and a final image or two reaches for poetry where the film's own evidence had already made the point. The film also asks patience of audiences trained on the industry's faster emotional commerce; that patience is some of its argument, but this page does not pretend it is free.",
+"Weight: a self-financed first feature that premiered at a major international festival in early 2020, then swept that season's national industry awards, and rewrote what debut financing could mean - the desk's shorthand is the sentence producers now hear in every pitch meeting: if the Esiri brothers could do it with their own money, whose money is the excuse? As a document of the departure economy it joins the shelf's essential pair with 76 - one film recovering a nation's buried past, this one recording its present leaving by sea.",
+         ]),
+
 ]
 
 REVIEWS_BY_SLUG = {r["slug"]: r for r in REVIEWS}
