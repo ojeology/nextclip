@@ -4315,6 +4315,8 @@ HOME_SLUG_SECT.update({s: "maintain" for s in (
 HOME_SLUG_SECT.update({s: "fix" for s in ("mould-after-a-flooded-room",)})
 HOME_SLUG_SECT.update({s: "fix" for s in ("circuit-breaker-tripped-not-mystery", "ceiling-water-stain-removal", "gentle-low-flow-fixes", "wall-fan-making-noise")})
 HOME_SLUG_SECT.update({s: "maintain" for s in ("harmattan-fire-safety-house", "compound-mosquito-control-night")})
+HOME_SLUG_SECT.update({s: "fix" for s in ("water-heater-no-hot-water", "toilet-weak-flush-fixes", "paint-peeling-walls-bathroom")})
+HOME_SLUG_SECT.update({s: "maintain" for s in ("solar-panel-care-nigeria", "gate-motor-solar-light-care", "musty-wardrobe-clothes-rainy")})
 
 
 def _home_theme_init():
@@ -4940,6 +4942,24 @@ def home_pages():
         "wall-fan-making-noise": [("harmattan-and-your-electronics", "Harmattan dust and your electronics"),
                                  ("circuit-breaker-tripped-not-mystery", "The breaker that keeps tripping"),
                                  ("seasonal-home-maintenance-checklist", "The seasonal checklist")],
+        "water-heater-no-hot-water": [("energy-bill-high-unchanged", "Why the bill is high"),
+                                      ("how-to-fix-a-dripping-tap", "The dripping tap"),
+                                      ("borehole-water-and-your-kettle", "Borehole water, handled")],
+        "toilet-weak-flush-fixes": [("how-to-fix-a-dripping-tap", "The dripping tap"),
+                                    ("gentle-low-flow-fixes", "Thin-flow tap fixes"),
+                                    ("borehole-water-and-your-kettle", "Borehole water, handled")],
+        "paint-peeling-walls-bathroom": [("condensation-ventilation-that-works", "Damp & ventilation"),
+                                          ("mould-after-a-flooded-room", "Mould after a flooded room"),
+                                          ("rainy-season-home-checklist", "The pre-rains checklist")],
+        "solar-panel-care-nigeria": [("generator-vs-inverter-nigeria", "Generator vs inverter"),
+                                      ("harmattan-and-your-electronics", "Harmattan and your electronics"),
+                                      ("harmattan-fire-safety-house", "Harmattan fire safety")],
+        "gate-motor-solar-light-care": [("harmattan-and-your-electronics", "Harmattan and your electronics"),
+                                         ("circuit-breaker-tripped-not-mystery", "The breaker that keeps tripping"),
+                                         ("seasonal-home-maintenance-checklist", "The seasonal checklist")],
+        "musty-wardrobe-clothes-rainy": [("condensation-ventilation-that-works", "Damp & ventilation"),
+                                          ("mould-after-a-flooded-room", "Mould after a flooded room"),
+                                          ("harmattan-fire-safety-house", "Harmattan fire safety")],
     }
     for slug, ti, dek, b in HOME_ARTICLES:
         key = HOME_SLUG_SECT[slug]
