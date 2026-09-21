@@ -931,15 +931,14 @@ def legal_pages(pub, name, tagline, skip=frozenset(), desk=None):
 # ------------------------------------------------------------------ 1. HUB
 HUB_PUBS = [
     ("writers", "BRYME Writers", "The flagship.", "The practical digital library and workspace for writers \u2014 191 researched guides, 44 free browser tools, a hand-verified opportunity database and the essays behind the market. Free, independent, human-verified.", "live"),
-    ("sports", "BRYME Sport", "The desk reopens.", "Football coverage from BRYME's media desk \u2014 matchweek guides, season stories and the August deadline-day archive, with the thin pages honestly retired. No betting content, ever.", "live"),
-    ("entertainment", "BRYME Entertainment", "Recovered from the archive.", "Cinema, TV and anime \u2014 guides, explainers and opinion rebuilt from BRYME's earliest editorial research, re-typeset and honestly labelled. No download sites, no piracy \u2014 only writing about the work.", "live"),
     ("tech", "BRYME Tech", "Practical technology. No theatre.", "Deployment walkthroughs, domain and DNS specifics, token hygiene, front-end patterns \u2014 written from first-hand builds, not press releases. Evergreen on purpose.", "live"),
+    ("sports", "BRYME Sport", "The desk reopens.", "Football coverage from BRYME's media desk \u2014 matchweek guides, season stories and the August deadline-day archive, with the thin pages honestly retired. No betting content, ever.", "live"),
 ]
 WORKSHOP_PUBS = [
-    ("fitness", "BRYME Fitness", "Now open.", "Practical fitness, built to keep: two interactive tools \u2014 the 30-day walking plan and the weekly planner \u2014 plus a dozen honest, sourced guides on starting, strength, protein, sleep and recovery. General fitness information, never medical advice.", "live"),
     ("home", "BRYME Home & DIY", "Now open.", "Practical help for fixing, maintaining and understanding your home \u2014 low-risk repairs explained honestly, an in-browser seasonal checklist, and safety boundaries stated without apology.", "live"),
+    ("fitness", "BRYME Fitness", "Now open.", "Practical fitness, built to keep: two interactive tools \u2014 the 30-day walking plan and the weekly planner \u2014 plus a dozen honest, sourced guides on starting, strength, protein, sleep and recovery. General fitness information, never medical advice.", "live"),
+    ("entertainment", "BRYME Entertainment", "Recovered from the archive.", "Cinema, TV and anime \u2014 guides, explainers and opinion rebuilt from BRYME's earliest editorial research, re-typeset and honestly labelled. No download sites, no piracy \u2014 only writing about the work.", "live"),
 ]
-
 def hub_pages():
     import datetime as _dt
     _wr = ROOT / "public" / "writers"
@@ -988,7 +987,13 @@ def hub_pages():
                       + '<figcaption>' + html.escape(q["title"]) + ' \u00b7 score ' + str(q["score"]) + '/10</figcaption></figure>')
         _collage = '<div class="hh-collage">' + _figs + '</div>'
         _n_films = len(_hp.MOVIES)
-        _top = sorted(_nr2.REVIEWS, key=lambda r: (-r["score"], r["title"]))[:3]
+        _prio = [next((x for x in _nr2.REVIEWS if x["slug"] == q), None)
+                 for q in ("tsotsi", "half-of-a-yellow-sun", "the-black-book")]
+        _top = [x for x in _prio if x][:3]
+        if len(_top) < 3:
+            _byScore = sorted([r for r in _nr2.REVIEWS if r not in _top],
+                              key=lambda r: (-r["score"], r["title"]))
+            _top += _byScore[:3 - len(_top)]
         _rev_band = ('<section class="section"><div class="section-head"><p class="kicker">From the review shelf</p>'
                      '<h2>Fresh criticism, dated and signed.</h2></div><div class="rev-3">'
                      + "".join('<a class="rev-c" href="/entertainment/reviews/' + r["slug"] + '/"><span class="stars">&#9733; '
@@ -1009,36 +1014,12 @@ def hub_pages():
                   '<div><b>0</b><span>pop-ups. ever.</span></div></section>')
     except Exception:
         _stats = ""
-    _dq = [("entertainment", "Entertainment", "/entertainment/",
-            "Nollywood and world-cinema criticism with reasons behind every score, plus the practical layer: what to watch and how to watch it legally.",
-            [("/entertainment/how-to-pick-a-movie-tonight/", "What to watch when you can't decide"),
-             ("/entertainment/korean-cinema-starter-guide-rebuilt/", "Where to start with Korean film"),
-             ("/entertainment/best-streaming-apps-nigeria/", "The cheapest legal streaming, Nigeria")]),
-           ("writers", "Writers", "/writers/",
-            "The paid side of freelance writing: who buys, at what rate, and how a pitch gets accepted - tracked with dated changes, not folklore.",
-            [("/writers/what-changed/", "What changed in paying markets this month"),
-             ("/writers/writing-opportunities/", "Verified magazines and their rates"),
-             ("/writers/tools/", "Free tools that do the drudgery")]),
-           ("tech", "Tech", "/tech/",
-            "Device and software advice tested on machines we own, for budgets that are real - first-hand notes, invented prices nowhere.",
-            [("/tech/student-laptop-spec-floor-2026/", "The honest spec floor for a student laptop"),
-             ("/tech/dell-vs-hp-refurbished-laptops-nigeria/", "Refurbished Dell vs HP: which survives"),
-             ("/tech/usb-c-fast-charge-not-working/", "Why your USB-C charges so slowly")]),
-           ("home", "Home & DIY", "/home/",
-            "Nigerian home maintenance in plain language - power, water, harmattan and repair: what to attempt, what to call a licensed person for.",
-            [("/home/generator-vs-inverter-nigeria/", "Generator or inverter, sized by your actual load"),
-             ("/home/wiring-red-flags-in-your-home/", "Wiring red flags you can spot yourself"),
-             ("/home/harmattan-fire-safety-house/", "The harmattan fire walk-through")]),
-           ("fitness", "Fitness", "/fitness/",
-            "Training that needs no gym and no supplements - plans, form and warm-ups explained from first principles, with browser tools that run the maths.",
-            [("/fitness/how-to-warm-up/", "A warm-up that actually covers you"),
-             ("/fitness/walking-vs-running/", "Walking or running for getting fit"),
-             ("/fitness/30-day-walking-plan/", "The 30-day walking plan")]),
-           ("sports", "Sport", "/sports/",
-            "The deadline-day archive: the transfer window and matchweek notes, graded after the noise settles instead of adding to it.",
-            [("/sports/how-the-transfer-window-works/", "How the transfer window really works"),
-             ("/sports/premier-league-transfer-tracker-august-2026/", "August 2026: tracker closed and graded"),
-             ("/sports/", "Inside the archive")]),
+    _dq = [('tech', 'Tech', '/tech/', 'Device and software advice tested on machines we own, for budgets that are real - first-hand notes, invented prices nowhere.', [('/tech/student-laptop-spec-floor-2026/', 'The honest spec floor for a student laptop'), ('/tech/dell-vs-hp-refurbished-laptops-nigeria/', 'Refurbished Dell vs HP: which survives'), ('/tech/usb-c-fast-charge-not-working/', 'Why your USB-C charges so slowly')]),
+           ('writers', 'Writers', '/writers/', 'The paid side of freelance writing: who buys, at what rate, and how a pitch gets accepted - tracked with dated changes, not folklore.', [('/writers/what-changed/', 'What changed in paying markets this month'), ('/writers/writing-opportunities/', 'Verified magazines and their rates'), ('/writers/tools/', 'Free tools that do the drudgery')]),
+           ('home', 'Home & DIY', '/home/', 'Home maintenance in plain language - power, water, seasonal wear and repair: what to attempt, what to call a licensed person for.', [('/home/generator-vs-inverter-nigeria/', 'Generator or inverter, sized by your actual load'), ('/home/wiring-red-flags-in-your-home/', 'Wiring red flags you can spot yourself'), ('/home/harmattan-fire-safety-house/', 'Fire walk-through: the dry-season ritual')]),
+           ('fitness', 'Fitness', '/fitness/', 'Training that needs no gym and no supplements - plans, form and warm-ups explained from first principles, with browser tools that run the maths.', [('/fitness/how-to-warm-up/', 'A warm-up that actually covers you'), ('/fitness/walking-vs-running/', 'Walking or running for getting fit'), ('/fitness/30-day-walking-plan/', 'The 30-day walking plan')]),
+           ('sports', 'Sport', '/sports/', 'The deadline-day archive: the transfer window and matchweek notes, graded after the noise settles instead of adding to it.', [('/sports/how-the-transfer-window-works/', 'How the transfer window really works'), ('/sports/premier-league-transfer-tracker-august-2026/', 'August 2026: tracker closed and graded'), ('/sports/', 'Inside the archive')]),
+           ('entertainment', 'Entertainment', '/entertainment/', 'Nollywood and world-cinema criticism with reasons behind every score, plus the practical layer: what to watch and how to watch it legally.', [('/entertainment/how-to-pick-a-movie-tonight/', "What to watch when you can't decide"), ('/entertainment/korean-cinema-starter-guide-rebuilt/', 'Where to start with Korean film'), ('/entertainment/reviews/', 'Dated, signed reviews - world &amp; African cinema')])
            ]
     _desk_band = ('<section class="section"><div class="section-head"><p class="kicker">In plain words</p>'
                   '<h2>What each desk answers</h2></div><div class="desk-qa">'
@@ -1049,7 +1030,7 @@ def hub_pages():
     body = f"""{head("hub", "Six publications. One house standard.", parent=False)}
 <main id="main">
 <section class="hub-hero"><div class="hh-inner"><div>
-<p class="hh-kick">Written in Lagos \u00b7 read everywhere \u00b7 six desks, one house rule</p>
+<p class="hh-kick">Six desks \u00b7 one house rule \u00b7 published in English, read everywhere</p>
 <h1>THE&nbsp;BRYME</h1>
 <p class="hh-sub">Research before publishing. Say exactly what you know.</p>
 <p class="hh-dek">Six specialist publications \u2014 film, technology, fitness, home care, football and the working writer\u2019s desk. Each keeps its own shelf and its own standards; all share one discipline: research before publishing, dates on anything that can go stale, and corrections made in the open. Pick a desk.</p>
@@ -1057,16 +1038,16 @@ def hub_pages():
 </div>{_collage}</div></section>
 <div class="wrap">
 {_stats}
-{_rev_band}<section class="section"><div class="section-head"><p class="kicker">The publications</p><h2>Choose your desk</h2></div>
+<section class="section"><div class="section-head"><p class="kicker">The publications</p><h2>Choose your desk</h2></div>
 <div class="cards">{cards}</div></section>
 {_desk_band}
-<section class="section alt"><div class="section-head"><p class="kicker">The house</p><h2>One standard, six voices.</h2></div>
+{_rev_band}<section class="section alt"><div class="section-head"><p class="kicker">The house</p><h2>One standard, six voices.</h2></div>
 <p class="lede">Every BRYME publication is edited by the same desk, run on the same discipline — dates on time-sensitive claims, corrections in the open, no fabricated experience, no pages built to game a search engine — and none of them share a navigation bar. When you enter one, you are in that world.</p>
 </section></div></main>
 {foot("hub")}"""
     hub_index = [("index.html placeholder", "", "", "")]
     return [("/", "THE BRYME — a family of independent publications",
-             "Six independent editorial desks \u2014 film, tech, fitness, home care, football and professional writing. Dated claims, open corrections, zero filler. Made in Lagos; written for everyone.", body)]
+             "Six independent editorial desks \u2014 film, tech, fitness, home care, football and professional writing. Dated claims, open corrections, zero filler. In English, for everyone.", body)]
 
 
 # ------------------------------------------------------- 2. ENTERTAINMENT
