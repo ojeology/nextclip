@@ -8,6 +8,13 @@
   var status = document.getElementById("fp-status");
   var saved = {};
   try { saved = JSON.parse(window.localStorage.getItem(KEY) || "{}") || {}; } catch (e) { saved = {}; }
+  var shared = false;
+  var mm = /[#&]d=([0-9,]+)/.exec(window.location.hash || "");
+  if (mm) {
+    saved = {};
+    mm[1].split(",").forEach(function (n) { if (n) { saved[n] = 1; } });
+    shared = true;
+  }
   function count() {
     var n = 0;
     for (var i = 0; i < days.length; i++) {
@@ -30,6 +37,7 @@
       status.textContent = n === 0
         ? "Day 0 of " + days.length + " complete. Tick days off as you go \u2014 your browser will remember."
         : "Day " + n + " of " + days.length + " complete." + (n === days.length ? " Finished the month \u2014 see you in week four, round two." : " Keep the rhythm.");
+    if (status && shared) { status.textContent += " \u2014 showing a shared plan; tick any day to make it yours."; }
     }
   }
   for (var i = 0; i < days.length; i++) {
@@ -41,10 +49,26 @@
       btn.addEventListener("click", function () {
         d.classList.toggle("done");
         saved[num] = d.classList.contains("done") ? 1 : 0;
+        shared = false;
         try { window.localStorage.setItem(KEY, JSON.stringify(saved)); } catch (e) {}
         render();
       });
     })(days[i]);
   }
+  var sh = document.createElement("button");
+  sh.type = "button";
+  sh.textContent = "Copy shareable link";
+  sh.style.cssText="display:inline-block;margin-top:10px;font:800 12px/1 var(--sans);letter-spacing:.1em;text-transform:uppercase;background:none;border:1px solid var(--line-strong);color:var(--ink);padding:10px 14px;cursor:pointer";
+  sh.addEventListener("click", function () {
+    var done = [];
+    for (var k2 in saved) { if (saved[k2]) { done.push(k2); } }
+    var url = window.location.href.split("#")[0] + "#d=" + done.join(",");
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(url);
+      sh.textContent = "Copied \u2713 the link carries your ticks, nothing else";
+    } else { window.prompt("Copy this link", url); }
+    window.setTimeout(function () { sh.textContent = "Copy shareable link"; }, 3500);
+  });
+  if (status && status.parentNode) { status.parentNode.insertBefore(sh, status.nextSibling); }
   render();
 })();

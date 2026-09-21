@@ -37,6 +37,22 @@
     var reset = document.getElementById("wp-reset");
     if (!grid || !status) return;
     var st = load();
+    var sharedNote = "";
+    var mm = /[#&]p=([a-z:,]+)/.exec(window.location.hash || "");
+    if (mm) {
+      st = { week: st.week, days: {} };
+      mm[1].split(",").forEach(function (seg) {
+        var parts = seg.split(":");
+        if (parts.length === 2 && DAYS.indexOf(parts[0]) !== -1) {
+          st.days[parts[0]] = {};
+          parts[1].split("").forEach(function (ch) {
+            var kk = { m: "move", s: "strength", w: "wind" }[ch];
+            if (kk) { st.days[parts[0]][kk] = 1; }
+          });
+        }
+      });
+      sharedNote = " Showing a shared week \u2014 edit any cell to make it yours.";
+    }
 
     function summary() {
       var move = 0, strength = 0, wind = 0;
@@ -51,7 +67,7 @@
       parts.push("<b>" + strength + " strength day" + (strength === 1 ? "" : "s") + "</b>" + (strength >= 2 ? " — the guideline, met." : " (the guideline is 2)."));
       parts.push("<b>" + wind + " on-time night" + (wind === 1 ? "" : "s") + "</b>" + (wind >= 5 ? " — the recovery habit is holding." : " (7+ hours starts with an on-time evening)."));
       var done = move >= 5 && strength >= 2 && wind >= 5;
-      status.innerHTML = (done ? "<b>The honest week, complete.</b> " : "") + parts.join(" ");
+      status.innerHTML = (done ? "<b>The honest week, complete.</b> " : "") + parts.join(" ") + sharedNote;
     }
 
     function paint(btn, on) {
@@ -67,6 +83,7 @@
         st.days[d][k] = st.days[d][k] ? 0 : 1;
         paint(btn, !!st.days[d][k]);
         save(st);
+        sharedNote = "";
         summary();
       });
     });
@@ -81,6 +98,28 @@
         summary();
       });
     }
+    var shb = document.createElement("button");
+    shb.type = "button";
+    shb.textContent = "Copy shareable week";
+    sh.style.cssText="display:inline-block;margin-top:10px;font:800 12px/1 var(--sans);letter-spacing:.1em;text-transform:uppercase;background:none;border:1px solid var(--line-strong);color:var(--ink);padding:10px 14px;cursor:pointer";
+    shb.addEventListener("click", function () {
+      var segs = [];
+      DAYS.forEach(function (d2) {
+        var q = st.days[d2] || {};
+        var s2 = "";
+        if (q.move) { s2 += "m"; }
+        if (q.strength) { s2 += "s"; }
+        if (q.wind) { s2 += "w"; }
+        if (s2) { segs.push(d2 + ":" + s2); }
+      });
+      var url = window.location.href.split("#")[0] + (segs.length ? "#p=" + segs.join(",") : "");
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url);
+        shb.textContent = "Copied \u2713 the link carries your week, nothing else";
+      } else { window.prompt("Copy this link", url); }
+      window.setTimeout(function () { shb.textContent = "Copy shareable week"; }, 3500);
+    });
+    if (status.parentNode) { status.parentNode.insertBefore(shb, status.nextSibling); }
     summary();
   }
 

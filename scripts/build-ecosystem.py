@@ -923,7 +923,7 @@ def legal_pages(pub, name, tagline, skip=frozenset(), desk=None):
 # ------------------------------------------------------------------ 1. HUB
 HUB_PUBS = [
     ("writers", "BRYME Writers", "The flagship.", "The practical digital library and workspace for writers \u2014 191 researched guides, 44 free browser tools, a hand-verified opportunity database and the essays behind the market. Free, independent, human-verified.", "live"),
-    ("sports", "BRYME Sport", "The desk reopens.", "Football coverage from BRYME's media desk \u2014 transfer reporting, matchweek guides and the 2026-27 season, with the archive's thin pages honestly retired. No betting content, ever.", "live"),
+    ("sports", "BRYME Sport", "The desk reopens.", "Football coverage from BRYME's media desk \u2014 matchweek guides, season stories and the August deadline-day archive, with the thin pages honestly retired. No betting content, ever.", "live"),
     ("entertainment", "BRYME Entertainment", "Recovered from the archive.", "Cinema, TV and anime \u2014 guides, explainers and opinion rebuilt from BRYME's earliest editorial research, re-typeset and honestly labelled. No download sites, no piracy \u2014 only writing about the work.", "live"),
     ("tech", "BRYME Tech", "Practical technology. No theatre.", "Deployment walkthroughs, domain and DNS specifics, token hygiene, front-end patterns \u2014 written from first-hand builds, not press releases. Evergreen on purpose.", "live"),
 ]
@@ -3088,7 +3088,7 @@ def sports_pages():
 <p class="lede">The archive also held roughly two thousand match-data pages from finished fixtures. They are data, not journalism; they stay retired rather than being republished stale. New reporting accumulates here as the season runs.</p>
 </section></div></main>{foot("sports")}"""
     pages.insert(0, ("/", "BRYME Sport \u2014 football reporting, never betting",
-              "Transfer reporting, matchweek guides and season stories from the BRYME media desk. Independent, checkable, strictly no gambling content.", index_body))
+              "Matchweek guides, season stories and the August deadline-day archive from the BRYME media desk. Independent, checkable, strictly no gambling content.", index_body))
     return pages + legal_pages("sports", "BRYME Sport", "Analysis, stories and the long view of sport \u2014 checkable, and never betting.", desk={
         "about": "The desk covers the 2026-27 season across six competitions with dated, sourced numbers - tables, results, scorers and squads - and no betting content, ever.",
         "privacy": "Live tables, results and scorers are fetched from football-data.org by the desk's own scheduled agent; no reader data is sent to that source. Fetch times are printed on every panel.",
@@ -3202,6 +3202,13 @@ def _norm_tech(rec):
     }
 
 def _load_tech():
+    try:
+        import tech_comparison_data
+        for _tc in tech_comparison_data.TECH_COMPARE:
+            if _tc[0] not in {t0[0] for t0 in TECH_ARTICLES}:
+                TECH_ARTICLES.append(_tc)
+    except Exception:
+        pass
     arts = [_norm_tech(r) for r in json.loads(
         (OUT.parent / "content" / "tech-articles.json").read_text(encoding="utf-8"))]
     by_slug = {a["slug"]: a for a in arts}
@@ -4301,6 +4308,11 @@ HOME_SLUG_SECT.update({s: "owning" for s in (
     "pre-move-inspection", "moving-week-by-week", "secondhand-furniture-mistakes",
     "emergency-repair-fund", "someday-maintenance-cost", "unpermitted-work-insurance",
     "renter-vs-owner-repairs", "improvements-no-resale-value")})
+HOME_SLUG_SECT.update({s: "understand" for s in (
+    "generator-vs-inverter-nigeria", "borehole-water-and-your-kettle", "wiring-red-flags-in-your-home")})
+HOME_SLUG_SECT.update({s: "maintain" for s in (
+    "harmattan-and-your-electronics", "rainy-season-home-checklist")})
+HOME_SLUG_SECT.update({s: "fix" for s in ("mould-after-a-flooded-room",)})
 
 
 def _home_theme_init():
@@ -4444,6 +4456,9 @@ def home_pages():
     HOME_ARTICLES.extend((s2, ti, dek, b) for (s2, _k, ti, dek, b) in home_roadmap3_data.HOME_ROADMAP_3 if s2 not in _have)
     import home_roadmap4_data
     HOME_ARTICLES.extend((s2, ti, dek, b) for (s2, _k, ti, dek, b) in home_roadmap4_data.HOME_ROADMAP_4 if s2 not in _have)
+    import home_local_data
+    _have5 = {s3[0] for s3 in HOME_ARTICLES}
+    HOME_ARTICLES.extend((s2, ti, dek, b) for (s2, _k, ti, dek, b) in home_local_data.HOME_LOCAL if s2 not in _have5)
     import home_roadmap5_data
     HOME_ARTICLES.extend((s2, ti, dek, b) for (s2, _k, ti, dek, b) in home_roadmap5_data.HOME_ROADMAP_5 if s2 not in _have)
     import home_roadmap6_data
@@ -4887,6 +4902,24 @@ def home_pages():
         "why-is-my-home-doing-that": [("how-to-fix-a-dripping-tap", "The dripping tap"),
                                       ("why-does-my-circuit-breaker-keep-tripping", "The tripping breaker"),
                                       ("emergency-repair-fund", "The emergency repair fund")],
+        "generator-vs-inverter-nigeria": [("why-does-my-circuit-breaker-keep-tripping", "The tripping breaker"),
+                                          ("energy-bill-high-unchanged", "Why the bill is high"),
+                                          ("emergency-repair-fund", "The emergency repair fund")],
+        "harmattan-and-your-electronics": [("seasonal-home-maintenance-checklist", "The seasonal checklist"),
+                                           ("condensation-ventilation-that-works", "Ventilation that works"),
+                                           ("someday-maintenance-cost", "The someday-cost rule")],
+        "rainy-season-home-checklist": [("small-leak-ripple-effect", "How small leaks ripple"),
+                                        ("condensation-ventilation-that-works", "Damp & ventilation"),
+                                        ("seasonal-home-maintenance-checklist", "The seasonal checklist")],
+        "borehole-water-and-your-kettle": [("water-heater-explained", "The water heater, explained"),
+                                           ("how-to-fix-a-dripping-tap", "The dripping tap"),
+                                           ("someday-maintenance-cost", "The someday-cost rule")],
+        "wiring-red-flags-in-your-home": [("why-does-my-circuit-breaker-keep-tripping", "The tripping breaker"),
+                                          ("us-diy-electrical-rules", "DIY electrical rules"),
+                                          ("emergency-repair-fund", "The emergency repair fund")],
+        "mould-after-a-flooded-room": [("condensation-ventilation-that-works", "Condensation, solved"),
+                                       ("water-damage-insurance-coverage", "Water damage & insurance"),
+                                       ("small-leak-ripple-effect", "The ripple effect")],
     }
     for slug, ti, dek, b in HOME_ARTICLES:
         key = HOME_SLUG_SECT[slug]
