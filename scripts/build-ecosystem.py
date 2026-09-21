@@ -4395,6 +4395,9 @@ HOME_SLUG_SECT.update({s: "fix" for s in ("bath-silicone-reseal", "ceiling-light
 HOME_SLUG_SECT.update({s: "fix" for s in ("dripping-tap-cartridge-fix", "vacuum-lost-suction-fix")})
 HOME_SLUG_SECT.update({s: "maintain" for s in ("electric-iron-steam-care", "wash-curtains-blinds-care", "wall-hole-anchors-by-type")})
 HOME_SLUG_SECT.update({s: "understand" for s in ("hidden-water-leak-meter-test",)})
+HOME_SLUG_SECT.update({s: "fix" for s in ("blender-wont-run-smells-hot", "washing-machine-walks-and-shakes")})
+HOME_SLUG_SECT.update({s: "maintain" for s in ("cabinet-hinge-adjustment", "stain-ladder-household", "external-wall-crack-seal")})
+HOME_SLUG_SECT.update({s: "understand" for s in ("electric-shower-tingle",)})
 
 
 def _home_theme_init():
@@ -5221,6 +5224,12 @@ def home_pages():
         "wash-curtains-blinds-care": [("indoor-drying-rainy-season", "Indoor drying"),("musty-wardrobe-clothes-rainy", "The musty wardrobe"),("electric-iron-steam-care", "Iron & steam care")],
         "wall-hole-anchors-by-type": [("how-to-paint-a-room-right", "Paint a room right"),("tv-mount-on-block-wall", "Mounting on block walls"),("wall-cracks-when-serious", "Cracks: when serious")],
         "hidden-water-leak-meter-test": [("running-toilet-cistern-fix", "Running cistern"),("water-storage-safety", "Safe water storage"),("soakaway-filling-up-signs", "Soakaway signs")],
+        "blender-wont-run-smells-hot": [("kitchen-hygiene-routine", "Kitchen hygiene routine"),("gas-cooker-wont-ignite", "Gas cooker ignition"),("vacuum-lost-suction-fix", "Vacuum suction ladder")],
+        "washing-machine-walks-and-shakes": [("washing-machine-smell-and-filter", "Washing machine care"),("floor-drain-backflow", "Drain smells outdoors"),("ceiling-fan-mounting-right", "Ceiling fan mounting")],
+        "electric-shower-tingle": [("wiring-red-flags-in-your-home", "Wiring red flags"),("electric-shock-first-response", "Shock first response"),("burning-plastic-smell-socket", "The socket burn smell")],
+        "cabinet-hinge-adjustment": [("doors-sticking-rainy-season", "Doors that stick"),("kitchen-hygiene-routine", "Kitchen hygiene routine"),("how-to-paint-a-room-right", "Paint a room right")],
+        "stain-ladder-household": [("electric-iron-steam-care", "Iron & steam care"),("towels-smell-fresh", "Towels that smell sour"),("wash-curtains-blinds-care", "Curtains & blinds care")],
+        "external-wall-crack-seal": [("wall-cracks-when-serious", "Cracks: when serious"),("flat-roof-ponding-and-leaks", "Flat roof & ponding"),("rainy-season-home-checklist", "The pre-rains checklist")],
     }
     for slug, ti, dek, b in HOME_ARTICLES:
         key = HOME_SLUG_SECT[slug]
