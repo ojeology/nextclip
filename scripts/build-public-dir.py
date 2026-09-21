@@ -45,7 +45,7 @@ PUBLIC_FILES = [
     "index.html", "404.html", "410.html", "robots.txt", "sitemap.xml",
     "news-sitemap.xml", "feed.xml", "favicon.ico", "manifest.webmanifest",
     "sw.js", "google2ec8f794263d784f.html", "yandex_78fdd841f95fa2e1.html",
-    "1740cdb82c02b9af13911b38c853e85d2f708322fa0c2c55.txt", "_redirects",
+    "1740cdb82c02b9af13911b38c853e85d2f708322fa0c2c55.txt", "ads.txt", "_redirects",
 ]
 
 copied = 0

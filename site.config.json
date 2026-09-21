@@ -4,9 +4,9 @@
   "siteDescription": "Legitimate paid-writing opportunities, practical writing guides, and BRYME's firsthand verification record.",
   "indexNowKey": "1740cdb82c02b9af13911b38c853e85d2f708322fa0c2c55",
   "adsense": {
-    "caId": "",
-    "enabled": false,
-    "note": "Advertising is disabled during the quality rebuild. Set caId to a real ca-pub-... ID and review consent/privacy before enabling. Ads must never resemble job cards or application buttons."
+    "caId": "ca-pub-1881426210393009",
+    "enabled": true,
+    "note": "Verification snippet live site-wide (2026-09-29, owner-supplied ca-pub ID). Ad UNITS remain unwired by design (_ads_slot has no call sites): nothing renders ads until owner says. Keep Google-dashboard Auto ads OFF until then. Ads must never resemble job cards or application buttons."
   },
   "newsletter": {
     "mode": "mailto",
