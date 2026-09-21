@@ -4381,6 +4381,9 @@ HOME_SLUG_SECT.update({s: "understand" for s in ("cooking-oil-fire-plan", "wall-
 HOME_SLUG_SECT.update({s: "fix" for s in ("flat-roof-ponding-and-leaks", "pump-short-cycling-waterhammer", "gate-intercom-not-working")})
 HOME_SLUG_SECT.update({s: "maintain" for s in ("sofa-leather-vinyl-care",)})
 HOME_SLUG_SECT.update({s: "understand" for s in ("standby-power-real-numbers-your-meter", "tiles-hollow-sounding-lifting")})
+HOME_SLUG_SECT.update({s: "fix" for s in ("window-ac-clatter-and-filter", "weevils-in-rice-and-beans")})
+HOME_SLUG_SECT.update({s: "maintain" for s in ("generator-service-calendar", "indoor-drying-rainy-season", "water-dispenser-jar-pump")})
+HOME_SLUG_SECT.update({s: "understand" for s in ("hot-top-floor-ceiling",)})
 
 
 def _home_theme_init():
@@ -5132,6 +5135,24 @@ def home_pages():
         "tiles-hollow-sounding-lifting": [("floor-drain-backflow", "Drain backflow"),
                                             ("mould-after-a-flooded-room", "Mould after a flooded room"),
                                             ("window-weep-holes", "Window weep holes")],
+        "window-ac-clatter-and-filter": [("fridge-not-cooling", "When the fridge stops cooling"),
+                                        ("wall-fan-making-noise", "The rattling wall fan"),
+                                        ("harmattan-and-your-electronics", "Harmattan and your electronics")],
+        "hot-top-floor-ceiling": [("flat-roof-ponding-and-leaks", "Flat-roof ponding"),
+                                   ("rainy-season-home-checklist", "The pre-rains checklist"),
+                                   ("how-to-paint-a-room-right", "Painting, in the right order")],
+        "generator-service-calendar": [("generator-rainy-season-safety", "Generator in the rain"),
+                                          ("the-battery-room", "The battery room"),
+                                          ("generator-vs-inverter-nigeria", "Generator vs inverter")],
+        "indoor-drying-rainy-season": [("musty-wardrobe-clothes-rainy", "The musty wardrobe"),
+                                         ("mattress-humidity-care", "Mattress & humidity"),
+                                         ("condensation-ventilation-that-works", "Damp & ventilation")],
+        "weevils-in-rice-and-beans": [("kitchen-hygiene-routine", "Kitchen hygiene routine"),
+                                        ("cockroach-fridge-motor-bay", "Roaches in the motor bay"),
+                                        ("fridge-food-safety-power-cut", "Outage food rules")],
+        "water-dispenser-jar-pump": [("water-storage-safety", "Water storage, the rules"),
+                                       ("borehole-water-taste-smell", "Borehole taste & smell"),
+                                       ("kitchen-hygiene-routine", "Kitchen hygiene routine")],
     }
     for slug, ti, dek, b in HOME_ARTICLES:
         key = HOME_SLUG_SECT[slug]

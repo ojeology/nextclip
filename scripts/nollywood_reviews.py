@@ -325,6 +325,29 @@ dict(
 "Weight: a self-financed first feature that premiered at a major international festival in early 2020, then swept that season's national industry awards, and rewrote what debut financing could mean - the desk's shorthand is the sentence producers now hear in every pitch meeting: if the Esiri brothers could do it with their own money, whose money is the excuse? As a document of the departure economy it joins the shelf's essential pair with 76 - one film recovering a nation's buried past, this one recording its present leaving by sea.",
          ]),
 
+    dict(slug="namaste-wahala", title="Namaste Wahala", year=2020,
+         director="Hamisha Daryani Ahuja", country="Nigeria", language="English", runtime=None,
+         axes=dict(story=6.5, craft=6.0, vision=6.5, weight=7.0), score=6.5,
+         date="2026-09-28",
+         verdict="The cross-cultural wedding comedy that turned a hyphenated title into a thesis: two film industries' families, one kitchen, all the wahala",
+         body=[
+"The title is the whole premise - namaste meets wahala, an Indian family's wedding machinery colliding with a Nigerian one, and a young couple discovering that both households can out-stage each other without leaving the same reception hall. What could have been a sketches collection plays, to this desk's pleasant surprise, as a proper family comedy: the script's engine is not the romance but the elders, and the film knows it, giving the parents and grandmothers the best scenes and the couple the connective ones.",
+"The craft is sitcom-literate and occasionally a class above it: the composition of the family-meeting scenes keeps four generations in legible geography, the cultural detail work - the kitchens, the rituals, the argument registers of two diasporas - is handled by someone who clearly lives both, which is the film's quiet authorial fact. Where it strains is budget-visible: a few exteriors are staged in single angles to save company, and the score over-telegraphs emotion the faces were already selling; the desk files these as the trade-offs of an ambitious first feature rather than carelessness.",
+"The honest debits: the third act resolves its two-family standoff with a convenience speech, the antagonist-adjacent subplots are punchlines on legs, and one or two gags about cultural difference skate along the surface the film was positioned to dig beneath. Held fairly: a comedy is allowed to end warmly on a truce, and this one earns most of its truce in the room-filling middle hour where the actual material - mothers negotiating like trade delegations - is funnier than anything the script writes around it.",
+"Weight on this shelf is measured in what a film opens, and Namaste Wahala's entry is the most legible kind: a diaspora-hybrid production that made the Nigeria-India screen bridge a commissionable idea, found a worldwide platform audience without begging either industry's permission, and gave this desk's readers the sentence the trade later repeated - the crossover family film is a genre here now, not a stunt. A warm, uneven, genuinely funny pioneer; the shelf files it exactly that way.",
+         ]),
+    dict(slug="jagun-jagun", title="Jagun Jagun", year=2023,
+         director="Kemi Adetiba", country="Nigeria", language="Yoruba", runtime=None,
+         axes=dict(story=6.5, craft=7.5, vision=7.0, weight=7.0), score=7.0,
+         date="2026-09-28",
+         verdict="The Yoruba epic as industrial statement: costumes, curses and a warlord's bargain - the platform-era's most expensive swing at genre scale, graded on the swing",
+         body=[
+"A warrior's bargain with power, a curse worn like chainmail, village politics staged at the ambition of a saga: Jagun Jagun is the streaming era's most conspicuous Nigerian attempt at the historical-action epic, shot in Yoruba and dressed like it intends to be seen - and the desk grades it as an industrial event first, because that is what the film itself is chiefly about. The commission's whole argument is on screen in the first battle sequence: this budget, this craft, this language, on the world's biggest shelf, at once.",
+"The craft is the film's loudest excellence: the costume and armour departments built a period world with real wear on it, the combat choreography commits to weight over wire-work vanity, and the production design gives the curse mythology physical props the camera trusts. The Yoruba-language performance register - proverb-fronted, deliberately pitched - is directed with conviction; the desk notes that the film asks its subtitled audience to read a rhetorical style, and mostly trusts them to.",
+"Entered honestly against the ledger: the story is the swing's softest muscle - the warlord's arc repeats its temper beats, the political middle wants the second edit the figurine-era films also wanted, and the finale solves myth with the exact device the opening swore off, which reads as scale-first storytelling. The second-language marketing of a Yoruba epic also flattened some of the film's own cultural specificity for its global premiere; the shelf argues that the version in front of you is the one to judge.",
+"Weight: this is the commission the industry's premium era had been gestating toward - one of the most expensive swings by its most platform-proven director, in a national language, on the world's shelves, and every Yoruba-genre budget that gets greenlit now walks in its precedent. Judged as a film, a magnificent second-act problem; judged as the industry's bid to compete on scale without apologising on language, it is a landmark - and this desk's ledger has always made room for the films that move the market as much as the ones that perfect their form.",
+         ]),
+
 ]
 
 REVIEWS_BY_SLUG = {r["slug"]: r for r in REVIEWS}
