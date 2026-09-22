@@ -834,30 +834,64 @@ def write_placeholder(key, name, tagline, identity, planned):
 
 PUB_NAME = {"sports": "Sport", "entertainment": "Entertainment", "tech": "Tech", "fitness": "Fitness", "home": "Home & DIY"}
 
+# Hand-authored pages this generator must never delete or overwrite.
+#
+# On 2026-09-22 a scheduled "sports-data: auto-update" run (commit 597387803c)
+# executed this script. The clear below wiped ecosystem/home/disclaimer/ -- a
+# page the generator never emits, so nothing recreated it -- and the template
+# writes silently reverted the hand-corrected /home/privacy/ and /home/terms/
+# text, regressing ecosystem/home/sitemap.xml from 229 locs to 228. A sports
+# data refresh should not be able to delete a trust page.
+#
+# All three routes are in the index allowlist, so build-discovery.py eventually
+# fails every deploy with "Allowlisted route has no HTML file" -- but only once
+# the root tree is regenerated, by which time the loss is already committed.
+# Preserved files are stashed across the clear, never rewritten from templates,
+# and still advertised in the desk sitemap.
+PRESERVE = {"home": frozenset({"/disclaimer/", "/privacy/", "/terms/"})}
+
+
 def write_service(pub, pages):
     base = OUT / pub
     base.mkdir(parents=True, exist_ok=True)
+    keep = PRESERVE.get(pub, frozenset())
+    stashed = {}
+    for route in sorted(keep):
+        src = base / route.lstrip("/") / "index.html"
+        if src.is_file():
+            stashed[route] = src.read_bytes()
+        else:
+            print("  !! PRESERVE " + pub + route + ": no hand-authored file to protect")
     # clear stale output from earlier builds; the recovery store survives
     for e in base.iterdir():
         if e.name == "_recovered":
             continue
         shutil.rmtree(e) if e.is_dir() else e.unlink()
+    for route, blob in stashed.items():
+        d = base / route.lstrip("/")
+        d.mkdir(parents=True, exist_ok=True)
+        (d / "index.html").write_bytes(blob)
     (base / "assets").mkdir(exist_ok=True)
     (base / "assets" / "site.css").write_text(css_for(pub), encoding="utf-8")
     urls = []
+    written = 0
     for route, title, desc, body in pages:
+        if route in keep:
+            continue  # hand-authored file restored above is authoritative
         p = base / route.lstrip("/")
         p.mkdir(parents=True, exist_ok=True)
         full = shell(pub, title, desc, SUB[pub] + route, body)
         (p / "index.html").write_text(full, encoding="utf-8")
         urls.append(SUB[pub] + route)
+        written += 1
+    urls.extend(SUB[pub] + r for r in sorted(keep) if r in stashed)
     (base / "sitemap.xml").write_text(
         '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
         + "\n".join(f"<url><loc>{u}</loc><lastmod>{TODAY}</lastmod></url>" for u in urls)
         + "\n</urlset>\n", encoding="utf-8")
     (base / "robots.txt").write_text(
         f"User-agent: *\nAllow: /\nSitemap: {SUB[pub]}/sitemap.xml\n", encoding="utf-8")
-    print(f"{pub}: {len(pages)} pages, sitemap, robots")
+    print(f"{pub}: {written} pages written, {len(stashed)} hand-authored preserved, sitemap {len(urls)} urls")
 
 PREFIX = {"sports": "/sports", "entertainment": "/entertainment", "tech": "/tech", "fitness": "/fitness", "home": "/home"}
 if MODE == "subdomain":
