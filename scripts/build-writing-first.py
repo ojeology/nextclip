@@ -667,6 +667,12 @@ def page_wf(*, title: str, description: str, route: str, current: str, body: str
     ca_id = str(cfg.publisher_config().get("caId") or "").strip()
     adsense_meta = f'<meta name="google-adsense-account" content="{esc(ca_id)}">' if ca_id else ""
     adsense_script = (f'<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={esc(ca_id)}" crossorigin="anonymous"></script>' if ca_id else "")
+    try:
+        import analytics_head
+        ga_head_html = analytics_head.ga_head()
+    except Exception:
+        ga_head_html = ""
+
     structured = schema_data or {
         "@context": "https://schema.org", "@type": "WebPage",
         "name": title.split(" | ")[0], "description": description, "url": canonical,
@@ -701,7 +707,7 @@ def page_wf(*, title: str, description: str, route: str, current: str, body: str
 <meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(description)}"><meta property="og:url" content="{canonical}">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{esc(title)}"><meta name="twitter:description" content="{esc(description)}"><meta name="twitter:image" content="{BASE}{og_image}">
 <meta property="og:image" content="{BASE}{og_image}"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="{esc(title)}">
-{adsense_meta}
+{ga_head_html}{adsense_meta}
 {adsense_script}
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="icon" href="/favicon.ico" sizes="any">
 {head_extra}

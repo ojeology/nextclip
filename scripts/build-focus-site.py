@@ -98,6 +98,12 @@ def page(*, title: str, description: str, route: str, current: str, body: str,
     # remain disabled and must never resemble a job card or application button.
     adsense_meta = f'<meta name="google-adsense-account" content="{esc(ca_id)}">' if ca_id else ""
     adsense_script = (f'<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={esc(ca_id)}" crossorigin="anonymous"></script>' if ca_id else "")
+    try:
+        import analytics_head
+        ga_head_html = analytics_head.ga_head()
+    except Exception:
+        ga_head_html = ""
+
     structured = schema_data or {
         "@context": "https://schema.org", "@type": "WebPage",
         "name": title.split(" | ")[0], "description": description, "url": canonical,
@@ -135,7 +141,7 @@ def page(*, title: str, description: str, route: str, current: str, body: str,
 <meta property="og:type" content="website"><meta property="og:site_name" content="BRYME">
 <meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(description)}"><meta property="og:url" content="{canonical}">
 <meta name="twitter:card" content="summary"><meta name="twitter:title" content="{esc(title)}"><meta name="twitter:description" content="{esc(description)}">
-{adsense_meta}
+{ga_head_html}{adsense_meta}
 {adsense_script}
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="stylesheet" href="/assets/bryme-v2.css">

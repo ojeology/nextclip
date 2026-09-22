@@ -38,7 +38,7 @@ const check = (ok, msg) => { if (!ok) failures.push(msg); };
    creative instead of the site's own paint. Fulfilling the loader with an empty
    body keeps adsbygoogle from ever running. www.google.com is deliberately NOT
    listed, so a genuine google.com leak still fails the gate. */
-const AD_HOSTS = /(?:profitableratecpmnetwork|highrevenueformat|monetag|highperformanceformat|n6wxm|nap5k|propellerads|googlesyndication|googleadservices|doubleclick)\./i;
+const AD_HOSTS = /(?:profitableratecpmnetwork|highrevenueformat|monetag|highperformanceformat|n6wxm|nap5k|propellerads|googlesyndication|googleadservices|doubleclick|googletagmanager|google-analytics)\./i;
 /* Answer ad requests with a benign empty payload rather than aborting them. An
    abort makes Chromium log a failed request, which surfaces as a net::ERR_FAILED
    console error on every page - an artifact of the harness, not a defect in the

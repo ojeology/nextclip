@@ -8,6 +8,12 @@
     "enabled": true,
     "note": "Verification snippet live site-wide (2026-09-29, owner-supplied ca-pub ID). Ad UNITS remain unwired by design (_ads_slot has no call sites): nothing renders ads until owner says. Keep Google-dashboard Auto ads OFF until then. Ads must never resemble job cards or application buttons."
   },
+  "analytics": {
+    "gaId": "G-0KEKJH9960",
+    "enabled": true,
+    "provider": "google-gtag",
+    "note": "GA4 stream for thebryme.com, owner-supplied 2026-09-22. Injected into every page ahead of the AdSense loader by scripts/inject-analytics.py and emitted by the desk generators. Consent Mode v2 defaults are scoped to the EEA/UK/CH so visitors elsewhere are unaffected; Google's own CMP (AdSense > Privacy & messaging) sends the matching consent update once the owner enables it. Replaces the earlier published claim that these pages run no analytics."
+  },
   "newsletter": {
     "mode": "mailto",
     "mailto": "sodiqibrahim03@gmail.com",

@@ -10,6 +10,13 @@ const fail=x=>failures.push(x), warn=x=>warnings.push(x);
 const read=r=>fs.readFileSync(path.join(ROOT,r),"utf8");
 const json=r=>JSON.parse(read(r));
 const site=String(json("site.config.json").siteUrl).replace(/\/$/,"");
+// Analytics is sanctioned only when site.config.json says so, mirroring the
+// AdSense rails. The ad networks checked below stay banned unconditionally -
+// googletagmanager used to sit in that banned list, which is why adding the
+// owner's GA4 stream failed this gate on every page.
+const ANALYTICS=(()=>{try{return json("site.config.json").analytics||{}}catch{return{}}})();
+const GA_ON=!!ANALYTICS.enabled&&/^G-[A-Z0-9]{6,}$/.test(String(ANALYTICS.gaId||""));
+const GA_ID=GA_ON?String(ANALYTICS.gaId):"";
 const allowDoc=fs.existsSync(path.join(ROOT,"content/index-allowlist.routed.json"))?json("content/index-allowlist.routed.json"):json("content/index-allowlist.json"), allow=new Set(allowDoc.routes);
 // Every page under /writing/ must be either a real publication record or an
 // explicitly declared non-record child. Declaring them here keeps the check
@@ -53,7 +60,11 @@ for(const file of htmlFiles){
   if(!/class=["'][^"']*(?:bottom-nav|mobile-nav)/.test(s))fail(`${r}: bottom mobile navigation missing`);
   if(/href=["']\/(?:sports|movie|movies|series|anime|article|articles|entertainment|trailers)(?:\/|["'])/i.test(s))fail(`${r}: local media link remains on main publication`);
  }
- if(/googletagmanager|google-analytics|n6wxm\.com|nap5k\.com|propellerads|monetag\.com|profitableratecpmnetwork|highrevenueformat|highperformanceformat|adsterra/i.test(s))fail(`${r}: disallowed advertising endpoint remains (Adsterra removed 20 Sep; AdSense is the ONLY sanctioned network, via site.config rails)`);
+ if(/n6wxm\.com|nap5k\.com|propellerads|monetag\.com|profitableratecpmnetwork|highrevenueformat|highperformanceformat|adsterra/i.test(s))fail(`${r}: disallowed advertising endpoint remains (Adsterra removed 20 Sep; AdSense is the ONLY sanctioned ad network, via site.config rails)`);
+ if(/googletagmanager|google-analytics/i.test(s)){
+  if(!GA_ON)fail(`${r}: analytics endpoint present but analytics.enabled is not true in site.config.json`);
+  else if(GA_ID&&!s.includes(GA_ID))fail(`${r}: analytics tag does not carry the configured gaId (${GA_ID})`);
+ }
  if(wanted){
   if(norm(canonical(s))!==norm(r))fail(`${r}: canonical mismatch (${canonical(s)||"missing"})`);
   if((s.match(/<h1\b/gi)||[]).length!==1)fail(`${r}: expected exactly one H1`);

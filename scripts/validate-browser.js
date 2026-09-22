@@ -27,7 +27,7 @@ const failures=[];const check=(ok,msg)=>{if(!ok)failures.push(msg)};
    fail the gate. googleadservices/doubleclick are AdSense's companion origins.
    Ad UNITS are still unwired (_ads_slot has no call sites), so this intercepts
    the verification loader only. */
-const AD_HOSTS=/(?:profitableratecpmnetwork|highrevenueformat|monetag|highperformanceformat|n6wxm|nap5k|propellerads|googlesyndication|googleadservices|doubleclick)\./i;
+const AD_HOSTS=/(?:profitableratecpmnetwork|highrevenueformat|monetag|highperformanceformat|n6wxm|nap5k|propellerads|googlesyndication|googleadservices|doubleclick|googletagmanager|google-analytics)\./i;
 /* Answer ad requests with a benign empty payload rather than aborting them. An
    abort makes Chromium log a failed request, which surfaces as a net::ERR_FAILED
    console error on every page - an artifact of the harness, not a defect in the

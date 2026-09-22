@@ -82,6 +82,19 @@ ADS_HEAD = ""
 if ADSENSE_ON:
     ADS_HEAD = ('<meta name="google-adsense-account" content="' + ADSENSE_ID + '">\n'
                 + '<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=' + ADSENSE_ID + '" crossorigin="anonymous"></script>\n')
+
+# GA4 head block. Shares one definition with build-writing-first.py,
+# build-focus-site.py and scripts/inject-analytics.py (see analytics_head.py)
+# so a regenerated page is byte-identical to an injected one. Emitted ahead of
+# ADS_HEAD because the Consent Mode v2 default must precede every Google tag.
+try:
+    import analytics_head
+    GA_HEAD = analytics_head.ga_head()
+    GA_ID_TEXT = analytics_head.ga_id() or "our GA4 stream"
+except Exception:
+    GA_HEAD = ""
+    GA_ID_TEXT = "our GA4 stream"
+
 def _ads_slot(pos):
     """One responsive unit. Only when enabled; auto ads handle the rest."""
     if not ADSENSE_ON:
@@ -529,7 +542,7 @@ def shell(pub, title, desc, route, body, card=None, robots="index,follow"):
 <meta property="og:title" content="{html.escape(title)}"><meta property="og:description" content="{html.escape(desc)}">
 <meta property="og:url" content="{d}"><meta property="og:image" content="{og}">
 <meta name="twitter:card" content="summary_large_image">
-{ADS_HEAD}{theme_head}
+{GA_HEAD}{ADS_HEAD}{theme_head}
 <style>{css_for(pub)}</style>
 {ld_html}
 </head><body><a class="skip-link" href="#main">Skip to content</a>
@@ -928,9 +941,9 @@ def legal_pages(pub, name, tagline, skip=frozenset(), desk=None):
     privacy_body = f"""<div class="wrap"><nav class="crumb"><a href="/">Home</a> / Privacy</nav>
 <section class="cover"><p class="kicker">Privacy</p><h1 class="cover-title">What we collect: almost nothing.</h1></section>
 <section class="section"><div class="prose">
-<p>{name} is a static publication. It sets no tracking cookies, runs no analytics on these pages, and asks for no personal information. Reading it is between you and your browser.</p>
+<p>{name} is a static publication. It asks for no personal information, has no accounts and no sign-in, and sells nothing about you. It does load two Google services on every page — Google Analytics 4 to count visits, and Google AdSense for advertising — both explained below. These pages read identically with either one blocked.</p>
 <p>If interactive tools are added later, any data they store will stay in <em>your</em> browser's local storage on <em>your</em> device — the standing BRYME pattern — and this page will be updated before that changes.</p>
-<p><b>Advertising &amp; cookies (updated 11 September 2026):</b> BRYME shows advertising through third-party networks (which may include Google AdSense) to keep the publications free. Third-party vendors use cookies to serve ads based on a user's prior visits to this and other websites. Google's use of advertising cookies enables it and its partners to serve ads based on your visits to this site and/or other sites on the internet. You may opt out of personalised advertising by visiting Google's Ads Settings (adssettings.google.com), or opt out of some third-party vendors' uses of cookies at aboutads.info. Visitors in the EEA and UK will be asked for consent before personalised advertising; without consent, only non-personalised ads are eligible to serve. Whatever serves, our standing rules apply: ads are clearly separated from content and navigation, never cover text, and never resemble our buttons, cards or links.</p>
+<p><b>Advertising &amp; cookies (updated 22 September 2026):</b> BRYME shows advertising through Google AdSense to keep the publications free. Third-party vendors use cookies to serve ads based on a user's prior visits to this and other websites. Google's use of advertising cookies enables it and its partners to serve ads based on your visits to this site and/or other sites on the internet. You may opt out of personalised advertising by visiting Google's Ads Settings (adssettings.google.com), or opt out of some third-party vendors' uses of cookies at aboutads.info. Visitors in the EEA and UK will be asked for consent before personalised advertising; without consent, only non-personalised ads are eligible to serve. <b>Analytics:</b> every page also loads Google Analytics 4 (measurement ID {GA_ID_TEXT}), which counts pages, sessions and rough location so each desk can see what is worth writing next. It sets cookies such as _ga to tell one visit from the next; it does not identify you personally, and BRYME neither combines it with anything else nor sells it. For visitors in the EEA, the UK and Switzerland, Analytics and advertising both stay switched off until you accept them in the cookie message — rejecting it leaves them off. Anywhere else you can block them in your browser and every page reads exactly the same. Whatever serves, our standing rules apply: ads are clearly separated from content and navigation, never cover text, and never resemble our buttons, cards or links.</p>
 {_desk_sec('privacy', 'What this publication actually touches')}
 <p>Questions: see <a href="/contact/">Contact</a>.</p>
 </div></section></div>"""
