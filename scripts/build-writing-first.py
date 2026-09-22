@@ -2226,6 +2226,32 @@ def trust_block(rec: dict) -> str:
 </div></div></section>'''
 
 
+def _meta_desc(text: str, limit: int = 158) -> str:
+    # Trim a record's own human-written excerpt to search-snippet length.
+    # Never invents, pads or adds a claim: the words are the record's own
+    # verified excerpt. Prefers whole sentences that fit; otherwise cuts at a
+    # word boundary and strips trailing punctuation. Returns "" if there is
+    # nothing usable, so the caller can fall back to the old behaviour.
+    # No nested-quote f-strings: this file must parse on Render's Python < 3.12.
+    t = " ".join(str(text or "").split())
+    if not t:
+        return ""
+    if len(t) <= limit:
+        return t
+    out = ""
+    for part in re.split(r"(?<=\.)\s+", t):
+        cand = (out + " " + part).strip() if out else part
+        if len(cand) <= limit:
+            out = cand
+        else:
+            break
+    if len(out) >= 60:
+        return out
+    cut = t[: limit + 1]
+    i = cut.rfind(" ")
+    if i < 60:
+        i = limit
+    return cut[:i].rstrip(" ,;:.\u2014\u2013-")
 def pub_page(rec: dict) -> None:
 
     slug = rec["slug"]
@@ -2326,8 +2352,9 @@ def pub_page(rec: dict) -> None:
 </div></section></div>
 {trust_block(rec)}'''
 
-    desc = (rec.get("seoTitle") or f"{rec['publication']} writing submissions — BRYME research").split(" | ")[0]
-    title = f"{desc} | BRYME"
+    _seo = (rec.get("seoTitle") or f"{rec['publication']} writing submissions — BRYME research").split(" | ")[0]
+    title = f"{_seo} | BRYME"
+    desc = _meta_desc(rec.get("excerpt")) or _seo
     schema_data = {
         "@context": "https://schema.org", "@type": "Article",
         "headline": f"{rec['publication']}: {rec.get('writingTypeLabel') or rec.get('title') or 'writing opportunity'}",
