@@ -889,7 +889,7 @@ def legal_pages(pub, name, tagline, skip=frozenset(), desk=None):
 <li>Corrections in the open, on the page that made the claim.</li>
 <li>No betting content, no piracy, no fabricated data — the house rules, applying everywhere.</li>
 </ul>
-{_desk_sec("about", "What this desk covers")}
+{_desk_sec('about', 'What this desk covers')}
 </div></section></div>"""
     privacy_body = f"""<div class="wrap"><nav class="crumb"><a href="/">Home</a> / Privacy</nav>
 <section class="cover"><p class="kicker">Privacy</p><h1 class="cover-title">What we collect: almost nothing.</h1></section>
@@ -897,7 +897,7 @@ def legal_pages(pub, name, tagline, skip=frozenset(), desk=None):
 <p>{name} is a static publication. It sets no tracking cookies, runs no analytics on these pages, and asks for no personal information. Reading it is between you and your browser.</p>
 <p>If interactive tools are added later, any data they store will stay in <em>your</em> browser's local storage on <em>your</em> device — the standing BRYME pattern — and this page will be updated before that changes.</p>
 <p><b>Advertising &amp; cookies (updated 11 September 2026):</b> BRYME shows advertising through third-party networks (which may include Google AdSense) to keep the publications free. Third-party vendors use cookies to serve ads based on a user's prior visits to this and other websites. Google's use of advertising cookies enables it and its partners to serve ads based on your visits to this site and/or other sites on the internet. You may opt out of personalised advertising by visiting Google's Ads Settings (adssettings.google.com), or opt out of some third-party vendors' uses of cookies at aboutads.info. Visitors in the EEA and UK will be asked for consent before personalised advertising; without consent, only non-personalised ads are eligible to serve. Whatever serves, our standing rules apply: ads are clearly separated from content and navigation, never cover text, and never resemble our buttons, cards or links.</p>
-{_desk_sec("privacy", "What this publication actually touches")}
+{_desk_sec('privacy', 'What this publication actually touches')}
 <p>Questions: see <a href="/contact/">Contact</a>.</p>
 </div></section></div>"""
     contact_body = f"""<div class="wrap"><nav class="crumb"><a href="/">Home</a> / Contact</nav>
@@ -914,7 +914,7 @@ def legal_pages(pub, name, tagline, skip=frozenset(), desk=None):
 <section class="section"><div class="prose">
 <p>{name} is free to read. It is provided as-is, for information: general guidance, never professional advice. Nothing on this publication is a substitute for qualified professional help — medical, electrical, gas, legal or financial. Where a topic borders on those fields, our pages say so plainly and stop.</p>
 <p>The writing, layout and tools are \u00a9 2026 THE BRYME. Quote freely with a link; do not republish whole pages. External sites we link to have their own terms and their own owners. Adverts, when shown, are clearly separated from editorial content and never constitute an endorsement.</p>
-{_desk_sec("terms", "Specific to this desk")}
+{_desk_sec('terms', 'Specific to this desk')}
 <p>Questions about these terms: see <a href="/contact/">Contact</a>.</p>
 </div></section></div>"""
     editorial_body = f"""<div class="wrap"><nav class="crumb"><a href="/">Home</a> / Editorial policy</nav>
@@ -937,7 +937,7 @@ def legal_pages(pub, name, tagline, skip=frozenset(), desk=None):
 <section class="section"><div class="prose">
 <p>If something on {name} is wrong, tell us via <a href="/contact/">Contact</a> with the page address and the exact claim. The desk verifies against sources, fixes the page, and records the correction on the page itself — silently deleting a wrong claim is not a correction.</p>
 <p>Time-sensitive facts (prices, availability, standings, schedules) are re-checked on a schedule and stamped with the date of the last check. If you spot a stale one, that report is welcome.</p>
-{_desk_sec("corrections", "What gets re-checked here")}
+{_desk_sec('corrections', 'What gets re-checked here')}
 </div></section></div>"""
     copyright_body = f"""<div class="wrap"><nav class="crumb"><a href="/">Home</a> / Copyright</nav>
 <section class="cover"><p class="kicker">Copyright &amp; takedowns</p><h1 class="cover-title">Ownership, honestly stated.</h1></section>
@@ -1060,7 +1060,7 @@ def hub_pages():
                             + "".join('<li><a href="' + hu + '">' + ht + '</a></li>' for hu, ht in qs) + '</ul></div>'
                             for _, n, u, sc, qs in _dq)
                   + '</div></section>')
-    body = f"""{head("hub", "Six publications. One house standard.", parent=False)}
+    body = f"""{head('hub', 'Six publications. One house standard.', parent=False)}
 <main id="main">
 <section class="hub-hero"><div class="hh-inner"><div>
 <p class="hh-kick">Six desks \u00b7 one house rule \u00b7 published in English, read everywhere</p>
@@ -1077,7 +1077,7 @@ def hub_pages():
 {_rev_band}<section class="section alt"><div class="section-head"><p class="kicker">The house</p><h2>One standard, six voices.</h2></div>
 <p class="lede">Every BRYME publication is edited by the same desk, run on the same discipline — dates on time-sensitive claims, corrections in the open, no fabricated experience, no pages built to game a search engine — and none of them share a navigation bar. When you enter one, you are in that world.</p>
 </section></div></main>
-{foot("hub")}"""
+{foot('hub')}"""
     hub_index = [("index.html placeholder", "", "", "")]
     return [("/", "THE BRYME — a family of independent publications",
              "Six independent editorial desks \u2014 film, tech, fitness, home care, football and professional writing. Dated claims, open corrections, zero filler. In English, for everyone.", body)]
@@ -1873,14 +1873,14 @@ def sports_pages():
         restored.append(f'<li><a href="{route}"><span><b>{html.escape(m["title"])}</b>'
                         f'<small>From the media desk · {m["words"]} words · {TODAY}</small></span>'
                         f'<span class="meta">Read</span></a></li>')
-        pbody = f"""{head("sports", "Analysis, stories and the long view \u2014 never betting.")}
+        pbody = f"""{head('sports', 'Analysis, stories and the long view — never betting.')}
 <main id="main"><div class="wrap">
-<nav class="crumb"><a href="/">Home</a> / {html.escape(m["title"])}</nav>
+<nav class="crumb"><a href="/">Home</a> / {html.escape(m['title'])}</nav>
 <section class="cover"><p class="kicker">{kick}</p>
-<h1 class="cover-title" style="font-size:clamp(30px,4.6vw,48px)">{html.escape(m["title"])}</h1>
+<h1 class="cover-title" style="font-size:clamp(30px,4.6vw,48px)">{html.escape(m['title'])}</h1>
 <p class="byline">From the BRYME media desk · recovered edition, re-typeset {TODAY}{arch_note}</p></section>
 <section class="section"><div class="prose">{body_html}</div></section>
-</div></main>{foot("sports")}"""
+</div></main>{foot('sports')}"""
         pages.append((route, f'{m["title"]} | BRYME Sport',
                       _REAL_DESC.get(slug, "From the BRYME media desk \u2014 " + m["title"] + " (recovered edition, re-typeset)."), pbody))
 
@@ -3135,7 +3135,7 @@ def sports_pages():
         assists_secs = ('<section class="section"><div class="section-head"><p class="kicker">The creators</p><h2>Top assists, all six leagues.</h2></div>'
             + '<div class="data-cols"><div>' + _as_left + '</div><div>' + _as_right + '</div></div>'
             + '<p class="lede" style="font-size:14px">Assists ledger from the same verified scorer feeds \u2014 blanks are honest blanks until the providers record them.</p></section>')
-    index_body = f"""{head("sports", "Analysis, stories and the long view \u2014 never betting.")}
+    index_body = f"""{head('sports', 'Analysis, stories and the long view — never betting.')}
 <main id="main"><div class="wrap">
 <section class="cover"><p class="kicker">BRYME Sport · the 2026-27 season is live · six competitions · no odds, ever</p>
 <h1 class="cover-title">Sport as reporting, not noise.</h1>
@@ -3159,7 +3159,7 @@ def sports_pages():
 <section class="section alt"><div class="section-head"><p class="kicker">The honest bit</p><h2>What stayed retired.</h2></div>
 <ul class="list">{''.join(retired)}</ul>
 <p class="lede">The archive also held roughly two thousand match-data pages from finished fixtures. They are data, not journalism; they stay retired rather than being republished stale. New reporting accumulates here as the season runs.</p>
-</section></div></main>{foot("sports")}"""
+</section></div></main>{foot('sports')}"""
     pages.insert(0, ("/", "BRYME Sport \u2014 football reporting, never betting",
               "Matchweek guides, season stories and the August deadline-day archive from the BRYME media desk. Independent, checkable, strictly no gambling content.", index_body))
     return pages + legal_pages("sports", "BRYME Sport", "Analysis, stories and the long view of sport \u2014 checkable, and never betting.", desk={
