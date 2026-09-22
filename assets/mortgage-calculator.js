@@ -19,7 +19,7 @@
     "</div>" +
     '<div class="mc-out" id="mc-out" aria-live="polite"></div>' +
     "</div>" +
-    '<p class="mc-disc">General guidance, not financial advice \u2014 your lender\u2019s Loan Estimate and your policy/tax bills govern. Rates change; the prefilled 6.76% was the Freddie Mac 30-year weekly average on 10 Sep 2026.</p>';
+    '<p class="mc-disc">General guidance, not financial advice \u2014 your lender\u2019s Loan Estimate and your policy/tax bills govern. Rates change; the prefilled 6.76% was the Freddie Mac 30-year weekly average on 10 Sep 2026. One note on the worked example above: it borrows the <b>full $350,000</b> (no down payment) for $2,272/mo, while this calculator opens at a $350,000 <b>price</b> with 20% down \u2014 a $280,000 loan, about $1,818/mo. Set the down payment to 0 to reproduce the article\u2019s figure.</p>';
 
   function num(id) {
     var v = parseFloat(String(document.getElementById(id).value).replace(/[^0-9.\-]/g, ""), 10);
