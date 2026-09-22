@@ -78,15 +78,12 @@ except Exception:
     _ADS_CFG = {}
 ADSENSE_ID = str(_ADS_CFG.get("caId") or "").strip()
 ADSENSE_ON = bool(_ADS_CFG.get("enabled")) and ADSENSE_ID.startswith("ca-pub-")
-ADS_HEAD = ""
-if ADSENSE_ON:
-    ADS_HEAD = ('<meta name="google-adsense-account" content="' + ADSENSE_ID + '">\n'
-                + '<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=' + ADSENSE_ID + '" crossorigin="anonymous"></script>\n')
-
 # GA4 head block. Shares one definition with build-writing-first.py,
-# build-focus-site.py and scripts/inject-analytics.py (see analytics_head.py)
-# so a regenerated page is byte-identical to an injected one. Emitted ahead of
-# ADS_HEAD because the Consent Mode v2 default must precede every Google tag.
+# build-focus-site.py, purge-stale-publish.py and scripts/inject-analytics.py
+# (see analytics_head.py) so a regenerated page is byte-identical to an
+# injected one. It sits between the AdSense account meta and the AdSense
+# loader - the same slot the injector uses - and ahead of every Google tag
+# that executes, because the Consent Mode v2 default must come first.
 try:
     import analytics_head
     GA_HEAD = analytics_head.ga_head()
@@ -94,6 +91,12 @@ try:
 except Exception:
     GA_HEAD = ""
     GA_ID_TEXT = "our GA4 stream"
+
+ADS_HEAD = GA_HEAD
+if ADSENSE_ON:
+    ADS_HEAD = ('<meta name="google-adsense-account" content="' + ADSENSE_ID + '">\n'
+                + GA_HEAD
+                + '<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=' + ADSENSE_ID + '" crossorigin="anonymous"></script>\n')
 
 def _ads_slot(pos):
     """One responsive unit. Only when enabled; auto ads handle the rest."""
@@ -542,7 +545,7 @@ def shell(pub, title, desc, route, body, card=None, robots="index,follow"):
 <meta property="og:title" content="{html.escape(title)}"><meta property="og:description" content="{html.escape(desc)}">
 <meta property="og:url" content="{d}"><meta property="og:image" content="{og}">
 <meta name="twitter:card" content="summary_large_image">
-{GA_HEAD}{ADS_HEAD}{theme_head}
+{ADS_HEAD}{theme_head}
 <style>{css_for(pub)}</style>
 {ld_html}
 </head><body><a class="skip-link" href="#main">Skip to content</a>

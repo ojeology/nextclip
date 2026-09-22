@@ -46,7 +46,7 @@ ROOT_PAGES = {"index.html"}
 
 # google2ec8f794263d784f.html and friends are search-engine ownership tokens.
 # Their exact contents ARE the verification, so they must never be edited.
-VERIFICATION_FILE = re.compile(r"^(?:google|yandex|bing)[0-9a-fA-F]{8,}\.html$")
+VERIFICATION_FILE = re.compile(r"^(?:google|yandex|bing)[0-9a-fA-F_]{6,}\.html$")
 
 ADSENSE_LOADER = re.compile(
     r'<script async src="https://pagead2\.googlesyndication\.com/pagead/js/adsbygoogle\.js[^"]*"[^>]*></script>'

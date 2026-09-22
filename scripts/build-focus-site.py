@@ -141,8 +141,8 @@ def page(*, title: str, description: str, route: str, current: str, body: str,
 <meta property="og:type" content="website"><meta property="og:site_name" content="BRYME">
 <meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(description)}"><meta property="og:url" content="{canonical}">
 <meta name="twitter:card" content="summary"><meta name="twitter:title" content="{esc(title)}"><meta name="twitter:description" content="{esc(description)}">
-{ga_head_html}{adsense_meta}
-{adsense_script}
+{adsense_meta}
+{ga_head_html}{adsense_script}
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="stylesheet" href="/assets/bryme-v2.css">
 {schema(site_graph)}

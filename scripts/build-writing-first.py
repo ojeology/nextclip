@@ -707,8 +707,8 @@ def page_wf(*, title: str, description: str, route: str, current: str, body: str
 <meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(description)}"><meta property="og:url" content="{canonical}">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{esc(title)}"><meta name="twitter:description" content="{esc(description)}"><meta name="twitter:image" content="{BASE}{og_image}">
 <meta property="og:image" content="{BASE}{og_image}"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="{esc(title)}">
-{ga_head_html}{adsense_meta}
-{adsense_script}
+{adsense_meta}
+{ga_head_html}{adsense_script}
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="icon" href="/favicon.ico" sizes="any">
 {head_extra}
 <link rel="stylesheet" href="/assets/bryme-v2.css">

@@ -86,6 +86,16 @@ def parse_rules() -> dict[str, str]:
     return bare
 
 
+# Redirect stubs and archive tombstones are real served URLs, so they carry the
+# same GA4 head block as every other page. It comes from the shared module and
+# is placed exactly where scripts/inject-analytics.py puts it - immediately
+# before </head> - so a regenerated stub is byte-identical to an injected one
+# and `git diff --exit-code` in CI stays clean.
+import sys as _sys
+_sys.path.insert(0, str(Path(__file__).resolve().parent))
+from analytics_head import ga_head as _ga_head
+GA_HEAD = _ga_head()
+
 def stub_html(dest: str, label: str) -> str:
     return (
         '<!doctype html><html lang="en"><head><meta charset="utf-8">'
@@ -93,7 +103,7 @@ def stub_html(dest: str, label: str) -> str:
         "<title>" + label + " moved | THE BRYME</title>"
         '<meta name="robots" content="noindex,follow">'
         '<meta http-equiv="refresh" content="0;url=' + dest + '">'
-        '<link rel="canonical" href="' + SITE + dest + '"></head>'
+        '<link rel="canonical" href="' + SITE + dest + '">' + GA_HEAD + '</head>'
         '<body><p>This page moved. Continue to <a href="' + dest + '">the current page</a>.</p></body></html>'
     )
 
@@ -205,7 +215,7 @@ def main() -> int:
                     '<!doctype html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n'
                     '<meta name="viewport" content="width=device-width, initial-scale=1">\n'
                     '<meta name="robots" content="noindex,nofollow">\n'
-                    '<title>Retired source file: ' + sp.name + ' | THE BRYME</title>\n</head>\n'
+                    '<title>Retired source file: ' + sp.name + ' | THE BRYME</title>\n' + GA_HEAD + '</head>\n'
                     '<body>\n<main id="main">\n<h1>Retired archive source file</h1>\n'
                     '<p>This URL served a raw recovery-store fragment while the store lived inside the '
                     'published tree. The store moved to a private source directory on 2026-09-17, and the '
