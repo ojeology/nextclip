@@ -188,6 +188,15 @@ def main() -> int:
     _hub_about = ROOT / "ecosystem" / "hub" / "about"
     if _hub_about.exists():
         shutil.copytree(_hub_about, ROOT / "about", dirs_exist_ok=True)
+    # The root privacy policy belongs to the house, not to the Writers desk.
+    # Writers keeps its own desk-specific policy under /writers/privacy/;
+    # /privacy/ covers every BRYME publication and is copied from the hub build.
+    _hub_privacy = ROOT / "ecosystem" / "hub" / "privacy"
+    _root_privacy = ROOT / "privacy"
+    if _hub_privacy.exists():
+        if _root_privacy.exists():
+            shutil.rmtree(_root_privacy)
+        shutil.copytree(_hub_privacy, _root_privacy)
     import re as _re, datetime as _dt, os as _os
     # SOURCE_DATE_EPOCH pins this, exactly as _build_now() does in
     # build-writing-first.py. Without it every <lastmod> became the real current

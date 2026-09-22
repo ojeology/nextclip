@@ -282,6 +282,8 @@ def nav(current: str = "") -> str:
     items = []
     home_aria = ' aria-current="page"' if current == "home" else ""
     items.append(f'<a class="home-link"{home_aria} href="/" aria-label="BRYME home"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5.5 9.5V20a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1V9.5"/><path d="M9.5 21v-6h5v6"/></svg></a>')
+    # Keep the desk identity visible in the Writers masthead/navigation.
+    items.append(f'<a class="nav-desk"{home_aria} href="/">Writers</a>')
     MEGA = [
         ("learn", "/learn/", "Learn", [
             ("/start/", "Beginner path"), ("/find/", "What do you want to write?"),
@@ -311,7 +313,7 @@ def nav(current: str = "") -> str:
     return f'''<a class="skip-link" href="#main">Skip to content</a>
 <header class="site-head">
   <div class="mast-top"><div class="wrap mast-in">
-    <a class="mast-brand" href="/"{' aria-current="page"' if current == "home" else ""} aria-label="BRYME — home">BRYME</a>
+    <a class="mast-brand" href="/"{' aria-current="page"' if current == "home" else ""} aria-label="BRYME Writers — home">BRYME <span class="mast-section">WRITERS</span></a>
     <div class="mast-edition"><span class="mast-date">{edition} EDITION</span><span class="mast-tag">The business, craft &amp; economics of writing — free, independent, human-verified.</span></div>
     <div class="mast-tools">
       <form class="nav-search-form" action="/search/" method="get" role="search"><input type="search" name="q" placeholder="Search…" aria-label="Search BRYME" autocomplete="off"></form>

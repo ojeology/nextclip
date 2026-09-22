@@ -159,9 +159,6 @@ services:
       - { type: redirect, source: /newsletter, destination: /writers/newsletter/ }
       - { type: redirect, source: /newsletter/, destination: /writers/newsletter/ }
       - { type: redirect, source: /newsletter/*, destination: /writers/newsletter/* }
-      - { type: redirect, source: /privacy, destination: /writers/privacy/ }
-      - { type: redirect, source: /privacy/, destination: /writers/privacy/ }
-      - { type: redirect, source: /privacy/*, destination: /writers/privacy/* }
       - { type: redirect, source: /problems, destination: /writers/problems/ }
       - { type: redirect, source: /problems/, destination: /writers/problems/ }
       - { type: redirect, source: /problems/*, destination: /writers/problems/* }

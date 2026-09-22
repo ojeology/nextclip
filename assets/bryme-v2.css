@@ -100,6 +100,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   letter-spacing: .16em; color: var(--ink); text-transform: uppercase;
 }
 .mast-brand:hover { color: var(--navy); }
+.mast-brand .mast-section { font-family: var(--sans); font-size: .38em; font-weight: 800; letter-spacing: .22em; color: var(--brass); vertical-align: .2em; white-space: nowrap; }
 .mast-edition { display: flex; flex-direction: column; gap: 3px; flex: 1; min-width: 0; }
 .mast-date { font-size: 10.5px; font-weight: 800; letter-spacing: .22em; color: var(--brass); text-transform: uppercase; }
 .mast-tag { font-family: var(--serif); font-style: italic; font-size: 13.5px; color: var(--muted); }

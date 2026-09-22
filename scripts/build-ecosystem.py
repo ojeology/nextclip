@@ -819,9 +819,10 @@ def foot(pub, extra=""):
               (' \u00b7 <a href="/' + _base + '/terms/">Terms</a> \u00b7 <a href="/' + _base + '/editorial-policy/">Editorial policy</a>'
                ' \u00b7 <a href="/' + _base + '/corrections/">Corrections</a>'))
     x = extra or _trust
+    privacy_href = "/privacy/" if pub == "hub" else "/" + pub + "/privacy/"
     return f"""<footer class="foot"><div class="wrap foot-in">
 <div>© 2026 THE BRYME — {PUB_NAME[pub] if pub != 'hub' else 'the BRYME publications'}.</div>
-<div><a href="{'/about/' if pub == 'hub' else '/' + pub + '/about/'}">About</a> · <a href="/{'writers' if pub == 'hub' else pub}/privacy/">Privacy</a> · <a href="/{'writers' if pub == 'hub' else pub}/contact/">Contact</a>{x}</div>
+<div><a href="{'/about/' if pub == 'hub' else '/' + pub + '/about/'}">About</a> · <a href="{privacy_href}">Privacy</a> · <a href="/{'writers' if pub == 'hub' else pub}/contact/">Contact</a>{x}</div>
 <div><a href="{ORIGIN}/">{ORIGIN_HOST}</a></div>
 </div></footer>"""
 
@@ -5459,7 +5460,41 @@ def main() -> None:
         shell("hub", "About THE BRYME | the BRYME publications",
               "THE BRYME is a family of independent specialist publications \u2014 Writers, Tech, Sport, Entertainment, Fitness and Home & DIY \u2014 under one editorial standard.",
               SUB["hub"] + "/about/", _about_body + foot("hub")), encoding="utf-8")
-    print("hub: built (bryme.onrender.com homepage + family /about/)")
+    _privacy_d = base / "privacy"
+    _privacy_d.mkdir(parents=True, exist_ok=True)
+    _privacy_body = '''<main id="main"><div class="wrap"><nav class="crumb"><a href="/">Home</a> / Privacy</nav>
+<section class="cover"><p class="kicker">House privacy policy</p><h1 class="cover-title">One policy for every BRYME desk.</h1>
+<p class="cover-dek">This policy applies across BRYME Writers, Tech, Sport, Entertainment, Fitness and Home &amp; DIY.</p></section>
+<section class="section"><div class="prose">
+<p><b>Effective:</b> 22 September 2026.</p>
+<p>THE BRYME is a family of specialist publications. The desk you visit may change, but the privacy rules do not: we aim to collect as little as possible, explain what a service does before it runs, and never sell a reader profile.</p>
+<h2>What each desk does</h2>
+<ul>
+<li><b>BRYME Writers:</b> publishes writing guides, tools and verified publication opportunities. It does not accept job applications or require an account.</li>
+<li><b>BRYME Tech:</b> publishes technology guides and browser tools. Tool inputs are processed on your device unless a page explicitly says otherwise.</li>
+<li><b>BRYME Sport:</b> publishes football reference pages and scheduled data. Reader information is not sent to the football data sources used by the desk.</li>
+<li><b>BRYME Entertainment:</b> publishes film, television and anime guides. Some pages embed or load material from third-party services such as YouTube only when the page requires it.</li>
+<li><b>BRYME Fitness:</b> publishes general fitness guidance and browser planners. Planner entries stay in your browser unless you choose to share them.</li>
+<li><b>BRYME Home &amp; DIY:</b> publishes home-maintenance guidance and browser calculators. Calculator inputs remain on your device.</li>
+</ul>
+<h2>Analytics and advertising</h2>
+<p>BRYME uses Google Analytics 4 to understand page visits, sessions and rough location. It also uses the Google AdSense publisher tag. Ad units are not placed everywhere by default, and advertising is kept separate from editorial content.</p>
+<p>Visitors in the EEA, the UK and Switzerland are shown a consent message before consent-based advertising and analytics are enabled. Google’s consent controls let visitors accept, reject or manage those choices. Visitors can also manage advertising choices through <a href="https://adssettings.google.com/">Google Ads Settings</a>.</p>
+<h2>Cookies and browser storage</h2>
+<p>Some pages use cookies or browser storage for consent, analytics, theme preferences, filters or tool progress. Browser-based tools are designed to keep their working data on your device. You can clear cookies and storage in your browser at any time.</p>
+<h2>Hosting, contact and external links</h2>
+<p>Our hosting provider may process technical request information such as an IP address, browser type, requested URL and time for security and service operation. If you email BRYME, your address and message are used to reply and, where relevant, correct the site; they are not automatically added to a mailing list.</p>
+<p>Links to employers, publications, applications, platforms and media services lead to third parties. Their own privacy policies apply after you leave BRYME. BRYME does not receive your job applications.</p>
+<h2>Your choices</h2>
+<p>You can refuse or change consent through the Google privacy message, block cookies in your browser, use browser privacy controls, or contact us with a privacy request. Contact: <a href="mailto:Sodiqibrahim03@gmail.com">Sodiqibrahim03@gmail.com</a>.</p>
+<h2>Changes</h2>
+<p>Material changes to this house policy will be dated on this page. Desk-specific pages may add a narrower explanation where a tool or external service needs one, but they do not reduce the protections in this policy.</p>
+</div></section></div></main>'''
+    (_privacy_d / "index.html").write_text(
+        shell("hub", "Privacy | THE BRYME publications",
+              "The house privacy policy for BRYME Writers, Tech, Sport, Entertainment, Fitness and Home & DIY.",
+              SUB["hub"] + "/privacy/", _privacy_body + foot("hub"), robots="noindex,follow"), encoding="utf-8")
+    print("hub: built (bryme.onrender.com homepage + family /about/ + /privacy/)")
     write_service("entertainment", entertainment_pages())
     if _NX_LAZY_PAYLOAD:  # batch 12: sidecar must survive write_service's stale-output wipe
         (OUT / "entertainment" / "nx-shelves.json").write_text(_NX_LAZY_PAYLOAD, encoding="utf-8")
