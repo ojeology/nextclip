@@ -116,6 +116,7 @@ def ga_head(root: Path | None = None) -> str:
         return ""
     return (
         _COMMENT
+        + '<script src="/assets/canonical-redirect.js"></script>\n'
         + '<script src="/' + ASSET_PATH + '"></script>\n'
         + '<script async src="https://www.googletagmanager.com/gtag/js?id=' + gid + '"></script>\n'
     )
