@@ -153,3 +153,9 @@ Goal: turn 847 stubs into articles. Median 153 → 600+ words; thin 85% → <5%.
 
 - SHIPPED & LIVE: /tech/tool/video-file-size-estimator/ (assets/tool-filesize.js) + /tech/tool/upload-time-calculator/ (assets/tool-uploadtime.js). Bitrate table: 4K 40 / 1440p 20 / 1080p 10 / 720p 5 / 480p 2.5 Mbps @30fps H.264; fps x0.85/x1/x1.7; codec x1/x0.55/x0.45; audio 0.128/0.256/0.448. Upload: +15% real-world line, GB/hour translation. Hub + nav at 15.
 - Same-day total: tools 12-15, fitness batch 8 (4), home batches 19-20 (11). Remaining roadmap: password strength checker, then fitness/home batches, film batch 7, GSC checkpoint end-Oct.
+
+## BATCHES 21 HOME + 9 FITNESS: THE GEM ROUNDS (2026-09-23)
+
+- Home batch 21 (9): cost-to-run series {dehumidifier, dryer, AC, EV, hot tub, dishwasher, fan, gaming PC} + heat-pump-vs-gas-furnace. All link the calculator (absolute URLs); related_map cross-links the cluster.
+- Fitness batch 9 (11): GLP-1 plan, over-50 strength, loose skin + is-it-normal x8 {2-day sore, not-sore-anymore, plank shake, heart pounding, first-week scale, sleepy workouts, joint cracking, day-after hunger}. Red-flag lists lead to professionals; no medical advice.
+- Strategy note: these implement the 5-bet brainstorm (cost-to-run series, GLP-1 expansion, is-it-normal pipeline, heat-pump CPC page). UK winter boiler/radiator cluster NOT yet written - next content batch. GSC export still pending from owner.
