@@ -143,3 +143,8 @@ Goal: turn 847 stubs into articles. Median 153 → 600+ words; thin 85% → <5%.
 - Fitness batch 8 (4): muscle-on-glp1-weight-loss-drugs, protein-when-appetite-is-gone, strength-training-while-losing-weight, keeping-weight-off-after-glp1. Sources: trial lean-mass ~25-40% hedged, protein >1.2-1.6 g/kg/day distributed, RT 2-3x/wk, S-LiTE, 2026 Fitbit study. Prescriber-leads framing.
 - Home batch 20 (5): why-is-my-electric-bill-so-high, appliances-that-use-the-most-electricity, is-it-cheaper-to-heat-one-room, second-fridge-freezer-cost, off-peak-electricity-tariffs-explained. Cross-desk absolute tool links verified.
 - GATE LESSONS: (1) href gate catches wrong-slug body links - it stopped smart-thermostat-worth-it + refrigerator-not-cooling-first-checks (real pages: smart-thermostat-payback, fridge-not-cooling); fitness articles get shared FIT_SOURCES external footer (WHO/CDC) - whitelist externals; (2) wiring fitness = extend + ART_SOURCES + related_map per slug (KeyError otherwise); home = extend + HOME_SLUG_SECT + related_map.
+
+## TOOL 13: AI SUBSCRIPTION COST COMPARER (2026-09-23)
+
+- SHIPPED & LIVE: /tech/tool/ai-subscription-cost-comparer/ (JS assets/tool-ai-subs.js). Defaults verified Sept-2026: ChatGPT Plus 20, Claude Pro 20, Google AI Pro 19.99, Perplexity Pro 20, Copilot Pro 20, SuperGrok 30, Midjourney 10. All editable; custom row; months 1-12; biggest-line-first + cancel-the-overlap hint.
+- Same-day triple ship: fitness GLP-1 cluster (4) + home energy cluster (5) + this tool. Roadmap next: video file-size estimator, upload-time calculator, password strength checker.
