@@ -4027,6 +4027,12 @@ def fitness_pages():
     import fitness_more4_data
     FIT_ARTICLES.extend((s, ti, dek, b) for (s, _k, ti, dek, b) in fitness_more4_data.FIT_MORE_4)
     ART_SOURCES.update((s, FIT_SOURCES) for (s, _k, ti, dek, b) in fitness_more4_data.FIT_MORE_4)
+    # Sept 2026 expansion batch 4: tier-1 lifestyle guides (zone 2, pre-workout
+    # nutrition, protein timing, standing desks, rowing, dumbbells vs barbells,
+    # the supplement waste bin, grip strength).
+    import fitness_more5_data
+    FIT_ARTICLES.extend((s, ti, dek, b) for (s, _k, ti, dek, b) in fitness_more5_data.FIT_MORE_5)
+    ART_SOURCES.update((s, FIT_SOURCES) for (s, _k, ti, dek, b) in fitness_more5_data.FIT_MORE_5)
     ART_SOURCES["cardio-machine-worth-buying"] = FIT_SOURCES + [
         ("Concept2 \u2014 RowErg product page (US$990, PM5 monitor included, 14in/20in seat heights, 38in inseam limit, two-piece storage, 30-day money-back guarantee, 2-year and 5-year warranty; read 16 September 2026)", "https://www.concept2.com/ergs/rowerg"),
         ("pacompendium.com \u2014 2024 Adult Compendium of Physical Activities tracking guide (MET codes: stationary rowing 5.0 / 7.3 / 7.5 / 11.0 / 14.0 by watt tier; treadmill walking 4.8 at 3.5-3.9 mph and 5.8 at 4.0-4.4 mph; curved-treadmill running 12.0 at 7.0-7.9 mph; interactive virtual cycling and cycle HIIT 8.8)", "https://pacompendium.com/wp-content/uploads/2024/03/4_2024_adult-compendium-tracking-guide-1-2024.pdf"),
@@ -4238,6 +4244,30 @@ def fitness_pages():
     related_map["intermittent-fasting-honest-guide"] = [("30-day-weight-loss-programme", "The 30-day weight-loss programme"),
                                                         ("protein-powder-worth-it", "Is protein powder worth it"),
                                                         ("how-long-to-see-gym-results", "How long until results")]
+    related_map["zone-2-cardio-explained"] = [("breathing-during-exercise", "Breathing during exercise"),
+                                              ("beginner-running-plan", "Zero to 30 minutes of running"),
+                                              ("morning-or-evening-workout", "Morning or evening workout")]
+    related_map["what-to-eat-before-a-workout"] = [("protein-foods-nigeria", "Protein on a Nigerian plate"),
+                                                   ("water-during-workout", "Water during workouts"),
+                                                   ("how-much-protein-do-you-need", "Protein, honestly")]
+    related_map["protein-timing-anabolic-window"] = [("how-much-protein-do-you-need", "Protein, honestly"),
+                                                     ("protein-powder-worth-it", "Is protein powder worth it"),
+                                                     ("how-long-to-see-gym-results", "How long until results")]
+    related_map["standing-desk-honest-benefits"] = [("how-to-start-working-out", "Starting from zero"),
+                                                    ("30-day-core-programme", "The 30-day core programme"),
+                                                    ("walking-pad-vs-treadmill", "Walking pads vs treadmills")]
+    related_map["rowing-machine-benefits"] = [("cardio-machine-worth-buying", "Cardio machines, worth buying?"),
+                                              ("walking-pad-vs-treadmill", "Walking pads vs treadmills"),
+                                              ("30-day-core-programme", "The 30-day core programme")]
+    related_map["dumbbell-vs-barbell"] = [("home-gym-essentials-budget", "Home gym essentials"),
+                                          ("strength-training-for-beginners", "Strength training for beginners"),
+                                          ("workout-split-beginners", "Workout splits for beginners")]
+    related_map["supplements-waste-of-money"] = [("creatine-explained", "Creatine, explained"),
+                                                 ("testosterone-booster-truth", "Testosterone boosters, honestly"),
+                                                 ("apple-cider-vinegar-effects", "What ACV actually does")]
+    related_map["grip-strength-why-it-matters"] = [("push-up-progression", "From wall to full: the push-up ladder"),
+                                                   ("bodybuilding-must-know", "What every bodybuilder must know"),
+                                                   ("strength-training-for-beginners", "Strength training for beginners")]
     arts = [art(s, ti, dek, b, ART_SOURCES[s], related_map[s])
             for (s, ti, dek, b) in FIT_ARTICLES]
 
@@ -4570,6 +4600,11 @@ HOME_SLUG_SECT.update({s: "maintain" for s in (
     "hvac-filter-sizes-and-merv", "water-heater-flush-how-to", "dryer-vent-cleaning-fire-risk")})
 HOME_SLUG_SECT.update({s: "fix" for s in ("how-to-shut-off-water-main",)})
 HOME_SLUG_SECT.update({s: "mistakes" for s in ("garage-door-spring-safety",)})
+# Sept 2026 expansion batch (home_roadmap16): section assignments
+HOME_SLUG_SECT.update({s: "understand" for s in (
+    "best-water-softener-for-your-home", "air-purifier-worth-it", "repair-or-replace-appliances")})
+HOME_SLUG_SECT.update({s: "maintain" for s in (
+    "thermostat-settings-that-save-money", "sump-pump-failure-signs", "ice-dam-prevention-checklist")})
 HOME_SLUG_SECT.update({s: "appliances" for s in (
     "how-to-deep-clean-an-oven", "how-to-defrost-a-freezer-properly",
     "washing-machine-mould-door-seal", "how-to-descale-a-kettle",
@@ -4850,6 +4885,11 @@ def home_pages():
     # sorting, the water main shutoff, garage-spring safety, gutter guards.
     import home_roadmap15_data
     HOME_ARTICLES.extend((s2, ti, dek, b) for (s2, _k, ti, dek, b) in home_roadmap15_data.HOME_ROADMAP_15 if s2 not in _have)
+    # Sept 2026 expansion batch (home_roadmap16, tier-1 volume 2): water
+    # softeners, thermostat settings, repair-vs-replace, air purifiers, sump
+    # pumps, ice dams.
+    import home_roadmap16_data
+    HOME_ARTICLES.extend((s2, ti, dek, b) for (s2, _k, ti, dek, b) in home_roadmap16_data.HOME_ROADMAP_16 if s2 not in _have)
     import home_insurance_data
     HOME_ARTICLES.extend((s2, ti, dek, b) for (s2, _ti2, ti, dek, b) in
                          [(g[0], None, g[2], g[3], g[4]) for g in home_insurance_data.HOME_INSURANCE] if s2 not in _have)
@@ -5536,6 +5576,12 @@ def home_pages():
         "how-to-shut-off-water-main": [("hidden-water-leak-meter-test", "The leak meter test"),("how-to-fix-a-dripping-tap", "The dripping tap"),("washing-machine-wont-drain", "Washer won't drain")],
         "garage-door-spring-safety": [("electrical-fire-warning-signs", "Electrical fire signs"),("outlet-overloading-danger", "Outlet overloading"),("basic-toolkit-checklist", "The basic toolkit")],
         "gutter-guards-worth-it": [("gutters-and-downpipes", "Gutters & downpipes"),("flat-roof-ponding-and-leaks", "Flat roof & ponding"),("seasonal-home-maintenance-checklist", "The seasonal checklist")],
+        "best-water-softener-for-your-home": [("how-to-descale-a-kettle", "Descaling the kettle"),("washing-machine-mould-door-seal", "The washer door seal"),("water-heater-flush-how-to", "Flushing the water heater")],
+        "thermostat-settings-that-save-money": [("smart-thermostat-payback", "Smart thermostat payback"),("hvac-filter-sizes-and-merv", "HVAC filter sizes & MERV"),("standby-power-real-numbers-your-meter", "Standby power, measured")],
+        "repair-or-replace-appliances": [("smart-appliances-worth-it", "Smart appliances, sorted"),("vacuum-cleaner-care-guide", "Vacuum care guide"),("how-to-defrost-a-freezer-properly", "Defrosting the freezer")],
+        "air-purifier-worth-it": [("condensation-ventilation-that-works", "Ventilation that works"),("hvac-filter-sizes-and-merv", "HVAC filter sizes & MERV"),("bathroom-fan-condensation", "Bathroom fan & condensation")],
+        "sump-pump-failure-signs": [("hidden-water-leak-meter-test", "The leak meter test"),("mould-after-a-flooded-room", "Mould after flooding"),("floor-drain-backflow", "Drain smells outdoors")],
+        "ice-dam-prevention-checklist": [("gutters-and-downpipes", "Gutters & downpipes"),("roof-gutter-leak-joint", "Roof gutter leaks"),("condensation-ventilation-that-works", "Ventilation that works")],
     }
     for slug, ti, dek, b in HOME_ARTICLES:
         key = HOME_SLUG_SECT[slug]
