@@ -585,9 +585,18 @@ def _nav_items(pub):
     if pub == "tech":
         guides = [("HEAD", "The guide shelf"), ("/tech/", "All of BRYME Tech")] + [
             ("/tech/" + c + "/", TECH_CAT[c][0]) for c in TECH_CAT]
-        import tech_tools_data as _ttd
-        tools = [("HEAD", "The toolbox"), ("/tech/tool/", "All " + str(len(_ttd.TOOLS)) + " tools")] + [
-            ("/tech/tool/" + t[0] + "/", t[1]) for t in _ttd.TOOLS]
+        tools = [("HEAD", "The toolbox"), ("/tech/tool/", "All 11 tools"),
+                 ("/tech/tool/json-formatter/", "JSON formatter & validator"),
+                 ("/tech/tool/base64-encoder/", "Base64 encoder / decoder"),
+                 ("/tech/tool/url-encoder/", "URL encoder / decoder"),
+                 ("/tech/tool/uuid-generator/", "UUID generator (v4)"),
+                 ("/tech/tool/timestamp-converter/", "Unix timestamp converter"),
+                 ("/tech/tool/word-counter/", "Word & character counter"),
+                 ("/tech/tool/case-converter/", "Text case converter"),
+                 ("/tech/tool/http-status-lookup/", "HTTP status code lookup"),
+                 ("/tech/tool/data-usage-estimator/", "Data usage estimator"),
+                 ("/tech/tool/vpn-cost-calculator/", "VPN true-cost calculator"),
+                 ("/tech/tool/internet-speed-calculator/", "Internet speed calculator")]
         desk = [("HEAD", "Standards and contact"), ("/tech/methodology/", "Editorial methodology"),
                 ("/tech/corrections/", "Corrections policy"), ("/tech/about/", "About"),
                 ("/tech/contact/", "Contact"), ("/tech/privacy/", "Privacy")]
