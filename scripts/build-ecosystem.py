@@ -4038,6 +4038,13 @@ def fitness_pages():
     import fitness_more6_data
     FIT_ARTICLES.extend((s, ti, dek, b) for (s, _k, ti, dek, b) in fitness_more6_data.FIT_MORE_6)
     ART_SOURCES.update((s, FIT_SOURCES) for (s, _k, ti, dek, b) in fitness_more6_data.FIT_MORE_6)
+    # Sept 2026 catch-up batch: exercise-type breadth (swimming, cycling,
+    # jump rope, kettlebells, Pilates, yoga, HIIT, elliptical) + healthy
+    # living staples (desk stretches, post-workout food, mood evidence,
+    # mobility vs flexibility).
+    import fitness_more7_data
+    FIT_ARTICLES.extend((s, ti, dek, b) for (s, _k, ti, dek, b) in fitness_more7_data.FIT_MORE_7)
+    ART_SOURCES.update((s, FIT_SOURCES) for (s, _k, ti, dek, b) in fitness_more7_data.FIT_MORE_7)
     ART_SOURCES["cardio-machine-worth-buying"] = FIT_SOURCES + [
         ("Concept2 \u2014 RowErg product page (US$990, PM5 monitor included, 14in/20in seat heights, 38in inseam limit, two-piece storage, 30-day money-back guarantee, 2-year and 5-year warranty; read 16 September 2026)", "https://www.concept2.com/ergs/rowerg"),
         ("pacompendium.com \u2014 2024 Adult Compendium of Physical Activities tracking guide (MET codes: stationary rowing 5.0 / 7.3 / 7.5 / 11.0 / 14.0 by watt tier; treadmill walking 4.8 at 3.5-3.9 mph and 5.8 at 4.0-4.4 mph; curved-treadmill running 12.0 at 7.0-7.9 mph; interactive virtual cycling and cycle HIIT 8.8)", "https://pacompendium.com/wp-content/uploads/2024/03/4_2024_adult-compendium-tracking-guide-1-2024.pdf"),
@@ -4291,6 +4298,42 @@ def fitness_pages():
     related_map["protein-before-bed"] = [("how-much-protein-do-you-need", "Protein, honestly"),
                                          ("protein-foods-nigeria", "Protein on a Nigerian plate"),
                                          ("protein-timing-anabolic-window", "The anabolic-window myth")]
+    related_map["swimming-for-fitness"] = [("zone-2-cardio-explained", "Zone 2 cardio, explained"),
+                                           ("breathing-during-exercise", "Breathing during exercise"),
+                                           ("what-to-eat-after-a-workout", "The post-workout plate")]
+    related_map["cycling-for-fitness-beginners"] = [("zone-2-cardio-explained", "Zone 2 cardio, explained"),
+                                                    ("walking-pad-vs-treadmill", "Walking pads vs treadmills"),
+                                                    ("cardio-machine-worth-buying", "Cardio machines, worth buying?")]
+    related_map["jump-rope-cardio-benefits"] = [("beginner-running-plan", "Zero to 30 minutes of running"),
+                                                ("hiit-training-explained", "HIIT, explained"),
+                                                ("home-gym-essentials-budget", "Home gym essentials")]
+    related_map["kettlebell-for-beginners"] = [("squat-form-beginners", "The beginner's squat"),
+                                               ("grip-strength-why-it-matters", "Why grip strength matters"),
+                                               ("dumbbell-vs-barbell", "Dumbbells vs barbells")]
+    related_map["pilates-for-beginners"] = [("mobility-vs-flexibility", "Mobility vs flexibility"),
+                                            ("standing-desk-honest-benefits", "Standing desks, honestly"),
+                                            ("strength-training-for-beginners", "Strength training for beginners")]
+    related_map["yoga-for-athletes-beginners"] = [("doms-relief-what-works", "Relieving sore muscles"),
+                                                  ("mobility-vs-flexibility", "Mobility vs flexibility"),
+                                                  ("sleep-and-exercise-performance", "Sleep and exercise")]
+    related_map["hiit-training-explained"] = [("zone-2-cardio-explained", "Zone 2 cardio, explained"),
+                                              ("deload-weeks-explained", "The deload week"),
+                                              ("30-day-weight-loss-programme", "The 30-day weight-loss programme")]
+    related_map["elliptical-trainer-honest-verdict"] = [("rowing-machine-benefits", "The rowing machine"),
+                                                        ("cardio-machine-worth-buying", "Cardio machines, worth buying?"),
+                                                        ("strength-training-for-beginners", "Strength training for beginners")]
+    related_map["desk-stretches-office-workers"] = [("standing-desk-honest-benefits", "Standing desks, honestly"),
+                                                    ("30-day-walking-plan", "The 30-day walking plan"),
+                                                    ("30-day-core-programme", "The 30-day core programme")]
+    related_map["what-to-eat-after-a-workout"] = [("protein-timing-anabolic-window", "The anabolic-window myth"),
+                                                  ("what-to-eat-before-a-workout", "What to eat before"),
+                                                  ("protein-foods-nigeria", "Protein on a Nigerian plate")]
+    related_map["exercise-and-mood"] = [("zone-2-cardio-explained", "Zone 2 cardio, explained"),
+                                        ("gym-anxiety-beginners", "Gym anxiety, honestly"),
+                                        ("sleep-and-exercise-performance", "Sleep and exercise")]
+    related_map["mobility-vs-flexibility"] = [("desk-stretches-office-workers", "Eight desk stretches"),
+                                              ("yoga-for-athletes-beginners", "Yoga for people who lift"),
+                                              ("how-to-warm-up", "A warm-up that covers you")]
     arts = [art(s, ti, dek, b, ART_SOURCES[s], related_map[s])
             for (s, ti, dek, b) in FIT_ARTICLES]
 
