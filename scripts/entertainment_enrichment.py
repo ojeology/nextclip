@@ -1765,4 +1765,438 @@ ENRICH = {
              "officially undecided."),
         ],
     },
+    "inception": {
+        "verdict": "The heist film rebuilt inside the skull, and the "
+            "blockbuster that proved original ideas could still carry nine "
+            "figures. Nolan layers dream on dream with lucid, legible "
+            "physics - the hallway fight and the folding Paris street "
+            "remain touchstones - while Zimmer's Édith Piaf detour gives "
+            "the whole thing a heartbeat. Demands attention, pays it back "
+            "tenfold.",
+        "faqs": [
+            ("Does the spinning top fall at the end of Inception?",
+             "Nolan cuts away on purpose - the film's point is that Cobb "
+             "stops waiting for the totem and chooses his children. Nolan "
+             "has said the ambiguity is the intended ending; Michael Caine "
+             "(whose character only appears in reality) has his own "
+             "answer."),
+            ("How does dream time work in Inception?",
+             "Roughly five times deeper per level under sedation - minutes "
+             "above become hours below, which is what lets the van, the "
+             "hotel and the snow fortress run as three simultaneous "
+             "timeframes in the climax."),
+            ("Is Inception based on a book?",
+             "No - Nolan wrote the original screenplay over about a decade, "
+             "building it around the idea of stealing and planting ideas "
+             "(extraction and inception) inside shared dream space."),
+        ],
+    },
+    "la-la-land": {
+        "verdict": "A sun-drunk musical about the price of the dream, and "
+            "the rare original Hollywood romance that earns its bittersweet "
+            "epilogue. Chazelle shoots Los Angeles in CinemaScope candy, "
+            "Gosling and Stone sell the fallbacks as romance, and the "
+            "final fantasy - the life they did not choose - is one of "
+            "modern cinema's great endings. City of stars, indeed.",
+        "faqs": [
+            ("What happened with the La La Land / Moonlight Best Picture "
+             "Oscar?",
+             "At the 2017 ceremony the presenters were wrongly given La La "
+             "Land's envelope; the producers were mid-speech when the "
+             "error was corrected and Moonlight was announced as the real "
+             "Best Picture winner - the most famous mix-up in Oscars "
+             "history. La La Land still won six awards that night, "
+             "including Best Director."),
+            ("Did Ryan Gosling really play the piano in La La Land?",
+             "Yes - he learned to play the film's jazz pieces by "
+             "practising daily for months, and the performance shots are "
+             "him, no hand double. Emma Stone also sings live."),
+            ("What is the meaning of the La La Land ending?",
+             "The epilogue imagines the life Mia and Sebastian would have "
+             "had if he had come to Paris - then returns them to the "
+             "successful but separate lives they actually chose. The "
+             "argument: some loves are right and still not forever."),
+        ],
+    },
+    "knives-out": {
+        "verdict": "The whodunit resurrected with total showmanship: "
+            "Johnson builds a donut of a mystery - a hole at the centre "
+            "you can see straight through - and lets Craig's Benoit "
+            "Blanc twang his way through a family of vultures with "
+            "gusto. De Armas is the heart the satire needs. Cozy, "
+            "vicious, and rewatchable every single holiday.",
+        "faqs": [
+            ("Is Knives Out connected to Murder on the Orient Express?",
+             "No - it is an original whodunit in the Agatha Christie "
+             "tradition, with Daniel Craig's detective Benoit Blanc as an "
+             "original Poirot-flavoured creation, not an adaptation of any "
+             "existing novel."),
+            ("What is the donut metaphor in Knives Out?",
+             "Blanc describes the case as a donut hole within a donut "
+             "hole - layers of truth with gaps at the centre - and the "
+             "film literally hands him a doughnut to hold while he says "
+             "it."),
+            ("Are there Knives Out sequels?",
+             "Yes - Glass Onion (2022) and a third case, Wake Up Dead Man "
+             "(2025), with Craig's Blanc solving a new mystery each time "
+             "around a new ensemble."),
+        ],
+    },
+    "gone-girl": {
+        "verdict": "Fincher at his iciest, and the rare adaptation that "
+            "improves a twist you already know: Flynn adapts her own "
+            "novel and Pike plays the year's great ice-bath performance, "
+            "turning the 'Cool Girl' speech into a mission statement. A "
+            "marriage autopsy, a media satire, and the most uncomfortable "
+            "ending thriller audiences have cheerfully applauded.",
+        "faqs": [
+            ("Is Gone Girl based on a book?",
+             "Yes - Gillian Flynn's 2012 blockbuster novel, with a "
+             "screenplay by Flynn herself (she changed the ending's "
+             "texture, not its teeth). Fincher signed on partly because "
+             "he wanted the author to keep control."),
+            ("Was Rosamund Pike nominated for an Oscar for Gone Girl?",
+             "Yes - Best Actress at the 2015 ceremony, for a performance "
+             "that spends the film's second half doing something almost "
+             "unplayable. The film's only nomination, oddly."),
+            ("Why does Gone Girl end the way it does?",
+             "The ending is the thesis: Amy wins by weaponising the "
+             "narrative, and Nick chooses to stay inside the story she "
+             "has written. The film calls marriage a performance and "
+             "then makes it literal."),
+        ],
+    },
+    "jaws": {
+        "verdict": "The film that invented the summer blockbuster and "
+            "still out-thrills its descendants: a malfunctioning robot "
+            "shark forced Spielberg into suggestion, and absence became "
+            "the scariest special effect ever. Three men, one boat, "
+            "Shaw's USS Indianapolis monologue, and two notes of score "
+            "that turned a beach into a threat. Perfect in every way "
+            "that matters.",
+        "faqs": [
+            ("Why do you barely see the shark in Jaws?",
+             "'Bruce' the mechanical shark barely functioned in salt "
+             "water, so Spielberg withheld it - dread built on music, "
+             "bathing legs and that yellow barrel. The accident created "
+             "the suspense blueprint half a century of films copied."),
+            ("How much money did Jaws make?",
+             "It grossed around 476 million dollars worldwide on a "
+             "roughly 9-million-dollar budget and became the "
+             "highest-grossing film ever at the time - the birth of the "
+             "wide summer release."),
+            ("Did Jaws win any Oscars?",
+             "Three, from Best Picture nomination: Editing, Sound and "
+             "John Williams' score - possibly the most famous two notes "
+             "in film history."),
+        ],
+    },
+    "jurassic-park": {
+        "verdict": "The theme park as perfection: Spielberg balances awe "
+            "and appetite better than any film since, the brachiosaurus "
+            "reveal still lands like religion, and the practical "
+            "animatronics mean the T. rex kitchen scene has aged better "
+            "than most modern CGI. Goldblum's chaos theorist, Newman's "
+            "barbasol can, Williams' hymn - every piece is the right "
+            "piece.",
+        "faqs": [
+            ("How did Jurassic Park make its dinosaurs look real?",
+             "A blend Stan Winston's full-scale animatronics (the rain-"
+             "soaked T. rex is largely mechanical) and ILM's digital "
+             "breakthroughs - the first fully convincing CGI creatures "
+             "in a feature, which reset the entire industry."),
+            ("Did Jurassic Park win the Oscar for visual effects?",
+             "Yes - at the 1994 ceremony, alongside Sound and Sound "
+             "Effects Editing. Its Best Picture nomination went to "
+             "Schindler's List territory the next year for Spielberg "
+             "instead."),
+            ("Is Jurassic Park scarier than Jurassic World?",
+             "Most viewers find the 1993 original the tenser film - it "
+             "builds dread in daylight and trusts silence, while the "
+             "World entries lean louder and faster. Age-appropriate "
+             "teens handle both; under-tens start with the original's "
+             "fences, not its raptors."),
+        ],
+    },
+    "logan": {
+        "verdict": "The superhero film as elegy: a worn-out Wolverine "
+            "escorting a dying Professor X across a desert that wants "
+            "them both dead, with Mangold playing it as a western "
+            "(Shane, openly, on the motel TV). Jackman and Stewart give "
+            "the performances the franchise never let them give, and "
+            "Dafne Keen's Laura says nothing and breaks everything. The "
+            "rarest thing: a farewell with no reservations.",
+        "faqs": [
+            ("Do I need to watch the X-Men films before Logan?",
+             "You need the relationship - Jackman's seventeen years as "
+             "Wolverine and Stewart's Xavier - more than any specific "
+             "plot. The film burns the continuity down and works as a "
+             "standalone elegy for everything it references."),
+            ("Is Logan based on a comic?",
+             "Yes - Mark Millar and Steve McNiven's Old Man Logan arcs "
+             "and Death of Wolverine, loosely combined; Mangold shot a "
+             "black-and-white 'Noir' version that mirrors the source's "
+             "grit."),
+            ("Was Logan nominated for an Oscar?",
+             "Yes - Best Adapted Screenplay at the 2018 ceremony, the "
+             "first live-action superhero film nominated in a writing "
+             "category."),
+        ],
+    },
+    "john-wick": {
+        "verdict": "The action film rebuilt on craft: long takes, real "
+            "driving, and geometry you can read - Stahelski was Reeves' "
+            "stunt double, and it shows in every fall. The dog is the "
+            "hook, the Continental is the world, and the pencil is the "
+            "legend. What could have been a forgettable revenge "
+            "thriller became the genre's load-bearing pillar.",
+        "faqs": [
+            ("Is John Wick based on a book or comic?",
+             "No - an original screenplay by Derek Kolstad. The world "
+             "(the High Table, gold coins, the Continental's rules) was "
+             "built across the films as the first one's success "
+             "demanded more mythology."),
+            ("How many John Wick films are there?",
+             "Four theatrical chapters so far (2014-2023), with Ballerina, "
+             "an Ana de Armas spin-off, extending the world - and the "
+             "franchise famously ends each entry with Wick in worse "
+             "shape and higher stakes."),
+            ("Did Keanu Reeves do his own stunts in John Wick?",
+             "A large share of them - he trained in judo, jiu-jitsu and "
+             "tactical shooting for months per film and performs much of "
+             "the driving and fighting on camera, with Stahelski's stunt "
+             "team handling the truly lethal work."),
+        ],
+    },
+    "godzilla-kong": {
+        "verdict": "The title is the promise and the film keeps it: two "
+            "titans, one Hong King neon brawl, and a mech-Godzilla third "
+            "act that gives the kids what the 1962 crossover only "
+            "dreamed of. Wingard shoots scale with genuine spectacle "
+            "logic, Hollow Earth is beautiful nonsense, and the human "
+            "plot wisely stays out of the punching. Monster-movie "
+            "comfort food, perfectly done.",
+        "faqs": [
+            ("Do I need Godzilla (2014) and King of the Monsters before "
+             "Godzilla vs. Kong?",
+             "The essentials: Titans are real, Godzilla defends the "
+             "surface, and Monarch is the agency studying them. The "
+             "Skull Island link matters for Kong; everything else is "
+             "recapped by the screaming."),
+            ("Who wins, Godzilla or Kong?",
+             "Watch the film - it lands the match on points with a "
+             "twist, then needs both titans for the real fight. The "
+             "sequel (The New Empire, 2024) settles them as reluctant "
+             "teammates."),
+            ("Was Godzilla vs. Kong a streaming success?",
+             "Yes - released mid-pandemic in cinemas and on HBO Max "
+             "simultaneously, it became the service's biggest launch "
+             "and grossed around 470 million dollars, reviving the "
+             "Monsterverse."),
+        ],
+    },
+    "iron-man": {
+        "verdict": "The cornerstone: a risky star, a B-list hero, and a "
+            "tonally confident origin story that treats genius as "
+            "charisma. Downey plays Tony's reckoning with total wit, "
+            "Favreau grounds the spectacle in a cave and a toolbox, and "
+            "the improvised 'I am Iron Man' button rewrote franchise "
+            "grammar. Everything after exists because this worked.",
+        "faqs": [
+            ("Do I need Iron Man to start the Marvel films?",
+             "It is the recommended starting point - 2008's Iron Man is "
+             "the first MCU film and its DNA (wit, legacy, the "
+             "post-credits promise) runs through everything that "
+             "follows."),
+            ("Was the 'I am Iron Man' line improvised?",
+             "Yes - the final press-conference line was Downey's "
+             "improvisation, kept in the cut; it replaced a scripted "
+             "non-answer and became the MCU's founding gesture."),
+            ("How much did Iron Man make?",
+             "About 585 million dollars worldwide on a "
+             "then-risky 140-million-dollar budget - the hit that "
+             "justified Marvel Studios' entire ten-year plan."),
+        ],
+    },
+    "kung-fu-panda": {
+        "verdict": "The parody that became the real thing: DreamWorks "
+            "winks at kung-fu cinema for ten minutes, then plays the "
+            "chosen-one story with complete sincerity - and lands the "
+            "genre's actual philosophy, 'there is no secret "
+            "ingredient', as its punchline and thesis. Black's Po, "
+            "Hong's Shifu, and a snow-mountain training sequence that "
+            "still teaches real structure. The studio's best film.",
+        "faqs": [
+            ("What is the secret ingredient in Kung Fu Panda?",
+             "Nothing - Shifu and Po realise the Secret Ingredient Soup "
+             "has no special ingredient: 'It is just you.' Belief, not "
+             "props, is the film's whole martial arts lesson."),
+            ("Was Kung Fu Panda nominated for an Oscar?",
+             "Yes - Best Animated Feature at the 2009 ceremony (WALL-E "
+             "won), plus a long afterlife as one of the most "
+             "rewatched animated trilogies ever."),
+            ("Do I need to watch Kung Fu Panda in order?",
+             "Yes for the full arc - one makes Po the Dragon Warrior, "
+             "two gives him inner peace and an origin, three completes "
+             "the teacher's journey. The stand-alone jokes work "
+             "anywhere; the story does not."),
+        ],
+    },
+    "kpop-demon-hunters": {
+        "verdict": "2025's word-of-mouth monster: a K-pop girl group "
+            "hunting demons with a honmoon to protect, Sony animation "
+            "firing on every cylinder - concert-beam battles, fan-cam "
+            "cuts, and an earworm arsenal ('Golden' topping the actual "
+            "Hot 100). It treats idol culture and demon lore with "
+            "equal sincerity, and the Saja Boys may be animation's "
+            "best villain-boyband. Netflix's biggest animated event "
+            "ever, and it earns it.",
+        "faqs": [
+            ("Is KPop Demon Hunters getting a sequel?",
+             "Netflix and Sony have moved forward with more stories in "
+             "the world after it became the platform's most-watched "
+             "original animated film; a sequel and a short film were "
+             "confirmed in 2025-2026 coverage."),
+            ("Did the KPop Demon Hunters songs really chart?",
+             "Yes - 'Golden' by the fictional group HUNTR/X reached "
+             "No. 1 on the Billboard Hot 100, and multiple songs from "
+             "the film charted simultaneously - the soundtrack became "
+             "a genuine pop event, not a novelty."),
+            ("Is KPop Demon Hunters suitable for kids?",
+             "Very - it is a crowd-pleaser for ages roughly six and "
+             "up: bright, funny, musical, with demon-fighting action "
+             "on the spooky-fun side rather than the scary side."),
+        ],
+    },
+    "jawan": {
+        "verdict": "Shah Rukh Khan's mass-cinema victory lap: a "
+            "father-son vigilante double act aimed straight at systemic "
+            "corruption, with Atlee staging action set pieces at "
+            "maximum scale and SRK doing both ages with total command. "
+            "Vijay Sethupathi relishes the villainy, Anirudh's score "
+            "detonates on cue, and the crowd-pleasing is calibrated "
+            "like artillery. One of Indian cinema's biggest hits, "
+            "earned honestly.",
+        "faqs": [
+            ("Is Jawan streaming, and in which languages?",
+             "It streams on Netflix in its original Hindi plus dubbed "
+             "Tamil and Telugu - the film released theatrically in "
+             "all three languages, standard practice for Atlee's "
+             "pan-Indian productions."),
+            ("Who does Shah Rukh Khan play in Jawan?",
+             "A dual role: father Vikram Rathore and son Azad - a "
+             "prison warden leading a masked crusade to hold the "
+             "system accountable, the film's engine and its biggest "
+             "surprise structure-wise."),
+            ("How big a hit was Jawan?",
+             "Among the highest-grossing Indian films ever - over "
+             "1,100 crore rupees worldwide (well past $130 million) "
+             "in 2023, shortly after Khan's Pathaan had already "
+             "rewritten the year's record books."),
+        ],
+    },
+    "lagaan": {
+        "verdict": "The four-hour epic that makes you care "
+            "passionately about a colonial-era cricket match: Aamir "
+            "Khan's villagers bet their land tax on a game they have "
+            "never played, and Gowariker builds the rules, the "
+            "training, the last wicket with the patience of a master. "
+            "Rahman's songs carry the hope; the monsoon finale is "
+            "Indian cinema at full force. India's great crowd-pleaser "
+            "with an Oscar stamp.",
+        "faqs": [
+            ("Did Lagaan win an Oscar?",
+             "It was nominated - Best Foreign Language Film at the "
+             "2002 ceremony, India's third nomination in the category "
+             "(it lost to No Man's Land). It swept India's National "
+             "and Filmfare awards."),
+            ("Do I need to understand cricket to enjoy Lagaan?",
+             "No - the film teaches the game's rules to its heroes "
+             "and its audience simultaneously, and by the final "
+             "innings you will be shouting at a match that ended "
+             "140 years ago."),
+            ("How long is Lagaan?",
+             "About 224 minutes including intermission - the length "
+             "is the point: songs, subplots and the full arc of a "
+             "village learning to believe."),
+        ],
+    },
+    "king-of-boys": {
+        "verdict": "Nollywood's gangster epic, with Sola Sobowale "
+            "giving one of the performances of the decade: Eniola "
+            "Salami, businesswoman, kingmaker, monster, mother - "
+            "Adetiba shoots Lagos power politics as opera, and the "
+            "film's ambition (three hours of it) is the point. "
+            "Brutal, theatrical, and completely gripping; the 2021 "
+            "Netflix cut extends the reckoning into a seven-part "
+            "saga.",
+        "faqs": [
+            ("Do I need to watch King of Boys before Return of the "
+             "King?",
+             "Yes - the 2018 film is the foundation; the Netflix "
+             "sequel/series Return of the King (2021) continues "
+             "Eniola Salami's story in exile and in power, and "
+             "assumes every scar from the first."),
+            ("Is King of Boys based on a true story?",
+             "No - it is fiction, though its world of Nigerian "
+             "political godfathers, kingmakers and street power is "
+             "played with a realism that fuels the speculation."),
+            ("Is King of Boys in English?",
+             "Primarily English with substantial Yoruba, Hausa and "
+             "Pidgin - part of what makes Sobowale's performance "
+             "legendary is the language-switching range of the "
+             "role."),
+        ],
+    },
+    "the-black-book": {
+        "verdict": "The Nollywood thriller that went global: a grieving "
+            "professor and a corrupt-system conspiracy, shot with real "
+            "action-film discipline - car chases that read, shootouts "
+            "that sting - and RMD carrying the grief like a weight in "
+            "his coat. Effiong's direction announced a new commercial "
+            "ceiling for Nigerian cinema. Imperfect, propulsive, "
+            "historic.",
+        "faqs": [
+            ("Why is The Black Book historically significant?",
+             "It became the first Nigerian film to reach No. 1 on "
+             "Netflix's global English-language top 10 (September "
+             "2023), charting in dozens of countries and proving "
+             "Nollywood's worldwide streaming audience."),
+            ("Is The Black Book based on true events?",
+             "It is fiction - a revenge thriller about military-era "
+             "framing, police violence and elite impunity - but its "
+             "anger is drawn from recognisably real Nigerian "
+             "history."),
+            ("Who stars in The Black Book?",
+             "Richard Mofe-Damijo (RMD) as Professor Craig, with a "
+             "supporting turn from Ade Laoye; written and directed "
+             "by Editi Effiong for Netflix."),
+        ],
+    },
+    "lionheart": {
+        "verdict": "Genevieve Nnaji's directorial debut is Nigerian "
+            "cinema at its warmest and most confident: a family "
+            "business succession comedy about a daughter the men "
+            "underestimate, played with total charm by Nnaji and "
+            "veteran gravitas by Pete Edochie and Kanayo O. Kanayo. "
+            "Gentle, funny, quietly feminist - and historically "
+            "significant twice over.",
+        "faqs": [
+            ("Why was Lionheart disqualified from the Oscars?",
+             "Nigeria's first Best International Feature submission "
+             "was ruled ineligible because most of its dialogue is "
+             "English - the academy's language rule, which many "
+             "observers pointed out is itself a legacy of "
+             "colonialism. The ruling caused international debate."),
+            ("Is Lionheart a Netflix film?",
+             "Yes - it was acquired as a Netflix Original, the first "
+             "Nigerian film to premiere that way (2018), which is "
+             "part of why its international audience is so large."),
+            ("Is Lionheart suitable for family viewing?",
+             "Ideal for it - a multigenerational comedy about "
+             "family, business and respect, with no content flags "
+             "beyond brief business tension. A perfect first "
+             "Nollywood film for mixed audiences."),
+        ],
+    },
 }
