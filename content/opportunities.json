@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-06",
+  "updatedAt": "2026-09-23",
   "disclaimer": "Information can change. Payment rates, submission requirements, eligibility, deadlines and response times are subject to change. Always check the publication's official guidelines before submitting. BRYME verifies listings as carefully as possible but does not guarantee acceptance or payment.",
   "earningCategories": [
     {
@@ -5051,7 +5051,7 @@
       ],
       "sources": [
         {
-          "name": "Narratively — Submissions: The Personals (official)",
+          "name": "Narratively - Submissions: The Personals (official Submittable page)",
           "url": "https://narratively.submittable.com/submit/321516/submissions-the-personals"
         }
       ],
@@ -5059,15 +5059,32 @@
       "aiPolicy": "not-stated",
       "experience": "not-stated",
       "keywords": [],
-      "whatTheyWant": [],
-      "whatTheyDontWant": [],
-      "requirements": [],
-      "howToSubmit": [],
+      "whatTheyWant": [
+        "First-person stories built on vivid, cinematic scenes - one moment, one day, one week, one summer",
+        "A subject we have heard about before, but with a unique way in",
+        "Active, dramatic narrative - not internal opinion pieces or essays worked out on the page",
+        "Surprise: an upside-down view of something society is used to looking at head-on"
+      ],
+      "whatTheyDontWant": [
+        "Pitches for this category - full drafts only",
+        "Anything longer than 2,200 words (not considered)",
+        "More than one essay in consideration at a time"
+      ],
+      "requirements": [
+        "Full draft, 1,000-1,500 words ideal, 2,200 maximum",
+        "Submit one essay at a time; wait for a response before sending another",
+        "Rolling consideration - no deadline",
+        "Rate: $300 flat per accepted Personals piece"
+      ],
+      "howToSubmit": [
+        "Submit the full draft via Narratively's Submittable page (Submissions: The Personals)",
+        "Wait to hear back before submitting another piece"
+      ],
       "rights": "",
       "applyUrl": "https://narratively.submittable.com/submit/321516/submissions-the-personals",
       "applyEmail": "",
       "applyMethod": "Submittable form (full draft)",
-      "lastVerified": "2026-09-04",
+      "lastVerified": "2026-09-23",
       "publishedAt": "2026-09-04",
       "id": "narratively-personals",
       "slug": "narratively",
@@ -5088,7 +5105,7 @@
       "wordCount": {
         "min": 1000,
         "max": 2200,
-        "display": "1,000–1,500 ideal; 2,200 hard cap"
+        "display": "1,000-1,500 words ideal; 2,200 hard max"
       },
       "response": {
         "label": "Not publicly stated",
@@ -5125,7 +5142,7 @@
       ],
       "sources": [
         {
-          "name": "Longreads — submissions (official)",
+          "name": "Longreads - Submissions (official)",
           "url": "https://longreads.com/submissions/"
         }
       ],
@@ -5133,15 +5150,30 @@
       "aiPolicy": "strict",
       "experience": "not-stated",
       "keywords": [],
-      "whatTheyWant": [],
-      "whatTheyDontWant": [],
-      "requirements": [],
-      "howToSubmit": [],
+      "whatTheyWant": [
+        "Original nonfiction that sustains a reader's curiosity for the duration",
+        "Researched and critical essays (pitches welcome) - rate starts at $500 depending on reporting and length",
+        "Personal essays: $500 flat, accepted as full polished drafts only (not commissioned from pitches)",
+        "Curated reading lists: $350 - essay-style introduction plus links to free longform web stories; timely or offbeat angles, diverse publications and writers"
+      ],
+      "whatTheyDontWant": [
+        "Fiction of any kind",
+        "Reading lists that feature books exclusively"
+      ],
+      "requirements": [
+        "Pitches must state the gist (story and shape), the context (why now, why Longreads) and the length (why the piece needs its word count)",
+        "Personal essays: attach the completed draft (PDF, Google Docs or Word) to the email",
+        "Essays are fact-checked as necessary"
+      ],
+      "howToSubmit": [
+        "Email essay submissions, pitches, reading-list ideas and queries to hello@longreads.com",
+        "Editor's-pick nominations: send the link via Bluesky/X DM or the same email address"
+      ],
       "rights": "",
-      "applyUrl": "mailto:hello@longreads.com",
+      "applyUrl": "https://longreads.com/submissions/",
       "applyEmail": "hello@longreads.com",
-      "applyMethod": "Email (full draft for personal essays)",
-      "lastVerified": "2026-09-04",
+      "applyMethod": "Email (hello@longreads.com)",
+      "lastVerified": "2026-09-23",
       "publishedAt": "2026-09-04",
       "id": "longreads",
       "slug": "longreads",
@@ -5162,7 +5194,7 @@
       "wordCount": {
         "min": 2000,
         "max": 6000,
-        "display": "2,000–6,000 words"
+        "display": "Most features 2,000-6,000 words (guideline, not a rule)"
       },
       "response": {
         "label": "Not publicly stated",
@@ -5188,15 +5220,21 @@
       ],
       "sources": [
         {
-          "name": "Cracked — Write For Cracked (official)",
-          "url": "https://www.cracked.com/article_26097_write-cracked-get-paid-heres-how.html"
+          "name": "Cracked - write-for-us page (404 at 23 Sep 2026 check)",
+          "url": "https://www.cracked.com/write-for-cracked"
+        },
+        {
+          "name": "Secondary guide: contributor portal via Literally Media; ~$50-250 per piece, paid on publication (2024-2026 reports)",
+          "url": "https://askfoodie.blog/can-you-still-write-for-cracked"
         }
       ],
       "deadline": null,
       "aiPolicy": "not-stated",
       "experience": "not-stated",
       "keywords": [],
-      "whatTheyWant": [],
+      "whatTheyWant": [
+        "High-concept humour, weird history and pop-culture deep dives in the Cracked list style (per secondary reports - unconfirmed by an official page)"
+      ],
       "whatTheyDontWant": [],
       "requirements": [],
       "howToSubmit": [],
@@ -5204,7 +5242,7 @@
       "applyUrl": "mailto:workshop@cracked.com",
       "applyEmail": "workshop@cracked.com",
       "applyMethod": "Email pitch (Cracked Comedy Workshop)",
-      "lastVerified": "2026-09-04",
+      "lastVerified": "2026-09-23",
       "publishedAt": "2026-09-04",
       "id": "cracked",
       "slug": "cracked",
@@ -5228,11 +5266,11 @@
         "display": "6–8 entries per list"
       },
       "response": {
-        "label": "Variable; editor dialogue expected",
+        "label": "Official submissions page returned 404 at check (23 Sep 2026); status unconfirmed - treat rates as historical",
         "band": "unknown",
         "official": false
       },
-      "submissionStatus": "open",
+      "submissionStatus": "unknown",
       "editorExperience": {
         "status": "submitted",
         "applied": true,
@@ -5263,7 +5301,7 @@
       ],
       "sources": [
         {
-          "name": "WhatCulture — Create content and get paid (official)",
+          "name": "WhatCulture - write for us page (unreachable at 23 Sep 2026 check)",
           "url": "https://whatculture.com/write-for-us"
         }
       ],
@@ -5279,7 +5317,7 @@
       "applyUrl": "https://whatculture.com/write-for-us",
       "applyEmail": "",
       "applyMethod": "Register + create via their content suite",
-      "lastVerified": "2026-09-04",
+      "lastVerified": "2026-09-23",
       "publishedAt": "2026-09-04",
       "id": "whatculture",
       "slug": "whatculture",
@@ -5303,11 +5341,11 @@
         "display": "1,500+ words (lists)"
       },
       "response": {
-        "label": "Editorial review on submission",
+        "label": "Write-for-us page unreachable at check (23 Sep 2026); status unconfirmed",
         "band": "unknown",
         "official": false
       },
-      "submissionStatus": "open",
+      "submissionStatus": "unknown",
       "editorExperience": {
         "status": "submitted",
         "applied": true,
@@ -5335,7 +5373,7 @@
       ],
       "sources": [
         {
-          "name": "WondersList — Write For Us (official)",
+          "name": "Wonderslist - Write For Us (official)",
           "url": "https://www.wonderslist.com/write-us/"
         }
       ],
@@ -5343,15 +5381,33 @@
       "aiPolicy": "not-stated",
       "experience": "not-stated",
       "keywords": [],
-      "whatTheyWant": [],
-      "whatTheyDontWant": [],
-      "requirements": [],
-      "howToSubmit": [],
-      "rights": "",
+      "whatTheyWant": [
+        "List articles: exactly 10 items, presented in descending order from #10 to #1",
+        "Genuine, factual content - statistics and claims referenced",
+        "Informative, engaging lists relevant to the site's topics"
+      ],
+      "whatTheyDontWant": [
+        "Spinned (article-spinner) content - strongly discouraged and ignored",
+        "Casinos/gambling, adult content, drugs/alcohol/tobacco, hacking, weapons, violence, content attacking individuals or groups, copyright material",
+        "Previously published articles"
+      ],
+      "requirements": [
+        "Minimum 1,500 words, list of 10 in descending order",
+        "Include your bio, headshot and any links you want in the post",
+        "Good English, free of grammatical and formatting errors",
+        "Payment $5 per article via PayPal - include payment details with your submission",
+        "On publication Wonderslist becomes the owner of the article (no further copyright)"
+      ],
+      "howToSubmit": [
+        "Email the article to admin@wonderslist.com with payment details",
+        "For guest blogging, mention 'Guest Blogging' in the subject line",
+        "Expect a reply within about 48 hours"
+      ],
+      "rights": "On publication, Wonderslist becomes the owner of the article; no further copyright is acceptable.",
       "applyUrl": "https://www.wonderslist.com/write-us/",
-      "applyEmail": "",
-      "applyMethod": "Email (address on their write-for-us page)",
-      "lastVerified": "2026-09-04",
+      "applyEmail": "admin@wonderslist.com",
+      "applyMethod": "Email (admin@wonderslist.com)",
+      "lastVerified": "2026-09-23",
       "publishedAt": "2026-09-04",
       "id": "wonderslist",
       "slug": "wonderslist",
@@ -5371,13 +5427,13 @@
       },
       "wordCount": {
         "min": 1500,
-        "max": 1500,
-        "display": "1,500+ words; 10 items"
+        "max": null,
+        "display": "Minimum 1,500 words"
       },
       "response": {
-        "label": "~48h for queries; a few days for acceptance",
-        "band": "days",
-        "official": false
+        "label": "Notification within ~48 hours (per guidelines)",
+        "band": "fast",
+        "official": true
       },
       "submissionStatus": "open",
       "editorExperience": {
@@ -5406,20 +5462,40 @@
         "money",
         "personal-finance"
       ],
-      "sources": [],
+      "sources": [
+        {
+          "name": "IncomeDiary - Write for IncomeDiary (official; page content dated 2024)",
+          "url": "https://www.incomediary.com/write-for-incomediary"
+        }
+      ],
       "deadline": null,
       "aiPolicy": "not-stated",
       "experience": "not-stated",
       "keywords": [],
-      "whatTheyWant": [],
-      "whatTheyDontWant": [],
-      "requirements": [],
-      "howToSubmit": [],
-      "rights": "",
+      "whatTheyWant": [
+        "Expert articles on websites, SEO, traffic, content creation, entrepreneurship and making money online",
+        "Interviews with experts; buying/selling websites; affiliate marketing; success-mindset pieces",
+        "Professional writers who state their fee on submission (budget quoted at $150-$300 for SEO articles; pay up to $200 for worthy articles)"
+      ],
+      "whatTheyDontWant": [
+        "Republishing anywhere else, including your own blog (copyright transfers to IncomeDiary)",
+        "Spun or non-original content"
+      ],
+      "requirements": [
+        "Articles must exceed 1,500 words (2,000+ for the site's listed assignment requests)",
+        "Confirm you have read the site's three flagship content/SEO articles in your request",
+        "Include examples of previous writing (portfolio) and your fee",
+        "Application form asks for target word length, title, description and completion date"
+      ],
+      "howToSubmit": [
+        "Submit your article idea via the form on the Write for IncomeDiary page (or contact page with a quote)",
+        "If accepted, full instructions follow by email"
+      ],
+      "rights": "Submitting a post grants IncomeDiary.com copyright ownership; the content may not be published elsewhere.",
       "applyUrl": "https://incomediary.com",
       "applyEmail": "",
       "applyMethod": "See official site",
-      "lastVerified": "2026-09-04",
+      "lastVerified": "2026-09-23",
       "publishedAt": "2026-09-04",
       "id": "income-diary",
       "slug": "income-diary",
@@ -5438,12 +5514,14 @@
         "timing": "Not publicly stated"
       },
       "wordCount": {
-        "display": "Varies (typically 800–2,000)"
+        "min": 1500,
+        "max": null,
+        "display": "Minimum 1,500 words; listed assignments 2,000+"
       },
       "response": {
-        "label": "Not publicly stated",
+        "label": "Page is live but its example assignment list is dated 2024 - current demand unconfirmed",
         "band": "unknown",
-        "official": false
+        "official": true
       },
       "submissionStatus": "unknown"
     },
@@ -5464,7 +5542,7 @@
       ],
       "sources": [
         {
-          "name": "Communiqué — How to pitch a story (official)",
+          "name": "Communique - How to pitch a Communique story (official)",
           "url": "https://www.readcommunique.com/p/pitch-communique"
         }
       ],
@@ -5472,15 +5550,31 @@
       "aiPolicy": "not-stated",
       "experience": "not-stated",
       "keywords": [],
-      "whatTheyWant": [],
-      "whatTheyDontWant": [],
-      "requirements": [],
-      "howToSubmit": [],
+      "whatTheyWant": [
+        "Insightful, rigorously reported stories on Africa's media and creative industries - music, film & TV, creator economy, cultural heritage, gaming",
+        "Fresh angles, underreported trends, bold investigations",
+        "African and diasporic voices centred: creators, entrepreneurs, industry insiders",
+        "Hard data: statistics, financial records or original surveys backing the claims",
+        "A timely hook - event, policy shift or cultural moment"
+      ],
+      "whatTheyDontWant": [
+        "Surface-level trend pieces without original analysis or data"
+      ],
+      "requirements": [
+        "1,000-1,500 words, beyond-surface analysis with data",
+        "You must be subscribed to Communique before submitting",
+        "Pay: 150,000 naira per story, or $100 for writers outside Nigeria",
+        "Audience of 40,000+ readers; editorial support provided"
+      ],
+      "howToSubmit": [
+        "Subscribe to Communique (free/paid tiers on Substack)",
+        "Fill in the submissions Google Form linked from the pitch page"
+      ],
       "rights": "",
       "applyUrl": "https://www.readcommunique.com/p/pitch-communique",
       "applyEmail": "",
-      "applyMethod": "Subscribed, then the pitch form",
-      "lastVerified": "2026-09-04",
+      "applyMethod": "Submittable-style form (Google Form; subscription required)",
+      "lastVerified": "2026-09-23",
       "publishedAt": "2026-09-04",
       "id": "communique",
       "slug": "communique",
@@ -5501,7 +5595,7 @@
       "wordCount": {
         "min": 1000,
         "max": 1500,
-        "display": "1,000–1,500 words"
+        "display": "1,000-1,500 words"
       },
       "response": {
         "label": "Not publicly stated",
@@ -5527,15 +5621,23 @@
       ],
       "sources": [
         {
-          "name": "STATEMENT Africa — write for us",
+          "name": "STATEMENT Africa - official site (no pitch page linked at 23 Sep 2026 check)",
           "url": "https://statementafrica.com"
+        },
+        {
+          "name": "Creative Writing News - STATEMENT Africa pitch guidelines (pay up to $1/word; Nov 2023)",
+          "url": "https://www.creativewritingnews.com/statement-africa-is-accepting-pitches-how-to-submit-pay-1-word/"
         }
       ],
       "deadline": null,
       "aiPolicy": "not-stated",
       "experience": "not-stated",
       "keywords": [],
-      "whatTheyWant": [],
+      "whatTheyWant": [
+        "Stories about Africa's creative industries - entertainment (TV/film), music, art, fashion (per 2023-24 guidelines; unconfirmed currently)",
+        "Creative challenges, trends, interviews/profiles and industry influences",
+        "Features with a strong data component (e.g. a box-office dataset); research support offered"
+      ],
       "whatTheyDontWant": [],
       "requirements": [],
       "howToSubmit": [],
@@ -5543,7 +5645,7 @@
       "applyUrl": "mailto:chisom@statementafrica.com",
       "applyEmail": "chisom@statementafrica.com",
       "applyMethod": "Email pitch to the managing editor",
-      "lastVerified": "2026-09-04",
+      "lastVerified": "2026-09-23",
       "publishedAt": "2026-09-04",
       "id": "statement",
       "slug": "statement-africa",
@@ -5567,11 +5669,11 @@
         "display": "~1,000–2,000 (negotiated)"
       },
       "response": {
-        "label": "Not publicly stated",
+        "label": "No active pitch page linked from the current site (last checks 2023-2024 via secondary sources); status unconfirmed",
         "band": "unknown",
         "official": false
       },
-      "submissionStatus": "open"
+      "submissionStatus": "unknown"
     },
     {
       "status": "published",
@@ -5592,23 +5694,43 @@
       ],
       "sources": [
         {
-          "name": "The Offing — submit",
+          "name": "The Offing - 2026 open calls (fee-free year; dept/length rates)",
           "url": "https://theoffingmag.com/submit/"
+        },
+        {
+          "name": "Brittle Paper - The Offing open and free to submit (Apr 2026)",
+          "url": "https://brittlepaper.com/2026/04/call-for-submissions-literary-magazine-the-offing-is-open-and-free-to-submit/"
         }
       ],
       "deadline": null,
       "aiPolicy": "not-stated",
       "experience": "not-stated",
       "keywords": [],
-      "whatTheyWant": [],
-      "whatTheyDontWant": [],
-      "requirements": [],
-      "howToSubmit": [],
-      "rights": "",
+      "whatTheyWant": [
+        "Work at the edges of genre and form across departments (fiction, nonfiction, poetry; art windows vary)",
+        "2026 open calls include Back of the Envelope, Insight, and Translation: Poetry (translations due June 1, 2026 - up to 6 poems, with permission from rights holders)",
+        "Original, unpublished-in-English work"
+      ],
+      "whatTheyDontWant": [
+        "Previously published work",
+        "Email submissions - Submittable only",
+        "More than one submission per department at a time"
+      ],
+      "requirements": [
+        "Free to submit in 2026 (no submission fees, donor-supported); tip-jar option exists",
+        "Pay: $25-$100 depending on department and length",
+        "Simultaneous submissions allowed",
+        "Response can take up to six months"
+      ],
+      "howToSubmit": [
+        "Submit via The Offing's Submittable (check which departments are open before sending)",
+        "Translated poetry: include both original language and English, bios for author and translator, rights permission and context notes"
+      ],
+      "rights": "Original work, unpublished in English; translated work requires secured permission from the original author or rights holder.",
       "applyUrl": "https://theoffingmag.com/submit/",
       "applyEmail": "",
       "applyMethod": "Submittable (no email submissions)",
-      "lastVerified": "2026-09-04",
+      "lastVerified": "2026-09-23",
       "publishedAt": "2026-09-04",
       "id": "the-offing",
       "slug": "the-offing",
@@ -5632,9 +5754,9 @@
         "display": "Essays to 5,000 words"
       },
       "response": {
-        "label": "Up to six months",
-        "band": "months",
-        "official": false
+        "label": "Up to six months (per guidelines)",
+        "band": "slow",
+        "official": true
       },
       "submissionStatus": "open"
     },
@@ -5657,23 +5779,41 @@
       ],
       "sources": [
         {
-          "name": "Griffith Review — submissions",
+          "name": "Griffith Review - submissions (official)",
           "url": "https://www.griffithreview.com"
+        },
+        {
+          "name": "Duotrope - Griffith Review listing (poetry window to 20 Sep 2026)",
+          "url": "https://duotrope.com/magazine/griffith-review-1391"
         }
       ],
       "deadline": null,
       "aiPolicy": "not-stated",
       "experience": "not-stated",
       "keywords": [],
-      "whatTheyWant": [],
-      "whatTheyDontWant": [],
-      "requirements": [],
-      "howToSubmit": [],
+      "whatTheyWant": [
+        "Literary essays, reported features, narrative nonfiction and short fiction - 2,000-5,000 words, AUD $0.75 per word",
+        "Poetry: open window (per trackers, through 20 September 2026), up to 4 pieces",
+        "Emerging Voices programme for early-career writers (recent edition: 3,500-5,000 words; Australian and New Zealand citizens/permanent residents only)"
+      ],
+      "whatTheyDontWant": [
+        "Multiple simultaneous submissions (trackers list the market as no-simultaneous)",
+        "Excerpts of longer works"
+      ],
+      "requirements": [
+        "AUD $0.75 per word for accepted essays and fiction",
+        "Submissions run to themed editions - check the current call before pitching",
+        "Fiction and nonfiction windows have recently opened and closed between editions; poetry may stay open when prose is closed"
+      ],
+      "howToSubmit": [
+        "Submit via Submittable during an open window (the general journal is not open to pitches year-round)",
+        "Watch the Emerging Voices call-out for the annual early-career window"
+      ],
       "rights": "",
       "applyUrl": "https://www.griffithreview.com",
       "applyEmail": "",
       "applyMethod": "Submittable (submissions, not pitches for the general journal)",
-      "lastVerified": "2026-09-04",
+      "lastVerified": "2026-09-23",
       "publishedAt": "2026-09-04",
       "id": "griffith-review",
       "slug": "griffith-review",
@@ -5692,12 +5832,12 @@
         "timing": "21 days after final invoice (reported)"
       },
       "wordCount": {
-        "min": 1000,
-        "max": 4000,
-        "display": "~1,000–4,000 words"
+        "min": 2000,
+        "max": 5000,
+        "display": "~2,000-5,000 words (essays, fiction, features)"
       },
       "response": {
-        "label": "Not publicly stated",
+        "label": "Not publicly stated; windows open and close by edition",
         "band": "unknown",
         "official": false
       },
@@ -5722,23 +5862,35 @@
       ],
       "sources": [
         {
-          "name": "Earth Island Journal — call for pitches (official)",
-          "url": "https://www.earthisland.org/journal/index.php/page/call-for-pitches"
+          "name": "Earth Island Journal - writer guidelines (official contact submissions@earthisland.org)",
+          "url": "https://www.earthisland.org"
         }
       ],
       "deadline": null,
       "aiPolicy": "not-stated",
       "experience": "not-stated",
       "keywords": [],
-      "whatTheyWant": [],
+      "whatTheyWant": [
+        "Investigative journalism and essays connecting the environment to other contemporary issues",
+        "Environmental justice, climate, wildlife and land conservation - especially intersections with social and human rights",
+        "On-the-ground reports from outside the US actively welcomed (quarterly print journal)",
+        "Personal essays, reflections and think pieces of various lengths for themed editions"
+      ],
       "whatTheyDontWant": [],
-      "requirements": [],
-      "howToSubmit": [],
+      "requirements": [
+        "Pay: $500 flat for shorter pieces under 1,000 words; $750-$1,500 for longer reports/essays (1,500-3,000 words); $500 for interviews; $400 for book reviews",
+        "Print features historically 20-50 cents per word depending on the call",
+        "Pitch with clips; accepted features are fact-checked"
+      ],
+      "howToSubmit": [
+        "Email pitches to submissions@earthisland.org",
+        "Reference the current edition theme if pitching into a call"
+      ],
       "rights": "",
       "applyUrl": "mailto:submissions@earthisland.org",
       "applyEmail": "submissions@earthisland.org",
-      "applyMethod": "Email pitch",
-      "lastVerified": "2026-09-04",
+      "applyMethod": "Email (submissions@earthisland.org)",
+      "lastVerified": "2026-09-23",
       "publishedAt": "2026-09-04",
       "id": "earth-island",
       "slug": "earth-island-journal",
@@ -5757,9 +5909,9 @@
         "timing": "Not publicly stated"
       },
       "wordCount": {
-        "min": 800,
+        "min": 1200,
         "max": 3000,
-        "display": "Short pieces <1,000 words; reports 1,500–3,000 words"
+        "display": "Dispatches 1,200-1,500; features 2,500-3,000 (print ~2,800 common)"
       },
       "response": {
         "label": "Not publicly stated",
@@ -5791,15 +5943,29 @@
       "aiPolicy": "not-stated",
       "experience": "not-stated",
       "keywords": [],
-      "whatTheyWant": [],
-      "whatTheyDontWant": [],
-      "requirements": [],
-      "howToSubmit": [],
-      "rights": "",
-      "applyUrl": "https://doeklitmag.com",
+      "whatTheyWant": [
+        "Original, exciting short fiction, nonfiction, poetry and visual art from Namibia and the African diaspora",
+        "Strictly pan-African perspectives - work not directed at the white gaze",
+        "Themed calls: Issue 18 window runs June 1 - September 30, 2026 (two issues per year)"
+      ],
+      "whatTheyDontWant": [
+        "More than one piece per window (poets may submit up to five poems in one document)"
+      ],
+      "requirements": [
+        "Fiction and poetry eligibility: Namibian citizens (at home or in the diaspora) and foreign nationals permanently residing in Namibia",
+        "Nonfiction and visual art eligibility: African writers and artists of African descent, continent-wide or diaspora",
+        "Fiction minimum 1,500 words; fiction and nonfiction maximum 4,500 words",
+        "No submission fee; submissions via the online form"
+      ],
+      "howToSubmit": [
+        "Send one piece per window via the Doek! submission form during an open window",
+        "Poets: up to five poems in a single document"
+      ],
+      "rights": "Copyright remains with contributors, who license the work exclusively to Doek! for three months from publication.",
+      "applyUrl": "https://doek.africa/doek-literary-magazine/",
       "applyEmail": "",
       "applyMethod": "See official site",
-      "lastVerified": "2026-09-04",
+      "lastVerified": "2026-09-23",
       "publishedAt": "2026-09-04",
       "id": "doek",
       "slug": "doek-literary-magazine",
@@ -5807,21 +5973,22 @@
       "title": "Pan-African poetry, fiction, nonfiction",
       "seoTitle": "Doek! Literary Magazine — Pan-African open submissions",
       "excerpt": "Doek! is a free, independent Pan-African online literary magazine from Windhoek, Namibia. It seeks poetry, fiction and nonfiction. Payment is not publicly stated for this issue.",
-      "officialUrl": "https://doeklitmag.com",
+      "officialUrl": "https://doek.africa",
       "writingTypeLabel": "Pan-African literary work",
       "pay": {
-        "currency": "",
         "amountMin": null,
         "amountMax": null,
-        "display": "Not publicly stated",
-        "conditions": "Not publicly stated for this edition — confirm on the official page.",
-        "timing": "Not publicly stated"
+        "currency": null,
+        "display": "Unpaid (token payments when funding allows)",
+        "conditions": "No remuneration as of January 2025; Namibian contributors may receive token payments or book vouchers when funding becomes available."
       },
       "wordCount": {
-        "display": "Varies"
+        "min": 1500,
+        "max": 4500,
+        "display": "Fiction 1,500-4,500; nonfiction 1,500-4,500; poetry no minimum (up to 5 poems per document)"
       },
       "response": {
-        "label": "Not publicly stated",
+        "label": "Decisions after each window closes (issues publish June/July and November/December)",
         "band": "unknown",
         "official": false
       },
@@ -5845,20 +6012,43 @@
         "poetry",
         "essay"
       ],
-      "sources": [],
+      "sources": [
+        {
+          "name": "Torch Literary Arts - Torch Magazine rolling call (official)",
+          "url": "https://torchliteraryarts.org/torchmagazine"
+        },
+        {
+          "name": "NYCPlaywrights - Torch one-act plays call with manuscript format",
+          "url": "https://www.nycplaywrights.org/2026/07/torch-literary-arts-seeks-one-act-plays.html"
+        }
+      ],
       "deadline": null,
       "aiPolicy": "not-stated",
       "experience": "not-stated",
       "keywords": [],
-      "whatTheyWant": [],
-      "whatTheyDontWant": [],
-      "requirements": [],
-      "howToSubmit": [],
+      "whatTheyWant": [
+        "Original creative work by Black women writers: poetry, fiction, creative nonfiction, plays and screenplays",
+        "Work that challenges and disrupts preconceived notions of what contemporary writing by Black women should be",
+        "Selected pieces are published as the Friday Feature - rolling, year-round, no deadline"
+      ],
+      "whatTheyDontWant": [
+        "Submissions without a cover letter (may not be read)"
+      ],
+      "requirements": [
+        "$150 flat for every accepted Friday Feature",
+        "One-page cover letter with title(s) and a brief bio (does not count toward page count)",
+        "Word/PDF, typed, double-spaced (poetry may be single-spaced), numbered pages, 1-1.5 inch margins",
+        "Drama/screenwriting: one act or short scene collection, max 15 pages; self-contained excerpts welcome"
+      ],
+      "howToSubmit": [
+        "Submit via Submittable at torchliteraryarts.org/torchmagazine",
+        "Indicate if a performance video or audio reading is available if selected (for scripts)"
+      ],
       "rights": "",
-      "applyUrl": "https://www.torchlitararyarts.com",
+      "applyUrl": "https://torchliteraryarts.org/torchmagazine",
       "applyEmail": "",
-      "applyMethod": "See official site",
-      "lastVerified": "2026-09-04",
+      "applyMethod": "Submittable",
+      "lastVerified": "2026-09-23",
       "publishedAt": "2026-09-04",
       "id": "torch",
       "slug": "torch-literary-arts",
@@ -5866,7 +6056,7 @@
       "title": "Original work by Black women writers",
       "seoTitle": "Torch Literary Arts: $150 for Friday Features",
       "excerpt": "Torch Literary Arts seeks original creative work by Black women writers and pays $150 for accepted Friday Features.",
-      "officialUrl": "https://www.torchlitararyarts.com",
+      "officialUrl": "https://torchliteraryarts.org",
       "writingTypeLabel": "Black women writers",
       "pay": {
         "currency": "USD",
@@ -5880,9 +6070,9 @@
         "display": "Varies"
       },
       "response": {
-        "label": "Not publicly stated",
-        "band": "unknown",
-        "official": false
+        "label": "Rolling - features selected weekly (Fridays)",
+        "band": "fast",
+        "official": true
       },
       "submissionStatus": "open"
     },
@@ -5903,20 +6093,46 @@
         "creative-nonfiction",
         "essay"
       ],
-      "sources": [],
+      "sources": [
+        {
+          "name": "Chestnut Review - submissions (official; current $120/piece guidelines)",
+          "url": "https://www.chestnutreview.com/submissions/"
+        },
+        {
+          "name": "Every Writer's Resource - Chestnut Review listing ($120, 30-day response)",
+          "url": "https://www.everywritersresource.com/literarymagazines/chestnut-review/"
+        }
+      ],
       "deadline": null,
-      "aiPolicy": "not-stated",
+      "aiPolicy": "no-ai",
       "experience": "not-stated",
       "keywords": [],
-      "whatTheyWant": [],
-      "whatTheyDontWant": [],
-      "requirements": [],
-      "howToSubmit": [],
-      "rights": "",
+      "whatTheyWant": [
+        "Poetry (up to six poems; three for the free tier), flash fiction and creative nonfiction under 1,000 words, prose 1,000-5,000 words, visual art and photography",
+        "Work showing persistence and creative tenacity - 'for stubborn artists'",
+        "Primarily English work, including work engaging with other languages and cultures"
+      ],
+      "whatTheyDontWant": [
+        "Previously published work (online or print)",
+        "AI-generated content",
+        "Translations",
+        "Excerpts of longer works (prose)"
+      ],
+      "requirements": [
+        "$120 per accepted piece, every writer and artist paid",
+        "Flash submissions free; minimal fees for longer prose categories; optional paid staff-reader feedback",
+        "Simultaneous submissions considered",
+        "Contributors receive a copy of the annual print anthology; quarterly online, annually in print"
+      ],
+      "howToSubmit": [
+        "Submit via the Submittable page for your genre (see chestnutreview.com/submissions)",
+        "Poems single-spaced, each starting on a new page; one flash piece at a time"
+      ],
+      "rights": "Unpublished work only; contributors receive the annual anthology copy.",
       "applyUrl": "https://www.chestnutreview.com/submissions/",
       "applyEmail": "",
       "applyMethod": "Submittable",
-      "lastVerified": "2026-09-04",
+      "lastVerified": "2026-09-23",
       "publishedAt": "2026-09-04",
       "id": "chestnut",
       "slug": "chestnut-review",
@@ -5938,9 +6154,9 @@
         "display": "Varies"
       },
       "response": {
-        "label": "Not publicly stated",
-        "band": "unknown",
-        "official": false
+        "label": "About 30 days",
+        "band": "fast",
+        "official": true
       },
       "submissionStatus": "open"
     },
