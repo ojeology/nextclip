@@ -4071,6 +4071,9 @@ def fitness_pages():
     import fitness_more8_data
     FIT_ARTICLES.extend((s, ti, dek, b) for (s, _k, ti, dek, b) in fitness_more8_data.FIT_MORE_8)
     ART_SOURCES.update((s, FIT_SOURCES) for (s, _k, ti, dek, b) in fitness_more8_data.FIT_MORE_8)
+    import fitness_more9_data
+    FIT_ARTICLES.extend((s, ti, dek, b) for (s, _k, ti, dek, b) in fitness_more9_data.FIT_MORE_9)
+    ART_SOURCES.update((s, FIT_SOURCES) for (s, _k, ti, dek, b) in fitness_more9_data.FIT_MORE_9)
     ART_SOURCES["cardio-machine-worth-buying"] = FIT_SOURCES + [
         ("Concept2 \u2014 RowErg product page (US$990, PM5 monitor included, 14in/20in seat heights, 38in inseam limit, two-piece storage, 30-day money-back guarantee, 2-year and 5-year warranty; read 16 September 2026)", "https://www.concept2.com/ergs/rowerg"),
         ("pacompendium.com \u2014 2024 Adult Compendium of Physical Activities tracking guide (MET codes: stationary rowing 5.0 / 7.3 / 7.5 / 11.0 / 14.0 by watt tier; treadmill walking 4.8 at 3.5-3.9 mph and 5.8 at 4.0-4.4 mph; curved-treadmill running 12.0 at 7.0-7.9 mph; interactive virtual cycling and cycle HIIT 8.8)", "https://pacompendium.com/wp-content/uploads/2024/03/4_2024_adult-compendium-tracking-guide-1-2024.pdf"),
@@ -4337,6 +4340,17 @@ def fitness_pages():
     related_map["protein-when-appetite-is-gone"] = [("how-much-protein-do-you-need", "How much protein you need"),("muscle-on-glp1-weight-loss-drugs", "Muscle on GLP-1 drugs"),("creatine-explained", "Creatine, explained")]
     related_map["strength-training-while-losing-weight"] = [("how-many-reps-for-muscle", "How many reps for muscle"),("strength-training-for-beginners", "Strength training for beginners"),("rest-days-and-recovery", "Rest days and recovery")]
     related_map["keeping-weight-off-after-glp1"] = [("muscle-on-glp1-weight-loss-drugs", "Muscle on GLP-1 drugs"),("30-day-walking-plan", "The 30-day walking plan"),("how-long-to-see-gym-results", "How long to see results")]
+    related_map["glp1-workout-plan-for-beginners"] = [("muscle-on-glp1-weight-loss-drugs", "Muscle on GLP-1 drugs"),("strength-training-for-beginners", "Strength training for beginners"),("protein-when-appetite-is-gone", "Protein when appetite is gone")]
+    related_map["strength-training-over-50"] = [("strength-training-for-beginners", "Strength training for beginners"),("rest-days-and-recovery", "Rest days and recovery"),("muscle-on-glp1-weight-loss-drugs", "Muscle on GLP-1 drugs")]
+    related_map["loose-skin-and-muscle-after-weight-loss"] = [("muscle-on-glp1-weight-loss-drugs", "Muscle on GLP-1 drugs"),("keeping-weight-off-after-glp1", "Keeping it off after"),("how-long-to-see-gym-results", "How long to see results")]
+    related_map["sore-two-days-after-workout"] = [("doms-relief-what-works", "DOMS relief, what works"),("rest-days-and-recovery", "Rest days and recovery"),("not-sore-anymore-did-it-stop-working", "Not sore anymore")]
+    related_map["not-sore-anymore-did-it-stop-working"] = [("how-progressive-overload-works", "How progressive overload works"),("how-long-to-see-gym-results", "How long to see results"),("how-many-reps-for-muscle", "How many reps for muscle")]
+    related_map["shaking-during-plank-or-lunges"] = [("30-day-plank-challenge", "The 30-day plank challenge"),("how-many-reps-for-muscle", "How many reps for muscle"),("protein-when-appetite-is-gone", "Protein when appetite is gone")]
+    related_map["heart-pounding-during-workout"] = [("cardio-machine-worth-buying", "Cardio machines, compared"),("how-to-start-working-out", "Starting from zero"),("caffeine-side-effects", "Caffeine side effects")]
+    related_map["gaining-weight-first-week-of-exercise"] = [("strength-training-while-losing-weight", "Strength training in a deficit"),("how-long-to-see-gym-results", "How long to see results"),("30-day-walking-plan", "The 30-day walking plan")]
+    related_map["workout-makes-me-sleepy-not-energised"] = [("deload-weeks-explained", "The deload week"),("benefits-of-sleeping-well", "Benefits of sleeping well"),("rest-days-and-recovery", "Rest days and recovery")]
+    related_map["cracking-joints-during-exercise"] = [("squat-form-beginners", "The beginner\'s squat"),("shaking-during-plank-or-lunges", "Shaking during a plank"),("sore-two-days-after-workout", "Sore two days after")]
+    related_map["hungry-all-day-after-workout"] = [("how-much-protein-do-you-need", "How much protein you need"),("protein-when-appetite-is-gone", "Protein when appetite is gone"),("30-day-walking-plan", "The 30-day walking plan")]
     related_map["kettlebell-for-beginners"] = [("squat-form-beginners", "The beginner's squat"),
                                                ("grip-strength-why-it-matters", "Why grip strength matters"),
                                                ("dumbbell-vs-barbell", "Dumbbells vs barbells")]
@@ -4717,6 +4731,10 @@ HOME_SLUG_SECT.update({s: "understand" for s in (
     "why-is-my-electric-bill-so-high", "appliances-that-use-the-most-electricity",
     "is-it-cheaper-to-heat-one-room", "second-fridge-freezer-cost",
     "off-peak-electricity-tariffs-explained")})
+HOME_SLUG_SECT.update({s: "understand" for s in (
+    "cost-to-run-a-dehumidifier", "cost-to-run-a-tumble-dryer", "cost-to-run-air-conditioning",
+    "cost-to-charge-an-ev-at-home", "cost-to-run-a-hot-tub", "cost-to-run-a-dishwasher",
+    "cost-to-run-a-fan", "cost-to-run-a-gaming-pc", "heat-pump-vs-gas-furnace")})
 HOME_SLUG_SECT.update({s: "appliances" for s in (
     "how-to-deep-clean-an-oven", "how-to-defrost-a-freezer-properly",
     "washing-machine-mould-door-seal", "how-to-descale-a-kettle",
@@ -5013,6 +5031,9 @@ def home_pages():
     # Sept 2026 expansion batch (home_roadmap20, tier-1 volume 5): energy-bills cluster
     import home_roadmap20_data
     HOME_ARTICLES.extend((s2, ti, dek, b) for (s2, _k, ti, dek, b) in home_roadmap20_data.HOME_ROADMAP_20 if s2 not in _have)
+    # Sept 2026 expansion batch (home_roadmap21, tier-1 volume 6): cost-to-run series + heat pump
+    import home_roadmap21_data
+    HOME_ARTICLES.extend((s2, ti, dek, b) for (s2, _k, ti, dek, b) in home_roadmap21_data.HOME_ROADMAP_21 if s2 not in _have)
     import home_insurance_data
     HOME_ARTICLES.extend((s2, ti, dek, b) for (s2, _ti2, ti, dek, b) in
                          [(g[0], None, g[2], g[3], g[4]) for g in home_insurance_data.HOME_INSURANCE] if s2 not in _have)
@@ -5722,6 +5743,15 @@ def home_pages():
         "is-it-cheaper-to-heat-one-room": [("thermostat-settings-that-save-money", "Thermostat settings"),("ceiling-fan-direction-summer-winter", "Fan direction by season"),("attic-insulation-basics", "Attic insulation basics")],
         "second-fridge-freezer-cost": [("appliances-that-use-the-most-electricity", "Biggest power users"),("repair-or-replace-appliances", "Repair or replace?"),("fridge-temperature-setting", "Fridge temperature setting")],
         "off-peak-electricity-tariffs-explained": [("why-is-my-electric-bill-so-high", "Why the bill is high"),("smart-thermostat-payback", "Smart thermostat payback"),("standby-power-real-numbers-your-meter", "Standby power")],
+        "cost-to-run-a-dehumidifier": [("condensation-ventilation-that-works", "Ventilation that works"),("cost-to-run-a-tumble-dryer", "Cost to run a dryer"),("mould-after-a-flooded-room", "Mould after flooding")],
+        "cost-to-run-a-tumble-dryer": [("cost-to-run-a-dehumidifier", "Cost to run a dehumidifier"),("indoor-drying-rainy-season", "Indoor drying"),("appliances-that-use-the-most-electricity", "Biggest power users")],
+        "cost-to-run-air-conditioning": [("ceiling-fan-direction-summer-winter", "Fan direction by season"),("window-film-for-heat", "Window film for heat"),("cost-to-run-a-fan", "Cost to run a fan")],
+        "cost-to-charge-an-ev-at-home": [("off-peak-electricity-tariffs-explained", "Off-peak tariffs"),("why-is-my-electric-bill-so-high", "Why the bill is high"),("appliances-that-use-the-most-electricity", "Biggest power users")],
+        "cost-to-run-a-hot-tub": [("standby-power-real-numbers-your-meter", "Standby power, measured"),("off-peak-electricity-tariffs-explained", "Off-peak tariffs"),("why-is-my-electric-bill-so-high", "Why the bill is high")],
+        "cost-to-run-a-dishwasher": [("dishwasher-loading-mistakes", "Dishwasher loading"),("dishwasher-not-draining-first-checks", "Dishwasher not draining"),("off-peak-electricity-tariffs-explained", "Off-peak tariffs")],
+        "cost-to-run-a-fan": [("ceiling-fan-vs-standing-fan", "Ceiling fan vs standing fan"),("ceiling-fan-direction-summer-winter", "Fan direction by season"),("cost-to-run-air-conditioning", "Cost to run air conditioning")],
+        "cost-to-run-a-gaming-pc": [("standby-power-real-numbers-your-meter", "Standby power, measured"),("second-fridge-freezer-cost", "The second fridge cost"),("cost-to-run-a-fan", "Cost to run a fan")],
+        "heat-pump-vs-gas-furnace": [("attic-insulation-basics", "Attic insulation basics"),("thermostat-settings-that-save-money", "Thermostat settings"),("is-it-cheaper-to-heat-one-room", "Heat one room?"),],
     }
     for slug, ti, dek, b in HOME_ARTICLES:
         key = HOME_SLUG_SECT[slug]
