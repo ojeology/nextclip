@@ -159,3 +159,10 @@ Goal: turn 847 stubs into articles. Median 153 → 600+ words; thin 85% → <5%.
 - Home batch 21 (9): cost-to-run series {dehumidifier, dryer, AC, EV, hot tub, dishwasher, fan, gaming PC} + heat-pump-vs-gas-furnace. All link the calculator (absolute URLs); related_map cross-links the cluster.
 - Fitness batch 9 (11): GLP-1 plan, over-50 strength, loose skin + is-it-normal x8 {2-day sore, not-sore-anymore, plank shake, heart pounding, first-week scale, sleepy workouts, joint cracking, day-after hunger}. Red-flag lists lead to professionals; no medical advice.
 - Strategy note: these implement the 5-bet brainstorm (cost-to-run series, GLP-1 expansion, is-it-normal pipeline, heat-pump CPC page). UK winter boiler/radiator cluster NOT yet written - next content batch. GSC export still pending from owner.
+
+## OVERNIGHT: TOOL 16 + UK WINTER CLUSTER (2026-09-23 night)
+
+- Password strength checker LIVE (/tech/tool/password-strength-checker/, assets/tool-password.js) - toolbox roadmap COMPLETE (16 tools).
+- Home batch 22 LIVE (6): boiler-pressure, radiators-cold, pipe-lagging, EPC, storage-heaters, condensate-pipe - shipped early, indexed before the wave.
+- LESSONS: (1) multi-line patch anchors must match actual file wrapping; (2) phantom-slug pattern - drafts default to "worth-it" endings; real pages end -payback / -explained. Href gate caught it twice; keep trusting the gate.
+- Remaining: film batch 7, GSC checkpoint end-Oct, Bing parked (owner), Cloudflare parked.
