@@ -4694,6 +4694,12 @@ HOME_SLUG_SECT.update({s: "understand" for s in (
 HOME_SLUG_SECT.update({s: "maintain" for s in (
     "washing-machine-hoses-replace", "attic-insulation-basics", "frozen-pipe-prevention")})
 HOME_SLUG_SECT.update({s: "pests" for s in ("mice-in-the-house-signs",)})
+HOME_SLUG_SECT.update({s: "outside" for s in (
+    "lawn-mower-care-spring-service", "pressure-washer-safe-use")})
+HOME_SLUG_SECT.update({s: "pests" for s in ("wasp-nest-first-response",)})
+HOME_SLUG_SECT.update({s: "appliances" for s in ("dishwasher-not-draining-first-checks",)})
+HOME_SLUG_SECT.update({s: "understand" for s in (
+    "caulk-vs-grout-explained", "baby-toddler-home-proofing")})
 HOME_SLUG_SECT.update({s: "appliances" for s in (
     "how-to-deep-clean-an-oven", "how-to-defrost-a-freezer-properly",
     "washing-machine-mould-door-seal", "how-to-descale-a-kettle",
@@ -4983,6 +4989,10 @@ def home_pages():
     # direction, washer hoses, attic insulation, frozen pipes, mice, window film.
     import home_roadmap18_data
     HOME_ARTICLES.extend((s2, ti, dek, b) for (s2, _k, ti, dek, b) in home_roadmap18_data.HOME_ROADMAP_18 if s2 not in _have)
+    # Sept 2026 expansion batch (home_roadmap19, tier-1 volume 4): caulk/grout,
+    # lawn mower, wasp nest, pressure washer, dishwasher drain, baby proofing
+    import home_roadmap19_data
+    HOME_ARTICLES.extend((s2, ti, dek, b) for (s2, _k, ti, dek, b) in home_roadmap19_data.HOME_ROADMAP_19 if s2 not in _have)
     import home_insurance_data
     HOME_ARTICLES.extend((s2, ti, dek, b) for (s2, _ti2, ti, dek, b) in
                          [(g[0], None, g[2], g[3], g[4]) for g in home_insurance_data.HOME_INSURANCE] if s2 not in _have)
@@ -5681,6 +5691,12 @@ def home_pages():
         "frozen-pipe-prevention": [("how-to-shut-off-water-main", "The water main shutoff"),("autumn-home-preparation", "The autumn checklist"),("mould-after-a-flooded-room", "Mould after flooding")],
         "mice-in-the-house-signs": [("ants-in-the-kitchen", "Ants in the kitchen"),("ignore-single-pest-sighting", "One sighting, calmly"),("diy-vs-professional-pests", "DIY or professional?")],
         "window-film-for-heat": [("solar-panels-worth-it-2026", "Solar panels in 2026"),("thermostat-settings-that-save-money", "Thermostat settings that save"),("ceiling-fan-direction-summer-winter", "Fan direction by season")],
+        "caulk-vs-grout-explained": [("bathroom-remodel-mistakes", "Bathroom remodel mistakes"),("condensation-ventilation-that-works", "Ventilation that works"),("mould-after-a-flooded-room", "Mould after flooding")],
+        "lawn-mower-care-spring-service": [("spring-home-reset", "The spring home reset"),("gutter-cleaning-damage", "Gutter cleaning without damage"),("autumn-home-preparation", "The autumn checklist")],
+        "wasp-nest-first-response": [("ignore-single-pest-sighting", "One sighting, calmly"),("diy-vs-professional-pests", "DIY or professional?"),("after-pest-treatment", "After pest treatment")],
+        "pressure-washer-safe-use": [("fence-shed-insurance", "Fences, sheds & insurance"),("gutter-cleaning-damage", "Gutter cleaning without damage"),("painting-over-damp", "Painting over damp")],
+        "dishwasher-not-draining-first-checks": [("dishwasher-loading-mistakes", "Dishwasher loading mistakes"),("vinegar-in-the-dishwasher", "Vinegar in the dishwasher"),("repair-or-replace-appliances", "Repair or replace?")],
+        "baby-toddler-home-proofing": [("outlet-overloading-danger", "Outlet overloading"),("co-smoke-alarm-expiry", "Smoke & CO alarm expiry"),("basic-toolkit-checklist", "The basic toolkit")],
     }
     for slug, ti, dek, b in HOME_ARTICLES:
         key = HOME_SLUG_SECT[slug]
