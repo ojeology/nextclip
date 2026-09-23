@@ -137,3 +137,9 @@ Goal: turn 847 stubs into articles. Median 153 → 600+ words; thin 85% → <5%.
 ## HOME BATCH 19 (2026-09-23)
 
 - SHIPPED: 6 new tier-1 guides (caulk-vs-grout, lawn-mower, wasp-nest, pressure-washer, dishwasher-drain, baby-proofing). LESSON: 5 originally-planned topics ALREADY EXISTED (dryer-vent-cleaning-fire-risk, water-heater-flush-how-to, smart-thermostat-payback, garage-door-spring-safety, fridge-not-cooling) - ALWAYS curl live /home/<slug>/ before writing a batch. New home-batch wiring = 3 registries: HOME_SLUG_SECT + related_map (KeyError if missing!) + import/extend.
+
+## CONTENT BATCHES: FIT-8 GLP-1 CLUSTER + HOME-20 ENERGY CLUSTER (2026-09-23)
+
+- Fitness batch 8 (4): muscle-on-glp1-weight-loss-drugs, protein-when-appetite-is-gone, strength-training-while-losing-weight, keeping-weight-off-after-glp1. Sources: trial lean-mass ~25-40% hedged, protein >1.2-1.6 g/kg/day distributed, RT 2-3x/wk, S-LiTE, 2026 Fitbit study. Prescriber-leads framing.
+- Home batch 20 (5): why-is-my-electric-bill-so-high, appliances-that-use-the-most-electricity, is-it-cheaper-to-heat-one-room, second-fridge-freezer-cost, off-peak-electricity-tariffs-explained. Cross-desk absolute tool links verified.
+- GATE LESSONS: (1) href gate catches wrong-slug body links - it stopped smart-thermostat-worth-it + refrigerator-not-cooling-first-checks (real pages: smart-thermostat-payback, fridge-not-cooling); fitness articles get shared FIT_SOURCES external footer (WHO/CDC) - whitelist externals; (2) wiring fitness = extend + ART_SOURCES + related_map per slug (KeyError otherwise); home = extend + HOME_SLUG_SECT + related_map.
