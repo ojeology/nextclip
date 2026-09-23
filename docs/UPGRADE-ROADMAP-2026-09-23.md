@@ -110,3 +110,11 @@ Goal: turn 847 stubs into articles. Median 153 → 600+ words; thin 85% → <5%.
 - Don't mass-ping IndexNow or resubmit sitemaps repeatedly.
 - Don't enable auto-ads or ad units before the CMP is confirmed and placements
   are reviewed against `docs/ADS.md`.
+
+## SEO AUDIT COMPLETE (2026-09-23)
+
+- Brief executed end-to-end; final report delivered to owner (bryme-seo-audit-report.md in agent workspace).
+- SHIPPED commit 5f938302: real per-URL sitemap lastmods (writers post-build step scripts/fix-writers-lastmod.py wired into npm run build AFTER build-public-dir; desk sitemaps per-URL in build-ecosystem; index = per-child max). URL sets byte-identical; no IndexNow (lastmod-only).
+- Verified live post-Cloudflare-cache: writers 509 URLs / 5 distinct real dates. Phase 1 PASS + Phase 2 PASS; no keyword/template fixes needed (titles already intent-specific).
+- Open owner decisions: GSC sitemap resubmit (optional), Consent Mode v2 via Google Privacy & Messaging (not installed per constraint), img width attrs + dates on 109 legacy writers templates (future template tweaks).
+- NOTE: git origin for the site repo is github.com/ojeology/nextclip.git (historical name) — it IS the live thebryme.com repo; Render auto-deploys pushes to main.
