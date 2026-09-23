@@ -1695,6 +1695,10 @@ def entertainment_pages():
                              "url": "https://www.youtube.com/watch?v=" + m["yt"],
                              "embedUrl": "https://www.youtube-nocookie.com/embed/" + m["yt"],
                              "thumbnailUrl": "https://i.ytimg.com/vi/" + m["yt"] + "/hqdefault.jpg",
+                             # GSC "video missing upload date" fix (Sept 2026):
+                             # page publish date - the verifiable date the
+                             # trailer feature went live on this page.
+                             "uploadDate": TODAY,
                              "width": 1280, "height": 720}
         return '<script type="application/ld+json">' + json.dumps(ld, ensure_ascii=False) + '</script>'
 
@@ -3774,6 +3778,22 @@ FIT_SOURCES = [
     ("WHO \u2014 Physical activity (fact sheet)", "https://www.who.int/news-room/fact-sheets/detail/physical-activity"),
     ("CDC \u2014 Physical Activity Basics", "https://www.cdc.gov/physical-activity-basics/"),
 ]
+# Batch-2 expansion: sources anchored to pages fetched while fact-checking.
+SUPP_SOURCES = [
+    ("Harvard T.H. Chan School of Public Health \u2014 Workout Supplements", "https://nutritionsource.hsph.harvard.edu/workout-supplements/"),
+]
+PROT_SOURCES = [
+    ("Examine \u2014 Protein intake (Morton meta-analysis breakpoint)", "https://examine.com/guides/protein-intake/"),
+    ("Food & Medicine Center \u2014 Protein requirements for hypertrophy", "https://foodmedcenter.org/the-science-of-protein-and-muscle-growth-what-the-evidence-really-shows/"),
+]
+ACV_SOURCES = [
+    ("Northwestern Medicine \u2014 Does apple cider vinegar really improve your health?", "https://www.nm.org/healthbeat/healthy-tips/nutrition/quick-dose-what-are-the-benefits-of-apple-cider-vinegar"),
+    ("Patient.info \u2014 Does apple cider vinegar help with weight loss?", "https://patient.info/features/healthy-living/apple-cider-vinegar-does-it-help-with-weight-loss"),
+]
+CRE_SOURCES = [
+    ("Ubie (medically reviewed) \u2014 Is creatine safe? Side effects & dosing", "https://ubiehealth.com/doctors-note/creatine-side-effects-safety-reality-steps-37-tips"),
+    ("Harvard T.H. Chan School of Public Health \u2014 Workout Supplements", "https://nutritionsource.hsph.harvard.edu/workout-supplements/"),
+]
 
 FIT_ARTICLES = [
     ("how-to-start-working-out",
@@ -3991,6 +4011,16 @@ def fitness_pages():
     import fitness_more2_data
     FIT_ARTICLES.extend((s, ti, dek, b) for (s, _k, ti, dek, b) in fitness_more2_data.FIT_MORE_2)
     ART_SOURCES.update((s, FIT_SOURCES) for (s, _k, ti, dek, b) in fitness_more2_data.FIT_MORE_2)
+    # Sept 2026 expansion batch 2: evidence-anchored guides.
+    import fitness_more3_data
+    FIT_ARTICLES.extend((s, ti, dek, b) for (s, _k, ti, dek, b) in fitness_more3_data.FIT_MORE_3)
+    ART_SOURCES.update((s, FIT_SOURCES) for (s, _k, ti, dek, b) in fitness_more3_data.FIT_MORE_3)
+    ART_SOURCES.update({"apple-cider-vinegar-effects": ACV_SOURCES,
+                        "downside-of-stimulants": SUPP_SOURCES,
+                        "creatine-explained": CRE_SOURCES,
+                        "protein-powder-worth-it": SUPP_SOURCES,
+                        "bodybuilding-must-know": PROT_SOURCES,
+                        "bulking-and-cutting-explained": PROT_SOURCES})
     ART_SOURCES["cardio-machine-worth-buying"] = FIT_SOURCES + [
         ("Concept2 \u2014 RowErg product page (US$990, PM5 monitor included, 14in/20in seat heights, 38in inseam limit, two-piece storage, 30-day money-back guarantee, 2-year and 5-year warranty; read 16 September 2026)", "https://www.concept2.com/ergs/rowerg"),
         ("pacompendium.com \u2014 2024 Adult Compendium of Physical Activities tracking guide (MET codes: stationary rowing 5.0 / 7.3 / 7.5 / 11.0 / 14.0 by watt tier; treadmill walking 4.8 at 3.5-3.9 mph and 5.8 at 4.0-4.4 mph; curved-treadmill running 12.0 at 7.0-7.9 mph; interactive virtual cycling and cycle HIIT 8.8)", "https://pacompendium.com/wp-content/uploads/2024/03/4_2024_adult-compendium-tracking-guide-1-2024.pdf"),
@@ -4142,6 +4172,36 @@ def fitness_pages():
     related_map["water-during-workout"] = [("how-much-water-to-drink-a-day", "How much water a day"),
                                            ("benefits-of-morning-water", "The morning glass"),
                                            ("30-day-core-programme", "The 30-day core programme")]
+    related_map["apple-cider-vinegar-effects"] = [("protein-foods-nigeria", "Protein on a Nigerian plate"),
+                                                  ("what-fruit-does-to-your-body", "What fruit does"),
+                                                  ("water-during-workout", "Water during workouts")]
+    related_map["bodybuilding-must-know"] = [("how-progressive-overload-works", "How progressive overload works"),
+                                             ("strength-training-for-beginners", "Strength training for beginners"),
+                                             ("rest-days-and-recovery", "Rest days and recovery")]
+    related_map["downside-of-stimulants"] = [("sleep-and-exercise-performance", "Sleep and exercise performance"),
+                                             ("morning-or-evening-workout", "Morning or evening workout"),
+                                             ("water-during-workout", "Water during workouts")]
+    related_map["creatine-explained"] = [("how-much-protein-do-you-need", "Protein, honestly"),
+                                         ("protein-foods-nigeria", "Protein on a Nigerian plate"),
+                                         ("muscle-soreness-vs-injury", "Sore or injured?")]
+    related_map["protein-powder-worth-it"] = [("protein-foods-nigeria", "Protein on a Nigerian plate"),
+                                              ("how-much-protein-do-you-need", "Protein, honestly"),
+                                              ("bodybuilding-must-know", "What every bodybuilder must know")]
+    related_map["how-long-to-see-gym-results"] = [("how-to-start-working-out", "Starting from zero"),
+                                                  ("fitness-trackers-worth-it", "Are fitness trackers worth it"),
+                                                  ("how-progressive-overload-works", "How progressive overload works")]
+    related_map["how-much-muscle-can-you-gain"] = [("bodybuilding-must-know", "What every bodybuilder must know"),
+                                                   ("how-much-protein-do-you-need", "Protein, honestly"),
+                                                   ("rest-days-and-recovery", "Rest days and recovery")]
+    related_map["bulking-and-cutting-explained"] = [("protein-powder-worth-it", "Is protein powder worth it"),
+                                                    ("30-day-weight-loss-programme", "The 30-day weight-loss programme"),
+                                                    ("how-much-protein-do-you-need", "Protein, honestly")]
+    related_map["workout-split-beginners"] = [("strength-training-for-beginners", "Strength training for beginners"),
+                                              ("rest-days-and-recovery", "Rest days and recovery"),
+                                              ("30-day-core-programme", "The 30-day core programme")]
+    related_map["testosterone-booster-truth"] = [("bodybuilding-must-know", "What every bodybuilder must know"),
+                                                 ("sleep-and-exercise-performance", "Sleep and exercise performance"),
+                                                 ("strength-training-for-beginners", "Strength training for beginners")]
     arts = [art(s, ti, dek, b, ART_SOURCES[s], related_map[s])
             for (s, ti, dek, b) in FIT_ARTICLES]
 
