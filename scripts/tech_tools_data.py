@@ -269,4 +269,29 @@ None,
 <div class="tt-btnrow"><button type="button" id="tt-calc" class="btn">Calculate running cost</button></div>
 <pre id="tt-out" class="tt-out" aria-live="polite"></pre>
 <p id="tt-msg" class="tt-msg" aria-live="polite"></p>"""),
+
+("ai-subscription-cost-comparer", "AI subscription comparer", "AI subscription cost comparer: what your stack really adds up to",
+ "Tick the AI subscriptions you pay for, correct any price, and see the monthly, yearly and per-day cost - biggest line first. Runs entirely in your browser.",
+ None,
+ """<h2>What this does</h2>
+<p>AI subscriptions stack quietly: a chat assistant here, an image tool there, a search upgrade nobody remembers approving. Tick what you pay for, correct any price that has changed (prices move often - the defaults were right in September 2026), and the tool totals the stack per month, per year and per day, biggest line first.</p>
+<h2>The defaults and the honest caveats</h2>
+<p>The pre-filled prices are the standard paid tiers as of September 2026: ChatGPT Plus 20, Claude Pro 20, Google AI Pro 19.99, Perplexity Pro 20, Microsoft Copilot Pro 20, SuperGrok 30, Midjourney from 10. Plans, names and prices change frequently, annual billing usually knocks roughly two months off the effective yearly price (enter the annual price divided by twelve), and free tiers are everywhere - the tool only totals what you tick. The interesting question it answers is not "can I afford it" but "do I still use the second and third one": the usual saving is cancelling the tool that overlaps the biggest one, for a month, as an experiment.</p>
+<h2>Notes</h2>
+<p>Everything runs on this page - your list of subscriptions never leaves the browser, and there is nothing to sign into. If you are weighing a first paid AI subscription rather than a stack, the honest starting point is one general assistant at 20 a month for three months before adding anything narrower.</p>""",
+ """<div class="tt-grid">
+<div class="tt-field"><label class="tt-label"><input type="checkbox" id="tt-chatgpt"> ChatGPT Plus</label><input id="tt-chatgpt-p" type="number" inputmode="decimal" min="0" max="250" step="0.01" value="20"></div>
+<div class="tt-field"><label class="tt-label"><input type="checkbox" id="tt-claude"> Claude Pro</label><input id="tt-claude-p" type="number" inputmode="decimal" min="0" max="250" step="0.01" value="20"></div>
+<div class="tt-field"><label class="tt-label"><input type="checkbox" id="tt-gemini"> Google AI Pro</label><input id="tt-gemini-p" type="number" inputmode="decimal" min="0" max="250" step="0.01" value="19.99"></div>
+<div class="tt-field"><label class="tt-label"><input type="checkbox" id="tt-perplexity"> Perplexity Pro</label><input id="tt-perplexity-p" type="number" inputmode="decimal" min="0" max="250" step="0.01" value="20"></div>
+<div class="tt-field"><label class="tt-label"><input type="checkbox" id="tt-copilot"> Microsoft Copilot Pro</label><input id="tt-copilot-p" type="number" inputmode="decimal" min="0" max="250" step="0.01" value="20"></div>
+<div class="tt-field"><label class="tt-label"><input type="checkbox" id="tt-grok"> SuperGrok</label><input id="tt-grok-p" type="number" inputmode="decimal" min="0" max="250" step="0.01" value="30"></div>
+<div class="tt-field"><label class="tt-label"><input type="checkbox" id="tt-midjourney"> Midjourney</label><input id="tt-midjourney-p" type="number" inputmode="decimal" min="0" max="250" step="0.01" value="10"></div>
+<div class="tt-field"><label class="tt-label"><input type="checkbox" id="tt-custom"> Another subscription</label>
+<input id="tt-custom-p" type="number" inputmode="decimal" min="0" max="250" step="0.01" placeholder="price per month"></div>
+<div class="tt-field"><label class="tt-label" for="tt-months">Months you will keep them this year</label><input id="tt-months" type="number" inputmode="numeric" min="1" max="12" step="1" value="12"></div>
+</div>
+<div class="tt-btnrow"><button type="button" id="tt-calc" class="btn">Add up the stack</button></div>
+<pre id="tt-out" class="tt-out" aria-live="polite"></pre>
+<p id="tt-msg" class="tt-msg" aria-live="polite"></p>"""),
 ]
