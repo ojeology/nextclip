@@ -585,7 +585,7 @@ def _nav_items(pub):
     if pub == "tech":
         guides = [("HEAD", "The guide shelf"), ("/tech/", "All of BRYME Tech")] + [
             ("/tech/" + c + "/", TECH_CAT[c][0]) for c in TECH_CAT]
-        tools = [("HEAD", "The toolbox"), ("/tech/tool/", "All 15 tools"),
+        tools = [("HEAD", "The toolbox"), ("/tech/tool/", "All 16 tools"),
                  ("/tech/tool/json-formatter/", "JSON formatter & validator"),
                  ("/tech/tool/base64-encoder/", "Base64 encoder / decoder"),
                  ("/tech/tool/url-encoder/", "URL encoder / decoder"),
@@ -600,7 +600,8 @@ def _nav_items(pub):
                  ("/tech/tool/electricity-cost-calculator/", "Electricity cost calculator"),
                  ("/tech/tool/ai-subscription-cost-comparer/", "AI subscription comparer"),
                  ("/tech/tool/video-file-size-estimator/", "Video file size estimator"),
-                 ("/tech/tool/upload-time-calculator/", "Upload time calculator")]
+                 ("/tech/tool/upload-time-calculator/", "Upload time calculator"),
+                 ("/tech/tool/password-strength-checker/", "Password strength checker")]
         desk = [("HEAD", "Standards and contact"), ("/tech/methodology/", "Editorial methodology"),
                 ("/tech/corrections/", "Corrections policy"), ("/tech/about/", "About"),
                 ("/tech/contact/", "Contact"), ("/tech/privacy/", "Privacy")]
@@ -3574,7 +3575,8 @@ _TOOL_JS = {"json-formatter": "json", "base64-encoder": "base64", "url-encoder":
             "electricity-cost-calculator": "electricity",
             "ai-subscription-cost-comparer": "aisubs",
             "video-file-size-estimator": "filesize",
-            "upload-time-calculator": "uploadtime"}
+            "upload-time-calculator": "uploadtime",
+            "password-strength-checker": "password"}
 
 def tech_tool_pages():
     """BRYME Tools (master build M3): client-side tools at /tech/tool/<slug>/, CSP-safe."""
@@ -4735,6 +4737,12 @@ HOME_SLUG_SECT.update({s: "understand" for s in (
     "cost-to-run-a-dehumidifier", "cost-to-run-a-tumble-dryer", "cost-to-run-air-conditioning",
     "cost-to-charge-an-ev-at-home", "cost-to-run-a-hot-tub", "cost-to-run-a-dishwasher",
     "cost-to-run-a-fan", "cost-to-run-a-gaming-pc", "heat-pump-vs-gas-furnace")})
+HOME_SLUG_SECT.update({s: "maintain" for s in (
+    "boiler-pressure-low-or-high", "pipe-lagging-winter-guide")})
+HOME_SLUG_SECT.update({s: "fix" for s in (
+    "radiators-cold-top-or-bottom", "frozen-condensate-pipe-fix")})
+HOME_SLUG_SECT.update({s: "understand" for s in (
+    "epc-rating-explained", "storage-heaters-explained")})
 HOME_SLUG_SECT.update({s: "appliances" for s in (
     "how-to-deep-clean-an-oven", "how-to-defrost-a-freezer-properly",
     "washing-machine-mould-door-seal", "how-to-descale-a-kettle",
@@ -5034,6 +5042,9 @@ def home_pages():
     # Sept 2026 expansion batch (home_roadmap21, tier-1 volume 6): cost-to-run series + heat pump
     import home_roadmap21_data
     HOME_ARTICLES.extend((s2, ti, dek, b) for (s2, _k, ti, dek, b) in home_roadmap21_data.HOME_ROADMAP_21 if s2 not in _have)
+    # Sept 2026 expansion batch (home_roadmap22, UK winter cluster, shipped early)
+    import home_roadmap22_data
+    HOME_ARTICLES.extend((s2, ti, dek, b) for (s2, _k, ti, dek, b) in home_roadmap22_data.HOME_ROADMAP_22 if s2 not in _have)
     import home_insurance_data
     HOME_ARTICLES.extend((s2, ti, dek, b) for (s2, _ti2, ti, dek, b) in
                          [(g[0], None, g[2], g[3], g[4]) for g in home_insurance_data.HOME_INSURANCE] if s2 not in _have)
@@ -5752,6 +5763,12 @@ def home_pages():
         "cost-to-run-a-fan": [("ceiling-fan-vs-standing-fan", "Ceiling fan vs standing fan"),("ceiling-fan-direction-summer-winter", "Fan direction by season"),("cost-to-run-air-conditioning", "Cost to run air conditioning")],
         "cost-to-run-a-gaming-pc": [("standby-power-real-numbers-your-meter", "Standby power, measured"),("second-fridge-freezer-cost", "The second fridge cost"),("cost-to-run-a-fan", "Cost to run a fan")],
         "heat-pump-vs-gas-furnace": [("attic-insulation-basics", "Attic insulation basics"),("thermostat-settings-that-save-money", "Thermostat settings"),("is-it-cheaper-to-heat-one-room", "Heat one room?"),],
+        "boiler-pressure-low-or-high": [("uk-boiler-servicing", "UK boiler servicing"),("winter-home-preparation", "The winter checklist"),("radiators-cold-top-or-bottom", "Cold radiators")],
+        "radiators-cold-top-or-bottom": [("how-to-bleed-a-radiator", "How to bleed a radiator"),("boiler-pressure-low-or-high", "Boiler pressure"),("smart-thermostat-payback", "Smart thermostat payback")],
+        "pipe-lagging-winter-guide": [("frozen-pipe-prevention", "Frozen pipe prevention"),("autumn-home-preparation", "The autumn checklist"),("frozen-condensate-pipe-fix", "Frozen condensate pipe")],
+        "epc-rating-explained": [("attic-insulation-basics", "Attic insulation basics"),("draught-proofing-mistakes", "Draught-proofing mistakes"),("single-glazing-payback", "Single glazing payback")],
+        "storage-heaters-explained": [("off-peak-electricity-tariffs-explained", "Off-peak tariffs"),("why-is-my-electric-bill-so-high", "Why the bill is high"),("heat-pump-vs-gas-furnace", "Heat pump vs furnace")],
+        "frozen-condensate-pipe-fix": [("pipe-lagging-winter-guide", "Pipe lagging"),("boiler-pressure-low-or-high", "Boiler pressure"),("frozen-pipe-prevention", "Frozen pipe prevention")],
     }
     for slug, ti, dek, b in HOME_ARTICLES:
         key = HOME_SLUG_SECT[slug]

@@ -354,4 +354,21 @@ None,
 <div class="tt-btnrow"><button type="button" id="tt-calc" class="btn">Calculate the upload time</button></div>
 <pre id="tt-out" class="tt-out" aria-live="polite"></pre>
 <p id="tt-msg" class="tt-msg" aria-live="polite"></p>"""),
+
+("password-strength-checker", "Password strength checker", "Password strength checker",
+ "Check how a password holds up against real cracking methods - length, dictionary, patterns, reuse risks - with honest verdicts and fixes. Runs entirely in your browser.",
+ None,
+ """<h2>What this does</h2>
+<p>Type a password and the checker scores it the way a cracking rig would: length first, then character variety, then the dictionary - because attacks start with lists of leaked passwords, not with every possible combination. The verdict comes with the reasoning: which weaknesses were found, how long the password would typically survive against a stolen-database attack versus a website's throttled login form, and what specifically would strengthen it.</p>
+<h2>What it knows about</h2>
+<p>The usual weaknesses: world-class common passwords (it is not a coincidence detector - swapped letters like @ for a are checked too), embedded dictionary words, keyboard runs (qwerty and friends), sequences, repeated characters, all-digit passwords, and years bolted onto names. What it can never know: whether you reuse this password elsewhere - which is the single risk it cannot measure and the one that causes the most real damage.</p>
+<h2>Notes</h2>
+<p>The maths is honest entropy estimation with human-shaped penalties - conservative, not optimistic. Nothing you type is stored, logged or transmitted; the page holds no network connection and the checker cannot phone home even if it wanted to. The output teaches the pattern worth learning: length beats complexity, uniqueness beats everything, and a password manager turns the whole problem off.</p>""",
+ """<div class="tt-grid">
+<div class="tt-field"><label class="tt-label" for="tt-pw">Password to check</label><input id="tt-pw" type="password" autocomplete="off" spellcheck="false" placeholder="type or paste"></div>
+<div class="tt-field"><label class="tt-label"><input type="checkbox" id="tt-show"> show what I typed</label></div>
+</div>
+<div class="tt-btnrow"><button type="button" id="tt-calc" class="btn">Check the strength</button></div>
+<pre id="tt-out" class="tt-out" aria-live="polite"></pre>
+<p id="tt-msg" class="tt-msg" aria-live="polite"></p>"""),
 ]
