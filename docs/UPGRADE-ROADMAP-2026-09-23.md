@@ -125,3 +125,11 @@ Goal: turn 847 stubs into articles. Median 153 → 600+ words; thin 85% → <5%.
 - SHIPPED fae6b032: robots.txt blocks GPTBot, Google-Extended, CCBot, Applebot-Extended, Meta-ExternalAgent, Amazonbot, Bytespider (owner chose to keep PerplexityBot/ClaudeBot). Verified live. URL sets identical.
 - PENDING owner actions: Cloudflare toggles (Tiered Cache; optional AI-scrapers block) + possible Cloudflare Pages migration (unlimited bandwidth, USD 0) — explained, awaiting decision. DO NOT add payment card to Render.
 - LESSON: workspace snapshots do not keep .git — re-clone at turn start for any git work; never git stash in disposable clones (stash ate generated files once).
+
+## TOOL 12: ELECTRICITY COST CALCULATOR (2026-09-23)
+
+- SHIPPED 47b85fab34, LIVE & verified (page 200, JS 200, hub "12 free browser tools", tech sitemap 293, IndexNow 200).
+- TIER-1 FOCUS per owner: defaults US ~18.4c/kWh (EIA Sep 2026), UK 26.11p (Ofgem cap Jul-Sep 2026), CA C\$0.14, AU A\$0.33; custom rate field wins; appliance presets (heater 1500W, AC, dryer 3000W, EV L2 7200W, etc.); costs per hour/day/month/year. No Nigeria preset (owner targets Tier 1).
+- Pattern notes: (1) tech desk ships as COMMITTED ARTIFACTS - run scripts/build-ecosystem.py manually, then npm run build, then commit; (2) title_budget.py caps SERP titles at 60 chars - keep <title> keyword-first <=46 chars incl " | BRYME Tools"; long title survives as H1; (3) tools.json is writers-only, tech tools do not touch it.
+- Typo debt CLEARED: kettlebell ballswing x2 + bow-arrow, deload "the lifer", desk-stretches "a upper back".
+- Next-tool candidates remain: video file-size estimator, upload-time calculator, AI subscription cost comparer, password strength checker (all Tier-1 angles first).
