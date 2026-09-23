@@ -2443,4 +2443,268 @@ ENRICH = {
              "route pairs well with it."),
         ],
     },
+
+    "akira": {
+        "verdict": "The 1988 animation that proved the medium could carry adult spectacle - Neo-Tokyo "
+            "biker gang warfare with body horror and a satellite weapon, hand-drawn frame by glorious "
+            "frame. Thirty-plus years on, it still out-animates most of what it inspired.",
+        "faqs": [
+            ("Is Akira based on a manga?",
+             "Yes - Katsuhiro Otomo's own landmark manga, which he wrote and drew; he also directed the film."),
+            ("Why is Akira so influential?",
+             "Its detailed animation and cyberpunk vision shaped decades of sci-fi in and far outside Japan - "
+             "the film is a standing reference point in global pop culture."),
+            ("Is it suitable for younger viewers?",
+             "No - it is violent and intense, and intended for adults and older teens."),
+        ],
+    },
+    "alien-romulus": {
+        "verdict": "The 2024 entry that understands the assignment: practical creatures, blue-collar "
+            "space horror, set-piece dread between the original two films. It borrows boldly from its "
+            "elders - sometimes too boldly - but the corridor terror is real again.",
+        "faqs": [
+            ("Where does Alien: Romulus fit in the timeline?",
+             "Between Alien (1979) and Aliens (1986) - it works as a standalone survival story too."),
+            ("Who directed it?",
+             "Fede Alvarez, the director of the 2013 Evil Dead remake, with a largely young ensemble cast."),
+            ("Do I need to have seen the originals?",
+             "It helps - the film is in conversation with them - but newcomers can follow the plot fine."),
+        ],
+    },
+    "amelie": {
+        "verdict": "Jean-Pierre Jeunet's 2001 confection - a shy Montmartre waitress secretly rearranging "
+            "the lives of her neighbours, rendered in colours you want to live inside. The rare feel-good "
+            "film that earns its sweetness with craft.",
+        "faqs": [
+            ("What language is Amelie in?",
+             "French - Audrey Tautou's breakout role launched on it, and the film became a worldwide phenomenon."),
+            ("Did it win Oscars?",
+             "It received multiple Academy Award nominations, including Best Foreign Language Film, and won "
+             "audiences everywhere - awards count aside, its influence on 'quirky cinema' is enormous."),
+            ("Is it a romance?",
+             "Partly - it is more a portrait of a neighbourhood, with a shy love story threaded through it."),
+        ],
+    },
+    "blade-runner": {
+        "verdict": "Ridley Scott's 1982 neo-noir - rain-soaked megacity, Vangelis on the synthesiser, and "
+            "the sci-fi question that outlives every effect shot: what makes a person? Deliberately slow, "
+            "endlessly imitated, never equalled.",
+        "faqs": [
+            ("Which cut of Blade Runner should I watch?",
+             "The Final Cut (2007) - Ridley Scott's preferred version; the film famously exists in several cuts."),
+            ("Is it based on a book?",
+             "Yes - Philip K. Dick's novel Do Androids Dream of Electric Sheep?"),
+            ("Is it slow?",
+             "By modern blockbuster standards, deliberately so - it is atmosphere-first noir; patience is the ticket price."),
+        ],
+    },
+    "eternal-sunshine": {
+        "verdict": "The best breakup film ever disguised as sci-fi - a couple erasing each other from "
+            "memory, and a film that keeps rearranging itself as the deletion catches up. Wildly inventive, "
+            "and quietly devastating about why people love badly.",
+        "faqs": [
+            ("Who made Eternal Sunshine of the Spotless Mind?",
+             "Director Michel Gondry with writer Charlie Kaufman - the screenplay won the Academy Award for "
+             "Best Original Screenplay."),
+            ("Is it a romance or sci-fi?",
+             "Both, inseparably - the memory-erasure premise is the mechanism, the relationship is the story."),
+            ("Do Jim Carrey and Kate Winslet play against type?",
+             "Yes - Carrey is restrained and melancholy, Winslet chaotic and volatile; both castings are the point."),
+        ],
+    },
+    "ex-machina": {
+        "verdict": "Alex Garland's 2014 directorial debut - a chamber piece about a programmer, his boss, "
+            "and the android who may be testing them both. Three actors, one location, and more ideas per "
+            "frame than most trilogies manage.",
+        "faqs": [
+            ("Is Ex Machina someone's first film?",
+             "Yes - it was novelist Alex Garland's directorial debut; he went on to Annihilation and more."),
+            ("Did it win awards?",
+             "It won the Academy Award for Best Visual Effects - remarkable for a film built on restrained, "
+             "intimate effects work."),
+            ("Is it scary?",
+             "It is unsettling rather than gory - the tension is psychological, and it builds like a trap."),
+        ],
+    },
+    "the-prestige": {
+        "verdict": "Christopher Nolan's 2006 duelling-magicians film - obsession as a magic trick told in "
+            "three acts, with Bale and Jackman escalating past sanity. The twist is famous; the craft is "
+            "what survives the rewatch.",
+        "faqs": [
+            ("Is The Prestige based on a book?",
+             "Yes - Christopher Priest's 1995 novel, adapted by Jonathan and Christopher Nolan."),
+            ("Who directed it?",
+             "Christopher Nolan, between Batman Begins and The Dark Knight, with his regular behind-camera crew."),
+            ("Should I avoid spoilers?",
+             "Absolutely - the film is engineered around its reveals; go in clean and let it lie to you."),
+        ],
+    },
+    "the-social-network": {
+        "verdict": "Fincher and Sorkin turn a founding dispute into the sharpest dialogue duel of the "
+            "decade - ambition, betrayal and a fortune accruing in the background of every deposition. "
+            "Not a documentary; a myth with excellent lawyers.",
+        "faqs": [
+            ("Is The Social Network a true story?",
+             "It is a dramatisation based on Ben Mezrich's book The Accidental Billionaires - several depicted "
+             "events are disputed by the people involved."),
+            ("Did it win Oscars?",
+             "Yes - including Best Adapted Screenplay for Aaron Sorkin and Best Original Score for Trent "
+             "Reznor and Atticus Ross."),
+            ("Who directed it?",
+             "David Fincher, at full formal precision; the film plays as a thriller with no thriller plot."),
+        ],
+    },
+    "totoro": {
+        "verdict": "Studio Ghibli's 1988 gentle giant - two sisters, a forest spirit, and the gentlest "
+            "ghost story ever animated. No villain, no danger worth the name; just childhood rendered with "
+            "a patience grown-up films rarely afford.",
+        "faqs": [
+            ("Who made My Neighbor Totoro?",
+             "Hayao Miyazaki and Studio Ghibli - the creature became the studio's official logo."),
+            ("Is it suitable for small children?",
+             "Yes - it is one of the gentlest films in animation; the sweet spot is roughly ages four and up."),
+            ("Do I need to watch other Ghibli films first?",
+             "No - it stands alone; it is also the classic first step into the studio's catalogue."),
+        ],
+    },
+    "forrest-gump": {
+        "verdict": "Zemeckis and Hanks ride one man's decency through thirty years of American history - "
+            "technically audacious, emotionally shameless, and still sweeping. The effects-driven historical "
+            "cameos were the era's magic trick; the sincerity is why it endures.",
+        "faqs": [
+            ("Did Forrest Gump win the Best Picture Oscar?",
+             "Yes - it won six Academy Awards including Best Picture, Best Director (Robert Zemeckis) and "
+             "Best Actor (Tom Hanks)."),
+            ("Is it based on a book?",
+             "Yes - Winston Groom's 1986 novel; the film softens the book's edges considerably."),
+            ("Why is it still so popular?",
+             "The fusion of personal story with national history - and a lead performance that never winks."),
+        ],
+    },
+    "fight-club": {
+        "verdict": "Fincher's 1999 adaptation that bombed, then conquered the DVD era to become a "
+            "generational argument. Shot like a cigarette burn on the print - and still the most "
+            "misquoted satire in cinema.",
+        "faqs": [
+            ("Is Fight Club based on a book?",
+             "Yes - Chuck Palahniuk's 1996 novel; the film's ending famously diverges from it."),
+            ("Why is it called a cult classic?",
+             "It underperformed in theatres, then found a massive second life on home video - and its "
+             "central twist became one of pop culture's most referenced."),
+            ("What's actually in it beyond the twist?",
+             "A satire of consumer masculinity that the decade took at face value - the joke, and the "
+             "reason it rewards rewatching."),
+        ],
+    },
+    "gladiator": {
+        "verdict": "Ridley Scott resurrects the Roman epic with mud, grit and Maximus - Crowe's vengeance "
+            "arc is as clean as blockbuster storytelling gets, and the Colosseum sequences still roar. "
+            "'Are you not entertained' became the genre's thesis statement.",
+        "faqs": [
+            ("Did Gladiator win Best Picture?",
+             "Yes - five Academy Awards including Best Picture and Best Actor for Russell Crowe."),
+            ("Is it historically accurate?",
+             "It compresses and invents freely around real figures (Marcus Aurelius, Commodus) - it is "
+             "historical spectacle, not history."),
+            ("Is there a sequel?",
+             "Yes - Gladiator II arrived in 2024, continuing the story decades later."),
+        ],
+    },
+    "se7en": {
+        "verdict": "Fincher's 1995 descent - two detectives, seven deadly sins, and a city where the rain "
+            "never stops. The bleakest procedural on this desk and one of the most controlled: every frame "
+            "is evidence of something.",
+        "faqs": [
+            ("What is Se7en about?",
+             "A serial killer structuring murders around the seven deadly sins, and the two detectives "
+             "hunting him - the investigation is the horror."),
+            ("Why is the ending so famous?",
+             "Because it completes the killer's design rather than defeating it - a twist that re-frames "
+             "the whole film without cheating."),
+            ("How dark is it?",
+             "Very - grim, violent and cynical; this is the film to watch when you want to be shaken, not comforted."),
+        ],
+    },
+    "andhadhun": {
+        "verdict": "Sriram Raghavan's 2018 black-comedy thriller - a 'blind' pianist, a murder he maybe "
+            "witnessed, and a plot that keeps selling you a new genre every fifteen minutes. Twisting "
+            "cinema at its most confident, and India's National Award-winning Best Hindi film.",
+        "faqs": [
+            ("What language is Andhadhun in?",
+             "Hindi - Ayushmann Khurrana stars as the pianist; the film also became a favourite of world "
+             "cinema audiences far beyond India."),
+            ("Did it win awards?",
+             "Yes - it won the National Film Award for Best Feature Film in Hindi, among others."),
+            ("Is it really that twisty?",
+             "Yes - and the pleasure is that every twist feels fair; it has inspired remakes in multiple languages."),
+        ],
+    },
+    "tumbbad": {
+        "verdict": "Folk horror about greed as inheritance - a cursed ancestral treasure guarded by a "
+            "hungry god, drenched in rain and dread. The most visually distinctive Hindi horror of its "
+            "decade, and a film whose audience keeps growing with every re-release.",
+        "faqs": [
+            ("What language is Tumbbad in?",
+             "Primarily Hindi, set in Maharashtra of the 1920s - Sohum Shah leads a small, committed cast."),
+            ("Who directed it?",
+             "Rahi Anil Barve, over a famously long production - the craft shows in every rain-soaked frame."),
+            ("Is it too scary for casual viewers?",
+             "It is atmospheric horror rather than jump-scare horror - dread and myth, with moments of real horror."),
+        ],
+    },
+    "a-tribe-called-judah": {
+        "verdict": "Funke Akindele's 2023 heist-with-heart - five brothers robbing their own mother's "
+            "debtor, and a Nollywood crowd-pleaser that became the country's highest-grossing film at "
+            "the time. Family comedy, real stakes, and a third act that lands hard.",
+        "faqs": [
+            ("Who made A Tribe Called Judah?",
+             "Funke Akindele, one of Nollywood's most commercially successful filmmaker-actors, leading "
+             "the ensemble."),
+            ("Was it a box-office record?",
+             "Yes - it became Nigeria's highest-grossing film on release, a record since surpassed by later "
+             "Nollywood hits."),
+            ("What language is it in?",
+             "English with Yoruba and Pidgin woven through - subtitled releases travel well."),
+        ],
+    },
+    "the-wedding-party": {
+        "verdict": "Kemi Adetiba's 2016 ensemble rom-com - one Lagos wedding, every relative a detonator, "
+            "and the film that reset Nollywood's box-office ceiling. Glossy, chaotic and proudly Eko; the "
+            "comedy of errors structure travels perfectly.",
+        "faqs": [
+            ("Who directed The Wedding Party?",
+             "Kemi Adetiba, who went on to direct the desk's other Nollywood recommendation, King of Boys."),
+            ("Was it a record-breaker?",
+             "Yes - it became the highest-grossing Nigerian film at the time of its release."),
+            ("Is there a sequel?",
+             "Yes - The Wedding Party 2 arrived the following year, moving the chaos abroad."),
+        ],
+    },
+    "citation": {
+        "verdict": "Kunle Afolayan's 2020 campus drama - a bright student pushing a sexual-harassment "
+            "complaint against a star lecturer, and the machinery that closes ranks. Sober, necessary "
+            "Nollywood with a breakout lead performance from Temi Otedola.",
+        "faqs": [
+            ("Who directed Citation?",
+             "Kunle Afolayan, one of Nollywood's most prominent directors; Temi Otedola leads the cast."),
+            ("What is it about?",
+             "A university student's fight to be heard after reporting a professor - inspired by real "
+             "conversations around harassment in Nigerian institutions."),
+            ("Where did it premiere?",
+             "It released as a Netflix original film in 2020, reaching a global audience."),
+        ],
+    },
+    "chief-daddy": {
+        "verdict": "Niyi Akinmolayan's 2018 farce - a wealthy patriarch dies, and an army of relatives "
+            "descends on the estate with receipts. Broad, fast and very funny, carried by one of "
+            "Nollywood's deepest ensemble casts.",
+        "faqs": [
+            ("Who directed Chief Daddy?",
+             "Niyi Akinmolayan, one of Nollywood's most technically accomplished directors."),
+            ("Is it connected to other films?",
+             "It spawned a sequel, Chief Daddy 2 - the first film stands alone and is the one to see."),
+            ("What's the tone?",
+             "Pure family farce - escalating squabbles, punchlines per minute, and a warm heart under the chaos."),
+        ],
+    },
 }
