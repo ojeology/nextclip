@@ -1,10 +1,10 @@
 ---
 title: What writing platforms actually pay — the numbers, not the pitches
-description: Ream pays creators $1.3M a year across 15,000 authors. That is about $87 each. Here is the real arithmetic behind seven platforms that pay writers.
+description: Ream pays creators $1.3M a year across 20,000 authors. That is about $65 each. Here is the real arithmetic behind seven platforms that pay writers. Here is the real arithmetic behind seven platforms that pay writers.
 dek: Every platform publishes a percentage. Almost none publishes an average. The gap between those two numbers is where writers lose years.
 audience: intl
 published: 2026-09-06
-updated: 2026-09-06
+updated: 2026-09-21
 keywords: [writing platforms, earnings, medium, substack, vocal, ream, polymemo, how much]
 related: [high-paying-writing-niches, how-to-price-your-freelance-writing, how-to-find-paying-publications]
 ---
@@ -17,15 +17,15 @@ I went looking for the arithmetic across seven platforms. Here is what is actual
 
 ## The one platform that publishes an average
 
-**Ream Stories** states on its own blog that it is trusted by 15,000+ authors, reaching 140,000+ readers, with **over $1.3 million earned by creators on Ream each year**.
+**Ream Stories** reports (September 2026) that it is trusted by 20,000+ authors, reaching 160,000+ readers, with **over $1.3 million earned by creators on Ream each year** — its most recently published aggregate.
 
 That is a good-faith disclosure, and it is more than any competitor offers. It also divides.
 
-> **$1.3 million ÷ 15,000 authors ≈ $87 per author per year.**
+> **$1.3 million ÷ 20,000 authors ≈ $65 per author per year.**
 
-About **$7.25 a month**, on average, across everyone on the platform.
+About **$5.40 a month**, on average, across everyone on the platform.
 
-Ream's own marketing describes income bands of $50–300/month for early-stage authors, $500–3,000 growing, and $3,000–10,000+ established. Those bands are probably accurate for the authors in them. But they describe a small top cohort. The average tells you what happens to everybody else, and the average is $87 a year.
+Ream's own marketing describes income bands of $50–300/month for early-stage authors, $500–3,000 growing, and $3,000–10,000+ established. Those bands are probably accurate for the authors in them. But they describe a small top cohort. The average tells you what happens to everybody else, and on the latest counts it is roughly $65 a year (it was $87 at the platform's smaller size — check the current figures; the shape never changes).
 
 This is not a criticism of Ream — it is the most transparent platform in this entire comparison, and publishing a figure that divides this way takes some nerve. It is a criticism of every other platform that publishes bands and never publishes a total.
 
@@ -98,7 +98,7 @@ Set the platforms against commissioned work, using published rate surveys.
 
 | Route | Documented figure |
 |---|---|
-| Ream Stories | **~$87 per author per year** (average) |
+| Ream Stories | **~$65 per author per year** (average, latest counts) |
 | Vocal (free tier) | $3.80 per 1,000 reads; ~9,200 reads to first payout |
 | Publish0x | $5–10/month, regular writers |
 | Medium | $50–200/month, consistent writers; $60/yr to participate |
@@ -118,7 +118,7 @@ Three structural reasons, and none of them is that platform writers are worse.
 
 **Platforms need you to bring the audience anyway.** Every honest account of Substack, Medium, Vocal and Stacker News says the same thing: the platform does not find readers for you. If you must bring the audience regardless, the question becomes what each route pays for the audience you brought — and commissions pay more per piece.
 
-**Distribution is brutally uneven everywhere.** On Substack the top 10% capture more than 60% of all reader payments. Ream's $87 average sits under bands reaching $10,000/month. Averages are low because a few people earn most of it.
+**Distribution is brutally uneven everywhere.** On Substack the top 10% capture more than 60% of all reader payments. Ream's ~$65 average sits under bands reaching $10,000/month. Averages are low because a few people earn most of it.
 
 ## What to do with this
 
@@ -126,10 +126,10 @@ Three structural reasons, and none of them is that platform writers are worse.
 
 **If you do use a platform, pick for the asset, not the rate.** Substack's real value is an exportable email list you keep if the platform dies — which, as the [collapse of onchain publishing](/essays/onchain-publishing-for-writers-is-over/) showed, is not hypothetical.
 
-**Divide before you commit.** Any platform quoting a percentage without a total is telling you half the story. Ask what the average author earns. If they will not say, assume it resembles $87 a year.
+**Divide before you commit.** Any platform quoting a percentage without a total is telling you half the story. Ask what the average author earns. If they will not say, assume it resembles $65 a year.
 
 **Specialise instead.** The single largest documented lever in writing income is not platform choice — it is subject. The [highest-paying niches](/learn/freelance-paid-writing/high-paying-writing-niches/) show four-figure differences per day rate that no platform percentage can match.
 
 ---
 
-*Figures read from each platform's own published documentation and, where marked, from independent analyses of creator earnings, all checked on 6 September 2026. Platform terms change frequently — verify before relying on any figure here.*
+*Figures read from each platform's own published documentation and, where marked, from independent analyses of creator earnings — first checked 6 September 2026, with Ream's counts re-checked against its September update. Platform terms change frequently — verify before relying on any figure here.*

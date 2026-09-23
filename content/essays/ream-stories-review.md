@@ -1,10 +1,10 @@
 ---
-title: Ream Stories review — the clearest fees in publishing, and a country list that misleads
-description: Ream publishes every fee it charges, which almost nobody does. It also lists payout countries under a product it retired in early 2025.
-dek: The most transparent platform in this series, with one page that will cost international authors months if they trust it.
+title: Ream Stories review — the clearest fees in publishing, and a country list that got fixed
+description: Ream publishes every fee it charges, which almost nobody does. Its misleading payout page — flagged in our first review — was fixed within two weeks. The numbers since.
+dek: The most transparent platform in this series took the criticism and fixed the page. The fees are still the category's best; the average is still the number to watch.
 audience: intl
 published: 2026-09-06
-updated: 2026-09-06
+updated: 2026-09-21
 keywords: [ream stories, review, serial fiction, subscription, authors, payout, fees]
 related: [how-to-price-your-freelance-writing, high-paying-writing-niches, how-to-find-paying-publications]
 ---
@@ -15,21 +15,21 @@ related: [how-to-price-your-freelance-writing, high-paying-writing-niches, how-t
 |---|---|
 | **Platform** | Ream Stories — reamstories.com |
 | **Best for** | Serial fiction authors with an existing reader base |
-| **How writers earn** | Reader subscriptions, tiers, early access, bonus content |
-| **Countries** | **46**, via Stripe. Check the list before you write anything |
+| **How writers earn** | Reader memberships, one-time Single Sales, early access, bonus content |
+| **Countries** | Active author accounts in ~115 countries per Ream; payouts via two tracks — Ream Managed (110 countries) and Direct/Stripe (40). Check the list before you write anything |
 | **Main cost** | 10% platform fee, plus itemised payment processing |
-| **Payment method** | Stripe ("Direct"). Ream Managed was retired in early 2025 |
+| **Payment method** | Stripe ("Direct") or Ream Managed, depending on country |
 | **Legitimacy status** | Strong. Named founder, detailed docs, publishes aggregate creator earnings |
 
 ---
 
 Most platforms describe their fees with a single friendly percentage and let you discover the rest on your first payout. Ream Stories does the opposite. Its help documentation itemises every deduction, including the ones charged by other companies, and explains why each exists.
 
-That is rare enough to lead with. It is also why the one genuinely misleading page on the site stands out so sharply.
+That is rare enough to lead with. And — unusually — this review carries an update: the one genuinely misleading page we flagged on 6 September was rewritten and corrected by Ream on 9 September. More on that below, because how a platform responds to being wrong is due-diligence gold.
 
 ## What Ream is
 
-Ream is a subscription platform built specifically for fiction authors — closer to Patreon than to a pay-per-chapter store. Readers subscribe to an author for early access, bonus content, side stories and community, rather than buying chapters individually.
+Ream is a membership platform built specifically for fiction authors — reader subscriptions are the heart of it, with one-time Single Sales now supported alongside, so authors are no longer limited to recurring tiers alone. Readers subscribe for early access, bonus content, side stories and community; they can also just buy the book.
 
 It launched broadly in **2023** and was co-founded by **Emilia Rose**, a bestselling romance author, which shows in the product: it is designed around how serial fiction actually gets written and read, not retrofitted from a general creator tool.
 
@@ -39,7 +39,7 @@ Authors can publish serial fiction, ebooks, audiobooks and comics.
 
 **It is built for one job.** General creator platforms handle serialised fiction badly — chapter ordering, release scheduling, a native reader. Ream does those properly.
 
-**The fee is flat and low.** 10% of revenue, stated identically across every help page, with a worked example: *"if a reader pays an author $10 on Ream, the platform will take a $1 fee."*
+**The fee is flat and low.** 10% of revenue, stated identically across every help page, with a worked example: *"if a reader pays an author $10 on Ream, the platform will take a $1 fee."* Ream has also announced a **"Road to 8%"** programme (September 2026): community-wide earnings milestones that, if reached, drop the platform fee from 10% to 8% permanently. That is a promise about the future, not a fact about today — the fee is still 10% — but it is an unusual public commitment, and this desk will check whether the milestones are ever hit.
 
 **No gatekeeping.** Open to all, no application, no follower minimum, **no exclusivity agreement.** You can publish the same work on Amazon, Royal Road or anywhere else.
 
@@ -63,51 +63,44 @@ Ream takes **10%** of everything you earn. Then payment processing applies, and 
 
 Ream's own summary: **Direct authors typically keep 80%+ of revenue, sometimes 85%+.** On the documented numbers, that holds up. A subscriber paying $10/month nets roughly $8.
 
-Payouts for Direct authors can be instant, daily, weekly or monthly, with **no minimum**. That is better than almost every competitor — Medium requires $10, Vocal $35, Polymemo the equivalent of $50.
+The table above is the **Direct** track, where payouts can be instant, daily, weekly or monthly with **no minimum** — better than almost every competitor: Medium requires $10, Vocal $35, Polymemo the equivalent of $50. Ream Managed, the second payout track described below, documents its own minimums and schedules separately; if you land on Managed, read its payout page specifically.
 
 ## What authors actually earn
 
-Ream publishes something almost no platform does: an aggregate. On its own blog it states it is trusted by **15,000+ authors**, reaching **140,000+ readers**, with **over $1.3 million earned by creators on Ream each year**.
+Ream publishes something almost no platform does: an aggregate. **Per Ream (September 2026)**, the platform now reports **20,000+ creators** and **160,000+ readers** — up from 15,000+ and 140,000+ when this review was first published. Its most recently published earnings aggregate is **over $1.3 million earned by creators per year**.
 
 Credit for publishing it. Now divide it.
 
-> **$1.3M ÷ 15,000 authors ≈ $87 per author per year.**
+> **$1.3M ÷ 20,000 authors ≈ $65 per author per year.**
 
-Roughly **$7.25 a month**, averaged across everyone.
+Roughly **$5.40 a month**, averaged across everyone — *if* the $1.3M aggregate is still current, and note Ream has not republished that earnings figure alongside the new creator count. At the old 15,000-author count the same sum gave ~$87. Either way the shape is the same, and it is the honest reading: **a small number of authors earn most of the money.**
 
-Ream's marketing also gives income bands: $50–300/month early-stage, $500–3,000 growing, $3,000–10,000+ established. Those are almost certainly real for the authors in them. But the average tells you what the distribution looks like underneath, and the honest reading is that **a small number of authors earn most of the $1.3 million.**
+Ream's marketing also gives income bands: $50–300/month early-stage, $500–3,000 growing, $3,000–10,000+ established. Those are almost certainly real for the authors in them. That is not unique to Ream — Substack's top 10% capture over 60% of all reader payments. It is simply the first time in this category anyone has published enough for you to do the sum.
 
-That is not unique to Ream — Substack's top 10% capture over 60% of all reader payments. It is simply the first time in this category anyone has published enough for you to do the sum.
-
-**What this means practically:** Ream works if you already have readers. Ream's own insider guidance says as much — it works best for authors who arrive with a base from Amazon KDP, Royal Road or Wattpad. It is a monetisation layer, not a discovery engine.
+**What this means practically:** Ream works if you already have readers. Ream's own guidance says as much — built-in discovery exists, but authors benefit most from bringing an audience from Amazon KDP, Royal Road or Wattpad. It is a monetisation layer first, a discovery engine second.
 
 ## Who can actually get paid — read this before you write
 
-This is the one place where Ream's documentation actively misleads, and it will cost people months.
+This section was the reason our first review carried a warning in its title. The history matters, so it stays.
 
-Ream's help page **"What Countries are Eligible For Ream Author Payouts?"**, last updated **9 August 2026**, lists **114 countries** under *Ream Managed Payout Countries*. Nigeria is on it. India, Kenya, Ghana, South Africa, the Philippines, Vietnam, Bangladesh, Egypt and Turkey are all on it.
+**What we found on 6 September:** Ream's payout-eligibility page then listed **114 countries under "Ream Managed Payout Countries"** — Nigeria, India, Kenya, Ghana, South Africa among them — while the same page carried a notice that Ream Managed had been *retired in early 2025*. We called that what it was: a live list belonging to a retired product, guaranteed to cost authors months.
 
-Three paragraphs above that list, the same page says:
+**What changed on 9 September:** Ream rebuilt the page. The retired-product notice is gone, and the current documentation now describes two live payout tracks, dated clearly:
 
-> "We've since retired **Ream Managed as of early 2025** (the option for many international authors whose country is not supported by Stripe), in order to simplify our systems, safeguard the platform's integrity, and give authors more direct control over their publishing and payments."
+- **Ream Managed — 110 countries**, including **Nigeria, Kenya, Ghana, South Africa, the Philippines, Vietnam, Bangladesh, Egypt and Turkey**. Notably, **India is no longer on the list at all.**
+- **Direct (Stripe) — 40 countries**: the US, UK, Canada, Australia, most of Western Europe, plus Mexico, Brazil, Malaysia, Thailand, Singapore, Hong Kong and the UAE among others.
+- A **beta onboarding system** for authors in countries Stripe no longer supports in the same way, with Ream stating payouts are its goal for all countries eventually.
 
-**The 114-country list belongs to a product that no longer exists.**
+**Credit where it is due: the misleading page we flagged was fixed within three days of our review publishing.** The new documentation is clearer than what most competitors offer — two named tracks, honest counts, and an explicit warning that the lists "may change without notice."
 
-The only live payout route is **Direct**, which is Stripe, and the Direct list has **46 countries**:
-
-Australia · Austria · Belgium · Brazil · Bulgaria · Canada · Croatia · Cyprus · Czech Republic · Denmark · Estonia · Finland · France · Germany · Gibraltar · Greece · Hong Kong · Hungary · Ireland · Italy · Latvia · Liechtenstein · Lithuania · Luxembourg · Malaysia · Malta · Mexico · Netherlands · New Zealand · Norway · Poland · Portugal · Romania · Singapore · Slovakia · Slovenia · Spain · Sweden · Switzerland · Thailand · UAE · United Kingdom · United States
-
-**If your country is not on that second list, you cannot currently be paid by Ream** — regardless of what the 114-country list says. India, Nigeria, Kenya, South Africa, the Philippines and most of Latin America outside Mexico and Brazil are excluded.
-
-Ream says it is "working toward a custom solution for more international authors." That has not shipped.
-
-**Also worth correcting:** at least one third-party directory listing dated June 2026 describes Ream's availability as "worldwide." It is not.
+That last part is the lasting lesson. **These lists are moving targets:** India was payable-listed in August and gone by September. Whatever this page says the month you read it — *check the current list, and assume it can change before your first payout.*
 
 ## Advantages
 
-- **10% flat fee**, one of the lowest in the category
+- **10% flat fee**, one of the lowest in the category — with a stated path to 8% if the Road to 8% milestones land
 - Every fee itemised publicly — genuinely exceptional disclosure
 - **No payout minimum and no payout fee** for Direct authors
+- Two payout tracks now: Managed coverage (110 countries) that most of the category simply doesn't offer
 - **No exclusivity**, no application, no follower gate
 - Exportable subscriber list
 - Purpose-built for serial fiction rather than adapted
@@ -116,9 +109,9 @@ Ream says it is "working toward a custom solution for more international authors
 
 ## Disadvantages
 
-- **46 payout countries.** Most of the world is excluded
-- The country page lists a retired product's coverage alongside the live one
-- Average earnings work out around **$87 per author per year**
+- **Average earnings work out around $65 per author per year** on the latest counts (was ~$87 at the smaller one) — the aggregate hasn't been republished alongside the new creator count
+- Two-track payout system adds complexity: your country's track determines your fees, minimums and method
+- The payout lists change without notice — India dropped off entirely between August and September
 - Not a discovery engine — you must bring readers
 - Optional fees stack quickly if you enable everything
 - Heavily concentrated in romance and fantasy
@@ -130,38 +123,38 @@ Ream says it is "working toward a custom solution for more international authors
 
 Verified: a named co-founder with a public track record; detailed, consistent help documentation across many pages; a flat fee stated identically everywhere with a worked example; a KYC process with its own documentation; published payout schedules and minimums; a real aggregate earnings figure.
 
-The Nigeria/Managed contradiction reads as **stale documentation, not deception** — the retirement notice is on the same page, in plain language, above the list. Somebody updated the text and left the table. But it is live, it is dated August 2026, and it will mislead people.
+And one more data point, from September: **when this review documented a misleading page, Ream fixed it in three days** — not by quietly deleting the list, but by rebuilding the page into something clearer. Platforms that respond to criticism that fast and that well are rare in this category. The stale-documentation episode is worth remembering anyway: lists changed once without warning, and they will change again.
 
 ## Is it worth trying?
 
-**If you write serial fiction, you are in one of the 46 countries, and you already have readers: yes.** The economics are the best available in this comparison — 10%, no payout minimum, no exclusivity, a list you can export.
+**If you write serial fiction and already have readers: yes** — the economics are the best available in this comparison: 10%, no payout minimum on Direct, no exclusivity, a list you can export. **Nigerian, Kenyan, Ghanaian and South African authors are back in the game** via Ream Managed, which is a genuine change from what we published two weeks ago — verify your country's track and its payout terms before you build a schedule around it.
 
 **If you are starting from zero: it will not find readers for you.** Nothing in this category will. Build the audience first, on Royal Road, Wattpad, KDP or anywhere else, then bring it here to monetise.
 
-**If your country is not on the Direct list: do not start.** Publishing is possible; being paid is not. Check the list, not the headline.
+**If your country is on neither current list — India is the conspicuous absence right now — do not build on it yet.** Publishing is possible; being paid is not. Check the list, not the headline.
 
 ## FAQ
 
-**How much does Ream take?** 10% of your revenue, plus standard payment processing charged by Stripe.
+**How much does Ream take?** 10% of your revenue, plus standard payment processing charged by Stripe. The announced Road to 8% programme would lower the platform fee to 8% permanently if its community milestones are reached — it has not happened yet.
 
-**Is there a payout minimum?** No, for Direct authors — and no payout fee. Instant payouts cost 1%.
+**Is there a payout minimum?** No, for Direct authors — and no payout fee. Instant payouts cost 1%. Ream Managed documents its own terms separately.
 
 **Can I publish elsewhere too?** Yes. No exclusivity agreement.
 
 **Do I need an application?** No. Open to all, no follower minimum.
 
-**What do authors actually earn?** Ream reports over $1.3M yearly across 15,000+ authors — an average of about $87 per author per year. Individual results vary enormously.
+**What do authors actually earn?** Ream reports 20,000+ creators and an aggregate of over $1.3M earned per year — an average of roughly $65 per author per year on the latest counts. Individual results vary enormously.
 
-**Can Nigerian, Indian or Kenyan authors get paid?** Not currently. Those countries appear only on the retired Ream Managed list.
+**Can Nigerian, Indian or Kenyan authors get paid?** Nigeria and Kenya: yes, via Ream Managed (110 countries). India: not currently on either published list — this changed in September, so verify before committing.
 
 ## Final verdict
 
 Ream Stories does almost everything right that platforms usually do wrong. It charges little, discloses everything, demands no exclusivity, and publishes a number that makes it look worse than its marketing does. That combination is genuinely rare and worth supporting.
 
-Two things stop it being a straightforward recommendation. The **$87 average** is the reality behind the income bands. And the **country page needs fixing** — it currently tells authors in 68 countries that they can be paid, using a product retired eighteen months ago.
+The first version of this review ended with two reservations. The first — the misleading country page — was fixed within days, faster and more thoroughly than most platforms manage. The second stands: **the average is now roughly $65 per author per year** on Ream's own counts, and that number is the reality under every income band in the marketing.
 
-If you are inside the 46 and you write serial fiction with readers already following you, this is the best deal in the category. If you are outside them, it is not a deal at all yet.
+If your country is on a current payout list and you write serial fiction with readers already following you, this remains the best deal in the category. If you are outside those lists, it is not a deal at all yet.
 
 ---
 
-*All fee and country figures read from Ream's own help documentation on 6 September 2026. Ream states it is working toward broader international payouts — verify the current Direct country list before you commit. BRYME has no relationship with Ream Stories.*
+*All fee and country figures read from Ream's own help documentation — first on 6 September 2026, re-verified against the 9 September payout-page update. Creator and reader counts are Ream's own (September 2026); the $1.3M aggregate is its most recently published figure. Payout lists change without notice — verify before you commit. BRYME has no relationship with Ream Stories; its CEO asked us to update this review, and the criticism above was kept wherever the facts kept it true.*
