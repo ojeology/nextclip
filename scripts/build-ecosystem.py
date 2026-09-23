@@ -4033,6 +4033,11 @@ def fitness_pages():
     import fitness_more5_data
     FIT_ARTICLES.extend((s, ti, dek, b) for (s, _k, ti, dek, b) in fitness_more5_data.FIT_MORE_5)
     ART_SOURCES.update((s, FIT_SOURCES) for (s, _k, ti, dek, b) in fitness_more5_data.FIT_MORE_5)
+    # Sept 2026 expansion batch 5: recovery & programming guides (DOMS relief,
+    # gym anxiety, rep ranges, deloads, cardio/weights order, pre-sleep protein).
+    import fitness_more6_data
+    FIT_ARTICLES.extend((s, ti, dek, b) for (s, _k, ti, dek, b) in fitness_more6_data.FIT_MORE_6)
+    ART_SOURCES.update((s, FIT_SOURCES) for (s, _k, ti, dek, b) in fitness_more6_data.FIT_MORE_6)
     ART_SOURCES["cardio-machine-worth-buying"] = FIT_SOURCES + [
         ("Concept2 \u2014 RowErg product page (US$990, PM5 monitor included, 14in/20in seat heights, 38in inseam limit, two-piece storage, 30-day money-back guarantee, 2-year and 5-year warranty; read 16 September 2026)", "https://www.concept2.com/ergs/rowerg"),
         ("pacompendium.com \u2014 2024 Adult Compendium of Physical Activities tracking guide (MET codes: stationary rowing 5.0 / 7.3 / 7.5 / 11.0 / 14.0 by watt tier; treadmill walking 4.8 at 3.5-3.9 mph and 5.8 at 4.0-4.4 mph; curved-treadmill running 12.0 at 7.0-7.9 mph; interactive virtual cycling and cycle HIIT 8.8)", "https://pacompendium.com/wp-content/uploads/2024/03/4_2024_adult-compendium-tracking-guide-1-2024.pdf"),
@@ -4268,6 +4273,24 @@ def fitness_pages():
     related_map["grip-strength-why-it-matters"] = [("push-up-progression", "From wall to full: the push-up ladder"),
                                                    ("bodybuilding-must-know", "What every bodybuilder must know"),
                                                    ("strength-training-for-beginners", "Strength training for beginners")]
+    related_map["doms-relief-what-works"] = [("muscle-soreness-vs-injury", "Sore or injured?"),
+                                             ("foam-rolling-honest-benefits", "The honest foam-rolling routine"),
+                                             ("rest-days-and-recovery", "Rest days and recovery")]
+    related_map["gym-anxiety-beginners"] = [("how-to-start-working-out", "Starting from zero"),
+                                            ("workout-at-home-no-equipment", "The no-equipment workout"),
+                                            ("personal-trainer-worth-it", "Is a personal trainer worth it")]
+    related_map["how-many-reps-for-muscle"] = [("bodybuilding-must-know", "What every bodybuilder must know"),
+                                               ("how-progressive-overload-works", "How progressive overload works"),
+                                               ("dumbbell-vs-barbell", "Dumbbells vs barbells")]
+    related_map["deload-weeks-explained"] = [("rest-days-and-recovery", "Rest days and recovery"),
+                                             ("how-progressive-overload-works", "How progressive overload works"),
+                                             ("sleep-and-exercise-performance", "Sleep and exercise performance")]
+    related_map["cardio-or-weights-first"] = [("zone-2-cardio-explained", "Zone 2 cardio, explained"),
+                                              ("strength-training-for-beginners", "Strength training for beginners"),
+                                              ("morning-or-evening-workout", "Morning or evening workout")]
+    related_map["protein-before-bed"] = [("how-much-protein-do-you-need", "Protein, honestly"),
+                                         ("protein-foods-nigeria", "Protein on a Nigerian plate"),
+                                         ("protein-timing-anabolic-window", "The anabolic-window myth")]
     arts = [art(s, ti, dek, b, ART_SOURCES[s], related_map[s])
             for (s, ti, dek, b) in FIT_ARTICLES]
 
@@ -4605,6 +4628,12 @@ HOME_SLUG_SECT.update({s: "understand" for s in (
     "best-water-softener-for-your-home", "air-purifier-worth-it", "repair-or-replace-appliances")})
 HOME_SLUG_SECT.update({s: "maintain" for s in (
     "thermostat-settings-that-save-money", "sump-pump-failure-signs", "ice-dam-prevention-checklist")})
+# Sept 2026 expansion batch (home_roadmap18): section assignments
+HOME_SLUG_SECT.update({s: "understand" for s in (
+    "ceiling-fan-direction-summer-winter", "window-film-for-heat")})
+HOME_SLUG_SECT.update({s: "maintain" for s in (
+    "washing-machine-hoses-replace", "attic-insulation-basics", "frozen-pipe-prevention")})
+HOME_SLUG_SECT.update({s: "pests" for s in ("mice-in-the-house-signs",)})
 HOME_SLUG_SECT.update({s: "appliances" for s in (
     "how-to-deep-clean-an-oven", "how-to-defrost-a-freezer-properly",
     "washing-machine-mould-door-seal", "how-to-descale-a-kettle",
@@ -4890,6 +4919,10 @@ def home_pages():
     # pumps, ice dams.
     import home_roadmap16_data
     HOME_ARTICLES.extend((s2, ti, dek, b) for (s2, _k, ti, dek, b) in home_roadmap16_data.HOME_ROADMAP_16 if s2 not in _have)
+    # Sept 2026 expansion batch (home_roadmap18, tier-1 volume 3): fan
+    # direction, washer hoses, attic insulation, frozen pipes, mice, window film.
+    import home_roadmap18_data
+    HOME_ARTICLES.extend((s2, ti, dek, b) for (s2, _k, ti, dek, b) in home_roadmap18_data.HOME_ROADMAP_18 if s2 not in _have)
     import home_insurance_data
     HOME_ARTICLES.extend((s2, ti, dek, b) for (s2, _ti2, ti, dek, b) in
                          [(g[0], None, g[2], g[3], g[4]) for g in home_insurance_data.HOME_INSURANCE] if s2 not in _have)
@@ -5582,6 +5615,12 @@ def home_pages():
         "air-purifier-worth-it": [("condensation-ventilation-that-works", "Ventilation that works"),("hvac-filter-sizes-and-merv", "HVAC filter sizes & MERV"),("bathroom-fan-condensation", "Bathroom fan & condensation")],
         "sump-pump-failure-signs": [("hidden-water-leak-meter-test", "The leak meter test"),("mould-after-a-flooded-room", "Mould after flooding"),("floor-drain-backflow", "Drain smells outdoors")],
         "ice-dam-prevention-checklist": [("gutters-and-downpipes", "Gutters & downpipes"),("roof-gutter-leak-joint", "Roof gutter leaks"),("condensation-ventilation-that-works", "Ventilation that works")],
+        "ceiling-fan-direction-summer-winter": [("ceiling-fan-vs-standing-fan", "Ceiling fan vs standing fan"),("ceiling-fan-mounting-right", "Mounting a ceiling fan"),("thermostat-settings-that-save-money", "Thermostat settings that save")],
+        "washing-machine-hoses-replace": [("how-to-shut-off-water-main", "The water main shutoff"),("washing-machine-wont-drain", "Washer won't drain"),("mould-after-a-flooded-room", "Mould after flooding")],
+        "attic-insulation-basics": [("ice-dam-prevention-checklist", "Ice-dam prevention"),("condensation-ventilation-that-works", "Ventilation that works"),("thermostat-settings-that-save-money", "Thermostat settings that save")],
+        "frozen-pipe-prevention": [("how-to-shut-off-water-main", "The water main shutoff"),("autumn-home-preparation", "The autumn checklist"),("mould-after-a-flooded-room", "Mould after flooding")],
+        "mice-in-the-house-signs": [("ants-in-the-kitchen", "Ants in the kitchen"),("ignore-single-pest-sighting", "One sighting, calmly"),("diy-vs-professional-pests", "DIY or professional?")],
+        "window-film-for-heat": [("solar-panels-worth-it-2026", "Solar panels in 2026"),("thermostat-settings-that-save-money", "Thermostat settings that save"),("ceiling-fan-direction-summer-winter", "Fan direction by season")],
     }
     for slug, ti, dek, b in HOME_ARTICLES:
         key = HOME_SLUG_SECT[slug]
