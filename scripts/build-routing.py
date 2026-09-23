@@ -214,7 +214,16 @@ def main() -> int:
 
     # 4. global robots.txt: five sitemaps, no indexing work (STEP 8: untouched)
     (ROOT / "robots.txt").write_text(
-        "User-agent: *\nAllow: /\nDisallow: /scripts/\nDisallow: /content/\n"
+        # 4a. AI training crawlers blocked by owner decision 2026-09-23: Render free
+# plan is 5 GB/month and training bots burn bandwidth without sending
+# visitors. Still allowed: Googlebot/Bingbot (search), PerplexityBot and
+# ClaudeBot (often send readers back). Google-Extended does NOT affect
+# Google Search or AdSense; Applebot-Extended does not affect Siri/Apple
+# search; Meta-ExternalAgent does not affect Facebook link previews.
+"User-agent: GPTBot\nUser-agent: Google-Extended\nUser-agent: CCBot\n"
+"User-agent: Applebot-Extended\nUser-agent: Meta-ExternalAgent\n"
+"User-agent: Amazonbot\nUser-agent: Bytespider\nDisallow: /\n\n"
+"User-agent: *\nAllow: /\nDisallow: /scripts/\nDisallow: /content/\n"
         "Disallow: /docs/\nDisallow: /server/\nDisallow: /ecosystem/\n"
         "Disallow: /entertainment/_recovered/\n\n"
         f"Sitemap: {ORIGIN}/sitemap.xml\nSitemap: {ORIGIN}/writers/sitemap.xml\n" +
