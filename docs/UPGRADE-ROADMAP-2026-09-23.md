@@ -118,3 +118,10 @@ Goal: turn 847 stubs into articles. Median 153 → 600+ words; thin 85% → <5%.
 - Verified live post-Cloudflare-cache: writers 509 URLs / 5 distinct real dates. Phase 1 PASS + Phase 2 PASS; no keyword/template fixes needed (titles already intent-specific).
 - Open owner decisions: GSC sitemap resubmit (optional), Consent Mode v2 via Google Privacy & Messaging (not installed per constraint), img width attrs + dates on 109 legacy writers templates (future template tweaks).
 - NOTE: git origin for the site repo is github.com/ojeology/nextclip.git (historical name) — it IS the live thebryme.com repo; Render auto-deploys pushes to main.
+
+## BANDWIDTH FIX (2026-09-23)
+
+- Render emailed owner: 70% of free bandwidth used. CAUSE: Render April-2026 repricing cut Hobby free allowance 100GB -> 5GB/month (forced migration Aug 1 2026); allowance is workspace-wide (Bryme + Bryme-backend + createit share it); AI training bots + recrawl surge burn it. At 100% with no card: services disabled until next month.
+- SHIPPED fae6b032: robots.txt blocks GPTBot, Google-Extended, CCBot, Applebot-Extended, Meta-ExternalAgent, Amazonbot, Bytespider (owner chose to keep PerplexityBot/ClaudeBot). Verified live. URL sets identical.
+- PENDING owner actions: Cloudflare toggles (Tiered Cache; optional AI-scrapers block) + possible Cloudflare Pages migration (unlimited bandwidth, USD 0) — explained, awaiting decision. DO NOT add payment card to Render.
+- LESSON: workspace snapshots do not keep .git — re-clone at turn start for any git work; never git stash in disposable clones (stash ate generated files once).
