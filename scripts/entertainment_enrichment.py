@@ -915,4 +915,854 @@ ENRICH = {
              "documentary realism that can unsettle very young children more."),
         ],
     },
+    "avatar": {
+        "verdict": "The film that dragged cinema into modern 3D, and still the "
+            "highest-grossing film ever made. Cameron builds Pandora with such "
+            "total ecological conviction that the hour of flying and bioluminescent "
+            "wonder justifies the familiar plot on its own. Fifteen years of "
+            "imitators have matched its box office and not its immersion. The "
+            "big screen exists for films like this.",
+        "faqs": [
+            ("Why was Avatar so expensive, and did it pay off?",
+             "Its production and marketing ran somewhere north of 400 million "
+             "dollars - much of it spent inventing the performance-capture and "
+             "3D pipeline. It repaid that with roughly 2.9 billion dollars "
+             "worldwide, the record it has held across two release runs."),
+            ("Do I need to watch Avatar before The Way of Water?",
+             "Yes - the sequel continues Jake and Neytiri's family story "
+             "directly, and its emotional stakes are built on the first film's "
+             "ending."),
+            ("Is Avatar based on a book?",
+             "No - Cameron wrote the original screenplay and famously sat on it "
+             "for over a decade waiting for the technology to catch up to his "
+             "vision of Pandora. The idea predates most of its visual toolbox."),
+        ],
+    },
+    "gravity": {
+        "verdict": "Ninety lean minutes of pure orbital terror. Cuaron opens "
+            "with a thirteen-minute unbroken shot and never lets you breathe: "
+            "debris, silence, and Bullock fighting physics and panic in equal "
+            "measure. The science bends where drama needs it to, but the feeling "
+            "of weightless dread is unmatched. Watch it loud, in the dark, and "
+            "hold on.",
+        "faqs": [
+            ("Did Gravity win the Best Picture Oscar?",
+             "No - it won seven Academy Awards, including Best Director for "
+             "Alfonso Cuaron, but lost Best Picture to 12 Years a Slave at the "
+             "2014 ceremony."),
+            ("How realistic is the science in Gravity?",
+             "The visuals are meticulous, but the film compresses geography for "
+             "story - the Hubble, the ISS and China's station are not reachable "
+             "by short spacewalks, and orbital debris does not behave like a "
+             "chain-reaction traffic jam. The emotion is accurate; the map is "
+             "not."),
+            ("Is Gravity scary?",
+             "It is terror rather than horror - relentless survival pressure "
+             "with one of the great sustained opening sequences in cinema. "
+             "Claustrophobes should buckle in and breathe on schedule."),
+        ],
+    },
+    "edge-of-tomorrow": {
+        "verdict": "The cleverest action film of its decade: a cowardly "
+            "publicist forced to live the same losing battle on loop, dying "
+            "badly hundreds of times until repetition becomes skill. Cruise "
+            "plays against type brilliantly, Blunt's Full Metal Valkyrie is the "
+            "badass the genre owes women, and the editing turns repetition into "
+            "comedy and dread at once. Live, die, repeat - then repeat the "
+            "film.",
+        "faqs": [
+            ("Is Edge of Tomorrow based on a book?",
+             "Yes - Hiroshi Sakurazaka's Japanese light novel All You Need Is "
+             "Kill (2004); the film keeps the loop mechanics and resets the "
+             "story into a European beach invasion."),
+            ("Does Edge of Tomorrow have a different title?",
+             "It was marketed in some territories as Live Die Repeat, which is "
+             "also the tagline on the poster - home media even re-titled it "
+             "Live Die Repeat: Edge of Tomorrow. Same film either way."),
+            ("Is the ending a time paradox?",
+             "The final act plays a deliberate sleight of hand with the loop's "
+             "rules - watch the logistics of the Louvre finale closely and the "
+             "film's internal logic does hold together on rewatch."),
+        ],
+    },
+    "oblivion": {
+        "verdict": "Kosinski's moodiest blueprint: a drone repairman on an "
+            "evacuated Earth starts asking the questions his orders forbid. The "
+            "sky-tower aesthetic, M83's score and the rotting landmarks are "
+            "genuinely gorgeous; the plot is a bundle of familiar twists "
+            "executed with total sincerity. A film for people who miss when "
+            "science fiction looked like architecture.",
+        "faqs": [
+            ("Is Oblivion based on a book?",
+             "It grew from director Joseph Kosinski's own unproduced graphic "
+             "novel concept, developed into a screenplay - a rare case of a "
+             "director adapting his own comic before his first feature even "
+             "shipped."),
+            ("Where was Oblivion filmed?",
+             "Mostly Iceland - the black landscapes double as the scarred, "
+             "evacuated Earth, which is why the film's emptiness feels real "
+             "rather than digital."),
+            ("Is Oblivion connected to the video game of the same name?",
+             "No relation to the Oblivion role-playing game or any other "
+             "property - the name overlap is a coincidence that still confuses "
+             "streaming searches."),
+        ],
+    },
+    "ready-player-one": {
+        "verdict": "Spielberg riffing on pop-culture hoarding: a treasure hunt "
+            "through a virtual universe stuffed with everything from the "
+            "DeLorean to King Kong. As spectacle it is a pixel-perfect "
+            "amusement park; as satire of fandom and corporate VR it is lighter "
+            "than the book. Turn your brain to arcade settings and the craft "
+            "carries you - the opening race sequence is pure joy.",
+        "faqs": [
+            ("Is Ready Player One based on a book?",
+             "Yes - Ernest Cline's 2011 novel stuffed with 1980s references. "
+             "Spielberg swapped many of the book's pop-culture markers for "
+             "sequences he could actually clear rights on."),
+            ("Do I need to know the 1980s references to enjoy it?",
+             "No - the references are decoration on a straightforward adventure "
+             "race. Half the fun is spotting them; none of the plot depends on "
+             "it."),
+            ("Is Ready Player One suitable for kids?",
+             "Generally yes for tweens and up - PG-13 for action violence and "
+             "some language, with the virtual setting keeping the mayhem "
+             "consequence-light."),
+        ],
+    },
+    "warcraft": {
+        "verdict": "The video-game movie that actually built the world: Duncan "
+            "Jones plays the orc-human war with genuine tragic structure, "
+            "motion-captured orcs more expressive than most human co-stars, and "
+            "a fandom's lore treated with respect. As a critic's film it is "
+            "clunky; as a translation of Azeroth it has never been matched - "
+            "which is why it earned half a billion despite the reviews.",
+        "faqs": [
+            ("Do I need to play World of Warcraft to follow Warcraft?",
+             "It helps, but the film reconstructs the first orc-human war from "
+             "scratch and explains its factions as it goes. Players get the "
+             "deep-cut joy; newcomers get a complete fantasy war film."),
+            ("Was Warcraft a flop?",
+             "Critics were harsh, but it grossed over 430 million dollars "
+             "worldwide - most of it in China, where it set records and became "
+             "the most successful video-game adaptation at the box office at "
+             "the time."),
+            ("Will there be a Warcraft sequel?",
+             "The planned sequels never materialised, though Duncan Jones has "
+             "spoken openly about where he wanted to take them - the first "
+             "film ends clearly pitched for more."),
+        ],
+    },
+    "the-revenant": {
+        "verdict": "Survival as ordeal: Inarritu and cinematographer Deakins "
+            "shot only in natural light across frozen wilderness, and the "
+            "result feels less watched than endured. DiCaprio's bear-mauled "
+            "frontiersman crawls through two and a half hours of revenge-"
+            "driven silence to the Oscar he had been denied for twenty years. "
+            "Brutal, beautiful, and absolutely not a casual watch.",
+        "faqs": [
+            ("Did The Revenant win DiCaprio his Oscar?",
+             "Yes - Best Actor at the 2016 ceremony, after five previous "
+             "nominations. The film won three Oscars total, including Best "
+             "Director for Inarritu, his second in a row."),
+            ("Is The Revenant based on a true story?",
+             "Loosely - frontiersman Hugh Glass really was mauled by a bear and "
+             "abandoned by companions in 1823, and really did survive hundreds "
+             "of miles to reach them. Everything beyond that is legend and "
+             "fiction."),
+            ("How graphic is the bear attack?",
+             "It is one of the most visceral sequences in modern cinema - long, "
+             "loud and convincing, with no cut to spare. Most viewers find it "
+             "harder to sit through than the film's human violence."),
+        ],
+    },
+    "dunkirk": {
+        "verdict": "Nolan's shortest film and his most abstract: three "
+            "timelines - one week on the beach, one day on the water, one hour "
+            "in the air - braided into a 106-minute war film with almost no "
+            "dialogue and no villain on screen. Zimmer's Shepard-tone score and "
+            "the ticking watch make pure suspense out of evacuation. War as "
+            "structure, not speeches.",
+        "faqs": [
+            ("Is Dunkirk based on a true event?",
+             "Yes - the 1940 Dunkirk evacuation, in which some 338,000 Allied "
+             "soldiers were rescued from the beaches by navy ships and hundreds "
+             "of civilian 'little ships'. Nolan tells it through fictional "
+             "characters inside the real event."),
+            ("Why is there so little dialogue in Dunkirk?",
+             "By design - Nolan built the film as suspense mechanics rather "
+             "than character drama, with the three timelines supplying the "
+             "structure conversations usually would. The silence is the "
+             "point."),
+            ("Is Dunkirk suitable for younger viewers?",
+             "It is one of the least bloody war films of its scale - rated "
+             "PG-13, with tension rather than gore as its weapon. History-"
+             "curious teenagers are exactly the right audience."),
+        ],
+    },
+    "hacksaw-ridge": {
+        "verdict": "Gibson's comeback is old-school battle filmmaking with one "
+            "genuinely great true story: Desmond Doss, the army medic who "
+            "refused to touch a rifle and saved dozens of wounded men under "
+            "fire on Okinawa. Garfield plays the conviction without smugness, "
+            "the second-half battle is hell rendered honestly, and the "
+            "sincerity that makes eyes roll elsewhere lands here. Faith, blood "
+            "and nerve.",
+        "faqs": [
+            ("Is Desmond Doss a real person?",
+             "Yes - the first conscientious objector awarded the Medal of "
+             "Honor, for saving wounded soldiers at Hacksaw Ridge during the "
+             "Battle of Okinawa in 1945. The film's most incredible details are "
+             "the documented ones."),
+            ("How violent is Hacksaw Ridge?",
+             "Very - the battle sequences are among the most graphic of the "
+             "decade, unflinching by intent. The first half is a gentle "
+             "biopic; the second half is war without varnish. Not for the "
+             "squeamish."),
+            ("Did Hacksaw Ridge win any Oscars?",
+             "It was nominated for six, winning two - Best Film Editing and "
+             "Best Sound Mixing - with Garfield nominated for Best Actor."),
+        ],
+    },
+    "pacific-rim": {
+        "verdict": "Del Toro builds monsters the size of buildings and then "
+            "has the audacity to make you care about the people inside the "
+            "robots. Weight is the whole trick - every punch moves tons of "
+            "water, every city block breaks like real masonry - and the film "
+            "treats its giant-robot premise with the gravity of a war picture. "
+            "Idris Elba's 'cancelling the apocalypse' speech still raises "
+            "hairs.",
+        "faqs": [
+            ("Is Pacific Rim connected to Godzilla or King Kong?",
+             "No - it is an original universe, separate from Legendary's "
+             "Monsterverse. The kaiju genre debt is openly Japanese, but the "
+             "story stands alone."),
+            ("Do I need to watch the Pacific Rim sequel?",
+             "No - Uprising (2018) continues the timeline with a mostly new "
+             "cast and is widely considered the weaker film. The first stands "
+             "alone beautifully."),
+            ("Was Pacific Rim a success?",
+             "It underperformed in the US but found its audience internationally "
+             "and on home video, grossing over 400 million dollars and earning "
+             "a devoted following for its craft."),
+        ],
+    },
+    "alita-battle-angel": {
+        "verdict": "Cameron's pet project, handed to Robert Rodriguez to "
+            "direct: a cyborg girl rebuilt in a scrapyard junk city, with the "
+            "biggest eyes in motion-capture history and a motorball chase that "
+            "justifies the whole film. The world-building is dense and "
+            "sincere, the story is half a saga, and none of it quite adds up - "
+            "and it is still the most alive manga adaptation Hollywood has "
+            "made.",
+        "faqs": [
+            ("Is Alita based on an anime?",
+             "Yes - Yukito Kishiro's manga Battle Angel Alita (1990), which "
+             "also inspired a 1993 OVA. Cameron spent two decades trying to "
+             "make it before technology and schedules let him produce it under "
+             "Rodriguez."),
+            ("Does Alita have an ending?",
+             "It ends mid-saga, resolving this chapter but pointing straight up "
+             "at the sky city for a sequel that fans have been campaigning for "
+             "ever since."),
+            ("Why are Alita's eyes so big?",
+             "A deliberate nod to the manga's art style - the performance-"
+             "capture scales Rosa Salazar's features to anime proportions. Ten "
+             "minutes in, your brain accepts it; that is the 200-million-dollar "
+             "trick."),
+        ],
+    },
+    "ghost-in-the-shell": {
+        "verdict": "Hollywood's 2017 remake of the most important cyberpunk "
+            "anime ever made: a gorgeous, faithful-in-images, hollow-in-spirit "
+            "copy. The production design steals from the 1995 original with "
+            "reverence, Johansson commits fully, and the casting controversy "
+            "became the film's real legacy. Watch it as an appetiser - then "
+            "watch the anime it feeds on.",
+        "faqs": [
+            ("Do I need to watch the 1995 anime first?",
+             "Not required - but the 1995 Ghost in the Shell is the masterwork "
+             "this remixes, and the comparison is instructive: every image the "
+             "remake borrows carried more argument in the original."),
+            ("What was the casting controversy about?",
+             "A white American actress was cast as Major Motoko Kusanagi, a "
+             "Japanese character - and the film then wrote a plot explanation "
+             "for it, which most critics found worse than the casting "
+             "itself."),
+            ("Is Ghost in the Shell (2017) suitable for teens?",
+             "PG-13, and thematically heavy rather than gory - older teenagers "
+             "interested in AI and identity questions are exactly its audience, "
+             "ideally followed by the anime."),
+        ],
+    },
+    "deadpool": {
+        "verdict": "The R-rated counter-attack on sanitised superhero cinema: "
+            "Reynolds' mercenary with a mouth spends two hours insulting the "
+            "genre that fired him, breaking the fourth wall, and - the film's "
+            "secret - telling a genuinely sweet love story. Funnier, sharper "
+            "and more romantic than it has any right to be. The proof that "
+            "rating and craft are unrelated.",
+        "faqs": [
+            ("Is Deadpool suitable for teenagers?",
+             "No - hard R for graphic violence, language and sexual content. It "
+             "is a superhero film built specifically for adults, which was the "
+             "entire point of its existence."),
+            ("Do I need to watch X-Men films before Deadpool?",
+             "No - the film mocks the idea of continuity as much as anything "
+             "else. Knowing Reynolds' first Deadpool turn in X-Men Origins "
+             "earns you one extra joke, nothing more."),
+            ("Is Deadpool a Marvel or Fox film?",
+             "It was made by Fox (the character's film rights predated the "
+             "MCU) and joined Marvel Studios' canon after Disney's acquisition "
+             "- which is exactly the joke the third film is built on."),
+        ],
+    },
+    "deadpool-2": {
+        "verdict": "The sequel doubles everything - gags, gore, heart - and "
+            "mostly gets away with it. Brolin's Cable is the straight man the "
+            "jokes need, Domino's luck powers are the best new superhero power "
+            "in years, and the X-Force parachute sequence is the hardest any "
+            "superhero film has ever laughed at itself. The found-family theme "
+            "is real, which is why the punchlines hit harder.",
+        "faqs": [
+            ("Is Deadpool 2 better than the first?",
+             "Opinions split cleanly: the first is the purer origin, the second "
+             "is bigger, funnier in more scenes and more emotionally open. "
+             "Watch the first first - the sequel assumes you love these "
+             "idiots."),
+            ("Who is the kid in Deadpool 2?",
+             "Russell, a young mutant in a brutal reform facility whose future "
+             "turns him into a killer Cable is hunting - the film's actual "
+             "emotional plot, and the reason the jokes land harder."),
+            ("Are there different cuts of Deadpool 2?",
+             "Yes - the theatrical cut, a Super Duper extended cut, and a "
+             "deliberately family-friendly PG-13 re-edit (Once Upon a Deadpool) "
+             "framed as a holiday special."),
+        ],
+    },
+    "aquaman": {
+        "verdict": "Wan plays Atlantis as an underwater theme park with total "
+            "commitment: seven kingdoms, tunnel-shark leviathans, Momoa surfing "
+            "a tidal wave of crabs into battle. It is the highest-grossing film "
+            "of DC's extended-universe era because it never apologises for "
+            "being ridiculous. Come for the octopus playing the drums, stay "
+            "for the genuinely epic final act.",
+        "faqs": [
+            ("Do I need other DC films before Aquaman?",
+             "No - everything from the team-up film is recapped in a scene, "
+             "and the story stands entirely alone. It is the most newcomer-"
+             "friendly film of the DCEU."),
+            ("Is Aquaman the highest-grossing DC film?",
+             "It grossed about 1.15 billion dollars, making it the highest-"
+             "grossing film of the DCEU era and one of the few DC films to "
+             "cross a billion."),
+            ("Did Julie Andrews really voice the sea monster?",
+             "Yes - the Karathen, the colossal creature guarding the Trident, "
+             "is voiced by Julie Andrews, a piece of casting so delightful it "
+             "refuses to stay buried in the credits."),
+        ],
+    },
+    "shang-chi-and-the-legend-of-the-ten-rings": {
+        "verdict": "The MCU's best pure martial-arts film: a bus fight staged "
+            "in one legible, escalating take, Tony Leung playing grief as a "
+            "villain, and a family drama about fathers and shadows that earns "
+            "its dragon. Liu Simu arrived as a movie star fully formed. When "
+            "the MCU keeps its feet on the ground, it is this good.",
+        "faqs": [
+            ("Is Shang-Chi based on existing comics?",
+             "Yes - Marvel's Shang-Chi, Master of Kung Fu, created in 1973 "
+             "during the kung-fu cinema boom; the film rewrites the character's "
+             "problematic comics origin into something centred on Chinese "
+             "family and legend."),
+            ("Do I need other Marvel films first?",
+             "No - it is designed as a clean entry point, with a couple of "
+             "cameos (and one very good Wong scene) as seasoning rather than "
+             "homework."),
+            ("Is the bus fight really one shot?",
+             "It is edited to play as extended takes, with the camera moving "
+             "through the chaos - stunt choreography from Brad Allan's team, "
+             "and widely praised as the MCU's best hand-to-hand sequence."),
+        ],
+    },
+    "eternals": {
+        "verdict": "The MCU's most divisive film is also its most interesting "
+            "experiment: an Oscar-winning director shoots seven immortals "
+            "across seven thousand years with natural light, ancient-epic "
+            "pacing and a plot about whether humanity deserves to exist. It "
+            "swings at genuine themes, misses as often as it connects, and "
+            "never once feels stamped from the mould. Judge it for trying.",
+        "faqs": [
+            ("Why is Eternals so different from other Marvel films?",
+             "Chloe Zhao's approach - naturalistic performances, real "
+             "landscapes, long takes - met a cosmic mythology that spans "
+             "millennia. The studio let her keep the textures, and the result "
+             "is the franchise's slowest, strangest, most philosophical "
+             "entry."),
+            ("Do I need to watch Eternals before other Marvel films?",
+             "No - its events matter mainly to its own corner of the universe, "
+             "which makes it one of the safest jumping-in points in the modern "
+             "MCU."),
+            ("Is Eternals boring?",
+             "If you need constant momentum, honestly, probably - it runs 157 "
+             "minutes of mythology and doubt. If you want the MCU attempting "
+             "cosmic scale and a love story across centuries, it is the only "
+             "one of its kind."),
+        ],
+    },
+    "captain-marvel": {
+        "verdict": "A 1990s blockbuster dressed as a 2019 one: video stores, "
+            "dial-up internet, and Larson's Kree warrior slowly remembering "
+            "the Earth life she was told to forget. The amnesia mystery keeps "
+            "the first half honest, the Skrull twist reframes the war, and the "
+            "film's whole thesis - get up, again - lands clean. Not the MCU's "
+            "boldest; one of its most confident.",
+        "faqs": [
+            ("Why is Captain Marvel set in the 1990s?",
+             "To place it before the earlier MCU films, making it a prequel "
+             "that explains the pager from the Infinity War post-credits - and "
+             "to dress an entire blockbuster in video-store-era nostalgia "
+             "while it is at it."),
+            ("Do I need Captain Marvel before Endgame?",
+             "It helps - her arrival is a plot point in Endgame, and her "
+             "powers recalibrate the films' power scales. Watch it before "
+             "Avengers: Endgame if you are marathoning."),
+            ("Is Captain Marvel the strongest Avenger?",
+             "In-universe, she is repeatedly positioned in the top tier - able "
+             "to move spaceships. Power-scaling debates aside, the films treat "
+             "her as the emergency button, not the regular line-up."),
+        ],
+    },
+    "wonder-woman": {
+        "verdict": "The DCEU's one unqualified success story: Gadot's Amazon "
+            "walks into the mud of the First World War and the film finds the "
+            "exact register of sincerity the franchise had been missing. The "
+            "No Man's Land crossing remains one of the great superhero scenes "
+            "- a character becoming herself in real time. The third act "
+            "collapses into smoke and noise; everything before it soars.",
+        "faqs": [
+            ("Is Wonder Woman set in World War One or Two?",
+             "The First World War - 1918 - a deliberate choice that keeps the "
+             "era's cynicism specific (gas, trenches, generals in rooms) rather "
+             "than blending into generic WWII iconography."),
+            ("Is the No Man's Land scene in the comics?",
+             "The scene is original to the film - it instantly became the "
+             "character's defining screen moment and one of the most analysed "
+             "superhero sequences ever shot."),
+            ("Do I need Justice League before Wonder Woman?",
+             "No - watch this first, chronologically and in quality. The film "
+             "stands entirely alone and is the recommended entry to Gadot's "
+             "Diana."),
+        ],
+    },
+    "wonder-woman-1984": {
+        "verdict": "The follow-up swung for an era-specific fable about greed "
+            "and wish-thinking - and the film is at its best exactly there, in "
+            "Pedro Pascal's unraveling TV salesman and a cold-open Olympics "
+            "sequence for the ages. The plot machinery around it creaks, and "
+            "the ending argues with itself. A noble misfire with two "
+            "unforgettable scenes.",
+        "faqs": [
+            ("Why is Wonder Woman 1984 set in 1984?",
+             "To drop Diana into the decade of excess - Wall Street greed, "
+             "television shopping channels, nuclear brinkmanship - the exact "
+             "soil for a story about wishes and their costs."),
+            ("Should I watch Wonder Woman 1984 or skip it?",
+             "Watch it after the first film if you are completing the arc; "
+             "Pascal's villain and the opening sequence justify the time even "
+             "though the film around them wobbles."),
+            ("Why did WW84 release on streaming?",
+             "December 2020, mid-pandemic - it launched day-and-date on HBO "
+             "Max, the first blockbuster to do so, and its reception was "
+             "forever tangled in that experiment."),
+        ],
+    },
+    "black-adam": {
+        "verdict": "The Rock's decade-long passion project arrives as a DC "
+            "origin with an antihero smirk: a five-thousand-year slave-turned-"
+            "god wakes up, declines the hero speech, and levels things. The "
+            "Justice Society members are the fun part, the hierarchy-changing "
+            "promise was mostly marketing, and the film now reads as the "
+            "DCEU's last grand swing before the reset. Big, loud, oddly "
+            "likable.",
+        "faqs": [
+            ("Is Black Adam a villain or a hero?",
+             "The film's whole argument is that he is neither - an antihero "
+             "whose idea of justice predates modern morality. In the comics he "
+             "is Shazam's dark mirror; here he is a nation's wrath given a "
+             "body."),
+            ("Is Superman really in Black Adam?",
+             "Yes - Henry Cavill's Superman appears in the mid-credits scene, "
+             "a cameo that made headlines and led nowhere: the studio reset "
+             "followed within weeks."),
+            ("Do I need other DC films before Black Adam?",
+             "No - it introduces its own corner (Kahndaq) and its own team, "
+             "the Justice Society, from scratch. Zero homework required."),
+        ],
+    },
+    "venom": {
+        "verdict": "A studio contract walked into a bar and ordered a buddy "
+            "comedy: Hardy plays a disgraced journalist and the symbiote "
+            "voices the id, and the two of them squabble their way through a "
+            "limp corporate plot with total commitment to the bit. The critics "
+            "were right and the 800-million-dollar box office was also right - "
+            "junk food executed with real charm, and Hardy's dual performance "
+            "is the whole meal.",
+        "faqs": [
+            ("Is Venom connected to Spider-Man?",
+             "In the comics, inseparably - the suit is born from Spider-Man's "
+             "storyline. The 2018 film builds its own universe without "
+             "Spider-Man, saving the connection for post-credits teases."),
+            ("Do I need the post-credits scenes for Venom?",
+             "The first film's credits scenes set up the sequel; the sequel's "
+             "credits scene winks at another universe entirely. They are "
+             "seasoning, not homework."),
+            ("Is Venom scary or funny?",
+             "Both by design - body-horror imagery played for comedy, with "
+             "Hardy's wet-voiced double act as the engine. Teenagers are its "
+             "core audience; horror fans should calibrate accordingly."),
+        ],
+    },
+    "venom-let-there-be-carnage": {
+        "verdict": "Ninety-seven minutes of Hardy arguing with himself while "
+            "Harrelson's Carnage turns a prison transfer into a red-"
+            "splattered rock concert. The first film's charm, concentrated: "
+            "less plot, more symbiote relationship drama, played as the "
+            "world's strangest breakup movie. It knows exactly what it is - a "
+            "midnight movie with a blockbuster budget - and never pretends "
+            "otherwise.",
+        "faqs": [
+            ("Do I need to watch Venom (2018) first?",
+             "Yes - the sequel is the second act of Eddie and Venom's "
+             "relationship, and its whole emotional vocabulary assumes you "
+             "watched them move in together."),
+            ("Who is Carnage?",
+             "Cletus Kasady, a serial killer whose cellmate moment with the "
+             "red symbiote creates Venom's psychotic offspring - Harrelson "
+             "playing it as heavy-metal crazy, which is either the film's "
+             "problem or its energy source."),
+            ("What is the Venom 2 post-credits scene?",
+             "Without spoiling the mechanics: Eddie and Venom glimpse another "
+             "universe's world - the clearest on-screen bridge between the "
+             "Sony Marvel films and the MCU to date."),
+        ],
+    },
+    "the-matrix-resurrections": {
+        "verdict": "Lana Wachowski's sequel is a trapdoor: a film about being "
+            "forced to make a sequel, in which the Matrix itself has become a "
+            "franchise factory and Neo is literally re-enslaved by his own "
+            "story. The first hour is the sharpest metafiction Hollywood has "
+            "dared; the second retreats into homage. Flawed, fascinating, and "
+            "the only recent blockbuster arguing with its own studio on "
+            "screen.",
+        "faqs": [
+            ("Do I need to rewatch the original Matrix trilogy?",
+             "At minimum the first film - Resurrections recaps constantly, but "
+             "its entire argument (and its jokes) only land if you remember "
+             "what the original meant to you."),
+            ("Why did only Lana Wachowski direct Resurrections?",
+             "Lilly Wachowski chose not to return, and Lana's script reframes "
+             "the whole film around grief and creation, which most critics "
+             "read as the honest answer on screen."),
+            ("Is The Matrix Resurrections a reboot or a sequel?",
+             "Both, deliberately - it is a direct sequel that begins by "
+             "parodying the idea of its own reboot, with studio executives "
+             "appearing as characters in the film's opening argument."),
+        ],
+    },
+    "inside-out": {
+        "verdict": "Pixar's thesis statement: the emotions inside an eleven-"
+            "year-old's head argue through a family move, and the film quietly "
+            "hands every viewer the healthiest model of sadness ever put on "
+            "screen. Bing Bong is the hardest cry in the studio's catalogue. "
+            "Concept, craft and compassion in perfect formation - the best "
+            "original film Pixar has made this century.",
+        "faqs": [
+            ("Is Inside Out scientifically accurate?",
+             "Consulting psychologists shaped the five-emotion core, so the "
+             "architecture is real psychology dressed as whimsy - right down "
+             "to sadness being the mechanism that asks for help."),
+            ("Do I need Inside Out 2 before the first?",
+             "No - the 2015 original is complete on its own; the 2024 sequel "
+             "(puberty, new emotions) builds on it. Watch this first, "
+             "always."),
+            ("Why does everyone cry at Inside Out?",
+             "Because Bing Bong's sacrifice and the film's central idea - "
+             "sadness is not a malfunction, it is connection - arrive "
+             "together. Pixar built a machine for empathy and ran it at full "
+             "power."),
+        ],
+    },
+    "finding-dory": {
+        "verdict": "The rare legacy sequel built as a character study: Dory's "
+            "short-term memory loss reframed as origin, adoption and the "
+            "invention of a family that fits. The octopus Hank steals the "
+            "film, the loopy whales steal two scenes, and the marine-institute "
+            "set pieces are Pixar doing pure comedy. Lighter than Nemo by "
+            "design - and just as kind.",
+        "faqs": [
+            ("Do I need to watch Finding Nemo before Finding Dory?",
+             "Yes, ideally - Dory is Nemo's comic relief, and the sequel hands "
+             "her the lead by finally explaining the wound behind the joke. "
+             "The payoff lands because you know her."),
+            ("Is Finding Dory suitable for very young kids?",
+             "It is one of Pixar's gentlest - sea creatures, bright tanks and "
+             "a short runtime suit young children, with themes (memory, "
+             "belonging) that fly harmlessly over the smallest heads."),
+            ("Was Finding Dory a bigger hit than Finding Nemo?",
+             "It crossed a billion dollars worldwide, making it one of the "
+             "highest-grossing animated films ever at the time - the "
+             "thirteen-year wait paid off."),
+        ],
+    },
+    "moana": {
+        "verdict": "The best of Disney's modern musicals: a Polynesian "
+            "wayfinder, a demigod played by The Rock at maximum charm, a "
+            "companion chicken for comic relief, and songs - How Far I'll Go "
+            "especially - that earn their anthemic status. The ocean is a "
+            "character, the grandmother is the secret hero, and the volcano "
+            "finale chooses argument over swordfight. Total conviction, start "
+            "to finish.",
+        "faqs": [
+            ("Is Moana based on a real legend?",
+             "It is original fiction built from real Polynesian voyaging "
+             "tradition - filmmakers consulted navigators and elders across "
+             "the Pacific, and Maui is drawn from mythology rather than any "
+             "single tale."),
+            ("Is Moana called Vaiana in some countries?",
+             "Yes - a trademark clash over the name forced the title Vaiana "
+             "or Oceania in much of Europe; the film itself is identical."),
+            ("Which is better, Moana or Encanto?",
+             "Both are modern Disney peaks with different engines - Moana has "
+             "the stronger adventure spine and anthem, Encanto the richer "
+             "family ensemble. Households have voted for both, endlessly."),
+        ],
+    },
+    "raya-and-the-last-dragon": {
+        "verdict": "Kumandra's five lands and a sword-wielding heroine hunting "
+            "the last dragon to heal a shattered world - Southeast Asian "
+            "design traditions rendered gorgeously, with Awkwafina's Sisu "
+            "supplying the comedy. The trust-versus-armor theme is genuinely "
+            "argued, the action is fluid, and a pandemic-era release buried a "
+            "film that deserved a theatrical audience.",
+        "faqs": [
+            ("What cultures inspire Raya and the Last Dragon?",
+             "Southeast Asia broadly - Vietnam, Thailand, Laos, Indonesia, "
+             "Malaysia, the Philippines and Cambodia all fed the design, "
+             "costume, food and martial arts through the studio's cultural "
+             "consultants."),
+            ("Why did Raya skip cinemas?",
+             "It released in March 2021, deep in the pandemic - day-and-date "
+             "on Disney+ with paid early access and a limited theatrical "
+             "rollout. Its modest box office reflects timing, not quality."),
+            ("Is Raya too scary for little kids?",
+             "The Druun - dust-plague monsters that petrify people - are "
+             "genuinely unsettling to under-fives; older children ride it "
+             "fine. The trust theme lands best with school age and up."),
+        ],
+    },
+    "mulan": {
+        "verdict": "The 2020 remake swaps the animation's songs and dragon for "
+            "wuxia sweep: real armies, real locations, genuine battle "
+            "choreography, and Liu Yifei carrying the warrior arc with steel. "
+            "What it gains in spectacle it loses in warmth - the 1998 film's "
+            "comedy and music were the soul, and this version knows it. "
+            "Honourable, handsome, slightly hollow.",
+        "faqs": [
+            ("Does the live-action Mulan have songs?",
+             "Not as performances - the 1998 numbers survive as instrumental "
+             "reprises and one end-credits cover, a choice that divided "
+             "audiences as much as any casting."),
+            ("How different is the 2020 Mulan from the animation?",
+             "The skeleton is the same - daughter takes father's place, truth "
+             "revealed in war - but the witch is new, the dragon and the love "
+             "interest are gone, and the tone is straight epic rather than "
+             "musical adventure."),
+            ("Why did Mulan (2020) struggle?",
+             "A 200-million-dollar budget released mid-pandemic as a premium "
+             "streaming rental, plus a boycott movement over filming "
+             "locations - the film's reception was never purely about the "
+             "film."),
+        ],
+    },
+    "toy-story-4": {
+        "verdict": "Nobody asked for a fourth film, and then it broke your "
+            "heart anyway. Forky - a spork in existential crisis - is a comic "
+            "genius creation, the antique-shop second act is genuinely eerie, "
+            "and Bo Peep's return turns the whole franchise into a "
+            "conversation about purpose after purpose. It ends the saga with "
+            "grace where Toy Story 3 ended it with tears. Oscar well earned.",
+        "faqs": [
+            ("Is Toy Story 4 a sequel or an epilogue?",
+             "Both - it follows Woody after Andy's chapters close, and its "
+             "ending redefines the toys' world so completely that many fans "
+             "consider it the truer finale than the beloved third film."),
+            ("Do I need to rewatch Toy Story 3 first?",
+             "Not strictly - the handover is restated elegantly - but the "
+             "emotional continuity is the whole engine, and the third film's "
+             "ending is the launchpad for this one's questions."),
+            ("Is Toy Story 4 the last one?",
+             "It closes Woody's arc completely; a fifth film exists in "
+             "development at Pixar, but this one was made as an ending - and "
+             "plays as one."),
+        ],
+    },
+    "zootopia": {
+        "verdict": "The cop-buddy comedy that smuggles a course in prejudice "
+            "into a bunny-cop mystery: Judy Hopps and con-artist Nick Wilde "
+            "chase a missing-mammals case through a city built as a bias "
+            "machine. The DMV sloth gag is eternal, and the message never "
+            "lectures past the story. Disney's smartest modern original.",
+        "faqs": [
+            ("Is Zootopia about racism?",
+             "It is an allegory about bias and stereotyping built with "
+             "predator/prey dynamics - deliberately broader than any single "
+             "real-world analogy, which is why it works in classrooms on "
+             "every continent."),
+            ("Is there a Zootopia sequel?",
+             "Yes - Zootopia 2 is in the works at Disney, reuniting the "
+             "leads; the 2016 original also spawned a Disney+ series of "
+             "shorts."),
+            ("Did Zootopia win the Oscar?",
+             "Yes - Best Animated Feature at the 2017 ceremony, on the "
+             "strength of writing that works as mystery, comedy and social "
+             "essay at once."),
+        ],
+    },
+    "minions": {
+        "verdict": "The sidekicks got a prequel and proved they can carry a "
+            "film - barely, gloriously, at 90 minutes exactly. 1968 New York, "
+            "a villain convention, and Sandra Bullock's Scarlet Overkill "
+            "giving the performance of her career; the Minions themselves "
+            "operate on pure slapstick logic in a language everyone pretends "
+            "to understand. Foolishness, perfectly engineered.",
+        "faqs": [
+            ("What language do the Minions speak?",
+             "Minionese - a constructed gibberish blending English, Spanish, "
+             "French, Italian and food words, voiced largely by co-director "
+             "Pierre Coffin. Every audience believes they understood more "
+             "than they did; that is the trick."),
+            ("Do I need the Despicable Me films before Minions?",
+             "No - it is a prequel set decades before, explaining how the "
+             "Minions found their villain. The viewing order between this "
+             "and Despicable Me barely matters."),
+            ("Is Minions suitable for very young children?",
+             "It is engineered for them - slapstick, bright colours, short "
+             "runtime, no real peril that sticks. Parents may emerge needing "
+             "coffee and a thesaurus for 'banana'."),
+        ],
+    },
+    "despicable-me-3": {
+        "verdict": "The franchise's most divided entry: Gru meets a twin "
+            "brother with hair and a turtleneck, a villain reviews his own "
+            "80s nostalgia in shoulder pads, and the Minions take a detour "
+            "to prison variety night. The long-lost-siblings plot is cotton "
+            "candy, Trey Parker's Bratt is a gift, and the whole thing runs "
+            "on the series' unbeatable engine - evil reformed by "
+            "parenting.",
+        "faqs": [
+            ("Do I need to watch Despicable Me 1 and 2 first?",
+             "It helps - the family (the girls, Lucy, the Minions) carries "
+             "over, and this one's whole premise leans on Gru having become "
+             "a contented dad. Watch the second at minimum."),
+            ("Who voices the villain in Despicable Me 3?",
+             "Trey Parker, co-creator of South Park, as Balthazar Bratt, a "
+             "former child star turned 80s-obsessed supervillain - the "
+             "casting explains every single joke in his scenes."),
+            ("Why are the Minions barely in Despicable Me 3?",
+             "They are - but the film splits them off early (the prison "
+             "sequence) so Gru's twin-brother plot can breathe, a structure "
+             "choice that split audiences down the middle."),
+        ],
+    },
+    "kung-fu-panda-3": {
+        "verdict": "The trilogy's gentlest chapter: Po meets his birth "
+            "father, a secret panda village learns to be terrible at kung fu "
+            "on purpose, and J.K. Simmons' Kai steals chi with jade blades. "
+            "The film's big idea - you win by being more yourself, not less - "
+            "is the series' thesis distilled. Gorgeous, funny, and quietly a "
+            "landmark US-China co-production.",
+        "faqs": [
+            ("Do I need Kung Fu Panda 1 and 2 first?",
+             "Yes - the third pays off both (Po's origin, the inner-peace "
+             "lesson, the Furious Five) and assumes you love this world. The "
+             "trilogy is designed as one story."),
+            ("Where does Kung Fu Panda 3 take place?",
+             "The secret panda village high in the mountains - a snow-dusted, "
+             "scroll-softened world built for the film - plus the spirit "
+             "realm where Kai fights, rendered in jade-and-ink style."),
+            ("Is Kung Fu Panda 3 the last one?",
+             "It closed the original trilogy's arc, but Po returned in a "
+             "2024 fourth film - the third remains the fan-favourite ending "
+             "of the original story."),
+        ],
+    },
+    "the-lord-of-the-rings-the-fellowship-of-the-ring": {
+        "verdict": "The foundation of modern fantasy cinema: Jackson took a "
+            "book declared unfilmable and built New Zealand into Middle-earth "
+            "with models, mud and total faith. The Shire's warmth, Moria's "
+            "dread, Boromir's death - the trilogy's emotional peak is right "
+            "here in film one. A complete story, a perfect promise, and the "
+            "standard every fantasy film still measures itself against.",
+        "faqs": [
+            ("Do I need to watch Lord of the Rings in order?",
+             "Yes - the trilogy is one story in three parts, and Fellowship "
+             "establishes everything: the Ring, the Fellowship, the stakes. "
+             "For the original trilogy, release order and story order are "
+             "the same."),
+            ("How many Oscars did Fellowship of the Ring win?",
+             "Four from thirteen nominations - including cinematography and "
+             "Howard Shore's score - with the trilogy's big haul (eleven "
+             "wins) reserved for The Return of the King."),
+            ("Theatrical or Extended cut for first-time viewers?",
+             "The theatrical cut first - it is the film as released, 178 "
+             "minutes; the Extended Editions are magnificent for the devoted "
+             "but add roughly two hours across the trilogy."),
+        ],
+    },
+    "the-hobbit-an-unexpected-journey": {
+        "verdict": "The overture to a trilogy that should have been one "
+            "film: Jackson returns to Middle-earth with love and unlimited "
+            "runtime, and the results are exactly that - Gollum's riddle "
+            "duel is among the best scenes in all six films, while "
+            "everything around it breathes slower than the story needs. "
+            "Comfort-viewing Middle-earth, first-course pacing. Watch it for "
+            "the dwarf song and Bilbo's choice.",
+        "faqs": [
+            ("Should I watch The Hobbit before Lord of the Rings?",
+             "Never on a first visit - The Lord of the Rings first, always. "
+             "The Hobbit films assume you know and love Middle-earth, and "
+             "their pleasures only fully read that way."),
+            ("Why is one short book three long films?",
+             "Studio economics and expanded lore - the planned two films "
+             "became three, padded with appendix material and new "
+             "characters, a decision debated by fans longer than the "
+             "trilogy runs."),
+            ("What is the high frame rate version of The Hobbit?",
+             "48 frames per second - double cinema standard, offered in some "
+             "screenings. It made motion hyper-smooth and sets look like "
+             "sets; audiences split hard, and most home versions default to "
+             "the classic 24fps look."),
+        ],
+    },
+    "fantastic-beasts-and-where-to-find-them": {
+        "verdict": "The Wizarding World's spin-off gamble at its best: 1926 "
+            "New York, Redmayne's hunched magizoologist and his case of "
+            "runaway wonders, the Niffler's jewellery heist, and a genuinely "
+            "sad mystery underneath. As franchise-launch it over-reaches - "
+            "the dark-wizard reveal belongs to a different film - but as a "
+            "creature-feature romance it is a warm, winsome detour.",
+        "faqs": [
+            ("Do I need the Harry Potter films before Fantastic Beasts?",
+             "No - it is set seventy years earlier, and the few connections "
+             "are easter eggs, not prerequisites. Newcomers start clean."),
+            ("Is Fantastic Beasts connected to the Harry Potter books?",
+             "Through lore, yes - the film adapts Rowling's 2001 companion "
+             "'textbook' about magical creatures into an original screenplay "
+             "expanding the era before Harry's story."),
+            ("How many Fantastic Beasts films were planned?",
+             "Five, once upon a time - the series was later trimmed after "
+             "the third film's reception, leaving the saga's future "
+             "officially undecided."),
+        ],
+    },
 }
