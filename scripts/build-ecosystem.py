@@ -3985,6 +3985,12 @@ def fitness_pages():
     import more_guides_data
     FIT_ARTICLES.extend((s, ti, dek, b) for (s, _k, ti, dek, b) in more_guides_data.FIT_MORE)
     ART_SOURCES.update((s, FIT_SOURCES) for (s, _k, ti, dek, b) in more_guides_data.FIT_MORE)
+    # Sept 2026 expansion batch: ten gap-filling beginner guides (progressions,
+    # form depth, soreness literacy, bands, food-first protein, run plan,
+    # timing, trackers, hydration).
+    import fitness_more2_data
+    FIT_ARTICLES.extend((s, ti, dek, b) for (s, _k, ti, dek, b) in fitness_more2_data.FIT_MORE_2)
+    ART_SOURCES.update((s, FIT_SOURCES) for (s, _k, ti, dek, b) in fitness_more2_data.FIT_MORE_2)
     ART_SOURCES["cardio-machine-worth-buying"] = FIT_SOURCES + [
         ("Concept2 \u2014 RowErg product page (US$990, PM5 monitor included, 14in/20in seat heights, 38in inseam limit, two-piece storage, 30-day money-back guarantee, 2-year and 5-year warranty; read 16 September 2026)", "https://www.concept2.com/ergs/rowerg"),
         ("pacompendium.com \u2014 2024 Adult Compendium of Physical Activities tracking guide (MET codes: stationary rowing 5.0 / 7.3 / 7.5 / 11.0 / 14.0 by watt tier; treadmill walking 4.8 at 3.5-3.9 mph and 5.8 at 4.0-4.4 mph; curved-treadmill running 12.0 at 7.0-7.9 mph; interactive virtual cycling and cycle HIIT 8.8)", "https://pacompendium.com/wp-content/uploads/2024/03/4_2024_adult-compendium-tracking-guide-1-2024.pdf"),
@@ -4105,6 +4111,37 @@ def fitness_pages():
     related_map["cardio-machine-worth-buying"] = [("walking-vs-running", "Walking or running: the honest comparison for beginners"),
                                               ("how-to-start-working-out", "Starting from zero: how to begin exercising"),
                                               ("fitness-calculators", "The desk's fitness calculators")]
+    # Sept 2026 expansion batch: cross-links for the ten new guides
+    related_map["push-up-progression"] = [("squat-form-beginners", "The beginner's squat: six checkpoints"),
+                                          ("how-to-plank", "The plank, done right"),
+                                          ("how-progressive-overload-works", "How progressive overload works")]
+    related_map["squat-form-beginners"] = [("push-up-progression", "From wall to full: the push-up ladder"),
+                                           ("exercise-library-legs", "The leg exercise library"),
+                                           ("strength-training-for-beginners", "Strength training for beginners")]
+    related_map["muscle-soreness-vs-injury"] = [("rest-days-and-recovery", "Rest days and recovery"),
+                                                ("how-to-warm-up", "A warm-up that actually covers you"),
+                                                ("sleep-and-exercise-performance", "Sleep and exercise performance")]
+    related_map["resistance-bands-guide"] = [("workout-at-home-no-equipment", "The no-equipment workout"),
+                                             ("squat-form-beginners", "The beginner's squat"),
+                                             ("strength-training-for-beginners", "Strength training for beginners")]
+    related_map["stretching-before-or-after"] = [("how-to-warm-up", "A warm-up that actually covers you"),
+                                                 ("muscle-soreness-vs-injury", "Sore or injured?"),
+                                                 ("30-day-walking-plan", "The 30-day walking plan")]
+    related_map["protein-foods-nigeria"] = [("how-much-protein-do-you-need", "Protein, honestly"),
+                                            ("strength-training-for-beginners", "Strength training for beginners"),
+                                            ("what-fruit-does-to-your-body", "What fruit does")]
+    related_map["beginner-running-plan"] = [("30-day-walking-plan", "The 30-day walking plan"),
+                                            ("walking-vs-running", "Walking or running: the honest comparison"),
+                                            ("breathing-during-exercise", "Breathing during exercise")]
+    related_map["morning-or-evening-workout"] = [("how-to-start-working-out", "Starting from zero"),
+                                                 ("rest-days-and-recovery", "Rest days and recovery"),
+                                                 ("weekly-planner", "The weekly planner")]
+    related_map["fitness-trackers-worth-it"] = [("how-many-steps-a-day", "How many steps a day matter"),
+                                                ("beginner-running-plan", "Zero to 30 minutes of running"),
+                                                ("weekly-planner", "The weekly planner")]
+    related_map["water-during-workout"] = [("how-much-water-to-drink-a-day", "How much water a day"),
+                                           ("benefits-of-morning-water", "The morning glass"),
+                                           ("30-day-core-programme", "The 30-day core programme")]
     arts = [art(s, ti, dek, b, ART_SOURCES[s], related_map[s])
             for (s, ti, dek, b) in FIT_ARTICLES]
 
@@ -4424,6 +4461,12 @@ HOME_SLUG_SECT.update({s: "understand" for s in (
     "gas-heaters-damp")})
 HOME_SLUG_SECT.update({s: "maintain" for s in (
     "test-alarms-monthly", "condensation-ventilation-that-works")})
+# Sept 2026 expansion batch (home_roadmap14): section assignments
+HOME_SLUG_SECT.update({s: "understand" for s in (
+    "what-size-generator-do-i-need", "home-office-setup",
+    "ceiling-fan-vs-standing-fan", "power-cut-first-hour")})
+HOME_SLUG_SECT.update({s: "maintain" for s in (
+    "ants-in-the-kitchen", "drain-flies-bathroom")})
 HOME_SLUG_SECT.update({s: "appliances" for s in (
     "how-to-deep-clean-an-oven", "how-to-defrost-a-freezer-properly",
     "washing-machine-mould-door-seal", "how-to-descale-a-kettle",
@@ -4697,6 +4740,8 @@ def home_pages():
     HOME_ARTICLES.extend((s2, ti, dek, b) for (s2, _k, ti, dek, b) in home_roadmap12_data.HOME_ROADMAP_12 if s2 not in _have)
     import home_roadmap13_data
     HOME_ARTICLES.extend((s2, ti, dek, b) for (s2, _k, ti, dek, b) in home_roadmap13_data.HOME_ROADMAP_13 if s2 not in _have)
+    import home_roadmap14_data
+    HOME_ARTICLES.extend((s2, ti, dek, b) for (s2, _k, ti, dek, b) in home_roadmap14_data.HOME_ROADMAP_14 if s2 not in _have)
     import home_insurance_data
     HOME_ARTICLES.extend((s2, ti, dek, b) for (s2, _ti2, ti, dek, b) in
                          [(g[0], None, g[2], g[3], g[4]) for g in home_insurance_data.HOME_INSURANCE] if s2 not in _have)
@@ -5368,6 +5413,13 @@ def home_pages():
         "door-lock-sticks-fix": [("doors-sticking-rainy-season", "Doors that stick"),("gate-intercom-not-working", "Gate intercom"),("gate-motor-wont-move", "Gate motor")],
         "roof-gutter-leak-joint": [("gutters-and-downpipes", "Gutters & downpipes"),("flat-roof-ponding-and-leaks", "Flat roof & ponding"),("rainy-season-home-checklist", "The pre-rains checklist")],
         "bathroom-fan-condensation": [("bathroom-grout-mould", "Grout mould"),("mould-after-a-flooded-room", "Mould after flooding"),("indoor-drying-rainy-season", "Indoor drying")],
+        # Sept 2026 expansion batch (home_roadmap14)
+        "what-size-generator-do-i-need": [("generator-vs-inverter-nigeria", "Generator vs inverter"),("changeover-switch-care", "The changeover switch"),("outlet-overloading-danger", "Outlet overloading")],
+        "ants-in-the-kitchen": [("ignore-single-pest-sighting", "One sighting, calmly"),("diy-vs-professional-pests", "DIY or professional?"),("weevils-in-rice-and-beans", "Weevils in the pantry")],
+        "home-office-setup": [("generator-vs-inverter-nigeria", "Generator vs inverter"),("standby-power-real-numbers-your-meter", "Standby power, measured"),("extension-cords-temporary-power", "Extension cords are temporary")],
+        "ceiling-fan-vs-standing-fan": [("ceiling-fan-mounting-right", "Mounting a ceiling fan"),("wall-fan-making-noise", "The noisy fan"),("standby-power-real-numbers-your-meter", "Standby power, measured")],
+        "power-cut-first-hour": [("fridge-food-safety-power-cut", "Outage food rules"),("why-does-my-circuit-breaker-keep-tripping", "The tripping breaker"),("jerrycan-fuel-storage-safely", "Jerrycan fuel storage")],
+        "drain-flies-bathroom": [("sink-trap-clean-smell", "Sink trap smells"),("how-to-clear-a-slow-shower-drain", "The slow shower drain"),("floor-drain-backflow", "Drain smells outdoors")],
     }
     for slug, ti, dek, b in HOME_ARTICLES:
         key = HOME_SLUG_SECT[slug]

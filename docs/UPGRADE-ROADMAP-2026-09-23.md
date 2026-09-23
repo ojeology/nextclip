@@ -1,5 +1,11 @@
 # BRYME upgrade roadmap — from 2026-09-23
 
+## Progress log (update after each shipped batch)
+
+- **Film depth batches 1–4 SHIPPED** (commits `d5e4ae5`, `c6972ca4`, `7ace2537`, `24dc02db`): 100/490 movie/TV pages enriched with verdict + FAQ + similar-picks (median enriched ~370 words). Venue date-cap fix `f991a25f` (all page dates ≤ reviewedAt 2026-09-21) is live.
+- **Home & Fitness volume batch SHIPPED 2026-09-23**: fitness desk 45 → 55 pages (10 beginner guides: push-up progression, squat form, soreness vs injury, resistance bands, stretching timing, Nigerian protein foods, beginner running plan, workout timing, fitness trackers, workout hydration) + home desk 229 → 235 pages (generator sizing, kitchen ants, home-office setup, ceiling vs standing fan, power-cut first hour, bathroom drain flies). Sitemap 3,555 → 3,571 URLs, additions-only (verified pre-push). Related-link maps + section counts wired for all 16.
+- Next: film batch 5 (continue the 490 tail), home/fitness batch 2, GSC 50%-indexed checkpoint end-Oct.
+
 Governing principle: the plumbing (SEO, security, speed, monetization rails)
 is already excellent. Every upgrade from here is **content depth and
 freshness**, desk by desk, weakest first. Each phase ends with one (and only
