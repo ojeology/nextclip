@@ -496,6 +496,10 @@ def _page_ld(title, desc, route):
     graph = [
         {"@type": ptype, "@id": url + "#webpage", "url": url, "name": name,
          "description": str(desc), "inLanguage": "en",
+         # dateModified is honest here: the generator rebuilds and re-verifies
+         # these pages on every build (the desks' own "re-checked" stamp makes
+         # the same claim in prose), so the build date IS the last modification.
+         "dateModified": TODAY,
          "isPartOf": {"@id": ORIGIN + "/#website"},
          "publisher": {"@id": ORIGIN + "/#organization"}},
         {"@type": "Organization", "@id": ORIGIN + "/#organization",
@@ -1546,6 +1550,7 @@ def entertainment_pages():
         '.nx-watch-head{font-size:13px;color:#9aa2ab;margin:0 0 8px}'
         '.nx-watch a{display:inline-block;margin:0 10px 8px 0;color:#d8b64a;font-weight:750;font-size:14px}'
         '.nx-backlink a{color:#d8b64a;font-weight:750}'
+        + '.nx-faq dt{font-weight:700;margin-top:16px}.nx-faq dd{margin:4px 0 0 0;color:#b9bfc7}'
         '@media(max-width:680px){.nx-home-hero{min-height:440px}.nx-home-hero-inner{padding-top:150px;padding-bottom:34px}.nx-home-hero h1{font-size:44px}'
         '.nx-genre-grid{grid-template-columns:repeat(2,1fr)}.nx-edit-row{grid-template-columns:repeat(2,1fr);gap:12px}'
         '.nx-body{display:block;padding:18px 20px 44px}.nx-aside{border-left:0;border-top:1px solid #2c3138;padding:16px 0 0;margin-top:24px}'
@@ -1693,6 +1698,20 @@ def entertainment_pages():
                              "width": 1280, "height": 720}
         return '<script type="application/ld+json">' + json.dumps(ld, ensure_ascii=False) + '</script>'
 
+    def _nx_faq_ld(m, rec):
+        # FAQPage schema for enriched titles; only from the desk's authored
+        # Q&A in entertainment_enrichment.py, never generated filler.
+        ld = {"@context": "https://schema.org", "@type": "FAQPage",
+              "mainEntity": [{"@type": "Question", "name": q,
+                              "acceptedAnswer": {"@type": "Answer", "text": a}}
+                             for q, a in rec.get("faqs") or []]}
+        return '<script type="application/ld+json">' + json.dumps(ld, ensure_ascii=False) + '</script>'
+
+    import entertainment_enrichment as _enr
+    _nx_genre_ix = {}
+    for _gi in _nx.MOVIES:
+        _nx_genre_ix.setdefault(_gi.get("genre") or "", []).append(_gi)
+
     def _nx_movie_page(m):
         badges = [str(m.get("year") or ""), m.get("genre") or "", m.get("language") or "",
                   (str(m.get("runtime")) if m.get("runtime") else "")]
@@ -1719,6 +1738,20 @@ def entertainment_pages():
         _chip_html = ('<p style="background:rgba(216,182,74,.10);border:1px solid #d8b64a;padding:13px 15px;margin:0 0 22px">'
                       '<a href="/entertainment/reviews/' + m["slug"] + '/" style="text-decoration:none"><b>Read the desk review</b> &#8212; '
                       + html.escape(_rv_chip["verdict"]) + ' (score ' + _nr.review_score_str(_rv_chip) + '/10)</a></p>') if _rv_chip else ""
+        _enr_rec = _enr.ENRICH.get(m["slug"])
+        if _enr_rec:
+            verdict_html = ('<h2>The desk&rsquo;s verdict</h2><p>' + html.escape(_enr_rec["verdict"]) + '</p>')
+            faq_html = ('<h2>Questions people ask about ' + html.escape(m["title"]) + '</h2><dl class="nx-faq">'
+                        + "".join('<dt>' + html.escape(q) + '</dt><dd>' + html.escape(a) + '</dd>'
+                                  for q, a in _enr_rec["faqs"]) + '</dl>')
+            faq_ld = _nx_faq_ld(m, _enr_rec)
+        else:
+            verdict_html = faq_html = faq_ld = ""
+        _sim = [x for x in _nx_genre_ix.get(m.get("genre") or "", []) if x["slug"] != m["slug"]][:3]
+        sim_html = ('<h2>More like this</h2><ul class="nx-facts">'
+                    + "".join('<li><a href="/entertainment/movie/' + x["slug"] + '/">' + html.escape(x["title"])
+                              + ((' (' + str(x["year"]) + ')') if x.get("year") else '') + '</a></li>' for x in _sim)
+                    + '</ul>') if _sim else ""
         desc = html.escape(m.get("description") or m.get("teaser") or "")
         if desc == html.escape(m.get("teaser") or ""):
             _cr = []
@@ -1730,7 +1763,7 @@ def entertainment_pages():
                 desc = desc + " " + " ".join(_cr)
         body = (head("entertainment", "Film, TV and anime recommendations with reasons.")
             + _NX_CSS
-            + _nx_movie_ld(m)
+            + _nx_movie_ld(m) + faq_ld
             + '<main id="main">'
             + '<section class="nx-movie-hero" style="--nx-backdrop:url(\'https://i.ytimg.com/vi/' + (m.get("yt") or "") + '/hqdefault.jpg\')">'
             + '<div class="nx-shell nx-movie-hero-inner">' + _nx_poster(m)
@@ -1742,7 +1775,7 @@ def entertainment_pages():
             + '<div class="nx-shell nx-body"><div class="nx-prose">'
             + _chip_html + '<h2>The story</h2><p>' + desc + '</p>'
             + ('<h2>Details the desk keeps</h2><ul class="nx-facts">' + facts_html + '</ul>' if facts_html else "")
-            + wl_html + rel_html
+            + verdict_html + wl_html + sim_html + faq_html + rel_html
             + '<p class="nx-backlink"><a href="/entertainment/">&#8592; Back to the full catalogue</a></p>'
             + '</div><aside class="nx-aside"><dl>' + aside_html + '</dl>'
             + '<p class="nx-verified">Trailer link verified ' + _nx_ver + ' via YouTube oEmbed (title and channel checked). The player loads lazily from YouTube’s no-cookie domain when the trailer nears your viewport.</p>'
@@ -1762,6 +1795,9 @@ def entertainment_pages():
         return ("/movie/" + m["slug"] + "/", _nx_ttl,
                 (m.get("teaser") or m.get("description") or "")[:155], body)
     movie_pages = [_nx_movie_page(m) for m in _nx.MOVIES]
+    _enr_missing = [k for k in _enr.ENRICH if k not in {mm["slug"] for mm in _nx.MOVIES}]
+    if _enr_missing:
+        print("  !! enrichment keys without a matching MOVIES slug (fix after renames):", _enr_missing)
     _sc_dist = {}
     for _m0 in _nx.MOVIES:
         _s0 = _m0.get("score")

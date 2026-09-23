@@ -1,0 +1,100 @@
+# BRYME upgrade roadmap — from 2026-09-23
+
+Governing principle: the plumbing (SEO, security, speed, monetization rails)
+is already excellent. Every upgrade from here is **content depth and
+freshness**, desk by desk, weakest first. Each phase ends with one (and only
+one) IndexNow ping and a check of the release gates.
+
+## Phase 0 — Hygiene quick wins — ✅ DONE 2026-09-23 (see audit doc for the corrections)
+
+1. **Purge "Moved:" tombstones from `entertainment/sitemap.xml`** — and fix the
+   generator (`build-ecosystem.py`) so renamed slugs never re-enter the
+   sitemap. Sitemaps list canonical pages only.
+2. **Add `datePublished` / `dateModified`** to writers and sports article
+   schema (generator + template change, applies desk-wide automatically).
+3. **Revive the sports data agent**: add free `FOOTBALL_DATA_API_KEY` as a
+   GitHub secret (football-data.org), trigger `sports-update.yml` manually
+   once, confirm the 18 thin fixture pages refresh with real tables.
+4. Re-run `npm run validate` gates; commit; deploy.
+- **Done when**: sitemap has 0 tombstones, writers/sports articles carry dates,
+  sports fixtures show current-season data.
+
+## Phase 1 — Entertainment depth program (weeks 1–4) — the flagship
+
+Goal: turn 847 stubs into articles. Median 153 → 600+ words; thin 85% → <5%.
+
+1. **Enrich the data model first** (`content/` JSON feeding
+   `build-ecosystem.py`): per-title fields for
+   `verdict` (2–3 sentence editorial take), `where_to_watch` (NG first, plus
+   US/UK availability), `similar_picks` (3 internal links — fixes the 47/page
+   link deficit), `faq` (3 Q&As → `FAQPage` schema).
+2. **Extend the movie/TV template** to render those blocks. Because the desk
+   is generator-built, one template change upgrades every page at once; the
+   per-title text is the real work.
+3. **Batch it**: batch 1 = top 100 titles (by demand: current theatrical,
+   streamers' hits, anime evergreens — Squid Game/anime slugs already earn
+   internal links). Batches of ~100/week → all 847 in ~8 weeks; 300 pages
+   improved is enough to move indexing.
+4. **Quality bar per page**: ≥600 unique words, 3+ internal links, FAQ block,
+   no two pages sharing sentences (the generator makes this auditable — add a
+   duplicate-shingle check to `validate-site-quality.js`).
+5. After each batch: single IndexNow ping; watch GSC impressions for the desk.
+- **Done when**: desk median ≥500 words, thin% <5%, entertainment indexed
+  pages climb from near-zero to 50%+ of sitemap.
+
+## Phase 2 — Writers + fitness volume (weeks 2–6, parallel with Phase 1)
+
+1. **Writers venue pages (~40)**: each gets pay rates, submission windows,
+   response times, acceptance difficulty, verdict — 500+ words. These are
+   money pages for the work publication; highest RPM-per-word on the site.
+2. **Fitness desk 45 → ~120 pages**: programmes, equipment guides, calculator
+   companions (calculators already exist under ecosystem). Interlink every new
+   page from the calculator/tool pages.
+3. **Home desk**: add visible "Last updated" stamps + dates in schema; set a
+   quarterly review rotation (DIY/YMYL-adjacent trust signal).
+- **Done when**: 0 thin venue pages, fitness ≥100 pages, home pages dated.
+
+## Phase 3 — Monetization on-ramp (when you say go)
+
+1. Watch ads.txt flip to **Authorized** (normal window: 2–7 days from 21 Sep).
+2. Confirm CMP serves with an EU VPN + fresh Incognito (message was published
+   22 Sep).
+3. Add the **US state regulations** message in Privacy & messaging.
+4. Wire ad units: `_ads_slot()` in `build-ecosystem.py` already exists — place
+   after-lede / mid-article / before-footer in clearly labelled containers,
+   never resembling job cards (per `docs/ADS.md`). Keep Google auto-ads OFF
+   until placements are reviewed.
+5. Re-run all release gates + browser validation before enabling.
+- **Done when**: ads serve on improved desks only, RPM baseline recorded.
+
+## Phase 4 — Growth & measurement (ongoing)
+
+- **GSC targets**: 50% of 2,033 URLs indexed by end of Oct; 80% by year-end
+  (baseline ~300 on 23 Sep). Review weekly, per desk.
+- **GA4**: content-group by desk; compare engagement before/after Phase 1
+  batches — depth upgrades should lift time-on-page.
+- **IndexNow discipline**: one ping per meaningful batch, nothing more.
+- **CI**: after next push, check the Actions tab — `quality.yml` must be green
+  on every commit; fix any gate it flags before merging further work.
+- **Ops note for workspace copies**: the full tree is ~490 MB (public/ alone
+  is 156 MB). Keep sandbox/VM copies sparse (`git sparse-checkout`, skip
+  `public/ reports/ assets/`) or they truncate and produce false audit
+  findings — this bit the 23 Sep audit's first pass.
+
+## Suggested weekly cadence
+
+| Day | Block |
+|---|---|
+| Mon | Phase-1 batch content (100 titles' data) |
+| Tue | Rebuild + gates + deploy + 1 IndexNow ping |
+| Wed | Phase-2 (writers venues / fitness) |
+| Thu | Sports agent review, dates/schema fixes |
+| Fri | GSC/GA4 review, next-batch selection, roadmap tick |
+
+## What NOT to do
+
+- Don't touch CSP, header stack, canonical scheme, or the build order — they
+  are verified correct.
+- Don't mass-ping IndexNow or resubmit sitemaps repeatedly.
+- Don't enable auto-ads or ad units before the CMP is confirmed and placements
+  are reviewed against `docs/ADS.md`.
