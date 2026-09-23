@@ -232,4 +232,41 @@ None,
 </div>
 <div class="tt-btnrow"><button type="button" id="tt-speed" class="btn">Calculate the speed I need</button></div>
 <pre id="tt-out" class="tt-out" aria-live="polite"></pre>"""),
+
+("electricity-cost-calculator", "Electricity cost calculator", "Electricity cost calculator: what any appliance really costs to run",
+ "Pick an appliance, add your rate from the bill, and see the cost per hour, day, month and year in your currency. Runs entirely in your browser.",
+ None,
+ """<h2>What this does</h2>
+<p>Every appliance has a wattage on its label. Multiply that by the hours it runs and your electricity rate, and you get what it truly costs - not the vague "a few dollars a month" utilities imply. This tool does that arithmetic instantly: pick a common appliance or enter a custom wattage, set how many hours a day it runs, and read off the hourly, daily, monthly and yearly cost.</p>
+<h2>The default rates</h2>
+<p>The region picker pre-fills a national reference rate so the numbers work before you touch anything: the United States average residential rate of about 18.4&cent; per kWh (US Energy Information Administration, September 2026), the UK Ofgem price-cap unit rate of 26.11p per kWh (July-September 2026), Canada at about C$0.14 and Australia at about A$0.33. These are averages and caps, not quotations - rates vary by state, region and tariff, and they change several times a year. The rate printed on <b>your</b> bill or prepaid meter always wins: overwrite the rate box with your own figure and every result updates.</p>
+<h2>Notes</h2>
+<p>Appliance wattages are typical figures - a space heater near 1,500 W and a tumble dryer near 3,000 W are the common values, but your model's nameplate is the truth. Appliances that cycle on and off (fridge-freezers, air conditioners) are listed at a realistic average draw, not their peak. For the data-plan side of the same question, the <a href="/tech/tool/data-usage-estimator/">data usage estimator</a> is the sibling tool. Nothing you enter leaves this page - the tool runs entirely in your browser.</p>""",
+ """<div class="tt-grid">
+<div class="tt-field"><label class="tt-label" for="tt-appliance">Appliance</label><select id="tt-appliance">
+<option value="1500">Space heater - 1500 W</option>
+<option value="1000">Portable air conditioner - 1000 W</option>
+<option value="3500">Central air conditioning - 3500 W</option>
+<option value="3000">Tumble dryer - 3000 W</option>
+<option value="500">Washing machine - 500 W</option>
+<option value="150">Fridge-freezer (average draw) - 150 W</option>
+<option value="400">Gaming PC - 400 W</option>
+<option value="100">Television - 100 W</option>
+<option value="7200">EV charger (Level 2) - 7200 W</option>
+<option value="custom">Custom wattage</option>
+</select></div>
+<div class="tt-field"><label class="tt-label" for="tt-watts">Custom wattage (W)</label><input id="tt-watts" type="number" inputmode="numeric" min="1" max="50000" step="1" placeholder="1200"></div>
+<div class="tt-field"><label class="tt-label" for="tt-hours">Hours running per day</label><input id="tt-hours" type="number" inputmode="decimal" min="0.1" max="24" step="0.5" placeholder="4"></div>
+<div class="tt-field"><label class="tt-label" for="tt-region">Region (pre-fills the rate)</label><select id="tt-region">
+<option value="0.184|$">United States - about $0.184/kWh (EIA average)</option>
+<option value="0.2611|&pound;">United Kingdom - &pound;0.2611/kWh (Ofgem cap)</option>
+<option value="0.14|C$">Canada - about C$0.14/kWh</option>
+<option value="0.33|A$">Australia - about A$0.33/kWh</option>
+<option value="custom">My own rate</option>
+</select></div>
+<div class="tt-field"><label class="tt-label" for="tt-rate">Your rate per kWh</label><input id="tt-rate" type="number" inputmode="decimal" min="0.01" max="5" step="0.001" placeholder="0.184"></div>
+</div>
+<div class="tt-btnrow"><button type="button" id="tt-calc" class="btn">Calculate running cost</button></div>
+<pre id="tt-out" class="tt-out" aria-live="polite"></pre>
+<p id="tt-msg" class="tt-msg" aria-live="polite"></p>"""),
 ]

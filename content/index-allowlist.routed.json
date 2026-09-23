@@ -1550,6 +1550,7 @@
     "/tech/tool/base64-encoder/",
     "/tech/tool/case-converter/",
     "/tech/tool/data-usage-estimator/",
+    "/tech/tool/electricity-cost-calculator/",
     "/tech/tool/http-status-lookup/",
     "/tech/tool/internet-speed-calculator/",
     "/tech/tool/json-formatter/",
