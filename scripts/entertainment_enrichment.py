@@ -2199,4 +2199,248 @@ ENRICH = {
              "Nollywood film for mixed audiences."),
         ],
     },
+
+    "the-godfather": {
+        "verdict": "The blueprint every gangster epic since has been measured against. Coppola plays "
+            "family tragedy on opera-scale sets, and the film is patient the way great novels are - "
+            "nothing rushes, everything lands. Unhurried, formally flawless, endlessly quoted.",
+        "faqs": [
+            ("Who directed The Godfather?",
+             "Francis Ford Coppola, co-writing the screenplay with novelist Mario Puzo from Puzo's 1969 bestseller."),
+            ("Do I need to watch the sequels?",
+             "The 1972 original stands alone; Part II (1974) continues Michael's story and is widely ranked "
+             "among the greatest sequels ever made."),
+            ("How long is The Godfather?",
+             "It runs just under three hours - a full evening, and the pacing rarely feels it."),
+        ],
+    },
+    "the-dark-knight": {
+        "verdict": "The comic-book film that argued with itself about chaos, and won. Nolan builds a crime "
+            "epic first and a superhero film second, and Ledger's Joker remains the benchmark the genre "
+            "keeps failing to beat. Bigger and darker than its predecessor in every department.",
+        "faqs": [
+            ("Is this a sequel?",
+             "Yes - the second film of Christopher Nolan's Dark Knight trilogy, following Batman Begins (2005)."),
+            ("Why is the Joker performance so famous?",
+             "Heath Ledger's take on the character became one of cinema's most acclaimed villains, and earned "
+             "a posthumous Academy Award for Best Supporting Actor."),
+            ("Which order should I watch the trilogy in?",
+             "Release order: Batman Begins, The Dark Knight, The Dark Knight Rises."),
+        ],
+    },
+    "the-matrix": {
+        "verdict": "The 1999 film that rewired action cinema - leather, bullet-time and a philosophy seminar "
+            "fired at full speed. Two decades on it remains the cleanest 'reality is a lie' blockbuster ever "
+            "built: propulsive, stylish, and smarter than it needed to be.",
+        "faqs": [
+            ("Who made The Matrix?",
+             "The Wachowskis wrote and directed it; the film made their careers and changed action choreography industry-wide."),
+            ("Is the story self-contained?",
+             "Largely, yes - the 1999 film has a complete arc. The sequels expand (and divide audiences), with "
+             "The Matrix Resurrections arriving decades later."),
+            ("Why is it still so influential?",
+             "Its mix of wire-fu action, digital-age paranoia and iconic visual language - the falling green code, "
+             "the sunglasses, the red pill - has been quoted ever since."),
+        ],
+    },
+    "whiplash": {
+        "verdict": "A jazz film with the pulse rate of a thriller. Chazelle turns a music-school practice room "
+            "into a battleground, and J.K. Simmons' Fletcher is one of the great screen monsters - terrifying "
+            "because he might be right. The final performance is the most stressful ten minutes on this desk.",
+        "faqs": [
+            ("Is Whiplash based on something?",
+             "Yes - Damien Chazelle's own 2013 short film of the same name, expanded into this feature."),
+            ("What did it win?",
+             "Three Academy Awards, including Best Supporting Actor for J.K. Simmons."),
+            ("Do I need to like jazz?",
+             "No - it helps to like tension. The music is the battlefield, not the homework."),
+        ],
+    },
+    "casino-royale": {
+        "verdict": "The reboot that rebuilt Bond from cold steel. Craig's debut strips the gimmicks, plays the "
+            "brutality and the vulnerability honestly, and the free-running chase remains the franchise's best "
+            "cold open. The film that made 007 matter again.",
+        "faqs": [
+            ("Who plays Bond here?",
+             "Daniel Craig, in his first appearance as 007 - a grounded reboot of the character."),
+            ("Is Casino Royale the first Bond story?",
+             "It was Ian Fleming's first Bond novel, yes - though not the first Bond film, which is why multiple "
+             "versions exist."),
+            ("Does the story continue?",
+             "Directly - Quantum of Solace picks up where this one ends, the only true immediate sequel in the "
+             "Craig era."),
+        ],
+    },
+    "die-hard": {
+        "verdict": "The template for every one-location action film since: an ordinary cop, a tower full of "
+            "hostages, and bare feet on glass. McClane gets tired, bleeds and cracks jokes - which is exactly "
+            "why it still plays. And yes, it is a Christmas film; the argument is settled.",
+        "faqs": [
+            ("Is Die Hard really a Christmas movie?",
+             "It is set at a Christmas party and watched every December - treat the debate as part of the fun."),
+            ("Who directed it?",
+             "John McTiernan, at the peak of his action run; the film is adapted from Roderick Thorp's novel "
+             "Nothing Lasts Forever."),
+            ("Are the sequels worth it?",
+             "Opinions sharpen quickly after the first two - the 1988 original is the one to see first and most."),
+        ],
+    },
+    "coco": {
+        "verdict": "Pixar's Dia de Muertos masterpiece - a colour-drenched land of the dead, a family mystery, "
+            "and a final act engineered with tissues in mind. The 'Remember Me' turn is a trap and you will "
+            "walk into it willingly.",
+        "faqs": [
+            ("What is the film about?",
+             "A boy who dreams of music in a family that bans it, accidentally crossing into the land of the "
+             "dead during Dia de Muertos - the Mexican holiday honouring departed family."),
+            ("Did Coco win awards?",
+             "Yes - two Academy Awards, including Best Animated Feature."),
+            ("Is it too sad for kids?",
+             "It deals with loss head-on, but with warmth and humour - the ending is emotional, not frightening."),
+        ],
+    },
+    "toy-story": {
+        "verdict": "The 1995 film that started computer-animated features - and still one of the best scripts "
+            "Pixar ever shipped. The toys' jealousy plot is airtight, the jokes hold, and the buddy arc became "
+            "the studio's template for two decades.",
+        "faqs": [
+            ("Why is Toy Story historically important?",
+             "It was the first feature-length film made entirely with computer animation - the shot that changed "
+             "the industry."),
+            ("Who voices the leads?",
+             "Tom Hanks as Woody and Tim Allen as Buzz - the pairing the whole series is built on."),
+            ("How many sequels are there?",
+             "Three more Toy Story films followed, with the fourth (2019) widely praised as a worthy coda."),
+        ],
+    },
+    "wall-e": {
+        "verdict": "Pixar at its boldest and quietest: a near-wordless opening act on a trashed Earth, then a "
+            "space romance that earns its big ideas without a lecture. The little robot's binocular heart is "
+            "one of animation's great character designs.",
+        "faqs": [
+            ("Is it true there's barely any dialogue?",
+             "Much of the opening plays almost wordlessly - the storytelling is visual, and that restraint is "
+             "the point."),
+            ("Who directed WALL-E?",
+             "Andrew Stanton, the Pixar veteran behind Finding Nemo; the film won the Best Animated Feature Oscar."),
+            ("Is it too slow for small kids?",
+             "The first act is patient - but the robot physical comedy carries younger viewers through it."),
+        ],
+    },
+    "back-to-the-future": {
+        "verdict": "The perfect blockbuster machine: Zemeckis at full speed, an airtight script where every "
+            "setup pays off, and the 1955 sequence as plotting taught through pure joy. Thirty-plus years of "
+            "imitators and it still runs like a Swiss watch.",
+        "faqs": [
+            ("Who directed Back to the Future?",
+             "Robert Zemeckis, with Steven Spielberg producing - the team that turned the famously rejected "
+             "script into a phenomenon."),
+            ("What order do the trilogy films go in?",
+             "Release order: Back to the Future (1985), Part II (1989), Part III (1990)."),
+            ("Is the trilogy worth continuing?",
+             "Yes - Part II doubles the plotting games and Part III swaps genre entirely; the finale lands the "
+             "story properly."),
+        ],
+    },
+    "alien": {
+        "verdict": "Ridley Scott's haunted house in space - pure dread, industrial set design that still "
+            "out-ages most modern sci-fi, and the single greatest dinner-party disaster in cinema. The "
+            "slowest-burn thriller on this desk and worth every cold minute.",
+        "faqs": [
+            ("Who directed Alien?",
+             "Ridley Scott; the 1979 original launched a franchise that spans decades."),
+            ("Alien or Aliens first?",
+             "Release order: Alien (1979) is the horror template; Aliens (1986) shifts to full-throttle action "
+             "under James Cameron."),
+            ("Do the later prequels change the story?",
+             "Prometheus and Covenant add backstory decades later - watch the originals first; they stand alone."),
+        ],
+    },
+    "the-shining": {
+        "verdict": "Kubrick's overhead-horror machine: a hotel with impossible geography, a slow descent, and "
+            "Nicholson unwinding one calm-crazy scene at a time. The rare horror film where the stillness is "
+            "the scary part.",
+        "faqs": [
+            ("Is The Shining based on a book?",
+             "Yes - Stephen King's 1977 novel; King famously disagreed with Kubrick's colder take, and wrote "
+             "his own 1997 miniseries in response."),
+            ("Is there a sequel?",
+             "Doctor Sleep (2019), based on King's 2013 sequel novel, follows Danny as an adult."),
+            ("Where does 'Here's Johnny!' come from?",
+             "Nicholson improvised the line from a TV catchphrase of the era - and it stayed in the film."),
+        ],
+    },
+    "zodiac": {
+        "verdict": "Fincher's procedural about the case that would not close: no jump scares, just mounting "
+            "dread across years of newspaper ink and obsession. The scariest film on this desk because it "
+            "stays closest to the documented record - and still ends unresolved.",
+        "faqs": [
+            ("Is Zodiac a true story?",
+             "It is based on the real Zodiac killer case in late-1960s California - parts of which remain "
+             "officially unsolved."),
+            ("Who directed it?",
+             "David Fincher, between his thrillers and The Social Network - his most restrained and most "
+             "unsettling film."),
+            ("Is it too slow?",
+             "It is deliberately long and procedural - if you want a slasher, this is not that; if you want "
+             "dread, it is unmatched."),
+        ],
+    },
+    "your-name": {
+        "verdict": "Shinkai's body-swap romance that became a global phenomenon - comet-lit animation gorgeous "
+            "frame by frame, comedy front-loaded, and an ending that lands like first love. The gateway anime "
+            "film for people who think they don't like anime.",
+        "faqs": [
+            ("Who made Your Name?",
+             "Makoto Shinkai, writer-director and animator; the 2016 film made him a household name far beyond Japan."),
+            ("What language is it in?",
+             "Japanese - subtitled or dubbed both work; the visual storytelling carries either."),
+            ("Is it connected to other Shinkai films?",
+             "It stands alone; his later Weathering with You and Suzame are separate stories in a similar register."),
+        ],
+    },
+    "3-idiots": {
+        "verdict": "Bollywood's great campus comedy with a life philosophy smuggled inside - three hours that "
+            "pass like forty minutes, a soundtrack a whole generation hums, and 'All izz well' as a survival "
+            "mantra. The friendliest possible front door to Hindi cinema.",
+        "faqs": [
+            ("What language is 3 Idiots in?",
+             "Hindi - it is one of Indian cinema's most-watched and most-subtitled films worldwide."),
+            ("Is it based on a book?",
+             "Loosely on Chetan Bhagat's novel Five Point Someone, with substantial changes - a detail the "
+             "credits acknowledged after some public debate."),
+            ("Where should I start with Indian films?",
+             "This, or the desk's Indian cinema starter route - Lagaan is the other standing recommendation."),
+        ],
+    },
+    "dangal": {
+        "verdict": "The true-story wrestling drama that became one of Indian cinema's biggest ever: a stubborn "
+            "father training daughters against a village's worth of odds. Aamir Khan plays the patriarch hard "
+            "to like and harder to dismiss - and the bouts are shot better than most sports films manage.",
+        "faqs": [
+            ("Is Dangal a true story?",
+             "Yes - wrestler Mahavir Singh Phogat training his daughters Geeta and Babita to national and "
+             "international victory."),
+            ("What language is it in?",
+             "Hindi, with the Haryanvi flavour of its setting; the wrestling storytelling translates universally."),
+            ("Why is it such a big deal?",
+             "Beyond the box office, it landed squarely in India's conversation about daughters and sport - "
+             "rare for a mainstream entertainer."),
+        ],
+    },
+    "anikulapo": {
+        "verdict": "Kunle Afolayan gives Nollywood its folklore epic: a tale of desire, jealousy and a "
+            "mythical second chance, wrapped in gorgeous Yoruba-language production design. The film that "
+            "made 'Akala' a household name far beyond its opening weekend.",
+        "faqs": [
+            ("What language is Anikulapo in?",
+             "Primarily Yoruba - subtitled, and deeply rooted in Yoruba folklore and storytelling tradition."),
+            ("Who made it?",
+             "Kunle Afolayan, one of Nollywood's most prominent directors, with a cast led by Kunle Remi and "
+             "Bimbo Ademoye."),
+            ("Is it a good first Nollywood film?",
+             "Yes - the myth structure is universal and the craft is a showcase; the desk's Nigerian thrillers "
+             "route pairs well with it."),
+        ],
+    },
 }
