@@ -133,3 +133,7 @@ Goal: turn 847 stubs into articles. Median 153 → 600+ words; thin 85% → <5%.
 - Pattern notes: (1) tech desk ships as COMMITTED ARTIFACTS - run scripts/build-ecosystem.py manually, then npm run build, then commit; (2) title_budget.py caps SERP titles at 60 chars - keep <title> keyword-first <=46 chars incl " | BRYME Tools"; long title survives as H1; (3) tools.json is writers-only, tech tools do not touch it.
 - Typo debt CLEARED: kettlebell ballswing x2 + bow-arrow, deload "the lifer", desk-stretches "a upper back".
 - Next-tool candidates remain: video file-size estimator, upload-time calculator, AI subscription cost comparer, password strength checker (all Tier-1 angles first).
+
+## HOME BATCH 19 (2026-09-23)
+
+- SHIPPED: 6 new tier-1 guides (caulk-vs-grout, lawn-mower, wasp-nest, pressure-washer, dishwasher-drain, baby-proofing). LESSON: 5 originally-planned topics ALREADY EXISTED (dryer-vent-cleaning-fire-risk, water-heater-flush-how-to, smart-thermostat-payback, garage-door-spring-safety, fridge-not-cooling) - ALWAYS curl live /home/<slug>/ before writing a batch. New home-batch wiring = 3 registries: HOME_SLUG_SECT + related_map (KeyError if missing!) + import/extend.
