@@ -898,6 +898,9 @@ def write_service(pub, pages):
     (base / "assets").mkdir(exist_ok=True)
     (base / "assets" / "site.css").write_text(css_for(pub), encoding="utf-8")
     urls = []
+    lm_by_url = {}
+    _dre = re.compile(r'"date(?:Modified|Published)": ?"(\d{4}-\d{2}-\d{2})"')
+    _vre = re.compile(r'reviewed (\d{4}-\d{2}-\d{2})')
     written = 0
     for route, title, desc, body in pages:
         if route in keep:
@@ -906,12 +909,19 @@ def write_service(pub, pages):
         p.mkdir(parents=True, exist_ok=True)
         full = shell(pub, title, desc, SUB[pub] + route, body)
         (p / "index.html").write_text(full, encoding="utf-8")
+        _m = _dre.search(full) or _vre.search(full)
+        lm_by_url[SUB[pub] + route] = _m.group(1) if _m else TODAY
         urls.append(SUB[pub] + route)
         written += 1
-    urls.extend(SUB[pub] + r for r in sorted(keep) if r in stashed)
+    for r in sorted(keep):
+        if r in stashed:
+            u = SUB[pub] + r
+            _m = _dre.search(stashed[r].decode("utf-8", "replace")) or _vre.search(stashed[r].decode("utf-8", "replace"))
+            lm_by_url[u] = _m.group(1) if _m else TODAY
+            urls.append(u)
     (base / "sitemap.xml").write_text(
         '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
-        + "\n".join(f"<url><loc>{u}</loc><lastmod>{TODAY}</lastmod></url>" for u in urls)
+        + "\n".join(f"<url><loc>{u}</loc><lastmod>{lm_by_url[u]}</lastmod></url>" for u in urls)
         + "\n</urlset>\n", encoding="utf-8")
     (base / "robots.txt").write_text(
         f"User-agent: *\nAllow: /\nSitemap: {SUB[pub]}/sitemap.xml\n", encoding="utf-8")

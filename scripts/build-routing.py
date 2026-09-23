@@ -362,17 +362,30 @@ small{display:block;margin-top:30px;color:#8a94a6}
     _si = ['<?xml version="1.0" encoding="UTF-8"?>\n'
            '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n']
     for _x in _children:
-        _si.append(f"<sitemap><loc>{ORIGIN}/{_x}</loc><lastmod>{_td}</lastmod></sitemap>\n")
+        _clm = _td
+        _cf = ROOT / _x
+        if _cf.is_file():
+            _clms = _re.findall(r"<lastmod>([^<]+)</lastmod>", _cf.read_text(encoding="utf-8", errors="replace"))
+            if _clms:
+                _clm = max(_clms)
+        _si.append(f"<sitemap><loc>{ORIGIN}/{_x}</loc><lastmod>{_clm}</lastmod></sitemap>\n")
     _si.append("</sitemapindex>\n")
     _sidx = "".join(_si)
     (ROOT / "sitemap.xml").write_text(_sidx, encoding="utf-8")
     (ROOT / "public" / "sitemap.xml").write_text(_sidx, encoding="utf-8")
     (ROOT / "public" / "sitemap_index.xml").write_text(_sidx, encoding="utf-8")
     _wurls = sorted({r for r in _rts if str(r).startswith("/writers/")})
+    _date_re = _re.compile(r'"date(?:Modified|Published)": ?"(\d{4}-\d{2}-\d{2})"')
     _wsm = ('<?xml version="1.0" encoding="UTF-8"?>\n'
             '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n')
     for _r in _wurls:
-        _wsm += f"<url><loc>{ORIGIN}{_r}</loc><lastmod>{_td}</lastmod></url>\n"
+        _lm = _td
+        _pf = ROOT / _r.lstrip("/") / "index.html"
+        if _pf.is_file():
+            _m = _date_re.search(_pf.read_text(encoding="utf-8", errors="replace"))
+            if _m:
+                _lm = _m.group(1)
+        _wsm += f"<url><loc>{ORIGIN}{_r}</loc><lastmod>{_lm}</lastmod></url>\n"
     _wsm += "</urlset>\n"
     (ROOT / "writers" / "sitemap.xml").write_text(_wsm, encoding="utf-8")
     (ROOT / "public" / "writers" / "sitemap.xml").write_text(_wsm, encoding="utf-8")
