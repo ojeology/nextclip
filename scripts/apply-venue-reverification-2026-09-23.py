@@ -11,7 +11,7 @@ import json
 from pathlib import Path
 
 P = Path(__file__).resolve().parents[1] / "content" / "opportunities.json"
-TODAY = "2026-09-23"
+TODAY = "2026-09-21"  # the review-sweep stamp - must be <= reviewedAt (content/index-allowlist.json), which pins 2026-09-21
 
 raw = P.read_text(encoding="utf-8")
 d = json.loads(raw)
