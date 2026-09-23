@@ -148,3 +148,8 @@ Goal: turn 847 stubs into articles. Median 153 → 600+ words; thin 85% → <5%.
 
 - SHIPPED & LIVE: /tech/tool/ai-subscription-cost-comparer/ (JS assets/tool-ai-subs.js). Defaults verified Sept-2026: ChatGPT Plus 20, Claude Pro 20, Google AI Pro 19.99, Perplexity Pro 20, Copilot Pro 20, SuperGrok 30, Midjourney 10. All editable; custom row; months 1-12; biggest-line-first + cancel-the-overlap hint.
 - Same-day triple ship: fitness GLP-1 cluster (4) + home energy cluster (5) + this tool. Roadmap next: video file-size estimator, upload-time calculator, password strength checker.
+
+## TOOLS 14-15: VIDEO FILE SIZE + UPLOAD TIME (2026-09-23)
+
+- SHIPPED & LIVE: /tech/tool/video-file-size-estimator/ (assets/tool-filesize.js) + /tech/tool/upload-time-calculator/ (assets/tool-uploadtime.js). Bitrate table: 4K 40 / 1440p 20 / 1080p 10 / 720p 5 / 480p 2.5 Mbps @30fps H.264; fps x0.85/x1/x1.7; codec x1/x0.55/x0.45; audio 0.128/0.256/0.448. Upload: +15% real-world line, GB/hour translation. Hub + nav at 15.
+- Same-day total: tools 12-15, fitness batch 8 (4), home batches 19-20 (11). Remaining roadmap: password strength checker, then fitness/home batches, film batch 7, GSC checkpoint end-Oct.
