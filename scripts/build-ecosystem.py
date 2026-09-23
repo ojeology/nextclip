@@ -585,15 +585,9 @@ def _nav_items(pub):
     if pub == "tech":
         guides = [("HEAD", "The guide shelf"), ("/tech/", "All of BRYME Tech")] + [
             ("/tech/" + c + "/", TECH_CAT[c][0]) for c in TECH_CAT]
-        tools = [("HEAD", "The toolbox"), ("/tech/tool/", "All eight tools"),
-                 ("/tech/tool/json-formatter/", "JSON formatter"),
-                 ("/tech/tool/base64-encoder/", "Base64 encoder"),
-                 ("/tech/tool/url-encoder/", "URL encoder"),
-                 ("/tech/tool/uuid-generator/", "UUID generator"),
-                 ("/tech/tool/timestamp-converter/", "Timestamp converter"),
-                 ("/tech/tool/word-counter/", "Word counter"),
-                 ("/tech/tool/case-converter/", "Case converter"),
-                 ("/tech/tool/http-status-lookup/", "HTTP status lookup")]
+        import tech_tools_data as _ttd
+        tools = [("HEAD", "The toolbox"), ("/tech/tool/", "All " + str(len(_ttd.TOOLS)) + " tools")] + [
+            ("/tech/tool/" + t[0] + "/", t[1]) for t in _ttd.TOOLS]
         desk = [("HEAD", "Standards and contact"), ("/tech/methodology/", "Editorial methodology"),
                 ("/tech/corrections/", "Corrections policy"), ("/tech/about/", "About"),
                 ("/tech/contact/", "Contact"), ("/tech/privacy/", "Privacy")]
@@ -3552,7 +3546,8 @@ _TOOL_JS = {"json-formatter": "json", "base64-encoder": "base64", "url-encoder":
             "uuid-generator": "uuid", "timestamp-converter": "timestamp", "word-counter": "wordcount",
             "case-converter": "case", "http-status-lookup": "status",
             "data-usage-estimator": "datausage",
-            "vpn-cost-calculator": "vpncost"}
+            "vpn-cost-calculator": "vpncost",
+            "internet-speed-calculator": "speed"}
 
 def tech_tool_pages():
     """BRYME Tools (master build M3): client-side tools at /tech/tool/<slug>/, CSP-safe."""
@@ -3591,8 +3586,9 @@ def tech_tool_pages():
         + '<section class="section alt"><div class="section-head"><p class="kicker">The honest bit</p><h2>What "runs in your browser" means.</h2></div>'
         + '<div class="prose"><p>Every tool here is a small script served with this page and executed by <em>your</em> browser on <em>your</em> device. There is no backend to send your text to, no logging, no account. The <a href="/tech/disclaimer/">disclaimer</a> applies: general-purpose utilities, provided as-is \u2014 and the standing advice holds everywhere: do not paste secrets into web tools, including these.</p></div></section>'
         + '</div></main>' + foot("tech"))
+    _tool_names = ", ".join(t[1] for t in tools)
     pages.insert(0, ("/tool/", "BRYME Tools \u2014 browser tools, zero data collection | BRYME Tech",
-                     "Ten free browser tools \u2014 JSON formatter, Base64, URL encoding, UUID generator, timestamps, word counter, case converter, HTTP status lookup, a data-usage estimator and a VPN true-cost calculator. Client-side, no data collection.", hub))
+                     str(len(tools)) + " free browser tools \u2014 " + _tool_names + ". Client-side, no data collection.", hub))
     return pages
 
 

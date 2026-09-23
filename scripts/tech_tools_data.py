@@ -211,4 +211,25 @@ None,
 </div>
 <div class="tt-btnrow"><button type="button" id="tt-calc" class="btn">Calculate the true cost</button></div>
 <pre id="tt-out" class="tt-out" aria-live="polite"></pre>"""),
+
+("internet-speed-calculator", "Internet speed calculator", "What internet speed do you actually need?",
+ "Count the 4K streams, video calls, gamers and smart gadgets in the house - get the download and upload numbers worth paying for, headroom included. Runs entirely in your browser.",
+ "new-router-for-slow-internet",
+ """<h2>What this does</h2>
+<p>Internet plans are sold by big numbers, and most households either overpay for speed they never use or underbuy and blame the Wi-Fi. Count the simultaneous activity in your home and this tool adds the published bandwidth each activity actually consumes, applies a 25% headroom for surges, and maps the result onto the plan tiers providers commonly sell. It also works out the upload figure separately - the number video calls live and die on, and the one providers advertise least.</p>
+<h2>The rates behind the numbers</h2>
+<p>4K streaming about 25 Mbps, HD streaming 8, HD video calls 4 each, online gaming 5 (latency matters more than bandwidth there), music 1, a heavy work-from-home user 10 (cloud syncs and big files), and each smart-home device roughly half a megabit. These are the usual published per-activity figures - approximations, not quotations: services compress differently, and nobody streams six 4K films at once for long. For a data-cap question instead of a speed question, the <a href="/tech/tool/data-usage-estimator/">data usage estimator</a> is the sibling tool.</p>
+<h2>Notes</h2>
+<p>Two honest caveats live in the result: everything shares one connection, and real-world speeds over Wi-Fi land well below the advertised figure - walls, distance and router age each take their cut. If the number says you have plenty of speed and pages still crawl, the fix is usually the router, not the plan: <a href="/tech/new-router-for-slow-internet/">new router for slow internet</a> walks that diagnosis. Nothing you enter leaves this page - the tool runs entirely in your browser.</p>""",
+ """<div class="tt-grid">
+<div class="tt-field"><label class="tt-label" for="tt-4k">4K streams at once</label><input id="tt-4k" type="number" inputmode="numeric" min="0" max="10" step="1" placeholder="1"></div>
+<div class="tt-field"><label class="tt-label" for="tt-hd">HD streams at once</label><input id="tt-hd" type="number" inputmode="numeric" min="0" max="10" step="1" placeholder="1"></div>
+<div class="tt-field"><label class="tt-label" for="tt-calls">Video calls at once</label><input id="tt-calls" type="number" inputmode="numeric" min="0" max="10" step="1" placeholder="1"></div>
+<div class="tt-field"><label class="tt-label" for="tt-gamers">Online gamers</label><input id="tt-gamers" type="number" inputmode="numeric" min="0" max="6" step="1" placeholder="0"></div>
+<div class="tt-field"><label class="tt-label" for="tt-music">Music streams</label><input id="tt-music" type="number" inputmode="numeric" min="0" max="10" step="1" placeholder="1"></div>
+<div class="tt-field"><label class="tt-label" for="tt-wfh">Heavy work-from-home users</label><input id="tt-wfh" type="number" inputmode="numeric" min="0" max="6" step="1" placeholder="0"></div>
+<div class="tt-field"><label class="tt-label" for="tt-smart">Smart-home devices</label><input id="tt-smart" type="number" inputmode="numeric" min="0" max="60" step="1" placeholder="5"></div>
+</div>
+<div class="tt-btnrow"><button type="button" id="tt-speed" class="btn">Calculate the speed I need</button></div>
+<pre id="tt-out" class="tt-out" aria-live="polite"></pre>"""),
 ]
