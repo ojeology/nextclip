@@ -294,4 +294,64 @@ None,
 <div class="tt-btnrow"><button type="button" id="tt-calc" class="btn">Add up the stack</button></div>
 <pre id="tt-out" class="tt-out" aria-live="polite"></pre>
 <p id="tt-msg" class="tt-msg" aria-live="polite"></p>"""),
+
+("video-file-size-estimator", "Video file size estimator", "Video file size estimator",
+ "Pick resolution, frame rate, codec and length - get the file size before you record, or before that upload fails. Runs entirely in your browser.",
+ None,
+ """<h2>What this does</h2>
+<p>Video files are just bitrates wearing a stopwatch: bits per second, times seconds. Pick the resolution, frame rate, codec and length, and the tool multiplies the typical bitrate for that combination into a file size - useful before a recording, before a platform upload that has a limit, or before blaming the internet for what is simply a heavy file.</p>
+<h2>The bitrate table behind the numbers</h2>
+<p>The estimates use typical mid-quality H.264 bitrates at 30 frames per second: about 40 Mbps for 4K, 20 for 1440p, 10 for 1080p, 5 for 720p and 2.5 for 480p - close to the figures platforms publish for uploads. Frame rate scales from there (24fps slightly lighter, 60fps roughly 1.7 times), and newer codecs cut the bitrate for the same visible quality: HEVC/H.265 lands around half the H.264 figure, AV1 a little lower again. These are shapes, not quotes - real encoders, scene complexity and camera settings move results by a fifth or more either way. Many phones record 4K in HEVC by default; if your files look small for 4K, that is why.</p>
+<h2>Notes</h2>
+<p>The estimate is deliberately conservative-middle: fast action and grain (rain, crowds, sensor noise) inflate size; static scenes shrink it. Platforms re-encode everything on upload anyway, so the file you send is not the file viewers get - it just has to survive the trip. For that trip's length, the <a href="/tech/tool/upload-time-calculator/">upload time calculator</a> is the sibling tool; for what the editing PC costs to run, the <a href="/tech/tool/electricity-cost-calculator/">electricity cost calculator</a> prices any wattage. Nothing you pick here leaves the page.</p>""",
+ """<div class="tt-grid">
+<div class="tt-field"><label class="tt-label" for="tt-res">Resolution</label><select id="tt-res">
+<option value="40|4K (2160p)">4K (2160p) - about 40 Mbps H.264</option>
+<option value="20|2K (1440p)">2K (1440p) - about 20 Mbps</option>
+<option value="10|Full HD (1080p)" selected>Full HD (1080p) - about 10 Mbps</option>
+<option value="5|HD (720p)">HD (720p) - about 5 Mbps</option>
+<option value="2.5|SD (480p)">SD (480p) - about 2.5 Mbps</option>
+</select></div>
+<div class="tt-field"><label class="tt-label" for="tt-fps">Frame rate</label><select id="tt-fps">
+<option value="0.85|24 fps">24 fps (cinematic)</option>
+<option value="1|30 fps" selected>30 fps</option>
+<option value="1.7|60 fps">60 fps (smooth/sports/gaming)</option>
+</select></div>
+<div class="tt-field"><label class="tt-label" for="tt-codec">Codec / efficiency</label><select id="tt-codec">
+<option value="1|H.264">H.264 (most common)</option>
+<option value="0.55|HEVC / H.265">HEVC / H.265 (about half the size)</option>
+<option value="0.45|AV1">AV1 (newest, smallest)</option>
+</select></div>
+<div class="tt-field"><label class="tt-label" for="tt-audio">Audio</label><select id="tt-audio">
+<option value="0.128|standard stereo">Standard stereo (128 kbps)</option>
+<option value="0.256|high-quality stereo">High-quality stereo (256 kbps)</option>
+<option value="0.448|surround 5.1">Surround 5.1 (448 kbps)</option>
+<option value="0|no audio">No audio</option>
+</select></div>
+<div class="tt-field"><label class="tt-label" for="tt-min">Length in minutes</label><input id="tt-min" type="number" inputmode="numeric" min="0.5" max="100000" step="0.5" placeholder="10"></div>
+</div>
+<div class="tt-btnrow"><button type="button" id="tt-calc" class="btn">Estimate the file size</button></div>
+<pre id="tt-out" class="tt-out" aria-live="polite"></pre>
+<p id="tt-msg" class="tt-msg" aria-live="polite"></p>"""),
+
+("upload-time-calculator", "Upload time calculator", "Upload time calculator",
+ "File size in, upload speed in - get the realistic transfer time, plus what your connection actually moves per hour. Runs entirely in your browser.",
+ None,
+ """<h2>What this does</h2>
+<p>Enter a file size and your measured upload speed, and the calculator converts the marketing units into time: hours and minutes for that video backup, that course recording, that photo library. It also translates the speed into what it means per hour, which is usually the more honest number - a "fast" connection that uploads at 20 Mbps moves under 9 GB an hour.</p>
+<h2>Use a measured speed, not the plan's number</h2>
+<p>The speed that matters is the <b>upload</b> figure from a speed test run on the machine and connection you will actually upload from - not the headline plan speed, which is usually the download. Advertised upload speeds are "up to" figures; cable connections are typically much slower upward than downward, while fibre is often symmetrical. Wi-Fi, an older router, and anything else using the network during the transfer all take a cut, which is why the result includes a plan-for-it figure about fifteen percent above the ideal.</p>
+<h2>Notes</h2>
+<p>Sizes use decimal units (1 GB = 1,000 MB), matching how internet speeds are quoted. If the file in question is a video you have not made yet, the <a href="/tech/tool/video-file-size-estimator/">video file size estimator</a> sizes it first - the two tools in sequence answer "can I get this there tonight". Nothing you enter leaves this page.</p>""",
+ """<div class="tt-grid">
+<div class="tt-field"><label class="tt-label" for="tt-size">File size</label><input id="tt-size" type="number" inputmode="decimal" min="0.1" max="1000000" step="any" placeholder="2.5"></div>
+<div class="tt-field"><label class="tt-label" for="tt-unit">Unit</label><select id="tt-unit">
+<option value="1">MB</option>
+<option value="1000">GB</option>
+</select></div>
+<div class="tt-field"><label class="tt-label" for="tt-speed">Your upload speed (Mbps)</label><input id="tt-speed" type="number" inputmode="decimal" min="0.1" max="10000" step="any" placeholder="20"></div>
+</div>
+<div class="tt-btnrow"><button type="button" id="tt-calc" class="btn">Calculate the upload time</button></div>
+<pre id="tt-out" class="tt-out" aria-live="polite"></pre>
+<p id="tt-msg" class="tt-msg" aria-live="polite"></p>"""),
 ]

@@ -585,7 +585,7 @@ def _nav_items(pub):
     if pub == "tech":
         guides = [("HEAD", "The guide shelf"), ("/tech/", "All of BRYME Tech")] + [
             ("/tech/" + c + "/", TECH_CAT[c][0]) for c in TECH_CAT]
-        tools = [("HEAD", "The toolbox"), ("/tech/tool/", "All 13 tools"),
+        tools = [("HEAD", "The toolbox"), ("/tech/tool/", "All 15 tools"),
                  ("/tech/tool/json-formatter/", "JSON formatter & validator"),
                  ("/tech/tool/base64-encoder/", "Base64 encoder / decoder"),
                  ("/tech/tool/url-encoder/", "URL encoder / decoder"),
@@ -598,7 +598,9 @@ def _nav_items(pub):
                  ("/tech/tool/vpn-cost-calculator/", "VPN true-cost calculator"),
                  ("/tech/tool/internet-speed-calculator/", "Internet speed calculator"),
                  ("/tech/tool/electricity-cost-calculator/", "Electricity cost calculator"),
-                 ("/tech/tool/ai-subscription-cost-comparer/", "AI subscription comparer")]
+                 ("/tech/tool/ai-subscription-cost-comparer/", "AI subscription comparer"),
+                 ("/tech/tool/video-file-size-estimator/", "Video file size estimator"),
+                 ("/tech/tool/upload-time-calculator/", "Upload time calculator")]
         desk = [("HEAD", "Standards and contact"), ("/tech/methodology/", "Editorial methodology"),
                 ("/tech/corrections/", "Corrections policy"), ("/tech/about/", "About"),
                 ("/tech/contact/", "Contact"), ("/tech/privacy/", "Privacy")]
@@ -3570,7 +3572,9 @@ _TOOL_JS = {"json-formatter": "json", "base64-encoder": "base64", "url-encoder":
             "vpn-cost-calculator": "vpncost",
             "internet-speed-calculator": "speed",
             "electricity-cost-calculator": "electricity",
-            "ai-subscription-cost-comparer": "aisubs"}
+            "ai-subscription-cost-comparer": "aisubs",
+            "video-file-size-estimator": "filesize",
+            "upload-time-calculator": "uploadtime"}
 
 def tech_tool_pages():
     """BRYME Tools (master build M3): client-side tools at /tech/tool/<slug>/, CSP-safe."""
