@@ -262,3 +262,5 @@ Goal: turn 847 stubs into articles. Median 153 → 600+ words; thin 85% → <5%.
 - SHIPPED: two-click family model completed sitewide. Every desk now shows the BRYME seal + THE BRYME wordmark (links to thebryme.com homepage) above the niche mast (links to desk home). Homepage remains logo-is-home. New BRYME seal favicon sitewide (ico 16/32/48, apple-touch 180, png mark 128 - assets/brand/).
 - FIXED: money pages had NO mast/nav/footer (phase-1 bug - bodies never chrome-wrapped); now full chrome incl. dedicated money drawer (tools + learn groups) and nav toggle. Home desk gained its missing THE BRYME parent link.
 - Logo: circular seal candidate A chosen (cream disc, double brass ring, navy serif B. with brass period); candidate B (navy app tile) kept in workspace as alternate. Existing URL sets: all 7 sections identical.
+
+- FOLLOW-UP: writers mast lockup added (writers uses build-writing-first.py, its own builder - initially missed). All 7 desks + hub now follow the two-click family model.
