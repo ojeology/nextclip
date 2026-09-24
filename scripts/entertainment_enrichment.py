@@ -2707,4 +2707,524 @@ ENRICH = {
              "Pure family farce - escalating squabbles, punchlines per minute, and a warm heart under the chaos."),
         ],
     },
+    # ---- film batch 7 (2026-09-24): 30 evergreen classics/anime/K-drama/MCU ----
+    "aliens": {
+        "verdict": "The rare sequel that swaps dread for adrenaline and somehow deepens the "
+            "nightmare. Cameron takes Ridley Scott's haunted house to space-marine scale - "
+            "pulse rifles, power loaders, and a queen - while keeping the corridors mean. "
+            "One of the greatest action films ever made, and still the blueprint.",
+        "faqs": [
+            ("Do I need to see Alien (1979) before Aliens?",
+             "Yes. Aliens is a direct sequel - it opens on Ripley decades after the Nostromo "
+             "and assumes you know what the xenomorph is and what it cost her."),
+            ("Is Aliens a horror film or an action film?",
+             "Both, deliberately: the first hour rebuilds the dread, then the marines arrive "
+             "and it becomes full-contact war. The transition is the trick that made it famous."),
+            ("Did Aliens win Oscars?",
+             "It was nominated for seven Academy Awards and won two - Visual Effects and Sound "
+             "Effects Editing - with Sigourney Weaver nominated for Best Actress, almost unheard "
+             "of for this genre."),
+        ],
+    },
+    "apocalypse-now": {
+        "verdict": "War as a hallucination you cannot wake from. Coppola's Vietnam odyssey "
+            "took a legendary toll on everyone who made it, and the madness is on screen - "
+            "the jungle, the doors, the bull. Not an entertainment; an experience that "
+            "changed what films could be. See the 1979 cut first.",
+        "faqs": [
+            ("Is Apocalypse Now based on a book?",
+             "Loosely on Joseph Conrad's 1899 novella Heart of Darkness, transplanted from "
+             "colonial Africa to the Vietnam War - the river journey up to confront Kurtz "
+             "is the spine of both."),
+            ("Did Apocalypse Now win anything major?",
+             "Yes - the Palme d'Or at Cannes in 1979, plus two Academy Awards, and it is a "
+             "fixture of greatest-films lists."),
+            ("Which version should I watch?",
+             "Start with the 147-minute 1979 theatrical cut. The longer Apocalypse Now "
+             "Redux and Final Cut are for people who already loved it once."),
+        ],
+    },
+    "airplane": {
+        "verdict": "The densest joke-per-minute film ever made, and the grandfather of every "
+            "spoof comedy since. The gags fly past at airline-food speed - half are absurd, "
+            "a quarter are all-timers, and the certainty is you cannot breathe. Watch it "
+            "with people who quote it, or become one.",
+        "faqs": [
+            ("Is Airplane! a parody of a specific film?",
+             "Yes - it is a near shot-for-shot parody of the 1957 drama Zero Hour!, plus the "
+             "whole Airport disaster-movie genre. The deadpan borrowing of old dialogue is "
+             "half the joke."),
+            ("Is it suitable for kids?",
+             "Broadly yes for teens - the humor is relentless innuendo and sight gags rather "
+             "than anything graphic, though parents should expect questions about the "
+             "scenery-chewing drag gags and one very odd drug sequence."),
+            ("Why is it so quotable?",
+             "Because every line is either a setup or a punchline - 'surely you can't be "
+             "serious' being the most famous straight-man handoff in comedy."),
+        ],
+    },
+    "back-to-the-future-2": {
+        "verdict": "The middle chapter that swings for the fences: 2015, alternate 1985, "
+            "and 1955 running simultaneously in a plot that should not work and does. "
+            "The hoverboards and self-tying shoes are the postcard; the real fun is the "
+            "impossible origami of the script.",
+        "faqs": [
+            ("What year does Back to the Future II travel to?",
+             "The 'future' is 21 October 2015 - the film's 2015 predictions (hoverboards, "
+             "video calls, wearable tech) became the internet's favourite scoreboard once "
+             "the actual year arrived."),
+            ("Why does Part II revisit the first film?",
+             "Doc and Marty's trouble with the timeline forces a return to 1955 - the same "
+             "week of the original, seen from new angles. Watch Parts I and II close together; "
+             "they interlock."),
+            ("Do I need to watch them in order?",
+             "Yes - Part II ends on a cliffhanger that Part III resolves directly."),
+        ],
+    },
+    "back-to-the-future-3": {
+        "verdict": "The gentlest of the trilogy - a Western with a DeLorean. Trading 2015's "
+            "gadgetry for 1885 campfires and a train chase, it gives Doc the love story the "
+            "character deserved and the series a warm, unhurried goodbye. Cheered on by "
+            "generations who watched it as kids, and it holds.",
+        "faqs": [
+            ("When is Back to the Future III set?",
+             "Mostly 1885 - the Old West - with bookends in 1955. It is a full Western, "
+             "stagecoach hold-ups and all, with the time machine out of fuel."),
+            ("Is Part III the last one?",
+             "Yes. The trilogy ends here by design, and cleanly - the 'Doc's adventures "
+             "continue' coda is inside the film itself, not a sequel hook."),
+            ("How long is it?",
+             "118 minutes, the longest of the three."),
+        ],
+    },
+    "all-quiet-on-the-western-front": {
+        "verdict": "The Great War without glory: mud, machinery and boys fed into both. "
+            "Edward Berger's German adaptation is austere where Hollywood versions were "
+            "poetic, and the armistice-as-bureaucracy ending lands like a slap. Devastating, "
+            "craft-perfect, and impossible to shake.",
+        "faqs": [
+            ("Is this the one that won the Oscars?",
+             "Yes - four Academy Awards at the 2023 ceremony, including Best International "
+             "Feature, plus its cinematography, production design and score."),
+            ("Is it based on a true story?",
+             "It adapts Erich Maria Remarque's 1929 novel, itself drawn from his experiences "
+             "as a German soldier in the First World War - fiction built on living memory."),
+            ("Is it very violent?",
+             "Yes, and deliberately unspectacular about it: the violence is industrial and "
+             "numbing rather than thrilling. That is the point, but go in warned."),
+        ],
+    },
+    "annihilation": {
+        "verdict": "Sci-fi as a slow fever dream. Garland sends five scientists into a zone "
+            "where the rules of biology have gone strange, and lets the dread accumulate "
+            "rather than explode. The ending divides rooms; nobody forgets it. For viewers "
+            "who want ideas with their shivers.",
+        "faqs": [
+            ("Is Annihilation based on a book?",
+             "Yes - the first of Jeff VanderMeer's Southern Reach trilogy. The film keeps the "
+             "premise and the dread and takes its own path through them."),
+            ("What is the Shimmer?",
+             "The film's central mystery: a growing zone where DNA refracts and recombines - "
+             "flora, fauna and eventually people. Explaining more would spoil the point."),
+            ("Is it scary or just strange?",
+             "Both - there are two sequences of pure horror (the bear will stay with you), "
+             "wrapped in a meditation on self-destruction that is stranger than any monster."),
+        ],
+    },
+    "ant-man": {
+        "verdict": "The Marvel formula at its lightest and most likeable - a heist comedy "
+            "that shrunk the stakes on purpose and got to keep the fun. Rudd's everyman charm "
+            "does the lifting, Michael Pena's stories do the laughing. Not top-tier MCU; "
+            "top-tier palate cleanser.",
+        "faqs": [
+            ("Do I need to see Ant-Man before other Marvel films?",
+             "No - it is a standalone origin story that only lightly touches the wider "
+             "Avengers continuity. A good entry point if the franchise feels heavy."),
+            ("Is Ant-Man a comedy?",
+             "Genuinely, yes - a heist comedy first, a superhero film second, and better for it."),
+            ("How long is it?",
+             "117 minutes, one of the shorter MCU entries."),
+        ],
+    },
+    "avengers-age-of-ultron": {
+        "verdict": "The busiest middle child in the MCU: a villain with a genuine argument, "
+            "a farm-house detour the franchise has never repeated, and more setup per frame "
+            "than payoff. Uneven but full of life - and the party scene alone earns its seat.",
+        "faqs": [
+            ("Who is Ultron?",
+             "An AI peace program Tony Stark builds that concludes the best way to save the "
+             "world is to end the Avengers - James Spader gives the machine real menace and "
+             "worse, charm."),
+            ("Is Age of Ultron essential viewing?",
+             "For the Infinity Saga, yes - it introduces key characters and fractures that "
+             "pay off in Civil War and beyond."),
+            ("How long is it?",
+             "141 minutes."),
+        ],
+    },
+    "avengers-infinity-war": {
+        "verdict": "Ten years of franchise converging into a villain's victory lap. Thanos "
+            "is the protagonist and the film has the nerve to act like it - a two-and-a-half "
+            "hour chase that keeps handing him wins. Ends on the boldest cliffhanger blockbusters "
+            "have dared.",
+        "faqs": [
+            ("Do I need to have seen the earlier Marvel films?",
+             "Ideally twenty of them. Infinity War assumes you know the Avengers, the "
+             "Guardians, Thanos and the Infinity Stones - it is a finale, not an entry point."),
+            ("Which film resolves the ending?",
+             "Avengers: Endgame (2019) is the direct continuation - watch them back to back "
+             "if you can."),
+            ("How long is it?",
+             "149 minutes, and it uses every one."),
+        ],
+    },
+    "a-silent-voice": {
+        "verdict": "An anime about bullying, deafness and the long cost of cruelty - handled "
+            "with a tenderness most live-action never reaches. Kyoto Animation's craft is "
+            "extraordinary: half the story is told in where people look. Bring patience for "
+            "quiet; it earns every ounce of its catharsis.",
+        "faqs": [
+            ("Is A Silent Voice about deafness?",
+             "Partly: a deaf girl, Shoko, and the boy who tormented her at school, years later "
+             "seeking to make amends. It is really about whether people can change and who "
+             "gets to forgive them."),
+            ("Is it based on a manga?",
+             "Yes - Yoshitoki Oima's manga, adapted by Kyoto Animation with Naoko Yamada "
+             "directing."),
+            ("Is it sad?",
+             "Often, and it deals with depression and suicidal thoughts directly - moving, "
+             "not merciless, but go in knowing the weight."),
+        ],
+    },
+    "alice-in-borderland": {
+        "verdict": "Squid Game's death-game cousin from Japan, with better puzzle design and "
+            "a sci-fi undertow. Arisu the gamer nerd is a great survival lead precisely because "
+            "he thinks rather than punches. Blink-and-you-miss-it brutality, cliffhanger "
+            "engineering of the highest order.",
+        "faqs": [
+            ("What is Alice in Borderland based on?",
+             "Haro Aso's manga: an aimless young gamer and his friends hide from the police "
+             "in a public toilet and emerge into an empty Tokyo where survival games run on "
+             "playing cards."),
+            ("Is it like Squid Game?",
+             "Similar premise family - deadly games, desperate players - but Alice leans "
+             "sci-fi and puzzle-box, with each game having a logic the characters must solve."),
+            ("Is it finished?",
+             "No - the story has continued beyond the first two seasons, and each season "
+             "closes on new questions. Binge with that in mind."),
+        ],
+    },
+    "all-of-us-are-dead": {
+        "verdict": "K-drama zombie escalation at full sprint: a school outbreak, kids with "
+            "no way out, and adults who are frequently the second-biggest threat. The first "
+            "episodes are the best pure zombie TV of its decade - what follows trades some "
+            "focus for scale, and stays gripping.",
+        "faqs": [
+            ("Is All of Us Are Dead based on a webtoon?",
+             "Yes - Joo Dong-geun's Korean webtoon, adapted with the school-as-quarantine "
+             "premise intact."),
+            ("How gory is it?",
+             "Very - this is full-scale zombie violence plus some human cruelty. Brilliantly "
+             "choreographed, not for the squeamish."),
+            ("Is it a limited series?",
+             "No - the first season ends with the outbreak unresolved and further story "
+             "continues. Expect cliffhangers, not closure."),
+        ],
+    },
+    "arcane": {
+        "verdict": "The video-game adaptation that shamed an entire genre. Fortiche's "
+            "painterly animation alone would justify it; the sibling tragedy of Vi and Jinx "
+            "makes it one of this century's great shows. Every frame is a poster, every "
+            "episode earns its songs.",
+        "faqs": [
+            ("Do I need to play League of Legends to follow Arcane?",
+             "Not at all - it is a self-contained origin story about two sisters on opposite "
+             "sides of a class war between the city of Progress and its underground. Knowing "
+             "the game adds Easter eggs, nothing more."),
+            ("Did Arcane win awards?",
+             "Yes - the Emmy for Outstanding Animated Program in 2022, the first streaming "
+             "series to win it, and it took the award again for season two."),
+            ("What is the animation style?",
+             "Hand-finished 3D - painterly textures over CG, music-video energy in the "
+             "action, watercolour in the memories. Nothing else looks like it."),
+        ],
+    },
+    "attack-on-titan": {
+        "verdict": "The anime that spent ten years telling you it was a zombie-siege show "
+            "while quietly building one of the great war tragedies. The animation peaks "
+            "(that first season's titans remain unmatched nightmare fuel) and the plot pays "
+            "off every brutal coin it banks. All-time tier, and now complete.",
+        "faqs": [
+            ("Is Attack on Titan finished?",
+             "Yes - the manga ended in 2021 and the anime concluded in 2023 across four "
+             "seasons. You can binge it complete, which is a luxury its weekly audience "
+             "never had."),
+            ("What is it actually about?",
+             "The last human city behind enormous walls, man-eating titans outside them, "
+             "and the boy who swears to kill them all - before the story keeps unfolding "
+             "into politics, war and moral ruin."),
+            ("How violent is it?",
+             "Extremely, and unflinching from episode one. It is one of the great action "
+             "tragedies, not a casual watch."),
+        ],
+    },
+    "babadook": {
+        "verdict": "The rare horror film that is really about something - grief as a "
+            "houseguest that never leaves. Jennifer Kent's debut builds dread from a "
+            "pop-up book and a mother-son relationship fraying to threads. Scary, sad, "
+            "and the reason a thousand 'elevated horror' pitches got funded.",
+        "faqs": [
+            ("What is the Babadook meant to be?",
+             "The film keeps it deliberately unresolved: a monster from a children's book "
+             "and a stand-in for grief and resentment that cannot be evicted, only managed. "
+             "Both readings are correct."),
+            ("Is it very scary?",
+             "Atmospherically, extremely - the dread outperforms the jump count. Sensitive "
+             "viewers should know a child is in peril throughout."),
+            ("How long is it?",
+             "94 minutes, and it wastes none."),
+        ],
+    },
+    "barry-lyndon": {
+        "verdict": "Kubrick's most beautiful and most mischievous film: an 18th-century "
+            "con-man's rise and fall, shot in candlelight with lenses built for NASA, "
+            "narrated like a bedtime story that keeps leaving the room. Slow as molasses "
+            "and exactly as rich. Give it a big screen and your full evening.",
+        "faqs": [
+            ("Why is Barry Lyndon famous for its cinematography?",
+             "Kubrick shot entire interior scenes by actual candlelight using ultra-fast "
+             "Zeiss lenses developed for NASA - images no film had achieved. It won the "
+             "Oscar for cinematography, one of four the film took."),
+            ("Is it based on a book?",
+             "Yes - Thackeray's 1844 novel The Luck of Barry Lyndon, an Irish fortune-hunter's "
+             "memoir of gambling, marriage and self-destruction."),
+            ("Is it boring?",
+             "It is three hours at 18th-century pace, and it is not for everyone - but the "
+             "wit is dry and constant, and the craft is one of one."),
+        ],
+    },
+    "battle-royale": {
+        "verdict": "The original last-one-standing death game, two decades before it became "
+            "a genre. Fukasaku's thriller is wilder and sadder than its imitators - a "
+            "cartoon-cruel premise played for genuine heartbreak about generational betrayal. "
+            "Every battle-royale since owes it rent.",
+        "faqs": [
+            ("What is Battle Royale about?",
+             "A near-future Japan where a school class is randomly selected, collared, and "
+             "dropped on an island with one rule: last survivor lives. The Hunger Games "
+             "comparisons are fair; this came first and plays darker."),
+            ("Is it very violent?",
+             "Yes - that is its reputation and its point, though the satire of adult failure "
+             "is the actual subject."),
+            ("Was it controversial in Japan?",
+             "Massively - government debates and a refused distribution deal at the time. "
+             "It has since been reappraised as a classic of Japanese cinema."),
+        ],
+    },
+    "before-sunrise": {
+        "verdict": "Two strangers, one night, one city, and the best conversation in modern "
+            "cinema. Linklater's film is almost nothing happening - and it is everything: "
+            "charm, risk, and the specific ache of a connection with a deadline. The first "
+            "third of one of the great romances.",
+        "faqs": [
+            ("Do I need to watch the Before trilogy in order?",
+             "Yes ideally - Sunrise (1995), Sunset (2004), Midnight (2013), each nine years "
+             "later in both fiction and reality. Each stands alone, but they gain enormously "
+             "from sequence."),
+            ("Is it just two people talking?",
+             "Essentially yes - a walk through Vienna, wine, a record booth, a poet on a "
+             "bridge. Whether that sounds like heaven or torture tells you if it is your film."),
+            ("How long is it?",
+             "A mere 97 minutes, one night long."),
+        ],
+    },
+    "band-of-brothers": {
+        "verdict": "Still the summit of the war miniseries. Ten hours with Easy Company "
+            "from D-Day training to Germany's collapse - expensive, humane, and merciless "
+            "about cost. The veteran interviews bookending each episode do more heavy lifting "
+            "than any battle scene. Clear your calendar and your eyes.",
+        "faqs": [
+            ("Is Band of Brothers a true story?",
+             "Yes - it follows the real Easy Company, 506th Parachute Infantry Regiment, "
+             "through the Second World War, adapted from Stephen Ambrose's oral-history book."),
+            ("Who made it?",
+             "Executive-produced by Tom Hanks and Steven Spielberg for HBO, with different "
+             "directors per episode - including Hanks himself - which gives each hour its "
+             "own character."),
+            ("How long is it?",
+             "Ten episodes, roughly ten hours. Watch it as it aired: slowly, one war at a time."),
+        ],
+    },
+    "big-hero-6": {
+        "verdict": "The Disney film whose robot became a global mascot. Baymax the inflatable "
+            "healthcare companion is a perfect character - gentle, literal, quietly hilarious "
+            "- and the grief-and-healing story around him is better than the superhero plot "
+            "it rides in on. Huggable with real feelings attached.",
+        "faqs": [
+            ("Is Big Hero 6 a Marvel film?",
+             "It is Disney Animation's loose adaptation of a little-known Marvel comic - the "
+             "names are Marvel, the tone is pure house-of-mouse. No MCU connection."),
+            ("Did it win an Oscar?",
+             "Yes - Best Animated Feature at the 2015 ceremony."),
+            ("Who is Baymax?",
+             "A vinyl, pill-shaped healthcare robot built to treat the sick - and one of "
+             "animation's greats: the balloon that learns to grieve."),
+        ],
+    },
+    "black-panther-2": {
+        "verdict": "A sequel made in mourning that chooses to say so. Wakanda Forever buries "
+            "its king, its actor, and a fair amount of its pace under grief - and earns real "
+            "poetry anyway, with a stunning Namor and one of the MCU's most human final acts. "
+            "Longer and sadder than you expect: let it be.",
+        "faqs": [
+            ("Do I need to see the first Black Panther?",
+             "Yes - the sequel is a direct continuation, and its entire emotional weight comes "
+             "from the loss the first film's king represents, on screen and off."),
+            ("Why is the film about grief?",
+             "Chadwick Boseman, who played T'Challa, died in 2020 before filming. Coogler "
+             "reshaped the story around the loss rather than recasting - the film is the "
+             "tribute."),
+            ("How long is it?",
+             "161 minutes."),
+        ],
+    },
+    "blazing-saddles": {
+        "verdict": "The Western that burned the genre down laughing - and took studio "
+            "racism, Hollywood fakery and good taste with it. Fifty years on, Brooks's "
+            "satire is still the boldest thing in the room precisely because its target is "
+            "the bigotry, never the victims. Deliberately silly; secretly razor-edged.",
+        "faqs": [
+            ("Is Blazing Saddles offensive?",
+             "It trades in the slurs and stereotypes of the Westerns it is mocking, pointed "
+             "squarely at racists - a distinction some viewers still debate. It is a satire "
+             "of bigotry, made with genuine anger underneath the gags."),
+            ("Is that really the ending?",
+             "Yes - the film literally breaks its own set, crashes through the studio wall "
+             "into another genre, and ends in a canteen. It could not be more on purpose."),
+            ("How long is it?",
+             "93 minutes of pure 1974 anarchy."),
+        ],
+    },
+    "anchorman": {
+        "verdict": "A film with no interest in being good and every interest in being "
+            "legendary. Ron Burgundy is a magnificent idiot in a leather suit, the news-team "
+            "street brawl remains the funniest set piece of its decade, and the quotes have "
+            "outlived several careers. Improv capital-C Comedy.",
+        "faqs": [
+            ("Is Anchorman based on a real newsman?",
+             "No - it is a 1970s San Diego news-desk satire built entirely for silliness, "
+             "loosely nodding to the era's first female anchors through Christina Applegate's "
+             "Veronica Corningstone."),
+            ("Which cut should I watch?",
+             "The theatrical cut is the classic. The 'unrated' extended versions add hours "
+             "of alternate improv that fans will love and first-timers should skip."),
+            ("How long is it?",
+             "94 minutes in cinemas."),
+        ],
+    },
+    "21-jump-street": {
+        "verdict": "The reboot that taught Hollywood the trick: admit the premise is ridiculous "
+            "and weaponise it. Lord and Miller turn a stale TV cop show into a laugh-a-minute "
+            "buddy movie with real chemistry, real action and a self-awareness that never "
+            "winks itself to death. The rare comedy with actual craft under the chaos.",
+        "faqs": [
+            ("Do I need to know the original TV show?",
+             "No - the film is built on mocking its own source premise (undercover cops in "
+             "high school), and explains the joke in the first act."),
+            ("Is it very crude?",
+             "Yes - R-rated language, drugs and violence played for laughs, with a genuinely "
+             "sweet friendship underneath."),
+            ("Is there a sequel?",
+             "Yes - 22 Jump Street (2014), which turns the sequel itself into the joke, and "
+             "is nearly as funny."),
+        ],
+    },
+    "a-taxi-driver": {
+        "verdict": "The Korean hit that turns a cab ride into a nation's awakening. Based on "
+            "the true story of a German reporter and the Seoul taxi driver who smuggled him "
+            "into 1980 Gwangju, it balances humour, terror and decency with total control. "
+            "The history is harrowing; the film is humane.",
+        "faqs": [
+            ("Is A Taxi Driver based on a true story?",
+             "Yes - German journalist Jurgen Hinzpeter really did ride into the 1980 Gwangju "
+             "uprising thanks to a local driver; the film honours both men and the city that "
+             "fed them."),
+            ("Do I need to know Korean history first?",
+             "No - the film gives you enough context as it goes. Knowing Gwangju was violently "
+             "suppressed by the military makes it land harder, not necessary."),
+            ("How long is it?",
+             "137 minutes, Korean with English subtitles."),
+        ],
+    },
+    "avatar-fire-and-ash": {
+        "verdict": "Cameron's third Pandora epic goes darker: new Na'vi clans, a fire-lit "
+            "tone shift, and 197 minutes of the most expensive world-building in cinema "
+            "history. If you bought a ticket to the ocean two films ago, this is the winter "
+            "event it promised.",
+        "faqs": [
+            ("Do I need to see the first two Avatar films?",
+             "Yes - Fire and Ash continues the Sully family story directly from The Way of "
+             "Water (2022), which ends on unresolved conflict."),
+            ("Who are the Ash People?",
+             "The new Na'vi clan introduced in this film - a volcanic, fire-associated culture "
+             "that breaks the franchise's 'naive good vs colonising evil' symmetry, according "
+             "to Cameron's own promotion of the film."),
+            ("How long is it?",
+             "197 minutes - three hours and 17 minutes. Plan the bathroom run accordingly."),
+        ],
+    },
+    "avengers-doomsday": {
+        "verdict": "The MCU's big reset button: the next Avengers event, with the Russo "
+            "brothers back at the wheel and Robert Downey Jr returning to the franchise - "
+            "as Doctor Doom. Whether the multiverse gambit pays off arrives with the film; "
+            "the casting gamble alone already rewrote the conversation.",
+        "faqs": [
+            ("When is Avengers: Doomsday releasing?",
+             "It is dated for late 2026, the next flagship Avengers film after Endgame's era "
+             "wound down - check current listings near release for exact dates."),
+            ("Is Robert Downey Jr playing Iron Man again?",
+             "No - Marvel announced him as Doctor Doom, a different character entirely. The "
+             "meta-frisson of Tony Stark's actor as the new big bad is the whole conversation."),
+            ("Do I need to watch everything since Endgame first?",
+             "It helps - the multiverse arc across recent films feeds in - but the Avengers "
+             "films remain designed as convergence points you can enter from the trailers."),
+        ],
+    },
+    "alien-3": {
+        "verdict": "The franchise's beautiful failure: Fincher's debut, shot in production "
+            "hell, opening by destroying what you loved - and still full of furnace-light "
+            "beauty and genuine dread. Flawed, mournful, twice recut into better versions. "
+            "Not the film anyone wanted; weirdly worth your time anyway.",
+        "faqs": [
+            ("Is Alien 3 really that bad?",
+             "It is the series' black sheep and a genuine mess of a production - yet Fincher's "
+             "style bleeds through, and the Assembly Cut is regarded by many fans as a dark "
+             "minor classic."),
+            ("Do I need to watch Alien and Aliens first?",
+             "Yes - its opening directly follows Aliens' ending, and the loss it deals is the "
+             "whole film's engine. Which is also why it angers people."),
+            ("Which version exists?",
+             "Several: the 1992 theatrical cut (114 minutes) and the longer 2003 Assembly Cut "
+             "are the main two - the latter is Fincher-adjacent, unfinished, and preferred by "
+             "devotees."),
+        ],
+    },
+    "animal": {
+        "verdict": "Bollywood's most polarising blockbuster in years: a father-son saga "
+            "drenched in blood, slow-motion and unfiltered misogyny, made with total conviction "
+            "and a 200-minute runtime. As craft, frequently electrifying; as politics, exactly "
+            "as divisive as the discourse says. You will not be bored - that is the warning.",
+        "faqs": [
+            ("What is Animal about?",
+             "The violent, obsessive devotion of a son (Ranbir Kapoor) to his industrialist "
+             "father, and what that love does to everyone around it - a gangster family epic "
+             "in the vein of the director Sandeep Reddy Vanga's earlier hits."),
+            ("Why is it controversial?",
+             "Its treatment of women and glorification-of-violence debates dominated the "
+             "internet on release - it is a film explicitly about masculine rage that many "
+             "viewers felt wallowed in it. Expect to argue afterwards."),
+            ("How long is it?",
+             "201 minutes - one of the longest mainstream Hindi films ever released. Eat first."),
+        ],
+    },
 }
