@@ -23,3 +23,4 @@ Sitemap: https://thebryme.com/entertainment/sitemap.xml
 Sitemap: https://thebryme.com/tech/sitemap.xml
 Sitemap: https://thebryme.com/fitness/sitemap.xml
 Sitemap: https://thebryme.com/home/sitemap.xml
+Sitemap: https://thebryme.com/money/sitemap.xml

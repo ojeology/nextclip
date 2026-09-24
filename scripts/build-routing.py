@@ -28,8 +28,8 @@ from pathlib import Path
 import bryme_config as cfg  # batch 15: canonical origin single source
 
 ROOT = Path(__file__).resolve().parents[1]
-PROPS = ["sports", "entertainment", "tech", "fitness", "home"]
-SITEMAP_PROPS = ["sports", "entertainment", "tech", "fitness", "home"]  # live, indexable properties only
+PROPS = ["sports", "entertainment", "tech", "fitness", "home", "money"]
+SITEMAP_PROPS = ["sports", "entertainment", "tech", "fitness", "home", "money"]  # live, indexable properties only
 KEEP_AT_ROOT_DIRS = {".git", ".github", "assets", "scripts", "content", "docs", "server", "reports",
                      "node_modules", "public", "ecosystem", ".git"} | set(PROPS) | {"writers"}
 KEEP_AT_ROOT_FILES = {"robots.txt", "_redirects", "favicon.ico", "package.json",
@@ -241,6 +241,8 @@ def main() -> int:
     routes.add("/about/")  # family about page (b36)
     for prop in SITEMAP_PROPS:
         sm = ROOT / prop / "sitemap.xml"
+        if not sm.is_file():
+            continue  # first build of a new property: its sitemap appears when the ecosystem builder runs
         for loc in re.findall(r"<loc>(.*?)</loc>", sm.read_text()):
             routes.add("/" + loc.split(ORIGIN + "/", 1)[1])
     al["version"] = 26
@@ -367,7 +369,7 @@ small{display:block;margin-top:30px;color:#8a94a6}
     _al = json.loads((ROOT / "content" / "index-allowlist.routed.json").read_text(encoding="utf-8"))
     _rts = _al["routes"] if isinstance(_al, dict) else _al
     _children = ["writers/sitemap.xml", "sports/sitemap.xml", "entertainment/sitemap.xml",
-                 "tech/sitemap.xml", "fitness/sitemap.xml", "home/sitemap.xml"]
+                 "tech/sitemap.xml", "fitness/sitemap.xml", "home/sitemap.xml", "money/sitemap.xml"]
     _si = ['<?xml version="1.0" encoding="UTF-8"?>\n'
            '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n']
     for _x in _children:

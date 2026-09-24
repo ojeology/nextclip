@@ -313,6 +313,7 @@ FAMILY = {
     "tech":          dict(paper="#fafaf8", sheet="#ffffff", ink="#14213d", muted="#5b6b7a", dim="#8b96a2", brand="#14213d", brand_deep="#0c1526", accent="#a8752a", line="20,33,61"),
 }
 
+FAMILY["money"] = dict(FAMILY["tech"]); FAMILY["money"]["brand"] = "#1a5c3a"; FAMILY["money"]["brand_deep"] = "#0e3b24"; FAMILY["money"]["accent"] = "#a8752a"
 FAMILY["fitness"] = dict(FAMILY["tech"])
 FAMILY["home"] = dict(FAMILY["tech"])
 
@@ -669,9 +670,14 @@ def _nav_items(pub):
                    ("/entertainment/how-anime-production-committees-work/", "Production committees"),
                    ("/entertainment/how-award-season-actually-works/", "How award season works")]
         return ([("Shelves", shelves)], ("/entertainment/", "Desk home"))
+    if pub == "money":
+        desk = [("HEAD", "The desk"), ("/money/", "Desk home"),
+                ("/money/position-size-calculator/", "Position size calculator"),
+                ("/money/position-sizing-101/", "Position sizing, explained")]
+        return ([("The desk", desk)], ("/money/", "Desk home"))
     if pub == "hub":
         return ([("Writers", "/writers/"), ("Sport", "/sports/"), ("Tech", "/tech/"),
-                 ("Entertainment", "/entertainment/"), ("Fitness", "/fitness/"), ("Home & DIY", "/home/")],
+                 ("Entertainment", "/entertainment/"), ("Fitness", "/fitness/"), ("Home & DIY", "/home/"), ("Money", "/money/")],
                 ("/writers/", "Start with Writers"))
     return ([], None)
 
@@ -778,6 +784,7 @@ def head(pub, tagline, parent=True):
                 "sports": "SEPTEMBER 2026 \u00b7 THE 2026-27 SEASON",
                 "fitness": "SEPTEMBER 2026 \u00b7 FOUNDATION SEASON",
                 "entertainment": "SEPTEMBER 2026 \u00b7 THE EVERGREEN SHELF",
+                "money": "SEPTEMBER 2026 \u00b7 THE RISK-FIRST DESK",
                 "hub": "SEPTEMBER 2026 \u00b7 THE HOUSE DESK"}
     edition = editions.get(pub)
     edition_html = (f'<div class="mast-edition"><span class="mast-date">{edition}</span>'
@@ -852,7 +859,7 @@ def write_placeholder(key, name, tagline, identity, planned):
         + '<section class="section"><div class="section-head"><p class="kicker">The plan</p><h2>What this desk will cover.</h2></div>'
         + '<ul class="list">' + items + "</ul></section>"
         + '<section class="section alt"><div class="section-head"><p class="kicker">Honest status</p><h2>Nothing to read here yet.</h2></div>'
-        + '<p class="lede">This property is at the foundation stage: the route, standards and plan exist; the guides are being built and will open when they are worth reading. In the meantime, the live desks are <a href="/writers/">BRYME Writers</a>, <a href="/tech/">BRYME Tech</a>, <a href="/sports/">BRYME Sport</a>, <a href="/entertainment/">BRYME Entertainment</a> and <a href="/fitness/">BRYME Fitness</a>.</p>'
+        + '<p class="lede">This property is at the foundation stage: the route, standards and plan exist; the guides are being built and will open when they are worth reading. In the meantime, the live desks are <a href="/writers/">BRYME Writers</a>, <a href="/tech/">BRYME Tech</a>, <a href="/sports/">BRYME Sport</a>, <a href="/entertainment/">BRYME Entertainment</a> and <a href="/fitness/">BRYME Fitness</a> \u2014 plus the new <a href="/money/">BRYME Money</a> desk.</p>'
         + '</section></div></main>' + foot(key))
     base = OUT / key
     base.mkdir(parents=True, exist_ok=True)
@@ -863,7 +870,7 @@ def write_placeholder(key, name, tagline, identity, planned):
     print(key + ": foundation page + legal (noindex, no sitemap)")
 
 
-PUB_NAME = {"sports": "Sport", "entertainment": "Entertainment", "tech": "Tech", "fitness": "Fitness", "home": "Home & DIY"}
+PUB_NAME = {"sports": "Sport", "entertainment": "Entertainment", "tech": "Tech", "fitness": "Fitness", "home": "Home & DIY", "money": "Money"}
 
 # Hand-authored pages this generator must never delete or overwrite.
 #
@@ -936,7 +943,7 @@ def write_service(pub, pages):
         f"User-agent: *\nAllow: /\nSitemap: {SUB[pub]}/sitemap.xml\n", encoding="utf-8")
     print(f"{pub}: {written} pages written, {len(stashed)} hand-authored preserved, sitemap {len(urls)} urls")
 
-PREFIX = {"sports": "/sports", "entertainment": "/entertainment", "tech": "/tech", "fitness": "/fitness", "home": "/home"}
+PREFIX = {"sports": "/sports", "entertainment": "/entertainment", "tech": "/tech", "fitness": "/fitness", "home": "/home", "money": "/money"}
 if MODE == "subdomain":
     SUB = {k: f"https://{v}.{DOMAIN}" for k, v in CFG["subdomains"].items() if k in PREFIX}
     SUB["writers"] = f"https://writers.{DOMAIN}"
@@ -5860,6 +5867,16 @@ def home_pages():
 
 
 
+def money_pages():
+    import money_desk_data as _md
+    _calc_body = (_md.CALC_BODY_TOP + _md.CALC_BODY_TAIL
+                  + '<script src="/assets/money-position-size.js" defer></script>')
+    pages = [("/", "BRYME Money - risk-first trading tools, research and education | BRYME",
+              _md.MONEY_TAGLINE, _md.HUB_BODY)]
+    pages.append((_md.CALC_PAGE["route"], _md.CALC_PAGE["title"], _md.CALC_PAGE["desc"], _calc_body))
+    pages.append((_md.SIZING_101["route"], _md.SIZING_101["title"], _md.SIZING_101["desc"], _md.SIZING_BODY))
+    return pages + legal_pages("money", "BRYME Money", _md.MONEY_TAGLINE)
+
 def main() -> None:
     (OUT / "hub").mkdir(parents=True, exist_ok=True)
     hp = hub_pages()
@@ -5970,6 +5987,7 @@ def main() -> None:
     write_service("tech", tech_pages())
     write_service("fitness", fitness_pages())
     write_service("home", home_pages())
+    write_service("money", money_pages())
     if ADSENSE_ON:
         _adstxt = "google.com, " + ADSENSE_ID + ", DIRECT, f08c47fec0942fa0\n"
         (ROOT / "ecosystem" / "ads.txt").write_text(_adstxt, encoding="utf-8")

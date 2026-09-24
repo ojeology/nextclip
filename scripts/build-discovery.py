@@ -221,7 +221,7 @@ def build() -> None:
         "Disallow: /ecosystem/\n\n"
         f"Sitemap: {SITE}/writers/sitemap.xml\n"
         + "".join(f"Sitemap: {SITE}/{x}/sitemap.xml\n" for x in
-                  ("sports", "entertainment", "tech", "fitness", "home"))
+                  ("sports", "entertainment", "tech", "fitness", "home", "money"))
     )
     (ROOT / "robots.txt").write_text(robots, encoding="utf-8")
 

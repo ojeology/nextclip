@@ -42,7 +42,7 @@ SKIP_DIRS = {".git", "node_modules", ".arena", ".cache", "dist", "out"}
 #   reports/, docs/ - internal artifacts, not part of the site.
 PUBLISH_TIERS = {
     "ecosystem", "public", "entertainment", "writers", "tech", "home",
-    "sports", "fitness", "about",
+    "sports", "fitness", "about", "money",
 }
 ROOT_PAGES = {"index.html"}
 

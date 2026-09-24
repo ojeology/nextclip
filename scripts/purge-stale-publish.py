@@ -183,7 +183,7 @@ def main() -> int:
     # publish workspace by name class - deterministic, idempotent, no git needed.
     stale_rec = 0
     for base in (PUBLIC, ROOT, ROOT / "ecosystem"):
-        for prop in ("sports", "entertainment", "tech", "fitness", "home", "writers"):
+        for prop in ("sports", "entertainment", "tech", "fitness", "home", "writers", "money"):
             d = base / prop / "_recovered"
             if d.is_dir():
                 shutil.rmtree(d)
