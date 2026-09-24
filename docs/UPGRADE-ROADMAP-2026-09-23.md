@@ -225,3 +225,10 @@ Goal: turn 847 stubs into articles. Median 153 → 600+ words; thin 85% → <5%.
 
 - SHIPPED: 30 more, ENRICH 406 -> 436 (719 total; ~61% enriched). TV giants 6 (HotD/Succession/Severance/Peaky/Sherlock/Money Heist), anime 7 (MHA/OPM/SpyXFamily/HxH/Steins;Gate/Fairy Tail/DBS), 2025-26 thrillers (Housemaid/Bone Temple/Dhurandhar), Bollywood 8, Nollywood 4, Chinese 2, Fifty Shades/Freakier Friday. squid-game found already enriched; westworld not in pool - both dodged pre-write.
 - Pool remaining: ~283.
+
+## MONEY DESK LAUNCH (2026-09-24)
+
+- SHIPPED: /money/ - 7th section live. Hub + position-size calculator + position-sizing-101 + legal set (10 URLs). Risk-first policy walls: never advice, no profit claims, no signals, no betting. E-E-A-T via open research links (QUANTLAB, mean-reversion-vwap-lab).
+- Plumbing (7 builders touched): ecosystem (FAMILY/PUB_NAME/PREFIX/editions/drawer/nav/money_pages), routing (PROPS + SITEMAP_PROPS + allowlist missing-file guard + children), discovery (robots), public-dir (2 staging lists), purge-stale (prop loop), inject-analytics (PUBLISH_TIERS).
+- Lessons: (1) inserting a top-level def mid-function swallowed the main-flow calls - IndentationError caught the dedent, def moved above main(); (2) KEEP_AT_ROOT_DIRS = set(PROPS) - the SECOND registry (PROPS, not just SITEMAP_PROPS) gates whether builds delete a new root dir; (3) routing aborts on manually-rerun trees but runs fully inside npm build.
+- Next for money: pip/compounding/risk-reward calculators, research notes from GitHub repos.
