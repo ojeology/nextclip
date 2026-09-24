@@ -5796,4 +5796,533 @@ ENRICH = {
              "124 minutes."),
         ],
     },
+    # ---- film batch 13 (2026-09-24): 30 titles - prestige cinema, K-cinema deep cuts, Oscar winners ----
+    "con-air": {
+        "verdict": "The nineties action blockbuster at its most gloriously Extra: a "
+            "plane full of career psychopaths hijacked mid-transfer, and Nicolas Cage's "
+            "just-paroled ranger caught in the middle with his bunny plush. Cusack and "
+            "Malkovich chew scenery at 30,000 feet; the crash-landing onto the Strip "
+            "is pure spectacle. Dumb as a rock, cut like a diamond.",
+        "faqs": [
+            ("What is the famous Con Air line?",
+             "'Put the bunny back in the box' - Cage's deadpan through-line in a film "
+             "built from quotable nonsense."),
+            ("Did the theme song get Oscar attention?",
+             "Yes - 'How Do I Live' (Trisha Yearwood) was nominated for Best Original "
+             "Song at the 1998 ceremony."),
+            ("How long is it?",
+             "115 minutes."),
+        ],
+    },
+    "face-off": {
+        "verdict": "John Woo's apex of beautiful absurdity: an FBI agent and the "
+            "terrorist who killed his son surgically swap faces, and Cage and Travolta "
+            "proceed to give dual masterclasses in playing each other. Opera, doves, "
+            "knife fights and the most committed high-concept acting of the nineties. "
+            "Once you accept the face surgery, it is perfect.",
+        "faqs": [
+            ("Is Face/Off scientifically plausible?",
+             "Absolutely not - and the film knows it; the face-swap is a grand opéra "
+             "premise, and Woo stages everything else with total sincerity."),
+            ("Who is the better impression - Cage or Travolta?",
+             "The film's greatest pleasure: both actors study each other and swap "
+             "mannerisms mid-film - a genuine double-performance showcase."),
+            ("How long is it?",
+             "133 minutes."),
+        ],
+    },
+    "the-transporter": {
+        "verdict": "The film that made Jason Statham a star: a courier with three rules, "
+            "a package that moves, and Corey Yuen staging car chases and warehouse "
+            "brawls with French-Lucerne precision. The shirtless hose-fight remains a "
+            "genre landmark. Lean, fast, unpretentious - the definitive mid-2000s "
+            "action machine.",
+        "faqs": [
+            ("What are the Transporter's three rules?",
+             "Never change the deal, no names, never open the package - the plot exists "
+             "to break all three, gloriously."),
+            ("Is it connected to Luc Besson?",
+             "Yes - Besson co-wrote and produced, pairing his Euro-action polish with "
+             "Hong Kong choreography."),
+            ("How long is it?",
+             "92 minutes."),
+        ],
+    },
+    "equalizer": {
+        "verdict": "Denzel Washington's hardware-store terminator: a quiet Home Depot "
+            "employee with a very particular set of skills dismantles a Russian mob "
+            "one improvised weapon at a time. Fuqua shoots slow-burn dread and "
+            "clockwork violence; Denzel makes righteous rage feel almost gentle. The "
+            "start of a whole franchise of calm, efficient revenge.",
+        "faqs": [
+            ("Is The Equalizer based on a TV series?",
+             "Yes - the 1980s series with Edward Woodward; the films (and the Queen "
+             "Latifah series) all descend from it."),
+            ("Is it very violent?",
+             "Yes - the finale's hardware-aisle sequence is ingeniously brutal; expect "
+             "R-rated precision rather than gore-splatter."),
+            ("How long is it?",
+             "132 minutes."),
+        ],
+    },
+    "creed": {
+        "verdict": "The revival nobody expected to matter this much: Rocky as the "
+            "Mickey to a new underdog, Adonis Creed, son of Apollo. Ryan Coogler's "
+            "breakout directs the franchise's inheritance themes with genuine fire - "
+            "the one-take sparring scene is the series' best-shot sequence. Legacy "
+            "sequels, done properly.",
+        "faqs": [
+            ("Do I need the Rocky films first?",
+             "Rocky (1976) is the real prerequisite - the whole film is a conversation "
+             "with it; the other sequels are bonus depth."),
+            ("Did Stallone win anything for it?",
+             "He won the Golden Globe and was Oscar-nominated for Supporting Actor at "
+             "the 2016 ceremony - Rocky himself, finally honoured."),
+            ("How long is it?",
+             "133 minutes."),
+        ],
+    },
+    "crouching-tiger": {
+        "verdict": "The wuxia poem that conquered the West: Ang Lee balances gravity-"
+            "defying bamboo-top duels with a tragedy of suppressed love and duty. "
+            "Michelle Yeoh and Zhang Ziyi give the genre its beating heart; the "
+            "fights are choreographed poetry. Four Oscars and the highest-grossing "
+            "foreign-language film in American history - and it earned every bit of it.",
+        "faqs": [
+            ("Did Crouching Tiger win the Oscar?",
+             "Yes - Best Foreign Language Film at the 2001 ceremony, plus three more "
+             "(cinematography, art direction, score)."),
+            ("Is it the first of a story?",
+             "It is a standalone adaptation from the Wang Dulu Crane-Iron pentalogy - "
+             "later sequels recast parts; this film is complete in itself."),
+            ("Why is it so influential?",
+             "It carried wire-fu artistry to global audiences and proved subtitled "
+             "spectacle could top the American box office."),
+        ],
+    },
+    "crazy-rich-asians": {
+        "verdict": "The rom-com event of its decade: a NYU professor discovers her "
+            "boyfriend is Singapore's most eligible billionaire heir, and meets the "
+            "glittering, scheming family from hell. Constance Wu, Henry Golding and "
+            "Michelle Yeoh rule a wedding-set spectacle of mahjong and money - the "
+            "first Hollywood studio rom-com with an all-Asian cast in a generation.",
+        "faqs": [
+            ("Is Crazy Rich Asians based on a book?",
+             "On Kevin Kwan's 2013 bestseller, itself drawn from his Singapore "
+             "high-society observations."),
+            ("Why was its release culturally significant?",
+             "It was the first major studio film with an all-Asian lead cast since "
+             "The Joy Luck Club in 1993 - and its box-office success reshaped "
+             "Hollywood's casting assumptions."),
+            ("How long is it?",
+             "116 minutes."),
+        ],
+    },
+    "call-me-by-your-name": {
+        "verdict": "A northern Italian summer, a scholarly family, and first love "
+            "arriving with devastating specificity: Guadagnino's sun-drenched "
+            "adaptation plays desire, dread and memory like a season changing. "
+            "Chalamet's monologue by the fireplace is the decade's great acting "
+            "reveal. Every frame aches beautifully.",
+        "faqs": [
+            ("Is Call Me by Your Name based on a book?",
+             "On André Aciman's 2007 novel, adapted by James Ivory."),
+            ("Did it win an Oscar?",
+             "Yes - James Ivory won Best Adapted Screenplay at the 2018 ceremony, "
+             "becoming the oldest competitive Oscar winner ever."),
+            ("Is it explicit?",
+             "There is mature content and full-frontal context, but the film's real "
+             "intimacy is emotional - longing more than anatomy."),
+        ],
+    },
+    "burning": {
+        "verdict": "The murkiest, most hypnotic mystery of its decade: a delivery boy, "
+            "a girl who disappears, and a wealthy stranger who burns greenhouses - or "
+            "does he? Lee Chang-dong's adaptation of a Murakami short builds unbearable "
+            "ambiguity over nearly two and a half hours, and the final ten minutes "
+            "detonate like a long-held breath. A film that argues with you afterwards.",
+        "faqs": [
+            ("Is Burning based on a book?",
+             "On Haruki Murakami's short story 'Barn Burning', transplanted to South "
+             "Korea and expanded with class-anger themes."),
+            ("What actually happens in the ending?",
+             "Deliberately unresolved - the film withholds the final fact; every "
+             "reading (literal or metaphor) has defenders."),
+            ("How long is it?",
+             "148 minutes of slow-burn ambiguity."),
+        ],
+    },
+    "decision-to-leave": {
+        "verdict": "Park Chan-wook's most tender puzzle: an insomniac detective "
+            "investigating a climber's death and falls for the elegant, unreadable "
+            "widow - through phone screens, altitudes and a fog of withheld motives. "
+            "It won Best Director at Cannes 2022 and plays like a love story told in "
+            "police procedure. Exquisite, melancholy, quietly devastating.",
+        "faqs": [
+            ("Did Decision to Leave win at Cannes?",
+             "Yes - Park Chan-wook won Best Director at the 2022 festival."),
+            ("Do I need to know Park's earlier films?",
+             "No - it is completely standalone, though fans will recognise his "
+             "fascination with guilt and desire."),
+            ("How long is it?",
+             "138 minutes."),
+        ],
+    },
+    "extreme-job": {
+        "verdict": "The police-comedy formula perfected: an under-surveillance drug "
+            "squad takes over a fried chicken restaurant as a stakeout cover, and the "
+            "chicken is so good they become businessmen instead of cops. One of the "
+            "highest-grossing Korean comedies ever - and it earns it: escalation "
+            "choreography, deadpan Captain Yoo, and a climax that weaponises both "
+            "drugs and drumsticks.",
+        "faqs": [
+            ("Is Extreme Job available with subtitles?",
+             "Yes - international releases carry English subtitles; the humour is "
+             "physical enough to travel well."),
+            ("Why is fried chicken central?",
+             "The stakeout cover becomes the squad's accidental second career - the "
+             "joke is that they are better entrepreneurs than detectives."),
+            ("How long is it?",
+             "111 minutes."),
+        ],
+    },
+    "the-man-from-nowhere": {
+        "verdict": "Won Bin's pawnshop loner dismantles an entire criminal underworld "
+            "for the little girl next door - Korean action's gold standard of the "
+            "quiet-man-who-is-death template. Visceral, tightly plotted, and carried "
+            "by a genuinely touching bond at its centre. One of the most beloved "
+            "Korean thrillers of its era.",
+        "faqs": [
+            ("Is The Man from Nowhere in English?",
+             "No - Korean with subtitles; the sparse dialogue makes it very "
+             "subtitle-friendly."),
+            ("Is it connected to The Man from Nowhere sequels?",
+             "There are no sequels - it is a complete, standalone story."),
+            ("How long is it?",
+             "119 minutes."),
+        ],
+    },
+    "departures": {
+        "verdict": "The Japanese film about death that makes you fall in love with "
+            "life: a failed cellist becomes a nokanshi - one who prepares the dead - "
+            "and finds dignity, humour and grace in the ritual of farewell. Winner of "
+            "the Best Foreign Language Film Oscar at the 2009 ceremony, and one of the "
+            "gentlest films ever made about mortality.",
+        "faqs": [
+            ("Did Departures win the Oscar?",
+             "Yes - Best Foreign Language Film at the 2009 ceremony."),
+            ("What is a nokanshi?",
+             "An encoffiner - a professional who washes and prepares bodies for "
+             "cremation with ceremonial care; the film treats the work as an art of "
+             "compassion."),
+            ("Is it sad?",
+             "Profoundly, and consoling at once - most viewers finish it moved rather "
+             "than crushed."),
+        ],
+    },
+    "cloud-atlas": {
+        "verdict": "The most ambitious novel adaptation of its decade: six stories "
+            "across five centuries - composer, journalist, clone, sailor, publisher, "
+            "post-apocalyptic shepherd - cut into one another by three directors and "
+            "one philosophy: everything is connected. Messy, magnificent, mocked and "
+            "beloved; a film that attempts everything cinema can do.",
+        "faqs": [
+            ("Is Cloud Atlas based on a book?",
+             "On David Mitchell's acclaimed 2004 novel, which told the six tales in "
+             "mirrored halves; the film interleaves them continuously instead."),
+            ("Why do actors play multiple roles?",
+             "Recurring actors across timelines embody the film's reincarnation theme - "
+             "including some notorious (debated) prosthetic and cross-ethnic casting."),
+            ("How long is it?",
+             "172 minutes - a true commitment, best watched in one sitting."),
+        ],
+    },
+    "eyes-wide-shut": {
+        "verdict": "Kubrick's final dream: Tom and Nicole, a Manhattan Christmas that "
+            "never existed, and a masked ritual glimpsed at the edge of the world's "
+            "richest city. Shot over a famously record-setting continuous schedule, "
+            "it plays like hypnosis - jealousy, desire and class rendered as one long "
+            "sleepwalk. The strangest studio film by a giant, and a fitting last riddle.",
+        "faqs": [
+            ("Is Eyes Wide Shut really Kubrick's last film?",
+             "Yes - he finished the edit days before his death in 1999; it premiered "
+             "after."),
+            ("Why did it take so long to film?",
+             "Kubrick's perfectionism produced one of the longest continuous shoots "
+             "ever recorded - well over a year of production."),
+            ("Is the ritual real or a dream?",
+             "The film refuses to say - the whole picture is constructed like a "
+             "nocturnal hallucination, ending on 'fuck'."),
+        ],
+    },
+    "the-farewell": {
+        "verdict": "A family lies to their grandmother about her terminal diagnosis - "
+            "a real Chinese practice the film frames, as its tagline says, 'based on "
+            "an actual lie'. Lulu Wang directs with perfect tonal control; Awkwafina "
+            "(against type, dramatic) and Zhao Shuzhen anchor the wedding-as-goodbye "
+            "structure. Laughing and sobbing in the same scene, guaranteed.",
+        "faqs": [
+            ("Is The Farewell a true story?",
+             "Essentially - Lulu Wang first told it on her podcast; the film's tagline "
+             "'based on an actual lie' refers to its real family roots."),
+            ("Did Awkwafina win awards for it?",
+             "Yes - she won the Golden Globe for Best Actress in a Musical or Comedy "
+             "(2020), a landmark for Asian-American performers."),
+            ("Why hide a diagnosis from the patient?",
+             "The film explores the East-West divide over 'who owns the truth' about "
+             "family illness - its central, respectful debate."),
+        ],
+    },
+    "the-florida-project": {
+        "verdict": "Childhood at the edge of Disney World: six-year-old Moonee spends "
+            "a violet-scented summer in a budget motel while her mother's finances "
+            "collapse just off-screen. Sean Baker shoots poverty in candy colours; "
+            "Willem Dafoe's motel manager (Oscar-nominated) is one of cinema's great "
+            "quiet decent men. The ending will hollow you out kindly.",
+        "faqs": [
+            ("Why is it called The Florida Project?",
+             "Disney World's original construction name - the film lives in its "
+             "tourism shadow, in the motels the magic forgot."),
+            ("Is it sad?",
+             "It is joyful on the surface and devastating underneath - the children "
+             "play while the adults quietly fail them."),
+            ("How long is it?",
+             "115 minutes."),
+        ],
+    },
+    "the-holdovers": {
+        "verdict": "A 1970s New England Christmas capsule: a bitter boarding-school "
+            "teacher, a brainy troublemaker and a grieving cook hold over the holidays "
+            "together. Alexander Payne in monochrome-snow mode; Paul Giamatti is "
+            "perfect, Da'Vine Joy Randolph won the Oscar for Supporting Actress. The "
+            "warmest scowl in modern cinema - an instant seasonal classic.",
+        "faqs": [
+            ("Did The Holdovers win an Oscar?",
+             "Yes - Da'Vine Joy Randolph won Best Supporting Actress at the 2024 "
+             "ceremony; the film was also nominated for Best Picture."),
+            ("Is it set in the past?",
+             "Yes - deliberately a 1970 film in feel, shot with period titles, grain "
+             "and mono-style sound."),
+            ("Is it a Christmas film?",
+             "Set at Christmas, yes - but its melancholy-warm blend works in any "
+             "season."),
+        ],
+    },
+    "the-shape-of-water": {
+        "verdict": "Del Toro's fairy tale for the misfits: a mute janitor, an amphibian "
+            "god in a government tank, and a love that speaks in eggs, music and "
+            "bathtubs flooded with green light. Sally Hawkins performs a whole "
+            "soundtrack without a word; the film took Best Picture and Best Director "
+            "at the 2018 Oscars. Monster movies, grown tender.",
+        "faqs": [
+            ("Did The Shape of Water win Best Picture?",
+             "Yes - four Oscars at the 2018 ceremony including Best Picture and Best "
+             "Director for Guillermo del Toro."),
+            ("Is it a Creature from the Black Lagoon remake?",
+             "Inspired-by rather than remake - del Toro reframes the gill-man story "
+             "as a romance about the hunted outsider."),
+            ("Is it suitable for teens?",
+             "Older teens - nudity and adult themes; otherwise a gentle, painterly "
+             "fantasy."),
+        ],
+    },
+    "the-zone-of-interest": {
+        "verdict": "The Holocaust film without a single image of it: the commandant of "
+            "Auschwitz and his wife cultivate their garden, their children, their "
+            "beautiful domestic life - while beyond the wall, the camp's machinery "
+            "hums on the soundtrack. Glazer's formal rigour won the Oscar for "
+            "International Feature and upended what cinema can show by refusing to "
+            "show it. Unbearable, essential, formally perfect.",
+        "faqs": [
+            ("Is The Zone of Interest based on a true story?",
+             "It dramatises the real household of Auschwitz commandant Rudolf Hoss, "
+             "loosely drawing on Martin Amis's novel of the same name - the domestic "
+             "detail is the documented horror."),
+            ("Why is the camp never shown?",
+             "The point exactly - the film keeps the horror at the edge of frame and "
+             "sound, indicting the wilful blindness of ordinary life beside atrocity."),
+            ("How long is it?",
+             "105 minutes that sit very heavy."),
+        ],
+    },
+    "the-substance": {
+        "verdict": "Body horror as celebrity-culture autopsy: Demi Moore's fading star "
+            "takes a black-market serum that births a younger, better self - and the "
+            "sharing arrangement goes operatically, explosively wrong. Margaret "
+            "Qualley is heartbreaking, the final act is legendary gross-out, and the "
+            "film won the Oscar for its transformative makeup. Rage, jelly and "
+            "sequins - Coralie Fargeat's scream.",
+        "faqs": [
+            ("How extreme is The Substance?",
+             "Extremely - the third act is among the most graphic of recent mainstream "
+             "horror; it is designed to test the room."),
+            ("Did it win the Oscar?",
+             "Yes - Best Makeup and Hairstyling at the 2025 ceremony; Demi Moore was "
+             "nominated for Best Actress."),
+            ("Is it feminist or exploitative?",
+             "The debate is the point - it weaponises the male gaze to indict it, and "
+             "viewers split on the ethics of the weapon."),
+        ],
+    },
+    "the-menu": {
+        "verdict": "Eat the rich, plated course by course: twelve diners arrive at a "
+            "celebrity island restaurant, and Ralph Fiennes' chef serves a tasting "
+            "menu with murder in the mise en place. Anya Taylor-Joy's cheeseburger "
+            "counter-strike is the film's genius move. Wicked, controlled satire with "
+            "a correct wine pairing.",
+        "faqs": [
+            ("Is The Menu a horror film?",
+             "Thriller-horror hybrid - dark comedy first, with genuine menace and a "
+             "few late jolts."),
+            ("What is the cheeseburger scene about?",
+             "The film's whole thesis: an uncomplicated comfort food breaks the "
+             "haute-cuisine spell - taste as honesty."),
+            ("How long is it?",
+             "106 minutes, course by course."),
+        ],
+    },
+    "the-green-knight": {
+        "verdict": "Arthurian legend as fevered art film: Dev Patel's Sir Gawain "
+            "rides into a year-long appointment with his own beheading, through "
+            "Lowery's mist, giants, ghosts and mushroom-lit cathedrals. Gorgeous, "
+            "patient, strange - a medieval poem reimagined as an odyssey toward "
+            "honour. Not for the impatient; transcendent for the willing.",
+        "faqs": [
+            ("Is The Green Knight based on a poem?",
+             "Yes - the 14th-century Middle English 'Sir Gawain and the Green "
+             "Knight', one of the great Arthurian romances."),
+            ("What does the ending mean?",
+             "It offers a vision, a choice, then a final image - widely read as the "
+             "moment courage becomes character; interpretations abound."),
+            ("How long is it?",
+             "130 minutes of pilgrimage."),
+        ],
+    },
+    "the-lives-of-others": {
+        "verdict": "The Stasi officer who listens himself human: a surveillance expert "
+            "monitors a playwright and his actress lover in 1984 East Berlin, and the "
+            "file he writes becomes a confession. Debut-direction perfection; the "
+            "Best Foreign Language Film Oscar of 2007; an ending (a single line in a "
+            "bookshop) that lands like a lifetime. One of the great films about "
+            "conscience.",
+        "faqs": [
+            ("Did The Lives of Others win the Oscar?",
+             "Yes - Best Foreign Language Film at the 2007 ceremony."),
+            ("Is it historically accurate?",
+             "It compresses history for drama (real Stasi surveillance was even "
+             "larger), but the apparatus, fear and compromises are faithfully drawn."),
+            ("What is the famous final line?",
+             "'It is for me' - the bookshop moment that redeems a career of betrayal; "
+             "one of cinema's great quiet endings."),
+        ],
+    },
+    "article-15": {
+        "verdict": "Anubhav Sinha's angriest, cleanest film: an idealised IPS officer "
+            "arrives in a small town and finds two Dalit girls hanged - and the "
+            "caste machinery that explains it. Named for the constitutional article "
+            "banning caste discrimination, it made mainstream Hindi cinema say the "
+            "quiet parts loudly. Fire, delivered as procedure.",
+        "faqs": [
+            ("What is Article 15?",
+             "The article of India's Constitution that prohibits discrimination on "
+             "grounds of religion, race, caste, sex or birthplace - the film's title "
+             "and its verdict."),
+            ("Is it based on real cases?",
+             "It draws on real 2014-2016 incidents of caste violence (including the "
+             "Badaun and Una cases), fictionalised into one town."),
+            ("How long is it?",
+             "130 minutes."),
+        ],
+    },
+    "the-great-indian-kitchen": {
+        "verdict": "A marriage, a kitchen, and a slow revolution: a new wife grinds "
+            "through endless cooking, cleaning and submission while the men of the "
+            "house eat, argue politics and never enter her world. Jeo Baby's Malayalam "
+            "phenomenon turned domestic labour into an indictment heard across India - "
+            "quiet until it is not, then thunderous.",
+        "faqs": [
+            ("Why is The Great Indian Kitchen considered important?",
+             "It made the invisible labour of the household the entire subject - and "
+             "its ending (the woman walking out as sabarimala drums beat) became a "
+             "cultural talking point."),
+            ("Is it slow?",
+             "Deliberately - the repetition IS the argument; the film makes you feel "
+             "the days she cannot escape."),
+            ("How long is it?",
+             "About 100 minutes; a remade Hindi version exists, but the original is "
+             "the one that started the conversation."),
+        ],
+    },
+    "the-fall-guy": {
+        "verdict": "David Leitch's love letter to stunt people: Ryan Gosling's battered "
+            "stuntman is pulled back onto a blockbuster and into a missing-person "
+            "mystery, with Blunt supplying the romance and a barfights-and-helicopters "
+            "third act supplying the spectacle. Funny, savvy, and genuinely moving "
+            "about the unheralded artists who take the hits.",
+        "faqs": [
+            ("Is The Fall Guy based on a TV series?",
+             "Yes - the 1980s series starring Lee Majors, rebooted as a rom-com action "
+             "vehicle."),
+            ("Did it really showcase real stunts?",
+             "Proudly - it broke a Guinness record for cannon rolls in a car and "
+             "champions the stunt community throughout."),
+            ("How long is it?",
+             "126 minutes."),
+        ],
+    },
+    "anora": {
+        "verdict": "The year's wildest Best Picture: a Brooklyn sex worker's Cinderella "
+            "marriage to a Russian oligarch's son collapses into a blackout-comic "
+            "search across Coney Island, with Mikey Madison's Ani refusing to be a "
+            "joke. Sean Baker's film swept five Oscars at the 2025 ceremony - picture, "
+            "director, actress, screenplay, editing - and its final frame may be the "
+            "saddest of the decade.",
+        "faqs": [
+            ("Did Anora win Best Picture?",
+             "Yes - one of five Oscars at the 2025 ceremony (also Director, Actress, "
+             "Original Screenplay and Editing)."),
+            ("Is it a comedy or a drama?",
+             "Both - chaotic screwball energy for two thirds, then a gutting dramatic "
+             "slide; the tonal shift is the design."),
+            ("How long is it?",
+             "139 minutes."),
+        ],
+    },
+    "aftersun": {
+        "verdict": "A father-daughter holiday remembered in dying light: karaoke, "
+            "calculus and calamari at a Turkish resort, while Sophie's adult memory "
+            "reassembles the melancholy her father hid. Charlotte Wells' debut is a "
+            "masterclass in what films can leave unsaid; Paul Mescal earned an Oscar "
+            "nomination; the LCD-final-act still is cinema's most quietly devastating "
+            "dance scene.",
+        "faqs": [
+            ("Is Aftersun based on a true story?",
+             "Wells calls it deeply personal but fiction - built from memories of her "
+             "own childhood holidays; the film keeps the autobiography discreet."),
+            ("What do the final scenes mean?",
+             "The film drifts from memory into imagined, speculative space - the last "
+             "sequence is widely read as the daughter's goodbye she never got to give."),
+            ("How long is it?",
+             "101 minutes."),
+        ],
+    },
+    "the-figurine": {
+        "verdict": "The film that announced the New Nollywood: Kunle Afolayan's "
+            "supernatural thriller follows two friends who find the Araromire "
+            "figurine - seven years of good fortune, then seven of misfortune - and "
+            "trade friendship for greed. Yoruba-inflected myth, gorgeous forest "
+            "cinematography and genuine dread; a multiple Africa Movie Academy Awards "
+            "winner that changed what Nigerian cinema could look like.",
+        "faqs": [
+            ("Is The Figurine based on Yoruba mythology?",
+             "It builds on the lore of Araromire, a goddess-figure whose idol blesses "
+             "then curses - an original screenplay rooted in that mythic texture."),
+            ("Why is it a Nollywood landmark?",
+             "Its cinema-grade production values and awards sweep (Africa Movie "
+             "Academy Awards) signalled the New Nollywood wave of prestige Nigerian "
+             "features."),
+            ("How long is it?",
+             "122 minutes."),
+        ],
+    },
 }
