@@ -18,7 +18,8 @@
     "validate:money": "node scripts/validate-money-pages.js",
     "validate:money:browser": "node scripts/validate-money-browser.js",
     "test:http": "node scripts/validate-http.js",
-    "test": "npm run validate:hometools && npm run validate && npm run validate:money && npm run validate:browser && npm run validate:contrast && npm run validate:money:browser"
+    "test": "npm run validate:hometools && npm run validate && npm run validate:money && npm run validate:browser && npm run validate:contrast && npm run validate:money:browser && npm run validate:techhub",
+    "validate:techhub": "node scripts/validate-tech-hub.js"
   },
   "engines": {
     "node": ">=20"
