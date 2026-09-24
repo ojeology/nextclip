@@ -196,3 +196,8 @@ Goal: turn 847 stubs into articles. Median 153 → 600+ words; thin 85% → <5%.
 
 - SHIPPED: 30 more, ENRICH 286 -> 316 (719 total; ~44% enriched). TV giants (Office/Downton/Vikings/TWD/Witcher/Wednesday/Yellowjackets), MCU backfill 4 + Penguin, Eggers pair + Ring + Us, 28 Years Later, comedy trio, world-cinema masters (Ozu/Hamaguchi/Intouchables/Bittersweet), Tamil/Hindi trio, anime pair, Gangs of Lagos.
 - Pool remaining: ~403.
+
+## FILM BATCH 13 (2026-09-24)
+
+- SHIPPED: 30 more, ENRICH 316 -> 346 (719 total; ~48% enriched). Oscar winners (Anora/Shape of Water/Zone of Interest/Lives of Others/Departures/Holdovers), K-cinema deep cuts (Burning/Decision to Leave/Man from Nowhere/Extreme Job), auteurs (Aftersun/Florida Project/Green Knight/Farewell), action backfill (Con Air/Face-Off/Transporter/Equalizer/Creed), India pair, Nollywood landmark The Figurine. NOTE: the-big-lebowski not in MOVIES pool - checked before authoring.
+- Pool remaining: ~373.
