@@ -176,3 +176,8 @@ Goal: turn 847 stubs into articles. Median 153 → 600+ words; thin 85% → <5%.
 
 - SHIPPED: 30 more titles, ENRICH 166 -> 196 (719 total; ~27% enriched). Mix: Hollywood classics, Ghibli, shonen/seinen, K-dramas, prestige TV, Bollywood/Telugu, Nollywood. Same fact rules.
 - Pool remaining: ~523.
+
+## FILM BATCH 9 (2026-09-24)
+
+- SHIPPED: 30 more, ENRICH 196 -> 226 (719 total; ~31% enriched). Kurosawa pair, Star Wars core, superhero pillars, horror canon (Conjuring/Exorcist/Halloween/Thing/Midsommar), anime (JJK/Demon Slayer/Howl/Fireflies/Bebop), Drishyam identified as Malayalam original, GoT/Chernobyl/Wire, Bong Host.
+- Pool remaining: ~493.
