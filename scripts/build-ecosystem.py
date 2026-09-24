@@ -41,6 +41,8 @@ MODE = os.environ.get("ROUTING_MODE") or CFG.get("mode", "path")
 ORIGIN = os.environ.get("ORIGIN") or CFG.get("origin") or sitecfg.site_url()
 ORIGIN_HOST = ORIGIN.split("//", 1)[-1].rstrip("/")  # batch 15: display host
 TODAY = "2026-09-09"
+import datetime as _dtmod
+_TODAY_LIVE = _dtmod.date.today().isoformat()  # clamp: never emit future dates
 
 
 def _build_now():
@@ -915,14 +917,16 @@ def write_service(pub, pages):
         full = shell(pub, title, desc, SUB[pub] + route, body)
         (p / "index.html").write_text(full, encoding="utf-8")
         _m = _dre.search(full) or _vre.search(full)
-        lm_by_url[SUB[pub] + route] = _m.group(1) if _m else TODAY
+        _lmv = _m.group(1) if _m else TODAY
+        lm_by_url[SUB[pub] + route] = min(_lmv, _TODAY_LIVE)
         urls.append(SUB[pub] + route)
         written += 1
     for r in sorted(keep):
         if r in stashed:
             u = SUB[pub] + r
             _m = _dre.search(stashed[r].decode("utf-8", "replace")) or _vre.search(stashed[r].decode("utf-8", "replace"))
-            lm_by_url[u] = _m.group(1) if _m else TODAY
+            _lmv = _m.group(1) if _m else TODAY
+            lm_by_url[u] = min(_lmv, _TODAY_LIVE)
             urls.append(u)
     (base / "sitemap.xml").write_text(
         '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
@@ -1866,7 +1870,7 @@ def entertainment_pages():
             _ax = _rv["axes"]
             _ld = json.dumps({"@context": "https://schema.org", "@type": "Review",
                  "name": _rv["title"] + " - BRYME Entertainment desk review",
-                 "reviewBody": _rv["body"][0][:480], "datePublished": _rv["date"],
+                 "reviewBody": _rv["body"][0][:480], "datePublished": min(_rv["date"], _TODAY_LIVE),
                  "author": {"@type": "Organization", "name": _nr.REVIEWED_BY},
                  "publisher": {"@type": "Organization", "name": "THE BRYME"},
                  "itemReviewed": {"@type": "Movie", "name": _rv["title"], "datePublished": str(_rv["year"]),
@@ -1895,7 +1899,7 @@ def entertainment_pages():
                 + '<tr><td style="padding:5px 14px;border:1px solid var(--line-strong)"><b>Average &mdash; printed score</b></td>'
                 + '<td style="padding:5px 14px;border:1px solid var(--line-strong);text-align:right"><b>' + _nr.review_score_str(_rv) + '</b></td></tr>'
                 + '</tbody></table>'
-                + '<p class="nx-verified">Reviewed by ' + html.escape(_nr.REVIEWED_BY) + ' on ' + _rv["date"]
+                + '<p class="nx-verified">Reviewed by ' + html.escape(_nr.REVIEWED_BY) + ' on ' + min(_rv["date"], _TODAY_LIVE)
                 + '. Scores follow <a href="/entertainment/scoring/">the published method</a>; they are never sold and never previewed to rights-holders. '
                 + '<a href="/entertainment/corrections/">Disagree? The corrections door is open.</a></p>' + _href
                 + '<p class="nx-backlink"><a href="/entertainment/reviews/">&rarr; More from the review shelf</a></p>'
