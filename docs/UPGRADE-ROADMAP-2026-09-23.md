@@ -186,3 +186,8 @@ Goal: turn 847 stubs into articles. Median 153 → 600+ words; thin 85% → <5%.
 
 - SHIPPED: 30 more, ENRICH 226 -> 256 (719 total; ~36% enriched). Family animation 8, action staples 8, sci-fi 6, superhero 4, prestige 4.
 - Pool remaining: ~463.
+
+## FILM BATCH 11 (2026-09-24)
+
+- SHIPPED: 30 more, ENRICH 256 -> 286 (719 total; ~40% enriched). Kubrick cult pair, beloved classics, mega-TV (Friends/Sopranos/BCS/Black Mirror/Dark), anime (DBZ/Frieren/Chainsaw Man), Korean pair, Bollywood giants, Nollywood 93 Days. Batch-10 Finding Nemo typo fixed same commit.
+- Pool remaining: ~433.
