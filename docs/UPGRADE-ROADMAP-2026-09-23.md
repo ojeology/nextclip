@@ -232,3 +232,10 @@ Goal: turn 847 stubs into articles. Median 153 → 600+ words; thin 85% → <5%.
 - Plumbing (7 builders touched): ecosystem (FAMILY/PUB_NAME/PREFIX/editions/drawer/nav/money_pages), routing (PROPS + SITEMAP_PROPS + allowlist missing-file guard + children), discovery (robots), public-dir (2 staging lists), purge-stale (prop loop), inject-analytics (PUBLISH_TIERS).
 - Lessons: (1) inserting a top-level def mid-function swallowed the main-flow calls - IndentationError caught the dedent, def moved above main(); (2) KEEP_AT_ROOT_DIRS = set(PROPS) - the SECOND registry (PROPS, not just SITEMAP_PROPS) gates whether builds delete a new root dir; (3) routing aborts on manually-rerun trees but runs fully inside npm build.
 - Next for money: pip/compounding/risk-reward calculators, research notes from GitHub repos.
+
+## MONEY DESK LAUNCH (2026-09-24)
+
+- SHIPPED: /money/ - 7th section live (commit ff8ef19468c + roadmap). Hub + position-size calculator + position-sizing-101 + legal set (10 URLs). Risk-first policy walls: never advice, no profit claims, no signals, no betting. E-E-A-T via open research links (QUANTLAB, mean-reversion-vwap-lab).
+- Plumbing (7 builders): ecosystem (FAMILY/PUB_NAME/PREFIX/editions/drawer/nav/money_pages), routing (PROPS + SITEMAP_PROPS + allowlist guard + children), discovery (robots), public-dir (2 staging lists), purge-stale (prop loop), inject-analytics (PUBLISH_TIERS).
+- Lessons: (1) top-level def inserted mid-function swallowed main-flow calls - repair: def above main(), calls at original indent; (2) KEEP_AT_ROOT_DIRS = set(PROPS): the PROPS registry (not just SITEMAP_PROPS) gates whether builds delete a new root dir; (3) routing aborts on manual rerun but runs fully inside npm build.
+- Next for money: pip-value/compounding/risk-reward calculators, research notes from the GitHub repos.
