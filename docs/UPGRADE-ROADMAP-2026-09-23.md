@@ -206,3 +206,7 @@ Goal: turn 847 stubs into articles. Median 153 → 600+ words; thin 85% → <5%.
 
 - SHIPPED: 30 more, ENRICH 346 -> 376 (719 total; ~52% enriched - MAJORITY of movie desk now editorial). HBO pair (Euphoria/Agatha), The Boys spinoff Gen V, Fallout, Arcane S2 finale, anime 6 (Dandadan/Blue Lock/Black Clover/Code Geass/Toradora + WWDITS film), MCU/DC backfill 5, prestige pair (Road/Deep Water), Gorge/Atomic Blonde, comedy 4, Nollywood trio (Blood Sisters/Set Up/Eyimofe), Wandering Earth.
 - Pool remaining: ~343.
+
+## RELATED-LINKS UPGRADE (2026-09-24)
+
+- SHIPPED: movie pages "More like this" 3 -> 6 same-genre links, nearest-era deterministic order. ~2,150 extra internal links; whole vertical re-pinged via IndexNow. URL sets unchanged. Full enrichment schema audit clean: 376/376 FAQPage JSON-LD valid with exact question counts.
