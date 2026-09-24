@@ -5262,4 +5262,538 @@ ENRICH = {
              "118 minutes."),
         ],
     },
+    # ---- film batch 12 (2026-09-24): 30 titles - TV giants, MCU backfill, horror landmarks, world cinema ----
+    "the-office-us": {
+        "verdict": "The mundane miracle of American sitcom: a paper company in Scranton, "
+            "filmed like a documentary, staffed by the most uncomfortably lovable idiots "
+            "on television. Carell's Michael Scott is a tragedy of needing to be loved, "
+            "Jim-and-Pam is the slow burn by which all slow burns are judged, and the "
+            "rewatch economy it built may be unmatched. Nothing happens; everything lands.",
+        "faqs": [
+            ("Is the US Office based on the UK one?",
+             "Yes - it adapts Ricky Gervais and Stephen Merchant's British original, then "
+             "finds its own voice by season two and never looks back."),
+            ("How many seasons?",
+             "Nine seasons, 2005 to 2013 - Steve Carell leads the first seven, and the "
+             "ensemble carries it home."),
+            ("Is it still worth watching?",
+             "It remains one of the most rewatched shows on streaming - a comfort-watch "
+             "default for two decades of viewers, which answers the question empirically."),
+        ],
+    },
+    "downton-abbey": {
+        "verdict": "The upstairs-downstairs colossus: a Yorkshire estate, an heir problem, "
+            "and a servants' hall full of schemes, all conducted with Julian Fellowes' "
+            "impeachable manners. Maggie Smith's Dowager alone justifies the admission "
+            "fee. It soothed a decade of audiences on two continents and spun off into "
+            "films - comfort television at its most exportable.",
+        "faqs": [
+            ("Do I need to watch Downton Abbey in order?",
+             "Yes - it is one long serial story across six seasons (2010-2015), and the "
+             "payoffs depend on the long game."),
+            ("Is it historically accurate?",
+             "It is meticulous about period texture (electricity, telephones, a world war) "
+             "while being open fiction - accuracy of feel more than of event."),
+            ("Are the films worth it after the series?",
+             "They continue the story properly - made for devotees, and devotees are "
+             "consistently rewarded."),
+        ],
+    },
+    "vikings": {
+        "verdict": "The saga that made raiders philosophers: Ragnar Lothbrok's climb from "
+            "farmer to legend, and then his sons' wars over the wreckage. Michael "
+            "Hirst's writing gives the Norse world weight - faith, fate and farm - and "
+            "Lagertha remains one of TV's great warriors. Rougher and more soulful than "
+            "its spectacle reputation suggests.",
+        "faqs": [
+            ("Is Vikings historically accurate?",
+             "It weaves real figures (Ragnar, his sons, the raids on Lindisfarne and "
+             "Paris) into legend - the texture is researched, the events are drama."),
+            ("How many seasons?",
+             "Six, airing 2013 to 2020, with the sequel series Vikings: Valhalla "
+             "continuing the world a century later."),
+            ("Do I watch Valhalla first?",
+             "No - the original first; Valhalla assumes its history."),
+        ],
+    },
+    "the-walking-dead": {
+        "verdict": "The zombie drama that proved the walkers were never the point: "
+            "eleven seasons of survivors learning that people are the apocalypse. The "
+            "early seasons are genre-defining television; the long middle tests "
+            "loyalty; the character payoffs (hello, Negan) still generate heat. A "
+            "universe-builder whose influence on TV horror is total.",
+        "faqs": [
+            ("Is The Walking Dead based on a comic?",
+             "Yes - Robert Kirkman's black-and-white comic series; the show follows it "
+             "lovingly at first, then diverges freely."),
+            ("How many seasons?",
+             "Eleven, 2010 to 2022, 177 episodes - plus a small universe of spin-offs "
+             "for favourite survivors."),
+            ("When can I stop watching?",
+             "The honest fan answer: season six is the classic peak - but the finale "
+             "still rewards those who stay the course."),
+        ],
+    },
+    "the-witcher": {
+        "verdict": "Sword-and-sorcery with a grumpy heart: Geralt of Rivia, monster-for-hire, "
+            "bound by destiny to a runaway princess and a bard who won't stop singing. "
+            "Cavill's two seasons of weary charisma and one unforgettable 'Toss a Coin' "
+            "made it a phenomenon. Messy timelines, generous monsters, and a recast "
+            "that keeps the conversation alive.",
+        "faqs": [
+            ("Is The Witcher based on games or books?",
+             "The books - Andrzej Sapkowski's Polish short stories and novels; the "
+             "games came later and the series draws from the page."),
+            ("Why is there a new Geralt?",
+             "Henry Cavill departed after season three; Liam Hemsworth took over the "
+             "medallion from the next season - one of TV's most debated recasts."),
+            ("Do I need to have played the games?",
+             "No - the story is built from the books and explains its own world."),
+        ],
+    },
+    "wednesday": {
+        "verdict": "The Addams daughter gets her noir: Jenna Ortega's deadpan Wednesday "
+            "investigates a monster at Nevermore Academy, Tim Burton directs with "
+            "gothic glee, and one viral dance later the show was a record-setting "
+            "phenomenon. Wry, spooky-sweet, and built to binge - the rare family "
+            "gothic that satisfies teens and their parents at once.",
+        "faqs": [
+            ("Do I need to know The Addams Family?",
+             "No - Wednesday spins its own mystery-school story; knowing the family "
+             "adds seasoning, not requirements."),
+            ("Is it coming back?",
+             "Yes - the second season arrived in 2025, keeping Ortega's deadpan and "
+             "adding star turns."),
+            ("Is it scary?",
+             "Mildly and stylishly - monsters and mystery more than dread; younger "
+             "teens are the sweet spot."),
+        ],
+    },
+    "yellowjackets": {
+        "verdict": "Lord of the Flies with a paper trail: a championship soccer team "
+            "survives a plane crash in 1996 - and the show cuts between the wilderness "
+            "and the damaged adults they became. Cannibalism lurks, cults bloom, and "
+            "the dual-timeline structure never blinks. The best pure mystery-box on "
+            "television, anchored by fearless performances.",
+        "faqs": [
+            ("Is Yellowjackets based on a true story?",
+             "No - it echoes real survival-at-any-cost cases (the Andes flight disaster "
+             "most famously) but its team, cult and cover-ups are invention."),
+            ("How scary is it?",
+             "Psychologically very - the horror is what people choose, not what hunts "
+             "them; gore is present and purposeful."),
+            ("Do the mysteries get answered?",
+             "Slowly and deliberately - each season widens the 1996 timeline; patience "
+             "is part of the pact."),
+        ],
+    },
+    "captain-america": {
+        "verdict": "The MCU's earnest heart, wearing stars and stripes in 1942: a "
+            "skinny kid from Brooklyn gets the super-soldier serum and proves the "
+            "serum was the least of it. Joe Johnston plays it as a wartime adventure "
+            "poster come to life - Red Skull, Hydra, and a sacrifice that defines the "
+            "man before the franchise redefines time itself.",
+        "faqs": [
+            ("Do I watch this before The Avengers?",
+             "Yes - it introduces Steve Rogers and sets up both his sacrifice and the "
+             "Tesseract plot that threads the early MCU."),
+            ("Is the skinny-Steve effect real acting?",
+             "Partly digital shrinking, partly Chris Evans' motion - groundbreaking "
+             "for its time and still convincing."),
+            ("How long is it?",
+             "124 minutes."),
+        ],
+    },
+    "doctor-strange": {
+        "verdict": "The MCU hires a sorcerer: Cumberbatch's arrogant surgeon loses the "
+            "use of his hands and finds the multiverse instead. The kaleidoscope city-"
+            "folding third act is the franchise's most purely psychedelic set piece, "
+            "and 'Dormammu, I've come to bargain' remains its cleverest beat. The "
+            "gateway to everything magical that followed.",
+        "faqs": [
+            ("Do I need Doctor Strange before Infinity War?",
+             "Yes - his Time Stone and his foresight are load-bearing for the entire "
+             "Infinity Saga climax."),
+            ("Is it based on a comic?",
+             "On Steve Ditko and Stan Lee's 1963 creation - the eye, the cloak and the "
+             "sanctums all predate the film by fifty years."),
+            ("How long is it?",
+             "115 minutes."),
+        ],
+    },
+    "black-widow": {
+        "verdict": "Natasha Romanoff's belated solo send-off: a Cold War family "
+            "reunion in which the Red Room's ghosts are literal. Johansson hands the "
+            "baton gracefully to Florence Pugh's Yelena (an instant fan favourite), "
+            "the Taskmaster concept divides, and the heart - chosen family over "
+            "programmed loyalty - lands. A finale by way of a handover.",
+        "faqs": [
+            ("When is Black Widow set in the MCU timeline?",
+             "Between Civil War and Infinity War - after Natasha's fall-out with Tony, "
+             "before Thanos looms."),
+            ("Do I need to have seen the Avengers films?",
+             "Yes - it is a coda to a decade of Natasha, and the grief lands only if "
+             "you know her arc."),
+            ("How long is it?",
+             "133 minutes."),
+        ],
+    },
+    "the-flash": {
+        "verdict": "The multiverse movie as cautionary tale: Barry Allen runs back time "
+            "to save his mother and breaks the DC multiverse open - Keaton's Batman "
+            "returns to general jubilation, and the film's reach wildly exceeds its "
+            "effects. A fascinating, flawed swing that became the era's most discussed "
+            "underperformance. Ambition, caught mid-stumble.",
+        "faqs": [
+            ("Do I need other DC films before The Flash?",
+             "No - it resets its own context; familiarity with the 1989 Batman adds "
+             "the biggest emotional charge."),
+            ("Why was it so talked about?",
+             "A combination: Keaton's return, the multiverse cameos, visual-effect "
+             "debates and a box-office collapse that reshaped DC's plans."),
+            ("How long is it?",
+             "144 minutes."),
+        ],
+    },
+    "the-penguin": {
+        "verdict": "The crime saga hiding inside a comic-book spin-off: Colin Farrell, "
+            "unrecognisable in prosthetics, climbs Gotham's underworld one betrayal at "
+            "a time in the wake of The Batman. Cristin Milioti's Sofia is the "
+            "revelation, the tone is pure seventies gangster drama, and the "
+            "performances collected awards attention everywhere. Prestige TV in "
+            "villain clothing.",
+        "faqs": [
+            ("Do I need The Batman (2022) first?",
+             "Yes - it is a direct continuation of that film's flood-wrecked Gotham, "
+             "and its power depends on the setup."),
+            ("Is it a superhero show?",
+             "Not really - it is a gangster series set in a comic universe; expect "
+             "crime politics, not capes."),
+            ("How many episodes?",
+             "Eight - a tight limited-series arc that feeds directly into the next "
+             "Batman film."),
+        ],
+    },
+    "the-ring": {
+        "verdict": "The film that cursed a generation's VCRs: a videotape that kills in "
+            "seven days, a reporter descending into its mystery, and Gore Verbinski's "
+            "rain-slick, sepia dread remaking Japan's Ringu for the West. The "
+            "television crawl remains one of horror's greatest reveals. The gateway "
+            "drug of the entire J-horror remake wave.",
+        "faqs": [
+            ("Is The Ring based on a Japanese film?",
+             "Yes - Hideo Nakata's 1998 Ringu, itself from Koji Suzuki's novel; the "
+             "remake honours the mythology while re-staging it in the Pacific Northwest."),
+            ("How scary is it really?",
+             "Dread-first and image-led rather than gory - but the imagery is permanent: "
+             "this is the film people cite as their formative scare."),
+            ("How long is it?",
+             "116 minutes."),
+        ],
+    },
+    "the-witch": {
+        "verdict": "Robert Eggers' debut is a Puritan nightmare played straight: a 1630s "
+            "family exiled to the wood's edge, and the devil arrives as a goat, a "
+            "raven and a smile. Anya Taylor-Joy erupts into cinema; the period "
+            "language and candlelight are so exact the film feels excavated. Horror "
+            "as history lesson - 'Wouldst thou like to live deliciously?'",
+        "faqs": [
+            ("Is The Witch historically accurate?",
+             "Obsessively - Eggers built the dialogue from period pamphlets and "
+             "recorded folk belief, making the horror a documentary of superstition."),
+            ("Why is it so slow?",
+             "The dread is cumulative by design - a family disintegrating long before "
+             "the supernatural confirmations; patience is repaid."),
+            ("How long is it?",
+             "92 minutes."),
+        ],
+    },
+    "us": {
+        "verdict": "Jordan Peele's doppelganger nightmare: a family's beach day "
+            "interrupted by their own taped-mouth doubles, and a national reckoning "
+            "in red jumpsuits. Lupita Nyong'o gives two career performances in one "
+            "film; the imagery (scissors, rabbits, Hands Across America) is "
+            "engineered for years of decoding. Horror with ideas and box office to "
+            "spare.",
+        "faqs": [
+            ("Is Us a sequel to Get Out?",
+             "No - Peele framed it as a new nightmare in the same social-horror spirit; "
+             "the connections are thematic, not plot."),
+            ("What is the twist about?",
+             "The reveal reframes the whole film as an argument about the underclass "
+             "America forgot - interpretations abound, which is the design."),
+            ("How long is it?",
+             "112 minutes."),
+        ],
+    },
+    "the-lighthouse": {
+        "verdict": "Two men, one lamp, total madness: Eggers' black-and-white, "
+            "tobacco-stained fever dream strands Pattinson and Dafoe on a storm-bound "
+            "rock and lets the mermaids and gin do the rest. Dafoe's seaman's "
+            "confession is a monologue for the ages. A film that smells like a "
+            "barrel - and a critics' darling precisely because of it.",
+        "faqs": [
+            ("Is The Lighthouse a horror film?",
+             "Partly - it is psychological isolation horror wrapped in black comedy; "
+             "the scares are madness and the jokes are bleaker."),
+            ("Why is it black and white?",
+             "Period immersion and claustrophobia - the old-fashioned 4:3 frame and "
+             "monochrome make the lighthouse feel a century older than cinema."),
+            ("How long is it?",
+             "109 minutes."),
+        ],
+    },
+    "28-years-later": {
+        "verdict": "Boyle and Garland return to the rage virus with the boldest zombie "
+            "film in decades: a boy's first mainland trip becomes a pilgrimage through "
+            "a Britain gone feral - part horror, part folk elegy, shot largely on "
+            "iPhone and riotously alive. Ralph Fiennes' bone-temple cult gives the "
+            "genre a line it has never had before. A trilogy opener with teeth.",
+        "faqs": [
+            ("Do I need the earlier 28 films first?",
+             "28 Days Later helps enormously - it establishes the rage virus; 28 Weeks "
+             "Later is optional context."),
+            ("Is it connected to the 2026 sequel?",
+             "Yes - The Bone Temple continues the story as the next part of a planned "
+             "trilogy."),
+            ("Is it really shot on iPhone?",
+             "Largely, yes - Boyle used iPhone rigs for its raw, jagged intimacy; you "
+             "would never guess the budget from the frame."),
+        ],
+    },
+    "the-hangover": {
+        "verdict": "The night nobody can remember, made unforgettable: a Vegas bachelor "
+            "party, a missing groom, a baby in a closet and a tiger in the bathroom. "
+            "Todd Phillips structures the film as a detective story told in "
+            "hangover-emerging fragments, and it became one of the highest-grossing "
+            "comedies of its era. The wolfpack at full howl.",
+        "faqs": [
+            ("Is The Hangover appropriate for kids?",
+             "No - hard R throughout; the chaos is adult in every sense."),
+            ("Are the sequels worth it?",
+             "Part two repeats the formula scene-for-scene (some love it); part three "
+             "changes genre entirely. The first is the classic."),
+            ("How long is it?",
+             "100 minutes."),
+        ],
+    },
+    "bridesmaids": {
+        "verdict": "The wedding comedy that smuggled in a real study of friendship and "
+            "self-sabotage: Kristen Wiig's maid of honour unravels against Rose "
+            "Byrne's perfect rival, and the airplane and dress-fitting scenes became "
+            "instant comedy landmarks. Melissa McCarthy earned an Oscar nomination "
+            "from it. Funnier and sadder than its genre promised.",
+        "faqs": [
+            ("Did Bridesmaids get Oscar attention?",
+             "Yes - Melissa McCarthy was nominated for Best Supporting Actress at the "
+             "2012 ceremony, a rare comedy turn to break through."),
+            ("Is it more comedy or drama?",
+             "It pivots honestly to drama in the middle - the baking-scene breakdown "
+             "is the film's real centre."),
+            ("How long is it?",
+             "125 minutes."),
+        ],
+    },
+    "the-nice-guys": {
+        "verdict": "Shane Black's sunshine-noir valentine: a heav-for-hire (Crowe) and "
+            "a hapless PI (Gosling, doing peak comic panic) stumble through 1977 Los "
+            "Angeles, missing persons and porn-industry rot. Nobody saw it in "
+            "cinemas; everyone who did quotes it forever. The great cult buddy "
+            "detective film of its decade.",
+        "faqs": [
+            ("Why did The Nice Guys flop?",
+             "Crowded summer release and marketing that never found its tone - the "
+             "audience found it on home video and streaming instead."),
+            ("Is it connected to Kiss Kiss Bang Bang?",
+             "Same writer-director's voice - private eyes, Los Angeles, rapid-fire "
+             "banter - but a separate story."),
+            ("How long is it?",
+             "116 minutes."),
+        ],
+    },
+    "tokyo-story": {
+        "verdict": "The quietest masterpiece in cinema: an elderly couple travel to "
+            "Tokyo to visit their grown children, and are lovingly neglected. Ozu's "
+            "low camera and patient frames find the whole of life in politeness and "
+            "its failures - and in 2022 the world's film directors poll ranked it "
+            "among the greatest films ever made. Everyone should sit with it once; "
+            "many never recover.",
+        "faqs": [
+            ("Why do filmmakers revere Tokyo Story?",
+             "Its restraint is the summit - no camera moves, no music cues, and yet "
+             "it devastates; directors in the Sight and Sound 2022 poll placed it at "
+             "the very top."),
+            ("Is it slow?",
+             "It is patient, not slow - 136 minutes that pass like an evening; the "
+             "final act lands like weather."),
+            ("Do I need subtitles knowledge of Japan?",
+             "None - the family story is universal; the setting is specific and the "
+             "grief is everyone's."),
+        ],
+    },
+    "drive-my-car": {
+        "verdict": "Three hours of grief, theatre and red Saab therapy: a stage "
+            "director stages Chekhov while a quiet chauffeur drives him toward the "
+            "truth about his marriage. Hamaguchi turns Murakami's short story into a "
+            "meditation on talking as survival - and won the Oscar for Adapted "
+            "Screenplay plus Best International Feature. Long, quiet, and somehow "
+            "over before you want it to be.",
+        "faqs": [
+            ("Is Drive My Car based on a book?",
+             "On Haruki Murakami's short story - Hamaguchi expands it into a full "
+             "Chekhov-inflected drama."),
+            ("Did it win Oscars?",
+             "Two at the 2022 ceremony - Best Adapted Screenplay and Best "
+             "International Feature, alongside a Best Picture nomination."),
+            ("Is the three-hour runtime worth it?",
+             "It plays far shorter than its length - and the multilingual final play "
+             "justifies every minute."),
+        ],
+    },
+    "the-intouchables": {
+        "verdict": "The French phenomenon built on a true friendship: a wealthy "
+            "quadriplegic aristocrat hires a caregiver from the projects, and the "
+            "film rides their banter from blunt honesty to genuine tenderness. "
+            "Omar Sy's star turn won the César and launched him international. "
+            "Sentimental? Enormously. Effective? One of the most-watched French "
+            "films anywhere, ever.",
+        "faqs": [
+            ("Is The Intouchables a true story?",
+             "Yes - adapted from Philippe Pozzo di Borgo's real friendship with his "
+             "carer Abdel Sellou; both consulted on the film."),
+            ("Why was it so popular worldwide?",
+             "Universal comedy of opposites - it crossed borders on word of mouth and "
+             "became a fixture of international 'favourite films' lists."),
+            ("Is there an American remake?",
+             "Yes - The Upside (2017) with Bryan Cranston and Kevin Hart; the original "
+             "remains the preferred version for most viewers."),
+        ],
+    },
+    "a-bittersweet-life": {
+        "verdict": "Kim Jee-woon's crystalline gangster ballet: a loyal enforcer "
+            "commits the one sin his boss cannot forgive - mercy - and the film turns "
+            "his punishment into a symmetrical, almost musical revenge piece. Lee "
+            "Byung-hun gives Korean noir its coolest, saddest face. Violence as "
+            "composition; melancholy as style.",
+        "faqs": [
+            ("Is A Bittersweet Life based on a book?",
+             "No - an original screenplay by Kim Jee-woon, conceived as a fusion of "
+             "Korean revenge drama with formal, European art-cinema elegance."),
+            ("Why is it a cult favourite?",
+             "Its immaculate framing and tragic cool - every shootout is composed like "
+             "a painting, and the ending refuses consolation."),
+            ("How long is it?",
+             "120 minutes."),
+        ],
+    },
+    "vikram": {
+        "verdict": "Lokesh Kanagaraj hands Tamil cinema its adrenaline shot: a masked "
+            "vigilante cell, an alcoholic investigator (Fahadh Faasil, gloriously "
+            "unhinged) and Kamal Haasan returning to the title role he made iconic "
+            "in 1986 - all colliding in a sprawling, twist-heavy crime universe. "
+            "Relentless set pieces, fan-service done right, one of Tamil cinema's "
+            "biggest hits.",
+        "faqs": [
+            ("Is Vikram connected to other films?",
+             "Yes - it anchors Lokesh's shared universe, directly tied to Kaithi, with "
+             "the threads continuing in later films."),
+            ("Do I need to know the 1986 Vikram?",
+             "No - the title and star are the homage; this is a fresh story built for "
+             "newcomers too."),
+            ("How long is it?",
+             "174 minutes of chase."),
+        ],
+    },
+    "uri": {
+        "verdict": "The Indian war film that became a phenomenon: dramatising the 2016 "
+            "surgical strikes after the Uri attack, with Vicky Kaushal's major "
+            "leading a covert operation across the Line of Control. Taut military "
+            "craft, a country's collective emotion in the audience, and a catchphrase "
+            "('How's the josh?') that escaped the cinema entirely. Kaushal won the "
+            "National Award for it.",
+        "faqs": [
+            ("Is Uri based on true events?",
+             "Yes - it dramatises the real 2016 attack on an Indian army brigade at "
+             "Uri and the cross-border strikes India reported days later, with "
+             "cinematic liberties."),
+            ("Is it propaganda or a film?",
+             "It is unambiguously a patriotic action film made from one nation's "
+             "perspective - judged best as drama, not documentary."),
+            ("How long is it?",
+             "138 minutes."),
+        ],
+    },
+    "the-lunchbox": {
+        "verdict": "Mumbai's famous dabbawalas deliver a wrong lunchbox, and a lonely "
+            "widower and an overlooked wife begin exchanging notes through it. "
+            "Irrfan Khan at his gentlest, a romance conducted entirely in food and "
+            "handwriting, and an ending that trusts you. Small, perfect, bittersweet "
+            "- one of Indian cinema's warmest exports.",
+        "faqs": [
+            ("Is The Lunchbox a romance?",
+             "An epistolary almost-romance - the beauty is in restraint; whether they "
+             "ever meet is the film's famous grace note."),
+            ("What is a dabba?",
+             "A tiffin lunchbox - Mumbai's dabbawala network famously delivers hot "
+             "home lunches across the city with near-perfect accuracy; one 'wrong' "
+             "delivery starts this story."),
+            ("How long is it?",
+             "105 minutes."),
+        ],
+    },
+    "vinland-saga": {
+        "verdict": "Vikings with a soul in open wound: Thorfinn grows up inside a "
+            "revenge quest, gets it, and discovers the emptiness on the other side - "
+            "then spends the second season farming his way toward becoming a man "
+            "who refuses violence. Rare anime that treats pacifism as the hardest "
+            "fight. Brutal first season, transcendent second.",
+        "faqs": [
+            ("Is Vinland Saga historically based?",
+             "It weaves real saga-era figures into fiction - Thorfinn and the "
+             "expeditions to Vinland draw on the Norse sagas as Makoto Yukimura "
+             "reimagines them."),
+            ("Do the two seasons connect?",
+             "Yes - one continuing story; the acclaimed second season is the "
+             "aftermath that redefines the first."),
+            ("Is it very violent?",
+             "The first season is full-on Viking warfare; the second trades battle "
+             "for moral struggle - the harder watch, in a way."),
+        ],
+    },
+    "weathering-with-you": {
+        "verdict": "Shinkai's rain-soaked follow-up to Your Name: a runaway meets a "
+            "girl who can summon sunshine, and Tokyo slowly drowns in exchange for "
+            "their love. The skies are borderline pornographic in their beauty, "
+            "RADWIMPS does the emotional lifting, and the ending chooses the "
+            "personal over the planet. Gorgeous weather for feeling things.",
+        "faqs": [
+            ("Is Weathering with You a sequel to Your Name?",
+             "No - a standalone story in the same emotional universe, with sly "
+             "connections fans love spotting; watch either order."),
+            ("Did it do well in Japan?",
+             "Immensely - among Japan's highest-grossing domestic films of its year, "
+             "and Japan's awards season favourite."),
+            ("How long is it?",
+             "112 minutes."),
+        ],
+    },
+    "gangs-of-lagos": {
+        "verdict": "Lagos is the main character: a young man raised in Isale Eko's "
+            "gang culture wants out, and Osiberu's film gives Nigeria's biggest "
+            "city a real crime saga - masquerades, loyalty, inheritance of violence "
+            "- shot with blockbuster energy. One of the first Nigerian originals "
+            "to stream globally on Prime Video, and a landmark for Nollywood "
+            "thrillers reaching the world.",
+        "faqs": [
+            ("Is Gangs of Lagos based on a true story?",
+             "It is fiction rooted in the real lore of Lagos Island - Isale Eko's "
+            "street-gang history and Eyo masquerade tradition give the drama its "
+            "authentic backdrop."),
+            ("Where can the cultural conversation about it be found?",
+             "Its release sparked wide Nigerian debate about its portrayal of the "
+             "Eyo masquerade - evidence of how closely the film was watched."),
+            ("How long is it?",
+             "124 minutes."),
+        ],
+    },
 }
