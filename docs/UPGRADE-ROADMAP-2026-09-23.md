@@ -244,3 +244,7 @@ Goal: turn 847 stubs into articles. Median 153 → 600+ words; thin 85% → <5%.
 
 - SHIPPED: 7th desk card on homepage grid with dedicated art (assets/desk/desk-money.jpg, house split-composition style), hero Six->Seven everywhere, desk-QA band Money row, family About lists Money. Content-only; existing URL sets unchanged.
 - Note: desk art lives in assets/desk/ (tracked) - mirrored to public/assets/desk/ per keep-list pattern.
+
+## MONEY PHASE 2 (2026-09-24)
+
+- SHIPPED: 3 pages, money desk now 13 URLs. quantlab-explained (flagship: full pipeline from the repos own record - 95 runs R001-R095, 9 forex, freeze 2026-08-09, blind T1-T34, exit-anchor retraction PF~1.03, MR-only verdict DD-37
