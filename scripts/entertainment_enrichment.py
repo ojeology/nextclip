@@ -3227,4 +3227,519 @@ ENRICH = {
              "201 minutes - one of the longest mainstream Hindi films ever released. Eat first."),
         ],
     },
+    # ---- film batch 8 (2026-09-24): 30 titles - classics, Ghibli, K-drama, prestige TV, Nollywood ----
+    "pulp-fiction": {
+        "verdict": "The film that broke the nineties open and reassembled it out of order. "
+            "Hitmen discussing burgers, a glow-in-the-dark briefcase, a gold watch with a "
+            "very specific history - every scene became culture. Still electric, still "
+            "funny, still the reason half of modern cinema owes Tarantino rent.",
+        "faqs": [
+            ("Why is Pulp Fiction told out of order?",
+             "Its three main stories interlock but are shown shuffled - the structure is the "
+             "point: chance, consequence and a circular ending that only lands out of sequence."),
+            ("Did Pulp Fiction win the Oscar?",
+             "It won Best Original Screenplay (Tarantino and Roger Avary) at the 1995 "
+             "ceremony, and lost Best Picture to Forrest Gump - still the era's most argued result."),
+            ("Is it very violent?",
+             "Yes, abruptly and unsentimentally - plus heavy language and one needle-drop "
+             "scene people never forget. A classic, not a comfy one."),
+        ],
+    },
+    "the-shawshank-redemption": {
+        "verdict": "The most beloved film on the internet, and for once the consensus is "
+            "right. Two decades inside Shawshank prison, one friendship, and a final ten "
+            "minutes that have repaired more bad days than modern medicine. It streams, "
+            "it endures, it hits every time.",
+        "faqs": [
+            ("Was Shawshank a flop at first?",
+             "Genuinely yes - it underperformed in 1994 cinemas and won zero of its seven "
+             "Oscar nominations, then became one of the most-watched films ever through "
+             "home video and television."),
+            ("Is it based on a book?",
+             "A Stephen King novella - Rita Hayworth and Shawshank Redemption, from the "
+             "collection Different Seasons."),
+            ("Why is it rated so highly?",
+             "Because it earns its hope honestly: patience, friendship and dignity against "
+             "an institution built to grind them away. The payoff is one of cinema's great "
+             "releases."),
+        ],
+    },
+    "godfather-part-ii": {
+        "verdict": "The sequel that out-mastered the masterpiece: Michael's soul in the "
+            "present, his father's rise in the past, cut against each other like two halves "
+            "of a tragedy sharing one spine. De Niro's young Vito is iconic; Pacino's eyes "
+            "do the actual storytelling. The arguable peak of the American film.",
+        "faqs": [
+            ("Do I need to see the first Godfather?",
+             "Absolutely - Part II continues Michael's story directly and its flashback half "
+             "only resonates because you know where Vito ends up."),
+            ("Did it win Best Picture?",
+             "Yes - the first sequel ever to win the Academy Award for Best Picture (1975), "
+             "with De Niro taking Best Supporting Actor for his Italian-language performance."),
+            ("How long is it?",
+             "165 minutes - and treat it as an event, not background viewing."),
+        ],
+    },
+    "empire-strikes-back": {
+        "verdict": "The Star Wars that grew up: the heroes lose, the villain tells the "
+            "truth that rewired a generation, and the ending leaves everything hanging on "
+            "purpose. Still the franchise's peak for most who love it - darker, deeper, "
+            "and with the saga's best third act.",
+        "faqs": [
+            ("Which Star Wars film is 'I am your father' from?",
+             "The Empire Strikes Back (1980) - the duel revelation is among the most famous "
+             "scenes ever filmed, and the line is often misquoted."),
+            ("Do I need to watch A New Hope first?",
+             "Yes - Empire is the middle chapter of the original trilogy and assumes everything "
+             "the first film set up."),
+            ("Who directed it?",
+             "Irvin Kershner, from a story by George Lucas - the hand-off that gave the saga "
+             "its darkest, most personal chapter."),
+        ],
+    },
+    "raiders": {
+        "verdict": "The perfect adventure film, full stop. Spielberg at maximum velocity, "
+            "Ford at maximum charm, a boulder, a whip, and Nazis getting what was coming - "
+            "every set piece a masterclass in momentum. Eighty years of blockbusters have "
+            "been chasing this high.",
+        "faqs": [
+            ("Is Raiders of the Lost Ark the first Indiana Jones?",
+             "Yes - 1981, the start of the series and still its benchmark (the later "
+             "prequel, Temple of Doom, is actually set earlier in time)."),
+            ("Did it win any Oscars?",
+             "Five, at the 1982 ceremony - art direction, cinematography, editing, sound "
+             "and visual effects. It lost Best Picture to Chariots of Fire."),
+            ("Is it suitable for kids?",
+             "Broadly - it is PG in the old, bold sense: spooky faces melting and skeletons, "
+             "thrilling rather than gruesome. A rite of passage at about eight."),
+        ],
+    },
+    "terminator-2-judgment-day": {
+        "verdict": "The sequel that swallowed its genre whole: the terrifying assassin "
+            "returns as protector, and Cameron turns a B-movie premise into opera - liquid "
+            "metal, oil-truck chases, and 'hasta la vista' entering the language. Groundbreaking "
+            "effects that somehow never age.",
+        "faqs": [
+            ("Do I need to see The Terminator (1984) first?",
+             "Yes - T2's entire premise (who the guardian is, why Sarah knows too much) depends "
+             "on it, and it is a classic in its own right."),
+            ("Did T2 win Oscars?",
+             "Four at the 1992 ceremony - makeup, sound, sound effects editing and visual "
+             "effects, for effects that still hold up three decades later."),
+            ("Why is it considered better than the original?",
+             "It is not better so much as bigger in every dimension - the action scaled up, "
+             "the heart scaled up. Which one is supreme remains the bar-room argument."),
+        ],
+    },
+    "the-departed": {
+        "verdict": "Scorsese's Boston powder keg: a cop inside the mob, a mobster inside "
+            "the police, and nobody - on screen or in the audience - safe for a second. "
+            "Rat-a-tat dialogue, genuine dread, and an ending that lands like a slap. "
+            "The Best Picture the director had waited decades for.",
+        "faqs": [
+            ("Is The Departed based on another film?",
+             "Yes - a remake of Hong Kong's Infernal Affairs (2002), transplanted to Boston "
+             "with Scorsese's crime-family DNA all over it."),
+            ("Did it win Best Picture?",
+             "Yes - the 2007 Academy Awards, plus Best Director for Scorsese, his first "
+             "win after decades of masterpieces."),
+            ("Is it very violent?",
+             "Frequently and suddenly - the film's tension depends on the sense that anyone "
+             "can go at any moment. That is not an idle promise."),
+        ],
+    },
+    "goodfellas": {
+        "verdict": "The greatest gangster film about being a gangster - not the throne, the "
+            "job: the perks, the paranoia, the petty treacheries and the slow rot. Scorsese's "
+            "kinetic genius is at full blast - the Copacabana tracking shot alone is film-school "
+            "gospel. Funny until it very suddenly is not.",
+        "faqs": [
+            ("Is Goodfellas based on a true story?",
+             "Yes - Nicholas Pileggi's book Wiseguy, the documented life of mob associate "
+             "Henry Hill; the Lufthansa heist at its centre really happened."),
+            ("Why is the restaurant tracking shot famous?",
+             "One unbroken glide takes Henry and Karen through the back door, corridors and "
+             "kitchen to a front-row table - half a decade of status conveyed in a single move."),
+            ("Is it better than The Godfather?",
+             "Different animals: Coppola's is Shakespearean tragedy, Scorsese's is kinetic "
+             "documentary energy. The eternal argument has no wrong answer."),
+        ],
+    },
+    "casablanca": {
+        "verdict": "Eighty years of imitations and still the standard: a gin joint, a "
+            "bitter expat, a woman walking in with the war behind her. Every line lands, "
+            "every glance means two things, and the ending remains the most mature in "
+            "Hollywood history. They genuinely do not make them like this.",
+        "faqs": [
+            ("What is Casablanca about?",
+             "Morocco during the Second World War: cynical club owner Rick must choose "
+             "between the woman he loves and helping her resistance husband escape - "
+             "sacrifice over desire, duty over the heart."),
+            ("Did it win Best Picture?",
+             "Yes - three Academy Awards in 1944, including Best Picture and Best Director."),
+            ("Is it black and white, and is that a problem?",
+             "It is, and it is not - the shadows and smoke are half the romance. Even "
+             "first-time classic-haters tend to surrender by the twenty-minute mark."),
+        ],
+    },
+    "memento": {
+        "verdict": "The puzzle-box that made Nolan's name: a man who cannot form new "
+            "memories hunts his wife's killer backwards, and the film runs the same trick "
+            "on you. Genuinely clever rather than pretending to be - and underneath the "
+            "gimmick, a real story about the stories we tell ourselves.",
+        "faqs": [
+            ("Does Memento play backwards?",
+             "Alternating: one thread runs in reverse scene by scene, intercut with a "
+             "forward-moving thread - the two collide at the ending, which is also the "
+             "beginning of the truth."),
+            ("Is it based on a book?",
+             "No - on a short story by Nolan's brother Jonathan (Memento Mori), written "
+             "while the film was being pitched."),
+            ("Should I watch the chronological version?",
+             "Not first. The disorientation is the design; the re-ordered cut exists for "
+             "rewatchers who want to see the trick from the other side."),
+        ],
+    },
+    "children-of-men": {
+        "verdict": "The dystopia that ages into prophecy: no children for eighteen years, "
+            "a Britain of cages and camps, and one escort mission through it all. Cuarón's "
+            "camera refuses to blink - those long battle takes are legendary - and the film "
+            "is more relevant every single year. Devastating craft.",
+        "faqs": [
+            ("Is Children of Men based on a book?",
+             "On P. D. James's 1992 novel, though the film transposes its mystery into an "
+             "immigrant-refugee frame all its own."),
+            ("Why is it famous for its camera work?",
+             "Several sequences play as single unbroken shots - the car ambush and the "
+             "final war-zone walk especially - stitching chaos into terrifying continuity."),
+            ("Is it very bleak?",
+             "Yes - and it ends on the exact honest note of hope the genre usually fakes."),
+        ],
+    },
+    "predator": {
+        "verdict": "The eighties action film that wanders into a horror film and never "
+            "comes back: Schwarzenegger's commandos meet something that hunts them for "
+            "sport, and the jungle closes in. Muscles, one-liners, dread and the single "
+            "greatest creature design of its decade. Perfect popcorn with teeth.",
+        "faqs": [
+            ("Is Predator a horror film or an action film?",
+             "It starts as the latter and becomes the former - the switch from buddy-war "
+             "movie to stalk-and-slash is the whole architecture of its genius."),
+            ("Who is in the cast?",
+             "Arnold Schwarzenegger leads, with a pre-governor future mind - Carl Weathers, "
+             "and two future US state governors sharing a screen."),
+            ("How does it connect to the Alien films?",
+             "It does not, on screen - the famous crossover (Alien vs Predator) is a comics "
+             "and later-film affair. This stands alone."),
+        ],
+    },
+    "heat": {
+        "verdict": "The crime epic of the nineties: cop and criminal orbiting each other "
+            "with monastic discipline until the streets pay for it. The downtown shootout "
+            "rewrote how films sound, the diner scene is two legends sharing coffee like "
+            "duellists, and the whole thing hums at three hours. Michael Mann's masterpiece.",
+        "faqs": [
+            ("Is Heat based on a true story?",
+             "Loosely on Chicago cop Chuck Adamson's pursuit of thief Neil McCauley - the "
+             "diner meeting between De Niro and Pacino mirrors a real conversation the two "
+             "men once had."),
+            ("Is this the first Pacino-De Niro film together?",
+             "They shared The Godfather Part II without sharing scenes; Heat's diner scene "
+             "is their first true on-screen face-off."),
+            ("How long is it?",
+             "171 minutes - clear the evening; the payoff is worth every one."),
+        ],
+    },
+    "looper": {
+        "verdict": "The rare time-travel film that solves its own paradoxes and then finds "
+            "the human story hiding inside them: a hitman killing targets sent from the "
+            "future, until the next target is himself. Smart, scrappy, Willis and Gordon-"
+            "Levitt doing career-best work. Sci-fi with a bruise.",
+        "faqs": [
+            ("Do I need to follow every time-travel rule?",
+             "No - Johnson states the rules clearly, then keeps the focus on choices rather "
+             "than mechanics. It rewards attention without requiring a diagram."),
+            ("Is Bruce Willis the villain?",
+             "He is the complication: the older version of the main character arriving into "
+             "his own past with a mission of his own. Whether that makes him villain or "
+             "saviour is the film's real question."),
+            ("How long is it?",
+             "119 minutes, tight as a drum."),
+        ],
+    },
+    "oldboy": {
+        "verdict": "Park Chan-wook's revenge odyssey - imprisoned for fifteen years without "
+            "explanation, released with five days to find out why. Style and savagery in "
+            "perfect balance: the corridor hammer fight, the octopus, and a final revelation "
+            "that remains cinema's cruellest gut-punch. Not for the squeamish; unmissable "
+            "for everyone else.",
+        "faqs": [
+            ("Is Oldboy based on a manga?",
+             "Yes - Nobuaki Minegishi and Garon Tsuchiya's Japanese manga, though Park's film "
+             "takes its own road to an even darker destination."),
+            ("How violent is it?",
+             "Brutally - torture, self-harm and one revelation whose impact outdoes any "
+             "violence. This is a hard-18 experience and a masterpiece of that register."),
+            ("Is it part of a series?",
+             "It is the middle film of Park's informal Vengeance trilogy - each stands alone."),
+        ],
+    },
+    "memories-of-murder": {
+        "verdict": "Bong Joon-ho's true-crime masterwork: rural detectives chasing Korea's "
+            "first serial killer in the rain, with procedures that keep failing and a "
+            "final look into the camera that still haunts. Funny, furious, and quietly "
+            "one of the finest films of its century.",
+        "faqs": [
+            ("Is Memories of Murder a true story?",
+             "Yes - it dramatises the real Hwaseong serial murders of 1986-91; the killer "
+             "was identified only after the film was made, which makes its ending look "
+             "prophetic."),
+            ("Is it like Memories of a Murderer on other platforms?",
+             "Different works exist about the case - Bong's 2003 feature is the acclaimed "
+             "one, based on the play Come to See Me."),
+            ("Do I need to like crime dramas to love it?",
+             "It helps, but the film is really about incompetence, dictatorship-era Korea "
+             "and the guilt of not knowing - it transcends its genre on purpose."),
+        ],
+    },
+    "crash-landing-on-you": {
+        "verdict": "The K-drama that made the world cry over a paragliding accident: a "
+            "South Korean heiress blown over the border into North Korea, and the officer "
+            "who hides her. Sixteen hours of warmth, absurdity, genuine peril and the "
+            "best found-family on television. The gateway K-drama for a reason.",
+        "faqs": [
+            ("Is Crash Landing on You based on real events?",
+             "Only loosely - the premise echoes the real case of a South Korean woman whose "
+             "boat drifted north; the romance and comedy are pure drama."),
+            ("How long is it?",
+             "Sixteen episodes at about seventy minutes each - a full, generous commitment."),
+            ("Is it funny or sad?",
+             "Both, constantly - the fish-out-of-water comedy carries real danger and a "
+             "bittersweet core. Keep tissues within reach from episode eight."),
+        ],
+    },
+    "extraordinary-attorney-woo": {
+        "verdict": "The gentlest phenomenon on television: a brilliant autistic attorney "
+            "navigating courtrooms, whales, and colleagues learning to deserve her. Park "
+            "Eun-bin's performance is a marvel of specificity and dignity. Kind, clever, "
+            "casewise - comfort viewing with substance.",
+        "faqs": [
+            ("Is Extraordinary Attorney Woo based on a book?",
+             "No - an original drama, though each case draws on real Korean legal and social "
+             "questions."),
+            ("What makes it different from other legal dramas?",
+             "Its protagonist's autism is neither superpower nor tragedy - the show works "
+             "through how environments, colleagues and courts adapt to a mind like hers, "
+             "case by case."),
+            ("How long is it?",
+             "Sixteen episodes of about seventy minutes; most cases resolve within an episode, "
+             "with the relationships carrying the series."),
+        ],
+    },
+    "vincenzo": {
+        "verdict": "The K-drama that threw everything at the wall - mafia consigliere, "
+            "corporate villains, tenant-cooperative comedy, romance, fountain of gold - and "
+            "somehow conducted it into a hit. Song Joong-ki's antihero is deliciously cold "
+            "until he very much is not. Gloriously excessive.",
+        "faqs": [
+            ("What is Vincenzo about?",
+             "A Korean-Italian mafia lawyer returns to Seoul to recover hidden gold beneath "
+             "a condemned building - and goes to war with the conglomerate squatting on it, "
+             "armed with nothing but legal process and mob craft."),
+            ("Is it a comedy or a thriller?",
+             "A machete-cut hybrid: broad slapstick one scene, chilling revenge the next - "
+             "its tonal confidence is the whole appeal."),
+            ("How long is it?",
+             "Twenty episodes - a big, satisfying commitment."),
+        ],
+    },
+    "one-piece": {
+        "verdict": "Twenty-five years and still sailing: the shonen epic about a rubber "
+            "pirate chasing the world's greatest treasure that quietly became the story of "
+            "freedom, found family and every kind of oppression. The pacing punishes, the "
+            "payoff redeems - there is a reason it is the best-selling manga ever.",
+        "faqs": [
+            ("Is One Piece still ongoing?",
+             "Yes - the manga entered its final saga, while the anime continues adapting it; "
+             "there has literally never been a better time to start than after the arcs that "
+             "recently concluded."),
+            ("Do I need to read the manga first?",
+             "No - the anime is the canonical experience for most, and the pacing issues "
+             "that used to plague it have been reined in for the modern arcs."),
+            ("How long is it?",
+             "Over a thousand episodes - begin with the East Blue arc and let the world "
+             "argue about fillers once you are hooked."),
+        ],
+    },
+    "death-note": {
+        "verdict": "The thriller that made a generation of non-anime viewers into anime "
+            "viewers: a student finds a notebook that kills anyone whose name is written "
+            "in it, and the world's greatest detective arrives to stop him. A high-wire "
+            "game of moral vanity, in thirty-seven tight episodes.",
+        "faqs": [
+            ("Is Death Note based on a manga?",
+             "Yes - Tsugumi Ohba and Takeshi Obata's mega-selling manga; the 2006 anime "
+             "adapts it in 37 episodes."),
+            ("Should I stop watching after a certain point?",
+             "You will meet this opinion online: many fans consider the story's natural "
+             "climax to arrive late in the series. Watch the whole thing and form your own "
+             "verdict - the ending is more divisive than broken."),
+            ("Is it scary?",
+             "It is tense, gothic and morally unsettling rather than gory - a psychological "
+             "duel, not a horror."),
+        ],
+    },
+    "fullmetal-alchemist-brotherhood": {
+        "verdict": "The most complete anime ever made: two brothers break alchemy's one "
+            "taboo and spend sixty-four episodes paying for it across a plot that weaves "
+            "war, faith, family and every character's story into one flawless braid. Start "
+            "to finish, zero filler - the genre's high-water mark.",
+        "faqs": [
+            ("Do I need to watch the 2003 Fullmetal Alchemist first?",
+             "No - Brotherhood (2009) follows the manga's complete story; the 2003 series "
+             "branched off on its own path when the manga was unfinished. Start with Brotherhood."),
+            ("Is it dubbed well?",
+             "Yes - the English dub is widely regarded as excellent, which is rare air for anime."),
+            ("Is it suitable for teens?",
+             "Mature themes and some genuinely dark body horror - best for older teens and "
+             "up, and rewarding at every age above that."),
+        ],
+    },
+    "spirited-away": {
+        "verdict": "Miyazaki's masterpiece and the greatest animated film ever made, if you "
+            "believe the Academy (it won the Oscar) or the box office (it ruled Japan for "
+            "two decades). A girl lost in a bathhouse for spirits - and a film about courage, "
+            "greed and names, drawn by hand at an altitude nobody else breathes.",
+        "faqs": [
+            ("Did Spirited Away win an Oscar?",
+             "Yes - Best Animated Feature at the 2003 ceremony, the first hand-drawn and "
+             "non-English-language film to win it."),
+            ("Is it scary for children?",
+             "Mildly - some transformations and a temperamental river spirit startle younger "
+             "viewers, though the film was made for and beloved by children. About eight and "
+             "up is the classic starting age."),
+            ("Do Miyazaki films connect?",
+             "No - each Studio Ghibli film stands alone; start here or with My Neighbour "
+             "Totoro and work outwards."),
+        ],
+    },
+    "princess-mononoke": {
+        "verdict": "Miyazaki's wildest, most adult fable: gods of the forest against the "
+            "humans of Iron Town, with no villains and no easy side. The ecological rage, "
+            "the muscular hand-drawn action, and a moral seriousness most live-action never "
+            "reaches. Ghibli at its most fierce.",
+        "faqs": [
+            ("Is Princess Mononoke suitable for kids?",
+             "Older kids and up - it is Ghibli's most violent film by some distance, with "
+             "dismemberments and curses; teenagers are the natural audience."),
+            ("Is it connected to Spirited Away?",
+             "No - a separate story, released four years earlier. Both are Miyazaki, nothing more."),
+            ("What is it really about?",
+             "The irreconcilable: civilisation's needs against nature's, told through humans "
+             "who are each right and each guilty. Nobody wins cleanly, which is the point."),
+        ],
+    },
+    "suzume": {
+        "verdict": "Shinkai's disaster-fable road movie: a girl, a boy turned into a chair, "
+            "and doors across Japan that must be closed before what is behind them gets out. "
+            "Breathtaking backdrops, an emotional core about grief and growing up, and the "
+            "most gorgeous catastrophe animation going.",
+        "faqs": [
+            ("Is Suzume connected to Your Name or Weathering With You?",
+             "No - Shinkai's films share themes (love, weather, catastrophe) but stand alone; "
+             "this one is inspired in part by Japan's 2011 earthquake and tsunami."),
+            ("Is it based on a book?",
+             "It received a novelisation and manga alongside release, but the film is the "
+             "original work."),
+            ("Is it good for family viewing?",
+             "Yes for older children - the peril is real but kind, and the talking chair is "
+             "exactly as delightful as it sounds."),
+        ],
+    },
+    "breaking-bad": {
+        "verdict": "The complete crime tragedy: a dying chemistry teacher chooses pride over "
+            "protection and becomes the thing he feared, one impeccable episode at a time. "
+            "The most controlled five-season arc television has produced - no filler, no "
+            "false steps, and an ending that sticks the landing.",
+        "faqs": [
+            ("Is Breaking Bad based on a true story?",
+             "No - Vince Gilligan's invention, though its descent is so precise it feels "
+             "documented."),
+            ("How many seasons and how long is an episode?",
+             "Five seasons, 62 episodes, roughly 47 minutes each - about two months of "
+             "evenings, and worth every one."),
+            ("Do I need Better Call Saul first?",
+             "No - Breaking Bad first; the prequel then deepens in ways its own right. "
+             "The intended order is the publication order."),
+        ],
+    },
+    "true-detective": {
+        "verdict": "Season one remains a high-water mark of the prestige-crime era: two "
+            "Louisiana detectives, seventeen years, and a ritual murder that curdles everything "
+            "it touches. McConaughey and Harrelson are magnetic, Fukunaga's direction is "
+            "hypnotic, and the show is genuinely about something - time, guilt, light against "
+            "the dark. Anthology: each season stands alone.",
+        "faqs": [
+            ("Do the True Detective seasons connect?",
+             "No - it is an anthology: each season is a new case, cast and era. Season one "
+             "(2014) is the acclaimed landmark most people mean."),
+            ("Is it horror or crime?",
+             "Crime first, with cosmic-horror dread woven through - the occult atmosphere "
+             "is real, the explanation is human."),
+            ("Is it very dark?",
+             "Yes - violence, nihilism and some truly disturbing imagery. It earns its "
+             "darkness with ideas, not shock alone."),
+        ],
+    },
+    "sholay": {
+        "verdict": "The Indian film that defined 'blockbuster' for a billion people: two "
+            "buddies, a vengeful thakur, a dacoit with a voice like gravel, and every song "
+            "a national memory. Fifty years on, its lines are still quoted at weddings and "
+            "in parliament. The Western, the friendship film and the festival all at once.",
+        "faqs": [
+            ("Why is Sholay so famous?",
+             "It is the template - the biggest hit of classic Hindi cinema, running in some "
+             "theatres for years, and the source of a disproportionate share of Indian "
+             "pop-culture's most quoted dialogue."),
+            ("Is it a Western?",
+             "An Indian one - the grammar of Seven Samurai and Spaghetti Westerns transposed "
+             "to village India, with the bromance and the songs that make it pure Bollywood."),
+            ("How long is it?",
+             "About 204 minutes in its restored form - an event, as intended."),
+        ],
+    },
+    "rrr": {
+        "verdict": "The most aerobic action epic ever made: two revolutionaries, one "
+            "explosive friendship, and action sequences staged with such conviction they "
+            "briefly suspend disbelief worldwide. Rajamouli does not choreograph scenes; "
+            "he launches them. Watch it loudest, with the biggest crowd you can assemble.",
+        "faqs": [
+            ("Is RRR a true story?",
+             "It borrows two real Indian revolutionaries (Komaram Bheem and Alluri Sitarama "
+             "Raju) and then invents - gloriously - the friendship and fireworks between them."),
+            ("Did RRR really win an Oscar?",
+             "Yes - Best Original Song for 'Naatu Naatu' at the 2023 ceremony, following that "
+             "viral dance number around the world."),
+            ("Is it in Hindi?",
+             "It is a Telugu-language film (with dubs) - part of what made its global success "
+             "a landmark for Indian cinema beyond Bollywood."),
+        ],
+    },
+    "oloture": {
+        "verdict": "Nollywood's hardest look in the mirror: a reporter goes undercover in "
+            "Lagos's sex trade and finds a world the city prefers unseen. Kenneth Gyang's "
+            "film is humane, unsensational and quietly furious - the rare exposé that trusts "
+            "its people more than its plot. Essential Nigerian cinema.",
+        "faqs": [
+            ("Is Oloture based on a true story?",
+             "It is fiction inspired by real reporting on trafficking and prostitution rings "
+             "in Nigeria - the conditions depicted are documented, the characters are crafted."),
+            ("Is it connected to the series?",
+             "A follow-up series continued the story on streaming - the film stands alone "
+             "but leaves the door open."),
+            ("Is it difficult to watch?",
+             "Emotionally, yes - exploitation and violence against women are its subject "
+             "matter, handled seriously rather than for spectacle."),
+        ],
+    },
 }
