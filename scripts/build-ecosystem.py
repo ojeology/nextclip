@@ -676,7 +676,9 @@ def _nav_items(pub):
                 ("/money/position-sizing-101/", "Position sizing, explained"),
                 ("/money/quantlab-explained/", "QUANTLAB, explained"),
                 ("/money/backtesting-101/", "Backtesting 101"),
-                ("/money/expectancy-calculator/", "Expectancy calculator")]
+                ("/money/expectancy-calculator/", "Expectancy calculator"),
+                ("/money/trade-types-explained/", "Types of trades, explained"),
+                ("/money/technical-indicators-explained/", "Indicators, explained")]
         return ([("The desk", desk)], ("/money/", "Desk home"))
     if pub == "hub":
         return ([("Writers", "/writers/"), ("Sport", "/sports/"), ("Tech", "/tech/"),
@@ -5880,7 +5882,7 @@ def money_pages():
               _md.MONEY_TAGLINE, _md.HUB_BODY)]
     pages.append((_md.CALC_PAGE["route"], _md.CALC_PAGE["title"], _md.CALC_PAGE["desc"], _calc_body))
     pages.append((_md.SIZING_101["route"], _md.SIZING_101["title"], _md.SIZING_101["desc"], _md.SIZING_BODY))
-    for _extra in (_md.QL_PAGE, _md.BT_PAGE, _md.EXP_PAGE):
+    for _extra in (_md.QL_PAGE, _md.BT_PAGE, _md.EXP_PAGE, _md.TT_PAGE, _md.IND_PAGE):
         pages.append((_extra["route"], _extra["title"], _extra["desc"], _extra["body"]))
     return pages + legal_pages("money", "BRYME Money", _md.MONEY_TAGLINE)
 

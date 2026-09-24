@@ -64,6 +64,10 @@ HUB_BODY = (
     "\u2014 the seven ways a backtest lies, and the discipline that catches each one.</li>"
     '<li><a href="/money/expectancy-calculator/"><b>The expectancy calculator</b></a> '
     "\u2014 win rate and risk-reward in; edge per trade, breakeven win rate and dollars out.</li>"
+    '<li><a href="/money/trade-types-explained/"><b>Types of trades, explained</b></a> '
+    "\u2014 longs and shorts, every order type, and the styles from scalping to position trades.</li>"
+    '<li><a href="/money/technical-indicators-explained/"><b>Indicators, explained</b></a> '
+    "\u2014 the four families, why same-family tools are echoes, and the two classic stacks.</li>"
     "</ul>"
     "<p>New tools and research notes are added as they are finished \u2014 never on a "
     "schedule, always with the working open for inspection.</p>"
@@ -478,4 +482,225 @@ EXP_PAGE = {
     "title": "Trading expectancy calculator - win rate & risk-reward | BRYME Money",
     "desc": "Free expectancy calculator: win rate and R-multiples in - expectancy per trade, breakeven win rate and dollar expectancy out. Runs in your browser. Educational, not advice.",
     "body": EXP_BODY,
+}
+
+# ---- Money desk phase 3 (2026-09-24): trade types explained + indicators & how they relate ----
+# Educational foundations, anchored where relevant to the public research labs
+# (QUANTLAB stacks: EMA200/ADX/Donchian trend filter; VWAP lab: VWAP bands + RSI + ATR gates).
+# House rules: general information, never advice; conventions vary by platform and are
+# labelled as conventions; no strategy claims beyond what the labs logged.
+
+TT_BODY = (
+    '<div class="wrap"><section class="cover"><p class="kicker">BRYME Money \u00b7 Education</p>'
+    "<h1 class=\"cover-title\">Every type of trade, explained: directions, orders and styles</h1>"
+    "<p class=\"cover-dek\">Long and short, market and limit, stops and brackets, scalps to "
+    "positions \u2014 what each one actually does when you press the button, and where each one "
+    "breaks.</p></section>"
+    '<section class="section"><div class="prose">'
+    "<p>Trading vocabulary sounds more mysterious than it is. Every trade, in any market, is "
+    "a direction (which way you expect price to move), an order type (how your instructions "
+    "reach the exchange), and a style (how long you hold). This page walks all three layers "
+    "in plain language. It is general information about mechanics \u2014 not advice to place "
+    "any trade.</p>"
+    "<h2>The two directions: long and short</h2>"
+    "<p><b>Going long</b> means profiting if price rises: buy low now, sell higher later. It "
+    "is the natural direction of investing and the simplest to hold \u2014 your worst case per "
+    "share, in spot markets, is the price falling to zero.</p>"
+    "<p><b>Going short</b> is the mirror: profit if price falls. In borrowed-spot markets you "
+    "sell borrowed units and buy them back later, hoping to return them cheaper. In derivatives "
+    "(futures, perpetuals, CFDs) you simply open a sell contract. Two honest warnings the "
+    "glossaries skip: a short has <b>no ceiling on its loss</b> \u2014 price can rise without "
+    "limit \u2014 and borrowed positions carry funding or borrowing costs the longer they stay "
+    "open. Shorting is a tool with a sharper handle, not a trick.</p>"
+    "<h2>The markets you can trade</h2>"
+    '<ul class="list">'
+    "<li><b>Forex</b> \u2014 currency pairs (EUR/USD). The first currency is the base, the second "
+    "the quote; prices move in <b>pips</b> and sizes come in <b>lots</b> (a standard lot is "
+    "100,000 base units). Open around the clock on weekdays; costs live in the spread.</li>"
+    "<li><b>Crypto</b> \u2014 coins traded in plain <b>units</b>, plus <b>perpetual futures</b>, "
+    "contracts with no expiry that track the coin via a periodic <b>funding rate</b> between "
+    "longs and shorts. Open every hour of every day.</li>"
+    "<li><b>Stocks</b> \u2014 shares in companies, traded in sessions; prices in currency per "
+    "share, and shorting typically requires borrowing the shares.</li>"
+    "<li><b>Derivatives</b> \u2014 futures and options, contracts <i>about</i> an underlying "
+    "price. Powerful, refundable-in-pain: leverage multiplies exposure, never capital, and "
+    "options can decay to zero.</li></ul>"
+    "<p>The sizing maths is identical underneath all of them \u2014 risk divided by stop "
+    "distance \u2014 which is why the <a href=\"/money/position-size-calculator/\">position size "
+    "calculator</a> has a forex mode and an any-market mode.</p>"
+    "<h2>Order types: the five that matter</h2>"
+    "<p><b>Market order</b> \u2014 trade right now at whatever price the book offers. Guaranteed "
+    "fill, no guaranteed price; the difference is <b>slippage</b>, and it grows in fast or thin "
+    "markets. Use when being in the trade matters more than a tick.</p>"
+    "<p><b>Limit order</b> \u2014 trade only at your price or better. Guaranteed price, no "
+    "guaranteed fill: the market may never come back. Use for entries at levels, and for exits "
+    "when you refuse to accept worse.</p>"
+    "<p><b>Stop order (stop-market)</b> \u2014 dormant until price touches your level, then fires "
+    "a market order. This is the classic protective stop-loss: it gets you out in a crash even "
+    "when nobody is bidding politely \u2014 but in a gap it fills <i>through</i> your level, not "
+    "at it. That is the price of the guarantee to exit.</p>"
+    "<p><b>Stop-limit order</b> \u2014 on trigger, places a <i>limit</i> instead of a market "
+    "order. You control the worst acceptable fill, but in a violent move the limit can simply "
+    "not fill, leaving you inside the crash you were escaping. The eternal trade-off: stop-market "
+    "always exits, stop-limit exits only at a price you named.</p>"
+    "<p><b>Brackets and OCO</b> \u2014 a stop-loss and a take-profit attached to one position; "
+    "when one fires the other cancels (one-cancels-other). This is how a plan becomes "
+    "mechanical: both exits exist before the emotion arrives. A <b>trailing stop</b> is the "
+    "cousin that follows price at a set distance (exact behaviour varies by platform) \u2014 "
+    "useful for letting winners run, useless as a substitute for an initial invalidation level.</p>"
+    "<h2>Styles: how long the trade lives</h2>"
+    '<ul class="list">'
+    "<li><b>Scalping</b> \u2014 seconds to minutes, many trades, tiny targets. Costs and "
+    "slippage dominate everything; QUANTLAB's five-minute research is the cautionary tale here "
+    "\u2014 it found <b>no cost-surviving edge in 5-minute crypto, proven seven independent ways</b>. "
+    "The faster you trade, the more the exchange earns and the less you keep.</li>"
+    "<li><b>Day trading</b> \u2014 entries and exits inside one session, flat by the close. No "
+    "overnight gap risk; all of the concentration risk.</li>"
+    "<li><b>Swing trading</b> \u2014 holding days to weeks for a leg of a move. This is the "
+    "timeframe where the public labs did their validated hourly-crypto work; overnight risk "
+    "returns, but so does room for the trade to breathe.</li>"
+    "<li><b>Position trading</b> \u2014 months; closer to investing with an exit plan. Wins and "
+    "losses arrive slowly, which is a feature for anyone who checks prices too often.</li></ul>"
+    "<p>No style is superior. Each buys something (opportunity, sleep, freedom of schedule) and "
+    "pays for it in something else (costs, stress, gap risk). What is not negotiable in any of "
+    "them: the <a href=\"/money/position-sizing-101/\">1\u20132% risk rule</a> and an exit "
+    "defined before entry.</p>"
+    "<h2>The life of a properly built trade</h2>"
+    "<p>Every disciplined trade follows the same sequence regardless of market or style: an "
+    "<b>idea</b> (why this, why now), an <b>invalidation level</b> (where the idea is proven "
+    "wrong \u2014 the stop lives there), a <b>size</b> computed backwards from the risk budget "
+    "(the <a href=\"/money/position-size-calculator/\">calculator</a> does the division), an "
+    "<b>entry order</b> chosen from the mechanics above, <b>management</b> by rules set in "
+    "advance, and an <b>exit</b> measured in R \u2014 the unit the "
+    "<a href=\"/money/expectancy-calculator/\">expectancy calculator</a> turns into your "
+    "long-run edge. Miss any step and the market charges you for it; see "
+    "<a href=\"/money/backtesting-101/\">backtesting 101</a> for how to test the whole loop "
+    "before real money rides on it.</p>"
+    "</div></section>"
+    + DISCLAIMER_HTML
+    + "</div>"
+)
+
+TT_PAGE = {
+    "route": "/trade-types-explained/",
+    "title": "Types of trades explained - longs, shorts, orders and styles | BRYME Money",
+    "desc": "Long vs short, market vs limit vs stop orders, brackets, scalping to position trading - how every type of trade actually works, in plain language. Educational, not advice.",
+    "body": TT_BODY,
+}
+
+IND_BODY = (
+    '<div class="wrap"><section class="cover"><p class="kicker">BRYME Money \u00b7 Education</p>'
+    "<h1 class=\"cover-title\">Technical indicators, explained \u2014 and how they actually relate</h1>"
+    "<p class=\"cover-dek\">Four families, one honest rule: indicators in the same family are "
+    "echoes, indicators across families are evidence. Built on the stacks a public research lab "
+    "really tested.</p></section>"
+    '<section class="section"><div class="prose">'
+    "<p>An indicator is arithmetic on past prices and volume \u2014 nothing more, and nothing "
+    "shameful. It cannot see the future; it can describe the present so precisely that a "
+    "written rule can act on it. That description job splits into four families, and the whole "
+    "craft of using them well is knowing which family a tool belongs to. General information, "
+    "as always \u2014 not advice.</p>"
+    "<h2>Family 1 \u2014 Trend: which way, and how strongly</h2>"
+    '<ul class="list">'
+    "<li><b>Moving averages (SMA, EMA)</b> \u2014 the average price of recent bars; the EMA "
+    "weights recent bars more. Traders conventionally watch fast averages (20, 50) against slow "
+    "ones (100, 200): price above a rising long average is the plainest description of an "
+    "uptrend there is.</li>"
+    "<li><b>MACD</b> (12, 26, 9 by convention) \u2014 the gap between two EMAs, plus a signal "
+    "line of that gap. It describes momentum <i>of the trend</i>: expanding histogram, trend "
+    "leaning harder.</li>"
+    "<li><b>ADX</b> \u2014 trend <i>strength</i>, deliberately direction-blind. Readings below "
+    "about 20\u201325 conventionally mean a weak or range-bound market regardless of which way "
+    "price points.</li>"
+    "<li><b>Donchian channels</b> \u2014 the highest high and lowest low of the last N bars. "
+    "Price escaping the channel <i>is</i> the definition of a breakout; no forecast involved.</li></ul>"
+    "<h2>Family 2 \u2014 Momentum: the speed of the move</h2>"
+    '<ul class="list">'
+    "<li><b>RSI</b> (14 by convention) \u2014 compares recent up-closes to down-closes on a "
+    "0\u2013100 scale. Traditionally read as stretched above 70 and below 30 \u2014 but the "
+    "deeper use is <b>divergence</b>: price makes a new extreme and RSI refuses to follow, "
+    "which says the push is losing fuel. It is a hint with famous false positives, never a "
+    "signal by itself.</li>"
+    "<li><b>Stochastic</b> \u2014 where the close sits inside the recent range. Same family, "
+    "same lessons, different arithmetic.</li></ul>"
+    "<h2>Family 3 \u2014 Volatility: how wild, and therefore how big</h2>"
+    '<ul class="list">'
+    "<li><b>ATR</b> \u2014 the average true range: a typical bar\u2019s travel distance. Its "
+    "highest use is not a signal but a <i>measurement</i>: stops and targets sized in ATR adapt "
+    "to the market\u2019s temperament instead of a fixed pip number.</li>"
+    "<li><b>Bollinger Bands</b> (20-bar average \u00b1 2 standard deviations, by convention) "
+    "\u2014 a statistical envelope: price outside the band is <i>stretched</i>, which trend "
+    "traders read as strength and mean-reversion traders read as rubber pulled too far.</li></ul>"
+    "<h2>Family 4 \u2014 Volume and anchors: who is participating</h2>"
+    '<ul class="list">'
+    "<li><b>Volume</b> \u2014 participation behind a move; breakouts on heavy volume describe "
+    "conviction, on thin volume, apathy.</li>"
+    "<li><b>VWAP</b> \u2014 the volume-weighted average price of the session: the institutional "
+    "benchmark price of the day, and the anchor for band-based mean reversion.</li>"
+    "<li><b>OBV</b> \u2014 a running total of volume signed by the day\u2019s direction, used to "
+    "check whether flows agree with price.</li></ul>"
+    "<h2>How they relate: the rule that saves beginners years</h2>"
+    "<p><b>Indicators from the same family are echoes; indicators across families are "
+    "evidence.</b> RSI plus Stochastic is one opinion said twice \u2014 both are momentum "
+    "arithmetic on the same closes, so agreeing adds confidence, not information. Two "
+    "thermometers do not make new weather. But a trend filter plus a momentum trigger plus a "
+    "volatility-based stop measures three genuinely different things \u2014 direction, timing "
+    "and size \u2014 and that is what a complete trade needs.</p>"
+    "<h2>Two archetypes, built from the families</h2>"
+    "<p><b>The trend stack</b> \u2014 trade <i>with</i> the current: establish direction with a "
+    "long average, demand strength with ADX, time the entry on a Donchian or channel breakout, "
+    "put the stop a sane ATR distance away. This is not hypothetical: QUANTLAB\u2019s trend "
+    "candidate was exactly this shape \u2014 a Donchian breakout, gated by ADX above 20 and "
+    "price above the 200-period EMA \u2014 and its documented history (a brilliant blind result "
+    "retracted when an exit-bar lookahead was found, edge at entry roughly break-even) is the "
+    "best free lesson in why the <a href=\"/money/backtesting-101/\">testing discipline</a> "
+    "matters more than the indicator list.</p>"
+    "<p><b>The mean-reversion stack</b> \u2014 trade the snap <i>back</i>: price stretched to a "
+    "statistical band, momentum confirming exhaustion (RSI deep in its scale), a candle closing "
+    "back inside the band, size filtered by volatility so wild markets are skipped. The VWAP "
+    "lab tested precisely this shape for fourteen documented iterations \u2014 band touch, close "
+    "back above it, RSI under 40, body measured against ATR \u2014 and its journal shows the "
+    "in-sample numbers flattering before honest walk-forward told the truth.</p>"
+    "<p>Notice the symmetry: the <i>same</i> tools support opposite strategies, because the "
+    "families answer different questions. Bollinger stretch is evidence for a reversion trader "
+    "and a breakout trader alike \u2014 what differs is the question asked and the risk taken "
+    "if the answer is wrong.</p>"
+    "<h2>Divergence, and other honest caveats</h2>"
+    "<p>Divergence \u2014 price extends, the momentum indicator declines to confirm \u2014 is "
+    "the most quoted cross-family relationship. It genuinely describes fading force; it also "
+    "fires early against strong trends so reliably that pros treat it as a reason to "
+    "<i>pay attention</i>, not a reason to click. The same restraint applies everywhere: "
+    "overbought is not a sell command, an MA cross is not a prophecy, and no indicator survives "
+    "being the whole plan. The plan is question \u2192 invalidation \u2192 size \u2192 exit; "
+    "indicators only sharpen the questions.</p>"
+    "<h2>Cheat sheet</h2>"
+    '<table style="border-collapse:collapse;max-width:100%"><tr>'
+    '<th style="padding:5px 14px;border:1px solid var(--line-strong);text-align:left">Indicator</th>'
+    '<th style="padding:5px 14px;border:1px solid var(--line-strong);text-align:left">Family</th>'
+    '<th style="padding:5px 14px;border:1px solid var(--line-strong);text-align:left">The question it answers</th></tr>'
+    '<tr><td style="padding:5px 14px;border:1px solid var(--line-strong)">SMA / EMA (50, 200)</td><td style="padding:5px 14px;border:1px solid var(--line-strong)">Trend</td><td style="padding:5px 14px;border:1px solid var(--line-strong)">Which way is the market leaning?</td></tr>'
+    '<tr><td style="padding:5px 14px;border:1px solid var(--line-strong)">MACD</td><td style="padding:5px 14px;border:1px solid var(--line-strong)">Trend</td><td style="padding:5px 14px;border:1px solid var(--line-strong)">Is the lean accelerating?</td></tr>'
+    '<tr><td style="padding:5px 14px;border:1px solid var(--line-strong)">ADX</td><td style="padding:5px 14px;border:1px solid var(--line-strong)">Trend</td><td style="padding:5px 14px;border:1px solid var(--line-strong)">Is there a trend at all?</td></tr>'
+    '<tr><td style="padding:5px 14px;border:1px solid var(--line-strong)">Donchian channels</td><td style="padding:5px 14px;border:1px solid var(--line-strong)">Trend</td><td style="padding:5px 14px;border:1px solid var(--line-strong)">Did price escape its recent range?</td></tr>'
+    '<tr><td style="padding:5px 14px;border:1px solid var(--line-strong)">RSI / Stochastic</td><td style="padding:5px 14px;border:1px solid var(--line-strong)">Momentum</td><td style="padding:5px 14px;border:1px solid var(--line-strong)">Is the move stretched or fading?</td></tr>'
+    '<tr><td style="padding:5px 14px;border:1px solid var(--line-strong)">ATR</td><td style="padding:5px 14px;border:1px solid var(--line-strong)">Volatility</td><td style="padding:5px 14px;border:1px solid var(--line-strong)">How far does a normal bar travel?</td></tr>'
+    '<tr><td style="padding:5px 14px;border:1px solid var(--line-strong)">Bollinger Bands</td><td style="padding:5px 14px;border:1px solid var(--line-strong)">Volatility</td><td style="padding:5px 14px;border:1px solid var(--line-strong)">Is price statistically stretched?</td></tr>'
+    '<tr><td style="padding:5px 14px;border:1px solid var(--line-strong)">Volume / VWAP / OBV</td><td style="padding:5px 14px;border:1px solid var(--line-strong)">Participation</td><td style="padding:5px 14px;border:1px solid var(--line-strong)">Is anyone actually behind this?</td></tr>'
+    "</table>"
+    "<p>Where these stacks came from and how they were judged: "
+    "<a href=\"/money/quantlab-explained/\">QUANTLAB, explained</a>. How to know whether any "
+    "combination has an edge at all: <a href=\"/money/backtesting-101/\">backtesting 101</a>. "
+    "What an edge is worth per trade: the <a href=\"/money/expectancy-calculator/\">expectancy "
+    "calculator</a>. How big to trade it: <a href=\"/money/position-sizing-101/\">position "
+    "sizing</a>.</p>"
+    "</div></section>"
+    + DISCLAIMER_HTML
+    + "</div>"
+)
+
+IND_PAGE = {
+    "route": "/technical-indicators-explained/",
+    "title": "Technical indicators explained - and how they relate | BRYME Money",
+    "desc": "The four indicator families - trend, momentum, volatility, volume - what each really measures, why same-family tools are echoes, and the two classic stacks. Not advice.",
+    "body": IND_BODY,
 }
