@@ -171,3 +171,8 @@ Goal: turn 847 stubs into articles. Median 153 → 600+ words; thin 85% → <5%.
 
 - SHIPPED: 30 titles enriched (verdict+FAQ), ENRICH 136 -> 166. Facts cross-checked against entertainment_platform_data records (annihilation 115, barry-lyndon 181, battle-royale 113, before-sunrise 97 - data file corrected memory). Awards stated only where certain. URL sets unchanged.
 - Pool remaining: ~553 unenriched titles.
+
+## FILM BATCH 8 (2026-09-24)
+
+- SHIPPED: 30 more titles, ENRICH 166 -> 196 (719 total; ~27% enriched). Mix: Hollywood classics, Ghibli, shonen/seinen, K-dramas, prestige TV, Bollywood/Telugu, Nollywood. Same fact rules.
+- Pool remaining: ~523.
