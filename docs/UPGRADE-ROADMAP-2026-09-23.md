@@ -264,3 +264,9 @@ Goal: turn 847 stubs into articles. Median 153 → 600+ words; thin 85% → <5%.
 - Logo: circular seal candidate A chosen (cream disc, double brass ring, navy serif B. with brass period); candidate B (navy app tile) kept in workspace as alternate. Existing URL sets: all 7 sections identical.
 
 - FOLLOW-UP: writers mast lockup added (writers uses build-writing-first.py, its own builder - initially missed). All 7 desks + hub now follow the two-click family model.
+
+## BRAND V2 (2026-09-24)
+
+- SHIPPED: single-line desk lockup sitewide - [B. seal] THE BRYME | NICHE; THE BRYME -> family homepage, NICHE -> desk home. Blue-and-white B. seal logo swapped into mark/favicon/apple-touch. Router ATTR_RE/ABS_RE now exempt the bare homepage (writers lockup links can never be rewritten to /writers/ again).
+- LESSON (3rd occurrence, now standing rule): NEVER reuse bryme-full across messages - the cd-fallback found a stale routed tree and broke the build; always rm -rf + fresh clone.
+- Routing guard note: manual build-routing between builds can abort with already-routed (root writers/learn from BUILD1); removing the root writers/ dir before the next npm build lets it re-route cleanly.
