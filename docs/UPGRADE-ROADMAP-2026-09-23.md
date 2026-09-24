@@ -239,3 +239,8 @@ Goal: turn 847 stubs into articles. Median 153 → 600+ words; thin 85% → <5%.
 - Plumbing (7 builders): ecosystem (FAMILY/PUB_NAME/PREFIX/editions/drawer/nav/money_pages), routing (PROPS + SITEMAP_PROPS + allowlist guard + children), discovery (robots), public-dir (2 staging lists), purge-stale (prop loop), inject-analytics (PUBLISH_TIERS).
 - Lessons: (1) top-level def inserted mid-function swallowed main-flow calls - repair: def above main(), calls at original indent; (2) KEEP_AT_ROOT_DIRS = set(PROPS): the PROPS registry (not just SITEMAP_PROPS) gates whether builds delete a new root dir; (3) routing aborts on manual rerun but runs fully inside npm build.
 - Next for money: pip-value/compounding/risk-reward calculators, research notes from the GitHub repos.
+
+## HOMEPAGE MONEY CARD (2026-09-24)
+
+- SHIPPED: 7th desk card on homepage grid with dedicated art (assets/desk/desk-money.jpg, house split-composition style), hero Six->Seven everywhere, desk-QA band Money row, family About lists Money. Content-only; existing URL sets unchanged.
+- Note: desk art lives in assets/desk/ (tracked) - mirrored to public/assets/desk/ per keep-list pattern.
