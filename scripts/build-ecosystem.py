@@ -538,9 +538,11 @@ def shell(pub, title, desc, route, body, card=None, robots="index,follow"):
         drawer = ent_drawer()
     elif pub == "fitness":
         drawer = fitness_drawer()
+    elif pub == "money":
+        drawer = money_drawer()
     else:
         drawer = ""
-    navjs = '<script src="/assets/site-nav.js" defer></script>' if pub in ("tech", "sports", "entertainment", "fitness") else ""
+    navjs = '<script src="/assets/site-nav.js" defer></script>' if pub in ("tech", "sports", "entertainment", "fitness", "money") else ""
     return f"""<!doctype html>
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
@@ -552,6 +554,8 @@ def shell(pub, title, desc, route, body, card=None, robots="index,follow"):
 <meta property="og:title" content="{html.escape(title)}"><meta property="og:description" content="{html.escape(desc)}">
 <meta property="og:url" content="{d}"><meta property="og:image" content="{og}">
 <meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/assets/brand/apple-touch-icon.png">
 {ADS_HEAD}{theme_head}
 <style>{css_for(pub)}</style>
 {ld_html}
@@ -778,8 +782,26 @@ def fitness_drawer():
         '</aside>')
 
 
+def money_drawer():
+    return ('<div id="drawer-backdrop"></div>\n'
+        '<aside id="site-drawer" aria-hidden="true" aria-label="BRYME Money sections">\n'
+        '<div class="drawer-head"><span class="logo">BRYME&nbsp;MONEY</span>'
+        '<button type="button" class="drawer-close" data-drawer-close aria-label="Close menu">'
+        '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 5l14 14M19 5L5 19"/></svg></button></div>\n'
+        '<div class="drawer-group"><b>Tools</b><a href="/money/position-size-calculator/">Position size calculator</a>'
+        '<a href="/money/expectancy-calculator/">Expectancy calculator</a></div>\n'
+        '<div class="drawer-group"><b>Learn</b><a href="/money/position-sizing-101/">Position sizing, explained</a>'
+        '<a href="/money/backtesting-101/">Backtesting 101</a>'
+        '<a href="/money/quantlab-explained/">QUANTLAB, explained</a>'
+        '<a href="/money/trade-types-explained/">Types of trades</a>'
+        '<a href="/money/technical-indicators-explained/">Indicators, explained</a></div>\n'
+        '<div class="drawer-group"><b>The desk</b><a href="/money/">Desk home</a>'
+        '<a href="/money/about/">About</a>'
+        '<a href="/money/contact/">Contact</a><a href="/money/privacy/">Privacy</a></div>\n'
+        '</aside>')
+
 def head(pub, tagline, parent=True):
-    pl = f'<a class="parent-link" href="https://{DOMAIN}/">THE BRYME</a>' if parent and pub != "hub" else ""
+    pl = f'<a class="parent-link" href="https://{DOMAIN}/"><img src="/assets/brand/bryme-mark.png" alt="" width="20" height="20">THE BRYME</a>' if parent and pub != "hub" else ""
     if pub == "hub":
         brand = "THE&nbsp;BRYME"; brand_href = "/"
     else:
@@ -804,6 +826,7 @@ def head(pub, tagline, parent=True):
            '.btn:hover,.nav-cta:hover{transform:translateY(-1px)}'
            'table tbody tr:nth-child(even){background:rgba(127,127,127,.07)}'
            'input:focus,select:focus,textarea:focus{outline:2px solid var(--accent);outline-offset:1px}'
+           '.parent-link{display:inline-flex;align-items:center;gap:7px}.parent-link img{width:20px;height:20px;border-radius:5px;display:block;box-shadow:0 0 0 1px rgba(0,0,0,.08)}'
            '</style>')
     slim = ""
     if pub == "entertainment":
@@ -818,7 +841,7 @@ def head(pub, tagline, parent=True):
     tools = ""
     if pub in ("tech", "fitness", "sports", "hub", "entertainment"):
         tools += _THEME_TOGGLE_BTN
-    if pub in ("tech", "sports", "entertainment", "fitness"):
+    if pub in ("tech", "sports", "entertainment", "fitness", "money"):
         tools += _NAV_TOGGLE_BTN
     items, cta = _nav_items(pub)
     nav = ""
@@ -4882,7 +4905,7 @@ def _home_toggle_js():
 
 def _home_mast():
     return ('<header class="head"><div class="wrap mast">'
-            '<a class="mast-brand" href="/home/">BRYME&nbsp;<span style="color:var(--accent)">HOME&nbsp;&amp;&nbsp;DIY</span></a>'
+            '<a class="parent-link" href="https://thebryme.com/"><img src="/assets/brand/bryme-mark.png" alt="" width="20" height="20">THE BRYME</a><a class="mast-brand" href="/home/">BRYME&nbsp;<span style="color:var(--accent)">HOME&nbsp;&amp;&nbsp;DIY</span></a>'
             '<div class="mast-edition"><span class="mast-date">SEPTEMBER 2026 \u00b7 THE FIX-IT DESK</span>'
             '<span class="mast-tag">Fix it. Clean it. Maintain it. Understand it.</span></div>'
             '<div class="mast-tools">'
@@ -5884,6 +5907,8 @@ def money_pages():
     pages.append((_md.SIZING_101["route"], _md.SIZING_101["title"], _md.SIZING_101["desc"], _md.SIZING_BODY))
     for _extra in (_md.QL_PAGE, _md.BT_PAGE, _md.EXP_PAGE, _md.TT_PAGE, _md.IND_PAGE):
         pages.append((_extra["route"], _extra["title"], _extra["desc"], _extra["body"]))
+    pages = [(_r, _t, _d, head("money", _md.MONEY_TAGLINE) + '<main id="main">' + _b + '</main>' + foot("money"))
+             for (_r, _t, _d, _b) in pages]
     return pages + legal_pages("money", "BRYME Money", _md.MONEY_TAGLINE)
 
 def main() -> None:
