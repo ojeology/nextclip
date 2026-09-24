@@ -220,3 +220,8 @@ Goal: turn 847 stubs into articles. Median 153 → 600+ words; thin 85% → <5%.
 
 - SHIPPED: 30 more, ENRICH 376 -> 406 (719 total; ~56% enriched). Prestige TV 6 (Andor/Last Kingdom/White Lotus/Fargo/Sandman/Umbrella Academy), MCU TV+film 5, classics (Carrie/Ghostbusters-1984/Willow/Labyrinth/Alien Resurrection), 2024-25 tentpoles (Twisters/Mario/Zootopia 2/Conclave), anime arc 8 incl. both Demon Slayer films, K-drama The Glory, Vikram Vedha.
 - Pool remaining: ~313.
+
+## FILM BATCH 16 (2026-09-24)
+
+- SHIPPED: 30 more, ENRICH 406 -> 436 (719 total; ~61% enriched). TV giants 6 (HotD/Succession/Severance/Peaky/Sherlock/Money Heist), anime 7 (MHA/OPM/SpyXFamily/HxH/Steins;Gate/Fairy Tail/DBS), 2025-26 thrillers (Housemaid/Bone Temple/Dhurandhar), Bollywood 8, Nollywood 4, Chinese 2, Fifty Shades/Freakier Friday. squid-game found already enriched; westworld not in pool - both dodged pre-write.
+- Pool remaining: ~283.
