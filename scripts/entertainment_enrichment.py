@@ -7378,4 +7378,506 @@ ENRICH = {
              "blind watch."),
         ],
     },
+    # ---- film batch 16 (2026-09-24): 30 titles - TV giants, anime staples, Bollywood/Nollywood, Chinese blockbusters ----
+    "house-of-the-dragon": {
+        "verdict": "The prequel that saved the franchise's reputation: House Targaryen "
+            "two centuries before Daenerys, tearing itself apart in the Dance of the "
+            "Dragons. Fire, blood and succession politics with genuine tragedy at the "
+            "centre - Team Black versus Team Green split households worldwide. The "
+            "throne is the same; the dragons are many.",
+        "faqs": [
+            ("Do I need Game of Thrones first?",
+             "No - it stands alone 200 years earlier; knowing the later saga only adds "
+             "dramatic irony."),
+            ("Is it as explicit as Game of Thrones?",
+             "Slightly tamer but still adult - political marriages, violence and "
+             "succession blood-letting throughout."),
+            ("Is the story finished?",
+             "No - the Dance of the Dragons continues across new seasons."),
+        ],
+    },
+    "succession": {
+        "verdict": "The richest, cruellest family on television: a media titan's "
+            "decline sets his children fencing for the throne, and the dialogue is "
+            "the sharpest weapon on the network. Four seasons of corporate savagery, "
+            "hilarious humiliation and genuine pathos - one of the most awarded "
+            "dramas of its era. 'I love you, but you are not serious people.'",
+        "faqs": [
+            ("How many seasons?",
+             "Four (2018-2023), ending deliberately at its peak."),
+            ("Did it win the top Emmy?",
+             "Yes - Outstanding Drama Series multiple times, plus writing and "
+             "acting awards across its run."),
+            ("Is it really that profane?",
+             "Famously - the insults are legendary; it is as funny as it is brutal."),
+        ],
+    },
+    "severance": {
+        "verdict": "The workplace thriller as existential horror: employees surgically "
+            "split work-memory from home-memory, and the 'innies' begin asking who "
+            "chose this for them. Ben Stiller directs with icy retro elegance - "
+            "fluorescent corridors, impossible geometry, and Adam Scott giving the "
+            "performance of his career. The most debated cliffhanger of the decade.",
+        "faqs": [
+            ("Is Severance scary?",
+             "It is unsettling rather than gory - corporate dread, mystery-box "
+             "revelations and one very wrong hallway."),
+            ("Do seasons connect?",
+             "Yes - one continuing mystery; the acclaimed second season deepens it."),
+            ("Who is behind it?",
+             "Ben Stiller directs much of it - his prestige-TV turn surprised "
+             "everyone."),
+        ],
+    },
+    "peaky-blinders": {
+        "verdict": "Birmingham's finest: a post-war gang family climbs from racecourses "
+            "to empire under Tommy Shelby's flat cap and thousand-yard stare. Cillian "
+            "Murphy's career-defining cool, a needle-drop soundtrack that shouldn't "
+            "work and absolutely does, and six seasons of stylish ambition. 'By order "
+            "of the Peaky Blinders.'",
+        "faqs": [
+            ("Is it based on a real gang?",
+             "Loosely - the real Peaky Blinders were a Birmingham urban youth gang; "
+             "the Shelby family saga is fiction built on that seed."),
+            ("How many seasons?",
+             "Six, ending in 2022, with a film continuing the story."),
+            ("When does it get good?",
+             "Most viewers are hooked within the first two episodes - the pilot is "
+             "the template."),
+        ],
+    },
+    "sherlock": {
+        "verdict": "The update that made deduction appointment television again: "
+            "Cumberbatch's high-functioning sociopath and Freeman's long-suffering "
+            "Watson, solving crimes through London's smartphones and blogs. Three "
+            "90-minute films per season, all wit and speed - peak-era television "
+            "whose final series still divides the fandom.",
+        "faqs": [
+            ("How many episodes are there?",
+             "Thirteen across four seasons, each 90 minutes, plus the Victorian-era "
+             "special The Abominable Bride."),
+            ("Do I need to watch in order?",
+             "Yes - the arcs build; start at A Study in Pink."),
+            ("Why do fans argue about the ending?",
+             "Season four's tonal swings split viewers - the earlier seasons are the "
+             "consensus gold."),
+        ],
+    },
+    "money-heist": {
+        "verdict": "The Spanish heist that conquered the world: the Professor's "
+            "impossibly intricate plan, eight robbers named after cities, and 'Bella "
+            "Ciao' echoing through the Royal Mint. Started as a modest Spanish "
+            "series, became Netflix's global phenomenon - pure antihero catnip with "
+            "twists by the truckload.",
+        "faqs": [
+            ("What order do I watch Money Heist?",
+             "Parts 1-5 in order - one continuous story; the Berlin prequel spin-off "
+             "comes after."),
+            ("Is it as good as the hype?",
+             "It is melodramatic, ridiculous and utterly moreish - the most-watched "
+             "non-English series of its era for a reason."),
+            ("Is it subtitled?",
+             "Spanish audio with subtitles (dubs available) - the original voices "
+             "are the preferred experience."),
+        ],
+    },
+    "my-hero-academia": {
+        "verdict": "The superhero shonen of its generation: a quirkless boy inherits "
+            "the greatest power of all and enrols in hero school - and the genre's "
+            "brightest franchise balances tournament spectacle with genuine moral "
+            "weight. Deku's journey, All Might's legacy, and a class of characters "
+            "the internet adopted wholesale.",
+        "faqs": [
+            ("Is My Hero Academia finished?",
+             "The manga has concluded; the anime adapts the final arcs in its later "
+             "seasons."),
+            ("How many seasons?",
+             "Seven-plus and counting to the finale - long-haul shonen."),
+            ("Do I start at episode one?",
+             "Yes - the origin is the emotional engine."),
+        ],
+    },
+    "one-punch-man": {
+        "verdict": "The superhero parody that out-heroed its heroes: Saitama trains "
+            "until he can end any fight with one punch - and finds existence "
+            "devastatingly boring. Season one's animation became legend; the joke "
+            "hides a genuinely sharp satire of power and recognition.",
+        "faqs": [
+            ("Which season is the famous one?",
+             "Season one - its fight animation is still a benchmark; later seasons "
+             "trade studios and polish."),
+            ("Is it a comedy?",
+             "Primarily, with real action chops - the parody is the engine."),
+            ("Is it still ongoing?",
+             "Yes - new seasons continue adapting the webcomic-turned-manga."),
+        ],
+    },
+    "spy-x-family": {
+        "verdict": "The found-family phenomenon: a master spy builds a fake family "
+            "for a mission - not knowing his wife is an assassin and his daughter "
+            "reads minds. Anya steals the planet, the comedy is warm and constant, "
+            "and the world's most dysfunctional functional household became anime's "
+            "coziest hit.",
+        "faqs": [
+            ("Is Spy x Family good for kids?",
+             "Largely yes - it is one of the most family-friendly hit anime; mild "
+             "violence only."),
+            ("Is the story finished?",
+             "No - new seasons continue the manga's missions."),
+            ("Who is the fan favourite?",
+             "Anya - the telepathic child whose reactions became a global meme "
+             "library."),
+        ],
+    },
+    "hunter-x-hunter": {
+        "verdict": "The shonen that plays chess while others play checkers: Gon's "
+            "quest to find his father builds a world of Nen abilities so logically "
+            "rigorous that its battles feel like duels of ideas. The 2011 series is "
+            "the definitive version - and the Chimera Ant arc is one of the "
+            "medium's greatest achievements.",
+        "faqs": [
+            ("2011 or the 1999 version?",
+             "The 2011 adaptation - it covers the full story arc and is the "
+             "consensus entry point."),
+            ("Why do fans consider it a masterpiece?",
+             "Its power system and arcs - especially Chimera Ant - trade formulas "
+             "for genuine moral complexity."),
+            ("Is the manga still going?",
+             "Infamously on-and-off - long hiatuses between comeback runs."),
+        ],
+    },
+    "steins-gate": {
+        "verdict": "The time-travel tragedy that earns every feeling: a self-styled "
+            "mad scientist's microwave starts texting the past, and each 'correction' "
+            "pulls his friends deeper into catastrophe. Slow-burn first half, "
+            "devastating second - the gold standard of puzzle-box anime, with an "
+            "ending that pays off everything. El Psy Kongroo.",
+        "faqs": [
+            ("Does the slow start matter?",
+             "Completely - the early episodes plant every payoff; push through and "
+             "the back half detonates."),
+            ("What do I watch after?",
+             "The OVA and movie, then Steins;Gate 0 - the darker alternate route."),
+            ("Is it based on a game?",
+             "Yes - the acclaimed visual novel; the anime is the popular entry."),
+        ],
+    },
+    "fairy-tail": {
+        "verdict": "The guild-as-family shonen: dragon-slayer Natsu and the loudest "
+            "wizard guild in fiction smash their way through quests, tournaments and "
+            "dark guilds with friendship as literal power source. Nearly 300 "
+            "episodes of comfort-food magic - predictable, warm and proud of it.",
+        "faqs": [
+            ("How long is Fairy Tail?",
+             "278 episodes across its run, plus the 100 Years Quest continuation "
+             "series."),
+            ("Is it good for younger viewers?",
+             "Teens and up - fanservice and battle violence keep it out of the "
+             "young-kids slot."),
+            ("Do I need anything before it?",
+             "No - it stands alone; Hiro Mashima's earlier Rave Master is a bonus "
+             "for completionists."),
+        ],
+    },
+    "dragon-ball-super": {
+        "verdict": "The legend's next chapter: gods of destruction, universes at "
+            "stake, and Goku reaching divinity while staying gloriously Goku. "
+            "Super modernised the franchise for a new generation - its tournaments "
+            "(Universe 6, Tournament of Power) delivered the freshest fights since "
+            "the Cell Games.",
+        "faqs": [
+            ("Do I watch DBZ first?",
+             "Yes - Super continues after the Buu saga; the Battle of Gods and "
+             "Resurrection F films are folded into its early episodes."),
+            ("How many episodes?",
+             "131, plus the Broly and Super Hero films continuing the story in "
+             "cinema."),
+            ("Is the story finished?",
+             "The anime paused after the Tournament of Power; the manga continues "
+             "new arcs."),
+        ],
+    },
+    "the-housemaid-2025": {
+        "verdict": "The bestseller thriller done as star-powered cinema: a young "
+            "woman with a record takes a live-in housekeeping job for a wealthy "
+            "family whose perfect home is a locked box of secrets. Paul Feig swaps "
+            "comedy for tension and delivers the domestic-gone-wrong escalation "
+            "readers loved on the page. Convenience, closets and very bad employers.",
+        "faqs": [
+            ("Is The Housemaid based on a book?",
+             "Yes - Freida McFadden's bestselling thriller novel; the adaptation "
+             "was a major 2025 release."),
+            ("Is it a horror film?",
+             "Psychological thriller - menace and twists rather than the "
+             "supernatural."),
+            ("How long is it?",
+             "131 minutes."),
+        ],
+    },
+    "fifty-shades-of-grey": {
+        "verdict": "The literary phenomenon that became a cinematic one: a naive "
+            "student and a billionaire with a very specific contract. As culture, "
+            "enormous; as film, a fascinating artifact of its moment - the trilogy "
+            "grossed over a billion dollars worldwide and owned the 2015-18 "
+            "conversation. Whatever the reviews said, everyone watched.",
+        "faqs": [
+            ("Is Fifty Shades based on a book?",
+             "Yes - E L James's novel, which began life as fan fiction and became "
+             "one of the fastest-selling books of its decade."),
+            ("How many films are there?",
+             "Three - Fifty Shades of Grey, Darker and Freed."),
+            ("Is it explicit?",
+             "Yes - the adult content is the franchise's whole billing; R-rated "
+             "throughout."),
+        ],
+    },
+    "freakier-friday": {
+        "verdict": "The body-swap classic, generations later: Tess and Anna return - "
+            "and the swap goes sideways again with a new generation in the mix. "
+            "Jamie Lee Curtis and Lindsay Lohan's reunion gives the film its heart, "
+            "and the nostalgia math adds up to one of 2025's warmest crowd-pleasers.",
+        "faqs": [
+            ("Do I need the 2003 film first?",
+             "Yes - the whole point is the reunion; watch Freaky Friday (2003) "
+             "first."),
+            ("Is it good for family viewing?",
+             "Yes - that is the assignment, and it lands."),
+            ("How long is it?",
+             "111 minutes."),
+        ],
+    },
+    "devara-part-1": {
+        "verdict": "Telugu spectacle at full sail: a coastal chieftain who forbids "
+            "the sea-trade violence his people ran on, a son raised in his shadow, "
+            "and Jr NTR carrying both weight and myth through mass-action "
+            "choreography of the biggest kind. Part one of a planned saga - and a "
+            "box-office storm on release.",
+        "faqs": [
+            ("Is Devara connected to RRR?",
+             "Different film - but the same school of maximalist Telugu action, and "
+             "the same superstar anchor in Jr NTR."),
+            ("Do I need it before part two?",
+             "It is part one of the story - the sequel continues it."),
+            ("How long is it?",
+             "178 minutes."),
+        ],
+    },
+    "bhool-bhulaiyaa-3": {
+        "verdict": "The horror-comedy franchise's biggest swing: Rooh Baba returns "
+            "to a haunted palace where the original's legendary Manjulika presides - "
+            "and the film gleefully mixes jumpscares, dance numbers and genuine "
+            "lore. The Diwali blockbuster slot does not miss twice; this one "
+            "delivered the goods for the fandom.",
+        "faqs": [
+            ("Do I need the earlier films?",
+             "It helps - the 2007 original and Bhool Bhulaiyaa 2 seed the mythology "
+             "and the jokes."),
+            ("Is it scary or funny?",
+             "Both by design - the franchise's signature blend of horror beats and "
+             "comedy relief."),
+            ("How long is it?",
+             "158 minutes."),
+        ],
+    },
+    "dhoom-3": {
+        "verdict": "India's motorcycle-franchise goes operatic: Aamir Khan's "
+            "circus-performer thief turns Chicago into a stage for revenge, and the "
+            "YRF machine delivers stunts, twists and twin-led spectacle. One of the "
+            "highest-grossing Indian films of its era - the popcorn event that "
+            "defined the franchise's peak scale.",
+        "faqs": [
+            ("Do I need Dhoom 1 and 2 first?",
+             "Not strictly - the villain plots are standalone; the franchise "
+             "formula is the connective tissue."),
+            ("Is it the best Dhoom?",
+             "Fans split between this and Dhoom 2 - this one has the scale and the "
+             "twist."),
+            ("How long is it?",
+             "172 minutes."),
+        ],
+    },
+    "awarapan": {
+        "verdict": "The cult gangster tragedy that grew into a religion: Emraan "
+            "Hashmi's mob enforcer - hollowed out by loss - finds one last chance "
+            "at grace protecting a woman he cannot save. Mohit Suri's most soulful "
+            "film; dismissed in 2007, revered a decade later. 'Jabse tere naina' "
+            "still stops rooms.",
+        "faqs": [
+            ("Why is Awarapan a cult classic?",
+             "Its sincerity - a gangster film about redemption that plays like a "
+             "spiritual tragedy; word of mouth made it beloved years on."),
+            ("Is there a sequel?",
+             "A follow-up has been long discussed; this 2007 film stands complete "
+             "on its own."),
+            ("What is it rated?",
+             "Adult-themed crime drama - violence and tragedy throughout."),
+        ],
+    },
+    "udaan": {
+        "verdict": "The coming-of-age that cut Hindi cinema's nerve: a teenager "
+            "expelled from boarding school returns to the father who owns him - and "
+            "slowly, quietly plans his flight. Vikramaditya Motwane's debut premiered "
+            "at Cannes and remains one of Indian cinema's finest films about young "
+            "men and their fathers. Restraint as thunder.",
+        "faqs": [
+            ("Is Udaan based on a true story?",
+             "It is fiction, drawn from recognisable middle-India family dynamics - "
+             "which is why it feels documentary-true."),
+            ("Why is it so highly rated?",
+             "Cannes recognition plus a generational performance from Rajat "
+             "Barmecha - the film that announced Motwane."),
+            ("How long is it?",
+             "138 minutes."),
+        ],
+    },
+    "bad-newz": {
+        "verdict": "The wildest high-concept comedy of its year: a woman discovers "
+            "her pregnancy is twins - by two different fathers - and the two "
+            "would-be dads move in to compete. Vicky Kaushal's comic timing is a "
+            "revelation, and the film rides its absurd premise with actual heart. "
+            "Heteropaternal superfecundation has never been this funny.",
+        "faqs": [
+            ("Is Bad Newz a sequel?",
+             "It follows the spirit of Good Newwz (2019) with a new story and cast - "
+             "no prior viewing needed."),
+            ("Is the twin premise medically real?",
+             "Yes - heteropaternal superfecundation exists; the film just takes it "
+             "to comedy court."),
+            ("How long is it?",
+             "140 minutes."),
+        ],
+    },
+    "dhurandhar": {
+        "verdict": "The event film of its moment: Aditya Dhar's sprawling spy-action "
+            "epic runs three and a half hours - 214 minutes - of undercover warfare "
+            "and star power, and audiences showed up in force. Divisive in tone, "
+            "immense in scale, impossible to ignore: the conversation-piece Hindi "
+            "blockbuster of its year.",
+        "faqs": [
+            ("Is Dhurandhar really 214 minutes?",
+             "Yes - one of the longest mainstream Hindi action films ever released; "
+             "clear the evening."),
+            ("Who made it?",
+             "Aditya Dhar, following his Uri: The Surgical Strike phenomenon."),
+            ("Is it based on true events?",
+             "It borrows the texture of real covert operations while playing as "
+             "heightened fiction."),
+        ],
+    },
+    "breaded-life": {
+        "verdict": "The Lagos comedy with a soul: a spoiled bakery heir's life "
+            "collapses until he wakes up invisible to everyone except the woman he "
+            "cheated - and the redemption run becomes a genuine spiritual comedy. "
+            "Biodun Stephen's warmest, most rewatchable film - Nollywood "
+            "comfort-food with real feeling underneath.",
+        "faqs": [
+            ("Is Breaded Life a comedy or a drama?",
+             "Both - the fantasy premise plays funny while the redemption arc plays "
+             "sincere."),
+            ("Is it connected to other Biodun Stephen films?",
+             "It shares her universe's warmth and Lagos texture; it stands alone."),
+            ("How long is it?",
+             "120 minutes."),
+        ],
+    },
+    "brotherhood": {
+        "verdict": "Lagos crime saga at blockbuster scale: twin brothers end up on "
+            "opposite sides of the law, and the city's underworld collects its "
+            "debts. Glossy, gun-heavy and emotionally blunt - one of the films that "
+            "proved Nigerian cinema could do the big-scale crime thriller "
+            "confidently.",
+        "faqs": [
+            ("Who made Brotherhood?",
+             "It was directed by Loukman Ali - part of the wave of ambitious "
+             "big-canvas Nollywood crime films."),
+            ("Is there a sequel?",
+             "Yes - Brotherhood 2 continued the story."),
+            ("How long is it?",
+             "A feature-length crime epic - check the page details for the exact "
+             "runtime."),
+        ],
+    },
+    "the-milkmaid": {
+        "verdict": "Nigeria's prestige entry to the world stage: a Hausa-language "
+            "drama of abduction, radicalisation and the sister who walks into the "
+            "wilderness to bring her home. Desmond Ovbiagele's film was selected as "
+            "Nigeria's submission for the Oscars' international category - stark, "
+            "beautiful and quietly furious.",
+        "faqs": [
+            ("What language is The Milkmaid in?",
+             "Primarily Hausa - a landmark for northern Nigerian stories on the "
+             "international stage."),
+            ("Was it really an Oscar submission?",
+             "Yes - Nigeria selected it as its entry for the international feature "
+             "film category."),
+            ("Is it heavy?",
+             "Yes - it deals with insurgency and its victims with seriousness; "
+             "worth the weight."),
+        ],
+    },
+    "citizen-vigilante": {
+        "verdict": "A compact vigilante thriller from an unexpected corner: Uwe "
+            "Boll - the German director famous for his video-game adaptations - "
+            "delivers an 89-minute tale of one person deciding the courts are too "
+            "slow. Lean, mean, and built for the direct-to-audience action crowd.",
+        "faqs": [
+            ("Who directed Citizen Vigilante?",
+             "Uwe Boll - a surprise genre entry from the notorious German "
+             "filmmaker."),
+            ("How long is it?",
+             "89 minutes - a tight single-sitting thriller."),
+            ("Is it connected to any franchise?",
+             "No - a standalone vigilante story."),
+        ],
+    },
+    "wandering-earth-2": {
+        "verdict": "The prequel that out-grew its giant: how humanity decided to "
+            "move the planet - the politics, the moon crisis, the digital-life "
+            "debate - staged at jaw-dropping scale. Frant Gwo's prequel became one "
+            "of the biggest Chinese films ever and a landmark of the country's "
+            "sci-fi cinema. The plan, the sacrifice, the engines.",
+        "faqs": [
+            ("Prequel or sequel - what order?",
+             "Watch this first if you want chronology - it is a prequel to The "
+             "Wandering Earth (2019); either order works."),
+            ("Is it as good as the first?",
+             "Many rate it higher - bigger ideas, bigger set pieces, longer "
+             "runtime."),
+            ("How long is it?",
+             "173 minutes."),
+        ],
+    },
+    "wolf-warrior-2": {
+        "verdict": "The film that redefined Chinese box office: a retired special "
+            "forces soldier defends African civilians from mercenaries, and Wu "
+            "Jing's patriotic action epic became the highest-grossing Chinese film "
+            "in history - a record it held for years. Tank vs shark-duel energy; "
+            "pure national-cinema muscle.",
+        "faqs": [
+            ("Do I need the first Wolf Warrior?",
+             "No - this one restarts the hero's story in Africa; it stands alone."),
+            ("Is it really that big a deal in China?",
+             "Enormous - it topped China's all-time box office for years and became "
+             "a cultural phenomenon."),
+            ("How long is it?",
+             "126 minutes."),
+        ],
+    },
+    "28-years-later-the-bone-temple": {
+        "verdict": "The rage saga continues: Nia DaCosta takes the baton from Danny "
+            "Boyle for the second chapter of the new trilogy, following the "
+            "bone-temple cult and the warlord world growing in the infected wilds. "
+            "Where 28 Years Later was pilgrimage, this is aftermath - and the "
+            "trilogy's dark middle book.",
+        "faqs": [
+            ("Do I need 28 Years Later (2025) first?",
+             "Yes - it is a direct continuation; start with 28 Days Later if "
+             "you are brand new."),
+            ("Is Danny Boyle involved?",
+             "He directed the first film of the trilogy; Nia DaCosta directs this "
+             "chapter."),
+            ("Is the trilogy complete?",
+             "No - a third film is planned to close the arc."),
+        ],
+    },
 }
