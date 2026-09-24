@@ -256,3 +256,9 @@ Goal: turn 847 stubs into articles. Median 153 → 600+ words; thin 85% → <5%.
 - SHIPPED: trade-types-explained (directions/markets/orders/styles + trade lifecycle) and technical-indicators-explained (four families, echoes-vs-evidence rule, divergence caveats, cheat-sheet table, both archetypes anchored to the public labs). Money desk: 13 -> 15 URLs. Existing sections zero URL changes; IndexNow 200.
 - Money desk inventory now: hub, position-size-calculator, expectancy-calculator, position-sizing-101, backtesting-101, quantlab-explained, trade-types-explained, technical-indicators-explained, 7 legal pages.
 - Next for money: pip-value calculator, compounding/drawdown tool, VWAP-lab journal article, chart patterns page.
+
+## BRAND LOCKUP + MONEY CHROME FIX (2026-09-24)
+
+- SHIPPED: two-click family model completed sitewide. Every desk now shows the BRYME seal + THE BRYME wordmark (links to thebryme.com homepage) above the niche mast (links to desk home). Homepage remains logo-is-home. New BRYME seal favicon sitewide (ico 16/32/48, apple-touch 180, png mark 128 - assets/brand/).
+- FIXED: money pages had NO mast/nav/footer (phase-1 bug - bodies never chrome-wrapped); now full chrome incl. dedicated money drawer (tools + learn groups) and nav toggle. Home desk gained its missing THE BRYME parent link.
+- Logo: circular seal candidate A chosen (cream disc, double brass ring, navy serif B. with brass period); candidate B (navy app tile) kept in workspace as alternate. Existing URL sets: all 7 sections identical.
