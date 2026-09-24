@@ -801,12 +801,17 @@ def money_drawer():
         '</aside>')
 
 def head(pub, tagline, parent=True):
-    pl = f'<a class="parent-link" href="https://{DOMAIN}/"><img src="/assets/brand/bryme-mark.png" alt="" width="20" height="20">THE BRYME</a>' if parent and pub != "hub" else ""
+    pl = ""
     if pub == "hub":
-        brand = "THE&nbsp;BRYME"; brand_href = "/"
+        brand_el = '<a class="mast-brand" href="/">THE&nbsp;BRYME</a>'
     else:
-        brand = f'BRYME&nbsp;<span style="color:var(--accent)">{PUB_NAME[pub].upper()}</span>'
-        brand_href = PREFIX.get(pub, "/") + "/"
+        _niche = PUB_NAME[pub].upper().replace("&", "&amp;").replace(" ", "&nbsp;")
+        brand_el = ('<div class="mast-brand"><span class="lk">'
+            f'<a class="lk-mark" href="https://{DOMAIN}/" aria-label="THE BRYME - all publications">'
+            '<img src="/assets/brand/bryme-mark.png" alt="" width="26" height="26"></a>'
+            f'<a class="lk-root" href="https://{DOMAIN}/">THE&nbsp;BRYME</a>'
+            '<span class="lk-sep" aria-hidden="true"></span>'
+            f'<a class="lk-niche" href="{PREFIX.get(pub, "/")}/">{_niche}</a></span></div>')
     editions = {"tech": "SEPTEMBER 2026 \u00b7 THE TOOL DESK",
                 "sports": "SEPTEMBER 2026 \u00b7 THE 2026-27 SEASON",
                 "fitness": "SEPTEMBER 2026 \u00b7 FOUNDATION SEASON",
@@ -826,7 +831,12 @@ def head(pub, tagline, parent=True):
            '.btn:hover,.nav-cta:hover{transform:translateY(-1px)}'
            'table tbody tr:nth-child(even){background:rgba(127,127,127,.07)}'
            'input:focus,select:focus,textarea:focus{outline:2px solid var(--accent);outline-offset:1px}'
-           '.parent-link{display:inline-flex;align-items:center;gap:7px}.parent-link img{width:20px;height:20px;border-radius:5px;display:block;box-shadow:0 0 0 1px rgba(0,0,0,.08)}'
+           '.lk{display:inline-flex;align-items:center;gap:9px;white-space:nowrap}'
+           '.lk-mark img{width:26px;height:26px;border-radius:7px;display:block;box-shadow:0 0 0 1px rgba(0,0,0,.08)}'
+           '.lk a{text-decoration:none}'
+           '.lk-root{font-size:.62em;letter-spacing:.14em;color:var(--muted)}'
+           '.lk-sep{width:1px;height:.85em;background:var(--line-strong);display:inline-block}'
+           '.lk-niche{letter-spacing:.14em;color:var(--accent)}'
            '</style>')
     slim = ""
     if pub == "entertainment":
@@ -856,7 +866,7 @@ def head(pub, tagline, parent=True):
             parts.append('<a class="nav-cta" href="' + cta[0] + '">' + cta[1] + "</a>")
         nav = '<nav class="main-nav"><div class="wrap mast-nav">' + "".join(parts) + "</div></nav>"
     return f"""{pol}{slim}<header class="head"><div class="wrap mast">
-<a class="mast-brand" href="{brand_href}">{brand}</a>
+{brand_el}
 {edition_html}
 {pl}{tools}
 </div></header>{nav}"""
@@ -4905,7 +4915,7 @@ def _home_toggle_js():
 
 def _home_mast():
     return ('<header class="head"><div class="wrap mast">'
-            '<a class="parent-link" href="https://thebryme.com/"><img src="/assets/brand/bryme-mark.png" alt="" width="20" height="20">THE BRYME</a><a class="mast-brand" href="/home/">BRYME&nbsp;<span style="color:var(--accent)">HOME&nbsp;&amp;&nbsp;DIY</span></a>'
+            '<div class="mast-brand"><span class="lk"><a class="lk-mark" href="https://thebryme.com/" aria-label="THE BRYME - all publications"><img src="/assets/brand/bryme-mark.png" alt="" width="26" height="26"></a><a class="lk-root" href="https://thebryme.com/">THE&nbsp;BRYME</a><span class="lk-sep" aria-hidden="true"></span><a class="lk-niche" href="/home/" style="color:var(--accent)">HOME&nbsp;&amp;&nbsp;DIY</a></span></div>'
             '<div class="mast-edition"><span class="mast-date">SEPTEMBER 2026 \u00b7 THE FIX-IT DESK</span>'
             '<span class="mast-tag">Fix it. Clean it. Maintain it. Understand it.</span></div>'
             '<div class="mast-tools">'

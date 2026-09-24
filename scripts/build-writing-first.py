@@ -314,7 +314,11 @@ def nav(current: str = "") -> str:
 <header class="site-head">
   <div class="mast-top"><div class="wrap mast-in">
     <a class="parent-link" href="https://thebryme.com/" style="display:inline-flex;align-items:center;gap:7px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;font-size:10.5px;opacity:.92"><img src="/assets/brand/bryme-mark.png" alt="" width="20" height="20" style="width:20px;height:20px;border-radius:5px;display:block;box-shadow:0 0 0 1px rgba(0,0,0,.08)">THE BRYME</a>
-    <a class="mast-brand" href="/"{' aria-current="page"' if current == "home" else ""} aria-label="BRYME Writers — home">BRYME <span class="mast-section">WRITERS</span></a>
+    <span style="display:inline-flex;align-items:center;gap:9px;white-space:nowrap">
+    <a href="https://thebryme.com/" aria-label="THE BRYME - all publications" style="display:inline-flex;align-items:center"><img src="/assets/brand/bryme-mark.png" alt="" width="26" height="26" style="width:26px;height:26px;border-radius:7px;display:block;box-shadow:0 0 0 1px rgba(0,0,0,.08)"></a>
+    <a href="https://thebryme.com/" style="font-family:Georgia,serif;font-weight:700;font-size:21px;letter-spacing:.14em;color:#5b6b7a;text-decoration:none">THE&nbsp;BRYME</a>
+    <span aria-hidden="true" style="width:1px;height:20px;background:#ddd6c6;display:inline-block"></span>
+    <a href="/"{' aria-current="page"' if current == "home" else ""} style="font-family:Georgia,serif;font-weight:700;font-size:34px;letter-spacing:.14em;color:#a8752a;text-decoration:none">WRITERS</a></span>
     <div class="mast-edition"><span class="mast-date">{edition} EDITION</span><span class="mast-tag">The business, craft &amp; economics of writing — free, independent, human-verified.</span></div>
     <div class="mast-tools">
       <form class="nav-search-form" action="/search/" method="get" role="search"><input type="search" name="q" placeholder="Search…" aria-label="Search BRYME" autocomplete="off"></form>
