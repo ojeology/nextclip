@@ -215,3 +215,8 @@ Goal: turn 847 stubs into articles. Median 153 → 600+ words; thin 85% → <5%.
 
 - SHIPPED: 14 Nollywood review pages carried future dates (2026-09-25..30) leaking into JSON-LD, visible text, section sitemaps and root sitemapindex. Engines distrust future lastmod - plausible contributor to Bing discovery stall (981). Clamped at emit: review datePublished, visible Reviewed-on, defensive sitemap clamp. Verified live: entertainment index lastmod now build-day, 0 future dates anywhere.
 - Re-ship lesson reinforced: ALWAYS fresh clone (stale clone lost content/ -> build fail; caught and re-cloned).
+
+## FILM BATCH 15 (2026-09-24)
+
+- SHIPPED: 30 more, ENRICH 376 -> 406 (719 total; ~56% enriched). Prestige TV 6 (Andor/Last Kingdom/White Lotus/Fargo/Sandman/Umbrella Academy), MCU TV+film 5, classics (Carrie/Ghostbusters-1984/Willow/Labyrinth/Alien Resurrection), 2024-25 tentpoles (Twisters/Mario/Zootopia 2/Conclave), anime arc 8 incl. both Demon Slayer films, K-drama The Glory, Vikram Vedha.
+- Pool remaining: ~313.
