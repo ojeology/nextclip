@@ -181,3 +181,8 @@ Goal: turn 847 stubs into articles. Median 153 → 600+ words; thin 85% → <5%.
 
 - SHIPPED: 30 more, ENRICH 196 -> 226 (719 total; ~31% enriched). Kurosawa pair, Star Wars core, superhero pillars, horror canon (Conjuring/Exorcist/Halloween/Thing/Midsommar), anime (JJK/Demon Slayer/Howl/Fireflies/Bebop), Drishyam identified as Malayalam original, GoT/Chernobyl/Wire, Bong Host.
 - Pool remaining: ~493.
+
+## FILM BATCH 10 (2026-09-24)
+
+- SHIPPED: 30 more, ENRICH 226 -> 256 (719 total; ~36% enriched). Family animation 8, action staples 8, sci-fi 6, superhero 4, prestige 4.
+- Pool remaining: ~463.
