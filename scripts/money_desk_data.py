@@ -6,9 +6,12 @@
 #   - The desk's credibility is the founder's public research:
 #     QUANTLAB + mean-reversion-vwap-lab (github.com/ojeology).
 
+from datetime import date
+import money_evergreen_data as _me
+
 MONEY_TAGLINE = "Risk-first trading research, tools and education."
 
-MONEY_EDITION = "SEPTEMBER 2026 \u00b7 THE RISK-FIRST DESK"
+MONEY_EDITION = date.fromisoformat(_me.REVIEWED).strftime("%B %Y").upper() + " \u00b7 THE RISK-FIRST DESK"
 
 RESEARCH_HTML = (
     '<section class="section" id="research"><div class="section-head"><p class="kicker">Open research</p>'
@@ -43,20 +46,27 @@ DISCLAIMER_HTML = (
 HUB_BODY = (
     '<div class="wrap"><section class="cover"><p class="kicker">BRYME Money</p>'
     "<h1 class=\"cover-title\">Risk comes first. Everything else is arithmetic.</h1>"
-    "<p class=\"cover-dek\">Trading tools, education and open research \u2014 built by people "
-    "who test systems in public, for readers who want the discipline without the drama.</p></section>"
+    "<p class=\"cover-dek\">Trading tools, evergreen education and open research "
+    "\u2014 for readers who want to understand the product, its costs and the risks "
+    "before risking money.</p></section>"
+    '<div class="money-start"><h2>Start with the questions that matter.</h2>'
+    '<p>What do you hold? Who provides the account? What do orders and fees do '
+    'to the result? Our guides begin with mechanics and independent checks, not '
+    f'a broker ranking or a promised return. Desk updated {_me.REVIEWED}.</p>'
+    '<a href="/money/trading-for-beginners/">Follow the beginner path</a> &nbsp;·&nbsp; '
+    '<a href="/money/how-to-check-a-trading-broker/">Verify a broker</a></div>'
     '<section class="section"><div class="prose">'
-    "<p>BRYME Money exists because most trading education skips the only variable a "
-    "trader actually controls: how much is at risk on the next trade. Strategy gets the "
-    "headlines; position sizing decides who survives long enough to have a strategy. "
-    "So this desk starts where survival starts.</p>"
+    "<p>BRYME Money starts with what a trader can plan: product, position size, "
+    "expected costs and a reason to exit. None of those choices guarantees a "
+    "loss limit when spreads widen or a price gaps. Learn the mechanics first, "
+    "then examine any proposed strategy under realistic conditions.</p>"
     '<ul class="list">'
     '<li><a href="/money/position-size-calculator/"><b>The position size calculator</b></a> '
-    "\u2014 account balance, risk percent, entry and stop in; exact position size out. "
-    "Works for forex lots and any market in units.</li>"
+    "\u2014 a theoretical lot or unit estimate before fees, slippage and currency conversion. "
+    "Read its assumptions before using the result.</li>"
     '<li><a href="/money/position-sizing-101/"><b>Position sizing, the 1% rule, explained</b></a> '
     "\u2014 the formula behind the calculator, worked examples in forex and crypto, and "
-    "why risking 1\u20132% per trade is the whole game.</li>"
+    "why any chosen risk percentage is a planning limit, not a guaranteed maximum loss.</li>"
     '<li><a href="/money/quantlab-explained/"><b>QUANTLAB, explained</b></a> '
     "\u2014 every step of the open trading-research project: 95 runs, 34 blind tests and one "
     "honest retraction.</li>"
@@ -72,6 +82,7 @@ HUB_BODY = (
     "<p>New tools and research notes are added as they are finished \u2014 never on a "
     "schedule, always with the working open for inspection.</p>"
     "</div></section>"
+    + _me.shelves_html()
     + RESEARCH_HTML
     + DISCLAIMER_HTML
     + "</div>"
@@ -80,7 +91,7 @@ HUB_BODY = (
 CALC_PAGE = {
     "route": "/position-size-calculator/",
     "title": "Position Size Calculator - forex lots & any-market units | BRYME Money",
-    "desc": "Free position size calculator: balance, risk %, entry and stop in - exact lot or unit size out. Forex pip mode and any-market mode. Educational tool, not advice.",
+    "desc": "Estimate position size from balance, planned risk, entry and stop. FX results assume a quote-currency account; costs, gaps and fills can increase loss. Not advice.",
     "h1": "Position size calculator",
     "dek": "The one calculation that decides whether a trading account survives: how big should this trade be?",
 }
@@ -88,13 +99,15 @@ CALC_PAGE = {
 CALC_BODY_TOP = (
     '<div class="wrap"><section class="cover"><p class="kicker">BRYME Money \u00b7 Tool</p>'
     "<h1 class=\"cover-title\">Position size calculator</h1>"
-    "<p class=\"cover-dek\">Balance, risk percent, entry and stop in \u2014 exact position size out. "
-    "For forex (in lots) and any market (in units).</p></section>"
+    "<p class=\"cover-dek\">Balance, planned risk, entry and stop in \u2014 a theoretical size out. "
+    "For FX (quote-currency accounts) and simple unit-priced assets, before costs and gaps.</p></section>"
     '<section class="section"><div class="prose">'
-    "<p>Choose a mode, fill in four numbers, read the answer. The maths and its "
-    "reasoning are explained in <a href=\"/money/position-sizing-101/\">position sizing, "
-    "explained</a>; nothing is stored or sent anywhere \u2014 the calculation runs entirely "
-    "in your browser.</p>"
+    "<p>Choose a mode and fill in four numbers. The result assumes that a stop fills "
+    "at its stated price, with no spread, fees, gap or funding charge; forex mode "
+    "also assumes the account balance is in the pair's quote currency. Contract "
+    "multipliers and FX conversion need separate checks. The maths is explained in "
+    "<a href=\"/money/position-sizing-101/\">position sizing</a>; inputs remain in "
+    "your browser and are not sent to BRYME.</p>"
     "</div></section>"
     '<section class="section"><div class="prose money-calc">'
     '<style>'
@@ -110,7 +123,7 @@ CALC_BODY_TOP = (
     '<fieldset><legend>Trade details</legend>'
     '<div class="fld"><label for="mc-mode">Market type</label>'
     '<select id="mc-mode"><option value="fx">Forex pair (answer in lots)</option>'
-    '<option value="units">Any market \u2014 crypto, indices, stocks (answer in units)</option></select></div>'
+    '<option value="units">Simple unit-priced asset (not futures or contract multiples)</option></select></div>'
     '<div class="fld" id="mc-pair-row"><label for="mc-pair">Forex pair</label>'
     '<select id="mc-pair">'
     '<option value="0.0001" data-name="EUR/USD">EUR/USD</option>'
@@ -141,18 +154,23 @@ CALC_BODY_TOP = (
 CALC_BODY_TAIL = (
     '<section class="section"><div class="prose">'
     "<h2>How the calculation works</h2>"
-    "<p>The calculator answers one question: <i>if my stop is hit, do I lose exactly the "
-    "amount I chose to risk?</i></p>"
+    "<p>The calculator answers a narrower question: <i>what theoretical unit size "
+    "matches a chosen price-loss amount if the stop fills at the assumed level?</i> "
+    "It cannot guarantee the actual loss.</p>"
     '<ul class="list">'
-    "<li><b>Any-market mode:</b> units = money at risk \u00f7 (entry \u2212 stop). A $0.40 "
-    "stop distance risking $100 means 250 units.</li>"
+    "<li><b>Unit mode:</b> theoretical units = planned loss \u00f7 "
+    "absolute(entry \u2212 stop). A $0.40 stop distance and a $100 planned "
+    "price loss imply 250 units in a simple $1-per-point product.</li>"
     "<li><b>Forex mode:</b> one standard lot is 100,000 units of the base currency, and "
     "a pip is 0.0001 (0.01 on JPY pairs). Lots = money at risk \u00f7 (stop in pips \u00d7 "
     "pip value per lot).</li></ul>"
-    "<p>Pip values are shown in the pair's <i>quote</i> currency. If your account is in a "
-    "different currency the exact figure shifts with the exchange rate \u2014 the position "
-    "size moves the same direction, so treat the answer as the honest starting point and "
-    "round <i>down</i>.</p>"
+    "<p>Pip values are shown in the pair's <i>quote</i> currency. Forex results "
+    "assume the balance and planned loss are also expressed in that currency. If "
+    "your account uses another currency, convert the risk with a current rate "
+    "and check your provider's contract value before using a size. Even a "
+    "quote-currency account can lose more than planned when an exit slips. "
+    "For product differences, see <a href=\"/money/stocks-forex-futures-and-cfds/\">"
+    "the markets compared</a>.</p>"
     "<p>Read the full reasoning in <a href=\"/money/position-sizing-101/\">position "
     "sizing, explained</a>.</p>"
     "</div></section>"
@@ -162,39 +180,39 @@ CALC_BODY_TAIL = (
 
 SIZING_101 = {
     "route": "/position-sizing-101/",
-    "title": "Position sizing explained - the 1% rule that keeps traders alive | BRYME Money",
-    "desc": "Why position sizing - not strategy - decides which trading accounts survive. The 1-2% rule, the formula, worked forex and crypto examples. General information, not advice.",
+    "title": "Position Sizing Explained: Risk Is an Estimate | BRYME",
+    "desc": "Understand planned loss, stop distance and position size through worked forex and crypto examples. A risk percentage is not a guaranteed loss cap. Not advice.",
     "h1": "Position sizing, explained honestly",
-    "dek": "The 1-2% rule is the least glamorous idea in trading and the only one that reliably separates accounts that survive from accounts that don't.",
+    "dek": "Size from a planned loss and a chosen stop, then check what happens if the actual fill is worse.",
 }
 
 SIZING_BODY = (
     '<div class="wrap"><section class="cover"><p class="kicker">BRYME Money \u00b7 Education</p>'
     "<h1 class=\"cover-title\">Position sizing, explained honestly</h1>"
-    "<p class=\"cover-dek\">Nobody blows an account with one bad idea. They blow it with "
-    "one badly sized trade \u2014 repeated.</p></section>"
+    "<p class=\"cover-dek\">A planned loss budget is useful arithmetic, not a promise "
+    "that a market will let you exit at that price.</p></section>"
     '<section class="section"><div class="prose">'
-    "<p>Ask a losing trader what went wrong and you will hear about strategy: the wrong "
-    "indicator, the fake breakout, the news. Ask a surviving trader and you will hear a "
-    "number: <i>how much</i> they were willing to lose on any single trade. That number "
-    "is position sizing, and it is the only input in trading you fully control.</p>"
-    "<p>You cannot control whether the next trade wins. You cannot control the spread, "
-    "the slippage or the news. You control exactly one thing \u2014 how much is at risk "
-    "before you click the button. Get that one thing right and losing streaks become "
-    "survivable. Get it wrong and no strategy on earth saves the account.</p>"
+    "<p>Position sizing turns an intended loss budget and a planned exit level "
+    "into a number of units. It is a planning tool, not an insurance policy: "
+    "a gap or a missed stop can create a larger loss than the calculation.</p>"
+    "<p>You cannot control whether the next trade wins, a spread widens, or "
+    "an order fills where you hoped. You can choose an exposure and decide "
+    "whether the possible loss is tolerable, including adverse scenarios. "
+    "This is why sizing belongs alongside execution and <a href=\"/money/"
+    "trading-risk-checklist/\">a written risk plan</a>.</p>"
     "<h2>The 1\u20132% rule</h2>"
-    "<p>The working convention among professional risk managers is simple: <b>never risk "
-    "more than 1\u20132% of the account on a single trade</b>. Not 1\u20132% of the "
-    "account <i>in</i> the trade \u2014 1\u20132% of the account <i>lost if the stop is "
-    "hit</i>. On a $5,000 account, one percent is $50. Every position you take is built "
-    "backwards from that fifty dollars, never forwards from \u201chow much can I "
-    "buy?\u201d.</p>"
-    "<p>Why so small? Because losing streaks are not a possibility, they are a "
-    "statistical certainty. A strategy with a genuine 50% win rate will still hand you "
-    "eight losses in a row sooner or later \u2014 the streak is inside the maths, not a "
-    "sign the strategy broke. At 1% risk, eight straight losses is a 7.7% drawdown: "
-    "painful, survivable. At 20% risk it is an 83% drawdown, which needs a 578% gain "
-    "just to get back to even. That is not a recovery plan; it is an obituary.</p>"
+    "<p>Examples often use a planned 1% risk per trade to make the arithmetic easy "
+    "to check. It is not a universal recommendation or a maximum realised loss. "
+    "On a $5,000 account, 1% is $50 <i>of planned loss</i> if a chosen stop "
+    "fills at its level, before costs. The position's purchase value may be "
+    "much larger than $50.</p>"
+    "<p>Eight consecutive 1% losses, with each loss based on the remaining "
+    "balance and ignoring costs, leave 0.99 to the eighth power, or about "
+    "92.3% of the starting balance: a 7.7% drawdown. At 20% each, "
+    "0.8 to the eighth power leaves about 16.8%, an 83.2% drawdown; "
+    "returning to the start would then require about a 496% gain. Such a "
+    "streak is possible, not guaranteed in any finite sample. Slippage can "
+    "make either drawdown worse.</p>"
     "<h2>The formula</h2>"
     "<p>Position size is one division:</p>"
     '<p style="background:rgba(127,127,127,.08);border:1px solid var(--line-strong);padding:13px 15px">'
@@ -208,8 +226,9 @@ SIZING_BODY = (
     "<p>Account: $5,000. Risk: 1% = $50. Trade: long EUR/USD at 1.0850, stop at 1.0825 "
     "\u2014 a 25-pip stop. A standard lot (100,000 units) makes each pip worth $10 in "
     "quote-currency terms, so 25 pips risks $250 per standard lot. $50 \u00f7 $250 = "
-    "<b>0.2 lots</b>. Take the trade at 0.2 lots and a full stop-out costs exactly the "
-    "fifty dollars you chose \u2014 nothing more.</p>"
+    "<b>0.2 lots</b> in this simplified quote-currency example. The modelled "
+    "price loss is $50 only if the exit fills at the assumed stop and ignores "
+    "spreads, fees and conversion; an actual loss can be higher.</p>"
     "<h2>Worked example \u2014 crypto</h2>"
     "<p>Account: $5,000. Risk: 1% = $50. Trade: long BTC at 60,000 with the idea invalid "
     "below 58,800 \u2014 a $1,200 stop distance. $50 \u00f7 $1,200 = <b>0.0417 BTC</b> "
@@ -220,25 +239,24 @@ SIZING_BODY = (
     '<ul class="list">'
     "<li><b>Widening the stop to keep the size.</b> If the stop moves to fit a bigger "
     "position, the trade idea changed and the sizing maths is now theatre.</li>"
-    "<li><b>Risking \u201cjust this once\u201d more.</b> The 1% rule only compounds if it "
-    "is actually a rule. The account does not care about your conviction.</li>"
-    "<li><b>Counting pips, not percent.</b> Fifty pips means nothing without position "
-    "size attached; the only universal unit is the percent of the account at risk.</li>"
-    "<li><b>Forgetting leverage is sizing, not capital.</b> Leverage multiplies exposure, "
-    "never the balance. The risk maths above is identical at 1:30 or 1:500 \u2014 only "
-    "the margin required changes.</li>"
+    "<li><b>Increasing size on conviction alone.</b> A bigger position increases "
+    "the loss if the same adverse move occurs.</li>"
+    "<li><b>Counting pips, not money.</b> A price distance has no account-level "
+    "meaning until position size, contract value and account currency are known.</li>"
+    "<li><b>Ignoring margin rules.</b> Leverage enlarges exposure and can trigger "
+    "forced liquidation; the margin deposit is not a loss cap. See "
+    "<a href=\"/money/leverage-and-margin-explained/\">margin and leverage</a>.</li>"
     "</ul>"
     "<h2>The part research can and cannot do</h2>"
-    "<p>Position sizing cannot make a losing strategy win \u2014 it makes a losing "
-    "strategy <i>affordable to keep testing</i>, which is how every strategy in our "
-    "<a href=\"/#research\">open research</a> survived long enough to be judged. That is "
-    "the honest scope of the tool: sizing keeps you in the game; the edge has to come "
-    "from tested method. Our "
+    "<p>Position sizing cannot make a losing strategy win, prevent a gap or "
+    "guarantee that a trader can keep testing. It sets a planning scale; any "
+    "edge still has to be evaluated under real costs and unseen data. Our "
+    "<a href=\"/money/#research\">open research</a> documents that process. The "
+    "examples include the "
     '<a href="https://github.com/ojeology/QUANTLAB" rel="noopener">QUANTLAB</a> framework '
     "and the "
     '<a href="https://github.com/ojeology/mean-reversion-vwap-lab" rel="noopener">VWAP '
-    "mean-reversion lab</a> exist because that second part deserves the same discipline "
-    "as the first.</p>"
+    "mean-reversion lab</a>; neither proves that a future trade will work.</p>"
     "</div></section>"
     + DISCLAIMER_HTML
     + "</div>"
@@ -525,24 +543,26 @@ TT_BODY = (
     "<li><b>Derivatives</b> \u2014 futures and options, contracts <i>about</i> an underlying "
     "price. Powerful, refundable-in-pain: leverage multiplies exposure, never capital, and "
     "options can decay to zero.</li></ul>"
-    "<p>The sizing maths is identical underneath all of them \u2014 risk divided by stop "
-    "distance \u2014 which is why the <a href=\"/money/position-size-calculator/\">position size "
-    "calculator</a> has a forex mode and an any-market mode.</p>"
+    "<p>Simple unit sizing starts with planned loss divided by price distance, "
+    "but contracts add multipliers, fees and margin rules. The "
+    "<a href=\"/money/position-size-calculator/\">calculator</a> is a planning "
+    "estimate for defined inputs, not a substitute for the product contract. "
+    "Compare <a href=\"/money/stocks-forex-futures-and-cfds/\">products and exposures</a> "
+    "before treating two charts as the same trade.</p>"
     "<h2>Order types: the five that matter</h2>"
-    "<p><b>Market order</b> \u2014 trade right now at whatever price the book offers. Guaranteed "
-    "fill, no guaranteed price; the difference is <b>slippage</b>, and it grows in fast or thin "
-    "markets. Use when being in the trade matters more than a tick.</p>"
-    "<p><b>Limit order</b> \u2014 trade only at your price or better. Guaranteed price, no "
-    "guaranteed fill: the market may never come back. Use for entries at levels, and for exits "
-    "when you refuse to accept worse.</p>"
-    "<p><b>Stop order (stop-market)</b> \u2014 dormant until price touches your level, then fires "
-    "a market order. This is the classic protective stop-loss: it gets you out in a crash even "
-    "when nobody is bidding politely \u2014 but in a gap it fills <i>through</i> your level, not "
-    "at it. That is the price of the guarantee to exit.</p>"
-    "<p><b>Stop-limit order</b> \u2014 on trigger, places a <i>limit</i> instead of a market "
-    "order. You control the worst acceptable fill, but in a violent move the limit can simply "
-    "not fill, leaving you inside the crash you were escaping. The eternal trade-off: stop-market "
-    "always exits, stop-limit exits only at a price you named.</p>"
+    "<p><b>Market order</b> \u2014 requests prompt execution at available prices, "
+    "not a particular price. It may fill in pieces or be delayed or rejected "
+    "in a halt or thin market; <b>slippage</b> can be substantial.</p>"
+    "<p><b>Limit order</b> \u2014 buys at the limit or lower, sells at the limit or "
+    "higher. It constrains the price if it fills, but may never execute or "
+    "may only partly fill.</p>"
+    "<p><b>Stop order (stop-market)</b> \u2014 becomes a market order when the "
+    "provider's trigger condition is met. The stop is not the execution "
+    "price: a gap may produce a much worse fill, and trading may halt.</p>"
+    "<p><b>Stop-limit order</b> \u2014 on trigger, places a <i>limit</i> order. "
+    "The limit sets a price condition but can fail to fill when price moves "
+    "through it. For numeric examples and partial fills, see "
+    "<a href=\"/money/order-types-and-slippage/\">order execution</a>.</p>"
     "<p><b>Brackets and OCO</b> \u2014 a stop-loss and a take-profit attached to one position; "
     "when one fires the other cancels (one-cancels-other). This is how a plan becomes "
     "mechanical: both exits exist before the emotion arrives. A <b>trailing stop</b> is the "
@@ -550,21 +570,23 @@ TT_BODY = (
     "useful for letting winners run, useless as a substitute for an initial invalidation level.</p>"
     "<h2>Styles: how long the trade lives</h2>"
     '<ul class="list">'
-    "<li><b>Scalping</b> \u2014 seconds to minutes, many trades, tiny targets. Costs and "
-    "slippage dominate everything; QUANTLAB's five-minute research is the cautionary tale here "
-    "\u2014 it found <b>no cost-surviving edge in 5-minute crypto, proven seven independent ways</b>. "
-    "The faster you trade, the more the exchange earns and the less you keep.</li>"
-    "<li><b>Day trading</b> \u2014 entries and exits inside one session, flat by the close. No "
-    "overnight gap risk; all of the concentration risk.</li>"
+    "<li><b>Scalping</b> \u2014 seconds to minutes and many trades with small "
+    "targets. Spread, fees and slippage can outweigh an apparent small "
+    "historical edge; our QUANTLAB tests are examples, not a verdict on "
+    "every five-minute market.</li>"
+    "<li><b>Day trading</b> \u2014 entries and exits within a session. Closing "
+    "before the next session avoids overnight holding, not intraday gaps, "
+    "halts or execution costs.</li>"
     "<li><b>Swing trading</b> \u2014 holding days to weeks for a leg of a move. This is the "
     "timeframe where the public labs did their validated hourly-crypto work; overnight risk "
     "returns, but so does room for the trade to breathe.</li>"
     "<li><b>Position trading</b> \u2014 months; closer to investing with an exit plan. Wins and "
     "losses arrive slowly, which is a feature for anyone who checks prices too often.</li></ul>"
-    "<p>No style is superior. Each buys something (opportunity, sleep, freedom of schedule) and "
-    "pays for it in something else (costs, stress, gap risk). What is not negotiable in any of "
-    "them: the <a href=\"/money/position-sizing-101/\">1\u20132% risk rule</a> and an exit "
-    "defined before entry.</p>"
+    "<p>No style is automatically superior. Each has costs and failure modes "
+    "that differ with the product and the trader's circumstances. Before an "
+    "order, <a href=\"/money/trading-risk-checklist/\">document a risk plan</a> "
+    "and use <a href=\"/money/position-sizing-101/\">position sizing</a> as "
+    "a planning estimate, not a promised loss cap.</p>"
     "<h2>The life of a properly built trade</h2>"
     "<p>Every disciplined trade follows the same sequence regardless of market or style: an "
     "<b>idea</b> (why this, why now), an <b>invalidation level</b> (where the idea is proven "
@@ -591,9 +613,9 @@ TT_PAGE = {
 IND_BODY = (
     '<div class="wrap"><section class="cover"><p class="kicker">BRYME Money \u00b7 Education</p>'
     "<h1 class=\"cover-title\">Technical indicators, explained \u2014 and how they actually relate</h1>"
-    "<p class=\"cover-dek\">Four families, one honest rule: indicators in the same family are "
-    "echoes, indicators across families are evidence. Built on the stacks a public research lab "
-    "really tested.</p></section>"
+    "<p class=\"cover-dek\">Trend, momentum, volatility and participation "
+    "describe different aspects of past trading. None supplies a forecast "
+    "or an edge on its own.</p></section>"
     '<section class="section"><div class="prose">'
     "<p>An indicator is arithmetic on past prices and volume \u2014 nothing more, and nothing "
     "shameful. It cannot see the future; it can describe the present so precisely that a "
@@ -640,12 +662,12 @@ IND_BODY = (
     "<li><b>OBV</b> \u2014 a running total of volume signed by the day\u2019s direction, used to "
     "check whether flows agree with price.</li></ul>"
     "<h2>How they relate: the rule that saves beginners years</h2>"
-    "<p><b>Indicators from the same family are echoes; indicators across families are "
-    "evidence.</b> RSI plus Stochastic is one opinion said twice \u2014 both are momentum "
-    "arithmetic on the same closes, so agreeing adds confidence, not information. Two "
-    "thermometers do not make new weather. But a trend filter plus a momentum trigger plus a "
-    "volatility-based stop measures three genuinely different things \u2014 direction, timing "
-    "and size \u2014 and that is what a complete trade needs.</p>"
+    "<p><b>Indicators can be highly correlated, including across families.</b> "
+    "RSI and Stochastic both use recent price changes, so agreement is not "
+    "independent proof. A trend filter, a momentum measure and a volatility "
+    "estimate may answer different questions, but they can all react to the "
+    "same price series. A complete test still needs costs, a written invalidation "
+    "rule and unseen data.</p>"
     "<h2>Two archetypes, built from the families</h2>"
     "<p><b>The trend stack</b> \u2014 trade <i>with</i> the current: establish direction with a "
     "long average, demand strength with ADX, time the entry on a Donchian or channel breakout, "
@@ -674,7 +696,7 @@ IND_BODY = (
     "being the whole plan. The plan is question \u2192 invalidation \u2192 size \u2192 exit; "
     "indicators only sharpen the questions.</p>"
     "<h2>Cheat sheet</h2>"
-    '<table style="border-collapse:collapse;max-width:100%"><tr>'
+    '<div class="money-table-wrap"><table class="money-table" style="border-collapse:collapse;max-width:100%"><tr>'
     '<th style="padding:5px 14px;border:1px solid var(--line-strong);text-align:left">Indicator</th>'
     '<th style="padding:5px 14px;border:1px solid var(--line-strong);text-align:left">Family</th>'
     '<th style="padding:5px 14px;border:1px solid var(--line-strong);text-align:left">The question it answers</th></tr>'
@@ -686,13 +708,16 @@ IND_BODY = (
     '<tr><td style="padding:5px 14px;border:1px solid var(--line-strong)">ATR</td><td style="padding:5px 14px;border:1px solid var(--line-strong)">Volatility</td><td style="padding:5px 14px;border:1px solid var(--line-strong)">How far does a normal bar travel?</td></tr>'
     '<tr><td style="padding:5px 14px;border:1px solid var(--line-strong)">Bollinger Bands</td><td style="padding:5px 14px;border:1px solid var(--line-strong)">Volatility</td><td style="padding:5px 14px;border:1px solid var(--line-strong)">Is price statistically stretched?</td></tr>'
     '<tr><td style="padding:5px 14px;border:1px solid var(--line-strong)">Volume / VWAP / OBV</td><td style="padding:5px 14px;border:1px solid var(--line-strong)">Participation</td><td style="padding:5px 14px;border:1px solid var(--line-strong)">Is anyone actually behind this?</td></tr>'
-    "</table>"
+    "</table></div>"
     "<p>Where these stacks came from and how they were judged: "
     "<a href=\"/money/quantlab-explained/\">QUANTLAB, explained</a>. How to know whether any "
     "combination has an edge at all: <a href=\"/money/backtesting-101/\">backtesting 101</a>. "
-    "What an edge is worth per trade: the <a href=\"/money/expectancy-calculator/\">expectancy "
-    "calculator</a>. How big to trade it: <a href=\"/money/position-sizing-101/\">position "
-    "sizing</a>.</p>"
+    "What an assumed edge would mean per trade: the <a href=\"/money/expectancy-calculator/\">expectancy "
+    "calculator</a>. How planned loss affects size: <a href=\"/money/position-sizing-101/\">position "
+    "sizing</a>. Work through <a href=\"/money/rsi-indicator-guide/\">RSI</a>, "
+    "<a href=\"/money/atr-indicator-guide/\">ATR</a> and "
+    "<a href=\"/money/moving-averages-sma-vs-ema/\">moving averages</a> with "
+    "their own limitations.</p>"
     "</div></section>"
     + DISCLAIMER_HTML
     + "</div>"

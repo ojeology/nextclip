@@ -15,8 +15,10 @@
     "validate:contrast": "node scripts/validate-contrast.js",
     "validate:hometools": "node scripts/validate-home-tools.js",
     "validate:quick": "node scripts/validate-site-quality.js --quick",
+    "validate:money": "node scripts/validate-money-pages.js",
+    "validate:money:browser": "node scripts/validate-money-browser.js",
     "test:http": "node scripts/validate-http.js",
-    "test": "npm run validate:hometools && npm run validate && npm run validate:browser && npm run validate:contrast"
+    "test": "npm run validate:hometools && npm run validate && npm run validate:money && npm run validate:browser && npm run validate:contrast && npm run validate:money:browser"
   },
   "engines": {
     "node": ">=20"

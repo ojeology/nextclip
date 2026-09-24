@@ -432,8 +432,51 @@ table.lg-table{width:100%;border-collapse:collapse;min-width:640px;font:500 14px
 @media (max-width:640px){.cov-badge{width:60px;height:60px}}
 """
 
+# Editorial Money pages share the existing desk chrome. These styles are scoped
+# to the new guide shelf, long-form reading aids and accessible example tables.
+MONEY_CSS_EXTRA = """
+.money-guide-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:20px 0 44px}
+.money-shelf-title{font:700 clamp(22px,2.6vw,28px)/1.2 var(--serif);margin:42px 0 8px;padding-top:20px;border-top:1px solid var(--line-strong)}
+.money-guide-card{min-width:0;display:flex;flex-direction:column;gap:11px;padding:22px 24px;background:var(--sheet);border:1px solid var(--line-strong);border-top:4px solid var(--brand);border-radius:3px}
+.money-guide-card h4{font:700 22px/1.26 var(--serif);margin:0}
+.money-guide-card a{color:var(--brand);text-decoration:underline;text-underline-offset:3px}
+.money-guide-card a:hover{color:var(--ink)}
+.money-guide-card p{font:15px/1.6 var(--sans);color:var(--muted);margin:0}
+.money-card-topic{font:800 11px var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--brand)}
+.money-card-action{font:700 12px var(--sans);color:var(--brand);margin-top:auto;padding-top:10px}
+.money-start{padding:24px 28px;margin:30px 0 0;background:var(--sheet);border:1px solid var(--line-strong);border-left:5px solid var(--brand)}
+.money-start h2{font:700 clamp(22px,3vw,28px)/1.2 var(--serif);margin:0 0 8px}
+.money-start p{font:16px/1.65 var(--sans);color:var(--muted);margin:0 0 14px;max-width:72ch}
+.money-start a{color:var(--brand);font-weight:700;text-decoration:underline;text-underline-offset:3px}
+.money-guide-cover{padding-top:38px;padding-bottom:40px}
+.money-guide-cover .cover-title{font-size:clamp(36px,5.8vw,60px)}
+.money-guide-cover .byline{font:13px/1.5 var(--sans);margin-top:22px}
+.money-guide-cover .byline a{color:var(--brand);text-decoration:underline}
+.money-article{padding-top:0}.money-article .prose{min-width:0;padding-top:28px}
+.prose.money-calc fieldset{min-width:0;max-width:100%}
+.prose.money-calc input,.prose.money-calc select{min-width:0;width:100%;max-width:100%}
+.money-toc{border:1px solid var(--line-strong);border-left:4px solid var(--brand);background:var(--sheet);padding:18px 22px;margin:4px 0 36px}
+.money-toc b{font:800 12px var(--sans);letter-spacing:.12em;text-transform:uppercase}
+.money-toc ol{margin:10px 0 0;padding-left:21px}.money-toc li{font:14px/1.55 var(--sans)}
+.money-toc li+li{margin-top:5px}.money-toc a{font:inherit}
+.money-table-wrap{max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;margin:24px 0 30px}
+.money-table{border-collapse:collapse;width:100%;min-width:565px;background:var(--sheet)}
+.money-table caption{caption-side:top;text-align:left;font:600 13px/1.5 var(--sans);color:var(--muted);padding:0 0 9px}
+.money-table th,.money-table td{border:1px solid var(--line-strong);padding:12px 13px;text-align:left;vertical-align:top;font:14px/1.55 var(--sans)}
+.money-table th{font-weight:700;background:var(--paper)}.money-table td a{font:inherit}
+.money-source-block,.money-related{border-top:2px solid var(--line-strong);margin-top:48px;padding-top:10px}
+.money-source-block p,.money-source-block li,.money-related li{font-size:15px;line-height:1.65}
+.money-source-block ol,.money-related ul{padding-left:22px}
+@media(max-width:650px){.money-guide-grid{grid-template-columns:1fr}.money-start{padding:20px}.money-guide-cover{padding-top:25px}}
+"""
+
+
 def css_for(pub):
-    return BASE_CSS % FAMILY[pub] + (FITNESS_CSS_EXTRA if pub in ("fitness", "home") else "") + (FITNESS_ONLY_CSS_EXTRA if pub == "fitness" else "") + (HOME_CSS_EXTRA if pub == "home" else "") + (SPORTS_CSS_EXTRA if pub == "sports" else "")
+    return (BASE_CSS % FAMILY[pub] + (FITNESS_CSS_EXTRA if pub in ("fitness", "home") else "")
+            + (FITNESS_ONLY_CSS_EXTRA if pub == "fitness" else "")
+            + (HOME_CSS_EXTRA if pub == "home" else "")
+            + (SPORTS_CSS_EXTRA if pub == "sports" else "")
+            + (MONEY_CSS_EXTRA if pub == "money" else ""))
 
 def _uk_from_utc(ds):
     """Feed kick-off times are UTC (football-data.org utcDate). Convert to UK
@@ -486,7 +529,7 @@ def desk_edition():
     return _ED_CACHE[0]
 
 
-def _page_ld(title, desc, route):
+def _page_ld(title, desc, route, modified=None):
     # H4 (audit 2026-09-16): every page that does not bring its own JSON-LD
     # gets an honest minimal graph - WebPage (AboutPage/ContactPage where the
     # route says so), the site-level Organization, and WebSite on the hub
@@ -502,7 +545,7 @@ def _page_ld(title, desc, route):
          # dateModified is honest here: the generator rebuilds and re-verifies
          # these pages on every build (the desks' own "re-checked" stamp makes
          # the same claim in prose), so the build date IS the last modification.
-         "dateModified": TODAY,
+         "dateModified": modified or TODAY,
          "isPartOf": {"@id": ORIGIN + "/#website"},
          "publisher": {"@id": ORIGIN + "/#organization"}},
         {"@type": "Organization", "@id": ORIGIN + "/#organization",
@@ -519,7 +562,11 @@ def _page_ld(title, desc, route):
 
 def shell(pub, title, desc, route, body, card=None, robots="index,follow"):
     title = budget_title(title)  # H3 batch 7: keep <title>/og:title inside the SERP window
-    ld_html = "" if "application/ld+json" in body else _page_ld(title, desc, route)  # H4 batch 8
+    # New Money guides carry their actual source-review date in the visible byline.
+    # Other properties keep the established date behavior unchanged.
+    review = re.search(r"\b(?:Sources reviewed|Desk updated) (\d{4}-\d{2}-\d{2})\b", body) if pub == "money" else None
+    ld_html = "" if "application/ld+json" in body else _page_ld(
+        title, desc, route, modified=review.group(1) if review else None)  # H4 batch 8
     d = route  # mode-aware base URL from SUB
     og = f"{ORIGIN}/assets/og.png"  # real root card; route may already be a full URL (b36 fix)
     if pub in ("tech", "home"):
@@ -543,6 +590,9 @@ def shell(pub, title, desc, route, body, card=None, robots="index,follow"):
     else:
         drawer = ""
     navjs = '<script src="/assets/site-nav.js" defer></script>' if pub in ("tech", "sports", "entertainment", "fitness", "money") else ""
+    # Money uses the shared brand mark explicitly; legacy desks use their
+    # property-local favicon.ico, copied alongside every generated service.
+    icon = "/assets/brand/bryme-mark.png" if pub == "money" else "/favicon.ico"
     return f"""<!doctype html>
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
@@ -554,7 +604,7 @@ def shell(pub, title, desc, route, body, card=None, robots="index,follow"):
 <meta property="og:title" content="{html.escape(title)}"><meta property="og:description" content="{html.escape(desc)}">
 <meta property="og:url" content="{d}"><meta property="og:image" content="{og}">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="{icon}" sizes="any">
 <link rel="apple-touch-icon" href="/assets/brand/apple-touch-icon.png">
 {ADS_HEAD}{theme_head}
 <style>{css_for(pub)}</style>
@@ -675,15 +725,10 @@ def _nav_items(pub):
                    ("/entertainment/how-award-season-actually-works/", "How award season works")]
         return ([("Shelves", shelves)], ("/entertainment/", "Desk home"))
     if pub == "money":
-        desk = [("HEAD", "The desk"), ("/money/", "Desk home"),
-                ("/money/position-size-calculator/", "Position size calculator"),
-                ("/money/position-sizing-101/", "Position sizing, explained"),
-                ("/money/quantlab-explained/", "QUANTLAB, explained"),
-                ("/money/backtesting-101/", "Backtesting 101"),
-                ("/money/expectancy-calculator/", "Expectancy calculator"),
-                ("/money/trade-types-explained/", "Types of trades, explained"),
-                ("/money/technical-indicators-explained/", "Indicators, explained")]
-        return ([("The desk", desk)], ("/money/", "Desk home"))
+        import money_evergreen_data as _me
+        menus = [(group, [("HEAD", group), ("/money/", "Money desk home")] + links)
+                 for group, links in _me.nav_groups()]
+        return (menus, ("/money/", "Desk home"))
     if pub == "hub":
         return ([("Writers", "/writers/"), ("Sport", "/sports/"), ("Tech", "/tech/"),
                  ("Entertainment", "/entertainment/"), ("Fitness", "/fitness/"), ("Home & DIY", "/home/"), ("Money", "/money/")],
@@ -783,21 +828,19 @@ def fitness_drawer():
 
 
 def money_drawer():
+    import money_evergreen_data as _me
+    groups = ''.join('<div class="drawer-group"><b>' + html.escape(group) + '</b>'
+                     + ''.join('<a href="' + url + '">' + html.escape(label) + '</a>'
+                               for url, label in links) + '</div>\n'
+                     for group, links in _me.nav_groups())
     return ('<div id="drawer-backdrop"></div>\n'
         '<aside id="site-drawer" aria-hidden="true" aria-label="BRYME Money sections">\n'
         '<div class="drawer-head"><span class="logo">BRYME&nbsp;MONEY</span>'
         '<button type="button" class="drawer-close" data-drawer-close aria-label="Close menu">'
         '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 5l14 14M19 5L5 19"/></svg></button></div>\n'
-        '<div class="drawer-group"><b>Tools</b><a href="/money/position-size-calculator/">Position size calculator</a>'
-        '<a href="/money/expectancy-calculator/">Expectancy calculator</a></div>\n'
-        '<div class="drawer-group"><b>Learn</b><a href="/money/position-sizing-101/">Position sizing, explained</a>'
-        '<a href="/money/backtesting-101/">Backtesting 101</a>'
-        '<a href="/money/quantlab-explained/">QUANTLAB, explained</a>'
-        '<a href="/money/trade-types-explained/">Types of trades</a>'
-        '<a href="/money/technical-indicators-explained/">Indicators, explained</a></div>\n'
-        '<div class="drawer-group"><b>The desk</b><a href="/money/">Desk home</a>'
-        '<a href="/money/about/">About</a>'
-        '<a href="/money/contact/">Contact</a><a href="/money/privacy/">Privacy</a></div>\n'
+        + groups + '<div class="drawer-group"><b>The desk</b><a href="/money/">Desk home</a>'
+        '<a href="/money/about/">About</a><a href="/money/contact/">Contact</a>'
+        '<a href="/money/privacy/">Privacy</a></div>\n'
         '</aside>')
 
 def head(pub, tagline, parent=True):
@@ -949,6 +992,11 @@ def write_service(pub, pages):
         (d / "index.html").write_bytes(blob)
     (base / "assets").mkdir(exist_ok=True)
     (base / "assets" / "site.css").write_text(css_for(pub), encoding="utf-8")
+    # Routing prefixes each property's /favicon.ico reference. Without a
+    # property-local file the full link gate reports ~1,650 broken favicons.
+    # Money instead uses the shared brand PNG, but carrying an .ico here is
+    # harmless and prevents a stale browser tab from pointing at a missing file.
+    shutil.copy2(ROOT / "favicon.ico", base / "favicon.ico")
     urls = []
     lm_by_url = {}
     _dre = re.compile(r'"date(?:Modified|Published)": ?"(\d{4}-\d{2}-\d{2})"')
@@ -3625,7 +3673,7 @@ _TOOL_JS = {"json-formatter": "json", "base64-encoder": "base64", "url-encoder":
             "data-usage-estimator": "datausage",
             "vpn-cost-calculator": "vpncost",
             "internet-speed-calculator": "speed",
-            "electricity-cost-calculator": "electricity",
+            "electricity-cost-calculator": "electricity-cost",
             "ai-subscription-cost-comparer": "aisubs",
             "video-file-size-estimator": "filesize",
             "upload-time-calculator": "uploadtime",
@@ -5909,15 +5957,30 @@ def home_pages():
 
 def money_pages():
     import money_desk_data as _md
+    import money_evergreen_data as _me
     _calc_body = (_md.CALC_BODY_TOP + _md.CALC_BODY_TAIL
                   + '<script src="/assets/money-position-size.js" defer></script>')
-    pages = [("/", "BRYME Money - risk-first trading tools, research and education | BRYME",
-              _md.MONEY_TAGLINE, _md.HUB_BODY)]
+    pages = [("/", "Trading Education, Broker Checks & Tools | BRYME Money",
+              "Trading guides for beginners: markets, indicators, trading environments, broker verification, fees, leverage and free risk-planning tools. Educational, not advice.",
+              _md.HUB_BODY)]
     pages.append((_md.CALC_PAGE["route"], _md.CALC_PAGE["title"], _md.CALC_PAGE["desc"], _calc_body))
     pages.append((_md.SIZING_101["route"], _md.SIZING_101["title"], _md.SIZING_101["desc"], _md.SIZING_BODY))
     for _extra in (_md.QL_PAGE, _md.BT_PAGE, _md.EXP_PAGE, _md.TT_PAGE, _md.IND_PAGE):
         pages.append((_extra["route"], _extra["title"], _extra["desc"], _extra["body"]))
-    pages = [(_r, _t, _d, head("money", _md.MONEY_TAGLINE) + '<main id="main">' + _b + '</main>' + foot("money"))
+    for _guide in _me.pages(_md.DISCLAIMER_HTML):
+        pages.append((_guide["route"], _guide["title"], _guide["desc"], _guide["body"]))
+    # Existing explainers/tools edited for accuracy need an honest visible
+    # modification date too, rather than the desk's original 9 September stamp.
+    revised = {"/position-size-calculator/", "/position-sizing-101/",
+               "/trade-types-explained/", "/technical-indicators-explained/"}
+    def _with_revision(route, body):
+        if route not in revised:
+            return body
+        byline = ('<p class="byline">BRYME Money editorial desk · Desk updated '
+                  + _me.REVIEWED + ' · <a href="/money/editorial-policy/">Editorial policy</a></p>')
+        return body.replace('</section>', byline + '</section>', 1)
+    pages = [(_r, _t, _d, head("money", _md.MONEY_TAGLINE) + '<main id="main">'
+              + _with_revision(_r, _b) + '</main>' + foot("money"))
              for (_r, _t, _d, _b) in pages]
     return pages + legal_pages("money", "BRYME Money", _md.MONEY_TAGLINE)
 

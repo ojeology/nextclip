@@ -102,18 +102,19 @@ const staleWindows=json("content/opportunities.json").opportunities.filter(o=>{
 }).map(o=>o.slug);
 if(staleWindows.length)warn(`${staleWindows.length} record(s) have a passed deadline but a live status — re-verify: ${staleWindows.join(", ")}`);
 if(pubRecords!==expectedPubs)fail(`expected ${expectedPubs} indexed publication records under /writing/, found ${pubRecords}`);
-const sitemapRoutes=["writers/sitemap.xml","sports/sitemap.xml","entertainment/sitemap.xml","tech/sitemap.xml","fitness/sitemap.xml","home/sitemap.xml"].flatMap(sf=>{if(!fs.existsSync(path.join(ROOT,sf)))return[];return[...read(sf).matchAll(/<loc>(.*?)<\/loc>/g)].map(m=>norm(m[1]))});
+// All seven live property sitemaps, including Money, must partition the routed
+// index allowlist. Money was already in the root index and allowlist, but this
+// gate still counted six; that masked 15 missing Money sitemap assertions.
+const propertySitemaps=["writers","sports","entertainment","tech","fitness","home","money"].map(p=>`${p}/sitemap.xml`);
+const sitemapRoutes=propertySitemaps.flatMap(sf=>{if(!fs.existsSync(path.join(ROOT,sf)))return[];return[...read(sf).matchAll(/<loc>(.*?)<\/loc>/g)].map(m=>norm(m[1]))});
 const sitemapUnique=new Set(sitemapRoutes);
-// M1 (audit 2026-09-16): the architecture is un-inverted. Root /sitemap.xml is a
-// sitemap index over exactly the six property sitemaps; writers/sitemap.xml carries
-// only /writers/ routes; the two hub URLs (/, /about/) live in home/sitemap.xml.
-// The six children are pairwise disjoint and their union equals the routed allowlist
-// exactly (the size/membership assertions below are unchanged).
+// Writers is writers-only; the two house URLs (/, /about/) live in Home's
+// sitemap. The seven children must be pairwise disjoint and cover the allowlist.
 const idxText=read("sitemap.xml");
 if(!idxText.includes("<sitemapindex"))fail("root sitemap.xml must be a sitemapindex");
 const idxLocs=[...idxText.matchAll(/<loc>(.*?)<\/loc>/g)].map(m=>{try{return new URL(m[1],site).pathname}catch{return ""}});  // raw paths: norm() would append route-style trailing slashes
-for(const child of ["/writers/sitemap.xml","/sports/sitemap.xml","/entertainment/sitemap.xml","/tech/sitemap.xml","/fitness/sitemap.xml","/home/sitemap.xml"])if(!idxLocs.includes(child))fail(`root sitemap index missing ${child}`);
-if(idxLocs.length!==6)fail(`root sitemap index must reference exactly 6 property sitemaps, found ${idxLocs.length}`);
+for(const sf of propertySitemaps)if(!idxLocs.includes(`/${sf}`))fail(`root sitemap index missing /${sf}`);
+if(idxLocs.length!==propertySitemaps.length)fail(`root sitemap index must reference exactly ${propertySitemaps.length} property sitemaps, found ${idxLocs.length}`);
 if(sitemapRoutes.length!==sitemapUnique.size)fail(`property sitemaps overlap: ${sitemapRoutes.length} locs but ${sitemapUnique.size} unique`);
 if(sitemapUnique.size!==allow.size)fail(`sitemap has ${sitemapUnique.size} unique routes, expected ${allow.size}`);
 for(const r of allow)if(!sitemapUnique.has(norm(r)))fail(`sitemap missing ${r}`);

@@ -9,8 +9,10 @@
   if (!mode || !out) return;
 
   function num(el) {
-    var v = parseFloat(el && el.value);
-    return (isNaN(v) || v < 0) ? null : v;
+    var raw = el && el.value;
+    if (raw === null || raw === undefined || String(raw).trim() === "") return null;
+    var v = Number(raw);
+    return (!Number.isFinite(v) || v < 0) ? null : v;
   }
   function fmt(n) {
     if (n >= 100) return n.toLocaleString(undefined, { maximumFractionDigits: 0 });
@@ -22,8 +24,9 @@
     if (!warn || !out) return;
     warn.textContent = "";
     var bal = num(balance), pct = num(risk), en = num(entry), st = num(stop);
-    if (bal === null || bal <= 0 || pct === null || pct <= 0 || en === null || st === null || en === 0 || st === 0 || en === st) {
-      out.textContent = "Fill in balance, risk %, entry and a different stop price to see the position size.";
+    if (bal === null || bal <= 0 || pct === null || pct <= 0 || pct > 100 ||
+        en === null || st === null || en === 0 || st === 0 || en === st) {
+      out.textContent = "Enter a positive balance and prices, a different stop and a planned risk between 0 and 100%.";
       return;
     }
     var riskAmt = bal * pct / 100;
@@ -38,26 +41,32 @@
       var stopPips = dist / pipSize;
       var pipValuePerLot = pipSize * 100000; /* quote currency per standard lot */
       var lots = riskAmt / (stopPips * pipValuePerLot);
-      var units = lots * 100000;
-      html = "Risk: <b>" + riskAmt.toLocaleString(undefined, { maximumFractionDigits: 2 }) + "</b> \u00b7 "
+      // Never display a two-decimal lot figure rounded UP above the planned
+      // quote-currency loss. Product-specific minimums/steps still need checking.
+      var roundedDown = Math.floor(lots * 100) / 100;
+      var units = roundedDown * 100000;
+      html = "Planned price loss (quote currency): <b>" + riskAmt.toLocaleString(undefined, { maximumFractionDigits: 2 }) + "</b> \u00b7 "
            + "Stop distance: <b>" + stopPips.toLocaleString(undefined, { maximumFractionDigits: 1 }) + " pips</b><br>"
-           + "Position size: <b>" + lots.toFixed(2) + " lots</b> (" + fmt(units) + " units)<br>"
+           + (roundedDown > 0 ? "Size rounded DOWN to 0.01 lot: <b>" + roundedDown.toFixed(2) + " lots</b> (" + fmt(units) + " units)<br>"
+                              : "Calculated size is below 0.01 lot; do not round it up to fit a broker minimum.<br>")
            + "<small>" + opt.getAttribute("data-name") + " \u00b7 1 pip = " + pipSizeStr
            + " \u00b7 pip value per standard lot: " + pipValuePerLot.toLocaleString(undefined, { maximumFractionDigits: dp })
-           + " (quote currency)</small>";
-      if (lots < 0.01) {
-        warn.textContent = "Below 0.01 lots (the usual micro-lot minimum) \u2014 this risk fits a smaller account than this trade needs.";
+           + " (quote currency). Assumes account balance in quote currency and a fill at the stop; "
+           + "before fees, gaps and conversion.</small>";
+      if (roundedDown < 0.01) {
+        warn.textContent = "The theoretical size is below 0.01 lot. Check your product's minimum and do not round up above your plan.";
       }
     } else {
       var u = riskAmt / dist;
-      html = "Risk: <b>" + riskAmt.toLocaleString(undefined, { maximumFractionDigits: 2 }) + "</b> \u00b7 "
+      html = "Planned price loss: <b>" + riskAmt.toLocaleString(undefined, { maximumFractionDigits: 2 }) + "</b> \u00b7 "
            + "Stop distance: <b>" + dist.toLocaleString(undefined, { maximumFractionDigits: 6 }) + "</b><br>"
-           + "Position size: <b>" + fmt(u) + " units</b><br>"
-           + "<small>Exposure \u2248 " + fmt(u * en) + " at entry</small>";
+           + "Theoretical size: <b>" + fmt(u) + " units</b><br>"
+           + "<small>Exposure \u2248 " + fmt(u * en) + " at entry. Round DOWN to the allowed contract step; "
+           + "verify contract multiplier and account currency. Before fees, gaps and slippage.</small>";
     }
     out.innerHTML = html;
     if (pct > 3) {
-      warn.textContent = "Risking " + pct + "% per trade is aggressive \u2014 a normal losing streak becomes a deep drawdown fast. Most risk plans cap this at 1\u20132%.";
+      warn.textContent += (warn.textContent ? " " : "") + "A planned loss of " + pct + "% per trade can create a rapid drawdown; no percentage limits actual gap or margin losses.";
     }
   }
 
