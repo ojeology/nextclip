@@ -6325,4 +6325,528 @@ ENRICH = {
              "122 minutes."),
         ],
     },
+    # ---- film batch 14 (2026-09-24): 30 titles - milestone batch, crosses 50% enriched ----
+    "euphoria": {
+        "verdict": "High school as Technicolor fever dream: Rue, a teenage addict relapsing "
+            "through love and recovery, anchors HBO's most visually intoxicated series. "
+            "Zendaya's Emmy-winning work is revelatory and raw, the make-up and "
+            "cinematography rewired a generation's aesthetic, and the show's honesty "
+            "about drugs, identity and phones keeps it a cultural reference point.",
+        "faqs": [
+            ("Did Zendaya win awards for Euphoria?",
+             "Yes - two Primetime Emmys for Outstanding Lead Actress in a Drama Series "
+             "(2020 and 2022), among the youngest winners ever in the category."),
+            ("Is Euphoria suitable for teenagers?",
+             "It is made about teens, not for them - explicit drug use, nudity and "
+             "violence throughout; adults deciding for older teens should preview first."),
+            ("Is it based on anything?",
+             "On an Israeli series of the same name - the US version transformed it "
+             "into its own neon-lit animal."),
+        ],
+    },
+    "gen-v": {
+        "verdict": "The Boys goes to college: Godolkin University trains supes for "
+            "fame and sponsorships, and the campus rot underneath is exactly as dark "
+            "as you would expect. A grisly mystery, a ferocious young cast, and "
+            "crossover threads that feed straight into The Boys itself. The spin-off "
+            "that earned its compound-V.",
+        "faqs": [
+            ("Do I need to watch The Boys first?",
+             "Strongly - Gen V assumes its world, its satire and its characters; the "
+             "events feed directly into later seasons of The Boys."),
+            ("Is it as gory as The Boys?",
+             "Yes - the hemocraft fights and the finale keep the franchise's "
+             "splatter-by-satire standard."),
+            ("Is it continuing?",
+             "Yes - new seasons continue the story alongside The Boys."),
+        ],
+    },
+    "fallout": {
+        "verdict": "The rare video-game adaptation that players and newcomers both "
+            "adopted: a vault dweller, a cowboy ghoul and a brotherhood knight cross "
+            "a nuclear-blasted America with dark comic joy. Walton Goggins' Ghoul is "
+            "an instant icon, the production honours the games' lore religiously, "
+            "and the show treats nuclear holocaust with a wink and a shotgun. "
+            "Emmy-nominated and renewed - the wasteland is open for business.",
+        "faqs": [
+            ("Do I need to play the Fallout games first?",
+             "No - the show explains its world cleanly; players get extra delight "
+             "from the lore treats, newcomers lose nothing essential."),
+            ("Is it connected to the games' story?",
+             "Yes - it continues the timeline of the games (particularly the "
+             "west-coast lore), carefully so."),
+            ("How many episodes?",
+             "Eight in the first season, hour-long each."),
+        ],
+    },
+    "arcane-season-2": {
+        "verdict": "The conclusion of the century's most beautiful show: Piltover and "
+            "Zaun go to war, sisters Vi and Jinx collide with the city between them, "
+            "and Fortiche's painterly mayhem peaks with battle sequences no live "
+            "action could afford. The story lands its ending while the animation "
+            "industry simply watches and takes notes. A masterpiece, finished.",
+        "faqs": [
+            ("Do I need season one first?",
+             "Absolutely - season two is the direct second half, and its power runs "
+             "on everything season one set up."),
+            ("Is it really the final season?",
+             "Yes - the story of Vi and Jinx concludes here, though the world of "
+             "League of Legends offers more regions for future tales."),
+            ("Does the show need game knowledge?",
+             "None - it uses the game's characters and city, then tells a complete "
+             "story of class, family and sacrifice on its own terms."),
+        ],
+    },
+    "what-we-do-in-shadows": {
+        "verdict": "The funniest vampire flat-share ever documented: four immortals in "
+            "a Wellington house, filmed mockumentary-style as they argue about "
+            "dishes, nightclubs and not transforming in the living room. Clement and "
+            "Waititi play it deadpan to perfection, and the gentlest gore jokes "
+            "land endlessly. The film that spawned a whole TV dynasty.",
+        "faqs": [
+            ("Is the film connected to the TV series?",
+             "The FX series continues the concept with new vampires in Staten Island, "
+             "with cameos from the film's cast - the film is the origin."),
+            ("Where is it set?",
+             "Wellington, New Zealand - the deadpan local backdrop is half the joke."),
+            ("How long is it?",
+             "86 minutes."),
+        ],
+    },
+    "dandadan": {
+        "verdict": "The loudest, fastest anime of its moment: occult-obsessed Ken "
+            "and spirit-sighted Momo battle aliens and yokai in Science SARU's "
+            "fire-hydrant-of-ideas animation. Romance, body horror, slapstick and "
+            "genuine tenderness at forty frames a second. The show that made "
+            "everyone ask 'how is this animated by humans?'",
+        "faqs": [
+            ("What is Dandadan about?",
+             "A boy who believes in aliens and a girl who does not believe in ghosts "
+             "- both proven wrong in the same episode, binding them into a war on "
+             "everything uncanny."),
+            ("Is it still ongoing?",
+             "Yes - new seasons continue adapting the red-hot manga."),
+            ("Is it very weird?",
+             "Gloriously - expect the strangest character designs of the decade "
+             "wrapped around a sincere first-love story."),
+        ],
+    },
+    "blue-lock": {
+        "verdict": "Football as battle royale: Japan's federation imprisons 300 "
+            "strikers in a facility designed to manufacture the world's most "
+            "selfish goal-scorer. Ego is the theme, the training puzzles are "
+            "genuinely tense, and the sports genre gets a supervillain grin. For "
+            "everyone who ever wanted Diamond no Ace to draw blood.",
+        "faqs": [
+            ("Is Blue Lock like other sports anime?",
+             "It turns the genre's teamwork gospel upside down - cooperation is "
+             "suspect and individuality is weapon; that inversion is the thrill."),
+            ("Is the manga ahead of the anime?",
+             "Yes - the manga continues well beyond; the anime adapts in its wake."),
+            ("Where should I start?",
+             "Season one, episode one - the selection tournament explains itself as "
+             "it goes."),
+        ],
+    },
+    "black-clover": {
+        "verdict": "The classic shonen underdog, executed with total commitment: "
+            "Asta is born without magic in a world where magic is everything - so "
+            "he screams louder, trains harder and swings anti-magic swords at "
+            "destiny itself. 170 episodes of escalating tournaments, knights and "
+            "devils, with one of anime's most loved-no-matter-what protagonists.",
+        "faqs": [
+            ("Is Black Clover finished?",
+             "The TV series ran 170 episodes (2017-2021); the story continued with "
+             "the 2023 film and further plans, while the manga advances toward its "
+             "finale."),
+            ("Why do people say it gets good?",
+             "Early episodes lean on tired gags, then the Royal Knights arc onward "
+             "delivers the payoff - the fandom's 'push past episode 20' advice."),
+            ("Where do I start?",
+             "Episode one, or the movie after the series if pacing is a concern."),
+        ],
+    },
+    "code-geass": {
+        "verdict": "The mecha-chess tragedy that defined an era: an exiled prince "
+            "gains the power of absolute obedience and declares war on his own "
+            "empire as the masked terrorist Zero. Every episode is gambits within "
+            "gambits; the ending remains one of anime's most audacious, tear-jerking "
+            "final acts. Twenty-five years of 'peak anime' arguments, and it keeps "
+            "winning them.",
+        "faqs": [
+            ("How many seasons does Code Geass have?",
+             "Two - Code Geass (2006) and Code Geass R2 (2008), fifty episodes total, "
+             "one complete story."),
+            ("Do I watch the movies?",
+             "The compilation films retell the series with changes; the 2019 film "
+             "Lelouch of the Re;surrection continues after. Series first, always."),
+            ("Why is the ending so praised?",
+             "It commits completely to its hero's monstrous, self-sacrificing plan - "
+             "a finale that recontextualises all fifty episodes."),
+        ],
+    },
+    "toradora": {
+        "verdict": "The tsundere gold standard: gentle delinquent Ryuji and "
+            "pocket-sized tiger Taiga scheme to help each other woo their best "
+            "friends, and accidentally find the real thing. Twenty-five episodes "
+            "of comedy that quietly assemble one of anime's most sincere romances, "
+            "topped by the Christmas arc that still tops emotional-damage lists.",
+        "faqs": [
+            ("Is Toradora the best romance anime?",
+             "It is perennially on the shortlist - the character growth across its "
+             "single season is the benchmark newer shows chase."),
+            ("Do I read the light novels?",
+             "Optional - the anime adapts the full story arc; the novels add "
+             "epilogue depth."),
+            ("How long is it?",
+             "25 episodes - one clean season."),
+        ],
+    },
+    "ant-man-2": {
+        "verdict": "The MCU's breeziest heist gets its sequel: Scott Lang, Hope and "
+            "Hank race Ghost and black-market buyers into the quantum realm - and "
+            "the family banter carries the film straight into a post-credits gut-"
+            "punch that recontextualises it forever. Light as fog, important as a "
+            "snap.",
+        "faqs": [
+            ("Why is Ant-Man and the Wasp important to the MCU?",
+             "Its final moments run parallel to Infinity War's snap - the cliffhanger "
+             "makes it essential Endgame context."),
+            ("Do I need the first Ant-Man?",
+             "Yes - the cast, the quantum realm rules and the tone all build on it."),
+            ("How long is it?",
+             "118 minutes."),
+        ],
+    },
+    "aquaman-2": {
+        "verdict": "James Wan's underwater opera takes its final swim: Arthur, "
+            "Mera and a resentful brother unite against an ancient deep-state "
+            "kingdom, with bigger creatures and a lighter heart than its dour "
+            "reputation suggests. Divisive at the box office, sincere on screen - "
+            "the DCEU's aquatic send-off with real charm in the margins.",
+        "faqs": [
+            ("Do I need the first Aquaman?",
+             "Yes - the brother dynamic and the throne politics continue directly."),
+            ("Is it the last Aquaman film?",
+             "It closed the DC films of that era; the character's screen future was "
+             "reset with the new DC universe."),
+            ("How long is it?",
+             "124 minutes."),
+        ],
+    },
+    "blue-beetle": {
+        "verdict": "The warmest superhero film of its year: Jaime Reyes comes home "
+            "from college to find an alien scarab welded to his spine - and his "
+            "delightful, fully realised Latino family along for every minute. "
+            "Xolo Mariduena is a star, the humour is organic, and the film's "
+            "modest box office hid one of DC's most liked entries. Familia over "
+            "franchise.",
+        "faqs": [
+            ("Why is Blue Beetle significant?",
+             "It is DC's first feature headlined by a Latino superhero - and the "
+             "family-centred storytelling is the point, not an afterthought."),
+            ("Is it connected to other DC films?",
+             "It stands alone - and the character has been carried forward in DC's "
+             "new era plans."),
+            ("How long is it?",
+             "127 minutes."),
+        ],
+    },
+    "x-men": {
+        "verdict": "The film that proved the team could work after a decade of "
+            "superhero failures: a brand called mutant, a school for the gifted, "
+            "and one snarling unknown named Hugh Jackman changing franchises "
+            "forever. Tight, scrappy and sincere where later films got loud - "
+            "the foundation stone of the modern Marvel age of cinema.",
+        "faqs": [
+            ("Did X-Men start the modern superhero era?",
+             "It is widely credited (with Blade the year before) as the film that "
+             "made studios trust comic-book cinema again - two years before "
+             "Spider-Man and eight before the MCU."),
+            ("Do I watch it before the prequels?",
+             "Either order works, but release order (X-Men, X2, then First Class "
+             "and the rest) preserves the reveals best."),
+            ("How long is it?",
+             "104 minutes."),
+        ],
+    },
+    "x-men-2": {
+        "verdict": "The sequel that outgrew the original: Nightcrawler's White "
+            "House attack opens the best action sequence of the pre-MCU era, and "
+            "the film never looks back - Stryker's purge, Logans memory-lab, and "
+            "an ending that still has weight. Regularly cited among the greatest "
+            "superhero sequels ever made. The high-water mark of the original "
+            "trilogy.",
+        "faqs": [
+            ("Is X2 one of the best superhero sequels?",
+             "It is on nearly every such list - the Nightcrawler opening alone is "
+             "taught as action-filmmaking craft."),
+            ("Do I need the first film?",
+             "Yes - character arcs (Wolverine, Rogue, Magneto) continue directly."),
+            ("How long is it?",
+             "133 minutes."),
+        ],
+    },
+    "agatha": {
+        "verdict": "The WandaVision scene-stealer gets her own coven: Agatha Harkness, "
+            "powerless and petty, walks the treacherous Witches' Road with a band "
+            "of delightfully odd spellcasters. Kathryn Hahn devours every scene, "
+            "the finale recontextualises the road itself, and the whole thing is "
+            "far smarter about grief than its camp reputation admits. Disney+'s "
+            "best-reviewed Marvel showing of its year.",
+        "faqs": [
+            ("Do I need WandaVision first?",
+             "Yes - Agatha's history, her song and her punishment all come from it; "
+             "the payoff depends on it."),
+            ("Is it related to the WandaVision song?",
+             "The viral 'Agatha All Along' tune was born in WandaVision and named "
+             "this series."),
+            ("How many episodes?",
+             "Nine - a complete, contained season."),
+        ],
+    },
+    "deep-water": {
+        "verdict": "Adrian Lyne's return after two decades: Ben Affleck and Ana de "
+            "Armas play a married couple whose open-marriage games curdle into "
+            "something much worse, adapted from Patricia Highsmith's icy novel. "
+            "Slow-burn dread, garden snails and a final shot people argue about - "
+            "the erotic thriller's old master signing off in style.",
+        "faqs": [
+            ("Is Deep Water based on a book?",
+             "On Patricia Highsmith's 1957 novel - her first, from the author of "
+             "The Talented Mr. Ripley."),
+            ("Why was it so anticipated?",
+             "It marked Adrian Lyne's first film in twenty years (the director of "
+             "Fatal Attraction and Unfaithful)."),
+            ("Is it slow?",
+             "Deliberately - the dread accrues in domestic details before the "
+             "thriller mechanics engage."),
+        ],
+    },
+    "the-grudge": {
+        "verdict": "The remake that imported dread wholesale: Takashi Shimizu "
+            "re-stages his own Ju-On for America - a Tokyo house where the dead "
+            "cling like damp, and a chain of residents learn the curse is not a "
+            "haunting, it is an infection. Told in shards, quiet as a held breath. "
+            "The film that made an entire generation afraid of attic spaces.",
+        "faqs": [
+            ("Is The Grudge a remake?",
+             "Of the director's own Ju-On: The Grudge (2002) - Shimizu directed "
+             "both, keeping the mythology and reframing it through new characters."),
+            ("Why does the story jump around in time?",
+             "The curse is nonlinear by nature - the fractured timeline mirrors "
+             "how the grudge traps everyone it touches."),
+            ("How long is it?",
+             "88 minutes."),
+        ],
+    },
+    "the-road": {
+        "verdict": "The grimmest, most sincere apocalypse in mainstream cinema: a "
+            "father and son push a shopping cart through a dead, grey America, "
+            "guarding the fire of being 'the good guys'. Cormac McCarthy's novel "
+            "rendered with total fidelity - ash, hunger, love without limit. Not "
+            "survival horror; a prayer with teeth.",
+        "faqs": [
+            ("Is The Road based on a book?",
+             "On Cormac McCarthy's 2006 Pulitzer-winning novel - one of the most "
+             "respected American novels of its era."),
+            ("What caused the apocalypse?",
+             "Never explained - in the book or the film; the absence of "
+             "explanation is the point."),
+            ("How depressing is it?",
+             "Very - and endurable because of the father-son love at its centre; "
+             "viewers leave shaken but not empty."),
+        ],
+    },
+    "the-gorge": {
+        "verdict": "Two snipers on opposite cliffs, ordered never to look down - "
+            "and the gorge between them hides something ancient that wants out. "
+            "Miles Teller and Anya Taylor-Joy fall in love across the void via "
+            "handwritten signs while the horror escalates below. Sincere genre "
+            "fun: half romance, half creature chasm, fully committed.",
+        "faqs": [
+            ("Where can The Gorge be watched?",
+             "It was released as a major streaming original - check current "
+             "platform listings in your region."),
+            ("Is it a romance or a horror film?",
+             "Both halves, earnestly - the long-distance courtship plays straight "
+             "before the monsters claim the film."),
+            ("How long is it?",
+             "127 minutes."),
+        ],
+    },
+    "atomic-blonde": {
+        "verdict": "Cold-War candy with knuckles: Charlize Theron's MI6 blade "
+            "smashes through 1989 Berlin for a list of double agents, and David "
+            "Leitch shoots it like a music video that lifts weights. The "
+            "stairwell fight - one unbroken, exhausting take - is among the "
+            "great modern action sequences. Style with real bruise.",
+        "faqs": [
+            ("Is Atomic Blonde based on a comic?",
+             "On Antony Johnston's graphic novel The Coldest City."),
+            ("Is the stairwell fight really one take?",
+             "It is presented as an extended single take (with hidden stitches) - "
+             "Theron trained extensively and the stunt team earned every bruise "
+             "in it."),
+            ("How long is it?",
+             "115 minutes."),
+        ],
+    },
+    "booksmart": {
+        "verdict": "The graduation-night revolution: two straight-A best friends "
+            "realise they studied through high school and now have one night to "
+            "make up for it. Olivia Wilde's directing debut is fast, filthy and "
+            "secretly one of the warmest friendship films of the decade. Superbad "
+            "with straight As and a bigger heart.",
+        "faqs": [
+            ("Is Booksmart suitable for teens?",
+             "Older teens - R-rated language and party content, but its values "
+             "(friendship, identity, kindness) are exemplary."),
+            ("Was it a hit?",
+             "Modestly at the box office, hugely with critics - it immediately "
+             "made Wilde a sought-after director."),
+            ("How long is it?",
+             "102 minutes."),
+        ],
+    },
+    "blockers": {
+        "verdict": "The sex-comedy with the parents' seat flipped: three mums and "
+            "dads try to sabotage their daughters' prom-night pact, and the film "
+            "lands the harder joke - the kids are right, the parents are the "
+            "chaos. Leslie Mann at full flight, John Cena's nervous breakdown in "
+            "a prom dress for the win. Honest, hilarious, sneakily wise.",
+        "faqs": [
+            ("Is Blockers appropriate for family viewing?",
+             "With older teens, weirdly ideal - it is R-rated but its message "
+             "about trust and consent is the healthiest in the genre."),
+            ("Is it the director's first film?",
+             "Yes - Kay Cannon (writer of the Pitch Perfect films) directed it as "
+             "her debut."),
+            ("How long is it?",
+             "102 minutes."),
+        ],
+    },
+    "elemental": {
+        "verdict": "Fire meets water in Element City: a fiery temp with a temper "
+            "and a go-with-the-flow water guy fall for each other across a city "
+            "of elements. A slow starter that word of mouth turned into a "
+            "genuine phenomenon - underneath the gas-flame puns is Pixar's most "
+            "personal immigrant-family story yet.",
+        "faqs": [
+            ("Did Elemental do well?",
+             "A famous slow-burn: a quiet opening, then weeks of word-of-mouth "
+             "growth into one of the year's biggest animated hits."),
+            ("What is it really about?",
+             "Immigrant families and inherited expectation - director Peter Sohn "
+             "built it from his own Korean-American upbringing."),
+            ("How long is it?",
+             "102 minutes."),
+        ],
+    },
+    "wonka": {
+        "verdict": "Paul King (Paddington) does the impossible politely: a "
+            "young Wonka pre-factory, all optimism and chocolate, sung through "
+            "with genuine warmth and Timothee Chalamet's twinkling con-man charm. "
+            "It should be cynical brand extension; it is instead the coziest "
+            "family film of its year. Pure imagination, tidily justified.",
+        "faqs": [
+            ("Do I need the older Wonka films?",
+             "No - it is an origin-flavoured tale that stands alone and plays "
+             "gently alongside them."),
+            ("Is it a musical?",
+             "Yes - original songs plus a few classics, in Paddington-style "
+             "warmth rather than spectacle.",
+             ),
+            ("How long is it?",
+             "116 minutes."),
+        ],
+    },
+    "wreck-it-ralph": {
+        "verdict": "The villain support group that launched a franchise: an arcade "
+            "bad-guy sneaks into other games to win a medal and finds a glitchy "
+            "little friend instead. Disney's video-game love letter - sugar-rush "
+            "worldbuilding, a great villain reveal, and real feeling under the "
+            "coin-op nostalgia. 'I'm gonna wreck it!' remains a perfect catchphrase.",
+        "faqs": [
+            ("Did Wreck-It Ralph win the Oscar?",
+             "It was nominated for Best Animated Feature at the 2013 ceremony "
+             "(Brave won) - and its sequel followed in 2018."),
+            ("Do I need to know arcade games?",
+             "No - the cameos (Bowser, Sonic, Q*bert) are garnish; the story runs "
+             "on its own characters."),
+            ("How long is it?",
+             "101 minutes."),
+        ],
+    },
+    "blood-sisters": {
+        "verdict": "Nigeria's first Netflix original drama series, and it swings: "
+            "a bride's perfect engagement collapses into a death, and two best "
+            "friends go on the run through Lagos - money, family secrets and a "
+            "hunter who will not stop. Glossy Nollywood thriller craft with "
+            "genuine momentum, built to binge.",
+        "faqs": [
+            ("Is Blood Sisters a film or a series?",
+             "A limited series - four 50-minute episodes telling one continuous "
+             "story."),
+            ("Why is it called Nigeria's first Netflix original?",
+             "It was widely described as the first Nigerian Netflix Original "
+             "drama series - a milestone for Nollywood on the global stage."),
+            ("Is it subtitled?",
+             "It plays in English with Nigerian languages woven in - subtitles "
+             "helpfully provided throughout."),
+        ],
+    },
+    "the-set-up": {
+        "verdict": "EbonyLife's slick heist con: a businesswoman is drawn into a "
+            "collar-meets-double-cross plot that keeps flipping the mark, with "
+            "Niyi Akinmolayan directing Lagos gloss and Ramsey Nouah relishing "
+            "the long game. Twisty, stylish, unapologetically commercial - "
+            "Nollywood's answer to the casino con genre.",
+        "faqs": [
+            ("Is there a sequel?",
+             "Yes - The Set Up 2 (2022) continued the con world with new marks."),
+            ("Who directed it?",
+             "Niyi Akinmolayan, one of Nollywood's most technically ambitious "
+             "directors."),
+            ("How long is it?",
+             "103 minutes."),
+        ],
+    },
+    "eyimofe": {
+        "verdict": "The Nollywood art film that went to Berlin: two Lagos lives - "
+            "a nurse saving every naira to reach Spain, a young man paying his "
+            "sister's debts - told in patient, beautiful 16mm by the Esiri "
+            "brothers. Eyimofe ('This Is My Desire') is migration's dream and "
+            "cost, observed with documentary stillness. Nigerian cinema at its "
+            "quietest and most international.",
+        "faqs": [
+            ("What does Eyimofe mean?",
+             "'This Is My Desire' - the film was released with that subtitle."),
+            ("Is it one story or two?",
+             "Two mirrored halves - Mofe's story then Rosa's - that share a city, "
+             "a dream of Europe and its price."),
+            ("Was it recognised internationally?",
+             "Yes - it premiered at the Berlin International Film Festival and "
+             "travelled the festival circuit widely."),
+        ],
+    },
+    "wandering-earth": {
+        "verdict": "China's sci-fi arriving at blockbuster scale: when the sun "
+            "dies, humanity does not flee - it installs giant engines and moves "
+            "the planet itself out of the solar system. Adapted from Liu Cixin, "
+            "spectacular and stubbornly collective in its heroism, and one of "
+            "the highest-grossing Chinese films ever. The day Earth stood still, "
+            "and then walked.",
+        "faqs": [
+            ("Is The Wandering Earth based on a book?",
+             "On Liu Cixin's novella (author of The Three-Body Problem) - the film "
+             "expands a fragment into a full disaster epic."),
+            ("Why is the premise unusual?",
+             "Most stories abandon Earth; this one takes it along - engines, "
+             "underground cities and all."),
+            ("Is there a sequel?",
+             "Yes - The Wandering Earth II (2023), a prequel that many rate even "
+             "higher."),
+        ],
+    },
 }
