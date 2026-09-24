@@ -191,3 +191,8 @@ Goal: turn 847 stubs into articles. Median 153 → 600+ words; thin 85% → <5%.
 
 - SHIPPED: 30 more, ENRICH 256 -> 286 (719 total; ~40% enriched). Kubrick cult pair, beloved classics, mega-TV (Friends/Sopranos/BCS/Black Mirror/Dark), anime (DBZ/Frieren/Chainsaw Man), Korean pair, Bollywood giants, Nollywood 93 Days. Batch-10 Finding Nemo typo fixed same commit.
 - Pool remaining: ~433.
+
+## FILM BATCH 12 (2026-09-24)
+
+- SHIPPED: 30 more, ENRICH 286 -> 316 (719 total; ~44% enriched). TV giants (Office/Downton/Vikings/TWD/Witcher/Wednesday/Yellowjackets), MCU backfill 4 + Penguin, Eggers pair + Ring + Us, 28 Years Later, comedy trio, world-cinema masters (Ozu/Hamaguchi/Intouchables/Bittersweet), Tamil/Hindi trio, anime pair, Gangs of Lagos.
+- Pool remaining: ~403.
