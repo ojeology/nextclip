@@ -3742,4 +3742,507 @@ ENRICH = {
              "matter, handled seriously rather than for spectacle."),
         ],
     },
+    # ---- film batch 9 (2026-09-24): 30 titles - Kurosawa, Star Wars, horror, anime, TV landmarks ----
+    "scarface": {
+        "verdict": "The rise-and-fall fable at maximum volume: Tony Montana claws from raft-"
+            "arrival to Miami kingpin to a staircase of bullets, and De Palma shoots every "
+            "rung like it's the last. Excess is the subject and the method - 'say hello' "
+            "entered the language. Three hours of opera for gangsters.",
+        "faqs": [
+            ("Is Scarface based on a true story?",
+             "It is a loose remake of Howard Hawks' 1932 Scarface, inspired by Al Capone - "
+             "Pacino's Montana is fiction, but the prohibition-era skeleton shows through."),
+            ("Why is it rated so high in culture?",
+             "Its lines, its look and its soundtrack saturated hip-hop and video games for "
+             "decades - it is as much a style manual as a film."),
+            ("How long is it?",
+             "165 minutes, and the last act earns every one."),
+        ],
+    },
+    "reservoir-dogs": {
+        "verdict": "The debut that announced Tarantino: a heist film with no heist, just "
+            "the paranoid aftermath, colour-coded strangers and a ear and a razor. Talk "
+            "as violence, violence as punchline - ninety-nine minutes of pure nerve. Indie "
+            "cinema's big bang.",
+        "faqs": [
+            ("Is Reservoir Dogs the first Tarantino film?",
+             "Yes - his 1992 debut, funded on a shoestring, and the seedbed of everything "
+             "from the timelines to the needle-drops that came after."),
+            ("Why don't we see the heist?",
+             "The film is the before-and-after: the robbery failed off-screen, and the "
+             "mystery of who tipped off the police is the plot. Withholding it is the trick."),
+            ("How long is it?",
+             "A lean 99 minutes."),
+        ],
+    },
+    "casino": {
+        "verdict": "Goodfellas' colder, grander sibling: Las Vegas as a machine for skimming, "
+            "run with mechanical brilliance and dismantled by ego, drugs and betrayal. De "
+            "Niro precise, Pesci unhinged, Sharon Stone heartbreaking - and Scorsese's "
+            "montages turn greed into choreography. Long, glittering, pitiless.",
+        "faqs": [
+            ("Is Casino based on a true story?",
+             "Yes - Nicholas Pileggi's book on Frank 'Lefty' Rosenthal and Tony Spilotro, "
+             "the real mob enforcer's run over Las Vegas in the 1970s-80s."),
+            ("Is it a sequel to Goodfellas?",
+             "No - a companion piece by the same director and co-writer, different true "
+             "story, same DNA."),
+            ("How long is it?",
+             "178 minutes."),
+        ],
+    },
+    "seven-samurai": {
+        "verdict": "The blueprint for every team-assembles adventure ever made: a starving "
+            "village hires seven swordsmen, and Kurosawa spends three and a half hours "
+            "turning archetypes into people before the rain-soaked final battle. Three "
+            "hours and twenty-seven minutes, and not one wasted frame - the honourable "
+            "granddaddy of heists, Westerns and superhero lineups alike.",
+        "faqs": [
+            ("What did Seven Samurai inspire?",
+             "Directly, The Magnificent Seven; structurally, nearly everything from Star "
+             "Wars to any 'gather the team' film - the recruiting-the-experts structure "
+             "is Kurosawa's gift to cinema."),
+            ("Is it really over three hours?",
+             "207 minutes in the complete cut. It plays faster than films half its length."),
+            ("Is it silent-era style?",
+             "No - a sound film, 1954, with battle sequences whose camerawork still looks "
+             "modern; the criterion is patience rewarded."),
+        ],
+    },
+    "rashomon": {
+        "verdict": "The film that taught the world that truth has versions: a bandit, a "
+            "wife, a samurai and a woodcutter recount one crime four ways, and Kurosawa "
+            "refuses to referee. Eighty-eight minutes that gave psychology a term - the "
+            "'Rashomon effect' - and cinema its modern grammar of doubt.",
+        "faqs": [
+            ("What is the Rashomon effect?",
+             "The term for contradictory interpretations of the same event by different "
+             "witnesses - named directly for this film's structure."),
+            ("Is the truth ever revealed?",
+             "The film withholds a definitive version on purpose; what settles is not the "
+             "fact but the choice to act decently despite doubt."),
+            ("How long is it?",
+             "A tight 88 minutes."),
+        ],
+    },
+    "dr-strangelove": {
+        "verdict": "The funniest film ever made about the end of the world: Kubrick's "
+            "cold-war satire flies a B-52 over squabbling generals, mangled phone calls "
+            "and Peter Sellers in three roles, straight into doomsday. Fifty years of "
+            "nuclear anxiety distilled into ninety-three minutes of perfect farce.",
+        "faqs": [
+            ("Why is it black and white?",
+             "By design - 1964's satirical bite lands harder in austere monochrome, and "
+             "the war-room set became iconic in it."),
+            ("Did Peter Sellers really play three roles?",
+             "Yes - the president, the RAF officer and the title scientist; a fourth part "
+             "was abandoned after an injury on set."),
+            ("Is the ending really like that?",
+             "Yes - 'We'll meet again' over mushroom clouds remains the boldest final "
+             "joke in cinema."),
+        ],
+    },
+    "star-wars-a-new-hope": {
+        "verdict": "The film that made the modern blockbuster: a farm boy, a smuggler, a "
+            "princess and a death star, shot with a serial-serial heart and a brand-new "
+            "kind of spectacle. Whatever the saga became, it starts here - and the binary "
+            "sunset still works on everyone.",
+        "faqs": [
+            ("What is the correct order to watch Star Wars?",
+             "Fans debate eternal: release order (this film first) preserves the saga's "
+             "reveals; chronological order starts with the prequels. Most veterans say: "
+             "release order, always."),
+            ("Did it win any Oscars?",
+             "Six at the 1978 ceremony - art direction, costumes, effects, music, editing "
+             "and sound - plus a special award for the sound design."),
+            ("Is it worth watching after all the newer films?",
+             "More than ever - every later film is in conversation with it, and its "
+             "economy of storytelling is the lesson blockbusters keep relearning."),
+        ],
+    },
+    "return-of-the-jedi": {
+        "verdict": "The trilogy's victory lap: Ewoks, the sail barge, and Luke's final "
+            "refusal to strike - the saga's moral payoff dressed in the brightest colours. "
+            "Leia's gold bikini and the teddy bears divide fans forever; the throne-room "
+            "duel unites them. The circle completes.",
+        "faqs": [
+            ("Is Return of the Jedi the last in the original trilogy?",
+             "Yes - following A New Hope and The Empire Strikes Back, it closes the "
+             "Skywalker story as it stood from 1977-83."),
+            ("Why do people argue about the Ewoks?",
+             "Some find the teddy-bear warriors cute merch-bait; others the proof the "
+             "series remembered children exist. Both are allowed; the film sails anyway."),
+            ("How long is it?",
+             "132 minutes."),
+        ],
+    },
+    "rogue-one-a-star-wars-story": {
+        "verdict": "The war film Star Wars always implied but never showed: expendable "
+            "spies stealing the Death Star plans, no chosen ones, no escapes guaranteed. "
+            "Third-act space combat of rare grandeur, a Vader moment fans scream about, "
+            "and the saga's best ending-for-its-beginnings logic.",
+        "faqs": [
+            ("Do I need other Star Wars films before Rogue One?",
+             "It helps enormously - it is a direct prequel to A New Hope, and its final "
+             "scene connects frame-for-frame."),
+            ("Does everyone die?",
+             "The film's reputation for wartime honesty precedes it; expect sacrifice, "
+             "delivered seriously."),
+            ("How long is it?",
+             "133 minutes."),
+        ],
+    },
+    "the-mandalorian": {
+        "verdict": "The show that returned Star Wars to its campfire roots: a bounty "
+            "hunter, a mysterious child, and episodic frontier adventures with blockbuster "
+            "craft. Early seasons are the franchise's warmest embrace in decades - Western "
+            "cadence, zero homework required.",
+        "faqs": [
+            ("Do I need to have seen the Star Wars films first?",
+             "No - it is designed as a doorway: knowing the films adds flavour, knowing "
+             "nothing blocks nothing. 'This is the way' works on its own."),
+            ("Is that baby Yoda?",
+             "The child the internet adopted is Grogu - of the same species as Yoda, "
+             "narratively his own small person, and the engine of the show's heart."),
+            ("How many seasons?",
+             "Three seasons so far, with the story continuing into film plans - check "
+             "current listings for where it stands today."),
+        ],
+    },
+    "the-avengers": {
+        "verdict": "The team-up that proved the experiment: four franchises, one "
+            "shwarma-fuelled ensemble, and Whedon's dialogue doing the impossible - making "
+            "an event film feel like banter. The Battle of New York rewrote the scale of "
+            "superhero cinema, and it has not stopped since.",
+        "faqs": [
+            ("Do I need to see the films before The Avengers?",
+             "Ideally the five that precede it (Iron Man, Thor, Captain America, Hulk "
+             "continuity) - the payoff is assembly itself. But the film hands you enough "
+             "to enjoy the ride cold."),
+            ("Who is the villain?",
+             "Loki, Thor's adopted brother, playing conqueror with genuine relish - Hiddleston's "
+             "breakout and the MCU's best early antagonist."),
+            ("How long is it?",
+             "142 minutes."),
+        ],
+    },
+    "the-dark-knight-rises": {
+        "verdict": "Nolan's trilogy coda swings operatic: a broken Batman against Bane's "
+            "occupation of Gotham, with revolution as set piece and a finale that aims "
+            "for catharsis and mostly lands it. Imperfect and enormous - the rare "
+            "blockbuster with an ending it means.",
+        "faqs": [
+            ("Do I need the first two Dark Knight films?",
+             "Yes - it concludes a direct trilogy, and its plot leans on debts the first "
+             "two films opened."),
+            ("Is Bane's voice understandable?",
+             "A famous talking point - the muffled megaphone delivery was adjusted between "
+             "trailer and film; most viewers adapt within minutes."),
+            ("How long is it?",
+             "164 minutes."),
+        ],
+    },
+    "guardians-of-the-galaxy": {
+        "verdict": "The risk that paid for a decade: a comedy of space losers with a "
+            "mixtape, a talking tree and a raccoon - and suddenly the MCU had a soul to "
+            "match its spectacle. The soundtrack is a character, the found family is the "
+            "point, and the jokes actually land. Marvel's most rewatchable gamble.",
+        "faqs": [
+            ("Do I need Marvel knowledge for Guardians?",
+             "Almost none - it introduces its whole corner from zero, which is why it "
+             "became the franchise's favourite entry point."),
+            ("Is it more comedy than the other MCU films?",
+             "Yes, unapologetically - though the third act smuggles in real grief, and "
+             "the sequels deepen that blend."),
+            ("How long is it?",
+             "121 minutes."),
+        ],
+    },
+    "captain-america-the-winter-soldier": {
+        "verdict": "The MCU's stealth political thriller: Captain America versus a "
+            "surveillance state infiltrating his own side, played as seventies paranoia "
+            "with shield throws. The Russo brothers' breakout - tight action, real "
+            "consequences, and the twist that reshaped the whole franchise.",
+        "faqs": [
+            ("Is The Winter Soldier a spy thriller or a superhero film?",
+             "Both, deliberately - the conspiracy structure is straight out of the "
+             "seventies paranoid-thriller tradition, with super-soldiers."),
+            ("Do I need to see the first Captain America?",
+             "It helps - the emotional weight of the title character depends entirely on "
+             "the 2011 origin story."),
+            ("How long is it?",
+             "136 minutes."),
+        ],
+    },
+    "the-conjuring": {
+        "verdict": "The haunted-house film that relaunched a genre: old farmhouse, dark "
+            "cellar, hands in the dark - and Wan's camera doing the scaring with pure "
+            "craft. Loosely built on the Warrens' case files, it plays classical rather "
+            "than gross. The gateway modern horror, and the start of a universe.",
+        "faqs": [
+            ("Is The Conjuring based on a true story?",
+             "It dramatises paranormal investigators Ed and Lorraine Warren's claimed 1971 "
+             "Perron family case - 'based on the case files', with everything that implies "
+             "about artistic licence."),
+            ("How scary is it really?",
+             "Very, by construction rather than gore - jump scares orchestrated with "
+             "genuine skill. It is the film people watch with cushions and then recommend."),
+            ("How long is it?",
+             "112 minutes."),
+        ],
+    },
+    "the-exorcist": {
+        "verdict": "Still the heavyweight champion of horror: a mother, a possessed child, "
+            "and two priests walking into the most infamous room in cinema. Friedkin plays "
+            "possession as medical crisis and faith crisis at once - the craft is so "
+            "straight-faced it remains terrifying fifty years on. The one that started "
+            "the headlines.",
+        "faqs": [
+            ("Why is The Exorcist so famous?",
+             "It turned horror into an event - Oscar-nominated for Best Picture, lines "
+             "around the block, faintings reported - and its practical effects still "
+             "outclass most modern attempts."),
+            ("Is it really that scary?",
+             "It is disturbing more than jumpy: the dread is theological and the imagery "
+             "has never left the culture. First-time viewers consistently report it hits "
+             "harder than expected."),
+            ("How long is it?",
+             "122 minutes."),
+        ],
+    },
+    "halloween": {
+        "verdict": "The blueprint slasher, still the purest: one night, one masked shape, "
+            "a suburb full of unlocked doors, and Carpenter's synth score doing half the "
+            "killing. Made for almost nothing, terrifying forever - every October "
+            "franchise since is living in its shadow.",
+        "faqs": [
+            ("Is Michael Myers supernatural?",
+             "The film keeps it deliberately unexplained - pure shape, pure force. The "
+             "sequels explain; this one understands that explaining is the mistake."),
+            ("Is the 2018 Halloween connected?",
+             "Yes - the later films reboot from the original, ignoring every sequel in "
+             "between. This 1978 film is the only required viewing."),
+            ("How long is it?",
+             "A knife-clean 92 minutes."),
+        ],
+    },
+    "the-thing": {
+        "verdict": "Carpenter's Antarctic masterpiece: research station, shape-shifting "
+            "invader, and the total collapse of trust between men snowed in with it. "
+            "Practical effects that remain the peak of the form, an ending of perfect "
+            "despair, and the best 'who is still human?' game in film. A flop that became "
+            "a religion.",
+        "faqs": [
+            ("Is The Thing a remake?",
+             "It remakes 1951's The Thing from Another World, returning to the original "
+             "novella's shape-shifter - and outgrowing both predecessors."),
+            ("Why do fans revere the effects?",
+             "Rob Bottin's in-camera creature work - splitting faces, dogs, tables of "
+             "meat - predates CGI and has never been surpassed; every frame is a craftsman "
+             "at the top of a doomed art."),
+            ("How long is it?",
+             "109 minutes of paranoia."),
+        ],
+    },
+    "midsommar": {
+        "verdict": "The break-up horror bathed in daylight: grief, a toxic relationship "
+            "and a Swedish midsummer festival that flowers into ritual horror under a sun "
+            "that never sets. Aster makes dread from flowers and white linen - beautiful, "
+            "unhurried, and quietly one of the most upsetting films of its decade.",
+        "faqs": [
+            ("Is Midsommar as scary as Hereditary?",
+             "Differently - Hereditary is claustrophobic night-terror; Midsommar is "
+             "daylight dread, its horrors visible from far away and inevitable."),
+            ("Is there a director's cut?",
+             "Yes - Aster's preferred cut runs about 24 minutes longer, deepening the "
+             "relationship decay; the theatrical cut is the standard entry."),
+            ("How long is it?",
+             "147 minutes theatrically."),
+        ],
+    },
+    "jujutsu-kaisen": {
+        "verdict": "Modern shonen's darkest star: cursed spirits fed by human negativity, "
+            "a sorcerer school, and MAPPA's animation turning every fight into a "
+            "wet-bloodied ballet. Yuji Itadori swallowing a finger starts a story that "
+            "keeps choosing cruelty and craft in equal measure - the genre's current peak.",
+        "faqs": [
+            ("Is Jujutsu Kaisen finished?",
+             "No - the manga ran to its conclusion, while the anime continues adapting "
+             "with new seasons; the story it tells is complete on the page."),
+            ("Is it as gory as people say?",
+             "Yes - this is dark supernatural action with real violence and real deaths; "
+             "it earns its 16+ reputation."),
+            ("Where should I start?",
+             "Season one, episode one - the story is built to be watched in order."),
+        ],
+    },
+    "demon-slayer": {
+        "verdict": "The phenomenon that broke records: a boy joins the demon-slaying "
+            "corps to cure his sister, and ufotable's water-and-flame animation turned "
+            "each sword stroke into a national event. The Mugen Train arc alone made it "
+            "Japan's biggest film ever. Spectacle first, heart underneath, tears guaranteed.",
+        "faqs": [
+            ("Is Demon Slayer finished?",
+             "No - the manga completed its story, and the anime continues through the "
+             "final arcs; check current listings for where the adaptation stands."),
+            ("Is it good for younger viewers?",
+             "Older kids and teens - the demons and violence are real, though the series "
+             "is famously sincere rather than cruel."),
+            ("Do I start with the series or the film?",
+             "With season one - the record-breaking film lands mid-story and means nothing "
+             "without it."),
+        ],
+    },
+    "howls-moving-castle": {
+        "verdict": "Miyazaki's anti-war fairytale on legs: a hatmaker cursed into old age, "
+            "a wizard who is mostly birds, and a castle that struts across meadows "
+            "screaming with steam. Gorgeous, gentle, and stranger than its reputation - "
+            "Sophie's quiet courage is one of animation's great protagonists.",
+        "faqs": [
+            ("Is Howl's Moving Castle based on a book?",
+             "Yes - Diana Wynne Jones's 1986 novel; Miyazaki keeps the premise and takes "
+             "his own flight path with the war storyline."),
+            ("Do the Ghibli films need watching in order?",
+             "No - every film stands alone; this one pairs nicely with any rainy Sunday."),
+            ("How long is it?",
+             "119 minutes."),
+        ],
+    },
+    "grave-fireflies": {
+        "verdict": "The saddest film ever made, by common consent: two orphans scavenging "
+            "through the firebombed end of the Second World War, drawn with tenderness "
+            "and absolute honesty by Isao Takahata. Everyone should see it once; nobody "
+            "watches it twice lightly. Bring tissues, then sit quietly afterwards.",
+        "faqs": [
+            ("Is Grave of the Fireflies based on a true story?",
+             "It adapts Akiyuki Nosaka's semi-autobiographical short story - his own "
+             "experience of losing his sister in wartime Japan."),
+            ("Why is it paired with My Neighbour Totoro?",
+             "They were released together in 1988 as a double bill - light and shadow "
+             "from the same studio, a programming choice still discussed today."),
+            ("Is it suitable for children?",
+             "Mature children and up - the war's effects on children are its whole "
+             "subject; most viewers say teens and older."),
+        ],
+    },
+    "cowboy-bebop": {
+        "verdict": "The coolest anime ever aired: bounty hunters drifting between jazz "
+            "clubs and gunfights, tragedies nipping their heels. Twenty-six episodes of "
+            "genre-hopping style - noir, western, comedy - welded to a story about "
+            "runaways and the past that collects. See you, space cowboy.",
+        "faqs": [
+            ("Do I need to like anime to enjoy Cowboy Bebop?",
+             "No - it converts newcomers constantly; the jazz, the P.I. melancholy and "
+             "the episode-of-the-week freedom play like a great American TV series drawn "
+             "in ink."),
+            ("What order should I watch it in?",
+             "Broadcast order, roughly episode one onwards - the standalone adventures "
+             "slowly braid into the backstory."),
+            ("Is the Netflix live-action version worth it?",
+             "Fans largely prefer the animated original - it remains the definitive form."),
+        ],
+    },
+    "drishyam": {
+        "verdict": "The original that launched a thousand remakes: a Malayalam family man "
+            "with a cinema addiction commits the perfect cover-up to protect his daughter, "
+            "and Jeethu Joseph plays every move like chess while the police close in. "
+            "Razor-tight, humane, and one of Indian cinema's cleverest thrillers.",
+        "faqs": [
+            ("Is Drishyam the Malayalam original?",
+             "Yes - this is the 2013 Malayalam film with Mohanlal; its celebrated 2015 "
+             "Hindi remake with Ajay Devgn follows it closely, and both have sequels."),
+            ("What does 'Drishyam' mean?",
+             "Visuals or scenery - a nod to the hero's cinephilia, which becomes the "
+             "mechanism of his alibi."),
+            ("How long is it?",
+             "160 minutes of escalating pressure."),
+        ],
+    },
+    "gangs-of-wasseypur": {
+        "verdict": "Anurag Kashyap's generational gangster epic - coal-mine feuds, "
+            "elections, Bollywood quotes and betrayal across two families and five hours "
+            "of anarchic energy. Vulgar, hilarious, savage and ceaselessly alive: the "
+            "Indian crime saga that rewrote what mainstream Indian film could say.",
+        "faqs": [
+            ("Is Gangs of Wasseypur one film or two?",
+             "Two parts, released weeks apart in 2012, together telling one story across "
+             "generations - Part One sets the feud, Part Two collects every debt."),
+            ("Is it based on real events?",
+             "It fictionalises the real gang wars of the Wasseypur area of Dhanbad, "
+             "compressing decades of coal-mafia history into family saga."),
+            ("How long is it?",
+             "About 160 minutes per part - clear a weekend; it is a world, not a film."),
+        ],
+    },
+    "game-of-thrones": {
+        "verdict": "The phenomenon that redefined what TV could be - and then taught the "
+            "world's biggest lesson in how to end one. Seasons one to four remain "
+            "all-time television: politics, dragons, and nobody safe. The later descent "
+            "is real; the mountain it fell from is still worth climbing.",
+        "faqs": [
+            ("Is Game of Thrones worth starting despite the ending?",
+             "Most veterans say yes - the early seasons are among TV's finest, and the "
+             "show's cultural references run through everything. Go in knowing the final "
+             "season divides everyone."),
+            ("Is it based on books?",
+             "On George R. R. Martin's A Song of Ice and Fire; the show outpaced the "
+             "unfinished novels around its final seasons."),
+            ("How long is it?",
+             "Eight seasons, 73 episodes - a genuine commitment, and a rite of passage."),
+        ],
+    },
+    "chernobyl": {
+        "verdict": "Five hours of dread, done perfectly: the 1986 nuclear disaster played "
+            "as a horror story about lies - what it costs to lie, and what it costs to "
+            "hear the truth. Jared Harris anchors, the rooftop scenes burn in memory, "
+            "and 'what is the cost of lies?' is the century's best cold open. Haunting "
+            "and essential.",
+        "faqs": [
+            ("Is Chernobyl a true story?",
+             "It dramatises the real 1986 disaster and cleanup, compressed and "
+             "dramatised in places (the visible open-air radiation burns are an artistic "
+             "heightening) - the substance is documented history."),
+            ("Do I need to understand nuclear physics?",
+             "No - the show explains exactly as much as you need, through characters "
+             "demanding the same answers you would."),
+            ("How long is it?",
+             "Five episodes of about an hour. Watch it slowly; it lingers."),
+        ],
+    },
+    "the-wire": {
+        "verdict": "Television's great novel: a city - Baltimore - examined one "
+            "institution at a time, from the drug war up through the docks, city hall, "
+            "schools and press. Slow, patient, furious and ultimately the most complete "
+            "picture American TV ever painted. The first season hooks; the whole thing "
+            "changes how you see streets you have never walked.",
+        "faqs": [
+            ("Why do people say The Wire is the best show ever?",
+             "Because it treats a whole city as its protagonist - every season widens "
+             "the lens, and the writing trusts you with systems, not heroes. Its rate of "
+             "all-time lists speaks for itself."),
+            ("Do the seasons connect?",
+             "Yes - one continuing story across five seasons, each focused on a "
+             "different institution. Watch in order, give it three episodes to grip."),
+            ("How long is it?",
+             "Sixty episodes, about an hour each - the most rewarding long commitment "
+             "in the crime genre."),
+        ],
+    },
+    "the-host": {
+        "verdict": "Bong Joon-ho's monster movie with a family of losers at its heart: "
+            "a creature from the Han River, a snack-bar owner's daughter taken, and the "
+            "most dysfunctional rescue squad ever assembled. Scares, satire and tears "
+            "in one seamless package - proof monster films can be about something and "
+            "still be thrill rides.",
+        "faqs": [
+            ("Is The Host based on a true story?",
+             "Its premise satirises a real incident - a Seoul mortuary dumping formaldehyde "
+             "into the Han River - while the creature itself is pure invention."),
+            ("Is it scary or funny?",
+             "Both, expertly - the monster attacks are genuinely frightening and the "
+             "family comedy keeps breaking in. That tonal blend is Bong's signature."),
+            ("How long is it?",
+             "119 minutes."),
+        ],
+    },
 }
