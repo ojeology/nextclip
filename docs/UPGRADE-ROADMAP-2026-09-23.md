@@ -210,3 +210,8 @@ Goal: turn 847 stubs into articles. Median 153 → 600+ words; thin 85% → <5%.
 ## RELATED-LINKS UPGRADE (2026-09-24)
 
 - SHIPPED: movie pages "More like this" 3 -> 6 same-genre links, nearest-era deterministic order. ~2,150 extra internal links; whole vertical re-pinged via IndexNow. URL sets unchanged. Full enrichment schema audit clean: 376/376 FAQPage JSON-LD valid with exact question counts.
+
+## FUTURE-DATE FIX (2026-09-24)
+
+- SHIPPED: 14 Nollywood review pages carried future dates (2026-09-25..30) leaking into JSON-LD, visible text, section sitemaps and root sitemapindex. Engines distrust future lastmod - plausible contributor to Bing discovery stall (981). Clamped at emit: review datePublished, visible Reviewed-on, defensive sitemap clamp. Verified live: entertainment index lastmod now build-day, 0 future dates anywhere.
+- Re-ship lesson reinforced: ALWAYS fresh clone (stale clone lost content/ -> build fail; caught and re-cloned).
