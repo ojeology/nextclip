@@ -4265,7 +4265,7 @@ ENRICH = {
         ],
     },
     "finding-nemo": {
-        "verdict": "Pixar's ocean-bluent masterpiece: one clownfish father crossing an "
+        "verdict": "Pixar's ocean-crossing masterpiece: one clownfish father crossing an "
             "ocean, one forgettable fish holding the whole film together, and an opening "
             "ten minutes that still ambush parents everywhere. Gorgeous, funny and "
             "quietly about letting go - the studio near its untouchable peak.",
@@ -4739,6 +4739,527 @@ ENRICH = {
              "is R-rated throughout by choice."),
             ("How long is it?",
              "129 minutes."),
+        ],
+    },
+    # ---- film batch 11 (2026-09-24): 30 titles - cult classics, mega-TV, anime, world cinema ----
+    "clockwork-orange": {
+        "verdict": "Kubrick's most dangerous film: Beethoven, bowler hats and ultraviolence "
+            "as ballet, wrapped around a question societies still avoid - what is it worth "
+            "to cure a monster by turning him into a machine? Fifty-plus years on it "
+            "remains electric, repulsive and impossible to shake. Not for everyone; "
+            "unavoidable for cinema.",
+        "faqs": [
+            ("Why was A Clockwork Orange banned in the UK?",
+             "It was not officially banned - Kubrick himself withdrew it from British "
+             "release after death threats and copycat-crime moral panic, and it stayed "
+             "unavailable there until after his death."),
+            ("What is the strange slang?",
+             "Nadsat - an invented teen dialect mixing Russian and English, from Anthony "
+             "Burgess's novel; it makes you complicit in learning the violence's language."),
+            ("How long is it?",
+             "136 minutes."),
+        ],
+    },
+    "full-metal-jacket": {
+        "verdict": "Kubrick's Vietnam, in two half-films that make one great whole: a drill "
+            "sergeant who rebuilds men into killers, then the war itself as absurd, "
+            "claustrophobic geometry. The boot-camp hour is the most quoted acting "
+            "showcase ever filmed; the Hue City scenes are the quietest horror in the "
+            "war genre. The duality of man, indeed.",
+        "faqs": [
+            ("Is the drill sergeant real?",
+             "R. Lee Ermey was a real Marine drill instructor hired as advisor who talked "
+             "his way into the role - his improvised insults earned a Golden Globe "
+             "nomination."),
+            ("Why does the film feel like two movies?",
+             "Deliberate - boot camp dehumanises, Vietnam institutionalises; the structure "
+             "mirrors the soldier's journey from one machine-room to another."),
+            ("How long is it?",
+             "116 minutes."),
+        ],
+    },
+    "the-truman-show": {
+        "verdict": "The gentlest dystopia ever filmed: a man discovers his entire life is "
+            "a television set, and Jim Carrey plays the awakening with heartbreaking "
+            "sincerity. Prescient about surveillance and reality TV before either "
+            "swallowed the world - and somehow still sunny about the human need to walk "
+            "through the exit. 'In case I don't see you...'",
+        "faqs": [
+            ("Was The Truman Show ahead of its time?",
+             "Famously so - written in the mid-nineties, it anticipated reality TV, "
+             "livestreamed lives and curated identity; academics coined 'Truman Show "
+             "delusion' after it."),
+            ("Is it a comedy or a drama?",
+             "Both, in perfect balance - Carrey's comic timing sells the set-up while "
+             "the story lands as sincere drama about free will."),
+            ("How long is it?",
+             "99 minutes."),
+        ],
+    },
+    "the-princess-bride": {
+        "verdict": "The swashbuckling fairy tale that perfected the form by making fun of "
+            "it: fencing, revenge, giants, miracles and true love, all delivered with "
+            "quote-perfect wit. Thirty-nine years of endearment, half a century of "
+            "quotability - 'inconceivable' - and still the ultimate family film that "
+            "adults love more. As you wish.",
+        "faqs": [
+            ("Is The Princess Bride a kids' film?",
+             "Yes and no by design - William Goldman's script plays fairy tale for "
+             "children and satire for adults, which is why it never ages."),
+            ("Is it based on a book?",
+             "On Goldman's own 1973 novel - he adapted it himself, keeping the "
+             "grandfather-frame and the best lines."),
+            ("How long is it?",
+             "98 minutes."),
+        ],
+    },
+    "do-the-right-thing": {
+        "verdict": "Spike Lee's hottest day and sharpest film: one block in Bed-Stuy, one "
+            "pizzeria, and pressure that builds all day toward a night everyone will "
+            "argue about forever. Vibrant, funny, furious and still the clearest lens "
+            "on American racial politics cinema has produced. The heat you feel is the "
+            "point.",
+        "faqs": [
+            ("Is Do the Right Thing based on true events?",
+             "It is fiction, but drawn from real tensions - the 1986 Howard Beach attack "
+             "and years of Brooklyn racial incidents feed its background."),
+            ("Who does 'the right thing' refer to?",
+             "The film deliberately refuses to say - every character's choice is "
+             "defensible and damning, which is why debates outlived the century."),
+            ("Is it considered a classic?",
+             "Fully - it competed at Cannes, earned an Original Screenplay Oscar "
+             "nomination, and joined the US National Film Registry in 1999."),
+        ],
+    },
+    "the-iron-giant": {
+        "verdict": "The great box-office failure that became a sacred text: a boy, a "
+            "giant metal alien, and a Cold War parable about choosing what you are "
+            "instead of what you are built for. Brad Bird's debut is gorgeous, funny "
+            "and armed with one of animation's great endings. 'Superman.' Bring "
+            "tissues, again.",
+        "faqs": [
+            ("Why was The Iron Giant a flop?",
+             "1999 release with almost no marketing support - Warner Bros barely opened "
+             "it; reputation rebuilt it over home video and TV into a beloved classic."),
+            ("Is it based on a book?",
+             "Loosely on Ted Hughes's 1968 children's novel The Iron Man - the Cold War "
+             "setting and gun-metal design are the film's own."),
+            ("How long is it?",
+             "86 minutes."),
+        ],
+    },
+    "top-gun-1986": {
+        "verdict": "Tony Scott's sunlight-and-jetfuel adrenaline machine: sunglasses, "
+            "beach volleyball, and F-14s screamed into myth by the greatest fighter-pilot "
+            "photography ever shot. The plot is a delivery system for speed - and 'Take "
+            "My Breath Away' did the rest. Thirty-six years later the sequel proved the "
+            "myth still had altitude.",
+        "faqs": [
+            ("Did Top Gun win an Oscar?",
+             "Yes - 'Take My Breath Away' won Best Original Song at the 1987 ceremony."),
+            ("Do I need it before Maverick (2022)?",
+             "Strongly - Maverick is a direct sequel that runs on the original's "
+             "relationships and ghosts; watch the 1986 film first."),
+            ("How long is it?",
+             "105 minutes."),
+        ],
+    },
+    "drive": {
+        "verdict": "The coolest film of the 2010s: Gosling's stunt driver says almost "
+            "nothing, the synth score does the talking, and Refn shoots LA at night "
+            "like a neon sacrament - then detonates violence you do not see coming. "
+            "Slow-burn romance, elevator carnage, an icon born. 'A real hero.'",
+        "faqs": [
+            ("Is Drive a quiet film?",
+             "Famously - long silences, synthwave soundtrack, sparse dialogue; the "
+             "violence erupts in short shocking bursts. The rhythm is the aesthetic."),
+            ("Is it based on a book?",
+             "On James Sallis's 2005 novel; Refn kept the driver's laconic code and "
+             "reimagined the rest."),
+            ("How long is it?",
+             "100 minutes."),
+        ],
+    },
+    "the-notebook": {
+        "verdict": "The weepie that defined the genre for a generation: a summer romance, "
+            "a class divide, and a devotion that outlasts memory itself. Gosling and "
+            "McAdams' chemistry - stormy on and off screen - makes the old-fashioned "
+            "machinery genuinely move. Cynics arrive, sobers Leave. It works.",
+        "faqs": [
+            ("Is The Notebook based on a book?",
+             "On Nicholas Sparks's 1996 debut novel - his first and still his most "
+             "beloved adaptation."),
+            ("Why is the rain scene famous?",
+             "The dock reunion in the storm became the romance blueprint of the 2000s - "
+             "and the couple's real-life off-screen relationship added legend to it."),
+            ("How long is it?",
+             "123 minutes."),
+        ],
+    },
+    "bourne-identity": {
+        "verdict": "The spy thriller that rewired the genre: a man fished from the sea "
+            "with amnesia, deadly skills and no name, hunted across Europe while "
+            "reassembling himself. Doug Liman's grounded, handheld kineticism plus "
+            "Damon's wounded intelligence killed the martini era overnight. The "
+            "blueprint every action franchise studied after.",
+        "faqs": [
+            ("Is The Bourne Identity based on a book?",
+             "On Robert Ludlum's 1980 novel - the film keeps the amnesiac-assassin core "
+             "and updates the Cold War frame to post-9/11 Europe."),
+            ("Do the sequels keep the quality?",
+             "The next two (Supremacy, Ultimatum, with Paul Greengrass) are widely rated "
+             "equal or better - the trilogy is complete at three; later entries vary."),
+            ("How long is it?",
+             "119 minutes."),
+        ],
+    },
+    "the-rock": {
+        "verdict": "Michael Bay's best film, by wide consent: a chemical-weapons siege of "
+            "Alcatraz, Sean Connery having the time of his life as a captured spy, "
+            "Nicolas Cage twitching brilliantly through the flames. Peaks of pure "
+            "nineties action craft - the car chase, the shower-room ambush - and a "
+            "buddy chemistry for the ages. A spectacle with a soul.",
+        "faqs": [
+            ("Is The Rock based on a true story?",
+             "No - the conspiracy backstory (Connery's imprisoned agent) is pure "
+             "invention, though Alcatraz's real history is woven in lovingly."),
+            ("Why is Connery's character in The Rock so iconic?",
+             "A lifetime-British-legend playing an American secret forgotten in prison - "
+             "the film treats him as the most dangerous man alive, and he plays it as "
+             "pure amusement."),
+            ("How long is it?",
+             "127 minutes."),
+        ],
+    },
+    "die-hard-3": {
+        "verdict": "The franchise's comeback: Simon says, and New York pays - a "
+            "phone-book bomber forces McClane and a foul-mouthed shop owner (Samuel L. "
+            "Jackson) through riddles across the city. McTiernan returns and finds the "
+            "first film's wit again; the taxi chase and the aqueduct run are top-drawer "
+            "McClane. The best of the sequels, many say.",
+        "faqs": [
+            ("Do I need the first two Die Hard films?",
+             "Yes - the villain is direct revenge for the first film's events, and the "
+             "revelation lands best if you know it."),
+            ("Why is it called With a Vengeance?",
+             "Because it is - Simon Gruber's entire game is payback for the tower, "
+             "delivered as a city-sized riddle."),
+            ("How long is it?",
+             "128 minutes."),
+        ],
+    },
+    "x-men-days-of-future-past": {
+        "verdict": "The X-Men's high-water mark: a dark future, a mind sent into the past, "
+            "and two generations of mutants in one film - Stewart and McKellen with "
+            "McAvoy and Fassbender, Wolverine bridging them. Big ideas, big set pieces, "
+            "Quicksilver's kitchen scene alone rewrote superhero cinema. The saga's "
+            "best since X2.",
+        "faqs": [
+            ("Do I need to see the earlier X-Men films first?",
+             "Ideally X-Men (2000), X2 and First Class - the time-travel premise pays "
+             "off decades of continuity."),
+            ("What is the Rogue Cut?",
+             "An extended version restoring Rogue's deleted storyline (about 17 minutes "
+             "more) - fans debate which cut is better; the theatrical version is the "
+             "standard edit."),
+            ("How long is it?",
+             "131 minutes theatrically."),
+        ],
+    },
+    "up": {
+        "verdict": "Pixar's most lopsided masterpiece: four minutes of married life that "
+            "reduce whole cinemas to tears, then a house flown by balloons into an "
+            "adventure about grief, patience and saying yes to life again. Dug the dog "
+            "is perfect, the principals are perfect, the craft is Pixar at full power. "
+            "Adventure is out there - so is this.",
+        "faqs": [
+            ("Did Up win the Oscar?",
+             "Yes - Best Animated Feature and Best Original Score at the 2010 ceremony, "
+             "plus nominations including Best Picture."),
+            ("Is the opening too sad for children?",
+             "The Carl-and-Ellie montage is the famous tearjerker; children feel it and "
+             "understand it - most families call it essential, not excessive."),
+            ("How long is it?",
+             "96 minutes."),
+        ],
+    },
+    "coraline": {
+        "verdict": "The stop-motion door to the other mother: Henry Selick turns Neil "
+            "Gaiman's novella into handmade nightmare - button eyes, a too-perfect "
+            "mirror world and dread stitched into every frame. Gorgeous, creepy and "
+            "courageous enough to trust children with real fear. The cult classic that "
+            "keeps finding new generations.",
+        "faqs": [
+            ("Is Coraline too scary for kids?",
+             "For very young ones, yes - it is a genuine nightmare vehicle; for older "
+             "children it is a rite of passage, beloved by the brave."),
+            ("Is it based on a book?",
+             "On Neil Gaiman's 2002 novella, adapted by director Henry Selick (The "
+             "Nightmare Before Christmas)."),
+            ("Is there a sequel?",
+             "No sequel exists - Gaiman has resisted direct continuations; the film "
+             "stands as a complete world."),
+        ],
+    },
+    "castle-in-sky": {
+        "verdict": "The film that launched Studio Ghibli: Miyazaki's sky-pirate adventure "
+            "of a floating castle, a crystal pendant and two kids outpacing an entire "
+            "armada. Pure adventure with Ghibli's gentleness underneath - robots, "
+            "clouds and a final ten minutes of pure wonder. Where the whole studio's "
+            "magic began.",
+        "faqs": [
+            ("Is Castle in the Sky a Ghibli film?",
+             "Yes - the studio's very first release (1986), which makes its quality all "
+             "the more remarkable."),
+            ("Is it connected to other Miyazaki films?",
+             "No - completely standalone; the shared DNA is tone and wonder, not story."),
+            ("How long is it?",
+             "124 minutes."),
+        ],
+    },
+    "the-wild-robot": {
+        "verdict": "The 2024 surprise that melted everyone: a shipwrecked service robot "
+            "adopts a gosling on a wild island, and DreamWorks paints it in gorgeous "
+            "storybook brushstrokes. Funny, tender and genuinely wise about "
+            "parenthood - 'kindness can be a survival skill'. The rare modern family "
+            "film adults recommend to each other.",
+        "faqs": [
+            ("Is The Wild Robot based on a book?",
+             "On Peter Brown's 2016 illustrated novel - the film keeps the Roz-Brightbill "
+             "heart and adds a fuller island cast."),
+            ("Did it win the Oscar?",
+             "It was nominated for Best Animated Feature at the 2025 ceremony (Flow took "
+             "the award) - and won hearts regardless."),
+            ("How long is it?",
+             "102 minutes."),
+        ],
+    },
+    "friends": {
+        "verdict": "The comfort-watch colossus: six twenty-somethings in Greenwich Village, "
+            "a coffee house, and ten seasons of will-they-won't-they that became the "
+            "shared language of sitcoms. The jokes are furniture in half the world's "
+            "homes - 'PIVOT', 'we were on a break' - and the warmth has not leaked out "
+            "of the episodes yet. Streaming's great re-discovery.",
+        "faqs": [
+            ("Is Friends still worth watching?",
+             "Its numbers say yes - decades after it ended it remains one of the most "
+             "watched series on streaming, and new viewers keep adopting it."),
+            ("How many seasons are there?",
+             "Ten seasons, 236 episodes, airing 1994 to 2004 - plus the 2021 reunion "
+             "special where the cast returned as themselves."),
+            ("Do I start at season one?",
+             "Yes - it is an ensemble sitcom built to be watched in order, and the "
+             "relationships only compound."),
+        ],
+    },
+    "better-call-saul": {
+        "verdict": "The prequel that outgrew its source: Jimmy McGill's slow, tragic "
+            "slouch toward becoming Saul Goodman, told with Breaking Bad's precision "
+            "and a heartbreak all its own. Bob Odenkirk and Rhea Seehorn give the "
+            "prestige-TV decade its finest performances. The rare spin-off that "
+            "argues - successfully - it was the point all along.",
+        "faqs": [
+            ("Do I need Breaking Bad first?",
+             "Strongly recommended - it is a direct prequel, and every shadow (Gus, the "
+             "cartel, Mike's line of work) lands harder for knowing where it leads."),
+            ("How many seasons?",
+             "Six seasons, 2015 to 2022, widely acclaimed as one of the best-reviewed "
+             "dramas of its era."),
+            ("Is it as violent as Breaking Bad?",
+             "It is quieter and more legal-drama-driven early on - the tension is "
+             "moral rather than explosive, until it isn't."),
+        ],
+    },
+    "black-mirror": {
+        "verdict": "The anthology that watches us back: standalone near-futures where "
+            "technology strips a little more humanity away, each episode a fresh "
+            "glass pane cracking. Uneven by nature, occasionally masterpiece ('San "
+            "Junipero', 'White Christmas') and always conversation-starting. The "
+            "sci-fi mirror of its decade.",
+        "faqs": [
+            ("Do Black Mirror episodes connect?",
+             "Mostly standalone by design - tiny Easter eggs and shared brands wink "
+             "across episodes, but you can watch any single one cold."),
+            ("Which episode should I start with?",
+             "Fan consensus starts newcomers on 'San Junipero' (warm) or 'Fifteen "
+             "Million Merits' (dark) depending on taste - anthology means no wrong door."),
+            ("Is it all bleak?",
+             "Predominantly cautionary, with celebrated exceptions - 'San Junipero' is "
+             "the famous happy one."),
+        ],
+    },
+    "dark": {
+        "verdict": "The German time-twister that out-Netflixed everything: four families, "
+            "one missing child, and a cave that folds 1953, 1986, 2019 and beyond into "
+            "a single knot. Demanding, meticulously plotted and visually stunning - "
+            "the rare puzzle-box that actually solves. Pay attention; it rewards you "
+            "like nothing else.",
+        "faqs": [
+            ("Is Dark hard to follow?",
+             "Gloriously yes - four time periods and four families; watch with the "
+             "show's own family-tree diagram handy and never on a phone screen."),
+            ("Is Dark subtitled or dubbed?",
+             "It is a German production - subtitled viewing is the widely preferred way; "
+             "dubs exist including English."),
+            ("How many seasons?",
+             "Three seasons, 2017 to 2020, ending on a planned, complete conclusion."),
+        ],
+    },
+    "the-sopranos": {
+        "verdict": "The big bang of prestige television: a New Jersey mob boss with "
+            "panic attacks walks into a therapist's office, and TV grows up. James "
+            "Gandolfini's performance remains the medium's gold standard - tender, "
+            "monstrous, human. Twenty-five years of great drama live in its shadow. "
+            "Woke up this morning, got yourself a show.",
+        "faqs": [
+            ("Does The Sopranos hold up today?",
+             "Overwhelmingly - critics regularly rank it the greatest TV series ever "
+             "made, and the family-psychology core has not aged a day."),
+            ("What about the famous ending?",
+             "The cut-to-black at Holsten's divided the planet in 2007 and still "
+             "generates essays - intentionally ambiguous, defended by its own creator."),
+            ("How many seasons?",
+             "Six seasons, 86 episodes, 1999 to 2007."),
+        ],
+    },
+    "dragon-ball-z": {
+        "verdict": "The series that globalised shonen: Saiyan invasions, namekian legends, "
+            "screaming power-ups and friendships forged in orbital combat. Nearly 300 "
+            "episodes of escalating spectacle that raised a generation on four "
+            "continents. Slow by modern pacing, monumental by influence - the bedrock "
+            "of anime's worldwide era.",
+        "faqs": [
+            ("Do I watch Dragon Ball before DBZ?",
+             "Ideally - the original series establishes Goku's childhood and friends; "
+             "DBZ starts with him grown. Many jump straight in and backfill later."),
+            ("Why is DBZ so slow?",
+             "The anime was produced against an ongoing manga, stretching moments into "
+             "episodes - the Kai recut condenses it significantly if pacing frustrates."),
+            ("How long is it?",
+             "291 episodes across roughly a decade of airing - a marathon, and a "
+             "foundational one."),
+        ],
+    },
+    "frieren": {
+        "verdict": "The fantasy anime about after the adventure: an elf mage who outlived "
+            "her party sets out to understand the humans she loved too late. Gentle, "
+            "gorgeous and quietly devastating about time, memory and small kindnesses "
+            "- it became one of the highest-rated series of its decade almost "
+            "overnight. For everyone who ever finished something and felt the silence.",
+        "faqs": [
+            ("Why is Frieren rated so highly?",
+             "It trades shonen combat-rush for reflection - critics and audiences "
+             "placed it among the highest-rated anime ever within a year of airing."),
+            ("Do I need fantasy anime experience?",
+             "None - it assumes nothing and teaches its world as it goes; newcomers "
+             "and veterans both start at episode one."),
+            ("How long is it?",
+             "Season one ran 28 episodes, with the story continuing in new seasons."),
+        ],
+    },
+    "chainsaw-man": {
+        "verdict": "Devils born from fear, a boy with a chainsaw for a heart, and MAPPA "
+            "giving the whole thing cinematic grime and glory. Denji's starved, honest "
+            "desires make him shonen's most human protagonist; the tone swings from "
+            "stupid-funny to soul-crushing without warning. The most exciting new-gen "
+            "series of its moment.",
+        "faqs": [
+            ("Is Chainsaw Man finished?",
+             "No - the manga continues its second part, and the anime adapts onward; "
+             "the 2025 Reze film continues the story cinematically."),
+            ("Is it as violent as people say?",
+             "Yes - gore is the genre furniture, but the real shock is how much "
+             "feeling hides under the blood."),
+            ("Where should I start?",
+             "Season one, in order - the Reze arc lands after it."),
+        ],
+    },
+    "the-handmaiden": {
+        "verdict": "Park Chan-wook's erotic con-artist masterpiece: 1930s Korea under "
+            "Japanese rule, a pickpocket hired as a maid, and a plot that turns over "
+            "on itself three times with opulent, wicked grace. Sumptuous, transgressive "
+            "and perfectly constructed - the twists are the jewellery. Adults only, "
+            "and worth every minute.",
+        "faqs": [
+            ("Is The Handmaiden based on a book?",
+             "On Sarah Waters's Victorian novel Fingersmith, transplanted to "
+             "Japanese-occupied Korea - a relocation that gives it its own politics "
+             "and texture."),
+            ("Why is it rated so highly?",
+             "It swept critics' lists on release, won the BAFTA for best film not in "
+             "the English language, and is widely called Park's most complete film."),
+            ("How long is it?",
+             "145 minutes."),
+        ],
+    },
+    "the-wailing": {
+        "verdict": "Na Hong-jin's six-year build of pure dread: a village sickness, a "
+            "policeman whose family falls ill, and a shaman's ritual that may save or "
+            "damn them. Two and a half hours of escalating, unexplainable horror - "
+            "the most debated ending in Korean cinema. Not a scare machine; a "
+            "haunting.",
+        "faqs": [
+            ("Is The Wailing scarier than typical Korean horror?",
+             "It trades jump-scares for accumulating dread - most viewers call it one "
+             "of the most unsettling films of its decade rather than a gorefest."),
+            ("Does the ending explain everything?",
+             "No - it is famously debated; theories flourish precisely because the "
+             "film withholds a final verdict."),
+            ("How long is it?",
+             "156 minutes."),
+        ],
+    },
+    "baahubali-2": {
+        "verdict": "Rajamouli's mythic answer to cinema's biggest 'why': how Kattappa killed "
+            "Baahubali - and the revelation detonates exactly as the nation demanded. "
+            "Larger-than-life battles, impossible stunts, a mother's oath and a "
+            "coronation: Indian myth-making at full scale, and among the highest-"
+            "grossing Indian films ever made. See part one first; then this rewards "
+            "everything.",
+        "faqs": [
+            ("Do I need Baahubali: The Beginning first?",
+             "Absolutely - part two is the second half of one story, and its power is "
+             "answering part one's cliffhanger."),
+            ("Why is 'Why did Kattappa kill Baahubali' so famous?",
+             "The first film ended on that single unanswered question and an entire "
+             "country spent two years theorising - a genuine national conversation."),
+            ("How long is it?",
+             "167 minutes of spectacle."),
+        ],
+    },
+    "bajrangi-bhaijaan": {
+        "verdict": "The Salman Khan film with a soul the size of a subcontinent: a "
+            "devout simpleton smuggles a mute Pakistani girl home across the border, "
+            "and the road movie becomes a case for human decency over every division "
+            "on the map. Funny, shamelessly moving and carried by the little girl's "
+            "silence. The feel-good giant of modern Bollywood.",
+        "faqs": [
+            ("Is Bajrangi Bhaijaan based on a true story?",
+             "No - it is fiction, though it channels real India-Pakistan border "
+             "tragedies and custody cases that give it its charge."),
+            ("Why is it called Bhaijaan?",
+             "'Bhaijaan' is Salman Khan's real-world nickname and his character's "
+             "honorific - the film is built entirely around his persona's warmth."),
+            ("How long is it?",
+             "159 minutes."),
+        ],
+    },
+    "93-days": {
+        "verdict": "The true story of when Lagos stopped an epidemic: Patrick Sawyer "
+            "lands at Murtala Muhammed carrying Ebola, and the doctors, nurses and "
+            "officials of First Consultant Hospital hold the line for the ninety-three "
+            "days that kept Nigeria safe. Tense, respectful and rooted in real "
+            "sacrifice - Nigerian thriller craft serving a genuinely important memory.",
+        "faqs": [
+            ("Is 93 Days based on a true story?",
+             "Yes - the real 2014 Ebola emergency in Lagos, when the virus arrived via "
+             "an infected traveller and was contained by contact-tracing and the staff "
+             "who paid the highest price."),
+            ("Where is it set?",
+             "Lagos, Nigeria - largely at the real First Consultant Hospital in Obalende, "
+             "the outbreak's ground zero."),
+            ("How long is it?",
+             "118 minutes."),
         ],
     },
 }
