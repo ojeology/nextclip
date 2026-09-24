@@ -250,3 +250,9 @@ Goal: turn 847 stubs into articles. Median 153 → 600+ words; thin 85% → <5%.
 - SHIPPED: 3 pages, money desk now 13 URLs. quantlab-explained (flagship: the full pipeline from the repos own record - 95 crypto runs R001-R095, 9 forex F001-F009, strategy freeze 2026-08-09, blind validation T1-T34, exit-anchor retraction PF~1.03, MR-only small-account verdict with ~37 pct realised max DD, December 2026 year-end re-validation protocol), backtesting-101 (seven ways a backtest lies, each with a public-lab example including the VWAP lab in-sample +262 vs out-of-sample +18 gap), expectancy-calculator (CSP-safe client-side JS: expectancy per trade, breakeven win rate, dollar terms).
 - All claims sourced to the public READMEs (QUANTLAB, mean-reversion-vwap-lab); research numbers framed as logged historical results, never promises. Existing sections zero URL changes; IndexNow 200; commit 2ca78df757d + roadmap b4d1175823c.
 - Next for money: pip-value calculator, compounding/drawdown tool, research notes from the VWAP lab journal.
+
+## MONEY PHASE 3 (2026-09-24)
+
+- SHIPPED: trade-types-explained (directions/markets/orders/styles + trade lifecycle) and technical-indicators-explained (four families, echoes-vs-evidence rule, divergence caveats, cheat-sheet table, both archetypes anchored to the public labs). Money desk: 13 -> 15 URLs. Existing sections zero URL changes; IndexNow 200.
+- Money desk inventory now: hub, position-size-calculator, expectancy-calculator, position-sizing-101, backtesting-101, quantlab-explained, trade-types-explained, technical-indicators-explained, 7 legal pages.
+- Next for money: pip-value calculator, compounding/drawdown tool, VWAP-lab journal article, chart patterns page.
