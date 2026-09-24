@@ -4245,4 +4245,500 @@ ENRICH = {
              "119 minutes."),
         ],
     },
+    # ---- film batch 10 (2026-09-24): 30 titles - family animation, action staples, smart sci-fi ----
+    "shrek": {
+        "verdict": "The fairy tale that mocked fairy tales and outlived them all: an ogre, "
+            "a talking donkey and a screenplay with something for every age in the room. "
+            "Mike Myers' accent alone is a comedy instrument. Two decades of sequels and "
+            "memes later, the original's jokes still land - which is more than the "
+            "fairy-tales it skewered can say.",
+        "faqs": [
+            ("Is Shrek based on a book?",
+             "Loosely on William Steig's 1990 picture book Shrek! - the film keeps the "
+             "grumpy ogre and invents nearly everything else, including the entire tone."),
+            ("Did Shrek win an Oscar?",
+             "Yes - the first ever Best Animated Feature at the 2002 ceremony, beating "
+             "both Monsters, Inc. and Pixar's own hopes that year."),
+            ("Is it suitable for young kids?",
+             "Yes, with a few innuendos aimed over their heads - the joke design is "
+             "two-tier by intent."),
+        ],
+    },
+    "finding-nemo": {
+        "verdict": "Pixar's ocean-bluent masterpiece: one clownfish father crossing an "
+            "ocean, one forgettable fish holding the whole film together, and an opening "
+            "ten minutes that still ambush parents everywhere. Gorgeous, funny and "
+            "quietly about letting go - the studio near its untouchable peak.",
+        "faqs": [
+            ("Did Finding Nemo win the Oscar?",
+             "Yes - Best Animated Feature at the 2004 ceremony, Pixar's second win in "
+             "the category's history."),
+            ("Is the sequel needed?",
+             "Finding Dory (2016) is a warm continuation centred on Dory - the original "
+             "stands perfectly alone."),
+            ("Is the opening too sad for kids?",
+             "It is the famous warning: the first minutes involve loss, handled directly. "
+             "Most families survive it and treasure the film forever after."),
+        ],
+    },
+    "the-incredibles": {
+        "verdict": "The superhero film that out-thought the genre by making it a midlife "
+            "crisis: a family of powers in witness protection, dying of normality. Brad "
+            "Bird's action choreography still sings, and underneath the gags is a real "
+            "argument about talent, purpose and family dinner. Cake, and who deserves it.",
+        "faqs": [
+            ("Is The Incredibles a Pixar film about Marvel-style heroes?",
+             "Original characters - not Marvel - though it lovingly riffs on the entire "
+             "superhero tradition while telling its own story."),
+            ("Did it win the Oscar?",
+             "Yes - Best Animated Feature at the 2005 ceremony, plus Sound Editing."),
+            ("Is the sequel worth watching?",
+             "Incredibles 2 (2018) is a strong continuation - the original remains the "
+             "entry point and the classic."),
+        ],
+    },
+    "ratatouille": {
+        "verdict": "The food film for people who think with their hearts: a rat with a "
+            "chef's soul pilots a garbage boy through Paris kitchens, and the result is "
+            "Pixar's most grown-up pleasure - about taste, critics and who is allowed "
+            "to create. The final-act food flashback remains an all-timer of pure cinema.",
+        "faqs": [
+            ("Did Ratatouille win an Oscar?",
+             "Yes - Best Animated Feature at the 2008 ceremony."),
+            ("Is it based on a book?",
+             "No - an original screenplay; Parisian kitchens and chef culture were "
+             "researched extensively for it."),
+            ("What is 'Anyone can cook' really about?",
+             "The film's whole thesis: talent comes from unexpected places, and the "
+             "critic's job is to recognise it - a defence of artists disguised as a "
+             "comedy about a rat."),
+        ],
+    },
+    "frozen": {
+        "verdict": "The snowstorm that swallowed pop culture: two sisters, one ice curse, "
+            "and 'Let It Go' redrawing the Disney princess playbook. Underneath the "
+            "phenomenon is a genuinely subversive story - true love turns out not to be "
+            "the kind songs promised. Kids wore it out; parents secretly admired the craft.",
+        "faqs": [
+            ("Did Frozen win Oscars?",
+             "Yes - two at the 2014 ceremony: Best Animated Feature and Best Original "
+             "Song for 'Let It Go'."),
+            ("Is Frozen based on a fairy tale?",
+             "Loosely on Hans Christian Andersen's The Snow Queen - the sister story is "
+             "Disney's own invention."),
+            ("Is the sequel worth it?",
+             "Frozen II (2019) goes bigger and stranger - a worthy continuation once "
+             "the first has done its work."),
+        ],
+    },
+    "tangled": {
+        "verdict": "The Rapunzel film that quietly reignited Disney's animation: lantern "
+            "scene alone justifies the ticket, the chameleon steals every scene he is "
+            "in, and the humour has real snap. Arriving between the studio's wilder "
+            "experiments, it is the polished crowd-pleaser that set up the modern renaissance.",
+        "faqs": [
+            ("Is Tangled the same story as Frozen's team?",
+             "Different film - but it was the proving ground for the modern Disney "
+             "revival that Frozen completed."),
+            ("Why was it named Tangled, not Rapunzel?",
+             "A marketing pivot away from 'princess' branding of that era - and a joke "
+             "the film itself acknowledges."),
+            ("How long is it?",
+             "100 minutes."),
+        ],
+    },
+    "encanto": {
+        "verdict": "The family-magic musical that turned 'We Don't Talk About Bruno' into "
+            "a household weather system: a Colombian family where every gift matters "
+            "except the one girl without one. Generational-pressure themes wrapped in "
+            "Lin-Manuel Miranda's earworms - and the loudest kitchen sing-along of the decade.",
+        "faqs": [
+            ("Did Encanto win an Oscar?",
+             "Yes - Best Animated Feature at the 2022 ceremony."),
+            ("What is the song everyone knows?",
+             "'We Don't Talk About Bruno' - it reached number one on the Billboard Hot "
+             "100, a first for a Disney song in decades."),
+            ("What is the gift metaphor about?",
+             "Family roles, inherited expectations and the pressure of being 'the gifted "
+             "one' - the film's core is about being valued for existing, not achieving."),
+        ],
+    },
+    "wicked": {
+        "verdict": "The stage phenomenon finally on film, and the staging is the point: "
+            "Oz before Dorothy, told through the green girl and the golden one. Erivo "
+            "and Grande sing the roof off, Jon Chu shoots spectacle like a musical "
+            "lover, and 'Defying Gravity' earns its place in the sky. Part one of two - "
+            "plan accordingly.",
+        "faqs": [
+            ("Do I need to know The Wizard of Oz or the stage show?",
+             "Neither - the film assumes Oz's outline and rebuilds everything else; "
+             "stage fans get the bonus of hearing the score done full-orchestra."),
+            ("Is it the whole musical?",
+             "No - it adapts Act One of the stage show; Part Two completes the story "
+             "the following year."),
+            ("How long is it?",
+             "160 minutes, Interval included."),
+        ],
+    },
+    "titanic": {
+        "verdict": "The blockbuster that married spectacle to melodrama and ruled the "
+            "world: James Cameron's ship, Leonardo's gaze, and a love story placed "
+            "directly in the path of history. Long, swooning, technically astonishing - "
+            "and the ending debate has fuelled dinner tables for decades. The last "
+            "great old-school epic.",
+        "faqs": [
+            ("Did Titanic win Best Picture?",
+             "Yes - eleven Academy Awards at the 1998 ceremony, tying the all-time record, "
+             "including Best Director for Cameron."),
+            ("Is the door scene physically accurate?",
+             "The film says the space fit one; the internet has run the buoyancy maths "
+             "ever since. Cameron has weighed in repeatedly - the debate is the legacy."),
+            ("How long is it?",
+             "195 minutes - an event, then and now."),
+        ],
+    },
+    "gladiator-ii": {
+        "verdict": "Ridley Scott returns to the arena sixteen years later: Rome under "
+            "twin corrupt emperors, a young hero with Maximus's old anger, and set "
+            "pieces - rhino included - built at full imperial scale. Not the original's "
+            "thunder, but a proper Roman epic with DenzelWashington relishing every "
+            "venal minute.",
+        "faqs": [
+            ("Do I need to see Gladiator (2000) first?",
+             "It helps deeply - the sequel's whole meaning runs on what the first film "
+             "built and buried."),
+            ("Who does Denzel Washington play?",
+             "Macrinus, a former-slave-turned-powerbroker who owns gladiators and plays "
+             "Rome's long game - the film's most watchable predator."),
+            ("How long is it?",
+             "148 minutes."),
+        ],
+    },
+    "mad-max": {
+        "verdict": "The scrappy 1979 original that started a myth: an Australian highway "
+            "cop, a chrome gang, and the birth of George Miller's wasteland. Rougher and "
+            "smaller than Fury Road - and fascinating precisely because you can watch "
+            "the whole legend hatch here.",
+        "faqs": [
+            ("Do I need to watch Mad Max before Fury Road?",
+             "No - Fury Road stands alone. But the original is where the vocabulary "
+             "(the Interceptor, the recklessness) was invented."),
+            ("Why does the dub sound odd to some viewers?",
+             "The original Australian voices were partly redubbed with American accents "
+             "for early international releases - modern releases restore the original track."),
+            ("How long is it?",
+             "A lean 88 minutes."),
+        ],
+    },
+    "die-hard-2": {
+        "verdict": "The sequels-before-sequels-were-cool entry: same cop, worse night, "
+            "an airport seized on Christmas Eve. It cannot match the tower's claustrophobia, "
+            "but the snowmobile chase and the runway fire landing keep the franchise "
+            "honest. Solid Yippee-ki-yay continuation, no more, no less.",
+        "faqs": [
+            ("Do I need to see the first Die Hard?",
+             "Yes - the whole premise leans on John McClane's luck being legendary and "
+             "his marriage being on the line."),
+            ("Is it as good as the original?",
+             "It trades the tower's intimacy for scale - most fans rank it below the "
+             "first and third films, above what follows."),
+            ("How long is it?",
+             "124 minutes."),
+        ],
+    },
+    "speed": {
+        "verdict": "The purest high-concept thriller of the nineties: a bomb on a bus, "
+            "armed at fifty miles per hour, and a cop with a bad knee riding shotgun. "
+            "Jan de Bont stages gridlock as opera; Reeves and Bullock generate real "
+            "chemistry at illegal velocities. The elevator prelude alone outclasses "
+            "most whole films.",
+        "faqs": [
+            ("What is the premise of Speed?",
+             "A bomber rigs a city bus to explode if it drops below 50 mph - and a "
+             "young LAPD officer has to keep it flying through LA traffic."),
+            ("Is there a sequel?",
+             "Yes - Speed 2: Cruise Control (1997), famously without Reeves and famously "
+             "not needed; the original is complete."),
+            ("How long is it?",
+             "116 minutes, most of it at speed."),
+        ],
+    },
+    "the-fugitive": {
+        "verdict": "The gold standard of the wrong-man thriller: a surgeon framed for his "
+            "wife's murder, a marshal who will not quit, and a dam-jump that defined "
+            "nineties cinema. Tommy Lee Jones' dry pursuit earned an Oscar; the film "
+            "still plays like a watched kettle. Efficiency as entertainment.",
+        "faqs": [
+            ("Is The Fugitive based on a series?",
+             "On the 1960s TV series with David Janssen, itself echoing classic wrong-man "
+             "stories - the film version became the definitive one."),
+            ("Did anyone win Oscars?",
+             "Tommy Lee Jones won Best Supporting Actor at the 1994 ceremony; the film "
+             "was nominated for Best Picture."),
+            ("How long is it?",
+             "130 minutes, without a wasted beat."),
+        ],
+    },
+    "total-recall": {
+        "verdict": "Verhoeven's Martian mind-bender: Schwarzenegger, implanted memories, "
+            "and three tits' worth of proper sci-fi sleaze. Is any of it real? The film "
+            "refuses to say, the action never pauses long enough to care, and the "
+            "practical effects still embarrass the remake. Big, dumb and secretly clever.",
+        "faqs": [
+            ("Is Total Recall based on a book?",
+             "On Philip K. Dick's short story 'We Can Remember It for You Wholesale' - "
+             "the memory-implant premise is pure Dick."),
+            ("Is the dream interpretation ever settled?",
+             "No - the film plants evidence both ways on purpose; every viewer picks a "
+             "side and defends it forever."),
+            ("How long is it?",
+             "113 minutes."),
+        ],
+    },
+    "robocop": {
+        "verdict": "The satire hiding inside the action figure: a murdered cop rebuilt "
+            "as product, a Detroit owned by corporations, and Verhoeven smuggling "
+            "genuine tragedy into the violence. Funnier and angrier than its reputation "
+            "suggests - the media breaks are still razor-sharp. One of the eighties' "
+            "smartest films in dumb clothing.",
+        "faqs": [
+            ("Is RoboCop a satire?",
+             "Completely - corporate capture, privatised policing and TV desensitisation "
+             "are the real subjects; the shootouts are the sugar."),
+            ("How violent is it?",
+             "Extremely - the unrated reputation is earned; the original cut was initially "
+             "refused certification in several territories."),
+            ("How long is it?",
+             "102 minutes."),
+        ],
+    },
+    "taken": {
+        "verdict": "The film that gave cinema its most quoted phone call and Liam Neeson "
+            "a second career: ninety minutes of driven, economical father-rage through "
+            "Paris. The trafficking backdrop is handled with action-movie simplicity - "
+            "this is a revenge machine, not a documentary, and as one it purrs.",
+        "faqs": [
+            ("What is the famous line?",
+             "'I will find you and I will kill you' - the phone speech, delivered with "
+             "such calm it became the internet's favourite threat template."),
+            ("Are the sequels worth it?",
+             "Diminishing returns, honestly - the original's premise closes cleanly; "
+             "the follow-ups re-open it for payroll."),
+            ("How long is it?",
+             "A ruthless 90 minutes."),
+        ],
+    },
+    "john-wick-4": {
+        "verdict": "Action cinema at its absolute ceiling: Stahelski conducts gun-fu "
+            "through Berlin, Osaka and a sunrise staircase of Parisian doom, with Donnie "
+            "Yen as the equal-and-opposite force. Nearly three hours and it earns every "
+            "minute - the series' best since the first, and the genre's current champion.",
+        "faqs": [
+            ("Do I need the earlier John Wick films?",
+             "Yes - Chapter 4 collects debts and characters from all three predecessors; "
+             "start at the beginning for the dog, stay for the world."),
+            ("Is it really that long for an action film?",
+             "169 minutes - unusually epic, and paced like three great action films "
+             "stitched into one saga."),
+            ("Is it the last one?",
+             "It closes a chapter emphatically while leaving doors ajar - the franchise "
+             "has continued expanding around it."),
+        ],
+    },
+    "the-fifth-element": {
+        "verdict": "Luc Besson's operatic space circus: a cab driver, a perfect being, "
+            "a villain with a head like a squids daydream, and Chris Tucker at maximum "
+            "frequency. Sloppy, sincere and spectacular - the Diva dance sequence alone "
+            "is worth the ticket. The most French thing ever to save the universe.",
+        "faqs": [
+            ("Is The Fifth Element based on a comic?",
+             "On stories Besson began inventing as a teenager; the visual design came "
+             "from comics artists Moebius and Jean-Claude Mezieres."),
+            ("Why do people love it so much?",
+             "Total commitment to its own nonsense - the costume design, Gary Oldman's "
+             "lisp and the opera scene add up to a film with zero cynicism."),
+            ("How long is it?",
+             "121 minutes."),
+        ],
+    },
+    "district-9": {
+        "verdict": "The alien-arrival film with the nerve to land them over Johannesburg: "
+            "mockumentary becomes action tragedy becomes one man's crawl toward decency. "
+            "Blomkamp's debut is rough, furious and unforgettable - apartheid allegory "
+            "wearing a mech suit. The prawn-pawn wordplay is the least of its cleverness.",
+        "faqs": [
+            ("Is District 9 based on a true event?",
+             "No - but it is built directly on South Africa's real forced-removal history "
+             "(District Six, Cape Town), which is the source of its anger."),
+            ("Why is it shot like a documentary at first?",
+             "The news-crew framing is the satire's delivery system - the film starts as "
+             "the media the society deserves, then breaks form as its hero does."),
+            ("How long is it?",
+             "112 minutes."),
+        ],
+    },
+    "her": {
+        "verdict": "The romance about loneliness in the digital age that keeps becoming "
+            "more relevant: a letter-writer falls for his operating system, and Spike "
+            "Jonze plays it completely straight - tender, specific and quietly "
+            "devastating about how we live now. Phoenix and Johanson make the impossible "
+            "relationship feel real.",
+        "faqs": [
+            ("Is Her about AI?",
+             "It is about connection - the AI is the vehicle for questions about intimacy, "
+             "growth and what happens when a relationship changes at different speeds."),
+            ("Did it win an Oscar?",
+             "Yes - Best Original Screenplay at the 2014 ceremony."),
+            ("Is it sad?",
+             "Melancholy rather than bleak - a film about the beautiful, temporary nature "
+             "of every connection."),
+        ],
+    },
+    "moon": {
+        "verdict": "Duncan Jones' debut is the loneliness mic-drop: one man, a lunar base, "
+            "a taciturn robot and a countdown that stops adding up. Rockwell gives a "
+            "one-man masterclass; the budget is tiny and the ideas are enormous. The "
+            "smart little sci-fi film that launched a director.",
+        "faqs": [
+            ("Is Moon connected to other films?",
+             "It is the first of Jones' self-described universe with Mute - but it stands "
+             "perfectly alone."),
+            ("Who voices the robot?",
+             "Kevin Spacey as GERTY - a deliberately ambiguous machine whose loyalty is "
+             "the film's quiet subplot."),
+            ("How long is it?",
+             "A taut 96 minutes."),
+        ],
+    },
+    "minority-report": {
+        "verdict": "Spielberg's fog-drenched precognition thriller: murders stopped before "
+            "they happen, until the cop tasked with the system becomes its target. "
+            "Peak-era blockbuster ideas - free will, surveillance, the tyranny of "
+            "certainty - wrapped in rain-slick chase craft. The touchscreen future it "
+            "invented mostly arrived.",
+        "faqs": [
+            ("Is Minority Report based on a book?",
+             "On Philip K. Dick's short story, expanded into a full-throated thriller by "
+             "Spielberg and a dream team of futurist consultants."),
+            ("How does it hold up as a prediction?",
+             "Embarrassingly well - gesture interfaces, personalised advertising and "
+             "predictive-policing debates all play out on screen."),
+            ("How long is it?",
+             "145 minutes."),
+        ],
+    },
+    "iron-man-3": {
+        "verdict": "The post-Avengers anxiety attack: Tony Stark, sleepless after New "
+            "York, meets a terrorist of pure theatre - and Shane Black directs the "
+            "Christmas-set fallout with the series' sharpest wit. The third-act twist "
+            "divides fandom forever; the script's smarts are not up for debate.",
+        "faqs": [
+            ("Why is Iron Man 3 set at Christmas?",
+             "Shane Black's signature - the writer-director of Kiss Kiss Bang Bang sets "
+             "nearly everything he touches in the festive season, for ironic counterpoint."),
+            ("What is the controversial twist?",
+             "The Mandarin's true identity reframed the MCU's first real terrorist as "
+             "performance - fans still argue whether it is clever or a cheat."),
+            ("How long is it?",
+             "130 minutes."),
+        ],
+    },
+    "thor": {
+        "verdict": "The MCU's Shakespeare pivot: Kenneth Branagh plays the god of thunder "
+            "as dynastic family drama - banishment, a brother's envy, and a fish-out-of-"
+            "water detour through New Mexico. Hemsworth arrives fully formed, Hiddleston's "
+            "Loki becomes an instant all-timer. Wobbly in places, essential for what it seeds.",
+        "faqs": [
+            ("Do I need Thor before The Avengers?",
+             "Yes - it introduces Thor and Loki, whose brother act powers the ensemble "
+             "era's first two films."),
+            ("Is it fantasy or superhero?",
+             "Both by design - Asgard plays as full mythology while Earth plays fish-out-"
+             "of-water comedy, and the film alternates by intent."),
+            ("How long is it?",
+             "114 minutes."),
+        ],
+    },
+    "spider-man-homecoming": {
+        "verdict": "The reboot that finally got the age right: a fifteen-year-old Spidey "
+            "who is happy, awkward and grounded - with Keaton's Vulture as the franchise's "
+            "best-kept villain secret. Small stakes by design, big charm by execution. "
+            "The friendly neighbourhood reset the character needed.",
+        "faqs": [
+            ("How does this Spider-Man connect to the MCU?",
+             "It is the Sony-Marvel shared era - Tom Holland's Peter Parker enters having "
+             "already fought in Civil War, with Tony Stark as mentor."),
+            ("Do I need the earlier Spider-Man films?",
+             "No - this is a fresh start that skips the origin story entirely, on purpose."),
+            ("How long is it?",
+             "133 minutes."),
+        ],
+    },
+    "batman-v-superman-dawn-of-justice": {
+        "verdict": "The most divisive superhero film of its decade: Snyder's mythic, "
+            "mopey colossus - gods arguing about power while a city pays. Martha saves "
+            "it or sinks it depending on your faith, but Affleck's broken Batman and the "
+            " sheer ambition of the thing keep it fascinating. A failure worth arguing about.",
+        "faqs": [
+            ("Do I need Man of Steel first?",
+             "Yes - the film is a direct sequel, and its whole argument is about the "
+             "consequences of that film's ending."),
+            ("What is the 'Martha' moment?",
+             "The mothers' shared name that halts the title fight - the internet's "
+             "favourite shorthand for the film's operatic logic. Watch it and join the "
+             "eternal debate."),
+            ("Which cut exists?",
+             "The theatrical cut and the longer Ultimate Edition (about 30 minutes more, "
+             "coherently violent) - the latter is generally the preferred version."),
+        ],
+    },
+    "godzilla-2014": {
+        "verdict": "Gareth Edwards' patience play: a monster film that hides its titans "
+            "like horror mysteries until the parachute drop and the stadium reveal pay "
+            "off everything. The human story divides viewers; the final harbour "
+            "sequence - the atomic breath glow - is pure cinema. The American Godzilla "
+            "finally done with awe.",
+        "faqs": [
+            ("Do I need earlier Godzilla films?",
+             "No - this is a fresh American reboot that honours the original's dread-first "
+             "philosophy."),
+            ("Why is Godzilla off-screen so long?",
+             "Deliberate - Edwards rations the monster like a horror villain; those who "
+             "want constant kaiju brawling are served better by the sequels."),
+            ("How long is it?",
+             "123 minutes."),
+        ],
+    },
+    "jurassic-world": {
+        "verdict": "The park finally open, and the film knows exactly what that means: "
+            "a self-aware blockbuster about the appetite for bigger, louder, more - "
+            "starring Pratt, a raptor whisperer, and one very indignant hybrid. Not "
+            "Spielberg's wonder; a fun machine with real craft in the paddock scenes.",
+        "faqs": [
+            ("Do I need the original Jurassic Park films?",
+             "It helps - the sequel runs on nostalgia for the 1993 original and literally "
+             "revisits its locations."),
+            ("Is the Indominus rex the point?",
+             "Yes - a dinosaur designed by marketing committee, which is the film's whole "
+             "joke about its own existence."),
+            ("How long is it?",
+             "124 minutes."),
+        ],
+    },
+    "kingsman-the-secret-service": {
+        "verdict": "Vaughn's tailor-shop spy romp: a chav done good, amentor with an "
+            "umbrella, and action choreography so clean the church sequence became "
+            "legendary - and controversial. Rude, funny, impeccably tailored; a Bond "
+            "film that read Bond's manual and decided to enjoy itself.",
+        "faqs": [
+            ("Is Kingsman a parody of Bond?",
+             "A loving remix - it riffs on every spy convention while staging action "
+             "sequences most Bond films would envy."),
+            ("How violent is it?",
+             "Very, and stylishly so - the church sequence is the famous one; the film "
+             "is R-rated throughout by choice."),
+            ("How long is it?",
+             "129 minutes."),
+        ],
+    },
 }
