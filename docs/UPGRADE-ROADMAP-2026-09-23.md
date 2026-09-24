@@ -166,3 +166,8 @@ Goal: turn 847 stubs into articles. Median 153 → 600+ words; thin 85% → <5%.
 - Home batch 22 LIVE (6): boiler-pressure, radiators-cold, pipe-lagging, EPC, storage-heaters, condensate-pipe - shipped early, indexed before the wave.
 - LESSONS: (1) multi-line patch anchors must match actual file wrapping; (2) phantom-slug pattern - drafts default to "worth-it" endings; real pages end -payback / -explained. Href gate caught it twice; keep trusting the gate.
 - Remaining: film batch 7, GSC checkpoint end-Oct, Bing parked (owner), Cloudflare parked.
+
+## FILM BATCH 7 (2026-09-24)
+
+- SHIPPED: 30 titles enriched (verdict+FAQ), ENRICH 136 -> 166. Facts cross-checked against entertainment_platform_data records (annihilation 115, barry-lyndon 181, battle-royale 113, before-sunrise 97 - data file corrected memory). Awards stated only where certain. URL sets unchanged.
+- Pool remaining: ~553 unenriched titles.
