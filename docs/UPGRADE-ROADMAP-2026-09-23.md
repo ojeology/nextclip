@@ -201,3 +201,8 @@ Goal: turn 847 stubs into articles. Median 153 → 600+ words; thin 85% → <5%.
 
 - SHIPPED: 30 more, ENRICH 316 -> 346 (719 total; ~48% enriched). Oscar winners (Anora/Shape of Water/Zone of Interest/Lives of Others/Departures/Holdovers), K-cinema deep cuts (Burning/Decision to Leave/Man from Nowhere/Extreme Job), auteurs (Aftersun/Florida Project/Green Knight/Farewell), action backfill (Con Air/Face-Off/Transporter/Equalizer/Creed), India pair, Nollywood landmark The Figurine. NOTE: the-big-lebowski not in MOVIES pool - checked before authoring.
 - Pool remaining: ~373.
+
+## FILM BATCH 14 (2026-09-24) - 50% MILESTONE
+
+- SHIPPED: 30 more, ENRICH 346 -> 376 (719 total; ~52% enriched - MAJORITY of movie desk now editorial). HBO pair (Euphoria/Agatha), The Boys spinoff Gen V, Fallout, Arcane S2 finale, anime 6 (Dandadan/Blue Lock/Black Clover/Code Geass/Toradora + WWDITS film), MCU/DC backfill 5, prestige pair (Road/Deep Water), Gorge/Atomic Blonde, comedy 4, Nollywood trio (Blood Sisters/Set Up/Eyimofe), Wandering Earth.
+- Pool remaining: ~343.
