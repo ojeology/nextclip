@@ -663,7 +663,7 @@ def page_wf(*, title: str, description: str, route: str, current: str, body: str
     SearchAction/site graph and nav while keeping the same hardened head.)
     """
     title = budget_title(title)  # H3 batch 7: keep <title>/og:title inside the SERP window
-    canonical = BASE + route
+    canonical = BASE + ("/writers/" if route == "/" else route)  # writers home canonical is its routed URL
     # Social card: use the generated per-page card when one exists.
     og_image = "/assets/og/default.png"
     m_og = re.match(r"^/learn/[a-z0-9-]+/([a-z0-9-]+)/$", route) or re.match(r"^/essays/([a-z0-9-]+)/$", route)
