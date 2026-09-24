@@ -270,3 +270,22 @@ Goal: turn 847 stubs into articles. Median 153 → 600+ words; thin 85% → <5%.
 - SHIPPED: single-line desk lockup sitewide - [B. seal] THE BRYME | NICHE; THE BRYME -> family homepage, NICHE -> desk home. Blue-and-white B. seal logo swapped into mark/favicon/apple-touch. Router ATTR_RE/ABS_RE now exempt the bare homepage (writers lockup links can never be rewritten to /writers/ again).
 - LESSON (3rd occurrence, now standing rule): NEVER reuse bryme-full across messages - the cd-fallback found a stale routed tree and broke the build; always rm -rf + fresh clone.
 - Routing guard note: manual build-routing between builds can abort with already-routed (root writers/learn from BUILD1); removing the root writers/ dir before the next npm build lets it re-route cleanly.
+
+## 2026-09-24 - Brand v2 shipped: single-line lockup + blue seal (deploy daqk6hms31gs)
+
+- ONE header per desk: [blue B. seal] THE BRYME | NICHE - THE BRYME taps the
+  family homepage (https://thebryme.com), NICHE taps the desk home. Writers
+  hub = header alone (THE BRYME | WRITERS). White+cobalt seal (#2450c8)
+  replaces the cream one at the same asset paths (favicon.ico,
+  apple-touch-icon, bryme-mark.png).
+- Bug fixed: on routed writers pages the lockup's THE BRYME link was
+  rewritten to /writers/ by build-routing's absolute-URL rewriter. Fix:
+  lockup links use https://thebryme.com WITHOUT the trailing slash - the
+  rewriter's pattern never matches, no router surgery needed. Canonical and
+  og:url keep the slashed form and are correctly rewritten to /writers/.
+- Lesson (3 failed deploys before this): build-discovery validates the
+  PRE-routing tree (root index.html = writers home, canonical "/"); never
+  patch canonical source or router to satisfy post-routing state, and never
+  push before a fresh-clone `npm run build` passes.
+- Writers homepage canonical now https://thebryme.com/writers/ live.
+  Verified: all 7 desk homes + hub + writers lockups, favicon + seal 200.
