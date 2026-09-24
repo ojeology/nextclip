@@ -315,8 +315,8 @@ def nav(current: str = "") -> str:
   <div class="mast-top"><div class="wrap mast-in">
     <a class="parent-link" href="https://thebryme.com/" style="display:inline-flex;align-items:center;gap:7px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;font-size:10.5px;opacity:.92"><img src="/assets/brand/bryme-mark.png" alt="" width="20" height="20" style="width:20px;height:20px;border-radius:5px;display:block;box-shadow:0 0 0 1px rgba(0,0,0,.08)">THE BRYME</a>
     <span style="display:inline-flex;align-items:center;gap:9px;white-space:nowrap">
-    <a href="https://thebryme.com/" aria-label="THE BRYME - all publications" style="display:inline-flex;align-items:center"><img src="/assets/brand/bryme-mark.png" alt="" width="26" height="26" style="width:26px;height:26px;border-radius:7px;display:block;box-shadow:0 0 0 1px rgba(0,0,0,.08)"></a>
-    <a href="https://thebryme.com/" style="font-family:Georgia,serif;font-weight:700;font-size:21px;letter-spacing:.14em;color:#5b6b7a;text-decoration:none">THE&nbsp;BRYME</a>
+    <a href="https://thebryme.com" aria-label="THE BRYME - all publications" style="display:inline-flex;align-items:center"><img src="/assets/brand/bryme-mark.png" alt="" width="26" height="26" style="width:26px;height:26px;border-radius:7px;display:block;box-shadow:0 0 0 1px rgba(0,0,0,.08)"></a>
+    <a href="https://thebryme.com" style="font-family:Georgia,serif;font-weight:700;font-size:21px;letter-spacing:.14em;color:#5b6b7a;text-decoration:none">THE&nbsp;BRYME</a>
     <span aria-hidden="true" style="width:1px;height:20px;background:#ddd6c6;display:inline-block"></span>
     <a href="/"{' aria-current="page"' if current == "home" else ""} style="font-family:Georgia,serif;font-weight:700;font-size:34px;letter-spacing:.14em;color:#a8752a;text-decoration:none">WRITERS</a></span>
     <div class="mast-edition"><span class="mast-date">{edition} EDITION</span><span class="mast-tag">The business, craft &amp; economics of writing — free, independent, human-verified.</span></div>
@@ -663,7 +663,7 @@ def page_wf(*, title: str, description: str, route: str, current: str, body: str
     SearchAction/site graph and nav while keeping the same hardened head.)
     """
     title = budget_title(title)  # H3 batch 7: keep <title>/og:title inside the SERP window
-    canonical = BASE + ("/writers/" if route == "/" else route)  # writers home canonical is its routed URL
+    canonical = BASE + route
     # Social card: use the generated per-page card when one exists.
     og_image = "/assets/og/default.png"
     m_og = re.match(r"^/learn/[a-z0-9-]+/([a-z0-9-]+)/$", route) or re.match(r"^/essays/([a-z0-9-]+)/$", route)

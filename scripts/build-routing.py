@@ -43,7 +43,7 @@ ORIGIN = cfg.site_url()  # batch 15: SITE_URL env > site.config.json (was hardco
 PROP_PREFIXES = tuple(f"/{x}" for x in PROPS) + ("/writers", "/assets")
 
 ATTR_RE = re.compile(r'(\s(?:href|src|action|content)=\x22)(/(?!assets/|writers|sports|entertainment|tech|fitness|home)([^\x22]*))(\x22)')
-ABS_RE = re.compile(re.escape(ORIGIN) + r'/(?!assets/|writers|sports|entertainment|tech|fitness|home)(?!\x22)([^"\'<\s)]*)')
+ABS_RE = re.compile(re.escape(ORIGIN) + r'/(?!assets/|writers|sports|entertainment|tech|fitness|home)([^"\'<\s)]*)')
 
 
 def rewrite_writer_paths(text: str) -> tuple[str, int]:

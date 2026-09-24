@@ -4915,7 +4915,7 @@ def _home_toggle_js():
 
 def _home_mast():
     return ('<header class="head"><div class="wrap mast">'
-            '<div class="mast-brand"><span class="lk"><a class="lk-mark" href="https://thebryme.com/" aria-label="THE BRYME - all publications"><img src="/assets/brand/bryme-mark.png" alt="" width="26" height="26"></a><a class="lk-root" href="https://thebryme.com/">THE&nbsp;BRYME</a><span class="lk-sep" aria-hidden="true"></span><a class="lk-niche" href="/home/" style="color:var(--accent)">HOME&nbsp;&amp;&nbsp;DIY</a></span></div>'
+            '<div class="mast-brand"><span class="lk"><a class="lk-mark" href="https://thebryme.com" aria-label="THE BRYME - all publications"><img src="/assets/brand/bryme-mark.png" alt="" width="26" height="26"></a><a class="lk-root" href="https://thebryme.com">THE&nbsp;BRYME</a><span class="lk-sep" aria-hidden="true"></span><a class="lk-niche" href="/home/" style="color:var(--accent)">HOME&nbsp;&amp;&nbsp;DIY</a></span></div>'
             '<div class="mast-edition"><span class="mast-date">SEPTEMBER 2026 \u00b7 THE FIX-IT DESK</span>'
             '<span class="mast-tag">Fix it. Clean it. Maintain it. Understand it.</span></div>'
             '<div class="mast-tools">'
