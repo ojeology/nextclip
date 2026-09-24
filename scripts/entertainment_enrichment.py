@@ -6849,4 +6849,533 @@ ENRICH = {
              "higher."),
         ],
     },
+    # ---- film batch 15 (2026-09-24): 30 titles - prestige TV, MCU completion, classics, anime arc ----
+    "andor": {
+        "verdict": "The Star Wars show for people who do not like Star Wars shows: "
+            "Cassian Andor's road from petty thief to rebel, told as adult espionage "
+            "drama - corporate offices, prison labour, radicalisation, bureaucracy as "
+            "villain. Tony Gilroy's writing made it one of the best-reviewed series of "
+            "its decade, and the ending lands you at the first frame of Rogue One. "
+            "Went out on top, deliberately.",
+        "faqs": [
+            ("Do I need Rogue One or other Star Wars first?",
+             "Rogue One is the real prerequisite - the series ends exactly where the "
+             "film begins, and knowing the destination makes the journey devastating."),
+            ("Is it slow or political?",
+             "Deliberately paced and unapologetically political - radicalisation, "
+             "empire and compromise are the subjects; the prison arc alone justifies "
+             "every minute."),
+            ("Is the story complete?",
+             "Yes - two seasons (2022 and 2025), planned and executed as one arc."),
+        ],
+    },
+    "the-last-kingdom": {
+        "verdict": "Vikings' grittier, truer cousin: Uhtred of Bebbanburg - Saxon born, "
+            "Dane raised - fights for Alfred the Great's England while his own "
+            "birthright stays stolen. Bernard Cornwell's novels give it real historical "
+            "spine, and five seasons of battles, bargains and stubborn honour earn the "
+            "big-screen send-off. The most under-watch epic of its era.",
+        "faqs": [
+            ("Is The Last Kingdom based on books?",
+             "On Bernard Cornwell's Saxon Stories - thirteen novels of real 9th-century "
+             "history woven around a fictional hero."),
+            ("Do I watch the movie after the series?",
+             "Yes - Seven Kings Must Die (2023) continues directly after season five "
+             "and closes Uhtred's tale."),
+            ("How true is the history?",
+             "Alfred, Aethelflaed and the Dane wars are real; Uhtred's personal story "
+             "is invented - the texture is researched, the plot is drama."),
+        ],
+    },
+    "the-white-lotus": {
+        "verdict": "Mike White's luxury-resort autopsy: gorgeous location, terrible "
+            "guests, one body too many by checkout. Each season is a self-contained "
+            "satire of wealth and service - Hawaii, Sicily, Thailand - stitched "
+            "together by tone and Jennifer Coolidge's immortal Tanya. The rare "
+            "anthology where the destination is the company, not the corpse.",
+        "faqs": [
+            ("Are the seasons connected?",
+             "Mostly standalone - new location and cast each season, with light "
+             "connective threads; start with season one or jump anywhere."),
+            ("Is it based on true events?",
+             "No - pure satire, aimed at wealthy tourists and the people paid to "
+             "endure them."),
+            ("Did it win awards?",
+             "Generously - multiple Emmys across its seasons, including Jennifer "
+             "Coolidge's supporting-actress win."),
+        ],
+    },
+    "wandavision": {
+        "verdict": "The MCU's boldest swing: grief as a sitcom - Wanda's captured town "
+            "replays decades of American television while two nosy detectives close "
+            "in. Elizabeth Olsen and Paul Bettany play it beautifully straight, "
+            "Kathryn Hahn's witch reveal detonates the format, and the whole thing "
+            "lands as Marvel's saddest, strangest experiment. Nothing else like it "
+            "before or since.",
+        "faqs": [
+            ("How much MCU do I need?",
+             "The Wanda and Vision arcs from the Avengers films are the baseline - "
+             "the show assumes you know what Wanda lost."),
+            ("Is it really a sitcom all the way through?",
+             "No - the format is the mystery; it curdles into a full Marvel drama as "
+             "the truth leaks in."),
+            ("Where does it lead?",
+             "Directly into Doctor Strange in the Multiverse of Madness, and its "
+             "villain's song launched a whole spin-off."),
+        ],
+    },
+    "the-falcon-winter-soldier": {
+        "verdict": "The MCU's buddy-espionage reckoning: Sam Wilson refusing the "
+            "shield, Bucky working through his ledger, and America's reaction to a "
+            "Black Captain America made explicitly the subject. Zemo's stylish return, "
+            "Wyatt Russell's catastrophic US Agent, and a finale that hands the "
+            "franchise its new Cap with real weight.",
+        "faqs": [
+            ("Do I need it before Brave New World?",
+             "Yes - it is the direct setup for Sam Wilson's Captain America era."),
+            ("Is it heavy on MCU homework?",
+             "The Blip aftermath is the engine, so Endgame context matters - beyond "
+             "that it explains itself."),
+            ("How many episodes?",
+             "Six - a tight limited series."),
+        ],
+    },
+    "thunderbolts": {
+        "verdict": "The MCU's misfit mirror: a depressed ex-assassin, a washed-up "
+            "super soldier, a paranoid Centurion of a Red Guardian and friends - "
+            "assembled to die, choosing instead to matter. Florence Pugh anchors "
+            "the bleakest, funniest Marvel ensemble in years, and the asterisk in "
+            "the title hides the film's cheekiest reveal. Group therapy with "
+            "explosions.",
+        "faqs": [
+            ("Why the asterisk in Thunderbolts*?",
+             "It is a running joke with an in-film payoff - the team's marketing "
+             "versus its reality; the film explains itself."),
+            ("Do I need deep MCU knowledge?",
+             "Less than most - the film reintroduces its ragtag cast from zero and "
+             "runs on character chemistry more than lore."),
+            ("Does it set up future films?",
+             "Yes - its status-quo wink feeds directly into the next phase."),
+        ],
+    },
+    "the-fantastic-four-first-steps": {
+        "verdict": "The family, finally right: Marvel's first family on a retro-"
+            "futurist 1960s Earth, facing a god that eats planets. Pedro Pascal, "
+            "Vanessa Kirby, Joseph Quinn and Ebon Moss-Bachrach click as a household "
+            "before they click as heroes, and Shakman shoots it like a vintage "
+            "space-age postcard. The friendliest door into the MCU in years.",
+        "faqs": [
+            ("Do I need other Marvel films first?",
+             "No - it is deliberately self-contained on its own alternate Earth; "
+             "newcomers welcome."),
+            ("Is it suitable for kids?",
+             "Among the most family-friendly MCU entries - cosmic menace without "
+             "gratuitous darkness."),
+            ("Is it the best Fantastic Four film?",
+             "By wide consent, yes - the first to treat the family dynamic as the "
+             "point rather than the setup."),
+        ],
+    },
+    "alien-resurrection": {
+        "verdict": "The Alien franchise's strangest animal: Ripley cloned two "
+            "centuries on, part alien by design, aboard a Jeunet-directed funhouse "
+            "of body horror and gallows humour. Divisive, perverse, visually "
+            "brilliant - the series' cult entry, and proof the property never "
+            "repeated itself. Newborn monster included.",
+        "faqs": [
+            ("Do I need the earlier Alien films?",
+             "Yes - at minimum Alien, Aliens and Alien 3; the whole premise is a "
+             "response to Ripley's sacrifice."),
+            ("Is it really that weird?",
+             "Deliberately - Jean-Pierre Jeunet's dark-fairy-tale instincts plus a "
+             "Joss Whedon script make it the franchise's oddest curve."),
+            ("How long is it?",
+             "109 minutes."),
+        ],
+    },
+    "carrie": {
+        "verdict": "Stephen King's first novel became the definitive prom-night "
+            "tragedy: Sissy Spacek's telekinetic outcast, Piper Laurie's fanatic "
+            "mother, and De Palma's split-screen descent into pig's blood and "
+            "flames. Both women earned Oscar nominations - horror royalty - and the "
+            "final shot still jerks fifty years of audiences out of their seats. "
+            "Puberty as horror film, perfected.",
+        "faqs": [
+            ("Is Carrie based on a book?",
+             "On Stephen King's 1974 debut novel - his first published, and still "
+             "one of his most adapted."),
+            ("How scary is it?",
+             "Slow-burn tragedy first, notorious shock finale second - the horror "
+             "is cruelty as much as telekinesis."),
+            ("Is the 2013 remake worth it?",
+             "It exists and is respectful; the 1976 original remains the definitive "
+             "version by wide consent."),
+        ],
+    },
+    "ghostbusters": {
+        "verdict": "The 1984 original, still the perfect comedy machine: three "
+            "disgraced academics, a New York crawling with the undead, and Bill "
+            "Murray deadpanning through the apocalypse. Aykroyd and Ramis' script "
+            "treats the supernatural as bureaucracy, the effects hold up, and the "
+            "theme song ruled the planet. Forty years of sequels, cartoons and "
+            "legacyquels - all of them walk in this one's footprints.",
+        "faqs": [
+            ("Do I start with the 1984 film or the newer ones?",
+             "The 1984 original, always - everything after (1989's sequel, the 2021 "
+             "and 2024 legacy films) builds on it."),
+            ("Did the theme song top the charts?",
+             "Yes - Ray Parker Jr.'s 'Ghostbusters' spent weeks at number one and "
+             "earned an Oscar nomination."),
+            ("How long is it?",
+             "105 minutes."),
+        ],
+    },
+    "willow": {
+        "verdict": "George Lucas's story, Ron Howard's direction, Warwick Davis' "
+            "farmer-hero: a reluctant Nelwyn conjurer escorts a chosen-one princess "
+            "through a Val Kilmer-shaped sword-and-sorcery romp. Its early digital "
+            "morphing sequence is a landmark in effects history, and its heart has "
+            "kept the cult growing for decades. Fantasy comfort food with a "
+            "groundbreaking streak.",
+        "faqs": [
+            ("Is Willow connected to Star Wars?",
+             "Spiritually - from a George Lucas story with Lucasfilm production "
+             "craft; fans call it fantasy Star Wars with good reason."),
+            ("Is there a sequel series?",
+             "Yes - the 2022 Disney+ continuation; this 1988 film is the required "
+             "starting point."),
+            ("Why do effects people love it?",
+             "Its morphing sequence was pioneering early digital imagery - a genuine "
+             "milestone between practical eras."),
+        ],
+    },
+    "the-labyrinth": {
+        "verdict": "Jim Henson's puppet odyssey, produced by George Lucas and "
+            "crowned by David Bowie's Goblin King: a teenager's baby brother is "
+            "stolen into a maze of Muppets, riddles and danger, and Sarah must wish "
+            "him back properly. A flop that became a religion - Bowie's songs, "
+            "Henson's workshop at full power, and the strangest ballroom in cinema. "
+            "'You have no power over me' - the line every misfit keeps.",
+        "faqs": [
+            ("Does David Bowie sing in Labyrinth?",
+             "Yes - several original songs, including 'Magic Dance' and 'As the "
+             "World Falls Down'."),
+            ("Is it too scary for young kids?",
+             "It has genuinely eerie stretches - the Helping Hands and the Fireys - "
+             "best for older children and up."),
+            ("Why is it a cult classic?",
+             "A box-office flop on release, then decades of VHS devotion: Henson's "
+             "craft and Bowie's performance age like wine."),
+        ],
+    },
+    "twisters": {
+        "verdict": "The disaster movie reborn with manners: a storm-chaser haunted "
+            "by loss and a swaggering wrangler-turned-tornado-tourist face a record "
+            "outbreak across Oklahoma. Lee Isaac Chung shoots storms with awe "
+            "instead of green-screen slop, Daisy Edgar-Jones and Glen Powell spark "
+            "cleanly, and the film trusts spectacle without irony. Old-school "
+            "summer, done right.",
+        "faqs": [
+            ("Do I need the 1996 Twister first?",
+             "No - it is a standalone story in the same storm country."),
+            ("Is the storm science real?",
+             "The storm-chaser culture is authentic; the tech is amped up - the "
+             "film keeps its feet mostly on the ground."),
+            ("How long is it?",
+             "122 minutes."),
+        ],
+    },
+    "the-super-mario-bros-movie": {
+        "verdict": "The video-game adaptation curse, shattered: Mario, Luigi and a "
+            "Kong kingdom rendered in Illumination candy, with Jack Black's Bowser "
+            "stealing the film and the charts. Over 1.3 billion dollars later, it "
+            "stands as one of the highest-grossing animated films ever - a pure "
+            "homage machine that plays like two hours of fan service done with "
+            "affection.",
+        "faqs": [
+            ("Do I need to know the games?",
+             "No - it plays as a bright adventure; players just collect far more "
+             "cameos per minute."),
+            ("What is the Bowser song?",
+             "'Peaches' - Jack Black's piano ballad, the film's breakout earworm."),
+            ("Is there a sequel?",
+             "Yes - a Galaxy-set follow-up is in the works."),
+        ],
+    },
+    "zootopia-2": {
+        "verdict": "The mammal metropolis adds reptiles: Judy and Nick go undercover "
+            "through Zootopia's cold-blooded underbelly in a sequel with bigger "
+            "conspiracy and sharper worldbuilding. The 2016 original won the Best "
+            "Animated Feature Oscar; the follow-up became one of 2025's biggest "
+            "releases worldwide - the rare franchise where the satire grows up with "
+            "its audience.",
+        "faqs": [
+            ("Do I need the first Zootopia?",
+             "Yes - the buddy dynamic and the city's premise are the engine; watch "
+             "the 2016 Oscar winner first."),
+            ("Is it as good as the original?",
+             "It was warmly reviewed and a blockbuster - most fans rate it a worthy "
+             "continuation rather than a repeat."),
+            ("How long is it?",
+             "108 minutes."),
+        ],
+    },
+    "frozen-2": {
+        "verdict": "The rare sequel that outgrossed a phenomenon: Elsa hears a voice, "
+            "the sisters ride north, and Arendelle's founding sin surfaces in "
+            "myth-heavy, autumn-toned spectacle. Darker than the first film, "
+            "genuinely moving about change and loss, with 'Into the Unknown' and an "
+            "Olaf who has learned to talk about death. The kids' film that quietly "
+            "processes grief.",
+        "faqs": [
+            ("Is Frozen 2 better than the first?",
+             "It goes deeper and stranger - critics split, audiences made it the "
+             "bigger earner worldwide; both belong in any family rotation."),
+            ("Do I need the first film?",
+             "Yes - the character stakes are all inherited."),
+            ("How long is it?",
+             "103 minutes."),
+        ],
+    },
+    "demon-slayer-mugen-train": {
+        "verdict": "The film that rewrote the record books in Japan: the Mugen Train "
+            "arc - Tanjiro and the flame Hashira Rengoku aboard a demon-haunted "
+            "locomotive - became Japan's all-time box-office champion and the first "
+            "non-Hollywood film to lead the worldwide yearly chart. ufotable at "
+            "full fire, and an emotional gut-punch the entire fandom still carries. "
+            "Watch season one first; bring tissues.",
+        "faqs": [
+            ("Can I watch the film without the series?",
+             "No - it is a direct sequel to season one and will spoil itself into "
+             "noise; watch the series first."),
+            ("Where does it fit?",
+             "Between seasons one and two - the TV version re-adapts it as the "
+             "opening arc of the Entertainment District season."),
+            ("Why does everyone cry about it?",
+             "Rengoku. That is the whole answer."),
+        ],
+    },
+    "demon-slayer-infinity-castle": {
+        "verdict": "The final-arc begins: Tanjiro and the surviving Hashira fall "
+            "into Muzan's shifting fortress, and ufotable delivers 155 minutes of "
+            "the most ambitious animation of the decade. It smashed Japan's box-"
+            "office records upon release and opens a planned trilogy - the Demon "
+            "Slayer saga's endgame has arrived, and it is staggering.",
+        "faqs": [
+            ("What do I watch first?",
+             "Everything: seasons one through four plus Mugen Train - this film is "
+             "pure endgame."),
+            ("Is it the last Demon Slayer film?",
+             "It is the first of a planned trilogy adapting the final arc."),
+            ("How long is it?",
+             "155 minutes of escalating spectacle."),
+        ],
+    },
+    "chainsaw-man-reze": {
+        "verdict": "Denji's first love arrives holding a lit fuse: the Reze arc - "
+            "the manga's most beloved stretch - arrives on film as a romance that "
+            "keeps detonating into set pieces. Typhoon-lit schoolyards, a cafe that "
+            "feels like a memory, and violence choreographed like dance. The "
+            "perfect continuation for anyone the series hooked.",
+        "faqs": [
+            ("Do I watch the series first?",
+             "Yes - season one sets up Denji's heart and the world that breaks it; "
+             "the film follows directly."),
+            ("What is the Reze arc?",
+             "The fan-favourite storyline introducing the girl of Denji's dreams - "
+             "and the chaos attached to her; no spoilers past that."),
+            ("How long is it?",
+             "100 minutes."),
+        ],
+    },
+    "tokyo-ghoul": {
+        "verdict": "The dark-fantasy landmark of its era: bookish Kaneki's date "
+            "turns out to be a ghoul, his survival makes him half-monster, and "
+            "Tokyo's hidden flesh-eater society opens like a wound. Body horror as "
+            "identity tragedy, an iconic opening theme, and a tone that defined "
+            "dark anime for a generation of newcomers.",
+        "faqs": [
+            ("What order do I watch Tokyo Ghoul in?",
+             "Season one, then Root A, then re - and note the anime diverges from "
+             "the manga, which remains the fuller story."),
+            ("Why is it so popular?",
+             "It arrived at the perfect moment: accessible dark fantasy with real "
+             "horror teeth and a protagonist whose transformation is the point."),
+            ("Is it very gory?",
+             "Yes - flesh-eating is the premise; it is stylish but unflinching."),
+        ],
+    },
+    "trigun": {
+        "verdict": "The space-western with the biggest tonal gearshift of its era: "
+            "Vash the Stampede is a 60-billion-double-dollar legend who cannot stop "
+            "saving people - until his past forces the comedy to collapse into "
+            "tragedy. Episodic charm front-loading a moral core that still lands; "
+            "the blueprint for every lovable-idiot-with-a-burden protagonist since.",
+        "faqs": [
+            ("Original Trigun or Trigun Stampede?",
+             "The 1998 original is the classic entry; Stampede (2023) retells the "
+             "story closer to the manga's order - fans argue happily, start anywhere."),
+            ("Is it really a comedy?",
+             "It starts as one - the pivot to tragedy is the series' whole legend."),
+            ("Is it finished?",
+             "The 1998 run is a complete story; the manga continued for decades."),
+        ],
+    },
+    "your-lie-in-april": {
+        "verdict": "The piano prodigy who cannot hear his own playing, the "
+            "free-spirit violinist who drags him back into the light - twenty-two "
+            "episodes of classical music, trauma and the most organised emotional "
+            "devastation in anime. 'Your Lie in April' is less a title than a "
+            "warning label. Bring the whole box of tissues.",
+        "faqs": [
+            ("Will I actually cry?",
+             "It is one of the most reliably tearful anime ever made - plan "
+             "accordingly."),
+            ("Do I need to like classical music?",
+             "No - the performances are emotional set pieces first; the music "
+             "carries even non-fans."),
+            ("Is the story complete?",
+             "Yes - it adapts the full manga."),
+        ],
+    },
+    "violet-evergarden": {
+        "verdict": "Kyoto Animation's most beautiful ache: a child soldier of "
+            "terrible efficiency becomes a writer of other people's love letters, "
+            "learning what feelings are one commission at a time. The craft is "
+            "legendary, episode ten is a rite of passage, and the 2020 film closes "
+            "her arc with devastating grace. Letters that outlive their writers.",
+        "faqs": [
+            ("What order do I watch?",
+             "The series, then the 2020 film - the film is the true conclusion."),
+            ("Which episode is the famous one?",
+             "Episode ten - the dying mother's fifty letters - is the one people "
+             "warn each other about."),
+            ("Is it sad throughout?",
+             "Melancholy-warm: every episode touches loss, and the cumulative effect "
+             "is catharsis, not misery."),
+        ],
+    },
+    "apothecary-diary": {
+        "verdict": "The court-mystery phenomenon: Maomao, a pharmacy-obsessed "
+            "apothecary sold into the imperial rear palace, solves poisonings and "
+            "politics with the same deadpan brilliance - while a beautiful, "
+            "dangerous eunuch keeps buying her experiments. Sharp heroine, "
+            "meticulous period detail, and the coziest slow-burn dynamic in recent "
+            "anime. Mystery comfort food with real teeth.",
+        "faqs": [
+            ("What kind of show is it?",
+             "Historical mystery first - poison cases and palace intrigue - with a "
+             "deliberately restrained romance thread."),
+            ("Is it still ongoing?",
+             "Yes - new seasons continue adapting the light novels."),
+            ("Why is Maomao so loved?",
+             "She is brilliant, prickly, poison-curious and entirely her own person - "
+             "a protagonist the genre had been missing."),
+        ],
+    },
+    "fargo": {
+        "verdict": "The anthology that earned the Coen name: each season a standalone "
+            "Midwestern crime tragedy - snow, nerves, catastrophic politeness - "
+            "plotted with brutal elegance and sprinkled with dark comedy. Billy Bob "
+            "Thornton's chilling first season won the Emmy, season two is a "
+            "perennial all-timer, and every new cycle is an event. 'This is a true "
+            "story' - the nicest lie on television.",
+        "faqs": [
+            ("Do the seasons connect?",
+             "Each is standalone with its own cast and era - you can start with "
+             "season one or the consensus masterpiece, season two."),
+            ("Do I need the 1996 film?",
+             "No - it shares the tone and universe flavor, not the plot."),
+            ("How many seasons so far?",
+             "Five so far, with more possible - check current listings."),
+        ],
+    },
+    "the-sandman": {
+        "verdict": "Neil Gaiman's dreams finally on screen: Morpheus, King of "
+            "Dreams, escapes a century of captivity and rebuilds his kingdom across "
+            "anthological wonders - a diner in Hell, a cat's sermon, a 19th-century "
+            "gentleman's serial. Tom Sturridge plays eternity beautifully; the "
+            "craft honours the comic panel by panel. The story wrapped with its "
+            "second season - complete, as dreamed.",
+        "faqs": [
+            ("Can I watch episodes standalone?",
+             "Largely yes - several are self-contained gems; the through-line "
+             "rewards order."),
+            ("Do I need the comics?",
+             "No - the adaptation stands alone while fans spot the faithful panels."),
+            ("Is the story finished?",
+             "Yes - the second season (2025) concluded the adaptation."),
+        ],
+    },
+    "the-umbrella-academy": {
+        "verdict": "Seven adopted super-siblings, one dreadful father, and an "
+            "apocalypse per season: Gerard Way's comic became TV's most watchable "
+            "dysfunction - time travel, sibling therapy and needle-drop choreography "
+            "of the highest order. Aidan Gallagher's Number Five is a scene-stealing "
+            "icon, and the ensemble ran four seasons to a proper ending.",
+        "faqs": [
+            ("Is the story finished?",
+             "Yes - four seasons, concluding properly in 2024."),
+            ("Do I need the comic?",
+             "No - the show remixes it freely; reading is optional homework."),
+            ("What is it best known for?",
+             "The family chemistry and its music-driven sequences - some of the "
+             "best needle-drops of the streaming era."),
+        ],
+    },
+    "the-glory": {
+        "verdict": "Revenge served cold, over years: a woman with nothing left "
+            "carefully dismantles the lives of the schoolmates who tortured her - "
+            "and Kim Eun-sook (of Descendants of the Sun fame) writes it with "
+            "icy, meticulous patience. Song Hye-kyo's career-peak performance "
+            "anchors one of Netflix Korea's most talked-about dramas. Hard to "
+            "watch, impossible to drop.",
+        "faqs": [
+            ("How brutal is the bullying content?",
+             "Genuinely hard - the violence is a plot engine, not decoration; "
+             "sensitive viewers should brace."),
+            ("Is it one season or two?",
+             "A two-part story - the first part in late 2022, the conclusion in "
+             "March 2023."),
+            ("Is it based on real events?",
+             "It is fiction, channelling South Korea's real reckoning with school "
+             "violence - which is why it hit the national nerve."),
+        ],
+    },
+    "vikram-vedha": {
+        "verdict": "The Tamil neo-noir that riddles its way into legend: a cop "
+            "(Madhavan) interrogates a gangster (Vijay Sethupathi) who answers "
+            "every question with a folk-tale that reframes the cop's own life - "
+            "Vikram-and-Betaal morality as an action thriller. Twist after twist, "
+            "two stars sparring at their peak, and a Hindi remake that proves how "
+            "strong the original is. Kya kahtha hai Vedha? See it.",
+        "faqs": [
+            ("Original or the 2022 Hindi remake?",
+             "The Tamil original is the consensus watch - the Hrithik-Saif remake "
+             "is faithful, the original is sharper."),
+            ("What is the Vikram-Vedha story frame?",
+             "A king-and-sage riddle cycle from Indian folklore - every tale the "
+             "gangster tells forces the cop to rethink right and wrong."),
+            ("How long is it?",
+             "147 minutes."),
+        ],
+    },
+    "conclave": {
+        "verdict": "The papal election as political thriller: Ralph Fiennes' "
+            "cardinal-dean must steer a locked-room conclave of ambitious princes "
+            "of the church while secrets surface with every ballot. Edward Berger "
+            "follows All Quiet with immaculate tension - bargaining, scheming, "
+            "Isabella Rossellini - and an ending that detonates the whole film's "
+            "argument. The Adapted Screenplay Oscar was earned.",
+        "faqs": [
+            ("Do I need Catholic knowledge?",
+             "No - it explains the ritual machinery as it goes; the engine is pure "
+             "institutional politics."),
+            ("Is it based on a book?",
+             "On Robert Harris's 2016 novel."),
+            ("What about the ending?",
+             "A genuine twist - widely debated, thematically loaded; worth the "
+             "blind watch."),
+        ],
+    },
 }
