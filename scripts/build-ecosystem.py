@@ -1769,7 +1769,9 @@ def entertainment_pages():
             faq_ld = _nx_faq_ld(m, _enr_rec)
         else:
             verdict_html = faq_html = faq_ld = ""
-        _sim = [x for x in _nx_genre_ix.get(m.get("genre") or "", []) if x["slug"] != m["slug"]][:3]
+        _sim_pool = [x for x in _nx_genre_ix.get(m.get("genre") or "", []) if x["slug"] != m["slug"]]
+        _sim_pool.sort(key=lambda x: (abs((x.get("year") or 0) - (m.get("year") or 0)), x["slug"]))
+        _sim = _sim_pool[:6]
         sim_html = ('<h2>More like this</h2><ul class="nx-facts">'
                     + "".join('<li><a href="/entertainment/movie/' + x["slug"] + '/">' + html.escape(x["title"])
                               + ((' (' + str(x["year"]) + ')') if x.get("year") else '') + '</a></li>' for x in _sim)
