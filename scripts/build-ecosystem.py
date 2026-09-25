@@ -2350,6 +2350,17 @@ def sports_pages():
                   head("sports", "The points race, with the working shown \u2014 never betting.")
                   + _std.POINTS_RACE_BODY + foot("sports")))
 
+    # Desk tool (2026-09-25 growth batch): transfer amortisation — the
+    # accounting arithmetic behind the amortisation explainer, working shown.
+    _ta_title = ("Transfer amortisation calculator \u2014 yearly charge, book value, "
+                 "profit on sale | BRYME Sport")
+    _ta_dek = ("Fee and contract length in \u2014 yearly amortisation, book value by season and the "
+               "accounting profit or loss on any sale out, every line of the working shown. "
+               "Runs in your browser; accounting arithmetic, never a valuation or a bet.")
+    pages.append(("/transfer-amortisation-calculator/", _ta_title, _ta_dek[:155],
+                  head("sports", "The transfer maths, with the working shown \u2014 never betting.")
+                  + _std.AMORT_BODY + foot("sports")))
+
     # the analysis shelf: how the game is played (batch 3)
     import sports_analysis_data
     analysis_rows = []

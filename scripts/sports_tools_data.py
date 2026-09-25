@@ -65,3 +65,73 @@ POINTS_RACE_BODY = """
 </ul>
 <div class="actions"><a class="btn secondary" href="/sports/">All of BRYME Sport</a></div></section>
 </div></main>"""
+
+# ---- Growth batch (2026-09-25): transfer amortisation calculator ----
+# Pairs with the amortisation explainer. Arithmetic only: fee, contract
+# length, optional sale — yearly charge, book value and profit-on-sale out,
+# every line of the working shown. No betting, no valuations, no advice.
+
+AMORT_BODY = """
+<main id="main"><div class="wrap">
+
+<nav class="crumb"><a href="/sports/">Sport</a> / Transfer amortisation calculator</nav>
+<section class="cover"><p class="kicker">Tool &middot; desk</p>
+<h1 class="cover-title" style="font-size:clamp(30px,4.6vw,48px)">Transfer amortisation calculator</h1>
+<p class="byline">BRYME Sport desk &middot; published 2026-09-25 &middot; runs entirely in your browser &mdash; nothing is stored or sent &middot; arithmetic, not betting advice</p></section>
+<section class="section alt"><div class="wrap"><p class="lede"><b>In one line:</b> put in a fee and a contract length &mdash; and the yearly accounting charge, the book value in every season, and the profit or loss on any sale come out, with every step of the working shown.</p></div></section>
+<section class="section"><div class="prose">
+
+<p>Amortisation is why a &pound;100m signing costs the accounts &pound;20m a year instead of &pound;100m at once, and why selling a player late in his deal books a big &ldquo;profit&rdquo;. The mechanics are explained in <a href="/how-transfer-fee-amortisation-works/">the full explainer</a>; this tool runs the same arithmetic on your numbers. It is accounting arithmetic on figures you enter &mdash; it does not value players, predict fees or suggest anything to do with betting.</p>
+<style>
+.tam-card{border:1px solid var(--line-strong);border-radius:12px;background:var(--sheet);padding:20px 22px;max-width:760px}
+.tam-flds{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.tam-flds label{display:flex;flex-direction:column;gap:6px;font-weight:600;font-size:14px}
+.tam-flds input,.tam-flds select{padding:10px 12px;border:1px solid var(--line-strong);border-radius:8px;font-size:16px;background:var(--paper);color:var(--ink)}
+.tam-out{margin-top:16px;border-left:3px solid var(--accent);background:var(--paper);padding:14px 16px;border-radius:0 10px 10px 0}
+.tam-out table{border-collapse:collapse;margin:10px 0;width:100%;max-width:560px;font-variant-numeric:tabular-nums}
+.tam-out td,.tam-out th{border-bottom:1px solid var(--line-strong);padding:6px 10px;text-align:right}
+.tam-out th:first-child,.tam-out td:first-child{text-align:left}
+.tam-warn{color:#a33;font-weight:600}
+</style>
+<div class="tam-card">
+<div class="tam-flds">
+<label for="tam-fee">Transfer fee
+<input id="tam-fee" type="number" min="0" step="any" placeholder="e.g. 100000000"></label>
+<label for="tam-years">Contract length (years)
+<input id="tam-years" type="number" min="1" max="10" step="1" placeholder="e.g. 5"></label>
+<label for="tam-cur">Currency (label only)
+<select id="tam-cur"><option value="&pound;">&pound; GBP</option><option value="&euro;">&euro; EUR</option><option value="$">$ USD</option><option value="">&mdash; no symbol</option></select></label>
+<label for="tam-sale">Sale price (optional)
+<input id="tam-sale" type="number" min="0" step="any" placeholder="e.g. 75000000"></label>
+<label for="tam-syear">Sold after (full years, optional)
+<input id="tam-syear" type="number" min="0" max="10" step="1" placeholder="e.g. 2"></label>
+</div>
+<div class="tam-out" id="tam-out" aria-live="polite">Enter a fee and a contract length to see the yearly charge.</div>
+<p id="tam-warn" class="tam-warn" aria-live="polite"></p>
+</div>
+
+<script src="/assets/sports-transfer-amortisation.js" defer></script>
+
+<h2 id="how">What the numbers mean</h2>
+<p><b>Yearly amortisation</b> is fee &divide; contract length: the straight-line charge the accounts carry every season of the deal. <b>Book value</b> is what is left of the fee after the seasons played so far &mdash; fee minus (yearly charge &times; years). <b>Profit on sale</b> is sale price minus book value, booked in the year of the sale: a player sold for more than his book value produces an accounting gain, and academy graduates &mdash; whose book value is near zero &mdash; produce gains from almost any fee. The tool shows every line so you can check it against any reported figure.</p>
+
+<p>Two honest limits. First, this is the accounting view, not cash: fee instalments are negotiated separately, and wages sit on top of the amortised charge. Second, real club accounts add add-backs, impairments and league-specific adjustments &mdash; PSR calculations are the Premier League's own arithmetic on top of these basics, and <a href="/financial-fair-play-explained/">the PSR explainer</a> covers that layer. Nothing here places, suggests or prices a bet.</p>
+
+</div></section>
+
+<section class="section alt"><div class="section-head"><p class="kicker">Next</p><h2>More from the shelf.</h2></div>
+<ul class="list">
+<li><a href="/how-transfer-fee-amortisation-works/"><span><b>Why a &pound;100m signing does not cost &pound;100m this year</b><small>The full explainer: book value, the profit trick and PSR</small></span><span class="meta">Explainer</span></a></li>
+<li><a href="/financial-fair-play-explained/"><span><b>Financial Fair Play and PSR, explained</b><small>The spending rules behind the points deductions</small></span><span class="meta">Explainer</span></a></li>
+<li><a href="/points-race-calculator/"><span><b>Points race calculator</b><small>Project the finish from points, games and form</small></span><span class="meta">Tool</span></a></li>
+</ul>
+<div class="actions"><a class="btn secondary" href="/sports/">All of BRYME Sport</a></div></section>
+
+</div></main>
+"""
+
+SPO_TOOLS = list(SPO_TOOLS) + [
+    ("transfer-amortisation-calculator", "Transfer amortisation calculator",
+     "Fee and contract length in — yearly charge, book value by season and profit-on-sale out, every line of the working shown. Accounting arithmetic, never a valuation.",
+     "how-transfer-fee-amortisation-works"),
+]

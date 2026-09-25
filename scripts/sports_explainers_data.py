@@ -411,3 +411,118 @@ SPORT_EXPLAINERS.extend([
  ("financial-fair-play-explained", "FFP and PSR, explained"),
  ("promotion-and-relegation-explained", "Promotion and relegation")]),
 ])
+
+# ---- Growth batch (2026-09-25): the money-and-mechanics shelf ----
+# Evergreen finance, regulation and format explainers. AdSense-safe house
+# rules apply: no betting, no odds, no tips; regulatory detail dated and
+# sourced; every figure traceable to the linked primary documents.
+
+SPORT_EXPLAINERS += [
+
+("how-football-agents-get-paid", "How football agents actually get paid",
+"The percentages, the caps, the licences and the &ldquo;client pays&rdquo; rule: the money machine inside every transfer, explained from the regulations.",
+"""<p>Every transfer story has a hidden character: the agent. They negotiate the deal, but how they are paid &mdash; by whom, how much, and under what licence &mdash; is governed by rules most fans have never seen. Since January 2023 those rules have had a name: the FIFA Football Agent Regulations (FFAR).</p>
+<h2>The old world: fees without a ceiling</h2>
+<p>Under the previous intermediary system (2015&ndash;2023), registration was light and fee recommendations were non-binding. In practice, agents' commissions on the biggest deals ran into the millions, usually paid by the buying club on the player's behalf &mdash; an arrangement critics called a structural conflict of interest, because the agent negotiating the player's contract was paid by the other side of the table.</p>
+<h2>The caps, article by article</h2>
+<p>The FFAR's article 15 sets maximum service fees by who the agent represents and how much the player earns. The shape of it, per the regulations and law-firm summaries of them:</p>
+<ul>
+<li><b>Representing the player or the engaging club:</b> up to 5% of the player's remuneration below the USD 200,000 threshold, and up to 3% above it &mdash; the two bands stack, so on a USD 1m salary the cap is 5% of the first 200k plus 3% of the rest.</li>
+<li><b>Permitted dual representation</b> (agent acting for player and engaging club): up to 10% below the threshold, 6% above.</li>
+<li><b>Representing the selling club:</b> up to 10% of the transfer compensation.</li>
+</ul>
+<p>Two design details matter. Conditional payments count towards the cap calculation. And an engaging club may pay no more than half of the total commission due.</p>
+<h2>&ldquo;Client pays&rdquo; &mdash; the structural change</h2>
+<p>The deeper reform: players above the USD 200,000 remuneration threshold must pay their own agent. The logic is conflict-of-interest hygiene &mdash; the person negotiating your contract should be paid by you, not by the club across the table. In practice it moved real money from club accounts into player expenses, and it remains one of the most contested provisions in European courts.</p>
+<h2>Licences and the Agents Chamber</h2>
+<p>The FFAR also re-licensed the profession: agents must pass a FIFA exam and hold an annual licence, and disputes over representation agreements go to a dedicated FIFA Agents Chamber rather than ordinary courts. Whether every piece survives legal challenge is an open question &mdash; parts have been litigated since day one &mdash; but the architecture (caps, exams, client-pays, a chamber) is the system the market now operates inside.</p>
+<p>The honest summary for fans: when a transfer is reported at &ldquo;&pound;80m plus add-ons&rdquo;, the agent fees attached to it are regulated percentages of salary and fee, not free numbers &mdash; and knowing who pays them explains half of the window's behaviour.</p>""",
+[("Lewis Silkin — the new FIFA football agent regulations", "https://www.lewissilkin.com/insights/2023-01-06/the-new-fifa-football-agent-regulations-what-you-need-to-know"),
+ ("Red Star Education — new FIFA Football Agent Regulations", "https://www.redstareducation.co.uk/blog/new-fifa-football-agent-regulations/")],
+[("why-football-transfers-collapse", "Why transfers collapse"),
+ ("what-does-a-sporting-director-do", "What a sporting director does"),
+ ("how-football-contracts-work", "How football contracts work")]),
+
+("how-transfer-fee-amortisation-works", "Why a &pound;100m signing does not cost &pound;100m this year",
+"Transfer fees are spread across contracts in club accounts. Amortisation, explained: the yearly cost, the profit on sale, and why it moves PSR.",
+"""<p>When a club pays &pound;100m for a player on a five-year contract, almost no club account shows a &pound;100m cost that year. The fee is spread across the contract &mdash; an accounting mechanism called <b>amortisation</b> &mdash; and understanding it explains a surprising share of transfer-market behaviour.</p>
+<h2>The mechanism in one formula</h2>
+<p>Annual amortisation = transfer fee &divide; contract length. Our &pound;100m signing on five years costs the accounts <b>&pound;20m a year</b>, every year, for five years. The player's wage sits on top of that, separately. The club paid the cash in instalments or not; the accounting cost is the same straight line.</p>
+<h2>The book value &mdash; and the profit trick</h2>
+<p>Each year the unspent remainder is the player's <b>net book value</b>: after two years of our example, it is &pound;60m. Now the club sells him for &pound;75m. The accounts record a <b>profit of &pound;15m</b> (sale price minus book value) &mdash; in the year of sale. This is why clubs can report big transfer profits in a single window: selling players late in their contracts converts small book values into large accounting gains.</p>
+<p>It also explains the academy asymmetry: a homegrown player was never bought, so his book value is near zero, and <em>any</em> sale fee lands almost entirely as accounting profit. The classic deadline-day move &mdash; selling a graduate to balance the books &mdash; is this mechanic wearing a shirt.</p>
+<h2>Why PSR makes it strategic, not cosmetic</h2>
+<p>The Premier League's Profitability and Sustainability Rules assess clubs on aggregate adjusted losses over a rolling three-season period &mdash; historically a &pound;105m threshold before permitted add-backs and owner equity, per the League's own published guidance on PSR calculations. Amortised transfer cost counts against that; amortisation is therefore <em>spending control with a delay</em>: a longer contract lowers the yearly charge, which is why long deals became a financial instrument as much as a loyalty signal.</p>
+<h2>The honest caveats</h2>
+<p>Amortisation is accounting, not cash: fee payment schedules are negotiated separately, and cash flow can diverge from the straight line. Rules evolve &mdash; squad-cost ratios and new spending controls have been layered on since the PSR cases of 2024 &mdash; and different competitions (UEFA's rules, other leagues) count differently. But the core mechanic never changes: <b>fee &divide; years = the yearly number that moves everything else</b>. The desk's transfer amortisation calculator runs exactly this arithmetic, with the working shown.</p>""",
+[("Premier League — statement on Profitability and Sustainability Rules", "https://www.premierleague.com/en/news/3938339"),
+ ("Sporting News — what are Premier League Profit and Sustainability Rules?", "https://www.sportingnews.com/us/soccer/news/premier-league-profit-sustainability-rules-financial-fair-play/42ef3c1a91043e191482250d")],
+[("financial-fair-play-explained", "Financial Fair Play and PSR, explained"),
+ ("premier-league-prize-money-explained", "Premier League prize money, explained"),
+ ("how-do-football-clubs-make-money", "How football clubs make money")]),
+
+("how-the-fifa-world-ranking-works", "How the FIFA world ranking actually works",
+"Elo maths with an importance dial: the formula behind every &lsquo;ranked No.1&rsquo; headline, the numbers that move it, and what it is actually used for.",
+"""<p>Every World Cup draw ceremony leans on one list: the FIFA world ranking. It looks like a simple ladder, but since August 2018 it has been a piece of borrowed chess mathematics &mdash; an Elo-style system where every international match moves both teams' points in opposite directions.</p>
+<h2>The formula</h2>
+<p>After each match, a team's points are updated as: <b>P = P(before) + I &times; (W &minus; W(e))</b>, where W is the result (1 for a win, 0.5 for a draw, 0 for a loss) and W(e) is the <em>expected</em> result given the two teams' current ratings: <b>W(e) = 1 / (10<sup>&minus;&Delta;/600</sup> + 1)</b>, with &Delta; the points gap between the sides. The elegance is in the expectation term: beating a much stronger team moves you a long way; beating a weak one barely moves you; losing to a giant costs you almost nothing.</p>
+<h2>The importance dial</h2>
+<p>I scales everything by what was at stake. The published scale runs from 5 (friendlies outside the international calendar) through 10 (calendar-window friendlies) and 15&ndash;25 (Nations League and qualifiers) to the top tier &mdash; around 35 for early-round matches of confederation finals, rising to 50&ndash;60 for World Cup knockout football. One World Cup semi-final swing can outweigh a year of friendlies by design.</p>
+<h2>Two rules that surprise people</h2>
+<p>First, <b>knockout-stage losses do not deduct points</b> in final competitions &mdash; losing a World Cup quarter-final leaves your rating untouched, so teams are never punished for reaching deep stages. Second, there is no home/away weighting and no goal-margin bonus; since 2021 points are carried to two decimal places, so the order can turn on hundredths.</p>
+<h2>What it is for &mdash; and what it is not</h2>
+<p>The ranking's real power is procedural: it seeds World Cup draws and qualification pots, decides which teams host or travel, and settles tie-breakers. It is not a prediction engine: it measures results weighted by context, not underlying quality, and a team coasting through friendly wins can outrank one that drew harder fixtures. When a headline says &ldquo;ranked No.1 in the world&rdquo;, the honest translation is: <em>best results, appropriately weighted, over the recent window</em> &mdash; which is a real achievement, just a narrower one than it sounds.</p>""",
+[("FIFA — FIFA/Coca-Cola Men's World Ranking", "https://www.fifa.com/fifa-world-ranking/men"),
+ ("Wikipedia — FIFA Men's World Ranking (calculation method)", "https://en.wikipedia.org/wiki/FIFA_Men%27s_World_Ranking")],
+[("how-the-2026-world-cup-format-works", "The 48-team World Cup, explained"),
+ ("how-extra-time-and-penalty-shootouts-work", "Extra time and shootouts, explained")]),
+
+("how-the-2026-world-cup-format-works", "The 48-team World Cup, explained",
+"Twelve groups of four, a round of 32, 104 matches across three host countries: the 2026 format and what changed from the tournaments you remember.",
+"""<p>The 2026 World Cup in the United States, Canada and Mexico is the first with <b>48 teams</b> &mdash; up from 32 &mdash; and the format changed with the numbers. Here is the shape of it, and the honest consequences.</p>
+<h2>The structure</h2>
+<p>Forty-eight teams, <b>twelve groups of four</b>. The group stage is a single round-robin: three matches each, top two from every group advance (24), plus the <b>eight best third-placed teams</b> &mdash; 32 survivors into a new <b>round of 32</b>, then the familiar straight knockout to the final. The total climbs to <b>104 matches</b>, the most in the tournament's history, played across 16 venues in three countries.</p>
+<h2>Why it grew</h2>
+<p>Expansion was a promise about access: more confederation slots mean more nations experiencing a World Cup &mdash; several 2026 debutants qualified through paths that simply did not exist at 32 teams. The commercial logic sits alongside the sporting one, and pretending otherwise is not honest: more teams, more matches, more markets, more broadcast inventory.</p>
+<h2>What the new format does to the football</h2>
+<p>Two effects matter on the pitch. First, the eight best third-placed places change group-stage arithmetic: four points &mdash; sometimes three &mdash; can now be enough to survive, so the final round of dead-looking group games matters more than ever. Second, the extra knockout round means a champion plays <b>eight matches</b>, not seven; squad depth and recovery science are now tournament strategy, not background noise.</p>
+<h2>The three-host wrinkle</h2>
+<p>Three countries means three time zones of travel, four if the west coast swings &mdash; and a scheduling problem nobody has solved before at this scale. The final lands at MetLife Stadium in New York/New Jersey; the opening match in Mexico City's Estadio Azteca, the first stadium to host three World Cups. Compare the shape to club football's own expansion &mdash; the Champions League's 36-team league phase &mdash; and the pattern is clear: the sport's big tournaments are trading the tidy formats of the past century for volume, and both changes argue about the same thing: what a tournament is for.</p>""",
+[("FIFA — FIFA World Cup 2026 (official tournament hub)", "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026"),
+ ("Wikipedia — 2026 FIFA World Cup", "https://en.wikipedia.org/wiki/2026_FIFA_World_Cup")],
+[("how-the-fifa-world-ranking-works", "How the FIFA world ranking works"),
+ ("how-the-champions-league-works", "How the Champions League works")]),
+
+("how-goal-line-technology-works", "How goal-line technology actually works",
+"Cameras or magnetic fields, a one-second answer, a vibrating watch: the binary piece of tech football accepted instantly &mdash; and why VAR still divides.",
+"""<p>Goal-line technology (GLT) answers football's simplest and most furious question &mdash; <em>did the whole ball cross the line?</em> &mdash; in under a second, to the referee alone. Approved by the IFAB in July 2012 after decades of resistance, it is the one piece of match technology almost nobody argues with. Understanding why takes about two minutes.</p>
+<h2>Two competing engineering answers</h2>
+<p>Certified systems have used two approaches. <b>Camera-based systems</b> track the ball with multiple high-speed cameras per goal and triangulate its position against the line to millimetre accuracy. <b>Magnetic-field systems</b> buried cables around the goal and sensed a chipped ball crossing the field. Both must pass the FIFA Quality Programme certification and independent testing before a competition may use them; the law cares about the guarantee, not the method.</p>
+<h2>The rules that make it boring &mdash; in the best way</h2>
+<p>The Laws of the Game impose a deliberately tight box, per IFAB Law 1's GLT provisions: the system applies <b>solely to the goal line</b>, is used <b>only to determine whether a goal was scored</b>, must confirm <b>immediately &mdash; within one second</b> &mdash; and communicates <b>only to the match officials</b> (vibration and a visual signal on the referee's watch, optionally to the video operation room). Before every match the referee must test the system; if it fails the test, it must not be used. Binary question, binary answer, single recipient.</p>
+<h2>Why it settled and VAR did not</h2>
+<p>The contrast is instructive. GLT answers a question with one correct answer that physics can settle &mdash; ball over line or not. VAR answers questions with <em>judgement</em> in them: was it clear and obvious? was that enough contact? was the attacker involved? Nobody disputes the goal-line computer because there is nothing to dispute; the arguments around VAR are arguments about human interpretation wearing a technology costume. GLT also never interrupts the game: the answer arrives on a wrist mid-play, and unless the referee signals a goal, most fans never know the system spoke.</p>
+<h2>The history in one line each</h2>
+<p>The pressure built through a decade of howlers &mdash; most famously the 2010 World Cup disallowed goal that crossed by half a metre. The IFAB voted unanimously in July 2012; the Premier League adopted it for 2013-14; it is now standard at the top of the game and, like semi-automated offside after it, is gradually filtering down as costs fall. The desk's VAR explainer covers the slower, messier sibling; the goal-line machine, happily, has nothing left to explain &mdash; which is the highest praise football technology gets.</p>""",
+[("IFAB — Laws of the Game, Law 1: The Field of Play (GLT provisions)", "https://www.theifab.com/laws/latest/the-field-of-play/"),
+ ("Wikipedia — Goal-line technology", "https://en.wikipedia.org/wiki/Goal-line_technology")],
+[("how-var-works", "How VAR actually works"),
+ ("the-offside-rule-explained", "The offside rule, explained")]),
+
+("how-football-contracts-work", "How football contracts actually work",
+"Length limits, the protected period, just cause and the clauses inside the clauses: the legal skeleton under every transfer headline, from FIFA's rulebook.",
+"""<p>Behind every transfer rumour is a document: the player's employment contract. Football's global rulebook &mdash; FIFA's Regulations on the Status and Transfer of Players (RSTP) &mdash; sets the frame, and national leagues fill it in. The mechanics are less mysterious than the headlines.</p>
+<h2>Length: one year minimum, five maximum</h2>
+<p>The RSTP sets the boundaries: a professional contract must run at least from its effective date to the end of the season, and <b>no longer than five years</b> (exceptions require league approval). Everything else &mdash; wages, image rights, bonuses &mdash; is negotiation inside that frame. Contract length became a financial instrument when amortisation entered the picture: the same fee spread over five years costs the accounts a fifth as much per season as over one, so long contracts are as much accounting strategy as commitment.</p>
+<h2>The protected period &mdash; and why &lsquo;running it down&rsquo; works</h2>
+<p>Football does not allow ordinary contract-breaking, but it does price it. The RSTP's <b>contractual stability</b> rules say a contract may only be terminated by mutual agreement or for <b>just cause</b>; outside a &ldquo;protected period&rdquo; (broadly three seasons or three years for deals signed before age 28, two for later signings), terminating without just cause means <b>compensation</b> &mdash; and sometimes sporting sanctions &mdash; rather than simple freedom. This is why the final year of a contract is leverage: with twelve months left, the selling club's negotiating asset is evaporating, and &ldquo;running down his deal&rdquo; is a rational strategy with a price tag attached.</p>
+<h2>The clauses inside the clauses</h2>
+<p>Release clauses (a fixed price a buying club can trigger &mdash; the desk explains them separately), sell-on percentages owed to former clubs, loyalty bonuses, and appearance add-ons all live inside or beside the contract. Since the 2023 agent regulations, representation costs attach to contracts too: agents for higher-earning players are paid by the player, with capped percentages &mdash; a detail that changes who really pays in a negotiation.</p>
+<h2>What actually ends contracts</h2>
+<p>Mutual termination, expiry, just cause (unpaid wages being the classic player-side trigger), or the sporting-just-cause routes for players frozen out of squads. The transfer itself is a fourth thing entirely: two clubs agreeing a fee while the player agrees new personal terms &mdash; two documents, both required, which is exactly where &ldquo;done deals&rdquo; collapse. When you read &ldquo;in talks&rdquo;, the honest translation is: <em>a contract is being written</em>, and every clause above is a line of it.</p>""",
+[("FIFA — Regulations on the Status and Transfer of Players (official PDF)", "https://digitalhub.fifa.com/m/19e76b9a9a9ae0ce/original/adi1292xtnibmwrqnimy-pdf.pdf"),
+ ("Lewis Silkin — the new FIFA football agent regulations", "https://www.lewissilkin.com/insights/2023-01-06/the-new-fifa-football-agent-regulations-what-you-need-to-know")],
+[("what-is-a-release-clause", "What a release clause is"),
+ ("how-football-agents-get-paid", "How football agents get paid"),
+ ("why-football-transfers-collapse", "Why transfers collapse")]),
+]
