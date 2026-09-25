@@ -50,3 +50,5 @@
 # server in agreement with production — /movie/the-invite/ returns 404 live.
 # "sports" and "entertainment" are no longer treated as retired media at all:
 # both are live properties (111 and 806 sitemap URLs) and serve 200.
+/money/saving-for-a-house-deposit-explained  https://thebryme.com/money/how-to-save-for-a-house-deposit/  301
+/money/saving-for-a-house-deposit-explained/  https://thebryme.com/money/how-to-save-for-a-house-deposit/  301
