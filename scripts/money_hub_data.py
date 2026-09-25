@@ -71,6 +71,12 @@ MONEY_MAP = {
     "wills-and-estate-basics-explained": ("save", "save"),
     "how-much-to-save-for-retirement-explained": ("save", "save"),
     "fire-financial-independence-explained": ("save", "save"),
+    "capital-gains-tax-explained": ("save", "save"),
+    "tax-deductions-and-credits-explained": ("save", "save"),
+    "inheritance-tax-explained": ("save", "save"),
+    "how-payslips-work-explained": ("save", "save"),
+    "saving-for-a-house-deposit-explained": ("save", "save"),
+    "your-first-tax-return-explained": ("save", "save"),
     "life-insurance-basics-explained": ("save", "save"),
     # Credit & retirement batch (2026-09-25): high-CPC evergreen clusters.
     "how-credit-scores-work": ("save", "save"),

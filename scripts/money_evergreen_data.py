@@ -33,6 +33,7 @@ MONEY_NAV = (
         ("index-funds-explained", "Index funds"),
         ("401k-explained", "401(k), explained"),
         ("how-state-pensions-work", "State pensions"),
+        ("how-payslips-work-explained", "Payslips"),
         ("sinking-funds-explained", "Sinking funds"),
         ("marginal-tax-calculator", "Tax bracket calculator"),
         ("life-insurance-basics-explained", "Life insurance basics"),

@@ -1248,6 +1248,150 @@
     "index-funds-explained",
     "inflation-and-your-money-explained"
    ]
+  },
+  {
+   "slug": "capital-gains-tax-explained",
+   "section": "Save and grow",
+   "title": "Capital gains tax explained: the toll booth on investment profits | BRYME Money",
+   "h1": "Capital gains tax, explained: basis, holding periods and the wrappers that dodge it",
+   "dek": "How capital gains tax works: realisation, cost basis, long-term versus short-term rates, loss offsetting, and why the account matters more than the asset.",
+   "description": "Capital gains tax explained: what triggers it, cost basis, holding periods and preferential rates, tax-loss harvesting, and how tax wrappers change everything.",
+   "summary": "The mechanics of realisation and basis, long-term versus short-term, offsetting losses, and why wrapper choice beats gain-optimisation.",
+   "sources": [
+    {
+     "label": "SEC Investor.gov — capital gain",
+     "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/capital-gain"
+    },
+    {
+     "label": "IRS — capital gains tax (Topic 409)",
+     "url": "https://www.irs.gov/taxtopics/tc409"
+    }
+   ],
+   "related": [
+    "trading-taxes-explained",
+    "marginal-tax-rates-explained",
+    "index-funds-explained"
+   ]
+  },
+  {
+   "slug": "tax-deductions-and-credits-explained",
+   "section": "Save and grow",
+   "title": "Tax deductions vs tax credits: the difference that is real money | BRYME Money",
+   "h1": "Tax deductions versus tax credits: two machines, one confused vocabulary",
+   "dek": "Deductions shrink the income, credits cut the bill pound for pound — plus the refundable credits millions never claim.",
+   "description": "Tax deductions versus tax credits explained: why a credit beats a deduction, standard versus itemised, refundable credits, and the unclaimed-entitlement trap.",
+   "summary": "The input/output difference, marginal-rate value of deductions, the big credits, refundability, and why filing when you owe nothing pays.",
+   "sources": [
+    {
+     "label": "IRS — credits and deductions",
+     "url": "https://www.irs.gov/credits-and-deductions"
+    },
+    {
+     "label": "IRS — should I itemize? (Topic 501)",
+     "url": "https://www.irs.gov/taxtopics/tc501"
+    }
+   ],
+   "related": [
+    "marginal-tax-rates-explained",
+    "your-first-tax-return-explained",
+    "how-payslips-work-explained"
+   ]
+  },
+  {
+   "slug": "inheritance-tax-explained",
+   "section": "Save and grow",
+   "title": "Inheritance tax explained: thresholds, exemptions and the planning window | BRYME Money",
+   "h1": "Inheritance tax, explained: most estates pay nothing — the ones that do overpay",
+   "dek": "The UK nil-rate bands and spouse exemptions, the US estate-tax threshold and state-level inheritance taxes, and the planning that happens before, not after.",
+   "description": "Inheritance tax explained: UK bands and the married-couple structure, US federal and state thresholds, gifting rules, and the planning that decides how much survives.",
+   "summary": "How the bands and exemptions stack, why arrangement beats schemes, the seven-year gifting rule, and when to hire an adviser.",
+   "sources": [
+    {
+     "label": "GOV.UK — inheritance tax",
+     "url": "https://www.gov.uk/inheritance-tax"
+    },
+    {
+     "label": "GOV.UK — applying for probate",
+     "url": "https://www.gov.uk/applying-for-probate"
+    }
+   ],
+   "related": [
+    "wills-and-estate-basics-explained",
+    "capital-gains-tax-explained",
+    "retirement-savings-basics-explained"
+   ]
+  },
+  {
+   "slug": "how-payslips-work-explained",
+   "section": "Save and grow",
+   "title": "How payslips work: the five-minute audit nobody does | BRYME Money",
+   "h1": "How payslips work: gross to net, tax codes, and the audit worth doing quarterly",
+   "dek": "Reading a payslip properly: pre-tax versus post-tax deductions, UK tax codes and the US W-4, and the five checks that catch silent overcharges.",
+   "description": "Payslips explained: the gross-to-net story, pre-tax and post-tax deductions, tax codes and W-4 withholding, and a five-step quarterly audit that catches errors.",
+   "summary": "The anatomy of a payslip, the codes that control the numbers, the five-minute audit, and why errors compound like savings.",
+   "sources": [
+    {
+     "label": "GOV.UK — tax codes",
+     "url": "https://www.gov.uk/tax-codes"
+    },
+    {
+     "label": "IRS — filing",
+     "url": "https://www.irs.gov/filing"
+    }
+   ],
+   "related": [
+    "marginal-tax-rates-explained",
+    "your-first-tax-return-explained",
+    "401k-explained"
+   ]
+  },
+  {
+   "slug": "saving-for-a-house-deposit-explained",
+   "section": "Save and grow",
+   "title": "Saving for a house deposit: the target, the timeline, the parking spot | BRYME Money",
+   "h1": "Saving for a house deposit: the most solvable problem in personal finance",
+   "dek": "Why deposit size prices the mortgage, how to work the timeline backwards, where the money should wait — and the rules on family gifts.",
+   "description": "How to save for a house deposit: why LTV tiers and mortgage insurance make the number matter, timeline maths, safe parking, Lifetime ISAs and gift rules.",
+   "summary": "The LTV logic, the smallest-good-tier target, deadline-safe parking, the LISA bonus, and what not to raid.",
+   "sources": [
+    {
+     "label": "CFPB — owning a home",
+     "url": "https://www.consumerfinance.gov/owning-a-home/"
+    },
+    {
+     "label": "GOV.UK — Lifetime ISA",
+     "url": "https://www.gov.uk/lifetime-isa"
+    }
+   ],
+   "related": [
+    "savings-goal-calculator",
+    "sinking-funds-explained",
+    "emergency-fund-guide"
+   ]
+  },
+  {
+   "slug": "your-first-tax-return-explained",
+   "section": "Save and grow",
+   "title": "Your first tax return: who files, what happens, what it costs to skip it | BRYME Money",
+   "h1": "Your first tax return, explained: one afternoon and a folder",
+   "dek": "Who actually has to file, the taxed-at-source rule that settles it, free filing channels, deadlines that bite — and the five classic first-timer mistakes.",
+   "description": "First tax return explained: W-2 versus 1099, who must file, free official channels, April and January deadlines, refunds, penalties and the classic mistakes.",
+   "summary": "The taxed-at-source rule, gathering and filing mechanics, refundable credits, the deadline traps, and record-keeping that becomes money later.",
+   "sources": [
+    {
+     "label": "IRS — filing",
+     "url": "https://www.irs.gov/filing"
+    },
+    {
+     "label": "GOV.UK — self assessment tax returns",
+     "url": "https://www.gov.uk/self-assessment-tax-returns"
+    }
+   ],
+   "related": [
+    "tax-deductions-and-credits-explained",
+    "how-payslips-work-explained",
+    "trading-taxes-explained"
+   ]
   }
  ]
 }
