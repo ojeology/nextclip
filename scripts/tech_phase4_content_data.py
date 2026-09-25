@@ -51,7 +51,7 @@ PHASE4_GUIDES = [
 <p>Turn down or off the sharpening/edge-enhancement - the stream already has detail, and added sharpening creates halos and grain. Switch the dynamic contrast and "vivid" energy-saving modes off; they crush darks and blow highlights, which is the opposite of what the <a href="/tech/hdr-formats-the-weakest-link/">HDR chain</a> is trying to do. And pick a colour temperature that reads slightly warm (often "Warm 2" or "Movie/Cinema") rather than the cool blue default - the cool look is a showroom trick, and it makes skin tones wrong.</p>
 <h2>Use the right picture mode and let the source lead</h2>
 <p>Almost every TV has a "Filmmaker," "Movie," or "Cinema" mode that disables most of the above in one go - start there and adjust brightness to the room. Make sure the HDMI input is in its enhanced/4K mode so HDR and higher frame rates pass through, and let the stream set quality rather than forcing the TV to upscale aggressively. If picture and sound drift apart after all this, that is a separate problem with its own fix order in <a href="/tech/audio-video-sync-drift-fix-order/">audio-video sync drift</a>.</p>""",
-[("Rtings — motion interpolation / soap opera effect", "https://www.rtings.com/tv/learn/motion-interpolation")],
+[("Rtings — TV learning library (motion interpolation / soap opera effect)", "https://www.rtings.com/tv/learn")],
 ["hdr-formats-the-weakest-link", "audio-video-sync-drift-fix-order"]),
 
 ("offline-streaming-what-actually-works-on-a-plane", "streaming", "guide",

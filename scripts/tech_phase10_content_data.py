@@ -42,7 +42,7 @@ PHASE10_GUIDES = [
 <p>The single most effective step is putting the site behind a CDN or reverse proxy, which absorbs and filters a huge amount of junk before it reaches your server — the same CDN that speeds up your site in <a href="/tech/what-is-a-cdn-why-your-site-needs-one/">what a CDN does</a> also hides your origin and soaks up floods. A web application firewall (<a href="/tech/what-is-a-waf-website-firewall/">what a WAF is</a>) adds request filtering on top. And being on hosted or cloud infrastructure that can scale helps, because a fixed single server is the easiest target. For most small sites, "behind a reputable CDN with its DDoS mitigation on" is 90% of the answer.</p>
 <h2>What is overkill, and what to do during an attack</h2>
 <p>Dedicated scrubbing services and enterprise contracts are for sites that are targeted repeatedly at scale — not for a blog or a small shop. If you are hit, the practical moves are boring: let the CDN absorb it, do not keep restarting your server (it will just be flooded again), and contact your host or provider, who often have mitigation you can enable. And keep the basics solid — <a href="/tech/website-security-headers-explained/">security headers</a>, <a href="/tech/patch-management-for-humans/">patches</a> — because the goal of most small attackers is disruption, and a site that is resilient and uninteresting is left alone.</p>""",
-[("CISA — DDoS quick guide", "https://www.cisa.gov/topics/cyber-threats-and-advisories/denial-service")],
+[("Cloudflare — What is a DDoS attack?", "https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack/")],
 ["what-is-a-cdn-why-your-site-needs-one", "what-is-a-waf-website-firewall"]),
 
 ("what-is-a-waf-website-firewall", "web-and-hosting", "guide",
@@ -68,7 +68,7 @@ PHASE10_GUIDES = [
 <p>A scan finds <em>known</em>, detectable issues — it is not a substitute for a human penetration test, and it will not catch a logic flaw unique to your application or a clever chained attack. So treat a clean scan as "no obvious open doors," not "secure." The honest expectation is that it catches the common, automatable problems that account for most real-world break-ins, which is precisely why running one is worth it.</p>
 <h2>The light version any small site can run</h2>
 <p>You do not need an enterprise platform. Free and low-cost scanners can check a website for headers, TLS problems and known vulnerabilities; your host may offer one; and the simplest version is a periodic check of your own dependencies and software versions against their security advisories. Scan on a schedule rather than once, because new weaknesses are found in software you already run — the same rhythm as the rest of this cluster. Find the door, close it, and check again; that loop is most of practical website security.</p>""",
-[("OWASP — vulnerability scanning", "https://owasp.org/www-project-vulnerability-scanning-tools/")],
+[("OWASP — Web Security Testing Guide", "https://owasp.org/www-project-web-security-testing-guide/")],
 ["patch-management-for-humans", "website-security-headers-explained"]),
 
 ("what-is-dns-over-https-private-dns", "web-and-hosting", "guide",
@@ -94,7 +94,7 @@ PHASE10_GUIDES = [
 <p>If you want to go further, VLANs let one router divide the network into several labelled segments — say one for personal devices, one for smart home, one for guests — with rules about what can cross between them. It is more setup and more fiddly, and it is genuinely optional; the guest-network move captures most of the benefit for almost no effort. The full audit of what to change is in <a href="/tech/home-wifi-security-audit/">the home Wi-Fi security audit</a>.</p>
 <h2>Why it matters more now</h2>
 <p>The reason segmentation has moved from "nice to have" to "worth doing" is that the average home now has many always-on, rarely-updated devices — the abandonment problem in <a href="/tech/smart-home-devices-stop-getting-updates/">devices that stop getting updates</a>. You cannot make a cheap gadget secure, but you can contain it, so that if it is ever compromised it hits a wall instead of your files. It is the home-scale version of the <a href="/tech/zero-trust-explained-for-small-teams/">zero-trust</a> principle: do not let one weak point become the whole network.</p>""",
-[("CISA — secure home network", "https://www.cisa.gov/resources-tools/resources/securing-your-home-network")],
+[("CISA — small business cybersecurity guidance (incl. home networks)", "https://www.cisa.gov/small-business")],
 ["home-wifi-security-audit", "smart-home-on-its-own-network"]),
 
 ]

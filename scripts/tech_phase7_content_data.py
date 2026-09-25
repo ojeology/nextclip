@@ -43,7 +43,7 @@ PHASE7_GUIDES = [
 <p>Short, frequent, relevant nudges beat one annual marathon — a two-minute example every month lands harder than an hour in January. Teach the <em>decision</em>, not trivia: verify unexpected requests through a second channel, slow down on urgency, treat links and attachments from outside as untrusted until checked. Make reporting frictionless and blame-free — a one-click "report phishing" button that gets a thank-you, not a lecture. And remove the need to be perfect: technical controls catch what people miss.</p>
 <h2>The controls matter more than the training</h2>
 <p>You cannot train your way out of a problem you can engineer away. Phishing-resistant authentication (passkeys, hardware keys — see <a href="/tech/passkeys-what-they-stop-and-dont/">what passkeys stop</a>) means a stolen password is useless. Email authentication (SPF, DKIM, DMARC) stops spoofed senders. Sensible defaults and least privilege limit the damage from the one click that gets through. Training plus controls is the honest answer; training alone is a comforting fiction. For the always-on personal version, the habits in <a href="/tech/how-to-spot-a-suspicious-link/">spotting a suspicious link</a> are the same lesson at individual scale.</p>""",
-[("CISA — phishing and social engineering", "https://www.cisa.gov/topics/cyber-threats-and-advisories/social-engineering/phishing")],
+[("FTC — How to recognize and avoid phishing scams", "https://www.consumer.ftc.gov/articles/how-recognize-and-avoid-phishing-scams")],
 ["phishing-drill-five-real-lures", "passkeys-what-they-stop-and-dont"]),
 
 ("managed-security-service-provider-vs-mdr", "safety", "guide",
@@ -56,7 +56,7 @@ PHASE7_GUIDES = [
 <p>An MSSP suits an organisation that has tools but no staff to run them. MDR suits one that fears the intrusion it would not notice — which is most small teams, because they have no security analyst watching at 3am. Many providers now sell a blend, which is fine, but it means you must ask what is actually included rather than trusting the label. This builds directly on <a href="/tech/mdr-what-managed-detection-actually-buys/">what MDR actually buys</a>, which goes deeper on the detection-and-response side.</p>
 <h2>The questions that reveal what you are buying</h2>
 <p>Ask, in writing: who watches the alerts, and when — 24/7 or business hours in one time zone? When something is found, do you contain it or just tell me? What is the guaranteed response time? What do you need from me to do your job? And what happens to my visibility if I leave? Vendors answering crisply are a good sign; vendors who cannot say who is watching at 3am are selling a dashboard, not a service. For tier-1 buyers, also confirm where the analysts and the data sit — US, UK/EU or Nigeria — because that affects latency, language and the data-location rules covered in <a href="/tech/data-security-compliance-gdpr-ccpa-ndpr/">data security compliance</a>.</p>""",
-[("CISA — managed detection and response services", "https://www.cisa.gov/managed-detection-and-response-services")],
+[("CISA — small business cybersecurity guidance (MDR recommendations)", "https://www.cisa.gov/small-business")],
 ["mdr-what-managed-detection-actually-buys", "data-security-compliance-gdpr-ccpa-ndpr"]),
 
 ("zero-trust-explained-for-small-teams", "safety", "guide",

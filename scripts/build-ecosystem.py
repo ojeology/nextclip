@@ -3626,6 +3626,15 @@ def _load_tech():
                      "blocks": [{"heading": "", "body": body, "html": True}],
                      "sources": [{"name": n, "url": u} for n, u in sources],
                      "recovered": False})
+    import tech_decision_tools_data
+    _dt_dates = getattr(tech_decision_tools_data, "GUIDE_DATES", {})
+    for slug, cat, kind, title, dek, body, sources, related in tech_decision_tools_data.DECISION_TOOLS:
+        _dp, _du = _dt_dates.get(slug, (TODAY, TODAY))
+        arts.append({"slug": slug, "title": title, "excerpt": dek, "cat": cat, "kind": kind,
+                     "pub": _dp, "upd": _du, "read": "", "author": "the BRYME Tech desk",
+                     "blocks": [{"heading": "", "body": body, "html": True}],
+                     "sources": [{"name": n, "url": u} for n, u in sources],
+                     "recovered": False})
     import tech_ai_data
     for slug, cat, kind, title, dek, body, sources, related in tech_ai_data.NEW_AI_GUIDES:
         arts.append({"slug": slug, "title": title, "excerpt": dek, "cat": cat, "kind": kind,
@@ -3927,6 +3936,51 @@ def tech_cluster_hub_page(arts, spec):
     return (spec["route"], spec["title"], spec["desc"], page_body)
 
 
+def tech_compare_page(arts):
+    """§7 comparison engine hub: indexes every genuine head-to-head piece from
+    the catalogue (auto-updating as the desk grows) and states the house
+    comparison doctrine — choose-if framing, no automatic winners,
+    testing-claims boundary, verified pricing only. Additive URL only."""
+    def _is_cmp(a):
+        sl = a["slug"]; ti = (a["title"] or "").lower()
+        return ("-vs-" in sl) or ("compared" in sl) or (" vs " in ti) or ("compared" in ti)
+    pool = [a for a in arts if _is_cmp(a)]
+    def _key(a):
+        return (a.get("upd") or a.get("pub") or "", a["title"])
+    pool = sorted(pool, key=_key, reverse=True)
+    by_cat = {}
+    for a in pool:
+        by_cat.setdefault(a["cat"], []).append(a)
+    body = ['<div class="wrap"><nav class="crumb"><a href="/tech/">Tech</a> / Comparisons</nav>',
+            '<section class="cover"><p class="kicker">Comparison engine</p>',
+            '<h1 class="cover-title">Every head-to-head on this desk, in one place.</h1>',
+            '<p class="cover-dek">' + str(len(pool)) + ' comparisons, generated from the desk\u2019s own catalogue \u2014 nothing listed here that doesn\u2019t exist.</p></section>',
+            '<section class="section"><div class="prose">',
+            '<h2>How this desk compares</h2>',
+            '<ul>',
+            '<li><b>Choose-if framing, never a crowned winner.</b> Every piece ends with \u201cChoose A if\u2026 / Choose B if\u2026\u201d \u2014 the trade-offs are ours to lay out; the decision is yours.</li>',
+            '<li><b>Testing-claims boundary.</b> Where we haven\u2019t personally run the hardware or the load tests, the page says so: documented vendor specs and independently verified public benchmarks \u2014 never an implied in-house lab.</li>',
+            '<li><b>Prices only when verified, with the date.</b> Every figure carries a checked-on date, and a jurisdiction note where tax or currency changes the number.</li>',
+            '<li><b>Renewal maths over banner maths.</b> Especially in hosting and SaaS: the 3-year total, never the intro rate.</li>',
+            '</ul>',
+            '<p>Not sure which comparison you need? The decision tools place you first: <a href="/tech/which-hosting-type/">which hosting type</a>, <a href="/tech/which-cloud-service-model/">which cloud model</a>, <a href="/tech/which-security-solution/">which security solution</a>.</p>',
+            '</div></section>']
+    for cat in sorted(by_cat):
+        cname = TECH_CAT.get(cat, (cat,))[0] if cat in TECH_CAT else cat
+        items = by_cat[cat]
+        body.append('<section class="section"><h2>' + html.escape(cname) + ' <span class="meta">' + str(len(items)) + '</span></h2><ul class="list">')
+        for a in items:
+            body.append('<li><a href="/tech/' + a["slug"] + '/"><b>' + html.escape(a["title"]) + '</b>'
+                        + '<span class="meta">' + html.escape((a.get("excerpt") or "")[:110]) + '&hellip;</span></a></li>')
+        body.append('</ul></section>')
+    body.append('<section class="section"><div class="prose"><p>Missing a head-to-head you need? <a href="/tech/contact/">Tell the desk</a>. '
+                'Or browse the <a href="/tech/cybersecurity/">cybersecurity</a> and <a href="/tech/cloud-hosting/">cloud &amp; hosting</a> clusters.</p></div></section></div>')
+    page_body = head("tech", "Practical technology. No theatre.") + '<main id="main">' + "".join(body) + "</main>" + foot("tech")
+    return ("/compare/", "The BRYME Tech comparison engine \u2014 every head-to-head, choose-if framing | BRYME Tech",
+            "Every head-to-head comparison on BRYME Tech in one index, plus how we compare: choose-if framing, no automatic winners, testing-claims boundaries, verified pricing only.",
+            page_body)
+
+
 _CLUSTER_HUBS = [
     {"route": "/cloud-hosting/", "crumb": "Cloud & hosting", "cats": ("web-and-hosting",),
      "h1": "Cloud, hosting and the web, start here.",
@@ -4083,6 +4137,7 @@ def tech_pages():
     pages.append(tech_cyber_hub_page(arts))
     for _spec in _CLUSTER_HUBS:
         pages.append(tech_cluster_hub_page(arts, _spec))
+    pages.append(tech_compare_page(arts))
     return pages + tech_trust_pages() + legal_pages("tech", "BRYME Tech", "Practical technology from people who ran the thing.", skip={"/terms/", "/corrections/"}, desk={
         "about": "Deployment walkthroughs, domain and DNS specifics, token hygiene and front-end patterns - written from first-hand runs, including what went wrong.",
         "privacy": "The browser tools run entirely on your device; nothing you type into them is sent to us or to anyone else.",

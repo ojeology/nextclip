@@ -81,7 +81,7 @@ Verification receipts (all checked live 2026-09-15)
 
 - PayPal Community, staff answer, thread "Can I use PayPal to receive payments
   here in Nigeria" (2023-2024)
-  https://www.paypal-community.com/t5/Transactions/Can-I-use-Paypal-to-receive-payments-here-in-Nigeria/td-p/3072173
+  https://web.archive.org/web/2024/https://www.paypal-community.com/t5/Transactions/Can-I-use-Paypal-to-receive-payments-here-in-Nigeria/td-p/3072173
   "When you open an account with PayPal, the country you register should be your
   current residence and where you will be operating the account from. If your
   country of registration is Nigeria, unfortunately you are unable to receive
@@ -250,7 +250,7 @@ BATCH_1010_B7 = [
       ("Payoneer — Pricing (last updated 1 January 2026)", "https://www.payoneer.com/pricing/"),
       ("Paga — PayPal goes live in Nigeria through Paga (joint press release, 27 January 2026)", "https://paga.blog/2026-01-27/paypal-goes-live-in-nigeria-through-paga-enabling-payments-and-local-withdrawals/"),
       ("PayPal — Global list of countries and currencies", "https://www.paypal.com/ng/webapps/mpp/country-worldwide"),
-      ("PayPal Community — staff answer on receiving payments in Nigeria (2023, pre-dates the Paga integration)", "https://www.paypal-community.com/t5/Transactions/Can-I-use-Paypal-to-receive-payments-here-in-Nigeria/td-p/3072173")],
+      ("PayPal Community — staff answer on receiving payments in Nigeria (2023, pre-dates the Paga integration; original thread withdrawn — archived 2024 copy)", "https://web.archive.org/web/2024/https://www.paypal-community.com/t5/Transactions/Can-I-use-Paypal-to-receive-payments-here-in-Nigeria/td-p/3072173")],
      [("subscription-creep-audit", "How to audit every subscription you actually pay for"),
       ("web-hosting-costs-explained", "What a small website really costs per year"),
       ("free-trial-traps", "How free trials quietly become paid subscriptions"),

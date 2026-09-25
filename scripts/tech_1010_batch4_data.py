@@ -50,7 +50,7 @@ BATCH_1010_B4 = [
 
 <h2>The 2026 buying answer</h2>
 <p><b>System drive:</b> SSD, non-negotiable — the machine's responsiveness lives there. <b>Games and big working files:</b> SSD while the budget allows; load times and asset streaming are real. <b>Bulk archive and backup target:</b> HDD, where terabytes are cheapest and speed doesn't matter. <b>Portable/rough use:</b> SSD (shock resistance is structural). That's the whole modern map — speed where you feel it, capacity where you store it, and <a href="/tech/refurbished-vs-new-tech/">the refurb market</a> for drives is worth the usual caution (check warranty and health reports before trusting used storage of either type).</p>""",
-    [("Backblaze — Drive Stats (annualised failure-rate reports)", "https://www.backblaze.com/blog/hard-drive-drive-stats/"),
+    [("Backblaze — Drive Stats (annualised failure-rate reports)", "https://www.backblaze.com/cloud-storage/resources/hard-drive-test-data"),
      ("JEDEC — SSD endurance and retention standards", "https://www.jedec.org/")],
     [("three-two-one-backup-rule", "The 3-2-1 backup rule"),
      ("laptop-buying-ram-storage", "Laptop RAM and storage, honestly"),

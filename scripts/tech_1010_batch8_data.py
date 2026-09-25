@@ -217,7 +217,7 @@ BATCH_1010_B8 = [
          ("Congressional Research Service — A Brief Introduction to the National Flood Insurance Program (IF10988)", "https://www.congress.gov/crs-product/IF10988"),
          ("British Gas — New boiler cover options: HomeCare pricing and how warranty differs from HomeCare", "https://www.britishgas.co.uk/cover/warranty-faqs.html"),
          ("British Gas — Boiler service and maintenance (HomeCare from £22 a month, £60 excess)", "https://www.britishgas.co.uk/heating/boiler-service.html"),
-         ("British Gas — HomeCare Three for Landlords (from £15.74 a month; up to £1,000 to gain access and make good)", "https://www.britishgas.co.uk/home-services/landlords/landlord-home-and-boiler-cover/HC3CP12/"),
+         ("British Gas — HomeCare cover options for landlords (pricing shown live on page)", "https://www.britishgas.co.uk/home-services/home-cover.html"),
          ("Leadway Assurance — Householder Insurance", "https://www.leadway.com/householder/"),
          ("AIICO — Home Insurance plan", "https://www.aiicoplc.com/home/home-insurance-plan")],
         [("subscription-creep-audit", "How to actually audit every subscription you're paying for"),
