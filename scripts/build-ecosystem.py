@@ -3618,9 +3618,11 @@ def _load_tech():
                      "sources": [{"name": n, "url": u} for n, u in sources],
                      "recovered": False})
     import tech_hosting_data
+    _hosting_dates = getattr(tech_hosting_data, "GUIDE_DATES", {})
     for slug, cat, kind, title, dek, body, sources, related in tech_hosting_data.NEW_HOSTING_GUIDES:
+        _hp, _hu = _hosting_dates.get(slug, (TODAY, TODAY))
         arts.append({"slug": slug, "title": title, "excerpt": dek, "cat": cat, "kind": kind,
-                     "pub": TODAY, "upd": TODAY, "read": "", "author": "the BRYME Tech desk",
+                     "pub": _hp, "upd": _hu, "read": "", "author": "the BRYME Tech desk",
                      "blocks": [{"heading": "", "body": body, "html": True}],
                      "sources": [{"name": n, "url": u} for n, u in sources],
                      "recovered": False})
