@@ -222,11 +222,16 @@ def render(arts: list, tools: list, cat: dict, cfg: dict,
         + "<b>" + esc(a["title"]) + "</b><small>" + esc((a.get("excerpt") or "")[:90])
         + ("\u2026" if len(a.get("excerpt") or "") > 90 else "") + "</small></a>"
         for a in sorted(comp, key=lambda x: x["cat"]))
-    wall = ('<section class="tm-band tm-band-alt" id="tm-wall"><header class="tm-band-h">'
-            "<h2>The comparison wall.</h2><p>" + str(len(comp)) + " side-by-side pieces on this desk, grouped "
-            "by subject. Every card names its trade-off; pick a subject to narrow the wall.</p></header>"
-            '<div class="tm-chips" role="group" aria-label="Filter comparisons by subject">' + wall_chips + "</div>"
-            '<div class="tm-wall" data-tm-wall>' + wall_cards + "</div></section>")
+    if comp:
+        wall = ('<section class="tm-band tm-band-alt" id="tm-wall"><header class="tm-band-h">'
+                "<h2>" + esc(cfg.get("wall_h", "The comparison wall.")) + "</h2><p>"
+                + esc(cfg.get("wall_p", str(len(comp)) + " side-by-side pieces on this desk, grouped "
+                        "by subject. Every card names its trade-off; pick a subject to narrow the wall."))
+                + "</p></header>"
+                '<div class="tm-chips" role="group" aria-label="Filter comparisons by subject">' + wall_chips + "</div>"
+                '<div class="tm-wall" data-tm-wall>' + wall_cards + "</div></section>")
+    else:
+        wall = ""
 
     if st["thin"]:
         thin_items = "".join(
@@ -315,12 +320,12 @@ def render(arts: list, tools: list, cat: dict, cfg: dict,
 
         '<section class="tm-boot" id="tm-boot">',
         '<p class="tm-eyebrow"><span class="tm-led" aria-hidden="true"></span>'
-        + esc(cfg["brand"]) + ' <span class="tm-dot" aria-hidden="true">\u00b7</span> THE LIVING DESK'
-        '<span class="tm-eyebrow-r">' + esc("swept " + st["newest"] if st["newest"] else "") + "</span></p>",
+        + esc(cfg["brand"]) + ' <span class="tm-dot" aria-hidden="true">\u00b7</span> ' + esc(cfg.get("eyebrow", "THE LIVING DESK"))
+        + '<span class="tm-eyebrow-r">' + esc("swept " + st["newest"] if st["newest"] else "") + "</span></p>",
         '<h1 class="tm-h1">' + esc(cfg["h1"]) + "</h1>",
         '<p class="tm-dek">' + cfg["dek"] + "</p>",
-        '<div class="tm-boot-bar"><a class="btn" href="' + count_href + '">Read every one of the '
-        + str(n) + ' pieces</a>'
+        '<div class="tm-boot-bar"><a class="btn" href="' + count_href + '">'
+        + esc(cfg.get("boot_btn", "Read every one of the " + str(n) + " pieces")) + "</a>"
         '<button type="button" class="tm-pal-open" data-tm-open-palette><span>Find a piece</span>'
         '<kbd aria-hidden="true">Ctrl</kbd><kbd aria-hidden="true">K</kbd></button>'
         + ('<a class="btn secondary" href="' + toolbox_href + '">Open the toolbox</a>' if tools else "")
@@ -332,16 +337,17 @@ def render(arts: list, tools: list, cat: dict, cfg: dict,
         cluster_band,
 
         '<section class="tm-band" id="tm-needs"><header class="tm-band-h">'
-        "<h2>What brought you to the desk?</h2>"
-        "<p>" + str(len(cfg["needs"])) + " jobs. Pick one and the index below re-sorts itself to that job. Keys "
-        "<kbd>1</kbd>\u2013<kbd>" + str(len(cfg["needs"])) + "</kbd>.</p></header>"
+        "<h2>" + esc(cfg.get("needs_h", "What brought you to the desk?")) + "</h2>"
+        "<p>" + (cfg.get("needs_p") if cfg.get("needs_p") is not None else
+                 str(len(cfg["needs"])) + " jobs. Pick one and the index below re-sorts itself to that job. Keys "
+                 "<kbd>1</kbd>\u2013<kbd>" + str(len(cfg["needs"])) + "</kbd>.") + "</p></header>"
         '<div class="tm-needs">' + need_tiles + "</div></section>",
 
         '<section class="tm-band" id="tm-core"><header class="tm-band-h">'
-        "<h2>The whole desk, open.</h2>"
-        "<p>Every published piece on this desk is listed here, in the page itself \u2014 no &ldquo;load "
+        "<h2>" + esc(cfg.get("core_h", "The whole desk, open.")) + "</h2>"
+        "<p>" + cfg.get("core_p", "Every published piece on this desk is listed here, in the page itself \u2014 no &ldquo;load "
         "more&rdquo; wall standing between you and the answer. The shelves are grouped by what each piece is "
-        "for; the section pages below are the formal index.</p></header>",
+        "for; the section pages below are the formal index.") + "</p></header>",
         '<div class="tm-toolbar"><div class="tm-search">'
         '<label class="sr-only" for="tm-q">Filter the desk by words in the title or summary</label>'
         '<input id="tm-q" type="search" data-tm-filter="text" autocomplete="off" spellcheck="false" '
@@ -365,20 +371,22 @@ def render(arts: list, tools: list, cat: dict, cfg: dict,
         "</section>",
 
         ('<section class="tm-band tm-band-alt" id="tm-toolbox"><header class="tm-band-h">'
-         "<h2>The toolbox.</h2><p>" + str(len(tools)) + " utilities that run entirely in your browser. No "
+         "<h2>" + esc(cfg.get("toolbox_h", "The toolbox.")) + "</h2><p>" + str(len(tools)) + " utilities that run entirely in your browser. No "
          "account, no upload, and nothing you type into one is sent anywhere \u2014 including to us.</p></header>"
          '<div class="tm-tools">' + tools_html + "</div>"
          '<p class="tm-band-f">' + cfg.get("toolbox_blurb", "") + "</p></section>") if tools else "",
         wall,
 
         '<section class="tm-band" id="tm-sections"><header class="tm-band-h">'
-        "<h2>Sections, in their own words.</h2><p>The formal shelves. Same pieces, arranged by subject "
-        "instead of by need.</p></header>"
+        "<h2>" + esc(cfg.get("sections_h", "Sections, in their own words.")) + "</h2><p>"
+        + cfg.get("sections_p", "The formal shelves. Same pieces, arranged by subject "
+        "instead of by need.") + "</p></header>"
         '<div class="tm-secs">' + sec_cards + "</div></section>",
 
         '<section class="tm-band tm-band-alt" id="tm-standards"><header class="tm-band-h">'
-        "<h2>Read the machine before you trust it.</h2><p>What this desk will and will not tell you, and "
-        "where it currently falls short.</p></header>"
+        "<h2>" + esc(cfg.get("standards_h", "Read the machine before you trust it.")) + "</h2><p>"
+        + cfg.get("standards_p", "What this desk will and will not tell you, and "
+        "where it currently falls short.") + "</p></header>"
         '<div class="tm-reads">' + cadence + freshness + thin_html + rules + "</div></section>",
 
         '<p class="tm-noscript">This hub works without JavaScript \u2014 every piece is linked above. With '
