@@ -3534,6 +3534,15 @@ def _load_tech():
     # (brief Sec 0.4 high-CPC jet words + Sec 30 tier-1 jurisdictions).
     # Phase 1 growth batch 8 (2026-09-25): cloud / hosting cluster
     # (brief Sec 0.4 cloud-infrastructure market; cost/comparison intent).
+    # Phase 1 growth batch 9 (2026-09-25): AI fundamentals cluster
+    # (fills the evergreen foundation the comparison-heavy AI shelf assumes).
+    import tech_phase9_content_data
+    for slug, cat, kind, title, dek, body, sources, related in tech_phase9_content_data.PHASE9_GUIDES:
+        arts.append({"slug": slug, "title": title, "excerpt": dek, "cat": cat, "kind": kind,
+                     "pub": TODAY, "upd": TODAY, "read": "", "author": "the BRYME Tech desk",
+                     "blocks": [{"heading": "", "body": body, "html": True}],
+                     "sources": [{"name": n, "url": u} for n, u in sources],
+                     "recovered": False})
     import tech_phase8_content_data
     for slug, cat, kind, title, dek, body, sources, related in tech_phase8_content_data.PHASE8_GUIDES:
         arts.append({"slug": slug, "title": title, "excerpt": dek, "cat": cat, "kind": kind,
