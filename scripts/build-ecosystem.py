@@ -4820,6 +4820,9 @@ def fitness_pages():
     import fitness_more11_data
     FIT_ARTICLES.extend((s, ti, dek, b) for (s, _k, ti, dek, b) in fitness_more11_data.FIT_MORE_11)
     ART_SOURCES.update((s, FIT_SOURCES) for (s, _k, ti, dek, b) in fitness_more11_data.FIT_MORE_11)
+    import fitness_more12_data
+    FIT_ARTICLES.extend((s, ti, dek, b) for (s, _k, ti, dek, b) in fitness_more12_data.FIT_MORE_12)
+    ART_SOURCES.update((s, FIT_SOURCES) for (s, _k, ti, dek, b) in fitness_more12_data.FIT_MORE_12)
     ART_SOURCES["intermittent-fasting-explained"] = FIT_SOURCES + [
         ("WHO \u2014 Healthy diet fact sheet",
          "https://www.who.int/news-room/fact-sheets/detail/healthy-diet")]
