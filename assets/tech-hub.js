@@ -15,10 +15,15 @@
 (function () {
   "use strict";
 
-  var K_SAVED = "bryme.tech.saved.v1";
-  var K_SEEN = "bryme.tech.seen.v1";
-  var K_VISIT = "bryme.tech.visit.v1";
-  var K_PREFS = "bryme.tech.prefs.v1";
+  /* Desk namespace: the living machine serves every desk that follows the
+     tech standard. The hub marks its desk with data-tm-desk; absent (the tech
+     hub itself) means "tech", so tech storage keys are unchanged. */
+  var DESK_EL = document.querySelector("[data-tm-desk]");
+  var DESK = (DESK_EL && DESK_EL.getAttribute("data-tm-desk") ? DESK_EL.getAttribute("data-tm-desk") : "tech").toLowerCase();
+  var K_SAVED = "bryme." + DESK + ".saved.v1";
+  var K_SEEN = "bryme." + DESK + ".seen.v1";
+  var K_VISIT = "bryme." + DESK + ".visit.v1";
+  var K_PREFS = "bryme." + DESK + ".prefs.v1";
   var MAX_SEEN = 40, MAX_SAVED = 40, MAX_LIST = 6;
 
   var prevVisit = "";   /* captured before this page updates it, see tracker() */

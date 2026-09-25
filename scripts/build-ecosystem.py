@@ -1074,7 +1074,7 @@ def legal_pages(pub, name, tagline, skip=frozenset(), desk=None):
 <p>If interactive tools are added later, any data they store will stay in <em>your</em> browser's local storage on <em>your</em> device — the standing BRYME pattern — and this page will be updated before that changes.</p>
 <p><b>Advertising &amp; cookies (updated 22 September 2026):</b> BRYME shows advertising through Google AdSense to keep the publications free. Third-party vendors use cookies to serve ads based on a user's prior visits to this and other websites. Google's use of advertising cookies enables it and its partners to serve ads based on your visits to this site and/or other sites on the internet. You may opt out of personalised advertising by visiting Google's Ads Settings (adssettings.google.com), or opt out of some third-party vendors' uses of cookies at aboutads.info. Visitors in the EEA and UK will be asked for consent before personalised advertising; without consent, only non-personalised ads are eligible to serve. <b>Analytics:</b> every page also loads Google Analytics 4 (measurement ID {GA_ID_TEXT}), which counts pages, sessions and rough location so each desk can see what is worth writing next. It sets cookies such as _ga to tell one visit from the next; it does not identify you personally, and BRYME neither combines it with anything else nor sells it. For visitors in the EEA, the UK and Switzerland, Analytics and advertising both stay switched off until you accept them in the cookie message — rejecting it leaves them off. Anywhere else you can block them in your browser and every page reads exactly the same. Whatever serves, our standing rules apply: ads are clearly separated from content and navigation, never cover text, and never resemble our buttons, cards or links.</p>
 {_desk_sec('privacy', 'What this publication actually touches')}
-<p>Questions: see <a href="/home/contact/">Contact</a>.</p>
+<p>Questions: see <a href="/contact/">Contact</a>.</p>
 </div></section></div>"""
     contact_body = f"""<div class="wrap"><nav class="crumb"><a href="/">Home</a> / Contact</nav>
 <section class="cover"><p class="kicker">Contact</p><h1 class="cover-title">Reach the desk.</h1>
@@ -1091,7 +1091,7 @@ def legal_pages(pub, name, tagline, skip=frozenset(), desk=None):
 <p>{name} is free to read. It is provided as-is, for information: general guidance, never professional advice. Nothing on this publication is a substitute for qualified professional help — medical, electrical, gas, legal or financial. Where a topic borders on those fields, our pages say so plainly and stop.</p>
 <p>The writing, layout and tools are \u00a9 2026 THE BRYME. Quote freely with a link; do not republish whole pages. External sites we link to have their own terms and their own owners. Adverts, when shown, are clearly separated from editorial content and never constitute an endorsement.</p>
 {_desk_sec('terms', 'Specific to this desk')}
-<p>Questions about these terms: see <a href="/home/contact/">Contact</a>.</p>
+<p>Questions about these terms: see <a href="/contact/">Contact</a>.</p>
 </div></section></div>"""
     editorial_body = f"""<div class="wrap"><nav class="crumb"><a href="/">Home</a> / Editorial policy</nav>
 <section class="cover"><p class="kicker">Editorial policy</p><h1 class="cover-title">How every page earns its place.</h1></section>
@@ -1106,12 +1106,12 @@ def legal_pages(pub, name, tagline, skip=frozenset(), desk=None):
 <li><b>BRYME PREDICTION</b> — our model's or desk's projection, never presented as official data.</li>
 </ul>
 <h2>Standing prohibitions</h2>
-<p>No betting content, no piracy or download pages, no fake play buttons, no scraped or duplicated pages, no misleading titles. Comparisons explain who each option is actually for; they never invent rankings. Errors are corrected in the open — see <a href="/home/corrections/">Corrections</a>.</p>
+<p>No betting content, no piracy or download pages, no fake play buttons, no scraped or duplicated pages, no misleading titles. Comparisons explain who each option is actually for; they never invent rankings. Errors are corrected in the open — see <a href="/corrections/">Corrections</a>.</p>
 </div></section></div>"""
     corrections_body = f"""<div class="wrap"><nav class="crumb"><a href="/">Home</a> / Corrections</nav>
 <section class="cover"><p class="kicker">Corrections policy</p><h1 class="cover-title">We fix errors in the open.</h1></section>
 <section class="section"><div class="prose">
-<p>If something on {name} is wrong, tell us via <a href="/home/contact/">Contact</a> with the page address and the exact claim. The desk verifies against sources, fixes the page, and records the correction on the page itself — silently deleting a wrong claim is not a correction.</p>
+<p>If something on {name} is wrong, tell us via <a href="/contact/">Contact</a> with the page address and the exact claim. The desk verifies against sources, fixes the page, and records the correction on the page itself — silently deleting a wrong claim is not a correction.</p>
 <p>Time-sensitive facts (prices, availability, standings, schedules) are re-checked on a schedule and stamped with the date of the last check. If you spot a stale one, that report is welcome.</p>
 {_desk_sec('corrections', 'What gets re-checked here')}
 </div></section></div>"""
@@ -1119,7 +1119,7 @@ def legal_pages(pub, name, tagline, skip=frozenset(), desk=None):
 <section class="cover"><p class="kicker">Copyright &amp; takedowns</p><h1 class="cover-title">Ownership, honestly stated.</h1></section>
 <section class="section"><div class="prose">
 <p>All original text, layout and tools on {name} are \u00a9 2026 THE BRYME. We quote and link to third-party material under fair quotation with attribution, and we do not host or link to pirated copies of films, shows, books or software — anywhere in the family.</p>
-<p>Rights-holders with a concern: send the page address, the material concerned, and your relationship to the rights, via <a href="/home/contact/">Contact</a>. Verified takedown requests are actioned promptly.</p>
+<p>Rights-holders with a concern: send the page address, the material concerned, and your relationship to the rights, via <a href="/contact/">Contact</a>. Verified takedown requests are actioned promptly.</p>
 </div></section></div>"""
     def _m(b):
         return b if "<main" in b else '<main id="main"><div class="wrap">' + b + "</div></main>"
@@ -1952,7 +1952,7 @@ def entertainment_pages():
         + '<h2>The distribution, shown honestly</h2><p>Across all ' + str(sum(_sc_dist.values()))
         + ' scored films the current spread is (every film is shelved on merit, not pushed to a flattering band):</p>'
         + '<table style="border-collapse:collapse;margin:14px 0"><tbody>' + _sc_rows + '</tbody></table>'
-        + '<p class="nx-verified">Scores sit on film pages next to a verification date for the trailer and credits. Disagree? <a href="/home/corrections/">Corrections and disputes</a> is a real page.</p>'
+        + '<p class="nx-verified">Scores sit on film pages next to a verification date for the trailer and credits. Disagree? <a href="/corrections/">Corrections and disputes</a> is a real page.</p>'
         + '</div><aside class="nx-aside"><dl><dt>Scale</dt><dd>0-10, half-points</dd><dt>Axes</dt>'
         + '<dd>Story &middot; Craft &middot; Vision &middot; Weight</dd><dt>Influence</dt><dd>None. No preview scores to studios, no ads sold against placement.</dd><dt>Revisions</dt><dd>Recorded on the film page with a date.</dd></dl></aside></div></main>'
         + foot("entertainment"))
@@ -4925,6 +4925,103 @@ def fitness_pages():
                       "One card for the honest fitness week: move most days, two strength days, on-time evenings. Saved in your browser, resets each Monday, nothing sent anywhere.", planner_body))
     pages.extend(plan_page)
     pages.extend(arts)
+
+    # ---- tech-standard living-machine hub (rollout, 2026-09-25) ----
+    # "Tech is now the standard. Every other niche must follow tech." The hub
+    # display is rebuilt by the generalized desk renderer; every URL the old
+    # hub carried is preserved (catalogue covers every content page; tools keep
+    # their cards; the library keeps its shelf band). New URLs are the nine
+    # section pages only.
+    import desk_hub_render
+    import fitness_hub_data as _fhd
+    _LEGAL = {"about", "contact", "privacy", "terms", "copyright",
+              "editorial-policy", "corrections", "disclaimer", "methodology"}
+    _TOOL_SLUGS = {t[0] for t in _fhd.FIT_TOOLS}
+    _cat_arts = []
+    for (_r, _t, _d, _b) in pages:
+        _s = _r.strip("/").split("/")[-1]
+        if _r == "/" or _s in _LEGAL or _s in _TOOL_SLUGS:
+            continue
+        _cn = _fhd.FIT_MAP.get(_s)
+        assert _cn, "fitness page without taxonomy entry: " + _s
+        _cat_arts.append({"slug": _s, "title": _t.split(" | ")[0], "excerpt": _d,
+                          "cat": _cn[0], "need": _cn[1], "pub": "", "upd": "",
+                          "kind": "programme" if _s.startswith("30-day") else "guide"})
+    _unused = sorted(set(_fhd.FIT_MAP) - {a["slug"] for a in _cat_arts})
+    assert not _unused, "taxonomy entries with no page: " + ",".join(_unused)
+    _fit_cfg = {
+        "brand": "BRYME FITNESS",
+        "h1": "Practical fitness. No miracle claims.",
+        "dek": ('You have a fitness question, a body signal or a plan to build. This desk answers it: '
+                'evidence-aware guides, honest timelines and plans that survive real weeks \u2014 dated, '
+                'sourced, and arranged below by what you came here to <em>do</em>, not by when we filed it.'),
+        "needs": _fhd.FIT_NEEDS,
+        "cadence": _fhd.FIT_CADENCE,
+        "cadence_blurb": "The weight shelf turns fastest (120 days); stable mechanics can wait (240). ",
+        "kind_badges": {"programme": "Programme"},
+        "chips": [("start", "Start"), ("train", "Train"), ("fuel", "Fuel"), ("recover", "Recover"),
+                  ("compare", "Compare"), ("choose", "Choose"), ("understand", "Understand")],
+        "kind_chips": [("programme", "Programmes")],
+        "gauges": lambda st, tools: [
+            (st["n_pieces"], "pieces on the desk", "every one linked below"),
+            (st["n_sections"], "sections", "each with its own shelf"),
+            (len(tools), "browser tools", "run on your device"),
+            (st["n_cmp"], "comparisons", "trade-offs named"),
+            (st["n_prog"], "30-day programmes", "tick-off, browser remembers"),
+            (len(st["by_cat"].get("library", [])), "library shelves", "75 illustrated moves"),
+        ],
+        "rules": [
+            "No promise of a body in 30 days, and no before-and-after theatre.",
+            "General information, kept clearly apart from medical advice \u2014 persistent pain gets a professional, not a forum.",
+            "Where numbers are quoted, the source is linked, and volatile claims carry the date they were read.",
+            "No kit page without the honest \u201cwho should not buy this\u201d.",
+            "Corrections land on the page that was wrong, and are listed.",
+        ],
+        "rules_links": [("about", "About the desk"), ("editorial-policy", "Editorial policy"),
+                        ("corrections", "Corrections"), ("contact", "Contact"), ("privacy", "Privacy")],
+        "clusters": [
+            ("/exercise-library-push/", "Push day", "16 chest, shoulder and tricep moves, illustrated."),
+            ("/exercise-library-pull/", "Pull day", "16 back and bicep moves, illustrated."),
+            ("/exercise-library-legs/", "Leg day", "16 squat, lunge and hinge moves, illustrated."),
+            ("/exercise-library-core/", "Core", "14 ab and stability moves, illustrated."),
+            ("/exercise-library-cond/", "Conditioning", "13 heart-pumping moves, illustrated."),
+        ],
+        "clusters_h": "The exercise library.",
+        "clusters_p": "75 illustrated moves across five shelves \u2014 form, muscles worked and the kit each needs.",
+        "palette_label": "Search the fitness desk",
+        "palette_placeholder": "protein, plank, running, sleep \u2014 matches titles and summaries on your device",
+        "filter_placeholder": "filter: protein, plank, steps, sleep\u2026",
+        "toolbox_href": "#tm-toolbox",
+        "toolbox_blurb": 'Each tool runs on your device. The walking plan and the weekly planner keep your ticks in this browser only.',
+        "contact_slug": "contact",
+        "desk": "fitness",
+        "css": "/assets/tech-hub.css",
+        "tool_prefix": "",
+    }
+    _fit_hub = (head("fitness", "Practical fitness \u2014 no miracle claims.")
+        + desk_hub_render.render(_cat_arts, _fhd.FIT_TOOLS, _fhd.FIT_CATS, _fit_cfg, "", TODAY)
+        + '<script src="/assets/tech-hub.js" defer></script>'
+        + foot("fitness"))
+    pages[0] = ("/", "BRYME Fitness \u2014 practical fitness, no miracle claims",
+                "Beginner-first fitness: how to start, the 30-day walking plan with in-browser progress tracking, strength basics and recovery \u2014 evidence-aware, never medical advice.",
+                _fit_hub)
+    for _cs, _cvals in _fhd.FIT_CATS.items():
+        _cn, _cd = _cvals[0], _cvals[1]
+        _rows = sorted((a for a in _cat_arts if a["cat"] == _cs), key=lambda a: a["title"])
+        _lis = "".join('<li><a href="/fitness/' + a["slug"] + '/"><span><b>' + html.escape(a["title"])
+                       + "</b><small>" + html.escape((a["excerpt"] or "")[:110]) + "</small></span></a></li>"
+                       for a in _rows)
+        _sec_body = (head("fitness", _cn + " \u2014 BRYME Fitness")
+            + '<main id="main"><div class="wrap">'
+            + '<nav class="crumb" style="padding-top:22px"><a href="/fitness/">Fitness</a> / ' + html.escape(_cn) + "</nav>"
+            + '<section class="cover"><p class="kicker">Section shelf \u00b7 ' + str(len(_rows)) + " pieces</p>"
+            + '<h1 class="cover-title" style="font-size:clamp(30px,4.6vw,48px)">' + html.escape(_cn) + "</h1>"
+            + '<p class="lede">' + html.escape(_cd) + "</p></section>"
+            + '<section class="section"><ul class="list">' + _lis + "</ul>"
+            + '<div class="actions"><a class="btn secondary" href="/fitness/">The whole desk</a></div></section>'
+            + "</div></main>" + foot("fitness"))
+        pages.append(("/" + _cs + "/", _cn + " | BRYME Fitness", _cd[:155], _sec_body))
+
     return pages + legal_pages("fitness", "BRYME Fitness", "Practical fitness guidance \u2014 responsible, evidence-aware, clearly separated from medical advice.", desk={
         "about": "The 30-day walking plan, the weekly planner and an exercise library - general guidance, evidence-aware, clearly separated from medical advice.",
         "privacy": "The walking plan and the weekly planner store your entries only in your browser's local storage, on your device.",

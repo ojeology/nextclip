@@ -314,7 +314,7 @@ def render(arts: list, tools: list, cat: dict, url_prefix: str = "", stamp: str 
     # Phase 2: the comparison wall -- a dense, subject-grouped view of the desk's
     # existing A-vs-B pieces, derived entirely from the catalogue (no invented data).
     comp = [a for a in arts if _RE_COMPARE.search(a["slug"])]
-    wall_subs = sorted({a["cat"] for a in comp}, key=lambda k: -sum(1 for x in comp if x["cat"] == k))
+    wall_subs = sorted({a["cat"] for a in comp}, key=lambda k: (-sum(1 for x in comp if x["cat"] == k), k))
     wall_chips = "".join(
         '<button type="button" class="tm-wallchip" data-wallsub="' + esc(k) + '" aria-pressed="false">'
         + esc(cat.get(k, (k,))[0].split(",")[0].split(" &")[0]) + " <em>" + str(sum(1 for x in comp if x["cat"] == k)) + "</em></button>"

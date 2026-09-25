@@ -1,0 +1,189 @@
+# -*- coding: utf-8 -*-
+"""fitness_hub_data.py — taxonomy for the BRYME Fitness living-machine hub.
+
+The tech desk is the standard (owner brief, 25 Sep 2026): every desk carries its
+whole catalogue on the hub, routed by what the visitor came to do. This module
+is the fitness desk's answer to TECH_CAT + the need-router: every content page
+gets exactly one section (shelf) and one primary need. Coverage is asserted at
+import time by the caller — a page without a shelf does not ship.
+"""
+
+FIT_CATS = {
+    "start":    ("Starting from zero",
+                 "First week, first gym visit, first programme: beginner-first plans and the anxieties nobody talks about."),
+    "plans":    ("Plans and programming",
+                 "30-day programmes, splits, progression and the scheduling questions — what to do, in what order, for how long."),
+    "strength": ("Strength and form",
+                 "The lifts, the rep ranges, the progressions and the form checkpoints that keep it honest."),
+    "cardio":   ("Cardio and steps",
+                 "Walking, running, rowing, HIIT, zone 2 and the machines — what each is actually for."),
+    "fuel":     ("Food, water and supplements",
+                 "Protein, timing, hydration and the supplement shelf: what the evidence supports and what is marketing."),
+    "recover":  ("Recovery, sleep and the weird stuff",
+                 "Soreness, sleep, stretching, cold, saunas and every strange body signal — when it is fine and when it is not."),
+    "weight":   ("Weight, honestly",
+                 "Losing it, keeping it off, the GLP-1 era and what strength training does in a deficit. No miracle claims."),
+    "kit":      ("Kit and honest verdicts",
+                 "What earns its floor space and its subscription: trackers, bands, home gyms, trainers."),
+    "library":  ("The exercise library",
+                 "75 illustrated moves across five shelves — form, muscles worked and the kit each needs."),
+}
+
+# slug -> (section, primary need). Every fitness content page appears exactly once.
+FIT_MAP = {
+    # ---- start ----
+    "how-to-start-working-out": ("start", "start"),
+    "how-to-start-going-to-the-gym": ("start", "start"),
+    "gym-anxiety-beginners": ("start", "start"),
+    "gym-etiquette-for-first-timers": ("start", "start"),
+    "workout-at-home-no-equipment": ("start", "start"),
+    "strength-training-for-beginners": ("start", "start"),
+    "kettlebell-for-beginners": ("start", "start"),
+    "pilates-for-beginners": ("start", "start"),
+    "yoga-for-athletes-beginners": ("start", "start"),
+    "cycling-for-fitness-beginners": ("start", "start"),
+    "swimming-for-fitness": ("start", "start"),
+    "beginner-running-plan": ("start", "start"),
+    "workout-split-beginners": ("start", "train"),
+    "bodyweight-moves-that-matter": ("start", "train"),
+    "how-to-warm-up": ("start", "train"),
+    "squat-form-beginners": ("start", "train"),
+    "push-up-progression": ("start", "train"),
+    # ---- plans ----
+    "30-day-core-programme": ("plans", "train"),
+    "30-day-plank-challenge": ("plans", "train"),
+    "strength-training-over-50": ("plans", "train"),
+    "deload-weeks-explained": ("plans", "train"),
+    "how-progressive-overload-works": ("plans", "train"),
+    "morning-or-evening-workout": ("plans", "understand"),
+    "how-long-to-see-gym-results": ("plans", "understand"),
+    "how-long-to-see-workout-results": ("plans", "understand"),
+    # ---- strength ----
+    "how-many-reps-for-muscle": ("strength", "understand"),
+    "how-much-muscle-can-you-gain": ("strength", "understand"),
+    "bulking-and-cutting-explained": ("strength", "understand"),
+    "bodybuilding-must-know": ("strength", "train"),
+    "grip-strength-why-it-matters": ("strength", "understand"),
+    "how-to-plank": ("strength", "train"),
+    "breathing-during-exercise": ("strength", "understand"),
+    "cardio-or-weights-first": ("strength", "compare"),
+    "dumbbell-vs-barbell": ("strength", "compare"),
+    "mobility-vs-flexibility": ("strength", "compare"),
+    "stretching-before-or-after": ("strength", "understand"),
+    # ---- cardio ----
+    "how-many-steps-a-day": ("cardio", "understand"),
+    "walking-vs-running": ("cardio", "compare"),
+    "rowing-machine-benefits": ("cardio", "understand"),
+    "elliptical-trainer-honest-verdict": ("cardio", "choose"),
+    "jump-rope-cardio-benefits": ("cardio", "understand"),
+    "walking-pad-vs-treadmill": ("cardio", "compare"),
+    "cardio-machine-worth-buying": ("cardio", "choose"),
+    "hiit-training-explained": ("cardio", "understand"),
+    "zone-2-cardio-explained": ("cardio", "understand"),
+    # ---- fuel ----
+    "how-much-protein-do-you-need": ("fuel", "fuel"),
+    "protein-before-bed": ("fuel", "fuel"),
+    "protein-powder-worth-it": ("fuel", "choose"),
+    "protein-timing-anabolic-window": ("fuel", "understand"),
+    "protein-when-appetite-is-gone": ("fuel", "fuel"),
+    "protein-foods-nigeria": ("fuel", "fuel"),
+    "what-to-eat-after-a-workout": ("fuel", "fuel"),
+    "what-to-eat-before-a-workout": ("fuel", "fuel"),
+    "creatine-explained": ("fuel", "understand"),
+    "caffeine-side-effects": ("fuel", "understand"),
+    "downside-of-stimulants": ("fuel", "understand"),
+    "electrolytes-do-you-need-them": ("fuel", "understand"),
+    "how-much-water-to-drink-a-day": ("fuel", "understand"),
+    "water-during-workout": ("fuel", "fuel"),
+    "what-water-does-to-your-body": ("fuel", "understand"),
+    "benefits-of-morning-water": ("fuel", "understand"),
+    "intermittent-fasting-honest-guide": ("fuel", "understand"),
+    "apple-cider-vinegar-effects": ("fuel", "understand"),
+    "what-fruit-does-to-your-body": ("fuel", "understand"),
+    "supplements-waste-of-money": ("fuel", "choose"),
+    "testosterone-booster-truth": ("fuel", "understand"),
+    "hungry-all-day-after-workout": ("fuel", "understand"),
+    "gaining-weight-first-week-of-exercise": ("fuel", "understand"),
+    # ---- recover ----
+    "rest-days-and-recovery": ("recover", "recover"),
+    "doms-relief-what-works": ("recover", "recover"),
+    "foam-rolling-honest-benefits": ("recover", "recover"),
+    "massage-guns-worth-it": ("recover", "choose"),
+    "ice-bath-cold-plunge-truth": ("recover", "understand"),
+    "sauna-benefits-what-evidence-says": ("recover", "understand"),
+    "sleep-and-exercise-performance": ("recover", "recover"),
+    "benefits-of-sleeping-well": ("recover", "recover"),
+    "muscle-soreness-vs-injury": ("recover", "compare"),
+    "sore-two-days-after-workout": ("recover", "understand"),
+    "not-sore-anymore-did-it-stop-working": ("recover", "understand"),
+    "cracking-joints-during-exercise": ("recover", "understand"),
+    "shaking-during-plank-or-lunges": ("recover", "understand"),
+    "heart-pounding-during-workout": ("recover", "understand"),
+    "workout-makes-me-sleepy-not-energised": ("recover", "understand"),
+    "desk-stretches-office-workers": ("recover", "recover"),
+    "exercise-and-mood": ("recover", "understand"),
+    "benefits-of-walking-after-meals": ("recover", "understand"),
+    "standing-desk-honest-benefits": ("recover", "choose"),
+    # ---- weight ----
+    "glp1-workout-plan-for-beginners": ("weight", "start"),
+    "30-day-weight-loss-programme": ("weight", "train"),
+    "strength-training-while-losing-weight": ("weight", "train"),
+    "keeping-weight-off-after-glp1": ("weight", "train"),
+    "muscle-on-glp1-weight-loss-drugs": ("weight", "understand"),
+    "loose-skin-and-muscle-after-weight-loss": ("weight", "understand"),
+    # ---- kit ----
+    "home-gym-essentials-budget": ("kit", "choose"),
+    "resistance-bands-guide": ("kit", "choose"),
+    "fitness-trackers-worth-it": ("kit", "choose"),
+    "personal-trainer-worth-it": ("kit", "choose"),
+    # ---- library ----
+    "exercise-library": ("library", "train"),
+    "exercise-library-push": ("library", "train"),
+    "exercise-library-pull": ("library", "train"),
+    "exercise-library-legs": ("library", "train"),
+    "exercise-library-core": ("library", "train"),
+    "exercise-library-cond": ("library", "train"),
+}
+
+# The desk's interactive products. (slug, name, dek, guide-slug-or-empty)
+FIT_TOOLS = [
+    ("30-day-walking-plan", "The 30-day walking plan",
+     "Show up daily for a month. Time-based, rest days built in — tick days off and the browser remembers.",
+     "how-many-steps-a-day"),
+    ("weekly-planner", "The weekly planner",
+     "One honest card for the week — move, strength, on-time nights. Scores itself against the real targets.",
+     "workout-split-beginners"),
+    ("workout-builder", "The workout builder",
+     "Pick a goal and a week; get a plan you can actually follow.",
+     "how-to-start-working-out"),
+    ("1rm-calculator", "One-rep max calculator",
+     "Estimate your 1RM from a working set — the maths, on your device.",
+     "how-many-reps-for-muscle"),
+    ("fitness-calculators", "BMI, water and protein calculators",
+     "The three ten-second numbers, with the honesty caveats attached.",
+     "how-much-protein-do-you-need"),
+]
+
+# The six-plus-one ways a person arrives at a fitness desk.
+FIT_NEEDS = [
+    ("start", "Start from zero",
+     "Never trained, or starting again. The first-week questions, answered without intimidation."),
+    ("train", "Follow a plan",
+     "Programmes, splits, progressions and form: what to do this week, and the one after."),
+    ("fuel", "Eat for it",
+     "Protein, timing, water and the supplement shelf — evidence first, marketing last."),
+    ("recover", "Recover properly",
+     "Soreness, sleep and every strange body signal: what is normal, what is a warning."),
+    ("compare", "Compare two things",
+     "This or that — with the trade-off named instead of buried."),
+    ("choose", "Decide if it is worth it",
+     "Trackers, machines, powders, trainers: the honest cost-benefit before you spend."),
+    ("understand", "Understand your body",
+     "What the evidence actually says — the explanation before the decision."),
+]
+
+# Freshness cadence per shelf (days) for the hub's self-read.
+FIT_CADENCE = {
+    "start": 240, "plans": 180, "strength": 240, "cardio": 240,
+    "fuel": 180, "recover": 240, "weight": 120, "kit": 180, "library": 365,
+}
