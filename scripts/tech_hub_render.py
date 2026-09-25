@@ -399,6 +399,18 @@ def render(arts: list, tools: list, cat: dict, url_prefix: str = "", stamp: str 
     toolbox_href = esc(U("/tool/", up))
     count_href = "#tm-core"
 
+    _clusters = [("/cybersecurity/", "Cybersecurity", "Passwords, phishing, network defence and the business-grade security stack."),
+                 ("/cloud-hosting/", "Cloud & hosting", "Choosing hosting, controlling cloud cost, DNS, CDN and website security."),
+                 ("/ai-start-here/", "AI", "How the models work, choosing a tool, and using it safely \u2014 hype stripped out."),
+                 ("/saas-software/", "Software & SaaS", "Free vs paid, pricing, lock-in, open source and self-hosting.")]
+    _cluster_cards = "".join(
+        '<a class="tm-sec-card" href="' + esc(U(r, up)) + '"><b>' + esc(t) + "</b><small>" + esc(d) + "</small></a>"
+        for r, t, d in _clusters)
+    cluster_band = ('<section class="tm-band" id="tm-clusters"><header class="tm-band-h">'
+        "<h2>Dive into a cluster.</h2>"
+        "<p>Four deep subject clusters, each with its own start-here index \u2014 the fastest way into the desk.</p></header>"
+        '<div class="tm-secs">' + _cluster_cards + "</div></section>")
+
     return "".join([
         '<main id="main" class="tm-machine"><div class="wrap">',
 
@@ -418,6 +430,8 @@ def render(arts: list, tools: list, cat: dict, url_prefix: str = "", stamp: str 
         '<div class="tm-gauges">' + gauges + "</div>",
         memory,
         "</section>",
+
+        cluster_band,
 
         '<section class="tm-band" id="tm-needs"><header class="tm-band-h">'
         "<h2>What brought you to the desk?</h2>"
