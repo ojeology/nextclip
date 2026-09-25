@@ -38,6 +38,7 @@ SPO_SKIP_SLUGS = {
     "epl", "premier-league", "laliga", "bundesliga", "serie-a", "ligue-1", "champions-league",
     "explainers", "analysis", "transfers", "fpl", "form-board", "premier-league-clubs",
     "about", "contact", "privacy", "terms", "copyright", "corrections", "editorial-policy",
+    "points-race-calculator",  # desk tool (toolbox band, not the pieces wall)
 }
 SPO_SKIP_SUFFIX = ("-fixtures", "-results", "-table", "-top-scorers", "-transfers")
 

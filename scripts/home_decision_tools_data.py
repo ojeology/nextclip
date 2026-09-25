@@ -137,6 +137,45 @@ HEATING_BODY = """<div class="prose">
 </ul>
 </div>"""
 
+INVERTER_SLUG = "inverter-sizing-calculator"
+
+INVERTER_BODY = """<div class="prose">
+<p class="byline">BRYME Home &amp; DIY desk &middot; published 25 September 2026 &middot; the tool runs entirely in your browser &mdash; no answers are stored or sent anywhere &middot; general information, never professional advice</p>
+<p><b>The right inverter size is decided by your actual load &mdash; not by a sales counter.</b> Tick what actually runs in your home, add anything missing, and the tool sizes the inverter (with a surge margin), the battery bank (for your chemistry and autonomy) and the solar array that refills it &mdash; showing every line of the arithmetic. It pairs with the desk&rsquo;s <a href="/generator-vs-inverter-nigeria/">generator-or-inverter guide</a>: that page helps you choose; this one sizes what you chose.</p>
+<style>
+.iv-card{border:1px solid var(--line-strong);border-radius:12px;background:var(--sheet);padding:20px 22px;max-width:760px}
+.iv-card fieldset{border:1px solid var(--line-strong);border-radius:10px;padding:10px 16px 14px;margin-bottom:14px}
+.iv-card legend{font-weight:700;padding:0 8px}
+.iv-row{display:flex;align-items:center;gap:10px;padding:7px 0;border-bottom:1px dashed var(--line);font-size:14.5px}
+.iv-row small{margin-left:auto;color:var(--muted);font-size:12.5px}
+.iv-note{font-size:13px;color:var(--muted);margin:10px 0 0}
+.iv-flds{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
+.iv-flds label{display:flex;flex-direction:column;gap:6px;font-weight:600;font-size:14px}
+.iv-flds select{padding:10px 12px;border:1px solid var(--line-strong);border-radius:8px;font-size:15px;background:var(--paper);color:var(--ink)}
+.iv-out{margin-top:16px;border-left:3px solid var(--accent);background:var(--paper);padding:12px 16px;border-radius:8px}
+.iv-out h3{margin:0 0 8px;font-family:var(--serif)}
+.iv-out ul{margin:0;padding-left:20px}
+.iv-out li{margin:6px 0;font-size:14.5px}
+.iv-privacy{font-size:12.5px;color:var(--muted);margin-top:14px}
+</style>
+<div id="inverter-sizing-calculator"></div>
+<noscript>
+<p><b>The tool needs JavaScript. Here is the honest framework, statically:</b></p>
+<ul>
+<li><b>Daily energy:</b> add up (watts &times; hours per day) for everything that runs. That Wh/day number decides the battery and the solar; the peak decides the inverter.</li>
+<li><b>Inverter:</b> take the watts that could run <em>at the same moment</em>, add ~25% surge margin (motors and compressors spike on start), then pick the next standard size above it.</li>
+<li><b>Battery:</b> Wh/day &times; days of autonomy &divide; (system voltage &times; usable fraction). Lead-acid gives you ~50% of its label; lithium ~80%. Size the bank on usable, not label.</li>
+<li><b>Solar:</b> Wh/day &divide; (peak sun hours &times; ~0.75 system efficiency). Nigeria typically sees 4&ndash;6 peak sun hours across the year &mdash; use the honest season, not the best month.</li>
+<li><b>What this doesn&rsquo;t replace:</b> nameplate readings, a surge audit on fridges and pumps, cable sizing, and a qualified installer. Those are the steps that make a system safe.</li>
+</ul>
+</noscript>
+<script src="/assets/inverter-sizing-tool.js" defer></script>
+
+<h2 id="why-load">Why the load list decides everything</h2>
+<p>Two homes can buy the &ldquo;same&rdquo; 1.5 kVA inverter and have opposite experiences, because one runs a fridge and a pump and the other runs lights and a TV. The load list is the only honest input: <b>watts from the nameplate</b> (not the marketing box), <b>hours it actually runs a day</b>, and the appliances that can start <em>at the same time</em>. Everything the tool outputs follows arithmetically from those three numbers.</p>
+<p>The two classic mistakes it protects against: buying battery capacity in label amp-hours and getting half of it (deep-discharging lead-acid kills it), and sizing solar from the best month&rsquo;s sunshine and wondering why harmattan leaves the bank empty.</p>
+</div>"""
+
 HOME_DECISION_TOOLS = [
 (RENT_BUY_SLUG,
  "Rent or buy where I live? \u2014 a jurisdiction-honest decision tool",
@@ -145,5 +184,9 @@ HOME_DECISION_TOOLS = [
 (HEATING_SLUG,
  "Which heating system fits my home? \u2014 gas, heat pump, electric or keep-and-tune",
  "Gas, heat pump, modern electric or keep-and-tune: six questions place your home on the honest heating ladder \u2014 fabric first, cost shapes shown, no quotes invented.",
- HEATING_BODY),
+ HEATING_BODY),(INVERTER_SLUG,
+ "What size inverter and battery does my home need? \u2014 a load-first sizing tool",
+ "Tick your actual appliances and the tool sizes the inverter (with surge margin), battery bank and solar array \u2014 every line of the working shown. Load first, labels second.",
+ INVERTER_BODY),
+
 ]

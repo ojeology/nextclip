@@ -2340,6 +2340,15 @@ def sports_pages():
         expl_rows.append('<li><a href="/' + slug + '/"><span><b>' + title + "</b><small>" + dek[:110] + "\u2026</small></span>"
                          '<span class="meta">Explainer</span></a></li>')
 
+    # Desk tool (2026-09-25): the points race calculator — arithmetic, not prediction.
+    import sports_tools_data as _std
+    _pr_title = "Points race calculator \u2014 project the finish, show the working | BRYME Sport"
+    _pr_dek = ("Points, games played and recent form in \u2014 projected finish, the minimum wins-and-draws route to any "
+               "target, and every line of the working shown. Runs in your browser; nothing stored, never a bet.")
+    pages.append(("/points-race-calculator/", _pr_title, _pr_dek[:155],
+                  head("sports", "The points race, with the working shown \u2014 never betting.")
+                  + _std.POINTS_RACE_BODY + foot("sports")))
+
     # the analysis shelf: how the game is played (batch 3)
     import sports_analysis_data
     analysis_rows = []
@@ -3659,7 +3668,7 @@ def sports_pages():
         "tool_prefix": "",
     }
     _spo_hub = (head("sports", "Analysis, stories and the long view \u2014 never betting.")
-        + desk_hub_render.render(_cat_arts, [], _shd.SPO_CATS, _spo_cfg, "", TODAY)
+        + desk_hub_render.render(_cat_arts, _std.SPO_TOOLS, _shd.SPO_CATS, _spo_cfg, "", TODAY)
         + '<script src="/assets/tech-hub.js" defer></script>'
         + foot("sports"))
     pages[0] = ("/", "BRYME Sport \u2014 football reporting, never betting",
@@ -5802,6 +5811,7 @@ HOME_PUB_OVERRIDE = {
     "energy-bills": "2026-09-24", "owning-money": "2026-09-24",
     "pests-start-here": "2026-09-24", "seasonal-care": "2026-09-24",
     "rent-or-buy-tool": "2026-09-25", "which-heating-system": "2026-09-25",
+    "inverter-sizing-calculator": "2026-09-25",
 }
 
 def _home_pub(slug):
@@ -5938,6 +5948,7 @@ def home_pages():
     HOME_ARTICLES.extend(home_decision_tools_data.HOME_DECISION_TOOLS)
     HOME_SLUG_SECT["rent-or-buy-tool"] = "owning"
     HOME_SLUG_SECT["which-heating-system"] = "understand"
+    HOME_SLUG_SECT["inverter-sizing-calculator"] = "fix"
 
     def src_html(sources):
         if not sources:
@@ -6688,6 +6699,7 @@ def home_pages():
         "storage-heaters-explained": [("off-peak-electricity-tariffs-explained", "Off-peak tariffs"),("why-is-my-electric-bill-so-high", "Why the bill is high"),("heat-pump-vs-gas-furnace", "Heat pump vs furnace")],
         "frozen-condensate-pipe-fix": [("pipe-lagging-winter-guide", "Pipe lagging"),("boiler-pressure-low-or-high", "Boiler pressure"),("frozen-pipe-prevention", "Frozen pipe prevention")],
         "rent-or-buy-tool": [("rent-vs-buy-explained", "Rent vs buy, explained"),("mortgage-payments-explained", "What mortgage payments really are"),("moving-costs-explained", "What moving really costs"),("emergency-repair-fund", "The repair fund")],
+        "inverter-sizing-calculator": [("generator-vs-inverter-nigeria", "Generator or inverter, sized by your load"),("solar-panels-worth-it-2026", "Are solar panels worth it?"),("wiring-red-flags-in-your-home", "Wiring red flags you can spot yourself")],
         "which-heating-system": [("heat-pump-vs-gas-furnace", "Heat pump vs gas, honestly"),("is-it-cheaper-to-heat-one-room", "Heat one room?"),("thermostat-settings-that-save-money", "Thermostat settings"),("how-to-bleed-a-radiator", "How to bleed a radiator")],
     }
     for slug, ti, dek, b in HOME_ARTICLES:
