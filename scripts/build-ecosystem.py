@@ -4812,6 +4812,12 @@ def fitness_pages():
     ART_SOURCES["heart-rate-zone-calculator"] = FIT_SOURCES + [
         ("CDC \u2014 Target Heart Rate and Estimated Maximum Heart Rate",
          "https://www.cdc.gov/physical-activity-basics/measuring/target-heart-rate.htm")]
+    import fitness_more11_data
+    FIT_ARTICLES.extend((s, ti, dek, b) for (s, _k, ti, dek, b) in fitness_more11_data.FIT_MORE_11)
+    ART_SOURCES.update((s, FIT_SOURCES) for (s, _k, ti, dek, b) in fitness_more11_data.FIT_MORE_11)
+    ART_SOURCES["intermittent-fasting-explained"] = FIT_SOURCES + [
+        ("WHO \u2014 Healthy diet fact sheet",
+         "https://www.who.int/news-room/fact-sheets/detail/healthy-diet")]
     ART_SOURCES["cardio-machine-worth-buying"] = FIT_SOURCES + [
         ("Concept2 \u2014 RowErg product page (US$990, PM5 monitor included, 14in/20in seat heights, 38in inseam limit, two-piece storage, 30-day money-back guarantee, 2-year and 5-year warranty; read 16 September 2026)", "https://www.concept2.com/ergs/rowerg"),
         ("pacompendium.com \u2014 2024 Adult Compendium of Physical Activities tracking guide (MET codes: stationary rowing 5.0 / 7.3 / 7.5 / 11.0 / 14.0 by watt tier; treadmill walking 4.8 at 3.5-3.9 mph and 5.8 at 4.0-4.4 mph; curved-treadmill running 12.0 at 7.0-7.9 mph; interactive virtual cycling and cycle HIIT 8.8)", "https://pacompendium.com/wp-content/uploads/2024/03/4_2024_adult-compendium-tracking-guide-1-2024.pdf"),
@@ -5147,6 +5153,24 @@ def fitness_pages():
     related_map["heart-rate-zone-calculator"] = [("heart-rate-zones-explained", "Your five heart-rate zones"),
                                                  ("vo2-max-explained", "VO2max, explained"),
                                                  ("1rm-calculator", "The 1RM calculator")]
+    related_map["intermittent-fasting-explained"] = [("how-to-lose-belly-fat-honestly", "Losing belly fat, honestly"),
+                                                     ("metabolism-explained", "Metabolism, explained"),
+                                                     ("how-much-protein-do-you-need", "Protein, honestly")]
+    related_map["exercise-snacks-explained"] = [("how-to-start-working-out", "Starting from zero"),
+                                                ("30-day-walking-plan", "The 30-day walking plan"),
+                                                ("how-many-steps-a-day", "How many steps a day?")]
+    related_map["how-to-choose-running-shoes"] = [("beginner-running-plan", "The beginner running plan"),
+                                                  ("walking-vs-running", "Walking or running?"),
+                                                  ("how-many-steps-a-day", "How many steps a day?")]
+    related_map["gym-anxiety-first-session-guide"] = [("strength-training-for-beginners", "Strength training for beginners"),
+                                                      ("workout-at-home-no-equipment", "The no-equipment routine"),
+                                                      ("how-to-start-working-out", "Starting from zero")]
+    related_map["kettlebells-vs-dumbbells-explained"] = [("strength-training-for-beginners", "Strength training for beginners"),
+                                                         ("cardio-machine-worth-buying", "Which cardio machine?"),
+                                                         ("bodyweight-moves-that-matter", "The eight moves")]
+    related_map["couch-to-5k-explained"] = [("beginner-running-plan", "The beginner running plan"),
+                                            ("rest-days-why-muscles-grow", "Why rest days matter"),
+                                            ("30-day-walking-plan", "The 30-day walking plan")]
     arts = [art(s, ti, dek, b, ART_SOURCES[s], related_map[s])
             for (s, ti, dek, b) in FIT_ARTICLES]
 

@@ -38,6 +38,12 @@ FIT_MAP = {
     "metabolism-explained": ("weight", "understand"),
     "rest-days-why-muscles-grow": ("recover", "recover"),
     "rucking-explained": ("plans", "train"),
+    "intermittent-fasting-explained": ("weight", "understand"),
+    "exercise-snacks-explained": ("start", "train"),
+    "how-to-choose-running-shoes": ("kit", "choose"),
+    "gym-anxiety-first-session-guide": ("start", "start"),
+    "kettlebells-vs-dumbbells-explained": ("strength", "compare"),
+    "couch-to-5k-explained": ("cardio", "train"),
     # ---- start ----
     "how-to-start-working-out": ("start", "start"),
     "how-to-start-going-to-the-gym": ("start", "start"),
