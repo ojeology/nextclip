@@ -1,0 +1,16 @@
+<p><strong>Every strategy that has ever existed goes on losing streaks.</strong> The question that decides whether you are still trading after one is not win rate or signal quality — it is how much of the account each loss removes. Risk of ruin is the arithmetic of that question, and it can be worked out with a calculator and five minutes.</p>
+<h2 id="streaks">Streaks are not rare; they are scheduled</h2>
+<p>Take a strategy that wins half its trades — respectable after costs. The chance of any specific ten trades all losing is 0.5<sup>10</sup>, about 0.1%. That sounds negligible until you count trades instead of strategies: across 1,000 separate stretches of ten trades, a ten-loss streak is not a possibility, it is an expectation. Anyone trading daily meets their streak within a year or two. Losing streaks are not evidence the method broke; they are the delivery schedule of variance, and position size is the only lever that decides what they cost.</p>
+<h2 id="maths">The same streak at three risk settings</h2>
+<p>Assume ten consecutive losses, each losing exactly the planned risk. What remains of the account:</p>
+<ul>
+<li><strong>1% risk per trade:</strong> 0.99<sup>10</sup> ≈ <strong>90.4%</strong> of capital remains. A bad month, fully recoverable.</li>
+<li><strong>2% risk per trade:</strong> 0.98<sup>10</sup> ≈ <strong>81.7%</strong> remains. Painful, still trading.</li>
+<li><strong>5% risk per trade:</strong> 0.95<sup>10</sup> ≈ <strong>59.9%</strong> remains. The account needs a +67% gain just to get back to even.</li>
+</ul>
+<p>That last line is the asymmetry that ends accounts: losses and gains are not mirror images. A 50% loss requires a 100% gain to recover; a 40% loss needs 67%. Drawdown is cheap on the way down and brutally expensive on the way back, which is why the desk's sizing page treats risk as an estimate with a margin attached, not a promise.</p>
+<h2 id="assumptions">Where the clean maths gets dirty</h2>
+<p>The table above assumes each loss equals exactly the planned risk. Real losses overshoot for three reasons the desk has catalogued elsewhere: <strong>gaps</strong> move price past a stop before it can fill; <strong>slippage</strong> widens the loss on every exit in fast markets; and <strong>correlation</strong> means positions that looked separate — five tech stocks, or three currency pairs against the dollar — lose together, turning five "1% risks" into one 5% day. Risk of ruin computed on independent, clean-exit trades is the optimistic bound. Size against the pessimistic one.</p>
+<h2 id="use">How to use this page</h2>
+<p>Open the position-size calculator with your real account number and the widest stop your method actually uses — not the tightest stop you can imagine holding. Then run the streak test above at that risk setting and ask the only question that matters: <em>at 60% of capital, would I still follow the method, or would I change everything?</em> Most people who answer honestly discover their true risk tolerance is lower than their preferred position size implies. That discovery, made on paper, is the cheapest lesson in trading; made live, it is the most expensive.</p>
+<p>No part of this arithmetic requires predicting markets. That is exactly why it comes first: the forecast is the uncertain part of trading, and the sizing is the part you control completely.</p>

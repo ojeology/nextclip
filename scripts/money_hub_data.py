@@ -37,6 +37,13 @@ MONEY_MAP = {
     "how-to-choose-a-trading-platform": ("costs", "vet"),
     "backtesting-101": ("method", "test"),
     "quantlab-explained": ("method", "test"),
+    # Growth batch (2026-09-25): six new guides, high-demand clusters.
+    "trading-taxes-explained": ("costs", "vet"),
+    "zero-commission-trading-truth": ("costs", "vet"),
+    "risk-of-ruin-explained": ("risk", "size"),
+    "demo-accounts-what-they-cant-teach": ("method", "test"),
+    "signal-sellers-and-copy-trading": ("risk", "vet"),
+    "day-trading-vs-swing-vs-investing": ("start", "start"),
 }
 
 # (slug, title, blurb, related_slug)

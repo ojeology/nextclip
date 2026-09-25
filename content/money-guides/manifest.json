@@ -1,345 +1,497 @@
 {
-  "reviewed": "2026-09-24",
-  "articles": [
+ "reviewed": "2026-09-25",
+ "articles": [
+  {
+   "slug": "trading-for-beginners",
+   "section": "Start here",
+   "title": "Trading for Beginners: A Risk-First Map | BRYME Money",
+   "h1": "Trading for beginners: a risk-first map",
+   "dek": "Learn the product, the bill and the downside before you look for an entry.",
+   "description": "A practical trading starting point: markets, order types, transaction costs, simulated practice and a risk checklist. Education, not a trade recommendation.",
+   "summary": "A step-by-step reading path from market mechanics to a testable practice plan.",
+   "sources": [
     {
-      "slug": "trading-for-beginners",
-      "section": "Start here",
-      "title": "Trading for Beginners: A Risk-First Map | BRYME Money",
-      "h1": "Trading for beginners: a risk-first map",
-      "dek": "Learn the product, the bill and the downside before you look for an entry.",
-      "description": "A practical trading starting point: markets, order types, transaction costs, simulated practice and a risk checklist. Education, not a trade recommendation.",
-      "summary": "A step-by-step reading path from market mechanics to a testable practice plan.",
-      "sources": [
-        {
-          "label": "SEC Investor.gov — types of orders",
-          "url": "https://www.investor.gov/introduction-investing/investing-basics/how-stock-markets-work/types-orders"
-        },
-        {
-          "label": "FINRA — check registration",
-          "url": "https://www.finra.org/investors/protect-your-money/check-registration"
-        },
-        {
-          "label": "ASIC MoneySmart — forex trading risks",
-          "url": "https://moneysmart.gov.au/investment-warnings/forex-trading"
-        }
-      ],
-      "related": [
-        "stocks-forex-futures-and-cfds",
-        "trading-environments-explained",
-        "trading-risk-checklist"
-      ]
+     "label": "SEC Investor.gov — types of orders",
+     "url": "https://www.investor.gov/introduction-investing/investing-basics/how-stock-markets-work/types-orders"
     },
     {
-      "slug": "stocks-forex-futures-and-cfds",
-      "section": "Markets & conditions",
-      "title": "Stocks, Forex, Futures & CFDs Compared | BRYME Money",
-      "h1": "Stocks, forex, futures and CFDs: what you actually hold",
-      "dek": "A market name is not a product. Compare ownership, leverage, hours and who owes whom before comparing charts.",
-      "description": "Compare stocks and ETFs, spot currencies, retail forex, futures, options, CFDs and spot crypto. Understand product structure, costs and key risks.",
-      "summary": "What changes between owning an asset and trading a contract on it.",
-      "sources": [
-        {
-          "label": "ASIC MoneySmart — contracts for difference",
-          "url": "https://moneysmart.gov.au/investment-warnings/contracts-for-difference-cfds"
-        },
-        {
-          "label": "ASIC MoneySmart — forex trading",
-          "url": "https://moneysmart.gov.au/investment-warnings/forex-trading"
-        },
-        {
-          "label": "SEC Investor.gov — ETFs",
-          "url": "https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins-24"
-        }
-      ],
-      "related": [
-        "how-to-check-a-trading-broker",
-        "leverage-and-margin-explained",
-        "trading-fees-explained"
-      ]
+     "label": "FINRA — check registration",
+     "url": "https://www.finra.org/investors/protect-your-money/check-registration"
     },
     {
-      "slug": "trading-environments-explained",
-      "section": "Markets & conditions",
-      "title": "Trading Environments: Trend, Range & Liquidity | BRYME",
-      "h1": "Trading environments: trend, range, volatility and liquidity",
-      "dek": "The same setup behaves differently when the market around it changes.",
-      "description": "How to identify trends, ranges, changing volatility, liquidity gaps and session effects. A trading-environment worksheet without prediction claims.",
-      "summary": "A regime checklist for trends, ranges, volatility, thin markets and news.",
-      "sources": [
-        {
-          "label": "SEC Investor.gov — extended-hours trading risks",
-          "url": "https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins-42"
-        },
-        {
-          "label": "ASIC MoneySmart — forex trading",
-          "url": "https://moneysmart.gov.au/investment-warnings/forex-trading"
-        }
-      ],
-      "related": [
-        "order-types-and-slippage",
-        "atr-indicator-guide",
-        "trading-risk-checklist"
-      ]
-    },
-    {
-      "slug": "order-types-and-slippage",
-      "section": "Markets & conditions",
-      "title": "Order Types, Spreads & Slippage Explained | BRYME",
-      "h1": "Order types and slippage: price versus execution",
-      "dek": "What your order requests, what the venue can deliver, and where the difference becomes a cost.",
-      "description": "Market, limit, stop and stop-limit orders explained with an execution example, partial fills, spreads and slippage. Stops are not loss guarantees.",
-      "summary": "Why a stop is a trigger, a limit can miss and the last price is not your fill.",
-      "sources": [
-        {
-          "label": "SEC Investor.gov — types of orders",
-          "url": "https://www.investor.gov/introduction-investing/investing-basics/how-stock-markets-work/types-orders"
-        },
-        {
-          "label": "SEC Investor.gov — stop and stop-limit orders",
-          "url": "https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins-15"
-        }
-      ],
-      "related": [
-        "trading-fees-explained",
-        "trading-environments-explained",
-        "trade-types-explained"
-      ]
-    },
-    {
-      "slug": "how-to-check-a-trading-broker",
-      "section": "Broker & platform checks",
-      "title": "Check a Trading Broker: US, UK, Canada, Australia | BRYME Money",
-      "h1": "How to check a trading broker in the US, UK, Canada and Australia",
-      "dek": "Find the legal firm, check official registers and confirm its permissions before opening an account.",
-      "description": "Check a trading broker in the US, UK, Canada or Australia: match the legal entity, official registration, product permissions and contact details. Avoid clone firms.",
-      "summary": "Official registers, permissions, matching contact details and clone-firm checks.",
-      "sources": [
-        {
-          "label": "FINRA BrokerCheck — registration and disclosures",
-          "url": "https://brokercheck.finra.org/"
-        },
-        {
-          "label": "NFA investor FAQs — derivatives and retail forex registration",
-          "url": "https://www.nfa.futures.org/faqs/investors.html"
-        },
-        {
-          "label": "FCA Firm Checker — verify UK firm and permissions",
-          "url": "https://www.fca.org.uk/consumers/fca-firm-checker"
-        },
-        {
-          "label": "CSA — Are They Registered?",
-          "url": "https://www.securities-administrators.ca/investor-tools/are-they-registered/"
-        },
-        {
-          "label": "CIRO investor guidance — avoiding investment fraud",
-          "url": "https://www.ciro.ca/office-investor/avoiding-fraud-and-protecting-your-investments"
-        },
-        {
-          "label": "ASIC — search professional registers",
-          "url": "https://www.asic.gov.au/online-services/search-asic-registers/professional-registers-search"
-        }
-      ],
-      "related": [
-        "how-to-choose-a-trading-platform",
-        "trading-fees-explained",
-        "trading-for-beginners"
-      ]
-    },
-    {
-      "slug": "how-to-choose-a-trading-platform",
-      "section": "Broker & platform checks",
-      "title": "Trading Platform Checklist: Fees, Safety & Orders | BRYME",
-      "h1": "How to assess a trading platform without a 'best broker' list",
-      "dek": "The account, the firm and the app are not the same thing. Test all three.",
-      "description": "A vendor-neutral trading platform comparison checklist: regulation, product access, fee schedule, order controls, data quality, security and withdrawals.",
-      "summary": "A broker-neutral comparison worksheet for execution, access and safety.",
-      "sources": [
-        {
-          "label": "SEC Investor.gov — how to open a brokerage account",
-          "url": "https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins-43"
-        },
-        {
-          "label": "FCA — protect yourself from scams",
-          "url": "https://www.fca.org.uk/consumers/protect-yourself-scams"
-        },
-        {
-          "label": "SEC Investor.gov — online investing",
-          "url": "https://www.investor.gov/introduction-investing/getting-started/investing-your-own/online-investing?page=1"
-        }
-      ],
-      "related": [
-        "how-to-check-a-trading-broker",
-        "trading-fees-explained",
-        "order-types-and-slippage"
-      ]
-    },
-    {
-      "slug": "trading-fees-explained",
-      "section": "Broker & platform checks",
-      "title": "Trading Fees Explained: Spreads, Swaps & More | BRYME",
-      "h1": "Trading fees explained: the cost beyond commission",
-      "dek": "A zero-commission label is not a zero-cost trade. Price the full round trip.",
-      "description": "Understand bid-ask spreads, commissions, slippage, overnight financing, FX conversion, margin interest and withdrawal fees with a worked cost example.",
-      "summary": "An honest round-trip cost worksheet: spread, commission, financing and more.",
-      "sources": [
-        {
-          "label": "SEC Investor.gov — forex pricing and costs",
-          "url": "https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins/foreign"
-        },
-        {
-          "label": "SEC Investor.gov — brokerage account fees",
-          "url": "https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins-43"
-        },
-        {
-          "label": "ASIC MoneySmart — CFD costs",
-          "url": "https://moneysmart.gov.au/investment-warnings/contracts-for-difference-cfds"
-        }
-      ],
-      "related": [
-        "forex-spreads-and-pips",
-        "order-types-and-slippage",
-        "how-to-choose-a-trading-platform"
-      ]
-    },
-    {
-      "slug": "forex-spreads-and-pips",
-      "section": "Broker & platform checks",
-      "title": "Forex Spreads, Pips & Lots: Worked Costs | BRYME",
-      "h1": "Forex spreads, pips and lots: what one trade can cost",
-      "dek": "Convert a quoted spread to money before comparing any fee claim.",
-      "description": "What is a pip? Work out a EUR/USD spread cost in quote currency and compare spread-only and commission pricing, with swap and slippage caveats.",
-      "summary": "A numerical EUR/USD example that turns pips and lots into a cost.",
-      "sources": [
-        {
-          "label": "SEC Investor.gov — retail forex pricing",
-          "url": "https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins/foreign"
-        },
-        {
-          "label": "ASIC MoneySmart — forex trading",
-          "url": "https://moneysmart.gov.au/investment-warnings/forex-trading"
-        }
-      ],
-      "related": [
-        "trading-fees-explained",
-        "position-size-calculator",
-        "leverage-and-margin-explained"
-      ]
-    },
-    {
-      "slug": "leverage-and-margin-explained",
-      "section": "Broker & platform checks",
-      "title": "Leverage and Margin Calls Explained | BRYME Money",
-      "h1": "Leverage, margin calls and liquidation: the full exposure",
-      "dek": "A smaller deposit does not make the position smaller; the contract's notional value drives the loss.",
-      "description": "An example of 5x leverage, margin, forced liquidation and losses beyond deposits; retail protections differ by product and jurisdiction.",
-      "summary": "Notional exposure, margin calls and the limits of negative-balance protection.",
-      "sources": [
-        {
-          "label": "FINRA — Margin Disclosure Statement",
-          "url": "https://www.finra.org/rules-guidance/rulebooks/finra-rules/2264"
-        },
-        {
-          "label": "ASIC MoneySmart — CFDs and margin",
-          "url": "https://moneysmart.gov.au/investment-warnings/contracts-for-difference-cfds"
-        },
-        {
-          "label": "FCA — contracts for difference",
-          "url": "https://www.fca.org.uk/firms/contract-for-differences"
-        }
-      ],
-      "related": [
-        "trading-risk-checklist",
-        "stocks-forex-futures-and-cfds",
-        "how-to-check-a-trading-broker"
-      ]
-    },
-    {
-      "slug": "trading-risk-checklist",
-      "section": "Start here",
-      "title": "Trading Risk Plan: A Pre-Trade Checklist | BRYME Money",
-      "h1": "A trading risk plan before the first order",
-      "dek": "Write down what can go wrong, in money terms, before asking what might go right.",
-      "description": "A pre-trade risk checklist for sizing, stops, correlated positions, slippage, fees, leverage and what to do when an order fails.",
-      "summary": "A practical worksheet for loss limits, correlated exposure and bad fills.",
-      "sources": [
-        {
-          "label": "FINRA — Margin Disclosure Statement",
-          "url": "https://www.finra.org/rules-guidance/rulebooks/finra-rules/2264"
-        },
-        {
-          "label": "SEC Investor.gov — stop and stop-limit orders",
-          "url": "https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins-15"
-        }
-      ],
-      "related": [
-        "position-sizing-101",
-        "order-types-and-slippage",
-        "trading-environments-explained"
-      ]
-    },
-    {
-      "slug": "rsi-indicator-guide",
-      "section": "Indicator lab",
-      "title": "RSI Indicator Explained: 70/30 Is Not a Signal | BRYME",
-      "h1": "RSI explained: the formula, 70/30 and false signals",
-      "dek": "A momentum measure can describe a move without forecasting its end.",
-      "description": "How RSI is calculated, what the 70/30 thresholds really say, why divergence can fail, and how to test an indicator without hindsight.",
-      "summary": "RSI arithmetic, range changes and why 'overbought' is not a sell order.",
-      "sources": [
-        {
-          "label": "Fidelity — Relative Strength Index reference",
-          "url": "https://www.fidelity.com/learning-center/trading-investing/technical-analysis/technical-indicator-guide/RSI"
-        }
-      ],
-      "related": [
-        "technical-indicators-explained",
-        "moving-averages-sma-vs-ema",
-        "atr-indicator-guide"
-      ]
-    },
-    {
-      "slug": "atr-indicator-guide",
-      "section": "Indicator lab",
-      "title": "ATR Explained: Volatility, Gaps & Stops | BRYME Money",
-      "h1": "ATR explained: measuring movement without predicting direction",
-      "dek": "True range includes gaps; average true range describes scale, not where price goes next.",
-      "description": "A worked ATR example with true range, smoothing, volatility-adjusted stop distances, sizing and the risks of gaps and look-ahead bias.",
-      "summary": "True-range arithmetic, gap risk and the link from stop distance to size.",
-      "sources": [
-        {
-          "label": "Fidelity — Average True Range reference",
-          "url": "https://www.fidelity.com/learning-center/trading-investing/technical-analysis/technical-indicator-guide/atr"
-        },
-        {
-          "label": "SEC Investor.gov — stop and stop-limit orders",
-          "url": "https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins-15"
-        }
-      ],
-      "related": [
-        "trading-environments-explained",
-        "position-size-calculator",
-        "rsi-indicator-guide"
-      ]
-    },
-    {
-      "slug": "moving-averages-sma-vs-ema",
-      "section": "Indicator lab",
-      "title": "SMA vs EMA: Moving Averages Explained | BRYME Money",
-      "h1": "SMA vs EMA: what moving averages actually measure",
-      "dek": "Smooth the past, see the lag, then decide whether a crossover is information or noise.",
-      "description": "Simple versus exponential moving average formulas, a 3-period numerical example, trend filters, crossovers, lag and whipsaws.",
-      "summary": "Two averages, one worked example and the trade-off between lag and noise.",
-      "sources": [
-        {
-          "label": "Fidelity — Exponential Moving Average reference",
-          "url": "https://www.fidelity.com/learning-center/trading-investing/technical-analysis/technical-indicator-guide/ema"
-        }
-      ],
-      "related": [
-        "technical-indicators-explained",
-        "rsi-indicator-guide",
-        "backtesting-101"
-      ]
+     "label": "ASIC MoneySmart — forex trading risks",
+     "url": "https://moneysmart.gov.au/investment-warnings/forex-trading"
     }
-  ]
+   ],
+   "related": [
+    "stocks-forex-futures-and-cfds",
+    "trading-environments-explained",
+    "trading-risk-checklist"
+   ]
+  },
+  {
+   "slug": "stocks-forex-futures-and-cfds",
+   "section": "Markets & conditions",
+   "title": "Stocks, Forex, Futures & CFDs Compared | BRYME Money",
+   "h1": "Stocks, forex, futures and CFDs: what you actually hold",
+   "dek": "A market name is not a product. Compare ownership, leverage, hours and who owes whom before comparing charts.",
+   "description": "Compare stocks and ETFs, spot currencies, retail forex, futures, options, CFDs and spot crypto. Understand product structure, costs and key risks.",
+   "summary": "What changes between owning an asset and trading a contract on it.",
+   "sources": [
+    {
+     "label": "ASIC MoneySmart — contracts for difference",
+     "url": "https://moneysmart.gov.au/investment-warnings/contracts-for-difference-cfds"
+    },
+    {
+     "label": "ASIC MoneySmart — forex trading",
+     "url": "https://moneysmart.gov.au/investment-warnings/forex-trading"
+    },
+    {
+     "label": "SEC Investor.gov — ETFs",
+     "url": "https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins-24"
+    }
+   ],
+   "related": [
+    "how-to-check-a-trading-broker",
+    "leverage-and-margin-explained",
+    "trading-fees-explained"
+   ]
+  },
+  {
+   "slug": "trading-environments-explained",
+   "section": "Markets & conditions",
+   "title": "Trading Environments: Trend, Range & Liquidity | BRYME",
+   "h1": "Trading environments: trend, range, volatility and liquidity",
+   "dek": "The same setup behaves differently when the market around it changes.",
+   "description": "How to identify trends, ranges, changing volatility, liquidity gaps and session effects. A trading-environment worksheet without prediction claims.",
+   "summary": "A regime checklist for trends, ranges, volatility, thin markets and news.",
+   "sources": [
+    {
+     "label": "SEC Investor.gov — extended-hours trading risks",
+     "url": "https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins-42"
+    },
+    {
+     "label": "ASIC MoneySmart — forex trading",
+     "url": "https://moneysmart.gov.au/investment-warnings/forex-trading"
+    }
+   ],
+   "related": [
+    "order-types-and-slippage",
+    "atr-indicator-guide",
+    "trading-risk-checklist"
+   ]
+  },
+  {
+   "slug": "order-types-and-slippage",
+   "section": "Markets & conditions",
+   "title": "Order Types, Spreads & Slippage Explained | BRYME",
+   "h1": "Order types and slippage: price versus execution",
+   "dek": "What your order requests, what the venue can deliver, and where the difference becomes a cost.",
+   "description": "Market, limit, stop and stop-limit orders explained with an execution example, partial fills, spreads and slippage. Stops are not loss guarantees.",
+   "summary": "Why a stop is a trigger, a limit can miss and the last price is not your fill.",
+   "sources": [
+    {
+     "label": "SEC Investor.gov — types of orders",
+     "url": "https://www.investor.gov/introduction-investing/investing-basics/how-stock-markets-work/types-orders"
+    },
+    {
+     "label": "SEC Investor.gov — stop and stop-limit orders",
+     "url": "https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins-15"
+    }
+   ],
+   "related": [
+    "trading-fees-explained",
+    "trading-environments-explained",
+    "trade-types-explained"
+   ]
+  },
+  {
+   "slug": "how-to-check-a-trading-broker",
+   "section": "Broker & platform checks",
+   "title": "Check a Trading Broker: US, UK, Canada, Australia | BRYME Money",
+   "h1": "How to check a trading broker in the US, UK, Canada and Australia",
+   "dek": "Find the legal firm, check official registers and confirm its permissions before opening an account.",
+   "description": "Check a trading broker in the US, UK, Canada or Australia: match the legal entity, official registration, product permissions and contact details. Avoid clone firms.",
+   "summary": "Official registers, permissions, matching contact details and clone-firm checks.",
+   "sources": [
+    {
+     "label": "FINRA BrokerCheck — registration and disclosures",
+     "url": "https://brokercheck.finra.org/"
+    },
+    {
+     "label": "NFA investor FAQs — derivatives and retail forex registration",
+     "url": "https://www.nfa.futures.org/faqs/investors.html"
+    },
+    {
+     "label": "FCA Firm Checker — verify UK firm and permissions",
+     "url": "https://www.fca.org.uk/consumers/fca-firm-checker"
+    },
+    {
+     "label": "CSA — Are They Registered?",
+     "url": "https://www.securities-administrators.ca/investor-tools/are-they-registered/"
+    },
+    {
+     "label": "CIRO investor guidance — avoiding investment fraud",
+     "url": "https://www.ciro.ca/office-investor/avoiding-fraud-and-protecting-your-investments"
+    },
+    {
+     "label": "ASIC — search professional registers",
+     "url": "https://www.asic.gov.au/online-services/search-asic-registers/professional-registers-search"
+    }
+   ],
+   "related": [
+    "how-to-choose-a-trading-platform",
+    "trading-fees-explained",
+    "trading-for-beginners"
+   ]
+  },
+  {
+   "slug": "how-to-choose-a-trading-platform",
+   "section": "Broker & platform checks",
+   "title": "Trading Platform Checklist: Fees, Safety & Orders | BRYME",
+   "h1": "How to assess a trading platform without a 'best broker' list",
+   "dek": "The account, the firm and the app are not the same thing. Test all three.",
+   "description": "A vendor-neutral trading platform comparison checklist: regulation, product access, fee schedule, order controls, data quality, security and withdrawals.",
+   "summary": "A broker-neutral comparison worksheet for execution, access and safety.",
+   "sources": [
+    {
+     "label": "SEC Investor.gov — how to open a brokerage account",
+     "url": "https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins-43"
+    },
+    {
+     "label": "FCA — protect yourself from scams",
+     "url": "https://www.fca.org.uk/consumers/protect-yourself-scams"
+    },
+    {
+     "label": "SEC Investor.gov — online investing",
+     "url": "https://www.investor.gov/introduction-investing/getting-started/investing-your-own/online-investing?page=1"
+    }
+   ],
+   "related": [
+    "how-to-check-a-trading-broker",
+    "trading-fees-explained",
+    "order-types-and-slippage"
+   ]
+  },
+  {
+   "slug": "trading-fees-explained",
+   "section": "Broker & platform checks",
+   "title": "Trading Fees Explained: Spreads, Swaps & More | BRYME",
+   "h1": "Trading fees explained: the cost beyond commission",
+   "dek": "A zero-commission label is not a zero-cost trade. Price the full round trip.",
+   "description": "Understand bid-ask spreads, commissions, slippage, overnight financing, FX conversion, margin interest and withdrawal fees with a worked cost example.",
+   "summary": "An honest round-trip cost worksheet: spread, commission, financing and more.",
+   "sources": [
+    {
+     "label": "SEC Investor.gov — forex pricing and costs",
+     "url": "https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins/foreign"
+    },
+    {
+     "label": "SEC Investor.gov — brokerage account fees",
+     "url": "https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins-43"
+    },
+    {
+     "label": "ASIC MoneySmart — CFD costs",
+     "url": "https://moneysmart.gov.au/investment-warnings/contracts-for-difference-cfds"
+    }
+   ],
+   "related": [
+    "forex-spreads-and-pips",
+    "order-types-and-slippage",
+    "how-to-choose-a-trading-platform"
+   ]
+  },
+  {
+   "slug": "forex-spreads-and-pips",
+   "section": "Broker & platform checks",
+   "title": "Forex Spreads, Pips & Lots: Worked Costs | BRYME",
+   "h1": "Forex spreads, pips and lots: what one trade can cost",
+   "dek": "Convert a quoted spread to money before comparing any fee claim.",
+   "description": "What is a pip? Work out a EUR/USD spread cost in quote currency and compare spread-only and commission pricing, with swap and slippage caveats.",
+   "summary": "A numerical EUR/USD example that turns pips and lots into a cost.",
+   "sources": [
+    {
+     "label": "SEC Investor.gov — retail forex pricing",
+     "url": "https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins/foreign"
+    },
+    {
+     "label": "ASIC MoneySmart — forex trading",
+     "url": "https://moneysmart.gov.au/investment-warnings/forex-trading"
+    }
+   ],
+   "related": [
+    "trading-fees-explained",
+    "position-size-calculator",
+    "leverage-and-margin-explained"
+   ]
+  },
+  {
+   "slug": "leverage-and-margin-explained",
+   "section": "Broker & platform checks",
+   "title": "Leverage and Margin Calls Explained | BRYME Money",
+   "h1": "Leverage, margin calls and liquidation: the full exposure",
+   "dek": "A smaller deposit does not make the position smaller; the contract's notional value drives the loss.",
+   "description": "An example of 5x leverage, margin, forced liquidation and losses beyond deposits; retail protections differ by product and jurisdiction.",
+   "summary": "Notional exposure, margin calls and the limits of negative-balance protection.",
+   "sources": [
+    {
+     "label": "FINRA — Margin Disclosure Statement",
+     "url": "https://www.finra.org/rules-guidance/rulebooks/finra-rules/2264"
+    },
+    {
+     "label": "ASIC MoneySmart — CFDs and margin",
+     "url": "https://moneysmart.gov.au/investment-warnings/contracts-for-difference-cfds"
+    },
+    {
+     "label": "FCA — contracts for difference",
+     "url": "https://www.fca.org.uk/firms/contract-for-differences"
+    }
+   ],
+   "related": [
+    "trading-risk-checklist",
+    "stocks-forex-futures-and-cfds",
+    "how-to-check-a-trading-broker"
+   ]
+  },
+  {
+   "slug": "trading-risk-checklist",
+   "section": "Start here",
+   "title": "Trading Risk Plan: A Pre-Trade Checklist | BRYME Money",
+   "h1": "A trading risk plan before the first order",
+   "dek": "Write down what can go wrong, in money terms, before asking what might go right.",
+   "description": "A pre-trade risk checklist for sizing, stops, correlated positions, slippage, fees, leverage and what to do when an order fails.",
+   "summary": "A practical worksheet for loss limits, correlated exposure and bad fills.",
+   "sources": [
+    {
+     "label": "FINRA — Margin Disclosure Statement",
+     "url": "https://www.finra.org/rules-guidance/rulebooks/finra-rules/2264"
+    },
+    {
+     "label": "SEC Investor.gov — stop and stop-limit orders",
+     "url": "https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins-15"
+    }
+   ],
+   "related": [
+    "position-sizing-101",
+    "order-types-and-slippage",
+    "trading-environments-explained"
+   ]
+  },
+  {
+   "slug": "rsi-indicator-guide",
+   "section": "Indicator lab",
+   "title": "RSI Indicator Explained: 70/30 Is Not a Signal | BRYME",
+   "h1": "RSI explained: the formula, 70/30 and false signals",
+   "dek": "A momentum measure can describe a move without forecasting its end.",
+   "description": "How RSI is calculated, what the 70/30 thresholds really say, why divergence can fail, and how to test an indicator without hindsight.",
+   "summary": "RSI arithmetic, range changes and why 'overbought' is not a sell order.",
+   "sources": [
+    {
+     "label": "Fidelity — Relative Strength Index reference",
+     "url": "https://www.fidelity.com/learning-center/trading-investing/technical-analysis/technical-indicator-guide/RSI"
+    }
+   ],
+   "related": [
+    "technical-indicators-explained",
+    "moving-averages-sma-vs-ema",
+    "atr-indicator-guide"
+   ]
+  },
+  {
+   "slug": "atr-indicator-guide",
+   "section": "Indicator lab",
+   "title": "ATR Explained: Volatility, Gaps & Stops | BRYME Money",
+   "h1": "ATR explained: measuring movement without predicting direction",
+   "dek": "True range includes gaps; average true range describes scale, not where price goes next.",
+   "description": "A worked ATR example with true range, smoothing, volatility-adjusted stop distances, sizing and the risks of gaps and look-ahead bias.",
+   "summary": "True-range arithmetic, gap risk and the link from stop distance to size.",
+   "sources": [
+    {
+     "label": "Fidelity — Average True Range reference",
+     "url": "https://www.fidelity.com/learning-center/trading-investing/technical-analysis/technical-indicator-guide/atr"
+    },
+    {
+     "label": "SEC Investor.gov — stop and stop-limit orders",
+     "url": "https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins-15"
+    }
+   ],
+   "related": [
+    "trading-environments-explained",
+    "position-size-calculator",
+    "rsi-indicator-guide"
+   ]
+  },
+  {
+   "slug": "moving-averages-sma-vs-ema",
+   "section": "Indicator lab",
+   "title": "SMA vs EMA: Moving Averages Explained | BRYME Money",
+   "h1": "SMA vs EMA: what moving averages actually measure",
+   "dek": "Smooth the past, see the lag, then decide whether a crossover is information or noise.",
+   "description": "Simple versus exponential moving average formulas, a 3-period numerical example, trend filters, crossovers, lag and whipsaws.",
+   "summary": "Two averages, one worked example and the trade-off between lag and noise.",
+   "sources": [
+    {
+     "label": "Fidelity — Exponential Moving Average reference",
+     "url": "https://www.fidelity.com/learning-center/trading-investing/technical-analysis/technical-indicator-guide/ema"
+    }
+   ],
+   "related": [
+    "technical-indicators-explained",
+    "rsi-indicator-guide",
+    "backtesting-101"
+   ]
+  },
+  {
+   "slug": "trading-taxes-explained",
+   "section": "Broker & platform checks",
+   "title": "Trading Taxes Explained: What You Keep After the Taxman | BRYME Money",
+   "h1": "Trading taxes: what you keep after the taxman",
+   "dek": "Gross profit is not net profit. The mechanics of four tax systems, and the rule that catches active traders.",
+   "description": "How the US, UK and Australia tax trading gains: holding periods, wash sales, exemptions, the 12-month discount. Mechanisms, not rates; education, not tax advice.",
+   "summary": "Disposals trigger tax; turnover compounds it. The four questions to take to an adviser.",
+   "sources": [
+    {
+     "label": "IRS — Topic 409: capital gains and losses (short- vs long-term)",
+     "url": "https://www.irs.gov/taxtopics/tc409"
+    },
+    {
+     "label": "IRS — Publication 550: wash sales (30-day rule)",
+     "url": "https://www.irs.gov/publications/p550"
+    },
+    {
+     "label": "GOV.UK — Capital Gains Tax",
+     "url": "https://www.gov.uk/capital-gains-tax"
+    },
+    {
+     "label": "ATO — Capital gains tax for individuals",
+     "url": "https://www.ato.gov.au/individuals-and-families/investments-and-assets/capital-gains-tax"
+    }
+   ],
+   "related": [
+    "trading-fees-explained",
+    "stocks-forex-futures-and-cfds",
+    "trading-risk-checklist"
+   ]
+  },
+  {
+   "slug": "zero-commission-trading-truth",
+   "section": "Broker & platform checks",
+   "title": "'Zero Commission' Trading: What It Actually Costs | BRYME Money",
+   "h1": "Zero commission: what it actually costs",
+   "dek": "The commission line went to zero; the costs moved. Spreads, order flow, conversions and the quiet fees.",
+   "description": "Payment for order flow, mark-ups versus commissions, spread maths on 'free' trades, and the five-minute audit that prices a real round trip on your own account.",
+   "summary": "Zero commission is one fee line, not a price. Here is the rest of the price list.",
+   "sources": [
+    {
+     "label": "Investor.gov — Executing an order (payment for order flow, best execution)",
+     "url": "https://www.investor.gov/introduction-investing/investing-basics/how-stock-markets-work/executing-order"
+    },
+    {
+     "label": "SEC — Investor bulletin: trade confirmations (commissions vs mark-ups, order-flow disclosure)",
+     "url": "https://www.sec.gov/investor/alerts/ib_confirmations.pdf"
+    }
+   ],
+   "related": [
+    "trading-fees-explained",
+    "order-types-and-slippage",
+    "forex-spreads-and-pips"
+   ]
+  },
+  {
+   "slug": "risk-of-ruin-explained",
+   "section": "Start here",
+   "title": "Risk of Ruin: The Maths of Losing Streaks | BRYME Money",
+   "h1": "Risk of ruin: the maths of losing streaks",
+   "dek": "A ten-loss streak is scheduled, not rare. Position size decides whether it is a bad month or the end.",
+   "description": "Streak probability, ten losses at 1%, 2% and 5% risk, the drawdown asymmetry that ends accounts, and where clean maths gets dirty: gaps, slippage, correlation.",
+   "summary": "Worked arithmetic: why sizing, not signals, decides who survives variance.",
+   "sources": [
+    {
+     "label": "FINRA — day-trading rules & margin FAQ (pattern day trader, $25,000 minimum)",
+     "url": "https://www.finra.org/investors/learn-to-invest/advanced-investing/day-trading-rules-faq"
+    }
+   ],
+   "related": [
+    "position-sizing-101",
+    "trading-risk-checklist",
+    "leverage-and-margin-explained"
+   ]
+  },
+  {
+   "slug": "demo-accounts-what-they-cant-teach",
+   "section": "Markets & conditions",
+   "title": "Demo Accounts: What They Teach, and What They Can't | BRYME Money",
+   "h1": "Demo accounts: the simulator and the sky",
+   "dek": "Simulated trading teaches mechanics free. It hides execution, cost and temperament — the three that decide results.",
+   "description": "What to rehearse in a demo, what it structurally cannot show (fills, fees, feelings), and the three rules for crossing to a first small live account.",
+   "summary": "Make the mechanics boring in simulation; the rest is what small live size is for.",
+   "sources": [
+    {
+     "label": "Investor.gov — Executing an order (payment for order flow, best execution)",
+     "url": "https://www.investor.gov/introduction-investing/investing-basics/how-stock-markets-work/executing-order"
+    },
+    {
+     "label": "FINRA — day-trading rules & margin FAQ (pattern day trader, $25,000 minimum)",
+     "url": "https://www.finra.org/investors/learn-to-invest/advanced-investing/day-trading-rules-faq"
+    }
+   ],
+   "related": [
+    "backtesting-101",
+    "order-types-and-slippage",
+    "trading-risk-checklist"
+   ]
+  },
+  {
+   "slug": "signal-sellers-and-copy-trading",
+   "section": "Broker & platform checks",
+   "title": "Signal Sellers and Copy Trading: Whose Track Record Are You Seeing? | BRYME Money",
+   "h1": "Signal sellers and copy trading: whose record is that?",
+   "dek": "A track record you cannot audit is an advertisement. Survivorship bias, fine print, and the checks before money moves.",
+   "description": "The coin-flip room behind every winning screenshot, what an auditable record contains, copy-trading latency and incentives, and the regulators' warning pages.",
+   "summary": "Survivorship bias is the business model. Here is what evidence survives it.",
+   "sources": [
+    {
+     "label": "FCA — Protect yourself from scams",
+     "url": "https://www.fca.org.uk/consumers/protect-yourself-scams"
+    },
+    {
+     "label": "MoneySmart (ASIC) — investment warning: contracts for difference (CFDs)",
+     "url": "https://moneysmart.gov.au/investment-warnings/contracts-for-difference-cfds"
+    },
+    {
+     "label": "MoneySmart (ASIC) — investment warning: forex trading",
+     "url": "https://moneysmart.gov.au/investment-warnings/forex-trading"
+    }
+   ],
+   "related": [
+    "how-to-check-a-trading-broker",
+    "backtesting-101",
+    "trading-for-beginners"
+   ]
+  },
+  {
+   "slug": "day-trading-vs-swing-vs-investing",
+   "section": "Start here",
+   "title": "Day Trading vs Swing Trading vs Investing: Pick a Time Horizon | BRYME Money",
+   "h1": "Day trading vs swing trading vs investing",
+   "dek": "The real difference is not the timeframe: it is cost per year, hours per week and the feedback loop you can live with.",
+   "description": "Friction priced at each turnover level, the pattern day trader gate, honest hour counts, variance speed, and the three-question fit test.",
+   "summary": "Same markets, three products. The numbers pick the horizon, not the personality quiz.",
+   "sources": [
+    {
+     "label": "FINRA — day-trading rules & margin FAQ (pattern day trader, $25,000 minimum)",
+     "url": "https://www.finra.org/investors/learn-to-invest/advanced-investing/day-trading-rules-faq"
+    },
+    {
+     "label": "SEC — Investor bulletin: trade confirmations (commissions vs mark-ups, order-flow disclosure)",
+     "url": "https://www.sec.gov/investor/alerts/ib_confirmations.pdf"
+    }
+   ],
+   "related": [
+    "trading-fees-explained",
+    "stocks-forex-futures-and-cfds",
+    "position-sizing-101"
+   ]
+  }
+ ]
 }
