@@ -1895,6 +1895,9 @@ def entertainment_pages():
               "description": (m.get("description") or m.get("teaser") or "")[:300]}
         if m.get("year"):
             ld["datePublished"] = str(m["year"])
+        # GSC fix (2026-09-25): freshness signal - the desk re-checks every
+        # movie page on each sweep; dateModified carries that verifiable date.
+        ld["dateModified"] = ENT_SWEEP
         if m.get("genre"):
             ld["genre"] = m["genre"]
         if m.get("director"):
@@ -1988,13 +1991,15 @@ def entertainment_pages():
                 desc = desc + " " + " ".join(_cr)
         body = (head("entertainment", "Film, TV and anime recommendations with reasons.")
             + _NX_CSS
-            + _nx_movie_ld(m) + faq_ld
+            + _nx_movie_ld(m)
             + '<main id="main">'
             + '<section class="nx-movie-hero" style="--nx-backdrop:url(\'https://i.ytimg.com/vi/' + (m.get("yt") or "") + '/hqdefault.jpg\')">'
             + '<div class="nx-shell nx-movie-hero-inner">' + _nx_poster(m)
             + '<div><nav class="nx-crumb"><a href="/entertainment/">Catalogue</a> / ' + html.escape(m.get("genre") or "Film") + '</nav>'
             + '<h1>' + html.escape(m["title"]) + '</h1>'
             + '<div class="nx-badges">' + badges_html + '</div>'
+            + '<p class="nx-stamp">Desk review updated <time datetime="' + ENT_SWEEP + '">'
+              + ENT_SWEEP + '</time> \u00b7 re-checked at every sweep</p>'
             + '<p class="nx-lead">' + html.escape(m.get("teaser") or "") + '</p></div></div></section>'
             + ('<div class="nx-shell nx-trailer-section">' + _nx_facade(m) + '</div>' if m.get("yt") else "")
             + '<div class="nx-shell nx-body"><div class="nx-prose">'
