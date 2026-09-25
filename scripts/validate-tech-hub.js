@@ -202,10 +202,27 @@ const rowsOf = page => page.evaluate(() => {
     await page.waitForTimeout(200);
     const hits = await page.locator("[data-tm-pal] li[role='option']").count();
     check(hits > 0, "palette found nothing for 'vpn'");
+
     const target = await page.getAttribute("[data-tm-pal] li[role='option'] a", "href");
     await page.keyboard.press("Enter");
     await page.waitForTimeout(400);
     check(page.url().includes(target), `palette Enter did not open ${target} (at ${page.url()})`);
+
+    /* fuzzy palette + inline filter (one typo) */
+    await page.goto(base + "/tech/", { waitUntil: "networkidle" });
+    await page.keyboard.press("Control+k");
+    await page.waitForTimeout(200);
+    await page.fill("#tm-pal-q", "pssword");
+    await page.waitForTimeout(200);
+    const fuzzyHits = await page.locator("[data-tm-pal] li[role='option']").count();
+    check(fuzzyHits > 0, "palette is not typo-tolerant ('pssword' -> 0 hits)");
+    await page.keyboard.press("Escape");
+    await page.fill("#tm-q", "pssword");
+    await page.waitForTimeout(250);
+    const fuzzyShown = (await rowsOf(page)).shown;
+    check(fuzzyShown > 0, "inline filter is not typo-tolerant");
+    await page.keyboard.press("0");
+    await page.waitForTimeout(200);
 
     /* ---------------- 8. deep cut stays on-desk ---------------- */
     await page.goto(base + "/tech/", { waitUntil: "networkidle" });

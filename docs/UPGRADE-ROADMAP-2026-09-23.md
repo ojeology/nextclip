@@ -2,6 +2,8 @@
 
 ## Progress log (update after each shipped batch)
 
+- **TECH HUB CONTENT BATCH 2 + PHASE-2 SEARCH SHIPPED 2026-09-25**: +6 (264→270): smart-home closed to 10 (lock failure plan, bulb flicker), cyber depth (patch management, MDR trade-off), streaming (HDR weakest link, sync drift). Phase-2 typo-tolerant search live in palette + inline filter. URL gate +6/0/0; allowlist 2196→2202 auto; gates green (site-quality 2202, tech-hub behaviour incl. fuzzy assertions).
+
 - **TECH HUB CONTENT BATCH 1 SHIPPED 2026-09-25**: +6 pieces (258→264): 3 cybersecurity (password-manager migration, passkeys, phishing drill) + 2 streaming (night buffering, 4K-on-small-TV) + 1 smart-home (Zigbee/Wi-Fi/Thread). Evergreen, dated sources, no fabricated stats. URL gate +6/0/0; allowlist 2190→2196 auto; gates green (site-quality 2196, tech-hub behaviour). Existing 320-URL surface untouched.
 
 - **TECH HUB PHASE 1 (freshness + private numbers) SHIPPED 2026-09-25**: `/tech/` self-read band gains a *Verification cadence* engine (per-piece next-review dates from real dates + shelf cadence; overdue/soon/undated counts; SOURCE_DATE_EPOCH-aware) and an opt-in on-device *my own numbers* readout. `diff-urls.py` now allows additive growth (fails only on removal/canonical change). Gates green incl. new behaviour assertions. No URL changed (320 intact).

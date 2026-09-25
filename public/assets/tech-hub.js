@@ -48,6 +48,34 @@
   }
   function on(el, ev, fn) { if (el) el.addEventListener(ev, fn); }
   function all(sel, root) { return [].slice.call((root || document).querySelectorAll(sel)); }
+  /* --- Phase 2: typo-tolerant matching (client-side, over the in-page rows) ---
+     A token matches if it is a substring, or (length >= 4) if it is within one
+     edit of a word in the row, or prefixes a word. Keeps search useful when the
+     visitor mistypes 'password' as 'pssword'. Never sends anything anywhere. */
+  function ed1(a, b) {
+    var la = a.length, lb = b.length;
+    if (Math.abs(la - lb) > 1) return false;
+    if (a === b) return true;
+    var i = 0, j = 0, ed = 0;
+    while (i < la && j < lb) {
+      if (a[i] === b[j]) { i++; j++; continue; }
+      if (ed) return false; ed = 1;
+      if (la > lb) i++; else if (lb > la) j++; else { i++; j++; }
+    }
+    return true;
+  }
+  function rowWords(r) {
+    if (!r._tmw) r._tmw = (r.textContent || "").toLowerCase().split(/[^a-z0-9]+/).filter(Boolean);
+    return r._tmw;
+  }
+  function tokHit(r, tok) {
+    var hay = (r.textContent || "").toLowerCase();
+    if (hay.indexOf(tok) !== -1) return true;
+    if (tok.length < 4) return false;
+    var w = rowWords(r);
+    for (var i = 0; i < w.length; i++) if (w[i].indexOf(tok) === 0 || ed1(tok, w[i])) return true;
+    return false;
+  }
   function reduceMotion() {
     return !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
   }
@@ -184,10 +212,9 @@
         if (!a || sIdx[a.getAttribute("href")] === undefined) return false;
       }
       if (state.q) {
-        var hay = (r.textContent || "").toLowerCase();
         var toks = state.q.toLowerCase().split(/\s+/);
         for (var i = 0; i < toks.length; i++) {
-          if (toks[i] && hay.indexOf(toks[i]) === -1) return false;
+          if (toks[i] && !tokHit(r, toks[i])) return false;
         }
       }
       return true;
@@ -397,8 +424,7 @@
       if (!palList) return;
       var toks = String(q || "").toLowerCase().split(/\s+/).filter(Boolean);
       palHits = toks.length ? rows.filter(function (r) {
-        var hay = (r.textContent || "").toLowerCase();
-        for (var i = 0; i < toks.length; i++) if (hay.indexOf(toks[i]) === -1) return false;
+        for (var i = 0; i < toks.length; i++) if (!tokHit(r, toks[i])) return false;
         return true;
       }).slice(0, 12) : [];
       var out = "";

@@ -464,7 +464,7 @@ def render(arts: list, tools: list, cat: dict, url_prefix: str = "", stamp: str 
         "</div>"
         '<ul class="tm-pal-list" data-tm-pal role="listbox" aria-label="Matches"></ul>'
         '<p class="tm-pal-foot">\u2191\u2193 move \u00b7 Enter open \u00b7 Esc close \u00b7 ' + str(n)
-        + " pieces indexed</p></div>",
+        + " pieces indexed \u00b7 typo-tolerant</p></div>",
         "</div></main>",
         # Only the stylesheet is emitted here. The machine script itself is
         # injected once per page by shell() for every tech page (hub included),
