@@ -27,6 +27,9 @@ MONEY_NAV = (
         ("debt-snowball-vs-avalanche", "Debt payoff methods"),
         ("compound-interest-explained", "Compound interest"),
         ("how-to-save-for-a-house-deposit", "House deposit plan"),
+        ("how-mortgages-work-explained", "Mortgages, explained"),
+        ("high-yield-savings-accounts-explained", "High-yield savings"),
+        ("mortgage-payment-calculator", "Mortgage calculator"),
         ("life-insurance-basics-explained", "Life insurance basics"),
         ("savings-goal-calculator", "Savings goal calculator"),
         ("credit-card-payoff-calculator", "Card payoff calculator"))),
@@ -75,6 +78,7 @@ def guides() -> list[dict]:
         "technical-indicators-explained", "trade-types-explained", "position-sizing-101",
         "position-size-calculator", "expectancy-calculator", "backtesting-101", "quantlab-explained",
         "savings-goal-calculator", "credit-card-payoff-calculator",
+        "mortgage-payment-calculator",
     }
     for g in rows:
         if not re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*", g["slug"]):

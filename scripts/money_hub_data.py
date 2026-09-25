@@ -53,6 +53,12 @@ MONEY_MAP = {
     "debt-snowball-vs-avalanche": ("save", "save"),
     "compound-interest-explained": ("save", "save"),
     "how-to-save-for-a-house-deposit": ("save", "save"),
+    "how-mortgages-work-explained": ("save", "save"),
+    "high-yield-savings-accounts-explained": ("save", "save"),
+    "where-to-put-your-money-explained": ("save", "save"),
+    "buy-now-pay-later-explained": ("save", "save"),
+    "dollar-cost-averaging-explained": ("save", "save"),
+    "money-scams-how-to-spot-and-recover": ("save", "save"),
     "life-insurance-basics-explained": ("save", "save"),
     # Credit & retirement batch (2026-09-25): high-CPC evergreen clusters.
     "how-credit-scores-work": ("save", "save"),
@@ -77,6 +83,9 @@ MONEY_TOOLS = [
     ("credit-card-payoff-calculator", "Credit card payoff calculator",
      "Balance, APR and payment style in — months to zero and total interest out, fixed versus minimum payment side by side. Working shown.",
      "how-credit-card-interest-works"),
+    ("mortgage-payment-calculator", "Mortgage payment calculator",
+     "Loan, rate and term in — monthly payment, the first-month interest/principal split and total interest out. Working shown.",
+     "how-mortgages-work-explained"),
 ]
 
 # (key, label, blurb)

@@ -784,6 +784,174 @@
     "retirement-savings-basics-explained",
     "emergency-fund-guide"
    ]
+  },
+  {
+   "slug": "how-mortgages-work-explained",
+   "section": "Save and grow",
+   "title": "How mortgages work: rates, amortisation and the real cost | BRYME Money",
+   "h1": "How mortgages work: the machine behind the biggest contract you will sign",
+   "dek": "Interest, principal, LTV and term — how the monthly payment is built, and why early extra payments are the most powerful kind.",
+   "description": "How mortgages actually work: principal versus interest, amortisation, fixed versus tracker rates, LTV and all-in costs — explained without the sales language.",
+   "summary": "The four numbers that define a mortgage, why early payments buy mostly interest, and the honest costs beyond the advertised rate.",
+   "sources": [
+    {
+     "label": "CFPB — mortgages consumer tool",
+     "url": "https://www.consumerfinance.gov/consumer-tools/mortgages/"
+    },
+    {
+     "label": "CFPB — mortgage answers",
+     "url": "https://www.consumerfinance.gov/consumer-tools/mortgages/answers/"
+    },
+    {
+     "label": "MoneyHelper — mortgages and homes",
+     "url": "https://www.moneyhelper.org.uk/en/mortgages-and-homes"
+    }
+   ],
+   "related": [
+    "how-to-save-for-a-house-deposit",
+    "compound-interest-explained",
+    "how-credit-scores-work"
+   ]
+  },
+  {
+   "slug": "high-yield-savings-accounts-explained",
+   "section": "Save and grow",
+   "title": "High-yield savings accounts: APY, safety and the fine print | BRYME Money",
+   "h1": "High-yield savings accounts: read the APY, check the insurance",
+   "dek": "APY versus headline rate, deposit insurance, teaser-rate traps — how to pick the safest decent yield for cash you need.",
+   "description": "How high-yield savings accounts work: APY versus interest rate, FDIC and FSCS protection, teaser-rate fine print and the inflation ceiling, jurisdiction-honest.",
+   "summary": "Compare APY, verify deposit insurance, read the revert rate — the five-minute checklist for the best home for an emergency fund.",
+   "sources": [
+    {
+     "label": "SEC Investor.gov — annual percentage yield (APY)",
+     "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/annual-percentage-yield-apy"
+    },
+    {
+     "label": "FDIC — understanding deposit insurance",
+     "url": "https://www.fdic.gov/resources/deposit-insurance/understanding-deposit-insurance"
+    },
+    {
+     "label": "MoneyHelper — savings and cash ISAs",
+     "url": "https://www.moneyhelper.org.uk/en/savings-cash-isas"
+    }
+   ],
+   "related": [
+    "emergency-fund-guide",
+    "where-to-put-your-money-explained",
+    "inflation-and-your-money-explained"
+   ]
+  },
+  {
+   "slug": "where-to-put-your-money-explained",
+   "section": "Save and grow",
+   "title": "Where to put your money: the honest ladder of options | BRYME Money",
+   "h1": "Where to put your money: a ladder sorted by risk and horizon",
+   "dek": "Cash, savings, term deposits, bonds, index funds — what each rung buys, what it risks, and the horizon rule that picks for you.",
+   "description": "Where to keep money and why: a rung-by-rung ladder from cash to index funds, the horizon rule, deposit insurance checks and the order of operations before investing.",
+   "summary": "Six rungs, four questions, one rule: the shorter the horizon, the safer the instrument — with the order of operations before any move.",
+   "sources": [
+    {
+     "label": "SEC Investor.gov — annual percentage yield (APY)",
+     "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/annual-percentage-yield-apy"
+    },
+    {
+     "label": "FDIC — understanding deposit insurance",
+     "url": "https://www.fdic.gov/resources/deposit-insurance/understanding-deposit-insurance"
+    },
+    {
+     "label": "CFPB — an essential guide to building an emergency fund",
+     "url": "https://www.consumerfinance.gov/an-essential-guide-to-building-an-emergency-fund/"
+    }
+   ],
+   "related": [
+    "high-yield-savings-accounts-explained",
+    "emergency-fund-guide",
+    "retirement-savings-basics-explained"
+   ]
+  },
+  {
+   "slug": "buy-now-pay-later-explained",
+   "section": "Save and grow",
+   "title": "Buy now, pay later: the real costs behind 0% interest | BRYME Money",
+   "h1": "Buy now, pay later: what “interest-free” does not tell you",
+   "dek": "Late fees, stacking, autopay and credit reporting — the CFPB-documented risks of BNPL, and four tests before you tap.",
+   "description": "How buy-now-pay-later really works: merchant-funded instalments, late fees, stacking risk, credit-reporting asymmetry and the four checks to run before using it.",
+   "summary": "The mechanics, the four hidden costs, the new regulation — and four ten-second tests to keep BNPL a scheduling choice, not borrowing.",
+   "sources": [
+    {
+     "label": "CFPB — what is a buy now, pay later (BNPL) loan?",
+     "url": "https://www.consumerfinance.gov/ask-cfpb/what-is-a-buy-now-pay-later-bnpl-loan-en-2119/"
+    },
+    {
+     "label": "CFPB — buy now, pay later: market trends and consumer impacts",
+     "url": "https://www.consumerfinance.gov/data-research/research-reports/buy-now-pay-later-market-trends-and-consumer-impacts/"
+    },
+    {
+     "label": "MoneyHelper — beginners' guide to managing your money",
+     "url": "https://www.moneyhelper.org.uk/en/everyday-money/budgeting/beginners-guide-to-managing-your-money"
+    }
+   ],
+   "related": [
+    "how-credit-card-interest-works",
+    "debt-snowball-vs-avalanche",
+    "how-credit-scores-work"
+   ]
+  },
+  {
+   "slug": "dollar-cost-averaging-explained",
+   "section": "Save and grow",
+   "title": "Dollar-cost averaging: what it fixes and what it cannot | BRYME Money",
+   "h1": "Dollar-cost averaging: the honest case for investing on a schedule",
+   "dek": "Fixed amount, fixed schedule, no timing — what DCA buys, the lump-sum comparison, and the claims it cannot support.",
+   "description": "Dollar-cost averaging explained honestly: the behaviour it fixes, the arithmetic of fixed-amount buying, DCA versus lump sum, and what averaging cannot do.",
+   "summary": "Why the schedule beats timing, the honest lump-sum comparison, and a practical checklist for running a DCA plan on autopilot.",
+   "sources": [
+    {
+     "label": "SEC Investor.gov — dollar-cost averaging",
+     "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/dollar-cost-averaging"
+    },
+    {
+     "label": "SEC — investor alerts and bulletins",
+     "url": "https://www.sec.gov/investor/pubs/investor-alerts"
+    }
+   ],
+   "related": [
+    "where-to-put-your-money-explained",
+    "retirement-savings-basics-explained",
+    "compound-interest-explained"
+   ]
+  },
+  {
+   "slug": "money-scams-how-to-spot-and-recover",
+   "section": "Save and grow",
+   "title": "Money scams: how to spot them and what to do if you paid | BRYME Money",
+   "h1": "Money scams: the patterns, the ten-second checks, the recovery ladder",
+   "dek": "Impersonation, pig-butchering, recovery scams — the five patterns, six flags, and the exact steps to take in the first hour.",
+   "description": "How modern money scams work: the five patterns behind impersonation, investment and recovery scams, six fast checks, and the first-hour recovery ladder by country.",
+   "summary": "Five scam patterns, a ten-second flag checklist and the recovery ladder — bank recall, platform freeze, FTC, Action Fraud and EFCC reporting.",
+   "sources": [
+    {
+     "label": "CFPB — fraud consumer tools",
+     "url": "https://www.consumerfinance.gov/consumer-tools/fraud/"
+    },
+    {
+     "label": "FTC — scams",
+     "url": "https://consumer.ftc.gov/scams"
+    },
+    {
+     "label": "FTC — report fraud",
+     "url": "https://reportfraud.ftc.gov/"
+    },
+    {
+     "label": "EFCC (Nigeria) — official site",
+     "url": "https://efcc.gov.ng/"
+    }
+   ],
+   "related": [
+    "how-to-check-a-trading-broker",
+    "signal-sellers-and-copy-trading",
+    "how-credit-scores-work"
+   ]
   }
  ]
 }

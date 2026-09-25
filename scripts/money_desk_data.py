@@ -867,3 +867,29 @@ PAYOFF_PAGE = {
     "desc": "Free credit card payoff calculator: balance, APR and payment in - months to zero and total interest out, fixed payment versus minimum payment compared. Runs in your browser.",
     "body": PAYOFF_BODY,
 }
+
+
+MORTGAGE_PAGE = {
+    "route": "/mortgage-payment-calculator/",
+    "title": "Mortgage payment calculator - monthly cost and interest split, working shown | BRYME Money",
+    "desc": "Loan, rate and term in - monthly payment, the first-month interest/principal split and total interest out, with an extra-payment line. Working shown.",
+    "body": (
+        '<div class="wrap"><section class="cover"><p class="kicker">BRYME Money \u00b7 Tool</p>'
+        '<h1 class="cover-title">Mortgage payment calculator</h1>'
+        '<p class="cover-dek">Loan amount, rate and term in \u2014 the monthly payment, how the first payment splits between interest and principal, and the total interest across the term. Add an extra monthly payment to see what it buys.</p></section>'
+        '<section class="section"><div class="prose">'
+        '<p>A repayment mortgage blends interest (charged on the outstanding balance) with principal (the loan actually shrinking) into one monthly figure. Because interest is charged on the balance, the first payment is almost all interest and the last is almost all principal \u2014 which is why extra payments made early are disproportionately powerful. This tool runs the standard amortisation arithmetic on your numbers, on your device. How the machine works end to end is in <a href="/money/how-mortgages-work-explained/">how mortgages work</a>; the deposit that sets the loan size is planned in <a href="/money/how-to-save-for-a-house-deposit/">the house deposit guide</a>. Everything runs in your browser; nothing is stored or sent to BRYME.</p>'
+        '</div></section><section class="section"><div class="prose money-calc"><style>.money-calc .fld{display:flex;flex-direction:column;gap:6px;margin:10px 0;font-weight:600}.money-calc .fld input,.money-calc .fld select{padding:10px 12px;border:1px solid var(--line-strong);border-radius:8px;font-size:16px;max-width:340px;background:var(--sheet);color:inherit}.money-calc fieldset{border:1px solid var(--line-strong);border-radius:10px;padding:6px 16px 16px;max-width:520px}.money-calc legend{font-weight:700;padding:0 8px}.money-calc .out{background:rgba(127,127,127,.08);border:1px solid var(--line-strong);border-radius:10px;padding:14px 16px;max-width:520px;margin:16px 0}.money-calc .out b{font-size:18px}.money-calc .warn{color:#a33;font-weight:600}.money-calc .tbl{width:100%;border-collapse:collapse}.money-calc .tbl th{text-align:left;font-weight:600;padding:6px 4px;border-bottom:1px solid var(--line)}.money-calc .tbl td{text-align:right;padding:6px 4px;border-bottom:1px solid var(--line);font-variant-numeric:tabular-nums}.money-calc .calc-note{margin-top:10px}</style>'
+        '<fieldset><legend>Your mortgage</legend>'
+        '<div class="fld"><label for="mpc-cur">Currency</label><select id="mpc-cur"><option value="">\u2014 (no symbol)</option><option value="$">$ USD</option><option value="\u00a3">\u00a3 GBP</option><option value="\u20ac">\u20ac EUR</option><option value="\u20a6">\u20a6 NGN</option><option value="C$">C$ CAD</option><option value="A$">A$ AUD</option></select></div>'
+        '<div class="fld"><label for="mpc-principal">Loan amount</label><input id="mpc-principal" type="number" min="0" step="any" placeholder="e.g. 250000"></div>'
+        '<div class="fld"><label for="mpc-rate">Annual interest rate (%)</label><input id="mpc-rate" type="number" min="0" max="40" step="any" placeholder="e.g. 6.5"></div>'
+        '<div class="fld"><label for="mpc-years">Term (years)</label><input id="mpc-years" type="number" min="1" max="50" step="1" placeholder="e.g. 30"></div>'
+        '<div class="fld"><label for="mpc-extra">Extra monthly payment (optional)</label><input id="mpc-extra" type="number" min="0" step="any" placeholder="e.g. 300"></div>'
+        '</fieldset><div class="out" id="mpc-out" aria-live="polite">Fill in the loan amount, rate and term to see the maths.</div>'
+        '<p id="mpc-warn" class="warn" aria-live="polite"></p></div></section>'
+        '<section class="section"><div class="prose"><h2>How to read the output</h2>'
+        '<p><b>Monthly payment</b> is the standard amortisation figure: the amount that clears the loan exactly at the end of the term at a fixed rate. The <b>first-month split</b> shows the shape of the whole schedule \u2014 early interest dominates, and the share flips as the balance falls. <b>Total interest</b> is what the loan costs beyond the amount borrowed; compare it across terms before choosing one. The <b>extra-payment line</b> simulates adding a fixed amount on top of the scheduled payment every month and reports the earlier finish and the interest saved. Figures exclude taxes, insurance and fees, which vary by lender and jurisdiction \u2014 this is arithmetic, not lending advice, and results are not guaranteed.</p></div></section>'
+        '</div><script src="/assets/money-mortgage.js" defer></script></div>'
+    ),
+}
