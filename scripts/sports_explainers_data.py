@@ -614,7 +614,7 @@ SPORT_EXPLAINERS += [
 [("FIFA — Regulations on the Status and Transfer of Players (official PDF)", "https://digitalhub.fifa.com/m/19e76b9a9a9ae0ce/original/adi1292xtnibmwrqnimy-pdf.pdf"),
  ("Mondaq — demystifying fees and financial compensation in football transfers", "https://www.mondaq.com/nigeria/sport/1468300/demystifying-fees-and-financial-compensation-in-football-transfers")],
 [("how-transfer-fee-amortisation-works", "How transfer-fee amortisation works"),
- ("how-football-transfers-collapse", "Why transfers collapse"),
+ ("why-football-transfers-collapse", "Why transfers collapse"),
  ("how-do-football-clubs-make-money", "How football clubs make money")]),
 
 ("how-womens-champions-league-works", "How the Women's Champions League works",
