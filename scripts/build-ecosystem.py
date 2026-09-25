@@ -3530,6 +3530,15 @@ def _load_tech():
     # New URLs are additive only; the diff-urls gate forbids touching existing ones.
     # Phase 1 growth batch 6 (2026-09-25): build out the smart-home shelf.
     # New URLs are additive only; the diff-urls gate forbids touching existing ones.
+    # Phase 1 growth batch 7 (2026-09-25): cybersecurity 'ground zero' cluster
+    # (brief Sec 0.4 high-CPC jet words + Sec 30 tier-1 jurisdictions).
+    import tech_phase7_content_data
+    for slug, cat, kind, title, dek, body, sources, related in tech_phase7_content_data.PHASE7_GUIDES:
+        arts.append({"slug": slug, "title": title, "excerpt": dek, "cat": cat, "kind": kind,
+                     "pub": TODAY, "upd": TODAY, "read": "", "author": "the BRYME Tech desk",
+                     "blocks": [{"heading": "", "body": body, "html": True}],
+                     "sources": [{"name": n, "url": u} for n, u in sources],
+                     "recovered": False})
     import tech_phase6_content_data
     for slug, cat, kind, title, dek, body, sources, related in tech_phase6_content_data.PHASE6_GUIDES:
         arts.append({"slug": slug, "title": title, "excerpt": dek, "cat": cat, "kind": kind,
