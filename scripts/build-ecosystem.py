@@ -1255,7 +1255,7 @@ def hub_pages():
     for _t in _mhd.MONEY_TOOLS:
         tools.append(("money/" + _t[0], _t[1], _t[2], ("money/" + _t[3]) if len(_t) > 3 and _t[3] else ""))
     for _t in _fhd.FIT_TOOLS:
-        if _t[0] in ("1rm-calculator", "fitness-calculators"):
+        if _t[0] in ("1rm-calculator", "fitness-calculators", "heart-rate-zone-calculator"):
             tools.append(("fitness/" + _t[0], _t[1], _t[2], ("fitness/" + _t[3]) if len(_t) > 3 and _t[3] else ""))
     tools.append(("home/rent-or-buy-tool", "Rent or buy tool",
                   "The honest maths on renting versus buying, with the numbers you actually face.", ""))
@@ -4789,6 +4789,18 @@ def fitness_pages():
     import fitness_more9_data
     FIT_ARTICLES.extend((s, ti, dek, b) for (s, _k, ti, dek, b) in fitness_more9_data.FIT_MORE_9)
     ART_SOURCES.update((s, FIT_SOURCES) for (s, _k, ti, dek, b) in fitness_more9_data.FIT_MORE_9)
+    # Sept 2026 growth batch 10: the numbers shelf (heart-rate zones, VO2 max,
+    # metabolism, belly-fat honesty, rest-day physiology, rucking) + HR zone
+    # calculator tool.
+    import fitness_more10_data
+    FIT_ARTICLES.extend((s, ti, dek, b) for (s, _k, ti, dek, b) in fitness_more10_data.FIT_MORE_10)
+    ART_SOURCES.update((s, FIT_SOURCES) for (s, _k, ti, dek, b) in fitness_more10_data.FIT_MORE_10)
+    ART_SOURCES["heart-rate-zones-explained"] = FIT_SOURCES + [
+        ("CDC \u2014 Target Heart Rate and Estimated Maximum Heart Rate",
+         "https://www.cdc.gov/physical-activity-basics/measuring/target-heart-rate.htm")]
+    ART_SOURCES["heart-rate-zone-calculator"] = FIT_SOURCES + [
+        ("CDC \u2014 Target Heart Rate and Estimated Maximum Heart Rate",
+         "https://www.cdc.gov/physical-activity-basics/measuring/target-heart-rate.htm")]
     ART_SOURCES["cardio-machine-worth-buying"] = FIT_SOURCES + [
         ("Concept2 \u2014 RowErg product page (US$990, PM5 monitor included, 14in/20in seat heights, 38in inseam limit, two-piece storage, 30-day money-back guarantee, 2-year and 5-year warranty; read 16 September 2026)", "https://www.concept2.com/ergs/rowerg"),
         ("pacompendium.com \u2014 2024 Adult Compendium of Physical Activities tracking guide (MET codes: stationary rowing 5.0 / 7.3 / 7.5 / 11.0 / 14.0 by watt tier; treadmill walking 4.8 at 3.5-3.9 mph and 5.8 at 4.0-4.4 mph; curved-treadmill running 12.0 at 7.0-7.9 mph; interactive virtual cycling and cycle HIIT 8.8)", "https://pacompendium.com/wp-content/uploads/2024/03/4_2024_adult-compendium-tracking-guide-1-2024.pdf"),
@@ -5103,6 +5115,27 @@ def fitness_pages():
     related_map["mobility-vs-flexibility"] = [("desk-stretches-office-workers", "Eight desk stretches"),
                                               ("yoga-for-athletes-beginners", "Yoga for people who lift"),
                                               ("how-to-warm-up", "A warm-up that covers you")]
+    related_map["heart-rate-zones-explained"] = [("vo2-max-explained", "VO2max, explained"),
+                                                 ("how-to-start-working-out", "Starting from zero"),
+                                                 ("walking-vs-running", "Walking or running?")]
+    related_map["vo2-max-explained"] = [("heart-rate-zones-explained", "Your five heart-rate zones"),
+                                        ("30-day-walking-plan", "The 30-day walking plan"),
+                                        ("how-many-steps-a-day", "How many steps a day?")]
+    related_map["how-to-lose-belly-fat-honestly"] = [("metabolism-explained", "Metabolism, explained"),
+                                                     ("how-many-steps-a-day", "How many steps a day?"),
+                                                     ("strength-training-for-beginners", "Strength training for beginners")]
+    related_map["metabolism-explained"] = [("how-to-lose-belly-fat-honestly", "Losing belly fat, honestly"),
+                                           ("how-much-protein-do-you-need", "How much protein do you need?"),
+                                           ("strength-training-for-beginners", "Strength training for beginners")]
+    related_map["rest-days-why-muscles-grow"] = [("sleep-and-exercise-performance", "Sleep and performance"),
+                                                 ("rest-days-and-recovery", "Rest days and recovery"),
+                                                 ("how-progressive-overload-works", "Progressive overload")]
+    related_map["rucking-explained"] = [("how-many-steps-a-day", "How many steps a day?"),
+                                        ("30-day-walking-plan", "The 30-day walking plan"),
+                                        ("strength-training-for-beginners", "Strength training for beginners")]
+    related_map["heart-rate-zone-calculator"] = [("heart-rate-zones-explained", "Your five heart-rate zones"),
+                                                 ("vo2-max-explained", "VO2max, explained"),
+                                                 ("1rm-calculator", "The 1RM calculator")]
     arts = [art(s, ti, dek, b, ART_SOURCES[s], related_map[s])
             for (s, ti, dek, b) in FIT_ARTICLES]
 

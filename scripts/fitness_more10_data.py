@@ -1,0 +1,100 @@
+"""BRYME Fitness - batch 10 (Sept 2026): the numbers shelf. Heart-rate zones,
+VO2max, metabolism myths, honest belly-fat science, rest-day physiology and
+rucking, plus the heart-rate zone calculator tool. Desk rules: general
+information, never medical advice; red-flag symptoms point to professional
+care; figures only where sources support them. Body links are root-level by
+convention; build-routing prefixes them /fitness/."""
+
+FIT_MORE_10 = [
+("heart-rate-zones-explained", "understand",
+"Heart-rate training zones, explained without the mystique",
+"Five zones, two formulas and one honest warning: what the numbers on your watch actually mean, where the 'fat-burn zone' claim misleads, and how hard is hard enough.",
+"""<p>Your watch insists you were "in zone 3" for forty minutes, and most guides treat the zones as if they were gospel. They are useful, approximate, and worth understanding once properly &mdash; starting with where the numbers come from.</p>
+<h2>The two numbers behind every zone</h2>
+<p>Zone systems are percentages of a ceiling. The classic estimate of that ceiling is <b>220 minus your age</b> &mdash; a formula that is decades old, derived from population averages, and routinely wrong for an individual by ten beats or more in either direction. The better anchor is the <b>Karvonen method</b>, which uses your heart-rate reserve: the span between your resting heart rate and your maximum. Target = resting + (reserve &times; intensity%). Two people of the same age with different resting rates get different zones &mdash; which is exactly the point the 220-minus-age shortcut misses.</p>
+<h2>The five zones, plainly</h2>
+<p><b>Zone 1 (about 50-60%):</b> very easy &mdash; warm-ups, recovery days, walking. <b>Zone 2 (60-70%):</b> conversational effort; the endurance base, covered in depth on the desk's <a href="/zone-2-cardio-explained/">zone 2 guide</a>. <b>Zone 3 (70-80%):</b> "comfortably hard" &mdash; talking in phrases, not sentences. <b>Zone 4 (80-90%):</b> hard; a few words at a time. <b>Zone 5 (90-100%):</b> near-maximum, sustainable for minutes, not hours. The percentages vary slightly by system &mdash; that variance is a feature: the boundaries are conventions, not physiology.</p>
+<h2>The 'fat-burn zone' honesty</h2>
+<p>Lower intensities burn a higher <em>proportion</em> of fat &mdash; true, and nearly useless as advice. What matters for weight management is total energy expended and the overall training effect; a harder shorter session can burn more total energy than a longer easy one. The zone framing that deserves keeping is the training one: easy days genuinely easy, hard days genuinely hard, and the common beginner error is living permanently in the mushy middle.</p>
+<h2>What to actually do with zones</h2>
+<p>Use the talk test to sanity-check the watch: comfortable conversation in zone 2, phrases in zone 3, words in zone 4. If your watch and your breathing disagree, trust your breathing. The CDC's guidance on intensity makes the same move &mdash; relative effort, not device theology. And the resting heart rate feeding the Karvonen formula is itself a fitness signal worth watching: it tends to drift down as aerobic fitness improves, which quietly widens your working range. The desk's zone calculator runs both formulas side by side, with the arithmetic shown.</p>"""),
+
+("vo2-max-explained", "understand",
+"VO2 max, explained: the number your watch is obsessed with",
+"What the measure actually is, how wearables guess it, why it became a longevity talking point, and how to move it - the honest version, minus the lab mystique.",
+"""<p>VO2 max has escaped the exercise lab and onto everyone's wrist, where it is treated as a score for your entire future. The measurement deserves better than either extreme: it is a genuinely meaningful number with genuinely noisy estimates outside a lab.</p>
+<h2>What the number is</h2>
+<p>VO2 max is the <b>maximum rate at which your body can take in, transport and use oxygen</b> during exhaustive exercise &mdash; millilitres of oxygen per kilogram of bodyweight per minute. It is measured properly in a lab: a mask, a treadmill or bike, and escalating intensity until you genuinely cannot continue. The value marks the ceiling of your aerobic engine &mdash; how much energy your muscles can produce the aerobic way, which is the system that powers everything from a 5K to a long hike to ordinary daily life.</p>
+<h2>Why it became famous</h2>
+<p>Large observational studies have consistently found higher cardiorespiratory fitness associated with lower all-cause mortality &mdash; and VO2 max is the standard laboratory expression of that fitness. That is the honest statement of the claim: fitness tracks with longevity outcomes in population data. It is not a promise that raising the number extends <em>your</em> life by a calculable amount, and anyone quoting such arithmetic is extrapolating past the evidence.</p>
+<h2>How your watch guesses it</h2>
+<p>Wearables never measure oxygen. They estimate: heart rate against pace or power, sometimes a short submaximal test, fed through prediction models tuned on population data. The estimates are decent for tracking <em>trends in you</em> &mdash; the number rising over a training block is meaningful &mdash; and much weaker for comparing <em>you to a chart</em>, because the model's assumptions about your economy and movement may not fit. Treat the watch's VO2 max as a direction indicator, not a lab report.</p>
+<h2>How to actually move it</h2>
+<p>The training that raises aerobic ceiling is not exotic: <b>volume of easy aerobic work</b> (the zone-2 base) plus <b>one or two hard sessions a week</b> &mdash; intervals near the top of your range, where the body is asked to raise its ceiling rather than sit under it. Beginners see the fastest gains; trained athletes grind for small ones; and detraining reverses it, which is the most reliable finding of all. If you only take one number from this page, take the method, not the score: the ceiling responds to the asking.</p>"""),
+
+("how-to-lose-belly-fat-honestly", "understand",
+"How to lose belly fat: the honest science (spoiler: no crunches)",
+"Spot reduction is a myth with a marketing budget. What actually reduces abdominal fat, why the belly is last to go, and the red flags around the shortcuts.",
+"""<p>The most searched body-fat question has the least comfortable answer, and it is worth stating once, plainly: <b>you cannot choose where fat leaves</b>. The industry built on pretending otherwise &mdash; ab machines, wraps, teas, "belly-fat burning" workouts &mdash; is selling a thing physiology does not offer.</p>
+<h2>The spot-reduction myth, precisely</h2>
+<p>Working a muscle does not preferentially burn the fat on top of it. Energy comes from fat stores mobilised body-wide under hormonal control, and which stores release first is largely genetics and sex hormones, not exercise selection. Studies of localised training programmes consistently show strength and muscle gains in the trained area &mdash; and no meaningful local fat loss. Crunches build the muscle underneath; they do not excavate the layer above it.</p>
+<h2>What actually reduces abdominal fat</h2>
+<p>The mechanism is boring and reliable: a <b>sustained calorie deficit</b>, created mostly in the kitchen, supported by activity. Within that frame the evidence supports a familiar stack: adequate <a href="/how-much-protein-do-you-need/">protein</a> to protect muscle while losing; <a href="/strength-training-while-losing-weight/">resistance training</a> for the same reason; aerobic activity for total energy expenditure; and sleep, because short sleep measurably worsens appetite regulation and has been linked to more abdominal fat. Alcohol deserves its own line: it is calorie-dense, and its association with abdominal fat is strong enough that the nickname stuck.</p>
+<h2>Why the belly is last to go</h2>
+<p>Two honest reasons. Abdominal fat includes <b>visceral fat</b> &mdash; the deep store around organs &mdash; which is metabolically active and stubborn, though reassuringly it also responds to the deficit like everything else (often improving on blood markers before the mirror agrees). And perception does the rest: you see your midsection daily, so early losses elsewhere go unnoticed while the belly "hasn't moved". The mirror is a poor instrument; the trend of weekly averages is a better one.</p>
+<h2>The shortcuts, graded</h2>
+<p><b>Wraps and creams:</b> no fat-loss mechanism exists; any visible change is water and time. <b>"Fat-burner" supplements:</b> the honest review is on the desk's <a href="/supplements-waste-of-money/">supplement page</a> &mdash; mostly caffeine with marketing. <b>Extreme deficits:</b> they work briefly and cost muscle, adherence and often rebound &mdash; the desk's guidance on <a href="/30-day-weight-loss-programme/">sane rates of loss</a> applies. One genuine medical note: a rapidly expanding waistline with other symptoms is a doctor conversation, not a fitness-plan conversation &mdash; abdominal changes can be health signals, and this page is information, not diagnosis.</p>"""),
+
+("metabolism-explained", "understand",
+"Your metabolism, explained: the slow-and-fast myth, dismantled",
+"Metabolism varies less between people than the excuse industry claims. What it actually is, what genuinely moves it, and why 'eating more to burn more' has a kernel of truth.",
+"""<p>"I have a slow metabolism" is the most popular explanation for weight that will not move, and it is almost always wrong in the direction that matters. The real machinery is less dramatic and more usable than the myth.</p>
+<h2>What metabolism actually is</h2>
+<p>Your metabolic rate is simply <b>energy expenditure</b>, and it has four parts. The biggest is <b>basal metabolic rate</b> &mdash; the energy of keeping a body alive at rest, typically around 60% of the daily total, and driven mostly by how much tissue you have and what kind. Then <b>digestion</b> (roughly a tenth), <b>planned exercise</b> (smaller than people assume), and <b>NEAT</b> &mdash; non-exercise activity thermogenesis: walking, fidgeting, standing, housework. The last one is the hidden lever: daily movement outside the gym varies enormously between people and quietly explains much of what gets attributed to metabolic luck.</p>
+<h2>The variation is smaller than the folklore</h2>
+<p>When researchers measure rather than ask, resting metabolic rates of people with similar body composition cluster surprisingly tightly &mdash; genuine medical causes of a "slow metabolism" (thyroid disease being the classic) exist but are uncommon, and they are diagnosed with blood tests, not with bathroom scales. The everyday differences that matter are body size (bigger bodies burn more at rest &mdash; inconveniently true in both directions), muscle mass, and the NEAT column above. Rare are the metabolisms; common are the unmeasured snacks and the sitting hours.</p>
+<h2>The kernel of truth in 'eat more to burn more'</h2>
+<p>There is one: <b>muscle is metabolically active tissue</b>, and building it raises resting expenditure somewhat &mdash; though the effect per kilogram is modest, not furnace-like. The stronger version of the claim is about behaviour: people who eat enough protein and train hard recover better, move more through the day, and sustain the deficit that actually does the work. Starvation diets, meanwhile, do produce a real metabolic adaptation &mdash; the body economises under prolonged severe restriction &mdash; which is one more argument against extremes.</p>
+<h2>What genuinely moves the number</h2>
+<p>In order of realistic impact: <b>move more outside the gym</b> (steps, standing, stairs &mdash; the NEAT lever), <b>build and keep muscle</b> (it raises the floor and protects the loss), <b>eat enough protein</b> (digestion cost is higher for protein, and it protects the muscle), and <b>sleep properly</b>. None of it is a hack, which is exactly why it works. The honest summary: metabolism is not a lottery ticket, it is an accounting system &mdash; and the accounting is movable.</p>"""),
+
+("rest-days-why-muscles-grow", "recover",
+"Rest days: the part of training where the results actually happen",
+"Muscle is broken in the gym and built in the chair. The physiology of recovery, how many rest days a week honest programming needs, and what active recovery is for.",
+"""<p>The session is the stimulus; the growth happens afterwards, away from the gym. Skipping that second half does not make training harder &mdash; it makes it incomplete, and the physiology is not close to subtle.</p>
+<h2>What a workout actually does</h2>
+<p>Hard training creates microscopic damage in muscle fibres, depletes energy stores, and stresses the nervous and hormonal systems. That damage is the <em>signal</em>, not the result. In the hours and days that follow, the body repairs the fibres &mdash; and, given the right raw materials, rebuilds them slightly stronger and larger than before, the adaptation that makes the next session survivable. The process is protein synthesis, it peaks in the window after training and stays elevated for a day or two, and it runs on <b>sleep and food</b>, not on willpower.</p>
+<h2>Why skipping rest backfires</h2>
+<p>Train the same tissue again before repair has finished and you interrupt the rebuild: performance stalls, soreness accumulates, sleep and mood degrade, and eventually injury or illness enforces the rest that was owed. This is the overreaching-to-overtraining slope the desk covers under <a href="/deload-weeks-explained/">deloads</a> &mdash; planned lighter weeks exist precisely because unplanned ones arrive as injuries. The practical rule for most lifters: a muscle group wants roughly <b>48 hours between hard sessions</b>, which is why sensible splits alternate rather than repeat.</p>
+<h2>How many days off does a week need</h2>
+<p>For most non-elite trainees, <b>one to three full rest days a week</b> is the honest range &mdash; the exact number depends on age, stress, sleep quality and how hard the other days actually were. Beginners recover fast and need less; older lifters and high-stress humans need more, and needing more is not weakness, it is physiology. What should never rest: light daily movement, which is the next point.</p>
+<h2>Active recovery, correctly understood</h2>
+<p>A rest day is not a coma. Easy walking, gentle cycling, mobility work, stretching &mdash; low-intensity movement that raises blood flow without adding damage &mdash; tends to feel better than stillness and supports the repair logistics (circulation delivers the raw materials). The dividing line is intensity: active recovery should leave you <em>more</em> ready for tomorrow, not less. And the two force multipliers beat every recovery gadget: <a href="/sleep-and-exercise-performance/">sleep</a>, where most of the rebuilding actually happens, and <a href="/protein-timing-anabolic-window/">protein</a>, the material the rebuilding is made of. Train hard, then let the chair do its half.</p>"""),
+
+("rucking-explained", "train",
+"Rucking: weighted walking, explained honestly",
+"A backpack, some weight and a walk - the simplest strength-and-cardio hybrid that is quietly taking over. How to start, how much to carry, and who should skip it.",
+"""<p>Rucking is walking with weight on your back &mdash; usually a purpose-built pack or just a backpack with plates or books in it. It comes from military load-carrying, and its recent mainstream rise is one of the rare fitness trends where the simplicity is the point: no skill floor, no gym, no machinery.</p>
+<h2>Why it works</h2>
+<p>Adding load to walking multiplies the work without turning it into running: energy cost rises roughly in proportion to the extra weight carried, while the movement stays low-impact and conversational-ish. That combination &mdash; aerobic demand with minimal joint stress &mdash; is the niche rucking fills: harder than walking, gentler than jogging, and simultaneously a posture-and-trap strength stimulus because something is pulling your shoulders back and down all the way. For the desk-bound it is a double win: the carry is the antidote to the slump.</p>
+<h2>How to start, honestly graded</h2>
+<p><b>Weight:</b> start light &mdash; a common sane starting point is around 10% of bodyweight, working toward 20% over months, never more without a reason. <b>Distance:</b> start with walks you already do; thirty minutes with a light pack is a real first session. <b>Progression:</b> add time or distance before adding weight, and add weight in small steps. <b>Kit:</b> a normal backpack works; the failure mode is weight swinging and straps digging, which a pack with a frame sheet or a dedicated rucksack fixes cheaply. The shoulder and lower-back tissues need adaptation time too &mdash; early sessions should end feeling easy.</p>
+<h2>What it is not</h2>
+<p>It is not a muscle-builder in the hypertrophy sense &mdash; traps, postural muscles and legs get endurance-strength, not size. It is not a substitute for <a href="/how-many-reps-for-muscle/">real resistance training</a> if muscle mass is the goal, nor for the <a href="/zone-2-cardio-explained/">easy aerobic base</a> it partly overlaps. And heavy rucking with poor posture, bad footwear or pre-existing back trouble is a way to convert a gentle activity into an injury &mdash; load high and close to the spine, shoes with grip and support, and any pain beyond muscular tiredness is a signal to drop weight, not push through.</p>
+<h2>Who it suits</h2>
+<p>Walkers who want more from their walks without taking up running; hikers training for loaded trips; strength trainers who want low-impact conditioning on off days; and anyone whose exercise budget is measured in time rather than gym access. The version of it that works is embarrassingly simple: pack a bag, walk your route, add a little over months. The version that goes wrong is heavy, fast and impatient &mdash; which is only ever a phase.</p>"""),
+
+("heart-rate-zone-calculator", "guide",
+"Heart-rate zone calculator: your five zones, both formulas",
+"Age, resting heart rate and method in - your five training zones out, with the Karvonen and 220-minus-age numbers side by side and the arithmetic shown.",
+"""<p>Training zones are percentages of a ceiling &mdash; and which ceiling formula you use changes the answer. This calculator runs both: the classic <b>220 &minus; age</b> estimate, and the <b>Karvonen method</b>, which anchors to your heart-rate reserve (max minus resting) and is usually the better fit for trained or older adults. The arithmetic is shown so you can check it. This is general information, not medical advice &mdash; if you have a heart condition or are on rate-affecting medication, ask a clinician before using heart-rate targets.</p>
+<div class="calc"><h2>The calculator</h2>
+<label>Your age (years) <input id="hr-age" type="number" inputmode="numeric" min="10" max="100" step="1"></label>
+<label>Resting heart rate (bpm, optional - for Karvonen) <input id="hr-rest" type="number" inputmode="numeric" min="30" max="120" step="1"></label>
+<button class="calc-go" id="hr-go">Calculate my zones</button>
+<p class="calc-out" id="hr-out" aria-live="polite"></p></div>
+<h2>Reading the output</h2>
+<p>Zone boundaries are conventions, not physiology &mdash; different systems shift them a few points either way, and the talk test beats any table when they disagree: comfortable conversation in zone 2, phrases in zone 3, single words in zone 4. The Karvonen column needs your resting heart rate; if you left it blank, only the 220 &minus; age table is shown. Both columns move as fitness improves, because both feed off numbers your training changes. The theory behind every cell of the table is on the <a href="/heart-rate-zones-explained/">heart-rate zones guide</a>; the easy-end training those numbers protect is the <a href="/zone-2-cardio-explained/">zone 2 method</a>.</p>
+<script src="/assets/fitness-hr-zones.js" defer></script>
+"""),
+]

@@ -31,6 +31,13 @@ FIT_CATS = {
 
 # slug -> (section, primary need). Every fitness content page appears exactly once.
 FIT_MAP = {
+    # Growth batch 10 (2026-09-25): the numbers shelf.
+    "heart-rate-zones-explained": ("cardio", "understand"),
+    "vo2-max-explained": ("cardio", "understand"),
+    "how-to-lose-belly-fat-honestly": ("weight", "understand"),
+    "metabolism-explained": ("weight", "understand"),
+    "rest-days-why-muscles-grow": ("recover", "recover"),
+    "rucking-explained": ("plans", "train"),
     # ---- start ----
     "how-to-start-working-out": ("start", "start"),
     "how-to-start-going-to-the-gym": ("start", "start"),
@@ -147,6 +154,9 @@ FIT_MAP = {
 
 # The desk's interactive products. (slug, name, dek, guide-slug-or-empty)
 FIT_TOOLS = [
+    ("heart-rate-zone-calculator", "Heart-rate zone calculator",
+     "Age and resting heart rate in — your five training zones out, Karvonen and 220-minus-age side by side, arithmetic shown.",
+     "heart-rate-zones-explained"),
     ("30-day-walking-plan", "The 30-day walking plan",
      "Show up daily for a month. Time-based, rest days built in — tick days off and the browser remembers.",
      "how-many-steps-a-day"),
