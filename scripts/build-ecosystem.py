@@ -3835,6 +3835,60 @@ def _guide_cover_img(pub, slug, title):
             '</figure>')
 
 
+def tech_cyber_hub_page(arts):
+    """Cluster hub (master brief Sec 9 topical authority + Sec 0.2 GEO): a single
+    'start here' index for the whole cybersecurity cluster, generated from the
+    catalogue so it stays current as the cluster grows. Additive URL; no existing
+    route is touched."""
+    sec = [a for a in arts if a["cat"] in ("safety", "web-and-hosting")]
+    buckets = [
+        ("Start with the fundamentals", ["how-the-internet-works", "what-is-ssl-https", "what-is-dns", "http-status-codes-explained", "website-security-headers-explained", "csp-safe-front-end"]),
+        ("Phishing and social engineering", ["phishing", "suspicious-link", "security-questions"]),
+        ("Passwords and authentication", ["password", "two-factor", "passkey", "token", "login-problems"]),
+        ("Backup and recovery", ["backup", "phone-died", "incident-response"]),
+        ("Network, Wi-Fi and VPN", ["wifi", "wi-fi", "router", "vpn", "public-wifi", "dns-over", "segmentation", "nat-type", "private-dns"]),
+        ("Devices, data and privacy", ["what-free-apps", "ai-privacy", "browser-privacy", "data-training", "cloud-storage", "your-data", "surveillance"]),
+        ("For a business: the high-value cluster", ["mdr", "managed-security", "patch-management", "zero-trust", "compliance", "phishing-training", "vulnerability-scanning", "ddos", "waf"]),
+        ("Your security checklist", ["your-security-checklist", "checklist"]),
+    ]
+    def _key(a):
+        return (a.get("upd") or a.get("pub") or "", a["title"])
+    used = set(); secs = []
+    for title, kws in buckets:
+        items = []
+        for a in sorted(sec, key=_key, reverse=True):
+            sl = a["slug"]
+            if sl in used:
+                continue
+            if any(k in sl for k in kws):
+                items.append(a); used.add(sl)
+        if items:
+            secs.append((title, items))
+    rest = [a for a in sorted(sec, key=_key, reverse=True) if a["slug"] not in used]
+    if rest:
+        secs.append(("Everything else on the security desk", rest))
+    total = len(sec)
+    body = ['<div class="wrap"><nav class="crumb"><a href="/tech/">Tech</a> / Cybersecurity</nav>',
+            '<section class="cover"><p class="kicker">Cluster hub &middot; cybersecurity</p>',
+            '<h1 class="cover-title">Cybersecurity, start here.</h1>',
+            '<p class="cover-dek">Every security piece on this desk in one place, grouped by the job you came to do &mdash; from the fundamentals to the business-grade cluster. '
+            + str(total) + ' guides, no scaremongering, no fabricated numbers.</p></section>']
+    for title, items in secs:
+        body.append('<section class="section"><h2>' + html.escape(title) + ' <span class="meta">' + str(len(items)) + '</span></h2><ul class="list">')
+        for a in items:
+            body.append('<li><a href="/tech/' + a["slug"] + '/"><b>' + html.escape(a["title"]) + '</b>'
+                        + '<span class="meta">' + html.escape((a.get("excerpt") or "")[:110]) + '&hellip;</span></a></li>')
+        body.append('</ul></section>')
+    body.append('<section class="section"><div class="prose"><p>Missing something, or want a topic covered? '
+                '<a href="/tech/contact/">Tell the desk</a> &mdash; reader questions move the queue. '
+                'Prefer the whole publication? <a href="/tech/">Back to the tech hub</a>.</p></div></section></div>')
+    page_body = head("tech", "Practical technology. No theatre.") + '<main id="main">' + "".join(body) + "</main>" + foot("tech")
+    return ("/cybersecurity/",
+            "Cybersecurity start here — the whole security cluster | BRYME Tech",
+            "Every cybersecurity guide on BRYME Tech in one place, grouped by task: fundamentals, phishing, passwords, backup, network and VPN, privacy, and the business-grade cluster (MDR, MSSP, patch management, zero trust, compliance).",
+            page_body)
+
+
 def tech_pages():
     arts = _load_tech()
     for a in arts:
@@ -3949,6 +4003,7 @@ def tech_pages():
         pages.extend(pl)
     pages.extend(art_page(a) for a in arts)
     pages.extend(tech_tool_pages())
+    pages.append(tech_cyber_hub_page(arts))
     return pages + tech_trust_pages() + legal_pages("tech", "BRYME Tech", "Practical technology from people who ran the thing.", skip={"/terms/", "/corrections/"}, desk={
         "about": "Deployment walkthroughs, domain and DNS specifics, token hygiene and front-end patterns - written from first-hand runs, including what went wrong.",
         "privacy": "The browser tools run entirely on your device; nothing you type into them is sent to us or to anyone else.",
