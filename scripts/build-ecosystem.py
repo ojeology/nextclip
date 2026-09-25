@@ -1074,7 +1074,7 @@ def legal_pages(pub, name, tagline, skip=frozenset(), desk=None):
 <p>If interactive tools are added later, any data they store will stay in <em>your</em> browser's local storage on <em>your</em> device — the standing BRYME pattern — and this page will be updated before that changes.</p>
 <p><b>Advertising &amp; cookies (updated 22 September 2026):</b> BRYME shows advertising through Google AdSense to keep the publications free. Third-party vendors use cookies to serve ads based on a user's prior visits to this and other websites. Google's use of advertising cookies enables it and its partners to serve ads based on your visits to this site and/or other sites on the internet. You may opt out of personalised advertising by visiting Google's Ads Settings (adssettings.google.com), or opt out of some third-party vendors' uses of cookies at aboutads.info. Visitors in the EEA and UK will be asked for consent before personalised advertising; without consent, only non-personalised ads are eligible to serve. <b>Analytics:</b> every page also loads Google Analytics 4 (measurement ID {GA_ID_TEXT}), which counts pages, sessions and rough location so each desk can see what is worth writing next. It sets cookies such as _ga to tell one visit from the next; it does not identify you personally, and BRYME neither combines it with anything else nor sells it. For visitors in the EEA, the UK and Switzerland, Analytics and advertising both stay switched off until you accept them in the cookie message — rejecting it leaves them off. Anywhere else you can block them in your browser and every page reads exactly the same. Whatever serves, our standing rules apply: ads are clearly separated from content and navigation, never cover text, and never resemble our buttons, cards or links.</p>
 {_desk_sec('privacy', 'What this publication actually touches')}
-<p>Questions: see <a href="/contact/">Contact</a>.</p>
+<p>Questions: see <a href="/home/contact/">Contact</a>.</p>
 </div></section></div>"""
     contact_body = f"""<div class="wrap"><nav class="crumb"><a href="/">Home</a> / Contact</nav>
 <section class="cover"><p class="kicker">Contact</p><h1 class="cover-title">Reach the desk.</h1>
@@ -1091,7 +1091,7 @@ def legal_pages(pub, name, tagline, skip=frozenset(), desk=None):
 <p>{name} is free to read. It is provided as-is, for information: general guidance, never professional advice. Nothing on this publication is a substitute for qualified professional help — medical, electrical, gas, legal or financial. Where a topic borders on those fields, our pages say so plainly and stop.</p>
 <p>The writing, layout and tools are \u00a9 2026 THE BRYME. Quote freely with a link; do not republish whole pages. External sites we link to have their own terms and their own owners. Adverts, when shown, are clearly separated from editorial content and never constitute an endorsement.</p>
 {_desk_sec('terms', 'Specific to this desk')}
-<p>Questions about these terms: see <a href="/contact/">Contact</a>.</p>
+<p>Questions about these terms: see <a href="/home/contact/">Contact</a>.</p>
 </div></section></div>"""
     editorial_body = f"""<div class="wrap"><nav class="crumb"><a href="/">Home</a> / Editorial policy</nav>
 <section class="cover"><p class="kicker">Editorial policy</p><h1 class="cover-title">How every page earns its place.</h1></section>
@@ -1106,12 +1106,12 @@ def legal_pages(pub, name, tagline, skip=frozenset(), desk=None):
 <li><b>BRYME PREDICTION</b> — our model's or desk's projection, never presented as official data.</li>
 </ul>
 <h2>Standing prohibitions</h2>
-<p>No betting content, no piracy or download pages, no fake play buttons, no scraped or duplicated pages, no misleading titles. Comparisons explain who each option is actually for; they never invent rankings. Errors are corrected in the open — see <a href="/corrections/">Corrections</a>.</p>
+<p>No betting content, no piracy or download pages, no fake play buttons, no scraped or duplicated pages, no misleading titles. Comparisons explain who each option is actually for; they never invent rankings. Errors are corrected in the open — see <a href="/home/corrections/">Corrections</a>.</p>
 </div></section></div>"""
     corrections_body = f"""<div class="wrap"><nav class="crumb"><a href="/">Home</a> / Corrections</nav>
 <section class="cover"><p class="kicker">Corrections policy</p><h1 class="cover-title">We fix errors in the open.</h1></section>
 <section class="section"><div class="prose">
-<p>If something on {name} is wrong, tell us via <a href="/contact/">Contact</a> with the page address and the exact claim. The desk verifies against sources, fixes the page, and records the correction on the page itself — silently deleting a wrong claim is not a correction.</p>
+<p>If something on {name} is wrong, tell us via <a href="/home/contact/">Contact</a> with the page address and the exact claim. The desk verifies against sources, fixes the page, and records the correction on the page itself — silently deleting a wrong claim is not a correction.</p>
 <p>Time-sensitive facts (prices, availability, standings, schedules) are re-checked on a schedule and stamped with the date of the last check. If you spot a stale one, that report is welcome.</p>
 {_desk_sec('corrections', 'What gets re-checked here')}
 </div></section></div>"""
@@ -1119,7 +1119,7 @@ def legal_pages(pub, name, tagline, skip=frozenset(), desk=None):
 <section class="cover"><p class="kicker">Copyright &amp; takedowns</p><h1 class="cover-title">Ownership, honestly stated.</h1></section>
 <section class="section"><div class="prose">
 <p>All original text, layout and tools on {name} are \u00a9 2026 THE BRYME. We quote and link to third-party material under fair quotation with attribution, and we do not host or link to pirated copies of films, shows, books or software — anywhere in the family.</p>
-<p>Rights-holders with a concern: send the page address, the material concerned, and your relationship to the rights, via <a href="/contact/">Contact</a>. Verified takedown requests are actioned promptly.</p>
+<p>Rights-holders with a concern: send the page address, the material concerned, and your relationship to the rights, via <a href="/home/contact/">Contact</a>. Verified takedown requests are actioned promptly.</p>
 </div></section></div>"""
     def _m(b):
         return b if "<main" in b else '<main id="main"><div class="wrap">' + b + "</div></main>"
@@ -1952,7 +1952,7 @@ def entertainment_pages():
         + '<h2>The distribution, shown honestly</h2><p>Across all ' + str(sum(_sc_dist.values()))
         + ' scored films the current spread is (every film is shelved on merit, not pushed to a flattering band):</p>'
         + '<table style="border-collapse:collapse;margin:14px 0"><tbody>' + _sc_rows + '</tbody></table>'
-        + '<p class="nx-verified">Scores sit on film pages next to a verification date for the trailer and credits. Disagree? <a href="/corrections/">Corrections and disputes</a> is a real page.</p>'
+        + '<p class="nx-verified">Scores sit on film pages next to a verification date for the trailer and credits. Disagree? <a href="/home/corrections/">Corrections and disputes</a> is a real page.</p>'
         + '</div><aside class="nx-aside"><dl><dt>Scale</dt><dd>0-10, half-points</dd><dt>Axes</dt>'
         + '<dd>Story &middot; Craft &middot; Vision &middot; Weight</dd><dt>Influence</dt><dd>None. No preview scores to studios, no ads sold against placement.</dd><dt>Revisions</dt><dd>Recorded on the film page with a date.</dd></dl></aside></div></main>'
         + foot("entertainment"))
@@ -4982,7 +4982,7 @@ HOME_ARTICLES = [
 <h2>Call a plumber when</h2>
 <p>Several fixtures drain slowly at once (the blockage is downstream, often in the main drain), water comes up in a different fixture when another drains, or the trap will not come apart because fittings are corroded or glued. Also call if there is sewage smell that a water top-up does not fix \u2014 a dried trap is a jug of water; a broken vent or seal is a professional.</p>
 <h2>Prevention</h2>
-<p>A mesh screen over the plug hole, fat into a jar rather than the sink, and a monthly kettle\u2019s worth of hot water down each drain. Three habits; zero emergencies. The <a href="/seasonal-home-maintenance-checklist/">once-a-season home checklist</a> includes the drain top-up.</p>"""),
+<p>A mesh screen over the plug hole, fat into a jar rather than the sink, and a monthly kettle\u2019s worth of hot water down each drain. Three habits; zero emergencies. The <a href="/home/seasonal-home-maintenance-checklist/">once-a-season home checklist</a> includes the drain top-up.</p>"""),
     ("how-to-fix-a-dripping-tap",
      "A dripping tap (faucet), and what you can honestly fix yourself",
      "Why taps drip, the washer-and-cartridge reality behind most of them, and the ten-minute test that tells you whether it is your job or a plumber\u2019s.",
@@ -4996,9 +4996,9 @@ HOME_ARTICLES = [
 <h2>The cartridge job</h2>
 <p>Same isolation, then the retaining clip or nut holds the cartridge. Cartridges are brand-specific parts \u2014 photograph the tap and its brand before buying. They swap in minutes once you hold the right part, and they are usually the only part that ever needs replacing on those taps.</p>
 <h2>When it is not your job</h2>
-<p>Water weeping from the tap body itself, corrosion that will not let fittings separate, no way to isolate the supply, or anything involving the pipes inside the wall: that is a plumber\u2019s territory. Paying for an hour of plumbing is cheaper than a flooded cabinet \u2014 see <a href="/how-to-fix-a-slow-draining-sink/">what lives inside sink cabinets</a> when they stay damp.</p>
+<p>Water weeping from the tap body itself, corrosion that will not let fittings separate, no way to isolate the supply, or anything involving the pipes inside the wall: that is a plumber\u2019s territory. Paying for an hour of plumbing is cheaper than a flooded cabinet \u2014 see <a href="/home/how-to-fix-a-slow-draining-sink/">what lives inside sink cabinets</a> when they stay damp.</p>
 <h2>Prevention, such as it is</h2>
-<p>Taps wear from use, not neglect. What you can prevent is the collateral: close taps firmly but never forced \u2014 over-tightening chews washers faster. And once a season, glance at every tap\u2019s isolation valve; a valve that has not moved in years is the one that will seize. It is on the <a href="/seasonal-home-maintenance-checklist/">seasonal checklist</a>.</p>"""),
+<p>Taps wear from use, not neglect. What you can prevent is the collateral: close taps firmly but never forced \u2014 over-tightening chews washers faster. And once a season, glance at every tap\u2019s isolation valve; a valve that has not moved in years is the one that will seize. It is on the <a href="/home/seasonal-home-maintenance-checklist/">seasonal checklist</a>.</p>"""),
     ("why-does-my-circuit-breaker-keep-tripping",
      "Why your circuit breaker keeps tripping \u2014 and where DIY must stop",
      "What breakers actually protect you from, the safe way to narrow down the cause, and the hard boundary that separates a homeowner from an electrician.",
@@ -5012,7 +5012,7 @@ HOME_ARTICLES = [
 <h2>The hard boundary</h2>
 <p>Resetting a breaker and unplugging appliances: homeowner territory, do it today. Everything else \u2014 panel work, adding circuits, repeated trips with no load, burning smells, warm outlets, any work behind sockets \u2014 belongs to a qualified electrician. This page is general information, not electrical advice, and it deliberately stops at the panel cover. Electricity does not give second chances.</p>
 <h2>Where this fits the house</h2>
-<p>The <a href="/seasonal-home-maintenance-checklist/">once-a-season checklist</a> includes testing RCD/GFCI outlets and smoke alarms \u2014 the thirty seconds that prove the protective parts of your home still work.</p>"""),
+<p>The <a href="/home/seasonal-home-maintenance-checklist/">once-a-season checklist</a> includes testing RCD/GFCI outlets and smoke alarms \u2014 the thirty seconds that prove the protective parts of your home still work.</p>"""),
     ("how-to-clean-a-washing-machine",
      "How to clean a washing machine (including the parts that actually cause the smell)",
      "Why machines smell and mark laundry, the gasket-and-filter truth behind it, and a maintenance rhythm that prevents both.",
@@ -5026,7 +5026,7 @@ HOME_ARTICLES = [
 <h2>Hot wash, occasionally</h2>
 <p>Cold-wash habits let grease and residue accumulate. A monthly hot cycle \u2014 empty, with a maker-approved cleaner or plain washing soda per its instructions \u2014 flushes the tub and the pipes behind it. Skip the folk chemistry; heat does the work.</p>
 <h2>Prevention rhythm</h2>
-<p>Door ajar after washes; drawer ajar; filter each season; a monthly hot cycle; and measure detergent honestly \u2014 most people use far more than the machine needs, and the surplus is what rots. All of this except the hot cycle is on the <a href="/seasonal-home-maintenance-checklist/">once-a-season checklist</a>.</p>"""),
+<p>Door ajar after washes; drawer ajar; filter each season; a monthly hot cycle; and measure detergent honestly \u2014 most people use far more than the machine needs, and the surplus is what rots. All of this except the hot cycle is on the <a href="/home/seasonal-home-maintenance-checklist/">once-a-season checklist</a>.</p>"""),
     ("fridge-not-cold-enough",
      "Fridge not cold enough? Five checks before you pay for a repair",
      "The settings, airflow and coil checks that fix most \u201cwarm fridge\u201d calls, and the signs that say it really is a technician\u2019s problem.",
@@ -5038,7 +5038,7 @@ HOME_ARTICLES = [
 <h2>3. The door seal test</h2>
 <p>Close the door on a piece of paper; if it slides out with no resistance at several points, the gasket is not sealing and cold air leaks out. Clean sticky residue off the gasket; a perished or torn one is a replaceable part on most models \u2014 cheaper than a new fridge.</p>
 <h2>4. The coils you never see</h2>
-<p>Unplug the fridge, find the coils (behind the kick plate or on the back), and brush/vacuum the dust blanket off. Coils choked with dust shed heat poorly and the cabinet warms. This is the single most common neglected maintenance on kitchen appliances \u2014 it is on the <a href="/seasonal-home-maintenance-checklist/">seasonal checklist</a> for that reason.</p>
+<p>Unplug the fridge, find the coils (behind the kick plate or on the back), and brush/vacuum the dust blanket off. Coils choked with dust shed heat poorly and the cabinet warms. This is the single most common neglected maintenance on kitchen appliances \u2014 it is on the <a href="/home/seasonal-home-maintenance-checklist/">seasonal checklist</a> for that reason.</p>
 <h2>5. Give it time, then listen</h2>
 <p>After any change, give the fridge several hours with the door kept closed. Then listen: a compressor that clicks on and off every few minutes, or hums constantly without cooling, is failing \u2014 and that, along with frost patterns that suggest a defrost-system fault, is genuinely a technician\u2019s job. Refrigerant and sealed systems are not DIY, full stop.</p>
 <h2>When you call, say this</h2>
@@ -5070,7 +5070,7 @@ HOME_CLUSTER_HUBS = [
      "sections": [
         ("Why the bill is what it is", ["why-is-my-electric-bill", "energy-bill-high-unchanged", "off-peak-electricity", "epc-rating", "storage-heaters", "is-it-cheaper-to-heat-one-room", "hot-top-floor-ceiling"]),
         ("What it costs to run", ["cost-to-run", "cost-to-charge-an-ev", "second-fridge-freezer-cost", "appliances-that-use-the-most"]),
-        ("Heating, cooling and the big switches", ["heat-pump-vs-gas", "thermostat-settings", "solar-panels-worth-it", "window-film-for-heat", "attic-insulation", "single-glazing-payback", "draught-proofing", "ceiling-fan-direction"]),
+        ("Heating, cooling and the big switches", ["which-heating", "heat-pump-vs-gas", "thermostat-settings", "solar-panels-worth-it", "window-film-for-heat", "attic-insulation", "single-glazing-payback", "draught-proofing", "ceiling-fan-direction"]),
      ]},
     {"route": "/owning-money/", "crumb": "Owning & money",
      "h1": "The money side of a home, start here.",
@@ -5078,7 +5078,7 @@ HOME_CLUSTER_HUBS = [
      "desc": "Rent vs buy, mortgage payments, moving and repair costs, insurance that actually covers you, and the paperwork \u2014 every owning-a-home piece in one index.",
      "dek": "Rent vs buy, mortgages, moving and repair costs, insurance and the regs \u2014 the owner\u2019s ledger in one place.",
      "sections": [
-        ("Renting, buying and the paperwork", ["rent-vs-buy", "mortgage-payments", "renter-vs-owner", "renter-friendly", "renter-security", "building-regs", "part-p-explained"]),
+        ("Renting, buying and the paperwork", ["rent-vs-buy", "rent-or-buy", "mortgage-payments", "renter-vs-owner", "renter-friendly", "renter-security", "building-regs", "part-p-explained"]),
         ("Costs and the fund that covers them", ["home-repair-costs", "moving-costs", "emergency-repair-fund", "improvements-no-resale-value", "moving-week-by-week"]),
         ("Insurance that actually covers you", ["insurance", "warranty"]),
      ]},
@@ -5484,6 +5484,11 @@ def home_pages():
     HOME_ARTICLES.extend((g[0], g[2], g[3], g[4]) for g in home_repaircost_data.HOME_REPAIRCOST if g[0] not in _have)
     import home_moving_data
     HOME_ARTICLES.extend((g[0], g[2], g[3], g[4]) for g in home_moving_data.HOME_MOVING if g[0] not in _have)
+    # Sept 2026 Phase 2 (\u00a716): jurisdiction-honest decision tools.
+    import home_decision_tools_data
+    HOME_ARTICLES.extend(home_decision_tools_data.HOME_DECISION_TOOLS)
+    HOME_SLUG_SECT["rent-or-buy-tool"] = "owning"
+    HOME_SLUG_SECT["which-heating-system"] = "understand"
 
     def src_html(sources):
         if not sources:
@@ -5511,7 +5516,7 @@ def home_pages():
     mistake_rows = []
     mistake_pages = []
     for n2, (slug, theme, mtitle, one_liner, mbody, sources, related) in enumerate(home_mistakes_data.HOME_MISTAKES, 1):
-        mistake_rows.append('<li><a href="/mistakes/' + slug + '/"><span><b>' + html.escape(mtitle) + "</b><small>"
+        mistake_rows.append('<li><a href="/home/mistakes/' + slug + '/"><span><b>' + html.escape(mtitle) + "</b><small>"
                             + html.escape(one_liner) + "</small></span>"
                             '<span class="meta">' + html.escape(theme) + "</span></a></li>")
         rel_html = "".join('<li><a href="' + _hurl(s) + '">' + rt + "</a></li>" for s, rt in related)
@@ -5585,7 +5590,7 @@ def home_pages():
         + '<section class="section"><div class="section-head"><p class="kicker">Dive into a cluster</p><h2>Whole topics, start to finish.</h2></div>'
         + '<div class="h-sec-grid">' + _cluster_cards + "</div></section>"
         + '<section class="section"><div class="section-head"><p class="kicker">The product</p><h2>The once-a-season checklist.</h2></div>'
-        + '<div class="prose"><p><a href="/seasonal-home-maintenance-checklist/"><b>The once-a-season home checklist</b></a> \u2014 ten checks across water, safety devices, appliances and airflow, with progress your browser remembers. Homes fail slowly, then suddenly; this catches the slow part.</p></div></section>'
+        + '<div class="prose"><p><a href="/home/seasonal-home-maintenance-checklist/"><b>The once-a-season home checklist</b></a> \u2014 ten checks across water, safety devices, appliances and airflow, with progress your browser remembers. Homes fail slowly, then suddenly; this catches the slow part.</p></div></section>'
         + SAFETY)
     out.append(("/", "BRYME Home & DIY \u2014 fix, clean, maintain, understand",
                 "Low-risk home repairs and maintenance, honestly explained \u2014 with sections, a common-mistakes shelf and the once-a-season checklist.",
@@ -6232,6 +6237,8 @@ def home_pages():
         "epc-rating-explained": [("attic-insulation-basics", "Attic insulation basics"),("draught-proofing-mistakes", "Draught-proofing mistakes"),("single-glazing-payback", "Single glazing payback")],
         "storage-heaters-explained": [("off-peak-electricity-tariffs-explained", "Off-peak tariffs"),("why-is-my-electric-bill-so-high", "Why the bill is high"),("heat-pump-vs-gas-furnace", "Heat pump vs furnace")],
         "frozen-condensate-pipe-fix": [("pipe-lagging-winter-guide", "Pipe lagging"),("boiler-pressure-low-or-high", "Boiler pressure"),("frozen-pipe-prevention", "Frozen pipe prevention")],
+        "rent-or-buy-tool": [("rent-vs-buy-explained", "Rent vs buy, explained"),("mortgage-payments-explained", "What mortgage payments really are"),("moving-costs-explained", "What moving really costs"),("emergency-repair-fund", "The repair fund")],
+        "which-heating-system": [("heat-pump-vs-gas-furnace", "Heat pump vs gas, honestly"),("is-it-cheaper-to-heat-one-room", "Heat one room?"),("thermostat-settings-that-save-money", "Thermostat settings"),("how-to-bleed-a-radiator", "How to bleed a radiator")],
     }
     for slug, ti, dek, b in HOME_ARTICLES:
         key = HOME_SLUG_SECT[slug]

@@ -10,11 +10,11 @@ HOME_MISTAKES = [
 "More soap does not mean cleaner clothes — it means soap left in them.",
 """<p>The most common laundry mistake is also the most counter-intuitive: overdosing the detergent. Extra suds feel like extra cleaning, but modern machines — especially high-efficiency drums — cannot rinse a double dose out. The leftover sits in the fabric and in the machine.</p>
 <h2>Why it backfires</h2>
-<p>Excess detergent leaves a residue that makes towels stiff, dark clothes dull and skin itchier than the fabric softener advert claims. Inside the machine, the residue feeds the mould and smell that people then attack with yet more product — the <a href="/how-to-clean-a-washing-machine/">gasket-and-filter cleaning guide</a> exists largely because of this cycle. Suds can also cushion the drum's load, reducing the mechanical action that actually does the cleaning.</p>
+<p>Excess detergent leaves a residue that makes towels stiff, dark clothes dull and skin itchier than the fabric softener advert claims. Inside the machine, the residue feeds the mould and smell that people then attack with yet more product — the <a href="/home/how-to-clean-a-washing-machine/">gasket-and-filter cleaning guide</a> exists largely because of this cycle. Suds can also cushion the drum's load, reducing the mechanical action that actually does the cleaning.</p>
 <h2>The fix</h2>
 <p>Measure. The cap's lines are for a standard load in hard water, and most people wash softer water with lightly soiled clothes — one-third to one-half of the recommended dose is usually plenty. If the drawer or clothes feel slimy after a wash, run a hot empty cycle and halve the dose going forward. Powder in soft areas, liquid in hard: pick by your water, not the advert.</p>
 <h2>Keep it from happening</h2>
-<p>Ignore the "fill to top" instinct permanently, dose by soil level (gym kit versus an evening shirt), and if your machine has an extra-rinse option, spend it on towels and bedding rather than more soap. The <a href="/washing-machine-wont-drain/">drainage guide</a> and the <a href="/seasonal-home-maintenance-checklist/">seasonal checklist</a> cover the rest of the machine's keep-it-honest routine.</p>""",
+<p>Ignore the "fill to top" instinct permanently, dose by soil level (gym kit versus an evening shirt), and if your machine has an extra-rinse option, spend it on towels and bedding rather than more soap. The <a href="/home/washing-machine-wont-drain/">drainage guide</a> and the <a href="/home/seasonal-home-maintenance-checklist/">seasonal checklist</a> cover the rest of the machine's keep-it-honest routine.</p>""",
 [],
 [("how-to-clean-a-washing-machine", "Why the machine smells"),
  ("washing-machine-wont-drain", "The machine that won't drain"),
@@ -44,7 +44,7 @@ HOME_MISTAKES = [
 <h2>The fix</h2>
 <p>Water by need, not by calendar: push a finger a couple of centimetres into the soil, and water only when it is dry at that depth (plants differ — succulents want it bone dry, ferns like slight dampness, so learn your plant's lane). Water thoroughly until it drains from the bottom, then empty the saucer — never let a plant sit in standing water. If a plant is already rotting: unpot it, trim the black mushy roots, repot in fresh mix, and forgive yourself slowly.</p>
 <h2>Keep it from happening</h2>
-<p>Pots need drainage holes — decorative outer pots are sleeves, not homes. Lower light means slower drinking: a plant moved away from the window needs less water, not more. And when in doubt, wait a day; plants are far more forgiving of a late drink than an early funeral. The observation habit behind this is the same one in the <a href="/seasonal-home-maintenance-checklist/">seasonal checklist</a>: check, then act — never the reverse order.</p>""",
+<p>Pots need drainage holes — decorative outer pots are sleeves, not homes. Lower light means slower drinking: a plant moved away from the window needs less water, not more. And when in doubt, wait a day; plants are far more forgiving of a late drink than an early funeral. The observation habit behind this is the same one in the <a href="/home/seasonal-home-maintenance-checklist/">seasonal checklist</a>: check, then act — never the reverse order.</p>""",
 [],
 [("seasonal-home-maintenance-checklist", "The once-a-season checklist"),
  ("basic-toolkit-checklist", "The basic toolkit"),
@@ -59,7 +59,7 @@ HOME_MISTAKES = [
 <h2>The fix</h2>
 <p>Pick a cloudy, mild, still day (or the shaded side of the house), and work with two cloths and one squeegee: wash with a modest amount of cleaner, then pull it off in overlapping top-to-bottom strokes, wiping the squeegee blade between passes. Finish the edges with a dry microfibre cloth. Almost no product is needed for a regular clean — a drop of washing-up liquid in warm water is the professional window-cleaner's honest toolkit.</p>
 <h2>Keep it from happening</h2>
-<p>Twice a year is plenty for outside glass; inside, as needed. And the same evaporates-before-you-finish principle explains a family of cleaning frustrations: cleaning a car in the sun, leaving product to dry on shower glass, polish that hazes before you buff. Cool and damp beats strong and fast in almost every cleaning job there is — the <a href="/seasonal-home-maintenance-checklist/">seasonal checklist</a> times the year's bigger jobs by the same logic.</p>""",
+<p>Twice a year is plenty for outside glass; inside, as needed. And the same evaporates-before-you-finish principle explains a family of cleaning frustrations: cleaning a car in the sun, leaving product to dry on shower glass, polish that hazes before you buff. Cool and damp beats strong and fast in almost every cleaning job there is — the <a href="/home/seasonal-home-maintenance-checklist/">seasonal checklist</a> times the year's bigger jobs by the same logic.</p>""",
 [],
 [("how-to-clean-a-washing-machine", "Why the machine smells"),
  ("how-to-fix-a-dripping-tap", "A dripping tap, fixed honestly"),
@@ -72,9 +72,9 @@ HOME_MISTAKES = [
 <h2>Why it backfires</h2>
 <p>Overpacking raises the whole cabinet's temperature toward the danger zone where spoilage speeds up — the food is not as cold as the dial promises. The door, opened constantly, swings warmest of all, which is why milk and eggs stored there spoil faster than their dates suggest. And a full fridge hides leftovers behind new shopping, which is how food waste compounds week over week.</p>
 <h2>The fix</h2>
-<p>Aim for roughly three-quarters full: enough thermal mass to hold the cold, enough space for air to move. Keep raw meat on the bottom shelf (so nothing drips onto ready-to-eat food), dairy and cooked food on the middle shelves, produce in its drawer with room around it. Move the milk to the back of a shelf — the door is for condiments and anything preserved enough not to mind the swings. If the fridge struggles even when sensibly loaded, that is a maintenance question: our <a href="/fridge-not-cold-enough/">five-checks guide</a> covers seals, coils and settings in order.</p>
+<p>Aim for roughly three-quarters full: enough thermal mass to hold the cold, enough space for air to move. Keep raw meat on the bottom shelf (so nothing drips onto ready-to-eat food), dairy and cooked food on the middle shelves, produce in its drawer with room around it. Move the milk to the back of a shelf — the door is for condiments and anything preserved enough not to mind the swings. If the fridge struggles even when sensibly loaded, that is a maintenance question: our <a href="/home/fridge-not-cold-enough/">five-checks guide</a> covers seals, coils and settings in order.</p>
 <h2>Keep it from happening</h2>
-<p>A fridge thermometer ends the guessing (at or below about 4°C / 40°F on the shelf), a five-minute monthly clear-out stops the archaeology, and the <a href="/washing-machine-wont-drain/">appliance guides on this desk</a> all share one principle: the machine's design assumptions — airflow, drainage, seals — are the maintenance schedule in disguise.</p>""",
+<p>A fridge thermometer ends the guessing (at or below about 4°C / 40°F on the shelf), a five-minute monthly clear-out stops the archaeology, and the <a href="/home/washing-machine-wont-drain/">appliance guides on this desk</a> all share one principle: the machine's design assumptions — airflow, drainage, seals — are the maintenance schedule in disguise.</p>""",
 [],
 [("fridge-not-cold-enough", "Fridge not cold enough"),
  ("washing-machine-wont-drain", "The machine that won't drain"),
@@ -89,7 +89,7 @@ HOME_MISTAKES = [
 <h2>The fix</h2>
 <p>Wash the surface (sugar soap or warm soapy water), let it dry, scrape and sand anything loose, spot-primer bare filler, and use stain-blocking primer on marks. Mid-priced roller sleeves and a decent angled brush outperform the cheapest kit by an embarrassing margin. Remove masking tape while the paint is slightly tacky, not bone dry, or the film lifts with the tape. Two thin coats beat one thick one — thick coats sag and take days to harden properly.</p>
 <h2>Keep it from happening</h2>
-<p>Budget the job as half preparation, half painting, and schedule accordingly — a room done properly takes a weekend, most of it before a tin opens. Keep a small "prep kit" (filler, sandpaper, primer, decent tape) inside the <a href="/basic-toolkit-checklist/">basic toolbox</a>, and treat paint like the seasonal jobs in the <a href="/seasonal-home-maintenance-checklist/">checklist</a>: the calendar and the conditions (dry, ventilated, moderate temperature) are part of the material.</p>""",
+<p>Budget the job as half preparation, half painting, and schedule accordingly — a room done properly takes a weekend, most of it before a tin opens. Keep a small "prep kit" (filler, sandpaper, primer, decent tape) inside the <a href="/home/basic-toolkit-checklist/">basic toolbox</a>, and treat paint like the seasonal jobs in the <a href="/home/seasonal-home-maintenance-checklist/">checklist</a>: the calendar and the conditions (dry, ventilated, moderate temperature) are part of the material.</p>""",
 [],
 [("basic-toolkit-checklist", "The basic toolkit"),
  ("how-to-fix-a-dripping-tap", "A dripping tap, fixed honestly"),
@@ -104,7 +104,7 @@ HOME_MISTAKES = [
 <h2>The fix</h2>
 <p>Dry indoors deliberately or not at all: one room, window on trickle or open a crack, door shut, radiator off in that room (heating damp air wastes energy), and a dehumidifier if you have one — it pays for itself in drying speed and mould prevention. Outdoors on a line beats everything when weather allows. If a room already shows mould, clean it with a proper mould cleaner per the label, and change the conditions that grew it — cleaning alone just relocates the harvest.</p>
 <h2>Keep it from happening</h2>
-<p>Use extractor fans when bathing and cooking and let them run a few minutes after; keep a small gap on trickle vents; leave wardrobe gaps so outside walls can breathe; and add "check behind furniture on outside walls" to the <a href="/seasonal-home-maintenance-checklist/">seasonal checklist</a>. The pattern behind all of it: houses stay healthy by exchanging air, and anything that traps moisture — laundry, long showers, sealed windows — needs an exit plan.</p>""",
+<p>Use extractor fans when bathing and cooking and let them run a few minutes after; keep a small gap on trickle vents; leave wardrobe gaps so outside walls can breathe; and add "check behind furniture on outside walls" to the <a href="/home/seasonal-home-maintenance-checklist/">seasonal checklist</a>. The pattern behind all of it: houses stay healthy by exchanging air, and anything that traps moisture — laundry, long showers, sealed windows — needs an exit plan.</p>""",
 [],
 [("how-to-bleed-a-radiator", "Bleeding a radiator"),
  ("seasonal-home-maintenance-checklist", "The once-a-season checklist"),
@@ -119,7 +119,7 @@ HOME_MISTAKES = [
 <h2>The fix</h2>
 <p>Buy an inexpensive multi-scanner (stud, live-wire and metal detector) and actually use it — scan a wider area than the hole, both directions, and trust it over your memory of the room's layout. Keep fixings shallow where possible (most wall plugs need far less depth than people drill). If you do strike a pipe or cable: stop, do not pull the drill out while it is still in contact with a live conductor — switch off at the consumer unit first if anything electrical is involved — and call a professional. Water: main stopcock off, then assess.</p>
 <h2>Keep it from happening</h2>
-<p>Photograph walls before covering them with your own work, keep a simple paper map of your own socket runs, and borrow the rule the pros use: no detector, no drill. The <a href="/basic-toolkit-checklist/">basic toolkit</a> list includes the detector for exactly this reason, and the <a href="/why-does-my-circuit-breaker-keep-tripping/">breaker guide</a> explains what the trip actually saved you from. Anything beyond a fixing hole — chasing walls, new circuits, anything near the panel — belongs to a qualified electrician, full stop.</p>""",
+<p>Photograph walls before covering them with your own work, keep a simple paper map of your own socket runs, and borrow the rule the pros use: no detector, no drill. The <a href="/home/basic-toolkit-checklist/">basic toolkit</a> list includes the detector for exactly this reason, and the <a href="/home/why-does-my-circuit-breaker-keep-tripping/">breaker guide</a> explains what the trip actually saved you from. Anything beyond a fixing hole — chasing walls, new circuits, anything near the panel — belongs to a qualified electrician, full stop.</p>""",
 [],
 [("basic-toolkit-checklist", "The basic toolkit"),
  ("why-does-my-circuit-breaker-keep-tripping", "The tripping breaker"),
