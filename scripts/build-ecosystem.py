@@ -42,6 +42,7 @@ ORIGIN = os.environ.get("ORIGIN") or CFG.get("origin") or sitecfg.site_url()
 ORIGIN_HOST = ORIGIN.split("//", 1)[-1].rstrip("/")  # batch 15: display host
 TODAY = "2026-09-09"
 FIT_SWEEP = "2026-09-25"  # fitness desk source/freshness sweep date
+ENT_SWEEP = "2026-09-25"  # entertainment desk freshness sweep date
 import datetime as _dtmod
 _TODAY_LIVE = _dtmod.date.today().isoformat()  # clamp: never emit future dates
 
@@ -1422,14 +1423,14 @@ def entertainment_pages():
                   "headline": m["title"],
                   "author": {"@type": "Organization", "name": "BRYME Entertainment desk"},
                   "publisher": {"@type": "Organization", "name": "THE BRYME"},
-                  "datePublished": TODAY, "dateModified": TODAY,
+                  "datePublished": TODAY, "dateModified": ENT_SWEEP,
                   "mainEntityOfPage": ORIGIN + "/entertainment/" + slug + "/",
                   "description": summ}
         import json as _j
-        byline = ("Written by the BRYME Entertainment desk \u00b7 reviewed " + TODAY
+        byline = ("Written by the BRYME Entertainment desk \u00b7 reviewed " + ENT_SWEEP
                   + " \u00b7 evergreen \u2014 re-checked whenever the facts move") if m.get("new") else (
                   "Recovered from the archive \u00b7 " + str(m["words"]) + " words \u00b7 re-typeset and reviewed "
-                  + TODAY + (" \u00b7 desk notes added September 2026" if slug in _depth_notes else "") + (" \u00b7 prices in older pieces change \u2014 confirm with the service" if slug == "best-streaming-apps-nigeria" else ""))
+                  + ENT_SWEEP + (" \u00b7 desk notes added September 2026" if slug in _depth_notes else "") + (" \u00b7 prices in older pieces change \u2014 confirm with the service" if slug == "best-streaming-apps-nigeria" else ""))
         abody = (head("entertainment", "Cinema, TV and anime \u2014 written about, never pirated.")
             + '<main id="main"><div class="wrap">'
             + '<nav class="crumb"><a href="/entertainment/">Entertainment</a> / <a href="/entertainment/' + sect + '/">'
@@ -2050,14 +2051,15 @@ def entertainment_pages():
                  else "understand" if _sect == "explainers"
                  else "order" if _ORDER_RE.search(_s) else "tonight")
         _cat_arts.append({"slug": _s, "title": _m["title"], "excerpt": arts[_s][2],
-                          "cat": _sect, "need": _need, "pub": TODAY, "upd": TODAY,
+                          "cat": _sect, "need": _need, "pub": TODAY, "upd": ENT_SWEEP,
                           "kind": "guide" if _m.get("new") else "archive"})
     if _nr:
         for _rv in _nr.REVIEWS:
+            _rdate = min(_rv["date"], _TODAY_LIVE)  # never emit a future date, same clamp as the review schema
             _cat_arts.append({"slug": "reviews/" + _rv["slug"],
                               "title": _rv["title"] + " (" + str(_rv["year"]) + ")",
                               "excerpt": _rv["verdict"], "cat": "reviews", "need": "score",
-                              "pub": _rv["date"], "upd": _rv["date"], "kind": "review"})
+                              "pub": _rdate, "upd": _rdate, "kind": "review"})
     _writ = {a["slug"] for a in _cat_arts if a["cat"] != "reviews"}
     assert _writ == {s for s in shelf if s not in merged_away}, "catalogue/tree mismatch"
     _n_rev = sum(1 for a in _cat_arts if a["kind"] == "review")
