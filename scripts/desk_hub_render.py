@@ -233,7 +233,9 @@ def render(arts: list, tools: list, cat: dict, cfg: dict,
     else:
         wall = ""
 
-    if st["thin"]:
+    if cfg.get("hide_thin"):
+        thin_html = ""
+    elif st["thin"]:
         thin_items = "".join(
             '<li><a href="' + esc(U("/" + k + "/", up)) + '">' + esc(cat[k][0]) + "</a> <span>"
             + str(cnt) + " pieces</span></li>" for cnt, k in st["thin"])

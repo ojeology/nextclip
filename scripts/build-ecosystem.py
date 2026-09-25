@@ -1154,116 +1154,205 @@ WORKSHOP_PUBS = [
     ("money", "BRYME Money", "The risk-first desk.", "Trading tools and education built on open research \u2014 position sizing before strategy, every method checkable in the founder's public GitHub labs. General information, never financial advice.", "live"),
 ]
 def hub_pages():
-    import datetime as _dt
-    _wr = ROOT / "public" / "writers"
-    _legal = {"about", "contact", "privacy", "terms", "corrections", "editorial-policy",
-              "copyright", "disclaimer", "disclosure", "assets"}
-    _n_guides = sum(1 for f in _wr.rglob("index.html")
-                    if f.parent.name not in _legal and "tools" not in f.parts) if _wr.exists() else 0
-    _n_tools = len([d for d in (_wr / "tools").iterdir() if d.is_dir()]) if (_wr / "tools").exists() else 0
-    # was _dt.date.today() - the wall-clock read that made this script's output
-    # change daily and got it excluded from the deterministic build chain.
-    _stamp = " Counts verified at every build (last: " + _build_now().date().isoformat() + ")."
-    _DESK_ART = {"writers": "desk-writers.jpg", "sports": "desk-sport.jpg",
-                 "entertainment": "desk-entertainment.jpg", "tech": "desk-tech.jpg",
-                 "fitness": "desk-fitness.jpg", "home": "desk-home.jpg", "money": "desk-money.jpg"}
-    cards = ""
-    _span = {"writers": " pc-writers", "entertainment": " pc-entertainment", "home": " pc-home"}
-    for key, name, tag, desc, state in HUB_PUBS + WORKSHOP_PUBS:
-        if key == "writers" and _n_guides:
-            desc = (desc.replace("191 researched guides", str(_n_guides) + " researched pages")
-                        .replace("44 free browser tools", str(_n_tools) + " free browser tools")
-                        .rstrip(".")
-                    + ". " + _stamp)
-        kicker = PUB_NAME.get(key, "").upper() if key != "writers" else "THE FLAGSHIP"
-        if state == "live":
-            cta = f'<a class="pc-enter" href="{SUB[key]}/">Enter {name.split(" ")[1]} &rarr;</a>'
-            cls = "pub-card live" + _span.get(key, "")
-        else:
-            cta = '<span class="soon-tag">In build \u2014 opens soon</span>'
-            cls = "pub-card soon"
-        _art = _DESK_ART.get(key)
-        _art_img = (f'<img class="pc-art" loading="lazy" width="1024" height="572" src="/assets/desk/{_art}" alt="">' if _art else "")
-        cards += (f'<article class="{cls}" style="--pc:{FAMILY[key]["brand"] if key!="hub" else "#1e3a5f"}">{_art_img}'
-                  '<span class="pc-scrim"></span><div class="pc-body"><p class="pc-kicker">'
-                  f'{kicker} &#183; ACTIVE</p><h3>{name}</h3><p>{desc}</p>{cta}</div></article>')
-    _collage = ""
-    _rev_band = ""
-    _stats = ""
-    _n_films = 0
-    try:
-        import entertainment_platform_data as _hp
-        import nollywood_reviews as _nr2
-        _pk = sorted([x for x in _hp.MOVIES if x.get("yt") and x.get("score") is not None],
-                     key=lambda x: (-int(x["score"]), x["slug"]))[:3]
-        _figs = ""
-        for _i, q in enumerate(_pk, 1):
-            _figs += ('<figure class="hh-c' + str(_i) + '"><img width="480" height="270" src="https://i.ytimg.com/vi/' + q["yt"]
-                      + '/hqdefault.jpg" alt="' + html.escape(q["title"] + " \u2014 official trailer frame") + '">'
-                      + '<figcaption>' + html.escape(q["title"]) + ' \u00b7 score ' + str(q["score"]) + '/10</figcaption></figure>')
-        _collage = '<div class="hh-collage">' + _figs + '</div>'
-        _n_films = len(_hp.MOVIES)
-        _prio = [next((x for x in _nr2.REVIEWS if x["slug"] == q), None)
-                 for q in ("tsotsi", "half-of-a-yellow-sun", "the-black-book")]
-        _top = [x for x in _prio if x][:3]
-        if len(_top) < 3:
-            _byScore = sorted([r for r in _nr2.REVIEWS if r not in _top],
-                              key=lambda r: (-r["score"], r["title"]))
-            _top += _byScore[:3 - len(_top)]
-        _rev_band = ('<section class="section"><div class="section-head"><p class="kicker">From the review shelf</p>'
-                     '<h2>Fresh criticism, dated and signed.</h2></div><div class="rev-3">'
-                     + "".join('<a class="rev-c" href="/entertainment/reviews/' + r["slug"] + '/"><span class="stars">&#9733; '
-                               + _nr2.review_score_str(r) + '/10</span><h3>' + html.escape(r["title"]) + ' (' + str(r["year"]) + ')</h3>'
-                               '<p>\u201c' + html.escape(r["verdict"]) + '\u201d</p><b>Read the review &rarr;</b></a>' for r in _top)
-                     + '</div></section>')
-    except Exception:
-        pass
-    try:
-        _al2 = json.loads((ROOT / "content" / "index-allowlist.routed.json").read_text(encoding="utf-8"))
-        _n_all = len(_al2["routes"] if isinstance(_al2, dict) else _al2)
-        _raw2 = json.loads((ROOT / "content" / "opportunities.json").read_text(encoding="utf-8"))
-        _ops2 = _raw2 if isinstance(_raw2, list) else (_raw2.get("opportunities") or _raw2.get("publications")
-                    or next(v for v in _raw2.values() if isinstance(v, list)))
-        _stats = ('<section class="hub-stats"><div><b>' + format(_n_all, ",") + '</b><span>pages, all hand-built</span></div>'
-                  '<div><b>' + str(len(_ops2)) + '</b><span>publications verified by hand</span></div>'
-                  '<div><b>' + str(_n_films) + '</b><span>films catalogued</span></div>'
-                  '<div><b>0</b><span>pop-ups. ever.</span></div></section>')
-    except Exception:
-        _stats = ""
-    _dq = [('tech', 'Tech', '/tech/', 'Device and software advice tested on machines we own, for budgets that are real - first-hand notes, invented prices nowhere.', [('/tech/student-laptop-spec-floor-2026/', 'The honest spec floor for a student laptop'), ('/tech/dell-vs-hp-refurbished-laptops-nigeria/', 'Refurbished Dell vs HP: which survives'), ('/tech/usb-c-fast-charge-not-working/', 'Why your USB-C charges so slowly')]),
-           ('writers', 'Writers', '/writers/', 'The paid side of freelance writing: who buys, at what rate, and how a pitch gets accepted - tracked with dated changes, not folklore.', [('/writers/what-changed/', 'What changed in paying markets this month'), ('/writers/writing-opportunities/', 'Verified magazines and their rates'), ('/writers/tools/', 'Free tools that do the drudgery')]),
-           ('home', 'Home & DIY', '/home/', 'Home maintenance in plain language - power, water, seasonal wear and repair: what to attempt, what to call a licensed person for.', [('/home/generator-vs-inverter-nigeria/', 'Generator or inverter, sized by your actual load'), ('/home/wiring-red-flags-in-your-home/', 'Wiring red flags you can spot yourself'), ('/home/harmattan-fire-safety-house/', 'Fire walk-through: the dry-season ritual')]),
-           ('fitness', 'Fitness', '/fitness/', 'Training that needs no gym and no supplements - plans, form and warm-ups explained from first principles, with browser tools that run the maths.', [('/fitness/how-to-warm-up/', 'A warm-up that actually covers you'), ('/fitness/walking-vs-running/', 'Walking or running for getting fit'), ('/fitness/30-day-walking-plan/', 'The 30-day walking plan')]),
-           ('sports', 'Sport', '/sports/', 'The deadline-day archive: the transfer window and matchweek notes, graded after the noise settles instead of adding to it.', [('/sports/how-the-transfer-window-works/', 'How the transfer window really works'), ('/sports/premier-league-transfer-tracker-august-2026/', 'August 2026: tracker closed and graded'), ('/sports/', 'Inside the archive')]),
-           ('entertainment', 'Entertainment', '/entertainment/', 'Nollywood and world-cinema criticism with reasons behind every score, plus the practical layer: what to watch and how to watch it legally.', [('/entertainment/how-to-pick-a-movie-tonight/', "What to watch when you can't decide"), ('/entertainment/korean-cinema-starter-guide-rebuilt/', 'Where to start with Korean film'), ('/entertainment/reviews/', 'Dated, signed reviews - world &amp; African cinema')]),
-           ('money', 'Money', '/money/', 'Trading tools and education with risk first: position sizing, calculators and open research you can check - general information, never financial advice.', [('/money/position-size-calculator/', 'The position size calculator'), ('/money/position-sizing-101/', 'Position sizing and the 1% rule')])
-           ]
-    _desk_band = ('<section class="section"><div class="section-head"><p class="kicker">In plain words</p>'
-                  '<h2>What each desk answers</h2></div><div class="desk-qa">'
-                  + "".join('<div><h3><a href="' + u + '">' + n + '</a></h3><p class="dq-scope">' + sc + '</p><ul>'
-                            + "".join('<li><a href="' + hu + '">' + ht + '</a></li>' for hu, ht in qs) + '</ul></div>'
-                            for _, n, u, sc, qs in _dq)
-                  + '</div></section>')
-    body = f"""{head('hub', 'Seven publications. One house standard.', parent=False)}
-<main id="main">
-<section class="hub-hero"><div class="hh-inner"><div>
-<p class="hh-kick">Seven desks \u00b7 one house rule \u00b7 published in English, read everywhere</p>
-<h1>THE&nbsp;BRYME</h1>
-<p class="hh-sub">Research before publishing. Say exactly what you know.</p>
-<p class="hh-dek">Seven specialist publications \u2014 film, technology, fitness, home care, football, the working writer\u2019s desk and the money desk. Each keeps its own shelf and its own standards; all share one discipline: research before publishing, dates on anything that can go stale, and corrections made in the open. Pick a desk.</p>
-<div class="hh-cta"><a class="a-brass" href="/writers/">Enter the flagship</a><a class="a-ghost" href="/entertainment/reviews/">The review shelf</a><a class="a-ghost" href="/writers/what-changed/">What changed this month</a></div>
-</div>{_collage}</div></section>
-<div class="wrap">
-{_stats}
-<section class="section"><div class="section-head"><p class="kicker">The publications</p><h2>Choose your desk</h2></div>
-<div class="cards">{cards}</div></section>
-{_desk_band}
-{_rev_band}<section class="section alt"><div class="section-head"><p class="kicker">The house</p><h2>One standard, seven voices.</h2></div>
-<p class="lede">Every BRYME publication is edited by the same desk, run on the same discipline — dates on time-sensitive claims, corrections in the open, no fabricated experience, no pages built to game a search engine — and none of them share a navigation bar. When you enter one, you are in that world.</p>
-</section></div></main>
-{foot('hub')}"""
-    hub_index = [("index.html placeholder", "", "", "")]
-    return [("/", "THE BRYME — a family of independent publications",
+    """Root landing: the living machine for the whole family (2026-09-25).
+
+    Reuses the desk renderer with a cross-desk catalogue: flagship pieces from
+    every desk, with real slugs, titles and dates. Every href is asserted
+    against the routed allowlist, so this page cannot link a 404. Counts are
+    read at build time from the route index and the content files.
+    """
+    import desk_hub_render
+    import money_hub_data as _mhd
+    import fitness_hub_data as _fhd
+    import nollywood_reviews as _nr
+    import entertainment_platform_data as _ep
+    import json as _json
+
+    _al = set(_json.loads((ROOT / "content" / "index-allowlist.routed.json").read_text(encoding="utf-8"))["routes"])
+    _ops = _json.loads((ROOT / "content" / "opportunities.json").read_text(encoding="utf-8"))["opportunities"]
+    _money_manifest = _json.loads((ROOT / "content" / "money-guides" / "manifest.json").read_text(encoding="utf-8"))
+    _money_reviewed = _money_manifest.get("reviewed") or TODAY
+    _SWEEP = TODAY           # desk sweep date carried by each desk's flagship pieces
+    _WR_TODAY = "2026-09-04"  # writers desk pinned snapshot date (build-focus-site)
+    _n_films = len(_ep.MOVIES)
+
+    arts = []
+    def fam(slug, title, dek, desk, need, upd, kind="guide"):
+        _route = "/" + slug + "/"
+        assert _route in _al, "family wall links a missing route: " + _route
+        arts.append({"slug": slug, "title": title, "excerpt": dek, "cat": desk,
+                     "need": need, "pub": upd, "upd": upd, "kind": kind})
+
+    for _slug, _title, _dek in [
+        ("tech/student-laptop-spec-floor-2026", "The honest spec floor for a student laptop",
+         "What a student laptop actually needs to last the degree \u2014 spec requirements separated from marketing."),
+        ("tech/dell-vs-hp-refurbished-laptops-nigeria", "Refurbished Dell vs HP: which survives",
+         "Two refurb lines compared on what actually fails and which parts are easy to source."),
+        ("tech/usb-c-fast-charge-not-working", "Why your USB-C charges so slowly",
+         "The real reasons fast charging stalls \u2014 cable, brick, port, protocol \u2014 and how to find yours."),
+    ]:
+        fam(_slug, _title, _dek, "tech", "fix", _SWEEP)
+    for _slug, _title, _dek in [
+        ("home/generator-vs-inverter-nigeria", "Generator or inverter, sized by your actual load",
+         "What an inverter can and cannot run, what a generator is still better at, and how to size either."),
+        ("home/wiring-red-flags-in-your-home", "Wiring red flags you can spot yourself",
+         "The signs of electrical trouble worth catching before you call a licensed person."),
+        ("home/harmattan-fire-safety-house", "Fire walk-through: the dry-season ritual",
+         "A room-by-room fire-prevention pass for harmattan conditions."),
+    ]:
+        fam(_slug, _title, _dek, "home", "fix", _SWEEP)
+    for _slug, _title, _dek in [
+        ("fitness/how-to-warm-up", "A warm-up that actually covers you",
+         "Built from what muscles need before load, not from a generic lap of the room."),
+        ("fitness/walking-vs-running", "Walking or running for getting fit",
+         "The two routes compared on joints, time and stickability \u2014 what the evidence supports."),
+        ("fitness/30-day-walking-plan", "The 30-day walking plan",
+         "A time-based walking month with rest days built in; the browser remembers your ticks."),
+    ]:
+        fam(_slug, _title, _dek, "fitness", "train", _SWEEP)
+    for _slug, _title, _dek in [
+        ("sports/how-the-transfer-window-works", "How the transfer window really works",
+         "Registrations, deadlines and loans, explained after the noise rather than inside it."),
+        ("sports/premier-league-transfer-tracker-august-2026", "August 2026: tracker closed and graded",
+         "Every window move recorded, then graded once the dust settled."),
+    ]:
+        fam(_slug, _title, _dek, "sports", "train", _SWEEP)
+    _money_want = {"trading-risk-checklist", "trading-taxes-explained", "risk-of-ruin-explained",
+                   "zero-commission-trading-truth", "day-trading-vs-swing-vs-investing"}
+    for _a in _money_manifest["articles"]:
+        if _a["slug"] in _money_want:
+            fam("money/" + _a["slug"], _a["title"], _a["dek"], "money", "manage", _money_reviewed)
+    assert sum(1 for a in arts if a["cat"] == "money") == len(_money_want), "money flagships missing"
+    fam("entertainment/how-to-pick-a-movie-tonight", "What to watch when you can\u2019t decide",
+        "A decision route by mood, runtime and company \u2014 argued picks, no filler lists.",
+        "entertainment", "watch", _SWEEP)
+    fam("entertainment/korean-cinema-starter-guide-rebuilt", "Where to start with Korean film",
+        "Five films, ordered to show what the wave actually built \u2014 not just its loudest hits.",
+        "entertainment", "watch", _SWEEP)
+    for _r in sorted(_nr.REVIEWS, key=lambda r: (-r["score"], r["slug"]))[:3]:
+        fam("entertainment/reviews/" + _r["slug"], _r["title"] + " (" + str(_r["year"]) + ")",
+            _r["verdict"], "entertainment", "watch", _r["date"], kind="review")
+    for _p in sorted(_ops, key=lambda p: p.get("lastVerified") or "", reverse=True)[:4]:
+        fam("writers/writing/" + _p["slug"], _p["publication"],
+            (_p.get("excerpt") or (_p.get("eligibility") or {}).get("summary")
+             or "A full dossier: what they publish, what they pay, and who they are open to.")[:120],
+            "writers", "write", _p.get("lastVerified") or _WR_TODAY)
+    fam("writers/guides/how-to-write-a-pitch", "How to write a magazine pitch",
+        "The structure, subject line and clips that get a publication to say yes.",
+        "writers", "write", _WR_TODAY)
+
+    FAM_CATS = {
+        "tech": ("The tech desk", "Device and software advice tested on machines we own, for budgets that are real."),
+        "home": ("Home & DIY", "Home maintenance in plain language: power, water, seasonal wear and repair."),
+        "fitness": ("Fitness", "Training that needs no gym and no supplements \u2014 plans, form and warm-ups from first principles."),
+        "sports": ("Sport", "The transfer window and matchweek notes, graded after the noise settles instead of adding to it."),
+        "entertainment": ("Entertainment", "Film and TV criticism with reasons behind every score, plus the legal how-to-watch layer."),
+        "money": ("Money", "Trading tools and education with risk first: sizing before strategy, nothing sold."),
+        "writers": ("The writers\u2019 desk", "Who pays writers, at what rate, and how a pitch gets accepted \u2014 tracked with dated changes."),
+    }
+
+    tools = []
+    for _t in _mhd.MONEY_TOOLS:
+        tools.append(("money/" + _t[0], _t[1], _t[2], ("money/" + _t[3]) if len(_t) > 3 and _t[3] else ""))
+    for _t in _fhd.FIT_TOOLS:
+        if _t[0] in ("1rm-calculator", "fitness-calculators"):
+            tools.append(("fitness/" + _t[0], _t[1], _t[2], ("fitness/" + _t[3]) if len(_t) > 3 and _t[3] else ""))
+    tools.append(("home/rent-or-buy-tool", "Rent or buy tool",
+                  "The honest maths on renting versus buying, with the numbers you actually face.", ""))
+    for _t in _json.loads((ROOT / "content" / "hub" / "tools.json").read_text(encoding="utf-8"))["tools"]:
+        if _t["id"] in ("freelance-rate-calculator", "invoice-generator"):
+            tools.append(("writers/tools/" + _t["id"], _t["title"], _t["short"], ""))
+    tools.append(("tech/tools", "The tech tool bench",
+                  "Calculators and checkers for the buying decisions \u2014 all in your browser.", ""))
+    for _t in tools:
+        assert "/" + _t[0] + "/" in _al, "family toolbox links a missing route: " + _t[0]
+
+    _fam_cfg = {
+        "brand": "THE BRYME",
+        "eyebrow": "THE FAMILY HUB",
+        "h1": "Seven desks. One standard. Pick a world.",
+        "dek": ("Seven specialist publications under one editorial house \u2014 film, technology, fitness, "
+                "home care, football, the working writer\u2019s desk and the money desk. All share one "
+                "discipline: research before publishing, dates on anything that can go stale, and "
+                "corrections made in the open. The wall below carries the flagship pieces of every desk; "
+                "each desk\u2019s own hub carries its complete index."),
+        "needs": [
+            ("fix", "Fix or upgrade something", "Tech tested on real machines, and home care in plain language."),
+            ("train", "Train and track", "No-gym plans that need no supplements, and the football archive."),
+            ("watch", "Decide what to watch", "Dated, signed criticism and honest viewing routes \u2014 legal sources only."),
+            ("manage", "Manage risk and money", "Sizing before strategy; every number dated; nothing sold."),
+            ("write", "Get paid to write", "Verified paying markets, craft guides and the tools of the trade."),
+        ],
+        "cadence": {"tech": 180, "home": 180, "fitness": 365, "sports": 90,
+                    "entertainment": 180, "money": 180, "writers": 90},
+        "cadence_blurb": "Each desk carries its own review cadence; the fastest-turning subjects are checked first. ",
+        "kind_badges": {"review": "Review"},
+        "kind_chips": [("review", "Reviews")],
+        "chips": [("fix", "Fix/upgrade"), ("train", "Train"), ("watch", "Watch"),
+                  ("manage", "Money"), ("write", "Write")],
+        "gauges": lambda st, tools: [
+            ("7", "desks, one standard", "each its own world"),
+            (format(len(_al), ","), "pages, all hand-built", "counted from the route index at build"),
+            (str(len(_ops)), "publications verified by hand", "dated checks on the writers\u2019 desk"),
+            (str(_n_films), "films catalogued", "reviews dated and signed"),
+            ("0", "pop-ups. ever.", "and nothing leaves your device"),
+        ],
+        "rules": [
+            "Research before publishing; anything that can go stale carries the date it was checked.",
+            "No fabricated prices, no invented experience, no pages built to game a search engine.",
+            "Corrections run on the page that was wrong, in the open.",
+            "The hubs remember you on-device only: saved items and reading history live in this browser\u2019s storage and nowhere else.",
+            "No pop-ups, no newsletter gates, nothing sold from a hub.",
+        ],
+        "rules_links": [("about", "The house"), ("writers/editorial-policy", "Editorial policy"),
+                        ("tech/corrections", "Corrections"), ("writers/contact", "Contact")],
+        "clusters": [
+            ("/writers/", "BRYME Writers", "The flagship: paying markets, craft and the business of writing."),
+            ("/tech/", "BRYME Tech", "Tested device and software advice, for budgets that are real."),
+            ("/entertainment/", "BRYME Entertainment", "Dated, signed film criticism and the how-to-watch layer."),
+            ("/home/", "BRYME Home & DIY", "Power, water, seasonal wear \u2014 what to fix and when to call a pro."),
+            ("/fitness/", "BRYME Fitness", "No-gym training plans, form and calculators."),
+            ("/sports/", "BRYME Sport", "The football archive, graded after the noise settles."),
+            ("/money/", "BRYME Money", "Risk-first trading education and browser calculators."),
+        ],
+        "clusters_h": "Enter a desk.",
+        "clusters_p": ("Seven publications, one house standard. Each keeps its own shelf, voice and navigation "
+                       "\u2014 when you enter one, you are in that world."),
+        "needs_h": "What brought you to the house?",
+        "needs_p": ("Five jobs. Pick one and the wall below re-sorts itself to that job. Keys "
+                    "<kbd>1</kbd>\u2013<kbd>5</kbd>."),
+        "boot_btn": "See the family wall",
+        "core_h": "The family wall, open.",
+        "core_p": ("Flagship pieces from every desk, listed here in the page itself \u2014 every one linked, "
+                   "nothing behind a &ldquo;load more&rdquo;. Each desk\u2019s own hub carries its complete "
+                   "index; this wall carries the house."),
+        "hide_thin": True,
+        "wall_h": "The comparison wall.",
+        "wall_p": ("Side-by-side pieces from across the family. Every card names its trade-off; pick a desk "
+                   "to narrow the wall."),
+        "sections_h": "The desks, in their own words.",
+        "sections_p": ("Seven publications. Same discipline, different worlds \u2014 each desk keeps its own "
+                       "shelf and its own navigation bar."),
+        "standards_p": ("What this house will and will not tell you \u2014 the same rules on every desk, and "
+                        "where it currently falls short."),
+        "palette_label": "Search the family wall",
+        "palette_placeholder": "laptop, pitch, position size, film \u2014 matches titles and summaries on your device",
+        "filter_placeholder": "filter: laptop, pitch, wiring, film\u2026",
+        "toolbox_href": "#tm-toolbox",
+        "toolbox_blurb": ("Every tool here runs in your browser. No account, no upload, and nothing you type "
+                          "into one is sent anywhere \u2014 including to us."),
+        "contact_slug": "writers/contact",
+        "desk": "family",
+        "css": "/assets/tech-hub.css",
+        "tool_prefix": "",
+    }
+
+    body = (head("hub", "Seven publications. One house standard.", parent=False)
+        + desk_hub_render.render(arts, tools, FAM_CATS, _fam_cfg, "",
+                                 "Counts verified at every build.")
+        + '<script src="/assets/tech-hub.js" defer></script>'
+        + foot("hub"))
+    return [("/", "THE BRYME \u2014 a family of independent publications",
              "Seven independent editorial desks \u2014 film, tech, fitness, home care, football, professional writing and trading education. Dated claims, open corrections, zero filler. In English, for everyone.", body)]
 
 
