@@ -4961,7 +4961,7 @@ HOME_CHECK = [
 
 HOME_SOURCES = [
     ("NFPA \u2014 smoke alarm safety (testing guidance)", "https://www.nfpa.org/education-and-research/home-fire-safety/smoke-alarms"),
-    ("U.S. Fire Administration \u2014 dryer fire safety", "https://www.usfa.fema.gov/prevention/home-fires/prevent-hfires/dryers/"),
+    ("U.S. Fire Administration \u2014 home fire prevention (incl. dryer safety)", "https://www.usfa.fema.gov/prevention/home-fires/"),
 ]
 
 HOME_ARTICLES = [
@@ -5056,6 +5056,54 @@ HOME_SECTIONS = [
     ("owning", "Owning it", "Moving in, budgets, insurance, responsibility and value \u2014 the owner\u2019s ledger."),
     ("mistakes", "Common mistakes", "The errors most homes make - and the fixes."),
 ]
+# ---------------------------------------------------------------------------
+# Cluster hubs (brief \u00a79 head\u2192cluster\u2192subtopic, September 2026):
+# generated "start here" indexes that cut ACROSS the nine sections by the
+# question the reader arrived with. Keyword-matched on slugs so they stay
+# current as the catalogue grows; additive URLs only.
+HOME_CLUSTER_HUBS = [
+    {"route": "/energy-bills/", "crumb": "Energy & bills",
+     "h1": "Energy bills and running costs, start here.",
+     "title": "Energy bills and running costs \u2014 start here | BRYME Home & DIY",
+     "desc": "Every energy-cost piece on the desk in one place: why the bill is what it is, what each appliance costs to run, and the heating decisions worth doing the maths on.",
+     "dek": "Why the bill is what it is, what everything costs to run, and the big heating switches \u2014 grouped by the question you actually asked.",
+     "sections": [
+        ("Why the bill is what it is", ["why-is-my-electric-bill", "energy-bill-high-unchanged", "off-peak-electricity", "epc-rating", "storage-heaters", "is-it-cheaper-to-heat-one-room", "hot-top-floor-ceiling"]),
+        ("What it costs to run", ["cost-to-run", "cost-to-charge-an-ev", "second-fridge-freezer-cost", "appliances-that-use-the-most"]),
+        ("Heating, cooling and the big switches", ["heat-pump-vs-gas", "thermostat-settings", "solar-panels-worth-it", "window-film-for-heat", "attic-insulation", "single-glazing-payback", "draught-proofing", "ceiling-fan-direction"]),
+     ]},
+    {"route": "/owning-money/", "crumb": "Owning & money",
+     "h1": "The money side of a home, start here.",
+     "title": "Home money: rent vs buy, costs, insurance \u2014 start here | BRYME Home & DIY",
+     "desc": "Rent vs buy, mortgage payments, moving and repair costs, insurance that actually covers you, and the paperwork \u2014 every owning-a-home piece in one index.",
+     "dek": "Rent vs buy, mortgages, moving and repair costs, insurance and the regs \u2014 the owner\u2019s ledger in one place.",
+     "sections": [
+        ("Renting, buying and the paperwork", ["rent-vs-buy", "mortgage-payments", "renter-vs-owner", "renter-friendly", "renter-security", "building-regs", "part-p-explained"]),
+        ("Costs and the fund that covers them", ["home-repair-costs", "moving-costs", "emergency-repair-fund", "improvements-no-resale-value", "moving-week-by-week"]),
+        ("Insurance that actually covers you", ["insurance", "warranty"]),
+     ]},
+    {"route": "/pests-start-here/", "crumb": "Pests, honest",
+     "h1": "Pests: first signs, first response, and keeping them out.",
+     "title": "Pests start here \u2014 signs, response, prevention | BRYME Home & DIY",
+     "desc": "Ants, rats, mice, bedbugs, cockroaches, mosquitoes and wasps: first signs, honest DIY-vs-pro decisions, treatment aftercare and the habits that keep them out.",
+     "dek": "Every pest piece on the desk, ordered the way an infestation happens: first signs, first response, then prevention.",
+     "sections": [
+        ("First signs and first response", ["first-signs", "first-response", "rats-in-the-house", "ants-in-the-kitchen", "mice-in-the-house", "ignore-single-pest-sighting", "wasp-nest"]),
+        ("The kitchen and bathroom battles", ["cockroach", "drain-flies", "mosquito", "bedbugs"]),
+        ("Treatment, aftercare and honest choices", ["after-pest-treatment", "diy-vs-professional-pests", "clean-home-pests-myth", "moving-cardboard-pests"]),
+     ]},
+    {"route": "/seasonal-care/", "crumb": "Seasonal & weather",
+     "h1": "Season-proofing the house, start here.",
+     "title": "Seasonal home care: rain, winter, harmattan, heat \u2014 start here | BRYME Home & DIY",
+     "desc": "The seasonal checklists plus every weather-specific guide: rainy season, frozen pipes, ice dams, harmattan, summer heat \u2014 what to do before each season does it for you.",
+     "dek": "Rainy season, winter, harmattan and heat: the checklists and the weather-specific guides, in the order the year hits your house.",
+     "sections": [
+        ("The checklists", ["seasonal-home-maintenance-checklist", "rainy-season-home-checklist", "summer-cooling-checklist", "ice-dam-prevention-checklist", "autumn-home-preparation"]),
+        ("Cold, rain and water", ["frozen-pipe", "pipe-lagging", "frozen-condensate", "doors-sticking-rainy", "indoor-drying-rainy", "musty-wardrobe", "generator-rainy-season", "generator-service"]),
+        ("Harmattan and heat", ["harmattan", "summer", "ceiling-fan-direction"]),
+     ]},
+]
+
 HOME_SLUG_SECT = {
     "how-to-fix-a-slow-draining-sink": "fix",
     "how-to-fix-a-dripping-tap": "fix",
@@ -5482,6 +5530,39 @@ def home_pages():
         mistake_pages.append(("/mistakes/" + slug + "/", mtitle + " | BRYME Home & DIY", one_liner[:155],
                               _home_page(mtitle + " | BRYME Home & DIY", one_liner[:155], "/mistakes/" + slug + "/", mcover, mmain, "mistakes")))
 
+    # ---------- cluster hubs + hub band (\u00a79 head\u2192cluster\u2192subtopic) ----------
+    _data_c = {s2[0]: s2 for s2 in HOME_ARTICLES}
+    _home_cluster_secs = []
+    _home_cluster_counts = []
+    for _cs in HOME_CLUSTER_HUBS:
+        _used = set(); _secs = []
+        for _st, _kws in _cs["sections"]:
+            _items = []
+            for _sl in HOME_SLUG_SECT:
+                if _sl in _used or _sl not in _data_c:
+                    continue
+                if any(k in _sl for k in _kws):
+                    _items.append(_data_c[_sl]); _used.add(_sl)
+            _items.sort(key=lambda x: x[1])
+            if _items:
+                _secs.append((_st, _items))
+        _home_cluster_secs.append((_cs, _secs))
+        _home_cluster_counts.append((_cs, len(_used)))
+    for _cs, _secs in _home_cluster_secs:
+        _ccover = ('<nav class="crumb" style="padding-top:22px"><a href="/home/">Home &amp; DIY</a> / ' + html.escape(_cs["crumb"]) + '</nav>'
+            + '<section class="cover"><p class="kicker">BRYME Home &amp; DIY &middot; cluster hub</p>'
+            + '<h1 class="cover-title">' + html.escape(_cs["h1"]) + '</h1>'
+            + '<p class="cover-dek">' + html.escape(_cs["dek"]) + '</p></section>')
+        _cmain = ""
+        for _st, _items in _secs:
+            _rows = "".join('<li><a href="' + _hurl(s2[0]) + '"><span><b>' + html.escape(s2[1]) + '</b><small>' + html.escape(s2[2]) + '</small></span><span class="meta">Guide</span></a></li>' for s2 in _items)
+            _cmain += ('<section class="section"><div class="section-head"><p class="kicker">' + str(len(_items)) + ' guides</p><h2>' + html.escape(_st) + '.</h2></div><ul class="list">' + _rows + '</ul></section>')
+        _cmain += ('<section class="section alt"><div class="prose"><p>Missing a guide? <a href="/home/contact/">Tell the desk</a> &mdash; or open another shelf from the <a href="/home/">desk home</a>.</p></div></section>')
+        out.append((_cs["route"], _cs["title"], _cs["desc"], _home_page(_cs["title"], _cs["desc"], _cs["route"], _ccover, _cmain, "home")))
+    _cluster_cards = "".join(
+        '<div class="h-sec-card"><p class="kicker" style="margin:0">' + str(_cc) + ' GUIDES</p><h3>' + html.escape(_cs2["crumb"]) + '</h3><p>' + html.escape(_cs2["dek"]) + '</p><a class="btn secondary" style="margin-top:12px" href="/home' + _cs2["route"] + '">Open ' + html.escape(_cs2["crumb"]) + '</a></div>'
+        for _cs2, _cc in _home_cluster_counts)
+
     icover = ('<section class="cover"><p class="kicker">BRYME Home &amp; DIY</p>'
         + '<h1 class="cover-title">Fix it. Clean it. Maintain it. Understand it.</h1>'
         + '<p class="cover-dek">Practical help for the problems every household hits \u2014 written for low-risk work, with the boundaries stated plainly: electrical panels, gas, structure and height belong to qualified professionals, and every guide here says exactly where that line is.</p>'
@@ -5501,6 +5582,8 @@ def home_pages():
         + '<div class="actions"><a class="btn" href="/home/mistakes/">All ' + str(len(home_mistakes_data.HOME_MISTAKES)) + " common mistakes</a></div></section>"
         + '<section class="section alt"><div class="section-head"><p class="kicker">Browse the desk</p><h2>Sections.</h2></div>'
         + '<div class="h-sec-grid">' + sec_cards + "</div></section>"
+        + '<section class="section"><div class="section-head"><p class="kicker">Dive into a cluster</p><h2>Whole topics, start to finish.</h2></div>'
+        + '<div class="h-sec-grid">' + _cluster_cards + "</div></section>"
         + '<section class="section"><div class="section-head"><p class="kicker">The product</p><h2>The once-a-season checklist.</h2></div>'
         + '<div class="prose"><p><a href="/seasonal-home-maintenance-checklist/"><b>The once-a-season home checklist</b></a> \u2014 ten checks across water, safety devices, appliances and airflow, with progress your browser remembers. Homes fail slowly, then suddenly; this catches the slow part.</p></div></section>'
         + SAFETY)
