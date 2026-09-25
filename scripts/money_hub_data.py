@@ -54,6 +54,13 @@ MONEY_MAP = {
     "compound-interest-explained": ("save", "save"),
     "how-to-save-for-a-house-deposit": ("save", "save"),
     "life-insurance-basics-explained": ("save", "save"),
+    # Credit & retirement batch (2026-09-25): high-CPC evergreen clusters.
+    "how-credit-scores-work": ("save", "save"),
+    "how-to-improve-your-credit-score": ("save", "save"),
+    "how-credit-card-interest-works": ("save", "save"),
+    "retirement-savings-basics-explained": ("save", "save"),
+    "student-loans-explained": ("save", "save"),
+    "inflation-and-your-money-explained": ("save", "save"),
 }
 
 # (slug, title, blurb, related_slug)
@@ -67,6 +74,9 @@ MONEY_TOOLS = [
     ("savings-goal-calculator", "Savings goal calculator",
      "Goal, timeline, rate and monthly contribution in — future value and the monthly number you actually need out. Formula shown.",
      "compound-interest-explained"),
+    ("credit-card-payoff-calculator", "Credit card payoff calculator",
+     "Balance, APR and payment style in — months to zero and total interest out, fixed versus minimum payment side by side. Working shown.",
+     "how-credit-card-interest-works"),
 ]
 
 # (key, label, blurb)

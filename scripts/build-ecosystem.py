@@ -6899,7 +6899,8 @@ def money_pages():
               _md.HUB_BODY)]
     pages.append((_md.CALC_PAGE["route"], _md.CALC_PAGE["title"], _md.CALC_PAGE["desc"], _calc_body))
     pages.append((_md.SIZING_101["route"], _md.SIZING_101["title"], _md.SIZING_101["desc"], _md.SIZING_BODY))
-    for _extra in (_md.QL_PAGE, _md.BT_PAGE, _md.EXP_PAGE, _md.TT_PAGE, _md.IND_PAGE, _md.SAVINGS_PAGE):
+    for _extra in (_md.QL_PAGE, _md.BT_PAGE, _md.EXP_PAGE, _md.TT_PAGE, _md.IND_PAGE, _md.SAVINGS_PAGE,
+                   _md.PAYOFF_PAGE):
         pages.append((_extra["route"], _extra["title"], _extra["desc"], _extra["body"]))
     for _guide in _me.pages(_md.DISCLAIMER_HTML):
         pages.append((_guide["route"], _guide["title"], _guide["desc"], _guide["body"]))

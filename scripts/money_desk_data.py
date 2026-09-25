@@ -798,3 +798,72 @@ SAVINGS_PAGE = {
     "desc": "Free savings goal calculator: balance, rate, monthly amount and years in - future value or the required monthly contribution out, with the formula shown. Runs in your browser.",
     "body": SAVINGS_BODY,
 }
+
+# ---- Money desk credit batch (2026-09-25): credit card payoff calculator ----
+# The minimum-payment trap, made visible: fixed payment versus minimum
+# payment, months to zero and total interest, working shown. Arithmetic on
+# the user's own numbers; never credit advice, never product promotion.
+
+PAYOFF_BODY = (
+    '<div class="wrap"><section class="cover"><p class="kicker">BRYME Money \u00b7 Tool</p>'
+    "<h1 class=\"cover-title\">Credit card payoff calculator</h1>"
+    "<p class=\"cover-dek\">Balance, APR and payment style in \u2014 months to zero and total interest out, "
+    "with the fixed-payment and minimum-payment paths shown side by side.</p></section>"
+    '<section class="section"><div class="prose">'
+    "<p>Minimum payments shrink as your balance shrinks, which is why a modest balance can take years "
+    "to clear. This tool runs the honest monthly loop \u2014 interest first, then principal \u2014 for a "
+    "fixed monthly payment and for a typical percentage-based minimum, and shows the difference in "
+    "months and money. The interest mechanics behind it (daily compounding, grace periods) are in "
+    "<a href=\"/money/how-credit-card-interest-works/\">how credit card interest works</a>; the "
+    "strategy for choosing which card to attack first is in "
+    '<a href="/money/debt-snowball-vs-avalanche/">snowball vs avalanche</a>. Everything runs in your '
+    "browser; nothing is stored or sent to BRYME.</p>"
+    "</div></section>"
+    '<section class="section"><div class="prose money-calc">'
+    '<style>'
+    '.money-calc .fld{display:flex;flex-direction:column;gap:6px;margin:14px 0}'
+    '.money-calc label{font-weight:600;font-size:14px}'
+    '.money-calc input,.money-calc select{padding:10px 12px;border:1px solid var(--line-strong);border-radius:8px;font-size:16px;max-width:340px;background:var(--sheet);color:inherit}'
+    '.money-calc fieldset{border:1px solid var(--line-strong);border-radius:10px;padding:6px 16px 16px;max-width:520px}'
+    '.money-calc legend{font-weight:700;padding:0 8px}'
+    '.money-calc .out{background:rgba(127,127,127,.08);border:1px solid var(--line-strong);border-radius:10px;padding:14px 16px;max-width:520px;margin:16px 0}'
+    '.money-calc .out b{font-size:18px}'
+    '.money-calc .warn{color:#a33;font-weight:600}'
+    '</style>'
+    '<fieldset><legend>Your card</legend>'
+    '<div class="fld"><label for="mcp-cur">Currency</label>'
+    '<select id="mcp-cur"><option value="">\u2014 (no symbol)</option><option value="$">$ USD</option>'
+    '<option value="\u00a3">\u00a3 GBP</option><option value="\u20ac">\u20ac EUR</option>'
+    '<option value="\u20a6">\u20a6 NGN</option><option value="C$">C$ CAD</option><option value="A$">A$ AUD</option></select></div>'
+    '<div class="fld"><label for="mcp-bal">Current balance</label>'
+    '<input id="mcp-bal" type="number" min="0" step="any" placeholder="e.g. 2400"></div>'
+    '<div class="fld"><label for="mcp-apr">APR (%)</label>'
+    '<input id="mcp-apr" type="number" min="0" max="100" step="any" placeholder="e.g. 22.9"></div>'
+    '<div class="fld"><label for="mcp-fixed">Fixed monthly payment</label>'
+    '<input id="mcp-fixed" type="number" min="0" step="any" placeholder="e.g. 200"></div>'
+    '<div class="fld"><label for="mcp-minpct">Minimum payment (% of balance)</label>'
+    '<input id="mcp-minpct" type="number" min="0" max="100" step="any" value="2"></div>'
+    '<div class="fld"><label for="mcp-minfloor">Minimum payment floor</label>'
+    '<input id="mcp-minfloor" type="number" min="0" step="any" value="25"></div>'
+    '</fieldset>'
+    '<div class="out" id="mcp-out" aria-live="polite">Fill in the fields to compare payoff paths.</div>'
+    '<p id="mcp-warn" class="warn" aria-live="polite"></p>'
+    "</div></section>"
+    '<section class="section"><div class="prose">'
+    "<p><b>The loop behind it.</b> Each month: interest = balance \u00d7 APR \u00f7 12; the payment pays "
+    "that interest first and the remainder cuts the principal. A fixed payment keeps attacking until "
+    "the balance is zero; a percentage minimum shrinks with the balance, which is the trap this page "
+    "exists to show. Real statements compound daily rather than monthly, so exact figures differ "
+    "slightly \u2014 the shape of the comparison does not. If the maths says the minimum path runs "
+    "beyond 30 years, the tool says so rather than pretending otherwise. This is arithmetic on your "
+    "numbers, not credit advice.</p>"
+    "</div></section></div>"
+    + '<script src="/assets/money-credit-payoff.js" defer></script></div>'
+)
+
+PAYOFF_PAGE = {
+    "route": "/credit-card-payoff-calculator/",
+    "title": "Credit card payoff calculator - fixed vs minimum, working shown | BRYME Money",
+    "desc": "Free credit card payoff calculator: balance, APR and payment in - months to zero and total interest out, fixed payment versus minimum payment compared. Runs in your browser.",
+    "body": PAYOFF_BODY,
+}
