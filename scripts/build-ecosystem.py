@@ -5179,6 +5179,25 @@ def fitness_pages():
     related_map["couch-to-5k-explained"] = [("beginner-running-plan", "The beginner running plan"),
                                             ("rest-days-why-muscles-grow", "Why rest days matter"),
                                             ("30-day-walking-plan", "The 30-day walking plan")]
+    # b72 (fitness batch #12): relateds for the six new guides
+    related_map["pull-up-progression-explained"] = [("push-up-progression", "The push-up progression"),
+                                                    ("strength-training-for-beginners", "Strength training for beginners"),
+                                                    ("how-progressive-overload-works", "How progressive overload works")]
+    related_map["back-pain-and-exercise-what-evidence-says"] = [("benefits-of-walking-after-meals", "Walking after meals"),
+                                                                ("foam-rolling-honest-benefits", "Foam rolling, honestly"),
+                                                                ("strength-training-for-beginners", "Strength training for beginners")]
+    related_map["hotel-gym-workout-guide"] = [("workout-at-home-no-equipment", "The no-equipment routine"),
+                                              ("workout-split-beginners", "The beginner split"),
+                                              ("sleep-and-exercise-performance", "Sleep and performance")]
+    related_map["restarting-exercise-after-a-break"] = [("how-to-start-working-out", "Starting from zero"),
+                                                        ("doms-relief-what-works", "DOMS relief that works"),
+                                                        ("how-to-start-going-to-the-gym", "Your first gym visit")]
+    related_map["balance-training-why-it-matters"] = [("squat-form-beginners", "Squat form for beginners"),
+                                                      ("strength-training-for-beginners", "Strength training for beginners"),
+                                                      ("yoga-for-athletes-beginners", "Yoga for athletes")]
+    related_map["exercising-in-heat-safely"] = [("how-much-water-to-drink-a-day", "How much water a day?"),
+                                                ("electrolytes-do-you-need-them", "Electrolytes: do you need them?"),
+                                                ("water-during-workout", "Water during workouts")]
     arts = [art(s, ti, dek, b, ART_SOURCES[s], related_map[s])
             for (s, ti, dek, b) in FIT_ARTICLES]
 
