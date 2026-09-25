@@ -3889,6 +3889,81 @@ def tech_cyber_hub_page(arts):
             page_body)
 
 
+def tech_cluster_hub_page(arts, spec):
+    """Generalised cluster hub: a 'start here' index for one topic cluster,
+    generated from the catalogue so it stays current. Additive URL only."""
+    pool = [a for a in arts if a["cat"] in spec["cats"]]
+    def _key(a):
+        return (a.get("upd") or a.get("pub") or "", a["title"])
+    used = set(); secs = []
+    for title, kws in spec["sections"]:
+        items = []
+        for a in sorted(pool, key=_key, reverse=True):
+            sl = a["slug"]
+            if sl in used:
+                continue
+            if any(k in sl for k in kws):
+                items.append(a); used.add(sl)
+        if items:
+            secs.append((title, items))
+    rest = [a for a in sorted(pool, key=_key, reverse=True) if a["slug"] not in used]
+    if rest:
+        secs.append((spec.get("rest", "More on this desk"), rest))
+    body = ['<div class="wrap"><nav class="crumb"><a href="/tech/">Tech</a> / ' + html.escape(spec["crumb"]) + '</nav>',
+            '<section class="cover"><p class="kicker">Cluster hub &middot; ' + html.escape(spec["crumb"].lower()) + '</p>',
+            '<h1 class="cover-title">' + spec["h1"] + '</h1>',
+            '<p class="cover-dek">' + spec["dek"] + " " + str(len(pool)) + ' guides, no fabricated numbers.</p></section>']
+    for title, items in secs:
+        body.append('<section class="section"><h2>' + html.escape(title) + ' <span class="meta">' + str(len(items)) + '</span></h2><ul class="list">')
+        for a in items:
+            body.append('<li><a href="/tech/' + a["slug"] + '/"><b>' + html.escape(a["title"]) + '</b>'
+                        + '<span class="meta">' + html.escape((a.get("excerpt") or "")[:110]) + '&hellip;</span></a></li>')
+        body.append('</ul></section>')
+    body.append('<section class="section"><div class="prose"><p>Want a topic covered? <a href="/tech/contact/">Tell the desk</a>. '
+                'Or see the <a href="/tech/cybersecurity/">cybersecurity hub</a> and the <a href="/tech/">whole tech desk</a>.</p></div></section></div>')
+    page_body = head("tech", "Practical technology. No theatre.") + '<main id="main">' + "".join(body) + "</main>" + foot("tech")
+    return (spec["route"], spec["title"], spec["desc"], page_body)
+
+
+_CLUSTER_HUBS = [
+    {"route": "/cloud-hosting/", "crumb": "Cloud & hosting", "cats": ("web-and-hosting",),
+     "h1": "Cloud, hosting and the web, start here.",
+     "title": "Cloud and hosting start here — the whole cluster | BRYME Tech",
+     "desc": "Every cloud, hosting, DNS, performance and website-security guide on BRYME Tech in one place, grouped by task: choosing hosting, controlling costs, the big clouds, CDN, DNS, and securing the site.",
+     "dek": "Every hosting, cloud and web-infrastructure piece on this desk in one place, grouped by the decision you came to make.",
+     "sections": [
+        ("Choosing hosting", ["hosting-types", "free-vs-paid-hosting", "what-is-a-vps", "where-to-host", "web-hosting-costs"]),
+        ("Cloud platforms and cost", ["aws-vs-azure", "cloud-bill", "render-vs-vercel", "render-static", "render-deployment", "object-storage"]),
+        ("Performance and delivery", ["cdn", "website-is-slow", "why-your-website-is-slow"]),
+        ("Domains, DNS and HTTPS", ["dns", "domain-names", "ssl", "https", "custom-domain"]),
+        ("Website security", ["website-security-headers", "csp", "waf", "ddos", "vulnerability-scanning"]),
+        ("Deploying and troubleshooting", ["deploy", "github-pages", "firebase", "website-wont", "website-not-indexing", "google-indexed", "environment-variables", "http-status"]),
+     ]},
+    {"route": "/ai-start-here/", "crumb": "AI", "cats": ("ai",),
+     "h1": "AI, without the hype — start here.",
+     "title": "AI start here — understand, choose and use AI safely | BRYME Tech",
+     "desc": "Every AI guide on BRYME Tech in one place: how the models work, why they hallucinate, how to prompt, choosing an assistant, privacy, spotting fakes, and getting cited by AI search.",
+     "dek": "Every AI piece on this desk in one place — the fundamentals first, then choosing and using the tools without being sold to.",
+     "sections": [
+        ("Understand how it works", ["how-large-language-models", "why-ai-hallucinates", "writing-better-prompts"]),
+        ("Choose a tool", ["ai-assistants-compared", "chatgpt-vs-claude", "gemini-vs-chatgpt", "deepseek-vs-chatgpt", "arena-ai-vs-chatgpt", "chatgpt-free-vs-paid", "chatgpt-claude-alternatives", "free-ai-tools"]),
+        ("Use it safely", ["ai-privacy", "ai-assistant-data-training", "local-vs-cloud-ai", "spotting-ai-fakes"]),
+        ("AI, search and being cited", ["how-to-get-cited-by-ai-search", "ai-useful-vs-hype"]),
+     ]},
+    {"route": "/saas-software/", "crumb": "Software & SaaS", "cats": ("tools",),
+     "h1": "Choosing software and SaaS, start here.",
+     "title": "Software and SaaS start here — choose, price and exit | BRYME Tech",
+     "desc": "Every software and SaaS guide on BRYME Tech in one place: free vs paid, pricing models, vendor lock-in and portability, build vs buy, open source, self-hosting, and real free alternatives.",
+     "dek": "Every software and SaaS decision piece on this desk in one place — how to choose, what it really costs, and how you leave.",
+     "sections": [
+        ("Deciding and paying", ["saas-free-vs-paid", "saas-pricing-models", "build-vs-buy"]),
+        ("Lock-in and running it yourself", ["saas-lock-in", "self-hosting-saas"]),
+        ("Open source and free alternatives", ["open-source-software", "free-software-alternatives", "remote-work-free-tools", "affinity-now-free"]),
+        ("Specific tools, compared", ["photopea-vs-photoshop", "pixlr-vs-canva", "plasfy-vs-canva", "polotno-studio-vs-canva", "grammarly-alternatives", "google-docs-vs-word-vs-notion", "notion-free-plan", "lyra-vs-spotify"]),
+     ]},
+]
+
+
 def tech_pages():
     arts = _load_tech()
     for a in arts:
@@ -4004,6 +4079,8 @@ def tech_pages():
     pages.extend(art_page(a) for a in arts)
     pages.extend(tech_tool_pages())
     pages.append(tech_cyber_hub_page(arts))
+    for _spec in _CLUSTER_HUBS:
+        pages.append(tech_cluster_hub_page(arts, _spec))
     return pages + tech_trust_pages() + legal_pages("tech", "BRYME Tech", "Practical technology from people who ran the thing.", skip={"/terms/", "/corrections/"}, desk={
         "about": "Deployment walkthroughs, domain and DNS specifics, token hygiene and front-end patterns - written from first-hand runs, including what went wrong.",
         "privacy": "The browser tools run entirely on your device; nothing you type into them is sent to us or to anyone else.",
