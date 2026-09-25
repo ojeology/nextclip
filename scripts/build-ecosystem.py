@@ -6494,10 +6494,10 @@ def money_pages():
         pages.append((_extra["route"], _extra["title"], _extra["desc"], _extra["body"]))
     for _guide in _me.pages(_md.DISCLAIMER_HTML):
         pages.append((_guide["route"], _guide["title"], _guide["desc"], _guide["body"]))
-    # Existing explainers/tools edited for accuracy need an honest visible
-    # modification date too, rather than the desk's original 9 September stamp.
-    revised = {"/position-size-calculator/", "/position-sizing-101/",
-               "/trade-types-explained/", "/technical-indicators-explained/"}
+    # Every content page (not just the four originally edited ones) carries
+    # an honest visible review stamp matching the WebPage dateModified the
+    # desk already emits, plus the editorial-policy link.
+    revised = {r for (r, _t, _d, _b) in pages if r != "/"}
     def _with_revision(route, body):
         if route not in revised:
             return body
