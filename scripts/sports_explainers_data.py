@@ -526,3 +526,110 @@ SPORT_EXPLAINERS += [
  ("how-football-agents-get-paid", "How football agents get paid"),
  ("why-football-transfers-collapse", "Why transfers collapse")]),
 ]
+
+# ---- Growth batch 2 (2026-09-25): competitions, technology and development ----
+# Evergreen mechanics explainers, second wave. Same house rules: no betting,
+# no odds, no tips; formats dated honestly; every claim sourced.
+
+SPORT_EXPLAINERS += [
+
+("how-the-ballon-dor-is-decided", "How the Ballon d'Or is actually decided",
+"Thirty nominees, one hundred journalists, three criteria and a points ladder: the machinery behind football's most argued individual prize.",
+"""<p>Every autumn, football argues about the Ballon d'Or as if it were a verdict. It is not a verdict &mdash; it is a vote, with a defined electorate, a defined ballot and defined criteria. Knowing the machine does not end the argument, but it tells you exactly what kind of claim the result can support.</p>
+<h2>The electorate: one journalist per country</h2>
+<p>The award is presented by France Football, and since the 2022 reform the voting body is deliberately narrow: <b>one journalist from each of the top 100 FIFA-ranked nations</b> votes in the men's award (the women's Ballon d'Or uses 50 journalists from the top 50 ranked nations). Not players, not coaches, not fans &mdash; a press jury, one voice per nation, weighted by nothing but its own ballot.</p>
+<h2>The ballot: a ranked top ten</h2>
+<p>The editorial teams of France Football and L'&Eacute;quipe assemble a <b>30-player shortlist</b> from the previous season's performances. Each juror then ranks their <b>top ten in order</b>, and the positions carry points on a descending ladder &mdash; 15 for first, then 12, 10, 8, 7, 5, 4, 3, 2 and 1. Most points wins. The shape of this ladder matters: a player who is everyone's second choice can lose to one who is a plurality's first choice, which is why &ldquo;best season&rdquo; and &ldquo;wins the Ballon d'Or&rdquo; are not synonyms.</p>
+<h2>The three criteria &mdash; and the one that decides it</h2>
+<p>Jurors are instructed to weigh three things: <b>individual performance</b> (decisive and impressive), <b>team achievements</b> (trophies won), and <b>class and fair play</b>. In practice, the second criterion does the heavy lifting: in a World Cup or Champions League year, the trophy almost always anchors the winner's case, because a hundred journalists from a hundred countries converge most reliably on silverware. Since 2022 the award also runs on a <b>season</b> (roughly August to July), not a calendar year &mdash; a quiet but real change in what the prize measures.</p>
+<h2>The satellite trophies</h2>
+<p>The same gala distributes the related awards, each with its own jury: the <b>Kopa Trophy</b> for the best under-21 (voted by former Ballon d'Or winners), the <b>Yashin Trophy</b> for the best goalkeeper, and the women's awards. Different electorates, different shortlists &mdash; worth remembering when a result in one category surprises you.</p>
+<h2>What the prize can and cannot claim</h2>
+<p>The honest framing: the Ballon d'Or is the aggregated opinion of a hundred journalists about a season, filtered through a points ladder and anchored by trophies. It is a legitimate record of consensus &mdash; and consensus is exactly what it is. Anyone presenting it as an objective measurement of the world's best footballer is selling certainty the ballot never promised. The desk's living 2026 Ballon d'Or question applies precisely this reading.</p>""",
+[("BBC Sport — how the Ballon d'Or winner is decided", "https://www.bbc.com/sport/football/articles/c4g7jynnydlo"),
+ ("beIN Sports — how the Ballon d'Or is decided: rules, voting and jury", "https://www.beinsports.com/en-us/soccer/articles/how-the-2025-ballon-d-or-is-decided-rules-voting-and-who-makes-up-the-jury-2025-09-22")],
+[("how-the-fifa-world-ranking-works", "How the FIFA world ranking works"),
+ ("best-football-players-in-the-world-2026", "Best football players in the world 2026")]),
+
+("how-the-nations-league-works", "How the UEFA Nations League works",
+"Leagues instead of friendlies, promotion and relegation for countries, and a trophy in June: the competition that reorganised the international calendar.",
+"""<p>The Nations League exists because nobody liked international friendlies &mdash; not fans, not broadcasters, not the players. UEFA's answer, launched in 2018, was to turn the empty calendar slots into a league system with the one mechanic football already loved at club level: <b>promotion and relegation between divisions</b>.</p>
+<h2>The pyramid of leagues</h2>
+<p>UEFA's members are sorted into leagues by strength &mdash; currently four (A, B, C, D), with Leagues A, B and C holding 16 teams each in four groups of four, and a small League D. Allocation follows the previous edition's overall ranking, so the system is self-sorting: win and you rise, lose and you fall. Within each group, teams play a home-and-away round robin across the September, October and November international windows.</p>
+<h2>What each league plays for</h2>
+<p>In <b>League A</b>, the group winners and runners-up (eight teams) advance to two-legged quarter-finals in March, and the four winners meet in a June Finals &mdash; semi-finals, a final, a trophy. In every league, group winners are promoted and bottom teams relegated (movement between adjacent leagues can involve play-offs). The stakes convert meaningless autumn fixtures into matches that change a country's competitive future, which was the entire point.</p>
+<h2>The qualification backdoor</h2>
+<p>The second design goal: give the Euros and World Cup qualifying a safety net. Nations League performance feeds play-off places for the major tournaments, so a strong league campaign can rescue a poor qualifying group &mdash; and several recent tournament slots have been decided this way. It makes the autumn window matter twice.</p>
+<h2>What changes next</h2>
+<p>The competition keeps evolving, and the direction is consolidation: UEFA has approved a move, from the 2028/29 edition, to <b>three leagues of 18 teams</b> each &mdash; three groups of six playing six matches &mdash; with European Qualifiers restructured into tiers alongside it. Formats are moving parts here, so treat any single-season description (including this one) as dated the moment you read it; the durable ideas are the three: leagues by strength, movement between them, and a finals weekend that crowns a champion from what used to be the dead weeks of the calendar.</p>""",
+[("Wikipedia — 2026–27 UEFA Nations League (format)", "https://en.wikipedia.org/wiki/2026%E2%80%9327_UEFA_Nations_League"),
+ ("Wikipedia — UEFA Nations League", "https://en.wikipedia.org/wiki/UEFA_Nations_League")],
+[("how-the-fifa-world-ranking-works", "How the FIFA world ranking works"),
+ ("promotion-and-relegation-explained", "Promotion and relegation, explained")]),
+
+("how-the-club-world-cup-works", "How the Club World Cup works",
+"From a seven-team appendix to a 32-team summer World Cup every four years: the format, the qualification maths and why clubs argued about it.",
+"""<p>For two decades the Club World Cup was a curiosity: seven continental champions, one week in December, a European winner nearly every time. In 2025 FIFA rebuilt it into something genuinely different &mdash; a <b>32-team tournament every four years</b>, played across a month of summer, modelled deliberately on the international World Cup. The revamp is as significant as it is contested, and understanding the format explains both halves of that sentence.</p>
+<h2>The shape of the tournament</h2>
+<p>Thirty-two clubs, <b>eight groups of four</b>, single round-robin group stage; the top two from each group advance to a <b>straight knockout</b> &mdash; round of 16, quarter-finals, semi-finals, final &mdash; with extra time and penalties for ties and no third-place play-off. It is the World Cup template applied to clubs, and that comparison is the point FIFA was making.</p>
+<h2>Who gets in: the allocation maths</h2>
+<p>The 32 places are split by confederation strength: <b>12 for Europe</b>, six for South America, four each for Africa, Asia and CONCACAF, one for Oceania, plus the host-nation slot. Within UEFA, places went to Champions League winners of the qualification period plus the clubs with the best cumulative four-year coefficient &mdash; so entry rewards sustained European performance, not a single lucky cup run. The same four-year ranking logic runs across the other confederations.</p>
+<h2>The money, and the argument</h2>
+<p>The commercial scale explains the controversy: the 2025 edition carried a prize pot reported around <b>&pound;775m</b>, with the winners earning up to roughly &pound;97m &mdash; money that dwarfs the old December version and rivals the Champions League itself. The objections arrived on schedule: player unions over calendar congestion in an already packed summer; clubs outside the qualified elite over the closed-ish door (qualification is by past performance, which entrenches the rich); and rival competition organisers over territory. All three objections are about the same thing &mdash; a four-year, month-long club mega-event has to take its weeks from somewhere.</p>
+<h2>What it means on the pitch</h2>
+<p>Practically: the best European sides now have a genuine world title to play for, South American clubs get a real competitive (if financially lopsided) shot at them, and the rest of the confederations get fixtures against the elite they rarely see. Whether the tournament settles into the calendar or becomes the football version of a bridge too far is the live question &mdash; the format answers how it works; the next edition will answer whether it should.</p>""",
+[("BBC Sport — Club World Cup explained: teams, format, prize money", "https://www.bbc.com/sport/football/articles/c9835np3205o"),
+ ("FIFA — FIFA Club World Cup 2025 (official tournament hub)", "https://www.fifa.com/en/tournaments/mens/clubworldcup/25usa")],
+[("how-the-2026-world-cup-format-works", "The 48-team World Cup, explained"),
+ ("champions-league-new-format-explained", "The new Champions League format")]),
+
+("how-semi-automated-offside-works", "How semi-automated offside actually works",
+"Twelve cameras, 29 body points, a sensor in the ball: the limb-tracking behind the 3D animations &mdash; and why a human still decides.",
+"""<p>The 3D animation that settles a tight offside looks like a video-game replay. It is actually the visible end of one of the densest tracking systems in sport &mdash; and the most misunderstood word in its name is <em>automated</em>. The system is <b>semi</b>-automated by design: it proposes, a human disposes.</p>
+<h2>The tracking layer</h2>
+<p>Per FIFA's technical documentation, the system combines two data streams. <b>Twelve dedicated tracking cameras</b> mounted under the stadium roof follow <b>up to 29 data points on each player</b> &mdash; every limb and extremity that matters for an offside call &mdash; <b>50 times per second</b>. Separately, a <b>sensor inside the ball</b> pinpoints the exact moment it is struck, solving the oldest hard problem of offside: knowing precisely when the pass was played.</p>
+<h2>The decision layer &mdash; where the human stays</h2>
+<p>An AI fuses the two streams and, when an attacker receives the ball in an offside position at the kick point, sends an <b>alert to the video match officials</b> &mdash; not to the referee. The VAR team then <b>validates the proposal</b>: they manually check the automatically selected kick point and the automatically drawn offside line, built from the players' tracked limbs. Only after that validation does the on-field referee get involved. FIFA's own framing is explicit about why: complex scenarios &mdash; multiple incidents, blocked views, involvement questions &mdash; still need judgement, and involvement is a Laws question no sensor can answer.</p>
+<h2>The animation is the receipt</h2>
+<p>The broadcast 3D replay is not decoration: it is generated from <b>exactly the same positional data</b> used for the decision, showing the limbs at the kick moment. That is the system's transparency trick &mdash; the viewer sees the evidence the VAR saw. What the animation cannot show is involvement, so the familiar caveat survives the technology: the machine says where the bodies were; the officials say what the play meant.</p>
+<h2>What it changed &mdash; and what it did not</h2>
+<p>The measurable win is speed: what took VAR teams minutes of manual line-drawing now resolves in seconds, which is why tight offside calls stopped eating five-minute holes in matches. What it did not change is the argument. Millimetre precision makes the marginal calls <em>more</em> exact, not less annoying &mdash; an armpit over the line is now indisputably over the line. The desk's offside explainer covers the law this technology enforces; the goal-line technology explainer covers its binary older sibling. Semi-automated offside is the most sophisticated piece of refereeing assistance football has built, pointed at the one law where precision was always the missing ingredient.</p>""",
+[("FIFA — semi-automated offside technology (technical documentation)", "https://inside.fifa.com/innovation/world-cup-2022/semi-automated-offside-technology"),
+ ("Wikipedia — semi-automated offside technology", "https://en.wikipedia.org/wiki/Semi-automated_offside_technology")],
+[("the-offside-rule-explained", "The offside rule, explained"),
+ ("how-goal-line-technology-works", "How goal-line technology works"),
+ ("how-var-works", "How VAR actually works")]),
+
+("how-football-academies-work", "How football academies work &mdash; and how they get paid",
+"Training compensation, the solidarity mechanism and homegrown quotas: the money flows that decide whether youth development is an investment or charity.",
+"""<p>Every club says it believes in youth. The reason academies survive is that football's rules made youth development <b>pay</b> &mdash; through two global mechanisms, plus league rules that make homegrown players worth roster slots. This is how the pipeline is financed.</p>
+<h2>Training compensation: the bill that follows the first contract</h2>
+<p>Under FIFA's Regulations on the Status and Transfer of Players, when a player signs his <b>first professional contract</b> &mdash; or moves internationally before the end of the season of his 23rd birthday &mdash; the new club owes <b>training compensation</b> to every club that trained him between the seasons of his <b>12th and 21st birthdays</b>. The amount is not negotiated: it is calculated from standardised training costs published per country and club category, multiplied by the years each club contributed. A small club that coached a boy from 12 to 16 has a claim on his first professional signature, wherever in the world it happens.</p>
+<h2>The solidarity mechanism: a slice of every future fee</h2>
+<p>The second mechanism never expires. On <b>any international transfer of a contracted player</b>, at any age, <b>5% of the transfer fee</b> is carved out and distributed proportionally to the clubs that trained him between ages 12 and 23. A striker sold at 29 for a large fee still sends slices back to the youth clubs that first registered him &mdash; which is why small clubs watch their graduates' careers like an annuity portfolio, and why the phrase &ldquo;sell-on&rdquo; in transfer reporting often means solidarity rather than a negotiated clause.</p>
+<h2>Homegrown rules: the demand side</h2>
+<p>Regulation created the supply-side incentives; leagues created demand. UEFA's club competitions require a minimum number of <b>homegrown players</b> in squads (locally trained and association-trained), and the Premier League's squad rules do the same domestically &mdash; non-homegrown places are capped, so academy graduates become the only way to field a full squad legally. Add the accounting asymmetry the desk has covered elsewhere &mdash; graduates carry near-zero book value, so selling them books almost pure profit &mdash; and the commercial logic of a strong academy is complete.</p>
+<h2>The honest caveats</h2>
+<p>The system works unevenly. Compensation claims are only as good as a small club's paperwork and persistence; intra-country transfers often fall outside FIFA's international mechanisms entirely (domestic rules fill the gap, unevenly); and the economics still tilt towards the clubs who can afford the best coaches, facilities and scouts in the first place. But the design intent holds: a boy's development now leaves a financial trail that follows him for his whole career, and that trail is the reason academies are businesses rather than charity.</p>""",
+[("FIFA — Regulations on the Status and Transfer of Players (official PDF)", "https://digitalhub.fifa.com/m/19e76b9a9a9ae0ce/original/adi1292xtnibmwrqnimy-pdf.pdf"),
+ ("Mondaq — demystifying fees and financial compensation in football transfers", "https://www.mondaq.com/nigeria/sport/1468300/demystifying-fees-and-financial-compensation-in-football-transfers")],
+[("how-transfer-fee-amortisation-works", "How transfer-fee amortisation works"),
+ ("how-football-transfers-collapse", "Why transfers collapse"),
+ ("how-do-football-clubs-make-money", "How football clubs make money")]),
+
+("how-womens-champions-league-works", "How the Women's Champions League works",
+"The 18-team league phase, the knockout ladder, and the fast-professionalising domestic pyramid behind it: the women's club game, explained.",
+"""<p>The UEFA Women's Champions League is the apex of the fastest-growing competition structure in football &mdash; and in 2025/26 it adopted the same medicine as the men's game: out with the small groups, in with a single big league phase. The format is worth understanding because the women's club pyramid underneath it is professionalising in real time.</p>
+<h2>The current format: one league, eighteen teams</h2>
+<p>Eighteen clubs qualify through domestic performance (entry rounds depend on each country's coefficient), and since 2025/26 they contest a <b>single league phase</b>: each team plays <b>six different opponents</b> &mdash; three at home, three away &mdash; drawn from three seeding pots so the schedule balances. All eighteen are ranked in one table; the <b>top four go straight to the quarter-finals</b>, places <b>five to twelve play two-legged play-offs</b> for the other four quarter-final spots, and thirteen to eighteen are out. From the quarter-finals it is the traditional two-legged knockout into a single final at a neutral venue.</p>
+<h2>The domestic pyramid feeding it</h2>
+<p>Entry comes from the domestic leagues, which are themselves consolidating. England's Women's Super League &mdash; fully professional since its 2018 relaunch &mdash; has been expanding (moving to a 14-club top flight with a second professional division beneath it), and its top clubs qualify for the UWCL, with entry rounds set by England's coefficient. The pattern repeats across Europe: bigger attendances (the game now fills 60,000-seat stadiums at the top end), broadcast deals, and professional contracts replacing the semi-professional era &mdash; which changes what qualification is worth, year on year.</p>
+<h2>Why the format change matters</h2>
+<p>The move from small groups to a single league phase does what it did in the men's game: more meaningful fixtures, more variety of opposition, and every match feeding one table until the final night, when all games kick off together. For a competition still building its audience, the league phase is also a commercial machine &mdash; big clubs meet big clubs earlier and more often, which is exactly what broadcast schedules want.</p>
+<h2>The honest state of play</h2>
+<p>The gaps are real and worth stating plainly: revenue remains a fraction of the men's game, squad depth outside the top clubs is thin, and the calendar now collides with an expanding international schedule. But the direction is unambiguous &mdash; professional domestic pyramids, a Champions League format built for television, and attendances that were unimaginable a decade ago. The competition is not waiting for permission to matter; the format change is it arriving.</p>""",
+[("Wikipedia — UEFA Women's Champions League", "https://en.wikipedia.org/wiki/UEFA_Women%27s_Champions_League"),
+ ("Wikipedia — Women's Super League", "https://en.wikipedia.org/wiki/Women%27s_Super_League")],
+[("champions-league-new-format-explained", "The new Champions League format"),
+ ("how-the-club-world-cup-works", "How the Club World Cup works")]),
+]

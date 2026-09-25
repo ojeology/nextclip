@@ -40,6 +40,7 @@ SPO_SKIP_SLUGS = {
     "about", "contact", "privacy", "terms", "copyright", "corrections", "editorial-policy",
     "points-race-calculator",  # desk tool (toolbox band, not the pieces wall)
     "transfer-amortisation-calculator",  # desk tool (growth batch 2026-09-25)
+    "league-tiebreak-calculator",  # desk tool (growth batch 2, 2026-09-25)
 }
 SPO_SKIP_SUFFIX = ("-fixtures", "-results", "-table", "-top-scorers", "-transfers")
 

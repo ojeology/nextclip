@@ -135,3 +135,81 @@ SPO_TOOLS = list(SPO_TOOLS) + [
      "Fee and contract length in — yearly charge, book value by season and profit-on-sale out, every line of the working shown. Accounting arithmetic, never a valuation.",
      "how-transfer-fee-amortisation-works"),
 ]
+
+# ---- Growth batch 2 (2026-09-25): league tiebreak calculator ----
+# "What happens if they finish level?" — the Premier League tiebreak order
+# applied step by step, working shown. Arithmetic on standings numbers;
+# no betting, no predictions.
+
+TIEBREAK_BODY = """
+<main id="main"><div class="wrap">
+
+<nav class="crumb"><a href="/sports/">Sport</a> / League tiebreak calculator</nav>
+<section class="cover"><p class="kicker">Tool &middot; desk</p>
+<h1 class="cover-title" style="font-size:clamp(30px,4.6vw,48px)">League tiebreak calculator</h1>
+<p class="byline">BRYME Sport desk &middot; published 2026-09-25 &middot; runs entirely in your browser &mdash; nothing is stored or sent &middot; arithmetic, not betting advice</p></section>
+<section class="section alt"><div class="wrap"><p class="lede"><b>In one line:</b> two teams level on points &mdash; put in the standings numbers and head-to-head, and get the exact rule that separates them, step by step, in the order the rulebook applies it.</p></div></section>
+<section class="section"><div class="prose">
+
+<p>Every title race and relegation fight ends with the same question: <em>what happens if they finish level?</em> The Premier League's answer is a fixed order &mdash; goal difference, then goals scored, then the head-to-head record, then (if still level) a play-off. This tool applies that order to your numbers and shows every comparison, so you can see exactly which rule decides it. The standings it works on are in <a href="/how-the-premier-league-table-works/">how the Premier League table works</a>; the money riding on each place is in <a href="/premier-league-prize-money-explained/">prize money, explained</a>.</p>
+<style>
+.ltb-card{border:1px solid var(--line-strong);border-radius:12px;background:var(--sheet);padding:20px 22px;max-width:820px}
+.ltb-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:640px){.ltb-grid{grid-template-columns:1fr}}
+.ltb-grid h3{margin:0 0 8px}
+.ltb-grid label{display:flex;flex-direction:column;gap:6px;font-weight:600;font-size:14px;margin:8px 0}
+.ltb-grid input{padding:10px 12px;border:1px solid var(--line-strong);border-radius:8px;font-size:16px;background:var(--paper);color:var(--ink)}
+.ltb-out{margin-top:16px;border-left:3px solid var(--accent);background:var(--paper);padding:14px 16px;border-radius:0 10px 10px 0}
+.ltb-out table{border-collapse:collapse;margin:10px 0;width:100%;font-variant-numeric:tabular-nums}
+.ltb-out td,.ltb-out th{border-bottom:1px solid var(--line-strong);padding:6px 10px;text-align:right}
+.ltb-out th:first-child,.ltb-out td:first-child{text-align:left}
+.ltb-warn{color:#a33;font-weight:600}
+</style>
+<div class="ltb-card">
+<div class="ltb-grid">
+<div><h3>Team A</h3>
+<label for="ltb-a-name">Name<input id="ltb-a-name" type="text" placeholder="e.g. Arsenal"></label>
+<label for="ltb-a-pts">Points<input id="ltb-a-pts" type="number" step="any" placeholder="e.g. 78"></label>
+<label for="ltb-a-gd">Goal difference<input id="ltb-a-gd" type="number" step="any" placeholder="e.g. +30"></label>
+<label for="ltb-a-gf">Goals scored<input id="ltb-a-gf" type="number" min="0" step="1" placeholder="e.g. 81"></label>
+<label for="ltb-a-hp">Head-to-head points<input id="ltb-a-hp" type="number" min="0" step="1" placeholder="e.g. 4"></label>
+<label for="ltb-a-hgd">Head-to-head goal difference<input id="ltb-a-hgd" type="number" step="any" placeholder="e.g. +1"></label>
+<label for="ltb-a-hag">Head-to-head away goals<input id="ltb-a-hag" type="number" min="0" step="1" placeholder="e.g. 2"></label>
+</div>
+<div><h3>Team B</h3>
+<label for="ltb-b-name">Name<input id="ltb-b-name" type="text" placeholder="e.g. Man City"></label>
+<label for="ltb-b-pts">Points<input id="ltb-b-pts" type="number" step="any" placeholder="e.g. 78"></label>
+<label for="ltb-b-gd">Goal difference<input id="ltb-b-gd" type="number" step="any" placeholder="e.g. +26"></label>
+<label for="ltb-b-gf">Goals scored<input id="ltb-b-gf" type="number" min="0" step="1" placeholder="e.g. 79"></label>
+<label for="ltb-b-hp">Head-to-head points<input id="ltb-b-hp" type="number" min="0" step="1" placeholder="e.g. 1"></label>
+<label for="ltb-b-hgd">Head-to-head goal difference<input id="ltb-b-hgd" type="number" step="any" placeholder="e.g. &minus;1"></label>
+<label for="ltb-b-hag">Head-to-head away goals<input id="ltb-b-hag" type="number" min="0" step="1" placeholder="e.g. 1"></label>
+</div>
+</div>
+<div class="ltb-out" id="ltb-out" aria-live="polite">Enter both teams' numbers to see the tiebreak, rule by rule.</div>
+<p id="ltb-warn" class="ltb-warn" aria-live="polite"></p>
+</div>
+
+<script src="/assets/sports-league-tiebreak.js" defer></script>
+
+<h2 id="how">The order, and why it is that order</h2>
+<p>The Premier League separates teams level on points in this sequence: <b>goal difference</b>, then <b>goals scored</b>, then the <b>head-to-head record</b> (points, then goal difference, then away goals in those matches), and if everything is still level, a <b>play-off match at a neutral ground</b>. Other competitions differ &mdash; UEFA's club competitions put head-to-head first, LaLiga and Serie A use their own orders &mdash; so always check which rulebook your table lives under; this tool runs the English one. The tool never places, suggests or prices a bet: it applies a published rule to numbers you enter, and shows every step so you can check it against the handbook.</p>
+
+</div></section>
+
+<section class="section alt"><div class="section-head"><p class="kicker">Next</p><h2>More from the shelf.</h2></div>
+<ul class="list">
+<li><a href="/how-the-premier-league-table-works/"><span><b>How the Premier League table works</b><small>Points, goal difference and the full tiebreak order</small></span><span class="meta">Explainer</span></a></li>
+<li><a href="/premier-league-prize-money-explained/"><span><b>Premier League prize money, explained</b><small>What every position in the table is worth</small></span><span class="meta">Explainer</span></a></li>
+<li><a href="/points-race-calculator/"><span><b>Points race calculator</b><small>Project the finish from points, games and form</small></span><span class="meta">Tool</span></a></li>
+</ul>
+<div class="actions"><a class="btn secondary" href="/sports/">All of BRYME Sport</a></div></section>
+
+</div></main>
+"""
+
+SPO_TOOLS = list(SPO_TOOLS) + [
+    ("league-tiebreak-calculator", "League tiebreak calculator",
+     "Two teams level on points in — the exact rule that separates them out, step by step in rulebook order. Arithmetic on the standings, never a bet.",
+     "how-the-premier-league-table-works"),
+]

@@ -2361,6 +2361,16 @@ def sports_pages():
                   head("sports", "The transfer maths, with the working shown \u2014 never betting.")
                   + _std.AMORT_BODY + foot("sports")))
 
+    # Desk tool (2026-09-25 growth batch 2): league tiebreak calculator —
+    # the published tiebreak order applied step by step, working shown.
+    _lt_title = ("League tiebreak calculator \u2014 what happens if they finish level | BRYME Sport")
+    _lt_dek = ("Two teams level on points in \u2014 goal difference, goals scored, head-to-head, "
+               "play-off: the Premier League tiebreak order applied step by step, every comparison "
+               "shown. Runs in your browser; arithmetic, never a bet.")
+    pages.append(("/league-tiebreak-calculator/", _lt_title, _lt_dek[:155],
+                  head("sports", "The tiebreak rules, with the working shown \u2014 never betting.")
+                  + _std.TIEBREAK_BODY + foot("sports")))
+
     # the analysis shelf: how the game is played (batch 3)
     import sports_analysis_data
     analysis_rows = []
