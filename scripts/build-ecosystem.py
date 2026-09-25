@@ -2361,6 +2361,17 @@ def sports_pages():
                   head("sports", "The transfer maths, with the working shown \u2014 never betting.")
                   + _std.AMORT_BODY + foot("sports")))
 
+    # Desk tool (2026-09-25 batch #3): wage-to-revenue ratio checker - the
+    # squad-cost arithmetic behind the PSR explainer, working shown.
+    _wr_title = ("Wage-to-revenue ratio checker \u2014 the number behind every "
+                 "financial headline | BRYME Sport")
+    _wr_dek = ("Revenue and wage bill in \u2014 the ratio, the revenue needed to reach the UEFA 70% "
+               "and PL 85% lines, and an honest band. Runs in your browser; context, never a verdict, "
+               "never betting.")
+    pages.append(("/wage-revenue-ratio-calculator/", _wr_title, _wr_dek[:155],
+                  head("sports", "The wage-to-revenue ratio, with the working shown \u2014 never betting.")
+                  + _std.WAGE_RATIO_BODY + foot("sports")))
+
     # Desk tool (2026-09-25 growth batch 2): league tiebreak calculator —
     # the published tiebreak order applied step by step, working shown.
     _lt_title = ("League tiebreak calculator \u2014 what happens if they finish level | BRYME Sport")

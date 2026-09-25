@@ -213,3 +213,59 @@ SPO_TOOLS = list(SPO_TOOLS) + [
      "Two teams level on points in — the exact rule that separates them out, step by step in rulebook order. Arithmetic on the standings, never a bet.",
      "how-the-premier-league-table-works"),
 ]
+
+
+# ---- Batch #3 (2026-09-25): wage-to-revenue ratio checker ----
+WAGE_RATIO_BODY = """
+<main id="main"><div class="wrap">
+
+<nav class="crumb"><a href="/sports/">Sport</a> / Wage-to-revenue ratio checker</nav>
+<section class="cover"><p class="kicker">Tool &middot; desk</p>
+<h1 class="cover-title" style="font-size:clamp(30px,4.6vw,48px)">Wage-to-revenue ratio checker</h1>
+<p class="byline">BRYME Sport desk &middot; published 2026-09-25 &middot; runs entirely in your browser &mdash; nothing stored, nothing sent</p>
+<p class="cover-dek" style="font-size:clamp(16px,2.4vw,20px);max-width:60ch">A club's revenue and wage bill in &mdash; the ratio out, the revenue needed to reach the UEFA 70% and Premier League 85% lines, and an honest band to read it against. Context, never a verdict.</p>
+</section>
+
+<section class="section">
+<div class="prose">
+<p>Every financial crisis in football starts in the same place: wages growing faster than revenue. The ratio between the two is the single number regulators watch &mdash; UEFA's squad-cost rule targets 70% of revenue from 2025/26 (counting wages, amortised transfer fees and agent costs together), and the Premier League has been trialling a shadow squad-cost line at 85%. This checker runs the arithmetic on any club's published accounts, on your device. The rules behind the numbers are in the <a href="/sports/how-psr-and-points-deductions-work/">PSR explainer</a>; the accounting mechanics are in the <a href="/sports/how-transfer-fee-amortisation-works/">amortisation explainer</a>.</p>
+</div>
+</section>
+
+<section class="section">
+<style>
+.wrr-card{background:var(--sheet);border:1px solid var(--line-strong);border-radius:14px;padding:22px;max-width:560px}
+.wrr-card label{display:flex;flex-direction:column;gap:6px;margin:12px 0;font-weight:600}
+.wrr-card input,.wrr-card select{padding:10px 12px;border:1px solid var(--line-strong);border-radius:8px;font-size:16px;background:var(--paper);color:inherit}
+.wrr-out{margin-top:14px;border-left:4px solid var(--accent);background:var(--paper);padding:14px 16px;border-radius:0 10px 10px 0}
+.wrr-out table{border-collapse:collapse;margin:10px 0;width:100%;font-variant-numeric:tabular-nums}
+.wrr-out td,.wrr-out th{border-bottom:1px solid var(--line-strong);padding:6px 10px;text-align:right}
+.wrr-out th:first-child,.wrr-out td:first-child{text-align:left}
+.wrr-note{font-size:.92em;color:var(--muted)}
+</style>
+<div class="wrr-card">
+<label for="wrr-cur">Currency symbol<select id="wrr-cur"><option value="&pound;">&pound; GBP</option><option value="&euro;">&euro; EUR</option><option value="$">$ USD</option><option value="">&#8212; (none)</option></select></label>
+<label for="wrr-rev">Annual revenue (millions)<input id="wrr-rev" type="number" min="0" step="any" placeholder="e.g. 512"></label>
+<label for="wrr-wag">Annual wage bill (millions)<input id="wrr-wag" type="number" min="0" step="any" placeholder="e.g. 358"></label>
+<div class="wrr-out" id="wrr-out" aria-live="polite">Enter the annual revenue and the annual wage bill (same units, e.g. millions).</div>
+</div>
+<script src="/assets/sports-wage-ratio.js" defer></script>
+
+<h2 id="how">How to read it honestly</h2>
+<div class="prose">
+<p><b>The ratio is wages &divide; revenue &times; 100.</b> That is the whole maths &mdash; but three honesty notes matter more than the formula. First, official squad-cost measures are <b>wider</b> than wages alone: they add amortised transfer fees and agent costs, so this ratio understates them, sometimes by 15&ndash;25 points at heavy-spending clubs. Second, the 70% and 85% lines apply to different rulebooks (UEFA and the Premier League's proposals) with different definitions and permitted exclusions &mdash; the tool shows where a club sits against both, not whether it is compliant. Third, revenue here should be the club's <b>football revenue</b> from published accounts, not owner funding. Figures are arithmetic on the numbers you enter, checked 2026-09-25 against the published rule targets; rules evolve, and this is education, not financial advice.</p>
+</div>
+
+<h2 id="more">More desk tools</h2>
+<ul class="linklist">
+<li><a href="/sports/transfer-amortisation-calculator/"><span><b>Transfer amortisation calculator</b><small>Fee and contract in &mdash; yearly charge and book value out</small></span><span class="meta">Tool</span></a></li>
+<li><a href="/sports/league-tiebreak-calculator/"><span><b>League tiebreak calculator</b><small>Two teams level on points &mdash; the exact rule that separates them</small></span><span class="meta">Tool</span></a></li>
+<li><a href="/sports/points-race-calculator/"><span><b>Points race calculator</b><small>Project the finish from points, games and form</small></span><span class="meta">Tool</span></a></li>
+</ul>
+<div class="actions"><a class="btn secondary" href="/sports/">All of BRYME Sport</a></div></section>
+
+</div></main>
+"""
+SPO_TOOLS.append(("wage-revenue-ratio-calculator", "Wage-to-revenue ratio checker",
+                  "Revenue and wage bill in \u2014 the ratio, the UEFA 70% and PL 85% context lines and the revenue needed to reach them. Working shown.",
+                  "how-psr-and-points-deductions-work"))
