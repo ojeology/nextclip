@@ -76,6 +76,12 @@ services:
     # stubs are the belt-and-braces against future config drift). Keep this
     # block and that script's parsed destinations in step: it reads this file.
     routes:
+      # batch #7 (25 Sep): saving-for-a-house-deposit-explained shipped as an
+      # unintentional duplicate of the older how-to-save-for-a-house-deposit
+      # guide; the page was removed the same day. The 301 keeps any indexed or
+      # linked copy pointing at the surviving page.
+      - { type: redirect, source: /money/saving-for-a-house-deposit-explained, destination: /money/how-to-save-for-a-house-deposit/ }
+      - { type: redirect, source: /money/saving-for-a-house-deposit-explained/, destination: /money/how-to-save-for-a-house-deposit/ }
       - { type: redirect, source: /opportunities, destination: /writers/writing/ }
       - { type: redirect, source: /opportunities/*, destination: /writers/writing/ }
       - { type: redirect, source: /jobs, destination: /writers/writing/ }
