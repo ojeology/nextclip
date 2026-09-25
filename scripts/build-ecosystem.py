@@ -6069,6 +6069,8 @@ def home_pages():
             continue
         _cn = HOME_SLUG_SECT.get(_s)
         assert _cn, "home page without taxonomy entry: " + _s
+        if _cn == "mistakes":   # one top-level guide tagged to the mistakes shelf
+            _cn = "fix"
         _cat_arts.append({"slug": _s, "title": _t, "excerpt": _d, "cat": _cn,
                           "need": _NEED_OF[_cn], "pub": _home_pub(_s), "upd": HOME_SWEEP,
                           "kind": "guide"})
