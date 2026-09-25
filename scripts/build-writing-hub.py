@@ -1129,109 +1129,115 @@ def essays_home_block() -> str:
 
 
 def homepage() -> None:
-    popular = [g for g in GUIDES if g.get("popular")][:6]
-    latest = sorted(GUIDES, key=lambda g: g.get("updated", ""), reverse=True)[:6]
-    pop_cards = "".join(
-        f'<a class="path-card" href="/learn/{esc(g["section"])}/{esc(g["slug"])}/"><span class="card-num">GUIDE</span><h3>{esc(g["title"])}</h3><p>{esc(g.get("description", ""))}</p><span class="card-link">Open →</span></a>'
-        for g in popular)
-    qtools = [t for t in TOOLS if t["id"] in ("word-counter", "character-counter", "reading-time", "case-converter", "text-cleaner")][:5]
-    qtool_cards = "".join(f'<a class="chip-card" href="/tools/{esc(t["id"])}/"><b>🛠</b><span>{esc(t["title"])}</span></a>' for t in qtools)
-    latest_cards = "".join(
-        f'<a class="path-card" href="/learn/{esc(g["section"])}/{esc(g["slug"])}/"><span class="card-num">NEW</span><h3>{esc(g["title"])}</h3><p>{esc(g.get("description", ""))}</p><span class="card-link">Open →</span></a>'
-        for g in latest)
-    def short_st(r):
-        return {"accepting": "Accepting", "rolling": "Rolling", "upcoming": "Opens soon",
-                "limited": "Limited window", "closed": "Closed",
-                "needs-verification": "Unverified"}[_bwf.status_of(r)[1]]
-    def ctry(r):
-        iso = _bwf.base_country(r["slug"])
-        return _bwf.country_name(iso) if iso else "International"
-    lead = WRITING[0]
-    tested_n = [r for r in WRITING if (r.get("editorExperience") or {}).get("applied")]
+    """Front page: the living machine for the writers desk (2026-09-25).
+
+    Reuses the shared desk renderer in embedded mode (page_wf supplies the
+    <main> wrapper and masthead). The catalogue is the desk's real data:
+    every researched publication (each with its own last-verified date) plus
+    the full markdown guide library (each with its own updated date), arranged
+    by what a visiting writer came to do.
+    """
+    import desk_hub_render
+
     n_open = sum(1 for r in WRITING if (r.get("submissionStatus") or "") in ("open", "rolling", "deadline"))
-    n_global = sum(1 for r in WRITING if (r.get("eligibility") or {}).get("mode") in ("open", "worldwide"))
-    lead_pay = esc((lead.get("pay") or {}).get("display") or "See page")
-    lead_el = esc((lead.get("eligibility") or {}).get("summary") or "")
-    lead_verified = esc((lead.get("lastVerified") or TODAY)[:7])
-    desk_rows = "".join(
-        f'<a class="desk-row" href="/writing/{esc(r["slug"])}/">'
-        f'<span class="desk-pub">{esc(r["publication"])}<small>{esc(ctry(r))}</small></span>'
-        f'<span class="desk-cell">{esc((r.get("pay") or {}).get("display") or "See page")}</span>'
-        f'<span class="desk-cell">{esc((r.get("wordCount") or {}).get("display") or "&mdash;")}</span>'
-        f'<span class="desk-cell st-{esc(_bwf.status_of(r)[1])}">{short_st(r)}</span></a>'
-        for r in WRITING[1:7])
-    toc = "".join(
-        f'<li><a href="{u}"><span class="toc-num">{n:02d}</span>'
-        f'<span class="toc-body"><b>{ti}</b><small>{d}</small></span>'
-        f'<span class="toc-go">&rarr;</span></a></li>'
-        for n, (u, ti, d) in enumerate([
-            ("/learn/", "Learn to write", "The guide library — craft, process, grammar and the business of freelancing."),
-            ("/writing-opportunities/", "Find places to publish", "The atlas — every researched publication, arranged by country."),
-            ("/writing/", "Write &amp; get paid", "The desk — rates, rights, invoicing, and who pays."),
-            ("/tools/", "Writing tools", "Instruments that run in your browser. No account, nothing uploaded."),
+    tested = [r for r in WRITING if (r.get("editorExperience") or {}).get("applied")]
+
+    arts = []
+    for r in WRITING:
+        _tested = bool((r.get("editorExperience") or {}).get("applied"))
+        arts.append({
+            "slug": "writing/" + r["slug"], "title": r["publication"],
+            "excerpt": (r.get("excerpt") or (r.get("eligibility") or {}).get("summary")
+                        or "A full dossier: what they publish, what they pay, and who they are open to."),
+            "cat": "writing", "need": "find",
+            "pub": r.get("lastVerified") or TODAY, "upd": r.get("lastVerified") or TODAY,
+            "kind": "tested" if _tested else "guide"})
+    for g in GUIDES:
+        _upd = g.get("updated") or ""
+        if _upd and _upd > TODAY:   # never print a date the desk cannot show
+            _upd = TODAY
+        arts.append({"slug": "learn/" + g.get("section", "") + "/" + g["slug"],
+                     "title": g["title"], "excerpt": g.get("description", ""),
+                     "cat": "learn", "need": "learn", "pub": _upd, "upd": _upd,
+                     "kind": "guide"})
+
+    WR_CATS = {
+        "writing": ("Opportunity dossiers",
+                    "Every researched publication: pay, word count, eligibility, submission method and the "
+                    "official guideline \u2014 each carrying its own last-checked date."),
+        "learn": ("The guide library",
+                  "Craft, process, grammar and the business of freelancing \u2014 how to pitch, submit, "
+                  "invoice and get paid."),
+    }
+
+    tools = [(t["id"], t["title"], t["short"], "") for t in TOOLS]
+
+    _wr_cfg = {
+        "brand": "BRYME WRITERS",
+        "h1": "Learn to write, get published, get paid.",
+        "dek": (str(len(WRITING)) + " publications researched by hand \u2014 what they pay, how long, who they "
+                "are open to \u2014 plus " + str(len(GUIDES)) + " guides, " + str(len(TOOLS)) + " free tools and "
+                "the essays behind the market. The whole desk is listed below, in the page itself."),
+        "needs": [
+            ("find", "Find markets that pay",
+             str(len(WRITING)) + " researched publications with dated checks \u2014 who pays, what for, and who they are open to."),
+            ("learn", "Learn the craft",
+             str(len(GUIDES)) + " guides from first pitch to final invoice, written by working writers."),
+        ],
+        "cadence": {"writing": 90, "learn": 365},
+        "cadence_blurb": ("Publication statuses turn fast \u2014 dossiers are re-checked against the official "
+                          "guideline every 90 days; craft guides age slowly (365). "),
+        "kind_badges": {"tested": "Tested"},
+        "kind_chips": [("tested", "BRYME tested")],
+        "chips": [("find", "Markets that pay"), ("learn", "Craft guides")],
+        "gauges": lambda st, tools: [
+            (len(WRITING), "publications researched", "each carries its last-checked date"),
+            (n_open, "accepting now", "status verified against the guideline"),
+            (len(tested), "personally tested by BRYME", "the journey shown as it happened"),
+            (len(GUIDES), "craft guides", "from first pitch to final invoice"),
+            (len(tools), "browser tools", "no account, nothing uploaded"),
+        ],
+        "rules": [
+            "Rates are never invented; where a publication states no fee, the page says so.",
+            "Every dossier carries its last human-check date; a missing country list is never read as &ldquo;open worldwide&rdquo;.",
+            "Payment is only marked confirmed once it actually lands.",
+            "A listing is an invitation to pitch \u2014 not a job offer or a promise of payment.",
+            "Saved items and reading history stay in this browser\u2019s local storage and nowhere else.",
+        ],
+        "rules_links": [("terms", "Terms"), ("editorial-policy", "Editorial policy"),
+                        ("corrections", "Corrections"), ("contact", "Contact"), ("privacy", "Privacy")],
+        "clusters": [
             ("/intelligence/", "Writing intelligence", "Research notes and market watch from the editorial desk."),
-            ("/essays/", "Essays", "Arguments and investigations — the highest shelf in the library."),
-        ], 1))
-    tools_idx = "".join(
-        f'<li><a href="/tools/{esc(t["id"])}/"><b>{esc(t["title"])}</b><span>{esc(t["short"])}</span></a></li>'
-        for t in TOOLS if t["id"] in ("freelance-rate-calculator", "freelance-agreement-builder",
-                                      "invoice-generator", "late-payment-letter-builder",
-                                      "word-counter", "images-to-pdf"))
-    body = f'''<section class="cover"><div class="wrap">
-  <p class="cover-line">An independent publication for working writers</p>
-  <h1 class="cover-title">Learn to write, get published, get <em>paid.</em></h1>
-  <p class="cover-dek">{len(WRITING)} publications researched by hand — what they pay, how long, who they are open to — plus {len(GUIDES)} guides, {len(TOOLS)} free tools and the essays behind the market. Free, independent, human-verified.</p>
-  <div class="actions"><a class="btn" href="/writing/">Explore the opportunity desk &rarr;</a><a class="btn secondary" href="/learn/">Study the guides</a></div>
-  <form class="home-search" action="/search/" method="get" role="search">
-    <label for="home-q">Already know what you are looking for? Search BRYME.</label>
-    <div class="home-search-row">
-      <input id="home-q" name="q" type="search" placeholder="Search guides, tools, publications — e.g. personal essay, poetry, invoice" autocomplete="off">
-      <button class="btn" type="submit">Search</button>
-    </div>
-  </form>
-  <div class="cover-facts">
-    <div><b>{len(WRITING)}</b><span>Publications researched</span></div>
-    <div><b>{n_open}</b><span>Accepting now</span></div>
-    <div><b>{n_global}</b><span>Open worldwide</span></div>
-    <div><b>{len(tested_n)}</b><span>BRYME tested</span></div>
-    <span class="asof">Snapshot {TODAY} — every entry carries its own last-checked date.</span>
-  </div>
-</div></section>
-<section class="section"><div class="wrap">
-  <header class="toc-head"><p class="eyebrow">In this publication</p><h2>Contents</h2></header>
-  <ol class="toc">{toc}</ol>
-</div></section>
-<section class="section alt"><div class="wrap">
-  <article class="feature"><div>
-    <p class="feature-kicker">Featured dossier &middot; human-verified</p>
-    <h2 class="feature-title"><a href="/writing/{esc(lead["slug"])}/">{esc(lead["publication"])}</a></h2>
-    <p class="feature-dek">{lead_el or "A full dossier: what they publish, what they pay, who they are open to, and the official guideline."}</p>
-    <p class="feature-meta">{esc(ctry(lead))} &middot; Pay {lead_pay} &middot; <b>{short_st(lead)}</b> &middot; Verified {lead_verified}</p>
-    <div class="actions"><a class="btn secondary" href="/writing/{esc(lead["slug"])}/">Read the dossier &rarr;</a></div>
-  </div>
-  <aside class="feature-side">
-    <div class="desk-head"><h3>The opportunity desk</h3><span>checked {TODAY}</span></div>
-    {desk_rows}
-    <div class="desk-foot"><a class="btn secondary" href="/writing/">All {len(WRITING)} publications &rarr;</a></div>
-  </aside>
-  </article>
-</div></section>
-<section class="section"><div class="wrap">
-  <header class="toc-head"><p class="eyebrow">The tool chest</p><h2>Instruments for the working writer</h2></header>
-  <ul class="tool-index">{tools_idx}</ul>
-  <div class="actions"><a class="btn secondary" href="/tools/">The full index of tools &rarr;</a></div>
-</div></section>
-{essays_home_block()}
-<section class="section alt"><div class="wrap">
-  <header class="toc-head"><p class="eyebrow">The archive</p><h2>A library, not a feed.</h2></header>
-  <p class="archive-line">Every guide, every essay and every publication dossier is <a href="/read/">indexed and permanent</a> &mdash; researched by hand, dated when checked, and corrected in the open.</p>
-  <div class="archive-links"><a class="btn secondary" href="/read/">All articles</a><a class="btn secondary" href="/essays/">Essays</a><a class="btn secondary" href="/writing-opportunities/">By country</a><a class="btn secondary" href="/verification/">What statuses mean</a></div>
-</div></section>'''
+            ("/essays/", "Essays", "Arguments and investigations \u2014 the highest shelf in the library."),
+            ("/tested/", "BRYME Tested", "Opportunities we pitched ourselves \u2014 the journey shown as it happened."),
+            ("/what-changed/", "What changed", "Markets that opened, closed or moved \u2014 dated."),
+            ("/verification/", "What statuses mean", "How every dossier status is assigned and checked."),
+            ("/read/", "The archive", "Every guide, essay and dossier \u2014 indexed and permanent."),
+        ],
+        "clusters_h": "Beyond the wall.",
+        "clusters_p": ("The desks and shelves that sit beside the catalogue \u2014 market watch, essays, our own "
+                       "test record, and what every status on a dossier actually means."),
+        "palette_label": "Search the writers\u2019 desk",
+        "palette_placeholder": "pitch, pay, invoice, magazine \u2014 matches titles and summaries on your device",
+        "filter_placeholder": "filter: pay, country, pitch, invoice\u2026",
+        "toolbox_href": "/tools/",
+        "toolbox_blurb": ("Every tool runs in your browser \u2014 no account, no upload, and nothing you type "
+                          "into one is sent anywhere, including to us."),
+        "contact_slug": "contact",
+        "embedded": True,
+        "desk": "writers",
+        "css": "/assets/tech-hub.css",
+        "tool_prefix": "/tools",
+    }
+
+    body = ('<style>:root{--brand:var(--brass)}</style>'
+            + desk_hub_render.render(arts, tools, WR_CATS, _wr_cfg, "", "Snapshot " + TODAY)
+            + '<script src="/assets/tech-hub.js" defer></script>')
     structured = [
         {"@context": "https://schema.org", "@type": "WebSite", "name": "BRYME", "url": BASE + "/", "description": "Learn to write, use free writing tools, and find verified paid writing opportunities."},
         {"@context": "https://schema.org", "@type": "Organization", "name": "BRYME", "url": BASE + "/", "founder": {"@type": "Person", "name": "Ibrahim Sodiq", "url": BASE + "/author/ibrahim-sodiq/"}},
     ]
-    write("/", page_wf(title="BRYME — learn to write, tools, and paid writing opportunities",
+    write("/", page_wf(title="BRYME \u2014 learn to write, tools, and paid writing opportunities",
                        description="BRYME is a complete writing resource: free beginner-friendly guides, in-browser writing tools, and verified opportunities to get published and paid.",
                        route="/", current="", body=body, schema_data=structured))
 

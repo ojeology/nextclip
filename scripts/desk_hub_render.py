@@ -317,8 +317,11 @@ def render(arts: list, tools: list, cat: dict, cfg: dict,
 
     desk_attr = ' data-tm-desk="' + esc(cfg.get("desk", "")) + '"' if cfg.get("desk") else ""
 
+    _embed = bool(cfg.get("embedded"))
+    _tag = "div" if _embed else "main"
+    _id = "" if _embed else ' id="main"'
     return "".join([
-        '<main id="main" class="tm-machine"' + desk_attr + '><div class="wrap">',
+        '<' + _tag + _id + ' class="tm-machine"' + desk_attr + '><div class="wrap">',
 
         '<section class="tm-boot" id="tm-boot">',
         '<p class="tm-eyebrow"><span class="tm-led" aria-hidden="true"></span>'
@@ -403,6 +406,6 @@ def render(arts: list, tools: list, cat: dict, cfg: dict,
         '<ul class="tm-pal-list" data-tm-pal role="listbox" aria-label="Matches"></ul>'
         '<p class="tm-pal-foot">\u2191\u2193 move \u00b7 Enter open \u00b7 Esc close \u00b7 ' + str(n)
         + " pieces indexed \u00b7 typo-tolerant</p></div>",
-        "</div></main>",
+        "</div></" + _tag + ">",
         '<link rel="stylesheet" href="' + esc(cfg.get("css", "/assets/tech-hub.css")) + '">',
     ])
