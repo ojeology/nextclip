@@ -2225,6 +2225,7 @@ def entertainment_pages():
         "tool_prefix": "",
     }
     _ent_hub = (head("entertainment", "Cinema, TV and anime \u2014 written about, never pirated.")
+        + "<style>" + desk_hub_render.TECH_LOOK + "</style>"
         + desk_hub_render.render(_cat_arts, [], _ENT_CATS, _ent_cfg, "", TODAY)
         + '<script src="/assets/tech-hub.js" defer></script>'
         + foot("entertainment"))
@@ -6053,11 +6054,93 @@ def home_pages():
         + '<section class="section"><div class="section-head"><p class="kicker">The product</p><h2>The once-a-season checklist.</h2></div>'
         + '<div class="prose"><p><a href="/home/seasonal-home-maintenance-checklist/"><b>The once-a-season home checklist</b></a> \u2014 ten checks across water, safety devices, appliances and airflow, with progress your browser remembers. Homes fail slowly, then suddenly; this catches the slow part.</p></div></section>'
         + SAFETY)
+    # ---- Living-machine hub (tech standard, 2026-09-25): the whole desk on one
+    # wall — same contract as every other desk: catalogue honest, tools shown,
+    # memory on-device. Sections, mistakes shelf and checklist stay live as
+    # clusters/sections; no URL is removed.
+    import desk_hub_render
+    _TOOL_SLUGS_H = {"rent-or-buy-tool", "which-heating-system", "inverter-sizing-calculator"}
+    _NEED_OF = {"fix": "fix", "appliances": "fix", "maintain": "maintain", "outside": "maintain",
+                "pests": "maintain", "understand": "understand", "owning": "own",
+                "secure": "own", "mistakes": "own"}
+    _cat_arts = []
+    for (_s, _t, _d, _b) in HOME_ARTICLES:
+        if _s in _TOOL_SLUGS_H:
+            continue
+        _cn = HOME_SLUG_SECT.get(_s)
+        assert _cn, "home page without taxonomy entry: " + _s
+        _cat_arts.append({"slug": _s, "title": _t, "excerpt": _d, "cat": _cn,
+                          "need": _NEED_OF[_cn], "pub": _home_pub(_s), "upd": HOME_SWEEP,
+                          "kind": "guide"})
+    HOME_CATS = {k: (l, d) for k, l, d in HOME_SECTIONS if k != "mistakes"}
+    HOME_TOOLS = [
+        ("rent-or-buy-tool", "Rent or buy tool",
+         "Six questions, one honest answer for YOUR market \u2014 entry costs, time horizon, schemes.",
+         "rent-vs-buy-explained"),
+        ("which-heating-system", "Which heating system",
+         "Gas, heat pump, modern electric or keep-and-tune \u2014 fabric first, then heat.", ""),
+        ("inverter-sizing-calculator", "Inverter & battery sizing",
+         "Size the inverter, battery bank and solar array from your actual load \u2014 the working shown.",
+         "generator-vs-inverter-nigeria"),
+    ]
+    _home_cfg = {
+        "brand": "BRYME HOME & DIY",
+        "h1": "Fix it. Maintain it. Understand it.",
+        "dek": ("Home care in plain language \u2014 power, water, seasonal wear and repair. What to attempt "
+                "yourself, what to call a licensed person for, and the arithmetic behind every \u201cworth "
+                "it?\u201d The whole desk is listed below, in the page itself."),
+        "needs": [
+            ("fix", "Fix something", "Household problems and beginner repairs, honestly ordered."),
+            ("maintain", "Maintain it", "Preventive care, seasonal rounds and the kit that does it."),
+            ("understand", "Understand it", "What the symptoms actually mean, and what the numbers say."),
+            ("own", "Own it well", "Buying, renting, moving, security and the money decisions."),
+        ],
+        "cadence": {k: 365 for k in HOME_CATS},
+        "cadence_blurb": ("Home mechanics age slowly; money-and-rules pieces (grants, insurance, prices) "
+                          "are re-checked first. "),
+        "chips": [("fix", "Fix"), ("maintain", "Maintain"), ("understand", "Understand"), ("own", "Own")],
+        "gauges": lambda st, tools: [
+            (st["n_pieces"], "pieces on the desk", "every one linked below"),
+            (st["n_sections"], "sections", "each with its own shelf"),
+            (len(tools), "decision tools", "run on your device"),
+            (st["n_cmp"], "worked comparisons", "costs and trade-offs shown"),
+            (len(home_mistakes_data.HOME_MISTAKES), "common mistakes", "each with the five-minute check"),
+        ],
+        "rules": [
+            "Every guide stops where a licensed professional should start \u2014 and says so in plain words.",
+            "Safety boundaries are printed, not buried: panel work, gas, structural changes, anything at height.",
+            "No fabricated prices; cost figures carry the date they were read.",
+            "Corrections land on the page that was wrong, and are listed.",
+            "Saved items and reading history stay in this browser\u2019s local storage and nowhere else.",
+        ],
+        "rules_links": [("about", "About the desk"), ("editorial-policy", "Editorial policy"),
+                        ("corrections", "Corrections"), ("contact", "Contact")],
+        "clusters": [
+            ("/home/mistakes/", "The mistakes shelf",
+             "Every classic DIY error, what it costs, and the five-minute check that catches it."),
+            ("/home/seasonal-home-maintenance-checklist/", "The once-a-season checklist",
+             "Ten checks across water, safety devices, appliances and airflow \u2014 progress your browser remembers."),
+        ],
+        "clusters_h": "Start with the classics.",
+        "clusters_p": "The two doorways most homes need first.",
+        "palette_label": "Search the home desk",
+        "palette_placeholder": "damp, wiring, fridge, inverter \u2014 matches titles and summaries on your device",
+        "filter_placeholder": "filter: damp, wiring, fridge, inverter\u2026",
+        "toolbox_href": "#tm-toolbox",
+        "toolbox_blurb": ("Every tool runs in your browser \u2014 no account, no upload, and nothing you type "
+                          "into one is sent anywhere, including to us."),
+        "contact_slug": "contact",
+        "desk": "home",
+        "css": "/assets/tech-hub.css",
+        "tool_prefix": "",
+    }
+    _home_hub = (head("home", "Home care in plain language \u2014 power, water, wear and repair.")
+        + desk_hub_render.render(_cat_arts, HOME_TOOLS, HOME_CATS, _home_cfg, "", HOME_SWEEP)
+        + '<script src="/assets/tech-hub.js" defer></script>'
+        + foot("home"))
     out.append(("/", "BRYME Home & DIY \u2014 fix, clean, maintain, understand",
                 "Low-risk home repairs and maintenance, honestly explained \u2014 with sections, a common-mistakes shelf and the once-a-season checklist.",
-                _home_page("BRYME Home & DIY \u2014 fix, clean, maintain, understand",
-                           "Low-risk home repairs and maintenance, honestly explained.", "/",
-                           icover, imain, "home")))
+                _home_hub))
 
     # ---------- section pages ----------
     data_by_slug = {s2[0]: s2 for s2 in HOME_ARTICLES}
