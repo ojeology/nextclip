@@ -1346,30 +1346,6 @@
    ]
   },
   {
-   "slug": "saving-for-a-house-deposit-explained",
-   "section": "Save and grow",
-   "title": "Saving for a house deposit: the target, the timeline, the parking spot | BRYME Money",
-   "h1": "Saving for a house deposit: the most solvable problem in personal finance",
-   "dek": "Why deposit size prices the mortgage, how to work the timeline backwards, where the money should wait — and the rules on family gifts.",
-   "description": "How to save for a house deposit: why LTV tiers and mortgage insurance make the number matter, timeline maths, safe parking, Lifetime ISAs and gift rules.",
-   "summary": "The LTV logic, the smallest-good-tier target, deadline-safe parking, the LISA bonus, and what not to raid.",
-   "sources": [
-    {
-     "label": "CFPB — owning a home",
-     "url": "https://www.consumerfinance.gov/owning-a-home/"
-    },
-    {
-     "label": "GOV.UK — Lifetime ISA",
-     "url": "https://www.gov.uk/lifetime-isa"
-    }
-   ],
-   "related": [
-    "savings-goal-calculator",
-    "sinking-funds-explained",
-    "emergency-fund-guide"
-   ]
-  },
-  {
    "slug": "your-first-tax-return-explained",
    "section": "Save and grow",
    "title": "Your first tax return: who files, what happens, what it costs to skip it | BRYME Money",
@@ -1391,6 +1367,150 @@
     "tax-deductions-and-credits-explained",
     "how-payslips-work-explained",
     "trading-taxes-explained"
+   ]
+  },
+  {
+   "slug": "how-interest-rates-work-explained",
+   "section": "Save and grow",
+   "title": "How interest rates work: from central bank to your mortgage | BRYME Money",
+   "h1": "How interest rates work: the chain from policy rate to your pocket",
+   "dek": "What central banks actually set, how it reaches your loans and savings on different speeds, and why fixed versus variable is a bet you can survive.",
+   "description": "Interest rates explained: the policy rate, how banks price off it, why debt reprices faster than savings, and the fixed-versus-variable decision, honestly.",
+   "summary": "The central bank mandate, the uneven transmission to your products, the rate-cycle discipline, and compounding under all of it.",
+   "sources": [
+    {
+     "label": "SEC Investor.gov — interest",
+     "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/interest"
+    },
+    {
+     "label": "Federal Reserve — monetary policy",
+     "url": "https://www.federalreserve.gov/monetarypolicy.htm"
+    }
+   ],
+   "related": [
+    "high-yield-savings-accounts-explained",
+    "inflation-and-your-money-explained",
+    "how-mortgages-work-explained"
+   ]
+  },
+  {
+   "slug": "checking-and-savings-accounts-explained",
+   "section": "Save and grow",
+   "title": "Checking and savings accounts: one job each, and the fees between | BRYME Money",
+   "h1": "Checking and savings accounts, explained: the split that runs everything",
+   "dek": "Why transaction and savings accounts must stay separate, the fees that fund free banking, and the ten-minute quarterly audit.",
+   "description": "Bank accounts explained: the transaction-versus-savings split, overdraft and maintenance fees, online versus high-street, and closing what you don't use.",
+   "summary": "The structural split, the four fees worth auditing, the choice tree for each account type, and the automation on top.",
+   "sources": [
+    {
+     "label": "FDIC — consumers",
+     "url": "https://www.fdic.gov/consumers"
+    },
+    {
+     "label": "MyMoney.gov — US government financial education",
+     "url": "https://www.mymoney.gov/"
+    }
+   ],
+   "related": [
+    "how-deposit-insurance-works-explained",
+    "budget-50-30-20-explained",
+    "emergency-fund-guide"
+   ]
+  },
+  {
+   "slug": "how-deposit-insurance-works-explained",
+   "section": "Save and grow",
+   "title": "How deposit insurance works: the limits that decide everything | BRYME Money",
+   "h1": "Deposit insurance, explained: FDIC, FSCS and the fine print of the limit",
+   "dek": "What deposit insurance covers, the per-institution and per-licence limits, the windfall moments it matters — and why bank-run panic is obsolete.",
+   "description": "Deposit insurance explained: FDIC and FSCS limits, per-banking-licence counting, what is and isn't covered, and the three moments the limits actually matter.",
+   "summary": "The systems and their history, deposits versus investments, joint-account arithmetic, and working inside the limits mechanically.",
+   "sources": [
+    {
+     "label": "FDIC — deposit insurance",
+     "url": "https://www.fdic.gov/resources/deposit-insurance"
+    },
+    {
+     "label": "FSCS — Financial Services Compensation Scheme",
+     "url": "https://www.fscs.org.uk/"
+    }
+   ],
+   "related": [
+    "high-yield-savings-accounts-explained",
+    "checking-and-savings-accounts-explained",
+    "emergency-fund-guide"
+   ]
+  },
+  {
+   "slug": "home-insurance-explained",
+   "section": "Save and grow",
+   "title": "Home insurance explained: rebuild cost, excess and the renewal trap | BRYME Money",
+   "h1": "Home insurance, explained: the largest contract you sign every year",
+   "dek": "Buildings versus contents, why rebuild cost beats market value, how excess and exclusions decide claims, and shopping the renewal properly.",
+   "description": "Home insurance explained: buildings and contents cover, rebuild-cost valuation, excess and exclusion fine print, and the renewal-shopping discipline.",
+   "summary": "The two policies in one coat, the three levers that set payouts, the under-insurance trap, and annual renewal shopping.",
+   "sources": [
+    {
+     "label": "California Department of Insurance — home insurance",
+     "url": "https://www.insurance.ca.gov/01-consumers/105-type/900-home/"
+    },
+    {
+     "label": "CFPB — owning a home",
+     "url": "https://www.consumerfinance.gov/owning-a-home/"
+    }
+   ],
+   "related": [
+    "renters-insurance-explained",
+    "how-car-insurance-works",
+    "life-insurance-basics-explained"
+   ]
+  },
+  {
+   "slug": "renters-insurance-explained",
+   "section": "Save and grow",
+   "title": "Renters insurance explained: the skip rate is the mistake | BRYME Money",
+   "h1": "Renters insurance, explained: cheap cover for everything you own",
+   "dek": "Why the landlord's policy covers none of your things, what contents and liability cover actually pay, and the checklist before signing.",
+   "description": "Renters insurance explained: the buildings-versus-contents gap, away-from-home cover, personal liability as the ruin protection, and the practical checklist.",
+   "summary": "The landlord-policy misconception, honest contents valuation, the liability tail, single-item limits and shopping the policy.",
+   "sources": [
+    {
+     "label": "California Department of Insurance — renters insurance",
+     "url": "https://www.insurance.ca.gov/01-consumers/105-type/950-renters/"
+    },
+    {
+     "label": "MoneyHelper — home insurance",
+     "url": "https://www.moneyhelper.org.uk/en/insurance/home-insurance"
+    }
+   ],
+   "related": [
+    "home-insurance-explained",
+    "emergency-fund-guide",
+    "life-insurance-basics-explained"
+   ]
+  },
+  {
+   "slug": "joint-bank-accounts-explained",
+   "section": "Save and grow",
+   "title": "Joint bank accounts explained: access, liability and the exit plan | BRYME Money",
+   "h1": "Joint bank accounts, explained: the smallest legal merger there is",
+   "dek": "Either-holder access, joint-and-several liability, credit-file association — and the three designs that make joint accounts work.",
+   "description": "Joint bank accounts explained: the two defaults nobody discusses, credit association, the bills-account, full-merger and hybrid designs, and exit mechanics.",
+   "summary": "What joint legally means, the three working designs, freezing and closing rules, survivorship, and when a power of attorney is the right tool.",
+   "sources": [
+    {
+     "label": "FDIC — consumers",
+     "url": "https://www.fdic.gov/consumers"
+    },
+    {
+     "label": "MyMoney.gov — US government financial education",
+     "url": "https://www.mymoney.gov/"
+    }
+   ],
+   "related": [
+    "how-credit-scores-work",
+    "budget-50-30-20-explained",
+    "wills-and-estate-basics-explained"
    ]
   }
  ]
