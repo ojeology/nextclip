@@ -6507,6 +6507,94 @@ def money_pages():
     pages = [(_r, _t, _d, head("money", _md.MONEY_TAGLINE) + '<main id="main">'
               + _with_revision(_r, _b) + '</main>' + foot("money"))
              for (_r, _t, _d, _b) in pages]
+    # Living-machine hub (tech-standard display): rebuild the money front
+    # page from the same renderer the tech and fitness desks use. Catalogue
+    # is scanned from the pages list; both-way asserts keep the taxonomy and
+    # the tree honest. Every existing URL is preserved; five new section
+    # shelves are added on top.
+    import desk_hub_render
+    import money_hub_data as _mhd
+    _LEGAL = {"about", "contact", "privacy", "terms", "copyright",
+              "editorial-policy", "corrections", "disclaimer", "methodology"}
+    _TOOL_SLUGS = {t[0] for t in _mhd.MONEY_TOOLS}
+    _cat_arts = []
+    for (_r, _t, _d, _b) in pages:
+        _s = _r.strip("/").split("/")[-1]
+        if _r == "/" or _s in _LEGAL or _s in _TOOL_SLUGS:
+            continue
+        _cn = _mhd.MONEY_MAP.get(_s)
+        assert _cn, "money page without taxonomy entry: " + _s
+        _cat_arts.append({"slug": _s, "title": _t.split(" | ")[0].split(" - ")[0].strip(),
+                          "excerpt": _d, "cat": _cn[0], "need": _cn[1],
+                          "pub": TODAY, "upd": _me.REVIEWED,
+                          "kind": "checklist" if "checklist" in _s else "guide"})
+    _unused = sorted(set(_mhd.MONEY_MAP) - {a["slug"] for a in _cat_arts})
+    assert not _unused, "taxonomy entries with no page: " + ",".join(_unused)
+    _money_cfg = {
+        "brand": "BRYME MONEY",
+        "h1": "Risk-first trading research. No hype, no signals sold.",
+        "dek": ('You have a question before you risk money: what this instrument is, how big the '
+                'position should be, whether that broker is real. This desk answers it with the '
+                'risk-first method \u2014 sizing before strategy, every claim checkable, nothing sold '
+                '\u2014 and arranges the whole desk below by what you came here to <em>do</em>, not by '
+                'when we filed it.'),
+        "needs": _mhd.MONEY_NEEDS,
+        "cadence": _mhd.MONEY_CADENCE,
+        "cadence_blurb": "Fees, brokers and platform details turn fastest (180 days); market mechanics can wait (365). ",
+        "kind_badges": {"checklist": "Checklist"},
+        "chips": [("start", "Start"), ("size", "Size it"), ("read", "Read charts"),
+                  ("vet", "Vet it"), ("test", "Test it")],
+        "kind_chips": [("checklist", "Checklists")],
+        "gauges": lambda st, tools: [
+            (st["n_pieces"], "pieces on the desk", "every one linked below"),
+            (st["n_sections"], "sections", "each with its own shelf"),
+            (len(tools), "browser calculators", "run on your device"),
+            (st["n_cmp"], "worked comparisons", "costs and trade-offs shown"),
+            (len(st["by_cat"].get("charts", [])), "indicator guides", "claims stripped out"),
+        ],
+        "rules": [
+            "Nothing here is financial advice, and every page says so in plain words.",
+            "No signals, no copy-trading pitches, no promised returns \u2014 the desk sells nothing.",
+            "Risk and position sizing come before strategy, every time.",
+            "Fee and cost figures carry the date they were read; volatile numbers get re-checked.",
+            "Corrections land on the page that was wrong, and are listed.",
+        ],
+        "rules_links": [("about", "About the desk"), ("editorial-policy", "Editorial policy"),
+                        ("corrections", "Corrections"), ("contact", "Contact"), ("privacy", "Privacy")],
+        "clusters": [],
+        "palette_label": "Search the money desk",
+        "palette_placeholder": "position size, RSI, broker check, fees \u2014 matches titles and summaries on your device",
+        "filter_placeholder": "filter: position size, leverage, broker, fees\u2026",
+        "toolbox_href": "#tm-toolbox",
+        "toolbox_blurb": 'Both calculators run on your device and show their working. Nothing is uploaded and no account is needed.',
+        "contact_slug": "contact",
+        "desk": "money",
+        "css": "/assets/tech-hub.css",
+        "tool_prefix": "",
+    }
+    _money_hub = (head("money", _md.MONEY_TAGLINE)
+        + desk_hub_render.render(_cat_arts, _mhd.MONEY_TOOLS, _mhd.MONEY_CATS, _money_cfg, "", TODAY)
+        + '<script src="/assets/tech-hub.js" defer></script>'
+        + foot("money"))
+    pages[0] = ("/", "Trading Education, Broker Checks & Tools | BRYME Money",
+                "Trading guides for beginners: markets, indicators, trading environments, broker verification, fees, leverage and free risk-planning tools. Educational, not advice.",
+                _money_hub)
+    for _cs, _cvals in _mhd.MONEY_CATS.items():
+        _cn, _cd = _cvals[0], _cvals[1]
+        _rows = sorted((a for a in _cat_arts if a["cat"] == _cs), key=lambda a: a["title"])
+        _lis = "".join('<li><a href="/money/' + a["slug"] + '/"><span><b>' + html.escape(a["title"])
+                       + "</b><small>" + html.escape((a["excerpt"] or "")[:110]) + "</small></span></a></li>"
+                       for a in _rows)
+        _sec_body = (head("money", _cn + " \u2014 BRYME Money")
+            + '<main id="main"><div class="wrap">'
+            + '<nav class="crumb" style="padding-top:22px"><a href="/money/">Money</a> / ' + html.escape(_cn) + "</nav>"
+            + '<section class="cover"><p class="kicker">Section shelf \u00b7 ' + str(len(_rows)) + " pieces</p>"
+            + '<h1 class="cover-title" style="font-size:clamp(30px,4.6vw,48px)">' + html.escape(_cn) + "</h1>"
+            + '<p class="lede">' + html.escape(_cd) + "</p></section>"
+            + '<section class="section"><ul class="list">' + _lis + "</ul>"
+            + '<div class="actions"><a class="btn secondary" href="/money/">The whole desk</a></div></section>'
+            + "</div></main>" + foot("money"))
+        pages.append(("/" + _cs + "/", _cn + " | BRYME Money", _cd[:155], _sec_body))
     return pages + legal_pages("money", "BRYME Money", _md.MONEY_TAGLINE)
 
 def main() -> None:
