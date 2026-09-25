@@ -3538,6 +3538,15 @@ def _load_tech():
     # (fills the evergreen foundation the comparison-heavy AI shelf assumes).
     # Phase 1 growth batch 10 (2026-09-25): website security + networking cluster
     # (finishes the security ground-zero; pairs with the cybersecurity cluster).
+    # Phase 1 growth batch 11 (2026-09-25): SaaS / software cluster
+    # (last named cluster head; the software-decision layer the tools shelf assumes).
+    import tech_phase11_content_data
+    for slug, cat, kind, title, dek, body, sources, related in tech_phase11_content_data.PHASE11_GUIDES:
+        arts.append({"slug": slug, "title": title, "excerpt": dek, "cat": cat, "kind": kind,
+                     "pub": TODAY, "upd": TODAY, "read": "", "author": "the BRYME Tech desk",
+                     "blocks": [{"heading": "", "body": body, "html": True}],
+                     "sources": [{"name": n, "url": u} for n, u in sources],
+                     "recovered": False})
     import tech_phase10_content_data
     for slug, cat, kind, title, dek, body, sources, related in tech_phase10_content_data.PHASE10_GUIDES:
         arts.append({"slug": slug, "title": title, "excerpt": dek, "cat": cat, "kind": kind,
