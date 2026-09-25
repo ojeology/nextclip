@@ -59,6 +59,12 @@ MONEY_MAP = {
     "buy-now-pay-later-explained": ("save", "save"),
     "dollar-cost-averaging-explained": ("save", "save"),
     "money-scams-how-to-spot-and-recover": ("save", "save"),
+    "health-insurance-basics-explained": ("save", "save"),
+    "how-car-insurance-works": ("save", "save"),
+    "index-funds-explained": ("save", "save"),
+    "how-to-budget-with-irregular-income": ("save", "save"),
+    "sinking-funds-explained": ("save", "save"),
+    "marginal-tax-rates-explained": ("save", "save"),
     "life-insurance-basics-explained": ("save", "save"),
     # Credit & retirement batch (2026-09-25): high-CPC evergreen clusters.
     "how-credit-scores-work": ("save", "save"),
@@ -86,6 +92,9 @@ MONEY_TOOLS = [
     ("mortgage-payment-calculator", "Mortgage payment calculator",
      "Loan, rate and term in — monthly payment, the first-month interest/principal split and total interest out. Working shown.",
      "how-mortgages-work-explained"),
+    ("marginal-tax-calculator", "Marginal tax calculator",
+     "Income and editable bands in — tax slice by slice, the effective rate and the marginal rate out. Working shown.",
+     "marginal-tax-rates-explained"),
 ]
 
 # (key, label, blurb)

@@ -893,3 +893,26 @@ MORTGAGE_PAGE = {
         '</div><script src="/assets/money-mortgage.js" defer></script></div>'
     ),
 }
+
+
+MARGINAL_TAX_PAGE = {
+    "route": "/marginal-tax-calculator/",
+    "title": "Marginal tax calculator - brackets, effective rate and the working shown | BRYME Money",
+    "desc": "Income and your country's bands in - the tax band by band, the effective rate and the marginal rate out. Educational arithmetic on editable bands.",
+    "body": (
+        '<div class="wrap"><section class="cover"><p class="kicker">BRYME Money \u00b7 Tool</p>'
+        '<h1 class="cover-title">Marginal tax calculator</h1>'
+        '<p class="cover-dek">Income in, bands in \u2014 the tax on each slice out, plus the effective rate you actually pay and the marginal rate the next unit faces. Edit the bands to your own country and watch the shape of a progressive system.</p></section>'
+        '<section class="section"><div class="prose">'
+        '<p>Progressive tax systems stack income into bands and tax only the slice inside each one \u2014 which is why a raise can never reduce take-home pay, and why your marginal rate (the top band you touch) always exceeds your effective rate (total tax divided by total income). This tool runs that arithmetic on your numbers, on your device. The mechanics behind the maths are in <a href="/money/marginal-tax-rates-explained/">the marginal-tax-rates guide</a>; the retirement decisions the marginal rate prices are in <a href="/money/retirement-savings-basics-explained/">the retirement guide</a>. Everything runs in your browser; nothing is stored or sent to BRYME.</p>'
+        '</div></section><section class="section"><div class="prose money-calc"><style>.money-calc .fld{display:flex;flex-direction:column;gap:6px;margin:10px 0;font-weight:600}.money-calc .fld input,.money-calc .fld select,.money-calc .fld textarea{padding:10px 12px;border:1px solid var(--line-strong);border-radius:8px;font-size:16px;max-width:340px;background:var(--sheet);color:inherit}.money-calc .fld textarea{max-width:440px;font-family:ui-monospace,monospace}.money-calc fieldset{border:1px solid var(--line-strong);border-radius:10px;padding:6px 16px 16px;max-width:520px}.money-calc legend{font-weight:700;padding:0 8px}.money-calc .out{background:rgba(127,127,127,.08);border:1px solid var(--line-strong);border-radius:10px;padding:14px 16px;max-width:520px;margin:16px 0}.money-calc .out b{font-size:18px}.money-calc .out table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums}.money-calc .out th{text-align:left;font-weight:600;padding:5px 4px;border-bottom:1px solid var(--line)}.money-calc .out td{text-align:right;padding:5px 4px;border-bottom:1px solid var(--line)}.money-calc .out td:first-child,.money-calc .out th:first-child{text-align:left}.money-calc .mtc-note{font-size:.9em;opacity:.8}</style>'
+        '<fieldset><legend>Your numbers</legend>'
+        '<div class="fld"><label for="mtc-cur">Currency symbol</label><select id="mtc-cur"><option value="">\u2014 (no symbol)</option><option value="$">$ USD</option><option value="\u00a3">\u00a3 GBP</option><option value="\u20a6">\u20a6 NGN</option><option value="\u20ac">\u20ac EUR</option></select></div>'
+        '<div class="fld"><label for="mtc-income">Yearly taxable income</label><input id="mtc-income" type="number" min="0" step="any" placeholder="e.g. 60000"></div>'
+        '<div class="fld"><label for="mtc-bands">Bands (lower, upper, rate% \u2014 one per line)</label><textarea id="mtc-bands" rows="4" spellcheck="false">0, 15000, 0\n15000, 50000, 20\n50000, 90000, 30\n90000, inf, 40</textarea></div>'
+        '</fieldset><div class="out" id="mtc-out" aria-live="polite">Enter a yearly income (and check the band lines are three numbers each).</div></div></section>'
+        '<section class="section"><div class="prose"><h2>How to read the output</h2>'
+        '<p>The table shows each band your income reaches: what was taxed inside it and the tax that slice produced. The totals give the two rates that get confused: the <b>effective rate</b> (everything you paid, over everything you earned) and the <b>marginal rate</b> (what the next unit of income faces). The default bands are illustrative only \u2014 every country\u2019s real bands, allowances and thresholds differ and change; load your own from your revenue service\u2019s published tables to make the numbers meaningful. This is arithmetic, not tax advice, and results are not guaranteed.</p></div></section>'
+        '</div><script src="/assets/money-tax-brackets.js" defer></script></div>'
+    ),
+}

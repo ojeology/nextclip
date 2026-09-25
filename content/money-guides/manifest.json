@@ -952,6 +952,158 @@
     "signal-sellers-and-copy-trading",
     "how-credit-scores-work"
    ]
+  },
+  {
+   "slug": "health-insurance-basics-explained",
+   "section": "Save and grow",
+   "title": "Health insurance basics: the six terms that decide your costs | BRYME Money",
+   "h1": "Health insurance basics: premiums, deductibles and the worst-case number",
+   "dek": "Premium, deductible, copay, network, out-of-pocket max — decode the six terms, then compare plans on the number that survives a bad year.",
+   "description": "What health insurance really costs: premiums, deductibles, copays, networks and the out-of-pocket maximum — the comparison method that survives a bad year.",
+   "summary": "The six cost terms decoded, the premium-deductible trade-off, US/UK/Nigeria machinery, and the four expensive mistakes to avoid.",
+   "sources": [
+    {
+     "label": "HealthCare.gov — health insurance glossary",
+     "url": "https://www.healthcare.gov/glossary/health-insurance/"
+    },
+    {
+     "label": "MoneyHelper — insurance",
+     "url": "https://www.moneyhelper.org.uk/en/insurance"
+    }
+   ],
+   "related": [
+    "life-insurance-basics-explained",
+    "emergency-fund-guide",
+    "where-to-put-your-money-explained"
+   ]
+  },
+  {
+   "slug": "how-car-insurance-works",
+   "section": "Save and grow",
+   "title": "How car insurance works: cover types, premiums and claims | BRYME Money",
+   "h1": "How car insurance works: what you are actually buying",
+   "dek": "Liability, comprehensive and add-ons; how premiums get priced; what happens at a claim — and the annual shop-around that pays for itself.",
+   "description": "How car insurance works: liability, comprehensive and add-ons, how premiums are priced, what happens at a claim, and the annual shop-around that pays.",
+   "summary": "The three layers of cover, the inputs behind your premium, the claim sequence, and the like-for-like comparison habits that save real money.",
+   "sources": [
+    {
+     "label": "Wikipedia — auto insurance",
+     "url": "https://en.wikipedia.org/wiki/Auto_insurance"
+    },
+    {
+     "label": "NAIC — what you need to know about auto insurance",
+     "url": "https://content.naic.org/article/what-you-need-know-about-auto-insurance"
+    },
+    {
+     "label": "MoneyHelper — insurance",
+     "url": "https://www.moneyhelper.org.uk/en/insurance"
+    }
+   ],
+   "related": [
+    "health-insurance-basics-explained",
+    "emergency-fund-guide",
+    "life-insurance-basics-explained"
+   ]
+  },
+  {
+   "slug": "index-funds-explained",
+   "section": "Save and grow",
+   "title": "Index funds explained: buy the market, keep the costs low | BRYME Money",
+   "h1": "Index funds explained: why buying the whole market wins",
+   "dek": "How passive funds track a market, why low costs beat stock-picking over decades, and the drawdowns indexing cannot protect you from.",
+   "description": "Index funds explained: how passive funds track the market, why low costs beat stock-picking over decades, and what indexing cannot protect you from.",
+   "summary": "What an index fund is, the three forces that make passive win, its honest limits, and the short practical checklist for buying one.",
+   "sources": [
+    {
+     "label": "SEC Investor.gov — index fund",
+     "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/index-fund"
+    },
+    {
+     "label": "SEC Investor.gov — mutual fund",
+     "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/mutual-fund"
+    },
+    {
+     "label": "SEC Investor.gov — exchange-traded fund (ETF)",
+     "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/exchange-traded-fund-etf"
+    }
+   ],
+   "related": [
+    "where-to-put-your-money-explained",
+    "dollar-cost-averaging-explained",
+    "retirement-savings-basics-explained"
+   ]
+  },
+  {
+   "slug": "how-to-budget-with-irregular-income",
+   "section": "Save and grow",
+   "title": "How to budget with irregular income: pay yourself a salary | BRYME Money",
+   "h1": "How to budget with irregular income: smooth the money, not the month",
+   "dek": "Find your worst month, pay yourself a salary, ring-fence tax — the buffer system that replaces the payslip freelancers never had.",
+   "description": "How to budget when income is irregular: find your worst month, pay yourself a salary, ring-fence tax, and build the buffer that replaces the payslip.",
+   "summary": "The baseline rule, the self-paid salary mechanic, the tax slice, a bigger buffer on purpose, and the quarterly review that keeps it honest.",
+   "sources": [
+    {
+     "label": "CFPB — an essential guide to building an emergency fund",
+     "url": "https://www.consumerfinance.gov/an-essential-guide-to-building-an-emergency-fund/"
+    },
+    {
+     "label": "MoneyHelper — beginners' guide to managing your money",
+     "url": "https://www.moneyhelper.org.uk/en/everyday-money/budgeting/beginners-guide-to-managing-your-money"
+    }
+   ],
+   "related": [
+    "budget-50-30-20-explained",
+    "emergency-fund-guide",
+    "sinking-funds-explained"
+   ]
+  },
+  {
+   "slug": "sinking-funds-explained",
+   "section": "Save and grow",
+   "title": "Sinking funds: budgeting for the surprises that were scheduled | BRYME Money",
+   "h1": "Sinking funds explained: the division trick that ends December panic",
+   "dek": "The car service, the fees, the holidays you knew were coming: divide, automate, label — and keep the emergency fund for real emergencies.",
+   "description": "Sinking funds explained: the division trick that turns known annual expenses into calm monthly line items — and keeps the emergency fund for real emergencies.",
+   "summary": "The one formula, sinking funds versus the emergency fund, five setup rules, and where the pots live inside the 50/30/20 budget.",
+   "sources": [
+    {
+     "label": "CFPB — an essential guide to building an emergency fund",
+     "url": "https://www.consumerfinance.gov/an-essential-guide-to-building-an-emergency-fund/"
+    },
+    {
+     "label": "MoneyHelper — beginners' guide to managing your money",
+     "url": "https://www.moneyhelper.org.uk/en/everyday-money/budgeting/beginners-guide-to-managing-your-money"
+    }
+   ],
+   "related": [
+    "budget-50-30-20-explained",
+    "how-to-budget-with-irregular-income",
+    "high-yield-savings-accounts-explained"
+   ]
+  },
+  {
+   "slug": "marginal-tax-rates-explained",
+   "section": "Save and grow",
+   "title": "Marginal tax rates: why the 'don't take the raise' myth is wrong | BRYME Money",
+   "h1": "Marginal tax rates, explained: brackets, myths and the real cliffs",
+   "dek": "Brackets tax slices, not salaries: marginal versus effective rates, why raises always pay, and the threshold cliffs worth planning around.",
+   "description": "Marginal versus effective tax rates: why the 'don't take the raise' myth is wrong, what brackets actually do, and the threshold cliffs worth planning around.",
+   "summary": "Why the raise myth is impossible, marginal versus effective rates, the decisions the marginal rate is for, and the honest exception: cliffs and tapering.",
+   "sources": [
+    {
+     "label": "SEC Investor.gov — marginal tax rate",
+     "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/marginal-tax-rate"
+    },
+    {
+     "label": "IRS — filing",
+     "url": "https://www.irs.gov/filing"
+    }
+   ],
+   "related": [
+    "retirement-savings-basics-explained",
+    "how-to-budget-with-irregular-income",
+    "compound-interest-explained"
+   ]
   }
  ]
 }
