@@ -65,6 +65,12 @@ MONEY_MAP = {
     "how-to-budget-with-irregular-income": ("save", "save"),
     "sinking-funds-explained": ("save", "save"),
     "marginal-tax-rates-explained": ("save", "save"),
+    "401k-explained": ("save", "save"),
+    "ira-and-roth-ira-explained": ("save", "save"),
+    "how-state-pensions-work": ("save", "save"),
+    "wills-and-estate-basics-explained": ("save", "save"),
+    "how-much-to-save-for-retirement-explained": ("save", "save"),
+    "fire-financial-independence-explained": ("save", "save"),
     "life-insurance-basics-explained": ("save", "save"),
     # Credit & retirement batch (2026-09-25): high-CPC evergreen clusters.
     "how-credit-scores-work": ("save", "save"),

@@ -1104,6 +1104,150 @@
     "how-to-budget-with-irregular-income",
     "compound-interest-explained"
    ]
+  },
+  {
+   "slug": "401k-explained",
+   "section": "Save and grow",
+   "title": "401(k) explained: the match, the menu and the withdrawal rules | BRYME Money",
+   "h1": "401(k), explained: free money, low fees, and the rules that bite",
+   "dek": "How the 401(k) works: capturing the full employer match, choosing the investments inside, Roth versus traditional, and the withdrawal rules.",
+   "description": "How the 401(k) works: pre-tax payroll saving, the employer match as free money, picking funds inside the plan, Roth versus traditional, withdrawal rules.",
+   "summary": "The payroll mechanics, why the match is the whole game, the investment menu, Roth versus traditional logic, penalties and RMDs.",
+   "sources": [
+    {
+     "label": "SEC Investor.gov — 401(k) plan",
+     "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/401k-plan"
+    },
+    {
+     "label": "SEC Investor.gov — individual retirement arrangement (IRA)",
+     "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/individual-retirement-arrangement-ira"
+    }
+   ],
+   "related": [
+    "retirement-savings-basics-explained",
+    "ira-and-roth-ira-explained",
+    "index-funds-explained"
+   ]
+  },
+  {
+   "slug": "ira-and-roth-ira-explained",
+   "section": "Save and grow",
+   "title": "IRA and Roth IRA explained: when the tax man gets paid | BRYME Money",
+   "h1": "IRA and Roth IRA, explained: one question decides",
+   "dek": "Traditional taxes withdrawals, Roth taxes contributions — the bracket question that decides, plus limits, withdrawal rules and the back door.",
+   "description": "IRAs explained: traditional versus Roth tax timing, contribution limits and deadlines, withdrawal penalties, Roth contribution flexibility and the backdoor route.",
+   "summary": "The tax-timing question, limits and the spring deadline, withdrawal rules both ways, and backdoor Roth mechanics for high earners.",
+   "sources": [
+    {
+     "label": "SEC Investor.gov — individual retirement arrangement (IRA)",
+     "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/individual-retirement-arrangement-ira"
+    },
+    {
+     "label": "SEC Investor.gov — 401(k) plan",
+     "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/401k-plan"
+    }
+   ],
+   "related": [
+    "401k-explained",
+    "marginal-tax-rates-explained",
+    "index-funds-explained"
+   ]
+  },
+  {
+   "slug": "how-state-pensions-work",
+   "section": "Save and grow",
+   "title": "How state pensions work: the promise, the record, the gaps | BRYME Money",
+   "h1": "How state pensions work: the largest product you never read",
+   "dek": "Pay-as-you-go versus funded systems, the UK's qualifying-years maths, checking and filling record gaps, and where the state floor fits the plan.",
+   "description": "How state pensions work: pay-as-you-go versus funded systems, the UK qualifying-years maths, filling NI gaps, checking remittances, and the floor it provides.",
+   "summary": "The two engines behind every system, the UK worked example, the highest-return record check, and where the state floor sits under private saving.",
+   "sources": [
+    {
+     "label": "GOV.UK — the new State Pension",
+     "url": "https://www.gov.uk/state-pension"
+    },
+    {
+     "label": "GOV.UK — plan for your retirement",
+     "url": "https://www.gov.uk/plan-for-retirement"
+    }
+   ],
+   "related": [
+    "retirement-savings-basics-explained",
+    "how-much-to-save-for-retirement-explained",
+    "401k-explained"
+   ]
+  },
+  {
+   "slug": "wills-and-estate-basics-explained",
+   "section": "Save and grow",
+   "title": "Wills and estate basics: the cheapest consequential document | BRYME Money",
+   "h1": "Wills and estate basics: what happens if you never write one",
+   "dek": "Intestacy rules, the five parts of a basic will, beneficiary designations that beat it, powers of attorney — and getting one done proportionately.",
+   "description": "Wills explained: what intestacy does to your estate, the five clauses of a basic will, beneficiary designations, powers of attorney, and costs by complexity.",
+   "summary": "The intestacy default, executors and residue clauses, guardians, the designations that override wills, powers of attorney, and proportionate execution.",
+   "sources": [
+    {
+     "label": "GOV.UK — applying for probate",
+     "url": "https://www.gov.uk/applying-for-probate"
+    },
+    {
+     "label": "MoneyHelper — wills and power of attorney",
+     "url": "https://www.moneyhelper.org.uk/en/later-life/wills-and-power-of-attorney"
+    }
+   ],
+   "related": [
+    "life-insurance-basics-explained",
+    "retirement-savings-basics-explained",
+    "emergency-fund-guide"
+   ]
+  },
+  {
+   "slug": "how-much-to-save-for-retirement-explained",
+   "section": "Save and grow",
+   "title": "How much to save for retirement: the 25× rule and its fine print | BRYME Money",
+   "h1": "How much to save for retirement: target income, multiplier, path",
+   "dek": "Target income first, then the 25× multiplier and its honest range, then the monthly path backwards — retirement as a glide path you steer.",
+   "description": "How much retirement money you need: setting the target income, the 4% rule and 25× multiplier with honest caveats, and the contribution path backwards.",
+   "summary": "The three-layer income target, the 25× multiplier and its 20–33× range, sequence risk, and converting the gap into a monthly number.",
+   "sources": [
+    {
+     "label": "GOV.UK — plan for your retirement",
+     "url": "https://www.gov.uk/plan-for-retirement"
+    },
+    {
+     "label": "MoneyHelper — how much do I need for a comfortable retirement",
+     "url": "https://www.moneyhelper.org.uk/en/pensions-and-retirement/planning-for-retirement/how-much-do-i-need-for-a-comfortable-retirement"
+    }
+   ],
+   "related": [
+    "how-state-pensions-work",
+    "savings-goal-calculator",
+    "compound-interest-explained"
+   ]
+  },
+  {
+   "slug": "fire-financial-independence-explained",
+   "section": "Save and grow",
+   "title": "FIRE explained: the maths that is real and the fine print that is not | BRYME Money",
+   "h1": "FIRE, explained: savings rate as destiny, and its honest limits",
+   "dek": "The savings-rate maths behind early retirement, the 60-year fine print on the 4% rule, and the useful version: financial independence as a dial.",
+   "description": "FIRE explained: the savings-rate engine, the flavours, the long-horizon fine print on the 4% rule, healthcare and inflation — and freedom as a dial, not a cliff.",
+   "summary": "Why savings rate sets the date, the multiplier adjustment for long retirements, healthcare and sequence risk, and taking freedom in any size it arrives.",
+   "sources": [
+    {
+     "label": "SEC Investor.gov — compound annual growth rate (CAGR)",
+     "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/compound-annual-growth-rate-cagr"
+    },
+    {
+     "label": "MoneyHelper — how much do I need for a comfortable retirement",
+     "url": "https://www.moneyhelper.org.uk/en/pensions-and-retirement/planning-for-retirement/how-much-do-i-need-for-a-comfortable-retirement"
+    }
+   ],
+   "related": [
+    "how-much-to-save-for-retirement-explained",
+    "index-funds-explained",
+    "inflation-and-your-money-explained"
+   ]
   }
  ]
 }

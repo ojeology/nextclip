@@ -31,6 +31,8 @@ MONEY_NAV = (
         ("high-yield-savings-accounts-explained", "High-yield savings"),
         ("mortgage-payment-calculator", "Mortgage calculator"),
         ("index-funds-explained", "Index funds"),
+        ("401k-explained", "401(k), explained"),
+        ("how-state-pensions-work", "State pensions"),
         ("sinking-funds-explained", "Sinking funds"),
         ("marginal-tax-calculator", "Tax bracket calculator"),
         ("life-insurance-basics-explained", "Life insurance basics"),
