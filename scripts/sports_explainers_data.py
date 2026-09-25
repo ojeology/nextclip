@@ -366,6 +366,6 @@ SPORT_EXPLAINERS.extend([
 <h2>Why set pieces decide so much</h2>
 <p>A corner or a wide free kick is the only moment in open play when the defending team must stand still and the attacking side may plan - eleven drilled movements against ten static defenders (the goalkeeper excepted). That is why clubs hire set-piece coaches, why near-post routines and blockers are studied frame by frame, and why a meaningful share of goals at every level of the game begin life as a dead ball. The delivery is rehearsed; the rest is appetite.</p>
 <p>The full laws for each restart are maintained by IFAB - <a href="https://www.theifab.com/laws/latest/about-the-laws/" rel="noopener">the Laws of the Game</a> - and the tactics that grow around restarts sit with <a href="/sports/pressing-explained/">pressing, explained</a> and <a href="/sports/the-offside-trap/">the offside trap</a>.</p>""",
- [('IFAB - Laws of the Game (restarts: Laws 8, 13-17)', 'https://www.theifab.com/laws/latest/')],
+ [('IFAB - Laws of the Game (restarts: Laws 8, 13-17)', 'https://www.theifab.com/laws/latest/about-the-laws/')],
  [('the-offside-rule-explained', 'The offside rule'), ('the-offside-trap', 'The offside trap'), ('pressing-explained', 'Pressing, explained')]),
 ])
