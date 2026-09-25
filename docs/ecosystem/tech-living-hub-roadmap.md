@@ -48,6 +48,8 @@ Performance guard: the hub is **~39 KB gzipped** (was ~9 KB as a thin feed) — 
 - **Private instrumentation (item 1, done).** An opt-in *"Show my own numbers"* control in the memory band prints, from this browser's `localStorage` only, pieces opened, total opens, saved count and last visit. No server, no account. Asserted by the behaviour gate.
 - **Gate semantics for growth (done).** `diff-urls.py` now treats *additions* as reported growth and fails only on *removals or canonical changes* — the rebuild-preservation guarantee is kept for the existing surface while the content phase is unblocked.
 
+- **Phase 1 content batch (shipped 2026-09-25).** First growth after the rebuild, small and high-quality per the no-mass-publish rule: 3 cybersecurity pieces (password-manager migration order, passkeys what-they-stop/don't, a five-lure phishing drill) + 2 streaming (night buffering as contention, 4K-on-small-TV distance rule) + 1 smart-home (Zigbee/Wi-Fi/Thread device assignment). All evergreen mechanics, no volatile stats, dated official sources, 770-840 words each, 76+ internal links. URL gate: **+6 added, 0 removed, 0 canonical drift**; allowlist auto-synced 2190→2196.
+
 ## 2. The compounding loop (why it becomes habit-forming)
 
 The machine is designed to make the second and tenth visit *measurably* better than the first:
