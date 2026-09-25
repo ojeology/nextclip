@@ -1230,7 +1230,7 @@ def homepage() -> None:
         "tool_prefix": "/tools",
     }
 
-    body = ('<style>:root{--brand:var(--brass)}</style>'
+    body = ("<style>" + desk_hub_render.TECH_LOOK + "</style>"
             + desk_hub_render.render(arts, tools, WR_CATS, _wr_cfg, "", "Snapshot " + TODAY)
             + '<script src="/assets/tech-hub.js" defer></script>')
     structured = [

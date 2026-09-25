@@ -32,6 +32,31 @@ _RE_UNDERSTAND = re.compile(
     r"actually-does|what-evidence|honest|truth|worth|does-to-your-body")
 
 
+# The tech-standard look, extracted verbatim from the tech desk's inlined base
+# CSS (css_for("tech"), 2026-09-25). Surfaces whose own base CSS predates the
+# standard (the family landing, the writers desk) inline this block after their
+# base styles so the machine renders with the exact tech tokens - light and
+# dark - plus the tech button. Owner brief: every surface follows tech.
+TECH_LOOK = (
+    ":root{--paper:#fafaf8;--sheet:#ffffff;--ink:#14213d;--muted:#5b6b7a;--dim:#8b96a2;"
+    "--brand:#14213d;--brand-deep:#0c1526;--accent:#a8752a;"
+    "--line:rgba(20,33,61,.18);--line-strong:rgba(20,33,61,.4);"
+    "--shadow:0 1px 2px rgba(0,0,0,.05),0 14px 38px rgba(0,0,0,.08);"
+    "--serif:Georgia,'Iowan Old Style','Palatino Linotype',serif;"
+    "--sans:Inter,ui-sans-serif,system-ui,sans-serif}"
+    'html[data-theme="dark"]{--paper:#141a24;--sheet:#1a212c;--ink:#e7e3d8;--muted:#9aa1ad;'
+    "--dim:#7b818d;--brand:#aec4e0;--brand-deep:#0f151f;--accent:#d0aa52;"
+    "--line:rgba(231,227,216,.15);--line-strong:rgba(231,227,216,.34);"
+    "--shadow:0 1px 2px rgba(0,0,0,.3),0 14px 38px rgba(0,0,0,.35);color-scheme:dark}"
+    ".btn{min-height:46px;display:inline-flex;align-items:center;padding:11px 20px;"
+    "border:1px solid var(--brand);border-radius:2px;background:var(--brand);"
+    "color:var(--sheet);font:700 13.5px var(--sans);letter-spacing:.04em;cursor:pointer}"
+    ".btn:hover{background:var(--brand-deep);border-color:var(--brand-deep)}"
+    ".btn.secondary{background:transparent;color:var(--brand);border-color:var(--line-strong)}"
+    ".btn.secondary:hover{border-color:var(--brand);background:transparent}"
+)
+
+
 def esc(value: object) -> str:
     return html.escape(str(value if value is not None else ""), quote=True)
 

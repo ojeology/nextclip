@@ -1348,6 +1348,7 @@ def hub_pages():
     }
 
     body = (head("hub", "Seven publications. One house standard.", parent=False)
+        + "<style>" + desk_hub_render.TECH_LOOK + "</style>"
         + desk_hub_render.render(arts, tools, FAM_CATS, _fam_cfg, "",
                                  "Counts verified at every build.")
         + '<script src="/assets/tech-hub.js" defer></script>'
