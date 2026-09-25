@@ -181,6 +181,7 @@
     }
     if ((a.priority === "control" || a.priority === "equity") && (out === "rent-save" || out === "rent-flexibility")) {
       why.push("You ranked ownership itself highly — that's a real value, not a number. If it keeps pulling, shorten the savings runway (schemes, longer horizon) rather than ignore it.");
+    }
 
     return { out: out, why: why, dil: dil };
   }
