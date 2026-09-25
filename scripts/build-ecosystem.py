@@ -4960,7 +4960,7 @@ HOME_CHECK = [
 ]
 
 HOME_SOURCES = [
-    ("NFPA \u2014 smoke alarm safety (testing guidance)", "https://www.nfpa.org/education-and-research/home-fire-safety/smoke-alarms"),
+    ("NFPA \u2014 what kind of smoke alarm should I buy (replacement guidance)", "https://www.nfpa.org/news-blogs-and-articles/blogs/2023/03/06/what-kind-of-smoke-alarm-smoke-detector-should-i-buy"),
     ("U.S. Fire Administration \u2014 home fire prevention (incl. dryer safety)", "https://www.usfa.fema.gov/prevention/home-fires/"),
 ]
 
@@ -5383,7 +5383,46 @@ def _home_sidebar(current):
     return ('<aside class="h-side"><p class="h-side-title">The desk</p>'
             '<nav aria-label="Home and DIY sections">' + items + "</nav></aside>")
 
-def _home_page(title, desc, route, cover_html, main_html, sidebar_current):
+# ---- freshness sweep 2026-09-25 (roadmap Phase 2) ----
+# Every home page is rebuilt and re-verified by this sweep, so dateModified and
+# the byline stamp move to the sweep date. datePublished is the honest floor:
+# 2026-09-09 = the desk launch (the TODAY constant every page already claimed as
+# "reviewed"), with real ship dates for pages that landed later. Never inflated.
+HOME_SWEEP = "2026-09-25"
+HOME_PUB_OVERRIDE = {
+    "energy-bills": "2026-09-24", "owning-money": "2026-09-24",
+    "pests-start-here": "2026-09-24", "seasonal-care": "2026-09-24",
+    "rent-or-buy-tool": "2026-09-25", "which-heating-system": "2026-09-25",
+}
+
+def _home_pub(slug):
+    return HOME_PUB_OVERRIDE.get(slug, "2026-09-09")
+
+def _home_article_ld(title, desc, canonical, slug):
+    pub = _home_pub(slug)
+    name = str(title).split(" | ")[0].strip()
+    graph = [
+        {"@type": "Article", "@id": canonical + "#article",
+         "headline": name, "description": str(desc), "inLanguage": "en",
+         "datePublished": pub, "dateModified": HOME_SWEEP,
+         "author": {"@type": "Organization", "name": "BRYME Home & DIY desk",
+                    "url": ORIGIN + "/home/"},
+         "publisher": {"@id": ORIGIN + "/#organization"},
+         "mainEntityOfPage": {"@id": canonical + "#webpage"},
+         "isPartOf": {"@id": ORIGIN + "/#website"}},
+        {"@type": "WebPage", "@id": canonical + "#webpage", "url": canonical,
+         "name": name, "description": str(desc), "inLanguage": "en",
+         "datePublished": pub, "dateModified": HOME_SWEEP,
+         "isPartOf": {"@id": ORIGIN + "/#website"},
+         "publisher": {"@id": ORIGIN + "/#organization"}},
+        {"@type": "Organization", "@id": ORIGIN + "/#organization",
+         "name": "THE BRYME", "url": ORIGIN + "/"},
+    ]
+    return ('<script type="application/ld+json">'
+            + json.dumps({"@context": "https://schema.org", "@graph": graph})
+            + "</script>")
+
+def _home_page(title, desc, route, cover_html, main_html, sidebar_current, ld=None):
     title = budget_title(title)  # H3 batch 7: keep <title>/og:title inside the SERP window
     canonical = ORIGIN + "/home" + route
     og = "https://" + DOMAIN + "/assets/og.png"
@@ -5400,7 +5439,7 @@ def _home_page(title, desc, route, cover_html, main_html, sidebar_current):
         '<meta property="og:url" content="' + canonical + '"><meta property="og:image" content="' + og + '">\n'
         '<meta name="twitter:card" content="summary_large_image">\n'
         + _home_theme_init() + "\n<style>" + css_for("home") + "</style>\n"
-        + _page_ld(title, desc, canonical) + "\n</head>"
+        + (ld if ld else _page_ld(title, desc, canonical, modified=HOME_SWEEP)) + "\n</head>"
         '<body><a class="skip-link" href="#main">Skip to content</a>\n'
         + _home_mast() + _home_nav() + ''
         + '<div class="wrap h-layout">' + _home_sidebar(sidebar_current)
@@ -5409,6 +5448,7 @@ def _home_page(title, desc, route, cover_html, main_html, sidebar_current):
 
 def home_pages():
     import home_mistakes_data
+    import home_sources_data
     import more_guides_data
     _mset = {m2[0] for m2 in home_mistakes_data.HOME_MISTAKES}
     def _hurl(s):
@@ -5524,7 +5564,7 @@ def home_pages():
                   '<a href="/home/mistakes/">Common mistakes</a> / ' + html.escape(mtitle) + "</nav>"
             + '<section class="cover"><p class="kicker">Common mistake ' + str(n2) + ' of ' + str(len(home_mistakes_data.HOME_MISTAKES)) + " \u00b7 " + html.escape(theme) + "</p>"
             + '<h1 class="cover-title" style="font-size:clamp(30px,4.8vw,52px)">' + html.escape(mtitle) + "</h1>"
-            + '<p class="byline">BRYME Home &amp; DIY desk \u00b7 reviewed ' + TODAY + " \u00b7 general information, not professional advice</p></section>")
+            + '<p class="byline">BRYME Home &amp; DIY desk \u00b7 reviewed ' + HOME_SWEEP + " \u00b7 general information, not professional advice</p></section>")
         mmain = ('<section class="section alt"><div class="wrap"><p class="lede"><b>The mistake:</b> ' + html.escape(one_liner) + "</p></div></section>"
             + '<section class="section"><div class="prose">' + mbody + src_html(sources) + "</div></section>"
             + '<section class="section alt"><div class="section-head"><p class="kicker">Next</p><h2>Related on this desk.</h2></div>'
@@ -5533,7 +5573,8 @@ def home_pages():
             + '<a class="btn secondary" href="/home/">Desk home</a></div></section>'
             + DISCLAIMER)
         mistake_pages.append(("/mistakes/" + slug + "/", mtitle + " | BRYME Home & DIY", one_liner[:155],
-                              _home_page(mtitle + " | BRYME Home & DIY", one_liner[:155], "/mistakes/" + slug + "/", mcover, mmain, "mistakes")))
+                              _home_page(mtitle + " | BRYME Home & DIY", one_liner[:155], "/mistakes/" + slug + "/", mcover, mmain, "mistakes",
+                                         ld=_home_article_ld(mtitle + " | BRYME Home & DIY", one_liner[:155], ORIGIN + "/home/mistakes/" + slug + "/", "mistakes-" + slug))))
 
     # ---------- cluster hubs + hub band (\u00a79 head\u2192cluster\u2192subtopic) ----------
     _data_c = {s2[0]: s2 for s2 in HOME_ARTICLES}
@@ -6243,21 +6284,28 @@ def home_pages():
     for slug, ti, dek, b in HOME_ARTICLES:
         key = HOME_SLUG_SECT[slug]
         rel_html = "".join('<li><a href="' + _hurl(s2) + '">' + rt + "</a></li>" for s2, rt in related_map[slug])
+        _srcs = home_sources_data.HOME_SOURCES.get(slug, [])
+        src_block = ('<section class="section"><div class="prose"><h2>Sources</h2><ul class="list">'
+                    + "".join('<li><a href="' + html.escape(u) + '" rel="noopener">' + html.escape(lbl) + "</a></li>"
+                              for u, lbl in _srcs)
+                    + "</ul><p>External links checked " + HOME_SWEEP + ". Referenced for authority; not affiliated with or endorsed by any of them.</p></div></section>") if _srcs else ""
         cover = ('<nav class="crumb" style="padding-top:22px"><a href="/home/">Home &amp; DIY</a> / '
                  '<a href="/home/' + key + '/">' + sec_label(key) + "</a> / " + html.escape(ti) + "</nav>"
             + '<section class="cover"><p class="kicker">' + sec_label(key) + " \u00b7 practical guide</p>"
             + '<h1 class="cover-title" style="font-size:clamp(30px,4.8vw,52px)">' + html.escape(ti) + "</h1>"
-            + '<p class="byline">BRYME Home &amp; DIY desk \u00b7 reviewed ' + TODAY + " \u00b7 general information, not professional advice</p></section>")
+            + '<p class="byline">BRYME Home &amp; DIY desk \u00b7 reviewed ' + HOME_SWEEP + " \u00b7 general information, not professional advice</p></section>")
         main = (_guide_cover_img("home", slug, ti)
             + '<section class="section alt"><div class="wrap"><p class="lede"><b>In one line:</b> ' + html.escape(dek) + "</p></div></section>"
             + '<section class="section"><div class="prose">' + b + "</div></section>"
+            + src_block
             + '<section class="section alt"><div class="section-head"><p class="kicker">Next</p><h2>Related on this desk.</h2></div>'
             + '<ul class="list">' + rel_html + "</ul>"
             + '<div class="actions"><a class="btn secondary" href="/home/' + key + '/">All of ' + sec_label(key) + "</a>"
             + '<a class="btn secondary" href="/home/mistakes/">Common mistakes</a></div></section>'
             + DISCLAIMER)
         out.append(("/" + slug + "/", ti + " | BRYME Home & DIY", dek[:155],
-                    _home_page(ti + " | BRYME Home & DIY", dek[:155], "/" + slug + "/", cover, main, key)))
+                    _home_page(ti + " | BRYME Home & DIY", dek[:155], "/" + slug + "/", cover, main, key,
+                               ld=_home_article_ld(ti + " | BRYME Home & DIY", dek[:155], ORIGIN + "/home/" + slug + "/", slug))))
 
     # ---------- the checklist product ----------
     groups = []
@@ -6295,7 +6343,7 @@ def home_pages():
     ccover = ('<nav class="crumb" style="padding-top:22px"><a href="/home/">Home &amp; DIY</a> / The Once-a-Season Checklist</nav>'
         + '<section class="cover"><p class="kicker">The desk\u2019s product \u00b7 season-proof \u00b7 no hemisphere assumptions</p>'
         + '<h1 class="cover-title" style="font-size:clamp(30px,4.8vw,52px)">The Once-a-Season Home Checklist</h1>'
-        + '<p class="byline">BRYME Home &amp; DIY desk \u00b7 reviewed ' + TODAY + " \u00b7 general information, not professional advice</p></section>")
+        + '<p class="byline">BRYME Home &amp; DIY desk \u00b7 reviewed ' + HOME_SWEEP + " \u00b7 general information, not professional advice</p></section>")
     cmain = ('<section class="section alt"><div class="wrap"><p class="lede"><b>One honest idea:</b> homes fail slowly, then suddenly. '
              + "A short list of checks every season catches the slow failures while they are still cheap. Progress is saved in your browser \u2014 no account, nothing sent anywhere.</p></div></section>"
         + '<section class="section"><div class="wrap"><div class="fp-progressbar" role="img" aria-label="Checklist progress"><div class="fp-fill" id="fp-fill"></div></div>'
