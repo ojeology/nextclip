@@ -636,6 +636,154 @@
     "trading-risk-checklist",
     "budget-50-30-20-explained"
    ]
+  },
+  {
+   "slug": "how-credit-scores-work",
+   "section": "Save and grow",
+   "title": "How credit scores actually work: factors, models, myths | BRYME Money",
+   "h1": "How credit scores actually work",
+   "dek": "What the number predicts, what feeds it, why you have many scores at once, and the report-versus-score split that matters.",
+   "description": "How credit scores work: the CFPB's factor list, why you have several scores at once, report versus score, and the free checks worth doing yearly.",
+   "summary": "The prediction behind the number, the factors that move it, why models disagree, and how to read the reports that feed every score.",
+   "sources": [
+    {
+     "label": "CFPB — what is a credit score?",
+     "url": "https://www.consumerfinance.gov/ask-cfpb/what-is-a-credit-score-en-315/"
+    },
+    {
+     "label": "CFPB — what is a FICO score?",
+     "url": "https://www.consumerfinance.gov/ask-cfpb/what-is-a-fico-score-en-1883/"
+    }
+   ],
+   "related": [
+    "how-to-improve-your-credit-score",
+    "how-credit-card-interest-works",
+    "budget-50-30-20-explained"
+   ]
+  },
+  {
+   "slug": "how-to-improve-your-credit-score",
+   "section": "Save and grow",
+   "title": "How to improve your credit score: the honest method | BRYME Money",
+   "h1": "How to improve your credit score: the honest method",
+   "dek": "Payment history, utilisation, report errors and the products that build thin files — plus the credit-repair scams to walk away from.",
+   "description": "How to improve a credit score honestly: the CFPB's habits in order, the carry-a-balance myth, thin-file products, and credit-repair scam warnings.",
+   "summary": "The boring habits that move every model: pay on time, stay under 30% utilisation, fix report errors, and avoid the paid 'repair' noise.",
+   "sources": [
+    {
+     "label": "CFPB — how do I get and keep a good credit score?",
+     "url": "https://www.consumerfinance.gov/ask-cfpb/how-do-i-get-and-keep-a-good-credit-score-en-318/"
+    },
+    {
+     "label": "CFPB — consumer advisory on credit repair (PDF)",
+     "url": "https://files.consumerfinance.gov/f/documents/092016_cfpb_ConsumerAdvisory.pdf"
+    }
+   ],
+   "related": [
+    "how-credit-scores-work",
+    "debt-snowball-vs-avalanche",
+    "how-credit-card-interest-works"
+   ]
+  },
+  {
+   "slug": "how-credit-card-interest-works",
+   "section": "Save and grow",
+   "title": "How credit card interest works: grace periods and daily maths | BRYME Money",
+   "h1": "How credit card interest works: grace periods and daily maths",
+   "dek": "The grace period's condition, APR chopped into daily pieces, penalty rates, where payments go, and why minimums are a trap.",
+   "description": "How credit card interest is calculated: grace periods, the daily periodic rate, average daily balance, penalty APRs and the minimum-payment trap, per CFPB rules.",
+   "summary": "APR divided by 365, compounded daily on a moving balance — the machine behind every statement, and the payment-allocation rules worth knowing.",
+   "sources": [
+    {
+     "label": "CFPB — how does my credit card company calculate the interest I owe?",
+     "url": "https://www.consumerfinance.gov/ask-cfpb/how-does-my-credit-card-company-calculate-the-amount-of-interest-i-owe-en-51/"
+    },
+    {
+     "label": "CFPB — credit cards key terms",
+     "url": "https://www.consumerfinance.gov/consumer-tools/credit-cards/answers/key-terms/"
+    }
+   ],
+   "related": [
+    "debt-snowball-vs-avalanche",
+    "compound-interest-explained",
+    "how-to-improve-your-credit-score"
+   ]
+  },
+  {
+   "slug": "retirement-savings-basics-explained",
+   "section": "Save and grow",
+   "title": "Retirement savings basics: the match, the wrappers, the habits | BRYME Money",
+   "h1": "Retirement savings basics: the match, the wrappers, the habits",
+   "dek": "Employer matches are free money, tax wrappers come in two flavours, and four habits decide the outcome — US 401(k)/IRA and UK auto-enrolment explained.",
+   "description": "Retirement saving basics: capturing the employer match, traditional vs Roth wrappers, UK auto-enrolment minimums, fees and the four habits that decide outcomes.",
+   "summary": "The 50-cent match example, tax-now vs tax-later accounts, the UK's 8% auto-enrolment floor, and why fees and job-change cash-outs ruin pots.",
+   "sources": [
+    {
+     "label": "Investor.gov — 401(k) plans",
+     "url": "https://www.investor.gov/additional-resources/retirement-toolkit/employer-sponsored-plans/traditional-and-roth-401k-plans"
+    },
+    {
+     "label": "Investor.gov — retirement toolkit: first job",
+     "url": "https://www.investor.gov/additional-resources/retirement-toolkit/first-job"
+    },
+    {
+     "label": "MoneyHelper — how pension auto-enrolment works",
+     "url": "https://www.moneyhelper.org.uk/en/pensions-and-retirement/pensions-basics/automatic-enrolment-an-introduction"
+    }
+   ],
+   "related": [
+    "compound-interest-explained",
+    "inflation-and-your-money-explained",
+    "budget-50-30-20-explained"
+   ]
+  },
+  {
+   "slug": "student-loans-explained",
+   "section": "Save and grow",
+   "title": "Student loans explained: US federal vs UK Plan 5 | BRYME Money",
+   "h1": "Student loans explained: US federal versus UK Plan 5",
+   "dek": "Two philosophies: US federal protections versus England's income-contingent graduate contribution — and when overpaying helps or destroys value.",
+   "description": "Student loans explained: US federal vs private loans, England's Plan 5 income-contingent repayments, and the three questions that decide whether to overpay.",
+   "summary": "Fixed-rate federal loans with forgiveness paths versus 9%-above-threshold graduate contributions — and the overpayment logic for each system.",
+   "sources": [
+    {
+     "label": "GOV.UK — student loans: terms and conditions 2026-27",
+     "url": "https://www.gov.uk/government/publications/student-loans-a-guide-to-terms-and-conditions/student-loans-a-guide-to-terms-and-conditions-2026-to-2027"
+    },
+    {
+     "label": "Federal Student Aid — loan types",
+     "url": "https://studentaid.gov/understand-aid/types/loans"
+    }
+   ],
+   "related": [
+    "debt-snowball-vs-avalanche",
+    "retirement-savings-basics-explained",
+    "budget-50-30-20-explained"
+   ]
+  },
+  {
+   "slug": "inflation-and-your-money-explained",
+   "section": "Save and grow",
+   "title": "Inflation and your money: nominal vs real returns | BRYME Money",
+   "h1": "Inflation and your money: nominal vs real returns",
+   "dek": "Why a healthy savings statement can still be a loss, how the CPI basket works, and what real rates mean for savers in every currency.",
+   "description": "Inflation explained for savers: nominal vs real rates, how CPI is measured, why cash quietly loses purchasing power, and the rule of 72 run backwards.",
+   "summary": "The real-rate tax on cash, the CPI basket versus your basket, and why the emergency fund and long-term money answer to different rules.",
+   "sources": [
+    {
+     "label": "ONS — inflation and price indices",
+     "url": "https://www.ons.gov.uk/economy/inflationandpriceindices"
+    },
+    {
+     "label": "BLS — Consumer Price Index",
+     "url": "https://www.bls.gov/cpi/"
+    }
+   ],
+   "related": [
+    "compound-interest-explained",
+    "retirement-savings-basics-explained",
+    "emergency-fund-guide"
+   ]
   }
  ]
 }
