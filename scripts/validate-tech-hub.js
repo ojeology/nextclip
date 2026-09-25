@@ -171,6 +171,29 @@ const rowsOf = page => page.evaluate(() => {
     check(r.recentItems >= 1, `continue-reading is empty after a real visit (${r.recentItems})`);
     check(await page.isHidden("[data-tm-recent-empty]"), "recent-empty note shown while entries exist");
 
+    /* ---------------- 6b. freshness engine prints real derived dates ---------------- */
+    const cad = await page.evaluate(() => {
+      const el = [...document.querySelectorAll(".tm-ro-h")].find(x => /Verification cadence/i.test(x.textContent));
+      if (!el) return null;
+      const box = el.closest(".tm-readout");
+      const t = box.querySelector("time");
+      return { now: t ? t.getAttribute("datetime") : "", text: box.textContent };
+    });
+    check(!!cad, "verification-cadence readout missing from the self-read band");
+    check(!!cad && /^\d{4}-\d{2}-\d{2}$/.test(cad.now), "cadence clock is not a real date: " + (cad && cad.now));
+    check(!!cad && /Next review on the calendar:/.test(cad.text), "cadence readout lacks the next-review date");
+
+    /* ---------------- 6c. private on-device numbers (opt-in) ---------------- */
+    await page.click("[data-tm-mine-toggle]");
+    await page.waitForTimeout(150);
+    const mine = await page.evaluate(() => {
+      const box = document.querySelector("[data-tm-mine]");
+      const num = sel => { const e = box.querySelector(sel); return e ? e.textContent : null; };
+      return { hidden: box.hidden, opened: Number(num("[data-tm-mine-opened]")), opens: Number(num("[data-tm-mine-opens]")), saved: Number(num("[data-tm-mine-saved]")) };
+    });
+    check(mine.hidden === false, "private numbers box did not open");
+    check(mine.opened >= 1 && mine.opens >= 1, `private numbers not counted from local storage (${JSON.stringify(mine)})`);
+
     /* ---------------- 7. command palette ---------------- */
     await page.keyboard.press("Control+k");
     await page.waitForTimeout(200);

@@ -100,6 +100,27 @@ def esc(value: object) -> str:
     return html.escape(str(value if value is not None else ""), quote=True)
 
 
+def now_iso() -> str:
+    """The build date, honouring SOURCE_DATE_EPOCH (mirrors build-ecosystem's
+    _build_now) so CI stays byte-deterministic while a real deploy gets the live
+    date. The freshness engine compares real piece dates against this."""
+    import os, datetime
+    epoch = os.environ.get("SOURCE_DATE_EPOCH")
+    if epoch:
+        return datetime.datetime.fromtimestamp(int(epoch), datetime.timezone.utc).date().isoformat()
+    return datetime.date.today().isoformat()
+
+
+# Review cadence per shelf, from the master brief's Section 12: price/vendor-heavy
+# shelves turn over fastest (90 days); stable mechanics can wait (180). Every
+# number the freshness engine prints is derived from real piece dates.
+CAT_CADENCE_DAYS = {
+    "subscriptions": 90, "buying": 90, "safety": 90, "ai": 90,
+    "tools": 180, "streaming": 180, "smart-home": 180, "android": 180,
+    "windows": 180, "web-and-hosting": 180, "coding": 180, "quant": 180,
+}
+
+
 def U(path: str, up: str) -> str:
     """Root-relative for the pre-routing tree, /tech-prefixed for a routed
     caller. The two artifacts differ only by this prefix (build-routing.py)."""
@@ -209,7 +230,38 @@ def stats_for(arts: list, cat: dict) -> dict:
         "newest": newest,
         "n_older": sum(1 for a in arts if (a.get("upd") or a.get("pub") or "") != newest),
         "thin": sorted((len(v), k) for k, v in by_cat.items() if len(v) < 10),
+        "fresh": _freshness(arts),
     }
+
+
+def _freshness(arts: list) -> dict:
+    """The freshness engine: per-piece next-review-due dates derived from each
+    piece's own date plus its shelf's cadence (CAT_CADENCE_DAYS). A piece with no
+    date is counted as due now, which is the honest reading."""
+    import datetime
+    now = now_iso()
+    overdue = soon = undated = 0
+    due = []
+    for a in arts:
+        d = a.get("upd") or a.get("pub") or ""
+        days = CAT_CADENCE_DAYS.get(a["cat"], 180)
+        if not d:
+            undated += 1; due.append(now); continue
+        try:
+            rd = (datetime.date.fromisoformat(d) + datetime.timedelta(days=days)).isoformat()
+        except ValueError:
+            undated += 1; rd = now
+        due.append(rd)
+        if rd < now: overdue += 1
+        elif rd <= _add_days(now, 30): soon += 1
+    future = sorted(x for x in due if x >= now)
+    return {"now": now, "overdue": overdue, "soon": soon, "undated": undated,
+            "next": future[0] if future else now}
+
+
+def _add_days(iso: str, days: int) -> str:
+    import datetime
+    return (datetime.date.fromisoformat(iso) + datetime.timedelta(days=days)).isoformat()
 
 
 def render(arts: list, tools: list, cat: dict, url_prefix: str = "", stamp: str = "") -> str:
@@ -272,6 +324,16 @@ def render(arts: list, tools: list, cat: dict, url_prefix: str = "", stamp: str 
         thin_html = ('<div class="tm-readout"><p class="tm-ro-h">Self-read</p><p class="tm-ro-big">'
                      '<span>every section carries ten pieces or more</span></p></div>')
 
+    fr = st["fresh"]
+    cadence = ('<div class="tm-readout"><p class="tm-ro-h">Verification cadence</p>'
+               '<p class="tm-ro-big"><time datetime="' + esc(fr["now"]) + '">' + esc(fr["now"]) + '</time>'
+               '<span>the clock this desk checks itself against</span></p>'
+               '<p class="tm-ro-f">' + str(fr["overdue"]) + ' piece' + ('s are' if fr["overdue"] != 1 else ' is')
+               + ' past its re-verification date, ' + str(fr["soon"]) + ' due within 30 days'
+               + (', ' + str(fr["undated"]) + ' carrying no date at all' if fr["undated"] else '')
+               + '. Price- and vendor-heavy shelves turn over every 90 days, stable mechanics every 180. '
+               + 'Next review on the calendar: <time datetime="' + esc(fr["next"]) + '">' + esc(fr["next"]) + '</time>.</p></div>')
+
     freshness = ('<div class="tm-readout"><p class="tm-ro-h">Verification sweep</p><p class="tm-ro-big">'
                  + ('<time datetime="' + esc(st["newest"]) + '">' + esc(st["newest"]) + "</time>" if st["newest"]
                     else "<time>\u2014</time>")
@@ -302,8 +364,17 @@ def render(arts: list, tools: list, cat: dict, url_prefix: str = "", stamp: str 
               '<div class="tm-mem-col"><b>Continue reading</b><ul data-tm-recent></ul>'
               '<p class="tm-mem-empty" data-tm-recent-empty hidden>You have not opened a piece on this desk from '
               'this browser yet.</p></div>'
-              '</div><p class="tm-mem-f">Saved items and reading history stay in this browser\u2019s local storage. '
+              '</div>'
+              '<div class="tm-mine" data-tm-mine hidden><p class="tm-mine-h">Your desk, by your own numbers</p>'
+              '<ul class="tm-mine-list">'
+              '<li><b data-tm-mine-opened>0</b><span>different pieces you have opened here</span></li>'
+              '<li><b data-tm-mine-opens>0</b><span>total opens, this browser</span></li>'
+              '<li><b data-tm-mine-saved>0</b><span>saved for later</span></li>'
+              '<li><b data-tm-mine-last>\u2014</b><span>your last visit</span></li>'
+              '</ul><p class="tm-mine-f">Counted only in this browser\u2019s local storage. No account, no server, no one else sees it.</p></div>'
+              '<p class="tm-mem-f">Saved items and reading history stay in this browser\u2019s local storage. '
               'Nothing is uploaded and nothing is counted on a server; clearing site data clears it. '
+              '<button type="button" class="tm-mem-clear" data-tm-mine-toggle>Show my own numbers</button> '
               '<button type="button" class="tm-mem-clear" data-tm-clear>Forget this desk on this device</button></p></div>')
 
     toolbox_href = esc(U("/tool/", up))
@@ -380,7 +451,7 @@ def render(arts: list, tools: list, cat: dict, url_prefix: str = "", stamp: str 
         '<section class="tm-band tm-band-alt" id="tm-standards"><header class="tm-band-h">'
         "<h2>Read the machine before you trust it.</h2><p>What this desk will and will not tell you, and "
         "where it currently falls short.</p></header>"
-        '<div class="tm-reads">' + freshness + thin_html + rules + "</div></section>",
+        '<div class="tm-reads">' + cadence + freshness + thin_html + rules + "</div></section>",
 
         '<p class="tm-noscript">This hub works without JavaScript \u2014 every piece is linked above. With '
         "JavaScript you also get instant filtering, a keyboard palette, saved-for-later and \u201cnew since "

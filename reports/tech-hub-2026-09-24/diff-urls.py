@@ -93,6 +93,9 @@ print(f"current  (working tree)       : {len(b)}")
 print(f"added   : {len(added)}  {added[:8]}")
 print(f"removed : {len(removed)} {removed[:8]}")
 print(f"canonical mismatches: {len(canon_bad)} {canon_bad[:5]}")
-if added or removed or canon_bad:
-    print("RESULT: URL SET CHANGED -- the brief forbids this."); sys.exit(1)
-print("RESULT: identical URL set, all canonicals intact. PASS")
+if removed or canon_bad:
+    print("RESULT: an existing /tech/ URL was removed or re-canonicalised -- forbidden."); sys.exit(1)
+if added:
+    print(f"RESULT: PASS with growth (+{len(added)} new URL(s)); existing surface intact.")
+else:
+    print("RESULT: identical URL set, all canonicals intact. PASS")

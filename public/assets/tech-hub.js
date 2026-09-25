@@ -341,12 +341,40 @@
         });
       });
     }
+    /* --- private, on-device "my own numbers" (opt-in) --- */
+    function setNum(sel, val) {
+      var el = document.querySelector(sel);
+      if (el) el.textContent = String(val);
+    }
+    function renderMine() {
+      var box = document.querySelector("[data-tm-mine]");
+      if (!box || box.hidden) return;
+      var seen = read(K_SEEN, {}) || {};
+      var opened = 0, opens = 0, k;
+      for (k in seen) {
+        if (k === "/tech/" || k === "/tech") continue;   /* the hub itself is not a piece */
+        opened += 1;
+        opens += (seen[k].n || 0);
+      }
+      setNum("[data-tm-mine-opened]", opened);
+      setNum("[data-tm-mine-opens]", opens);
+      setNum("[data-tm-mine-saved]", saved.length);
+      setNum("[data-tm-mine-last]", prevVisit || "\u2014");
+    }
+    on(document.querySelector("[data-tm-mine-toggle]"), "click", function (ev) {
+      var box = document.querySelector("[data-tm-mine]");
+      if (!box) return;
+      box.hidden = !box.hidden;
+      ev.target.textContent = box.hidden ? "Show my own numbers" : "Hide my own numbers";
+      if (!box.hidden) renderMine();
+    });
+
     on(document.querySelector("[data-tm-clear]"), "click", function () {
       drop(K_SAVED); drop(K_SEEN); drop(K_VISIT); drop(K_PREFS);
       saved = []; persistSaved();
       all(".tm-save").forEach(paintSave);
       all(".tm-new").forEach(function (n) { if (n.parentNode) n.parentNode.removeChild(n); });
-      apply(); renderMemory();
+      apply(); renderMemory(); renderMine();
     });
 
     /* --- command palette (the hook that pays for itself: it is the fastest
@@ -438,6 +466,7 @@
 
     apply();
     renderMemory();
+    renderMine();
   }
 
   function boot() {

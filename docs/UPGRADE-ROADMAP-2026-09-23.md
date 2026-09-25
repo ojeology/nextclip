@@ -2,6 +2,8 @@
 
 ## Progress log (update after each shipped batch)
 
+- **TECH HUB PHASE 1 (freshness + private numbers) SHIPPED 2026-09-25**: `/tech/` self-read band gains a *Verification cadence* engine (per-piece next-review dates from real dates + shelf cadence; overdue/soon/undated counts; SOURCE_DATE_EPOCH-aware) and an opt-in on-device *my own numbers* readout. `diff-urls.py` now allows additive growth (fails only on removal/canonical change). Gates green incl. new behaviour assertions. No URL changed (320 intact).
+
 - **TECH LIVING HUB SHIPPED 2026-09-24** (branch `tech-living-hub-2026-09-24`): `/tech/` display rebuilt into a self-indexing living machine — six-job need router, instant client-side filter over all 258 rows, save-for-later + continue-reading (on-device tracker), Ctrl+K command palette, build-counted gauges (258 pieces / 12 sections / 16 tools / 62 comparisons / 14 diagnostic trees / 8 first-hand), and a self-read band that prints thin shelves and the freshest desk date. Renderer `scripts/tech_hub_render.py` + behaviour gate `scripts/validate-tech-hub.js` (wired into `npm test`). **URL surface untouched: 320/320, 0 added, 0 removed, 0 canonical mismatches** (`reports/tech-hub-2026-09-24/diff-urls.py`). Gates green: site-quality (2190 indexable), http, browser (1527 rendered cases), tech-hub behaviour. Hub ~39 KB gz with `content-visibility` per shelf; no-JS still a complete index. Roadmap: `docs/ecosystem/tech-living-hub-roadmap.md`.
 
 - **Film depth batches 1–4 SHIPPED** (commits `d5e4ae5`, `c6972ca4`, `7ace2537`, `24dc02db`): 100/490 movie/TV pages enriched with verdict + FAQ + similar-picks (median enriched ~370 words). Venue date-cap fix `f991a25f` (all page dates ≤ reviewedAt 2026-09-21) is live.

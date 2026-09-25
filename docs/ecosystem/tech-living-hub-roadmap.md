@@ -42,6 +42,12 @@ Performance guard: the hub is **~39 KB gzipped** (was ~9 KB as a thin feed) — 
 
 ---
 
+## 1b. Phase 1 progress (shipped 2026-09-25)
+
+- **Freshness engine (item 3, done).** The self-read band now carries a *Verification cadence* readout: every piece gets a next-review-due date derived from its own date plus its shelf's cadence (90d for price/vendor-heavy shelves, 180d for stable mechanics), and the band prints how many are overdue, due within 30 days, or undated, plus the next review on the calendar. Honours `SOURCE_DATE_EPOCH`, so CI stays deterministic while a live deploy's clock moves. No URL touched.
+- **Private instrumentation (item 1, done).** An opt-in *"Show my own numbers"* control in the memory band prints, from this browser's `localStorage` only, pieces opened, total opens, saved count and last visit. No server, no account. Asserted by the behaviour gate.
+- **Gate semantics for growth (done).** `diff-urls.py` now treats *additions* as reported growth and fails only on *removals or canonical changes* — the rebuild-preservation guarantee is kept for the existing surface while the content phase is unblocked.
+
 ## 2. The compounding loop (why it becomes habit-forming)
 
 The machine is designed to make the second and tenth visit *measurably* better than the first:
