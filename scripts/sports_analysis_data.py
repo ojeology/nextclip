@@ -112,3 +112,72 @@ SPORT_ANALYSIS = [
  ("pressing-explained", "Pressing, blocks and the line"),
  ("how-var-works", "How VAR actually works")]),
 ]
+
+# Growth batch (2026-09-25): the history shelf — four seasons and nights that
+# shaped the modern game. Every fact carries a verified source; verdicts are
+# labelled as the desk's own.
+SPORT_ANALYSIS.extend([
+
+("arsenal-invincibles-2003-04-explained", "Arsenal's Invincibles: how a team went a season unbeaten",
+"Twenty-six wins, twelve draws, zero defeats — the first English top-flight side in 115 years to go a whole season unbeaten, and the desk's argument for why it may never happen again.",
+"""<p>There is exactly one modern answer to "has it ever been done?" In 2003-04, Arsenal played 38 Premier League matches and lost none of them. The nickname was not marketing; it was arithmetic.</p>
+<h2>The facts of the season</h2>
+<p>The record line: <b>26 wins, 12 draws, 0 defeats</b>. Before Arsenal, the only English top-flight side to finish a season unbeaten was <b>Preston North End in 1888-89</b> — 115 years earlier, in a 22-game season. Ars\u00e8ne Wenger's side, captained by Patrick Vieira and spearheaded by Thierry Henry, were the division's most potent attack and its tightest defence in the same season. Jens Lehmann played every minute of all 38 league matches — the goalkeeper of an unbeaten season never once got dropped.</p>
+<h2>The run that outgrew the season</h2>
+<p>The unbeaten streak did not respect season boundaries: it began in May 2003 and stretched to <b>49 Premier League matches</b>, a record that stood for fifteen years. That is the part rival fans argue with: the Invincibles were not one season's miracle but two seasons' worth of not losing, with a title in the middle.</p>
+<h2>Why it happened — and why it probably won't happen again</h2>
+<p><em>The desk's reading, labelled ours. Three conditions made 2003-04 possible, and none of them is stable now. One: a settled core — the same spine played together for years, which is rarer in an era of five-transfer-window churn. Two: a league where the title race ran between two or three clubs, so the calendar had no "every week is a final" tier of opponents. Three: a squad small enough that its best eleven was also its usual eleven. Modern title winners are built by rotation across four competitions; rotation is how you survive a season, and it is also how you lose one. Unbeaten requires a team that never has to blink — and the modern game is engineered to make everyone blink. If it happens again, it will be a triumph over the structure, not with it.</em></p>""",
+[("PremierLeague.com \u2014 PL30: Ars\u00e8ne Wenger's Invincibles (26W 12D 0L; first in 115 years)", "https://www.premierleague.com/en/news/2738718"),
+ ("Wikipedia \u2014 2003\u201304 Arsenal F.C. season (record, appearances)", "https://en.wikipedia.org/wiki/2003%E2%80%9304_Arsenal_F.C._season"),
+ ("BBC World Service, Sporting Witness \u2014 The Arsenal 'Invincibles' (49-match run; Preston 1888)", "https://www.bbc.co.uk/programmes/w3ct4sht")],
+[("leicester-city-2015-16-title-explained", "Leicester 2016, explained"),
+ ("manchester-united-1999-treble-explained", "United's 1999 treble"),
+ ("how-the-premier-league-table-works", "How the table works")]),
+
+("leicester-city-2015-16-title-explained", "Leicester City 2016: the season that broke the odds",
+"5,000-to-1 outsiders in August, champions in May — what actually happened in the greatest shock in league sport, and what it proved about the pyramid.",
+"""<p>Bookmakers priced Leicester City at <b>5,000-to-1</b> to win the 2015-16 Premier League. In August that was not an insult; the previous May they had survived relegation on the final day. Nine months later they were champions of England.</p>
+<h2>The facts of the season</h2>
+<p>The shape of it, verified: Claudio Ranieri was appointed that summer after Nigel Pearson's dismissal, inheriting a squad most pundits predicted would go straight back down. Leicester lost <b>three league matches all season</b>. The title was confirmed on <b>2 May 2016</b> without them kicking a ball — Tottenham's 2-2 draw at Chelsea did it. It was the club's <b>first top-flight title in its 132-year history</b>: the 24th club ever to be crowned English champions, and the sixth different winner of the Premier League era. Their nearest rivals — Spurs, Arsenal, City, United and the defending champions Chelsea — each led at some point and each failed to match their consistency.</p>
+<h2>How a counter-attack wins a marathon</h2>
+<p>The method was not beauty; it was repetition. A back line that conceded rarely, N'Golo Kant\u00e9 covering more ground than any midfielder in the division, and two outlets — Jamie Vardy's runs in behind and Riyad Mahrez's left foot — turning defence into chances in seconds. When the pressure arrived in spring, they stopped entertaining and started winning 1-0: five such wins in six games put the title beyond reach. The desk's honest note: Leicester did not outplay the division for 38 weeks. They outlasted it.</p>
+<h2>What it did to the argument</h2>
+<p><em>The desk's reading, labelled ours. Leicester is invoked every season as proof that anything is possible — and that is half-true. What 2016 proved is that the pyramid's door is real: one extraordinary season, one aligned squad, and the richest league in the world can still be won by a club that nearly fell out of it the year before. What it did not prove is repeatability. The honest use of the miracle is not "so anyone can win" but "so the structure must stay open" — every rule and revenue decision that keeps promotion and relegation meaningful is a decision to keep a Leicester mathematically possible.</em></p>""",
+[("BBC Sport \u2014 Leicester City win Premier League title (2 May 2016; 5,000-1, three defeats)", "https://www.bbc.com/sport/football/35988673"),
+ ("Wikipedia \u2014 2015\u201316 Leicester City F.C. season", "https://en.wikipedia.org/wiki/2015%E2%80%9316_Leicester_City_F.C._season"),
+ ("Wikipedia \u2014 2015\u201316 Premier League (132-year first; 24th champion club)", "https://en.wikipedia.org/wiki/2015%E2%80%9316_Premier_League")],
+[("arsenal-invincibles-2003-04-explained", "The Invincibles"),
+ ("promotion-and-relegation-explained", "Promotion and relegation"),
+ ("istanbul-2005-the-miracle-explained", "Istanbul 2005")]),
+
+("manchester-united-1999-treble-explained", "Manchester United 1999: the treble, and 102 seconds in Barcelona",
+"Premier League, FA Cup, Champions League — an English first, sealed by two injury-time goals from the bench in a final Bayern Munich should have won.",
+"""<p>Ask for the most dramatic night in club football and most rooms settle on the same ninety-plus minutes: Barcelona, 26 May 1999, Manchester United 2-1 Bayern Munich. The treble it completed had never been won by an English club before.</p>
+<h2>The facts of the night</h2>
+<p>United arrived at the Camp Nou already holding the Premier League and the FA Cup, and missing the two men who ran their midfield — <b>Roy Keane and Paul Scholes, both suspended</b>. Bayern scored in the <b>sixth minute</b>, Mario Basler's free-kick beating the wall, and were the better side for most of what followed, hitting the crossbar and the post in the second half. Then injury time: a scuffed Ryan Giggs shot was helped in by <b>Teddy Sheringham in the 91st minute</b>, and roughly two minutes later <b>Ole Gunnar Solskj\u00e6r</b> poked home the winner. Both scorers had come off the bench. It was United's first European Cup since 1968 and Sir Alex Ferguson's first.</p>
+<h2>The facts of the season</h2>
+<p>The treble — league, FA Cup and European Cup in one season — was an English first. What gets forgotten is how thin the margins were beyond the final: a league settled on the last day, an FA Cup semi-final replay saved by a last-minute penalty save, and a European campaign in which the final was the third consecutive knockout tie decided late. The treble was not dominance. It was a team that kept refusing the result.</p>
+<h2>Why the legend grew</h2>
+<p><em>The desk's reading, labelled ours. "Fergie time" is remembered as a mystical quality — belief, fitness, refusal. The evidence of that final is simpler and better: Ferguson changed the game from the bench while Bayern could not change it at all, because their plan was already working and working plans do not get edited. The romance of 1999 is that football rewards character; the analysis is that it rewarded the deeper bench and the braver substitutions. Both readings honour United. Only one of them is repeatable.</em></p>""",
+[("BBC Sport \u2014 The 1999 Treble: five games that decided it (Jun 2023)", "https://www.bbc.com/sport/football/65839378"),
+ ("Wikipedia \u2014 1999 UEFA Champions League final", "https://en.wikipedia.org/wiki/1999_UEFA_Champions_League_final"),
+ ("Wikipedia \u2014 1998\u201399 Manchester United F.C. season", "https://en.wikipedia.org/wiki/1998%E2%80%9399_Manchester_United_F.C._season")],
+[("istanbul-2005-the-miracle-explained", "Istanbul 2005"),
+ ("how-the-champions-league-works", "How the Champions League works"),
+ ("how-extra-time-and-penalty-shootouts-work", "Extra time and shootouts")]),
+
+("istanbul-2005-the-miracle-explained", "Istanbul 2005: six minutes that rewrote a final",
+"3-0 down at half-time to AC Milan, European champions on penalties — the greatest comeback in final history, minute by honest minute.",
+"""<p>The greatest comeback in the history of the European Cup did not announce itself. At half-time of the 2005 final, AC Milan led Liverpool 3-0, and the only question being discussed was the margin.</p>
+<h2>The facts of the night</h2>
+<p>On <b>25 May 2005</b>, at Istanbul's Atat\u00fcrk Stadium, Milan — a side built from a generation of champions — led 3-0 at the break. Liverpool's response came in a six-minute burst: <b>Steven Gerrard in the 54th</b>, Vladim\u00edr \u0160micer in the 56th, and Xabi Alonso in the 60th, scoring the rebound after his penalty — won when Gerrard was hauled down by Gennaro Gattuso — was saved by Dida. Three-nil to three-all in six minutes, in a final. Jerzy Dudek then kept them alive through extra time, most famously denying Andriy Shevchenko at point-blank range with a double save, before the shootout settled it 3-2: Serginho fired over, Dudek stopped Andrea Pirlo, and saved Shevchenko's kick to win it.</p>
+<h2>The fifth crown — and the rematch</h2>
+<p>The win was Liverpool's <b>fifth European Cup</b>, which carried its own weight: the competition's rules of the era meant the trophy's stature for a club like Liverpool was measured in fives. Two years later the same two clubs met again in the Athens final, and Milan won 2-1 — which is why Istanbul survives as an anomaly rather than a pattern: the same matchup, the same stage, and a completely different story.</p>
+<h2>Why it endures</h2>
+<p><em>The desk's reading, labelled ours. Comebacks are usually built over ninety minutes; this one was built over six, which is why it replays so well — a stadium flipping from funeral to riot inside a quarter-hour. But the deeper lesson is structural: knockout finals compress variance. Over a league season, the better side wins because there are 38 chances to prove it. In one final, three goals can arrive before the better side has finished celebrating. Istanbul is not evidence that football is fair. It is evidence that ninety minutes is a very short time — which is exactly why we cannot look away from it.</em></p>""",
+[("BBC Sport \u2014 Memories of the 'Miracle of Istanbul' by those who were there (25 May 2020)", "https://www.bbc.com/sport/football/52771492"),
+ ("Wikipedia \u2014 2005 UEFA Champions League final", "https://en.wikipedia.org/wiki/2005_UEFA_Champions_League_final")],
+[("manchester-united-1999-treble-explained", "United's 1999 treble"),
+ ("how-extra-time-and-penalty-shootouts-work", "Extra time and shootouts"),
+ ("champions-league-new-format-explained", "The new Champions League format")]),
+])

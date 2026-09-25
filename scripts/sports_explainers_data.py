@@ -369,3 +369,45 @@ SPORT_EXPLAINERS.extend([
  [('IFAB - Laws of the Game (restarts: Laws 8, 13-17)', 'https://www.theifab.com/laws/latest/about-the-laws/')],
  [('the-offside-rule-explained', 'The offside rule'), ('the-offside-trap', 'The offside trap'), ('pressing-explained', 'Pressing, explained')]),
 ])
+
+# Growth batch (2026-09-25): the money-and-history shelf. All facts tied to the
+# verified sources in each entry (status + content re-checked at build sweep).
+SPORT_EXPLAINERS.extend([
+
+("financial-fair-play-explained", "Financial Fair Play and PSR: football's spending rules, explained",
+"Two rulebooks, one idea \u2014 clubs must live within their means. What UEFA's FFP and England's PSR actually say, why points get deducted, and what neither rule can fix.",
+"""<p>Every time a club is charged, docked or banned, the same two acronyms arrive: FFP and PSR. They are not the same rulebook, and mixing them up is how most arguments about them go wrong. This is what each one actually says.</p>
+<h2>One idea, two rulebooks</h2>
+<p><b>UEFA's Financial Fair Play</b> governs eligibility for European competitions. Its core is a break-even principle: across a monitoring period, a club's football spending should not materially exceed its football earnings, with owner injections capped rather than banned. It polices the continental door, not the league. <b>The Premier League's Profit and Sustainability Rules (PSR)</b> police the league itself. Introduced for the 2015-16 season, they permit losses of up to <b>\u00a3105m over a rolling three-year period</b> \u2014 roughly \u00a335m a season. Everton's 2023 case turned on exactly that arithmetic: recorded losses of about \u00a3125m across the assessment window, \u00a320m over the line.</p>
+<h2>What counts, and what is forgiven</h2>
+<p>The headline number is not raw profit and loss. Both systems allow add-backs: spending on academies, women's teams, community work and stadium infrastructure can be excluded, because the rules were written to stop wage and transfer inflation, not to punish building. What does count, heavily, is squad cost \u2014 wages and the amortised fees of transfers, spread across contract length. This is why a club can post record revenue and still breach: the rules measure the gap between what a squad costs and what the club actually earns.</p>
+<h2>Enforcement, with the receipts</h2>
+<p>The landmark case is Everton's. In <b>November 2023</b> an independent commission handed the club an immediate <b>10-point deduction</b> \u2014 the biggest in Premier League history \u2014 dropping them from 14th to 19th. On appeal in <b>February 2024</b> that was reduced to <b>six points</b>, the appeal board finding the original sanction out of line with benchmarks. A <b>further two-point deduction</b> followed that spring for a different three-year assessment period \u2014 proof that PSR cases are per-window, not one-and-done. Sanctions elsewhere have run from fines to European exclusion; Manchester City's two-season UEFA ban was overturned by the Court of Arbitration for Sport in 2020, a reminder that these cases are fought in courtrooms as much as committees.</p>
+<h2>What the rules cannot fix</h2>
+<p><em>The desk's reading, labelled ours: FFP and PSR police losses, not wealth. A club funded by an owner who treats losses as investment lives under the same ceiling as one that must break even \u2014 which is why the rules are criticised from both directions at once: too tight for clubs trying to climb, too loose for those defending a monopoly. The rules stopped the free-for-all; they were never going to level the table.</em></p>""",
+[("Wikipedia \u2014 UEFA Financial Fair Play Regulations (system, history)", "https://en.wikipedia.org/wiki/UEFA_Financial_Fair_Play_Regulations"),
+ ("BBC Sport \u2014 Everton's 10-point deduction (17 Nov 2023)", "https://www.bbc.com/sport/football/67448714"),
+ ("BBC Sport \u2014 deduction reduced to six on appeal; PSR's \u00a3105m mechanics (26 Feb 2024)", "https://www.bbc.com/sport/football/68273436"),
+ ("NBC Sports \u2014 Everton's second, two-point deduction (2024)", "https://www.nbcsports.com/soccer/news/everton-given-further-two-point-deduction-for-breaching-premier-league-financial-rules")],
+[("how-do-football-clubs-make-money", "How football clubs make money"),
+ ("premier-league-prize-money-explained", "Prize money, explained"),
+ ("promotion-and-relegation-explained", "Promotion and relegation")]),
+
+("premier-league-prize-money-explained", "How Premier League prize money actually works",
+"Equal shares, merit payments and facility fees: why even 20th place is worth nine figures, and the mechanics behind every number quoted in May.",
+"""<p>When a club "wins" the Premier League, no cheque arrives for winning. The money everyone argues about in May is a distribution system with rules of its own \u2014 and it is the single biggest reason the English pyramid behaves the way it does.</p>
+<h2>There is no prize fund</h2>
+<p>The Premier League does not run a winner-takes-all purse. Central payments are shared across all twenty clubs, and the sporting reward is a <b>merit payment</b> on a sliding scale: champions receive twenty times the basic merit unit, second place nineteen, and so on down to one unit for the club that finishes bottom. Finishing higher literally multiplies your share.</p>
+<h2>The three payments every club receives</h2>
+<p>Before any merit maths, every club collects three broadly equal shares. In 2023-24 these were approximately <b>\u00a331.2m of domestic broadcast revenue, \u00a355.7m of international broadcast revenue and \u00a38.2m of central commercial income</b> \u2014 about \u00a395m guaranteed to each club simply for being in the league. The international share being the largest is the quiet story of the modern game: the league sells the world, and the world pays better than the home market now does.</p>
+<h2>The variable money: merit and facility</h2>
+<p>On top of the equal shares sit the two variable streams. <b>Merit payments</b> reward final position: in 2024-25 each place on the ladder was worth roughly \u00a32.6m, so champions Liverpool collected about <b>\u00a353.1m</b> in merit money while bottom-placed Southampton received \u00a32.6m. <b>Facility fees</b> reward visibility: every match shown live to UK broadcasters carries a fee, so the clubs picked for television most often (almost always the biggest names) earn most \u2014 Liverpool added roughly \u00a324.9m of facility fees in the same season. Figures move year to year with the broadcast deals; what does not move is the structure.</p>
+<h2>Why the system shapes everything else</h2>
+<p>Two consequences follow, and both explain stories you read every season. First, <b>20th place is still a nine-figure income</b> \u2014 which is why relegation is a financial emergency even for clubs that finish last with dignity, and why parachute payments exist to soften the fall. Second, <b>the gap between the divisions is structural, not accidental</b>: the pyramid's drama survives because promotion is worth so much, and the money rules exist because clubs keep betting their futures on reaching it.</p>""",
+[("PremierLeague.com \u2014 what champions receive; merit payments and the per-place scale (May 2026)", "https://www.premierleague.com/en/news/4288492"),
+ ("Sports Illustrated \u2014 Premier League prize money explained: the six payment components (Apr 2025)", "https://www.si.com/soccer/premier-league-prize-money-explained-who-gets-what-why"),
+ ("Wikipedia \u2014 Deloitte Football Money League (club revenue context)", "https://en.wikipedia.org/wiki/Deloitte_Football_Money_League")],
+[("how-do-football-clubs-make-money", "How football clubs make money"),
+ ("financial-fair-play-explained", "FFP and PSR, explained"),
+ ("promotion-and-relegation-explained", "Promotion and relegation")]),
+])
