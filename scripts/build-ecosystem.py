@@ -4823,6 +4823,9 @@ def fitness_pages():
     import fitness_more12_data
     FIT_ARTICLES.extend((s, ti, dek, b) for (s, _k, ti, dek, b) in fitness_more12_data.FIT_MORE_12)
     ART_SOURCES.update((s, FIT_SOURCES) for (s, _k, ti, dek, b) in fitness_more12_data.FIT_MORE_12)
+    import fitness_more13_data
+    FIT_ARTICLES.extend((s, ti, dek, b) for (s, _k, ti, dek, b) in fitness_more13_data.FIT_MORE_13)
+    ART_SOURCES.update((s, FIT_SOURCES) for (s, _k, ti, dek, b) in fitness_more13_data.FIT_MORE_13)
     ART_SOURCES["intermittent-fasting-explained"] = FIT_SOURCES + [
         ("WHO \u2014 Healthy diet fact sheet",
          "https://www.who.int/news-room/fact-sheets/detail/healthy-diet")]
@@ -5198,6 +5201,25 @@ def fitness_pages():
     related_map["exercising-in-heat-safely"] = [("how-much-water-to-drink-a-day", "How much water a day?"),
                                                 ("electrolytes-do-you-need-them", "Electrolytes: do you need them?"),
                                                 ("water-during-workout", "Water during workouts")]
+    # b73 (fitness batch #13): relateds for the six new guides
+    related_map["running-form-explained"] = [("beginner-running-plan", "The beginner running plan"),
+                                             ("how-to-choose-running-shoes", "Choosing running shoes"),
+                                             ("heart-rate-zones-explained", "Your five heart-rate zones")]
+    related_map["how-to-measure-fitness-progress-explained"] = [("how-progressive-overload-works", "How progressive overload works"),
+                                                                ("how-long-to-see-gym-results", "How long until you see results?"),
+                                                                ("weight", "The scale, honestly")]
+    related_map["pre-workout-supplements-explained"] = [("creatine-explained", "Creatine, explained"),
+                                                        ("caffeine-side-effects", "Caffeine, honestly"),
+                                                        ("what-to-eat-before-a-workout", "What to eat before training")]
+    related_map["heart-rate-variability-explained"] = [("heart-rate-zones-explained", "Your five heart-rate zones"),
+                                                       ("fitness-trackers-worth-it", "Are trackers worth it?"),
+                                                       ("rest-days-why-muscles-grow", "Why rest days matter")]
+    related_map["fasted-cardio-explained"] = [("intermittent-fasting-explained", "Intermittent fasting, explained"),
+                                              ("zone-2-cardio-explained", "Zone 2 cardio, explained"),
+                                              ("strength-training-while-losing-weight", "Training in a deficit")]
+    related_map["plant-based-protein-explained"] = [("how-much-protein-do-you-need", "Protein, honestly"),
+                                                    ("creatine-explained", "Creatine, explained"),
+                                                    ("protein-timing-anabolic-window", "Protein timing")]
     arts = [art(s, ti, dek, b, ART_SOURCES[s], related_map[s])
             for (s, ti, dek, b) in FIT_ARTICLES]
 
