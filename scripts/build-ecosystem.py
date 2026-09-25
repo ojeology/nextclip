@@ -3536,6 +3536,15 @@ def _load_tech():
     # (brief Sec 0.4 cloud-infrastructure market; cost/comparison intent).
     # Phase 1 growth batch 9 (2026-09-25): AI fundamentals cluster
     # (fills the evergreen foundation the comparison-heavy AI shelf assumes).
+    # Phase 1 growth batch 10 (2026-09-25): website security + networking cluster
+    # (finishes the security ground-zero; pairs with the cybersecurity cluster).
+    import tech_phase10_content_data
+    for slug, cat, kind, title, dek, body, sources, related in tech_phase10_content_data.PHASE10_GUIDES:
+        arts.append({"slug": slug, "title": title, "excerpt": dek, "cat": cat, "kind": kind,
+                     "pub": TODAY, "upd": TODAY, "read": "", "author": "the BRYME Tech desk",
+                     "blocks": [{"heading": "", "body": body, "html": True}],
+                     "sources": [{"name": n, "url": u} for n, u in sources],
+                     "recovered": False})
     import tech_phase9_content_data
     for slug, cat, kind, title, dek, body, sources, related in tech_phase9_content_data.PHASE9_GUIDES:
         arts.append({"slug": slug, "title": title, "excerpt": dek, "cat": cat, "kind": kind,
