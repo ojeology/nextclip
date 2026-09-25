@@ -855,7 +855,10 @@ def money_drawer():
 def head(pub, tagline, parent=True):
     pl = ""
     if pub == "hub":
-        brand_el = '<a class="mast-brand" href="/">THE&nbsp;BRYME</a>'
+        brand_el = ('<div class="mast-brand"><span class="lk">'
+            '<a class="lk-mark" href="/" aria-label="THE BRYME - all publications">'
+            '<img src="/assets/brand/bryme-mark.png" alt="" width="26" height="26"></a>'
+            '<a class="lk-root" href="/">THE&nbsp;BRYME</a></span></div>')
     else:
         _niche = PUB_NAME[pub].upper().replace("&", "&amp;").replace(" ", "&nbsp;")
         brand_el = ('<div class="mast-brand"><span class="lk">'
