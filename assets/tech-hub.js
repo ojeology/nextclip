@@ -279,6 +279,21 @@
       });
     });
 
+    /* Phase 2: the comparison wall -- filter side-by-side cards by subject. */
+    (function () {
+      var wallCards = all(".tm-wall-card"), wallChips = all(".tm-wallchip");
+      wallChips.forEach(function (chip) {
+        on(chip, "click", function () {
+          var s = chip.getAttribute("data-wallsub");
+          var onNow = chip.getAttribute("aria-pressed") === "true";
+          wallChips.forEach(function (c) { c.setAttribute("aria-pressed", "false"); });
+          if (onNow) { wallCards.forEach(function (c) { c.hidden = false; }); return; }
+          chip.setAttribute("aria-pressed", "true");
+          wallCards.forEach(function (c) { c.hidden = c.getAttribute("data-wallsub") !== s; });
+        });
+      });
+    })();
+
     /* --- controls --- */
     var debounce = 0;
     if (input) {

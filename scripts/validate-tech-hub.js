@@ -285,6 +285,28 @@ const rowsOf = page => page.evaluate(() => {
     await p3.screenshot({ path: path.join(ROOT, "reports/tech-hub-2026-09-24/hub-mobile.png") });
     await page.setViewportSize({ width: 1440, height: 1000 });
     await page.goto(base + "/tech/", { waitUntil: "networkidle" });
+
+    // Phase 2: the comparison wall renders and its subject filter narrows the cards.
+    const wall = await page.evaluate(() => ({
+      has: !!document.querySelector("#tm-wall"),
+      cards: document.querySelectorAll(".tm-wall-card").length,
+      chips: document.querySelectorAll(".tm-wallchip").length,
+    }));
+    check(wall.has, "comparison wall band (#tm-wall) present");
+    check(wall.cards > 0, "comparison wall has cards (" + wall.cards + ")");
+    check(wall.chips > 0, "comparison wall has subject chips (" + wall.chips + ")");
+    const wf = await page.evaluate(() => {
+      const chips = [...document.querySelectorAll(".tm-wallchip")];
+      const cards = [...document.querySelectorAll(".tm-wall-card")];
+      const total = cards.length;
+      chips[0].click();
+      const subj = chips[0].getAttribute("data-wallsub");
+      const vis = cards.filter((c) => !c.hidden);
+      return { total, subj, vis: vis.length, allMatch: vis.every((c) => c.getAttribute("data-wallsub") === subj) };
+    });
+    check(wf.vis > 0 && wf.vis <= wf.total, "wall subject filter narrows cards (" + wf.vis + "/" + wf.total + " for " + wf.subj + ")");
+    check(wf.allMatch, "every visible wall card matches the chosen subject");
+
     await page.screenshot({ path: path.join(ROOT, "reports/tech-hub-2026-09-24/hub-desktop.png") });
 
     await ctx.close(); await nojs.close(); await rm.close();
@@ -298,5 +320,5 @@ const rowsOf = page => page.evaluate(() => {
     failures.forEach(f => console.error("  - " + f));
     process.exit(1);
   }
-  console.log(JSON.stringify({ ok: true, gate: "tech-hub behaviour", assertions: "filter, need router, chips, sort, save, tracker memory, palette, no-JS, reduced motion, dark theme, overflow" }, null, 2));
+  console.log(JSON.stringify({ ok: true, gate: "tech-hub behaviour", assertions: "filter, need router, chips, sort, save, tracker memory, palette, comparison wall, typo-tolerant search, no-JS, reduced motion, dark theme, overflow" }, null, 2));
 })().catch(e => { console.error("harness error:", e); process.exit(1); });

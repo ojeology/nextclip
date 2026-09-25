@@ -311,6 +311,25 @@ def render(arts: list, tools: list, cat: dict, url_prefix: str = "", stamp: str 
 
     tools_html = "".join(_tool_row(t, up) for t in tools)
 
+    # Phase 2: the comparison wall -- a dense, subject-grouped view of the desk's
+    # existing A-vs-B pieces, derived entirely from the catalogue (no invented data).
+    comp = [a for a in arts if _RE_COMPARE.search(a["slug"])]
+    wall_subs = sorted({a["cat"] for a in comp}, key=lambda k: -sum(1 for x in comp if x["cat"] == k))
+    wall_chips = "".join(
+        '<button type="button" class="tm-wallchip" data-wallsub="' + esc(k) + '" aria-pressed="false">'
+        + esc(cat.get(k, (k,))[0].split(",")[0].split(" &")[0]) + " <em>" + str(sum(1 for x in comp if x["cat"] == k)) + "</em></button>"
+        for k in wall_subs)
+    wall_cards = "".join(
+        '<a class="tm-wall-card" data-wallsub="' + esc(a["cat"]) + '" href="' + esc(U("/" + a["slug"] + "/", up)) + '">'
+        + "<b>" + esc(a["title"]) + "</b><small>" + esc((a.get("excerpt") or "")[:90])
+        + ("…" if len(a.get("excerpt") or "") > 90 else "") + "</small></a>"
+        for a in sorted(comp, key=lambda x: x["cat"]))
+    wall = ('<section class="tm-band tm-band-alt" id="tm-wall"><header class="tm-band-h">'
+            "<h2>The comparison wall.</h2><p>" + str(len(comp)) + " side-by-side pieces on this desk, grouped "
+            "by subject. Every card is a real comparison with its trade-off named; pick a subject to narrow the wall.</p></header>"
+            '<div class="tm-chips" role="group" aria-label="Filter comparisons by subject">' + wall_chips + "</div>"
+            '<div class="tm-wall" data-tm-wall>' + wall_cards + "</div></section>")
+
     if st["thin"]:
         thin_items = "".join(
             '<li><a href="' + esc(U("/" + k + "/", up)) + '">' + esc(cat[k][0]) + "</a> <span>"
@@ -442,6 +461,7 @@ def render(arts: list, tools: list, cat: dict, url_prefix: str = "", stamp: str 
         '<div class="tm-tools">' + tools_html + "</div>"
         '<p class="tm-band-f"><a href="' + toolbox_href + '">The whole shelf</a> \u00b7 each tool has a '
         "companion guide explaining the format underneath it.</p></section>",
+        wall,
 
         '<section class="tm-band" id="tm-sections"><header class="tm-band-h">'
         "<h2>Sections, in their own words.</h2><p>The formal shelves. Same pieces, arranged by subject "

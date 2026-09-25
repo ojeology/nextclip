@@ -237,3 +237,16 @@ html:not(.tm-js) .tm-noscript{display:block}
 .tm-mine-list b{display:block;font:700 20px/1.1 var(--serif);letter-spacing:-.02em}
 .tm-mine-list span{display:block;margin-top:3px;font-size:11.5px;line-height:1.4;color:var(--muted)}
 .tm-mine-f{margin:9px 0 0;font-size:11.5px;line-height:1.5;color:var(--muted)}
+
+/* Phase 2: the comparison wall */
+.tm-wall{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:8px;margin-top:10px}
+.tm-wall-card{display:flex;flex-direction:column;gap:4px;padding:11px 12px;border:1px solid rgba(120,134,168,.2);border-radius:9px;text-decoration:none;transition:border-color .12s ease}
+.tm-wall-card:hover{border-color:rgba(120,134,168,.45)}
+.tm-wall-card b{font-size:12.5px;line-height:1.35;color:var(--tm-ink)}
+.tm-wall-card small{color:var(--tm-ink-3);font-size:11px;line-height:1.5}
+.tm-chip em{font-style:normal;opacity:.7;font-weight:600}
+
+.tm-wallchip{display:inline-flex;align-items:center;gap:6px;padding:6px 11px;border:1px solid rgba(120,134,168,.28);border-radius:999px;background:transparent;color:var(--tm-ink-2);font:inherit;font-size:12px;font-weight:600;cursor:pointer;transition:border-color .12s ease,color .12s ease}
+.tm-wallchip:hover{border-color:rgba(120,134,168,.5);color:var(--tm-ink)}
+.tm-wallchip[aria-pressed="true"]{border-color:var(--tm-accent);color:var(--tm-ink);background:rgba(120,134,168,.1)}
+.tm-wallchip em{font-style:normal;opacity:.7}
