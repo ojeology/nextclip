@@ -1595,7 +1595,7 @@ def entertainment_pages():
                  + '</p><h1 class="cover-title">' + html.escape(rname) + "</h1>" + intro + '</section>'
                  + '<section class="section"><div class="section-head"><p class="kicker">The shelf</p><h2>Every title, newest first</h2></div>'
                  + '<ul class="list" style="font-size:15px">' + cards + '</ul></section>'
-                 + '<p class="nx-backlink"><a href="/browse/">&larr; Back to the full catalogue</a></p>'
+                 + '<p class="nx-backlink"><a href="/watch/">&larr; Back to the full catalogue</a></p>'
                  + '</div></main>' + foot("entertainment"))
         route_pages.append(("/routes/" + rslug + "/", _rtitle, _rdesc, rbody))
         route_rows += ('<li><a href="/routes/' + rslug + '/"><b>' + html.escape(rname) + "</b> <span class=\"meta\">"
@@ -2032,6 +2032,112 @@ def entertainment_pages():
     for pl in sect_pages.values():
         pages.extend(pl)
     pages.extend(arts[s] for s in shelf if s not in merged_away)
+    # Living-machine hub (tech-standard display): the editorial desk becomes
+    # ground zero — 72 written pieces + the review shelf on one machine wall,
+    # with the restored NEXTCLIP storefront preserved whole at /watch/ and
+    # the four industry routes as cluster cards. No URL is removed: the old
+    # storefront keeps its exact body under a new (added) route, and the
+    # /browse/ stub keeps redirecting to the desk home.
+    import desk_hub_render
+    _ORDER_RE = re.compile(r"(watch-order|in-order|movies-order|where-to-start|canon-and-filler)")
+    _cat_arts = []
+    for _s in shelf:
+        if _s in merged_away:
+            continue
+        _sect = ENT_SLUG_SECT[_s]
+        _m = by_slug[_s]
+        _need = ("argue" if _sect == "opinion"
+                 else "understand" if _sect == "explainers"
+                 else "order" if _ORDER_RE.search(_s) else "tonight")
+        _cat_arts.append({"slug": _s, "title": _m["title"], "excerpt": arts[_s][2],
+                          "cat": _sect, "need": _need, "pub": TODAY, "upd": TODAY,
+                          "kind": "guide" if _m.get("new") else "archive"})
+    if _nr:
+        for _rv in _nr.REVIEWS:
+            _cat_arts.append({"slug": "reviews/" + _rv["slug"],
+                              "title": _rv["title"] + " (" + str(_rv["year"]) + ")",
+                              "excerpt": _rv["verdict"], "cat": "reviews", "need": "score",
+                              "pub": _rv["date"], "upd": _rv["date"], "kind": "review"})
+    _writ = {a["slug"] for a in _cat_arts if a["cat"] != "reviews"}
+    assert _writ == {s for s in shelf if s not in merged_away}, "catalogue/tree mismatch"
+    _n_rev = sum(1 for a in _cat_arts if a["kind"] == "review")
+    _n_arch = sum(1 for a in _cat_arts if a["kind"] == "archive")
+    _ENT_CATS = {
+        "recommendations": ENT_SECTIONS["recommendations"],
+        "explainers": ENT_SECTIONS["explainers"],
+        "opinion": ENT_SECTIONS["opinion"],
+        "reviews": ("The review shelf",
+                    "Full criticism of African and diaspora cinema on four published axes — the score is the average of the axes, revisions dated, no mystery numbers."),
+    }
+    _ent_cfg = {
+        "brand": "BRYME ENTERTAINMENT",
+        "h1": "What should I watch \u2014 and why?",
+        "dek": ('You have ninety minutes, a group-chat argument or a franchise to untangle. This desk '
+                'answers it: recommendations with reasons, explainers without the hype, opinion labelled '
+                'as opinion \u2014 dated honestly and arranged below by what you came here to <em>do</em>, '
+                'not by when we filed it. Written about the work; never trafficking in it.'),
+        "needs": [
+            ("tonight", "Pick tonight's watch",
+             "The what-should-I-watch-tonight questions, argued honestly: group nights, 90 minutes, boredom, horror season."),
+            ("order", "Watch it in order",
+             "Franchises, filmographies and long-runners: the right order, and where to start."),
+            ("understand", "Understand the machine",
+             "How streaming licensing, box office, award season and anime production actually work."),
+            ("argue", "Join the argument",
+             "Opinion labelled as opinion: cult favourites defended, hot takes with the reasoning shown."),
+            ("score", "Read a real review",
+             "African and diaspora cinema scored on four published axes \u2014 no star inflation."),
+        ],
+        "cadence": {"recommendations": 90, "explainers": 240, "opinion": 365, "reviews": 365},
+        "cadence_blurb": "The what-to-watch shelf turns fastest (90 days \u2014 release windows move); explainers and arguments can wait (240\u2013365). ",
+        "kind_badges": {"archive": "Archive 2025", "review": "Scored review"},
+        "chips": [("tonight", "Tonight"), ("order", "In order"), ("understand", "How it works"),
+                  ("argue", "Arguments"), ("score", "Reviews")],
+        "kind_chips": [("archive", "Archive editions"), ("review", "Scored reviews")],
+        "gauges": lambda st, tools: [
+            (st["n_pieces"], "pieces on the desk", "guides, explainers, opinion, reviews"),
+            (str(len(_nx.MOVIES)), "catalogued films & series", "hand-verified trailers"),
+            (str(_n_rev), "scored reviews", "four published axes"),
+            (str(_n_arch), "archive editions", "recovered, labelled, never re-badged"),
+            (st["n_sections"], "sections", "each with its own shelf"),
+        ],
+        "rules": [
+            "No piracy \u2014 no streams, no hosts, no links, not even hints. Written about the work, never trafficking in it.",
+            "Every trailer is hand-checked against YouTube\u2019s oEmbed record, and the verification date is printed on the film page.",
+            "Opinion is labelled opinion; review scores are the average of four published axes, and revisions are dated.",
+            "Archive editions stay dated and labelled \u2014 recovered, re-typeset, never re-badged as fresh.",
+            "Corrections land on the page that was wrong, and are listed.",
+        ],
+        "rules_links": [("about", "About the desk"), ("editorial-policy", "Editorial policy"),
+                        ("corrections", "Corrections"), ("contact", "Contact"), ("privacy", "Privacy")],
+        "clusters": [
+            ("/watch/", "The catalogue", str(len(_nx.MOVIES)) + " films and series with hand-verified official trailers, shelved by genre \u2014 the storefront, restored."),
+            ("/routes/nigerian-cinema/", "Nigerian cinema", "Home ground: the Lagos desk reads Nollywood first."),
+            ("/routes/korean-cinema/", "Korean cinema", "The global surge that turned a national industry into an export."),
+            ("/routes/japanese-cinema/", "Japanese cinema", "Animation and live action on one shelf, by studio and era."),
+            ("/routes/indian-cinema/", "Indian cinema", "Many industries, many languages \u2014 the largest film output on earth."),
+        ],
+        "clusters_h": "The catalogue and the industries.",
+        "clusters_p": "The storefront: every verified film shelved by genre, plus four industry routes \u2014 Nigeria first.",
+        "palette_label": "Search the entertainment desk",
+        "palette_placeholder": "anime, nollywood, watch order, horror \u2014 matches titles and summaries on your device",
+        "filter_placeholder": "filter: anime, nollywood, watch order\u2026",
+        "toolbox_href": "",
+        "contact_slug": "contact",
+        "desk": "entertainment",
+        "css": "/assets/tech-hub.css",
+        "tool_prefix": "",
+    }
+    _ent_hub = (head("entertainment", "Cinema, TV and anime \u2014 written about, never pirated.")
+        + desk_hub_render.render(_cat_arts, [], _ENT_CATS, _ent_cfg, "", TODAY)
+        + '<script src="/assets/tech-hub.js" defer></script>'
+        + foot("entertainment"))
+    pages.append(("/watch/", "The shelves \u2014 every film the desk covers | BRYME Entertainment",
+                  str(len(_nx.MOVIES)) + " films with hand-verified official trailers, shelved by genre - the platform, restored and beautiful.",
+                  browse_body))
+    pages[0] = ("/", "BRYME Entertainment \u2014 what should I watch, and why?",
+                "Recommendations with reasons, explainers without the hype, opinion labelled as opinion, scored reviews and a hand-verified film catalogue. Written about the work \u2014 never trafficking in it.",
+                _ent_hub)
     return pages + legal_pages("entertainment", "BRYME Entertainment", "Writing about film, TV and anime for people who love the work.", desk={
         "about": "The catalogue: " + str(len(_nx.MOVIES)) + " films with hand-verified official trailers, editorial scores, cast and credits, shelved by genre - plus the guides and explainers around them.",
         "privacy": "Trailers are embedded from YouTube's no-cookie domain and lazy-loaded: the player only requests data once the trailer section approaches your viewport while scrolling. &ldquo;Where to search&rdquo; links go to official platform search pages and are labelled as searches, never as availability claims.",
