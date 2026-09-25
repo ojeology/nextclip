@@ -492,6 +492,150 @@
     "stocks-forex-futures-and-cfds",
     "position-sizing-101"
    ]
+  },
+  {
+   "slug": "emergency-fund-guide",
+   "section": "Save and grow",
+   "title": "How to build an emergency fund: how much, where, how | BRYME Money",
+   "h1": "How to build an emergency fund: how much, where and how",
+   "dek": "Three to six months of essentials: the size, the right account, and a build plan that survives bad months.",
+   "description": "How big an emergency fund should be, where to keep it and how to build it — CFPB-aligned strategies, jurisdiction-honest, no heroics.",
+   "summary": "The size question, the safe-accessible-separate account tests, and the automate-and-windfall build plan, with US, UK and Nigeria notes.",
+   "sources": [
+    {
+     "label": "CFPB — an essential guide to building an emergency fund",
+     "url": "https://www.consumerfinance.gov/an-essential-guide-to-building-an-emergency-fund/"
+    },
+    {
+     "label": "MoneyHelper — beginners' guide to managing your money",
+     "url": "https://www.moneyhelper.org.uk/en/everyday-money/budgeting/beginners-guide-to-managing-your-money"
+    }
+   ],
+   "related": [
+    "budget-50-30-20-explained",
+    "trading-risk-checklist",
+    "risk-of-ruin-explained"
+   ]
+  },
+  {
+   "slug": "budget-50-30-20-explained",
+   "section": "Save and grow",
+   "title": "The 50/30/20 budget rule, explained — and when it bends | BRYME Money",
+   "h1": "The 50/30/20 budget rule, explained — and when it bends",
+   "dek": "Needs, wants and savings in three buckets: the rule's history, the honest exceptions, and the mechanics that make it stick.",
+   "description": "The 50/30/20 rule explained: needs, wants and savings buckets, when the scaffold bends, and the three mechanics that make any budget stick.",
+   "summary": "After-tax income split three ways, the cases where the percentages must flex, and automation-and-review habits that keep budgets alive.",
+   "sources": [
+    {
+     "label": "MoneyHelper — beginners' guide to managing your money",
+     "url": "https://www.moneyhelper.org.uk/en/everyday-money/budgeting/beginners-guide-to-managing-your-money"
+    },
+    {
+     "label": "MoneyHelper — create a household budget for your family",
+     "url": "https://www.moneyhelper.org.uk/en/blog/everyday-money/create-a-household-budget-for-your-family"
+    }
+   ],
+   "related": [
+    "emergency-fund-guide",
+    "debt-snowball-vs-avalanche",
+    "compound-interest-explained"
+   ]
+  },
+  {
+   "slug": "debt-snowball-vs-avalanche",
+   "section": "Save and grow",
+   "title": "Debt snowball vs avalanche: which payoff method fits you | BRYME Money",
+   "h1": "Debt snowball vs avalanche: which payoff method fits you",
+   "dek": "Highest-rate-first maths vs smallest-balance-first momentum — the trade-off, per CFPB guidance, and how to choose honestly.",
+   "description": "Snowball vs avalanche debt payoff compared — the maths, the psychology and how to choose honestly, per CFPB debt-reduction guidance.",
+   "summary": "Avalanche minimises interest; snowball maximises momentum. Which to pick by rate spread and quit history, plus the rollover habit both depend on.",
+   "sources": [
+    {
+     "label": "CFPB — your money, your goals: debt action plan (PDF)",
+     "url": "https://files.consumerfinance.gov/f/documents/cfpb_your-money-your-goals_debt-action-plan_tool_2018-11.pdf"
+    },
+    {
+     "label": "CFPB — resolve to take control of your debt",
+     "url": "https://www.consumerfinance.gov/about-us/blog/resolve-take-control-your-debt-new-year/"
+    }
+   ],
+   "related": [
+    "budget-50-30-20-explained",
+    "emergency-fund-guide",
+    "trading-fees-explained"
+   ]
+  },
+  {
+   "slug": "compound-interest-explained",
+   "section": "Save and grow",
+   "title": "Compound interest explained: formula, rule of 72, examples | BRYME Money",
+   "h1": "Compound interest explained: formula, rule of 72, examples",
+   "dek": "The mechanism behind every long-term money number: the formula, doubling times, and the same maths pointed at your debts.",
+   "description": "Compound interest explained in plain language: the formula, the rule of 72, why time beats amount, and the same maths pointed at your debt.",
+   "summary": "Future-value formula with a labelled example, the rule of 72, why starting early outruns contributing more, and the inflation caveats.",
+   "sources": [
+    {
+     "label": "Investor.gov — compound interest calculator",
+     "url": "https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator"
+    },
+    {
+     "label": "Investor.gov — savings goal calculator",
+     "url": "https://www.investor.gov/financial-tools-calculators/calculators/savings-goal-calculator"
+    }
+   ],
+   "related": [
+    "budget-50-30-20-explained",
+    "how-to-save-for-a-house-deposit",
+    "emergency-fund-guide"
+   ]
+  },
+  {
+   "slug": "how-to-save-for-a-house-deposit",
+   "section": "Save and grow",
+   "title": "How to save for a house deposit: UK, US and Nigeria guide | BRYME Money",
+   "h1": "How to save for a house deposit: UK, US and Nigeria guide",
+   "dek": "How much deposit you actually need, the LISA bonus and other boosters, and where the money should sit while it waits.",
+   "description": "Saving for a house deposit: how much you need in the UK, US and Nigeria, government boosters like the LISA, and where the money should sit.",
+   "summary": "Deposit size and LTV mechanics, backward-planning the monthly number, government first-time-buyer schemes, and safe vehicles for dated goals.",
+   "sources": [
+    {
+     "label": "MoneyHelper — saving money for a mortgage deposit",
+     "url": "https://www.moneyhelper.org.uk/en/homes/buying-a-home/saving-money-for-a-mortgage-deposit"
+    },
+    {
+     "label": "MoneyHelper — first-time buyer money tips",
+     "url": "https://www.moneyhelper.org.uk/en/homes/buying-a-home/first-time-buyer-money-tips"
+    }
+   ],
+   "related": [
+    "compound-interest-explained",
+    "budget-50-30-20-explained",
+    "emergency-fund-guide"
+   ]
+  },
+  {
+   "slug": "life-insurance-basics-explained",
+   "section": "Save and grow",
+   "title": "Life insurance basics explained: term vs permanent | BRYME Money",
+   "h1": "Life insurance basics explained: term vs permanent",
+   "dek": "Who actually needs cover, term versus permanent per NAIC guidance, sizing the number, plus UK trust and Nigeria licence notes.",
+   "description": "Life insurance basics: term vs permanent per NAIC guidance, how much cover dependants actually need, plus UK trust and Nigeria licence notes.",
+   "summary": "The income-replacement question, the two policy families and their honest trade-offs, beneficiary hygiene, and jurisdiction-specific buying notes.",
+   "sources": [
+    {
+     "label": "NAIC — consumer insight: a life insurance roadmap",
+     "url": "https://content.naic.org/article/consumer-insight-life-insurance-roadmap"
+    },
+    {
+     "label": "NAIC — what type of life insurance is right for you",
+     "url": "https://content.naic.org/article/consumer-insight-what-type-life-insurance-right-you"
+    }
+   ],
+   "related": [
+    "emergency-fund-guide",
+    "trading-risk-checklist",
+    "budget-50-30-20-explained"
+   ]
   }
  ]
 }

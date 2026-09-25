@@ -6883,12 +6883,12 @@ def money_pages():
     import money_evergreen_data as _me
     _calc_body = (_md.CALC_BODY_TOP + _md.CALC_BODY_TAIL
                   + '<script src="/assets/money-position-size.js" defer></script>')
-    pages = [("/", "Trading Education, Broker Checks & Tools | BRYME Money",
-              "Trading guides for beginners: markets, indicators, trading environments, broker verification, fees, leverage and free risk-planning tools. Educational, not advice.",
+    pages = [("/", "Saving Foundations, Trading Education & Tools | BRYME Money",
+              "Evergreen saving guides \u2014 emergency funds, budgeting, debt payoff, compound interest, house deposits, insurance \u2014 plus risk-first trading education, broker checks and free calculators. Educational, not advice.",
               _md.HUB_BODY)]
     pages.append((_md.CALC_PAGE["route"], _md.CALC_PAGE["title"], _md.CALC_PAGE["desc"], _calc_body))
     pages.append((_md.SIZING_101["route"], _md.SIZING_101["title"], _md.SIZING_101["desc"], _md.SIZING_BODY))
-    for _extra in (_md.QL_PAGE, _md.BT_PAGE, _md.EXP_PAGE, _md.TT_PAGE, _md.IND_PAGE):
+    for _extra in (_md.QL_PAGE, _md.BT_PAGE, _md.EXP_PAGE, _md.TT_PAGE, _md.IND_PAGE, _md.SAVINGS_PAGE):
         pages.append((_extra["route"], _extra["title"], _extra["desc"], _extra["body"]))
     for _guide in _me.pages(_md.DISCLAIMER_HTML):
         pages.append((_guide["route"], _guide["title"], _guide["desc"], _guide["body"]))
@@ -6930,18 +6930,18 @@ def money_pages():
     assert not _unused, "taxonomy entries with no page: " + ",".join(_unused)
     _money_cfg = {
         "brand": "BRYME MONEY",
-        "h1": "Risk-first trading research. No hype, no signals sold.",
-        "dek": ('You have a question before you risk money: what this instrument is, how big the '
-                'position should be, whether that broker is real. This desk answers it with the '
-                'risk-first method \u2014 sizing before strategy, every claim checkable, nothing sold '
-                '\u2014 and arranges the whole desk below by what you came here to <em>do</em>, not by '
-                'when we filed it.'),
+        "h1": "Saving foundations first. Risk-first trading research second.",
+        "dek": ('Build the base before any trade \u2014 emergency fund, budget, debt payoff, the '
+                'compounding maths \u2014 then answer the market questions: what this instrument '
+                'is, how big the position should be, whether that broker is real. Every claim '
+                'checkable, nothing sold, and the whole desk arranged below by what you came '
+                'here to <em>do</em>, not by when we filed it.'),
         "needs": _mhd.MONEY_NEEDS,
         "cadence": _mhd.MONEY_CADENCE,
-        "cadence_blurb": "Fees, brokers and platform details turn fastest (180 days); market mechanics can wait (365). ",
+        "cadence_blurb": "Fees, brokers and platform details turn fastest (180 days); saving foundations and market mechanics can wait (365). ",
         "kind_badges": {"checklist": "Checklist"},
-        "chips": [("start", "Start"), ("size", "Size it"), ("read", "Read charts"),
-                  ("vet", "Vet it"), ("test", "Test it")],
+        "chips": [("save", "Save & grow"), ("start", "Start"), ("size", "Size it"),
+                  ("read", "Read charts"), ("vet", "Vet it"), ("test", "Test it")],
         "kind_chips": [("checklist", "Checklists")],
         "gauges": lambda st, tools: [
             (st["n_pieces"], "pieces on the desk", "every one linked below"),
@@ -6974,8 +6974,8 @@ def money_pages():
         + desk_hub_render.render(_cat_arts, _mhd.MONEY_TOOLS, _mhd.MONEY_CATS, _money_cfg, "", TODAY)
         + '<script src="/assets/tech-hub.js" defer></script>'
         + foot("money"))
-    pages[0] = ("/", "Trading Education, Broker Checks & Tools | BRYME Money",
-                "Trading guides for beginners: markets, indicators, trading environments, broker verification, fees, leverage and free risk-planning tools. Educational, not advice.",
+    pages[0] = ("/", "Saving Foundations, Trading Education & Tools | BRYME Money",
+                "Evergreen saving guides \u2014 emergency funds, budgeting, debt payoff, compound interest, house deposits, insurance \u2014 plus risk-first trading education, broker checks and free calculators. Educational, not advice.",
                 _money_hub)
     for _cs, _cvals in _mhd.MONEY_CATS.items():
         _cn, _cd = _cvals[0], _cvals[1]

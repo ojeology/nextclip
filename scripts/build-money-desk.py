@@ -62,8 +62,13 @@ def main():
     if published.exists():
         shutil.rmtree(published)
     shutil.copytree(root, published)
-    shutil.copy2(ROOT / "assets" / "money-position-size.js",
-                 ROOT / "public" / "assets" / "money-position-size.js")
+    # Every money desk calculator asset ships with the desk; keep this a glob
+    # so future tools (savings goal, etc.) cannot be forgotten here.
+    copied = sorted((ROOT / "assets").glob("money-*.js"))
+    if not copied:
+        raise ValueError("No money desk JS assets found")
+    for js in copied:
+        shutil.copy2(js, ROOT / "public" / "assets" / js.name)
 
     routes = sitemap_routes(root / "sitemap.xml", eco.ORIGIN)
     for route in routes:

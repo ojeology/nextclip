@@ -5,6 +5,8 @@
 # re-verification windows in days (fees/brokers move fastest).
 
 MONEY_CATS = {
+    "save": ("Save and grow",
+             "The foundations before any trade: emergency funds, budgeting, debt payoff, compound interest, house deposits and insurance — evergreen saving, jurisdiction-honest."),
     "start": ("Start here",
               "What trading actually is, which market suits you, the trade types and the market environments — the map before the money."),
     "risk": ("Risk and sizing",
@@ -44,6 +46,14 @@ MONEY_MAP = {
     "demo-accounts-what-they-cant-teach": ("method", "test"),
     "signal-sellers-and-copy-trading": ("risk", "vet"),
     "day-trading-vs-swing-vs-investing": ("start", "start"),
+    # Saving batch (2026-09-25): evergreen personal-finance foundations —
+    # emergency funds, budgeting, debt payoff, compounding, deposits, insurance.
+    "emergency-fund-guide": ("save", "save"),
+    "budget-50-30-20-explained": ("save", "save"),
+    "debt-snowball-vs-avalanche": ("save", "save"),
+    "compound-interest-explained": ("save", "save"),
+    "how-to-save-for-a-house-deposit": ("save", "save"),
+    "life-insurance-basics-explained": ("save", "save"),
 }
 
 # (slug, title, blurb, related_slug)
@@ -54,10 +64,15 @@ MONEY_TOOLS = [
     ("expectancy-calculator", "Trading expectancy calculator",
      "Win rate and average win/loss in — expectancy per trade out. See why the ratio matters more than being right.",
      "backtesting-101"),
+    ("savings-goal-calculator", "Savings goal calculator",
+     "Goal, timeline, rate and monthly contribution in — future value and the monthly number you actually need out. Formula shown.",
+     "compound-interest-explained"),
 ]
 
 # (key, label, blurb)
 MONEY_NEEDS = [
+    ("save", "Build the base",
+     "Before any market: emergency funds, budgeting that sticks, debt payoff strategy and the compounding maths underneath it all."),
     ("start", "Start from zero",
      "New to markets. What trading is, what the instruments are, and the risk-first way in."),
     ("size", "Size the trade",
@@ -71,4 +86,4 @@ MONEY_NEEDS = [
 ]
 
 # days between re-verifications per section
-MONEY_CADENCE = {"start": 365, "risk": 365, "charts": 365, "costs": 180, "method": 365}
+MONEY_CADENCE = {"save": 365, "start": 365, "risk": 365, "charts": 365, "costs": 180, "method": 365}

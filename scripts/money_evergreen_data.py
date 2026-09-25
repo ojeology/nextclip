@@ -17,10 +17,18 @@ ROOT = Path(__file__).resolve().parents[1]
 CONTENT = ROOT / "content" / "money-guides"
 MANIFEST = json.loads((CONTENT / "manifest.json").read_text(encoding="utf-8"))
 REVIEWED = MANIFEST["reviewed"]
-SECTIONS = ("Start here", "Markets & conditions", "Broker & platform checks", "Indicator lab")
+SECTIONS = ("Save and grow", "Start here", "Markets & conditions", "Broker & platform checks", "Indicator lab")
 # Existing Money routes are linked deliberately rather than re-published as
 # competing copies. Navigation labels remain short on small screens.
 MONEY_NAV = (
+    ("Saving foundations", (
+        ("emergency-fund-guide", "Emergency fund"),
+        ("budget-50-30-20-explained", "50/30/20 budgeting"),
+        ("debt-snowball-vs-avalanche", "Debt payoff methods"),
+        ("compound-interest-explained", "Compound interest"),
+        ("how-to-save-for-a-house-deposit", "House deposit plan"),
+        ("life-insurance-basics-explained", "Life insurance basics"),
+        ("savings-goal-calculator", "Savings goal calculator"))),
     ("Start here", (
         ("trading-for-beginners", "Trading for beginners"),
         ("stocks-forex-futures-and-cfds", "Markets & products"),
@@ -65,6 +73,7 @@ def guides() -> list[dict]:
     known = {g["slug"] for g in rows} | {
         "technical-indicators-explained", "trade-types-explained", "position-sizing-101",
         "position-size-calculator", "expectancy-calculator", "backtesting-101", "quantlab-explained",
+        "savings-goal-calculator",
     }
     for g in rows:
         if not re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*", g["slug"]):
@@ -109,9 +118,9 @@ def shelves_html() -> str:
     blocks = [
         '<section class="section money-library" id="money-guides">',
         '<div class="section-head"><p class="kicker">Explore the subject</p>',
-        '<h2>Learn the market. Check the costs. Test the claim.</h2>',
+        '<h2>Build the base. Learn the market. Check the costs.</h2>',
         '<p class="lede">Evergreen explanations, not broker rankings or trading signals. '
-        'Choose a starting point, then follow the linked calculations and primary sources.</p></div>',
+        'Start with the saving foundations, then follow the linked calculations and primary sources.</p></div>',
     ]
     for section in SECTIONS:
         subset = [g for g in GUIDES if g["section"] == section]

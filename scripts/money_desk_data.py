@@ -9,7 +9,7 @@
 from datetime import date
 import money_evergreen_data as _me
 
-MONEY_TAGLINE = "Risk-first trading research, tools and education."
+MONEY_TAGLINE = "Saving foundations first, risk-first trading research second."
 
 MONEY_EDITION = date.fromisoformat(_me.REVIEWED).strftime("%B %Y").upper() + " \u00b7 THE RISK-FIRST DESK"
 
@@ -728,4 +728,73 @@ IND_PAGE = {
     "title": "Technical indicators explained - and how they relate | BRYME Money",
     "desc": "The four indicator families - trend, momentum, volatility, volume - what each really measures, why same-family tools are echoes, and the two classic stacks. Not advice.",
     "body": IND_BODY,
+}
+
+# ---- Money desk saving batch (2026-09-25): savings goal calculator ----
+# Evergreen personal-finance tool: projects a savings goal forward with
+# monthly compounding, or solves for the monthly contribution a goal needs.
+# Pure maths, no advice; inputs stay in the browser like the other two tools.
+
+SAVINGS_BODY = (
+    '<div class="wrap"><section class="cover"><p class="kicker">BRYME Money \u00b7 Tool</p>'
+    "<h1 class=\"cover-title\">Savings goal calculator</h1>"
+    "<p class=\"cover-dek\">Goal, timeline, rate and monthly contribution in \u2014 future value out, "
+    "or the exact monthly number your goal requires. The working is shown.</p></section>"
+    '<section class="section"><div class="prose">'
+    "<p>This is plain compound-interest maths on a monthly schedule: your starting balance grows "
+    "every month, and each contribution earns interest from the month it lands. Choose "
+    "<i>project</i> to see where today's plan ends up, or <i>goal</i> to solve for the monthly "
+    "contribution a target requires. The rate is a nominal annual rate compounded monthly \u2014 "
+    "use a realistic savings rate for your country, and remember inflation erodes real value. "
+    "Everything runs in your browser; nothing is stored or sent to BRYME.</p>"
+    "</div></section>"
+    '<section class="section"><div class="prose money-calc">'
+    '<style>'
+    '.money-calc .fld{display:flex;flex-direction:column;gap:6px;margin:14px 0}'
+    '.money-calc label{font-weight:600;font-size:14px}'
+    '.money-calc input,.money-calc select{padding:10px 12px;border:1px solid var(--line-strong);border-radius:8px;font-size:16px;max-width:340px;background:var(--sheet);color:inherit}'
+    '.money-calc fieldset{border:1px solid var(--line-strong);border-radius:10px;padding:6px 16px 16px;max-width:520px}'
+    '.money-calc legend{font-weight:700;padding:0 8px}'
+    '.money-calc .out{background:rgba(127,127,127,.08);border:1px solid var(--line-strong);border-radius:10px;padding:14px 16px;max-width:520px;margin:16px 0}'
+    '.money-calc .out b{font-size:18px}'
+    '.money-calc .warn{color:#a33;font-weight:600}'
+    '</style>'
+    '<fieldset><legend>Your plan</legend>'
+    '<div class="fld"><label for="msg-mode">Mode</label>'
+    '<select id="msg-mode"><option value="project">Project my plan forward</option>'
+    '<option value="goal">Find the monthly amount my goal needs</option></select></div>'
+    '<div class="fld"><label for="msg-cur">Currency</label>'
+    '<select id="msg-cur"><option value="">\u2014 (no symbol)</option><option value="$">$ USD</option>'
+    '<option value="\u00a3">\u00a3 GBP</option><option value="\u20ac">\u20ac EUR</option>'
+    '<option value="\u20a6">\u20a6 NGN</option><option value="C$">C$ CAD</option><option value="A$">A$ AUD</option></select></div>'
+    '<div class="fld"><label for="msg-start">Starting savings (today)</label>'
+    '<input id="msg-start" type="number" min="0" step="any" placeholder="e.g. 1000"></div>'
+    '<div class="fld" id="msg-crow"><label for="msg-month">Monthly contribution</label>'
+    '<input id="msg-month" type="number" min="0" step="any" placeholder="e.g. 150"></div>'
+    '<div class="fld"><label for="msg-rate">Annual interest rate (%)</label>'
+    '<input id="msg-rate" type="number" min="0" step="any" placeholder="e.g. 4"></div>'
+    '<div class="fld"><label for="msg-years">Years to save</label>'
+    '<input id="msg-years" type="number" min="0" max="60" step="any" placeholder="e.g. 5"></div>'
+    '<div class="fld" id="msg-grow" hidden><label for="msg-goal">Goal amount</label>'
+    '<input id="msg-goal" type="number" min="0" step="any" placeholder="e.g. 25000"></div>'
+    '</fieldset>'
+    '<div class="out" id="msg-out" aria-live="polite">Fill in the fields to see your projection.</div>'
+    '<p id="msg-warn" class="warn" aria-live="polite"></p>'
+    "</div></section>"
+    '<section class="section"><div class="prose">'
+    "<p><b>The formula behind it.</b> With monthly rate i = annual rate / 12 and n = years \u00d7 12, "
+    "future value = P(1+i)^n + C[((1+i)^n \u2212 1)/i], where P is the starting balance and C the "
+    "monthly contribution. Goal mode rearranges the same equation to solve for C. The mechanics, "
+    "worked example and the rule of 72 are explained in "
+    '<a href="/money/compound-interest-explained/">compound interest</a>; the fund this kind of '
+    'plan usually feeds is in the <a href="/money/emergency-fund-guide/">emergency fund guide</a>.</p>'
+    "</div></section></div>"
+    + '<script src="/assets/money-savings-goal.js" defer></script></div>'
+)
+
+SAVINGS_PAGE = {
+    "route": "/savings-goal-calculator/",
+    "title": "Savings goal calculator - project or solve, working shown | BRYME Money",
+    "desc": "Free savings goal calculator: balance, rate, monthly amount and years in - future value or the required monthly contribution out, with the formula shown. Runs in your browser.",
+    "body": SAVINGS_BODY,
 }
