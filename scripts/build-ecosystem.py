@@ -41,6 +41,7 @@ MODE = os.environ.get("ROUTING_MODE") or CFG.get("mode", "path")
 ORIGIN = os.environ.get("ORIGIN") or CFG.get("origin") or sitecfg.site_url()
 ORIGIN_HOST = ORIGIN.split("//", 1)[-1].rstrip("/")  # batch 15: display host
 TODAY = "2026-09-09"
+FIT_SWEEP = "2026-09-25"  # fitness desk source/freshness sweep date
 import datetime as _dtmod
 _TODAY_LIVE = _dtmod.date.today().isoformat()  # clamp: never emit future dates
 
@@ -4196,7 +4197,7 @@ ACV_SOURCES = [
     ("Patient.info \u2014 Does apple cider vinegar help with weight loss?", "https://patient.info/features/healthy-living/apple-cider-vinegar-does-it-help-with-weight-loss"),
 ]
 CRE_SOURCES = [
-    ("Ubie (medically reviewed) \u2014 Is creatine safe? Side effects & dosing", "https://ubiehealth.com/doctors-note/creatine-side-effects-safety-reality-steps-37-tips"),
+    ("NIH ODS \u2014 Dietary Supplements for Exercise and Athletic Performance (creatine safety & efficacy section)", "https://ods.od.nih.gov/factsheets/ExerciseAndAthleticPerformance-HealthProfessional/"),
     ("Harvard T.H. Chan School of Public Health \u2014 Workout Supplements", "https://nutritionsource.hsph.harvard.edu/workout-supplements/"),
 ]
 
@@ -4311,7 +4312,7 @@ def fitness_pages():
             return ""
         return ('<h2>Sources</h2><ul class="list">'
                 + "".join('<li><a href="' + u + '" rel="noopener">' + n + "</a></li>" for n, u in sources)
-                + "</ul>")
+                + '</ul><p class="fine">Every link checked ' + FIT_SWEEP + "; sources favour primary and public-health bodies.</p>")
 
     def art(slug, title, dek, body_html, sources, related, schema_type="Article"):
         import json as _j
@@ -4320,7 +4321,7 @@ def fitness_pages():
                   "headline": title,
                   "author": {"@type": "Organization", "name": "BRYME Fitness desk"},
                   "publisher": {"@type": "Organization", "name": "THE BRYME"},
-                  "datePublished": TODAY, "dateModified": TODAY,
+                  "datePublished": TODAY, "dateModified": FIT_SWEEP,
                   "mainEntityOfPage": ORIGIN + "/fitness/" + slug + "/",
                   "description": dek}
         abody = (head("fitness", "Practical fitness \u2014 no miracles, no medical claims.")
@@ -4328,7 +4329,7 @@ def fitness_pages():
             + '<nav class="crumb"><a href="/fitness/">Fitness</a> / ' + html.escape(title) + "</nav>"
             + '<section class="cover"><p class="kicker">' + kicker_default + "</p>"
             + '<h1 class="cover-title" style="font-size:clamp(30px,4.6vw,48px)">' + html.escape(title) + "</h1>"
-            + '<p class="byline">BRYME Fitness desk \u00b7 reviewed ' + TODAY + " \u00b7 general information, not medical advice</p></section>"
+            + '<p class="byline">BRYME Fitness desk \u00b7 reviewed ' + FIT_SWEEP + " \u00b7 general information, not medical advice</p></section>"
             + '<section class="section alt"><div class="wrap"><p class="lede"><b>In one line:</b> ' + html.escape(dek) + "</p></div></section>"
             + '<section class="section"><div class="prose">' + body_html + src_html(sources) + "</div></section>"
             + '<section class="section alt"><div class="section-head"><p class="kicker">Keep going</p><h2>Related on this desk.</h2></div>'
@@ -4378,7 +4379,7 @@ def fitness_pages():
                    "headline": "The 30-Day Walking Plan",
                    "author": {"@type": "Organization", "name": "BRYME Fitness desk"},
                    "publisher": {"@type": "Organization", "name": "THE BRYME"},
-                   "datePublished": TODAY, "dateModified": TODAY,
+                   "datePublished": TODAY, "dateModified": FIT_SWEEP,
                    "mainEntityOfPage": ORIGIN + "/fitness/30-day-walking-plan/",
                    "description": "A beginner walking plan built around one honest idea: show up every day for a month. Progress is tracked in your browser \u2014 no account, nothing sent anywhere."}
     plan_body = (head("fitness", "Practical fitness \u2014 no miracles, no medical claims.")
@@ -4386,7 +4387,7 @@ def fitness_pages():
         + '<nav class="crumb"><a href="/fitness/">Fitness</a> / The 30-Day Walking Plan</nav>'
         + '<section class="cover"><p class="kicker">' + kicker_default + "</p>"
         + '<h1 class="cover-title" style="font-size:clamp(30px,4.6vw,48px)">The 30-Day Walking Plan</h1>'
-        + '<p class="byline">BRYME Fitness desk \u00b7 reviewed ' + TODAY + " \u00b7 general information, not medical advice</p></section>"
+        + '<p class="byline">BRYME Fitness desk \u00b7 reviewed ' + FIT_SWEEP + " \u00b7 general information, not medical advice</p></section>"
         + '<section class="section alt"><div class="wrap"><p class="lede"><b>One honest idea:</b> show up every day for a month. The plan is built on time, not distance, and every seventh day is a rest day by design. Progress is saved in your browser \u2014 no account, nothing sent anywhere.</p></div></section>'
         + '<section class="section"><div class="wrap"><div class="fp-progressbar" role="img" aria-label="Plan progress"><div class="fp-fill" id="fp-fill"></div></div>'
         + '<p class="lede" id="fp-status">Day 0 of 30 complete. Tick days off as you go \u2014 your browser will remember.</p></div></section>'
@@ -4478,6 +4479,16 @@ def fitness_pages():
     ART_SOURCES["sleep-and-exercise-performance"] = FIT_SOURCES + [
         ("CDC (MMWR) \u2014 adults 18\u201360 recommended at least 7 hours; short-sleep risks", "https://www.cdc.gov/mmwr/volumes/65/wr/mm6506a1.htm"),
         ("CDC \u2014 1 in 3 adults don\u2019t get enough sleep (AASM/SRS recommendation)", "https://archive.cdc.gov/www_cdc_gov/media/releases/2016/p0215-enough-sleep.html")]
+    # Batch 2 (2026-09-25 sweep): curated external sources for high-YMYL
+    # pages — verified URLs only, primary/public-health bodies first.
+    # Merged (not replacing) so earlier page-specific picks are kept.
+    import fitness_sources_data as fsd
+    for _slug, _srcs in fsd.FIT_PAGE_SOURCES.items():
+        _merged = list(ART_SOURCES.get(_slug, []))
+        for _s in _srcs:
+            if _s not in _merged:
+                _merged.append(_s)
+        ART_SOURCES[_slug] = _merged
     related_map["walking-vs-running"] = [("cardio-machine-worth-buying", "Rower, bike or treadmill: which cardio machine deserves the corner?"),
                                      ("30-day-walking-plan", "The 30-day walking plan"),
                                          ("how-to-warm-up", "How to warm up"),
@@ -4896,7 +4907,7 @@ def fitness_pages():
         "headline": "The BRYME Weekly Planner",
         "author": {"@type": "Organization", "name": "BRYME Fitness desk"},
         "publisher": {"@type": "Organization", "name": "THE BRYME"},
-        "datePublished": TODAY, "dateModified": TODAY,
+        "datePublished": TODAY, "dateModified": FIT_SWEEP,
         "mainEntityOfPage": ORIGIN + "/fitness/weekly-planner/",
         "description": "One card for the honest fitness week: movement most days, two strength days, on-time evenings. Ticks are saved in your browser only and the card resets each Monday."}
     planner_body = (head("fitness", "Practical fitness \u2014 no miracles, no medical claims.")
@@ -4945,7 +4956,7 @@ def fitness_pages():
         _cn = _fhd.FIT_MAP.get(_s)
         assert _cn, "fitness page without taxonomy entry: " + _s
         _cat_arts.append({"slug": _s, "title": _t.split(" | ")[0], "excerpt": _d,
-                          "cat": _cn[0], "need": _cn[1], "pub": "", "upd": "",
+                          "cat": _cn[0], "need": _cn[1], "pub": TODAY, "upd": FIT_SWEEP,
                           "kind": "programme" if _s.startswith("30-day") else "guide"})
     _unused = sorted(set(_fhd.FIT_MAP) - {a["slug"] for a in _cat_arts})
     assert not _unused, "taxonomy entries with no page: " + ",".join(_unused)
