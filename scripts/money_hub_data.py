@@ -21,6 +21,12 @@ MONEY_CATS = {
 
 # slug -> (section, need)
 MONEY_MAP = {
+    "apr-vs-apy-explained": ("save", "save"),
+    "salary-sacrifice-explained": ("save", "save"),
+    "employer-pension-matching-explained": ("save", "save"),
+    "what-is-escrow-explained": ("save", "save"),
+    "overdraft-fees-explained": ("save", "save"),
+    "lifetime-isa-explained": ("save", "save"),
     "how-to-find-a-lost-pension-explained": ("save", "save"),
     "unclaimed-money-and-dormant-accounts-explained": ("save", "save"),
     "what-happens-to-debts-after-someone-dies-explained": ("save", "save"),

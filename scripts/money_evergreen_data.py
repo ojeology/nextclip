@@ -45,6 +45,12 @@ MONEY_NAV = (
         ("income-protection-insurance-explained", "Income protection"),
         ("how-to-find-a-lost-pension-explained", "Find a lost pension"),
         ("unclaimed-money-and-dormant-accounts-explained", "Unclaimed money"),
+        ("apr-vs-apy-explained", "APR vs APY"),
+        ("salary-sacrifice-explained", "Salary sacrifice"),
+        ("employer-pension-matching-explained", "Employer match"),
+        ("what-is-escrow-explained", "What is escrow"),
+        ("overdraft-fees-explained", "Overdraft fees"),
+        ("lifetime-isa-explained", "Lifetime ISA"),
         ("savings-goal-calculator", "Savings goal calculator"),
         ("credit-card-payoff-calculator", "Card payoff calculator"))),
     ("Start here", (
