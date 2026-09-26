@@ -29,7 +29,7 @@ for (const [i, g] of manifest.articles.entries()) {
   check(eco.includes(escapeText(g.h1)), `${route}: ecosystem source page differs from manifest`);
   check(html.includes(`href="${origin}${route}"`), `${route}: missing exact canonical`);
   check(html.includes('name="robots" content="index,follow"'), `${route}: noindex or missing robots`);
-  check(html.includes(`content="${g.description}"`), `${route}: description mismatch`);
+  check(html.includes(`content="${escapeText(g.description)}"`), `${route}: description mismatch`);
   check((html.match(/<h1\b/g) || []).length === 1 && html.includes(escapeText(g.h1)), `${route}: wrong H1`);
   check(html.includes('id="main"') && html.includes('href="#main"'), `${route}: accessibility landmarks absent`);
   check(html.includes("General information, not financial advice"), `${route}: missing financial disclaimer`);
@@ -59,7 +59,9 @@ for (const [i, g] of manifest.articles.entries()) {
 }
 const siteMoney = read("money/sitemap.xml");
 const sitemapLocs = [...siteMoney.matchAll(/<loc>(.*?)<\/loc>/g)].map(m => m[1]);
-check(sitemapLocs.length === 15 + routes.length, `Money sitemap should contain 15 original + ${routes.length} guides, has ${sitemapLocs.length}`);
+// 25 desk pages = hub + 6 section shelves + 7 legal + 5 calculators + 2 101-pages + 4 desk explainers (2026-09-26 audit; guides are counted separately below)
+const DESK_PAGES = 25;
+check(sitemapLocs.length === DESK_PAGES + routes.length, `Money sitemap should contain ${DESK_PAGES} desk pages + ${routes.length} guides, has ${sitemapLocs.length}`);
 for (const route of routes) {
   check(allow.includes(route), `${route}: missing routed allowlist entry`);
   check(sitemapLocs.includes(origin + route), `${route}: missing Money sitemap entry`);

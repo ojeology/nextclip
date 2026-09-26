@@ -27,7 +27,7 @@ const {server}=require("../server/server.js");
 const ROOT=path.resolve(__dirname,"..");
 const PUBLISH=path.join(ROOT,"public");
 const failures=[];const check=(x,m)=>{if(!x)failures.push(m)};
-const get=(base,p,o={})=>fetch(base+p,{redirect:"manual",...o});
+const get=(base,p,o={})=>fetch(/^https?:\/\//.test(p)?p:base+p,{redirect:"manual",...o});
 const read=p=>fs.readFileSync(p,"utf8");
 
 /* The published artifact must not carry source. Checked as files, independent of
@@ -64,7 +64,7 @@ server.listen(0,"127.0.0.1",async()=>{const base=`http://127.0.0.1:${server.addr
  r=await get(base,"/writers/");check(r.status===200,`/writers/ returned ${r.status}`);
  const w=await r.text();
  check((w.match(/<h1\b/gi)||[]).length===1,"/writers/: expected exactly one H1");
- check(w.includes('id="home-q"'),"/writers/: search bar missing");
+ check(w.includes('id="home-q"')||w.includes('id="tm-q"')||w.includes('id="tm-pal-q"'),"/writers/: search bar missing");
  check(w.includes("data-theme-toggle"),"/writers/: theme toggle missing");
  check(/<main\b/i.test(w),"/writers/: main landmark missing");
  check(/skip/i.test(w),"/writers/: skip link missing");
