@@ -766,7 +766,8 @@ def tech_drawer():
         '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 5l14 14M19 5L5 19"/></svg></button></div>\n'
         '<div class="drawer-group"><b>Sections</b><a href="/tech/">Desk home</a>'
         + "".join('<a href="/tech/' + c + '/">' + TECH_CAT[c][0] + '</a>' for c in TECH_CAT)
-        + '<a href="/tech/tool/">The toolbox</a></div>\n'
+        + '<a href="/tech/tool/">The toolbox</a>'
+        + '<a href="/tech/compare/">The comparison engine</a></div>\n'
         '<div class="drawer-group"><b>The desk</b><a href="/tech/methodology/">Editorial methodology</a>'
         '<a href="/tech/corrections/">Corrections policy</a><a href="/tech/about/">About</a>'
         '<a href="/tech/contact/">Contact</a><a href="/tech/privacy/">Privacy</a></div>\n'
@@ -942,9 +943,10 @@ def head(pub, tagline, parent=True):
 def foot(pub, extra=""):
     _base = "writers" if pub == "hub" else pub
     _trust = ((' \u00b7 <a href="/tech/methodology/">Methodology</a> \u00b7 <a href="/tech/corrections/">Corrections</a>'
-               ' \u00b7 <a href="/tech/terms/">Terms</a> \u00b7 <a href="/tech/disclaimer/">Disclaimer</a>') if pub == "tech" else
+               ' \u00b7 <a href="/tech/terms/">Terms</a> \u00b7 <a href="/tech/editorial-policy/">Editorial policy</a>'
+               ' \u00b7 <a href="/tech/copyright/">Copyright</a> \u00b7 <a href="/tech/disclaimer/">Disclaimer</a>') if pub == "tech" else
               (' \u00b7 <a href="/' + _base + '/terms/">Terms</a> \u00b7 <a href="/' + _base + '/editorial-policy/">Editorial policy</a>'
-               ' \u00b7 <a href="/' + _base + '/corrections/">Corrections</a>'))
+               ' \u00b7 <a href="/' + _base + '/corrections/">Corrections</a> \u00b7 <a href="/' + _base + '/copyright/">Copyright</a>'))
     x = extra or _trust
     privacy_href = "/privacy/" if pub == "hub" else "/" + pub + "/privacy/"
     return f"""<footer class="foot"><div class="wrap foot-in">
@@ -6371,7 +6373,8 @@ def home_pages():
             "Saved items and reading history stay in this browser\u2019s local storage and nowhere else.",
         ],
         "rules_links": [("about", "About the desk"), ("editorial-policy", "Editorial policy"),
-                        ("corrections", "Corrections"), ("contact", "Contact")],
+                        ("corrections", "Corrections"), ("contact", "Contact"),
+                        ("pests-start-here", "Pests, start here"), ("seasonal-care", "Seasonal home care")],
         "clusters": [
             ("/home/mistakes/", "The mistakes shelf",
              "Every classic DIY error, what it costs, and the five-minute check that catches it."),
