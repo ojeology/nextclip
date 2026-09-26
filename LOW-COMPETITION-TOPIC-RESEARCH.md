@@ -18,7 +18,7 @@ A topic qualifies when **most** of these are true:
 
 ---
 
-## Tier A — ready to ship as the next wave (6 per desk)
+## Tier A — **SHIPPED 2026-09-26** (commit beae723; 24/24 live, IndexNow 200) (6 per desk)
 
 ### Money #12 — "the money people are confused by" (high-CPC jet words)
 
