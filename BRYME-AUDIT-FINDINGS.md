@@ -41,7 +41,7 @@ Last sweep: 2026-09-26 · deploy `dep-das1307f` (commit `b93550f`) live.
 | B3 | State of Paid Writing report | **SHIPPED & live** (`73e3720`) — /writers/state-of-paid-writing-2026/, all figures computed from the 142-record DB at build time (92 open/rolling; USD market 50 records $5–$2,500 stated minimums; 51 publications state AI policy, 45 prohibit; rights/response transparency counts); allowlisted, sitemapped (writers 510), linked from /today/ and /writing/, IndexNow pinged |
 | B2 | Pinterest | Blocked on D3 (account ownership) |
 | B4 | Shareable tool | Blocked on D1 (tool pick) |
-| B5 | Event calendar | Not started — after B3 promotion pass |
+| B5 | Event/deadline calendar | **SHIPPED & live** (`a7af74d`) — /writers/writing-calendar/: 3 open-and-closing + 3 opening-soon + 28 recurring windows, all from record deadline data, sorted at build time, linked from digest CTA, IndexNow pinged |
 | B6 | Forums/newsletter | Newsletter infrastructure already exists (/newsletter/ digest CTA); forum seeding not started |
 
 ## Verified non-issues (do not re-investigate)
