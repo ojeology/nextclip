@@ -4826,6 +4826,9 @@ def fitness_pages():
     import fitness_more13_data
     FIT_ARTICLES.extend((s, ti, dek, b) for (s, _k, ti, dek, b) in fitness_more13_data.FIT_MORE_13)
     ART_SOURCES.update((s, FIT_SOURCES) for (s, _k, ti, dek, b) in fitness_more13_data.FIT_MORE_13)
+    import fitness_more14_data
+    FIT_ARTICLES.extend((s, ti, dek, b) for (s, _k, ti, dek, b) in fitness_more14_data.FIT_MORE_14)
+    ART_SOURCES.update(fitness_more14_data.FIT_SOURCES_14)
     ART_SOURCES["intermittent-fasting-explained"] = FIT_SOURCES + [
         ("WHO \u2014 Healthy diet fact sheet",
          "https://www.who.int/news-room/fact-sheets/detail/healthy-diet")]
@@ -5220,6 +5223,12 @@ def fitness_pages():
     related_map["plant-based-protein-explained"] = [("how-much-protein-do-you-need", "Protein, honestly"),
                                                     ("creatine-explained", "Creatine, explained"),
                                                     ("protein-timing-anabolic-window", "Protein timing")]
+    related_map["posture-exercises-what-evidence-says"] = [("bodyweight-moves-that-matter", "Bodyweight moves that matter"), ("muscle-soreness-vs-injury", "Soreness versus injury")]
+    related_map["dumbbell-only-home-programme-explained"] = [("how-many-reps-for-muscle", "How many reps for muscle"), ("rest-days-and-recovery", "Rest days and recovery")]
+    related_map["rest-between-sets-explained"] = [("how-many-reps-for-muscle", "How many reps for muscle"), ("dumbbell-only-home-programme-explained", "The dumbbell-only programme")]
+    related_map["muscle-imbalances-explained"] = [("dumbbell-only-home-programme-explained", "The dumbbell-only programme"), ("posture-exercises-what-evidence-says", "Posture: what evidence says")]
+    related_map["exercise-when-sick-explained"] = [("sleep-and-exercise-performance", "Sleep and exercise performance"), ("muscle-soreness-vs-injury", "Soreness versus injury")]
+    related_map["exercise-and-longevity-explained"] = [("strength-training-for-beginners", "Strength training for beginners"), ("restarting-exercise-after-a-break", "Restarting after a break")]
     arts = [art(s, ti, dek, b, ART_SOURCES[s], related_map[s])
             for (s, ti, dek, b) in FIT_ARTICLES]
 

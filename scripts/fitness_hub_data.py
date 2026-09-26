@@ -31,6 +31,13 @@ FIT_CATS = {
 
 # slug -> (section, primary need). Every fitness content page appears exactly once.
 FIT_MAP = {
+    "posture-exercises-what-evidence-says": "understand",
+    "dumbbell-only-home-programme-explained": "plans",
+    "rest-between-sets-explained": "understand",
+    "muscle-imbalances-explained": "understand",
+    "exercise-when-sick-explained": "recover",
+    "exercise-and-longevity-explained": "understand",
+
     # Growth batch 10 (2026-09-25): the numbers shelf.
     "heart-rate-zones-explained": ("cardio", "understand"),
     "vo2-max-explained": ("cardio", "understand"),
