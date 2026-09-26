@@ -15,7 +15,7 @@ SPORT_EXPLAINERS = [
 <p>Two things make offside feel different from a decade ago. Semi-automated offside technology at the biggest competitions tracks the freeze-frame with sensors and draws the line for the officials &mdash; faster, and arguable in a new way (a toe's width, measured precisely). And interpretations get clarified over time: in 2023 top leagues agreed to flag only once a player actually touches the ball, formalising the &ldquo;wait and see&rdquo; practice. The core law is stable; the margins are engineered. When a decision confuses you, ask which of the three ideas is being argued &mdash; position, timing or involvement &mdash; and the argument usually names itself.</p>""",
 [("IFAB — Laws of the Game (Law 11, Offside)", "https://www.theifab.com/laws/latest/offside/")],
 [("how-var-works", "How VAR actually works"),
- ("promotion-and-relegation-explained", "Promotion and relegation, explained")]),
+ ("promotion-and-relegation-explained", "Promotion and relegation, explained"), ('sin-bin-explained', 'Sin bin, explained')]),
 
 ("promotion-and-relegation-explained", "Promotion and relegation: the idea that makes football's pyramid breathe",
 "Why clubs can rise and fall between leagues, why relegation hurts more than losing, and why the big American leagues do things differently.",
@@ -352,7 +352,7 @@ SPORT_EXPLAINERS.extend([
 <p>Every alternative has been tried and retired: golden goal, silver goal, replays on demand. The shootout endures because it is decisive, quick, and brutal in a way the laws have learned to accept - a contest that is technically not football, resolving a football match. The players know it, the laws admit it, and nobody who has watched one forgets it.</p>
 <p>The offside law does not apply differently in extra time, and neither does anything else - the laws run unchanged through all 120 minutes. The three-ideas explanation of that law is on <a href="/sports/the-offside-rule-explained/">the offside rule, explained</a>, and the knockout structures that trigger all of this are mapped in <a href="/sports/how-football-playoffs-work/">how playoffs work</a> and <a href="/sports/how-the-champions-league-works/">how the Champions League works</a>.</p>""",
  [('IFAB - Laws of the Game (Law 10, Determining the Outcome of a Match)', 'https://www.theifab.com/laws/latest/determining-the-outcome-of-a-match/')],
- [('how-football-playoffs-work', 'How playoffs work'), ('how-the-champions-league-works', 'How the Champions League works'), ('the-offside-rule-explained', 'The offside rule')]),
+ [('how-football-playoffs-work', 'How playoffs work'), ('how-the-champions-league-works', 'How the Champions League works'), ('the-offside-rule-explained', 'The offside rule'), ('why-darts-starts-at-501-explained', 'Why darts starts at 501')]),
 ("set-pieces-explained",
  "Set pieces, explained: corners, free kicks and every way the game restarts",
  "The eight ways play restarts, the direct-versus-indirect free kick, and the offside exceptions nobody remembers until they matter.",
@@ -843,7 +843,7 @@ SPORT_EXPLAINERS.extend([
 <p>The synthesis: the NBA runs a closed league (security for owners), a reverse-order draft (hope for the worst teams), a soft cap (limits with escape hatches) and a best-of-seven playoff (the deserving usually win). It is the most deliberately engineered balance of parity and stardom in world sport &mdash; and its rules change every collective bargaining agreement because the balance never quite settles. That is the league working as designed: the argument is the product.</p>""",
 [("Wikipedia \u2014 National Basketball Association", "https://en.wikipedia.org/wiki/National_Basketball_Association"),
  ("Wikipedia \u2014 NBA draft", "https://en.wikipedia.org/wiki/NBA_draft")],
-[("basketball-rules-explained", "Basketball rules, explained"), ("how-sport-tournament-formats-work", "How tournament formats work")]),
+[("basketball-rules-explained", "Basketball rules, explained"), ("how-sport-tournament-formats-work", "How tournament formats work"), ('why-nba-plays-82-games-explained', 'Why the NBA plays 82 games')]),
 
 ("american-football-rules-explained", "American football rules, explained: the chess clock of the downs",
 "Four downs, ten yards, the scoring ladder and the clock games: the rules of American football decoded for people who find it baffling.",
@@ -1334,7 +1334,7 @@ SPORT_EXPLAINERS += [
 <p>The count-down is not trivia; it is strategy. Good players spend most of a visit scoring, then spend the last visit <b>setting up a finish</b> &mdash; leaving a score they can close with doubles they actually hit, most famously 40 (double 20) or 32 (double 16), because missing leaves a single below and another dart in hand. Watch a professional's third visit and you are watching someone doing this arithmetic at speed. It is the same genre of question as the scoring quirks in other sports &mdash; see <a href="/sports/golf-scoring-explained/">how golf scoring works</a> for another system built on odd conventions that turned out to work.</p>""",
 [('Wikipedia — Darts', 'https://en.wikipedia.org/wiki/Darts'),
  ('Wikipedia — Nine-dart finish', 'https://en.wikipedia.org/wiki/Nine-dart_finish')],
-[('golf-scoring-explained', 'How golf scoring works'), ('tennis-scoring-explained', 'Tennis scoring, explained'), ('boxing-scoring-explained', 'Boxing scoring, explained')]),
+[('golf-scoring-explained', 'How golf scoring works'), ('tennis-scoring-explained', 'Tennis scoring, explained'), ('boxing-scoring-explained', 'Boxing scoring, explained'), ('how-extra-time-and-penalty-shootouts-work', 'How extra time and penalty shootouts work')]),
 
 ('sin-bin-explained', 'What is a sin bin? Temporary dismissals across the sports that use them',
 "Ten minutes in rugby, two in hockey, and football's grassroots version: what the sin bin is, what it is not, and how it changed the games that adopted it.",

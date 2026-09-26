@@ -4945,6 +4945,7 @@ def fitness_pages():
         ART_SOURCES[_slug] = _merged
     related_map["walking-vs-running"] = [("cardio-machine-worth-buying", "Rower, bike or treadmill: which cardio machine deserves the corner?"),
                                      ("30-day-walking-plan", "The 30-day walking plan"),
+                                     ("12-3-30-workout-explained", "The 12-3-30 treadmill workout"),
                                          ("how-to-warm-up", "How to warm up"),
                                          ("how-to-start-working-out", "Starting from zero")]
     related_map["how-to-warm-up"] = [("strength-training-for-beginners", "Strength training for beginners"),
@@ -4952,10 +4953,12 @@ def fitness_pages():
                                      ("rest-days-and-recovery", "Rest days and recovery")]
     related_map["workout-at-home-no-equipment"] = [("how-progressive-overload-works", "How progressive overload works"),
                                                    ("strength-training-for-beginners", "Strength training for beginners"),
-                                                   ("how-to-warm-up", "How to warm up")]
+                                                   ("how-to-warm-up", "How to warm up"),
+                                                   ("weighted-vests-explained", "Weighted vests, explained")]
     related_map["how-progressive-overload-works"] = [("workout-at-home-no-equipment", "The no-equipment home routine"),
                                                      ("strength-training-for-beginners", "Strength training for beginners"),
-                                                     ("rest-days-and-recovery", "Rest days and recovery")]
+                                                     ("rest-days-and-recovery", "Rest days and recovery"),
+                                                     ("weighted-vests-explained", "Weighted vests, explained")]
     related_map["breathing-during-exercise"] = [("how-to-start-working-out", "Starting from zero"),
                                                 ("walking-vs-running", "Walking or running?"),
                                                 ("how-to-warm-up", "How to warm up")]
@@ -5040,6 +5043,7 @@ def fitness_pages():
                                                    ("30-day-walking-plan", "The 30-day walking plan")]
     related_map["cardio-machine-worth-buying"] = [("walking-vs-running", "Walking or running: the honest comparison for beginners"),
                                               ("how-to-start-working-out", "Starting from zero: how to begin exercising"),
+                                              ("12-3-30-workout-explained", "The 12-3-30 treadmill workout"),
                                               ("fitness-calculators", "The desk's fitness calculators")]
     # Sept 2026 expansion batch: cross-links for the ten new guides
     related_map["push-up-progression"] = [("squat-form-beginners", "The beginner's squat: six checkpoints"),
@@ -5164,6 +5168,7 @@ def fitness_pages():
                                             ("personal-trainer-worth-it", "Is a personal trainer worth it")]
     related_map["how-many-reps-for-muscle"] = [("bodybuilding-must-know", "What every bodybuilder must know"),
                                                ("how-progressive-overload-works", "How progressive overload works"),
+                                               ("supersets-vs-circuits-explained", "Supersets versus circuits"),
                                                ("dumbbell-vs-barbell", "Dumbbells vs barbells")]
     related_map["deload-weeks-explained"] = [("rest-days-and-recovery", "Rest days and recovery"),
                                              ("how-progressive-overload-works", "How progressive overload works"),
@@ -5304,7 +5309,7 @@ def fitness_pages():
                                                     ("protein-timing-anabolic-window", "Protein timing")]
     related_map["posture-exercises-what-evidence-says"] = [("bodyweight-moves-that-matter", "Bodyweight moves that matter"), ("muscle-soreness-vs-injury", "Soreness versus injury")]
     related_map["dumbbell-only-home-programme-explained"] = [("how-many-reps-for-muscle", "How many reps for muscle"), ("rest-days-and-recovery", "Rest days and recovery")]
-    related_map["rest-between-sets-explained"] = [("how-many-reps-for-muscle", "How many reps for muscle"), ("dumbbell-only-home-programme-explained", "The dumbbell-only programme")]
+    related_map["rest-between-sets-explained"] = [("how-many-reps-for-muscle", "How many reps for muscle"), ("dumbbell-only-home-programme-explained", "The dumbbell-only programme"), ("supersets-vs-circuits-explained", "Supersets versus circuits")]
     related_map["muscle-imbalances-explained"] = [("dumbbell-only-home-programme-explained", "The dumbbell-only programme"), ("posture-exercises-what-evidence-says", "Posture: what evidence says")]
     related_map["exercise-when-sick-explained"] = [("sleep-and-exercise-performance", "Sleep and exercise performance"), ("muscle-soreness-vs-injury", "Soreness versus injury")]
     related_map["exercise-and-longevity-explained"] = [("strength-training-for-beginners", "Strength training for beginners"), ("restarting-exercise-after-a-break", "Restarting after a break")]
@@ -5320,11 +5325,11 @@ def fitness_pages():
     related_map["mobility-after-40-explained"] = [("mobility-vs-flexibility", "Mobility versus flexibility"), ("muscle-loss-after-40-explained", "Muscle loss after 40")]
     related_map["menopause-and-exercise-explained"] = [("exercise-for-bone-density-explained", "Exercise for bone density"), ("muscle-loss-after-40-explained", "Muscle loss after 40")]
     related_map["exercising-with-arthritis-explained"] = [("mobility-after-40-explained", "Mobility after 40"), ("muscle-soreness-vs-injury", "Soreness versus injury")]
-    related_map["rpe-and-rir-explained"] = [("how-progressive-overload-works", "How progressive overload works"), ("gym-acronyms-explained", "Gym acronyms decoded")]
+    related_map["rpe-and-rir-explained"] = [("how-progressive-overload-works", "How progressive overload works"), ("gym-acronyms-explained", "Gym acronyms decoded"), ("what-does-3x10-mean-explained", "What does 3x10 mean")]
     related_map["time-under-tension-explained"] = [("tempo-training-explained", "Tempo training, explained"), ("how-many-reps-for-muscle", "How many reps for muscle")]
     related_map["tempo-training-explained"] = [("time-under-tension-explained", "Time under tension, explained"), ("drop-sets-and-rest-pause-explained", "Drop sets and rest-pause")]
     related_map["drop-sets-and-rest-pause-explained"] = [("how-many-reps-for-muscle", "How many reps for muscle"), ("rest-days-and-recovery", "Rest days and recovery")]
-    related_map["gym-acronyms-explained"] = [("rpe-and-rir-explained", "RPE and RIR, explained"), ("tempo-training-explained", "Tempo training, explained")]
+    related_map["gym-acronyms-explained"] = [("rpe-and-rir-explained", "RPE and RIR, explained"), ("tempo-training-explained", "Tempo training, explained"), ("what-does-3x10-mean-explained", "What does 3x10 mean")]
     related_map["progressive-overload-without-adding-weight-explained"] = [("how-progressive-overload-works", "How progressive overload works"), ("rpe-and-rir-explained", "RPE and RIR, explained")]
     related_map["hyrox-explained"] = [("hyrox-vs-crossfit-explained", "Hyrox versus CrossFit"), ("zone-2-cardio-explained", "Zone 2 cardio, explained")]
     related_map["hyrox-vs-crossfit-explained"] = [("hyrox-explained", "Hyrox, explained"), ("hiit-training-explained", "HIIT training, explained")]
