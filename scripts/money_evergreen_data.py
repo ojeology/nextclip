@@ -43,6 +43,8 @@ MONEY_NAV = (
         ("life-insurance-basics-explained", "Life insurance basics"),
         ("how-insurance-premiums-are-calculated-explained", "How premiums work"),
         ("income-protection-insurance-explained", "Income protection"),
+        ("how-to-find-a-lost-pension-explained", "Find a lost pension"),
+        ("unclaimed-money-and-dormant-accounts-explained", "Unclaimed money"),
         ("savings-goal-calculator", "Savings goal calculator"),
         ("credit-card-payoff-calculator", "Card payoff calculator"))),
     ("Start here", (

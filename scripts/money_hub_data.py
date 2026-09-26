@@ -21,6 +21,12 @@ MONEY_CATS = {
 
 # slug -> (section, need)
 MONEY_MAP = {
+    "how-to-find-a-lost-pension-explained": ("save", "save"),
+    "unclaimed-money-and-dormant-accounts-explained": ("save", "save"),
+    "what-happens-to-debts-after-someone-dies-explained": ("save", "save"),
+    "how-to-find-unclaimed-life-insurance-policies-explained": ("save", "save"),
+    "how-long-probate-takes-explained": ("save", "save"),
+    "joint-accounts-after-a-death-explained": ("save", "save"),
     "how-insurance-premiums-are-calculated-explained": ("save", "save"),
     "insurance-deductibles-and-excess-explained": ("save", "save"),
     "how-insurance-claims-work-explained": ("save", "save"),
