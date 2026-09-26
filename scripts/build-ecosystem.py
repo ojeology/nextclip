@@ -1912,17 +1912,67 @@ def entertainment_pages():
         if _rt:
             ld["duration"] = "PT" + _rt.group(1) + "M"
         if m.get("yt"):
-            ld["trailer"] = {"@type": "VideoObject", "name": m["title"] + " - official trailer",
-                             "description": "Official trailer for " + m["title"] + ".",
-                             "url": "https://www.youtube.com/watch?v=" + m["yt"],
-                             "embedUrl": "https://www.youtube-nocookie.com/embed/" + m["yt"],
-                             "thumbnailUrl": "https://i.ytimg.com/vi/" + m["yt"] + "/hqdefault.jpg",
-                             # GSC "video missing upload date" fix (Sept 2026):
-                             # page publish date - the verifiable date the
-                             # trailer feature went live on this page.
-                             "uploadDate": TODAY,
-                             "width": 1280, "height": 720}
+            # GSC "Video isn't on a watch page" fix (2026-09-26): the single
+            # VideoObject per trailer now lives on a dedicated watch page
+            # (/entertainment/watch/<slug>/) where the video IS the main
+            # content. Here the trailer stays a plain URL reference, so
+            # Google sees exactly one video entity - on the watch page.
+            ld["trailer"] = "https://www.youtube.com/watch?v=" + m["yt"]
         return '<script type="application/ld+json">' + json.dumps(ld, ensure_ascii=False) + '</script>'
+
+    def _nx_watch_ld(m):
+        # Top-level VideoObject - the only video entity per trailer, on the
+        # page where the video is the main content (Google's watch-page
+        # definition, developers.google.com/search/docs/appearance/video).
+        ld = {"@context": "https://schema.org", "@type": "VideoObject",
+              "name": m["title"] + " - official trailer",
+              "description": ("Official trailer for " + m["title"] + ". "
+                              + (m.get("teaser") or m.get("description") or ""))[:300],
+              "thumbnailUrl": "https://i.ytimg.com/vi/" + m["yt"] + "/hqdefault.jpg",
+              # verifiable date this trailer page went live on this site
+              "uploadDate": TODAY,
+              "embedUrl": "https://www.youtube-nocookie.com/embed/" + m["yt"],
+              "contentUrl": "https://www.youtube.com/watch?v=" + m["yt"],
+              "publisher": {"@type": "Organization", "name": "BRYME Entertainment desk",
+                            "url": ORIGIN + "/entertainment/"},
+              "potentiallyClickable": True}
+        if m.get("language"):
+            ld["inLanguage"] = m["language"]
+        return '<script type="application/ld+json">' + json.dumps(ld, ensure_ascii=False) + '</script>'
+
+    def _nx_watch_page(m):
+        # Dedicated watch page: player first, above the fold, video is the
+        # main content. Fix for the GSC video report issue "Video isn't on a
+        # watch page" - movie pages keep the info role, this page watches.
+        _y = (" (" + str(m["year"]) + ")") if m.get("year") else ""
+        ttl = "Watch the " + m["title"] + _y + " trailer | BRYME"
+        if len(ttl) > 60:
+            ttl = "Watch " + m["title"] + _y + " trailer | BRYME"
+        dek = ("Watch the official " + m["title"] + " trailer, plus the cast, story and desk verdict on the film page.")[:155]
+        body = (head("entertainment", "Film, TV and anime recommendations with reasons.")
+            + _NX_CSS
+            + _nx_watch_ld(m)
+            + '<main id="main"><div class="nx-shell" style="padding-top:24px;padding-bottom:48px">'
+            + '<nav class="nx-crumb"><a href="/entertainment/">Catalogue</a> / <a href="/entertainment/movie/'
+              + m["slug"] + '/">' + html.escape(m["title"]) + '</a> / Watch trailer</nav>'
+            + '<h1 style="color:#fff;font-size:clamp(26px,4.4vw,42px);line-height:1.06;margin:8px 0 6px">Watch the '
+              + html.escape(m["title"] + _y) + ' trailer</h1>'
+            + '<p class="nx-stamp">Trailer page updated <time datetime="' + ENT_SWEEP + '">'
+              + ENT_SWEEP + '</time> \u00b7 re-checked at every sweep</p>'
+            + '<div class="nx-trailer-frame" style="max-width:860px;margin-top:16px"><iframe title="'
+              + html.escape(m["title"] + " - official trailer") + '" src="https://www.youtube-nocookie.com/embed/'
+              + m["yt"] + '" referrerpolicy="strict-origin-when-cross-origin"'
+              + ' allow="accelerometer; clipboard-write; encrypted-media; picture-in-picture" allowfullscreen></iframe></div>'
+            + '<p class="nx-trailer-note">Official trailer on YouTube &middot; '
+              + html.escape(m.get("channel") or "YouTube") + ' &middot; link verified ' + _nx_ver
+              + ' via YouTube oEmbed. The player streams from YouTube\u2019s no-cookie domain.</p>'
+            + '<p class="nx-lead" style="margin-top:18px">' + html.escape(m.get("teaser") or m.get("description") or "") + '</p>'
+            + '<p style="margin-top:14px"><a class="nx-quiet-link" href="/entertainment/movie/' + m["slug"]
+              + '/">Full film page: cast, story, score and where to search</a></p>'
+            + '<p class="nx-backlink" style="margin-top:26px"><a href="/entertainment/watch/">\u2190 All trailers</a>'
+              + ' &middot; <a href="/entertainment/">Back to the catalogue</a></p>'
+            + '</div></main>' + foot("entertainment"))
+        return ("/watch/" + m["slug"] + "/", ttl, dek, body)
 
     def _nx_faq_ld(m, rec):
         # FAQPage schema for enriched titles; only from the desk's authored
@@ -2001,7 +2051,9 @@ def entertainment_pages():
             + '<p class="nx-stamp">Desk review updated <time datetime="' + ENT_SWEEP + '">'
               + ENT_SWEEP + '</time> \u00b7 re-checked at every sweep</p>'
             + '<p class="nx-lead">' + html.escape(m.get("teaser") or "") + '</p></div></div></section>'
-            + ('<div class="nx-shell nx-trailer-section">' + _nx_facade(m) + '</div>' if m.get("yt") else "")
+            + ('<div class="nx-shell nx-trailer-section">' + _nx_facade(m)
+               + '<p style="margin-top:10px"><a class="nx-quiet-link" href="/entertainment/watch/'
+               + m["slug"] + '/">Open this trailer\u2019s dedicated watch page</a></p></div>' if m.get("yt") else "")
             + '<div class="nx-shell nx-body"><div class="nx-prose">'
             + _chip_html + '<h2>The story</h2><p>' + desc + '</p>'
             + ('<h2>Details the desk keeps</h2><ul class="nx-facts">' + facts_html + '</ul>' if facts_html else "")
@@ -2025,6 +2077,7 @@ def entertainment_pages():
         return ("/movie/" + m["slug"] + "/", _nx_ttl,
                 (m.get("teaser") or m.get("description") or "")[:155], body)
     movie_pages = [_nx_movie_page(m) for m in _nx.MOVIES]
+    watch_pages = [_nx_watch_page(m) for m in _nx.MOVIES if m.get("yt")]
     _enr_missing = [k for k in _enr.ENRICH if k not in {mm["slug"] for mm in _nx.MOVIES}]
     if _enr_missing:
         print("  !! enrichment keys without a matching MOVIES slug (fix after renames):", _enr_missing)
@@ -2061,6 +2114,7 @@ def entertainment_pages():
     pages = [("/", "The shelves — every film the desk covers | BRYME Entertainment",
               str(len(_nx.MOVIES)) + " films with hand-verified official trailers, shelved by genre - the platform, restored and beautiful.", browse_body)]
     pages.extend(movie_pages)
+    pages.extend(watch_pages)
     pages.extend(route_pages)
     pages.append(("/scoring/", "How the BRYME film desk scores - the method | BRYME",
                   "Four axes, honest bands, and the exact score distribution across the catalogue. What a BRYME score is - and what it refuses to be.", _sc_body))
