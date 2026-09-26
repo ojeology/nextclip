@@ -31,6 +31,13 @@ FIT_CATS = {
 
 # slug -> (section, primary need). Every fitness content page appears exactly once.
 FIT_MAP = {
+    "muscle-loss-after-40-explained": ("strength", "understand"),
+    "exercise-for-bone-density-explained": ("strength", "train"),
+    "recovery-changes-with-age-explained": ("recover", "understand"),
+    "mobility-after-40-explained": ("recover", "train"),
+    "menopause-and-exercise-explained": ("understand", "understand"),
+    "exercising-with-arthritis-explained": ("recover", "understand"),
+
     "detox-diets-what-evidence-says": ("fuel", "understand"),
     "is-breakfast-really-important-explained": ("fuel", "understand"),
     "artificial-sweeteners-what-evidence-says": ("fuel", "understand"),

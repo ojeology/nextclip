@@ -4886,6 +4886,9 @@ def fitness_pages():
     import fitness_more15_data
     FIT_ARTICLES.extend((s, ti, dek, b) for (s, _k, ti, dek, b) in fitness_more15_data.FIT_MORE_15)
     ART_SOURCES.update(fitness_more15_data.FIT_SOURCES_15)
+    import fitness_more16_data
+    FIT_ARTICLES.extend((s, ti, dek, b) for (s, _k, ti, dek, b) in fitness_more16_data.FIT_MORE_16)
+    ART_SOURCES.update(fitness_more16_data.FIT_SOURCES_16)
     ART_SOURCES["intermittent-fasting-explained"] = FIT_SOURCES + [
         ("WHO \u2014 Healthy diet fact sheet",
          "https://www.who.int/news-room/fact-sheets/detail/healthy-diet")]
@@ -5292,6 +5295,12 @@ def fitness_pages():
     related_map["eating-late-at-night-myth-explained"] = [("intermittent-fasting-explained", "Intermittent fasting, explained"), ("protein-before-bed", "Protein before bed")]
     related_map["superfoods-marketing-vs-evidence"] = [("what-fruit-does-to-your-body", "What fruit does to your body"), ("supplements-waste-of-money", "Supplements: what is a waste of money")]
     related_map["is-fresh-always-better-than-frozen-explained"] = [("what-fruit-does-to-your-body", "What fruit does to your body"), ("how-much-protein-do-you-need", "How much protein do you need")]
+    related_map["muscle-loss-after-40-explained"] = [("how-much-protein-do-you-need", "How much protein do you need"), ("strength-training-over-50", "Strength training over 50")]
+    related_map["exercise-for-bone-density-explained"] = [("muscle-loss-after-40-explained", "Muscle loss after 40"), ("balance-training-why-it-matters", "Balance training: why it matters")]
+    related_map["recovery-changes-with-age-explained"] = [("rest-days-and-recovery", "Rest days and recovery"), ("sleep-and-exercise-performance", "Sleep and exercise performance")]
+    related_map["mobility-after-40-explained"] = [("mobility-vs-flexibility", "Mobility versus flexibility"), ("muscle-loss-after-40-explained", "Muscle loss after 40")]
+    related_map["menopause-and-exercise-explained"] = [("exercise-for-bone-density-explained", "Exercise for bone density"), ("muscle-loss-after-40-explained", "Muscle loss after 40")]
+    related_map["exercising-with-arthritis-explained"] = [("mobility-after-40-explained", "Mobility after 40"), ("muscle-soreness-vs-injury", "Soreness versus injury")]
     arts = [art(s, ti, dek, b, ART_SOURCES[s], related_map[s])
             for (s, ti, dek, b) in FIT_ARTICLES]
 
