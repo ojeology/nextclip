@@ -49,6 +49,11 @@ Last sweep: 2026-09-26 · deploy `dep-das1307f` (commit `b93550f`) live.
 - **"Explainers shelf regression" (28 vs 60 pieces)** — false alarm ×2. Cause 1: sandbox snapshot truncation deleted 6,113 tracked files mid-session; restored + rebuild returned 60/60. Cause 2: probe URLs built from memory lacked the `-explained` suffix and assumed an `explainers/` subpath. Canonical URLs live in the desk sitemaps; **24/24 Tier-A slugs probed 200** on 2026-09-26.
 - Money sitemap = 115 URLs; sports 188; fitness 180; entertainment 1,584; tech 371 — all match HEAD exactly.
 
+## Deploy incidents
+
+- **2026-09-26 `3d042a7`/`ee80298` build_failed**: smashing-magazine's honest lastVerified 2026-09-26 tripped build-discovery's future-date gate because the **routed** allowlist (`content/index-allowlist.routed.json` — the operative file once the tree is routed, per build-routing's idempotent design) pinned reviewedAt 2026-09-25. Fixed in `9d464c6` by advancing the routed reviewedAt to the genuine sweep date. Process failure on my side: the first fix commit shipped while the local build was red — the standing rule is **npm run build exit 0 before every commit, no exceptions**.
+- Gate semantics for future record edits: a new lastVerified beyond reviewedAt requires a genuine same-day review sweep, then reviewedAt advances in BOTH allowlist files.
+
 ## Probe protocol (learned the hard way)
 
 1. Never construct probe URLs from memory — extract them from the desk sitemaps (`grep -o "https://thebryme.com[^<]*<slug>"`).
