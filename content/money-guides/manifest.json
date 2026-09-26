@@ -1656,6 +1656,144 @@
     "emergency-fund-guide",
     "how-to-improve-your-credit-score"
    ]
+  },
+  {
+   "slug": "mortgage-types-explained",
+   "section": "Save and grow",
+   "title": "Mortgage types explained: fixed, variable, tracker and the interest-only trap | BRYME Money",
+   "h1": "Mortgage types explained: fixed, variable, tracker and the interest-only trap",
+   "dek": "Mortgage types in plain terms: what fixed, variable, tracker and interest-only really mean, who e",
+   "description": "Mortgage types in plain terms: what fixed, variable, tracker and interest-only really mean, who each suits, and the questions that decide between them.",
+   "summary": "Mortgage types in plain terms: what fixed, variable, tracker and interest-only really mean, who each suits, and the questions that decide between them.",
+   "sources": [
+    {
+     "label": "CFPB — owning a home",
+     "url": "https://www.consumerfinance.gov/owning-a-home/"
+    },
+    {
+     "label": "CFPB — mortgage tools",
+     "url": "https://www.consumerfinance.gov/consumer-tools/mortgages/"
+    }
+   ],
+   "related": [
+    "how-mortgages-work-explained",
+    "mortgage-fees-and-closing-costs-explained"
+   ]
+  },
+  {
+   "slug": "mortgage-ltv-and-deposits-explained",
+   "section": "Save and grow",
+   "title": "Mortgage LTV and deposits explained: the number that prices your loan | BRYME Money",
+   "h1": "Mortgage LTV and deposits explained: the number that prices your loan",
+   "dek": "Loan-to-value decoded: why the same house costs different people different rates, where the prici",
+   "description": "Loan-to-value decoded: why the same house costs different people different rates, where the pricing cliffs sit, and how deposit size really works.",
+   "summary": "Loan-to-value decoded: why the same house costs different people different rates, where the pricing cliffs sit, and how deposit size really works.",
+   "sources": [
+    {
+     "label": "CFPB — mortgage tools",
+     "url": "https://www.consumerfinance.gov/consumer-tools/mortgages/"
+    },
+    {
+     "label": "MyMoney.gov — buying a home",
+     "url": "https://www.mymoney.gov/"
+    }
+   ],
+   "related": [
+    "how-to-save-for-a-house-deposit",
+    "how-to-remortgage-explained"
+   ]
+  },
+  {
+   "slug": "mortgage-vs-renting-explained",
+   "section": "Save and grow",
+   "title": "Mortgage versus renting: the honest maths behind the old argument | BRYME Money",
+   "h1": "Mortgage versus renting: the honest maths behind the old argument",
+   "dek": "Buying versus renting without the ideology: the real cost columns, the hidden entries on both sid",
+   "description": "Buying versus renting without the ideology: the real cost columns, the hidden entries on both sides, and the few numbers that actually decide it.",
+   "summary": "Buying versus renting without the ideology: the real cost columns, the hidden entries on both sides, and the few numbers that actually decide it.",
+   "sources": [
+    {
+     "label": "CFPB — owning a home",
+     "url": "https://www.consumerfinance.gov/owning-a-home/"
+    },
+    {
+     "label": "MyMoney.gov",
+     "url": "https://www.mymoney.gov/"
+    }
+   ],
+   "related": [
+    "how-mortgages-work-explained",
+    "emergency-fund-guide"
+   ]
+  },
+  {
+   "slug": "how-mortgage-approval-works-explained",
+   "section": "Save and grow",
+   "title": "How mortgage approval works: what lenders actually check | BRYME Money",
+   "h1": "How mortgage approval works: what lenders actually check",
+   "dek": "The approval process demystified: affordability tests, debt-to-income, credit checks, stress test",
+   "description": "The approval process demystified: affordability tests, debt-to-income, credit checks, stress tests and pre-approval — what moves the decision.",
+   "summary": "The approval process demystified: affordability tests, debt-to-income, credit checks, stress tests and pre-approval — what moves the decision.",
+   "sources": [
+    {
+     "label": "CFPB — mortgage tools",
+     "url": "https://www.consumerfinance.gov/consumer-tools/mortgages/"
+    },
+    {
+     "label": "CFPB — owning a home",
+     "url": "https://www.consumerfinance.gov/owning-a-home/"
+    }
+   ],
+   "related": [
+    "how-credit-scores-work",
+    "mortgage-ltv-and-deposits-explained"
+   ]
+  },
+  {
+   "slug": "mortgage-fees-and-closing-costs-explained",
+   "section": "Save and grow",
+   "title": "Mortgage fees and closing costs explained: the price of the loan behind the rate | BRYME Money",
+   "h1": "Mortgage fees and closing costs explained: the price of the loan behind the rate",
+   "dek": "Arrangement fees, valuation, legal work, insurance and the closing table — every cost line named,",
+   "description": "Arrangement fees, valuation, legal work, insurance and the closing table — every cost line named, with the rule that compares them honestly.",
+   "summary": "Arrangement fees, valuation, legal work, insurance and the closing table — every cost line named, with the rule that compares them honestly.",
+   "sources": [
+    {
+     "label": "CFPB — mortgage tools",
+     "url": "https://www.consumerfinance.gov/consumer-tools/mortgages/"
+    },
+    {
+     "label": "CFPB — closing costs",
+     "url": "https://www.consumerfinance.gov/owning-a-home/"
+    }
+   ],
+   "related": [
+    "mortgage-types-explained",
+    "how-to-negotiate-with-creditors-explained"
+   ]
+  },
+  {
+   "slug": "how-to-remortgage-explained",
+   "section": "Save and grow",
+   "title": "How to remortgage: re-pricing the biggest loan you will ever have | BRYME Money",
+   "h1": "How to remortgage: re-pricing the biggest loan you will ever have",
+   "dek": "Remortgaging in plain terms — when it pays, when it does not, the fee arithmetic, and the process",
+   "description": "Remortgaging in plain terms — when it pays, when it does not, the fee arithmetic, and the process step by step.",
+   "summary": "Remortgaging in plain terms — when it pays, when it does not, the fee arithmetic, and the process step by step.",
+   "sources": [
+    {
+     "label": "CFPB — owning a home",
+     "url": "https://www.consumerfinance.gov/owning-a-home/"
+    },
+    {
+     "label": "MyMoney.gov",
+     "url": "https://www.mymoney.gov/"
+    }
+   ],
+   "related": [
+    "mortgage-ltv-and-deposits-explained",
+    "mortgage-fees-and-closing-costs-explained"
+   ]
   }
  ]
 }

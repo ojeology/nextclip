@@ -21,6 +21,12 @@ MONEY_CATS = {
 
 # slug -> (section, need)
 MONEY_MAP = {
+    "mortgage-types-explained": ("save", "save"),
+    "mortgage-ltv-and-deposits-explained": ("save", "save"),
+    "mortgage-vs-renting-explained": ("save", "save"),
+    "how-mortgage-approval-works-explained": ("save", "save"),
+    "mortgage-fees-and-closing-costs-explained": ("save", "save"),
+    "how-to-remortgage-explained": ("save", "save"),
     "trading-for-beginners": ("start", "start"),
     "stocks-forex-futures-and-cfds": ("start", "start"),
     "trade-types-explained": ("start", "start"),
