@@ -20,6 +20,7 @@ Legacy multi-niche output is preserved on the `legacy-multiniche` branch and
 archived in-tree under legacy-site/ — it is not generated here and not promoted.
 """
 from __future__ import annotations
+import collections
 import importlib.util
 import json
 import os
@@ -1184,6 +1185,88 @@ def today_feed() -> None:
                      "name": "Today's writing opportunities", "url": BASE + "/today/",
                      "dateModified": TODAY}))
 
+    # ------------------------------------------------------------------
+    # Track B3 (2026-09-26): the State of Paid Writing report. Every figure
+    # is computed from content/opportunities.json at build time — nothing is
+    # hardcoded, nothing is invented. Rates appear only where the official
+    # guidelines state them; "not stated" is reported as a finding, not
+    # smoothed over.
+    # ------------------------------------------------------------------
+    import statistics as _stats
+    _lv = [o["lastVerified"] for o in WRITING if o.get("lastVerified")]
+    _win = f"{min(_lv)} to {max(_lv)}" if _lv else "the current sweep"
+    _st = collections.Counter(str(o.get("submissionStatus")) for o in WRITING)
+    _openish = _st["open"] + _st["rolling"]
+    _usd = [o for o in WRITING if (o.get("pay") or {}).get("currency") == "USD"
+            and (o["pay"].get("amountMin") or 0) > 0]
+    _ngn = [o for o in WRITING if (o.get("pay") or {}).get("currency") == "NGN"
+            and (o["pay"].get("amountMin") or 0) > 0]
+    _other_cur = len(WRITING) - len(_usd) - len(_ngn)
+    def _band(rs, key):
+        vals = sorted(r["pay"][key] for r in rs)
+        return vals[0], int(_stats.median(vals)), vals[-1]
+    _u_lo, _u_med, _u_hi = _band(_usd, "amountMin") if _usd else (0, 0, 0)
+    _n_lo, _n_med, _n_hi = _band(_ngn, "amountMin") if _ngn else (0, 0, 0)
+    _ai = collections.Counter(str(o.get("aiPolicy") or "not-stated") for o in WRITING)
+    _ai_ban = _ai["prohibited"] + _ai["no-ai"] + _ai["strict"]
+    _ai_stated = sum(v for k, v in _ai.items() if k != "not-stated")
+    _rights_kept = sum(1 for o in WRITING
+                       if str(o.get("rights") or "").lower().startswith(("copyright remains", "rights remain", "author retains", "you keep", "rights stay")))
+    _rights_silent = len(WRITING) - _rights_kept
+    _types = collections.Counter(t for o in WRITING for t in (o.get("writingTypes") or []))
+    _top_types = _types.most_common(6)
+    _methods = collections.Counter(str(o.get("applyMethod") or "not stated") for o in WRITING)
+    _submittable = sum(v for k, v in _methods.items() if "submittable" in k.lower())
+    _resp_silent = sum(1 for o in WRITING
+                       if str((o.get("response") or {}).get("label", "")).lower().startswith(("not ", "they cannot")))
+    def _money(v, cur):
+        return ("$" + format(v, ",")) if cur == "USD" else ("\u20a6" + format(v, ","))
+    _rep_body = f'''<div class="wrap"><nav class="breadcrumb"><a href="/">Home</a> / <a href="/writing/">Writing</a> / State of Paid Writing 2026</nav>
+<section class="page-hero"><p class="kicker"><span class="kicker-dot"></span>Data report</p>
+<h1>The State of Paid Writing, 2026 edition.</h1>
+<p>What {len(WRITING)} real, currently-listed literary and journalism markets actually pay, what they accept, and what they do not tell you. Every figure on this page is computed from the BRYME opportunities database at build time — {len(WRITING)} publication records, each human-verified against its official guidelines page between {_win}. No figure is estimated, and "not stated" is reported as a finding.</p>
+<div class="source-line"><span><b>{len(WRITING)}</b> publication records</span><span>Verified <b>{_win}</b></span><span><a href="/writing/">Browse the records</a></span></div></section>
+
+<section class="section"><div class="prose">
+<h2>The window right now</h2>
+<p><b>{_openish} of {len(WRITING)}</b> markets are open or rolling as of this build; {_st["deadline"]} carry a fixed deadline, {_st["upcoming"]} open later, {_st["closed"]} are closed, and {_st["unknown"]} could not be confirmed. Statuses flip record by record in <a href="/today/">today's list</a>, which recomputes on every deploy.</p>
+
+<h2>What markets pay, where they say</h2>
+<p>Rates below are the stated minimums on official guidelines pages — the floor of what an accepted piece earns, in the currency the market itself quotes. We do not convert currencies and we do not average across them.</p>
+<ul>
+<li><b>US-dollar markets ({len(_usd)}):</b> stated minimums run {_money(_u_lo, "USD")} to {_money(_u_hi, "USD")}, with a median of <b>{_money(_u_med, "USD")}</b> per accepted piece.</li>
+<li><b>Nigerian-naira markets ({len(_ngn)}):</b> stated minimums run {_money(_n_lo, "NGN")} to {_money(_n_hi, "NGN")}, median <b>{_money(_n_med, "NGN")}</b>.</li>
+<li><b>{_other_cur} records</b> quote other currencies, pay per word, or do not publish a number at all.</li>
+</ul>
+<p>The honest caveat: a stated rate is what the guidelines promise on the day we checked. The window above is the verification range — reopen the official page before you pitch.</p>
+
+<h2>The AI question, answered by the markets themselves</h2>
+<p><b>{_ai_stated} of {len(WRITING)}</b> publications state an AI policy on their guidelines page, and <b>{_ai_ban} of those {_ai_stated} prohibit AI-generated submissions</b> outright; {_ai["disclosure-required"]} require disclosure and {_ai["limited"]} allow limited use. The largest single group — <b>{_ai["not-stated"]}</b> — says nothing yet, which is itself the finding: most literary markets have not published an AI policy, and silence is not permission.</p>
+
+<h2>What the guidelines do not tell you</h2>
+<ul>
+<li><b>Rights:</b> only <b>{_rights_kept}</b> of {len(WRITING)} records state clearly that copyright remains with the author. The other {_rights_silent} are silent or vague — ask before you sign anything.</li>
+<li><b>Response times:</b> <b>{_resp_silent}</b> markets do not publicly state a response window. Where they do, it lives on each record.</li>
+</ul>
+
+<h2>What they are looking for</h2>
+<p>Across the {len(WRITING)} records, the most-requested forms are: {", ".join("<b>" + t.replace("-", " ") + f"</b> ({n})" for t, n in _top_types)}. Submissions run through {_submittable} Submittable portals; the rest split between email pitches, online forms and other routes — each record shows its own method.</p>
+
+<h2>How to read this report</h2>
+<p>It describes the {len(WRITING)} publications BRYME tracks, not the whole market. It counts what official guidelines state, not what contributors anecdotally report. Where a market states a rate for one format only, that is what we counted. The full method — and every record behind every number here — is open: <a href="/writing/">the database</a>, <a href="/writing-opportunities/">opportunities by country</a>, and <a href="/editorial-policy/">the editorial policy</a> that governs all of it.</p>
+</div></section></div>'''
+    write("/state-of-paid-writing-2026/", page_wf(
+        title=f"State of Paid Writing 2026: what {len(WRITING)} markets pay | BRYME",
+        description=f"A data report computed from {len(WRITING)} human-verified publication records: pay ranges by currency, AI-policy counts, rights and response-time transparency, and what markets actually request. Every figure sourced, nothing estimated.",
+        route="/state-of-paid-writing-2026/", current="writing", body=_rep_body,
+        schema_data={"@context": "https://schema.org", "@type": "Article",
+                     "headline": "The State of Paid Writing, 2026 edition",
+                     "author": {"@type": "Organization", "name": "BRYME Editorial Desk"},
+                     "publisher": {"@type": "Organization", "name": "THE BRYME", "url": BASE + "/"},
+                     "url": BASE + "/state-of-paid-writing-2026/",
+                     "dateModified": TODAY,
+                     "description": f"Pay ranges, AI policies, rights and response transparency across {len(WRITING)} verified publication records."}))
+
 
 
 # ---------------------------------------------------------------------------
@@ -1345,7 +1428,11 @@ def digest_cta() -> str:
             '<a class="card-link" href="/newsletter/">Get the digest &rarr;</a></div>'
             '<div class="prose"><p>One email a week: every newly verified paying opportunity, '
             'one practical guide, and what closed or changed. Three minutes, free, no spam, '
-            'unsubscribe anytime.</p></div></section>')
+            'unsubscribe anytime.</p>'
+            '<p style="margin-top:10px"><b>New: the data is in.</b> Pay ranges, AI policies and '
+            'rights transparency across every tracked market, computed from the database itself &mdash; '
+            '<a href="/state-of-paid-writing-2026/">read the State of Paid Writing 2026 report</a>.</p>'
+            '</div></section>')
 
 
 def signup_block() -> str:
