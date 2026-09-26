@@ -54,6 +54,10 @@ TECH_LOOK = (
     ".btn:hover{background:var(--brand-deep);border-color:var(--brand-deep)}"
     ".btn.secondary{background:transparent;color:var(--brand);border-color:var(--line-strong)}"
     ".btn.secondary:hover{border-color:var(--brand);background:transparent}"
+    # WCAG AA (2026-09-26 audit): bottom-nav labels and footer links measured below 4.5:1 on the hub palettes.
+    ".bottom-nav a,.mobile-nav a{color:var(--muted)}"
+    ".foot-col a{color:#546371}"
+    'html[data-theme="dark"] .foot-col a{color:var(--muted)}'
 )
 
 

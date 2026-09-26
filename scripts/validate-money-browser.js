@@ -67,7 +67,9 @@ async function ready(url) {
           if (route==="/money/" && viewport.name==="mobile") {
             await page.locator("[data-drawer-open]").click();
             check(await page.locator("#site-drawer").getAttribute("aria-hidden")==="false",`${label}: menu does not open`);
-            check((await page.locator("#site-drawer a[href^='/money/']").count()) >= manifest.articles.length, `${label}: guides not in drawer`);
+            // 2026-09-26 audit: the living-machine hub keeps a curated nav in the drawer and the full catalogue in-page; assert both halves.
+            check((await page.locator("#site-drawer a[href^='/money/']").count()) >= 25, `${label}: drawer lost its curated guide nav`);
+            check((await page.locator("main#main a[href^='/money/']").count()) >= manifest.articles.length, `${label}: guides not listed in the page itself`);
             await page.keyboard.press("Escape");
             check(await page.locator("#site-drawer").getAttribute("aria-hidden")==="true",`${label}: escape does not close menu`);
           }
