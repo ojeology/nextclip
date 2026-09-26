@@ -7150,8 +7150,15 @@ def money_pages():
     def _with_revision(route, body):
         if route not in revised:
             return body
+        # A8 (2026-09-26): geographic clarity per the master brief - the
+        # byline already appears on every content page, so the jurisdiction
+        # sentence rides with it. Nothing invented: pages cite their sources,
+        # and the family is edited from Lagos (stated on /about/).
         byline = ('<p class="byline">BRYME Money editorial desk · Desk updated '
-                  + _me.REVIEWED + ' · <a href="/money/editorial-policy/">Editorial policy</a></p>')
+                  + _me.REVIEWED + ' · <a href="/money/editorial-policy/">Editorial policy</a>'
+                  ' · Written in Lagos for readers everywhere \u2014 tax rules, consumer'
+                  ' protections and product names vary by country; the sources cited on'
+                  ' each page show which jurisdiction a claim describes.</p>')
         return body.replace('</section>', byline + '</section>', 1)
     pages = [(_r, _t, _d, head("money", _md.MONEY_TAGLINE) + '<main id="main">'
               + _with_revision(_r, _b) + '</main>' + foot("money"))
@@ -7186,7 +7193,9 @@ def money_pages():
                 'compounding maths \u2014 then answer the market questions: what this instrument '
                 'is, how big the position should be, whether that broker is real. Every claim '
                 'checkable, nothing sold, and the whole desk arranged below by what you came '
-                'here to <em>do</em>, not by when we filed it.'),
+                'here to <em>do</em>, not by when we filed it. Written in Lagos for readers '
+                'everywhere: rules, taxes and protections vary by country, so every claim '
+                'cites its jurisdiction\u2019s own source.'),
         "needs": _mhd.MONEY_NEEDS,
         "cadence": _mhd.MONEY_CADENCE,
         "cadence_blurb": "Fees, brokers and platform details turn fastest (180 days); saving foundations and market mechanics can wait (365). ",
