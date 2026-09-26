@@ -4883,6 +4883,9 @@ def fitness_pages():
     import fitness_more14_data
     FIT_ARTICLES.extend((s, ti, dek, b) for (s, _k, ti, dek, b) in fitness_more14_data.FIT_MORE_14)
     ART_SOURCES.update(fitness_more14_data.FIT_SOURCES_14)
+    import fitness_more15_data
+    FIT_ARTICLES.extend((s, ti, dek, b) for (s, _k, ti, dek, b) in fitness_more15_data.FIT_MORE_15)
+    ART_SOURCES.update(fitness_more15_data.FIT_SOURCES_15)
     ART_SOURCES["intermittent-fasting-explained"] = FIT_SOURCES + [
         ("WHO \u2014 Healthy diet fact sheet",
          "https://www.who.int/news-room/fact-sheets/detail/healthy-diet")]
@@ -5283,6 +5286,12 @@ def fitness_pages():
     related_map["muscle-imbalances-explained"] = [("dumbbell-only-home-programme-explained", "The dumbbell-only programme"), ("posture-exercises-what-evidence-says", "Posture: what evidence says")]
     related_map["exercise-when-sick-explained"] = [("sleep-and-exercise-performance", "Sleep and exercise performance"), ("muscle-soreness-vs-injury", "Soreness versus injury")]
     related_map["exercise-and-longevity-explained"] = [("strength-training-for-beginners", "Strength training for beginners"), ("restarting-exercise-after-a-break", "Restarting after a break")]
+    related_map["detox-diets-what-evidence-says"] = [("supplements-waste-of-money", "Supplements: what is a waste of money"), ("how-to-lose-belly-fat-honestly", "How to lose belly fat, honestly")]
+    related_map["is-breakfast-really-important-explained"] = [("intermittent-fasting-explained", "Intermittent fasting, explained"), ("metabolism-explained", "Metabolism, explained")]
+    related_map["artificial-sweeteners-what-evidence-says"] = [("metabolism-explained", "Metabolism, explained"), ("supplements-waste-of-money", "Supplements: what is a waste of money")]
+    related_map["eating-late-at-night-myth-explained"] = [("intermittent-fasting-explained", "Intermittent fasting, explained"), ("protein-before-bed", "Protein before bed")]
+    related_map["superfoods-marketing-vs-evidence"] = [("what-fruit-does-to-your-body", "What fruit does to your body"), ("supplements-waste-of-money", "Supplements: what is a waste of money")]
+    related_map["is-fresh-always-better-than-frozen-explained"] = [("what-fruit-does-to-your-body", "What fruit does to your body"), ("how-much-protein-do-you-need", "How much protein do you need")]
     arts = [art(s, ti, dek, b, ART_SOURCES[s], related_map[s])
             for (s, ti, dek, b) in FIT_ARTICLES]
 
