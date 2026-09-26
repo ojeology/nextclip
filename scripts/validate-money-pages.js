@@ -47,7 +47,10 @@ for (const [i, g] of manifest.articles.entries()) {
   const ld = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map(m => {try{return JSON.parse(m[1])}catch{return null}});
   check(ld.length > 0 && ld.every(Boolean), `${route}: invalid or absent JSON-LD`);
   const pages = ld.flatMap(v => v && (v["@graph"] || [v]));
-  check(pages.some(v => v["@type"] === "WebPage" && v.url === `${origin}${route}` && v.dateModified === manifest.reviewed), `${route}: schema URL/date not the page and reviewed date`);
+  // A5 (2026-09-26): guides are typed Article (matching other desks); the
+  // invariant that matters is identity - the schema node's URL is this page
+  // and dateModified is the manifest's reviewed date - not the node type.
+  check(pages.some(v => (v["@type"] === "Article" || v["@type"] === "WebPage") && v.url === `${origin}${route}` && v.dateModified === manifest.reviewed), `${route}: schema URL/date not the page and reviewed date`);
   for (const m of html.matchAll(/href="(\/money\/[^"#?]*)(?:["#?])/g)) {
     const dest = m[1];
     check(fs.existsSync(path.join(ROOT, dest.slice(1), "index.html")), `${route}: broken local link ${dest}`);

@@ -532,25 +532,37 @@ def desk_edition():
     return _ED_CACHE[0]
 
 
-def _page_ld(title, desc, route, modified=None):
+def _page_ld(title, desc, route, modified=None, article_author=None):
     # H4 (audit 2026-09-16): every page that does not bring its own JSON-LD
     # gets an honest minimal graph - WebPage (AboutPage/ContactPage where the
     # route says so), the site-level Organization, and WebSite on the hub
     # homepage. Nothing is invented: name/description are the page's own.
+    # A5 (audit 2026-09-26): Money guides pass article_author and are typed
+    # Article to match the Sports/Fitness/Entertainment guides. No
+    # datePublished is claimed - only the visible byline's review date is
+    # used as dateModified, so nothing is invented.
     url = str(route) if str(route).startswith("http") else ORIGIN + str(route)
     name = str(title).split(" | ")[0].strip()
     rp = str(route).rstrip("/")
     ptype = ("AboutPage" if rp.endswith("/about") else
-             "ContactPage" if rp.endswith("/contact") else "WebPage")
+             "ContactPage" if rp.endswith("/contact") else
+             "Article" if article_author else "WebPage")
+    node = {"@type": ptype,
+            "@id": url + ("#article" if article_author else "#webpage"),
+            "url": url, "name": name,
+            "description": str(desc), "inLanguage": "en",
+            # dateModified is honest here: the generator rebuilds and re-verifies
+            # these pages on every build (the desks' own "re-checked" stamp makes
+            # the same claim in prose), so the build date IS the last modification.
+            "dateModified": modified or TODAY,
+            "isPartOf": {"@id": ORIGIN + "/#website"},
+            "publisher": {"@id": ORIGIN + "/#organization"}}
+    if article_author:
+        node["headline"] = name
+        node["author"] = {"@type": "Organization", "name": article_author}
+        node["mainEntityOfPage"] = url
     graph = [
-        {"@type": ptype, "@id": url + "#webpage", "url": url, "name": name,
-         "description": str(desc), "inLanguage": "en",
-         # dateModified is honest here: the generator rebuilds and re-verifies
-         # these pages on every build (the desks' own "re-checked" stamp makes
-         # the same claim in prose), so the build date IS the last modification.
-         "dateModified": modified or TODAY,
-         "isPartOf": {"@id": ORIGIN + "/#website"},
-         "publisher": {"@id": ORIGIN + "/#organization"}},
+        node,
         {"@type": "Organization", "@id": ORIGIN + "/#organization",
          "name": "THE BRYME", "url": ORIGIN + "/"},
     ]
@@ -569,7 +581,8 @@ def shell(pub, title, desc, route, body, card=None, robots="index,follow"):
     # Other properties keep the established date behavior unchanged.
     review = re.search(r"\b(?:Sources reviewed|Desk updated) (\d{4}-\d{2}-\d{2})\b", body) if pub == "money" else None
     ld_html = "" if "application/ld+json" in body else _page_ld(
-        title, desc, route, modified=review.group(1) if review else None)  # H4 batch 8
+        title, desc, route, modified=review.group(1) if review else None,
+        article_author="BRYME Money desk" if review else None)  # H4 batch 8 + A5 2026-09-26
     d = route  # mode-aware base URL from SUB
     og = f"{ORIGIN}/assets/og.png"  # real root card; route may already be a full URL (b36 fix)
     if pub in ("tech", "home"):
