@@ -6958,7 +6958,16 @@
     "Submit via the official write-for-us form.",
     "Share a link to your site or an example of your writing."
    ],
-   "requirements": "Official guidelines (smashingmagazine.com/write-for-us, page last updated 4 January 2021, re-read 2026-09-26): pitch an outline first via the contact form - 200-300 words with main headings - not a finished article. The pitch must state the target audience and their experience level, what readers take away, and why you are the person to write it, with links to previous writing. Accepted pieces must be original and unpublished elsewhere; authors work with an assigned editor on a timeline. No content marketing, press releases, listicles or product reviews; submissions on behalf of a CEO or anonymous team member are rejected. An honorarium is paid promptly on publication.",
+   "requirements": [
+    "Pitch an outline first via the contact form - 200-300 words with main headings, not a finished article (official write-for-us page, re-read 2026-09-26)",
+    "State the target audience and their experience level",
+    "Say what readers take away from the piece",
+    "Show why you are the person to write it, with links to previous writing",
+    "Accepted pieces must be original and unpublished elsewhere",
+    "Work with an assigned editor on an agreed timeline",
+    "No content marketing, press releases, listicles or product reviews",
+    "No submissions on behalf of a CEO or an anonymous team member"
+   ],
    "whatTheyWant": [
     "A specific, practical web-design or development topic",
     "Depth and original screenshots or examples"
