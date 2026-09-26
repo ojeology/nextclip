@@ -7280,7 +7280,7 @@ def main() -> None:
     _privacy_d.mkdir(parents=True, exist_ok=True)
     _privacy_body = '''<main id="main"><div class="wrap"><nav class="crumb"><a href="/">Home</a> / Privacy</nav>
 <section class="cover"><p class="kicker">House privacy policy</p><h1 class="cover-title">One policy for every BRYME desk.</h1>
-<p class="cover-dek">This policy applies across BRYME Writers, Tech, Sport, Entertainment, Fitness and Home &amp; DIY.</p></section>
+<p class="cover-dek">This policy applies across BRYME Writers, Tech, Sport, Entertainment, Fitness, Home &amp; DIY and Money.</p></section>
 <section class="section"><div class="prose">
 <p><b>Effective:</b> 22 September 2026.</p>
 <p>THE BRYME is a family of specialist publications. The desk you visit may change, but the privacy rules do not: we aim to collect as little as possible, explain what a service does before it runs, and never sell a reader profile.</p>
@@ -7292,6 +7292,7 @@ def main() -> None:
 <li><b>BRYME Entertainment:</b> publishes film, television and anime guides. Some pages embed or load material from third-party services such as YouTube only when the page requires it.</li>
 <li><b>BRYME Fitness:</b> publishes general fitness guidance and browser planners. Planner entries stay in your browser unless you choose to share them.</li>
 <li><b>BRYME Home &amp; DIY:</b> publishes home-maintenance guidance and browser calculators. Calculator inputs remain on your device.</li>
+<li><b>BRYME Money:</b> publishes saving, budgeting, mortgage, insurance and market-education guides with browser calculators; calculator inputs remain on your device. Because Money carries its own analytics and advertising detail, it also keeps a desk-specific policy at <a href="/money/privacy/">BRYME Money privacy</a>, which adds to — never reduces — the protections in this policy.</li>
 </ul>
 <h2>Analytics and advertising</h2>
 <p>BRYME uses Google Analytics 4 to understand page visits, sessions and rough location. It also uses the Google AdSense publisher tag. Ad units are not placed everywhere by default, and advertising is kept separate from editorial content.</p>
@@ -7308,7 +7309,7 @@ def main() -> None:
 </div></section></div></main>'''
     (_privacy_d / "index.html").write_text(
         shell("hub", "Privacy | THE BRYME publications",
-              "The house privacy policy for BRYME Writers, Tech, Sport, Entertainment, Fitness and Home & DIY.",
+              "The house privacy policy for BRYME Writers, Tech, Sport, Entertainment, Fitness, Home & DIY and Money.",
               SUB["hub"] + "/privacy/", _privacy_body + foot("hub"), robots="noindex,follow"), encoding="utf-8")
     print("hub: built (bryme.onrender.com homepage + family /about/ + /privacy/)")
     write_service("entertainment", entertainment_pages())

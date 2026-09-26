@@ -1,51 +1,41 @@
-# BRYME Growth Roadmap — 2026 Q4 → Q1
-**Status:** DRAFT v1 (2026-09-26) — awaiting owner's roadmap to merge. Nothing in here is started; numbering is stable so items can be cross-referenced when the two roadmaps merge.
+# BRYME ROADMAP v2 — merged (owner master-audit brief × growth hypotheses)
+**Supersedes:** ROADMAP v1 (28ebdeb). **Merged:** 2026-09-26 from owner's `bryme-master-audit-seo-optimization-prompt.md` + agent's GROWTH-HYPOTHESES.md. **Status:** ACTIVE — Track A executing now.
 
----
+## Governing principles (from the owner brief — binding on all work)
+1. Audit before changing; inspect actual implementation, never assume.
+2. No rebuilds, no mass-generated pages, no deletions without evidence, no casual URL changes.
+3. Fix root causes, not cosmetic patches; never claim fixed without testing.
+4. Success = indexed quality, impressions, clicks, tool/database usage, trust — NOT URL count.
+5. Change control: smallest safe change → local test → route/canonical/sitemap verification → ship. P0/P1 before P2/P3 effort.
 
-## Where we stand today (verified 2026-09-26)
-- **Site:** live, healthy, CI green for the first time (all 7 quality gates + determinism + audit).
-- **Inventory:** 3,237 indexable pages — Money 115 · Sports 188 · Fitness 180 · Entertainment 1,584 · Tech 371 · Home 288 · Writers hub.
-- **Acquisition:** 100% Google organic long-tail. Bing fed daily (queue 3,044). Zero social, zero newsletter, zero AI-surface work, zero share mechanics (verified absent).
-- **Assets not yet weaponised:** writers-desk dataset (142 verified publications w/ pay data), OG images on every page, calculator DNA (53 tools), event-adjacent Tier-B backlog.
+## Track A — Audit & harden the existing 3,237 pages (owner brief) — NOW
+**A1 (P1, confirmed by owner's external audit):** house `/privacy/` omits the Money desk → add the sentence + link to `/money/privacy/`. **EXECUTING.**
+**A2 (P1):** site-wide grep for stale publication-count statements ("six publications", old desk lists) → fix at generator level.
+**A3 (P1):** indexation architecture pass — classify URL types (high-priority / secondary / should-not-compete): search-result pages, empty states, parameter variants, thin catalogue pages. Evidence table per URL type before any noindex.
+**A4 (P1):** error-handling sweep — 404 vs soft-404, trailing-slash, uppercase, malformed URLs, redirect chains (live probes).
+**A5 (P1):** structured-data audit — what JSON-LD exists per page type, validity, gaps (Article, BreadcrumbList, WebSite, Organization; no fake schema; no FAQ/HowTo per master brief).
+**A6 (P2):** security scan — secrets in published tree, dependency audit (CI already gates `npm audit --audit-level=high` ✓), CORS/admin surface.
+**A7 (P2):** performance measurement — real TTFB/weight/TBT samples (never invent CWV numbers); mobile-first.
+**A8 (P2):** desk programs — Money jurisdiction clarity in titles/bodies ("in the UK/US" where rules differ) · Entertainment catalogue thin-page analysis (word-count floor, enrich-or-noindex decision per page) · Sport timestamping/filter-sprawl check · Home problem-intent strengthening · Tech topical clusters (Hub→Guide→Tool) · Writers opportunity-DB protection.
+**A9 (P2):** internal-link architecture — every important page: hub + siblings + 2–5 related + tool + next step (much already true via hubs; gap-fill, no stuffing).
+**A10 (P2):** AdSense/consent — empty-slot behavior, layout shift, consent actual behavior vs documentation.
+**Deliverable:** `BRYME-AUDIT-FINDINGS.md` — living findings register (issue · URLs · severity · evidence · fix · status) in the owner's report format.
 
-## Phase 0 — Standing machine (runs every session, no decision needed)
-- 0.1 Bing API: burn 100/day from the 3,044 queue; IndexNow ping on every deploy.
-- 0.2 Keep CI green on every push (the audit's fixes must not regress).
-- 0.3 Re-check `site:` counts + GSC movement each session; report deltas.
-- 0.4 Owner action (one-time, only you can do): submit the 8 sitemap URLs in Bing Webmaster Tools.
+## Track B — Growth surfaces (agent hypotheses) — starts as A's P0/P1 clear
+**B1 (Phase 1):** AI-answer surface — llms.txt + desk digests + fact boxes on top-100 explainers (reuses the Bing pipeline we already run daily).
+**B2 (Phase 1):** Pinterest — 6 boards × 30 pins from existing OG images (owner account decision needed: D3).
+**B3 (Phase 2):** "State of Paid Writing 2026" data report from the 142-publication dataset + HARO routine → referring domains.
+**B4 (Phase 3):** ONE shareable tool with a result-card share object (D1: Hyrox predictor vs darts checkout trainer).
+**B5 (Phase 3):** Event calendar — 4 pre-event explainers/quarter (also the Discover door).
+**B6 (Phase 4):** Forum answers where our own research shows forum-dominated SERPs; newsletter once there's traffic to retain.
 
-## Phase 1 — Cheap doors (week 1–2; near-zero cost, reuse existing pipelines)
-- **1.1 H1 AI-answer surface (GEO)** — llms.txt + per-desk digests; quotable fact boxes on top 100 explainers. *Metric: AI-engine referrals. Kill: none after 60 days.*
-- **1.2 H2 Pinterest launch** — 1 account, 6 boards, 30 pins from existing pages + OG images. *Metric: outbound clicks. Kill: <500/mo after 90 days.*
-- **1.3 Tier-B content wave #1** (if content cadence continues): golf handicaps · DLS method · tennis tiebreaks · hard-vs-soft credit checks · anime cour system · incline walking. Full pipeline as usual.
+## Track 0 — Standing machine (both tracks ride on this)
+Bing 100/day (queue 3,044) · IndexNow per deploy · CI green gate · GSC/site: checks each session · owner: submit 8 sitemaps in Bing WMT.
 
-## Phase 2 — Authority (weeks 2–6; the only play that lifts all 3,237 pages at once)
-- **2.1 H3 "State of Paid Writing 2026"** — data report from the 142-publication dataset: median pay/word, international-openness, payment-reliability charts; one flagship page + 5 charts.
-- **2.2 HARO/Qwoted routine** — 10 journalist responses/month citing the report. *Metric: new referring domains. Kill: <5 after one cycle.*
-- **2.3 Tier-B wave #2** + internal-link refresh from report page into writers hub.
+## Cadence & rules of engagement
+- Each work session: one Track A block + (once A's P1 set is clear) one Track B block, per-desk commits, full pipeline (build → sync → gate → push → deploy → probe → IndexNow/queue).
+- Content additions stay in Tier-B backlog batches (~6/desk) — the owner brief's no-mass-generation rule is fully compatible: Tier B was selected for demand + weak SERPs, not volume.
+- Every finding lands in BRYME-AUDIT-FINDINGS.md with severity before its fix ships.
 
-## Phase 3 — Product-led traffic (weeks 4–10; one artifact, not many)
-- **3.1 H4 Shareable tool** — pick ONE: Hyrox time predictor (timely, season live) or darts checkout trainer. Result card = OG-image share object. *Metric: shares/100 visits. Kill: <2% after one race weekend.*
-- **3.2 H6 Event calendar** — 4 pre-planned event explainers this quarter (Oscars prep, a fight night, a Hyrox championship, a season premiere), live *before* the moment. *Metric: day-of spike + Discover impressions.*
-
-## Phase 4 — Community & retention (from week 8; manual, ongoing)
-- **4.1 H5 Forum answers** — 10 genuinely useful answers/month in r/darts, r/pickleball, r/HYROX, AVSForum; answer-first, one-link, disclose.
-- **4.2 Newsletter** — only after Phase 1–2 traffic exists to retain; weekly "one explainer + one number" format.
-
-## The bench (parked, revisit at Q1 review)
-WhatsApp-forward cards (NG audience) · SmartNews/MSN licensing (entertainment desk) · Wikipedia citations where warranted · broken-link reclamation · YouTube Shorts from the explainer corpus.
-
-## Sequencing logic (why this order)
-1. Phase 1 costs almost nothing and reuses machines we already run daily (Bing pipeline, OG images, content pipeline).
-2. Phase 2 compounds: authority from the data report raises the ceiling of every page we already have and every Tier-B page we add.
-3. Phase 3 needs an audience signal first (Pinterest/forum traffic tells us which community wants the tool).
-4. Phase 4 is labour, not leverage — last.
-
-## Open decisions for the merge
-- D1: Which single tool for 3.1 (Hyrox predictor vs darts trainer vs movie-era quiz)?
-- D2: Does the Tier-B content cadence continue alongside, or pause while Phases 1–2 run?
-- D3: Pinterest: owner-run account or delegated? (Needs a real login.)
-- D4: Any hypotheses from your roadmap that outrank Phase 1?
-
-**Merge protocol:** send yours; I'll map item-by-item against this numbering, flag conflicts/overlaps, and produce ROADMAP v2 as the single source of truth.
+## Open decisions (owner)
+- D1: which single tool for B4. · D2: Tier-B cadence alongside Track A (recommend: continue, it funds Track 0). · D3: Pinterest account ownership. · D4: none blocking — Track A executes now.
