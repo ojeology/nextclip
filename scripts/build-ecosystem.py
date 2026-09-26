@@ -4892,6 +4892,9 @@ def fitness_pages():
     import fitness_more17_data
     FIT_ARTICLES.extend((s, ti, dek, b) for (s, _k, ti, dek, b) in fitness_more17_data.FIT_MORE_17)
     ART_SOURCES.update(fitness_more17_data.FIT_SOURCES_17)
+    import fitness_more18_data
+    FIT_ARTICLES.extend((s, ti, dek, b) for (s, _k, ti, dek, b) in fitness_more18_data.FIT_MORE_18)
+    ART_SOURCES.update(fitness_more18_data.FIT_SOURCES_18)
     ART_SOURCES["intermittent-fasting-explained"] = FIT_SOURCES + [
         ("WHO \u2014 Healthy diet fact sheet",
          "https://www.who.int/news-room/fact-sheets/detail/healthy-diet")]
@@ -5310,6 +5313,12 @@ def fitness_pages():
     related_map["drop-sets-and-rest-pause-explained"] = [("how-many-reps-for-muscle", "How many reps for muscle"), ("rest-days-and-recovery", "Rest days and recovery")]
     related_map["gym-acronyms-explained"] = [("rpe-and-rir-explained", "RPE and RIR, explained"), ("tempo-training-explained", "Tempo training, explained")]
     related_map["progressive-overload-without-adding-weight-explained"] = [("how-progressive-overload-works", "How progressive overload works"), ("rpe-and-rir-explained", "RPE and RIR, explained")]
+    related_map["hyrox-explained"] = [("hyrox-vs-crossfit-explained", "Hyrox versus CrossFit"), ("zone-2-cardio-explained", "Zone 2 cardio, explained")]
+    related_map["hyrox-vs-crossfit-explained"] = [("hyrox-explained", "Hyrox, explained"), ("hiit-training-explained", "HIIT training, explained")]
+    related_map["what-does-3x10-mean-explained"] = [("rpe-and-rir-explained", "RPE and RIR, explained"), ("gym-acronyms-explained", "Gym acronyms decoded")]
+    related_map["supersets-vs-circuits-explained"] = [("rest-between-sets-explained", "Rest between sets, explained"), ("drop-sets-and-rest-pause-explained", "Drop sets and rest-pause, explained")]
+    related_map["12-3-30-workout-explained"] = [("zone-2-cardio-explained", "Zone 2 cardio, explained"), ("rucking-explained", "Rucking, explained")]
+    related_map["weighted-vests-explained"] = [("rucking-explained", "Rucking, explained"), ("exercise-for-bone-density-explained", "Exercise for bone density, explained")]
     arts = [art(s, ti, dek, b, ART_SOURCES[s], related_map[s])
             for (s, ti, dek, b) in FIT_ARTICLES]
 
