@@ -33,6 +33,17 @@ Last sweep: 2026-09-26 · deploy `dep-das1307f` (commit `b93550f`) live.
 | A8 | P2 | Desk programs: Money jurisdiction clarity banner, Ent thin-catalogue analysis, Sport timestamps, Home problem-intent, Tech clusters, Writers DB protection | per-desk | Owner brief §desk programs | Per-desk work plans after A3–A5 | **ALL SIX CLOSED**: Money FIXED (jurisdiction byline, live-verified) · Ent analysis done (owner decision on card sitemaps) · Sport verified closed (182/188 stamps) · Home verified closed (need-based hub) · Tech verified closed (clusters live) · Writers DB verified (P3 field backfill open) |
 | D5 | decision | robots.txt blocks all major AI crawlers — conflicts with Track B1 GEO ambition (being cited by LLMs needs crawlable pages or llms.txt + selective allow) | `/robots.txt` | Live fetch 2026-09-26 | Owner decision: keep block, or allow GPTBot/PerplexityBot etc. selectively | **OPEN — owner** |
 
+## Track B progress
+
+| # | Item | Status |
+|---|------|--------|
+| B1 | GEO / llms.txt | **SHIPPED & live** (`ec5161e`) — /llms.txt regenerates every build, 25 asserted links, live-sitemap counts |
+| B3 | State of Paid Writing report | **SHIPPED & live** (`73e3720`) — /writers/state-of-paid-writing-2026/, all figures computed from the 142-record DB at build time (92 open/rolling; USD market 50 records $5–$2,500 stated minimums; 51 publications state AI policy, 45 prohibit; rights/response transparency counts); allowlisted, sitemapped (writers 510), linked from /today/ and /writing/, IndexNow pinged |
+| B2 | Pinterest | Blocked on D3 (account ownership) |
+| B4 | Shareable tool | Blocked on D1 (tool pick) |
+| B5 | Event calendar | Not started — after B3 promotion pass |
+| B6 | Forums/newsletter | Newsletter infrastructure already exists (/newsletter/ digest CTA); forum seeding not started |
+
 ## Verified non-issues (do not re-investigate)
 
 - **"Explainers shelf regression" (28 vs 60 pieces)** — false alarm ×2. Cause 1: sandbox snapshot truncation deleted 6,113 tracked files mid-session; restored + rebuild returned 60/60. Cause 2: probe URLs built from memory lacked the `-explained` suffix and assumed an `explainers/` subpath. Canonical URLs live in the desk sitemaps; **24/24 Tier-A slugs probed 200** on 2026-09-26.
