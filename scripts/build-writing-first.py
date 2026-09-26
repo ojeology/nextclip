@@ -1267,6 +1267,74 @@ def today_feed() -> None:
                      "dateModified": TODAY,
                      "description": f"Pay ranges, AI policies, rights and response transparency across {len(WRITING)} verified publication records."}))
 
+    # ------------------------------------------------------------------
+    # Track B5 (2026-09-26): the submission-window calendar. Every row is a
+    # real record's own deadline data — display text, dates and recurrence
+    # come from content/opportunities.json, sorted chronologically at build
+    # time. No invented events.
+    # ------------------------------------------------------------------
+    import datetime as _dtl
+    _today_i = TODAY  # pinned build date, ISO-comparable
+    def _cal_next_date(o):
+        d = o.get("deadline") or {}
+        for k in ("windowEnd", "date", "openingDate"):
+            v = d.get(k)
+            if v and v >= _today_i:
+                return v
+        return None
+    _cal_open, _cal_soon, _cal_rec = [], [], []
+    for o in WRITING:
+        d = o.get("deadline") or {}
+        if not d.get("display"):
+            continue
+        if d.get("recurring"):
+            _cal_rec.append(o)
+            continue
+        _nd = _cal_next_date(o)
+        _os = d.get("openingDate") or d.get("windowStart")
+        if str(o.get("submissionStatus")) in ("open", "deadline", "rolling") and _nd:
+            _cal_open.append((_nd, o))
+        elif _os and _os >= _today_i:
+            _cal_soon.append((_os, o))
+    _cal_open.sort(key=lambda x: x[0])
+    _cal_soon.sort(key=lambda x: x[0])
+    def _cal_rows(items, keyed=True):
+        out = []
+        for it in items:
+            _dte, o = it if keyed else (None, it)
+            _d = o.get("deadline") or {}
+            _stamp = _dte or _d.get("openingDate") or _d.get("windowEnd") or _d.get("date") or "\u2014"
+            out.append(
+                '<li style="margin-bottom:14px"><b>' + esc(o["publication"]) + "</b> &middot; "
+                '<span class="source-line" style="display:inline"><span>' + esc(_stamp) + "</span></span><br>"
+                '<span style="opacity:.85">' + esc(_d.get("display")) + "</span><br>"
+                '<a class="card-link" href="/writing/' + esc(o["slug"]) + '/">Open the record &rarr;</a></li>')
+        return "".join(out)
+    _cal_body = f'''<div class="wrap"><nav class="breadcrumb"><a href="/">Home</a> / <a href="/writing/">Writing</a> / Submission calendar</nav>
+<section class="page-hero"><p class="kicker"><span class="kicker-dot"></span>Living calendar</p>
+<h1>Submission windows, in date order.</h1>
+<p>Every dated window from the {len(WRITING)} tracked publication records, sorted by when it closes or opens — recomputed on every build. Dates are as recorded at each record's last human verification; publishers move deadlines, so the official page linked from each record is always the authority.</p>
+<div class="source-line"><span><b>{len(_cal_open)}</b> open and closing</span><span><b>{len(_cal_soon)}</b> opening soon</span><span><b>{len(_cal_rec)}</b> recurring windows</span></div></section>
+
+<section class="section"><div class="prose">
+<h2>Open now — closing on these dates</h2>
+<ul>{_cal_rows(_cal_open) or "<li>Nothing dated is open right now — the rolling markets below never close.</li>"}</ul>
+<h2>Opening soon</h2>
+<ul>{_cal_rows(_cal_soon) or "<li>No future openings are dated in the database yet.</li>"}</ul>
+<h2>Recurring windows</h2>
+<p>These markets reopen on a cycle rather than a single date:</p>
+<ul>{_cal_rows(_cal_rec, keyed=False) or "<li>None recorded.</li>"}</ul>
+<h2>How this calendar stays honest</h2>
+<p>Rows appear only where a record carries its own verified deadline data — {len(_cal_open) + len(_cal_soon) + len(_cal_rec)} of the {len(WRITING)} publications do. The rest are rolling or unstated and live in <a href="/writing/">the full database</a> rather than here. Spot a moved date? <a href="/contact/">Tell us</a> and the record gets re-verified. For the market-wide picture, see the <a href="/state-of-paid-writing-2026/">State of Paid Writing 2026 report</a>.</p>
+</div></section></div>'''
+    write("/writing-calendar/", page_wf(
+        title=f"Paid writing submission calendar: {len(_cal_open)} windows closing | BRYME",
+        description=f"Dated submission windows from {len(WRITING)} human-verified publication records, sorted by close/open date and recomputed on every build. Open-and-closing, opening-soon and recurring markets, each linked to its verified record.",
+        route="/writing-calendar/", current="writing", body=_cal_body,
+        schema_data={"@context": "https://schema.org", "@type": "CollectionPage",
+                     "name": "Paid writing submission calendar", "url": BASE + "/writing-calendar/",
+                     "dateModified": TODAY}))
+
 
 
 # ---------------------------------------------------------------------------
@@ -1431,7 +1499,7 @@ def digest_cta() -> str:
             'unsubscribe anytime.</p>'
             '<p style="margin-top:10px"><b>New: the data is in.</b> Pay ranges, AI policies and '
             'rights transparency across every tracked market, computed from the database itself &mdash; '
-            '<a href="/state-of-paid-writing-2026/">read the State of Paid Writing 2026 report</a>.</p>'
+            '<a href="/state-of-paid-writing-2026/">read the State of Paid Writing 2026 report</a>, and bookmark the <a href="/writing-calendar/">submission-window calendar</a>.</p>'
             '</div></section>')
 
 
