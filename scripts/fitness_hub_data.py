@@ -35,7 +35,7 @@ FIT_MAP = {
     "exercise-for-bone-density-explained": ("strength", "train"),
     "recovery-changes-with-age-explained": ("recover", "understand"),
     "mobility-after-40-explained": ("recover", "train"),
-    "menopause-and-exercise-explained": ("understand", "understand"),
+    "menopause-and-exercise-explained": ("recover", "understand"),
     "exercising-with-arthritis-explained": ("recover", "understand"),
 
     "detox-diets-what-evidence-says": ("fuel", "understand"),
