@@ -21,6 +21,12 @@ MONEY_CATS = {
 
 # slug -> (section, need)
 MONEY_MAP = {
+    "how-insurance-premiums-are-calculated-explained": ("save", "save"),
+    "insurance-deductibles-and-excess-explained": ("save", "save"),
+    "how-insurance-claims-work-explained": ("save", "save"),
+    "travel-insurance-explained": ("save", "save"),
+    "income-protection-insurance-explained": ("save", "save"),
+    "critical-illness-insurance-explained": ("save", "save"),
     "mortgage-types-explained": ("save", "save"),
     "mortgage-ltv-and-deposits-explained": ("save", "save"),
     "mortgage-vs-renting-explained": ("save", "save"),

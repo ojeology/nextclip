@@ -1794,6 +1794,144 @@
     "mortgage-ltv-and-deposits-explained",
     "mortgage-fees-and-closing-costs-explained"
    ]
+  },
+  {
+   "slug": "how-insurance-premiums-are-calculated-explained",
+   "section": "Start here",
+   "title": "How insurance premiums are calculated: what you are actually paying for | BRYME Money",
+   "h1": "How insurance premiums are calculated: what you are actually paying for",
+   "dek": "Premiums decoded: pooled risk, expected loss, the loading that funds the insurer, and the rating ",
+   "description": "Premiums decoded: pooled risk, expected loss, the loading that funds the insurer, and the rating factors that move your price up and down.",
+   "summary": "Premiums decoded: pooled risk, expected loss, the loading that funds the insurer, and the rating factors that move your price up and down.",
+   "sources": [
+    {
+     "label": "Insurance.ca.gov — consumer guidance",
+     "url": "https://www.insurance.ca.gov/"
+    },
+    {
+     "label": "FSCS — how protection works",
+     "url": "https://www.fscs.org.uk/"
+    }
+   ],
+   "related": [
+    "insurance-deductibles-and-excess-explained",
+    "how-to-negotiate-with-creditors-explained"
+   ]
+  },
+  {
+   "slug": "insurance-deductibles-and-excess-explained",
+   "section": "Start here",
+   "title": "Insurance deductibles and excess, explained: the trade at the heart of every policy | BRYME Money",
+   "h1": "Insurance deductibles and excess, explained: the trade at the heart of every policy",
+   "dek": "Deductibles, excess, co-pays and out-of-pocket maximums decoded — how choosing your share of the ",
+   "description": "Deductibles, excess, co-pays and out-of-pocket maximums decoded — how choosing your share of the risk prices the policy, and where the traps sit.",
+   "summary": "Deductibles, excess, co-pays and out-of-pocket maximums decoded — how choosing your share of the risk prices the policy, and where the traps sit.",
+   "sources": [
+    {
+     "label": "Insurance.ca.gov — consumer guidance",
+     "url": "https://www.insurance.ca.gov/"
+    },
+    {
+     "label": "Healthcare.gov — deductibles and out-of-pocket",
+     "url": "https://www.healthcare.gov/"
+    }
+   ],
+   "related": [
+    "emergency-fund-guide",
+    "how-insurance-claims-work-explained"
+   ]
+  },
+  {
+   "slug": "how-insurance-claims-work-explained",
+   "section": "Start here",
+   "title": "How insurance claims work: the process, the paperwork, and the disputes | BRYME Money",
+   "h1": "How insurance claims work: the process, the paperwork, and the disputes",
+   "dek": "Filing to settlement decoded — first notice, assessment, the adjuster's role, denial letters and ",
+   "description": "Filing to settlement decoded — first notice, assessment, the adjuster's role, denial letters and appeals, and the habits that make claims painless.",
+   "summary": "Filing to settlement decoded — first notice, assessment, the adjuster's role, denial letters and appeals, and the habits that make claims painless.",
+   "sources": [
+    {
+     "label": "Insurance.ca.gov — claims guidance",
+     "url": "https://www.insurance.ca.gov/"
+    },
+    {
+     "label": "FSCS — protection if firms fail",
+     "url": "https://www.fscs.org.uk/"
+    }
+   ],
+   "related": [
+    "how-deposit-insurance-works-explained",
+    "insurance-deductibles-and-excess-explained"
+   ]
+  },
+  {
+   "slug": "travel-insurance-explained",
+   "section": "Start here",
+   "title": "Travel insurance, explained: what it covers, what it never covers, and how to buy it well | BRYME Money",
+   "h1": "Travel insurance, explained: what it covers, what it never covers, and how to buy it well",
+   "dek": "Trip cancellation, medical cover, baggage and the exclusions that matter — how travel insurance a",
+   "description": "Trip cancellation, medical cover, baggage and the exclusions that matter — how travel insurance actually works and how to avoid paying twice for cover you already ha",
+   "summary": "Trip cancellation, medical cover, baggage and the exclusions that matter — how travel insurance actually works and how to avoid paying twice for cover you already have.",
+   "sources": [
+    {
+     "label": "Insurance.ca.gov — consumer guidance",
+     "url": "https://www.insurance.ca.gov/"
+    },
+    {
+     "label": "Healthcare.gov — coverage abroad context",
+     "url": "https://www.healthcare.gov/"
+    }
+   ],
+   "related": [
+    "how-insurance-premiums-are-calculated-explained",
+    "insurance-deductibles-and-excess-explained"
+   ]
+  },
+  {
+   "slug": "income-protection-insurance-explained",
+   "section": "Start here",
+   "title": "Income protection insurance, explained: the cover that protects the salary itself | BRYME Money",
+   "h1": "Income protection insurance, explained: the cover that protects the salary itself",
+   "dek": "The most overlooked policy decoded — how income replacement works, what it pays and for how long,",
+   "description": "The most overlooked policy decoded — how income replacement works, what it pays and for how long, and who genuinely needs it.",
+   "summary": "The most overlooked policy decoded — how income replacement works, what it pays and for how long, and who genuinely needs it.",
+   "sources": [
+    {
+     "label": "FSCS — protection schemes context",
+     "url": "https://www.fscs.org.uk/"
+    },
+    {
+     "label": "Insurance.ca.gov — consumer guidance",
+     "url": "https://www.insurance.ca.gov/"
+    }
+   ],
+   "related": [
+    "critical-illness-insurance-explained",
+    "emergency-fund-guide"
+   ]
+  },
+  {
+   "slug": "critical-illness-insurance-explained",
+   "section": "Start here",
+   "title": "Critical illness insurance, explained: the lump sum and its fine print | BRYME Money",
+   "h1": "Critical illness insurance, explained: the lump sum and its fine print",
+   "dek": "Critical illness cover decoded — the listed-conditions structure, survival periods, severity thre",
+   "description": "Critical illness cover decoded — the listed-conditions structure, survival periods, severity thresholds, and the honest case for and against.",
+   "summary": "Critical illness cover decoded — the listed-conditions structure, survival periods, severity thresholds, and the honest case for and against.",
+   "sources": [
+    {
+     "label": "FSCS — consumer protection context",
+     "url": "https://www.fscs.org.uk/"
+    },
+    {
+     "label": "Insurance.ca.gov — consumer guidance",
+     "url": "https://www.insurance.ca.gov/"
+    }
+   ],
+   "related": [
+    "income-protection-insurance-explained",
+    "emergency-fund-guide"
+   ]
   }
  ]
 }

@@ -41,6 +41,8 @@ MONEY_NAV = (
         ("sinking-funds-explained", "Sinking funds"),
         ("marginal-tax-calculator", "Tax bracket calculator"),
         ("life-insurance-basics-explained", "Life insurance basics"),
+        ("how-insurance-premiums-are-calculated-explained", "How premiums work"),
+        ("income-protection-insurance-explained", "Income protection"),
         ("savings-goal-calculator", "Savings goal calculator"),
         ("credit-card-payoff-calculator", "Card payoff calculator"))),
     ("Start here", (
