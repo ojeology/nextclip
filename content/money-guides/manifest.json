@@ -1512,6 +1512,150 @@
     "budget-50-30-20-explained",
     "wills-and-estate-basics-explained"
    ]
+  },
+  {
+   "slug": "debt-consolidation-explained",
+   "section": "Save and grow",
+   "title": "Debt consolidation explained: when it works and the one failure mode | BRYME Money",
+   "h1": "Debt consolidation, explained: a better price, not a fresh start",
+   "dek": "Balance transfers versus consolidation loans, the rebuilt-balances trap that sinks most attempts, and the structural protections that work.",
+   "description": "Debt consolidation explained: how balance transfers and consolidation loans reprice debt, the behavioural failure mode, and choosing the right instrument honestly.",
+   "summary": "The two instruments and their maths, the open-limits trap, the decision tree, and why the payment plan matters more than the product.",
+   "sources": [
+    {
+     "label": "CFPB — credit cards",
+     "url": "https://www.consumerfinance.gov/consumer-tools/credit-cards/"
+    },
+    {
+     "label": "FDIC — consumers",
+     "url": "https://www.fdic.gov/consumers"
+    }
+   ],
+   "related": [
+    "how-personal-loans-work-explained",
+    "debt-snowball-vs-avalanche",
+    "how-credit-card-interest-works"
+   ]
+  },
+  {
+   "slug": "how-personal-loans-work-explained",
+   "section": "Save and grow",
+   "title": "How personal loans work: APR, terms and the traps | BRYME Money",
+   "h1": "Personal loans, explained: the plainest borrowing there is",
+   "dek": "Fixed rate, fixed schedule, no refilling: how personal loans price, the APR-versus-headline-rate trap, and the marketing to refuse.",
+   "description": "Personal loans explained: fixed-rate mechanics, APR versus headline rates, term as pricing, prepayment clauses, and the guaranteed-approval red flags.",
+   "summary": "The mechanics and the amortising schedule, the three numbers that decide the deal, the trap list, and the honest use cases.",
+   "sources": [
+    {
+     "label": "MyMoney.gov — US government financial education",
+     "url": "https://www.mymoney.gov/"
+    },
+    {
+     "label": "FDIC — consumers",
+     "url": "https://www.fdic.gov/consumers"
+    }
+   ],
+   "related": [
+    "how-loan-amortisation-works-explained",
+    "debt-consolidation-explained",
+    "how-credit-scores-work"
+   ]
+  },
+  {
+   "slug": "how-loan-amortisation-works-explained",
+   "section": "Save and grow",
+   "title": "How loan amortisation works: the schedule nobody reads | BRYME Money",
+   "h1": "Loan amortisation, explained: interest first, freedom last",
+   "dek": "The shifting split inside every fixed payment, the three surprises it explains, and how to read your own schedule for the two levers that matter.",
+   "description": "Loan amortisation explained: how fixed payments split interest and principal, why terms price the loan, why extra principal compounds, and reading your table.",
+   "summary": "The schedule mechanics, minimum payments versus revolving debt, term as hidden pricing, and the disproportionate power of extra principal.",
+   "sources": [
+    {
+     "label": "SEC Investor.gov — amortization",
+     "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/amortization"
+    },
+    {
+     "label": "CFPB — owning a home",
+     "url": "https://www.consumerfinance.gov/owning-a-home/"
+    }
+   ],
+   "related": [
+    "how-mortgages-work-explained",
+    "how-personal-loans-work-explained",
+    "compound-interest-explained"
+   ]
+  },
+  {
+   "slug": "good-debt-vs-bad-debt-explained",
+   "section": "Save and grow",
+   "title": "Good debt vs bad debt: the two-question test | BRYME Money",
+   "h1": "Good debt versus bad debt: rate and purchase, not morality",
+   "dek": "The framework that survives scrutiny: what the rate costs, what the borrowing buys — and the honest refinements the slogans skip.",
+   "description": "Good versus bad debt explained: the rate-and-purpose test, why appreciation bets and earning-capacity bets need caveats, and the order of operations.",
+   "summary": "The two-question test, the three honest refinements, BNPL as the new category, and killing high-rate debt as the best available return.",
+   "sources": [
+    {
+     "label": "MyMoney.gov — US government financial education",
+     "url": "https://www.mymoney.gov/"
+    },
+    {
+     "label": "CFPB — credit cards",
+     "url": "https://www.consumerfinance.gov/consumer-tools/credit-cards/"
+    }
+   ],
+   "related": [
+    "debt-snowball-vs-avalanche",
+    "how-credit-card-interest-works",
+    "where-to-put-your-money-explained"
+   ]
+  },
+  {
+   "slug": "how-to-negotiate-with-creditors-explained",
+   "section": "Save and grow",
+   "title": "How to negotiate with creditors: the four standard asks | BRYME Money",
+   "h1": "Negotiating with creditors: the conversation nobody teaches",
+   "dek": "Rate reductions, fee waivers, hardship programmes and settlement — prepared positions, written agreements, and the lines that protect you.",
+   "description": "Creditor negotiation explained: the preparation, the four standard asks from rate cuts to settlement, written-agreement discipline, and the scam boundary.",
+   "summary": "The ten-minute preparation, the four asks and when each applies, protective disciplines, and knowing when negotiation stops being the tool.",
+   "sources": [
+    {
+     "label": "CFPB — debt collection",
+     "url": "https://www.consumerfinance.gov/consumer-tools/debt-collection/"
+    },
+    {
+     "label": "CFPB — credit cards",
+     "url": "https://www.consumerfinance.gov/consumer-tools/credit-cards/"
+    }
+   ],
+   "related": [
+    "how-credit-card-interest-works",
+    "debt-relief-options-explained",
+    "money-scams-how-to-spot-and-recover"
+   ]
+  },
+  {
+   "slug": "debt-relief-options-explained",
+   "section": "Save and grow",
+   "title": "Debt relief options explained: the floor under the balance sheet | BRYME Money",
+   "h1": "Debt relief options, explained: stigma costs more than the mechanisms",
+   "dek": "Free advice first, then the formal mechanisms plainly — management plans, write-down orders, bankruptcy — and the day-after rebuild.",
+   "description": "Debt relief explained: why free non-profit advice comes first, management plans and formal discharge mechanisms honestly, the for-profit warning signs, rebuilding after.",
+   "summary": "The free-advice step, the family of formal mechanisms, the predatory-marketing boundary, and the post-relief rebuilding sequence.",
+   "sources": [
+    {
+     "label": "CFPB — debt collection",
+     "url": "https://www.consumerfinance.gov/consumer-tools/debt-collection/"
+    },
+    {
+     "label": "MoneyHelper — debt and borrowing",
+     "url": "https://www.moneyhelper.org.uk/en/debt-and-borrowing"
+    }
+   ],
+   "related": [
+    "how-to-negotiate-with-creditors-explained",
+    "emergency-fund-guide",
+    "how-to-improve-your-credit-score"
+   ]
   }
  ]
 }

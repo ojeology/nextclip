@@ -82,6 +82,12 @@ MONEY_MAP = {
     "home-insurance-explained": ("save", "save"),
     "renters-insurance-explained": ("save", "save"),
     "joint-bank-accounts-explained": ("save", "save"),
+    "debt-consolidation-explained": ("save", "save"),
+    "how-personal-loans-work-explained": ("save", "save"),
+    "how-loan-amortisation-works-explained": ("save", "save"),
+    "good-debt-vs-bad-debt-explained": ("save", "save"),
+    "how-to-negotiate-with-creditors-explained": ("save", "save"),
+    "debt-relief-options-explained": ("save", "save"),
     "life-insurance-basics-explained": ("save", "save"),
     # Credit & retirement batch (2026-09-25): high-CPC evergreen clusters.
     "how-credit-scores-work": ("save", "save"),

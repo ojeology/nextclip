@@ -35,6 +35,7 @@ MONEY_NAV = (
         ("how-state-pensions-work", "State pensions"),
         ("how-payslips-work-explained", "Payslips"),
         ("how-interest-rates-work-explained", "Interest rates"),
+        ("debt-consolidation-explained", "Debt consolidation"),
         ("sinking-funds-explained", "Sinking funds"),
         ("marginal-tax-calculator", "Tax bracket calculator"),
         ("life-insurance-basics-explained", "Life insurance basics"),
