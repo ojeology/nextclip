@@ -97,4 +97,22 @@ FIT_MORE_10 = [
 <p>Zone boundaries are conventions, not physiology &mdash; different systems shift them a few points either way, and the talk test beats any table when they disagree: comfortable conversation in zone 2, phrases in zone 3, single words in zone 4. The Karvonen column needs your resting heart rate; if you left it blank, only the 220 &minus; age table is shown. Both columns move as fitness improves, because both feed off numbers your training changes. The theory behind every cell of the table is on the <a href="/heart-rate-zones-explained/">heart-rate zones guide</a>; the easy-end training those numbers protect is the <a href="/zone-2-cardio-explained/">zone 2 method</a>.</p>
 <script src="/assets/fitness-hr-zones.js" defer></script>
 """),
+
+("hyrox-pace-planner", "guide",
+"Hyrox pace planner: turn a goal time into run splits and a station budget",
+"Goal finish time in - required pace per kilometre, station budget and a checkpoint clock for all eight legs out, with the arithmetic shown. On your device, nothing uploaded.",
+"""<p>Hyrox is eight one-kilometre runs, each followed by one station: SkiErg, sled push, sled pull, burpee broad jumps, rowing, farmers carry, sandbag lunges and wall balls. That fixed shape is what makes pacing trainable &mdash; unlike a road race, you can budget the whole race before you start. This planner does the arithmetic: you bring a goal time and an honest station budget, it returns the run pace that makes the goal work and a checkpoint clock for every leg. If you are new to the format, read <a href="/fitness/hyrox-explained/">Hyrox, explained</a> first.</p>
+<div class="calc"><h2>The planner</h2>
+<label>Goal finish time (h:mm:ss, e.g. 1:30:00) <input id="hyrox-goal" type="text" inputmode="numeric" placeholder="1:30:00"></label>
+<label>Your total station budget (minutes across all 8 stations) <input id="hyrox-stations" type="number" inputmode="numeric" min="10" max="120" step="1" value="40"></label>
+<button class="calc-go" id="hyrox-go">Plan my race</button>
+<p class="calc-out" id="hyrox-out" aria-live="polite"></p></div>
+<h2>Setting an honest station budget</h2>
+<p>The budget is the number this planner cannot give you, because it is the number only your training knows. A useful method: run your last practice session&rsquo;s station circuit, time it, and use that &mdash; plus a few minutes of race-day crowd and transition reality. The wall balls and the sleds are where budgets go to die; if in doubt, budget more there and treat anything left over as bonus. The format itself never changes: eight runs, eight stations, the distances listed above.</p>
+<h2>How to read the checkpoint clock</h2>
+<p>The table is even-split maths, not a prediction: it assumes one run pace held eight times and one average station time. Real races are spikier &mdash; the first two runs feel easy and tempt you faster, and the sleds slow everyone. Two adjustments that keep the maths honest: if you tend to go out fast, add 10&ndash;15 seconds per km and bank the difference; if your stations improve over a training block, shrink the budget before you shrink the goal.</p>
+<h2>What this tool will not do</h2>
+<p>It will not predict your finish time from a 5K, because a Hyrox finish is as much sled technique and wall-ball pacing as running &mdash; any single-number prediction would be false precision. The clock is a plan to train against and adjust; your practice sessions are the truth. General training information, not coaching or medical advice &mdash; build load gradually and see a professional if anything hurts beyond normal training soreness.</p>
+<script src="/assets/fitness-hyrox-pace.js" defer></script>
+"""),
 ]

@@ -1287,7 +1287,7 @@ def hub_pages():
     for _t in _mhd.MONEY_TOOLS:
         tools.append(("money/" + _t[0], _t[1], _t[2], ("money/" + _t[3]) if len(_t) > 3 and _t[3] else ""))
     for _t in _fhd.FIT_TOOLS:
-        if _t[0] in ("1rm-calculator", "fitness-calculators", "heart-rate-zone-calculator"):
+        if _t[0] in ("1rm-calculator", "fitness-calculators", "heart-rate-zone-calculator", "hyrox-pace-planner"):
             tools.append(("fitness/" + _t[0], _t[1], _t[2], ("fitness/" + _t[3]) if len(_t) > 3 and _t[3] else ""))
     tools.append(("home/rent-or-buy-tool", "Rent or buy tool",
                   "The honest maths on renting versus buying, with the numbers you actually face.", ""))
@@ -5350,7 +5350,8 @@ def fitness_pages():
     related_map["drop-sets-and-rest-pause-explained"] = [("how-many-reps-for-muscle", "How many reps for muscle"), ("rest-days-and-recovery", "Rest days and recovery")]
     related_map["gym-acronyms-explained"] = [("rpe-and-rir-explained", "RPE and RIR, explained"), ("tempo-training-explained", "Tempo training, explained"), ("what-does-3x10-mean-explained", "What does 3x10 mean")]
     related_map["progressive-overload-without-adding-weight-explained"] = [("how-progressive-overload-works", "How progressive overload works"), ("rpe-and-rir-explained", "RPE and RIR, explained")]
-    related_map["hyrox-explained"] = [("hyrox-vs-crossfit-explained", "Hyrox versus CrossFit"), ("zone-2-cardio-explained", "Zone 2 cardio, explained")]
+    related_map["hyrox-explained"] = [("hyrox-vs-crossfit-explained", "Hyrox versus CrossFit"), ("zone-2-cardio-explained", "Zone 2 cardio, explained"), ("hyrox-pace-planner", "The Hyrox pace planner")]
+    related_map["hyrox-pace-planner"] = [("hyrox-explained", "Hyrox, explained"), ("hyrox-vs-crossfit-explained", "Hyrox versus CrossFit")]
     related_map["hyrox-vs-crossfit-explained"] = [("hyrox-explained", "Hyrox, explained"), ("hiit-training-explained", "HIIT training, explained")]
     related_map["what-does-3x10-mean-explained"] = [("rpe-and-rir-explained", "RPE and RIR, explained"), ("gym-acronyms-explained", "Gym acronyms decoded")]
     related_map["supersets-vs-circuits-explained"] = [("rest-between-sets-explained", "Rest between sets, explained"), ("drop-sets-and-rest-pause-explained", "Drop sets and rest-pause, explained")]
