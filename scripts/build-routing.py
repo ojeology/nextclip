@@ -207,6 +207,11 @@ def main() -> int:
               if _epoch.isdigit() else _dt.date.today())
     _sm = (ROOT / "ecosystem" / "hub" / "sitemap.xml").read_text(encoding="utf-8")
     _sm = _re.sub(r"<lastmod>[^<]*</lastmod>", "<lastmod>" + _today.isoformat() + "</lastmod>", _sm)
+    # The catalogue is separate from the editorial sitemap but remains indexable.
+    _catalogue_entry = (f"<sitemap><loc>{ORIGIN}/entertainment/sitemap-catalogue.xml</loc>"
+                        f"<lastmod>{_today.isoformat()}</lastmod></sitemap>")
+    if "sitemap-catalogue.xml" not in _sm:
+        _sm = _sm.replace("</sitemapindex>", _catalogue_entry + "</sitemapindex>")
     (ROOT / "sitemap.xml").write_text(_sm, encoding="utf-8")
 
 
@@ -250,6 +255,11 @@ def main() -> int:
         if not sm.is_file():
             continue  # first build of a new property: its sitemap appears when the ecosystem builder runs
         for loc in re.findall(r"<loc>(.*?)</loc>", sm.read_text()):
+            routes.add("/" + loc.split(ORIGIN + "/", 1)[1])
+    # Keep the separated entertainment catalogue aligned with indexability.
+    _catalogue_sm = ROOT / "entertainment" / "sitemap-catalogue.xml"
+    if _catalogue_sm.is_file():
+        for loc in re.findall(r"<loc>(.*?)</loc>", _catalogue_sm.read_text()):
             routes.add("/" + loc.split(ORIGIN + "/", 1)[1])
     al["version"] = 26
     al["routes"] = sorted(routes)

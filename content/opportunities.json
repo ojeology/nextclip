@@ -5220,12 +5220,8 @@
    ],
    "sources": [
     {
-     "name": "Cracked - write-for-us page (404 at 23 Sep 2026 check)",
-     "url": "https://www.cracked.com/write-for-cracked"
-    },
-    {
-     "name": "Secondary guide: contributor portal via Literally Media; ~$50-250 per piece, paid on publication (2024-2026 reports)",
-     "url": "https://askfoodie.blog/can-you-still-write-for-cracked"
+     "name": "Cracked official contributor guidance (historical; current page unavailable at 27 September 2026 check)",
+     "url": "https://www.cracked.com/blog/come-write-cracked-everybody21-it-pays-money21"
     }
    ],
    "deadline": null,
@@ -5236,13 +5232,15 @@
     "High-concept humour, weird history and pop-culture deep dives in the Cracked list style (per secondary reports - unconfirmed by an official page)"
    ],
    "whatTheyDontWant": [],
-   "requirements": [],
+   "requirements": [
+    "The current official write-for-us URL was unavailable during the 27 September 2026 check; do not rely on historical rates or requirements without reconfirming through Cracked. Historical official guidance accepted feature pitches by email and asked experienced columnists for links to previous work."
+   ],
    "howToSubmit": [],
    "rights": "",
    "applyUrl": "mailto:workshop@cracked.com",
    "applyEmail": "workshop@cracked.com",
    "applyMethod": "Email pitch (Cracked Comedy Workshop)",
-   "lastVerified": "2026-09-21",
+   "lastVerified": "2026-09-27",
    "publishedAt": "2026-09-04",
    "id": "cracked",
    "slug": "cracked",
@@ -5301,8 +5299,12 @@
    ],
    "sources": [
     {
-     "name": "WhatCulture - write for us page (unreachable at 23 Sep 2026 check)",
-     "url": "https://whatculture.com/write-for-us"
+     "name": "WhatCulture official contact page",
+     "url": "https://whatculture.com/contact-us"
+    },
+    {
+     "name": "WhatCulture contributor information (historical; rates require reconfirmation)",
+     "url": "https://whatculture.com/wwe/write-wwe-articles-get-paid"
     }
    ],
    "deadline": null,
@@ -5311,13 +5313,15 @@
    "keywords": [],
    "whatTheyWant": [],
    "whatTheyDontWant": [],
-   "requirements": [],
+   "requirements": [
+    "Contact the editorial team before submitting: the current official contact page directs prospective contributors to editor@whatculture.com. The older writer page describes feature/news contributors but should not be treated as a current rate card without confirmation."
+   ],
    "howToSubmit": [],
    "rights": "",
    "applyUrl": "https://whatculture.com/write-for-us",
    "applyEmail": "",
    "applyMethod": "Register + create via their content suite",
-   "lastVerified": "2026-09-21",
+   "lastVerified": "2026-09-27",
    "publishedAt": "2026-09-04",
    "id": "whatculture",
    "slug": "whatculture",
@@ -5621,12 +5625,8 @@
    ],
    "sources": [
     {
-     "name": "STATEMENT Africa - official site (no pitch page linked at 23 Sep 2026 check)",
+     "name": "STATEMENT Africa official site (no current pitch guide located at 27 September 2026 check)",
      "url": "https://statementafrica.com"
-    },
-    {
-     "name": "Creative Writing News - STATEMENT Africa pitch guidelines (pay up to $1/word; Nov 2023)",
-     "url": "https://www.creativewritingnews.com/statement-africa-is-accepting-pitches-how-to-submit-pay-1-word/"
     }
    ],
    "deadline": null,
@@ -5639,13 +5639,15 @@
     "Features with a strong data component (e.g. a box-office dataset); research support offered"
    ],
    "whatTheyDontWant": [],
-   "requirements": [],
+   "requirements": [
+    "The official site did not expose a current contributor or pitch guide during the 27 September 2026 check. Confirm the current editor, format, rights and rate directly before pitching; do not treat the older secondary rate report as a current promise."
+   ],
    "howToSubmit": [],
    "rights": "",
    "applyUrl": "mailto:chisom@statementafrica.com",
    "applyEmail": "chisom@statementafrica.com",
    "applyMethod": "Email pitch to the managing editor",
-   "lastVerified": "2026-09-21",
+   "lastVerified": "2026-09-27",
    "publishedAt": "2026-09-04",
    "id": "statement",
    "slug": "statement-africa",
@@ -5938,7 +5940,12 @@
     "poetry",
     "nonfiction"
    ],
-   "sources": [],
+   "sources": [
+    {
+     "name": "Doek! official submissions page",
+     "url": "https://doeklitmag.com/submissions/"
+    }
+   ],
    "deadline": null,
    "aiPolicy": "not-stated",
    "experience": "not-stated",
@@ -5965,7 +5972,7 @@
    "applyUrl": "https://doek.africa/doek-literary-magazine/",
    "applyEmail": "",
    "applyMethod": "See official site",
-   "lastVerified": "2026-09-21",
+   "lastVerified": "2026-09-27",
    "publishedAt": "2026-09-04",
    "id": "doek",
    "slug": "doek-literary-magazine",
@@ -7014,7 +7021,7 @@
    "status": "published",
    "excerpt": "Writer's Digest pays roughly $0.30–$0.50 per word for writing-craft articles in the print magazine.",
    "submissionStatus": "open",
-   "lastVerified": "2026-09-05",
+   "lastVerified": "2026-09-27",
    "pay": {
     "amountMin": null,
     "amountMax": null,
@@ -7043,7 +7050,9 @@
    "howToSubmit": [
     "Pitch or submit per the magazine's writer guidelines."
    ],
-   "requirements": [],
+   "requirements": [
+    "For magazine pitches, include a detailed outline, reader benefit, timeliness and why you are qualified; include relevant credentials and clips. Accepted work must be original, fact-checked and submitted electronically. Writer’s Digest says it does not accept AI-generated pitches or articles. Online guest-post submissions should include a summary or completed article, bio, headshot and relevant images."
+   ],
    "whatTheyWant": [
     "A practical writing-craft topic",
     "A clear, useful voice"
@@ -7059,8 +7068,8 @@
    "deadline": null,
    "sources": [
     {
-     "name": "Writer's Digest (official)",
-     "url": "https://www.writersdigest.com/write-better/"
+     "name": "Writer's Digest official submission guidelines",
+     "url": "https://www.writersdigest.com/resources/submission-guidelines"
     }
    ],
    "keywords": [
@@ -7170,7 +7179,7 @@
    "status": "published",
    "excerpt": "The Kitchn pays around $150 per assignment for food-budget diaries and other food/home essays.",
    "submissionStatus": "open",
-   "lastVerified": "2026-09-05",
+   "lastVerified": "2026-09-27",
    "pay": {
     "amountMin": 150,
     "amountMax": 150,
@@ -7199,7 +7208,9 @@
    "howToSubmit": [
     "Pitch a specific food or home idea to the editorial team."
    ],
-   "requirements": [],
+   "requirements": [
+    "The current jobs page says The Kitchn is not accepting unsolicited freelance story pitches and works with a small dedicated freelance team. For reader projects, use the official contact form and include a detailed description, materials, budget where available, and links to additional photos. Confirm availability before pitching."
+   ],
    "whatTheyWant": [
     "Food-budget diaries",
     "Narrative, useful home and food content"
@@ -7215,8 +7226,12 @@
    "deadline": null,
    "sources": [
     {
-     "name": "The Kitchn (official)",
-     "url": "https://www.thekitchn.com/about/"
+     "name": "The Kitchn official jobs page",
+     "url": "https://www.thekitchn.com/jobs-static-page-161071"
+    },
+    {
+     "name": "The Kitchn official contact and submission guidance",
+     "url": "https://www.thekitchn.com/about/about-us"
     }
    ],
    "keywords": [
@@ -7246,7 +7261,7 @@
    "status": "published",
    "excerpt": "AARP pays up to $1 per word for magazine features, essays and service content.",
    "submissionStatus": "open",
-   "lastVerified": "2026-09-05",
+   "lastVerified": "2026-09-27",
    "pay": {
     "amountMin": null,
     "amountMax": 1.0,
@@ -7275,7 +7290,9 @@
    "howToSubmit": [
     "Pitch a story idea to the relevant editor (interview/feature etc.)."
    ],
-   "requirements": [],
+   "requirements": [
+    "Submit a one-page story idea with links to recent clips, the proposed approach, writing style and intended magazine section. Do not send attachments; paste the pitch into the email body. AARP states it does not consider pitches from writers outside the United States and its territories."
+   ],
    "whatTheyWant": [
     "Service, wellness and narrative features",
     "A clear angle for the 50+ reader"
@@ -7291,8 +7308,12 @@
    "deadline": null,
    "sources": [
     {
-     "name": "AARP (official)",
-     "url": "https://www.aarp.org/about-aarp/information-about-aarp/contact-aarp/"
+     "name": "AARP The Magazine official writer guidelines",
+     "url": "https://www.aarp.org/about-aarp/writers-guidelines-aarp-magazine/"
+    },
+    {
+     "name": "AARP official submission instructions",
+     "url": "https://help.aarp.org/s/article/aarp-the-magazine-or-bulletin-story-ideas"
     }
    ],
    "keywords": [
@@ -7323,7 +7344,7 @@
    "status": "published",
    "excerpt": "WIRED pays $2,500+ for deeply reported features, pitched before writing.",
    "submissionStatus": "open",
-   "lastVerified": "2026-09-05",
+   "lastVerified": "2026-09-27",
    "pay": {
     "amountMin": 2500,
     "amountMax": null,
@@ -7352,7 +7373,9 @@
    "howToSubmit": [
     "Pitch a reported feature on the official site."
    ],
-   "requirements": [],
+   "requirements": [
+    "Pitch a reported story rather than a broad topic. For longform features, explain the narrative, central characters or scenes, reporting angle and evidence; a 500–700 word pitch is a useful range. Include relevant clips, especially longform narrative work. WIRED says it rarely runs opinion pieces and expects original reporting."
+   ],
    "whatTheyWant": [
     "Deeply reported, original reporting",
     "Tech, science, culture and business with a clear hook"
@@ -7368,8 +7391,8 @@
    "deadline": null,
    "sources": [
     {
-     "name": "WIRED (official)",
-     "url": "https://www.wired.com/about/"
+     "name": "WIRED official contributor guidelines",
+     "url": "https://www.wired.com/about/how-to-pitch-stories-to-wired/"
     }
    ],
    "keywords": [
@@ -7400,7 +7423,7 @@
    "status": "published",
    "excerpt": "Business Insider's strategy-style sections pay roughly $0.40 per word for career and money essays.",
    "submissionStatus": "open",
-   "lastVerified": "2026-09-05",
+   "lastVerified": "2026-09-27",
    "pay": {
     "amountMin": null,
     "amountMax": null,
@@ -7429,7 +7452,9 @@
    "howToSubmit": [
     "Pitch a specific career or money essay to the relevant editor."
    ],
-   "requirements": [],
+   "requirements": [
+    "Pitches must be original and exclusive to Business Insider, not promotional or sponsored. Include a clear headline, angle, reporting or first-person approach and relevant expertise or sources. Freelance rates vary and are agreed with the editor; do not present an estimated per-word rate as guaranteed."
+   ],
    "whatTheyWant": [
     "Career, money and personal-finance essays with a specific angle"
    ],
@@ -7444,8 +7469,12 @@
    "deadline": null,
    "sources": [
     {
-     "name": "Business Insider (official)",
-     "url": "https://www.businessinsider.com/"
+     "name": "Business Insider official contributor and freelance guidelines",
+     "url": "https://www.businessinsider.com/how-to-write-for-business-insider-2020-4"
+    },
+    {
+     "name": "Business Insider official Life freelance guidelines",
+     "url": "https://www.businessinsider.com/how-to-write-for-insider-life-division"
     }
    ],
    "keywords": [
@@ -7561,7 +7590,7 @@
    "status": "published",
    "excerpt": "Rest of World pays $1 per word for tech reporting from non-Western countries, and it welcomes pitches from regional writers.",
    "submissionStatus": "open",
-   "lastVerified": "2026-09-05",
+   "lastVerified": "2026-09-27",
    "pay": {
     "amountMin": null,
     "amountMax": null,
@@ -7590,7 +7619,9 @@
    "howToSubmit": [
     "Pitch a specific tech story from your region."
    ],
-   "requirements": [],
+   "requirements": [
+    "Submit a pre-reported pitch of 300 words or less to the relevant editor. Include a working headline, story angle and importance, broader context, why now, what has already been reported, expected length and delivery timing, and at least six potential sources spanning relevant companies, workers, government, policy and academic voices."
+   ],
    "whatTheyWant": [
     "Tech reporting in non-Western contexts",
     "Specific, well-reported angles"
@@ -7606,8 +7637,8 @@
    "deadline": null,
    "sources": [
     {
-     "name": "Rest of World (official)",
-     "url": "https://restofworld.org/"
+     "name": "Rest of World official pitch guidelines",
+     "url": "https://restofworld.org/about/how-to-pitch-rest-of-world/"
     }
    ],
    "keywords": [

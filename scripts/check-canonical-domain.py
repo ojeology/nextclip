@@ -46,7 +46,13 @@ def main() -> int:
     expected_host = (urlsplit(site).netloc or "").lower()
     # Migration mode: a SITE_URL env was explicitly set to a non-Render origin.
     migration_mode = bool(os.environ.get("SITE_URL")) and expected_host != OLD_HOST
-    files = [HTML] if args.html else list(ROOT.rglob("*.html"))
+    # Only inspect publishable HTML. Editorial source snapshots under
+    # content/ can intentionally retain the canonical URL of the extracted
+    # media publication; they are not served by this site.
+    if args.html:
+        files = [HTML]
+    else:
+        files = [file for file in ROOT.rglob("*.html") if "content" not in file.relative_to(ROOT).parts]
     for file in files:
         if file.is_file():
             try:

@@ -105,7 +105,11 @@ if(pubRecords!==expectedPubs)fail(`expected ${expectedPubs} indexed publication 
 // All seven live property sitemaps, including Money, must partition the routed
 // index allowlist. Money was already in the root index and allowlist, but this
 // gate still counted six; that masked 15 missing Money sitemap assertions.
-const propertySitemaps=["writers","sports","entertainment","tech","fitness","home","money"].map(p=>`${p}/sitemap.xml`);
+const propertySitemaps=[
+  "writers/sitemap.xml", "sports/sitemap.xml", "entertainment/sitemap.xml",
+  "entertainment/sitemap-catalogue.xml", "tech/sitemap.xml",
+  "fitness/sitemap.xml", "home/sitemap.xml", "money/sitemap.xml",
+];
 const sitemapRoutes=propertySitemaps.flatMap(sf=>{if(!fs.existsSync(path.join(ROOT,sf)))return[];return[...read(sf).matchAll(/<loc>(.*?)<\/loc>/g)].map(m=>norm(m[1]))});
 const sitemapUnique=new Set(sitemapRoutes);
 // Writers is writers-only; the two house URLs (/, /about/) live in Home's

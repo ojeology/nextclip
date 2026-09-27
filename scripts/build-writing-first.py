@@ -1224,6 +1224,7 @@ def today_feed() -> None:
     _rep_body = f'''<div class="wrap"><nav class="breadcrumb"><a href="/">Home</a> / <a href="/writing/">Writing</a> / State of Paid Writing 2026</nav>
 <section class="page-hero"><p class="kicker"><span class="kicker-dot"></span>Data report</p>
 <h1>The State of Paid Writing, 2026 edition.</h1>
+<p class="byline">By BRYME Editorial Desk · Updated {_win}</p>
 <p>What {len(WRITING)} real, currently-listed literary and journalism markets actually pay, what they accept, and what they do not tell you. Every figure on this page is computed from the BRYME opportunities database at build time — {len(WRITING)} publication records, each human-verified against its official guidelines page between {_win}. No figure is estimated, and "not stated" is reported as a finding.</p>
 <div class="source-line"><span><b>{len(WRITING)}</b> publication records</span><span>Verified <b>{_win}</b></span><span><a href="/writing/">Browse the records</a></span></div></section>
 
@@ -1264,6 +1265,7 @@ def today_feed() -> None:
                      "author": {"@type": "Organization", "name": "BRYME Editorial Desk"},
                      "publisher": {"@type": "Organization", "name": "THE BRYME", "url": BASE + "/"},
                      "url": BASE + "/state-of-paid-writing-2026/",
+                     "datePublished": "2026-09-26",
                      "dateModified": TODAY,
                      "description": f"Pay ranges, AI policies, rights and response transparency across {len(WRITING)} verified publication records."}))
 
