@@ -7341,11 +7341,89 @@ def money_pages():
     pages = [("/", "Saving Foundations, Trading Education & Tools | BRYME Money",
               "Evergreen saving guides \u2014 emergency funds, budgeting, debt payoff, compound interest, house deposits, insurance \u2014 plus risk-first trading education, broker checks and free calculators. Educational, not advice.",
               _md.HUB_BODY)]
-    pages.append((_md.CALC_PAGE["route"], _md.CALC_PAGE["title"], _md.CALC_PAGE["desc"], _calc_body))
+    # Phase 3 / G6 (2026-09-27): worked examples with exactly computed
+    # figures + official-source links, per calculator. Honest sourcing: the
+    # links are the regulators/official bodies, not marketing pages.
+    _P3_EXTRA = {
+     "/credit-card-payoff-calculator/":
+      '<h2>Worked example</h2>'
+      '<p>A $3,000 balance at a 24% APR, paying a fixed <b>$150 a month</b>: cleared in '
+      '26 months, $3,900 paid in total &mdash; $900 of it interest. The same balance on a '
+      'typical 1%-of-balance minimum: <b>183 months</b> and $7,889 paid &mdash; more than '
+      '2.5 times as long and nearly twice the cost. Run your own numbers above; the CFPB '
+      'found about 15% of US cardholders paid only the minimum in 2024, the highest share '
+      'it has recorded (<a href="https://www.consumerfinance.gov/" rel="noopener" target="_blank">consumerfinance.gov</a>).</p>'
+      '<h2>Check it at the source</h2>'
+      '<p>The <a href="https://www.consumerfinance.gov/" rel="noopener" target="_blank">Consumer Financial Protection Bureau</a> '
+      'publishes the credit-card rules US issuers follow, including the minimum-payment '
+      'warning your statement must carry. UK readers: <a href="https://www.moneyhelper.org.uk/" rel="noopener" target="_blank">MoneyHelper</a> '
+      'covers the same ground under FCA rules.</p>',
+     "/mortgage-payment-calculator/":
+      '<h2>Worked example</h2>'
+      '<p>$300,000 borrowed at 6.0% over 30 years, fixed: the payment is <b>$1,798.65 a month</b> '
+      'principal and interest &mdash; and total interest over the life of the loan is $347,515, '
+      'more than the house segment itself. That is why the term matters as much as the rate: '
+      'the same loan over 15 years costs far less interest for a higher monthly figure.</p>'
+      '<h2>Check it at the source</h2>'
+      '<p>US buyers: the <a href="https://www.consumerfinance.gov/" rel="noopener" target="_blank">CFPB</a> '
+      'defines the Loan Estimate your lender must give you &mdash; it is the document that governs, '
+      'not any calculator. UK readers: <a href="https://www.moneyhelper.org.uk/" rel="noopener" target="_blank">MoneyHelper</a> '
+      'explains repayment vs interest-only under FCA rules.</p>',
+     "/marginal-tax-calculator/":
+      '<h2>Worked example</h2>'
+      '<p>2026 federal brackets, single filer, $60,000 of taxable income: $1,240 at the 10% '
+      'band, $4,560 at 12%, and $2,112 at 22% &mdash; <b>$7,912 total federal tax</b>. The '
+      'marginal rate is 22%; the effective rate is only 13.2%. That gap is the whole point of '
+      'this calculator: a raise into a higher bracket raises only the slice above the line, '
+      'never the whole salary.</p>'
+      '<h2>Check it at the source</h2>'
+      '<p>The official brackets live on <a href="https://www.irs.gov/" rel="noopener" target="_blank">IRS.gov</a> '
+      '(2026 schedule: IRS Revenue Procedure 2025-32 &mdash; seven rates, 10% to 37%, with the '
+      '37% band starting above $640,600 for single filers). UK readers: <a href="https://www.gov.uk/income-tax-rates" rel="noopener" target="_blank">gov.uk income tax rates</a>. '
+      'State and local taxes are separate systems.</p>',
+     "/savings-goal-calculator/":
+      '<h2>Worked example</h2>'
+      '<p>Goal: $10,000 in 24 months with a 4% AER account compounding monthly. Solving for '
+      'the payment: <b>$401.19 a month</b> &mdash; $9,629 of your money and $371 of interest '
+      'doing the rest. Change the rate to 0.5% (a typical easy-access rate) and the required '
+      'payment rises to about $408: the rate matters less than starting, but it is not nothing.</p>'
+      '<h2>Check it at the source</h2>'
+      '<p>UK readers: <a href="https://www.moneyhelper.org.uk/" rel="noopener" target="_blank">MoneyHelper</a> '
+      'explains ISA allowances and protection up to &pound;85,000 via the FSCS. US readers: the '
+      '<a href="https://www.consumerfinance.gov/" rel="noopener" target="_blank">CFPB</a> covers emergency-savings '
+      'basics and <a href="https://www.fdic.gov/" rel="noopener" target="_blank">FDIC</a> insurance limits deposit protection.</p>',
+     "/position-size-calculator/":
+      '<h2>Worked example</h2>'
+      '<p>$5,000 account, 1% risk rule = $50 at stake on the trade. Stop 25 pips away on a '
+      'pair where one standard lot moves $10 per pip: $50 &divide; (25 &times; $10) = '
+      '<b>0.2 lots</b>. That is the entire decision &mdash; sizing before entry is what keeps '
+      'one bad trade from being a bad month.</p>'
+      '<h2>Check it at the source</h2>'
+      '<p>The <a href="https://www.investor.gov/" rel="noopener" target="_blank">SEC\u2019s investor.gov</a> '
+      'covers margin and leverage mechanics; the <a href="https://www.cftc.gov/" rel="noopener" target="_blank">CFTC</a> '
+      'regulates US futures and forex and publishes the fraud advisories worth reading before '
+      'any leveraged product. Nothing here is advice; leveraged trading can lose more than '
+      'your deposit.</p>',
+     "/expectancy-calculator/":
+      '<h2>Worked example</h2>'
+      '<p>A system that wins 40% of the time, averaging $300 on winners and losing $100 on '
+      'losers: expectancy = (0.4 &times; 300) &minus; (0.6 &times; 100) = <b>+$60 per trade</b>. '
+      'Over 100 trades that models +$6,000 gross &mdash; before commissions, slippage and the '
+      'losing streaks that are normal inside a positive-expectancy system. A 40% win rate is '
+      'not a problem if the winners are three times the losers.</p>'
+      '<h2>Check it at the source</h2>'
+      '<p><a href="https://www.investor.gov/" rel="noopener" target="_blank">investor.gov</a> (SEC) '
+      'explains risk and return fundamentals without selling anything; the '
+      '<a href="https://www.finra.org/" rel="noopener" target="_blank">FINRA</a> site covers broker '
+      'checks and trading basics. A positive expectancy on paper says nothing about execution '
+      'costs &mdash; model them before believing any backtest.</p>',
+    }
+    pages.append((_md.CALC_PAGE["route"], _md.CALC_PAGE["title"], _md.CALC_PAGE["desc"], _calc_body + _P3_EXTRA.get(_md.CALC_PAGE["route"], "")))
     pages.append((_md.SIZING_101["route"], _md.SIZING_101["title"], _md.SIZING_101["desc"], _md.SIZING_BODY))
     for _extra in (_md.QL_PAGE, _md.BT_PAGE, _md.EXP_PAGE, _md.TT_PAGE, _md.IND_PAGE, _md.SAVINGS_PAGE,
                    _md.PAYOFF_PAGE, _md.MORTGAGE_PAGE, _md.MARGINAL_TAX_PAGE):
-        pages.append((_extra["route"], _extra["title"], _extra["desc"], _extra["body"]))
+        pages.append((_extra["route"], _extra["title"], _extra["desc"],
+                      _extra["body"] + _P3_EXTRA.get(_extra["route"], "")))
     for _guide in _me.pages(_md.DISCLAIMER_HTML):
         pages.append((_guide["route"], _guide["title"], _guide["desc"], _guide["body"]))
     # Every content page (not just the four originally edited ones) carries
@@ -7442,6 +7520,199 @@ def money_pages():
     pages[0] = ("/", "Saving Foundations, Trading Education & Tools | BRYME Money",
                 "Evergreen saving guides \u2014 emergency funds, budgeting, debt payoff, compound interest, house deposits, insurance \u2014 plus risk-first trading education, broker checks and free calculators. Educational, not advice.",
                 _money_hub)
+    # Phase 3 / G6 (2026-09-27): every section shelf carries an honest
+    # orientation block - what the shelf is for, how to read it, and the
+    # official sources for the claims the desk makes.
+
+    _SHELF_DEEP = {
+        "start": '<section class="section"><h2>Start with the month you actually have</h2>'
+                 '<p>Most money advice quietly assumes a tidy life: a steady salary, no surprises, a spare afternoon. '
+                 'Real months are messier, so the starting point is not a perfect plan — it is an honest picture of one '
+                 'ordinary month. What comes in, what must go out, and what usually disappears without a receipt. '
+                 'Three numbers, written down once. Everything on this shelf gets easier once those three exist, because '
+                 'every guide here is about changing one of them.</p>'
+                 '<h3>How much do I need to start?</h3>'
+                 '<p>Less than you think. Tracking costs nothing, a basic bank buffer starts with one small automatic '
+                 'transfer, and every calculator here runs on numbers you already have. The expensive part of starting is '
+                 'usually the products people buy too early, not the habit itself.</p>'
+                 '<h3>What if I have debt?</h3>'
+                 '<p>You can still start — the order just changes. A small buffer comes first so the next emergency does '
+                 'not go on the card, then the expensive debt gets attacked directly. The start shelf and the risk shelf '
+                 'cover both halves of that sequence.</p>'
+                 '<h3>How long until this feels normal?</h3>'
+                 '<p>Plan on roughly three months of awkwardness before the automatic parts run themselves. The point of '
+                 'every guide here is to move the effort from willpower to setup, because setup only has to happen once. And if a month goes sideways, the setup does not break — it waits, and the next clean month picks the habit back up. That resilience, not perfection, is the real goal of the first quarter.</p></section>',
+        "method": '<section class="section"><h2>Methods are tested, not chosen</h2>'
+                  '<p>People pick methods the way they pick football teams — because of who they heard about them from. '
+                  'A method earns its place differently: it states its rules in advance, survives contact with a bad month, '
+                  'and still makes sense when you reread it a year later. That test costs nothing and almost nothing passes '
+                  'it, which is exactly why it is worth running. The guides on this shelf are written to help you run it '
+                  'on any plan you are handed, including the ones that arrive in a group chat.</p>'
+                  '<h3>How do I test a method without risking money?</h3>'
+                  '<p>Paper-trade it, or run it on twelve months of history and count what it would have asked of you — '
+                  'not just what it would have earned. A method that only works if you had perfect discipline is telling '
+                  'you something important about itself.</p>'
+                  '<h3>How many rules is too many?</h3>'
+                  '<p>When you need the sheet in front of you to answer a yes-or-no question. Most durable methods fit on '
+                  'an index card, not because simple is fashionable but because a rule you cannot remember is a rule you '
+                  'will not follow on the day it matters.</p>'
+                  '<h3>What if my method stops working?</h3>'
+                  '<p>First check whether it stopped working or you stopped following it — the two feel identical from '
+                  'inside. If the rules were followed and the results still deteriorated over a fair stretch, that is '
+                  'information, and the method section on expectancy shows how to read it. Write the change you would make in one sentence first; if it takes a paragraph, the problem is usually the rules rather than the market. Retiring a method cleanly is part of running one properly.</p></section>',
+        "risk": '<section class="section"><h2>Risk you can name is risk you can manage</h2>'
+                '<p>Vague dread is the most expensive emotion in money. It stops you acting when you should and pushes you '
+                'to act when you should not. The fix is unglamorous: turn every vague worry into a sentence with a number '
+                'in it. Losing money becomes losing at most this amount per position, and things going wrong becomes '
+                'the two or three specific events that would actually hurt. Every guide on this shelf exists to help you '
+                'make that translation, because a risk with a number attached can be sized, capped, or consciously accepted — '
+                'and only the risks you never named are the ones that blindside you.</p>'
+                '<h3>How much should I risk on one thing?</h3>'
+                '<p>An amount whose full loss would annoy you but not change anything. The position-size guide turns that '
+                'principle into arithmetic; the honest answer most people land on is a small fixed fraction, repeated, '
+                'rather than one bold swing.</p>'
+                '<h3>Is diversification just spreading thin?</h3>'
+                '<p>It can be. Holding fifteen things you do not understand is not safer than holding three you do — it is '
+                'just more confusing. Diversification only helps when the pieces fail at different times for different '
+                'reasons, which is a claim worth checking rather than assuming.</p>'
+                '<h3>What is the most ignored risk?</h3>'
+                '<p>Liquidity — needing your money on a specific day. Returns are what people compare; access is what '
+                'bites. Before any lock-up, ask when you would plausibly need the money, then add one emergency you cannot '
+                'currently imagine.</p></section>',
+        "costs": '<section class="section"><h2>Every cost is a price tag on your patience</h2>'
+                 '<p>Fees compound exactly the way returns do, only in the other direction, which is why a cost that looks '
+                 'trivial in a brochure is rarely trivial over a decade. The discipline this shelf teaches is simple to '
+                 'state and awkward to keep: before you commit to anything, list what it charges when things go well, what '
+                 'it charges when things go badly, and what it charges for leaving. Then annualise. A number per year is '
+                 'something you can compare and feel; a number per transaction is designed to slide past you.</p>'
+                 '<h3>What is a normal fee?</h3>'
+                 '<p>It depends on the product, but normal is the wrong anchor — competitive is the useful one. Every '
+                 'guide here names the going rate so you can compare, because the difference between 0.1% and 1% sounds '
+                 'tiny and is anything but over a lifetime of saving.</p>'
+                 '<h3>Is the cheapest option always best?</h3>'
+                 '<p>No. Free tools that nudge you toward bad decisions cost more than paid ones that respect you. What '
+                 'you are hunting is not zero cost — it is cost that is visible, explained, and proportional to what you '
+                 'actually get.</p>'
+                 '<h3>How often should I re-check costs?</h3>'
+                 '<p>Once a year is enough, plus one check whenever life changes shape — a move, a new job, a product '
+                 'migrating its pricing. Providers count on inertia; the annual review is you quietly declining to supply it.</p></section>',
+        "charts": '<section class="section"><h2>A chart is a sentence, not proof</h2>'
+                  '<p>Charts feel like evidence because they look like data, but every chart is a set of choices: a start '
+                  'date, a scale, a comparison, a crop. Change those choices and the same numbers tell opposite stories, '
+                  'which is why reading charts is a skill rather than a feeling. The guides on this shelf teach the small '
+                  'set of habits that separate an honest chart from a persuasive one — checking the baseline, asking what '
+                  'happened before the frame began, and refusing to extrapolate a line just because it is straight. None '
+                  'of it requires mathematics beyond division, and all of it transfers to every chart you will ever be '
+                  'shown, in money or anywhere else.</p>'
+                  '<h3>What is the most common chart trick?</h3>'
+                  '<p>The cropped timeline: a chart that starts exactly where the story starts. Always ask what the line '
+                  'did before the left edge, and redraw it mentally with one more year of history before you believe the slope.</p>'
+                  '<h3>Do I need live charts?</h3>'
+                  '<p>Almost certainly not for the decisions this desk covers. Live charts create the urge to react to '
+                  'noise; a monthly snapshot answers nearly every real question with less temptation attached.</p>'
+                  '<h3>What should I chart for myself?</h3>'
+                  '<p>Two lines: what you earn and what you keep. Everything else on this shelf is about other people\'s '
+                  'numbers; those two are yours, and their trend over twelve months tells you more than any forecast. A plain spreadsheet is enough — date, amount, kept amount — and the five minutes a month it costs quietly fixes the biggest gap in most money plans, which is simply not knowing the trend at all.</p></section>',
+        "save": '<section class="section"><h2>Saving is a system, not a personality trait</h2>'
+                '<p>The most reliable saver in a room is rarely the most disciplined person — it is the one whose saving '
+                'happens without a decision. Automate the transfer for the day after payday, make the amount small enough '
+                'to survive a bad month, and let time do the loud part. The guides on this shelf are arranged around that '
+                'idea: setting a target you can actually hit, choosing where the money sits while it waits, and building '
+                'the buffer that turns emergencies from crises into admin. Nothing here requires earning more first; every '
+                'technique works on whatever amount you have, and grows with you when that amount does.</p>'
+                '<h3>How much is enough?</h3>'
+                '<p>For the emergency buffer, three months of essentials is the classic target and one month is a worthy '
+                'first milestone. For goals, work backwards from the price and the date — the savings-goal calculator '
+                'turns that into a monthly number you can judge on sight.</p>'
+                '<h3>Where should savings sit?</h3>'
+                '<p>Somewhere boring, separate from spending, and reachable within a day or two. The separation matters '
+                'more than the rate: money in your current account is money already spent, psychologically speaking.</p>'
+                '<h3>What breaks a savings habit?</h3>'
+                '<p>Amounts set too high, goals set too vague, and checks done too often. Set the transfer modestly, name '
+                'the goal specifically, and look at it monthly — the habit survives on small proof, not big intentions.</p></section>',
+    }
+
+    _SHELF_SECOND = {
+        "start": '<section class="section"><h2>Three first-month mistakes</h2><p>'
+                 'Chasing tips from a dozen sources at once, skipping the boring setup step, and checking results daily. '
+                 'The people who stick pick one path, set it up properly, and judge it on a month, not a Monday.</p></section>',
+        "method": '<section class="section"><h2>What a method actually needs</h2><p>'
+                  'Three parts: a rule for getting in, a rule for getting out, and a size you can live with when it goes wrong. '
+                  'Miss any one of the three and what you have is an opinion, not a method — however good the story sounds.</p></section>',
+        "risk": '<section class="section"><h2>The mistake most people make</h2><p>'
+                'They size the reward and never size the regret. Before any position or plan, write down the exact amount you '
+                'can lose without it changing your week. If you cannot state that number calmly, the position is too big.</p></section>',
+        "costs": '<section class="section"><h2>Where costs actually hide</h2><p>'
+                 'Not in the obvious fee you can see — in the spread, the inactivity charge, the currency conversion, and the '
+                 'small monthly amount you forgot you agreed to. Annualise everything: a $3-a-month fee is $36 a year for nothing.</p></section>',
+        "charts": '<section class="section"><h2>Two questions before you trust a chart</h2><p>'
+                  'Who drew it, and what would it look like with a different start date? A chart is an argument drawn by '
+                  'someone; both questions take ten seconds and catch most of the misleading ones you will meet.</p></section>',
+        "save": '<section class="section"><h2>The order that works</h2><p>'
+                'Buffer first, then any employer match, then expensive debt, then everything else. It is not exciting, and it '
+                'does not need to be — boring order, done automatically, beats clever every single year.</p></section>',
+    }
+
+    _SHELF_INTRO = {
+     "start": ('<section class="section"><div class="prose">'
+      "<h2>Where to start \u2014 the honest order</h2>"
+      "<p>Money foundations have a working order: a small emergency buffer first (one month "
+      "of essentials beats nothing), employer matches and high-interest debt next, because "
+      "both pay a return no market offers, then the slower goals. The guides on "
+      "this shelf follow that order and say plainly when a step depends on your country's "
+      "rules. Sources the desk checks against: the "
+      '<a href="https://www.consumerfinance.gov/" rel="noopener" target="_blank">CFPB</a> for US '
+      'consumer basics and <a href="https://www.moneyhelper.org.uk/" rel="noopener" target="_blank">MoneyHelper</a> '
+      "for UK guidance \u2014 both independent, both free.</p></div></section>"),
+     "method": ('<section class="section"><div class="prose">'
+      "<h2>The method: size first, strategy second</h2>"
+      "<p>This desk's method inverts the usual order: what you risk on a single trade is "
+      "decided before any entry, signal or indicator. The pieces here \u2014 sizing, "
+      "expectancy, cost of doing business \u2014 are the arithmetic that decides whether a "
+      "strategy survives its own losing streak. The "
+      '<a href="https://www.investor.gov/" rel="noopener" target="_blank">SEC\u2019s investor.gov</a> '
+      "is the reference for the mechanics; the "
+      '<a href="https://www.cftc.gov/" rel="noopener" target="_blank">CFTC</a> publishes the fraud '
+      "advisories worth reading before trusting any system sold to you.</p></div></section>"),
+     "risk": ('<section class="section"><div class="prose">'
+      "<h2>What risk means on this desk</h2>"
+      "<p>Risk is not a disclaimer word here; it is the input to every calculation the desk "
+      "makes \u2014 how much can be lost, how likely, in what sequence, and whether the "
+      "account survives the answer. The guides below cover risk of ruin, drawdowns and the "
+      "difference between volatility and loss. Background reading that sells nothing: "
+      '<a href="https://www.investor.gov/" rel="noopener" target="_blank">investor.gov</a> on risk '
+      'and return, and <a href="https://www.finra.org/" rel="noopener" target="_blank">FINRA</a> on '
+      "what leverage actually obliges you to pay.</p></div></section>"),
+     "costs": ('<section class="section"><div class="prose">'
+      "<h2>Why costs decide outcomes</h2>"
+      "<p>Fees compound exactly the way returns do \u2014 against you. Two percent of annual "
+      "costs on a long-held portfolio is not a rounding error; it is a slice of the final "
+      "figure that never comes back. This shelf prices the visible costs: spreads, "
+      "commissions, fund fees, and the invisible ones (slippage, idle margin). The "
+      '<a href="https://www.investor.gov/" rel="noopener" target="_blank">SEC\u2019s fee guidance</a> '
+      'and <a href="https://www.finra.org/" rel="noopener" target="_blank">FINRA\u2019s fund tools</a> '
+      "let you check any figure we quote.</p></div></section>"),
+     "charts": ('<section class="section"><div class="prose">'
+      "<h2>Reading charts honestly</h2>"
+      "<p>No regulator endorses an indicator, and no chart pattern carries a guarantee "
+      "\u2014 these guides treat moving averages, RSI and the rest as what they are: "
+      "structured ways to describe price behaviour, useful for framing decisions and useless "
+      "as oracles. Each guide separates what the tool computes from what people claim it "
+      "predicts. The neutral reference for market mechanics is "
+      '<a href="https://www.investor.gov/" rel="noopener" target="_blank">investor.gov</a>; '
+      "broker-check before believing anyone's chart, via "
+      '<a href="https://www.finra.org/" rel="noopener" target="_blank">FINRA BrokerCheck</a>.</p></div></section>'),
+     "save": ('<section class="section"><div class="prose">'
+      "<h2>The saving foundations shelf</h2>"
+      "<p>Emergency fund, house deposit, the compounding habit \u2014 the boring machinery "
+      "that every other money decision stands on. The guides here carry their figures with "
+      "check dates and their jurisdiction with the claim, because savings products differ "
+      "more between countries than almost anything else on this site. Independent references "
+      'the desk checks against: <a href="https://www.moneyhelper.org.uk/" rel="noopener" target="_blank">MoneyHelper</a> '
+      '(UK) and the <a href="https://www.consumerfinance.gov/" rel="noopener" target="_blank">CFPB</a> (US), '
+      'plus <a href="https://www.gov.uk/" rel="noopener" target="_blank">gov.uk</a> for the schemes that '
+      "only exist in statute.</p></div></section>"),
+    }
     for _cs, _cvals in _mhd.MONEY_CATS.items():
         _cn, _cd = _cvals[0], _cvals[1]
         _rows = sorted((a for a in _cat_arts if a["cat"] == _cs), key=lambda a: a["title"])
@@ -7454,6 +7725,9 @@ def money_pages():
             + '<section class="cover"><p class="kicker">Section shelf \u00b7 ' + str(len(_rows)) + " pieces</p>"
             + '<h1 class="cover-title" style="font-size:clamp(30px,4.6vw,48px)">' + html.escape(_cn) + "</h1>"
             + '<p class="lede">' + html.escape(_cd) + "</p></section>"
+            + _SHELF_INTRO.get(_cs, "")
+            + _SHELF_SECOND.get(_cs, "")
+            + _SHELF_DEEP.get(_cs, "")
             + '<section class="section"><ul class="list">' + _lis + "</ul>"
             + '<div class="actions"><a class="btn secondary" href="/money/">The whole desk</a></div></section>'
             + "</div></main>" + foot("money"))

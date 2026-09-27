@@ -131,3 +131,11 @@ Post-deploy: rerun tools/audit_bryme.py (workspace) for the score delta; expecte
 2. All Tier-A pages live at desk-root (`/desk/slug-explained/`), not in subdirectories.
 3. After any workspace restore, run `build-ecosystem.py` **before** `npm run build` (npm chain does not regenerate `ecosystem/`).
 4. **Never record an audit finding from a working tree during a churn window** — snapshot truncation struck twice on 2026-09-26 (6,113 files each time, once mid-turn). Findings must be verified against committed HEAD (`git show HEAD:<path>`) before entering this register. Both "regressions" this session (explainers shelf, zero JSON-LD) were truncation artifacts.
+
+## Phase 3 — Tranche 2: Money desk depth (2026-09-27)
+
+**Scope:** 11 money pages at sub-8 (6 calculators 6.65–7.55 no-external-source; 6 category shelves 5.75 weak-structure + no-external-source).
+**Change (scripts/build-ecosystem.py):** (1) `_P3_EXTRA` — each calculator gains a "Worked example" h2 with exactly computed figures (CC $3,000 @24%: $150/mo → 26 mo/$3,900 vs 1%-of-balance minimum → 183 mo/$7,889; mortgage $300k @6%/30yr → $1,798.65/mo, $347,515 interest; 2026 tax $60k single → $7,912 (Rev. Proc. 2025-32 brackets); savings $10k/24mo @4% AER → $401.19/mo; 0.2 lots from $50 risk / 25 pips; expectancy 0.4×300−0.6×100=+$60) plus a "Check it at the source" h2 linking the official source (consumerfinance.gov, IRS, investor.gov, FCA); (2) `_SHELF_INTRO`/`_SHELF_SECOND`/`_SHELF_DEEP` — each of the 6 money shelves gains three h2-led sections in main (honest-order intro, mistakes/second look, ~320-word deep section with 3 h3 Q&As). No existing copy removed.
+**Why the shelves needed ~550+ words:** the auditor classifies money shelves as money-editorial (700/550/400/250 bar) — structure-only fixes capped at 7.3. Caught via regression signature (identical scores, empty reasons) → verified bars were calibrated before acting.
+**Flags fixed en route:** "guaranteed returns" phrasing in start shelf reworded (guarantee-claim pattern); £ → $ currency consistency in costs shelf.
+**Result:** money 11→0 sub-8; site 9.01 avg / 945 10-ready / 375 sub-8 (was 386). All 7 gates green (validate:browser 1,533 cases/171s). Backup: /home/user/audit/build-ecosystem-p3money.py.bak2.
