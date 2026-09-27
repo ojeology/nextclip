@@ -19,8 +19,9 @@ from sub8_depth_data import DEPTH_SECTIONS  # noqa: E402
 from sub8_depth_data2 import DEPTH_SECTIONS2  # noqa: E402
 from sub8_depth_data3 import DEPTH_SECTIONS3  # noqa: E402
 from sub8_depth_data4 import DEPTH_SECTIONS4  # noqa: E402
+from sub8_depth_data5 import DEPTH_SECTIONS5  # noqa: E402
 
-DEPTH_SECTIONS = {**DEPTH_SECTIONS, **DEPTH_SECTIONS2, **DEPTH_SECTIONS3, **DEPTH_SECTIONS4}
+DEPTH_SECTIONS = {**DEPTH_SECTIONS, **DEPTH_SECTIONS2, **DEPTH_SECTIONS3, **DEPTH_SECTIONS4, **DEPTH_SECTIONS5}
 
 MARK = 'data-esrc="t8"'
 BASES = (ROOT, PUB)
