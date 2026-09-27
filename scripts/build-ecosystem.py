@@ -1751,6 +1751,7 @@ def entertainment_pages():
     n_titles = sum(len(e[4]) for sh in _cat.CATALOGUE_SHELVES for e in sh[3])
     n_picks = sum(len(v) for v in _cat.CATALOGUE_STARTERS.values())
     # ---- the restored NEXTCLIP platform (owner directive 15 Sep: bring back the former entertainment) ----
+    import ent_review_depth as _erd
     import entertainment_platform_data as _nx
     try:
         import nollywood_reviews as _nr
@@ -2362,6 +2363,7 @@ def entertainment_pages():
                 + '<tr><td style="padding:5px 14px;border:1px solid var(--line-strong)"><b>Average &mdash; printed score</b></td>'
                 + '<td style="padding:5px 14px;border:1px solid var(--line-strong);text-align:right"><b>' + _nr.review_score_str(_rv) + '</b></td></tr>'
                 + '</tbody></table>'
+                + _erd.REVIEW_DEPTH.get(_rv["slug"], "")
                 + '<p class="nx-verified">Reviewed by ' + html.escape(_nr.REVIEWED_BY) + ' on ' + min(_rv["date"], _TODAY_LIVE)
                 + '. Scores follow <a href="/entertainment/scoring/">the published method</a>; they are never sold and never previewed to rights-holders. '
                 + '<a href="/entertainment/corrections/">Disagree? The corrections door is open.</a></p>' + _href

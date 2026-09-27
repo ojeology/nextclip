@@ -337,7 +337,7 @@ dict(
 "Weight on this shelf is measured in what a film opens, and Namaste Wahala's entry is the most legible kind: a diaspora-hybrid production that made the Nigeria-India screen bridge a commissionable idea, found a worldwide platform audience without begging either industry's permission, and gave this desk's readers the sentence the trade later repeated - the crossover family film is a genre here now, not a stunt. A warm, uneven, genuinely funny pioneer; the shelf files it exactly that way.",
          ]),
     dict(slug="jagun-jagun", title="Jagun Jagun", year=2023,
-         director="Kemi Adetiba", country="Nigeria", language="Yoruba", runtime=None,
+         director="Adebayo Tijani & Tope Adebayo", country="Nigeria", language="Yoruba", runtime=None,
          axes=dict(story=6.5, craft=7.5, vision=7.0, weight=7.0), score=7.0,
          date="2026-09-28",
          verdict="The Yoruba epic as industrial statement: costumes, curses and a warlord's bargain - the platform-era's most expensive swing at genre scale, graded on the swing",
@@ -349,7 +349,7 @@ dict(
          ]),
 
     dict(slug="oloture", title="Oloture", year=2019,
-         director="Jeta Amata", country="Nigeria", language="English", runtime=None,
+         director="Kenneth Gyang", country="Nigeria", language="English", runtime=None,
          axes=dict(story=7.5, craft=7.0, vision=7.0, weight=8.0), score=7.375,
          date="2026-09-29",
          verdict="The trafficking film the industry did not want to make: a corps girl, a modelling promise, and the desert ledger between Libya and the Mediterranean",
