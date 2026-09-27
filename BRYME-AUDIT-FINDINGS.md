@@ -7,6 +7,20 @@ Last sweep: 2026-09-26 · deploy `dep-das1307f` (commit `b93550f`) live.
 
 ---
 
+## Phase 3 — E-E-A-T layer + sources tranche 1 (2026-09-27)
+
+All seven release gates green pre-commit. Score: site avg 8.97 → **9.00**; 10-ready 938 → 945; sub-8 402 → **386**; author bio 5.25 → **10.0**.
+
+| # | Gap | Fix | Status |
+|---|-----|-----|--------|
+| P3-1 | G5: author page was a 47-word stub | Rebuilt from repo-verifiable facts only (intake doc's own rule: never invent credentials): the verification operation, the opportunity DB discipline, BRYME Tested, the corrections culture, house reach. h2 structure, 320 words, cross-desk links via config BASE (validator caught a relative-link routing bug in the first attempt — fixed before commit) | **SHIPPED — 10.0** |
+| P3-2 | G13: house About lacked ownership | "Created and edited by Ibrahim Sodiq, working with desk editors, from Lagos" + link to the author page | **SHIPPED** |
+| P3-3 | G6 tranche 1: pages naming real institutions without linking them | New build step `scripts/inject-sources.py`: for indexable pages whose main text names entities from a curated ~36-entry whitelist (NHS, Ofgem, IRS, CDC, MDN, IMDb, Premier League…) but carry ZERO outbound source links, appends an honest "Referenced in this piece" section (h2 + links to OFFICIAL ROOT sites only + desk byline). Max 6 links, first mention, idempotent, mirrored across all publish tiers. Never invents citations — it links what the page already names | **SHIPPED — 200 pages** |
+| P3-4 | Remaining sub-8 (386) | Pure editorial depth: per-page real citations and depth on tech (93) / home (80) / writers (61) / ent-editorial (102) / sports (27) / money (11) / fitness (6) guides. Cannot be honestly templated — this is the rolling desk-by-desk program | **OPEN — owner cadence** |
+
+---
+---
+
 ## Phase 2 — class-bar quality passes (2026-09-27)
 
 Targets: the three thin classes (audit gaps G2/G3/G4). All seven release gates green pre-commit.

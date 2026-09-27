@@ -2835,10 +2835,19 @@ def empty_pages() -> None:
         write(route, page_wf(title=f"{title} | BRYME", description=ds, route=route, current="about", body=body,
                              schema_data={"@context": "https://schema.org", "@type": "WebPage", "name": title, "url": BASE + route, "publisher": {"@type": "Organization", "name": "BRYME", "url": BASE + "/"}}))
 
-    author_body = '''<div class="wrap"><nav class="breadcrumb"><a href="/">Home</a> / Author / Ibrahim Sodiq</nav>
+    author_body = f'''<div class="wrap"><nav class="breadcrumb"><a href="/">Home</a> / Author / Ibrahim Sodiq</nav>
 <section class="page-hero"><p class="kicker"><span class="kicker-dot"></span>Founder and editor</p><h1>Ibrahim Sodiq.</h1>
-<p>Ibrahim leads BRYME's source checks, opportunity research and editorial standards from Lagos, Nigeria.</p></section>
-<section class="section"><div class="prose"><p>BRYME now focuses on writing: legitimate paid writing opportunities, practical guides, and a firsthand record where BRYME has personally pitched, been accepted, published or paid.</p></div></section></div>'''
+<p>Ibrahim Sodiq is the founder and editor of BRYME, an independent, Lagos-based editorial house. He runs the research operation every BRYME page rests on: the source checks, the opportunity records and the editorial standard.</p></section>
+<section class="section"><div class="prose">
+<h2>What Ibrahim actually does here</h2>
+<p>Every publication on BRYME carries the same discipline, and it is his to enforce. For the <a href="/writing/">opportunity database</a> that means checking each publication's own guidelines page directly, recording pay, word count, eligibility, submission method, rights and AI policy exactly as stated, and printing the date each record was last verified &mdash; currently a running database of researched markets, each with its sources named. Rates are never invented; payment is recorded only when it is confirmed.</p>
+<p>For the guides, it means the standards on the <a href="/editorial-policy/">editorial policy</a> page: primary sources before secondary ones, a date on anything time-sensitive, and honest labels where a claim is analysis rather than fact. Where BRYME has personally submitted work, been accepted, published or paid, the account lives on <a href="/tested/">BRYME Tested</a> &mdash; firsthand experience, dated, and kept separate from research.</p>
+<h2>The standard, in his own words</h2>
+<p>Nothing goes on a BRYME page that cannot be checked against its source, and anything a source cannot support stays off the site. When a page is wrong, the fix is published in the open on the page itself &mdash; see <a href="/corrections/">how corrections work</a>. A blank is always better than a plausible-sounding fabrication, which is exactly what makes a site read as machine-made.</p>
+<h2>Beyond the writing desk</h2>
+<p>BRYME has grown into a family of specialist publications under one house standard &mdash; see <a href="{BASE}/about/">the family about page</a> for the full list, from <a href="{BASE}/tech/">BRYME Tech</a> to <a href="{BASE}/money/">BRYME Money</a>. The editing still happens in one place, and the same rules apply on every desk.</p>
+<p>Errors, corrections and rights questions reach him through the <a href="/contact/">contact page</a>.</p>
+</div></section></div>'''
     write("/author/ibrahim-sodiq/", page_wf(title="Ibrahim Sodiq | BRYME founder and editor",
                                             description="About Ibrahim Sodiq, founder and editor of BRYME's writing opportunities and guides platform.",
                                             route="/author/ibrahim-sodiq/", current="about", body=author_body,

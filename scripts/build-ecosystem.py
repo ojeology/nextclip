@@ -7484,7 +7484,7 @@ def main() -> None:
         '<section class="section"><div class="prose">'
         '<p>THE BRYME is a family of independent publications under one editorial house. Each desk has its own focus, voice and standards \u2014 what they share is the discipline: research before publishing, a date on anything time-sensitive, and no fabricated experience or statistics.</p>'
         '<p><b>The publications:</b> <a href="/writers/">BRYME Writers</a> (writing careers and research) \u00b7 <a href="/tech/">BRYME Tech</a> (practical technology) \u00b7 <a href="/sports/">BRYME Sport</a> (verified football reference) \u00b7 <a href="/entertainment/">BRYME Entertainment</a> (film, TV and anime) \u00b7 <a href="/fitness/">BRYME Fitness</a> (evidence-led training) \u00b7 <a href="/home/">BRYME Home &amp; DIY</a> (fixing, maintaining and understanding a home) \u00b7 <a href="/money/">BRYME Money</a> (risk-first trading tools and education).</p>'
-        '<p>The family is edited from Lagos, Nigeria, and written for a global readership. Corrections are made in the open, on the page that made the claim \u2014 the <a href="/writers/corrections/">corrections policy</a> explains how.</p>'
+        '<p>The family is created and edited by <a href="/writers/author/ibrahim-sodiq/">Ibrahim Sodiq</a>, working with desk editors, from Lagos, Nigeria, and is written for a global readership. Corrections are made in the open, on the page that made the claim \u2014 the <a href="/writers/corrections/">corrections policy</a> explains how.</p>'
         '<h2>The house standard</h2>'
         '<ul>'
         '<li>Evergreen, genuinely useful work over volume.</li>'
