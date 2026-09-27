@@ -5,139 +5,166 @@
     "why": "Word count is one of the few concrete, enforceable limits in writing. Editors and guidelines state a range; a word counter lets you meet it exactly instead of counting manually."
   },
   "character-counter": {
-    "what": "Counts the characters in your text, counting spaces.",
-    "howto": "Paste your text to see the total character count immediately. This is the number platforms use for tweet lengths, meta descriptions, SMS and other strict limits.",
-    "why": "Character limits are everywhere — social posts, form fields, headlines. Knowing your count before you paste saves you from truncation."
+    "what": "Counts every character in your text, spaces and line breaks included, live as you type or paste.",
+    "howto": "Paste your text into the box and read the count as it updates. Use it against a hard limit: a meta description should stay under about 160 characters, a social post has its own ceiling, and many submission forms cut off silently after a set number.",
+    "why": "Character limits are everywhere in a writing life - headlines, captions, bios, pitch forms - and the fastest way to lose a submission is guessing. Ten seconds here beats a truncated form.",
+    "know": "Counts update live as you edit, so trimming to a limit is a process of watching the number, not repeated pasting. Line breaks count as characters in most form fields - if your text has hard wraps, remove them first for the honest figure."
   },
   "character-counter-no-spaces": {
-    "what": "Counts the characters in your text excluding spaces.",
-    "howto": "Paste text to see the character count with spaces removed. Useful for limits that exclude whitespace, and for comparing how much actual content you have.",
-    "why": "Some application forms and database fields count only non-space characters, so knowing both numbers is useful."
+    "what": "Counts characters the way some guidelines do - excluding spaces - so you can match a letters-only limit precisely.",
+    "howto": "Paste the text and compare the with-spaces and without-spaces counts. If a guideline says 2,000 characters excluding spaces, treat the lower number as your budget and trim until it fits with a few characters to spare.",
+    "why": "Space-inclusive and space-exclusive limits can differ by several percent on long text. Matching the number the editor actually meant saves a revise-and-resend.",
+    "know": "The gap between the two counts grows with every word - a 1,000-word draft typically carries 1,600-2,000 spaces. For long limits, check the no-spaces figure after every structural edit, not every sentence."
   },
   "sentence-counter": {
-    "what": "Counts sentences and paragraphs in your text.",
-    "howto": "Paste your text to get both a sentence count and a paragraph count. Use the sentence count with the sentence-length checker to see the average length.",
-    "why": "Sentence and paragraph counts reveal the rhythm and readability of a piece. A wall of very long sentences is harder to read."
+    "what": "Counts the sentences in your text by splitting on full stops, question marks and exclamation points, and reports the total live.",
+    "howto": "Paste a paragraph or a whole draft to see how many sentences you have. Read it next to the word count: the two together give your average sentence length, and anything above roughly 25 words per sentence on average is worth a second look.",
+    "why": "Sentence count is the quickest X-ray of rhythm. Thirty long sentences in a row read very differently from a deliberate mix, and editors feel the difference before they can name it.",
+    "know": "Ellipses, abbreviations like Dr. and decimal points can each fake a sentence break in mechanical counting - the number errs slightly high on abbreviation-heavy text, which is the safe direction for length limits."
   },
   "paragraph-counter": {
-    "what": "Counts the paragraphs in your text.",
-    "howto": "Paste your text and the paragraph count appears instantly. A paragraph is normally split by a blank line.",
-    "why": "Paragraphs are a visual signal of readability. Short paragraphs read faster online; knowing your count helps you balance them."
+    "what": "Counts paragraphs - blocks of text separated by blank lines - so you can see a piece's structure at a glance.",
+    "howto": "Paste the draft and check the count against its length. Online writing generally reads best with a paragraph every one to four sentences; a 1,000-word piece that counts three paragraphs is usually a sign to break it up.",
+    "why": "Readers skim. Paragraph count is the shape of the skimming experience - a page that is one grey block loses readers a sentence after the headline.",
+    "know": "Blank lines are what separate paragraphs here - a hard-wrapped pasted email can look like thirty paragraphs. Run line-break-cleaner first if the paste has wraps in odd places."
   },
   "reading-time": {
-    "what": "Estimates how long it takes to read your text aloud at an average pace.",
-    "howto": "Paste or write your text and see the estimated reading time. Use it to match a newsletter, speech or article to the time a reader or listener will give it.",
-    "why": "Reading time sets expectations. A reader decides in seconds whether to commit, and a clear estimate respects their time."
+    "what": "Estimates how long a piece takes to read, from its word count at a typical silent-reading speed.",
+    "howto": "Paste the text to see the estimate. The usual assumption is roughly 200-250 words a minute; treat the figure as a band, not a promise - dense technical writing reads slower than a light list, and that is fine.",
+    "why": "Reading time is a promise made next to the headline. Estimating it honestly, and then delivering it, is a small trust signal that keeps readers coming back.",
+    "know": "The estimate assumes silent reading - reading aloud runs at roughly a third of the speed, so a five-minute read is closer to fifteen presented. Podcasters and video hosts: budget accordingly."
   },
   "word-density": {
-    "what": "Finds the most frequent words in your text and shows how often each appears.",
-    "howto": "Paste your text to see a ranked list of your most-used words and their repetition rates. Spot a filler word you lean on and replace it.",
-    "why": "Repetitive words weaken writing. Seeing your patterns is the fastest way to notice crutch words and overused phrases."
+    "what": "Shows your most frequent words and what share of the text each one is, so repetition and keyword-stuffing are visible at a glance.",
+    "howto": "Paste the text and scan the top of the list. Function words like the and of will always lead; what matters is whether any content word - a name, a topic term, an adjective you lean on - appears far more than you intended.",
+    "why": "Every writer has crutch words they cannot feel any more. Density is the objective mirror; cutting the echo makes prose read as crafted rather than looped.",
+    "know": "Stopwords are not filtered, so the top of every list is the usual suspects - scroll past them. What counts as 'too high' depends on the word: a character's name at 2% is fine; an adjective at 2% is a tic."
   },
   "case-converter": {
-    "what": "Converts text between title case, lowercase, UPPERCASE, sentence case and camelCase.",
-    "howto": "Type or paste text, pick the case you need, and copy the result. Title case is for headings; sentence case for normal sentences.",
-    "why": "Case rules differ by context — a headline, a code comment, a database entry. Converting in one click avoids retyping."
+    "what": "Converts text between UPPERCASE, lowercase, Title Case and Sentence case without retyping a word.",
+    "howto": "Paste the text, pick the target case, and copy the result. Title Case suits headlines and section titles; Sentence case is the safer default for subheadings in most house styles - check which one your publication uses and standardise.",
+    "why": "Retyping a paragraph to fix its capitalisation wastes minutes and introduces typos. A one-click conversion is exact, and exact is the point.",
+    "know": "Sentence case only fixes the first letter after each sentence end - proper nouns it cannot recognise stay lowercased, so give names and acronyms a final read. Title Case here follows simple style rules, not a specific manual."
   },
   "text-cleaner": {
-    "what": "Removes double spaces, stray line breaks and other messy formatting from pasted text.",
-    "howto": "Paste messy text and get clean, consistent text back with normal spaces and breaks. Useful when you copy from an email, a PDF or a website.",
-    "why": "Copied text is rarely clean. A cleaner saves you from manually fixing spacing and line breaks before you submit or publish."
+    "what": "Normalises messy pasted text: non-breaking spaces become normal spaces, doubled spaces collapse, whitespace around line breaks disappears, and three or more blank lines collapse to one.",
+    "howto": "Paste text copied from emails, PDFs or web pages, then copy the cleaned version out. It is the fastest way to make imported text safe to edit - hidden non-breaking spaces are a classic cause of broken search and layout later.",
+    "why": "Text from the real world arrives dirty. Cleaning it first means every later step - counts, find-and-replace, formatting - works on what you think you wrote.",
+    "know": "The cleaner never changes your words - only spacing, blank lines and invisible characters. That makes it safe to run before you proofread: what you read afterwards is what a publisher will receive."
   },
   "remove-extra-spaces": {
-    "what": "Turns runs of spaces into single spaces.",
-    "howto": "Paste text to collapse extra spaces into normal spacing. Ideal for cleaning text pasted from formatted sources.",
-    "why": "Double spaces and irregular gaps make a document look sloppy. One pass cleans the whole thing."
+    "what": "Collapses runs of spaces and tabs down to a single space while leaving your line breaks exactly where they are.",
+    "howto": "Paste the text and copy the result. Use it on drafts assembled from messages and notes, where double spaces accumulate; paragraphs keep their shape and only the horizontal mess goes.",
+    "why": "Double spaces survive every proofread done by eye. Collapsing them mechanically is faster and cannot miss one.",
+    "know": "Tabs count as spaces here, which is usually what you want for prose. Code and tables are a different animal - indentation is meaningful there, so keep this tool away from it."
   },
   "line-break-cleaner": {
-    "what": "Fixes inconsistent line breaks in pasted text.",
-    "howto": "Paste text with stray or missing line breaks and get a clean result. Great for text pasted from PDFs or web pages.",
-    "why": "Pasted text often inherits odd breaks. Cleaning them makes a document reliable before editing."
+    "what": "Removes empty lines so wrapped paragraphs join cleanly - built for text pasted from PDFs and forms where blank lines multiply.",
+    "howto": "Paste the text and the tool strips the blank lines between wrapped lines; copy the result back into your editor. Run remove-extra-spaces first if the text also carries doubled spaces.",
+    "why": "A PDF paste with a blank line every forty characters is unusable in any editor. One pass here turns it back into prose you can actually work with.",
+    "know": "This removes empty lines only - the breaks inside paragraphs stay. For text where every line ends in a hard wrap with no blank lines, remove-extra-spaces plus a find-and-replace in your editor finishes the job."
   },
   "text-sorter": {
-    "what": "Sorts lines of text alphabetically, ascending or descending.",
-    "howto": "Paste a list and choose A-Z or Z-A. Useful for organising headings, a bibliography or a list of items.",
-    "why": "Alphabetical order is a common requirement in references and lists. Sorting by hand is tedious and error-prone."
+    "what": "Sorts the lines of your text alphabetically, ascending or descending, discarding empty lines.",
+    "howto": "Put one item per line - names, references, list entries - paste, choose a direction, and copy the sorted result. It is the quick way to alphabetise a bibliography, a glossary or a contact list.",
+    "why": "Editors notice an unsorted list. Sorting takes seconds and quietly signals that the details were handled.",
+    "know": "Sorting is case-sensitive the way dictionaries are - capitalised entries sort before lowercase ones. Normalise the case first if your list mixes both and the order looks wrong."
   },
   "duplicate-line-remover": {
-    "what": "Removes repeated lines from a list, keeping one of each.",
-    "howto": "Paste a list with duplicates and get a clean, deduplicated version. Useful for cleaning data or a long list.",
-    "why": "Removing duplicates makes a list reliable and easier to read, whatever you are compiling."
+    "what": "Deletes repeated lines, keeping the first occurrence of each and preserving the original order.",
+    "howto": "Paste your list - keywords, tags, citation lines - and copy the deduplicated result. Lines count as duplicates only when they match exactly after trimming, so near-duplicates still deserve your eye.",
+    "why": "Duplicated lines in a list or a data set undermine trust in everything around them. Mechanical deduplication is exhaustive in a way scanning by eye never is.",
+    "know": "Trailing spaces are trimmed before comparison, so 'item ' and 'item' count as one. Lines that differ by a single character or comma are not duplicates to the tool - scan the near-misses yourself."
   },
   "writing-timer": {
-    "what": "A focus timer for a writing session.",
-    "howto": "Set a goal in minutes, then write without stopping. The timer keeps you honest without nagging, and many writers find a fixed block easier than an open-ended session.",
-    "why": "A timer turns 'be good' into 'fill the time' — making it far easier to start and to keep a routine."
+    "what": "A distraction-free session timer with a default 25-minute goal you can change, built for timed writing sprints.",
+    "howto": "Set a goal in minutes, press start, and write in whatever document you like until it stops. A sprint works best with one rule: forward only - no editing until the timer ends.",
+    "why": "Pages are written by sessions, not moods. A timer converts a vague intention into a bounded, repeatable block - which is the habit the whole craft rests on.",
+    "know": "The timer keeps counting if you switch tabs, on purpose - the sprint is about time at the page, not words produced. Sessions of 15, 25 and 45 minutes all work; pick one and keep it boringly consistent."
   },
   "article-outline-generator": {
-    "what": "Turns an idea into a structured article outline with an introduction, body sections and a conclusion.",
-    "howto": "Enter your topic and the tool builds a skeleton you can rewrite into a full draft. Adjust sections to your argument and fill them in.",
-    "why": "An outline removes the hardest part of starting. A clear structure means each paragraph has a job, so you write faster."
+    "what": "Turns a topic and audience into a working outline skeleton - the point of the piece plus the moves that will prove it.",
+    "howto": "Type your working title and who the piece is for, generate the outline, then edit it ruthlessly. Treat the result as a first argument to argue with, not a template to fill - the outline you disagree with teaches you what you actually think.",
+    "why": "An outline written before drafting is the cheapest place to discover a piece does not work. Ten minutes here routinely saves a rewrite.",
+    "know": "The strongest use is negative: generate an outline, find the section you cannot actually argue, and cut or research it. An outline that survives your own objections survives an editor's."
   },
   "writing-checklist-generator": {
-    "what": "Generates a pre-publication checklist for your writing.",
-    "howto": "Select the checks that apply and work through them before you publish or submit.",
-    "why": "A checklist catches the easy, costly mistakes — typos, weak conclusions, missing citations — before an editor does."
+    "what": "Builds a pre-submission checklist matched to the kind of piece you are sending - the checks an editor would run first.",
+    "howto": "Pick the piece type, generate the checklist, and work down it during the final pass. Keep it open while you check; the point is catching what familiarity has made you blind to.",
+    "why": "Most rejections on decent work are avoidable basics: the word count, the brief, the format. A checklist turns careful from a mood into a procedure.",
+    "know": "Run the checklist before you format the submission, not after - fixing a structure problem at the formatting stage means doing the formatting twice."
   },
   "syllable-counter": {
-    "what": "Counts the syllables in words and text.",
-    "howto": "Paste text to count syllables. Useful for poetry, songwriting and assessing rhythm.",
-    "why": "Syllables govern rhythm in poetry and verse. A syllable count helps you match a metre or a line length."
+    "what": "Counts syllables per word and across your text - the measurement behind every readability formula.",
+    "howto": "Paste text to see the total, or test single words to see how they score. English syllable counting is rule-based and occasionally surprised by odd spellings, so treat totals as close estimates rather than law.",
+    "why": "Syllable load is why utilise reads heavier than use. Seeing the number behind that feeling turns sentence-simplifying into a decision instead of an instinct.",
+    "know": "Rule-based counting trips on silent letters and borrowed words - fire is one syllable here, as it should be, but some proper nouns miscount. Use it for weights and trends, not single-word verdicts."
   },
   "readability-score": {
-    "what": "Scores how easy your text is to read using established readability formulas.",
-    "howto": "Paste your text and see readability scores such as the Flesch reading ease and grade level. Aim for clear, accessible writing for a general reader.",
-    "why": "Readability is not about dumbing down — it is about clarity. A high score means your reader can follow you on the first pass."
+    "what": "Scores your text with the Flesch reading-ease formula - 0 to 100, higher is easier - and shows the words-per-sentence and syllables-per-word behind the score.",
+    "howto": "Paste a section and read the score with its grade band. General web writing sits comfortably around 60-70; if a piece lands far lower, look first at the longest sentences and the heaviest words.",
+    "why": "The score is not a verdict on intelligence - it is a measure of friction. Matching friction to your audience is what clear actually means.",
+    "know": "Score paragraphs, not whole documents - a 900-word piece mixing an intro and a technical section averages two different audiences into one misleading number."
   },
   "filler-word-finder": {
-    "what": "Finds filler words and hedges like 'very', 'really' and 'in my opinion'.",
-    "howto": "Paste your text to spot filler words and cut the ones that add nothing. Removing them makes the writing sharper.",
-    "why": "Filler and hedge words dilute an argument. Cutting them is one of the fastest edits for stronger prose."
+    "what": "Highlights filler words and hedges - the just, really, very and actually cushions that sneak into drafts.",
+    "howto": "Paste a draft and work through the flagged words one by one. Do not delete blindly - sometimes the filler is doing tonal work. Cut it when the sentence survives without it, which is most of the time.",
+    "why": "Filler is written in first drafts and forgotten by the second read. A mechanical list finds every one; your judgement decides which few earn their place.",
+    "know": "Dialogue is exempt: characters say just and really the way people actually talk. Apply the edits to narration first and leave voices alone."
   },
   "passive-voice-detector": {
-    "what": "Flags sentences that may be in the passive voice.",
-    "howto": "Paste text to find candidate passive constructions. Review each and rewrite to active where the doer matters.",
-    "why": "Active voice is usually clearer and more direct. Identifying passive spots is quicker than hunting for them manually."
+    "what": "Flags likely passive constructions - forms of to be with a past participle - so you can decide which ones to keep deliberately.",
+    "howto": "Paste the section and review each hit. Keep the passive when the actor is unknown or genuinely unimportant, as in the house was sold; rewrite when it hides who did what - mistakes were made is hiding someone.",
+    "why": "Passive voice is not a sin - reflexive passive voice is. Working from a list of candidates turns a style-guide slogan into sentence-level decisions.",
+    "know": "The detector flags patterns, not crimes - was and a participle sometimes form a perfectly active progressive (was running). Read each hit in its sentence before reaching for a rewrite."
   },
   "word-repetition-checker": {
-    "what": "Finds words repeated too close together across a text.",
-    "howto": "Paste your text to see where a word repeats. Replace a repeated word with a synonym or restructure the sentence.",
-    "why": "Repeated words pull a reader's eye and sound mechanical. Varying your vocabulary keeps prose fresh."
+    "what": "Finds your repeated content words - the ones a reader starts to notice by the third appearance.",
+    "howto": "Paste a section and look past the obvious function words at the top of the list. When a distinctive noun or verb repeats within a few paragraphs, keep one instance and vary or cut the rest - distance alone usually fixes it.",
+    "why": "Repetition is the tell of an unedited draft. Cutting echoes is the fastest single way to make prose feel professionally handled.",
+    "know": "Repetition across a gap of ten paragraphs is invisible to readers; repetition inside two is what they feel. Judge each repeat by its distance, not just its count."
   },
   "sentence-length-checker": {
-    "what": "Identifies sentences that are too long and hard to follow.",
-    "howto": "Paste text to highlight long sentences. Split them into shorter ones for clarity, or give a favourite long one a brief break.",
-    "why": "Long, unbroken sentences lose readers. Marking them is the first step to a clearer rhythm."
+    "what": "Measures every sentence in your text and shows the lengths, so you can see the rhythm - or the monotony - directly.",
+    "howto": "Paste a few paragraphs and look at the pattern of numbers. A run of similar lengths flattens the read; follow a long sentence with a short one and the page suddenly has pace.",
+    "why": "Readers hear sentence length before they notice anything else about style. Seeing the numbers lets you compose rhythm on purpose instead of by accident.",
+    "know": "Aim for variety, not shortness - a 30-word sentence followed by a 6-word one lands harder than twenty medium sentences. The pattern of numbers is the signal; the average is almost meaningless."
   },
   "cliche-detector": {
-    "what": "Finds overused cliches and stock phrases.",
-    "howto": "Paste text to spot cliches and replace them with fresher, more specific language.",
-    "why": "Cliches signal a writer is not thinking. Replacing them with specific, original detail is what makes writing memorable."
+    "what": "Flags common cliches and worn phrases - the expressions readers skip because they have met them a thousand times.",
+    "howto": "Paste the draft and judge each flag: replace the phrase with what you actually mean, or keep it where the cliche is doing deliberate work, usually in dialogue or a joke.",
+    "why": "Cliches arrive pre-faded. A mechanical sweep finds the ones your own reading eye has gone blind to - which is all of them, eventually.",
+    "know": "The list covers the well-worn phrases, not fresh ones - your own pet phrase will not be flagged because nobody else has worn it out yet. Word-repetition-checker is the tool for that."
   },
   "adverb-finder": {
-    "what": "Finds adverbs, the words that often do the work a stronger verb should.",
-    "howto": "Paste text to see where adverbs appear. Consider replacing a weak verb plus adverb ('ran quickly') with one strong verb ('sprinted').",
-    "why": "Adverbs can be a sign of a lazy verb. Cutting them often forces sharper, more vivid writing."
+    "what": "Lists the adverbs in your text, led by the -ly words that most often mark an unnecessary one.",
+    "howto": "Paste the section and test each adverb: if the verb is right, the adverb is usually decoration - ran quickly is asking to be sprinted. Keep the ones that change the meaning; cut the ones that only add breath.",
+    "why": "Adverbs are how first drafts hedge. The verb-plus-adverb pair almost always hides a stronger verb, and finding it upgrades the whole sentence.",
+    "know": "Dialogue tags are the classic exception - she said quietly carries information that sprinted cannot. Fix the narration; let people talk the way they talk."
   },
   "title-generator": {
-    "what": "Generates several headline options for your article or post.",
-    "howto": "Enter a topic and get multiple title options. Pick the clearest one or combine the best parts of two.",
-    "why": "Before a reader sees your content, they see your title. A strong, specific headline earns the click."
+    "what": "Generates working title options from your topic, shaped for the kind of piece you are writing.",
+    "howto": "Enter the subject and the audience, generate, and treat every option as a draft - steal the structure, not the wording. A good title names the promise; test yours against the piece's actual first paragraph.",
+    "why": "Titles written at the last minute default to clever or vague. A batch of options gets you to specific - and specific is what makes a reader click or an editor read on.",
+    "know": "Generate twice with slightly different topic wording - the second batch is usually better because you will have sharpened what you are actually promising."
   },
   "meta-description-generator": {
-    "what": "Writes a meta description for your page, kept to the length search engines like.",
-    "howto": "Enter your topic and the benefit to the reader, and get a description near the recommended length. Add it to your page's markup.",
-    "why": "A meta description is the snippet shown under a search result. A clear, benefit-led one raises your click-through rate."
+    "what": "Drafts search-engine meta descriptions for a page, with the length discipline that keeps them from being truncated in results.",
+    "howto": "Enter the page's subject and audience, generate, then edit so the description names what the page actually delivers. Keep it under roughly 160 characters and front-load the specific promise.",
+    "why": "The meta description is your advert in the search results. Written deliberately it earns the click; left to auto-generation it reads like a receipt.",
+    "know": "Write the description after the page is finished - the promise it makes has to be one the page keeps, and kept promises are what turn a visitor into a returning reader."
   },
   "random-writing-prompt": {
-    "what": "Gives you a fresh writing prompt to beat the blank page.",
-    "howto": "Click for a new prompt and write immediately. Don't overthink — the point is to start.",
-    "why": "Writer's block is often just not knowing where to start. A specific prompt removes that choice and gets you writing."
+    "what": "Serves a random writing prompt whenever you need a starting line, a warm-up or a way out of a blank page.",
+    "howto": "Take the prompt and write against it for a fixed session - ten minutes, no stopping, no editing. The point is not the output; it is proof that you can start, which is the muscle everything else uses.",
+    "why": "Waiting for a good idea is a slow way to write. A prompt removes the decision and leaves only the writing - which is usually where the good idea was hiding.",
+    "know": "If a prompt leaves you cold, take its second word and change it - modifying the prompt is itself a writing decision, and the session starts the moment you make it."
   },
   "word-document-converter": {
-    "what": "Turns your text into a Word-compatible document, or plain text.",
-    "howto": "Paste or write your text, choose the format, and download. Open it in Word, Google Docs or LibreOffice.",
-    "why": "Many submissions and clients want a document file. Creating one in the browser avoids opening a word processor."
+    "what": "Converts between document formats in your browser - turning a .docx into clean text, or text into a document, without a word processor.",
+    "howto": "Choose the file, pick the output you need, and download the result. Formatting does not survive perfectly by design: you get the words and structure, not the fonts - which is what most submission guidelines actually ask for.",
+    "why": "Publications ask for formats; writers have files. A local conversion closes the gap without your draft ever leaving your machine.",
+    "know": "After converting, spot-check the start, the middle and the end - conversion is faithful to text and structure, but a thirty-second skim confirms nothing was dropped at a page boundary."
   },
   "pdf-editor": {
     "what": "Lets you edit a PDF's pages — rotate, delete, reorder — entirely in your browser.",
@@ -145,29 +172,34 @@
     "why": "A quick fix to a PDF — a rotated scan, a page to drop — shouldn't need uploads or an account. Doing it client-side keeps it private."
   },
   "pdf-to-text": {
-    "what": "Extracts the text from a PDF so you can copy and reuse it.",
-    "howto": "Choose a PDF and the text is extracted into a box you can copy or edit. Note that scanned/image PDFs may not extract text.",
-    "why": "Sometimes a PDF's words are all you want — to quote, edit, or reuse in your own document."
+    "what": "Extracts plain text from a PDF so you can copy, quote and edit it. Runs entirely in your browser - the file is never uploaded.",
+    "howto": "Choose the PDF and the text appears in the box, ready to copy. Scanned pages without a text layer come out empty - that is a property of the file, not a failure; those need optical recognition instead.",
+    "why": "Quotes, guidelines and contracts arrive as PDFs. Getting them into editable text is the first step of working with any of them accurately.",
+    "know": "Text comes out in the PDF's internal reading order - for two-column layouts that can interleave columns, so reflow the result before quoting line-by-line."
   },
   "text-to-pdf": {
-    "what": "Turns plain text into a clean, downloadable PDF.",
-    "howto": "Paste or write text and click to create a PDF. Great for a first draft, a simple report or a shareable version of notes.",
-    "why": "PDFs preserve formatting and are easy to send. Making one from text in the browser is quick and needs no app."
+    "what": "Turns plain text into a simple, clean PDF you can download - enough for a draft submission or a printable page.",
+    "howto": "Paste the text, create the PDF, and open it to check. For formal submissions prefer the requester's stated format; this covers the times that just send a PDF is the whole requirement.",
+    "why": "A PDF is a promise that the page will look the same on the editor's machine as on yours. Making one takes ten seconds here.",
+    "know": "The PDF carries plain text only - no images, no signature line. For anything formal, add signatures and letterheads after downloading."
   },
   "images-to-pdf": {
-    "what": "Combines JPG or PNG images into a single PDF, one image per page.",
-    "howto": "Choose one or more images and the tool builds a PDF with each on its own page.",
-    "why": "Combining scans, screenshots or photos into one shareable PDF is a common task an editor or client may ask for."
+    "what": "Combines JPG or PNG images into a single multi-page PDF, entirely in your browser.",
+    "howto": "Add the images in order, build the PDF and download it. Scanned pages should be rotated and legible first - the tool binds what you give it; it does not clean up the scans.",
+    "why": "Signed forms, markups and scanned documents travel best as one PDF. Binding them locally keeps private paperwork on your machine.",
+    "know": "Page order follows the order you add images - add them in sequence or rebuild the PDF, because pages cannot be reordered inside the tool. Rotations should happen before the images arrive."
   },
   "self-plagiarism-checker": {
-    "what": "Checks your text for repeated or near-identical sentences within itself.",
-    "howto": "Paste your text to find internal duplication. Review the flagged repeats and vary or remove them.",
-    "why": "Accidental repetition reads as careless. Catching it within a single document is a fast, private quality check."
+    "what": "Checks a text for repeated or near-identical sentences within itself - internal duplication, the accidental kind.",
+    "howto": "Paste the draft, run the check and read each repeated pair. Boilerplate you meant to repeat can stay; the accidental near-echoes two paragraphs apart are what an editor would find first.",
+    "why": "Nobody rereads 3,000 words hunting their own repeats. The tool does, exhaustively, in seconds - before a reader does it for you in a review.",
+    "know": "Run it on the full draft, not sections - the echoes it exists to catch are the ones separated by enough text that you forgot writing the first one."
   },
   "ai-writing-checker": {
-    "what": "A rule-based look at formulaic phrases and AI-favoured words in your text.",
-    "howto": "Paste text to get a heuristic AI-likeness score and a list of flagged phrases. Use it to spot a 'flat', generated feel and write more naturally.",
-    "why": "This is a nudge, not a verdict. No tool can reliably tell human from AI text; it helps you notice a formulaic tone and make it your own."
+    "what": "A rule-based heuristic that flags formulaic phrases and AI-favoured wording in your text - an honesty nudge, not a verdict.",
+    "howto": "Paste the text, analyse, and judge each flag. Where a flagged phrase does real work, keep it; where it is filler - in today's fast-paced world and friends - rewrite it in your own voice. No tool can reliably detect AI; this one detects the style.",
+    "why": "If you edit AI-drafted text, the risk is shipping generic prose under your name. This finds the generic so your voice can replace it.",
+    "know": "Treat every flag as a question, not an instruction - the goal is a draft that sounds like you, not a draft that avoids a word list. If a flagged phrase is genuinely yours, keep it without guilt."
   },
   "tone-checker": {
     "what": "Estimates whether a piece of writing reads as formal, neutral or conversational, and shows you which signals produced that estimate.",
@@ -233,5 +265,11 @@
     "what": "Eight multiple-choice questions on the mechanics that hold writing together: the lede's real job, the inverted pyramid, the nut graf, three-act structure, show-don't-tell, skimmability, the through-line of meaning, and how professionals start a long piece.",
     "howto": "Pick an answer for each question - you get the correct answer and a one-line why immediately. Eight questions, about two minutes. Your score comes with a straight verdict, and Try again reruns the ones you missed.",
     "why": "Most writing problems are structure problems wearing a disguise. A piece that 'doesn't flow' usually has an unkept promise in its opening or moves that arrive in the wrong order. Name the mechanics and they become tools instead of luck."
+  },
+  "deadline-tracker": {
+    "what": "A private deadline list for pitches and commissions, stored in this browser only - nothing is uploaded to any server.",
+    "howto": "Add each commission with its due date and check the list as work lands. Storage is local to this browser: clearing site data clears the list, so export anything you cannot afford to lose.",
+    "why": "Missed deadlines end client relationships faster than bad prose does. A list you will actually look at - because it takes one click - is the system that survives busy weeks.",
+    "know": "Add the internal deadline a day before the real one - the tracker records what you tell it, and a one-day buffer converts near-misses into on-time deliveries."
   }
 }

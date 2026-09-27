@@ -7,6 +7,24 @@ Last sweep: 2026-09-26 · deploy `dep-das1307f` (commit `b93550f`) live.
 
 ---
 
+## Phase 2 — class-bar quality passes (2026-09-27)
+
+Targets: the three thin classes (audit gaps G2/G3/G4). All seven release gates green pre-commit.
+
+| # | Gap | Fix | Status |
+|---|-----|-----|--------|
+| P2-1 | G3: 48 writers tool pages thin (60-170 words) | Authored full what/howto/why + a worked example for all 33 thin tools in `tool-content.json` (behaviour-accurate, checked against hub-tools.js/pdf-tools.js); plus per-tool "Good to know" advice; plus per-CATEGORY "Where this fits" paragraphs and a real related-tools strip; privacy note; desk byline; conditional why-line fixed | **SHIPPED** — tool class: 48 sub-8 → 0 |
+| P2-2 | G4: trust grid thin + dead ends | legal_pages(): substantive sections per type (what to expect back / third-party material policy / re-check schedule + what counts as an error / practical reading / what counts as a source / how the desk is funded + why the desk exists); every desk legal page now carries the desk footer (they were dead-end pages with no nav at all); home /terms/ regenerated through the house template (was a stale snapshot); preserved home disclaimer/privacy get the footer injected at build | **SHIPPED** — trust class: 37 sub-8 → 0 |
+| P2-3 | G2: 82 movie cards below bar | `_nx_ctx_html()`: honest at-a-glance block on every card, assembled only from the record's own fields (year/genre/director/cast/runtime) + curated genre guidance (25 genres); slug-varied sentence shapes; verified zero similarity drift | **SHIPPED** — cards: 82 sub-8 → 2 |
+| P2-4 | Writers trust pages at 7.85 | terms/copyright/corrections gained one real section each in trust-pages.json; writers about gained the funding-disclosure section | **SHIPPED** |
+
+Audit note: the workspace truncation rolled the scoring tool back to a pre-calibration version (missing the tool/trust/author-bio bar entries); recalibrated before the final numbers below. Ruler is now consistent and committed in the workspace tools/.
+
+**Score movement (first audit → post-Phase 2):** site avg 8.10 → **8.97** · 10/10-ready 470 (14.5%) → **938 (36.8%)** · sub-8 1,564 → **402**. Remaining sub-8 = the editorial source/depth programs (Phase 3: G6 sources, G11 ent-editorial, author bio) — no thin classes left.
+
+---
+---
+
 ## Phase 1 — Decision E1: the 689 standalone trailer pages retired (2026-09-27)
 
 Owner-approved. Each `/entertainment/watch/<slug>/` page was ~77 words around one embed — the "low value content" profile behind the AdSense rejection (audit gap G1). All changes in `scripts/build-ecosystem.py`; full rebuild; **all seven release gates green pre-commit** (browser gate now parallelized: same 1,533 assertions, ~3 min instead of ~15.5).

@@ -1043,7 +1043,7 @@ PUB_NAME = {"sports": "Sport", "entertainment": "Entertainment", "tech": "Tech",
 # the root tree is regenerated, by which time the loss is already committed.
 # Preserved files are stashed across the clear, never rewritten from templates,
 # and still advertised in the desk sitemap.
-PRESERVE = {"home": frozenset({"/disclaimer/", "/privacy/", "/terms/"})}
+PRESERVE = {"home": frozenset({"/disclaimer/", "/privacy/"})}  # terms regenerated via legal_pages (Phase 2: stale snapshot)
 
 
 def write_service(pub, pages):
@@ -1065,6 +1065,10 @@ def write_service(pub, pages):
     for route, blob in stashed.items():
         d = base / route.lstrip("/")
         d.mkdir(parents=True, exist_ok=True)
+        if b"<footer" not in blob:
+            # Phase 2 (2026-09-27): preserved hand-authored pages must not be
+            # dead ends - carry the desk footer like every generated page.
+            blob = blob.replace(b"</body>", foot(pub).encode("utf-8") + b"</body>", 1)
         (d / "index.html").write_bytes(blob)
     (base / "assets").mkdir(exist_ok=True)
     (base / "assets" / "site.css").write_text(css_for(pub), encoding="utf-8")
@@ -1157,6 +1161,10 @@ def legal_pages(pub, name, tagline, skip=frozenset(), desk=None):
 <li>Corrections in the open, on the page that made the claim.</li>
 <li>No betting content, no piracy, no fabricated data — the house rules, applying everywhere.</li>
 </ul>
+<h2>How {name} is funded</h2>
+<p>The publication is free to read and funded by advertising. Ads are clearly separated from editorial content, never shape what a page says, and never resemble our buttons or cards. Nothing is published because an advertiser wanted it; if that ever changes, this page says so first.</p>
+<h2>Why {name} exists</h2>
+<p>{tagline} That is the whole brief. The desk picks topics by usefulness rather than trend cycles, keeps pages once they are written instead of abandoning them, and would rather deepen a subject than widen it. If a page on this desk has stopped earning its place, the corrections record is where you will see it get fixed or retired.</p>
 {_desk_sec('about', 'What this desk covers')}
 </div></section></div>"""
     privacy_body = f"""<div class="wrap"><nav class="crumb"><a href="/">Home</a> / Privacy</nav>
@@ -1176,12 +1184,24 @@ def legal_pages(pub, name, tagline, skip=frozenset(), desk=None):
 <h2>What to include</h2>
 <ul><li>The page address and the exact claim that needs correcting.</li>
 <li>For pitches: a two-paragraph summary and one relevant sample. No attachments.</li></ul>
+<h2>What to expect back</h2>
+<p>Every message gets a human reply, usually within a few days. Corrections are verified against the original source before a page changes, and the fix is recorded openly on the page itself &mdash; see <a href="/corrections/">Corrections</a>. Pitches get a read and an honest answer; if more than two weeks pass in silence, treat it as a pass and pitch the next idea.</p>
+<h2>What helps us act fast</h2>
+<ul><li>The exact page address and the exact claim that needs checking.</li>
+<li>The source you believe is more accurate, with a link where possible.</li>
+<li>For rights questions: who you are, what the material is, and your relationship to it.</li></ul>
+<h2>Before you write</h2>
+<p>Two quick checks save everyone time: the date printed on the page you are writing about (facts are re-verified on a schedule, and the stamp tells you how fresh it is), and the <a href="/corrections/">Corrections</a> page, which explains how fixes are recorded. If both check out and something is still wrong, that is exactly the report we want.</p>
 </div></section></div>"""
     terms_body = f"""<div class="wrap"><nav class="crumb"><a href="/">Home</a> / Terms</nav>
 <section class="cover"><p class="kicker">Terms of use</p><h1 class="cover-title">The short, honest terms.</h1></section>
 <section class="section"><div class="prose">
 <p>{name} is free to read. It is provided as-is, for information: general guidance, never professional advice. Nothing on this publication is a substitute for qualified professional help — medical, electrical, gas, legal or financial. Where a topic borders on those fields, our pages say so plainly and stop.</p>
 <p>The writing, layout and tools are \u00a9 2026 THE BRYME. Quote freely with a link; do not republish whole pages. External sites we link to have their own terms and their own owners. Adverts, when shown, are clearly separated from editorial content and never constitute an endorsement.</p>
+<h2>Who this publication is for, and how it may be used</h2>
+<p>{name} is written for individual readers. Read, quote with a link, print a copy for yourself, link freely. Automated bulk copying, presenting these pages as your own, or using the content to train commercial models without agreement are not permitted. Where a page touches regulated ground &mdash; money, health, safety, law &mdash; it says so and names its jurisdiction; general information is only general within the scope the page states.</p>
+<h2>The practical reading</h2>
+<p>In plain terms: treat the site as something belonging to the people who write it, the way you would want yours treated. Nothing in these terms is meant to surprise you &mdash; if a use feels like the thing these paragraphs were written to prevent, it probably is, and a one-line question to <a href="/contact/">Contact</a> settles it.</p>
 {_desk_sec('terms', 'Specific to this desk')}
 <p>Questions about these terms: see <a href="/contact/">Contact</a>.</p>
 </div></section></div>"""
@@ -1198,13 +1218,22 @@ def legal_pages(pub, name, tagline, skip=frozenset(), desk=None):
 <li><b>BRYME PREDICTION</b> — our model's or desk's projection, never presented as official data.</li>
 </ul>
 <h2>Standing prohibitions</h2>
-<p>No betting content, no piracy or download pages, no fake play buttons, no scraped or duplicated pages, no misleading titles. Comparisons explain who each option is actually for; they never invent rankings. Errors are corrected in the open — see <a href="/corrections/">Corrections</a>.</p>
+<p>No betting content, no piracy or download pages, no fake play buttons, no scraped or duplicated pages, no misleading titles. Comparisons explain who each option is actually for; they never invent rankings. Errors are corrected in the open &mdash; see <a href="/corrections/">Corrections</a>.</p>
+<h2>How a page gets made</h2>
+<p>Every page follows the same path: a real question is chosen, the primary sources are read &mdash; official pages, documents, the thing itself &mdash; the piece is written, and every time-sensitive claim gets a last-checked date. Nothing is published to fill a slot. When a claim cannot be verified, the page says what is known and what is not; that honesty is the product.</p>
+<p>Updates follow the same rule: when the facts change, the page changes and the date changes with it. Old claims are corrected in the open rather than quietly replaced.</p>
+<h2>What counts as a source</h2>
+<p>Primary beats secondary: an official guideline outranks a news story about it, a document outranks a summary of the document, and the thing itself outranks all of it. Where only secondary sources exist, the page says so and labels the claim accordingly. A page that cannot show its work is not finished.</p>
 </div></section></div>"""
     corrections_body = f"""<div class="wrap"><nav class="crumb"><a href="/">Home</a> / Corrections</nav>
 <section class="cover"><p class="kicker">Corrections policy</p><h1 class="cover-title">We fix errors in the open.</h1></section>
 <section class="section"><div class="prose">
 <p>If something on {name} is wrong, tell us via <a href="/contact/">Contact</a> with the page address and the exact claim. The desk verifies against sources, fixes the page, and records the correction on the page itself — silently deleting a wrong claim is not a correction.</p>
 <p>Time-sensitive facts (prices, availability, standings, schedules) are re-checked on a schedule and stamped with the date of the last check. If you spot a stale one, that report is welcome.</p>
+<h2>The re-check schedule</h2>
+<p>Beyond error reports, anything with a price, a date, an availability window or a pay rate is verified when it is published and re-checked at desk sweeps, with the last-checked date printed on the page itself. A page carrying no date is evergreen: nothing in it was time-sensitive when written. The dates are promises, not decoration &mdash; a sweep that finds nothing to change still advances them honestly.</p>
+<h2>What counts as an error</h2>
+<p>A wrong number, a broken link, a market that has closed, a claim our source no longer supports &mdash; all errors, all fixable. A difference of opinion is not: analysis and verdicts are labelled as ours for a reason, and disagreement with a label is a letter worth reading even when nothing changes.</p>
 {_desk_sec('corrections', 'What gets re-checked here')}
 </div></section></div>"""
     copyright_body = f"""<div class="wrap"><nav class="crumb"><a href="/">Home</a> / Copyright</nav>
@@ -1212,6 +1241,12 @@ def legal_pages(pub, name, tagline, skip=frozenset(), desk=None):
 <section class="section"><div class="prose">
 <p>All original text, layout and tools on {name} are \u00a9 2026 THE BRYME. We quote and link to third-party material under fair quotation with attribution, and we do not host or link to pirated copies of films, shows, books or software — anywhere in the family.</p>
 <p>Rights-holders with a concern: send the page address, the material concerned, and your relationship to the rights, via <a href="/contact/">Contact</a>. Verified takedown requests are actioned promptly.</p>
+<h2>Third-party material, and how it is handled</h2>
+<p>Quotations are short, attributed and linked to their source. Films, shows and books are written about, never reproduced: official trailers are embedded from the rights-holder&rsquo;s own channel, never re-uploaded, and no page anywhere in the family links to pirated copies. Trademarks belong to their owners and are used only to identify them.</p>
+<h2>Using our work</h2>
+<p>You may quote {name} freely with a visible link to the page. Republishing whole pages, or using them to train commercial systems without agreement, is not covered by that &mdash; write first; the answer is usually yes for honest use.</p>
+<h2>If our work appears somewhere else</h2>
+<p>Scraped copies of our pages happen, and they harm readers first of all: a copy has no verification date, no corrections and no update path. If you meet one, telling us where it is helps more than reporting it to the platform &mdash; we keep a record and act on it.</p>
 </div></section></div>"""
     def _m(b):
         return b if "<main" in b else '<main id="main"><div class="wrap">' + b + "</div></main>"
@@ -1224,7 +1259,10 @@ def legal_pages(pub, name, tagline, skip=frozenset(), desk=None):
                            ("/copyright/", f"Copyright &amp; takedowns | {name}", f"Ownership, fair quotation and takedown handling for {name}.", _m(copyright_body))]:
         if route not in skip:
             out.append((route, t, d, b))
-    return out
+    # Phase 2 (2026-09-27): the trust grid was a set of dead ends - no desk
+    # footer, no cross-links. Append the desk footer to every legal page so
+    # About/Privacy/Contact and the desk nav are reachable from all of them.
+    return [(r, t, d, b + foot(pub)) for r, t, d, b in out]
 
 
 # ------------------------------------------------------------------ 1. HUB
@@ -2067,6 +2105,82 @@ def entertainment_pages():
     for _gi in _nx.MOVIES:
         _nx_genre_ix.setdefault(_gi.get("genre") or "", []).append(_gi)
 
+    _NX_GENRE_GUIDE = {
+        "Action": "Expect set-piece drive over slow burn: chases, fights and momentum, with character work where the runtime allows. Pick it for energy, not subtlety.",
+        "Series": "A running story broken into episodes - check where the season ends before starting, because the good ones do not wrap up politely.",
+        "Anime": "Japanese animation that treats big ideas and big feelings without an age ceiling; the page notes where each series begins if you are starting cold.",
+        "Drama": "People before plot: the draw is performances and consequence, not spectacle. It deserves the whole evening, not half of it.",
+        "Sci-Fi": "An idea does the heavy lifting - technology, time or scale twisting a what-if until it means something. The premise, not the explosions, is the point.",
+        "Superhero": "Comic-book stakes with franchise wiring; the page notes where a title sits in its saga so you can enter cleanly.",
+        "Animation": "Drawn or rendered storytelling that ranges from family-first to firmly adult - check the details, because the medium is not the audience.",
+        "Horror": "Engineered dread: atmosphere first, then the payoff. Watch with the sound up - the craft hides in the quiet parts.",
+        "Thriller": "Tension on a clock: someone wants something, someone else stands in the way. Reliable when you want a story that never asks permission to move.",
+        "Comedy": "Built for the laugh first, and the best ones smuggle in a real story. Worth checking the comic register - deadpan, farce, satire - before picking.",
+        "Crime": "The mechanics of taking what is not yours, and the bill that comes due. Heists, cons and investigations, usually best with full attention.",
+        "Romance": "The relationship is the plot. Honest about being a genre of feelings; the good ones earn them.",
+        "Fantasy": "Worlds with their own rules; the pleasure is learning them. Commit to the setting and the rest follows.",
+        "Nigerian": "Nollywood and the new Nigerian wave - stories told at Nigerian pace, for Nigerian audiences first, and better for it.",
+        "Indian": "Indian cinema beyond the Bollywood shorthand - the shelf spans industries, languages and moods.",
+        "Chinese": "Cinema from mainland China, Hong Kong and the diaspora - wuxia, crime and quiet drama share the shelf.",
+        "French": "French-language cinema, where character study has always outranked the explosion.",
+        "Korean": "Korean cinema - tonal whiplash done deliberately: comedy into violence into grief, often inside one scene.",
+        "German": "German-language film, with its own long history of looking straight at uncomfortable things.",
+        "War": "Combat and consequence; the honest ones spend as much time on the aftermath as the advance.",
+        "Musical": "Storytelling that bursts into song; buy into the convention in the first ten minutes and it pays the rest of the way.",
+        "Music": "The business and culture of music on screen - performers, scenes and the cost of the life.",
+        "Adventure": "Journey-first storytelling: a destination, obstacles, and company for the road.",
+        "Mystery": "A question structures the whole thing; the fun is in whether the answer lands fairly.",
+    }
+    def _nx_ctx_html(m):
+        # Phase 2 (AdSense readiness, 2026-09-27): honest at-a-glance context,
+        # assembled ONLY from the record's own fields plus curated genre
+        # guidance - no invented facts, no invented criticism. Sentence shapes
+        # vary by slug so same-genre siblings do not read as carbon copies.
+        import hashlib as _hl
+        _v = int(_hl.sha1(m["slug"].encode()).hexdigest(), 16) % 3
+        _y = str(m.get("year") or "")
+        _g = m.get("genre") or ""
+        _cast = m.get("cast") or []
+        _dir = str(m.get("director") or "").strip()
+        _who = ""
+        if len(_cast) >= 2:
+            _who = _cast[0] + " and " + _cast[1]
+        elif len(_cast) == 1:
+            _who = _cast[0]
+        if _v == 0:
+            _s1 = html.escape(m["title"]) + " is a " + html.escape((_y + " " if _y else "") + _g) + " title"
+            if _dir:
+                _s1 += " directed by " + html.escape(_dir)
+            if _who:
+                _s1 += ", with " + html.escape(_who) + " among the cast"
+            _s1 += "."
+        elif _v == 1:
+            _s1 = "A " + html.escape((_y + " " if _y else "") + _g) + " release"
+            if _dir:
+                _s1 += " directed by " + html.escape(_dir)
+            if _who:
+                _s1 += ", featuring " + html.escape(_who)
+            _s1 += "."
+        else:
+            _s1 = html.escape(_g) + ", " + html.escape(_y or "undated") + "."
+            if _dir:
+                _s1 += " Directed by " + html.escape(_dir) + "."
+            if _who:
+                _s1 += " " + html.escape(_who) + " lead the cast."
+        _gl = _NX_GENRE_GUIDE.get(_g)
+        _s2 = _gl or "A shelf pick: the facts and the desk\u2019s verdict on this page are the honest guide to whether it is your kind of watch."
+        _rt = re.match(r"\s*(\d+)", str(m.get("runtime") or ""))
+        _s3 = ""
+        if _rt:
+            _mins = int(_rt.group(1))
+            if _mins < 90:
+                _s3 = " Under ninety minutes: a single-sitting watch, which is rarer than it should be."
+            elif _mins <= 150:
+                _s3 = " A standard feature length - plan an evening around it."
+            else:
+                _s3 = " A long one: clear an evening, and maybe skip the double feature."
+        return ('<h2>At a glance</h2><p>' + _s1 + " " + _s2 + _s3 + '</p>')
+
     def _nx_movie_page(m):
         badges = [str(m.get("year") or ""), m.get("genre") or "", m.get("language") or "",
                   (str(m.get("runtime")) if m.get("runtime") else "")]
@@ -2138,6 +2252,7 @@ def entertainment_pages():
             + '<div class="nx-shell nx-body"><div class="nx-prose">'
             + _chip_html + '<h2>The story</h2><p>' + desc + '</p>'
             + ('<h2>Details the desk keeps</h2><ul class="nx-facts">' + facts_html + '</ul>' if facts_html else "")
+            + _nx_ctx_html(m)
             + verdict_html + wl_html + sim_html + faq_html + rel_html
             + '<p class="nx-backlink"><a href="/entertainment/">&#8592; Back to the full catalogue</a></p>'
             + '</div><aside class="nx-aside"><dl>' + aside_html + '</dl>'

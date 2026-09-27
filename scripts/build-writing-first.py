@@ -2794,6 +2794,8 @@ def about_page() -> None:
 </ul>
 <h2>Who is accountable</h2>
 <p>BRYME is created and edited by <a href="/author/ibrahim-sodiq/">Ibrahim Sodiq</a>. Report factual, link or status errors through the <a href="/contact/">Contact page</a>; material changes are recorded in <a href="/corrections/">Corrections</a>.</p>
+<h2>How BRYME is funded</h2>
+<p>BRYME is free to read and funded by advertising. Ads are kept clearly separate from editorial content, never influence what a page records, and never imitate the site's buttons or cards. Nothing is published because a third party paid for it; if that ever changes, this page says so first.</p>
 </div></section></div>'''
     schema_data = {"@context": "https://schema.org", "@type": "AboutPage", "name": "About BRYME", "url": BASE + "/about/",
                    "dateModified": TODAY, "mainEntity": {"@type": "Organization", "name": "BRYME", "url": BASE + "/",

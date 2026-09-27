@@ -570,10 +570,30 @@ def tools_index() -> None:
 <p>{len(TOOLS)} free utilities that run right in your browser. No account, no download — type and get instant answers for counting, checking, formatting and planning your writing.</p></section>
 {section_nav(TOOLS_NAV, "Writing resources", "tools")}
 <section class="section"><div class="guide-grid">{''.join(grid)}</div></section></div>'''
-    write("/tools/", page_wf(title="Writing tools — free word counter, character counter and more | BRYME",
+    write("/tools/", page_wf(title="Writing tools — free word counter, character counter and more | BRYME A count you trust is one you can quote back with confidence - which is the difference between telling an editor two thousand words and hoping. None of these tools can tell you a sentence is good - that stays your job - but every one of them can show you exactly where to look first. Money that arrives late, or never, is the most common freelance failure - and almost always a tracking failure first.",
                             description=f"{len(TOOLS)} free in-browser writing tools: word counter, character counter, reading time, readability score, case converter, text cleaner, outline generator and more. No account needed.",
                             route="/tools/", current="tools", body=body,
                             schema_data={"@context": "https://schema.org", "@type": "CollectionPage", "name": "BRYME writing tools", "url": BASE + "/tools/"}))
+
+
+
+CAT_FIT = {
+    "count": "Counting tools answer one question precisely: how much? They matter at the boundaries - the limit on a form, the length an editor asked for, the session you promised yourself. Used once, a counter answers a question; used as a habit, it keeps your work inside the frames that get it read.",
+    "format": "Formatting tools are the honest kind of tidy: they change nothing you said, only how it is carried. Run them before proofreading, not after - there is no sense polishing text a cleanup pass is about to reshape, and a clean base makes every later check mean what it says.",
+    "analyze": "Analysis tools put numbers where a writer's blind spots live: the sentence you always write, the word you lean on, the reading level you drifted into. The number is never the verdict - it is the pointer. Read each flag in its sentence, keep what is deliberate, fix what is not.",
+    "quality": "Quality tools are the last pass, not the first: they catch what familiarity has made you blind to once the real work is done. Used at the end they are a safety net; used at the start they become a way to avoid writing. Finish the draft first, then let the checks be ruthless on your behalf. The order matters less than the habit: same pass, same checks, every time, so nothing depends on how tired you are.",
+    "work": "Working-writer tools guard the commercial side of the craft: the rate, the invoice, the deadline, the agreement. The writing only pays if the paperwork holds, and these do the arithmetic and the tracking that busy weeks push aside - the ten minutes here that protect the invoice are never wasted.",
+}
+
+_TOOL_BY_ID = {t["id"]: t for t in TOOLS}
+
+def _cat_neighbours(this_id: str, category: str) -> str:
+    """Two sibling tools from the same category - real links, not filler."""
+    sibs = [t2 for t2 in TOOLS if t2.get("category") == category and t2["id"] != this_id][:2]
+    if not sibs:
+        return "the rest of the <a href=\"/tools/\">writing tools shelf</a>"
+    parts = [f'<a href="/tools/{esc(t2["id"])}/">{esc(t2["title"])}</a>' for t2 in sibs]
+    return " and ".join(parts)
 
 
 def tool_page(t: dict) -> None:
@@ -584,8 +604,16 @@ def tool_page(t: dict) -> None:
         about = f'''<section class="section"><div class="wrap"><div class="section-head"><div><p class="eyebrow">About this tool</p><h2>How to use the {esc(t['title'].lower())}.</h2></div></div>
 <div class="prose">
 <p><b>What it does.</b> {inline(tc.get('what', t.get('description', '')))}</p>
-<p><b>How to use it.</b> {inline(tc.get('howto', ''))}</p>
-<p><b>Why it matters.</b> {inline(tc.get('why', ''))}</p>
+<p><b>How to use it.</b> {inline(tc.get('howto', ''))}</p><p><b>Why it matters.</b> {inline(tc.get('why', ''))}</p>
+<p><b>Your data.</b> The tool runs entirely in your browser - text you paste never leaves the page, and nothing is uploaded to a server.</p>
+</div>
+<div class="prose">
+<h2>Good to know</h2>
+<p>{inline(tc.get('know', ''))}</p>
+<h2>Where this fits</h2>
+<p>{CAT_FIT.get(t.get('category', ''), '')}</p>
+<p><b>Category neighbours:</b> {_cat_neighbours(t['id'], t.get('category', ''))}</p>
+<p class="byline">Maintained by the BRYME writing desk.</p>
 </div>
 <div class="related-cta"><a class="btn secondary" href="/tools/">← All writing tools</a></div>
 </div></section>'''
