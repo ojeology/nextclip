@@ -5073,11 +5073,11 @@ def fitness_pages():
     FIT_ARTICLES.extend((s, ti, dek, b) for (s, _k, ti, dek, b) in fitness_more10_data.FIT_MORE_10)
     ART_SOURCES.update((s, FIT_SOURCES) for (s, _k, ti, dek, b) in fitness_more10_data.FIT_MORE_10)
     ART_SOURCES["heart-rate-zones-explained"] = FIT_SOURCES + [
-        ("CDC \u2014 Target Heart Rate and Estimated Maximum Heart Rate",
-         "https://www.cdc.gov/physical-activity-basics/measuring/target-heart-rate.htm")]
+        ("CDC \u2014 How to measure physical activity intensity",
+         "https://www.cdc.gov/physical-activity-basics/measuring/index.html")]
     ART_SOURCES["heart-rate-zone-calculator"] = FIT_SOURCES + [
-        ("CDC \u2014 Target Heart Rate and Estimated Maximum Heart Rate",
-         "https://www.cdc.gov/physical-activity-basics/measuring/target-heart-rate.htm")]
+        ("CDC \u2014 How to measure physical activity intensity",
+         "https://www.cdc.gov/physical-activity-basics/measuring/index.html")]
     import fitness_more11_data
     FIT_ARTICLES.extend((s, ti, dek, b) for (s, _k, ti, dek, b) in fitness_more11_data.FIT_MORE_11)
     ART_SOURCES.update((s, FIT_SOURCES) for (s, _k, ti, dek, b) in fitness_more11_data.FIT_MORE_11)
@@ -5688,6 +5688,11 @@ def fitness_pages():
         + '<p><b>Strength</b> \u2014 one of the two weekly sessions from <a href="/strength-training-for-beginners/">the six patterns</a> or <a href="/workout-at-home-no-equipment/">the home routine</a>. Two ticks meets the muscle-strengthening guideline. Two, not seven: recovery days are where adaptation happens \u2014 <a href="/rest-days-and-recovery/">the recovery guide</a> explains why.</p>'
         + '<p><b>On-time night</b> \u2014 the evening you got to bed in time for seven-plus hours (<a href="/sleep-and-exercise-performance/">why sleep is the recovery multiplier</a>). The habit lives or dies at night, so the card tracks nights, not mornings.</p>'
         + '<p><b>Scoring, stated plainly:</b> the card reads 5 moves \u00b7 2 strength \u00b7 5 on-time nights as a complete honest week. It is a mirror, not a judge \u2014 a bad week is data for next week, and the card resets itself every Monday either way.</p>'
+        + '<h3>What a good week actually looks like</h3>'
+        + '<p>Not a perfect one. Five ticks of any kind is a complete week by the card\u2019s scoring, and a week with four moves, one strength session and two on-time nights is a better week than last month\u2019s zero \u2014 the card is built to show that, not to hide it behind a streak. If a week collapses entirely, nothing carries over: Monday hands you a clean card, which is the whole point of scoring weeks instead of days.</p>'
+        + '<h3>Adapting it without breaking it</h3>'
+        + '<p>Swap the targets, keep the honesty. Pregnant, returning from injury or training for something specific, the official numbers may not be yours \u2014 a clinician or qualified trainer sets those. What the card still does is record what actually happened, and a truthful record is the one part no plan can work without.</p>'
+        + '<p class="fine">Targets: <a href="https://www.cdc.gov/physical-activity-basics/" rel="noopener">CDC physical activity basics</a> and the <a href="https://www.who.int/news-room/fact-sheets/detail/physical-activity" rel="noopener">WHO physical activity fact sheet</a> \u2014 150 weekly minutes of moderate movement, two muscle-strengthening days; the seven-plus-hours sleep line is the standard adult recommendation.</p>'
         + '</div></section>'
         + _fit_shell("fitness", "", "", "", True)
         + '<script src="/assets/fitness-planner.js" defer></script>'
@@ -5777,6 +5782,52 @@ def fitness_pages():
     pages[0] = ("/", "BRYME Fitness \u2014 practical fitness, no miracle claims",
                 "Beginner-first fitness: how to start, the 30-day walking plan with in-browser progress tracking, strength basics and recovery \u2014 evidence-aware, never medical advice.",
                 _fit_hub)
+    _FIT_SHELF_INTRO = {
+        "kit": '<section class="section"><h2>Kit is the last thing you buy</h2>'
+               '<p>Every public-health guideline worth the name \u2014 the <a href="https://www.who.int/news-room/fact-sheets/detail/physical-activity" rel="noopener">WHO physical activity fact sheet</a> this desk cites most \u2014 asks for minutes and muscle days, not purchases. A beginner needs shoes that do not hurt and a door. The shelf below exists for the moment after that: a specific gap has annoyed you three sessions in a row, and a purchase is finally evidence rather than advertising.</p></section>',
+        "library": '<section class="section"><h2>Form first, load later</h2>'
+                   '<p>Every move in the library is written the same way: what it works, what it needs, and where form usually breaks. That order is deliberate \u2014 the moves are the vocabulary, but the rep is the sentence, and a sentence built on sloppy form does not get better with more weight on the bar.</p></section>',
+        "weight": '<section class="section"><h2>The honest arithmetic</h2>'
+                  '<p>Weight change is an energy question with behaviour attached, which is why this shelf refuses the miracle register entirely. What the evidence supports is unglamorous: a moderate, sustained deficit, enough protein, strength training to keep the muscle you already paid for, and a timescale measured in seasons. Everything sold as faster than that trades something you will want later for something you want now.</p></section>',
+        "plans": '<section class="section"><h2>A plan is a calendar, not a promise</h2>'
+                 '<p>A training plan is a set of appointments with sensible sizes: what to do, in what order, for how long. It cannot promise an outcome \u2014 nobody honest can \u2014 but it can promise that the next four weeks are already thought through, which is the part willpower is worst at. The plans below are built around the public-health floor of <a href="https://www.cdc.gov/physical-activity-basics/" rel="noopener">150 weekly minutes of moderate movement and two muscle-strengthening days</a>, then adjusted for real calendars.</p></section>',
+    }
+    _FIT_SHELF_SECOND = {
+        "kit": '<section class="section"><h2>The honest-verdict test</h2>'
+               '<p>Four questions before anything enters the basket: which plan does it serve, what does it cost per use over a realistic year, where does it live when you are not using it, and can you return it when it disappoints? Kit that fails two of the four fails this shelf\u2019s verdict, however good the marketing.</p></section>',
+        "library": '<section class="section"><h2>How to read each move</h2>'
+                   '<p>Three fields matter more than the demonstration: the muscles it actually loads (as opposed to the ones the name advertises), the kit it needs at minimum, and the error most people make first. Read those three before the first rep and the move is half-learned; skip them and the demonstration is just something to copy badly.</p></section>',
+        "weight": '<section class="section"><h2>Why strength training belongs in a deficit</h2>'
+                  '<p>A deficit does not choose what to lose, so unrestrained it takes muscle as happily as fat \u2014 and muscle is where a lot of your resting engine lives. Lifting while eating less is the signal that says keep it. That, not the burn count on a machine, is why every honest plan on this shelf pairs the fork with the bar.</p></section>',
+        "plans": '<section class="section"><h2>Three signs a plan is working</h2>'
+                 '<p>Before any visible change, a working plan shows its receipt at the calendar: sessions happen on the days they were assigned, the last rep of a set feels controlled rather than survived, and a missed day does not turn into a missed month. Score those three for a month before you score the mirror.</p></section>',
+    }
+    _FIT_SHELF_DEEP = {
+        "kit": '<section class="section"><h2>What the evidence says about kit</h2>'
+               '<p>Few categories borrow credibility like fitness equipment, so it helps to remember what the guidelines actually reward: minutes, muscle days, and consistency \u2014 none of which are purchasable. The honest role of kit is friction removal. A mat removes the friction of floor work, a rack of bands removes the friction of travelling strength work, a tracker removes the friction of noticing a sedentary week. Friction removal is genuinely worth money \u2014 and it is a much smaller claim than most kit marketing makes, which is exactly why this shelf keeps testing kit against it.</p>'
+               '<h3>Do I need a tracker?</h3>'
+               '<p>Only if checking it changes what you do next. The research pattern on wearables is consistent: counting helps people who want a number, and does nothing for people who ignore it. Borrow that verdict: if a week of a borrowed or cheap band visibly changes your behaviour, buying a better one is justified; if it becomes jewellery, it was always going to be jewellery.</p>'
+               '<h3>Are home gyms worth it?</h3>'
+               '<p>Measured in cost per use, a modest setup that gets used beats a magnificent one that does not \u2014 which makes honesty about your own habits the most expensive component. Bands, a bench and an adjustable pair of dumbbells cover the six patterns this desk programs; anything beyond that is a convenience purchase, and the shelf treats it as one.</p>'
+               '<h3>What about shoes?</h3>'
+               '<p>The one purchase with a genuine evidence line: running in worn or wrong shoes is a repeat offender in the aches that end beginner programmes. Replace running shoes by mileage or visible breakdown rather than calendar fashion, and treat everything a shoe claims beyond fit and cushioning as a mood, not a specification.</p></section>',
+        "library": '<section class="section"><h2>Programming the library</h2>'
+                   '<p>The library is organised so a session can be built in under a minute: pick one move per pattern \u2014 push, pull, squat, hinge, carry \u2014 do each for a workable set of reps, and that is a complete strength day that meets the public-health expectation for muscle work. Twice a week is the whole commitment. The <a href="https://www.acefitness.org/resources/everyone/exercise-library/" rel="noopener">ACE exercise library</a> is a good external cross-reference for extra variations, and the <a href="https://www.cdc.gov/physical-activity-basics/" rel="noopener">CDC activity basics page</a> states the weekly target the sessions are built to meet.</p>'
+                   '<h3>How many moves do I actually need?</h3>'
+                   '<p>Fewer than it feels like. Six to eight well-known moves cover the patterns; the remaining shelves exist for variety, for plateaus, and for joints that dislike a specific angle \u2014 not as a requirement to rotate for its own sake. A move you have done thirty times is worth more than a move you tried once.</p>'
+                   '<h3>When do I add weight?</h3>'
+                   '<p>When the last rep of the last set looks like the first: same speed, same control, no negotiation. That is the whole progression rule. Add the smallest increment available, find the new honest ceiling, and repeat \u2014 slower than the internet promises, faster than doing nothing, which is the only comparison that matters.</p>'
+                   '<h3>What if a move hurts?</h3>'
+                   '<p>Sharp, one-sided or joint-centred pain stops the set \u2014 that is information, not weakness. Swap to a variant of the same pattern that does not hurt (the library lists several for every pattern), and if every variant of a pattern hurts, that is a question for a qualified professional rather than a programming puzzle. General information, not medical advice, applies to every shelf here.</p></section>',
+        "weight": '<section class="section"><h2>Keeping it off is the actual skill</h2>'
+                  '<p>Losing and keeping are different projects with different tools, and most disappointment in this category comes from running the loss project forever. The maintainers\u2019 pattern is boring and repeatable: movement that survived the loss phase, protein that survives busy weeks, sleep that survives weekends, and a weigh-in cadence that catches drift early. The <a href="https://www.cdc.gov/healthy-weight-growth/about/index.html" rel="noopener">CDC\u2019s healthy weight pages</a> frame the same four pillars \u2014 eating well, activity, sleep and stress \u2014 without selling anything, which is roughly the standard this shelf holds itself to.</p>'
+                  '<h3>How fast is sensible?</h3>'
+                  '<p>Slow enough that muscle, habit and mood survive the trip. Crash speed buys a number on the scales and pays for it in the tissue you wanted to keep; a pace you could imagine continuing is the right pace by definition. If a plan\u2019s promised speed would require a clinic\u2019s supervision, that is the review it needs, not a forum\u2019s encouragement.</p>'
+                  '<h3>Do GLP-1 medicines change the basics?</h3>'
+                  '<p>They change the ease of the deficit, not its logic. Appetite falls, the arithmetic gets easier \u2014 and protein and strength training matter more, not less, because a medicated deficit that strips muscle is still a stripped muscle. Nothing on this shelf is medical advice; the medicines belong to a prescriber\u2019s conversation, and the strength habit belongs to you either way.</p>'
+                  '<h3>Why does regain happen?</h3>'
+                  '<p>Because the loss phase ends and the behaviours that quietly maintained it end with it \u2014 the tracked weeks, the scheduled walks, the default meals. Regain is less a willpower failure than a handover failure: whatever survives into ordinary life is what holds. Plan the maintenance phase with the same seriousness as the loss and the statistics stop being a prophecy.</p></section>',
+    }
     for _cs, _cvals in _fhd.FIT_CATS.items():
         _cn, _cd = _cvals[0], _cvals[1]
         _rows = sorted((a for a in _cat_arts if a["cat"] == _cs), key=lambda a: a["title"])
@@ -5789,6 +5840,9 @@ def fitness_pages():
             + '<section class="cover"><p class="kicker">Section shelf \u00b7 ' + str(len(_rows)) + " pieces</p>"
             + '<h1 class="cover-title" style="font-size:clamp(30px,4.6vw,48px)">' + html.escape(_cn) + "</h1>"
             + '<p class="lede">' + html.escape(_cd) + "</p></section>"
+            + _FIT_SHELF_INTRO.get(_cs, "")
+            + _FIT_SHELF_SECOND.get(_cs, "")
+            + _FIT_SHELF_DEEP.get(_cs, "")
             + '<section class="section"><ul class="list">' + _lis + "</ul>"
             + '<div class="actions"><a class="btn secondary" href="/fitness/">The whole desk</a></div></section>'
             + "</div></main>" + foot("fitness"))
