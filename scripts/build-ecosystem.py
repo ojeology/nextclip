@@ -1173,6 +1173,7 @@ def legal_pages(pub, name, tagline, skip=frozenset(), desk=None):
 <p>{name} is a static publication. It asks for no personal information, has no accounts and no sign-in, and sells nothing about you. It does load two Google services on every page — Google Analytics 4 to count visits, and Google AdSense for advertising — both explained below. These pages read identically with either one blocked.</p>
 <p>If interactive tools are added later, any data they store will stay in <em>your</em> browser's local storage on <em>your</em> device — the standing BRYME pattern — and this page will be updated before that changes.</p>
 <p><b>Advertising &amp; cookies (updated 22 September 2026):</b> BRYME shows advertising through Google AdSense to keep the publications free. Third-party vendors use cookies to serve ads based on a user's prior visits to this and other websites. Google's use of advertising cookies enables it and its partners to serve ads based on your visits to this site and/or other sites on the internet. You may opt out of personalised advertising by visiting Google's Ads Settings (adssettings.google.com), or opt out of some third-party vendors' uses of cookies at aboutads.info. Visitors in the EEA and UK will be asked for consent before personalised advertising; without consent, only non-personalised ads are eligible to serve. <b>Analytics:</b> every page also loads Google Analytics 4 (measurement ID {GA_ID_TEXT}), which counts pages, sessions and rough location so each desk can see what is worth writing next. It sets cookies such as _ga to tell one visit from the next; it does not identify you personally, and BRYME neither combines it with anything else nor sells it. For visitors in the EEA, the UK and Switzerland, Analytics and advertising both stay switched off until you accept them in the cookie message — rejecting it leaves them off. Anywhere else you can block them in your browser and every page reads exactly the same. Whatever serves, our standing rules apply: ads are clearly separated from content and navigation, never cover text, and never resemble our buttons, cards or links.</p>
+
 {_desk_sec('privacy', 'What this publication actually touches')}
 <p>Questions: see <a href="/contact/">Contact</a>.</p>
 </div></section></div>"""
@@ -1502,7 +1503,8 @@ ENT_SECTIONS = {
 ENT_SECTION_NOTES = {
     "recommendations": "<p>Everything on this shelf is picked by the desk against stated criteria \u2014 tone, structure, how easy a thing is to watch \u2014 never against a licensing deal or a commission. We deliberately do not claim where something is streaming: catalogues rotate by country and month, so the desk\u2019s job is to tell you why a title is worth your night, and the where is a search you run on the evening. Rankings here are arguments, not queues; skip to the entry that matches your mood.</p>",
     "explainers": "<p>Explainers are written by the desk and re-checked against the primary source whenever the mechanism they describe changes \u2014 season structures, licensing, production committees, release economics. Numbers carry dates, mechanisms carry sources, and anything that is judgement rather than fact is labelled as such. When the desk gets something wrong, the correction runs on the page that made the error and is logged at the corrections desk.</p>",
-    "opinion": "<p>Opinion pieces live under this shelf\u2019s label and are never mixed into news, guides or explainers. The house expectation is a spine: a claim, the evidence for it, and the strongest counter-argument stated fairly enough that its author would recognise it. A ranking is allowed to be personal \u2014 that is the point of the shelf \u2014 but a personal pick still owes you a reason.</p><p>Some of these pieces will age badly; that is the nature of opinion written in a moment. When one does, an update says so on the page rather than quietly rewriting the record, and every correction is logged at the corrections desk. If a piece got something wrong about you or your work, write to the desk \u2014 the same page that made the error carries the fix.</p>",
+    "opinion": "<p>Opinion pieces live under this shelf\u2019s label and are never mixed into news, guides or explainers. The house expectation is a spine: a claim, the evidence for it, and the strongest counter-argument stated fairly enough that its author would recognise it. A ranking is allowed to be personal \u2014 that is the point of the shelf \u2014 but a personal pick still owes you a reason.</p><p>Some of these pieces will age badly; that is the nature of opinion written in a moment. When one does, an update says so on the page rather than quietly rewriting the record, and every correction is logged at the corrections desk. If a piece got something wrong about you or your work, write to the desk \u2014 the same page that made the error carries the fix.</p>"
+    + '<h2>How to argue with this shelf</h2><p>Disagreement is the intended use of an opinion shelf, so the desk makes arguing easy: every ranking here states its criteria before the picks, which gives you something specific to attack. The film canons on the recommendations shelf are argued the same way, and the criticism shelf carries the desk\u2019s scored, dated reviews so a dispute can be taken to the axes themselves. For the wider critical conversation this desk joins \u2014 and often disagrees with \u2014 the long-running reference points are collected on <a href="https://en.wikipedia.org/wiki/Special:Search?search=film+criticism" rel="noopener">Wikipedia\u2019s film-criticism entry</a> and at <a href="https://www.rottentomatoes.com/" rel="noopener">Rotten Tomatoes</a>, where aggregate scores and individual arguments permanently disagree with each other.</p>',
 }
 ENT_SLUG_SECT = {
     "10-anime-like-solo-leveling-you-should-watch": "recommendations",
@@ -1586,6 +1588,7 @@ def entertainment_pages():
         "words": 900, "moved": True}
     # evergreen guides: original pieces, no archive provenance
     import entertainment_guides_data
+    import ent_guides_depth2 as _egd2
     guide_bodies = {}
     for slug, sect, title, dek, body in entertainment_guides_data.ENT_GUIDES:
         ENT_SLUG_SECT[slug] = sect
@@ -1648,7 +1651,7 @@ def entertainment_pages():
         byline = ("Written by the BRYME Entertainment desk \u00b7 reviewed " + ENT_SWEEP
                   + " \u00b7 evergreen \u2014 re-checked whenever the facts move") if m.get("new") else (
                   "Recovered from the archive \u00b7 " + str(m["words"]) + " words \u00b7 re-typeset and reviewed "
-                  + ENT_SWEEP + (" \u00b7 desk notes added September 2026" if slug in _depth_notes else "") + (" \u00b7 prices in older pieces change \u2014 confirm with the service" if slug == "best-streaming-apps-nigeria" else ""))
+                  + ENT_SWEEP + (" \u00b7 desk notes added September 2026" if (slug in _depth_notes or slug in _egd2.ENT_DEPTH_MORE) else "") + (" \u00b7 prices in older pieces change \u2014 confirm with the service" if slug == "best-streaming-apps-nigeria" else ""))
         abody = (head("entertainment", "Cinema, TV and anime \u2014 written about, never pirated.")
             + '<main id="main"><div class="wrap">'
             + '<nav class="crumb"><a href="/entertainment/">Entertainment</a> / <a href="/entertainment/' + sect + '/">'
@@ -1657,7 +1660,7 @@ def entertainment_pages():
             + '<h1 class="cover-title" style="font-size:clamp(30px,4.6vw,48px)">' + html.escape(m["title"]) + "</h1>"
             + '<p class="byline">BRYME Entertainment desk \u00b7 ' + html.escape(byline) + "</p></section>"
             + ('<section class="section alt"><div class="wrap"><p class="lede"><b>In one line:</b> ' + html.escape(summ) + "</p></div></section>" if summ else "")
-            + '<section class="section"><div class="prose">' + bodies[slug] + comp_html + _depth_notes.get(slug, "") + "</div></section>"
+            + '<section class="section"><div class="prose">' + bodies[slug] + comp_html + _depth_notes.get(slug, "") + _egd2.ENT_DEPTH_MORE.get(slug, "") + "</div></section>"
             + '<section class="section alt"><div class="section-head"><p class="kicker">Next</p><h2>More from ' + html.escape(ENT_SECTIONS[sect][0]) + '.</h2></div>'
             + '<ul class="list">' + rel_html + "</ul>"
             + '<div class="actions"><a class="btn secondary" href="/entertainment/' + sect + '/">All of ' + html.escape(ENT_SECTIONS[sect][0]) + '</a>'
@@ -1753,6 +1756,7 @@ def entertainment_pages():
     # ---- the restored NEXTCLIP platform (owner directive 15 Sep: bring back the former entertainment) ----
     import ent_review_depth as _erd
     import entertainment_platform_data as _nx
+    import ent_guides_depth2 as _egd2b
     try:
         import nollywood_reviews as _nr
         _nr.backfill_card(_nx.MOVIES)
@@ -2252,6 +2256,7 @@ def entertainment_pages():
                + ' via YouTube oEmbed. The player streams from YouTube\u2019s no-cookie domain.</p></div>' if m.get("yt") else "")
             + '<div class="nx-shell nx-body"><div class="nx-prose">'
             + _chip_html + '<h2>The story</h2><p>' + desc + '</p>'
+            + _egd2b.MOVIE_CARD_DEPTH.get(m["slug"], "")
             + ('<h2>Details the desk keeps</h2><ul class="nx-facts">' + facts_html + '</ul>' if facts_html else "")
             + _nx_ctx_html(m)
             + verdict_html + wl_html + sim_html + faq_html + rel_html
@@ -2314,6 +2319,8 @@ def entertainment_pages():
         + '<h2>The distribution, shown honestly</h2><p>Across all ' + str(sum(_sc_dist.values()))
         + ' scored films the current spread is (every film is shelved on merit, not pushed to a flattering band):</p>'
         + '<table style="border-collapse:collapse;margin:14px 0"><tbody>' + _sc_rows + '</tbody></table>'
+        + '<h2>Where the method comes from</h2><p>The four axes are not invented here: published film criticism has always separated a work\u2019s construction from its impact, and the desk owes more to that tradition than to any scoreboard. What this desk added is the accounting \u2014 axes shown, half-points allowed, the average printed, and the scale\u2019s bands published next to the scores so you can see the taste inside the number. The wider critical vocabulary the axes borrow from is collected on <a href="https://en.wikipedia.org/wiki/Special:Search?search=film+criticism" rel="noopener">Wikipedia\u2019s film-criticism entry</a>, and the aggregates this desk deliberately differs from live at <a href="https://www.rottentomatoes.com/" rel="noopener">Rotten Tomatoes</a>.</p>'
+        + '<p>Use the method, then break it: read a few <a href="/entertainment/reviews/">full reviews</a> against their axes, find the axis you weight differently, and from there the scores become a conversation instead of a verdict.</p>'
         + '<p class="nx-verified">Scores sit on film pages next to a verification date for the trailer and credits. Disagree? <a href="/corrections/">Corrections and disputes</a> is a real page.</p>'
         + '</div><aside class="nx-aside"><dl><dt>Scale</dt><dd>0-10, half-points</dd><dt>Axes</dt>'
         + '<dd>Story &middot; Craft &middot; Vision &middot; Weight</dd><dt>Influence</dt><dd>None. No preview scores to studios, no ads sold against placement.</dd><dt>Revisions</dt><dd>Recorded on the film page with a date.</dd></dl></aside></div></main>'
@@ -2504,9 +2511,11 @@ def entertainment_pages():
                 "Recommendations with reasons, explainers without the hype, opinion labelled as opinion, scored reviews and a hand-verified film catalogue. Written about the work \u2014 never trafficking in it.",
                 _ent_hub)
     return pages + legal_pages("entertainment", "BRYME Entertainment", "Writing about film, TV and anime for people who love the work.", desk={
-        "about": "The catalogue: " + str(len(_nx.MOVIES)) + " films with hand-verified official trailers, editorial scores, cast and credits, shelved by genre - plus the guides and explainers around them.",
-        "privacy": "Trailers are embedded from YouTube's no-cookie domain and lazy-loaded: the player only requests data once the trailer section approaches your viewport while scrolling. &ldquo;Where to search&rdquo; links go to official platform search pages and are labelled as searches, never as availability claims.",
-        "terms": "Editorial scores are BRYME's opinion, clearly labelled. No availability or pricing claims are made - platform links are searches, and every trailer link is checked against YouTube's oEmbed record.",
+        "about": "The catalogue: " + str(len(_nx.MOVIES)) + " films with hand-verified official trailers, editorial scores, cast and credits, shelved by genre - plus the guides and explainers around them. The desk\u2019s criticism lives on <a href=\"/entertainment/reviews/\">the review shelf</a>, scored on four published axes you can audit on <a href=\"/entertainment/scoring/\">the method page</a>, and every factual claim is corrected in the open via <a href=\"/entertainment/corrections/\">corrections</a>. The house standards \u2014 research before publishing, dates on time-sensitive claims, no fabricated statistics \u2014 are the family\u2019s, stated on <a href=\"/about/\">the main about page</a>; the criticism tradition this desk works inside is summarised on <a href=\"https://en.wikipedia.org/wiki/Special:Search?search=film+criticism\" rel=\"noopener\">Wikipedia\u2019s film-criticism entry</a>, and the trailers referenced throughout are embedded from the rights-holders\u2019 own <a href=\"https://www.youtube.com/\" rel=\"noopener\">YouTube</a> channels, never re-uploaded.",
+        "privacy": "Trailers are embedded from YouTube's no-cookie domain and lazy-loaded: the player only requests data once the trailer section approaches your viewport while scrolling. &ldquo;Where to search&rdquo; links go to official platform search pages and are labelled as searches, never as availability claims. Privacy questions about embedded players are governed by the platform, and the relevant policy is published at <a href=\"https://policies.google.com/privacy\" rel=\"noopener\">Google\u2019s privacy policy</a>; questions about this desk go to <a href=\"/entertainment/contact/\">contact</a>, and the family\u2019s data rules are stated on <a href=\"/about/\">the main about page</a>."
+        + '<h2>Blocking what you can block</h2>'
+        + '<p>Both embedded services respect your browser: an ad blocker or a tracking setting stops them loading entirely, and the film pages carry no gate and no missing content when they do \u2014 the trailer frame simply stays a poster. The trade-off is stated honestly: blocking means the free desk earns nothing from your visit, and readers who want to support it without watching ads can do it the old way, by <a href="/entertainment/contact/">telling someone about a review they liked</a>. Every choice made in the cookie banner carries across the whole family.</p>',
+        "terms": "Editorial scores are BRYME's opinion, clearly labelled. No availability or pricing claims are made - platform links are searches, and every trailer link is checked against YouTube's oEmbed record. Film titles, posters and trademarks belong to their rights-holders and are used here only to identify and discuss the work, the standard fair-quotation position summarised by the <a href=\"https://www.copyright.gov/\" rel=\"noopener\">U.S. Copyright Office</a>; the desk\u2019s fuller copyright and takedown process lives on <a href=\"/entertainment/copyright/\" rel=\"noopener\">its copyright page</a>, and usage questions go through <a href=\"/entertainment/contact/\">contact</a>. Reading these terms together with the house <a href=\"/entertainment/editorial-policy/\">editorial policy</a> gives the full picture of what this desk publishes and what it refuses to; the short version of both is that the site belongs to its readers\u2019 trust, and every rule above is that sentence made specific.",
         "corrections": "Every trailer link is re-checked against YouTube's oEmbed (title and channel) and the verification date is printed on the page. Film facts carry their sources.",
     })
 
