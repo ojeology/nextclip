@@ -1,6 +1,6 @@
 # THE BRYME
 
-> A family of seven independent, specialist publications under one house discipline: research before publishing, dates on anything time-sensitive, sources for every claim, and no fabricated experience or statistics. Edited from Lagos, Nigeria, and written for a global readership. 1831 pages across the desks.
+> A family of seven independent, specialist publications under one house discipline: research before publishing, dates on anything time-sensitive, sources for every claim, and no fabricated experience or statistics. Edited from Lagos, Nigeria, and written for a global readership. 3240 pages across the desks.
 
 ## The house
 
@@ -16,6 +16,8 @@ The founding desk: paid-writing guides, a database of 142 researched paying publ
 - [Desk home](https://thebryme.com/writers/)
 - [The paid-writing path](https://thebryme.com/writers/writing/)
 - [Writing opportunities by country](https://thebryme.com/writers/writing-opportunities/)
+- [State of Paid Writing 2026](https://thebryme.com/writers/state-of-paid-writing-2026/)
+- [The writing deadline calendar](https://thebryme.com/writers/writing-calendar/)
 
 ## BRYME Tech
 
@@ -35,7 +37,7 @@ Explainers and analysis with sources and verification dates. No betting content,
 
 ## BRYME Entertainment
 
-What to watch and why: recommendations with reasons, film-craft explainers, a hand-verified film catalogue with official trailers. Written about the work, never trafficking in it. 175 pages.
+What to watch and why: recommendations with reasons, film-craft explainers, a hand-verified film catalogue with official trailers. Written about the work, never trafficking in it. 1584 pages.
 
 - [Desk home](https://thebryme.com/entertainment/)
 - [The soap opera effect, explained](https://thebryme.com/entertainment/soap-opera-effect-explained/)
@@ -48,6 +50,7 @@ General training information with the physiology shown: programmes, comparisons 
 - [Desk home](https://thebryme.com/fitness/)
 - [Hyrox, explained](https://thebryme.com/fitness/hyrox-explained/)
 - [What does 3x10 mean](https://thebryme.com/fitness/what-does-3x10-mean-explained/)
+- [Hyrox pace planner (tool)](https://thebryme.com/fitness/hyrox-pace-planner/)
 
 ## BRYME Home & DIY
 

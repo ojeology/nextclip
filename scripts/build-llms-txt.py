@@ -26,6 +26,16 @@ def sitemap_count(desk):
     return len(re.findall(r"<loc>", p.read_text(encoding="utf-8"))) if p.exists() else 0
 
 
+def sitemap_count_all(desk):
+    """Every sitemap for the desk - after the A8-Ent split, entertainment
+    publishes a second sitemap for its catalogue pages; both are live pages
+    and both count."""
+    n = sitemap_count(desk)
+    for extra in (PUB / desk).glob("sitemap-*.xml"):
+        n += len(re.findall(r"<loc>", extra.read_text(encoding="utf-8")))
+    return n
+
+
 def check(route):
     """Assert the route exists in the published tree; return absolute URL."""
     rel = route.strip("/")
@@ -40,6 +50,8 @@ DESKS = [
      "and rate research, templates and checklists.", [
         "The paid-writing path", "/writers/writing/",
         "Writing opportunities by country", "/writers/writing-opportunities/",
+        "State of Paid Writing 2026", "/writers/state-of-paid-writing-2026/",
+        "The writing deadline calendar", "/writers/writing-calendar/",
      ]),
     ("Tech", "/tech/", "Honest consumer technology: spec floors, refurb buying, "
      "settings that fix real problems, security checklists. No affiliate-first "
@@ -65,6 +77,7 @@ DESKS = [
      "shown: programmes, comparisons and form explainers. Never medical advice.", [
         "Hyrox, explained", "/fitness/hyrox-explained/",
         "What does 3x10 mean", "/fitness/what-does-3x10-mean-explained/",
+        "Hyrox pace planner (tool)", "/fitness/hyrox-pace-planner/",
      ]),
     ("Home & DIY", "/home/", "Problem-first home maintenance and repair: diagnose "
      "it, fix what is safely fixable, know when to call a professional.", [
@@ -82,8 +95,8 @@ DESKS = [
 
 
 def main():
-    counts = {name: sitemap_count(slug.strip("/")) for name, slug, _d, _f in DESKS}
-    total = sum(sitemap_count(d) for d in
+    counts = {name: sitemap_count_all(slug.strip("/")) for name, slug, _d, _f in DESKS}
+    total = sum(sitemap_count_all(d) for d in
                 ("writers", "tech", "sports", "entertainment", "fitness", "home", "money"))
     lines = []
     lines.append("# THE BRYME")
