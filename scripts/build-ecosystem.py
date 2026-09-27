@@ -1048,10 +1048,27 @@ def write_service(pub, pages):
             _lmv = _m.group(1) if _m else TODAY
             lm_by_url[u] = min(_lmv, _TODAY_LIVE)
             urls.append(u)
-    (base / "sitemap.xml").write_text(
-        '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
-        + "\n".join(f"<url><loc>{u}</loc><lastmod>{lm_by_url[u]}</lastmod></url>" for u in urls)
-        + "\n</urlset>\n", encoding="utf-8")
+    def _sm_xml(u_list):
+        return ('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+                + "\n".join(f"<url><loc>{u}</loc><lastmod>{lm_by_url[u]}</lastmod></url>" for u in u_list)
+                + "\n</urlset>\n")
+    if pub == "entertainment":
+        # A8-Ent (owner decision 2026-09-26, delegated): the catalogue (movie
+        # cards + watch pages) moves to its own sitemap so the editorial
+        # sitemap carries priority crawl signal. Nothing is removed from
+        # Search - both files are listed in robots.txt.
+        _cat_set = {u for u in urls if "/movie/" in u or "/watch/" in u}
+        _ed = [u for u in urls if u not in _cat_set]
+        _cat = [u for u in urls if u in _cat_set]
+        (base / "sitemap.xml").write_text(_sm_xml(_ed), encoding="utf-8")
+        (base / "sitemap-catalogue.xml").write_text(_sm_xml(_cat), encoding="utf-8")
+        (base / "robots.txt").write_text(
+            f"User-agent: *\nAllow: /\nSitemap: {SUB[pub]}/sitemap.xml\n"
+            f"Sitemap: {SUB[pub]}/sitemap-catalogue.xml\n", encoding="utf-8")
+        print(f"{pub}: {written} pages written, {len(stashed)} hand-authored preserved, "
+              f"sitemap {len(_ed)} editorial + {len(_cat)} catalogue urls")
+        return
+    (base / "sitemap.xml").write_text(_sm_xml(urls), encoding="utf-8")
     (base / "robots.txt").write_text(
         f"User-agent: *\nAllow: /\nSitemap: {SUB[pub]}/sitemap.xml\n", encoding="utf-8")
     print(f"{pub}: {written} pages written, {len(stashed)} hand-authored preserved, sitemap {len(urls)} urls")

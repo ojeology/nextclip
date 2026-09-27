@@ -220,14 +220,20 @@ def main() -> int:
 # ClaudeBot (often send readers back). Google-Extended does NOT affect
 # Google Search or AdSense; Applebot-Extended does not affect Siri/Apple
 # search; Meta-ExternalAgent does not affect Facebook link previews.
-"User-agent: GPTBot\nUser-agent: Google-Extended\nUser-agent: CCBot\n"
-"User-agent: Applebot-Extended\nUser-agent: Meta-ExternalAgent\n"
+"User-agent: CCBot\n"
+"User-agent: Meta-ExternalAgent\n"
 "User-agent: Amazonbot\nUser-agent: Bytespider\nDisallow: /\n\n"
+# D5 (owner decision 2026-09-26, delegated): AI search/answer assistants are
+# allowed - they fall through to the wildcard Allow below. Being citable by
+# assistants is the B1 GEO play; llms.txt gives them the curated map. Pure
+# training scrapers with no citation path (CCBot, Meta-ExternalAgent,
+# Amazonbot, Bytespider) stay blocked.
 "User-agent: *\nAllow: /\nDisallow: /scripts/\nDisallow: /content/\n"
         "Disallow: /docs/\nDisallow: /server/\nDisallow: /ecosystem/\n"
         "Disallow: /entertainment/_recovered/\n\n"
         f"Sitemap: {ORIGIN}/sitemap.xml\nSitemap: {ORIGIN}/writers/sitemap.xml\n" +
-        "".join(f"Sitemap: {ORIGIN}/{x}/sitemap.xml\n" for x in SITEMAP_PROPS), encoding="utf-8")
+        "".join(f"Sitemap: {ORIGIN}/{x}/sitemap.xml\n" for x in SITEMAP_PROPS) +
+        f"Sitemap: {ORIGIN}/entertainment/sitemap-catalogue.xml\n", encoding="utf-8")
 
     # 5. allowlist v25: writers prefixed + hub + property routes
     al = json.loads((ROOT / "content" / "index-allowlist.json").read_text())
