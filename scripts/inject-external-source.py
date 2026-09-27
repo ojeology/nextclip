@@ -14,6 +14,9 @@ ROOT = Path(__file__).resolve().parent.parent
 PUB = ROOT / "public"
 sys.path.insert(0, str(Path(__file__).parent))
 from external_source_data import EXTERNAL_SOURCES  # noqa: E402
+from external_source_data2 import EXTERNAL_SOURCES2  # noqa: E402
+
+EXTERNAL_SOURCES = {**EXTERNAL_SOURCES, **EXTERNAL_SOURCES2}
 
 MARK = 'data-esrc="t7"'
 BASES = (ROOT, PUB)
