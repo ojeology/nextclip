@@ -7,6 +7,24 @@ Last sweep: 2026-09-26 · deploy `dep-das1307f` (commit `b93550f`) live.
 
 ---
 
+## Phase 1 — Decision E1: the 689 standalone trailer pages retired (2026-09-27)
+
+Owner-approved. Each `/entertainment/watch/<slug>/` page was ~77 words around one embed — the "low value content" profile behind the AdSense rejection (audit gap G1). All changes in `scripts/build-ecosystem.py`; full rebuild; **all seven release gates green pre-commit** (browser gate now parallelized: same 1,533 assertions, ~3 min instead of ~15.5).
+
+| # | Change | Detail | Status |
+|---|--------|--------|--------|
+| E1-1 | Watch detail pages → retired stubs | `/entertainment/watch/<slug>/` now ships the house retired pattern: `noindex,follow` + canonical to the movie twin + instant meta-refresh (`data-retired-stub` marker interpreted by `shell()`). Same design as the legacy stubs (register A3). 689 URLs leave the indexable set | **SHIPPED** |
+| E1-2 | VideoObject moved onto the movie card | The one-video-entity-per-title rule is preserved: the VideoObject now lives on the indexable movie page that hosts the facade player (`uploadDate` = consolidation date, honest). Movie pages keep Movie JSON-LD + trailer URL ref | **SHIPPED** |
+| E1-3 | Sitemaps updated | Catalogue sitemap = 719 movie cards only; editorial = 176 (incl. the `/entertainment/watch/` storefront index, which stays live and indexable); retired stubs are in NO sitemap. Routed allowlist auto-derived: 3,240 → **2,551** | **SHIPPED** |
+| E1-4 | Old links keep working | Every former watch URL serves 200 with the redirect stub → lands on the film page; no 404s, no lost link equity | **SHIPPED** |
+| E1-5 | Browser gate speedup | `validate-browser.js` now runs the per-viewport route sweep across 6 concurrent pages (shared queue, identical assertions; `BROWSER_GATE_CONCURRENCY` env knob, `1` = historical serial) | **SHIPPED — 15.5 min → ~3 min** |
+
+Projection vs audit: indexed set ~3,240 → ~2,551 (all substantive); sub-8 count 1,348 → ~660; site avg 8.24 → ~8.7. Re-audit lands post-deploy.
+
+---
+
+---
+
 ## Phase 0 — AdSense readiness quality sweep (2026-09-27)
 
 Full-site audit (3,240 pages individually scored, 8.10 avg) lives in the workspace deliverables; this register carries what shipped. All changes template/generator-level (brief §31: no mass per-page rewrites), deterministic, rebuilt via `npm run build` (exit 0), all seven release gates green before commit (hometools / site-quality 3,240 URLs / money / browser 1,533 cases / contrast / money-browser / techhub).

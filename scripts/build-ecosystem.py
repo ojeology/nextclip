@@ -589,6 +589,16 @@ def shell(pub, title, desc, route, body, card=None, robots="index,follow"):
         title, desc, route, modified=review.group(1) if review else None,
         article_author="BRYME Money desk" if review else None)  # H4 batch 8 + A5 2026-09-26
     d = route  # mode-aware base URL from SUB
+    # E1 (AdSense readiness, 2026-09-27): retired-URL stubs. A body carrying
+    # data-retired-stub="<twin path>" is a moved page: noindex,follow,
+    # canonical to the living twin, instant meta-refresh, no JSON-LD graph -
+    # the same retired-URL design as purge-stale-publish's legacy stubs.
+    _stub = re.search(r'data-retired-stub="([^"]+)"', body or "")
+    if _stub:
+        robots = "noindex,follow"
+        ld_html = ""
+    _canon = (SUB[pub] + _stub.group(1)) if _stub else d
+    _refresh = ('<meta http-equiv="refresh" content="0;url=' + _stub.group(1) + '">') if _stub else ""
     og = f"{ORIGIN}/assets/og.png"  # real root card; route may already be a full URL (b36 fix)
     if pub in ("tech", "home"):
         _gsl = route.strip("/").split("/")[-1]
@@ -659,8 +669,8 @@ def shell(pub, title, desc, route, body, card=None, robots="index,follow"):
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{html.escape(title)}</title>
 <meta name="description" content="{html.escape(desc)}">
-<meta name="robots" content="{robots}">
-<link rel="canonical" href="{d}{'' if route.endswith('/') else ''}">
+<meta name="robots" content="{robots}">{_refresh}
+<link rel="canonical" href="{_canon}">
 <meta property="og:type" content="website"><meta property="og:site_name" content="THE BRYME">
 <meta property="og:title" content="{html.escape(title)}"><meta property="og:description" content="{html.escape(desc)}">
 <meta property="og:url" content="{d}"><meta property="og:image" content="{og}">
@@ -1096,8 +1106,13 @@ def write_service(pub, pages):
         # cards + watch pages) moves to its own sitemap so the editorial
         # sitemap carries priority crawl signal. Nothing is removed from
         # Search - both files are listed in robots.txt.
-        _cat_set = {u for u in urls if "/movie/" in u or "/watch/" in u}
-        _ed = [u for u in urls if u not in _cat_set]
+        # E1 (2026-09-27): the retired watch pages ship as noindex stubs and
+        # are in NO sitemap - the catalogue sitemap carries the movie cards.
+        # The /entertainment/watch/ storefront index (no slug segment) stays
+        # indexable and keeps its place in the editorial sitemap.
+        _cat_set = {u for u in urls if "/movie/" in u}
+        _ed = [u for u in urls if u not in _cat_set
+               and not re.search(r"/entertainment/watch/.+/", u)]
         _cat = [u for u in urls if u in _cat_set]
         (base / "sitemap.xml").write_text(_sm_xml(_ed), encoding="utf-8")
         (base / "sitemap-catalogue.xml").write_text(_sm_xml(_cat), encoding="utf-8")
@@ -1992,16 +2007,18 @@ def entertainment_pages():
         return '<script type="application/ld+json">' + json.dumps(ld, ensure_ascii=False) + '</script>'
 
     def _nx_watch_ld(m):
-        # Top-level VideoObject - the only video entity per trailer, on the
-        # page where the video is the main content (Google's watch-page
-        # definition, developers.google.com/search/docs/appearance/video).
+        # Top-level VideoObject - the only video entity per title, on the
+        # indexable movie page that hosts the player. E1 consolidation
+        # (2026-09-27): the standalone ~77-word watch pages were retired, so
+        # the entity moved to the page where the video actually plays.
         ld = {"@context": "https://schema.org", "@type": "VideoObject",
               "name": m["title"] + " - official trailer",
               "description": ("Official trailer for " + m["title"] + ". "
                               + (m.get("teaser") or m.get("description") or ""))[:300],
               "thumbnailUrl": "https://i.ytimg.com/vi/" + m["yt"] + "/hqdefault.jpg",
-              # verifiable date this trailer page went live on this site
-              "uploadDate": TODAY,
+              # E1: verifiable date this trailer embed went live on this
+              # film page (watch-page consolidation deploy date)
+              "uploadDate": Q_SWEEP,
               "embedUrl": "https://www.youtube-nocookie.com/embed/" + m["yt"],
               "contentUrl": "https://www.youtube.com/watch?v=" + m["yt"],
               "publisher": {"@type": "Organization", "name": "BRYME Entertainment desk",
@@ -2012,36 +2029,27 @@ def entertainment_pages():
         return '<script type="application/ld+json">' + json.dumps(ld, ensure_ascii=False) + '</script>'
 
     def _nx_watch_page(m):
-        # Dedicated watch page: player first, above the fold, video is the
-        # main content. Fix for the GSC video report issue "Video isn't on a
-        # watch page" - movie pages keep the info role, this page watches.
-        _y = (" (" + str(m["year"]) + ")") if m.get("year") else ""
-        ttl = "Watch the " + m["title"] + _y + " trailer | BRYME"
-        if len(ttl) > 60:
-            ttl = "Watch " + m["title"] + _y + " trailer | BRYME"
-        dek = ("Watch the official " + m["title"] + " trailer, plus the cast, story and desk verdict on the film page.")[:155]
+        # E1 (AdSense readiness, 2026-09-27): the standalone trailer page is
+        # RETIRED. Each was a ~77-word page around one embed - the exact
+        # "low value content" profile behind the AdSense rejection. The embed
+        # itself lives on the movie card (with the VideoObject); old URLs
+        # ship the house retired pattern: noindex,follow + canonical +
+        # instant meta-refresh to the living twin, carried by the
+        # data-retired-stub marker that shell() turns into head tags.
+        _twin = "/movie/" + m["slug"] + "/"
+        ttl = m["title"] + " trailer moved | BRYME"
+        dek = ("The official " + m["title"] + " trailer now plays on the full film page, beside the cast, story and desk verdict.")[:155]
         body = (head("entertainment", "Film, TV and anime recommendations with reasons.")
             + _NX_CSS
-            + _nx_watch_ld(m)
-            + '<main id="main"><div class="nx-shell" style="padding-top:24px;padding-bottom:48px">'
-            + '<nav class="nx-crumb"><a href="/entertainment/">Catalogue</a> / <a href="/entertainment/movie/'
-              + m["slug"] + '/">' + html.escape(m["title"]) + '</a> / Watch trailer</nav>'
-            + '<h1 style="color:#fff;font-size:clamp(26px,4.4vw,42px);line-height:1.06;margin:8px 0 6px">Watch the '
-              + html.escape(m["title"] + _y) + ' trailer</h1>'
-            + '<p class="nx-stamp">Trailer page updated <time datetime="' + ENT_SWEEP + '">'
-              + ENT_SWEEP + '</time> \u00b7 re-checked at every sweep</p>'
-            + '<div class="nx-trailer-frame" style="max-width:860px;margin-top:16px"><iframe title="'
-              + html.escape(m["title"] + " - official trailer") + '" src="https://www.youtube-nocookie.com/embed/'
-              + m["yt"] + '" referrerpolicy="strict-origin-when-cross-origin"'
-              + ' allow="accelerometer; clipboard-write; encrypted-media; picture-in-picture" allowfullscreen></iframe></div>'
-            + '<p class="nx-trailer-note">Official trailer on YouTube &middot; '
-              + html.escape(m.get("channel") or "YouTube") + ' &middot; link verified ' + _nx_ver
-              + ' via YouTube oEmbed. The player streams from YouTube\u2019s no-cookie domain.</p>'
-            + '<p class="nx-lead" style="margin-top:18px">' + html.escape(m.get("teaser") or m.get("description") or "") + '</p>'
-            + '<p style="margin-top:14px"><a class="nx-quiet-link" href="/entertainment/movie/' + m["slug"]
-              + '/">Full film page: cast, story, score and where to search</a></p>'
-            + '<p class="nx-backlink" style="margin-top:26px"><a href="/entertainment/watch/">\u2190 All trailers</a>'
-              + ' &middot; <a href="/entertainment/">Back to the catalogue</a></p>'
+            + '<main id="main" data-retired-stub="' + _twin + '"><div class="nx-shell" style="padding-top:32px;padding-bottom:56px">'
+            + '<nav class="nx-crumb"><a href="/entertainment/">Catalogue</a> / <a href="' + _twin
+              + '">' + html.escape(m["title"]) + '</a> / Watch trailer</nav>'
+            + '<h1 style="color:#fff;font-size:clamp(26px,4.4vw,42px);line-height:1.06;margin:8px 0 10px">This trailer page moved</h1>'
+            + '<p class="nx-lead" style="max-width:640px">The official ' + html.escape(m["title"])
+              + ' trailer now plays directly on the film page, next to the cast, story and desk verdict.</p>'
+            + '<p style="margin-top:16px"><a class="nx-cta" href="' + _twin + '">Open the '
+              + html.escape(m["title"]) + ' film page</a></p>'
+            + '<p class="nx-backlink" style="margin-top:26px"><a href="/watch/">\u2190 Back to the full catalogue</a></p>'
             + '</div></main>' + foot("entertainment"))
         return ("/watch/" + m["slug"] + "/", ttl, dek, body)
 
@@ -2113,6 +2121,7 @@ def entertainment_pages():
         body = (head("entertainment", "Film, TV and anime recommendations with reasons.")
             + _NX_CSS
             + _nx_movie_ld(m)
+            + (_nx_watch_ld(m) if m.get("yt") else "")
             + '<main id="main">'
             + '<section class="nx-movie-hero" style="--nx-backdrop:url(\'https://i.ytimg.com/vi/' + (m.get("yt") or "") + '/hqdefault.jpg\')">'
             + '<div class="nx-shell nx-movie-hero-inner">' + _nx_poster(m)
@@ -2123,8 +2132,9 @@ def entertainment_pages():
               + ENT_SWEEP + '</time> \u00b7 re-checked at every sweep</p>'
             + '<p class="nx-lead">' + html.escape(m.get("teaser") or "") + '</p></div></div></section>'
             + ('<div class="nx-shell nx-trailer-section">' + _nx_facade(m)
-               + '<p style="margin-top:10px"><a class="nx-quiet-link" href="/entertainment/watch/'
-               + m["slug"] + '/">Open this trailer\u2019s dedicated watch page</a></p></div>' if m.get("yt") else "")
+               + '<p class="nx-trailer-note" style="margin-top:10px">Official trailer on YouTube &middot; '
+               + html.escape(m.get("channel") or "YouTube") + ' &middot; link verified ' + _nx_ver
+               + ' via YouTube oEmbed. The player streams from YouTube\u2019s no-cookie domain.</p></div>' if m.get("yt") else "")
             + '<div class="nx-shell nx-body"><div class="nx-prose">'
             + _chip_html + '<h2>The story</h2><p>' + desc + '</p>'
             + ('<h2>Details the desk keeps</h2><ul class="nx-facts">' + facts_html + '</ul>' if facts_html else "")
