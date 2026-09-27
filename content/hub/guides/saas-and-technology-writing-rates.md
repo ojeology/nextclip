@@ -70,7 +70,7 @@ Three approaches that work when the budget is genuinely constrained:
 
 **Price the outcome where you can measure it.** A case study that closes deals, or documentation that reduces support tickets, has a business case. Blog volume rarely does.
 
-**Retainers for predictability, at a stated discount.** A defined monthly scope at 10–15% below your project rate is a fair trade for guaranteed income. An open-ended "few pieces a month" is not.
+**Retainers for predictability, at a stated discount.** A defined monthly scope at 10–15% below your project rate is a fair trade for predictable income. An open-ended "few pieces a month" is not.
 
 Work out the floor you cannot go below with the [freelance rate calculator](/tools/freelance-rate-calculator/) before any of these conversations.
 

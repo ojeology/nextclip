@@ -72,7 +72,7 @@ The ordering tracks technical depth almost exactly. The further you sit from *"w
 
 - **Scope down, do not rate down.** Fewer deliverables at your rate, not more at a discount. A discounted rate is very hard to reverse with the same client.
 - **Price the outcome where it is measurable.** A case study that closes deals, or documentation that reduces support tickets, has a business case. Blog volume rarely does.
-- **Retainers at a stated discount.** A defined monthly scope at 10–15% below your project rate is a fair trade for guaranteed income. An open-ended "a few pieces a month" is not.
+- **Retainers at a stated discount.** A defined monthly scope at 10–15% below your project rate is a fair trade for predictable income. An open-ended "a few pieces a month" is not.
 
 Establish the floor you cannot go below with the [freelance rate calculator](/tools/freelance-rate-calculator/) before any of those conversations.
 
