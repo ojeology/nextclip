@@ -7090,7 +7090,7 @@
    "status": "published",
    "excerpt": "Eater commissions strong essays and reported food-culture stories with narrative angles and pays contributors per assignment.",
    "submissionStatus": "open",
-   "lastVerified": "2026-09-05",
+   "lastVerified": "2026-09-26",
    "pay": {
     "amountMin": null,
     "amountMax": null,
@@ -7119,7 +7119,11 @@
    "howToSubmit": [
     "Pitch a specific food-culture story to the relevant editor."
    ],
-   "requirements": [],
+   "requirements": [
+    "Pitch via the official contact form (eater.com/contact), choosing the 'I want to pitch a story' option - re-read 2026-09-26",
+    "The form asks for a one-sentence summary and a detailed explanation of the story",
+    "No separate public submissions-guidelines page was found on the official site at re-read"
+   ],
    "whatTheyWant": [
     "A strong narrative angle",
     "Reported, voice-y writing"
@@ -7468,11 +7472,11 @@
     "articles"
    ],
    "vertical": "writing",
-   "officialUrl": "https://slate.com/",
+   "officialUrl": "https://slate.com/pitch",
    "status": "published",
    "excerpt": "Slate pays for essays, news analysis and criticism; rates vary by assignment and section.",
    "submissionStatus": "open",
-   "lastVerified": "2026-09-05",
+   "lastVerified": "2026-09-26",
    "pay": {
     "amountMin": null,
     "amountMax": null,
@@ -7501,7 +7505,16 @@
    "howToSubmit": [
     "Pitch to the relevant section editor."
    ],
-   "requirements": [],
+   "requirements": [
+    "Email a pitch to the section editor listed on the official pitch page (slate.com/pitch, re-read 2026-09-26) - business/tech, culture, health/science, jurisprudence, politics, life, longform and art each have named editors",
+    "Google your idea first - pitches are rejected when the argument is not fresh or original",
+    "Opinion pitches need a clear, concise, surprising argument with evidence of research",
+    "Send a distilled pitch in the email body even if a full draft exists (attaching the draft is optional)",
+    "Include a one-to-two-sentence bio and relevant published clips in a similar voice - no CV needed",
+    "Disclose simultaneous pitches; wait about a week before sharing a non-timely pitch elsewhere",
+    "One follow-up email maximum; after about a week of silence, take the pitch elsewhere",
+    "Do not re-pitch to another Slate editor after a pass - pass decisions are often shared"
+   ],
    "whatTheyWant": [
     "A sharp, timely angle",
     "Strong, voice-y analysis"
