@@ -17,8 +17,9 @@ from external_source_data import EXTERNAL_SOURCES  # noqa: E402
 from external_source_data2 import EXTERNAL_SOURCES2  # noqa: E402
 from external_source_data3 import EXTERNAL_SOURCES3  # noqa: E402
 from external_source_data4 import EXTERNAL_SOURCES4  # noqa: E402
+from external_source_data5 import EXTERNAL_SOURCES5  # noqa: E402
 
-EXTERNAL_SOURCES = {**EXTERNAL_SOURCES, **EXTERNAL_SOURCES2, **EXTERNAL_SOURCES3, **EXTERNAL_SOURCES4}
+EXTERNAL_SOURCES = {**EXTERNAL_SOURCES, **EXTERNAL_SOURCES2, **EXTERNAL_SOURCES3, **EXTERNAL_SOURCES4, **EXTERNAL_SOURCES5}
 
 MARK = 'data-esrc="t7"'
 BASES = (ROOT, PUB)
