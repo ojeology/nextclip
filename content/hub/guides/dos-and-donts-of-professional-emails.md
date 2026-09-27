@@ -1,6 +1,6 @@
 ---
 title: Dos and don'ts of professional emails
-description: The short rules that make an email clear and get a reply.
+description: The short rules that make a work email clear, professional and likely to get a reply.
 section: dos-and-donts
 level: intermediate
 keywords: [email, professional, dos, donts, workplace, how-to-write-a-thank-you-note]

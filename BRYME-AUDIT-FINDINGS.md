@@ -7,7 +7,22 @@ Last sweep: 2026-09-26 · deploy `dep-das1307f` (commit `b93550f`) live.
 
 ---
 
-## Fixed & verified live
+## Phase 0 — AdSense readiness quality sweep (2026-09-27)
+
+Full-site audit (3,240 pages individually scored, 8.10 avg) lives in the workspace deliverables; this register carries what shipped. All changes template/generator-level (brief §31: no mass per-page rewrites), deterministic, rebuilt via `npm run build` (exit 0), all seven release gates green before commit (hometools / site-quality 3,240 URLs / money / browser 1,533 cases / contrast / money-browser / techhub).
+
+| # | Gap | Fix | Status |
+|---|-----|-----|--------|
+| P0-1 | G9: 10 Money pages + 9 Fitness pages missing YMYL disclaimers | `shell()` in build-ecosystem.py now injects the house not-financial/not-medical-advice line on any indexed desk page lacking it | **SHIPPED** — verified on /money/charts/, /fitness/cardio/ |
+| P0-2 | G7: 224 pages with no visible date (writers 129, tech 26, home 20, money 12, fitness 16, sports 10, ent 10, about 1) | Desk shells stamp "Page reviewed 27 September 2026 · re-checked at every desk sweep" on any indexed page without a visible date (Q_SWEEP/Q_SWEEP_H constants; writers parity in page_wf) | **SHIPPED** — dateless count to be re-audited post-deploy |
+| P0-3 | G4a: desk contact pages carried the pre-domain placeholder "Editorial contact details go live with the publication's domain launch" | Replaced with the real house inbox routing (sodiqibrahim03@gmail.com + house contact link) in `legal_pages()` | **SHIPPED** — placeholder count 0 across all 7 desks |
+| P0-4 | G8: zero BreadcrumbList JSON-LD site-wide | New build step `scripts/inject-breadcrumbs.py` (wired into the npm build after inject-analytics): emits BreadcrumbList on every indexable nested page from ancestors that actually exist; mirrors across all publish tiers to keep the strict public==routed gates true; skips noindex/stubs; homepage excluded | **SHIPPED** — 3,039 nested pages injected, tiers in sync, homepage clean (a first-run route-normalization bug put a bogus "/./" breadcrumb on the homepage; caught in verification, fixed, re-gated) |
+| P0-5 | G10: 15 thin meta descriptions (5 movie cards, 5 home shelves, 4 writers guides, 1 opportunity page) | Movie cards now prefer the rich story line with a 60-char floor + fallback; home shelves get full-sentence descs; writers guides/opportunity descs lengthened at source | **SHIPPED** — e.g. /movie/ant-man/ now carries the 169-char story description |
+| P0-6 | G12: Gmail-only contact identity | Deferred to owner: buy/forward hello@thebryme.com, then one template string changes | **OPEN — owner** |
+
+Post-deploy: rerun tools/audit_bryme.py (workspace) for the score delta; expected site avg ≈8.4–8.5 with G7/G8/G9/G10 zeroed. Phase 1 = Decision E1 (690 trailer pages) — the big lever.
+
+---
 
 | # | Severity | Issue | Evidence | Fix | Status |
 |---|----------|-------|----------|-----|--------|

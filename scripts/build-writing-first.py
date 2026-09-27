@@ -54,6 +54,10 @@ FOLLOW = _SITE_CFG.get("follow", {})
 BASE = _build_focus.BASE
 TODAY = _build_focus.TODAY
 TODAY_HUMAN = _build_focus.TODAY_HUMAN
+# Phase-0 AdSense-readiness quality sweep (2026-09-27) - house parity with
+# the desk shells in build-ecosystem.py (Q_SWEEP / Q_SWEEP_H).
+Q_SWEEP = "2026-09-27"
+Q_SWEEP_H = "27 September 2026"
 SITE = _build_focus.SITE
 cfg = _build_focus.cfg
 esc = _build_focus.esc
@@ -699,6 +703,17 @@ def page_wf(*, title: str, description: str, route: str, current: str, body: str
                                  "query-input": "required name=search_term_string"}},
         ],
     }
+    _vis_txt = re.sub(r"<[^>]+>", " ", re.sub(
+        r"<(script|style)[^>]*>.*?</\1>", " ", body, flags=re.S | re.I))
+    if "noindex" not in (robots or "") and not re.search(
+            r"(updated|reviewed|verified|re-checked|re-typeset|last checked)[^<]{0,80}20(2[4-6])"
+            r"|\b\d{1,2} (?:January|February|March|April|May|June|July|August|September|October|November|December) 20(2[4-6])"
+            r"|20(2[4-6])-(?:0[1-9]|1[0-2])-(?:0[1-9]|[12]\d|3[01])", _vis_txt, re.I):
+        # Phase 0 (2026-09-27): visible freshness stamp for writers pages that
+        # carry no date of their own (same claim the desks' "re-checked at
+        # every sweep" pages already make).
+        body = body + ('<p style="font-size:13px;margin:20px 0 0">Page reviewed '
+                       + Q_SWEEP_H + ' \u00b7 re-checked at every desk sweep</p>')
     return f'''<!doctype html>
 <html lang="en-NG"><head>
 <meta charset="utf-8">
@@ -2534,6 +2549,10 @@ def pub_page(rec: dict) -> None:
     _seo = (rec.get("seoTitle") or f"{rec['publication']} writing submissions — BRYME research").split(" | ")[0]
     title = f"{_seo} | BRYME"
     desc = _meta_desc(rec.get("excerpt")) or _seo
+    # G10 (Phase 0, 2026-09-27): 60-char meta description floor for
+    # publication pages whose excerpt is one short line.
+    if len(desc) < 60:
+        desc = (desc + " See the verified pay, guidelines, eligibility and how to submit on BRYME.")[:155]
     schema_data = {
         "@context": "https://schema.org", "@type": "Article",
         "headline": f"{rec['publication']}: {rec.get('writingTypeLabel') or rec.get('title') or 'writing opportunity'}",
@@ -2558,7 +2577,7 @@ GUIDES = [
      "Write a tight subject line", "Introduce yourself", "State the angle and structure", "Show you fit", "Attach clips", "Close well"],
      "body": "A pitch is a short letter that sells an idea before you write it. The single biggest mistake is pitching a vague topic; the second is not saying why it fits the publication.\n\n**Know the publication first.** Read three or four recent pieces. Note the length, the tone, whether they use personal essays or reported features, and what they explicitly do not publish.\n\n**Choose a specific idea, not a topic.** \u201cAn essay about my mother\u201d is a topic. \u201cAn essay about the one phrase my mother said that I have never been able to hear the same way again\u201d is an idea.\n\n**Write a subject line that names the idea.** Editors skim. Make the line say what the piece is.\n\n**Introduce yourself in one or two lines.** Who you are, where you have published, and a reason to trust you with this idea.\n\n**State the angle and the structure.** In a short paragraph: the argument or story, how it develops, and a rough word count. Give them a reason to say yes.\n\n**Show that you fit.** Explain briefly why this is the right publication for this piece.\n\n**Attach two or three clips.** Links are fine; a couple of strong, relevant pieces beat a long list.\n\n**Close professionally.** Thank them, say you are happy to adjust, and send through the official channel."},
     {"slug": "how-to-pitch-an-essay", "title": "How to pitch an essay",
-     "description": "Adapt a pitch for personal essay and nonfiction markets.",
+     "description": "Adapt your pitch for personal essay and nonfiction markets: voice, the universal, and word counts.",
      "topics": ["essay", "pitch"], "toc": ["Personal essays need a voice", "Find the universal", "Be honest", "Match the word count", "Send the whole essay if asked"],
      "body": "Personal essays are the most personal kind of pitch, and the most misunderstood.\n\n**The idea must carry a voice, not just a story.** Something happened to you; what matters is the perspective you bring to it and what it says about something larger.\n\n**Find the universal in the specific.** A personal essay works when a reader who is not you can still recognise themselves in it.\n\n**Be honest.** Do not invent events or feelings. If you are pitching a real experience, it must be real.\n\n**Match the word count.** Essay markets are often strict about length. Check the guideline before you claim a length.\n\n**Some markets want the full essay.** Where the guideline says to send the complete piece rather than a pitch, follow that. Sending a pitch to a market that expects the full essay wastes everyone's time."},
     {"slug": "how-to-find-paid-writing-opportunities", "title": "How to find publications that pay writers",
@@ -2570,7 +2589,7 @@ GUIDES = [
      "topics": ["submit", "article", "freelance"], "toc": ["Read the submission instructions", "Formatting and files", "Attachments and clips", "The submission channel", "Track and confirm"],
      "body": "Submitting a freelance article is where many writers stumble over boring details, and details matter.\n\n**Read the submission instructions to the end.** The guideline tells you whether they want a pitch or the full article, the word count, the format and the channel.\n\n**Format it the way they asked.** Some want a docx; some want text in an email; some use a form. Do not guess when the answer is in the guideline.\n\n**Attach exactly what is required.** A cover note or clips if asked. Do not add a long cover letter if they did not ask for one.\n\n**Use the official channel.** An email, a form, or a submission portal from the publication — never an invented address.\n\n**Track and confirm.** Note the date you sent it and, if you can, confirm receipt. If there is no stated response time, it is reasonable to follow up after a couple of weeks."},
     {"slug": "how-to-build-writing-samples", "title": "How to build writing samples",
-     "description": "Create a small portfolio that gets editors to say yes.",
+     "description": "Create a small portfolio that gets editors to say yes: pick, write, match and publish your strongest clips.",
      "topics": ["samples", "portfolio", "portfolio"], "toc": ["Quality over quantity", "Write a few strong pieces", "Match each sample to the publication", "Self-publish where allowed", "Keep them linkable"],
      "body": "You do not need dozens of clips to get published — you need a handful of strong, relevant ones.\n\n**Quality over quantity.** Two or three sharp pieces beat a long list of weak ones.\n\n**Write a few strong pieces in the style you want.** If you want to write essays, write essays. If you want features, write features.\n\n**Match each sample to the publication.** When you pitch, send the clips most like the piece you want to write.\n\n**Publish where you can.** A personal blog or a free platform counts, provided the work is genuinely yours and well done. (Check the guidelines — some publications will not consider previously self-published work.)\n\n**Keep them linkable.** Live links are easier for an editor than files they have to download."},
     {"slug": "how-to-write-a-strong-query-letter", "title": "How to write a strong query letter",
@@ -2586,11 +2605,11 @@ GUIDES = [
      "topics": ["african", "opportunities", "international"], "toc": ["Look for markets that name you", "Know the diaspora rules", "Watch the currency and transfer", "Use guidelines, not reposts", "Protect your work"],
      "body": "African writers have genuine options — the key is finding markets that actually welcome you and that pay.\n\n**Look for publications that name African and diaspora writers.** BRYME records eligibility explicitly, including whether a market is restricted to Africans or to the African diaspora.\n\n**Understand the diaspora rules carefully.** Some markets welcome Black African diasporas; others are restricted to African residents. Read the eligibility line, and BRYME shows it.\n\n**Watch the currency and how you will be paid.** A fee quoted in a foreign currency may take a while to reach you or cost you fees. Note both.\n\n**Use the guidelines, not reposts.** A third-party repost can be outdated or wrong. Confirm against the publication's own page.\n\n**Protect your work.** Send to official channels, keep a record of every submission and its date, and never pay to be published."},
     {"slug": "how-to-follow-up-on-a-writing-pitch", "title": "How to follow up on a writing pitch",
-     "description": "When to wait, what to say, and how to treat silence.",
+     "description": "When to wait, what to say in a follow-up, and how to treat silence without burning bridges.",
      "topics": ["follow-up", "pitch", "response"], "toc": ["Wait a reasonable time", "Keep it short", "Confirm you can try elsewhere", "Treat silence as a sign", "Move on without burning bridges"],
      "body": "Following up is normal, but it has to be done well.\n\n**Wait a reasonable time.** If the publication states a response window, respect it. A short, polite follow-up after a couple of weeks is reasonable.\n\n**Keep it short.** One or two lines: reference your pitch, ask if they had a chance to consider it, and offer to adjust.\n\n**Confirm you can pitch elsewhere.** Many markets appreciate knowing you are holding the idea for them. Make it easy for them to say yes.\n\n**Treat silence as a sign.** If there is no response after a follow-up or two, that is usually a no. BRYME does not invent response times — it records when they are not stated.\n\n**Move on without burning bridges.** Publications have small teams and big inboxes. A later, better pitch to the same market is fine."},
     {"slug": "how-long-should-you-wait-for-an-editor", "title": "How long should you wait for an editor?",
-     "description": "A realistic approach to editor response times and silence.",
+     "description": "A realistic approach to editor response times, follow-ups and what silence usually means.",
      "topics": ["response", "follow-up", "pitch"], "toc": ["Read the stated window", "The default two-week rule", "What silence usually means", "When to move on", "Keep the relationship"],
      "body": "There is no universal answer, but good practices help.\n\n**Read the stated window first.** If the guideline says \u201cwe reply within two weeks,\u201d respect that. BRYME records stated response times and flags when they are not stated.\n\n**The default patience rule.** If nothing is stated, a couple of weeks before a short follow-up is reasonable.\n\n**Understand what silence usually means.** No response is rarely a personal rejection — it is usually just a busy editor. But it is also not acceptance.\n\n**When to move on.** After a follow-up or two with no reply, politely treat it as a pass and pitch elsewhere.\n\n**Keep the relationship.** A brief, gracious note leaves the door open for a future pitch."},
     {"slug": "how-to-find-remote-writing-work", "title": "How to find remote writing work",

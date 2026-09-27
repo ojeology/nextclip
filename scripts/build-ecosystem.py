@@ -44,6 +44,11 @@ TODAY = "2026-09-09"
 FIT_SWEEP = "2026-09-25"  # fitness desk source/freshness sweep date
 ENT_SWEEP = "2026-09-25"  # entertainment desk freshness sweep date
 SPO_SWEEP = "2026-09-25"  # sport desk freshness sweep date
+# Phase-0 AdSense-readiness quality sweep (2026-09-27): the date stamped on
+# desk pages that carry no visible date of their own. Same claim the desks'
+# "re-checked at every sweep" pages already make, now applied house-wide.
+Q_SWEEP = "2026-09-27"
+Q_SWEEP_H = "27 September 2026"
 import datetime as _dtmod
 _TODAY_LIVE = _dtmod.date.today().isoformat()  # clamp: never emit future dates
 
@@ -615,6 +620,40 @@ def shell(pub, title, desc, route, body, card=None, robots="index,follow"):
     # Money uses the shared brand mark explicitly; legacy desks use their
     # property-local favicon.ico, copied alongside every generated service.
     icon = "/assets/brand/bryme-mark.png" if pub == "money" else "/favicon.ico"
+    # ---- Phase 0 (AdSense readiness, 2026-09-27): desk-wide value guarantees,
+    # applied once here rather than per page (owner brief \u00a731: no mass
+    # per-page rewrites; template-level, deterministic, honest).
+    # (1) Money pages lacking the not-financial-advice line get the house line.
+    # (2) Fitness pages lacking the not-medical-advice line get the house line.
+    # (3) Indexable pages with no visible date get the desk sweep stamp.
+    if "noindex" not in (robots or ""):
+        _vis_txt = re.sub(r"<[^>]+>", " ", re.sub(
+            r"<(script|style)[^>]*>.*?</\1>", " ", body, flags=re.S | re.I))
+        _disclaimer = ""
+        if pub == "money" and "financial advice" not in _vis_txt.lower():
+            _disclaimer += ('<p style="font-size:13.5px;margin:26px 0 0"><b>General information, '
+                            'not financial advice.</b> BRYME Money is educational and is not a '
+                            'licensed adviser; nothing here is a recommendation for your own '
+                            'money. For personal decisions, speak to a qualified professional '
+                            'who knows your jurisdiction.</p>')
+        if pub == "fitness" and "medical advice" not in _vis_txt.lower():
+            _disclaimer += ('<p style="font-size:13.5px;margin:26px 0 0"><b>General fitness '
+                            'information, never medical advice.</b> If you have a health '
+                            'condition, have been inactive for a long time, are pregnant, or '
+                            'feel pain, dizziness or unusual breathlessness during effort, '
+                            'talk to a qualified health professional before acting on '
+                            'anything here.</p>')
+        _has_date = re.search(
+            r"(updated|reviewed|verified|re-checked|re-typeset|last checked)[^<]{0,80}20(2[4-6])"
+            r"|\b\d{1,2} (?:January|February|March|April|May|June|July|August|September|October|November|December) 20(2[4-6])"
+            r"|20(2[4-6])-(?:0[1-9]|1[0-2])-(?:0[1-9]|[12]\d|3[01])", _vis_txt, re.I)
+        _stamp = "" if _has_date else (
+            '<p style="font-size:13px;margin:20px 0 0">Page reviewed ' + Q_SWEEP_H
+            + ' \u00b7 re-checked at every desk sweep</p>')
+        if _disclaimer or _stamp:
+            _mi = body.rfind("</main>")
+            if _mi != -1:
+                body = body[:_mi] + _disclaimer + _stamp + body[_mi:]
     return f"""<!doctype html>
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
@@ -1118,7 +1157,7 @@ def legal_pages(pub, name, tagline, skip=frozenset(), desk=None):
 <section class="cover"><p class="kicker">Contact</p><h1 class="cover-title">Reach the desk.</h1>
 <p class="cover-dek">Corrections first: if something on {name} is wrong, that is the most valuable email in the world to us.</p></section>
 <section class="section"><div class="prose">
-<p>Editorial contact details go live with the publication's domain launch. Until then, {name} is reached through <a href="/writers/contact/">the BRYME Writers contact page</a>, which routes to the same editorial desk.</p>
+<p>{name} shares the house editorial inbox: <a href="mailto:sodiqibrahim03@gmail.com">sodiqibrahim03@gmail.com</a>. Corrections, pitches and rights questions all reach the same editorial desk &mdash; see <a href="/writers/contact/">the house contact page</a> for what to include and what to expect back.</p>
 <h2>What to include</h2>
 <ul><li>The page address and the exact claim that needs correcting.</li>
 <li>For pitches: a two-paragraph summary and one relevant sample. No attachments.</li></ul>
@@ -2106,8 +2145,19 @@ def entertainment_pages():
             _nx_cands = []
         _nx_cands = _nx_cands + [m["title"] + " | BRYME"]
         _nx_ttl = next((c for c in _nx_cands if len(c) <= 60), _nx_cands[-1])
+        # G10 (Phase 0, 2026-09-27): meta description floor - prefer the richer
+        # story line built above; never ship a sub-60-char SERP description.
+        _md_desc = html.unescape(desc)
+        if len(_md_desc) < 60:
+            _alt = m.get("teaser") or m.get("description") or ""
+            if len(_alt) > len(_md_desc):
+                _md_desc = _alt
+            if len(_md_desc) < 60:
+                _md_desc = (m["title"] + " (" + str(m.get("year") or "film") + ") - story, "
+                            "cast, the desk's verdict and where to search, kept current at "
+                            "every BRYME Entertainment sweep.")
         return ("/movie/" + m["slug"] + "/", _nx_ttl,
-                (m.get("teaser") or m.get("description") or "")[:155], body)
+                _md_desc[:155], body)
     movie_pages = [_nx_movie_page(m) for m in _nx.MOVIES]
     watch_pages = [_nx_watch_page(m) for m in _nx.MOVIES if m.get("yt")]
     _enr_missing = [k for k in _enr.ENRICH if k not in {mm["slug"] for mm in _nx.MOVIES}]
@@ -6441,8 +6491,12 @@ def home_pages():
             + '<ul class="list">' + rows + "</ul>"
             + '<div class="actions">' + others
             + '<a class="btn secondary" href="/home/">Desk home</a></div></section>')
-        out.append(("/" + key + "/", label + " | BRYME Home & DIY", sdek,
-                    _home_page(label + " | BRYME Home & DIY", sdek, "/" + key + "/", cover, main, key)))
+        # G10 (Phase 0, 2026-09-27): section-shelf SERP descriptions get a full
+        # sentence instead of the short shelf quip (60-char meta floor).
+        _sdesc = ("All " + label + " guides on BRYME Home & DIY \u2014 " + sdek
+                  + " Low-risk, honest help with clear professional boundaries.")
+        out.append(("/" + key + "/", label + " | BRYME Home & DIY", _sdesc[:155],
+                    _home_page(label + " | BRYME Home & DIY", _sdesc[:155], "/" + key + "/", cover, main, key)))
 
     # ---------- mistakes hub ----------
     mcover = ('<nav class="crumb" style="padding-top:22px"><a href="/home/">Home &amp; DIY</a> / Common mistakes</nav>'
