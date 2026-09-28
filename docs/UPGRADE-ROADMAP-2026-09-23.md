@@ -1,4 +1,32 @@
 
+## 2026-09-28 — Track A block 2 (cont): A7 performance measurement (real samples only)
+
+**A7 (P2) — DONE (lab samples from Lagos, 2026-09-28, `Cache-Control: no-cache` client, edge
+cache as a real user gets).** No CWV/TBT numbers invented — those need field data (CrUX) or lab
+tooling (Lighthouse) and are explicitly NOT claimed here.
+
+| surface | TTFB | HTML | notes |
+|---|---|---|---|
+| homepage | 365 ms | 59 KB | largest hub (12.9k words) |
+| tech/what-is-dns | 168 ms | 35 KB | guide |
+| writers/tools/word-counter | 131 ms | 23 KB | tool page (10 assets) |
+| sports/clubs/liverpool | 134 ms | 43 KB | club file |
+| money/savings-goal-calculator | 159 ms | 44 KB | tool |
+| entertainment/reviews/anikulapo | 160 ms | 42 KB | review |
+
+Shared asset payload (interior pages): CSS `content-v2.css` (54 KB) + `bryme-v2.css` (46 KB)
+render-blocking pair; JS `site-nav` 3.2 KB + `theme` 2.7 KB + `gtag-init` 1.1 KB + `canonical-redirect`
+0.7 KB ≈ 8 KB. Tool-only pages add `hub-tools.js` (92 KB) + `search-index.js` (68 KB) — not on
+article paths. **Edge serves brotli (`content-encoding: br`) on assets; `cache-control:
+public, max-age=3600, must-revalidate`.** Total typical critical path ≈ 150 KB compressed.
+
+**Verdict:** performance posture is healthy for a static CDN site — no blocking issues found.
+P3 (optional, not scheduled): the two CSS files could be merged/trimmed (99 KB raw render-blocking
+pair is the only payload worth watching). TBT/CWV: pending real field data or a Lighthouse run —
+no numbers claimed.
+
+**Next:** A8 (desk programs) · A9 (internal-link architecture) · A10 (AdSense/consent) → Track B.
+
 ## 2026-09-28 — Track A block 2: A3 indexation architecture VERIFIED + A6 security scan
 
 **A3 (P1) indexation architecture — DONE (evidence table below; no noindex changes needed).**
