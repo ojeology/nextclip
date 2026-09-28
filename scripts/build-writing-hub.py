@@ -1537,10 +1537,9 @@ def comparison_page(c: dict) -> None:
 {_related_block(c.get("guides", []), c.get("tools", []), c.get("templates", []))}
 </div></section>'''
 
-    faq = [{"@type": "Question", "name": x["q"],
-            "acceptedAnswer": {"@type": "Answer", "text": x["a"]}}
-           for x in c.get("confusions", [])]
-    graph = {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": faq} if faq else None
+    # Master brief: no FAQPage/HowTo schema on any page. The visible "Common
+    # confusions" Q&A stays on the page; the JSON-LD falls back to WebPage.
+    graph = None
 
     write(f"/compare/{c['slug']}/", page_wf(
         title=f"{c['title']}: which one do you need? | BRYME",

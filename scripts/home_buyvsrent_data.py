@@ -108,13 +108,7 @@ The doors: roughly 2\u20135% of the price to buy (closing costs) and around 5\u2
 "description":"Renting is cheaper month-to-month in all 50 largest US metros in 2026 - but tenure and the price-to-rent ratio decide. The full ledger both ways, with an in-page buy-vs-rent calculator.",
 "author":{"@type":"Person","name":"Ibrahim Sodiq"},
 "publisher":{"@type":"Organization","name":"THE BRYME"},
-"datePublished":"2026-09-12","dateModified":"2026-09-12"},
-{"@type":"FAQPage","mainEntity":[
-{"@type":"Question","name":"Is it cheaper to rent or buy in 2026?","acceptedAnswer":{"@type":"Answer","text":"Month to month, renting is cheaper in every one of the 50 largest US metros (Realtor.com, March 2026 - about $920 per month on average). The full-math answer adds your tenure and local price-to-rent ratio: stay five or more years in a buy-leaning market and the picture can flip."}},
-{"@type":"Question","name":"What is the price-to-rent ratio?","acceptedAnswer":{"@type":"Answer","text":"Home price divided by one year of rent for a comparable property. Below 15 leans buy, 15 to 20 is the middle zone, above 20 leans rent. The US national ratio was around 16 in mid-2026."}},
-{"@type":"Question","name":"How many years do you need to stay for buying to make sense?","acceptedAnswer":{"@type":"Answer","text":"Commonly cited breakevens: under about 3 years renting almost always wins; 3 to 5 years depends on the market; 5 or more years favors buying. Transaction costs at both doors are why short tenures lose."}},
-{"@type":"Question","name":"Does renting really build wealth, though?","acceptedAnswer":{"@type":"Answer","text":"It can - but only the disciplined version: the money not sunk into a down payment and the monthly difference actually invested. Renting plus spending the difference builds nothing."}},
-{"@type":"Question","name":"What's the biggest hidden cost of buying?","acceptedAnswer":{"@type":"Answer","text":"The doors: roughly 2 to 5 percent of the price to buy (closing costs) and around 5 to 6 percent to sell. Maintenance running roughly 0.5 to 2 percent of the home's value yearly is the other quiet one."}}]}]}
+"datePublished":"2026-09-12","dateModified":"2026-09-12"}]}
 </script>
 
 <h2>Sources (all checked 12 September 2026)</h2>

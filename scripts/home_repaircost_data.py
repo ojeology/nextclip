@@ -101,13 +101,7 @@ A common threshold: if the repair exceeds ~50% of replacement cost on an ageing 
 "description":"Directional 2026 ranges for the most common home repairs, what moves a quote, the two-quote rule, and an editable repair cost estimator.",
 "author":{"@type":"Person","name":"Ibrahim Sodiq"},
 "publisher":{"@type":"Organization","name":"THE BRYME"},
-"datePublished":"2026-09-12","dateModified":"2026-09-12"},
-{"@type":"FAQPage","mainEntity":[
-{"@type":"Question","name":"How much does a typical home repair cost?","acceptedAnswer":{"@type":"Answer","text":"Most routine jobs - plumbing fixes, outlets, minor patches - land roughly $150 to $500 in 2026 US guides (directional). The budget-breakers are replacements: HVAC around $7,200 and roofs around $9,500."}},
-{"@type":"Question","name":"What do plumbers and electricians charge per hour?","acceptedAnswer":{"@type":"Answer","text":"2026 US guide ranges: plumbers about $45 to $200 per hour, electricians about $50 to $100 per hour - metro rates sit at the top. Many jobs are quoted flat rather than hourly."}},
-{"@type":"Question","name":"How much is a water heater replacement?","acceptedAnswer":{"@type":"Answer","text":"About $880 to $1,830 installed, averaging roughly $1,347 (Angi, 2026). Like-for-like swaps cost least; tankless units and fuel switching push the top of the range."}},
-{"@type":"Question","name":"Do emergency repairs really cost more?","acceptedAnswer":{"@type":"Answer","text":"Yes - same-day and after-hours callouts commonly add 25 to 50 percent. Planning multipliers of 1.25 (this week) and 1.5 (emergency) are a honest budgeting approach."}},
-{"@type":"Question","name":"Should I repair or replace?","acceptedAnswer":{"@type":"Answer","text":"A common threshold: if the repair exceeds roughly 50 percent of replacement cost on an ageing unit, replace. Under that, repair - and keep the unit maintained."}}]}]}
+"datePublished":"2026-09-12","dateModified":"2026-09-12"}]}
 </script>
 
 <h2>Sources (all checked 12 September 2026 \u2014 directional, not quotes)</h2>

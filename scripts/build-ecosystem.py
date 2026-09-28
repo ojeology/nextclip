@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build THE BRYME ecosystem — the four publications + master homepage.
+"""Build THE BRYME ecosystem — the seven desks + master homepage.
 
 Per the Master Ecosystem Rebuild plan:
   bryme.onrender.com      -> ecosystem/hub/            (parent homepage)
@@ -2097,13 +2097,9 @@ def entertainment_pages():
         return ("/watch/" + m["slug"] + "/", ttl, dek, body)
 
     def _nx_faq_ld(m, rec):
-        # FAQPage schema for enriched titles; only from the desk's authored
-        # Q&A in entertainment_enrichment.py, never generated filler.
-        ld = {"@context": "https://schema.org", "@type": "FAQPage",
-              "mainEntity": [{"@type": "Question", "name": q,
-                              "acceptedAnswer": {"@type": "Answer", "text": a}}
-                             for q, a in rec.get("faqs") or []]}
-        return '<script type="application/ld+json">' + json.dumps(ld, ensure_ascii=False) + '</script>'
+        # Master brief: no FAQPage/HowTo schema on any page. The desk's authored
+        # Q&A stays visible in the page body; no FAQPage JSON-LD is emitted.
+        return ""
 
     import entertainment_enrichment as _enr
     _nx_genre_ix = {}
@@ -2341,6 +2337,7 @@ def entertainment_pages():
             _ax = _rv["axes"]
             _ld = json.dumps({"@context": "https://schema.org", "@type": "Review",
                  "name": _rv["title"] + " - BRYME Entertainment desk review",
+                 "headline": _rv["title"] + " - BRYME Entertainment desk review",
                  "reviewBody": _rv["body"][0][:480], "datePublished": min(_rv["date"], _TODAY_LIVE),
                  "author": {"@type": "Organization", "name": _nr.REVIEWED_BY},
                  "publisher": {"@type": "Organization", "name": "THE BRYME"},

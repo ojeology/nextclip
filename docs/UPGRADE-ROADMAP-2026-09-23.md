@@ -1,4 +1,45 @@
 
+## 2026-09-28 — Track A block: A2 + A4 + A5 cleared (audit-hardening session)
+
+**A2 (P1) stale publication-count statements — DONE.** Issue: `/about/` said "six desks" and
+`build-ecosystem.py` docstring said "the four publications"; true count is 7 desks.
+Evidence: grep sweep of scripts + live tree. Fix: generator-level strings corrected
+(`sub8_depth_data24.py`, `build-ecosystem.py`); false positive on `writing-contracts-what-to-check`
+("Five publications name this precisely" = contract clause, not a site count); `llms.txt` count is
+dynamic (`str(total)`) — always current. Status: FIXED, verified live copy "seven desks".
+
+**A4 (P1) error-handling sweep — DONE (1 P2 note).** Live probes 2026-09-28:
+- soft-404: none — unknown URL returns true 404 + 404 page ✓
+- uppercase `/About/` → 404 (case-sensitive; acceptable) ✓
+- redirect chains: none — http→https and www→apex each exactly 1 hop ✓
+- non-canonical variants (`/about`, `/about/index.html`, `//about/`, `/about%2f`) serve 200 with
+  correct self-canonical to `/about/` — canonical mitigation works; edge 301s would be cleaner
+  (P2 note, static host makes per-URL redirects awkward). Status: CLOSED with note.
+
+**A5 (P1) structured-data audit — DONE.** Audit of all 2,550 indexable pages (JSON-LD parse +
+required-field checks). Findings & fixes:
+- **21 `writers/compare/*` FAQPage schema blocks — FORBIDDEN by master brief.** Fix:
+  `build-writing-hub.py` now emits `graph=None` (page falls back to WebPage schema); visible
+  "Common confusions" Q&A kept. Status: FIXED (0 FAQPage after rebuild).
+- **9 tech/home FAQPage schema blocks baked into data modules** (`home_*_data.py`,
+  `tech_*_data.py` ×9). Fix: bracket-aware node scrubber removed the FAQPage/HowTo objects from
+  the module schema strings; visible Q&A text kept (verified). Status: FIXED (0 FAQPage).
+- **41 entertainment reviews: Review schema missing `headline`.** Fix: `build-ecosystem.py`
+  emitter adds `headline` beside `name`; ecosystem trees regenerated. Status: FIXED.
+- **101 money/tech guides: Article without `datePublished`.** NOT A BUG — deliberate house
+  standard (A5 2026-09-26 note in `_page_ld`: "nothing is invented"; only the visible review-date
+  is used as dateModified). Status: DOCUMENTED, no change.
+- Residual risk closed: `_nx_faq_ld` emitter in `build-ecosystem.py` now returns "" (no FAQPage
+  ever), so future indexation of movie pages cannot leak the forbidden type.
+Post-fix scan: FAQPage/HowTo 0 · Review gaps 0 · invalid JSON 0 · at10=2551 preserved · 4 gates green.
+
+**Note:** turn-end snapshot truncation #17 hit mid-session (repo exceeds snapshot cap) — recovered
+by wipe + shallow re-clone at `aef0481` (trees-in-commit = instant true state, third occurrence).
+A2 fixes were re-applied post-clone before this commit.
+
+**Next Track A blocks:** A3 (indexation architecture / noindex evidence table) · A6 (security) ·
+A7 (performance) · A8 (desk programs) · A9 (internal links) · A10 (AdSense/consent).
+
 ## 2026-09-28 — Phase 3 Step 5 Batch T COMPLETE: every indexable page at 10 — at10=2551, avg=10.0
 
 **What shipped**: `scripts/sub8_depth_data25.py` — `DEPTH_SECTIONS26` 37 rows (clubs, sports

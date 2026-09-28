@@ -115,13 +115,7 @@ At 6.76% over 30 years: $2,272/month principal &amp; interest (rate = Freddie Ma
 "description":"What's inside a mortgage payment, the 28/36 rule lenders use, amortization's front-loaded interest, and the levers that move the number - with an in-page calculator.",
 "author":{"@type":"Person","name":"Ibrahim Sodiq"},
 "publisher":{"@type":"Organization","name":"THE BRYME"},
-"datePublished":"2026-09-12","dateModified":"2026-09-12"},
-{"@type":"FAQPage","mainEntity":[
-{"@type":"Question","name":"How is a monthly mortgage payment calculated?","acceptedAnswer":{"@type":"Answer","text":"Loan multiplied by r times (1+r)^n divided by ((1+r)^n - 1), where r is the monthly interest rate and n the number of months - plus escrowed taxes, insurance, and any PMI or HOA on top."}},
-{"@type":"Question","name":"What percentage of income should go to a mortgage?","acceptedAnswer":{"@type":"Answer","text":"The standard guideline is 28 percent of gross income for housing and 36 percent for all debt combined (the 28/36 rule). Many approvals exceed it; treat it as a sanity line, not a law."}},
-{"@type":"Question","name":"How much is PMI?","acceptedAnswer":{"@type":"Answer","text":"Commonly quoted around 0.5 to 1 percent of the loan per year while equity is under 20 percent. Your Loan Estimate states your actual figure, and PMI typically comes off once you cross 20 percent equity."}},
-{"@type":"Question","name":"Should I choose a 15-year or 30-year mortgage?","acceptedAnswer":{"@type":"Answer","text":"On the week's averages, $350,000 costs $2,272 per month over 30 years but $2,971 over 15 - and saves about $283,000 in interest. A 30-year loan wins on flexibility; you can overpay a 30-year toward 15-year speed, never the reverse."}},
-{"@type":"Question","name":"What's the payment on a $350,000 mortgage?","acceptedAnswer":{"@type":"Answer","text":"At 6.76 percent over 30 years: $2,272 per month in principal and interest (the Freddie Mac weekly average as of 10 September 2026). Add taxes, insurance and PMI for the real monthly total."}}]}]}
+"datePublished":"2026-09-12","dateModified":"2026-09-12"}]}
 </script>
 
 <h2>Sources (all checked 12 September 2026)</h2>

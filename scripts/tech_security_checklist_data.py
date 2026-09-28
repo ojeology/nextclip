@@ -48,13 +48,7 @@ It depends what you\u2019re doing \u2014 that\u2019s exactly why it isn\u2019t a
 "description":"Sixteen weighted checks across accounts, devices, browsing, money and backups - with your next three moves every time. Evergreen habits, no fear, no paid-suite sales.",
 "author":{"@type":"Organization","name":"BRYME Tech desk"},
 "publisher":{"@type":"Organization","name":"THE BRYME"},
-"datePublished":"2026-09-13","dateModified":"2026-09-13"},
-{"@type":"FAQPage","mainEntity":[
-{"@type":"Question","name":"How secure am I, really?","acceptedAnswer":{"@type":"Answer","text":"Run the weighted scorecard - it measures what actually gets exploited: reused passwords, missing 2FA, un-updated devices, panicked payments. 100% is achievable in one focused evening."}},
-{"@type":"Question","name":"What should I secure first?","acceptedAnswer":{"@type":"Answer","text":"Your main email. It is the reset key to everything else - 2FA there plus a unique password protects every account that can reset through it."}},
-{"@type":"Question","name":"Do I need antivirus in 2026?","acceptedAnswer":{"@type":"Answer","text":"On current phones, Windows and macOS the built-in protection is competent. Your habits - updates, the pause before clicking, official app stores - do the heavy lifting. Paid suites are optional comfort."}},
-{"@type":"Question","name":"How often should I re-check my security?","acceptedAnswer":{"@type":"Answer","text":"After any new device, app with money access, or life change - and otherwise twice a year. The scorecard takes two minutes."}},
-{"@type":"Question","name":"Is public Wi-Fi safe now?","acceptedAnswer":{"@type":"Answer","text":"It depends what you are doing, which is why it is not a checklist item. Use a scenario-by-scenario guide: VPNs earn their keep on hostile networks and barely matter at home."}}]}]}
+"datePublished":"2026-09-13","dateModified":"2026-09-13"}]}
 </script>
 
 <p class="byline">Reviewed 13 September 2026 \u00b7 written from this desk\u2019s own builds and breakages \u00b7 security guidance is general information, never a guarantee \u00b7 no professional reviewer is claimed.</p>
