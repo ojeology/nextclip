@@ -23,16 +23,19 @@ from sub8_depth_data5 import DEPTH_SECTIONS5  # noqa: E402
 from sub8_depth_data6 import DEPTH_SECTIONS6  # noqa: E402
 from sub8_depth_data7 import DEPTH_SECTIONS7  # noqa: E402
 from sub8_depth_data8 import DEPTH_SECTIONS8  # noqa: E402
+from sub8_depth_data9 import DEPTH_SECTIONS9, TOPUP_SECTIONS9  # noqa: E402
 
-DEPTH_SECTIONS = {**DEPTH_SECTIONS, **DEPTH_SECTIONS2, **DEPTH_SECTIONS3, **DEPTH_SECTIONS4, **DEPTH_SECTIONS5, **DEPTH_SECTIONS6, **DEPTH_SECTIONS7, **DEPTH_SECTIONS8}
+DEPTH_SECTIONS = {**DEPTH_SECTIONS, **DEPTH_SECTIONS2, **DEPTH_SECTIONS3, **DEPTH_SECTIONS4, **DEPTH_SECTIONS5, **DEPTH_SECTIONS6, **DEPTH_SECTIONS7, **DEPTH_SECTIONS8, **DEPTH_SECTIONS9}
+TOPUP_SECTIONS = {**TOPUP_SECTIONS9}
+TOPUP_MARK = 'data-esrc="t8b"'
 
 MARK = 'data-esrc="t8"'
 BASES = (ROOT, PUB)
 
 
-def main() -> None:
+def _inject(sections: dict, mark: str, label: str) -> int:
     applied = skipped = problems = 0
-    for route, html in sorted(DEPTH_SECTIONS.items()):
+    for route, html in sorted(sections.items()):
         hit = False
         for base in BASES:
             f = base / route / "index.html"
@@ -40,25 +43,32 @@ def main() -> None:
                 continue
             hit = True
             t = f.read_text(encoding="utf-8")
-            if MARK in t:
+            if mark in t:
                 skipped += 1
                 continue
             if t.count("</main>") != 1:
-                print(f"  !! sub8-depth: ambiguous main on {base}/{route}/")
+                print(f"  !! {label}: ambiguous main on {base}/{route}/")
                 problems += 1
                 continue
             t = t.replace(
                 "</main>",
-                '<section class="section" ' + MARK + '><div class="prose">' + html + "</div></section></main>",
+                '<section class="section" ' + mark + '><div class="prose">' + html + "</div></section></main>",
                 1,
             )
             f.write_text(t, encoding="utf-8")
             applied += 1
         if not hit:
-            print(f"  !! sub8-depth: missing page {route}/")
+            print(f"  !! {label}: missing page {route}/")
             problems += 1
-    print(f"sub8-depth: {applied} injected, {skipped} already present, {problems} problems "
-          f"(routes {len(DEPTH_SECTIONS)}, trees {len(BASES)})")
+    print(f"{label}: {applied} injected, {skipped} already present, {problems} problems "
+          f"(routes {len(sections)}, trees {len(BASES)})")
+    return problems
+
+
+def main() -> None:
+    problems = _inject(DEPTH_SECTIONS, MARK, "sub8-depth")
+    if TOPUP_SECTIONS:
+        problems += _inject(TOPUP_SECTIONS, TOPUP_MARK, "sub8-topup")
     if problems:
         sys.exit(1)
 
