@@ -9,6 +9,7 @@ Writes into BOTH the property source tree and the published mirror (public/),
 because build-routing.py mirrors public/ inside its own run.
 Idempotent by marker; fail-closed on missing pages or ambiguous <main>.
 """
+
 import sys
 from pathlib import Path
 
@@ -21,8 +22,17 @@ from sub8_depth_data3 import DEPTH_SECTIONS3  # noqa: E402
 from sub8_depth_data4 import DEPTH_SECTIONS4  # noqa: E402
 from sub8_depth_data5 import DEPTH_SECTIONS5  # noqa: E402
 from sub8_depth_data6 import DEPTH_SECTIONS6  # noqa: E402
+from sub8_depth_data7 import DEPTH_SECTIONS7  # noqa: E402
 
-DEPTH_SECTIONS = {**DEPTH_SECTIONS, **DEPTH_SECTIONS2, **DEPTH_SECTIONS3, **DEPTH_SECTIONS4, **DEPTH_SECTIONS5, **DEPTH_SECTIONS6}
+DEPTH_SECTIONS = {
+    **DEPTH_SECTIONS,
+    **DEPTH_SECTIONS2,
+    **DEPTH_SECTIONS3,
+    **DEPTH_SECTIONS4,
+    **DEPTH_SECTIONS5,
+    **DEPTH_SECTIONS6,
+    **DEPTH_SECTIONS7,
+}
 
 MARK = 'data-esrc="t8"'
 BASES = (ROOT, PUB)
@@ -47,7 +57,8 @@ def main() -> None:
                 continue
             t = t.replace(
                 "</main>",
-                '<section class="section" ' + MARK + '><div class="prose">' + html + "</div></section></main>",
+                '<section class="section" ' + MARK + '><div class="prose">'
+                + html + "</div></section></main>",
                 1,
             )
             f.write_text(t, encoding="utf-8")
