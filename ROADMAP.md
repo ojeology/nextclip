@@ -1,5 +1,5 @@
 # BRYME ROADMAP v2 — merged (owner master-audit brief × growth hypotheses)
-**Supersedes:** ROADMAP v1 (28ebdeb). **Merged:** 2026-09-26 from owner's `bryme-master-audit-seo-optimization-prompt.md` + agent's GROWTH-HYPOTHESES.md. **Status:** ACTIVE — Track A executing now.
+**Supersedes:** ROADMAP v1 (28ebdeb). **Merged:** 2026-09-26 from owner's `bryme-master-audit-seo-optimization-prompt.md` + agent's GROWTH-HYPOTHESES.md. **Status:** ACTIVE — Track A executing now. **2026-09-28:** Phase 3 step 5 batch C shipped — +28 closest-to-10 pages to 10.0 (at10 1017→1045, avg 9.243→9.247; workspace ruler rebuilt + calibrated to the committed checkpoints).
 
 ## Governing principles (from the owner brief — binding on all work)
 1. Audit before changing; inspect actual implementation, never assume.
