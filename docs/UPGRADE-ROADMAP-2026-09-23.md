@@ -2,6 +2,8 @@
 
 ## Progress log (update after each shipped batch)
 
+- **PHASE 3 STEP 5 BATCH I SHIPPED 2026-09-28** (commit pending): +84 pages to 10.0 at doubled batch size — the 634-654w tranche (writers x30, tech x21, home x17, entertainment x13, sports x3 fresh + paint-calculator & tech/tool hub + 5 t8b top-ups). `sub8_depth_data13.py` + rescue pass `sub8_depth_data14.py` (15 pages landed 736-749w, cleared with a new t8c marker). Site at10 1269 -> **1353**, avg 9.292 -> **9.313**, sub-8 0. Truncation #6 at turn start: stale tree caught by t8-blind ruler reading, restored from GitHub (`da7a381`) before measuring.
+
 - **PHASE 3 STEP 5 BATCH H SHIPPED 2026-09-28** (commit pending): +56 pages to 10.0 — the 654-668w tranche (tech x18, writers x16, home x11, entertainment x9, sports x2 fresh + 2 tools top-ups: data-usage-estimator, upload-time-calculator + t8b top-ups: premier-league-results, github-token-hygiene). `sub8_depth_data12.py`. Two link fixes at validation (how-do-football-clubs-make-money pattern: internet-speed-calculator lives under /tech/tool/). Site at10 1213 -> **1269**, avg 9.279 -> **9.292**, sub-8 0. Note: truncation #5 at turn start; restored from GitHub at batch G head `2dc49e8` before measuring.
 
 - **PHASE 3 STEP 5 BATCH G SHIPPED 2026-09-28** (commit pending): +56 pages to 10.0 — the 668-685w tranche (home x15, tech x14, writers x12, entertainment x10, sports x1 fresh + 2 tools: base64-encoder, url-encoder + writers/privacy trust page + 2 t8b top-ups: la-liga-results, password-strength-checker). `sub8_depth_data11.py`. One link fix at validation (how-do-football-clubs-make-money). Site at10 1157 → **1213**, avg 9.267 → **9.279**, sub-8 0. A1 (privacy Money sentence) audited and marked DONE — already fixed live, stale roadmap entry.
