@@ -1,4 +1,18 @@
 
+## 2026-09-28 — Phase 3 Step 5 Batch T COMPLETE: every indexable page at 10 — at10=2551, avg=10.0
+
+**What shipped**: `scripts/sub8_depth_data25.py` — `DEPTH_SECTIONS26` 37 rows (clubs, sports
+explainers, tech explainers, writing-opportunities) + `TOPUP_SECTIONS26` 46 trust-page topups
+(generated from per-type policy bodies + per-desk scope) + `TOPUP_SECTIONS27` 40 writer-tool
+topups + `_BONUS2`/`_CLOSE` addenda. Wired into `inject-sub8-depth.py`.
+
+**FINAL PHASE-3-STEP-5 STATE**: pages=2551, **at10=2551 (100%), avg=10.0, sub8=0, 0 shorts**.
+All 4 gates green. Campaign arc: post-3 at10=920/9.209 → batch A–Q → R 2286/9.809 → S 2428 →
+**T 2551/10.0 COMPLETE**.
+
+**Next**: Phase 3 steps beyond depth (roadmap follow-ups), search submission cadence (Bing
+100/day, queue), IndexNow pending real site key.
+
 ## 2026-09-28 — Phase 3 Step 5 Batch S: 116 depth + 4 topup + 34 extra topups (data24) LIVE
 
 **What shipped**: `scripts/sub8_depth_data24.py` — `DEPTH_SECTIONS24` 116 sections (batch-S 120
