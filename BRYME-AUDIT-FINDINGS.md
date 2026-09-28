@@ -1,3 +1,13 @@
+
+## 2026-09-28 — Phase 3 Step 5 Batch S: 116 depth + 4 topup + 34 extra topups (data24) LIVE
+
+**What shipped**: `scripts/sub8_depth_data24.py` — `DEPTH_SECTIONS24` 116 sections (batch-S 120
+targets minus 4 last-wins pops) + `TOPUP_SECTIONS24` 4 + `TOPUP_SECTIONS25` 30 residual topups
++ `_BONUS` addenda 8. Wired into `inject-sub8-depth.py`. **at10 2286→2428, avg 9.909, sub8=0**.
+123 shorts remain (gaps 308–500: club pages, utility/legal pages, late-round targets).
+
+**Result**: Deploy dep-datc8esr1upc73f7k0lg successor live; 4 gates green; Bing queue += 120.
+**Batch T**: the 123 remaining shorts (gaps 308+) — same pattern, `sub8_depth_data25.py`.
 # BRYME Audit Findings Register
 
 Living register for Track A (owner master-audit brief). Every finding: issue · URLs · severity · evidence · fix · status.
