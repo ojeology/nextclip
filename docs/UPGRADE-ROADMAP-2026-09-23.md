@@ -313,3 +313,10 @@ Goal: turn 847 stubs into articles. Median 153 → 600+ words; thin 85% → <5%.
   push before a fresh-clone `npm run build` passes.
 - Writers homepage canonical now https://thebryme.com/writers/ live.
   Verified: all 7 desk homes + hub + writers lockups, favicon + seal 200.
+
+
+## Batch O depth pass (2026-09-28)
+- `scripts/sub8_depth_data20.py`: DEPTH_SECTIONS20 = 108 sections (43 movie cards gaps 39-95 + 2 tech tools + 63 editorial/trust pages gaps 150-163) + TOPUP_SECTIONS20 = 42 sized topups (t8b).
+- Injected 214 depth + 82 topup across both trees (ROOT + public/), 0 problems. yodha got a dated external ref patch (names/no-ext penalty).
+- Ruler v7 after: at10 = 1909/2551 (75%), avg 9.608, sub-8 = 0. Remaining short = 641 (editorial band gaps 164+ and tools/trust tails).
+- Routing: `**DEPTH_SECTIONS20` + `**TOPUP_SECTIONS20` wired in `scripts/inject-sub8-depth.py` (idempotent by marker).

@@ -39,3 +39,10 @@ Bing 100/day (queue 3,044) · IndexNow per deploy · CI green gate · GSC/site: 
 
 ## Open decisions (owner)
 - D1: which single tool for B4. · D2: Tier-B cadence alongside Track A (recommend: continue, it funds Track 0). · D3: Pinterest account ownership. · D4: none blocking — Track A executes now.
+
+
+## Batch O depth pass (2026-09-28)
+- `scripts/sub8_depth_data20.py`: DEPTH_SECTIONS20 = 108 sections (43 movie cards gaps 39-95 + 2 tech tools + 63 editorial/trust pages gaps 150-163) + TOPUP_SECTIONS20 = 42 sized topups (t8b).
+- Injected 214 depth + 82 topup across both trees (ROOT + public/), 0 problems. yodha got a dated external ref patch (names/no-ext penalty).
+- Ruler v7 after: at10 = 1909/2551 (75%), avg 9.608, sub-8 = 0. Remaining short = 641 (editorial band gaps 164+ and tools/trust tails).
+- Routing: `**DEPTH_SECTIONS20` + `**TOPUP_SECTIONS20` wired in `scripts/inject-sub8-depth.py` (idempotent by marker).

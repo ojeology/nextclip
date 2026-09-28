@@ -178,3 +178,10 @@ Post-deploy: rerun tools/audit_bryme.py (workspace) for the score delta; expecte
 **Link integrity:** 52 internal links audited against `public/` — 2 broken slugs found (`a-rejected-pitch-is-not-wasted` lives under `learn/writing-for-publication/`, `dos-and-donts-of-writing` under `learn/dos-and-donts/`) and fixed; caught by `npm run validate` before commit. All 11 external links curl-checked; one invented domain (`www.the-pa.org`, HTTP 000) removed — never ship an unverified domain.
 **Result:** writers **0 sub-8** (desk complete). Site: **9.12 avg / 955 10-ready (37.4%) / 200 sub-8** (was 265). All 7 gates green (validate, validate:browser 199 s, contrast, money:browser, techhub, hometools, money). Backups: /home/user/audit/writers_depth_data.py.bak, inject-writers-depth.py.bak.
 **Remaining sub-8 (200):** tech 93, home 80, sports 27.
+
+
+## Batch O depth pass (2026-09-28)
+- `scripts/sub8_depth_data20.py`: DEPTH_SECTIONS20 = 108 sections (43 movie cards gaps 39-95 + 2 tech tools + 63 editorial/trust pages gaps 150-163) + TOPUP_SECTIONS20 = 42 sized topups (t8b).
+- Injected 214 depth + 82 topup across both trees (ROOT + public/), 0 problems. yodha got a dated external ref patch (names/no-ext penalty).
+- Ruler v7 after: at10 = 1909/2551 (75%), avg 9.608, sub-8 = 0. Remaining short = 641 (editorial band gaps 164+ and tools/trust tails).
+- Routing: `**DEPTH_SECTIONS20` + `**TOPUP_SECTIONS20` wired in `scripts/inject-sub8-depth.py` (idempotent by marker).
