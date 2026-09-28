@@ -185,3 +185,8 @@ Post-deploy: rerun tools/audit_bryme.py (workspace) for the score delta; expecte
 - Injected 214 depth + 82 topup across both trees (ROOT + public/), 0 problems. yodha got a dated external ref patch (names/no-ext penalty).
 - Ruler v7 after: at10 = 1909/2551 (75%), avg 9.608, sub-8 = 0. Remaining short = 641 (editorial band gaps 164+ and tools/trust tails).
 - Routing: `**DEPTH_SECTIONS20` + `**TOPUP_SECTIONS20` wired in `scripts/inject-sub8-depth.py` (idempotent by marker).
+
+### Batch O build-truth notes (2026-09-28)
+- TREES ARE BUILD OUTPUTS: `npm run build` rebuilds root property trees from `ecosystem/` (build-routing step 3) and mirrors them into `public/`; hand-patched HTML never survives a deploy. All page content must live in the data modules (sub8_depth_data*.py) or in `ecosystem/`.
+- The injector re-runs at the end of every build (idempotent by marker), so module-defined t8/t8b/t8c sections re-appear automatically; data-module dict merge is LAST-WINS, so a later batch key silently REPLACES an earlier batch's section at build time (batch O hit this on home/mistakes/streaky-windows-sunlight: data3's 306w sourced block was overridden by data20's 194w section until the key was popped).
+- External reference links must be embedded in the module's section HTML (e.g. yodha's encyclopaedic ref paragraph); verified 2026-09-28 live at c5dc723.
