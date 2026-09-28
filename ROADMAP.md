@@ -1,5 +1,5 @@
 # BRYME ROADMAP v2 — merged (owner master-audit brief × growth hypotheses)
-**Supersedes:** ROADMAP v1 (28ebdeb). **Merged:** 2026-09-26 from owner's `bryme-master-audit-seo-optimization-prompt.md` + agent's GROWTH-HYPOTHESES.md. **Status:** ACTIVE — Track A executing now. **2026-09-28:** Phase 3 step 5 batches C-F shipped — +140 closest-to-10 pages to 10.0 (at10 1017→1157, avg 9.243→9.267).
+**Supersedes:** ROADMAP v1 (28ebdeb). **Merged:** 2026-09-26 from owner's `bryme-master-audit-seo-optimization-prompt.md` + agent's GROWTH-HYPOTHESES.md. **Status:** ACTIVE — Track A executing now. **2026-09-28:** Phase 3 step 5 batches C-G shipped — +196 closest-to-10 pages to 10.0 (at10 1017→1213, avg 9.243→9.279); A1 verified done.
 
 ## Governing principles (from the owner brief — binding on all work)
 1. Audit before changing; inspect actual implementation, never assume.
@@ -9,7 +9,7 @@
 5. Change control: smallest safe change → local test → route/canonical/sitemap verification → ship. P0/P1 before P2/P3 effort.
 
 ## Track A — Audit & harden the existing 3,237 pages (owner brief) — NOW
-**A1 (P1, confirmed by owner's external audit):** house `/privacy/` omits the Money desk → add the sentence + link to `/money/privacy/`. **EXECUTING.**
+**A1 (P1, confirmed by owner's external audit):** house `/privacy/` omits the Money desk → add the sentence + link to `/money/privacy/`. **DONE 2026-09-28** — audited before changing: the live `/privacy/` already carries the Money-desk sentence and a `/money/privacy/` link (fixed in an earlier pass; roadmap entry was stale). No duplicate content added.
 **A2 (P1):** site-wide grep for stale publication-count statements ("six publications", old desk lists) → fix at generator level.
 **A3 (P1):** indexation architecture pass — classify URL types (high-priority / secondary / should-not-compete): search-result pages, empty states, parameter variants, thin catalogue pages. Evidence table per URL type before any noindex.
 **A4 (P1):** error-handling sweep — 404 vs soft-404, trailing-slash, uppercase, malformed URLs, redirect chains (live probes).
