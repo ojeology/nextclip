@@ -3,7 +3,7 @@
 Living register for Track A (owner master-audit brief). Every finding: issue · URLs · severity · evidence · fix · status.
 Severity: P0 = broken live / P1 = compliance-trust blocker / P2 = SEO-quality gap / P3 = polish.
 
-Last sweep: **2026-09-28** · Phase 3 step 5 batch D deploying (commits through `5e0b656`+ batch D) — see the step 5 section for the live deploy id.
+Last sweep: **2026-09-28** · deploy `dep-dat2q48473hc738c7d0g` (commit `390d3ee`, Phase 3 step 5 batch D) live.
 
 ---
 
