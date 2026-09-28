@@ -94,6 +94,39 @@ DESKS = [
 ]
 
 
+
+def questions_for(hub):
+    """Digest: question-shaped lines distilled from the desk's own explainer titles.
+    Extractive - the title text itself, phrased as the question it answers on the page."""
+    desk = hub.strip("/").split("/")[0] if hub != "/" else ""
+    base = PUB / desk
+    if not base.is_dir():
+        return []
+    H1 = re.compile(r"<h1[^>]*>(.*?)</h1>", re.S)
+    out = []
+    for f in sorted(base.rglob("index.html")):
+        rel = f.parent.relative_to(PUB).as_posix()
+        if len(rel.split("/")) > 3:
+            continue
+        t = f.read_text(encoding="utf-8")
+        if 'content="noindex' in t:
+            continue
+        m = H1.search(t)
+        if not m:
+            continue
+        h1 = re.sub(r"<[^>]+>", "", m.group(1))
+        h1 = re.sub(r"\s+", " ", h1).strip()
+        low = h1.lower()
+        if not low.startswith(("how ", "what ", "why ", "when ", "where ", "does ", "can ", "is ", "should ", "which ")):
+            continue
+        q = h1 if h1.endswith(("?", ":")) else h1.rstrip(".") + "?"
+        q = q[:-2] + "?" if q.endswith(":?") else q
+        out.append((q, "/" + rel + "/"))
+        if len(out) >= 8:
+            break
+    return out
+
+
 def main():
     counts = {name: sitemap_count_all(slug.strip("/")) for name, slug, _d, _f in DESKS}
     total = sum(sitemap_count_all(d) for d in
@@ -125,6 +158,11 @@ def main():
         lines.append("- [Desk home](" + check(hub) + ")")
         for i in range(0, len(flags), 2):
             lines.append("- [" + flags[i] + "](" + check(flags[i + 1]) + ")")
+        lines.append("")
+        lines.append("### Questions this desk answers")
+        lines.append("")
+        for q, route in questions_for(hub):
+            lines.append("- [" + q + "](" + check(route) + ")")
         lines.append("")
     lines.append("## Notes for assistants")
     lines.append("")

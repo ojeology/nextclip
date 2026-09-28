@@ -1,4 +1,22 @@
 
+## 2026-09-28 — Track B started: B1 (AI-answer surface) DONE
+
+**B1 (Phase 1) — llms.txt + desk digests + fact boxes on top-100 explainers — DONE.**
+- **llms.txt** already existed (`build-llms-txt.py`, chain, asserts every linked route) — kept.
+- **Desk digests**: `### Questions this desk answers` per desk in llms.txt — question-shaped
+  lines distilled extractively from each desk's own explainer H1s (≤8/desk, depth ≤3, real
+  question-form only). Extends the machine-readable answer surface without new URLs.
+- **Fact boxes**: `scripts/build-fact-boxes.py` (chain, marker `data-esrc="fb"`) — extractive
+  "the short answer" aside on the **top-100 explainer pages** (deterministic selection:
+  indexable, non-hub, H1 question-shaped, lede ≥8 words, ranked by word count desc). Box =
+  the page's own first lede sentence + its own verified date + its own citation count — zero
+  new claims. Wired after `inject-consent`. 100/100 applied in both trees, idempotent.
+- A10 correction: root `/privacy/` EXISTS (linked in llms.txt); only the AdSense console
+  Funding Choices/TCF enablement remains an owner action.
+
+Post-change: at10=2551 preserved, 4 gates green. Next: B2 (Pinterest rework), B3 (data report).
+Bing quota still capped this turn (queue 2,865 preserved).
+
 ## 2026-09-28 — Track A complete: A9 shipped + A10 (AdSense/consent) audited & wired
 
 **A9 deployed LIVE** (commit `c7fef12`, 68 sport tool xlinks, relevance-mapped only).
