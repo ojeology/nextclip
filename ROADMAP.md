@@ -53,3 +53,4 @@ Bing 100/day (queue 3,044) · IndexNow per deploy · CI green gate · GSC/site: 
 - External reference links must be embedded in the module's section HTML (e.g. yodha's encyclopaedic ref paragraph); verified 2026-09-28 live at c5dc723.
 - [x] Batch P (2026-09-28): 133 depth + 4 topup sections (data21) — at10=2046/9.66; router money-link fix; gates green
 - [x] Batch Q (2026-09-28): 118 depth + 13 topup sections (data22) — at10=2166/9.725; trees now committed per batch; gates green
+- [x] Batch R (2026-09-28): 114 depth + 6 topup sections (data23) — at10=2286/9.809; 6 last-wins pops; gates green

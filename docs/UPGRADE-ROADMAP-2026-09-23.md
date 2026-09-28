@@ -336,3 +336,7 @@ Goal: turn 847 stubs into articles. Median 153 → 600+ words; thin 85% → <5%.
 - DEPTH_SECTIONS22: 118 entries (120 cheapest gap-184–219 scan targets; 2 last-wins pops: champions-league-results→data2, transfers→data3) + TOPUP_SECTIONS22: 13 (2 popped + 11 worst residuals). _ref extended ("How to verify this page yourself…" paragraph).
 - Desk rule unchanged: see-also desks derive from slug property. Targets all clear in one pass (0 residuals), including the 669-bar tools pages.
 - Build-truth: at10 2046→2166 (85%), avg 9.66→9.725, sub8=0. All 4 gates green. Trees committed with the batch (the 7fd506d miss).
+
+## Batch R — depth bulk #15 (2026-09-28)
+- DEPTH_SECTIONS23: 114 entries (120 cheapest gap-219–258 scan targets; 6 last-wins pops: bundesliga-top-scorers+home/outside→data2, fitness/privacy+money/privacy→data4, word-count-to-pages+word-alternatives→data17) + TOPUP_SECTIONS23: 6 (the popped keys). _ref third paragraph added ("The desk's standard applies…").
+- Build-truth: at10 2166→2286 (89.6%), avg 9.725→9.809, sub8=0. Zero residuals after the ref extension. All 4 gates green. Trees committed with the batch.

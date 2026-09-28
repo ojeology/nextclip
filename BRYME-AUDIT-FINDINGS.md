@@ -198,3 +198,6 @@ Post-deploy: rerun tools/audit_bryme.py (workspace) for the score delta; expecte
 - Every batch commit must include the rebuilt root+public trees (7fd506d missed them; a re-clone then measured stale state and re-selected batch-P targets). Convention confirmed by 5e13699.
 - sub8_depth_data22: _ref carries the full sourcing paragraph (clears small residuals by itself); topups cover the ≥40-word tail.
 - at10=2166, avg 9.725, sub8=0 after batch Q (118 depth + 13 topups).
+## Batch R build-truth (2026-09-28)
+- sub8_depth_data23 _ref now carries three sourcing paragraphs (~110 words) — it alone clears small residuals; topups only needed for popped/last-wins keys and ≥30-word gaps.
+- at10=2286, avg 9.809, sub8=0 after batch R (114 depth + 6 topups).
