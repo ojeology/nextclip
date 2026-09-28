@@ -331,3 +331,8 @@ Goal: turn 847 stubs into articles. Median 153 → 600+ words; thin 85% → <5%.
 - Router fix: build-routing.py ABS_RE/ATTR_RE exception list now includes money (was rewriting thebryme.com/money/ → /writers/money/, the last broken internal link).
 - Desk rule: see-also desks derive from slug property (drifting labels had put entertainment see-links on writer pages).
 - Build-truth: at10 1910→2046, avg 9.608→9.66, sub8=0. All 4 gates green.
+
+## Batch Q — depth bulk #14 (2026-09-28)
+- DEPTH_SECTIONS22: 118 entries (120 cheapest gap-184–219 scan targets; 2 last-wins pops: champions-league-results→data2, transfers→data3) + TOPUP_SECTIONS22: 13 (2 popped + 11 worst residuals). _ref extended ("How to verify this page yourself…" paragraph).
+- Desk rule unchanged: see-also desks derive from slug property. Targets all clear in one pass (0 residuals), including the 669-bar tools pages.
+- Build-truth: at10 2046→2166 (85%), avg 9.66→9.725, sub8=0. All 4 gates green. Trees committed with the batch (the 7fd506d miss).

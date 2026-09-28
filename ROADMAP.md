@@ -52,3 +52,4 @@ Bing 100/day (queue 3,044) · IndexNow per deploy · CI green gate · GSC/site: 
 - The injector re-runs at the end of every build (idempotent by marker), so module-defined t8/t8b/t8c sections re-appear automatically; data-module dict merge is LAST-WINS, so a later batch key silently REPLACES an earlier batch's section at build time (batch O hit this on home/mistakes/streaky-windows-sunlight: data3's 306w sourced block was overridden by data20's 194w section until the key was popped).
 - External reference links must be embedded in the module's section HTML (e.g. yodha's encyclopaedic ref paragraph); verified 2026-09-28 live at c5dc723.
 - [x] Batch P (2026-09-28): 133 depth + 4 topup sections (data21) — at10=2046/9.66; router money-link fix; gates green
+- [x] Batch Q (2026-09-28): 118 depth + 13 topup sections (data22) — at10=2166/9.725; trees now committed per batch; gates green

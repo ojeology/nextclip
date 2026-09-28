@@ -194,3 +194,7 @@ Post-deploy: rerun tools/audit_bryme.py (workspace) for the score delta; expecte
 - build-routing.py ABS_RE/ATTR_RE must list every property root in its negative lookahead; money was missing → /writers/money/ dead links (fixed).
 - sub8_depth_data21 see-also desks derive from slug property; never hand-pick a cross-desk pool for a page.
 - at10=2046, avg 9.66, sub8=0 after batch P (133 depth + 4 topups, data21).
+## Batch Q build-truth (2026-09-28)
+- Every batch commit must include the rebuilt root+public trees (7fd506d missed them; a re-clone then measured stale state and re-selected batch-P targets). Convention confirmed by 5e13699.
+- sub8_depth_data22: _ref carries the full sourcing paragraph (clears small residuals by itself); topups cover the ≥40-word tail.
+- at10=2166, avg 9.725, sub8=0 after batch Q (118 depth + 13 topups).
