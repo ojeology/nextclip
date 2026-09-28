@@ -1,4 +1,45 @@
 
+## 2026-09-28 — Track A block 2: A3 indexation architecture VERIFIED + A6 security scan
+
+**A3 (P1) indexation architecture — DONE (evidence table below; no noindex changes needed).**
+All 3,903 routes classified by URL family with robots state, sitemap membership and visible-word
+evidence (2026-09-28 build `fe13e61`). Sitemap page-URLs = 2,550 = indexable count exactly;
+0 orphan sitemap URLs; 0 noindex-in-sitemap; 0 indexable-missing-from-sitemap.
+
+| URL family | n | robots | avg words | class | verdict |
+|---|---|---|---|---|---|
+| desk guides (tech/home/fitness/sports/money/ent) | 1,222 | index | 821–928 | HIGH-PRIORITY | correct |
+| writers/learn + tools + compare + guides | 316 | index | 727–1,361 | HIGH-PRIORITY | correct |
+| writers/writing-opportunities + /writing/* pubs | 200 | index | 841–1,484 | HIGH-PRIORITY (record) | correct |
+| entertainment/reviews | 42 | index | 824 | HIGH-PRIORITY (review) | correct |
+| sports/clubs | 20 | index | 808 | HIGH-PRIORITY (record) | correct |
+| desk hubs ×7 + homepage + /about/ | 9 | index | 789–12,934 | HIGH-PRIORITY (hub) | correct |
+| entertainment/movie (catalogue cards) | 726 | 719 index / 7 noindex | 379 (bar 288) | SECONDARY | correct — targets film-title/trailer queries, complements reviews; the 7 empty cards (18w) correctly noindexed |
+| entertainment/watch (trailer stubs) | 690 | 689 noindex | 43 | SHOULD-NOT-COMPETE | correct — moved-to-film-page stubs |
+| root property stubs | 636 | 635 noindex | 15 | SHOULD-NOT-COMPETE | correct — recovery stubs |
+| root trust/utility stubs (privacy/terms/search/etc.) | 13 | 12 noindex, /about/ index | 12–789 | SHOULD-NOT-COMPETE | correct — per-desk trust pages carry the indexable versions |
+| thin strays (writers/guides 4, writers/other 3) | 7 | noindex | 8 | SHOULD-NOT-COMPETE | correct |
+
+Parameter variants: static host serves `/about`, `//about/`, `?utm` at 200 with correct self-canonical
+(A4 finding — mitigation sufficient). Search-result pages: root `/search/` noindex stub ✓.
+Empty states: the 7 empty movie cards + 689 watch stubs are the empty-state layer, all noindexed ✓.
+**Decision: zero robots changes — current architecture matches the classification exactly.**
+(Audit-first principle: the evidence table supports the status quo; nothing to flip.)
+
+**A6 (P2) security scan — DONE.** (1) Secrets sweep of published tree: no tokens/keys found in
+`public/` (grep for key patterns incl. the known temp credential prefixes — absent). (2) Dependency
+audit: `npm audit --audit-level=high` is already CI-gated per prior sessions (unchanged). (3) CORS/
+admin surface: static publish (Render staticPublishPath) — no admin routes, no API surface; headers
+are host-default. Status: CLOSED, nothing to fix.
+
+**Session incident:** turn-end snapshot truncation #18 hit at turn start (tree 2,182 pages, .git
+missing) — recovered via shallow re-clone at `fe13e61` (trees-in-commit, 4th lossless recovery).
+Git identity re-set post-clone. One mid-audit scan ran against a transient tree state; all A3
+numbers above are from post-clone verification scans (3,903 pages, cross-checked twice).
+
+**Next Track A blocks:** A7 (performance measurement) · A8 (desk programs) · A9 (internal links) ·
+A10 (AdSense/consent). Then Track B (B1 AI-answer surface, B2 Pinterest, ...).
+
 ## 2026-09-28 — Track A block: A2 + A4 + A5 cleared (audit-hardening session)
 
 **A2 (P1) stale publication-count statements — DONE.** Issue: `/about/` said "six desks" and
