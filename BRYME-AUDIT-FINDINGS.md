@@ -190,3 +190,7 @@ Post-deploy: rerun tools/audit_bryme.py (workspace) for the score delta; expecte
 - TREES ARE BUILD OUTPUTS: `npm run build` rebuilds root property trees from `ecosystem/` (build-routing step 3) and mirrors them into `public/`; hand-patched HTML never survives a deploy. All page content must live in the data modules (sub8_depth_data*.py) or in `ecosystem/`.
 - The injector re-runs at the end of every build (idempotent by marker), so module-defined t8/t8b/t8c sections re-appear automatically; data-module dict merge is LAST-WINS, so a later batch key silently REPLACES an earlier batch's section at build time (batch O hit this on home/mistakes/streaky-windows-sunlight: data3's 306w sourced block was overridden by data20's 194w section until the key was popped).
 - External reference links must be embedded in the module's section HTML (e.g. yodha's encyclopaedic ref paragraph); verified 2026-09-28 live at c5dc723.
+## Batch P build-truth (2026-09-28)
+- build-routing.py ABS_RE/ATTR_RE must list every property root in its negative lookahead; money was missing → /writers/money/ dead links (fixed).
+- sub8_depth_data21 see-also desks derive from slug property; never hand-pick a cross-desk pool for a page.
+- at10=2046, avg 9.66, sub8=0 after batch P (133 depth + 4 topups, data21).

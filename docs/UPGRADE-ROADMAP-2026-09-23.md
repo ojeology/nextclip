@@ -325,3 +325,9 @@ Goal: turn 847 stubs into articles. Median 153 → 600+ words; thin 85% → <5%.
 - TREES ARE BUILD OUTPUTS: `npm run build` rebuilds root property trees from `ecosystem/` (build-routing step 3) and mirrors them into `public/`; hand-patched HTML never survives a deploy. All page content must live in the data modules (sub8_depth_data*.py) or in `ecosystem/`.
 - The injector re-runs at the end of every build (idempotent by marker), so module-defined t8/t8b/t8c sections re-appear automatically; data-module dict merge is LAST-WINS, so a later batch key silently REPLACES an earlier batch's section at build time (batch O hit this on home/mistakes/streaky-windows-sunlight: data3's 306w sourced block was overridden by data20's 194w section until the key was popped).
 - External reference links must be embedded in the module's section HTML (e.g. yodha's encyclopaedic ref paragraph); verified 2026-09-28 live at c5dc723.
+
+## Batch P — depth bulk #13 (2026-09-28)
+- DEPTH_SECTIONS21: 133 entries (120 cheapest gap-164–184 scan targets + 13 extra short pages); TOPUP_SECTIONS21: 4 (3 popped keys + 1 residual). Template ed() adds extended sourcing paragraph (auto wiki-ref + "Reviewed 2026-09-28").
+- Router fix: build-routing.py ABS_RE/ATTR_RE exception list now includes money (was rewriting thebryme.com/money/ → /writers/money/, the last broken internal link).
+- Desk rule: see-also desks derive from slug property (drifting labels had put entertainment see-links on writer pages).
+- Build-truth: at10 1910→2046, avg 9.608→9.66, sub8=0. All 4 gates green.

@@ -2845,7 +2845,7 @@ def empty_pages() -> None:
 <h2>The standard, in his own words</h2>
 <p>Nothing goes on a BRYME page that cannot be checked against its source, and anything a source cannot support stays off the site. When a page is wrong, the fix is published in the open on the page itself &mdash; see <a href="/corrections/">how corrections work</a>. A blank is always better than a plausible-sounding fabrication, which is exactly what makes a site read as machine-made.</p>
 <h2>Beyond the writing desk</h2>
-<p>BRYME has grown into a family of specialist publications under one house standard &mdash; see <a href="{BASE}/about/">the family about page</a> for the full list, from <a href="{BASE}/tech/">BRYME Tech</a> to <a href="{BASE}/money/">BRYME Money</a>. The editing still happens in one place, and the same rules apply on every desk.</p>
+<p>BRYME has grown into a family of specialist publications under one house standard &mdash; see <a href="{BASE}/about/">the family about page</a> for the full list, from <a href="{BASE}/tech/">BRYME Tech</a> to <a href="https://thebryme.com/money/">BRYME Money</a>. The editing still happens in one place, and the same rules apply on every desk.</p>
 <p>Errors, corrections and rights questions reach him through the <a href="/contact/">contact page</a>.</p>
 </div></section></div>'''
     write("/author/ibrahim-sodiq/", page_wf(title="Ibrahim Sodiq | BRYME founder and editor",
