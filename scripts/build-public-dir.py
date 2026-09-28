@@ -46,6 +46,7 @@ PUBLIC_FILES = [
     "news-sitemap.xml", "feed.xml", "favicon.ico", "manifest.webmanifest",
     "sw.js", "google2ec8f794263d784f.html", "yandex_78fdd841f95fa2e1.html",
     "1740cdb82c02b9af13911b38c853e85d2f708322fa0c2c55.txt", "ads.txt", "_redirects",
+    "f8d67d70568e4d6bb010464510ff0871.txt",  # IndexNow key (must survive git clean -xdf public/)
     "BingSiteAuth.xml",
 ]
 
