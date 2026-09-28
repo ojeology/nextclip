@@ -1,4 +1,28 @@
 
+## 2026-09-28 — Track A block 3 (cont): A9 internal-link architecture GAP-FILLED
+
+**A9 (P2) — DONE.** Evidence sweep (hub + siblings + tool + next-step per indexable guide page):
+- **Hub + sibling links: 100% on every desk** (0 pages missing, all 7 desks) — the structural
+  skeleton A9 asks for was already complete via the hub/see-also system.
+- **Related/next-step blocks: present in house "See …" form** across sampled desks (the initial
+  "missing" counts were regex false negatives against the house phrasing).
+- **Desk-tool links: real gap found on SPORT only — 96% (162/168) of sport pages linked no desk
+  calculator** while entertainment/money/fitness/home/writers were 100% covered. (First-pass
+  numbers for ent/sport were inflated by a wrong path assumption: sport calculators live at
+  `/sports/<slug>`, not `/tools/`.)
+- **Fix: `scripts/inject-tool-xlinks.py`** (chain script, marker `data-esrc="tx"`, noindex-safe,
+  wired after `inject-sport-timestamps`) — relevance-mapped only, per the roadmap's "gap-fill,
+  no stuffing": league table pages + CL table → league-tiebreak + points-race calculators;
+  title-race/weekend pages → points-race; transfer explainers + transfer-news pages →
+  transfer-amortisation calculator; all 20 club files → wage-revenue-ratio calculator.
+  33 routes × 2 trees linked. Boxing/athletics/etc. deliberately NOT given calculator links
+  (no relevant tool — stuffing would violate the rule).
+
+Post-change: at10=2551 preserved, 4 gates green. Deploy follows (content change).
+
+**Next:** A10 (AdSense/consent) → Track B. Truncation count for the session: #19 (5th lossless
+recovery via trees-in-commit at `897e826`).
+
 ## 2026-09-28 — Track A block 3: A8 desk programs COMPLETE
 
 **A8 (P2) — six sub-items, evidence + actions (2026-09-28):**
