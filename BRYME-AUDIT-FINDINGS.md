@@ -3,13 +3,13 @@
 Living register for Track A (owner master-audit brief). Every finding: issue · URLs · severity · evidence · fix · status.
 Severity: P0 = broken live / P1 = compliance-trust blocker / P2 = SEO-quality gap / P3 = polish.
 
-Last sweep: **2026-09-28** · deploy `dep-dat2c4u7bikc73an2r70` (commit `5e0b656`, Phase 3 step 5 batch C) live.
+Last sweep: **2026-09-28** · Phase 3 step 5 batch D deploying (commits through `5e0b656`+ batch D) — see the step 5 section for the live deploy id.
 
 ---
 
 ## Phase 3 step 5 — closest-to-10 depth batches (2026-09-28)
 
-Workspace page ruler rebuilt and calibrated to the committed checkpoints (at10=1017 / avg=9.243 / sub-8=0 reproduced exactly at HEAD `1fae6c5`); model = word ladder vs class bars (editorial 750, money 700, movie-card, tool, trust, hub, record, author 300) + 0.25 name-based source gap + 0.25 date gap + 0.9 no-structure gap + 0.5 guarantee-claim flag. Batch C = smallest-gap tranche: 28 pages at 735-748 words against the 750 bar, all to 10.0. Site at10 1017 → **1045**, avg 9.243 → **9.247**, sub-8 0. Depth blocks: `scripts/sub8_depth_data7.py` (template = data6), injector `scripts/inject-sub8-depth.py`, both trees. Batch D queue: the 733-734 tranche. Bing indexing queue run with the rotated key via `scripts/submit-bing-queue.py` (env `BING_WEBMASTER_API_KEY`).
+Workspace page ruler rebuilt and calibrated to the committed checkpoints (at10=1017 / avg=9.243 / sub-8=0 reproduced exactly at HEAD `1fae6c5`); model = word ladder vs class bars (editorial 750, money 700, movie-card, tool, trust, hub, record, author 300) + 0.25 name-based source gap + 0.25 date gap + 0.9 no-structure gap + 0.5 guarantee-claim flag. Batch C = smallest-gap tranche: 28 pages at 735-748 words against the 750 bar, all to 10.0 (`scripts/sub8_depth_data7.py`). Batch D = 720-734w tranche + one tool page (`scripts/sub8_depth_data8.py`), all to 10.0. Site at10 1017 → **1073**, avg 9.243 → **9.251**, sub-8 0. Injector `scripts/inject-sub8-depth.py`, both trees. Bing indexing queue rotated after 98 accepted on 2026-09-28 (2,853 remain; ~100/day quota) via `scripts/submit-bing-queue.py` (env `BING_WEBMASTER_API_KEY`).
 
 ---
 
