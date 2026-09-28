@@ -1,4 +1,41 @@
 
+## 2026-09-28 — Track A block 3: A8 desk programs COMPLETE
+
+**A8 (P2) — six sub-items, evidence + actions (2026-09-28):**
+
+1. **Money jurisdiction clarity — VERIFIED CLEAN.** 21 money pages carry explicit UK/US/NG
+   labels; the 17 "unlabeled" scan hits were named-source citations (SEC Investor.gov, ASIC
+   MoneySmart) for general mechanics, which is house practice. Rule-specific pages verified
+   labeled: 401k (4), lifetime-isa (8), capital-gains-tax (7), inheritance-tax (11),
+   state-pensions (12), pension-matching (7). Universal-math pages (loan amortisation) correctly
+   jurisdiction-free. No changes needed.
+2. **Entertainment catalogue thin-page floor — VERIFIED CLEAN.** 719 indexable movie cards:
+   **0 below the 288 word bar** (avg 379); the 7 empty-state cards (18w) already noindexed.
+   Enrich-or-noindex decision: nothing to enrich, nothing to flip.
+3. **Sport timestamping — FIXED.** 64/167 sport guides lacked a visible date stamp. New chain
+   script `scripts/inject-sport-timestamps.py` (idempotent marker `data-esrc="ts"`, noindex-safe,
+   house phrasing "By the Bryme Sports desk. Reviewed 28 September 2026.") wired into
+   `npm run build` after `inject-sub8-depth`. 130 pages stamped across ROOT+PUB trees;
+   **188/188 indexable sports pages now dated**. Filter-sprawl check: 0 internal query-param URLs
+   (all 1,835 query-string hrefs are external search links — wikipedia/netflix/imdb) ✓.
+4. **Home problem-intent — VERIFIED STRONG (no mechanical change).** 287 home guides with
+   pervasive problem-intent coverage (ants-in-the-kitchen, after-pest-treatment, unblock-toilet,
+   descale-kettle, fix/*...). Titles are deliberate house editorial style under the 60-char
+   title-budget tool. P3 note: consider problem-phrase title variants where CTR data supports —
+   a SERP strategy call, not a mechanical fix.
+5. **Tech topical clusters — VERIFIED COMPLETE.** 353/353 tech guides link the /tech/ hub plus
+   2+ tech siblings (100% cluster coverage).
+6. **Writers opportunity-DB — PROTECTED.** 144 publication pages all self-canonical except one:
+   `writers/writing/the-reindex.html/` canonicalizes to `the-republic` (moved-page semantics —
+   correctly de-dupes; leftover of a slug fix). P3 cleanup possible (410 or redirect); the
+   canonical already prevents competition. DB pages sit in sitemaps with unique bodies ✓.
+
+Post-change: at10=2551 preserved, 4 gates green. Commit ships the stamps (content change →
+deploy follows).
+
+**Next:** A9 (internal-link gap-fill) · A10 (AdSense/consent) → Track B (B1 AI-answer surface…).
+Session incident: truncation #19 at turn start — lossless re-clone at `897e826` (5th recovery).
+
 ## 2026-09-28 — Track A block 2 (cont): A7 performance measurement (real samples only)
 
 **A7 (P2) — DONE (lab samples from Lagos, 2026-09-28, `Cache-Control: no-cache` client, edge
