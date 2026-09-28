@@ -1,4 +1,28 @@
 
+## 2026-09-28 — Track A complete: A9 shipped + A10 (AdSense/consent) audited & wired
+
+**A9 deployed LIVE** (commit `c7fef12`, 68 sport tool xlinks, relevance-mapped only).
+
+**A10 (P2) — AdSense/consent — DONE** (evidence + wiring):
+- **ads.txt** ✓ correct (`google.com, ca-pub-1881426210393009, DIRECT, f08c47fec0942fa0`).
+- **AdSense** = Auto ads (loader-only `pagead2.../adsbygoogle.js?client=ca-pub-1881426210393009`,
+  `async`, 0 manual `<ins>` slots) — non-blocking ✓. Loader also on 144 writers pages ✓.
+- **Consent: was completely absent** (0 consent tooling on any of 3,903 routes — GDPR/ePrivacy
+  gap for EEA/UK visitors; AdSense policy expects consent signals).
+- **Fix: `scripts/inject-consent.py`** (chain script, static marker `<!--gfc-->`, noindex pages
+  skipped, scoped to site trees) — Google Consent Mode v2 defaults (denied) + Funding Choices
+  loader for pub-1881426210393009 + house-styled minimal accept/decline banner persisting to
+  `localStorage` (`bryme-consent-v1`) and granting Consent Mode on accept. Wired into the chain
+  after `inject-tool-xlinks`. Verified post-build: exactly 2,551 indexable pages carry 1 marker
+  each, 1,352 noindex pages clean, 0 doubled.
+- **OWNER ACTIONS (console-side, not repo-fixable):** (1) AdSense → Privacy & messaging: enable
+  Funding Choices/TCF for EEA/UK (once enabled, the DIY banner can retire); (2) publish a root
+  `/privacy/` page (none exists — writers/privacy covers the writers desk only).
+
+Post-change: at10=2551 preserved, 4 gates green. **Track A (A1–A10) COMPLETE.** Next: Track B
+(B1 AI-answer surface, B2 Pinterest rework, B3 data report…). Session truncation count: #20
+(6th lossless trees-in-commit recovery).
+
 ## 2026-09-28 — Track A block 3 (cont): A9 internal-link architecture GAP-FILLED
 
 **A9 (P2) — DONE.** Evidence sweep (hub + siblings + tool + next-step per indexable guide page):
