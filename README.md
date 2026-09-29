@@ -1,33 +1,33 @@
 # BRYME
 
-BRYME is a focused publication for **verified jobs, remote work and legitimate ways to earn** — primarily for Nigerians and Africa-based readers.
+BRYME is a family of seven specialist publications with one shared hub: **Writers, Tech, Sport, Entertainment, Fitness, Home & DIY, and Money**. The site combines editorial, verified opportunity records, databases, browser tools, and calculators; it is not a single job board or an ad-only blog.
 
 **Current public host:** <https://thebryme.com/>
 
-> The former `bryme.onrender.com` origin is **retired and unreachable**: Render
-> blocks the subdomain (`x-render-routing: blocked-render-subdomain`) and every
-> URL there returns a plain-text 404, so it cannot serve redirects, a 410, or an
-> IndexNow key file. Those URLs decay on recrawl. Nothing in the published
-> artifact links to that host; it survives only inside the dated audit snapshots
-> under `reports/`, which are historical records and are deliberately immutable.
+> A homepage fetch of the former `bryme.onrender.com` host returned a `Not Found`
+> body on 2026-09-29. Do not rely on that origin to serve content, redirects, or
+> verification files. The current public hostname is `thebryme.com`; generated
+> canonical and discovery URLs should follow `SITE_URL`.
 
 **Project owner:** Ojeology
 
 ## Publication focus
 
-- **Jobs:** exact employer/ATS records plus job-board listings with visible verification dates, and global, location-first discovery (choose your country → city → job type). Board-listed roles are labelled separately (⚪ LISTED ON JOB BOARD) so they are not confused with BRYME-checked employer pages.
-- **Remote work:** a dedicated remote hub and remote-eligible roles.
-- **Make Money:** grounded platform, freelance, writing and income-opportunity guidance without guaranteed-earnings claims.
-- **Writing:** language contracts plus researched paid-publication guidelines, including BRYME's own tested journeys.
-- **Guides:** practical application, portfolio, account-safety and independent-publishing help.
+- **Writers:** paid-publication and writing-opportunity records, editorial guides, templates, checklists, and browser tools.
+- **Tech:** practical technology explainers, comparisons, and utilities.
+- **Sport:** football and other sport coverage, explainers, data, and calculators.
+- **Entertainment:** reviews, viewing guides, and a structured film catalogue.
+- **Fitness:** evidence-aware training guides, plans, and tools.
+- **Home & DIY:** low-risk repair, maintenance, safety, and household-cost guidance.
+- **Money:** saving and trading education, calculators, and jurisdiction-labelled financial explainers.
 
-BRYME **verifies opportunities** — it distinguishes the original source, BRYME's verification record, and first-hand experience. It never claims to own a vacancy that belongs to another employer or platform, and never claims payment until it is confirmed.
+The Writers desk distinguishes the original opportunity source, BRYME's verification record, and first-hand experience. It never claims to own a vacancy or publication opportunity that belongs to another organisation, and never claims payment until it is confirmed.
 
 ## Custom-domain readiness
 
-Every generated absolute URL (canonical, sitemap, JSON-LD, Open Graph, robots) comes from a single source of truth: the `SITE_URL` environment variable, falling back to `site.config.json` → `siteUrl`. Set `SITE_URL` to the custom domain to repoint the whole site without touching code. No origin is hard-coded in the build (`scripts/bryme_config.py`). The retired `bryme.onrender.com` string now survives in exactly two places: the dated audit snapshots under `reports/` (historical records, deliberately immutable), and the body prose of `/tech/render-deployment-failures-what-they-taught-me/`, which is an article *about* that incident. No generated link, canonical, sitemap or Open Graph URL points at it.
+Generated absolute URLs are resolved through `scripts/bryme_config.py`: `SITE_URL` takes precedence over `site.config.json` → `siteUrl`. The committed site URL and the live primary sitemaps use `https://thebryme.com`; the former Render hostname still appears in historical code, migration notes, and archived material, so a repository-wide string match is not evidence that it is emitted to users. Before changing any legacy-host routing, confirm the exact canonical destination and hosting behavior.
 
-Sports, movie, series, anime and entertainment-editorial files were extracted to the separate [`ojeology/bryme-media`](https://github.com/ojeology/bryme-media) repository. Media route families return HTTP 410 on this publication until a stable media hostname is deployed and permanent redirects can be installed.
+The live `/sports/` and `/entertainment/` sections are active. Do not infer that a media catalogue or route family is retired from a noncanonical test URL; check the current Entertainment sitemap and migration map before deciding whether to redirect or retire a historical path. The published artifact currently has no `410.html`.
 
 ## Build
 
@@ -36,12 +36,9 @@ npm ci
 npm run build
 ```
 
-The deterministic content build:
+The build is static-generator driven. `npm run build` rebuilds the Writers publication, routes the committed desk trees into the published `public/` artifact, applies the policy injectors, and regenerates discovery files (robots, sitemaps, RSS, and `llms.txt`) from explicit allowlists.
 
-1. creates the shared forest-green stylesheets;
-2. builds the focused hubs, 13 individual job records, five populated job categories and trust pages;
-3. applies idempotent indexability, schema, navigation and performance policy; and
-4. regenerates robots, sitemap, News sitemap and RSS from explicit allowlists.
+`python3 scripts/build-ecosystem.py` is a separate generator for the seven desk source trees under `ecosystem/`; it is **not** in the `npm run build` chain. When changing a desk's generator/data, run it deliberately and commit the resulting `ecosystem/` output before the normal build. This avoids silently publishing stale generated desk pages.
 
 ## Release gates
 
@@ -50,7 +47,7 @@ npx playwright install chromium
 npm test
 ```
 
-The release gates inspect every retained HTML file, indexability, canonicals, structured data, internal links, jobs, writing records, discovery files, media removal, HTTP status codes, redirects, public-file containment and security headers. Playwright renders all 509 allowlisted Writers routes at mobile, tablet and desktop sizes (1,527 render cases), then checks navigation, overflow, images, console errors, landmarks and third-party resource leakage.
+The release gates inspect indexability, canonicals, structured data, internal links, Writers records, discovery files, HTTP status codes, redirects, public-file containment, and security headers. Playwright exercises the configured route set at mobile, tablet, and desktop sizes, checking navigation, overflow, images, console errors, landmarks, and third-party resource leakage. Route and case counts vary with the allowlist; use the latest test output rather than treating an old count as current.
 
 `npm run validate:contrast` additionally enforces the readability rules that the
 moving-navigation regression broke:
@@ -74,10 +71,10 @@ behind it, is a defect — `validate-contrast.js` will reject it.
 
 ## Current Search policy
 
-- 2,032 routes are eligible for indexing (routed allowlist v26). Of the 2,640 published `index.html` files, 608 stay `noindex`.
-- All 142 paid-publication detail records under `/writers/writing/` are indexable — the 55 held back for re-verification have since been reverified. The only `noindex` page in that tree is `/writers/writing/by-country/`, a navigational filter rather than a record.
+- A live production crawl on 2026-09-29 found **2,583 unique URLs** in the primary sitemap: Writers 511, Sport 197, Entertainment editorial 183, Tech 373, Fitness 187, Home 291 (including the family root, `/about/`, and `/event-calendar/`), Money 122, and the Entertainment catalogue 719. Treat this as a dated sitemap inventory, not as a raw-URL growth target; classify noindex pages and migration stubs separately.
+- `/sitemap.xml` and `robots.txt` expose the primary eight-child sitemap index. The legacy `/sitemap_index.xml` alias currently contains only seven children and omits the catalogue; do not remove or alter it until Search Console/submission history and hosting behavior are checked.
 - No News sitemap routes are admitted without timely original reporting.
-- No `JobPosting` structured data is published yet: the current source records do not consistently contain the complete job-description and original posting-date fields needed for responsible markup.
+- Treat publication submissions as writing opportunities, not employment vacancies; never apply `JobPosting` schema to them. Any real employer-vacancy schema requires a complete, current source record and visible page content.
 
 Policy lives in:
 
@@ -91,25 +88,20 @@ Policy lives in:
 npm start
 ```
 
-`server/server.js` provides a strict public-file boundary, canonical routing, 301 work-hub consolidation, 410 responses for migrated media families, real 404 responses, security headers, `/healthz`, and the guarded Google Indexing API control endpoints (`GET /api/index/status`, `POST /api/index/notify` — see `docs/INDEXING.md`).
+`server/server.js` is a local static-artifact test server used by the repository's HTTP gate; its health and indexing-control endpoints are not automatically deployed just because they exist in the checkout. The repository's `render.yaml` defines a **Render static site** that publishes `public/`, not a Node Web Service. Production probes on 2026-09-29 found `/healthz` and `/api/index/status` return 404. Do not depend on those runtime endpoints for production indexing; if they become a requirement, deploy and test a separate API service deliberately.
 
-Use the Node 22 Web Service defined in `render.yaml`; a generic static deployment will not preserve all HTTP behavior.
+## Writers opportunity records
 
-## Verification system
+The live `/writers/writing/` hub currently describes 142 researched publications. A sampled record exposes its pay and word-count terms, eligibility, official guideline, last human-check date, and BRYME's own submission journey; payment remains explicitly unconfirmed until received. Keep this source-vs-BRYME-experience distinction and recheck time-sensitive listings against the publisher's own page.
 
-Job cards and detail pages show a verification badge (🟢 SOURCE VERIFIED, 🔵 APPLICATION CHECKED, 🟣 BRYME TESTED, 🔴 CLOSED, ⚠️ NEEDS RECHECK), a last-verified date, verification note, an official source link with an explicit "SOURCE: …", and a "Report an outdated listing" control. Writing-opportunity detail pages record BRYME's own first-hand journey (pitch submitted → accepted → scheduled → published → paid) without claiming payment until it is actually received.
+## JobPosting schema and indexing endpoints
 
-## JobPosting structured data and indexing
-
-`JobPosting` JSON-LD is emitted **only** for roles explicitly flagged `jobPosting.eligible` in `content/jobs.json` with complete source fields. It is never used for closed or historical records, and `hiringOrganization` is always the employer — never BRYME. The Indexing API module (`server/indexing-api.js`) is dry-run by default and also limited to `/jobs/` pages. See `docs/INDEXING.md`.
+Writing opportunities are invitations to pitch, **not employment vacancies**; do not label them with `JobPosting` schema. The legacy roots `/jobs/`, `/opportunities/`, `/writing/`, and `/writing-opportunities/` currently serve 200 noindex meta-refresh stubs to Writers destinations rather than HTTP redirects. Map these destinations and review Search Console/backlink history before replacing them with exact 301s. The checkout contains a local Google Indexing API helper, but production `/api/index/status` returned 404 on 2026-09-29; do not describe that helper as a live API without a separately deployed and tested service.
 
 ## Privacy and monetization
 
-**AdSense account verification is live; ad units are not.** `site.config.json` → `adsense` is the single switch, and it is currently `enabled: true` with an owner-supplied `caId` (`ca-pub-1881426210393009`). That injects the account meta tag and the `pagead2.googlesyndication.com` loader into `<head>` on every page, and emits `ads.txt` — which is what Google's verification check needs. **No ad unit renders**: `_ads_slot` has no call sites, so nothing is placed until the owner wires them. Keep Google-dashboard Auto ads **off** until then. Analytics remain disabled.
+**AdSense is configured for account verification; ad units were not found in sampled output.** `site.config.json` sets `adsense.enabled: true` with the owner-supplied publisher ID, and sampled live pages contained the account meta tag and AdSense loader. The `_ads_slot` helper has no call sites, and sampled pages had no rendered `<ins class="adsbygoogle">` units. The site config says to keep Google-dashboard Auto ads **off**; that account setting cannot be verified from page HTML.
 
-Two consequences worth knowing:
+GA4 is enabled in `site.config.json` (`G-0KEKJH9960`) and the loader was present in sampled live pages. Consent Mode v2 defaults are emitted from a separate asset and the Funding Choices bootstrap appeared in sampled Home/Writer/root markup. This static evidence does **not** prove that a consent dialog appears, that regional choices update tags correctly, or that production AdSense settings match the repository. Verify the CMP with a real browser in EEA/UK/CH test locations and in the AdSense dashboard before treating consent behavior as compliant or enabling ad units. Privacy pages disclose GA4, AdSense, cookies, and consent; that disclosure alone does not validate implementation.
 
-- The browser gate intercepts the AdSense loader (`AD_HOSTS` in `scripts/validate-browser.js`) so the 1,527 render cases stay offline-safe and deterministic. `www.google.com` is deliberately *not* in that list, so a real Google leak would still fail the gate.
-- EEA/UK personalised ads require a **certified CMP**. That decision is still open and must be made, and documented on the privacy pages, before ad units are wired. See `docs/ecosystem/revenue-readiness.md`.
-
-Ads must never resemble job cards or application buttons (see `docs/ADS.md`).
+The browser test gate intercepts analytics/ad hosts to stay deterministic, so it does not validate live third-party consent behavior. See `docs/ecosystem/revenue-readiness.md` and `docs/ADS.md` before wiring ad placements; ads must never resemble job cards or application buttons.

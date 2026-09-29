@@ -1,3 +1,93 @@
+## 2026-09-29 — Production audit continuation + safe fixes (feature branch; not deployed)
+
+**Scope:** live route/sitemap sampling and source review on `main` at base commit
+`e850a1e`. This is a focused, evidence-based audit pass, not a claim that every URL,
+page body, mobile state, or Search Console/GA4 metric has been exhaustively reviewed.
+The safe changes are committed locally on `audit/seo-home-writers-fixes-2026-09-29`.
+A GitHub push was attempted and blocked because workspace credentials are unavailable;
+no production deployment was performed.
+
+### Findings
+
+- **P1 — Home documents were nested twice.** `_home_page()` in
+  `scripts/build-ecosystem.py` already returns a complete HTML document, while
+  `write_service()` wrapped it in the shared shell. The full materialized Home
+  trees contain 288 `index.html` files per tier; 279 had two document shells and
+  nine were already single-document pages. Eight live non-root Home pages sampled
+  before the fix showed duplicate `html/head/body/title`; the Home root and eleven
+  non-Home samples had one. The body, title, canonical, and JSON-LD of all 279
+  public files were compared with the original inner document and preserved
+  byte-for-byte. Two mismatched meta/OG descriptions were aligned to the more
+  detailed existing route-level values.
+- **P1 — Production is static, not the checked-in Node service.** Repository
+  `render.yaml` publishes `public/`. Live `/healthz` and `/api/index/status` probes
+  returned 404. Do not treat the local server or Indexing API helper as a production
+  endpoint without a separate deployed service.
+- **P2 — Migration stubs return 200.** `/writing/`, `/writing-opportunities/`,
+  `/jobs/`, `/opportunities/`, `/make-money/`, and `/search/` were observed as
+  `noindex` pages with zero-second meta refreshes, not HTTP redirects. The
+  `/writers/writing/by-country/` sample adds a further refresh hop. Do not convert
+  them to 301s until the old-to-new mapping, query behavior, and Search Console /
+  backlink history are checked.
+- **P2 — Sitemap-index alias is stale.** `/sitemap.xml` has eight child sitemaps;
+  `/sitemap_index.xml` is a live seven-child alias omitting the 719-URL catalogue.
+  Robots references the primary index and child sitemaps, not the alias. It was left
+  untouched pending submission/hosting evidence.
+- **P2 — Writers totals were inconsistent in the live page; generator fix is local.**
+  `/writers/writing/` showed 92 currently accepting at the top and “Accepting now — 99”
+  in the filter. Source labels define deadline records as open now until their stated
+  date; the old hero count excluded those seven. `build-writing-first.py` now uses the
+  same `open + rolling + active deadline` status set as the filter. Read-only evaluation
+  of the 142 records at `e850a1e` gives 99 for both. The published page remains unchanged
+  until a full build and authorized deployment.
+- **Privacy/consent:** the house `/privacy/` page now mentions Money (the old external
+  finding that it omitted Money is stale); it is `noindex,follow`, while desk policy
+  pages sampled are indexable. GA4, AdSense, and Funding Choices tags appeared in
+  sampled markup; actual CMP display/choice propagation was not browser-verified.
+- **Sitemap inventory:** live primary index contained 2,583 unique URLs (Writers 511,
+  Sport 197, Entertainment editorial 183, Tech 373, Fitness 187, Home 291 including
+  `/`, `/about/`, `/event-calendar/`, Money 122, catalogue 719). All sampled sitemap
+  URLs were same-host, had non-future `lastmod`, and used the expected trailing-slash
+  policy. Do not equate the larger raw repository `index.html` counts with indexable
+  URLs until noindex stubs and source copies are classified.
+- **Security:** sampled responses had CSP, `X-Frame-Options`, `nosniff`, Referrer and
+  Permissions policies, and COOP. CSP allows broad `https:` scripts/inline styles;
+  HSTS was not observed on three samples. Treat as a hardening follow-up, not a proven
+  exploit.
+
+### Local changes and verification
+
+- Fixed the Home generator: full-document Home pages bypass the shared wrapper; the
+  bespoke head now carries the shared AdSense/analytics head and icons.
+- Normalized 279 pages in each of `ecosystem/home/`, `home/`, and `public/home/`
+  (837 HTML files total). Nine already-single-document pages per tier were unchanged.
+  The published Home subtree shrank by **6,865,080 raw HTML bytes (6.55 MiB; 36.8%)**.
+  No URLs were removed; bodies, titles, canonicals, and JSON-LD were preserved. Two
+  shorter inner descriptions were reconciled to their existing richer route metadata.
+- Added exactly-one-doctype checks to the route-quality and published-artifact gates.
+- Fixed the Writers hero total to use the same normalized `open + rolling + active deadline`
+  statuses as its “Accepting now” filter. Read-only source-data check: 99/99; build/deploy
+  still required before the live page changes.
+- Changed the canonical-origin emergency fallback from `bryme.onrender.com` to
+  `thebryme.com`; corrected the generator/README architecture notes and several
+  now-stale SEO/monetization statements. Production behavior is unchanged until a
+  future authorized build/deploy.
+- Verified all 288 Home pages in each tier have one doctype, html/head/body/title,
+  one H1 and a self-canonical; root/public copies match. Each routed/published Home
+  page has one GA loader, one AdSense loader, and one Funding Choices bootstrap.
+  All 279 published body sections, titles, canonicals, and JSON-LD match the
+  original inner document exactly; two meta/OG descriptions use the existing
+  richer route-level values. Python/JS syntax checks and `git diff --check` pass.
+- Verified the Writers count formula against the 142-record `content/opportunities.json`
+  at `e850a1e` (read-only raw fetch): hero and filter both compute 99, including seven
+  non-expired deadline records.
+- **Not run:** full `npm test`, production build, Playwright/mobile/CWV tests, or
+  deployment; the checkout is intentionally sparse and lacks the full published tree,
+  dependencies, browser evidence, Search Console, and GA4 access.
+
+**Owner correction:** Pinterest domain claim is complete per the owner; pin publishing
+remains a separate owner action. Historical entries below record prior status.
+
 ## 2026-09-29 — Bing queue/quota + Pinterest homepage verification
 
 Bing accepted 100 URLs using `--limit 100`; remaining queue 2,765. The preceding
@@ -7,8 +97,10 @@ verified the next batch size. The owner-supplied Pinterest value is configured
 and emitted exactly once on the root homepage by the source generator; the
 committed hub/root/public artifacts and release validator are updated. Commit
 `8df50cf` is live on Render; the live root probe returned HTTP 200 and exactly
-one matching tag in `<head>`. Owner-side Pinterest **Verify** and pin publishing
-remain pending. See `docs/PINTEREST-OWNER-ACTION.md` for the final steps.
+one matching tag in `<head>`. **Status at the time of this entry:** owner-side Pinterest
+Verify and pin publishing were pending; the owner has since confirmed the domain claim
+is complete. Pin publishing remains a separate owner action. See
+`docs/PINTEREST-OWNER-ACTION.md` for the final steps.
 
 ## 2026-09-29 — Tier-B wave 1 + B6 operating routine shipped
 
@@ -16,7 +108,7 @@ remain pending. See `docs/PINTEREST-OWNER-ACTION.md` for the final steps.
 - **Gates:** 2,583 indexable pages; 2,583 at 10.0; average 10.0; sub-8 = 0. Quality, internal-links, canonical-domain and freshness gates all pass. All 26 added URLs are in their desk sitemap and allowlist.
 - **B6 forums:** `docs/FORUMS-ROUTINE.md` is the standing two-hour/week answer-first routine, aligned with the existing HARO/referring-domain log. The work is operationally ready; posting remains an owner action (real participation, no automation or link-dropping).
 - **Tech overlap check:** Wi-Fi-in-one-room and HDMI-2.1 gaming guides were confirmed not to duplicate the existing 371-page tech inventory topics.
-- **Track B:** B1–B6 implementation/prep complete. D3 (Pinterest domain claim) remains owner-side: the code tag is wired, but live verification and pin publishing are pending. Bing queue: 2,765 URLs remain after the latest accepted 100-URL batch.
+- **Track B:** B1–B6 implementation/prep complete. D3's owner-supplied tag is wired; the owner has since confirmed the domain claim is complete. Pin publishing remains a separate owner action. Bing queue: 2,765 URLs remain after the latest accepted 100-URL batch.
 
 
 ## 2026-09-29 — Track B: B5 (event calendar + quarterly pre-event batch) DONE

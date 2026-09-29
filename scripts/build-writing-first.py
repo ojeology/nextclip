@@ -140,6 +140,8 @@ STATUS_LABELS = {
     "closed": ("Closed", "Not accepting submissions at the last check."),
     "unknown": ("Unknown", "The official page does not state a current status."),
 }
+# Shared definition for the hub metric and the filter's aggregate option.
+ACCEPTING_NOW_STATUSES = ("open", "rolling", "deadline")
 
 AI_POLICY_MAP = {
     "prohibited": "prohibited", "no-ai": "prohibited", "strict": "prohibited",
@@ -530,7 +532,7 @@ def writing_nav(current_flt: str = "") -> str:
     for r in WRITING:
         k = norm_status(r)
         scount[k] = scount.get(k, 0) + 1
-    accepting = sum(scount.get(k, 0) for k in ("open", "rolling", "deadline"))
+    accepting = sum(scount.get(k, 0) for k in ACCEPTING_NOW_STATUSES)
     status_opts = f'<option value="acceptingnow">Accepting now — {accepting}</option>' + "".join(
         f'<option value="{esc(k)}">{esc(STATUS_LABELS[k][0])} — {scount[k]}</option>'
         for k in ("open", "rolling", "seasonal", "deadline", "closed", "unknown") if scount.get(k))
@@ -2203,13 +2205,15 @@ def country_band() -> str:
             + str(n_ww) + '</span></a></div></div></section>')
 
 def writing_hub() -> None:
-    n_open = sum(1 for r in WRITING if status_of(r)[2] == "open")
+    # Keep the hero total aligned with the filter's “Accepting now” group:
+    # open, rolling, and non-expired deadline records are all accepting today.
+    n_accepting = sum(1 for r in WRITING if norm_status(r) in ACCEPTING_NOW_STATUSES)
     cards = "".join(pub_card(r, "h2") for r in WRITING)
     body = f'''<div class="wrap"><nav class="breadcrumb"><a href="/">Home</a> / Writing opportunities</nav>
 <section class="page-hero"><p class="kicker"><span class="kicker-dot"></span>Publications that pay writers</p>
 <h1>Writing opportunities.</h1>
 <p>{len(WRITING)} publications researched by BRYME. Each permanent page shows the type of writing, the published pay, word count, who it's open to, the submission method, and the official guideline to confirm before you pitch. A listing is an invitation to pitch — not a job offer or a promise of payment.</p>
-<div class="source-line"><span><b>{len(WRITING)}</b> researched publications</span><span><b>{n_open}</b> currently accepting</span><span><b>{len([r for r in WRITING if (r.get("editorExperience") or {}).get("applied")])}</b> personally tested by BRYME</span></div></section>
+<div class="source-line"><span><b>{len(WRITING)}</b> researched publications</span><span><b>{n_accepting}</b> currently accepting</span><span><b>{len([r for r in WRITING if (r.get("editorExperience") or {}).get("applied")])}</b> personally tested by BRYME</span></div></section>
 {country_band()}
 {writing_nav()}
 <section class="section"><div class="how-steps"><h2 class="section-sub">How make-money writing works with BRYME</h2><ol class="steps">

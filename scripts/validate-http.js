@@ -38,6 +38,23 @@ for(const need of ["index.html","404.html","robots.txt","sitemap.xml","favicon.i
   check(fs.existsSync(path.join(PUBLISH,need)),`published artifact is missing ${need}`);
 check(/noindex/i.test(read(path.join(PUBLISH,"404.html"))),"public/404.html lacks noindex");
 
+/* A Home template regression once nested a complete document inside the shared
+   shell on section/article pages. Check the actual publish artifact, not only the
+   staging tree, so a future double-wrapper cannot ship unnoticed. */
+function htmlFilesUnder(dir,out=[]){
+  if(!fs.existsSync(dir))return out;
+  for(const e of fs.readdirSync(dir,{withFileTypes:true})){
+    const p=path.join(dir,e.name);
+    if(e.isDirectory())htmlFilesUnder(p,out);
+    else if(e.isFile()&&e.name.toLowerCase().endsWith(".html"))out.push(p);
+  }
+  return out;
+}
+for(const file of htmlFilesUnder(path.join(PUBLISH,"home"))){
+  const s=read(file),n=(s.match(/<!doctype\s+html\b/gi)||[]).length;
+  check(n===1,`public/${path.relative(PUBLISH,file).replace(/\\/g,"/")}: expected one HTML doctype, found ${n}`);
+}
+
 /* Redirect rules, read from the published copy -- the same file the server
    loads. Each source must 301 to its declared destination AND that destination
    must resolve. The second half is the check that was missing: every rule here

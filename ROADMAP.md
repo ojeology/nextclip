@@ -1,6 +1,71 @@
+## 2026-09-29 — Audit actions and release follow-up (committed locally; push blocked; not deployed)
+
+**Owner correction:** Pinterest domain claim is complete. This supersedes the earlier
+pending-claim wording below; pin publishing remains a separate owner action.
+
+### Completed on a non-main branch (committed locally; not pushed or deployed)
+
+- Home document-shell repair: 279 nested pages normalized in each of the three
+  materialized tiers (`ecosystem/home/`, `home/`, `public/home/`), preserving bodies,
+  titles, canonicals, and JSON-LD; two descriptions were aligned to existing richer route
+  metadata. 6.55 MiB raw HTML removed from the public Home subtree.
+- Generator now recognizes already-complete Home documents, supplies the shared
+  analytics/AdSense head and icons, and avoids wrapping them in a second document.
+- Release gates now assert one doctype in eligible routed pages and all published Home
+  HTML. Canonical-origin emergency fallback is `https://thebryme.com`.
+- Writers opportunity hero count now uses the same status set as its “Accepting now”
+  filter (both evaluate to 99 from the current 142-record source); verify with a full build.
+- README search, hosting, privacy/consent, and monetization notes corrected against the
+  live sitemap and route probes.
+
+### Immediate (0–7 days)
+
+1. **Full-tree verification before release:** from a complete checkout/CI, run clean
+   `npm ci`, the normal build, `npm test`, and the mobile/browser gates. Confirm Home
+   sitemap routes, exactly one document per artifact, and unchanged URLs. This sparse
+   audit checkout cannot run the full build/tests. Deploy only after explicit owner
+   approval; none was issued for this audit.
+2. **Writers count fix committed locally:** `build-writing-first.py` now counts open,
+   rolling, and active-deadline records in the hero metric, matching the filter. The
+   142-record source evaluates to 99 for both counts; confirm with a complete build.
+3. **Map the refresh stubs:** inventory exact destinations and query handling for
+   `/writing/`, `/writing-opportunities/`, `/jobs/`, `/opportunities/`, `/make-money/`,
+   `/search/`, and `/writers/writing/by-country/`. Compare backlinks/Search Console
+   before choosing exact 301s or retaining a noindex destination page. No URL changes
+   were made in this pass.
+4. **Sitemap alias review:** compare Search Console submissions and hosting behavior
+   for `/sitemap_index.xml`. The primary `/sitemap.xml` has eight child indexes; the
+   alias has seven and omits the 719-URL catalogue. Do not remove or modify until checked.
+5. **Complete the requested GitHub push:** the audit commit is on
+   `audit/seo-home-writers-fixes-2026-09-29`, but the push to the verified
+   `ojeology/nextclip` remote failed because no GitHub credentials are configured in
+   this workspace. Connect credentials through the approved integration/credential
+   manager, then push this branch. Do not paste access tokens into chat; do not deploy.
+
+### Short term (1–4 weeks)
+
+- Browser-test the Funding Choices/CMP in EEA/UK/CH locations; verify consent updates
+  before enabling ad units. The script's presence is not proof of a working dialog.
+- Use Search Console and GA4 exports to classify the 2,583 sitemap URLs against the
+  3,942 repository `public/**/index.html` paths; distinguish indexable pages, noindex
+  pages, stubs, duplicates, and legitimate non-sitemap utilities.
+- Measure field CWV and a reproducible mobile Lighthouse baseline. Do not infer CWV
+  improvements from HTML byte savings alone.
+- Review HSTS/CSP at the serving edge. HSTS was absent in three sampled responses;
+  CSP allows broad HTTPS scripts and inline styles. Confirm subdomain/host policy before
+  changing edge headers.
+
+### Medium/long term (1–12 months)
+
+- Measure tool usage, opportunity-filter usage, return visits, and verified conversions
+  with consent-respecting analytics before choosing paid features or placements.
+- Keep the core opportunity database and useful tools accessible; test optional
+  sponsorships/affiliate relationships or paid alerts only where user demand and
+  disclosures support them. Do not set URL-count targets or project revenue without data.
+
 ## 2026-09-29 — Bing quota-safe retry + Pinterest homepage verification wired
 
-- Pinterest: the owner-supplied value is configured in `site.config.json` and emitted only on the root homepage by `scripts/build-ecosystem.py` (and the legacy root-page builder). The committed hub source plus `/` and `public/` artifacts carry one tag; `validate-site-quality.js` checks the exact tag is present once inside `<head>`. Commit `8df50cf` is live on Render (deploy `dep-datn3e7f3r2c73du2f90`); the live `https://thebryme.com/` probe returned HTTP 200 with exactly one matching tag in `<head>`. **Pending:** owner clicks **Verify** in Pinterest and starts the prepared pin kit. No Pinterest account actions or posting were performed by us.
+- Pinterest: the owner-supplied value is configured in `site.config.json` and emitted only on the root homepage by `scripts/build-ecosystem.py` (and the legacy root-page builder). The committed hub source plus `/` and `public/` artifacts carry one tag; `validate-site-quality.js` checks the exact tag is present once inside `<head>`. Commit `8df50cf` is live on Render (deploy `dep-datn3e7f3r2c73du2f90`); the live `https://thebryme.com/` probe returned HTTP 200 with exactly one matching tag in `<head>`. **Status at the time of this entry:** owner-side Verify and pin publication were pending; the owner subsequently confirmed the domain claim is complete (see Audit actions above). Pin publication remains a separate owner action. No Pinterest account actions or posting were performed by us.
 - Bing accepted **100 URLs** with `--limit 100`; queue now **2,765**. A 500-URL attempt was rejected with Bing ErrorCode 8 despite 100 daily quota remaining. `scripts/submit-bing-queue.py` now defaults and caps at 100; dry-run confirms the next batch is 100.
 - `docs/PINTEREST-OWNER-ACTION.md`, `docs/TRACK-B2-B6-PREP.md` and `pinterest/HOWTO.md` now agree on a 3–5 fresh-pins/week launch cadence; the prep pack clarifies five starter boards versus six in the full 180-pin kit. Corrected the B6 prep pack so it agrees with the answer-first routine: real human participation, no automated desk personas.
 
@@ -10,7 +75,7 @@
 - **Gates:** 2,583 indexable pages; 2,583 at 10.0; average 10.0; sub-8 = 0. Quality, internal-links, canonical-domain and freshness gates all pass. All 26 added URLs are in their desk sitemap and allowlist.
 - **B6 forums:** `docs/FORUMS-ROUTINE.md` is the standing two-hour/week answer-first routine, aligned with the existing HARO/referring-domain log. The work is operationally ready; posting remains an owner action (real participation, no automation or link-dropping).
 - **Tech overlap check:** Wi-Fi-in-one-room and HDMI-2.1 gaming guides were confirmed not to duplicate the existing 371-page tech inventory topics.
-- **Track B:** B1–B6 implementation/prep complete. D3 (Pinterest domain claim) remains owner-side: the code tag is wired, but the live claim/Verify click and pin publishing are pending. Bing queue: 2,765 URLs remain after the latest accepted 100-URL batch.
+- **Track B:** B1–B6 implementation/prep complete. D3: the owner-supplied tag is wired; the owner has since confirmed the domain claim is complete. Pin publishing remains a separate owner action. Bing queue: 2,765 URLs remain after the latest accepted 100-URL batch.
 
 
 ## 2026-09-29 — Track B: B5 (event calendar + quarterly pre-event batch) DONE
@@ -45,7 +110,7 @@
 
 Post-change: pages=2557 (additive +5), at10=2557, avg=10.0, sub8=0, 4 gates green.
 Track B status: B1 ✓ B2 ✓ B3 ✓ B4 ✓ B5 ✓. Remaining on roadmap: Tier-B cadence (D2),
-owner decisions D1 (recorded: darts trainer chosen, reversible), D3 (Pinterest account).
+D1 (darts trainer chosen, reversible), and D3 pin publishing (domain claim complete).
 
 ## 2026-09-29 — Track B: B4 (shareable tool) DONE — darts checkout trainer
 
@@ -447,7 +512,7 @@ Bing 100/day (queue 2,765 as of 2026-09-29; latest accepted batch 100) · IndexN
 ## Open decisions (owner)
 - D1: **decided 2026-09-29** — darts checkout trainer (reversible; see B4 log).
 - D2: confirm Tier-B cadence alongside Track 0 (recommend continuing in small evidence-led waves).
-- D3: Pinterest domain claim: the code tag is configured; the live **Verify** click and organic pin launch remain owner actions.
+- D3: Pinterest domain claim is complete per owner; organic pin publishing remains a separate owner action.
 - D4: none blocking. Track A (A1–A10) is marked complete in the 2026-09-28 execution log.
 
 
