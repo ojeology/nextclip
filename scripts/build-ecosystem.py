@@ -1,20 +1,23 @@
 #!/usr/bin/env python3
-"""Build THE BRYME ecosystem — the seven desks + master homepage.
+"""Build BRYME's seven desk trees and shared family homepage.
 
-Per the Master Ecosystem Rebuild plan:
-  bryme.onrender.com      -> ecosystem/hub/            (parent homepage)
-  bryme.onrender.com/writers -> the existing site (this repo's main build)
-  bryme.onrender.com/sports  -> ecosystem/sports/        (newsroom identity)
-  bryme.onrender.com/entertainment -> ecosystem/entertainment/ (cinematic identity)
-  bryme.onrender.com/tech     -> ecosystem/tech/          (modern-technical identity)
+Routing model in the current static site:
+  thebryme.com/              -> ecosystem/hub/ (family homepage)
+  thebryme.com/writers/      -> the Writers publication
+  thebryme.com/sports/       -> ecosystem/sports/
+  thebryme.com/entertainment/ -> ecosystem/entertainment/
+  thebryme.com/fitness/       -> ecosystem/fitness/
+  thebryme.com/home/          -> ecosystem/home/
+  thebryme.com/money/         -> ecosystem/money/
+  thebryme.com/tech/          -> ecosystem/tech/
 
-Each directory is a self-contained static service (own css, sitemap,
-robots). The production hostname comes from the PRODUCTION_DOMAIN env
-var, falling back to ecosystem/config.json — never hard-coded. This
-script is run manually (python3 scripts/build-ecosystem.py); its output
-is committed so each dir can be pointed at by its own Render service.
+Each desk is generated under ``ecosystem/<desk>/`` and routed by path into
+the single published ``public/`` tree. The production origin comes from
+``ORIGIN``/``ecosystem/config.json`` and the shared site configuration. This
+script is run manually (``python3 scripts/build-ecosystem.py``); its generated
+source trees are committed. It is deliberately not part of ``npm run build``.
 
-Content rules honoured: no betting content in Sports; no piracy in
+Content rules honoured: no betting content in Sport; no piracy in
 Entertainment (information only); recovered archive articles keep their
 own words, re-typeset, with honest archive labels.
 """
@@ -1092,7 +1095,29 @@ def write_service(pub, pages):
             continue  # hand-authored file restored above is authoritative
         p = base / route.lstrip("/")
         p.mkdir(parents=True, exist_ok=True)
-        full = shell(pub, title, desc, SUB[pub] + route, body)
+        # Home's bespoke renderer returns a complete document. Wrapping that
+        # document in the shared shell produced a second nested <html>/<head>/<body>
+        # on every Home section/article page. Keep that document intact; all other
+        # desk renderers pass body fragments and still use the shared shell.
+        if pub == "home" and re.match(r"\s*<!doctype\s+html\b", body, re.I):
+            full = body
+            # The route tuple is the shared shell's source for SERP/social
+            # descriptions. Keep that richer metadata when an older inner Home
+            # template copy differs (found on two existing routes).
+            escaped_desc = html.escape(str(desc or ""), quote=True)
+            for key, value in (("name", "description"), ("property", "og:description")):
+                pattern = re.compile(
+                    r"""(<meta\b(?=[^>]*\b""" + key + r"""=["']""" + re.escape(value)
+                    + r"""["'])[^>]*\bcontent=["'])[^"']*(["'][^>]*>)""",
+                    re.I,
+                )
+                full, replaced = pattern.subn(
+                    lambda m: m.group(1) + escaped_desc + m.group(2), full, count=1
+                )
+                if replaced != 1:
+                    raise ValueError(f"{route}: expected one {key}={value} metadata tag")
+        else:
+            full = shell(pub, title, desc, SUB[pub] + route, body)
         (p / "index.html").write_text(full, encoding="utf-8")
         _m = _dre.search(full) or _vre.search(full)
         _lmv = _m.group(1) if _m else TODAY
@@ -6393,6 +6418,9 @@ def _home_page(title, desc, route, cover_html, main_html, sidebar_current, ld=No
         '<meta property="og:title" content="' + html.escape(title) + '"><meta property="og:description" content="' + html.escape(desc) + '">\n'
         '<meta property="og:url" content="' + canonical + '"><meta property="og:image" content="' + og + '">\n'
         '<meta name="twitter:card" content="summary_large_image">\n'
+        '<link rel="icon" href="/favicon.ico" sizes="any">\n'
+        '<link rel="apple-touch-icon" href="/assets/brand/apple-touch-icon.png">\n'
+        + ADS_HEAD
         + _home_theme_init() + "\n<style>" + css_for("home") + "</style>\n"
         + (ld if ld else _page_ld(title, desc, canonical, modified=HOME_SWEEP)) + "\n</head>"
         '<body><a class="skip-link" href="#main">Skip to content</a>\n'
@@ -7946,7 +7974,7 @@ def main() -> None:
         shell("hub", "Privacy | THE BRYME publications",
               "The house privacy policy for BRYME Writers, Tech, Sport, Entertainment, Fitness, Home & DIY and Money.",
               SUB["hub"] + "/privacy/", _privacy_body + foot("hub"), robots="noindex,follow"), encoding="utf-8")
-    print("hub: built (bryme.onrender.com homepage + family /about/ + /privacy/)")
+    print("hub: built (thebryme.com family homepage + /about/ + /privacy/)")
     write_service("entertainment", entertainment_pages())
     if _NX_LAZY_PAYLOAD:  # batch 12: sidecar must survive write_service's stale-output wipe
         (OUT / "entertainment" / "nx-shelves.json").write_text(_NX_LAZY_PAYLOAD, encoding="utf-8")

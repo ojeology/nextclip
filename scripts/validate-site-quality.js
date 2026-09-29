@@ -75,6 +75,8 @@ for(const file of htmlFiles){
   else if(GA_ID&&!s.includes(GA_ID))fail(`${r}: analytics tag does not carry the configured gaId (${GA_ID})`);
  }
  if(wanted){
+  const doctypes=s.match(/<!doctype\s+html\b/gi)||[];
+  if(doctypes.length!==1)fail(`${r}: expected exactly one HTML doctype, found ${doctypes.length}`);
   if(norm(canonical(s))!==norm(r))fail(`${r}: canonical mismatch (${canonical(s)||"missing"})`);
   if((s.match(/<h1\b/gi)||[]).length!==1)fail(`${r}: expected exactly one H1`);
   if(!/<html\b[^>]*lang=["'][^"']+/i.test(s))fail(`${r}: html lang missing`);

@@ -1,19 +1,14 @@
 #!/usr/bin/env python3
-"""Single source of truth for BRYME site configuration.
+"""Shared source for generated canonical origins and site metadata.
 
-Custom-domain readiness: every generated absolute URL (canonical, sitemap,
-JSON-LD, Open Graph, robots, internal canonicalization) comes from this
-module. Nothing in the build hard-codes ``bryme.onrender.com``.
+Generated absolute URLs that use this helper resolve in this order:
+  1. The ``SITE_URL`` environment variable.
+  2. ``site.config.json`` -> ``siteUrl``.
+  3. The current public origin, ``https://thebryme.com``.
 
-Resolution order (highest first):
-  1. The ``SITE_URL`` environment variable (used by the Render service and any
-     future custom-domain deployment).
-  2. ``site.config.json`` -> ``siteUrl`` (the committed default).
-
-The committed default remains the current Render host so that a build with no
-``SITE_URL`` set stays byte-identical (deterministic and idempotent) to the
-existing release. Setting ``SITE_URL`` at build time repoints the whole site to
-a custom domain without touching code.
+The committed config already selects the custom-domain origin. Keep the final
+fallback aligned with it so a missing environment/config value cannot silently
+reintroduce the retired Render hostname into canonicals or sitemaps.
 """
 from __future__ import annotations
 
@@ -35,7 +30,7 @@ def site_url() -> str:
     env = (os.environ.get("SITE_URL") or "").strip().rstrip("/")
     if env:
         return env
-    return _config().get("siteUrl", "https://bryme.onrender.com").rstrip("/")
+    return _config().get("siteUrl", "https://thebryme.com").rstrip("/")
 
 
 def site_name() -> str:
@@ -44,7 +39,7 @@ def site_name() -> str:
 
 def site_description() -> str:
     return (_config().get("siteDescription") or
-            "Verified jobs, remote work and legitimate ways to earn.")
+            "Legitimate paid-writing opportunities, practical writing guides, and BRYME's firsthand verification record.")
 
 
 def index_now_key() -> str:
