@@ -292,11 +292,17 @@ CHECK = ('<svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidde
 nav = "".join(L(r, n) for n, r, *_ in DESKS)
 nav += L("/about/", "About", cls="cta")
 
+# Hoisted out of the f-string below on purpose: Render's build runs an older
+# Python than the local 3.13, and before 3.12 an f-string expression part may
+# not contain a backslash -- not even inside a nested string literal. Writing
+# the label inline used \' for the aria-hidden quote and broke the deploy.
+OPEN_LBL = "Open section <span aria-hidden='true'>&#8594;</span>"
+
 desk_cards = "".join(
     f'<article class="desk"><div class="tag">{k}</div>'
     f'<h3>{L(r, n)}</h3>'
     f'<p class="say">{say}</p><p class="sub">{sub}</p>'
-    f'<div class="go">{L(r, "Open section <span aria-hidden=\'true\'>&#8594;</span>")}</div></article>'
+    f'<div class="go">{L(r, OPEN_LBL)}</div></article>'
     for n, r, k, say, sub in DESKS
 )
 
