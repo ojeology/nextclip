@@ -5,9 +5,10 @@ Bing accepted 100 URLs using `--limit 100`; remaining queue 2,765. The preceding
 The submitter now defaults and hard-caps its request at 100 per day; dry-run
 verified the next batch size. The owner-supplied Pinterest value is configured
 and emitted exactly once on the root homepage by the source generator; the
-committed hub/root/public artifacts and release validator are updated. Owner-side
-live deployment, Pinterest **Verify**, and pin publishing remain pending. See
-`docs/PINTEREST-OWNER-ACTION.md` for the final steps.
+committed hub/root/public artifacts and release validator are updated. Commit
+`8df50cf` is live on Render; the live root probe returned HTTP 200 and exactly
+one matching tag in `<head>`. Owner-side Pinterest **Verify** and pin publishing
+remain pending. See `docs/PINTEREST-OWNER-ACTION.md` for the final steps.
 
 ## 2026-09-29 — Tier-B wave 1 + B6 operating routine shipped
 

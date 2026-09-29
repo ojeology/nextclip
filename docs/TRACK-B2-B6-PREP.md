@@ -1,10 +1,10 @@
 # Track B2 (Pinterest) + B6 (Forums) — prep pack
 
 Prepared 2026-09-27 under delegated authority ("do whatever best"). Pinterest
-publishing remains an owner action: finish any business-account setup, deploy the
-site change, confirm the homepage tag, and click Pinterest **Verify**. The
-owner-supplied verification value is configured in the source generator as of
-2026-09-29. The B6 forums routine can begin without a Pinterest account; the
+publishing remains an owner action: finish any business-account setup and click
+Pinterest **Verify**. The owner-supplied verification value is configured in the
+source generator and is live on the root homepage (HTTP 200 and tag checked on
+2026-09-29). The B6 forums routine can begin without a Pinterest account; the
 180-pin kit is generated and committed. Nothing here invents claims — every
 landing page is a live, indexed route.
 
@@ -32,10 +32,10 @@ Cadence: 3–5 fresh pins/week, repin never > 1×/day per board. Weekly: check
 outbound clicks per pin; kill boards under ~10 clicks/week after 6 weeks.
 
 **Owner action needed:** complete any remaining Pinterest business-account
-setup and claim `https://thebryme.com/`. The supplied verification value is now
-wired through the source generator. After deployment, inspect the live root page
-and click **Verify** in Pinterest. See `docs/PINTEREST-OWNER-ACTION.md` for the
-steps; do not send account passwords or recovery codes.
+setup and finish the claim for `https://thebryme.com/` by clicking **Verify**.
+The supplied verification value is wired through the source generator and is
+already live on the homepage. See `docs/PINTEREST-OWNER-ACTION.md` for the steps;
+do not send account passwords or recovery codes.
 
 ## B6 — Forums / communities (answer-first, never link-dropping)
 

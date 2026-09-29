@@ -20,10 +20,10 @@ codes.
    **Websites**.
 2. Enter `https://thebryme.com/` (the apex canonical domain; `www` redirects).
 3. Choose **Add HTML tag** and copy the personalized verification tag.
-4. The tag is now emitted on the root homepage by the source generator, and the
-   committed `ecosystem/hub/index.html` is carried into `/` and `public/` by the
-   routing/build steps. After rebuilding and deploying, inspect `https://thebryme.com/`
-   to confirm the tag is in `<head>`, then click **Verify** in Pinterest.
+4. The source generator emits the tag on the root homepage; the change was
+   deployed on 29 September 2026. A live probe confirmed `https://thebryme.com/`
+   returns HTTP 200 with exactly one matching tag in `<head>`. Now click
+   **Verify** in Pinterest.
 5. After Pinterest confirms the claim, retain the tag unless Pinterest says it
    can be removed without affecting the claim. Record the confirmation date.
 
