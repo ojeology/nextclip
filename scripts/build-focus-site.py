@@ -98,6 +98,7 @@ def page(*, title: str, description: str, route: str, current: str, body: str,
     # remain disabled and must never resemble a job card or application button.
     adsense_meta = f'<meta name="google-adsense-account" content="{esc(ca_id)}">' if ca_id else ""
     adsense_script = (f'<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={esc(ca_id)}" crossorigin="anonymous"></script>' if ca_id else "")
+    pinterest_meta = cfg.pinterest_verification_meta() if route == "/" else ""
     try:
         import analytics_head
         ga_head_html = analytics_head.ga_head()
@@ -136,7 +137,7 @@ def page(*, title: str, description: str, route: str, current: str, body: str,
 <meta name="color-scheme" content="dark">
 <title>{esc(title)}</title>
 <meta name="description" content="{esc(description)}">
-<meta name="robots" content="{esc(robots)}">
+<meta name="robots" content="{esc(robots)}">{pinterest_meta}
 <link rel="canonical" href="{canonical}">
 <meta property="og:type" content="website"><meta property="og:site_name" content="BRYME">
 <meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(description)}"><meta property="og:url" content="{canonical}">

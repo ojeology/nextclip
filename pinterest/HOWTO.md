@@ -6,11 +6,13 @@ in the house style. `manifest.csv` has, per pin: board, title, description
 
 ## Posting (owner account = roadmap decision D3)
 1. Create the Pinterest account (or a business account under an existing one).
-2. Create 6 boards using the exact board names in `manifest.csv`.
+2. For the full kit, create the 6 boards using the exact names in `manifest.csv`.
+   The Track B prep pack lists five starter boards; `What to Watch Tonight` can
+   be added with the sixth board or held for a later wave.
 3. Pin in manifest order (strongest pages first per board). Native pin flow:
    choose the image, paste the title + description + destination URL.
-4. Suggested cadence: 2-3 pins/day per account keeps distribution natural;
-   the full kit lands in ~4-6 weeks.
+4. Suggested launch cadence: 3-5 fresh pins per week. Review outbound clicks
+   weekly and adjust from real results; the full kit can be paced to fit.
 
 Notes: descriptions already contain the destination URL in text form (safe if
 the scheduler strips links); each pin's clickable link is the destination_url.

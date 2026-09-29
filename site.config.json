@@ -14,6 +14,10 @@
     "provider": "google-gtag",
     "note": "GA4 stream for thebryme.com, owner-supplied 2026-09-22. Injected into every page ahead of the AdSense loader by scripts/inject-analytics.py and emitted by the desk generators. Consent Mode v2 defaults are scoped to the EEA/UK/CH so visitors elsewhere are unaffected; Google's own CMP (AdSense > Privacy & messaging) sends the matching consent update once the owner enables it. Replaces the earlier published claim that these pages run no analytics."
   },
+  "pinterest": {
+    "domainVerification": "69f32b47370c197e72e39c8339160660",
+    "note": "Owner-supplied Pinterest domain verification value. Emit on the canonical homepage only."
+  },
   "newsletter": {
     "mode": "mailto",
     "mailto": "sodiqibrahim03@gmail.com",

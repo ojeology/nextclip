@@ -17,6 +17,7 @@ a custom domain without touching code.
 """
 from __future__ import annotations
 
+import html
 import json
 import os
 from pathlib import Path
@@ -52,3 +53,18 @@ def index_now_key() -> str:
 
 def publisher_config() -> dict:
     return _config().get("adsense", {}) or {}
+
+
+def pinterest_verification_meta() -> str:
+    """Return the escaped Pinterest domain-verification tag, if configured."""
+    settings = _config().get("pinterest") or {}
+    if not isinstance(settings, dict):
+        return ""
+    value = str(settings.get("domainVerification") or "").strip()
+    if not value:
+        return ""
+    return (
+        '<meta name="p:domain_verify" content="'
+        + html.escape(value, quote=True)
+        + '"/>'
+    )

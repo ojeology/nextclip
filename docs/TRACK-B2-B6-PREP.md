@@ -1,9 +1,12 @@
 # Track B2 (Pinterest) + B6 (Forums) — prep pack
 
-Prepared 2026-09-27 under delegated authority ("do whatever best"). Pinterest publishing is blocked on the owner-created business account; the B6
-forums routine can begin without an account. The 180-pin kit remains prepared
-for the day the account exists. Nothing here invents claims — every landing page is a live,
-indexed route.
+Prepared 2026-09-27 under delegated authority ("do whatever best"). Pinterest
+publishing remains an owner action: finish any business-account setup, deploy the
+site change, confirm the homepage tag, and click Pinterest **Verify**. The
+owner-supplied verification value is configured in the source generator as of
+2026-09-29. The B6 forums routine can begin without a Pinterest account; the
+180-pin kit is generated and committed. Nothing here invents claims — every
+landing page is a live, indexed route.
 
 ## B2 — Pinterest (prep-mode)
 
@@ -12,8 +15,10 @@ fit is the writers desk (people literally plan careers on it), fitness plans,
 and home checklists — all saving-oriented, none speculative.
 
 Pin spec: 1000×1500 (2:3), text ≤ 20% of canvas, alt text = the page's actual
-meta description. Five boards to start, each seeded with the pages below
-(no affiliate-style overlays, no clickbait text — house honesty rules apply):
+meta description. Five starter boards are listed below. The committed manifest
+also has a sixth board, “What to Watch Tonight”; choose five or all six for the
+first posting wave, but use the board names in `pinterest/manifest.csv` exactly.
+No affiliate-style overlays or clickbait text — house honesty rules apply:
 
 | Board | Seed pins (live routes) |
 |---|---|
@@ -26,10 +31,11 @@ meta description. Five boards to start, each seeded with the pages below
 Cadence: 3–5 fresh pins/week, repin never > 1×/day per board. Weekly: check
 outbound clicks per pin; kill boards under ~10 clicks/week after 6 weeks.
 
-**Owner action needed:** create the Pinterest business account and claim
-`https://thebryme.com/`. See `docs/PINTEREST-OWNER-ACTION.md` for the verified
-setup flow. Once Pinterest supplies its personalized verification tag, send the
-exact value so it can be added through the source generator.
+**Owner action needed:** complete any remaining Pinterest business-account
+setup and claim `https://thebryme.com/`. The supplied verification value is now
+wired through the source generator. After deployment, inspect the live root page
+and click **Verify** in Pinterest. See `docs/PINTEREST-OWNER-ACTION.md` for the
+steps; do not send account passwords or recovery codes.
 
 ## B6 — Forums / communities (answer-first, never link-dropping)
 
@@ -54,8 +60,10 @@ sessions per source in GA4; drop communities with zero 4-week referrals.
 
 **Owner action:** participation itself belongs to a real human. Use the answer-first policy in `docs/FORUMS-ROUTINE.md`; do not create or automate desk personas. Follow each community's current rules and disclose affiliation if asked.
 
-## What is NOT prep'd (deliberately)
+## What remains owner-side
 
-- No pin images generated yet — assets follow the account, not before it.
-- No forum account creation attempted — platform ToS and house E-E-A-T both
-  say these are the owner's identities to hold.
+- Pinterest account/domain claim, live **Verify** click and manual pin publishing;
+  the 180 designs and manifest are already committed.
+- No forum account creation was attempted — platform terms and house E-E-A-T
+  both say these are the owner's identities to hold. Actual forum participation
+  remains a real-human task, never an automated persona.

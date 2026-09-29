@@ -599,6 +599,11 @@ def shell(pub, title, desc, route, body, card=None, robots="index,follow"):
         ld_html = ""
     _canon = (SUB[pub] + _stub.group(1)) if _stub else d
     _refresh = ('<meta http-equiv="refresh" content="0;url=' + _stub.group(1) + '">') if _stub else ""
+    _pinterest_meta = (
+        sitecfg.pinterest_verification_meta()
+        if pub == "hub" and str(route).rstrip("/") == SUB["hub"].rstrip("/")
+        else ""
+    )
     og = f"{ORIGIN}/assets/og.png"  # real root card; route may already be a full URL (b36 fix)
     if pub in ("tech", "home"):
         _gsl = route.strip("/").split("/")[-1]
@@ -669,7 +674,7 @@ def shell(pub, title, desc, route, body, card=None, robots="index,follow"):
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{html.escape(title)}</title>
 <meta name="description" content="{html.escape(desc)}">
-<meta name="robots" content="{robots}">{_refresh}
+<meta name="robots" content="{robots}">{_refresh}{_pinterest_meta}
 <link rel="canonical" href="{_canon}">
 <meta property="og:type" content="website"><meta property="og:site_name" content="THE BRYME">
 <meta property="og:title" content="{html.escape(title)}"><meta property="og:description" content="{html.escape(desc)}">

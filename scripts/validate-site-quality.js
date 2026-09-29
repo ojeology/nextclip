@@ -17,6 +17,7 @@ const site=String(json("site.config.json").siteUrl).replace(/\/$/,"");
 const ANALYTICS=(()=>{try{return json("site.config.json").analytics||{}}catch{return{}}})();
 const GA_ON=!!ANALYTICS.enabled&&/^G-[A-Z0-9]{6,}$/.test(String(ANALYTICS.gaId||""));
 const GA_ID=GA_ON?String(ANALYTICS.gaId):"";
+const PINTEREST_VERIFICATION=String((json("site.config.json").pinterest||{}).domainVerification||"").trim();
 const allowDoc=fs.existsSync(path.join(ROOT,"content/index-allowlist.routed.json"))?json("content/index-allowlist.routed.json"):json("content/index-allowlist.json"), allow=new Set(allowDoc.routes);
 // Every page under /writing/ must be either a real publication record or an
 // explicitly declared non-record child. Declaring them here keeps the check
@@ -35,6 +36,14 @@ function visible(s){return s.replace(/<script\b[\s\S]*?<\/script>/gi," ").replac
 function schema(s,route){const out=[];let m,r=/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi;while((m=r.exec(s))){try{const x=JSON.parse(m[1]);out.push(...(Array.isArray(x)?x:[x]))}catch(e){fail(`${route}: invalid JSON-LD (${e.message})`)}}return out}
 function flatten(x,out=[]){if(Array.isArray(x))x.forEach(v=>flatten(v,out));else if(x&&typeof x==="object"){if(x["@type"])out.push(x);Object.values(x).forEach(v=>{if(v&&typeof v==="object")flatten(v,out)})}return out}
 const routeFile=r=>path.join(ROOT,r==="/"?"index.html":r.replace(/^\//,"")+"index.html");
+if(PINTEREST_VERIFICATION){
+ for(const f of ["ecosystem/hub/index.html","index.html","public/index.html"]){
+  if(!fs.existsSync(path.join(ROOT,f))){fail(`${f}: homepage artifact missing for Pinterest verification check`);continue;}
+  const head=(read(f).match(/<head\b[^>]*>([\s\S]*?)<\/head>/i)||[])[1]||"";
+  const tags=(head.match(/<meta\b[^>]*>/gi)||[]).map(attrs).filter(a=>(a.name||"").toLowerCase()==="p:domain_verify");
+  if(tags.length!==1||tags[0].content!==PINTEREST_VERIFICATION)fail(`${f}: expected exactly one configured Pinterest verification meta in <head>`);
+ }
+}
 // The writing-first publication has no employer jobs on main. Individual
 // publication pages under /writing/<slug>/ are verified writing records, not
 // employer vacancies, so no JobPosting schema is ever emitted.

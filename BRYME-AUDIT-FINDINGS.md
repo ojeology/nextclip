@@ -1,10 +1,13 @@
-## 2026-09-29 — Bing queue/quota operation
+## 2026-09-29 — Bing queue/quota + Pinterest homepage verification
 
 Bing accepted 100 URLs using `--limit 100`; remaining queue 2,765. The preceding
 500-URL request was rejected (ErrorCode 8) while Bing reported 100 quota remaining.
 The submitter now defaults and hard-caps its request at 100 per day; dry-run
-verified the next batch size. Pinterest remains owner-gated; the account/domain
-claim checklist is in `docs/PINTEREST-OWNER-ACTION.md`.
+verified the next batch size. The owner-supplied Pinterest value is configured
+and emitted exactly once on the root homepage by the source generator; the
+committed hub/root/public artifacts and release validator are updated. Owner-side
+live deployment, Pinterest **Verify**, and pin publishing remain pending. See
+`docs/PINTEREST-OWNER-ACTION.md` for the final steps.
 
 ## 2026-09-29 — Tier-B wave 1 + B6 operating routine shipped
 
@@ -12,7 +15,7 @@ claim checklist is in `docs/PINTEREST-OWNER-ACTION.md`.
 - **Gates:** 2,583 indexable pages; 2,583 at 10.0; average 10.0; sub-8 = 0. Quality, internal-links, canonical-domain and freshness gates all pass. All 26 added URLs are in their desk sitemap and allowlist.
 - **B6 forums:** `docs/FORUMS-ROUTINE.md` is the standing two-hour/week answer-first routine, aligned with the existing HARO/referring-domain log. The work is operationally ready; posting remains an owner action (real participation, no automation or link-dropping).
 - **Tech overlap check:** Wi-Fi-in-one-room and HDMI-2.1 gaming guides were confirmed not to duplicate the existing 371-page tech inventory topics.
-- **Track B:** B1–B6 implementation/prep complete. D3 (Pinterest business account/domain claim) remains an owner-only dependency before pin publishing. Bing queue: 2,865 URLs held; last retry submitted 0 against Bing's daily quota.
+- **Track B:** B1–B6 implementation/prep complete. D3 (Pinterest domain claim) remains owner-side: the code tag is wired, but live verification and pin publishing are pending. Bing queue: 2,765 URLs remain after the latest accepted 100-URL batch.
 
 
 ## 2026-09-29 — Track B: B5 (event calendar + quarterly pre-event batch) DONE

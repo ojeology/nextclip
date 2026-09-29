@@ -1,8 +1,8 @@
-## 2026-09-29 — Bing quota-safe retry + Pinterest owner checklist
+## 2026-09-29 — Bing quota-safe retry + Pinterest homepage verification wired
 
+- Pinterest: the owner-supplied value is configured in `site.config.json` and emitted only on the root homepage by `scripts/build-ecosystem.py` (and the legacy root-page builder). The committed hub source plus `/` and `public/` artifacts carry one tag; `validate-site-quality.js` checks the exact tag is present once inside `<head>`. **Pending:** rebuild/deploy, confirm the live root HTML, then the owner clicks **Verify** in Pinterest and starts the prepared pin kit. No Pinterest account actions or posting were performed by us.
 - Bing accepted **100 URLs** with `--limit 100`; queue now **2,765**. A 500-URL attempt was rejected with Bing ErrorCode 8 despite 100 daily quota remaining. `scripts/submit-bing-queue.py` now defaults and caps at 100; dry-run confirms the next batch is 100.
-- Added `docs/PINTEREST-OWNER-ACTION.md` with the owner-only account/domain-claim steps based on Pinterest Help. The personalized verification tag must come from the owner before it is added through the generator. No account was created and no forum posts were made.
-- Corrected the B6 prep pack so it agrees with the answer-first routine: real human participation, no automated desk personas.
+- `docs/PINTEREST-OWNER-ACTION.md`, `docs/TRACK-B2-B6-PREP.md` and `pinterest/HOWTO.md` now agree on a 3–5 fresh-pins/week launch cadence; the prep pack clarifies five starter boards versus six in the full 180-pin kit. Corrected the B6 prep pack so it agrees with the answer-first routine: real human participation, no automated desk personas.
 
 ## 2026-09-29 — Tier-B wave 1 + B6 operating routine shipped
 
@@ -10,7 +10,7 @@
 - **Gates:** 2,583 indexable pages; 2,583 at 10.0; average 10.0; sub-8 = 0. Quality, internal-links, canonical-domain and freshness gates all pass. All 26 added URLs are in their desk sitemap and allowlist.
 - **B6 forums:** `docs/FORUMS-ROUTINE.md` is the standing two-hour/week answer-first routine, aligned with the existing HARO/referring-domain log. The work is operationally ready; posting remains an owner action (real participation, no automation or link-dropping).
 - **Tech overlap check:** Wi-Fi-in-one-room and HDMI-2.1 gaming guides were confirmed not to duplicate the existing 371-page tech inventory topics.
-- **Track B:** B1–B6 implementation/prep complete. D3 (Pinterest business account/domain claim) remains an owner-only dependency before pin publishing. Bing queue: 2,865 URLs held; last retry submitted 0 against Bing's daily quota.
+- **Track B:** B1–B6 implementation/prep complete. D3 (Pinterest domain claim) remains owner-side: the code tag is wired, but the live claim/Verify click and pin publishing are pending. Bing queue: 2,765 URLs remain after the latest accepted 100-URL batch.
 
 
 ## 2026-09-29 — Track B: B5 (event calendar + quarterly pre-event batch) DONE
@@ -437,7 +437,7 @@ targets minus 4 last-wins pops) + `TOPUP_SECTIONS24` 4 + `TOPUP_SECTIONS25` 30 r
 **B6 (Phase 4):** Forum answers where our own research shows forum-dominated SERPs; newsletter once there's traffic to retain.
 
 ## Track 0 — Standing machine (both tracks ride on this)
-Bing 100/day (queue 3,044) · IndexNow per deploy · CI green gate · GSC/site: checks each session · owner: submit 8 sitemaps in Bing WMT.
+Bing 100/day (queue 2,765 as of 2026-09-29; latest accepted batch 100) · IndexNow per deploy · CI green gate · GSC/site checks each session · owner: submit 8 sitemaps in Bing WMT (still listed as pending).
 
 ## Cadence & rules of engagement
 - Each work session: one Track A block + (once A's P1 set is clear) one Track B block, per-desk commits, full pipeline (build → sync → gate → push → deploy → probe → IndexNow/queue).
@@ -445,7 +445,10 @@ Bing 100/day (queue 3,044) · IndexNow per deploy · CI green gate · GSC/site: 
 - Every finding lands in BRYME-AUDIT-FINDINGS.md with severity before its fix ships.
 
 ## Open decisions (owner)
-- D1: which single tool for B4. · D2: Tier-B cadence alongside Track A (recommend: continue, it funds Track 0). · D3: Pinterest account ownership. · D4: none blocking — Track A executes now.
+- D1: **decided 2026-09-29** — darts checkout trainer (reversible; see B4 log).
+- D2: confirm Tier-B cadence alongside Track 0 (recommend continuing in small evidence-led waves).
+- D3: Pinterest domain claim: the code tag is configured; the live **Verify** click and organic pin launch remain owner actions.
+- D4: none blocking. Track A (A1–A10) is marked complete in the 2026-09-28 execution log.
 
 
 ## Batch O depth pass (2026-09-28)

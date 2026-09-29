@@ -1,9 +1,10 @@
 # Pinterest account + domain-claim checklist (owner action)
 
-The Pinterest kit is prepared; **account creation and claim authorization must be
-performed by the site owner**. Do not send passwords or recovery codes. When
-Pinterest generates its one-time verification value, share only that value (or
-paste the exact meta tag) so it can be added at the generator level.
+The Pinterest kit is prepared. **Account control, website claim and the final
+Verify click remain owner actions.** The owner-supplied verification value is
+now configured at `site.config.json` → `pinterest.domainVerification`; the root
+hub generator emits it on the homepage only. Do not send passwords or recovery
+codes.
 
 ## Create or convert the account
 
@@ -19,10 +20,10 @@ paste the exact meta tag) so it can be added at the generator level.
    **Websites**.
 2. Enter `https://thebryme.com/` (the apex canonical domain; `www` redirects).
 3. Choose **Add HTML tag** and copy the personalized verification tag.
-4. Send the exact tag to the implementation owner. The tag will be inserted
-   into the root-page `<head>` by the source generator, not by editing generated
-   HTML; then rebuild, verify the public root page serves the tag, and let the
-   owner click **Verify** in Pinterest.
+4. The tag is now emitted on the root homepage by the source generator, and the
+   committed `ecosystem/hub/index.html` is carried into `/` and `public/` by the
+   routing/build steps. After rebuilding and deploying, inspect `https://thebryme.com/`
+   to confirm the tag is in `<head>`, then click **Verify** in Pinterest.
 5. After Pinterest confirms the claim, retain the tag unless Pinterest says it
    can be removed without affecting the claim. Record the confirmation date.
 
@@ -35,8 +36,8 @@ Official instructions: [Pinterest Help — Claim your website](https://help.pint
 
 ## After verification
 
-- Start with the five prepared boards and the seeded URLs in
-  `docs/TRACK-B2-B6-PREP.md`; the existing pin kit contains 180 designs.
+- Start with the prepared boards and seeded URLs in
+  `docs/TRACK-B2-B6-PREP.md`; the committed Pinterest kit contains 180 designs.
 - Use the house pin spec there: 1000 × 1500 (2:3), text ≤20% of the canvas,
   and alt text drawn from the destination page’s actual meta description.
 - Begin at 3–5 fresh pins per week. Review outbound clicks weekly; do not use
