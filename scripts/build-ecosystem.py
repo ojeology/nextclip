@@ -7945,7 +7945,7 @@ def main() -> None:
     (_privacy_d / "index.html").write_text(
         shell("hub", "Privacy | THE BRYME publications",
               "The house privacy policy for BRYME Writers, Tech, Sport, Entertainment, Fitness, Home & DIY and Money.",
-              SUB["hub"] + "/privacy/", _privacy_body + foot("hub"), robots="noindex,follow"), encoding="utf-8")
+              SUB["hub"] + "/privacy/", _privacy_body + foot("hub"), robots="index,follow"), encoding="utf-8")
     print("hub: built (bryme.onrender.com homepage + family /about/ + /privacy/)")
     write_service("entertainment", entertainment_pages())
     if _NX_LAZY_PAYLOAD:  # batch 12: sidecar must survive write_service's stale-output wipe

@@ -255,6 +255,7 @@ def main() -> int:
     routes.add("/")  # the hub
     routes.add("/about/")  # family about page (b36)
     routes.add("/event-calendar/")  # house event calendar (B5, 2026-09-29)
+    routes.add("/privacy/")  # house policy: indexable trust page (all 7 desk policies already are)
     for prop in SITEMAP_PROPS:
         sm = ROOT / prop / "sitemap.xml"
         if not sm.is_file():
@@ -426,7 +427,7 @@ small{display:block;margin-top:30px;color:#8a94a6}
             continue
         _hsm = _hp.read_text(encoding="utf-8")
         _add = "".join(f"<url><loc>{ORIGIN}{_r}</loc><lastmod>{_td}</lastmod></url>\n"
-                       for _r in sorted(r for r in _rts if r in ("/", "/about/", "/event-calendar/"))
+                       for _r in sorted(r for r in _rts if r in ("/", "/about/", "/event-calendar/", "/privacy/"))
                        if f"<loc>{ORIGIN}{_r}</loc>" not in _hsm)
         if _add:
             _hp.write_text(_hsm.replace("</urlset>", _add + "</urlset>"), encoding="utf-8")
