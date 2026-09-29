@@ -2,7 +2,7 @@
 
 **Audit date:** 2026-09-29
 **Repository baseline:** `main` at `e850a1e` (shallow/partial checkout)
-**Release status:** pushed to GitHub on `audit/seo-home-writers-fixes-2026-09-29`. No production deployment was performed; the branch is isolated from `main`.
+**Release status:** pushed to GitHub on `audit/seo-home-writers-fixes-2026-09-29` and deployed to Render production after explicit authorization. Deploy `dep-datofuvavr4c73ebnta0` reached `live` at commit `ee2285dde12f299f9cd95fba9e1767bd376c7bca`; the GitHub branch remains unmerged to `main`.
 
 > **Scope note:** This is an evidence-led audit pass with one targeted repair, not a claim that every page, data record, device state, or Search Console result has been exhaustively inspected. The repository was intentionally kept partial; production output was sampled live. Search Console, GA4 reporting, Lighthouse, field Core Web Vitals, and real CMP behavior were not available for this pass.
 
@@ -10,13 +10,13 @@
 
 BRYME is a seven-desk static publishing and tools ecosystem, not a conventional app backed by a production Node API. The live primary sitemap is materially smaller than the brief’s historical estimate: **2,583 unique URLs** across eight child sitemaps. Sampled pages generally had self-canonicals, one H1, `index,follow` where expected, and parseable JSON-LD. The live `robots.txt` allows general crawlers, excludes source-oriented paths, and lists the primary sitemap and desk sitemaps.
 
-The most consequential confirmed implementation defect was in Home: its custom renderer already returned a complete HTML document, then the generator wrapped it in a second shared document shell. This affected **279 of 288 materialized Home `index.html` pages in each of three trees**. The generator and affected artifacts have been repaired locally: page bodies, titles, canonicals, and JSON-LD are preserved; two inconsistent meta/OG descriptions were reconciled to the more detailed route-level values already supplied to the shared shell. The published Home subtree is **6,865,080 raw HTML bytes (6.55 MiB, 36.8%) smaller** after removing the duplicate shell. This is not a measured Core Web Vitals improvement, and the change is not live until a full build passes and a separate deployment is authorized.
+The most consequential confirmed implementation defect was in Home: its custom renderer already returned a complete HTML document, then the generator wrapped it in a second shared document shell. This affected **279 of 288 materialized Home `index.html` pages in each of three trees**. The generator and affected artifacts were repaired, pushed on a feature branch, and deployed to Render after explicit authorization. Page bodies, titles, canonicals, and JSON-LD were preserved; two inconsistent meta/OG descriptions were reconciled to the more detailed route-level values. The published Home subtree is **6,865,080 raw HTML bytes (6.55 MiB, 36.8%) smaller** after removing the duplicate shell. Production probes now return one doctype for `/home/mistakes/`; this is not a measured Core Web Vitals improvement.
 
-The highest remaining risks are (1) legacy URL paths that return `200` noindex pages with zero-second meta refreshes instead of HTTP redirects; (2) an unreferenced sitemap-index alias that omits the film catalogue; and (3) the inability to verify Google indexation or real consent behavior without Search Console/browser access. The Writers hub’s 92-vs-99 count mismatch has a source-verified generator fix staged locally but is not yet live.
+The highest remaining risks are (1) legacy URL paths that return `200` noindex pages with zero-second meta refreshes instead of HTTP redirects; (2) an unreferenced sitemap-index alias that omits the film catalogue; and (3) the inability to verify Google indexation or real consent behavior without Search Console/browser access. The Writers count mismatch is corrected in the production build: the live hero and filter both show 99.
 
-**Largest opportunity:** use Search Console and consent-respecting analytics to find which existing guides, tools, and databases earn useful impressions and repeat use, then improve those clusters instead of increasing URL count. **Largest current risk:** sampled live Home pages still served nested document shells; the local correction is not deployed. A complete build/test and separate deployment approval are required before production is fixed.
+**Largest opportunity:** use Search Console and consent-respecting analytics to find which existing guides, tools, and databases earn useful impressions and repeat use, then improve those clusters instead of increasing URL count. **Largest remaining risk:** route migration and sitemap-alias decisions still lack Search Console/backlink evidence; CWV and consent behavior also remain unmeasured.
 
-**No content was deleted, no URLs were changed, and no new pages were generated.** Safe local changes include the Home document repair, a Writers aggregate-count correction, regression checks, the retired-host fallback, and stale repository documentation updates.
+**No content was deleted, no URLs were changed, and no new pages were generated.** The release contains the Home document repair, Writers aggregate-count correction, regression checks, the retired-host fallback, and stale repository documentation updates.
 
 ## What is working
 
@@ -29,10 +29,10 @@ The highest remaining risks are (1) legacy URL paths that return `200` noindex p
 
 ## What is broken or needs follow-up
 
-- **Home double document — repaired locally, not released.** 279 Home article/section pages had two nested document shells. This can cause browser/parser ambiguity, duplicate metadata and scripts, and unnecessary payload. See the implementation and verification section below.
+- **Home double document — fixed and deployed.** 279 Home article/section pages had two nested document shells. The source, generated artifacts, and Render production build now use one document; a live `/home/mistakes/` probe returned HTTP 200 with one doctype. See verification below.
 - **Legacy migration stubs — review needed.** Probed `/writing/`, `/writing-opportunities/`, `/jobs/`, `/opportunities/`, `/make-money/`, and `/search/` returned `200` noindex pages with zero-second meta refreshes rather than HTTP redirects. `/writers/writing/by-country/` showed a further refresh hop. This is not proof that every such page is harmful; map each old path and its query behavior before choosing an exact 301 or a true 404/410.
 - **Sitemap alias — inconsistent.** `/sitemap.xml` contains an eight-child index; `/sitemap_index.xml` is a live seven-child alias that omits the 719-URL catalogue. Robots does not reference the alias. It was deliberately left unchanged because Search Console submission history and hosting behavior were not available.
-- **Writers status totals — live mismatch, generator corrected locally.** The live hub reports 92 “currently accepting,” while its filter says “Accepting now — 99.” Source status labels define deadline records as open until their stated dates. `build-writing-first.py` now counts `open + rolling + active deadline` in the hero, matching the filter; a read-only check of the 142-record source gives 99 for both. The production page still needs a full build and authorized deployment.
+- **Writers status totals — fixed and deployed.** Source status labels define deadline records as open until their stated dates. `build-writing-first.py` uses a shared `open + rolling + active deadline` status set for the hero and filter; the 142-record source evaluates to 99 for both. After deployment, the live hub returned HTTP 200 and the hero/filter both displayed 99.
 - **Static deployment vs runtime API — operational mismatch.** Repository `render.yaml` defines a Render static site publishing `public/`. Live `/healthz` and `/api/index/status` probes returned 404. The checked-in local test server and Indexing API helper are not evidence of live production endpoints.
 - **Consent — presence is not behavior.** GA4 (`G-0KEKJH9960`), the AdSense loader, and the Funding Choices bootstrap appeared in sampled markup. A static fetch does not show whether a CMP dialog appears, whether choices update tags, or whether account settings match the repository.
 - **Security hardening — verify at the edge.** Sampled responses had CSP, `X-Frame-Options`, `X-Content-Type-Options`, Referrer-Policy, Permissions-Policy, and COOP. The CSP permits broad HTTPS scripts and inline styles. HSTS was not observed on three samples; confirm domain/subdomain policy before enabling it.
@@ -41,7 +41,7 @@ The highest remaining risks are (1) legacy URL paths that return `200` noindex p
 
 | Finding | Affected URLs | Severity | Evidence | Recommendation / status |
 |---|---|---:|---|---|
-| Nested HTML document in Home output | 279 non-root Home pages per tree (`ecosystem/home/`, `home/`, `public/home/`) | **P1** | Eight live non-root pages sampled before the fix had duplicate `html/head/body/title`; source shows `_home_page()` returns a document and `write_service()` wrapped it in `shell(...)`. Full local trees: 279/288 duplicated; two inner meta/OG descriptions differed from the richer route-level description. | Generator and all three materialized artifact trees fixed locally. Bodies, titles, canonicals, and JSON-LD are preserved; the two conflicting meta/OG descriptions now use the richer route-level values. Run the full build and release gates before any authorized deployment. |
+| Nested HTML document in Home output | 279 non-root Home pages per tree (`ecosystem/home/`, `home/`, `public/home/`) | **P1 — fixed/deployed** | Eight live non-root pages sampled before the fix had duplicate `html/head/body/title`; source shows `_home_page()` returns a document and `write_service()` wrapped it in `shell(...)`. Full local trees: 279/288 duplicated; two inner meta/OG descriptions differed from the richer route-level description. | Generator and all three materialized artifact trees were repaired and deployed. Bodies, titles, canonicals, and JSON-LD are preserved; descriptions use existing route-level values. Live `/home/mistakes/` now returns one doctype. Full local npm/browser/CWV suite remains unrun. |
 | Legacy roots use meta refresh with HTTP 200 | Sampled `/writing/`, `/writing-opportunities/`, `/jobs/`, `/opportunities/`, `/make-money/`, `/search/`; also `/writers/writing/by-country/` | **P2** | Live GETs returned noindex pages with zero-second refreshes; not HTTP 301s. One sample is a refresh chain. | Build an exact migration table using current routes, parameters, backlinks and Search Console. Replace only true moved routes with exact redirects; keep search semantics intact; return 404/410 only when no genuine replacement exists. No redirects changed. |
 | Sitemap-index alias omits catalogue | `/sitemap_index.xml` | **P2** | Live alias lists seven child sitemaps; primary `/sitemap.xml` lists eight, including 719 catalogue URLs. Alias is not in `robots.txt`. | Check Search Console submissions and CDN/static-host behavior first. Do not remove or update merely to make the two files match. |
 | Primary sitemap inventory | Eight child sitemaps | **Good, monitor** | 2,583 unique URLs: Writers 511; Sport 197; Entertainment editorial 183; Tech 373; Fitness 187; Home 291; Money 122; catalogue 719. Home’s 291 includes `/`, `/about/`, and `/event-calendar/`; the local Home subtree has 288 pages. | Retain the allowlist-based indexation model. Reconcile sitemap entries to status, canonical, robots, and content value—not raw repository file counts. |
@@ -49,7 +49,7 @@ The highest remaining risks are (1) legacy URL paths that return `200` noindex p
 | Search/filter behavior | `/writers/search/`, `?q=...`, `/search/` | **Good with legacy alias** | Writers search is `noindex,follow` and canonicalizes query variants to the base search route. `/search/` is a 200 meta-refresh alias to the Writers search surface. | Keep result/filter states out of sitemaps. Review whether the alias can become an exact redirect without losing query behavior. |
 | Slash variant | `/tools/json-formatter` | **P3** | No-slash route returned 200 with a canonical to `/tech/tool/json-formatter/`. | Not a demonstrated indexing defect. Consider a 301 only if static-host rules can implement and test it reliably. |
 | Retired-host fallback | Generator origin helper | **P2, fixed locally** | `site.config.json` selects `https://thebryme.com`, but `bryme_config.py`’s last-resort default was `bryme.onrender.com`. | Fallback now matches the current apex domain. Test verifies the configured value and `SITE_URL` override; normal builds already using the config are unchanged. |
-| Writers acceptance metric | `/writers/writing/` | **P2, fixed in generator locally** | Live summary says 92; filter says 99. Source labels say deadline records are open until their stated date; read-only evaluation of `content/opportunities.json` gives 99 active records. | Generator now counts open, rolling, and non-expired deadline records in both places. Confirm in a full build; the live artifact remains unchanged until deployment. |
+| Writers acceptance metric | `/writers/writing/` | **P2 — fixed/deployed** | Before deployment, summary said 92 and filter said 99. Source labels say deadline records are open until their stated date; the 142-record source evaluates to 99 active records. | Generator uses one shared status tuple; live post-deploy probe returns 99 in both hero and filter. |
 | Structured data / metadata | Sampled root and desk pages | **No broad defect established** | Sampled canonicals matched tested routes; indexable samples had one H1 and parseable JSON-LD. | Continue full-tree validation in CI. Do not add schema to writing opportunities as if they were employer vacancies. |
 
 ### URL-classification strategy
@@ -75,7 +75,7 @@ These are live sitemap counts and representative checks, not a full editorial or
 
 | Desk | Sitemap URLs | Findings and next action |
 |---|---:|---|
-| **Writers** | 511 | Strong differentiated opportunity product: `/writers/writing/` lists 142 researched publications and sample records show source guidelines, eligibility, verification date, and honest BRYME experience. The 92-vs-99 live mismatch is fixed in the generator using the same active statuses as the filter; full build/deployment remains. Keep search/filter results noindex. Do not label publication submissions with `JobPosting`. |
+| **Writers** | 511 | Strong differentiated opportunity product: `/writers/writing/` lists 142 researched publications and sample records show source guidelines, eligibility, verification date, and honest BRYME experience. The accepting count fix is deployed; the live hero and filter both show 99. Keep search/filter results noindex. Do not label publication submissions with `JobPosting`. |
 | **Tech** | 373 | Sampled guides/tools had expected metadata and parseable JSON-LD. `/tools/json-formatter` without a slash returns the canonical slash page. Full topic-cluster and link-depth audit was not rerun. |
 | **Sport** | 197 | Active section and included in the primary sitemap. Sampled routes passed basic metadata/canonical checks; live table/fixture freshness and archive boundaries were not exhaustively checked. |
 | **Entertainment** | 183 editorial + 719 catalogue | Both editorial and catalogue inventories appear in the primary sitemap. A prior `/movie/the-invite/` probe was not the sitemap-derived canonical route and must not be used to claim the catalogue is broken. Per-catalogue content quality was not re-audited in this pass. |
@@ -115,7 +115,7 @@ Current evidence supports **readiness work, not a revenue forecast**: AdSense ve
 2. Review the Writers status source and reconcile 92 vs 99 “accepting” results.
 3. Create an old-to-new route table for the sampled meta-refresh stubs, including query strings and `by-country` chains. Use Search Console/backlink evidence before applying exact 301s or true removals.
 4. Check whether `/sitemap_index.xml` is submitted or referenced by external tools; keep the current alias unchanged until its role is known.
-5. The user requested a GitHub push but not a production deployment. The audit is pushed to `audit/seo-home-writers-fixes-2026-09-29`; keep it off `main` until full build/release gates pass. No Render deployment was performed.
+5. The audit branch was pushed to GitHub and, after explicit user authorization, deployed to Render production at commit `ee2285dde12f299f9cd95fba9e1767bd376c7bca` (deploy `dep-datofuvavr4c73ebnta0`). Keep the branch off `main` until the remaining full CI/browser/CWV checks are completed.
 
 ### Short term — 1–4 weeks
 
@@ -149,6 +149,8 @@ Current evidence supports **readiness work, not a revenue forecast**: AdSense ve
 
 **Passed:**
 
+- Render production deploy `dep-datofuvavr4c73ebnta0` reached `live` for commit `ee2285dde12f299f9cd95fba9e1767bd376c7bca` after explicit authorization.
+- Post-deploy live probes: `/`, `/home/mistakes/`, and `/writers/writing/` returned HTTP 200; Home returned one doctype; Writers hero and “Accepting now” filter both returned 99.
 - Python AST/syntax checks for the touched Python generators/config and Writers generator.
 - `node --check` for both touched JavaScript validators.
 - Read-only status-count check against the 142 records in `content/opportunities.json` at `e850a1e`: active-status hero total and filter total both evaluate to 99.
@@ -161,8 +163,8 @@ Current evidence supports **readiness work, not a revenue forecast**: AdSense ve
 
 **Not run / not available:**
 
-- Full generator build, `npm test`, or the complete HTTP/Playwright gate; repository dependencies and most of `public/` are not present in this partial checkout.
+- Full local generator build, `npm test`, or the complete HTTP/Playwright gate; repository dependencies and most of `public/` are not present in this partial checkout. Render’s configured production build did complete and reach `live`, but this is not evidence that the unrun local test gates passed.
 - Real mobile-browser testing, Lighthouse, CrUX, Search Console, GA4 export, AdSense dashboard, or CMP interaction testing.
 - Full page-by-page content safety/fact-check, all-route canonical/redirect audit, dependency/security scan, or orphan-link analysis.
 
-The repaired artifacts are in the workspace, but production remains unchanged until a full build/test and an explicitly authorized deployment.
+The repaired artifacts are deployed to production after the user explicitly authorized a Render deploy. The full local test suite, mobile-browser/CWV work, CMP behavior checks, and Search Console/GA4 analyses remain outstanding.

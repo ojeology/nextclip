@@ -1,10 +1,12 @@
-## 2026-09-29 — Production audit continuation + safe fixes (feature branch; not deployed)
+## 2026-09-29 — Production audit continuation + safe fixes (pushed and deployed)
 
 **Scope:** live route/sitemap sampling and source review on `main` at base commit
 `e850a1e`. This is a focused, evidence-based audit pass, not a claim that every URL,
 page body, mobile state, or Search Console/GA4 metric has been exhaustively reviewed.
 The safe changes are committed and pushed on `audit/seo-home-writers-fixes-2026-09-29`.
-The feature branch is not deployed; no production deployment was performed.
+After explicit user authorization, Render deploy `dep-datofuvavr4c73ebnta0` for commit
+`ee2285dde12f299f9cd95fba9e1767bd376c7bca` reached `live`. Root, Home, and Writers
+production probes returned HTTP 200; Home has one doctype and Writers shows 99/99.
 
 ### Findings
 
@@ -32,13 +34,13 @@ The feature branch is not deployed; no production deployment was performed.
   `/sitemap_index.xml` is a live seven-child alias omitting the 719-URL catalogue.
   Robots references the primary index and child sitemaps, not the alias. It was left
   untouched pending submission/hosting evidence.
-- **P2 — Writers totals were inconsistent in the live page; generator fix is local.**
+- **P2 — Writers totals were inconsistent; fixed and deployed.** Before the change,
   `/writers/writing/` showed 92 currently accepting at the top and “Accepting now — 99”
   in the filter. Source labels define deadline records as open now until their stated
   date; the old hero count excluded those seven. `build-writing-first.py` now uses the
   same `open + rolling + active deadline` status set as the filter. Read-only evaluation
-  of the 142 records at `e850a1e` gives 99 for both. The published page remains unchanged
-  until a full build and authorized deployment.
+  of the 142 records at `e850a1e` gives 99 for both; the post-deploy live page also shows
+  99 in both places.
 - **Privacy/consent:** the house `/privacy/` page now mentions Money (the old external
   finding that it omitted Money is stale); it is `noindex,follow`, while desk policy
   pages sampled are indexable. GA4, AdSense, and Funding Choices tags appeared in
@@ -54,7 +56,7 @@ The feature branch is not deployed; no production deployment was performed.
   HSTS was not observed on three samples. Treat as a hardening follow-up, not a proven
   exploit.
 
-### Local changes and verification
+### Changes, deployment and verification
 
 - Fixed the Home generator: full-document Home pages bypass the shared wrapper; the
   bespoke head now carries the shared AdSense/analytics head and icons.
@@ -65,12 +67,12 @@ The feature branch is not deployed; no production deployment was performed.
   shorter inner descriptions were reconciled to their existing richer route metadata.
 - Added exactly-one-doctype checks to the route-quality and published-artifact gates.
 - Fixed the Writers hero total to use the same normalized `open + rolling + active deadline`
-  statuses as its “Accepting now” filter. Read-only source-data check: 99/99; build/deploy
-  still required before the live page changes.
+  statuses as its “Accepting now” filter. Source-data check and post-deploy live probe both
+  return 99/99.
 - Changed the canonical-origin emergency fallback from `bryme.onrender.com` to
   `thebryme.com`; corrected the generator/README architecture notes and several
-  now-stale SEO/monetization statements. Production behavior is unchanged until a
-  future authorized build/deploy.
+  now-stale SEO/monetization statements. The full Render build/deploy is live at the
+  commit recorded above.
 - Verified all 288 Home pages in each tier have one doctype, html/head/body/title,
   one H1 and a self-canonical; root/public copies match. Each routed/published Home
   page has one GA loader, one AdSense loader, and one Funding Choices bootstrap.
@@ -80,9 +82,10 @@ The feature branch is not deployed; no production deployment was performed.
 - Verified the Writers count formula against the 142-record `content/opportunities.json`
   at `e850a1e` (read-only raw fetch): hero and filter both compute 99, including seven
   non-expired deadline records.
-- **Not run:** full `npm test`, production build, Playwright/mobile/CWV tests, or
-  deployment; the checkout is intentionally sparse and lacks the full published tree,
-  dependencies, browser evidence, Search Console, and GA4 access.
+- **Not run locally:** full `npm test`, Playwright/mobile/CWV tests, Search Console, or
+  GA4 review; the checkout is intentionally sparse. Render's configured production build
+  for the pushed commit reached `live`, but that is not a substitute for the unrun test
+  suite or field-performance measurement.
 
 **Owner correction:** Pinterest domain claim is complete per the owner; pin publishing
 remains a separate owner action. Historical entries below record prior status.

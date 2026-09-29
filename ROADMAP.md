@@ -1,9 +1,9 @@
-## 2026-09-29 — Audit actions and release follow-up (feature branch pushed; not deployed)
+## 2026-09-29 — Audit actions and release follow-up (pushed and deployed; post-deploy probes passed)
 
 **Owner correction:** Pinterest domain claim is complete. This supersedes the earlier
 pending-claim wording below; pin publishing remains a separate owner action.
 
-### Completed on a non-main GitHub branch (pushed; not deployed)
+### Completed on a non-main GitHub branch (pushed; production deploy live)
 
 - Home document-shell repair: 279 nested pages normalized in each of the three
   materialized tiers (`ecosystem/home/`, `home/`, `public/home/`), preserving bodies,
@@ -20,14 +20,15 @@ pending-claim wording below; pin publishing remains a separate owner action.
 
 ### Immediate (0–7 days)
 
-1. **Full-tree verification before release:** from a complete checkout/CI, run clean
-   `npm ci`, the normal build, `npm test`, and the mobile/browser gates. Confirm Home
-   sitemap routes, exactly one document per artifact, and unchanged URLs. This sparse
-   audit checkout cannot run the full build/tests. Deploy only after explicit owner
-   approval; none was issued for this audit.
-2. **Writers count fix committed locally:** `build-writing-first.py` now counts open,
-   rolling, and active-deadline records in the hero metric, matching the filter. The
-   142-record source evaluates to 99 for both counts; confirm with a complete build.
+1. **Complete the remaining release validation:** this sparse audit checkout could not
+   run local `npm test`, Playwright/mobile checks, or CWV measurement. The user explicitly
+   authorized a one-off production deploy despite that limitation; Render built the pushed
+   commit and marked it live. Post-deploy probes confirmed root/Home/Writers return 200,
+   Home has one doctype, and the Writers counts match. Run the full local/CI suite next; do
+   not claim the unrun gates passed.
+2. **Writers count fix deployed:** `build-writing-first.py` shares one active-status
+   set between the hero metric and filter. The 142-record source evaluates to 99/99; the
+   production probe after the Render deployment also returned 99/99.
 3. **Map the refresh stubs:** inventory exact destinations and query handling for
    `/writing/`, `/writing-opportunities/`, `/jobs/`, `/opportunities/`, `/make-money/`,
    `/search/`, and `/writers/writing/by-country/`. Compare backlinks/Search Console
@@ -36,10 +37,11 @@ pending-claim wording below; pin publishing remains a separate owner action.
 4. **Sitemap alias review:** compare Search Console submissions and hosting behavior
    for `/sitemap_index.xml`. The primary `/sitemap.xml` has eight child indexes; the
    alias has seven and omits the 719-URL catalogue. Do not remove or modify until checked.
-5. **GitHub push complete:** the audit branch is at
-   `ojeology/nextclip: audit/seo-home-writers-fixes-2026-09-29`. It remains off `main`;
-   no Render deployment was performed. Run the full build/release gates before merging,
-   and deploy only after explicit approval.
+5. **GitHub push and Render deployment complete:** branch
+   `ojeology/nextclip:audit/seo-home-writers-fixes-2026-09-29` was pushed and explicitly
+   deployed to production at commit `ee2285dde12f299f9cd95fba9e1767bd376c7bca`
+   (Render deploy `dep-datofuvavr4c73ebnta0`). Keep the branch off `main` until the
+   remaining full CI/browser/CWV checks are completed.
 
 ### Short term (1–4 weeks)
 
