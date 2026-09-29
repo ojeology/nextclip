@@ -1,3 +1,11 @@
+## 2026-09-29 — Tier-B wave 1 + B6 operating routine shipped
+
+- **Tier B wave 1: 26 additions** (six each in Sport, Entertainment, Fitness and Money; two in Tech after inventory check). Each article is in the desk's source data, has contextual internal links and verified references where cited; money pages have jurisdiction labels/taxonomy where relevant. Pages are present in the routed allowlist and their desk sitemaps.
+- **Gates:** 2,583 indexable pages; 2,583 at 10.0; average 10.0; sub-8 = 0. Quality, internal-links, canonical-domain and freshness gates all pass. All 26 added URLs are in their desk sitemap and allowlist.
+- **B6 forums:** `docs/FORUMS-ROUTINE.md` is the standing two-hour/week answer-first routine, aligned with the existing HARO/referring-domain log. The work is operationally ready; posting remains an owner action (real participation, no automation or link-dropping).
+- **Tech overlap check:** Wi-Fi-in-one-room and HDMI-2.1 gaming guides were confirmed not to duplicate the existing 371-page tech inventory topics.
+- **Track B:** B1–B6 implementation/prep complete. D3 (Pinterest business account/domain claim) remains an owner-only dependency before pin publishing. Bing queue: 2,865 URLs held; last retry submitted 0 against Bing's daily quota.
+
 
 ## 2026-09-29 — Track B: B5 (event calendar + quarterly pre-event batch) DONE
 

@@ -66,7 +66,10 @@ A topic qualifies when **most** of these are true:
 
 ---
 
-## Tier B — backlog (validated later, one-line rationale)
+## Tier B — **WAVE 1 SHIPPED 2026-09-29** (26 additions; 6 per primary desk + 2 Tech)
+
+
+**Wave 1 shipped:** all 24 Money/Sports/Fitness/Entertainment slugs below and both Tech light-touch slugs are live, built from the source modules and verified through the routed allowlist, desk sitemaps, word ruler and four quality gates. The Tech inventory check found no collisions. Further waves should follow the demand-verification playbook below, not be auto-generated from the remaining backlog.
 
 **Money:** `hard-vs-soft-credit-checks-explained` (jet word, perpetual confusion) · `how-savings-interest-is-calculated-daily-explained` · `credit-utilisation-explained` · `pension-annual-allowance-explained` (UK) · `what-to-do-with-a-windfall-explained` · `roth-ira-vs-401k-explained`.
 

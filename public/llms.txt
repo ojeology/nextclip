@@ -1,6 +1,6 @@
 # THE BRYME
 
-> A family of seven independent, specialist publications under one house discipline: research before publishing, dates on anything time-sensitive, sources for every claim, and no fabricated experience or statistics. Edited from Lagos, Nigeria, and written for a global readership. 2557 pages across the desks.
+> A family of seven independent, specialist publications under one house discipline: research before publishing, dates on anything time-sensitive, sources for every claim, and no fabricated experience or statistics. Edited from Lagos, Nigeria, and written for a global readership. 2583 pages across the desks.
 
 ## The house
 
@@ -33,7 +33,7 @@ The founding desk: paid-writing guides, a database of 142 researched paying publ
 
 ## BRYME Tech
 
-Honest consumer technology: spec floors, refurb buying, settings that fix real problems, security checklists. No affiliate-first reviews. 371 pages.
+Honest consumer technology: spec floors, refurb buying, settings that fix real problems, security checklists. No affiliate-first reviews. 373 pages.
 
 - [Desk home](https://thebryme.com/tech/)
 - [The student laptop spec floor](https://thebryme.com/tech/student-laptop-spec-floor-2026/)
@@ -52,7 +52,7 @@ Honest consumer technology: spec floors, refurb buying, settings that fix real p
 
 ## BRYME Sport
 
-Explainers and analysis with sources and verification dates. No betting content, no odds, no tips. 191 pages.
+Explainers and analysis with sources and verification dates. No betting content, no odds, no tips. 197 pages.
 
 - [Desk home](https://thebryme.com/sports/)
 - [Why darts starts at 501](https://thebryme.com/sports/why-darts-starts-at-501-explained/)
@@ -71,7 +71,7 @@ Explainers and analysis with sources and verification dates. No betting content,
 
 ## BRYME Entertainment
 
-What to watch and why: recommendations with reasons, film-craft explainers, a hand-verified film catalogue with official trailers. Written about the work, never trafficking in it. 896 pages.
+What to watch and why: recommendations with reasons, film-craft explainers, a hand-verified film catalogue with official trailers. Written about the work, never trafficking in it. 902 pages.
 
 - [Desk home](https://thebryme.com/entertainment/)
 - [The soap opera effect, explained](https://thebryme.com/entertainment/soap-opera-effect-explained/)
@@ -79,6 +79,7 @@ What to watch and why: recommendations with reasons, film-craft explainers, a ha
 
 ### Questions this desk answers
 
+- [Why films and shows get different endings in different countries?](https://thebryme.com/entertainment/different-endings-by-country-explained/)
 - [How every page earns its place?](https://thebryme.com/entertainment/editorial-policy/)
 - [What is the hottest movie right now? How to know, and what is hot this month?](https://thebryme.com/entertainment/hottest-movies-right-now/)
 - [How anime production committees actually work?](https://thebryme.com/entertainment/how-anime-production-committees-work/)
@@ -86,11 +87,10 @@ What to watch and why: recommendations with reasons, film-craft explainers, a ha
 - [How the box office actually works?](https://thebryme.com/entertainment/how-box-office-works/)
 - [How cinematic universes work: the shared-universe machine and why it keeps stalling?](https://thebryme.com/entertainment/how-cinematic-universes-work/)
 - [How film festivals work: premieres, prizes and the market underneath?](https://thebryme.com/entertainment/how-film-festivals-work/)
-- [How movie budgets actually work (and why &#x27;profit&#x27; is the strangest word in Hollywood)?](https://thebryme.com/entertainment/how-movie-budgets-work/)
 
 ## BRYME Fitness
 
-General training information with the physiology shown: programmes, comparisons and form explainers. Never medical advice. 181 pages.
+General training information with the physiology shown: programmes, comparisons and form explainers. Never medical advice. 187 pages.
 
 - [Desk home](https://thebryme.com/fitness/)
 - [Hyrox, explained](https://thebryme.com/fitness/hyrox-explained/)
@@ -129,7 +129,7 @@ Problem-first home maintenance and repair: diagnose it, fix what is safely fixab
 
 ## BRYME Money
 
-Evergreen saving foundations first, risk-first trading education second. Educational, not advice; every claim cites its jurisdiction's own source. 116 pages.
+Evergreen saving foundations first, risk-first trading education second. Educational, not advice; every claim cites its jurisdiction's own source. 122 pages.
 
 - [Desk home](https://thebryme.com/money/)
 - [APR versus APY, explained](https://thebryme.com/money/apr-vs-apy-explained/)

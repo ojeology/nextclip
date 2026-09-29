@@ -32,6 +32,12 @@ FIT_CATS = {
 # slug -> (section, primary need). Every fitness content page appears exactly once.
 FIT_MAP = {
     "hyrox-explained": ("cardio", "train"),
+    "incline-walking-explained": ("cardio", "train"),
+    "lactate-threshold-explained": ("cardio", "understand"),
+    "running-cadence-explained": ("cardio", "understand"),
+    "crossfit-explained": ("strength", "understand"),
+    "gym-etiquette-explained": ("plans", "read"),
+    "murph-workout-explained": ("plans", "train"),
     "hyrox-vs-crossfit-explained": ("cardio", "train"),
     "what-does-3x10-mean-explained": ("plans", "read"),
     "supersets-vs-circuits-explained": ("strength", "train"),

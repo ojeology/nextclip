@@ -2248,6 +2248,134 @@
      "url": "https://www.gov.uk/self-assessment-tax-returns/who-must-send-a-tax-return"
     }
    ]
+  },
+  {
+   "slug": "hard-vs-soft-credit-checks-explained",
+   "section": "Save and grow",
+   "title": "Hard vs soft credit checks: what each one is and when it actually matters | BRYME Money",
+   "h1": "Hard and soft credit checks, explained",
+   "dek": "One leaves a footprint and dents new applications; the other is invisible to lenders. Which is which, and when each happens.",
+   "description": "Hard vs soft credit checks: what each is, which actions trigger them, how long hard inquiries affect your score, and when to space applications.",
+   "summary": "A plain-English map of the two kinds of credit check: soft checks (background searches, eligibility quotes, your own viewing) that lenders cannot see and that never affect your score, and hard checks (full applications) that leave an inquiry for two years and can cost points for a few months — with the application-spacing habit that limits the damage.",
+   "related": [
+    "credit-utilisation-explained",
+    "how-credit-scores-work",
+    "apr-vs-apy-explained"
+   ],
+   "sources": [
+    {
+     "label": "CFPB — what is a credit score?",
+     "url": "https://www.consumerfinance.gov/ask-cfpb/what-is-a-credit-score-en-315/"
+    },
+    {
+     "label": "Wikipedia — Credit score (inquiry mechanics)",
+     "url": "https://en.wikipedia.org/wiki/Credit_score"
+    }
+   ]
+  },
+  {
+   "slug": "how-savings-interest-is-calculated-daily-explained",
+   "section": "Save and grow",
+   "title": "How savings interest is calculated daily: the arithmetic behind the statement | BRYME Money",
+   "h1": "How savings interest is calculated daily",
+   "dek": "Balance &times; rate &divide; 365, added up your way: why daily calculation beats monthly, and how to check yours with two lines of arithmetic.",
+   "description": "How banks calculate savings interest daily: the daily formula, compounding, AER in practice, and how to check your statement. Educational, not advice.",
+   "summary": "A worked explanation of daily interest accrual on savings: the per-day formula (balance x annual rate / days in year), why daily compounding beats monthly, how AER smooths the comparison, and the two-line check that tells you whether your statement is right — with the timing rules (when deposits and withdrawals actually start and stop earning).",
+   "related": [
+    "apr-vs-apy-explained",
+    "compound-interest-explained",
+    "high-yield-savings-accounts-explained"
+   ],
+   "sources": [
+    {
+     "label": "Wikipedia — Interest (accrual and compounding)",
+     "url": "https://en.wikipedia.org/wiki/Interest"
+    }
+   ]
+  },
+  {
+   "slug": "credit-utilisation-explained",
+   "section": "Save and grow",
+   "title": "Credit utilisation explained: the ratio that quietly shapes your score | BRYME Money",
+   "h1": "Credit utilisation, explained",
+   "dek": "The percentage of your limits you are using — why the models watch it, what the thresholds actually are, and how to move it deliberately.",
+   "description": "Credit utilisation explained: how the balance-to-limit ratio drives scores, why 30% is a rule of thumb, and how to lower it before applying. Not advice.",
+   "summary": "A plain explanation of credit utilisation (card balances divided by credit limits), the scoring input that moves fastest: how models weigh it, why the famous 30% figure is a rule of thumb rather than a threshold, the statement-date effect, and the two levers (lower balances, higher limits) that change the ratio — with the caution that limit increases can trigger hard checks.",
+   "related": [
+    "hard-vs-soft-credit-checks-explained",
+    "how-credit-scores-work",
+    "how-credit-card-interest-works"
+   ],
+   "sources": [
+    {
+     "label": "CFPB — what is a credit score?",
+     "url": "https://www.consumerfinance.gov/ask-cfpb/what-is-a-credit-score-en-315/"
+    },
+    {
+     "label": "Wikipedia — Credit score (utilisation weighting)",
+     "url": "https://en.wikipedia.org/wiki/Credit_score"
+    }
+   ]
+  },
+  {
+   "slug": "pension-annual-allowance-explained",
+   "section": "Save and grow",
+   "title": "Pension annual allowance explained (UK): the cap, the taper and the carry-back | BRYME Money",
+   "h1": "The pension annual allowance, explained (UK)",
+   "dek": "How much you can pay into pensions each tax year, when the allowance shrinks, and the carry-back rule that saves three years of unused room.",
+   "description": "UK pension annual allowance: the cap on tax-relieved contributions, the tapered allowance for higher earners, and carry-back. UK rules; not advice.",
+   "summary": "A UK-jurisdiction explanation of the pension annual allowance: the cap on tax-relieved pension contributions per tax year (income and growth tests included), how the tapered annual allowance reduces the cap for high adjusted incomes, what happens when contributions exceed the allowance (the charge), and the carry-back of unused allowance across three tax years — with the GOV.UK rates page as the standing reference.",
+   "related": [
+    "salary-sacrifice-explained",
+    "how-state-pensions-work",
+    "lifetime-isa-explained"
+   ],
+   "sources": [
+    {
+     "label": "GOV.UK — Pension schemes: rates and allowances",
+     "url": "https://www.gov.uk/government/publications/rates-and-allowances-pension-schemes/pension-schemes-rates"
+    }
+   ]
+  },
+  {
+   "slug": "what-to-do-with-a-windfall-explained",
+   "section": "Save and grow",
+   "title": "What to do with a windfall: a decision order that survives the emotion | BRYME Money",
+   "h1": "What to do with a windfall",
+   "dek": "Inheritance, bonus, payout: the six-step order that turns a one-off sum into permanent margin — without a single stock tip.",
+   "description": "What to do with a windfall: a six-step decision order (pause, debt, buffer, tax, goals, invest) that turns a one-off sum into permanent margin.",
+   "summary": "A method-first windfall plan: why the first step is doing nothing for a month, then the fixed order — expensive debt first, emergency buffer second, tax position third (including pension carry-back), near-term goals fourth, long-term investing last — with the behavioural notes (announcing, lifestyle inflation, advisor fees) that decide whether the money stays permanent.",
+   "related": [
+    "pension-annual-allowance-explained",
+    "emergency-fund-guide",
+    "debt-snowball-vs-avalanche"
+   ],
+   "sources": [
+    {
+     "label": "Wikipedia — Personal finance (planning framework)",
+     "url": "https://en.wikipedia.org/wiki/Personal_finance"
+    }
+   ]
+  },
+  {
+   "slug": "roth-ira-vs-401k-explained",
+   "section": "Save and grow",
+   "title": "Roth IRA vs 401(k): the two tax treatments, compared without the jargon | BRYME Money",
+   "h1": "Roth IRA vs 401(k), compared",
+   "dek": "Tax now or tax later, employer match or IRA freedom: the US retirement accounts compared on the four questions that decide the choice.",
+   "description": "Roth IRA vs 401(k) compared: tax-now versus tax-later, employer matches, limits and withdrawals — the four questions that decide the order. Not advice.",
+   "summary": "A four-question comparison of the two main US retirement accounts: when the tax lands (Roth = taxed now, traditional 401(k) = taxed on withdrawal), what the employer match is worth (free money first), contribution limits and income rules for each, and withdrawal/RMD mechanics — with the IRS comparison chart as the primary reference and the usual order (match, then Roth, then more 401(k)) explained as arithmetic rather than dogma.",
+   "related": [
+    "employer-pension-matching-explained",
+    "401k-explained",
+    "ira-and-roth-ira-explained"
+   ],
+   "sources": [
+    {
+     "label": "IRS — Roth comparison chart",
+     "url": "https://www.irs.gov/retirement-plans/roth-comparison-chart"
+    }
+   ]
   }
  ]
 }

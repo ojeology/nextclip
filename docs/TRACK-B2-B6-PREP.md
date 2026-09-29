@@ -1,8 +1,8 @@
 # Track B2 (Pinterest) + B6 (Forums) — prep pack
 
-Prepared 2026-09-27 under delegated authority ("do whatever best"). Both tracks
-are blocked on owner-created accounts; everything below is ready to execute the
-day accounts exist. Nothing here invents claims — every landing page is a live,
+Prepared 2026-09-27 under delegated authority ("do whatever best"). Pinterest publishing is blocked on the owner-created business account; the B6
+forums routine can begin without an account. The 180-pin kit remains prepared
+for the day the account exists. Nothing here invents claims — every landing page is a live,
 indexed route.
 
 ## B2 — Pinterest (prep-mode)
