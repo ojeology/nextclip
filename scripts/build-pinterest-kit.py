@@ -12,14 +12,15 @@ keyword description extractive from the page's own lede. Outputs:
   pinterest/HOWTO.md          owner posting guide (account = D3 owner decision)
 
 Deterministic (sha1 sidecar per pin): repeat builds do not churn the tree.
-Skips itself gracefully when Pillow is unavailable. Kit lives at the repo
-root, NOT in public/ — these are marketing assets, not site URLs.
+Skips itself gracefully when Pillow is unavailable. The source kit lives at the repo root; the deployed static mirror is public/pinterest/.
 """
 from __future__ import annotations
 
 import csv
 import hashlib
+import html
 import re
+import shutil
 import sys
 from pathlib import Path
 
@@ -80,7 +81,7 @@ NOINDEX = re.compile(r'<meta[^>]+name="robots"[^>]+content="noindex')
 
 
 def strip(t: str) -> str:
-    return re.sub(r"\s+", " ", re.sub(r"<[^>]+>", "", t)).strip()
+    return html.unescape(re.sub(r"\s+", " ", re.sub(r"<[^>]+>", "", t))).strip()
 
 
 def first_sentence(t: str) -> str:
@@ -98,7 +99,7 @@ def first_lede(t: str) -> str:
         tag = pm.group(0)[:80]
         if re.search(r'class="[^"]*(byline|kicker|crumb|meta|tagline)', tag):
             continue
-        s = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", "", pm.group(1))).strip()
+        s = html.unescape(re.sub(r"\s+", " ", re.sub(r"<[^>]+>", "", pm.group(1)))).strip()
         if len(s.split()) >= 8:
             return s
     return ""
@@ -148,9 +149,25 @@ def pick_pages(desk: str, n: int = 30):
     return cands[:n]
 
 
+def fit_ellipsis(draw, text, fnt, max_w):
+    text = text.rstrip()
+    suffix = "…"
+    while text and draw.textlength(text + suffix, font=fnt) > max_w:
+        text = text.rsplit(" ", 1)[0] if " " in text else text[:-1]
+    return text.rstrip(" ,.;:-") + suffix if text else suffix
+
+
+def pin_preview(text: str, limit: int = 130) -> str:
+    text = re.sub(r"\s+", " ", text).strip()
+    if len(text) <= limit:
+        return text
+    head = text[:limit - 1].rsplit(" ", 1)[0].rstrip(" ,.;:-")
+    return (head or text[:limit - 1].rstrip()) + "…"
+
+
 def render_pin(title, desk_label, dest, out_path, salt, subtitle=""):
     sidecar = out_path.with_suffix(".sha1")
-    sig = hashlib.sha1(f"pin-v2|{title}|{desk_label}|{salt}|{subtitle[:60]}".encode()).hexdigest()
+    sig = hashlib.sha1(f"pin-v3|{title}|{desk_label}|{salt}|{subtitle}".encode()).hexdigest()
     if sidecar.exists() and sidecar.read_text().strip() == sig and out_path.exists():
         return False
     img = Image.new("RGB", (W, H), BG)
@@ -160,20 +177,31 @@ def render_pin(title, desk_label, dest, out_path, salt, subtitle=""):
     # kicker
     d.text((90, 120), desk_label.upper(), font=font(34), fill=BRASS)
     d.line([(90, 185), (W - 90, 185)], fill=BRASS, width=2)
-    # headline
+    # Headline: cap lines and shorten visibly instead of letting it hit the footer.
     f_head = font(64)
     lines = wrap(d, title, f_head, W - 180)
+    while len(lines) > 8 and f_head.size > 48:
+        f_head = font(f_head.size - 2)
+        lines = wrap(d, title, f_head, W - 180)
+    if len(lines) > 8:
+        lines = lines[:8]
+        lines[-1] = fit_ellipsis(d, lines[-1], f_head, W - 180)
     y = 260
-    for ln in lines[:8]:
+    line_h = max(66, int(f_head.size * 1.34))
+    for ln in lines:
         d.text((90, y), ln, font=f_head, fill=INK)
-        y += 86
-    # subtitle: extractive lede line
+        y += line_h
+    # Subtitle: keep complete words and visibly mark any shortening.
     if subtitle:
         f_sub = font(34, bold=False)
-        y += 40
-        for ln in wrap(d, subtitle, f_sub, W - 180)[:6]:
+        y += 32
+        sub_lines = wrap(d, pin_preview(subtitle), f_sub, W - 180)
+        if len(sub_lines) > 4:
+            sub_lines = sub_lines[:4]
+            sub_lines[-1] = fit_ellipsis(d, sub_lines[-1], f_sub, W - 180)
+        for ln in sub_lines:
             d.text((90, y), ln, font=f_sub, fill=BRASS)
-            y += 52
+            y += 50
     # footer
     d.line([(90, H - 220), (W - 90, H - 220)], fill=BRASS, width=2)
     d.text((90, H - 180), "thebryme.com", font=font(40), fill=RUST)
@@ -194,7 +222,7 @@ def main():
             out = OUT / "boards" / board_slug / fname
             dest = "https://thebryme.com" + route
             desc = f"{lede} Read the full guide: {dest} (THE BRYME {desk} desk)."
-            if render_pin(title, board_name, dest, out, route, lede[:140]):
+            if render_pin(title, board_name, dest, out, route, lede):
                 made += 1
             rows.append([board_name, title, desc[:490], dest, f"boards/{board_slug}/{fname}"])
     # prune orphan images/sidecars from earlier selections
@@ -215,20 +243,32 @@ in the house style. `manifest.csv` has, per pin: board, title, description
 (keyword-rich, extractive from the page), destination URL, image path.
 
 ## Posting (owner account = roadmap decision D3)
-1. Create the Pinterest account (or a business account under an existing one).
-2. Create 6 boards using the exact board names in `manifest.csv`.
-3. Pin in manifest order (strongest pages first per board). Native pin flow:
-   choose the image, paste the title + description + destination URL.
-4. Suggested cadence: 2-3 pins/day per account keeps distribution natural;
-   the full kit lands in ~4-6 weeks.
+1. Complete the owner-held Business account and click Verify after the website claim.
+2. Create six boards using the exact names in `manifest.csv`.
+3. For each Pin, use the matching image, title, description and destination URL.
+   Paste the destination URL into Pinterest's link field as well as keeping it in
+   the description. If an alt-text field is shown, use the page's meta description.
+4. Start with 3 fresh Pins per week; do not upload all 180 at once. The first
+   12-post, four-week sequence is in `launch-schedule-4-weeks.csv`.
+5. Review impressions, saves and outbound clicks weekly; adjust later batches
+   from observed performance, not guesses.
 
-Notes: descriptions already contain the destination URL in text form (safe if
-the scheduler strips links); each pin's clickable link is the destination_url.
-Vertical 2:3 is Pinterest's recommended format — the site's horizontal OG
-cards (`assets/og/`) are fallbacks only if you prefer pixel-exact site imagery.
+Vertical 2:3 is Pinterest's recommended format. Do not add unverified claims,
+clickbait overlays or paid conversion tracking without a separate owner decision.
 """
     (OUT / "HOWTO.md").write_text(howto, encoding="utf-8")
-    print(f"pinterest: {made} new pins, {len(rows)} rows in manifest")
+    # Keep the already-shipped static download mirror identical to the source kit.
+    public_kit = PUB / "pinterest"
+    if public_kit.exists():
+        shutil.rmtree(public_kit)
+    public_kit.mkdir(parents=True, exist_ok=True)
+    shutil.copy2(OUT / "manifest.csv", public_kit / "manifest.csv")
+    shutil.copy2(OUT / "HOWTO.md", public_kit / "HOWTO.md")
+    schedule = OUT / "launch-schedule-4-weeks.csv"
+    if schedule.is_file():
+        shutil.copy2(schedule, public_kit / schedule.name)
+    shutil.copytree(OUT / "boards", public_kit / "boards")
+    print(f"pinterest: {made} new pins, {len(rows)} rows in manifest; public mirror synced")
 
 
 if __name__ == "__main__":

@@ -5,16 +5,15 @@ in the house style. `manifest.csv` has, per pin: board, title, description
 (keyword-rich, extractive from the page), destination URL, image path.
 
 ## Posting (owner account = roadmap decision D3)
-1. Create the Pinterest account (or a business account under an existing one).
-2. For the full kit, create the 6 boards using the exact names in `manifest.csv`.
-   The Track B prep pack lists five starter boards; `What to Watch Tonight` can
-   be added with the sixth board or held for a later wave.
-3. Pin in manifest order (strongest pages first per board). Native pin flow:
-   choose the image, paste the title + description + destination URL.
-4. Suggested launch cadence: 3-5 fresh pins per week. Review outbound clicks
-   weekly and adjust from real results; the full kit can be paced to fit.
+1. Complete the owner-held Business account and click Verify after the website claim.
+2. Create six boards using the exact names in `manifest.csv`.
+3. For each Pin, use the matching image, title, description and destination URL.
+   Paste the destination URL into Pinterest's link field as well as keeping it in
+   the description. If an alt-text field is shown, use the page's meta description.
+4. Start with 3 fresh Pins per week; do not upload all 180 at once. The first
+   12-post, four-week sequence is in `launch-schedule-4-weeks.csv`.
+5. Review impressions, saves and outbound clicks weekly; adjust later batches
+   from observed performance, not guesses.
 
-Notes: descriptions already contain the destination URL in text form (safe if
-the scheduler strips links); each pin's clickable link is the destination_url.
-Vertical 2:3 is Pinterest's recommended format — the site's horizontal OG
-cards (`assets/og/`) are fallbacks only if you prefer pixel-exact site imagery.
+Vertical 2:3 is Pinterest's recommended format. Do not add unverified claims,
+clickbait overlays or paid conversion tracking without a separate owner decision.

@@ -4,6 +4,13 @@
 - Bing accepted **100 URLs** with `--limit 100`; queue now **2,765**. A 500-URL attempt was rejected with Bing ErrorCode 8 despite 100 daily quota remaining. `scripts/submit-bing-queue.py` now defaults and caps at 100; dry-run confirms the next batch is 100.
 - `docs/PINTEREST-OWNER-ACTION.md`, `docs/TRACK-B2-B6-PREP.md` and `pinterest/HOWTO.md` now agree on a 3–5 fresh-pins/week launch cadence; the prep pack clarifies five starter boards versus six in the full 180-pin kit. Corrected the B6 prep pack so it agrees with the answer-first routine: real human participation, no automated desk personas.
 
+## 2026-09-29 — Pinterest kit checked and launch-ready
+
+- Checked the 180-pin kit at image level and found truncation in the lede overlay. Fixed the generator to shorten at word boundaries, add a visible ellipsis and keep text clear of the footer; regenerated all 180 JPEGs and synchronized the public mirror.
+- Added `docs/PINTEREST-LAUNCH-PLAN.md` and `pinterest/launch-schedule-4-weeks.csv`: a 12-Pin starter schedule (3/week, six boards rotated). All 180 assets are 1000 × 1500 px; all images and local destinations resolve; the 12 starter destinations returned HTTP 200; public mirrors are byte-identical.
+- Account and domain-claim verification tag are already live, but the owner must click Pinterest **Verify** and publish manually. No credentials or posts were handled by the agent.
+- Bing quota retry at the start of this turn hit “exceeded daily URL submission quota”; no queue entries were removed. Queue remains 2,765; next batch cap is 100.
+
 ## 2026-09-29 — Tier-B wave 1 + B6 operating routine shipped
 
 - **Tier B wave 1: 26 additions** (six each in Sport, Entertainment, Fitness and Money; two in Tech after inventory check). Each article is in the desk's source data, has contextual internal links and verified references where cited; money pages have jurisdiction labels/taxonomy where relevant. Pages are present in the routed allowlist and their desk sitemaps.

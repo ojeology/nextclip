@@ -36,11 +36,11 @@ Official instructions: [Pinterest Help — Claim your website](https://help.pint
 
 ## After verification
 
-- Start with the prepared boards and seeded URLs in
-  `docs/TRACK-B2-B6-PREP.md`; the committed Pinterest kit contains 180 designs.
-- Use the house pin spec there: 1000 × 1500 (2:3), text ≤20% of the canvas,
-  and alt text drawn from the destination page’s actual meta description.
-- Begin at 3–5 fresh pins per week. Review outbound clicks weekly; do not use
+- Follow `docs/PINTEREST-LAUNCH-PLAN.md` for the first 12 posts and four-week
+  cadence; exact fields are in `pinterest/launch-schedule-4-weeks.csv`.
+- The full kit contains 180 designs across the six exact board names in
+  `pinterest/manifest.csv`. Use 1000 × 1500 px (2:3) images and page-derived alt text.
+- Begin at 3 fresh Pins per week. Review outbound clicks weekly; do not use
   fabricated claims, clickbait, affiliate-style overlays or unverified dates.
 - This is organic publishing only. Do not install the Pinterest advertising
   conversion tag or enable paid campaigns without a separate owner decision.

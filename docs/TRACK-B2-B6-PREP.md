@@ -14,11 +14,16 @@ landing page is a live, indexed route.
 fit is the writers desk (people literally plan careers on it), fitness plans,
 and home checklists — all saving-oriented, none speculative.
 
-Pin spec: 1000×1500 (2:3), text ≤ 20% of canvas, alt text = the page's actual
-meta description. Five starter boards are listed below. The committed manifest
-also has a sixth board, “What to Watch Tonight”; choose five or all six for the
-first posting wave, but use the board names in `pinterest/manifest.csv` exactly.
-No affiliate-style overlays or clickbait text — house honesty rules apply:
+Pin spec: 1000×1500 (2:3, Pinterest’s recommended aspect ratio); keep essential
+copy within the frame and use page-derived alt text if Pinterest presents that
+field. Pinterest’s [image specs](https://help.pinterest.com/en/business/article/pinterest-product-specs)
+warn that taller-than-2:3 images may be cropped in feeds. Five starter boards
+are listed below. The committed manifest
+also has a sixth board, “What to Watch Tonight”; the recommended first wave
+uses all six across four weeks at three Pins per week. See
+`docs/PINTEREST-LAUNCH-PLAN.md` and `pinterest/launch-schedule-4-weeks.csv`.
+Use the board names in `pinterest/manifest.csv` exactly. No affiliate-style
+overlays or clickbait text — house honesty rules apply:
 
 | Board | Seed pins (live routes) |
 |---|---|
