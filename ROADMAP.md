@@ -1,4 +1,34 @@
 
+## 2026-09-28 — Track B: B2 (Pinterest kit) DONE
+
+**B2 (Phase 1) — 6 boards × 30 pins (180) — DONE.** `scripts/build-pinterest-kit.py`
+(standalone like `build-ecosystem.py`, NOT in the npm chain — no site impact, no deploy cost).
+- **Boards (6):** Paid Writing & Freelance Careers · Home & DIY That Actually Works · Money
+  Guides in Plain English · Tech Buying & Fixes · Fitness, No Myths · What to Watch Tonight
+  (sport deliberately off-Pinterest — poor demographic fit).
+- **Pins (180):** vertical 1000×1500 (2:3) JPEGs in the house "Editorial" palette
+  (warm paper/navy/brass, DejaVu serif): board kicker · headline (page H1) · extractive
+  lede subtitle · `thebryme.com` footer. Selection deterministic: question/how-to titles
+  first, then word count desc, route asc; noindex excluded; lede ≥8 words.
+- **Manifest** `pinterest/manifest.csv` (board, pin_title, pin_description (extractive,
+  keyword-rich, ≤490 chars), destination_url, image) + `pinterest/HOWTO.md` owner guide
+  (posting cadence 2-3/day; **D3 owner decision = the Pinterest account itself**).
+- Deterministic sha1 sidecars (pin-v2) — repeat builds do not churn the tree; orphan
+  pruning keeps boards at exactly 30 images.
+
+**Fixes along the way:** (1) `build-routing.py` sweeps every root dir into `writers/` —
+the kit was swept and next-build-deleted; `pinterest` added to `KEEP_AT_ROOT_DIRS`
+(lesson: anything kept at root must be allowlisted there). (2) Lede extraction in both
+`build-pinterest-kit.py` and `build-fact-boxes.py` was taking the FIRST `<p>` in `<main>`
+— a byline/kicker on writers/home/money/fitness pages, which rejected 509/518 writers
+pages; now skips byline/kicker/crumb/meta/tagline classes and takes the first substantial
+paragraph. (3) Fact-box "top-100" was word-count-only → 94/100 landed on home; now
+**proportional per-desk allocation** (largest remainder): writers 23, tech 23, home 16,
+ent 10, sports 10, fitness 12, money 6.
+
+Post-change: at10=2551 preserved, 4 gates green, 180/180 pins on disk (18MB). Next: B3
+("State of Paid Writing 2026" data report + HARO routine).
+
 ## 2026-09-28 — A10 CORRECTED + source-pollution incident fixed (same-day)
 
 **A10 correction (important):** the first A10 finding "consent completely absent" was WRONG.

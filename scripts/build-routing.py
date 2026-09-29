@@ -31,7 +31,7 @@ ROOT = Path(__file__).resolve().parents[1]
 PROPS = ["sports", "entertainment", "tech", "fitness", "home", "money"]
 SITEMAP_PROPS = ["sports", "entertainment", "tech", "fitness", "home", "money"]  # live, indexable properties only
 KEEP_AT_ROOT_DIRS = {".git", ".github", "assets", "scripts", "content", "docs", "server", "reports",
-                     "node_modules", "public", "ecosystem", ".git"} | set(PROPS) | {"writers"}
+                     "node_modules", "public", "ecosystem", "pinterest", ".git"} | set(PROPS) | {"writers"}
 KEEP_AT_ROOT_FILES = {"robots.txt", "_redirects", "favicon.ico", "package.json",
                       "package-lock.json", "render.yaml", "site.config.json",
                       "seo-pilot-matrix.csv"}

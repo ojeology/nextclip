@@ -34,8 +34,20 @@ def first_sentence(t):
             return s.split(sep)[0].strip() + sep.strip()
     return s[:220]
 
+
+def first_lede(t):
+    body = t[t.find("<main"):] if "<main" in t else t
+    for pm in P_TAG.finditer(body):
+        tag = pm.group(0)[:80]
+        if re.search(r'class="[^"]*(byline|kicker|crumb|meta|tagline)', tag):
+            continue
+        s = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", "", pm.group(1))).strip()
+        if len(s.split()) >= 8:
+            return s
+    return ""
+
 def build_index():
-    cands = []
+    by_desk = {}
     for desk in DESKS:
         for f in (PUB / desk).rglob("index.html"):
             t = f.read_text(encoding="utf-8")
@@ -50,12 +62,20 @@ def build_index():
             route = "/" + f.parent.relative_to(PUB).as_posix() + "/"
             if route.count("/") < 3:  # hubs (desk root + top-level hub pages) are not explainers
                 continue
-            pm2 = P_TAG.search(t[t.find("<main"):])
-            if not pm2 or len(strip(pm2.group(1)).split()) < 8:
+            if not first_lede(t):
                 continue
-            cands.append((words(t), route))
-    cands.sort(key=lambda x: (-x[0], x[1]))
-    return {route for _w, route in cands[:100]}
+            by_desk.setdefault(desk, []).append((words(t), route))
+    # proportional allocation across desks (largest remainder), ranked in-desk
+    total_pages = sum(len(v) for v in by_desk.values())
+    quota = {d: len(v) * 100 / total_pages for d, v in by_desk.items()}
+    alloc = {d: int(q) for d, q in quota.items()}
+    for d in sorted(quota, key=lambda d: (-(quota[d] - alloc[d]), d))[:100 - sum(alloc.values())]:
+        alloc[d] += 1
+    top = set()
+    for desk, items in by_desk.items():
+        items.sort(key=lambda x: (-x[0], x[1]))
+        top.update(route for _w, route in items[: alloc[desk]])
+    return top
 
 def apply_one(f, route):
     t = f.read_text(encoding="utf-8")
@@ -65,10 +85,10 @@ def apply_one(f, route):
     if not m:
         return "skip"
     h1 = strip(m.group(1))
-    pm = P_TAG.search(t[t.find("<main"):])
-    if not pm:
+    lede_src = first_lede(t)
+    if not lede_src:
         return "skip"
-    lede = first_sentence(pm.group(1))
+    lede = first_sentence(lede_src)
     dm = DATE.search(strip(t[:6000]))
     vdate = strip(dm.group(0)) if dm else "dated inline"
     n_src = t.count('rel="noopener"')
