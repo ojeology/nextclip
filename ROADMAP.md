@@ -1,3 +1,9 @@
+## 2026-09-29 — Bing quota-safe retry + Pinterest owner checklist
+
+- Bing accepted **100 URLs** with `--limit 100`; queue now **2,765**. A 500-URL attempt was rejected with Bing ErrorCode 8 despite 100 daily quota remaining. `scripts/submit-bing-queue.py` now defaults and caps at 100; dry-run confirms the next batch is 100.
+- Added `docs/PINTEREST-OWNER-ACTION.md` with the owner-only account/domain-claim steps based on Pinterest Help. The personalized verification tag must come from the owner before it is added through the generator. No account was created and no forum posts were made.
+- Corrected the B6 prep pack so it agrees with the answer-first routine: real human participation, no automated desk personas.
+
 ## 2026-09-29 — Tier-B wave 1 + B6 operating routine shipped
 
 - **Tier B wave 1: 26 additions** (six each in Sport, Entertainment, Fitness and Money; two in Tech after inventory check). Each article is in the desk's source data, has contextual internal links and verified references where cited; money pages have jurisdiction labels/taxonomy where relevant. Pages are present in the routed allowlist and their desk sitemaps.

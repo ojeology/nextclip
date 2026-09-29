@@ -39,7 +39,7 @@ def submit(key: str, urls: list[str]) -> tuple[bool, str]:
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--dry-run", action="store_true")
-    parser.add_argument("--limit", type=int, default=500)
+    parser.add_argument("--limit", type=int, default=100)
     args = parser.parse_args()
 
     key = os.environ.get("BING_WEBMASTER_API_KEY", "").strip()
@@ -50,7 +50,7 @@ def main() -> int:
         print("Bing queue is empty.")
         return 0
 
-    batch_size = max(1, min(args.limit, 500))
+    batch_size = max(1, min(args.limit, 100))  # Bing daily quota: 100 URLs
     if args.dry_run:
         print(f"DRY RUN: {len(urls)} queued URLs; next batch would contain {min(batch_size, len(urls))}")
         return 0

@@ -26,8 +26,10 @@ meta description. Five boards to start, each seeded with the pages below
 Cadence: 3–5 fresh pins/week, repin never > 1×/day per board. Weekly: check
 outbound clicks per pin; kill boards under ~10 clicks/week after 6 weeks.
 
-**Owner action needed:** create the Pinterest business account (thebryme.com
-domain claim + website verification meta tag, which we can generate on request).
+**Owner action needed:** create the Pinterest business account and claim
+`https://thebryme.com/`. See `docs/PINTEREST-OWNER-ACTION.md` for the verified
+setup flow. Once Pinterest supplies its personalized verification tag, send the
+exact value so it can be added through the source generator.
 
 ## B6 — Forums / communities (answer-first, never link-dropping)
 
@@ -50,8 +52,7 @@ first post; rules change):
 Weekly budget: 2 hours, 3–5 substantive answers, 0–1 link. Track: referral
 sessions per source in GA4; drop communities with zero 4-week referrals.
 
-**Owner action needed:** the accounts themselves. Recommended: one house
-account per desk (bryme_writers etc.) rather than a personal identity.
+**Owner action:** participation itself belongs to a real human. Use the answer-first policy in `docs/FORUMS-ROUTINE.md`; do not create or automate desk personas. Follow each community's current rules and disclose affiliation if asked.
 
 ## What is NOT prep'd (deliberately)
 

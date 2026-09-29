@@ -1,3 +1,11 @@
+## 2026-09-29 — Bing queue/quota operation
+
+Bing accepted 100 URLs using `--limit 100`; remaining queue 2,765. The preceding
+500-URL request was rejected (ErrorCode 8) while Bing reported 100 quota remaining.
+The submitter now defaults and hard-caps its request at 100 per day; dry-run
+verified the next batch size. Pinterest remains owner-gated; the account/domain
+claim checklist is in `docs/PINTEREST-OWNER-ACTION.md`.
+
 ## 2026-09-29 — Tier-B wave 1 + B6 operating routine shipped
 
 - **Tier B wave 1: 26 additions** (six each in Sport, Entertainment, Fitness and Money; two in Tech after inventory check). Each article is in the desk's source data, has contextual internal links and verified references where cited; money pages have jurisdiction labels/taxonomy where relevant. Pages are present in the routed allowlist and their desk sitemaps.
