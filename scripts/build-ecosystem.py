@@ -2635,6 +2635,17 @@ def sports_pages():
                   head("sports", "The transfer maths, with the working shown \u2014 never betting.")
                   + _std.AMORT_BODY + foot("sports")))
 
+    # Desk tool (2026-09-29): the darts checkout trainer — exhaustive route
+    # search with the working shown, plus the bryme.checkout.v1 share card.
+    _dc_title = ("Darts checkout trainer \u2014 every legal route, working shown "
+                 "| BRYME Sport")
+    _dc_dek = ("Any score from 2 to 170 in, every legal checkout route out \u2014 fewest darts first, "
+               "the working shown, a shareable result card, and the bogey numbers computed, not quoted. "
+               "Runs in your browser; game arithmetic, never betting advice.")
+    pages.append(("/darts-checkout-trainer/", _dc_title, _dc_dek[:155],
+                  head("sports", "Every legal checkout, with the working shown \u2014 never betting.")
+                  + _std.DARTS_CHECKOUT_BODY + foot("sports")))
+
     # Desk tool (2026-09-25 batch #3): wage-to-revenue ratio checker - the
     # squad-cost arithmetic behind the PSR explainer, working shown.
     _wr_title = ("Wage-to-revenue ratio checker \u2014 the number behind every "

@@ -1,6 +1,6 @@
 # THE BRYME
 
-> A family of seven independent, specialist publications under one house discipline: research before publishing, dates on anything time-sensitive, sources for every claim, and no fabricated experience or statistics. Edited from Lagos, Nigeria, and written for a global readership. 2551 pages across the desks.
+> A family of seven independent, specialist publications under one house discipline: research before publishing, dates on anything time-sensitive, sources for every claim, and no fabricated experience or statistics. Edited from Lagos, Nigeria, and written for a global readership. 2552 pages across the desks.
 
 ## The house
 
@@ -51,7 +51,7 @@ Honest consumer technology: spec floors, refurb buying, settings that fix real p
 
 ## BRYME Sport
 
-Explainers and analysis with sources and verification dates. No betting content, no odds, no tips. 188 pages.
+Explainers and analysis with sources and verification dates. No betting content, no odds, no tips. 189 pages.
 
 - [Desk home](https://thebryme.com/sports/)
 - [Why darts starts at 501](https://thebryme.com/sports/why-darts-starts-at-501-explained/)

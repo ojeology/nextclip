@@ -269,3 +269,80 @@ WAGE_RATIO_BODY = """
 SPO_TOOLS.append(("wage-revenue-ratio-calculator", "Wage-to-revenue ratio checker",
                   "Revenue and wage bill in \u2014 the ratio, the UEFA 70% and PL 85% context lines and the revenue needed to reach them. Working shown.",
                   "how-psr-and-points-deductions-work"))
+
+
+# ---------------------------------------------------------------------------
+# Desk tool (2026-09-29): the darts checkout trainer — every legal route to any
+# number, computed exhaustively in the browser, the working shown. The result
+# card is a share object (bryme.checkout.v1). Arithmetic only; the house rule
+# stands: this desk never touches betting.
+
+DARTS_CHECKOUT_SLUG = "darts-checkout-trainer"
+
+SPO_TOOLS.append(
+    (DARTS_CHECKOUT_SLUG, "Darts checkout trainer",
+     "Any score from 2 to 170 in, every legal checkout route out \u2014 fewest darts first, the working shown, "
+     "a shareable result card, and the bogey numbers computed, not quoted.",
+     "why-darts-starts-at-501-explained"),
+)
+
+DARTS_CHECKOUT_BODY = """
+<main id="main"><div class="wrap">
+<nav class="crumb"><a href="/sports/">Sport</a> / Darts checkout trainer</nav>
+<section class="cover"><p class="kicker">Tool &middot; desk</p>
+<h1 class="cover-title" style="font-size:clamp(30px,4.6vw,48px)">Darts checkout trainer</h1>
+<p class="byline">BRYME Sport desk &middot; published 2026-09-29 &middot; runs entirely in your browser &mdash; nothing is stored or sent &middot; game arithmetic, never betting advice</p></section>
+<section class="section alt"><div class="wrap"><p class="lede"><b>In one line:</b> put in the score you have left and get the checkout &mdash; fewest darts first, every step of the working shown, how many legal routes exist, and a result card you can share.</p></div></section>
+<section class="section"><div class="prose">
+<p>Every checkout is the same three-dart puzzle: reach exactly zero with the last dart landing on a double. That constraint is the whole game &mdash; and it is small enough that a browser can search every legal combination in one pass. This trainer does exactly that. It quotes no folklore table: it computes the routes, counts them, and shows the working.</p>
+<style>
+.pr-card{border:1px solid var(--line-strong);border-radius:12px;background:var(--sheet);padding:20px 22px;max-width:760px}
+.pr-flds{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.pr-flds label{display:flex;flex-direction:column;gap:6px;font-weight:600;font-size:14px}
+.pr-flds input{padding:10px 12px;border:1px solid var(--line-strong);border-radius:8px;font-size:16px;background:var(--paper);color:var(--ink)}
+.pr-out{margin-top:16px;border-left:3px solid var(--accent);background:var(--paper);padding:12px 16px;border-radius:8px}
+.pr-out h3{margin:0 0 8px;font-family:var(--serif)}
+.pr-out p{margin:8px 0;font-size:15px}
+.pr-warn{color:#a33;font-weight:700}
+.pr-privacy{font-size:12.5px;color:var(--muted);margin-top:14px}
+</style>
+<div id="darts-checkout-trainer"></div>
+<noscript>
+<p><b>The tool needs JavaScript. Here is the honest framework, statically:</b></p>
+<ul>
+<li><b>The rule:</b> a checkout ends on a double &mdash; D1 to D20, or the bull, which counts as double 25.</li>
+<li><b>The highest checkout:</b> 170 &mdash; treble 20, treble 20, bull. The televised &ldquo;big fish&rdquo;.</li>
+<li><b>The bogey numbers:</b> 1, 159, 162, 163, 165, 166, 168 and 169, plus everything above 170, have no three-dart checkout. Every other score from 2 to 170 can be finished. Folklore sometimes lists 157 and 158 as impossible &mdash; the arithmetic disagrees: 157 = treble 19, treble 20, double 20; 158 = treble 20, treble 20, double 19.</li>
+<li><b>Choosing among routes:</b> fewest darts first; then the finish double players practise most (D20, then the bull, then the even doubles); then the biggest first and second darts. Any legal route scores the same.</li>
+<li><b>What the numbers don&rsquo;t know:</b> your throw, your rhythm, the match situation. The arithmetic gives the route; the player gives the visit.</li>
+</ul>
+</noscript>
+<script src="/assets/darts-checkout-tool.js" defer></script>
+
+<h2 id="how">How the trainer works</h2>
+<p>It is an exhaustive search, not a model. Every legal dart is one of sixty-two targets (singles, doubles, trebles, the outer bull and the bull); a checkout is any sequence of up to three of those targets that sums to your score with the final dart on a double. The browser enumerates them all &mdash; a score like 100 has two routes (treble 20, double 20 and bull, bull), and the trainer reports both, with the working for the one it recommends.</p>
+<p>The recommendation rule is stated above deliberately: when many routes exist, hidden preferences are how folklore spreads. Ours are visible and checkable.</p>
+
+<h2 id="bogey">The bogey numbers, computed</h2>
+<p>Some scores cannot be finished at all. The no-checkout list is <b>1, 159, 162, 163, 165, 166, 168, 169</b> and everything above 170 &mdash; not because players dislike those numbers, but because no three darts ending on a double sum to them. The two most famous near-misses are actually legal: <b>157</b> (treble 19, treble 20, double 20) and <b>158</b> (treble 20, treble 20, double 19). The trainer checks this in front of you &mdash; enter any of the impossible numbers and it says so.</p>
+
+<h2 id="setups">Setups worth knowing by heart</h2>
+<p>Experienced players do not compute routes during a visit &mdash; they memorise the common setups until the finish is automatic. The ones that come up most are worth drilling before anything else. <b>Any even score of 40 or below</b> is a single dart: 40 is double 20, 36 is double 18, 32 is double 16, and so on down to 2, which is double 1. When the score is under 40 and odd, the first dart exists only to set up that double: 39 is single 3 into double 18, 33 is single 1 into double 16.</p>
+<p>The middle band is where matches are won or lost. Scores from <b>41 to 60</b> are two-dart finishes and they are drilled obsessively: 60 is treble 20, double nothing &mdash; leave it and you need three more darts &mdash; while 50 is bull, 44 is treble 12, double 4, and 41 is the awkward single 1, double 20 that every player argues about. Above 60 the three-dart routes take over, and the setups worth memorising are the ones the trainer recommends first: <b>81</b> for instance is treble 15 into double 18, and <b>100</b> is treble 20, double 20 &mdash; the classic &ldquo;ton&rdquo; checkout that separates steady finishers from hopeful ones.</p>
+<p>The last habit is the one this trainer is built around: when you practise, check the working, not just the route. If you know why treble 20, treble 20, bull is the only way to 170, you also know why leaving 169 in a real leg is a mistake the arithmetic cannot rescue. Route knowledge that survives pressure is route knowledge that was computed at least once, out loud.</p>
+
+<h2 id="share">The result card</h2>
+<p>Every result carries a small share object (<code>bryme.checkout.v1</code>: the score, the dart count, the route, the working, and the route count). The <b>Download result card</b> button draws it as an image card in the house style; <b>Share this checkout</b> hands the text to your phone&rsquo;s share sheet, or copies it where there is no share sheet. The card states the route and the working &mdash; a number without its working is just a claim.</p>
+
+<h2 id="more">The game behind the arithmetic</h2>
+<p>Why 501, and why finish on a double at all? The desk&rsquo;s explainer on <a href="/why-darts-starts-at-501-explained/">why darts starts at 501</a> covers the history and the double-out rule; this trainer is the arithmetic side of that same rule. For the table maths in football, see the <a href="/league-tiebreak-calculator/">league tiebreak calculator</a>.</p>
+
+<p class="byline">This tool never places, suggests or prices a bet. It does arithmetic on the number you enter, and it shows every line so you can check it.</p>
+</div></section>
+<section class="section alt"><div class="section-head"><p class="kicker">Next</p><h2>More from the shelf.</h2></div>
+<ul class="link-rows">
+<li><a href="/why-darts-starts-at-501-explained/"><span><b>Why darts starts at 501</b><small>Double out: the rule this trainer computes.</small></span><span class="meta">Explainer</span></a></li>
+<li><a href="/league-tiebreak-calculator/"><span><b>League tiebreak calculator</b><small>Same method, different board: the working shown.</small></span><span class="meta">Tool</span></a></li>
+</ul></section>
+</div></main>
+"""

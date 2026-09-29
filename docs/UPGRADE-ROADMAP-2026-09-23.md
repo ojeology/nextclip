@@ -1,4 +1,38 @@
 
+## 2026-09-29 — Track B: B4 (shareable tool) DONE — darts checkout trainer
+
+**B4 (Phase 3) — ONE shareable tool with a result-card share object — DONE.**
+**D1 decided: darts checkout trainer** (not a Hyrox predictor). Reasons, documented for
+the owner to overrule: (1) a `hyrox-pace-planner` ALREADY exists on the fitness desk
+(`build-ecosystem.py` skip-list) — a predictor would collide; (2) a "predictor" needs an
+accuracy claim the house cannot source (master brief: no fabricated stats), while checkout
+arithmetic is pure verifiable maths — we even EXHAUSTIVELY COMPUTED the truth instead of
+quoting folklore; (3) darts checkout demand is year-round with a Dec/Jan World Championship
+spike (feeds B5's event calendar).
+- **Page:** `/sports/darts-checkout-trainer/` (38.6KB, sports editorial bar cleared:
+  514→~800 words, at10=2552/2552 preserved). Generator-level: `sports_tools_data.py`
+  (SPO_TOOLS row + DARTS_CHECKOUT_BODY), written by `build-ecosystem.py` (run EXPLICITLY —
+  it is not in the npm chain), taxonomy entry in `sports_hub_data.py` SPO_SKIP_SLUGS
+  (desk tool = toolbox band).
+- **Tool:** `assets/darts-checkout-tool.js` (CSP-safe external file — site CSP blocks
+  inline scripts): exhaustive search of every legal checkout (finish on a double:
+  D1-D20 or DB), fewest darts first, stated transparent preference rule (D20 → bull →
+  even doubles finish, then biggest first/second darts), route count + alternates, full
+  working line, noscript framework in the page.
+- **Share object `bryme.checkout.v1`:** score, darts, route, working, route count, URL —
+  rendered as a house-style canvas result card (Download PNG) + Web Share/clipboard text.
+- **Verified maths (computed, not quoted):** highest checkout 170 (T20 T20 bull); NO
+  3-dart checkout exists for 1, 159, 162, 163, 165, 166, 168, 169 and 171-180 — every
+  other score 2-170 is finishable. Folklore often lists 157/158 as bogey numbers; the
+  arithmetic says they are legal (157 = T19 T20 D20, 158 = T20 T20 D19) — the page says
+  so explicitly. This is the house rule in action: no fabricated stats, show the working.
+- **Wiring:** xlink `why-darts-starts-at-501-explained → darts-checkout-trainer` in
+  `inject-tool-xlinks.py`; hub row links the 501 explainer as the guide partner.
+
+Post-change: pages=2552 (additive, +1), at10=2552, avg=10.0, sub8=0, 4 gates green.
+Next: B5 (event calendar — 4 pre-event explainers/quarter, the Discover door). Session
+truncation count: #22 (7th lossless trees-in-commit recovery at `4085eb4`).
+
 ## 2026-09-28 — Track B: B3 (data report + HARO routine) DONE
 
 **B3 (Phase 2) — DONE.**

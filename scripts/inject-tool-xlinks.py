@@ -20,6 +20,7 @@ MAP = {
     "sports/champions-league-table": ["sports/league-tiebreak-calculator", "sports/points-race-calculator"],
     "sports/the-weekend-ahead": ["sports/points-race-calculator"],
     "sports/how-the-transfer-window-works": ["sports/transfer-amortisation-calculator"],
+    "sports/why-darts-starts-at-501-explained": ["sports/darts-checkout-trainer"],
     "sports/how-football-transfer-medicals-work": ["sports/transfer-amortisation-calculator"],
     "sports/how-transfer-fee-amortisation-works": ["sports/transfer-amortisation-calculator"],
     "sports/transfer-window-explained": ["sports/transfer-amortisation-calculator"],

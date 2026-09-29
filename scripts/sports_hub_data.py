@@ -42,6 +42,7 @@ SPO_SKIP_SLUGS = {
     "transfer-amortisation-calculator",  # desk tool (growth batch 2026-09-25)
     "league-tiebreak-calculator",  # desk tool (growth batch 2, 2026-09-25)
     "wage-revenue-ratio-calculator",  # desk tool (growth batch 3, 2026-09-25)
+    "darts-checkout-trainer",  # desk tool (B4 shareable tool, 2026-09-29)
 }
 SPO_SKIP_SUFFIX = ("-fixtures", "-results", "-table", "-top-scorers", "-transfers")
 
