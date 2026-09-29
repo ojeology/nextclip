@@ -41,10 +41,10 @@
   },
   "adsterra": {
     "enabled": true,
-    "key": "",
-    "host": "",
+    "key": "7cf8bb4b0854f64ff4f20a3a19146e91",
+    "host": "pl31572329.profitableratecpmnetwork.com",
     "format": "native-banner",
-    "note": "Bottom-of-page Adsterra Native Banner. Paste the key and the invoke host from Adsterra's snippet to switch it on -- no code change. Native Banner ONLY: popunder and social bar are intrusive and would breach AdSense's site behavior policy. Loader is server-rendered on purpose, because Adsterra support verifies installs via View page source."
+    "note": "LIVE: Adsterra Native Banner, bottom of page, on content pages only. Key and host taken from the owner's Adsterra snippet (2026-09-29). Native Banner ONLY -- the account's popunder/social-bar unit is refused by scripts/inject-ads.py because AdSense's site behavior policy bars pages carrying pop-ups, and the classic atOptions banner is declined because its invoke.js uses document.write. Loader is server-rendered on purpose: Adsterra support verifies installs via View page source. Set key/host back to empty to switch the band off."
   },
   "ads": {
     "providerOrder": [

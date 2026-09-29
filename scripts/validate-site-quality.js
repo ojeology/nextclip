@@ -18,6 +18,21 @@ const ANALYTICS=(()=>{try{return json("site.config.json").analytics||{}}catch{re
 const GA_ON=!!ANALYTICS.enabled&&/^G-[A-Z0-9]{6,}$/.test(String(ANALYTICS.gaId||""));
 const GA_ID=GA_ON?String(ANALYTICS.gaId):"";
 const PINTEREST_VERIFICATION=String((json("site.config.json").pinterest||{}).domainVerification||"").trim();
+// Third-party ad networks are banned by default -- Monetag, PropellerAds, the
+// Adsterra social bar and popunders, and the classic atOptions banner all fail
+// this build. One exception exists and it is config-driven, not hardcoded:
+// when site.config.json carries BOTH adsterra.key and adsterra.host, exactly
+// that one unit (the Native Banner, bottom of page, content pages only) is
+// sanctioned. Clear the key and the exception disappears by itself, so the
+// ban is always in force for anything else. Owner-approved reversal of the
+// 20 Sep removal, recorded 2026-09-29.
+const ADSTERRA=(()=>{try{return json("site.config.json").adsterra||{}}catch{return{}}})();
+const ADSTERRA_KEY=String(ADSTERRA.key||"").trim();
+const ADSTERRA_HOST=String(ADSTERRA.host||"").trim();
+const SANCTIONED_AD=new RegExp(
+  (ADSTERRA_KEY&&ADSTERRA_HOST
+    ? ADSTERRA_HOST.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")+"\\/"+ADSTERRA_KEY+"\\/invoke\\.js"
+    : "(?!)")+"|data-adband=\"adsterra\"","gi");
 const allowDoc=fs.existsSync(path.join(ROOT,"content/index-allowlist.routed.json"))?json("content/index-allowlist.routed.json"):json("content/index-allowlist.json"), allow=new Set(allowDoc.routes);
 // Every page under /writing/ must be either a real publication record or an
 // explicitly declared non-record child. Declaring them here keeps the check
@@ -69,7 +84,13 @@ for(const file of htmlFiles){
   if(!/class=["'][^"']*(?:bottom-nav|mobile-nav)/.test(s))fail(`${r}: bottom mobile navigation missing`);
   if(/href=["']\/(?:sports|movie|movies|series|anime|article|articles|entertainment|trailers)(?:\/|["'])/i.test(s))fail(`${r}: local media link remains on main publication`);
  }
- if(/n6wxm\.com|nap5k\.com|propellerads|monetag\.com|profitableratecpmnetwork|highrevenueformat|highperformanceformat|adsterra/i.test(s))fail(`${r}: disallowed advertising endpoint remains (Adsterra removed 20 Sep; AdSense is the ONLY sanctioned ad network, via site.config rails)`);
+ // A name blocklist alone cannot catch an unknown ad host, so the test runs on the
+ // page with the sanctioned unit already removed: anything still matching a banned
+ // network fails, AND any remaining Adsterra-format loader (/invoke.js) fails even
+ // when its host is one we have never seen.
+ const UNSANCTIONED=s.replace(SANCTIONED_AD,"");
+ if(/n6wxm\.com|nap5k\.com|propellerads|monetag\.com|profitableratecpmnetwork|highrevenueformat|highperformanceformat|adsterra/i.test(UNSANCTIONED))fail(`${r}: disallowed advertising endpoint remains (only the sanctioned Adsterra Native Banner is permitted; Monetag, PropellerAds, social bar, popunders and the classic atOptions banner all fail)`);
+ if(/\/invoke\.js/i.test(UNSANCTIONED))fail(`${r}: unsanctioned Adsterra-format ad loader present - only the native banner key in site.config.json is permitted`);
  if(/googletagmanager|google-analytics/i.test(s)){
   if(!GA_ON)fail(`${r}: analytics endpoint present but analytics.enabled is not true in site.config.json`);
   else if(GA_ID&&!s.includes(GA_ID))fail(`${r}: analytics tag does not carry the configured gaId (${GA_ID})`);

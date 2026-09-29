@@ -116,14 +116,14 @@ ADSTERRA_BAND = (
     '<div class="adband-slot" id="container-{key}"></div>'
     '</div>'
     '</aside>'
-    '<script async data-cfasync="false" src="//{host}/{key}/invoke.js"></script>'
+    '<script async data-cfasync="false" src="https://{host}/{key}/invoke.js"></script>'
 )
 
 REVERT_RES = (
     re.compile(r'<aside class="adband" ' + ADSENSE_MARK + r'[\s\S]*?</aside>'
                r'<script src="/assets/ads-init\.js" defer></script>'),
     re.compile(r'<aside class="adband-native" ' + ADSTERRA_MARK + r'[\s\S]*?</aside>'
-               r'<script async data-cfasync="false" src="//[^"]+"></script>'),
+               r'<script async data-cfasync="false" src="https://[^"]+"></script>'),
 )
 
 
@@ -152,7 +152,7 @@ def config() -> tuple[str, dict]:
         key = str(ast.get("key") or "").strip()
         host = str(ast.get("host") or "").strip().lstrip("/")
         if key and host:
-            if re.search(r"(popunder|socialbar|social-bar)", key + host, re.I):
+            if re.search(r"(popunder|socialbar|social-bar|^9d/|/54/)", key + host, re.I):
                 print("ads: that Adsterra id looks like a popunder or social-bar unit.")
                 print("ads: refusing - those are intrusive, and AdSense's site behavior")
                 print("ads: policy bars pages carrying pop-ups. Use the Native Banner key.")
