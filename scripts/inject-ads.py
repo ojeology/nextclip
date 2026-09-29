@@ -1,48 +1,83 @@
 #!/usr/bin/env python3
-"""Inject the bottom-of-page ad band — but ONLY once a real ad slot exists.
+"""Bottom-of-page ad bands. Two providers, both switched off until a key exists.
 
-Deliberately inert by default. The band is built, styled, CSP-correct and wired
-into `npm run build`; it renders nothing until `adsense.nativeSlotId` is set in
-site.config.json. That is the switch: one value, one deploy, no code change.
+  adsterra  -- native banner, the format the owner asked for
+  adsense   -- native unit, the fallback
 
-Why gated rather than live (2026-09-29):
-  AdSense does not serve to a site that has not passed review. With the site
-  currently refused on content grounds, a wired unit would render an empty box
-  at the foot of every page and still earn nothing. Empty ad space on a site
-  already refused for thin content is a negative signal at re-review, and the
-  downside is asymmetric: a refusal is recoverable, a served-ads-on-thin-content
-  policy violation is not.
+Which one runs is decided by site.config.json, in this order:
 
-Two defects in the original helper this replaces (build-ecosystem.py _ads_slot):
-  1. no data-ad-slot attribute, so there was no unit to request
-  2. an inline push script, which the site CSP (script-src 'self' https:, no
-     'unsafe-inline') blocks — it could never have executed even if wired
+  1. adsense.nativeSlotId set            -> AdSense band
+  2. adsterra.key and adsterra.host set  -> Adsterra native banner
+  3. neither                             -> nothing renders (current state)
 
-Placement: after </main>, before <footer>, so it never interrupts the article.
-Reserved height prevents layout shift when the ad fills. A visible
-"Advertisement" label keeps it distinguishable from content, which matters
-because site.config.json forbids anything that resembles a job card or CTA.
+That empty key is the on-switch. No code change, one value, one deploy.
+
+WHY THE ADSTERRA LOADER IS WRITTEN INTO THE STATIC HTML RATHER THAN INJECTED
+BY JAVASCRIPT: Adsterra's support team checks an install through "View page
+source". A loader added by client-side JS never appears there, so the unit
+reads as not installed. The container div and the invoke.js tag are both
+server-rendered here, div first, so the loader always finds its container.
+
+WHY THE NATIVE BANNER AND NOT THE OTHER ADSTERRA FORMATS:
+  - Native Banner: one async script plus a container div. No document.write.
+  - Classic banner (atOptions + invoke.js): invoke.js calls document.write().
+    Harmless during parsing, but it wipes the whole page when it runs after
+    load, and atOptions is a page-level global, so a second banner on the same
+    page overwrites the first one's config.
+  - Popunder and Social Bar: intrusive by definition. AdSense's site behavior
+    policy prohibits pages carrying pop-ups or other intrusive ads, so either
+    would put the AdSense application at risk.
+This file implements the Native Banner only and refuses the rest.
+
+NEVER ON A NOINDEX PAGE: the stub and soft-redirect pages are noindex precisely
+because they carry no content of their own. Ads on contentless inventory is the
+pattern that gets a site refused, so those pages are skipped. The guard matches
+the robots meta tag, not the bare word -- a page that merely discusses noindex
+in its copy is still a content page and still gets the band.
+
+WHY NO RESERVED HEIGHT (unlike a fixed-size unit): a native banner's height
+varies with how many cards the network returns, so a guessed reservation shifts
+the page anyway, and when it does not fill the reservation becomes a visible
+hole that then collapses -- a second shift. The slot sits below the whole
+article, so growth happens outside the viewport. Unfilled, the wrapper measures
+zero and leaves no gap. The wrapper is never display:none, because the loader
+measures its container to decide what to render. overflow:hidden is
+load-bearing: max-width alone does not constrain a child the loader injects,
+and an unresponsive wide creative would otherwise add a horizontal scrollbar.
+
+CSP: the site sends script-src 'self' https: with no unsafe-inline, which is
+why the original build-ecosystem.py _ads_slot() could never have worked -- its
+push was an inline script. The native banner's loader is an external https
+script and the creative renders in an https iframe, so nothing here needs the
+policy relaxed and 'unsafe-inline' stays out.
+
+REVERSIBILITY: injection inserts the block immediately after </main> and adds
+no whitespace of its own, so --revert restores the file byte for byte.
 """
 from __future__ import annotations
 
 import json
 import os
+import re
 import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 BASES = (ROOT, ROOT / "public")
 
-# Tiers that also carry published copies of the shell pages.
 EXTRA_TIERS = ("ecosystem", "writers", "tech", "sports", "entertainment",
                "fitness", "home", "money")
 
-MARK = 'data-adband="bottom"'
+NOINDEX = re.compile(r'name=["\']robots["\'][^>]*content=["\'][^"\']*noindex', re.I)
+NOCONTENT = re.compile(r'<meta[^>]+http-equiv=["\']refresh["\']', re.I)
 
 LABEL = "Advertisement"
 
-BAND = (
-    '<aside class="adband" ' + MARK + ' aria-label="' + LABEL + '">'
+# --- AdSense band (fallback) --------------------------------------------------
+ADSENSE_MARK = 'data-adband="adsense"'
+
+ADSENSE_BAND = (
+    '<aside class="adband" ' + ADSENSE_MARK + ' aria-label="' + LABEL + '">'
     '<style>'
     '.adband{margin:0;padding:24px 0 0}'
     '.adband-in{max-width:1100px;margin:0 auto;padding:0 20px}'
@@ -62,26 +97,73 @@ BAND = (
     '<script src="/assets/ads-init.js" defer></script>'
 )
 
+# --- Adsterra native banner ---------------------------------------------------
+ADSTERRA_MARK = 'data-adband="adsterra"'
 
-def config() -> tuple[str, str, str]:
-    """(client, slot, format) — slot empty means the band stays off."""
+ADSTERRA_BAND = (
+    '<aside class="adband-native" ' + ADSTERRA_MARK + ' aria-label="' + LABEL + '">'
+    '<style>'
+    '.adband-native{margin:0;padding:26px 0 0}'
+    '.adband-native .adband-in{max-width:1100px;margin:0 auto;padding:0 20px;overflow:hidden}'
+    '.adband-native .adband-label{display:block;font:500 10px/1 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;'
+    'letter-spacing:.14em;text-transform:uppercase;color:#8a8578;margin:0 0 10px}'
+    '.adband-native .adband-slot{margin:0 auto;max-width:100%;min-height:0}'
+    '.adband-native::before{content:"";display:block;max-width:1100px;margin:0 auto 26px;'
+    'padding:0 20px;border-top:1px solid rgba(0,0,0,.08)}'
+    '</style>'
+    '<div class="adband-in">'
+    '<span class="adband-label">' + LABEL + '</span>'
+    '<div class="adband-slot" id="container-{key}"></div>'
+    '</div>'
+    '</aside>'
+    '<script async data-cfasync="false" src="//{host}/{key}/invoke.js"></script>'
+)
+
+REVERT_RES = (
+    re.compile(r'<aside class="adband" ' + ADSENSE_MARK + r'[\s\S]*?</aside>'
+               r'<script src="/assets/ads-init\.js" defer></script>'),
+    re.compile(r'<aside class="adband-native" ' + ADSTERRA_MARK + r'[\s\S]*?</aside>'
+               r'<script async data-cfasync="false" src="//[^"]+"></script>'),
+)
+
+
+def config() -> tuple[str, dict]:
+    """Return (provider, params). provider == '' means the band stays off."""
     try:
         cfg = json.loads((ROOT / "site.config.json").read_text(encoding="utf-8"))
     except Exception as exc:                                    # pragma: no cover
         print(f"ads: could not read site.config.json ({exc}) - skipping")
-        return "", "", ""
+        return "", {}
+
     ads = cfg.get("adsense") or {}
-    client = str(ads.get("caId") or "").strip()
-    slot = str(ads.get("nativeSlotId") or "").strip()
-    fmt = str(ads.get("nativeFormat") or "auto").strip() or "auto"
-    if not ads.get("enabled", True):
-        return "", "", ""
-    return client, slot, fmt
+    ast = cfg.get("adsterra") or {}
+
+    if ads.get("enabled", True):
+        client = str(ads.get("caId") or "").strip()
+        slot = str(ads.get("nativeSlotId") or "").strip()
+        if client and slot:
+            return "adsense", {
+                "client": client,
+                "slot": slot,
+                "fmt": str(ads.get("nativeFormat") or "auto").strip() or "auto",
+            }
+
+    if ast.get("enabled", True):
+        key = str(ast.get("key") or "").strip()
+        host = str(ast.get("host") or "").strip().lstrip("/")
+        if key and host:
+            if re.search(r"(popunder|socialbar|social-bar)", key + host, re.I):
+                print("ads: that Adsterra id looks like a popunder or social-bar unit.")
+                print("ads: refusing - those are intrusive, and AdSense's site behavior")
+                print("ads: policy bars pages carrying pop-ups. Use the Native Banner key.")
+                return "", {}
+            return "adsterra", {"key": key, "host": host}
+
+    return "", {}
 
 
 def targets() -> list[Path]:
     seen: set[Path] = set()
-    out: list[Path] = []
     for base in BASES:
         if base.is_dir():
             for root, dirs, files in os.walk(base):
@@ -98,22 +180,28 @@ def targets() -> list[Path]:
                        if d not in ("node_modules", "_recovered", ".git")]
             if "index.html" in files:
                 seen.add(Path(root) / "index.html")
-    for f in sorted(seen):
-        out.append(f)
-    return out
+    return sorted(seen)
+
+
+def block_for(provider: str, p: dict) -> str:
+    if provider == "adsense":
+        # plain substitution, not str.format: the inline CSS is full of braces
+        return (ADSENSE_BAND.replace("{client}", p["client"])
+                            .replace("{slot}", p["slot"])
+                            .replace("{fmt}", p["fmt"]))
+    return ADSTERRA_BAND.replace("{key}", p["key"]).replace("{host}", p["host"])
 
 
 def revert() -> int:
-    """Remove every injected band. Used for the activation test and as an undo."""
-    import re as _re
-    pat = _re.compile(r'<aside class="adband" data-adband="bottom".*?</aside>'
-                      r'\s*<script src="/assets/ads-init.js" defer></script>\n?', _re.S)
+    """Remove every injected band. Undo for the activation test."""
     n = 0
     for f in targets():
         t = f.read_text(encoding="utf-8", errors="replace")
-        if MARK not in t:
+        if ADSENSE_MARK not in t and ADSTERRA_MARK not in t:
             continue
-        f.write_text(pat.sub("", t), encoding="utf-8")
+        for rx in REVERT_RES:
+            t = rx.sub("", t)
+        f.write_text(t, encoding="utf-8")
         n += 1
     print(f"ads: reverted {n} file(s)")
     return 0
@@ -122,19 +210,15 @@ def revert() -> int:
 def main() -> int:
     if "--revert" in sys.argv:
         return revert()
-    client, slot, fmt = config()
-    if not slot:
-        print("ads: nativeSlotId not set in site.config.json -> band stays off (0 pages touched)")
-        print("ads: to activate, set adsense.nativeSlotId to the unit ID from your AdSense dashboard")
-        return 0
-    if not client:
-        print("ads: adsense.caId missing in site.config.json -> band stays off")
+
+    provider, params = config()
+    if not provider:
+        print("ads: no ad key configured -> band stays off (0 pages touched)")
+        print("ads: to activate the Adsterra native banner, set adsterra.key and")
+        print("ads: adsterra.host in site.config.json (leave nativeSlotId empty)")
         return 0
 
-    # plain substitution, not str.format: the inline CSS is full of braces.
-    block = (BAND.replace("{client}", client)
-                 .replace("{slot}", slot)
-                 .replace("{fmt}", fmt))
+    block = block_for(provider, params)
     applied = skipped = problems = 0
 
     for f in targets():
@@ -142,8 +226,11 @@ def main() -> int:
             t = f.read_text(encoding="utf-8", errors="replace")
         except Exception:
             continue
-        if MARK in t:
+        if ADSENSE_MARK in t or ADSTERRA_MARK in t:
             skipped += 1
+            continue
+        if NOINDEX.search(t) or NOCONTENT.search(t):
+            problems += 1
             continue
         if t.count("</main>") != 1:
             problems += 1
@@ -151,12 +238,15 @@ def main() -> int:
         if "<footer" not in t.split("</main>", 1)[1]:
             problems += 1
             continue
-        f.write_text(t.replace("</main>", "</main>\n" + block, 1), encoding="utf-8")
+        # inserted with no whitespace of our own, so --revert is byte exact
+        f.write_text(t.replace("</main>", "</main>" + block, 1), encoding="utf-8")
         applied += 1
 
-    print(f"ads: {applied} band(s) wired, {skipped} already present, "
-          f"{problems} skipped (no single </main> or no footer after it)")
-    print(f"ads: client {client} slot {slot} format {fmt}")
+    print(f"ads: {applied} {provider} band(s) wired, {skipped} already present, "
+          f"{problems} skipped (noindex/stub, no single </main>, or no footer after it)")
+    if provider == "adsterra":
+        print(f"ads: container container-{params['key']}, "
+              f"loader //{params['host']}/{params['key']}/invoke.js")
     return 0
 
 

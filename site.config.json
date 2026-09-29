@@ -6,7 +6,7 @@
   "adsense": {
     "caId": "ca-pub-1881426210393009",
     "enabled": true,
-    "note": "Verification snippet live site-wide (2026-09-29, owner-supplied ca-pub ID). Ad UNITS remain unwired: nativeSlotId is empty, so scripts/inject-ads.py is a no-op. Paste the ad-unit ID from the AdSense dashboard in here to switch the bottom-of-page band on -- no code change needed. Keep Google-dashboard Auto ads OFF until approval. Ads must never resemble job cards or application buttons.",
+    "note": "Verification snippet live site-wide (2026-09-29). Ad UNITS remain unwired: nativeSlotId is empty. Keep Google-dashboard Auto ads OFF until approval. Ads must never resemble job cards or application buttons.",
     "nativeSlotId": "",
     "nativeFormat": "auto"
   },
@@ -38,5 +38,19 @@
   "parent": {
     "name": "THE BRYME",
     "url": ""
+  },
+  "adsterra": {
+    "enabled": true,
+    "key": "",
+    "host": "",
+    "format": "native-banner",
+    "note": "Bottom-of-page Adsterra Native Banner. Paste the key and the invoke host from Adsterra's snippet to switch it on -- no code change. Native Banner ONLY: popunder and social bar are intrusive and would breach AdSense's site behavior policy. Loader is server-rendered on purpose, because Adsterra support verifies installs via View page source."
+  },
+  "ads": {
+    "providerOrder": [
+      "adsense",
+      "adsterra"
+    ],
+    "position": "after-main-before-footer"
   }
 }
