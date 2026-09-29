@@ -1170,6 +1170,22 @@ def homepage() -> None:
     n_open = sum(1 for r in WRITING if (r.get("submissionStatus") or "") in ("open", "rolling", "deadline"))
     tested = [r for r in WRITING if (r.get("editorExperience") or {}).get("applied")]
 
+    def guide_need_hub(slug: str, title: str) -> str:
+        s = (slug + " " + title).lower()
+        if any(k in s for k in ("pitch", "query", "cover-letter", "follow-up", "submit", "submission")):
+            return "submit"
+        if any(k in s for k in ("rate", "charge", "price", "invoice", "tax", "income", "money", "earn", "freelance-paid", "ghostwriting")):
+            return "earn"
+        if any(k in s for k in ("tool", "calculator", "counter", "formatter", "tracker", "builder", "checker")):
+            return "tools"
+        if any(k in s for k in ("career", "beginner", "start", "first-paid", "samples", "portfolio", "client", "retainer", "business")):
+            return "career"
+        if any(k in s for k in ("country", "international", "remote", "usa", "uk", "canada", "australia", "nigeria", "atlas")):
+            return "research"
+        if any(k in s for k in ("craft", "edit", "story", "poetry", "fiction", "nonfiction", "essay", "grammar", "language", "writing-basics", "process", "academic", "creative")):
+            return "write"
+        return "write"
+
     arts = []
     for r in WRITING:
         _tested = bool((r.get("editorExperience") or {}).get("applied"))
@@ -1177,25 +1193,39 @@ def homepage() -> None:
             "slug": "writing/" + r["slug"], "title": r["publication"],
             "excerpt": (r.get("excerpt") or (r.get("eligibility") or {}).get("summary")
                         or "A full dossier: what they publish, what they pay, and who they are open to."),
-            "cat": "writing", "need": "find",
+            "cat": "writing", "need": "discover",
             "pub": r.get("lastVerified") or TODAY, "upd": r.get("lastVerified") or TODAY,
             "kind": "tested" if _tested else "guide"})
     for g in GUIDES:
         _upd = g.get("updated") or ""
-        if _upd and _upd > TODAY:   # never print a date the desk cannot show
+        if _upd and _upd > TODAY:
             _upd = TODAY
+        need = guide_need_hub(g["slug"], g["title"])
         arts.append({"slug": "learn/" + g.get("section", "") + "/" + g["slug"],
                      "title": g["title"], "excerpt": g.get("description", ""),
-                     "cat": "learn", "need": "learn", "pub": _upd, "upd": _upd,
+                     "cat": "learn", "need": need, "pub": _upd, "upd": _upd,
                      "kind": "guide"})
+    for iso in ["usa", "united-kingdom", "canada", "australia", "nigeria", "remote"]:
+        arts.append({
+            "slug": f"writing-opportunities/{iso}", "title": f"Writing opportunities: {iso.replace('-',' ').title()}",
+            "excerpt": f"Publications based in {iso.replace('-',' ').title()} — pay, eligibility and submission method verified.",
+            "cat": "atlas", "need": "research", "pub": TODAY, "upd": TODAY, "kind": "guide"
+        })
+    arts.append({
+        "slug": "writing-opportunities", "title": "The atlas: writing opportunities by country",
+        "excerpt": "Browse 142 paying markets by where you are — US, UK, Canada, Australia, Nigeria, and open-to-anywhere.",
+        "cat": "atlas", "need": "research", "pub": TODAY, "upd": TODAY, "kind": "guide"
+    })
 
     WR_CATS = {
-        "writing": ("Opportunity dossiers",
+        "writing": ("Opportunity dossiers — DISCOVER",
                     "Every researched publication: pay, word count, eligibility, submission method and the "
-                    "official guideline \u2014 each carrying its own last-checked date."),
-        "learn": ("The guide library",
-                  "Craft, process, grammar and the business of freelancing \u2014 how to pitch, submit, "
-                  "invoice and get paid."),
+                    "official guideline — each carrying its own last-checked date. The core of DISCOVER OPPORTUNITIES."),
+        "learn": ("The guide library — WRITE / SUBMIT / EARN / CAREER",
+                  "Craft, process, grammar and the business of freelancing — how to write, pitch, submit, "
+                  "invoice and build a career. Grouped by what you came to do."),
+        "atlas": ("Research markets — RESEARCH",
+                  "Find markets by country and eligibility — US, UK, Canada, Australia, Nigeria, and open-to-anywhere."),
     }
 
     tools = [(t["id"], t["title"], t["short"], "") for t in TOOLS]
@@ -1207,23 +1237,37 @@ def homepage() -> None:
                 "are open to \u2014 plus " + str(len(GUIDES)) + " guides, " + str(len(TOOLS)) + " free tools and "
                 "the essays behind the market. The whole desk is listed below, in the page itself."),
         "needs": [
-            ("find", "Find markets that pay",
-             str(len(WRITING)) + " researched publications with dated checks \u2014 who pays, what for, and who they are open to."),
-            ("learn", "Learn the craft",
-             str(len(GUIDES)) + " guides from first pitch to final invoice, written by working writers."),
+            ("write", "WRITE",
+             "Craft, editing, storytelling — guides on fiction, nonfiction, essays, poetry, screenwriting, pitches — beginner to advanced."),
+            ("submit", "SUBMIT",
+             "Get your work out there — how to write a pitch editors actually read, query letters, cover letters, and follow-ups."),
+            ("discover", "DISCOVER OPPORTUNITIES",
+             str(len(WRITING)) + " paying markets checked by hand — what they pay, what they want, how to submit, when they close."),
+            ("research", "RESEARCH MARKETS",
+             "Find markets by country — US, UK, Canada, Australia, Nigeria, and open-to-anywhere — filter by pay, genre, eligibility."),
+            ("earn", "EARN",
+             "Build a writing income — rates, retainers, ghostwriting pricing, invoicing, tracking income and the tax habit."),
+            ("tools", "USE WRITING TOOLS",
+             "48 free tools, no sign-up — word counters, invoice generator, rate calculator, citation formatter — runs in your browser."),
+            ("career", "BUILD A CAREER",
+             "From zero to paid — complete beginner path, writing intelligence, and BRYME's firsthand verification record."),
         ],
-        "cadence": {"writing": 90, "learn": 365},
+        "cadence": {"writing": 90, "learn": 365, "atlas": 90},
         "cadence_blurb": ("Publication statuses turn fast \u2014 dossiers are re-checked against the official "
                           "guideline every 90 days; craft guides age slowly (365). "),
         "kind_badges": {"tested": "Tested"},
         "kind_chips": [("tested", "BRYME tested")],
-        "chips": [("find", "Markets that pay"), ("learn", "Craft guides")],
+        "chips": [
+            ("write", "WRITE"), ("submit", "SUBMIT"), ("discover", "DISCOVER"), ("research", "RESEARCH"),
+            ("earn", "EARN"), ("tools", "TOOLS"), ("career", "CAREER")
+        ],
         "gauges": lambda st, tools: [
-            (len(WRITING), "publications researched", "each carries its last-checked date"),
+            (len(WRITING), "paying markets — DISCOVER", "each carries its last-checked date"),
             (n_open, "accepting now", "status verified against the guideline"),
             (len(tested), "personally tested by BRYME", "the journey shown as it happened"),
-            (len(GUIDES), "craft guides", "from first pitch to final invoice"),
-            (len(tools), "browser tools", "no account, nothing uploaded"),
+            (len(GUIDES), "craft guides — WRITE/SUBMIT/EARN/CAREER", "from first pitch to final invoice"),
+            (len(tools), "browser tools — USE TOOLS", "no account, nothing uploaded"),
+            ("0", "pop-ups, ever", "no interstitials, no autoplay"),
         ],
         "rules": [
             "Rates are never invented; where a publication states no fee, the page says so.",

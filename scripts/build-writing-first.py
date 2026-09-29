@@ -872,17 +872,38 @@ def pub_card(rec: dict, heading: str = "h2") -> str:
 # Homepage
 # ---------------------------------------------------------------------------
 def home() -> None:
-    """Front page: the living machine for the writers desk (2026-09-25).
+    """Phase 2: Writers hub as central command center — 7 pathways.
 
     Reuses the shared desk renderer in embedded mode (page_wf supplies the
     <main> wrapper and masthead). The catalogue is the desk's real data:
     every researched publication (with its own last-verified date) plus the
     full guide library, arranged by what a visiting writer came to do.
+
+    Phase 2 adds 7 clear pathways per roadmap:
+      WRITE, SUBMIT, DISCOVER OPPORTUNITIES, RESEARCH MARKETS, EARN,
+      USE WRITING TOOLS, BUILD A WRITING CAREER
     """
     import desk_hub_render
 
     n_open = sum(1 for r in WRITING if status_of(r)[2] == "open")
     tested = [r for r in WRITING if (r.get("editorExperience") or {}).get("applied")]
+
+    # --- need assignment for guides based on slug keywords ---
+    def guide_need(slug: str, title: str) -> str:
+        s = (slug + " " + title).lower()
+        if any(k in s for k in ("pitch", "query", "cover-letter", "follow-up", "submit", "submission")):
+            return "submit"
+        if any(k in s for k in ("rate", "charge", "price", "invoice", "tax", "income", "money", "earn", "freelance-paid", "ghostwriting")):
+            return "earn"
+        if any(k in s for k in ("tool", "calculator", "counter", "formatter", "tracker", "builder", "checker")):
+            return "tools"
+        if any(k in s for k in ("career", "beginner", "start", "first-paid", "samples", "portfolio", "client", "retainer", "business")):
+            return "career"
+        if any(k in s for k in ("country", "international", "remote", "usa", "uk", "canada", "australia", "nigeria", "atlas", "opportunit")):
+            return "research"
+        if any(k in s for k in ("craft", "edit", "story", "poetry", "fiction", "nonfiction", "essay", "grammar", "language", "writing-basics", "process", "academic", "creative")):
+            return "write"
+        return "write"
 
     arts = []
     for r in WRITING:
@@ -891,20 +912,35 @@ def home() -> None:
             "slug": "writing/" + r["slug"], "title": r["publication"],
             "excerpt": (r.get("excerpt") or (r.get("eligibility") or {}).get("summary")
                         or "A full dossier: what they publish, what they pay, and who they are open to."),
-            "cat": "writing", "need": "find",
+            "cat": "writing", "need": "discover",
             "pub": r.get("lastVerified") or TODAY, "upd": r.get("lastVerified") or TODAY,
             "kind": "tested" if _tested else "guide"})
     for g in GUIDES:
+        need = guide_need(g["slug"], g["title"])
         arts.append({"slug": "guides/" + g["slug"], "title": g["title"], "excerpt": g["description"],
-                     "cat": "guides", "need": "learn", "pub": TODAY, "upd": TODAY, "kind": "guide"})
+                     "cat": "guides", "need": need, "pub": TODAY, "upd": TODAY, "kind": "guide"})
+    # Add country atlas pages as research need
+    for iso in ["usa", "united-kingdom", "canada", "australia", "nigeria", "remote"]:
+        arts.append({
+            "slug": f"writing-opportunities/{iso}", "title": f"Writing opportunities: {iso.replace('-',' ').title()}",
+            "excerpt": f"Publications based in {iso.replace('-',' ').title()} — pay, eligibility and submission method verified.",
+            "cat": "atlas", "need": "research", "pub": TODAY, "upd": TODAY, "kind": "guide"
+        })
+    arts.append({
+        "slug": "writing-opportunities", "title": "The atlas: writing opportunities by country",
+        "excerpt": "Browse 142 paying markets by where you are — US, UK, Canada, Australia, Nigeria, and open-to-anywhere.",
+        "cat": "atlas", "need": "research", "pub": TODAY, "upd": TODAY, "kind": "guide"
+    })
 
     WR_CATS = {
-        "writing": ("Opportunity dossiers",
+        "writing": ("Opportunity dossiers — DISCOVER",
                     "Every researched publication: pay, word count, eligibility, submission method and the "
-                    "official guideline \u2014 each carrying its own last-checked date."),
-        "guides": ("The guide library",
-                   "Craft, process, grammar and the business of freelancing \u2014 how to pitch, submit, "
-                   "invoice and get paid."),
+                    "official guideline — each carrying its own last-checked date. The core of DISCOVER OPPORTUNITIES."),
+        "guides": ("The guide library — WRITE / SUBMIT / EARN / CAREER",
+                   "Craft, process, grammar and the business of freelancing — how to write, pitch, submit, "
+                   "invoice and build a career. Grouped by what you came to do."),
+        "atlas": ("Research markets — RESEARCH",
+                  "Find markets by country and eligibility — US, UK, Canada, Australia, Nigeria, and open-to-anywhere."),
     }
 
     _wtools = json.loads((ROOT / "content" / "hub" / "tools.json").read_text(encoding="utf-8"))["tools"]
@@ -912,55 +948,77 @@ def home() -> None:
 
     _wr_cfg = {
         "brand": "BRYME WRITERS",
-        "h1": "Find writing opportunities. Get published. Get paid.",
-        "dek": ("BRYME researches legitimate writing opportunities \u2014 the publications, the pay, the word "
-                "counts and who they\u2019re open to \u2014 and publishes the craft: guides, tools and essays "
-                "for the working writer. The whole desk is listed below, in the page itself."),
+        "h1": "Learn to write, get published, get paid — the command center.",
+        "dek": ("BRYME Writers is the flagship — 142 verified publications that pay, 197 practical guides, 48 free tools, "
+                "and firsthand verification. Pick a pathway below and the whole desk re-sorts itself to that job. "
+                "Everything is dated, sourced, and written in plain English. No pop-ups, ever."),
         "needs": [
-            ("find", "Find markets that pay",
-             str(len(WRITING)) + " researched publications with dated checks \u2014 who pays, what for, and who they are open to."),
-            ("learn", "Learn the craft",
-             "Guides from first pitch to final invoice, written by working writers."),
+            ("write", "WRITE",
+             "Craft, editing, storytelling — guides on fiction, nonfiction, essays, poetry, screenwriting, pitches — beginner to advanced."),
+            ("submit", "SUBMIT",
+             "Get your work out there — how to write a pitch editors actually read, query letters, cover letters, and follow-ups."),
+            ("discover", "DISCOVER OPPORTUNITIES",
+             str(len(WRITING)) + " paying markets checked by hand — what they pay, what they want, how to submit, when they close."),
+            ("research", "RESEARCH MARKETS",
+             "Find markets by country — US, UK, Canada, Australia, Nigeria, and open-to-anywhere — filter by pay, genre, eligibility."),
+            ("earn", "EARN",
+             "Build a writing income — rates, retainers, ghostwriting pricing, invoicing, tracking income and the tax habit."),
+            ("tools", "USE WRITING TOOLS",
+             "48 free tools, no sign-up — word counters, invoice generator, rate calculator, citation formatter — runs in your browser."),
+            ("career", "BUILD A CAREER",
+             "From zero to paid — complete beginner path, writing intelligence, and BRYME's firsthand verification record."),
         ],
-        "cadence": {"writing": 90, "guides": 365},
-        "cadence_blurb": ("Publication statuses turn fast \u2014 dossiers are re-checked against the official "
+        "cadence": {"writing": 90, "guides": 365, "atlas": 90},
+        "cadence_blurb": ("Publication statuses turn fast — dossiers are re-checked against the official "
                           "guideline every 90 days; craft guides age slowly (365). "),
         "kind_badges": {"tested": "Tested"},
         "kind_chips": [("tested", "BRYME tested")],
-        "chips": [("find", "Markets that pay"), ("learn", "Craft guides")],
+        "chips": [
+            ("write", "WRITE"), ("submit", "SUBMIT"), ("discover", "DISCOVER"), ("research", "RESEARCH"),
+            ("earn", "EARN"), ("tools", "TOOLS"), ("career", "CAREER")
+        ],
         "gauges": lambda st, tools: [
-            (len(WRITING), "publications researched", "each carries its last-checked date"),
+            (len(WRITING), "paying markets — DISCOVER", "each carries its last-checked date"),
             (n_open, "accepting now", "status verified against the guideline"),
             (len(tested), "personally tested by BRYME", "the journey shown as it happened"),
-            (len(GUIDES), "craft guides", "from first pitch to final invoice"),
-            (len(tools), "browser tools", "no account, nothing uploaded"),
+            (len(GUIDES), "craft guides — WRITE/SUBMIT/EARN/CAREER", "from first pitch to final invoice"),
+            (len(tools), "browser tools — USE TOOLS", "no account, nothing uploaded"),
+            ("0", "pop-ups, ever", "no interstitials, no autoplay"),
         ],
         "rules": [
             "Rates are never invented; where a publication states no fee, the page says so.",
-            "Every dossier carries its last human-check date; a missing country list is never read as &ldquo;open worldwide&rdquo;.",
+            "Every dossier carries its last human-check date; a missing country list is never read as “open worldwide”.",
             "Payment is only marked confirmed once it actually lands.",
-            "A listing is an invitation to pitch \u2014 not a job offer or a promise of payment.",
-            "Saved items and reading history stay in this browser\u2019s local storage and nowhere else.",
+            "A listing is an invitation to pitch — not a job offer or a promise of payment.",
+            "Saved items and reading history stay in this browser’s local storage and nowhere else.",
+            "Tools run in your browser — no account, nothing uploaded, nothing sent anywhere.",
         ],
         "rules_links": [("terms", "Terms"), ("editorial-policy", "Editorial policy"),
                         ("corrections", "Corrections"), ("contact", "Contact"), ("privacy", "Privacy")],
         "clusters": [
+            ("/start/", "BUILD A CAREER — Start here", "Complete beginner path — 20 guides in the order that actually builds on itself."),
+            ("/learn/", "WRITE — The guide library", "197 guides: craft, process, grammar and business of freelancing."),
+            ("/writing/", "DISCOVER — Opportunity dossiers", "142 researched publications: pay, word count, eligibility, submission method."),
+            ("/writing-opportunities/", "RESEARCH — The atlas", "Browse by country: US, UK, Canada, Australia, Nigeria, open-to-anywhere."),
+            ("/tools/", "USE TOOLS — 48 free tools", "Rate calculator, invoice generator, word counter, citation formatter — browser-only."),
+            ("/guides/how-to-write-a-pitch/", "SUBMIT — How to pitch", "The exact structure editors expect — and what gets you rejected."),
+            ("/guides/how-much-to-charge-for-an-article/", "EARN — Rates & income", "Real market rates, not guesswork — with calculator."),
             ("/intelligence/", "Writing intelligence", "Research notes and market watch from the editorial desk."),
-            ("/essays/", "Essays", "Arguments and investigations \u2014 the highest shelf in the library."),
-            ("/tested/", "BRYME Tested", "Opportunities we pitched ourselves \u2014 the journey shown as it happened."),
-            ("/what-changed/", "What changed", "Markets that opened, closed or moved \u2014 dated."),
+            ("/essays/", "Essays", "Arguments and investigations — the highest shelf in the library."),
+            ("/tested/", "BRYME Tested", "Opportunities we pitched ourselves — the journey shown as it happened."),
+            ("/what-changed/", "What changed", "Markets that opened, closed or moved — dated."),
             ("/verification/", "What statuses mean", "How every dossier status is assigned and checked."),
-            ("/read/", "The archive", "Every guide, essay and dossier \u2014 indexed and permanent."),
+            ("/read/", "The archive", "Every guide, essay and dossier — indexed and permanent."),
         ],
-        "clusters_h": "Beyond the wall.",
-        "clusters_p": ("The desks and shelves that sit beside the catalogue \u2014 market watch, essays, our own "
-                       "test record, and what every status on a dossier actually means."),
-        "palette_label": "Search the writers\u2019 desk",
-        "palette_placeholder": "pitch, pay, invoice, magazine \u2014 matches titles and summaries on your device",
-        "filter_placeholder": "filter: pay, country, pitch, invoice\u2026",
+        "clusters_h": "Beyond the wall — the full command center.",
+        "clusters_p": ("Seven clear pathways, plus market watch, essays, our own test record, and what every status means. "
+                       "Pick a job above (keys 1–7) and the index below re-sorts itself."),
+        "palette_label": "Search the writers’ desk — 7 pathways",
+        "palette_placeholder": "pitch, pay, invoice, magazine, country, rate — matches titles and summaries on your device",
+        "filter_placeholder": "filter: pay, country, pitch, invoice, Nigeria, rate… — then 1–7 for pathways",
         "toolbox_href": "/tools/",
-        "toolbox_blurb": ("Every tool runs in your browser \u2014 no account, no upload, and nothing you type "
-                          "into one is sent anywhere, including to us."),
+        "toolbox_blurb": ("Every tool runs in your browser — no account, no upload, and nothing you type "
+                          "into one is sent anywhere, including to us. WRITE, SUBMIT, EARN and CAREER all use them."),
         "contact_slug": "contact",
         "embedded": True,
         "desk": "writers",
