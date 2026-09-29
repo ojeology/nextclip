@@ -1,4 +1,26 @@
 
+## 2026-09-28 — Track B: B3 (data report + HARO routine) DONE
+
+**B3 (Phase 2) — DONE.**
+- **Data report: already in place at generator level.** `/writers/state-of-paid-writing-2026/`
+  is computed at build time in `build-writing-first.py` from the 142-record opportunities
+  database (`content/opportunities.json`, updatedAt 2026-09-21): pay bands + medians by
+  currency (USD stated minimums median $110, range $5-$2,500; NGN median computed; no
+  currency conversion), AI-policy counts (48/127 published state a restriction; 42 prohibit
+  outright; 76 silent = the finding), rights (112/127 state terms), response silence,
+  top-requested forms, window status. "Not stated" is reported as a finding. Nothing to
+  rebuild — verified present in the tree and live (776 words, 8 sections).
+- **HARO routine (the new piece): `docs/HARO-ROUTINE.md`** — 2×30 min weekly ops routine
+  converting journalist queries into referring domains, with the report + the pubs
+  database as the pitch assets. Six platforms verified live 2026-09-28 (Qwoted,
+  SourceBottle, Help a B2B Writer, JournoRequests, PitchResponse = 200; HARO/Connectively
+  reachable but rate-limited). Response template, ≤5 replies/week quality rule, correction
+  protocol if dataset figures move, monthly Bing/GSC backlink check.
+- **`docs/referring-domains-log.csv`** — monthly tracker (baseline 2026-09: 0/0/0).
+
+Shipping with B2's content change (fact-box rebalance) → deploy + probe follows.
+Track B status: B1 ✓ B2 ✓ B3 ✓ — Phase 1+2 of Track B complete.
+
 ## 2026-09-28 — Track B: B2 (Pinterest kit) DONE
 
 **B2 (Phase 1) — 6 boards × 30 pins (180) — DONE.** `scripts/build-pinterest-kit.py`
