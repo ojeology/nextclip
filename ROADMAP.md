@@ -1,9 +1,9 @@
-## 2026-09-29 — Audit actions and release follow-up (committed locally; push blocked; not deployed)
+## 2026-09-29 — Audit actions and release follow-up (feature branch pushed; not deployed)
 
 **Owner correction:** Pinterest domain claim is complete. This supersedes the earlier
 pending-claim wording below; pin publishing remains a separate owner action.
 
-### Completed on a non-main branch (committed locally; not pushed or deployed)
+### Completed on a non-main GitHub branch (pushed; not deployed)
 
 - Home document-shell repair: 279 nested pages normalized in each of the three
   materialized tiers (`ecosystem/home/`, `home/`, `public/home/`), preserving bodies,
@@ -36,11 +36,10 @@ pending-claim wording below; pin publishing remains a separate owner action.
 4. **Sitemap alias review:** compare Search Console submissions and hosting behavior
    for `/sitemap_index.xml`. The primary `/sitemap.xml` has eight child indexes; the
    alias has seven and omits the 719-URL catalogue. Do not remove or modify until checked.
-5. **Complete the requested GitHub push:** the audit commit is on
-   `audit/seo-home-writers-fixes-2026-09-29`, but the push to the verified
-   `ojeology/nextclip` remote failed because no GitHub credentials are configured in
-   this workspace. Connect credentials through the approved integration/credential
-   manager, then push this branch. Do not paste access tokens into chat; do not deploy.
+5. **GitHub push complete:** the audit branch is at
+   `ojeology/nextclip: audit/seo-home-writers-fixes-2026-09-29`. It remains off `main`;
+   no Render deployment was performed. Run the full build/release gates before merging,
+   and deploy only after explicit approval.
 
 ### Short term (1–4 weeks)
 

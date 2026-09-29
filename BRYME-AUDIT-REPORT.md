@@ -2,7 +2,7 @@
 
 **Audit date:** 2026-09-29
 **Repository baseline:** `main` at `e850a1e` (shallow/partial checkout)
-**Release status:** committed locally on `audit/seo-home-writers-fixes-2026-09-29`; the GitHub push attempt was blocked because this workspace has no GitHub credentials. No production deployment was performed.
+**Release status:** pushed to GitHub on `audit/seo-home-writers-fixes-2026-09-29`. No production deployment was performed; the branch is isolated from `main`.
 
 > **Scope note:** This is an evidence-led audit pass with one targeted repair, not a claim that every page, data record, device state, or Search Console result has been exhaustively inspected. The repository was intentionally kept partial; production output was sampled live. Search Console, GA4 reporting, Lighthouse, field Core Web Vitals, and real CMP behavior were not available for this pass.
 
@@ -115,7 +115,7 @@ Current evidence supports **readiness work, not a revenue forecast**: AdSense ve
 2. Review the Writers status source and reconcile 92 vs 99 “accepting” results.
 3. Create an old-to-new route table for the sampled meta-refresh stubs, including query strings and `by-country` chains. Use Search Console/backlink evidence before applying exact 301s or true removals.
 4. Check whether `/sitemap_index.xml` is submitted or referenced by external tools; keep the current alias unchanged until its role is known.
-5. The user requested a GitHub push but not a production deployment. The commit is isolated on a non-main branch; push was attempted and blocked because GitHub credentials are not configured in this workspace. Do not deploy.
+5. The user requested a GitHub push but not a production deployment. The audit is pushed to `audit/seo-home-writers-fixes-2026-09-29`; keep it off `main` until full build/release gates pass. No Render deployment was performed.
 
 ### Short term — 1–4 weeks
 

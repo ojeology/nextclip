@@ -3,9 +3,8 @@
 **Scope:** live route/sitemap sampling and source review on `main` at base commit
 `e850a1e`. This is a focused, evidence-based audit pass, not a claim that every URL,
 page body, mobile state, or Search Console/GA4 metric has been exhaustively reviewed.
-The safe changes are committed locally on `audit/seo-home-writers-fixes-2026-09-29`.
-A GitHub push was attempted and blocked because workspace credentials are unavailable;
-no production deployment was performed.
+The safe changes are committed and pushed on `audit/seo-home-writers-fixes-2026-09-29`.
+The feature branch is not deployed; no production deployment was performed.
 
 ### Findings
 
