@@ -492,7 +492,7 @@
       if (ev.key === "/") { ev.preventDefault(); if (input) input.focus(); return; }
       if (ev.key === "0") { clearAll(); return; }
       var n = parseInt(ev.key, 10);
-      if (n >= 1 && n <= 6) {
+      if (n >= 1 && n <= 9) {
         var btns = all(".tm-need");
         if (btns[n - 1]) btns[n - 1].click();
       }
