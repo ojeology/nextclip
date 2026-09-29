@@ -31,7 +31,7 @@ ROOT = Path(__file__).resolve().parents[1]
 PROPS = ["sports", "entertainment", "tech", "fitness", "home", "money"]
 SITEMAP_PROPS = ["sports", "entertainment", "tech", "fitness", "home", "money"]  # live, indexable properties only
 KEEP_AT_ROOT_DIRS = {".git", ".github", "assets", "scripts", "content", "docs", "server", "reports",
-                     "node_modules", "public", "ecosystem", "pinterest", ".git"} | set(PROPS) | {"writers"}
+                     "node_modules", "public", "ecosystem", "pinterest", "event-calendar", ".git"} | set(PROPS) | {"writers"}
 KEEP_AT_ROOT_FILES = {"robots.txt", "_redirects", "favicon.ico", "package.json",
                       "package-lock.json", "render.yaml", "site.config.json",
                       "seo-pilot-matrix.csv"}
@@ -188,6 +188,10 @@ def main() -> int:
     _hub_about = ROOT / "ecosystem" / "hub" / "about"
     if _hub_about.exists():
         shutil.copytree(_hub_about, ROOT / "about", dirs_exist_ok=True)
+    # B5 (2026-09-29): the house event calendar lives with the hub pages.
+    _hub_event_cal = ROOT / "ecosystem" / "hub" / "event-calendar"
+    if _hub_event_cal.exists():
+        shutil.copytree(_hub_event_cal, ROOT / "event-calendar", dirs_exist_ok=True)
     # The root privacy policy belongs to the house, not to the Writers desk.
     # Writers keeps its own desk-specific policy under /writers/privacy/;
     # /privacy/ covers every BRYME publication and is copied from the hub build.
@@ -250,6 +254,7 @@ def main() -> int:
             routes.add("/writers/" + r[1:] if r != "/" else "/writers/")
     routes.add("/")  # the hub
     routes.add("/about/")  # family about page (b36)
+    routes.add("/event-calendar/")  # house event calendar (B5, 2026-09-29)
     for prop in SITEMAP_PROPS:
         sm = ROOT / prop / "sitemap.xml"
         if not sm.is_file():
@@ -421,7 +426,7 @@ small{display:block;margin-top:30px;color:#8a94a6}
             continue
         _hsm = _hp.read_text(encoding="utf-8")
         _add = "".join(f"<url><loc>{ORIGIN}{_r}</loc><lastmod>{_td}</lastmod></url>\n"
-                       for _r in sorted(r for r in _rts if r in ("/", "/about/"))
+                       for _r in sorted(r for r in _rts if r in ("/", "/about/", "/event-calendar/"))
                        if f"<loc>{ORIGIN}{_r}</loc>" not in _hsm)
         if _add:
             _hp.write_text(_hsm.replace("</urlset>", _add + "</urlset>"), encoding="utf-8")

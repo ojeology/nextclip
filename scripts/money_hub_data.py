@@ -89,6 +89,7 @@ MONEY_MAP = {
     "how-to-budget-with-irregular-income": ("save", "save"),
     "sinking-funds-explained": ("save", "save"),
     "marginal-tax-rates-explained": ("save", "save"),
+    "uk-self-assessment-deadlines-explained": ("save", "save"),  # B5 pre-event (2026-09-29)
     "401k-explained": ("save", "save"),
     "ira-and-roth-ira-explained": ("save", "save"),
     "how-state-pensions-work": ("save", "save"),

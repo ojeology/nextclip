@@ -1,11 +1,12 @@
 # THE BRYME
 
-> A family of seven independent, specialist publications under one house discipline: research before publishing, dates on anything time-sensitive, sources for every claim, and no fabricated experience or statistics. Edited from Lagos, Nigeria, and written for a global readership. 2552 pages across the desks.
+> A family of seven independent, specialist publications under one house discipline: research before publishing, dates on anything time-sensitive, sources for every claim, and no fabricated experience or statistics. Edited from Lagos, Nigeria, and written for a global readership. 2557 pages across the desks.
 
 ## The house
 
 - [Home](https://thebryme.com/)
 - [About the family](https://thebryme.com/about/)
+- [Event calendar](https://thebryme.com/event-calendar/)
 - [Privacy policy](https://thebryme.com/privacy/)
 - [Writers corrections policy](https://thebryme.com/writers/corrections/)
 
@@ -51,7 +52,7 @@ Honest consumer technology: spec floors, refurb buying, settings that fix real p
 
 ## BRYME Sport
 
-Explainers and analysis with sources and verification dates. No betting content, no odds, no tips. 189 pages.
+Explainers and analysis with sources and verification dates. No betting content, no odds, no tips. 191 pages.
 
 - [Desk home](https://thebryme.com/sports/)
 - [Why darts starts at 501](https://thebryme.com/sports/why-darts-starts-at-501-explained/)
@@ -70,7 +71,7 @@ Explainers and analysis with sources and verification dates. No betting content,
 
 ## BRYME Entertainment
 
-What to watch and why: recommendations with reasons, film-craft explainers, a hand-verified film catalogue with official trailers. Written about the work, never trafficking in it. 895 pages.
+What to watch and why: recommendations with reasons, film-craft explainers, a hand-verified film catalogue with official trailers. Written about the work, never trafficking in it. 896 pages.
 
 - [Desk home](https://thebryme.com/entertainment/)
 - [The soap opera effect, explained](https://thebryme.com/entertainment/soap-opera-effect-explained/)
@@ -109,7 +110,7 @@ General training information with the physiology shown: programmes, comparisons 
 
 ## BRYME Home & DIY
 
-Problem-first home maintenance and repair: diagnose it, fix what is safely fixable, know when to call a professional. 290 pages.
+Problem-first home maintenance and repair: diagnose it, fix what is safely fixable, know when to call a professional. 291 pages.
 
 - [Desk home](https://thebryme.com/home/)
 - [The once-a-season home checklist](https://thebryme.com/home/seasonal-home-maintenance-checklist/)
@@ -128,7 +129,7 @@ Problem-first home maintenance and repair: diagnose it, fix what is safely fixab
 
 ## BRYME Money
 
-Evergreen saving foundations first, risk-first trading education second. Educational, not advice; every claim cites its jurisdiction's own source. 115 pages.
+Evergreen saving foundations first, risk-first trading education second. Educational, not advice; every claim cites its jurisdiction's own source. 116 pages.
 
 - [Desk home](https://thebryme.com/money/)
 - [APR versus APY, explained](https://thebryme.com/money/apr-vs-apy-explained/)

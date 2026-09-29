@@ -1,4 +1,38 @@
 
+## 2026-09-29 — Track B: B5 (event calendar + quarterly pre-event batch) DONE
+
+**B5 (Phase 3) — the Event calendar ("the Discover door") + 4 pre-event explainers — DONE.**
+- **`/event-calendar/`** (house hub page, bar 1,145 cleared: 1,150+ words) — dated rows for
+  Q4 2026 + Q1 2027 + the AFCON horizon, each pointing at its pre-event guide; sections on
+  how the calendar is read, why pre-event, the quarterly batch, what the calendar is NOT
+  (no tickets/odds/resale), and where each desk sits. Reviewed 29 September 2026.
+- **This quarter's four pre-event explainers** (all sources curl-200 verified before citing):
+  1. `/sports/how-the-pdc-world-darts-championship-works/` — Ally Pally, mid-Dec 2026 to
+     3 Jan 2027 final (sources conflict on 10 vs 11 Dec opening — the page says so), sets
+     and double-out, linked to the B4 checkout trainer + the 501 explainer.
+  2. `/sports/afcon-2027-explained/` — **19 Jun–17 Jul 2027**, Kenya/Uganda/Tanzania
+     (first tri-hosted; East Africa since 1976), qualifying live NOW 21 Sep 2026–30 Mar
+     2027, last biennial AFCON. (Corrected assumption: the finals are mid-2027, not
+     Dec/Jan — verified via Wikipedia/Al Jazeera/BBC before writing.)
+  3. `/entertainment/detty-december-lagos-explained/` — the Lagos December season; FG 2026
+     planning (Musawa, Jan 2026) cited via Punch; tourism angle via BusinessDay.
+  4. `/money/uk-self-assessment-deadlines-explained/` — 2025-26 return: 5 Oct registration,
+     31 Oct paper, 30 Dec PAYE, **31 Jan 2027** online+payment, £100 auto-penalty. GOV.UK
+     primary sources. Money jurisdiction label on-page.
+- **Wiring learned the hard way** (all fixed generator-level): root hub pages need explicit
+  hub→root copytree blocks in `build-routing.py` (like about/privacy); root hub routes join
+  `home/sitemap.xml` via the `("/","/about/")` tuple + `routes.add()` in the allowlist step;
+  hub pages must link desk routes with FULL prefixes (`/sports/…` — property pages get
+  auto-rewritten, hub pages do not); money pages rebase root-relative hrefs under `/money/`
+  (calendar link in the money guide is absolute for this reason); root dirs persisting across
+  builds must be in `KEEP_AT_ROOT_DIRS` or routing sweeps them into `writers/` (the pinterest
+  bug class — `event-calendar` caught it twice). Money guides require `<h2 id=…>` ×3 +
+  ≥1,800 stripped chars + meta description 70–170 chars.
+
+Post-change: pages=2557 (additive +5), at10=2557, avg=10.0, sub8=0, 4 gates green.
+Track B status: B1 ✓ B2 ✓ B3 ✓ B4 ✓ B5 ✓. Remaining on roadmap: Tier-B cadence (D2),
+owner decisions D1 (recorded: darts trainer chosen, reversible), D3 (Pinterest account).
+
 ## 2026-09-29 — Track B: B4 (shareable tool) DONE — darts checkout trainer
 
 **B4 (Phase 3) — ONE shareable tool with a result-card share object — DONE.**

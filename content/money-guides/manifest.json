@@ -1,5 +1,5 @@
 {
- "reviewed": "2026-09-26",
+ "reviewed": "2026-09-29",
  "articles": [
   {
    "slug": "trading-for-beginners",
@@ -11,15 +11,15 @@
    "summary": "A step-by-step reading path from market mechanics to a testable practice plan.",
    "sources": [
     {
-     "label": "SEC Investor.gov \u2014 types of orders",
+     "label": "SEC Investor.gov — types of orders",
      "url": "https://www.investor.gov/introduction-investing/investing-basics/how-stock-markets-work/types-orders"
     },
     {
-     "label": "FINRA \u2014 check registration",
+     "label": "FINRA — check registration",
      "url": "https://www.finra.org/investors/protect-your-money/check-registration"
     },
     {
-     "label": "ASIC MoneySmart \u2014 forex trading risks",
+     "label": "ASIC MoneySmart — forex trading risks",
      "url": "https://moneysmart.gov.au/investment-warnings/forex-trading"
     }
    ],
@@ -39,15 +39,15 @@
    "summary": "What changes between owning an asset and trading a contract on it.",
    "sources": [
     {
-     "label": "ASIC MoneySmart \u2014 contracts for difference",
+     "label": "ASIC MoneySmart — contracts for difference",
      "url": "https://moneysmart.gov.au/investment-warnings/contracts-for-difference-cfds"
     },
     {
-     "label": "ASIC MoneySmart \u2014 forex trading",
+     "label": "ASIC MoneySmart — forex trading",
      "url": "https://moneysmart.gov.au/investment-warnings/forex-trading"
     },
     {
-     "label": "SEC Investor.gov \u2014 ETFs",
+     "label": "SEC Investor.gov — ETFs",
      "url": "https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins-24"
     }
    ],
@@ -67,11 +67,11 @@
    "summary": "A regime checklist for trends, ranges, volatility, thin markets and news.",
    "sources": [
     {
-     "label": "SEC Investor.gov \u2014 extended-hours trading risks",
+     "label": "SEC Investor.gov — extended-hours trading risks",
      "url": "https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins-42"
     },
     {
-     "label": "ASIC MoneySmart \u2014 forex trading",
+     "label": "ASIC MoneySmart — forex trading",
      "url": "https://moneysmart.gov.au/investment-warnings/forex-trading"
     }
    ],
@@ -91,11 +91,11 @@
    "summary": "Why a stop is a trigger, a limit can miss and the last price is not your fill.",
    "sources": [
     {
-     "label": "SEC Investor.gov \u2014 types of orders",
+     "label": "SEC Investor.gov — types of orders",
      "url": "https://www.investor.gov/introduction-investing/investing-basics/how-stock-markets-work/types-orders"
     },
     {
-     "label": "SEC Investor.gov \u2014 stop and stop-limit orders",
+     "label": "SEC Investor.gov — stop and stop-limit orders",
      "url": "https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins-15"
     }
    ],
@@ -115,27 +115,27 @@
    "summary": "Official registers, permissions, matching contact details and clone-firm checks.",
    "sources": [
     {
-     "label": "FINRA BrokerCheck \u2014 registration and disclosures",
+     "label": "FINRA BrokerCheck — registration and disclosures",
      "url": "https://brokercheck.finra.org/"
     },
     {
-     "label": "NFA investor FAQs \u2014 derivatives and retail forex registration",
+     "label": "NFA investor FAQs — derivatives and retail forex registration",
      "url": "https://www.nfa.futures.org/faqs/investors.html"
     },
     {
-     "label": "FCA Firm Checker \u2014 verify UK firm and permissions",
+     "label": "FCA Firm Checker — verify UK firm and permissions",
      "url": "https://www.fca.org.uk/consumers/fca-firm-checker"
     },
     {
-     "label": "CSA \u2014 Are They Registered?",
+     "label": "CSA — Are They Registered?",
      "url": "https://www.securities-administrators.ca/investor-tools/are-they-registered/"
     },
     {
-     "label": "CIRO investor guidance \u2014 avoiding investment fraud",
+     "label": "CIRO investor guidance — avoiding investment fraud",
      "url": "https://www.ciro.ca/office-investor/avoiding-fraud-and-protecting-your-investments"
     },
     {
-     "label": "ASIC \u2014 search professional registers",
+     "label": "ASIC — search professional registers",
      "url": "https://www.asic.gov.au/online-services/search-asic-registers/professional-registers-search"
     }
    ],
@@ -155,15 +155,15 @@
    "summary": "A broker-neutral comparison worksheet for execution, access and safety.",
    "sources": [
     {
-     "label": "SEC Investor.gov \u2014 how to open a brokerage account",
+     "label": "SEC Investor.gov — how to open a brokerage account",
      "url": "https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins-43"
     },
     {
-     "label": "FCA \u2014 protect yourself from scams",
+     "label": "FCA — protect yourself from scams",
      "url": "https://www.fca.org.uk/consumers/protect-yourself-scams"
     },
     {
-     "label": "SEC Investor.gov \u2014 online investing",
+     "label": "SEC Investor.gov — online investing",
      "url": "https://www.investor.gov/introduction-investing/getting-started/investing-your-own/online-investing?page=1"
     }
    ],
@@ -183,15 +183,15 @@
    "summary": "An honest round-trip cost worksheet: spread, commission, financing and more.",
    "sources": [
     {
-     "label": "SEC Investor.gov \u2014 forex pricing and costs",
+     "label": "SEC Investor.gov — forex pricing and costs",
      "url": "https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins/foreign"
     },
     {
-     "label": "SEC Investor.gov \u2014 brokerage account fees",
+     "label": "SEC Investor.gov — brokerage account fees",
      "url": "https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins-43"
     },
     {
-     "label": "ASIC MoneySmart \u2014 CFD costs",
+     "label": "ASIC MoneySmart — CFD costs",
      "url": "https://moneysmart.gov.au/investment-warnings/contracts-for-difference-cfds"
     }
    ],
@@ -211,11 +211,11 @@
    "summary": "A numerical EUR/USD example that turns pips and lots into a cost.",
    "sources": [
     {
-     "label": "SEC Investor.gov \u2014 retail forex pricing",
+     "label": "SEC Investor.gov — retail forex pricing",
      "url": "https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins/foreign"
     },
     {
-     "label": "ASIC MoneySmart \u2014 forex trading",
+     "label": "ASIC MoneySmart — forex trading",
      "url": "https://moneysmart.gov.au/investment-warnings/forex-trading"
     }
    ],
@@ -235,15 +235,15 @@
    "summary": "Notional exposure, margin calls and the limits of negative-balance protection.",
    "sources": [
     {
-     "label": "FINRA \u2014 Margin Disclosure Statement",
+     "label": "FINRA — Margin Disclosure Statement",
      "url": "https://www.finra.org/rules-guidance/rulebooks/finra-rules/2264"
     },
     {
-     "label": "ASIC MoneySmart \u2014 CFDs and margin",
+     "label": "ASIC MoneySmart — CFDs and margin",
      "url": "https://moneysmart.gov.au/investment-warnings/contracts-for-difference-cfds"
     },
     {
-     "label": "FCA \u2014 contracts for difference",
+     "label": "FCA — contracts for difference",
      "url": "https://www.fca.org.uk/firms/contract-for-differences"
     }
    ],
@@ -263,11 +263,11 @@
    "summary": "A practical worksheet for loss limits, correlated exposure and bad fills.",
    "sources": [
     {
-     "label": "FINRA \u2014 Margin Disclosure Statement",
+     "label": "FINRA — Margin Disclosure Statement",
      "url": "https://www.finra.org/rules-guidance/rulebooks/finra-rules/2264"
     },
     {
-     "label": "SEC Investor.gov \u2014 stop and stop-limit orders",
+     "label": "SEC Investor.gov — stop and stop-limit orders",
      "url": "https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins-15"
     }
    ],
@@ -287,7 +287,7 @@
    "summary": "RSI arithmetic, range changes and why 'overbought' is not a sell order.",
    "sources": [
     {
-     "label": "Fidelity \u2014 Relative Strength Index reference",
+     "label": "Fidelity — Relative Strength Index reference",
      "url": "https://www.fidelity.com/learning-center/trading-investing/technical-analysis/technical-indicator-guide/RSI"
     }
    ],
@@ -307,11 +307,11 @@
    "summary": "True-range arithmetic, gap risk and the link from stop distance to size.",
    "sources": [
     {
-     "label": "Fidelity \u2014 Average True Range reference",
+     "label": "Fidelity — Average True Range reference",
      "url": "https://www.fidelity.com/learning-center/trading-investing/technical-analysis/technical-indicator-guide/atr"
     },
     {
-     "label": "SEC Investor.gov \u2014 stop and stop-limit orders",
+     "label": "SEC Investor.gov — stop and stop-limit orders",
      "url": "https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins-15"
     }
    ],
@@ -331,7 +331,7 @@
    "summary": "Two averages, one worked example and the trade-off between lag and noise.",
    "sources": [
     {
-     "label": "Fidelity \u2014 Exponential Moving Average reference",
+     "label": "Fidelity — Exponential Moving Average reference",
      "url": "https://www.fidelity.com/learning-center/trading-investing/technical-analysis/technical-indicator-guide/ema"
     }
    ],
@@ -351,19 +351,19 @@
    "summary": "Disposals trigger tax; turnover compounds it. The four questions to take to an adviser.",
    "sources": [
     {
-     "label": "IRS \u2014 Topic 409: capital gains and losses (short- vs long-term)",
+     "label": "IRS — Topic 409: capital gains and losses (short- vs long-term)",
      "url": "https://www.irs.gov/taxtopics/tc409"
     },
     {
-     "label": "IRS \u2014 Publication 550: wash sales (30-day rule)",
+     "label": "IRS — Publication 550: wash sales (30-day rule)",
      "url": "https://www.irs.gov/publications/p550"
     },
     {
-     "label": "GOV.UK \u2014 Capital Gains Tax",
+     "label": "GOV.UK — Capital Gains Tax",
      "url": "https://www.gov.uk/capital-gains-tax"
     },
     {
-     "label": "ATO \u2014 Capital gains tax for individuals",
+     "label": "ATO — Capital gains tax for individuals",
      "url": "https://www.ato.gov.au/individuals-and-families/investments-and-assets/capital-gains-tax"
     }
    ],
@@ -383,11 +383,11 @@
    "summary": "Zero commission is one fee line, not a price. Here is the rest of the price list.",
    "sources": [
     {
-     "label": "Investor.gov \u2014 Executing an order (payment for order flow, best execution)",
+     "label": "Investor.gov — Executing an order (payment for order flow, best execution)",
      "url": "https://www.investor.gov/introduction-investing/investing-basics/how-stock-markets-work/executing-order"
     },
     {
-     "label": "SEC \u2014 Investor bulletin: trade confirmations (commissions vs mark-ups, order-flow disclosure)",
+     "label": "SEC — Investor bulletin: trade confirmations (commissions vs mark-ups, order-flow disclosure)",
      "url": "https://www.sec.gov/investor/alerts/ib_confirmations.pdf"
     }
    ],
@@ -407,7 +407,7 @@
    "summary": "Worked arithmetic: why sizing, not signals, decides who survives variance.",
    "sources": [
     {
-     "label": "FINRA \u2014 day-trading rules & margin FAQ (pattern day trader, $25,000 minimum)",
+     "label": "FINRA — day-trading rules & margin FAQ (pattern day trader, $25,000 minimum)",
      "url": "https://www.finra.org/investors/learn-to-invest/advanced-investing/day-trading-rules-faq"
     }
    ],
@@ -422,16 +422,16 @@
    "section": "Markets & conditions",
    "title": "Demo Accounts: What They Teach, and What They Can't | BRYME Money",
    "h1": "Demo accounts: the simulator and the sky",
-   "dek": "Simulated trading teaches mechanics free. It hides execution, cost and temperament \u2014 the three that decide results.",
+   "dek": "Simulated trading teaches mechanics free. It hides execution, cost and temperament — the three that decide results.",
    "description": "What to rehearse in a demo, what it structurally cannot show (fills, fees, feelings), and the three rules for crossing to a first small live account.",
    "summary": "Make the mechanics boring in simulation; the rest is what small live size is for.",
    "sources": [
     {
-     "label": "Investor.gov \u2014 Executing an order (payment for order flow, best execution)",
+     "label": "Investor.gov — Executing an order (payment for order flow, best execution)",
      "url": "https://www.investor.gov/introduction-investing/investing-basics/how-stock-markets-work/executing-order"
     },
     {
-     "label": "FINRA \u2014 day-trading rules & margin FAQ (pattern day trader, $25,000 minimum)",
+     "label": "FINRA — day-trading rules & margin FAQ (pattern day trader, $25,000 minimum)",
      "url": "https://www.finra.org/investors/learn-to-invest/advanced-investing/day-trading-rules-faq"
     }
    ],
@@ -451,15 +451,15 @@
    "summary": "Survivorship bias is the business model. Here is what evidence survives it.",
    "sources": [
     {
-     "label": "FCA \u2014 Protect yourself from scams",
+     "label": "FCA — Protect yourself from scams",
      "url": "https://www.fca.org.uk/consumers/protect-yourself-scams"
     },
     {
-     "label": "MoneySmart (ASIC) \u2014 investment warning: contracts for difference (CFDs)",
+     "label": "MoneySmart (ASIC) — investment warning: contracts for difference (CFDs)",
      "url": "https://moneysmart.gov.au/investment-warnings/contracts-for-difference-cfds"
     },
     {
-     "label": "MoneySmart (ASIC) \u2014 investment warning: forex trading",
+     "label": "MoneySmart (ASIC) — investment warning: forex trading",
      "url": "https://moneysmart.gov.au/investment-warnings/forex-trading"
     }
    ],
@@ -479,11 +479,11 @@
    "summary": "Same markets, three products. The numbers pick the horizon, not the personality quiz.",
    "sources": [
     {
-     "label": "FINRA \u2014 day-trading rules & margin FAQ (pattern day trader, $25,000 minimum)",
+     "label": "FINRA — day-trading rules & margin FAQ (pattern day trader, $25,000 minimum)",
      "url": "https://www.finra.org/investors/learn-to-invest/advanced-investing/day-trading-rules-faq"
     },
     {
-     "label": "SEC \u2014 Investor bulletin: trade confirmations (commissions vs mark-ups, order-flow disclosure)",
+     "label": "SEC — Investor bulletin: trade confirmations (commissions vs mark-ups, order-flow disclosure)",
      "url": "https://www.sec.gov/investor/alerts/ib_confirmations.pdf"
     }
    ],
@@ -499,15 +499,15 @@
    "title": "How to build an emergency fund: how much, where, how | BRYME Money",
    "h1": "How to build an emergency fund: how much, where and how",
    "dek": "Three to six months of essentials: the size, the right account, and a build plan that survives bad months.",
-   "description": "How big an emergency fund should be, where to keep it and how to build it \u2014 CFPB-aligned strategies, jurisdiction-honest, no heroics.",
+   "description": "How big an emergency fund should be, where to keep it and how to build it — CFPB-aligned strategies, jurisdiction-honest, no heroics.",
    "summary": "The size question, the safe-accessible-separate account tests, and the automate-and-windfall build plan, with US, UK and Nigeria notes.",
    "sources": [
     {
-     "label": "CFPB \u2014 an essential guide to building an emergency fund",
+     "label": "CFPB — an essential guide to building an emergency fund",
      "url": "https://www.consumerfinance.gov/an-essential-guide-to-building-an-emergency-fund/"
     },
     {
-     "label": "MoneyHelper \u2014 beginners' guide to managing your money",
+     "label": "MoneyHelper — beginners' guide to managing your money",
      "url": "https://www.moneyhelper.org.uk/en/everyday-money/budgeting/beginners-guide-to-managing-your-money"
     }
    ],
@@ -520,18 +520,18 @@
   {
    "slug": "budget-50-30-20-explained",
    "section": "Save and grow",
-   "title": "The 50/30/20 budget rule, explained \u2014 and when it bends | BRYME Money",
-   "h1": "The 50/30/20 budget rule, explained \u2014 and when it bends",
+   "title": "The 50/30/20 budget rule, explained — and when it bends | BRYME Money",
+   "h1": "The 50/30/20 budget rule, explained — and when it bends",
    "dek": "Needs, wants and savings in three buckets: the rule's history, the honest exceptions, and the mechanics that make it stick.",
    "description": "The 50/30/20 rule explained: needs, wants and savings buckets, when the scaffold bends, and the three mechanics that make any budget stick.",
    "summary": "After-tax income split three ways, the cases where the percentages must flex, and automation-and-review habits that keep budgets alive.",
    "sources": [
     {
-     "label": "MoneyHelper \u2014 beginners' guide to managing your money",
+     "label": "MoneyHelper — beginners' guide to managing your money",
      "url": "https://www.moneyhelper.org.uk/en/everyday-money/budgeting/beginners-guide-to-managing-your-money"
     },
     {
-     "label": "MoneyHelper \u2014 create a household budget for your family",
+     "label": "MoneyHelper — create a household budget for your family",
      "url": "https://www.moneyhelper.org.uk/en/blog/everyday-money/create-a-household-budget-for-your-family"
     }
    ],
@@ -546,16 +546,16 @@
    "section": "Save and grow",
    "title": "Debt snowball vs avalanche: which payoff method fits you | BRYME Money",
    "h1": "Debt snowball vs avalanche: which payoff method fits you",
-   "dek": "Highest-rate-first maths vs smallest-balance-first momentum \u2014 the trade-off, per CFPB guidance, and how to choose honestly.",
-   "description": "Snowball vs avalanche debt payoff compared \u2014 the maths, the psychology and how to choose honestly, per CFPB debt-reduction guidance.",
+   "dek": "Highest-rate-first maths vs smallest-balance-first momentum — the trade-off, per CFPB guidance, and how to choose honestly.",
+   "description": "Snowball vs avalanche debt payoff compared — the maths, the psychology and how to choose honestly, per CFPB debt-reduction guidance.",
    "summary": "Avalanche minimises interest; snowball maximises momentum. Which to pick by rate spread and quit history, plus the rollover habit both depend on.",
    "sources": [
     {
-     "label": "CFPB \u2014 your money, your goals: debt action plan (PDF)",
+     "label": "CFPB — your money, your goals: debt action plan (PDF)",
      "url": "https://files.consumerfinance.gov/f/documents/cfpb_your-money-your-goals_debt-action-plan_tool_2018-11.pdf"
     },
     {
-     "label": "CFPB \u2014 resolve to take control of your debt",
+     "label": "CFPB — resolve to take control of your debt",
      "url": "https://www.consumerfinance.gov/about-us/blog/resolve-take-control-your-debt-new-year/"
     }
    ],
@@ -575,11 +575,11 @@
    "summary": "Future-value formula with a labelled example, the rule of 72, why starting early outruns contributing more, and the inflation caveats.",
    "sources": [
     {
-     "label": "Investor.gov \u2014 compound interest calculator",
+     "label": "Investor.gov — compound interest calculator",
      "url": "https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator"
     },
     {
-     "label": "Investor.gov \u2014 savings goal calculator",
+     "label": "Investor.gov — savings goal calculator",
      "url": "https://www.investor.gov/financial-tools-calculators/calculators/savings-goal-calculator"
     }
    ],
@@ -599,11 +599,11 @@
    "summary": "Deposit size and LTV mechanics, backward-planning the monthly number, government first-time-buyer schemes, and safe vehicles for dated goals.",
    "sources": [
     {
-     "label": "MoneyHelper \u2014 saving money for a mortgage deposit",
+     "label": "MoneyHelper — saving money for a mortgage deposit",
      "url": "https://www.moneyhelper.org.uk/en/homes/buying-a-home/saving-money-for-a-mortgage-deposit"
     },
     {
-     "label": "MoneyHelper \u2014 first-time buyer money tips",
+     "label": "MoneyHelper — first-time buyer money tips",
      "url": "https://www.moneyhelper.org.uk/en/homes/buying-a-home/first-time-buyer-money-tips"
     }
    ],
@@ -623,11 +623,11 @@
    "summary": "The income-replacement question, the two policy families and their honest trade-offs, beneficiary hygiene, and jurisdiction-specific buying notes.",
    "sources": [
     {
-     "label": "NAIC \u2014 consumer insight: a life insurance roadmap",
+     "label": "NAIC — consumer insight: a life insurance roadmap",
      "url": "https://content.naic.org/article/consumer-insight-life-insurance-roadmap"
     },
     {
-     "label": "NAIC \u2014 what type of life insurance is right for you",
+     "label": "NAIC — what type of life insurance is right for you",
      "url": "https://content.naic.org/article/consumer-insight-what-type-life-insurance-right-you"
     }
    ],
@@ -647,11 +647,11 @@
    "summary": "The prediction behind the number, the factors that move it, why models disagree, and how to read the reports that feed every score.",
    "sources": [
     {
-     "label": "CFPB \u2014 what is a credit score?",
+     "label": "CFPB — what is a credit score?",
      "url": "https://www.consumerfinance.gov/ask-cfpb/what-is-a-credit-score-en-315/"
     },
     {
-     "label": "CFPB \u2014 what is a FICO score?",
+     "label": "CFPB — what is a FICO score?",
      "url": "https://www.consumerfinance.gov/ask-cfpb/what-is-a-fico-score-en-1883/"
     }
    ],
@@ -666,16 +666,16 @@
    "section": "Save and grow",
    "title": "How to improve your credit score: the honest method | BRYME Money",
    "h1": "How to improve your credit score: the honest method",
-   "dek": "Payment history, utilisation, report errors and the products that build thin files \u2014 plus the credit-repair scams to walk away from.",
+   "dek": "Payment history, utilisation, report errors and the products that build thin files — plus the credit-repair scams to walk away from.",
    "description": "How to improve a credit score honestly: the CFPB's habits in order, the carry-a-balance myth, thin-file products, and credit-repair scam warnings.",
    "summary": "The boring habits that move every model: pay on time, stay under 30% utilisation, fix report errors, and avoid the paid 'repair' noise.",
    "sources": [
     {
-     "label": "CFPB \u2014 how do I get and keep a good credit score?",
+     "label": "CFPB — how do I get and keep a good credit score?",
      "url": "https://www.consumerfinance.gov/ask-cfpb/how-do-i-get-and-keep-a-good-credit-score-en-318/"
     },
     {
-     "label": "CFPB \u2014 consumer advisory on credit repair (PDF)",
+     "label": "CFPB — consumer advisory on credit repair (PDF)",
      "url": "https://files.consumerfinance.gov/f/documents/092016_cfpb_ConsumerAdvisory.pdf"
     }
    ],
@@ -692,14 +692,14 @@
    "h1": "How credit card interest works: grace periods and daily maths",
    "dek": "The grace period's condition, APR chopped into daily pieces, penalty rates, where payments go, and why minimums are a trap.",
    "description": "How credit card interest is calculated: grace periods, the daily periodic rate, average daily balance, penalty APRs and the minimum-payment trap, per CFPB rules.",
-   "summary": "APR divided by 365, compounded daily on a moving balance \u2014 the machine behind every statement, and the payment-allocation rules worth knowing.",
+   "summary": "APR divided by 365, compounded daily on a moving balance — the machine behind every statement, and the payment-allocation rules worth knowing.",
    "sources": [
     {
-     "label": "CFPB \u2014 how does my credit card company calculate the interest I owe?",
+     "label": "CFPB — how does my credit card company calculate the interest I owe?",
      "url": "https://www.consumerfinance.gov/ask-cfpb/how-does-my-credit-card-company-calculate-the-amount-of-interest-i-owe-en-51/"
     },
     {
-     "label": "CFPB \u2014 credit cards key terms",
+     "label": "CFPB — credit cards key terms",
      "url": "https://www.consumerfinance.gov/consumer-tools/credit-cards/answers/key-terms/"
     }
    ],
@@ -714,20 +714,20 @@
    "section": "Save and grow",
    "title": "Retirement savings basics: the match, the wrappers, the habits | BRYME Money",
    "h1": "Retirement savings basics: the match, the wrappers, the habits",
-   "dek": "Employer matches are free money, tax wrappers come in two flavours, and four habits decide the outcome \u2014 US 401(k)/IRA and UK auto-enrolment explained.",
+   "dek": "Employer matches are free money, tax wrappers come in two flavours, and four habits decide the outcome — US 401(k)/IRA and UK auto-enrolment explained.",
    "description": "Retirement saving basics: capturing the employer match, traditional vs Roth wrappers, UK auto-enrolment minimums, fees and the four habits that decide outcomes.",
    "summary": "The 50-cent match example, tax-now vs tax-later accounts, the UK's 8% auto-enrolment floor, and why fees and job-change cash-outs ruin pots.",
    "sources": [
     {
-     "label": "Investor.gov \u2014 401(k) plans",
+     "label": "Investor.gov — 401(k) plans",
      "url": "https://www.investor.gov/additional-resources/retirement-toolkit/employer-sponsored-plans/traditional-and-roth-401k-plans"
     },
     {
-     "label": "Investor.gov \u2014 retirement toolkit: first job",
+     "label": "Investor.gov — retirement toolkit: first job",
      "url": "https://www.investor.gov/additional-resources/retirement-toolkit/first-job"
     },
     {
-     "label": "MoneyHelper \u2014 how pension auto-enrolment works",
+     "label": "MoneyHelper — how pension auto-enrolment works",
      "url": "https://www.moneyhelper.org.uk/en/pensions-and-retirement/pensions-basics/automatic-enrolment-an-introduction"
     }
    ],
@@ -742,16 +742,16 @@
    "section": "Save and grow",
    "title": "Student loans explained: US federal vs UK Plan 5 | BRYME Money",
    "h1": "Student loans explained: US federal versus UK Plan 5",
-   "dek": "Two philosophies: US federal protections versus England's income-contingent graduate contribution \u2014 and when overpaying helps or destroys value.",
+   "dek": "Two philosophies: US federal protections versus England's income-contingent graduate contribution — and when overpaying helps or destroys value.",
    "description": "Student loans explained: US federal vs private loans, England's Plan 5 income-contingent repayments, and the three questions that decide whether to overpay.",
-   "summary": "Fixed-rate federal loans with forgiveness paths versus 9%-above-threshold graduate contributions \u2014 and the overpayment logic for each system.",
+   "summary": "Fixed-rate federal loans with forgiveness paths versus 9%-above-threshold graduate contributions — and the overpayment logic for each system.",
    "sources": [
     {
-     "label": "GOV.UK \u2014 student loans: terms and conditions 2026-27",
+     "label": "GOV.UK — student loans: terms and conditions 2026-27",
      "url": "https://www.gov.uk/government/publications/student-loans-a-guide-to-terms-and-conditions/student-loans-a-guide-to-terms-and-conditions-2026-to-2027"
     },
     {
-     "label": "Federal Student Aid \u2014 loan types",
+     "label": "Federal Student Aid — loan types",
      "url": "https://studentaid.gov/understand-aid/types/loans"
     }
    ],
@@ -771,11 +771,11 @@
    "summary": "The real-rate tax on cash, the CPI basket versus your basket, and why the emergency fund and long-term money answer to different rules.",
    "sources": [
     {
-     "label": "ONS \u2014 inflation and price indices",
+     "label": "ONS — inflation and price indices",
      "url": "https://www.ons.gov.uk/economy/inflationandpriceindices"
     },
     {
-     "label": "BLS \u2014 Consumer Price Index",
+     "label": "BLS — Consumer Price Index",
      "url": "https://www.bls.gov/cpi/"
     }
    ],
@@ -790,20 +790,20 @@
    "section": "Save and grow",
    "title": "How mortgages work: rates, amortisation and the real cost | BRYME Money",
    "h1": "How mortgages work: the machine behind the biggest contract you will sign",
-   "dek": "Interest, principal, LTV and term \u2014 how the monthly payment is built, and why early extra payments are the most powerful kind.",
-   "description": "How mortgages actually work: principal versus interest, amortisation, fixed versus tracker rates, LTV and all-in costs \u2014 explained without the sales language.",
+   "dek": "Interest, principal, LTV and term — how the monthly payment is built, and why early extra payments are the most powerful kind.",
+   "description": "How mortgages actually work: principal versus interest, amortisation, fixed versus tracker rates, LTV and all-in costs — explained without the sales language.",
    "summary": "The four numbers that define a mortgage, why early payments buy mostly interest, and the honest costs beyond the advertised rate.",
    "sources": [
     {
-     "label": "CFPB \u2014 mortgages consumer tool",
+     "label": "CFPB — mortgages consumer tool",
      "url": "https://www.consumerfinance.gov/consumer-tools/mortgages/"
     },
     {
-     "label": "CFPB \u2014 mortgage answers",
+     "label": "CFPB — mortgage answers",
      "url": "https://www.consumerfinance.gov/consumer-tools/mortgages/answers/"
     },
     {
-     "label": "MoneyHelper \u2014 mortgages and homes",
+     "label": "MoneyHelper — mortgages and homes",
      "url": "https://www.moneyhelper.org.uk/en/mortgages-and-homes"
     }
    ],
@@ -818,20 +818,20 @@
    "section": "Save and grow",
    "title": "High-yield savings accounts: APY, safety and the fine print | BRYME Money",
    "h1": "High-yield savings accounts: read the APY, check the insurance",
-   "dek": "APY versus headline rate, deposit insurance, teaser-rate traps \u2014 how to pick the safest decent yield for cash you need.",
+   "dek": "APY versus headline rate, deposit insurance, teaser-rate traps — how to pick the safest decent yield for cash you need.",
    "description": "How high-yield savings accounts work: APY versus interest rate, FDIC and FSCS protection, teaser-rate fine print and the inflation ceiling, jurisdiction-honest.",
-   "summary": "Compare APY, verify deposit insurance, read the revert rate \u2014 the five-minute checklist for the best home for an emergency fund.",
+   "summary": "Compare APY, verify deposit insurance, read the revert rate — the five-minute checklist for the best home for an emergency fund.",
    "sources": [
     {
-     "label": "SEC Investor.gov \u2014 annual percentage yield (APY)",
+     "label": "SEC Investor.gov — annual percentage yield (APY)",
      "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/annual-percentage-yield-apy"
     },
     {
-     "label": "FDIC \u2014 understanding deposit insurance",
+     "label": "FDIC — understanding deposit insurance",
      "url": "https://www.fdic.gov/resources/deposit-insurance/understanding-deposit-insurance"
     },
     {
-     "label": "MoneyHelper \u2014 savings and cash ISAs",
+     "label": "MoneyHelper — savings and cash ISAs",
      "url": "https://www.moneyhelper.org.uk/en/savings-cash-isas"
     }
    ],
@@ -846,20 +846,20 @@
    "section": "Save and grow",
    "title": "Where to put your money: the honest ladder of options | BRYME Money",
    "h1": "Where to put your money: a ladder sorted by risk and horizon",
-   "dek": "Cash, savings, term deposits, bonds, index funds \u2014 what each rung buys, what it risks, and the horizon rule that picks for you.",
+   "dek": "Cash, savings, term deposits, bonds, index funds — what each rung buys, what it risks, and the horizon rule that picks for you.",
    "description": "Where to keep money and why: a rung-by-rung ladder from cash to index funds, the horizon rule, deposit insurance checks and the order of operations before investing.",
-   "summary": "Six rungs, four questions, one rule: the shorter the horizon, the safer the instrument \u2014 with the order of operations before any move.",
+   "summary": "Six rungs, four questions, one rule: the shorter the horizon, the safer the instrument — with the order of operations before any move.",
    "sources": [
     {
-     "label": "SEC Investor.gov \u2014 annual percentage yield (APY)",
+     "label": "SEC Investor.gov — annual percentage yield (APY)",
      "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/annual-percentage-yield-apy"
     },
     {
-     "label": "FDIC \u2014 understanding deposit insurance",
+     "label": "FDIC — understanding deposit insurance",
      "url": "https://www.fdic.gov/resources/deposit-insurance/understanding-deposit-insurance"
     },
     {
-     "label": "CFPB \u2014 an essential guide to building an emergency fund",
+     "label": "CFPB — an essential guide to building an emergency fund",
      "url": "https://www.consumerfinance.gov/an-essential-guide-to-building-an-emergency-fund/"
     }
    ],
@@ -873,21 +873,21 @@
    "slug": "buy-now-pay-later-explained",
    "section": "Save and grow",
    "title": "Buy now, pay later: the real costs behind 0% interest | BRYME Money",
-   "h1": "Buy now, pay later: what \u201cinterest-free\u201d does not tell you",
-   "dek": "Late fees, stacking, autopay and credit reporting \u2014 the CFPB-documented risks of BNPL, and four tests before you tap.",
+   "h1": "Buy now, pay later: what “interest-free” does not tell you",
+   "dek": "Late fees, stacking, autopay and credit reporting — the CFPB-documented risks of BNPL, and four tests before you tap.",
    "description": "How buy-now-pay-later really works: merchant-funded instalments, late fees, stacking risk, credit-reporting asymmetry and the four checks to run before using it.",
-   "summary": "The mechanics, the four hidden costs, the new regulation \u2014 and four ten-second tests to keep BNPL a scheduling choice, not borrowing.",
+   "summary": "The mechanics, the four hidden costs, the new regulation — and four ten-second tests to keep BNPL a scheduling choice, not borrowing.",
    "sources": [
     {
-     "label": "CFPB \u2014 what is a buy now, pay later (BNPL) loan?",
+     "label": "CFPB — what is a buy now, pay later (BNPL) loan?",
      "url": "https://www.consumerfinance.gov/ask-cfpb/what-is-a-buy-now-pay-later-bnpl-loan-en-2119/"
     },
     {
-     "label": "CFPB \u2014 buy now, pay later: market trends and consumer impacts",
+     "label": "CFPB — buy now, pay later: market trends and consumer impacts",
      "url": "https://www.consumerfinance.gov/data-research/research-reports/buy-now-pay-later-market-trends-and-consumer-impacts/"
     },
     {
-     "label": "MoneyHelper \u2014 beginners' guide to managing your money",
+     "label": "MoneyHelper — beginners' guide to managing your money",
      "url": "https://www.moneyhelper.org.uk/en/everyday-money/budgeting/beginners-guide-to-managing-your-money"
     }
    ],
@@ -902,16 +902,16 @@
    "section": "Save and grow",
    "title": "Dollar-cost averaging: what it fixes and what it cannot | BRYME Money",
    "h1": "Dollar-cost averaging: the honest case for investing on a schedule",
-   "dek": "Fixed amount, fixed schedule, no timing \u2014 what DCA buys, the lump-sum comparison, and the claims it cannot support.",
+   "dek": "Fixed amount, fixed schedule, no timing — what DCA buys, the lump-sum comparison, and the claims it cannot support.",
    "description": "Dollar-cost averaging explained honestly: the behaviour it fixes, the arithmetic of fixed-amount buying, DCA versus lump sum, and what averaging cannot do.",
    "summary": "Why the schedule beats timing, the honest lump-sum comparison, and a practical checklist for running a DCA plan on autopilot.",
    "sources": [
     {
-     "label": "SEC Investor.gov \u2014 dollar-cost averaging",
+     "label": "SEC Investor.gov — dollar-cost averaging",
      "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/dollar-cost-averaging"
     },
     {
-     "label": "SEC \u2014 investor alerts and bulletins",
+     "label": "SEC — investor alerts and bulletins",
      "url": "https://www.sec.gov/investor/pubs/investor-alerts"
     }
    ],
@@ -926,24 +926,24 @@
    "section": "Save and grow",
    "title": "Money scams: how to spot them and what to do if you paid | BRYME Money",
    "h1": "Money scams: the patterns, the ten-second checks, the recovery ladder",
-   "dek": "Impersonation, pig-butchering, recovery scams \u2014 the five patterns, six flags, and the exact steps to take in the first hour.",
+   "dek": "Impersonation, pig-butchering, recovery scams — the five patterns, six flags, and the exact steps to take in the first hour.",
    "description": "How modern money scams work: the five patterns behind impersonation, investment and recovery scams, six fast checks, and the first-hour recovery ladder by country.",
-   "summary": "Five scam patterns, a ten-second flag checklist and the recovery ladder \u2014 bank recall, platform freeze, FTC, Action Fraud and EFCC reporting.",
+   "summary": "Five scam patterns, a ten-second flag checklist and the recovery ladder — bank recall, platform freeze, FTC, Action Fraud and EFCC reporting.",
    "sources": [
     {
-     "label": "CFPB \u2014 fraud consumer tools",
+     "label": "CFPB — fraud consumer tools",
      "url": "https://www.consumerfinance.gov/consumer-tools/fraud/"
     },
     {
-     "label": "FTC \u2014 scams",
+     "label": "FTC — scams",
      "url": "https://consumer.ftc.gov/scams"
     },
     {
-     "label": "FTC \u2014 report fraud",
+     "label": "FTC — report fraud",
      "url": "https://reportfraud.ftc.gov/"
     },
     {
-     "label": "EFCC (Nigeria) \u2014 official site",
+     "label": "EFCC (Nigeria) — official site",
      "url": "https://efcc.gov.ng/"
     }
    ],
@@ -958,16 +958,16 @@
    "section": "Save and grow",
    "title": "Health insurance basics: the six terms that decide your costs | BRYME Money",
    "h1": "Health insurance basics: premiums, deductibles and the worst-case number",
-   "dek": "Premium, deductible, copay, network, out-of-pocket max \u2014 decode the six terms, then compare plans on the number that survives a bad year.",
-   "description": "What health insurance really costs: premiums, deductibles, copays, networks and the out-of-pocket maximum \u2014 the comparison method that survives a bad year.",
+   "dek": "Premium, deductible, copay, network, out-of-pocket max — decode the six terms, then compare plans on the number that survives a bad year.",
+   "description": "What health insurance really costs: premiums, deductibles, copays, networks and the out-of-pocket maximum — the comparison method that survives a bad year.",
    "summary": "The six cost terms decoded, the premium-deductible trade-off, US/UK/Nigeria machinery, and the four expensive mistakes to avoid.",
    "sources": [
     {
-     "label": "HealthCare.gov \u2014 health insurance glossary",
+     "label": "HealthCare.gov — health insurance glossary",
      "url": "https://www.healthcare.gov/glossary/health-insurance/"
     },
     {
-     "label": "MoneyHelper \u2014 insurance",
+     "label": "MoneyHelper — insurance",
      "url": "https://www.moneyhelper.org.uk/en/insurance"
     }
    ],
@@ -982,20 +982,20 @@
    "section": "Save and grow",
    "title": "How car insurance works: cover types, premiums and claims | BRYME Money",
    "h1": "How car insurance works: what you are actually buying",
-   "dek": "Liability, comprehensive and add-ons; how premiums get priced; what happens at a claim \u2014 and the annual shop-around that pays for itself.",
+   "dek": "Liability, comprehensive and add-ons; how premiums get priced; what happens at a claim — and the annual shop-around that pays for itself.",
    "description": "How car insurance works: liability, comprehensive and add-ons, how premiums are priced, what happens at a claim, and the annual shop-around that pays.",
    "summary": "The three layers of cover, the inputs behind your premium, the claim sequence, and the like-for-like comparison habits that save real money.",
    "sources": [
     {
-     "label": "Wikipedia \u2014 auto insurance",
+     "label": "Wikipedia — auto insurance",
      "url": "https://en.wikipedia.org/wiki/Auto_insurance"
     },
     {
-     "label": "NAIC \u2014 what you need to know about auto insurance",
+     "label": "NAIC — what you need to know about auto insurance",
      "url": "https://content.naic.org/article/what-you-need-know-about-auto-insurance"
     },
     {
-     "label": "MoneyHelper \u2014 insurance",
+     "label": "MoneyHelper — insurance",
      "url": "https://www.moneyhelper.org.uk/en/insurance"
     }
    ],
@@ -1015,15 +1015,15 @@
    "summary": "What an index fund is, the three forces that make passive win, its honest limits, and the short practical checklist for buying one.",
    "sources": [
     {
-     "label": "SEC Investor.gov \u2014 index fund",
+     "label": "SEC Investor.gov — index fund",
      "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/index-fund"
     },
     {
-     "label": "SEC Investor.gov \u2014 mutual fund",
+     "label": "SEC Investor.gov — mutual fund",
      "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/mutual-fund"
     },
     {
-     "label": "SEC Investor.gov \u2014 exchange-traded fund (ETF)",
+     "label": "SEC Investor.gov — exchange-traded fund (ETF)",
      "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/exchange-traded-fund-etf"
     }
    ],
@@ -1038,16 +1038,16 @@
    "section": "Save and grow",
    "title": "How to budget with irregular income: pay yourself a salary | BRYME Money",
    "h1": "How to budget with irregular income: smooth the money, not the month",
-   "dek": "Find your worst month, pay yourself a salary, ring-fence tax \u2014 the buffer system that replaces the payslip freelancers never had.",
+   "dek": "Find your worst month, pay yourself a salary, ring-fence tax — the buffer system that replaces the payslip freelancers never had.",
    "description": "How to budget when income is irregular: find your worst month, pay yourself a salary, ring-fence tax, and build the buffer that replaces the payslip.",
    "summary": "The baseline rule, the self-paid salary mechanic, the tax slice, a bigger buffer on purpose, and the quarterly review that keeps it honest.",
    "sources": [
     {
-     "label": "CFPB \u2014 an essential guide to building an emergency fund",
+     "label": "CFPB — an essential guide to building an emergency fund",
      "url": "https://www.consumerfinance.gov/an-essential-guide-to-building-an-emergency-fund/"
     },
     {
-     "label": "MoneyHelper \u2014 beginners' guide to managing your money",
+     "label": "MoneyHelper — beginners' guide to managing your money",
      "url": "https://www.moneyhelper.org.uk/en/everyday-money/budgeting/beginners-guide-to-managing-your-money"
     }
    ],
@@ -1062,16 +1062,16 @@
    "section": "Save and grow",
    "title": "Sinking funds: budgeting for the surprises that were scheduled | BRYME Money",
    "h1": "Sinking funds explained: the division trick that ends December panic",
-   "dek": "The car service, the fees, the holidays you knew were coming: divide, automate, label \u2014 and keep the emergency fund for real emergencies.",
-   "description": "Sinking funds explained: the division trick that turns known annual expenses into calm monthly line items \u2014 and keeps the emergency fund for real emergencies.",
+   "dek": "The car service, the fees, the holidays you knew were coming: divide, automate, label — and keep the emergency fund for real emergencies.",
+   "description": "Sinking funds explained: the division trick that turns known annual expenses into calm monthly line items — and keeps the emergency fund for real emergencies.",
    "summary": "The one formula, sinking funds versus the emergency fund, five setup rules, and where the pots live inside the 50/30/20 budget.",
    "sources": [
     {
-     "label": "CFPB \u2014 an essential guide to building an emergency fund",
+     "label": "CFPB — an essential guide to building an emergency fund",
      "url": "https://www.consumerfinance.gov/an-essential-guide-to-building-an-emergency-fund/"
     },
     {
-     "label": "MoneyHelper \u2014 beginners' guide to managing your money",
+     "label": "MoneyHelper — beginners' guide to managing your money",
      "url": "https://www.moneyhelper.org.uk/en/everyday-money/budgeting/beginners-guide-to-managing-your-money"
     }
    ],
@@ -1091,11 +1091,11 @@
    "summary": "Why the raise myth is impossible, marginal versus effective rates, the decisions the marginal rate is for, and the honest exception: cliffs and tapering.",
    "sources": [
     {
-     "label": "SEC Investor.gov \u2014 marginal tax rate",
+     "label": "SEC Investor.gov — marginal tax rate",
      "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/marginal-tax-rate"
     },
     {
-     "label": "IRS \u2014 filing",
+     "label": "IRS — filing",
      "url": "https://www.irs.gov/filing"
     }
    ],
@@ -1115,11 +1115,11 @@
    "summary": "The payroll mechanics, why the match is the whole game, the investment menu, Roth versus traditional logic, penalties and RMDs.",
    "sources": [
     {
-     "label": "SEC Investor.gov \u2014 401(k) plan",
+     "label": "SEC Investor.gov — 401(k) plan",
      "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/401k-plan"
     },
     {
-     "label": "SEC Investor.gov \u2014 individual retirement arrangement (IRA)",
+     "label": "SEC Investor.gov — individual retirement arrangement (IRA)",
      "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/individual-retirement-arrangement-ira"
     }
    ],
@@ -1134,16 +1134,16 @@
    "section": "Save and grow",
    "title": "IRA and Roth IRA explained: when the tax man gets paid | BRYME Money",
    "h1": "IRA and Roth IRA, explained: one question decides",
-   "dek": "Traditional taxes withdrawals, Roth taxes contributions \u2014 the bracket question that decides, plus limits, withdrawal rules and the back door.",
+   "dek": "Traditional taxes withdrawals, Roth taxes contributions — the bracket question that decides, plus limits, withdrawal rules and the back door.",
    "description": "IRAs explained: traditional versus Roth tax timing, contribution limits and deadlines, withdrawal penalties, Roth contribution flexibility and the backdoor route.",
    "summary": "The tax-timing question, limits and the spring deadline, withdrawal rules both ways, and backdoor Roth mechanics for high earners.",
    "sources": [
     {
-     "label": "SEC Investor.gov \u2014 individual retirement arrangement (IRA)",
+     "label": "SEC Investor.gov — individual retirement arrangement (IRA)",
      "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/individual-retirement-arrangement-ira"
     },
     {
-     "label": "SEC Investor.gov \u2014 401(k) plan",
+     "label": "SEC Investor.gov — 401(k) plan",
      "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/401k-plan"
     }
    ],
@@ -1163,11 +1163,11 @@
    "summary": "The two engines behind every system, the UK worked example, the highest-return record check, and where the state floor sits under private saving.",
    "sources": [
     {
-     "label": "GOV.UK \u2014 the new State Pension",
+     "label": "GOV.UK — the new State Pension",
      "url": "https://www.gov.uk/state-pension"
     },
     {
-     "label": "GOV.UK \u2014 plan for your retirement",
+     "label": "GOV.UK — plan for your retirement",
      "url": "https://www.gov.uk/plan-for-retirement"
     }
    ],
@@ -1182,16 +1182,16 @@
    "section": "Save and grow",
    "title": "Wills and estate basics: the cheapest consequential document | BRYME Money",
    "h1": "Wills and estate basics: what happens if you never write one",
-   "dek": "Intestacy rules, the five parts of a basic will, beneficiary designations that beat it, powers of attorney \u2014 and getting one done proportionately.",
+   "dek": "Intestacy rules, the five parts of a basic will, beneficiary designations that beat it, powers of attorney — and getting one done proportionately.",
    "description": "Wills explained: what intestacy does to your estate, the five clauses of a basic will, beneficiary designations, powers of attorney, and costs by complexity.",
    "summary": "The intestacy default, executors and residue clauses, guardians, the designations that override wills, powers of attorney, and proportionate execution.",
    "sources": [
     {
-     "label": "GOV.UK \u2014 applying for probate",
+     "label": "GOV.UK — applying for probate",
      "url": "https://www.gov.uk/applying-for-probate"
     },
     {
-     "label": "MoneyHelper \u2014 wills and power of attorney",
+     "label": "MoneyHelper — wills and power of attorney",
      "url": "https://www.moneyhelper.org.uk/en/later-life/wills-and-power-of-attorney"
     }
    ],
@@ -1204,18 +1204,18 @@
   {
    "slug": "how-much-to-save-for-retirement-explained",
    "section": "Save and grow",
-   "title": "How much to save for retirement: the 25\u00d7 rule and its fine print | BRYME Money",
+   "title": "How much to save for retirement: the 25× rule and its fine print | BRYME Money",
    "h1": "How much to save for retirement: target income, multiplier, path",
-   "dek": "Target income first, then the 25\u00d7 multiplier and its honest range, then the monthly path backwards \u2014 retirement as a glide path you steer.",
-   "description": "How much retirement money you need: setting the target income, the 4% rule and 25\u00d7 multiplier with honest caveats, and the contribution path backwards.",
-   "summary": "The three-layer income target, the 25\u00d7 multiplier and its 20\u201333\u00d7 range, sequence risk, and converting the gap into a monthly number.",
+   "dek": "Target income first, then the 25× multiplier and its honest range, then the monthly path backwards — retirement as a glide path you steer.",
+   "description": "How much retirement money you need: setting the target income, the 4% rule and 25× multiplier with honest caveats, and the contribution path backwards.",
+   "summary": "The three-layer income target, the 25× multiplier and its 20–33× range, sequence risk, and converting the gap into a monthly number.",
    "sources": [
     {
-     "label": "GOV.UK \u2014 plan for your retirement",
+     "label": "GOV.UK — plan for your retirement",
      "url": "https://www.gov.uk/plan-for-retirement"
     },
     {
-     "label": "MoneyHelper \u2014 how much do I need for a comfortable retirement",
+     "label": "MoneyHelper — how much do I need for a comfortable retirement",
      "url": "https://www.moneyhelper.org.uk/en/pensions-and-retirement/planning-for-retirement/how-much-do-i-need-for-a-comfortable-retirement"
     }
    ],
@@ -1231,15 +1231,15 @@
    "title": "FIRE explained: the maths that is real and the fine print that is not | BRYME Money",
    "h1": "FIRE, explained: savings rate as destiny, and its honest limits",
    "dek": "The savings-rate maths behind early retirement, the 60-year fine print on the 4% rule, and the useful version: financial independence as a dial.",
-   "description": "FIRE explained: the savings-rate engine, the flavours, the long-horizon fine print on the 4% rule, healthcare and inflation \u2014 and freedom as a dial, not a cliff.",
+   "description": "FIRE explained: the savings-rate engine, the flavours, the long-horizon fine print on the 4% rule, healthcare and inflation — and freedom as a dial, not a cliff.",
    "summary": "Why savings rate sets the date, the multiplier adjustment for long retirements, healthcare and sequence risk, and taking freedom in any size it arrives.",
    "sources": [
     {
-     "label": "SEC Investor.gov \u2014 compound annual growth rate (CAGR)",
+     "label": "SEC Investor.gov — compound annual growth rate (CAGR)",
      "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/compound-annual-growth-rate-cagr"
     },
     {
-     "label": "MoneyHelper \u2014 how much do I need for a comfortable retirement",
+     "label": "MoneyHelper — how much do I need for a comfortable retirement",
      "url": "https://www.moneyhelper.org.uk/en/pensions-and-retirement/planning-for-retirement/how-much-do-i-need-for-a-comfortable-retirement"
     }
    ],
@@ -1259,11 +1259,11 @@
    "summary": "The mechanics of realisation and basis, long-term versus short-term, offsetting losses, and why wrapper choice beats gain-optimisation.",
    "sources": [
     {
-     "label": "SEC Investor.gov \u2014 capital gain",
+     "label": "SEC Investor.gov — capital gain",
      "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/capital-gain"
     },
     {
-     "label": "IRS \u2014 capital gains tax (Topic 409)",
+     "label": "IRS — capital gains tax (Topic 409)",
      "url": "https://www.irs.gov/taxtopics/tc409"
     }
    ],
@@ -1278,16 +1278,16 @@
    "section": "Save and grow",
    "title": "Tax deductions vs tax credits: the difference that is real money | BRYME Money",
    "h1": "Tax deductions versus tax credits: two machines, one confused vocabulary",
-   "dek": "Deductions shrink the income, credits cut the bill pound for pound \u2014 plus the refundable credits millions never claim.",
+   "dek": "Deductions shrink the income, credits cut the bill pound for pound — plus the refundable credits millions never claim.",
    "description": "Tax deductions versus tax credits explained: why a credit beats a deduction, standard versus itemised, refundable credits, and the unclaimed-entitlement trap.",
    "summary": "The input/output difference, marginal-rate value of deductions, the big credits, refundability, and why filing when you owe nothing pays.",
    "sources": [
     {
-     "label": "IRS \u2014 credits and deductions",
+     "label": "IRS — credits and deductions",
      "url": "https://www.irs.gov/credits-and-deductions"
     },
     {
-     "label": "IRS \u2014 should I itemize? (Topic 501)",
+     "label": "IRS — should I itemize? (Topic 501)",
      "url": "https://www.irs.gov/taxtopics/tc501"
     }
    ],
@@ -1301,17 +1301,17 @@
    "slug": "inheritance-tax-explained",
    "section": "Save and grow",
    "title": "Inheritance tax explained: thresholds, exemptions and the planning window | BRYME Money",
-   "h1": "Inheritance tax, explained: most estates pay nothing \u2014 the ones that do overpay",
+   "h1": "Inheritance tax, explained: most estates pay nothing — the ones that do overpay",
    "dek": "The UK nil-rate bands and spouse exemptions, the US estate-tax threshold and state-level inheritance taxes, and the planning that happens before, not after.",
    "description": "Inheritance tax explained: UK bands and the married-couple structure, US federal and state thresholds, gifting rules, and the planning that decides how much survives.",
    "summary": "How the bands and exemptions stack, why arrangement beats schemes, the seven-year gifting rule, and when to hire an adviser.",
    "sources": [
     {
-     "label": "GOV.UK \u2014 inheritance tax",
+     "label": "GOV.UK — inheritance tax",
      "url": "https://www.gov.uk/inheritance-tax"
     },
     {
-     "label": "GOV.UK \u2014 applying for probate",
+     "label": "GOV.UK — applying for probate",
      "url": "https://www.gov.uk/applying-for-probate"
     }
    ],
@@ -1331,11 +1331,11 @@
    "summary": "The anatomy of a payslip, the codes that control the numbers, the five-minute audit, and why errors compound like savings.",
    "sources": [
     {
-     "label": "GOV.UK \u2014 tax codes",
+     "label": "GOV.UK — tax codes",
      "url": "https://www.gov.uk/tax-codes"
     },
     {
-     "label": "IRS \u2014 filing",
+     "label": "IRS — filing",
      "url": "https://www.irs.gov/filing"
     }
    ],
@@ -1350,16 +1350,16 @@
    "section": "Save and grow",
    "title": "Your first tax return: who files, what happens, what it costs to skip it | BRYME Money",
    "h1": "Your first tax return, explained: one afternoon and a folder",
-   "dek": "Who actually has to file, the taxed-at-source rule that settles it, free filing channels, deadlines that bite \u2014 and the five classic first-timer mistakes.",
+   "dek": "Who actually has to file, the taxed-at-source rule that settles it, free filing channels, deadlines that bite — and the five classic first-timer mistakes.",
    "description": "First tax return explained: W-2 versus 1099, who must file, free official channels, April and January deadlines, refunds, penalties and the classic mistakes.",
    "summary": "The taxed-at-source rule, gathering and filing mechanics, refundable credits, the deadline traps, and record-keeping that becomes money later.",
    "sources": [
     {
-     "label": "IRS \u2014 filing",
+     "label": "IRS — filing",
      "url": "https://www.irs.gov/filing"
     },
     {
-     "label": "GOV.UK \u2014 self assessment tax returns",
+     "label": "GOV.UK — self assessment tax returns",
      "url": "https://www.gov.uk/self-assessment-tax-returns"
     }
    ],
@@ -1379,11 +1379,11 @@
    "summary": "The central bank mandate, the uneven transmission to your products, the rate-cycle discipline, and compounding under all of it.",
    "sources": [
     {
-     "label": "SEC Investor.gov \u2014 interest",
+     "label": "SEC Investor.gov — interest",
      "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/interest"
     },
     {
-     "label": "Federal Reserve \u2014 monetary policy",
+     "label": "Federal Reserve — monetary policy",
      "url": "https://www.federalreserve.gov/monetarypolicy.htm"
     }
    ],
@@ -1403,11 +1403,11 @@
    "summary": "The structural split, the four fees worth auditing, the choice tree for each account type, and the automation on top.",
    "sources": [
     {
-     "label": "FDIC \u2014 consumers",
+     "label": "FDIC — consumers",
      "url": "https://www.fdic.gov/consumers"
     },
     {
-     "label": "MyMoney.gov \u2014 US government financial education",
+     "label": "MyMoney.gov — US government financial education",
      "url": "https://www.mymoney.gov/"
     }
    ],
@@ -1422,16 +1422,16 @@
    "section": "Save and grow",
    "title": "How deposit insurance works: the limits that decide everything | BRYME Money",
    "h1": "Deposit insurance, explained: FDIC, FSCS and the fine print of the limit",
-   "dek": "What deposit insurance covers, the per-institution and per-licence limits, the windfall moments it matters \u2014 and why bank-run panic is obsolete.",
+   "dek": "What deposit insurance covers, the per-institution and per-licence limits, the windfall moments it matters — and why bank-run panic is obsolete.",
    "description": "Deposit insurance explained: FDIC and FSCS limits, per-banking-licence counting, what is and isn't covered, and the three moments the limits actually matter.",
    "summary": "The systems and their history, deposits versus investments, joint-account arithmetic, and working inside the limits mechanically.",
    "sources": [
     {
-     "label": "FDIC \u2014 deposit insurance",
+     "label": "FDIC — deposit insurance",
      "url": "https://www.fdic.gov/resources/deposit-insurance"
     },
     {
-     "label": "FSCS \u2014 Financial Services Compensation Scheme",
+     "label": "FSCS — Financial Services Compensation Scheme",
      "url": "https://www.fscs.org.uk/"
     }
    ],
@@ -1451,11 +1451,11 @@
    "summary": "The two policies in one coat, the three levers that set payouts, the under-insurance trap, and annual renewal shopping.",
    "sources": [
     {
-     "label": "California Department of Insurance \u2014 home insurance",
+     "label": "California Department of Insurance — home insurance",
      "url": "https://www.insurance.ca.gov/01-consumers/105-type/900-home/"
     },
     {
-     "label": "CFPB \u2014 owning a home",
+     "label": "CFPB — owning a home",
      "url": "https://www.consumerfinance.gov/owning-a-home/"
     }
    ],
@@ -1475,11 +1475,11 @@
    "summary": "The landlord-policy misconception, honest contents valuation, the liability tail, single-item limits and shopping the policy.",
    "sources": [
     {
-     "label": "California Department of Insurance \u2014 renters insurance",
+     "label": "California Department of Insurance — renters insurance",
      "url": "https://www.insurance.ca.gov/01-consumers/105-type/950-renters/"
     },
     {
-     "label": "MoneyHelper \u2014 home insurance",
+     "label": "MoneyHelper — home insurance",
      "url": "https://www.moneyhelper.org.uk/en/insurance/home-insurance"
     }
    ],
@@ -1494,16 +1494,16 @@
    "section": "Save and grow",
    "title": "Joint bank accounts explained: access, liability and the exit plan | BRYME Money",
    "h1": "Joint bank accounts, explained: the smallest legal merger there is",
-   "dek": "Either-holder access, joint-and-several liability, credit-file association \u2014 and the three designs that make joint accounts work.",
+   "dek": "Either-holder access, joint-and-several liability, credit-file association — and the three designs that make joint accounts work.",
    "description": "Joint bank accounts explained: the two defaults nobody discusses, credit association, the bills-account, full-merger and hybrid designs, and exit mechanics.",
    "summary": "What joint legally means, the three working designs, freezing and closing rules, survivorship, and when a power of attorney is the right tool.",
    "sources": [
     {
-     "label": "FDIC \u2014 consumers",
+     "label": "FDIC — consumers",
      "url": "https://www.fdic.gov/consumers"
     },
     {
-     "label": "MyMoney.gov \u2014 US government financial education",
+     "label": "MyMoney.gov — US government financial education",
      "url": "https://www.mymoney.gov/"
     }
    ],
@@ -1523,11 +1523,11 @@
    "summary": "The two instruments and their maths, the open-limits trap, the decision tree, and why the payment plan matters more than the product.",
    "sources": [
     {
-     "label": "CFPB \u2014 credit cards",
+     "label": "CFPB — credit cards",
      "url": "https://www.consumerfinance.gov/consumer-tools/credit-cards/"
     },
     {
-     "label": "FDIC \u2014 consumers",
+     "label": "FDIC — consumers",
      "url": "https://www.fdic.gov/consumers"
     }
    ],
@@ -1547,11 +1547,11 @@
    "summary": "The mechanics and the amortising schedule, the three numbers that decide the deal, the trap list, and the honest use cases.",
    "sources": [
     {
-     "label": "MyMoney.gov \u2014 US government financial education",
+     "label": "MyMoney.gov — US government financial education",
      "url": "https://www.mymoney.gov/"
     },
     {
-     "label": "FDIC \u2014 consumers",
+     "label": "FDIC — consumers",
      "url": "https://www.fdic.gov/consumers"
     }
    ],
@@ -1571,11 +1571,11 @@
    "summary": "The schedule mechanics, minimum payments versus revolving debt, term as hidden pricing, and the disproportionate power of extra principal.",
    "sources": [
     {
-     "label": "SEC Investor.gov \u2014 amortization",
+     "label": "SEC Investor.gov — amortization",
      "url": "https://www.investor.gov/introduction-investing/investing-basics/glossary/amortization"
     },
     {
-     "label": "CFPB \u2014 owning a home",
+     "label": "CFPB — owning a home",
      "url": "https://www.consumerfinance.gov/owning-a-home/"
     }
    ],
@@ -1590,16 +1590,16 @@
    "section": "Save and grow",
    "title": "Good debt vs bad debt: the two-question test | BRYME Money",
    "h1": "Good debt versus bad debt: rate and purchase, not morality",
-   "dek": "The framework that survives scrutiny: what the rate costs, what the borrowing buys \u2014 and the honest refinements the slogans skip.",
+   "dek": "The framework that survives scrutiny: what the rate costs, what the borrowing buys — and the honest refinements the slogans skip.",
    "description": "Good versus bad debt explained: the rate-and-purpose test, why appreciation bets and earning-capacity bets need caveats, and the order of operations.",
    "summary": "The two-question test, the three honest refinements, BNPL as the new category, and killing high-rate debt as the best available return.",
    "sources": [
     {
-     "label": "MyMoney.gov \u2014 US government financial education",
+     "label": "MyMoney.gov — US government financial education",
      "url": "https://www.mymoney.gov/"
     },
     {
-     "label": "CFPB \u2014 credit cards",
+     "label": "CFPB — credit cards",
      "url": "https://www.consumerfinance.gov/consumer-tools/credit-cards/"
     }
    ],
@@ -1614,16 +1614,16 @@
    "section": "Save and grow",
    "title": "How to negotiate with creditors: the four standard asks | BRYME Money",
    "h1": "Negotiating with creditors: the conversation nobody teaches",
-   "dek": "Rate reductions, fee waivers, hardship programmes and settlement \u2014 prepared positions, written agreements, and the lines that protect you.",
+   "dek": "Rate reductions, fee waivers, hardship programmes and settlement — prepared positions, written agreements, and the lines that protect you.",
    "description": "Creditor negotiation explained: the preparation, the four standard asks from rate cuts to settlement, written-agreement discipline, and the scam boundary.",
    "summary": "The ten-minute preparation, the four asks and when each applies, protective disciplines, and knowing when negotiation stops being the tool.",
    "sources": [
     {
-     "label": "CFPB \u2014 debt collection",
+     "label": "CFPB — debt collection",
      "url": "https://www.consumerfinance.gov/consumer-tools/debt-collection/"
     },
     {
-     "label": "CFPB \u2014 credit cards",
+     "label": "CFPB — credit cards",
      "url": "https://www.consumerfinance.gov/consumer-tools/credit-cards/"
     }
    ],
@@ -1638,16 +1638,16 @@
    "section": "Save and grow",
    "title": "Debt relief options explained: the floor under the balance sheet | BRYME Money",
    "h1": "Debt relief options, explained: stigma costs more than the mechanisms",
-   "dek": "Free advice first, then the formal mechanisms plainly \u2014 management plans, write-down orders, bankruptcy \u2014 and the day-after rebuild.",
+   "dek": "Free advice first, then the formal mechanisms plainly — management plans, write-down orders, bankruptcy — and the day-after rebuild.",
    "description": "Debt relief explained: why free non-profit advice comes first, management plans and formal discharge mechanisms honestly, the for-profit warning signs, rebuilding after.",
    "summary": "The free-advice step, the family of formal mechanisms, the predatory-marketing boundary, and the post-relief rebuilding sequence.",
    "sources": [
     {
-     "label": "CFPB \u2014 debt collection",
+     "label": "CFPB — debt collection",
      "url": "https://www.consumerfinance.gov/consumer-tools/debt-collection/"
     },
     {
-     "label": "MoneyHelper \u2014 debt and borrowing",
+     "label": "MoneyHelper — debt and borrowing",
      "url": "https://www.moneyhelper.org.uk/en/debt-and-borrowing"
     }
    ],
@@ -1667,11 +1667,11 @@
    "summary": "Mortgage types in plain terms: what fixed, variable, tracker and interest-only really mean, who each suits, and the questions that decide between them.",
    "sources": [
     {
-     "label": "CFPB \u2014 owning a home",
+     "label": "CFPB — owning a home",
      "url": "https://www.consumerfinance.gov/owning-a-home/"
     },
     {
-     "label": "CFPB \u2014 mortgage tools",
+     "label": "CFPB — mortgage tools",
      "url": "https://www.consumerfinance.gov/consumer-tools/mortgages/"
     }
    ],
@@ -1690,11 +1690,11 @@
    "summary": "Loan-to-value decoded: why the same house costs different people different rates, where the pricing cliffs sit, and how deposit size really works.",
    "sources": [
     {
-     "label": "CFPB \u2014 mortgage tools",
+     "label": "CFPB — mortgage tools",
      "url": "https://www.consumerfinance.gov/consumer-tools/mortgages/"
     },
     {
-     "label": "MyMoney.gov \u2014 buying a home",
+     "label": "MyMoney.gov — buying a home",
      "url": "https://www.mymoney.gov/"
     }
    ],
@@ -1713,7 +1713,7 @@
    "summary": "Buying versus renting without the ideology: the real cost columns, the hidden entries on both sides, and the few numbers that actually decide it.",
    "sources": [
     {
-     "label": "CFPB \u2014 owning a home",
+     "label": "CFPB — owning a home",
      "url": "https://www.consumerfinance.gov/owning-a-home/"
     },
     {
@@ -1732,15 +1732,15 @@
    "title": "How mortgage approval works: what lenders actually check | BRYME Money",
    "h1": "How mortgage approval works: what lenders actually check",
    "dek": "The approval process demystified: affordability tests, debt-to-income, credit checks, stress test",
-   "description": "The approval process demystified: affordability tests, debt-to-income, credit checks, stress tests and pre-approval \u2014 what moves the decision.",
-   "summary": "The approval process demystified: affordability tests, debt-to-income, credit checks, stress tests and pre-approval \u2014 what moves the decision.",
+   "description": "The approval process demystified: affordability tests, debt-to-income, credit checks, stress tests and pre-approval — what moves the decision.",
+   "summary": "The approval process demystified: affordability tests, debt-to-income, credit checks, stress tests and pre-approval — what moves the decision.",
    "sources": [
     {
-     "label": "CFPB \u2014 mortgage tools",
+     "label": "CFPB — mortgage tools",
      "url": "https://www.consumerfinance.gov/consumer-tools/mortgages/"
     },
     {
-     "label": "CFPB \u2014 owning a home",
+     "label": "CFPB — owning a home",
      "url": "https://www.consumerfinance.gov/owning-a-home/"
     }
    ],
@@ -1754,16 +1754,16 @@
    "section": "Save and grow",
    "title": "Mortgage fees and closing costs explained: the price of the loan behind the rate | BRYME Money",
    "h1": "Mortgage fees and closing costs explained: the price of the loan behind the rate",
-   "dek": "Arrangement fees, valuation, legal work, insurance and the closing table \u2014 every cost line named,",
-   "description": "Arrangement fees, valuation, legal work, insurance and the closing table \u2014 every cost line named, with the rule that compares them honestly.",
-   "summary": "Arrangement fees, valuation, legal work, insurance and the closing table \u2014 every cost line named, with the rule that compares them honestly.",
+   "dek": "Arrangement fees, valuation, legal work, insurance and the closing table — every cost line named,",
+   "description": "Arrangement fees, valuation, legal work, insurance and the closing table — every cost line named, with the rule that compares them honestly.",
+   "summary": "Arrangement fees, valuation, legal work, insurance and the closing table — every cost line named, with the rule that compares them honestly.",
    "sources": [
     {
-     "label": "CFPB \u2014 mortgage tools",
+     "label": "CFPB — mortgage tools",
      "url": "https://www.consumerfinance.gov/consumer-tools/mortgages/"
     },
     {
-     "label": "CFPB \u2014 closing costs",
+     "label": "CFPB — closing costs",
      "url": "https://www.consumerfinance.gov/owning-a-home/"
     }
    ],
@@ -1777,12 +1777,12 @@
    "section": "Save and grow",
    "title": "How to remortgage: re-pricing the biggest loan you will ever have | BRYME Money",
    "h1": "How to remortgage: re-pricing the biggest loan you will ever have",
-   "dek": "Remortgaging in plain terms \u2014 when it pays, when it does not, the fee arithmetic, and the process",
-   "description": "Remortgaging in plain terms \u2014 when it pays, when it does not, the fee arithmetic, and the process step by step.",
-   "summary": "Remortgaging in plain terms \u2014 when it pays, when it does not, the fee arithmetic, and the process step by step.",
+   "dek": "Remortgaging in plain terms — when it pays, when it does not, the fee arithmetic, and the process",
+   "description": "Remortgaging in plain terms — when it pays, when it does not, the fee arithmetic, and the process step by step.",
+   "summary": "Remortgaging in plain terms — when it pays, when it does not, the fee arithmetic, and the process step by step.",
    "sources": [
     {
-     "label": "CFPB \u2014 owning a home",
+     "label": "CFPB — owning a home",
      "url": "https://www.consumerfinance.gov/owning-a-home/"
     },
     {
@@ -1805,11 +1805,11 @@
    "summary": "Premiums decoded: pooled risk, expected loss, the loading that funds the insurer, and the rating factors that move your price up and down.",
    "sources": [
     {
-     "label": "Insurance.ca.gov \u2014 consumer guidance",
+     "label": "Insurance.ca.gov — consumer guidance",
      "url": "https://www.insurance.ca.gov/"
     },
     {
-     "label": "FSCS \u2014 how protection works",
+     "label": "FSCS — how protection works",
      "url": "https://www.fscs.org.uk/"
     }
    ],
@@ -1823,16 +1823,16 @@
    "section": "Start here",
    "title": "Insurance deductibles and excess, explained: the trade at the heart of every policy | BRYME Money",
    "h1": "Insurance deductibles and excess, explained: the trade at the heart of every policy",
-   "dek": "Deductibles, excess, co-pays and out-of-pocket maximums decoded \u2014 how choosing your share of the ",
-   "description": "Deductibles, excess, co-pays and out-of-pocket maximums decoded \u2014 how choosing your share of the risk prices the policy, and where the traps sit.",
-   "summary": "Deductibles, excess, co-pays and out-of-pocket maximums decoded \u2014 how choosing your share of the risk prices the policy, and where the traps sit.",
+   "dek": "Deductibles, excess, co-pays and out-of-pocket maximums decoded — how choosing your share of the ",
+   "description": "Deductibles, excess, co-pays and out-of-pocket maximums decoded — how choosing your share of the risk prices the policy, and where the traps sit.",
+   "summary": "Deductibles, excess, co-pays and out-of-pocket maximums decoded — how choosing your share of the risk prices the policy, and where the traps sit.",
    "sources": [
     {
-     "label": "Insurance.ca.gov \u2014 consumer guidance",
+     "label": "Insurance.ca.gov — consumer guidance",
      "url": "https://www.insurance.ca.gov/"
     },
     {
-     "label": "Healthcare.gov \u2014 deductibles and out-of-pocket",
+     "label": "Healthcare.gov — deductibles and out-of-pocket",
      "url": "https://www.healthcare.gov/"
     }
    ],
@@ -1846,16 +1846,16 @@
    "section": "Start here",
    "title": "How insurance claims work: the process, the paperwork, and the disputes | BRYME Money",
    "h1": "How insurance claims work: the process, the paperwork, and the disputes",
-   "dek": "Filing to settlement decoded \u2014 first notice, assessment, the adjuster's role, denial letters and ",
-   "description": "Filing to settlement decoded \u2014 first notice, assessment, the adjuster's role, denial letters and appeals, and the habits that make claims painless.",
-   "summary": "Filing to settlement decoded \u2014 first notice, assessment, the adjuster's role, denial letters and appeals, and the habits that make claims painless.",
+   "dek": "Filing to settlement decoded — first notice, assessment, the adjuster's role, denial letters and ",
+   "description": "Filing to settlement decoded — first notice, assessment, the adjuster's role, denial letters and appeals, and the habits that make claims painless.",
+   "summary": "Filing to settlement decoded — first notice, assessment, the adjuster's role, denial letters and appeals, and the habits that make claims painless.",
    "sources": [
     {
-     "label": "Insurance.ca.gov \u2014 claims guidance",
+     "label": "Insurance.ca.gov — claims guidance",
      "url": "https://www.insurance.ca.gov/"
     },
     {
-     "label": "FSCS \u2014 protection if firms fail",
+     "label": "FSCS — protection if firms fail",
      "url": "https://www.fscs.org.uk/"
     }
    ],
@@ -1869,16 +1869,16 @@
    "section": "Start here",
    "title": "Travel insurance, explained: what it covers, what it never covers, and how to buy it well | BRYME Money",
    "h1": "Travel insurance, explained: what it covers, what it never covers, and how to buy it well",
-   "dek": "Trip cancellation, medical cover, baggage and the exclusions that matter \u2014 how travel insurance a",
-   "description": "Trip cancellation, medical cover, baggage and the exclusions that matter \u2014 how travel insurance actually works and how to avoid paying twice for cover you already ha",
-   "summary": "Trip cancellation, medical cover, baggage and the exclusions that matter \u2014 how travel insurance actually works and how to avoid paying twice for cover you already have.",
+   "dek": "Trip cancellation, medical cover, baggage and the exclusions that matter — how travel insurance a",
+   "description": "Trip cancellation, medical cover, baggage and the exclusions that matter — how travel insurance actually works and how to avoid paying twice for cover you already ha",
+   "summary": "Trip cancellation, medical cover, baggage and the exclusions that matter — how travel insurance actually works and how to avoid paying twice for cover you already have.",
    "sources": [
     {
-     "label": "Insurance.ca.gov \u2014 consumer guidance",
+     "label": "Insurance.ca.gov — consumer guidance",
      "url": "https://www.insurance.ca.gov/"
     },
     {
-     "label": "Healthcare.gov \u2014 coverage abroad context",
+     "label": "Healthcare.gov — coverage abroad context",
      "url": "https://www.healthcare.gov/"
     }
    ],
@@ -1892,16 +1892,16 @@
    "section": "Start here",
    "title": "Income protection insurance, explained: the cover that protects the salary itself | BRYME Money",
    "h1": "Income protection insurance, explained: the cover that protects the salary itself",
-   "dek": "The most overlooked policy decoded \u2014 how income replacement works, what it pays and for how long,",
-   "description": "The most overlooked policy decoded \u2014 how income replacement works, what it pays and for how long, and who genuinely needs it.",
-   "summary": "The most overlooked policy decoded \u2014 how income replacement works, what it pays and for how long, and who genuinely needs it.",
+   "dek": "The most overlooked policy decoded — how income replacement works, what it pays and for how long,",
+   "description": "The most overlooked policy decoded — how income replacement works, what it pays and for how long, and who genuinely needs it.",
+   "summary": "The most overlooked policy decoded — how income replacement works, what it pays and for how long, and who genuinely needs it.",
    "sources": [
     {
-     "label": "FSCS \u2014 protection schemes context",
+     "label": "FSCS — protection schemes context",
      "url": "https://www.fscs.org.uk/"
     },
     {
-     "label": "Insurance.ca.gov \u2014 consumer guidance",
+     "label": "Insurance.ca.gov — consumer guidance",
      "url": "https://www.insurance.ca.gov/"
     }
    ],
@@ -1915,16 +1915,16 @@
    "section": "Start here",
    "title": "Critical illness insurance, explained: the lump sum and its fine print | BRYME Money",
    "h1": "Critical illness insurance, explained: the lump sum and its fine print",
-   "dek": "Critical illness cover decoded \u2014 the listed-conditions structure, survival periods, severity thre",
-   "description": "Critical illness cover decoded \u2014 the listed-conditions structure, survival periods, severity thresholds, and the honest case for and against.",
-   "summary": "Critical illness cover decoded \u2014 the listed-conditions structure, survival periods, severity thresholds, and the honest case for and against.",
+   "dek": "Critical illness cover decoded — the listed-conditions structure, survival periods, severity thre",
+   "description": "Critical illness cover decoded — the listed-conditions structure, survival periods, severity thresholds, and the honest case for and against.",
+   "summary": "Critical illness cover decoded — the listed-conditions structure, survival periods, severity thresholds, and the honest case for and against.",
    "sources": [
     {
-     "label": "FSCS \u2014 consumer protection context",
+     "label": "FSCS — consumer protection context",
      "url": "https://www.fscs.org.uk/"
     },
     {
-     "label": "Insurance.ca.gov \u2014 consumer guidance",
+     "label": "Insurance.ca.gov — consumer guidance",
      "url": "https://www.insurance.ca.gov/"
     }
    ],
@@ -1943,11 +1943,11 @@
    "summary": "Find a lost pension the free way: the official tracing routes, what to have ready, how to handle multiple pots, and the paid services worth skipping.",
    "sources": [
     {
-     "label": "GOV.UK \u2014 find pension contact details",
+     "label": "GOV.UK — find pension contact details",
      "url": "https://www.gov.uk/find-pension-contact-details"
     },
     {
-     "label": "Wikipedia \u2014 Escheat",
+     "label": "Wikipedia — Escheat",
      "url": "https://en.wikipedia.org/wiki/Escheat"
     }
    ],
@@ -1967,15 +1967,15 @@
    "summary": "Unclaimed money explained: where forgotten balances go, the dormancy clock, the free official searches, what a claim needs, and the finder-fee trap.",
    "sources": [
     {
-     "label": "Unclaimed.org (NAUPA) \u2014 official unclaimed property search",
+     "label": "Unclaimed.org (NAUPA) — official unclaimed property search",
      "url": "https://unclaimed.org/"
     },
     {
-     "label": "Wikipedia \u2014 Escheat",
+     "label": "Wikipedia — Escheat",
      "url": "https://en.wikipedia.org/wiki/Escheat"
     },
     {
-     "label": "FSCS \u2014 financial services compensation",
+     "label": "FSCS — financial services compensation",
      "url": "https://www.fscs.org.uk/"
     }
    ],
@@ -1995,11 +1995,11 @@
    "summary": "Debts after a death explained: why they come from the estate not the family, the three real exceptions, insolvent estates, and what collectors cannot say.",
    "sources": [
     {
-     "label": "GOV.UK \u2014 after a death: organisations you need to contact",
+     "label": "GOV.UK — after a death: organisations you need to contact",
      "url": "https://www.gov.uk/after-a-death/organisations-you-need-to-contact-and-tell-about-the-death"
     },
     {
-     "label": "GOV.UK \u2014 wills, probate and inheritance",
+     "label": "GOV.UK — wills, probate and inheritance",
      "url": "https://www.gov.uk/wills-probate-inheritance"
     }
    ],
@@ -2019,11 +2019,11 @@
    "summary": "Find an unclaimed life insurance policy: why payouts go uncollected, the search order, what insurers require, escheatment, and how to spot locator scams.",
    "sources": [
     {
-     "label": "Unclaimed.org (NAUPA) \u2014 official unclaimed property search",
+     "label": "Unclaimed.org (NAUPA) — official unclaimed property search",
      "url": "https://unclaimed.org/"
     },
     {
-     "label": "FSCS \u2014 financial services compensation",
+     "label": "FSCS — financial services compensation",
      "url": "https://www.fscs.org.uk/"
     }
    ],
@@ -2043,11 +2043,11 @@
    "summary": "How long probate takes: the five stages and their dependencies, the complexity drivers that add months, and the levers that genuinely speed a case up.",
    "sources": [
     {
-     "label": "GOV.UK \u2014 wills, probate and inheritance",
+     "label": "GOV.UK — wills, probate and inheritance",
      "url": "https://www.gov.uk/wills-probate-inheritance"
     },
     {
-     "label": "GOV.UK \u2014 after a death: organisations you need to contact",
+     "label": "GOV.UK — after a death: organisations you need to contact",
      "url": "https://www.gov.uk/after-a-death/organisations-you-need-to-contact-and-tell-about-the-death"
     }
    ],
@@ -2067,11 +2067,11 @@
    "summary": "Joint accounts after a death: survivorship explained, what stays in the estate, assets that sit outside probate, and the add-a-child-to-the-account trap.",
    "sources": [
     {
-     "label": "GOV.UK \u2014 wills, probate and inheritance",
+     "label": "GOV.UK — wills, probate and inheritance",
      "url": "https://www.gov.uk/wills-probate-inheritance"
     },
     {
-     "label": "GOV.UK \u2014 after a death: organisations you need to contact",
+     "label": "GOV.UK — after a death: organisations you need to contact",
      "url": "https://www.gov.uk/after-a-death/organisations-you-need-to-contact-and-tell-about-the-death"
     }
    ],
@@ -2091,11 +2091,11 @@
    "summary": "APR vs APY explained: the compounding difference, why the gap widens at high rates, and the like-for-like rule when comparing loans and savings accounts.",
    "sources": [
     {
-     "label": "CFPB \u2014 credit card guidance",
+     "label": "CFPB — credit card guidance",
      "url": "https://www.consumerfinance.gov/consumer-tools/credit-cards/"
     },
     {
-     "label": "Investor.gov \u2014 compound interest (SEC)",
+     "label": "Investor.gov — compound interest (SEC)",
      "url": "https://www.investor.gov/"
     }
    ],
@@ -2115,11 +2115,11 @@
    "summary": "Salary sacrifice explained: how pre-tax pension contributions work in the UK, the NI savings on both sides, and the minimum wage, mortgage and maternity pitfalls.",
    "sources": [
     {
-     "label": "GOV.UK \u2014 workplace pensions",
+     "label": "GOV.UK — workplace pensions",
      "url": "https://www.gov.uk/workplace-pensions"
     },
     {
-     "label": "GOV.UK \u2014 plan for your retirement",
+     "label": "GOV.UK — plan for your retirement",
      "url": "https://www.gov.uk/plan-for-retirement"
     }
    ],
@@ -2134,16 +2134,16 @@
    "section": "Save and grow",
    "title": "Employer pension matching, explained: the free money people leave behind | BRYME Money",
    "h1": "Employer pension matching, explained: the free money people leave behind",
-   "dek": "Match formulas decoded, vesting schedules unpacked, and the UK automatic-enrolment minimums \u2014 why skipping the match is the most expensive default in saving.",
+   "dek": "Match formulas decoded, vesting schedules unpacked, and the UK automatic-enrolment minimums — why skipping the match is the most expensive default in saving.",
    "description": "How employer pension matching works: 401(k) match formulas, vesting schedules, UK auto-enrolment minimums, and why declining the match costs a guaranteed return.",
    "summary": "How employer pension matching works: 401(k) match formulas, vesting schedules, UK auto-enrolment minimums, and why declining the match costs a guaranteed return.",
    "sources": [
     {
-     "label": "IRS \u2014 401(k) plans",
+     "label": "IRS — 401(k) plans",
      "url": "https://www.irs.gov/retirement-plans/401k-plans"
     },
     {
-     "label": "GOV.UK \u2014 workplace pensions",
+     "label": "GOV.UK — workplace pensions",
      "url": "https://www.gov.uk/workplace-pensions"
     }
    ],
@@ -2163,11 +2163,11 @@
    "summary": "Escrow explained: the neutral holding account during a home purchase, the mortgage escrow account for taxes and insurance, shortages, and the non-US equivalents.",
    "sources": [
     {
-     "label": "CFPB \u2014 Owning a Home",
+     "label": "CFPB — Owning a Home",
      "url": "https://www.consumerfinance.gov/owning-a-home/"
     },
     {
-     "label": "CFPB \u2014 mortgage tools",
+     "label": "CFPB — mortgage tools",
      "url": "https://www.consumerfinance.gov/consumer-tools/mortgages/"
     }
    ],
@@ -2182,16 +2182,16 @@
    "section": "Save and grow",
    "title": "Overdraft fees, explained: the four charges that remain and how to dodge all of them | BRYME Money",
    "h1": "Overdraft fees, explained: the four charges that remain and how to dodge all of them",
-   "dek": "Per-item, NSF, extended and transfer fees; the US opt-in rule and processing-order scrutiny; the UK single-rate rules \u2014 and the three defences that end the problem.",
+   "dek": "Per-item, NSF, extended and transfer fees; the US opt-in rule and processing-order scrutiny; the UK single-rate rules — and the three defences that end the problem.",
    "description": "Overdraft fees explained: the four fee types that remain, US opt-in rules, UK single-interest-rate rules, and the alerts, buffers and cushions that avoid them.",
    "summary": "Overdraft fees explained: the four fee types that remain, US opt-in rules, UK single-interest-rate rules, and the alerts, buffers and cushions that avoid them.",
    "sources": [
     {
-     "label": "FDIC \u2014 consumer resources",
+     "label": "FDIC — consumer resources",
      "url": "https://www.fdic.gov/consumers/"
     },
     {
-     "label": "CFPB \u2014 consumer tools",
+     "label": "CFPB — consumer tools",
      "url": "https://www.consumerfinance.gov/consumer-tools/"
     }
    ],
@@ -2211,11 +2211,11 @@
    "summary": "Lifetime ISA explained: the 25% government bonus, the withdrawal penalty maths, cash vs stocks and shares versions, and who the LISA genuinely suits.",
    "sources": [
     {
-     "label": "GOV.UK \u2014 Lifetime ISA",
+     "label": "GOV.UK — Lifetime ISA",
      "url": "https://www.gov.uk/lifetime-isa"
     },
     {
-     "label": "GOV.UK \u2014 plan for your retirement",
+     "label": "GOV.UK — plan for your retirement",
      "url": "https://www.gov.uk/plan-for-retirement"
     }
    ],
@@ -2223,6 +2223,30 @@
     "how-to-save-for-a-house-deposit",
     "compound-interest-explained",
     "401k-explained"
+   ]
+  },
+  {
+   "slug": "uk-self-assessment-deadlines-explained",
+   "section": "Save and grow",
+   "title": "UK Self Assessment deadlines 2025-26: the four dates and the penalties | BRYME Money",
+   "h1": "UK Self Assessment deadlines, 2025-26",
+   "dek": "5 October, 31 October, 30 December and the one that matters: 31 January 2027. What each date is for, and what a miss costs.",
+   "description": "The 2025-26 UK Self Assessment deadlines: registration, paper, PAYE collection and the 31 January 2027 online date, with the £100 penalty. UK rules.",
+   "summary": "A dated map of the 2025-26 Self Assessment calendar (5 Oct 2026 registration, 31 Oct 2026 paper, 30 Dec 2026 PAYE collection, 31 Jan 2027 online filing and payment, 31 Jul 2027 second payment on account), what each deadline triggers, and the penalty that applies even at zero tax owed.",
+   "related": [
+    "budget-50-30-20-explained",
+    "compound-interest-explained",
+    "checking-and-savings-accounts-explained"
+   ],
+   "sources": [
+    {
+     "label": "GOV.UK — Self Assessment: deadlines",
+     "url": "https://www.gov.uk/self-assessment-tax-returns/deadlines"
+    },
+    {
+     "label": "GOV.UK — Self Assessment: who must send a return",
+     "url": "https://www.gov.uk/self-assessment-tax-returns/who-must-send-a-tax-return"
+    }
    ]
   }
  ]

@@ -145,6 +145,7 @@ def main():
     for label, route in [
         ("Home", "/"),
         ("About the family", "/about/"),
+        ("Event calendar", "/event-calendar/"),
         ("Privacy policy", "/privacy/"),
         ("Writers corrections policy", "/writers/corrections/"),
     ]:
