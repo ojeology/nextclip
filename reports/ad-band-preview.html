@@ -1,0 +1,63 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ad band preview — BRYME</title>
+<style>
+  body{margin:0;background:#f6f2e8;font:16px/1.6 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:#2b2a26}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+  .hdr{background:#fff;border-bottom:1px solid #e6e0d2;padding:18px 0;position:sticky;top:0;z-index:5}
+  .hdr b{font-family:Georgia,serif;letter-spacing:.14em}
+  .note{background:#fff8e6;border:1px solid #f0d9a0;border-left:5px solid #d4a12a;border-radius:8px;
+        padding:14px 18px;margin:22px auto;max-width:1060px;font-size:14px;line-height:1.6}
+  .prose{max-width:760px;margin:0 auto;padding:26px 20px 40px}
+  .prose h1{font-family:Georgia,serif;font-size:30px;line-height:1.2;margin:0 0 6px}
+  .prose h2{font-family:Georgia,serif;font-size:20px;margin:30px 0 8px}
+  .prose p{margin:0 0 15px;color:#3d3b35}
+  .prose .lead{color:#6b675d;font-size:17px}
+  .mockad{border:1px dashed #c9c3b2;background:repeating-linear-gradient(45deg,#fbf9f3,#fbf9f3 10px,#f6f3ea 10px,#f6f3ea 20px);
+          min-height:280px;display:flex;align-items:center;justify-content:center;border-radius:6px}
+  .mockad span{font:500 12px/1.5 ui-monospace,monospace;color:#a09a89;text-align:center;padding:0 20px}
+  footer.ft{background:#fff;border-top:1px solid #e6e0d2;padding:26px 0;margin-top:34px}
+  footer.ft a{color:#5b6b7a;text-decoration:none;margin-right:16px;font-size:14px}
+  .legend{max-width:1060px;margin:26px auto 60px;background:#fff;border-radius:10px;padding:20px 24px;
+          box-shadow:0 1px 3px rgba(0,0,0,.07);font-size:14px;line-height:1.7}
+  .legend b{display:block;font-size:15px;margin-bottom:8px}
+  .legend td{padding:5px 14px 5px 0;vertical-align:top}
+</style></head><body>
+
+<div class="hdr"><div class="wrap"><b>THE BRYME</b> &nbsp;<span style="color:#8a8578;font-size:13px">— ad band preview (not live)</span></div></div>
+
+<div class="note"><b>This is a preview, not the live site.</b> The band below is switched OFF in
+production — <code>adsense.nativeSlotId</code> is empty, so nothing renders. This shows exactly what
+it will look like the moment you paste your ad-unit ID in.</div>
+
+<div class="prose">
+  <h1>Seven sections. Pick where you want to go.</h1>
+  <p class="lead">Article content ends here. Everything above the band is your page.</p>
+  <h2>Keep reading</h2>
+  <p>This is where a normal article stops. The ad band sits <em>below</em> all of this — after the
+  last section and before the footer — so it never interrupts anything a reader came for.</p>
+  <p>It is a single responsive unit. On desktop it becomes a wide, flat banner; on mobile it stacks.
+  Reserved height means the page does not jump when the ad fills.</p>
+</div>
+
+<aside class="adband" data-adband="bottom" aria-label="Advertisement"><style>.adband{margin:0;padding:24px 0 0}.adband-in{max-width:1100px;margin:0 auto;padding:0 20px}.adband-label{display:block;font:500 10px/1 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#8a8578;margin:0 0 10px}.adband .adsbygoogle{display:block;min-height:280px}.adband::before{content:"";display:block;max-width:1100px;margin:0 auto 24px;padding:0 20px;border-top:1px solid rgba(0,0,0,.08)}</style><div class="adband-in"><span class="adband-label">Advertisement</span><div class="mockad"><span>YOUR ADSENSE NATIVE UNIT RENDERS HERE<br>(280px reserved &middot; responsive &middot; labelled)</span></div></div></aside>
+
+<footer class="ft"><div class="wrap">
+  <nav aria-label="House pages">
+    <a href="#">About BRYME</a><a href="#">Editorial policy</a><a href="#">Corrections</a>
+    <a href="#">Privacy</a><a href="#">Contact</a>
+  </nav>
+</div></footer>
+
+<div class="legend">
+  <b>What to notice</b>
+  <table>
+    <tr><td><b>Position</b></td><td>After <code>&lt;/main&gt;</code>, before <code>&lt;footer&gt;</code> — the very bottom. Nothing above it moves.</td></tr>
+    <tr><td><b>Labelled</b></td><td>A visible "Advertisement" tag. Required so it can never be mistaken for your editorial content.</td></tr>
+    <tr><td><b>Reserved height</b></td><td>280px blocked out in advance, so there is no layout shift (CLS) when the ad loads.</td></tr>
+    <tr><td><b>Responsive</b></td><td><code>data-full-width-responsive="true"</code> — adapts to screen width instead of overflowing.</td></tr>
+    <tr><td><b>CSP-safe</b></td><td>Pushes via an external <code>/assets/ads-init.js</code>. An inline push would be blocked by your own security policy.</td></tr>
+    <tr><td><b>No pop-ups</b></td><td>Static, in-flow, below the fold. It keeps the "no pop-ups, no interstitials" promise on your homepage.</td></tr>
+  </table>
+</div>
+</body></html>
