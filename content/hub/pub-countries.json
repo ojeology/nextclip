@@ -966,5 +966,29 @@
   "poetry-south": {
     "base": "",
     "label": "International"
+  },
+  "farmer-ish": {
+    "base": "",
+    "label": "International"
+  },
+  "story-quarterly": {
+    "base": "",
+    "label": "International"
+  },
+  "pinhole-poetry": {
+    "base": "",
+    "label": "International"
+  },
+  "spellbinder-magazine": {
+    "base": "",
+    "label": "International"
+  },
+  "decolonial-passage": {
+    "base": "",
+    "label": "International"
+  },
+  "jabberwock-review": {
+    "base": "",
+    "label": "International"
   }
 }

@@ -21735,6 +21735,538 @@
         "submittable",
         "no ai-assisted"
       ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-30",
+      "publishedAt": "2026-09-30",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "farmer-ish",
+      "slug": "farmer-ish",
+      "publication": "Farmer-ish",
+      "title": "Essays about farming, food and land",
+      "seoTitle": "Farmer-ish: $25 or a copy, copyright stays yours",
+      "excerpt": "Farmer-ish offers a $25 honorarium or a copy of the book for its print annuals. General and how-to essays run to approximately 800 to 1,200 words. It does not accept work written in part by generative AI or edited heavily by AI, and authors retain copyright throughout.",
+      "officialUrl": "https://farmerish.net/submissions/",
+      "applyUrl": "https://farmerish.net/submissions/",
+      "applyEmail": null,
+      "applyMethod": "Email — work copied into the body",
+      "sources": [
+        {
+          "name": "Farmer-ish — Submissions (official)",
+          "url": "https://farmerish.net/submissions/"
+        }
+      ],
+      "eligibility": {
+        "summary": "No stated country restriction on the guidelines page.",
+        "mode": "not-stated",
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": true
+      },
+      "writingTypes": [
+        "essays",
+        "creative-nonfiction"
+      ],
+      "writingTypeLabel": "Essays about farming, food and land",
+      "pay": {
+        "currency": "USD",
+        "amountMin": 25,
+        "amountMax": 25,
+        "display": "$25 honorarium or a copy of the book",
+        "conditions": "Official submissions page: for its print annuals, Farmer-ish offers a $25 honorarium or a copy of the book. Contributors choose. BRYME records the cash figure and notes the alternative rather than assuming one.",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "min": 800,
+        "max": 1200,
+        "display": "General essays and how-to essays, approximately 800 to 1,200 words"
+      },
+      "response": {
+        "label": "Not stated",
+        "band": "not-stated",
+        "official": false
+      },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "prohibited",
+      "whatTheyWant": [
+        "General essays and how-to essays of roughly 800 to 1,200 words.",
+        "Writing about farming, food and land — the magazine's subject."
+      ],
+      "whatTheyDontWant": [
+        "Submissions written in part by generative AI.",
+        "Submissions edited heavily by AI. Light editing assistance is not the same as heavy editing, but the line is the editor's to draw."
+      ],
+      "requirements": [
+        "Send submissions by email.",
+        "Copy your submission into the body of the email rather than attaching it.",
+        "Keep essays to about 800 to 1,200 words."
+      ],
+      "rights": "Authors retain copyright of their work.",
+      "howToSubmit": [
+        "Read https://farmerish.net/submissions/ before sending.",
+        "Paste into the email body — do not attach.",
+        "You can take $25 or a copy; say which you want."
+      ],
+      "keywords": [
+        "farmer-ish",
+        "farming",
+        "food",
+        "essays",
+        "$25 honorarium",
+        "800-1200 words",
+        "copyright retained",
+        "no generative ai"
+      ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-30",
+      "publishedAt": "2026-09-30",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "story-quarterly",
+      "slug": "story-quarterly",
+      "publication": "StoryQuarterly",
+      "title": "Literary fiction and creative nonfiction",
+      "seoTitle": "StoryQuarterly: $25 honorarium, fiction up to 6,250 words",
+      "excerpt": "StoryQuarterly, published at Rutgers University–Camden, offers a small honorarium of $25 and is interested in previously unpublished literary fiction — short stories, short shorts and novel excerpts up to 6,250 words — along with creative nonfiction. All work goes through Submittable.",
+      "officialUrl": "https://storyquarterly.camden.rutgers.edu/submissions",
+      "applyUrl": "https://storyquarterly.camden.rutgers.edu/submissions",
+      "applyEmail": null,
+      "applyMethod": "Submittable only",
+      "sources": [
+        {
+          "name": "StoryQuarterly — Submissions (official)",
+          "url": "https://storyquarterly.camden.rutgers.edu/submissions"
+        }
+      ],
+      "eligibility": {
+        "summary": "No stated country restriction on the guidelines page.",
+        "mode": "not-stated",
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": true
+      },
+      "writingTypes": [
+        "fiction",
+        "creative-nonfiction"
+      ],
+      "writingTypeLabel": "Literary fiction and creative nonfiction",
+      "pay": {
+        "currency": "USD",
+        "amountMin": 25,
+        "amountMax": 25,
+        "display": "$25 honorarium",
+        "conditions": "Official submissions page: StoryQuarterly offers a small honorarium of $25. The page also lists a $500 prize for the winner of a competition, with the winner, first runner-up and second runner-up published in the issue. That is a contest prize, not the rate paid for published work, so BRYME records the $25 as the market rate and notes the prize separately.",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "min": null,
+        "max": 6250,
+        "display": "Short stories, short shorts and novel excerpts up to 6,250 words"
+      },
+      "response": {
+        "label": "Not stated",
+        "band": "not-stated",
+        "official": false
+      },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "not-stated",
+      "whatTheyWant": [
+        "Previously unpublished literary fiction — short stories, short shorts and novel excerpts up to 6,250 words.",
+        "Creative nonfiction."
+      ],
+      "whatTheyDontWant": [
+        "Previously published fiction.",
+        "Fiction over 6,250 words."
+      ],
+      "requirements": [
+        "Submit all work electronically through Submittable.",
+        "Check the Submittable page for the current open or closed status before sending.",
+        "Send previously unpublished work only."
+      ],
+      "rights": "Not stated on the public submissions page.",
+      "howToSubmit": [
+        "Read https://storyquarterly.camden.rutgers.edu/submissions before sending.",
+        "Submittable is the only route, and it also carries the open/closed status.",
+        "The $500 on the page is a competition prize, not the standard rate."
+      ],
+      "keywords": [
+        "storyquarterly",
+        "rutgers camden",
+        "literary fiction",
+        "creative nonfiction",
+        "$25 honorarium",
+        "6250 words",
+        "submittable"
+      ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-30",
+      "publishedAt": "2026-09-30",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "pinhole-poetry",
+      "slug": "pinhole-poetry",
+      "publication": "Pinhole Poetry",
+      "title": "Poetry and pinhole photography",
+      "seoTitle": "Pinhole Poetry: $5 CAD honorarium, 4–6 week response",
+      "excerpt": "Pinhole Poetry pays each contributor a $5 CAD honorarium, and welcomes contributors who would rather reinvest it into the upkeep of its website and development projects. It asks that no work created with AI be sent, tries to respond within four to six weeks, and wants a short bio in the body of your email.",
+      "officialUrl": "https://pinholepoetry.ca/poetry-pinhole-photography-guidelines/",
+      "applyUrl": "https://pinholepoetry.ca/poetry-pinhole-photography-guidelines/",
+      "applyEmail": null,
+      "applyMethod": "Email — bio in the body",
+      "sources": [
+        {
+          "name": "Pinhole Poetry — Guidelines (official)",
+          "url": "https://pinholepoetry.ca/poetry-pinhole-photography-guidelines/"
+        }
+      ],
+      "eligibility": {
+        "summary": "No stated country restriction on the guidelines page.",
+        "mode": "not-stated",
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": true
+      },
+      "writingTypes": [
+        "poetry"
+      ],
+      "writingTypeLabel": "Poetry and pinhole photography",
+      "pay": {
+        "currency": "CAD",
+        "amountMin": 5,
+        "amountMax": 5,
+        "display": "$5 CAD honorarium per contributor",
+        "conditions": "Official guidelines: Pinhole Poetry pays an honorarium of $5 CAD to each contributor, and says it is happy for contributors to reinvest that back into the upkeep of its website and development projects if they so desire. The choice is the contributor's; BRYME records the stated figure.",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "min": null,
+        "max": null,
+        "display": "No length limit stated on the guidelines page; photography in jpeg only"
+      },
+      "response": {
+        "label": "Four to six weeks",
+        "band": "2-4-weeks",
+        "official": true
+      },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "prohibited",
+      "whatTheyWant": [
+        "Poetry.",
+        "Pinhole photography, in jpeg format, for which you hold copyright.",
+        "Reader responses to recently published poetry chapbooks — excluding Pinhole's own titles."
+      ],
+      "whatTheyDontWant": [
+        "Work created with AI.",
+        "Photography in any format other than jpeg.",
+        "Work for which you do not hold copyright."
+      ],
+      "requirements": [
+        "Send work by email with a short bio in the body, plus any social media accounts or personal websites you want shared.",
+        "Send photography as jpeg only.",
+        "Note any special formatting requirements in your submission email.",
+        "Expect a response in four to six weeks."
+      ],
+      "rights": "Send only work for which you hold copyright.",
+      "howToSubmit": [
+        "Read https://pinholepoetry.ca/poetry-pinhole-photography-guidelines/ before sending.",
+        "Four to six weeks is one of the faster stated responses in this directory.",
+        "You can decline the $5 CAD and reinvest it if you prefer."
+      ],
+      "keywords": [
+        "pinhole poetry",
+        "poetry",
+        "pinhole photography",
+        "$5 cad",
+        "honorarium",
+        "4-6 weeks",
+        "jpeg",
+        "no ai"
+      ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-30",
+      "publishedAt": "2026-09-30",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "spellbinder-magazine",
+      "slug": "spellbinder-magazine",
+      "publication": "Spellbinder Magazine",
+      "title": "Short fiction",
+      "seoTitle": "Spellbinder Magazine: first rights only, up to 3,000 words",
+      "excerpt": "Spellbinder Magazine takes short stories of up to 3,000 words and acquires first publication rights only, with all rights reverting to the author after publication. It does not accept AI-generated or AI-assisted creative work, asks for one submission per reading period, and aims to respond within six weeks of the submission window closing.",
+      "officialUrl": "https://www.spellbindermag.com/submission-guidelines/",
+      "applyUrl": "https://www.spellbindermag.com/submission-guidelines/",
+      "applyEmail": null,
+      "applyMethod": "Online submission form — contact page for alternatives",
+      "sources": [
+        {
+          "name": "Spellbinder Magazine — Submission Guidelines (official)",
+          "url": "https://www.spellbindermag.com/submission-guidelines/"
+        }
+      ],
+      "eligibility": {
+        "summary": "No stated country restriction on the guidelines page.",
+        "mode": "not-stated",
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": true
+      },
+      "writingTypes": [
+        "fiction"
+      ],
+      "writingTypeLabel": "Short fiction",
+      "pay": {
+        "currency": null,
+        "amountMin": null,
+        "amountMax": null,
+        "display": "Not stated on the public guidelines page",
+        "conditions": "The public guidelines set out length limits, the rights position and the response time but publish no payment rate, so BRYME records no figure.",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "min": null,
+        "max": 3000,
+        "display": "Short stories of up to 3,000 words"
+      },
+      "response": {
+        "label": "Within six weeks of the submission window closing",
+        "band": "2-4-weeks",
+        "official": true
+      },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "prohibited",
+      "whatTheyWant": [
+        "Short stories of up to 3,000 words.",
+        "One submission per reading period."
+      ],
+      "whatTheyDontWant": [
+        "AI-generated creative work.",
+        "AI-assisted creative work. Assistance disqualifies the work, not just generation.",
+        "More than one submission per reading period."
+      ],
+      "requirements": [
+        "Read the guidelines first, then submit through the submission form.",
+        "Keep stories to 3,000 words.",
+        "Send one submission per reading period.",
+        "If the form does not work for you, get in touch through the contact page and the magazine will arrange another way to send your work."
+      ],
+      "rights": "Spellbinder acquires first publication rights only. All rights revert to the author after publication.",
+      "howToSubmit": [
+        "Read https://www.spellbindermag.com/submission-guidelines/ before sending.",
+        "The six-week clock starts when the window closes, not when you submit.",
+        "There is an accessibility route via the contact page if the form fails you."
+      ],
+      "keywords": [
+        "spellbinder magazine",
+        "short fiction",
+        "3000 words",
+        "first publication rights",
+        "rights revert",
+        "no ai-assisted",
+        "six weeks"
+      ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-30",
+      "publishedAt": "2026-09-30",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "decolonial-passage",
+      "slug": "decolonial-passage",
+      "publication": "Decolonial Passage Literary Magazine",
+      "title": "Poetry, fiction and creative nonfiction",
+      "seoTitle": "Decolonial Passage: no AI processes, but spellcheckers are fine",
+      "excerpt": "Decolonial Passage describes itself as a platform for human creative works and does not accept submissions containing AI processes — while stating plainly that spellcheckers and grammar tools are not AI. Publishing rights revert to the author upon initial publication, and the goal is a response within three to four months.",
+      "officialUrl": "https://thedecolonialpassage.net/submit-2/",
+      "applyUrl": "https://thedecolonialpassage.net/submit-2/",
+      "applyEmail": null,
+      "applyMethod": "See guidelines",
+      "sources": [
+        {
+          "name": "Decolonial Passage — Submit (official)",
+          "url": "https://thedecolonialpassage.net/submit-2/"
+        }
+      ],
+      "eligibility": {
+        "summary": "No stated country restriction on the guidelines page.",
+        "mode": "not-stated",
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": true
+      },
+      "writingTypes": [
+        "poetry",
+        "fiction",
+        "creative-nonfiction"
+      ],
+      "writingTypeLabel": "Poetry, fiction and creative nonfiction",
+      "pay": {
+        "currency": null,
+        "amountMin": null,
+        "amountMax": null,
+        "display": "Not stated on the public submit page",
+        "conditions": "The public submit page sets out the AI position, the rights position and the response goal but publishes no payment rate, so BRYME records no figure.",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "min": null,
+        "max": null,
+        "display": "No length limit stated on the public submit page"
+      },
+      "response": {
+        "label": "Goal of three to four months",
+        "band": "3-plus-months",
+        "official": true
+      },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "prohibited",
+      "whatTheyWant": [
+        "Human creative work — poetry, fiction and creative nonfiction.",
+        "Work that identifies and acknowledges any third-party material it contains."
+      ],
+      "whatTheyDontWant": [
+        "Submissions containing AI processes. The magazine positions itself as a platform for human creative works.",
+        "Third-party material that is not clearly identified and acknowledged in the text."
+      ],
+      "requirements": [
+        "Check the submit page for the current route before sending.",
+        "Identify and acknowledge any third-party material inside your submission.",
+        "Spellcheckers and grammar tools are permitted — the magazine says explicitly they are not AI.",
+        "Allow three to four months."
+      ],
+      "rights": "Publishing rights revert to the author upon initial publication in the Decolonial Passage magazine.",
+      "howToSubmit": [
+        "Read https://thedecolonialpassage.net/submit-2/ before sending.",
+        "Using a spellchecker does not breach this policy — the magazine says so.",
+        "Rights revert on first publication."
+      ],
+      "keywords": [
+        "decolonial passage",
+        "poetry",
+        "fiction",
+        "creative nonfiction",
+        "no ai processes",
+        "spellcheckers allowed",
+        "rights revert",
+        "3-4 months"
+      ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-30",
+      "publishedAt": "2026-09-30",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "jabberwock-review",
+      "slug": "jabberwock-review",
+      "publication": "Jabberwock Review",
+      "title": "Fiction, poetry and creative nonfiction",
+      "seoTitle": "Jabberwock Review: rights revert, three-month response, Submittable only",
+      "excerpt": "Jabberwock Review charges a small $3 submission fee, citing publication costs. Rights revert to the author upon publication, with a request to acknowledge the review in any future publications. It does not accept emailed submissions and tries to respond within three months.",
+      "officialUrl": "https://www.jabberwockreview.org/submit",
+      "applyUrl": "https://www.jabberwockreview.org/submit",
+      "applyEmail": null,
+      "applyMethod": "Submittable only — no emailed submissions",
+      "sources": [
+        {
+          "name": "Jabberwock Review — Submit (official)",
+          "url": "https://www.jabberwockreview.org/submit"
+        }
+      ],
+      "eligibility": {
+        "summary": "No stated country restriction on the guidelines page.",
+        "mode": "not-stated",
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": true
+      },
+      "writingTypes": [
+        "fiction",
+        "poetry",
+        "creative-nonfiction"
+      ],
+      "writingTypeLabel": "Fiction, poetry and creative nonfiction",
+      "pay": {
+        "currency": null,
+        "amountMin": null,
+        "amountMax": null,
+        "display": "No contributor rate published; $3 submission fee applies",
+        "conditions": "The public submit page publishes no payment to contributors. The $3.00 is a submission fee charged to the writer, which the review attributes to publication costs. BRYME records no contributor amount because none is published, and does not record the fee as payment.",
+        "timing": "Not applicable — no published contributor rate"
+      },
+      "wordCount": {
+        "min": null,
+        "max": null,
+        "display": "No length limit stated on the public submit page"
+      },
+      "response": {
+        "label": "Three months",
+        "band": "3-plus-months",
+        "official": true
+      },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "not-stated",
+      "whatTheyWant": [
+        "Fiction, poetry and creative nonfiction."
+      ],
+      "whatTheyDontWant": [
+        "Emailed submissions — they are not accepted.",
+        "Sending another submission before you have received a response on the first."
+      ],
+      "requirements": [
+        "Submit through the Submission Manager on Submittable.",
+        "Do not email work.",
+        "Wait for a response before sending anything else.",
+        "Pay the $3 submission fee."
+      ],
+      "rights": "Rights revert to the author upon publication, but the review asks that it be acknowledged in any future publications of the work.",
+      "howToSubmit": [
+        "Read https://www.jabberwockreview.org/submit before sending.",
+        "One submission at a time, and wait for the response.",
+        "The $3 is to submit, not a charge against payment — there is no published contributor rate."
+      ],
+      "keywords": [
+        "jabberwock review",
+        "fiction",
+        "poetry",
+        "creative nonfiction",
+        "$3 fee",
+        "submittable",
+        "rights revert",
+        "three months"
+      ]
     }
   ]
 }
