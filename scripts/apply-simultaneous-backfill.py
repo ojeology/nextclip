@@ -164,11 +164,31 @@ def sentence_at(text: str, anchor: str) -> str | None:
     return scored[0]
 
 
+def tidy(s: str) -> str:
+    """Tighten spacing around punctuation, and nothing else.
+
+    A source page often renders a space before a full stop because an inline tag
+    sits there: "requests to review books <em>.</em>" comes out as "review books .".
+    That is a transcription artefact of the markup, not something the publication
+    wrote, and the desk's own audit_dockets.py rejects it as "space before
+    punctuation". Normalising it changes no word, and the note stays a slice of
+    the page otherwise.
+
+    This was found by the merge rehearsal, not on the branch: the branch's docket
+    does not render the note, so three records sat here with ' .' until main's
+    eighth docket row started printing them and audit_dockets.py failed.
+    """
+    s = re.sub(r"\s+([.,;:!?])", r"\1", s)
+    s = re.sub(r"\(\s+", "(", s)
+    s = re.sub(r"\s+\)", ")", s)
+    return re.sub(r"\s{2,}", " ", s).strip()
+
+
 def note_for(slug: str, url: str, text: str, anchor: str) -> str:
     s = sentence_at(text, anchor)
     if not s:
         return f"Stated in the guideline at {url} (read {V})."
-    return f"{s} \u2014 {url} (read {V})"
+    return f"{tidy(s)} \u2014 {url} (read {V})"
 
 
 def main() -> int:
@@ -238,6 +258,14 @@ def main() -> int:
         rec["simultaneousSubmissions"] = val
         rec["simultaneousNote"] = note
         applied.append((slug, val))
+
+    # Guard: the merge rehearsal caught three notes carrying a space before the
+    # full stop, which audit_dockets.py rejects once main's docket renders the
+    # note. Refuse to write that shape again.
+    offenders = [r["slug"] for r in todo
+                 if r.get("simultaneousNote") and re.search(r"\s+[.,;:!?]", r["simultaneousNote"])]
+    if offenders:
+        sys.exit(f"ERROR: space before punctuation in note for: {offenders}")
 
     if not args.dry_run:
         data["opportunities"] = recs
