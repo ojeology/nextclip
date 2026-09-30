@@ -983,7 +983,7 @@ def home() -> None:
         })
     arts.append({
         "slug": "writing-opportunities", "title": "The atlas: writing opportunities by country",
-        "excerpt": "Browse 142 paying markets by where you are — US, UK, Canada, Australia, Nigeria, and open-to-anywhere.",
+        "excerpt": f"Browse {len(WRITING)} paying markets by where you are — US, UK, Canada, Australia, Nigeria, and open-to-anywhere.",
         "cat": "atlas", "need": "research", "pub": TODAY, "upd": TODAY, "kind": "guide"
     })
 
@@ -1007,7 +1007,7 @@ def home() -> None:
     _wr_cfg = {
         "brand": "BRYME WRITERS",
         "h1": "Learn to write, get published, get paid — the command center.",
-        "dek": ("BRYME Writers is the flagship — 142 verified publications that pay, 197 practical guides, 48 free tools, "
+        "dek": (f"BRYME Writers is the flagship — {len(WRITING)} verified publications that pay, 197 practical guides, 48 free tools, "
                 "and firsthand verification. Pick a pathway below and the whole desk re-sorts itself to that job. "
                 "Everything is dated, sourced, and written in plain English. No pop-ups, ever."),
         "needs": [
@@ -1056,8 +1056,8 @@ def home() -> None:
         "clusters": [
             ("/start/", "BUILD A CAREER — Start here", "Complete beginner path — 20 guides in the order that actually builds on itself."),
             ("/learn/", "WRITE — The guide library", "197 guides: craft, process, grammar and business of freelancing."),
-            ("/writing/", "DISCOVER — Opportunity dossiers", "142 researched publications: pay, word count, eligibility, submission method."),
-            ("/writing-opportunities/", "RESEARCH — The atlas", "Browse by country: US, UK, Canada, Australia, Nigeria, open-to-anywhere."),
+            ("/writing/", "DISCOVER — Opportunity dossiers", f"{len(WRITING)} researched publications: pay, word count, eligibility, submission method."),
+            ("/writing-opportunities/", "RESEARCH — The atlas", "Browse by country: US, UK, Canada, Australia, India, Nigeria, open-to-anywhere."),
             ("/tools/", "USE TOOLS — 48 free tools", "Rate calculator, invoice generator, word counter, citation formatter — browser-only."),
             ("/guides/how-to-write-a-pitch/", "SUBMIT — How to pitch", "The exact structure editors expect — and what gets you rejected."),
             ("/guides/how-much-to-charge-for-an-article/", "EARN — Rates & income", "Real market rates, not guesswork — with calculator."),
@@ -1588,7 +1588,7 @@ COUNTRY_FLAGS = {"US": "\U0001F1FA\U0001F1F8", "UK": "\U0001F1EC\U0001F1E7",
                  "NG": "\U0001F1F3\U0001F1EC", "ZA": "\U0001F1FF\U0001F1E6",
                  "KE": "\U0001F1F0\U0001F1EA", "IE": "\U0001F1EE\U0001F1EA",
                  "DE": "\U0001F1E9\U0001F1EA", "NA": "\U0001F1F3\U0001F1E6",
-                 "NP": "\U0001F1F3\U0001F1F5"}
+                 "NP": "\U0001F1F3\U0001F1F5", "IN": "\U0001F1EE\U0001F1F3"}
 
 REGION_MEMBERS = {
     "africa": {"NG", "KE", "ZA", "NA", "GH", "ET", "TZ", "UG", "RW", "SN", "EG", "MA"},
@@ -2018,6 +2018,13 @@ COUNTRY_PROFILES = {
                quotes="British usage",
                guide=None,
                note="Nigerian publications rarely publish a rate, which is why BRYME lists comparatively few. Several international markets specifically welcome African writers \u2014 they are listed below."),
+    "IN": dict(slug="india", cur="INR",
+               spelling="-ise and -our, following British convention",
+               dates="3 April 2026 \u2014 day first, following British convention",
+               cv="CV or r\u00e9sum\u00e9; a photograph is conventional in several sectors, as in Nigeria and Germany",
+               quotes="British usage",
+               guide=None,
+               note="India's paying capacity sits in its digital newsrooms rather than its literary magazines. Most India-based literary journals state no compensation at all, and several charge a reading fee \u2014 so a list of Indian magazines is not the same thing as a list of paying markets. The newsrooms below pay per piece and publish no rate card, which is why most records here carry no figure. Every one of them was read at source."),
     "KE": dict(slug="kenya", cur="KES", spelling="-ise and -our, following British convention",
                dates="3 April 2026 \u2014 day first", cv="CV", quotes="British usage", guide=None,
                note="A small base of Kenya-based markets, but the Africa-focused international calls below are open to Kenyan writers by name."),

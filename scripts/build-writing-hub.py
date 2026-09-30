@@ -1205,7 +1205,7 @@ def homepage() -> None:
                      "title": g["title"], "excerpt": g.get("description", ""),
                      "cat": "learn", "need": need, "pub": _upd, "upd": _upd,
                      "kind": "guide"})
-    for iso in ["usa", "united-kingdom", "canada", "australia", "nigeria", "remote"]:
+    for iso in ["usa", "united-kingdom", "canada", "australia", "nigeria", "india", "remote"]:
         arts.append({
             "slug": f"writing-opportunities/{iso}", "title": f"Writing opportunities: {iso.replace('-',' ').title()}",
             "excerpt": f"Publications based in {iso.replace('-',' ').title()} — pay, eligibility and submission method verified.",
@@ -1213,7 +1213,7 @@ def homepage() -> None:
         })
     arts.append({
         "slug": "writing-opportunities", "title": "The atlas: writing opportunities by country",
-        "excerpt": "Browse 142 paying markets by where you are — US, UK, Canada, Australia, Nigeria, and open-to-anywhere.",
+        "excerpt": f"Browse {len(WRITING)} paying markets by where you are — US, UK, Canada, Australia, Nigeria, and open-to-anywhere.",
         "cat": "atlas", "need": "research", "pub": TODAY, "upd": TODAY, "kind": "guide"
     })
 

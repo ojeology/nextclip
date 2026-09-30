@@ -25,7 +25,16 @@ if not _al.is_file():
     _al = ROOT / "content/index-allowlist.json"
 POLICY = json.loads(_al.read_text(encoding="utf-8"))
 ROUTES = list(dict.fromkeys(POLICY["routes"]))
-REVIEWED = dt.date.fromisoformat(POLICY["reviewedAt"])
+# reviewedAt is authored policy and it lives in the SOURCE allowlist. The routed
+# artifact is regenerated from that source by build-routing.py, which runs two
+# steps after this one - so reading the stamp off the artifact meant a genuinely
+# bumped stamp could never take effect in the build that needed it. The stamp
+# was advanced to cover today's re-verified records, and this step then rejected
+# those very pages as "Future dateModified". Take the stamp from the source;
+# take only the route list from whichever file matches the tree shape.
+_SOURCE_AL = ROOT / "content/index-allowlist.json"
+_STAMP_DOC = json.loads((_SOURCE_AL if _SOURCE_AL.is_file() else _al).read_text(encoding="utf-8"))
+REVIEWED = dt.date.fromisoformat(_STAMP_DOC["reviewedAt"])
 NEWS_POLICY = json.loads((ROOT / "content/news-allowlist.json").read_text(encoding="utf-8"))
 NEWS_ROUTES = set(NEWS_POLICY["routes"])
 

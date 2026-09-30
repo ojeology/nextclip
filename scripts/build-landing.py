@@ -51,6 +51,24 @@ try:
 except Exception:
     recent = []
 
+
+def _market_count() -> int:
+    """How many records the opportunities dataset holds.
+
+    Derived, never hardcoded. This figure is printed in the homepage title,
+    meta description, JSON-LD, the DISCOVER pathway tile, the nav and the
+    footer. It was the literal 142 in ten places here, so every verified batch
+    of new markets left the homepage advertising a stale total while the desk
+    itself showed the real one - and on 30 September the two disagreed in
+    public. Raises rather than falling back: a wrong number on the front door
+    is worse than a build that stops.
+    """
+    doc = json.loads((ROOT / "content" / "opportunities.json").read_text(encoding="utf-8"))
+    return len(doc["opportunities"])
+
+
+N_MARKETS = _market_count()
+
 # Recent cards
 def _pay_str(o):
     pd = o.get("pay_display")
@@ -117,10 +135,10 @@ SECONDARY = [
 
 # Pathways reordered: DISCOVER first (flagship core), not WRITE
 PATHWAYS = [
-    ("discover", "DISCOVER", "/writers/writing/", "142 markets — pay, word count, who is open now", 142, "1"),
+    ("discover", "DISCOVER", "/writers/writing/", f"{N_MARKETS} markets — pay, word count, who is open now", N_MARKETS, "1"),
     ("write", "WRITE", "/writers/learn/", "197 craft guides — from blank page to final draft", 197, "2"),
     ("submit", "SUBMIT", "/writers/guides/how-to-write-a-pitch/", "How to pitch, query, cover letter", 14, "3"),
-    ("research", "RESEARCH", "/writers/writing-opportunities/", "Find markets by country — US, UK, CA, AU, NG", 12, "4"),
+    ("research", "RESEARCH", "/writers/writing-opportunities/", "Find markets by country — US, UK, CA, AU, IN, NG", 12, "4"),
     ("earn", "EARN", "/writers/learn/freelance-paid-writing/", "Rates, invoices, tax, tracker", 25, "5"),
     ("tools", "TOOLS", "/writers/tools/", "48 browser tools — no account, nothing uploaded", 48, "6"),
     ("career", "CAREER", "/writers/start/", "Portfolio, clients, full-time", 12, "7"),
@@ -158,12 +176,12 @@ HTML = f"""<!doctype html>
 <meta name="theme-color" content="#f6f2e8"><meta name="color-scheme" content="light dark">
 <script src="/assets/theme.js"></script>
 <title>THE BRYME — a house that reads the fine print so you don't have to</title>
-<meta name="description" content="Seven desks under one roof. Flagship: 142 paying markets checked by hand, 197 guides, 48 tools. Dated, sourced, no pop-ups. Plus tech, home, fitness, money, sport, entertainment.">
+<meta name="description" content="Seven desks under one roof. Flagship: {N_MARKETS} paying markets checked by hand, 197 guides, 48 tools. Dated, sourced, no pop-ups. Plus tech, home, fitness, money, sport, entertainment.">
 <meta name="robots" content="index,follow"><meta name="p:domain_verify" content="69f32b47370c197e72e39c8339160660"/>
 <link rel="canonical" href="https://thebryme.com/">
 <meta property="og:type" content="website"><meta property="og:site_name" content="THE BRYME">
 <meta property="og:title" content="THE BRYME — a house that reads the fine print">
-<meta property="og:description" content="142 paying markets, 197 guides, 48 tools. Verified by hand, dated, sourced, no pop-ups. Seven desks, one house standard.">
+<meta property="og:description" content="{N_MARKETS} paying markets, 197 guides, 48 tools. Verified by hand, dated, sourced, no pop-ups. Seven desks, one house standard.">
 <meta property="og:url" content="https://thebryme.com/"><meta property="og:image" content="https://thebryme.com/assets/og.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/favicon.ico" sizes="any"><link rel="apple-touch-icon" href="/assets/brand/apple-touch-icon.png">
@@ -173,7 +191,7 @@ HTML = f"""<!doctype html>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-0KEKJH9960"></script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1881426210393009" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="/assets/bryme-v2.css">
-<script type="application/ld+json">{{"@context":"https://schema.org","@graph":[{{"@type":"WebSite","@id":"https://thebryme.com/#website","url":"https://thebryme.com/","name":"THE BRYME","inLanguage":"en","description":"A house that reads the fine print so you don't have to. Seven desks — Writers is flagship — 142 paying markets checked by hand, 197 guides, 48 browser tools, dated, sourced, no pop-ups.","publisher":{{"@id":"https://thebryme.com/#org"}},"potentialAction":{{"@type":"SearchAction","target":{{"@type":"EntryPoint","urlTemplate":"https://thebryme.com/writers/search/?q={{search_term_string}}"}},"query-input":"required name=search_term_string"}}}},{{"@type":"Organization","@id":"https://thebryme.com/#org","name":"THE BRYME","url":"https://thebryme.com/","foundingDate":"2026"}}]}}</script>
+<script type="application/ld+json">{{"@context":"https://schema.org","@graph":[{{"@type":"WebSite","@id":"https://thebryme.com/#website","url":"https://thebryme.com/","name":"THE BRYME","inLanguage":"en","description":"A house that reads the fine print so you don't have to. Seven desks — Writers is flagship — {N_MARKETS} paying markets checked by hand, 197 guides, 48 browser tools, dated, sourced, no pop-ups.","publisher":{{"@id":"https://thebryme.com/#org"}},"potentialAction":{{"@type":"SearchAction","target":{{"@type":"EntryPoint","urlTemplate":"https://thebryme.com/writers/search/?q={{search_term_string}}"}},"query-input":"required name=search_term_string"}}}},{{"@type":"Organization","@id":"https://thebryme.com/#org","name":"THE BRYME","url":"https://thebryme.com/","foundingDate":"2026"}}]}}</script>
 <style>
 /* ===== HOUSE v4 — compact header fix + dense 10/10 ===== */
 .site-head{{position:sticky;top:0;z-index:50;background:var(--paper);border-bottom:1px solid var(--line)}}
@@ -297,7 +315,7 @@ html[data-theme=dark] .kicker{{background:#1a212c;color:#d0aa52;border-color:rgb
   <nav class="main-nav" aria-label="Primary"><div class="wrap mast-nav">
     <a href="{H("/")}" class="home-link" aria-label="Home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 10.5 12 3l9 7.5V21a1 1 0 0 1-1 1h-5v-5H9v5H4a1 1 0 0 1-1-1z"/></svg></a>
     <a href="{H("/writers/")}" style="color:var(--brass)">Flagship</a>
-    <a href="{H("/writers/writing/")}">142 markets</a>
+    <a href="{H("/writers/writing/")}">{N_MARKETS} markets</a>
     <a href="{H("/writers/tools/")}">48 tools</a>
     <a href="{H("/tech/")}">Tech</a>
     <a href="{H("/entertainment/")}">Watch</a>
@@ -314,18 +332,18 @@ html[data-theme=dark] .kicker{{background:#1a212c;color:#d0aa52;border-color:rgb
 <section class="house-hero">
   <div class="eyebrow"><b>THE BRYME</b><span class="dot"></span>HOUSE EDITION<span class="dot"></span>7 DESKS<span class="dot"></span>ONE STANDARD</div>
   <h1>We read the <em>fine print</em> so you don't have to.</h1>
-  <p class="dek">Seven specialist publications under one roof. <b>Flagship is a practical home for writers</b> — 142 paying markets checked by hand, 197 guides, 48 browser tools. Dated, sourced, no pop-ups. The rest of the house is small on purpose.</p>
+  <p class="dek">Seven specialist publications under one roof. <b>Flagship is a practical home for writers</b> — {N_MARKETS} paying markets checked by hand, 197 guides, 48 browser tools. Dated, sourced, no pop-ups. The rest of the house is small on purpose.</p>
   <div class="actions">
     <a class="btn" href="{H("/writers/")}">Enter flagship →</a>
-    <a class="btn secondary" href="{H("/writers/writing/")}">Browse 142 markets</a>
+    <a class="btn secondary" href="{H("/writers/writing/")}">Browse {N_MARKETS} markets</a>
     <button type="button" class="btn secondary" data-house-open-palette><span>Find anything</span><kbd style="display:inline-grid;place-items:center;width:18px;height:18px;border:1px solid var(--line);border-radius:4px;font:700 10px/1 ui-monospace,monospace">K</kbd></button>
   </div>
-  <div class="meta"><b>142</b> paying markets <span class="sep">·</span> <b>197</b> guides <span class="sep">·</span> <b>48</b> tools <span class="sep">·</span> <b>0</b> pop-ups <span class="sep">·</span> Verified <b>{SWEEP}</b> <span class="sep">·</span> Reviewed {REVIEWED}</div>
+  <div class="meta"><b>{N_MARKETS}</b> paying markets <span class="sep">·</span> <b>197</b> guides <span class="sep">·</span> <b>48</b> tools <span class="sep">·</span> <b>0</b> pop-ups <span class="sep">·</span> Verified <b>{SWEEP}</b> <span class="sep">·</span> Reviewed {REVIEWED}</div>
 
   <div class="flag">
     <div class="flag-head"><h2>Flagship: a practical home for writers</h2><span>75% of useful real estate · house standard</span><a href="{H("/writers/")}">Full desk →</a></div>
     <div class="flag-grid">
-      <div class="flag-card"><b><i>1</i> Discover — where to publish</b><p>142 publications researched by hand — pay, word count, eligibility, submission method. Each carries its last-checked date.</p><div class="links"><a href="{H("/writers/writing/")}">All markets →</a><a href="{H("/writers/writing-opportunities/")}">Atlas</a><a href="{H("/writers/today/")}">This week</a></div></div>
+      <div class="flag-card"><b><i>1</i> Discover — where to publish</b><p>{N_MARKETS} publications researched by hand — pay, word count, eligibility, submission method. Each carries its last-checked date.</p><div class="links"><a href="{H("/writers/writing/")}">All markets →</a><a href="{H("/writers/writing-opportunities/")}">Atlas</a><a href="{H("/writers/today/")}">This week</a></div></div>
       <div class="flag-card"><b><i>2</i> Learn — how to get in</b><p>197 guides: pitch, query, cover letter, voice, structure, portfolio. From first pitch to final invoice.</p><div class="links"><a href="{H("/writers/learn/")}">Guide library →</a><a href="{H("/writers/guides/how-to-write-a-pitch/")}">Pitch guide</a><a href="{H("/writers/learn/professional-writing/how-to-write-a-cover-letter/")}">Cover letter</a></div></div>
       <div class="flag-card"><b><i>3</i> Earn — how to get paid</b><p>Rates, invoices, tax set-aside, income tracker, late payment letters. Browser tools, nothing uploaded.</p><div class="links"><a href="{H("/writers/tools/")}">48 tools →</a><a href="{H("/writers/tools/freelance-rate-calculator/")}">Rate calc</a><a href="{H("/writers/tools/income-tracker/")}">Tracker</a></div></div>
     </div>
@@ -383,8 +401,8 @@ html[data-theme=dark] .kicker{{background:#1a212c;color:#d0aa52;border-color:rgb
 <script src="/assets/site-nav.js" defer></script>
 <script src="/assets/house-home.js" defer></script>
 <footer class="site-foot"><div class="wrap foot-grid">
-<div class="foot-brand"><a class="logo" href="{H("/")}"><span class="logo-mark" aria-hidden="true"></span> THE BRYME</a><p>A house that reads the fine print so you don't have to. Seven desks, one house standard. Flagship is Writers — 142 paying markets checked by hand, dated, sourced, no pop-ups.</p></div>
-<div class="foot-col"><b>Flagship</b><a href="{H("/writers/")}">Writers home</a><a href="{H("/writers/writing/")}">142 markets</a><a href="{H("/writers/learn/")}">197 guides</a><a href="{H("/writers/tools/")}">48 tools</a><a href="{H("/writers/search/")}">Search</a></div>
+<div class="foot-brand"><a class="logo" href="{H("/")}"><span class="logo-mark" aria-hidden="true"></span> THE BRYME</a><p>A house that reads the fine print so you don't have to. Seven desks, one house standard. Flagship is Writers — {N_MARKETS} paying markets checked by hand, dated, sourced, no pop-ups.</p></div>
+<div class="foot-col"><b>Flagship</b><a href="{H("/writers/")}">Writers home</a><a href="{H("/writers/writing/")}">{N_MARKETS} markets</a><a href="{H("/writers/learn/")}">197 guides</a><a href="{H("/writers/tools/")}">48 tools</a><a href="{H("/writers/search/")}">Search</a></div>
 <div class="foot-col"><b>House</b><a href="{H("/tech/")}">Tech</a><a href="{H("/home/")}">Home</a><a href="{H("/fitness/")}">Fitness</a><a href="{H("/money/")}">Money</a><a href="{H("/sports/")}">Sport</a><a href="{H("/entertainment/")}">Entertainment</a></div>
 <div class="foot-col"><b>Trust</b><a href="/about/">About</a><a href="/privacy/">Privacy</a><a href="/about/#contact">Contact</a><span style="font-size:12px;color:var(--dim)">Reviewed {REVIEWED} · 0 pop-ups · Ctrl+K · / · 1–7 · ?</span></div>
 </div><div class="wrap foot-bottom">© 2026 THE BRYME · A house that reads the fine print · 7 desks, one standard · Reviewed {REVIEWED} · 0 pop-ups, ever · Keys: / · Ctrl+K · 1–7 · ? · Theme toggle remembers choice.</div></footer>

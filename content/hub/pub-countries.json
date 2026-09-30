@@ -566,5 +566,25 @@
   "orion-magazine": {
     "base": "US",
     "label": "United States"
+  },
+  "wire-science": {
+    "base": "IN",
+    "label": "India"
+  },
+  "theprint": {
+    "base": "IN",
+    "label": "India"
+  },
+  "the-caravan": {
+    "base": "IN",
+    "label": "India"
+  },
+  "goya-journal": {
+    "base": "IN",
+    "label": "India"
+  },
+  "mithila-review": {
+    "base": "IN",
+    "label": "India"
   }
 }
