@@ -1,6 +1,6 @@
 {
  "_comment": "Written by scripts/sports_update_agent.py - source: football-data.org v4. The desk never publishes unverified data.",
- "generated": "2026-09-25 00:21 UTC",
+ "generated": "2026-09-30 12:10 UTC",
  "source": "football-data.org v4",
  "leagues": {
   "premier-league": {
@@ -1356,217 +1356,6 @@
        "",
        "Australia",
        "2008-02-16",
-       null
-      ]
-     ]
-    },
-    "Brentford": {
-     "id": 402,
-     "founded": 1889,
-     "venue": "Griffin Park",
-     "colors": "Red / White / Black",
-     "players": [
-      [
-       "Ellery Balcombe",
-       "Goalkeeper",
-       "England",
-       "1999-10-15",
-       null
-      ],
-      [
-       "Caoimhin Kelleher",
-       "Goalkeeper",
-       "Ireland",
-       "1998-11-23",
-       null
-      ],
-      [
-       "Hákon Rafn Valdimarsson",
-       "Goalkeeper",
-       "Iceland",
-       "2001-10-13",
-       null
-      ],
-      [
-       "Rico Henry",
-       "Defence",
-       "Jamaica",
-       "1997-07-08",
-       null
-      ],
-      [
-       "Sepp van den Berg",
-       "Defence",
-       "Netherlands",
-       "2001-12-20",
-       null
-      ],
-      [
-       "Kristoffer Ajer",
-       "Defence",
-       "Norway",
-       "1998-04-17",
-       null
-      ],
-      [
-       "Aaron Hickey",
-       "Defence",
-       "Scotland",
-       "2002-01-01",
-       null
-      ],
-      [
-       "Nathan Collins",
-       "Defence",
-       "Ireland",
-       "2001-04-30",
-       null
-      ],
-      [
-       "El Hadji Malick Diouf",
-       "Defence",
-       "Senegal",
-       "2023-02-21",
-       null
-      ],
-      [
-       "Michael Kayode",
-       "Defence",
-       "Italy",
-       "2004-07-10",
-       null
-      ],
-      [
-       "Ji-soo Kim",
-       "Defence",
-       "South Korea",
-       "2004-12-24",
-       null
-      ],
-      [
-       "Jannik Schuster",
-       "Defence",
-       "Austria",
-       "2006-05-16",
-       null
-      ],
-      [
-       "Benjamin Fredrick",
-       "Defence",
-       "Nigeria",
-       "2005-05-28",
-       null
-      ],
-      [
-       "Josh Dasilva",
-       "Midfield",
-       "England",
-       "1998-10-23",
-       null
-      ],
-      [
-       "Vitaly Janelt",
-       "Midfield",
-       "Germany",
-       "1998-05-10",
-       null
-      ],
-      [
-       "Mathias Jensen",
-       "Midfield",
-       "Denmark",
-       "1996-01-01",
-       null
-      ],
-      [
-       "Mikkel Damsgaard",
-       "Midfield",
-       "Denmark",
-       "2000-07-03",
-       null
-      ],
-      [
-       "Keane Lewis-Potter",
-       "Midfield",
-       "England",
-       "2001-02-22",
-       null
-      ],
-      [
-       "Mamadou Sangare",
-       "Midfield",
-       "Mali",
-       "2002-06-26",
-       null
-      ],
-      [
-       "Fabio Carvalho",
-       "Midfield",
-       "Portugal",
-       "2002-08-30",
-       null
-      ],
-      [
-       "Antoni Milambo",
-       "Midfield",
-       "Netherlands",
-       "2005-04-03",
-       null
-      ],
-      [
-       "Yegor Yarmolyuk",
-       "Midfield",
-       "Ukraine",
-       "2004-03-01",
-       null
-      ],
-      [
-       "Callum Wilson",
-       "Offence",
-       "England",
-       "1992-02-27",
-       null
-      ],
-      [
-       "Kevin Schade",
-       "Offence",
-       "Germany",
-       "2001-11-27",
-       null
-      ],
-      [
-       "Thiago",
-       "Offence",
-       "Brazil",
-       "2001-06-26",
-       null
-      ],
-      [
-       "Jaidon Anthony",
-       "Offence",
-       "England",
-       "1999-12-01",
-       null
-      ],
-      [
-       "Dango Ouattara",
-       "Offence",
-       "Burkina Faso",
-       "2002-02-11",
-       null
-      ],
-      [
-       "Gustavo Gomes",
-       "Offence",
-       "Brazil",
-       "2005-11-20",
-       null
-      ],
-      [
-       "Kaye Furo",
-       "Offence",
-       "Belgium",
-       "2007-02-06",
        null
       ]
      ]
@@ -3365,217 +3154,6 @@
       ]
      ]
     },
-    "Sunderland": {
-     "id": 71,
-     "founded": 1879,
-     "venue": "Stadium of Light",
-     "colors": "Red / White",
-     "players": [
-      [
-       "Simon Moore",
-       "Goalkeeper",
-       "England",
-       "1990-05-19",
-       null
-      ],
-      [
-       "Robin Roefs",
-       "Goalkeeper",
-       "Netherlands",
-       "2003-01-17",
-       null
-      ],
-      [
-       "Melker Ellborg",
-       "Goalkeeper",
-       "Sweden",
-       "2003-05-22",
-       null
-      ],
-      [
-       "Thomas Meunier",
-       "Defence",
-       "Belgium",
-       "1991-09-12",
-       null
-      ],
-      [
-       "Luke O'Nien",
-       "Defence",
-       "England",
-       "1994-11-21",
-       null
-      ],
-      [
-       "Kevin Danso",
-       "Defence",
-       "Austria",
-       "1998-09-19",
-       null
-      ],
-      [
-       "Nordi Mukiele",
-       "Defence",
-       "France",
-       "1997-11-01",
-       null
-      ],
-      [
-       "Reinildo",
-       "Defence",
-       "Mozambique",
-       "1994-01-21",
-       null
-      ],
-      [
-       "Omar Alderete",
-       "Defence",
-       "Paraguay",
-       "1996-12-26",
-       null
-      ],
-      [
-       "Trai Hume",
-       "Defence",
-       "Northern Ireland",
-       "2002-03-18",
-       null
-      ],
-      [
-       "Daniel Ballard",
-       "Defence",
-       "Northern Ireland",
-       "1999-09-22",
-       null
-      ],
-      [
-       "Aji Alese",
-       "Defence",
-       "England",
-       "2001-01-17",
-       null
-      ],
-      [
-       "Dayann Methalie",
-       "Defence",
-       "France",
-       "2006-02-15",
-       null
-      ],
-      [
-       "Granit Xhaka",
-       "Midfield",
-       "Switzerland",
-       "1992-09-27",
-       null
-      ],
-      [
-       "Alan Browne",
-       "Midfield",
-       "Ireland",
-       "1995-04-15",
-       null
-      ],
-      [
-       "Enzo Le Fée",
-       "Midfield",
-       "France",
-       "2000-02-03",
-       null
-      ],
-      [
-       "Abdoullah Ba",
-       "Midfield",
-       "France",
-       "2003-07-31",
-       null
-      ],
-      [
-       "Habib Diarra",
-       "Midfield",
-       "Senegal",
-       "2004-01-03",
-       null
-      ],
-      [
-       "Noah Sadiki",
-       "Midfield",
-       "Congo DR",
-       "2004-12-17",
-       null
-      ],
-      [
-       "Chris Rigg",
-       "Midfield",
-       "England",
-       "2007-06-18",
-       null
-      ],
-      [
-       "Jules Ahoka",
-       "Midfield",
-       "DR Congo",
-       "2005-12-17",
-       null
-      ],
-      [
-       "Wilson Isidor",
-       "Offence",
-       "Haiti",
-       "2000-08-27",
-       null
-      ],
-      [
-       "Brian Brobbey",
-       "Offence",
-       "Netherlands",
-       "2002-02-01",
-       null
-      ],
-      [
-       "Romaine Mundle",
-       "Offence",
-       "England",
-       "2003-04-24",
-       null
-      ],
-      [
-       "Malick Fofana",
-       "Offence",
-       "Belgium",
-       "2005-03-31",
-       null
-      ],
-      [
-       "Nilson Angulo",
-       "Offence",
-       "Ecuador",
-       "2003-06-19",
-       null
-      ],
-      [
-       "Chemsdine Talbi",
-       "Offence",
-       "Morocco",
-       "2005-05-09",
-       null
-      ],
-      [
-       "Juan Angulo",
-       "Offence",
-       "Ecuador",
-       "2008-01-12",
-       null
-      ],
-      [
-       "Jocelin Bi",
-       "Offence",
-       "Ivory Coast",
-       "2005-02-09",
-       null
-      ]
-     ]
-    },
     "Crystal Palace": {
      "id": 354,
      "founded": 1905,
@@ -4808,7 +4386,7 @@
      ]
     }
    },
-   "squads_updated": "fetched Friday 25 September 2026, 00:21 UTC (20/20 clubs listed)"
+   "squads_updated": "fetched Wednesday 30 September 2026, 12:10 UTC (18/20 clubs listed)"
   },
   "la-liga": {
    "name": "La Liga",
@@ -5577,7 +5155,7 @@
   },
   "bundesliga": {
    "name": "Bundesliga",
-   "table_updated": "fetched Friday 25 September 2026, 00:18 UTC",
+   "table_updated": "fetched Wednesday 30 September 2026, 12:08 UTC",
    "table": [
     [
      1,
@@ -6070,7 +5648,7 @@
      ]
     }
    ],
-   "results_updated": "fetched Friday 25 September 2026, 00:18 UTC",
+   "results_updated": "fetched Wednesday 30 September 2026, 12:08 UTC",
    "scorers": [
     {
      "p": "Michael Olise",
@@ -6143,7 +5721,7 @@
      "pm": 4
     }
    ],
-   "scorers_updated": "fetched Friday 25 September 2026, 00:19 UTC",
+   "scorers_updated": "fetched Wednesday 30 September 2026, 12:08 UTC",
    "upcoming": [
     {
      "d": "2026-10-09 18:30",
@@ -6218,7 +5796,7 @@
      "mw": 6
     }
    ],
-   "upcoming_updated": "fetched Friday 25 September 2026, 00:18 UTC"
+   "upcoming_updated": "fetched Wednesday 30 September 2026, 12:08 UTC"
   },
   "serie-a": {
    "table": [
@@ -6463,7 +6041,7 @@
      0
     ]
    ],
-   "table_updated": "fetched Friday 25 September 2026, 00:18 UTC",
+   "table_updated": "fetched Wednesday 30 September 2026, 12:08 UTC",
    "results": [
     {
      "mw": 1,
@@ -6841,7 +6419,7 @@
      ]
     }
    ],
-   "results_updated": "fetched Friday 25 September 2026, 00:18 UTC",
+   "results_updated": "fetched Wednesday 30 September 2026, 12:08 UTC",
    "scorers": [
     {
      "p": "Donyell Malen",
@@ -6914,7 +6492,7 @@
      "pm": 5
     }
    ],
-   "scorers_updated": "fetched Friday 25 September 2026, 00:18 UTC",
+   "scorers_updated": "fetched Wednesday 30 September 2026, 12:08 UTC",
    "upcoming": [
     {
      "d": "2026-10-10 13:00",
@@ -6989,7 +6567,7 @@
      "mw": 7
     }
    ],
-   "upcoming_updated": "fetched Friday 25 September 2026, 00:18 UTC"
+   "upcoming_updated": "fetched Wednesday 30 September 2026, 12:08 UTC"
   },
   "ligue-1": {
    "table": [
@@ -8138,7 +7716,7 @@
      0
     ]
    ],
-   "table_updated": "fetched Friday 25 September 2026, 00:19 UTC",
+   "table_updated": "fetched Wednesday 30 September 2026, 12:08 UTC",
    "results": [
     {
      "mw": 1,
@@ -8272,7 +7850,7 @@
      ]
     }
    ],
-   "results_updated": "fetched Friday 25 September 2026, 00:19 UTC",
+   "results_updated": "fetched Wednesday 30 September 2026, 12:09 UTC",
    "upcoming": [
     {
      "d": "2026-10-13 16:45",
@@ -8347,7 +7925,7 @@
      "mw": 2
     }
    ],
-   "upcoming_updated": "fetched Friday 25 September 2026, 00:19 UTC",
+   "upcoming_updated": "fetched Wednesday 30 September 2026, 12:09 UTC",
    "scorers": [
     {
      "p": "Ermedin Demirovic",
@@ -8420,7 +7998,7 @@
      "pm": 1
     }
    ],
-   "scorers_updated": "fetched Friday 25 September 2026, 00:19 UTC"
+   "scorers_updated": "fetched Wednesday 30 September 2026, 12:09 UTC"
   }
  }
 }
