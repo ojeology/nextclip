@@ -3268,7 +3268,7 @@
       "vertical": "writing",
       "lastVerified": "2026-08-19",
       "publishedAt": "2026-08-19",
-      "experience": "not-stated",
+      "experience": "emerging",
       "editorExperience": {
         "status": "not-yet-submitted"
       },
@@ -3354,7 +3354,9 @@
         "fiction",
         "not nigeria"
       ],
-      "simultaneousSubmissions": "not-stated"
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "We allow simultaneous submissions, but please let us know if a story is accepted elsewhere. — https://overland.org.au/submit/fiction-submissions/ (read 2026-09-30)",
+      "experienceNote": "Overland publishes fiction by new, emerging and diverse writers (and some established authors) — https://overland.org.au/submit/fiction-submissions/ (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -3446,7 +3448,8 @@
         "online essay",
         "polemic"
       ],
-      "simultaneousSubmissions": "not-stated"
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "We allow simultaneous submissions, but please let us know if your submission is accepted elsewhere. — https://overland.submittable.com/submit/19452 (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -12570,7 +12573,7 @@
       "vertical": "writing",
       "lastVerified": "2026-09-06",
       "publishedAt": "2026-09-06",
-      "experience": "not-stated",
+      "experience": "emerging",
       "editorExperience": {
         "status": "not-yet-submitted"
       },
@@ -12654,7 +12657,8 @@
         "usa",
         "usd"
       ],
-      "simultaneousSubmissions": "not-stated"
+      "simultaneousSubmissions": "not-stated",
+      "experienceNote": "We welcome the work of emerging writers of all ages and walks of life. — https://ecotone.submittable.com/submit (read 2026-09-30)"
     },
     {
       "status": "published",
