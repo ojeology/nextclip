@@ -870,5 +870,37 @@
   "men-matters-online-journal": {
     "base": "",
     "label": "International"
+  },
+  "eye-to-the-telescope": {
+    "base": "",
+    "label": "International"
+  },
+  "four-way-review": {
+    "base": "",
+    "label": "International"
+  },
+  "metachrosis-literary": {
+    "base": "",
+    "label": "International"
+  },
+  "soflopojo": {
+    "base": "",
+    "label": "International"
+  },
+  "poetry-super-highway": {
+    "base": "",
+    "label": "International"
+  },
+  "poetry-pacific": {
+    "base": "",
+    "label": "International"
+  },
+  "brilliant-flash-fiction": {
+    "base": "",
+    "label": "International"
+  },
+  "the-journal": {
+    "base": "US",
+    "label": "United States"
   }
 }

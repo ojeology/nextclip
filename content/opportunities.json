@@ -19550,6 +19550,724 @@
         "abstract required",
         "no ai"
       ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-30",
+      "publishedAt": "2026-09-30",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "eye-to-the-telescope",
+      "slug": "eye-to-the-telescope",
+      "publication": "Eye to the Telescope",
+      "title": "Speculative poetry",
+      "seoTitle": "Eye to the Telescope: 7 cents a word for speculative poetry",
+      "excerpt": "Eye to the Telescope, published by the Science Fiction & Fantasy Poetry Association, pays 7 cents a word rounded up to the nearest dollar, with a $7 minimum and $30 maximum, within a month of publication. It seeks First Electronic Rights for original unpublished poems and asks for no AI-generated works or AI-human collaborations.",
+      "officialUrl": "https://eyetothetelescope.com/submit.html",
+      "applyUrl": "https://eyetothetelescope.com/submit.html",
+      "applyEmail": null,
+      "applyMethod": "Online submission",
+      "sources": [
+        {
+          "name": "Eye to the Telescope — Submit (official)",
+          "url": "https://eyetothetelescope.com/submit.html"
+        }
+      ],
+      "eligibility": {
+        "summary": "No stated country restriction on the guidelines page.",
+        "mode": "not-stated",
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": true
+      },
+      "writingTypes": [
+        "poetry"
+      ],
+      "writingTypeLabel": "Speculative poetry",
+      "pay": {
+        "currency": "USD",
+        "amountMin": 7,
+        "amountMax": 30,
+        "display": "7¢ per word rounded up to the nearest dollar; $7 minimum, $30 maximum",
+        "conditions": "Official submit page: accepted poems are paid at 7 cents per word rounded up to the nearest dollar, with a minimum of US$7 and a maximum of US$30. The per-word rate means the total depends on length, and the rounding-up convention is the publisher's own.",
+        "timing": "Within a month of publication"
+      },
+      "wordCount": {
+        "min": null,
+        "max": null,
+        "display": "No length limit stated on the submit page"
+      },
+      "response": {
+        "label": "Not stated; payment lands within a month of publication",
+        "band": "not-stated",
+        "official": true
+      },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "prohibited",
+      "whatTheyWant": [
+        "Original unpublished speculative poetry.",
+        "Themed issues — recent calls have included faeries of any kind and faerie-like creatures from any culture, approached with reverence and respect."
+      ],
+      "whatTheyDontWant": [
+        "AI-generated works, or AI-human collaborations. Both are excluded.",
+        "Previously published poems, for which First Electronic Rights would not apply."
+      ],
+      "requirements": [
+        "Check the current themed call before writing.",
+        "Send original unpublished work.",
+        "Write without AI assistance or collaboration.",
+        "Payment arrives within a month of publication."
+      ],
+      "rights": "First Electronic Rights are sought for original unpublished poems.",
+      "howToSubmit": [
+        "Read https://eyetothetelescope.com/submit.html and check the current theme.",
+        "The rate scales with length and rounds up — longer poems earn more.",
+        "Also see the SFPA's AI policy, which the submit page links to."
+      ],
+      "keywords": [
+        "eye to the telescope",
+        "sfpa",
+        "speculative poetry",
+        "7 cents per word",
+        "$7 minimum",
+        "$30 maximum",
+        "first electronic rights",
+        "no ai"
+      ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-30",
+      "publishedAt": "2026-09-30",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "four-way-review",
+      "slug": "four-way-review",
+      "publication": "Four Way Review",
+      "title": "Poetry and short shorts",
+      "seoTitle": "Four Way Review: honorarium funded by a $3 fee, AI must be disclosed",
+      "excerpt": "Four Way Review charges a $3 submission fee for part of the year specifically so it can offer its writers a small honorarium, though it publishes no figure. Short shorts run under 1,000 words and poetry submissions hold three to five poems. Its AI position requires disclosure: if any element was developed using found materials or written in collaboration with others, whether human or through artificial intelligence, that must be stated in the cover letter.",
+      "officialUrl": "https://fourwayreview.com/submit/",
+      "applyUrl": "https://fourwayreview.com/submit/",
+      "applyEmail": null,
+      "applyMethod": "Online submission — $3 fee for part of the year",
+      "sources": [
+        {
+          "name": "Four Way Review — Submit (official)",
+          "url": "https://fourwayreview.com/submit/"
+        }
+      ],
+      "eligibility": {
+        "summary": "No stated country restriction on the guidelines page.",
+        "mode": "not-stated",
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": true
+      },
+      "writingTypes": [
+        "poetry",
+        "fiction"
+      ],
+      "writingTypeLabel": "Poetry and short shorts",
+      "pay": {
+        "currency": null,
+        "amountMin": null,
+        "amountMax": null,
+        "display": "A small honorarium, funded by a $3 fee; no figure published",
+        "conditions": "Official submit page: in order to offer writers a small honorarium, Four Way Review charges a small submission fee of $3 for part of the year. No honorarium figure is published, so BRYME records none. The fee exists to fund the payment rather than to cover costs alone.",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "min": null,
+        "max": 1000,
+        "display": "Short shorts under 1,000 words; poetry 3–5 poems per submission"
+      },
+      "response": {
+        "label": "Not stated; wait to hear back before submitting again",
+        "band": "not-stated",
+        "official": true
+      },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "disclosure-required",
+      "whatTheyWant": [
+        "Poetry: three to five poems in a single submission, with no more than three poetry submissions per year.",
+        "Short shorts under 1,000 words."
+      ],
+      "whatTheyDontWant": [
+        "Using any part of the website, magazine or books to train artificial intelligence technologies or systems — expressly forbidden.",
+        "Undisclosed collaboration. If any element was developed using found materials or written in collaboration with others, whether human or through AI, it must be disclosed in the cover letter."
+      ],
+      "requirements": [
+        "Pay the $3 fee when it applies — it funds the honorarium.",
+        "Send three to five poems per poetry submission, at most three times a year.",
+        "Disclose any collaboration, human or AI, in your cover letter.",
+        "Email to withdraw individual poems; withdrawal requests are not individually answered."
+      ],
+      "rights": "All rights revert to the author upon publication, with a request that you acknowledge Four Way Review if the work is published elsewhere.",
+      "howToSubmit": [
+        "Read https://fourwayreview.com/submit/ before sending.",
+        "Disclose collaboration in the cover letter — it is required, not optional.",
+        "Three poetry submissions a year is the ceiling."
+      ],
+      "keywords": [
+        "four way review",
+        "poetry",
+        "short shorts",
+        "honorarium",
+        "$3 fee",
+        "1000 words",
+        "ai disclosure required",
+        "rights revert"
+      ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-30",
+      "publishedAt": "2026-09-30",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "metachrosis-literary",
+      "slug": "metachrosis-literary",
+      "publication": "Metachrosis Literary",
+      "title": "Poetry, prose and visual art",
+      "seoTitle": "Metachrosis Literary: artist-designed AI is welcome, generated art is not",
+      "excerpt": "Metachrosis Literary takes a maximum of three poems under 40 lines each, or one piece of up to 1,000 words, and reads only during its stated reading periods. Its art policy is unusually precise: AI-generated and stolen art are refused, but art using computer simulations based on first-hand data collected by the artist, or where the AI was designed by the artist, is accepted — and the magazine has several such pieces in its catalogue.",
+      "officialUrl": "https://metachrosislitmag.com/submission-guidelines/",
+      "applyUrl": "https://metachrosislitmag.com/submission-guidelines/",
+      "applyEmail": null,
+      "applyMethod": "Email during reading periods",
+      "sources": [
+        {
+          "name": "Metachrosis Literary — Submission Guidelines (official)",
+          "url": "https://metachrosislitmag.com/submission-guidelines/"
+        }
+      ],
+      "eligibility": {
+        "summary": "No stated country restriction on the guidelines page.",
+        "mode": "not-stated",
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": true
+      },
+      "writingTypes": [
+        "poetry",
+        "fiction",
+        "creative-nonfiction"
+      ],
+      "writingTypeLabel": "Poetry, prose and visual art",
+      "pay": {
+        "currency": null,
+        "amountMin": null,
+        "amountMax": null,
+        "display": "Not stated on the public guidelines page",
+        "conditions": "The public guidelines set out piece limits, the reading periods and the art policy but publish no payment rate, so BRYME records no figure.",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "min": null,
+        "max": 1000,
+        "display": "Up to 3 poems under 40 lines each, or 1 piece of up to 1,000 words"
+      },
+      "response": {
+        "label": "Not stated",
+        "band": "not-stated",
+        "official": false
+      },
+      "submissionStatus": "open",
+      "deadline": {
+        "date": null,
+        "display": "Reading periods are announced by the magazine. Submissions sent outside them are not read.",
+        "recurring": true
+      },
+      "aiPolicy": "limited",
+      "whatTheyWant": [
+        "Up to three poems, each under 40 lines.",
+        "One piece of prose of up to 1,000 words.",
+        "Visual art, including work using computer simulations based on first-hand data the artist collected, or where the artist designed the AI. The magazine states it has several such pieces in its catalogue.",
+        "Mentions of sex and violence are acceptable; the magazine invites an email if you are unsure whether a piece is suitable."
+      ],
+      "whatTheyDontWant": [
+        "AI-generated art, and stolen art.",
+        "Submissions sent outside the reading periods — they are not read."
+      ],
+      "requirements": [
+        "Check that a reading period is open before sending.",
+        "Send at most three poems under 40 lines each, or one piece under 1,000 words.",
+        "If you use an experimental or visual layout, say so in the email and send both a PDF and a doc or docx copy.",
+        "Email first if you are unsure whether a piece is suitable."
+      ],
+      "rights": "Not stated on the public guidelines page.",
+      "howToSubmit": [
+        "Read https://metachrosislitmag.com/submission-guidelines/ and check the reading period.",
+        "Artist-designed AI and data-driven simulation work is genuinely welcome here — that is rare.",
+        "Send both PDF and doc for experimental layouts."
+      ],
+      "keywords": [
+        "metachrosis literary",
+        "poetry",
+        "prose",
+        "visual art",
+        "40 lines",
+        "1000 words",
+        "artist designed ai",
+        "reading periods"
+      ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-30",
+      "publishedAt": "2026-09-30",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "soflopojo",
+      "slug": "soflopojo",
+      "publication": "SoFloPoJo — South Florida Poetry Journal",
+      "title": "Poetry, essays, flash fiction and video",
+      "seoTitle": "SoFloPoJo: no fee, no pay, no paywall; $500 contest",
+      "excerpt": "SoFloPoJo describes itself as a no fee, no pay, no paywall, self-funded publication. Its contest carries a $500 prize. It retains First Serial Rights plus the right to archive and reprint in a SoFloPoJo anthology, with all rights reverting to the author after publication, and asks for one submission per quarterly reading period.",
+      "officialUrl": "https://www.southfloridapoetryjournal.com/submission-guidelines.html",
+      "applyUrl": "https://www.southfloridapoetryjournal.com/submission-guidelines.html",
+      "applyEmail": null,
+      "applyMethod": "Submittable — no reading fees",
+      "sources": [
+        {
+          "name": "SoFloPoJo — Submission Guidelines (official)",
+          "url": "https://www.southfloridapoetryjournal.com/submission-guidelines.html"
+        }
+      ],
+      "eligibility": {
+        "summary": "No stated country restriction on the guidelines page.",
+        "mode": "not-stated",
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": true
+      },
+      "writingTypes": [
+        "poetry",
+        "essays",
+        "fiction"
+      ],
+      "writingTypeLabel": "Poetry, essays, flash fiction and video",
+      "pay": {
+        "currency": null,
+        "amountMin": null,
+        "amountMax": null,
+        "display": "Unpaid and fee-free; the contest prize is $500",
+        "conditions": "Official submission guidelines: SoFloPoJo is a no fee, no pay, no paywall, self-funded publication, and states there are no reading fees. Its contest prize is five hundred dollars. BRYME records no contributor rate because there is none; the $500 is a contest award.",
+        "timing": "Not applicable — unpaid"
+      },
+      "wordCount": {
+        "min": null,
+        "max": null,
+        "display": "No word or line limit stated on the guidelines page"
+      },
+      "response": {
+        "label": "Wait six months after any decision before submitting again",
+        "band": "3-plus-months",
+        "official": true
+      },
+      "submissionStatus": "open",
+      "deadline": {
+        "date": null,
+        "display": "Quarterly reading periods: January to March, April to June, July to September, and October to December. Essays or Flash may close for two weeks at the end of a period so the editors can clear their backlog.",
+        "recurring": true
+      },
+      "aiPolicy": "not-stated",
+      "whatTheyWant": [
+        "Poetry, essays, flash fiction and video.",
+        "Contest entries, for the $500 prize."
+      ],
+      "whatTheyDontWant": [
+        "More than one submission per reading period.",
+        "A further submission within six months of a decision, whether accepted or rejected."
+      ],
+      "requirements": [
+        "Submit through the Submittable page.",
+        "One submission per quarterly reading period.",
+        "Wait six months after any decision before sending again.",
+        "SoFloPoJo may add your email to its contact list; say so if you would rather it did not."
+      ],
+      "rights": "SoFloPoJo retains First Serial Rights and the right to electronically archive and reprint your work in a SoFloPoJo anthology. Following publication, all rights revert back to the author.",
+      "howToSubmit": [
+        "Read https://www.southfloridapoetryjournal.com/submission-guidelines.html before sending.",
+        "Unpaid and fee-free — the $500 contest is the only money.",
+        "Respect the six-month gap; it is enforced."
+      ],
+      "keywords": [
+        "soflopojo",
+        "south florida poetry journal",
+        "poetry",
+        "essays",
+        "flash fiction",
+        "video",
+        "unpaid",
+        "no fee",
+        "$500 contest",
+        "submittable"
+      ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-30",
+      "publishedAt": "2026-09-30",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "poetry-super-highway",
+      "slug": "poetry-super-highway",
+      "publication": "Poetry Super Highway",
+      "title": "Poetry",
+      "seoTitle": "Poetry Super Highway: poems stay yours, no email submissions",
+      "excerpt": "Poetry Super Highway states that all poems are copyright and owned by the author. It has not accepted submissions by email since January 2019, and if you have not heard within six months of your submission date it means nothing from that submission could be used.",
+      "officialUrl": "https://www.poetrysuperhighway.com/psh/poetry/submission-guidelines/",
+      "applyUrl": "https://www.poetrysuperhighway.com/psh/poetry/submission-guidelines/",
+      "applyEmail": null,
+      "applyMethod": "Online submission — not by email",
+      "sources": [
+        {
+          "name": "Poetry Super Highway — Submission Guidelines (official)",
+          "url": "https://www.poetrysuperhighway.com/psh/poetry/submission-guidelines/"
+        }
+      ],
+      "eligibility": {
+        "summary": "No stated country restriction on the guidelines page.",
+        "mode": "not-stated",
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": true
+      },
+      "writingTypes": [
+        "poetry"
+      ],
+      "writingTypeLabel": "Poetry",
+      "pay": {
+        "currency": null,
+        "amountMin": null,
+        "amountMax": null,
+        "display": "Not stated on the public guidelines page",
+        "conditions": "The public guidelines set out the rights position, the submission route and the response convention but publish no payment rate, so BRYME records no figure.",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "min": null,
+        "max": null,
+        "display": "No limit stated on the public guidelines page"
+      },
+      "response": {
+        "label": "Six months of silence means nothing could be used",
+        "band": "3-plus-months",
+        "official": true
+      },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "not-stated",
+      "whatTheyWant": [
+        "Poetry."
+      ],
+      "whatTheyDontWant": [
+        "Email submissions. The magazine has not accepted them since January 2019."
+      ],
+      "requirements": [
+        "Submit through the online route on the guidelines page, not by email.",
+        "If six months pass with no reply, treat the submission as closed.",
+        "Your copyright is unaffected either way."
+      ],
+      "rights": "All poems are copyright and owned by the author.",
+      "howToSubmit": [
+        "Read https://www.poetrysuperhighway.com/psh/poetry/submission-guidelines/ before sending.",
+        "Do not email — that route closed in 2019.",
+        "Rights stay with you throughout."
+      ],
+      "keywords": [
+        "poetry super highway",
+        "poetry",
+        "copyright retained",
+        "no email submissions",
+        "6 month response"
+      ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-30",
+      "publishedAt": "2026-09-30",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "poetry-pacific",
+      "slug": "poetry-pacific",
+      "publication": "Poetry Pacific",
+      "title": "Poetry",
+      "seoTitle": "Poetry Pacific: unpaid by design, 3-month response",
+      "excerpt": "Poetry Pacific says openly that it is not a paying market but a literary project presented as a labour of love for lovers of words and wisdom. Its response time is three months, usually shorter, and only accepted submitters receive a reply. By submitting, you warrant that you alone created the work and own all rights to it.",
+      "officialUrl": "https://poetrypacific.blogspot.com/2026/05/pp-call-for-subs-guidelines.html",
+      "applyUrl": "https://poetrypacific.blogspot.com/2026/05/pp-call-for-subs-guidelines.html",
+      "applyEmail": null,
+      "applyMethod": "Email — editorial submissions only",
+      "sources": [
+        {
+          "name": "Poetry Pacific — Call for Submissions and Guidelines (official)",
+          "url": "https://poetrypacific.blogspot.com/2026/05/pp-call-for-subs-guidelines.html"
+        }
+      ],
+      "eligibility": {
+        "summary": "No stated country restriction on the guidelines page.",
+        "mode": "not-stated",
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": true
+      },
+      "writingTypes": [
+        "poetry"
+      ],
+      "writingTypeLabel": "Poetry",
+      "pay": {
+        "currency": null,
+        "amountMin": null,
+        "amountMax": null,
+        "display": "Unpaid — the magazine states it is not a paying market",
+        "conditions": "Official guidelines: Poetry Pacific states it is not a paying market but a literary project as a labour of love, presented to true lovers of words and wisdom. BRYME records no figure because there is none.",
+        "timing": "Not applicable — unpaid"
+      },
+      "wordCount": {
+        "min": null,
+        "max": null,
+        "display": "No limit stated on the public guidelines page"
+      },
+      "response": {
+        "label": "Three months, usually shorter; only accepted submitters get a reply",
+        "band": "3-plus-months",
+        "official": true
+      },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "not-stated",
+      "whatTheyWant": [
+        "Poetry."
+      ],
+      "whatTheyDontWant": [
+        "Personal solicitations, or requests to move the conversation to third-party messaging apps.",
+        "Work you did not create alone or do not own the rights to — the submission warranty covers both."
+      ],
+      "requirements": [
+        "Send your submission to the editorial email given in the guidelines. That address is for editorial submissions only.",
+        "Warrant that you alone created the work and own all rights to it.",
+        "Expect three months at most, and a reply only if you are accepted."
+      ],
+      "rights": "By submitting, the submitter warrants that they alone created the work and own all rights to it. No specific rights transfer is stated on the guidelines page.",
+      "howToSubmit": [
+        "Read the guidelines at https://poetrypacific.blogspot.com/2026/05/pp-call-for-subs-guidelines.html first.",
+        "Unpaid by design — submit for the readership.",
+        "Silence means declined; only acceptances get a reply."
+      ],
+      "keywords": [
+        "poetry pacific",
+        "poetry",
+        "unpaid",
+        "labor of love",
+        "3 month response",
+        "no reply if declined"
+      ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-30",
+      "publishedAt": "2026-09-30",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "brilliant-flash-fiction",
+      "slug": "brilliant-flash-fiction",
+      "publication": "Brilliant Flash Fiction",
+      "title": "Flash fiction",
+      "seoTitle": "Brilliant Flash Fiction: unpaid, rights stay yours, no AI",
+      "excerpt": "Brilliant Flash Fiction is run by an editorial board and board of directors who receive no payment for their services, and it does not pay contributors. It asks for no AI-generated material, and authors whose submissions are accepted retain all rights to their work after publication.",
+      "officialUrl": "https://brilliantflashfiction.com/submissions/",
+      "applyUrl": "https://brilliantflashfiction.com/submissions/",
+      "applyEmail": "brilliantflashfiction@gmail.com",
+      "applyMethod": "Email — paste in the body and attach",
+      "sources": [
+        {
+          "name": "Brilliant Flash Fiction — Submissions (official)",
+          "url": "https://brilliantflashfiction.com/submissions/"
+        }
+      ],
+      "eligibility": {
+        "summary": "No stated country restriction on the guidelines page.",
+        "mode": "not-stated",
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": true
+      },
+      "writingTypes": [
+        "fiction"
+      ],
+      "writingTypeLabel": "Flash fiction",
+      "pay": {
+        "currency": null,
+        "amountMin": null,
+        "amountMax": null,
+        "display": "Unpaid — the editorial board itself is unpaid",
+        "conditions": "Official submissions page: Brilliant Flash Fiction states that no one on its editorial board or board of directors receives payment for their services, and no contributor rate is published. BRYME records no figure because there is none.",
+        "timing": "Not applicable — unpaid"
+      },
+      "wordCount": {
+        "min": null,
+        "max": null,
+        "display": "Flash fiction; no word limit stated on the public submissions page"
+      },
+      "response": {
+        "label": "Not stated",
+        "band": "not-stated",
+        "official": false
+      },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "prohibited",
+      "whatTheyWant": [
+        "Flash fiction."
+      ],
+      "whatTheyDontWant": [
+        "AI-generated material."
+      ],
+      "requirements": [
+        "Email your story to brilliantflashfiction@gmail.com.",
+        "Paste the story into the body of the email and also attach it — both are required.",
+        "Write without AI assistance."
+      ],
+      "rights": "Authors whose submissions are accepted retain all rights to their work after publication.",
+      "howToSubmit": [
+        "Read https://brilliantflashfiction.com/submissions/ before sending.",
+        "Both paste and attach — the page asks for both.",
+        "Unpaid, but you keep every right."
+      ],
+      "keywords": [
+        "brilliant flash fiction",
+        "flash fiction",
+        "unpaid",
+        "rights retained",
+        "email submission",
+        "no ai"
+      ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-30",
+      "publishedAt": "2026-09-30",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "the-journal",
+      "slug": "the-journal",
+      "publication": "The Journal",
+      "title": "Fiction, nonfiction, poetry, reviews and artwork",
+      "seoTitle": "The Journal: unpaid, no AI, work under 8,000 words",
+      "excerpt": "The Journal, based in the Department of English at The Ohio State University, states it is unable to offer monetary payment to its contributors at this time. It does not accept work generated by AI, generally does not publish work over 8,000 words, and keeps reviews to 1,200 words. It does not publish academic writing or straight reportage.",
+      "officialUrl": "https://thejournalmag.org/submit",
+      "applyUrl": "https://thejournalmag.org/submit",
+      "applyEmail": null,
+      "applyMethod": "Submittable",
+      "sources": [
+        {
+          "name": "The Journal — Submit (official)",
+          "url": "https://thejournalmag.org/submit"
+        }
+      ],
+      "eligibility": {
+        "summary": "Open internationally. No country restriction is stated on the submit page. The Journal is published from the Department of English at The Ohio State University, Columbus, Ohio, United States.",
+        "mode": "not-stated",
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": true
+      },
+      "writingTypes": [
+        "fiction",
+        "creative-nonfiction",
+        "poetry",
+        "reviews"
+      ],
+      "writingTypeLabel": "Fiction, nonfiction, poetry, reviews and artwork",
+      "pay": {
+        "currency": null,
+        "amountMin": null,
+        "amountMax": null,
+        "display": "Unpaid — the journal states it cannot offer monetary payment",
+        "conditions": "Official submit page: at this time The Journal is unable to offer monetary payment to its contributors. BRYME records no figure because there is none.",
+        "timing": "Not applicable — unpaid"
+      },
+      "wordCount": {
+        "min": null,
+        "max": 8000,
+        "display": "Generally not over 8,000 words; reviews no more than 1,200 words"
+      },
+      "response": {
+        "label": "Not stated; the journal asks for patience",
+        "band": "not-stated",
+        "official": true
+      },
+      "submissionStatus": "open",
+      "deadline": {
+        "date": null,
+        "display": "The Journal accepts general submissions during its current reading period.",
+        "recurring": true
+      },
+      "aiPolicy": "prohibited",
+      "whatTheyWant": [
+        "Fiction and nonfiction, generally under 8,000 words.",
+        "Self-contained excerpts of novels and long stories, though the journal notes that historically it is unusual for it to publish submissions longer than 8,000 words.",
+        "Reviews of no more than 1,200 words.",
+        "Poetry and artwork."
+      ],
+      "whatTheyDontWant": [
+        "Work generated by AI. Submissions including AI-generated work are rejected.",
+        "Academic writing or straight reportage — neither is published.",
+        "Multiple submissions. They are not accepted and will not be read or responded to."
+      ],
+      "requirements": [
+        "Submit your writing and artwork on Submittable.",
+        "Keep prose under 8,000 words and reviews to 1,200.",
+        "Send one submission at a time and wait for the response.",
+        "Address correspondence to The Journal, Department of English, The Ohio State University, Columbus, Ohio."
+      ],
+      "rights": "Not stated on the official submit page.",
+      "howToSubmit": [
+        "Read https://thejournalmag.org/submit before sending.",
+        "No academic writing or reportage — literary work only.",
+        "One submission at a time; multiples are not read."
+      ],
+      "keywords": [
+        "the journal",
+        "ohio state university",
+        "fiction",
+        "nonfiction",
+        "poetry",
+        "reviews",
+        "unpaid",
+        "8000 words",
+        "no ai",
+        "submittable"
+      ]
     }
   ]
 }
