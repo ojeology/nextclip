@@ -1669,6 +1669,7 @@ def newsletter_page() -> None:
                    '<p class="eyebrow">Prefer a channel?</p><h2>The same signal, where you already are.</h2>'
                    f'</div></div><div class="actions">{"".join(channels)}</div></div></section>')
     body = ('<div class="wrap">'
+            '<nav class="breadcrumb"><a href="/writers/">Home</a> / Weekly digest</nav>'
             '<section class="page-hero"><p class="kicker"><span class="kicker-dot"></span>Weekly digest</p>'
             '<h1>The BRYME weekly digest.</h1>'
             '<p>Every newly verified paying opportunity, one practical guide, and what closed or '
@@ -1704,7 +1705,9 @@ def newsletter_page() -> None:
             '<td style="padding:8px 12px;border-bottom:1px solid var(--line)">' + esc(str(o.get("pay") or "Not stated")) + '</td>'
             '<td style="padding:8px 12px;border-bottom:1px solid var(--line)">' + esc(str(o.get("lastVerified") or chr(8212))) + '</td></tr>'
             for o in _recent)
-        _wc_body = ('<div class="wrap"><section class="page-hero"><p class="kicker"><span class="kicker-dot"></span>Verification log</p>'
+        _wc_body = ('<div class="wrap">'
+            '<nav class="breadcrumb"><a href="/writers/">Home</a> / What changed</nav>'
+            '<section class="page-hero"><p class="kicker"><span class="kicker-dot"></span>Verification log</p>'
             '<h1>What changed on the desk.</h1>'
             '<p>The most recent human checks across the ' + str(len(_ops)) + '-publication database, newest first. A date here means an editor opened the '
             'publication\u2019s own page and re-read it \u2014 pay, openness, guidelines, the AI policy. Nothing here is scraped; when a listing closes, it stays '
@@ -1745,6 +1748,7 @@ def affiliate_note() -> str:
 
 def disclosure_page() -> None:
     body = ('<div class="wrap">'
+            '<nav class="breadcrumb"><a href="/writers/">Home</a> / Disclosure</nav>'
             '<section class="page-hero"><p class="kicker"><span class="kicker-dot"></span>Transparency</p>'
             '<h1>How BRYME makes money.</h1>'
             '<p>The short version: it does not yet &mdash; and when it does, the ways are '
@@ -1813,6 +1817,7 @@ def studio_page() -> None:
     layering decision for later; the storage envelope is versioned JSON.
     """
     body = f'''<div class="wrap">
+<nav class="breadcrumb"><a href="/writers/">Home</a> / Writing Studio</nav>
 <section class="page-hero"><p class="kicker"><span class="kicker-dot"></span>The Writing Studio</p>
 <h1>Draft here. Nothing leaves this browser.</h1>
 <p class="article-dek">A quiet room for writing: drafts save themselves on this device as you type, with live word counts, a session goal, and one-click export. No account, no upload, no sync &mdash; your words are yours, locally.</p></section>

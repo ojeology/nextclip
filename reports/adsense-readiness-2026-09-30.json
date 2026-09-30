@@ -84,6 +84,17 @@
   "explainsOptOut": true,
   "linksConsentControls": true
  },
+ "privacyPagesChecked": [
+  "/entertainment/privacy/",
+  "/fitness/privacy/",
+  "/home/privacy/",
+  "/money/privacy/",
+  "/privacy/",
+  "/sports/privacy/",
+  "/tech/privacy/",
+  "/writers/privacy/"
+ ],
+ "privacyPagesIncomplete": [],
  "value": {
   "indexablePages": 2590,
   "pagesWith400WordsOrMore": 2590,
