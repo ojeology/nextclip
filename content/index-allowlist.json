@@ -383,8 +383,11 @@
     "/writing/africa-is-a-country/",
     "/writing/african-arguments/",
     "/writing/afrolicious/",
+    "/writing/after-dinner-conversation/",
     "/writing/agbowo-essays/",
     "/writing/agni/",
+    "/writing/american-poetry-journal/",
+    "/writing/american-short-fiction/",
     "/writing/americas-quarterly/",
     "/writing/analog-fact/",
     "/writing/analog-fiction/",
@@ -393,9 +396,12 @@
     "/writing/aurealis/",
     "/writing/australian-book-review/",
     "/writing/balkan-insight/",
+    "/writing/bayou-magazine/",
     "/writing/bellevue-literary-review/",
     "/writing/beneath-ceaseless-skies/",
+    "/writing/bennington-review/",
     "/writing/black-fox-literary-magazine/",
+    "/writing/blackbird/",
     "/writing/blank-spaces/",
     "/writing/blood-tree-literature/",
     "/writing/blue-bell-review/",
@@ -629,5 +635,5 @@
     "/writing/yellow-arrow-journal/",
     "/writing/zyzzyva/"
   ],
-  "reviewedAt": "2026-09-30"
+  "reviewedAt": "2026-10-01"
 }

@@ -1018,5 +1018,29 @@
   "thriller-magazine": {
     "base": "",
     "label": "International"
+  },
+  "american-poetry-journal": {
+    "base": "",
+    "label": "International"
+  },
+  "after-dinner-conversation": {
+    "base": "",
+    "label": "International"
+  },
+  "american-short-fiction": {
+    "base": "",
+    "label": "International"
+  },
+  "bayou-magazine": {
+    "base": "",
+    "label": "International"
+  },
+  "bennington-review": {
+    "base": "",
+    "label": "International"
+  },
+  "blackbird": {
+    "base": "",
+    "label": "International"
   }
 }
