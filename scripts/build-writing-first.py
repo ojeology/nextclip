@@ -939,8 +939,11 @@ def home() -> None:
         "guides": ("The guide library — WRITE / SUBMIT / EARN / CAREER",
                    "Craft, process, grammar and the business of freelancing — how to write, pitch, submit, "
                    "invoice and build a career. Grouped by what you came to do."),
-        "atlas": ("Research markets — RESEARCH",
-                  "Find markets by country and eligibility — US, UK, Canada, Australia, Nigeria, and open-to-anywhere."),
+        # Explicit route as the third element — see build-writing-hub.py. The
+        # "atlas" key never was the route; it emits /writers/atlas/ (404).
+        "atlas": ("Markets by country — RESEARCH",
+                  "Find markets by country and eligibility — US, UK, Canada, Australia, Nigeria, and open-to-anywhere.",
+                  "/writing-opportunities/"),
     }
 
     _wtools = json.loads((ROOT / "content" / "hub" / "tools.json").read_text(encoding="utf-8"))["tools"]

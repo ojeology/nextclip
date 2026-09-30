@@ -144,6 +144,21 @@ def _gauge(value: str, label: str, sub: str) -> str:
             + "</span><small>" + esc(sub) + "</small></div>")
 
 
+def cat_href(cslug: str, cvals: tuple, up: str) -> str:
+    """Route for a section card / thin-shelf entry.
+
+    A category key is normally also its route (``cat`` -> ``/cat/``), which is
+    true for every desk except the writers' ``atlas`` shelf: that category is
+    the country atlas, whose route is ``/writing-opportunities/``. Deriving the
+    href from the key produced ``/writers/atlas/`` and a live 404 on the
+    flagship hub (found 2026-09-30). A category tuple may therefore carry an
+    explicit route as its third element; without one the key is still the route,
+    so every other desk renders byte-identically.
+    """
+    route = cvals[2] if len(cvals) > 2 and cvals[2] else "/" + cslug + "/"
+    return U(route, up)
+
+
 def stats_for(arts: list, cat: dict, need_keys: list, cadence: dict) -> dict:
     by_cat: dict = {}
     for a in arts:
@@ -232,7 +247,7 @@ def render(arts: list, tools: list, cat: dict, cfg: dict,
     sec_cards = ""
     for cslug, cvals in cat.items():
         cname, cdesc = cvals[0], cvals[1]
-        href = esc(U("/" + cslug + "/", up))
+        href = esc(cat_href(cslug, cvals, up))
         desc = cdesc[:112] + ("\u2026" if len(cdesc) > 112 else "")
         sec_cards += ('<a class="tm-sec-card" href="' + href + '"><b>' + esc(cname) + "</b><em>"
                       + str(len(by_cat.get(cslug, []))) + "</em><small>" + esc(desc) + "</small></a>")
@@ -266,7 +281,7 @@ def render(arts: list, tools: list, cat: dict, cfg: dict,
         thin_html = ""
     elif st["thin"]:
         thin_items = "".join(
-            '<li><a href="' + esc(U("/" + k + "/", up)) + '">' + esc(cat[k][0]) + "</a> <span>"
+            '<li><a href="' + esc(cat_href(k, cat.get(k, (k,)), up)) + '">' + esc(cat[k][0]) + "</a> <span>"
             + str(cnt) + " pieces</span></li>" for cnt, k in st["thin"])
         thin_html = ('<div class="tm-readout tm-readout-warn"><p class="tm-ro-h">Self-read: thin shelves</p>'
                      '<ul class="tm-ro-list">' + thin_items + '</ul><p class="tm-ro-f">Under ten pieces is a'

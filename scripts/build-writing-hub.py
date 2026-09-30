@@ -1224,8 +1224,14 @@ def homepage() -> None:
         "learn": ("The guide library — WRITE / SUBMIT / EARN / CAREER",
                   "Craft, process, grammar and the business of freelancing — how to write, pitch, submit, "
                   "invoice and build a career. Grouped by what you came to do."),
-        "atlas": ("Research markets — RESEARCH",
-                  "Find markets by country and eligibility — US, UK, Canada, Australia, Nigeria, and open-to-anywhere."),
+        # The third element is the explicit route. This shelf's key is "atlas"
+        # but its page has always been /writing-opportunities/; deriving the
+        # href from the key emitted /writers/atlas/ (a live 404 on the flagship
+        # hub) and gave it the same label as the RESEARCH MARKETS pathway tile
+        # while counting a different set. Fixed 2026-09-30.
+        "atlas": ("Markets by country — RESEARCH",
+                  "Find markets by country and eligibility — US, UK, Canada, Australia, Nigeria, and open-to-anywhere.",
+                  "/writing-opportunities/"),
     }
 
     tools = [(t["id"], t["title"], t["short"], "") for t in TOOLS]

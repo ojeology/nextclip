@@ -12,7 +12,13 @@ const routes = ["/money/", ...manifest.articles.map(g => `/money/${g.slug}/`),
   "/money/trade-types-explained/", "/money/technical-indicators-explained/"];
 const failures = [];
 const check = (ok, label) => {if (!ok) failures.push(label)};
-const AD_HOSTS = /(?:profitableratecpmnetwork|highrevenueformat|monetag|highperformanceformat|n6wxm|nap5k|propellerads|googlesyndication|googleadservices|doubleclick|googletagmanager|google-analytics)\./i;
+/* `fundingchoicesmessages` is Google's own consent/CMP loader, injected by
+   scripts/inject-consent.py alongside the AdSense loader. validate-browser.js
+   has allowlisted it since commit 33adab9 ("Fix the browser gate: allowlist
+   AdSense's fundingchoices origin"); this second gate was missed, so every
+   money route failed here with "unexpected third-party request". Fixed
+   2026-09-30 — keep the two lists in step. */
+const AD_HOSTS = /(?:profitableratecpmnetwork|highrevenueformat|monetag|highperformanceformat|n6wxm|nap5k|propellerads|googlesyndication|googleadservices|doubleclick|googletagmanager|google-analytics|fundingchoicesmessages)\./i;
 const freePort = () => new Promise((res,rej)=>{const s=net.createServer();s.listen(0,"127.0.0.1",()=>{const p=s.address().port;s.close(()=>res(p))});s.on("error",rej)});
 async function ready(url) {
   for (let i=0; i<70; i++) {
