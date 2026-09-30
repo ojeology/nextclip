@@ -2088,6 +2088,62 @@ def _conventions_block(iso: str, name: str) -> str:
             'Full writing conventions reference &rarr;</a></div></div></section>')
 
 
+def _rate_opacity_block(iso: str, name: str, based: list) -> str:
+    """Answer the question the page raises: why are so few figures printed here?
+
+    Computed from the records at build time, so it cannot go stale, and it can
+    never state a number the desk has not verified - usd_amount() returns None
+    unless the publication itself published a figure. A country whose cohort is
+    rate-opaque is a real finding, and printing the desk-wide comparison is more
+    useful to a writer than a longer list, because it tells them what silence
+    from a market means rather than leaving them to read it as poverty.
+    """
+    n = len(based)
+    if not n:
+        return ""
+    stated = sum(1 for r in based if usd_amount(r) is not None)
+    silent = n - stated
+    total = len(WRITING)
+    total_stated = sum(1 for r in WRITING if usd_amount(r) is not None)
+    one = n == 1
+    noun = "publication" if one else "publications"
+    verb = "prints" if one else "print"
+    if stated == 0:
+        head = "Why no figure is printed on this page"
+        opening = ("<p>The one " + noun + " based in " + esc(name) + " " + verb
+                   + " no pay figure in its own guidelines." if one else
+                   "<p>None of the " + str(n) + " " + noun + " based in " + esc(name)
+                   + " print a pay figure in their own guidelines.</p>")
+    elif stated == n:
+        head = "Reading the figures on this page"
+        opening = ("<p>The one " + noun + " based in " + esc(name) + " prints a pay figure"
+                   " in its own guidelines." if one else
+                   "<p>All <b>" + str(n) + "</b> " + noun + " based in " + esc(name)
+                   + " print a pay figure in their own guidelines.</p>")
+    else:
+        head = "Why so few figures are printed here"
+        opening = ("<p><b>" + str(stated) + "</b> of the <b>" + str(n) + "</b> " + noun
+                   + " based in " + esc(name) + " "
+                   + ("prints" if stated == 1 else "print")
+                   + " a pay figure in their own guidelines.</p>")
+    return ('<section class="section alt"><div class="wrap"><div class="section-head"><div>'
+            '<p class="eyebrow">Read the silence</p><h2>' + head + '</h2></div></div>'
+            '<div class="prose">' + opening
+            + '<p>Desk-wide, <b>' + str(total_stated) + '</b> of the <b>' + str(total)
+            + '</b> publications BRYME tracks state a rate. The rest are not necessarily'
+            ' unpaid - most simply do not publish a rate card, and BRYME will not print a'
+            ' number the publication has not printed itself. So treat an empty pay row as an'
+            ' unanswered question to put to the editor, not as evidence of anything. Where a'
+            ' record does carry a figure, it is quoted exactly as stated and dated with the'
+            ' day it was read.</p>'
+            + ('' if stated == n else '<p>For ' + esc(name) + ', that means the '
+               + str(silent) + ' record' + ('' if silent == 1 else 's')
+               + ' without a figure ' + ('is' if silent == 1 else 'are')
+               + ' the part of this page to test by asking &mdash; a commissioned piece is'
+               ' where a rate gets named.</p>')
+            + '</div></div></section>')
+
+
 def country_page(iso: str, based: list) -> str:
     """One rich page per country. Returns the route written."""
     p = COUNTRY_PROFILES.get(iso) or {}
@@ -2150,6 +2206,7 @@ def country_page(iso: str, based: list) -> str:
         + ('publication' if len(based) == 1 else 'publications') + ' based in '
         + esc(name) + '</h2></div></div><div class="opp-list">' + cards + '</div></div></section>'
         + extras_block
+        + _rate_opacity_block(iso, name, based)
         + _conventions_block(iso, name) +
         '<section class="section alt"><div class="wrap"><div class="section-head"><div>'
         '<p class="eyebrow">Before you pitch</p><h2>Read these first.</h2></div></div>'
