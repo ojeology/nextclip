@@ -990,5 +990,33 @@
   "jabberwock-review": {
     "base": "",
     "label": "International"
+  },
+  "brick-a-literary-journal": {
+    "base": "",
+    "label": "International"
+  },
+  "epiphany-magazine": {
+    "base": "",
+    "label": "International"
+  },
+  "bracken": {
+    "base": "",
+    "label": "International"
+  },
+  "32-poems": {
+    "base": "",
+    "label": "International"
+  },
+  "metphrastics": {
+    "base": "",
+    "label": "International"
+  },
+  "a-velvet-giant": {
+    "base": "",
+    "label": "International"
+  },
+  "thriller-magazine": {
+    "base": "",
+    "label": "International"
   }
 }
