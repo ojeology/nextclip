@@ -167,11 +167,12 @@ classifying by keyword: the sentence contains the substring
 git clone https://github.com/ojeology/nextclip.git && cd nextclip
 git checkout -b rehearsal origin/bryme/markets-batch-verified
 git merge origin/main            # one conflict, content/opportunities.json
-python3 resolve-merge.py         # three-way per-record resolution + checks
+python3 scripts/resolve-main-merge.py   # three-way per-record resolution + checks
 git add content/opportunities.json && git commit --no-edit
 npm run build && npm run validate
 ```
 
-`resolve-merge.py` is not in the repository — it is a one-off used here and kept
-out of both branches, since it resolves a conflict that will not exist once the
-merge is done. The logic and its checks are recorded in this report.
+`resolve-merge.py` is committed as `scripts/resolve-main-merge.py`. It is a
+one-off for this merge rather than a build step — nothing imports it and it does
+not run in `npm run build` — but it is committed so the resolution does not have
+to be re-derived, and because it refuses to write unless the merge is sound.
