@@ -119,17 +119,39 @@ def main() -> int:
         trust[slug] = {"siteLevel": (PUBLIC / slug / "index.html").is_file(),
                        "desks": len(desks_with)}
 
-    privacy = (PUBLIC / "privacy" / "index.html")
-    ptext = privacy.read_text(encoding="utf-8", errors="replace") if privacy.is_file() else ""
-    ptext_plain = re.sub(r"<[^>]+>", " ", ptext)
-    disclosures = {
-        "namesGoogleAdsense": bool(re.search(r"google", ptext_plain, re.I)),
-        "mentionsAdsterra": bool(re.search(r"adsterra|profitablerate", ptext_plain, re.I)),
-        "explainsCookiesOrIdentifiers": bool(re.search(r"cookie|device identifier|personalised ads",
-                                                       ptext_plain, re.I)),
-        "explainsOptOut": bool(re.search(r"opt[- ]out|ad settings|your choices|withdraw", ptext_plain, re.I)),
-        "linksConsentControls": bool(re.search(r"consent|privacy & messaging|ad settings", ptext_plain, re.I)),
+    # Every privacy page a reader can actually land on: the house one and one per
+    # desk. A desk page is where a reader arriving from that desk reads the
+    # policy, so a disclosure missing from any of them is a real gap - which is
+    # exactly what a single-page check failed to notice.
+    privacy_routes = {}
+    house = PUBLIC / "privacy" / "index.html"
+    if house.is_file():
+        privacy_routes["/privacy/"] = house
+    for d in DESKS:
+        f = PUBLIC / d / "privacy" / "index.html"
+        if f.is_file():
+            privacy_routes[f"/{d}/privacy/"] = f
+
+    CHECKERS = {
+        "namesGoogleAdsense": r"google",
+        "mentionsAdsterra": r"adsterra|profitablerate",
+        "explainsCookiesOrIdentifiers": r"cookie|device identifier|personalised ads",
+        "explainsOptOut": r"opt[- ]out|ad settings|your choices|withdraw",
+        "linksConsentControls": r"consent|privacy & messaging|ad settings",
     }
+    per_page, incomplete = {}, []
+    for route, path in sorted(privacy_routes.items()):
+        text = path.read_text(encoding="utf-8", errors="replace")
+        plain = re.sub(r"<[^>]+>", " ", text)
+        found = {k: bool(re.search(rx, plain, re.I)) for k, rx in CHECKERS.items()}
+        per_page[route] = found
+        missing = [k for k, v in found.items() if not v]
+        if missing:
+            incomplete.append({"route": route, "missing": missing})
+
+    # The headline booleans stay True only if EVERY satisfied them, so the
+    # summary cannot be greener than the worst page behind it.
+    disclosures = {k: all(per_page[r][k] for r in per_page) for k in CHECKERS}
 
     # --- what the brief calls "value without advertisements" ------------------
     words = [len(re.findall(r"[A-Za-z0-9']+", re.sub(r"<[^>]+>", " ", h))) for _, h in indexable]
@@ -181,6 +203,8 @@ def main() -> int:
         },
         "trust": trust,
         "privacyDisclosures": disclosures,
+        "privacyPagesChecked": sorted(privacy_routes),
+        "privacyPagesIncomplete": incomplete,
         "value": {
             "indexablePages": len(indexable),
             "pagesWith400WordsOrMore": substantial,
@@ -223,6 +247,11 @@ def main() -> int:
     print(f"  ads.txt                : {out['adsTxt']['live'].strip()!r} (live {out['adsTxt']['liveStatus']}, "
           f"well-formed {out['adsTxt']['wellFormed']})")
     print(f"  privacy discloses      : {out['privacyDisclosures']}")
+    print(f"  privacy pages checked  : {len(out['privacyPagesChecked'])} "
+          f"({', '.join(out['privacyPagesChecked'])})")
+    print(f"  privacy pages missing a disclosure: {len(out['privacyPagesIncomplete'])}"
+          + (" -> " + ", ".join(f"{x['route']} {x['missing']}" for x in out["privacyPagesIncomplete"])
+             if out["privacyPagesIncomplete"] else ""))
     print(f"  value without ads      : {out['value']['shareWith400WordsOrMore']}% of "
           f"{out['value']['indexablePages']} indexable pages carry 400+ words")
     print(f"\nwrote {path.relative_to(ROOT)}")

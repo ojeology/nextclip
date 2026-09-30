@@ -1048,7 +1048,14 @@ PUB_NAME = {"sports": "Sport", "entertainment": "Entertainment", "tech": "Tech",
 # the root tree is regenerated, by which time the loss is already committed.
 # Preserved files are stashed across the clear, never rewritten from templates,
 # and still advertised in the desk sitemap.
-PRESERVE = {"home": frozenset({"/disclaimer/", "/privacy/"})}  # terms regenerated via legal_pages (Phase 2: stale snapshot)
+# /privacy/ was in this set because a hand correction had been reverted by the
+# template once. That correction now lives in the generator (see the home desk
+# dict), so the page regenerates like the rest - which is the only way it can
+# receive a template change such as the Phase 14 advertising disclosure. The
+# freeze had made that impossible, and /home/privacy/ silently missed it.
+# /disclaimer/ stays: the generator emits no disclaimer page, so lifting that
+# one would delete the page outright.
+PRESERVE = {"home": frozenset({"/disclaimer/"})}
 
 
 def write_service(pub, pages):
@@ -7419,7 +7426,13 @@ def home_pages():
 
     return out + legal_pages("home", "BRYME Home & DIY", "Practical help for fixing, maintaining, improving and understanding your home \u2014 safe, low-risk guidance with clear professional boundaries.", desk={
         "about": "Low-risk repairs explained honestly, with an in-built rule: gas, structural and high-voltage work goes to qualified trades.",
-        "privacy": "Interactive tools such as the buy-vs-rent calculator keep their inputs in your browser only.",
+        # Hand-authored detail folded into the generator (2026-09-30). The
+        # hand file named all six tools and separated the five that store
+        # nothing from the one that writes to local storage; the generator had
+        # only a generic sentence. Keeping the specific version here lets the
+        # page be regenerated, which is what lets it receive template changes
+        # such as the advertising disclosure.
+        "privacy": "This desk carries six interactive tools \u2014 a mortgage calculator, a buy-vs-rent calculator, a repair-cost estimator, a moving-cost estimator, a water-damage cover quiz and a seasonal maintenance checklist. Five of the six do their arithmetic in your browser and store nothing whatsoever: no local storage, no cookies, no network request of any kind. The seasonal maintenance checklist is the single exception \u2014 it saves which items you have ticked to your browser's local storage, on your device, so your list survives a reload. Nothing entered into any of these tools is sent to us or to anyone else.",
         "terms": "Guidance covers low-risk DIY; anything involving gas, structural work or high-voltage electrics is signposted to qualified professionals.",
         "corrections": "Cost figures and standards references are re-checked against the cited sources and stamped with the date.",
     })
