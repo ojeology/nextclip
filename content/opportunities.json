@@ -1877,7 +1877,7 @@
         "recurring": false
       },
       "aiPolicy": "prohibited",
-      "experience": "not-stated",
+      "experience": "first-timer-friendly",
       "whatTheyWant": [
         "A true first-person story with a beginning, middle and end, starting in the action.",
         "Heartwarming, funny or extraordinary ordinary-life moments. Not a sermon, essay, eulogy, term paper, politics piece, biography or newspaper-style article about a stranger.",
@@ -1912,7 +1912,8 @@
         "status": "not-yet-submitted"
       },
       "simultaneousSubmissions": "accepted",
-      "simultaneousNote": "Yes, but please let us know either by telling us that it is a simultaneous submission in the comments section of the submission form or, if you have already submitted your story, by e-mailing us at: [email protected]. — https://www.chickensoup.com/story-submissions/faq (read 2026-09-30)"
+      "simultaneousNote": "Yes, but please let us know either by telling us that it is a simultaneous submission in the comments section of the submission form or, if you have already submitted your story, by e-mailing us at: [email protected]. — https://www.chickensoup.com/story-submissions/faq (read 2026-09-30)",
+      "experienceNote": "We are always looking for new talent. So whether you are a regular contributor or new to our family, please share your story or poem with us. — https://www.chickensoup.com/story-submissions/possible-book-topics (read 2026-09-30)"
     },
     {
       "id": "new-humanitarian",
@@ -3452,7 +3453,7 @@
       "vertical": "writing",
       "lastVerified": "2026-08-19",
       "publishedAt": "2026-08-19",
-      "experience": "not-stated",
+      "experience": "emerging",
       "editorExperience": {
         "status": "not-yet-submitted"
       },
@@ -3527,7 +3528,8 @@
         "caribbean",
         "pitch"
       ],
-      "simultaneousSubmissions": "not-stated"
+      "simultaneousSubmissions": "not-stated",
+      "experienceNote": "AQ commissions most of its articles, but does occasionally accept proposals from new authors. — https://www.americasquarterly.org/contact/ (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -9754,7 +9756,7 @@
       "vertical": "writing",
       "lastVerified": "2026-09-06",
       "publishedAt": "2026-09-06",
-      "experience": "not-stated",
+      "experience": "first-timer-friendly",
       "editorExperience": {
         "status": "not-yet-submitted"
       },
@@ -9838,7 +9840,8 @@
         "gbp"
       ],
       "simultaneousSubmissions": "accepted",
-      "simultaneousNote": "What to Submit We accept simultaneous submissions, but do tell us immediately if you want to withdraw a submission. — https://shorelineofinfinity.com/submissions/ (read 2026-09-30)"
+      "simultaneousNote": "What to Submit We accept simultaneous submissions, but do tell us immediately if you want to withdraw a submission. — https://shorelineofinfinity.com/submissions/ (read 2026-09-30)",
+      "experienceNote": "If an acceptance from us would be your first fiction publication, please also let us know we’re always keen to publish new voices! — https://shorelineofinfinity.com/submissions/ (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -10043,7 +10046,7 @@
       "vertical": "writing",
       "lastVerified": "2026-09-06",
       "publishedAt": "2026-09-06",
-      "experience": "not-stated",
+      "experience": "emerging",
       "editorExperience": {
         "status": "not-yet-submitted"
       },
@@ -10126,7 +10129,8 @@
         "gbp"
       ],
       "simultaneousSubmissions": "accepted",
-      "simultaneousNote": "We don’t, at least for the time being, have a problem with you sending your poems to other magazines while you wait to hear from The Rialto. — https://www.therialto.co.uk/pages/about/the-magazine/submissions/ (read 2026-09-30)"
+      "simultaneousNote": "We don’t, at least for the time being, have a problem with you sending your poems to other magazines while you wait to hear from The Rialto. — https://www.therialto.co.uk/pages/about/the-magazine/submissions/ (read 2026-09-30)",
+      "experienceNote": "We are always looking for new poets and new poems. — https://www.therialto.co.uk/pages/about/the-magazine/submissions/ (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -10318,7 +10322,7 @@
       "vertical": "writing",
       "lastVerified": "2026-09-06",
       "publishedAt": "2026-09-06",
-      "experience": "not-stated",
+      "experience": "emerging",
       "editorExperience": {
         "status": "not-yet-submitted"
       },
@@ -10409,7 +10413,8 @@
         "uk",
         "prestige"
       ],
-      "simultaneousSubmissions": "not-stated"
+      "simultaneousSubmissions": "not-stated",
+      "experienceNote": "Granta is committed to championing new voices and is open to unsolicited submissions of fiction and non-fiction. — https://granta.com/submissions/ (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -10511,7 +10516,7 @@
       "vertical": "writing",
       "lastVerified": "2026-09-06",
       "publishedAt": "2026-09-06",
-      "experience": "not-stated",
+      "experience": "emerging",
       "editorExperience": {
         "status": "not-yet-submitted"
       },
@@ -10592,7 +10597,8 @@
         "essays",
         "uk"
       ],
-      "simultaneousSubmissions": "not-stated"
+      "simultaneousSubmissions": "not-stated",
+      "experienceNote": "We are always thrilled to feature work from established, well-known authors but have a particular interest in discovering new voices and in pieces that sit outside the usual categories: we ask only that it be a work of non-fiction. — https://www.hinterlandnonfiction.com/submissions (read 2026-09-30)"
     },
     {
       "status": "published",
