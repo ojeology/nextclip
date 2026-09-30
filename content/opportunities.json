@@ -13090,7 +13090,9 @@
         "opinion",
         "investigations",
         "pitch"
-      ]
+      ],
+      "simultaneousSubmissions": "not-stated",
+      "simultaneousNote": null
     },
     {
       "status": "published",
@@ -13184,7 +13186,9 @@
         "criticism",
         "film review",
         "unpaid"
-      ]
+      ],
+      "simultaneousSubmissions": "not-stated",
+      "simultaneousNote": null
     },
     {
       "status": "published",
@@ -13272,7 +13276,9 @@
         "exactly 100 words",
         "micro fiction",
         "$2 fee"
-      ]
+      ],
+      "simultaneousSubmissions": "not-stated",
+      "simultaneousNote": null
     },
     {
       "status": "published",
@@ -13366,7 +13372,9 @@
         "investigation",
         "eur",
         "grant"
-      ]
+      ],
+      "simultaneousSubmissions": "not-stated",
+      "simultaneousNote": null
     },
     {
       "status": "published",
@@ -13457,7 +13465,9 @@
         "book review",
         "$500",
         "submittable"
-      ]
+      ],
+      "simultaneousSubmissions": "not-stated",
+      "simultaneousNote": null
     },
     {
       "status": "published",
@@ -13550,7 +13560,9 @@
         "800 words",
         "peer review",
         "ai disclosure"
-      ]
+      ],
+      "simultaneousSubmissions": "not-stated",
+      "simultaneousNote": null
     },
     {
       "status": "published",
@@ -13639,7 +13651,9 @@
         "analysis",
         "rolling",
         "no ai"
-      ]
+      ],
+      "simultaneousSubmissions": "not-accepted",
+      "simultaneousNote": "Unless otherwise informed, we assume any piece submitted to us is being offered exclusively and that no piece accepted for publication will be published elsewhere simultaneously in any form without our knowledge. — https://www.foreignaffairs.com/submissions (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -13736,7 +13750,9 @@
         "journalism",
         "global south",
         "pitch"
-      ]
+      ],
+      "simultaneousSubmissions": "not-stated",
+      "simultaneousNote": null
     },
     {
       "status": "published",
@@ -13830,7 +13846,9 @@
         "book review",
         "essay",
         "copyright retained"
-      ]
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "Simultaneous submissions are fine. — https://brittlepaper.com/submissions/ (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -13922,7 +13940,9 @@
         "$3 fee",
         "submittable",
         "rights retained"
-      ]
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "We allow simultaneous submissions, but please immediately withdraw work that has been accepted elsewhere. — https://www.boulevardmagazine.org/guidelines/ (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -14017,7 +14037,9 @@
         "audio fiction",
         "6000 words",
         "anonymous"
-      ]
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "We don’t mind if you submit your story to us and other venues at the same time (simultaneous submission) unless our specific submission call says otherwise (for example, historically our Banned Books Week calls have disallowed sim-subs). — https://www.castofwonders.org/submissions/ (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -14107,7 +14129,9 @@
         "freelance",
         "remote",
         "no ai"
-      ]
+      ],
+      "simultaneousSubmissions": "not-stated",
+      "simultaneousNote": null
     },
     {
       "status": "published",
@@ -14204,7 +14228,9 @@
         "reprints",
         "moksha",
         "no ai"
-      ]
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "Simultaneous submissions are acceptable WITH DISCLOSURE. — https://pseudopod.org/submissions/ (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -14298,7 +14324,9 @@
         "$50 per page",
         "submittable",
         "7000 words"
-      ]
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "Simultaneous submissions are allowed, but please inform us promptly if your piece is accepted elsewhere. — https://gulfcoastmag.org/submit/ (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -14395,7 +14423,9 @@
         "reading period",
         "no ai",
         "no ai detector"
-      ]
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "Simultaneous submissions are welcome. — https://nachtljocht.com/ (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -14489,7 +14519,9 @@
         "translation",
         "no ai",
         "copyright retained"
-      ]
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "‍ ‍We accept simultaneous submissions, but we ask that the author inform us immediately if the text is accepted for publication elsewhere. — https://www.lisbonliteraryreview.com/submissions/ (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -14579,7 +14611,9 @@
         "5000 words",
         "copyright retained",
         "no simultaneous"
-      ]
+      ],
+      "simultaneousSubmissions": "not-accepted",
+      "simultaneousNote": "No simultaneous submissions, please, they will be disqualified. — https://www.stygianlepus.com/submissions/ (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -14669,7 +14703,9 @@
         "1000 words",
         "unpaid",
         "rights revert"
-      ]
+      ],
+      "simultaneousSubmissions": "not-stated",
+      "simultaneousNote": null
     },
     {
       "status": "published",
@@ -14767,7 +14803,9 @@
         "$50",
         "submittable",
         "no ai"
-      ]
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "Simultaneous submissions acceptable. — https://litmosphere.charlottelit.org/submissions/ (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -14862,7 +14900,9 @@
         "fnasr",
         "no generative ai",
         "submittable"
-      ]
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "Simultaneous submissions are welcome! — https://ninthletter.com/submit/ (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -14952,7 +14992,9 @@
         "science fiction poetry",
         "always open",
         "no ai"
-      ]
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "Simultaneous submissions are accepted. — https://sfpoetry.org/wp/starline/ (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -15043,7 +15085,9 @@
         "3000 words",
         "rights retained",
         "no ai"
-      ]
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "Simultaneous submissions are fine, but please let us know if it’s accepted elsewhere. — https://thetwinbill.com/submissions/ (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -15133,7 +15177,9 @@
         "50 lines",
         "no reading fee",
         "duosuma"
-      ]
+      ],
+      "simultaneousSubmissions": "not-stated",
+      "simultaneousNote": null
     },
     {
       "status": "published",
@@ -15233,7 +15279,9 @@
         "duosuma",
         "rights revert 60 days",
         "no ai"
-      ]
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "Simultaneous submissions are okay, but we do not accept previously published pieces, and if your piece is accepted elsewhere… CONGRATS, but also please withdraw your submission once that’s the case. — https://varietypack.net/submissions-2/ (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -15326,7 +15374,9 @@
         "1 cent per word",
         "7000 words",
         "submittable"
-      ]
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "Simultaneous submissions are acceptable as long as we are immediately notified if the piece has been accepted elsewhere. — https://gristjournal.com/submit/ (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -15422,7 +15472,9 @@
         "2500 words",
         "foreword required",
         "no ai"
-      ]
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "While we accept simultaneous submissions (i.e. — https://humanrightsartmovement.org/ihram-submissions (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -15515,7 +15567,9 @@
         "$250",
         "no generative ai",
         "submittable"
-      ]
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "We DO accept simultaneous submissions, though we ask you to contact us if submitted work is accepted elsewhere . — https://copper-nickel.org/submit/ (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -15605,7 +15659,9 @@
         "$50",
         "5000 words",
         "no ai"
-      ]
+      ],
+      "simultaneousSubmissions": "not-accepted",
+      "simultaneousNote": "While Peach does not consider simultaneous submissions, if you need to reach us regarding a previously submitted manuscript, please contact managingeditor.peach@gcsu.edu . — https://peach.gcsu.edu/submission-guidelines/ (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -15699,7 +15755,9 @@
         "$75",
         "5000 words",
         "no generative ai"
-      ]
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "We happily consider simultaneous submissions, but please inform us immediately if your work is accepted elsewhere. — https://blreview.org/submit/ (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -15787,7 +15845,9 @@
         "$25 minimum",
         "no ai",
         "90 days electronic"
-      ]
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "We prefer not to receive simultaneous submissions but understand this is a big ask so do as you will. — https://smallbeerpress.com/about/submission-guidelines/ (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -15881,7 +15941,9 @@
         "$20 per page",
         "$50 minimum",
         "no generative ai"
-      ]
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "Simultaneous submissions are permitted, but please withdraw your submission immediately upon acceptance elsewhere. — https://nereview.com/submission-guidelines/ (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -15974,7 +16036,9 @@
         "no reading fee",
         "rights revert 90 days",
         "no ai"
-      ]
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "We read and strongly encourage simultaneous submissions. — https://www.ubwali.com/submissions (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -16066,7 +16130,9 @@
         "paypal",
         "copyright retained",
         "no ai"
-      ]
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "Simultaneous submissions are allowed under the condition that you withdraw your work immediately if it is accepted elsewhere. — https://www.bloodtreeliterature.com/submit (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -16167,7 +16233,9 @@
         "first rights",
         "submission cap",
         "no ai"
-      ]
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "We accept simultaneous submissions; however, please withdraw your piece immediately if it is accepted elsewhere (or, if you only need to withdraw part of a submission, send us a message in Submittable). — https://www.foglifterjournal.com/submit (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -16256,7 +16324,9 @@
         "2500 words",
         "human authored",
         "no ai"
-      ]
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "Simultaneous submissions are welcome. — https://www.thedolomitereview.com/submit (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -16347,7 +16417,9 @@
         "6 poems",
         "free submissions",
         "no ai"
-      ]
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "Simultaneous submissions are welcome. — https://haydensferryreview.com/submit (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -16442,7 +16514,9 @@
         "flash",
         "expedited response",
         "rights retained"
-      ]
+      ],
+      "simultaneousSubmissions": "not-stated",
+      "simultaneousNote": null
     },
     {
       "status": "published",
@@ -16532,7 +16606,9 @@
         "2000 words",
         "fairgrounds",
         "3-5 poems"
-      ]
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "Simultaneous submissions accepted. — https://midwayjournal.com/submissions/ (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -16627,7 +16703,9 @@
         "rights revert",
         "reading periods",
         "no ai"
-      ]
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "Simultaneous submissions are acceptable if the Editor is notified immediately upon acceptance of your piece(s) elsewhere. — https://mockingheartreview.com/submit/ (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -16719,7 +16797,9 @@
         "$100 award",
         "expedited response",
         "no ai"
-      ]
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "We accept simultaneous submissions. — https://rawheadjournal.org/submit-to-rawhead/ (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -16814,7 +16894,9 @@
         "unpaid",
         "2500 words",
         "no ai"
-      ]
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "Simultaneous submissions welcome, but please let us know immediately if your work has been accepted elsewhere. — https://braidedway.org/submissions/ (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -16907,7 +16989,9 @@
         "duosuma",
         "rights revert",
         "no ai"
-      ]
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "Simultaneous submissions are welcome, but you will withdraw your work promptly if it is accepted elsewhere. — https://redriverreview.org/submissions/ (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -16997,7 +17081,9 @@
         "1200-6000 words",
         "no ai",
         "submittable"
-      ]
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "We welcome simultaneous submissions. — https://redivider.emerson.edu/submissions/ (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -17090,7 +17176,9 @@
         "expedited",
         "reading periods",
         "no generative ai"
-      ]
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "If your work is a simultaneous submission, please let us know immediately if it is published elsewhere. — https://www.westtradereview.com/submissionguidelines20.html (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -17181,7 +17269,9 @@
         "first serial rights",
         "30 day response",
         "no ai"
-      ]
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "Originality & Simultaneous Submissions — https://thebluebellreview.info/submit (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -17279,7 +17369,9 @@
         "1500 words",
         "500 words",
         "copyright reverts"
-      ]
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "We will read simultaneous submissions but ask that you inform us of such and notify us immediately if your work is accepted elsewhere. — https://www.riverstyx.org/submit (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -17372,7 +17464,9 @@
         "$2000 awards",
         "submittable",
         "rights revert"
-      ]
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "We consider simultaneous submissions if you (a) let us know and (b) notify us immediately if the work you sent to us has been accepted for publication elsewhere. — https://www.newletters.org/general-submissions/ (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -17463,7 +17557,9 @@
         "no fees",
         "4000-10000 words",
         "mla indexed"
-      ]
+      ],
+      "simultaneousSubmissions": "not-stated",
+      "simultaneousNote": null
     },
     {
       "status": "published",
@@ -17556,7 +17652,9 @@
         "1-5 poems",
         "4-8 weeks",
         "no ai"
-      ]
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "We accept simultaneous submissions as long as you let us know if you are accepted elsewhere. — https://pureinheartstories.com/submissions/ (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -17656,7 +17754,9 @@
         "graphic narrative",
         "restricted eligibility",
         "no ai"
-      ]
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "Simultaneous Submissions - Yes - Please notify us immediately if accepted elsewhere. — https://raisingmothers.substack.com/p/guidelines (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -17741,7 +17841,9 @@
         "flash",
         "500-2500 words",
         "rights revert"
-      ]
+      ],
+      "simultaneousSubmissions": "not-stated",
+      "simultaneousNote": null
     },
     {
       "status": "published",
@@ -17834,7 +17936,9 @@
         "6000 words",
         "incarcerated writers",
         "no ai"
-      ]
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "We gladly accept simultaneous submissions. — https://bmr.unm.edu/submissions/ (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -17931,7 +18035,9 @@
         "flash",
         "blind reading",
         "no ai"
-      ]
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "Simultaneous submissions are welcome, but please notify us immediately if your work is accepted elsewhere. — https://inscape.byu.edu/submit/ (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -18021,7 +18127,9 @@
         "$10",
         "two week response",
         "no ai"
-      ]
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "Simultaneous submissions are welcome, but please withdraw your work immediately if it is accepted elsewhere. — https://www.pointsincase.com/submissions (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -18112,7 +18220,9 @@
         "$3 reading fee",
         "first electronic rights",
         "no ai"
-      ]
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "As writers, we understand the frustration of waiting for months and months for an editor’s reply, so we do allow simultaneous submissions. — https://www.vestalreview.net/guidelines (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -18201,7 +18311,9 @@
         "1-3 weeks",
         "expedited response",
         "fnasr"
-      ]
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "We accept simultaneous submissions, so feel free to submit to other journals or awards. — https://www.theaurorajournal.org/submit (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -18295,7 +18407,9 @@
         "fnar",
         "rights revert",
         "no ai"
-      ]
+      ],
+      "simultaneousSubmissions": "not-stated",
+      "simultaneousNote": null
     },
     {
       "status": "published",
@@ -18393,7 +18507,9 @@
         "5000 words",
         "$3",
         "no ai"
-      ]
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "Simultaneous submissions are fine as long as you notify us if it’s accepted elsewhere. — https://gulfstreamlitmag.com/submissions/ (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -18481,7 +18597,9 @@
         "30 day response",
         "submittable",
         "no ai"
-      ]
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "Simultaneous submissions are fine as long as you specify this in your cover letter. — https://shopoetryjournal.com/submissions/ (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -18568,7 +18686,9 @@
         "fortnight response",
         "rights retained",
         "no ai"
-      ]
+      ],
+      "simultaneousSubmissions": "not-accepted",
+      "simultaneousNote": "The writer of a poem accepted by the editors will be informed of that acceptance simultaneously with the posting of the poem on site. — https://newversenews.blogspot.com/ (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -18660,7 +18780,9 @@
         "no fees",
         "6 poems",
         "copyright"
-      ]
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "Simultaneous submissions accepted but notify us immediately upon acceptance elsewhere. — https://homeplanetnews.com/issue-21-submissions/ (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -18748,7 +18870,9 @@
         "500-3000 words",
         "fast response",
         "rights revert"
-      ]
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "Simultaneous submissions: Of course! — https://www.wallstrait.com/submissions (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -18838,7 +18962,9 @@
         "7000 words",
         "year round",
         "no ai"
-      ]
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "We accept simultaneous submissions, but please alert us via Submittable in the event of acceptance elsewhere. — https://ttr.tusculum.edu/submit-5/ (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -18928,7 +19054,9 @@
         "7500 words",
         "6000 words",
         "no generative ai"
-      ]
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "In general, simultaneous submissions are fine, but please contact us immediately if your work is picked up elsewhere. — https://www.oysterriverpages.com/submit (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -19017,7 +19145,9 @@
         "1000-3000 words",
         "ai disclosure required",
         "copyright retained"
-      ]
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "Simultaneous submissions are accepted, but please let me know if your work is accepted elsewhere. — https://teachwritejournal.com/submission-guidelines/ (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -19109,7 +19239,9 @@
         "authors retain copyright",
         "ai permitted",
         "cover letter"
-      ]
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "Simultaneous submissions are welcome; please withdraw promptly if accepted elsewhere. — https://the-pasticheur.com/submit-your-work-1 (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -19199,7 +19331,9 @@
         "4000 words",
         "no ai grammar check",
         "rights revert"
-      ]
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "Long River Review accepts simultaneous submissions. — https://longriverreview.com/submit-2/ (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -19287,7 +19421,9 @@
         "no rejection notice",
         "copyright retained",
         "no ai"
-      ]
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "KUDU accepts simultaneous submissions but please notify us immediately if your work has been accepted elsewhere. — https://kudujournal.wordpress.com/submissions/ (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -19380,7 +19516,9 @@
         "no fee",
         "5 poems",
         "duosuma"
-      ]
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "We consider simultaneous submissions, but please notify us immediately if the work is accepted elsewhere. — https://www.thrillingtales.com/litbop/ (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -19472,7 +19610,9 @@
         "1500 words",
         "no restrictions",
         "no ai"
-      ]
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "We accept simultaneous submissions. — https://unwashedmke.com/ (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -19561,7 +19701,9 @@
         "5000 words",
         "abstract required",
         "no ai"
-      ]
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "Simultaneous submissions are welcome. — https://menmattersonlinejournal.com/call-for-submissions/ (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -19649,7 +19791,9 @@
         "$30 maximum",
         "first electronic rights",
         "no ai"
-      ]
+      ],
+      "simultaneousSubmissions": "not-stated",
+      "simultaneousNote": null
     },
     {
       "status": "published",
@@ -19738,7 +19882,9 @@
         "1000 words",
         "ai disclosure required",
         "rights revert"
-      ]
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "Simultaneous submissions are welcome, but please note this in your cover letter and let us know immediately if a piece is accepted somewhere else. — https://fourwayreview.com/submit/ (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -19834,7 +19980,9 @@
         "1000 words",
         "artist designed ai",
         "reading periods"
-      ]
+      ],
+      "simultaneousSubmissions": "not-stated",
+      "simultaneousNote": null
     },
     {
       "status": "published",
@@ -19930,7 +20078,9 @@
         "no fee",
         "$500 contest",
         "submittable"
-      ]
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "FLASH FICTION One story, one submission per reading period, o ne fil e per submission, simultaneous submissions allowed, please withdraw your piece if it is accepted elsewhere. — https://www.southfloridapoetryjournal.com/submission-guidelines.html (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -20012,7 +20162,9 @@
         "copyright retained",
         "no email submissions",
         "6 month response"
-      ]
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "Previous publications / simultaneous submissions are fine, but please not if published elsewhere on the internet (except for your personal website.) — https://www.poetrysuperhighway.com/psh/poetry/submission-guidelines/ (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -20096,7 +20248,9 @@
         "labor of love",
         "3 month response",
         "no reply if declined"
-      ]
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "Multiple and simultaneous submissions, as well as previously published work, are all equally welcome insofar as you still hold the copy/publishing rights; — https://poetrypacific.blogspot.com/2026/05/pp-call-for-subs-guidelines.html (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -20179,7 +20333,9 @@
         "rights retained",
         "email submission",
         "no ai"
-      ]
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "Simultaneous submissions are fine. — https://brilliantflashfiction.com/submissions/ (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -20279,7 +20435,9 @@
         "8000 words",
         "no ai",
         "submittable"
-      ]
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "Simultaneous submissions are accepted, but we ask that you notify us of this at the time of submission. — https://thejournalmag.org/submit (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -20370,7 +20528,9 @@
         "paypal",
         "2 poems",
         "no ai outlining"
-      ]
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "No previously published work will be accepted at this time—this includes all printed and online material; simultaneous submissions are okay but please let us know when you send in your submission(s) and if a submission is published elsewhere in the interim, email submissions@yellowarrowpublishing.com immediately. — https://www.yellowarrowpublishing.com/submissions (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -20459,7 +20619,9 @@
         "paid on acceptance",
         "one submission per period",
         "no ai"
-      ]
+      ],
+      "simultaneousSubmissions": "not-accepted",
+      "simultaneousNote": "Material submitted to Modern Haiku is to be the author’s original work, previously unpublished and not under consideration by any other publication, including Web-based journals. — https://modernhaiku.org/submissions.html (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -20549,7 +20711,9 @@
         "paypal",
         "rights revert",
         "no ai"
-      ]
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "Simultaneous submissions are accepted, but please inform us as soon as conveniently possible if your submission is accepted elsewhere. — https://fantasticother.com/submissions/ (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -20644,7 +20808,9 @@
         "fall and winter reading periods",
         "ai exception",
         "submittable"
-      ]
+      ],
+      "simultaneousSubmissions": "not-stated",
+      "simultaneousNote": null
     },
     {
       "status": "published",
@@ -20736,7 +20902,9 @@
         "copyright retained",
         "reprints welcome",
         "6 month response"
-      ]
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "We accept simultaneous submissions, but please notify us as soon as possible if your work is accepted elsewhere. — https://www.wordswelljournal.org/submissions.html (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -20824,7 +20992,9 @@
         "non-profit",
         "4-8 poems",
         "200 words minimum"
-      ]
+      ],
+      "simultaneousSubmissions": "not-accepted",
+      "simultaneousNote": "We do not accept simultaneous submissions or requests to review books . — https://fictionalcafe.com/submit/ (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -20912,7 +21082,9 @@
         "permanent archive",
         "submittable",
         "tip jar"
-      ]
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "We encourage simultaneous submissions. — https://www.fiveonthefifth.com/submit (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -21004,7 +21176,9 @@
         "short fiction",
         "1000 words",
         "restricted eligibility"
-      ]
+      ],
+      "simultaneousSubmissions": "not-accepted",
+      "simultaneousNote": "We do not accept simultaneous submissions. — https://www.hangingloosepress.com/submissions/ (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -21095,7 +21269,9 @@
         "$3 fee",
         "1000-1200 words",
         "no generative ai"
-      ]
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "We will consider simultaneous submissions as long as writers follow the normal etiquette of such submissions by indicating so in a cover letter or the notes section of the submission, and notifying us immediately if the essay is picked up by another journal. — https://riverteethjournal.com/submission-guidelines/ (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -21192,7 +21368,9 @@
         "submittable",
         "rights revert",
         "no ai"
-      ]
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "Simultaneous submissions are absolutely fine. — https://baltimorereview.org/submit (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -21282,7 +21460,9 @@
         "6-12 poems",
         "3000 words",
         "copyright returns"
-      ]
+      ],
+      "simultaneousSubmissions": "not-accepted",
+      "simultaneousNote": "We answer quickly, and do not appreciate or accept simultaneous submissions. — https://www.chollaneedles.com/p/submissions.html (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -21375,7 +21555,9 @@
         "3000 words",
         "first publication rights 30 days",
         "100 words minimum"
-      ]
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "Simultaneous submissions are okay, provided you let us know immediately if your piece is accepted elsewhere. — https://lowestoftchronicle.com/submissions/ (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -21463,7 +21645,9 @@
         "3500 words",
         "submission fee",
         "no contributor rate"
-      ]
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "(Please alert us if you're submitting a simultaneous submission.) As a courtesy, we request that you refrain from submitting your accepted work anywhere else until three months after the date of publication. — https://www.blankspaces.ca/submit (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -21550,7 +21734,9 @@
         "submittable",
         "rights revert",
         "no ai derived"
-      ]
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "We will NOT consider simultaneous submissions if you submit to this category and another. — https://poetrysocietyny.org/milk-press-guidelines (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -21643,7 +21829,9 @@
         "pitch first",
         "no ai",
         "vegan"
-      ]
+      ],
+      "simultaneousSubmissions": "not-stated",
+      "simultaneousNote": null
     },
     {
       "status": "published",
@@ -21671,13 +21859,11 @@
         }
       ],
       "eligibility": {
-        "summary": "Open to all poets, with stated priority for writers from the South. Poetry South says it pays particular attention to writers from the South — born, raised, or living there — while holding that all poetry within its covers has a claim to the South because it is published there. BRYME records this as an editorial emphasis rather than a restriction, because the magazine does not exclude writers from elsewhere.",
-        "mode": "not-stated",
-        "includesRegions": [
-          "the American South"
-        ],
+        "summary": "Open to poets everywhere. The submit page states that \"Poetry South is an international journal that considers all kinds of poetry\" and that \"the magazine has a tradition of including poets from other regions in the US and other countries\". It pays particular attention to writers from the South — born, raised or living there — and holds that all poetry within its covers has a claim to the South because it is published there. BRYME records that as an editorial emphasis, not a restriction: the page names no country or region it excludes.",
+        "mode": "worldwide",
+        "includesRegions": [],
         "allowsDiaspora": true,
-        "notStated": true
+        "notStated": false
       },
       "writingTypes": [
         "poetry"
@@ -21734,7 +21920,9 @@
         "southern writers",
         "submittable",
         "no ai-assisted"
-      ]
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "We do accept simultaneous submissions. — https://www.muw.edu/poetrysouth/submit/ (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -21822,7 +22010,9 @@
         "800-1200 words",
         "copyright retained",
         "no generative ai"
-      ]
+      ],
+      "simultaneousSubmissions": "not-stated",
+      "simultaneousNote": null
     },
     {
       "status": "published",
@@ -21909,7 +22099,9 @@
         "$25 honorarium",
         "6250 words",
         "submittable"
-      ]
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "We welcome simultaneous submissions but ask contributors to notify us immediately if your work is accepted elsewhere. — https://storyquarterly.camden.rutgers.edu/submissions (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -21999,7 +22191,9 @@
         "4-6 weeks",
         "jpeg",
         "no ai"
-      ]
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "Simultaneous submissions are fine, but contact us as soon as possible if your work is no longer available. — https://pinholepoetry.ca/poetry-pinhole-photography-guidelines/ (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -22087,7 +22281,9 @@
         "rights revert",
         "no ai-assisted",
         "six weeks"
-      ]
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "We accept simultaneous submissions. — https://www.spellbindermag.com/submission-guidelines/ (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -22177,7 +22373,9 @@
         "spellcheckers allowed",
         "rights revert",
         "3-4 months"
-      ]
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "We accept simultaneous submissions, but please inform us that you are submitting with Decolonial Passage and with another publisher. — https://thedecolonialpassage.net/submit-2/ (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -22266,7 +22464,9 @@
         "submittable",
         "rights revert",
         "three months"
-      ]
+      ],
+      "simultaneousSubmissions": "not-stated",
+      "simultaneousNote": null
     },
     {
       "status": "published",

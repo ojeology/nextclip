@@ -1588,7 +1588,11 @@ COUNTRY_FLAGS = {"US": "\U0001F1FA\U0001F1F8", "UK": "\U0001F1EC\U0001F1E7",
                  "NG": "\U0001F1F3\U0001F1EC", "ZA": "\U0001F1FF\U0001F1E6",
                  "KE": "\U0001F1F0\U0001F1EA", "IE": "\U0001F1EE\U0001F1EA",
                  "DE": "\U0001F1E9\U0001F1EA", "NA": "\U0001F1F3\U0001F1E6",
-                 "NP": "\U0001F1F3\U0001F1F5", "IN": "\U0001F1EE\U0001F1F3"}
+                 "NP": "\U0001F1F3\U0001F1F5", "IN": "\U0001F1EE\U0001F1F3",
+                 # PT added with the Portugal profile below. Every other base in
+                 # pub-countries.json had a flag; lisbon-literary-review was the
+                 # only record with a base and no country entry of any kind.
+                 "PT": "\U0001F1F5\U0001F1F9"}
 
 REGION_MEMBERS = {
     "africa": {"NG", "KE", "ZA", "NA", "GH", "ET", "TZ", "UG", "RW", "SN", "EG", "MA"},
@@ -2044,6 +2048,22 @@ COUNTRY_PROFILES = {
                note="BRYME has not separately verified a Namibian house-style profile. Southern African publishing generally follows British convention, but confirm against the publication's own guideline rather than assuming."),
     "NP": dict(slug="nepal", cur=None, spelling=None, dates=None, cv=None, quotes=None, guide=None,
                note="BRYME has not separately verified a Nepali house-style profile. South Asian English-language publishing generally follows British convention, but confirm against the publication's own guideline."),
+    # PT is the only base country in pub-countries.json that had no profile. The
+    # atlas tile is built from the data and links to COUNTRY_PROFILES[iso].slug or
+    # iso.lower(), while the page is only written when a profile exists - so
+    # lisbon-literary-review produced a tile pointing at /writing-opportunities/pt/,
+    # which nothing generated. validate-site-quality.js caught it as a missing local
+    # target. Adding the profile is the fix rather than suppressing the tile: BRYME
+    # tracks a Portugal-based publication, so Portugal is a real desk and was simply
+    # never given its page.
+    #
+    # Cur is left as EUR because that is a plain fact about the country, not a claim
+    # about publishing. The house-style fields are left empty on purpose - BRYME has
+    # not read Portuguese convention guidance for English-language submissions, and
+    # the NA and NP profiles above set the precedent of saying so rather than
+    # inventing a spelling or date rule.
+    "PT": dict(slug="portugal", cur="EUR", spelling=None, dates=None, cv=None, quotes=None, guide=None,
+               note="BRYME has not separately verified a Portuguese house-style profile. Note that the journal is publishing primarily in Portuguese and English, and that European and Brazilian Portuguese differ in spelling and usage \u2014 if you are translating, follow the publication's own guideline rather than assuming a convention."),
 }
 
 
