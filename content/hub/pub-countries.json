@@ -830,5 +830,45 @@
   "home-planet-news": {
     "base": "",
     "label": "International"
+  },
+  "wallstrait": {
+    "base": "",
+    "label": "International"
+  },
+  "tusculum-review": {
+    "base": "US",
+    "label": "United States"
+  },
+  "oyster-river-pages": {
+    "base": "",
+    "label": "International"
+  },
+  "teach-write": {
+    "base": "",
+    "label": "International"
+  },
+  "the-pasticheur": {
+    "base": "",
+    "label": "International"
+  },
+  "long-river-review": {
+    "base": "",
+    "label": "International"
+  },
+  "kudu": {
+    "base": "",
+    "label": "International"
+  },
+  "litbop": {
+    "base": "",
+    "label": "International"
+  },
+  "unwashed": {
+    "base": "",
+    "label": "International"
+  },
+  "men-matters-online-journal": {
+    "base": "",
+    "label": "International"
   }
 }

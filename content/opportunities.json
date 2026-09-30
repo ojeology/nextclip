@@ -18649,6 +18649,907 @@
         "6 poems",
         "copyright"
       ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-30",
+      "publishedAt": "2026-09-30",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "wallstrait",
+      "slug": "wallstrait",
+      "publication": "Wallstrait",
+      "title": "Fiction and nonfiction",
+      "seoTitle": "Wallstrait: $100 on publication, one of the fastest responses",
+      "excerpt": "Wallstrait pays $100 upon publication, by PayPal only, against a $3 submission fee that is waived between 1 and 8 October. It prefers work of 500 to 3,000 words with a 5,000-word maximum, aims to be one of the fastest-responding literary journals in the industry, and reverts all other rights to the author on publication.",
+      "officialUrl": "https://www.wallstrait.com/submissions",
+      "applyUrl": "https://www.wallstrait.com/submissions",
+      "applyEmail": null,
+      "applyMethod": "Online submission — $3 fee, waived 1–8 October",
+      "sources": [
+        {
+          "name": "Wallstrait — Submissions (official)",
+          "url": "https://www.wallstrait.com/submissions"
+        }
+      ],
+      "eligibility": {
+        "summary": "No stated country restriction on the guidelines page.",
+        "mode": "not-stated",
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": true
+      },
+      "writingTypes": [
+        "fiction",
+        "creative-nonfiction"
+      ],
+      "writingTypeLabel": "Fiction and nonfiction",
+      "pay": {
+        "currency": "USD",
+        "amountMin": 100,
+        "amountMax": 100,
+        "display": "$100 upon publication, PayPal only",
+        "conditions": "Official submissions page: Wallstrait pays $100 upon publication, PayPal only. A $3 submission fee applies, with no fee between 1 and 8 October.",
+        "timing": "Upon publication"
+      },
+      "wordCount": {
+        "min": 500,
+        "max": 5000,
+        "display": "500–3,000 words preferred, 5,000 words maximum"
+      },
+      "response": {
+        "label": "Very quickly — the journal aims to be one of the fastest-responding in the industry",
+        "band": "not-stated",
+        "official": true
+      },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "not-stated",
+      "whatTheyWant": [
+        "Fiction and nonfiction, preferably 500 to 3,000 words.",
+        "Work up to 5,000 words."
+      ],
+      "whatTheyDontWant": [
+        "Prose over 5,000 words."
+      ],
+      "requirements": [
+        "Pay the $3 fee, or submit between 1 and 8 October when there is none.",
+        "Keep work between 500 and 3,000 words if you can.",
+        "Have a PayPal account — it is the only payment route.",
+        "If they pass, you are welcome to submit again quickly."
+      ],
+      "rights": "All other rights revert back to the author upon publication.",
+      "howToSubmit": [
+        "Read https://www.wallstrait.com/submissions before sending.",
+        "Submit in the first week of October to avoid the fee.",
+        "Fast responses mean fast turnaround on resubmission too."
+      ],
+      "keywords": [
+        "wallstrait",
+        "fiction",
+        "nonfiction",
+        "$100",
+        "paypal",
+        "500-3000 words",
+        "fast response",
+        "rights revert"
+      ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-30",
+      "publishedAt": "2026-09-30",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "tusculum-review",
+      "slug": "tusculum-review",
+      "publication": "Tusculum Review",
+      "title": "Prose and poetry",
+      "seoTitle": "Tusculum Review: paid in copies, prose under 7,000 words",
+      "excerpt": "Tusculum Review would pay in money but says its current budget only allows payment in two copies. It takes prose under 7,000 words — about 24 double-spaced pages — and poetry of five pages or less, reads year round, and does not publish AI-generated or AI-assisted pieces. Rights revert to the individual authors after publication.",
+      "officialUrl": "https://ttr.tusculum.edu/submit-5/",
+      "applyUrl": "https://ttr.tusculum.edu/submit-5/",
+      "applyEmail": null,
+      "applyMethod": "Submittable — cover letter required",
+      "sources": [
+        {
+          "name": "Tusculum Review — Submit (official)",
+          "url": "https://ttr.tusculum.edu/submit-5/"
+        }
+      ],
+      "eligibility": {
+        "summary": "Open internationally. No country restriction is stated on the submissions page. Tusculum Review is the journal of Tusculum University in the United States.",
+        "mode": "not-stated",
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": true
+      },
+      "writingTypes": [
+        "fiction",
+        "creative-nonfiction",
+        "poetry"
+      ],
+      "writingTypeLabel": "Prose and poetry",
+      "pay": {
+        "currency": null,
+        "amountMin": null,
+        "amountMax": null,
+        "display": "Paid in two copies — the journal states it cannot pay money",
+        "conditions": "Official submit page: Tusculum Review states it would love to pay with money, but its current budget only allows for payment in copies (2). BRYME records no monetary figure because there is none. The consideration is two copies of the issue.",
+        "timing": "Not applicable — paid in copies"
+      },
+      "wordCount": {
+        "min": null,
+        "max": 7000,
+        "display": "Prose under 7,000 words (about 24 double-spaced pages); poetry five pages or less"
+      },
+      "response": {
+        "label": "Not stated; reads year round",
+        "band": "not-stated",
+        "official": false
+      },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "prohibited",
+      "whatTheyWant": [
+        "Prose under 7,000 words, roughly 24 double-spaced pages.",
+        "Poetry of five pages or less."
+      ],
+      "whatTheyDontWant": [
+        "AI-generated or AI-assisted pieces. Tusculum Review considers original writing by humans."
+      ],
+      "requirements": [
+        "Submit through Submittable.",
+        "Include a cover letter with your name, address, phone number, email address and the titles of your submissions.",
+        "Keep prose under 7,000 words and poetry to five pages.",
+        "Simultaneous submissions are accepted, but alert the journal through Submittable if the work is accepted elsewhere.",
+        "It reads year round, so there is no window to wait for."
+      ],
+      "rights": "Except for second printings of the journal due to demand, all rights to material in the Tusculum Review and its chapbooks revert to the individual authors and artists after publication.",
+      "howToSubmit": [
+        "Read https://ttr.tusculum.edu/submit-5/ before sending.",
+        "Paid in copies, not cash — decide if that suits you before submitting.",
+        "The cover letter is mandatory, not optional."
+      ],
+      "keywords": [
+        "tusculum review",
+        "tusculum university",
+        "prose",
+        "poetry",
+        "paid in copies",
+        "7000 words",
+        "year round",
+        "no ai"
+      ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-30",
+      "publishedAt": "2026-09-30",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "oyster-river-pages",
+      "slug": "oyster-river-pages",
+      "publication": "Oyster River Pages",
+      "title": "Fiction, creative nonfiction and poetry",
+      "seoTitle": "Oyster River Pages: prose to 7,500 words, no AI in part or full",
+      "excerpt": "Oyster River Pages takes one story of up to 7,500 words and one creative nonfiction essay of no more than 6,000 words, plus up to three poems for its Emerging Voices Poetry category. It will not publish anything created in part or in full with generative AI, and reserves the right to remove such work and rescind publication if it is found later. All rights revert to the author or artist.",
+      "officialUrl": "https://www.oysterriverpages.com/submit",
+      "applyUrl": "https://www.oysterriverpages.com/submit",
+      "applyEmail": null,
+      "applyMethod": "Online submission — 60-word bio required",
+      "sources": [
+        {
+          "name": "Oyster River Pages — Submit (official)",
+          "url": "https://www.oysterriverpages.com/submit"
+        }
+      ],
+      "eligibility": {
+        "summary": "No stated country restriction on the guidelines page.",
+        "mode": "not-stated",
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": true
+      },
+      "writingTypes": [
+        "fiction",
+        "creative-nonfiction",
+        "poetry"
+      ],
+      "writingTypeLabel": "Fiction, creative nonfiction and poetry",
+      "pay": {
+        "currency": null,
+        "amountMin": null,
+        "amountMax": null,
+        "display": "Not stated on the public submit page",
+        "conditions": "The public submit page sets length limits, the AI policy and the rights position but publishes no payment rate, so BRYME records no figure.",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "min": null,
+        "max": 7500,
+        "display": "Fiction up to 7,500 words; creative nonfiction up to 6,000 words; up to 3 poems in one document of no more than 10 pages"
+      },
+      "response": {
+        "label": "Six months, after which a decline is assumed",
+        "band": "3-plus-months",
+        "official": true
+      },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "prohibited",
+      "whatTheyWant": [
+        "Fiction: one story of up to 7,500 words.",
+        "Creative nonfiction: one essay of no more than 6,000 words, in Word Doc or PDF format.",
+        "Emerging Voices Poetry: up to three poems in one document, no longer than 10 pages total."
+      ],
+      "whatTheyDontWant": [
+        "Work created in part or in full, or in collaboration with, generative artificial intelligence. If such work is published and later found, Oyster River Pages reserves the right to remove it and rescind publication."
+      ],
+      "requirements": [
+        "Put the exact word count, your full name or chosen pen name, and your preferred email at the top of the first page.",
+        "Include a 60-word bio, and a photo if you want one.",
+        "Read recent issues first to get a sense of the preferences.",
+        "If six months pass with no reply, treat it as a decline."
+      ],
+      "rights": "Oyster River Pages requests first serial rights, after which all rights revert to the author or artist.",
+      "howToSubmit": [
+        "Read https://www.oysterriverpages.com/submit and skim recent issues before sending.",
+        "Word count goes on page one — it is a stated requirement.",
+        "Six months is the outer limit; plan around it."
+      ],
+      "keywords": [
+        "oyster river pages",
+        "fiction",
+        "creative nonfiction",
+        "poetry",
+        "emerging voices",
+        "7500 words",
+        "6000 words",
+        "no generative ai"
+      ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-30",
+      "publishedAt": "2026-09-30",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "teach-write",
+      "slug": "teach-write",
+      "publication": "Teach. Write.: A Literary Journal for Writing Teachers",
+      "title": "Short fiction and creative nonfiction by and for writing teachers",
+      "seoTitle": "Teach. Write.: AI for editing allowed if disclosed",
+      "excerpt": "Teach. Write. is a literary journal for writing teachers, run as a one-woman operation on a retirement income. Its editor cannot pay much but believes writers should be paid. Its AI policy is unusually precise: AI tools may be used for editing or research but not for generating creative content, and if AI assisted your process you must disclose how in your cover letter.",
+      "officialUrl": "https://teachwritejournal.com/submission-guidelines/",
+      "applyUrl": "https://teachwritejournal.com/submission-guidelines/",
+      "applyEmail": "teachwritejournal@gmail.com",
+      "applyMethod": "Email submission",
+      "sources": [
+        {
+          "name": "Teach. Write. — Submission Guidelines (official)",
+          "url": "https://teachwritejournal.com/submission-guidelines/"
+        }
+      ],
+      "eligibility": {
+        "summary": "No stated country restriction on the guidelines page.",
+        "mode": "not-stated",
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": true
+      },
+      "writingTypes": [
+        "fiction",
+        "creative-nonfiction"
+      ],
+      "writingTypeLabel": "Short fiction and creative nonfiction by and for writing teachers",
+      "pay": {
+        "currency": null,
+        "amountMin": null,
+        "amountMax": null,
+        "display": "Cannot pay much; donations of honorariums support the journal",
+        "conditions": "Official submission guidelines: the editor states this is a one-woman show and she is now living on a retirement income, so she cannot pay much, but believes writers should be paid for their work. She cannot provide any alternate form of payment, and any donations of honorariums go to support Teach. Write. BRYME records no figure because none is published.",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "min": 1000,
+        "max": 3000,
+        "display": "Short fiction 1,000–3,000 words; creative nonfiction up to 2,000 words"
+      },
+      "response": {
+        "label": "Not stated",
+        "band": "not-stated",
+        "official": false
+      },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "disclosure-required",
+      "whatTheyWant": [
+        "Short fiction of 1,000 to 3,000 words, any theme or genre.",
+        "Creative nonfiction of up to 2,000 words, on the same exceptions.",
+        "Work by and for writing teachers — that is the journal's remit."
+      ],
+      "whatTheyDontWant": [
+        "AI used to generate creative content. AI tools may be used for editing or research only.",
+        "Undisclosed AI assistance. If AI assisted your process you must say how."
+      ],
+      "requirements": [
+        "Email your submission to teachwritejournal@gmail.com.",
+        "Keep fiction to 1,000–3,000 words and nonfiction to 2,000.",
+        "If AI assisted your process in any permitted way, disclose how in your cover letter — this is a condition, not a courtesy.",
+        "Writing teachers are the intended contributors."
+      ],
+      "rights": "Copyright remains with the author.",
+      "howToSubmit": [
+        "Read https://teachwritejournal.com/submission-guidelines/ before sending.",
+        "Disclose any AI assistance — the policy is explicit that it is required.",
+        "This is a low-pay market run by one person on a retirement income; submit accordingly."
+      ],
+      "keywords": [
+        "teach write",
+        "writing teachers",
+        "short fiction",
+        "creative nonfiction",
+        "1000-3000 words",
+        "ai disclosure required",
+        "copyright retained"
+      ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-30",
+      "publishedAt": "2026-09-30",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "the-pasticheur",
+      "slug": "the-pasticheur",
+      "publication": "The Pasticheur",
+      "title": "Short fiction, creative nonfiction and film writing",
+      "seoTitle": "The Pasticheur: AI treated as a tool, authors keep copyright",
+      "excerpt": "The Pasticheur takes one piece of short fiction or creative nonfiction of up to 3,000 words, and film writing with a 150 to 200 word synopsis plus one still. Authors retain full copyright, and the magazine asks only for first publication rights and the right to archive permanently. Its AI position is permissive rather than prohibitive: it recognises AI as part of contemporary creative practice and that an author may accept, reject, alter or respond to suggestions from an editor, another person, or an AI system.",
+      "officialUrl": "https://the-pasticheur.com/submit-your-work-1",
+      "applyUrl": "https://the-pasticheur.com/submit-your-work-1",
+      "applyEmail": "editor@the-pasticheur.com",
+      "applyMethod": "Email with a cover letter addressed to the editors",
+      "sources": [
+        {
+          "name": "The Pasticheur — Submit Your Work (official)",
+          "url": "https://the-pasticheur.com/submit-your-work-1"
+        }
+      ],
+      "eligibility": {
+        "summary": "No stated country restriction on the guidelines page.",
+        "mode": "not-stated",
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": true
+      },
+      "writingTypes": [
+        "fiction",
+        "creative-nonfiction",
+        "reviews"
+      ],
+      "writingTypeLabel": "Short fiction, creative nonfiction and film writing",
+      "pay": {
+        "currency": null,
+        "amountMin": null,
+        "amountMax": null,
+        "display": "Not stated on the public submissions page",
+        "conditions": "The public submissions page sets out formats, the rights position and the AI position but publishes no payment rate, so BRYME records no figure.",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "min": null,
+        "max": 3000,
+        "display": "Short fiction or creative nonfiction: 1 piece up to 3,000 words; film writing: synopsis of 150–200 words plus one still"
+      },
+      "response": {
+        "label": "Not stated",
+        "band": "not-stated",
+        "official": false
+      },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "limited",
+      "whatTheyWant": [
+        "Short fiction or creative nonfiction: one piece of up to 3,000 words.",
+        "Film writing: a brief synopsis of 150 to 200 words and one film still or promotional image.",
+        "A cover letter addressed to the editors.",
+        "Work responding to a special call, indicated clearly in the email subject line or body."
+      ],
+      "whatTheyDontWant": [
+        "Submissions without a cover letter addressed to the editors."
+      ],
+      "requirements": [
+        "Email your submission with a cover letter addressed to the editors.",
+        "Keep fiction and nonfiction to one piece of up to 3,000 words.",
+        "For film writing, include the 150–200 word synopsis and one still.",
+        "If your work responds to a special call, say so in the subject line or body.",
+        "For any adapted or source-based work, include proof of copyright permission and the right to publish both versions."
+      ],
+      "rights": "Authors retain full copyright. The Pasticheur requests only first publication rights and the right to archive the work permanently.",
+      "howToSubmit": [
+        "Read the 'On Authorship and the Use of AI' section at https://the-pasticheur.com/submit-your-work-1 before sending.",
+        "This is one of the few markets that treats AI as a legitimate tool rather than banning it — but authorship still rests with you.",
+        "The cover letter is required."
+      ],
+      "keywords": [
+        "the pasticheur",
+        "short fiction",
+        "creative nonfiction",
+        "film writing",
+        "3000 words",
+        "authors retain copyright",
+        "ai permitted",
+        "cover letter"
+      ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-30",
+      "publishedAt": "2026-09-30",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "long-river-review",
+      "slug": "long-river-review",
+      "publication": "Long River Review",
+      "title": "Poetry, prose, art and literary criticism",
+      "seoTitle": "Long River Review: unpaid, and no AI even for grammar",
+      "excerpt": "Long River Review states it is not in a position to offer payment to its writers. It takes five poems or one prose piece under 4,000 words, and is now seeking literary criticism. Its AI policy goes further than most: it will not publish writing or art featuring AI-generated sections, and because it standardises grammar during copyediting it prohibits AI grammar checking too.",
+      "officialUrl": "https://longriverreview.com/submit-2/",
+      "applyUrl": "https://longriverreview.com/submit-2/",
+      "applyEmail": null,
+      "applyMethod": "Online submission",
+      "sources": [
+        {
+          "name": "Long River Review — Submit (official)",
+          "url": "https://longriverreview.com/submit-2/"
+        }
+      ],
+      "eligibility": {
+        "summary": "No stated country restriction on the guidelines page.",
+        "mode": "not-stated",
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": true
+      },
+      "writingTypes": [
+        "poetry",
+        "fiction",
+        "creative-nonfiction",
+        "essays"
+      ],
+      "writingTypeLabel": "Poetry, prose, art and literary criticism",
+      "pay": {
+        "currency": null,
+        "amountMin": null,
+        "amountMax": null,
+        "display": "Unpaid — the review states it cannot offer payment",
+        "conditions": "Official submit page: Long River Review states that unfortunately it is not in the position to offer payment to its writers. BRYME records no figure because there is none.",
+        "timing": "Not applicable — unpaid"
+      },
+      "wordCount": {
+        "min": null,
+        "max": 4000,
+        "display": "5 poems, or 1 prose piece under 4,000 words"
+      },
+      "response": {
+        "label": "Not stated",
+        "band": "not-stated",
+        "official": false
+      },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "prohibited",
+      "whatTheyWant": [
+        "Five poems, or one prose piece under 4,000 words.",
+        "Literary criticism that responds to a recent text, or that recontextualises older literature in modern literary discourse — a category the review is actively seeking."
+      ],
+      "whatTheyDontWant": [
+        "Any submission of writing or art featuring sections that are, or are entirely, AI-generated text or visual content.",
+        "AI tools used for grammar checking. Because Long River Review standardises grammar during copyediting, this is prohibited as well — a stricter position than most journals take."
+      ],
+      "requirements": [
+        "Send five poems or one prose piece under 4,000 words.",
+        "Do not run your work through an AI grammar checker — it is explicitly against the rules here.",
+        "Literary criticism is being actively sought, so pitch it."
+      ],
+      "rights": "Long River Review takes first North American rights, to be the first publication in North America to publish the work, after which the rights revert back to the author.",
+      "howToSubmit": [
+        "Read https://longriverreview.com/submit-2/ before sending.",
+        "Unpaid — submit for the credit.",
+        "The no-AI-grammar-check rule is unusual; proofread by hand."
+      ],
+      "keywords": [
+        "long river review",
+        "poetry",
+        "prose",
+        "literary criticism",
+        "unpaid",
+        "4000 words",
+        "no ai grammar check",
+        "rights revert"
+      ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-30",
+      "publishedAt": "2026-09-30",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "kudu",
+      "slug": "kudu",
+      "publication": "KUDU",
+      "title": "Poetry",
+      "seoTitle": "KUDU: unpaid, 1–3 poems of 40 lines, no AI",
+      "excerpt": "KUDU states plainly that it is not a paying market. It takes one to three poems of no more than 40 lines each, sent attached to an email in a single document with each poem on a separate page. It does not accept work generated by AI, contributors retain copyright on publication, and no notification of rejection is sent.",
+      "officialUrl": "https://kudujournal.wordpress.com/submissions/",
+      "applyUrl": "https://kudujournal.wordpress.com/submissions/",
+      "applyEmail": null,
+      "applyMethod": "Email — poems in one document, each on its own page",
+      "sources": [
+        {
+          "name": "KUDU — Submissions (official)",
+          "url": "https://kudujournal.wordpress.com/submissions/"
+        }
+      ],
+      "eligibility": {
+        "summary": "No stated country restriction on the guidelines page.",
+        "mode": "not-stated",
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": true
+      },
+      "writingTypes": [
+        "poetry"
+      ],
+      "writingTypeLabel": "Poetry",
+      "pay": {
+        "currency": null,
+        "amountMin": null,
+        "amountMax": null,
+        "display": "Unpaid — KUDU states it is not a paying market",
+        "conditions": "Official submissions page: KUDU states that it is not a paying market. BRYME records no figure because there is none.",
+        "timing": "Not applicable — unpaid"
+      },
+      "wordCount": {
+        "min": null,
+        "max": null,
+        "display": "1–3 poems, 40 lines maximum per poem"
+      },
+      "response": {
+        "label": "Not stated; no rejection notifications are sent",
+        "band": "not-stated",
+        "official": true
+      },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "prohibited",
+      "whatTheyWant": [
+        "One to three poems of no more than 40 lines each.",
+        "Each poem on a separate page, in a single document attached to your email."
+      ],
+      "whatTheyDontWant": [
+        "Work generated by AI.",
+        "Poems over 40 lines, or more than three per submission."
+      ],
+      "requirements": [
+        "Send the poems attached to your email in a single document, each poem on a separate page.",
+        "Keep each poem to 40 lines and send at most three.",
+        "Do not expect a rejection notice — silence is the answer.",
+        "Check the interviews at Six Questions For and New Pages for a summary of what KUDU wants."
+      ],
+      "rights": "Upon publication, contributors retain the copyright of their work.",
+      "howToSubmit": [
+        "Read https://kudujournal.wordpress.com/submissions/ and the linked interviews before sending.",
+        "Unpaid, and no rejection emails — set your expectations accordingly.",
+        "Format matters here: one document, one poem per page."
+      ],
+      "keywords": [
+        "kudu",
+        "poetry",
+        "unpaid",
+        "1-3 poems",
+        "40 lines",
+        "no rejection notice",
+        "copyright retained",
+        "no ai"
+      ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-30",
+      "publishedAt": "2026-09-30",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "litbop",
+      "slug": "litbop",
+      "publication": "Litbop: Art and Literature in the Groove",
+      "title": "Poetry, prose and visual art with a musical bent",
+      "seoTitle": "Litbop: unpaid, no fee, up to 5 poems",
+      "excerpt": "Litbop states there is currently no money to pay contributors, and charges no submission fee, though tips toward production costs are accepted through DuoSuma. It takes up to five poems with a maximum of ten pages in one document, and is candid that its response time is currently up in the air.",
+      "officialUrl": "https://www.thrillingtales.com/litbop/",
+      "applyUrl": "https://www.thrillingtales.com/litbop/",
+      "applyEmail": null,
+      "applyMethod": "DuoSuma — no fee, tips optional",
+      "sources": [
+        {
+          "name": "Litbop — Submissions (official)",
+          "url": "https://www.thrillingtales.com/litbop/"
+        }
+      ],
+      "eligibility": {
+        "summary": "No stated country restriction on the guidelines page.",
+        "mode": "not-stated",
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": true
+      },
+      "writingTypes": [
+        "poetry",
+        "fiction",
+        "creative-nonfiction"
+      ],
+      "writingTypeLabel": "Poetry, prose and visual art with a musical bent",
+      "pay": {
+        "currency": null,
+        "amountMin": null,
+        "amountMax": null,
+        "display": "Unpaid — there is currently no money to pay contributors",
+        "conditions": "Official submissions page: Litbop states that there is currently no money to pay contributors, and that there is no fee to submit, though tips to help with production costs are gratefully accepted through DuoSuma. BRYME records no figure because there is none.",
+        "timing": "Not applicable — unpaid"
+      },
+      "wordCount": {
+        "min": null,
+        "max": null,
+        "display": "Up to 5 poems with a maximum of 10 pages in one document"
+      },
+      "response": {
+        "label": "Currently up in the air, per the journal's own wording",
+        "band": "not-stated",
+        "official": true
+      },
+      "submissionStatus": "open",
+      "deadline": {
+        "date": null,
+        "display": "Litbop runs a reading period each year, announced on its submissions page.",
+        "recurring": true
+      },
+      "aiPolicy": "not-stated",
+      "whatTheyWant": [
+        "Up to five poems with a maximum of ten pages, in one document.",
+        "Art and literature in the groove — the musical connection is the journal's theme."
+      ],
+      "whatTheyDontWant": [
+        "An expectation of payment, or of a predictable response time. Both are stated to be unavailable at present."
+      ],
+      "requirements": [
+        "Submit through DuoSuma; there is no fee.",
+        "Keep poetry to five poems and ten pages in a single document.",
+        "Check the reading period before sending.",
+        "Tips are optional and go to production costs."
+      ],
+      "rights": "Not stated on the official submissions page.",
+      "howToSubmit": [
+        "Read https://www.thrillingtales.com/litbop/ and check the current reading period.",
+        "Unpaid with an uncertain response time — submit for the fit, not the turnaround.",
+        "No fee, so there is nothing to lose."
+      ],
+      "keywords": [
+        "litbop",
+        "art and literature in the groove",
+        "poetry",
+        "music",
+        "unpaid",
+        "no fee",
+        "5 poems",
+        "duosuma"
+      ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-30",
+      "publishedAt": "2026-09-30",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "unwashed",
+      "slug": "unwashed",
+      "publication": "Unwashed",
+      "title": "Fiction, flash, experimental writing, creative nonfiction and poetry",
+      "seoTitle": "Unwashed: 1,500-word prose, no AI or LLM in part",
+      "excerpt": "Unwashed takes creative writing including fiction, flash fiction, experimental fiction and creative nonfiction to a 1,500-word maximum, and poetry to 1,000 words, all previously unpublished with no restrictions as to type, form or content. No AI or LLM tools may be used wholly or in part in the creation of any submission.",
+      "officialUrl": "https://unwashedmke.com/",
+      "applyUrl": "https://unwashedmke.com/",
+      "applyEmail": null,
+      "applyMethod": "Email submission",
+      "sources": [
+        {
+          "name": "Unwashed — official site",
+          "url": "https://unwashedmke.com/"
+        }
+      ],
+      "eligibility": {
+        "summary": "No stated country restriction on the guidelines page.",
+        "mode": "not-stated",
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": true
+      },
+      "writingTypes": [
+        "fiction",
+        "creative-nonfiction",
+        "poetry"
+      ],
+      "writingTypeLabel": "Fiction, flash, experimental writing, creative nonfiction and poetry",
+      "pay": {
+        "currency": null,
+        "amountMin": null,
+        "amountMax": null,
+        "display": "Not stated on the public page",
+        "conditions": "The public page sets out the word limits, the originality requirement and the AI policy but publishes no payment rate for contributors. The prices shown on the page are for buying copies of the magazine, not payment to writers, and BRYME does not record them as such.",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "min": null,
+        "max": 1500,
+        "display": "Prose 1,500 words maximum; poetry 1,000 words maximum"
+      },
+      "response": {
+        "label": "Not stated",
+        "band": "not-stated",
+        "official": false
+      },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "prohibited",
+      "whatTheyWant": [
+        "Fiction, flash fiction, experimental fiction and creative nonfiction to 1,500 words, previously unpublished.",
+        "Poetry to 1,000 words, previously unpublished.",
+        "No restrictions as to type, form or content — the magazine is explicit about that, and says it wants to hear from writers with the courage to put their work out there."
+      ],
+      "whatTheyDontWant": [
+        "Any use of AI or LLM tools, wholly or in part, in the creation of a submission.",
+        "Previously published work."
+      ],
+      "requirements": [
+        "Email your submission to the address on the site.",
+        "Keep prose to 1,500 words and poetry to 1,000.",
+        "Send unpublished work only.",
+        "Write without AI or LLM assistance of any degree."
+      ],
+      "rights": "Not stated on the public page.",
+      "howToSubmit": [
+        "Read https://unwashedmke.com/ before sending.",
+        "Form and content are genuinely open here — that is the brief.",
+        "Note that the prices on the site are copy prices, not contributor payment."
+      ],
+      "keywords": [
+        "unwashed",
+        "fiction",
+        "flash fiction",
+        "experimental",
+        "creative nonfiction",
+        "poetry",
+        "1500 words",
+        "no restrictions",
+        "no ai"
+      ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-30",
+      "publishedAt": "2026-09-30",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "men-matters-online-journal",
+      "slug": "men-matters-online-journal",
+      "publication": "Men Matters Online Journal",
+      "title": "Fiction, creative nonfiction, poetry and academic work on men and masculinities",
+      "seoTitle": "Men Matters Online Journal: 5,000 words, 2 weeks to 3 months",
+      "excerpt": "Men Matters Online Journal takes a single work of fiction or creative nonfiction to a maximum of 5,000 words, and asks for a brief abstract of 150 to 200 words with academic submissions. It does not accept AI-generated submissions and its response period runs from two weeks to three months.",
+      "officialUrl": "https://menmattersonlinejournal.com/call-for-submissions/",
+      "applyUrl": "https://menmattersonlinejournal.com/call-for-submissions/",
+      "applyEmail": null,
+      "applyMethod": "See call for submissions",
+      "sources": [
+        {
+          "name": "Men Matters Online Journal — Call for Submissions (official)",
+          "url": "https://menmattersonlinejournal.com/call-for-submissions/"
+        }
+      ],
+      "eligibility": {
+        "summary": "No stated country restriction on the guidelines page.",
+        "mode": "not-stated",
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": true
+      },
+      "writingTypes": [
+        "fiction",
+        "creative-nonfiction",
+        "poetry"
+      ],
+      "writingTypeLabel": "Fiction, creative nonfiction, poetry and academic work on men and masculinities",
+      "pay": {
+        "currency": null,
+        "amountMin": null,
+        "amountMax": null,
+        "display": "Not stated on the public call for submissions",
+        "conditions": "The public call for submissions sets out formats, the abstract requirement and the AI policy but publishes no payment rate, so BRYME records no figure.",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "min": null,
+        "max": 5000,
+        "display": "A single work of fiction or creative nonfiction, maximum 5,000 words"
+      },
+      "response": {
+        "label": "Between two weeks and three months",
+        "band": "1-3-months",
+        "official": true
+      },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "prohibited",
+      "whatTheyWant": [
+        "A single work of fiction or creative nonfiction to a maximum of 5,000 words.",
+        "Poetry.",
+        "Academic work, with a brief abstract of 150 to 200 words."
+      ],
+      "whatTheyDontWant": [
+        "AI-generated submissions."
+      ],
+      "requirements": [
+        "Read the call for submissions and send a single work to 5,000 words.",
+        "Include a 150 to 200 word abstract for academic submissions.",
+        "Expect an answer somewhere between two weeks and three months."
+      ],
+      "rights": "Not stated on the public call for submissions.",
+      "howToSubmit": [
+        "Read https://menmattersonlinejournal.com/call-for-submissions/ before sending.",
+        "The abstract is required for academic work.",
+        "The response window is wide — two weeks to three months."
+      ],
+      "keywords": [
+        "men matters online journal",
+        "men",
+        "masculinities",
+        "fiction",
+        "creative nonfiction",
+        "5000 words",
+        "abstract required",
+        "no ai"
+      ]
     }
   ]
 }
