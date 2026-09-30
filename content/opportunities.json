@@ -14658,6 +14658,1124 @@
         "unpaid",
         "rights revert"
       ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-30",
+      "publishedAt": "2026-09-30",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "litmosphere-charlotte-lit",
+      "slug": "litmosphere-charlotte-lit",
+      "publication": "Litmosphere: Journal of Charlotte Lit",
+      "title": "Poetry, flash, short fiction and literary nonfiction",
+      "seoTitle": "Litmosphere: $25 per poem or flash, $50 per story, no AI",
+      "excerpt": "Litmosphere, the journal of Charlotte Lit, pays $25 for each accepted poem or flash piece and $50 for each accepted short fiction or nonfiction piece, taking first electronic rights and non-exclusive archival rights while copyright stays with the author. It takes fiction and literary nonfiction of 1,500 to 5,000 words, flash of up to 500 words, and up to three poems. AI-generated or assisted work is prohibited.",
+      "officialUrl": "https://litmosphere.charlottelit.org/submissions/",
+      "applyUrl": "https://litmosphere.charlottelit.org/submissions/",
+      "applyEmail": null,
+      "applyMethod": "Submittable — open in January and July only",
+      "sources": [
+        {
+          "name": "Litmosphere — Submissions (official)",
+          "url": "https://litmosphere.charlottelit.org/submissions/"
+        }
+      ],
+      "eligibility": {
+        "summary": "No stated country restriction on the guidelines page.",
+        "mode": "not-stated",
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": true
+      },
+      "writingTypes": [
+        "poetry",
+        "fiction",
+        "creative-nonfiction"
+      ],
+      "writingTypeLabel": "Poetry, flash, short fiction and literary nonfiction",
+      "pay": {
+        "currency": "USD",
+        "amountMin": 25,
+        "amountMax": 50,
+        "display": "$25 per poem or flash piece; $50 per short fiction or nonfiction piece",
+        "conditions": "Official submissions page: Litmosphere pays $25 for each accepted poem or flash piece and $50 for each accepted short fiction and nonfiction piece, for first electronic rights and non-exclusive archival rights.",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "min": 1500,
+        "max": 5000,
+        "display": "Fiction and literary nonfiction 1,500–5,000 words; flash up to 500 words each"
+      },
+      "response": {
+        "label": "Not stated; the queue closes at 300 submissions",
+        "band": "not-stated",
+        "official": false
+      },
+      "submissionStatus": "upcoming",
+      "deadline": {
+        "date": null,
+        "display": "Submissions open through Submittable during January for the Spring issue and during July for the Fall issue. The queue closes at 300 submissions and usually fills well before the end of the month.",
+        "recurring": true
+      },
+      "aiPolicy": "prohibited",
+      "whatTheyWant": [
+        "Short fiction and literary nonfiction of 1,500 to 5,000 words.",
+        "Flash of up to 500 words each, up to three pieces, preferably stories or essays that speak to each other.",
+        "Up to three poems, ideally related topically, thematically or stylistically — Litmosphere prefers to showcase multiple pieces as a set from each selected contributor."
+      ],
+      "whatTheyDontWant": [
+        "AI-generated or AI-assisted work. Prohibited outright.",
+        "Submissions outside the January and July windows.",
+        "Prose longer than 5,000 words."
+      ],
+      "requirements": [
+        "Submit through Charlotte Lit's Submittable page during January or July.",
+        "Fiction and nonfiction: one piece, 1,500–5,000 words, in a readable font.",
+        "Flash: up to three pieces of up to 500 words each.",
+        "Poetry: up to three poems, up to ten pages total.",
+        "If a piece is accepted elsewhere, withdraw through Submittable's Message function — not Notes.",
+        "Expect the queue to close early; it caps at 300 submissions."
+      ],
+      "rights": "Litmosphere takes first electronic rights and non-exclusive archival rights. Copyright remains with the author.",
+      "howToSubmit": [
+        "Check whether the January or July window is open before you prepare anything.",
+        "Send related pieces together — the journal deliberately showcases sets.",
+        "Do not submit by email; Submittable is the only route."
+      ],
+      "keywords": [
+        "litmosphere",
+        "charlotte lit",
+        "poetry",
+        "flash",
+        "$25",
+        "$50",
+        "submittable",
+        "no ai"
+      ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-30",
+      "publishedAt": "2026-09-30",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "ninth-letter",
+      "slug": "ninth-letter",
+      "publication": "Ninth Letter",
+      "title": "Poetry, fiction, creative nonfiction and flash",
+      "seoTitle": "Ninth Letter: $100 prose, $25 per poem, no generative AI",
+      "excerpt": "Ninth Letter pays $25 per poem and $100 for prose in its print issues, plus two complimentary copies, and $25 per poem or $75 per piece of prose for its web issues. It takes one story or essay of up to 8,000 words, three to five poems, or flash, and acquires First North American Serial Rights. Work created, guided or revised with generative AI is not accepted, though assistive tools such as dictation and spell check are permitted.",
+      "officialUrl": "https://ninthletter.com/submit/",
+      "applyUrl": "https://ninthletter.com/submit/",
+      "applyEmail": null,
+      "applyMethod": "Submittable — $3 reading fee",
+      "sources": [
+        {
+          "name": "Ninth Letter — Submit (official)",
+          "url": "https://ninthletter.com/submit/"
+        }
+      ],
+      "eligibility": {
+        "summary": "No stated country restriction on the guidelines page.",
+        "mode": "not-stated",
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": true
+      },
+      "writingTypes": [
+        "poetry",
+        "fiction",
+        "creative-nonfiction"
+      ],
+      "writingTypeLabel": "Poetry, fiction, creative nonfiction and flash",
+      "pay": {
+        "currency": "USD",
+        "amountMin": 25,
+        "amountMax": 100,
+        "display": "Print: $100 prose, $25 per poem + 2 copies. Web: $75 prose, $25 per poem",
+        "conditions": "Official submit page: Ninth Letter pays $25 per poem and $100 for prose upon publication plus two complimentary copies of the issue. Authors selected for a web issue are offered $25 per poem or $75 per piece of prose plus an exclusive discount on a one-year print subscription. A $3 reading fee applies.",
+        "timing": "Upon publication"
+      },
+      "wordCount": {
+        "min": null,
+        "max": 8000,
+        "display": "One story or essay up to 8,000 words; 3–5 poems; flash up to 3 pieces totalling 4,000 words"
+      },
+      "response": {
+        "label": "Within six months for print, four months for web issues",
+        "band": "3-plus-months",
+        "official": true
+      },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "prohibited",
+      "whatTheyWant": [
+        "Fiction and creative nonfiction: one story or essay of up to 8,000 words at a time.",
+        "Poetry: three to five poems.",
+        "Flash: up to three pieces with a total word count of no more than 4,000 words.",
+        "Unpublished work only — including work self-published on websites or blogs."
+      ],
+      "whatTheyDontWant": [
+        "Work created, guided or revised using generative AI intervention or prompts. Ninth Letter states it is interested in human creativity and human writing processes, not the generative capabilities of AI or LLMs.",
+        "Previously published work, including self-published work on websites and blogs.",
+        "Submissions by email attachment — they will not be read.",
+        "Note the distinction that does apply: assistive AI tools such as spell check, grammar check, dictation, speech-to-text and screen-reading software are permitted."
+      ],
+      "requirements": [
+        "Submit electronically through Submittable; email submissions are not read.",
+        "Pay the $3 reading fee.",
+        "Keep prose to 8,000 words and poetry to three to five poems.",
+        "Simultaneous submissions are welcome — send a withdrawal message immediately on acceptance elsewhere."
+      ],
+      "rights": "Ninth Letter acquires First North American Serial Rights.",
+      "howToSubmit": [
+        "Read https://ninthletter.com/submit/ for the full guidelines before sending.",
+        "Do not email your manuscript.",
+        "Assistive accessibility tools are fine; generative AI is not."
+      ],
+      "keywords": [
+        "ninth letter",
+        "poetry",
+        "fiction",
+        "creative nonfiction",
+        "$100",
+        "$25",
+        "fnasr",
+        "no generative ai",
+        "submittable"
+      ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-30",
+      "publishedAt": "2026-09-30",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "star-line-sfpa",
+      "slug": "star-line-sfpa",
+      "publication": "Star*Line",
+      "title": "Speculative poetry, essays and reviews",
+      "seoTitle": "Star*Line: 7 cents a word for poems, always open, no AI",
+      "excerpt": "Star*Line, the journal of the Science Fiction & Fantasy Poetry Association, pays 7 cents a word for poems with a $7 minimum and $30 maximum, 5 cents a word for articles and essays, and a flat $7 for book or chapbook reviews. It is always open for submissions and typically responds within three weeks. It does not accept AI-generated content of any kind.",
+      "officialUrl": "https://sfpoetry.org/wp/starline/",
+      "applyUrl": "https://sfpoetry.org/wp/starline/",
+      "applyEmail": null,
+      "applyMethod": "Email submission — always open",
+      "sources": [
+        {
+          "name": "Star*Line — Submission Guidelines (official)",
+          "url": "https://sfpoetry.org/wp/starline/"
+        }
+      ],
+      "eligibility": {
+        "summary": "No stated country restriction on the guidelines page.",
+        "mode": "not-stated",
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": true
+      },
+      "writingTypes": [
+        "poetry",
+        "essays",
+        "reviews"
+      ],
+      "writingTypeLabel": "Speculative poetry, articles, essays and reviews",
+      "pay": {
+        "currency": "USD",
+        "amountMin": 7,
+        "amountMax": 30,
+        "display": "7¢/word for poems ($7 minimum, $30 maximum); 5¢/word essays; $7 reviews",
+        "conditions": "Official guidelines: Star*Line pays 7 cents per word for poems with a minimum of $7 and a maximum of $30. Articles and essays are 5 cents per word. Book or chapbook reviews are a flat $7. Cover art is $30 plus five copies and interior art $8. Star*Line pays on publication and all contributors also receive one print copy.",
+        "timing": "On publication"
+      },
+      "wordCount": {
+        "min": null,
+        "max": null,
+        "display": "Up to five poems of any length in a single email"
+      },
+      "response": {
+        "label": "Typically up to three weeks; always open",
+        "band": "2-4-weeks",
+        "official": true
+      },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "prohibited",
+      "whatTheyWant": [
+        "Speculative poetry — up to five poems of any length in a single email.",
+        "Articles and essays, paid at 5 cents a word.",
+        "Book or chapbook reviews, paid at a flat $7.",
+        "Cover and interior art."
+      ],
+      "whatTheyDontWant": [
+        "AI-generated content of any kind. Star*Line does not accept it and points to the SFPA's Statement on Generative AI for detail."
+      ],
+      "requirements": [
+        "Send up to five poems in a single email.",
+        "Paste poetry into the body of the email unless the work has unusual formatting requirements.",
+        "Check the guidelines for each submission type to see whether to attach or paste.",
+        "Star*Line is always open, so there is no window to miss."
+      ],
+      "rights": "Star*Line requires First North American Serial Rights and First Electronic Rights for poetry, reviews, non-fiction and essays. There is no exclusivity period on published content and all other rights remain with the author.",
+      "howToSubmit": [
+        "Read https://sfpoetry.org/wp/starline/ to pick the right submission type.",
+        "Paste poems into the email body rather than attaching.",
+        "No window to wait for — submissions are always open."
+      ],
+      "keywords": [
+        "star*line",
+        "sfpa",
+        "speculative poetry",
+        "7 cents per word",
+        "science fiction poetry",
+        "always open",
+        "no ai"
+      ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-30",
+      "publishedAt": "2026-09-30",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "the-twin-bill",
+      "slug": "the-twin-bill",
+      "publication": "The Twin Bill",
+      "title": "Baseball fiction and poetry",
+      "seoTitle": "The Twin Bill: $25 a story, $10 a poem, baseball only",
+      "excerpt": "The Twin Bill is a baseball literary magazine that pays a $25 honorarium per accepted story, $15 per accepted piece and $10 per accepted poem, for a $3 submission fee. It wants short stories of roughly 3,000 words or fewer and up to five poems per issue, all connected to the game. It runs a zero-tolerance AI policy and writers retain all rights.",
+      "officialUrl": "https://thetwinbill.com/submissions/",
+      "applyUrl": "https://thetwinbill.com/submissions/",
+      "applyEmail": null,
+      "applyMethod": "Online submission — $3 fee",
+      "sources": [
+        {
+          "name": "The Twin Bill — Submissions (official)",
+          "url": "https://thetwinbill.com/submissions/"
+        }
+      ],
+      "eligibility": {
+        "summary": "No stated country restriction on the guidelines page.",
+        "mode": "not-stated",
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": true
+      },
+      "writingTypes": [
+        "fiction",
+        "poetry"
+      ],
+      "writingTypeLabel": "Baseball fiction and poetry",
+      "pay": {
+        "currency": "USD",
+        "amountMin": 10,
+        "amountMax": 25,
+        "display": "$25 per story, $15 per piece, $10 per poem; $3 submission fee",
+        "conditions": "Official submissions page: there is a $25 honorarium per accepted story, a $15 honorarium per accepted piece and a $10 honorarium per accepted poem, against a $3 submission fee. Contest winners receive $100, runners-up $50 and honorable mentions $25.",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "min": null,
+        "max": 3000,
+        "display": "Short stories up to roughly 3,000 words; up to five poems per issue"
+      },
+      "response": {
+        "label": "Not stated",
+        "band": "not-stated",
+        "official": false
+      },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "prohibited",
+      "whatTheyWant": [
+        "Writing that displays a strong personal style and a connection to the game of baseball.",
+        "Short stories up to roughly 3,000 words.",
+        "Up to five poems per issue — baseball from all eras, though the editors particularly want poems of a more contemporary style or subject matter."
+      ],
+      "whatTheyDontWant": [
+        "Anything written with AI. The magazine states a zero-tolerance AI policy.",
+        "Previously published pieces.",
+        "Writing with no connection to baseball."
+      ],
+      "requirements": [
+        "Pay the $3 submission fee.",
+        "Keep stories to about 3,000 words and send at most five poems.",
+        "Simultaneous submissions are fine, but tell the magazine if the piece is accepted elsewhere."
+      ],
+      "rights": "Writers retain all rights to their work.",
+      "howToSubmit": [
+        "Read https://thetwinbill.com/submissions/ before sending.",
+        "This is a niche market — the baseball connection is the brief, not an afterthought.",
+        "No previously published work."
+      ],
+      "keywords": [
+        "the twin bill",
+        "baseball",
+        "fiction",
+        "poetry",
+        "$25",
+        "$10",
+        "3000 words",
+        "rights retained",
+        "no ai"
+      ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-30",
+      "publishedAt": "2026-09-30",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "nonbinary-review",
+      "slug": "nonbinary-review",
+      "publication": "NonBinary Review",
+      "title": "Prose and poetry",
+      "seoTitle": "NonBinary Review: $15 a piece, no reading fee, prose to 1,500 words",
+      "excerpt": "NonBinary Review, published by Zoetic Press, pays $15 per accepted piece for both prose and poetry, and charges no reading fee. Prose is limited to 1,500 words and poetry to 50 lines. All submissions go through DuoSuma, and no paid Duotrope account is needed.",
+      "officialUrl": "https://www.zoeticpress.com/submit",
+      "applyUrl": "https://www.zoeticpress.com/submit",
+      "applyEmail": null,
+      "applyMethod": "DuoSuma — no reading fee",
+      "sources": [
+        {
+          "name": "NonBinary Review — Submit (official)",
+          "url": "https://www.zoeticpress.com/submit"
+        }
+      ],
+      "eligibility": {
+        "summary": "No stated country restriction on the guidelines page.",
+        "mode": "not-stated",
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": true
+      },
+      "writingTypes": [
+        "fiction",
+        "poetry",
+        "creative-nonfiction"
+      ],
+      "writingTypeLabel": "Prose and poetry",
+      "pay": {
+        "currency": "USD",
+        "amountMin": 15,
+        "amountMax": 15,
+        "display": "$15 per accepted piece, prose and poetry alike",
+        "conditions": "Official submit page: prose pieces are limited to 1,500 words and poetry pieces to 50 lines, and both are paid at $15 per accepted piece. Zoetic Press states plainly that it does not charge a reading fee and does pay its authors.",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "min": null,
+        "max": 1500,
+        "display": "Prose to 1,500 words; poetry to 50 lines"
+      },
+      "response": {
+        "label": "Not stated",
+        "band": "not-stated",
+        "official": false
+      },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "not-stated",
+      "whatTheyWant": [
+        "Prose of 1,500 words or fewer.",
+        "Poetry of 50 lines or fewer. Note that the print trim is 5 by 8 inches, so lines wider than half a standard sheet will break to a new line in print."
+      ],
+      "whatTheyDontWant": [
+        "Prose over 1,500 words or poems over 50 lines.",
+        "An expectation of a fee — there is none."
+      ],
+      "requirements": [
+        "Submit through DuoSuma. No paid Duotrope account is required.",
+        "Keep to the 1,500-word and 50-line ceilings.",
+        "For anything other than a submission, email the press directly."
+      ],
+      "rights": "Not stated on the official submit page.",
+      "howToSubmit": [
+        "Read https://www.zoeticpress.com/submit before sending.",
+        "Use DuoSuma, not email, for submissions.",
+        "No fee, so there is nothing to lose but the formatting."
+      ],
+      "keywords": [
+        "nonbinary review",
+        "zoetic press",
+        "prose",
+        "poetry",
+        "$15",
+        "1500 words",
+        "50 lines",
+        "no reading fee",
+        "duosuma"
+      ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-30",
+      "publishedAt": "2026-09-30",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "variety-pack",
+      "slug": "variety-pack",
+      "publication": "Variety Pack",
+      "title": "Short fiction, nonfiction, poetry and visual art",
+      "seoTitle": "Variety Pack: $23 prose, $13 poetry, rights back in 60 days",
+      "excerpt": "Variety Pack is a paying market at $23 for prose and $13 for poetry and visual art, against a $3 DuoSuma fee that carries a financial hardship waiver. Short fiction and novellettes run 1,001 to 9,000 words, nonfiction up to 5,000 words. It takes first electronic and non-exclusive archival rights, with all rights reverting 60 days after publication.",
+      "officialUrl": "https://varietypack.net/submissions-2/",
+      "applyUrl": "https://varietypack.net/submissions-2/",
+      "applyEmail": null,
+      "applyMethod": "DuoSuma — $3 fee with a hardship waiver",
+      "sources": [
+        {
+          "name": "Variety Pack — Submission Guidelines (official)",
+          "url": "https://varietypack.net/submissions-2/"
+        }
+      ],
+      "eligibility": {
+        "summary": "No stated country restriction on the guidelines page.",
+        "mode": "not-stated",
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": true
+      },
+      "writingTypes": [
+        "fiction",
+        "poetry",
+        "creative-nonfiction"
+      ],
+      "writingTypeLabel": "Short fiction, novellettes, nonfiction, poetry and visual art",
+      "pay": {
+        "currency": "USD",
+        "amountMin": 13,
+        "amountMax": 23,
+        "display": "$23 for prose; $13 for poetry and visual art",
+        "conditions": "Official guidelines: Variety Pack states it is now a paying market at $13 for poetry and visual art and $23 for prose, paid via PayPal, Cash App or Venmo. A $3 fee applies through DuoSuma and a financial hardship waiver is available on request.",
+        "timing": "After the reading period closes"
+      },
+      "wordCount": {
+        "min": 1001,
+        "max": 9000,
+        "display": "Short fiction and novellettes 1,001–9,000 words; nonfiction up to 3 pieces totalling 5,000 words; up to 4 poems"
+      },
+      "response": {
+        "label": "Between the end of the reading period and the week before release",
+        "band": "not-stated",
+        "official": true
+      },
+      "submissionStatus": "open",
+      "deadline": {
+        "date": null,
+        "display": "Submissions are open from 1 September to 15 October. Only one submission per reading period; anything sent outside the window is deleted unread.",
+        "recurring": true
+      },
+      "aiPolicy": "prohibited",
+      "whatTheyWant": [
+        "Short fiction and novellettes between 1,001 and 9,000 words.",
+        "Nonfiction: up to three pieces, a maximum of 5,000 words in total.",
+        "Poetry: up to four poems in one document. Ghazals, sonnets, haiku, senryu, diptychs, triptychs, prose poems, sestinas, pantoums, traditional forms, free verse and experimental forms are all welcome.",
+        "Visual art, reviews and interviews."
+      ],
+      "whatTheyDontWant": [
+        "Any written or visual work created through generative AI. The magazine will not accept it.",
+        "Submissions sent before or after the reading period is open — they are deleted unread.",
+        "More than one submission per reading period.",
+        "Emails outside general inquiries, submission questions, review or interview submissions and fee waivers — returned unread and automatically rejected."
+      ],
+      "requirements": [
+        "Submit through DuoSuma and pay the $3 fee. Email the submissions address with \"FEE WAIVER\" in the subject line if you need the hardship waiver.",
+        "Keep prose between 1,001 and 9,000 words and nonfiction to 5,000 words across three pieces.",
+        "Send only one submission per reading period.",
+        "Reviews and interviews are the only categories still accepted by email."
+      ],
+      "rights": "Variety Pack acquires first electronic rights and non-exclusive archival rights. All other rights remain with the author, and all rights revert to the author 60 days after publication.",
+      "howToSubmit": [
+        "Read https://varietypack.net/submissions-2/ and check the reading period is open.",
+        "One submission per period — do not send two.",
+        "Use the waiver if the fee is a barrier; it is offered freely."
+      ],
+      "keywords": [
+        "variety pack",
+        "short fiction",
+        "novellette",
+        "poetry",
+        "visual art",
+        "$23",
+        "$13",
+        "duosuma",
+        "rights revert 60 days",
+        "no ai"
+      ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-30",
+      "publishedAt": "2026-09-30",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "grist-journal",
+      "slug": "grist-journal",
+      "publication": "Grist: A Journal of the Literary Arts",
+      "title": "Poetry, fiction and nonfiction",
+      "seoTitle": "Grist: $10 a poem, 1 cent a word for prose, 7,000-word cap",
+      "excerpt": "Grist pays $10 per poem and 1 cent per word for prose up to $50, plus a contributor copy, for a $4 submission fee that is waived for subscribers. It takes one story or one essay of up to 7,000 words, or three to five poems, and its average response time is six months.",
+      "officialUrl": "https://gristjournal.com/submit/",
+      "applyUrl": "https://gristjournal.com/submit/",
+      "applyEmail": null,
+      "applyMethod": "Submittable — $4 fee, waived for subscribers",
+      "sources": [
+        {
+          "name": "Grist — Submit (official)",
+          "url": "https://gristjournal.com/submit/"
+        }
+      ],
+      "eligibility": {
+        "summary": "No stated country restriction on the guidelines page.",
+        "mode": "not-stated",
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": true
+      },
+      "writingTypes": [
+        "poetry",
+        "fiction",
+        "creative-nonfiction"
+      ],
+      "writingTypeLabel": "Poetry, fiction and nonfiction",
+      "pay": {
+        "currency": "USD",
+        "amountMin": 10,
+        "amountMax": 50,
+        "display": "$10 per poem; 1¢ per word for prose, up to $50",
+        "conditions": "Official submit page: payment is $10 per poem or 1 cent per word for prose up to $50, as well as a contributor copy. The submission fee is $4 for three to five poems, for one work of fiction up to 7,000 words, or for one work of non-fiction up to 7,000 words, and is waived for subscribers. The per-word rate means the prose total depends on length.",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "min": null,
+        "max": 7000,
+        "display": "One story or essay up to 7,000 words; 3–5 poems"
+      },
+      "response": {
+        "label": "Average six months; query after that",
+        "band": "3-plus-months",
+        "official": true
+      },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "not-stated",
+      "whatTheyWant": [
+        "Fiction: one story of up to 7,000 words.",
+        "Nonfiction: one essay of up to 7,000 words.",
+        "Poetry: three to five poems.",
+        "Pitches, reviews and craft essays are handled under separate guidelines on the same page."
+      ],
+      "whatTheyDontWant": [
+        "A second submission in the same genre before the first has been answered — wait for the response.",
+        "Prose over 7,000 words."
+      ],
+      "requirements": [
+        "Submit through Grist's Submittable manager after reading the guidelines.",
+        "Pay the $4 fee unless you are a subscriber, in which case it is waived.",
+        "Wait for a response before sending another piece in the same genre.",
+        "If six months pass with no response, send a query email to the editor for that genre."
+      ],
+      "rights": "Not stated on the official submit page.",
+      "howToSubmit": [
+        "Read https://gristjournal.com/submit/ — pitches, reviews and craft essays have their own rules.",
+        "Subscribe if you plan to submit more than once; it waives the fee.",
+        "Budget for a six-month wait before querying."
+      ],
+      "keywords": [
+        "grist",
+        "journal of the literary arts",
+        "poetry",
+        "fiction",
+        "nonfiction",
+        "$10",
+        "1 cent per word",
+        "7000 words",
+        "submittable"
+      ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-30",
+      "publishedAt": "2026-09-30",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "ihram-literary-magazine",
+      "slug": "ihram-literary-magazine",
+      "publication": "IHRAM Literary Magazine",
+      "title": "Human rights short stories, essays, poetry and visual art",
+      "seoTitle": "IHRAM: $50 a piece, human rights focus, AI means instant rejection",
+      "excerpt": "IHRAM Literary Magazine, published by the Human Rights Art Movement, pays $50 per accepted written piece and $25 per accepted artist. Short stories and essays run to 2,500 words and submissions take a maximum of five poems. Every submission needs a 300 to 500 word foreword explaining its inspiration. Any content written, assisted or edited using AI results in immediate rejection.",
+      "officialUrl": "https://humanrightsartmovement.org/ihram-submissions",
+      "applyUrl": "https://humanrightsartmovement.org/ihram-submissions",
+      "applyEmail": null,
+      "applyMethod": "Email — name the open call in the subject line",
+      "sources": [
+        {
+          "name": "IHRAM — Submissions (official)",
+          "url": "https://humanrightsartmovement.org/ihram-submissions"
+        }
+      ],
+      "eligibility": {
+        "summary": "Open to writers worldwide, with a particular interest in creative activists at risk speaking about social-justice issues in their own environments. No country restriction is stated.",
+        "mode": "worldwide",
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": false
+      },
+      "writingTypes": [
+        "fiction",
+        "essays",
+        "poetry",
+        "creative-nonfiction"
+      ],
+      "writingTypeLabel": "Human rights short stories, essays, poetry and visual art",
+      "pay": {
+        "currency": "USD",
+        "amountMin": 25,
+        "amountMax": 50,
+        "display": "$50 per accepted written piece; $25 per accepted artist",
+        "conditions": "Official submissions page: IHRAM Press pays $50 per accepted written piece and $25 per accepted artist. Writers whose submissions are accepted receive $50; accepted artists receive $25.",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "min": null,
+        "max": 2500,
+        "display": "Short stories and essays 2,500 words or less; maximum five poems"
+      },
+      "response": {
+        "label": "Not stated",
+        "band": "not-stated",
+        "official": false
+      },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "prohibited",
+      "whatTheyWant": [
+        "Short stories and essays of 2,500 words or less on urgent human rights and social-justice issues.",
+        "Up to five poems per submission.",
+        "Visual art — mixed media and related forms. AI-generated art is not accepted.",
+        "Work from creative activists at risk, giving readers perspectives from inside the situations described."
+      ],
+      "whatTheyDontWant": [
+        "Any content written, assisted or edited using AI — including the submitted piece, the foreword and the author bio. This results in immediate rejection.",
+        "AI-assisted or AI-written translations.",
+        "AI-generated art of any kind."
+      ],
+      "requirements": [
+        "Email your submission and name the open call you are responding to in the subject line.",
+        "Keep stories and essays to 2,500 words; send at most five poems.",
+        "Include a foreword of 300 to 500 words explaining your inspiration, background information, key characters and any other insight for the reader.",
+        "Include a brief third-person bio of roughly 100 words.",
+        "Write the piece, the foreword and the bio without any AI assistance."
+      ],
+      "rights": "Not stated on the official submissions page.",
+      "howToSubmit": [
+        "Read https://humanrightsartmovement.org/ihram-submissions and identify the open call first.",
+        "The foreword is mandatory and counts toward the no-AI rule.",
+        "Subject line must name the call, or the submission may not be routed correctly."
+      ],
+      "keywords": [
+        "ihram",
+        "human rights art movement",
+        "human rights",
+        "social justice",
+        "$50",
+        "$25",
+        "2500 words",
+        "foreword required",
+        "no ai"
+      ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-30",
+      "publishedAt": "2026-09-30",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "copper-nickel",
+      "slug": "copper-nickel",
+      "publication": "Copper Nickel",
+      "title": "Poetry, prose, flash and translation",
+      "seoTitle": "Copper Nickel: $30 a printed page, prose to $250, no generative AI",
+      "excerpt": "Copper Nickel pays $30 per printed page for poetry and prose, with poetry payments between $50 and $150 and prose payments between $50 and $250, and a flat $150 for translation folios. It awards two $500 Editors' Prizes per issue. Submissions are four to six poems, one story, three flash pieces or one essay, and work produced via generative AI is not accepted.",
+      "officialUrl": "https://copper-nickel.org/submit/",
+      "applyUrl": "https://copper-nickel.org/submit/",
+      "applyEmail": null,
+      "applyMethod": "Submittable",
+      "sources": [
+        {
+          "name": "Copper Nickel — Submit (official)",
+          "url": "https://copper-nickel.org/submit/"
+        }
+      ],
+      "eligibility": {
+        "summary": "No stated country restriction on the guidelines page.",
+        "mode": "not-stated",
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": true
+      },
+      "writingTypes": [
+        "poetry",
+        "fiction",
+        "creative-nonfiction",
+        "translation"
+      ],
+      "writingTypeLabel": "Poetry, prose, flash and translation folios",
+      "pay": {
+        "currency": "USD",
+        "amountMin": 30,
+        "amountMax": 250,
+        "display": "$30 per printed page; poetry $50–$150; prose $50–$250; folios $150",
+        "conditions": "Official submit page: poetry and prose pay $30 per printed page. Poetry payments have a minimum of $50 and a maximum of $150; prose payments have a minimum of $50 and a maximum of $250. Translation folios are a flat $150. Two $500 Editors' Prizes in poetry and prose are awarded each issue. International writers should note that payments sent overseas are subject to a 30% tax withheld at source.",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "min": null,
+        "max": null,
+        "display": "Four to six poems, one story, three flash pieces, or one essay per submission"
+      },
+      "response": {
+        "label": "Within twelve weeks, longer in spring; wait six months before resubmitting",
+        "band": "3-plus-months",
+        "official": true
+      },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "prohibited",
+      "whatTheyWant": [
+        "Four to six poems, one story, three flash pieces, or one essay at a time, in a single submission.",
+        "Translation folios. If accepted, Copper Nickel asks for a contextualizing introductory essay of 800 to 1,200 words."
+      ],
+      "whatTheyDontWant": [
+        "Work produced via generative AI. The editors state that creative writing is rooted in the unique expression of the individual mind and that generative AI is the opposite of that.",
+        "A further submission within six months of receiving a response."
+      ],
+      "requirements": [
+        "Submit through Submittable: four to six poems, one story, three flash pieces, or one essay, in a single submission.",
+        "Withdraw full submissions through Submittable; withdraw individual poems or flash pieces by messaging which pieces to remove.",
+        "Expect a response within twelve weeks, longer in spring.",
+        "Wait at least six months after a response before submitting again.",
+        "Submitting adds you to the contact list for occasional emails about the book prize and subscription drives."
+      ],
+      "rights": "Not stated on the official submit page.",
+      "howToSubmit": [
+        "Read https://copper-nickel.org/submit/ before sending.",
+        "One submission at a time, and respect the six-month gap after a response.",
+        "International writers should factor in the 30% withholding."
+      ],
+      "keywords": [
+        "copper nickel",
+        "poetry",
+        "prose",
+        "flash",
+        "translation",
+        "$30 per page",
+        "$250",
+        "no generative ai",
+        "submittable"
+      ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-30",
+      "publishedAt": "2026-09-30",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "peach-gcsu",
+      "slug": "peach-gcsu",
+      "publication": "Peach",
+      "title": "Fiction, nonfiction and poetry",
+      "seoTitle": "Peach: $10 a page for prose, $50 a poem, no AI in any amount",
+      "excerpt": "Peach, the literary journal of Georgia College, pays $10 per printed page for prose capped at $150 and $50 per poem for up to four poems, against a $3 general submission fee. It takes one piece of fiction or nonfiction of up to 5,000 words and aims to respond within six weeks. It does not consider work produced in any amount by AI.",
+      "officialUrl": "https://peach.gcsu.edu/submission-guidelines/",
+      "applyUrl": "https://peach.gcsu.edu/submission-guidelines/",
+      "applyEmail": null,
+      "applyMethod": "Online submission — $3 general fee",
+      "sources": [
+        {
+          "name": "Peach — Submission Guidelines (official)",
+          "url": "https://peach.gcsu.edu/submission-guidelines/"
+        }
+      ],
+      "eligibility": {
+        "summary": "No stated country restriction on the submission guidelines page. Peach is the literary journal of Georgia College in the United States.",
+        "mode": "not-stated",
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": true
+      },
+      "writingTypes": [
+        "fiction",
+        "creative-nonfiction",
+        "poetry"
+      ],
+      "writingTypeLabel": "Fiction, nonfiction and poetry",
+      "pay": {
+        "currency": "USD",
+        "amountMin": 10,
+        "amountMax": 150,
+        "display": "Prose $10 per printed page capped at $150; poetry $50 per poem",
+        "conditions": "Official submission guidelines: Peach offers a one-time honorarium on publication of $10 per printed page for prose, capped at $150 total for work up to 5,000 words, and $50 per poem for a maximum of four poems. A $3 general submission fee applies. The Susan Atefat Editor's Prize carries a separate $20 entry fee and a $4,000 award.",
+        "timing": "On publication"
+      },
+      "wordCount": {
+        "min": null,
+        "max": 5000,
+        "display": "One piece of fiction or nonfiction up to 5,000 words; maximum four poems"
+      },
+      "response": {
+        "label": "Aimed at within six weeks",
+        "band": "1-3-months",
+        "official": true
+      },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "prohibited",
+      "whatTheyWant": [
+        "One piece of fiction or nonfiction of up to 5,000 words.",
+        "Poetry, up to four poems."
+      ],
+      "whatTheyDontWant": [
+        "Work produced in any amount by AI. Peach states it does not consider work produced by AI and does not accept submissions created by artificial intelligence.",
+        "Prose over 5,000 words or more than four poems."
+      ],
+      "requirements": [
+        "Pay the $3 general submission fee.",
+        "Send one prose piece of up to 5,000 words, or up to four poems.",
+        "Expect a response within six weeks."
+      ],
+      "rights": "Not stated on the official submission guidelines page.",
+      "howToSubmit": [
+        "Read https://peach.gcsu.edu/submission-guidelines/ — the page is dated, so check the version before sending.",
+        "Keep to one prose piece or four poems.",
+        "No AI assistance of any kind, including drafting."
+      ],
+      "keywords": [
+        "peach",
+        "georgia college",
+        "fiction",
+        "nonfiction",
+        "poetry",
+        "$10 per page",
+        "$50",
+        "5000 words",
+        "no ai"
+      ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-30",
+      "publishedAt": "2026-09-30",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "bellevue-literary-review",
+      "slug": "bellevue-literary-review",
+      "publication": "Bellevue Literary Review",
+      "title": "Fiction, nonfiction and poetry on health and healing",
+      "seoTitle": "Bellevue Literary Review: $150 prose, $75 poetry, 5,000 words",
+      "excerpt": "Bellevue Literary Review pays published authors $150 for prose and $75 for poetry, against a $5 general submission fee that is waived for current subscribers. Fiction and nonfiction run to 5,000 words, though most published prose is 2,000 to 4,000, and poets may send up to three poems of any length. It acquires First North American rights, with all other rights reverting after publication.",
+      "officialUrl": "https://blreview.org/submit/",
+      "applyUrl": "https://blreview.org/submit/",
+      "applyEmail": null,
+      "applyMethod": "Submittable — $5 fee, waived for subscribers",
+      "sources": [
+        {
+          "name": "Bellevue Literary Review — Submit (official)",
+          "url": "https://blreview.org/submit/"
+        }
+      ],
+      "eligibility": {
+        "summary": "No stated country restriction on the guidelines page.",
+        "mode": "not-stated",
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": true
+      },
+      "writingTypes": [
+        "fiction",
+        "creative-nonfiction",
+        "poetry"
+      ],
+      "writingTypeLabel": "Fiction, nonfiction and poetry on health, healing and the human body",
+      "pay": {
+        "currency": "USD",
+        "amountMin": 75,
+        "amountMax": 150,
+        "display": "$150 for prose; $75 for poetry",
+        "conditions": "Official submit page: BLR pays published authors $150 for prose and $75 for poetry. There is a $5 fee per general submission, waived for current subscribers. The BLR Prizes carry a separate $20 entry fee per submission.",
+        "timing": "On publication"
+      },
+      "wordCount": {
+        "min": null,
+        "max": 5000,
+        "display": "Fiction and nonfiction up to 5,000 words (most published prose is 2,000–4,000); up to three poems of any length"
+      },
+      "response": {
+        "label": "Not stated; inquire after five months",
+        "band": "3-plus-months",
+        "official": true
+      },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "prohibited",
+      "whatTheyWant": [
+        "Fiction and nonfiction up to 5,000 words, though most published prose falls between 2,000 and 4,000 words.",
+        "Up to three poems as one submission. Poems may be of any length, though shorter poems let BLR include more poets."
+      ],
+      "whatTheyDontWant": [
+        "Work created or materially shaped by generative artificial intelligence tools. By submitting, authors affirm the work is their own original writing, has not been previously published, and was not created or materially shaped by generative AI.",
+        "Previously published work.",
+        "Submissions by email or hard copy mail, except where accessibility accommodations require it."
+      ],
+      "requirements": [
+        "Submit electronically through Submittable; email and hard copy are not accepted except for accessibility accommodations.",
+        "Pay the $5 general fee unless you are a current subscriber.",
+        "Keep prose to 5,000 words and send at most three poems.",
+        "If five months pass with no word, email to ask about the submission."
+      ],
+      "rights": "BLR acquires First North American rights and the right to reprint in anthologies and online. After publication all other rights revert to the author, and the work may be reprinted as long as BLR is acknowledged.",
+      "howToSubmit": [
+        "Read https://blreview.org/submit/ before sending.",
+        "Subscribe if you submit often — it waives the fee.",
+        "Only query after five months."
+      ],
+      "keywords": [
+        "bellevue literary review",
+        "blr",
+        "health",
+        "medicine",
+        "fiction",
+        "nonfiction",
+        "poetry",
+        "$150",
+        "$75",
+        "5000 words",
+        "no generative ai"
+      ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-30",
+      "publishedAt": "2026-09-30",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "lady-churchills-rosebud-wristlet",
+      "slug": "lady-churchills-rosebud-wristlet",
+      "publication": "Lady Churchill's Rosebud Wristlet",
+      "title": "Fantasy and literary fiction",
+      "seoTitle": "Rosebud Wristlet: 3 cents a word, $25 minimum, no AI",
+      "excerpt": "Lady Churchill's Rosebud Wristlet, published by Small Beer Press, pays 3 cents a word for fiction with a $25 minimum. It buys first North American serial rights, exclusive electronic rights for 90 days and a non-exclusive anthology right. It does not accept or publish anything written or assisted by AI, and it will not take gore, sword and sorcery, or pornography.",
+      "officialUrl": "https://smallbeerpress.com/about/submission-guidelines/",
+      "applyUrl": "https://smallbeerpress.com/about/submission-guidelines/",
+      "applyEmail": null,
+      "applyMethod": "See guidelines — international submissions answered by email",
+      "sources": [
+        {
+          "name": "Small Beer Press — Submission Guidelines (official)",
+          "url": "https://smallbeerpress.com/about/submission-guidelines/"
+        }
+      ],
+      "eligibility": {
+        "summary": "No stated country restriction on the guidelines page.",
+        "mode": "not-stated",
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": true
+      },
+      "writingTypes": [
+        "fiction"
+      ],
+      "writingTypeLabel": "Fantasy and literary fiction",
+      "pay": {
+        "currency": "USD",
+        "amountMin": 25,
+        "amountMax": 25,
+        "display": "US$0.03 per word, $25 minimum",
+        "conditions": "Official submission guidelines: fiction pays US$0.03 per word with a $25 minimum. The minimum is recorded as the floor; the actual amount scales with length at three cents a word.",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "min": null,
+        "max": null,
+        "display": "No word limit stated on the guidelines page; standard manuscript format"
+      },
+      "response": {
+        "label": "Not stated; the press replies to queries after six months",
+        "band": "3-plus-months",
+        "official": true
+      },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "prohibited",
+      "whatTheyWant": [
+        "Fiction that has been through at least one round of revision — the press recommends this for both parties' sanity.",
+        "Work in standard manuscript format: 12 point text in a font of your choice, double-spaced, numbered pages."
+      ],
+      "whatTheyDontWant": [
+        "Anything written, assisted or otherwise produced by AI such as ChatGPT. Small Beer Press does not accept or publish it.",
+        "Gore, sword and sorcery, or pornography. The press says there are places for all of them and this is not one of them."
+      ],
+      "requirements": [
+        "Follow standard manuscript format: 12 point text, double-spaced, numbered pages.",
+        "Revise at least once before sending.",
+        "International submissions are answered by email.",
+        "If six months pass, contact the press and they will try to reply with a decision."
+      ],
+      "rights": "Small Beer Press buys first North American serial rights, exclusive electronic rights for 90 days, and a non-exclusive anthology right. Reprints are only very occasionally solicited.",
+      "howToSubmit": [
+        "Read https://smallbeerpress.com/about/submission-guidelines/ before sending.",
+        "Format properly — the press is explicit about 12 point, double-spaced, numbered pages.",
+        "Do not send gore or sword and sorcery; it is out of scope, not a matter of taste."
+      ],
+      "keywords": [
+        "lady churchill's rosebud wristlet",
+        "small beer press",
+        "fantasy",
+        "fiction",
+        "3 cents per word",
+        "$25 minimum",
+        "no ai",
+        "90 days electronic"
+      ]
     }
   ]
 }

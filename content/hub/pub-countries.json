@@ -658,5 +658,53 @@
   "in-short-journal": {
     "base": "",
     "label": "International"
+  },
+  "litmosphere-charlotte-lit": {
+    "base": "",
+    "label": "International"
+  },
+  "ninth-letter": {
+    "base": "",
+    "label": "International"
+  },
+  "star-line-sfpa": {
+    "base": "",
+    "label": "International"
+  },
+  "the-twin-bill": {
+    "base": "",
+    "label": "International"
+  },
+  "nonbinary-review": {
+    "base": "",
+    "label": "International"
+  },
+  "variety-pack": {
+    "base": "",
+    "label": "International"
+  },
+  "grist-journal": {
+    "base": "",
+    "label": "International"
+  },
+  "ihram-literary-magazine": {
+    "base": "",
+    "label": "International"
+  },
+  "copper-nickel": {
+    "base": "",
+    "label": "International"
+  },
+  "peach-gcsu": {
+    "base": "US",
+    "label": "United States"
+  },
+  "bellevue-literary-review": {
+    "base": "",
+    "label": "International"
+  },
+  "lady-churchills-rosebud-wristlet": {
+    "base": "",
+    "label": "International"
   }
 }
