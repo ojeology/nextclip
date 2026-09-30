@@ -634,5 +634,29 @@
   "collider": {
     "base": "CA",
     "label": "Canada"
+  },
+  "pseudopod": {
+    "base": "",
+    "label": "International"
+  },
+  "gulf-coast": {
+    "base": "US",
+    "label": "United States"
+  },
+  "nachtljocht": {
+    "base": "",
+    "label": "International"
+  },
+  "lisbon-literary-review": {
+    "base": "PT",
+    "label": "Portugal"
+  },
+  "stygian-lepus": {
+    "base": "",
+    "label": "International"
+  },
+  "in-short-journal": {
+    "base": "",
+    "label": "International"
   }
 }

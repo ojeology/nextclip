@@ -14096,6 +14096,568 @@
         "remote",
         "no ai"
       ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-30",
+      "publishedAt": "2026-09-30",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "pseudopod",
+      "slug": "pseudopod",
+      "publication": "Pseudopod",
+      "title": "Horror short fiction, published as audio",
+      "seoTitle": "Pseudopod: 8 cents a word original, $100 reprints, no AI",
+      "excerpt": "Pseudopod, the Escape Artists horror podcast, pays the professional rate of 8 cents a word for original fiction, $100 flat for short story reprints and $20 flat for flash fiction reprints under 1,500 words. It does not accept any AI or LLM-generated work, including the cover letter. Submissions go through its Moksha portal during open general submission periods, which usually consider one original and one reprint per author.",
+      "officialUrl": "https://pseudopod.org/submissions/",
+      "applyUrl": "https://pseudopod.org/submissions/",
+      "applyEmail": null,
+      "applyMethod": "Moksha portal — during an open general submission period",
+      "sources": [
+        {
+          "name": "Pseudopod — Submissions (official)",
+          "url": "https://pseudopod.org/submissions/"
+        }
+      ],
+      "eligibility": {
+        "summary": "No stated country restriction. The guidelines place no limits on genre definitions or on content, and describe no taboos about what may appear in a story.",
+        "mode": "not-stated",
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": true
+      },
+      "writingTypes": [
+        "fiction"
+      ],
+      "writingTypeLabel": "Horror short fiction, original and reprint",
+      "pay": {
+        "currency": "USD",
+        "amountMin": 20,
+        "amountMax": 100,
+        "display": "8¢/word original; $100 short story reprint; $20 flash reprint",
+        "conditions": "Official submissions page: Pseudopod pays the pro rate of $0.08 per word for original fiction, a $100 flat rate for short story reprints, and a $20 flat rate for flash fiction reprints (stories below 1,500 words). The 8¢ rate applies per word, so the actual total depends on length; the flat reprint rates are recorded here.",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "min": null,
+        "max": 1500,
+        "display": "Flash reprints defined as under 1,500 words; no maximum stated for originals"
+      },
+      "response": {
+        "label": "Query if no automated confirmation within 24 hours; after 60 days, query",
+        "band": "1-3-months",
+        "official": true
+      },
+      "submissionStatus": "rolling",
+      "deadline": {
+        "date": null,
+        "display": "Submissions are only accepted during an open general submission period; check the schedule at pseudopod.org before sending.",
+        "recurring": true
+      },
+      "aiPolicy": "prohibited",
+      "whatTheyWant": [
+        "Short horror fiction, original or reprint, that would work narrated aloud by a performer.",
+        "Any kind of content. Pseudopod states it does not split hairs about genre definitions and observes no taboos about what can appear in stories.",
+        "One original and one reprint per author during a general submission period.",
+        "A different original or reprint if you already have a submission under consideration through a separate portal — each call is treated separately."
+      ],
+      "whatTheyDontWant": [
+        "AI or LLM-generated work of any kind. Basic spelling and grammar checking tools are acceptable, but Pseudopod recommends steering clear of all generative AI at every stage of the writing process.",
+        "AI or LLM tools used to write the cover letter — explicitly asked against.",
+        "Submitting the same story to multiple Escape Artists podcasts at once (Escape Pod, PodCastle, Cast of Wonders, CatsCast and PseudoPod). Wait for a decision on one before sending it to another."
+      ],
+      "requirements": [
+        "Check the schedule first — submissions are only accepted when Pseudopod is open.",
+        "Submit through the Moksha portal; you will get an automated email confirmation.",
+        "Query if the confirmation has not arrived within 24 hours, and again after 60 days if you have heard nothing.",
+        "Simultaneous submissions are acceptable with disclosure — say that you are submitting elsewhere.",
+        "Do not use AI for the story or for the cover letter."
+      ],
+      "rights": "Not stated on the official submissions page.",
+      "howToSubmit": [
+        "Check https://pseudopod.org/submissions/ and the schedule before writing anything — the portal is only open during general submission periods.",
+        "Write for the ear; this is an audio market.",
+        "Reprints are paid, so a strong back catalogue is worth money here."
+      ],
+      "keywords": [
+        "pseudopod",
+        "horror",
+        "audio fiction",
+        "podcast",
+        "escape artists",
+        "8 cents per word",
+        "reprints",
+        "moksha",
+        "no ai"
+      ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-30",
+      "publishedAt": "2026-09-30",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "gulf-coast",
+      "slug": "gulf-coast",
+      "publication": "Gulf Coast",
+      "title": "Poetry, fiction, nonfiction and translation",
+      "seoTitle": "Gulf Coast: $50 per page in print, $75–$100 online exclusives",
+      "excerpt": "Gulf Coast, the literary journal housed in the University of Houston English Department, pays $50 per .doc or PDF page for poetry, fiction and nonfiction in its print issues, and guarantees $75 for poetry and $100 for prose in its Online Exclusives. Regular submissions carry a $3 reading fee that goes entirely toward author honorariums. Work over 7,000 words cannot be read.",
+      "officialUrl": "https://gulfcoastmag.org/submit/",
+      "applyUrl": "https://gulfcoastmag.org/submit/",
+      "applyEmail": null,
+      "applyMethod": "Submittable — $3 reading fee",
+      "sources": [
+        {
+          "name": "Gulf Coast — Submit (official)",
+          "url": "https://gulfcoastmag.org/submit/"
+        }
+      ],
+      "eligibility": {
+        "summary": "No stated country restriction on the submissions page.",
+        "mode": "not-stated",
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": true
+      },
+      "writingTypes": [
+        "poetry",
+        "fiction",
+        "creative-nonfiction",
+        "translation"
+      ],
+      "writingTypeLabel": "Poetry, fiction, nonfiction and translation",
+      "pay": {
+        "currency": "USD",
+        "amountMin": 50,
+        "amountMax": 100,
+        "display": "$50 per page in print; $75 poetry / $100 prose online exclusives",
+        "conditions": "Official submit page: Gulf Coast pays $50 per .doc or PDF page for poetry, fiction and nonfiction in its print issues. In its Online Exclusives it guarantees $75 for poetry and $100 for prose. A $3 reading fee applies to regular submissions and is stated to go 100% toward increasing author honorariums. The rate is per page, so the total depends on the length of the piece.",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "min": null,
+        "max": 7000,
+        "display": "Up to 7,000 words; longer work cannot be read"
+      },
+      "response": {
+        "label": "Not stated; wait for a response before submitting again",
+        "band": "not-stated",
+        "official": false
+      },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "not-stated",
+      "whatTheyWant": [
+        "Poetry, fiction, nonfiction and translation, under 7,000 words.",
+        "Work that has not appeared in Gulf Coast within the last two years — accepted authors are asked to wait two years from the date of publication before submitting again."
+      ],
+      "whatTheyDontWant": [
+        "General submissions by email or post. Neither is accepted; Submittable is the only route.",
+        "Anything over 7,000 words.",
+        "A further submission before you have had a response on the one already under consideration."
+      ],
+      "requirements": [
+        "Submit through Submittable via the link on the submit page.",
+        "Pay the $3 reading fee for regular submissions.",
+        "Put your name, address, phone number and email on the first page, and the title on subsequent pages.",
+        "Keep prose under 7,000 words.",
+        "Simultaneous submissions are allowed, but tell Gulf Coast promptly if the piece is accepted elsewhere.",
+        "If accepted, wait two years from publication before submitting again."
+      ],
+      "rights": "Not stated on the official submit page.",
+      "howToSubmit": [
+        "Read https://gulfcoastmag.org/submit/ and use the Submittable link.",
+        "Format as asked — contact details on page one, title on the pages after.",
+        "Do not email or post the work; it will not be read."
+      ],
+      "keywords": [
+        "gulf coast",
+        "university of houston",
+        "poetry",
+        "fiction",
+        "nonfiction",
+        "$50 per page",
+        "submittable",
+        "7000 words"
+      ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-30",
+      "publishedAt": "2026-09-30",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "nachtljocht",
+      "slug": "nachtljocht",
+      "publication": "Nachtljocht",
+      "title": "Fiction and short plays",
+      "seoTitle": "Nachtljocht: $15, fiction 3,000–12,000 words, opens 1 October 2026",
+      "excerpt": "Nachtljocht accepts previously unpublished fiction and short plays between 3,000 and 12,000 words, and pays accepted writers $15 plus a print contributor copy and digital copies. Its 2026–27 reading period runs from 1 October 2026 to 31 March 2027, with responses aimed at within 60 days. There is a $3 submission fee that includes a digital copy of the most recent issue.",
+      "officialUrl": "https://nachtljocht.com/",
+      "applyUrl": "https://nachtljocht.com/",
+      "applyEmail": null,
+      "applyMethod": "Online submission form — $3 fee",
+      "sources": [
+        {
+          "name": "Nachtljocht — official site",
+          "url": "https://nachtljocht.com/"
+        }
+      ],
+      "eligibility": {
+        "summary": "Eligibility requirements are published on the submission form rather than on the public page, so BRYME records no restriction and no confirmation of openness. Check the form before you submit.",
+        "mode": "not-stated",
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": true
+      },
+      "writingTypes": [
+        "fiction",
+        "drama"
+      ],
+      "writingTypeLabel": "Fiction and short plays",
+      "pay": {
+        "currency": "USD",
+        "amountMin": 15,
+        "amountMax": 15,
+        "display": "$15 plus a print contributor copy and digital copies",
+        "conditions": "Official site: accepted writers receive $15 USD, one complimentary print contributor copy, and digital copies of the issue. A $3 USD submission fee applies and includes a digital copy of the most recent issue.",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "min": 3000,
+        "max": 12000,
+        "display": "3,000–12,000 words"
+      },
+      "response": {
+        "label": "Aimed at within 60 days",
+        "band": "1-3-months",
+        "official": true
+      },
+      "submissionStatus": "upcoming",
+      "deadline": {
+        "date": "2026-10-01",
+        "display": "The 2026–27 reading period runs from 1 October 2026 to 31 March 2027.",
+        "windowEnd": "2027-03-31",
+        "recurring": true
+      },
+      "aiPolicy": "prohibited",
+      "whatTheyWant": [
+        "Previously unpublished fiction and short plays between 3,000 and 12,000 words.",
+        "Work that is emotionally precise, formally confident and unafraid of strangeness — the stated editorial emphasis.",
+        "Writers at any stage; each issue brings together emerging and established writers across genres, forms and styles."
+      ],
+      "whatTheyDontWant": [
+        "Work written by large language models. Nachtljocht states it does not publish it, and separately states that it does not use AI to evaluate submissions and will never upload your work to an AI detector.",
+        "Previously published work."
+      ],
+      "requirements": [
+        "Submit through the submission form on https://nachtljocht.com/ during the reading period.",
+        "Pay the $3 fee, which includes a digital copy of the most recent issue.",
+        "Stay between 3,000 and 12,000 words and send unpublished work only.",
+        "Simultaneous submissions are welcome.",
+        "Once you have a decision you may submit another piece while the reading period is still open.",
+        "Read the full formatting requirements, rights information and eligibility requirements on the submission form — they are not on the public page."
+      ],
+      "rights": "Full rights information is published on the submission form rather than on the public page.",
+      "howToSubmit": [
+        "The 2026–27 reading period opens 1 October 2026 and closes 31 March 2027 — submit inside that window.",
+        "Read the eligibility requirements on the submission form before you write; they are not on the public page.",
+        "Nachtljocht has no social media. Any account claiming to represent it is unauthorised."
+      ],
+      "keywords": [
+        "nachtljocht",
+        "fiction",
+        "short plays",
+        "$15",
+        "3000-12000 words",
+        "reading period",
+        "no ai",
+        "no ai detector"
+      ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-30",
+      "publishedAt": "2026-09-30",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "lisbon-literary-review",
+      "slug": "lisbon-literary-review",
+      "publication": "The Lisbon Literary Review",
+      "title": "Poetry, short fiction, translation, essay and nonfiction in Portuguese and English",
+      "seoTitle": "The Lisbon Literary Review: bilingual poetry and fiction, no AI",
+      "excerpt": "The Lisbon Literary Review is a new bilingual journal emphasising Portuguese- and English-language poetry and translations between the two. It accepts poetry, short fiction, literary translation, photography, drawing, essay and nonfiction prose including chronicle and reflective writing. It does not consider or publish work generated wholly or substantially by AI, aims to respond within four to six weeks, and pays no stated rate.",
+      "officialUrl": "https://www.lisbonliteraryreview.com/submissions/",
+      "applyUrl": "https://www.lisbonliteraryreview.com/submissions/",
+      "applyEmail": null,
+      "applyMethod": "Online submission form",
+      "sources": [
+        {
+          "name": "The Lisbon Literary Review — Submissions (official)",
+          "url": "https://www.lisbonliteraryreview.com/submissions/"
+        }
+      ],
+      "eligibility": {
+        "summary": "Open internationally to authors writing primarily in Portuguese or English. The journal states it is calling all creative writers, translators and artists.",
+        "mode": "worldwide",
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": false
+      },
+      "writingTypes": [
+        "poetry",
+        "fiction",
+        "translation",
+        "essays",
+        "creative-nonfiction"
+      ],
+      "writingTypeLabel": "Poetry, short fiction, translation, photography, drawing, essay and nonfiction prose",
+      "pay": {
+        "currency": null,
+        "amountMin": null,
+        "amountMax": null,
+        "display": "Not stated on the public submissions page",
+        "conditions": "The public submissions page sets out the formats, the AI policy, the response time and the rights position, but publishes no payment rate, so BRYME records no figure. As a new journal its terms may still be settling — confirm before you submit.",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "min": null,
+        "max": null,
+        "display": "No word limit stated on the public page; one text per page"
+      },
+      "response": {
+        "label": "Four to six weeks, occasionally longer",
+        "band": "1-3-months",
+        "official": true
+      },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "prohibited",
+      "whatTheyWant": [
+        "Work demonstrating originality, artistic merit and a distinctive voice.",
+        "Poetry in Portuguese or English, and translations of poems between the two languages.",
+        "Short fiction, literary translation, photography, drawing, essay, and nonfiction prose including chronicle and personal or reflective writing.",
+        "One text per page, with your email address included."
+      ],
+      "whatTheyDontWant": [
+        "Work generated wholly or substantially by artificial intelligence. AI-generated submissions are declined.",
+        "Translations where you do not hold the necessary rights — by submitting a translation the author confirms that they do."
+      ],
+      "requirements": [
+        "Read the terms and conditions on the submissions page before submitting.",
+        "Format with no more than one text per page and include your email address.",
+        "Simultaneous submissions are accepted, but tell the journal immediately if the text is accepted elsewhere.",
+        "Expect a response in four to six weeks, sometimes longer."
+      ],
+      "rights": "Authors retain copyright. By accepting publication the author grants the journal first publication rights.",
+      "howToSubmit": [
+        "Read https://www.lisbonliteraryreview.com/submissions/ in full — the terms and conditions sit on that page.",
+        "If you are submitting a translation, be certain you hold the rights.",
+        "This is a new journal; confirm current terms before you send."
+      ],
+      "keywords": [
+        "lisbon literary review",
+        "portuguese",
+        "english",
+        "bilingual",
+        "poetry",
+        "translation",
+        "no ai",
+        "copyright retained"
+      ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-30",
+      "publishedAt": "2026-09-30",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "stygian-lepus",
+      "slug": "stygian-lepus",
+      "publication": "Stygian Lepus",
+      "title": "Fiction, poetry and art",
+      "seoTitle": "Stygian Lepus: $5 token payment, up to 5,000 words",
+      "excerpt": "Stygian Lepus offers a token payment of $5 USD for each accepted submission and takes work up to 5,000 words. All copyright remains with the author and reprints are allowed, though the magazine asks for three months' exclusivity from publication. Simultaneous submissions are disqualified.",
+      "officialUrl": "https://www.stygianlepus.com/submissions/",
+      "applyUrl": "https://www.stygianlepus.com/submissions/",
+      "applyEmail": null,
+      "applyMethod": "Email submission — one email per piece",
+      "sources": [
+        {
+          "name": "Stygian Lepus — Submissions (official)",
+          "url": "https://www.stygianlepus.com/submissions/"
+        }
+      ],
+      "eligibility": {
+        "summary": "No stated country restriction on the submissions page.",
+        "mode": "not-stated",
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": true
+      },
+      "writingTypes": [
+        "fiction",
+        "poetry"
+      ],
+      "writingTypeLabel": "Fiction, poetry and art",
+      "pay": {
+        "currency": "USD",
+        "amountMin": 5,
+        "amountMax": 5,
+        "display": "$5 USD token payment per accepted submission",
+        "conditions": "Official submissions page: Stygian Lepus offers a small token payment of $5 USD for each accepted submission. It describes the payment as a token, so treat this as a credit market rather than a professional-rate one.",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "min": null,
+        "max": 5000,
+        "display": "Up to 5,000 words"
+      },
+      "response": {
+        "label": "Not stated",
+        "band": "not-stated",
+        "official": false
+      },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "not-stated",
+      "whatTheyWant": [
+        "Fiction, poetry and art up to 5,000 words.",
+        "A short bio of no more than 100 words with one link."
+      ],
+      "whatTheyDontWant": [
+        "Simultaneous submissions. The page states plainly that they will be disqualified — simultaneous means sending the same piece to two publishers at the same time.",
+        "Work over 5,000 words.",
+        "More than one submission per email."
+      ],
+      "requirements": [
+        "Send one email per submission.",
+        "Include a bio of 100 words or fewer with one link.",
+        "Do not submit the same piece anywhere else at the same time.",
+        "Be aware that submitting implies consent to be added to the newsletter, which is how approval drafts are sent. Marking those emails as spam prevents the approval request and means Stygian Lepus can no longer accept submissions from you."
+      ],
+      "rights": "All copyright remains with the author and reprints are allowed, provided Stygian Lepus has exclusivity for three months from the publication date.",
+      "howToSubmit": [
+        "Read https://www.stygianlepus.com/submissions/ before sending.",
+        "One piece per email — do not bundle.",
+        "Do not whitelist-block the newsletter if you want to be able to submit again."
+      ],
+      "keywords": [
+        "stygian lepus",
+        "fiction",
+        "poetry",
+        "art",
+        "$5",
+        "5000 words",
+        "copyright retained",
+        "no simultaneous"
+      ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-30",
+      "publishedAt": "2026-09-30",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "in-short-journal",
+      "slug": "in-short-journal",
+      "publication": "In Short: A Journal of Flash Nonfiction",
+      "title": "Flash nonfiction, micros and short-shorts",
+      "seoTitle": "In Short: flash nonfiction to 1,000 words — unpaid, rights revert in 3 months",
+      "excerpt": "In Short publishes flash nonfiction of 1,000 words or fewer, including memoir, lyric essays, experimental pieces and straightforward narrative. Micros run to 400 words and short-shorts to 100. It cannot yet pay writers and says so openly, and it asks only for first serial rights, with all rights reverting to the author three months after publication.",
+      "officialUrl": "https://inshortjournal.com/in-short-home-page/submissions/",
+      "applyUrl": "https://inshortjournal.com/in-short-home-page/submissions/",
+      "applyEmail": null,
+      "applyMethod": "Online submission — see submissions page",
+      "sources": [
+        {
+          "name": "In Short — Submissions (official)",
+          "url": "https://inshortjournal.com/in-short-home-page/submissions/"
+        }
+      ],
+      "eligibility": {
+        "summary": "No stated country restriction on the submissions page.",
+        "mode": "not-stated",
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": true
+      },
+      "writingTypes": [
+        "creative-nonfiction",
+        "personal-essays",
+        "essays"
+      ],
+      "writingTypeLabel": "Flash nonfiction, micros and short-shorts",
+      "pay": {
+        "currency": null,
+        "amountMin": null,
+        "amountMax": null,
+        "display": "Unpaid — the journal states it cannot yet pay writers",
+        "conditions": "Official submissions page: In Short states that because creative nonfiction often contains sensitive material it cannot yet pay writers, and that it hopes to change that through grants, tip jar donations and paid feedback options. BRYME records no figure because there is none. Treat this as an unpaid credit market.",
+        "timing": "Not applicable — unpaid"
+      },
+      "wordCount": {
+        "min": null,
+        "max": 1000,
+        "display": "Flash nonfiction to 1,000 words; micros to 400; short-shorts to 100"
+      },
+      "response": {
+        "label": "Not stated",
+        "band": "not-stated",
+        "official": false
+      },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "not-stated",
+      "whatTheyWant": [
+        "Flash nonfiction of 1,000 words or fewer.",
+        "Memoir, lyric essays, experimental pieces, straightforward narratives, and everything in between — the page names hermit crabs among the things it loves.",
+        "Micros: flash nonfiction of 400 words or fewer.",
+        "Short-shorts: flash of 100 words or fewer."
+      ],
+      "whatTheyDontWant": [
+        "Anything over 1,000 words for the main category.",
+        "An expectation of payment. The journal is explicit that it cannot pay yet."
+      ],
+      "requirements": [
+        "Submit through the route on the submissions page.",
+        "Pick the right category — flash nonfiction, micro or short-short each has its own word ceiling.",
+        "Do not expect payment; do expect a fast turnaround on rights."
+      ],
+      "rights": "In Short asks for first serial rights only. All rights revert to the author three months after publication, after which work may be reprinted, with an acknowledgement of In Short as the place of initial publication.",
+      "howToSubmit": [
+        "Read https://inshortjournal.com/in-short-home-page/submissions/ before sending.",
+        "This is unpaid — submit for the credit and the fast rights reversion, not the money.",
+        "Keep to the ceiling for your category: 1,000, 400 or 100 words."
+      ],
+      "keywords": [
+        "in short",
+        "flash nonfiction",
+        "creative nonfiction",
+        "micro",
+        "1000 words",
+        "unpaid",
+        "rights revert"
+      ]
     }
   ]
 }
