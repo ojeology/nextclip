@@ -15776,6 +15776,1033 @@
         "no ai",
         "90 days electronic"
       ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-30",
+      "publishedAt": "2026-09-30",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "new-england-review",
+      "slug": "new-england-review",
+      "publication": "New England Review",
+      "title": "Poetry, fiction, nonfiction, translation and dramatic writing",
+      "seoTitle": "New England Review: $20 a page, $50 minimum, 12-week response",
+      "excerpt": "New England Review pays $20 per page with a $50 minimum, plus two copies of the issue and a one-year subscription, and $50 for its Staging Style and other digital features. It takes one piece at a time — up to three if they are under 1,000 words — and dramatic writing up to 5,000 words. It expects contributors not to outsource their writing, translating or thinking to generative AI.",
+      "officialUrl": "https://nereview.com/submission-guidelines/",
+      "applyUrl": "https://nereview.com/submission-guidelines/",
+      "applyEmail": null,
+      "applyMethod": "Submittable — paper submissions accepted where Submittable is not usable",
+      "sources": [
+        {
+          "name": "New England Review — Submission Guidelines (official)",
+          "url": "https://nereview.com/submission-guidelines/"
+        }
+      ],
+      "eligibility": {
+        "summary": "No stated country restriction on the guidelines page.",
+        "mode": "not-stated",
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": true
+      },
+      "writingTypes": [
+        "poetry",
+        "fiction",
+        "creative-nonfiction",
+        "translation",
+        "drama"
+      ],
+      "writingTypeLabel": "Poetry, fiction, nonfiction, translation and dramatic writing",
+      "pay": {
+        "currency": "USD",
+        "amountMin": 20,
+        "amountMax": 50,
+        "display": "$20 per page with a $50 minimum, plus 2 copies and a 1-year subscription",
+        "conditions": "Official submission guidelines: payment for work published in the journal is $20 per page with a $50 minimum, plus two copies of the issue in which the work appears and a one-year subscription to the print or e-book edition. For Staging Style and other digital features, payment is $50 and a one-year subscription. The $50 minimum is recorded as the floor because the per-page rate scales with length.",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "min": null,
+        "max": 5000,
+        "display": "Dramatic writing up to 5,000 words; one piece at a time, or up to three if each is under 1,000 words"
+      },
+      "response": {
+        "label": "Attempted within twelve weeks, sometimes longer; every submission gets a response",
+        "band": "3-plus-months",
+        "official": true
+      },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "prohibited",
+      "whatTheyWant": [
+        "Poetry, fiction, nonfiction, translation and dramatic writing.",
+        "Dramatic writing: short plays, monologues and screenplays, up to 5,000 words.",
+        "Very short pieces — if the work is under 1,000 words you may send up to three."
+      ],
+      "whatTheyDontWant": [
+        "Outsourcing writing, translating or thinking to generative AI. The journal states it expects contributors to engage honestly with their own creative minds.",
+        "More than one piece at a time, unless the pieces are each under 1,000 words."
+      ],
+      "requirements": [
+        "Submit through Submittable.",
+        "If you cannot use Submittable for any reason, paper submissions are allowed.",
+        "Send one piece at a time, or up to three very short ones.",
+        "Expect a response — New England Review responds to every submission, aiming for twelve weeks."
+      ],
+      "rights": "Not stated on the official submission guidelines page.",
+      "howToSubmit": [
+        "Read https://nereview.com/submission-guidelines/ before sending.",
+        "Do not bundle pieces unless each is under 1,000 words.",
+        "Paper submission is a genuine accessibility route here, not a last resort."
+      ],
+      "keywords": [
+        "new england review",
+        "poetry",
+        "fiction",
+        "nonfiction",
+        "translation",
+        "dramatic writing",
+        "$20 per page",
+        "$50 minimum",
+        "no generative ai"
+      ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-30",
+      "publishedAt": "2026-09-30",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "ubwali-literary-magazine",
+      "slug": "ubwali-literary-magazine",
+      "publication": "Ubwali Literary Magazine",
+      "title": "Fiction, essays, poetry and visual art",
+      "seoTitle": "Ubwali Literary Magazine: $10 a contributor, no reading fee",
+      "excerpt": "Ubwali Literary Magazine offers a one-off $10 payment to each contributor whose work is accepted, paid per artist rather than per piece, and charges no reading fees. It takes fiction of 3,000 to 6,000 words, essays of up to 3,000 words and one to three poems. It does not consider or accept AI-generated work, and all rights revert 90 days after publication.",
+      "officialUrl": "https://www.ubwali.com/submissions",
+      "applyUrl": "https://www.ubwali.com/submissions",
+      "applyEmail": null,
+      "applyMethod": "Online submission — no reading fee",
+      "sources": [
+        {
+          "name": "Ubwali Literary Magazine — Submissions (official)",
+          "url": "https://www.ubwali.com/submissions"
+        }
+      ],
+      "eligibility": {
+        "summary": "No stated country restriction on the guidelines page.",
+        "mode": "not-stated",
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": true
+      },
+      "writingTypes": [
+        "fiction",
+        "essays",
+        "poetry"
+      ],
+      "writingTypeLabel": "Fiction, essays, poetry and visual art",
+      "pay": {
+        "currency": "USD",
+        "amountMin": 10,
+        "amountMax": 10,
+        "display": "$10 one-off per accepted contributor",
+        "conditions": "Official submissions page: a one-off $10 payment is offered to artists whose work is accepted for publication. Ubwali states explicitly that it pays per artist, not per piece, so submitting three poems earns the same $10 as one. It charges no reading fees.",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "min": 3000,
+        "max": 6000,
+        "display": "Fiction 3,000–6,000 words; essays up to 3,000 words; 1–3 poems in one document"
+      },
+      "response": {
+        "label": "Not stated; a slow reply means the work is still under consideration",
+        "band": "not-stated",
+        "official": true
+      },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "prohibited",
+      "whatTheyWant": [
+        "Fiction of 3,000 to 6,000 words.",
+        "Essays of up to 3,000 words.",
+        "One to three poems in a single document.",
+        "Visual art."
+      ],
+      "whatTheyDontWant": [
+        "AI-generated work. Ubwali states it does not consider or accept it.",
+        "Fiction outside the 3,000 to 6,000 word band."
+      ],
+      "requirements": [
+        "Send your work through the submissions page; there is no reading fee.",
+        "Group poems into a single document, one to three of them.",
+        "Keep fiction between 3,000 and 6,000 words and essays under 3,000.",
+        "Do not chase a slow reply — Ubwali says a longer wait means the work is still being considered."
+      ],
+      "rights": "Ubwali requests first serial rights for every piece it accepts. All rights revert to the author 90 days after publication.",
+      "howToSubmit": [
+        "Read https://www.ubwali.com/submissions before sending.",
+        "The payment is per contributor, so send your best set rather than many singles.",
+        "No fee, so there is no cost to submitting."
+      ],
+      "keywords": [
+        "ubwali",
+        "fiction",
+        "essays",
+        "poetry",
+        "$10",
+        "3000-6000 words",
+        "no reading fee",
+        "rights revert 90 days",
+        "no ai"
+      ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-30",
+      "publishedAt": "2026-09-30",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "blood-tree-literature",
+      "slug": "blood-tree-literature",
+      "publication": "Blood Tree Literature",
+      "title": "Flash poetry, fiction, nonfiction and hybrid work",
+      "seoTitle": "Blood Tree Literature: $10 poetry, $15 prose, $20 hybrid",
+      "excerpt": "Blood Tree Literature pays $10 for poetry, $15 for fiction and nonfiction and $20 for hybrid pieces, all in USD through PayPal, against a $3 submission fee. It leans flash. AI-generated work is strictly prohibited, and contributors retain copyright, free to republish elsewhere after six months with attribution.",
+      "officialUrl": "https://www.bloodtreeliterature.com/submit",
+      "applyUrl": "https://www.bloodtreeliterature.com/submit",
+      "applyEmail": null,
+      "applyMethod": "Submittable — $3 fee, optional $15 feedback tier",
+      "sources": [
+        {
+          "name": "Blood Tree Literature — Submit (official)",
+          "url": "https://www.bloodtreeliterature.com/submit"
+        }
+      ],
+      "eligibility": {
+        "summary": "No stated country restriction on the guidelines page.",
+        "mode": "not-stated",
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": true
+      },
+      "writingTypes": [
+        "poetry",
+        "fiction",
+        "creative-nonfiction"
+      ],
+      "writingTypeLabel": "Flash poetry, fiction, nonfiction and hybrid pieces",
+      "pay": {
+        "currency": "USD",
+        "amountMin": 10,
+        "amountMax": 20,
+        "display": "$10 poetry; $15 fiction and nonfiction; $20 hybrid pieces",
+        "conditions": "Official submit page: per piece accepted, Blood Tree Literature pays $10 for poetry, $15 for fiction and nonfiction, and $20 for hybrid pieces. All payments are in USD and processed through PayPal. A $3 submission fee applies, and a $15 tier buys detailed feedback and constructive notes. Fees go toward Submittable and domain costs, paying contributors and contest donations.",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "min": null,
+        "max": null,
+        "display": "Flash-focused — the magazine states it likes to keep it flash-y"
+      },
+      "response": {
+        "label": "Query by email after three months",
+        "band": "3-plus-months",
+        "official": true
+      },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "prohibited",
+      "whatTheyWant": [
+        "Flash poetry, fiction, nonfiction and hybrid pieces.",
+        "Mixed-media work, provided every image or audiovisual element is fully owned by the submitting author."
+      ],
+      "whatTheyDontWant": [
+        "AI-generated work. Strictly prohibited. Blood Tree also states that any use of the publication to train generative AI technologies is expressly prohibited.",
+        "Pieces using unlicensed images or audiovisual elements — rejected on copyright grounds."
+      ],
+      "requirements": [
+        "Submit through Submittable and pay the $3 fee.",
+        "Optionally take the $15 feedback tier if you want detailed notes.",
+        "Write flash — that is the house preference.",
+        "Query by email if three months pass with no response."
+      ],
+      "rights": "Contributors retain copyright for their accepted work and may publish it elsewhere after six months have passed since the Blood Tree Literature publication date, with attribution to its first appearance.",
+      "howToSubmit": [
+        "Read https://www.bloodtreeliterature.com/submit before sending.",
+        "Keep it short — flash is what the magazine wants.",
+        "Only query after three months."
+      ],
+      "keywords": [
+        "blood tree literature",
+        "flash",
+        "poetry",
+        "fiction",
+        "nonfiction",
+        "hybrid",
+        "$20",
+        "paypal",
+        "copyright retained",
+        "no ai"
+      ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-30",
+      "publishedAt": "2026-09-30",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "foglifter",
+      "slug": "foglifter",
+      "publication": "Foglifter",
+      "title": "Fiction, nonfiction, poetry and translation",
+      "seoTitle": "Foglifter: $100 honorarium, author and translator both paid",
+      "excerpt": "Foglifter pays a $100 honorarium by PayPal plus two copies of the issue, and where a translation is published both author and translator receive an honorarium. It takes up to 7,500 words of fiction or nonfiction and three to five poems, and accepts only first rights. AI-generated work is automatically disqualified. Its fiction and poetry submission caps for the current reading period were reached in August and September 2026.",
+      "officialUrl": "https://www.foglifterjournal.com/submit",
+      "applyUrl": "https://www.foglifterjournal.com/submit",
+      "applyEmail": null,
+      "applyMethod": "Submittable",
+      "sources": [
+        {
+          "name": "Foglifter — Submit (official)",
+          "url": "https://www.foglifterjournal.com/submit"
+        }
+      ],
+      "eligibility": {
+        "summary": "No stated country restriction on the guidelines page.",
+        "mode": "not-stated",
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": true
+      },
+      "writingTypes": [
+        "fiction",
+        "creative-nonfiction",
+        "poetry",
+        "translation"
+      ],
+      "writingTypeLabel": "Fiction, nonfiction, poetry and translation",
+      "pay": {
+        "currency": "USD",
+        "amountMin": 100,
+        "amountMax": 100,
+        "display": "$100 honorarium plus two copies; translators paid separately",
+        "conditions": "Official submit page: contributors receive two copies of the issue in which they appear and a $100 honorarium via PayPal. For translated work, both author and translator receive an honorarium.",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "min": null,
+        "max": 7500,
+        "display": "Up to 7,500 words of fiction or nonfiction (up to three flash pieces); 3–5 poems, one per page, max 5 pages"
+      },
+      "response": {
+        "label": "Not stated",
+        "band": "not-stated",
+        "official": false
+      },
+      "submissionStatus": "closed",
+      "deadline": {
+        "date": null,
+        "display": "Foglifter reached its submission cap for fiction on 26 August 2026 and for poetry on 12 September 2026, within the Foglifter 12 reading period. Poetry is capped at 500 submissions. Check the current call on its Submittable page before preparing work — other genres may still be open, and the next reading period will reopen them.",
+        "recurring": true
+      },
+      "aiPolicy": "prohibited",
+      "whatTheyWant": [
+        "Fiction or nonfiction of up to 7,500 words, including up to three flash fiction pieces.",
+        "Poetry: three to five poems, one poem per page, maximum five pages.",
+        "Translated work in all genres, provided rights were secured before submission.",
+        "Art in all mediums except AI."
+      ],
+      "whatTheyDontWant": [
+        "AI-generated work of any kind. It is automatically disqualified, and no AI art submissions are accepted.",
+        "Multi-modal components where the submitting poet does not hold the copyright.",
+        "Translations where rights were not secured before submission.",
+        "More than one submission per genre in a reading period."
+      ],
+      "requirements": [
+        "Check the current call on Foglifter's Submittable page first — caps are reached early.",
+        "Only one submission per genre is permitted each reading period.",
+        "Simultaneous submissions are accepted, but withdraw immediately on acceptance elsewhere, or message through Submittable for a partial withdrawal.",
+        "Secure translation rights before you send."
+      ],
+      "rights": "Foglifter accepts only first rights to publication.",
+      "howToSubmit": [
+        "Check https://www.foglifterjournal.com/submit and the Submittable call for what is currently open.",
+        "Fiction and poetry were capped as of late September 2026 — wait for the next reading period rather than sending into a closed call.",
+        "Translators are paid separately, so a translation is worth two honoraria."
+      ],
+      "keywords": [
+        "foglifter",
+        "fiction",
+        "nonfiction",
+        "poetry",
+        "translation",
+        "$100",
+        "7500 words",
+        "first rights",
+        "submission cap",
+        "no ai"
+      ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-30",
+      "publishedAt": "2026-09-30",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "the-dolomite-review",
+      "slug": "the-dolomite-review",
+      "publication": "The Dolomite Review",
+      "title": "Fiction, poetry and first-person essays",
+      "seoTitle": "The Dolomite Review: $50 featured work, 2,500-word stories",
+      "excerpt": "The Dolomite Review awards $50 each to one featured poem, one featured short story and one featured essay per issue from its Fall 2026 issue, against a $3.50 submission fee. Short stories run to 2,500 words. It asks submitters to confirm the work is original and human-authored with no AI-generated text or assistance, and all rights revert after publication.",
+      "officialUrl": "https://www.thedolomitereview.com/submit",
+      "applyUrl": "https://www.thedolomitereview.com/submit",
+      "applyEmail": null,
+      "applyMethod": "Online submission — $3.50 fee",
+      "sources": [
+        {
+          "name": "The Dolomite Review — Submit (official)",
+          "url": "https://www.thedolomitereview.com/submit"
+        }
+      ],
+      "eligibility": {
+        "summary": "No stated country restriction on the guidelines page.",
+        "mode": "not-stated",
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": true
+      },
+      "writingTypes": [
+        "fiction",
+        "poetry",
+        "essays"
+      ],
+      "writingTypeLabel": "Fiction, poetry and first-person essays",
+      "pay": {
+        "currency": "USD",
+        "amountMin": 50,
+        "amountMax": 50,
+        "display": "$50 to one featured poem, one short story and one essay per issue",
+        "conditions": "Official submit page: beginning with the Fall 2026 issue, The Dolomite Review awards $50 each to one featured poem, one featured short story and one featured essay per issue. This is an award for featured work, not a rate paid to every accepted contributor, and BRYME records it as such. A $3.50 submission fee applies to all manuscripts.",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "min": null,
+        "max": 2500,
+        "display": "Short stories no more than 2,500 words"
+      },
+      "response": {
+        "label": "Not stated",
+        "band": "not-stated",
+        "official": false
+      },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "prohibited",
+      "whatTheyWant": [
+        "Fiction, poetry and first-person essays that resonate with clarity, curiosity and depth.",
+        "Short stories of no more than 2,500 words."
+      ],
+      "whatTheyDontWant": [
+        "AI-generated text or assistance of any kind. The submission form requires an attestation that the work is original and human-authored and contains no AI-generated text or assistance. The magazine describes itself as open to all and not discriminating — except against artificial intelligence."
+      ],
+      "requirements": [
+        "Submit through the submissions page and pay the $3.50 fee.",
+        "Keep short stories to 2,500 words.",
+        "Double-space everything except poetry.",
+        "Tick the human-authorship attestation honestly — it is a condition of submission."
+      ],
+      "rights": "The Dolomite Review requests first electronic rights and the right to archive the piece on its website. After publication all rights revert to the author, with the understanding that the magazine is credited as the original publisher if the work appears elsewhere.",
+      "howToSubmit": [
+        "Read https://www.thedolomitereview.com/submit before sending.",
+        "The $50 is a featured-work award, so most accepted contributors are not paid — submit with that understood.",
+        "Double-space prose; leave poetry single."
+      ],
+      "keywords": [
+        "dolomite review",
+        "fiction",
+        "poetry",
+        "essays",
+        "$50",
+        "2500 words",
+        "human authored",
+        "no ai"
+      ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-30",
+      "publishedAt": "2026-09-30",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "haydens-ferry-review",
+      "slug": "haydens-ferry-review",
+      "publication": "Hayden's Ferry Review",
+      "title": "Poetry, micro-fiction, essays and stories",
+      "seoTitle": "Hayden's Ferry Review: contributor honorarium, no AI in part",
+      "excerpt": "Hayden's Ferry Review pays each print contributor a modest honorarium from its contributor fund from fall 2026, with the amount depending on the funds available each semester and therefore no published figure. It takes up to six poems or micro-fictions, or one essay or story, for a $3 submission fee, and sets aside free submissions each reading period. It does not accept work produced wholly or in part by AI.",
+      "officialUrl": "https://haydensferryreview.com/submit",
+      "applyUrl": "https://haydensferryreview.com/submit",
+      "applyEmail": null,
+      "applyMethod": "Submittable — $3 fee, free slots set aside each period",
+      "sources": [
+        {
+          "name": "Hayden's Ferry Review — Submit (official)",
+          "url": "https://haydensferryreview.com/submit"
+        }
+      ],
+      "eligibility": {
+        "summary": "No stated country restriction on the guidelines page.",
+        "mode": "not-stated",
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": true
+      },
+      "writingTypes": [
+        "poetry",
+        "fiction",
+        "essays"
+      ],
+      "writingTypeLabel": "Poetry, micro-fiction, essays and stories",
+      "pay": {
+        "currency": null,
+        "amountMin": null,
+        "amountMax": null,
+        "display": "Modest honorarium from the contributor fund; amount varies by semester, no figure stated",
+        "conditions": "Official submit page: starting in fall 2026, Hayden's Ferry Review can pay each print contributor a modest honorarium from its contributor fund, but states that the amount will depend on the funds available each semester. Because no figure is published, BRYME records none. There is a $3 submission fee to the print journal in all genres except art, and a set number of free submissions during each open reading period.",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "min": null,
+        "max": null,
+        "display": "Up to 6 poems or micro-fictions, or one essay or story"
+      },
+      "response": {
+        "label": "Not stated",
+        "band": "not-stated",
+        "official": false
+      },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "prohibited",
+      "whatTheyWant": [
+        "Up to six poems or micro-fictions.",
+        "One essay or one story.",
+        "Art, which carries no submission fee."
+      ],
+      "whatTheyDontWant": [
+        "Work produced wholly or in part by AI. The magazine does not accept it in any proportion.",
+        "A second submission in the same genre before the first has been answered."
+      ],
+      "requirements": [
+        "Submit through Submittable.",
+        "Pay the $3 fee in any genre except art, or use one of the free submission slots set aside each reading period.",
+        "Send one submission per genre at a time for print issues and wait for a response before sending more.",
+        "If work is accepted elsewhere, notify the editors immediately by adding a message to the submission in Submittable."
+      ],
+      "rights": "You or the copyright owner retain copyright and the right of reprint. After publication all rights except those stated by the magazine revert to the copyright owner.",
+      "howToSubmit": [
+        "Read https://haydensferryreview.com/submit before sending.",
+        "Look for the free submission slots if the fee is a barrier.",
+        "One genre at a time, and wait for the answer."
+      ],
+      "keywords": [
+        "hayden's ferry review",
+        "poetry",
+        "micro-fiction",
+        "essays",
+        "honorarium",
+        "6 poems",
+        "free submissions",
+        "no ai"
+      ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-30",
+      "publishedAt": "2026-09-30",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "hemlock-journal",
+      "slug": "hemlock-journal",
+      "publication": "The Hemlock Journal",
+      "title": "Poetry, fiction, nonfiction and visual art",
+      "seoTitle": "Hemlock Journal: $15 for print, fee refunded for digital",
+      "excerpt": "The Hemlock Journal pays $15 for each piece selected for print and refunds the submission fee to contributors published digitally. Fiction and nonfiction run from 1,000 to 4,000 words, with anything shorter treated as flash, and each poetry submission may hold two poems across five pages. Rights remain with the author and the artist.",
+      "officialUrl": "https://thehemlockjournal.com/submissions/",
+      "applyUrl": "https://thehemlockjournal.com/submissions/",
+      "applyEmail": null,
+      "applyMethod": "Online submission — $3 expedited response option",
+      "sources": [
+        {
+          "name": "The Hemlock Journal — Submissions (official)",
+          "url": "https://thehemlockjournal.com/submissions/"
+        }
+      ],
+      "eligibility": {
+        "summary": "No stated country restriction on the guidelines page.",
+        "mode": "not-stated",
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": true
+      },
+      "writingTypes": [
+        "poetry",
+        "fiction",
+        "creative-nonfiction"
+      ],
+      "writingTypeLabel": "Poetry, fiction, nonfiction and visual art",
+      "pay": {
+        "currency": "USD",
+        "amountMin": 15,
+        "amountMax": 15,
+        "display": "$15 per piece selected for print; fee refunded for digital publication",
+        "conditions": "Official submissions page: The Hemlock Journal pays $15 for each piece selected for print, and refunds the submission fee to contributors of digital versions. An expedited response of under two weeks is available for $3 per submission. The $15 applies to print selection only; a digital-only contributor receives a fee refund rather than a payment.",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "min": 1000,
+        "max": 4000,
+        "display": "Fiction and nonfiction 1,000–4,000 words; under 1,000 is flash; poetry max 2 poems and 5 pages"
+      },
+      "response": {
+        "label": "Not stated; expedited response under two weeks for $3",
+        "band": "not-stated",
+        "official": true
+      },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "not-stated",
+      "whatTheyWant": [
+        "Poetry, fiction, nonfiction and visual art.",
+        "Fiction and nonfiction of 1,000 to 4,000 words, typed in Times New Roman or a similar font, single-spaced.",
+        "Flash fiction — pieces shorter than 1,000 words, submitted under the same category with the submission noted.",
+        "Poetry: a maximum of two poems and five pages in total, all poems in a single document.",
+        "Previously published work, provided the author retains all the rights."
+      ],
+      "whatTheyDontWant": [
+        "Fiction or nonfiction outside the 1,000 to 4,000 word band, unless it is flash.",
+        "More than two poems or more than five pages in a poetry submission.",
+        "Previously published work where the author no longer holds the rights."
+      ],
+      "requirements": [
+        "Send one complete work of fiction or nonfiction per submission.",
+        "Put all poems in one single document, maximum two poems and five pages.",
+        "Take the $3 expedited option if you need an answer in under two weeks.",
+        "Check the site and the magazine's Instagram for commencement dates and deadlines."
+      ],
+      "rights": "The rights remain with the author and the artist. The Hemlock Journal retains the right to publish the submitted work, if selected, in its upcoming issues, whether in print or digitally.",
+      "howToSubmit": [
+        "Read https://thehemlockjournal.com/submissions/ before sending.",
+        "Flash is a legitimate route here — under 1,000 words is welcome, just label it.",
+        "Check the current submission window; dates are announced on the site and Instagram."
+      ],
+      "keywords": [
+        "hemlock journal",
+        "poetry",
+        "fiction",
+        "nonfiction",
+        "$15",
+        "1000-4000 words",
+        "flash",
+        "expedited response",
+        "rights retained"
+      ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-30",
+      "publishedAt": "2026-09-30",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "midway-journal",
+      "slug": "midway-journal",
+      "publication": "Midway Journal",
+      "title": "Flash fiction, nonfiction, stories, essays and poetry",
+      "seoTitle": "Midway Journal: $40 for flash or one story, 2,000 words",
+      "excerpt": "Midway Journal pays $40 for two works of flash fiction or nonfiction, or for one story or essay of up to eight double-spaced pages or 2,000 words. It takes three to five poems in a single document, each beginning on a new page, and asks for aesthetically ambitious work that invokes the colliding energies of the fairgrounds. Response time is three to six months.",
+      "officialUrl": "https://midwayjournal.com/submissions/",
+      "applyUrl": "https://midwayjournal.com/submissions/",
+      "applyEmail": null,
+      "applyMethod": "Online submission — $3 expedited reading option",
+      "sources": [
+        {
+          "name": "Midway Journal — Submissions (official)",
+          "url": "https://midwayjournal.com/submissions/"
+        }
+      ],
+      "eligibility": {
+        "summary": "No stated country restriction on the guidelines page.",
+        "mode": "not-stated",
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": true
+      },
+      "writingTypes": [
+        "fiction",
+        "creative-nonfiction",
+        "poetry"
+      ],
+      "writingTypeLabel": "Flash fiction, nonfiction, stories, essays and poetry",
+      "pay": {
+        "currency": "USD",
+        "amountMin": 40,
+        "amountMax": 40,
+        "display": "$40 for 2 flash works, or 1 story or essay up to 8 double-spaced pages / 2,000 words",
+        "conditions": "Official submissions page: fiction and nonfiction pay $40 for two works of flash fiction or nonfiction, or for one story or essay of up to eight double-spaced pages or 2,000 words. A $3.00 tip jar buys a guaranteed careful, expedited reading. All funds from submissions go toward the rising costs of operating and maintaining the journal. No separate poetry rate is stated on the page.",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "min": null,
+        "max": 2000,
+        "display": "One story or essay up to 8 double-spaced pages / 2,000 words, or two flash works; 3–5 poems each on a new page"
+      },
+      "response": {
+        "label": "Three to six months; wait two weeks before inquiring",
+        "band": "3-plus-months",
+        "official": true
+      },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "not-stated",
+      "whatTheyWant": [
+        "Aesthetically ambitious work that invokes the colliding and converging energies of the fairgrounds — that is the journal's stated theme.",
+        "Two works of flash fiction or nonfiction, or one story or essay up to 2,000 words.",
+        "Poetry: three to five poems in a single document, each poem beginning on a new page, single-spaced."
+      ],
+      "whatTheyDontWant": [
+        "Work that ignores the fairgrounds conceit — it is the journal's organising idea, not a loose suggestion."
+      ],
+      "requirements": [
+        "Send three to five poems in a single document with each poem starting on a new page.",
+        "Single-space poetry manuscripts.",
+        "Take the $3 tip jar option if you want a guaranteed expedited reading.",
+        "Allow three to six months before inquiring, and wait at least two weeks before any status question."
+      ],
+      "rights": "Not stated on the official submissions page.",
+      "howToSubmit": [
+        "Read https://midwayjournal.com/submissions/ and read the poetry preferences page too.",
+        "Write to the fairgrounds theme.",
+        "Do not query before two weeks, and expect three to six months."
+      ],
+      "keywords": [
+        "midway journal",
+        "flash fiction",
+        "nonfiction",
+        "poetry",
+        "$40",
+        "2000 words",
+        "fairgrounds",
+        "3-5 poems"
+      ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-30",
+      "publishedAt": "2026-09-30",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "mockingheart-review",
+      "slug": "mockingheart-review",
+      "publication": "MockingHeart Review",
+      "title": "Poetry, fiction and nonfiction",
+      "seoTitle": "MockingHeart Review: unpaid, no fee, rights revert on publication",
+      "excerpt": "MockingHeart Review states plainly that it cannot pay contributors at this time, and equally that it charges no submission fee. Submitters whose work is accepted grant first North American serial rights, but rights revert to the creator upon publication. AI-generated work is not considered and senders are banned from submitting again.",
+      "officialUrl": "https://mockingheartreview.com/submit/",
+      "applyUrl": "https://mockingheartreview.com/submit/",
+      "applyEmail": null,
+      "applyMethod": "Online submission during reading periods only",
+      "sources": [
+        {
+          "name": "MockingHeart Review — Submit (official)",
+          "url": "https://mockingheartreview.com/submit/"
+        }
+      ],
+      "eligibility": {
+        "summary": "No stated country restriction on the guidelines page.",
+        "mode": "not-stated",
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": true
+      },
+      "writingTypes": [
+        "poetry",
+        "fiction",
+        "creative-nonfiction"
+      ],
+      "writingTypeLabel": "Poetry, fiction and nonfiction",
+      "pay": {
+        "currency": null,
+        "amountMin": null,
+        "amountMax": null,
+        "display": "Unpaid — the magazine states it cannot pay contributors at this time",
+        "conditions": "Official submit page: MockingHeart Review states that it regrets it cannot pay contributors at this time, and that it does not charge a submission fee either. BRYME records no figure because there is none. Treat this as an unpaid market with no cost to enter.",
+        "timing": "Not applicable — unpaid"
+      },
+      "wordCount": {
+        "min": null,
+        "max": null,
+        "display": "No word limit stated on the submit page"
+      },
+      "response": {
+        "label": "Not stated",
+        "band": "not-stated",
+        "official": false
+      },
+      "submissionStatus": "open",
+      "deadline": {
+        "date": null,
+        "display": "Submissions are only considered during the reading periods listed on the submit page. Submissions outside those periods are ignored unless solicited.",
+        "recurring": true
+      },
+      "aiPolicy": "prohibited",
+      "whatTheyWant": [
+        "Poetry, fiction and nonfiction submitted during an open reading period."
+      ],
+      "whatTheyDontWant": [
+        "AI-generated work. It will not be considered, and the magazine states that senders of such work will be banned from submitting again.",
+        "Defamatory, discriminatory or plagiarized work — same consequence.",
+        "Submissions outside the listed reading periods, unless solicited."
+      ],
+      "requirements": [
+        "Read the guidelines before submitting — the magazine asks for this explicitly.",
+        "Check the listed reading periods; outside them your work is ignored.",
+        "Send only original, human-made work."
+      ],
+      "rights": "Submitters whose work is accepted grant MockingHeart Review first North American serial rights, but rights revert to the creator upon publication.",
+      "howToSubmit": [
+        "Read https://mockingheartreview.com/submit/ and check the reading period dates.",
+        "This is unpaid and fee-free — submit for the credit, not the money.",
+        "Rights revert immediately on publication, so you can reprint quickly."
+      ],
+      "keywords": [
+        "mockingheart review",
+        "poetry",
+        "fiction",
+        "nonfiction",
+        "unpaid",
+        "no fee",
+        "fnasr",
+        "rights revert",
+        "reading periods",
+        "no ai"
+      ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-30",
+      "publishedAt": "2026-09-30",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "rawhead",
+      "slug": "rawhead",
+      "publication": "Rawhead",
+      "title": "Poetry, fiction and nonfiction",
+      "seoTitle": "Rawhead: unpaid standard submissions, $100 award per issue",
+      "excerpt": "Rawhead takes poetry of up to seven poems across fifteen pages and fiction or nonfiction of up to 3,000 words. Standard submissions are unpaid — the journal says it is actively seeking funding and hopes to pay all contributors one day — but it awards $100 each to one outstanding artist and one standout writer per standard issue, and $30 to each featured contributor in Rawhead: Point Blank. Submissions must be original, human-made and free of AI assistance.",
+      "officialUrl": "https://rawheadjournal.org/submit-to-rawhead/",
+      "applyUrl": "https://rawheadjournal.org/submit-to-rawhead/",
+      "applyEmail": null,
+      "applyMethod": "Submittable — paid expedited response options",
+      "sources": [
+        {
+          "name": "Rawhead — Submit to Rawhead (official)",
+          "url": "https://rawheadjournal.org/submit-to-rawhead/"
+        }
+      ],
+      "eligibility": {
+        "summary": "No stated country restriction on the guidelines page.",
+        "mode": "not-stated",
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": true
+      },
+      "writingTypes": [
+        "poetry",
+        "fiction",
+        "creative-nonfiction"
+      ],
+      "writingTypeLabel": "Poetry, fiction and nonfiction",
+      "pay": {
+        "currency": null,
+        "amountMin": null,
+        "amountMax": null,
+        "display": "Standard submissions unpaid; $100 award to one writer and one artist per issue",
+        "conditions": "Official submit page: Rawhead states it is actively seeking funding and hopes to one day offer payment to all contributors, so standard submissions are currently unpaid. It does select one outstanding artist and one standout writer from each standard issue to receive a $100 award, and awards each featured contributor in Rawhead: Point Blank $30. Paid expedited responses are available: $5 and $10 for a guaranteed decision within two weeks, and $15 for a 72 business hour priority response. BRYME records no standard rate because there is none.",
+        "timing": "Not applicable — standard submissions unpaid"
+      },
+      "wordCount": {
+        "min": null,
+        "max": 3000,
+        "display": "Fiction and nonfiction up to 3,000 words; up to 7 poems totalling 15 pages"
+      },
+      "response": {
+        "label": "Not stated; two weeks guaranteed for a $5 or $10 expedited option",
+        "band": "not-stated",
+        "official": true
+      },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "prohibited",
+      "whatTheyWant": [
+        "Poetry: up to seven poems totalling no more than fifteen pages.",
+        "Fiction and nonfiction of up to 3,000 words.",
+        "Visual art — one artist per issue receives a $100 award."
+      ],
+      "whatTheyDontWant": [
+        "AI-generated content. Submissions must be original, human-made and free of AI assistance."
+      ],
+      "requirements": [
+        "Submit through Submittable.",
+        "Keep prose to 3,000 words and poetry to seven poems across fifteen pages.",
+        "Take a paid expedited option if you need a decision fast — $5 or $10 for two weeks, $15 for 72 business hours.",
+        "Critique packages are available on Submittable if you want the work developed first."
+      ],
+      "rights": "By accepting publication, authors grant Rawhead First Serial Rights, Non-Exclusive Reprint Rights, Electronic Rights, Archival Rights and Non-Exclusive Anthology Rights.",
+      "howToSubmit": [
+        "Read https://rawheadjournal.org/submit-to-rawhead/ before sending.",
+        "Standard submissions are unpaid — the $100 is a per-issue award, not a rate.",
+        "Pay for speed only if you need it; the standard queue is free."
+      ],
+      "keywords": [
+        "rawhead",
+        "poetry",
+        "fiction",
+        "nonfiction",
+        "3000 words",
+        "7 poems",
+        "unpaid",
+        "$100 award",
+        "expedited response",
+        "no ai"
+      ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-30",
+      "publishedAt": "2026-09-30",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "braided-way",
+      "slug": "braided-way",
+      "publication": "Braided Way: Faces & Voices of Spiritual Practice",
+      "title": "Personal essays, articles, fiction and poetry",
+      "seoTitle": "Braided Way: unpaid, 2,500 words, no AI-assisted work",
+      "excerpt": "Braided Way states it is not yet a paying publication and invites contributors to promote their own publications, workshops or website in their bio instead. Personal essays, articles and fiction run to 2,500 words and it takes one to five poems. It asks for no AI-assisted work and for a line attesting that you are the originator of the work and own all rights.",
+      "officialUrl": "https://braidedway.org/submissions/",
+      "applyUrl": "https://braidedway.org/submissions/",
+      "applyEmail": null,
+      "applyMethod": "Online submission — unpaid, self-promotion invited in bio",
+      "sources": [
+        {
+          "name": "Braided Way — Submissions (official)",
+          "url": "https://braidedway.org/submissions/"
+        }
+      ],
+      "eligibility": {
+        "summary": "No stated country restriction on the guidelines page.",
+        "mode": "not-stated",
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": true
+      },
+      "writingTypes": [
+        "personal-essays",
+        "essays",
+        "fiction",
+        "poetry"
+      ],
+      "writingTypeLabel": "Personal essays, articles, fiction and poetry on spiritual practice",
+      "pay": {
+        "currency": null,
+        "amountMin": null,
+        "amountMax": null,
+        "display": "Unpaid — the magazine states it is not yet a paying publication",
+        "conditions": "Official submissions page: Braided Way states it is not yet a paying publication, and welcomes contributors to promote their publications, workshops and website in their bio instead. BRYME records no figure because there is none. The trade here is exposure rather than money.",
+        "timing": "Not applicable — unpaid"
+      },
+      "wordCount": {
+        "min": null,
+        "max": 2500,
+        "display": "Personal essays, articles and fiction up to 2,500 words; one to five poems"
+      },
+      "response": {
+        "label": "Not stated",
+        "band": "not-stated",
+        "official": false
+      },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "prohibited",
+      "whatTheyWant": [
+        "Personal essays of up to 2,500 words on spiritual practice.",
+        "Articles of up to 2,500 words.",
+        "Fiction of up to 2,500 words.",
+        "Poetry: one to five poems.",
+        "A third-person bio of no more than 300 words, with a website or social media link — Braided Way explicitly invites you to use it for self-promotion."
+      ],
+      "whatTheyDontWant": [
+        "AI-assisted work. The magazine asks that none be sent.",
+        "Prose over 2,500 words."
+      ],
+      "requirements": [
+        "Include a line attesting that you are the originator of the work and own all rights.",
+        "Include a third-person bio of 300 words or fewer plus a link.",
+        "Keep prose to 2,500 words and send one to five poems.",
+        "Use the bio to promote your own work — that is the offer being made in place of payment."
+      ],
+      "rights": "Braided Way asks submitters to attest that they are the originator of the work and own all rights. No specific rights transfer is stated on the submissions page.",
+      "howToSubmit": [
+        "Read https://braidedway.org/submissions/ before sending.",
+        "This is unpaid — the value is the bio link and the credit.",
+        "Include the rights attestation or the submission is incomplete."
+      ],
+      "keywords": [
+        "braided way",
+        "spiritual practice",
+        "personal essays",
+        "articles",
+        "fiction",
+        "poetry",
+        "unpaid",
+        "2500 words",
+        "no ai"
+      ]
     }
   ]
 }

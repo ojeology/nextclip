@@ -706,5 +706,49 @@
   "lady-churchills-rosebud-wristlet": {
     "base": "",
     "label": "International"
+  },
+  "new-england-review": {
+    "base": "",
+    "label": "International"
+  },
+  "ubwali-literary-magazine": {
+    "base": "",
+    "label": "International"
+  },
+  "blood-tree-literature": {
+    "base": "",
+    "label": "International"
+  },
+  "foglifter": {
+    "base": "",
+    "label": "International"
+  },
+  "the-dolomite-review": {
+    "base": "",
+    "label": "International"
+  },
+  "haydens-ferry-review": {
+    "base": "",
+    "label": "International"
+  },
+  "hemlock-journal": {
+    "base": "",
+    "label": "International"
+  },
+  "midway-journal": {
+    "base": "",
+    "label": "International"
+  },
+  "mockingheart-review": {
+    "base": "",
+    "label": "International"
+  },
+  "rawhead": {
+    "base": "",
+    "label": "International"
+  },
+  "braided-way": {
+    "base": "",
+    "label": "International"
   }
 }
