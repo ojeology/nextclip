@@ -82,7 +82,14 @@ def footer() -> str:
 </div><div class="wrap foot-bottom">© 2026 BRYME · Independent editorial project · No acceptance, publication or payment is guaranteed.</div></footer>'''
 
 
-WRITING = json.loads((ROOT / "content/opportunities.json").read_text(encoding="utf-8"))["opportunities"]
+_OPP_DOC = json.loads((ROOT / "content/opportunities.json").read_text(encoding="utf-8"))
+WRITING = _OPP_DOC["opportunities"]
+
+# Records whose guidelines could not be fetched - neither by the harvester, a real
+# browser, nor an archived copy. For these, "not stated" is not the publication being
+# silent; it is BRYME not having read the page. The docket says which, because the
+# first is a fact about the publication and the second is a fact about us.
+GUIDELINES_NOT_READ = frozenset(_OPP_DOC.get("guidelinesNotRead") or [])
 
 # Base country (where each publication is based) for the country selector.
 # "" = online / international — no single verified base country to claim.
@@ -2803,14 +2810,24 @@ def docket(rec: dict) -> str:
         rows.append(_docket_row("Simultaneous submissions", sim_label,
                                 _evidence(rec.get("simultaneousNote"))))
     else:
-        rows.append(_docket_row(
-            "Simultaneous submissions", "Not stated",
-            "The guideline does not address simultaneous submissions. BRYME records "
-            "that as silence rather than assuming a yes: if you are sending the same "
-            "piece to several publications, say so in your cover letter and withdraw "
-            "it everywhere the moment it is taken.", "gap"))
-        gaps.append("Simultaneous submissions — the guideline leaves this open, so "
-                    "declare it in your cover letter rather than assuming.")
+        if rec.get("slug") in GUIDELINES_NOT_READ:
+            rows.append(_docket_row(
+                "Simultaneous submissions", "Not known",
+                "BRYME has not been able to read this publication's guideline — the "
+                "site blocks automated access and no archived copy carried the policy. "
+                "This is unknown rather than unanswered, so ask the editor before you "
+                "send the same piece anywhere else.", "gap"))
+            gaps.append("Simultaneous submissions — BRYME could not open this "
+                        "guideline, so this is unknown rather than open. Ask first.")
+        else:
+            rows.append(_docket_row(
+                "Simultaneous submissions", "Not stated",
+                "The guideline does not address simultaneous submissions. BRYME records "
+                "that as silence rather than assuming a yes: if you are sending the same "
+                "piece to several publications, say so in your cover letter and withdraw "
+                "it everywhere the moment it is taken.", "gap"))
+            gaps.append("Simultaneous submissions — the guideline leaves this open, so "
+                        "declare it in your cover letter rather than assuming.")
 
     # 6. AI policy
     ai_text = {
@@ -2869,13 +2886,23 @@ def docket(rec: dict) -> str:
     if exp_label:
         rows.append(_docket_row("Experience", exp_label, _evidence(rec.get("experienceNote"))))
     else:
-        rows.append(_docket_row(
-            "Experience", "Not stated",
-            "The guideline sets no experience requirement. BRYME records that as "
-            "silence, not as a welcome — a first-time writer is not excluded, but "
-            "nor are they invited.", "gap"))
-        gaps.append("Experience — look at what kind of writer this publication "
-                    "normally publishes before you pitch; its guideline does not say.")
+        if rec.get("slug") in GUIDELINES_NOT_READ:
+            rows.append(_docket_row(
+                "Experience", "Not known",
+                "BRYME has not been able to read this publication's guideline — the "
+                "site blocks automated access and no archived copy carried the policy. "
+                "The missing answer here is BRYME's, not the publication's, so treat "
+                "this as unknown rather than settle it yourself.", "gap"))
+            gaps.append("Experience — BRYME could not open this guideline, so this "
+                        "is unknown rather than absent. Check it before you pitch.")
+        else:
+            rows.append(_docket_row(
+                "Experience", "Not stated",
+                "The guideline sets no experience requirement. BRYME records that as "
+                "silence, not as a welcome — a first-time writer is not excluded, but "
+                "nor are they invited.", "gap"))
+            gaps.append("Experience — look at what kind of writer this publication "
+                        "normally publishes before you pitch; its guideline does not say.")
 
     gap_block = ""
     if gaps:

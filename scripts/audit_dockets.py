@@ -96,6 +96,19 @@ RUN_TOGETHER = re.compile(
     r"\b(?:stated|published|limit|terms|note)\s+(?:The|This|BRYME|It)\s")
 
 ROW = re.compile(r'<div class="docket-row( gap)?">(.*?)</div>', re.S)
+
+# The labels that mean "this docket row is one of the questions the record does
+# not answer". There are two, and they are not interchangeable:
+#
+#   Not stated  the guideline WAS read and does not address the question
+#   Not known   the guideline could not be read at all, so the absence is
+#               BRYME's rather than the publication's
+#
+# Both are gaps and both must appear in the gap list. The invariant below used
+# to name only "Not stated", which meant adding the honest second label made the
+# audit fail on nine correct pages - the check was encoding an assumption about
+# how many ways there are to not-know something.
+GAP_VALUES = frozenset({"Not stated", "Not known"})
 # Payment, Length, Who can submit, Response time, Simultaneous submissions,
 # AI policy, Rights, Experience.
 DOCKET_ROWS = 8
@@ -200,11 +213,11 @@ def main() -> int:
             # docket counts it as one of the unanswered questions. Break it
             # either way and the gap list starts describing a different page
             # from the one above it.
-            if (value == "Not stated") != is_gap:
+            if (value in GAP_VALUES) != is_gap:
                 fail(slug, f'row "{label}" value {value!r} but gap={is_gap}')
             if label.endswith(("Restricted to a stated group",)):
                 fail(slug, "verdict text leaked into the label")
-            if value == "Not stated":
+            if value in GAP_VALUES:
                 silent_rows += 1
             seam = RUN_TOGETHER.search(_text(row.split("</b>")[-1]))
             if seam:

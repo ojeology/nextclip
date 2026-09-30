@@ -2370,7 +2370,8 @@
       "editorExperience": {
         "status": "not-yet-submitted"
       },
-      "simultaneousSubmissions": "not-stated"
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "Please note in your pitch if the story is being submitted to other publications simultaneously. — https://thewalrus.ca/about/submissions/ (Wayback snapshot 2026-05-30; read 2026-09-30)"
     },
     {
       "id": "mcsweeneys",
@@ -8625,7 +8626,8 @@
       "vertical": "writing",
       "lastVerified": "2026-09-05",
       "submissionStatus": "open",
-      "simultaneousSubmissions": "not-stated"
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "Simultaneous submissions welcome, just please notify us if your work was accepted elsewhere and withdraw your submission on Duotrope. — https://spaceandtime.net/submissions/ (Wayback snapshot 2025-11-23; read 2026-09-30)"
     },
     {
       "id": "ploughshares",
@@ -12755,7 +12757,8 @@
         "usd",
         "no ai"
       ],
-      "simultaneousSubmissions": "not-stated"
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "We accept simultaneous pitch submissions. — https://orionmagazine.org/submission-guidelines/ (Wayback snapshot 2026-06-10; read 2026-09-30)"
     },
     {
       "status": "published",
@@ -13252,5 +13255,16 @@
       "simultaneousSubmissions": "accepted",
       "simultaneousNote": "Simultaneous submissions are fine, as long as you mention it in your cover letter, and let us know immediately if it is accepted elsewhere. — https://mithilareview.com/submission-guidelines/ (read 2026-09-30)"
     }
+  ],
+  "guidelinesNotRead": [
+    "agni",
+    "litmag-online",
+    "mudroom",
+    "new-humanitarian",
+    "split-lip-magazine",
+    "the-ex-puritan",
+    "the-kitchn",
+    "theprint",
+    "undark"
   ]
 }
