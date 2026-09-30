@@ -613,6 +613,14 @@ def writing_nav(current_flt: str = "") -> str:
       <select id="f-type"><option value="">Any type</option>{type_opts}</select></div>
     <div class="opp-field"><label for="f-status">Status</label>
       <select id="f-status"><option value="">Any status</option>{status_opts}</select></div>
+    <div class="opp-field"><label for="f-exp">Experience</label>
+      <select id="f-exp">
+        <option value="">Any experience</option>
+        <option value="first-timer-friendly">Welcomes unpublished writers</option>
+        <option value="emerging">Wants some prior publication</option>
+        <option value="established">Expects a track record</option>
+        <option value="stated">States a stage at all</option>
+      </select></div>
     <div class="opp-field"><label for="f-pay">Pays at least</label>
       <select id="f-pay"><option value="">Any pay</option>{pay_opts}</select></div>
     <div class="opp-field"><label for="f-words">Length</label>
@@ -631,7 +639,7 @@ def writing_nav(current_flt: str = "") -> str:
     <label class="opp-check"><input type="checkbox" id="f-global"> Open to writers anywhere — {n_global}</label>
     <button type="button" id="f-reset" class="country-reset">Reset all</button>
   </div>
-  <p class="country-filter-hint"><b>Publication is based there</b> answers &ldquo;which UK magazines take pitches?&rdquo;. <b>Open to writers from there</b> answers &ldquo;what can I apply to from Nigeria?&rdquo; and includes everything open worldwide. A minimum-pay filter hides publications that do not state a figure &mdash; BRYME will not guess what they pay.</p>
+  <p class="country-filter-hint"><b>Publication is based there</b> answers &ldquo;which UK magazines take pitches?&rdquo;. <b>Open to writers from there</b> answers &ldquo;what can I apply to from Nigeria?&rdquo; and includes everything open worldwide. A minimum-pay filter hides publications that do not state a figure &mdash; BRYME will not guess what they pay. The <b>experience</b> filter shows only what a publication says about who may submit, read from its own guideline: most guidelines never mention it, is covered by &ldquo;states a stage at all&rdquo;, and a handful could not be read at all.</p>
 </form>
 <div id="f-chips" class="f-chips" hidden></div>
 <p id="filter-note" class="filter-status" aria-live="polite"><b id="f-count">{n_all} opportunities</b></p>
@@ -914,6 +922,7 @@ def pub_card(rec: dict, heading: str = "h2") -> str:
   data-status="{esc(st)}" data-types="{esc(" ".join(types))}" data-currency="{esc(cur)}"
   data-usd="{"" if usd is None else usd}" data-wcmin="{wcmin if wcmin is not None else ""}"
   data-wcmax="{wcmax if wcmax is not None else ""}" data-global="{"1" if globally_open else "0"}"
+  data-exp="{esc(rec.get("experience") or "not-stated")}"
   data-ai="{esc(norm_ai(rec))}" data-deadline="{esc(deadline)}"
   data-verified="{esc(rec.get("lastVerified") or "")}"
   data-pub="{esc(rec.get("publication", ""))}" data-search="{esc(search_blob)}">
@@ -2299,6 +2308,59 @@ def programmatic_pages() -> None:
             rows, f"/writing/?type={t}", base_guides)
         PROG_ROUTES.append(f"/writing-opportunities/{tslug[t]}/")
 
+    # --- by what stage the publication says it publishes ---------------------
+    #
+    # The beginner path. A writer who has never submitted anywhere needs a
+    # different question answered from "where do I send this": they need to know
+    # WHICH markets will read somebody with no credits, because most of the
+    # database is silent on the question and silence reads as a closed door when
+    # you are starting out.
+    #
+    # Both views are built from the `experience` field, which is assigned only
+    # from the publication's own guideline and carries the sentence it came from.
+    # Nothing here is inferred: a guideline that never mentions experience is NOT
+    # listed, because "we did not find out" is not the same as "they welcome
+    # beginners" and telling a first-timer otherwise would waste their evening.
+    ftf = [r for r in WRITING if r.get("experience") == "first-timer-friendly"]
+    staged = [r for r in WRITING if r.get("experience") in ("first-timer-friendly", "emerging")]
+    silent_n = sum(1 for r in WRITING if r.get("experience") in (None, "not-stated"))
+    unread_n = len(GUIDELINES_NOT_READ)
+
+    if len(ftf) >= MIN_TYPE_PAGE:
+        _prog_page(
+            "first-publication",
+            "Publications that welcome writers with no publication history",
+            "For a first credit",
+            f"{len(ftf)} publications whose own guideline explicitly welcomes unpublished writers — "
+            "the shortest path from having written something to having published something.",
+            "BRYME only lists a publication here when its guideline actually says unpublished writers "
+            "are welcome. A guideline that never mentions experience is recorded as not stated rather "
+            "than treated as a welcome, because silence is not an invitation. Each listing carries the "
+            "sentence it was placed on, with the date it was read.",
+            ftf, "/writing/?experience=first-timer-friendly",
+            base_guides + [("/learn/writing-for-publication/why-your-first-pitch-may-be-rejected/",
+                            "Why a first pitch gets rejected"),
+                           ("/checklists/", "Pre-submission checklists")])
+        PROG_ROUTES.append("/writing-opportunities/first-publication/")
+
+    if len(staged) >= MIN_TYPE_PAGE:
+        _prog_page(
+            "new-and-emerging",
+            "Publications that state what stage they publish",
+            "First credit upward",
+            f"Every publication in the database whose own guideline says something about who may submit — "
+            f"from {len(ftf)} that explicitly welcome unpublished writers to those that expect a track record.",
+            f"Grouped by what the publication says, not by what BRYME assumes. Of the {len(WRITING)} records, "
+            f"{silent_n} guidelines are silent on the question and {unread_n} could not be read at all; "
+            "neither group appears here, because an unstated policy is not an open door. Each listing "
+            "carries the sentence it was placed on.",
+            staged, "/writing/?experience=stated",
+            base_guides + [("/writing-opportunities/first-publication/",
+                            "Start here if you have no credits yet"),
+                           ("/learn/writing-for-publication/how-to-pitch-an-editor/",
+                            "How to pitch an editor")])
+        PROG_ROUTES.append("/writing-opportunities/new-and-emerging/")
+
     # --- index --------------------------------------------------------------
     def li(href, label, n):
         return (f'<a class="guide-card" href="{esc(href)}"><span class="card-num">{n}</span>'
@@ -2337,6 +2399,10 @@ def programmatic_pages() -> None:
         '<script type="application/json" id="atlas-open">' + atlas_open + '</script>'
         '<script src="/assets/atlas.js"></script>'
         '</div></section>')
+    exp_cards = "".join([
+        li("/writing-opportunities/first-publication/", "Welcome a first publication", len(ftf)),
+        li("/writing-opportunities/new-and-emerging/", "State what stage they publish", len(staged)),
+    ])
     body = f'''<div class="wrap"><nav class="breadcrumb"><a href="/">Home</a> / <a href="/writing/">Opportunities</a> / Browse</nav>
 <section class="page-hero"><p class="kicker"><span class="kicker-dot"></span>Browse by</p>
 <h1>Writing opportunities by country and genre.</h1>
@@ -2348,6 +2414,11 @@ def programmatic_pages() -> None:
 <section class="section alt"><div class="wrap"><div class="section-head"><div><p class="eyebrow">By what you write</p><h2>Genre and form.</h2></div></div>
 <div class="card-grid">{type_cards}</div>
 <p class="tool-note">Need a combination these pages do not cover — say, poetry in Canada paying over $100? <a href="/writing/">Use the full search</a>, which filters on all nine facets at once.</p>
+</div></section>
+<section class="section"><div class="wrap"><div class="section-head"><div><p class="eyebrow">By where you are starting from</p><h2>If you have no credits yet.</h2></div>
+<p>Most guidelines never mention experience, so the honest answer for a first-timer is usually "unknown". These two views collect the {len(staged)} publications that did say — including the {len(ftf)} that explicitly welcome unpublished writers.</p></div>
+<div class="card-grid">{exp_cards}</div>
+<p class="tool-note">Both views are built from what each publication says about who may submit, read from its own guideline and shown with the sentence it came from. Silence is recorded as silence: a further {silent_n} guidelines say nothing on the question, and {unread_n} could not be read at all.</p>
 </div></section>{atlas_html}'''
     write("/writing-opportunities/", page_wf(
         title="Writing opportunities by country and genre | BRYME",

@@ -75,6 +75,24 @@ def wanted() -> set[str]:
     opps = json.loads(OPPS.read_text(encoding="utf-8"))["opportunities"]
     routes = {f"/writing/{o['slug']}/" for o in opps}
     routes |= {f"/writing-opportunities/{s}/" for s in country_slugs().values()}
+
+    # Grouping pages beyond the country atlas: by type of writing, by
+    # eligibility ("open to writers anywhere") and by experience stage.
+    #
+    # These were not modelled here at all, which is how two new indexable pages
+    # came out of the 2026-09-30 build generated, canonical, robots index,follow
+    # - and absent from the allowlist and therefore from the sitemap. That is
+    # precisely the failure this script exists to prevent, reproduced one level
+    # down.
+    #
+    # The builder decides which groups clear its own MIN_TYPE_PAGE threshold, so
+    # rather than duplicate that number here and have the two drift, take the
+    # truth from what the build actually produced.
+    outdir = ROOT / "writers" / "writing-opportunities"
+    if outdir.is_dir():
+        for d in sorted(outdir.iterdir()):
+            if (d / "index.html").is_file():
+                routes.add(f"/writing-opportunities/{d.name}/")
     return routes
 
 
