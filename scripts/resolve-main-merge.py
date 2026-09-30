@@ -39,7 +39,12 @@ import pathlib
 import subprocess
 import sys
 
-ROOT = pathlib.Path(__file__).resolve().parent
+# The script used to sit at the repository root, where `.parent` was the root.
+# Committing it under scripts/ moved it one level down and silently repointed
+# every path at scripts/content/... - which does not exist, so the run would have
+# died with a bare FileNotFoundError rather than doing anything wrong. It runs
+# from the root either way, so resolve the root properly instead of assuming it.
+ROOT = pathlib.Path(__file__).resolve().parent.parent
 OPPS = ROOT / "content/opportunities.json"
 MAIN = "origin/main"
 BRANCH = "origin/bryme/markets-batch-verified"
