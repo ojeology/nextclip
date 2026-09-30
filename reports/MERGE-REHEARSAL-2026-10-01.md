@@ -177,3 +177,65 @@ read-date. The `_atlas_items` question is closed as by-design, with the batch-15
 written down.
 
 **The branch is ready to merge into main on the verification standard set for it.**
+
+---
+
+# Addendum — re-rehearsed after batch 15, and after main moved
+
+The rehearsal above was run at the batch-14 tip. Batch 15 then added three records and
+three new `simultaneousNote` values, which the branch cannot render at all, and **main
+moved**: `c61f1ff46c` → `bdaaf9beb8`, a substantive commit ("Nine records now say 'Not
+known' instead of implying a guideline was read, plus three policies recovered from
+archived copies"). So the whole thing was re-run.
+
+| | |
+|---|---|
+| merge base | `9da69b439` |
+| branch | `a2e54399d6` — 25 ahead |
+| main | `bdaaf9beb8` — 9 ahead |
+| merged tree | `f0f1995f35` |
+| conflicts | `content/opportunities.json` only |
+
+`content/hub/pub-countries.json` and `content/index-allowlist.json` appear in the
+branch's diff against main but do **not** conflict: main has not touched either since the
+base, so the branch's 264 entries and 635 routes merge cleanly.
+
+## Independent verification of the merge
+
+Checked against all three inputs, not against the resolver's own report:
+
+| property | result |
+|---|---|
+| no record lost or invented | lost 0, extra 0 — 264 = 147 main + 117 branch-only |
+| per-field three-way, every shared record | **0 violations** |
+| main's own newest work survives | all 147 of main's records present |
+| merged equals main except where the branch legitimately moved a field | 3 records, and in each the branch's value is the one kept |
+
+Those three are `cracked`, `whatculture` and `statement-africa` — the batch-13 records
+where the branch set `howToSubmit` and re-dated `lastVerified`. Main's "Not known" pass
+touched the same records; the merge keeps the branch's reading for exactly those two
+fields and main's everywhere else. That is the intended outcome, and it is the third time
+these three records have been the ones to watch.
+
+## Gates on the re-merged tree
+
+`npm run build` exit 0; `validate`, `verify:allowlist`, `verify:titles`, `verify:dockets`,
+`validate:money`, `validate:hometools` all exit 0; `audit_dockets.py` **264 publication
+pages, 8 docket rows, 1021 unanswered rows, 130 rankings, 0 problems**.
+
+## The nine simultaneous notes, all verified
+
+The branch renders seven docket rows and never prints the note, so this is only checkable
+on a merged tree. All nine render, with main's "You may submit elsewhere at the same time"
+label, the desk read-date `2026-10-01`, and the `<sentence> — <url> (read <date>)` shape:
+
+batch 14 — `american-poetry-journal`, `after-dinner-conversation`, `american-short-fiction`,
+`bayou-magazine`, `bennington-review`, `blackbird`.
+batch 15 — `colorado-review`, `gavialidae`, `fairy-tale-magazine`.
+
+## Standing conclusion
+
+The branch is merge-ready at **264 records** on the stated standard, verified against the
+main that exists right now rather than the one that existed yesterday. If main moves again
+before the merge, this addendum is void and the rehearsal must be re-run — the last two
+rehearsals both found something the previous one could not have seen.
