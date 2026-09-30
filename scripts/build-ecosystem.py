@@ -2263,7 +2263,15 @@ def entertainment_pages():
             + verdict_html + wl_html + sim_html + faq_html + rel_html
             + '<p class="nx-backlink"><a href="/entertainment/">&#8592; Back to the full catalogue</a></p>'
             + '</div><aside class="nx-aside"><dl>' + aside_html + '</dl>'
-            + '<p class="nx-verified">Trailer link verified ' + _nx_ver + ' via YouTube oEmbed (title and channel checked). The player loads lazily from YouTube’s no-cookie domain when the trailer nears your viewport.</p>'
+            # Only claim a verified trailer link when this film actually has an
+            # embedded trailer. 30 catalogue films carry no trailer, and the
+            # unconditional claim was live on all of them - a page asserting
+            # "title and channel checked" where nothing was embedded at all.
+            # The false claim was corrected in the generated HTML but never in
+            # this generator, so any regeneration silently restored it.
+            + ('<p class="nx-verified">Trailer link verified ' + _nx_ver + ' via YouTube oEmbed (title and channel checked). The player loads lazily from YouTube’s no-cookie domain when the trailer nears your viewport.</p>'
+               if m.get("yt") else
+               '<p class="nx-verified">No trailer is embedded on this page. The desk embeds an upload only after checking it against YouTube&#8217;s oEmbed record - title and channel - and none is verified for this film, so nothing here is embedded on trust.</p>')
             + '</aside></div></main>' + foot("entertainment"))
         # H3 (audit 2026-09-16): SERP title budget - shortest form that fits 60 chars.
         _nx_y = str(m.get("year") or "")
