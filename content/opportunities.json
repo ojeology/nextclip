@@ -176,7 +176,8 @@
         "summary": "Pitch submitted, accepted, and scheduled for publication.",
         "updatedAt": "2026-09-04",
         "note": "Payments NOT confirmed. Update only after publication and actual payment."
-      }
+      },
+      "simultaneousSubmissions": "not-stated"
     },
     {
       "id": "the-republic-personal-essay",
@@ -268,7 +269,8 @@
         },
         "updatedAt": "2026-09-04",
         "note": "Form-letter decline; they invite reading the public submissions page. 'The Dream the Internet Sold Me' re-routed to Narratively Personals."
-      }
+      },
+      "simultaneousSubmissions": "not-stated"
     },
     {
       "id": "efiko",
@@ -383,7 +385,8 @@
         },
         "updatedAt": "2026-09-04",
         "note": "Submission recorded; awaiting response."
-      }
+      },
+      "simultaneousSubmissions": "not-stated"
     },
     {
       "id": "oriire",
@@ -495,7 +498,8 @@
       ],
       "editorExperience": {
         "status": "not-yet-submitted"
-      }
+      },
+      "simultaneousSubmissions": "not-stated"
     },
     {
       "id": "the-lagos-review-loss-grief",
@@ -514,6 +518,10 @@
         {
           "name": "The Lagos Review — Call for essay submissions: Writing Loss & Grief (official)",
           "url": "https://thelagosreview.ng/call-for-essay-submissions-writing-loss-grief/"
+        },
+        {
+          "name": "The Lagos Review — Submissions (official)",
+          "url": "https://thelagosreview.ng/submissions/"
         }
       ],
       "lastVerified": "2026-08-19",
@@ -591,7 +599,8 @@
         },
         "updatedAt": "2026-09-04",
         "note": "Submission recorded from the ledger; no acceptance."
-      }
+      },
+      "simultaneousSubmissions": "not-stated"
     },
     {
       "id": "adi-again",
@@ -688,7 +697,9 @@
       ],
       "editorExperience": {
         "status": "not-yet-submitted"
-      }
+      },
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "We do accept simultaneous submissions; please withdraw individual pieces if they are accepted elsewhere. — https://adimagazine.com/submissions/ (read 2026-09-30)"
     },
     {
       "id": "adi-essays",
@@ -775,7 +786,9 @@
       ],
       "editorExperience": {
         "status": "not-yet-submitted"
-      }
+      },
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "We do accept simultaneous submissions; please withdraw individual pieces if they are accepted elsewhere. — https://adimagazine.com/submissions/ (read 2026-09-30)"
     },
     {
       "id": "longreads-personal-essay",
@@ -862,7 +875,9 @@
       ],
       "editorExperience": {
         "status": "not-yet-submitted"
-      }
+      },
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "While we encourage simultaneous submissions, we hope for stories that take maximum advantage of Longreads’ broad purview and emphasis on storytelling. — https://longreads.com/submissions/ (read 2026-09-30)"
     },
     {
       "id": "longreads-reading-list",
@@ -945,7 +960,9 @@
       ],
       "editorExperience": {
         "status": "not-yet-submitted"
-      }
+      },
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "While we encourage simultaneous submissions, we hope for stories that take maximum advantage of Longreads’ broad purview and emphasis on storytelling. — https://longreads.com/submissions/ (read 2026-09-30)"
     },
     {
       "id": "longreads-reported-feature",
@@ -1033,7 +1050,9 @@
       ],
       "editorExperience": {
         "status": "not-yet-submitted"
-      }
+      },
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "While we encourage simultaneous submissions, we hope for stories that take maximum advantage of Longreads’ broad purview and emphasis on storytelling. — https://longreads.com/submissions/ (read 2026-09-30)"
     },
     {
       "id": "omenana",
@@ -1137,7 +1156,9 @@
       ],
       "editorExperience": {
         "status": "not-yet-submitted"
-      }
+      },
+      "simultaneousSubmissions": "not-accepted",
+      "simultaneousNote": "We no longer accept simultaneous submissions. — https://omenana.com/omenana-submissions/ (read 2026-09-30)"
     },
     {
       "id": "agbowo-essays",
@@ -1227,7 +1248,9 @@
       ],
       "editorExperience": {
         "status": "not-yet-submitted"
-      }
+      },
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "While we accept simultaneous submissions, please be kind enough to inform us if another journal has accepted your submission. — https://agbowo.org/submissions/ (read 2026-09-30)"
     },
     {
       "id": "listverse",
@@ -1332,7 +1355,8 @@
       ],
       "editorExperience": {
         "status": "not-yet-submitted"
-      }
+      },
+      "simultaneousSubmissions": "not-stated"
     },
     {
       "id": "noema",
@@ -1439,7 +1463,8 @@
         },
         "updatedAt": "2026-09-04",
         "note": "Rejection recorded from Noema's own reply. Material re-routed to Rest of World / Aeon."
-      }
+      },
+      "simultaneousSubmissions": "not-stated"
     },
     {
       "id": "vox-first-person",
@@ -1527,7 +1552,8 @@
         },
         "updatedAt": "2026-09-04",
         "note": "21-day norm passed; nudge due 16 Sep if silent. This is the internet-dream material's only live home."
-      }
+      },
+      "simultaneousSubmissions": "not-stated"
     },
     {
       "id": "vox-future-perfect",
@@ -1612,7 +1638,8 @@
       ],
       "editorExperience": {
         "status": "not-yet-submitted"
-      }
+      },
+      "simultaneousSubmissions": "not-stated"
     },
     {
       "id": "vox-climate",
@@ -1693,7 +1720,8 @@
       ],
       "editorExperience": {
         "status": "not-yet-submitted"
-      }
+      },
+      "simultaneousSubmissions": "not-stated"
     },
     {
       "id": "aeon-essays",
@@ -1781,7 +1809,8 @@
       "editorExperience": {
         "status": "not-yet-submitted"
       },
-      "experienceNote": "We also strongly encourage younger and emerging scholars, especially outside the US and the UK, to pitch Essay ideas to us, even if you don’t have much experience in writing outside of the academy. — https://aeon.co/pitch (read 2026-09-30)"
+      "experienceNote": "We also strongly encourage younger and emerging scholars, especially outside the US and the UK, to pitch Essay ideas to us, even if you don’t have much experience in writing outside of the academy. — https://aeon.co/pitch (read 2026-09-30)",
+      "simultaneousSubmissions": "not-stated"
     },
     {
       "id": "chicken-soup",
@@ -1881,7 +1910,9 @@
       ],
       "editorExperience": {
         "status": "not-yet-submitted"
-      }
+      },
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "Yes, but please let us know either by telling us that it is a simultaneous submission in the comments section of the submission form or, if you have already submitted your story, by e-mailing us at: [email protected]. — https://www.chickensoup.com/story-submissions/faq (read 2026-09-30)"
     },
     {
       "id": "new-humanitarian",
@@ -1970,7 +2001,8 @@
       ],
       "editorExperience": {
         "status": "not-yet-submitted"
-      }
+      },
+      "simultaneousSubmissions": "not-stated"
     },
     {
       "id": "african-arguments",
@@ -2069,7 +2101,8 @@
       ],
       "editorExperience": {
         "status": "not-yet-submitted"
-      }
+      },
+      "simultaneousSubmissions": "not-stated"
     },
     {
       "id": "rest-of-world",
@@ -2163,7 +2196,8 @@
         },
         "updatedAt": "2026-09-04",
         "note": "Nudge window normally opens at day ~21-28; follow-up sent 28 Aug. Nothing confirmed."
-      }
+      },
+      "simultaneousSubmissions": "not-stated"
     },
     {
       "id": "psyche-first-person",
@@ -2247,7 +2281,8 @@
       ],
       "editorExperience": {
         "status": "not-yet-submitted"
-      }
+      },
+      "simultaneousSubmissions": "not-stated"
     },
     {
       "id": "walrus-essays",
@@ -2333,7 +2368,8 @@
       ],
       "editorExperience": {
         "status": "not-yet-submitted"
-      }
+      },
+      "simultaneousSubmissions": "not-stated"
     },
     {
       "id": "mcsweeneys",
@@ -2420,7 +2456,8 @@
       ],
       "editorExperience": {
         "status": "not-yet-submitted"
-      }
+      },
+      "simultaneousSubmissions": "not-stated"
     },
     {
       "id": "literary-hub",
@@ -2439,6 +2476,10 @@
         {
           "name": "How To Pitch Lit Hub (official)",
           "url": "https://lithub.com/how-to-pitch-lit-hub/"
+        },
+        {
+          "name": "Literary Hub — Submissions (official)",
+          "url": "https://lithub.com/submissions/"
         }
       ],
       "lastVerified": "2026-08-19",
@@ -2505,7 +2546,8 @@
       ],
       "editorExperience": {
         "status": "not-yet-submitted"
-      }
+      },
+      "simultaneousSubmissions": "not-stated"
     },
     {
       "status": "published",
@@ -2594,7 +2636,8 @@
         "south asia",
         "reportage",
         "first person"
-      ]
+      ],
+      "simultaneousSubmissions": "not-stated"
     },
     {
       "status": "published",
@@ -2685,7 +2728,9 @@
         "kathmandu",
         "longform"
       ],
-      "experienceNote": "We are always interested in hearing from new writers. — https://www.himalmag.com/submission-guidelines/ (read 2026-09-30)"
+      "experienceNote": "We are always interested in hearing from new writers. — https://www.himalmag.com/submission-guidelines/ (read 2026-09-30)",
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "We do accept pieces that have been submitted simultaneously to other publications but writers must alert us to this while pitching. — https://www.himalmag.com/submission-guidelines/ (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -2772,7 +2817,8 @@
         "gbp",
         "investigations"
       ],
-      "experienceNote": "When contacting us for the first time, please provide clear evidence of your track record as a journalist so that we can verify your identity. — https://www.climatechangenews.com/about/write-for-us/ (read 2026-09-30)"
+      "experienceNote": "When contacting us for the first time, please provide clear evidence of your track record as a journalist so that we can verify your identity. — https://www.climatechangenews.com/about/write-for-us/ (read 2026-09-30)",
+      "simultaneousSubmissions": "not-stated"
     },
     {
       "status": "published",
@@ -2858,7 +2904,8 @@
         "fantasy",
         "14 cents",
         "worldwide"
-      ]
+      ],
+      "simultaneousSubmissions": "not-stated"
     },
     {
       "status": "published",
@@ -2943,7 +2990,8 @@
         "nonfiction",
         "science fiction",
         "10 cents"
-      ]
+      ],
+      "simultaneousSubmissions": "not-stated"
     },
     {
       "status": "published",
@@ -3032,7 +3080,8 @@
         "speculative fiction",
         "10 cents",
         "moksha"
-      ]
+      ],
+      "simultaneousSubmissions": "not-stated"
     },
     {
       "status": "published",
@@ -3114,7 +3163,8 @@
         "poetry",
         "speculative",
         "$40"
-      ]
+      ],
+      "simultaneousSubmissions": "not-stated"
     },
     {
       "status": "published",
@@ -3139,6 +3189,10 @@
         {
           "name": "Griffith Review — For Writers (official)",
           "url": "https://www.griffithreview.com/for-writers/"
+        },
+        {
+          "name": "Griffith Review — Submissions (official)",
+          "url": "https://www.griffithreview.com/submissions/"
         }
       ],
       "eligibility": {
@@ -3205,7 +3259,8 @@
         "aud",
         "essay"
       ],
-      "experienceNote": "We publish work by established and emerging writers – most from Australia, some from overseas — https://www.griffithreview.com/for-writers/ (read 2026-09-30)"
+      "experienceNote": "We publish work by established and emerging writers – most from Australia, some from overseas — https://www.griffithreview.com/for-writers/ (read 2026-09-30)",
+      "simultaneousSubmissions": "not-stated"
     },
     {
       "status": "published",
@@ -3297,7 +3352,8 @@
         "new zealand",
         "fiction",
         "not nigeria"
-      ]
+      ],
+      "simultaneousSubmissions": "not-stated"
     },
     {
       "status": "published",
@@ -3388,7 +3444,8 @@
         "australia",
         "online essay",
         "polemic"
-      ]
+      ],
+      "simultaneousSubmissions": "not-stated"
     },
     {
       "status": "published",
@@ -3469,7 +3526,8 @@
         "latin america",
         "caribbean",
         "pitch"
-      ]
+      ],
+      "simultaneousSubmissions": "not-stated"
     },
     {
       "status": "published",
@@ -3552,7 +3610,8 @@
         "latin america",
         "caribbean",
         "honorarium"
-      ]
+      ],
+      "simultaneousSubmissions": "not-stated"
     },
     {
       "status": "published",
@@ -3638,7 +3697,8 @@
         "canada",
         "day rate",
         "cascadia"
-      ]
+      ],
+      "simultaneousSubmissions": "not-stated"
     },
     {
       "status": "published",
@@ -3716,7 +3776,8 @@
         "interview",
         "gbp",
         "commonwealth"
-      ]
+      ],
+      "simultaneousSubmissions": "not-stated"
     },
     {
       "status": "published",
@@ -3807,7 +3868,9 @@
         "humour",
         "wit tea",
         "$25"
-      ]
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "Simultaneous submissions are accepted; please be sure to withdraw your piece promptly if it’s accepted elsewhere. — https://theoffingmag.com/submit/submission_guidelines/ (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -3902,7 +3965,9 @@
         "$500",
         "september 2026"
       ],
-      "experienceNote": "We welcome work from both emerging and established writers. — https://therumpus.submittable.com/submit (read 2026-09-30)"
+      "experienceNote": "We welcome work from both emerging and established writers. — https://therumpus.submittable.com/submit (read 2026-09-30)",
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "We accept simultaneous submissions to other publications. — https://therumpus.net/about/ (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -3991,7 +4056,9 @@
         "español",
         "$500"
       ],
-      "experienceNote": "We welcome work from both emerging and established writers. — https://therumpus.submittable.com/submit (read 2026-09-30)"
+      "experienceNote": "We welcome work from both emerging and established writers. — https://therumpus.submittable.com/submit (read 2026-09-30)",
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "We accept simultaneous submissions. — https://therumpus.submittable.com/submit (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -4069,7 +4136,8 @@
         "translation",
         "book review",
         "$175"
-      ]
+      ],
+      "simultaneousSubmissions": "not-stated"
     },
     {
       "status": "published",
@@ -4162,7 +4230,9 @@
         "$45",
         "750 words"
       ],
-      "experienceNote": "Brevity publishes well-known and emerging writers working in the extremely brief (750 words or fewer) essay form. — https://brevitymag.com/submissions/ (read 2026-09-30)"
+      "experienceNote": "Brevity publishes well-known and emerging writers working in the extremely brief (750 words or fewer) essay form. — https://brevitymag.com/submissions/ (read 2026-09-30)",
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "Simultaneous submissions are fine, but please alert us — by withdrawing your submission — as soon as possible if your essay has been taken by another venue. — https://brevity.submittable.com/submit (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -4255,7 +4325,9 @@
         "north africa",
         "comedy issue"
       ],
-      "experienceNote": "TMR is open to both emerging and established writers, and to writing in multiple languages — https://themarkaz.org/submissions/ (read 2026-09-30)"
+      "experienceNote": "TMR is open to both emerging and established writers, and to writing in multiple languages — https://themarkaz.org/submissions/ (read 2026-09-30)",
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "The Markaz Review will accept simultaneous submissions, provided you inform us upon submitting your completed ms. — https://themarkaz.org/submissions/ (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -4342,7 +4414,8 @@
         "10 cents",
         "closed"
       ],
-      "experienceNote": "It's okay if you are unpublished! — https://strangehorizons.com/wordpress/submit/fiction-submission-guidelines/ (read 2026-09-30)"
+      "experienceNote": "It's okay if you are unpublished! — https://strangehorizons.com/wordpress/submit/fiction-submission-guidelines/ (read 2026-09-30)",
+      "simultaneousSubmissions": "not-stated"
     },
     {
       "status": "published",
@@ -4367,6 +4440,10 @@
         {
           "name": "Electric Literature — Submissions (official)",
           "url": "https://electricliterature.com/about/submit/"
+        },
+        {
+          "name": "Electric Literature — Submissions (official)",
+          "url": "https://electricliterature.com/submissions/"
         }
       ],
       "eligibility": {
@@ -4427,7 +4504,9 @@
         "$100",
         "closed"
       ],
-      "experienceNote": "For 17 years, Electric Literature has remained dedicated to uplifting emerging writers. — https://electricliterature.com/about/submit/ (read 2026-09-30)"
+      "experienceNote": "For 17 years, Electric Literature has remained dedicated to uplifting emerging writers. — https://electricliterature.com/about/submit/ (read 2026-09-30)",
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "Simultaneous submissions are fine, but please let us know immediately if a submission is accepted elsewhere. — https://electricliterature.com/about/submit/ (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -4521,7 +4600,8 @@
         "science",
         "journalism",
         "pitch"
-      ]
+      ],
+      "simultaneousSubmissions": "not-stated"
     },
     {
       "status": "published",
@@ -4607,7 +4687,8 @@
         "travel",
         "$300",
         "freelance"
-      ]
+      ],
+      "simultaneousSubmissions": "not-stated"
     },
     {
       "id": "asimovs-fiction",
@@ -4693,7 +4774,9 @@
       ],
       "editorExperience": {
         "status": "not-yet-submitted"
-      }
+      },
+      "simultaneousSubmissions": "not-accepted",
+      "simultaneousNote": "We do not publish reprints, and we do not accept “simultaneous submissions” (stories sent at the same time to a publication other than Asimov’s). — https://asimovs.com/contact-us/writers-guidelines/ (read 2026-09-30)"
     },
     {
       "id": "analog-fiction",
@@ -4778,7 +4861,8 @@
       "editorExperience": {
         "status": "not-yet-submitted"
       },
-      "experienceNote": "We are eager to find and develop new, capable writers. — https://analogsf.com/contact-us/writers-guidelines/ (read 2026-09-30)"
+      "experienceNote": "We are eager to find and develop new, capable writers. — https://analogsf.com/contact-us/writers-guidelines/ (read 2026-09-30)",
+      "simultaneousSubmissions": "not-stated"
     },
     {
       "id": "analog-fact",
@@ -4860,7 +4944,8 @@
       "editorExperience": {
         "status": "not-yet-submitted"
       },
-      "experienceNote": "We are eager to find and develop new, capable writers. — https://analogsf.com/contact-us/writers-guidelines/ (read 2026-09-30)"
+      "experienceNote": "We are eager to find and develop new, capable writers. — https://analogsf.com/contact-us/writers-guidelines/ (read 2026-09-30)",
+      "simultaneousSubmissions": "not-stated"
     },
     {
       "id": "beneath-ceaseless-skies",
@@ -4946,7 +5031,9 @@
       "editorExperience": {
         "status": "not-yet-submitted"
       },
-      "experienceNote": "BCS welcomes submissions from new and unpublished writers. — https://www.beneath-ceaseless-skies.com/submissions/ (read 2026-09-30)"
+      "experienceNote": "BCS welcomes submissions from new and unpublished writers. — https://www.beneath-ceaseless-skies.com/submissions/ (read 2026-09-30)",
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "(We’ve accepted simultaneous submissions since 2008, as a favor to writers because we know that response times from short fiction magazines can be long, but if people abuse this policy, we will rescind it.) — https://www.beneath-ceaseless-skies.com/submissions/ (read 2026-09-30)"
     },
     {
       "id": "khoreo-fiction",
@@ -5045,7 +5132,9 @@
       ],
       "editorExperience": {
         "status": "not-yet-submitted"
-      }
+      },
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "Submission status: If the piece is a simultaneous submission, please let us know in your cover letter and withdraw the piece immediately if it is accepted elsewhere. — https://www.khoreomag.com/submissions-fiction/ (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -5134,7 +5223,8 @@
         },
         "summary": "Planned target (carved from The Republic reject); not yet submitted.",
         "note": "Prepared but not yet submitted."
-      }
+      },
+      "simultaneousSubmissions": "not-stated"
     },
     {
       "status": "published",
@@ -5214,7 +5304,9 @@
         "band": "unknown",
         "official": false
       },
-      "submissionStatus": "open"
+      "submissionStatus": "open",
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "While we encourage simultaneous submissions, we hope for stories that take maximum advantage of Longreads’ broad purview and emphasis on storytelling. — https://longreads.com/submissions/ (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -5291,7 +5383,8 @@
         },
         "updatedAt": "2026-09-04",
         "note": "Submitted; no acceptance yet."
-      }
+      },
+      "simultaneousSubmissions": "not-stated"
     },
     {
       "status": "published",
@@ -5372,7 +5465,8 @@
         },
         "updatedAt": "2026-09-04",
         "note": "Submitted; awaiting publication."
-      }
+      },
+      "simultaneousSubmissions": "not-stated"
     },
     {
       "status": "published",
@@ -5462,7 +5556,8 @@
         },
         "updatedAt": "2026-09-04",
         "note": "Submitted; no acceptance yet."
-      }
+      },
+      "simultaneousSubmissions": "not-stated"
     },
     {
       "status": "published",
@@ -5541,7 +5636,8 @@
         "official": true
       },
       "submissionStatus": "unknown",
-      "experienceNote": "If you are a professional writer and would like to be paid, please let us know when you submit your article for review including your fee. — https://www.incomediary.com/write-for-incomediary (read 2026-09-30)"
+      "experienceNote": "If you are a professional writer and would like to be paid, please let us know when you submit your article for review including your fee. — https://www.incomediary.com/write-for-incomediary (read 2026-09-30)",
+      "simultaneousSubmissions": "not-stated"
     },
     {
       "status": "published",
@@ -5620,7 +5716,8 @@
         "band": "unknown",
         "official": false
       },
-      "submissionStatus": "open"
+      "submissionStatus": "open",
+      "simultaneousSubmissions": "not-stated"
     },
     {
       "status": "published",
@@ -5689,7 +5786,8 @@
         "band": "unknown",
         "official": false
       },
-      "submissionStatus": "unknown"
+      "submissionStatus": "unknown",
+      "simultaneousSubmissions": "not-stated"
     },
     {
       "status": "published",
@@ -5774,7 +5872,9 @@
         "band": "slow",
         "official": true
       },
-      "submissionStatus": "open"
+      "submissionStatus": "open",
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "Simultaneous submissions are accepted, provided you withdraw promptly if accepted elsewhere. — https://brittlepaper.com/2026/04/call-for-submissions-literary-magazine-the-offing-is-open-and-free-to-submit/ (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -5857,7 +5957,8 @@
         "band": "unknown",
         "official": false
       },
-      "submissionStatus": "open"
+      "submissionStatus": "open",
+      "simultaneousSubmissions": "not-stated"
     },
     {
       "status": "published",
@@ -5934,7 +6035,8 @@
         "band": "unknown",
         "official": false
       },
-      "submissionStatus": "open"
+      "submissionStatus": "open",
+      "simultaneousSubmissions": "not-stated"
     },
     {
       "status": "published",
@@ -6013,7 +6115,9 @@
         "band": "unknown",
         "official": false
       },
-      "submissionStatus": "unknown"
+      "submissionStatus": "unknown",
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "Simultaneous submissions (submissions which have been sent to other literary magazines) are permitted and should be retracted when accepted for publication elsewhere. — https://doeklitmag.com/submissions/ (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -6095,7 +6199,8 @@
         "band": "fast",
         "official": true
       },
-      "submissionStatus": "open"
+      "submissionStatus": "open",
+      "simultaneousSubmissions": "not-stated"
     },
     {
       "status": "published",
@@ -6179,7 +6284,8 @@
         "band": "fast",
         "official": true
       },
-      "submissionStatus": "open"
+      "submissionStatus": "open",
+      "simultaneousSubmissions": "not-stated"
     },
     {
       "id": "the-sun-magazine",
@@ -6265,7 +6371,8 @@
       },
       "seoTitle": "The Sun Magazine: $200+ for essays, fiction and poetry",
       "publishedAt": "2026-09-05",
-      "experienceNote": "First-time authors and award-winners alike find their place in The Sun — https://thesunmagazine.org/submit (read 2026-09-30)"
+      "experienceNote": "First-time authors and award-winners alike find their place in The Sun — https://thesunmagazine.org/submit (read 2026-09-30)",
+      "simultaneousSubmissions": "not-stated"
     },
     {
       "id": "black-fox-literary-magazine",
@@ -6348,7 +6455,9 @@
         "applied": false
       },
       "seoTitle": "Black Fox Literary Magazine: $20 per contributor",
-      "publishedAt": "2026-09-05"
+      "publishedAt": "2026-09-05",
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "We accept simultaneous submissions, but we ask that you withdraw your work via Submittable (add a note if withdrawing one poem at a time) if your work is accepted elsewhere. — https://blackfoxlitmag.com/submit/ (read 2026-09-30)"
     },
     {
       "id": "the-forge-literary-magazine",
@@ -6429,7 +6538,8 @@
         "applied": false
       },
       "seoTitle": "The Forge Literary Magazine: $100 per story",
-      "publishedAt": "2026-09-05"
+      "publishedAt": "2026-09-05",
+      "simultaneousSubmissions": "not-stated"
     },
     {
       "id": "split-lip-magazine",
@@ -6512,7 +6622,8 @@
         "applied": false
       },
       "seoTitle": "Split Lip Magazine: $25–$75",
-      "publishedAt": "2026-09-05"
+      "publishedAt": "2026-09-05",
+      "simultaneousSubmissions": "not-stated"
     },
     {
       "id": "cincinnati-review",
@@ -6595,7 +6706,8 @@
         "applied": false
       },
       "seoTitle": "The Cincinnati Review: $25–$30 per page",
-      "publishedAt": "2026-09-05"
+      "publishedAt": "2026-09-05",
+      "simultaneousSubmissions": "not-stated"
     },
     {
       "id": "guernica",
@@ -6681,7 +6793,9 @@
         "applied": false
       },
       "seoTitle": "Guernica: $100 honorarium, fiction/nonfiction/poetry",
-      "publishedAt": "2026-09-05"
+      "publishedAt": "2026-09-05",
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "Cover Letter: Please include a brief cover letter with your submission that contains: Your name A short bio Contact information The title of your submission Simultaneous Submissions: Simultaneous submissions are accepted. — https://guernicamagazine.submittable.com/submit (read 2026-09-30)"
     },
     {
       "id": "the-stinging-fly",
@@ -6753,6 +6867,10 @@
         {
           "name": "The Stinging Fly (official)",
           "url": "https://stingingfly.org"
+        },
+        {
+          "name": "The Stinging Fly — Submissions (official)",
+          "url": "https://stingingfly.org/submissions/"
         }
       ],
       "keywords": [
@@ -6767,7 +6885,9 @@
       },
       "seoTitle": "The Stinging Fly: €45/page, open to writers from abroad",
       "publishedAt": "2026-09-05",
-      "experienceNote": "We have a particular interest in promoting new writers, and in promoting the short story form. — https://stingingfly.org/submissions/ (read 2026-09-30)"
+      "experienceNote": "We have a particular interest in promoting new writers, and in promoting the short story form. — https://stingingfly.org/submissions/ (read 2026-09-30)",
+      "simultaneousSubmissions": "not-accepted",
+      "simultaneousNote": "Work must be previously unpublished and not under consideration elsewhere. — https://stingingfly.org/submissions/ (read 2026-09-30)"
     },
     {
       "id": "the-drift",
@@ -6851,7 +6971,8 @@
         "applied": false
       },
       "seoTitle": "The Drift: $2,000 essays, $500–$1,000 stories",
-      "publishedAt": "2026-09-05"
+      "publishedAt": "2026-09-05",
+      "simultaneousSubmissions": "not-stated"
     },
     {
       "id": "new-lines-magazine",
@@ -6921,6 +7042,10 @@
         {
           "name": "New Lines Magazine (official)",
           "url": "https://newlinesmag.com"
+        },
+        {
+          "name": "New Lines Magazine — Submissions (official)",
+          "url": "https://newlinesmag.com/submissions/"
         }
       ],
       "keywords": [
@@ -6934,7 +7059,8 @@
         "applied": false
       },
       "seoTitle": "New Lines Magazine: $600–$800 per essay",
-      "publishedAt": "2026-09-05"
+      "publishedAt": "2026-09-05",
+      "simultaneousSubmissions": "not-stated"
     },
     {
       "id": "smashing-magazine",
@@ -7020,7 +7146,8 @@
         "applied": false
       },
       "seoTitle": "Smashing Magazine: ~$200–$250 for technical articles",
-      "publishedAt": "2026-09-05"
+      "publishedAt": "2026-09-05",
+      "simultaneousSubmissions": "not-stated"
     },
     {
       "id": "writers-digest",
@@ -7086,6 +7213,10 @@
         {
           "name": "Writer's Digest official submission guidelines",
           "url": "https://www.writersdigest.com/resources/submission-guidelines"
+        },
+        {
+          "name": "Writer's Digest — Submissions (official)",
+          "url": "https://www.writersdigest.com/submissions/"
         }
       ],
       "keywords": [
@@ -7099,7 +7230,8 @@
       },
       "seoTitle": "Writer's Digest: ~$0.30–$0.50/word",
       "publishedAt": "2026-09-05",
-      "experienceNote": "Although we welcome the work of new writers, we believe the established writer can better instruct our reader. — https://www.writersdigest.com/resources/submission-guidelines (read 2026-09-30)"
+      "experienceNote": "Although we welcome the work of new writers, we believe the established writer can better instruct our reader. — https://www.writersdigest.com/resources/submission-guidelines (read 2026-09-30)",
+      "simultaneousSubmissions": "not-stated"
     },
     {
       "id": "eater",
@@ -7179,7 +7311,8 @@
         "applied": false
       },
       "seoTitle": "Eater: pays for food-culture essays and features",
-      "publishedAt": "2026-09-05"
+      "publishedAt": "2026-09-05",
+      "simultaneousSubmissions": "not-stated"
     },
     {
       "id": "the-kitchn",
@@ -7261,7 +7394,8 @@
         "applied": false
       },
       "seoTitle": "The Kitchn: ~$150 per assignment",
-      "publishedAt": "2026-09-05"
+      "publishedAt": "2026-09-05",
+      "simultaneousSubmissions": "not-stated"
     },
     {
       "id": "aarp-magazine",
@@ -7344,7 +7478,8 @@
         "applied": false
       },
       "seoTitle": "AARP: up to ~$1/word",
-      "publishedAt": "2026-09-05"
+      "publishedAt": "2026-09-05",
+      "simultaneousSubmissions": "not-stated"
     },
     {
       "id": "wired",
@@ -7423,7 +7558,8 @@
         "applied": false
       },
       "seoTitle": "WIRED: $2,500+ per reported feature",
-      "publishedAt": "2026-09-05"
+      "publishedAt": "2026-09-05",
+      "simultaneousSubmissions": "not-stated"
     },
     {
       "id": "business-insider",
@@ -7506,7 +7642,8 @@
       },
       "seoTitle": "Business Insider: ~$0.40/word",
       "publishedAt": "2026-09-05",
-      "experienceNote": "We will ask you for a headshot, a bio, and proof of your credentials. — https://www.businessinsider.com/how-to-write-for-business-insider-2020-4 (read 2026-09-30)"
+      "experienceNote": "We will ask you for a headshot, a bio, and proof of your credentials. — https://www.businessinsider.com/how-to-write-for-business-insider-2020-4 (read 2026-09-30)",
+      "simultaneousSubmissions": "not-stated"
     },
     {
       "id": "slate",
@@ -7591,7 +7728,8 @@
         "applied": false
       },
       "seoTitle": "Slate: pays for essays and analysis",
-      "publishedAt": "2026-09-05"
+      "publishedAt": "2026-09-05",
+      "simultaneousSubmissions": "not-stated"
     },
     {
       "id": "rest-of-world-2",
@@ -7669,7 +7807,8 @@
         "applied": false
       },
       "seoTitle": "Rest of World: $1/word",
-      "publishedAt": "2026-09-05"
+      "publishedAt": "2026-09-05",
+      "simultaneousSubmissions": "not-stated"
     },
     {
       "id": "kenyon-review",
@@ -7751,7 +7890,9 @@
       "publishedAt": "2026-09-05",
       "vertical": "writing",
       "lastVerified": "2026-09-05",
-      "submissionStatus": "upcoming"
+      "submissionStatus": "upcoming",
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "Simultaneous Submissions are permitted, but please notify us immediately if the work has been accepted elsewhere by messaging us through Submittable and indicating which pieces are no longer available. — https://kenyonreview.org/submit/ (read 2026-09-30)"
     },
     {
       "id": "agni",
@@ -7833,7 +7974,8 @@
       "publishedAt": "2026-09-05",
       "vertical": "writing",
       "lastVerified": "2026-09-05",
-      "submissionStatus": "open"
+      "submissionStatus": "open",
+      "simultaneousSubmissions": "not-stated"
     },
     {
       "id": "litmag-online",
@@ -7911,7 +8053,8 @@
       "publishedAt": "2026-09-05",
       "vertical": "writing",
       "lastVerified": "2026-09-16",
-      "submissionStatus": "closed"
+      "submissionStatus": "closed",
+      "simultaneousSubmissions": "not-stated"
     },
     {
       "id": "bombay-literary-magazine",
@@ -8001,7 +8144,9 @@
       "publishedAt": "2026-09-05",
       "vertical": "writing",
       "lastVerified": "2026-09-30",
-      "submissionStatus": "open"
+      "submissionStatus": "open",
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "simultaneous submissions are okay). — https://bombaylitmag.com/submit/ (read 2026-09-30)"
     },
     {
       "id": "hobart",
@@ -8078,7 +8223,8 @@
       "publishedAt": "2026-09-05",
       "vertical": "writing",
       "lastVerified": "2026-09-05",
-      "submissionStatus": "open"
+      "submissionStatus": "open",
+      "simultaneousSubmissions": "not-stated"
     },
     {
       "id": "solarpunk-magazine",
@@ -8141,6 +8287,10 @@
         {
           "name": "Solarpunk Magazine (official)",
           "url": "https://solarpunkmagazine.com/"
+        },
+        {
+          "name": "Solarpunk Magazine — Submissions (official)",
+          "url": "https://solarpunkmagazine.com/submissions/"
         }
       ],
       "keywords": [
@@ -8156,7 +8306,9 @@
       "publishedAt": "2026-09-05",
       "vertical": "writing",
       "lastVerified": "2026-09-05",
-      "submissionStatus": "upcoming"
+      "submissionStatus": "upcoming",
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "Simultaneous submissions are okay. — https://solarpunkmagazine.com/submissions/ (read 2026-09-30)"
     },
     {
       "id": "diabolical-plots",
@@ -8232,7 +8384,8 @@
       "publishedAt": "2026-09-05",
       "vertical": "writing",
       "lastVerified": "2026-09-05",
-      "submissionStatus": "open"
+      "submissionStatus": "open",
+      "simultaneousSubmissions": "not-stated"
     },
     {
       "id": "haven-speculative",
@@ -8309,7 +8462,8 @@
       "publishedAt": "2026-09-05",
       "vertical": "writing",
       "lastVerified": "2026-09-05",
-      "submissionStatus": "open"
+      "submissionStatus": "open",
+      "simultaneousSubmissions": "not-stated"
     },
     {
       "id": "mudroom",
@@ -8388,7 +8542,8 @@
       "publishedAt": "2026-09-05",
       "vertical": "writing",
       "lastVerified": "2026-09-05",
-      "submissionStatus": "open"
+      "submissionStatus": "open",
+      "simultaneousSubmissions": "not-stated"
     },
     {
       "id": "space-and-time",
@@ -8464,7 +8619,8 @@
       "publishedAt": "2026-09-05",
       "vertical": "writing",
       "lastVerified": "2026-09-05",
-      "submissionStatus": "open"
+      "submissionStatus": "open",
+      "simultaneousSubmissions": "not-stated"
     },
     {
       "id": "ploughshares",
@@ -8544,7 +8700,8 @@
       "vertical": "writing",
       "submissionStatus": "upcoming",
       "lastVerified": "2026-09-05",
-      "experienceNote": "We consider authors “emerging” if they haven’t published or self-published a book. — https://www.pshares.org/submit/ (read 2026-09-30)"
+      "experienceNote": "We consider authors “emerging” if they haven’t published or self-published a book. — https://www.pshares.org/submit/ (read 2026-09-30)",
+      "simultaneousSubmissions": "not-stated"
     },
     {
       "id": "zyzzyva",
@@ -8608,6 +8765,10 @@
         {
           "name": "Zyzzyva (official)",
           "url": "https://www.zyzzyva.org/"
+        },
+        {
+          "name": "Zyzzyva — Submissions (official)",
+          "url": "https://www.zyzzyva.org/submissions/"
         }
       ],
       "keywords": [
@@ -8623,7 +8784,8 @@
       "publishedAt": "2026-09-05",
       "vertical": "writing",
       "submissionStatus": "open",
-      "lastVerified": "2026-09-05"
+      "lastVerified": "2026-09-05",
+      "simultaneousSubmissions": "not-stated"
     },
     {
       "id": "the-threepenny-review",
@@ -8685,6 +8847,10 @@
         {
           "name": "The Threepenny Review (official)",
           "url": "https://www.threepennyreview.com/"
+        },
+        {
+          "name": "The Threepenny Review — Submissions (official)",
+          "url": "https://www.threepennyreview.com/submissions/"
         }
       ],
       "keywords": [
@@ -8700,7 +8866,9 @@
       "publishedAt": "2026-09-05",
       "vertical": "writing",
       "submissionStatus": "upcoming",
-      "lastVerified": "2026-09-05"
+      "lastVerified": "2026-09-05",
+      "simultaneousSubmissions": "not-accepted",
+      "simultaneousNote": "We do not print material that has previously been published elsewhere, and we emphatically do not consider simultaneous submissions. — https://www.threepennyreview.com/submissions/ (read 2026-09-30)"
     },
     {
       "id": "transition-magazine",
@@ -8781,7 +8949,8 @@
       "publishedAt": "2026-09-05",
       "vertical": "writing",
       "submissionStatus": "rolling",
-      "lastVerified": "2026-09-05"
+      "lastVerified": "2026-09-05",
+      "simultaneousSubmissions": "not-stated"
     },
     {
       "id": "the-ex-puritan",
@@ -8860,7 +9029,8 @@
       "publishedAt": "2026-09-05",
       "vertical": "writing",
       "submissionStatus": "rolling",
-      "lastVerified": "2026-09-05"
+      "lastVerified": "2026-09-05",
+      "simultaneousSubmissions": "not-stated"
     },
     {
       "status": "published",
@@ -8948,7 +9118,9 @@
         "fiction",
         "nonfiction"
       ],
-      "writingTypeLabel": "Fiction and nonfiction"
+      "writingTypeLabel": "Fiction and nonfiction",
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "Simultaneous submissions are encouraged! — https://forgelitmag.com/submit/ (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -9034,7 +9206,8 @@
         "nonfiction",
         "translation"
       ],
-      "writingTypeLabel": "Poetry, fiction, creative nonfiction, translation"
+      "writingTypeLabel": "Poetry, fiction, creative nonfiction, translation",
+      "simultaneousSubmissions": "not-stated"
     },
     {
       "status": "published",
@@ -9094,6 +9267,10 @@
         {
           "name": "Pulp Literature - Submission Guidelines (official)",
           "url": "https://pulpliterature.com/submissions/submission-guidelines/"
+        },
+        {
+          "name": "Pulp Literature Magazine — Submissions (official)",
+          "url": "https://pulpliterature.com/submissions/"
         }
       ],
       "keywords": [
@@ -9114,7 +9291,9 @@
         "poetry"
       ],
       "writingTypeLabel": "Short fiction, poetry, art",
-      "experienceNote": "If you’re a new writer, send in your most thrilling, funny, or heart-rending work! — https://pulpliterature.com/submissions/submission-guidelines/ (read 2026-09-30)"
+      "experienceNote": "If you’re a new writer, send in your most thrilling, funny, or heart-rending work! — https://pulpliterature.com/submissions/submission-guidelines/ (read 2026-09-30)",
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "We accept simultaneous submissions. — https://pulpliterature.com/submissions/submission-guidelines/ (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -9206,7 +9385,8 @@
         "uk",
         "gbp"
       ],
-      "experienceNote": "Our editorial process is stringent, and while we are open to working with first-time writers, we hold every draft to the same standards — https://www.pelliclemag.com/pitching (read 2026-09-30)"
+      "experienceNote": "Our editorial process is stringent, and while we are open to working with first-time writers, we hold every draft to the same standards — https://www.pelliclemag.com/pitching (read 2026-09-30)",
+      "simultaneousSubmissions": "not-stated"
     },
     {
       "status": "published",
@@ -9302,7 +9482,9 @@
         "gbp",
         "no ai"
       ],
-      "experienceNote": "We have only 16 spots per issue (12 in print and 4 on our Substack, With Bite) and we remain committed to publishing the very best of new and established writers. — https://extrateeth.co.uk/submissions (read 2026-09-30)"
+      "experienceNote": "We have only 16 spots per issue (12 in print and 4 on our Substack, With Bite) and we remain committed to publishing the very best of new and established writers. — https://extrateeth.co.uk/submissions (read 2026-09-30)",
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "We understand it’s unrealistic to ask you not to submit pieces elsewhere during this period, but if you need to withdraw a submission please email to let us know ASAP. — https://extrateeth.co.uk/submissions (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -9387,7 +9569,8 @@
         "features",
         "interviews",
         "gbp"
-      ]
+      ],
+      "simultaneousSubmissions": "not-stated"
     },
     {
       "status": "published",
@@ -9471,7 +9654,8 @@
         "wales",
         "poetry",
         "gbp"
-      ]
+      ],
+      "simultaneousSubmissions": "not-stated"
     },
     {
       "status": "published",
@@ -9561,7 +9745,9 @@
         "london",
         "gbp"
       ],
-      "experienceNote": "Poetry London aims to publish the best, most exciting poetry being written now, and we are always interested in work by unpublished poets, as well as celebrated ones. — https://poetrylondon.co.uk/submissions/ (read 2026-09-30)"
+      "experienceNote": "Poetry London aims to publish the best, most exciting poetry being written now, and we are always interested in work by unpublished poets, as well as celebrated ones. — https://poetrylondon.co.uk/submissions/ (read 2026-09-30)",
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "Please withdraw your poems if they are accepted elsewhere. — https://poetrylondon.co.uk/submissions/ (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -9650,7 +9836,9 @@
         "science fiction",
         "scotland",
         "gbp"
-      ]
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "What to Submit We accept simultaneous submissions, but do tell us immediately if you want to withdraw a submission. — https://shorelineofinfinity.com/submissions/ (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -9747,7 +9935,9 @@
         "ireland",
         "gbp"
       ],
-      "experienceNote": "Propel Magazine is for writers who have not previously published a full collection. — https://propelmagazine.co.uk/submissions (read 2026-09-30)"
+      "experienceNote": "Propel Magazine is for writers who have not previously published a full collection. — https://propelmagazine.co.uk/submissions (read 2026-09-30)",
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "We do consider simultaneous submissions, but please let us know promptly if work you have submitted has been accepted for publication elsewhere. — https://propelmagazine.co.uk/submissions (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -9772,6 +9962,10 @@
         {
           "name": "The Fiction Desk — Short Story Submission Guidelines (official)",
           "url": "https://www.thefictiondesk.com/submissions/short-story-submission-guidelines.php"
+        },
+        {
+          "name": "The Fiction Desk — Submissions (official)",
+          "url": "https://www.thefictiondesk.com/submissions/"
         }
       ],
       "eligibility": {
@@ -9840,7 +10034,9 @@
         "gbp",
         "no ai"
       ],
-      "experienceNote": "The Fiction Desk is a short story publisher specialising in regular anthologies of new short fiction from both debut and established authors. — https://www.thefictiondesk.com/submissions/short-story-submission-guidelines.php (read 2026-09-30)"
+      "experienceNote": "The Fiction Desk is a short story publisher specialising in regular anthologies of new short fiction from both debut and established authors. — https://www.thefictiondesk.com/submissions/short-story-submission-guidelines.php (read 2026-09-30)",
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "You may wish to submit to other short story publishers and magazines at the same time as submitting to us, and we are happy to consider simultaneous submissions. — https://www.thefictiondesk.com/submissions/short-story-submission-guidelines.php (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -9928,7 +10124,9 @@
         "norwich",
         "uk",
         "gbp"
-      ]
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "We don’t, at least for the time being, have a problem with you sending your poems to other magazines while you wait to hear from The Rialto. — https://www.therialto.co.uk/pages/about/the-magazine/submissions/ (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -10021,7 +10219,9 @@
         "poetry",
         "essays",
         "gbp"
-      ]
+      ],
+      "simultaneousSubmissions": "not-accepted",
+      "simultaneousNote": "We do not accept simultaneous submissions. — https://www.guttermag.co.uk/submit (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -10109,7 +10309,9 @@
         "london",
         "gbp"
       ],
-      "experienceNote": "If you’re a poet, even if you’ve never been published before, we want to read your work. — https://www.fourteenpoems.com/submit (read 2026-09-30)"
+      "experienceNote": "If you’re a poet, even if you’ve never been published before, we want to read your work. — https://www.fourteenpoems.com/submit (read 2026-09-30)",
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "We know how difficult it is to get published, so we’re happy for you to submit elsewhere simultaneously. — https://www.fourteenpoems.com/submit (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -10206,7 +10408,8 @@
         "literary",
         "uk",
         "prestige"
-      ]
+      ],
+      "simultaneousSubmissions": "not-stated"
     },
     {
       "status": "published",
@@ -10299,7 +10502,9 @@
         "non-fiction",
         "london",
         "oldest"
-      ]
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "Simultaneous submissions are accepted, but we ask that you notify us if your submission is accepted elsewhere. — https://thelondonmagazine.org/submission-guidelines/ (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -10386,7 +10591,8 @@
         "creative nonfiction",
         "essays",
         "uk"
-      ]
+      ],
+      "simultaneousSubmissions": "not-stated"
     },
     {
       "status": "published",
@@ -10484,7 +10690,8 @@
         "fiction",
         "uk"
       ],
-      "experienceNote": "Including big-name commissions and as-yet-undiscovered newcomers, we publish over 60 women in every issue. — https://mslexia.co.uk/submit-your-work/ (read 2026-09-30)"
+      "experienceNote": "Including big-name commissions and as-yet-undiscovered newcomers, we publish over 60 women in every issue. — https://mslexia.co.uk/submit-your-work/ (read 2026-09-30)",
+      "simultaneousSubmissions": "not-stated"
     },
     {
       "status": "published",
@@ -10574,7 +10781,9 @@
         "poetry",
         "uk",
         "mpt"
-      ]
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "We accept simultaneous submissions, as long as we are informed immediately should your work be published elsewhere. — https://modernpoetryintranslation.com/submit/ (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -10669,7 +10878,8 @@
         "social justice",
         "cad"
       ],
-      "experienceNote": "We welcome pitches from unpublished writers, seasoned freelancers, front-line activists, and anyone else with a story to tell and a desire to tell it compellingly. — https://briarpatchmagazine.com/submissions (read 2026-09-30)"
+      "experienceNote": "We welcome pitches from unpublished writers, seasoned freelancers, front-line activists, and anyone else with a story to tell and a desire to tell it compellingly. — https://briarpatchmagazine.com/submissions (read 2026-09-30)",
+      "simultaneousSubmissions": "not-stated"
     },
     {
       "status": "published",
@@ -10757,7 +10967,8 @@
         "justice",
         "cad"
       ],
-      "experienceNote": "The majority of articles published in Broadview magazine and on Broadview.org are assigned to professional writers and journalists. — https://broadview.org/submission-guidelines/ (read 2026-09-30)"
+      "experienceNote": "The majority of articles published in Broadview magazine and on Broadview.org are assigned to professional writers and journalists. — https://broadview.org/submission-guidelines/ (read 2026-09-30)",
+      "simultaneousSubmissions": "not-stated"
     },
     {
       "status": "published",
@@ -10845,7 +11056,9 @@
         "poetry",
         "cad"
       ],
-      "experienceNote": "The Malahat Review welcomes submissions of poetry, short fiction, and creative nonfiction, as well as translated work in any of these three genres, by new and established writers from Canada and abroad. — https://malahatreview.ca/submission_guidelines.html (read 2026-09-30)"
+      "experienceNote": "The Malahat Review welcomes submissions of poetry, short fiction, and creative nonfiction, as well as translated work in any of these three genres, by new and established writers from Canada and abroad. — https://malahatreview.ca/submission_guidelines.html (read 2026-09-30)",
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "For regular submissions, please inform us if you’re making a simultaneous submission, and please update us as soon as possible with any changes to the status of your submission. — https://malahatreview.ca/submission_guidelines.html (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -10941,7 +11154,9 @@
         "emerging writers",
         "cad"
       ],
-      "experienceNote": "We seek to nurture emerging writers (writers who haven’t yet published a full book) by publishing and promoting their work alongside established writers — https://tnq.ca/submit/ (read 2026-09-30)"
+      "experienceNote": "We seek to nurture emerging writers (writers who haven’t yet published a full book) by publishing and promoting their work alongside established writers — https://tnq.ca/submit/ (read 2026-09-30)",
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "Yes, but please let us know right away if your work has been accepted somewhere else. — https://tnq.ca/submit/ (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -11032,7 +11247,9 @@
         "poetry",
         "cad"
       ],
-      "experienceNote": "PRISM international publishes exciting, original, literary material from established and emerging writers in Canada and around the world. — https://prismmagazine.ca/submit/ (read 2026-09-30)"
+      "experienceNote": "PRISM international publishes exciting, original, literary material from established and emerging writers in Canada and around the world. — https://prismmagazine.ca/submit/ (read 2026-09-30)",
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "We accept simultaneous submissions, and we ask that you let us know if your piece is accepted elsewhere, OR withdraw it from our Submittable. — https://prismmagazine.ca/submit/ (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -11128,7 +11345,9 @@
         "poetry",
         "cad"
       ],
-      "experienceNote": "We encourage writers from diverse backgrounds and experience levels to send their work to EVENT. — https://www.eventmagazine.ca/submit/ (read 2026-09-30)"
+      "experienceNote": "We encourage writers from diverse backgrounds and experience levels to send their work to EVENT. — https://www.eventmagazine.ca/submit/ (read 2026-09-30)",
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "We accept simultaneous submissions, but please advise us immediately should a piece under consideration be accepted elsewhere. — https://www.eventmagazine.ca/submit/ (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -11219,7 +11438,9 @@
         "poetry",
         "cad",
         "no ai"
-      ]
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "We ask that you let us know if your work is also submitted elsewhere, and, if it is accepted, to notify us right away. — https://prairiefire.ca/submissions/ (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -11311,7 +11532,9 @@
         "poetry",
         "cad",
         "no ai"
-      ]
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "We accept simultaneous submissions. — https://augurmag.com/submissions/ (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -11404,7 +11627,9 @@
         "essays",
         "cad"
       ],
-      "experienceNote": "Our priority is to publish work from emerging and established writers and artists who are Canadian or permanent residents of Canada — https://www.geist.com/submit/ (read 2026-09-30)"
+      "experienceNote": "Our priority is to publish work from emerging and established writers and artists who are Canadian or permanent residents of Canada — https://www.geist.com/submit/ (read 2026-09-30)",
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "We accept simultaneous submissions, but please note it in your cover letter and let us know if your submission is accepted elsewhere. — https://www.geist.com/submit/ (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -11492,7 +11717,9 @@
         "prose",
         "poetry",
         "cad"
-      ]
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "We accept simultaneous submissions, but please notify us if your piece is picked up by another magazine. — https://freefallmagazine.ca/submissions/ (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -11587,7 +11814,9 @@
         "fiction",
         "poetry",
         "cad"
-      ]
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "We welcome simultaneous submissions, provided you notify us and/or withdraw a piece that is accepted for publication elsewhere. — https://thetemzreview.com/submissions (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -11673,7 +11902,9 @@
         "quebec",
         "translation",
         "cad"
-      ]
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "Simultaneous submissions: We accept simultaneous submissions. — https://carte-blanche.org/submissions/ (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -11774,7 +12005,8 @@
         "aud",
         "no ai"
       ],
-      "experienceNote": "We aim to provide as many publishing opportunities as we can for new, emerging and established writers. — https://islandmag.com/submit (read 2026-09-30)"
+      "experienceNote": "We aim to provide as many publishing opportunities as we can for new, emerging and established writers. — https://islandmag.com/submit (read 2026-09-30)",
+      "simultaneousSubmissions": "not-stated"
     },
     {
       "status": "published",
@@ -11865,7 +12097,9 @@
         "poetry",
         "fiction",
         "aud"
-      ]
+      ],
+      "simultaneousSubmissions": "not-accepted",
+      "simultaneousNote": "Work should not have been published previously, nor be under consideration elsewhere. — https://westerlymag.com.au/submit/ (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -11956,7 +12190,8 @@
         "short fiction",
         "aud"
       ],
-      "experienceNote": "Kill Your Darlings welcomes submissions of short fiction to the magazine from established and emerging writers year-round. — https://www.killyourdarlings.com.au/write-for-us/ (read 2026-09-30)"
+      "experienceNote": "Kill Your Darlings welcomes submissions of short fiction to the magazine from established and emerging writers year-round. — https://www.killyourdarlings.com.au/write-for-us/ (read 2026-09-30)",
+      "simultaneousSubmissions": "not-stated"
     },
     {
       "status": "published",
@@ -12052,7 +12287,9 @@
         "horror",
         "aud",
         "no ai"
-      ]
+      ],
+      "simultaneousSubmissions": "not-accepted",
+      "simultaneousNote": "We do not accept simultaneous submissions. — https://aurealis.com.au/submissions/ (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -12138,7 +12375,8 @@
         "criticism",
         "aud"
       ],
-      "experienceNote": "Australian Book Review has a long and proud history of publishing emerging writers and critics with diverse backgrounds and interests. — https://www.australianbookreview.com.au/submissions (read 2026-09-30)"
+      "experienceNote": "Australian Book Review has a long and proud history of publishing emerging writers and critics with diverse backgrounds and interests. — https://www.australianbookreview.com.au/submissions (read 2026-09-30)",
+      "simultaneousSubmissions": "not-stated"
     },
     {
       "status": "published",
@@ -12226,7 +12464,9 @@
         "essays",
         "environment",
         "usd"
-      ]
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "Also: We appreciate a heads-up if you are making a simultaneous submission, as well as the courtesy of letting us know if a story you have pitched us has been accepted elsewhere. — https://www.hcn.org/submissions/ (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -12315,7 +12555,9 @@
         "500",
         "usa",
         "usd"
-      ]
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "Yes, but please withdraw your submission immediately if your submission is accepted for publication elsewhere. — https://one-story.com/write/submit-a-story/ (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -12405,7 +12647,8 @@
         "unc wilmington",
         "usa",
         "usd"
-      ]
+      ],
+      "simultaneousSubmissions": "not-stated"
     },
     {
       "status": "published",
@@ -12501,7 +12744,8 @@
         "usa",
         "usd",
         "no ai"
-      ]
+      ],
+      "simultaneousSubmissions": "not-stated"
     },
     {
       "status": "published",
@@ -12600,7 +12844,8 @@
         "health reporting",
         "environment reporting",
         "pitched science writing"
-      ]
+      ],
+      "simultaneousSubmissions": "not-stated"
     },
     {
       "status": "published",
@@ -12691,7 +12936,8 @@
         "policy writing india",
         "ground reporting",
         "opinion pitch india"
-      ]
+      ],
+      "simultaneousSubmissions": "not-stated"
     },
     {
       "status": "published",
@@ -12783,7 +13029,8 @@
         "photo essay pitch",
         "delhi press",
         "indian magazine pitch"
-      ]
+      ],
+      "simultaneousSubmissions": "not-stated"
     },
     {
       "status": "published",
@@ -12808,6 +13055,10 @@
         {
           "name": "The Goya Journal - Guidelines on sending a story pitch (official)",
           "url": "https://www.goya.in/how-to-pitch"
+        },
+        {
+          "name": "The Goya Journal — Submissions (official)",
+          "url": "https://www.goya.in/submissions/"
         }
       ],
       "eligibility": {
@@ -12881,7 +13132,8 @@
         "food culture writing",
         "paid food writing india"
       ],
-      "experienceNote": "You don't need to have been published previously, but you should have the expertise, lived experience or proximity to the subject. — https://www.goya.in/how-to-pitch (read 2026-09-30)"
+      "experienceNote": "You don't need to have been published previously, but you should have the expertise, lived experience or proximity to the subject. — https://www.goya.in/how-to-pitch (read 2026-09-30)",
+      "simultaneousSubmissions": "not-stated"
     },
     {
       "status": "published",
@@ -12986,7 +13238,9 @@
         "sff magazine submissions",
         "south asian speculative fiction"
       ],
-      "experienceNote": "We’ve published both experienced and aspiring authors, and happily encourage first-time writers from anywhere in the world to submit. — https://mithilareview.com/submission-guidelines/ (read 2026-09-30)"
+      "experienceNote": "We’ve published both experienced and aspiring authors, and happily encourage first-time writers from anywhere in the world to submit. — https://mithilareview.com/submission-guidelines/ (read 2026-09-30)",
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "Simultaneous submissions are fine, as long as you mention it in your cover letter, and let us know immediately if it is accepted elsewhere. — https://mithilareview.com/submission-guidelines/ (read 2026-09-30)"
     }
   ]
 }

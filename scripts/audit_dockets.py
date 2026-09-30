@@ -3,7 +3,7 @@
 
 The docket makes two kinds of claim, and they fail in different ways.
 
-Structural claims - six rows, a value in each, a gap list whose length matches
+Structural claims - eight rows, a value in each, a gap list whose length matches
 the number of unanswered questions - fail when a record has a field shaped
 unlike the others, which is exactly the shape a batch of 147 records never has
 been.
@@ -96,6 +96,10 @@ RUN_TOGETHER = re.compile(
     r"\b(?:stated|published|limit|terms|note)\s+(?:The|This|BRYME|It)\s")
 
 ROW = re.compile(r'<div class="docket-row( gap)?">(.*?)</div>', re.S)
+# Payment, Length, Who can submit, Response time, Simultaneous submissions,
+# AI policy, Rights, Experience.
+DOCKET_ROWS = 8
+
 DOCKET = re.compile(r'<section class="section docket-section".*?</section>', re.S)
 
 
@@ -165,8 +169,8 @@ def main() -> int:
         block = found.group(0)
 
         rows = ROW.findall(block)
-        if len(rows) != 7:
-            fail(slug, f"{len(rows)} docket rows, expected 7")
+        if len(rows) != DOCKET_ROWS:
+            fail(slug, f"{len(rows)} docket rows, expected {DOCKET_ROWS}")
 
         gap_rows = len(re.findall(r'class="docket-row gap"', block))
         asked = gap_rows
@@ -176,10 +180,10 @@ def main() -> int:
             gaps_total += listed
             if listed != asked:
                 fail(slug, f"{listed} gaps listed but {asked} rows marked unanswered")
-            if listed == 7:
-                if "leaves all seven questions" not in block:
-                    fail(slug, "all seven unanswered but the headline does not say so")
-            elif f"leaves {listed} of the seven questions" not in block:
+            if listed == DOCKET_ROWS:
+                if "leaves all eight questions" not in block:
+                    fail(slug, "all eight unanswered but the headline does not say so")
+            elif f"leaves {listed} of the eight questions" not in block:
                 fail(slug, f"gap headline does not match the {listed} listed")
         elif asked:
             fail(slug, f"{asked} unanswered rows but no gap list")
@@ -300,7 +304,7 @@ def main() -> int:
                 fail(slug, "ranking published without the same-shape caveat")
 
     print(f"publication pages      : {pages}")
-    print(f"docket rows per page   : 7 (structural errors above if not)")
+    print(f"docket rows per page   : {DOCKET_ROWS} (structural errors above if not)")
     print(f"unanswered rows        : {silent_rows}")
     print(f"gaps listed to readers : {gaps_total}")
     print(f"rankings recomputed    : {claims_checked}")

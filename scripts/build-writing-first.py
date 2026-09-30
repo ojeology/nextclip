@@ -2394,7 +2394,7 @@ def writing_hub() -> None:
 {writing_nav()}
 <section class="section"><div class="how-steps"><h2 class="section-sub">How make-money writing works with BRYME</h2><ol class="steps">
 <li><b>Pick an opportunity.</b> Each page names who it is open to — BRYME does not treat a missing country list as "open worldwide." Eligibility and diaspora rules are recorded where the publication states them.</li>
-<li><b>Check the docket before you pitch.</b> Every publication page opens with six answers in one block — pay, length, who can submit, how long a reply takes, the AI policy and the rights — and then names the ones the publication does not give. A missing answer is recorded as missing rather than filled in with a plausible one, because the gap is itself something you need to know before you spend an evening on the pitch.</li>
+<li><b>Check the docket before you pitch.</b> Every publication page opens with eight answers in one block — pay, length, who can submit, how long a reply takes, whether you may submit elsewhere at the same time, the AI policy, the rights, and what the guideline assumes about experience — and then names the ones the publication does not give. A missing answer is recorded as missing rather than filled in with a plausible one, because the gap is itself something you need to know before you spend an evening on the pitch.</li>
 <li><b>Read the official guideline, not just the rate card.</b> Every page links to the publication's own guidelines and shows its last human-check date.</li>
 <li><b>Understand the money before you pitch.</b> Payment is the published fee per accepted piece (or the real range), how and when it is paid, and whether it is per word, per piece or a variable honorarium. Rates are never invented.</li>
 <li><b>Check the AI policy and rights.</b> Many publications reject AI-assisted work and take specific rights. BRYME records what each page says.</li>
@@ -2417,10 +2417,10 @@ def writing_hub() -> None:
 # ---------------------------------------------------------------------------
 # The submission docket
 #
-# Every publication page already answers six questions, but it answers them
+# Every publication page already answers eight questions, but it answers them
 # scattered across sections, in the publication's own words, with no indication
 # of which answers the publication actually gave and which BRYME filled in with
-# a default. A writer deciding where to send a pitch needs the six answers in
+# a default. A writer deciding where to send a pitch needs the eight answers in
 # one place AND needs to know which of them are missing - because "the
 # guideline does not say" is a fact about the market that no directory
 # publishes, and it is the difference between an editor who trusts the desk and
@@ -2691,7 +2691,7 @@ def _docket_row(label: str, value: str, note: str = "", state: str = "") -> str:
 
 
 def docket(rec: dict) -> str:
-    """The six answers, and the honest list of what is missing.
+    """The eight answers, and the honest list of what is missing.
 
     Nothing here is new data - every line is read from the record the rest of
     the page already shows, or computed from the dataset at build time. What is
@@ -2783,7 +2783,31 @@ def docket(rec: dict) -> str:
             "reasonable; silence past that is a soft no, not a rejection.", "gap"))
         gaps.append("Response time — expect to wait blind, and keep other pitches live.")
 
-    # 5. AI policy
+    # 5. Simultaneous submissions
+    #
+    # Read from the publication's own guideline and stored with the sentence it
+    # came from. Silence stays "Not stated": a publication that never mentions
+    # the question has not answered it, and telling a writer "yes" on its behalf
+    # would be inventing a policy for somebody else's magazine.
+    sim = str(rec.get("simultaneousSubmissions") or "not-stated")
+    sim_label = {
+        "accepted": "You may submit elsewhere at the same time",
+        "not-accepted": "Not accepted — send to one place at a time",
+    }.get(sim)
+    if sim_label:
+        rows.append(_docket_row("Simultaneous submissions", sim_label,
+                                _evidence(rec.get("simultaneousNote"))))
+    else:
+        rows.append(_docket_row(
+            "Simultaneous submissions", "Not stated",
+            "The guideline does not address simultaneous submissions. BRYME records "
+            "that as silence rather than assuming a yes: if you are sending the same "
+            "piece to several publications, say so in your cover letter and withdraw "
+            "it everywhere the moment it is taken.", "gap"))
+        gaps.append("Simultaneous submissions — the guideline leaves this open, so "
+                    "declare it in your cover letter rather than assuming.")
+
+    # 6. AI policy
     ai_text = {
         "prohibited": ("AI-assisted work is prohibited",
                        "The guideline forbids AI-generated or AI-assisted writing."),
@@ -2806,7 +2830,7 @@ def docket(rec: dict) -> str:
             f"silence here is not permission — ask.", "gap"))
         gaps.append("AI policy — assume disclosure is expected unless the editor says otherwise.")
 
-    # 6. Rights
+    # 7. Rights
     if rights_bucket(rec) == "stated":
         rows.append(_docket_row("Rights", "Stated", esc(rights)))
     else:
@@ -2851,8 +2875,8 @@ def docket(rec: dict) -> str:
     gap_block = ""
     if gaps:
         items = "".join(f"<li>{esc(g)}</li>" for g in gaps)
-        all_gaps = len(gaps) == 7
-        tail = "all seven questions" if all_gaps else f"{len(gaps)} of the seven questions"
+        all_gaps = len(gaps) == 8
+        tail = "all eight questions" if all_gaps else f"{len(gaps)} of the eight questions"
         gap_block = (f'<div class="docket-gaps"><h3>What this record does not tell you</h3>'
                      f'<p>This publication leaves {tail} unanswered. '
                      f'BRYME publishes that gap instead of filling it — a generated answer would '
