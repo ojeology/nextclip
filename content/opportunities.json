@@ -23768,6 +23768,321 @@
       ],
       "simultaneousSubmissions": "accepted",
       "simultaneousNote": "Simultaneous submissions are acceptable so long as they are indicated as such and we are immediately notified upon acceptance elsewhere. — https://blackbird.vcu.edu/submissions (read 2026-10-01)"
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-10-01",
+      "publishedAt": "2026-10-01",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "colorado-review",
+      "slug": "colorado-review",
+      "publication": "Colorado Review",
+      "title": "Short stories and essays: $300; poetry: $100 for each poet in the issue",
+      "seoTitle": "Colorado Review: $300 for stories and essays, $100 for poems",
+      "excerpt": "Colorado Review pays $300 for short stories and nonfiction, a flat $100 to each poet featured, and $100 for cover photography. Fiction and poetry are read 1 August to 31 March and nonfiction year-round, with a $3 charge on online submissions. Simultaneous submissions are accepted with immediate notice, and first North American serial rights revert to the author on publication.",
+      "officialUrl": "https://coloradoreview.colostate.edu/colorado-review/#submission-guidelines",
+      "applyUrl": "https://coloradoreview.colostate.edu/colorado-review/#submission-guidelines",
+      "applyEmail": null,
+      "applyMethod": "Online form through Submittable. Paper submissions are no longer accepted.",
+      "sources": [
+        {
+          "name": "Colorado Review - Submission guidelines (official)",
+          "url": "https://coloradoreview.colostate.edu/colorado-review/#submission-guidelines"
+        }
+      ],
+      "eligibility": {
+        "summary": "Official page: \"Authors do NOT need to be residents of Colorado or the United States.\" Colorado State University faculty, staff and students are excluded, and alumni may submit three years after leaving.",
+        "mode": "worldwide",
+        "includesGroups": [],
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": false
+      },
+      "writingTypes": [
+        "fiction",
+        "essays",
+        "poetry",
+        "creative-nonfiction",
+        "reviews"
+      ],
+      "writingTypeLabel": "Short fiction, personal essays, poetry, book reviews and cover photography",
+      "pay": {
+        "currency": "USD",
+        "amountMin": 100,
+        "amountMax": 300,
+        "display": "$300 per short story or essay, $100 per poet, $100 for cover photography",
+        "conditions": "Official page: \"Colorado Review pays its writers and artists: $300 for short stories and nonfiction; $100 for poetry; and $100 for cover photography.\" And: \"We pay our poets a flat fee of $100 and we pay $300 for short stories and essays.\" The $3 charged on online submissions is the writer's cost and is not part of the rate.",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "min": null,
+        "max": null,
+        "display": "Stories and essays of 15-25 manuscript pages, one piece at a time; poetry up to 7 poems and 20 pages, with single long poems up to 10 pages"
+      },
+      "response": {
+        "label": "Not publicly stated",
+        "band": "not-stated",
+        "official": false
+      },
+      "submissionStatus": "open",
+      "deadline": {
+        "display": "Fiction and poetry are read 1 August to 31 March; nonfiction is read year-round and photography for cover art is open now",
+        "openingDate": "2026-08-01",
+        "windowEnd": "2027-03-31",
+        "recurring": true
+      },
+      "aiPolicy": "not-stated",
+      "whatTheyWant": [
+        "Short fiction and personal essays with contemporary themes; the editors say they are equally interested in work by new and established writers.",
+        "Poetry of any style - about fifteen poets are featured in each issue.",
+        "Cover art photography, now open for submissions."
+      ],
+      "whatTheyDontWant": [
+        "Flash fiction and flash nonfiction, which are not accepted.",
+        "Scholarly essays and literary criticism.",
+        "More than one story or essay at a time, or more than one group of poems.",
+        "Lines longer than 65 characters, which the print page cannot fit.",
+        "Work by current or emeritus CSU faculty, staff or students.",
+        "A second submission while an earlier one is still awaiting a response.",
+        "Work published in Colorado Review within the last two years."
+      ],
+      "requirements": [
+        "Read the guidelines at https://coloradoreview.colostate.edu/colorado-review/#submission-guidelines before sending.",
+        "Submit online through Submittable; paper submissions are no longer accepted.",
+        "Fiction and poetry: send one piece at a time, from 1 August to 31 March. Nonfiction is read year-round.",
+        "Poetry: up to 7 poems totalling no more than 20 pages; a single long poem may run to 10 pages.",
+        "Translations need proof of permission to translate.",
+        "Wait until you have a response before submitting again."
+      ],
+      "rights": "Colorado Review purchases First North American Serial Rights, and all rights revert to the author upon publication in CR.",
+      "howToSubmit": [
+        "Read the guidelines page before sending.",
+        "Submit through the Submittable portal linked from the guidelines; email and paper submissions are not accepted.",
+        "Fiction and poetry are read 1 August to 31 March; nonfiction is read year-round.",
+        "Book reviews go through Submittable and carry no charge.",
+        "Simultaneous submissions are accepted - tell the editors immediately if the work is taken elsewhere."
+      ],
+      "keywords": [
+        "colorado review",
+        "$300 short stories",
+        "$100 poetry",
+        "colorado state university",
+        "print journal",
+        "submittable",
+        "first north american serial rights",
+        "simultaneous submissions",
+        "no flash fiction"
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "Simultaneous submissions are accepted; writers must notify us immediately if the work is accepted elsewhere. — https://coloradoreview.colostate.edu/colorado-review/ (read 2026-10-01)"
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-10-01",
+      "publishedAt": "2026-10-01",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "gavialidae",
+      "slug": "gavialidae",
+      "publication": "Gavialidae",
+      "title": "Poetry and flash fiction: $150; short stories and essays: $500",
+      "seoTitle": "Gavialidae: $150 per poem or flash, $500 per story or essay",
+      "excerpt": "Gavialidae pays $150 per poem or flash fiction piece and $500 per short story or essay, reading unpublished work year-round through Duosuma. A submission carries no more than one story or essay, four flash fictions or ten poems, and nothing over 7,500 words. Simultaneous submissions are welcome, replies take about five months, and the page states no AI policy.",
+      "officialUrl": "https://gavialidae.com/submissions",
+      "applyUrl": "https://gavialidae.com/submissions",
+      "applyEmail": null,
+      "applyMethod": "Online form through Duosuma, with a brief biographical note.",
+      "sources": [
+        {
+          "name": "Gavialidae - Submissions (official)",
+          "url": "https://gavialidae.com/submissions"
+        }
+      ],
+      "eligibility": {
+        "summary": "No stated country restriction on the guidelines page.",
+        "mode": "not-stated",
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": true
+      },
+      "writingTypes": [
+        "poetry",
+        "fiction",
+        "creative-nonfiction"
+      ],
+      "writingTypeLabel": "Poetry, flash fiction, short stories and creative nonfiction",
+      "pay": {
+        "currency": "USD",
+        "amountMin": 150,
+        "amountMax": 500,
+        "display": "$150 per poem or flash fiction piece, $500 per short story or essay",
+        "conditions": "Official page: \"Regarding work accepted for publication, we pay $150 per poem or flash fiction piece and $500 per short story or essay.\"",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "min": null,
+        "max": 7500,
+        "display": "No unsolicited submission longer than 7,500 words; up to 1 short story or essay, 4 flash fictions or 10 poems"
+      },
+      "response": {
+        "label": "Five months",
+        "band": "3-plus-months",
+        "official": true
+      },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "not-stated",
+      "whatTheyWant": [
+        "Unpublished fiction, poetry and creative nonfiction, read all year round.",
+        "Shorter work: poems and flash fiction are paid per piece at the same rate.",
+        "Pieces sent between 1 January and 31 July, which the page says are more likely to be considered for the current issue."
+      ],
+      "whatTheyDontWant": [
+        "Anything longer than 7,500 words.",
+        "More than one short story or essay, four flash fictions or ten poems in a single submission.",
+        "Work sent to the contact email, which the page says will not be read."
+      ],
+      "requirements": [
+        "Read https://gavialidae.com/submissions before sending.",
+        "Submit through Duosuma, year-round.",
+        "Include a brief biographical note.",
+        "Keep to the stated limits: 1 story or essay, 4 flash fictions or 10 poems, and nothing over 7,500 words.",
+        "Say so if a piece is also out elsewhere."
+      ],
+      "rights": "Not stated on the guidelines page.",
+      "howToSubmit": [
+        "Read https://gavialidae.com/submissions before sending.",
+        "Submit through Duosuma; the page notes that submissions sent to the contact email will not be read.",
+        "Send no more than 1 short story or essay, 4 flash fictions or 10 poems, and nothing over 7,500 words.",
+        "Include a brief biographical note.",
+        "Expect a reply within five months, and note that pieces sent between 1 January and 31 July are likelier to be considered for the current issue.",
+        "Tell the editors if a piece is submitted elsewhere."
+      ],
+      "keywords": [
+        "gavialidae",
+        "$150 per poem",
+        "$500 per story",
+        "flash fiction",
+        "creative nonfiction",
+        "duosuma",
+        "simultaneous submissions",
+        "7500 word limit"
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "Simultaneous submissions are welcome, but do inform us if a piece has been submitted elsewhere. — https://gavialidae.com/submissions (read 2026-10-01)"
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-10-01",
+      "publishedAt": "2026-10-01",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "fairy-tale-magazine",
+      "slug": "fairy-tale-magazine",
+      "publication": "The Fairy Tale Magazine",
+      "title": "Poetry and prose: $25 USD for every piece the magazine publishes",
+      "seoTitle": "The Fairy Tale Magazine: $25 USD per published poem or story",
+      "excerpt": "The Fairy Tale Magazine pays $25 USD for each poem and prose piece it publishes, and its fall call is free to enter. Stories run 900-2,000 words and poems up to 500 words, one piece per submission period, in a window that runs 15-21 August. Work from any country is welcome, the magazine does not read work made with AI, and simultaneous submissions are accepted with notice.",
+      "officialUrl": "https://fairytalemagazine.com/submissions",
+      "applyUrl": "https://fairytalemagazine.com/submissions",
+      "applyEmail": null,
+      "applyMethod": "Online Google Form only; the link appears on the page when submissions are open.",
+      "sources": [
+        {
+          "name": "The Fairy Tale Magazine - Submissions (official)",
+          "url": "https://fairytalemagazine.com/submissions"
+        }
+      ],
+      "eligibility": {
+        "summary": "Official page: \"We are happy to read and publish work from any country, and are open to work with a wide range of backgrounds and experiences.\"",
+        "mode": "worldwide",
+        "includesGroups": [],
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": false
+      },
+      "writingTypes": [
+        "poetry",
+        "fiction"
+      ],
+      "writingTypeLabel": "Fairy-tale short stories and poetry",
+      "pay": {
+        "currency": "USD",
+        "amountMin": 25,
+        "amountMax": 25,
+        "display": "$25 USD per published poem or prose piece",
+        "conditions": "Official page: \"We pay $25USD for each poem and prose piece we publish.\" And: \"We pay $25 USD per piece (whether prose or poetry).\" The fall call is described as a \"Fall no-fee call for submissions\"; the contest's own charges and its $100 USD first prize are separate and are not the rate.",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "min": 900,
+        "max": 2000,
+        "display": "Short stories 900-2,000 words; poetry up to 500 words; one piece per submission period"
+      },
+      "response": {
+        "label": "About a month after the window closes",
+        "band": "1-3-months",
+        "official": true
+      },
+      "submissionStatus": "closed",
+      "deadline": {
+        "display": "Submission window: 15-21 August (midnight to midnight EST), for the fall issue that launches 1 November; the 2026 window closed on 21 August and chosen authors were notified on or around 22 September 2026",
+        "openingDate": "2026-08-15",
+        "windowEnd": "2026-08-21"
+      },
+      "aiPolicy": "prohibited",
+      "whatTheyWant": [
+        "Fairy-tale stories and poems on the announced theme - the fall call was Food in Fairy Tales.",
+        "Work with an element of the supernatural and a transformation at its heart; mashups are welcomed.",
+        "Previously unpublished stories of 900-2,000 words and poems of up to 500 words."
+      ],
+      "whatTheyDontWant": [
+        "Work made with AI: the page says AI-generated submissions are equal to plagiarized work.",
+        "Sci-fi, time travel, futuristic or space travel stories, high fantasy, erotica, stage magic, dystopian work, extreme horror or gore, westerns and lengthy gross-out description.",
+        "Anything above PG - the page notes that children find the site.",
+        "Previously published work, or more than one piece in a submission period.",
+        "Work from anyone under 18."
+      ],
+      "requirements": [
+        "Read https://fairytalemagazine.com/submissions before sending.",
+        "Submit through the Google Form only; it appears on the page while the window is open.",
+        "One piece per submission period: a story of 900-2,000 words or a poem of up to 500 words.",
+        "Include a third-person biography of 50 words or fewer.",
+        "You must be 18 or older to submit.",
+        "Email the magazine with WITHDRAW in the subject line if a simultaneous piece is accepted elsewhere."
+      ],
+      "rights": "First and all electronic and digital rights are sought, along with rights to use the work to promote The Fairy Tale Magazine in perpetuity; electronic and digital rights revert to the author immediately after publication.",
+      "howToSubmit": [
+        "Read https://fairytalemagazine.com/submissions before sending.",
+        "Submit through the Google Form; the link appears only while the submission window is open.",
+        "Send one piece: a story of 900-2,000 words or a poem of up to 500 words.",
+        "Include a 50-word third-person bio.",
+        "The fall call is free - the page describes it as a no-fee call.",
+        "Tell the editors if a simultaneous piece is taken elsewhere, using WITHDRAW in the subject line."
+      ],
+      "keywords": [
+        "fairy tale magazine",
+        "$25 per piece",
+        "fairy tales",
+        "no ai",
+        "simultaneous submissions",
+        "august submission window",
+        "no-fee fall call",
+        "short stories",
+        "poetry submissions"
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "Simultaneous submissions are welcome. Please email thefairytalemagazine@gmail.com with WITHDRAW in the subject line to let us know if your work is accepted elsewhere. — https://fairytalemagazine.com/submissions (read 2026-10-01)"
     }
   ]
 }

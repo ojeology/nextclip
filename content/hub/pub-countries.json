@@ -1042,5 +1042,17 @@
   "blackbird": {
     "base": "",
     "label": "International"
+  },
+  "colorado-review": {
+    "base": "US",
+    "label": "United States"
+  },
+  "gavialidae": {
+    "base": "",
+    "label": "International"
+  },
+  "fairy-tale-magazine": {
+    "base": "",
+    "label": "International"
   }
 }
