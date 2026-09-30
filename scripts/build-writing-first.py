@@ -273,6 +273,39 @@ def open_internationally(rec: dict) -> bool:
     el = rec.get("eligibility") or {}
     return el.get("mode") != "restricted"
 
+
+def eligible_iso_set(rec: dict) -> list[str]:
+    """Every place this record STATES it accepts work from.
+
+    Phase 19 item 4 asks for opportunities to be "tagged or categorized by
+    country/region eligibility so the database stays useful as it grows".
+    Those tags already existed on the records — `includesCountries` and
+    `includesRegions` — but nothing read them, so the discovery layer could not
+    answer "what can I apply to from here?".
+
+    The visible cost: Afrolicious is recorded as `includesRegions: ["africa"]`
+    with the summary "Nigeria qualifies", and it was reachable from no country
+    filter at all — not the Nigeria option, not the Africa option, and not
+    "open worldwide" either. Listverse names seven countries; none of them
+    found it.
+
+    Only what the record states is emitted. A region expands through
+    REGION_MEMBERS, which is this codebase's own established mapping (already
+    used by `_names_your_region`). A restricted call that names nothing emits
+    nothing: silence is never read as open.
+    """
+    el = rec.get("eligibility") or {}
+    out: set = set()
+    for iso in (el.get("includesCountries") or []):
+        if iso:
+            out.add(str(iso).upper())
+    for reg in (el.get("includesRegions") or []):
+        reg = str(reg)
+        out.add(reg)
+        for iso in REGION_MEMBERS.get(reg, ()):
+            out.add(iso)
+    return sorted(out)
+
 # ---------------------------------------------------------------------------
 # Navigation — Writing Hub desktop + 4-item mobile bottom bar
 # ---------------------------------------------------------------------------
@@ -463,14 +496,25 @@ def _filter_matches(rec: dict, flt: str, mode: str = "based") -> bool:
     the inclusive count was 98 for every country and told the user nothing.
     """
     base = (base_country(rec["slug"]) or "").upper()
-    open_to = open_internationally(rec)
+    mode_el = (rec.get("eligibility") or {}).get("mode") or "not-stated"
+    # `international` means the guideline SAYS there is no country restriction.
+    # It used to be `mode != restricted`, which swept in every record whose
+    # guideline is silent about eligibility — 49 of them — and advertised them
+    # as "Open worldwide (no country restriction)", directly contradicting this
+    # desk's own printed standing rule: "a missing country list is never read
+    # as open worldwide". Fixed 2026-09-30. The silent records are now their own
+    # honest, separately-labelled option.
+    open_to = mode_el in ("open", "worldwide")
     if flt == "all":
         return True
     if flt == "international":
         return open_to
+    if flt == "notstated":
+        return mode_el == "not-stated"
     here = bool(base) and (flt == base or flt == region_slug(continent_of(base)))
     if mode == "opento":
-        return here or open_to
+        # A restricted call that NAMES your country or region is open to you.
+        return here or open_to or flt in eligible_iso_set(rec)
     return here
 
 
@@ -490,10 +534,12 @@ def writing_nav(current_flt: str = "") -> str:
 
     n_all = len(WRITING)
     n_intl = sum(1 for r in WRITING if _filter_matches(r, "international"))
+    n_ns = sum(1 for r in WRITING if _filter_matches(r, "notstated"))
 
     opts = [
         f'<option value="all" selected>All countries — {n_all} publications</option>',
         f'<option value="international">Open worldwide (no country restriction) — {n_intl}</option>',
+        f'<option value="notstated">Eligibility not stated — {n_ns}</option>',
     ]
 
     # Region shortcuts first, then the individual countries per continent.
@@ -819,7 +865,18 @@ def pub_card(rec: dict, heading: str = "h2") -> str:
     el = (rec.get("eligibility") or {}).get("summary") or "See eligibility"
     url = f"/writing/{esc(rec['slug'])}/"
     base = esc((base_country(rec["slug"]) or "").upper())
-    open_to = "international" if open_internationally(rec) else "regional"
+    elig = rec.get("eligibility") or {}
+    # "Can I apply from anywhere?" — the brief's first-class question.
+    # This is the honest test: the guideline says so. `data-open` used to be
+    # `mode != restricted`, which disagreed with `data-global` on the very same
+    # card (127 vs 77) and advertised 49 silent guidelines as unrestricted.
+    globally_open = elig.get("mode") in ("open", "worldwide")
+    open_to = "international" if globally_open else "regional"
+    # Where the record SAYS it accepts work from. A restricted call that names
+    # your country is open to you; without this, Afrolicious ("Nigeria
+    # qualifies") matched no country filter on the site. See eligible_iso_set().
+    open_to_attr = " ".join(eligible_iso_set(rec))
+    elig_attr = elig.get("mode") or "not-stated"
     region = esc(region_slug(continent_of(base_country(rec["slug"]))))
     _iso = base_country(rec["slug"])
     region_label = esc(country_name(_iso) if _iso else "Open to all")
@@ -832,9 +889,6 @@ def pub_card(rec: dict, heading: str = "h2") -> str:
     wcmin = (rec.get("wordCount") or {}).get("min")
     wcmax = (rec.get("wordCount") or {}).get("max")
     cur = ((rec.get("pay") or {}).get("currency") or "").upper()
-    elig = rec.get("eligibility") or {}
-    # "Can I apply from anywhere?" — the brief's first-class question.
-    globally_open = elig.get("mode") in ("open", "worldwide")
     approx = usd_approx(rec)
     approx_html = f'<span class="pay-approx" title="Approximate, converted at the mid-market rate on {esc(FX["fetchedAt"])}">{esc(approx)}</span>' if approx else ""
     # `deadline` is an object, not a string: {date?, display?, openingDate?}.
@@ -849,6 +903,7 @@ def pub_card(rec: dict, heading: str = "h2") -> str:
     ])).lower()
 
     return f'''<article class="job-card" data-country="{base}" data-region="{region}" data-open="{open_to}"
+  data-open-to="{esc(open_to_attr)}" data-elig="{esc(elig_attr)}"
   data-status="{esc(st)}" data-types="{esc(" ".join(types))}" data-currency="{esc(cur)}"
   data-usd="{"" if usd is None else usd}" data-wcmin="{wcmin if wcmin is not None else ""}"
   data-wcmax="{wcmax if wcmax is not None else ""}" data-global="{"1" if globally_open else "0"}"

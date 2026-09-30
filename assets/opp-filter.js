@@ -60,12 +60,21 @@
      results and was useless for the first question. */
   function matchCountry(card, f, mode) {
     if (!f || f === "all") return true;
+    /* "Open worldwide" means the guideline says so. `data-open` is now that
+       test, so this option no longer includes publications whose guideline is
+       silent about eligibility — those have their own option below. */
     if (f === "international") return card.getAttribute("data-open") === "international";
+    if (f === "notstated") return card.getAttribute("data-elig") === "not-stated";
     var base = (card.getAttribute("data-country") || "").toUpperCase();
     var region = card.getAttribute("data-region") || "";
     var here = (base && f === base) || (region && f === region);
     if (mode === "opento") {
-      return here || card.getAttribute("data-open") === "international";
+      /* A restricted call that NAMES your country or region is open to you.
+         data-open-to carries only what the record states — a region expands to
+         its member countries, and a named country list is emitted as itself. */
+      var named = " " + (card.getAttribute("data-open-to") || "") + " ";
+      return here || card.getAttribute("data-open") === "international" ||
+        named.indexOf(" " + f + " ") !== -1;
     }
     return !!here;
   }
