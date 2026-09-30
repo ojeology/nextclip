@@ -99,6 +99,8 @@ ROW = re.compile(r'<div class="docket-row( gap)?">(.*?)</div>', re.S)
 DOCKET = re.compile(r'<section class="section docket-section".*?</section>', re.S)
 
 
+import re as _re
+
 def _text(fragment: str) -> str:
     """Readable text: tag boundaries become spaces so words never fuse."""
     return re.sub(r" +", " ", html.unescape(re.sub(r"<[^>]+>", " ", fragment))
@@ -163,8 +165,8 @@ def main() -> int:
         block = found.group(0)
 
         rows = ROW.findall(block)
-        if len(rows) != 6:
-            fail(slug, f"{len(rows)} docket rows, expected 6")
+        if len(rows) != 7:
+            fail(slug, f"{len(rows)} docket rows, expected 7")
 
         gap_rows = len(re.findall(r'class="docket-row gap"', block))
         asked = gap_rows
@@ -174,10 +176,10 @@ def main() -> int:
             gaps_total += listed
             if listed != asked:
                 fail(slug, f"{listed} gaps listed but {asked} rows marked unanswered")
-            if listed == 6:
-                if "leaves all six questions" not in block:
-                    fail(slug, 'all six unanswered but the headline does not say so')
-            elif f"leaves {listed} of the six questions" not in block:
+            if listed == 7:
+                if "leaves all seven questions" not in block:
+                    fail(slug, "all seven unanswered but the headline does not say so")
+            elif f"leaves {listed} of the seven questions" not in block:
                 fail(slug, f"gap headline does not match the {listed} listed")
         elif asked:
             fail(slug, f"{asked} unanswered rows but no gap list")
@@ -221,6 +223,27 @@ def main() -> int:
             hit = pattern.search(target)
             if hit:
                 fail(slug, f"{why}: {hit.group(0)!r}")
+
+        # ---- the experience evidence must be on the page ---------------------
+        # A label whose source sentence is not printed is a label the reader has
+        # to take on trust, which is the one thing a docket exists to remove. The
+        # quote and its URL are rendered verbatim, so both are checked verbatim.
+        note = rec.get("experienceNote") or ""
+        exp = str(rec.get("experience") or "not-stated")
+        if exp != "not-stated" and not note:
+            fail(slug, f"labelled {exp!r} with no evidence note")
+        if note:
+            m = re.match(r"^(.+?) \u2014 (https?://\S+) \(read ([0-9-]+)\)$", note)
+            if not m:
+                fail(slug, "evidence note is not in the stored <quote> — <url> (read <date>) shape")
+            else:
+                quote, url, read = m.groups()
+                if _text(quote) not in flat:
+                    fail(slug, "the quoted evidence is not printed on the page")
+                if url not in block:
+                    fail(slug, "the evidence URL is not printed on the page")
+                if read not in block:
+                    fail(slug, "the evidence read-date is not printed on the page")
 
         # ---- recompute every numerical claim on the page --------------------
         pay = rec.get("pay") or {}
@@ -277,7 +300,7 @@ def main() -> int:
                 fail(slug, "ranking published without the same-shape caveat")
 
     print(f"publication pages      : {pages}")
-    print(f"docket rows per page   : 6 (structural errors above if not)")
+    print(f"docket rows per page   : 7 (structural errors above if not)")
     print(f"unanswered rows        : {silent_rows}")
     print(f"gaps listed to readers : {gaps_total}")
     print(f"rankings recomputed    : {claims_checked}")

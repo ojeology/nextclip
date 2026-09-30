@@ -1753,7 +1753,7 @@
         "recurring": false
       },
       "aiPolicy": "limited",
-      "experience": "not-stated",
+      "experience": "emerging",
       "whatTheyWant": [
         "When open: a pitch, not a completed draft. Perennial (not news-tied), cosmopolitan, pluralist.",
         "Expect 3–5 drafts, fact-check and copy-edit. About three months from a good first draft to publication."
@@ -1780,7 +1780,8 @@
       ],
       "editorExperience": {
         "status": "not-yet-submitted"
-      }
+      },
+      "experienceNote": "We also strongly encourage younger and emerging scholars, especially outside the US and the UK, to pitch Essay ideas to us, even if you don’t have much experience in writing outside of the academy. — https://aeon.co/pitch (read 2026-09-30)"
     },
     {
       "id": "chicken-soup",
@@ -2600,7 +2601,7 @@
       "vertical": "writing",
       "lastVerified": "2026-08-19",
       "publishedAt": "2026-08-19",
-      "experience": "not-stated",
+      "experience": "emerging",
       "editorExperience": {
         "status": "not-yet-submitted"
       },
@@ -2683,14 +2684,15 @@
         "south asia",
         "kathmandu",
         "longform"
-      ]
+      ],
+      "experienceNote": "We are always interested in hearing from new writers. — https://www.himalmag.com/submission-guidelines/ (read 2026-09-30)"
     },
     {
       "status": "published",
       "vertical": "writing",
       "lastVerified": "2026-08-19",
       "publishedAt": "2026-08-19",
-      "experience": "not-stated",
+      "experience": "established",
       "editorExperience": {
         "status": "not-yet-submitted"
       },
@@ -2769,7 +2771,8 @@
         "freelance",
         "gbp",
         "investigations"
-      ]
+      ],
+      "experienceNote": "When contacting us for the first time, please provide clear evidence of your track record as a journalist so that we can verify your identity. — https://www.climatechangenews.com/about/write-for-us/ (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -3118,7 +3121,7 @@
       "vertical": "writing",
       "lastVerified": "2026-09-06",
       "publishedAt": "2026-08-19",
-      "experience": "not-stated",
+      "experience": "emerging",
       "editorExperience": {
         "status": "not-yet-submitted"
       },
@@ -3201,7 +3204,8 @@
         "bodies of work",
         "aud",
         "essay"
-      ]
+      ],
+      "experienceNote": "We publish work by established and emerging writers – most from Australia, some from overseas — https://www.griffithreview.com/for-writers/ (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -3810,7 +3814,7 @@
       "vertical": "writing",
       "lastVerified": "2026-08-19",
       "publishedAt": "2026-08-19",
-      "experience": "not-stated",
+      "experience": "emerging",
       "editorExperience": {
         "status": "not-yet-submitted"
       },
@@ -3897,14 +3901,15 @@
         "essays",
         "$500",
         "september 2026"
-      ]
+      ],
+      "experienceNote": "We welcome work from both emerging and established writers. — https://therumpus.submittable.com/submit (read 2026-09-30)"
     },
     {
       "status": "published",
       "vertical": "writing",
       "lastVerified": "2026-08-19",
       "publishedAt": "2026-08-19",
-      "experience": "not-stated",
+      "experience": "emerging",
       "editorExperience": {
         "status": "not-yet-submitted"
       },
@@ -3985,7 +3990,8 @@
         "spanish",
         "español",
         "$500"
-      ]
+      ],
+      "experienceNote": "We welcome work from both emerging and established writers. — https://therumpus.submittable.com/submit (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -4070,7 +4076,7 @@
       "vertical": "writing",
       "lastVerified": "2026-08-19",
       "publishedAt": "2026-08-19",
-      "experience": "not-stated",
+      "experience": "emerging",
       "editorExperience": {
         "status": "not-yet-submitted"
       },
@@ -4155,14 +4161,15 @@
         "cnf",
         "$45",
         "750 words"
-      ]
+      ],
+      "experienceNote": "Brevity publishes well-known and emerging writers working in the extremely brief (750 words or fewer) essay form. — https://brevitymag.com/submissions/ (read 2026-09-30)"
     },
     {
       "status": "published",
       "vertical": "writing",
       "lastVerified": "2026-09-06",
       "publishedAt": "2026-08-19",
-      "experience": "not-stated",
+      "experience": "emerging",
       "editorExperience": {
         "status": "not-yet-submitted"
       },
@@ -4247,14 +4254,15 @@
         "middle east",
         "north africa",
         "comedy issue"
-      ]
+      ],
+      "experienceNote": "TMR is open to both emerging and established writers, and to writing in multiple languages — https://themarkaz.org/submissions/ (read 2026-09-30)"
     },
     {
       "status": "published",
       "vertical": "writing",
       "lastVerified": "2026-08-19",
       "publishedAt": "2026-08-19",
-      "experience": "not-stated",
+      "experience": "first-timer-friendly",
       "editorExperience": {
         "status": "not-yet-submitted"
       },
@@ -4333,14 +4341,15 @@
         "speculative fiction",
         "10 cents",
         "closed"
-      ]
+      ],
+      "experienceNote": "It's okay if you are unpublished! — https://strangehorizons.com/wordpress/submit/fiction-submission-guidelines/ (read 2026-09-30)"
     },
     {
       "status": "published",
       "vertical": "writing",
       "lastVerified": "2026-08-19",
       "publishedAt": "2026-08-19",
-      "experience": "not-stated",
+      "experience": "emerging",
       "editorExperience": {
         "status": "not-yet-submitted"
       },
@@ -4417,7 +4426,8 @@
         "personal essay",
         "$100",
         "closed"
-      ]
+      ],
+      "experienceNote": "For 17 years, Electric Literature has remained dedicated to uplifting emerging writers. — https://electricliterature.com/about/submit/ (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -4736,7 +4746,7 @@
       "submissionStatus": "open",
       "deadline": null,
       "aiPolicy": "prohibited",
-      "experience": "not-stated",
+      "experience": "emerging",
       "whatTheyWant": [
         "Science fiction in which some aspect of future science or technology is so integral that the story would collapse without it.",
         "Strong, realistic stories with believable people (who need not be human).",
@@ -4767,7 +4777,8 @@
       ],
       "editorExperience": {
         "status": "not-yet-submitted"
-      }
+      },
+      "experienceNote": "We are eager to find and develop new, capable writers. — https://analogsf.com/contact-us/writers-guidelines/ (read 2026-09-30)"
     },
     {
       "id": "analog-fact",
@@ -4821,7 +4832,7 @@
       "submissionStatus": "open",
       "deadline": null,
       "aiPolicy": "prohibited",
-      "experience": "not-stated",
+      "experience": "emerging",
       "whatTheyWant": [
         "Subjects of current and future interest — present research frontiers whose likely future developments have implications of wide interest.",
         "A more informal style than a professional journal. Analog readers read for entertainment as well as information."
@@ -4848,7 +4859,8 @@
       ],
       "editorExperience": {
         "status": "not-yet-submitted"
-      }
+      },
+      "experienceNote": "We are eager to find and develop new, capable writers. — https://analogsf.com/contact-us/writers-guidelines/ (read 2026-09-30)"
     },
     {
       "id": "beneath-ceaseless-skies",
@@ -4901,7 +4913,7 @@
       "submissionStatus": "open",
       "deadline": null,
       "aiPolicy": "prohibited",
-      "experience": "not-stated",
+      "experience": "first-timer-friendly",
       "whatTheyWant": [
         "Literary adventure fantasy: a secondary-world or historical-paranormal setting (up to about the 1930s), written with a literary focus on characters who yearn for something.",
         "Self-standing original stories only. New and unpublished writers are welcome.",
@@ -4933,7 +4945,8 @@
       ],
       "editorExperience": {
         "status": "not-yet-submitted"
-      }
+      },
+      "experienceNote": "BCS welcomes submissions from new and unpublished writers. — https://www.beneath-ceaseless-skies.com/submissions/ (read 2026-09-30)"
     },
     {
       "id": "khoreo-fiction",
@@ -5474,7 +5487,7 @@
       ],
       "deadline": null,
       "aiPolicy": "not-stated",
-      "experience": "not-stated",
+      "experience": "established",
       "keywords": [],
       "whatTheyWant": [
         "Expert articles on websites, SEO, traffic, content creation, entrepreneurship and making money online",
@@ -5527,7 +5540,8 @@
         "band": "unknown",
         "official": true
       },
-      "submissionStatus": "unknown"
+      "submissionStatus": "unknown",
+      "experienceNote": "If you are a professional writer and would like to be paid, please let us know when you submit your article for review including your fee. — https://www.incomediary.com/write-for-incomediary (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -6245,12 +6259,13 @@
         "literary",
         "high pay"
       ],
-      "experience": "not-stated",
+      "experience": "first-timer-friendly",
       "editorExperience": {
         "applied": false
       },
       "seoTitle": "The Sun Magazine: $200+ for essays, fiction and poetry",
-      "publishedAt": "2026-09-05"
+      "publishedAt": "2026-09-05",
+      "experienceNote": "First-time authors and award-winners alike find their place in The Sun — https://thesunmagazine.org/submit (read 2026-09-30)"
     },
     {
       "id": "black-fox-literary-magazine",
@@ -6746,12 +6761,13 @@
         "irish",
         "professional rate"
       ],
-      "experience": "not-stated",
+      "experience": "first-timer-friendly",
       "editorExperience": {
         "applied": false
       },
       "seoTitle": "The Stinging Fly: €45/page, open to writers from abroad",
-      "publishedAt": "2026-09-05"
+      "publishedAt": "2026-09-05",
+      "experienceNote": "We have a particular interest in promoting new writers, and in promoting the short story form. — https://stingingfly.org/submissions/ (read 2026-09-30)"
     },
     {
       "id": "the-drift",
@@ -7077,12 +7093,13 @@
         "craft",
         "print"
       ],
-      "experience": "not-stated",
+      "experience": "emerging",
       "editorExperience": {
         "applied": false
       },
       "seoTitle": "Writer's Digest: ~$0.30–$0.50/word",
-      "publishedAt": "2026-09-05"
+      "publishedAt": "2026-09-05",
+      "experienceNote": "Although we welcome the work of new writers, we believe the established writer can better instruct our reader. — https://www.writersdigest.com/resources/submission-guidelines (read 2026-09-30)"
     },
     {
       "id": "eater",
@@ -7483,12 +7500,13 @@
         "money",
         "essay"
       ],
-      "experience": "not-stated",
+      "experience": "established",
       "editorExperience": {
         "applied": false
       },
       "seoTitle": "Business Insider: ~$0.40/word",
-      "publishedAt": "2026-09-05"
+      "publishedAt": "2026-09-05",
+      "experienceNote": "We will ask you for a headshot, a bio, and proof of your credentials. — https://www.businessinsider.com/how-to-write-for-business-insider-2020-4 (read 2026-09-30)"
     },
     {
       "id": "slate",
@@ -8517,7 +8535,7 @@
         "literary",
         "poetry"
       ],
-      "experience": "not-stated",
+      "experience": "emerging",
       "editorExperience": {
         "applied": false
       },
@@ -8525,7 +8543,8 @@
       "publishedAt": "2026-09-05",
       "vertical": "writing",
       "submissionStatus": "upcoming",
-      "lastVerified": "2026-09-05"
+      "lastVerified": "2026-09-05",
+      "experienceNote": "We consider authors “emerging” if they haven’t published or self-published a book. — https://www.pshares.org/submit/ (read 2026-09-30)"
     },
     {
       "id": "zyzzyva",
@@ -9024,7 +9043,7 @@
       "lastVerified": "2026-09-05",
       "publishedAt": "2026-09-05",
       "deadline": null,
-      "experience": "not-stated",
+      "experience": "emerging",
       "aiPolicy": "not-stated",
       "id": "pulp-literature",
       "slug": "pulp-literature",
@@ -9094,14 +9113,15 @@
         "fiction",
         "poetry"
       ],
-      "writingTypeLabel": "Short fiction, poetry, art"
+      "writingTypeLabel": "Short fiction, poetry, art",
+      "experienceNote": "If you’re a new writer, send in your most thrilling, funny, or heart-rending work! — https://pulpliterature.com/submissions/submission-guidelines/ (read 2026-09-30)"
     },
     {
       "status": "published",
       "vertical": "writing",
       "lastVerified": "2026-09-06",
       "publishedAt": "2026-09-06",
-      "experience": "not-stated",
+      "experience": "first-timer-friendly",
       "editorExperience": {
         "status": "not-yet-submitted"
       },
@@ -9185,14 +9205,15 @@
         "food writing",
         "uk",
         "gbp"
-      ]
+      ],
+      "experienceNote": "Our editorial process is stringent, and while we are open to working with first-time writers, we hold every draft to the same standards — https://www.pelliclemag.com/pitching (read 2026-09-30)"
     },
     {
       "status": "published",
       "vertical": "writing",
       "lastVerified": "2026-09-06",
       "publishedAt": "2026-09-06",
-      "experience": "not-stated",
+      "experience": "emerging",
       "editorExperience": {
         "status": "not-yet-submitted"
       },
@@ -9280,7 +9301,8 @@
         "nonfiction",
         "gbp",
         "no ai"
-      ]
+      ],
+      "experienceNote": "We have only 16 spots per issue (12 in print and 4 on our Substack, With Bite) and we remain committed to publishing the very best of new and established writers. — https://extrateeth.co.uk/submissions (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -9456,7 +9478,7 @@
       "vertical": "writing",
       "lastVerified": "2026-09-06",
       "publishedAt": "2026-09-06",
-      "experience": "not-stated",
+      "experience": "first-timer-friendly",
       "editorExperience": {
         "status": "not-yet-submitted"
       },
@@ -9538,7 +9560,8 @@
         "reviews",
         "london",
         "gbp"
-      ]
+      ],
+      "experienceNote": "Poetry London aims to publish the best, most exciting poetry being written now, and we are always interested in work by unpublished poets, as well as celebrated ones. — https://poetrylondon.co.uk/submissions/ (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -9634,7 +9657,7 @@
       "vertical": "writing",
       "lastVerified": "2026-09-06",
       "publishedAt": "2026-09-06",
-      "experience": "not-stated",
+      "experience": "emerging",
       "editorExperience": {
         "status": "not-yet-submitted"
       },
@@ -9723,14 +9746,15 @@
         "uk",
         "ireland",
         "gbp"
-      ]
+      ],
+      "experienceNote": "Propel Magazine is for writers who have not previously published a full collection. — https://propelmagazine.co.uk/submissions (read 2026-09-30)"
     },
     {
       "status": "published",
       "vertical": "writing",
       "lastVerified": "2026-09-06",
       "publishedAt": "2026-09-06",
-      "experience": "not-stated",
+      "experience": "emerging",
       "editorExperience": {
         "status": "not-yet-submitted"
       },
@@ -9815,7 +9839,8 @@
         "uk",
         "gbp",
         "no ai"
-      ]
+      ],
+      "experienceNote": "The Fiction Desk is a short story publisher specialising in regular anthologies of new short fiction from both debut and established authors. — https://www.thefictiondesk.com/submissions/short-story-submission-guidelines.php (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -10003,7 +10028,7 @@
       "vertical": "writing",
       "lastVerified": "2026-09-06",
       "publishedAt": "2026-09-06",
-      "experience": "not-stated",
+      "experience": "first-timer-friendly",
       "editorExperience": {
         "status": "not-yet-submitted"
       },
@@ -10083,7 +10108,8 @@
         "poetry",
         "london",
         "gbp"
-      ]
+      ],
+      "experienceNote": "If you’re a poet, even if you’ve never been published before, we want to read your work. — https://www.fourteenpoems.com/submit (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -10367,7 +10393,7 @@
       "vertical": "writing",
       "lastVerified": "2026-09-06",
       "publishedAt": "2026-09-06",
-      "experience": "not-stated",
+      "experience": "emerging",
       "editorExperience": {
         "status": "not-yet-submitted"
       },
@@ -10457,7 +10483,8 @@
         "poetry",
         "fiction",
         "uk"
-      ]
+      ],
+      "experienceNote": "Including big-name commissions and as-yet-undiscovered newcomers, we publish over 60 women in every issue. — https://mslexia.co.uk/submit-your-work/ (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -10554,7 +10581,7 @@
       "vertical": "writing",
       "lastVerified": "2026-09-21",
       "publishedAt": "2026-09-06",
-      "experience": "not-stated",
+      "experience": "first-timer-friendly",
       "editorExperience": {
         "status": "not-yet-submitted"
       },
@@ -10641,14 +10668,15 @@
         "investigative",
         "social justice",
         "cad"
-      ]
+      ],
+      "experienceNote": "We welcome pitches from unpublished writers, seasoned freelancers, front-line activists, and anyone else with a story to tell and a desire to tell it compellingly. — https://briarpatchmagazine.com/submissions (read 2026-09-30)"
     },
     {
       "status": "published",
       "vertical": "writing",
       "lastVerified": "2026-09-06",
       "publishedAt": "2026-09-06",
-      "experience": "not-stated",
+      "experience": "established",
       "editorExperience": {
         "status": "not-yet-submitted"
       },
@@ -10728,14 +10756,15 @@
         "ethics",
         "justice",
         "cad"
-      ]
+      ],
+      "experienceNote": "The majority of articles published in Broadview magazine and on Broadview.org are assigned to professional writers and journalists. — https://broadview.org/submission-guidelines/ (read 2026-09-30)"
     },
     {
       "status": "published",
       "vertical": "writing",
       "lastVerified": "2026-09-06",
       "publishedAt": "2026-09-06",
-      "experience": "not-stated",
+      "experience": "emerging",
       "editorExperience": {
         "status": "not-yet-submitted"
       },
@@ -10815,14 +10844,15 @@
         "fiction",
         "poetry",
         "cad"
-      ]
+      ],
+      "experienceNote": "The Malahat Review welcomes submissions of poetry, short fiction, and creative nonfiction, as well as translated work in any of these three genres, by new and established writers from Canada and abroad. — https://malahatreview.ca/submission_guidelines.html (read 2026-09-30)"
     },
     {
       "status": "published",
       "vertical": "writing",
       "lastVerified": "2026-09-06",
       "publishedAt": "2026-09-06",
-      "experience": "not-stated",
+      "experience": "first-timer-friendly",
       "editorExperience": {
         "status": "not-yet-submitted"
       },
@@ -10910,14 +10940,15 @@
         "canadian writers",
         "emerging writers",
         "cad"
-      ]
+      ],
+      "experienceNote": "We seek to nurture emerging writers (writers who haven’t yet published a full book) by publishing and promoting their work alongside established writers — https://tnq.ca/submit/ (read 2026-09-30)"
     },
     {
       "status": "published",
       "vertical": "writing",
       "lastVerified": "2026-09-06",
       "publishedAt": "2026-09-06",
-      "experience": "not-stated",
+      "experience": "emerging",
       "editorExperience": {
         "status": "not-yet-submitted"
       },
@@ -11000,14 +11031,15 @@
         "fiction",
         "poetry",
         "cad"
-      ]
+      ],
+      "experienceNote": "PRISM international publishes exciting, original, literary material from established and emerging writers in Canada and around the world. — https://prismmagazine.ca/submit/ (read 2026-09-30)"
     },
     {
       "status": "published",
       "vertical": "writing",
       "lastVerified": "2026-09-06",
       "publishedAt": "2026-09-06",
-      "experience": "not-stated",
+      "experience": "emerging",
       "editorExperience": {
         "status": "not-yet-submitted"
       },
@@ -11095,7 +11127,8 @@
         "fiction",
         "poetry",
         "cad"
-      ]
+      ],
+      "experienceNote": "We encourage writers from diverse backgrounds and experience levels to send their work to EVENT. — https://www.eventmagazine.ca/submit/ (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -11285,7 +11318,7 @@
       "vertical": "writing",
       "lastVerified": "2026-09-06",
       "publishedAt": "2026-09-06",
-      "experience": "not-stated",
+      "experience": "emerging",
       "editorExperience": {
         "status": "not-yet-submitted"
       },
@@ -11370,7 +11403,8 @@
         "culture",
         "essays",
         "cad"
-      ]
+      ],
+      "experienceNote": "Our priority is to publish work from emerging and established writers and artists who are Canadian or permanent residents of Canada — https://www.geist.com/submit/ (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -11646,7 +11680,7 @@
       "vertical": "writing",
       "lastVerified": "2026-09-21",
       "publishedAt": "2026-09-06",
-      "experience": "not-stated",
+      "experience": "emerging",
       "editorExperience": {
         "status": "not-yet-submitted"
       },
@@ -11739,7 +11773,8 @@
         "nonfiction",
         "aud",
         "no ai"
-      ]
+      ],
+      "experienceNote": "We aim to provide as many publishing opportunities as we can for new, emerging and established writers. — https://islandmag.com/submit (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -11837,7 +11872,7 @@
       "vertical": "writing",
       "lastVerified": "2026-09-06",
       "publishedAt": "2026-09-06",
-      "experience": "not-stated",
+      "experience": "emerging",
       "editorExperience": {
         "status": "not-yet-submitted"
       },
@@ -11920,7 +11955,8 @@
         "melbourne",
         "short fiction",
         "aud"
-      ]
+      ],
+      "experienceNote": "Kill Your Darlings welcomes submissions of short fiction to the magazine from established and emerging writers year-round. — https://www.killyourdarlings.com.au/write-for-us/ (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -12023,7 +12059,7 @@
       "vertical": "writing",
       "lastVerified": "2026-09-06",
       "publishedAt": "2026-09-06",
-      "experience": "not-stated",
+      "experience": "emerging",
       "editorExperience": {
         "status": "not-yet-submitted"
       },
@@ -12101,7 +12137,8 @@
         "essays",
         "criticism",
         "aud"
-      ]
+      ],
+      "experienceNote": "Australian Book Review has a long and proud history of publishing emerging writers and critics with diverse backgrounds and interests. — https://www.australianbookreview.com.au/submissions (read 2026-09-30)"
     },
     {
       "status": "published",
@@ -12753,7 +12790,7 @@
       "vertical": "writing",
       "lastVerified": "2026-09-30",
       "publishedAt": "2026-09-30",
-      "experience": "not-stated",
+      "experience": "first-timer-friendly",
       "editorExperience": {
         "status": "not-yet-submitted"
       },
@@ -12843,14 +12880,15 @@
         "recipe backstory",
         "food culture writing",
         "paid food writing india"
-      ]
+      ],
+      "experienceNote": "You don't need to have been published previously, but you should have the expertise, lived experience or proximity to the subject. — https://www.goya.in/how-to-pitch (read 2026-09-30)"
     },
     {
       "status": "published",
       "vertical": "writing",
       "lastVerified": "2026-09-30",
       "publishedAt": "2026-09-30",
-      "experience": "not-stated",
+      "experience": "first-timer-friendly",
       "editorExperience": {
         "status": "not-yet-submitted"
       },
@@ -12947,7 +12985,8 @@
         "adivasi writers",
         "sff magazine submissions",
         "south asian speculative fiction"
-      ]
+      ],
+      "experienceNote": "We’ve published both experienced and aspiring authors, and happily encourage first-time writers from anywhere in the world to submit. — https://mithilareview.com/submission-guidelines/ (read 2026-09-30)"
     }
   ]
 }

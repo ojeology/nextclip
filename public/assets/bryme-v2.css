@@ -736,3 +736,12 @@ body.studio-focus { padding-bottom: 0; }
   .docket-row { grid-template-columns: 1fr; gap: 4px; }
   .docket-row dt { padding-top: 0; }
 }
+
+/* The evidence citation carries a full source URL, and a 70-character URL does
+   not wrap by default — seven publication pages overflowed a 390px viewport on
+   mobile until validate:browser caught it. URLs are the one place aggressive
+   breaking is correct. */
+.docket-note { overflow-wrap: anywhere; }
+.docket-note a { color: inherit; text-decoration: underline; text-decoration-thickness: 1px;
+  text-underline-offset: 2px; overflow-wrap: anywhere; }
+.docket-note a:hover { color: var(--brass); }

@@ -2576,6 +2576,30 @@ def _cohort_place(rec: dict, base: str, currency: str) -> str:
     return f"based in {_article(pub_country(rec).get('label'))}"
 
 
+# "<quote> — <url> (read <date>)", the shape add-experience-batch.py writes.
+_EVIDENCE = re.compile(r"^(?P<quote>.+?) \u2014 (?P<url>https?://\S+) \(read (?P<date>[0-9-]+)\)$")
+
+
+def _evidence(note: str | None) -> str:
+    """The sentence a label was read from, with its source as a real link.
+
+    The docket's whole claim is that an answer can be checked, so the citation
+    is an anchor rather than text — and it has to wrap: seven publication pages
+    overflowed a 390px viewport because a 70-character URL in a note cannot
+    break, which validate:browser caught on mobile. The sentence itself is
+    rendered exactly as stored; only the URL is turned into a link.
+    """
+    text = (note or "").strip()
+    if not text:
+        return ""
+    m = _EVIDENCE.match(text)
+    if not m:
+        return esc(text)
+    return (f'{esc(m.group("quote"))} \u2014 '
+            f'<a href="{esc(m.group("url"))}" rel="nofollow noopener" target="_blank">'
+            f'{esc(m.group("url"))}</a> (read {esc(m.group("date"))})')
+
+
 def _comparison_caveat(rec: dict) -> str:
     """How this record's figure was compared - or that there was nothing to compare.
 
@@ -2737,11 +2761,41 @@ def docket(rec: dict) -> str:
             "gap"))
         gaps.append("Rights — you may be asked to assign more than you expect. Get the terms in writing.")
 
+    # 7. Experience.
+    #
+    # Wave 0a. The value is read from the publication's own policy and never
+    # inferred - `experienceNote` carries the line it was read from, so the claim
+    # is checkable rather than trusted. Where the guideline is silent the row
+    # says so and joins the gap list, because "we could not find out who they
+    # normally publish" is a real thing for a first-timer to know before spending
+    # an evening on a pitch.
+    #
+    # The distinction the labels rest on is WRITER versus WORK. "Previously
+    # unpublished fiction" describes the story; it says nothing about the author
+    # and must not become a welcome. Only a sentence aimed at the person
+    # submitting moves a record off `not-stated`.
+    exp = str(rec.get("experience") or "not-stated")
+    exp_label = {
+        "first-timer-friendly": "Open to unpublished writers",
+        "emerging": "Wants some prior publication",
+        "established": "Expects a track record",
+    }.get(exp)
+    if exp_label:
+        rows.append(_docket_row("Experience", exp_label, _evidence(rec.get("experienceNote"))))
+    else:
+        rows.append(_docket_row(
+            "Experience", "Not stated",
+            "The guideline sets no experience requirement. BRYME records that as "
+            "silence, not as a welcome — a first-time writer is not excluded, but "
+            "nor are they invited.", "gap"))
+        gaps.append("Experience — look at what kind of writer this publication "
+                    "normally publishes before you pitch; its guideline does not say.")
+
     gap_block = ""
     if gaps:
         items = "".join(f"<li>{esc(g)}</li>" for g in gaps)
-        all_six = len(gaps) == 6
-        tail = "all six questions" if all_six else f"{len(gaps)} of the six questions"
+        all_gaps = len(gaps) == 7
+        tail = "all seven questions" if all_gaps else f"{len(gaps)} of the seven questions"
         gap_block = (f'<div class="docket-gaps"><h3>What this record does not tell you</h3>'
                      f'<p>This publication leaves {tail} unanswered. '
                      f'BRYME publishes that gap instead of filling it — a generated answer would '
@@ -2749,7 +2803,7 @@ def docket(rec: dict) -> str:
 
     return (f'<section class="section docket-section" id="docket">'
             f'<div class="docket"><h2>The docket</h2>'
-            f'<p class="docket-lede">The six things that decide whether a pitch is worth sending. '
+            f'<p class="docket-lede">The seven things that decide whether a pitch is worth sending. '
             f'Every answer below is either taken from the publication&rsquo;s own guideline or '
             f'computed by BRYME from the {len(WRITING)}-publication desk. Where the publication '
             f'does not say, the docket says so instead of filling the gap in.</p>'

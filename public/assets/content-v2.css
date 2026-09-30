@@ -737,6 +737,15 @@ body.studio-focus { padding-bottom: 0; }
   .docket-row dt { padding-top: 0; }
 }
 
+/* The evidence citation carries a full source URL, and a 70-character URL does
+   not wrap by default — seven publication pages overflowed a 390px viewport on
+   mobile until validate:browser caught it. URLs are the one place aggressive
+   breaking is correct. */
+.docket-note { overflow-wrap: anywhere; }
+.docket-note a { color: inherit; text-decoration: underline; text-decoration-thickness: 1px;
+  text-underline-offset: 2px; overflow-wrap: anywhere; }
+.docket-note a:hover { color: var(--brass); }
+
 /* Lean editorial compatibility layer — replaces the 263 KB legacy platform sheet. */
 .shell{width:min(calc(100% - 32px),var(--max));margin-inline:auto}
 .top{position:sticky;z-index:50;top:0;border-bottom:1px solid var(--line);background:rgba(7,16,13,.9);backdrop-filter:blur(18px)}
