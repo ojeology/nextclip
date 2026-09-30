@@ -113,17 +113,19 @@ ADSTERRA_BAND = (
     '</style>'
     '<div class="adband-in">'
     '<span class="adband-label">' + LABEL + '</span>'
-    '<div class="adband-slot" id="container-{key}"></div>'
+    '<div class="adband-slot" id="container-{key}" '
+    'data-ad-src="https://{host}/{key}/invoke.js"></div>'
     '</div>'
     '</aside>'
-    '<script async data-cfasync="false" src="https://{host}/{key}/invoke.js"></script>'
+    + '{loader}'
 )
 
 REVERT_RES = (
     re.compile(r'<aside class="adband" ' + ADSENSE_MARK + r'[\s\S]*?</aside>'
                r'<script src="/assets/ads-init\.js" defer></script>'),
     re.compile(r'<aside class="adband-native" ' + ADSTERRA_MARK + r'[\s\S]*?</aside>'
-               r'<script async data-cfasync="false" src="https://[^"]+"></script>'),
+               r'(?:<script src="/assets/adsterra-loader\.js" defer></script>'
+               r'|<script async data-cfasync="false" src="https://[^"]+"></script>)'),
 )
 
 
@@ -157,7 +159,14 @@ def config() -> tuple[str, dict]:
                 print("ads: refusing - those are intrusive, and AdSense's site behavior")
                 print("ads: policy bars pages carrying pop-ups. Use the Native Banner key.")
                 return "", {}
-            return "adsterra", {"key": key, "host": host}
+            try:
+                gate = bool((ast or {}).get("gateConsent", True))
+            except Exception:
+                gate = True
+            if not gate:
+                print("ads: adsterra.gateConsent is false - the loader will execute for")
+                print("ads: every visitor before any consent, including the EEA and UK.")
+            return "adsterra", {"key": key, "host": host, "gate": gate}
 
     return "", {}
 
@@ -183,13 +192,26 @@ def targets() -> list[Path]:
     return sorted(seen)
 
 
+# The plain loader, kept for adsterra.gateConsent = false. It executes for every
+# visitor in every region before any consent, which is why it is not the default.
+ADSTERRA_RAW_LOADER = ('<script async data-cfasync="false" '
+                       'src="https://{host}/{key}/invoke.js"></script>')
+
+# The default: one local bootstrap that decides when to load the remote script.
+ADSTERRA_GATED_LOADER = '<script src="/assets/adsterra-loader.js" defer></script>'
+
+
 def block_for(provider: str, p: dict) -> str:
     if provider == "adsense":
         # plain substitution, not str.format: the inline CSS is full of braces
         return (ADSENSE_BAND.replace("{client}", p["client"])
                             .replace("{slot}", p["slot"])
                             .replace("{fmt}", p["fmt"]))
-    return ADSTERRA_BAND.replace("{key}", p["key"]).replace("{host}", p["host"])
+    loader = (ADSTERRA_GATED_LOADER if p.get("gate", True)
+              else ADSTERRA_RAW_LOADER.replace("{key}", p["key"]).replace("{host}", p["host"]))
+    return (ADSTERRA_BAND.replace("{key}", p["key"])
+                        .replace("{host}", p["host"])
+                        .replace("{loader}", loader))
 
 
 def revert() -> int:
@@ -219,7 +241,7 @@ def main() -> int:
         return 0
 
     block = block_for(provider, params)
-    applied = skipped = problems = 0
+    applied = skipped = problems = upgraded = 0
 
     for f in targets():
         try:
@@ -227,7 +249,18 @@ def main() -> int:
         except Exception:
             continue
         if ADSENSE_MARK in t or ADSTERRA_MARK in t:
-            skipped += 1
+            # Re-render any existing band to the current template. Skipping
+            # outright meant a change to this file never reached the 2,585 pages
+            # that already carried the old markup.
+            new_t = t
+            for rx in REVERT_RES:
+                new_t = rx.sub("", new_t)
+            new_t = new_t.replace("</main>", "</main>" + block, 1) if "</main>" in new_t else new_t
+            if new_t != t:
+                f.write_text(new_t, encoding="utf-8")
+                upgraded += 1
+            else:
+                skipped += 1
             continue
         if NOINDEX.search(t) or NOCONTENT.search(t):
             problems += 1
@@ -242,11 +275,14 @@ def main() -> int:
         f.write_text(t.replace("</main>", "</main>" + block, 1), encoding="utf-8")
         applied += 1
 
-    print(f"ads: {applied} {provider} band(s) wired, {skipped} already present, "
-          f"{problems} skipped (noindex/stub, no single </main>, or no footer after it)")
+    print(f"ads: {applied} {provider} band(s) wired, {upgraded} upgraded to the current "
+          f"template, {skipped} already current, {problems} skipped "
+          f"(noindex/stub, no single </main>, or no footer after it)")
     if provider == "adsterra":
-        print(f"ads: container container-{params['key']}, "
-              f"loader //{params['host']}/{params['key']}/invoke.js")
+        mode = ("consent-gated local bootstrap" if params.get("gate", True)
+                else "PLAIN inline tag, no consent gate")
+        print(f"ads: container container-{params['key']}, loader "
+              f"//{params['host']}/{params['key']}/invoke.js ({mode})")
     return 0
 
 

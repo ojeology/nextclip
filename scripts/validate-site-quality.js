@@ -29,6 +29,12 @@ const PINTEREST_VERIFICATION=String((json("site.config.json").pinterest||{}).dom
 const ADSTERRA=(()=>{try{return json("site.config.json").adsterra||{}}catch{return{}}})();
 const ADSTERRA_KEY=String(ADSTERRA.key||"").trim();
 const ADSTERRA_HOST=String(ADSTERRA.host||"").trim();
+// The sanctioned set, all of it config-driven: the network's own loader URL, the
+// band's data attribute, and the site's own consent-gating bootstrap at
+// /assets/adsterra-loader.js. That last one is a local file whose name states
+// what it gates - banning the bare word "adsterra" would fail the very page that
+// keeps the network honest. Clear adsterra.key in site.config.json and all three
+// exceptions disappear together.
 const SANCTIONED_AD=new RegExp(
   (ADSTERRA_KEY&&ADSTERRA_HOST
     ? ADSTERRA_HOST.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")+"\\/"+ADSTERRA_KEY+"\\/invoke\\.js"
@@ -97,7 +103,11 @@ for(const file of htmlFiles){
  // network fails, AND any remaining Adsterra-format loader (/invoke.js) fails even
  // when its host is one we have never seen.
  const UNSANCTIONED=s.replace(SANCTIONED_AD,"");
- if(/n6wxm\.com|nap5k\.com|propellerads|monetag\.com|profitableratecpmnetwork|highrevenueformat|highperformanceformat|adsterra/i.test(UNSANCTIONED))fail(`${r}: disallowed advertising endpoint remains (only the sanctioned Adsterra Native Banner is permitted; Monetag, PropellerAds, social bar, popunders and the classic atOptions banner all fail)`);
+ // Endpoints and formats, not brand names: naming a network in a privacy policy is
+// required disclosure, while loading an unsanctioned endpoint is the thing worth
+// failing. Monetag, PropellerAds, the social bar, popunders and the classic
+// atOptions banner are all still caught by their hosts and format strings.
+if(/n6wxm\.com|nap5k\.com|propellerads|monetag\.com|profitableratecpmnetwork|highrevenueformat|highperformanceformat/i.test(UNSANCTIONED))fail(`${r}: disallowed advertising endpoint remains (only the sanctioned Adsterra Native Banner is permitted; Monetag, PropellerAds, social bar, popunders and the classic atOptions banner all fail)`);
  if(/\/invoke\.js/i.test(UNSANCTIONED))fail(`${r}: unsanctioned Adsterra-format ad loader present - only the native banner key in site.config.json is permitted`);
  if(/googletagmanager|google-analytics/i.test(s)){
   if(!GA_ON)fail(`${r}: analytics endpoint present but analytics.enabled is not true in site.config.json`);

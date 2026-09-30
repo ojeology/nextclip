@@ -1,0 +1,102 @@
+{
+ "generated": "2026-09-30",
+ "advertising": {
+  "pagesWithAnAdSlot": 2585,
+  "slotsPerPage": {
+   "1": 2585,
+   "0": 5
+  },
+  "adsInsideMain": 0,
+  "adsInNavOrFooter": 0,
+  "adsBeforeMain": 0,
+  "stickyOrFixedAdContainers": 0,
+  "adsOnNoindexPages": 0,
+  "networks": {
+   "googleAdSenseSnippet": 2590,
+   "adsterraBand": 2585
+  },
+  "adUnitsWired": false,
+  "note": "one band per content page, after </main> and before <footer>; the AdSense snippet is present for verification with no ad units wired"
+ },
+ "consent": {
+  "googleCmpOnIndexablePages": 2590,
+  "indexablePages": 2590,
+  "consentModeV2Defaults": "region-scoped defaults in /assets/gtag-init.js, denied by default in the EEA, UK and Switzerland",
+  "nonGoogleNetworkGated": 2585,
+  "nonGoogleNetworkLoadedInline": 0,
+  "gateRule": "outside Europe: loads immediately; inside EEA/UK/CH: waits for a granted ad-consent signal from the CMP, and never loads if consent is refused",
+  "why": "Consent Mode governs Google tags only. Google's EU user consent policy requires consent to cover the publisher's partners as well, so a third-party ad network loading before consent was a real compliance gap.",
+  "verifiedBy": "scripts/test-ad-consent.js - three browser cases (non-European loads; European unconsented makes no ad-host request; European consented loads)",
+  "residualRisk": "invoke.js is remote code from the network. This audit can prove the request is gated and cannot prove what the remote file does after it loads. That is a standing, accepted risk of running any third-party ad network, and the reason the popunder and social-bar formats are refused in config."
+ },
+ "adsTxt": {
+  "inTree": "google.com, ca-pub-1881426210393009, DIRECT, f08c47fec0942fa0",
+  "live": "google.com, ca-pub-1881426210393009, DIRECT, f08c47fec0942fa0",
+  "liveStatus": 200,
+  "records": [
+   "google.com, ca-pub-1881426210393009, DIRECT, f08c47fec0942fa0"
+  ],
+  "matchesConfiguredPublisher": true,
+  "wellFormed": true
+ },
+ "trust": {
+  "privacy": {
+   "siteLevel": true,
+   "desks": 7
+  },
+  "terms": {
+   "siteLevel": true,
+   "desks": 7
+  },
+  "contact": {
+   "siteLevel": true,
+   "desks": 7
+  },
+  "about": {
+   "siteLevel": true,
+   "desks": 7
+  },
+  "editorial-policy": {
+   "siteLevel": true,
+   "desks": 7
+  },
+  "corrections": {
+   "siteLevel": true,
+   "desks": 7
+  },
+  "copyright": {
+   "siteLevel": true,
+   "desks": 7
+  },
+  "disclosure": {
+   "siteLevel": true,
+   "desks": 1
+  },
+  "disclaimer": {
+   "siteLevel": true,
+   "desks": 3
+  }
+ },
+ "privacyDisclosures": {
+  "namesGoogleAdsense": true,
+  "mentionsAdsterra": true,
+  "explainsCookiesOrIdentifiers": true,
+  "explainsOptOut": true,
+  "linksConsentControls": true
+ },
+ "value": {
+  "indexablePages": 2590,
+  "pagesWith400WordsOrMore": 2590,
+  "shareWith400WordsOrMore": 100.0,
+  "medianMainTextWords": 5124,
+  "writersSectionPages": 517,
+  "note": "the brief's test is whether the site is worth reading without ads. Depth is measured here; Phase 10 and 11 measured whether the depth is original, and Phase 12 measured the film catalogue."
+ },
+ "evidenceFromEarlierPhases": {
+  "technicalSeo": "reports/technical-seo-2026-09-30.json - zero findings across 2,590 indexable pages (canonicals, sitemaps, robots, h1, metadata, JSON-LD)",
+  "mobileUsability": "npm run validate:browser - 1,551 rendered cases at 390x844, 768x1024 and 1440x1000, zero failures, including horizontal-overflow checks",
+  "writersSectionQuality": "reports/quality-audit-2026-09-30.json - 517 URLs graded A-E",
+  "deskQuality": "reports/desk-audit-2026-09-30.json - 1,354 URLs, zero thin pages",
+  "brokenLinks": "272,413 internal links, zero broken (npm run check:links)"
+ }
+}
