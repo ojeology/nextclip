@@ -790,5 +790,45 @@
   "new-world-writing-quarterly": {
     "base": "",
     "label": "International"
+  },
+  "blue-mesa-review": {
+    "base": "US",
+    "label": "United States"
+  },
+  "inscape-journal": {
+    "base": "US",
+    "label": "United States"
+  },
+  "points-in-case": {
+    "base": "",
+    "label": "International"
+  },
+  "vestal-review": {
+    "base": "",
+    "label": "International"
+  },
+  "the-aurora-journal": {
+    "base": "",
+    "label": "International"
+  },
+  "raleigh-review": {
+    "base": "",
+    "label": "International"
+  },
+  "gulf-stream-magazine": {
+    "base": "",
+    "label": "International"
+  },
+  "sho-poetry-journal": {
+    "base": "",
+    "label": "International"
+  },
+  "the-new-verse-news": {
+    "base": "",
+    "label": "International"
+  },
+  "home-planet-news": {
+    "base": "",
+    "label": "International"
   }
 }
