@@ -231,11 +231,23 @@ def parse_frontmatter(text: str) -> tuple[dict, str]:
 # Page helpers
 # --------------------------------------------------------------------------
 def load_guides() -> list[dict]:
+    """Load every hub guide, filling dataset figures in as they load.
+
+    This is the one place all 197 guides pass through, so it is the one place
+    that has to substitute. Guides write {{records}}, {{ai_prohibiting}} and
+    the rest; writing_stats computes them from content/opportunities.json.
+    Before this, those counts were typed into nine files as literals and had
+    been drifting out of date ever since. An unknown token raises rather than
+    rendering literally, so a typo cannot reach a published page.
+    """
+    from writing_stats import fill, fill_mapping  # local: keeps import cost off other builders
+
     guides = []
     for p in sorted((ROOT / "content" / "hub" / "guides").glob("*.md")):
         fm, body = parse_frontmatter(p.read_text(encoding="utf-8"))
+        fm = fill_mapping(fm)
         fm["slug"] = p.stem
-        fm["body"] = body
+        fm["body"] = fill(body)
         fm["section"] = fm.get("section", "")
         guides.append(fm)
     return guides

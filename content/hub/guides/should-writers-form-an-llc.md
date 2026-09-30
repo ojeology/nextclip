@@ -6,7 +6,7 @@ level: intermediate
 keywords: [llc, sole proprietor, freelance writers, liability, s-corp, business structure, us]
 tools: [freelance-rate-calculator]
 related: [business-bank-account-for-writers, do-writers-need-business-insurance, writing-contracts-what-to-check]
-updated: 2026-09-06
+updated: 2026-09-30
 ---
 
 > **General information, not legal or tax advice.** Entity rules and costs vary by state. Speak to a qualified professional before forming anything.
@@ -33,7 +33,7 @@ That is the whole product. Everything else attributed to LLCs is either a side e
 
 Ask what you are actually protecting against.
 
-**Editorial writing for publications.** The publisher carries the publishing risk. Of the 142 publications BRYME has verified, [only one mentions indemnification](/learn/freelance-paid-writing/do-writers-need-business-insurance/). The realistic exposure is low.
+**Editorial writing for publications.** The publisher carries the publishing risk. Of the {{records}} publications BRYME has verified, [only {{indemnity_word}} mentions indemnification](/learn/freelance-paid-writing/do-writers-need-business-insurance/). The realistic exposure is low.
 
 **Commercial content for companies.** Higher. Contracts may include indemnity clauses shifting risk onto you, and the sums involved are larger.
 

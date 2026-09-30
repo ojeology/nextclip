@@ -6,7 +6,7 @@ level: intermediate
 keywords: [writing software, scrivener, ulysses, obsidian, markdown, long form, book]
 tools: [word-counter, word-count-to-pages, outline-builder]
 related: [choosing-a-grammar-checker, how-to-price-your-freelance-writing, per-word-day-rate-or-project-fee]
-updated: 2026-09-06
+updated: 2026-09-30
 ---
 
 **BRYME has not run these applications through a full book project, so this does not rank them.** What it does is separate the four genuinely different problems long-form software solves, so you can tell which one you actually have.
@@ -29,7 +29,7 @@ Most writers buy the wrong tool because they diagnosed the wrong problem.
 
 **Does this project actually need dedicated software?**
 
-A 2,000-word magazine feature does not. A 5,000-word long read does not. Most freelance writing — including nearly everything in BRYME's [142 verified markets](/writing/) — is comfortably handled in whatever you already use, and the time spent learning a new tool is time not spent writing.
+A 2,000-word magazine feature does not. A 5,000-word long read does not. Most freelance writing — including nearly everything in BRYME's [{{records}} verified markets](/writing/) — is comfortably handled in whatever you already use, and the time spent learning a new tool is time not spent writing.
 
 Dedicated long-form software earns its keep somewhere around **novel, memoir, thesis or serialised project** — work measured in tens of thousands of words with a structure you cannot hold in your head.
 

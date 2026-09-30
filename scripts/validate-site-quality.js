@@ -78,6 +78,14 @@ for(const file of htmlFiles){
  if(isIndex)indexed++;if(isNo)noindexed++;
  if(wanted&&!isIndex)fail(`${r}: allowlisted but robots is ${JSON.stringify(robots)}`);
  if(!wanted&&!verification.has(f)&&!isNo)fail(`${r}: outside allowlist without noindex`);
+ // Dataset figures in the hub guides are written as {{tokens}} and filled from
+ // content/opportunities.json by writing_stats, inside build-writing-hub's
+ // load_guides() - the one place every guide passes through. A token surviving
+ // to a page means either a guide used a name that does not exist, or it
+ // reached a surface that bypassed load_guides(). Both should stop the build,
+ // because the alternative is publishing a number that is not in the data.
+ const _tok=(s.match(/\{\{[^{}]*\}\}/)||[])[0];
+ if(_tok)fail(`${r}: unfilled dataset token ${_tok} reached the page`);
  if(!verification.has(f)&&f.startsWith("writers/")){
   if(/href=["']\/assets\/site\.css["']|src=["']\/assets\/site-app\.js["']/i.test(s))fail(`${r}: legacy CSS/JS remains`);
   if(!/assets\/(?:bryme-v2|content-v2)\.css/.test(s))fail(`${r}: forest-green stylesheet missing`);
@@ -205,6 +213,24 @@ const news=[...read("writers/news-sitemap.xml").matchAll(/<loc>(.*?)<\/loc>/g)];
 const feeds=[...read("writers/feed.xml").matchAll(/<item>[\s\S]*?<link>(.*?)<\/link>/g)].map(m=>norm(m[1]));for(const r of feeds)if(!allow.has(r))fail(`RSS includes non-allowlisted ${r}`);
 if(!read("robots.txt").includes(`Sitemap: ${site}/writers/sitemap.xml`))fail("robots sitemap declaration missing");
 const opportunities=json("content/opportunities.json").opportunities;if(opportunities.length!==expectedPubs)fail(`expected ${expectedPubs} writing research records, found ${opportunities.length}`);
+// Dataset statistics in the hub guides must be {{tokens}}, never literals.
+// Nine guides used to state counts by hand - "41 of 142 verified publications
+// prohibit AI-assisted work", "only 55 of 142 state their rights terms" - and
+// every one of them drifted out of date without anything noticing, because no
+// check connected the sentence to the data. The token guard above catches an
+// unfilled token; this catches the opposite mistake, someone typing the number
+// back in. Both are the same failure: a figure on a page that is not read from
+// content/opportunities.json. If a new guide needs a figure, add it to
+// scripts/writing_stats.py and use the token.
+{
+ const CLAIM=/(?:\b\d{1,4}\s+of\s+\d{1,4}\b[^.\n]{0,40}?\b(?:publications?|markets?|records?)\b)|(?:\b\d{1,4}\s+(?:verified|paying)\s+(?:publications?|markets?|records?)\b)|(?:\bone\s+in\s+\d{2,4}\b)|(?:\b\d{2,4}\s+(?:publications?|markets?|records?)\s+BRYME\b)|(?:\bof\s+\d{2,4}\s+(?:verified|paying)\b)/gi;
+ const dir=path.join(ROOT,"content","hub","guides");
+ if(fs.existsSync(dir))for(const f of fs.readdirSync(dir).filter(x=>x.endsWith(".md"))){
+  const body=fs.readFileSync(path.join(dir,f),"utf8");
+  const hit=body.match(CLAIM);
+  if(hit)fail(`content/hub/guides/${f}: hardcoded dataset figure ${JSON.stringify(hit[0])} - use a {{token}} from scripts/writing_stats.py instead`);
+ }
+}
 for(const o of opportunities)for(const k of ["slug","publication","officialUrl","lastVerified","submissionStatus"])if(!o[k])fail(`writing record ${o.slug||"?"}: missing ${k}`);
 const server=read("server/server.js");for(const x of ["PUBLIC_HTML_DIRS","PUBLIC_ROOT_FILES","SECURITY_HEADERS","content-security-policy"])if(!server.includes(x))fail(`server hardening marker missing: ${x}`);
 if(!fs.existsSync(path.join(ROOT,"render.yaml")))fail("Render blueprint missing");

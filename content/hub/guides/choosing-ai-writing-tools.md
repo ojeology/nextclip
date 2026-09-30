@@ -1,12 +1,12 @@
 ---
 title: Using AI tools as a writer without losing markets
-description: 41 of 142 verified publications prohibit AI-assisted work, one of them contractually and including grammar tools. Read the policy before you choose the tool.
+description: {{ai_prohibiting}} of {{records}} verified publications prohibit AI-assisted work, one of them contractually and including grammar tools. Read the policy before you choose the tool.
 section: freelance-paid-writing
 level: intermediate
 keywords: [ai writing tools, chatgpt, claude, policy, disclosure, publications, freelance]
 tools: [word-counter, filler-word-finder]
 related: [choosing-a-grammar-checker, writing-contracts-what-to-check, high-paying-writing-niches]
-updated: 2026-09-06
+updated: 2026-09-30
 ---
 
 Most guides to AI writing tools compare features. That is the wrong first question for a working writer, because the binding constraint is not what a tool can do — it is what your market allows.
@@ -15,7 +15,7 @@ Most guides to AI writing tools compare features. That is the wrong first questi
 
 ## Start with the policy, not the tool
 
-Of the **142 publications BRYME has verified against their own guidelines**:
+Of the **{{records}} publications BRYME has verified against their own guidelines**:
 
 | Policy | Publications |
 |---|---|
@@ -60,7 +60,7 @@ None of the below involves a machine producing text you publish under your name:
 
 ## Where it costs you
 
-**Generating prose you submit.** Prohibited by 41 of 142 markets, and the ones paying best are disproportionately among them.
+**Generating prose you submit.** Prohibited by {{ai_prohibiting}} of {{records}} markets, and the ones paying best are disproportionately among them.
 
 **Fabricated citations.** The fastest way to end a professional relationship, especially in [medical or technical writing](/learn/freelance-paid-writing/medical-writing-rates/) where accuracy is the product.
 
@@ -95,4 +95,4 @@ Since the policy comes first, the tool questions are narrow:
 
 ---
 
-*Policy counts are from BRYME's own dataset of 142 publications verified against their own guidelines, as of 6 September 2026. Quotations are from those publications' live pages. This is an evaluation framework, not a product review — BRYME does not rank AI tools and has no affiliate relationship with any of them.*
+*Policy counts are computed from BRYME's own dataset of {{records}} publications at build time, each read against its own guidelines page (records last verified {{verified_window}}). Quotations are from those publications' live pages. This is an evaluation framework, not a product review — BRYME does not rank AI tools and has no affiliate relationship with any of them.*

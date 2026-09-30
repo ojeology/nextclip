@@ -1,17 +1,17 @@
 ---
-title: Freelance writing rates in the US — survey data and 75 real markets
-description: What EFA's 1,100-respondent survey says writers charge, set against the actual published rates of 75 US publications BRYME has verified.
+title: Freelance writing rates in the US — survey data and {{based_us}} real markets
+description: What EFA's 1,100-respondent survey says writers charge, set against the actual published rates of {{based_us}} US publications BRYME has verified.
 section: freelance-paid-writing
 level: intermediate
 keywords: [freelance writing rates, us, per word, efa, earnings, magazines, 2026]
 tools: [freelance-rate-calculator]
 related: [high-paying-writing-niches, how-to-price-your-freelance-writing, how-to-raise-your-freelance-rates]
-updated: 2026-09-06
+updated: 2026-09-30
 ---
 
 Most rate guides give you one of two things: a survey of what freelancers *say they charge*, or a list of what magazines *say they pay*. Those are different numbers, and the gap between them is where writers get confused.
 
-This guide puts both side by side. The survey data comes from the Editorial Freelancers Association. The market data comes from BRYME's own database of **75 US publications**, every rate read off the publication's own guidelines page.
+This guide puts both side by side. The survey data comes from the Editorial Freelancers Association. The market data comes from BRYME's own database of **{{based_us}} US publications**, every rate read off the publication's own guidelines page.
 
 ## What writers charge clients — EFA 2026
 
@@ -31,23 +31,23 @@ The EFA is careful to note it neither sets rates nor advises members what to cha
 
 **The headline: medical writing pays roughly four times what blog writing pays per word**, from the same pool of freelancers.
 
-## What publications actually pay — BRYME's 75 US markets
+## What publications actually pay — BRYME's {{based_us}} US markets
 
-Now the other side. Of 75 verified US publications:
+Now the other side. Of {{based_us}} verified US publications:
 
-- **43 publish a per-piece figure**
-- **14 quote a per-word rate**
-- **18 confirm they pay but publish no figure**
+- **{{us_states_figure}} state a figure** — a flat fee, or a rate per word
+- **{{us_silent}} confirm they pay but publish no number at all**
+- Of those that state a figure, **{{us_per_word}} quote it per word** rather than as a flat fee
 
-Among those with a per-piece figure:
+Among those that state a figure:
 
 | | Amount |
 |---|---|
-| Lowest | **$5** |
-| 25th percentile | **$40** |
-| **Median** | **$100** |
-| 75th percentile | **$300** |
-| Highest | **$2,500** |
+| Lowest | **${{us_min}}** |
+| 25th percentile | **${{us_p25}}** |
+| **Median** | **${{us_median}}** |
+| 75th percentile | **${{us_p75}}** |
+| Highest | **${{us_max}}** |
 
 **The median US publication in BRYME's database pays $100 per accepted piece.**
 
@@ -84,15 +84,15 @@ This is not a contradiction. They are two different markets:
 
 **Specialise, because the survey says it is the single biggest lever.** Medical at $1.00–1.50/word against blog posts at 25–45¢ is a four-fold difference driven entirely by subject, not by skill. The [highest-paying niches guide](/learn/freelance-paid-writing/high-paying-writing-niches/) covers where those subjects are.
 
-**Treat the $100 median as the floor to beat, not the target.** A quarter of BRYME's verified US markets pay $300 or more. They are listed, with the rate on every card.
+**Treat the ${{us_median}} median as the floor to beat, not the target.** A quarter of the markets that state a figure pay ${{us_p75}} or more. They are listed, with the rate on every card.
 
-**Do not accept "we pay competitive rates" without a number.** Eighteen of the 75 US publications BRYME tracks confirm they pay and publish no figure. That is normal, and it is also the point at which you ask.
+**Do not accept "we pay competitive rates" without a number.** {{us_silent}} of the {{based_us}} US publications BRYME tracks confirm they pay and publish no figure. That is normal, and it is also the point at which you ask.
 
 ## Work out your own number first
 
 Before comparing yourself to any survey, establish what you actually need. The [freelance rate calculator](/tools/freelance-rate-calculator/) works backwards from your target income and realistic billable hours. If the number it gives you sits above the EFA bands for your category, that is a signal to specialise rather than to discount.
 
-Then browse [75 verified US publications](/writing-opportunities/usa/) with the rate stated and sourced on every listing.
+Then browse [{{based_us}} verified US publications](/writing-opportunities/usa/) with the rate stated and sourced on every listing.
 
 ---
 

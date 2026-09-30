@@ -6,7 +6,7 @@ level: intermediate
 keywords: [payments, stripe, paypal, wise, payoneer, international, writers, cross-border]
 tools: [freelance-rate-calculator]
 related: [invoicing-software-for-writers, accounting-software-for-writers, how-to-price-your-freelance-writing]
-updated: 2026-09-06
+updated: 2026-09-30
 ---
 
 Most advice about getting paid is written from inside a country where getting paid works. Read it from Lagos, Manila or Nairobi and you find out the hard way that the button does not work for you.
@@ -71,7 +71,7 @@ Earnings there are very small, and local tax and regulatory treatment of bitcoin
 
 **If you are not:** do not build your plan around Substack or any Stripe-based subscription product. Two better routes:
 
-1. **Take commissions from publications that pay by bank transfer.** BRYME lists [142 verified paying publications](/writing/), most of which invoice and pay by transfer. This is the highest-value route and it sidesteps the wall entirely.
+1. **Take commissions from publications that pay by bank transfer.** BRYME lists [{{records}} verified paying publications](/writing/), most of which invoice and pay by transfer. This is the highest-value route and it sidesteps the wall entirely.
 2. **Open a virtual USD or GBP account** with Payoneer, Wise or Grey, and give those details to payers.
 
 **Before you accept any commission**, confirm three things in writing: the fee, the currency, and how they will send it. The third is the one writers forget and then spend two months chasing.

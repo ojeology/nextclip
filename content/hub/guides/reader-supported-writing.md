@@ -6,7 +6,7 @@ level: intermediate
 keywords: [reader supported, substack, patreon, ko-fi, buy me a coffee, memberships, writers]
 tools: [freelance-rate-calculator]
 related: [payment-platforms-for-writers, freelance-writing-rates-us, how-to-price-your-freelance-writing]
-updated: 2026-09-06
+updated: 2026-09-30
 ---
 
 Reader-supported writing means readers pay you directly rather than a publication paying you. It is the model behind Substack, Patreon, Ko-fi and Buy Me a Coffee, and the pitch is always the same: cut out the middleman, keep most of the money.
@@ -81,7 +81,7 @@ The platform fee only starts to matter once you have readers who pay. Getting th
 
 Do not start with reader support. Start with commissions.
 
-A single feature at a paying publication — Pellicle pays £375, Geist up to CAD$650 — is worth more than most writers earn from reader support in a year, and it builds the audience that makes reader support viable later. BRYME lists [142 verified paying publications](/writing/) with the rate stated on each.
+A single feature at a paying publication — Pellicle pays £375, Geist up to CAD$650 — is worth more than most writers earn from reader support in a year, and it builds the audience that makes reader support viable later. BRYME lists [{{records}} verified paying publications](/writing/) with the rate stated on each.
 
 Run a free Substack alongside it. Build the list. Turn on payments when there is someone to pay you.
 

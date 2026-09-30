@@ -1,21 +1,21 @@
 ---
 title: Do freelance writers need business insurance?
-description: One of the 142 publications BRYME has verified mentions indemnification. That number tells you almost everything about when writers actually need cover.
+description: Of the {{records}} publications BRYME has verified, just {{indemnity_word}} mentions indemnification. That number tells you almost everything about when writers actually need cover.
 section: freelance-paid-writing
 level: intermediate
 keywords: [business insurance, professional indemnity, errors omissions, writers, liability, contracts]
 tools: [freelance-rate-calculator]
 related: [writing-contracts-what-to-check, how-to-invoice-as-a-writer, how-to-price-your-freelance-writing]
-updated: 2026-09-06
+updated: 2026-09-30
 ---
 
 Search this question and you will find pages written by insurance brokers. Here is the version written from the contracts.
 
 ## The number that frames it
 
-BRYME has read the published terms of **142 paying publications**. Searching all of them for indemnity, liability, libel or insurance language returns **one record** — Noema Magazine, whose guidelines mention a contract and indemnification.
+BRYME has read the published terms of **{{records}} paying publications**. Searching all of them for indemnity, liability, libel or insurance language returns **{{indemnity_word}} record** — Noema Magazine, whose guidelines mention a contract and indemnification.
 
-**One in 142.**
+**One in {{records}}.**
 
 That is the honest starting point: **editorial publishing almost never asks a writer to carry insurance.** If your income is pitching magazines, the question mostly does not arise.
 
@@ -62,7 +62,7 @@ Notice that most of these are far likelier in **commissioned commercial work for
 
 Worth knowing, because it changes the answer.
 
-When a **magazine** publishes you, the magazine is the publisher. It carries its own media liability, it has editors and often lawyers checking the work, and the exposure sits substantially with it. That is a large part of why only one of 142 asks anything of the writer.
+When a **magazine** publishes you, the magazine is the publisher. It carries its own media liability, it has editors and often lawyers checking the work, and the exposure sits substantially with it. That is a large part of why only {{indemnity_word}} of {{records}} asks anything of the writer.
 
 When you write for a **company** and they publish it, the same logic mostly applies — but their contract may shift some of that risk onto you through an indemnity clause. **Read that clause before you buy a policy, because it defines what you actually need.**
 
@@ -89,4 +89,4 @@ When you write for a **company** and they publish it, the same logic mostly appl
 
 ---
 
-*The one-in-142 figure comes from searching BRYME's own dataset of verified publication terms on 6 September 2026 for indemnity, liability, libel, defamation and insurance language. Insurance is regulated differently in every country and policies vary enormously. This is general information, not insurance, legal or financial advice — speak to a qualified broker or adviser, and to a writers' union such as the Society of Authors, the Authors Guild or the NUJ, several of which include or discount cover for members.*
+*The one-in-{{records}} figure is computed at build time by searching BRYME's own dataset of {{records}} verified publication terms for indemnity, liability, libel, defamation and insurance language (records last verified {{verified_window}}). Insurance is regulated differently in every country and policies vary enormously. This is general information, not insurance, legal or financial advice — speak to a qualified broker or adviser, and to a writers' union such as the Society of Authors, the Authors Guild or the NUJ, several of which include or discount cover for members.*

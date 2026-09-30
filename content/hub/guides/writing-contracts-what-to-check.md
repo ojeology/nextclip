@@ -1,21 +1,21 @@
 ---
-title: What rights are you actually signing away? 55 real clauses, read
-description: Only 55 of 142 verified publications state their rights terms at all. Here is what those 55 actually ask for, and the five clauses worth reading twice.
+title: What rights are you actually signing away? Real terms from {{rights_stated}} publications
+description: Only {{rights_stated}} of {{records}} verified publications state their rights terms at all. Here is what those {{rights_stated}} actually ask for, and the five clauses worth reading twice.
 section: freelance-paid-writing
 level: intermediate
 keywords: [contracts, rights, first serial, copyright, exclusivity, freelance writers, publishing]
 tools: [freelance-agreement-builder, freelance-rate-calculator]
 related: [how-to-price-your-freelance-writing, freelance-writing-rates-us, how-to-find-paying-publications]
-updated: 2026-09-06
+updated: 2026-09-30
 ---
 
 Most contract advice for writers is written in the abstract: *know your rights, read the fine print, don't sign away too much.* True and useless.
 
-This is the concrete version. BRYME has read the guidelines of **142 paying publications**. Here is what they actually ask for.
+This is the concrete version. BRYME has read the guidelines of **{{records}} paying publications**. Here is what they actually ask for.
 
 ## The first finding: most do not tell you
 
-Of 142 verified publications, **only 55 state their rights terms anywhere in their public guidelines.** The other 87 either say nothing, or say something so partial it cannot be relied on.
+Of {{records}} verified publications, **only {{rights_stated}} state their rights terms anywhere in their public guidelines.** The other {{rights_unreliable}} either say nothing, or say something so partial it cannot be relied on.
 
 **That is the single most important thing to know.** In roughly **six cases out of ten, you will not learn what rights a publication wants until after they have accepted your work** — at the point where you are least inclined to argue.
 
@@ -114,4 +114,4 @@ Sixty per cent of the publications BRYME has verified do not publish their right
 
 ---
 
-*Based on the stated rights terms of 142 publications BRYME has verified, each read off the publication's own guidelines page. Clause counts reflect the 55 that state terms publicly. This is general information, not legal advice — for a contract that matters, consult a qualified professional or a writers' union such as the Society of Authors, the Authors Guild or the NUJ.*
+*Based on the stated rights terms of {{records}} publications BRYME has verified, each read off the publication's own guidelines page (records last verified {{verified_window}}). Clause counts reflect the {{rights_stated}} that state terms publicly. This is general information, not legal advice — for a contract that matters, consult a qualified professional or a writers' union such as the Society of Authors, the Authors Guild or the NUJ.*
