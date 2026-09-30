@@ -2493,10 +2493,18 @@ _PAY_COHORTS = _build_pay_cohorts()
 def _pay_position(rec: dict) -> str:
     """Place this record's figure against its cohort, or say why it cannot be.
 
-    Deliberately returns a sentence even when there is nothing to rank: a
-    smaller honest statement ("the other four state a figure too, too few to
-    rank") tells the reader more than silence, and it stops the docket from
-    implying a comparison where none was made.
+    Deliberately returns a sentence even when there is nothing to rank: "BRYME
+    records 2 other records based in Nigeria that state a flat-fee figure - too
+    few to rank this one against" tells a reader more than silence, and it stops
+    the docket implying a comparison that was never made.
+
+    The sentence is assembled at the end from two independent parts - `place`
+    (where the cohort is) and `shape` (what kind of figure it states). The first
+    attempt spliced a phrase ending in "quoting in NGN" onto a qualifier
+    beginning "quoting a flat fee" and published "no other records on this desk
+    quoting in NGN quoting a flat fee to compare this against" on the live site.
+    Keeping the parts in no grammatical relation to each other is what let that
+    through, so the wording is now built once, in one place, from both.
     """
     pay = rec.get("pay") or {}
     amount = pay.get("amountMin") or 0
@@ -2505,32 +2513,31 @@ def _pay_position(rec: dict) -> str:
         return ""
     base = base_country(rec.get("slug") or "")
     cohort = _PAY_COHORTS.get((base or "*", currency, pay_shape(rec)), [])
-    shape_word = "quoting a per-word rate" if pay_shape(rec) == "word" else "quoting a flat fee"
-    # "records based in Nigeria", never "Nigeria publications". An adjective
-    # table would have to be maintained for every market the desk adds, and the
-    # first one it missed would print "2 other Nigeria publications". The
-    # noun-first phrasing needs no table and reads the same in all of them.
-    where = _cohort_place(rec, base, currency)
+    place = _cohort_place(rec, base, currency)
+    # Where a market is recorded the cohort is that market, so the SHAPE is the
+    # thing that needs naming. Where none is, the currency already defines the
+    # peer set and a shape word would only repeat what "quoting in NGN" said.
+    shape = ("per-word rate" if pay_shape(rec) == "word" else "flat-fee figure") if base else "figure"
+    qual = f"records {place} that state a {shape}"
     n = len(cohort)
     if n < PAY_COHORT_MIN:
         peers = n - 1
         if peers <= 0:
-            return (f"BRYME records no other {where} {shape_word} to compare "
-                    f"this against.")
-        return (f"BRYME records {peers} other {where} {shape_word} — too few to "
-                f"rank this one against without over-reading {peers} data "
+            return (f"BRYME records no other record {place} that states a {shape} "
+                    f"to compare this against.")
+        return (f"BRYME records {peers} other {qual} — too few to rank this one "
+                f"against without over-reading {peers} data "
                 f"{'point' if peers == 1 else 'points'}.")
     others = [r for r in cohort if r is not rec]
     lower = sum(1 for r in others if ((r.get("pay") or {}).get("amountMin") or 0) < amount)
     higher = sum(1 for r in others if ((r.get("pay") or {}).get("amountMin") or 0) > amount)
     same = len(others) - lower - higher
-    total = f"{n} {where} that state a figure"
     if higher == 0 and same == 0:
-        return f"The highest figure of the {total} {shape_word}."
+        return f"The highest figure of the {n} {qual}."
     if lower == 0 and same == 0:
-        return f"The lowest figure of the {total} {shape_word}."
-    parts = [f"{lower} of the other {len(others)} {where} that state a figure "
-             f"{shape_word} state less", f"{higher} state more"]
+        return f"The lowest figure of the {n} {qual}."
+    parts = [f"Of the other {len(others)} {qual}, {lower} state less",
+             f"{higher} state more"]
     if same:
         parts.append(f"{same} state exactly this")
     return ", ".join(parts) + "."
@@ -2548,21 +2555,24 @@ def _article(label: str | None) -> str:
 
 
 def _cohort_place(rec: dict, base: str, currency: str) -> str:
-    """How to describe the records this one is compared against.
+    """Where this record's peer set is, as a fragment the sentences can slot in.
 
+    Reads as "records {this} that state a figure" and as "other records {this}
+    quoted the same way", so it starts with a preposition and ends on a place.
     A record with `base: ""` is not "based in International" - it has no market
     in the country map, so calling its peers a national cohort would invent one.
-    Scope it to the thing that is actually shared instead: the currency.
+    Scope those to the currency instead.
 
     Both the ranking sentence and the caveat under the docket call this, because
-    they drifted apart within an hour of being written - the ranking was fixed
-    to say "records on this desk quoting in USD" and the caveat went on saying
-    "other International records" for those same eight records. Wording that
-    describes the same fact from two places has to be one expression.
+    they drifted apart within an hour of being written - the ranking was fixed to
+    say "quoting in USD" while the caveat went on saying "other International
+    records" for those same eight records. Wording that describes one fact from
+    two places has to be one expression.
     """
     if not base:
-        return f"records on this desk quoting in {currency}"
-    return f"records based in {_article(pub_country(rec).get('label'))}"
+        return (f"quoting in {currency} on this desk" if currency
+                else "on this desk")
+    return f"based in {_article(pub_country(rec).get('label'))}"
 
 
 def _comparison_caveat(rec: dict) -> str:
@@ -2580,8 +2590,8 @@ def _comparison_caveat(rec: dict) -> str:
                 "above it. Where a rate is quoted per word, it is never ranked against a "
                 "flat fee.")
     where = esc(_cohort_place(rec, base_country(rec.get("slug") or ""), pay["currency"]))
-    return (f"Figures are compared only against other {where} quoted the same way, so a "
-            f"per-word rate is never ranked against a flat fee.")
+    return (f"Figures are compared only against other records {where} quoted the same "
+            f"way, so a per-word rate is never ranked against a flat fee.")
 
 
 def _docket_row(label: str, value: str, note: str = "", state: str = "") -> str:

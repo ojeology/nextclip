@@ -52,15 +52,38 @@ FORBIDDEN = [
      "country used as an adjective instead of 'records based in <country>'"),
     (re.compile(r"\{\{|\}\}"), "unfilled statistic token"),
     (re.compile(r"  +"), "double space"),
+    # A word repeated across a phrase seam: "no other records on this desk
+    # quoting in NGN quoting a flat fee". Each half was correct; only the join
+    # was wrong, and it reached the live site because every check watched the
+    # halves. Any word repeated within six words of itself is a seam defect.
+    # A gerund repeated across a phrase seam: "…on this desk quoting in NGN
+    # quoting a flat fee to compare this against". Each half was correct in
+    # isolation; only the join was wrong, which is why every check that watched
+    # the halves passed it. Narrow on purpose - a generic repeated-word test
+    # fires on "state less and 3 state more" and "2 other records based in
+    # Nigeria", which are the sentences working.
+    (re.compile(r"\bquoting\b(?:\s+\w+){0,4}\s+quoting\b", re.I),
+     "the same qualifier glued to itself across a seam"),
+    (re.compile(r"\bthat state\b(?:\s+\w+){0,6}\s+that state\b", re.I),
+     "the same qualifier glued to itself across a seam"),
     (re.compile(r"\s[,.;]"), "space before punctuation"),
     (re.compile(r"number could not be|None\b|nan\b|undefined"), "raw code value leaked"),
 ]
 
-CLAIM_HIGH = re.compile(r"The highest figure of the (\d+) (.+?) that state a figure (.*?)\.")
-CLAIM_LOW = re.compile(r"The lowest figure of the (\d+) (.+?) that state a figure (.*?)\.")
+# These must track scripts/build-writing-first.py::_pay_position exactly. They
+# fell out of step once already: the sentence was rephrased and every pattern
+# silently stopped matching, so the audit reported "0 rankings recomputed" and
+# 0 problems - a green run that checked nothing. The counts below are printed
+# for that reason; a drop to zero is a failure of the audit, not a success.
+CLAIM_HIGH = re.compile(r"The highest figure of the (\d+) (?:records .+?)\.")
+CLAIM_LOW = re.compile(r"The lowest figure of the (\d+) (?:records .+?)\.")
 CLAIM_SPLIT = re.compile(
-    r"(\d+) of the other (\d+) (.+?) that state a figure (.*?) state less, (\d+) state more"
+    r"Of the other (\d+) (?:records .+?), (\d+) state less, (\d+) state more"
     r"(?:, (\d+) state exactly this)?\.")
+# The floor-and-alone branch, which is also a cohort sentence: the record states
+# a figure and there is nothing on the desk to place it against.
+CLAIM_NONE = re.compile(r"BRYME records no other record .+? to compare this against\.")
+CLAIM_THIN = re.compile(r"BRYME records (\d+) other (?:records .+?) — too few to rank")
 # group 1 is the ` gap` class, group 2 the row. `findall` on a pattern whose
 # only group was the class silently returned the class instead of the row, so
 # every gap row read as answered - keep the marker as its own group.
@@ -227,13 +250,26 @@ def main() -> int:
             claim = CLAIM_SPLIT.search(flat)
             if claim:
                 claims_checked += 1
-                c_lower, c_others, c_higher = int(claim.group(1)), int(claim.group(2)), int(claim.group(5))
-                c_same = int(claim.group(6) or 0)
+                c_others, c_lower, c_higher = int(claim.group(1)), int(claim.group(2)), int(claim.group(3))
+                c_same = int(claim.group(4) or 0)
                 if (c_lower, c_others, c_higher, c_same) != (lower, len(others), higher, same):
-                    fail(slug, f"published ({c_lower},{c_others},{c_higher},{c_same}) but the "
-                               f"dataset computes ({lower},{len(others)},{higher},{same})")
+                    fail(slug, f"published others={c_others} lower={c_lower} higher={c_higher} "
+                               f"same={c_same} but the dataset computes others={len(others)} "
+                               f"lower={lower} higher={higher} same={same}")
                 if c_lower + c_higher + c_same != c_others:
                     fail(slug, "split claim does not add up to the cohort it names")
+            # A thin-cohort record must not ALSO be carrying a ranking sentence,
+            # and the peer count it names has to be the cohort's real size.
+            thin = CLAIM_THIN.search(flat)
+            if thin:
+                if int(thin.group(1)) != len(others):
+                    fail(slug, f'thin-cohort line names {thin.group(1)} peers, cohort has {len(others)}')
+                if CLAIM_HIGH.search(flat) or CLAIM_LOW.search(flat) or CLAIM_SPLIT.search(flat):
+                    fail(slug, "published a ranking inside the too-thin-to-rank branch")
+            claimed = bool(claim or thin or CLAIM_NONE.search(flat)
+                           or CLAIM_HIGH.search(flat) or CLAIM_LOW.search(flat))
+            if not claimed and amount and pay.get("currency"):
+                fail(slug, "states a figure but publishes no cohort sentence at all")
             ranked = bool(CLAIM_HIGH.search(flat) or CLAIM_LOW.search(flat) or CLAIM_SPLIT.search(flat))
             if ranked and len(cohort) < PAY_COHORT_MIN:
                 fail(slug, f"ranked against a cohort of {len(cohort)}, below the {PAY_COHORT_MIN} floor")
