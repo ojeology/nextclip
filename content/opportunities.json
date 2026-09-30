@@ -21005,6 +21005,736 @@
         "1000 words",
         "restricted eligibility"
       ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-30",
+      "publishedAt": "2026-09-30",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "river-teeth",
+      "slug": "river-teeth",
+      "publication": "River Teeth: A Journal of Nonfiction Narrative",
+      "title": "Nonfiction narrative and reviews",
+      "seoTitle": "River Teeth: $100 plus two issues and a year's subscription",
+      "excerpt": "River Teeth pays $100 for published work, plus two complimentary issues, a one-year subscription, and the option to buy further copies at a discounted contributor's rate. It takes submissions through Submittable with a $3 processing fee, asks for one piece at a time, and does not accept work created with the assistance of generative AI.",
+      "officialUrl": "https://riverteethjournal.com/submission-guidelines/",
+      "applyUrl": "https://riverteethjournal.com/submission-guidelines/",
+      "applyEmail": null,
+      "applyMethod": "Submittable — $3 processing fee",
+      "sources": [
+        {
+          "name": "River Teeth — Submission Guidelines (official)",
+          "url": "https://riverteethjournal.com/submission-guidelines/"
+        }
+      ],
+      "eligibility": {
+        "summary": "No stated country restriction on the guidelines page.",
+        "mode": "not-stated",
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": true
+      },
+      "writingTypes": [
+        "creative-nonfiction",
+        "reviews",
+        "essays"
+      ],
+      "writingTypeLabel": "Nonfiction narrative and reviews",
+      "pay": {
+        "currency": "USD",
+        "amountMin": 100,
+        "amountMax": 100,
+        "display": "$100, plus two complimentary issues, a one-year subscription and discounted further copies",
+        "conditions": "Official submission guidelines: if published, the writer receives $100, two complimentary issues of the journal, a one-year subscription, and the option to purchase additional copies at a discounted contributor's rate. Submissions carry a $3 processing fee.",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "min": 1000,
+        "max": 1200,
+        "display": "Reviews 1,000–1,200 words; no limit stated for nonfiction narrative"
+      },
+      "response": {
+        "label": "Three to six months",
+        "band": "3-plus-months",
+        "official": true
+      },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "prohibited",
+      "whatTheyWant": [
+        "Nonfiction narrative.",
+        "Reviews, in the neighbourhood of 1,000 to 1,200 words.",
+        "One piece at a time — the journal asks you to submit one beautiful thing at a time."
+      ],
+      "whatTheyDontWant": [
+        "Submissions created with the assistance of generative AI.",
+        "Multiple simultaneous submissions."
+      ],
+      "requirements": [
+        "Submit through Submittable with the $3 processing fee.",
+        "Send one piece at a time.",
+        "Keep reviews to about 1,000 to 1,200 words.",
+        "Allow three to six months, though the team says it works to return submissions sooner while giving each a fair read."
+      ],
+      "rights": "Not stated in detail on the guidelines page.",
+      "howToSubmit": [
+        "Read https://riverteethjournal.com/submission-guidelines/ before sending.",
+        "The $3 fee is per submission, so send your best single piece.",
+        "Reviews have their own length band — do not send a narrative at review length."
+      ],
+      "keywords": [
+        "river teeth",
+        "nonfiction narrative",
+        "reviews",
+        "$100",
+        "submittable",
+        "$3 fee",
+        "1000-1200 words",
+        "no generative ai"
+      ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-30",
+      "publishedAt": "2026-09-30",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "the-baltimore-review",
+      "slug": "the-baltimore-review",
+      "publication": "The Baltimore Review",
+      "title": "Poetry, short fiction and creative nonfiction",
+      "seoTitle": "The Baltimore Review: $75, rights revert, no AI at all",
+      "excerpt": "The Baltimore Review pays $75 for non-contest work — as an Amazon gift certificate, or through PayPal if preferred — plus a copy of the annual print compilation in which the work appears. It does not accept work generated in whole or in part by AI, declines prose over 5,000 words, and notifies you within four months. All rights revert to the author.",
+      "officialUrl": "https://baltimorereview.org/submit",
+      "applyUrl": "https://baltimorereview.org/submit",
+      "applyEmail": null,
+      "applyMethod": "Submittable only — no email or post",
+      "sources": [
+        {
+          "name": "The Baltimore Review — Submit (official)",
+          "url": "https://baltimorereview.org/submit"
+        }
+      ],
+      "eligibility": {
+        "summary": "No stated country restriction on the guidelines page.",
+        "mode": "not-stated",
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": true
+      },
+      "writingTypes": [
+        "poetry",
+        "fiction",
+        "creative-nonfiction"
+      ],
+      "writingTypeLabel": "Poetry, short fiction and creative nonfiction",
+      "pay": {
+        "currency": "USD",
+        "amountMin": 75,
+        "amountMax": 75,
+        "display": "$75 as an Amazon gift certificate or via PayPal, plus a copy of the annual print compilation",
+        "conditions": "Official submit page: payment for non-contest submissions is $75 via Amazon gift certificate, or $75 through PayPal if preferred, as well as a copy of the annual print compilation in which the author's work appears. Contest submissions carry a separate $8 fee, and contest prizes are not recorded here as a market rate.",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "min": null,
+        "max": 5000,
+        "display": "Prose up to 5,000 words; no more than three poems"
+      },
+      "response": {
+        "label": "Within four months",
+        "band": "3-plus-months",
+        "official": true
+      },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "prohibited",
+      "whatTheyWant": [
+        "Poetry, short fiction and creative nonfiction, selected from the Submittable queue on merit and the needs of the journal.",
+        "Submissions in more than one category."
+      ],
+      "whatTheyDontWant": [
+        "Work generated in whole or in part by artificial intelligence. The review states it wants to provide a space for human expression and believes human voices and ideas are powerful.",
+        "Prose exceeding 5,000 words.",
+        "More than three poems in a submission.",
+        "A book review, or other work that is clearly not creative nonfiction.",
+        "Multiple submissions during one submission period.",
+        "Emailed submissions or submissions sent by post — neither is considered."
+      ],
+      "requirements": [
+        "Submit through Submittable. Email and postal submissions are not considered.",
+        "Keep prose under 5,000 words and send at most three poems.",
+        "Submit once per category per reading period.",
+        "Expect a decision within four months.",
+        "Confirm in the agreement that you are the sole author and own all rights to your work."
+      ],
+      "rights": "All rights revert to the author after publication. In the agreement for accepted work, authors must confirm they are the sole author and own all rights to their work.",
+      "howToSubmit": [
+        "Read https://baltimorereview.org/submit before sending.",
+        "The $75 applies to non-contest work — the $8 fee is for contests.",
+        "Submittable is the only route in."
+      ],
+      "keywords": [
+        "the baltimore review",
+        "poetry",
+        "short fiction",
+        "creative nonfiction",
+        "$75",
+        "paypal",
+        "amazon gift certificate",
+        "submittable",
+        "rights revert",
+        "no ai"
+      ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-30",
+      "publishedAt": "2026-09-30",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "cholla-needles",
+      "slug": "cholla-needles",
+      "publication": "Cholla Needles",
+      "title": "Poetry, stories and essays",
+      "seoTitle": "Cholla Needles: two copies, copyright returns on publication",
+      "excerpt": "Cholla Needles pays two copies of the printed magazine to US authors. Poets send six to twelve original poems by email, in the body or as an attachment. Stories and essays run to approximately 3,000 words, and copyright returns to the original author upon publication.",
+      "officialUrl": "https://www.chollaneedles.com/p/submissions.html",
+      "applyUrl": "https://www.chollaneedles.com/p/submissions.html",
+      "applyEmail": "editor@chollaneedles.com",
+      "applyMethod": "Email — poems in the body or attached",
+      "sources": [
+        {
+          "name": "Cholla Needles — Submissions (official)",
+          "url": "https://www.chollaneedles.com/p/submissions.html"
+        }
+      ],
+      "eligibility": {
+        "summary": "No stated country restriction on the guidelines page.",
+        "mode": "not-stated",
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": true
+      },
+      "writingTypes": [
+        "poetry",
+        "fiction",
+        "essays"
+      ],
+      "writingTypeLabel": "Poetry, stories and essays",
+      "pay": {
+        "currency": null,
+        "amountMin": null,
+        "amountMax": null,
+        "display": "Two copies of the printed magazine, to US authors",
+        "conditions": "Official submissions page: payment is two copies of the printed magazine to US authors. BRYME records no currency amount because the magazine states its compensation in copies, not money. Authors outside the US are not covered by the stated payment terms.",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "min": null,
+        "max": 3000,
+        "display": "Stories and essays approx 3,000 words; 6–12 poems; online essays any length"
+      },
+      "response": {
+        "label": "Not stated",
+        "band": "not-stated",
+        "official": false
+      },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "not-stated",
+      "whatTheyWant": [
+        "Six to twelve original poems.",
+        "Stories and essays of approximately 3,000 words.",
+        "Online essays, which can be any length."
+      ],
+      "whatTheyDontWant": [
+        "Fewer than six or more than twelve poems.",
+        "Previously published work presented as original."
+      ],
+      "requirements": [
+        "Email editor@chollaneedles.com with six to twelve original poems.",
+        "Poems may go in the body of the email or be attached.",
+        "Keep stories and essays to roughly 3,000 words."
+      ],
+      "rights": "Copyright returns to the original author upon publication.",
+      "howToSubmit": [
+        "Read https://www.chollaneedles.com/p/submissions.html before sending.",
+        "The six-to-twelve poem range is a requirement, not a suggestion.",
+        "Payment is in copies and is specified for US authors."
+      ],
+      "keywords": [
+        "cholla needles",
+        "poetry",
+        "stories",
+        "essays",
+        "two copies",
+        "6-12 poems",
+        "3000 words",
+        "copyright returns"
+      ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-30",
+      "publishedAt": "2026-09-30",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "lowestoft-chronicle",
+      "slug": "lowestoft-chronicle",
+      "publication": "Lowestoft Chronicle",
+      "title": "Fiction, creative nonfiction and poetry",
+      "seoTitle": "Lowestoft Chronicle: unpaid, 3,000 words, rights revert after 30 days",
+      "excerpt": "Lowestoft Chronicle states plainly that it cannot pay contributors at present. It takes fiction of any genre up to 3,000 words, warns that submissions under 100 words are likely too slight unless they are poetry, and assumes first publication rights for 30 days before all rights revert. Allow 30 days for a reply.",
+      "officialUrl": "https://lowestoftchronicle.com/submissions/",
+      "applyUrl": "https://lowestoftchronicle.com/submissions/",
+      "applyEmail": null,
+      "applyMethod": "Email — plain text in the body, or attached",
+      "sources": [
+        {
+          "name": "Lowestoft Chronicle — Submissions (official)",
+          "url": "https://lowestoftchronicle.com/submissions/"
+        }
+      ],
+      "eligibility": {
+        "summary": "No stated country restriction on the guidelines page.",
+        "mode": "not-stated",
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": true
+      },
+      "writingTypes": [
+        "fiction",
+        "creative-nonfiction",
+        "poetry"
+      ],
+      "writingTypeLabel": "Fiction, creative nonfiction and poetry",
+      "pay": {
+        "currency": null,
+        "amountMin": null,
+        "amountMax": null,
+        "display": "Unpaid — the journal states it cannot provide payment at present",
+        "conditions": "Official submissions page: Lowestoft Chronicle states that at present it cannot provide payment to contributors, giving an elaborate and humorous reason involving its bank manager claiming dibs on all profits. BRYME records no figure because there is none.",
+        "timing": "Not applicable — unpaid"
+      },
+      "wordCount": {
+        "min": null,
+        "max": 3000,
+        "display": "Fiction of any genre up to 3,000 words; under 100 words likely too slight unless poetry"
+      },
+      "response": {
+        "label": "Allow 30 days for a reply",
+        "band": "2-4-weeks",
+        "official": true
+      },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "not-stated",
+      "whatTheyWant": [
+        "Fiction of any genre, up to 3,000 words.",
+        "Creative nonfiction.",
+        "Poetry in all forms — but only one or two of your very best poems per reading period.",
+        "Work that is not too slight. Under 100 words will likely be rejected unless it is poetry."
+      ],
+      "whatTheyDontWant": [
+        "Submissions under 100 words that are not poetry — likely rejected as too slight.",
+        "More than one or two poems per reading period.",
+        "Work generated by AI is not addressed: the submissions page states no AI policy at all, so nothing is promised either way."
+      ],
+      "requirements": [
+        "Email your work as plain text in the body of an email, or as an attachment.",
+        "Include your name, your pseudonym if you use one, the title of your work, and a brief bio.",
+        "Keep fiction to 3,000 words.",
+        "Allow 30 days for a reply."
+      ],
+      "rights": "Upon acceptance, Lowestoft Chronicle assumes first publication rights for 30 days from publication, after which all rights revert back to the author.",
+      "howToSubmit": [
+        "Read https://lowestoftchronicle.com/submissions/ before sending.",
+        "Send plain text in the email body if you can — it is the first option offered.",
+        "Unpaid; submit for the publication and the 30-day reversion."
+      ],
+      "keywords": [
+        "lowestoft chronicle",
+        "fiction",
+        "creative nonfiction",
+        "poetry",
+        "unpaid",
+        "3000 words",
+        "first publication rights 30 days",
+        "100 words minimum"
+      ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-30",
+      "publishedAt": "2026-09-30",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "blank-spaces",
+      "slug": "blank-spaces",
+      "publication": "Blank Spaces",
+      "title": "Flash fiction and longer fiction",
+      "seoTitle": "Blank Spaces: flash under 1,000 words, fiction features to 3,500",
+      "excerpt": "Blank Spaces takes flash fiction of any topic and genre under 1,000 words, and fiction features up to 3,500 words. Submissions carry a fee of $6 for a fiction feature or $3 for everything else outside free submission months, and are not opened until payment clears. It publishes no contributor rate; contributors are instead invited to buy print copies at a discount.",
+      "officialUrl": "https://www.blankspaces.ca/submit",
+      "applyUrl": "https://www.blankspaces.ca/submit",
+      "applyEmail": null,
+      "applyMethod": "Submittable-style portal",
+      "sources": [
+        {
+          "name": "Blank Spaces — Submit (official)",
+          "url": "https://www.blankspaces.ca/submit"
+        }
+      ],
+      "eligibility": {
+        "summary": "No stated country restriction on the guidelines page.",
+        "mode": "not-stated",
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": true
+      },
+      "writingTypes": [
+        "fiction"
+      ],
+      "writingTypeLabel": "Flash fiction and longer fiction",
+      "pay": {
+        "currency": null,
+        "amountMin": null,
+        "amountMax": null,
+        "display": "No contributor rate published; submissions carry a fee",
+        "conditions": "The official submit page states no payment to contributors. The money runs the other way: $6 for a fiction feature or $3 for everything else, charged outside free submission months, and submissions are not opened until payment has cleared. Contributors are invited to purchase print copies at a discounted rate. BRYME records no contributor amount because none is published, and does not record the fee as payment.",
+        "timing": "Not applicable — no published contributor rate"
+      },
+      "wordCount": {
+        "min": null,
+        "max": 3500,
+        "display": "Flash fiction under 1,000 words; fiction features up to 3,500 words"
+      },
+      "response": {
+        "label": "Not stated; you will hear back only if they publish your piece",
+        "band": "not-stated",
+        "official": true
+      },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "not-stated",
+      "whatTheyWant": [
+        "Flash fiction — any topic, any genre, under 1,000 words.",
+        "Fiction features — longer fiction, any topic, any genre, up to 3,500 words.",
+        "Multiple submissions, each in its own separate submission package."
+      ],
+      "whatTheyDontWant": [
+        "Expecting a rejection notice. Blank Spaces says it will contact you if it decides to publish your piece, and asks you not to email asking whether your submission has been read or accepted.",
+        "Combining multiple submissions into one package — each is charged separately."
+      ],
+      "requirements": [
+        "Choose the right tier: under 1,000 words is flash fiction, up to 3,500 is a fiction feature.",
+        "Pay the submission fee unless a free submission month is running — $6 for a fiction feature, $3 for everything else.",
+        "Do not pay until you are ready to send; submissions are not opened until payment clears.",
+        "Send multiple submissions in separate packages."
+      ],
+      "rights": "Not stated on the official submit page.",
+      "howToSubmit": [
+        "Read https://www.blankspaces.ca/submit before sending.",
+        "The fee is to submit, not a charge against payment — there is no published contributor rate.",
+        "Do not email about status; only accepted writers are contacted."
+      ],
+      "keywords": [
+        "blank spaces",
+        "flash fiction",
+        "fiction feature",
+        "1000 words",
+        "3500 words",
+        "submission fee",
+        "no contributor rate"
+      ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-30",
+      "publishedAt": "2026-09-30",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "milk-press",
+      "slug": "milk-press",
+      "publication": "Milk Press",
+      "title": "Poetry and hybrid work",
+      "seoTitle": "Milk Press: no AI-derived work either, rights revert on publication",
+      "excerpt": "Milk Press, run by the Poetry Society of New York, will not consider AI-generated work, or work that has been derived from or partially composed by AI. All submissions go through the Society's Submittable page with a $5 reading fee that funds its free and accessible programmes. On publication, all rights revert to the contributor.",
+      "officialUrl": "https://poetrysocietyny.org/milk-press-guidelines",
+      "applyUrl": "https://poetrysocietyny.org/milk-press-guidelines",
+      "applyEmail": null,
+      "applyMethod": "Submittable — $5 reading fee",
+      "sources": [
+        {
+          "name": "Milk Press — Guidelines (official)",
+          "url": "https://poetrysocietyny.org/milk-press-guidelines"
+        }
+      ],
+      "eligibility": {
+        "summary": "No stated country restriction on the guidelines page.",
+        "mode": "not-stated",
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": true
+      },
+      "writingTypes": [
+        "poetry"
+      ],
+      "writingTypeLabel": "Poetry and hybrid work",
+      "pay": {
+        "currency": null,
+        "amountMin": null,
+        "amountMax": null,
+        "display": "No contributor rate published; $5 reading fee applies",
+        "conditions": "The guidelines publish no payment rate. The $5 reading fee is charged to submitters and is put towards the free and accessible programmes the Poetry Society of New York offers. BRYME records no contributor amount because none is published.",
+        "timing": "Not applicable — no published contributor rate"
+      },
+      "wordCount": {
+        "min": null,
+        "max": null,
+        "display": "No length limit stated on the guidelines page"
+      },
+      "response": {
+        "label": "Not stated",
+        "band": "not-stated",
+        "official": false
+      },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "prohibited",
+      "whatTheyWant": [
+        "Poetry and hybrid work.",
+        "Work composed entirely by a human — the only kind considered."
+      ],
+      "whatTheyDontWant": [
+        "AI-generated work.",
+        "Work derived from, or partially composed by, AI. The ban reaches past drafting into derivation and partial composition."
+      ],
+      "requirements": [
+        "Submit through the Poetry Society of New York's Submittable page.",
+        "Pay the $5 reading fee, which funds the Society's free programmes.",
+        "Ensure nothing in your work was derived from or partially composed by AI."
+      ],
+      "rights": "Upon publication, all rights revert back to the contributor.",
+      "howToSubmit": [
+        "Read https://poetrysocietyny.org/milk-press-guidelines before sending.",
+        "The AI ban covers derivation and partial composition, not just drafting — that is broader than most.",
+        "Rights revert on publication."
+      ],
+      "keywords": [
+        "milk press",
+        "poetry society of new york",
+        "poetry",
+        "hybrid",
+        "$5 reading fee",
+        "submittable",
+        "rights revert",
+        "no ai derived"
+      ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-30",
+      "publishedAt": "2026-09-30",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "literary-veganism",
+      "slug": "literary-veganism",
+      "publication": "Literary Veganism: An Online Journal",
+      "title": "Poetry, fiction and creative nonfiction",
+      "seoTitle": "Literary Veganism: pitch first, prose preferably well under 3,000 words",
+      "excerpt": "Literary Veganism is an online journal looking for original, not AI-generated poetry, fiction and perhaps creative nonfiction. It prefers shorter prose of no more than 3,000 words and much less where possible, since that is easier to read online. It asks writers to make contact first: unsolicited attachments are never opened and suspicious emails are deleted.",
+      "officialUrl": "https://www.litvegan.net/p/submissions.html",
+      "applyUrl": "https://www.litvegan.net/p/submissions.html",
+      "applyEmail": null,
+      "applyMethod": "Pitch by email first — no unsolicited attachments",
+      "sources": [
+        {
+          "name": "Literary Veganism — Submissions (official)",
+          "url": "https://www.litvegan.net/p/submissions.html"
+        }
+      ],
+      "eligibility": {
+        "summary": "No stated country restriction on the guidelines page.",
+        "mode": "not-stated",
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": true
+      },
+      "writingTypes": [
+        "poetry",
+        "fiction",
+        "creative-nonfiction"
+      ],
+      "writingTypeLabel": "Poetry, fiction and creative nonfiction",
+      "pay": {
+        "currency": null,
+        "amountMin": null,
+        "amountMax": null,
+        "display": "Not stated on the public submissions page",
+        "conditions": "The public submissions page sets out the pitch-first route, the prose length preference and the AI position but publishes no payment rate, so BRYME records no figure.",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "min": null,
+        "max": 3000,
+        "display": "Prose preferably shorter, no more than 3,000 words and much less if possible"
+      },
+      "response": {
+        "label": "Not stated",
+        "band": "not-stated",
+        "official": false
+      },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "prohibited",
+      "whatTheyWant": [
+        "Original poetry, fiction and perhaps creative nonfiction.",
+        "Shorter prose — no more than 3,000 words, and much less if possible, since it is easier for online reading.",
+        "Work with a vegan or animal-ethics thread, which is the journal's subject."
+      ],
+      "whatTheyDontWant": [
+        "AI-generated work.",
+        "Unsolicited attachments — they are never opened and are automatically deleted.",
+        "Suspicious emails, which are deleted."
+      ],
+      "requirements": [
+        "Write first and pitch. The journal prefers to hear from you before you send anything.",
+        "Do not attach unsolicited files.",
+        "Put Lit Vegan in the subject line.",
+        "Keep prose well under 3,000 words if you can."
+      ],
+      "rights": "Not stated on the public submissions page; the journal raises copyright only to say it will address any question about it.",
+      "howToSubmit": [
+        "Read https://www.litvegan.net/p/submissions.html before sending.",
+        "Pitch first — attaching a manuscript cold will get it deleted unread.",
+        "Shorter prose is explicitly preferred over longer."
+      ],
+      "keywords": [
+        "literary veganism",
+        "lit vegan",
+        "poetry",
+        "fiction",
+        "creative nonfiction",
+        "3000 words",
+        "pitch first",
+        "no ai",
+        "vegan"
+      ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-30",
+      "publishedAt": "2026-09-30",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "poetry-south",
+      "slug": "poetry-south",
+      "publication": "Poetry South",
+      "title": "Poetry",
+      "seoTitle": "Poetry South: no AI-assisted poetry, Southern writers given priority",
+      "excerpt": "Poetry South, published at Mississippi University for Women, does not consider AI-generated or AI-assisted poetry as the writer's original work. It pays particular attention to writers from the South — born, raised or living there — while holding that all poetry within its covers has a claim to the South because it is published there. Submissions go through Submittable.",
+      "officialUrl": "https://www.muw.edu/poetrysouth/submit/",
+      "applyUrl": "https://www.muw.edu/poetrysouth/submit/",
+      "applyEmail": "poetrysouth01@gmail.com",
+      "applyMethod": "Submittable — email for queries only",
+      "sources": [
+        {
+          "name": "Poetry South — Submit (official)",
+          "url": "https://www.muw.edu/poetrysouth/submit/"
+        }
+      ],
+      "eligibility": {
+        "summary": "Open to all poets, with stated priority for writers from the South. Poetry South says it pays particular attention to writers from the South — born, raised, or living there — while holding that all poetry within its covers has a claim to the South because it is published there. BRYME records this as an editorial emphasis rather than a restriction, because the magazine does not exclude writers from elsewhere.",
+        "mode": "not-stated",
+        "includesRegions": [
+          "the American South"
+        ],
+        "allowsDiaspora": true,
+        "notStated": true
+      },
+      "writingTypes": [
+        "poetry"
+      ],
+      "writingTypeLabel": "Poetry",
+      "pay": {
+        "currency": null,
+        "amountMin": null,
+        "amountMax": null,
+        "display": "Not stated on the public submit page",
+        "conditions": "The public submit page sets out the submission route, the AI position and the editorial emphasis on Southern writers but publishes no payment rate, so BRYME records no figure.",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "min": null,
+        "max": null,
+        "display": "Submit a file of poems; individual poems can be withdrawn via a Submittable message"
+      },
+      "response": {
+        "label": "Not stated; longer if submitted after the issue deadline",
+        "band": "not-stated",
+        "official": true
+      },
+      "submissionStatus": "open",
+      "deadline": {
+        "date": null,
+        "display": "Submissions made after the stated date are considered for the following year's issue, though response times may be longer.",
+        "recurring": true
+      },
+      "aiPolicy": "prohibited",
+      "whatTheyWant": [
+        "Poetry. The magazine pays particular attention to writers from the South — born, raised or living there."
+      ],
+      "whatTheyDontWant": [
+        "AI-generated or AI-assisted poetry. Neither is considered the writer's original work.",
+        "Resubmitting to the current issue after a decline, or while your submission is still unread."
+      ],
+      "requirements": [
+        "Submit through Submittable.",
+        "Send a file of poems — the page describes withdrawing one or two poems from a file of four via a Submittable message.",
+        "Email poetrysouth01@gmail.com for queries only.",
+        "If you must withdraw, you may resubmit new poems, but not to the current issue."
+      ],
+      "rights": "Not stated on the public submit page.",
+      "howToSubmit": [
+        "Read https://www.muw.edu/poetrysouth/submit/ before sending.",
+        "AI assistance disqualifies work as original here, not just AI drafting.",
+        "Being from the South helps but is not required."
+      ],
+      "keywords": [
+        "poetry south",
+        "mississippi university for women",
+        "poetry",
+        "southern writers",
+        "submittable",
+        "no ai-assisted"
+      ]
     }
   ]
 }
