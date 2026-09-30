@@ -13261,6 +13261,841 @@
         "micro fiction",
         "$2 fee"
       ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-30",
+      "publishedAt": "2026-09-30",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "balkan-insight",
+      "slug": "balkan-insight",
+      "publication": "Balkan Insight / Reporting Democracy",
+      "title": "Commentary, features, news analysis, interviews and investigations",
+      "seoTitle": "Balkan Insight: €100 for a commentary piece, grants to €5,000",
+      "excerpt": "Balkan Insight's Reporting Democracy pays a standard rate of 100 euros for a commentary piece and competitive rates for features, news analysis, interviews, videos and investigations on democracy in Central, Eastern and Southeastern Europe. Most analyses, features and interviews run 800 to 1,200 words. A limited number of grants of up to 5,000 euros are available to teams or individuals.",
+      "officialUrl": "https://balkaninsight.com/reporting-democracy/contribute/",
+      "applyUrl": "https://balkaninsight.com/reporting-democracy/contribute/",
+      "applyEmail": null,
+      "applyMethod": "Email pitch — see the contribute page for the addresses",
+      "sources": [
+        {
+          "name": "Balkan Insight / Reporting Democracy — Contribute (official)",
+          "url": "https://balkaninsight.com/reporting-democracy/contribute/"
+        }
+      ],
+      "eligibility": {
+        "summary": "No stated country restriction on contributors. The coverage focus is a named list of countries: Albania, Bosnia and Herzegovina, Bulgaria, Croatia, Czech Republic, Hungary, Kosovo, Moldova, Montenegro, North Macedonia, Poland, Serbia, Romania and Slovakia.",
+        "mode": "not-stated",
+        "includesRegions": [
+          "europe"
+        ],
+        "allowsDiaspora": true,
+        "notStated": true
+      },
+      "writingTypes": [
+        "opinion",
+        "analysis",
+        "journalism",
+        "interviews"
+      ],
+      "writingTypeLabel": "Commentary, features, news analysis, interviews, videos and investigations",
+      "pay": {
+        "currency": "EUR",
+        "amountMin": 100,
+        "amountMax": 100,
+        "display": "€100 standard for a commentary piece; competitive rates for features",
+        "conditions": "Official contribute page: the standard rate for a commentary piece is 100 euros. Reporting Democracy separately pays competitive rates for feature stories, news analysis, interviews, videos and investigations, but publishes no figure for those, so BRYME records only the one stated rate. A limited number of grants of up to 5,000 euros are available for teams or individuals.",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "min": 800,
+        "max": 1200,
+        "display": "Most analyses, features and interviews run 800–1,200 words"
+      },
+      "response": {
+        "label": "Not stated",
+        "band": "not-stated",
+        "official": false
+      },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "not-stated",
+      "whatTheyWant": [
+        "Work on issues affecting the state of democracy in Central, Eastern and Southeastern Europe.",
+        "A pitch that summarises the story idea in three or four paragraphs and clearly explains why the proposed piece is important.",
+        "Commentary, features, news analysis, interviews, video and investigations."
+      ],
+      "whatTheyDontWant": [
+        "The contribute page does not publish a list of exclusions. Note that the length of a commissioned piece is outlined when it is commissioned, so do not assume 800–1,200 words applies to your pitch."
+      ],
+      "requirements": [
+        "Email your pitch to the address on the contribute page — the page renders addresses through Cloudflare email protection, so read them there rather than copying from a summary.",
+        "Op-ed proposals go to a separate address from story pitches; the page lists both.",
+        "Summarise the idea in three or four paragraphs and say why it matters.",
+        "Expect to work one-on-one with an editor, often by email or Skype.",
+        "If you need reporting funding, ask about the grants of up to 5,000 euros."
+      ],
+      "rights": "Not stated on the official contribute page.",
+      "howToSubmit": [
+        "Read https://balkaninsight.com/reporting-democracy/contribute/ for the two addresses and the grant terms.",
+        "Check that your country is on the focus list before pitching a domestic story.",
+        "Pitch a story, not a topic — and say why it matters now."
+      ],
+      "keywords": [
+        "balkan insight",
+        "reporting democracy",
+        "europe",
+        "democracy",
+        "commentary",
+        "investigation",
+        "eur",
+        "grant"
+      ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-30",
+      "publishedAt": "2026-09-30",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "boston-review",
+      "slug": "boston-review",
+      "publication": "Boston Review",
+      "title": "Long-form essays on politics and ideas",
+      "seoTitle": "Boston Review: around $500 for web essays of 2,500–5,000 words",
+      "excerpt": "Boston Review publishes long-form essays on politics and ideas, book review essays, interviews, in-depth analysis of current affairs and occasional reporting. Most essays run 2,500 to 5,000 words and all go through intensive editing. For web pieces it typically pays around $500 depending on length, for writers whose main source of income is their writing; other writers are offered a modest honorarium.",
+      "officialUrl": "https://www.bostonreview.net/about/submissions/",
+      "applyUrl": "https://www.bostonreview.net/about/submissions/",
+      "applyEmail": null,
+      "applyMethod": "Submittable — no email submissions",
+      "sources": [
+        {
+          "name": "Boston Review — Submissions (official)",
+          "url": "https://www.bostonreview.net/about/submissions/"
+        }
+      ],
+      "eligibility": {
+        "summary": "No stated country restriction. The pay terms distinguish writers by whether writing is their main source of income, not by where they live.",
+        "mode": "not-stated",
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": true
+      },
+      "writingTypes": [
+        "essays",
+        "reviews",
+        "interviews",
+        "analysis"
+      ],
+      "writingTypeLabel": "Long-form essays, book review essays, interviews, analysis and occasional reporting",
+      "pay": {
+        "currency": "USD",
+        "amountMin": 500,
+        "amountMax": 500,
+        "display": "Around $500 for web pieces; modest honorarium for other writers",
+        "conditions": "Official submissions page: for web pieces Boston Review typically pays around $500, depending on length, for writers whose main source of income derives from their writing. For all other writers it can offer a modest honorarium, but states no figure. BRYME records the stated web rate; the honorarium for other writers is undefined on the page.",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "min": 2500,
+        "max": 5000,
+        "display": "Most essays run 2,500–5,000 words"
+      },
+      "response": {
+        "label": "Not stated",
+        "band": "not-stated",
+        "official": false
+      },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "not-stated",
+      "whatTheyWant": [
+        "Long-form essays on politics and ideas, feature book review essays, interviews, in-depth analysis of current affairs, and occasional reporting.",
+        "A special interest in democracy, inequality and matters of injustice — including war, poverty and violations of human rights.",
+        "Submissions on any subject of broad public concern, not only the priority themes.",
+        "Work that can survive intensive editing; every essay goes through it."
+      ],
+      "whatTheyDontWant": [
+        "The submissions page does not publish a list of exclusions. Note that the special interest in democracy, inequality and injustice describes priority, not a boundary."
+      ],
+      "requirements": [
+        "Submit through the Submittable portal linked from the submissions page.",
+        "Do not email submissions — the portal is the only route.",
+        "Expect intensive editing; the page says all essays go through it.",
+        "Be ready to say whether writing is your main source of income, since the rate depends on it."
+      ],
+      "rights": "Not stated on the official submissions page.",
+      "howToSubmit": [
+        "Read https://www.bostonreview.net/about/submissions/ and use the Submittable link.",
+        "Pitch long. Most essays are 2,500–5,000 words and a short piece is unlikely to fit.",
+        "Tell them about your income situation up front — it determines whether you are offered the $500 web rate or the honorarium."
+      ],
+      "keywords": [
+        "boston review",
+        "essays",
+        "politics",
+        "ideas",
+        "book review",
+        "$500",
+        "submittable"
+      ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-30",
+      "publishedAt": "2026-09-30",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "east-asia-forum",
+      "slug": "east-asia-forum",
+      "publication": "East Asia Forum",
+      "title": "Analytic op-eds on East Asian economics and politics",
+      "seoTitle": "East Asia Forum: ~800-word op-eds, double-blind peer review",
+      "excerpt": "East Asia Forum invites original analytic op-eds of around 800 words, accessible to a general audience and written in crisp, clear language. Every original submission goes through double-blind peer review, so it will not match the mainstream press for speed. It does not publish submissions where the substance of the argument or analysis is generated by AI, but AI may be used for research and clarity provided it is disclosed.",
+      "officialUrl": "https://eastasiaforum.org/submissions/",
+      "applyUrl": "https://eastasiaforum.org/submissions/",
+      "applyEmail": null,
+      "applyMethod": "Online submission — see submissions page",
+      "sources": [
+        {
+          "name": "East Asia Forum — Submissions (official)",
+          "url": "https://eastasiaforum.org/submissions/"
+        }
+      ],
+      "eligibility": {
+        "summary": "No stated country restriction. The page explicitly invites writers who are not completely confident in their English to submit, and describes a well-informed international readership.",
+        "mode": "not-stated",
+        "includesRegions": [
+          "east-asia"
+        ],
+        "allowsDiaspora": true,
+        "notStated": true
+      },
+      "writingTypes": [
+        "opinion",
+        "analysis"
+      ],
+      "writingTypeLabel": "Analytic op-eds",
+      "pay": {
+        "currency": null,
+        "amountMin": null,
+        "amountMax": null,
+        "display": "Not stated on the public submissions page",
+        "conditions": "The public submissions page sets out the format, the length and the peer-review process but publishes no rate, so BRYME records no figure. Ask about payment when you submit.",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "min": null,
+        "max": 800,
+        "display": "Around 800 words"
+      },
+      "response": {
+        "label": "Not stated; double-blind peer review means it is not fast",
+        "band": "not-stated",
+        "official": false
+      },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "disclosure-required",
+      "whatTheyWant": [
+        "An original analytic op-ed of around 800 words, accessible to a general audience.",
+        "Crisp, clear language.",
+        "An argument. The page is emphatic that the takeaway argument, not the facts and figures behind it, is what readers remember.",
+        "Writers who are not completely confident in their English — the page says plainly not to hesitate."
+      ],
+      "whatTheyDontWant": [
+        "Submissions in which the substance of the arguments or analysis is generated by AI. AI must not generate arguments, analysis or substantive content, including paragraphs, data, findings, citations or summaries of longer texts.",
+        "Undisclosed AI use. Authors must disclose any use of AI at the time of submission, and submissions that appear to rely on AI-generated content will be rejected.",
+        "Breaking-news reaction. The double-blind peer review process means EAF cannot match the mainstream press on pace."
+      ],
+      "requirements": [
+        "Submit through the route on https://eastasiaforum.org/submissions/.",
+        "Write to about 800 words and make a single clear argument.",
+        "Disclose any AI use at the time of submission.",
+        "Independently verify everything — the page warns that AI tools generate inaccurate and misleading information and holds the author responsible for accuracy."
+      ],
+      "rights": "Not stated on the official submissions page.",
+      "howToSubmit": [
+        "Read https://eastasiaforum.org/submissions/ — it carries the full AI policy, which is more nuanced than a flat ban.",
+        "Do not pitch breaking news.",
+        "Disclose AI use up front; the penalty for being caught relying on it is rejection."
+      ],
+      "keywords": [
+        "east asia forum",
+        "op-ed",
+        "analysis",
+        "east asia",
+        "800 words",
+        "peer review",
+        "ai disclosure"
+      ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-30",
+      "publishedAt": "2026-09-30",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "foreign-affairs",
+      "slug": "foreign-affairs",
+      "publication": "Foreign Affairs",
+      "title": "Analysis of international affairs and US foreign policy",
+      "seoTitle": "Foreign Affairs: rolling submissions, no AI-generated text",
+      "excerpt": "Foreign Affairs welcomes pitches and unsolicited manuscripts and considers them on a rolling basis rather than to a fixed editorial calendar. It assumes any piece submitted is offered exclusively, and requires authors to affirm that none of the text in their articles was generated by an artificial-intelligence tool. The page publishes no rate.",
+      "officialUrl": "https://www.foreignaffairs.com/submissions",
+      "applyUrl": "https://www.foreignaffairs.com/submissions",
+      "applyEmail": null,
+      "applyMethod": "Online submission — rolling",
+      "sources": [
+        {
+          "name": "Foreign Affairs — Submissions (official)",
+          "url": "https://www.foreignaffairs.com/submissions"
+        }
+      ],
+      "eligibility": {
+        "summary": "No stated country restriction. Foreign Affairs describes its standard as clear thinking by knowledgeable observers, written in English that can be read with ease by both professionals and a broad general audience.",
+        "mode": "not-stated",
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": true
+      },
+      "writingTypes": [
+        "analysis",
+        "essays",
+        "opinion"
+      ],
+      "writingTypeLabel": "International affairs analysis",
+      "pay": {
+        "currency": null,
+        "amountMin": null,
+        "amountMax": null,
+        "display": "Not stated on the public submissions page",
+        "conditions": "The public submissions page sets out the rolling process, the exclusivity assumption and the AI affirmation, but publishes no rate, so BRYME records no figure.",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "min": null,
+        "max": null,
+        "display": "Not stated on the submissions page"
+      },
+      "response": {
+        "label": "Not stated; considered on a rolling basis",
+        "band": "not-stated",
+        "official": false
+      },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "prohibited",
+      "whatTheyWant": [
+        "Clear thinking by knowledgeable observers on important issues.",
+        "English that can be read with ease and pleasure by both professionals and a broad general audience.",
+        "Pitches and unsolicited manuscripts alike — both are considered, on a rolling basis."
+      ],
+      "whatTheyDontWant": [
+        "Text generated by an artificial-intelligence tool. Authors are required to affirm that none of the text in their articles was AI-generated.",
+        "Simultaneous publication. Unless told otherwise, Foreign Affairs assumes any piece submitted is offered exclusively and that nothing accepted will be published elsewhere at the same time without its knowledge."
+      ],
+      "requirements": [
+        "Submit through https://www.foreignaffairs.com/submissions.",
+        "Be prepared to affirm that none of your text was AI-generated.",
+        "Do not submit elsewhere simultaneously unless you have told them.",
+        "There is no editorial calendar to time yourself against — submissions are considered as they arrive."
+      ],
+      "rights": "Not stated on the official submissions page.",
+      "howToSubmit": [
+        "Read https://www.foreignaffairs.com/submissions before you send.",
+        "Assume exclusivity is expected.",
+        "Do not pitch on a deadline; the process is rolling, not scheduled."
+      ],
+      "keywords": [
+        "foreign affairs",
+        "international affairs",
+        "foreign policy",
+        "analysis",
+        "rolling",
+        "no ai"
+      ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-30",
+      "publishedAt": "2026-09-30",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "dialogue-earth",
+      "slug": "dialogue-earth",
+      "publication": "Dialogue Earth (China Dialogue)",
+      "title": "Environmental journalism from local voices",
+      "seoTitle": "Dialogue Earth: 1,000–1,500 word environmental stories, 300-word pitches",
+      "excerpt": "Dialogue Earth, the independent non-profit behind China Dialogue, welcomes pitches for articles of 1,000 to 1,500 words from journalists and experts. Pitches are a brief outline of no more than 300 words, sent to a named editor. Fees for journalism are based on competitive market rates in the author's region; expert opinion pieces are not normally paid.",
+      "officialUrl": "https://dialogue.earth/en/pitch/",
+      "applyUrl": "https://dialogue.earth/en/pitch/",
+      "applyEmail": null,
+      "applyMethod": "Email pitch to a named editor",
+      "sources": [
+        {
+          "name": "Dialogue Earth — Pitch (official)",
+          "url": "https://dialogue.earth/en/pitch/"
+        }
+      ],
+      "eligibility": {
+        "summary": "Open worldwide, with regional commissioning. Dialogue Earth is commissioning content in English from creators based in Southeast Asia, South Asia and Africa, and in Spanish or Portuguese from creators in Latin America.",
+        "mode": "worldwide",
+        "includesRegions": [
+          "asia",
+          "africa",
+          "latin-america"
+        ],
+        "allowsDiaspora": true,
+        "notStated": false
+      },
+      "writingTypes": [
+        "journalism",
+        "analysis",
+        "opinion"
+      ],
+      "writingTypeLabel": "Environmental journalism, expert commentary and social video",
+      "pay": {
+        "currency": null,
+        "amountMin": null,
+        "amountMax": null,
+        "display": "Competitive market rates in the author's region — no figure published",
+        "conditions": "Official pitch page: fees for journalism are based on competitive market rates in the author's region, so the rate varies by where you are based and no single figure exists for BRYME to record. Expert opinion pieces are not normally paid. Agree the fee with your editor before you write.",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "min": 1000,
+        "max": 1500,
+        "display": "Articles of 1,000–1,500 words; pitch outline 300 words"
+      },
+      "response": {
+        "label": "Allow two weeks before following up",
+        "band": "2-4-weeks",
+        "official": true
+      },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "not-stated",
+      "whatTheyWant": [
+        "Articles of 1,000 to 1,500 words from journalists and experts.",
+        "A specific pitch for a story rather than a broad idea or a topic, in an outline of no more than 300 words.",
+        "Urban heat solutions, Indigenous environmental issues, and climate and energy justice reported from the ground — named as current priorities.",
+        "Suggestions for multimedia elements including photographs, illustrations and infographics.",
+        "Pitches for cross-publication, collaboration and partnership with other outlets.",
+        "Social video from independent creators in Southeast Asia, South Asia and Africa in English, or in Latin America in Spanish or Portuguese."
+      ],
+      "whatTheyDontWant": [
+        "Expectation of payment for expert opinion pieces. Dialogue Earth states it does not normally pay for them.",
+        "Broad ideas or topics in place of a specific story pitch."
+      ],
+      "requirements": [
+        "Send a brief outline of no more than 300 words to one of the editors listed on the pitch page.",
+        "Choose an editor from your region; if they are not the right person they will forward it.",
+        "Mark time-sensitive pitches in the subject line.",
+        "Allow two weeks before sending a follow-up."
+      ],
+      "rights": "Not stated on the official pitch page.",
+      "howToSubmit": [
+        "Read https://dialogue.earth/en/pitch/ and pick the right editor for your region.",
+        "Keep the outline under 300 words and make it a story, not a topic.",
+        "If you are pitching expert commentary, do not assume it will be paid."
+      ],
+      "keywords": [
+        "dialogue earth",
+        "china dialogue",
+        "environment",
+        "climate",
+        "journalism",
+        "global south",
+        "pitch"
+      ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-30",
+      "publishedAt": "2026-09-30",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "brittle-paper",
+      "slug": "brittle-paper",
+      "publication": "Brittle Paper",
+      "title": "African fiction, essays, commentary and book reviews",
+      "seoTitle": "Brittle Paper: fiction to 2,500 words, essays and reviews to 1,500",
+      "excerpt": "Brittle Paper, the magazine of African literature, takes fiction of no more than 2,500 words and book reviews, literary commentary, think pieces and essays of no more than 1,500 words. Writers retain copyright. The submissions page does not publish a payment rate.",
+      "officialUrl": "https://brittlepaper.com/submissions/",
+      "applyUrl": "mailto:brittlesubmissions@gmail.com",
+      "applyEmail": "brittlesubmissions@gmail.com",
+      "applyMethod": "Email submission",
+      "sources": [
+        {
+          "name": "Brittle Paper — Submissions (official)",
+          "url": "https://brittlepaper.com/submissions/"
+        }
+      ],
+      "eligibility": {
+        "summary": "No stated country restriction on the submissions page. The magazine's subject is African literature.",
+        "mode": "not-stated",
+        "includesRegions": [
+          "africa"
+        ],
+        "allowsDiaspora": true,
+        "notStated": true
+      },
+      "writingTypes": [
+        "fiction",
+        "reviews",
+        "essays",
+        "analysis"
+      ],
+      "writingTypeLabel": "Fiction, book reviews, literary commentary, think pieces and essays",
+      "pay": {
+        "currency": null,
+        "amountMin": null,
+        "amountMax": null,
+        "display": "Not stated on the submissions page",
+        "conditions": "The public submissions page sets out the word limits by format and the copyright position but publishes no payment rate, so BRYME records no figure. Ask about payment when you submit.",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "min": null,
+        "max": 2500,
+        "display": "Fiction up to 2,500 words; reviews, commentary and essays up to 1,500"
+      },
+      "response": {
+        "label": "Not stated; rejection emails are not sent",
+        "band": "not-stated",
+        "official": false
+      },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "not-stated",
+      "whatTheyWant": [
+        "Fiction of no more than 2,500 words.",
+        "Book reviews of no more than 1,500 words.",
+        "Literary commentary, think pieces and essays of no more than 1,500 words.",
+        "Work responding to immediate events on the literary scene."
+      ],
+      "whatTheyDontWant": [
+        "Fiction over 2,500 words, or reviews, commentary and essays over 1,500.",
+        "Expecting an acknowledgement. Brittle Paper states it usually does not acknowledge reception unless emailed separately, and that it is unable to send rejection emails."
+      ],
+      "requirements": [
+        "Email your submission to brittlesubmissions@gmail.com.",
+        "If the piece responds to immediate events on the literary scene, email it to the same address and say so.",
+        "Keep to the word limit for your format.",
+        "Email separately if you want an acknowledgement of receipt, because one is not automatic."
+      ],
+      "rights": "Writers retain the copyright to their work.",
+      "howToSubmit": [
+        "Read https://brittlepaper.com/submissions/ for the current word limits.",
+        "Do not wait for a rejection email — the page says they are not sent.",
+        "Keep fiction under 2,500 words and everything else under 1,500."
+      ],
+      "keywords": [
+        "brittle paper",
+        "africa",
+        "african literature",
+        "fiction",
+        "book review",
+        "essay",
+        "copyright retained"
+      ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-30",
+      "publishedAt": "2026-09-30",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "boulevard",
+      "slug": "boulevard",
+      "publication": "Boulevard",
+      "title": "Poetry, fiction and nonfiction",
+      "seoTitle": "Boulevard: up to 8,000 words, $3 fee, four-month response",
+      "excerpt": "Boulevard accepts poetry, fiction and nonfiction of up to 8,000 words through Submittable for a $3 fee. Work must be previously unpublished in print and online, no more than five poems may be submitted at a time, and authors retain rights to their work from the time of publication. The average response time is four months.",
+      "officialUrl": "https://www.boulevardmagazine.org/guidelines/",
+      "applyUrl": "https://www.boulevardmagazine.org/guidelines/",
+      "applyEmail": null,
+      "applyMethod": "Submittable — $3 fee",
+      "sources": [
+        {
+          "name": "Boulevard — Guidelines (official)",
+          "url": "https://www.boulevardmagazine.org/guidelines/"
+        }
+      ],
+      "eligibility": {
+        "summary": "No stated country restriction on the guidelines page.",
+        "mode": "not-stated",
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": true
+      },
+      "writingTypes": [
+        "poetry",
+        "fiction",
+        "creative-nonfiction"
+      ],
+      "writingTypeLabel": "Poetry, fiction and nonfiction",
+      "pay": {
+        "currency": null,
+        "amountMin": null,
+        "amountMax": null,
+        "display": "Not stated on the guidelines page; $3 submission fee applies",
+        "conditions": "The public guidelines page sets out the word limit, the $3 online submission fee, the response time and the rights position, but publishes no payment rate, so BRYME records no figure. Confirm the current rate before you submit.",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "min": null,
+        "max": 8000,
+        "display": "Up to 8,000 words; no more than five poems at a time"
+      },
+      "response": {
+        "label": "Average four months",
+        "band": "3-plus-months",
+        "official": true
+      },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "not-stated",
+      "whatTheyWant": [
+        "Poetry, fiction and nonfiction up to 8,000 words.",
+        "No more than five poems at a time.",
+        "Work that has not previously been published, in print or online."
+      ],
+      "whatTheyDontWant": [
+        "Previously published work, in print or online.",
+        "More than five poems in a single submission.",
+        "Anything over 8,000 words."
+      ],
+      "requirements": [
+        "Submit online through Submittable via the link on the guidelines page.",
+        "Pay the $3 online submission fee.",
+        "Keep prose under 8,000 words and poems to five per submission.",
+        "Confirm the work is unpublished in both print and online before submitting."
+      ],
+      "rights": "Authors retain rights to their work from the time of publication in Boulevard.",
+      "howToSubmit": [
+        "Read https://www.boulevardmagazine.org/guidelines/ and use the Submittable link.",
+        "Budget for a four-month response before submitting elsewhere.",
+        "Do not submit previously published work in any form."
+      ],
+      "keywords": [
+        "boulevard",
+        "poetry",
+        "fiction",
+        "nonfiction",
+        "8000 words",
+        "$3 fee",
+        "submittable",
+        "rights retained"
+      ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-30",
+      "publishedAt": "2026-09-30",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "cast-of-wonders",
+      "slug": "cast-of-wonders",
+      "publication": "Cast of Wonders",
+      "title": "Young adult speculative short fiction, published as audio",
+      "seoTitle": "Cast of Wonders: YA speculative fiction up to 6,000 words, read blind",
+      "excerpt": "Cast of Wonders is a young adult speculative short fiction market publishing stories up to 6,000 words as audio. Manuscripts are read anonymously and non-anonymous submissions are rejected unread with no permission to resubmit. It wants science fiction accessible to a young adult audience, with a minimum of technical jargon.",
+      "officialUrl": "https://www.castofwonders.org/submissions/",
+      "applyUrl": "https://www.castofwonders.org/submissions/",
+      "applyEmail": null,
+      "applyMethod": "Online submission — anonymous, read blind",
+      "sources": [
+        {
+          "name": "Cast of Wonders — Submissions (official)",
+          "url": "https://www.castofwonders.org/submissions/"
+        }
+      ],
+      "eligibility": {
+        "summary": "No stated country restriction. Writers under 18 may submit but must state their age, and a parent or legal guardian must sign the contract on their behalf.",
+        "mode": "not-stated",
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": true
+      },
+      "writingTypes": [
+        "fiction"
+      ],
+      "writingTypeLabel": "Young adult speculative short fiction",
+      "pay": {
+        "currency": null,
+        "amountMin": null,
+        "amountMax": null,
+        "display": "Not stated on the public submissions page",
+        "conditions": "The public submissions page sets out the format, the length and the anonymity rule but publishes no payment rate, so BRYME records no figure. Confirm the rate before you submit.",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "min": null,
+        "max": 6000,
+        "display": "Up to 6,000 words"
+      },
+      "response": {
+        "label": "Not stated",
+        "band": "not-stated",
+        "official": false
+      },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "not-stated",
+      "whatTheyWant": [
+        "Young adult speculative short fiction up to 6,000 words.",
+        "All forms of science fiction — far-future, near future, space opera, hard sci-fi — provided it is accessible to the target audience with a minimum of technical jargon.",
+        "Stories that hold up as audio. The audience listens rather than reads, so they rarely skim past boring sections.",
+        "'Off-cut' stories drawn from a longer work, flagged as such so the biography can carry purchase links to the related novel.",
+        "Translations of non-English fiction, named as a growing area the market wants to support.",
+        "Well-researched, respectful and conscientious work."
+      ],
+      "whatTheyDontWant": [
+        "Non-anonymous manuscripts, which are rejected unread with no permission to resubmit.",
+        "Fiction that denigrates any culture or perpetuates stereotypes.",
+        "Heavy technical jargon, which does not survive audio for a young adult audience."
+      ],
+      "requirements": [
+        "Submit anonymously — strip identifying information from the manuscript.",
+        "Stay under 6,000 words.",
+        "If you are under 18, state your age when you submit; a parent or guardian will need to sign the contract.",
+        "Flag off-cut stories so the biography can link to the longer work.",
+        "Complete any sensitivity review before submitting — Cast of Wonders cannot fund reviews but will work with you to incorporate the feedback.",
+        "Query first if the guidelines do not answer your question."
+      ],
+      "rights": "Not stated on the official submissions page.",
+      "howToSubmit": [
+        "Read https://www.castofwonders.org/submissions/ — the anonymity rule is strict and the penalty is rejection unread with no resubmission.",
+        "Write for the ear, not the eye.",
+        "Do the sensitivity read before you submit, not after."
+      ],
+      "keywords": [
+        "cast of wonders",
+        "young adult",
+        "ya",
+        "speculative fiction",
+        "science fiction",
+        "audio fiction",
+        "6000 words",
+        "anonymous"
+      ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-30",
+      "publishedAt": "2026-09-30",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "collider",
+      "slug": "collider",
+      "publication": "Collider",
+      "title": "Entertainment news and features",
+      "seoTitle": "Collider: remote freelance, 2 years' experience, no AI",
+      "excerpt": "Collider, the Valnet-owned entertainment site, recruits experienced freelance contributors for news and features on film, television, video games, comics, music and wider entertainment. The role is remote, requires two years of experience producing entertainment content, and Valnet's editorial standards prohibit the use of artificial intelligence. No rate is published.",
+      "officialUrl": "https://collider.com/work-with-us/",
+      "applyUrl": "https://collider.com/work-with-us/",
+      "applyEmail": null,
+      "applyMethod": "Online application — freelance contributor role",
+      "sources": [
+        {
+          "name": "Collider — Work with us (official)",
+          "url": "https://collider.com/work-with-us/"
+        }
+      ],
+      "eligibility": {
+        "summary": "No stated country restriction. The role is remote and location is the contributor's choice.",
+        "mode": "not-stated",
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": true
+      },
+      "writingTypes": [
+        "journalism",
+        "articles",
+        "reviews"
+      ],
+      "writingTypeLabel": "Entertainment news and features",
+      "pay": {
+        "currency": null,
+        "amountMin": null,
+        "amountMax": null,
+        "display": "Not published; described as consistent and timely payments",
+        "conditions": "The work-with-us page describes consistent and timely payments but publishes no rate, so BRYME records no figure. The related Valnet brands describe freelance rates as competitive and negotiable; negotiate yours before you commit.",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "min": null,
+        "max": null,
+        "display": "Not stated on the work-with-us page"
+      },
+      "response": {
+        "label": "Not stated",
+        "band": "not-stated",
+        "official": false
+      },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "prohibited",
+      "whatTheyWant": [
+        "Original, high-quality entertainment content produced in a timely manner.",
+        "A dedicated and consistent contributor with quick-response availability for breaking news and viral trends.",
+        "Two years of experience producing entertainment and related content."
+      ],
+      "whatTheyDontWant": [
+        "Artificial intelligence. Valnet's editorial standards, which all contributors must follow, include a prohibition on using AI."
+      ],
+      "requirements": [
+        "Apply through https://collider.com/work-with-us/.",
+        "Be ready to evidence two years of entertainment content.",
+        "Adhere to Valnet's editorial standards, including the AI prohibition.",
+        "Treat it as an ongoing contributor role rather than a one-off pitch — consistency and quick response are stated requirements."
+      ],
+      "rights": "Not stated on the official work-with-us page.",
+      "howToSubmit": [
+        "Read https://collider.com/work-with-us/ and Valnet's editorial standards before applying.",
+        "This is a contributor role, not a single-commission pitch.",
+        "Negotiate your rate; nothing is published."
+      ],
+      "keywords": [
+        "collider",
+        "valnet",
+        "entertainment",
+        "film",
+        "tv",
+        "freelance",
+        "remote",
+        "no ai"
+      ]
     }
   ]
 }

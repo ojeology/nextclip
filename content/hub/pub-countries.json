@@ -598,5 +598,41 @@
   "100-word-story": {
     "base": "US",
     "label": "United States"
+  },
+  "balkan-insight": {
+    "base": "",
+    "label": "International"
+  },
+  "boston-review": {
+    "base": "US",
+    "label": "United States"
+  },
+  "east-asia-forum": {
+    "base": "AU",
+    "label": "Australia"
+  },
+  "foreign-affairs": {
+    "base": "US",
+    "label": "United States"
+  },
+  "dialogue-earth": {
+    "base": "",
+    "label": "International"
+  },
+  "brittle-paper": {
+    "base": "",
+    "label": "International"
+  },
+  "boulevard": {
+    "base": "US",
+    "label": "United States"
+  },
+  "cast-of-wonders": {
+    "base": "",
+    "label": "International"
+  },
+  "collider": {
+    "base": "CA",
+    "label": "Canada"
   }
 }
