@@ -750,5 +750,45 @@
   "braided-way": {
     "base": "",
     "label": "International"
+  },
+  "red-river-review": {
+    "base": "",
+    "label": "International"
+  },
+  "redivider": {
+    "base": "",
+    "label": "International"
+  },
+  "west-trade-review": {
+    "base": "",
+    "label": "International"
+  },
+  "blue-bell-review": {
+    "base": "",
+    "label": "International"
+  },
+  "river-styx-magazine": {
+    "base": "",
+    "label": "International"
+  },
+  "new-letters": {
+    "base": "",
+    "label": "International"
+  },
+  "pennsylvania-literary-journal": {
+    "base": "",
+    "label": "International"
+  },
+  "pure-in-heart-stories": {
+    "base": "",
+    "label": "International"
+  },
+  "raising-mothers": {
+    "base": "",
+    "label": "International"
+  },
+  "new-world-writing-quarterly": {
+    "base": "",
+    "label": "International"
   }
 }
