@@ -2356,6 +2356,398 @@ def writing_hub() -> None:
 # ---------------------------------------------------------------------------
 # /writing/<slug>/ publication page
 # ---------------------------------------------------------------------------
+# ---------------------------------------------------------------------------
+# The submission docket
+#
+# Every publication page already answers six questions, but it answers them
+# scattered across sections, in the publication's own words, with no indication
+# of which answers the publication actually gave and which BRYME filled in with
+# a default. A writer deciding where to send a pitch needs the six answers in
+# one place AND needs to know which of them are missing - because "the
+# guideline does not say" is a fact about the market that no directory
+# publishes, and it is the difference between an editor who trusts the desk and
+# one who treats it as another list.
+#
+# So the docket does two things no competing listing does:
+#   1. it places the record's pay against the rest of the desk, computed at
+#      build time from the same dataset, scoped so the comparison is real;
+#   2. it names its own gaps out loud.
+# ---------------------------------------------------------------------------
+from writing_stats import STATS, pay_shape, rights_bucket
+
+# Timing strings that are a refusal to answer rather than an answer. The record
+# still holds the original text; we only need to know whether it says anything.
+_TIMING_SILENT = re.compile(
+    r"^\s*(?:not\s+(?:publicly\s+)?stated|not\s+stated\s+precisely|no\s+schedule|unknown|n/?a)\b",
+    re.I)
+
+# A ranking is offered only where the cohort can carry one. Below this the
+# record still names the figure and still says how many peers state one - it
+# simply does not claim an order the data cannot support.
+PAY_COHORT_MIN = 5
+
+
+def _pay_timing(rec: dict) -> str:
+    """The payment schedule, when the record holds a real one.
+
+    `pay.timing` has been collected on every record since the first batch and
+    rendered on no page at all. 45 of the 147 hold a genuine schedule - "Net-60",
+    "within 30 days of publication", "on acceptance", "paid one month after
+    publication". That detail decides whether a writer can pay rent while the
+    piece is in production, and it was sitting unused in the dataset.
+
+    Returns "" rather than a placeholder when the publication never said,
+    because the caller renders that absence differently.
+    """
+    text = ((rec.get("pay") or {}).get("timing") or "").strip()
+    if not text or _TIMING_SILENT.match(text) or text.lower() == "none":
+        return ""
+    return text
+
+
+# A dimension is only "unanswered" when the record holds no substantive
+# statement for it. The test has to be narrow enough that it cannot mistake a
+# statement for a silence, because both directions of that error are expensive:
+# a stated rate shown as unstated defames the publication, and a silence shown
+# as an answer sends a writer into a pitch blind.
+#
+# 56 records carry a `pay.display` with no numeric `amountMin`, and 31 of those
+# state a real fact in prose ("From 50 cents per word", "Honorarium — amount not
+# published", "Not a published fixed fee"). Keying the docket off `amountMin`
+# alone would have published "the publication does not state a figure" over 31
+# records that state one. So the test reads the words, and the word list is
+# deliberately limited to phrases that assert nothing.
+_DISPLAY_SILENT = re.compile(
+    r"^\s*(?:not\s+(?:publicly\s+|a\s+|yet\s+)?(?:stated|published|disclosed|fixed)"
+    r"|not\s+stated\b|no\s+stated\b|unknown|n/?a|none|see\s+the\s+guidelines?\b)", re.I)
+_DISPLAY_SILENT_ANY = re.compile(
+    r"\b(?:rate|amount|fee|payment|figure)\s+not\s+(?:stated|published)\b"
+    r"|\bnot\s+stated\b\s*$", re.I)
+
+
+def _display_is_silence(text: str | None) -> bool:
+    """True when the record's own wording asserts nothing about the dimension."""
+    value = (text or "").strip()
+    if not value:
+        return True
+    return bool(_DISPLAY_SILENT.match(value) or _DISPLAY_SILENT_ANY.search(value))
+
+
+def _display_parts(text: str | None) -> tuple[str, str]:
+    """Split a long display into a short value and the prose beneath it.
+
+    Presentation only - every character is kept, nothing is paraphrased. A
+    value cell holding four lines of the researcher's prose is unreadable, but
+    truncating it in place would drop the qualification that makes it true, so
+    the remainder moves to the note rather than away.
+    """
+    value = (text or "").strip()
+    if len(value) <= 88:
+        return value, ""
+    head = re.split(r"(?<=[.!?])\s+", value, maxsplit=1)
+    if len(head) == 2 and len(head[0]) <= 88:
+        return head[0], head[1]
+    return value, ""
+
+
+def _sentence(text: str) -> str:
+    """Capitalise the first letter and end on a full stop. Nothing else.
+
+    `pay.timing` entries are sentences lifted from the publication's own page
+    or written by the researcher who checked it, and a few of them name the
+    payment verb themselves ("Processed upon publication", "Payment is
+    processed within 30 days"). Rewriting them - stripping a verb, adding one,
+    lowercasing the first word - is how a note ends up telling a reader the
+    publication pays "Paid payment", so this function is deliberately unable to
+    do any of that.
+    """
+    out = text.strip()
+    if not out:
+        return ""
+    return out[0].upper() + out[1:] + ("" if out.endswith((".", "!", "?")) else ".")
+
+
+def _build_pay_cohorts() -> dict:
+    """Group records that can be compared with each other.
+
+    Keyed by (country base, currency, pay shape). All three parts matter:
+    ranking naira figures against dollars is meaningless, and since the dataset
+    carries no rate-basis field, a cohort that mixes "60c a word" with "$500 an
+    essay" would produce an order that looks precise and is not. Within one
+    country, one currency and one shape, "how does this compare" is a question
+    the data can actually answer.
+    """
+    cohorts: dict = collections.defaultdict(list)
+    for r in WRITING:
+        pay = r.get("pay") or {}
+        amount, currency = pay.get("amountMin") or 0, pay.get("currency") or ""
+        if not amount or not currency:
+            continue
+        cohorts[(base_country(r.get("slug") or "") or "*", currency, pay_shape(r))].append(r)
+    return cohorts
+
+
+_PAY_COHORTS = _build_pay_cohorts()
+
+
+def _pay_position(rec: dict) -> str:
+    """Place this record's figure against its cohort, or say why it cannot be.
+
+    Deliberately returns a sentence even when there is nothing to rank: a
+    smaller honest statement ("the other four state a figure too, too few to
+    rank") tells the reader more than silence, and it stops the docket from
+    implying a comparison where none was made.
+    """
+    pay = rec.get("pay") or {}
+    amount = pay.get("amountMin") or 0
+    currency = pay.get("currency") or ""
+    if not amount or not currency:
+        return ""
+    base = base_country(rec.get("slug") or "")
+    cohort = _PAY_COHORTS.get((base or "*", currency, pay_shape(rec)), [])
+    shape_word = "quoting a per-word rate" if pay_shape(rec) == "word" else "quoting a flat fee"
+    # "records based in Nigeria", never "Nigeria publications". An adjective
+    # table would have to be maintained for every market the desk adds, and the
+    # first one it missed would print "2 other Nigeria publications". The
+    # noun-first phrasing needs no table and reads the same in all of them.
+    where = _cohort_place(rec, base, currency)
+    n = len(cohort)
+    if n < PAY_COHORT_MIN:
+        peers = n - 1
+        if peers <= 0:
+            return (f"BRYME records no other {where} {shape_word} to compare "
+                    f"this against.")
+        return (f"BRYME records {peers} other {where} {shape_word} — too few to "
+                f"rank this one against without over-reading {peers} data "
+                f"{'point' if peers == 1 else 'points'}.")
+    others = [r for r in cohort if r is not rec]
+    lower = sum(1 for r in others if ((r.get("pay") or {}).get("amountMin") or 0) < amount)
+    higher = sum(1 for r in others if ((r.get("pay") or {}).get("amountMin") or 0) > amount)
+    same = len(others) - lower - higher
+    total = f"{n} {where} that state a figure"
+    if higher == 0 and same == 0:
+        return f"The highest figure of the {total} {shape_word}."
+    if lower == 0 and same == 0:
+        return f"The lowest figure of the {total} {shape_word}."
+    parts = [f"{lower} of the other {len(others)} {where} that state a figure "
+             f"{shape_word} state less", f"{higher} state more"]
+    if same:
+        parts.append(f"{same} state exactly this")
+    return ", ".join(parts) + "."
+
+
+# "the United States", "the United Kingdom" - the two the desk uses. Countries
+# that take no article are used bare, which is what every market added since
+# (Nigeria, India, Canada, Kenya...) needs anyway.
+_ARTICLE_THE = {"United States", "United Kingdom"}
+
+
+def _article(label: str | None) -> str:
+    name = label or "this market"
+    return f"the {name}" if name in _ARTICLE_THE else name
+
+
+def _cohort_place(rec: dict, base: str, currency: str) -> str:
+    """How to describe the records this one is compared against.
+
+    A record with `base: ""` is not "based in International" - it has no market
+    in the country map, so calling its peers a national cohort would invent one.
+    Scope it to the thing that is actually shared instead: the currency.
+
+    Both the ranking sentence and the caveat under the docket call this, because
+    they drifted apart within an hour of being written - the ranking was fixed
+    to say "records on this desk quoting in USD" and the caveat went on saying
+    "other International records" for those same eight records. Wording that
+    describes the same fact from two places has to be one expression.
+    """
+    if not base:
+        return f"records on this desk quoting in {currency}"
+    return f"records based in {_article(pub_country(rec).get('label'))}"
+
+
+def _comparison_caveat(rec: dict) -> str:
+    """How this record's figure was compared - or that there was nothing to compare.
+
+    Stated on every docket because the ranking above it is only as good as the
+    population behind it, and a reader deserves to know which population that
+    was without having to infer it. When the record holds no comparable figure
+    the sentence goes away entirely rather than describing a comparison that
+    never happened.
+    """
+    pay = rec.get("pay") or {}
+    if not (pay.get("amountMin") and pay.get("currency")):
+        return ("This record holds no figure BRYME could compare, so no ranking appears "
+                "above it. Where a rate is quoted per word, it is never ranked against a "
+                "flat fee.")
+    where = esc(_cohort_place(rec, base_country(rec.get("slug") or ""), pay["currency"]))
+    return (f"Figures are compared only against other {where} quoted the same way, so a "
+            f"per-word rate is never ranked against a flat fee.")
+
+
+def _docket_row(label: str, value: str, note: str = "", state: str = "") -> str:
+    """One docket line. `state` marks whether the publication answered.
+
+    The `gap` class only adds a colour accent for emphasis: the answer itself
+    always reads as text ("Not stated"), so nothing here depends on seeing a
+    colour. The desk makes that promise on /writing/statuses/ and it has to hold
+    on the pages too.
+    """
+    note_html = f'<span class="docket-note">{note}</span>' if note else ""
+    return (f'<div class="docket-row{(" " + state) if state else ""}">'
+            f'<dt>{esc(label)}</dt>'
+            f'<dd><b>{value}</b>{note_html}</dd></div>')
+
+
+def docket(rec: dict) -> str:
+    """The six answers, and the honest list of what is missing.
+
+    Nothing here is new data - every line is read from the record the rest of
+    the page already shows, or computed from the dataset at build time. What is
+    new is that the reader can see at a glance which answers exist.
+    """
+    pay = rec.get("pay") or {}
+    wc = rec.get("wordCount") or {}
+    el = rec.get("eligibility") or {}
+    resp = rec.get("response") or {}
+    ai = rec.get("aiPolicy") or "not-stated"
+    rights = (rec.get("rights") or "").strip()
+    timing = _pay_timing(rec)
+    rows: list[str] = []
+    gaps: list[str] = []
+
+    # 1. Payment
+    if not _display_is_silence(pay.get("display")):
+        value, extra = _display_parts(pay["display"])
+        bits = [b for b in (_pay_position(rec), extra) if b]
+        if timing:
+            # Rendered verbatim, first letter capitalised. An earlier version
+            # prefixed "Paid " and lowercased the first letter, which turned the
+            # Republic's "Payment is processed within 30 days of publication"
+            # into "Paid payment is processed within 30 days of publication".
+            bits.append(_sentence(timing))
+        rows.append(_docket_row("Payment", esc(value), " ".join(bits)))
+    else:
+        detail = (pay.get("display") or "").strip()
+        note = (esc(_sentence(detail)) + " " if detail else "") + (
+            "The publication publishes no figure BRYME could record. That is not the "
+            "same as unpaid — but you cannot price the work from this page.")
+        if timing:
+            note += " " + _sentence(timing)
+        rows.append(_docket_row("Payment", "Not stated", note, "gap"))
+        gaps.append("Payment — pitch only if you are comfortable negotiating the fee "
+                    "itself, or ask before you write.")
+
+    # 2. Length
+    if not _display_is_silence(wc.get("display")):
+        value, extra = _display_parts(wc["display"])
+        rows.append(_docket_row("Length", esc(value), esc(extra) if extra else ""))
+    else:
+        detail = (wc.get("display") or "").strip()
+        note = (esc(_sentence(detail)) + " " if detail else "") + (
+            "The guideline states no length BRYME could record.")
+        rows.append(_docket_row("Length", "Not stated", note, "gap"))
+        gaps.append("Length — propose a length in your pitch and let the editor correct it.")
+
+    # 3. Eligibility
+    #
+    # `mode: open` is two different findings wearing one label, and the record
+    # already separates them with `notStated`. 32 open records say so in their own
+    # words ("submissions from all writers, of all locations"). The other 34 are
+    # open only in the sense that the guideline never addresses nationality - "The
+    # official submissions page does not state a nationality restriction".
+    #
+    # An earlier version of this row printed "Open internationally" for both, which
+    # is the one claim the desk publicly promises not to make: the writing hub says
+    # in as many words that BRYME does not treat a missing country list as "open
+    # worldwide". Silently reading silence as permission on 34 records would have
+    # been the most expensive kind of error here, because a writer in Lagos would
+    # have spent an evening on a pitch the guideline never invited.
+    mode = el.get("mode") or ""
+    summary = (el.get("summary") or "").strip()
+    diaspora = ". Diaspora writers are explicitly welcome." if el.get("allowsDiaspora") else "."
+    if mode == "worldwide":
+        rows.append(_docket_row("Who can submit", "Open worldwide",
+                                "The guideline states the call is worldwide" + diaspora))
+    elif mode == "open" and not el.get("notStated"):
+        rows.append(_docket_row(
+            "Who can submit", "Open internationally",
+            "The guideline states no geographic restriction" + diaspora))
+    elif mode == "restricted":
+        rows.append(_docket_row("Who can submit", "Restricted to a stated group",
+                                esc(summary) if summary else ""))
+    else:
+        note = (esc(summary) if summary else "The guideline does not say who may submit.")
+        rows.append(_docket_row("Who can submit", "Not stated", note, "gap"))
+        gaps.append("Who can submit — the guideline leaves this open, so ask before you "
+                    "spend an evening on the pitch rather than assuming a yes.")
+
+    # 4. Response time
+    if (resp.get("band") or "") not in ("", "not-stated", "unknown") and resp.get("label"):
+        rows.append(_docket_row("Response time", esc(resp["label"])))
+    else:
+        rows.append(_docket_row(
+            "Response time", "Not stated",
+            "No response time recorded. A follow-up after two to three weeks is "
+            "reasonable; silence past that is a soft no, not a rejection.", "gap"))
+        gaps.append("Response time — expect to wait blind, and keep other pitches live.")
+
+    # 5. AI policy
+    ai_text = {
+        "prohibited": ("AI-assisted work is prohibited",
+                       "The guideline forbids AI-generated or AI-assisted writing."),
+        "no-ai": ("AI-generated work is not accepted",
+                  "The guideline rules out AI-generated writing."),
+        "strict": ("Strict AI rules", "The guideline sets its own strict conditions — read it in full."),
+        "disclosure-required": ("AI use must be disclosed",
+                                "The guideline allows AI use but requires you to declare it."),
+        "limited": ("AI use is limited",
+                    "The guideline permits AI only in stated circumstances."),
+        "allowed": ("AI use allowed", "The guideline permits AI-assisted writing."),
+    }.get(ai)
+    if ai_text:
+        rows.append(_docket_row("AI policy", ai_text[0], ai_text[1]))
+    else:
+        rows.append(_docket_row(
+            "AI policy", "Not stated",
+            f"The guideline is silent. BRYME records that {STATS['ai_prohibiting']} of the "
+            f"{len(WRITING)} publications on this desk do restrict AI-assisted work, so "
+            f"silence here is not permission — ask.", "gap"))
+        gaps.append("AI policy — assume disclosure is expected unless the editor says otherwise.")
+
+    # 6. Rights
+    if rights_bucket(rec) == "stated":
+        rows.append(_docket_row("Rights", "Stated", esc(rights)))
+    else:
+        rows.append(_docket_row(
+            "Rights", "Not stated",
+            f"BRYME records that {STATS['rights_stated']} of the {len(WRITING)} publications "
+            f"on this desk state their terms. This one does not. Ask what rights you are "
+            f"assigning, for how long and for what territory, before you sign anything.",
+            "gap"))
+        gaps.append("Rights — you may be asked to assign more than you expect. Get the terms in writing.")
+
+    gap_block = ""
+    if gaps:
+        items = "".join(f"<li>{esc(g)}</li>" for g in gaps)
+        all_six = len(gaps) == 6
+        tail = "all six questions" if all_six else f"{len(gaps)} of the six questions"
+        gap_block = (f'<div class="docket-gaps"><h3>What this record does not tell you</h3>'
+                     f'<p>This publication leaves {tail} unanswered. '
+                     f'BRYME publishes that gap instead of filling it — a generated answer would '
+                     f'look complete and cost you a pitch.</p><ul>{items}</ul></div>')
+
+    return (f'<section class="section docket-section" id="docket">'
+            f'<div class="docket"><h2>The docket</h2>'
+            f'<p class="docket-lede">The six things that decide whether a pitch is worth sending. '
+            f'Every answer below is either taken from the publication&rsquo;s own guideline or '
+            f'computed by BRYME from the {len(WRITING)}-publication desk. Where the publication '
+            f'does not say, the docket says so instead of filling the gap in.</p>'
+            f'<dl class="docket-grid">{"".join(rows)}</dl>{gap_block}'
+            f'<p class="docket-src">Record last human-checked {esc(rec.get("lastVerified") or TODAY)}. '
+            f'Sources listed at the foot of this page. '
+            f'{_comparison_caveat(rec)}</p></div></section>')
+
+
 def _facts(rec: dict) -> str:
     pay = rec.get("pay") or {}
     wc = rec.get("wordCount") or {}
@@ -2630,6 +3022,7 @@ def pub_page(rec: dict) -> None:
 <p class="source-line">{status_badge(rec)} <span class="verify-badge {cls}">Verified {esc((rec.get('lastVerified') or TODAY)[:7])}</span> <span class="byline">Researched by <a href="/author/ibrahim-sodiq/">BRYME Editorial Desk</a>.</span></p>
 {expiry_notice(rec)}
 </section>
+{docket(rec)}
 <div class="wrap two-col"><div>{_facts(rec)}</div><div>{_timeline(rec)}</div></div>
 <section class="section"><div class="prose">
 <h2>What this publication wants</h2>

@@ -19,10 +19,11 @@
     "validate:money": "node scripts/validate-money-pages.js",
     "validate:money:browser": "node scripts/validate-money-browser.js",
     "test:http": "node scripts/validate-http.js",
-    "test": "npm run verify:allowlist && npm run verify:titles && npm run validate:hometools && npm run validate && npm run validate:money && npm run validate:oppfilter && npm run validate:browser && npm run validate:contrast && npm run validate:money:browser && npm run validate:techhub",
+    "test": "npm run verify:allowlist && npm run verify:titles && npm run verify:dockets && npm run validate:hometools && npm run validate && npm run validate:money && npm run validate:oppfilter && npm run validate:browser && npm run validate:contrast && npm run validate:money:browser && npm run validate:techhub",
     "validate:techhub": "node scripts/validate-tech-hub.js",
     "verify:allowlist": "python3 scripts/sync-writing-allowlist.py --check",
-    "verify:titles": "python3 scripts/audit_titles.py"
+    "verify:titles": "python3 scripts/audit_titles.py",
+    "verify:dockets": "python3 scripts/audit_dockets.py"
   },
   "engines": {
     "node": ">=20"

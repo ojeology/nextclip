@@ -69,6 +69,18 @@ def _countries() -> dict:
 _PER_WORD = re.compile(r"(?:per\s+word|/word|cents?\s+per\s+word|\bper\b[^.\n]{0,12}\bword\b)", re.I)
 
 
+def pay_shape(rec: dict) -> str:
+    """"word" when the stated rate is quoted against words, else "piece".
+
+    Lives here rather than in each builder so the guides and the publication
+    dockets classify a record the same way. The docket leans on this: it only
+    places a rate against other records of the same shape, because a per-word
+    rate and a flat fee are not the same quantity and averaging them across a
+    cohort produces a comparison that reads as precise and is not.
+    """
+    return "word" if _PER_WORD.search(
+        str((rec.get("pay") or {}).get("display") or "")) else "piece"
+
 
 def based(iso: str) -> dict:
     """Counts and pay distribution for the records based in one market.
@@ -98,9 +110,7 @@ def based(iso: str) -> dict:
     mine = [r for r in recs if (countries.get(r["slug"]) or {}).get("base") == iso]
     stated = [r for r in mine if (r.get("pay") or {}).get("amountMin") or 0]
     values = sorted((r["pay"]["amountMin"]) for r in stated)
-    per_word = sum(
-        1 for r in stated
-        if _PER_WORD.search(str((r.get("pay") or {}).get("display") or "")))
+    per_word = sum(1 for r in stated if pay_shape(r) == "word")
 
     def pct(p: float) -> int:
         """Linear-interpolated percentile, rounded to whole currency units.
@@ -131,7 +141,7 @@ def based(iso: str) -> dict:
     }
 
 
-def _rights_bucket(rec: dict) -> str:
+def rights_bucket(rec: dict) -> str:
     text = str(rec.get("rights") or "").strip()
     if not text:
         return "empty"
@@ -156,7 +166,7 @@ def compute() -> dict:
 
     rights = {"stated": 0, "partial": 0, "silent": 0, "empty": 0}
     for rec in recs:
-        rights[_rights_bucket(rec)] += 1
+        rights[rights_bucket(rec)] += 1
     # "cannot be relied on" = everything that is not a full statement
     rights_unreliable = n - rights["stated"]
 
