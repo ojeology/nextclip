@@ -12987,6 +12987,280 @@
         "south asian speculative fiction"
       ],
       "experienceNote": "We’ve published both experienced and aspiring authors, and happily encourage first-time writers from anywhere in the world to submit. — https://mithilareview.com/submission-guidelines/ (read 2026-09-30)"
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-30",
+      "publishedAt": "2026-09-30",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "the-elephant",
+      "slug": "the-elephant",
+      "publication": "The Elephant",
+      "title": "Analysis, opinion, reflections and investigations",
+      "seoTitle": "The Elephant: features of 1,500–3,500 words, pitch under 500 words",
+      "excerpt": "The Elephant, the Kenyan platform for politics, society and long-form analysis, takes pitches of no more than 500 words for features running between 1,500 and 3,500 words. Payment is discussed with each writer after a pitch is approved for commissioning rather than published as a rate card. Articles published in a month are paid within the first ten days of the following month.",
+      "officialUrl": "https://www.theelephant.info/write-for-us/",
+      "applyUrl": "mailto:info@theelephant.info",
+      "applyEmail": "info@theelephant.info",
+      "applyMethod": "Email pitch to the relevant section",
+      "sources": [
+        {
+          "name": "The Elephant — Write for us (official)",
+          "url": "https://www.theelephant.info/write-for-us/"
+        }
+      ],
+      "eligibility": {
+        "summary": "No stated country restriction. The Elephant's coverage is centred on Kenya and the region, and the write-for-us page does not restrict who may pitch.",
+        "mode": "not-stated",
+        "includesRegions": [
+          "kenya",
+          "east-africa"
+        ],
+        "allowsDiaspora": true,
+        "notStated": true
+      },
+      "writingTypes": [
+        "analysis",
+        "opinion",
+        "essays",
+        "journalism"
+      ],
+      "writingTypeLabel": "Analysis, opinion, reflections and investigations",
+      "pay": {
+        "currency": null,
+        "amountMin": null,
+        "amountMax": null,
+        "display": "Discussed per commission — no published rate",
+        "conditions": "Official write-for-us page: payments discussion is done with each writer after a pitch has been approved for commissioning. There is therefore no public rate for BRYME to record. Agree the fee in writing before you file. Articles published in a given month are paid within the first ten days of the following month.",
+        "timing": "Within the first ten days of the month following publication"
+      },
+      "wordCount": {
+        "min": 1500,
+        "max": 3500,
+        "display": "Features run 1,500–3,500 words"
+      },
+      "response": {
+        "label": "Not stated",
+        "band": "not-stated",
+        "official": false
+      },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "not-stated",
+      "whatTheyWant": [
+        "A pitch of no more than 500 words, sent to the section that best suits it — Analysis, Opinion, Reflections or Investigations.",
+        "Features between 1,500 and 3,500 words."
+      ],
+      "whatTheyDontWant": [
+        "The write-for-us page does not publish a list of exclusions. Read the section you are pitching before you send, since the four sections have different registers."
+      ],
+      "requirements": [
+        "Email info@theelephant.info with a pitch document of no more than 500 words.",
+        "Address the pitch to the section of The Elephant that best suits it.",
+        "Agree the payment with your editor after the pitch is approved for commissioning, before you file.",
+        "Expect payment within the first ten days of the month after publication."
+      ],
+      "rights": "Not stated on the official write-for-us page.",
+      "howToSubmit": [
+        "Read https://www.theelephant.info/write-for-us/ and pick the right section.",
+        "Keep the pitch document under 500 words.",
+        "Get the fee agreed before you write the piece."
+      ],
+      "keywords": [
+        "the elephant",
+        "kenya",
+        "east africa",
+        "analysis",
+        "opinion",
+        "investigations",
+        "pitch"
+      ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-30",
+      "publishedAt": "2026-09-30",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "africa-is-a-country",
+      "slug": "africa-is-a-country",
+      "publication": "Africa Is a Country",
+      "title": "Commentary, criticism and reviews on Africa and its diaspora",
+      "seoTitle": "Africa Is a Country: 700–800 words, no pay for unsolicited posts",
+      "excerpt": "Africa Is a Country usually takes posts of 700 to 800 words, occasionally up to 900 or a little more when the content warrants it. Its guidelines are blunt about payment: it does not pay for unsolicited submissions, though it offers incentives for consistent contributors. Submissions are complete drafts sent as a .doc attachment, not pitches in the body of an email.",
+      "officialUrl": "https://africasacountry.com/submission-guidelines/",
+      "applyUrl": "mailto:ideas@africasacountry.com",
+      "applyEmail": "ideas@africasacountry.com",
+      "applyMethod": "Email a completed draft as a Word attachment",
+      "sources": [
+        {
+          "name": "Africa Is a Country — Submission guidelines (official)",
+          "url": "https://africasacountry.com/submission-guidelines/"
+        }
+      ],
+      "eligibility": {
+        "summary": "No stated country restriction. The subject matter is Africa and its diaspora, but the guidelines do not restrict who may submit.",
+        "mode": "not-stated",
+        "includesRegions": [
+          "africa"
+        ],
+        "allowsDiaspora": true,
+        "notStated": true
+      },
+      "writingTypes": [
+        "opinion",
+        "reviews",
+        "essays",
+        "analysis"
+      ],
+      "writingTypeLabel": "Commentary, criticism, music video and film reviews",
+      "pay": {
+        "currency": null,
+        "amountMin": null,
+        "amountMax": null,
+        "display": "No pay for unsolicited submissions; incentives for consistent contributors",
+        "conditions": "Official guidelines, quoted: 'Short answer is that we don't pay people for unsolicited submissions. We do, however, offer incentives for consistent contributors.' BRYME records no figure because none is published. Treat this as a byline-and-audience market rather than a paid one until you have an editor relationship.",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "min": 700,
+        "max": 800,
+        "display": "Usually 700–800 words; occasionally 900 or a little more"
+      },
+      "response": {
+        "label": "Not stated",
+        "band": "not-stated",
+        "official": false
+      },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "not-stated",
+      "whatTheyWant": [
+        "A timely, compelling issue that keeps the reader's interest.",
+        "Detail, backed up with hyperlinks — not footnotes or citations.",
+        "Music videos and film reviews with strong introductions and critiques, which can be short and sweet.",
+        "Relevant non-copyrighted images, videos or audio. Wikimedia, Flickr Creative Commons or another photo-sharing source is preferred."
+      ],
+      "whatTheyDontWant": [
+        "Submissions pasted into the body of the email. The guidelines ask for a Word attachment and are explicit that the text should not go in the email itself."
+      ],
+      "requirements": [
+        "Attach a Word document — .doc is preferred over .docx — in Times New Roman.",
+        "Include a suggested title, your name, and a one to two sentence bio with your email or web address and any social handles.",
+        "Attach images as JPEGs or list the URLs, and keep image files around 120 KB.",
+        "Email everything to ideas@africasacountry.com.",
+        "If published elsewhere afterwards, credit and link Africa Is a Country."
+      ],
+      "rights": "Not stated in detail. The guidelines say they are happy for you to sell the work elsewhere, provided Africa Is a Country is credited and linked to.",
+      "howToSubmit": [
+        "Read https://africasacountry.com/submission-guidelines/ — it is short and specific.",
+        "Send a finished draft, not a pitch.",
+        "Do not expect payment for an unsolicited first submission."
+      ],
+      "keywords": [
+        "africa is a country",
+        "africa",
+        "diaspora",
+        "commentary",
+        "criticism",
+        "film review",
+        "unpaid"
+      ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-30",
+      "publishedAt": "2026-09-30",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "100-word-story",
+      "slug": "100-word-story",
+      "publication": "100 Word Story",
+      "title": "Stories of exactly 100 words",
+      "seoTitle": "100 Word Story: exactly 100 words, $2 fee, opens the first week of each month",
+      "excerpt": "100 Word Story publishes stories of exactly 100 words — no more and no less, counted by Microsoft Word's tally, with the title not included in the count. Submissions open the first week of every month and carry a $2 fee. The magazine particularly encourages Black, Indigenous and People of Colour, writers from economically disadvantaged backgrounds, and LGBTQIA+ and disability communities to submit.",
+      "officialUrl": "https://100wordstory.org/submit/",
+      "applyUrl": "https://100wordstory.org/submit/",
+      "applyEmail": null,
+      "applyMethod": "Online submission, first week of each month",
+      "sources": [
+        {
+          "name": "100 Word Story — Submit (official)",
+          "url": "https://100wordstory.org/submit/"
+        }
+      ],
+      "eligibility": {
+        "summary": "No stated country restriction. 100 Word Story states that among the types of underrepresentation in literature it particularly encourages Black, Indigenous and People of Colour, those from economically disadvantaged backgrounds, and those belonging to LGBTQIA+ and disability communities to submit.",
+        "mode": "not-stated",
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": true
+      },
+      "writingTypes": [
+        "fiction"
+      ],
+      "writingTypeLabel": "Stories of exactly 100 words",
+      "pay": {
+        "currency": null,
+        "amountMin": null,
+        "amountMax": null,
+        "display": "Payment not stated on the submit page; $2 submission fee applies",
+        "conditions": "The official submit page sets out the form, the monthly window and the $2 submission fee, but does not state a payment rate for published stories, so BRYME records no figure. The $2 fee is described as the minimum needed to cover the costs of the submission system. Confirm the current rate for published work before you submit.",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "min": 100,
+        "max": 100,
+        "display": "Exactly 100 words (title not counted)"
+      },
+      "response": {
+        "label": "Not stated",
+        "band": "not-stated",
+        "official": false
+      },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "not-stated",
+      "whatTheyWant": [
+        "A complete story in exactly 100 words — the whole story, holding together, not a fragment.",
+        "A short bio of 25 words maximum.",
+        "Word count verified against Microsoft Word's tally; the title sits outside the 100 words."
+      ],
+      "whatTheyDontWant": [
+        "Anything that is not exactly 100 words. The page repeats the point: exactly 100 words, no more or no less.",
+        "A bio longer than 25 words.",
+        "Multiple stories in a single submission — each story must be submitted separately."
+      ],
+      "requirements": [
+        "Submit during the first week of a month, when submissions are open.",
+        "Pay the $2 submission fee per story.",
+        "Submit each story separately; you may submit as many as you like.",
+        "Include a bio of 25 words or fewer.",
+        "Count your words in Microsoft Word."
+      ],
+      "rights": "Not stated on the official submit page.",
+      "howToSubmit": [
+        "Check https://100wordstory.org/submit/ for the current monthly window.",
+        "Count in Microsoft Word, not in another tool — the tallies differ.",
+        "Your title is free; the 100 words are the story."
+      ],
+      "keywords": [
+        "100 word story",
+        "flash fiction",
+        "exactly 100 words",
+        "micro fiction",
+        "$2 fee"
+      ]
     }
   ]
 }

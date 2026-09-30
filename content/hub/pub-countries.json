@@ -586,5 +586,17 @@
   "mithila-review": {
     "base": "IN",
     "label": "India"
+  },
+  "the-elephant": {
+    "base": "KE",
+    "label": "Kenya"
+  },
+  "africa-is-a-country": {
+    "base": "",
+    "label": "International"
+  },
+  "100-word-story": {
+    "base": "US",
+    "label": "United States"
   }
 }
