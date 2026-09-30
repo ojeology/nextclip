@@ -7900,10 +7900,11 @@
       "slug": "bombay-literary-magazine",
       "publication": "The Bombay Literary Magazine",
       "title": "Fiction, poetry, translation and graphic fiction",
-      "writingTypeLabel": "Fiction, poetry, translation",
+      "writingTypeLabel": "Fiction, poetry, essays, translation and graphic fiction",
       "writingTypes": [
         "fiction",
         "poetry",
+        "essays",
         "translation"
       ],
       "officialUrl": "https://bombaylitmag.com/submit/",
@@ -7948,7 +7949,10 @@
         "Global and distinctive voices"
       ],
       "whatTheyDontWant": [
-        "Submissions outside the window"
+        "AI-generated work, and translations of your own work.",
+        "Translated poetry, which they no longer accept at all.",
+        "Criticism and visual narratives, which are invite-only rather than open.",
+        "Submissions outside the window, or a second submission while one is under consideration."
       ],
       "rights": "Minimum rights needed to publish: exclusive for one year, non-exclusive thereafter. The magazine asks you to tell it if a further opportunity comes up inside that year, and says it will try to cooperate.",
       "aiPolicy": "prohibited",
@@ -7964,14 +7968,18 @@
       ],
       "keywords": [
         "bombay",
+        "essays",
         "fiction",
+        "graphic-fiction",
+        "india",
+        "translated-fiction",
         "translation"
       ],
       "experience": "not-stated",
       "editorExperience": {
         "applied": false
       },
-      "seoTitle": "The Bombay Literary Magazine: ≈₹5,000 per contribution",
+      "seoTitle": "The Bombay Literary Magazine: ₹10,000 per contribution",
       "publishedAt": "2026-09-05",
       "vertical": "writing",
       "lastVerified": "2026-09-30",
