@@ -5248,12 +5248,16 @@
       "requirements": [
         "The current official write-for-us URL was unavailable during the 27 September 2026 check; do not rely on historical rates or requirements without reconfirming through Cracked. Historical official guidance accepted feature pitches by email and asked experienced columnists for links to previous work."
       ],
-      "howToSubmit": [],
+      "howToSubmit": [
+        "Cracked does not publish a public submissions page. Checked 2026-09-30: cracked.com links only to /about-us and to article permalinks, with no write-for-us, submissions, contribute or pitch route anywhere on the site.",
+        "Use the contact route on the /about-us page and ask whether the site is commissioning, rather than sending work unsolicited.",
+        "The rates recorded here come from Cracked's own published pay structure, but without a public submissions page there is no stated route in — treat this as a commissioning market rather than an open one."
+      ],
       "rights": "",
       "applyUrl": "mailto:workshop@cracked.com",
       "applyEmail": "workshop@cracked.com",
       "applyMethod": "Email pitch (Cracked Comedy Workshop)",
-      "lastVerified": "2026-09-27",
+      "lastVerified": "2026-09-30",
       "publishedAt": "2026-09-04",
       "id": "cracked",
       "slug": "cracked",
@@ -5329,12 +5333,16 @@
       "requirements": [
         "Contact the editorial team before submitting: the current official contact page directs prospective contributors to editor@whatculture.com. The older writer page describes feature/news contributors but should not be treated as a current rate card without confirmation."
       ],
-      "howToSubmit": [],
+      "howToSubmit": [
+        "WhatCulture's write-for-us page exists at whatculture.com/write-for-us but is rendered entirely in the browser. Checked 2026-09-30: it returns no readable text and no links to an HTTP client, so its current terms could not be read and are not reproduced here.",
+        "Open whatculture.com/write-for-us in a normal browser to read the live requirements before pitching.",
+        "The rate recorded here is WhatCulture's own stated figure per list; confirm it on that page, since BRYME could not verify the surrounding terms."
+      ],
       "rights": "",
       "applyUrl": "https://whatculture.com/write-for-us",
       "applyEmail": "",
       "applyMethod": "Register + create via their content suite",
-      "lastVerified": "2026-09-27",
+      "lastVerified": "2026-09-30",
       "publishedAt": "2026-09-04",
       "id": "whatculture",
       "slug": "whatculture",
@@ -5656,12 +5664,16 @@
       "requirements": [
         "The official site did not expose a current contributor or pitch guide during the 27 September 2026 check. Confirm the current editor, format, rights and rate directly before pitching; do not treat the older secondary rate report as a current promise."
       ],
-      "howToSubmit": [],
+      "howToSubmit": [
+        "STATEMENT Africa does not publish a public submissions page. Checked 2026-09-30: statementafrica.com links to /about/, /about/legal/ and /contact/ only, with no write-for-us or submissions route.",
+        "Use the contact page at statementafrica.com/contact/ to ask about commissioning.",
+        "Note that statement-africa.com — with a hyphen — does not resolve at all. The correct domain is statementafrica.com, which is live over both http and https."
+      ],
       "rights": "",
       "applyUrl": "mailto:chisom@statementafrica.com",
       "applyEmail": "chisom@statementafrica.com",
       "applyMethod": "Email pitch to the managing editor",
-      "lastVerified": "2026-09-27",
+      "lastVerified": "2026-09-30",
       "publishedAt": "2026-09-04",
       "id": "statement",
       "slug": "statement-africa",
@@ -20267,6 +20279,731 @@
         "8000 words",
         "no ai",
         "submittable"
+      ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-30",
+      "publishedAt": "2026-09-30",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "yellow-arrow-journal",
+      "slug": "yellow-arrow-journal",
+      "publication": "Yellow Arrow Journal",
+      "title": "Poetry, prose and visual art",
+      "seoTitle": "Yellow Arrow Journal: $10 and a PDF, no AI outlining either",
+      "excerpt": "Yellow Arrow Journal pays $10 USD and a PDF of the issue to selected contributors, by PayPal. Poetry runs to two poems per author per issue and may be any length. It bans AI outright and is specific about scope: do not use AI tools to write, outline or rewrite your text. Artists must own all rights to the work they submit.",
+      "officialUrl": "https://www.yellowarrowpublishing.com/submissions",
+      "applyUrl": "https://www.yellowarrowpublishing.com/submissions",
+      "applyEmail": "submissions@yellowarrowpublishing.com",
+      "applyMethod": "Email while submissions are open",
+      "sources": [
+        {
+          "name": "Yellow Arrow Journal — Submissions (official)",
+          "url": "https://www.yellowarrowpublishing.com/submissions"
+        }
+      ],
+      "eligibility": {
+        "summary": "No stated country restriction on the guidelines page.",
+        "mode": "not-stated",
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": true
+      },
+      "writingTypes": [
+        "poetry",
+        "fiction",
+        "creative-nonfiction"
+      ],
+      "writingTypeLabel": "Poetry, prose and visual art",
+      "pay": {
+        "currency": "USD",
+        "amountMin": 10,
+        "amountMax": 10,
+        "display": "$10 USD plus a PDF of the journal issue",
+        "conditions": "Official submissions page: if selected you receive $10.00 USD and a PDF of the journal issue. Payments are through PayPal; the publisher tries to accommodate those without a PayPal account but says this is not always possible, especially for people outside the United States.",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "min": null,
+        "max": null,
+        "display": "Poetry: up to 2 poems per author per issue, grouped in a single document, any length"
+      },
+      "response": {
+        "label": "Not stated",
+        "band": "not-stated",
+        "official": false
+      },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "prohibited",
+      "whatTheyWant": [
+        "Poetry: up to two poems per author per issue, grouped into a single document, of any length.",
+        "Prose and visual art."
+      ],
+      "whatTheyDontWant": [
+        "Work created by artificial intelligence tools.",
+        "Using AI tools to write, outline or rewrite your text. The ban covers outlining and rewriting, not just drafting.",
+        "Work you do not own all rights to. If it was published or shown previously you must be able to list where and when."
+      ],
+      "requirements": [
+        "Email submissions@yellowarrowpublishing.com while submissions are open for an issue.",
+        "Group up to two poems into a single document.",
+        "Have a PayPal account if you can — accommodation without one is not always possible, particularly outside the US.",
+        "Be ready to say where and when previously shown work appeared."
+      ],
+      "rights": "Artists must own all rights to the work submitted. No further rights transfer is stated on the submissions page.",
+      "howToSubmit": [
+        "Read https://www.yellowarrowpublishing.com/submissions and check an issue is open.",
+        "The AI ban extends to outlining — plan your work without it.",
+        "Flag early if you cannot use PayPal."
+      ],
+      "keywords": [
+        "yellow arrow journal",
+        "poetry",
+        "prose",
+        "visual art",
+        "$10",
+        "paypal",
+        "2 poems",
+        "no ai outlining"
+      ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-30",
+      "publishedAt": "2026-09-30",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "modern-haiku",
+      "slug": "modern-haiku",
+      "publication": "Modern Haiku",
+      "title": "Haiku, senryu and prose about haiku",
+      "seoTitle": "Modern Haiku: $5 per printed page for prose, paid on acceptance",
+      "excerpt": "Modern Haiku pays a standard rate of $5 per printed page for prose, paid upon acceptance. It does not consider AI-generated work, asks for no more than one submission per reading period, and responds by email.",
+      "officialUrl": "https://modernhaiku.org/submissions.html",
+      "applyUrl": "https://modernhaiku.org/submissions.html",
+      "applyEmail": null,
+      "applyMethod": "See guidelines",
+      "sources": [
+        {
+          "name": "Modern Haiku — Submissions (official)",
+          "url": "https://modernhaiku.org/submissions.html"
+        }
+      ],
+      "eligibility": {
+        "summary": "No stated country restriction on the guidelines page.",
+        "mode": "not-stated",
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": true
+      },
+      "writingTypes": [
+        "poetry",
+        "essays",
+        "reviews"
+      ],
+      "writingTypeLabel": "Haiku, senryu and prose about haiku",
+      "pay": {
+        "currency": "USD",
+        "amountMin": 5,
+        "amountMax": 5,
+        "display": "$5 per printed page for prose",
+        "conditions": "Official submissions page: the standard rate of payment for prose is $5 per printed page, paid upon acceptance. The rate is per printed page, so the total depends on how the prose is set.",
+        "timing": "Upon acceptance"
+      },
+      "wordCount": {
+        "min": null,
+        "max": null,
+        "display": "No prose length limit stated on the submissions page"
+      },
+      "response": {
+        "label": "By email; editors cannot correspond in depth about unaccepted work",
+        "band": "not-stated",
+        "official": true
+      },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "prohibited",
+      "whatTheyWant": [
+        "Haiku and senryu.",
+        "Prose about haiku, paid at $5 per printed page."
+      ],
+      "whatTheyDontWant": [
+        "AI-generated work. It will not be considered.",
+        "More than one submission per reading period."
+      ],
+      "requirements": [
+        "Send no more than one submission per reading period.",
+        "Expect a response by email.",
+        "Do not expect extended correspondence about work that is not accepted — the editors say time constraints prevent it."
+      ],
+      "rights": "Submissions carry the author's copyright notice. No further rights transfer is stated on the submissions page.",
+      "howToSubmit": [
+        "Read https://modernhaiku.org/submissions.html before sending.",
+        "One submission per reading period — respect it.",
+        "Prose is paid per printed page, so length does affect the total."
+      ],
+      "keywords": [
+        "modern haiku",
+        "haiku",
+        "senryu",
+        "prose",
+        "$5 per printed page",
+        "paid on acceptance",
+        "one submission per period",
+        "no ai"
+      ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-30",
+      "publishedAt": "2026-09-30",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "fantastic-other",
+      "slug": "fantastic-other",
+      "publication": "Fantastic Other",
+      "title": "Fiction, flash fiction, poetry and art",
+      "seoTitle": "Fantastic Other: $5 token payment, rights revert on publication",
+      "excerpt": "Fantastic Other offers a token payment of $5 USD for each accepted piece, paid through PayPal, and says it hopes to improve that in future. Submissions must be original, not AI-generated, and unpublished. On publication, rights revert back to the author.",
+      "officialUrl": "https://fantasticother.com/submissions/",
+      "applyUrl": "https://fantasticother.com/submissions/",
+      "applyEmail": null,
+      "applyMethod": "Email — genre in the subject line",
+      "sources": [
+        {
+          "name": "Fantastic Other — Submissions (official)",
+          "url": "https://fantasticother.com/submissions/"
+        }
+      ],
+      "eligibility": {
+        "summary": "No stated country restriction on the guidelines page.",
+        "mode": "not-stated",
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": true
+      },
+      "writingTypes": [
+        "fiction",
+        "poetry"
+      ],
+      "writingTypeLabel": "Fiction, flash fiction, poetry and art",
+      "pay": {
+        "currency": "USD",
+        "amountMin": 5,
+        "amountMax": 5,
+        "display": "$5 USD token payment per accepted piece, via PayPal",
+        "conditions": "Official submissions page: Fantastic Other is currently only able to offer a token payment of $5 USD for each accepted piece, paid through PayPal, and states it hopes to improve this payment in the future. BRYME records it as the token it is described as.",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "min": null,
+        "max": null,
+        "display": "No word limit stated on the submissions page"
+      },
+      "response": {
+        "label": "Not stated; feedback and quick-response routes exist",
+        "band": "not-stated",
+        "official": true
+      },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "prohibited",
+      "whatTheyWant": [
+        "Fiction, flash fiction, poetry and art.",
+        "Both new and previously unpublished work from writers at any stage."
+      ],
+      "whatTheyDontWant": [
+        "AI-generated work.",
+        "Previously published work."
+      ],
+      "requirements": [
+        "Email your submission with Fiction, Flash Fiction, Poetry or Art in the email title.",
+        "If you are submitting in multiple genres, send separate emails for each.",
+        "Write without AI assistance and send unpublished work only.",
+        "Feedback Response and Quick Response submission routes are available if you want them."
+      ],
+      "rights": "On publication, rights revert back to the author.",
+      "howToSubmit": [
+        "Read https://fantasticother.com/submissions/ before sending.",
+        "Put the genre in the subject line — it is how submissions are routed.",
+        "One genre per email."
+      ],
+      "keywords": [
+        "fantastic other",
+        "fiction",
+        "flash fiction",
+        "poetry",
+        "art",
+        "$5 token",
+        "paypal",
+        "rights revert",
+        "no ai"
+      ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-30",
+      "publishedAt": "2026-09-30",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "conjunctions",
+      "slug": "conjunctions",
+      "publication": "Conjunctions",
+      "title": "Experimental fiction, nonfiction and poetry",
+      "seoTitle": "Conjunctions: AI banned, except where the work is about it",
+      "excerpt": "Conjunctions accepts submissions electronically via Submittable twice a year, during its fall and winter reading periods. Generative AI tools may not be used to write, draft or outline submitted content — with a rare exception for pieces that engage with the tool in an intentional, artistic and transparent manner. Basic spell-checking and grammar tools are acceptable.",
+      "officialUrl": "https://conjunctions.com/about/submit/",
+      "applyUrl": "https://conjunctions.com/about/submit/",
+      "applyEmail": "info@conjunctions.com",
+      "applyMethod": "Submittable, twice a year — email only for accessibility",
+      "sources": [
+        {
+          "name": "Conjunctions — Submit (official)",
+          "url": "https://conjunctions.com/about/submit/"
+        }
+      ],
+      "eligibility": {
+        "summary": "No stated country restriction on the guidelines page.",
+        "mode": "not-stated",
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": true
+      },
+      "writingTypes": [
+        "fiction",
+        "creative-nonfiction",
+        "poetry"
+      ],
+      "writingTypeLabel": "Experimental fiction, nonfiction and poetry",
+      "pay": {
+        "currency": null,
+        "amountMin": null,
+        "amountMax": null,
+        "display": "Not stated on the public submit page",
+        "conditions": "The public submit page sets out the reading periods, the submission route and the AI policy but publishes no payment rate, so BRYME records no figure.",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "min": null,
+        "max": null,
+        "display": "No length limit stated on the public submit page"
+      },
+      "response": {
+        "label": "Not stated",
+        "band": "not-stated",
+        "official": false
+      },
+      "submissionStatus": "open",
+      "deadline": {
+        "date": null,
+        "display": "Submissions are accepted twice a year, during the fall and winter reading periods. Check the site, the newsletter or Conjunctions' Instagram, Facebook and Bluesky for the earliest news of each period.",
+        "recurring": true
+      },
+      "aiPolicy": "limited",
+      "whatTheyWant": [
+        "Experimental fiction, nonfiction and poetry.",
+        "Pieces that engage with AI in an intentional, artistic and transparent manner — the one stated exception to the generative AI ban."
+      ],
+      "whatTheyDontWant": [
+        "Using generative AI tools to write, draft or outline submitted content. Any submission found to be partially or wholly generated by AI is rejected.",
+        "Submissions outside the fall and winter reading periods."
+      ],
+      "requirements": [
+        "Submit electronically via Submittable during a fall or winter reading period.",
+        "Basic spell-checking and grammar tools are acceptable; generative AI is not.",
+        "If a disability prevents you from using Submittable, email info@conjunctions.com — that route exists specifically for accessibility.",
+        "Check the site or newsletter for when each reading period opens."
+      ],
+      "rights": "Not stated on the public submit page.",
+      "howToSubmit": [
+        "Read https://conjunctions.com/about/submit/ and wait for an open reading period.",
+        "If your work is genuinely about AI, the exception may apply — but it has to be intentional, artistic and transparent.",
+        "The email route is for accessibility, not convenience."
+      ],
+      "keywords": [
+        "conjunctions",
+        "bard college",
+        "experimental",
+        "fiction",
+        "nonfiction",
+        "poetry",
+        "fall and winter reading periods",
+        "ai exception",
+        "submittable"
+      ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-30",
+      "publishedAt": "2026-09-30",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "wordswell-journal",
+      "slug": "wordswell-journal",
+      "publication": "WordSwell Journal",
+      "title": "Poetry and prose",
+      "seoTitle": "WordSwell Journal: prose 500–2,500 words, copyright stays yours",
+      "excerpt": "WordSwell Journal takes up to three poems totalling nine pages or less, or one piece of prose between 500 and 2,500 words with the word count noted at the top of the document. Accepted writers retain copyright, reprints are welcome if you hold the rights, and the current response time is about six months to a year.",
+      "officialUrl": "https://www.wordswelljournal.org/submissions.html",
+      "applyUrl": "https://www.wordswelljournal.org/submissions.html",
+      "applyEmail": null,
+      "applyMethod": "Email — “Submission” plus genre and name in the subject line",
+      "sources": [
+        {
+          "name": "WordSwell Journal — Submissions (official)",
+          "url": "https://www.wordswelljournal.org/submissions.html"
+        }
+      ],
+      "eligibility": {
+        "summary": "No stated country restriction on the guidelines page.",
+        "mode": "not-stated",
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": true
+      },
+      "writingTypes": [
+        "poetry",
+        "fiction",
+        "creative-nonfiction"
+      ],
+      "writingTypeLabel": "Poetry and prose",
+      "pay": {
+        "currency": null,
+        "amountMin": null,
+        "amountMax": null,
+        "display": "Not stated on the public submissions page",
+        "conditions": "The public submissions page sets out piece limits, the copyright position and the response time but publishes no payment rate, so BRYME records no figure.",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "min": 500,
+        "max": 2500,
+        "display": "Prose 500–2,500 words, double spaced; poetry up to 3 poems totalling 9 pages or less in 12-point font"
+      },
+      "response": {
+        "label": "About six months to a year",
+        "band": "3-plus-months",
+        "official": true
+      },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "not-stated",
+      "whatTheyWant": [
+        "Prose of 500 to 2,500 words, double spaced, with the word count noted at the top of the document.",
+        "Up to three poems totalling nine pages or less, in 12-point font.",
+        "Reprints, provided you hold the copyright.",
+        "Writers at any stage — the journal says explicitly that whether you are new or previously published, it wants to hear from you."
+      ],
+      "whatTheyDontWant": [
+        "Prose outside the 500 to 2,500 word band.",
+        "Reprints where you no longer hold the copyright."
+      ],
+      "requirements": [
+        "Email your submission with \"Submission\" in the subject line plus your genre and name — for example \"Submission – Poetry – Jane Doe\".",
+        "Double-space prose and put the word count at the top.",
+        "Set poetry in 12-point font, three poems and nine pages at most.",
+        "Simultaneous submissions are accepted, but notify the journal immediately if a piece is accepted elsewhere.",
+        "After six months you may send an inquiry with \"Inquiry\" in the subject line."
+      ],
+      "rights": "If your work is accepted, you retain the copyright.",
+      "howToSubmit": [
+        "Read https://www.wordswelljournal.org/submissions.html before sending.",
+        "The subject line format is specific — follow it.",
+        "Budget for six months to a year before inquiring."
+      ],
+      "keywords": [
+        "wordswell journal",
+        "poetry",
+        "prose",
+        "500-2500 words",
+        "copyright retained",
+        "reprints welcome",
+        "6 month response"
+      ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-30",
+      "publishedAt": "2026-09-30",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "the-fictional-cafe",
+      "slug": "the-fictional-cafe",
+      "publication": "The Fictional Café",
+      "title": "Poetry and prose",
+      "seoTitle": "The Fictional Café: unpaid non-profit, 4–8 poems minimum",
+      "excerpt": "The Fictional Café describes itself as a non-profit labour of love and states it is unable to provide an honorarium for accepted submissions. Poets are asked to send a single document of four to eight poems or a minimum of 200 words; single poems or collections under 200 words are not considered.",
+      "officialUrl": "https://fictionalcafe.com/submit/",
+      "applyUrl": "https://fictionalcafe.com/submit/",
+      "applyEmail": "submissions@fictionalcafe.com",
+      "applyMethod": "Email — work as an attachment",
+      "sources": [
+        {
+          "name": "The Fictional Café — Submit (official)",
+          "url": "https://fictionalcafe.com/submit/"
+        }
+      ],
+      "eligibility": {
+        "summary": "No stated country restriction on the guidelines page.",
+        "mode": "not-stated",
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": true
+      },
+      "writingTypes": [
+        "poetry",
+        "fiction",
+        "creative-nonfiction"
+      ],
+      "writingTypeLabel": "Poetry and prose",
+      "pay": {
+        "currency": null,
+        "amountMin": null,
+        "amountMax": null,
+        "display": "Unpaid — a non-profit labour of love with no honorarium",
+        "conditions": "Official submit page: The Fictional Café states it is a non-profit labour of love and is unable to provide an honorarium for accepted submissions. BRYME records no figure because there is none.",
+        "timing": "Not applicable — unpaid"
+      },
+      "wordCount": {
+        "min": 200,
+        "max": null,
+        "display": "Poetry: a single document of 4–8 poems, or a minimum of 200 words"
+      },
+      "response": {
+        "label": "Not stated",
+        "band": "not-stated",
+        "official": false
+      },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "not-stated",
+      "whatTheyWant": [
+        "Poetry: a single document of four to eight poems, or a minimum of 200 words.",
+        "Prose."
+      ],
+      "whatTheyDontWant": [
+        "Single poems, or collections under 200 words — neither is considered.",
+        "An expectation of payment. The café is explicit that there is none."
+      ],
+      "requirements": [
+        "Send your work as an attachment to your email, in Word or a similar word processing format.",
+        "Email submissions@fictionalcafe.com.",
+        "Send four to eight poems in a single document, or at least 200 words."
+      ],
+      "rights": "Not stated on the official submit page.",
+      "howToSubmit": [
+        "Read https://fictionalcafe.com/submit/ before sending.",
+        "Do not send one short poem — the 200-word floor is enforced.",
+        "Unpaid; submit for the publication."
+      ],
+      "keywords": [
+        "the fictional cafe",
+        "poetry",
+        "prose",
+        "unpaid",
+        "non-profit",
+        "4-8 poems",
+        "200 words minimum"
+      ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-30",
+      "publishedAt": "2026-09-30",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "five-on-the-fifth",
+      "slug": "five-on-the-fifth",
+      "publication": "Five on the Fifth",
+      "title": "Fiction, nonfiction, poetry and art",
+      "seoTitle": "Five on the Fifth: FNAR, permanent archive, Submittable only",
+      "excerpt": "Five on the Fifth asks for First North American Rights to publish. Following publication all rights revert to the author, but the magazine requires permission to archive your work permanently in its Previous Issues section. It accepts submissions exclusively through Submittable, where an optional $3 tip jar supports the magazine.",
+      "officialUrl": "https://www.fiveonthefifth.com/submit",
+      "applyUrl": "https://www.fiveonthefifth.com/submit",
+      "applyEmail": null,
+      "applyMethod": "Submittable only",
+      "sources": [
+        {
+          "name": "Five on the Fifth — Submit (official)",
+          "url": "https://www.fiveonthefifth.com/submit"
+        }
+      ],
+      "eligibility": {
+        "summary": "No stated country restriction on the guidelines page.",
+        "mode": "not-stated",
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": true
+      },
+      "writingTypes": [
+        "fiction",
+        "creative-nonfiction",
+        "poetry"
+      ],
+      "writingTypeLabel": "Fiction, nonfiction, poetry and art",
+      "pay": {
+        "currency": null,
+        "amountMin": null,
+        "amountMax": null,
+        "display": "Not stated; an optional $3 tip jar supports the magazine",
+        "conditions": "The public submit page describes an optional Fiction/Nonfiction Tip Jar on its Submittable page, where a $3 contribution leaves the magazine $1.86 after fees. That is a donation from writers, not payment to them, and BRYME does not record it as either. No contributor rate is published.",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "min": null,
+        "max": null,
+        "display": "No length limit stated on the public submit page"
+      },
+      "response": {
+        "label": "Not stated",
+        "band": "not-stated",
+        "official": false
+      },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "not-stated",
+      "whatTheyWant": [
+        "Fiction, nonfiction, poetry and art.",
+        "Writers reachable by email or a social media account."
+      ],
+      "whatTheyDontWant": [
+        "Submissions sent anywhere other than Submittable."
+      ],
+      "requirements": [
+        "Submit exclusively through Submittable.",
+        "Make sure the magazine can reach you by email or a social media account.",
+        "The $3 tip jar is optional support, not a fee — nothing is required."
+      ],
+      "rights": "Five on the Fifth asks for First North American Rights to publish. Following publication all rights revert back to the author, but the magazine requires permission to permanently archive your work online in its Previous Issues section.",
+      "howToSubmit": [
+        "Read https://www.fiveonthefifth.com/submit before sending.",
+        "Submittable is the only route.",
+        "Note the permanent archive condition — rights revert, but the archive does not come down."
+      ],
+      "keywords": [
+        "five on the fifth",
+        "fiction",
+        "nonfiction",
+        "poetry",
+        "fnar",
+        "permanent archive",
+        "submittable",
+        "tip jar"
+      ]
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-09-30",
+      "publishedAt": "2026-09-30",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "hanging-loose",
+      "slug": "hanging-loose",
+      "publication": "Hanging Loose",
+      "title": "Poetry, flash fiction and short fiction",
+      "seoTitle": "Hanging Loose: for high school writers, up to six poems",
+      "excerpt": "Hanging Loose asks high school age writers to send up to six poems, or flash fiction, or short fiction of up to 1,000 words, as an email attachment, with a note in the body of the email identifying yourself as a high school age writer and giving your school and age. That is a genuine eligibility gate, so it is recorded as one.",
+      "officialUrl": "https://www.hangingloosepress.com/submissions/",
+      "applyUrl": "https://www.hangingloosepress.com/submissions/",
+      "applyEmail": "HighSchool@hangingloosepress.com",
+      "applyMethod": "Email attachment — high school writers only",
+      "sources": [
+        {
+          "name": "Hanging Loose — Submissions (official)",
+          "url": "https://www.hangingloosepress.com/submissions/"
+        }
+      ],
+      "eligibility": {
+        "summary": "Restricted to high school age writers. Hanging Loose asks submitters to include a note in the body of the email identifying themselves as a high school age writer and giving the name of their school and their age. Writers outside that group are not the intended submitters for this route.",
+        "mode": "restricted",
+        "includesGroups": [
+          "high school age writers"
+        ],
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": false
+      },
+      "writingTypes": [
+        "poetry",
+        "fiction"
+      ],
+      "writingTypeLabel": "Poetry, flash fiction and short fiction",
+      "pay": {
+        "currency": null,
+        "amountMin": null,
+        "amountMax": null,
+        "display": "Not stated on the public submissions page",
+        "conditions": "The public submissions page sets out the piece limits and the identification requirement but publishes no payment rate. The prices on the page are for ordering sample copies — $21.00 including postage in print, $18 digital — and are not contributor payment.",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "min": null,
+        "max": 1000,
+        "display": "Up to six poems, or flash fiction, or short fiction up to 1,000 words"
+      },
+      "response": {
+        "label": "Not stated",
+        "band": "not-stated",
+        "official": false
+      },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "not-stated",
+      "whatTheyWant": [
+        "Up to six poems.",
+        "Flash fiction.",
+        "Short fiction of up to 1,000 words."
+      ],
+      "whatTheyDontWant": [
+        "Submissions from writers who are not high school age, for this route.",
+        "Submissions without the identifying note."
+      ],
+      "requirements": [
+        "Send all work as an email attachment to HighSchool@hangingloosepress.com.",
+        "Include a note in the body of the email identifying yourself as a high school age writer, and giving the name of your school and your age.",
+        "Keep short fiction to 1,000 words and send at most six poems."
+      ],
+      "rights": "Not stated on the public submissions page.",
+      "howToSubmit": [
+        "Read https://www.hangingloosepress.com/submissions/ before sending.",
+        "This route is specifically for high school age writers — the note in the email is required.",
+        "The prices on the site are for sample copies, not payment to contributors."
+      ],
+      "keywords": [
+        "hanging loose",
+        "hanging loose press",
+        "high school writers",
+        "poetry",
+        "flash fiction",
+        "short fiction",
+        "1000 words",
+        "restricted eligibility"
       ]
     }
   ]

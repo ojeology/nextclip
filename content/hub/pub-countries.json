@@ -902,5 +902,37 @@
   "the-journal": {
     "base": "US",
     "label": "United States"
+  },
+  "yellow-arrow-journal": {
+    "base": "",
+    "label": "International"
+  },
+  "modern-haiku": {
+    "base": "",
+    "label": "International"
+  },
+  "fantastic-other": {
+    "base": "",
+    "label": "International"
+  },
+  "conjunctions": {
+    "base": "",
+    "label": "International"
+  },
+  "wordswell-journal": {
+    "base": "",
+    "label": "International"
+  },
+  "the-fictional-cafe": {
+    "base": "",
+    "label": "International"
+  },
+  "five-on-the-fifth": {
+    "base": "",
+    "label": "International"
+  },
+  "hanging-loose": {
+    "base": "",
+    "label": "International"
   }
 }
