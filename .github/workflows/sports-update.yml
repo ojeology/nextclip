@@ -72,6 +72,30 @@ jobs:
         run: |
           git config user.name "BRYME data agent"
           git config user.email "agents@bryme.local"
-          git add content/sports-live.json ecosystem public sports
+          # `npm run build` regenerates EVERY desk, not just this one: the
+          # routing and title steps re-derive titles site-wide, so a rebuild
+          # also rewrites home/, fitness/, entertainment/ and the writers desk.
+          #
+          # This step used to commit `content/sports-live.json ecosystem public
+          # sports` only. The rest of the rebuild was left in the runner and
+          # thrown away, so the committed tree stopped matching a fresh build -
+          # and the NEXT quality run failed at "Confirm deterministic output",
+          # which skips `npm audit` and `npm test` (run 36726014320 failed that
+          # way, on a tree publishing a truncated title on a home/ page).
+          #
+          # The bot's own `npm test` cannot catch this: it runs against a tree
+          # that was just rebuilt, so it is self-consistent by construction. The
+          # inconsistency is created by the subset commit itself.
+          #
+          # `-u` stages every modified TRACKED file and no untracked ones, so the
+          # rebuilt tree is committed whole without sweeping in stray files.
+          git add -u
+          # validate:techhub rewrites its own report images during `npm test`.
+          # They are regenerated on every run and are deliberately not committed.
+          # HEAD is named explicitly: a bare `git checkout -- reports/` restores
+          # from the INDEX, which after `git add -u` still holds the modified
+          # files, so it unstages nothing (verified). Naming HEAD updates the
+          # index and the worktree together, which is what discards them.
+          git checkout HEAD -- reports/
           git commit -m "sports-data: auto-update $(date -u +'%Y-%m-%d %H:%M UTC')"
           git push
