@@ -127,7 +127,7 @@ WRITING_TYPE_MAP = {
     "articles": "articles", "listicle": "articles", "technical": "articles",
     "reading-list": "articles", "quiz": "articles", "gallery": "articles",
     "analysis": "analysis", "money": "analysis", "personal-finance": "analysis",
-    "opinion": "opinion", "humor": "opinion",
+    "opinion": "opinion", "humor": "opinion", "humour": "opinion",
     "reviews": "reviews", "book-review": "reviews", "culture": "reviews",
     "interviews": "interviews", "interview": "interviews",
     "translation": "translation",
@@ -170,10 +170,33 @@ AI_POLICY_LABELS = {
 
 
 def norm_types(rec: dict) -> list[str]:
-    """Folded, de-duplicated, order-stable writing types for one record."""
+    """Folded, de-duplicated, order-stable writing types for one record.
+
+    An unmapped tag raises instead of folding to "other". `.get(t, "other")`
+    looked like a harmless default and quietly cost a record its genre: the map
+    carried the American "humor" but not the British "humour", so points-in-case
+    - which tags itself humour, essays and articles - left the opinion filter it
+    belonged in and turned up in "Other" instead, inflating that bucket to 14
+    while the record's own label still read "Humour articles and lists". Nothing
+    failed at build time and no page showed a gap, which is the shape of error
+    this desk exists to avoid: a writer filtering by form would never have seen
+    a market that pays $35 an article.
+
+    With Phase 19 still to add several hundred records, a new spelling arriving
+    unmapped is a certainty rather than a possibility, so the build now stops and
+    names the tag and the record. Adding a spelling to WRITING_TYPE_MAP is a
+    deliberate act - deciding which canonical form a market belongs to - and
+    should never happen by accident in the negative.
+    """
     out = []
     for t in rec.get("writingTypes") or []:
-        n = WRITING_TYPE_MAP.get(t, "other")
+        if t not in WRITING_TYPE_MAP:
+            raise KeyError(
+                f"writingTypes tag {t!r} on {rec.get('slug')!r} is not in "
+                f"WRITING_TYPE_MAP. Add the spelling deliberately, mapped to the "
+                f"canonical form it belongs to; folding it into 'other' would drop "
+                f"the record out of every genre filter it should appear in.")
+        n = WRITING_TYPE_MAP[t]
         if n not in out:
             out.append(n)
     return out
