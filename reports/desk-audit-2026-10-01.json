@@ -1904,7 +1904,7 @@
    "furnitureShareOfText": 13.1,
    "words": {
     "min": 666,
-    "p10": 749,
+    "p10": 746,
     "median": 792,
     "max": 8349
    },
@@ -1919,9 +1919,9 @@
    "thin": [
     "/home/paint-calculator/",
     "/home/inverter-sizing-calculator/",
+    "/",
     "/privacy/",
-    "/home/mosquito-coils-and-plug-ins/",
-    "/home/disclaimer/"
+    "/home/mosquito-coils-and-plug-ins/"
    ],
    "templateHeavy": [],
    "duplicates": [],
@@ -22383,7 +22383,7 @@
   {
    "url": "/",
    "file": "public/index.html",
-   "words": 788,
+   "words": 701,
    "title": "THE BRYME — a house that reads the fine print so you don't have to",
    "desc_len": 123,
    "h2": 3,
@@ -22394,7 +22394,7 @@
    "rows": 0,
    "cards": 0,
    "external_links": 1,
-   "internal_links": 39,
+   "internal_links": 40,
    "has_jsonld": true,
    "newest_date": "",
    "type": "article",
@@ -22402,13 +22402,13 @@
    "deskLinks": 0,
    "controls": 1,
    "desk": "home",
-   "unique_words": 587,
-   "own_share": 0.745,
+   "unique_words": 504,
+   "own_share": 0.719,
    "units": 3,
    "inbound": 7,
    "new": false,
    "grade": "B",
-   "reason": "useful; 788w, 3 organised units, 1 outside sources"
+   "reason": "useful; 701w, 3 organised units, 1 outside sources"
   },
   {
    "url": "/event-calendar/",

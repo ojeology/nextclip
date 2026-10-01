@@ -1839,7 +1839,7 @@
           "url": "https://www.chickensoup.com/story-submissions/possible-book-topics"
         }
       ],
-      "lastVerified": "2026-09-16",
+      "lastVerified": "2026-10-01",
       "publishedAt": "2026-08-19",
       "eligibility": {
         "summary": "Official FAQ: they publish English-language stories from people around the world. You do not have to live in the United States.",
@@ -1871,8 +1871,8 @@
       },
       "submissionStatus": "deadline",
       "deadline": {
-        "date": "2026-09-30",
-        "display": "Re-checked on the official Possible Book Topics page 16 September 2026: Count your blessings closed 15 September 2026. Next open deadlines: Random acts of kindness 30 September 2026; Humorous stories 15 October 2026; Married/couples 30 November 2026; Positive thinking 28 February 2027; Pets 31 January 2027; Dogs 31 March 2027; Cats and Holiday stories 30 May 2027. The publisher extends deadlines often - the topic page is the authority.",
+        "date": "2026-10-15",
+        "display": "Re-checked on the official Possible Book Topics page 1 October 2026: Random acts of kindness closed 30 September 2026. Nearest open deadline is Humorous stories, extended to 15 October 2026. Then Married/couples, extended to 30 November 2026; Pets 31 January 2027; Positive thinking 28 February 2027; Dogs 31 March 2027; Cats and Holiday stories 30 May 2027. Each book topic carries its own deadline, and a story that fits two topics may be sent to both. The publisher extends deadlines often - the topic page is the authority.",
         "windowEnd": "2026-11-30",
         "recurring": false
       },
@@ -9962,7 +9962,7 @@
     {
       "status": "published",
       "vertical": "writing",
-      "lastVerified": "2026-09-06",
+      "lastVerified": "2026-10-01",
       "publishedAt": "2026-09-06",
       "experience": "emerging",
       "editorExperience": {
@@ -10015,10 +10015,10 @@
         "band": "1-3-months",
         "official": true
       },
-      "submissionStatus": "deadline",
+      "submissionStatus": "closed",
       "deadline": {
         "date": "2026-09-30",
-        "display": "Current call closes midnight UK time, Wednesday 30 September 2026",
+        "display": "Three seasonal calls a year. The call that closed at midnight UK time on Wednesday 30 September 2026 has ended. The Fiction Desk says its winter call \"will be opening soon\" but publishes no date on its submissions page and asks writers to join the newsletter instead. Re-checked 1 October 2026.",
         "windowEnd": "2026-09-30",
         "recurring": true
       },
@@ -10337,7 +10337,7 @@
     {
       "status": "published",
       "vertical": "writing",
-      "lastVerified": "2026-09-06",
+      "lastVerified": "2026-10-01",
       "publishedAt": "2026-09-06",
       "experience": "emerging",
       "editorExperience": {
@@ -10388,13 +10388,14 @@
         "band": "not-stated",
         "official": false
       },
-      "submissionStatus": "deadline",
+      "submissionStatus": "upcoming",
       "deadline": {
-        "date": "2026-09-30",
-        "display": "Open 1–30 September 2026. Further 2026 windows: 1–31 December. Poetry is closed.",
-        "windowStart": "2026-09-01",
-        "windowEnd": "2026-09-30",
-        "recurring": true
+        "date": "2026-12-31",
+        "display": "Granta opens four windows in 2026: 1-31 March, 1-30 June, 1-30 September and 1-31 December. The September window closed on 30 September 2026; the next opens at 10 a.m. UK time on 1 December and closes at midnight UK time on 31 December 2026. Poetry is closed, though Granta says it aims to reopen soon. Re-checked 1 October 2026.",
+        "windowStart": "2026-12-01",
+        "windowEnd": "2026-12-31",
+        "recurring": true,
+        "openingDate": "2026-12-01"
       },
       "aiPolicy": "not-stated",
       "whatTheyWant": [
@@ -12219,7 +12220,7 @@
     {
       "status": "published",
       "vertical": "writing",
-      "lastVerified": "2026-09-06",
+      "lastVerified": "2026-10-01",
       "publishedAt": "2026-09-06",
       "experience": "not-stated",
       "editorExperience": {
@@ -12273,11 +12274,14 @@
         "band": "not-stated",
         "official": false
       },
-      "submissionStatus": "open",
+      "submissionStatus": "upcoming",
       "deadline": {
-        "display": "Australian writers and subscribers from anywhere: 1 February – 30 September. Anyone anywhere: 1–14 March only.",
-        "windowEnd": "2026-09-30",
-        "recurring": true
+        "display": "Two reading periods a year. Australian writers and subscribers from anywhere: 1 February to 30 September. Anyone anywhere: 1-14 March only. The 2026 window closed on 30 September 2026; the next opens 1 February 2027, and a writer who is neither Australian nor a subscriber has only 1-14 March 2027. Re-checked 1 October 2026.",
+        "windowEnd": "2027-09-30",
+        "recurring": true,
+        "date": "2027-09-30",
+        "openingDate": "2027-02-01",
+        "windowStart": "2027-02-01"
       },
       "aiPolicy": "prohibited",
       "whatTheyWant": [
@@ -12585,7 +12589,7 @@
     {
       "status": "published",
       "vertical": "writing",
-      "lastVerified": "2026-09-06",
+      "lastVerified": "2026-10-01",
       "publishedAt": "2026-09-06",
       "experience": "emerging",
       "editorExperience": {
@@ -12636,11 +12640,12 @@
         "band": "not-stated",
         "official": false
       },
-      "submissionStatus": "deadline",
+      "submissionStatus": "closed",
       "deadline": {
-        "display": "The general fall 2026 window closed early due to overwhelming response. Ecotone is open to fee-free submissions from current subscribers for the month of September 2026. Two general reading periods a year begin in January/February and August/September, plus a Valentine's Day window.",
+        "display": "Fall 2026: Ecotone closed its general window early due to overwhelming response, and the fee-free September window for current subscribers has now passed. Two general reading periods a year begin in January/February and August/September, plus a Valentine's Day window; Ecotone publishes months rather than dates and says it adjusts windows for administrative reasons, so the next general period begins in January or February 2027. Re-checked 1 October 2026.",
         "windowEnd": "2026-09-30",
-        "recurring": true
+        "recurring": true,
+        "date": "2026-09-30"
       },
       "aiPolicy": "not-stated",
       "whatTheyWant": [
@@ -23036,7 +23041,7 @@
     {
       "status": "published",
       "vertical": "writing",
-      "lastVerified": "2026-09-30",
+      "lastVerified": "2026-10-01",
       "publishedAt": "2026-09-30",
       "experience": "not-stated",
       "editorExperience": {
@@ -23087,12 +23092,14 @@
         "band": "2-4-weeks",
         "official": true
       },
-      "submissionStatus": "open",
+      "submissionStatus": "upcoming",
       "deadline": {
-        "display": "The August-September window runs 1 August 2026 to 30 September 2026",
-        "windowStart": "2026-08-01",
-        "windowEnd": "2026-09-30",
-        "recurring": true
+        "display": "Two reading periods a year: 1 February to 31 March, and 1 August to 30 September. The August-September 2026 window closed on 30 September 2026; the next opens 1 February 2027. Re-checked 1 October 2026.",
+        "windowStart": "2027-02-01",
+        "windowEnd": "2027-03-31",
+        "recurring": true,
+        "date": "2027-03-31",
+        "openingDate": "2027-02-01"
       },
       "aiPolicy": "not-stated",
       "whatTheyWant": [

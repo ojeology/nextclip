@@ -151,23 +151,39 @@ for o in recent:
 # ranking would be a money claim the site's own rules require jurisdiction
 # clarity for. The fallback stays as it was.
 _BY_SLUG = {o.get("slug"): o for o in _OPPS_DOC["opportunities"]}
-_PICKS = ["the-sun-magazine", "longreads-personal-essay",
-          "noema-magazine", "a-public-space-fiction"]
-STRONG = [(o.get("publication") or slug, f"/writers/writing/{slug}/", _pay_str(o))
-          for slug in _PICKS if (o := _BY_SLUG.get(slug))]
-# Fallback if those don't exist, will be validated and replaced by recent
+# The pages Search Console named as top performers for 2026-09-20→29, as record slugs.
+# Two of the four entries here were stale. "noema-magazine" is recorded as `noema`, so a
+# genuine top performer was being dropped over a spelling; "a-public-space-fiction" has
+# no dossier at all — the export named a page this desk never wrote up, and inventing one
+# to fill the slot is not an option.
+#
+# Both were swallowed by the old fallback, which topped the strip up from RECENT_CARDS
+# whenever fewer than four picks resolved. RECENT_CARDS is ordered by lastVerified, so
+# the strip printed whichever markets happened to be re-checked most recently under a
+# heading reading "STRONGEST · GSC 2026-09-20→29 · POS 4–13" with each card labelled
+# "Top performing" — a claim about search traffic for records the traffic data never
+# mentioned, on the home page and the ecosystem hub, and it moved every time any record
+# was re-verified. A strip that cites Search Console has to contain only what Search
+# Console named, so the fallback is gone and a pick that does not resolve stops the build
+# naming the slug rather than being quietly replaced.
+_PICKS = ["the-sun-magazine", "longreads-personal-essay", "noema"]
+
 def _exists_route(r):
     return r in ALLOWLIST or (ROOT / r.strip("/") / "index.html").exists()
 
-STRONG = [(n,r,b) for n,r,b in STRONG if _exists_route(r) and b]
-if len(STRONG) < 4:
-    # fill from recent
-    for pub, route, pay, title, ver in RECENT_CARDS:
-        if route not in [x[1] for x in STRONG]:
-            STRONG.append((pub, route, _clip(pay)))
-        if len(STRONG) >= 4:
-            break
-STRONG = STRONG[:4]
+_no_record = [s for s in _PICKS if s not in _BY_SLUG]
+if _no_record:
+    raise SystemExit(f"build-landing: GSC pick(s) with no record: {_no_record}")
+STRONG = []
+for _slug in _PICKS:
+    _o = _BY_SLUG[_slug]
+    _route = f"/writers/writing/{_slug}/"
+    _blurb = _pay_str(_o)
+    if not _exists_route(_route):
+        raise SystemExit(f"build-landing: GSC pick {_slug} resolves to no route at {_route}")
+    if not _blurb:
+        raise SystemExit(f"build-landing: GSC pick {_slug} has no pay blurb to print")
+    STRONG.append((_o.get("publication") or _slug, _route, _blurb))
 
 
 TOOLS = [

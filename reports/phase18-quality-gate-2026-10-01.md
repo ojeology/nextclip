@@ -24,7 +24,7 @@ No score is given and nothing here claims the site is perfect or that Google wil
 
 ### 1. Does the homepage immediately communicate Writers as BRYME's flagship?
 
-**MEASURED** — homepage h1: “We read the fine print so you don't have to.”; 69 distinct links into /writers/ from the home page
+**MEASURED** — homepage h1: “We read the fine print so you don't have to.”; 67 distinct links into /writers/ from the home page
 
 The home page's own headline is quoted above rather than paraphrased. How strongly it reads as Writers-first is a copy decision for the owner; what is measured here is that the Writers section is linked from the home page in the first screen and throughout.
 
@@ -60,7 +60,7 @@ Phase 4 fetched each publication's own submissions or guidelines page and stored
 
 ### 7. Are changing details marked and maintained?
 
-**MEASURED** — /writers/what-changed/ is 3215 words and lists checks newest-first; 288 records carry a lastVerified date; dataset updatedAt 2026-10-01
+**MEASURED** — /writers/what-changed/ is 3308 words and lists checks newest-first; 288 records carry a lastVerified date; dataset updatedAt 2026-10-01
 
 Every requirement that can change carries the date it was last read, and the log page states that a date there means a human opened the publication that day. The maintenance risk is honest and worth stating: dates age. 288 records can be re-read, but nothing forces it to happen — that is a process the owner has to keep, not something the build can enforce.
 
@@ -78,7 +78,7 @@ Each tool page either contains a working input or loads a tool bundle — none i
 
 ### 10. Are weak pages identified?
 
-**EVIDENCE** — quality audit: {"wordsMedian": 1154, "uniqueWordsMedian": 501, "citesNothing": 21, "noInbound": 0, "noJsonLd": 0, "thinDesc": 0}
+**EVIDENCE** — quality audit: {"wordsMedian": 1154, "uniqueWordsMedian": 503, "citesNothing": 21, "noInbound": 0, "noJsonLd": 0, "thinDesc": 0}
 
 Weak pages were graded rather than guessed at, and the phase reports name them individually. Identification is not the same as repair: pages flagged as thin still exist and are still indexed unless a phase intentionally noindexed them. The reports are the place to look for the list.
 
@@ -138,7 +138,7 @@ Checked mechanically: navigation, typography, components, breadcrumbs, research 
 
 ### 20. Would a real writer return to BRYME because it is useful?
 
-**JUDGEMENT** — return-visit surfaces: weekly digest, /writers/what-changed/ (3215 words, dated), submission tracker, writing calendar, 48 tools, Writing Studio with local drafts
+**JUDGEMENT** — return-visit surfaces: weekly digest, /writers/what-changed/ (3308 words, dated), submission tracker, writing calendar, 48 tools, Writing Studio with local drafts
 
 This is the one question no measurement answers. What can be said is what exists for a returning reader: dated change tracking, a saveable tracker, tools that work offline in the browser, and a digest. Whether that is enough is the owner's call, and the honest answer needs real traffic rather than a build report — which is what Phase 15's Search Console data was for.
 

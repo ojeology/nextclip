@@ -180,7 +180,7 @@
   "weight": {
    "medianBytes": 40207,
    "p90Bytes": 65266,
-   "maxBytes": 523958
+   "maxBytes": 523983
   },
   "breadcrumbs": "BreadcrumbList coverage is measured by the JSON-LD type census above; every desk page also prints a visible nav.breadcrumb (checked by validate:browser)"
  },
@@ -252,7 +252,7 @@
    },
    {
     "route": "/writers/writing-opportunities/poetry/",
-    "htmlKb": 289.2
+    "htmlKb": 289.3
    },
    {
     "route": "/tech/",
@@ -278,7 +278,7 @@
    "inMainWithoutLazyLoading": 0,
    "note": "counted inside <main> only. The 26px brand mark in the site header is eager everywhere by design; lazy-loading an above-the-fold logo would hurt, not help, and an earlier pass reported it as 2,541 findings."
   },
-  "assetTotalsKb": 2711.9,
+  "assetTotalsKb": 2711.3,
   "largestAssets": [
    {
     "path": "/assets/vendor/pdfjs.worker.min.js",
@@ -298,7 +298,7 @@
    },
    {
     "path": "/assets/house-home.js",
-    "kb": 69.3
+    "kb": 68.7
    },
    {
     "path": "/assets/search-index.js",
