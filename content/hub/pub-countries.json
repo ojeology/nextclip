@@ -1106,5 +1106,9 @@
   "literary-fantasy-magazine": {
     "base": "",
     "label": "International"
+  },
+  "maine-review": {
+    "base": "",
+    "label": "International"
   }
 }

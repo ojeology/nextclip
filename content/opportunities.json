@@ -25402,6 +25402,113 @@
       ],
       "simultaneousSubmissions": "accepted",
       "simultaneousNote": "Simultaneous submissions are allowed. Please inform us immediately if it is accepted elsewhere and accept our sincere congratulations. — https://www.thearcanist.net/submissions (read 2026-10-01)"
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-10-01",
+      "publishedAt": "2026-10-01",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "maine-review",
+      "slug": "maine-review",
+      "publication": "The Maine Review",
+      "title": "Prose: $25 per flash, $50 over 1,000 words; poetry $25 a poem",
+      "seoTitle": "The Maine Review: $25-$50 per piece, $3 to submit, free windows",
+      "excerpt": "The Maine Review pays a $25 honorarium per published flash piece and per poem, and $50 for prose of 1,001 words or more; artwork is paid $50 on publication. It reads 1 September to 30 November, alongside two other windows, and asks $3 per submission - the fee is the writer's cost. One prose piece of up to 3,000 words or three flashes, up to three poems, simultaneous work accepted with immediate withdrawal, and AI-generated writing refused.",
+      "officialUrl": "https://mainereview.submittable.com/submit",
+      "applyUrl": "https://mainereview.submittable.com/submit",
+      "applyEmail": null,
+      "applyMethod": "Online form through Submittable; one submission at a time.",
+      "sources": [
+        {
+          "name": "The Maine Review - Submissions (official)",
+          "url": "https://mainereview.submittable.com/submit"
+        }
+      ],
+      "eligibility": {
+        "summary": "Official page: no country restriction stated, and no sentence on the page states the review's country. Submitters are asked to wait a year after a publication before sending again.",
+        "mode": "not-stated",
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": true
+      },
+      "writingTypes": [
+        "fiction",
+        "creative-nonfiction",
+        "poetry",
+        "translation"
+      ],
+      "writingTypeLabel": "Fiction, nonfiction, poetry, translation and hybrid forms",
+      "pay": {
+        "currency": "USD",
+        "amountMin": 25,
+        "amountMax": 50,
+        "display": "$25 per published flash piece or poem, $50 for prose of 1,001 words or more",
+        "conditions": "Official page, Writer Payment: \"Fiction and Nonfiction writers receive a $25 honorarium per published flash (1,000 words or fewer) and a $50 honorarium for work 1,001 words or more. Poets receive a $25 honorarium per published poem.\" On the artwork call: \"Contributors are paid $50 upon publication.\" The page also asks a $3 fee per submission - \"of which we receive $1.86\" - which is the writer's cost and is not part of the rate.",
+        "timing": "On publication"
+      },
+      "wordCount": {
+        "min": null,
+        "max": 3000,
+        "display": "Prose: one piece of 3,000 words or fewer, though longer works of exceptional merit are considered, or three flash pieces of no more than 1,000 words each. Poetry: up to three poems, five pages total."
+      },
+      "response": {
+        "label": "Six months or longer",
+        "band": "3-plus-months",
+        "official": true
+      },
+      "submissionStatus": "open",
+      "deadline": {
+        "display": "Open 1 September to 30 November, one of three annual windows (1 January-31 March, 1 May-30 June, 1 September-30 November); free submissions also run 28 September to 5 October for Hispanic Heritage Month",
+        "openingDate": "2026-09-01",
+        "windowEnd": "2026-11-30",
+        "recurring": true
+      },
+      "aiPolicy": "prohibited",
+      "whatTheyWant": [
+        "Contemporary fiction, nonfiction and poetry, including work in translation and hybrid forms.",
+        "New, emerging and established writers; the page states a commitment to representation, innovation and literary artistry.",
+        "Artwork - photography, illustration and other forms - for the cover and section openings.",
+        "The free submission windows the review runs to keep the magazine accessible."
+      ],
+      "whatTheyDontWant": [
+        "AI-generated work: \"We do not publish AI-generated work. Such work will be automatically declined.\"",
+        "Multiple submissions at a time - the page says it cannot refund them.",
+        "Submitting again within a year of having work published in the review.",
+        "Querying before six months have passed."
+      ],
+      "requirements": [
+        "Read the general guidelines before submitting.",
+        "Submit through Submittable, one submission at a time.",
+        "Pay the $3 per-submission fee, or use a free window - 28 September to 5 October ran free for Hispanic Heritage Month.",
+        "Prose: one piece up to 3,000 words or three flash pieces of no more than 1,000 words each; poetry: up to three poems and five pages.",
+        "Format prose in 12-point Times New Roman, double-spaced, numbered pages, and include the word count in the cover letter.",
+        "Address the cover letter to the genre editor, and allow six months before querying."
+      ],
+      "rights": "Not stated on the guidelines page.",
+      "howToSubmit": [
+        "Read the general guidelines before sending.",
+        "Submit through the Submittable form during a reading window - 1 September to 30 November is open.",
+        "Check whether a free submission window is running before paying the $3 fee.",
+        "Send one submission at a time, with the word count in the cover letter.",
+        "Withdraw immediately if a simultaneous piece is accepted elsewhere, and wait a year after publication before sending again."
+      ],
+      "keywords": [
+        "the maine review",
+        "$25 per flash",
+        "$50 honorarium",
+        "$3 submission fee",
+        "free submission window",
+        "hispanic heritage month",
+        "no ai",
+        "simultaneous submissions",
+        "submittable"
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "We encourage simultaneous submissions, but please withdraw your submission immediately if it is accepted elsewhere. — https://mainereview.submittable.com/submit (read 2026-10-01)"
     }
   ]
 }
