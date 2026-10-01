@@ -10,15 +10,42 @@ tree, so the file can never advertise a phantom page.
 Honesty rules (master brief): no fabricated claims, counts read from the
 real sitemaps, review date = today (this file is regenerated each build).
 """
+import datetime as _dt
+import os
 import re
 import sys
-from datetime import date
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 PUB = ROOT / "public"
 ORIGIN = "https://thebryme.com"
-TODAY = date.today().isoformat()
+
+
+def _build_today() -> str:
+    """The build date, honouring SOURCE_DATE_EPOCH.
+
+    This file is the last generator that read the wall clock directly, and it
+    cost a CI run: the quality workflow pins SOURCE_DATE_EPOCH to the tree's own
+    date of record so any commit rebuilds byte-for-byte on any later day, and
+    then compares with `git diff --exit-code`. Every other stamp obeyed the pin;
+    this one did not, so the moment a build straddled midnight UTC the diff
+    failed on the `_Generated <date>_` line alone - and nothing about the site
+    had actually changed.
+
+    Same convention as _build_now() in build-writing-first.py, build-routing.py
+    and build-ecosystem.py. Behaviour is UNCHANGED when the variable is unset,
+    which is what production does: deploys stay date-fresh, only CI is pinned.
+    """
+    epoch = os.environ.get("SOURCE_DATE_EPOCH", "")
+    if epoch.isdigit():
+        try:
+            return _dt.datetime.fromtimestamp(int(epoch), _dt.timezone.utc).date().isoformat()
+        except (OverflowError, OSError, ValueError):
+            pass
+    return _dt.datetime.now(_dt.timezone.utc).date().isoformat()
+
+
+TODAY = _build_today()
 
 
 def sitemap_count(desk):
