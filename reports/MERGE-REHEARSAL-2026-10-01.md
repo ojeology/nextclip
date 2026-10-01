@@ -317,3 +317,29 @@ The branch is merge-ready at **280 records** against the main that exists now, w
 layer verified in full for the first time. Main has moved three times during this session and
 each move invalidated the previous rehearsal; the merge itself must be preceded by one more
 rehearsal against whatever main is at that moment.
+
+---
+
+# Addendum 3 — rehearsed at 288 records, notes re-audited
+
+| | |
+|---|---|
+| merge base | `9da69b439` |
+| branch | `9a9c6fff58` — 40 ahead |
+| main | `67b64a54c0` — 15 ahead |
+| merged tree | `571ede6326` |
+| conflicts | `content/opportunities.json` only |
+
+Independent three-way check against all three inputs: **0 violations**, nothing lost or
+invented, **141 branch-only records byte-identical**. Gates on the merged tree: build exit 0,
+all six gates exit 0, `audit_dockets.py` **288 publication pages, 8 docket rows, 1109
+unanswered rows, 0 problems**.
+
+**Note audit re-run, now 170 notes** (up from 164 — batches 21 and 22 added six): sentence
+renders on every page, correct reader-facing label on every page, no punctuation defects, no
+hyphen-form notes, and the three archived-source notes still in their legitimate second shape.
+**170 notes, 0 defects.**
+
+The pattern is now stable: each batch of records adds notes that can only be checked on a
+merged tree, and this rehearsal is the place that check happens. Nothing has been committed to
+main — the branch is verified, not merged.
