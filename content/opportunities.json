@@ -25722,6 +25722,704 @@
       ],
       "simultaneousSubmissions": "accepted",
       "simultaneousNote": "Simultaneous submissions are OK as long as you notify us if accepted elsewhere. — https://missourireview.com/submissions/ (read 2026-10-01)"
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-10-01",
+      "publishedAt": "2026-10-01",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "idaho-review",
+      "slug": "idaho-review",
+      "publication": "The Idaho Review",
+      "title": "Short stories: $300; poems: $75 each - plus two copies, no entry fee",
+      "seoTitle": "The Idaho Review: $300 a story, $75 a poem, no entry fee",
+      "excerpt": "The Idaho Review pays $300 for a short story and $75 for each accepted poem, sends two copies of the print issue, and charges no entry fee. It reads 8 September to 15 November, most stories run under 25 double-spaced pages, and simultaneous submissions are accepted with immediate withdrawal. It buys first worldwide serial rights and states nothing about AI; the nonfiction rate is not stated on the page.",
+      "officialUrl": "https://idahoreview.org/submit",
+      "applyUrl": "https://idahoreview.org/submit",
+      "applyEmail": null,
+      "applyMethod": "Online through Submittable; post is accepted only from incarcerated writers or writers with accessibility needs.",
+      "sources": [
+        {
+          "name": "The Idaho Review - Submissions (official)",
+          "url": "https://idahoreview.org/submit"
+        }
+      ],
+      "eligibility": {
+        "summary": "No stated country restriction on the guidelines page.",
+        "mode": "not-stated",
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": true
+      },
+      "writingTypes": [
+        "fiction",
+        "poetry",
+        "creative-nonfiction"
+      ],
+      "writingTypeLabel": "Short fiction, poetry and creative nonfiction",
+      "pay": {
+        "currency": "USD",
+        "amountMin": 75,
+        "amountMax": 300,
+        "display": "$300 per short story, $75 per accepted poem, plus two contributor copies",
+        "conditions": "Official page: \"We buy first worldwide serial rights and pay contributors $300 for short stories and $75 for each accepted poem. In addition, we send two copies of the print publication to contributing authors.\" The page's FAQ states \"There is no entry fee.\" The rate for creative nonfiction is not stated, so no figure is recorded for it.",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "min": null,
+        "max": null,
+        "display": "No designated page limit, though most stories published run under 25 double-spaced pages; the page asks for one submission per reading period"
+      },
+      "response": {
+        "label": "Six months or less",
+        "band": "3-plus-months",
+        "official": true
+      },
+      "submissionStatus": "open",
+      "deadline": {
+        "display": "Reading period 8 September to 15 November; the journal may close early on volume or reopen in winter or spring",
+        "openingDate": "2026-09-08",
+        "windowEnd": "2026-11-15",
+        "recurring": true
+      },
+      "aiPolicy": "not-stated",
+      "whatTheyWant": [
+        "Short stories, with most published pieces running under 25 double-spaced pages.",
+        "Poetry, paid per accepted poem.",
+        "Creative nonfiction of all kinds - the page says it is open to publishing all different kinds.",
+        "Work sent during the 8 September to 15 November reading period."
+      ],
+      "whatTheyDontWant": [
+        "More than one submission per reading period, unless the editors ask for more.",
+        "Mailed submissions, except from incarcerated writers or writers with accessibility needs that require post.",
+        "Simultaneous work that is accepted elsewhere without immediate withdrawal."
+      ],
+      "requirements": [
+        "Read https://idahoreview.org/submit before sending.",
+        "Submit through Submittable during the reading period that runs 8 September to 15 November; the journal may close early on volume.",
+        "Indicate the genre in the cover letter, and send one submission per reading period.",
+        "Withdraw immediately if a simultaneous piece is accepted elsewhere.",
+        "There is no entry fee."
+      ],
+      "rights": "First worldwide serial rights are bought on acceptance; the page states no other rights position.",
+      "howToSubmit": [
+        "Read https://idahoreview.org/submit before sending.",
+        "Submit once during the 8 September to 15 November window, through Submittable.",
+        "Say which genre the piece is in, in the cover letter.",
+        "Note the pay: $300 a story and $75 a poem, with two copies and no fee."
+      ],
+      "keywords": [
+        "idaho review",
+        "$300 per story",
+        "$75 per poem",
+        "no entry fee",
+        "boise state university",
+        "first worldwide serial rights",
+        "simultaneous submissions",
+        "september reading period",
+        "submittable"
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "Yes. If your submission is accepted elsewhere, please immediately withdraw it from consideration for publication in Idaho Review. — https://idahoreview.org/submit (read 2026-10-01)"
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-10-01",
+      "publishedAt": "2026-10-01",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "friction",
+      "slug": "friction",
+      "publication": "F(r)iction",
+      "title": "Fiction, nonfiction and poetry: $25 per final printed page plus copies",
+      "seoTitle": "F(r)iction: $25 per printed page, $2.50 to submit, no AI",
+      "excerpt": "F(r)iction pays $25 per final printed page and sends two free contributor copies, with a $2.50 charge per submission that the magazine says goes toward paying its contributors. It takes short fiction of 1,001-7,500 words, creative nonfiction up to 6,500, flash of 1,000 words or fewer, poetry, and reviews of 500-1,000 words. Simultaneous submissions are accepted with withdrawal, AI work is refused, and rights revert to the author on publication.",
+      "officialUrl": "https://frictionlit.org/about/submit",
+      "applyUrl": "https://frictionlit.org/about/submit",
+      "applyEmail": null,
+      "applyMethod": "Online form through Submittable; separate portals for the journal, the Log and contests.",
+      "sources": [
+        {
+          "name": "F(r)iction - Submit (official)",
+          "url": "https://frictionlit.org/about/submit"
+        }
+      ],
+      "eligibility": {
+        "summary": "Official page: no country restriction stated. The magazine is published by Brink Literacy Project, which the page names without stating where it is based.",
+        "mode": "not-stated",
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": true
+      },
+      "writingTypes": [
+        "fiction",
+        "creative-nonfiction",
+        "poetry",
+        "reviews"
+      ],
+      "writingTypeLabel": "Short fiction, creative nonfiction, flash, poetry and reviews",
+      "pay": {
+        "currency": "USD",
+        "amountMin": 25,
+        "amountMax": 25,
+        "display": "$25 per final printed page, plus two free contributor copies",
+        "conditions": "Official page, F(r)iction Series: \"Payment / $25 per final printed page and two free contributor's copies.\" The same card states \"Price / $2.50 per submission\", and the page explains: \"100% of our reading fees go toward paying the contributors who are printed in our[ magazine]\". The fee is the writer's cost and is not part of the rate.",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "min": null,
+        "max": 7500,
+        "display": "Short fiction 1,001-7,500 words; creative nonfiction up to 6,500 words; flash fiction 1,000 words or fewer, up to three pieces in a three-pack; reviews 500 words preferred, up to 1,000"
+      },
+      "response": {
+        "label": "Not publicly stated",
+        "band": "not-stated",
+        "official": false
+      },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "prohibited",
+      "whatTheyWant": [
+        "Short fiction, creative nonfiction, flash fiction and poetry, regardless of genre, style or origin.",
+        "Reviews of books and literary journals of 500-1,000 words.",
+        "Work by writers who opt in to having their details shared with the magazine's partner literary agents.",
+        "As many pieces as a writer likes - the page says to submit as many as you would like."
+      ],
+      "whatTheyDontWant": [
+        "Work from artificial intelligence generators or similar: \"No AI submissions\".",
+        "Prose outside the stated limits - fiction under 1,001 words belongs in flash, and nonfiction over 6,500 words is out of scope.",
+        "Simultaneous work that is selected elsewhere without withdrawing it."
+      ],
+      "requirements": [
+        "Read https://frictionlit.org/about/submit and the formatting guidelines before sending.",
+        "Submit through the correct portal: the F(r)iction Series portal is for journal submissions only, and contests have their own.",
+        "Pay the $2.50 per-submission charge, which the magazine says funds contributor payment.",
+        "Keep to the genre limits, and choose the three-pack for up to three flash pieces.",
+        "Withdraw immediately through Submittable if a simultaneous piece is selected elsewhere."
+      ],
+      "rights": "F(r)iction retains first publishing rights on works published in print or online, and publishing rights revert to the author upon publication.",
+      "howToSubmit": [
+        "Read https://frictionlit.org/about/submit before sending.",
+        "Submit through the F(r)iction Series portal; contests and the Log use their own.",
+        "Keep fiction between 1,001 and 7,500 words, nonfiction under 6,500, and flash under 1,000 - three to a three-pack.",
+        "Withdraw at once if a simultaneous piece is selected elsewhere.",
+        "Note the $2.50 submission charge and the $25 per printed page rate."
+      ],
+      "keywords": [
+        "friction",
+        "f(r)iction",
+        "$25 per printed page",
+        "$2.50 submission fee",
+        "brink literacy project",
+        "no ai",
+        "flash fiction",
+        "simultaneous submissions",
+        "submittable"
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "Simultaneous submissions are accepted, but please notify us immediately by choosing \"withdraw\" in Submittable if your work is selected for publication elsewhere. — https://frictionlit.org/about/submit (read 2026-10-01)"
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-10-01",
+      "publishedAt": "2026-10-01",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "berkeley-fiction-review",
+      "slug": "berkeley-fiction-review",
+      "publication": "Berkeley Fiction Review",
+      "title": "Short fiction: $25 per accepted story, and no submission fees ever",
+      "seoTitle": "Berkeley Fiction Review: $25 a story, free to submit, worldwide",
+      "excerpt": "Berkeley Fiction Review pays $25 for each accepted story and sends a complimentary copy of the issue, and states that it does not charge submission fees. It reads previously unpublished short fiction from around the world year-round, publishes annually, encourages simultaneous submissions, and asks for content warnings where they apply. Responses take eight months to a year, and the page states no AI policy.",
+      "officialUrl": "https://berkeleyfictionreview.org/submit/short-fiction",
+      "applyUrl": "https://berkeleyfictionreview.org/submit/short-fiction",
+      "applyEmail": null,
+      "applyMethod": "Online through the review's submission manager.",
+      "sources": [
+        {
+          "name": "Berkeley Fiction Review - Short fiction submissions (official)",
+          "url": "https://berkeleyfictionreview.org/submit/short-fiction"
+        }
+      ],
+      "eligibility": {
+        "summary": "Official page: \"We invite submissions of previously unpublished short stories from around the country and the world year-round.\"",
+        "mode": "worldwide",
+        "includesGroups": [],
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": false
+      },
+      "writingTypes": [
+        "fiction"
+      ],
+      "writingTypeLabel": "Short fiction",
+      "pay": {
+        "currency": "USD",
+        "amountMin": 25,
+        "amountMax": 25,
+        "display": "$25 per accepted story, plus a complimentary copy of the issue",
+        "conditions": "Official page: \"On that note, we now offer a $25 payment for accepted stories and continue to offer a complimentary copy of the Issue in which your story appears.\" And on cost: \"Unlike the majority of literary journals, we do not charge submission fees in the hopes that we can provide an opportunity for all authors, regardless of economic circumstances.\"",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "min": null,
+        "max": null,
+        "display": "No word limit stated; the review publishes one annual issue of short fiction"
+      },
+      "response": {
+        "label": "Eight months to a year",
+        "band": "3-plus-months",
+        "official": true
+      },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "not-stated",
+      "whatTheyWant": [
+        "Previously unpublished short fiction of any kind.",
+        "Stories that provoke a visceral reaction in the reader - the page names joy, fear, and the solace of being seen and understood.",
+        "Work from anywhere in the world; there is no country restriction."
+      ],
+      "whatTheyDontWant": [
+        "Previously published stories.",
+        "Work without a content warning where the material demands one - warnings do not affect the review process, but the page asks for them."
+      ],
+      "requirements": [
+        "Read https://berkeleyfictionreview.org/submit/short-fiction before sending.",
+        "Submit through the review's submission manager; there is no fee.",
+        "Include content warnings where the story contains particularly sensitive material.",
+        "Expect eight months to a year for a response, and note that the journal runs as a class, so submissions can sit between semesters."
+      ],
+      "rights": "Not stated on the submissions page.",
+      "howToSubmit": [
+        "Read https://berkeleyfictionreview.org/submit/short-fiction before sending.",
+        "Submit year-round through the submission manager - submissions are free.",
+        "Send one previously unpublished story, with content warnings where needed.",
+        "Expect a long wait: eight months to a year, with the journal's schedule set by the academic calendar."
+      ],
+      "keywords": [
+        "berkeley fiction review",
+        "$25 per story",
+        "no submission fees",
+        "university of california",
+        "short fiction",
+        "worldwide",
+        "simultaneous submissions",
+        "annual issue"
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "Simultaneous submissions are encouraged. — https://berkeleyfictionreview.org/submit/short-fiction (read 2026-10-01)"
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-10-01",
+      "publishedAt": "2026-10-01",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "blue-marble-review",
+      "slug": "blue-marble-review",
+      "publication": "Blue Marble Review",
+      "title": "Poetry, prose and art: $30 per published piece, $75 for cover art",
+      "seoTitle": "Blue Marble Review: $30 a piece, $75 cover art, students 13-22",
+      "excerpt": "Blue Marble Review pays $30 for each piece published online and $75 for cover art, and is open to students aged 13 to 22 - an age limit, not a country one. It publishes poetry, fiction, nonfiction, essays, opinion and travel writing up to 1,500 words, up to three pieces per submission, on a rolling basis four times a year. It takes First Serial Rights and the right to archive; it states nothing on fees, AI or response times.",
+      "officialUrl": "https://bluemarblereview.com/submit",
+      "applyUrl": "https://bluemarblereview.com/submit",
+      "applyEmail": null,
+      "applyMethod": "Online through the review's submission form.",
+      "sources": [
+        {
+          "name": "Blue Marble Review - Submit (official)",
+          "url": "https://bluemarblereview.com/submit"
+        }
+      ],
+      "eligibility": {
+        "summary": "Official page: \"We welcome submissions from students ages 13-22.\" The limit is age, not nationality - no country restriction is stated.",
+        "mode": "restricted",
+        "includesGroups": [
+          "students-13-to-22"
+        ],
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": false
+      },
+      "writingTypes": [
+        "poetry",
+        "fiction",
+        "creative-nonfiction",
+        "essays",
+        "articles",
+        "reviews"
+      ],
+      "writingTypeLabel": "Poetry, fiction, nonfiction, essays, opinion and travel writing, plus art",
+      "pay": {
+        "currency": "USD",
+        "amountMin": 30,
+        "amountMax": 75,
+        "display": "$30 per published piece; $75 for cover art",
+        "conditions": "Official page, Payment: \"Contributors published online in Blue Marble Review will receive $30 per published piece, $75 for cover art.\"",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "min": null,
+        "max": 1500,
+        "display": "Poetry, fiction and all prose forms up to 1,500 words; up to three pieces per submission; one to two pieces for nonfiction and essays"
+      },
+      "response": {
+        "label": "Not publicly stated",
+        "band": "not-stated",
+        "official": false
+      },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "not-stated",
+      "whatTheyWant": [
+        "Flash fiction, short stories and hybrid forms of 1,500 words or fewer.",
+        "Memoir, personal essays, travel adventures, and occasionally a research paper or book review.",
+        "Poetry, with one poem per page.",
+        "Photography and art, including cover art, which is paid at a higher rate."
+      ],
+      "whatTheyDontWant": [
+        "Prose over 1,500 words.",
+        "More than three pieces in one submission.",
+        "Submissions from writers outside the stated age range of 13 to 22."
+      ],
+      "requirements": [
+        "Read https://bluemarblereview.com/submit before sending.",
+        "Submit up to three pieces, each within 1,500 words.",
+        "Attach prose as a single double-spaced Word document; poetry may be single-spaced with one poem per page.",
+        "Include page numbers on fiction and nonfiction.",
+        "Note the age range: submissions are welcome from students aged 13 to 22."
+      ],
+      "rights": "Submitting grants Blue Marble Review First Serial Rights and the right to archive the work on its site; copyright stays with the contributor.",
+      "howToSubmit": [
+        "Read https://bluemarblereview.com/submit before sending.",
+        "Submit through the form; the review reads on a rolling basis four times a year.",
+        "Send up to three pieces of 1,500 words or fewer, in a double-spaced Word document for prose.",
+        "Confirm you are within the stated age range of 13 to 22."
+      ],
+      "keywords": [
+        "blue marble review",
+        "$30 per piece",
+        "$75 cover art",
+        "students 13-22",
+        "young writers",
+        "flash fiction",
+        "first serial rights",
+        "rolling submissions"
+      ],
+      "simultaneousSubmissions": "not-stated",
+      "simultaneousNote": null
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-10-01",
+      "publishedAt": "2026-10-01",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "claudine",
+      "slug": "claudine",
+      "publication": "Claudine",
+      "title": "Microfiction and micro nonfiction: $25 on publication, free to submit",
+      "seoTitle": "Claudine: $25 per micro, 400 words max, free and no AI",
+      "excerpt": "Claudine pays $25 on publication for microfiction and micro creative nonfiction of up to 400 words, and submissions are always free. It reads January through November, welcomes simultaneous submissions with prompt withdrawal, acquires first serial rights worldwide in English and non-exclusive anthology rights, and refuses AI-generated or AI-assisted work, which it runs through a third-party checker.",
+      "officialUrl": "https://claudineliterary.net/general-5",
+      "applyUrl": "https://claudineliterary.net/general-5",
+      "applyEmail": null,
+      "applyMethod": "Email; the cover letter and bio go in the body and the piece is attached as a Word document.",
+      "sources": [
+        {
+          "name": "Claudine - General submissions (official)",
+          "url": "https://claudineliterary.net/general-5"
+        }
+      ],
+      "eligibility": {
+        "summary": "No stated country restriction on the guidelines page.",
+        "mode": "not-stated",
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": true
+      },
+      "writingTypes": [
+        "fiction",
+        "creative-nonfiction"
+      ],
+      "writingTypeLabel": "Microfiction and micro creative nonfiction",
+      "pay": {
+        "currency": "USD",
+        "amountMin": 25,
+        "amountMax": 25,
+        "display": "$25 upon publication, per micro piece",
+        "conditions": "Official page, by category: microfiction - \"Pay is $25 upon publication.\"; micro creative nonfiction - \"Pay is $25 upon publication.\" And on cost: \"Submissions are always FREE.\"",
+        "timing": "On publication"
+      },
+      "wordCount": {
+        "min": null,
+        "max": 400,
+        "display": "Up to 400 words for all categories - a firm count"
+      },
+      "response": {
+        "label": "Not publicly stated",
+        "band": "not-stated",
+        "official": false
+      },
+      "submissionStatus": "open",
+      "deadline": {
+        "display": "Submissions are open January through November; the magazine does not read in December",
+        "windowEnd": "2026-11-30",
+        "recurring": true
+      },
+      "aiPolicy": "prohibited",
+      "whatTheyWant": [
+        "Pieces that move and surprise, with stunning prose, thoughtful punctuation over strict grammar, and innovative form.",
+        "Microfiction, which the page marks as mostly made up.",
+        "Micro creative nonfiction that stays true to an experience or topic.",
+        "New Writer Micros, open to writers with three or fewer published literary pieces."
+      ],
+      "whatTheyDontWant": [
+        "AI-generated or AI-assisted work: \"We want to read what your human self has written.\" Submissions are run through a third-party checker.",
+        "Anything over 400 words - the page calls the count firm.",
+        "Submissions during December, when the magazine does not read."
+      ],
+      "requirements": [
+        "Read https://claudineliterary.net/general-5 before sending.",
+        "Email the piece as a Word document, with the cover letter and bio typed in the body.",
+        "Keep the piece to 400 words or fewer - the count is firm.",
+        "Name the piece, the word count and the category in the cover letter.",
+        "Withdraw promptly if a simultaneous piece is accepted elsewhere.",
+        "There is no submission fee."
+      ],
+      "rights": "Claudine acquires first serial rights worldwide in English and non-exclusive anthology rights, and asks for the right to display the work.",
+      "howToSubmit": [
+        "Read https://claudineliterary.net/general-5 before sending.",
+        "Email the submission with the cover letter and bio in the body of the message.",
+        "Send one piece per category of up to 400 words - microfiction, micro creative nonfiction, or a New Writer Micro if you have three or fewer published pieces.",
+        "Send between January and November; December is closed."
+      ],
+      "keywords": [
+        "claudine",
+        "$25 upon publication",
+        "400 words",
+        "microfiction",
+        "micro creative nonfiction",
+        "free submissions",
+        "no ai",
+        "first serial rights",
+        "new writer micros"
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "We accept simultaneous submissions; please withdraw your piece promptly if it's accepted elsewhere. — https://claudineliterary.net/general-5 (read 2026-10-01)"
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-10-01",
+      "publishedAt": "2026-10-01",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "heart",
+      "slug": "heart",
+      "publication": "HEART",
+      "title": "Poetry and short prose: $25 on publication",
+      "seoTitle": "HEART: $25 on publication for poems and short prose",
+      "excerpt": "HEART pays $25 on publication, whether the work appears on the site or in the digital issue, and runs a separate annual HEART Poetry Award of $500. It prefers modern prose no longer than one page and asks for no more than three poems at a time. Its submissions page states nothing about fees, rights, windows or AI, and none is recorded.",
+      "officialUrl": "https://nostalgiapress.com/submissions/",
+      "applyUrl": "https://nostalgiapress.com/submissions/",
+      "applyEmail": null,
+      "applyMethod": "Online through the site's contact or submission route as described on the page.",
+      "sources": [
+        {
+          "name": "HEART - General submissions (official)",
+          "url": "https://nostalgiapress.com/submissions/"
+        }
+      ],
+      "eligibility": {
+        "summary": "Official page: no country restriction stated; published by Nostalgia Press, which the page names without stating where it is based.",
+        "mode": "not-stated",
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": true
+      },
+      "writingTypes": [
+        "poetry",
+        "fiction",
+        "creative-nonfiction"
+      ],
+      "writingTypeLabel": "Poetry and short prose",
+      "pay": {
+        "currency": "USD",
+        "amountMin": 25,
+        "amountMax": 25,
+        "display": "$25 upon publication",
+        "conditions": "Official page: \"PAY: $25 upon publication on website and digital copy if published in issue.\" The HEART Poetry Award is a separate $500 award - an outcome, not a rate - and is not part of the pay figure.",
+        "timing": "On publication"
+      },
+      "wordCount": {
+        "min": null,
+        "max": null,
+        "display": "Prose of no more than one page; no more than three poems at a time"
+      },
+      "response": {
+        "label": "Not publicly stated",
+        "band": "not-stated",
+        "official": false
+      },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "not-stated",
+      "whatTheyWant": [
+        "Modern prose of no longer than one page.",
+        "Poetry, up to three poems in a submission.",
+        "Work in the register the journal publishes - the page suggests reviewing an issue or reading the poets featured on the site first.",
+        "Submissions for the annual HEART Poetry Award, which carries its own $500."
+      ],
+      "whatTheyDontWant": [
+        "Prose longer than one page.",
+        "More than three poems in one submission."
+      ],
+      "requirements": [
+        "Read https://nostalgiapress.com/submissions/ before sending.",
+        "Send no more than three poems at a time, or prose of no more than one page.",
+        "Read an issue or the featured poets first - the page says it helps.",
+        "Note that payment is $25 on publication, whether on the site or in the digital issue."
+      ],
+      "rights": "Not stated on the submissions page.",
+      "howToSubmit": [
+        "Read https://nostalgiapress.com/submissions/ before sending.",
+        "Send up to three poems, or one page of prose.",
+        "Check the current HEART Poetry Award page if entering the award, which is separate from general submissions."
+      ],
+      "keywords": [
+        "heart",
+        "$25 on publication",
+        "heart poetry award",
+        "nostalgia press",
+        "short prose",
+        "poetry submissions",
+        "three poems"
+      ],
+      "simultaneousSubmissions": "not-stated",
+      "simultaneousNote": null
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-10-01",
+      "publishedAt": "2026-10-01",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "ink-in-thirds",
+      "slug": "ink-in-thirds",
+      "publication": "Ink In Thirds",
+      "title": "Poetry and prose: $5 per contributor, no fees, two reading periods",
+      "seoTitle": "Ink In Thirds: $5 per contributor, free to submit, no AI",
+      "excerpt": "Ink In Thirds pays $5 per contributor, with a floor of $3 should donations fall, and charges no fees. It takes prose up to 600 words - drabbles, microfiction, flash - alongside poetry and art, reading 1 April to 31 July and 1 October to 31 January, with art always open. It acquires exclusive first rights and non-exclusive archival rights, accepts simultaneous submissions, and refuses AI created content and previously published work.",
+      "officialUrl": "https://inkinthirds.org/submissions",
+      "applyUrl": "https://inkinthirds.org/submissions",
+      "applyEmail": null,
+      "applyMethod": "Online through the magazine's submission manager.",
+      "sources": [
+        {
+          "name": "Ink In Thirds - Submissions (official)",
+          "url": "https://inkinthirds.org/submissions"
+        }
+      ],
+      "eligibility": {
+        "summary": "No stated country restriction on the guidelines page.",
+        "mode": "not-stated",
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": true
+      },
+      "writingTypes": [
+        "poetry",
+        "fiction",
+        "creative-nonfiction"
+      ],
+      "writingTypeLabel": "Poetry, short prose and visual art",
+      "pay": {
+        "currency": "USD",
+        "amountMin": 5,
+        "amountMax": 5,
+        "display": "$5 per contributor, with a stated floor of $3 depending on donations",
+        "conditions": "Official page, Compensation: \"As of 2025, we have now become a paying market! Our current payment is $5 USD per contributor (it can vary based on yearly donations but will not be less than $3 per contributor).\" And on cost: \"No Fees\". Payment is per contributor, not per piece.",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "min": null,
+        "max": 600,
+        "display": "Prose up to 600 words, one piece per form - including 3-word stories, 100-word stories, drabbles, microfiction and flash fiction; poetry and art also accepted"
+      },
+      "response": {
+        "label": "Not publicly stated",
+        "band": "not-stated",
+        "official": false
+      },
+      "submissionStatus": "open",
+      "deadline": {
+        "display": "Two reading periods for poetry and prose: 1 April to 31 July for the fall/winter issues, and 1 October to 31 January; photography and visual art are always open",
+        "openingDate": "2026-10-01",
+        "windowEnd": "2027-01-31",
+        "recurring": true
+      },
+      "aiPolicy": "prohibited",
+      "whatTheyWant": [
+        "Short prose up to 600 words: 3-word stories, 100-word stories, drabbles, microfiction and flash fiction.",
+        "Poetry, in the magazine's stated register of work that makes the reader feel something.",
+        "Photography and visual art, which are read year-round.",
+        "Work for either reading period - 1 April to 31 July, or 1 October to 31 January."
+      ],
+      "whatTheyDontWant": [
+        "AI created content.",
+        "Previously published work: the page treats anything posted or otherwise made publicly available online as previously published.",
+        "Lewd or graphic images, excessive profanity, or overtly disturbing mental images in art submissions.",
+        "Prose over 600 words."
+      ],
+      "requirements": [
+        "Read https://inkinthirds.org/submissions before sending.",
+        "Submit during a reading period: 1 April to 31 July or 1 October to 31 January, with art always open.",
+        "Keep prose within 600 words, one piece per form.",
+        "There is no fee to submit.",
+        "Note the compensation is $5 per contributor, with a $3 floor."
+      ],
+      "rights": "Ink in Thirds acquires exclusive first rights, and maintains non-exclusive archival rights.",
+      "howToSubmit": [
+        "Read https://inkinthirds.org/submissions before sending.",
+        "Submit through the manager during a reading period - the 1 October to 31 January window is open; art can be sent at any time.",
+        "Send up to 600 words of prose, or poetry, and note that the payment is per contributor rather than per piece.",
+        "Do not send anything previously published online, and no AI created content."
+      ],
+      "keywords": [
+        "ink in thirds",
+        "$5 per contributor",
+        "no fees",
+        "paying market",
+        "600 words",
+        "drabble",
+        "no ai",
+        "exclusive first rights",
+        "simultaneous submissions"
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "We DO ACCEPT simultaneous submissions. — https://inkinthirds.org/submissions (read 2026-10-01)"
     }
   ]
 }

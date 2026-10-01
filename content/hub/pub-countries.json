@@ -1118,5 +1118,33 @@
   "missouri-review": {
     "base": "US",
     "label": "United States"
+  },
+  "idaho-review": {
+    "base": "US",
+    "label": "United States"
+  },
+  "friction": {
+    "base": "",
+    "label": "International"
+  },
+  "berkeley-fiction-review": {
+    "base": "US",
+    "label": "United States"
+  },
+  "blue-marble-review": {
+    "base": "",
+    "label": "International"
+  },
+  "claudine": {
+    "base": "",
+    "label": "International"
+  },
+  "heart": {
+    "base": "",
+    "label": "International"
+  },
+  "ink-in-thirds": {
+    "base": "",
+    "label": "International"
   }
 }
