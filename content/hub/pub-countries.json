@@ -1086,5 +1086,25 @@
   "fairy-tale-review": {
     "base": "",
     "label": "International"
+  },
+  "frontier-poetry": {
+    "base": "",
+    "label": "International"
+  },
+  "half-mystic-journal": {
+    "base": "",
+    "label": "International"
+  },
+  "infrarrealista-review": {
+    "base": "US",
+    "label": "United States"
+  },
+  "interrobanglit": {
+    "base": "",
+    "label": "International"
+  },
+  "literary-fantasy-magazine": {
+    "base": "",
+    "label": "International"
   }
 }

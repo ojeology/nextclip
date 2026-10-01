@@ -24904,6 +24904,504 @@
       ],
       "simultaneousSubmissions": "accepted",
       "simultaneousNote": "Simultaneous submissions are welcome (and we welcome your disclosure if you are sending your work out simultaneously). — https://fairytalereview.com/submit (read 2026-10-01)"
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-10-01",
+      "publishedAt": "2026-10-01",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "frontier-poetry",
+      "slug": "frontier-poetry",
+      "publication": "Frontier Poetry",
+      "title": "New Voices: $50 per poem, always free to submit, open to emerging poets",
+      "seoTitle": "Frontier Poetry: $50 per poem on the free New Voices route",
+      "excerpt": "Frontier Poetry pays $50 for every poem selected on its New Voices route, which is always open and always free to enter, for poets with no more than one full-length collection. Submissions run to five poems and ten pages, are open internationally, take eight to twelve weeks for a reply, and AI-generated work is refused. The separate Discover New Art Prize charges $20 to enter and is not recorded as the rate.",
+      "officialUrl": "https://frontierpoetry.com/submit",
+      "applyUrl": "https://frontierpoetry.com/submit",
+      "applyEmail": null,
+      "applyMethod": "Online form through Submittable; the New Voices route is free.",
+      "sources": [
+        {
+          "name": "Frontier Poetry - Submissions (official)",
+          "url": "https://frontierpoetry.com/submit"
+        }
+      ],
+      "eligibility": {
+        "summary": "Official page: \"Submissions are open internationally, to any poet writing primarily in English. Code-switching/meshing is warmly welcomed.\"",
+        "mode": "worldwide",
+        "includesGroups": [],
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": false
+      },
+      "writingTypes": [
+        "poetry"
+      ],
+      "writingTypeLabel": "Poetry, on the New Voices route",
+      "pay": {
+        "currency": "USD",
+        "amountMin": 50,
+        "amountMax": 50,
+        "display": "$50 per poem selected on the New Voices route",
+        "conditions": "Official page, New Voices: \"We are thrilled to offer significant payment to our partner poets: $50 per poem.\" And: \"New Voices Free - Always a free way to submit and we always pay for the work. We pay new poets $50 per poem selected.\" The Discover New Art Prize is a separate challenge with a $20 entry charge and prize money, and neither is the rate for published work.",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "min": null,
+        "max": null,
+        "display": "No more than ten pages and no more than five poems, all in one document; a cover letter with publication history is required"
+      },
+      "response": {
+        "label": "Eight to twelve weeks",
+        "band": "1-3-months",
+        "official": true
+      },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "prohibited",
+      "whatTheyWant": [
+        "Poets the page calls new and emerging - no more than one full-length published or forthcoming collection at the time of submission.",
+        "Poets from historically under-represented and marginalised groups, whom the New Voices route is designed to reach.",
+        "Work in English by poets anywhere, with code-switching and meshing welcomed.",
+        "Up to five poems and ten pages, submitted together, with a cover letter."
+      ],
+      "whatTheyDontWant": [
+        "AI-generated work: \"Frontier Poetry does not consider or review AI-generated work. Submissions utilizing AI tools will be automatically declined.\"",
+        "Multiple submissions - all poems must go in one document.",
+        "More than five poems or more than ten pages.",
+        "Poets with more than one full-length collection published or forthcoming."
+      ],
+      "requirements": [
+        "Read https://frontierpoetry.com/submit before sending.",
+        "Submit through the New Voices route, which is free; other routes and the Discover New Art Prize carry their own charges.",
+        "Send no more than five poems and no more than ten pages, all in one document.",
+        "Include a cover letter with your publication history.",
+        "Allow eight to twelve weeks for a response."
+      ],
+      "rights": "Frontier Poetry holds first publication rights for three months after publication, after which rights revert to the author.",
+      "howToSubmit": [
+        "Read https://frontierpoetry.com/submit before sending.",
+        "Use the New Voices Free option: always open, always free, and paid.",
+        "Send up to five poems in a single document with a cover letter.",
+        "Note the eligibility line: new and emerging poets, with no more than one full-length collection out or forthcoming.",
+        "Expect eight to twelve weeks for a reply."
+      ],
+      "keywords": [
+        "frontier poetry",
+        "$50 per poem",
+        "new voices",
+        "free to submit",
+        "emerging poets",
+        "no ai",
+        "simultaneous submissions",
+        "poetry submissions",
+        "international"
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "We accept simultaneous submissions—just please send us a note if your work is picked up elsewhere (we want to say congrats)! — https://frontierpoetry.com/submit (read 2026-10-01)"
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-10-01",
+      "publishedAt": "2026-10-01",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "half-mystic-journal",
+      "slug": "half-mystic-journal",
+      "publication": "Half Mystic Journal",
+      "title": "Journal contributors: US$20 per accepted piece, closing April 2027",
+      "seoTitle": "Half Mystic Journal: US$20 per piece, submissions close April 2027",
+      "excerpt": "Half Mystic Journal pays US$20 for each piece it accepts into its Fioritura issue, with submissions closing in April 2027. The journal takes poetry, essays, fiction and art on a themed call, alongside a separate full-length manuscript route paying royalties rather than a flat rate. It states nothing on its page about fees, response times, simultaneous submissions or AI.",
+      "officialUrl": "https://halfmystic.com/guidelines",
+      "applyUrl": "https://halfmystic.com/guidelines",
+      "applyEmail": null,
+      "applyMethod": "Online form through Submittable.",
+      "sources": [
+        {
+          "name": "Half Mystic Journal - Guidelines (official)",
+          "url": "https://halfmystic.com/guidelines"
+        }
+      ],
+      "eligibility": {
+        "summary": "No stated country restriction on the guidelines page.",
+        "mode": "not-stated",
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": true
+      },
+      "writingTypes": [
+        "poetry",
+        "essays",
+        "fiction",
+        "creative-nonfiction"
+      ],
+      "writingTypeLabel": "Poetry, essays, fiction and art for the journal; full-length manuscripts separately",
+      "pay": {
+        "currency": "USD",
+        "amountMin": 20,
+        "amountMax": 20,
+        "display": "US$20 per accepted piece in the journal",
+        "conditions": "Official page, journal submissions: \"We pay US$20 per accepted piece, and submissions close in April 2027.\" The separate manuscript route is paid in royalties - \"We pay competitive royalties\" - and is a different model, not a rate for an accepted piece.",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "min": null,
+        "max": null,
+        "display": "No word or page limit stated for journal submissions; manuscript submissions are full-length works of at least 60 pages"
+      },
+      "response": {
+        "label": "Not publicly stated",
+        "band": "not-stated",
+        "official": false
+      },
+      "submissionStatus": "open",
+      "deadline": {
+        "display": "Submissions for the Fioritura issue close in April 2027 (the page states the month, not a day)",
+        "windowEnd": "2027-04-30",
+        "recurring": false
+      },
+      "aiPolicy": "not-stated",
+      "whatTheyWant": [
+        "Journal work on the announced theme - Fioritura, described as devotion wearing the voice of decoration.",
+        "Poetry, essays, fiction and art, sent with a cover letter and a description of what music means to you.",
+        "Full-length manuscripts of at least 60 pages, submitted on the separate press route."
+      ],
+      "whatTheyDontWant": [
+        "Chapbooks on the manuscript route: the page says it publishes only full-length manuscripts.",
+        "Work that ignores the announced theme for the journal issue."
+      ],
+      "requirements": [
+        "Read https://halfmystic.com/guidelines before sending.",
+        "Submit through Submittable; the journal, press and blog all use it.",
+        "Include a cover letter with a biographical note, acknowledgements of previous publications, and a description of what music means to you.",
+        "Journal submissions close in April 2027.",
+        "Manuscript submissions need at least 60 pages; no chapbooks."
+      ],
+      "rights": "Not stated on the guidelines page.",
+      "howToSubmit": [
+        "Read https://halfmystic.com/guidelines before sending.",
+        "Submit through Submittable.",
+        "Write to the Fioritura theme for the journal, and send the cover letter the page asks for.",
+        "Send before the April 2027 close; the page gives no day within the month."
+      ],
+      "keywords": [
+        "half mystic journal",
+        "us$20 per piece",
+        "fioritura",
+        "submittable",
+        "april 2027",
+        "royalties for manuscripts",
+        "art submissions"
+      ],
+      "simultaneousSubmissions": "not-stated",
+      "simultaneousNote": null
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-10-01",
+      "publishedAt": "2026-10-01",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "infrarrealista-review",
+      "slug": "infrarrealista-review",
+      "publication": "Infrarrealista Review",
+      "title": "$100 per review or essay, $50 per interview or newspaper piece",
+      "seoTitle": "Infrarrealista Review: $100 reviews and essays, $50 interviews and poems",
+      "excerpt": "Infrarrealista Review pays $100 per book review or cultural-criticism essay and $50 per interview, and pays $50 a publication for poems and short fiction in its Letras y Disparates section in the Caldwell-Hays Examiner. It runs open calls, asks for no rights to contributors' work, and states no policy on fees, simultaneous submissions, AI or response times.",
+      "officialUrl": "https://infrarrealistas.org/submission",
+      "applyUrl": "https://infrarrealistas.org/submission",
+      "applyEmail": null,
+      "applyMethod": "Online form through the site; the page lists its calls as currently open.",
+      "sources": [
+        {
+          "name": "Infrarrealista Review - Submission (official)",
+          "url": "https://infrarrealistas.org/submission"
+        }
+      ],
+      "eligibility": {
+        "summary": "Official page: the review prioritises \"radical writers from Texas, especially those from the central Texas area\", and states no country restriction on submitting.",
+        "mode": "not-stated",
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": true
+      },
+      "writingTypes": [
+        "reviews",
+        "interviews",
+        "essays",
+        "poetry",
+        "fiction"
+      ],
+      "writingTypeLabel": "Book reviews, interviews, cultural criticism, poetry and fiction",
+      "pay": {
+        "currency": "USD",
+        "amountMin": 50,
+        "amountMax": 100,
+        "display": "$100 per review or essay, $50 per interview, $50 per newspaper publication of a poem or short story",
+        "conditions": "Official page, by section: reviews - \"We pay $100 per review.\" / interviews - \"We pay $50 per interview.\" / nonfiction and cultural criticism - \"We pay $100 per essay.\" / Letras y Disparates in the Caldwell-Hays Examiner - \"CHE pays $50 per publication.\"",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "min": null,
+        "max": 1500,
+        "display": "Fiction in the Letras y Disparates section: 1,500-word limit. Poems in that section: up to three sent. No limit stated for reviews or essays."
+      },
+      "response": {
+        "label": "Not publicly stated",
+        "band": "not-stated",
+        "official": false
+      },
+      "submissionStatus": "open",
+      "deadline": null,
+      "aiPolicy": "not-stated",
+      "whatTheyWant": [
+        "Reviews of books from small presses, books by Texan writers, and out-of-print books from Texas presses and writers.",
+        "Interviews with Texan authors, or about books published by Texas presses.",
+        "Essays about cultura, including responses to new films, music and writing.",
+        "Poetry and short fiction for the Letras y Disparates section of the Caldwell-Hays Examiner newspaper."
+      ],
+      "whatTheyDontWant": [
+        "Reviews outside the three Texas-linked categories the page names.",
+        "Fiction over 1,500 words in the newspaper section."
+      ],
+      "requirements": [
+        "Read https://infrarrealistas.org/submission before sending.",
+        "Submit through the form on the page; its calls are listed as currently open.",
+        "Check which section fits: reviews, interviews, essays, or Letras y Disparates.",
+        "Send up to three poems for the newspaper section, or fiction within 1,500 words.",
+        "Expect Texas subjects and small-press books to be prioritised, especially from central Texas."
+      ],
+      "rights": "The page states the review asks for no rights: \"Creatives owning their work. We do not ask for your rights to your work.\"",
+      "howToSubmit": [
+        "Read https://infrarrealistas.org/submission before sending.",
+        "Submit through the site's form, which is open.",
+        "Pitch or send a review, interview or essay - or a poem or short story for the newspaper section.",
+        "Keep newspaper fiction within 1,500 words and send no more than three poems."
+      ],
+      "keywords": [
+        "infrarrealista review",
+        "$100 per review",
+        "$50 per interview",
+        "texas writers",
+        "caldwell-hays examiner",
+        "cultural criticism",
+        "no rights requested",
+        "book reviews"
+      ],
+      "simultaneousSubmissions": "not-stated",
+      "simultaneousNote": null
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-10-01",
+      "publishedAt": "2026-10-01",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "interrobanglit",
+      "slug": "interrobanglit",
+      "publication": "InterrobangLit",
+      "title": "Prose: a $3 token payment per accepted story, 3,000-word limit",
+      "seoTitle": "InterrobangLit: $3 token payment per accepted story, free to submit",
+      "excerpt": "InterrobangLit pays a $3 token payment by PayPal for each accepted prose piece, and its submission windows are free. It takes prose up to 3,000 words, never reprints, and asks for first electronic, 30-day exclusive electronic and archival rights. The windows open on the first of every other month and close on the 8th or when the cap is reached; the September window has closed and the page does not name the next.",
+      "officialUrl": "https://interrobanglit.com/submit",
+      "applyUrl": "https://interrobanglit.com/submit",
+      "applyEmail": null,
+      "applyMethod": "Online form; windows open on the first of every other month.",
+      "sources": [
+        {
+          "name": "InterrobangLit - Submit (official)",
+          "url": "https://interrobanglit.com/submit"
+        }
+      ],
+      "eligibility": {
+        "summary": "No stated country restriction on the guidelines page.",
+        "mode": "not-stated",
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": true
+      },
+      "writingTypes": [
+        "fiction",
+        "creative-nonfiction"
+      ],
+      "writingTypeLabel": "Prose, scored against a published rubric",
+      "pay": {
+        "currency": "USD",
+        "amountMin": 3,
+        "amountMax": 3,
+        "display": "$3 token payment per accepted prose piece",
+        "conditions": "Official page: \"As of February 2026, we offer a token payment of $3 through PayPal. Unfortunately, we will not be able to use another payment processor.\"",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "min": null,
+        "max": 3000,
+        "display": "Prose up to 3,000 words - a hard limit, with anything longer automatically rejected"
+      },
+      "response": {
+        "label": "Not publicly stated",
+        "band": "not-stated",
+        "official": false
+      },
+      "submissionStatus": "closed",
+      "deadline": {
+        "display": "Windows open on the first of every other month and close on the 8th or when the submission cap is reached; the window that ran 1-8 September 2026 has closed and the page does not name the next",
+        "openingDate": "2026-09-01",
+        "windowEnd": "2026-09-08",
+        "recurring": true
+      },
+      "aiPolicy": "prohibited",
+      "whatTheyWant": [
+        "Prose written to the character prompt posted with each window.",
+        "Stories that score 13 or more points on the magazine's published rubric, which is why the page tells writers to read it before submitting.",
+        "Unpublished work, in English."
+      ],
+      "whatTheyDontWant": [
+        "AI-written content: \"We do not accept AI written content.\"",
+        "Reprints - the magazine considers only unpublished work.",
+        "Prose over 3,000 words, which is rejected automatically.",
+        "A piece still under consideration elsewhere without immediate withdrawal."
+      ],
+      "requirements": [
+        "Read https://interrobanglit.com/submit and the scoring rubric before sending.",
+        "Submit during a window: they open on the first of every other month and close on the 8th or at the cap.",
+        "Keep prose within 3,000 words - the limit is hard.",
+        "Withdraw immediately if a simultaneous piece is accepted elsewhere.",
+        "Give a PayPal address, since that is the only payment route the magazine uses."
+      ],
+      "rights": "If accepted, InterrobangLit asks for First Electronic Publishing Rights, Exclusive Electronic Rights for 30 days after publication, and Archival Rights unless removal is requested.",
+      "howToSubmit": [
+        "Read https://interrobanglit.com/submit before sending.",
+        "Wait for a window: they open on the first of every other month and close on the 8th or when the cap is reached.",
+        "Check the character prompt for the window and the published scoring rubric.",
+        "Send prose within 3,000 words, previously unpublished, and not under consideration elsewhere without withdrawal."
+      ],
+      "keywords": [
+        "interrobanglit",
+        "$3 token payment",
+        "3000 word limit",
+        "free to submit",
+        "submission window",
+        "scoring rubric",
+        "no ai",
+        "paypal"
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "We do not consider reprints, only unpublished work, please. We do accept simultaneous submissions but ask for immediate withdrawal if your story is accepted elsewhere. — https://interrobanglit.com/submit (read 2026-10-01)"
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-10-01",
+      "publishedAt": "2026-10-01",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "literary-fantasy-magazine",
+      "slug": "literary-fantasy-magazine",
+      "publication": "The Literary Fantasy Magazine",
+      "title": "Arcanist Online: a $10 token payment per story, print pays more",
+      "seoTitle": "The Literary Fantasy Magazine: $10 token payment for stories on the web",
+      "excerpt": "The Literary Fantasy Magazine pays a $10 token payment for fiction accepted for Arcanist Online, its web publication, and says its print magazines pay more. Stories run 4,000 to 10,000 words, serials 20,000 to 50,000, and creative nonfiction 700 to 5,000. General submissions are closed after a 376-submission window; only a special October window for Short Story September participants is announced. It asks for first printing and internet archival rights.",
+      "officialUrl": "https://www.thearcanist.net/submissions",
+      "applyUrl": "https://www.thearcanist.net/submissions",
+      "applyEmail": null,
+      "applyMethod": "Online submission form; contact support@thearcanist.net only if the form fails.",
+      "sources": [
+        {
+          "name": "The Literary Fantasy Magazine - Submissions (official)",
+          "url": "https://www.thearcanist.net/submissions"
+        }
+      ],
+      "eligibility": {
+        "summary": "No stated country restriction on the guidelines page.",
+        "mode": "not-stated",
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": true
+      },
+      "writingTypes": [
+        "fiction",
+        "creative-nonfiction"
+      ],
+      "writingTypeLabel": "Fantasy short fiction, serial fiction and creative nonfiction",
+      "pay": {
+        "currency": "USD",
+        "amountMin": 10,
+        "amountMax": 10,
+        "display": "$10 token payment per story published on the web",
+        "conditions": "Official page: \"We offer a token payment of $10 for submissions accepted for publication on the web. Our print magazines offer higher pay, as do many other publicatio[ns]...\" Print rates are not stated as figures, so only the web rate is recorded.",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "min": 4000,
+        "max": 10000,
+        "display": "Short fiction 4,000-10,000 words (6,000-10,000 preferred); serial fiction 20,000-50,000 words in one document; creative nonfiction 700-5,000 words"
+      },
+      "response": {
+        "label": "Not publicly stated",
+        "band": "not-stated",
+        "official": false
+      },
+      "submissionStatus": "closed",
+      "deadline": {
+        "display": "General submissions closed after the June 2026 window drew 376 submissions; a special window in October 2026 runs for Storytelling Collective's Short Story September participants only",
+        "windowEnd": "2026-10-31",
+        "recurring": false
+      },
+      "aiPolicy": "prohibited",
+      "whatTheyWant": [
+        "Fantasy of any flavour, preferably from emerging authors at the start of their journey.",
+        "Short fiction of 4,000-10,000 words, with 6,000-10,000 preferred.",
+        "Serial fiction of 20,000-50,000 words, submitted whole in one document.",
+        "Creative nonfiction of 700-5,000 words."
+      ],
+      "whatTheyDontWant": [
+        "Anything touched by AI: \"Anything touched by AI. Grammarly and ProWritingAid is allowed, but highly discouraged.\"",
+        "Curse words that would not fly on television.",
+        "PDF files - the page accepts .docx, .doc or .odt only.",
+        "General submissions at present: the window is closed until the backlog is read."
+      ],
+      "requirements": [
+        "Read https://www.thearcanist.net/submissions before sending.",
+        "Submit through the online form; the general window is closed and only the October 2026 Storytelling Collective window is announced.",
+        "Keep to the word counts: 4,000-10,000 short fiction, 20,000-50,000 serial in one document, 700-5,000 creative nonfiction.",
+        "Send .docx, .doc or .odt files - no PDFs.",
+        "Check the site for the Writer Circle and future window announcements."
+      ],
+      "rights": "The magazine asks for first printing rights and internet archival rights; work may be republished six months after the release date with credit.",
+      "howToSubmit": [
+        "Read https://www.thearcanist.net/submissions before sending.",
+        "Wait for a window to open - general submissions are closed and the announced October 2026 window is limited to Short Story September participants.",
+        "Send .docx, .doc or .odt files within the stated word counts.",
+        "Note the $10 web rate applies to Arcanist Online; print rates are not published."
+      ],
+      "keywords": [
+        "literary fantasy magazine",
+        "$10 token payment",
+        "arcanist online",
+        "fantasy short fiction",
+        "serial fiction",
+        "no ai",
+        "storytelling collective",
+        "first printing rights"
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "Simultaneous submissions are allowed. Please inform us immediately if it is accepted elsewhere and accept our sincere congratulations. — https://www.thearcanist.net/submissions (read 2026-10-01)"
     }
   ]
 }
