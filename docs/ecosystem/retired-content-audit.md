@@ -271,9 +271,17 @@ before building (`1e7cb14e`), so a reused workspace can never re-publish the des
 rewrite rules force the not-found page on the custom domain: `rdr-dav6iat9fdbs73bhoct0`
 (/money/* → /404.html) and `rdr-dav6ias1nsns738ss0h0` (/money → /404.html). Live-verified: zero
 stale Money content on thebryme.com; /money exact answers a true 404.
-**TODO (~2026-10-08):** DELETE the two rewrite rules via the Render API and probe — /money/* should
-answer native 404 once Render's origin has synced; if stale content returns, re-add the rules and
-open a Render support ticket ("static site CDN serves deleted files"). The live route table now
+**Early sync check (2026-10-01 15:2x UTC, ~1.5 h after deploy): origin still STALE.** Method (proven,
+safe, ~3 min round trip): DELETE the wildcard rule → wait 90 s → probe /money/apr-vs-apy-explained/
+with a cache-busting query → the old money page came back (200, 12:56 content) → rule re-added
+immediately and verified masking again. **The wildcard rule now has a NEW id:
+`rdr-dav7qoe0tbcc73e1tilg`** (replacing rdr-dav6iat9fdbs73bhoct0); the exact-match rule
+`rdr-dav6ias1nsns738ss0h0` (/money → /404.html) is unchanged.
+
+**TODO (~2026-10-08, or 2026-10-03 → support ticket instead):** repeat the check above. If the probe
+answers native 404, DELETE both rules and close this out; if still stale, re-add and open a Render
+support ticket ("static site CDN serves deleted files on the custom domain; onrender.com origin is
+clean") — community reports say the sync can lag for days, and a ticket is the documented lever. The live route table now
 holds 111 redirect rules from render.yaml (zero /money desk rules; route sync via API is additive —
 always reconcile the full list, and GET /services/{id}/routes DOES return routes, paginated).
 
