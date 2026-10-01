@@ -18,7 +18,14 @@ const { spawn } = require("child_process");
 const { chromium } = require("playwright");
 
 const ROOT = path.resolve(__dirname, "..");
-const AD_HOSTS = /(?:profitableratecpmnetwork|highrevenueformat|monetag|highperformanceformat|n6wxm|nap5k|propellerads|googlesyndication|googleadservices|doubleclick|googletagmanager|google-analytics)\./i;
+/* fundingchoicesmessages is Google's consent-messaging script, which the consent gate on
+   /tech/ loads. It was missing here while validate-browser.js, validate-money-browser.js
+   and verify-opp-filter.js all carried it, and it matters twice over: the host is stubbed
+   through this same pattern, so leaving it out let the real script run, and when it runs it
+   frames https://www.google.com/ for consent signalling — which makes Chrome log google's
+   own report-only `frame-ancestors` violation as a console error naming an origin this
+   filter did not recognise. */
+const AD_HOSTS = /(?:profitableratecpmnetwork|highrevenueformat|monetag|highperformanceformat|n6wxm|nap5k|propellerads|googlesyndication|googleadservices|doubleclick|googletagmanager|google-analytics|fundingchoicesmessages)\./i;
 const failures = [];
 const check = (ok, msg) => { if (!ok) failures.push(msg); };
 
@@ -39,6 +46,19 @@ async function ready(url, tries = 60) {
 const errorsOf = (page, sink) => {
   page.on("console", m => { if (m.type() === "error" && !AD_HOSTS.test(m.text())) sink.push(`console: ${m.text()}`); });
   page.on("pageerror", e => { if (!AD_HOSTS.test(e.message)) sink.push(`page: ${e.message}`); });
+};
+/* Every context this gate opens has to stub the ad and consent hosts, not just the first
+   one. It used to: three contexts were opened and one was stubbed, so the desktop run
+   answered the desk's own behaviour while the reduced-motion run answered whatever an ad
+   server and a consent script happened to serve that minute. That is how a gate whose
+   subject is filter, sort, palette and reveal behaviour came to fail CI on a third-party
+   framing notice it could neither cause nor fix — and it passed locally only because the
+   sandbox has no route to the internet, so the script never loaded. Stubbing every context
+   makes the result depend on this repo. */
+const stubbedContext = async (browser, opts) => {
+  const ctx = await browser.newContext(opts);
+  await ctx.route(AD_HOSTS, rt => rt.fulfill({ status: 200, contentType: "application/javascript", body: "" }));
+  return ctx;
 };
 const rowsOf = page => page.evaluate(() => {
   const rows = [...document.querySelectorAll(".tm-row")];
@@ -72,8 +92,7 @@ const rowsOf = page => page.evaluate(() => {
     browser = await chromium.launch({ headless: true });
 
     /* ---------------- 1. the desk wakes up (desktop) ---------------- */
-    const ctx = await browser.newContext({ viewport: { width: 1440, height: 1000 }, serviceWorkers: "block" });
-    await ctx.route(AD_HOSTS, rt => rt.fulfill({ status: 200, contentType: "application/javascript", body: "" }));
+    const ctx = await stubbedContext(browser, { viewport: { width: 1440, height: 1000 }, serviceWorkers: "block" });
     const errs = [];
     const page = await ctx.newPage();
     errorsOf(page, errs);
@@ -246,7 +265,7 @@ const rowsOf = page => page.evaluate(() => {
     check(errs.length === 0, "console/page errors on the desk: " + errs.join(" | "));
 
     /* ---------------- 10. no-JavaScript fallback ---------------- */
-    const nojs = await browser.newContext({ viewport: { width: 390, height: 844 }, javaScriptEnabled: false });
+    const nojs = await stubbedContext(browser, { viewport: { width: 390, height: 844 }, javaScriptEnabled: false });
     const p2 = await nojs.newPage();
     await p2.goto(base + "/tech/", { waitUntil: "domcontentloaded" });
     const nj = await p2.evaluate(() => ({
@@ -269,7 +288,7 @@ const rowsOf = page => page.evaluate(() => {
     check(nj.scroll <= nj.client + 2, `no-JS horizontal overflow on mobile: ${nj.scroll} > ${nj.client}`);
 
     /* ---------------- 11. reduced motion ---------------- */
-    const rm = await browser.newContext({ viewport: { width: 390, height: 844 }, reducedMotion: "reduce" });
+    const rm = await stubbedContext(browser, { viewport: { width: 390, height: 844 }, reducedMotion: "reduce" });
     const p3 = await rm.newPage();
     const errs3 = [];
     errorsOf(p3, errs3);
