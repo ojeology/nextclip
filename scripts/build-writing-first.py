@@ -2716,19 +2716,38 @@ def _display_parts(text: str | None) -> tuple[str, str]:
     return value, ""
 
 
+# Words that cannot end a phrase, and cannot begin one either. Used only to pick
+# where a long reading period is cut between the value cell and the note.
+_PERIOD_JOINERS = frozenset({
+    "and", "or", "to", "of", "in", "on", "from", "through", "until", "till",
+    "between", "predominantly", "-", "\u2013", "\u2014",
+})
+_MONTH_NAMES = frozenset({
+    "january", "february", "march", "april", "may", "june", "july", "august",
+    "september", "october", "november", "december",
+})
+
+
 def _period_parts(text: str) -> tuple[str, str]:
     """Split a recorded reading period into a short value and the prose beneath.
 
     The same promise as `_display_parts` - every character is kept and nothing is
-    paraphrased - with two more split points, because window text is written in
+    paraphrased - with more split points, because window text is written in
     clauses rather than sentences. 31 of the 85 recorded windows are one sentence
     running past 88 characters ("Re-checked on the official Submission Guidelines
     page 16 September 2026: all winter..."), so the sentence rule alone would put
-    up to 560 characters in a value cell and the answer would stop being scannable.
-    A colon introducing the dates, a semicolon between two windows and a dash
-    carrying the qualification are all real boundaries in this text, so they are
-    used before falling back to a word-boundary cut. The head stays verbatim and
-    the remainder moves to the note rather than away.
+    up to 560 characters in a value cell and the answer would stop being
+    scannable. The remainder moves to the note rather than away.
+
+    Boundaries are tried best-first. A conjunction is the cleanest cut because
+    window text lists windows: black-warrior-review reads "…predominantly 15
+    December to 1 March and 1 June to 30 September - so the summer window
+    closed…", and cutting at "and" leaves the value holding one whole window and
+    the note holding the other. A naive word-boundary cut put "…1 June to 30" in
+    the value and "September - so the summer window closed" in the note, which
+    reads as a truncated fact rather than a summary of one; backing that off with
+    a loop over-corrected all the way to "…15 December to 1" / "March", so the
+    date guard below is a single step rather than a cascade.
 
     Deliberately separate from `_display_parts` rather than a change to it: the
     pay and length rows are checked verbatim against the dataset by three gates,
@@ -2741,23 +2760,41 @@ def _period_parts(text: str) -> tuple[str, str]:
     head = re.split(r"(?<=[.!?])\s+", value, maxsplit=1)
     if len(head) == 2 and len(head[0]) <= 88:
         return head[0], head[1]
-    for mark in (":", ";", " - ", " \u2014 "):
-        i = value.find(mark)
-        if 0 < i <= 88:
-            return value[:i].rstrip(), value[i + len(mark):].strip()
-    cut = value[:89]
-    at = cut.rfind(" ")
-    if at <= 0:
+
+    budget = value[:89]
+    MIN_HEAD = 24
+
+    def _back_off(at: int) -> int:
+        """One step back to a word boundary, never below MIN_HEAD."""
+        sp = value[:at].rstrip().rfind(" ")
+        return sp if sp >= MIN_HEAD else at
+
+    # 1. the last conjunction inside the budget: two windows, cleanly separated
+    conj = max([i for c in (" and ", " or ")
+                for i in [budget.rfind(c)] if i >= MIN_HEAD] or [-1])
+    if conj >= 0:
+        return value[:conj].rstrip(), value[conj:].strip()
+
+    # 2. the last clause mark inside the budget - a colon introducing the dates,
+    #    a semicolon between windows, a dash carrying the qualification
+    for mark in (" - ", " \u2014 ", ";", ":"):
+        at = budget.rfind(mark)
+        if at >= MIN_HEAD:
+            return value[:at].rstrip(), value[at + len(mark):].strip()
+
+    # 3. a word boundary: never inside a parenthetical, never inside a date
+    at = budget.rfind(" ")
+    if at < MIN_HEAD:
         at = 88
-    # Never cut inside a parenthetical: "(the page states the month, not" / "a
-    # day)" is two fragments of one qualification, and the qualification is the
-    # part that makes the window true. Break before it and keep it whole in the
-    # note instead.
     if value[:at].count("(") > value[:at].count(")"):
         paren = value.rfind("(", 0, at)
-        if paren > 0:
+        if paren >= MIN_HEAD:
             at = paren
-    return cut[:at].rstrip() + "\u2026", value[at:].strip()
+    last = value[:at].rstrip().rsplit(" ", 1)[-1].strip(" ,;-\u2013\u2014").lower()
+    rest_first = value[at:].strip().split(" ", 1)[0].strip(" ,;-\u2013\u2014").lower()
+    if last.isdigit() and rest_first in _MONTH_NAMES:
+        at = _back_off(at)
+    return value[:at].rstrip() + "\u2026", value[at:].strip()
 
 
 def _sentence(text: str) -> str:
