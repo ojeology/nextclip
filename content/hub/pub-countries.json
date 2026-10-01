@@ -1114,5 +1114,9 @@
   "menagerie-magazine": {
     "base": "",
     "label": "International"
+  },
+  "missouri-review": {
+    "base": "US",
+    "label": "United States"
   }
 }

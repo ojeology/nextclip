@@ -25612,6 +25612,116 @@
       ],
       "simultaneousSubmissions": "accepted",
       "simultaneousNote": "Simultaneous submissions are allowed. If your work is accepted elsewhere, please withdraw it. — https://menageriemagazine.com/submissions (read 2026-10-01)"
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-10-01",
+      "publishedAt": "2026-10-01",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "missouri-review",
+      "slug": "missouri-review",
+      "publication": "The Missouri Review",
+      "title": "Fiction, poetry and essays: $25 per printed page; BLAST pays $100 a piece",
+      "seoTitle": "The Missouri Review: $25 a printed page, $100 for BLAST online exclusives",
+      "excerpt": "The Missouri Review pays $25 per printed page for poetry, fiction and nonfiction, and $100 per story or essay accepted for BLAST, its online exclusive feature. It reads year-round with a 10-12 week response, accepts simultaneous submissions with notice, takes work by post as well as online, and requires any use of AI to be disclosed in detail rather than banning it. Its $5,000 Editors' Prize is a contest outcome, not the rate.",
+      "officialUrl": "https://missourireview.com/submissions/",
+      "applyUrl": "https://missourireview.com/submissions/",
+      "applyEmail": null,
+      "applyMethod": "Online through the submission manager, or by post with a cover letter and a self-addressed stamped envelope.",
+      "sources": [
+        {
+          "name": "The Missouri Review - Submissions (official)",
+          "url": "https://missourireview.com/submissions/"
+        }
+      ],
+      "eligibility": {
+        "summary": "Official page: no country restriction stated, and submissions by post are accepted. The page carries the University of Missouri's copyright line, which is where the US filing comes from.",
+        "mode": "worldwide",
+        "includesGroups": [],
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": false
+      },
+      "writingTypes": [
+        "fiction",
+        "poetry",
+        "essays",
+        "creative-nonfiction",
+        "reviews",
+        "interviews"
+      ],
+      "writingTypeLabel": "Poetry, fiction, nonfiction, interviews and omnibus reviews",
+      "pay": {
+        "currency": "USD",
+        "amountMin": 25,
+        "amountMax": 100,
+        "display": "$25 per printed page for regular submissions; $100 per story or essay for BLAST online exclusives",
+        "conditions": "Official page: \"Authors are paid $25 per printed page.\" And, for the online feature: \"BLAST authors are paid $100 per story.\" and \"BLAST authors are paid $100 per essay.\" The two figures are different units - a page rate and a per-piece rate - and are kept apart here rather than averaged. Prize money ($5,000 Editors' Prize, $1,000 Poem of the Year, $1,000 William Peden Prize) is a contest outcome and is not part of the rate.",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "min": null,
+        "max": null,
+        "display": "No length restrictions stated for fiction and nonfiction, though the editors suggest reading back issues; poetry features run 6-14 pages of poems from each of three poets per issue; interviews and omnibus reviews cover 3-6 recently published books"
+      },
+      "response": {
+        "label": "Ten to twelve weeks",
+        "band": "1-3-months",
+        "official": true
+      },
+      "submissionStatus": "open",
+      "deadline": {
+        "display": "Open for submissions year-round, with no closing date stated; the 2026 Jeffrey E. Smith Editors' Prize has a deadline of 1 October",
+        "windowEnd": "2026-10-01",
+        "recurring": true
+      },
+      "aiPolicy": "disclosure-required",
+      "whatTheyWant": [
+        "Poetry, fiction and nonfiction of general interest; the page does not consider literary criticism.",
+        "Interviews, and omnibus reviews of three to six recently published books that share a common feature or subject.",
+        "Fiction and essays that do not fit a given issue may still be considered for BLAST, the online exclusive feature, which pays per piece.",
+        "Work by post as well as online, if sent with a cover letter and a stamped, self-addressed envelope."
+      ],
+      "whatTheyDontWant": [
+        "Literary criticism, which the page excludes.",
+        "Work that has appeared elsewhere: only original, previously unpublished material is considered.",
+        "Generative AI use that is not disclosed - the page requires specific detail in both the piece and the cover letter rather than banning AI outright.",
+        "Mixing genres in one submission.",
+        "Physical manuscripts sent without a self-addressed stamped envelope, which the page says are recycled without a response."
+      ],
+      "requirements": [
+        "Read https://missourireview.com/submissions/ before sending.",
+        "Submit through the submission manager, or by post with a cover letter and a self-addressed stamped envelope.",
+        "Do not mix genres in the same submission.",
+        "Disclose any use of artificial intelligence in detail, in the piece and in the cover letter.",
+        "Allow 10-12 weeks for a standard response.",
+        "Contest entries for the Editors' Prize close 1 October."
+      ],
+      "rights": "Not stated on the submissions page.",
+      "howToSubmit": [
+        "Read https://missourireview.com/submissions/ before sending.",
+        "Submit through the submission manager year-round, or post a manuscript with a cover letter and a self-addressed stamped envelope.",
+        "Say in the cover letter if you want the work considered for BLAST, the online feature that pays $100 a piece.",
+        "Keep each submission to one genre, and disclose any AI use in detail.",
+        "Expect a reply in 10-12 weeks; contest entries close 1 October."
+      ],
+      "keywords": [
+        "missouri review",
+        "$25 per printed page",
+        "$100 blast",
+        "editors prize",
+        "university of missouri",
+        "no literary criticism",
+        "disclose ai use",
+        "simultaneous submissions",
+        "postal submissions"
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "Simultaneous submissions are OK as long as you notify us if accepted elsewhere. — https://missourireview.com/submissions/ (read 2026-10-01)"
     }
   ]
 }
