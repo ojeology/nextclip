@@ -36,6 +36,7 @@
     pay: document.getElementById("f-pay"),
     words: document.getElementById("f-words"),
     global: document.getElementById("f-global"),
+    exp: document.getElementById("f-exp"),
     sort: document.getElementById("f-sort"),
     count: document.getElementById("f-count"),
     empty: document.getElementById("f-empty"),
@@ -121,6 +122,23 @@
     return card.getAttribute("data-global") === "1";
   }
 
+  /* What a publication says about who may submit, read from its own guideline.
+     "stated" is the union of the three named stages: it answers "show me the
+     ones that said anything at all", which is what a first-timer wants when most
+     guidelines never address the question at all. (Of 288 records: 47 state a
+     stage, 91 were read and are silent, 141 have not been assessed for this field,
+     and 9 could not be read. Only the first group is ever a named stage.)
+
+     A record whose guideline could not be read carries "not-stated" like a
+     silent one, so it is correctly excluded from every value here except the
+     empty one. The site must not filter an unread page into a welcome. */
+  function matchExp(card, v) {
+    if (!v) return true;
+    var e = card.getAttribute("data-exp") || "not-stated";
+    if (v === "stated") return e !== "not-stated";
+    return e === v;
+  }
+
   function matchQuery(card, q) {
     if (!q) return true;
     var hay = card.getAttribute("data-search") || "";
@@ -187,6 +205,7 @@
     if (state.pay) bits.push(["pay", labelFor(els.pay, state.pay)]);
     if (state.words) bits.push(["words", labelFor(els.words, state.words)]);
     if (state.global) bits.push(["global", "Open to writers anywhere"]);
+    if (state.exp) bits.push(["exp", labelFor(els.exp, state.exp)]);
     els.chips.innerHTML = bits.map(function (b) {
       return '<button type="button" class="f-chip" data-clear="' + b[0] + '">' +
         b[1].replace(/[<>&]/g, "") + ' <span aria-hidden="true">\u00d7</span>' +
@@ -206,10 +225,11 @@
     if (els.status) els.status.value = p.get("status") || "";
     if (els.pay) els.pay.value = p.get("pay") || "";
     if (els.words) els.words.value = p.get("words") || "";
+    if (els.exp) els.exp.value = p.get("experience") || "";
     if (els.global) els.global.checked = p.get("global") === "1";
     if (els.sort) els.sort.value = p.get("sort") || "default";
     /* a select can be given a value that has no matching option */
-    ["country", "cmode", "type", "status", "pay", "words", "sort"].forEach(function (k) {
+    ["country", "cmode", "type", "status", "pay", "words", "exp", "sort"].forEach(function (k) {
       var el = els[k];
       if (el && el.selectedIndex === -1) el.selectedIndex = 0;
     });
@@ -224,6 +244,7 @@
     if (state.status) p.set("status", state.status);
     if (state.pay) p.set("pay", state.pay);
     if (state.words) p.set("words", state.words);
+    if (state.exp) p.set("experience", state.exp);
     if (state.global) p.set("global", "1");
     if (state.sort && state.sort !== "default") p.set("sort", state.sort);
     var qs = p.toString();
@@ -241,6 +262,7 @@
       status: val(els.status),
       pay: val(els.pay),
       words: val(els.words),
+      exp: val(els.exp),
       global: els.global ? els.global.checked : false,
       sort: val(els.sort)
     };
@@ -250,7 +272,7 @@
       var ok = matchQuery(c, state.q) && matchCountry(c, state.country, state.cmode) &&
         matchType(c, state.type) && matchStatus(c, state.status) &&
         matchPay(c, state.pay) && matchWords(c, state.words) &&
-        matchGlobal(c, state.global);
+        matchExp(c, state.exp) && matchGlobal(c, state.global);
       c.hidden = !ok;
       if (ok) shown.push(c);
     });
@@ -272,7 +294,7 @@
 
   /* ---- wiring -------------------------------------------------------- */
 
-  ["q", "country", "cmode", "type", "status", "pay", "words", "global", "sort"].forEach(function (k) {
+  ["q", "country", "cmode", "type", "status", "pay", "words", "exp", "global", "sort"].forEach(function (k) {
     var el = els[k];
     if (!el) return;
     el.addEventListener("change", function () { apply(); });

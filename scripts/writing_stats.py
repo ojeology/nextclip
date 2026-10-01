@@ -152,6 +152,66 @@ def rights_bucket(rec: dict) -> str:
     return "silent"
 
 
+# ---------------------------------------------------------------------------
+# "States clearly that copyright stays with the author"
+#
+# A separate question from rights_bucket above. rights_bucket asks whether the
+# guideline addresses rights AT ALL; this asks whether it says who ends up
+# OWNING the work. The State of Paid Writing report used to answer the second
+# question with a startswith test - the rights text had to BEGIN with "copyright
+# remains", "author retains" and four other openers. At 147 records that counted
+# 8. At 288 it still counted 8, while 72 more records said the same thing in
+# different words, usually after naming what the magazine buys first:
+#
+#   "Adi acquires first exclusive, world English-language publication rights.
+#    Copyright remains with the author."                      -> missed
+#   "Pays for first serial rights; copyright remains with the author." -> missed
+#   "Following publication, all rights revert back to the author."     -> missed
+#
+# So the report published "only 8 of 288 state clearly that copyright remains
+# with the author. The other 280 are silent or vague" - telling writers that 280
+# publications had not answered a question that 72 of them had answered plainly.
+# That is the same defect class as rendering an unread guideline as the
+# publication's silence: a false claim about somebody else's magazine.
+#
+# Two phrases look like retention and are not, and both were caught by reading
+# every classified record rather than by reasoning about the regex:
+#   "Send only work for which you hold copyright."   - an eligibility rule for
+#     submitting, saying nothing about who owns the work afterwards.
+#   "No specific rights transfer is stated on the submissions page." - the text
+#     itself reports that nothing is stated, so it cannot be a statement.
+# Ownership moving the other way is excluded too ("copyright ... transfer to
+# Listverse Limited", "becomes the owner of the article").
+_RETAIN = re.compile(
+    r"(?:copyright|rights?)\s+(?:remain|remains|stay|stays|rest|rests|revert"
+    r"|reverts|reverted|return|returns)"
+    r"|(?:author|writer|contributor|creator|you)\s+(?:retain|retains|retained"
+    r"|keep|keeps|holds?|hold)"
+    r"|(?:retain|retains|keep|keeps|holds?)\s+(?:all\s+|full\s+|the\s+"
+    r"|other\s+)?(?:rights|copyright)"
+    r"|copyright\s+(?:returns|reverts|rests)", re.I)
+_TRANSFER_AWAY = re.compile(
+    r"transfer(?:s|red)?\s+to\s+(?!the\s+(?:author|writer|contributor))"
+    r"|becomes the owner|no further copyright", re.I)
+_NOTHING_STATED = re.compile(
+    r"no\s+(?:specific\s+|further\s+)?(?:rights\s+)?transfer\s+is\s+stated", re.I)
+_SUBMIT_PRECONDITION = re.compile(
+    r"(?:send|submit|submissions?|previously published|artists must|must own"
+    r"|you (?:must|need to|should))[^.]*(?:hold|holds|own|owns)[^.]*"
+    r"(?:copyright|rights)", re.I)
+
+
+def author_retains(rec: dict) -> bool:
+    """True when the record's own rights text says the author keeps copyright."""
+    text = str(rec.get("rights") or "").strip()
+    if not text:
+        return False
+    if not _RETAIN.search(text):
+        return False
+    return not (_TRANSFER_AWAY.search(text) or _NOTHING_STATED.search(text)
+                or _SUBMIT_PRECONDITION.search(text))
+
+
 def compute() -> dict:
     recs = _load()
     n = len(recs)
@@ -165,8 +225,22 @@ def compute() -> dict:
     ai_silent = ai.get("not-stated", 0)
 
     rights = {"stated": 0, "partial": 0, "silent": 0, "empty": 0}
+    author_keeps = 0
     for rec in recs:
         rights[rights_bucket(rec)] += 1
+        if author_retains(rec):
+            author_keeps += 1
+            # A record that says the author keeps the copyright has, by
+            # definition, addressed rights - so this bucket must sit inside
+            # "stated". Asserted rather than assumed: the guide library
+            # publishes rights_stated and the data report publishes this
+            # figure, and if the nesting ever broke the two pages would
+            # contradict each other in public.
+            assert rights_bucket(rec) == "stated", (
+                f"writing_stats: {rec.get('slug')} says the author retains "
+                f"copyright but rights_bucket() calls it "
+                f"{rights_bucket(rec)!r} - the two published figures would "
+                f"disagree")
     # "cannot be relied on" = everything that is not a full statement
     rights_unreliable = n - rights["stated"]
 
@@ -193,6 +267,11 @@ def compute() -> dict:
         "rights_stated": rights["stated"],
         "rights_partial": rights["partial"],
         "rights_unreliable": rights_unreliable,
+        "rights_author_keeps": author_keeps,
+        # Of the records that address rights at all, how many never say who
+        # ends up owning the work. Derived, not counted separately, so the two
+        # figures on the page cannot fail to add up.
+        "rights_stated_no_owner": rights["stated"] - author_keeps,
         "indemnity": indemnity,
         "verified_window": window,
         "based_us": us["total"],
@@ -252,6 +331,8 @@ if __name__ == "__main__":
     print()
     print("check: rights buckets sum to records:",
           STATS["rights_stated"] + STATS["rights_unreliable"] == STATS["records"])
+    print("check: retention sits inside rights_stated:",
+          STATS["rights_author_keeps"] <= STATS["rights_stated"])
     print("check: ai buckets sum to records:",
           STATS["ai_prohibiting"] + STATS["ai_disclosure"] + STATS["ai_silent"]
           == STATS["records"])

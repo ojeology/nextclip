@@ -19,11 +19,15 @@
     "validate:money": "node scripts/validate-money-pages.js",
     "validate:money:browser": "node scripts/validate-money-browser.js",
     "test:http": "node scripts/validate-http.js",
-    "test": "npm run verify:allowlist && npm run verify:titles && npm run verify:dockets && npm run validate:hometools && npm run validate && npm run validate:money && npm run validate:oppfilter && npm run validate:browser && npm run validate:contrast && npm run validate:money:browser && npm run validate:techhub",
+    "test": "npm run verify:allowlist && npm run verify:titles && npm run verify:dockets && npm run validate:hometools && npm run validate && npm run validate:money && npm run validate:oppfilter && npm run validate:browser && npm run validate:contrast && npm run validate:money:browser && npm run validate:techhub && npm run test:ads && npm run check:adsense && npm run check:brand && npm run check:links",
     "validate:techhub": "node scripts/validate-tech-hub.js",
     "verify:allowlist": "python3 scripts/sync-writing-allowlist.py --check",
     "verify:titles": "python3 scripts/audit_titles.py",
-    "verify:dockets": "python3 scripts/audit_dockets.py"
+    "verify:dockets": "python3 scripts/audit_dockets.py",
+    "check:links": "python3 scripts/check-internal-links.py",
+    "test:ads": "node scripts/test-ad-consent.js",
+    "check:brand": "python3 scripts/audit-brand-consistency.py",
+    "check:adsense": "python3 scripts/audit-adsense-readiness.py"
   },
   "engines": {
     "node": ">=20"

@@ -1679,7 +1679,12 @@ INTEL_EXTRA = {
              ("/tools/freelance-rate-calculator/", "Freelance rate calculator")],
     "pitching": [("/tracker/", "Submission tracker"),
                  ("/today/", "Today\u2019s opportunities"),
-                 ("/writing/", "Search all 105 publications")],
+                 # Derived, never the literal it used to be: this said "105
+                 # publications" while the desk held 288, because the number was
+                 # typed when the desk was smaller and nothing connected it to the
+                 # dataset. WRITING is the same list the desk renders from, so this
+                 # label and the desk can no longer disagree.
+                 ("/writing/", f"Search all {len(WRITING)} publications")],
     "skills": [("/compare/", "Compare writing formats"),
                ("/templates/", "Writing templates"),
                ("/checklists/", "Writing checklists")],

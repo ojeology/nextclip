@@ -1,6 +1,6 @@
 # THE BRYME
 
-> A family of seven independent, specialist publications under one house discipline: research before publishing, dates on anything time-sensitive, sources for every claim, and no fabricated experience or statistics. Edited from Lagos, Nigeria, and written for a global readership. 2590 pages across the desks.
+> A family of seven independent, specialist publications under one house discipline: research before publishing, dates on anything time-sensitive, sources for every claim, and no fabricated experience or statistics. Edited from Lagos, Nigeria, and written for a global readership. 2734 pages across the desks.
 
 ## The house
 
@@ -12,7 +12,7 @@
 
 ## BRYME Writers
 
-The founding desk: paid-writing guides, a database of 142 researched paying publications with per-entry verification dates, pitch and rate research, templates and checklists. 517 pages.
+The founding desk: paid-writing guides, a database of 288 researched paying publications with per-entry verification dates, pitch and rate research, templates and checklists. 661 pages.
 
 - [Desk home](https://thebryme.com/writers/)
 - [The paid-writing path](https://thebryme.com/writers/writing/)
@@ -152,4 +152,4 @@ Evergreen saving foundations first, risk-first trading education second. Educati
 - Money content is educational, not financial advice; fitness content is general information, not medical advice; sport content never includes betting.
 - Corrections are published in the open on the page that made the claim.
 
-_Generated 2026-09-30 by the BRYME build; counts read from the live sitemaps._
+_Generated 2026-10-01 by the BRYME build; counts read from the live sitemaps._

@@ -1048,7 +1048,14 @@ PUB_NAME = {"sports": "Sport", "entertainment": "Entertainment", "tech": "Tech",
 # the root tree is regenerated, by which time the loss is already committed.
 # Preserved files are stashed across the clear, never rewritten from templates,
 # and still advertised in the desk sitemap.
-PRESERVE = {"home": frozenset({"/disclaimer/", "/privacy/"})}  # terms regenerated via legal_pages (Phase 2: stale snapshot)
+# /privacy/ was in this set because a hand correction had been reverted by the
+# template once. That correction now lives in the generator (see the home desk
+# dict), so the page regenerates like the rest - which is the only way it can
+# receive a template change such as the Phase 14 advertising disclosure. The
+# freeze had made that impossible, and /home/privacy/ silently missed it.
+# /disclaimer/ stays: the generator emits no disclaimer page, so lifting that
+# one would delete the page outright.
+PRESERVE = {"home": frozenset({"/disclaimer/"})}
 
 
 def write_service(pub, pages):
@@ -1177,7 +1184,7 @@ def legal_pages(pub, name, tagline, skip=frozenset(), desk=None):
 <section class="section"><div class="prose">
 <p>{name} is a static publication. It asks for no personal information, has no accounts and no sign-in, and sells nothing about you. It does load two Google services on every page — Google Analytics 4 to count visits, and Google AdSense for advertising — both explained below. These pages read identically with either one blocked.</p>
 <p>If interactive tools are added later, any data they store will stay in <em>your</em> browser's local storage on <em>your</em> device — the standing BRYME pattern — and this page will be updated before that changes.</p>
-<p><b>Advertising &amp; cookies (updated 22 September 2026):</b> BRYME shows advertising through Google AdSense to keep the publications free. Third-party vendors use cookies to serve ads based on a user's prior visits to this and other websites. Google's use of advertising cookies enables it and its partners to serve ads based on your visits to this site and/or other sites on the internet. You may opt out of personalised advertising by visiting Google's Ads Settings (adssettings.google.com), or opt out of some third-party vendors' uses of cookies at aboutads.info. Visitors in the EEA and UK will be asked for consent before personalised advertising; without consent, only non-personalised ads are eligible to serve. <b>Analytics:</b> every page also loads Google Analytics 4 (measurement ID {GA_ID_TEXT}), which counts pages, sessions and rough location so each desk can see what is worth writing next. It sets cookies such as _ga to tell one visit from the next; it does not identify you personally, and BRYME neither combines it with anything else nor sells it. For visitors in the EEA, the UK and Switzerland, Analytics and advertising both stay switched off until you accept them in the cookie message — rejecting it leaves them off. Anywhere else you can block them in your browser and every page reads exactly the same. Whatever serves, our standing rules apply: ads are clearly separated from content and navigation, never cover text, and never resemble our buttons, cards or links.</p>
+<p><b>Advertising &amp; cookies (updated 22 September 2026):</b> BRYME shows advertising through Google AdSense to keep the publications free. Third-party vendors use cookies to serve ads based on a user's prior visits to this and other websites. Google's use of advertising cookies enables it and its partners to serve ads based on your visits to this site and/or other sites on the internet. You may opt out of personalised advertising by visiting Google's Ads Settings (adssettings.google.com), or opt out of some third-party vendors' uses of cookies at aboutads.info. Visitors in the EEA and UK will be asked for consent before personalised advertising; without consent, only non-personalised ads are eligible to serve. <b>Analytics:</b> every page also loads Google Analytics 4 (measurement ID {GA_ID_TEXT}), which counts pages, sessions and rough location so each desk can see what is worth writing next. It sets cookies such as _ga to tell one visit from the next; it does not identify you personally, and BRYME neither combines it with anything else nor sells it. For visitors in the EEA, the UK and Switzerland, Analytics and advertising both stay switched off until you accept them in the cookie message — rejecting it leaves them off. Anywhere else you can block them in your browser and every page reads exactly the same. Whatever serves, our standing rules apply: ads are clearly separated from content and navigation, never cover text, and never resemble our buttons, cards or links. Advertising is served by two partners: the Google AdSense publisher tag (no ad units are placed on article pages while the site is in its current review stage) and one <b>Adsterra</b> native banner at the foot of a content page, after the article and before the footer. That banner is loaded by our own script (<code>/assets/adsterra-loader.js</code>), which sets no cookies; outside the EEA, the UK and Switzerland it loads with the page, and inside them it waits for granted advertising consent and never loads if consent is refused.</p>
 
 {_desk_sec('privacy', 'What this publication actually touches')}
 <p>Questions: see <a href="/contact/">Contact</a>.</p>
@@ -1273,7 +1280,14 @@ def legal_pages(pub, name, tagline, skip=frozenset(), desk=None):
 
 # ------------------------------------------------------------------ 1. HUB
 HUB_PUBS = [
-    ("writers", "BRYME Writers", "The flagship.", "The practical digital library and workspace for writers \u2014 191 researched guides, 44 free browser tools, a hand-verified opportunity database and the essays behind the market. Free, independent, human-verified.", "live"),
+    # 197 guides and 48 tools, which is what the desk actually publishes: the desk
+    # tree holds 197 guide pages under /writers/learn/<topic>/<slug>/ and 48 tool
+    # pages under /writers/tools/ excluding its index. The figures here were 191 and
+    # 44 and had drifted. HUB_PUBS is not currently consumed anywhere in this file -
+    # it is defined and never read - so nothing stale is on a page today, but a
+    # wrong number waiting to be wired up is still worth correcting while it is
+    # known to be wrong.
+    ("writers", "BRYME Writers", "The flagship.", "The practical digital library and workspace for writers \u2014 197 researched guides, 48 free browser tools, a hand-verified opportunity database and the essays behind the market. Free, independent, human-verified.", "live"),
     ("tech", "BRYME Tech", "Practical technology. No theatre.", "Deployment walkthroughs, domain and DNS specifics, token hygiene, front-end patterns \u2014 written from first-hand builds, not press releases. Evergreen on purpose.", "live"),
     ("sports", "BRYME Sport", "The desk reopens.", "Football coverage from BRYME's media desk \u2014 matchweek guides, season stories and the August deadline-day archive, with the thin pages honestly retired. No betting content, ever.", "live"),
 ]
@@ -2263,7 +2277,15 @@ def entertainment_pages():
             + verdict_html + wl_html + sim_html + faq_html + rel_html
             + '<p class="nx-backlink"><a href="/entertainment/">&#8592; Back to the full catalogue</a></p>'
             + '</div><aside class="nx-aside"><dl>' + aside_html + '</dl>'
-            + '<p class="nx-verified">Trailer link verified ' + _nx_ver + ' via YouTube oEmbed (title and channel checked). The player loads lazily from YouTube’s no-cookie domain when the trailer nears your viewport.</p>'
+            # Only claim a verified trailer link when this film actually has an
+            # embedded trailer. 30 catalogue films carry no trailer, and the
+            # unconditional claim was live on all of them - a page asserting
+            # "title and channel checked" where nothing was embedded at all.
+            # The false claim was corrected in the generated HTML but never in
+            # this generator, so any regeneration silently restored it.
+            + ('<p class="nx-verified">Trailer link verified ' + _nx_ver + ' via YouTube oEmbed (title and channel checked). The player loads lazily from YouTube’s no-cookie domain when the trailer nears your viewport.</p>'
+               if m.get("yt") else
+               '<p class="nx-verified">No trailer is embedded on this page. The desk embeds an upload only after checking it against YouTube&#8217;s oEmbed record - title and channel - and none is verified for this film, so nothing here is embedded on trust.</p>')
             + '</aside></div></main>' + foot("entertainment"))
         # H3 (audit 2026-09-16): SERP title budget - shortest form that fits 60 chars.
         _nx_y = str(m.get("year") or "")
@@ -7411,7 +7433,13 @@ def home_pages():
 
     return out + legal_pages("home", "BRYME Home & DIY", "Practical help for fixing, maintaining, improving and understanding your home \u2014 safe, low-risk guidance with clear professional boundaries.", desk={
         "about": "Low-risk repairs explained honestly, with an in-built rule: gas, structural and high-voltage work goes to qualified trades.",
-        "privacy": "Interactive tools such as the buy-vs-rent calculator keep their inputs in your browser only.",
+        # Hand-authored detail folded into the generator (2026-09-30). The
+        # hand file named all six tools and separated the five that store
+        # nothing from the one that writes to local storage; the generator had
+        # only a generic sentence. Keeping the specific version here lets the
+        # page be regenerated, which is what lets it receive template changes
+        # such as the advertising disclosure.
+        "privacy": "This desk carries six interactive tools \u2014 a mortgage calculator, a buy-vs-rent calculator, a repair-cost estimator, a moving-cost estimator, a water-damage cover quiz and a seasonal maintenance checklist. Five of the six do their arithmetic in your browser and store nothing whatsoever: no local storage, no cookies, no network request of any kind. The seasonal maintenance checklist is the single exception \u2014 it saves which items you have ticked to your browser's local storage, on your device, so your list survives a reload. Nothing entered into any of these tools is sent to us or to anyone else.",
         "terms": "Guidance covers low-risk DIY; anything involving gas, structural work or high-voltage electrics is signposted to qualified professionals.",
         "corrections": "Cost figures and standards references are re-checked against the cited sources and stamped with the date.",
     })
@@ -7931,6 +7959,8 @@ def main() -> None:
 </ul>
 <h2>Analytics and advertising</h2>
 <p>BRYME uses Google Analytics 4 to understand page visits, sessions and rough location. It also uses the Google AdSense publisher tag. Ad units are not placed everywhere by default, and advertising is kept separate from editorial content.</p>
+<p>Advertising on this site is served by two partners, and we would rather you knew both by name than had to guess from a network log. <b>Google AdSense</b> provides the publisher tag; no AdSense ad units are placed on article pages while the site is in its current review stage. <b>Adsterra</b> serves one native banner, at the foot of a content page, after the article ends and before the footer.</p>
+<p>That banner is loaded by our own small script (<code>/assets/adsterra-loader.js</code>), which sets no cookies and stores nothing. Outside the EEA, the UK and Switzerland it loads when the page does. Inside them it waits for a granted advertising consent from the consent message, and if consent is refused or never given, the banner never loads and no request is made to Adsterra at all. Ads are never placed inside an article, never over the text, and never styled to look like a site control.</p>
 <p>Visitors in the EEA, the UK and Switzerland are shown a consent message before consent-based advertising and analytics are enabled. Google’s consent controls let visitors accept, reject or manage those choices. Visitors can also manage advertising choices through <a href="https://adssettings.google.com/">Google Ads Settings</a>.</p>
 <h2>Cookies and browser storage</h2>
 <p>Some pages use cookies or browser storage for consent, analytics, theme preferences, filters or tool progress. Browser-based tools are designed to keep their working data on your device. You can clear cookies and storage in your browser at any time.</p>
@@ -7938,7 +7968,7 @@ def main() -> None:
 <p>Our hosting provider may process technical request information such as an IP address, browser type, requested URL and time for security and service operation. If you email BRYME, your address and message are used to reply and, where relevant, correct the site; they are not automatically added to a mailing list.</p>
 <p>Links to employers, publications, applications, platforms and media services lead to third parties. Their own privacy policies apply after you leave BRYME. BRYME does not receive your job applications.</p>
 <h2>Your choices</h2>
-<p>You can refuse or change consent through the Google privacy message, block cookies in your browser, use browser privacy controls, or contact us with a privacy request. Contact: <a href="mailto:Sodiqibrahim03@gmail.com">Sodiqibrahim03@gmail.com</a>.</p>
+<p>You can refuse or change consent through the Google privacy message, block cookies in your browser, use browser privacy controls, or contact us with a privacy request. Refusing consent in the EEA, the UK and Switzerland also stops the Adsterra banner from loading, so there is nothing to opt out of afterwards. Contact: <a href="mailto:Sodiqibrahim03@gmail.com">Sodiqibrahim03@gmail.com</a>.</p>
 <h2>Changes</h2>
 <p>Material changes to this house policy will be dated on this page. Desk-specific pages may add a narrower explanation where a tool or external service needs one, but they do not reduce the protections in this policy.</p>
 </div></section></div></main>'''

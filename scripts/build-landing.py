@@ -22,8 +22,26 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "ecosystem" / "hub" / "index.html"
-REVIEWED = "30 September 2026"
-SWEEP = "2026-09-27"
+# REVIEWED is a human editorial stamp: the date the page's own content was last
+# reviewed. It is deliberately NOT the build date - deriving it would make the page
+# claim a fresh review on every deploy, including the ones that change nothing.
+# Advance it by hand when the page is substantively reviewed.
+REVIEWED = "1 October 2026"
+
+# SWEEP used to be the literal "2026-09-27" and it was the one number on this page
+# that could not be checked against anything. It sat directly beside {N_MARKETS},
+# which IS derived, so the front door read "288 paying markets ... Verified
+# 2026-09-27" - a date only 7 of those 288 records were actually verified on, with
+# the rest running from 2026-08-19 to 2026-10-01. The label overstated the whole
+# set on the strength of its smallest part.
+#
+# It is now the newest verification date in the dataset, which is what the stamp
+# is trying to say, and the page states which claim that supports rather than
+# implying every record was seen that day.
+_OPPS_DOC = json.loads((ROOT / "content" / "opportunities.json").read_text(encoding="utf-8"))
+_dates = [r["lastVerified"] for r in _OPPS_DOC["opportunities"] if r.get("lastVerified")]
+SWEEP = max(_dates) if _dates else ""
+SWEEP_OLDEST = min(_dates) if _dates else ""
 GSC = "2026-09-20→29"
 
 ALLOWLIST = set(json.loads(
@@ -70,6 +88,24 @@ def _market_count() -> int:
 N_MARKETS = _market_count()
 
 # Recent cards
+def _clip(text: str, limit: int = 60) -> str:
+    """Shorten a pay string on a word boundary.
+
+    The fallback cards below used to slice with [:60], which cut mid-word: the
+    homepage showed "$75 one-time payment per accepted short story, with no
+    futur". 50 of the 288 records have a pay display longer than 60 characters
+    (the longest is 129), so this was not an edge case - it was whatever the
+    fallback happened to pick that build. A rate is the one thing on this card a
+    writer acts on, so it gets clipped at a space with an ellipsis, never
+    mid-word, and never in a way that could turn "$200 and up" into "$200 an".
+    """
+    t = (text or "").strip()
+    if len(t) <= limit:
+        return t
+    cut = t[:limit].rsplit(" ", 1)[0].rstrip(" ,;:")
+    return (cut or t[:limit].rstrip(" ,;:")) + "\u2026"
+
+
 def _pay_str(o):
     pd = o.get("pay_display")
     if isinstance(pd, str) and pd:
@@ -91,23 +127,44 @@ for o in recent:
     ver = o.get("lastVerified","")[:10]
     RECENT_CARDS.append((pub, route, pay, title, ver))
 
-# Strong — use routes that exist in current opportunities
-STRONG = [
-    ("The Sun Magazine", "/writers/writing/the-sun-magazine/", "Personal essays, $300-$2000"),
-    ("Longreads Personal Essay", "/writers/writing/longreads-personal-essay/", "Deep reported essays, pays well, open to pitches"),
-    ("Noema Magazine", "/writers/writing/noema-magazine/", "Ideas, science, culture, $1/word"),
-    ("A Public Space", "/writers/writing/a-public-space-fiction/", "Literary fiction + nonfiction, $500+"),
-]
+# Strong — an editorial pick list, but every word of each card is read from the
+# record. It used to carry hand-typed blurbs, and two of the four had come apart
+# from the dataset they described:
+#
+#   "The Sun Magazine — Personal essays, $300-$2000"
+#       the record says $200 and up, based on page length. There is no $2,000
+#       ceiling anywhere in it, so the front door quoted a range the publication
+#       never offered.
+#   "Longreads Personal Essay — Deep reported essays, pays well, open to pitches"
+#       the record says the opposite on the part that matters: "They do not
+#       commission personal essays from a pitch - send a full, polished draft."
+#       A writer who believed the homepage would send a pitch and get nothing.
+#
+# Two more picks (noema-magazine, a-public-space-fiction) are no longer in the
+# dataset at all; the route check below already dropped them and backfilled, so
+# no link was broken - but a hardcoded rate is a claim that can only drift.
+# _pay_str() returns the record's own sourced pay display, which is the same
+# string the publication's dossier shows, so the two pages cannot disagree.
+#
+# Not sorted by amount to pick "the highest paying": amountMin mixes currencies
+# (a N150,000 record outranks a $2,500 one numerically), and a cross-currency
+# ranking would be a money claim the site's own rules require jurisdiction
+# clarity for. The fallback stays as it was.
+_BY_SLUG = {o.get("slug"): o for o in _OPPS_DOC["opportunities"]}
+_PICKS = ["the-sun-magazine", "longreads-personal-essay",
+          "noema-magazine", "a-public-space-fiction"]
+STRONG = [(o.get("publication") or slug, f"/writers/writing/{slug}/", _pay_str(o))
+          for slug in _PICKS if (o := _BY_SLUG.get(slug))]
 # Fallback if those don't exist, will be validated and replaced by recent
 def _exists_route(r):
     return r in ALLOWLIST or (ROOT / r.strip("/") / "index.html").exists()
 
-STRONG = [(n,r,b) for n,r,b in STRONG if _exists_route(r)]
+STRONG = [(n,r,b) for n,r,b in STRONG if _exists_route(r) and b]
 if len(STRONG) < 4:
     # fill from recent
     for pub, route, pay, title, ver in RECENT_CARDS:
         if route not in [x[1] for x in STRONG]:
-            STRONG.append((pub, route, (pay or "")[:60]))
+            STRONG.append((pub, route, _clip(pay)))
         if len(STRONG) >= 4:
             break
 STRONG = STRONG[:4]
@@ -124,24 +181,135 @@ TOOLS = [
 # filter to existing routes only
 TOOLS = [(n,r,d) for n,r,d in TOOLS if r in ALLOWLIST or (ROOT / r.strip("/") / "index.html").exists()]
 
+# ---------------------------------------------------------------------------
+# Every count on this page is derived. Each one used to be a literal, and each
+# literal drifted at its own rate, so the front door disagreed with the pages it
+# linked to:
+#
+#   Tech          claimed 438 guides   the desk's own gauge says 329
+#   Entertainment claimed 719 guides   719 is the FILM catalogue; the desk has
+#                                      165 pieces and counts the films separately
+#   Fitness       claimed 157          the desk says 163
+#   Sport         claimed 180          the desk says 121 pieces + 20 club hubs
+#   Money         claimed 124          the desk says 102
+#   Home          claimed 287          the desk says 253
+#   SUBMIT badge  claimed 14           /writers/guides/ holds 22 pages
+#   EARN badge    claimed 25           the rates-and-business section holds 60
+#   CAREER badge  claimed 12           /writers/start/ is a 20-step path, and the
+#                                      desk's own card says "20 guides"
+#   RESEARCH badge claimed 12          13 countries have a page (Portugal joined
+#                                      with the 288-record merge)
+#
+# A badge that contradicts the page it opens is worse than no badge, so these
+# read the source of truth for each figure and raise if it is missing.
+# ---------------------------------------------------------------------------
+def _desk_gauge(desk: str, label: str) -> int:
+    """Read a desk's own published count from its home page gauge.
+
+    The desks are not regenerated by this build (build-ecosystem.py is not in the
+    chain), so their committed home page IS the source of truth. Every desk carries
+    the same marker: <div class="tm-gauge"><b>N</b><span>pieces on the desk</span>.
+    """
+    import re as _re
+    for cand in (ROOT / desk / "index.html", ROOT / "public" / desk / "index.html"):
+        if cand.is_file():
+            m = _re.search(r'<div class="tm-gauge"><b>(\d+)</b><span>' + _re.escape(label),
+                           cand.read_text(encoding="utf-8", errors="ignore"), _re.I)
+            if m:
+                return int(m.group(1))
+    raise SystemExit(f"build-landing: no '{label}' gauge on the {desk} desk home - "
+                     f"refusing to print a hardcoded count for it")
+
+
+def _indexable_children(route: str) -> int:
+    """Indexable pages one or more levels under a writers-desk route.
+
+    build-landing runs before build-routing moves the writers tree into writers/,
+    so the fresh pages are at ROOT/<route> at this moment; ROOT/writers/<route> is
+    the previous build. Prefer the fresh one, fall back for a partial tree.
+    """
+    import re as _re
+    rel = route.strip("/").removeprefix("writers/").strip("/")
+    for base in (ROOT / rel, ROOT / "writers" / rel):
+        if not base.is_dir():
+            continue
+        n = 0
+        for f in base.rglob("index.html"):
+            if f.parent == base:
+                continue                      # the section's own index
+            h = f.read_text(encoding="utf-8", errors="ignore")
+            m = _re.search(r'name="robots" content="([^"]*)"', h)
+            if m and "noindex" in m.group(1):
+                continue
+            n += 1
+        if n:
+            return n
+    raise SystemExit(f"build-landing: no indexable pages found under {route} - "
+                     f"refusing to print a hardcoded count for it")
+
+
+def _guide_section_count(section: str | None = None) -> int:
+    """Guides in content/hub/guides, optionally filtered by frontmatter section."""
+    import re as _re
+    n = 0
+    for f in (ROOT / "content" / "hub" / "guides").rglob("*.md"):
+        t = f.read_text(encoding="utf-8", errors="ignore")
+        m = _re.search(r"^section:\s*[\"']?([a-z0-9-]+)", t, _re.M)
+        if not m:
+            continue
+        if section is None or m.group(1) == section:
+            n += 1
+    if not n:
+        raise SystemExit(f"build-landing: no guides found for section={section!r}")
+    return n
+
+
+N_GUIDES = _guide_section_count()
+N_EARN = _guide_section_count("freelance-paid-writing")
+N_SUBMIT = _indexable_children("/writers/guides/")
+N_TOOLS = _indexable_children("/writers/tools/")
+N_COUNTRIES = len({(v or {}).get("base") for v in json.loads(
+    (ROOT / "content" / "hub" / "pub-countries.json").read_text(encoding="utf-8")).values()
+    if (v or {}).get("base")})
+# /writers/start/ is a numbered path, not a section: count its steps.
+N_START = len(set(__import__("re").findall(
+    r'class="[^"]*step[^"]*"[^>]*>\s*<[^>]*>\s*(\d{2})',
+    (ROOT / "start" / "index.html").read_text(encoding="utf-8", errors="ignore")
+    if (ROOT / "start" / "index.html").is_file()
+    else (ROOT / "writers" / "start" / "index.html").read_text(encoding="utf-8", errors="ignore"))))
+if not N_START:
+    raise SystemExit("build-landing: could not count the steps on /writers/start/")
+
+
+# Each desk's own home page publishes its count in a gauge; read it rather than
+# restating a number that can drift. Entertainment keeps its two figures separate
+# because they are two different things - 165 written pieces and a 719-title film
+# catalogue - and calling the catalogue "719 guides" mislabelled films as guides.
+def _desk_stat(desk: str) -> str:
+    pieces = _desk_gauge(desk, "pieces on the desk")
+    if desk == "entertainment":
+        return f"{pieces} guides \u00b7 {_desk_gauge(desk, 'catalogued films')} films"
+    return f"{pieces} guides"
+
+
 SECONDARY = [
-    ("Tech", "/tech/", "438 guides", "Tech explainers, no hype"),
-    ("Home", "/home/", "287 guides", "Make home work"),
-    ("Fitness", "/fitness/", "157 guides", "Train, eat, recover"),
-    ("Money", "/money/", "124 guides", "Earn, save, freelance"),
-    ("Sport", "/sports/", "180 guides", "Live scores + explainers"),
-    ("Entertainment", "/entertainment/", "719 guides", "What to watch, why"),
+    ("Tech", "/tech/", _desk_stat("tech"), "Tech explainers, no hype"),
+    ("Home", "/home/", _desk_stat("home"), "Make home work"),
+    ("Fitness", "/fitness/", _desk_stat("fitness"), "Train, eat, recover"),
+    ("Money", "/money/", _desk_stat("money"), "Earn, save, freelance"),
+    ("Sport", "/sports/", _desk_stat("sports"), "Live scores + explainers"),
+    ("Entertainment", "/entertainment/", _desk_stat("entertainment"), "What to watch, why"),
 ]
 
 # Pathways reordered: DISCOVER first (flagship core), not WRITE
 PATHWAYS = [
     ("discover", "DISCOVER", "/writers/writing/", f"{N_MARKETS} markets — pay, word count, who is open now", N_MARKETS, "1"),
-    ("write", "WRITE", "/writers/learn/", "197 craft guides — from blank page to final draft", 197, "2"),
-    ("submit", "SUBMIT", "/writers/guides/how-to-write-a-pitch/", "How to pitch, query, cover letter", 14, "3"),
-    ("research", "RESEARCH", "/writers/writing-opportunities/", "Find markets by country — US, UK, CA, AU, IN, NG", 12, "4"),
-    ("earn", "EARN", "/writers/learn/freelance-paid-writing/", "Rates, invoices, tax, tracker", 25, "5"),
-    ("tools", "TOOLS", "/writers/tools/", "48 browser tools — no account, nothing uploaded", 48, "6"),
-    ("career", "CAREER", "/writers/start/", "Portfolio, clients, full-time", 12, "7"),
+    ("write", "WRITE", "/writers/learn/", f"{N_GUIDES} craft guides — from blank page to final draft", N_GUIDES, "2"),
+    ("submit", "SUBMIT", "/writers/guides/how-to-write-a-pitch/", "How to pitch, query, cover letter", N_SUBMIT, "3"),
+    ("research", "RESEARCH", "/writers/writing-opportunities/", "Find markets by country — US, UK, CA, AU, IN, NG", N_COUNTRIES, "4"),
+    ("earn", "EARN", "/writers/learn/freelance-paid-writing/", "Rates, invoices, tax, tracker", N_EARN, "5"),
+    ("tools", "TOOLS", "/writers/tools/", f"{N_TOOLS} browser tools — no account, nothing uploaded", N_TOOLS, "6"),
+    ("career", "CAREER", "/writers/start/", "Portfolio, clients, full-time", N_START, "7"),
 ]
 
 # Build HTML pieces
@@ -176,12 +344,12 @@ HTML = f"""<!doctype html>
 <meta name="theme-color" content="#f6f2e8"><meta name="color-scheme" content="light dark">
 <script src="/assets/theme.js"></script>
 <title>THE BRYME — a house that reads the fine print so you don't have to</title>
-<meta name="description" content="Seven desks under one roof. Flagship: {N_MARKETS} paying markets checked by hand, 197 guides, 48 tools. Dated, sourced, no pop-ups. Plus tech, home, fitness, money, sport, entertainment.">
+<meta name="description" content="Seven desks under one roof. Flagship: {N_MARKETS} paying markets checked by hand, {N_GUIDES} guides, {N_TOOLS} tools. Dated, sourced, no pop-ups. Plus tech, home, fitness, money, sport, entertainment.">
 <meta name="robots" content="index,follow"><meta name="p:domain_verify" content="69f32b47370c197e72e39c8339160660"/>
 <link rel="canonical" href="https://thebryme.com/">
 <meta property="og:type" content="website"><meta property="og:site_name" content="THE BRYME">
 <meta property="og:title" content="THE BRYME — a house that reads the fine print">
-<meta property="og:description" content="{N_MARKETS} paying markets, 197 guides, 48 tools. Verified by hand, dated, sourced, no pop-ups. Seven desks, one house standard.">
+<meta property="og:description" content="{N_MARKETS} paying markets, {N_GUIDES} guides, {N_TOOLS} tools. Verified by hand, dated, sourced, no pop-ups. Seven desks, one house standard.">
 <meta property="og:url" content="https://thebryme.com/"><meta property="og:image" content="https://thebryme.com/assets/og.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/favicon.ico" sizes="any"><link rel="apple-touch-icon" href="/assets/brand/apple-touch-icon.png">
@@ -191,7 +359,7 @@ HTML = f"""<!doctype html>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-0KEKJH9960"></script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1881426210393009" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="/assets/bryme-v2.css">
-<script type="application/ld+json">{{"@context":"https://schema.org","@graph":[{{"@type":"WebSite","@id":"https://thebryme.com/#website","url":"https://thebryme.com/","name":"THE BRYME","inLanguage":"en","description":"A house that reads the fine print so you don't have to. Seven desks — Writers is flagship — {N_MARKETS} paying markets checked by hand, 197 guides, 48 browser tools, dated, sourced, no pop-ups.","publisher":{{"@id":"https://thebryme.com/#org"}},"potentialAction":{{"@type":"SearchAction","target":{{"@type":"EntryPoint","urlTemplate":"https://thebryme.com/writers/search/?q={{search_term_string}}"}},"query-input":"required name=search_term_string"}}}},{{"@type":"Organization","@id":"https://thebryme.com/#org","name":"THE BRYME","url":"https://thebryme.com/","foundingDate":"2026"}}]}}</script>
+<script type="application/ld+json">{{"@context":"https://schema.org","@graph":[{{"@type":"WebSite","@id":"https://thebryme.com/#website","url":"https://thebryme.com/","name":"THE BRYME","inLanguage":"en","description":"A house that reads the fine print so you don't have to. Seven desks — Writers is flagship — {N_MARKETS} paying markets checked by hand, {N_GUIDES} guides, {N_TOOLS} browser tools, dated, sourced, no pop-ups.","publisher":{{"@id":"https://thebryme.com/#org"}},"potentialAction":{{"@type":"SearchAction","target":{{"@type":"EntryPoint","urlTemplate":"https://thebryme.com/writers/search/?q={{search_term_string}}"}},"query-input":"required name=search_term_string"}}}},{{"@type":"Organization","@id":"https://thebryme.com/#org","name":"THE BRYME","url":"https://thebryme.com/","foundingDate":"2026"}}]}}</script>
 <style>
 /* ===== HOUSE v4 — compact header fix + dense 10/10 ===== */
 .site-head{{position:sticky;top:0;z-index:50;background:var(--paper);border-bottom:1px solid var(--line)}}
@@ -316,7 +484,7 @@ html[data-theme=dark] .kicker{{background:#1a212c;color:#d0aa52;border-color:rgb
     <a href="{H("/")}" class="home-link" aria-label="Home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 10.5 12 3l9 7.5V21a1 1 0 0 1-1 1h-5v-5H9v5H4a1 1 0 0 1-1-1z"/></svg></a>
     <a href="{H("/writers/")}" style="color:var(--brass)">Flagship</a>
     <a href="{H("/writers/writing/")}">{N_MARKETS} markets</a>
-    <a href="{H("/writers/tools/")}">48 tools</a>
+    <a href="{H("/writers/tools/")}">{N_TOOLS} tools</a>
     <a href="{H("/tech/")}">Tech</a>
     <a href="{H("/entertainment/")}">Watch</a>
   </div></nav>
@@ -332,33 +500,33 @@ html[data-theme=dark] .kicker{{background:#1a212c;color:#d0aa52;border-color:rgb
 <section class="house-hero">
   <div class="eyebrow"><b>THE BRYME</b><span class="dot"></span>HOUSE EDITION<span class="dot"></span>7 DESKS<span class="dot"></span>ONE STANDARD</div>
   <h1>We read the <em>fine print</em> so you don't have to.</h1>
-  <p class="dek">Seven specialist publications under one roof. <b>Flagship is a practical home for writers</b> — {N_MARKETS} paying markets checked by hand, 197 guides, 48 browser tools. Dated, sourced, no pop-ups. The rest of the house is small on purpose.</p>
+  <p class="dek">Seven specialist publications under one roof. <b>Flagship is a practical home for writers</b> — {N_MARKETS} paying markets checked by hand, {N_GUIDES} guides, {N_TOOLS} browser tools. Dated, sourced, no pop-ups. The rest of the house is small on purpose.</p>
   <div class="actions">
     <a class="btn" href="{H("/writers/")}">Enter flagship →</a>
     <a class="btn secondary" href="{H("/writers/writing/")}">Browse {N_MARKETS} markets</a>
     <button type="button" class="btn secondary" data-house-open-palette><span>Find anything</span><kbd style="display:inline-grid;place-items:center;width:18px;height:18px;border:1px solid var(--line);border-radius:4px;font:700 10px/1 ui-monospace,monospace">K</kbd></button>
   </div>
-  <div class="meta"><b>{N_MARKETS}</b> paying markets <span class="sep">·</span> <b>197</b> guides <span class="sep">·</span> <b>48</b> tools <span class="sep">·</span> <b>0</b> pop-ups <span class="sep">·</span> Verified <b>{SWEEP}</b> <span class="sep">·</span> Reviewed {REVIEWED}</div>
+  <div class="meta"><b>{N_MARKETS}</b> paying markets <span class="sep">·</span> <b>{N_GUIDES}</b> guides <span class="sep">·</span> <b>{N_TOOLS}</b> tools <span class="sep">·</span> <b>0</b> pop-ups <span class="sep">·</span> Every record verified {SWEEP_OLDEST}&ndash;{SWEEP} <span class="sep">·</span> Reviewed {REVIEWED}</div>
 
   <div class="flag">
     <div class="flag-head"><h2>Flagship: a practical home for writers</h2><span>75% of useful real estate · house standard</span><a href="{H("/writers/")}">Full desk →</a></div>
     <div class="flag-grid">
       <div class="flag-card"><b><i>1</i> Discover — where to publish</b><p>{N_MARKETS} publications researched by hand — pay, word count, eligibility, submission method. Each carries its last-checked date.</p><div class="links"><a href="{H("/writers/writing/")}">All markets →</a><a href="{H("/writers/writing-opportunities/")}">Atlas</a><a href="{H("/writers/today/")}">This week</a></div></div>
-      <div class="flag-card"><b><i>2</i> Learn — how to get in</b><p>197 guides: pitch, query, cover letter, voice, structure, portfolio. From first pitch to final invoice.</p><div class="links"><a href="{H("/writers/learn/")}">Guide library →</a><a href="{H("/writers/guides/how-to-write-a-pitch/")}">Pitch guide</a><a href="{H("/writers/learn/professional-writing/how-to-write-a-cover-letter/")}">Cover letter</a></div></div>
-      <div class="flag-card"><b><i>3</i> Earn — how to get paid</b><p>Rates, invoices, tax set-aside, income tracker, late payment letters. Browser tools, nothing uploaded.</p><div class="links"><a href="{H("/writers/tools/")}">48 tools →</a><a href="{H("/writers/tools/freelance-rate-calculator/")}">Rate calc</a><a href="{H("/writers/tools/income-tracker/")}">Tracker</a></div></div>
+      <div class="flag-card"><b><i>2</i> Learn — how to get in</b><p>{N_GUIDES} guides: pitch, query, cover letter, voice, structure, portfolio. From first pitch to final invoice.</p><div class="links"><a href="{H("/writers/learn/")}">Guide library →</a><a href="{H("/writers/guides/how-to-write-a-pitch/")}">Pitch guide</a><a href="{H("/writers/learn/professional-writing/how-to-write-a-cover-letter/")}">Cover letter</a></div></div>
+      <div class="flag-card"><b><i>3</i> Earn — how to get paid</b><p>Rates, invoices, tax set-aside, income tracker, late payment letters. Browser tools, nothing uploaded.</p><div class="links"><a href="{H("/writers/tools/")}">{N_TOOLS} tools →</a><a href="{H("/writers/tools/freelance-rate-calculator/")}">Rate calc</a><a href="{H("/writers/tools/income-tracker/")}">Tracker</a></div></div>
     </div>
   </div>
 
   <div class="eyebrow" style="margin-top:18px"><b>PATHWAYS</b><span class="dot"></span>7 JOBS<span class="dot"></span>DISCOVER FIRST<span class="dot"></span>KEYS 1–7</div>
   <div class="paths">{pathways_html}</div>
 
-  <div class="eyebrow" style="margin-top:18px"><b>RECENTLY VERIFIED</b><span class="dot"></span>SWEEP {SWEEP}</div>
+  <div class="eyebrow" style="margin-top:18px"><b>RECENTLY VERIFIED</b><span class="dot"></span>LATEST {SWEEP}</div>
   <div class="recent">{recent_html}</div>
 
   <div class="eyebrow" style="margin-top:18px"><b>STRONGEST</b><span class="dot"></span>GSC {GSC}<span class="dot"></span>POS 4–13</div>
   <div class="recent">{strong_html}</div>
 
-  <div class="eyebrow" style="margin-top:18px"><b>TOOLS</b><span class="dot"></span>48 TOTAL<span class="dot"></span>BROWSER ONLY</div>
+  <div class="eyebrow" style="margin-top:18px"><b>TOOLS</b><span class="dot"></span>{N_TOOLS} TOTAL<span class="dot"></span>BROWSER ONLY</div>
   <div class="tools">{tools_html}</div>
 
   <div class="sec-wrap">
@@ -370,7 +538,7 @@ html[data-theme=dark] .kicker{{background:#1a212c;color:#d0aa52;border-color:rgb
   <div class="trust">
     <div><b>Every page dated</b><p>Last-checked and reviewed dates on every dossier. No evergreen without a date.</p></div>
     <div><b>Zero pop-ups</b><p>No interstitials, no autoplay, no newsletter gate. Read, use tools, leave.</p></div>
-    <div><b>Browser tools only</b><p>48 tools run in your browser. No account, nothing you type is sent anywhere.</p></div>
+    <div><b>Browser tools only</b><p>{N_TOOLS} tools run in your browser. No account, nothing you type is sent anywhere.</p></div>
     <div><b>Verified by hand</b><p>Each market checked against the official guideline, not scraped.</p></div>
     <div><b>One house standard</b><p>Same type system, same rules, same no-pop-up promise across 7 desks.</p></div>
     <div><b>Free, funded by ads</b><p>Ads are in a single band, never inside prose. You can block them and everything still works.</p></div>
@@ -402,7 +570,7 @@ html[data-theme=dark] .kicker{{background:#1a212c;color:#d0aa52;border-color:rgb
 <script src="/assets/house-home.js" defer></script>
 <footer class="site-foot"><div class="wrap foot-grid">
 <div class="foot-brand"><a class="logo" href="{H("/")}"><span class="logo-mark" aria-hidden="true"></span> THE BRYME</a><p>A house that reads the fine print so you don't have to. Seven desks, one house standard. Flagship is Writers — {N_MARKETS} paying markets checked by hand, dated, sourced, no pop-ups.</p></div>
-<div class="foot-col"><b>Flagship</b><a href="{H("/writers/")}">Writers home</a><a href="{H("/writers/writing/")}">{N_MARKETS} markets</a><a href="{H("/writers/learn/")}">197 guides</a><a href="{H("/writers/tools/")}">48 tools</a><a href="{H("/writers/search/")}">Search</a></div>
+<div class="foot-col"><b>Flagship</b><a href="{H("/writers/")}">Writers home</a><a href="{H("/writers/writing/")}">{N_MARKETS} markets</a><a href="{H("/writers/learn/")}">{N_GUIDES} guides</a><a href="{H("/writers/tools/")}">{N_TOOLS} tools</a><a href="{H("/writers/search/")}">Search</a></div>
 <div class="foot-col"><b>House</b><a href="{H("/tech/")}">Tech</a><a href="{H("/home/")}">Home</a><a href="{H("/fitness/")}">Fitness</a><a href="{H("/money/")}">Money</a><a href="{H("/sports/")}">Sport</a><a href="{H("/entertainment/")}">Entertainment</a></div>
 <div class="foot-col"><b>Trust</b><a href="/about/">About</a><a href="/privacy/">Privacy</a><a href="/about/#contact">Contact</a><span style="font-size:12px;color:var(--dim)">Reviewed {REVIEWED} · 0 pop-ups · Ctrl+K · / · 1–7 · ?</span></div>
 </div><div class="wrap foot-bottom">© 2026 THE BRYME · A house that reads the fine print · 7 desks, one standard · Reviewed {REVIEWED} · 0 pop-ups, ever · Keys: / · Ctrl+K · 1–7 · ? · Theme toggle remembers choice.</div></footer>

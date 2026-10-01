@@ -3,7 +3,7 @@
 
 The docket makes two kinds of claim, and they fail in different ways.
 
-Structural claims - six rows, a value in each, a gap list whose length matches
+Structural claims - eight rows, a value in each, a gap list whose length matches
 the number of unanswered questions - fail when a record has a field shaped
 unlike the others, which is exactly the shape a batch of 147 records never has
 been.
@@ -96,6 +96,34 @@ RUN_TOGETHER = re.compile(
     r"\b(?:stated|published|limit|terms|note)\s+(?:The|This|BRYME|It)\s")
 
 ROW = re.compile(r'<div class="docket-row( gap)?">(.*?)</div>', re.S)
+
+# The labels that mean "this docket row is one of the questions the record does
+# not answer". There are two, and they are not interchangeable:
+#
+#   Not stated  the guideline WAS read and does not address the question
+#   Not known   the guideline could not be read at all, so the absence is
+#               BRYME's rather than the publication's
+#
+# Both are gaps and both must appear in the gap list. The invariant below used
+# to name only "Not stated", which meant adding the honest second label made the
+# audit fail on nine correct pages - the check was encoding an assumption about
+# how many ways there are to not-know something.
+GAP_VALUES = frozenset({"Not stated", "Not known", "Not yet assessed"})
+# "Not yet assessed" is the third way this site does not know something, and it
+# arrived with the markets merge: 141 records whose guidelines were read for pay
+# and route but never put the experience question, because the field did not exist
+# when they were added. Leaving the field absent made them indistinguishable from a
+# guideline that was read and is genuinely silent, and the docket was asserting of
+# all 141 that "the guideline sets no experience requirement" - a claim about 141
+# publications that nobody has checked.
+#
+# Same lesson as the note above, third time: the invariant names the labels, so
+# every honest label has to be named here. It failed 111 correct pages, loudly and
+# for the right reason, and the fix is this line rather than the pages.
+# Payment, Length, Who can submit, Response time, Simultaneous submissions,
+# AI policy, Rights, Experience.
+DOCKET_ROWS = 8
+
 DOCKET = re.compile(r'<section class="section docket-section".*?</section>', re.S)
 
 
@@ -165,8 +193,8 @@ def main() -> int:
         block = found.group(0)
 
         rows = ROW.findall(block)
-        if len(rows) != 7:
-            fail(slug, f"{len(rows)} docket rows, expected 7")
+        if len(rows) != DOCKET_ROWS:
+            fail(slug, f"{len(rows)} docket rows, expected {DOCKET_ROWS}")
 
         gap_rows = len(re.findall(r'class="docket-row gap"', block))
         asked = gap_rows
@@ -176,10 +204,10 @@ def main() -> int:
             gaps_total += listed
             if listed != asked:
                 fail(slug, f"{listed} gaps listed but {asked} rows marked unanswered")
-            if listed == 7:
-                if "leaves all seven questions" not in block:
-                    fail(slug, "all seven unanswered but the headline does not say so")
-            elif f"leaves {listed} of the seven questions" not in block:
+            if listed == DOCKET_ROWS:
+                if "leaves all eight questions" not in block:
+                    fail(slug, "all eight unanswered but the headline does not say so")
+            elif f"leaves {listed} of the eight questions" not in block:
                 fail(slug, f"gap headline does not match the {listed} listed")
         elif asked:
             fail(slug, f"{asked} unanswered rows but no gap list")
@@ -196,11 +224,11 @@ def main() -> int:
             # docket counts it as one of the unanswered questions. Break it
             # either way and the gap list starts describing a different page
             # from the one above it.
-            if (value == "Not stated") != is_gap:
+            if (value in GAP_VALUES) != is_gap:
                 fail(slug, f'row "{label}" value {value!r} but gap={is_gap}')
             if label.endswith(("Restricted to a stated group",)):
                 fail(slug, "verdict text leaked into the label")
-            if value == "Not stated":
+            if value in GAP_VALUES:
                 silent_rows += 1
             seam = RUN_TOGETHER.search(_text(row.split("</b>")[-1]))
             if seam:
@@ -300,7 +328,7 @@ def main() -> int:
                 fail(slug, "ranking published without the same-shape caveat")
 
     print(f"publication pages      : {pages}")
-    print(f"docket rows per page   : 7 (structural errors above if not)")
+    print(f"docket rows per page   : {DOCKET_ROWS} (structural errors above if not)")
     print(f"unanswered rows        : {silent_rows}")
     print(f"gaps listed to readers : {gaps_total}")
     print(f"rankings recomputed    : {claims_checked}")

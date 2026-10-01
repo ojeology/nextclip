@@ -179,7 +179,16 @@ def main() -> None:
             if sec is None:
                 continue
             rel = f.parent.relative_to(base).as_posix()
-            route = "/" + ("" if rel == "." else rel + "/")
+            # Tier dirs mirror a desk subtree of public/ (writers/ is
+            # public/writers/, tech/ is public/tech/), so the tier name is
+            # part of the live route. ecosystem/ is the exception: it is a
+            # whole site root, containing entertainment/ and tech/ itself.
+            # Deriving the route without the prefix made desk_byline() miss
+            # the desk and fall back to "the BRYME editorial desk" on every
+            # tier copy, so the same page carried two different bylines
+            # depending on which tree you read.
+            prefix = "" if tier == "ecosystem" else tier + "/"
+            route = "/" + prefix + ("" if rel == "." else rel + "/")
             by = desk_byline(route)
             sec = sec.replace("</div></section>",
                               f'<p class="byline">{by}</p></div></section>', 1)

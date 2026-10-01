@@ -82,7 +82,23 @@ def footer() -> str:
 </div><div class="wrap foot-bottom">© 2026 BRYME · Independent editorial project · No acceptance, publication or payment is guaranteed.</div></footer>'''
 
 
-WRITING = json.loads((ROOT / "content/opportunities.json").read_text(encoding="utf-8"))["opportunities"]
+_OPP_DOC = json.loads((ROOT / "content/opportunities.json").read_text(encoding="utf-8"))
+WRITING = _OPP_DOC["opportunities"]
+
+# Records whose guidelines could not be fetched - neither by the harvester, a real
+# browser, nor an archived copy. For these, "not stated" is not the publication being
+# silent; it is BRYME not having read the page. The docket says which, because the
+# first is a fact about the publication and the second is a fact about us.
+GUIDELINES_NOT_READ = frozenset(_OPP_DOC.get("guidelinesNotRead") or [])
+
+# The same distinction one step further out. These records' guidelines HAVE been
+# read - for rate, route and deadline - but the experience question was never put
+# to them, because `experience` did not exist when they were added. Leaving the
+# field absent made them indistinguishable from a guideline that was read and is
+# genuinely silent, and the docket asserted of all 141 that "the guideline sets no
+# experience requirement", which is a claim about 141 publications that nobody
+# checked. Recorded as our own gap, not theirs, exactly as guidelinesNotRead is.
+EXPERIENCE_NOT_ASSESSED = frozenset(_OPP_DOC.get("experienceNotAssessed") or [])
 
 # Base country (where each publication is based) for the country selector.
 # "" = online / international — no single verified base country to claim.
@@ -166,10 +182,14 @@ def norm_types(rec: dict) -> list[str]:
 def _build_now() -> "_dt.datetime":
     """The moment this build should believe it is.
 
-    build-focus-site.py pins TODAY = "2026-09-04" so that the 24 call sites which
-    inherit it reproduce byte for byte. These four clock reads escaped that pin and
-    made `npm run build && git diff --exit-code` fail on any day after the build:
-    the deadline->closed flips below, the "%B %Y" edition line, and the sitemap
+    build-focus-site.py pins TODAY = "2026-09-04" as a literal, which is correct
+    for the jobs desk: those roles were checked that day and the desk bakes the
+    date into a route. This file rebinds TODAY from here (see below), so the
+    writers desk follows the pin instead of the literal.
+
+    These four clock reads were the reason the helper exists at all - they made
+    `npm run build && git diff --exit-code` fail on any day after the build: the
+    deadline->closed flips below, the "%B %Y" edition line, and the sitemap
     <lastmod> rewrite in build-routing.py.
 
     SOURCE_DATE_EPOCH is the standard reproducible-builds convention. CI sets it to
@@ -189,6 +209,40 @@ def _build_now() -> "_dt.datetime":
 
 def _build_today() -> "_dt.date":
     return _build_now().date()
+
+
+# ---------------------------------------------------------------------------
+# The writers desk's own "today"
+#
+# build-focus-site.py pins TODAY = "2026-09-04" as a literal, and for the jobs
+# desk that is right: those roles really were checked on that day, and the desk
+# bakes the date into a route (/jobs/verified-2026-09-04/), so the literal is
+# load-bearing there. The jobs desk is left exactly as it is.
+#
+# But this desk recomputes everything from content/opportunities.json on every
+# build, so inheriting a frozen date made four things wrong at once, and the
+# 288-record merge made them more visible rather than causing them:
+#
+#   1. /today/ was titled "Today's writing opportunities: verified 2026-09-04"
+#      and carried the same value as its schema dateModified - so a page named
+#      "today" told both readers and Google that it was a month old.
+#   2. The submission calendar filtered upcoming windows with
+#      `_today_i = TODAY`, so a window that closed on 2026-09-20 was still
+#      advertised as upcoming on a build made 2026-10-01.
+#   3. build-writing-hub clamps a guide's date with `if _upd > TODAY: _upd =
+#      TODAY`, which is meant to stop FUTURE dates. Against a frozen date it
+#      dragged 296 of 394 guides backwards to 2026-09-04 - so the desk home
+#      listed writing-contracts-what-to-check as 09/04 while the guide's own
+#      page said "Updated 2026-09-30". Two dates for one guide on one site, and
+#      every clamped guide sharing one date destroyed the list's sort order.
+#   4. _days_since() measured every interval from the same frozen point.
+#
+# _build_now() already honours SOURCE_DATE_EPOCH, so CI and pinned local builds
+# stay byte-reproducible - the property the literal was protecting - while
+# production deploys, which set no pin, get the real date. Reproducibility comes
+# from the pin, not from freezing the calendar.
+TODAY = _build_today().isoformat()
+TODAY_HUMAN = _build_today().strftime("%-d %B %Y")
 
 
 def _deadline_past_raw(rec: dict) -> bool:
@@ -606,6 +660,14 @@ def writing_nav(current_flt: str = "") -> str:
       <select id="f-type"><option value="">Any type</option>{type_opts}</select></div>
     <div class="opp-field"><label for="f-status">Status</label>
       <select id="f-status"><option value="">Any status</option>{status_opts}</select></div>
+    <div class="opp-field"><label for="f-exp">Experience</label>
+      <select id="f-exp">
+        <option value="">Any experience</option>
+        <option value="first-timer-friendly">Welcomes unpublished writers</option>
+        <option value="emerging">Wants some prior publication</option>
+        <option value="established">Expects a track record</option>
+        <option value="stated">States a stage at all</option>
+      </select></div>
     <div class="opp-field"><label for="f-pay">Pays at least</label>
       <select id="f-pay"><option value="">Any pay</option>{pay_opts}</select></div>
     <div class="opp-field"><label for="f-words">Length</label>
@@ -624,7 +686,7 @@ def writing_nav(current_flt: str = "") -> str:
     <label class="opp-check"><input type="checkbox" id="f-global"> Open to writers anywhere — {n_global}</label>
     <button type="button" id="f-reset" class="country-reset">Reset all</button>
   </div>
-  <p class="country-filter-hint"><b>Publication is based there</b> answers &ldquo;which UK magazines take pitches?&rdquo;. <b>Open to writers from there</b> answers &ldquo;what can I apply to from Nigeria?&rdquo; and includes everything open worldwide. A minimum-pay filter hides publications that do not state a figure &mdash; BRYME will not guess what they pay.</p>
+  <p class="country-filter-hint"><b>Publication is based there</b> answers &ldquo;which UK magazines take pitches?&rdquo;. <b>Open to writers from there</b> answers &ldquo;what can I apply to from Nigeria?&rdquo; and includes everything open worldwide. A minimum-pay filter hides publications that do not state a figure &mdash; BRYME will not guess what they pay. The <b>experience</b> filter shows only what a publication says about who may submit, read from its own guideline: most guidelines never mention it, is covered by &ldquo;states a stage at all&rdquo;, and a handful could not be read at all.</p>
 </form>
 <div id="f-chips" class="f-chips" hidden></div>
 <p id="filter-note" class="filter-status" aria-live="polite"><b id="f-count">{n_all} opportunities</b></p>
@@ -907,6 +969,7 @@ def pub_card(rec: dict, heading: str = "h2") -> str:
   data-status="{esc(st)}" data-types="{esc(" ".join(types))}" data-currency="{esc(cur)}"
   data-usd="{"" if usd is None else usd}" data-wcmin="{wcmin if wcmin is not None else ""}"
   data-wcmax="{wcmax if wcmax is not None else ""}" data-global="{"1" if globally_open else "0"}"
+  data-exp="{esc(rec.get("experience") or "not-stated")}"
   data-ai="{esc(norm_ai(rec))}" data-deadline="{esc(deadline)}"
   data-verified="{esc(rec.get("lastVerified") or "")}"
   data-pub="{esc(rec.get("publication", ""))}" data-search="{esc(search_blob)}">
@@ -1341,9 +1404,19 @@ def today_feed() -> None:
     _ai = collections.Counter(str(o.get("aiPolicy") or "not-stated") for o in WRITING)
     _ai_ban = _ai["prohibited"] + _ai["no-ai"] + _ai["strict"]
     _ai_stated = sum(v for k, v in _ai.items() if k != "not-stated")
-    _rights_kept = sum(1 for o in WRITING
-                       if str(o.get("rights") or "").lower().startswith(("copyright remains", "rights remain", "author retains", "you keep", "rights stay")))
-    _rights_silent = len(WRITING) - _rights_kept
+    # Rights figures come from writing_stats, not from a rule written here. This
+    # used to be a startswith test over five openers ("copyright remains",
+    # "author retains", ...), which found 8 records at 147 and STILL found 8 at
+    # 288 - because 72 more records say the same thing after first naming what
+    # the magazine buys: "Adi acquires first exclusive ... Copyright remains with
+    # the author." The report then told readers that 280 publications were
+    # "silent or vague" about ownership when 72 of them had answered plainly, and
+    # disagreed with the contracts guide, which publishes rights_stated from the
+    # shared module. One rule, in the module that exists to hold rules.
+    from writing_stats import STATS as _WSTATS
+    _rights_kept = _WSTATS["rights_author_keeps"]
+    _rights_no_owner = _WSTATS["rights_stated_no_owner"]
+    _rights_silent = _WSTATS["rights_unreliable"]
     _types = collections.Counter(t for o in WRITING for t in (o.get("writingTypes") or []))
     _top_types = _types.most_common(6)
     _methods = collections.Counter(str(o.get("applyMethod") or "not stated") for o in WRITING)
@@ -1377,7 +1450,7 @@ def today_feed() -> None:
 
 <h2>What the guidelines do not tell you</h2>
 <ul>
-<li><b>Rights:</b> only <b>{_rights_kept}</b> of {len(WRITING)} records state clearly that copyright remains with the author. The other {_rights_silent} are silent or vague — ask before you sign anything.</li>
+<li><b>Rights:</b> {_rights_kept} of {len(WRITING)} records state clearly that copyright stays with the author — as "copyright remains with the author", "all rights revert to the author on publication" or "authors retain". A further {_rights_no_owner} address rights but say only what the publication acquires, never who ends up owning the work. The remaining {_rights_silent} do not address rights at all. Ask before you sign anything.</li>
 <li><b>Response times:</b> <b>{_resp_silent}</b> markets do not publicly state a response window. Where they do, it lives on each record.</li>
 </ul>
 
@@ -1407,7 +1480,7 @@ def today_feed() -> None:
     # time. No invented events.
     # ------------------------------------------------------------------
     import datetime as _dtl
-    _today_i = TODAY  # pinned build date, ISO-comparable
+    _today_i = TODAY  # the build's own date, ISO-comparable; honours the pin
     def _cal_next_date(o):
         d = o.get("deadline") or {}
         for k in ("windowEnd", "date", "openingDate"):
@@ -1673,6 +1746,7 @@ def newsletter_page() -> None:
                    '<p class="eyebrow">Prefer a channel?</p><h2>The same signal, where you already are.</h2>'
                    f'</div></div><div class="actions">{"".join(channels)}</div></div></section>')
     body = ('<div class="wrap">'
+            '<nav class="breadcrumb"><a href="/writers/">Home</a> / Weekly digest</nav>'
             '<section class="page-hero"><p class="kicker"><span class="kicker-dot"></span>Weekly digest</p>'
             '<h1>The BRYME weekly digest.</h1>'
             '<p>Every newly verified paying opportunity, one practical guide, and what closed or '
@@ -1708,7 +1782,9 @@ def newsletter_page() -> None:
             '<td style="padding:8px 12px;border-bottom:1px solid var(--line)">' + esc(str(o.get("pay") or "Not stated")) + '</td>'
             '<td style="padding:8px 12px;border-bottom:1px solid var(--line)">' + esc(str(o.get("lastVerified") or chr(8212))) + '</td></tr>'
             for o in _recent)
-        _wc_body = ('<div class="wrap"><section class="page-hero"><p class="kicker"><span class="kicker-dot"></span>Verification log</p>'
+        _wc_body = ('<div class="wrap">'
+            '<nav class="breadcrumb"><a href="/writers/">Home</a> / What changed</nav>'
+            '<section class="page-hero"><p class="kicker"><span class="kicker-dot"></span>Verification log</p>'
             '<h1>What changed on the desk.</h1>'
             '<p>The most recent human checks across the ' + str(len(_ops)) + '-publication database, newest first. A date here means an editor opened the '
             'publication\u2019s own page and re-read it \u2014 pay, openness, guidelines, the AI policy. Nothing here is scraped; when a listing closes, it stays '
@@ -1749,6 +1825,7 @@ def affiliate_note() -> str:
 
 def disclosure_page() -> None:
     body = ('<div class="wrap">'
+            '<nav class="breadcrumb"><a href="/writers/">Home</a> / Disclosure</nav>'
             '<section class="page-hero"><p class="kicker"><span class="kicker-dot"></span>Transparency</p>'
             '<h1>How BRYME makes money.</h1>'
             '<p>The short version: it does not yet &mdash; and when it does, the ways are '
@@ -1817,6 +1894,7 @@ def studio_page() -> None:
     layering decision for later; the storage envelope is versioned JSON.
     """
     body = f'''<div class="wrap">
+<nav class="breadcrumb"><a href="/writers/">Home</a> / Writing Studio</nav>
 <section class="page-hero"><p class="kicker"><span class="kicker-dot"></span>The Writing Studio</p>
 <h1>Draft here. Nothing leaves this browser.</h1>
 <p class="article-dek">A quiet room for writing: drafts save themselves on this device as you type, with live word counts, a session goal, and one-click export. No account, no upload, no sync &mdash; your words are yours, locally.</p></section>
@@ -2307,6 +2385,84 @@ def programmatic_pages() -> None:
             rows, f"/writing/?type={t}", base_guides)
         PROG_ROUTES.append(f"/writing-opportunities/{tslug[t]}/")
 
+    # --- by what stage the publication says it publishes ---------------------
+    #
+    # The beginner path. A writer who has never submitted anywhere needs a
+    # different question answered from "where do I send this": they need to know
+    # WHICH markets will read somebody with no credits, because most of the
+    # database is silent on the question and silence reads as a closed door when
+    # you are starting out.
+    #
+    # Both views are built from the `experience` field, which is assigned only
+    # from the publication's own guideline and carries the sentence it came from.
+    # Nothing here is inferred: a guideline that never mentions experience is NOT
+    # listed, because "we did not find out" is not the same as "they welcome
+    # beginners" and telling a first-timer otherwise would waste their evening.
+    ftf = [r for r in WRITING if r.get("experience") == "first-timer-friendly"]
+    # Every record that states a stage, which is what the facet's "stated" value
+    # means and what this page's own call to action filters to. It used to stop at
+    # "emerging", so the page listed 43 while the link under it showed 47 - the
+    # page and its button disagreed about its own subject.
+    staged = [r for r in WRITING if r.get("experience") not in (None, "not-stated")]
+    # The three numbers printed on these pages must ADD UP, because a reader will
+    # add them. "not-stated" covers both a guideline that was read and was silent
+    # and a guideline that could not be read at all, so counting the unread set
+    # separately and printing both would say "100 guidelines are silent ... and 9
+    # could not be read" when the truth is 91 + 9 = 100. That reads as 109 records
+    # and, worse, makes a claim about the policy of nine publications whose policy
+    # nobody has read. Split the bucket instead of overlapping it.
+    # Four rungs, not three. A reader who adds these up must land on the record
+    # count, and "we read it and it says nothing" must not absorb the records
+    # nobody has asked yet - that is the difference between a fact about the
+    # publication and a fact about BRYME.
+    not_stated = [r for r in WRITING if r.get("experience") in (None, "not-stated")]
+    silent_n = sum(1 for r in not_stated
+                   if r.get("slug") not in GUIDELINES_NOT_READ
+                   and r.get("slug") not in EXPERIENCE_NOT_ASSESSED)
+    unassessed_n = len(EXPERIENCE_NOT_ASSESSED)
+    unread_n = len(GUIDELINES_NOT_READ)
+
+    if len(ftf) >= MIN_TYPE_PAGE:
+        _prog_page(
+            "first-publication",
+            "Publications that welcome writers with no publication history",
+            "For a first credit",
+            # The meta description is built as "{n} researched publications — {intro}",
+            # so the intro must not open with the count or the description reads
+            # "13 researched publications — 13 publications whose...".
+            "From having written something to having published something, via markets "
+            "that say unpublished writers are welcome.",
+            "BRYME only lists a publication here when its guideline actually says unpublished writers "
+            "are welcome. A guideline that never mentions experience is recorded as not stated rather "
+            "than treated as a welcome, because silence is not an invitation. Each listing carries the "
+            "sentence it was placed on, with the date it was read.",
+            ftf, "/writing/?experience=first-timer-friendly",
+            base_guides + [("/learn/writing-for-publication/why-your-first-pitch-may-be-rejected/",
+                            "Why a first pitch gets rejected"),
+                           ("/checklists/", "Pre-submission checklists")])
+        PROG_ROUTES.append("/writing-opportunities/first-publication/")
+
+    if len(staged) >= MIN_TYPE_PAGE:
+        _prog_page(
+            "new-and-emerging",
+            "Publications that state what stage they publish",
+            "First credit upward",
+            # Keep under 120 chars: the description template slices the intro there,
+            # and a slice that lands mid-word reads as broken in the SERP.
+            "Every market whose own guideline says something about who may submit — "
+            "first-timers to those with a track record.",
+            f"Grouped by what the publication says, not by what BRYME assumes. Of the {len(WRITING)} records, "
+            f"{len(staged)} state a stage. Of the rest, {silent_n} were read and say nothing on the question, "
+            f"{unassessed_n} have not been assessed for this field at all, and {unread_n} could not be read. "
+            "None of those three appears here, because an unstated policy is not an open door. Each listing "
+            "carries the sentence it was placed on.",
+            staged, "/writing/?experience=stated",
+            base_guides + [("/writing-opportunities/first-publication/",
+                            "Start here if you have no credits yet"),
+                           ("/learn/writing-for-publication/how-to-pitch-an-editor/",
+                            "How to pitch an editor")])
+        PROG_ROUTES.append("/writing-opportunities/new-and-emerging/")
+
     # --- index --------------------------------------------------------------
     def li(href, label, n):
         return (f'<a class="guide-card" href="{esc(href)}"><span class="card-num">{n}</span>'
@@ -2345,6 +2501,10 @@ def programmatic_pages() -> None:
         '<script type="application/json" id="atlas-open">' + atlas_open + '</script>'
         '<script src="/assets/atlas.js"></script>'
         '</div></section>')
+    exp_cards = "".join([
+        li("/writing-opportunities/first-publication/", "Welcome a first publication", len(ftf)),
+        li("/writing-opportunities/new-and-emerging/", "State what stage they publish", len(staged)),
+    ])
     body = f'''<div class="wrap"><nav class="breadcrumb"><a href="/">Home</a> / <a href="/writing/">Opportunities</a> / Browse</nav>
 <section class="page-hero"><p class="kicker"><span class="kicker-dot"></span>Browse by</p>
 <h1>Writing opportunities by country and genre.</h1>
@@ -2355,7 +2515,12 @@ def programmatic_pages() -> None:
 {li("/writing-opportunities/remote/", "Open to writers anywhere", len(remote))}</div></div></section>
 <section class="section alt"><div class="wrap"><div class="section-head"><div><p class="eyebrow">By what you write</p><h2>Genre and form.</h2></div></div>
 <div class="card-grid">{type_cards}</div>
-<p class="tool-note">Need a combination these pages do not cover — say, poetry in Canada paying over $100? <a href="/writing/">Use the full search</a>, which filters on all nine facets at once.</p>
+<p class="tool-note">Need a combination these pages do not cover — say, poetry in Canada paying over $100? <a href="/writing/">Use the full search</a>, which filters on all ten facets at once.</p>
+</div></section>
+<section class="section"><div class="wrap"><div class="section-head"><div><p class="eyebrow">By where you are starting from</p><h2>If you have no credits yet.</h2></div>
+<p>Most guidelines never mention experience, so the honest answer for a first-timer is usually "unknown". These two views collect the {len(staged)} publications that did say — including the {len(ftf)} that explicitly welcome unpublished writers, and {len(staged) - len(ftf)} that want some experience first.</p></div>
+<div class="card-grid">{exp_cards}</div>
+<p class="tool-note">Both views are built from what each publication says about who may submit, read from its own guideline and shown with the sentence it came from. Silence is recorded as silence: of the {len(WRITING)} records, {silent_n} guidelines were read and say nothing on the question, {unassessed_n} have been read for pay and route but not yet put to this question, and {unread_n} could not be read at all — {silent_n + unassessed_n + unread_n} between them, and a record in any of those three groups is never treated as a welcome.</p>
 </div></section>{atlas_html}'''
     write("/writing-opportunities/", page_wf(
         title="Writing opportunities by country and genre | BRYME",
@@ -2414,7 +2579,7 @@ def writing_hub() -> None:
 {writing_nav()}
 <section class="section"><div class="how-steps"><h2 class="section-sub">How make-money writing works with BRYME</h2><ol class="steps">
 <li><b>Pick an opportunity.</b> Each page names who it is open to — BRYME does not treat a missing country list as "open worldwide." Eligibility and diaspora rules are recorded where the publication states them.</li>
-<li><b>Check the docket before you pitch.</b> Every publication page opens with six answers in one block — pay, length, who can submit, how long a reply takes, the AI policy and the rights — and then names the ones the publication does not give. A missing answer is recorded as missing rather than filled in with a plausible one, because the gap is itself something you need to know before you spend an evening on the pitch.</li>
+<li><b>Check the docket before you pitch.</b> Every publication page opens with eight answers in one block — pay, length, who can submit, how long a reply takes, whether you may submit elsewhere at the same time, the AI policy, the rights, and what the guideline assumes about experience — and then names the ones the publication does not give. A missing answer is recorded as missing rather than filled in with a plausible one, because the gap is itself something you need to know before you spend an evening on the pitch.</li>
 <li><b>Read the official guideline, not just the rate card.</b> Every page links to the publication's own guidelines and shows its last human-check date.</li>
 <li><b>Understand the money before you pitch.</b> Payment is the published fee per accepted piece (or the real range), how and when it is paid, and whether it is per word, per piece or a variable honorarium. Rates are never invented.</li>
 <li><b>Check the AI policy and rights.</b> Many publications reject AI-assisted work and take specific rights. BRYME records what each page says.</li>
@@ -2437,10 +2602,10 @@ def writing_hub() -> None:
 # ---------------------------------------------------------------------------
 # The submission docket
 #
-# Every publication page already answers six questions, but it answers them
+# Every publication page already answers eight questions, but it answers them
 # scattered across sections, in the publication's own words, with no indication
 # of which answers the publication actually gave and which BRYME filled in with
-# a default. A writer deciding where to send a pitch needs the six answers in
+# a default. A writer deciding where to send a pitch needs the eight answers in
 # one place AND needs to know which of them are missing - because "the
 # guideline does not say" is a fact about the market that no directory
 # publishes, and it is the difference between an editor who trusts the desk and
@@ -2711,7 +2876,7 @@ def _docket_row(label: str, value: str, note: str = "", state: str = "") -> str:
 
 
 def docket(rec: dict) -> str:
-    """The six answers, and the honest list of what is missing.
+    """The eight answers, and the honest list of what is missing.
 
     Nothing here is new data - every line is read from the record the rest of
     the page already shows, or computed from the dataset at build time. What is
@@ -2803,7 +2968,41 @@ def docket(rec: dict) -> str:
             "reasonable; silence past that is a soft no, not a rejection.", "gap"))
         gaps.append("Response time — expect to wait blind, and keep other pitches live.")
 
-    # 5. AI policy
+    # 5. Simultaneous submissions
+    #
+    # Read from the publication's own guideline and stored with the sentence it
+    # came from. Silence stays "Not stated": a publication that never mentions
+    # the question has not answered it, and telling a writer "yes" on its behalf
+    # would be inventing a policy for somebody else's magazine.
+    sim = str(rec.get("simultaneousSubmissions") or "not-stated")
+    sim_label = {
+        "accepted": "You may submit elsewhere at the same time",
+        "not-accepted": "Not accepted — send to one place at a time",
+    }.get(sim)
+    if sim_label:
+        rows.append(_docket_row("Simultaneous submissions", sim_label,
+                                _evidence(rec.get("simultaneousNote"))))
+    else:
+        if rec.get("slug") in GUIDELINES_NOT_READ:
+            rows.append(_docket_row(
+                "Simultaneous submissions", "Not known",
+                "BRYME has not been able to read this publication's guideline — the "
+                "site blocks automated access and no archived copy carried the policy. "
+                "This is unknown rather than unanswered, so ask the editor before you "
+                "send the same piece anywhere else.", "gap"))
+            gaps.append("Simultaneous submissions — BRYME could not open this "
+                        "guideline, so this is unknown rather than open. Ask first.")
+        else:
+            rows.append(_docket_row(
+                "Simultaneous submissions", "Not stated",
+                "The guideline does not address simultaneous submissions. BRYME records "
+                "that as silence rather than assuming a yes: if you are sending the same "
+                "piece to several publications, say so in your cover letter and withdraw "
+                "it everywhere the moment it is taken.", "gap"))
+            gaps.append("Simultaneous submissions — the guideline leaves this open, so "
+                        "declare it in your cover letter rather than assuming.")
+
+    # 6. AI policy
     ai_text = {
         "prohibited": ("AI-assisted work is prohibited",
                        "The guideline forbids AI-generated or AI-assisted writing."),
@@ -2826,7 +3025,7 @@ def docket(rec: dict) -> str:
             f"silence here is not permission — ask.", "gap"))
         gaps.append("AI policy — assume disclosure is expected unless the editor says otherwise.")
 
-    # 6. Rights
+    # 7. Rights
     if rights_bucket(rec) == "stated":
         rows.append(_docket_row("Rights", "Stated", esc(rights)))
     else:
@@ -2860,19 +3059,39 @@ def docket(rec: dict) -> str:
     if exp_label:
         rows.append(_docket_row("Experience", exp_label, _evidence(rec.get("experienceNote"))))
     else:
-        rows.append(_docket_row(
-            "Experience", "Not stated",
-            "The guideline sets no experience requirement. BRYME records that as "
-            "silence, not as a welcome — a first-time writer is not excluded, but "
-            "nor are they invited.", "gap"))
-        gaps.append("Experience — look at what kind of writer this publication "
-                    "normally publishes before you pitch; its guideline does not say.")
+        if rec.get("slug") in GUIDELINES_NOT_READ:
+            rows.append(_docket_row(
+                "Experience", "Not known",
+                "BRYME has not been able to read this publication's guideline — the "
+                "site blocks automated access and no archived copy carried the policy. "
+                "The missing answer here is BRYME's, not the publication's, so treat "
+                "this as unknown rather than settle it yourself.", "gap"))
+            gaps.append("Experience — BRYME could not open this guideline, so this "
+                        "is unknown rather than absent. Check it before you pitch.")
+        elif rec.get("slug") in EXPERIENCE_NOT_ASSESSED:
+            rows.append(_docket_row(
+                "Experience", "Not yet assessed",
+                "BRYME has read this publication's guideline for pay, route and "
+                "deadline but has not yet put the experience question to it, so this "
+                "row is untouched rather than unanswered — it is our gap, not theirs. "
+                "Treat it exactly as you would an unstated policy.", "gap"))
+            gaps.append("Experience — BRYME has not assessed this one yet, so do not "
+                        "read the blank as either a welcome or a bar. Look at who the "
+                        "publication normally publishes before you pitch.")
+        else:
+            rows.append(_docket_row(
+                "Experience", "Not stated",
+                "The guideline sets no experience requirement. BRYME records that as "
+                "silence, not as a welcome — a first-time writer is not excluded, but "
+                "nor are they invited.", "gap"))
+            gaps.append("Experience — look at what kind of writer this publication "
+                        "normally publishes before you pitch; its guideline does not say.")
 
     gap_block = ""
     if gaps:
         items = "".join(f"<li>{esc(g)}</li>" for g in gaps)
-        all_gaps = len(gaps) == 7
-        tail = "all seven questions" if all_gaps else f"{len(gaps)} of the seven questions"
+        all_gaps = len(gaps) == 8
+        tail = "all eight questions" if all_gaps else f"{len(gaps)} of the eight questions"
         gap_block = (f'<div class="docket-gaps"><h3>What this record does not tell you</h3>'
                      f'<p>This publication leaves {tail} unanswered. '
                      f'BRYME publishes that gap instead of filling it — a generated answer would '

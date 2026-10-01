@@ -35,6 +35,21 @@ const EXPECT_TOTAL = records.length;
 const EXPECT_INTL = records.filter(r => ["open", "worldwide"].includes(modeOf(r))).length;
 const EXPECT_NOT_STATED = records.filter(r => modeOf(r) === "not-stated").length;
 
+/* The experience facet, derived the same way. `experience` is assigned only from
+   a publication's own guideline, so:
+     "first-timer-friendly" == records whose guideline says unpublished writers
+                                are welcome
+     "stated"               == the union of the three named stages, i.e. every
+                                record that said anything about who may submit
+   Records whose guideline could not be read carry `not-stated`, exactly like a
+   record whose guideline was read and was silent, so neither may appear under
+   a named stage. That is the whole point of the field. */
+const expOf = r => r.experience || "not-stated";
+const EXPECT_FTF = records.filter(r => expOf(r) === "first-timer-friendly").length;
+const EXPECT_EMERGING = records.filter(r => expOf(r) === "emerging").length;
+const EXPECT_ESTABLISHED = records.filter(r => expOf(r) === "established").length;
+const EXPECT_STATED = records.filter(r => expOf(r) !== "not-stated").length;
+
 // BASED+NG: records the country map places in Nigeria.
 const PUBC = path.join(ROOT, "content", "hub", "pub-countries.json");
 const countries = fs.existsSync(PUBC) ? JSON.parse(fs.readFileSync(PUBC, "utf8")) : {};
@@ -138,6 +153,60 @@ const check = (ok, label) => { console.log((ok ? "  PASS  " : "  FAIL  ") + labe
       check(await slugVisible(inCards[0].slug), `BASED+IN shows ${inCards[0].slug}`);
       await setSel("#f-country", "all");
     }
+
+    // ---- 6. the experience facet, and the URL that drives it ----------
+    // These are the links the beginner pages use. They are asserted through the
+    // URL rather than the control, because a shareable link is what a reader
+    // actually receives - if only the select worked, the CTAs would still be
+    // broken for everyone who clicked one.
+    const viaUrl = async qs => {
+      await page.goto(base + "/writers/writing/" + qs, { waitUntil: "domcontentloaded" });
+      // "attached", not visible: a filtered page has cards present but hidden,
+      // and waiting for a VISIBLE card times out on exactly the URLs where the
+      // filter worked.
+      await page.waitForSelector(".job-card", { state: "attached" });
+      await page.waitForTimeout(250);
+      return visible();
+    };
+    await setSel("#f-exp", "first-timer-friendly");
+    const ftf = await visible();
+    check(ftf === EXPECT_FTF,
+      `experience=first-timer-friendly equals the welcoming records (${EXPECT_FTF}, got ${ftf})`);
+    check(ftf > 0 && ftf < EXPECT_TOTAL, "and it is a real subset, not everything");
+
+    await setSel("#f-exp", "emerging");
+    const emg = await visible();
+    check(emg === EXPECT_EMERGING, `experience=emerging (${EXPECT_EMERGING}, got ${emg})`);
+
+    await setSel("#f-exp", "established");
+    const est = await visible();
+    check(est === EXPECT_ESTABLISHED, `experience=established (${EXPECT_ESTABLISHED}, got ${est})`);
+
+    await setSel("#f-exp", "stated");
+    const stated = await visible();
+    check(stated === EXPECT_STATED,
+      `experience=stated is the union of the named stages (${EXPECT_STATED}, got ${stated})`);
+    check(stated === ftf + emg + est,
+      `and it equals its parts (${ftf}+${emg}+${est}=${ftf + emg + est}, got ${stated})`);
+
+    // A record whose guideline could not be read must never be filtered into a
+    // welcome. agni is one of the nine; it is not stated, and it is not read.
+    const unread = records.filter(r => expOf(r) === "not-stated").map(r => r.slug);
+    if (unread.length) {
+      await setSel("#f-exp", "first-timer-friendly");
+      check(!(await slugVisible(unread[0])),
+        `a record with no stated stage (${unread[0]}) is not listed as welcoming beginners`);
+    }
+
+    check((await viaUrl("?experience=first-timer-friendly")) === EXPECT_FTF,
+      "the URL the beginner pages link to filters correctly on load");
+    check((await viaUrl("?experience=stated")) === EXPECT_STATED,
+      "the URL the browse index links to filters correctly on load");
+
+    await page.goto(base + "/writers/writing/", { waitUntil: "domcontentloaded" });
+    await page.waitForSelector(".job-card", { state: "attached" });
+    await page.waitForTimeout(250);
+    check((await visible()) === EXPECT_TOTAL, "and a bare URL shows everything again");
 
     check(errors.length === 0, `no console/page errors (${errors.slice(0, 2).join(" | ") || "none"})`);
   } finally {

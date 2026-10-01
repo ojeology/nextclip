@@ -5,8 +5,11 @@ Why this exists: the quality validators check front-matter `related:` /
 `tools:` slots and structure, but raw body links were a blind spot — a
 dead /learn/writing-basics/how-to-cite-sources/ slug shipped and lived
 on the live site for days. This script reads public/**/*.html directly,
-so nothing that renders can dodge it. It runs at the end of `npm run
-build` (see package.json) and fails the build on any broken link.
+so nothing that renders can dodge it. It runs in `npm test`
+(see package.json) and in the sports bot workflow, and exits non-zero on any
+broken link. It is NOT part of `npm run build` - an earlier version of this
+docstring said it was, which was untrue and meant the check only ever ran for
+the scheduled sports job until it was wired into `npm test` on 2026-09-30.
 
 Scope: internal path links (/...) and same-canonical-domain absolute
 URLs. External http(s) links are out of scope here (they need network;
