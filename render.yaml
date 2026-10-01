@@ -42,7 +42,13 @@ services:
     # public/{entertainment,sports}/_recovered/ to overwrite the stale 2026-09-14 copies
     # on Render's overlay-style static serving - the 11c ordering (sweep AFTER the build)
     # deleted those tombstones out of the artifact and the stale files kept serving.
-    buildCommand: npm install --omit=dev && (find . -maxdepth 4 -type d -name _recovered -not -path './content/*' -not -path './node_modules/*' -not -path './public/*' -exec rm -rf {} + || echo 'stale _recovered sweep unavailable') && npm run build && (git -c safe.directory='*' clean -xdf public/ || echo 'clean - git clean unavailable, untracked publish files may persist')
+    # 2026-10-01: the retired Money desk is swept out of the workspace before
+    # the build. A reused Render build workspace kept the git-removed money/
+    # trees alive, so the live artifact served stale /money/* pages (old etags,
+    # old last-modified) even though the deployed commit had deleted them -
+    # the same class of drift the _recovered sweep and the git-clean guard
+    # below already defend against. rm -rf is a no-op on a clean checkout.
+    buildCommand: npm install --omit=dev && (find . -maxdepth 4 -type d -name _recovered -not -path './content/*' -not -path './node_modules/*' -not -path './public/*' -exec rm -rf {} + || echo 'stale _recovered sweep unavailable') && (rm -rf money ecosystem/money public/money || echo 'retired money-desk sweep unavailable') && npm run build && (git -c safe.directory='*' clean -xdf public/ || echo 'clean - git clean unavailable, untracked publish files may persist')
     staticPublishPath: public
     headers:
       - path: /*
