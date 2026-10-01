@@ -1146,5 +1146,9 @@
   "ink-in-thirds": {
     "base": "",
     "label": "International"
+  },
+  "black-warrior-review": {
+    "base": "US",
+    "label": "United States"
   }
 }

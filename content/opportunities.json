@@ -26420,6 +26420,113 @@
       ],
       "simultaneousSubmissions": "accepted",
       "simultaneousNote": "We DO ACCEPT simultaneous submissions. — https://inkinthirds.org/submissions (read 2026-10-01)"
+    },
+    {
+      "status": "published",
+      "vertical": "writing",
+      "lastVerified": "2026-10-01",
+      "publishedAt": "2026-10-01",
+      "experience": "not-stated",
+      "editorExperience": {
+        "status": "not-yet-submitted"
+      },
+      "id": "black-warrior-review",
+      "slug": "black-warrior-review",
+      "publication": "Black Warrior Review",
+      "title": "Poetry, prose and comics from a paying market - amount not published",
+      "seoTitle": "Black Warrior Review: a paying market with the amount left unpublished",
+      "excerpt": "Black Warrior Review states plainly that it pays contributors, and equally plainly that the amount depends on how many contributors an issue carries and the budget its university office allocates - so no figure can be quoted and none is. It reads poetry, prose, comics and hybrid work in winter and summer windows, takes prose up to 6,000 words, notes simultaneous submissions, reverts rights on publication, and will not consider AI-assisted work.",
+      "officialUrl": "https://bwr.submittable.com/submit",
+      "applyUrl": "https://bwr.submittable.com/submit",
+      "applyEmail": null,
+      "applyMethod": "Online through the submission manager; fee waivers are available on request.",
+      "sources": [
+        {
+          "name": "Black Warrior Review - General submissions (official)",
+          "url": "https://bwr.submittable.com/submit"
+        }
+      ],
+      "eligibility": {
+        "summary": "Official page: no country restriction stated. The magazine is staffed by graduate students at the University of Alabama and carries the university's copyright line, which is where the US filing comes from.",
+        "mode": "not-stated",
+        "includesRegions": [],
+        "allowsDiaspora": true,
+        "notStated": true
+      },
+      "writingTypes": [
+        "poetry",
+        "fiction",
+        "creative-nonfiction",
+        "other"
+      ],
+      "writingTypeLabel": "Poetry, prose, comics, art, nonfiction and hybrid work",
+      "pay": {
+        "currency": null,
+        "amountMin": null,
+        "amountMax": null,
+        "display": "Payment stated, amount not published",
+        "conditions": "Official page: \"Black Warrior Review is a paying market. The amount per contributor or piece is dependent on our overall number of contributors for a given issue, and the budget allocated to us by our presiding office at the University of Alabama, the Office of Student Media.\" Also: \"We always pay our contributors.\" The page also mentions a submission fee with waivers but publishes no fee amount, so none is recorded.",
+        "timing": "Not publicly stated"
+      },
+      "wordCount": {
+        "min": null,
+        "max": 6000,
+        "display": "Prose up to 6,000 words, with nonfiction limited to 4,000 words; poetry, comics, art and hybrid work also read"
+      },
+      "response": {
+        "label": "Three to six months",
+        "band": "3-plus-months",
+        "official": true
+      },
+      "submissionStatus": "closed",
+      "deadline": {
+        "display": "Reads in two windows a year, predominantly 15 December to 1 March and 1 June to 30 September - so the summer window closed on 30 September 2026 and the winter window opens 15 December 2026. The page warns the dates are liable to change as the masthead turns over",
+        "openingDate": "2026-12-15",
+        "windowEnd": "2027-03-01",
+        "recurring": true
+      },
+      "aiPolicy": "prohibited",
+      "whatTheyWant": [
+        "Poetry - the page says it believes poetry is the history of words.",
+        "Fiction the editors describe as unreal, nonfiction that can be uncertain of itself, comics, art and hybrid work.",
+        "Work of up to 6,000 words for prose, and 4,000 words for nonfiction.",
+        "Simultaneous submissions, if noted as such."
+      ],
+      "whatTheyDontWant": [
+        "Work translated, written, developed or assisted by AI writing tools: the page names ChatGPT and states it will consider none.",
+        "Previously published work.",
+        "Prose beyond the stated limits - the journal is print and the page notes its physical space is limited.",
+        "Simultaneous work that is accepted elsewhere without withdrawal."
+      ],
+      "requirements": [
+        "Read the general guidelines at https://bwr.submittable.com/submit before sending.",
+        "Submit through the submission manager only.",
+        "Send during a reading window: predominantly 15 December to 1 March and 1 June to 30 September, though the page warns the dates can shift.",
+        "Note simultaneous submissions as such, and withdraw immediately on acceptance elsewhere.",
+        "Request a fee waiver if the submission fee is a hardship; free submissions are available for incarcerated writers.",
+        "Allow three to six months for a response."
+      ],
+      "rights": "Rights revert to the author upon publication.",
+      "howToSubmit": [
+        "Read https://bwr.submittable.com/submit before sending.",
+        "Submit through the submission manager during a window - general submissions are between windows now, with the winter period opening 15 December 2026.",
+        "Keep prose within 6,000 words and nonfiction within 4,000.",
+        "Note simultaneous submissions and withdraw on acceptance elsewhere.",
+        "Ask for a fee waiver if the fee is a barrier; the page says it grants them."
+      ],
+      "keywords": [
+        "black warrior review",
+        "paying market",
+        "university of alabama",
+        "no ai",
+        "simultaneous submissions",
+        "rights revert",
+        "winter and summer reading periods",
+        "submittable",
+        "comics"
+      ],
+      "simultaneousSubmissions": "accepted",
+      "simultaneousNote": "Simultaneous submissions are welcome, if noted, and please notify us immediately if the work is accepted somewhere else. — https://bwr.submittable.com/submit (read 2026-10-01)"
     }
   ]
 }
