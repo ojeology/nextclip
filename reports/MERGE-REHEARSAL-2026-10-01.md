@@ -239,3 +239,81 @@ The branch is merge-ready at **264 records** on the stated standard, verified ag
 main that exists right now rather than the one that existed yesterday. If main moves again
 before the merge, this addendum is void and the rehearsal must be re-run — the last two
 rehearsals both found something the previous one could not have seen.
+
+---
+
+# Addendum 2 — re-rehearsed at batch 20, and the notes audited in full
+
+Two more rehearsals had happened since the addendum above, and the branch kept moving. This
+one was run after batch 20 and the note normalisation.
+
+| | |
+|---|---|
+| merge base | `9da69b439` |
+| branch | `f155ab7ac3` — 37 ahead |
+| main | `67b64a54c0` — 15 ahead |
+| merged tree | `8aa707108c` |
+| conflicts | `content/opportunities.json` only |
+
+Main had moved again (`c61f1ff46c` → `67b64a54c0`), including a sports-data auto-update, a
+`SOURCE_DATE_EPOCH` fix in the llms.txt build, and a correction to two beginner pages. None of
+it touched the writing dataset, and the merge resolved to 280 records. Checked independently
+against all three inputs: **0 three-way violations**, nothing lost or invented, and all
+**133 branch-only records byte-identical** to the branch.
+
+## Gates on the merged tree
+
+`npm run build` exit 0; `validate`, `verify:allowlist`, `verify:titles`, `verify:dockets`,
+`validate:money`, `validate:hometools` all exit 0; `audit_dockets.py` **280 publication pages,
+8 docket rows, 1081 unanswered rows, 145 rankings, 0 problems**.
+
+## The full note audit — the gap is closed
+
+Until now the simultaneous-submission notes could only be spot-checked, because the branch
+draws seven docket rows and never prints the note row. On the merged tree, **every record in
+the dataset that carries a note** was checked — 164 of them (148 accepted, 16 not-accepted) —
+for three things: the quoted sentence appears on the page, the right reader-facing label
+appears with it, and the punctuation sweep is clean.
+
+| check | result |
+|---|---|
+| pages missing | 0 |
+| sentence not rendered | 0 |
+| wrong or missing label | 0 |
+| punctuation defects (`" ."` and friends) | 0 |
+| notes still in the hyphen form | 0 |
+
+Two legitimate note shapes exist and both are accepted: the plain
+`<sentence> — <url> (read <date>)`, and a variant that also records an archived source
+(`… (Wayback snapshot 2026-05-30; read 2026-09-30)`). Three records use the second shape —
+walrus-essays, space-and-time, orion-magazine — and they are **more** informative than the
+plain form, not less. An earlier check in this rehearsal flagged them as "no read date" because
+the regular expression demanded the date at the very end of the string; the notes were correct
+and the check was wrong.
+
+## One defect found and fixed at source
+
+161 of the 164 notes used the em-dash separator. Three — brick-a-literary-journal, bracken and
+metphrastics — used a hyphen. They had been left alone when the field was backfilled, as
+pre-existing drift. They are now normalised by `scripts/normalize-simultaneous-notes.py`, which
+touches only the separator, refuses to run unless exactly those three records are affected, and
+asserts the sentence, URL and date are otherwise unchanged. A second run exits non-zero with
+"found []", so it cannot quietly rewrite a future record. All 104 notes on the branch now match
+the convention exactly; the other 60 notes on the merged tree come from main already conforming.
+
+## The rehearsal itself caught a hazard worth recording
+
+The first attempt at this rehearsal ran the merge in a clone where a previous build had left
+tracked files modified. `git merge` **aborted** with exit 2 — and the resolver, run immediately
+after, wrote `content/opportunities.json` outside a merge context. The file it wrote happened to
+be identical to HEAD, so nothing was damaged, but the sequence is exactly the kind that silently
+loses work. Standing rule from now on: **reset and clean the clone, confirm an unmerged entry
+exists in `git status`, and only then run the resolver.** A merge that has aborted leaves no
+conflict markers, so the resolver has nothing to resolve and should not be run at all.
+
+## Standing conclusion
+
+The branch is merge-ready at **280 records** against the main that exists now, with the note
+layer verified in full for the first time. Main has moved three times during this session and
+each move invalidated the previous rehearsal; the merge itself must be preceded by one more
+rehearsal against whatever main is at that moment.
