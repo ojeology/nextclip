@@ -1,5 +1,17 @@
 # Money evergreen publication
 
+> **⚠️ DESK RETIRED 2026-10-01 (owner decision, AdSense re-review).** The Money
+> desk is unpublished: the `money/`, `ecosystem/money/` and `public/money/` trees
+> were removed (commit `4a28854e`), every `/money/*` URL answers 404 by absence
+> (Render static cannot emit the requested 410; same pattern as the retired
+> `/movie/` family), and the desk is gone from nav, robots, sitemaps, the routed
+> allowlist and llms.txt. CI enforces the retirement (`npm run validate:money`
+> and `validate:money:browser` are now retirement gates). This document,
+> `content/money-guides/` (97 guides), `scripts/build-money-desk.py` and the
+> `money_*` data modules are preserved **as the archive and relaunch path** —
+> do not publish Money pages again without an explicit owner relaunch decision.
+> The instructions below are kept as they were written for that eventuality.
+
 The canonical hub is `https://thebryme.com/money/`. The published static artifact is `public/`; `/money/` and `/ecosystem/money/` are routed and source mirrors. The 13 researched guides live in `content/money-guides/manifest.json` (title, URL, description, review date and source links) and adjacent `*.html` body fragments. Read the source manifest before changing a guide: trade mechanics vary by product and jurisdiction.
 
 ## Editing / releasing a Money page

@@ -221,3 +221,63 @@ the headlines are waiting.
 - Process note: an edit_file to the index template reported success but never landed in the
   file — caught by needle-checking the BUILT page, re-applied via exact-match python replace
   with assert. Always verify built output, not edit-tool success.
+
+## 2026-10-01 — Money desk retirement + entertainment catalogue de-indexing (owner decisions, AdSense re-review)
+
+**Decisions (owner, 2026-10-01):** (1) "410 all monet pages" — full Money retirement; (2) catalogue
+cards keep their URLs ("don't delete urls") — de-index via noindex until AdSense approval; (3) owner
+clicked "request review" in AdSense the same day — this cleanup is the final mass change until the verdict.
+
+**410 → 404-by-absence (disclosed nuance):** Render static sites cannot emit 410 (routes support only
+redirect/rewrite). Executed as file-absence 404s — the house precedent already proven by the retired
+/movie/ family. Google drops persistent-404 URLs the same way it drops 410s (410 is only marginally
+faster). No signal was lost: GSC showed zero money URLs in top pages/queries (Sep 20–30 window), so no
+301 rescues were warranted; the two batch-7 saving-for-a-house-deposit 301s were removed with the desk.
+
+**Scope shipped (`4a28854e`, rebased over the 12:55 UTC sports-data auto-update; `1e7cb14e` follow-up):**
+- 378 files removed across all three tiers (money/, ecosystem/money/, public/money/).
+- 719 catalogue cards flipped index,follow → noindex,follow in the ecosystem source tier (URLs stay
+  200, internal links intact, committed Adsterra bands stripped — ads live on indexable pages only);
+  the 7 already-noindex extras were untouched. sitemap-catalogue.xml emptied (0 <loc>, still served)
+  and delisted from robots, the root index and the allowlist; build-routing keeps its tolerant
+  catalogue blocks so a post-approval refill re-registers automatically. ensure-sitemap-index.py is
+  now a documented no-op.
+- Routed allowlist pre-updated in-commit 2,735 → 1,894 (chain-order invariant: build-discovery
+  validates the committed artifact before build-routing regenerates it). Indexable surface now
+  662 writers + 1,232 desk routes (incl. 4 hub pages) — partition invariant (6 property sitemaps ==
+  allowlist) green in CI.
+- Money references purged from: landing (nav/drawer/footer/meta/JSON-LD, "Seven desks" → "Six desks"
+  sitewide), about/privacy/event-calendar (links, lists, JSON-LD, two prose passages), llms.txt
+  (desks, totals, disclaimer), robots, sitemaps, OG image ("Six publications", og.png re-rendered
+  and synced across all three committed tiers), author bio (#{MONEY} token removed; "from BRYME
+  Tech to BRYME Fitness"), sub8 depth pools/rows/TRUST_PAGES (data4 entry removed, data5 emptied,
+  tech/download-vs-stream retagged money→tech), ext-source money entries, audit-technical-seo
+  sitemap list, and every generator/validator desk list (PROPS, SITEMAP_PROPS, PUBLISH_TIERS,
+  EXTRA_TIERS, DESKS, MEDIA_FAMILIES + "money" in server.js for local 404 parity).
+- Gates: validate-money-pages.js / validate-money-browser.js rewritten as retirement gates (static
+  checks + 16 live-server probes; the static gate also catches absolute thebryme.com/money/ URLs —
+  the author-bio link that relative-href sweeps missed). Full npm test green locally and in CI.
+- Archive preserved (never-destroy rule): content/money-guides (97 guides), build-money-desk.py,
+  money_* data modules, docs/money-evergreen.md (banner added). Out-of-chain leftovers kept
+  deliberately and documented: build-ecosystem.py money templates (the archive regeneration path),
+  README "Publication focus" (jobs-era history), writers-guide "Seven publications" (external paying
+  pubs prose, not BRYME desks), /make-money legacy stubs + redirects (jobs-era hub, unrelated).
+
+**Post-deploy CDN incident (resolved with interim rules):** Render's custom-domain CDN kept serving
+the DELETED money files (old etag/last-modified) even though the deployed artifact was verifiably
+clean (bryme.onrender.com/money/* → 404) — the known Render static-site issue "deleted files are
+still served". Mitigation: (a) buildCommand now sweeps `rm -rf money ecosystem/money public/money`
+before building (`1e7cb14e`), so a reused workspace can never re-publish the desk; (b) two INTERIM
+rewrite rules force the not-found page on the custom domain: `rdr-dav6iat9fdbs73bhoct0`
+(/money/* → /404.html) and `rdr-dav6ias1nsns738ss0h0` (/money → /404.html). Live-verified: zero
+stale Money content on thebryme.com; /money exact answers a true 404.
+**TODO (~2026-10-08):** DELETE the two rewrite rules via the Render API and probe — /money/* should
+answer native 404 once Render's origin has synced; if stale content returns, re-add the rules and
+open a Render support ticket ("static site CDN serves deleted files"). The live route table now
+holds 111 redirect rules from render.yaml (zero /money desk rules; route sync via API is additive —
+always reconcile the full list, and GET /services/{id}/routes DOES return routes, paginated).
+
+**Owner GSC steps:** remove money/sitemap.xml + entertainment/sitemap-catalogue.xml from submitted
+sitemaps; keep/resubmit root sitemap.xml (6 children); optionally URL-remove https://thebryme.com/money/.
+Expect ~841 URLs (122 money + 719 cards) to migrate to "Excluded — not found (404)" / "Excluded by
+'noindex' tag" over 2–4 weeks. No mass changes until the AdSense verdict.
