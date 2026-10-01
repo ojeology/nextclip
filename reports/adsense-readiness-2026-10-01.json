@@ -1,9 +1,9 @@
 {
  "generated": "2026-10-01",
  "advertising": {
-  "pagesWithAnAdSlot": 2729,
+  "pagesWithAnAdSlot": 2730,
   "slotsPerPage": {
-   "1": 2729,
+   "1": 2730,
    "0": 5
   },
   "adsInsideMain": 0,
@@ -12,17 +12,17 @@
   "stickyOrFixedAdContainers": 0,
   "adsOnNoindexPages": 0,
   "networks": {
-   "googleAdSenseSnippet": 2734,
-   "adsterraBand": 2729
+   "googleAdSenseSnippet": 2735,
+   "adsterraBand": 2730
   },
   "adUnitsWired": false,
   "note": "one band per content page, after </main> and before <footer>; the AdSense snippet is present for verification with no ad units wired"
  },
  "consent": {
-  "googleCmpOnIndexablePages": 2734,
-  "indexablePages": 2734,
+  "googleCmpOnIndexablePages": 2735,
+  "indexablePages": 2735,
   "consentModeV2Defaults": "region-scoped defaults in /assets/gtag-init.js, denied by default in the EEA, UK and Switzerland",
-  "nonGoogleNetworkGated": 2729,
+  "nonGoogleNetworkGated": 2730,
   "nonGoogleNetworkLoadedInline": 0,
   "gateRule": "outside Europe: loads immediately; inside EEA/UK/CH: waits for a granted ad-consent signal from the CMP, and never loads if consent is refused",
   "why": "Consent Mode governs Google tags only. Google's EU user consent policy requires consent to cover the publisher's partners as well, so a third-party ad network loading before consent was a real compliance gap.",
@@ -96,11 +96,11 @@
  ],
  "privacyPagesIncomplete": [],
  "value": {
-  "indexablePages": 2734,
-  "pagesWith400WordsOrMore": 2734,
+  "indexablePages": 2735,
+  "pagesWith400WordsOrMore": 2735,
   "shareWith400WordsOrMore": 100.0,
-  "medianMainTextWords": 5101,
-  "writersSectionPages": 661,
+  "medianMainTextWords": 5099,
+  "writersSectionPages": 662,
   "note": "the brief's test is whether the site is worth reading without ads. Depth is measured here; Phase 10 and 11 measured whether the depth is original, and Phase 12 measured the film catalogue."
  },
  "evidenceFromEarlierPhases": {

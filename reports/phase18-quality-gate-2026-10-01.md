@@ -66,7 +66,7 @@ Every requirement that can change carries the date it was last read, and the log
 
 ### 8. Are the Writers pages strongly interconnected?
 
-**MEASURED** — 668 pages checked; internal-linking dimension PASS; the site-wide link check runs on every build and fails it on any unresolved link
+**MEASURED** — 669 pages checked; internal-linking dimension PASS; the site-wide link check runs on every build and fails it on any unresolved link
 
 Inbound links were counted site-wide with links to redirect stubs credited to the page they canonically point at, so a page reached through a redirect is not mistaken for an orphan. Every page in the section has inbound links; the lowest is well into double figures. The link totals are deliberately not restated here: check-internal-links.py walks every built file while this gate reads only index.html routes, so the two populations differ, and a typed copy of another tool's number is exactly how this answer came to cite 272,569 links across 4,037 pages long after the tree had grown past both.
 
@@ -78,13 +78,13 @@ Each tool page either contains a working input or loads a tool bundle — none i
 
 ### 10. Are weak pages identified?
 
-**EVIDENCE** — quality audit: {"wordsMedian": 1154, "uniqueWordsMedian": 503, "citesNothing": 20, "noInbound": 0, "noJsonLd": 0, "thinDesc": 0}
+**EVIDENCE** — quality audit: {"wordsMedian": 1154, "uniqueWordsMedian": 501, "citesNothing": 21, "noInbound": 0, "noJsonLd": 0, "thinDesc": 0}
 
 Weak pages were graded rather than guessed at, and the phase reports name them individually. Identification is not the same as repair: pages flagged as thin still exist and are still indexed unless a phase intentionally noindexed them. The reports are the place to look for the list.
 
 ### 11. Are duplicate/thin pages handled appropriately?
 
-**MEASURED** — 2734 indexable pages, 1508 noindexed; 36 trust pages overlapping in body text are canonicalised, self-referencing and grade A
+**MEASURED** — 2735 indexable pages, 1509 noindexed; 36 trust pages overlapping in body text are canonicalised, self-referencing and grade A
 
 The trust pages duplicate prose because one house policy is published per desk; investigation found zero colliding titles, descriptions or canonicals and all pages self-canonicalising, so they were left indexed deliberately. Thin pages are resolved by noindex rather than deletion, which preserves the URLs.
 
@@ -102,37 +102,37 @@ The secondary desks are linked from the main navigation and are individually ind
 
 ### 14. Is the site technically clean?
 
-**EVIDENCE** — technical SEO audit: 4242 built routes, 2734 indexable, 2734 in sitemaps; 1 finding(s): ['titleLengthOutOfRange']
+**EVIDENCE** — technical SEO audit: 4244 built routes, 2735 indexable, 2735 in sitemaps; 1 finding(s): ['titleLengthOutOfRange']
 
 Checked in this build: canonicals, robots directives, sitemap membership, host consolidation, redirect chains, contrast, and 272,569 internal links with zero broken. Google Search Console has not been consulted for this answer; live crawl behaviour is the search engine's to report, not ours to assert.
 
 ### 15. Is the mobile experience excellent?
 
-**EVIDENCE** — browser validation runs 390x844, 768x1024, 1440x1000 across all 661 allowlisted routes (1983 rendered cases) and fails the build on any failure; contrast measures a 16-route sample against WCAG 2.1 AA and fails the build on any failure
+**EVIDENCE** — browser validation runs 390x844, 768x1024, 1440x1000 across all 662 allowlisted routes (1986 rendered cases) and fails the build on any failure; contrast measures a 16-route sample against WCAG 2.1 AA and fails the build on any failure
 
 The narrow viewport is exercised on every build over the whole allowlist rather than a sample, and both gates exit non-zero on a single failure, so a pass is enforced by the build rather than asserted here. What neither measures is how the site feels on a real phone on a slow Nigerian connection — render weight and interaction latency were not tested.
 
 ### 16. Is the site useful without advertisements?
 
-**EVIDENCE** — adsense-readiness: {"indexablePages": 2734, "pagesWith400WordsOrMore": 2734, "shareWith400WordsOrMore": 100.0, "medianMainTextWords": 5101, "writersSectionPages": 661, "note": "the brief's test is whether the site is worth reading without ads. Depth is measur
+**EVIDENCE** — adsense-readiness: {"indexablePages": 2735, "pagesWith400WordsOrMore": 2735, "shareWith400WordsOrMore": 100.0, "medianMainTextWords": 5099, "writersSectionPages": 662, "note": "the brief's test is whether the site is worth reading without ads. Depth is measur
 
 Every page was read with the advertising band treated as absent, and the content, tools and navigation all stand on their own. This matters because AdSense is still pending: nothing on the site assumes the revenue arrives.
 
 ### 17. Is the site free of deceptive monetization?
 
-**MEASURED** —  advertising: {"pagesWithAnAdSlot": 2729, "slotsPerPage": {"1": 2729, "0": 5}, "adsInsideMain": 0, "adsInNavOrFooter": 0, "adsBeforeMain": 0}; disclosure on 8 privacy pages, 0 incomplete
+**MEASURED** —  advertising: {"pagesWithAnAdSlot": 2730, "slotsPerPage": {"1": 2730, "0": 5}, "adsInsideMain": 0, "adsInNavOrFooter": 0, "adsBeforeMain": 0}; disclosure on 8 privacy pages, 0 incomplete
 
 No advertisement sits inside a page's main content or navigation, so nothing is dressed as editorial. The advertising and cookie position is disclosed on every privacy page including each desk's own, and ads.txt names the authorised seller. There are no paywalls, no interstitials and no affiliate links presented as recommendations.
 
 ### 18. Does every major indexable page have a reason to exist?
 
-**JUDGEMENT** — 2734 indexable pages; quality gradings, desk audit and brand audit all run over them
+**JUDGEMENT** — 2735 indexable pages; quality gradings, desk audit and brand audit all run over them
 
 Each of the 2,590 indexable pages is graded and none is left unexamined, but “have a reason to exist” is a question about a page's usefulness to a reader, and only a reader can settle it for a specific page. No page was deleted for being large or untrafficked; unrunnable pages are noindexed instead, which is reversible.
 
 ### 19. Does the website feel like a coherent product rather than a collection of unrelated pages?
 
-**MEASURED** — brand-consistency audit: 668 Writers pages across 9 dimensions, 0 findings; one navigation across every page after removing the per-page active marker; one base stylesheet
+**MEASURED** — brand-consistency audit: 669 Writers pages across 9 dimensions, 0 findings; one navigation across every page after removing the per-page active marker; one base stylesheet
 
 Checked mechanically: navigation, typography, components, breadcrumbs, research labels, verification indicators, tool design, internal linking and calls to action. Four indexable pages were missing the breadcrumb the other 520 carry and were corrected. Whether the result feels coherent to a reader is still a human judgement, but the mechanical sources of incoherence were removed and the check now runs on every build.
 

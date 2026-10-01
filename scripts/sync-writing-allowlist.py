@@ -32,7 +32,9 @@ from __future__ import annotations
 
 import argparse
 import ast
+import datetime as dt
 import json
+import os
 import pathlib
 import re
 import sys
@@ -96,14 +98,41 @@ def wanted() -> set[str]:
     return routes
 
 
+def _reviewed_stamp() -> str:
+    """The tree's own date of record, derived rather than typed.
+
+    This used to read `args.reviewed or "2026-09-30"`: a literal that silently
+    *replaced* the allowlist's existing stamp whenever a route was added, while
+    the --reviewed help text claimed the opposite ("keep existing"). The value is
+    not cosmetic. build-discovery.py reads it as REVIEWED and uses it as the
+    ceiling for every datePublished and dateModified in the allowlisted tree, and
+    the change log and RSS lastBuildDate both key off it - so a stamp older than
+    the build makes the current tree fail with "Future dateModified on /". That is
+    exactly what adding the translation browse page did: the route was added
+    correctly, the stamp rolled back a day, and the second build pass died.
+
+    Mirrors `_build_now()` in build-writing-first.py, which is what stamps those
+    dates in the first place: SOURCE_DATE_EPOCH when it is set, so CI's pinned
+    rebuilds stay reproducible and the ceiling always equals the build's own idea
+    of today; the real date otherwise, so a local sync never writes a stamp the
+    tree has already overtaken.
+    """
+    epoch = os.environ.get("SOURCE_DATE_EPOCH", "")
+    if epoch.isdigit():
+        return dt.datetime.fromtimestamp(int(epoch), dt.timezone.utc).date().isoformat()
+    return dt.date.today().isoformat()
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--check", action="store_true",
                     help="report drift without writing; exit 1 if any")
     ap.add_argument("--reviewed", default=None,
-                    help="reviewedAt stamp to write (default: keep existing, "
-                         "but bump when adding, because record lastVerified "
-                         "values are checked against it)")
+                    help="reviewedAt stamp to write (default: the tree's own "
+                         "date of record - SOURCE_DATE_EPOCH if set, else today, "
+                         "because record lastVerified values and every "
+                         "dateModified in the allowlisted tree are checked "
+                         "against it)")
     args = ap.parse_args()
 
     need = wanted()
@@ -141,12 +170,30 @@ def main() -> int:
         stale = True
         if not args.check:
             doc["routes"] = sorted(have | set(missing))
-            stamp = args.reviewed or "2026-09-30"
+            stamp = args.reviewed or _reviewed_stamp()
             if "reviewedAt" in doc:
                 doc["reviewedAt"] = stamp
             path.write_text(json.dumps(doc, indent=2, ensure_ascii=False) + "\n",
                             encoding="utf-8")
             print(f"      wrote {len(doc['routes'])} routes, reviewedAt={stamp}")
+
+    # The stamp is checked on its own, because it can be wrong while the route
+    # list is right. That is how the hardcoded "2026-09-30" survived: the write
+    # path only ran when a route was missing, so a stale stamp in an otherwise
+    # in-sync file was never revisited, and the failure surfaced one step later as
+    # build-discovery's "Future dateModified on /" - which does not name the
+    # allowlist as its cause.
+    want_stamp = args.reviewed or _reviewed_stamp()
+    have_stamp = doc.get("reviewedAt")
+    if have_stamp and have_stamp < want_stamp:
+        stale = True
+        print(f"    reviewedAt {have_stamp} is behind the tree's date of record "
+              f"{want_stamp}: build-discovery would reject every page dated today")
+        if not args.check:
+            doc["reviewedAt"] = want_stamp
+            path.write_text(json.dumps(doc, indent=2, ensure_ascii=False) + "\n",
+                            encoding="utf-8")
+            print(f"      bumped reviewedAt to {want_stamp}")
 
     # Read-only cross-check of the routed artifact, in its prefixed form.
     rp = ROOT / ROUTED

@@ -1609,6 +1609,37 @@ PROG_TYPE_NOTES = {
     "interviews": "Interview commissions usually depend on access. If you can already reach the subject, say so first.",
 }
 
+# Translation is the one category whose note cannot be a static sentence, because
+# the useful thing about it is a comparison against the rest of the desk and both
+# sides of that comparison move as records are added. Typed, it would go stale the
+# way every other typed count in this codebase has.
+_PER_PAGE_RATE = re.compile(r"per (?:printed )?page|/page", re.I)
+
+
+def _translation_note(rows: list, desk: list) -> str:
+    """Counted at build time from the records themselves.
+
+    The reason this category needs saying out loud: a per-page rate and a per-word
+    rate are not comparable, the desk's own rule is never to rank one against the
+    other, and per-page quoting is several times more common among translation
+    markets than anywhere else in the database. A writer comparing a $40-a-page
+    Canadian rate with a per-word American one would otherwise draw a conclusion
+    the numbers do not support.
+    """
+    def per_page(rs: list) -> int:
+        return sum(1 for r in rs
+                   if _PER_PAGE_RATE.search(((r.get("pay") or {}).get("display") or "")))
+
+    slugs = {r.get("slug") for r in rows}
+    others = [r for r in desk if r.get("slug") not in slugs]
+    return (f"{per_page(rows)} of these {len(rows)} markets quote per page rather than per "
+            f"word or per piece, against {per_page(others)} of the other {len(others)} "
+            f"records on this desk. A page rate and a word rate are not comparable and "
+            f"BRYME never ranks one against the other, so read each rate in the unit it is "
+            f"quoted in. Where a market states what it wants alongside the translation - "
+            f"the source text, a sample, a named language pair - that is recorded on its "
+            f"own page, from the guideline it was read from.")
+
 
 def _prog_stats(rows: list) -> str:
     amts = [usd_amount(r) for r in rows]
@@ -2391,7 +2422,14 @@ def programmatic_pages() -> None:
     tslug = {"essays": "essays", "personal-essays": "personal-essays", "fiction": "fiction",
              "poetry": "poetry", "journalism": "journalism", "articles": "articles",
              "analysis": "analysis", "opinion": "opinion", "reviews": "reviews",
-             "creative-nonfiction": "creative-nonfiction", "interviews": "interviews"}
+             "creative-nonfiction": "creative-nonfiction", "interviews": "interviews",
+             # Translation carried 17 records against MIN_TYPE_PAGE of 8 and had no
+             # page, while opinion had one with 21: the map simply omitted it, so a
+             # categorised form was reachable only through the filter dropdown and
+             # not through the browse network at all. Phase 19 item 4 asks that the
+             # categorisation stay useful as the database grows, and a category with
+             # no page is not useful.
+             "translation": "translation"}
     tgroups: dict[str, list] = {}
     for r in WRITING:
         for t in norm_types(r):
@@ -2404,7 +2442,8 @@ def programmatic_pages() -> None:
             tslug[t], f"Publications that pay for {label.lower()}",
             label,
             f"Markets currently recorded as publishing {label.lower()}, with the pay and word count each one states.",
-            PROG_TYPE_NOTES.get(t, "Read the official guideline before pitching."),
+            (_translation_note(rows, WRITING) if t == "translation"
+             else PROG_TYPE_NOTES.get(t, "Read the official guideline before pitching.")),
             rows, f"/writing/?type={t}", base_guides)
         PROG_ROUTES.append(f"/writing-opportunities/{tslug[t]}/")
 

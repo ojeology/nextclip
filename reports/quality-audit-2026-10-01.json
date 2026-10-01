@@ -1,26 +1,26 @@
 {
  "generated": "2026-10-01",
  "population": {
-  "urlsInSitemap": 661,
-  "built": 661,
+  "urlsInSitemap": 662,
+  "built": 662,
   "missingBuild": [],
   "newWindowDays": 45,
-  "templateParagraphsRemoved": 829,
-  "templateShareOfText": 52.3,
+  "templateParagraphsRemoved": 831,
+  "templateShareOfText": 52.4,
   "pagesWithNoUniqueText": 0
  },
  "grades": {
   "A": 146,
-  "B": 514,
+  "B": 515,
   "C": 1,
   "D": 0,
   "E": 0
  },
- "newPages": 555,
+ "newPages": 556,
  "totals": {
   "wordsMedian": 1154,
-  "uniqueWordsMedian": 503,
-  "citesNothing": 20,
+  "uniqueWordsMedian": 501,
+  "citesNothing": 21,
   "noInbound": 0,
   "noJsonLd": 0,
   "thinDesc": 0
@@ -177,26 +177,26 @@
   {
    "url": "/writers/writing-opportunities/",
    "file": "writers/writing-opportunities/index.html",
-   "words": 926,
+   "words": 929,
    "title": "Writing opportunities by country and genre | BRYME",
    "desc_len": 157,
    "h2": 7,
-   "h3": 27,
+   "h3": 28,
    "lists": 6,
    "tables": 0,
    "dt": 0,
    "rows": 0,
    "cards": 0,
    "external_links": 3,
-   "internal_links": 86,
+   "internal_links": 87,
    "has_jsonld": true,
    "newest_date": "",
    "grade": "A",
    "reason": "long, structured, sourced, linked into",
    "unique_words": 624,
-   "inbound": 3574,
+   "inbound": 3579,
    "new": false,
-   "units": 34
+   "units": 35
   },
   {
    "url": "/writers/learn/examples/example-of-an-essay/",
@@ -458,7 +458,7 @@
    "grade": "A",
    "reason": "long, structured, sourced, linked into",
    "unique_words": 382,
-   "inbound": 671,
+   "inbound": 672,
    "new": true,
    "units": 120
   },
@@ -866,7 +866,7 @@
    "grade": "A",
    "reason": "long, structured, sourced, linked into",
    "unique_words": 390,
-   "inbound": 18,
+   "inbound": 20,
    "new": true,
    "units": 35
   },
@@ -1010,7 +1010,7 @@
    "grade": "A",
    "reason": "long, structured, sourced, linked into",
    "unique_words": 545,
-   "inbound": 2025,
+   "inbound": 2028,
    "new": false,
    "units": 26
   },
@@ -1178,7 +1178,7 @@
    "grade": "A",
    "reason": "long, structured, sourced, linked into",
    "unique_words": 417,
-   "inbound": 14,
+   "inbound": 16,
    "new": true,
    "units": 35
   },
@@ -1514,7 +1514,7 @@
    "grade": "A",
    "reason": "long, structured, sourced, linked into",
    "unique_words": 343,
-   "inbound": 16,
+   "inbound": 18,
    "new": true,
    "units": 37
   },
@@ -2210,7 +2210,7 @@
    "grade": "A",
    "reason": "long, structured, sourced, linked into",
    "unique_words": 444,
-   "inbound": 15,
+   "inbound": 17,
    "new": true,
    "units": 37
   },
@@ -2498,7 +2498,7 @@
    "grade": "A",
    "reason": "long, structured, sourced, linked into",
    "unique_words": 276,
-   "inbound": 671,
+   "inbound": 672,
    "new": true,
    "units": 188
   },
@@ -2738,7 +2738,7 @@
    "grade": "A",
    "reason": "long, structured, sourced, linked into",
    "unique_words": 513,
-   "inbound": 13,
+   "inbound": 15,
    "new": true,
    "units": 38
   },
@@ -2882,7 +2882,7 @@
    "grade": "A",
    "reason": "long, structured, sourced, linked into",
    "unique_words": 456,
-   "inbound": 13,
+   "inbound": 15,
    "new": true,
    "units": 37
   },
@@ -3242,7 +3242,7 @@
    "grade": "A",
    "reason": "long, structured, sourced, linked into",
    "unique_words": 286,
-   "inbound": 670,
+   "inbound": 671,
    "new": true,
    "units": 228
   },
@@ -3265,7 +3265,7 @@
    "newest_date": "2026-10-01",
    "grade": "A",
    "reason": "long, structured, sourced, linked into",
-   "unique_words": 242,
+   "unique_words": 221,
    "inbound": 7,
    "new": true,
    "units": 323
@@ -3362,7 +3362,7 @@
    "grade": "A",
    "reason": "long, structured, sourced, linked into",
    "unique_words": 1669,
-   "inbound": 2207,
+   "inbound": 2210,
    "new": false,
    "units": 49
   },
@@ -3386,7 +3386,7 @@
    "grade": "A",
    "reason": "long, structured, sourced, linked into",
    "unique_words": 2700,
-   "inbound": 1325,
+   "inbound": 1327,
    "new": false,
    "units": 41
   },
@@ -3410,7 +3410,7 @@
    "grade": "A",
    "reason": "long, structured, sourced, linked into",
    "unique_words": 1428,
-   "inbound": 1663,
+   "inbound": 1665,
    "new": true,
    "units": 86
   },
@@ -3434,7 +3434,7 @@
    "grade": "A",
    "reason": "long, structured, sourced, linked into",
    "unique_words": 3327,
-   "inbound": 931,
+   "inbound": 932,
    "new": true,
    "units": 93
   },
@@ -3458,7 +3458,7 @@
    "grade": "A",
    "reason": "long, structured, sourced, linked into",
    "unique_words": 269,
-   "inbound": 669,
+   "inbound": 670,
    "new": true,
    "units": 948
   },
@@ -3482,7 +3482,7 @@
    "grade": "A",
    "reason": "long, structured, sourced, linked into",
    "unique_words": 307,
-   "inbound": 679,
+   "inbound": 680,
    "new": true,
    "units": 923
   },
@@ -3529,8 +3529,8 @@
    "newest_date": "2026-10-01",
    "grade": "A",
    "reason": "long, structured, sourced, linked into",
-   "unique_words": 1694,
-   "inbound": 3041,
+   "unique_words": 1673,
+   "inbound": 3046,
    "new": true,
    "units": 2883
   },
@@ -3938,7 +3938,7 @@
    "grade": "B",
    "reason": "useful; 693w, 1 outside sources",
    "unique_words": 535,
-   "inbound": 763,
+   "inbound": 764,
    "new": false,
    "units": 4
   },
@@ -4226,7 +4226,7 @@
    "grade": "B",
    "reason": "useful; 706w, 1 outside sources",
    "unique_words": 474,
-   "inbound": 664,
+   "inbound": 665,
    "new": false,
    "units": 4
   },
@@ -4442,7 +4442,7 @@
    "grade": "B",
    "reason": "useful; 710w, 1 outside sources, recently published",
    "unique_words": 564,
-   "inbound": 47,
+   "inbound": 48,
    "new": true,
    "units": 15
   },
@@ -4706,7 +4706,7 @@
    "grade": "B",
    "reason": "useful; 715w, 1 outside sources",
    "unique_words": 316,
-   "inbound": 1585,
+   "inbound": 1587,
    "new": false,
    "units": 22
   },
@@ -5114,7 +5114,7 @@
    "grade": "B",
    "reason": "useful; 724w, 1 outside sources",
    "unique_words": 523,
-   "inbound": 668,
+   "inbound": 669,
    "new": false,
    "units": 5
   },
@@ -5138,7 +5138,7 @@
    "grade": "B",
    "reason": "useful; 724w, 1 outside sources",
    "unique_words": 389,
-   "inbound": 664,
+   "inbound": 665,
    "new": false,
    "units": 4
   },
@@ -5330,7 +5330,7 @@
    "grade": "B",
    "reason": "useful; 726w",
    "unique_words": 634,
-   "inbound": 903,
+   "inbound": 904,
    "new": false,
    "units": 7
   },
@@ -5834,7 +5834,7 @@
    "grade": "B",
    "reason": "useful; 737w, 1 outside sources, recently published",
    "unique_words": 697,
-   "inbound": 690,
+   "inbound": 691,
    "new": true,
    "units": 24
   },
@@ -5906,7 +5906,7 @@
    "grade": "B",
    "reason": "useful; 738w, 0 outside sources",
    "unique_words": 667,
-   "inbound": 1614,
+   "inbound": 1616,
    "new": false,
    "units": 9
   },
@@ -5930,7 +5930,7 @@
    "grade": "B",
    "reason": "useful; 738w",
    "unique_words": 513,
-   "inbound": 1563,
+   "inbound": 1565,
    "new": false,
    "units": 12
   },
@@ -5954,7 +5954,7 @@
    "grade": "B",
    "reason": "useful; 738w, 1 outside sources, recently published",
    "unique_words": 579,
-   "inbound": 54,
+   "inbound": 55,
    "new": true,
    "units": 16
   },
@@ -6026,7 +6026,7 @@
    "grade": "B",
    "reason": "useful; 739w",
    "unique_words": 544,
-   "inbound": 1565,
+   "inbound": 1567,
    "new": false,
    "units": 12
   },
@@ -6098,7 +6098,7 @@
    "grade": "B",
    "reason": "useful; 743w",
    "unique_words": 555,
-   "inbound": 1566,
+   "inbound": 1568,
    "new": false,
    "units": 13
   },
@@ -6266,7 +6266,7 @@
    "grade": "B",
    "reason": "useful; 744w",
    "unique_words": 558,
-   "inbound": 910,
+   "inbound": 911,
    "new": false,
    "units": 12
   },
@@ -6290,7 +6290,7 @@
    "grade": "B",
    "reason": "useful; 745w, recently published",
    "unique_words": 693,
-   "inbound": 994,
+   "inbound": 995,
    "new": true,
    "units": 9
   },
@@ -6314,7 +6314,7 @@
    "grade": "B",
    "reason": "useful; 745w",
    "unique_words": 556,
-   "inbound": 1588,
+   "inbound": 1590,
    "new": false,
    "units": 11
   },
@@ -6626,7 +6626,7 @@
    "grade": "B",
    "reason": "useful; 751w",
    "unique_words": 691,
-   "inbound": 2220,
+   "inbound": 2223,
    "new": false,
    "units": 20
   },
@@ -6722,7 +6722,7 @@
    "grade": "B",
    "reason": "useful; 752w",
    "unique_words": 462,
-   "inbound": 927,
+   "inbound": 928,
    "new": false,
    "units": 9
   },
@@ -6794,7 +6794,7 @@
    "grade": "B",
    "reason": "useful; 754w",
    "unique_words": 514,
-   "inbound": 1578,
+   "inbound": 1580,
    "new": false,
    "units": 16
   },
@@ -7466,7 +7466,7 @@
    "grade": "B",
    "reason": "useful; 771w",
    "unique_words": 550,
-   "inbound": 1567,
+   "inbound": 1569,
    "new": false,
    "units": 13
   },
@@ -7898,7 +7898,7 @@
    "grade": "B",
    "reason": "useful; 787w",
    "unique_words": 491,
-   "inbound": 906,
+   "inbound": 907,
    "new": false,
    "units": 14
   },
@@ -7994,7 +7994,7 @@
    "grade": "B",
    "reason": "useful; 791w, recently published",
    "unique_words": 682,
-   "inbound": 1987,
+   "inbound": 1990,
    "new": true,
    "units": 15
   },
@@ -8162,7 +8162,7 @@
    "grade": "B",
    "reason": "useful; 798w, 1 outside sources",
    "unique_words": 708,
-   "inbound": 1612,
+   "inbound": 1614,
    "new": false,
    "units": 22
   },
@@ -8210,7 +8210,7 @@
    "grade": "B",
    "reason": "useful; 800w, recently published",
    "unique_words": 641,
-   "inbound": 2005,
+   "inbound": 2008,
    "new": true,
    "units": 12
   },
@@ -8258,7 +8258,7 @@
    "grade": "B",
    "reason": "useful; 800w",
    "unique_words": 621,
-   "inbound": 1325,
+   "inbound": 1327,
    "new": false,
    "units": 5
   },
@@ -8306,7 +8306,7 @@
    "grade": "B",
    "reason": "useful; 804w, 1 outside sources",
    "unique_words": 647,
-   "inbound": 1335,
+   "inbound": 1337,
    "new": false,
    "units": 32
   },
@@ -8450,7 +8450,7 @@
    "grade": "B",
    "reason": "useful; 812w, 1 outside sources",
    "unique_words": 371,
-   "inbound": 2002,
+   "inbound": 2005,
    "new": false,
    "units": 14
   },
@@ -8474,7 +8474,7 @@
    "grade": "B",
    "reason": "useful; 815w",
    "unique_words": 767,
-   "inbound": 1983,
+   "inbound": 1986,
    "new": false,
    "units": 7
   },
@@ -8522,7 +8522,7 @@
    "grade": "B",
    "reason": "useful; 819w, 1 outside sources",
    "unique_words": 753,
-   "inbound": 675,
+   "inbound": 676,
    "new": false,
    "units": 6
   },
@@ -8546,7 +8546,7 @@
    "grade": "B",
    "reason": "useful; 819w, 1 outside sources",
    "unique_words": 469,
-   "inbound": 664,
+   "inbound": 665,
    "new": false,
    "units": 5
   },
@@ -8666,7 +8666,7 @@
    "grade": "B",
    "reason": "useful; 833w, 1 outside sources",
    "unique_words": 504,
-   "inbound": 1343,
+   "inbound": 1345,
    "new": false,
    "units": 12
   },
@@ -8714,7 +8714,7 @@
    "grade": "B",
    "reason": "useful; 840w, 1 outside sources",
    "unique_words": 687,
-   "inbound": 2049,
+   "inbound": 2053,
    "new": false,
    "units": 12
   },
@@ -8810,7 +8810,7 @@
    "grade": "B",
    "reason": "useful; 845w, 1 outside sources",
    "unique_words": 622,
-   "inbound": 2213,
+   "inbound": 2216,
    "new": false,
    "units": 30
   },
@@ -8882,7 +8882,7 @@
    "grade": "B",
    "reason": "useful; 851w, 1 outside sources",
    "unique_words": 529,
-   "inbound": 661,
+   "inbound": 662,
    "new": false,
    "units": 13
   },
@@ -9074,7 +9074,7 @@
    "grade": "B",
    "reason": "useful; 876w, 0 outside sources",
    "unique_words": 458,
-   "inbound": 3473,
+   "inbound": 3478,
    "new": false,
    "units": 98
   },
@@ -9098,7 +9098,7 @@
    "grade": "B",
    "reason": "useful; 879w, 1 outside sources, recently published",
    "unique_words": 550,
-   "inbound": 1323,
+   "inbound": 1325,
    "new": true,
    "units": 12
   },
@@ -9194,7 +9194,7 @@
    "grade": "B",
    "reason": "useful; 890w, 1 outside sources",
    "unique_words": 574,
-   "inbound": 1333,
+   "inbound": 1335,
    "new": false,
    "units": 12
   },
@@ -9458,7 +9458,7 @@
    "grade": "B",
    "reason": "useful; 1 outside sources",
    "unique_words": 609,
-   "inbound": 662,
+   "inbound": 663,
    "new": false,
    "units": 15
   },
@@ -9554,7 +9554,7 @@
    "grade": "B",
    "reason": "useful; 1 outside sources",
    "unique_words": 635,
-   "inbound": 663,
+   "inbound": 664,
    "new": false,
    "units": 13
   },
@@ -9842,7 +9842,7 @@
    "grade": "B",
    "reason": "useful; 1 outside sources",
    "unique_words": 970,
-   "inbound": 1323,
+   "inbound": 1325,
    "new": false,
    "units": 10
   },
@@ -10255,30 +10255,6 @@
    "units": 32
   },
   {
-   "url": "/writers/writing-opportunities/opinion/",
-   "file": "writers/writing-opportunities/opinion/index.html",
-   "words": 1106,
-   "title": "Publications that pay for opinion | BRYME",
-   "desc_len": 123,
-   "h2": 3,
-   "h3": 20,
-   "lists": 4,
-   "tables": 0,
-   "dt": 80,
-   "rows": 0,
-   "cards": 100,
-   "external_links": 1,
-   "internal_links": 86,
-   "has_jsonld": true,
-   "newest_date": "2026-10-01",
-   "grade": "B",
-   "reason": "useful; 1 outside sources, 2 inbound links, recently published",
-   "unique_words": 169,
-   "inbound": 2,
-   "new": true,
-   "units": 203
-  },
-  {
    "url": "/writers/writing/brilliant-flash-fiction/",
    "file": "writers/writing/brilliant-flash-fiction/index.html",
    "words": 1106,
@@ -10514,7 +10490,7 @@
    "grade": "B",
    "reason": "useful; 1 outside sources, recently published",
    "unique_words": 512,
-   "inbound": 668,
+   "inbound": 669,
    "new": true,
    "units": 103
   },
@@ -10541,6 +10517,30 @@
    "inbound": 8,
    "new": true,
    "units": 24
+  },
+  {
+   "url": "/writers/writing-opportunities/translation/",
+   "file": "writers/writing-opportunities/translation/index.html",
+   "words": 1135,
+   "title": "Publications that pay for translation | BRYME",
+   "desc_len": 127,
+   "h2": 1,
+   "h3": 17,
+   "lists": 0,
+   "tables": 0,
+   "dt": 68,
+   "rows": 0,
+   "cards": 85,
+   "external_links": 0,
+   "internal_links": 80,
+   "has_jsonld": true,
+   "newest_date": "2026-10-01",
+   "grade": "B",
+   "reason": "useful; 0 outside sources, 1 inbound links, recently published",
+   "unique_words": 148,
+   "inbound": 1,
+   "new": true,
+   "units": 171
   },
   {
    "url": "/writers/learn/freelance-paid-writing/choosing-a-grammar-checker/",
@@ -10637,6 +10637,30 @@
    "inbound": 5,
    "new": true,
    "units": 35
+  },
+  {
+   "url": "/writers/writing-opportunities/opinion/",
+   "file": "writers/writing-opportunities/opinion/index.html",
+   "words": 1154,
+   "title": "Publications that pay for opinion | BRYME",
+   "desc_len": 123,
+   "h2": 3,
+   "h3": 21,
+   "lists": 4,
+   "tables": 0,
+   "dt": 84,
+   "rows": 0,
+   "cards": 105,
+   "external_links": 1,
+   "internal_links": 87,
+   "has_jsonld": true,
+   "newest_date": "2026-10-01",
+   "grade": "B",
+   "reason": "useful; 1 outside sources, 2 inbound links, recently published",
+   "unique_words": 169,
+   "inbound": 2,
+   "new": true,
+   "units": 213
   },
   {
    "url": "/writers/writing/pinhole-poetry/",
@@ -11546,7 +11570,7 @@
    "grade": "B",
    "reason": "useful; 1 outside sources, recently published",
    "unique_words": 321,
-   "inbound": 7,
+   "inbound": 9,
    "new": true,
    "units": 35
   },
@@ -12506,7 +12530,7 @@
    "grade": "B",
    "reason": "useful; 1 outside sources, recently published",
    "unique_words": 415,
-   "inbound": 15,
+   "inbound": 17,
    "new": true,
    "units": 35
   },
@@ -12746,7 +12770,7 @@
    "grade": "B",
    "reason": "useful; 1 outside sources, recently published",
    "unique_words": 511,
-   "inbound": 7,
+   "inbound": 9,
    "new": true,
    "units": 35
   },
@@ -12914,7 +12938,7 @@
    "grade": "B",
    "reason": "useful; 1 outside sources, recently published",
    "unique_words": 406,
-   "inbound": 11,
+   "inbound": 13,
    "new": true,
    "units": 35
   },
@@ -13034,7 +13058,7 @@
    "grade": "B",
    "reason": "useful; 1 outside sources, recently published",
    "unique_words": 489,
-   "inbound": 10,
+   "inbound": 12,
    "new": true,
    "units": 35
   },
@@ -13082,7 +13106,7 @@
    "grade": "B",
    "reason": "useful; 1 outside sources, recently published",
    "unique_words": 467,
-   "inbound": 10,
+   "inbound": 12,
    "new": true,
    "units": 35
   },
@@ -13346,7 +13370,7 @@
    "grade": "B",
    "reason": "useful; 1 outside sources, recently published",
    "unique_words": 414,
-   "inbound": 9,
+   "inbound": 11,
    "new": true,
    "units": 35
   },
@@ -13418,7 +13442,7 @@
    "grade": "B",
    "reason": "useful; 1 outside sources, recently published",
    "unique_words": 518,
-   "inbound": 13,
+   "inbound": 15,
    "new": true,
    "units": 35
   },
@@ -13778,7 +13802,7 @@
    "grade": "B",
    "reason": "useful; 1 outside sources, recently published",
    "unique_words": 433,
-   "inbound": 9,
+   "inbound": 11,
    "new": true,
    "units": 35
   },
@@ -14186,7 +14210,7 @@
    "grade": "B",
    "reason": "useful; 1 outside sources, recently published",
    "unique_words": 439,
-   "inbound": 10,
+   "inbound": 12,
    "new": true,
    "units": 35
   },
@@ -14210,7 +14234,7 @@
    "grade": "B",
    "reason": "useful; 1 outside sources, recently published",
    "unique_words": 402,
-   "inbound": 11,
+   "inbound": 13,
    "new": true,
    "units": 35
   },
@@ -15338,7 +15362,7 @@
    "grade": "B",
    "reason": "useful; 1 outside sources, recently published",
    "unique_words": 662,
-   "inbound": 11,
+   "inbound": 13,
    "new": true,
    "units": 35
   },
@@ -15554,7 +15578,7 @@
    "grade": "B",
    "reason": "useful; 1 outside sources",
    "unique_words": 1341,
-   "inbound": 2225,
+   "inbound": 2228,
    "new": false,
    "units": 15
   },
@@ -15578,7 +15602,7 @@
    "grade": "B",
    "reason": "useful; 1 outside sources, recently published",
    "unique_words": 504,
-   "inbound": 1986,
+   "inbound": 1989,
    "new": true,
    "units": 303
   },
@@ -15745,7 +15769,7 @@
    "newest_date": "2026-10-01",
    "grade": "B",
    "reason": "useful; 1 outside sources, recently published",
-   "unique_words": 202,
+   "unique_words": 181,
    "inbound": 4,
    "new": true,
    "units": 1133
@@ -15794,7 +15818,7 @@
    "grade": "B",
    "reason": "useful; 1 outside sources, recently published",
    "unique_words": 1092,
-   "inbound": 1984,
+   "inbound": 1987,
    "new": true,
    "units": 208
   },
@@ -15818,7 +15842,7 @@
    "grade": "B",
    "reason": "useful; 1 outside sources",
    "unique_words": 3757,
-   "inbound": 3766,
+   "inbound": 3771,
    "new": false,
    "units": 248
   },
@@ -15866,7 +15890,7 @@
    "grade": "B",
    "reason": "useful; 0 outside sources, recently published",
    "unique_words": 11185,
-   "inbound": 4629,
+   "inbound": 4636,
    "new": true,
    "units": 14
   },

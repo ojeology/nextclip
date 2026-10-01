@@ -63,10 +63,10 @@
  },
  "tree": {
   "population": {
-   "builtRoutes": 4242,
-   "indexable": 2734,
-   "noindexed": 1508,
-   "inSitemaps": 2734
+   "builtRoutes": 4244,
+   "indexable": 2735,
+   "noindexed": 1509,
+   "inSitemaps": 2735
   },
   "findings": {
    "titleLengthOutOfRange": [
@@ -81,7 +81,7 @@
   },
   "sitemaps": {
    "writers/sitemap.xml": {
-    "urls": 661,
+    "urls": 662,
     "badScheme": [],
     "notBuilt": [],
     "noindexedInSitemap": []
@@ -157,17 +157,17 @@
    "sample": []
   },
   "structuredData": {
-   "BreadcrumbList": 2733,
+   "BreadcrumbList": 2734,
    "Article": 1303,
-   "Organization": 1205,
+   "Organization": 1206,
    "Movie": 719,
    "VideoObject": 689,
-   "WebSite": 662,
+   "WebSite": 663,
    "WebPage": 471,
    "TechArticle": 329,
    "WebApplication": 65,
+   "CollectionPage": 42,
    "Review": 41,
-   "CollectionPage": 41,
    "SportsTeam": 20,
    "SportsEvent": 10,
    "AboutPage": 8,
@@ -178,9 +178,9 @@
   },
   "invalidJsonLd": [],
   "weight": {
-   "medianBytes": 40206,
+   "medianBytes": 40207,
    "p90Bytes": 65266,
-   "maxBytes": 523956
+   "maxBytes": 523958
   },
   "breadcrumbs": "BreadcrumbList coverage is measured by the JSON-LD type census above; every desk page also prints a visible nav.breadcrumb (checked by validate:browser)"
  },
@@ -271,8 +271,8 @@
     "htmlKb": 186.5
    }
   ],
-  "blockingJsPages": 2734,
-  "blockingCssPages": 684,
+  "blockingJsPages": 2735,
+  "blockingCssPages": 685,
   "images": {
    "inMainTotal": 1009,
    "inMainWithoutLazyLoading": 0,
