@@ -2331,8 +2331,11 @@ def programmatic_pages() -> None:
             "first-publication",
             "Publications that welcome writers with no publication history",
             "For a first credit",
-            f"{len(ftf)} publications whose own guideline explicitly welcomes unpublished writers — "
-            "the shortest path from having written something to having published something.",
+            # The meta description is built as "{n} researched publications — {intro}",
+            # so the intro must not open with the count or the description reads
+            # "13 researched publications — 13 publications whose...".
+            "From having written something to having published something, via markets "
+            "that say unpublished writers are welcome.",
             "BRYME only lists a publication here when its guideline actually says unpublished writers "
             "are welcome. A guideline that never mentions experience is recorded as not stated rather "
             "than treated as a welcome, because silence is not an invitation. Each listing carries the "
@@ -2348,8 +2351,10 @@ def programmatic_pages() -> None:
             "new-and-emerging",
             "Publications that state what stage they publish",
             "First credit upward",
-            f"Every publication in the database whose own guideline says something about who may submit — "
-            f"from {len(ftf)} that explicitly welcome unpublished writers to those that expect a track record.",
+            # Keep under 120 chars: the description template slices the intro there,
+            # and a slice that lands mid-word reads as broken in the SERP.
+            "Every market whose own guideline says something about who may submit — "
+            "first-timers to those with a track record.",
             f"Grouped by what the publication says, not by what BRYME assumes. Of the {len(WRITING)} records, "
             f"{silent_n} guidelines are silent on the question and {unread_n} could not be read at all; "
             "neither group appears here, because an unstated policy is not an open door. Each listing "
