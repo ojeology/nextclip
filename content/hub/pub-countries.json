@@ -1054,5 +1054,37 @@
   "fairy-tale-magazine": {
     "base": "",
     "label": "International"
+  },
+  "booth": {
+    "base": "US",
+    "label": "United States"
+  },
+  "chicago-review-of-books": {
+    "base": "US",
+    "label": "United States"
+  },
+  "consequence": {
+    "base": "",
+    "label": "International"
+  },
+  "fahmidan-journal": {
+    "base": "UK",
+    "label": "United Kingdom"
+  },
+  "first-line": {
+    "base": "",
+    "label": "International"
+  },
+  "free-the-verse": {
+    "base": "",
+    "label": "International"
+  },
+  "invisible-city": {
+    "base": "US",
+    "label": "United States"
+  },
+  "fairy-tale-review": {
+    "base": "",
+    "label": "International"
   }
 }
