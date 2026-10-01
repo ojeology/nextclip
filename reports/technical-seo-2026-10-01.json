@@ -1,0 +1,317 @@
+{
+ "generated": "2026-10-01",
+ "live": {
+  "checks": [
+   {
+    "what": "http root",
+    "url": "http://thebryme.com/",
+    "status": 301,
+    "location": "https://thebryme.com/"
+   },
+   {
+    "what": "https root",
+    "url": "https://thebryme.com/",
+    "status": 200,
+    "location": ""
+   },
+   {
+    "what": "http www",
+    "url": "http://www.thebryme.com/",
+    "status": 301,
+    "location": "https://www.thebryme.com/"
+   },
+   {
+    "what": "https www",
+    "url": "https://www.thebryme.com/",
+    "status": 301,
+    "location": "https://thebryme.com/"
+   },
+   {
+    "what": "legacy render host",
+    "url": "https://bryme.onrender.com/",
+    "status": 404,
+    "location": ""
+   }
+  ],
+  "verdict": "one canonical host (https://thebryme.com), one scheme; http and www each 301 to it; variant spellings are served but every one canonicalises to the trailing-slash https URL",
+  "variants": [
+   {
+    "variant": "/sports/title-ix-explained/",
+    "status": 200,
+    "redirect": "",
+    "canonical": "https://thebryme.com/sports/title-ix-explained/"
+   },
+   {
+    "variant": "/sports/title-ix-explained",
+    "status": 200,
+    "redirect": "",
+    "canonical": "https://thebryme.com/sports/title-ix-explained/"
+   },
+   {
+    "variant": "/sports/title-ix-explained/index.html",
+    "status": 200,
+    "redirect": "",
+    "canonical": "https://thebryme.com/sports/title-ix-explained/"
+   },
+   {
+    "variant": "/sports/title-ix-explained/?utm_source=x",
+    "status": 200,
+    "redirect": "",
+    "canonical": "https://thebryme.com/sports/title-ix-explained/"
+   }
+  ]
+ },
+ "tree": {
+  "population": {
+   "builtRoutes": 3958,
+   "indexable": 2592,
+   "noindexed": 1366,
+   "inSitemaps": 2592
+  },
+  "findings": {
+   "titleLengthOutOfRange": [
+    {
+     "route": "/",
+     "chars": 66
+    }
+   ]
+  },
+  "findingCounts": {
+   "titleLengthOutOfRange": 1
+  },
+  "sitemaps": {
+   "writers/sitemap.xml": {
+    "urls": 519,
+    "badScheme": [],
+    "notBuilt": [],
+    "noindexedInSitemap": []
+   },
+   "sports/sitemap.xml": {
+    "urls": 197,
+    "badScheme": [],
+    "notBuilt": [],
+    "noindexedInSitemap": []
+   },
+   "entertainment/sitemap.xml": {
+    "urls": 183,
+    "badScheme": [],
+    "notBuilt": [],
+    "noindexedInSitemap": []
+   },
+   "tech/sitemap.xml": {
+    "urls": 373,
+    "badScheme": [],
+    "notBuilt": [],
+    "noindexedInSitemap": []
+   },
+   "fitness/sitemap.xml": {
+    "urls": 187,
+    "badScheme": [],
+    "notBuilt": [],
+    "noindexedInSitemap": []
+   },
+   "home/sitemap.xml": {
+    "urls": 292,
+    "badScheme": [],
+    "notBuilt": [],
+    "noindexedInSitemap": []
+   },
+   "money/sitemap.xml": {
+    "urls": 122,
+    "badScheme": [],
+    "notBuilt": [],
+    "noindexedInSitemap": []
+   },
+   "entertainment/sitemap-catalogue.xml": {
+    "urls": 719,
+    "badScheme": [],
+    "notBuilt": [],
+    "noindexedInSitemap": []
+   }
+  },
+  "robots": {
+   "issues": [],
+   "exists": true,
+   "policy": "AI-training crawlers (CCBot, Meta-ExternalAgent, Amazonbot, Bytespider) are disallowed site-wide by choice; every search engine crawler is allowed, with only internal directories (scripts, content, docs, server, ecosystem, _recovered) excluded"
+  },
+  "metadata": {
+   "titleChars": {
+    "min": 15,
+    "median": 50,
+    "max": 66
+   },
+   "descriptionChars": {
+    "min": 61,
+    "median": 151,
+    "max": 170
+   },
+   "titleRangeIs": "15-65 chars (Google truncates a SERP title around 580px)",
+   "descriptionRangeIs": "60-170 chars"
+  },
+  "duplicateTitles": {
+   "count": 0,
+   "sample": []
+  },
+  "duplicateDescriptions": {
+   "count": 0,
+   "sample": []
+  },
+  "structuredData": {
+   "BreadcrumbList": 2591,
+   "Article": 1162,
+   "Organization": 1063,
+   "Movie": 719,
+   "VideoObject": 689,
+   "WebSite": 520,
+   "WebPage": 471,
+   "TechArticle": 329,
+   "WebApplication": 65,
+   "Review": 41,
+   "CollectionPage": 40,
+   "SportsTeam": 20,
+   "SportsEvent": 10,
+   "AboutPage": 8,
+   "ContactPage": 6,
+   "ItemList": 1,
+   "Course": 1,
+   "ProfilePage": 1
+  },
+  "invalidJsonLd": [],
+  "weight": {
+   "medianBytes": 40400,
+   "p90Bytes": 65361,
+   "maxBytes": 263631
+  },
+  "breadcrumbs": "BreadcrumbList coverage is measured by the JSON-LD type census above; every desk page also prints a visible nav.breadcrumb (checked by validate:browser)"
+ },
+ "performance": {
+  "perPageMedianKb": 54.5,
+  "perPageP90Kb": 92.7,
+  "largestPages": [
+   {
+    "route": "/writers/tools/pdf-editor/",
+    "kb": 929.5,
+    "blockingJs": 6,
+    "blockingCss": 1
+   },
+   {
+    "route": "/writers/tools/text-to-pdf/",
+    "kb": 617.1,
+    "blockingJs": 5,
+    "blockingCss": 1
+   },
+   {
+    "route": "/writers/tools/images-to-pdf/",
+    "kb": 616.9,
+    "blockingJs": 5,
+    "blockingCss": 1
+   },
+   {
+    "route": "/writers/tools/pdf-to-text/",
+    "kb": 417.1,
+    "blockingJs": 5,
+    "blockingCss": 1
+   },
+   {
+    "route": "/writers/",
+    "kb": 336.4,
+    "blockingJs": 3,
+    "blockingCss": 2
+   },
+   {
+    "route": "/writers/writing/",
+    "kb": 334.6,
+    "blockingJs": 3,
+    "blockingCss": 1
+   },
+   {
+    "route": "/tech/",
+    "kb": 310.8,
+    "blockingJs": 3,
+    "blockingCss": 1
+   },
+   {
+    "route": "/writers/read/",
+    "kb": 243.4,
+    "blockingJs": 3,
+    "blockingCss": 1
+   }
+  ],
+  "heaviestHtml": [
+   {
+    "route": "/writers/writing/",
+    "htmlKb": 257.5
+   },
+   {
+    "route": "/tech/",
+    "htmlKb": 255.3
+   },
+   {
+    "route": "/writers/",
+    "htmlKb": 229.3
+   },
+   {
+    "route": "/home/",
+    "htmlKb": 186.5
+   },
+   {
+    "route": "/writers/read/",
+    "htmlKb": 178.2
+   },
+   {
+    "route": "/writers/writing-opportunities/remote/",
+    "htmlKb": 146.1
+   },
+   {
+    "route": "/fitness/",
+    "htmlKb": 142.6
+   },
+   {
+    "route": "/entertainment/",
+    "htmlKb": 139.7
+   }
+  ],
+  "blockingJsPages": 2592,
+  "blockingCssPages": 542,
+  "images": {
+   "inMainTotal": 1009,
+   "inMainWithoutLazyLoading": 0,
+   "note": "counted inside <main> only. The 26px brand mark in the site header is eager everywhere by design; lazy-loading an above-the-fold logo would hurt, not help, and an earlier pass reported it as 2,541 findings."
+  },
+  "assetTotalsKb": 2711.5,
+  "largestAssets": [
+   {
+    "path": "/assets/vendor/pdfjs.worker.min.js",
+    "kb": 1061.7
+   },
+   {
+    "path": "/assets/vendor/pdf-lib.min.js",
+    "kb": 512.8
+   },
+   {
+    "path": "/assets/vendor/pdfjs.min.js",
+    "kb": 312.5
+   },
+   {
+    "path": "/assets/hub-tools.js",
+    "kb": 89.7
+   },
+   {
+    "path": "/assets/house-home.js",
+    "kb": 69.1
+   },
+   {
+    "path": "/assets/search-index.js",
+    "kb": 66.3
+   },
+   {
+    "path": "/assets/content-v2.css",
+    "kb": 55.7
+   },
+   {
+    "path": "/assets/bryme-v2.css",
+    "kb": 47.7
+   }
+  ]
+ }
+}

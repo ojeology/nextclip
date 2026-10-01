@@ -2322,8 +2322,20 @@ def programmatic_pages() -> None:
     # listed, because "we did not find out" is not the same as "they welcome
     # beginners" and telling a first-timer otherwise would waste their evening.
     ftf = [r for r in WRITING if r.get("experience") == "first-timer-friendly"]
-    staged = [r for r in WRITING if r.get("experience") in ("first-timer-friendly", "emerging")]
-    silent_n = sum(1 for r in WRITING if r.get("experience") in (None, "not-stated"))
+    # Every record that states a stage, which is what the facet's "stated" value
+    # means and what this page's own call to action filters to. It used to stop at
+    # "emerging", so the page listed 43 while the link under it showed 47 - the
+    # page and its button disagreed about its own subject.
+    staged = [r for r in WRITING if r.get("experience") not in (None, "not-stated")]
+    # The three numbers printed on these pages must ADD UP, because a reader will
+    # add them. "not-stated" covers both a guideline that was read and was silent
+    # and a guideline that could not be read at all, so counting the unread set
+    # separately and printing both would say "100 guidelines are silent ... and 9
+    # could not be read" when the truth is 91 + 9 = 100. That reads as 109 records
+    # and, worse, makes a claim about the policy of nine publications whose policy
+    # nobody has read. Split the bucket instead of overlapping it.
+    not_stated = [r for r in WRITING if r.get("experience") in (None, "not-stated")]
+    silent_n = sum(1 for r in not_stated if r.get("slug") not in GUIDELINES_NOT_READ)
     unread_n = len(GUIDELINES_NOT_READ)
 
     if len(ftf) >= MIN_TYPE_PAGE:
@@ -2418,12 +2430,12 @@ def programmatic_pages() -> None:
 {li("/writing-opportunities/remote/", "Open to writers anywhere", len(remote))}</div></div></section>
 <section class="section alt"><div class="wrap"><div class="section-head"><div><p class="eyebrow">By what you write</p><h2>Genre and form.</h2></div></div>
 <div class="card-grid">{type_cards}</div>
-<p class="tool-note">Need a combination these pages do not cover — say, poetry in Canada paying over $100? <a href="/writing/">Use the full search</a>, which filters on all nine facets at once.</p>
+<p class="tool-note">Need a combination these pages do not cover — say, poetry in Canada paying over $100? <a href="/writing/">Use the full search</a>, which filters on all ten facets at once.</p>
 </div></section>
 <section class="section"><div class="wrap"><div class="section-head"><div><p class="eyebrow">By where you are starting from</p><h2>If you have no credits yet.</h2></div>
-<p>Most guidelines never mention experience, so the honest answer for a first-timer is usually "unknown". These two views collect the {len(staged)} publications that did say — including the {len(ftf)} that explicitly welcome unpublished writers.</p></div>
+<p>Most guidelines never mention experience, so the honest answer for a first-timer is usually "unknown". These two views collect the {len(staged)} publications that did say — including the {len(ftf)} that explicitly welcome unpublished writers, and {len(staged) - len(ftf)} that want some experience first.</p></div>
 <div class="card-grid">{exp_cards}</div>
-<p class="tool-note">Both views are built from what each publication says about who may submit, read from its own guideline and shown with the sentence it came from. Silence is recorded as silence: a further {silent_n} guidelines say nothing on the question, and {unread_n} could not be read at all.</p>
+<p class="tool-note">Both views are built from what each publication says about who may submit, read from its own guideline and shown with the sentence it came from. Silence is recorded as silence: {silent_n} of the {len(WRITING)} guidelines were read and say nothing on the question, and {unread_n} could not be read at all — {silent_n + unread_n} records between them, none of which is treated as a welcome.</p>
 </div></section>{atlas_html}'''
     write("/writing-opportunities/", page_wf(
         title="Writing opportunities by country and genre | BRYME",
