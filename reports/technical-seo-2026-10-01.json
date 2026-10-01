@@ -63,10 +63,10 @@
  },
  "tree": {
   "population": {
-   "builtRoutes": 3958,
-   "indexable": 2592,
-   "noindexed": 1366,
-   "inSitemaps": 2592
+   "builtRoutes": 4242,
+   "indexable": 2734,
+   "noindexed": 1508,
+   "inSitemaps": 2734
   },
   "findings": {
    "titleLengthOutOfRange": [
@@ -81,7 +81,7 @@
   },
   "sitemaps": {
    "writers/sitemap.xml": {
-    "urls": 519,
+    "urls": 661,
     "badScheme": [],
     "notBuilt": [],
     "noindexedInSitemap": []
@@ -157,17 +157,17 @@
    "sample": []
   },
   "structuredData": {
-   "BreadcrumbList": 2591,
-   "Article": 1162,
-   "Organization": 1063,
+   "BreadcrumbList": 2733,
+   "Article": 1303,
+   "Organization": 1205,
    "Movie": 719,
    "VideoObject": 689,
-   "WebSite": 520,
+   "WebSite": 662,
    "WebPage": 471,
    "TechArticle": 329,
    "WebApplication": 65,
    "Review": 41,
-   "CollectionPage": 40,
+   "CollectionPage": 41,
    "SportsTeam": 20,
    "SportsEvent": 10,
    "AboutPage": 8,
@@ -178,15 +178,15 @@
   },
   "invalidJsonLd": [],
   "weight": {
-   "medianBytes": 40400,
-   "p90Bytes": 65361,
-   "maxBytes": 263631
+   "medianBytes": 40206,
+   "p90Bytes": 65266,
+   "maxBytes": 523956
   },
   "breadcrumbs": "BreadcrumbList coverage is measured by the JSON-LD type census above; every desk page also prints a visible nav.breadcrumb (checked by validate:browser)"
  },
  "performance": {
-  "perPageMedianKb": 54.5,
-  "perPageP90Kb": 92.7,
+  "perPageMedianKb": 56.3,
+  "perPageP90Kb": 93.8,
   "largestPages": [
    {
     "route": "/writers/tools/pdf-editor/",
@@ -207,6 +207,12 @@
     "blockingCss": 1
    },
    {
+    "route": "/writers/writing/",
+    "kb": 589.0,
+    "blockingJs": 3,
+    "blockingCss": 1
+   },
+   {
     "route": "/writers/tools/pdf-to-text/",
     "kb": 417.1,
     "blockingJs": 5,
@@ -214,25 +220,19 @@
    },
    {
     "route": "/writers/",
-    "kb": 336.4,
+    "kb": 407.1,
     "blockingJs": 3,
     "blockingCss": 2
    },
    {
-    "route": "/writers/writing/",
-    "kb": 334.6,
+    "route": "/writers/writing-opportunities/fiction/",
+    "kb": 394.8,
     "blockingJs": 3,
     "blockingCss": 1
    },
    {
-    "route": "/tech/",
-    "kb": 310.8,
-    "blockingJs": 3,
-    "blockingCss": 1
-   },
-   {
-    "route": "/writers/read/",
-    "kb": 243.4,
+    "route": "/writers/writing-opportunities/poetry/",
+    "kb": 353.0,
     "blockingJs": 3,
     "blockingCss": 1
    }
@@ -240,45 +240,45 @@
   "heaviestHtml": [
    {
     "route": "/writers/writing/",
-    "htmlKb": 257.5
+    "htmlKb": 511.7
+   },
+   {
+    "route": "/writers/writing-opportunities/fiction/",
+    "htmlKb": 331.0
+   },
+   {
+    "route": "/writers/",
+    "htmlKb": 299.9
+   },
+   {
+    "route": "/writers/writing-opportunities/poetry/",
+    "htmlKb": 289.2
    },
    {
     "route": "/tech/",
     "htmlKb": 255.3
    },
    {
-    "route": "/writers/",
-    "htmlKb": 229.3
+    "route": "/writers/writing-opportunities/creative-nonfiction/",
+    "htmlKb": 217.4
+   },
+   {
+    "route": "/writers/writing-opportunities/essays/",
+    "htmlKb": 205.1
    },
    {
     "route": "/home/",
     "htmlKb": 186.5
-   },
-   {
-    "route": "/writers/read/",
-    "htmlKb": 178.2
-   },
-   {
-    "route": "/writers/writing-opportunities/remote/",
-    "htmlKb": 146.1
-   },
-   {
-    "route": "/fitness/",
-    "htmlKb": 142.6
-   },
-   {
-    "route": "/entertainment/",
-    "htmlKb": 139.7
    }
   ],
-  "blockingJsPages": 2592,
-  "blockingCssPages": 542,
+  "blockingJsPages": 2734,
+  "blockingCssPages": 684,
   "images": {
    "inMainTotal": 1009,
    "inMainWithoutLazyLoading": 0,
    "note": "counted inside <main> only. The 26px brand mark in the site header is eager everywhere by design; lazy-loading an above-the-fold logo would hurt, not help, and an earlier pass reported it as 2,541 findings."
   },
-  "assetTotalsKb": 2711.5,
+  "assetTotalsKb": 2711.9,
   "largestAssets": [
    {
     "path": "/assets/vendor/pdfjs.worker.min.js",
@@ -298,7 +298,7 @@
    },
    {
     "path": "/assets/house-home.js",
-    "kb": 69.1
+    "kb": 69.3
    },
    {
     "path": "/assets/search-index.js",

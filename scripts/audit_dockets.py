@@ -3,7 +3,7 @@
 
 The docket makes two kinds of claim, and they fail in different ways.
 
-Structural claims - eight rows, a value in each, a gap list whose length matches
+Structural claims - nine rows, a value in each, a gap list whose length matches
 the number of unanswered questions - fail when a record has a field shaped
 unlike the others, which is exactly the shape a batch of 147 records never has
 been.
@@ -120,9 +120,15 @@ GAP_VALUES = frozenset({"Not stated", "Not known", "Not yet assessed"})
 # Same lesson as the note above, third time: the invariant names the labels, so
 # every honest label has to be named here. It failed 111 correct pages, loudly and
 # for the right reason, and the fix is this line rather than the pages.
-# Payment, Length, Who can submit, Response time, Simultaneous submissions,
-# AI policy, Rights, Experience.
-DOCKET_ROWS = 8
+# Payment, Length, Who can submit, Reading period, Response time, Simultaneous
+# submissions, AI policy, Rights, Experience.
+#
+# The ninth row arrived with Phase 19 item 2, which names reading periods as one
+# of the fields every record must carry and which the docket had never printed:
+# 85 records hold a window read off the guideline page and showed none of it, and
+# 203 hold nothing and said nothing, so a reader could not tell a checked market
+# from an unchecked one.
+DOCKET_ROWS = 9
 
 DOCKET = re.compile(r'<section class="section docket-section".*?</section>', re.S)
 
@@ -205,9 +211,9 @@ def main() -> int:
             if listed != asked:
                 fail(slug, f"{listed} gaps listed but {asked} rows marked unanswered")
             if listed == DOCKET_ROWS:
-                if "leaves all eight questions" not in block:
-                    fail(slug, "all eight unanswered but the headline does not say so")
-            elif f"leaves {listed} of the eight questions" not in block:
+                if "leaves all nine questions" not in block:
+                    fail(slug, "all nine unanswered but the headline does not say so")
+            elif f"leaves {listed} of the nine questions" not in block:
                 fail(slug, f"gap headline does not match the {listed} listed")
         elif asked:
             fail(slug, f"{asked} unanswered rows but no gap list")

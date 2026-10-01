@@ -2579,7 +2579,7 @@ def writing_hub() -> None:
 {writing_nav()}
 <section class="section"><div class="how-steps"><h2 class="section-sub">How make-money writing works with BRYME</h2><ol class="steps">
 <li><b>Pick an opportunity.</b> Each page names who it is open to — BRYME does not treat a missing country list as "open worldwide." Eligibility and diaspora rules are recorded where the publication states them.</li>
-<li><b>Check the docket before you pitch.</b> Every publication page opens with eight answers in one block — pay, length, who can submit, how long a reply takes, whether you may submit elsewhere at the same time, the AI policy, the rights, and what the guideline assumes about experience — and then names the ones the publication does not give. A missing answer is recorded as missing rather than filled in with a plausible one, because the gap is itself something you need to know before you spend an evening on the pitch.</li>
+<li><b>Check the docket before you pitch.</b> Every publication page opens with nine answers in one block — pay, length, who can submit, when they read, how long a reply takes, whether you may submit elsewhere at the same time, the AI policy, the rights, and what the guideline assumes about experience — and then names the ones the publication does not give. A missing answer is recorded as missing rather than filled in with a plausible one, because the gap is itself something you need to know before you spend an evening on the pitch.</li>
 <li><b>Read the official guideline, not just the rate card.</b> Every page links to the publication's own guidelines and shows its last human-check date.</li>
 <li><b>Understand the money before you pitch.</b> Payment is the published fee per accepted piece (or the real range), how and when it is paid, and whether it is per word, per piece or a variable honorarium. Rates are never invented.</li>
 <li><b>Check the AI policy and rights.</b> Many publications reject AI-assisted work and take specific rights. BRYME records what each page says.</li>
@@ -2602,10 +2602,10 @@ def writing_hub() -> None:
 # ---------------------------------------------------------------------------
 # The submission docket
 #
-# Every publication page already answers eight questions, but it answers them
+# Every publication page already answers nine questions, but it answers them
 # scattered across sections, in the publication's own words, with no indication
 # of which answers the publication actually gave and which BRYME filled in with
-# a default. A writer deciding where to send a pitch needs the eight answers in
+# a default. A writer deciding where to send a pitch needs the nine answers in
 # one place AND needs to know which of them are missing - because "the
 # guideline does not say" is a fact about the market that no directory
 # publishes, and it is the difference between an editor who trusts the desk and
@@ -2691,6 +2691,50 @@ def _display_parts(text: str | None) -> tuple[str, str]:
     if len(head) == 2 and len(head[0]) <= 88:
         return head[0], head[1]
     return value, ""
+
+
+def _period_parts(text: str) -> tuple[str, str]:
+    """Split a recorded reading period into a short value and the prose beneath.
+
+    The same promise as `_display_parts` - every character is kept and nothing is
+    paraphrased - with two more split points, because window text is written in
+    clauses rather than sentences. 31 of the 85 recorded windows are one sentence
+    running past 88 characters ("Re-checked on the official Submission Guidelines
+    page 16 September 2026: all winter..."), so the sentence rule alone would put
+    up to 560 characters in a value cell and the answer would stop being scannable.
+    A colon introducing the dates, a semicolon between two windows and a dash
+    carrying the qualification are all real boundaries in this text, so they are
+    used before falling back to a word-boundary cut. The head stays verbatim and
+    the remainder moves to the note rather than away.
+
+    Deliberately separate from `_display_parts` rather than a change to it: the
+    pay and length rows are checked verbatim against the dataset by three gates,
+    and widening a shared split rule to fix 31 windows would have re-cut values
+    that were already correct.
+    """
+    value = " ".join(str(text or "").split())
+    if len(value) <= 88:
+        return value, ""
+    head = re.split(r"(?<=[.!?])\s+", value, maxsplit=1)
+    if len(head) == 2 and len(head[0]) <= 88:
+        return head[0], head[1]
+    for mark in (":", ";", " - ", " \u2014 "):
+        i = value.find(mark)
+        if 0 < i <= 88:
+            return value[:i].rstrip(), value[i + len(mark):].strip()
+    cut = value[:89]
+    at = cut.rfind(" ")
+    if at <= 0:
+        at = 88
+    # Never cut inside a parenthetical: "(the page states the month, not" / "a
+    # day)" is two fragments of one qualification, and the qualification is the
+    # part that makes the window true. Break before it and keep it whole in the
+    # note instead.
+    if value[:at].count("(") > value[:at].count(")"):
+        paren = value.rfind("(", 0, at)
+        if paren > 0:
+            at = paren
+    return cut[:at].rstrip() + "\u2026", value[at:].strip()
 
 
 def _sentence(text: str) -> str:
@@ -2861,6 +2905,21 @@ def _comparison_caveat(rec: dict) -> str:
             f"way, so a per-word rate is never ranked against a flat fee.")
 
 
+# The docket's questions, in the order the rows render. Every published count of
+# them is derived from this tuple - the lede, the gap headline and the assertion
+# at the foot of docket() - because a typed number here went stale twice: the
+# lede said "the seven things" while eight rows rendered, and the gap headline
+# said "eight questions" on the day a ninth row arrived. A count that is typed is
+# a count that is eventually wrong.
+DOCKET_QUESTIONS = ("Payment", "Length", "Who can submit", "Reading period",
+                    "Response time", "Simultaneous submissions", "AI policy",
+                    "Rights", "Experience")
+N_DOCKET = len(DOCKET_QUESTIONS)
+_DOCKET_WORD = {1: "one", 2: "two", 3: "three", 4: "four", 5: "five", 6: "six",
+                7: "seven", 8: "eight", 9: "nine", 10: "ten", 11: "eleven",
+                12: "twelve"}[N_DOCKET]
+
+
 def _docket_row(label: str, value: str, note: str = "", state: str = "") -> str:
     """One docket line. `state` marks whether the publication answered.
 
@@ -2876,7 +2935,7 @@ def _docket_row(label: str, value: str, note: str = "", state: str = "") -> str:
 
 
 def docket(rec: dict) -> str:
-    """The eight answers, and the honest list of what is missing.
+    """The nine answers, and the honest list of what is missing.
 
     Nothing here is new data - every line is read from the record the rest of
     the page already shows, or computed from the dataset at build time. What is
@@ -2958,7 +3017,49 @@ def docket(rec: dict) -> str:
         gaps.append("Who can submit — the guideline leaves this open, so ask before you "
                     "spend an evening on the pitch rather than assuming a yes.")
 
-    # 4. Response time
+    # 4. Reading period
+    #
+    # Phase 19 item 2 names nine fields every record must carry, and reading
+    # periods was the one the docket never printed. Two failures sat behind that,
+    # and they pull in opposite directions.
+    #
+    # 85 records hold a window read off the publication's own guideline page - one
+    # of them 560 characters of it - and not one word reached the page: a record
+    # page showed a status badge ("Currently closed") and nothing else, so
+    # verified evidence was held in the dataset and withheld from the reader who
+    # needed it to decide whether to pitch at all.
+    #
+    # The other 203 hold no window, and before this row the page said nothing
+    # about that either, which let a reader assume BRYME had checked and found the
+    # market open. An unrecorded field is BRYME's gap rather than the
+    # publication's silence, so it takes the same label the experience row uses
+    # for that distinction - never "Not stated", which would publish a silence
+    # nobody has verified.
+    dl = rec.get("deadline") if isinstance(rec.get("deadline"), dict) else {}
+    dl_display = " ".join(str((dl or {}).get("display") or "").split())
+    if dl_display and not _display_is_silence(dl_display):
+        value, extra = _period_parts(dl_display)
+        rows.append(_docket_row("Reading period", esc(value), esc(extra) if extra else ""))
+    elif rec.get("slug") in GUIDELINES_NOT_READ:
+        rows.append(_docket_row(
+            "Reading period", "Not known",
+            "BRYME has not been able to read this publication's guideline \u2014 the "
+            "site blocks automated access and no archived copy carried the windows \u2014 "
+            "so no reading period is recorded. The gap is BRYME's, not the "
+            "publication's: check the guideline before you send.", "gap"))
+        gaps.append("Reading period \u2014 BRYME could not open this guideline, so the "
+                    "window is unknown rather than absent. Check it before you pitch.")
+    else:
+        rows.append(_docket_row(
+            "Reading period", "Not yet assessed",
+            "BRYME has not recorded a reading period for this market from its "
+            "guideline page. That is our gap rather than the publication's silence: "
+            "it does not mean the window is open, and it does not mean there is "
+            "none. Read the guideline linked on this page before you send.", "gap"))
+        gaps.append("Reading period \u2014 no window recorded yet, so check the guideline "
+                    "before you pitch rather than assuming it is open.")
+
+    # 5. Response time
     if (resp.get("band") or "") not in ("", "not-stated", "unknown") and resp.get("label"):
         rows.append(_docket_row("Response time", esc(resp["label"])))
     else:
@@ -2968,7 +3069,7 @@ def docket(rec: dict) -> str:
             "reasonable; silence past that is a soft no, not a rejection.", "gap"))
         gaps.append("Response time — expect to wait blind, and keep other pitches live.")
 
-    # 5. Simultaneous submissions
+    # 6. Simultaneous submissions
     #
     # Read from the publication's own guideline and stored with the sentence it
     # came from. Silence stays "Not stated": a publication that never mentions
@@ -3002,7 +3103,7 @@ def docket(rec: dict) -> str:
             gaps.append("Simultaneous submissions — the guideline leaves this open, so "
                         "declare it in your cover letter rather than assuming.")
 
-    # 6. AI policy
+    # 7. AI policy
     ai_text = {
         "prohibited": ("AI-assisted work is prohibited",
                        "The guideline forbids AI-generated or AI-assisted writing."),
@@ -3025,7 +3126,7 @@ def docket(rec: dict) -> str:
             f"silence here is not permission — ask.", "gap"))
         gaps.append("AI policy — assume disclosure is expected unless the editor says otherwise.")
 
-    # 7. Rights
+    # 8. Rights
     if rights_bucket(rec) == "stated":
         rows.append(_docket_row("Rights", "Stated", esc(rights)))
     else:
@@ -3037,7 +3138,7 @@ def docket(rec: dict) -> str:
             "gap"))
         gaps.append("Rights — you may be asked to assign more than you expect. Get the terms in writing.")
 
-    # 7. Experience.
+    # 9. Experience.
     #
     # Wave 0a. The value is read from the publication's own policy and never
     # inferred - `experienceNote` carries the line it was read from, so the claim
@@ -3071,8 +3172,8 @@ def docket(rec: dict) -> str:
         elif rec.get("slug") in EXPERIENCE_NOT_ASSESSED:
             rows.append(_docket_row(
                 "Experience", "Not yet assessed",
-                "BRYME has read this publication's guideline for pay, route and "
-                "deadline but has not yet put the experience question to it, so this "
+                "BRYME has read this publication's guideline but has not yet put the "
+                "experience question to it, so this "
                 "row is untouched rather than unanswered — it is our gap, not theirs. "
                 "Treat it exactly as you would an unstated policy.", "gap"))
             gaps.append("Experience — BRYME has not assessed this one yet, so do not "
@@ -3087,11 +3188,20 @@ def docket(rec: dict) -> str:
             gaps.append("Experience — look at what kind of writer this publication "
                         "normally publishes before you pitch; its guideline does not say.")
 
+    # The tuple above is only a source of truth if the rows obey it. Checked on
+    # every page rather than trusted: a row added without updating DOCKET_QUESTIONS
+    # would silently desynchronise the lede, the gap headline and audit_dockets.py.
+    rendered_labels = re.findall(r"<dt>(.*?)</dt>", "".join(rows))
+    assert rendered_labels == list(DOCKET_QUESTIONS), (
+        f"docket rows {rendered_labels} do not match DOCKET_QUESTIONS "
+        f"{list(DOCKET_QUESTIONS)} for {rec.get('slug')}")
+
     gap_block = ""
     if gaps:
         items = "".join(f"<li>{esc(g)}</li>" for g in gaps)
-        all_gaps = len(gaps) == 8
-        tail = "all eight questions" if all_gaps else f"{len(gaps)} of the eight questions"
+        all_gaps = len(gaps) == N_DOCKET
+        tail = (f"all {_DOCKET_WORD} questions" if all_gaps
+                else f"{len(gaps)} of the {_DOCKET_WORD} questions")
         gap_block = (f'<div class="docket-gaps"><h3>What this record does not tell you</h3>'
                      f'<p>This publication leaves {tail} unanswered. '
                      f'BRYME publishes that gap instead of filling it — a generated answer would '
@@ -3099,7 +3209,7 @@ def docket(rec: dict) -> str:
 
     return (f'<section class="section docket-section" id="docket">'
             f'<div class="docket"><h2>The docket</h2>'
-            f'<p class="docket-lede">The seven things that decide whether a pitch is worth sending. '
+            f'<p class="docket-lede">The {_DOCKET_WORD} things that decide whether a pitch is worth sending. '
             f'Every answer below is either taken from the publication&rsquo;s own guideline or '
             f'computed by BRYME from the {len(WRITING)}-publication desk. Where the publication '
             f'does not say, the docket says so instead of filling the gap in.</p>'

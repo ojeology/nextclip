@@ -22,11 +22,31 @@ Exits non-zero on any finding.
 from __future__ import annotations
 
 import collections
+import datetime as dt
 import hashlib
 import json
+import os
 import re
 import sys
 from pathlib import Path
+
+
+def _today() -> str:
+    """The date this report should carry.
+
+    Both the payload and the filename used to be the literal "2026-09-30", so
+    every later run overwrote that day's artifact with a later tree's numbers -
+    a report labelled with a date it was not run against, which is the one thing
+    a dated artifact must not be. Honours SOURCE_DATE_EPOCH like the builders so
+    CI stays reproducible.
+    """
+    epoch = os.environ.get("SOURCE_DATE_EPOCH", "")
+    if epoch.isdigit():
+        return dt.datetime.fromtimestamp(int(epoch), dt.timezone.utc).date().isoformat()
+    return dt.date.today().isoformat()
+
+
+TODAY = _today()
 
 ROOT = Path(__file__).resolve().parent.parent
 PUB = ROOT / "public"
@@ -200,9 +220,9 @@ def main() -> int:
     for f in findings:
         print(f"  FAIL {f}")
 
-    report = {"generated": "2026-09-30", "pages": len(P), "dimensions": 9,
+    report = {"generated": TODAY, "pages": len(P), "dimensions": 9,
               "navVariants": len(nav_norm), "findings": findings}
-    out = ROOT / "reports" / "brand-consistency-2026-09-30.json"
+    out = ROOT / "reports" / f"brand-consistency-{TODAY}.json"
     out.write_text(json.dumps(report, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
     print(f"wrote {out.relative_to(ROOT)}")
     return 1 if findings else 0

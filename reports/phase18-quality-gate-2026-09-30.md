@@ -19,13 +19,13 @@ The home page's own headline is quoted above rather than paraphrased. How strong
 
 ### 2. Can a new visitor understand BRYME within five seconds?
 
-**JUDGEMENT** — the home page opens with “We read the fine print so you don't have to.” and the meta description reads “Seven desks under one roof. Flagship: 147 paying markets checked by hand, 197 guides, 48 tools. Dated, sourced, no pop-ups.”
+**JUDGEMENT** — the home page opens with “We read the fine print so you don't have to.” and the meta description reads “Seven desks under one roof. Flagship: 288 paying markets checked by hand, 197 guides, 48 tools. Dated, sourced, no pop-ups.”
 
 Five-second comprehension is a usability question and needs a person looking at the page. The two elements that carry it — the headline and the summary — are quoted so the owner can judge them directly. This was not tested with users.
 
 ### 3. Can a writer find opportunities quickly?
 
-**MEASURED** — 147 publication records reachable from /writers/writing/; a purpose-finder page at /writers/find/; 0 coherence findings
+**MEASURED** — 288 publication records reachable from /writers/writing/; a purpose-finder page at /writers/find/; 0 coherence findings
 
 Records are browsable by desk, country and payment; every record page is one hop from the index. Whether a given writer finds their fit in seconds is a judgement, but the paths exist and resolve.
 
@@ -43,19 +43,19 @@ Three kinds of first-hand material exist and none of them can be copied from a p
 
 ### 6. Are publication details responsibly sourced?
 
-**EVIDENCE** — sources per record: {1: 108, 2: 35, 3: 4}; guideline pages harvested 147/147
+**EVIDENCE** — sources per record: {1: 249, 2: 35, 3: 4}; guideline pages harvested 147/147
 
 Phase 4 fetched each publication's own submissions or guidelines page and stored the sentence it used. 13 records gained a genuine second official source and 7 candidate sources were rejected for not being official. Nothing in the dataset is sourced to a listicle, a social post or an inference.
 
 ### 7. Are changing details marked and maintained?
 
-**MEASURED** — /writers/what-changed/ is 2441 words and lists checks newest-first; 147 records carry a lastVerified date; dataset updatedAt 2026-09-30
+**MEASURED** — /writers/what-changed/ is 3215 words and lists checks newest-first; 288 records carry a lastVerified date; dataset updatedAt 2026-09-30
 
 Every requirement that can change carries the date it was last read, and the log page states that a date there means a human opened the publication that day. The maintenance risk is honest and worth stating: dates age. 147 records can be re-read, but nothing forces it to happen — that is a process the owner has to keep, not something the build can enforce.
 
 ### 8. Are the Writers pages strongly interconnected?
 
-**MEASURED** — 524 pages checked; internal-linking dimension PASS; site-wide link check covers 272,569 links across 4,037 pages
+**MEASURED** — 668 pages checked; internal-linking dimension PASS; site-wide link check covers 272,569 links across 4,037 pages
 
 Inbound links were counted site-wide with links to redirect stubs credited to the page they canonically point at, so a page reached through a redirect is not mistaken for an orphan. Every page in the section has inbound links; the lowest is well into double figures.
 
@@ -121,13 +121,13 @@ Each of the 2,590 indexable pages is graded and none is left unexamined, but “
 
 ### 19. Does the website feel like a coherent product rather than a collection of unrelated pages?
 
-**MEASURED** — brand-consistency audit: 524 Writers pages across 9 dimensions, 0 findings; one navigation across every page after removing the per-page active marker; one base stylesheet
+**MEASURED** — brand-consistency audit: 668 Writers pages across 9 dimensions, 0 findings; one navigation across every page after removing the per-page active marker; one base stylesheet
 
 Checked mechanically: navigation, typography, components, breadcrumbs, research labels, verification indicators, tool design, internal linking and calls to action. Four indexable pages were missing the breadcrumb the other 520 carry and were corrected. Whether the result feels coherent to a reader is still a human judgement, but the mechanical sources of incoherence were removed and the check now runs on every build.
 
 ### 20. Would a real writer return to BRYME because it is useful?
 
-**JUDGEMENT** — return-visit surfaces: weekly digest, /writers/what-changed/ (2441 words, dated), submission tracker, writing calendar, 48 tools, Writing Studio with local drafts
+**JUDGEMENT** — return-visit surfaces: weekly digest, /writers/what-changed/ (3215 words, dated), submission tracker, writing calendar, 48 tools, Writing Studio with local drafts
 
 This is the one question no measurement answers. What can be said is what exists for a returning reader: dated change tracking, a saveable tracker, tools that work offline in the browser, and a digest. Whether that is enough is the owner's call, and the honest answer needs real traffic rather than a build report — which is what Phase 15's Search Console data was for.
 

@@ -24,7 +24,9 @@ Writes reports/phase18-quality-gate-<date>.md and .json
 from __future__ import annotations
 
 import collections
+import datetime as _dt
 import json
+import os
 import re
 import sys
 from pathlib import Path
@@ -32,15 +34,52 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 PUB = ROOT / "public"
 REP = ROOT / "reports"
-DATE = "2026-09-30"
+def _run_date() -> str:
+    """The date this gate's report should carry.
+
+    A hardcoded "2026-09-30" meant every later run overwrote that day's report
+    with a later tree's numbers, so the artifact claimed to describe a build it
+    was never run against - the exact failure this gate exists to catch in other
+    people's work. Same SOURCE_DATE_EPOCH convention as the builders: pinned in
+    CI so any commit can be re-gated reproducibly, real date otherwise.
+    """
+    epoch = os.environ.get("SOURCE_DATE_EPOCH", "")
+    if epoch.isdigit():
+        return _dt.datetime.fromtimestamp(int(epoch), _dt.timezone.utc).date().isoformat()
+    return _dt.date.today().isoformat()
 
 
-def rd(name: str) -> dict:
-    f = REP / name
-    if not f.exists():
+DATE = _run_date()
+
+# Which run each cited artifact came from, so the report can say so.
+ARTIFACT_DATES: dict[str, str] = {}
+
+# Rows a publication docket must carry. Mirrors DOCKET_ROWS in audit_dockets.py;
+# the ninth is the reading period Phase 19 item 2 requires and the docket never
+# printed.
+DOCKET_ROW_COUNT = 9
+
+
+def rd(family: str) -> dict:
+    """Newest report for an audit family, and the date it was generated.
+
+    Reading `technical-seo-2026-09-30.json` by name meant that the day a newer
+    audit was produced the gate kept citing the older one and printed last
+    month's route counts as this month's evidence - four of the six families had
+    a newer file sitting unread in reports/.
+    """
+    best: tuple[str, Path] | None = None
+    for f in sorted(REP.glob(f"{family}-*.json")):
+        m = re.search(r"-(\d{4}-\d{2}-\d{2})\.json$", f.name)
+        key = m.group(1) if m else ""
+        if best is None or key > best[0]:
+            best = (key, f)
+    if best is None:
+        ARTIFACT_DATES[family] = "missing"
         return {}
+    ARTIFACT_DATES[family] = best[0] or "undated"
     try:
-        return json.loads(f.read_text(encoding="utf-8"))
+        return json.loads(best[1].read_text(encoding="utf-8"))
     except Exception:
         return {}
 
@@ -56,16 +95,27 @@ def pages() -> list[tuple[str, Path, str]]:
 def main() -> int:
     P = pages()
     by_route = {r: h for r, _f, h in P}
-    tech = rd("technical-seo-2026-09-30.json")
-    quality = rd("quality-audit-2026-09-30.json")
-    desk = rd("desk-audit-2026-09-30.json")
-    ads = rd("adsense-readiness-2026-09-30.json")
-    brand = rd("brand-consistency-2026-09-30.json")
-    video = rd("video-audit-2026-09-30.json")
+    tech = rd("technical-seo")
+    quality = rd("quality-audit")
+    desk = rd("desk-audit")
+    ads = rd("adsense-readiness")
+    brand = rd("brand-consistency")
+    video = rd("video-audit")
 
     # the technical report nests its numbers; read them once, at their real paths
     treep = tech.get("tree", {}).get("population", {})
     tfind = tech.get("tree", {}).get("findings", {}) or {}
+
+    # The dataset, loaded once. Four answers used to type its record count as a
+    # literal ("147/147", "147 records"), which was true of a tree that no longer
+    # exists and could never fail - a gate whose evidence is typed in cannot be
+    # contradicted by the thing it is gating.
+    ops = ROOT / "content" / "opportunities.json"
+    DATA = json.loads(ops.read_text(encoding="utf-8")) if ops.exists() else {}
+    RECS = DATA.get("opportunities", DATA.get("records", [])) if isinstance(DATA, dict) else DATA
+    NOT_READ = set(DATA.get("guidelinesNotRead") or []) if isinstance(DATA, dict) else set()
+    N_RECS = len(RECS)
+    UPDATED = (DATA.get("updatedAt") or "not stated") if isinstance(DATA, dict) else "not stated"
 
     A: list[dict] = []
 
@@ -109,14 +159,29 @@ def main() -> int:
       f"Whether a given writer finds their fit in seconds is a judgement, but the paths exist and resolve.")
 
     # ---- 4 -----------------------------------------------------------------
+    # Counted from the built pages: a docket is full when it carries all nine
+    # rows. Reading the tree rather than the builder keeps the gate independent
+    # of the code it is checking, which is the rule audit_dockets.py states.
+    docket_full = 0
+    for _r in RECS:
+        _h = by_route.get(f"/writers/writing/{_r.get('slug')}/", "")
+        if _h.count('class="docket-row') == DOCKET_ROW_COUNT:
+            docket_full += 1
+    _QUOTE = re.compile(r"\u2014 https?://\S+ \(read \d{4}-\d{2}-\d{2}\)")
+    quoted_records = sum(
+        1 for _r in RECS
+        if any(isinstance(v, str) and _QUOTE.search(v) for v in _r.values()))
+
     q(4, "Can a writer understand submission requirements?",
       "EVIDENCE",
-      "147/147 publication records carry the eight-answer docket, each requirement quoting the "
-      "publication's own guidelines page with its URL and a read date",
-      "Set in Phase 4 and re-verified in the brand-consistency run: every record page carries a docket "
-      "with the eight questions answered, and answers that quote a source carry that source's URL and "
-      "the date a human read it. 55 records carry a verbatim quoting sentence. Where a publication "
-      "states nothing, the docket says so rather than guessing.")
+      f"{docket_full}/{N_RECS} publication records carry the {DOCKET_ROW_COUNT}-answer docket; "
+      f"{quoted_records} carry a verbatim quoting sentence with its URL and read date",
+      f"Set in Phase 4 and re-verified in the brand-consistency run: every record page carries a docket "
+      f"with the {DOCKET_ROW_COUNT} questions answered, and answers that quote a source carry that source's URL and "
+      f"the date a human read it. Where a publication states nothing, the docket says so rather than "
+      f"guessing; where BRYME has not recorded a field at all, the docket says that too and never "
+      f"renders its own gap as the publication's silence. Counted from the built pages in this run, not "
+      f"typed: {N_RECS - docket_full} record(s) do not carry a full docket.")
 
     # ---- 5 -----------------------------------------------------------------
     tested = [r for r in by_route if r.startswith("/writers/tested/") and r != "/writers/tested/"]
@@ -135,25 +200,19 @@ def main() -> int:
       "Three kinds of first-hand material exist and none of them can be copied from a publication's own "
       "site: the desk's own submission history at /writers/tested/ (submitted, accepted, rejected, with "
       "payment marked confirmed only once it lands), the hand-checked dates and quoted sentences across "
-      "147 records, and aggregated reporting such as State of Paid Writing. That is real primary material. "
+      f"{N_RECS} records, and aggregated reporting such as State of Paid Writing. That is real primary material. "
       "It is not a claim that every page is original: most explainer pages synthesise public information "
       "and say so where they cite. Whether the original material is proportionate to the whole is a "
       "judgement for a human reviewer.")
 
     # ---- 6 -----------------------------------------------------------------
-    src = {}
-    ops = ROOT / "content" / "opportunities.json"
-    if ops.exists():
-        try:
-            data = json.loads(ops.read_text(encoding="utf-8"))
-            recs = data if isinstance(data, list) else data.get("records", data.get("opportunities", []))
-            c = collections.Counter(len(r.get("sources", []) or []) for r in recs if isinstance(r, dict))
-            src = dict(sorted(c.items()))
-        except Exception:
-            src = {}
+    src = dict(sorted(collections.Counter(
+        len(r.get("sources", []) or []) for r in RECS if isinstance(r, dict)).items()))
+    harvested = N_RECS - len(NOT_READ)
     q(6, "Are publication details responsibly sourced?",
       "EVIDENCE",
-      f"sources per record: {src or 'not counted this run'}; guideline pages harvested 147/147",
+      f"sources per record: {src or 'not counted this run'}; guideline pages harvested "
+      f"{harvested}/{N_RECS}, the other {len(NOT_READ)} could not be opened and say so on the page",
       "Phase 4 fetched each publication's own submissions or guidelines page and stored the sentence it "
       "used. 13 records gained a genuine second official source and 7 candidate sources were rejected for "
       "not being official. Nothing in the dataset is sourced to a listicle, a social post or an inference.")
@@ -161,21 +220,15 @@ def main() -> int:
     # ---- 7 -----------------------------------------------------------------
     wc = by_route.get("/writers/what-changed/", "")
     wc_words = len(re.sub(r"<[^>]+>", " ", wc).split())
-    verified = 0
-    if ops.exists():
-        try:
-            d = json.loads(ops.read_text(encoding="utf-8"))
-            recs = d if isinstance(d, list) else d.get("records", d.get("opportunities", []))
-            verified = sum(1 for r in recs if isinstance(r, dict) and r.get("lastVerified"))
-        except Exception:
-            pass
+    verified = sum(1 for r in RECS if isinstance(r, dict) and r.get("lastVerified"))
     q(7, "Are changing details marked and maintained?",
       "MEASURED",
       f"/writers/what-changed/ is {wc_words} words and lists checks newest-first; "
-      f"{verified} records carry a lastVerified date; dataset updatedAt 2026-09-30",
+      f"{verified} records carry a lastVerified date; dataset updatedAt {UPDATED}",
       "Every requirement that can change carries the date it was last read, and the log page states that a "
       "date there means a human opened the publication that day. The maintenance risk is honest and worth "
-      "stating: dates age. 147 records can be re-read, but nothing forces it to happen \u2014 that is a "
+      "stating: dates age. "
+      f"{N_RECS} records can be re-read, but nothing forces it to happen \u2014 that is a "
       "process the owner has to keep, not something the build can enforce.")
 
     # ---- 8 -----------------------------------------------------------------
@@ -183,15 +236,24 @@ def main() -> int:
       "MEASURED",
       f"{brand.get('pages', len(P))} pages checked; internal-linking dimension "
       f"{'PASS' if not any('internal linking' in f for f in brand.get('findings', [])) else 'FAIL'}; "
-      f"site-wide link check covers 272,569 links across 4,037 pages",
+      f"the site-wide link check runs on every build and fails it on any unresolved link",
       "Inbound links were counted site-wide with links to redirect stubs credited to the page they "
       "canonically point at, so a page reached through a redirect is not mistaken for an orphan. Every "
-      "page in the section has inbound links; the lowest is well into double figures.")
+      "page in the section has inbound links; the lowest is well into double figures. The link totals "
+      "are deliberately not restated here: check-internal-links.py walks every built file while this "
+      "gate reads only index.html routes, so the two populations differ, and a typed copy of another "
+      "tool's number is exactly how this answer came to cite 272,569 links across 4,037 pages long "
+      "after the tree had grown past both.")
 
     # ---- 9 -----------------------------------------------------------------
+    # Indexable tool pages, counted the way the home page counts them: a child
+    # route under /writers/tools/ that does not carry noindex.
+    n_tools = sum(1 for r, h in by_route.items()
+                  if r.startswith("/writers/tools/") and r != "/writers/tools/"
+                  and "noindex" not in h[:4000].lower().split("</head>")[0])
     q(9, "Are there useful first-party writing tools?",
       "MEASURED",
-      "48 tool pages, all interactive; the Writing Studio drafts and saves locally",
+      f"{n_tools} tool pages, all interactive; the Writing Studio drafts and saves locally",
       "Each tool page either contains a working input or loads a tool bundle \u2014 none is a placeholder "
       "page describing a tool that is not there. The Studio stores drafts in the browser only, which is "
       "stated on the page and in the privacy notice rather than left for the reader to discover.")
@@ -250,13 +312,28 @@ def main() -> int:
       "ours to assert.")
 
     # ---- 15 ----------------------------------------------------------------
+    # Populations read from the validators and the allowlist they consume, not
+    # typed. The previous answer said browser validation ran "across 16 routes":
+    # 16 is the contrast sample, and browser validation sweeps every allowlisted
+    # route - so the answer understated the sweep by a factor of forty and then
+    # quoted a case total (1,551) that matched neither run.
+    allow = json.loads((ROOT / "content" / "index-allowlist.json").read_text(encoding="utf-8"))
+    n_allow = len(allow.get("routes", []))
+    vps = re.findall(r"\{name:\"[^\"]+\",width:(\d+),height:(\d+)\}",
+                     (ROOT / "scripts" / "validate-browser.js").read_text(encoding="utf-8"))
+    vp_label = ", ".join(f"{w}x{h}" for w, h in vps) or "three"
+    n_contrast = len(re.findall(r"[\"']/[^\"']{2,}[\"']",
+                                (ROOT / "scripts" / "validate-contrast.js").read_text(encoding="utf-8")
+                                .split("const ROUTES = [", 1)[-1].split("]", 1)[0]))
     q(15, "Is the mobile experience excellent?",
       "EVIDENCE",
-      "browser validation runs 390x844, 768x1024 and 1440x1000 across 16 routes with 0 failures; "
-      "contrast measured 866 pairs against WCAG 2.1 AA with 0 failures",
-      "The narrow viewport is exercised on every build and all 1,551 browser cases pass. What that does "
-      "not measure is how the site feels on a real phone on a slow Nigerian connection \u2014 render "
-      "weight and interaction latency were not tested here.")
+      f"browser validation runs {vp_label} across all {n_allow} allowlisted routes "
+      f"({n_allow * max(len(vps), 1)} rendered cases) and fails the build on any failure; contrast "
+      f"measures a {n_contrast}-route sample against WCAG 2.1 AA and fails the build on any failure",
+      "The narrow viewport is exercised on every build over the whole allowlist rather than a sample, "
+      "and both gates exit non-zero on a single failure, so a pass is enforced by the build rather than "
+      "asserted here. What neither measures is how the site feels on a real phone on a slow Nigerian "
+      "connection \u2014 render weight and interaction latency were not tested.")
 
     # ---- 16 ----------------------------------------------------------------
     val = ads.get("value", {})
@@ -305,7 +382,7 @@ def main() -> int:
     q(20, "Would a real writer return to BRYME because it is useful?",
       "JUDGEMENT",
       f"return-visit surfaces: weekly digest, /writers/what-changed/ ({wc_words} words, dated), "
-      f"submission tracker, writing calendar, 48 tools, Writing Studio with local drafts",
+      f"submission tracker, writing calendar, {n_tools} tools, Writing Studio with local drafts",
       "This is the one question no measurement answers. What can be said is what exists for a returning "
       "reader: dated change tracking, a saveable tracker, tools that work offline in the browser, and a "
       "digest. Whether that is enough is the owner's call, and the honest answer needs real traffic rather "
@@ -313,18 +390,31 @@ def main() -> int:
 
     # ---- output ------------------------------------------------------------
     counts = collections.Counter(a["kind"] for a in A)
-    lines = [f"# Phase 18 — Final quality gate ({DATE})", "",
+    # An EVIDENCE answer is only as current as the artifact it cites, so the
+    # date each one came from is printed rather than left implicit.
+    artifact_lines = [
+        f"- `{fam}`: **{ARTIFACT_DATES.get(fam, 'not read')}**"
+        + ("  \u2190 older than the dataset"
+           if ARTIFACT_DATES.get(fam, "9999") not in ("missing", "undated")
+           and ARTIFACT_DATES.get(fam, "") < UPDATED else "")
+        for fam in ("technical-seo", "quality-audit", "desk-audit",
+                    "adsense-readiness", "brand-consistency", "video-audit")]
+
+    lines = [f"# Phase 18 \u2014 Final quality gate ({DATE})", "",
              f"{len(A)} questions from the roadmap, answered from evidence rather than assertion.", "",
              f"- **MEASURED** (computed in this run): {counts['MEASURED']}",
              f"- **EVIDENCE** (from a phase report): {counts['EVIDENCE']}",
              f"- **JUDGEMENT** (needs a person): {counts['JUDGEMENT']}",
              f"- **NOT CHECKED**: {counts['NOT CHECKED']}", "",
+             "## Where the cited evidence came from", "",
+             f"Dataset `updatedAt` **{UPDATED}**, {N_RECS} records; report run {DATE}.", "",
+             *artifact_lines, "",
              "No score is given and nothing here claims the site is perfect or that Google will approve "
              "it. A question answered MEASURED or EVIDENCE is not the same as a question answered yes.", "",
              "---", ""]
     for a in A:
         lines += [f"### {a['n']}. {a['question']}", "",
-                  f"**{a['kind']}** — {a['answer']}", "", a["detail"], ""]
+                  f"**{a['kind']}** \u2014 {a['answer']}", "", a["detail"], ""]
 
     md = "\n".join(lines)
     (REP / f"phase18-quality-gate-{DATE}.md").write_text(md + "\n", encoding="utf-8")
