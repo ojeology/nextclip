@@ -22,7 +22,7 @@
   },
   "newsletter": {
     "mode": "mailto",
-    "mailto": "sodiqibrahim03@gmail.com",
+    "mailto": "hello@thebryme.com",
     "endpoint": "",
     "note": "mode 'mailto' = prefilled subscribe email to the mailbox (bootstrap). mode 'form' = endpoint must be the provider's form POST URL (Buttondown/MailerLite/ListMonk embeds work as-is with input name=email)."
   },

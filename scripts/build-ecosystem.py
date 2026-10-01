@@ -1193,7 +1193,7 @@ def legal_pages(pub, name, tagline, skip=frozenset(), desk=None):
 <section class="cover"><p class="kicker">Contact</p><h1 class="cover-title">Reach the desk.</h1>
 <p class="cover-dek">Corrections first: if something on {name} is wrong, that is the most valuable email in the world to us.</p></section>
 <section class="section"><div class="prose">
-<p>{name} shares the house editorial inbox: <a href="mailto:sodiqibrahim03@gmail.com">sodiqibrahim03@gmail.com</a>. Corrections, pitches and rights questions all reach the same editorial desk &mdash; see <a href="/writers/contact/">the house contact page</a> for what to include and what to expect back.</p>
+<p>{name} shares the house editorial inbox: <a href="mailto:hello@thebryme.com">hello@thebryme.com</a>. Corrections, pitches and rights questions all reach the same editorial desk &mdash; see <a href="/writers/contact/">the house contact page</a> for what to include and what to expect back.</p>
 <h2>What to include</h2>
 <ul><li>The page address and the exact claim that needs correcting.</li>
 <li>For pitches: a two-paragraph summary and one relevant sample. No attachments.</li></ul>
@@ -7968,7 +7968,7 @@ def main() -> None:
 <p>Our hosting provider may process technical request information such as an IP address, browser type, requested URL and time for security and service operation. If you email BRYME, your address and message are used to reply and, where relevant, correct the site; they are not automatically added to a mailing list.</p>
 <p>Links to employers, publications, applications, platforms and media services lead to third parties. Their own privacy policies apply after you leave BRYME. BRYME does not receive your job applications.</p>
 <h2>Your choices</h2>
-<p>You can refuse or change consent through the Google privacy message, block cookies in your browser, use browser privacy controls, or contact us with a privacy request. Refusing consent in the EEA, the UK and Switzerland also stops the Adsterra banner from loading, so there is nothing to opt out of afterwards. Contact: <a href="mailto:Sodiqibrahim03@gmail.com">Sodiqibrahim03@gmail.com</a>.</p>
+<p>You can refuse or change consent through the Google privacy message, block cookies in your browser, use browser privacy controls, or contact us with a privacy request. Refusing consent in the EEA, the UK and Switzerland also stops the Adsterra banner from loading, so there is nothing to opt out of afterwards. Contact: <a href="mailto:hello@thebryme.com">hello@thebryme.com</a>.</p>
 <h2>Changes</h2>
 <p>Material changes to this house policy will be dated on this page. Desk-specific pages may add a narrower explanation where a tool or external service needs one, but they do not reduce the protections in this policy.</p>
 </div></section></div></main>'''

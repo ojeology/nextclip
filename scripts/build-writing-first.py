@@ -3491,7 +3491,7 @@ def trust_block(rec: dict) -> str:
       <b>What do these statuses mean?</b>
       <span>Every badge on this page explained — open, closed, researched, tested, paid.</span>
     </a>
-    <a class="trust-action" href="mailto:sodiqibrahim03@gmail.com?subject={subject}&amp;body={mail_body}">
+    <a class="trust-action" href="mailto:hello@thebryme.com?subject={subject}&amp;body={mail_body}">
       <span class="trust-action-icon" aria-hidden="true">⚠️</span>
       <b>Report an outdated listing</b>
       <span>Guideline changed, link dead, or submissions closed? Tell the desk and it gets rechecked.</span>
