@@ -26,8 +26,6 @@ SEE = {
              "home/repair-or-replace-appliances", "home/moving-week-by-week"],
     "fitness": ["fitness/how-to-start-working-out", "fitness/exercise-library",
                 "fitness/how-progressive-overload-works", "fitness/strength-training-over-50"],
-    "money": ["money/mortgage-payment-calculator", "money/credit-card-payoff-calculator",
-              "money/marginal-tax-calculator", "money/expectancy-calculator"],
 }
 
 DESK_SCOPE = {
@@ -41,8 +39,6 @@ DESK_SCOPE = {
                 "ideal ones and claims checked against the studies that support them rather than the marketing that repeats them."),
     "home": ("the home desk covers maintenance, energy and the household jobs that recur on a calendar, with costs dated against current UK tariffs "
              "and methods checked against the standards the trades themselves publish."),
-    "money": ("the money desk covers personal finance arithmetic, banking products and the numbers beneath household decisions, with figures dated "
-              "and every calculator on the desk publishing its own working beside the result."),
     "writers": ("the writing desk covers craft, workflow and the tools working writers use, with guides written from newsroom and freelance practice "
                 "rather than content-marketing theory and every tool page stating its own honest limits."),
 }
@@ -143,19 +139,16 @@ TRUST_PAGES = [
     ("home/about", "about", "What The Home Desk Is And How It Works"),
     ("entertainment/about", "about", "What The Entertainment Desk Is And How It Works"),
     ("sports/about", "about", "What The Sports Desk Is And How It Works"),
-    ("money/about", "about", "What The Money Desk Is And How It Works"),
     ("tech/about", "about", "What The Technology Desk Is And How It Works"),
     ("fitness/about", "about", "What The Fitness Desk Is And How It Works"),
     ("writers/about", "about", "What The Writing Desk Is And How It Works"),
     ("entertainment/terms", "terms", "Terms Of Use"),
     ("tech/terms", "terms", "Terms Of Use"),
     ("sports/terms", "terms", "Terms Of Use"),
-    ("money/terms", "terms", "Terms Of Use"),
     ("home/terms", "terms", "Terms Of Use"),
     ("fitness/terms", "terms", "Terms Of Use"),
     ("writers/terms", "terms", "Terms Of Use"),
     ("fitness/contact", "contact", "How To Reach The Fitness Desk"),
-    ("money/contact", "contact", "How To Reach The Money Desk"),
     ("home/contact", "contact", "How To Reach The Home Desk"),
     ("entertainment/contact", "contact", "How To Reach The Entertainment Desk"),
     ("sports/contact", "contact", "How To Reach The Sports Desk"),
@@ -164,13 +157,11 @@ TRUST_PAGES = [
     ("fitness/corrections", "corrections", "Corrections And The Corrections Log"),
     ("tech/corrections", "corrections", "Corrections And The Corrections Log"),
     ("writers/corrections", "corrections", "Corrections And The Corrections Log"),
-    ("money/corrections", "corrections", "Corrections And The Corrections Log"),
     ("entertainment/corrections", "corrections", "Corrections And The Corrections Log"),
     ("home/corrections", "corrections", "Corrections And The Corrections Log"),
     ("sports/corrections", "corrections", "Corrections And The Corrections Log"),
     ("writers/copyright", "copyright", "Copyright And Permissions"),
     ("fitness/copyright", "copyright", "Copyright And Permissions"),
-    ("money/copyright", "copyright", "Copyright And Permissions"),
     ("home/copyright", "copyright", "Copyright And Permissions"),
     ("entertainment/copyright", "copyright", "Copyright And Permissions"),
     ("sports/copyright", "copyright", "Copyright And Permissions"),
@@ -178,7 +169,6 @@ TRUST_PAGES = [
     ("writers/disclaimer", "disclaimer", "Disclaimer: The Boundaries Of This Advice"),
     ("tech/disclaimer", "disclaimer", "Disclaimer: The Boundaries Of This Advice"),
     ("fitness/editorial-policy", "editorial-policy", "The Editorial Policy Of This Desk"),
-    ("money/editorial-policy", "editorial-policy", "The Editorial Policy Of This Desk"),
     ("entertainment/editorial-policy", "editorial-policy", "The Editorial Policy Of This Desk"),
     ("home/editorial-policy", "editorial-policy", "The Editorial Policy Of This Desk"),
     ("sports/editorial-policy", "editorial-policy", "The Editorial Policy Of This Desk"),

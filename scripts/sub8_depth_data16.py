@@ -973,7 +973,7 @@ TOPUP_SECTIONS16 = {
 
 "home/privacy":
     "<h2>What the desk does with it</h2>"
-    "<p>The data this desk collects is the data the pages need to work: no tracking pixels selling the reading list, no accounts required to read, and the analytics that exist are counted in aggregate. The house privacy page's job is to state that plainly — including the Money desk's separate terms at <a href=\"/money/privacy/\">the Money privacy page</a>. The <a href=\"" + GOVUK + "\" rel=\"noopener\">UK government data guidance</a> is the standard this desk follows. By the Bryme Home desk. Reviewed 28 September 2026.</p>"
+    "<p>The data this desk collects is the data the pages need to work: no tracking pixels selling the reading list, no accounts required to read, and the analytics that exist are counted in aggregate. The house privacy page's job is to state that plainly. The <a href=\"" + GOVUK + "\" rel=\"noopener\">UK government data guidance</a> is the standard this desk follows. By the Bryme Home desk. Reviewed 28 September 2026.</p>"
     "<h2>The commitments</h2>"
     "<ul>"
     "<li><b>Read without an account.</b> The pages are public by design.</li>"

@@ -46,7 +46,7 @@ GATED_LOADER = re.compile(r'/assets/adsterra-loader\.js')
 RAW_REMOTE = re.compile(r'<script[^>]+src="https://[^"]*invoke\.js"')
 TRUST_SLUGS = ["privacy", "terms", "contact", "about", "editorial-policy", "corrections",
                "copyright", "disclosure", "disclaimer"]
-DESKS = ["writers", "tech", "sports", "entertainment", "fitness", "home", "money"]
+DESKS = ["writers", "tech", "sports", "entertainment", "fitness", "home"]
 
 
 def live(url: str) -> tuple[int, str]:

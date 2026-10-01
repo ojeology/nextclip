@@ -66,7 +66,7 @@ ROOT = Path(__file__).resolve().parents[1]
 BASES = (ROOT, ROOT / "public")
 
 EXTRA_TIERS = ("ecosystem", "writers", "tech", "sports", "entertainment",
-               "fitness", "home", "money")
+               "fitness", "home")
 
 NOINDEX = re.compile(r'name=["\']robots["\'][^>]*content=["\'][^"\']*noindex', re.I)
 NOCONTENT = re.compile(r'<meta[^>]+http-equiv=["\']refresh["\']', re.I)

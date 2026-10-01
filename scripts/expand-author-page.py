@@ -44,21 +44,19 @@ BODY = """<h2>How a BRYME page actually gets made</h2>
 <p>It is worth being plain about the limits. BRYME is not a law firm, an accountancy practice or a medical provider, and nothing on this site is professional advice for your specific situation &mdash; the #{DISC} disclaimer says the same thing in full. It is not a recruiter and it does not hold vacancies: where a role is listed, it belongs to the employer or platform that posted it, and the page says so.</p>
 <p>BRYME does not sell placement in the opportunity database, and no publication can pay to appear in it or to be ranked above another. Where a page is research rather than firsthand experience, it is labelled as research. Nothing on the site claims an experience that did not happen.</p>
 <h2>Beyond the writing desk</h2>
-<p>BRYME has grown into a family of specialist publications under one house standard &mdash; see the #{ABOUT} house page for the full list, from #{TECH} BRYME Tech to #{MONEY} BRYME Money. The editing still happens in one place, and the same rules apply on every desk: dated pages, named sources, a public corrections log, and no advertising dressed up as editorial.</p>
+<p>BRYME has grown into a family of specialist publications under one house standard &mdash; see the #{ABOUT} house page for the full list, from #{TECH} BRYME Tech to #{FITNESS} BRYME Fitness. The editing still happens in one place, and the same rules apply on every desk: dated pages, named sources, a public corrections log, and no advertising dressed up as editorial.</p>
 <h2>Holding this site to account</h2>
 <p>If a page here is wrong, the fastest route is the #{CONTACT} contact page. Corrections are made on the page itself rather than quietly removed, and the change is logged so the record shows what was wrong and when it was fixed &mdash; see #{CORR} how corrections work. Rights questions, takedown requests and factual challenges reach the same place, and they are read by the person who wrote the page.</p>"""
 
 # {BASE} is the generator's own constant; routed pages need the /writers/ prefix.
 UNROUTED = {
     "#{OPP}": '<a href="/writing/">', "#{ABOUT}": '<a href="{BASE}/about/">',
-    "#{DISC}": '<a href="/disclaimer/">', "#{TECH}": '<a href="{BASE}/tech/">',
-    "#{MONEY}": '<a href="https://thebryme.com/money/">',
+    "#{DISC}": '<a href="/disclaimer/">', "#{TECH}": '<a href="{BASE}/tech/">', "#{FITNESS}": '<a href="{BASE}/fitness/">',
     "#{CONTACT}": '<a href="/contact/">', "#{CORR}": '<a href="/corrections/">',
 }
 ROUTED = {
     "#{OPP}": '<a href="/writers/writing/">', "#{ABOUT}": '<a href="/writers/about/">',
-    "#{DISC}": '<a href="/writers/disclaimer/">', "#{TECH}": '<a href="https://thebryme.com/tech/">',
-    "#{MONEY}": '<a href="https://thebryme.com/money/">',
+    "#{DISC}": '<a href="/writers/disclaimer/">', "#{TECH}": '<a href="https://thebryme.com/tech/">', "#{FITNESS}": '<a href="https://thebryme.com/fitness/">',
     "#{CONTACT}": '<a href="/writers/contact/">', "#{CORR}": '<a href="/writers/corrections/">',
 }
 

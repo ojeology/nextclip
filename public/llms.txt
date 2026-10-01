@@ -1,6 +1,6 @@
 # THE BRYME
 
-> A family of seven independent, specialist publications under one house discipline: research before publishing, dates on anything time-sensitive, sources for every claim, and no fabricated experience or statistics. Edited from Lagos, Nigeria, and written for a global readership. 2735 pages across the desks.
+> A family of seven independent, specialist publications under one house discipline: research before publishing, dates on anything time-sensitive, sources for every claim, and no fabricated experience or statistics. Edited from Lagos, Nigeria, and written for a global readership. 1894 pages across the desks.
 
 ## The house
 
@@ -71,7 +71,7 @@ Explainers and analysis with sources and verification dates. No betting content,
 
 ## BRYME Entertainment
 
-What to watch and why: recommendations with reasons, film-craft explainers, a hand-verified film catalogue with official trailers. Written about the work, never trafficking in it. 902 pages.
+What to watch and why: recommendations with reasons, film-craft explainers, a hand-verified film catalogue with official trailers. Written about the work, never trafficking in it. 183 pages.
 
 - [Desk home](https://thebryme.com/entertainment/)
 - [The soap opera effect, explained](https://thebryme.com/entertainment/soap-opera-effect-explained/)
@@ -127,29 +127,10 @@ Problem-first home maintenance and repair: diagnose it, fix what is safely fixab
 - [Why unflued gas heaters make damp worse, not better?](https://thebryme.com/home/gas-heaters-damp/)
 - [How many smoke and CO alarms your home actually needs (US and UK)?](https://thebryme.com/home/how-many-smoke-co-alarms/)
 
-## BRYME Money
-
-Evergreen saving foundations first, risk-first trading education second. Educational, not advice; every claim cites its jurisdiction's own source. 122 pages.
-
-- [Desk home](https://thebryme.com/money/)
-- [APR versus APY, explained](https://thebryme.com/money/apr-vs-apy-explained/)
-- [Salary sacrifice, explained](https://thebryme.com/money/salary-sacrifice-explained/)
-
-### Questions this desk answers
-
-- [How to test a trading strategy honestly?](https://thebryme.com/money/backtesting-101/)
-- [How every page earns its place?](https://thebryme.com/money/editorial-policy/)
-- [How to build an emergency fund: how much, where and how?](https://thebryme.com/money/emergency-fund-guide/)
-- [How car insurance works: what you are actually buying?](https://thebryme.com/money/how-car-insurance-works/)
-- [How credit card interest works: grace periods and daily maths?](https://thebryme.com/money/how-credit-card-interest-works/)
-- [How credit scores actually work?](https://thebryme.com/money/how-credit-scores-work/)
-- [How insurance claims work: the process, the paperwork, and the disputes?](https://thebryme.com/money/how-insurance-claims-work-explained/)
-- [How insurance premiums are calculated: what you are actually paying for?](https://thebryme.com/money/how-insurance-premiums-are-calculated-explained/)
-
 ## Notes for assistants
 
 - Every article shows its review or verification date; treat older dates as historical, especially prices, rates and submission windows.
-- Money content is educational, not financial advice; fitness content is general information, not medical advice; sport content never includes betting.
+- Fitness content is general information, not medical advice; sport content never includes betting.
 - Corrections are published in the open on the page that made the claim.
 
 _Generated 2026-10-01 by the BRYME build; counts read from the live sitemaps._

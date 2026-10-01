@@ -28,8 +28,8 @@ from pathlib import Path
 import bryme_config as cfg  # batch 15: canonical origin single source
 
 ROOT = Path(__file__).resolve().parents[1]
-PROPS = ["sports", "entertainment", "tech", "fitness", "home", "money"]
-SITEMAP_PROPS = ["sports", "entertainment", "tech", "fitness", "home", "money"]  # live, indexable properties only
+PROPS = ["sports", "entertainment", "tech", "fitness", "home"]  # money retired 2026-10-01 (owner decision): desk unpublished, /money/* answers 404 by absence
+SITEMAP_PROPS = ["sports", "entertainment", "tech", "fitness", "home"]  # live, indexable properties only (money retired 2026-10-01: desk unpublished, /money/* answers 404 by absence)
 KEEP_AT_ROOT_DIRS = {".git", ".github", "assets", "scripts", "content", "docs", "server", "reports",
                      "node_modules", "public", "ecosystem", "pinterest", "event-calendar", ".git"} | set(PROPS) | {"writers"}
 KEEP_AT_ROOT_FILES = {"robots.txt", "_redirects", "favicon.ico", "package.json",
@@ -211,11 +211,8 @@ def main() -> int:
               if _epoch.isdigit() else _dt.date.today())
     _sm = (ROOT / "ecosystem" / "hub" / "sitemap.xml").read_text(encoding="utf-8")
     _sm = _re.sub(r"<lastmod>[^<]*</lastmod>", "<lastmod>" + _today.isoformat() + "</lastmod>", _sm)
-    # The catalogue is separate from the editorial sitemap but remains indexable.
-    _catalogue_entry = (f"<sitemap><loc>{ORIGIN}/entertainment/sitemap-catalogue.xml</loc>"
-                        f"<lastmod>{_today.isoformat()}</lastmod></sitemap>")
-    if "sitemap-catalogue.xml" not in _sm:
-        _sm = _sm.replace("</sitemapindex>", _catalogue_entry + "</sitemapindex>")
+    # 2026-10-01: the entertainment catalogue went noindex,follow until AdSense
+    # approval (owner decision); it is no longer registered in the root index.
     (ROOT / "sitemap.xml").write_text(_sm, encoding="utf-8")
 
 
@@ -241,8 +238,7 @@ def main() -> int:
         "Disallow: /docs/\nDisallow: /server/\nDisallow: /ecosystem/\n"
         "Disallow: /entertainment/_recovered/\n\n"
         f"Sitemap: {ORIGIN}/sitemap.xml\nSitemap: {ORIGIN}/writers/sitemap.xml\n" +
-        "".join(f"Sitemap: {ORIGIN}/{x}/sitemap.xml\n" for x in SITEMAP_PROPS) +
-        f"Sitemap: {ORIGIN}/entertainment/sitemap-catalogue.xml\n", encoding="utf-8")
+        "".join(f"Sitemap: {ORIGIN}/{x}/sitemap.xml\n" for x in SITEMAP_PROPS), encoding="utf-8")
 
     # 5. allowlist v25: writers prefixed + hub + property routes
     al = json.loads((ROOT / "content" / "index-allowlist.json").read_text())
@@ -391,7 +387,7 @@ small{display:block;margin-top:30px;color:#8a94a6}
     _al = json.loads((ROOT / "content" / "index-allowlist.routed.json").read_text(encoding="utf-8"))
     _rts = _al["routes"] if isinstance(_al, dict) else _al
     _children = ["writers/sitemap.xml", "sports/sitemap.xml", "entertainment/sitemap.xml",
-                 "tech/sitemap.xml", "fitness/sitemap.xml", "home/sitemap.xml", "money/sitemap.xml"]
+                 "tech/sitemap.xml", "fitness/sitemap.xml", "home/sitemap.xml"]
     _si = ['<?xml version="1.0" encoding="UTF-8"?>\n'
            '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n']
     for _x in _children:

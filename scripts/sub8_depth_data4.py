@@ -457,18 +457,6 @@ DEPTH_SECTIONS4 = {
     "</ul>"
     "<p>See also <a href=\"/home/about/\">about this desk</a>, <a href=\"/home/terms/\">terms</a> and <a href=\"/home/disclaimer/\">disclaimer</a>.</p>",
 
-"money/privacy":
-    "<h2>What this policy covers</h2>"
-    "<p>This page states what the money desk collects, why, and how to have it removed. It applies to every page under the money desk. By the Bryme Money desk. Last reviewed 27 September 2026.</p>"
-    "<h2>The short version</h2>"
-    "<ul>"
-    "<li><b>No financial data is collected.</b> Calculators on this desk run in your browser and store nothing.</li>"
-    "<li><b>Analytics are aggregate.</b> Page views only, with no individual profiling.</li>"
-    "<li><b>No sale of data.</b> There is no data broker relationship and no audience sale.</li>"
-    "<li><b>Deletion is available.</b> Contact details are on the <a href=\"/money/contact/\">contact page</a>.</li>"
-    "</ul>"
-    "<p>See also <a href=\"/money/about/\">about this desk</a>, <a href=\"/money/terms/\">terms</a> and <a href=\"/money/editorial-policy/\">editorial policy</a>.</p>",
-
 "sports/privacy":
     "<h2>What this policy covers</h2>"
     "<p>This page states what the sport desk collects, why, and how to have it removed. It applies to every page under the sport desk. By the Bryme Sport desk. Last reviewed 27 September 2026.</p>"

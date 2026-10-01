@@ -129,12 +129,6 @@ DESKS = [
         "/home/seasonal-home-maintenance-checklist/",
         "Rent or buy tool", "/home/rent-or-buy-tool/",
      ]),
-    ("Money", "/money/", "Evergreen saving foundations first, risk-first trading "
-     "education second. Educational, not advice; every claim cites its "
-     "jurisdiction's own source.", [
-        "APR versus APY, explained", "/money/apr-vs-apy-explained/",
-        "Salary sacrifice, explained", "/money/salary-sacrifice-explained/",
-     ]),
 ]
 
 
@@ -174,7 +168,7 @@ def questions_for(hub):
 def main():
     counts = {name: sitemap_count_all(slug.strip("/")) for name, slug, _d, _f in DESKS}
     total = sum(sitemap_count_all(d) for d in
-                ("writers", "tech", "sports", "entertainment", "fitness", "home", "money"))
+                ("writers", "tech", "sports", "entertainment", "fitness", "home"))
     lines = []
     lines.append("# THE BRYME")
     lines.append("")
@@ -213,9 +207,8 @@ def main():
     lines.append("")
     lines.append("- Every article shows its review or verification date; treat older "
                  "dates as historical, especially prices, rates and submission windows.")
-    lines.append("- Money content is educational, not financial advice; fitness "
-                 "content is general information, not medical advice; sport content "
-                 "never includes betting.")
+    lines.append("- Fitness content is general information, not medical advice; "
+                 "sport content never includes betting.")
     lines.append("- Corrections are published in the open on the page that made the "
                  "claim.")
     lines.append("")

@@ -237,12 +237,5 @@ EXTERNAL_SOURCES = {
 "sports/serie-a-transfers":
     "<p><b>Compiled from announcements, dated.</b> The desk lists confirmed deals only, with the competition's history and format documented in the <a href=\"" + _w("Serie+A") + "\" rel=\"noopener\">encyclopaedic record</a>. Transfer-window rules change season to season, so each entry is stamped with the date it was verified against the club's own statement.</p>",
 
-# ============================= MONEY (2) =====================================
-
-"money/technical-indicators-explained":
-    "<p><b>What the evidence actually supports.</b> Indicator definitions are mechanical, but the claim that they predict anything is not, and the desk's position is the regulator's: the <a href=\"" + INVESTOR + "\" rel=\"noopener\">US Securities and Exchange Commission's investor education site</a> sets out plainly what technical analysis can and cannot do. Everything on this page explains the mechanics without promising the outcome.</p>",
-
-"money/trade-types-explained":
-    "<p><b>Definitions from the investor-protection side.</b> Order types, directions and holding periods are described here the way the <a href=\"" + INVESTOR + "\" rel=\"noopener\">SEC's investor education site</a> describes them — including the costs and risks attached to each, which is the part most trading content leaves out. The desk publishes no signals, no forecasts and no performance claims, and this page is where that boundary is drawn.</p>",
-
+# MONEY (2 entries) removed 2026-10-01: desk retired (owner decision, AdSense review).
 }

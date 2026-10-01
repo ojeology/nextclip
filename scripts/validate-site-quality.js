@@ -198,18 +198,18 @@ const staleWindows=json("content/opportunities.json").opportunities.filter(o=>{
 }).map(o=>o.slug);
 if(staleWindows.length)warn(`${staleWindows.length} record(s) have a passed deadline but a live status — re-verify: ${staleWindows.join(", ")}`);
 if(pubRecords!==expectedPubs)fail(`expected ${expectedPubs} indexed publication records under /writing/, found ${pubRecords}`);
-// All seven live property sitemaps, including Money, must partition the routed
-// index allowlist. Money was already in the root index and allowlist, but this
-// gate still counted six; that masked 15 missing Money sitemap assertions.
+// All six live property sitemaps must partition the routed index allowlist.
+// 2026-10-01: money/sitemap.xml dropped (desk retired, owner decision) and
+// entertainment/sitemap-catalogue.xml delisted (cards noindex until AdSense
+// approval); both stay out of the partition until they are indexable again.
 const propertySitemaps=[
   "writers/sitemap.xml", "sports/sitemap.xml", "entertainment/sitemap.xml",
-  "entertainment/sitemap-catalogue.xml", "tech/sitemap.xml",
-  "fitness/sitemap.xml", "home/sitemap.xml", "money/sitemap.xml",
+  "tech/sitemap.xml", "fitness/sitemap.xml", "home/sitemap.xml",
 ];
 const sitemapRoutes=propertySitemaps.flatMap(sf=>{if(!fs.existsSync(path.join(ROOT,sf)))return[];return[...read(sf).matchAll(/<loc>(.*?)<\/loc>/g)].map(m=>norm(m[1]))});
 const sitemapUnique=new Set(sitemapRoutes);
 // Writers is writers-only; the two house URLs (/, /about/) live in Home's
-// sitemap. The seven children must be pairwise disjoint and cover the allowlist.
+// sitemap. The six children must be pairwise disjoint and cover the allowlist.
 const idxText=read("sitemap.xml");
 if(!idxText.includes("<sitemapindex"))fail("root sitemap.xml must be a sitemapindex");
 const idxLocs=[...idxText.matchAll(/<loc>(.*?)<\/loc>/g)].map(m=>{try{return new URL(m[1],site).pathname}catch{return ""}});  // raw paths: norm() would append route-style trailing slashes

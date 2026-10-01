@@ -50,8 +50,9 @@ LD = re.compile(r'(?is)<script[^>]+type=["\']application/ld\+json["\'][^>]*>(.*?
 BREADCRUMB = re.compile(r'"@type"\s*:\s*"BreadcrumbList"')
 
 SITEMAPS = ["writers/sitemap.xml", "sports/sitemap.xml", "entertainment/sitemap.xml",
-            "tech/sitemap.xml", "fitness/sitemap.xml", "home/sitemap.xml",
-            "money/sitemap.xml", "entertainment/sitemap-catalogue.xml"]
+            "tech/sitemap.xml", "fitness/sitemap.xml", "home/sitemap.xml"]
+# 2026-10-01: money/sitemap.xml (desk retired) and entertainment/
+# sitemap-catalogue.xml (cards noindex until AdSense approval) delisted.
 
 
 def live(url: str, timeout: int = 20) -> tuple[int, str, str]:
