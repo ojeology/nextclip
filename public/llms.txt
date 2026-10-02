@@ -133,4 +133,4 @@ Problem-first home maintenance and repair: diagnose it, fix what is safely fixab
 - Fitness content is general information, not medical advice; sport content never includes betting.
 - Corrections are published in the open on the page that made the claim.
 
-_Generated 2026-10-01 by the BRYME build; counts read from the live sitemaps._
+_Generated 2026-10-02 by the BRYME build; counts read from the live sitemaps._
