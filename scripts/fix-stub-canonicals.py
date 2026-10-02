@@ -44,7 +44,14 @@ def is_move_stub(html: str) -> bool:
     if REFRESH_RE.search(html):
         return True
     m = H1_RE.search(html)
-    return bool(m and re.search(r"\bmoved\b", re.sub(r"<[^>]+>", "", m.group(1)), re.I))
+    if not m:
+        return False
+    # Match the actual move-stub headings used by the migration templates.
+    # Do not classify an ordinary noindex explainer as a redirect merely
+    # because its question/title contains the word "moved" (for example, a
+    # sports-rule edge case about a boundary rope moved by wind).
+    heading = re.sub(r"<[^>]+>", "", m.group(1)).strip()
+    return bool(re.fullmatch(r"(?:this (?:trailer )?page|these pages) moved\.?", heading, re.I))
 
 
 def link_targets(html: str) -> list[str]:

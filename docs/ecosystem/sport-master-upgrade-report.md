@@ -96,3 +96,18 @@ The user pointed to the old Sport implementation on a detached branch (origin/ag
 5. Player pages (§11) — unchanged.
 6. FPL official API integration (verified prices/scoreboard) — new.
 7. Serie A promoted-club discrepancy — unchanged, still gated.
+
+
+## ADDENDUM — 2026-10-02: selected Sports v3 library staged in Nextclip
+
+This addendum records the new staging import without rewriting the dated 10–11 September report above.
+
+- Imported the selected BRYME Media work from `ojeology/bryme-media`: 1,213 evergreen routes under `/sports/other/explainers/`, 400 scenario records (a subset of those same 1,213 slugs, not extra routes), the collection/category hubs, and the latest v3 shell assets.
+- Imported the source audit’s 59 ready core explainers under `/sports/explainers/` to satisfy the selected library’s concept links. Together with the hubs, the import adds 1,287 HTML pages. The full 3,337-file Sports archive was not migrated.
+- The source readiness audit remains **NOT READY**: 59/1,213 complete, 1,154 remaining. Its ready batch has zero thin pages and passes the concept-link, hub-link and link-integrity checks. The manifest’s sport targets sum to 1,211 rather than 1,213; cycling and swimming each contribute one record in the dataset and must be reconciled in the roadmap.
+- The owner overrode the gate for this staging import only. All imported pages remain `noindex,follow`, canonical to the configured live origin, and excluded from both sitemaps and the routed index allowlist. This is not indexing approval; do not remove noindex in bulk.
+- The Sports generator now preserves the staged `/other/` tree and the imported `/explainers/<slug>/` child pages during future rebuilds, without adding them to its generated sitemap. Build-time validation guards the counts and indexing boundary.
+
+The active upgrade queue, content-review acceptance gates and provenance are tracked in `docs/UPGRADE-ROADMAP-2026-09-23.md` and `content/sports-media/migration-manifest.json`.
+
+**Operations note:** a full manual `scripts/build-ecosystem.py` run currently exits in `hub_pages()` before the Sports writer because a retired Money family-wall entry still asserts for `/money/trading-risk-checklist/`. The staging-preservation behavior was verified directly against `write_service("sports", ...)`; that separate Money preflight blocker remains on the roadmap.

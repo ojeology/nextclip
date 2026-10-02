@@ -26,6 +26,7 @@ import json
 import os
 import sys
 import re
+import tempfile
 from pathlib import Path
 
 import bryme_config as sitecfg  # batch 15: origin fallback follows site.config.json
@@ -1061,6 +1062,30 @@ PRESERVE = {"home": frozenset({"/disclaimer/"})}
 def write_service(pub, pages):
     base = OUT / pub
     base.mkdir(parents=True, exist_ok=True)
+
+    # Oct 2026: the imported Sports v3 library is deliberately outside the
+    # generated sitemap/allowlist until content QA and owner approval. The
+    # normal sports-data job clears this directory before rebuilding, so keep
+    # the hand-authored noindex overlay across that clear: all of /other/ plus
+    # child articles beneath /explainers/ (but never replace the generated
+    # /explainers/ index). The sitemap below is still built only from `pages`
+    # and the explicit PRESERVE set, so this staging overlay is not indexed.
+    staged_snapshot = None
+    staged_paths = []
+    if pub == "sports":
+        other_tree = base / "other"
+        if other_tree.is_dir():
+            staged_paths.append(Path("other"))
+        explainers_tree = base / "explainers"
+        if explainers_tree.is_dir():
+            staged_paths.extend(Path("explainers") / child.name
+                                for child in sorted(explainers_tree.iterdir())
+                                if child.is_dir())
+        if staged_paths:
+            staged_snapshot = Path(tempfile.mkdtemp(prefix="bryme-sports-staged-"))
+            for rel in staged_paths:
+                shutil.copytree(base / rel, staged_snapshot / rel)
+
     keep = PRESERVE.get(pub, frozenset())
     stashed = {}
     for route in sorted(keep):
@@ -1113,6 +1138,16 @@ def write_service(pub, pages):
             _lmv = _m.group(1) if _m else TODAY
             lm_by_url[u] = min(_lmv, _TODAY_LIVE)
             urls.append(u)
+
+    # Restore the Sports v3 staging overlay after generated routes, but do not
+    # append its URLs to `urls`: noindex work must stay absent from the sitemap.
+    if staged_snapshot is not None:
+        for rel in staged_paths:
+            backup = staged_snapshot / rel
+            if backup.is_dir():
+                shutil.copytree(backup, base / rel, dirs_exist_ok=True)
+        shutil.rmtree(staged_snapshot, ignore_errors=True)
+
     def _sm_xml(u_list):
         return ('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
                 + "\n".join(f"<url><loc>{u}</loc><lastmod>{lm_by_url[u]}</lastmod></url>" for u in u_list)

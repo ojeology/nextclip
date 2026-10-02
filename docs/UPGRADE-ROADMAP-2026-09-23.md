@@ -1,3 +1,23 @@
+## 2026-10-02 — Sports v3 library staged in Nextclip (P0 — ACTIVE)
+
+**Owner-approved selection:** the recent BRYME Media Sports work in `ojeology/bryme-media`, not the full Sports archive. Source refs: evergreen/scenario merge `01010c164d7e` and latest v3-shell update `0d61d37381a5`.
+
+- Staged **1,213 evergreen explainer routes** under `/sports/other/explainers/` plus 15 collection/category index pages; copied the two structured source sets to `content/sports-media/`.
+- The **400 scenario records are a 400-slug subset of the 1,213 evergreen set**; they are retained as a separate QA input, not 400 additional URLs.
+- Also brought across the **59 currently-ready core explainers** under `/sports/explainers/` so links from the selected library have real destinations. Imported total: **1,287 new HTML pages** (including the hubs/indexes).
+- Added only the two v3 shell assets and localized the imported shell’s nav, canonical URLs and legacy cross-links to Nextclip routes. No other archive trees were imported; existing Nextclip routes and B01 were left intact.
+
+**Gate decision and visibility:** the 2 Oct source audit remains **NOT READY**: 59/1,213 complete, 1,154 remaining; the ready batch has no thin pages and its concept-link, hub-link and link-integrity checks pass. The owner explicitly overrode the migration gate for this **staging import only**. Every imported route is `noindex,follow`, canonical to the configured live origin, absent from all sitemaps and absent from the routed index allowlist. This is **not** approval to index, promote or remove noindex in bulk. `scripts/build-ecosystem.py` now preserves the staged overlay on Sports rebuilds without adding it to the generated sitemap.
+
+**Remaining P0 work — start immediately:**
+1. Complete the **1,154 remaining explainer upgrades** and validate claims against primary sport-rule/organizer sources; rewrite generic or unsupported passages before any page is released.
+2. Review all 400 scenario records for template leakage, duplicated answers and sport-specific accuracy; resolve them against their overlapping evergreen routes rather than publishing duplicate URLs.
+3. Reconcile the source manifest’s total (**1,213**) with its by-sport targets (**1,211** by arithmetic); the two unallocated records are the cycling and swimming entries in the content set.
+4. Keep each batch noindex and off-sitemap through content QA, canonical/link checks and owner review. Only after the full readiness gate and a separate owner indexing decision should any route be admitted to the routed allowlist/sitemap; never flip the set in bulk.
+5. Unblock the scheduled Sports rebuild path: a manual run of `scripts/build-ecosystem.py` currently stops in `hub_pages()` before reaching Sports because the retired Money family wall still asserts for missing `/money/trading-risk-checklist/`. This is outside the import and remains unfixed; the new Sports preservation logic was exercised directly in isolation.
+
+**Verification record:** `content/sports-media/migration-manifest.json` is the provenance/count ledger; `scripts/validate-sports-media-import.py` guards counts, canonicals, noindex, v3 assets, sitemap exclusion and allowlist exclusion during builds. See also `docs/ecosystem/sport-master-upgrade-report.md` (2 Oct addendum).
+
 ## 2026-09-29 — Tier-B wave 1 + B6 operating routine shipped
 
 - **Tier B wave 1: 26 additions** (six each in Sport, Entertainment, Fitness and Money; two in Tech after inventory check). Each article is in the desk's source data, has contextual internal links and verified references where cited; money pages have jurisdiction labels/taxonomy where relevant. Pages are present in the routed allowlist and their desk sitemaps.
