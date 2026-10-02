@@ -23,20 +23,21 @@ services:
     #   - build-ecosystem.py re-run rewrites 186 files under ecosystem/ that are
     #     not then propagated to public/ (routing has already aborted), so it
     #     added churn and no output.
-    # The trailing `git clean` is the duplicate-content fix. Render caches the
-    # build workspace between deploys and `npm run build` never deletes, so
-    # untracked output from an older vintage (public/writing/, public/guides/,
-    # public/learn/, ... from 2026-09-14) kept being published as index,follow
-    # duplicates of the identical /writers/ pages - and because a published
-    # file wins over a redirect rule, the 301s below could never fire for them.
-    # Verified: `rm -rf public && npm run build` regenerates all 2,728 tracked
-    # files with 0 deletions and 0 untracked additions, so removing untracked
-    # files from the publish directory after a successful build is safe. It runs
-    # AFTER the build: `npm run build` used to swallow generator failures with
-    # `|| echo`, so deleting public/ first could deploy an empty site. The build
-    # now runs under `set -e` and fails hard (changed 21 Sep 2026), so the &&
-    # chain simply stops before this clean if any generator dies. The ordering is
-    # now safe by construction rather than by workaround, and is kept as-is.
+    # The git clean is the duplicate-content fix. Render caches the build
+    # workspace between deploys and `npm run build` never deletes, so untracked
+    # output from an older vintage (public/writing/, public/guides/,
+    # public/learn/, ... from 2026-09-14) could be published as index,follow
+    # duplicates of identical /writers/ pages and shadow redirects.
+    # The clean MUST run BEFORE `npm run build`: imported Sports pages/assets are
+    # tracked under ecosystem/ and assets/, but their generated public/ copies
+    # are untracked. A post-build clean deletes those staged Sports routes even
+    # though the import validator has passed (causing live 404s). Pre-cleaning
+    # removes stale untracked output, then the build recreates the current full
+    # artifact from tracked sources.
+    # This ordering is safe because `npm run build` runs under `set -e` and fails
+    # hard (changed 21 Sep 2026). If a generator or the Sports validator fails,
+    # the && chain aborts and Render does not publish a partial/empty artifact.
+    # Before the hard-fail change, moving the clean before the build was unsafe.
     # batch 11f: the stale-_recovered sweep must run BEFORE npm run build, and must not
     # touch public/: purge-stale-publish (final build step) writes noindex tombstones into
     # public/{entertainment,sports}/_recovered/ to overwrite the stale 2026-09-14 copies
@@ -48,7 +49,7 @@ services:
     # old last-modified) even though the deployed commit had deleted them -
     # the same class of drift the _recovered sweep and the git-clean guard
     # below already defend against. rm -rf is a no-op on a clean checkout.
-    buildCommand: npm install --omit=dev && (find . -maxdepth 4 -type d -name _recovered -not -path './content/*' -not -path './node_modules/*' -not -path './public/*' -exec rm -rf {} + || echo 'stale _recovered sweep unavailable') && (rm -rf money ecosystem/money public/money || echo 'retired money-desk sweep unavailable') && npm run build && (git -c safe.directory='*' clean -xdf public/ || echo 'clean - git clean unavailable, untracked publish files may persist')
+    buildCommand: npm install --omit=dev && (find . -maxdepth 4 -type d -name _recovered -not -path './content/*' -not -path './node_modules/*' -not -path './public/*' -exec rm -rf {} + || echo 'stale _recovered sweep unavailable') && (rm -rf money ecosystem/money public/money || echo 'retired money-desk sweep unavailable') && git -c safe.directory='*' clean -xdf public/ && npm run build
     staticPublishPath: public
     headers:
       - path: /*
