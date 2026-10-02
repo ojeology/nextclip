@@ -1118,12 +1118,11 @@ def write_service(pub, pages):
                 + "\n".join(f"<url><loc>{u}</loc><lastmod>{lm_by_url[u]}</lastmod></url>" for u in u_list)
                 + "\n</urlset>\n")
     if pub == "entertainment":
-        # A8-Ent (owner decision 2026-09-26, delegated): the catalogue (movie
-        # cards + watch pages) moves to its own sitemap so the editorial
-        # sitemap carries priority crawl signal. Nothing is removed from
-        # Search - both files are listed in robots.txt.
-        # E1 (2026-09-27): the retired watch pages ship as noindex stubs and
-        # are in NO sitemap - the catalogue sitemap carries the movie cards.
+        # A8-Ent: the catalogue initially gets a separate sitemap so editorial
+        # pages can carry the primary crawl signal. The post-build
+        # build-entertainment-recommendations.py step empties that legacy file
+        # and admits only released, enriched title-page batches to the main
+        # Entertainment sitemap; unfinished cards remain noindex and undiscovered.
         # The /entertainment/watch/ storefront index (no slug segment) stays
         # indexable and keeps its place in the editorial sitemap.
         _cat_set = {u for u in urls if "/movie/" in u}

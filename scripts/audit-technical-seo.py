@@ -51,8 +51,9 @@ BREADCRUMB = re.compile(r'"@type"\s*:\s*"BreadcrumbList"')
 
 SITEMAPS = ["writers/sitemap.xml", "sports/sitemap.xml", "entertainment/sitemap.xml",
             "tech/sitemap.xml", "fitness/sitemap.xml", "home/sitemap.xml"]
-# 2026-10-01: money/sitemap.xml (desk retired) and entertainment/
-# sitemap-catalogue.xml (cards noindex until AdSense approval) delisted.
+# 2026-10-02: money/sitemap.xml (desk retired) and entertainment/
+# sitemap-catalogue.xml (unfinished title cards) are delisted. Released,
+# recommendation-enriched title routes join entertainment/sitemap.xml.
 
 
 def live(url: str, timeout: int = 20) -> tuple[int, str, str]:

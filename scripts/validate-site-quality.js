@@ -199,9 +199,10 @@ const staleWindows=json("content/opportunities.json").opportunities.filter(o=>{
 if(staleWindows.length)warn(`${staleWindows.length} record(s) have a passed deadline but a live status — re-verify: ${staleWindows.join(", ")}`);
 if(pubRecords!==expectedPubs)fail(`expected ${expectedPubs} indexed publication records under /writing/, found ${pubRecords}`);
 // All six live property sitemaps must partition the routed index allowlist.
-// 2026-10-01: money/sitemap.xml dropped (desk retired, owner decision) and
-// entertainment/sitemap-catalogue.xml delisted (cards noindex until AdSense
-// approval); both stay out of the partition until they are indexable again.
+// 2026-10-01: money/sitemap.xml dropped (desk retired, owner decision).
+// Entertainment title pages enter entertainment/sitemap.xml only after their
+// curated Watch This / Then Try This batch is released; unfinished catalogue
+// pages remain noindex. The legacy sitemap-catalogue.xml stays empty/delisted.
 const propertySitemaps=[
   "writers/sitemap.xml", "sports/sitemap.xml", "entertainment/sitemap.xml",
   "tech/sitemap.xml", "fitness/sitemap.xml", "home/sitemap.xml",

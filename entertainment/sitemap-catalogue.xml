@@ -1,8 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- 2026-10-01: catalogue delisted from indexing (owner decision). The 719
-     entertainment cards stay published at 200 with noindex,follow and their
-     internal links intact until AdSense approval; the urlset is deliberately
-     empty so no card is submitted for indexing. build-ecosystem.py
-     regenerates the full list when the cards are re-indexed. -->
+<!-- Unreviewed title pages stay out of search. Released recommendation batches are listed in entertainment/sitemap.xml. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </urlset>

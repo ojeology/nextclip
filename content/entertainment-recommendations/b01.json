@@ -1,0 +1,1233 @@
+{
+  "schema_version": 1,
+  "batch": "B01",
+  "status": "released",
+  "released_on": "2026-10-02",
+  "source_repository": "https://github.com/ojeology/nextclip",
+  "source_commit": "b51c4eab1d576624f54a0f1d52fa2362a89cfa25",
+  "source_count": 20,
+  "recommendation_count": 100,
+  "editorial_pattern": "Five distinct watch-next routes per title, with a specific story bridge, an explicit difference, and a spoiler-free Editor's Heads-Up.",
+  "sources": [
+    {
+      "source_title": "1917",
+      "source_route": "/entertainment/movie/1917/",
+      "recommendations": [
+        {
+          "slot": 1,
+          "title": "All Quiet on the Western Front",
+          "target_route": "/entertainment/movie/all-quiet-on-the-western-front/",
+          "format": "Film",
+          "year": "2022",
+          "relationship": "Closest trench companion",
+          "why_it_fits": "It returns to the First World War trenches and stays with young soldiers caught inside a machine that keeps moving after certainty is gone.",
+          "what_differs": "More ensemble and openly anti-war; less of a single-delivery mission.",
+          "editors_heads_up": "Keep room for a quiet debrief; this one does not send you neatly back to normal. Let its final images sit before queuing another war story, so the contrast feels deliberate."
+        },
+        {
+          "slot": 2,
+          "title": "Dunkirk",
+          "target_route": "/entertainment/movie/dunkirk/",
+          "format": "Film",
+          "year": "2017",
+          "relationship": "Deadline on the clock",
+          "why_it_fits": "The ticking clock makes survival feel measured in minutes, not speeches, and danger arrives through sound as much as spectacle.",
+          "what_differs": "Three interwoven timelines and a rescue operation replace one continuous road.",
+          "editors_heads_up": "Turn the sound up and put the popcorn down; that ticking clock will do the snacking for you. Headphones or a good speaker make its pressure harder to ignore."
+        },
+        {
+          "slot": 3,
+          "title": "Hacksaw Ridge",
+          "target_route": "/entertainment/movie/hacksaw-ridge/",
+          "format": "Film",
+          "year": "2016",
+          "relationship": "One impossible task",
+          "why_it_fits": "Both follow a soldier crossing a battlefield to save lives, narrowing a huge war to a string of human choices.",
+          "what_differs": "More biographical and faith-centred; its action is staged more conventionally.",
+          "editors_heads_up": "Watch with someone ready for a true-story debrief; its courage conversation starts before the credits. Treat it as a deliberate watch, not background noise, because battlefield choices deserve your attention."
+        },
+        {
+          "slot": 4,
+          "title": "Band of Brothers",
+          "target_route": "/entertainment/movie/band-of-brothers/",
+          "format": "Series",
+          "year": "2001",
+          "relationship": "Long-form battlefield bridge",
+          "why_it_fits": "This series widens the lens from two messengers to one company; fear, exhaustion and loyalty accumulate across episodes.",
+          "what_differs": "Long-form ensemble storytelling, not a two-hour sprint.",
+          "editors_heads_up": "Do not say “one episode” unless the evening is actually clear. Follow the company for a few chapters; small acts of trust gain weight when you travel with them."
+        },
+        {
+          "slot": 5,
+          "title": "Apocalypse Now",
+          "target_route": "/entertainment/movie/apocalypse-now/",
+          "format": "Film",
+          "year": "1979",
+          "relationship": "Darker sideways journey",
+          "why_it_fits": "The mission keeps moving while the moral map disappears, turning a war journey into a psychological descent.",
+          "what_differs": "More hallucinatory and set in Vietnam, with a slower, feverish drift.",
+          "editors_heads_up": "Pick a friend who likes unpacking a film afterward; the ride home may need commentary. Nobody has to supply a neat moral summary before this feverish journey has finished."
+        }
+      ]
+    },
+    {
+      "source_title": "2001: A Space Odyssey",
+      "source_route": "/entertainment/movie/2001-space-odyssey/",
+      "recommendations": [
+        {
+          "slot": 1,
+          "title": "Arrival",
+          "target_route": "/entertainment/movie/arrival/",
+          "format": "Film",
+          "year": "2016",
+          "relationship": "Language as first contact",
+          "why_it_fits": "Like Kubrick, it treats first contact as a problem of perception and language, letting large ideas unfold through quiet images.",
+          "what_differs": "More intimate and relationship-driven; less cosmic and abstract.",
+          "editors_heads_up": "Hold the final question until after the credits; somebody will try to solve it halfway through. Notice how language becomes action, because understanding itself is the suspense."
+        },
+        {
+          "slot": 2,
+          "title": "Interstellar",
+          "target_route": "/entertainment/movie/interstellar/",
+          "format": "Film",
+          "year": "2014",
+          "relationship": "Cosmic scale, family stakes",
+          "why_it_fits": "A vast space journey turns a scientific puzzle and a family bond into one question about time and human survival.",
+          "what_differs": "More emotionally explicit and action-forward.",
+          "editors_heads_up": "A tissue is acceptable space equipment. If somebody gets misty during the family scenes, do not blame gravity alone; the film has been quietly preparing that feeling for hours."
+        },
+        {
+          "slot": 3,
+          "title": "Blade Runner 2049",
+          "target_route": "/entertainment/movie/blade-runner-2049/",
+          "format": "Film",
+          "year": "2017",
+          "relationship": "Patient sci-fi mood",
+          "why_it_fits": "It shares the patient, monumental science-fiction mood and asks who gets to count as a person in a world built by people.",
+          "what_differs": "Neon detective noir rather than cosmic mystery.",
+          "editors_heads_up": "Night viewing recommended; the score may turn your living room into a very expensive rainstorm. Its empty frames carry feeling too, so resist checking the time; the quiet is part of the invitation."
+        },
+        {
+          "slot": 4,
+          "title": "Moon",
+          "target_route": "/entertainment/movie/moon/",
+          "format": "Film",
+          "year": "2009",
+          "relationship": "Small-scale orbit",
+          "why_it_fits": "A smaller, lonelier space movie turns a confined mission into a question about identity, memory and who owns a life.",
+          "what_differs": "Minimal cast and scale: intimacy instead of cosmic awe.",
+          "editors_heads_up": "Watch without scrolling; you may begin to suspect the person who brought snacks. The shift from ordinary routine to something wrong is the hook, so keep your theories for the credits."
+        },
+        {
+          "slot": 5,
+          "title": "A Clockwork Orange",
+          "target_route": "/entertainment/movie/clockwork-orange/",
+          "format": "Film",
+          "year": "1971",
+          "relationship": "Kubrick's earthbound provocation",
+          "why_it_fits": "Another Kubrick film turns speculative ideas into a sharp argument about agency and what society may do to a person.",
+          "what_differs": "Earthbound, deliberately provocative, and much more violent.",
+          "editors_heads_up": "Content note: stylised violence. Make this the conversation piece, not the bedtime wind-down; choose a friend ready to discuss agency, not just tick off a Kubrick title."
+        }
+      ]
+    },
+    {
+      "source_title": "21 Jump Street",
+      "source_route": "/entertainment/movie/21-jump-street/",
+      "recommendations": [
+        {
+          "slot": 1,
+          "title": "The Other Guys",
+          "target_route": "/entertainment/movie/the-other-guys/",
+          "format": "Film",
+          "year": "2010",
+          "relationship": "Genre-bending cop comedy",
+          "why_it_fits": "Both send mismatched cops into comedy that punctures law-enforcement clichés; the joke is as much about the genre as the crime.",
+          "what_differs": "More office-and-corporate absurdity, without the undercover-school setup.",
+          "editors_heads_up": "Watch with a friend who quotes action films; half the fun is waiting for a cliché to get tripped. Let the deadpan land before predicting the next joke."
+        },
+        {
+          "slot": 2,
+          "title": "Superbad",
+          "target_route": "/entertainment/movie/superbad/",
+          "format": "Film",
+          "year": "2007",
+          "relationship": "One-night school panic",
+          "why_it_fits": "The same teenage panic and loyal-friend energy turn an ordinary high-school night into a mission.",
+          "what_differs": "No cops—just awkward teenagers trying to make one big night count.",
+          "editors_heads_up": "Afterward someone will claim they were not like that at school. They were. This is a group-chat generator; expect one high-school nickname to return from retirement before the snacks are gone."
+        },
+        {
+          "slot": 3,
+          "title": "The Nice Guys",
+          "target_route": "/entertainment/movie/the-nice-guys/",
+          "format": "Film",
+          "year": "2016",
+          "relationship": "Detectives making it worse",
+          "why_it_fits": "A disastrous pair of detectives collide in a mystery that keeps finding new ways to embarrass them.",
+          "what_differs": "1970s private-eye noir with drier humour.",
+          "editors_heads_up": "The case gets complicated; your main task is not laughing when the detectives make it worse. Their pauses are part of the joke, so let awkward beats finish."
+        },
+        {
+          "slot": 4,
+          "title": "Booksmart",
+          "target_route": "/entertainment/movie/booksmart/",
+          "format": "Film",
+          "year": "2019",
+          "relationship": "School-night mirror",
+          "why_it_fits": "Two high-achieving students try to fit all the fun they missed into one night; school becomes a pressure cooker with jokes.",
+          "what_differs": "More friendship-driven and less action-heavy.",
+          "editors_heads_up": "Best with the friend who always makes a plan and the one who ignores it. Let the night unfold without pausing to compare it with your school years until afterward."
+        },
+        {
+          "slot": 5,
+          "title": "The Hangover",
+          "target_route": "/entertainment/movie/the-hangover/",
+          "format": "Film",
+          "year": "2009",
+          "relationship": "Chaos-as-mystery",
+          "why_it_fits": "A night-out comedy becomes a mystery about chaos the group cannot remember, with friendship and escalating bad decisions at its centre.",
+          "what_differs": "Adult bachelor-party chaos instead of high-school undercover work.",
+          "editors_heads_up": "Group watch only: one person will insist they would have kept track of the night. They would not. Stay off your phone; missing details keep becoming the next punchline."
+        }
+      ]
+    },
+    {
+      "source_title": "28 Years Later",
+      "source_route": "/entertainment/movie/28-years-later/",
+      "recommendations": [
+        {
+          "slot": 1,
+          "title": "28 Years Later: The Bone Temple",
+          "target_route": "/entertainment/movie/28-years-later-the-bone-temple/",
+          "format": "Film",
+          "year": "2026",
+          "relationship": "Direct continuation",
+          "why_it_fits": "It is the next step in the same post-rage world; choose it if you want the story to continue rather than just another outbreak.",
+          "what_differs": "A continuation with a new focal angle, not a standalone replay.",
+          "editors_heads_up": "Let the first film have its ending before queuing the next chapter. Treat this as a sequel-night pick, not a random infection story; the world and emotional shorthand carry forward."
+        },
+        {
+          "slot": 2,
+          "title": "Train to Busan",
+          "target_route": "/entertainment/movie/train-to-busan/",
+          "format": "Film",
+          "year": "2016",
+          "relationship": "Contained outbreak",
+          "why_it_fits": "A contagious crisis traps ordinary people together and exposes who helps whom when escape becomes a moving target.",
+          "what_differs": "A sealed train setting, Korean social lens and faster ensemble action.",
+          "editors_heads_up": "Avoid the aisle seat if you want both knees relaxed. The train’s narrow spaces make every pause feel as if the doors might open onto a fresh problem; keep the room quiet."
+        },
+        {
+          "slot": 3,
+          "title": "All of Us Are Dead",
+          "target_route": "/entertainment/movie/all-of-us-are-dead/",
+          "format": "Series",
+          "year": "2022",
+          "relationship": "School under pressure",
+          "why_it_fits": "A local outbreak becomes a school-wide survival system where friendships and group decisions matter as much as the infected.",
+          "what_differs": "A serialized teen ensemble rather than a rural adult survival quest.",
+          "editors_heads_up": "Start early. “Just one episode” is a trap with excellent lighting. You’ll end up debating who should have barricaded which door, so keep snacks within sofa reach."
+        },
+        {
+          "slot": 4,
+          "title": "The Last of Us",
+          "target_route": "/entertainment/movie/the-last-of-us/",
+          "format": "Series",
+          "year": "2023",
+          "relationship": "Care after collapse",
+          "why_it_fits": "The infection is only the frame; the emotional centre is how people keep caring for one another after the world changes.",
+          "what_differs": "A slower, relationship-led series rather than a fast-moving film.",
+          "editors_heads_up": "Bring tissues as well as snacks; the infection is not the only danger. Give the quieter relationship scenes their space—the apocalypse is not the only thing unfolding."
+        },
+        {
+          "slot": 5,
+          "title": "Children of Men",
+          "target_route": "/entertainment/movie/children-of-men/",
+          "format": "Film",
+          "year": "2006",
+          "relationship": "Protecting a possible future",
+          "why_it_fits": "For the same exhausted world and stubborn idea that protecting a possible future is worth the risk.",
+          "what_differs": "No rage-virus: a near-future political collapse with a more grounded tone.",
+          "editors_heads_up": "Not a background watch: the long takes work best when the room goes quiet. Let tension build without demanding a jump scare; stillness is part of the after-credit conversation."
+        }
+      ]
+    },
+    {
+      "source_title": "28 Years Later: The Bone Temple",
+      "source_route": "/entertainment/movie/28-years-later-the-bone-temple/",
+      "recommendations": [
+        {
+          "slot": 1,
+          "title": "28 Years Later",
+          "target_route": "/entertainment/movie/28-years-later/",
+          "format": "Film",
+          "year": "2025",
+          "relationship": "Prequel and setup",
+          "why_it_fits": "The companion film gives you the immediate lead-in to the world and story this sequel continues.",
+          "what_differs": "Start here if you have not seen it; the earlier film carries the setup.",
+          "editors_heads_up": "No homework except watching the previous chapter first. Treat the pair as a double feature; the earlier film supplies more context than a spoiler-filled recap can."
+        },
+        {
+          "slot": 2,
+          "title": "The Last of Us",
+          "target_route": "/entertainment/movie/the-last-of-us/",
+          "format": "Series",
+          "year": "2023",
+          "relationship": "Relationship-led apocalypse",
+          "why_it_fits": "A fictional pathogen reshapes society, but the strong connection is how care, fear and responsibility look during an outbreak.",
+          "what_differs": "Post-apocalyptic relationship drama, not a realistic response story.",
+          "editors_heads_up": "Keep the evening unhurried; quieter conversations do as much work as the infected. After an episode, give the people in the room a minute before pressing next."
+        },
+        {
+          "slot": 3,
+          "title": "Train to Busan",
+          "target_route": "/entertainment/movie/train-to-busan/",
+          "format": "Film",
+          "year": "2016",
+          "relationship": "A sealed-space pressure test",
+          "why_it_fits": "A fast-moving infection forces strangers into a sealed environment and tests whether they will protect one another.",
+          "what_differs": "A Korean train thriller with more momentum and a more openly emotional tone.",
+          "editors_heads_up": "A brisker follow-up for a group that wants tension and movement. The contained setting makes it easy to react together, but save the post-film chat for the ride home."
+        },
+        {
+          "slot": 4,
+          "title": "All of Us Are Dead",
+          "target_route": "/entertainment/movie/all-of-us-are-dead/",
+          "format": "Series",
+          "year": "2022",
+          "relationship": "Teen survival ensemble",
+          "why_it_fits": "A school outbreak makes corridors, alliances and quick decisions into a sustained survival puzzle.",
+          "what_differs": "A Korean teen-zombie series rather than a deliberate game arena.",
+          "editors_heads_up": "This is a series commitment, not an easy single-night snack. Watch with someone who enjoys tracking changing alliances; afterward you’ll compare survival plans, not just scares."
+        },
+        {
+          "slot": 5,
+          "title": "Children of Men",
+          "target_route": "/entertainment/movie/children-of-men/",
+          "format": "Film",
+          "year": "2006",
+          "relationship": "Bleak future, human stakes",
+          "why_it_fits": "Both use a collapsing society to ask what is worth protecting when hope seems almost unreasonable.",
+          "what_differs": "Political near-future drama rather than infection horror.",
+          "editors_heads_up": "Choose this if you want dread without creature-feature jolts. Watch with a friend who notices camera movement; the talk afterward may linger on the future people deserve."
+        }
+      ]
+    },
+    {
+      "source_title": "3 Idiots",
+      "source_route": "/entertainment/movie/3-idiots/",
+      "recommendations": [
+        {
+          "slot": 1,
+          "title": "Dangal",
+          "target_route": "/entertainment/movie/dangal/",
+          "format": "Film",
+          "year": "2016",
+          "relationship": "Ambition under family pressure",
+          "why_it_fits": "Both set ambition against family expectations and ask who gets to define success; the sport gives this one a training rhythm.",
+          "what_differs": "A wrestling family drama, not a college ensemble comedy.",
+          "editors_heads_up": "Watch with someone who enjoys arguing about adults and ambition after the credits; both films make you notice how pressure shapes confidence. Keep it playful, not a career-planning session."
+        },
+        {
+          "slot": 2,
+          "title": "Queen",
+          "target_route": "/entertainment/movie/queen/",
+          "format": "Film",
+          "year": "2013",
+          "relationship": "A self-discovery detour",
+          "why_it_fits": "If the self-discovery after the comedy mattered, this puts a young woman’s independence at the centre.",
+          "what_differs": "Smaller and more personal than a campus ensemble.",
+          "editors_heads_up": "This suits a solo reset or a friend who likes honest coming-of-age stories. It is less joke-dense than 3 Idiots, so let the quieter choices land before asking for a verdict."
+        },
+        {
+          "slot": 3,
+          "title": "Kaaka Muttai",
+          "target_route": "/entertainment/movie/kaaka-muttai/",
+          "format": "Film",
+          "year": "2014",
+          "relationship": "Everyday ambition",
+          "why_it_fits": "Two young brothers’ modest wish becomes a sharp look at class, aspiration and who can access a simple treat.",
+          "what_differs": "Grounded, shorter and more street-level than 3 Idiots.",
+          "editors_heads_up": "Give the boys’ perspective room; their dream looks small until the world keeps pricing it out. A conversation about access is more satisfying than ranking the siblings’ plans."
+        },
+        {
+          "slot": 4,
+          "title": "Your Lie in April",
+          "target_route": "/entertainment/movie/your-lie-in-april/",
+          "format": "Anime",
+          "year": "2014",
+          "relationship": "Creative pressure, young friendship",
+          "why_it_fits": "A young performer works through pressure, friendship and the fear of failing people who believe in them.",
+          "what_differs": "Music carries the emotion in a series; 3 Idiots uses banter and campus chaos.",
+          "editors_heads_up": "This is a series, so do not queue it as a short mood-lifter. Its music and school-year feelings reward a settled watch; expect the final conversation to outlast an episode."
+        },
+        {
+          "slot": 5,
+          "title": "A Silent Voice",
+          "target_route": "/entertainment/movie/a-silent-voice/",
+          "format": "Anime",
+          "year": "2016",
+          "relationship": "School friendships and repair",
+          "why_it_fits": "For school friendships, remorse and trying to become better after hurting someone, this shifts from broad comedy to an intimate coming-of-age story.",
+          "what_differs": "More serious and inward; bullying and shame matter more than academic ambition.",
+          "editors_heads_up": "A gentler viewing company helps; the story takes shame and repair seriously. Keep spoilers away and leave space afterward for the difference between feeling sorry and making amends."
+        }
+      ]
+    },
+    {
+      "source_title": "300",
+      "source_route": "/entertainment/movie/300/",
+      "recommendations": [
+        {
+          "slot": 1,
+          "title": "Gladiator",
+          "target_route": "/entertainment/movie/gladiator/",
+          "format": "Film",
+          "year": "2000",
+          "relationship": "Combat as public spectacle",
+          "why_it_fits": "Both turn combat into a public test of power and loyalty, but this anchors its spectacle in one survivor’s revenge.",
+          "what_differs": "Roman arena and political revenge replace a Greek last stand.",
+          "editors_heads_up": "Let the score do its full work; a loud room helps with the crowd scenes, but keep time afterward to discuss spectacle and the cost of turning grief into public performance."
+        },
+        {
+          "slot": 2,
+          "title": "Baahubali",
+          "target_route": "/entertainment/movie/baahubali/",
+          "format": "Film",
+          "year": "",
+          "relationship": "Mythic battlefield scale",
+          "why_it_fits": "A family struggle grows into a scale-first battlefield saga; the connection is warrior spectacle and heroic myth.",
+          "what_differs": "Brighter and more rooted in Indian epic than 300’s hard-edged Greek legend.",
+          "editors_heads_up": "This is a big-screen, snack-ready watch; scale is part of the fun. Bring a friend who enjoys mythic storytelling, then compare which images felt larger than life."
+        },
+        {
+          "slot": 3,
+          "title": "Wolf Warrior 2",
+          "target_route": "/entertainment/movie/wolf-warrior-2/",
+          "format": "Film",
+          "year": "2017",
+          "relationship": "A modern warrior's mission",
+          "why_it_fits": "A lone fighter pulled back into conflict offers the muscular action rush and a clear, physical mission.",
+          "what_differs": "Modern military rescue rather than ancient shield-wall spectacle.",
+          "editors_heads_up": "Expect modern military action rather than ancient legend. Watch with someone who likes choreography and momentum; afterward, separate the film’s action fantasy from real-world news."
+        },
+        {
+          "slot": 4,
+          "title": "Warcraft",
+          "target_route": "/entertainment/movie/warcraft/",
+          "format": "Film",
+          "year": "2016",
+          "relationship": "Armies and world-building",
+          "why_it_fits": "World-building and armies replace a single last stand; choose it for fantasy factions and battlefield scale.",
+          "what_differs": "Computer-game mythology and magic, not a historical-inspired war film.",
+          "editors_heads_up": "A quick character refresher helps if you are not a fantasy worldbuilder; do not expect 300’s lean, single-battle line. Keep a friend nearby for the names and factions."
+        },
+        {
+          "slot": 5,
+          "title": "Avengers: Infinity War",
+          "target_route": "/entertainment/movie/avengers-infinity-war/",
+          "format": "Film",
+          "year": "2018",
+          "relationship": "Ensemble war stakes",
+          "why_it_fits": "A huge ensemble faces a war-sized threat with comic-book colour and cosmic stakes.",
+          "what_differs": "More character-packed and built around a shared universe already in motion.",
+          "editors_heads_up": "This is not the cleanest entry point to a shared universe, so pick it after some Marvel familiarity. Watch with a group that likes comparing characters, and avoid plot spoilers."
+        }
+      ]
+    },
+    {
+      "source_title": "93 Days",
+      "source_route": "/entertainment/movie/93-days/",
+      "recommendations": [
+        {
+          "slot": 1,
+          "title": "The Last of Us",
+          "target_route": "/entertainment/movie/the-last-of-us/",
+          "format": "Series",
+          "year": "2023",
+          "relationship": "Care during an outbreak",
+          "why_it_fits": "The infection is the backdrop; the bridge is how people make difficult choices while care, fear and responsibility spread through a community.",
+          "what_differs": "Fictional post-apocalyptic drama, not a realistic response story.",
+          "editors_heads_up": "Choose this with people ready for a measured crisis story, not as casual disaster-night programming. Afterward, leave room to talk about trust in institutions and the work of health teams."
+        },
+        {
+          "slot": 2,
+          "title": "Train to Busan",
+          "target_route": "/entertainment/movie/train-to-busan/",
+          "format": "Film",
+          "year": "2016",
+          "relationship": "People under pressure",
+          "why_it_fits": "A fast-moving emergency traps strangers together and tests who will help when the safest route keeps shrinking.",
+          "what_differs": "Action thriller on a train, not a grounded public-health account.",
+          "editors_heads_up": "Tense and fast; a group watch gives you someone to exhale with. The follow-up conversation tends to be about mutual aid, not just who made it through."
+        },
+        {
+          "slot": 3,
+          "title": "All of Us Are Dead",
+          "target_route": "/entertainment/movie/all-of-us-are-dead/",
+          "format": "Series",
+          "year": "2022",
+          "relationship": "Outbreak through a school",
+          "why_it_fits": "Its outbreak unfolds through the ordinary systems of a school, where friendships and group decisions matter as much as danger.",
+          "what_differs": "Teen ensemble serial rather than a feature about medical response.",
+          "editors_heads_up": "Series, pace accordingly; the teen ensemble brings school drama alongside outbreak panic. Avoid a late start if cliffhangers make you say “one more” until sunrise."
+        },
+        {
+          "slot": 4,
+          "title": "The Host",
+          "target_route": "/entertainment/movie/the-host/",
+          "format": "Film",
+          "year": "2006",
+          "relationship": "Public panic and family care",
+          "why_it_fits": "A family tries to act during a public-health crisis while a creature turns fear into a social-satire lens.",
+          "what_differs": "Korean monster film with tonal swings, not a realistic outbreak drama.",
+          "editors_heads_up": "This one mixes creature scares with family panic and pointed satire. Watch with someone who enjoys tonal swings; the credits leave space to discuss how leaders communicate risk."
+        },
+        {
+          "slot": 5,
+          "title": "Children of Men",
+          "target_route": "/entertainment/movie/children-of-men/",
+          "format": "Film",
+          "year": "2006",
+          "relationship": "Systems under strain",
+          "why_it_fits": "Both look at what ordinary people owe one another when a crisis has made every institution feel fragile.",
+          "what_differs": "A political near-future collapse, not a disease-response story.",
+          "editors_heads_up": "Bleak but humane; watch when you have room for its political weight. A friend who likes discussing hope after the credits will make this a richer double feature."
+        }
+      ]
+    },
+    {
+      "source_title": "A Bittersweet Life",
+      "source_route": "/entertainment/movie/a-bittersweet-life/",
+      "recommendations": [
+        {
+          "slot": 1,
+          "title": "Oldboy",
+          "target_route": "/entertainment/movie/oldboy/",
+          "format": "Film",
+          "year": "2003",
+          "relationship": "Betrayal and revenge",
+          "why_it_fits": "A professional’s ordinary loyalty is broken by violence, and the story turns revenge into a question about what it costs to keep going.",
+          "what_differs": "More baroque and psychologically extreme than A Bittersweet Life’s cool crime world.",
+          "editors_heads_up": "Keep spoilers off the table; you can compare betrayal and revenge without hinting at the turn. Watch with an adult friend who enjoys discussing style, not just plot."
+        },
+        {
+          "slot": 2,
+          "title": "The Man from Nowhere",
+          "target_route": "/entertainment/movie/the-man-from-nowhere/",
+          "format": "Film",
+          "year": "2010",
+          "relationship": "A quiet professional, a violent mission",
+          "why_it_fits": "A withdrawn man’s personal code becomes action when someone vulnerable is threatened; both stories begin with controlled silence.",
+          "what_differs": "More rescue-thriller momentum and a clearer emotional centre.",
+          "editors_heads_up": "This is a tense, violent watch rather than a mellow crime double feature. Choose someone who can handle action, then let the quiet loyalty question stay in the conversation afterward."
+        },
+        {
+          "slot": 3,
+          "title": "Heat",
+          "target_route": "/entertainment/movie/heat/",
+          "format": "Film",
+          "year": "1995",
+          "relationship": "Professional codes collide",
+          "why_it_fits": "Professionals with codes meet on opposite sides of the law, and tension comes from values they recognise in one another.",
+          "what_differs": "Cooler and more procedural, with less operatic revenge.",
+          "editors_heads_up": "Set aside the evening; this patient crime epic likes a full screen and an uninterrupted room. After the credits, compare the characters’ codes without pretending either one is harmless."
+        },
+        {
+          "slot": 4,
+          "title": "Drive",
+          "target_route": "/entertainment/movie/drive/",
+          "format": "Film",
+          "year": "2011",
+          "relationship": "Silence before the violence",
+          "why_it_fits": "Both use a controlled, quiet lead and sudden violence to make restraint feel dangerous.",
+          "what_differs": "More nocturnal and dreamlike, with less underworld exposition.",
+          "editors_heads_up": "The synth score is part of the mood, so let it fill the room. A friend who enjoys atmosphere over answers makes a better companion than someone demanding a tidy plot recap."
+        },
+        {
+          "slot": 5,
+          "title": "John Wick",
+          "target_route": "/entertainment/movie/john-wick/",
+          "format": "Film",
+          "year": "2014",
+          "relationship": "Underworld rules",
+          "why_it_fits": "A capable professional is pulled into a criminal world with its own codes, rituals and consequences.",
+          "what_differs": "Much faster, more stylised action; less inward and morally ambiguous.",
+          "editors_heads_up": "This one runs on choreography and pace; keep snacks within reach but your phone away. The conversation afterward may be about how neatly the underworld’s rules turn grief into momentum."
+        }
+      ]
+    },
+    {
+      "source_title": "A Clockwork Orange",
+      "source_route": "/entertainment/movie/clockwork-orange/",
+      "recommendations": [
+        {
+          "slot": 1,
+          "title": "Black Mirror",
+          "target_route": "/entertainment/movie/black-mirror/",
+          "format": "Series",
+          "year": "2011",
+          "relationship": "Systems testing agency",
+          "why_it_fits": "This series turns modern systems into moral tests and leaves you questioning technologies used every day.",
+          "what_differs": "Standalone contemporary episodes, not one dystopian city or a single antihero.",
+          "editors_heads_up": "Pick an episode-night rather than a marathon; this series makes separate thought experiments. Watch with someone who enjoys “what would you do?” conversations, and keep the conversation on the systems, not spoilers."
+        },
+        {
+          "slot": 2,
+          "title": "Ex Machina",
+          "target_route": "/entertainment/movie/ex-machina/",
+          "format": "Film",
+          "year": "2014",
+          "relationship": "Control in a closed room",
+          "why_it_fits": "A contained encounter asks who has power, who is performing, and whether intelligence changes the rules between people.",
+          "what_differs": "Intimate modern science fiction, not a street-level dystopia.",
+          "editors_heads_up": "Keep the room quiet and avoid trailers or summaries that promise too much. Afterward, compare what each person trusted; the film is more rewarding when you do not rush to settle it."
+        },
+        {
+          "slot": 3,
+          "title": "The Truman Show",
+          "target_route": "/entertainment/movie/the-truman-show/",
+          "format": "Film",
+          "year": "1998",
+          "relationship": "A life shaped by spectators",
+          "why_it_fits": "Both ask what happens when other people control a person’s choices and call it entertainment.",
+          "what_differs": "Lighter, more satirical and built around a media spectacle.",
+          "editors_heads_up": "This is a good shared watch because the premise invites different readings. Let the credits roll before debating who had the right to decide another person’s life."
+        },
+        {
+          "slot": 4,
+          "title": "RoboCop",
+          "target_route": "/entertainment/movie/robocop/",
+          "format": "Film",
+          "year": "1987",
+          "relationship": "Violence packaged as policy",
+          "why_it_fits": "A body becomes a tool for institutions, turning action into a satire about control, policing and corporate power.",
+          "what_differs": "More comic-book action and blunt satire; less intimate than Kubrick’s social experiment.",
+          "editors_heads_up": "Content note: stylised violence. Its jokes can land sharply, so pick a friend who likes satire with teeth and leave time to talk about what the film is mocking."
+        },
+        {
+          "slot": 5,
+          "title": "The Matrix",
+          "target_route": "/entertainment/movie/the-matrix/",
+          "format": "Film",
+          "year": "1999",
+          "relationship": "Reality as a system",
+          "why_it_fits": "A person discovers that the world around them is an engineered system and must decide what freedom means.",
+          "what_differs": "Bigger, faster action mythology instead of a deliberately provocative social fable.",
+          "editors_heads_up": "Let the fight choreography breathe before anyone starts quoting code. Afterward, ask whether freedom means escaping the system or learning who built it; the conversation is part of the fun."
+        }
+      ]
+    },
+    {
+      "source_title": "A Quiet Place",
+      "source_route": "/entertainment/movie/a-quiet-place/",
+      "recommendations": [
+        {
+          "slot": 1,
+          "title": "The Host",
+          "target_route": "/entertainment/movie/the-host/",
+          "format": "Film",
+          "year": "2006",
+          "relationship": "Family facing a creature",
+          "why_it_fits": "A family pursues a monster through a public-health crisis, mixing creature scares with social satire.",
+          "what_differs": "Korean dark comedy: louder and more chaotic than A Quiet Place’s stillness.",
+          "editors_heads_up": "The tonal turns are part of the point; watch with someone who enjoys scares beside social satire. Afterward, compare which moments made you tense and which made you laugh uneasily."
+        },
+        {
+          "slot": 2,
+          "title": "Alien",
+          "target_route": "/entertainment/movie/alien/",
+          "format": "Film",
+          "year": "1979",
+          "relationship": "Quiet corridors, lethal threat",
+          "why_it_fits": "A confined crew learns that silence, space and one unknown organism can make a ship feel impossibly small.",
+          "what_differs": "More industrial science-fiction horror and less family-centred.",
+          "editors_heads_up": "Dim the room, but keep the sound clear; the atmosphere earns its space. A friend who appreciates a slow build is ideal, and the final quiet may outlast the credits."
+        },
+        {
+          "slot": 3,
+          "title": "The Thing",
+          "target_route": "/entertainment/movie/the-thing/",
+          "format": "Film",
+          "year": "1982",
+          "relationship": "Isolation and mistrust",
+          "why_it_fits": "An isolated group cannot tell who is still human, turning every quiet glance into suspicion.",
+          "what_differs": "Arctic paranoia and imitation replace a creature aboard a ship.",
+          "editors_heads_up": "Keep the room low-lit and let every rustle become suspicious, but plan a cheerful palate cleanser afterward. A friend who enjoys paranoia will make the post-film blame game excellent."
+        },
+        {
+          "slot": 4,
+          "title": "War of the Worlds",
+          "target_route": "/entertainment/movie/war-of-the-worlds/",
+          "format": "Film",
+          "year": "2005",
+          "relationship": "A family running through invasion",
+          "why_it_fits": "A parent tries to keep children safe while a huge invasion makes ordinary routes and plans useless.",
+          "what_differs": "More openly apocalyptic and loud, with little of A Quiet Place’s silence rule.",
+          "editors_heads_up": "Expect a noisy, anxious escape story rather than a delicate hush. Watch with someone who enjoys disaster spectacle, then give the room a lighter palate cleanser before bed."
+        },
+        {
+          "slot": 5,
+          "title": "The Last of Us",
+          "target_route": "/entertainment/movie/the-last-of-us/",
+          "format": "Series",
+          "year": "2023",
+          "relationship": "Care beneath the danger",
+          "why_it_fits": "For the survival story beneath the high-concept danger: people trying to protect one another in a broken world.",
+          "what_differs": "A slower relationship-led series without a silence-based rule.",
+          "editors_heads_up": "Bring snacks and tissues; the infected may not be your biggest emotional problem. Let the relationship scenes breathe between the danger; the best conversation may follow a choice, not a scare."
+        }
+      ]
+    },
+    {
+      "source_title": "A Silent Voice",
+      "source_route": "/entertainment/movie/a-silent-voice/",
+      "recommendations": [
+        {
+          "slot": 1,
+          "title": "Your Name",
+          "target_route": "/entertainment/movie/your-name/",
+          "format": "Anime",
+          "year": "2016",
+          "relationship": "Connection across distance",
+          "why_it_fits": "Two young people form an unusual connection across distance, with memory and longing doing as much work as fantasy.",
+          "what_differs": "More romantic and cosmic; less grounded in school bullying and repair.",
+          "editors_heads_up": "Let the quiet stretches play without explaining every image. This is a good solo watch or a soft double feature with a friend who enjoys talking about memory afterward."
+        },
+        {
+          "slot": 2,
+          "title": "Your Lie in April",
+          "target_route": "/entertainment/movie/your-lie-in-april/",
+          "format": "Anime",
+          "year": "2014",
+          "relationship": "Music and emotional repair",
+          "why_it_fits": "Young musicians carry grief, pressure and friendship through a story that treats performance as a way to reconnect.",
+          "what_differs": "A longer episodic arc and music-first storytelling rather than one contained school drama.",
+          "editors_heads_up": "This is a series, so plan for more than a quick sample. Its music sets the emotional pace; keep tissues nearby and let the final conversation happen after the episode ends."
+        },
+        {
+          "slot": 3,
+          "title": "Violet Evergarden",
+          "target_route": "/entertainment/movie/violet-evergarden/",
+          "format": "Anime",
+          "year": "2018",
+          "relationship": "Learning to express feeling",
+          "why_it_fits": "A young woman learns how language can carry feelings that were difficult to name, one encounter at a time.",
+          "what_differs": "Episodic period fantasy, more reflective and less school-centred.",
+          "editors_heads_up": "Watch when you have room for tenderness; the episodes can bring grief close without rushing past it. A gentle viewing companion is better than someone looking for nonstop action."
+        },
+        {
+          "slot": 4,
+          "title": "Lady Bird",
+          "target_route": "/entertainment/movie/lady-bird/",
+          "format": "Film",
+          "year": "2017",
+          "relationship": "A daughter and mother in conflict",
+          "why_it_fits": "A sharp coming-of-age story about a teenager, her mother and the damage affection can do when both are proud.",
+          "what_differs": "Live-action comedy-drama, less focused on disability and explicit redemption.",
+          "editors_heads_up": "Best with the person who understands your most complicated family texts. It is funny and prickly in equal measure; let the mother-daughter conversation continue after the credits instead of choosing a side."
+        },
+        {
+          "slot": 5,
+          "title": "Inside Out",
+          "target_route": "/entertainment/movie/inside-out/",
+          "format": "Film",
+          "year": "2015",
+          "relationship": "Giving feelings a shape",
+          "why_it_fits": "It turns difficult feelings into characters and asks what happens when a young person’s inner world changes.",
+          "what_differs": "Brighter, more accessible animation; not a story about bullying or accountability.",
+          "editors_heads_up": "This is the gentlest entry on the route, but it can still open a real feelings conversation. Watch with a family member or friend who will not mock anyone for getting misty."
+        }
+      ]
+    },
+    {
+      "source_title": "A Taxi Driver",
+      "source_route": "/entertainment/movie/a-taxi-driver/",
+      "recommendations": [
+        {
+          "slot": 1,
+          "title": "The Lives of Others",
+          "target_route": "/entertainment/movie/the-lives-of-others/",
+          "format": "Film",
+          "year": "2006",
+          "relationship": "A watcher sees the people",
+          "why_it_fits": "A person inside a powerful institution begins to see the humans the system flattens.",
+          "what_differs": "East German surveillance drama: measured, interior and less action-driven.",
+          "editors_heads_up": "Watch in a quiet room and give the final stretch space. A thoughtful companion helps, because the after-credit conversation about observation, conscience and responsibility is part of the experience."
+        },
+        {
+          "slot": 2,
+          "title": "Memories of Murder",
+          "target_route": "/entertainment/movie/memories-of-murder/",
+          "format": "Film",
+          "year": "2003",
+          "relationship": "Police work and institutional failure",
+          "why_it_fits": "A Korean police investigation shows ordinary people and flawed systems struggling to understand political violence and fear.",
+          "what_differs": "A procedural crime story, not a journalist’s road into a political uprising.",
+          "editors_heads_up": "This is deliberately uneasy rather than neatly solved. Avoid reading a recap first; afterward, talk about what the film leaves unresolved instead of demanding a simple verdict."
+        },
+        {
+          "slot": 3,
+          "title": "Half of a Yellow Sun",
+          "target_route": "/entertainment/movie/half-yellow-sun/",
+          "format": "Film",
+          "year": "",
+          "relationship": "Civilians inside history",
+          "why_it_fits": "Personal lives and family ties unfold inside a Nigerian political crisis, connecting history to people who must live through it.",
+          "what_differs": "A romantic ensemble across wartime Nigeria, not a single reporter’s urgent journey.",
+          "editors_heads_up": "A serious, emotionally demanding watch; choose a companion ready to sit with history, not just discuss plot. Leave time afterward to talk about whose perspective the film gives room."
+        },
+        {
+          "slot": 4,
+          "title": "The Handmaiden",
+          "target_route": "/entertainment/movie/the-handmaiden/",
+          "format": "Film",
+          "year": "2016",
+          "relationship": "Power behind a composed surface",
+          "why_it_fits": "A carefully controlled Korean period story reveals how power and performance shape the people inside a closed world.",
+          "what_differs": "More sensual and twist-built, not a true-story road film about public events.",
+          "editors_heads_up": "Content note: sexual violence and coercive power. Watch when you have the energy for a layered, adult drama; avoid spoilers and let the conversation move at its own pace."
+        },
+        {
+          "slot": 5,
+          "title": "A Bittersweet Life",
+          "target_route": "/entertainment/movie/a-bittersweet-life/",
+          "format": "Film",
+          "year": "2005",
+          "relationship": "A Korean moral reckoning",
+          "why_it_fits": "A Korean antihero discovers how dangerous it is to mistake obedience for moral clarity.",
+          "what_differs": "Stylish crime revenge rather than an account of political witness.",
+          "editors_heads_up": "This is a colder, more violent detour than a history double feature. Watch with someone comfortable discussing moral compromise, and let the different kinds of courage stay distinct afterward."
+        }
+      ]
+    },
+    {
+      "source_title": "A Tribe Called Judah",
+      "source_route": "/entertainment/movie/a-tribe-called-judah/",
+      "recommendations": [
+        {
+          "slot": 1,
+          "title": "Merry Men",
+          "target_route": "/entertainment/movie/merry-men/",
+          "format": "Film",
+          "year": "2018",
+          "relationship": "Nollywood crew energy",
+          "why_it_fits": "A stylish Nigerian crime-comedy builds around a crew with chemistry and a flair for trouble.",
+          "what_differs": "More heist-and-action crew, less parent-and-sons emotional centre.",
+          "editors_heads_up": "Bring friends who enjoy a lively ensemble and a bit of swagger. The tone is lighter than some family dramas, so let the post-credit chat focus on which character kept the crew moving."
+        },
+        {
+          "slot": 2,
+          "title": "Gangs of Lagos",
+          "target_route": "/entertainment/movie/gangs-of-lagos/",
+          "format": "Film",
+          "year": "2023",
+          "relationship": "Lagos shaped by its streets",
+          "why_it_fits": "A Lagos-set crime story makes neighbourhood, ambition and loyalty feel inseparable from the action.",
+          "what_differs": "Harsher and more street-politics-driven than a family Christmas comedy.",
+          "editors_heads_up": "This is a more intense group watch; pick people prepared for violence and leave time to decompress. The conversation afterward may move from characters to how the city is portrayed."
+        },
+        {
+          "slot": 3,
+          "title": "Brotherhood",
+          "target_route": "/entertainment/movie/brotherhood/",
+          "format": "Film",
+          "year": "2022",
+          "relationship": "Family pulled toward crime",
+          "why_it_fits": "Brothers and loyalty sit at the centre of a Nigerian action story about choices with consequences.",
+          "what_differs": "More police-and-crime drama, less comic family chaos.",
+          "editors_heads_up": "Watch with someone who likes talking about where loyalty becomes a burden. It has action, but the family questions are what stay after the credits, so do not treat it as background."
+        },
+        {
+          "slot": 4,
+          "title": "King of Boys",
+          "target_route": "/entertainment/movie/king-of-boys/",
+          "format": "Film",
+          "year": "2018",
+          "relationship": "Power with family costs",
+          "why_it_fits": "An ambitious Nigerian crime saga links political power, family and the price of control.",
+          "what_differs": "More operatic and politically charged than a broad comedy about sons.",
+          "editors_heads_up": "It asks for a settled evening and a viewer who enjoys a powerful central performance. Afterward, let people debate the costs of ambition without turning it into a real-life comparison."
+        },
+        {
+          "slot": 5,
+          "title": "Living in Bondage",
+          "target_route": "/entertainment/movie/living-in-bondage/",
+          "format": "Film",
+          "year": "",
+          "relationship": "Nigerian ambition and consequence",
+          "why_it_fits": "A Nigerian story of ambition and consequence connects personal choices to a wider social world.",
+          "what_differs": "More supernatural and legacy-driven than an ensemble comedy.",
+          "editors_heads_up": "If you are new to its legacy, treat this as a deliberate Nollywood pick and give the ending room. A friend familiar with the earlier era can add context without spoiling the ride."
+        }
+      ]
+    },
+    {
+      "source_title": "Aftersun",
+      "source_route": "/entertainment/movie/aftersun/",
+      "recommendations": [
+        {
+          "slot": 1,
+          "title": "Past Lives",
+          "target_route": "/entertainment/movie/past-lives/",
+          "format": "Film",
+          "year": "2023",
+          "relationship": "Memory between two people",
+          "why_it_fits": "Two people look back at a connection shaped by time, distance and the lives they did not choose together.",
+          "what_differs": "More openly romantic and adult, with less of a parent-child frame.",
+          "editors_heads_up": "Keep the room quiet and resist asking for a neat answer at the credits. A friend who likes gentle ambiguity makes this a better watch than a noisy group screening."
+        },
+        {
+          "slot": 2,
+          "title": "Minari",
+          "target_route": "/entertainment/movie/minari/",
+          "format": "Film",
+          "year": "2020",
+          "relationship": "Family through a child's eyes",
+          "why_it_fits": "A child’s perspective gives tenderness to a family’s hopes, disappointments and attempts to build a life somewhere new.",
+          "what_differs": "Warmer and more comic, centred on an immigrant family in Arkansas.",
+          "editors_heads_up": "This is a soft, patient family watch; someone who enjoys small gestures is good company. Afterward, talk about what the child noticed, not only what the adults planned."
+        },
+        {
+          "slot": 3,
+          "title": "Lady Bird",
+          "target_route": "/entertainment/movie/lady-bird/",
+          "format": "Film",
+          "year": "2017",
+          "relationship": "Mother and daughter, imperfectly",
+          "why_it_fits": "A teenager and her mother love each other imperfectly while negotiating independence, pride and a next chapter.",
+          "what_differs": "Funnier and more openly adolescent than Aftersun’s adult recollection.",
+          "editors_heads_up": "It is a good watch with the parent or friend who can laugh at family friction without pretending it never hurts. Let the tenderness arrive in its own time."
+        },
+        {
+          "slot": 4,
+          "title": "Inside Out",
+          "target_route": "/entertainment/movie/inside-out/",
+          "format": "Film",
+          "year": "2015",
+          "relationship": "Memory made visible",
+          "why_it_fits": "It gives feelings and memory a vivid shape, offering a family-friendly route into how a child makes sense of change.",
+          "what_differs": "Animated and openly explanatory rather than observational and ambiguous.",
+          "editors_heads_up": "This is the lightest route on the list, but it can still lead to a sincere conversation. Watch with a child or friend who is comfortable naming feelings after the bright colours fade."
+        },
+        {
+          "slot": 5,
+          "title": "Up",
+          "target_route": "/entertainment/movie/up/",
+          "format": "Film",
+          "year": "2009",
+          "relationship": "Grief carried into adventure",
+          "why_it_fits": "An adventure story lets grief and memory travel alongside humour, showing how a person can keep moving without forgetting.",
+          "what_differs": "More explicit and adventurous, with a broader comic register.",
+          "editors_heads_up": "Tissues are fair game, even if the house starts flying. Watch with someone who likes a hopeful landing; give the conversation afterward room for both loss and the life that continues."
+        }
+      ]
+    },
+    {
+      "source_title": "Agatha All Along",
+      "source_route": "/entertainment/movie/agatha/",
+      "recommendations": [
+        {
+          "slot": 1,
+          "title": "WandaVision",
+          "target_route": "/entertainment/movie/wandavision/",
+          "format": "Series",
+          "year": "2021",
+          "relationship": "Marvel magic with a mystery",
+          "why_it_fits": "Both hide grief and power inside a playful genre framework, then invite you to notice what the performance is protecting.",
+          "what_differs": "More sitcom-pastiche and MCU-connected than a witch-road story.",
+          "editors_heads_up": "This rewards a couple of episodes at a time, not a distracted binge. Watch with someone who enjoys spotting genre shifts, and save theory-swapping for after each episode."
+        },
+        {
+          "slot": 2,
+          "title": "The Sandman",
+          "target_route": "/entertainment/movie/the-sandman/",
+          "format": "Series",
+          "year": "2022",
+          "relationship": "Mythic beings, emotional terrain",
+          "why_it_fits": "A mythic world treats strange beings and shifting realms as emotional terrain rather than simple spectacle.",
+          "what_differs": "Broader dream-fantasy universe, not one coven’s road adventure.",
+          "editors_heads_up": "Its dream logic is part of the pleasure; let the images settle instead of demanding a map. A companion who enjoys myth and character will make the after-episode conversation richer."
+        },
+        {
+          "slot": 3,
+          "title": "Wednesday",
+          "target_route": "/entertainment/movie/wednesday/",
+          "format": "Series",
+          "year": "2022",
+          "relationship": "A witchy outsider at school",
+          "why_it_fits": "A sharp, unusual young woman navigates a supernatural school and mysteries while refusing to perform ordinary warmth.",
+          "what_differs": "Teen detective comedy with a school setting, not a magical family road story.",
+          "editors_heads_up": "Good for a playful group watch, especially with someone who appreciates deadpan. It is easier to enjoy if you let the show be strange rather than grading every mystery clue."
+        },
+        {
+          "slot": 4,
+          "title": "Loki",
+          "target_route": "/entertainment/movie/loki/",
+          "format": "Series",
+          "year": "2021",
+          "relationship": "Trickster identity and choice",
+          "why_it_fits": "A familiar trickster faces questions of identity and responsibility in a world where every version can make a different choice.",
+          "what_differs": "More time-and-space science fiction, less folk-magic and coven chemistry.",
+          "editors_heads_up": "This is best after some Marvel context and with a friend who likes theorising. Keep the multiverse diagrams optional; the emotional question is more important than solving every branch."
+        },
+        {
+          "slot": 5,
+          "title": "Black Mirror",
+          "target_route": "/entertainment/movie/black-mirror/",
+          "format": "Series",
+          "year": "2011",
+          "relationship": "Standalone moral puzzles",
+          "why_it_fits": "Its standalone stories turn familiar systems into uneasy moral puzzles, often asking what people will trade for control or belonging.",
+          "what_differs": "Near-future technology and social satire rather than comic-book mythology.",
+          "editors_heads_up": "Choose one episode for the mood you want; the anthology is not a single continuous binge. Afterward, a good companion will ask which ordinary habit now feels slightly different."
+        }
+      ]
+    },
+    {
+      "source_title": "Airplane!",
+      "source_route": "/entertainment/movie/airplane/",
+      "recommendations": [
+        {
+          "slot": 1,
+          "title": "Blazing Saddles",
+          "target_route": "/entertainment/movie/blazing-saddles/",
+          "format": "Film",
+          "year": "1974",
+          "relationship": "A genre gets cheerfully dismantled",
+          "why_it_fits": "Both attack a familiar genre with slapstick, audacity and jokes that arrive before the previous one has landed.",
+          "what_differs": "Western satire rather than disaster spoof; its comic style reflects its era.",
+          "editors_heads_up": "The best room is one where everyone can catch the joke without a footnote. Its satire uses deliberately provocative language; a quick content heads-up makes a group watch more comfortable."
+        },
+        {
+          "slot": 2,
+          "title": "Dr. Strangelove",
+          "target_route": "/entertainment/movie/dr-strangelove/",
+          "format": "Film",
+          "year": "1964",
+          "relationship": "An impossible crisis, absurdly handled",
+          "why_it_fits": "Absurdist comedy turns an impossible crisis into a precise attack on the people running it.",
+          "what_differs": "Darker and more restrained, with nuclear stakes instead of broad slapstick.",
+          "editors_heads_up": "Funny until you remember the stakes; maybe not the cheerful breakfast double feature. The laugh can catch in your throat, so do not mistake satire for a light mood."
+        },
+        {
+          "slot": 3,
+          "title": "Anchorman",
+          "target_route": "/entertainment/movie/anchorman/",
+          "format": "Film",
+          "year": "2004",
+          "relationship": "An ensemble committed to nonsense",
+          "why_it_fits": "An absurdly committed ensemble keeps escalating a ridiculous premise until the quotes become part of the group chat.",
+          "what_differs": "Newsroom rivalry rather than a parody of disaster films.",
+          "editors_heads_up": "Make it a group watch; the ensemble’s foolish confidence is more fun when the room can react together. Their sincere delivery turns even a basic introduction into a running joke."
+        },
+        {
+          "slot": 4,
+          "title": "The Other Guys",
+          "target_route": "/entertainment/movie/the-other-guys/",
+          "format": "Film",
+          "year": "2010",
+          "relationship": "Buddy-cop comedy",
+          "why_it_fits": "A buddy-cop comedy punctures action-movie posturing with mismatched partners and increasingly silly consequences.",
+          "what_differs": "Modern police spoof, less rapid-fire and more plot-driven.",
+          "editors_heads_up": "You may narrate everyday errands like an action scene. Apologies to your coworkers. The more seriously the characters take themselves, the funnier it gets; lean into the deadpan."
+        },
+        {
+          "slot": 5,
+          "title": "The Nice Guys",
+          "target_route": "/entertainment/movie/the-nice-guys/",
+          "format": "Film",
+          "year": "2016",
+          "relationship": "Odd-couple crime farce",
+          "why_it_fits": "An unlikely detective partnership keeps getting in its own way, turning a crime plot into physical comedy and deadpan chaos.",
+          "what_differs": "More period-noir mystery and less rapid-fire parody.",
+          "editors_heads_up": "Let the awkward pauses finish before laughing; the film knows exactly when to hold a beat. It works well with someone who enjoys a mystery but will not demand a serious case file."
+        }
+      ]
+    },
+    {
+      "source_title": "Akira",
+      "source_route": "/entertainment/movie/akira/",
+      "recommendations": [
+        {
+          "slot": 1,
+          "title": "Ghost in the Shell",
+          "target_route": "/entertainment/movie/ghost-in-the-shell/",
+          "format": "Anime",
+          "year": "2017",
+          "relationship": "Identity in a rebuilt body",
+          "why_it_fits": "Cyberpunk anime asks what remains of identity when bodies, cities and technology can all be rebuilt.",
+          "what_differs": "More philosophical and procedural, less explosive teenage rebellion.",
+          "editors_heads_up": "Watch with subtitles and the lights low; the city is worth admiring between the philosophical lines. Afterward, the question is not only who is human but who gets to define the word."
+        },
+        {
+          "slot": 2,
+          "title": "Paprika",
+          "target_route": "/entertainment/movie/paprika/",
+          "format": "Anime",
+          "year": "2006",
+          "relationship": "Technology blurs inner life",
+          "why_it_fits": "A visionary anime lets technology and inner life collide until reality itself stops holding still.",
+          "what_differs": "Dreamlike psychological mystery, not a street-level cyberpunk revolt.",
+          "editors_heads_up": "Do not watch right before bed unless you want your dreams to get a director’s cut. The dream sequences are easier to enjoy if you stop trying to wake the plot up."
+        },
+        {
+          "slot": 3,
+          "title": "The Matrix",
+          "target_route": "/entertainment/movie/the-matrix/",
+          "format": "Film",
+          "year": "1999",
+          "relationship": "A system pretending to be reality",
+          "why_it_fits": "A young person discovers the system governing reality and turns that discovery into a fight for freedom.",
+          "what_differs": "Live-action action mythology rather than Japanese animation and urban upheaval.",
+          "editors_heads_up": "The action is iconic, but the idea lands best when nobody talks over its first reveal. After the credits, compare the two worlds’ rules without turning it into a meme quiz."
+        },
+        {
+          "slot": 4,
+          "title": "Blade Runner 2049",
+          "target_route": "/entertainment/movie/blade-runner-2049/",
+          "format": "Film",
+          "year": "2017",
+          "relationship": "Artificial life and memory",
+          "why_it_fits": "A live-action neon dystopia builds a mystery around artificial life, memory and what makes a person real.",
+          "what_differs": "Slow-burn detective noir, less kinetic than Akira.",
+          "editors_heads_up": "The city is the mood; dim light helps, but the after-watch conversation can stay bright. Give quiet frames a second; they do the world-building that dialogue refuses to spell out."
+        },
+        {
+          "slot": 5,
+          "title": "Perfect Blue",
+          "target_route": "/entertainment/movie/perfect-blue/",
+          "format": "Anime",
+          "year": "1997",
+          "relationship": "Identity under pressure",
+          "why_it_fits": "If identity under pressure and reality coming apart were the draw, this turns that unease inward.",
+          "what_differs": "Psychological thriller rather than science fiction; much more intimate.",
+          "editors_heads_up": "Not a bedtime comfort watch—choose a daytime palate cleanser and avoid spoilers. The unease is deliberate and intense; choose a time when you are not looking for comfort."
+        }
+      ]
+    },
+    {
+      "source_title": "Alice in Borderland",
+      "source_route": "/entertainment/movie/alice-in-borderland/",
+      "recommendations": [
+        {
+          "slot": 1,
+          "title": "Squid Game",
+          "target_route": "/entertainment/movie/squid-game/",
+          "format": "Series",
+          "year": "2021",
+          "relationship": "Lethal games, social pressure",
+          "why_it_fits": "Strangers face lethal games whose rules reveal what desperation does to a group and what a life is worth to a system.",
+          "what_differs": "More social-satire-driven; its games do not use Borderland’s card logic.",
+          "editors_heads_up": "Watch with someone who will not shout “trust me” during the voting scenes. At least one person will argue they would have read the rules better; let them have the fantasy."
+        },
+        {
+          "slot": 2,
+          "title": "Battle Royale",
+          "target_route": "/entertainment/movie/battle-royale/",
+          "format": "Film",
+          "year": "2000",
+          "relationship": "Classmates forced into a contest",
+          "why_it_fits": "A group of young people are forced into a survival contest where the rules turn former classmates into opponents.",
+          "what_differs": "A Japanese film with more direct brutality and less puzzle-box world-building.",
+          "editors_heads_up": "Content note: intense violence; the setup is deliberately brutal. Watch with someone who wants to discuss group pressure afterward, not someone seeking a light game-night film."
+        },
+        {
+          "slot": 3,
+          "title": "Sweet Home",
+          "target_route": "/entertainment/movie/sweet-home/",
+          "format": "Series",
+          "year": "2020",
+          "relationship": "A trapped group adapts",
+          "why_it_fits": "A trapped group tries to hold together while the threat—and the rules of survival—keep changing.",
+          "what_differs": "Monsters and an apartment complex replace games and empty Tokyo.",
+          "editors_heads_up": "Best with a friend who can keep track of the apartment residents; the building feels like a whole city. Alliances shift quickly, so try not to watch while multitasking."
+        },
+        {
+          "slot": 4,
+          "title": "All of Us Are Dead",
+          "target_route": "/entertainment/movie/all-of-us-are-dead/",
+          "format": "Series",
+          "year": "2022",
+          "relationship": "A school becomes the arena",
+          "why_it_fits": "A school outbreak turns corridors, alliances and quick decisions into a sustained survival puzzle.",
+          "what_differs": "A Korean teen-zombie series rather than a deliberate game arena.",
+          "editors_heads_up": "Start before midnight; school corridors feel much longer after dark. Expect a full living-room survival-strategy meeting by the second episode, complete with someone suggesting a plan the characters already tried."
+        },
+        {
+          "slot": 5,
+          "title": "The Last of Us",
+          "target_route": "/entertainment/movie/the-last-of-us/",
+          "format": "Series",
+          "year": "2023",
+          "relationship": "The people beneath the danger",
+          "why_it_fits": "For the emotional survival story beneath high-concept danger: people trying to protect one another in a broken world.",
+          "what_differs": "A slower, relationship-led journey without formal game rules.",
+          "editors_heads_up": "Bring tissues; the infected may not be your biggest emotional problem. Let the relationship scenes breathe between the danger; the most memorable conversation may follow a choice, not a monster."
+        }
+      ]
+    },
+    {
+      "source_title": "Alien",
+      "source_route": "/entertainment/movie/alien/",
+      "recommendations": [
+        {
+          "slot": 1,
+          "title": "Aliens",
+          "target_route": "/entertainment/movie/aliens/",
+          "format": "Film",
+          "year": "1986",
+          "relationship": "A rescue mission in the same universe",
+          "why_it_fits": "The same universe expands the original creature nightmare into a rescue mission and a fight to protect a vulnerable group.",
+          "what_differs": "More action-forward and ensemble-based than the first film’s slow dread.",
+          "editors_heads_up": "Watch with someone who enjoys a slow build; the gear shift wakes up the whole sofa. Its move toward action makes this a good one with a friend who cheers clever plans."
+        },
+        {
+          "slot": 2,
+          "title": "Alien: Romulus",
+          "target_route": "/entertainment/movie/alien-romulus/",
+          "format": "Film",
+          "year": "2024",
+          "relationship": "A new crew, familiar corridors",
+          "why_it_fits": "A younger crew returns to tight corridors, vulnerable spaceships and the same lethal organism.",
+          "what_differs": "A modern standalone chapter with new characters.",
+          "editors_heads_up": "Do not put it on as background viewing; cramped corridors and sound design are the main event. If the hallway looks suspicious after the credits, the movie has done its job."
+        },
+        {
+          "slot": 3,
+          "title": "The Thing",
+          "target_route": "/entertainment/movie/the-thing/",
+          "format": "Film",
+          "year": "1982",
+          "relationship": "Isolation and imitation",
+          "why_it_fits": "An isolated crew cannot tell who is still human, turning every quiet glance into suspicion.",
+          "what_differs": "Antarctic paranoia and imitation replace a creature aboard a ship.",
+          "editors_heads_up": "The group paranoia is the point; keep the room dark enough for atmosphere but bright enough to find the snacks. Afterwards, trust nobody who volunteers to cook."
+        },
+        {
+          "slot": 4,
+          "title": "Annihilation",
+          "target_route": "/entertainment/movie/annihilation/",
+          "format": "Film",
+          "year": "2018",
+          "relationship": "An organism changes its visitors",
+          "why_it_fits": "An unknown organism transforms a landscape and the people sent to understand it, blending science fiction with body-horror unease.",
+          "what_differs": "More surreal and ecological, less creature-feature straightforward.",
+          "editors_heads_up": "Give it your full attention; afterward, houseplants may receive one suspicious look. The strange images are deliberate; talk about what unsettled you, not only what you think happened."
+        },
+        {
+          "slot": 5,
+          "title": "Predator",
+          "target_route": "/entertainment/movie/predator/",
+          "format": "Film",
+          "year": "1987",
+          "relationship": "A capable team becomes prey",
+          "why_it_fits": "A capable group discovers it is being hunted by something with superior technology and a very unfair rulebook.",
+          "what_differs": "Jungle action and a hunter-prey structure instead of space-bound horror.",
+          "editors_heads_up": "Group watch recommended; everyone will pick the friend who panics first in the jungle. Listen to the soundscape; the team feels confident right up to the moment control slips."
+        }
+      ]
+    }
+  ]
+}

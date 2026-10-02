@@ -289,3 +289,13 @@ always reconcile the full list, and GET /services/{id}/routes DOES return routes
 sitemaps; keep/resubmit root sitemap.xml (6 children); optionally URL-remove https://thebryme.com/money/.
 Expect ~841 URLs (122 money + 719 cards) to migrate to "Excluded — not found (404)" / "Excluded by
 'noindex' tag" over 2–4 weeks. No mass changes until the AdSense verdict.
+
+**Owner correction and current title-page policy (2026-10-02):** the catalogue cards were held
+noindex because their title-page content was too thin, not because release was waiting on AdSense
+approval. AdSense review is separate. This corrects the rationale above and supersedes the AdSense-
+verdict hold for title-page releases: a page becomes indexable only with a released batch of five
+distinct, reasoned internal recommendations, spoiler-free Editor's Heads-Ups, and at least 600 words
+of main text. Batch B01 releases 20 pages; those pages become indexable and join
+entertainment/sitemap.xml. The remaining canonical title pages stay noindex, and the legacy
+sitemap-catalogue.xml remains empty. Counts and GSC projections above are a historical snapshot of
+2026-10-01, not the current release state.

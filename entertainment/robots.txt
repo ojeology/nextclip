@@ -1,4 +1,3 @@
 User-agent: *
 Allow: /
 Sitemap: https://thebryme.com/entertainment/sitemap.xml
-Sitemap: https://thebryme.com/entertainment/sitemap-catalogue.xml

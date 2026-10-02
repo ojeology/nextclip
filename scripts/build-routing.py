@@ -211,8 +211,11 @@ def main() -> int:
               if _epoch.isdigit() else _dt.date.today())
     _sm = (ROOT / "ecosystem" / "hub" / "sitemap.xml").read_text(encoding="utf-8")
     _sm = _re.sub(r"<lastmod>[^<]*</lastmod>", "<lastmod>" + _today.isoformat() + "</lastmod>", _sm)
-    # 2026-10-01: the entertainment catalogue went noindex,follow until AdSense
-    # approval (owner decision); it is no longer registered in the root index.
+    # 2026-10-02: title pages stay noindex until a curated recommendation
+    # batch is released. build-entertainment-recommendations.py adds only
+    # released title routes to entertainment/sitemap.xml before this step, so
+    # indexability follows finished content. The legacy catalogue sitemap stays
+    # empty and out of the root index.
     (ROOT / "sitemap.xml").write_text(_sm, encoding="utf-8")
 
 

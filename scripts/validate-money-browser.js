@@ -6,9 +6,10 @@
    absent from the artifact, so every /money/* URL must answer 404 by absence
    with NO redirect hop (Render static cannot emit 410; 404-by-absence is the
    house pattern, same as the retired /movie/ family). This gate now proves
-   exactly that against the real local server, plus the surviving-cards side
-   of the decision: catalogue cards stay published at 200 with noindex,follow,
-   and the delisted catalogue sitemap serves an empty urlset.
+   exactly that against the real local server. Unfinished title cards stay
+   published at 200 with noindex,follow; pages in released Watch This / Then
+   Try This batches become indexable and join the main Entertainment sitemap.
+   The legacy catalogue sitemap remains empty.
 
    Deliberately fetch-based (no Playwright): there is no Money page left to
    render, so a headless browser adds minutes and zero coverage. The npm
@@ -60,24 +61,42 @@ async function ready(url) {
       check(!body.includes('href="/money/'), `${u}: still links to the retired Money desk`);
     }
 
-    /* 3. Catalogue cards survive at 200 but are de-indexed (noindex,follow)
-          with internal links intact - the don't-delete-URLs decision. */
+    /* 3. Unreleased title cards stay at 200 and noindex until their batch is
+          complete; internal title-page links stay live. */
     for (const u of ["/entertainment/movie/war-of-the-worlds/",
                      "/entertainment/movie/the-intouchables/"]) {
       const r = await get(u);
-      check(r.status === 200, `card ${u}: expected 200 (URLs must stay live), got ${r.status}`);
+      check(r.status === 200, `unreleased card ${u}: expected 200, got ${r.status}`);
       if (r.status === 200) {
         const body = await r.text();
-        check(/name="robots" content="noindex,follow"/.test(body), `card ${u}: missing noindex,follow meta`);
-        check(body.includes('href="/entertainment/'), `card ${u}: internal links lost`);
+        check(/name="robots" content="noindex,follow"/.test(body), `unreleased card ${u}: missing noindex,follow meta`);
+        check(body.includes('href="/entertainment/'), `unreleased card ${u}: internal links lost`);
       }
     }
 
-    /* 4. Discovery surfaces served live: delisted catalogue sitemap is an
-          empty urlset; root index and robots carry no money/catalogue. */
+    /* 3b. A released recommendation page is indexable and gives visitors five
+           reasoned next watches; unfinished pages above stay noindex. */
+    for (const u of ["/entertainment/movie/1917/", "/entertainment/movie/akira/"]) {
+      const r = await get(u);
+      check(r.status === 200, `released card ${u}: expected 200, got ${r.status}`);
+      if (r.status === 200) {
+        const body = await r.text();
+        check(/name="robots" content="index,follow"/.test(body), `released card ${u}: missing index,follow meta`);
+        check(body.includes('data-recommendation-batch="B01"'), `released card ${u}: Watch This / Then Try This section missing`);
+        check((body.match(/class="nx-next-card"/g) || []).length === 5, `released card ${u}: expected five curated recommendations`);
+        check((body.match(/Editor's Heads-Up/g) || []).length === 5, `released card ${u}: expected five Editor's Heads-Ups`);
+      }
+    }
+
+    /* 4. Discovery surfaces served live: only released title routes join the
+          main Entertainment sitemap; legacy catalogue sitemap stays empty. */
     const cat = await get("/entertainment/sitemap-catalogue.xml");
     check(cat.status === 200, `catalogue sitemap: expected 200 (file stays served, just empty), got ${cat.status}`);
     check(!(await cat.text()).includes("<loc>"), "catalogue sitemap still submits <loc> entries");
+    const entSm = await get("/entertainment/sitemap.xml");
+    check(entSm.status === 200, `Entertainment sitemap: expected 200, got ${entSm.status}`);
+    const entBody = await entSm.text();
+    check(entBody.includes("/entertainment/movie/1917/"), "Entertainment sitemap missing released 1917 page");
     const sm = await get("/sitemap.xml");
     check(sm.status === 200, `root sitemap: expected 200, got ${sm.status}`);
     const smBody = await sm.text();
@@ -95,5 +114,5 @@ async function ready(url) {
     for (const f of failures) console.error("  ✗ " + f);
     process.exit(1);
   }
-  console.log(`money-retirement browser gate: green - ${probed} probes: /money/* 404 by absence (no redirects), hub/trust pages Money-free, cards 200 + noindex,follow, catalogue sitemap empty`);
+  console.log(`money-retirement browser gate: green - ${probed} probes: /money/* 404 by absence (no redirects), unreleased cards remain noindex, B01 pages indexable with five recommendations, catalogue sitemap empty`);
 })().catch(e => {console.error("money-retirement browser gate crashed:", e); process.exit(1)});
