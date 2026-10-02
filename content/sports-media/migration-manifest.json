@@ -3,7 +3,9 @@
   "source": {
     "repository": "https://github.com/ojeology/bryme-media",
     "content_commit": "01010c164d7e302782a474838f6d259a6e41ab4e",
-    "latest_v3_shell_commit": "0d61d37381a53228a6ad97458991bc1cc8806644"
+    "latest_v3_shell_commit": "0d61d37381a53228a6ad97458991bc1cc8806644",
+    "prepared_upgrade_batch_commit": "478582e64f67f0593cb8bfb7d21c4feb7e163427",
+    "prepared_upgrade_batch_status": "pushed to ojeology/bryme-media main on 2026-10-02"
   },
   "selection": {
     "evergreen_explainer_records": 1213,
@@ -11,8 +13,8 @@
     "scenario_slugs_are_subset_of_evergreen": true,
     "scenario_records_are_not_additional_routes": true,
     "other_sports_html_routes_and_hubs": 1228,
-    "ready_core_explainers_imported_for_crosslinks": 59,
-    "new_html_pages_total": 1287,
+    "ready_core_explainers_imported_for_crosslinks": 64,
+    "new_html_pages_total": 1292,
     "full_archive_imported": false,
     "ready_core_explainer_slugs": [
       "direct-and-indirect-free-kicks",
@@ -25,8 +27,12 @@
       "how-do-substitutions-work",
       "how-do-teams-use-the-offside-trap",
       "how-do-throw-ins-goal-kicks-and-corners-work",
+      "how-does-a-100m-race-work",
+      "how-does-a-4x100m-relay-work",
       "how-does-a-penalty-kick-work",
       "how-does-a-team-qualify-for-the-champions-league",
+      "how-does-high-jump-work",
+      "how-does-long-jump-scoring-work",
       "how-does-overtime-work-in-basketball",
       "how-does-the-shot-clock-work",
       "how-does-the-transfer-window-work",
@@ -45,6 +51,7 @@
       "what-happens-when-a-player-is-sent-off",
       "what-is-a-double-dribble",
       "what-is-a-drop-ball",
+      "what-is-a-false-start-in-athletics",
       "what-is-a-free-agent-and-release-clause",
       "what-is-a-loan-deal",
       "what-is-a-play-off",
@@ -89,14 +96,21 @@
       "rugby": 144,
       "swimming": 1,
       "tennis": 144
-    }
+    },
+    "batch6a_core_explainer_slugs": [
+      "how-does-a-100m-race-work",
+      "what-is-a-false-start-in-athletics",
+      "how-does-a-4x100m-relay-work",
+      "how-does-long-jump-scoring-work",
+      "how-does-high-jump-work"
+    ]
   },
   "source_readiness_audit": {
     "checked_on": "2026-10-02",
     "status": "NOT READY",
-    "ready_explainers": 59,
+    "ready_explainers": 64,
     "target_explainers": 1213,
-    "remaining_explainers": 1154,
+    "remaining_explainers": 1149,
     "thin_pages_in_ready_batch": 0,
     "concept_links_and_hubs": "pass in source audit"
   },
@@ -111,12 +125,14 @@
     "evergreen_json_sha256": "de49d98425d541ae527e3783491be623d8900e471ce59450866eb5946e4ba391",
     "scenario_json_sha256": "39e9ba405d8a9877b56e05031d6c804e45bc83f6855af8b21560f820981198c3",
     "media_v3_css_sha256": "eafa4bd23f652cd90835d5645e196fac62033066bc889ed966652d8b6e1bf443",
-    "media_v3_js_sha256": "f961d7aa24b73a67b4dddd57b1a9850cc5fdef0579cea677f3df635800a8461e"
+    "media_v3_js_sha256": "f961d7aa24b73a67b4dddd57b1a9850cc5fdef0579cea677f3df635800a8461e",
+    "batch6a_json_sha256": "fdd734669d4f6cb5a209e8e98b4670b3a3778be083be6b3f63e99ec6a8c60f97"
   },
   "notes": [
     "The 400 scenario records overlap the 1,213 evergreen slugs; they do not create 400 additional URLs.",
     "Imported content is staged for review. Do not remove noindex or add these routes to a sitemap in bulk.",
-    "Existing Nextclip routes and the completed B01 work were not overwritten."
+    "Existing Nextclip routes and the completed B01 work were not overwritten.",
+    "Five sourced athletics explainers from batch 6a are in the noindex staging import; source commit 478582e64f67f0593cb8bfb7d21c4feb7e163427 was pushed to ojeology/bryme-media main on 2026-10-02."
   ],
   "source_manifest_audit": {
     "by_sport_targets": {

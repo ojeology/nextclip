@@ -8,6 +8,7 @@ covered by scripts/check-internal-links.py in the full test suite.
 """
 from __future__ import annotations
 
+import hashlib
 import json
 import re
 import sys
@@ -91,9 +92,31 @@ def main() -> int:
     if not scenario_slugs <= evergreen_slugs:
         fail("the scenario set is no longer a subset of the evergreen slugs")
 
+    batch6a_file = ROOT / "content" / "sports-media" / "upgrade-sports-batch6a.json"
+    batch6a = json.loads(batch6a_file.read_text(encoding="utf-8"))
+    actual_batch6a_hash = hashlib.sha256(batch6a_file.read_bytes()).hexdigest()
+    expected_batch6a_hash = manifest.get("files", {}).get("batch6a_json_sha256")
+    if actual_batch6a_hash != expected_batch6a_hash:
+        fail("batch 6a source JSON checksum differs from the migration manifest")
+    batch6a_rows = batch6a.get("explainers", [])
+    batch6a_slugs = [str(row.get("slug", "")) for row in batch6a_rows]
+    expected_batch6a_slugs = selection.get("batch6a_core_explainer_slugs", [])
+    if len(batch6a_rows) != 5 or len(set(batch6a_slugs)) != len(batch6a_rows):
+        fail("Sports batch 6a must contain exactly five unique explainer records")
+    if set(batch6a_slugs) != set(expected_batch6a_slugs):
+        fail("batch 6a slugs do not match the migration manifest")
+
     core_slugs = selection.get("ready_core_explainer_slugs", [])
+    if not set(batch6a_slugs) <= set(core_slugs):
+        fail("batch 6a explainer routes are missing from the staged core route list")
     if len(core_slugs) != selection["ready_core_explainers_imported_for_crosslinks"] or len(set(core_slugs)) != len(core_slugs):
         fail("ready core route list is missing or inconsistent")
+    source_core_tree = SPORTS / "explainers"
+    if not source_core_tree.is_dir():
+        fail("source core explainer tree is missing")
+    source_core_dirs = {p.name for p in source_core_tree.iterdir() if p.is_dir()}
+    if source_core_dirs != set(core_slugs):
+        fail("source explainer child routes do not exactly match the migration manifest")
     source_files = staged_files(SPORTS, core_slugs)
     expected_total = selection["new_html_pages_total"]
     if len(source_files) != expected_total:
@@ -107,6 +130,12 @@ def main() -> int:
     for name in ("media-v3.css", "media-v3.js"):
         if not (ROOT / "assets" / name).is_file() or not (PUBLIC / "assets" / name).is_file():
             fail(f"required v3 shell asset is missing: {name}")
+    public_core_tree = PUBLIC / "sports" / "explainers"
+    if not public_core_tree.is_dir():
+        fail("built core explainer tree is missing")
+    public_core_dirs = {p.name for p in public_core_tree.iterdir() if p.is_dir()}
+    if public_core_dirs != set(core_slugs):
+        fail("built explainer child routes do not exactly match the migration manifest")
 
     checked = 0
     for base, source in ((SPORTS, True), (PUBLIC / "sports", False)):
@@ -123,6 +152,8 @@ def main() -> int:
                 fail(f"{route}: canonical should be {want!r}, got {canonical(html)!r}")
             if 'href="/assets/media-v3.css"' not in html or 'src="/assets/media-v3.js"' not in html:
                 fail(f"{route}: v3 shell CSS/JS links are missing")
+            if route in {f"/sports/explainers/{slug}/" for slug in batch6a_slugs} and 'class="v3-concept v3-sources"' not in html:
+                fail(f"{route}: batch 6a primary-source block is missing")
             checked += 1
 
     # All new routes must remain outside the routed index allowlist and every
@@ -141,7 +172,8 @@ def main() -> int:
         fail(f"staged routes were added to a sitemap: {sorted(listed)[:4]}")
 
     print(f"sports-media-import: PASS — {checked} staged pages checked in source+public; "
-          f"{len(evergreen_rows)} evergreen records, {len(scenario_rows)} overlapping scenarios; "
+          f"{len(evergreen_rows)} evergreen records, {len(scenario_rows)} overlapping scenarios, "
+          f"{len(core_slugs)} core explainers ({len(batch6a_slugs)} from batch 6a); "
           "noindex/canonical/v3 assets verified; no sitemap or allowlist entries")
     return 0
 
