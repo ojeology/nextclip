@@ -1150,5 +1150,13 @@
   "black-warrior-review": {
     "base": "US",
     "label": "United States"
+  },
+  "let-me-tell-you-a-story": {
+    "base": "",
+    "label": "International"
+  },
+  "lemonwood-quarterly": {
+    "base": "",
+    "label": "International"
   }
 }
