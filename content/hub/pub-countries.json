@@ -1158,5 +1158,45 @@
   "lemonwood-quarterly": {
     "base": "",
     "label": "International"
+  },
+  "exposition-review": {
+    "base": "",
+    "label": "International"
+  },
+  "mulberry-literary": {
+    "base": "",
+    "label": "International"
+  },
+  "claudine-a-literary-magazine": {
+    "base": "",
+    "label": "International"
+  },
+  "nimrod-international-journal": {
+    "base": "US",
+    "label": "United States"
+  },
+  "old-pal": {
+    "base": "",
+    "label": "International"
+  },
+  "overtime": {
+    "base": "US",
+    "label": "United States"
+  },
+  "pacifica-literary-review": {
+    "base": "",
+    "label": "International"
+  },
+  "palette-poetry": {
+    "base": "",
+    "label": "International"
+  },
+  "pangyrus": {
+    "base": "",
+    "label": "International"
+  },
+  "kweli-journal": {
+    "base": "",
+    "label": "International"
   }
 }
