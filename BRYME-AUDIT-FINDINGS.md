@@ -1,3 +1,7 @@
+## 2026-10-03 — Bing quota window reopened
+
+Bing accepted another 100-URL batch (`--limit 100`); the queue is now 2,665. No retry attempted again after the quota was consumed. The next batch remains capped at 100. Pinterest still needs the owner to click **Verify** and publish the prepared first Pin; the site tag is live.
+
 ## 2026-09-29 — Bing queue/quota + Pinterest homepage verification
 
 Bing accepted 100 URLs using `--limit 100`; remaining queue 2,765. The preceding

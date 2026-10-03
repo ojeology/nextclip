@@ -1,3 +1,7 @@
+## 2026-10-03 — Bing quota window reopened
+
+Bing accepted another 100-URL batch (`--limit 100`); the queue is now 2,665. No retry attempted again after the quota was consumed. The next batch remains capped at 100. Pinterest still needs the owner to click **Verify** and publish the prepared first Pin; the site tag is live.
+
 ## 2026-09-29 — Bing quota-safe retry + Pinterest homepage verification wired
 
 - Pinterest: the owner-supplied value is configured in `site.config.json` and emitted only on the root homepage by `scripts/build-ecosystem.py` (and the legacy root-page builder). The committed hub source plus `/` and `public/` artifacts carry one tag; `validate-site-quality.js` checks the exact tag is present once inside `<head>`. Commit `8df50cf` is live on Render (deploy `dep-datn3e7f3r2c73du2f90`); the live `https://thebryme.com/` probe returned HTTP 200 with exactly one matching tag in `<head>`. **Pending:** owner clicks **Verify** in Pinterest and starts the prepared pin kit. No Pinterest account actions or posting were performed by us.
