@@ -44,7 +44,7 @@
     "key": "",
     "host": "",
     "format": "native-banner",
-    "note": "PRIMARY NETWORK (owner decision 2026-10-03, after the AdSense rejection). key/host below are the shared LIVE Native Banner unit and serve any placement that has no unit of its own (currently: bottom). Adsterra's snippet contract is one container + invoke.js per unit, so top and middle each need their OWN Native Banner unit created in the Adsterra dashboard; paste each unit's key/host into placements.<name> and rebuild - the slots, consent gating and loader are already wired. socialBar.script takes the owner's Social Bar unit snippet; displayBanner.script the classic banner snippet. gateConsent: true keeps /assets/adsterra-loader.js in charge - immediate load outside the EEA/UK/CH, granted-consent load inside.",
+    "note": "PRIMARY NETWORK (owner decision 2026-10-03, after the AdSense rejection). Live units 2026-10-03: placements.top (Native Banner), socialBar (Social Bar), displayBanner (classic atOptions banner). placements.middle still needs its own Native Banner unit from the Adsterra dashboard (paste key/host, rebuild). Adsterra's snippet contract is one container + invoke.js per unit. gateConsent: true keeps /assets/adsterra-loader.js in charge - immediate load outside the EEA/UK/CH, granted-consent load inside. All units load through the loader; nothing inline ever ships (CSP script-src 'self' https:, no unsafe-inline).",
     "gateConsent": true,
     "placements": {
       "top": {
@@ -68,13 +68,17 @@
     },
     "socialBar": {
       "enabled": true,
-      "script": "",
-      "note": "Owner's Social Bar unit snippet goes here (external <script> tag from the Adsterra dashboard). Renders before </body> on content pages once pasted."
+      "script": "https://pl31572331.profitableratecpmnetwork.com/9d/30/54/9d3054f92545b438c60dac71c8c0c106.js",
+      "note": "LIVE (owner unit, pasted 2026-10-03). External script only, loaded by /assets/adsterra-loader.js under the same consent gate; the floating widget mounts itself once the script runs."
     },
     "displayBanner": {
-      "enabled": false,
-      "script": "",
-      "note": "Classic display banner snippet; enable when the unit exists in the dashboard."
+      "enabled": true,
+      "key": "10aeabc178d8691f3dd0b82be8a9fc98",
+      "host": "www.highrevenueformat.com",
+      "format": "iframe",
+      "width": 300,
+      "height": 250,
+      "note": "LIVE (owner unit, pasted 2026-10-03): the classic atOptions 300x250 banner. The site CSP bans inline scripts, so the pasted snippet's inline atOptions config cannot ship verbatim; /assets/adsterra-loader.js sets the atOptions object inside a dedicated iframe and then loads invoke.js there, consent-gated like every other unit."
     }
   },
   "ads": {

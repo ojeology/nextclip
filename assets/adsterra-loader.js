@@ -10,11 +10,18 @@
  * being served an ad-network script before choosing anything.
  *
  * WHAT IT DOES
- *   - Outside the EEA, UK and Switzerland: loads the banner immediately, exactly
+ *   - Outside the EEA, UK and Switzerland: loads the units immediately, exactly
  *     as before. Lagos, New York, Delhi, Toronto traffic is untouched.
  *   - Inside them: waits for a granted ad-consent signal from Google's CMP and
- *     only then loads the banner. If consent is refused, or never given, the
- *     banner never loads and no third-party request is made.
+ *     only then loads the units. If consent is refused, or never given, nothing
+ *     loads and no third-party request is made.
+ *
+ * Three unit kinds ride this gate (see data-ad-kind on each slot):
+ *   - native  : Adsterra Native Banner - the script is appended to the page.
+ *   - social  : Adsterra Social Bar - same; the script mounts its own widget.
+ *   - display : classic atOptions banner - invoke.js needs a global atOptions
+ *     config, and the CSP bans inline scripts, so the loader sets that object
+ *     on a dedicated iframe and loads invoke.js inside it.
  *
  * HOW THE REGION IS DECIDED
  * By IANA timezone, not by IP. There is no geo-IP service on the site and adding
@@ -37,7 +44,8 @@
 
   // Multi-placement: every rendered native slot carries its own data-ad-src
   // (one Adsterra unit key per placement - see scripts/inject-ads.py).
-  var slots = [].slice.call(document.querySelectorAll('.adband-slot[data-ad-src]'));
+  var slots = [].slice.call(document.querySelectorAll(
+    '.adband-slot[data-ad-src], [data-adband="adsterra-social"][data-ad-src]'));
   if (!slots.length) return;
 
   var loadedSrcs = {};
@@ -49,12 +57,59 @@
       var src = slot.getAttribute("data-ad-src");
       if (!src || loadedSrcs[src]) return;
       loadedSrcs[src] = true;
+      var kind = slot.getAttribute("data-ad-kind") || "native";
+      if (kind === "display") { loadDisplay(slot, src); return; }
+      // native banner and social bar: both are plain external scripts; the
+      // social bar script mounts its own floating widget once it runs.
       var s = document.createElement("script");
       s.async = true;
       s.setAttribute("data-cfasync", "false");
       s.src = src;
       (document.head || document.documentElement).appendChild(s);
     });
+  }
+
+  // Classic atOptions display banner. The network's invoke.js expects a global
+  // `atOptions` config object and then renders the creative. The dashboard
+  // snippet ships that config as an inline script, which the site CSP bans -
+  // so this loader, which is first-party ('self'), sets the object itself on a
+  // fresh same-origin iframe's window and loads invoke.js inside that iframe.
+  // Whatever the network's script does next (document.write or DOM insertion)
+  // stays contained in the iframe and can never touch the page.
+  function loadDisplay(slot, src) {
+    try {
+      var f = document.createElement("iframe");
+      f.width = slot.getAttribute("data-ad-width") || "300";
+      f.height = slot.getAttribute("data-ad-height") || "250";
+      f.setAttribute("frameborder", "0");
+      f.setAttribute("scrolling", "no");
+      f.setAttribute("aria-label", "advertisement");
+      f.style.border = "0";
+      f.style.display = "block";
+      f.style.margin = "0 auto";
+      slot.appendChild(f);
+      var win = f.contentWindow;
+      var d = f.contentDocument || (win && win.document);
+      if (!win || !d) { throw new Error("no iframe document"); }
+      win.atOptions = {
+        key: slot.getAttribute("data-ad-key") || "",
+        format: slot.getAttribute("data-ad-format") || "iframe",
+        height: parseInt(f.height, 10) || 250,
+        width: parseInt(f.width, 10) || 300,
+        params: {}
+      };
+      var s = d.createElement("script");
+      s.async = true;
+      s.setAttribute("data-cfasync", "false");
+      s.src = src;
+      (d.body || d.documentElement).appendChild(s);
+    } catch (e) {
+      var s2 = document.createElement("script");
+      s2.async = true;
+      s2.setAttribute("data-cfasync", "false");
+      s2.src = src;
+      (document.head || document.documentElement).appendChild(s2);
+    }
   }
 
   function looksEuropean() {

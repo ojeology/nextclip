@@ -127,6 +127,38 @@ ADSTERRA_BAND = (
 ADSTERRA_RAW_LOADER = ('<script async data-cfasync="false" '
                        'src="https://{host}/{key}/invoke.js"></script>')
 
+# --- Adsterra classic display banner (owner unit, atOptions family) ----------
+# The dashboard snippet pairs an inline `atOptions = {...}` config with an
+# external invoke.js. The site CSP (script-src 'self' https:, no unsafe-inline)
+# bans the inline half, so the band ships only the slot: /assets/adsterra-
+# loader.js sets the atOptions object inside a dedicated iframe and loads
+# invoke.js there, under the same consent gate as the native slots.
+ADSTERRA_DISPLAY_MARK = 'data-adband="adsterra-display"'
+
+ADSTERRA_DISPLAY_BAND = (
+    '<aside class="adband-display" ' + ADSTERRA_DISPLAY_MARK +
+    ' aria-label="' + LABEL + '">'
+    '<style>'
+    '.adband-display{margin:0;padding:26px 0 0}'
+    '.adband-display .adband-in{max-width:1100px;margin:0 auto;padding:0 20px;overflow:hidden}'
+    '.adband-display .adband-label{display:block;font:500 10px/1 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;'
+    'letter-spacing:.14em;text-transform:uppercase;color:#8a8578;margin:0 0 10px}'
+    '.adband-display .adband-slot-display{margin:0 auto;max-width:100%;border:0}'
+    '.adband-display::before{content:"";display:block;max-width:1100px;margin:0 auto 26px;'
+    'padding:0 20px;border-top:1px solid rgba(0,0,0,.08)}'
+    '</style>'
+    '<div class="adband-in">'
+    '<span class="adband-label">' + LABEL + '</span>'
+    '<div class="adband-slot adband-slot-display" data-ad-kind="display" '
+    'data-ad-src="https://{host}/{key}/invoke.js" data-ad-key="{key}" '
+    'data-ad-format="{format}" data-ad-width="{width}" data-ad-height="{height}" '
+    'style="width:{width}px;height:{height}px;max-width:100%"></div>'
+    '</div>'
+    '</aside>'
+)
+
+ADSTERRA_SOCIAL_MARK = 'data-adband="adsterra-social"'
+
 REVERT_RES = (
     re.compile(r'<aside class="adband" ' + ADSENSE_MARK + r'[\s\S]*?</aside>'
                r'<script src="/assets/ads-init\.js" defer></script>'),
@@ -134,8 +166,9 @@ REVERT_RES = (
                r'(?: data-placement="(?:top|middle|bottom)")?[\s\S]*?</aside>'),
     re.compile(r'<script src="/assets/adsterra-loader\.js" defer></script>'),
     re.compile(r'<script async data-cfasync="false" src="https://[^"]+/invoke\.js"></script>'),
-    re.compile(r'<div data-adband="adsterra-social"[\s\S]*?</div>'),
-    re.compile(r'<div data-adband="adsterra-display"[\s\S]*?</div>'),
+    re.compile(r'<div data-adband="adsterra-social"[^>]*></div>'),
+    re.compile(r'<aside class="adband-display" ' + ADSTERRA_DISPLAY_MARK +
+               r'[\s\S]*?</aside>'),
 )
 
 
@@ -182,8 +215,20 @@ def config() -> dict:
     if social.get("enabled") and str(social.get("script") or "").strip():
         out["social"] = str(social["script"]).strip()
     display = ast.get("displayBanner") or {}
-    if display.get("enabled") and str(display.get("script") or "").strip():
-        out["display"] = str(display["script"]).strip()
+    if display.get("enabled"):
+        dkey = str(display.get("key") or "").strip()
+        dhost = str(display.get("host") or "").strip().lstrip("/")
+        if dkey and dhost:
+            out["display"] = {
+                "key": dkey, "host": dhost,
+                "format": str(display.get("format") or "iframe").strip() or "iframe",
+                "width": int(display.get("width") or 300),
+                "height": int(display.get("height") or 250),
+            }
+        else:
+            print("ads: displayBanner is enabled but has no unit key/host yet - "
+                  "slot stays off until the dashboard unit is pasted into "
+                  "site.config.json")
 
     ads = cfg.get("adsense") or {}
     if ads.get("enabled", True):
@@ -237,6 +282,7 @@ def apply_page(t: str, state: dict) -> tuple[str, int]:
 
     bands = 0
     gate = state["gate"]
+    loader = False  # LOADER_TAG emitted at least once on this page
 
     natives = state["natives"]
     main_open = re.search(r"<main[^>]*>", t)
@@ -246,6 +292,7 @@ def apply_page(t: str, state: dict) -> tuple[str, int]:
         block = native_block("bottom", natives["bottom"], gate)
         if gate:
             block += LOADER_TAG
+            loader = True
         t = t.replace("</main>", "</main>" + block, 1)
         bands += 1
 
@@ -254,6 +301,7 @@ def apply_page(t: str, state: dict) -> tuple[str, int]:
         block = native_block("top", natives["top"], gate)
         if gate and "bottom" not in natives:
             block += LOADER_TAG
+            loader = True
         pos = main_open.end()
         t = t[:pos] + block + t[pos:]
         bands += 1
@@ -269,6 +317,7 @@ def apply_page(t: str, state: dict) -> tuple[str, int]:
                 block = native_block("middle", natives["middle"], gate)
                 if gate and "bottom" not in natives and "top" not in natives:
                     block += LOADER_TAG
+                    loader = True
                 insert_at = m.start(1) + mid.end()
                 t = t[:insert_at] + block + t[insert_at:]
                 bands += 1
@@ -282,17 +331,33 @@ def apply_page(t: str, state: dict) -> tuple[str, int]:
         t = t.replace("</main>", "</main>" + block, 1)
         bands += 1
 
-    # display banner, after </main>
-    if state["display"] and "</main>" in t:
-        block = ('<div data-adband="adsterra-display" style="max-width:1100px;'
-                 'margin:0 auto;padding:24px 20px 0;overflow:hidden">'
-                 + state["display"] + "</div>")
+    # display banner, after </main>. Always loader-driven: the atOptions
+    # config cannot ship inline (CSP), so adsterra-loader.js builds it inside
+    # a dedicated iframe. When gating is off the native slots go raw, but the
+    # display banner keeps the loader - consent-gating these formats is the
+    # house rule and the loader is the only CSP-legal path to it.
+    if state["display"] and t.count("</main>") == 1:
+        d = state["display"]
+        block = (ADSTERRA_DISPLAY_BAND
+                 .replace("{key}", d["key"]).replace("{host}", d["host"])
+                 .replace("{format}", d["format"])
+                 .replace("{width}", str(d["width"]))
+                 .replace("{height}", str(d["height"])))
+        if not loader:
+            block += LOADER_TAG
+            loader = True
         t = t.replace("</main>", "</main>" + block, 1)
         bands += 1
 
-    # social bar, before </body>
+    # social bar, before </body>. Marker div only: the loader appends the
+    # network's external script under the same consent gate, and the script
+    # mounts its own floating widget. Same gate rule as the display banner.
     if state["social"] and "</body>" in t:
-        block = '<div data-adband="adsterra-social">' + state["social"] + "</div>"
+        block = ('<div ' + ADSTERRA_SOCIAL_MARK + ' data-ad-kind="social" '
+                 'data-ad-src="' + state["social"] + '" hidden aria-hidden="true"></div>')
+        if not loader:
+            block += LOADER_TAG
+            loader = True
         t = t.replace("</body>", block + "</body>", 1)
         bands += 1
 

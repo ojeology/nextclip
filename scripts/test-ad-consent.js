@@ -16,8 +16,35 @@
 const {chromium} = require("playwright");
 const {spawn} = require("child_process");
 const net = require("net");
+const fs = require("fs");
 const ROOT = __dirname + "/..";
-const AD_HOST = /profitableratecpmnetwork\.com/i;
+const AD_HOST = /profitableratecpmnetwork\.com|highrevenueformat\.com/i;
+
+// Expected ad-host requests per page load = the number of configured, enabled
+// Adsterra units (each fires its loader request to its own host). Mirrors
+// scripts/inject-ads.py: native placements with a key/host (bottom may fall
+// back to the shared unit), plus the social bar script and the classic
+// display banner once their units are pasted in.
+const EXPECTED_UNITS = (() => {
+  try {
+    const ast = (JSON.parse(fs.readFileSync(ROOT + "/site.config.json", "utf8")).adsterra) || {};
+    if (ast.enabled === false) return 0;
+    let units = 0;
+    const pl = ast.placements || {};
+    for (const name of ["top", "middle", "bottom"]) {
+      const u = pl[name] || {};
+      if (!u.enabled) continue;
+      let key = String(u.key || "").trim(), host = String(u.host || "").trim();
+      if (!key && name === "bottom") { key = String(ast.key || "").trim(); host = String(ast.host || "").trim(); }
+      if (key && host) units++;
+    }
+    const soc = ast.socialBar || {};
+    if (soc.enabled && String(soc.script || "").trim()) units++;
+    const disp = ast.displayBanner || {};
+    if (disp.enabled && String(disp.key || "").trim() && String(disp.host || "").trim()) units++;
+    return units;
+  } catch { return 1; }
+})();
 
 function freePort() {
   return new Promise((res) => {
@@ -79,15 +106,18 @@ async function ready(url, tries = 60) {
     ];
 
     const expect = [
-      {label: "Lagos, no consent needed", adHostHits: 1, why: "non-European traffic is unchanged"},
-      {label: "Berlin, consent never given", adHostHits: 0, why: "no request may reach the ad host"},
-      {label: "Berlin, consent granted", adHostHits: 1, why: "consent releases the banner"},
+      {label: "Lagos, no consent needed", adHostHits: EXPECTED_UNITS, min: true, why: "non-European traffic is unchanged"},
+      {label: "Berlin, consent never given", adHostHits: 0, min: false, why: "no request may reach the ad host"},
+      {label: "Berlin, consent granted", adHostHits: EXPECTED_UNITS, min: true, why: "consent releases every configured unit"},
     ];
     for (let i = 0; i < cases.length; i++) {
       const c = cases[i], e = expect[i];
-      const pass = c.asked === e.adHostHits;
+      // The no-consent case is exact (0 means 0). The loading cases accept
+      // additional same-host fetches a unit may make once running, but every
+      // configured unit must have fired at least its loader request.
+      const pass = e.min ? c.asked >= e.adHostHits : c.asked === e.adHostHits;
       console.log(`${pass ? "PASS" : "FAIL"}  ${c.label}: ad-host requests ${c.asked} ` +
-                  `(expected ${e.adHostHits}) - ${e.why}`);
+                  `(expected ${e.min ? ">= " : ""}${e.adHostHits}) - ${e.why}`);
       console.log(`      local loader present: ${c.loaderTag}, inline remote tag: ${c.remoteTag}`);
       if (!pass) failures.push(c.label);
     }

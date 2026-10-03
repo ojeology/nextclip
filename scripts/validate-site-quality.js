@@ -18,14 +18,16 @@ const ANALYTICS=(()=>{try{return json("site.config.json").analytics||{}}catch{re
 const GA_ON=!!ANALYTICS.enabled&&/^G-[A-Z0-9]{6,}$/.test(String(ANALYTICS.gaId||""));
 const GA_ID=GA_ON?String(ANALYTICS.gaId):"";
 const PINTEREST_VERIFICATION=String((json("site.config.json").pinterest||{}).domainVerification||"").trim();
-// Third-party ad networks are banned by default -- Monetag, PropellerAds, the
-// Adsterra social bar and popunders, and the classic atOptions banner all fail
-// this build. One exception exists and it is config-driven, not hardcoded:
-// when site.config.json carries BOTH adsterra.key and adsterra.host, exactly
-// that one unit (the Native Banner, bottom of page, content pages only) is
-// sanctioned. Clear the key and the exception disappears by itself, so the
-// ban is always in force for anything else. Owner-approved reversal of the
-// 20 Sep removal, recorded 2026-09-29.
+// Third-party ad networks are banned by default -- Monetag, PropellerAds,
+// popunders and any Adsterra format not configured below all fail this build.
+// The exceptions are config-driven, not hardcoded: every unit configured in
+// site.config.json under adsterra (the shared key/host, each enabled
+// placements.* Native Banner, the displayBanner classic unit and the
+// socialBar script) is sanctioned by its own loader URL, and nothing else is.
+// Clear a unit from the config and its exception disappears by itself, so the
+// ban is always in force for anything not pasted in. Owner-approved reversal
+// of the 20 Sep removal recorded 2026-09-29; owner-approved activation of the
+// Social Bar and the classic display banner recorded 2026-10-03 (docs/ADS.md).
 const ADSTERRA=(()=>{try{return json("site.config.json").adsterra||{}}catch{return{}}})();
 // Sanctioned units are config-driven. Units may be declared in the legacy shared
 // slot (adsterra.key + adsterra.host) and/or per-placement under
@@ -37,7 +39,18 @@ const ADSTERRA_PAIRS=(()=>{const pairs=[];
   add(ADSTERRA.key,ADSTERRA.host);
   const pl=ADSTERRA.placements||{};
   for(const name of Object.keys(pl)){const u=pl[name]||{};if(u.enabled===false)continue;add(u.key,u.host);}
+  const disp=ADSTERRA.displayBanner||{};
+  if(disp.enabled!==false)add(disp.key,disp.host);
   return pairs;})();
+// The Social Bar's loader is one external script URL (no invoke.js pairing),
+// sanctioned exactly as configured. Owner-approved activation of the Social Bar
+// and the classic display banner recorded 2026-10-03; the AdSense-era refusal
+// of both was lifted by the Adsterra pivot (docs/ADS.md).
+const ADSTERRA_SOCIAL_URL=String((ADSTERRA.socialBar||{}).script||"").trim();
+const esc=s=>s.replace(/[.*+?^${}()|[\]\\]/g,"\\$&");
+const ADSTERRA_SANCTIONED=(()=>{const alts=ADSTERRA_PAIRS.map(([k,h])=>esc(h)+"\\/"+esc(k)+"\\/invoke\\.js");
+  if((ADSTERRA.socialBar||{}).enabled!==false&&ADSTERRA_SOCIAL_URL)alts.push(esc(ADSTERRA_SOCIAL_URL));
+  return alts;})();
 // The sanctioned set, all of it config-driven: each configured unit's loader URL,
 // the band's data attribute, and the site's own consent-gating bootstrap at
 // /assets/adsterra-loader.js. That last one is a local file whose name states
@@ -45,9 +58,9 @@ const ADSTERRA_PAIRS=(()=>{const pairs=[];
 // keeps the network honest. Clear every configured key and all the exceptions
 // disappear together.
 const SANCTIONED_AD=new RegExp(
-  (ADSTERRA_PAIRS.length
-    ? ADSTERRA_PAIRS.map(([k,h])=>h.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")+"\\/"+k+"\\/invoke\\.js").join("|")
-    : "(?!)")+"|data-adband=\"adsterra\"","gi");
+  (ADSTERRA_SANCTIONED.length
+    ? ADSTERRA_SANCTIONED.join("|")
+    : "(?!)")+"|data-adband=\"adsterra[^\"]*\"","gi");
 const allowDoc=fs.existsSync(path.join(ROOT,"content/index-allowlist.routed.json"))?json("content/index-allowlist.routed.json"):json("content/index-allowlist.json"), allow=new Set(allowDoc.routes);
 // Every page under /writing/ must be either a real publication record or an
 // explicitly declared non-record child. Declaring them here keeps the check
