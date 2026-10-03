@@ -1,42 +1,57 @@
-# Advertising (AdSense) status and readiness
+# Advertising status — Adsterra primary (owner decision 2026-10-03)
 
-Advertising and third-party analytics are disabled across BRYME during the
-quality rebuild. The code is AdSense-ready but ads are **off** until the items
-below are satisfied.
+AdSense rejected the site after the 2026-10-01 cleanup (indexable surface cut
+2,735 → 1,894; the re-review verdict came back negative). The house pivots:
 
-## What is in place now
+- **Adsterra is the primary ad network now.**
+- **AdSense stays verification-only** (the `ca-pub` meta and verification
+  snippet remain live) as a possible later pivot. Its ad units stay unwired
+  until a future owner decision; `adsense.nativeSlotId` is the off-switch.
 
-- `site.config.json` → `adsense` block holds `caId`, `enabled`, and a note.
-- `scripts/build-focus-site.py` emits the `google-adsense-account` meta tag
-  **only** when a real `ca-pub-...` ID is configured. No ad script is loaded
-  while `enabled` is false.
-- The AdSense tag, when enabled, will never be allowed to resemble a job card,
-  employer link, application button or navigation control. The validator also
-  refuses to ship any page that references ad/tracking endpoints.
+## Approved Adsterra formats
 
-## Release checklist before enabling
+| Format | Placement | Config key |
+|---|---|---|
+| Native Banner | top of content pages (inside `<main>`) | `adsterra.placements.top` |
+| Native Banner | middle of the article body (after the median paragraph) | `adsterra.placements.middle` |
+| Native Banner | bottom of content pages (after `</main>`) — LIVE | `adsterra.placements.bottom` → shared `adsterra.key` |
+| Social Bar | floating widget, before `</body>` | `adsterra.socialBar.script` |
+| Classic display banner | after `</main>` | `adsterra.displayBanner.script` |
 
-1. Confirm the final production domain and an updated privacy policy.
-2. Implement region-appropriate consent controls (Google-certified CMP where
-   Google requires one) and only then serve personalized ads.
-3. Review placements on mobile and desktop for the work publication.
-4. Ensure every monetized page provides substantial original value (no thin
-   pages). Empty location/type hubs stay `noindex`.
-5. No placement may be mistaken for a job card, employer link, application
-   button or navigation control.
-6. Roll out on a small, explicitly approved route allowlist and pass the
-   privacy, accessibility, performance and browser release gates.
+**One Adsterra unit key per placement.** Adsterra identifies an install through
+the container + `invoke.js` pairing, so top and middle each need their own
+Native Banner unit created in the Adsterra dashboard. Paste each unit's
+key/host into `site.config.json` and rebuild — the slots, consent gating and
+loader are already wired. The bottom placement runs on the shared live unit.
 
-Popunders, forced redirects, notification prompts and full-screen interstitials
-are not approved for the work platform. Job and opportunity pages must never
-imply that an advertiser is an employer or that clicking an ad is part of an
-application.
+**Still banned:** popunders, forced redirects, notification prompts,
+full-screen interstitials. The AdSense-era refusal of the Social Bar is lifted
+by the pivot; the ban list above stands.
 
-## How to enable
+## Consent gating (unchanged)
 
-1. Set `site.config.json` `adsense.caId` to the verified `ca-pub-...` value.
-2. Rebuild. The meta tag appears and the account can be verified in Search
-   Console / AdSense.
-3. After review, set `adsense.enabled` to `true` and add the ad code (in a
-   clearly-labelled container, never overlaid on application flow).
-4. Deploy and re-run the release gates.
+`/assets/adsterra-loader.js` loads every native slot immediately outside the
+EEA/UK/CH and only after granted ad consent inside them (timezone-based
+regioning; details in the loader header). Google Consent Mode defaults gate
+Google's own tags; the loader extends the same consent standard to Adsterra.
+`adsterra.gateConsent: false` restores ungated inline tags — do not flip it
+casually.
+
+## House rules (unchanged, enforced by validators)
+
+- No placement may resemble a job card, employer link, application button or
+  navigation control.
+- Ads render on indexable content pages only — never on noindex stubs or
+  soft-redirect pages (the injector skips them by robots-meta guard).
+- Every ad block is labelled "Advertisement".
+- The Money desk keeps its educational-not-advice standard; no ad may imply
+  earnings, signals or a broker relationship.
+
+## How to change placements
+
+1. Edit `site.config.json` (`adsterra.placements.*`, `socialBar`, `displayBanner`).
+2. Rebuild (`npm run build` — `scripts/inject-ads.py` runs in the pipeline).
+3. Run `npm test`; the quality gate and money gates must stay green.
+4. Deploy; verify each unit via Adsterra's "View page source" check.
+
+To kill every unit: set `adsterra.enabled: false`, rebuild, deploy.

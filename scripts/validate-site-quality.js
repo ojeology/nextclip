@@ -198,14 +198,15 @@ const staleWindows=json("content/opportunities.json").opportunities.filter(o=>{
 }).map(o=>o.slug);
 if(staleWindows.length)warn(`${staleWindows.length} record(s) have a passed deadline but a live status — re-verify: ${staleWindows.join(", ")}`);
 if(pubRecords!==expectedPubs)fail(`expected ${expectedPubs} indexed publication records under /writing/, found ${pubRecords}`);
-// All six live property sitemaps must partition the routed index allowlist.
-// 2026-10-01: money/sitemap.xml dropped (desk retired, owner decision).
+// All seven live property sitemaps must partition the routed index allowlist.
+// 2026-10-03: money/sitemap.xml restored (desk relaunched, owner decision -
+// monetization pivot to Adsterra after the AdSense rejection).
 // Entertainment title pages enter entertainment/sitemap.xml only after their
 // curated Watch This / Then Try This batch is released; unfinished catalogue
 // pages remain noindex. The legacy sitemap-catalogue.xml stays empty/delisted.
 const propertySitemaps=[
   "writers/sitemap.xml", "sports/sitemap.xml", "entertainment/sitemap.xml",
-  "tech/sitemap.xml", "fitness/sitemap.xml", "home/sitemap.xml",
+  "tech/sitemap.xml", "fitness/sitemap.xml", "home/sitemap.xml", "money/sitemap.xml",
 ];
 const sitemapRoutes=propertySitemaps.flatMap(sf=>{if(!fs.existsSync(path.join(ROOT,sf)))return[];return[...read(sf).matchAll(/<loc>(.*?)<\/loc>/g)].map(m=>norm(m[1]))});
 const sitemapUnique=new Set(sitemapRoutes);

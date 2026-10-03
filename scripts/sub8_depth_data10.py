@@ -420,7 +420,8 @@ DEPTH_SECTIONS10 = {
     "<li><b>Interrogate the data first.</b> Delisted symbols and restated prices explain more failures than models do.</li>"
     "<li><b>Charge yourself real costs.</b> Spreads, slippage and fees turn most elegant curves marginal.</li>"
     "<li><b>Reserve out-of-sample years.</b> A rule that worked only where it was fitted has not been tested.</li>"
-    "</ul>",
+    "</ul>"
+    "<p>See <a href=\"/money/backtesting-101/\">backtesting 101</a>, <a href=\"/money/day-trading-vs-swing-vs-investing/\">day trading versus swing versus investing</a> and <a href=\"/money/how-to-check-a-trading-broker/\">how to check a trading broker</a>.</p>",
 
 "writers/learn/examples/example-of-a-professional-email":
     "<h2>What the example teaches</h2>"

@@ -49,7 +49,7 @@ services:
     # old last-modified) even though the deployed commit had deleted them -
     # the same class of drift the _recovered sweep and the git-clean guard
     # below already defend against. rm -rf is a no-op on a clean checkout.
-    buildCommand: npm install --omit=dev && (find . -maxdepth 4 -type d -name _recovered -not -path './content/*' -not -path './node_modules/*' -not -path './public/*' -exec rm -rf {} + || echo 'stale _recovered sweep unavailable') && (rm -rf money ecosystem/money public/money || echo 'retired money-desk sweep unavailable') && git -c safe.directory='*' clean -xdf public/ && npm run build
+    buildCommand: npm install --omit=dev && (find . -maxdepth 4 -type d -name _recovered -not -path './content/*' -not -path './node_modules/*' -not -path './public/*' -exec rm -rf {} + || echo 'stale _recovered sweep unavailable') && git -c safe.directory='*' clean -xdf public/ && npm run build
     staticPublishPath: public
     headers:
       - path: /*
@@ -83,9 +83,13 @@ services:
     # stubs are the belt-and-braces against future config drift). Keep this
     # block and that script's parsed destinations in step: it reads this file.
     routes:
-      # 2026-10-01: the Money desk is retired (owner decision). Its two batch-7
-      # 301s were removed with it - every /money/* URL now answers 404 by
-      # absence (files unpublished), same as the retired media families.
+      # batch #7 (25 Sep): saving-for-a-house-deposit-explained shipped as an
+      # unintentional duplicate of the older how-to-save-for-a-house-deposit
+      # guide; the page was removed the same day. The 301 keeps any indexed or
+      # linked copy pointing at the surviving page. Restored with the Money
+      # desk relaunch 2026-10-03.
+      - { type: redirect, source: /money/saving-for-a-house-deposit-explained, destination: /money/how-to-save-for-a-house-deposit/ }
+      - { type: redirect, source: /money/saving-for-a-house-deposit-explained/, destination: /money/how-to-save-for-a-house-deposit/ }
       - { type: redirect, source: /opportunities, destination: /writers/writing/ }
       - { type: redirect, source: /opportunities/*, destination: /writers/writing/ }
       - { type: redirect, source: /jobs, destination: /writers/writing/ }

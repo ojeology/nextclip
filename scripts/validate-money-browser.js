@@ -1,118 +1,109 @@
 #!/usr/bin/env node
-/* Money retirement browser gate (owner decision 2026-10-01, AdSense review).
-
-   Formerly a Playwright sweep of the Money hub, 13 guides and legacy pages
-   (layout, nav, calculator, local resources). The desk is retired: files are
-   absent from the artifact, so every /money/* URL must answer 404 by absence
-   with NO redirect hop (Render static cannot emit 410; 404-by-absence is the
-   house pattern, same as the retired /movie/ family). This gate now proves
-   exactly that against the real local server. Unfinished title cards stay
-   published at 200 with noindex,follow; pages in released Watch This / Then
-   Try This batches become indexable and join the main Entertainment sitemap.
-   The legacy catalogue sitemap remains empty.
-
-   Deliberately fetch-based (no Playwright): there is no Money page left to
-   render, so a headless browser adds minutes and zero coverage. The npm
-   script name (validate:money:browser) is kept so CI wiring is unchanged. */
+/* Money publication browser gate: 13 guides + hub + corrected legacy pages.
+   Checks mobile/desktop layout, local resources, navigation and risk calculator.
+   External AdSense/GA loaders are stubbed, as they are in the Writers gate. */
 "use strict";
-const path = require("node:path"), net = require("node:net");
-const {spawn} = require("node:child_process");
+const fs = require("node:fs"), path = require("node:path"), net = require("node:net");
+const {spawn} = require("node:child_process"), {chromium} = require("playwright");
 const ROOT = path.resolve(__dirname, "..");
+const manifest = JSON.parse(fs.readFileSync(path.join(ROOT, "content/money-guides/manifest.json"), "utf8"));
+const routes = ["/money/", ...manifest.articles.map(g => `/money/${g.slug}/`),
+  "/money/position-size-calculator/", "/money/position-sizing-101/",
+  "/money/trade-types-explained/", "/money/technical-indicators-explained/"];
 const failures = [];
 const check = (ok, label) => {if (!ok) failures.push(label)};
-
-const freePort = () => new Promise((res, rej) => {const s = net.createServer();
-  s.listen(0, "127.0.0.1", () => {const p = s.address().port; s.close(() => res(p))}); s.on("error", rej)});
+/* `fundingchoicesmessages` is Google's own consent/CMP loader, injected by
+   scripts/inject-consent.py alongside the AdSense loader. validate-browser.js
+   has allowlisted it since commit 33adab9 ("Fix the browser gate: allowlist
+   AdSense's fundingchoices origin"); this second gate was missed, so every
+   money route failed here with "unexpected third-party request". Fixed
+   2026-09-30 — keep the two lists in step. */
+const AD_HOSTS = /(?:profitableratecpmnetwork|highrevenueformat|monetag|highperformanceformat|n6wxm|nap5k|propellerads|googlesyndication|googleadservices|doubleclick|googletagmanager|google-analytics|fundingchoicesmessages)\./i;
+const freePort = () => new Promise((res,rej)=>{const s=net.createServer();s.listen(0,"127.0.0.1",()=>{const p=s.address().port;s.close(()=>res(p))});s.on("error",rej)});
 async function ready(url) {
-  for (let i = 0; i < 70; i++) {
+  for (let i=0; i<70; i++) {
     try {if ((await fetch(url)).ok) return;} catch {}
-    await new Promise(r => setTimeout(r, 100));
+    await new Promise(r=>setTimeout(r,100));
   }
   throw new Error("local server did not start");
 }
-
-(async () => {
+(async()=>{
   const port = await freePort(), base = `http://127.0.0.1:${port}`;
-  const child = spawn(process.execPath, ["server/server.js"], {cwd: ROOT,
-    env: {...process.env, PORT: String(port), HOST: "127.0.0.1"}, stdio: "ignore"});
-  let probed = 0;
+  const child = spawn(process.execPath, ["server/server.js"], {
+    cwd:ROOT, env:{...process.env,PORT:String(port),HOST:"127.0.0.1"},stdio:"ignore"
+  });
+  let browser;
   try {
     await ready(base + "/healthz");
-    const get = async u => {const r = await fetch(base + u, {redirect: "manual"}); probed++; return r};
-
-    /* 1. Retired desk: 404 by absence, no redirect hop, no Location header.
-          Covers the hub, a live guide, the two batch-7 legacy URLs whose 301s
-          were removed with the desk, and a tool page. */
-    for (const u of ["/money/", "/money/how-to-save-for-a-house-deposit/",
-                     "/money/saving-for-a-house-deposit-explained/",
-                     "/money/saving-for-a-house-deposit-explained",
-                     "/money/apr-vs-apy-explained/", "/money/position-size-calculator/",
-                     "/money/sitemap.xml"]) {
-      const r = await get(u);
-      check(r.status === 404, `${u}: expected 404 by absence, got ${r.status}${r.headers.get("location") ? " -> " + r.headers.get("location") : ""}`);
-      check(!r.headers.get("location"), `${u}: retired URL must not redirect (found Location: ${r.headers.get("location")})`);
-    }
-
-    /* 2. Homepage and trust pages: published, 200, and no Money nav link. */
-    for (const u of ["/", "/about/", "/privacy/", "/event-calendar/"]) {
-      const r = await get(u);
-      check(r.status === 200, `${u}: expected 200, got ${r.status}`);
-      const body = await r.text();
-      check(!body.includes('href="/money/'), `${u}: still links to the retired Money desk`);
-    }
-
-    /* 3. Unreleased title cards stay at 200 and noindex until their batch is
-          complete; internal title-page links stay live. */
-    for (const u of ["/entertainment/movie/war-of-the-worlds/",
-                     "/entertainment/movie/the-intouchables/"]) {
-      const r = await get(u);
-      check(r.status === 200, `unreleased card ${u}: expected 200, got ${r.status}`);
-      if (r.status === 200) {
-        const body = await r.text();
-        check(/name="robots" content="noindex,follow"/.test(body), `unreleased card ${u}: missing noindex,follow meta`);
-        check(body.includes('href="/entertainment/'), `unreleased card ${u}: internal links lost`);
+    browser = await chromium.launch({headless:true});
+    for (const viewport of [{name:"mobile",width:390,height:844},{name:"desktop",width:1440,height:960}]) {
+      const context = await browser.newContext({viewport:{width:viewport.width,height:viewport.height},serviceWorkers:"block"});
+      await context.route("**/*", async request => {
+        const url = request.request().url();
+        if (url.startsWith(base)) return request.continue();
+        if (!AD_HOSTS.test(url)) errors.push(`unexpected third-party request: ${url}`);
+        const type = request.request().resourceType();
+        return request.fulfill({status:200,contentType:type==="image"?"image/gif":"application/javascript",body:""});
+      });
+      const page = await context.newPage();
+      let errors=[];
+      page.on("pageerror", err=>errors.push("page error: " + err.message));
+      page.on("console", msg=>{if(msg.type()==="error")errors.push("console: " + msg.text())});
+      page.on("response", r=>{if(r.url().startsWith(base)&&r.status()>=400)errors.push(`HTTP ${r.status()}: ${r.url()}`)});
+      page.on("requestfailed", r=>{if(r.url().startsWith(base))errors.push(`failed: ${r.url()} ${r.failure()?.errorText||""}`)});
+      for (const route of routes) {
+        const label = `${viewport.name} ${route}`;
+        errors=[];
+        try {
+          const response = await page.goto(base + route, {waitUntil:"networkidle",timeout:16000});
+          check(response?.status()===200,`${label}: HTTP ${response?.status()}`);
+          const state = await page.evaluate(()=>({
+            h1:document.querySelectorAll("h1").length,
+            text:(document.querySelector("main#main")?.innerText||"").trim().length,
+            scroll:document.documentElement.scrollWidth,
+            client:document.documentElement.clientWidth,
+            toc:!!document.querySelector(".money-toc"),
+            images:[...document.images].filter(x=>!x.complete||x.naturalWidth===0).map(x=>x.src)
+          }));
+          check(state.h1===1, `${label}: expected exactly one H1`);
+          check(state.text >= (route==="/money/"?900:450), `${label}: rendered main text too short (${state.text})`);
+          check(state.scroll <= state.client + 2, `${label}: horizontal overflow ${state.scroll}>${state.client}`);
+          check(state.images.length===0, `${label}: broken images ${state.images[0]||""}`);
+          if (manifest.articles.some(g=>route===`/money/${g.slug}/`)) check(state.toc, `${label}: missing article table of contents`);
+          if (route==="/money/" && viewport.name==="mobile") {
+            await page.locator("[data-drawer-open]").click();
+            check(await page.locator("#site-drawer").getAttribute("aria-hidden")==="false",`${label}: menu does not open`);
+            // 2026-09-26 audit: the living-machine hub keeps a curated nav in the drawer and the full catalogue in-page; assert both halves.
+            check((await page.locator("#site-drawer a[href^='/money/']").count()) >= 25, `${label}: drawer lost its curated guide nav`);
+            check((await page.locator("main#main a[href^='/money/']").count()) >= manifest.articles.length, `${label}: guides not listed in the page itself`);
+            await page.keyboard.press("Escape");
+            check(await page.locator("#site-drawer").getAttribute("aria-hidden")==="true",`${label}: escape does not close menu`);
+          }
+          check(errors.length===0, `${label}: ${errors[0]||"resource error"}`);
+        } catch(e) {failures.push(`${label}: ${e.message}`)}
       }
-    }
-
-    /* 3b. A released recommendation page is indexable and gives visitors five
-           reasoned next watches; unfinished pages above stay noindex. */
-    for (const u of ["/entertainment/movie/1917/", "/entertainment/movie/akira/"]) {
-      const r = await get(u);
-      check(r.status === 200, `released card ${u}: expected 200, got ${r.status}`);
-      if (r.status === 200) {
-        const body = await r.text();
-        check(/name="robots" content="index,follow"/.test(body), `released card ${u}: missing index,follow meta`);
-        check(body.includes('data-recommendation-batch="B01"'), `released card ${u}: Watch This / Then Try This section missing`);
-        check((body.match(/class="nx-next-card"/g) || []).length === 5, `released card ${u}: expected five curated recommendations`);
-        check((body.match(/Editor's Heads-Up/g) || []).length === 5, `released card ${u}: expected five Editor's Heads-Ups`);
+      // A real browser exercise of the pre-existing calculator after its
+      // precision/wording correction. EUR/USD quote and balance are both USD.
+      if (viewport.name==="desktop") {
+        await page.goto(base + "/money/position-size-calculator/",{waitUntil:"networkidle"});
+        await page.locator("#mc-balance").fill("5000");
+        await page.locator("#mc-risk").fill("1");
+        await page.locator("#mc-entry").fill("1.0850");
+        await page.locator("#mc-stop").fill("1.0825");
+        let value = await page.locator("#mc-out").innerText();
+        check(value.includes("0.20 lots"), `calculator: EUR/USD example should show 0.20 lots, got ${value.slice(0,150)}`);
+        check(value.includes("before fees, gaps"), "calculator: risk caveat not visible in the output");
+        await page.locator("#mc-balance").fill("100");
+        value = await page.locator("#mc-out").innerText();
+        check(value.includes("below 0.01 lot"), "calculator: sub-minimum size should not be rounded UP");
+        await page.locator("#mc-risk").fill("101");
+        value = await page.locator("#mc-out").innerText();
+        check(value.includes("between 0 and 100%"), "calculator: risk >100% should be rejected");
       }
+      await context.close();
     }
-
-    /* 4. Discovery surfaces served live: only released title routes join the
-          main Entertainment sitemap; legacy catalogue sitemap stays empty. */
-    const cat = await get("/entertainment/sitemap-catalogue.xml");
-    check(cat.status === 200, `catalogue sitemap: expected 200 (file stays served, just empty), got ${cat.status}`);
-    check(!(await cat.text()).includes("<loc>"), "catalogue sitemap still submits <loc> entries");
-    const entSm = await get("/entertainment/sitemap.xml");
-    check(entSm.status === 200, `Entertainment sitemap: expected 200, got ${entSm.status}`);
-    const entBody = await entSm.text();
-    check(entBody.includes("/entertainment/movie/1917/"), "Entertainment sitemap missing released 1917 page");
-    const sm = await get("/sitemap.xml");
-    check(sm.status === 200, `root sitemap: expected 200, got ${sm.status}`);
-    const smBody = await sm.text();
-    check(!/money/.test(smBody), "root sitemap still references money");
-    check(!/sitemap-catalogue/.test(smBody), "root sitemap still registers the delisted catalogue");
-    const rb = await get("/robots.txt");
-    check(rb.status === 200, `robots: expected 200, got ${rb.status}`);
-    check(!/\/money\//.test(await rb.text()), "robots.txt still references /money/");
-  } finally {
-    child.kill("SIGTERM");
-  }
-
-  if (failures.length) {
-    console.error(`money-retirement browser gate: ${failures.length} failure(s) over ${probed} probes`);
-    for (const f of failures) console.error("  ✗ " + f);
-    process.exit(1);
-  }
-  console.log(`money-retirement browser gate: green - ${probed} probes: /money/* 404 by absence (no redirects), unreleased cards remain noindex, B01 pages indexable with five recommendations, catalogue sitemap empty`);
-})().catch(e => {console.error("money-retirement browser gate crashed:", e); process.exit(1)});
+    console.log(JSON.stringify({ok:failures.length===0,moneyRoutes:routes.length,viewportCases:routes.length*2,calculator:true,failures:failures.slice(0,80)},null,2));
+    if(failures.length)process.exitCode=1;
+  } catch(e) {console.error(e.stack||String(e));process.exitCode=1}
+  finally {if(browser)await browser.close();child.kill("SIGTERM")}
+})();

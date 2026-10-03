@@ -1,3 +1,53 @@
+## 2026-10-03 — Money desk RELAUNCHED (122 URLs) + Adsterra becomes the primary ad network
+
+AdSense rejected the site after the 2026-10-01 cleanup. Owner decision: relaunch
+the retired Money desk and pivot monetization to Adsterra, with AdSense kept
+verification-only as a possible later pivot. Writers remains the flagship.
+
+**Money desk relaunch** — the retirement (commit 4a28854e) was reversed
+point-by-point from its own diff; the catalogue de-indexing from that same
+commit stays as-is:
+- `build-money-desk.py` rebuilt the desk from the preserved archive:
+  122 pages, six calculator assets, ecosystem/ + root + public/ synced.
+- Wiring restored: PROPS/SITEMAP_PROPS, the routed allowlist (122 money
+  routes registered by the generator), root sitemap + robots.txt, landing
+  nav/drawer/footer/meta ("Seven desks"), llms.txt desk entry + disclaimer,
+  og.png re-rendered ("Seven publications") and synced across tiers, author
+  page #{MONEY} token, fact-boxes/analytics/ads desk lists, PUBLISH_TIERS,
+  sub8 depth pools (data4 money/privacy + the 32-entry data5 restored from
+  history, data10/16/21-25 rows), ext-source money entries, adsense-audit
+  desk list, audit-technical-seo SITEMAPS, about/privacy/event-calendar hub
+  links and prose, and the ten editorial pages that linked the desk.
+- server.js MEDIA_FAMILIES unlists "money"; render.yaml's rm -rf sweep
+  removed from buildCommand; the two saving-for-a-house-deposit 301s restored
+  in render.yaml and _redirects. Live Render rules sync on next deploy.
+- Gates retired at the desk's removal were restored to quality gates:
+  validate-money-pages.js and validate-money-browser.js back to their
+  pre-retirement polarity; validate-site-quality partition now seven
+  property sitemaps.
+- Gates: full `npm test` green end-to-end — quality, money (97 guides, 122
+  sitemap URLs), 1,527 Playwright render cases, contrast, money browser
+  gate, tech hub, ad consent, AdSense readiness, brand (0 findings), and
+  338,726 internal links all resolve. Indexable surface 1,894 -> ~2,016.
+
+**Adsterra primary** (docs/ADS.md rewritten):
+- `site.config.json`: providerOrder adsterra-first; placements wired for
+  native banner top/middle/bottom plus socialBar and displayBanner slots.
+- Bottom placement LIVE on the existing unit (5,467 content pages). Top and
+  middle are wired and consent-gated but need their OWN Adsterra Native
+  Banner units (one container/invoke.js pairing per key): create both units
+  in the dashboard and paste key/host into `adsterra.placements.top/.middle`.
+- Social Bar: `adsterra.socialBar` ready; paste the dashboard snippet to
+  switch it on. Consent gating unchanged (immediate outside EEA/UK/CH,
+  granted-consent inside); loader upgraded to multi-slot.
+- AdSense: verification snippet stays live, units unwired (nativeSlotId
+  empty). Popunders/forced redirects/notification prompts remain banned.
+
+**Next:** merge the 108-article BRYME Sports Explainer library (World Cup,
+AFCON, Champions League, Europa/Conference, Nations League, EURO, Copa
+América, Gold Cup, Asian Cup, AFC club football, Club World Cup) into the
+Sports desk after a duplication check against the existing 111-URL property.
+
 ## 2026-10-03 — Bing quota window reopened
 
 Bing accepted another 100-URL batch (`--limit 100`); the queue is now 2,665. No retry attempted again after the quota was consumed. The next batch remains capped at 100. Pinterest still needs the owner to click **Verify** and publish the prepared first Pin; the site tag is live.

@@ -30,10 +30,9 @@ const PUBLIC_DOC_EXT=new Set(["",".html",".xml",".txt",".json",".webmanifest"]);
 /* Retired media families. "sports" and "entertainment" were removed: both are
    live properties now (sports/sitemap.xml 111 URLs, entertainment/sitemap.xml
    806) and returning 410 for them contradicted production, which serves 200.
-   "money" joined 2026-10-01: the desk is retired (owner decision, AdSense
-   review) and its files are gone from the artifact, so production answers 404
-   by absence; with no published 410.html this server answers 404 too. */
-const MEDIA_FAMILIES=new Set(["movie","movies","series","anime","article","articles","genre","genres","year","years","trailers","trending","channels","topic","topics","now","legacy","money"]);
+   "money" was likewise removed 2026-10-03: the desk is relaunched (owner
+   decision, monetization pivot to Adsterra) and serves 200 in production. */
+const MEDIA_FAMILIES=new Set(["movie","movies","series","anime","article","articles","genre","genres","year","years","trailers","trending","channels","topic","topics","now","legacy"]);
 function loadRedirects(){const out=new Map();try{for(const line of fs.readFileSync(path.join(ROOT,"_redirects"),"utf8").split(/\r?\n/)){const clean=line.trim();if(!clean||clean.startsWith("#"))continue;const [from,to,status]=clean.split(/\s+/);if(status==="301"&&from&&to)out.set(from,to)}}catch{}return out}
 const EXACT_REDIRECTS=loadRedirects();
 function headers(extra={}){return {...SECURITY_HEADERS,...extra}}

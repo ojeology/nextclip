@@ -1,58 +1,57 @@
 #!/usr/bin/env python3
-"""Bottom-of-page ad bands. Two providers, both switched off until a key exists.
+"""Ad bands - Adsterra-first monetization (owner decision 2026-10-03).
 
-  adsterra  -- native banner, the format the owner asked for
-  adsense   -- native unit, the fallback
+AdSense rejected the site after the 2026-10-01 cleanup; the owner pivoted the
+house to Adsterra as the PRIMARY network, keeping AdSense as a possible later
+pivot. This file wires every approved ad surface, all consent-gated, all
+off-switchable from site.config.json with no code change.
 
-Which one runs is decided by site.config.json, in this order:
+WHAT SHIPS
 
-  1. adsense.nativeSlotId set            -> AdSense band
-  2. adsterra.key and adsterra.host set  -> Adsterra native banner
-  3. neither                             -> nothing renders (current state)
+  adsterra native banner - up to three placements per content page:
+      top     just inside <main>, under the page header
+      middle  after the median paragraph of the article body
+      bottom  after </main> (the original band position)
+  adsterra social bar   - owner's Social Bar snippet, before </body>
+  adsterra display      - owner's classic banner snippet, after </main>
+  adsense native band   - fallback; renders only if nativeSlotId is filled
 
-That empty key is the on-switch. No code change, one value, one deploy.
+WHY ONE ADSTERRA UNIT KEY PER PLACEMENT: Adsterra's native banner snippet is a
+container div plus invoke.js, and the network identifies the install through
+that pairing. Running one key in three containers means duplicate ids and an
+unverifiable install - Adsterra support checks installs via View Page Source.
+Each placement therefore resolves its OWN key/host from
+adsterra.placements.<name>, falling back to the shared adsterra.key/host only
+when the placement carries none. Create one Native Banner unit per placement
+in the Adsterra dashboard and paste each unit's key/host; the slots are
+already wired and the build does the rest.
 
-WHY THE ADSTERRA LOADER IS WRITTEN INTO THE STATIC HTML RATHER THAN INJECTED
-BY JAVASCRIPT: Adsterra's support team checks an install through "View page
-source". A loader added by client-side JS never appears there, so the unit
-reads as not installed. The container div and the invoke.js tag are both
-server-rendered here, div first, so the loader always finds its container.
+WHY THE LOADER IS SERVER-RENDERED INTO THE HTML: Adsterra's support team
+checks an install through "View page source". A loader added by client-side JS
+never appears there, so the unit reads as not installed. The container div and
+the data-ad-src pointer are both rendered here, div first, so the loader always
+finds its container.
 
-WHY THE NATIVE BANNER AND NOT THE OTHER ADSTERRA FORMATS:
-  - Native Banner: one async script plus a container div. No document.write.
-  - Classic banner (atOptions + invoke.js): invoke.js calls document.write().
-    Harmless during parsing, but it wipes the whole page when it runs after
-    load, and atOptions is a page-level global, so a second banner on the same
-    page overwrites the first one's config.
-  - Popunder and Social Bar: intrusive by definition. AdSense's site behavior
-    policy prohibits pages carrying pop-ups or other intrusive ads, so either
-    would put the AdSense application at risk.
-This file implements the Native Banner only and refuses the rest.
+CONSENT: /assets/adsterra-loader.js loads each slot immediately outside the
+EEA/UK/CH and only after granted ad consent inside them (see that file). The
+gateConsent flag still exists; setting it false restores plain inline tags for
+every visitor everywhere - read the loader's header before doing that.
 
-NEVER ON A NOINDEX PAGE: the stub and soft-redirect pages are noindex precisely
-because they carry no content of their own. Ads on contentless inventory is the
-pattern that gets a site refused, so those pages are skipped. The guard matches
-the robots meta tag, not the bare word -- a page that merely discusses noindex
-in its copy is still a content page and still gets the band.
+NEVER ON A NOINDEX PAGE: stub and soft-redirect pages are noindex precisely
+because they carry no content of their own. Ads on contentless inventory is
+the pattern that gets a site refused, so those pages are skipped. The guard
+matches the robots meta tag, not the bare word.
 
-WHY NO RESERVED HEIGHT (unlike a fixed-size unit): a native banner's height
-varies with how many cards the network returns, so a guessed reservation shifts
-the page anyway, and when it does not fill the reservation becomes a visible
-hole that then collapses -- a second shift. The slot sits below the whole
-article, so growth happens outside the viewport. Unfilled, the wrapper measures
-zero and leaves no gap. The wrapper is never display:none, because the loader
-measures its container to decide what to render. overflow:hidden is
-load-bearing: max-width alone does not constrain a child the loader injects,
-and an unresponsive wide creative would otherwise add a horizontal scrollbar.
+CSP: script-src 'self' https: with no unsafe-inline. Native-banner loaders are
+external https scripts and the creatives render in https iframes, so nothing
+here relaxes the policy. The social-bar and display snippets the owner pastes
+are external scripts too; if a snippet needs inline script it must be refused,
+not allowed by weakening CSP.
 
-CSP: the site sends script-src 'self' https: with no unsafe-inline, which is
-why the original build-ecosystem.py _ads_slot() could never have worked -- its
-push was an inline script. The native banner's loader is an external https
-script and the creative renders in an https iframe, so nothing here needs the
-policy relaxed and 'unsafe-inline' stays out.
-
-REVERSIBILITY: injection inserts the block immediately after </main> and adds
-no whitespace of its own, so --revert restores the file byte for byte.
+HOUSE RULES KEPT FROM docs/ADS.md: no placement may resemble a job card,
+employer link, application button or navigation control. Popunders, forced
+redirects and notification prompts stay banned - the Adsterra formats approved
+are Native Banner, Social Bar and classic display banners only.
 """
 from __future__ import annotations
 
@@ -66,14 +65,16 @@ ROOT = Path(__file__).resolve().parents[1]
 BASES = (ROOT, ROOT / "public")
 
 EXTRA_TIERS = ("ecosystem", "writers", "tech", "sports", "entertainment",
-               "fitness", "home")
+               "fitness", "home", "money")
 
 NOINDEX = re.compile(r'name=["\']robots["\'][^>]*content=["\'][^"\']*noindex', re.I)
 NOCONTENT = re.compile(r'<meta[^>]+http-equiv=["\']refresh["\']', re.I)
 
 LABEL = "Advertisement"
+PLACEMENTS = ("top", "middle", "bottom")
+LOADER_TAG = '<script src="/assets/adsterra-loader.js" defer></script>'
 
-# --- AdSense band (fallback) --------------------------------------------------
+# --- AdSense band (future pivot; renders only with a filled nativeSlotId) ----
 ADSENSE_MARK = 'data-adband="adsense"'
 
 ADSENSE_BAND = (
@@ -97,19 +98,22 @@ ADSENSE_BAND = (
     '<script src="/assets/ads-init.js" defer></script>'
 )
 
-# --- Adsterra native banner ---------------------------------------------------
+# --- Adsterra native banner (per-placement) ----------------------------------
 ADSTERRA_MARK = 'data-adband="adsterra"'
 
 ADSTERRA_BAND = (
-    '<aside class="adband-native" ' + ADSTERRA_MARK + ' aria-label="' + LABEL + '">'
+    '<aside class="adband-native" ' + ADSTERRA_MARK + ' data-placement="{placement}" '
+    'aria-label="' + LABEL + '">'
     '<style>'
     '.adband-native{margin:0;padding:26px 0 0}'
+    '.adband-native[data-placement="top"]{padding:14px 0 0}'
     '.adband-native .adband-in{max-width:1100px;margin:0 auto;padding:0 20px;overflow:hidden}'
     '.adband-native .adband-label{display:block;font:500 10px/1 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;'
     'letter-spacing:.14em;text-transform:uppercase;color:#8a8578;margin:0 0 10px}'
     '.adband-native .adband-slot{margin:0 auto;max-width:100%;min-height:0}'
     '.adband-native::before{content:"";display:block;max-width:1100px;margin:0 auto 26px;'
     'padding:0 20px;border-top:1px solid rgba(0,0,0,.08)}'
+    '.adband-native[data-placement="top"]::before{display:none}'
     '</style>'
     '<div class="adband-in">'
     '<span class="adband-label">' + LABEL + '</span>'
@@ -117,58 +121,81 @@ ADSTERRA_BAND = (
     'data-ad-src="https://{host}/{key}/invoke.js"></div>'
     '</div>'
     '</aside>'
-    + '{loader}'
 )
+
+# Raw (ungated) loader, kept for adsterra.gateConsent = false only.
+ADSTERRA_RAW_LOADER = ('<script async data-cfasync="false" '
+                       'src="https://{host}/{key}/invoke.js"></script>')
 
 REVERT_RES = (
     re.compile(r'<aside class="adband" ' + ADSENSE_MARK + r'[\s\S]*?</aside>'
                r'<script src="/assets/ads-init\.js" defer></script>'),
-    re.compile(r'<aside class="adband-native" ' + ADSTERRA_MARK + r'[\s\S]*?</aside>'
-               r'(?:<script src="/assets/adsterra-loader\.js" defer></script>'
-               r'|<script async data-cfasync="false" src="https://[^"]+"></script>)'),
+    re.compile(r'<aside class="adband-native" ' + ADSTERRA_MARK +
+               r'(?: data-placement="(?:top|middle|bottom)")?[\s\S]*?</aside>'),
+    re.compile(r'<script src="/assets/adsterra-loader\.js" defer></script>'),
+    re.compile(r'<script async data-cfasync="false" src="https://[^"]+/invoke\.js"></script>'),
+    re.compile(r'<div data-adband="adsterra-social"[\s\S]*?</div>'),
+    re.compile(r'<div data-adband="adsterra-display"[\s\S]*?</div>'),
 )
 
 
-def config() -> tuple[str, dict]:
-    """Return (provider, params). provider == '' means the band stays off."""
+def config() -> dict:
+    """Resolve the full ad state from site.config.json."""
     try:
         cfg = json.loads((ROOT / "site.config.json").read_text(encoding="utf-8"))
     except Exception as exc:                                    # pragma: no cover
         print(f"ads: could not read site.config.json ({exc}) - skipping")
-        return "", {}
+        return {}
+
+    ast = cfg.get("adsterra") or {}
+    out: dict = {"gate": True, "natives": {}, "social": "", "display": "",
+                 "adsense": None}
+    if not ast.get("enabled", True):
+        return out
+    try:
+        out["gate"] = bool(ast.get("gateConsent", True))
+    except Exception:
+        out["gate"] = True
+
+    shared_key = str(ast.get("key") or "").strip()
+    shared_host = str(ast.get("host") or "").strip().lstrip("/")
+    placements = ast.get("placements") or {}
+    for name in PLACEMENTS:
+        p = placements.get(name) or {}
+        if not p.get("enabled", False):
+            continue
+        key = str(p.get("key") or "").strip()
+        host = str(p.get("host") or "").strip().lstrip("/")
+        # Only the bottom placement may borrow the shared unit: Adsterra binds
+        # invoke.js to one container per key, so top/middle sharing it would
+        # duplicate the container id and render an unverifiable install.
+        if not (key and host) and name == "bottom":
+            key, host = shared_key, shared_host
+        if key and host:
+            out["natives"][name] = {"key": key, "host": host}
+        else:
+            print(f"ads: native placement '{name}' is enabled but has no unit "
+                  f"key/host yet - slot stays off until the dashboard unit is "
+                  f"pasted into site.config.json")
+
+    social = ast.get("socialBar") or {}
+    if social.get("enabled") and str(social.get("script") or "").strip():
+        out["social"] = str(social["script"]).strip()
+    display = ast.get("displayBanner") or {}
+    if display.get("enabled") and str(display.get("script") or "").strip():
+        out["display"] = str(display["script"]).strip()
 
     ads = cfg.get("adsense") or {}
-    ast = cfg.get("adsterra") or {}
-
     if ads.get("enabled", True):
         client = str(ads.get("caId") or "").strip()
         slot = str(ads.get("nativeSlotId") or "").strip()
         if client and slot:
-            return "adsense", {
+            out["adsense"] = {
                 "client": client,
                 "slot": slot,
                 "fmt": str(ads.get("nativeFormat") or "auto").strip() or "auto",
             }
-
-    if ast.get("enabled", True):
-        key = str(ast.get("key") or "").strip()
-        host = str(ast.get("host") or "").strip().lstrip("/")
-        if key and host:
-            if re.search(r"(popunder|socialbar|social-bar|^9d/|/54/)", key + host, re.I):
-                print("ads: that Adsterra id looks like a popunder or social-bar unit.")
-                print("ads: refusing - those are intrusive, and AdSense's site behavior")
-                print("ads: policy bars pages carrying pop-ups. Use the Native Banner key.")
-                return "", {}
-            try:
-                gate = bool((ast or {}).get("gateConsent", True))
-            except Exception:
-                gate = True
-            if not gate:
-                print("ads: adsterra.gateConsent is false - the loader will execute for")
-                print("ads: every visitor before any consent, including the EEA and UK.")
-            return "adsterra", {"key": key, "host": host, "gate": gate}
-
-    return "", {}
+    return out
 
 
 def targets() -> list[Path]:
@@ -192,34 +219,92 @@ def targets() -> list[Path]:
     return sorted(seen)
 
 
-# The plain loader, kept for adsterra.gateConsent = false. It executes for every
-# visitor in every region before any consent, which is why it is not the default.
-ADSTERRA_RAW_LOADER = ('<script async data-cfasync="false" '
-                       'src="https://{host}/{key}/invoke.js"></script>')
+def native_block(name: str, p: dict, gate: bool) -> str:
+    band = (ADSTERRA_BAND
+            .replace("{placement}", name)
+            .replace("{key}", p["key"])
+            .replace("{host}", p["host"]))
+    if not gate:
+        band += (ADSTERRA_RAW_LOADER.replace("{key}", p["key"])
+                                    .replace("{host}", p["host"]))
+    return band
 
-# The default: one local bootstrap that decides when to load the remote script.
-ADSTERRA_GATED_LOADER = '<script src="/assets/adsterra-loader.js" defer></script>'
 
+def apply_page(t: str, state: dict) -> tuple[str, int]:
+    """Insert every configured unit once; returns (new_text, bands_added)."""
+    for rx in REVERT_RES:
+        t = rx.sub("", t)
 
-def block_for(provider: str, p: dict) -> str:
-    if provider == "adsense":
-        # plain substitution, not str.format: the inline CSS is full of braces
-        return (ADSENSE_BAND.replace("{client}", p["client"])
-                            .replace("{slot}", p["slot"])
-                            .replace("{fmt}", p["fmt"]))
-    loader = (ADSTERRA_GATED_LOADER if p.get("gate", True)
-              else ADSTERRA_RAW_LOADER.replace("{key}", p["key"]).replace("{host}", p["host"]))
-    return (ADSTERRA_BAND.replace("{key}", p["key"])
-                        .replace("{host}", p["host"])
-                        .replace("{loader}", loader))
+    bands = 0
+    gate = state["gate"]
+
+    natives = state["natives"]
+    main_open = re.search(r"<main[^>]*>", t)
+
+    # bottom band (also carries the shared gated loader when gating is on)
+    if "bottom" in natives and t.count("</main>") == 1:
+        block = native_block("bottom", natives["bottom"], gate)
+        if gate:
+            block += LOADER_TAG
+        t = t.replace("</main>", "</main>" + block, 1)
+        bands += 1
+
+    # top band, just inside <main>
+    if "top" in natives and main_open:
+        block = native_block("top", natives["top"], gate)
+        if gate and "bottom" not in natives:
+            block += LOADER_TAG
+        pos = main_open.end()
+        t = t[:pos] + block + t[pos:]
+        bands += 1
+
+    # middle band, after the median paragraph of the main body
+    if "middle" in natives and main_open:
+        m = re.search(r"<main[^>]*>([\s\S]*?)</main>", t)
+        if m:
+            paras = [pm for pm in re.finditer(r"<p\b[\s\S]*?</p>", m.group(1))
+                     if "adband" not in pm.group(0)]
+            if len(paras) >= 4:
+                mid = paras[len(paras) // 2]
+                block = native_block("middle", natives["middle"], gate)
+                if gate and "bottom" not in natives and "top" not in natives:
+                    block += LOADER_TAG
+                insert_at = m.start(1) + mid.end()
+                t = t[:insert_at] + block + t[insert_at:]
+                bands += 1
+
+    # AdSense native band (future pivot), after </main>
+    if state["adsense"] and t.count("</main>") == 1:
+        a = state["adsense"]
+        block = (ADSENSE_BAND.replace("{client}", a["client"])
+                             .replace("{slot}", a["slot"])
+                             .replace("{fmt}", a["fmt"]))
+        t = t.replace("</main>", "</main>" + block, 1)
+        bands += 1
+
+    # display banner, after </main>
+    if state["display"] and "</main>" in t:
+        block = ('<div data-adband="adsterra-display" style="max-width:1100px;'
+                 'margin:0 auto;padding:24px 20px 0;overflow:hidden">'
+                 + state["display"] + "</div>")
+        t = t.replace("</main>", "</main>" + block, 1)
+        bands += 1
+
+    # social bar, before </body>
+    if state["social"] and "</body>" in t:
+        block = '<div data-adband="adsterra-social">' + state["social"] + "</div>"
+        t = t.replace("</body>", block + "</body>", 1)
+        bands += 1
+
+    return t, bands
 
 
 def revert() -> int:
-    """Remove every injected band. Undo for the activation test."""
+    """Remove every injected unit. Undo for the activation test."""
     n = 0
     for f in targets():
         t = f.read_text(encoding="utf-8", errors="replace")
-        if ADSENSE_MARK not in t and ADSTERRA_MARK not in t:
+        if "data-adband" not in t:
             continue
         for rx in REVERT_RES:
             t = rx.sub("", t)
@@ -233,56 +318,51 @@ def main() -> int:
     if "--revert" in sys.argv:
         return revert()
 
-    provider, params = config()
-    if not provider:
-        print("ads: no ad key configured -> band stays off (0 pages touched)")
-        print("ads: to activate the Adsterra native banner, set adsterra.key and")
-        print("ads: adsterra.host in site.config.json (leave nativeSlotId empty)")
+    state = config()
+    natives = state.get("natives", {})
+    if not natives and not state.get("social") and not state.get("display") \
+            and not state.get("adsense"):
+        print("ads: nothing configured -> all bands stay off (0 pages touched)")
         return 0
 
-    block = block_for(provider, params)
     applied = skipped = problems = upgraded = 0
+    total_bands = 0
 
     for f in targets():
         try:
             t = f.read_text(encoding="utf-8", errors="replace")
         except Exception:
             continue
-        if ADSENSE_MARK in t or ADSTERRA_MARK in t:
-            # Re-render any existing band to the current template. Skipping
-            # outright meant a change to this file never reached the 2,585 pages
-            # that already carried the old markup.
-            new_t = t
-            for rx in REVERT_RES:
-                new_t = rx.sub("", new_t)
-            new_t = new_t.replace("</main>", "</main>" + block, 1) if "</main>" in new_t else new_t
-            if new_t != t:
-                f.write_text(new_t, encoding="utf-8")
-                upgraded += 1
-            else:
+        had_band = "data-adband" in t
+        if NOINDEX.search(t) or NOCONTENT.search(t):
+            if had_band:
+                for rx in REVERT_RES:
+                    t = rx.sub("", t)
+                f.write_text(t, encoding="utf-8")
+            problems += 1
+            continue
+        new_t, bands = apply_page(t, state)
+        if new_t == t:
+            if had_band:
                 skipped += 1
             continue
-        if NOINDEX.search(t) or NOCONTENT.search(t):
-            problems += 1
-            continue
-        if t.count("</main>") != 1:
-            problems += 1
-            continue
-        if "<footer" not in t.split("</main>", 1)[1]:
-            problems += 1
-            continue
-        # inserted with no whitespace of our own, so --revert is byte exact
-        f.write_text(t.replace("</main>", "</main>" + block, 1), encoding="utf-8")
-        applied += 1
+        f.write_text(new_t, encoding="utf-8")
+        total_bands += bands
+        if had_band:
+            upgraded += 1
+        else:
+            applied += 1
 
-    print(f"ads: {applied} {provider} band(s) wired, {upgraded} upgraded to the current "
-          f"template, {skipped} already current, {problems} skipped "
-          f"(noindex/stub, no single </main>, or no footer after it)")
-    if provider == "adsterra":
-        mode = ("consent-gated local bootstrap" if params.get("gate", True)
-                else "PLAIN inline tag, no consent gate")
-        print(f"ads: container container-{params['key']}, loader "
-              f"//{params['host']}/{params['key']}/invoke.js ({mode})")
+    summary = ", ".join(f"{n}: {p['key'][:8]}..." for n, p in sorted(natives.items()))
+    print(f"ads: wired {total_bands} unit(s) - native [{summary or 'none'}]"
+          f"{' + social bar' if state.get('social') else ''}"
+          f"{' + display banner' if state.get('display') else ''}"
+          f"{' + adsense band' if state.get('adsense') else ''}; "
+          f"{applied} page(s) new, {upgraded} upgraded, {skipped} already "
+          f"current, {problems} skipped (noindex/stub)")
+    if not state["gate"] and natives:
+        print("ads: WARNING adsterra.gateConsent=false - units load for every "
+              "visitor before any consent, including the EEA and UK.")
     return 0
 
 

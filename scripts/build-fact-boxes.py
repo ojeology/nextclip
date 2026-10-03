@@ -13,7 +13,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 PUB = ROOT / "public"
-DESKS = ("writers", "tech", "sports", "entertainment", "fitness", "home")
+DESKS = ("writers", "tech", "sports", "entertainment", "fitness", "home", "money")
 QW = re.compile(r"\b(how|what|why|when|where|which|who|does|do|can|is|are|should|best way)\b", re.I)
 H1 = re.compile(r"<h1[^>]*>(.*?)</h1>", re.S)
 LEDE = re.compile(r"<main.*?>(.*?)</p>", re.S)

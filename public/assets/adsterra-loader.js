@@ -35,20 +35,26 @@
 (function () {
   "use strict";
 
-  var slot = document.querySelector('.adband-slot[data-ad-src]');
-  if (!slot) return;
-  var src = slot.getAttribute("data-ad-src");
-  if (!src) return;
+  // Multi-placement: every rendered native slot carries its own data-ad-src
+  // (one Adsterra unit key per placement - see scripts/inject-ads.py).
+  var slots = [].slice.call(document.querySelectorAll('.adband-slot[data-ad-src]'));
+  if (!slots.length) return;
 
-  var loaded = false;
+  var loadedSrcs = {};
+  var done = false;
   function load() {
-    if (loaded) return;
-    loaded = true;
-    var s = document.createElement("script");
-    s.async = true;
-    s.setAttribute("data-cfasync", "false");
-    s.src = src;
-    (document.head || document.documentElement).appendChild(s);
+    if (done) return;
+    done = true;
+    slots.forEach(function (slot) {
+      var src = slot.getAttribute("data-ad-src");
+      if (!src || loadedSrcs[src]) return;
+      loadedSrcs[src] = true;
+      var s = document.createElement("script");
+      s.async = true;
+      s.setAttribute("data-cfasync", "false");
+      s.src = src;
+      (document.head || document.documentElement).appendChild(s);
+    });
   }
 
   function looksEuropean() {
@@ -116,6 +122,6 @@
   var iv = setInterval(function () {
     ticks += 1;
     if (granted(state())) load();
-    if (loaded || ticks > 120) clearInterval(iv);
+    if (done || ticks > 120) clearInterval(iv);
   }, 1000);
 })();

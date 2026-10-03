@@ -312,6 +312,7 @@ SECONDARY = [
     ("Tech", "/tech/", _desk_stat("tech"), "Tech explainers, no hype"),
     ("Home", "/home/", _desk_stat("home"), "Make home work"),
     ("Fitness", "/fitness/", _desk_stat("fitness"), "Train, eat, recover"),
+    ("Money", "/money/", _desk_stat("money"), "Earn, save, freelance"),
     ("Sport", "/sports/", _desk_stat("sports"), "Live scores + explainers"),
     ("Entertainment", "/entertainment/", _desk_stat("entertainment"), "What to watch, why"),
 ]
@@ -359,12 +360,12 @@ HTML = f"""<!doctype html>
 <meta name="theme-color" content="#f6f2e8"><meta name="color-scheme" content="light dark">
 <script src="/assets/theme.js"></script>
 <title>THE BRYME — a house that reads the fine print so you don't have to</title>
-<meta name="description" content="Six desks under one roof. Flagship: {N_MARKETS} paying markets checked by hand, {N_GUIDES} guides, {N_TOOLS} tools. Dated, sourced, no pop-ups. Plus tech, home, fitness, sport, entertainment.">
+<meta name="description" content="Seven desks under one roof. Flagship: {N_MARKETS} paying markets checked by hand, {N_GUIDES} guides, {N_TOOLS} tools. Dated, sourced, no pop-ups. Plus tech, home, fitness, money, sport, entertainment.">
 <meta name="robots" content="index,follow"><meta name="p:domain_verify" content="69f32b47370c197e72e39c8339160660"/>
 <link rel="canonical" href="https://thebryme.com/">
 <meta property="og:type" content="website"><meta property="og:site_name" content="THE BRYME">
 <meta property="og:title" content="THE BRYME — a house that reads the fine print">
-<meta property="og:description" content="{N_MARKETS} paying markets, {N_GUIDES} guides, {N_TOOLS} tools. Verified by hand, dated, sourced, no pop-ups. Six desks, one house standard.">
+<meta property="og:description" content="{N_MARKETS} paying markets, {N_GUIDES} guides, {N_TOOLS} tools. Verified by hand, dated, sourced, no pop-ups. Seven desks, one house standard.">
 <meta property="og:url" content="https://thebryme.com/"><meta property="og:image" content="https://thebryme.com/assets/og.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/favicon.ico" sizes="any"><link rel="apple-touch-icon" href="/assets/brand/apple-touch-icon.png">
@@ -374,7 +375,7 @@ HTML = f"""<!doctype html>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-0KEKJH9960"></script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1881426210393009" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="/assets/bryme-v2.css">
-<script type="application/ld+json">{{"@context":"https://schema.org","@graph":[{{"@type":"WebSite","@id":"https://thebryme.com/#website","url":"https://thebryme.com/","name":"THE BRYME","inLanguage":"en","description":"A house that reads the fine print so you don't have to. Six desks — Writers is flagship — {N_MARKETS} paying markets checked by hand, {N_GUIDES} guides, {N_TOOLS} browser tools, dated, sourced, no pop-ups.","publisher":{{"@id":"https://thebryme.com/#org"}},"potentialAction":{{"@type":"SearchAction","target":{{"@type":"EntryPoint","urlTemplate":"https://thebryme.com/writers/search/?q={{search_term_string}}"}},"query-input":"required name=search_term_string"}}}},{{"@type":"Organization","@id":"https://thebryme.com/#org","name":"THE BRYME","url":"https://thebryme.com/","foundingDate":"2026"}}]}}</script>
+<script type="application/ld+json">{{"@context":"https://schema.org","@graph":[{{"@type":"WebSite","@id":"https://thebryme.com/#website","url":"https://thebryme.com/","name":"THE BRYME","inLanguage":"en","description":"A house that reads the fine print so you don't have to. Seven desks — Writers is flagship — {N_MARKETS} paying markets checked by hand, {N_GUIDES} guides, {N_TOOLS} browser tools, dated, sourced, no pop-ups.","publisher":{{"@id":"https://thebryme.com/#org"}},"potentialAction":{{"@type":"SearchAction","target":{{"@type":"EntryPoint","urlTemplate":"https://thebryme.com/writers/search/?q={{search_term_string}}"}},"query-input":"required name=search_term_string"}}}},{{"@type":"Organization","@id":"https://thebryme.com/#org","name":"THE BRYME","url":"https://thebryme.com/","foundingDate":"2026"}}]}}</script>
 <style>
 /* ===== HOUSE v4 — compact header fix + dense 10/10 ===== */
 .site-head{{position:sticky;top:0;z-index:50;background:var(--paper);border-bottom:1px solid var(--line)}}
@@ -506,7 +507,7 @@ html[data-theme=dark] .kicker{{background:#1a212c;color:#d0aa52;border-color:rgb
 </header>
 <div id="drawer-backdrop"></div>
 <aside id="site-drawer" aria-hidden="true"><div class="drawer-head"><span class="logo"><span class="logo-mark" aria-hidden="true"></span> THE BRYME</span><button type="button" class="drawer-close" data-drawer-close aria-label="Close">✕</button></div>
-  <div class="drawer-group"><b>House</b><a href="{H("/")}">Home — the house</a><a href="{H("/writers/")}">Flagship — Writers</a><a href="{H("/tech/")}">Tech (438)</a><a href="{H("/home/")}">Home (287)</a><a href="{H("/fitness/")}">Fitness (157)</a><a href="{H("/sports/")}">Sport (180)</a><a href="{H("/entertainment/")}">Entertainment (719)</a></div>
+  <div class="drawer-group"><b>House</b><a href="{H("/")}">Home — the house</a><a href="{H("/writers/")}">Flagship — Writers</a><a href="{H("/tech/")}">Tech (438)</a><a href="{H("/home/")}">Home (287)</a><a href="{H("/fitness/")}">Fitness (157)</a><a href="{H("/money/")}">Money (124)</a><a href="{H("/sports/")}">Sport (180)</a><a href="{H("/entertainment/")}">Entertainment (719)</a></div>
   <div class="drawer-group"><b>Flagship pathways — 7 jobs</b>{"".join(f'<a href="{H(route)}"><span style="display:inline-grid;place-items:center;width:18px;height:18px;border:1px solid var(--line);border-radius:4px;font:700 10px/1 ui-monospace,monospace;margin-right:6px">{kbd}</span>{title} · {count}</a>' for _,title,route,_,count,kbd in PATHWAYS)}</div>
   <div class="drawer-group"><b>Keys</b><span class="drawer-note">/ focus search · Ctrl+K palette (828 routes) · 1–7 pathways · 0 clear · ? help · theme toggle remembers choice · saved in localStorage only</span></div>
 </aside>
@@ -515,7 +516,7 @@ html[data-theme=dark] .kicker{{background:#1a212c;color:#d0aa52;border-color:rgb
 <section class="house-hero">
   <div class="eyebrow"><b>THE BRYME</b><span class="dot"></span>HOUSE EDITION<span class="dot"></span>7 DESKS<span class="dot"></span>ONE STANDARD</div>
   <h1>We read the <em>fine print</em> so you don't have to.</h1>
-  <p class="dek">Six specialist publications under one roof. <b>Flagship is a practical home for writers</b> — {N_MARKETS} paying markets checked by hand, {N_GUIDES} guides, {N_TOOLS} browser tools. Dated, sourced, no pop-ups. The rest of the house is small on purpose.</p>
+  <p class="dek">Seven specialist publications under one roof. <b>Flagship is a practical home for writers</b> — {N_MARKETS} paying markets checked by hand, {N_GUIDES} guides, {N_TOOLS} browser tools. Dated, sourced, no pop-ups. The rest of the house is small on purpose.</p>
   <div class="actions">
     <a class="btn" href="{H("/writers/")}">Enter flagship →</a>
     <a class="btn secondary" href="{H("/writers/writing/")}">Browse {N_MARKETS} markets</a>
@@ -584,9 +585,9 @@ html[data-theme=dark] .kicker{{background:#1a212c;color:#d0aa52;border-color:rgb
 <script src="/assets/site-nav.js" defer></script>
 <script src="/assets/house-home.js" defer></script>
 <footer class="site-foot"><div class="wrap foot-grid">
-<div class="foot-brand"><a class="logo" href="{H("/")}"><span class="logo-mark" aria-hidden="true"></span> THE BRYME</a><p>A house that reads the fine print so you don't have to. Six desks, one house standard. Flagship is Writers — {N_MARKETS} paying markets checked by hand, dated, sourced, no pop-ups.</p></div>
+<div class="foot-brand"><a class="logo" href="{H("/")}"><span class="logo-mark" aria-hidden="true"></span> THE BRYME</a><p>A house that reads the fine print so you don't have to. Seven desks, one house standard. Flagship is Writers — {N_MARKETS} paying markets checked by hand, dated, sourced, no pop-ups.</p></div>
 <div class="foot-col"><b>Flagship</b><a href="{H("/writers/")}">Writers home</a><a href="{H("/writers/writing/")}">{N_MARKETS} markets</a><a href="{H("/writers/learn/")}">{N_GUIDES} guides</a><a href="{H("/writers/tools/")}">{N_TOOLS} tools</a><a href="{H("/writers/search/")}">Search</a></div>
-<div class="foot-col"><b>House</b><a href="{H("/tech/")}">Tech</a><a href="{H("/home/")}">Home</a><a href="{H("/fitness/")}">Fitness</a><a href="{H("/sports/")}">Sport</a><a href="{H("/entertainment/")}">Entertainment</a></div>
+<div class="foot-col"><b>House</b><a href="{H("/tech/")}">Tech</a><a href="{H("/home/")}">Home</a><a href="{H("/fitness/")}">Fitness</a><a href="{H("/money/")}">Money</a><a href="{H("/sports/")}">Sport</a><a href="{H("/entertainment/")}">Entertainment</a></div>
 <div class="foot-col"><b>Trust</b><a href="/about/">About</a><a href="/privacy/">Privacy</a><a href="/about/#contact">Contact</a><span style="font-size:12px;color:var(--dim)">Reviewed {REVIEWED} · 0 pop-ups · Ctrl+K · / · 1–7 · ?</span></div>
 </div><div class="wrap foot-bottom">© 2026 THE BRYME · A house that reads the fine print · 7 desks, one standard · Reviewed {REVIEWED} · 0 pop-ups, ever · Keys: / · Ctrl+K · 1–7 · ? · Theme toggle remembers choice.</div></footer>
 </body></html>

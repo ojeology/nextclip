@@ -44,14 +44,44 @@
     "key": "7cf8bb4b0854f64ff4f20a3a19146e91",
     "host": "pl31572329.profitableratecpmnetwork.com",
     "format": "native-banner",
-    "note": "LIVE: Adsterra Native Banner, bottom of page, on content pages only. Key and host taken from the owner's Adsterra snippet (2026-09-29). Native Banner ONLY -- the account's popunder/social-bar unit is refused by scripts/inject-ads.py because AdSense's site behavior policy bars pages carrying pop-ups, and the classic atOptions banner is declined because its invoke.js uses document.write. gateConsent: true (2026-09-30) -- the banner is loaded by /assets/adsterra-loader.js, which loads it immediately outside Europe and waits for granted ad consent inside the EEA, UK and Switzerland, because Google's Consent Mode only gates Google's own tags and Google's EU user consent policy requires consent to cover the publisher's partners too. The loader URL stays visible in page source as data-ad-src on the container. Set gateConsent to false to restore the plain inline tag; read that sentence again first. Set key/host back to empty to switch the band off.",
-    "gateConsent": true
+    "note": "PRIMARY NETWORK (owner decision 2026-10-03, after the AdSense rejection). key/host below are the shared LIVE Native Banner unit and serve any placement that has no unit of its own (currently: bottom). Adsterra's snippet contract is one container + invoke.js per unit, so top and middle each need their OWN Native Banner unit created in the Adsterra dashboard; paste each unit's key/host into placements.<name> and rebuild - the slots, consent gating and loader are already wired. socialBar.script takes the owner's Social Bar unit snippet; displayBanner.script the classic banner snippet. gateConsent: true keeps /assets/adsterra-loader.js in charge - immediate load outside the EEA/UK/CH, granted-consent load inside.",
+    "gateConsent": true,
+    "placements": {
+      "top": {
+        "enabled": true,
+        "key": "",
+        "host": "",
+        "note": "Needs its own Adsterra Native Banner unit - paste key/host here."
+      },
+      "middle": {
+        "enabled": true,
+        "key": "",
+        "host": "",
+        "note": "Needs its own Adsterra Native Banner unit - paste key/host here."
+      },
+      "bottom": {
+        "enabled": true,
+        "key": "",
+        "host": "",
+        "note": "Empty key/host falls back to the shared LIVE unit above."
+      }
+    },
+    "socialBar": {
+      "enabled": true,
+      "script": "",
+      "note": "Owner's Social Bar unit snippet goes here (external <script> tag from the Adsterra dashboard). Renders before </body> on content pages once pasted."
+    },
+    "displayBanner": {
+      "enabled": false,
+      "script": "",
+      "note": "Classic display banner snippet; enable when the unit exists in the dashboard."
+    }
   },
   "ads": {
     "providerOrder": [
-      "adsense",
-      "adsterra"
+      "adsterra",
+      "adsense"
     ],
-    "position": "after-main-before-footer"
+    "position": "adsterra native banner: top + middle + bottom of content pages; social bar before </body>; adsense native band is the future-pivot fallback and stays off while nativeSlotId is empty"
   }
 }

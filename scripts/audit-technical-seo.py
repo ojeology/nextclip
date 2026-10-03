@@ -50,10 +50,12 @@ LD = re.compile(r'(?is)<script[^>]+type=["\']application/ld\+json["\'][^>]*>(.*?
 BREADCRUMB = re.compile(r'"@type"\s*:\s*"BreadcrumbList"')
 
 SITEMAPS = ["writers/sitemap.xml", "sports/sitemap.xml", "entertainment/sitemap.xml",
-            "tech/sitemap.xml", "fitness/sitemap.xml", "home/sitemap.xml"]
-# 2026-10-02: money/sitemap.xml (desk retired) and entertainment/
-# sitemap-catalogue.xml (unfinished title cards) are delisted. Released,
-# recommendation-enriched title routes join entertainment/sitemap.xml.
+            "tech/sitemap.xml", "fitness/sitemap.xml", "home/sitemap.xml",
+            "money/sitemap.xml"]
+# 2026-10-03: money/sitemap.xml restored (desk relaunched, owner decision).
+# entertainment/sitemap-catalogue.xml (unfinished title cards) remains
+# delisted. Released, recommendation-enriched title routes join
+# entertainment/sitemap.xml.
 
 
 def live(url: str, timeout: int = 20) -> tuple[int, str, str]:

@@ -28,8 +28,8 @@ from pathlib import Path
 import bryme_config as cfg  # batch 15: canonical origin single source
 
 ROOT = Path(__file__).resolve().parents[1]
-PROPS = ["sports", "entertainment", "tech", "fitness", "home"]  # money retired 2026-10-01 (owner decision): desk unpublished, /money/* answers 404 by absence
-SITEMAP_PROPS = ["sports", "entertainment", "tech", "fitness", "home"]  # live, indexable properties only (money retired 2026-10-01: desk unpublished, /money/* answers 404 by absence)
+PROPS = ["sports", "entertainment", "tech", "fitness", "home", "money"]  # money relaunch 2026-10-03 (owner decision): desk republished after the AdSense pivot to Adsterra
+SITEMAP_PROPS = ["sports", "entertainment", "tech", "fitness", "home", "money"]  # live, indexable properties only
 KEEP_AT_ROOT_DIRS = {".git", ".github", "assets", "scripts", "content", "docs", "server", "reports",
                      "node_modules", "public", "ecosystem", "pinterest", "event-calendar", ".git"} | set(PROPS) | {"writers"}
 KEEP_AT_ROOT_FILES = {"robots.txt", "_redirects", "favicon.ico", "package.json",
@@ -390,7 +390,7 @@ small{display:block;margin-top:30px;color:#8a94a6}
     _al = json.loads((ROOT / "content" / "index-allowlist.routed.json").read_text(encoding="utf-8"))
     _rts = _al["routes"] if isinstance(_al, dict) else _al
     _children = ["writers/sitemap.xml", "sports/sitemap.xml", "entertainment/sitemap.xml",
-                 "tech/sitemap.xml", "fitness/sitemap.xml", "home/sitemap.xml"]
+                 "tech/sitemap.xml", "fitness/sitemap.xml", "home/sitemap.xml", "money/sitemap.xml"]
     _si = ['<?xml version="1.0" encoding="UTF-8"?>\n'
            '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n']
     for _x in _children:

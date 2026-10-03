@@ -23,7 +23,7 @@
 # never synced from render.yaml, so the stubs are the enforcement that actually
 # ships; a published file also wins over any rule, so keeping both was moot.
 # The nested legacy path below has no stub twin and stays a rule.
-/make-money/writing-opportunities/  /writers/writing-opportunities/  301
+
 # Retired 2026-09-07: old country discovery page — the single entry point is
 # /writers/writing-opportunities/. (Render ignores this file, but render.yaml
 # carries the same rule.)
@@ -50,5 +50,7 @@
 # server in agreement with production — /movie/the-invite/ returns 404 live.
 # "sports" and "entertainment" are no longer treated as retired media at all:
 # both are live properties (111 and 806 sitemap URLs) and serve 200.
-# 2026-10-01: Money desk retired (owner decision). The two saving-for-a-house-
-# deposit 301s were removed with the desk; /money/* answers 404 by absence.
+# 2026-10-03: Money desk relaunched (owner decision, Adsterra pivot). The two
+# batch-7 saving-for-a-house-deposit 301s are restored with the desk.
+/money/saving-for-a-house-deposit-explained  /money/how-to-save-for-a-house-deposit/  301
+/money/saving-for-a-house-deposit-explained/  /money/how-to-save-for-a-house-deposit/  301
