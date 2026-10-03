@@ -2641,10 +2641,16 @@ def sports_pages():
 
     # evergreen explainers: laws, formats and roles — no fixtures, no data rights, no betting
     import sports_explainers_data
+    import sports_competitions_library_data
+    # 2026-10-03: the merged competitions library (#61-108 of the BRYME Sports
+    # Explainer project, minus duplicates of existing desk pieces) renders through
+    # the same explainer pipeline as the shelf originals.
+    ALL_EXPLAINERS = (sports_explainers_data.SPORT_EXPLAINERS
+                      + sports_competitions_library_data.COMPETITION_EXPLAINERS)
     import sports_features_data
     import json as _j
     expl_rows = []
-    for slug, title, dek, body, sources, related in sports_explainers_data.SPORT_EXPLAINERS:
+    for slug, title, dek, body, sources, related in ALL_EXPLAINERS:
         src_html = ""
         if sources:
             src_html = ('<h2>Sources</h2><ul class="list">'
@@ -3622,14 +3628,14 @@ def sports_pages():
     # the /explainers/ section page
     all_rows = "".join('<li><a href="/' + s + '/"><span><b>' + ti + "</b><small>" + dek[:130] + "\u2026</small></span>"
                        '<span class="meta">Explainer</span></a></li>'
-                       for s, ti, dek, b, so, re in sports_explainers_data.SPORT_EXPLAINERS)
+                       for s, ti, dek, b, so, re in ALL_EXPLAINERS)
     sect_body = (head("sports", "Analysis, stories and the long view \u2014 never betting.")
         + '<main id="main"><div class="wrap">'
         + '<nav class="crumb"><a href="/sports/">Sport</a> / Explainers</nav>'
         + '<section class="cover"><p class="kicker">BRYME Sport \u00b7 the explainer shelf</p>'
         + '<h1 class="cover-title">Understand the game.</h1>'
         + '<p class="cover-dek">The laws, the formats and the roles of football \u2014 explained plainly, argued honestly, and evergreen: nothing here expires with the fixtures. No betting content, ever.</p></section>'
-        + '<section class="section"><div class="section-head"><p class="kicker">' + str(len(sports_explainers_data.SPORT_EXPLAINERS)) + ' explainers</p><h2>The shelf.</h2></div>'
+        + '<section class="section"><div class="section-head"><p class="kicker">' + str(len(ALL_EXPLAINERS)) + ' explainers</p><h2>The shelf.</h2></div>'
         + '<ul class="list">' + all_rows + "</ul></section>"
         + '<section class="section alt"><div class="section-head"><p class="kicker">Also on this desk</p><h2>The season archive.</h2></div>'
         + '<div class="actions"><a class="btn secondary" href="/analysis/">The analysis shelf</a><a class="btn secondary" href="/sports/">Back to BRYME Sport</a></div></section>'
@@ -3947,7 +3953,7 @@ def sports_pages():
 <section class="cover"><p class="kicker">BRYME Sport · the 2026-27 season is live · six competitions · no odds, ever</p>
 <h1 class="cover-title">Sport as reporting, not noise.</h1>
 <p class="cover-dek">Football first: the transfer window read plainly, the matchweeks reviewed, the season's stories followed as they happen. Restored from the BRYME media desk \u2014 and, as a house rule, never betting odds or gambling-adjacent tips.</p><div class="cover-facts">
-<div><b>{len(sports_explainers_data.SPORT_EXPLAINERS) + len(sports_analysis_data.SPORT_ANALYSIS)}</b><span>Evergreen pieces</span></div>
+<div><b>{len(ALL_EXPLAINERS) + len(sports_analysis_data.SPORT_ANALYSIS)}</b><span>Evergreen pieces</span></div>
 <div><b>6</b><span>Dated editions</span></div>
 <div><b>6</b><span>Competitions</span></div>
 </div></section>""" + weekend_secs + latest_secs + assists_secs + portal_secs + feat_secs + big6_secs + f"""<section class="section"><div class="section-head"><p class="kicker">The competitions, in depth.</p><h2>The league system.</h2></div><ul class="list"><li><a href="/premier-league/"><span><b>Premier League</b><small>Table | Fixtures | Results | Clubs | Scorers \u2014 the full gateway, live.</small></span><span class="meta">England</span></a></li><li><a href="/laliga/"><span><b>LaLiga</b><small>The Spanish desk: LaLiga and El Clásico, explained plainly.</small></span><span class="meta">Spain</span></a></li><li><a href="/serie-a/"><span><b>Serie A</b><small>Italy\u2019s tactician\u2019s league \u2014 format, champions, history.</small></span><span class="meta">Italy</span></a></li><li><a href="/bundesliga/"><span><b>Bundesliga</b><small>Germany\u2019s 18 clubs and the 50+1 model.</small></span><span class="meta">Germany</span></a></li><li><a href="/ligue-1/"><span><b>Ligue 1</b><small>France, the academy superpower \u2014 and PSG\u2019s project.</small></span><span class="meta">France</span></a></li><li><a href="/champions-league/"><span><b>Champions League</b><small>The 36-team format, explained from every angle.</small></span><span class="meta">Europe</span></a></li></ul></section>
@@ -3977,7 +3983,7 @@ def sports_pages():
     import sports_hub_data as _shd
     import sports_explainers_data as _sed
     import sports_analysis_data as _sad
-    _expl_slugs = {t[0] for t in _sed.SPORT_EXPLAINERS}
+    _expl_slugs = {t[0] for t in _sed.SPORT_EXPLAINERS} | {t[0] for t in sports_competitions_library_data.COMPETITION_EXPLAINERS}
     _anal_slugs = {t[0] for t in _sad.SPORT_ANALYSIS}
     _bigq_slugs = set(_shd.SPO_BIGQ)
     _cat_arts = []

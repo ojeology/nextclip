@@ -1,6 +1,6 @@
 # THE BRYME
 
-> A family of seven independent, specialist publications under one house discipline: research before publishing, dates on anything time-sensitive, sources for every claim, and no fabricated experience or statistics. Edited from Lagos, Nigeria, and written for a global readership. 2048 pages across the desks.
+> A family of seven independent, specialist publications under one house discipline: research before publishing, dates on anything time-sensitive, sources for every claim, and no fabricated experience or statistics. Edited from Lagos, Nigeria, and written for a global readership. 2088 pages across the desks.
 
 ## The house
 
@@ -52,7 +52,7 @@ Honest consumer technology: spec floors, refurb buying, settings that fix real p
 
 ## BRYME Sport
 
-Explainers and analysis with sources and verification dates. No betting content, no odds, no tips. 197 pages.
+Explainers and analysis with sources and verification dates. No betting content, no odds, no tips. 237 pages.
 
 - [Desk home](https://thebryme.com/sports/)
 - [Why darts starts at 501](https://thebryme.com/sports/why-darts-starts-at-501-explained/)
@@ -63,11 +63,11 @@ Explainers and analysis with sources and verification dates. No betting content,
 - [How many rounds in a boxing match, and why?](https://thebryme.com/sports/boxing-rounds-and-fight-length-explained/)
 - [Can Ronaldo score 1,000 career goals?](https://thebryme.com/sports/can-ronaldo-score-1000-goals/)
 - [How every page earns its place?](https://thebryme.com/sports/editorial-policy/)
+- [How Are AFCON Teams Seeded?](https://thebryme.com/sports/how-are-afcon-teams-seeded/)
+- [How Are World Cup Groups Decided?](https://thebryme.com/sports/how-are-world-cup-groups-decided/)
+- [How Are World Cup Teams Seeded?](https://thebryme.com/sports/how-are-world-cup-teams-seeded/)
 - [How boxing fights end: every result code on a boxing record?](https://thebryme.com/sports/how-boxing-fights-end-explained/)
-- [How football clubs actually make money — the three engines and one wildcard?](https://thebryme.com/sports/how-do-football-clubs-make-money/)
-- [How an F1 weekend works: practice, qualifying, sprints and the race?](https://thebryme.com/sports/how-f1-weekends-work/)
-- [How football academies work &mdash; and how they get paid?](https://thebryme.com/sports/how-football-academies-work/)
-- [How football agents actually get paid?](https://thebryme.com/sports/how-football-agents-get-paid/)
+- [How Do Champions League Playoffs Work?](https://thebryme.com/sports/how-do-champions-league-playoffs-work/)
 
 ## BRYME Entertainment
 

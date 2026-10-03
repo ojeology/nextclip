@@ -27,17 +27,26 @@ const PINTEREST_VERIFICATION=String((json("site.config.json").pinterest||{}).dom
 // ban is always in force for anything else. Owner-approved reversal of the
 // 20 Sep removal, recorded 2026-09-29.
 const ADSTERRA=(()=>{try{return json("site.config.json").adsterra||{}}catch{return{}}})();
-const ADSTERRA_KEY=String(ADSTERRA.key||"").trim();
-const ADSTERRA_HOST=String(ADSTERRA.host||"").trim();
-// The sanctioned set, all of it config-driven: the network's own loader URL, the
-// band's data attribute, and the site's own consent-gating bootstrap at
+// Sanctioned units are config-driven. Units may be declared in the legacy shared
+// slot (adsterra.key + adsterra.host) and/or per-placement under
+// adsterra.placements.* (the 2026-10-03 move that put the Native Banner in the
+// top slot). Union every configured key/host pair so clearing one slot only
+// withdraws that unit's exception.
+const ADSTERRA_PAIRS=(()=>{const pairs=[];
+  const add=(k,h)=>{k=String(k||"").trim();h=String(h||"").trim();if(k&&h)pairs.push([k,h]);};
+  add(ADSTERRA.key,ADSTERRA.host);
+  const pl=ADSTERRA.placements||{};
+  for(const name of Object.keys(pl)){const u=pl[name]||{};if(u.enabled===false)continue;add(u.key,u.host);}
+  return pairs;})();
+// The sanctioned set, all of it config-driven: each configured unit's loader URL,
+// the band's data attribute, and the site's own consent-gating bootstrap at
 // /assets/adsterra-loader.js. That last one is a local file whose name states
 // what it gates - banning the bare word "adsterra" would fail the very page that
-// keeps the network honest. Clear adsterra.key in site.config.json and all three
-// exceptions disappear together.
+// keeps the network honest. Clear every configured key and all the exceptions
+// disappear together.
 const SANCTIONED_AD=new RegExp(
-  (ADSTERRA_KEY&&ADSTERRA_HOST
-    ? ADSTERRA_HOST.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")+"\\/"+ADSTERRA_KEY+"\\/invoke\\.js"
+  (ADSTERRA_PAIRS.length
+    ? ADSTERRA_PAIRS.map(([k,h])=>h.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")+"\\/"+k+"\\/invoke\\.js").join("|")
     : "(?!)")+"|data-adband=\"adsterra\"","gi");
 const allowDoc=fs.existsSync(path.join(ROOT,"content/index-allowlist.routed.json"))?json("content/index-allowlist.routed.json"):json("content/index-allowlist.json"), allow=new Set(allowDoc.routes);
 // Every page under /writing/ must be either a real publication record or an

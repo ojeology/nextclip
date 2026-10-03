@@ -1,28 +1,28 @@
 {
  "generated": "2026-10-03",
  "advertising": {
-  "pagesWithAnAdSlot": 2047,
+  "pagesWithAnAdSlot": 2087,
   "slotsPerPage": {
-   "1": 2047,
+   "1": 2087,
    "0": 1
   },
-  "adsInsideMain": 0,
+  "adsInsideMain": 2087,
   "adsInNavOrFooter": 0,
   "adsBeforeMain": 0,
   "stickyOrFixedAdContainers": 0,
   "adsOnNoindexPages": 0,
   "networks": {
-   "googleAdSenseSnippet": 2048,
-   "adsterraBand": 2047
+   "googleAdSenseSnippet": 2088,
+   "adsterraBand": 2087
   },
   "adUnitsWired": false,
   "note": "one band per content page, after </main> and before <footer>; the AdSense snippet is present for verification with no ad units wired"
  },
  "consent": {
-  "googleCmpOnIndexablePages": 2048,
-  "indexablePages": 2048,
+  "googleCmpOnIndexablePages": 2088,
+  "indexablePages": 2088,
   "consentModeV2Defaults": "region-scoped defaults in /assets/gtag-init.js, denied by default in the EEA, UK and Switzerland",
-  "nonGoogleNetworkGated": 2047,
+  "nonGoogleNetworkGated": 2087,
   "nonGoogleNetworkLoadedInline": 0,
   "gateRule": "outside Europe: loads immediately; inside EEA/UK/CH: waits for a granted ad-consent signal from the CMP, and never loads if consent is refused",
   "why": "Consent Mode governs Google tags only. Google's EU user consent policy requires consent to cover the publisher's partners as well, so a third-party ad network loading before consent was a real compliance gap.",
@@ -96,10 +96,10 @@
  ],
  "privacyPagesIncomplete": [],
  "value": {
-  "indexablePages": 2048,
-  "pagesWith400WordsOrMore": 2048,
+  "indexablePages": 2088,
+  "pagesWith400WordsOrMore": 2088,
   "shareWith400WordsOrMore": 100.0,
-  "medianMainTextWords": 4572,
+  "medianMainTextWords": 4592,
   "writersSectionPages": 674,
   "note": "the brief's test is whether the site is worth reading without ads. Depth is measured here; Phase 10 and 11 measured whether the depth is original, and Phase 12 measured the film catalogue."
  },

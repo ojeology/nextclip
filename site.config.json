@@ -41,17 +41,17 @@
   },
   "adsterra": {
     "enabled": true,
-    "key": "7cf8bb4b0854f64ff4f20a3a19146e91",
-    "host": "pl31572329.profitableratecpmnetwork.com",
+    "key": "",
+    "host": "",
     "format": "native-banner",
     "note": "PRIMARY NETWORK (owner decision 2026-10-03, after the AdSense rejection). key/host below are the shared LIVE Native Banner unit and serve any placement that has no unit of its own (currently: bottom). Adsterra's snippet contract is one container + invoke.js per unit, so top and middle each need their OWN Native Banner unit created in the Adsterra dashboard; paste each unit's key/host into placements.<name> and rebuild - the slots, consent gating and loader are already wired. socialBar.script takes the owner's Social Bar unit snippet; displayBanner.script the classic banner snippet. gateConsent: true keeps /assets/adsterra-loader.js in charge - immediate load outside the EEA/UK/CH, granted-consent load inside.",
     "gateConsent": true,
     "placements": {
       "top": {
         "enabled": true,
-        "key": "",
-        "host": "",
-        "note": "Needs its own Adsterra Native Banner unit - paste key/host here."
+        "key": "7cf8bb4b0854f64ff4f20a3a19146e91",
+        "host": "pl31572329.profitableratecpmnetwork.com",
+        "note": "LIVE unit moved from bottom to top (owner decision 2026-10-03)."
       },
       "middle": {
         "enabled": true,
@@ -60,10 +60,10 @@
         "note": "Needs its own Adsterra Native Banner unit - paste key/host here."
       },
       "bottom": {
-        "enabled": true,
+        "enabled": false,
         "key": "",
         "host": "",
-        "note": "Empty key/host falls back to the shared LIVE unit above."
+        "note": "Switched off - the live unit now runs at the top. Re-enable once this placement has its own dashboard unit."
       }
     },
     "socialBar": {
